@@ -11,7 +11,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class QASYS_361_GDPR_Contacts {
     private Contact_static_page contact_static_page = new Contact_static_page();
-    private Main main = new Main();
+    private Main_page mainPage = new Main_page();
 
     @BeforeClass
     void setUp() {
@@ -27,7 +27,7 @@ public class QASYS_361_GDPR_Contacts {
     public void checkingNoOrderTab(String route) {
         open(route);
         closeCookiesFooterMessage();
-        main.clickContact();
+        mainPage.clickContact();
         contact_static_page.openedTabTitle().shouldHave(Condition.text("Ich habe noch keine Bestellung aufgegeben"));
         contact_static_page.privacyPolicyDatenschutzerklarungLink().click();
         switchTo().window(1);
@@ -44,7 +44,7 @@ public class QASYS_361_GDPR_Contacts {
     public void checkingOrderTab(String route) {
         open(route);
         closeCookiesFooterMessage();
-        main.clickContact();
+        mainPage.clickContact();
         contact_static_page.orderTab().click();
         contact_static_page.openedTabTitle().shouldHave(Condition.text("Ich habe schon einen Auftrag erteilt"));
         contact_static_page.privacyPolicyDatenschutzerklarungLink().click();

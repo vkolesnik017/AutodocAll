@@ -6,6 +6,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import static com.codeborne.selenide.Selenide.$;
 
@@ -13,12 +14,12 @@ class CommonMethods {
 
     static String testMail = "test@gmail.com";
     static String testNumberThatPutOrderInTest = "200+002";
+    static String password = "atdtest";
 
     static void setUpBrowser(Boolean Selenoid, String browser, String browserVersion) {
         Configuration.browser = (browser);
         Configuration.browserVersion = (browserVersion);
         Configuration.startMaximized = true;
-        Configuration.pollingInterval = 1000;
         if (Selenoid) {
             Configuration.remote = "http://192.168.99.100:4444/wd/hub";
 //            Configuration.driverManagerEnabled = false;
@@ -55,5 +56,23 @@ class CommonMethods {
         } catch (Exception e) {
             System.out.println("Cookies block doesn't appear");
         }
+    }
+
+    static String firstNameRandom() {
+        Random randomGenerator = new Random();
+        int random = randomGenerator.nextInt();
+        return "autotestFirstName" + random;
+    }
+
+    static String secondNameRandom() {
+        Random randomGenerator = new Random();
+        int random = randomGenerator.nextInt();
+        return "autotestSecondName" + random;
+    }
+
+    static String mailRandom() {
+        Random randomGenerator = new Random();
+        int random = randomGenerator.nextInt();
+        return "autotestMail" + random + "@test.com";
     }
 }
