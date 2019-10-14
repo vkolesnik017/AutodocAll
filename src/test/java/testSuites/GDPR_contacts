@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="GDPR_contacts" parallel="true" thread-count="2">
+
+    <test name="GDPR_contacts" >
+        <classes>
+            <class name = "ATD.QASYS_361_GDPR_Contacts">
+            </class>
+        </classes>
+    </test>
+
+</suite>
