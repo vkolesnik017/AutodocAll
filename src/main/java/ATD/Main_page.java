@@ -13,7 +13,38 @@ class Main_page {
         return $(By.xpath("//div[@class='header__profile logined sigin_btn']/a"));
     }
 
+    SelenideElement searchBar() {
+        return $(By.xpath("//input[@class='header-search__input']"));
+    }
+
+    Search_page searchButtonClick() {
+        $(By.xpath("//form[@id='search_form']/a")).click();
+        return page(Search_page.class);
+    }
+
+    Cart_page cartClick() {
+        $(By.xpath("//a[@class='header-cart__link']")).click();
+        return page(Cart_page.class);
+    }
+
+    SelenideElement logoutButton(){
+       return  $(By.xpath("//a[@class='header__logout logout_but']"));
+    }
+
     // Login and registration popup
+    SelenideElement emailInputInLoginPopup() {
+        return $(By.xpath("//input[@name='Email']"));
+    }
+
+    SelenideElement passwordInputInLoginPopup() {
+        return $(By.xpath("//input[@name='Password']"));
+    }
+
+    Main_page singInButtonClickInLoginPopup() {
+        $(By.xpath("//a[@class='enter submit']")).click();
+        return this;
+    }
+
     SelenideElement registrationButtonInLoginPopup() {
         return $(By.xpath("//form[@id='login_top']/p/a"));
     }
@@ -26,7 +57,7 @@ class Main_page {
         return this;
     }
 
-    Profile_page fillPasswordFieldsAndClickRegistration(){
+    Profile_page fillPasswordFieldsAndClickRegistration() {
         $(By.xpath("//input[@name='new_pass']")).setValue(password);
         $(By.xpath("//input[@name='new_pass_confirm']")).setValue(password);
         $(By.xpath("//div[@class='button register_submit fast']/a")).click();

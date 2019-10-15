@@ -15,11 +15,13 @@ class CommonMethods {
     static String testMail = "test@gmail.com";
     static String testNumberThatPutOrderInTest = "200+002";
     static String password = "atdtest";
+    static String ridex_82B0896 = "82B0896";
 
     static void setUpBrowser(Boolean Selenoid, String browser, String browserVersion) {
         Configuration.browser = (browser);
         Configuration.browserVersion = (browserVersion);
         Configuration.startMaximized = true;
+        Configuration.holdBrowserOpen = true;
         if (Selenoid) {
             Configuration.remote = "http://192.168.99.100:4444/wd/hub";
 //            Configuration.driverManagerEnabled = false;
