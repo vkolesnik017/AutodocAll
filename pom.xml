@@ -23,7 +23,8 @@
                 <version>2.19.1</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>${basedir}/src/test/java/testSuites/GDPR_contacts</suiteXmlFile>
+                        <suiteXmlFile>${basedir}${TEST_SUITE}.xml</suiteXmlFile>
+                        <!--<suiteXmlFile>${basedir}/src/test/java/testSuites/testSuite</suiteXmlFile>-->
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
