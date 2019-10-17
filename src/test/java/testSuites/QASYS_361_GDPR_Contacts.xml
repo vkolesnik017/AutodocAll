@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="QASYS_361_GDPR_Contacts" parallel="true" thread-count="2">
 
-    <test name="QASYS_361_GDPR_Contacts">
+    <test name="QASYS_361_GDPR_Contacts" >
         <classes>
             <class name="ATD.QASYS_361_GDPR_Contacts">
             </class>
