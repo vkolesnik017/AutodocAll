@@ -21,7 +21,7 @@ class CommonMethods {
         Configuration.browser = (browser);
         Configuration.browserVersion = (browserVersion);
         Configuration.startMaximized = true;
-        Configuration.holdBrowserOpen = true;
+        Configuration.holdBrowserOpen = false;
         if (Selenoid) {
             Configuration.remote = "http://192.168.99.100:4444/wd/hub";
 //            Configuration.driverManagerEnabled = false;

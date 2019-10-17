@@ -22,6 +22,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.19.1</version>
                 <configuration>
+                    <argLine>-Dfile.encoding=UTF-8</argLine>
                     <suiteXmlFiles>
                         <!--<suiteXmlFile>${basedir}${TEST_SUITE}.xml</suiteXmlFile>-->
                         <suiteXmlFile>${basedir}/src/test/java/testSuites/QASYS_361_GDPR_Contacts.xml</suiteXmlFile>
