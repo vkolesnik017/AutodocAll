@@ -49,7 +49,9 @@ public class QASYS_361_GDPR_Contacts {
         contact_static_page.openedTabTitle().shouldHave(Condition.text("Ich habe schon einen Auftrag erteilt"));
         contact_static_page.privacyPolicyDatenschutzerklarungLink().click();
         switchTo().window(1);
-        new Datenschutz_page().titlePage().shouldHave(Condition.text("DATENSCHUTZERKLÄRUNG"));
+        String test = "DATENSCHUTZERKLÄRUNG";
+        test.replace("Ä", "A");
+        new Datenschutz_page().titlePage().shouldHave(Condition.text(test));
         switchTo().window(0);
         contact_static_page.fillRequiredFieldsOrder()
                 .sendenButton().click();
