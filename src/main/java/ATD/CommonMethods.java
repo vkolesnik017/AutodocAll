@@ -1,5 +1,6 @@
 package ATD;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -8,6 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static com.codeborne.selenide.Condition.and;
+import static com.codeborne.selenide.Condition.enabled;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 
 class CommonMethods {
@@ -77,4 +81,7 @@ class CommonMethods {
         int random = randomGenerator.nextInt();
         return "autotestMail" + random + "@test.com";
     }
+
+    //Checks element clickability
+    static Condition clickable = and("can be clicked", visible, enabled);
 }

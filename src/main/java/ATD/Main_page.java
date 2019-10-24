@@ -73,4 +73,34 @@ class Main_page {
         $(By.xpath("//div[@class='inform_menu']/ul/li[4]/a")).click();
         return page(Contact_static_page.class);
     }
+
+    Zahlung_static_page clickZahlung() {
+        $(By.xpath("//div[@class='inform_menu']/ul/li[1]/a")).click();
+        return page(Zahlung_static_page.class);
+    }
+
+    Datenschutz_page clickDatenschutz() {
+        $(By.xpath("//div[@class='inform_menu']/ul/li[12]/a")).click();
+        return page(Datenschutz_page.class);
+    }
+
+    Versand_static_page clickVersand() {
+        $(By.xpath("//div[@class='inform_menu']/ul/li[2]/a")).click();
+        return page(Versand_static_page.class);
+    }
+
+    Widerruf_static_page clickWiderruf() {
+        $(By.xpath("//div[@class='inform_menu']/ul/li[10]/a")).click();
+        return page(Widerruf_static_page.class);
+    }
+
+    Vacancies_static_page clickVacancies() {
+        $(By.xpath("//div[@class='inform_menu']/ul/li[17]/a")).click();
+        return page(Vacancies_static_page.class);
+    }
+
+    Impressum_static_page clickImpressum() {
+        $(By.xpath("//div[@class='inform_menu']/ul/li[7]/a")).click();
+        return page(Impressum_static_page.class);
+    }
 }
