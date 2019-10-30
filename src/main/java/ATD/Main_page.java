@@ -17,8 +17,8 @@ class Main_page {
         return $(By.xpath("//input[@class='header-search__input']"));
     }
 
-    Search_page searchButtonClick() {
-        $(By.xpath("//form[@id='search_form']/a")).click();
+    Search_page useSearch(String searchArticle) {
+        searchBar().setValue(searchArticle).pressEnter();
         return page(Search_page.class);
     }
 
