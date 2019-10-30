@@ -38,8 +38,7 @@ public class QASYS_61_Registration {
     @Test(dataProvider = "route")
     public void registrationInBasket(String route) {
         open(route);
-        mainPage.searchBar().setValue(ridex_82B0896);
-        mainPage.searchButtonClick();
+        mainPage.useSearch(ridex_82B0896);
         search_page.buyButton().click();
         search_page.cartClick();
         new Cart_page().nextButtonClick();
