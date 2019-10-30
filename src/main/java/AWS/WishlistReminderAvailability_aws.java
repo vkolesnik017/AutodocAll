@@ -15,19 +15,19 @@ public class WishlistReminderAvailability_aws {
           + "&Filter%5Bdate%5D%5BdateFrom%5D=" + currentDate + "&Filter%5Bdate%5D%5BdateTo%5D=" + currentDate
           + "&submit=%D0%9F%D0%BE%D0%B8%D1%81%D0%BA"; // todo будем ли выносить в базу ?
 
-  public SelenideElement articleFirstProduct() {
+  public SelenideElement articleOfFirstProduct() {
     return $(byXpath(".//*[@id='availability_reminder_table']//tr[1]/td[3]"));
   }
 
-  public SelenideElement countRequestsFirstProduct() {
+  public SelenideElement numberOfRequestsInFirstProduct() {
     return $(byXpath(".//*[@id='availability_reminder_table']//tr[1]/td[6]"));
   }
 
-  public SelenideElement countRequestsByIdProduct(String idProduct) {
+  public SelenideElement numberOfRequestsInProductByHisId(String idProduct) {
     return $(byXpath("//td[contains(text(),'" + idProduct + "')]/../td[6]"));
   }
 
-  public SelenideElement idFirstProduct() {
+  public SelenideElement idOfFirstProduct() {
     return $(byXpath(".//*[@id='availability_reminder_table']//tr[1]/td[4]"));
   }
 

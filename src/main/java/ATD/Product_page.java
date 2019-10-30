@@ -13,19 +13,20 @@ public class Product_page {
     return $(byCssSelector(".button.not_active>a"));
   }
 
-  SelenideElement emailFieldInPopUpAvailable() {
+  // locators in popup of gray button for subscription for product which is not stock
+  SelenideElement emailFieldInPopUpOfGrayBtn() {
     return $(byId("form_AvailabilityReminder[email]"));
   }
 
-  SelenideElement sendenButtonInPopUpAvailable() {
+  SelenideElement sendButtonInPopUpOfGrayBtn() {
     return $(byCssSelector(".popup-available__button"));
   }
 
-  SelenideElement checkboxInPopUpAvailable() {
+  SelenideElement checkboxInPopUpOfGrayBtn() {
     return $(byCssSelector(".popup-available__label"));
   }
 
-  SelenideElement closeSuccessPopUpAvailable() {
+  SelenideElement closeSuccessPopUpOfGrayBtn() {
     return $(byXpath("//div[@class='popup_top']//a[@class='close']"));
   }
 

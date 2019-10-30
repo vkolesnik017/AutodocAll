@@ -11,10 +11,6 @@ import static com.codeborne.selenide.Selenide.page;
 
 public class Login_aws {
 
-  public static void main(String[] args) {
-    new Login_aws().loginInAws();
-  }
-
   private final String email = "autodoc-6731";
   private final String password = "0e8f9863";
 
@@ -38,10 +34,5 @@ public class Login_aws {
     loginButton().shouldBe(Condition.not(Condition.visible));
     return page(Main_aws.class);
   }
-
-
-
-
-
 
 }

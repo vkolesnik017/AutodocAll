@@ -4,6 +4,7 @@ import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
 import static ATD.CommonMethods.*;
+import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.page;
 
@@ -17,8 +18,13 @@ class Main_page {
         return $(By.xpath("//input[@class='header-search__input']"));
     }
 
+    SelenideElement searchButton() {
+        return $(byCssSelector("#search_form>a"));
+    }
+
     Search_page useSearch(String searchArticle) {
-        searchBar().setValue(searchArticle).pressEnter();
+        searchBar().setValue(searchArticle);
+        searchButton().click();
         return page(Search_page.class);
     }
 

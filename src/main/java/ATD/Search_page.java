@@ -18,28 +18,29 @@ class Search_page {
         return $(By.xpath("//div[@class='button ']/a[@id='search_page_product']"));
     }
 
-    SelenideElement emailFieldInPopUpAvailable() {
+    // locators in popup of gray button for subscription for product which is not stock
+    SelenideElement emailFieldInPopUpOfGrayBtn() {
         return $(byId("form_AvailabilityReminder[email]"));
     }
 
-    SelenideElement sendenButtonInPopUpAvailable() {
+    SelenideElement sendButtonInPopUpOfGrayBtn() {
         return $(byCssSelector(".popup-available__button"));
     }
 
-    SelenideElement checkboxInPopUpAvailable() {
+    SelenideElement checkboxInPopUpOfGrayBtn() {
         return $(byCssSelector(".popup-available__label"));
     }
 
-    SelenideElement closeSuccessPopUpAvailable() {
+    SelenideElement closeSuccessPopUpOfGrayBtn() {
         return $(byXpath("//div[@class='popup_top']//a[@class='close']"));
     }
 
-    // locator for search a button product in listing by ID
-    SelenideElement productButtonById(String id) {
+    // locator for search button by ID product in listing
+    SelenideElement buttonProductById(String id) {
         return $(byId(id));
     }
 
-    // locator for search an image product in listing by ID
+    // locator for search image by ID product in listing
     SelenideElement imageProductById(String id) {
         return $(byXpath("//*[@id='" + id + "']/../../..//*[@class='ovVisLi_image']"));
     }

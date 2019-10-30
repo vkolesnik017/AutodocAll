@@ -9,6 +9,8 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class Mailinator {
 
+  // The Mailinator Email System. It is Email Workflow Testing tool.
+
   public SelenideElement letter(int numberLetter) {
     return $(byXpath("//*[contains(@class,'pointer')]/../tr["+ numberLetter +"]"));
   }
