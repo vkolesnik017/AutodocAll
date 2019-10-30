@@ -18,12 +18,11 @@ class DataBase {
             System.out.println("Connection to autodoc DB succesfull!");
         } catch (Exception ex) {
             System.out.println("Connection failed...");
-            System.out.println(ex);
         }
         return conn;
     }
 
-    List<String> getRoute(String shop) throws SQLException {
+    List<String> getRouteForMain(String shop) throws SQLException {
         Connection conn = coonectionDB();
         ArrayList<String> route = new ArrayList<>();
         String query = "SELECT " + shop + " FROM autodoc.routes_atd where id = 1";

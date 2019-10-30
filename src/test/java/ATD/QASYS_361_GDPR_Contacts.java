@@ -6,7 +6,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static ATD.CommonMethods.closeCookiesFooterMessage;
-import static ATD.CommonMethods.setUpBrowser;
+import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.*;
 
 public class QASYS_361_GDPR_Contacts {
@@ -20,7 +20,7 @@ public class QASYS_361_GDPR_Contacts {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() {
-        return new CommonMethods().setUpShop("prod", "AT");
+        return new SetUp().setUpShop("prod", "AT");
     }
 
     @Test(dataProvider = "route", enabled = false)
@@ -47,7 +47,7 @@ public class QASYS_361_GDPR_Contacts {
         mainPage.clickContact();
         contact_static_page.orderTab().click();
         contact_static_page.openedTabTitle().shouldHave(Condition.text("Ich habe schon einen Auftrag erteilt"));
-        contact_static_page.privacyPolicyDatenschutzerklarungLink().click();
+//        contact_static_page.privacyPolicyDatenschutzerklarungLink().click();
         switchTo().window(1);
         new Datenschutz_page().titlePage().shouldBe(Condition.visible);
         switchTo().window(0);

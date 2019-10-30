@@ -7,14 +7,14 @@ import org.testng.annotations.Test;
 
 import static ATD.CommonMethods.clickable;
 import static ATD.CommonMethods.closeCookiesFooterMessage;
-import static ATD.CommonMethods.setUpBrowser;
+import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
 public class QASYS_316_StaticPage_impressum {
-    Main_page mainPage = new Main_page();
-    Impressum_static_page impressumStaticPage = new Impressum_static_page();
+    private Main_page mainPage = new Main_page();
+    private Impressum_static_page impressumStaticPage = new Impressum_static_page();
 
     @BeforeClass
     void setUp() {
@@ -23,7 +23,7 @@ public class QASYS_316_StaticPage_impressum {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() {
-        return new CommonMethods().setUpShop("prod", "DE");
+        return new SetUp().setUpShop("prod", "DE");
     }
 
     @Test(dataProvider = "route")

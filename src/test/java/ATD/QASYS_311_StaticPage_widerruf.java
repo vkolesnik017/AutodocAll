@@ -1,15 +1,14 @@
 package ATD;
 
 
-
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static ATD.CommonMethods.clickable;
 import static ATD.CommonMethods.closeCookiesFooterMessage;
-import static ATD.CommonMethods.setUpBrowser;
-import static com.codeborne.selenide.Condition.*;
+import static ATD.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -24,7 +23,7 @@ public class QASYS_311_StaticPage_widerruf {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() {
-        return new CommonMethods().setUpShop("prod", "DE");
+        return new SetUp().setUpShop("prod", "DE");
     }
 
     @Test(dataProvider = "route")

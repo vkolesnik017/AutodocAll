@@ -6,6 +6,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static ATD.CommonMethods.*;
+import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.open;
 
 public class QASYS_61_Registration {
@@ -21,7 +22,7 @@ public class QASYS_61_Registration {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() {
-        return new CommonMethods().setUpShop("prod", "AT");
+        return new SetUp().setUpShop("prod", "AT");
     }
 
     @Test(dataProvider = "route", enabled = false)
