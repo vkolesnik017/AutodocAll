@@ -76,37 +76,62 @@ class Main_page {
     }
 
     Contact_static_page clickContact() {
-        $(By.xpath("//div[@class='inform_menu']/ul/li[4]/a")).click();
+        $(By.xpath("//*[@class='footer__links']/div[3]/ul/li[3]/a")).click();
         return page(Contact_static_page.class);
     }
 
     Zahlung_static_page clickZahlung() {
-        $(By.xpath("//div[@class='inform_menu']/ul/li[1]/a")).click();
+        $(By.xpath("//*[@class='footer__links']/div[3]/ul/li[1]/a")).click();
         return page(Zahlung_static_page.class);
     }
 
     Datenschutz_page clickDatenschutz() {
-        $(By.xpath("//div[@class='inform_menu']/ul/li[12]/a")).click();
+        $(By.xpath("//*[@class='footer__links']/div[2]/ul/li[7]/a")).click();
         return page(Datenschutz_page.class);
     }
 
     Versand_static_page clickVersand() {
-        $(By.xpath("//div[@class='inform_menu']/ul/li[2]/a")).click();
+        $(By.xpath("//*[@class='footer__links']/div[3]/ul/li[2]/a")).click();
         return page(Versand_static_page.class);
     }
 
     Widerruf_static_page clickWiderruf() {
-        $(By.xpath("//div[@class='inform_menu']/ul/li[10]/a")).click();
+        $(By.xpath("//*[@class='footer__links']/div[2]/ul/li[6]/a")).click();
         return page(Widerruf_static_page.class);
     }
 
     Vacancies_static_page clickVacancies() {
-        $(By.xpath("//div[@class='inform_menu']/ul/li[17]/a")).click();
+        $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[3]/a")).click();
         return page(Vacancies_static_page.class);
     }
 
     Impressum_static_page clickImpressum() {
-        $(By.xpath("//div[@class='inform_menu']/ul/li[7]/a")).click();
+        $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[2]/a")).click();
         return page(Impressum_static_page.class);
+    }
+
+    Agb_static_page clickAgb() {
+        $(By.xpath("//*[@class='footer__links']/div[2]/ul/li[5]/a")).click();
+        return page(Agb_static_page.class);
+    }
+
+    MobileApp_static_page clickMobileApp() {
+        $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[8]/a")).click();
+        return page(MobileApp_static_page.class);
+    }
+
+    Partnership_static_page clickPartnership() {
+        $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[6]/a")).click();
+        return page(Partnership_static_page.class);
+    }
+
+    Sponsorship_static_page clickSponsorship() {
+        $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[5]/a")).click();
+        return page(Sponsorship_static_page.class);
+    }
+
+    Austauschartikel_static_page clickAustauschartikel() {
+        $(By.xpath("//*[@class='footer__links']/div[3]/ul/li[5]/a")).click();
+        return page(Austauschartikel_static_page.class);
     }
 }
