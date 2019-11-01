@@ -5,21 +5,37 @@ import org.openqa.selenium.By;
 
 import static ATD.CommonMethods.*;
 import static com.codeborne.selenide.Selectors.byCssSelector;
+import static com.codeborne.selenide.Selectors.byId;
+import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.page;
 
 class Main_page {
+
     //Header
-    SelenideElement loginButton() {
-        return $(By.xpath("//div[@class='header__profile logined sigin_btn']/a"));
+    SelenideElement loginBtnInHeader() {
+        return $(byCssSelector(".sigin_btn>a"));
     }
 
     SelenideElement searchBar() {
-        return $(By.xpath("//input[@class='header-search__input']"));
+        return $(byId("search"));
     }
 
     SelenideElement searchButton() {
         return $(byCssSelector("#search_form>a"));
+    }
+
+    SelenideElement logoutButton(){
+        return  $(byCssSelector(".logout_but"));
+    }
+
+    SelenideElement cartIcon() {
+        return $(byCssSelector(".header-cart__count"));
+    }
+
+    Cart_page cartClick() {
+        cartIcon().click();
+        return page(Cart_page.class);
     }
 
     Search_page useSearch(String searchArticle) {
@@ -28,31 +44,42 @@ class Main_page {
         return page(Search_page.class);
     }
 
-    Cart_page cartClick() {
-        $(By.xpath("//a[@class='header-cart__link']")).click();
-        return page(Cart_page.class);
-    }
-
-    SelenideElement logoutButton(){
-       return  $(By.xpath("//a[@class='header__logout logout_but']"));
-    }
-
-    // Login and registration popup
+    // Login popup
     SelenideElement emailInputInLoginPopup() {
-        return $(By.xpath("//input[@name='Email']"));
+        return $(byXpath("//input[@name='Email']"));
     }
 
     SelenideElement passwordInputInLoginPopup() {
         return $(By.xpath("//input[@name='Password']"));
     }
 
-    Main_page singInButtonClickInLoginPopup() {
-        $(By.xpath("//a[@class='enter submit']")).click();
-        return this;
+    SelenideElement loginBtnInPopUp() {
+        return $(byXpath("//*[@id='login_top']//*[@class='button']"));
+    }
+
+    SelenideElement forgotPasswordLink() {
+        return $(byCssSelector(".versegen>span"));
     }
 
     SelenideElement registrationButtonInLoginPopup() {
-        return $(By.xpath("//form[@id='login_top']/p/a"));
+        return $(byXpath("//form[@id='login_top']/p/a"));
+    }
+
+    SelenideElement closePopUpInvalidDataForLogin() {
+        return $(byXpath("//*[@class='popup ']//*[contains(text(),'passen nicht zusammen!')]/..//a"));
+    }
+
+    // Password recovery popup
+    SelenideElement emailFieldInPasswordRecoveryPopUp() {
+        return $(byId("recovery-email"));
+    }
+
+    SelenideElement sendBtnInPasswordRecoveryPopUp() {
+        return $(byXpath("//*[@class='rs_pass pass-recovery']/a[2]"));
+    }
+
+    SelenideElement closePopupMessageSentForChangePassword() {
+        return $(byXpath("//*[@class='popup ']//*[contains(text(),'Um Ihr Passwort zu ändern')]/..//a"));
     }
 
     Main_page fillRequiredFieldsForRegistration(String firstName, String secondName, String mail) {
