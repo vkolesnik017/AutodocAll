@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="QASYS_310_StaticPage_datenschutz" parallel="true" thread-count="6">
+
+    <test name="QASYS_310_StaticPage_datenschutz" >
+        <classes>
+            <class name="ATD.QASYS_310_StaticPage_datenschutz">
+            </class>
+        </classes>
+    </test>
+
+</suite>

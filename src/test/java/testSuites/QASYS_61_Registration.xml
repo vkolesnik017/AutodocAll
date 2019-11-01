@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="QASYS_361_GDPR_Contacts" parallel="true" thread-count="6">
+<suite name="QASYS_61_Registration" parallel="true" thread-count="6">
 
-    <test name="QASYS_361_GDPR_Contacts" >
+    <test name="QASYS_61_Registration" >
         <classes>
-            <class name="ATD.QASYS_361_GDPR_Contacts">
+            <class name="ATD.QASYS_61_Registration">
             </class>
         </classes>
     </test>
