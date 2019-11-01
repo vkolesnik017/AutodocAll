@@ -8,6 +8,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 import static com.codeborne.selenide.Condition.and;
 import static com.codeborne.selenide.Condition.enabled;
@@ -27,6 +28,11 @@ class CommonMethods {
         } catch (Exception e) {
             System.out.println("Cookies block doesn't appear");
         }
+    }
+
+    static String getRandomNumber() {
+        int n = (int) Math.round(Math.random()*1000000);
+        return String.valueOf(n);
     }
 
     static String firstNameRandom() {

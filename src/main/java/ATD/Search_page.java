@@ -1,5 +1,6 @@
 package ATD;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
@@ -43,6 +44,17 @@ class Search_page {
     // locator for search image by ID product in listing
     SelenideElement imageProductById(String id) {
         return $(byXpath("//*[@id='" + id + "']/../../..//*[@class='ovVisLi_image']"));
+    }
+
+    SelenideElement cartPopupWithProduct() {
+        return $(byCssSelector(".cart-items-block__title"));
+    }
+
+    Cart_page addFirstProductAndGoToCart() {
+        buyButton().click();
+        cartPopupWithProduct().shouldBe(Condition.visible);
+        cartClick();
+        return page(Cart_page.class);
     }
 
 }
