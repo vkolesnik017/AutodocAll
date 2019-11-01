@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="QASYS_316_StaticPage_impressum" parallel="true" thread-count="6">
+
+    <test name="QASYS_316_StaticPage_impressum" >
+        <classes>
+            <class name="ATD.QASYS_316_StaticPage_impressum">
+            </class>
+        </classes>
+    </test>
+
+</suite>

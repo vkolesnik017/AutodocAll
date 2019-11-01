@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="testSuite" data-provider-thread-count="5">
+<suite name="QASYS_155_StaticPage_zahlung" parallel="true" thread-count="6">
 
-    <test name="testSuite" >
+    <test name="QASYS_155_StaticPage_zahlung" >
         <classes>
             <class name="ATD.QASYS_155_StaticPage_zahlung">
             </class>
         </classes>
     </test>
+
 </suite>
