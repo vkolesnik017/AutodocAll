@@ -12,14 +12,14 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class QASYS_422_PasswordRecovery {
 
-  String newPassword;
+  private String newPassword;
   private String PasswordRecoveryFromHeader = "PasswordRecoveryFromHeader@mailinator.com";
   private String PasswordRecoveryFromCart = "PasswordRecoveryFromCart@mailinator.com";
 
-  Main_page main_page = new Main_page();
-  Mailinator mailinator = new Mailinator();
-  Profile_page profile_page = new Profile_page();
-  CartAccount_page cartAccount_page = new CartAccount_page();
+  private Main_page main_page = new Main_page();
+  private Mailinator mailinator = new Mailinator();
+  private Profile_page profile_page = new Profile_page();
+  private CartAccount_page cartAccount_page = new CartAccount_page();
 
   @BeforeClass
   void setUp() {
