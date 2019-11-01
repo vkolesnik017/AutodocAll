@@ -29,6 +29,21 @@ class Main_page {
         return  $(byCssSelector(".logout_but"));
     }
 
+    SelenideElement cartIcon() {
+        return $(byCssSelector(".header-cart__count"));
+    }
+
+    Cart_page cartClick() {
+        cartIcon().click();
+        return page(Cart_page.class);
+    }
+
+    Search_page useSearch(String searchArticle) {
+        searchBar().setValue(searchArticle);
+        searchButton().click();
+        return page(Search_page.class);
+    }
+
     // Login popup
     SelenideElement emailInputInLoginPopup() {
         return $(byXpath("//input[@name='Email']"));
@@ -80,17 +95,6 @@ class Main_page {
         $(By.xpath("//input[@name='new_pass_confirm']")).setValue(password);
         $(By.xpath("//div[@class='button register_submit fast']/a")).click();
         return page(Profile_page.class);
-    }
-
-    Search_page useSearch(String searchArticle) {
-        searchBar().setValue(searchArticle);
-        searchButton().click();
-        return page(Search_page.class);
-    }
-
-    Cart_page cartClick() {
-        $(By.xpath("//a[@class='header-cart__link']")).click();
-        return page(Cart_page.class);
     }
 
     // Footer
