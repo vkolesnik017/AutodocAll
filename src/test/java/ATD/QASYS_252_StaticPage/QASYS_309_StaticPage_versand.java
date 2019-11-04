@@ -1,6 +1,9 @@
-package ATD;
+package ATD.QASYS_252_StaticPage;
 
 
+import ATD.Main_page;
+import ATD.SetUp;
+import ATD.Versand_static_page;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;

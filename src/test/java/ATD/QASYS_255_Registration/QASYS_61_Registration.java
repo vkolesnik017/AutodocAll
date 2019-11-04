@@ -1,5 +1,6 @@
-package ATD;
+package ATD.QASYS_255_Registration;
 
+import ATD.*;
 import com.codeborne.selenide.Condition;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -25,10 +26,10 @@ public class QASYS_61_Registration {
         return new SetUp().setUpShop("prod", "AT");
     }
 
-    @Test(dataProvider = "route", enabled = false)
+    @Test(dataProvider = "route")
     public void registrationButtonLogin(String route) {
         open(route);
-        mainPage.loginButton().click();
+        mainPage.loginBtnInHeader().click();
         mainPage.registrationButtonInLoginPopup().click();
         String firstName = firstNameRandom();
         mainPage.fillRequiredFieldsForRegistration(firstName, secondNameRandom(), mailRandom());
@@ -50,10 +51,10 @@ public class QASYS_61_Registration {
         cartAddress_page.nextButton().shouldBe(Condition.visible);
         cartAddress_page.logoClick();
         mainPage.logoutButton().click();
-        mainPage.loginButton().click();
+        mainPage.loginBtnInHeader().click();
         mainPage.emailInputInLoginPopup().setValue(mail);
         mainPage.passwordInputInLoginPopup().setValue(password);
-        mainPage.singInButtonClickInLoginPopup();
+        mainPage.loginBtnInPopUp().click();
         mainPage.logoutButton().shouldBe(Condition.visible);
     }
 }

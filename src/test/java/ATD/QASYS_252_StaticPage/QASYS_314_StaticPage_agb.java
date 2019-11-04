@@ -1,19 +1,23 @@
-package ATD;
+package ATD.QASYS_252_StaticPage;
 
 
+import ATD.Agb_static_page;
+import ATD.Main_page;
+import ATD.SetUp;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import static ATD.CommonMethods.clickable;
 import static ATD.CommonMethods.closeCookiesFooterMessage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
-public class QASYS_360_StaticPage_vacancies {
+public class QASYS_314_StaticPage_agb {
     private Main_page mainPage = new Main_page();
-    private Vacancies_static_page vacanciesStaticPage = new Vacancies_static_page();
+    private Agb_static_page agbStaticPage = new Agb_static_page();
 
     @BeforeClass
     void setUp() {
@@ -26,14 +30,18 @@ public class QASYS_360_StaticPage_vacancies {
     }
 
     @Test(dataProvider = "route")
-    public void checkVacanciesPageElements(String route) {
+    public void checkAgbPageElements(String route) {
         open(route);
         closeCookiesFooterMessage();
-        mainPage.clickVacancies();
-        vacanciesStaticPage.title().shouldBe(visible);
-        vacanciesStaticPage.subtitle().shouldBe(visible);
-        vacanciesStaticPage.vacancyPositions().shouldBe(visible);
-        vacanciesStaticPage.checkVacanciesPDF();
+        mainPage.clickAgb();
+        agbStaticPage.logo().shouldBe(visible);
+        agbStaticPage.mainBlock().shouldBe(visible);
+        agbStaticPage.mailLink().shouldBe(clickable);
+        agbStaticPage.atdLink().shouldBe(clickable);
+        agbStaticPage.zollLink().shouldBe(clickable);
+        agbStaticPage.klarnaLink().shouldBe(clickable);
+        agbStaticPage.klarnaLink2().shouldBe(clickable);
+        agbStaticPage.euLink().shouldBe(clickable);
         close();
     }
 }

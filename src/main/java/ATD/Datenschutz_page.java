@@ -5,17 +5,17 @@ import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
 
-class Datenschutz_page {
+public class Datenschutz_page {
 
-    SelenideElement titlePage() {
+    public SelenideElement titlePage() {
        return $(By.xpath("//div[@class='head_name']"));
     }
 
-    SelenideElement logo() {
+    public SelenideElement logo() {
         return $(By.cssSelector(".logo>a>img"));
     }
 
-    SelenideElement mainBlock() {
+    public SelenideElement mainBlock() {
         return $(By.cssSelector(".text_page.agb_page"));
     }
 

@@ -6,35 +6,35 @@ import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
 
-class Agb_static_page {
+public class Agb_static_page {
 
-    SelenideElement logo() {
+    public SelenideElement logo() {
         return $(By.cssSelector(".logo>a>img"));
     }
 
-    SelenideElement mainBlock() {
+    public SelenideElement mainBlock() {
         return $(By.cssSelector(".text_page.agb_page"));
     }
 
-    SelenideElement mailLink() {
+    public SelenideElement mailLink() {
         return $(By.xpath("//*[@class='col']/p[2]/a[1]"));
     }
 
-    SelenideElement atdLink() {
+    public SelenideElement atdLink() {
         return $(By.xpath("//*[@class='col']/p[2]/a[2]"));
     }
 
-    SelenideElement zollLink() {
+    public SelenideElement zollLink() {
         return $(By.xpath("//*[@class='col']/p[42]/a"));
     }
 
-    SelenideElement klarnaLink() {
+    public SelenideElement klarnaLink() {
         return $(By.xpath("//*[@class='col']/p[61]/a"));
     }
 
-    SelenideElement klarnaLink2() {
+    public SelenideElement klarnaLink2() {
         return $(By.xpath("//*[@class='col']/p[63]/a"));
     }
 
-    SelenideElement euLink() { return $(By.xpath("//*[@class='col right']/p[36]/a")); }
+    public SelenideElement euLink() { return $(By.xpath("//*[@class='col right']/p[36]/a")); }
 }

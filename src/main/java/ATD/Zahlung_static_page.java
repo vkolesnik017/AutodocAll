@@ -6,17 +6,17 @@ import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
 
-class Zahlung_static_page {
+public class Zahlung_static_page {
 
-    SelenideElement logo() {
+    public SelenideElement logo() {
         return $(By.cssSelector(".logo>a>img"));
     }
 
-    SelenideElement title() {
+    public SelenideElement title() {
         return $(By.cssSelector(".head_name"));
     }
 
-    SelenideElement checkMainBlock() {
+    public SelenideElement checkMainBlock() {
         return $(By.cssSelector(".text_page.agb_page"));
     }
 }

@@ -1,6 +1,9 @@
-package ATD;
+package ATD.QASYS_252_StaticPage;
 
 
+import ATD.Main_page;
+import ATD.MobileApp_static_page;
+import ATD.SetUp;
 import com.codeborne.selenide.WebDriverRunner;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;

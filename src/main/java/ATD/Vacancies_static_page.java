@@ -9,17 +9,17 @@ import org.openqa.selenium.By;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
-class Vacancies_static_page {
+public class Vacancies_static_page {
 
-    SelenideElement title() {
+    public SelenideElement title() {
         return $(By.xpath("//*[@class='vacancy-header__title']/h2"));
     }
 
-    SelenideElement subtitle() {
+    public SelenideElement subtitle() {
         return $(By.xpath("//*[@class='vacancy-header__subtitle']"));
     }
 
-    SelenideElement vacancyPositions() {
+    public SelenideElement vacancyPositions() {
         return $(By.xpath("//*[@class='vacancy-header__positions']"));
     }
 
@@ -28,7 +28,7 @@ class Vacancies_static_page {
     }
 
     //Checks the availability of PDF files by link
-    void checkVacanciesPDF() {
+    public void checkVacanciesPDF() {
         ElementsCollection pdfButtons = $$(By.cssSelector(".vacancy-content__table-details-btn"));
         for (SelenideElement pdfButton : pdfButtons) {
             pdfButton.click();

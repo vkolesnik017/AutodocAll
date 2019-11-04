@@ -8,7 +8,7 @@ import java.util.List;
 
 public class SetUp {
 
-    static void setUpBrowser(Boolean Selenoid, String browser, String browserVersion) {
+    public static void setUpBrowser(Boolean Selenoid, String browser, String browserVersion) {
         Configuration.browser = (browser);
         Configuration.browserVersion = (browserVersion);
         Configuration.startMaximized = true;
@@ -23,7 +23,7 @@ public class SetUp {
         }
     }
 
-    Object[] setUpShop(String chooseTestOrProd, String shopFromTest) {
+    public Object[] setUpShop(String chooseTestOrProd, String shopFromTest) {
         String testOrProd = null;
         if (chooseTestOrProd.equalsIgnoreCase("test")) {
             testOrProd = "https://test.";

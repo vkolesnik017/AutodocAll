@@ -5,57 +5,84 @@ import org.openqa.selenium.By;
 
 import static ATD.CommonMethods.*;
 import static com.codeborne.selenide.Selectors.byCssSelector;
+import static com.codeborne.selenide.Selectors.byId;
+import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.page;
 
-class Main_page {
+public class Main_page {
+
     //Header
-    SelenideElement loginButton() {
-        return $(By.xpath("//div[@class='header__profile logined sigin_btn']/a"));
+    public SelenideElement loginBtnInHeader() {
+        return $(byCssSelector(".sigin_btn>a"));
     }
 
     SelenideElement searchBar() {
-        return $(By.xpath("//input[@class='header-search__input']"));
+        return $(byId("search"));
     }
 
     SelenideElement searchButton() {
         return $(byCssSelector("#search_form>a"));
     }
 
-    Search_page useSearch(String searchArticle) {
+    public SelenideElement logoutButton(){
+        return  $(byCssSelector(".logout_but"));
+    }
+
+    SelenideElement cartIcon() {
+        return $(byCssSelector(".header-cart__count"));
+    }
+
+    Cart_page cartClick() {
+        cartIcon().click();
+        return page(Cart_page.class);
+    }
+
+    public Search_page useSearch(String searchArticle) {
         searchBar().setValue(searchArticle);
         searchButton().click();
         return page(Search_page.class);
     }
 
-    Cart_page cartClick() {
-        $(By.xpath("//a[@class='header-cart__link']")).click();
-        return page(Cart_page.class);
+    // Login popup
+    public SelenideElement emailInputInLoginPopup() {
+        return $(byXpath("//input[@name='Email']"));
     }
 
-    SelenideElement logoutButton(){
-       return  $(By.xpath("//a[@class='header__logout logout_but']"));
-    }
-
-    // Login and registration popup
-    SelenideElement emailInputInLoginPopup() {
-        return $(By.xpath("//input[@name='Email']"));
-    }
-
-    SelenideElement passwordInputInLoginPopup() {
+    public SelenideElement passwordInputInLoginPopup() {
         return $(By.xpath("//input[@name='Password']"));
     }
 
-    Main_page singInButtonClickInLoginPopup() {
-        $(By.xpath("//a[@class='enter submit']")).click();
-        return this;
+    public SelenideElement loginBtnInPopUp() {
+        return $(byXpath("//*[@id='login_top']//*[@class='button']"));
     }
 
-    SelenideElement registrationButtonInLoginPopup() {
-        return $(By.xpath("//form[@id='login_top']/p/a"));
+    public SelenideElement forgotPasswordLink() {
+        return $(byCssSelector(".versegen>span"));
     }
 
-    Main_page fillRequiredFieldsForRegistration(String firstName, String secondName, String mail) {
+    public SelenideElement registrationButtonInLoginPopup() {
+        return $(byXpath("//form[@id='login_top']/p/a"));
+    }
+
+    public SelenideElement closePopUpInvalidDataForLogin() {
+        return $(byXpath("//*[@class='popup ']//*[contains(text(),'passen nicht zusammen!')]/..//a"));
+    }
+
+    // Password recovery popup
+    public SelenideElement emailFieldInPasswordRecoveryPopUp() {
+        return $(byId("recovery-email"));
+    }
+
+    public SelenideElement sendBtnInPasswordRecoveryPopUp() {
+        return $(byXpath("//*[@class='rs_pass pass-recovery']/a[2]"));
+    }
+
+    public SelenideElement closePopupMessageSentForChangePassword() {
+        return $(byXpath("//*[@class='popup ']//*[contains(text(),'Um Ihr Passwort zu ändern')]/..//a"));
+    }
+
+    public Main_page fillRequiredFieldsForRegistration(String firstName, String secondName, String mail) {
         $(By.xpath("//input[@id='form_rVorname']")).setValue(firstName);
         $(By.xpath("//input[@id='rName']")).setValue(secondName);
         $(By.xpath("//input[@id='email']")).setValue(mail);
@@ -63,7 +90,7 @@ class Main_page {
         return this;
     }
 
-    Profile_page fillPasswordFieldsAndClickRegistration() {
+    public Profile_page fillPasswordFieldsAndClickRegistration() {
         $(By.xpath("//input[@name='new_pass']")).setValue(password);
         $(By.xpath("//input[@name='new_pass_confirm']")).setValue(password);
         $(By.xpath("//div[@class='button register_submit fast']/a")).click();
@@ -75,62 +102,62 @@ class Main_page {
         return $(By.xpath("//footer"));
     }
 
-    Contact_static_page clickContact() {
+    public Contact_static_page clickContact() {
         $(By.xpath("//*[@class='footer__links']/div[3]/ul/li[3]/a")).click();
         return page(Contact_static_page.class);
     }
 
-    Zahlung_static_page clickZahlung() {
+    public Zahlung_static_page clickZahlung() {
         $(By.xpath("//*[@class='footer__links']/div[3]/ul/li[1]/a")).click();
         return page(Zahlung_static_page.class);
     }
 
-    Datenschutz_page clickDatenschutz() {
+    public Datenschutz_page clickDatenschutz() {
         $(By.xpath("//*[@class='footer__links']/div[2]/ul/li[7]/a")).click();
         return page(Datenschutz_page.class);
     }
 
-    Versand_static_page clickVersand() {
+    public Versand_static_page clickVersand() {
         $(By.xpath("//*[@class='footer__links']/div[3]/ul/li[2]/a")).click();
         return page(Versand_static_page.class);
     }
 
-    Widerruf_static_page clickWiderruf() {
+    public Widerruf_static_page clickWiderruf() {
         $(By.xpath("//*[@class='footer__links']/div[2]/ul/li[6]/a")).click();
         return page(Widerruf_static_page.class);
     }
 
-    Vacancies_static_page clickVacancies() {
+    public Vacancies_static_page clickVacancies() {
         $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[3]/a")).click();
         return page(Vacancies_static_page.class);
     }
 
-    Impressum_static_page clickImpressum() {
+    public Impressum_static_page clickImpressum() {
         $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[2]/a")).click();
         return page(Impressum_static_page.class);
     }
 
-    Agb_static_page clickAgb() {
+    public Agb_static_page clickAgb() {
         $(By.xpath("//*[@class='footer__links']/div[2]/ul/li[5]/a")).click();
         return page(Agb_static_page.class);
     }
 
-    MobileApp_static_page clickMobileApp() {
+    public MobileApp_static_page clickMobileApp() {
         $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[8]/a")).click();
         return page(MobileApp_static_page.class);
     }
 
-    Partnership_static_page clickPartnership() {
+    public Partnership_static_page clickPartnership() {
         $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[6]/a")).click();
         return page(Partnership_static_page.class);
     }
 
-    Sponsorship_static_page clickSponsorship() {
+    public Sponsorship_static_page clickSponsorship() {
         $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[5]/a")).click();
         return page(Sponsorship_static_page.class);
     }
 
-    Austauschartikel_static_page clickAustauschartikel() {
+    public Austauschartikel_static_page clickAustauschartikel() {
         $(By.xpath("//*[@class='footer__links']/div[3]/ul/li[5]/a")).click();
         return page(Austauschartikel_static_page.class);
     }

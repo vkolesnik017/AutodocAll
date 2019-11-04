@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="QASYS_252_StaticPage" parallel="tests" thread-count="6">
+
+    <test name="QASYS_155_StaticPage_zahlung" parallel="true">
+        <classes>
+            <class name="ATD.QASYS_252_StaticPage.QASYS_155_StaticPage_zahlung">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QASYS_309_StaticPage_versand" parallel="true">
+        <classes>
+            <class name="ATD.QASYS_252_StaticPage.QASYS_309_StaticPage_versand">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QASYS_310_StaticPage_datenschutz" parallel="true">
+        <classes>
+            <class name="ATD.QASYS_252_StaticPage.QASYS_310_StaticPage_datenschutz">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QASYS_311_StaticPage_widerruf" parallel="true">
+        <classes>
+            <class name="ATD.QASYS_252_StaticPage.QASYS_311_StaticPage_widerruf">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QASYS_312_StaticPage_austauschartikel" parallel="true">
+        <classes>
+            <class name="ATD.QASYS_252_StaticPage.QASYS_312_StaticPage_austauschartikel">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QASYS_313_StaticPage_contacts" parallel="true">
+        <classes>
+            <class name="ATD.QASYS_252_StaticPage.QASYS_313_StaticPage_contacts">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QASYS_314_StaticPage_agb" parallel="true">
+        <classes>
+            <class name="ATD.QASYS_252_StaticPage.QASYS_314_StaticPage_agb">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QASYS_316_StaticPage_impressum" parallel="true">
+        <classes>
+            <class name="ATD.QASYS_252_StaticPage.QASYS_316_StaticPage_impressum">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QASYS_352_StaticPage_mobile_app" parallel="true">
+        <classes>
+            <class name="ATD.QASYS_252_StaticPage.QASYS_352_StaticPage_mobile_app">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QASYS_353_StaticPage_sponsorship" parallel="true">
+        <classes>
+            <class name="ATD.QASYS_252_StaticPage.QASYS_353_StaticPage_sponsorship">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QASYS_356_StaticPage_partnership" parallel="true">
+        <classes>
+            <class name="ATD.QASYS_252_StaticPage.QASYS_356_StaticPage_partnership">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QASYS_360_StaticPage_vacancies" parallel="true">
+        <classes>
+            <class name="ATD.QASYS_252_StaticPage.QASYS_360_StaticPage_vacancies">
+            </class>
+        </classes>
+    </test>
+
+</suite>

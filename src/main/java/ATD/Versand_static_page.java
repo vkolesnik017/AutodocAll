@@ -8,70 +8,70 @@ import static com.codeborne.selenide.Condition.checked;
 import static com.codeborne.selenide.Condition.selected;
 import static com.codeborne.selenide.Selenide.$;
 
-class Versand_static_page {
+public class Versand_static_page {
 
-    SelenideElement topBlockLeft() {
+    public SelenideElement topBlockLeft() {
         return $(By.cssSelector(".top-block__left"));
     }
 
-    SelenideElement topBlockRight() {
+    public SelenideElement topBlockRight() {
         return $(By.cssSelector(".top-block__right"));
     }
 
-    SelenideElement deliveryCompanyImages() {
+    public SelenideElement deliveryCompanyImages() {
         return $(By.cssSelector(".top-block__right-images"));
     }
 
-    SelenideElement deliveryPriceBlock() {
+    public SelenideElement deliveryPriceBlock() {
         return $(By.cssSelector(".prices-block__items"));
     }
 
-    SelenideElement vatBlock() {
+    public SelenideElement vatBlock() {
         return $(By.cssSelector(".prices-block__text"));
     }
 
-    SelenideElement countyPriceDelivery() {
+    public SelenideElement countyPriceDelivery() {
         return $(By.cssSelector(".country-prices__item"));
     }
 
-    SelenideElement allCountriesButton() {
+    public SelenideElement allCountriesButton() {
         return $(By.cssSelector(".country-prices__button"));
     }
 
-    SelenideElement allCountriesBlock() {
+    public SelenideElement allCountriesBlock() {
         return $(By.xpath("//*[@class='country-prices__pop country-prices-pop-js']"));
     }
 
-    SelenideElement textDelivery() {
+    public SelenideElement textDelivery() {
         return $(By.cssSelector(".delivery-time__text"));
     }
 
-    SelenideElement greenDeliveryBlock() {
+    public SelenideElement greenDeliveryBlock() {
         return $(By.xpath("//*[@class='delivery-time__block']"));
     }
 
-    SelenideElement redDeliveryBlock() {
+    public SelenideElement redDeliveryBlock() {
         return $(By.xpath("//*[@class='delivery-time__block red']"));
     }
 
-    SelenideElement deliveryLink() {
+    public SelenideElement deliveryLink() {
         return $(By.xpath("//*[@class='delivery-time__text']/span/a"));
     }
 
-    SelenideElement recommendationBlock() {
+    public SelenideElement recommendationBlock() {
         return $(By.cssSelector(".recommendation-block"));
     }
 
-    SelenideElement deliveryCheckboxClick() {
+    public SelenideElement deliveryCheckboxClick() {
         return $(By.xpath("//*[@class='safe-order__check']/label/span"));
     }
 
-    SelenideElement deliveryCheckbox() {
+    public SelenideElement deliveryCheckbox() {
         return $(By.name("security_delivery"));
     }
 
     //Checks the functionality of the checkbox
-    void checkUncheckCheckbox(SelenideElement checkLocator, SelenideElement clickLocator) {
+    public void checkUncheckCheckbox(SelenideElement checkLocator, SelenideElement clickLocator) {
         $(checkLocator).shouldNotBe(selected);
         $(checkLocator).shouldNotBe(checked);
         $(clickLocator).click();
