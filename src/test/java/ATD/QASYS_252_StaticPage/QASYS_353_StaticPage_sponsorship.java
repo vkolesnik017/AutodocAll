@@ -1,6 +1,9 @@
-package ATD;
+package ATD.QASYS_252_StaticPage;
 
 
+import ATD.Main_page;
+import ATD.SetUp;
+import ATD.Sponsorship_static_page;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -11,9 +14,9 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
-public class QASYS_310_StaticPage_datenschutz {
+public class QASYS_353_StaticPage_sponsorship {
     private Main_page mainPage = new Main_page();
-    private Datenschutz_page datenschutzPage = new Datenschutz_page();
+    private Sponsorship_static_page sponsorshipStaticPage = new Sponsorship_static_page();
 
     @BeforeClass
     void setUp() {
@@ -26,13 +29,16 @@ public class QASYS_310_StaticPage_datenschutz {
     }
 
     @Test(dataProvider = "route")
-    public void checkDatenschutzPageElements(String route) {
+    public void checkSponsorshipPgeElements(String route) {
         open(route);
         closeCookiesFooterMessage();
-        mainPage.clickDatenschutz();
-        datenschutzPage.titlePage().shouldBe(visible);
-        datenschutzPage.logo().shouldBe(visible);
-        datenschutzPage.mainBlock().shouldBe(visible);
+        mainPage.clickSponsorship();
+        sponsorshipStaticPage.sponsorsHeader().shouldBe(visible);
+        sponsorshipStaticPage.raceGallery().shouldBe(visible);
+        sponsorshipStaticPage.mapText().shouldBe(visible);
+        sponsorshipStaticPage.sendShipForm().shouldBe(visible);
+        sponsorshipStaticPage.submitShipDataButton().shouldBe(visible);
+        sponsorshipStaticPage.emailError().shouldBe(visible);
         close();
     }
 }

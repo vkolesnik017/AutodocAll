@@ -9,24 +9,24 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class Product_page {
 
-  SelenideElement grayButton() {
+  public SelenideElement grayButton() {
     return $(byCssSelector(".button.not_active>a"));
   }
 
   // locators in popup of gray button for subscription for product which is not stock
-  SelenideElement emailFieldInPopUpOfGrayBtn() {
+  public SelenideElement emailFieldInPopUpOfGrayBtn() {
     return $(byId("form_AvailabilityReminder[email]"));
   }
 
-  SelenideElement sendButtonInPopUpOfGrayBtn() {
+  public SelenideElement sendButtonInPopUpOfGrayBtn() {
     return $(byCssSelector(".popup-available__button"));
   }
 
-  SelenideElement checkboxInPopUpOfGrayBtn() {
+  public SelenideElement checkboxInPopUpOfGrayBtn() {
     return $(byCssSelector(".popup-available__label"));
   }
 
-  SelenideElement closeSuccessPopUpOfGrayBtn() {
+  public SelenideElement closeSuccessPopUpOfGrayBtn() {
     return $(byXpath("//div[@class='popup_top']//a[@class='close']"));
   }
 

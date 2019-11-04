@@ -8,41 +8,41 @@ import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.page;
 
-class Search_page {
+public class Search_page {
 
-    Cart_page cartClick() {
+    public Cart_page cartClick() {
         new Main_page().cartClick();
         return page(Cart_page.class);
     }
 
-    SelenideElement buyButton() {
+    public SelenideElement buyButton() {
         return $(By.xpath("//div[@class='button ']/a[@id='search_page_product']"));
     }
 
     // locators in popup of gray button for subscription for product which is not stock
-    SelenideElement emailFieldInPopUpOfGrayBtn() {
+    public SelenideElement emailFieldInPopUpOfGrayBtn() {
         return $(byId("form_AvailabilityReminder[email]"));
     }
 
-    SelenideElement sendButtonInPopUpOfGrayBtn() {
+    public SelenideElement sendButtonInPopUpOfGrayBtn() {
         return $(byCssSelector(".popup-available__button"));
     }
 
-    SelenideElement checkboxInPopUpOfGrayBtn() {
+    public SelenideElement checkboxInPopUpOfGrayBtn() {
         return $(byCssSelector(".popup-available__label"));
     }
 
-    SelenideElement closeSuccessPopUpOfGrayBtn() {
+    public SelenideElement closeSuccessPopUpOfGrayBtn() {
         return $(byXpath("//div[@class='popup_top']//a[@class='close']"));
     }
 
     // locator for search button by ID product in listing
-    SelenideElement buttonProductById(String id) {
+    public SelenideElement buttonProductById(String id) {
         return $(byId(id));
     }
 
     // locator for search image by ID product in listing
-    SelenideElement imageProductById(String id) {
+    public SelenideElement imageProductById(String id) {
         return $(byXpath("//*[@id='" + id + "']/../../..//*[@class='ovVisLi_image']"));
     }
 
@@ -50,7 +50,7 @@ class Search_page {
         return $(byCssSelector(".cart-items-block__title"));
     }
 
-    Cart_page addFirstProductAndGoToCart() {
+    public Cart_page addFirstProductAndGoToCart() {
         buyButton().click();
         cartPopupWithProduct().shouldBe(Condition.visible);
         cartClick();

@@ -1,5 +1,9 @@
-package ATD;
+package ATD.QASYS_255_Registration;
 
+import ATD.CartAccount_page;
+import ATD.Main_page;
+import ATD.Profile_page;
+import ATD.SetUp;
 import mailinator.Mailinator;
 import org.testng.annotations.*;
 

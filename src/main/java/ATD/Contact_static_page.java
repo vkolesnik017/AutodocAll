@@ -7,7 +7,7 @@ import static ATD.CommonMethods.testMail;
 import static ATD.CommonMethods.testNumberThatPutOrderInTest;
 import static com.codeborne.selenide.Selenide.$;
 
-class Contact_static_page {
+public class Contact_static_page {
 
     /*
     Page has two tab. First tab will be not active when page will be open and it name "order", second one which active "noOrder".
@@ -69,63 +69,63 @@ class Contact_static_page {
         return $(By.cssSelector(".logo>a>img"));
     }
 
-    SelenideElement contactsBlock() {
+    public SelenideElement contactsBlock() {
         return $(By.cssSelector(".contact-page__info-descroption"));
     }
 
-    SelenideElement addressBlock() {
+    public SelenideElement addressBlock() {
         return $(By.cssSelector(".contact-page__info-adress"));
     }
 
-    SelenideElement orderEmailInput() {
+    public SelenideElement orderEmailInput() {
         return $(By.xpath("//input[@name='Order[email]']"));
     }
 
-    SelenideElement haveOrderButton() {
+    public SelenideElement haveOrderButton() {
         return $(By.xpath("//*[@class='contact-page__form']/div[2]/span"));
     }
 
-    SelenideElement haveOrderBlock() {
+    public SelenideElement haveOrderBlock() {
         return $(By.xpath("//*[@class='contact-page__form-tab'][@data-tab='order']/div"));
     }
 
-    SelenideElement submitOrderButton() {
+    public SelenideElement submitOrderButton() {
         return $(By.xpath("//*[@class='contact-page__form']/div[2]/div/div[6]/button"));
     }
 
-    SelenideElement emailError() {
+    public SelenideElement emailError() {
         return $(By.xpath("//*[@class='contact-page__form-error'][@data-name='error_Order[email]']"));
     }
 
-    SelenideElement orderIdError() {
+    public SelenideElement orderIdError() {
         return $(By.xpath("//*[@class='contact-page__form-error'][@data-name='error_Order[orderId]']"));
     }
 
-    SelenideElement phoneNumberError() {
+    public SelenideElement phoneNumberError() {
         return $(By.xpath("//*[@class='contact-page__form-error'][@data-name='error_Order[phone]']"));
     }
 
-    SelenideElement haveNoOrderButton() {
+    public SelenideElement haveNoOrderButton() {
         return $(By.xpath("//*[@class='contact-page__form']/div[3]/span"));
     }
 
-    SelenideElement haveNoOrderBlock() {
+    public SelenideElement haveNoOrderBlock() {
         return $(By.xpath("//*[@class='contact-page__form-tab'][@data-tab='no_order']/div"));
     }
 
-    SelenideElement submitNoOrderButton() {
+    public SelenideElement submitNoOrderButton() {
         return $(By.xpath("//*[@class='contact-page__form']/div[3]/div/div[8]/button"));
     }
 
-    SelenideElement noOrderEmailError() {
+    public SelenideElement noOrderEmailError() {
         return $(By.xpath("//*[@class='contact-page__form-error'][@data-name='error_NoOrder[email]']"));
     }
 
-    SelenideElement noOrderDetailError() {
+    public SelenideElement noOrderDetailError() {
         return $(By.xpath("//*[@class='contact-page__form-error'][@data-name='error_NoOrder[article][0][articleNo]']"));
     }
 
-    SelenideElement noOrderEmailInput() {
+    public SelenideElement noOrderEmailInput() {
         return $(By.xpath("//input[@name='NoOrder[email]']"));
     }
 }

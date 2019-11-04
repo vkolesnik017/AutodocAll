@@ -6,25 +6,25 @@ import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
 
-class Widerruf_static_page {
+public class Widerruf_static_page {
 
-    SelenideElement logo() {
+    public SelenideElement logo() {
         return $(By.cssSelector(".logo>a>img"));
     }
 
-    SelenideElement title() {
+    public SelenideElement title() {
         return $(By.xpath("//div[@class='head_name']"));
     }
 
-    SelenideElement mainBlock() {
+    public SelenideElement mainBlock() {
         return $(By.cssSelector(".text_page.agb_page"));
     }
 
-    SelenideElement emailLink1() {
+    public SelenideElement emailLink1() {
         return $(By.xpath("//*[@class='serv-attention']/p[3]/a"));
     }
 
-    SelenideElement emailLink2() {
+    public SelenideElement emailLink2() {
         return $(By.xpath("//*[@class='serv-attention']/p[16]/a"));
     }
 }

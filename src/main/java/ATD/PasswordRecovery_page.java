@@ -25,7 +25,7 @@ public class PasswordRecovery_page {
     return $(byXpath("//*[@id='popup_update']//a"));
   }
 
-  Profile_page fillPasswordFieldsAndClickSubmit(String password) {
+  public Profile_page fillPasswordFieldsAndClickSubmit(String password) {
     passwordField().setValue(password);
     passwordConfirmField().setValue(password);
     sendButton().click();

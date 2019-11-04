@@ -6,17 +6,17 @@ import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
 
-class Sponsorship_static_page {
+public class Sponsorship_static_page {
 
-    SelenideElement sponsorsHeader() { return $(By.cssSelector(".sponsors-header")); }
+    public SelenideElement sponsorsHeader() { return $(By.cssSelector(".sponsors-header")); }
 
-    SelenideElement raceGallery() { return $(By.xpath("//*[@class='race-gallery__wrapper']")); }
+    public SelenideElement raceGallery() { return $(By.xpath("//*[@class='race-gallery__wrapper']")); }
 
-    SelenideElement mapText() { return $(By.xpath("//*[@class='add_part']/p")); }
+    public SelenideElement mapText() { return $(By.xpath("//*[@class='add_part']/p")); }
 
-    SelenideElement sendShipForm() { return $(By.cssSelector("#send_ship")); }
+    public SelenideElement sendShipForm() { return $(By.cssSelector("#send_ship")); }
 
-    SelenideElement submitShipDataButton() { return $(By.cssSelector("#submit_ship_data")); }
+    public SelenideElement submitShipDataButton() { return $(By.cssSelector("#submit_ship_data")); }
 
-    SelenideElement emailError() { return $(By.cssSelector(".email_error")); }
+    public SelenideElement emailError() { return $(By.cssSelector(".email_error")); }
 }

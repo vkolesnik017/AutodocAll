@@ -1,19 +1,23 @@
-package ATD;
+package ATD.QASYS_252_StaticPage;
 
 
+import ATD.Agb_static_page;
+import ATD.Main_page;
+import ATD.SetUp;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import static ATD.CommonMethods.clickable;
 import static ATD.CommonMethods.closeCookiesFooterMessage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
-public class QASYS_155_StaticPage_zahlung {
+public class QASYS_314_StaticPage_agb {
     private Main_page mainPage = new Main_page();
-    private Zahlung_static_page zahlungStaticPage = new Zahlung_static_page();
+    private Agb_static_page agbStaticPage = new Agb_static_page();
 
     @BeforeClass
     void setUp() {
@@ -26,13 +30,18 @@ public class QASYS_155_StaticPage_zahlung {
     }
 
     @Test(dataProvider = "route")
-    public void checkZahlungPageElements(String route) {
+    public void checkAgbPageElements(String route) {
         open(route);
         closeCookiesFooterMessage();
-        mainPage.clickZahlung();
-        zahlungStaticPage.logo().shouldBe(visible);
-        zahlungStaticPage.title().shouldBe(visible);
-        zahlungStaticPage.checkMainBlock().shouldBe(visible);
+        mainPage.clickAgb();
+        agbStaticPage.logo().shouldBe(visible);
+        agbStaticPage.mainBlock().shouldBe(visible);
+        agbStaticPage.mailLink().shouldBe(clickable);
+        agbStaticPage.atdLink().shouldBe(clickable);
+        agbStaticPage.zollLink().shouldBe(clickable);
+        agbStaticPage.klarnaLink().shouldBe(clickable);
+        agbStaticPage.klarnaLink2().shouldBe(clickable);
+        agbStaticPage.euLink().shouldBe(clickable);
         close();
     }
 }

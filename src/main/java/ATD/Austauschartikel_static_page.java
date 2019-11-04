@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
 
-class Austauschartikel_static_page {
+public class Austauschartikel_static_page {
 
     SelenideElement logo() {
         return $(By.cssSelector(".logo>a>img"));

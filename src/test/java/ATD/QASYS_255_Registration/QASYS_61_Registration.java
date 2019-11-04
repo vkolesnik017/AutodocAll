@@ -1,5 +1,6 @@
-package ATD;
+package ATD.QASYS_255_Registration;
 
+import ATD.*;
 import com.codeborne.selenide.Condition;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;

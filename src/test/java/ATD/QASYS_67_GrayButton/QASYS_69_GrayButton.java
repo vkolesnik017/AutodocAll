@@ -1,5 +1,9 @@
-package ATD;
+package ATD.QASYS_67_GrayButton;
 
+import ATD.Main_page;
+import ATD.Product_page;
+import ATD.Search_page;
+import ATD.SetUp;
 import AWS.Login_aws;
 import AWS.WishlistReminderAvailability_aws;
 import mailinator.Mailinator;

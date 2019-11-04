@@ -1,20 +1,22 @@
-package ATD;
+package ATD.QASYS_252_StaticPage;
 
 
+import ATD.Main_page;
+import ATD.SetUp;
+import ATD.Vacancies_static_page;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import static ATD.CommonMethods.clickable;
 import static ATD.CommonMethods.closeCookiesFooterMessage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
-public class QASYS_311_StaticPage_widerruf {
+public class QASYS_360_StaticPage_vacancies {
     private Main_page mainPage = new Main_page();
-    private Widerruf_static_page widerrufStaticPage = new Widerruf_static_page();
+    private Vacancies_static_page vacanciesStaticPage = new Vacancies_static_page();
 
     @BeforeClass
     void setUp() {
@@ -27,15 +29,14 @@ public class QASYS_311_StaticPage_widerruf {
     }
 
     @Test(dataProvider = "route")
-    public void checkWiderrufPageElements(String route) {
+    public void checkVacanciesPageElements(String route) {
         open(route);
         closeCookiesFooterMessage();
-        mainPage.clickWiderruf();
-        widerrufStaticPage.title().shouldBe(visible);
-        widerrufStaticPage.logo().shouldBe(visible);
-        widerrufStaticPage.mainBlock().shouldBe(visible);
-        widerrufStaticPage.emailLink1().shouldBe(clickable);
-        widerrufStaticPage.emailLink2().shouldBe(clickable);
+        mainPage.clickVacancies();
+        vacanciesStaticPage.title().shouldBe(visible);
+        vacanciesStaticPage.subtitle().shouldBe(visible);
+        vacanciesStaticPage.vacancyPositions().shouldBe(visible);
+        vacanciesStaticPage.checkVacanciesPDF();
         close();
     }
 }

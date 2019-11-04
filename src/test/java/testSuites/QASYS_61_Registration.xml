@@ -4,7 +4,7 @@
 
     <test name="QASYS_61_Registration" >
         <classes>
-            <class name="ATD.QASYS_61_Registration">
+            <class name="ATD.QASYS_255_Registration.QASYS_61_Registration">
             </class>
         </classes>
     </test>
