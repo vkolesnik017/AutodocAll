@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SetUp {
+    String Shop = System.getenv("ShopFromJenkins");
 
     public static void setUpBrowser(Boolean Selenoid, String browser, String browserVersion) {
         Configuration.browser = (browser);
@@ -33,6 +34,7 @@ public class SetUp {
         List<String> finalRouteList = new ArrayList<>();
         try {
             List<String> routeFromDB = new DataBase().getRouteForMain(shopFromTest);
+            System.out.println(Shop);
             for (String aRouteFromDB : routeFromDB) {
                 finalRouteList.add(testOrProd + aRouteFromDB);
             }
