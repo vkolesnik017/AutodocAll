@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SetUp {
-    String Shop = System.getenv("ShopFromJenkins");
+    String shopFromJenkins = System.getenv("ShopFromJenkins");
 
     public static void setUpBrowser(Boolean Selenoid, String browser, String browserVersion) {
         Configuration.browser = (browser);
@@ -26,6 +26,12 @@ public class SetUp {
 
     public Object[] setUpShop(String chooseTestOrProd, String shopFromTest) {
         String testOrProd = null;
+        String shop;
+        if (!shopFromJenkins.equals("none")) {
+            shop = shopFromJenkins;
+        } else {
+            shop = shopFromTest;
+        }
         if (chooseTestOrProd.equalsIgnoreCase("test")) {
             testOrProd = "https://test.";
         } else if (chooseTestOrProd.equalsIgnoreCase("prod")) {
@@ -33,8 +39,7 @@ public class SetUp {
         }
         List<String> finalRouteList = new ArrayList<>();
         try {
-            List<String> routeFromDB = new DataBase().getRouteForMain(shopFromTest);
-            System.out.println(Shop);
+            List<String> routeFromDB = new DataBase().getRouteForMain(shop);
             for (String aRouteFromDB : routeFromDB) {
                 finalRouteList.add(testOrProd + aRouteFromDB);
             }
