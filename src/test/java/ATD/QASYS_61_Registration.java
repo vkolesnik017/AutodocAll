@@ -25,7 +25,7 @@ public class QASYS_61_Registration {
         return new SetUp().setUpShop("prod", "AT");
     }
 
-    @Test(dataProvider = "route", enabled = false)
+    @Test(dataProvider = "route")
     public void registrationButtonLogin(String route) {
         open(route);
         mainPage.loginBtnInHeader().click();
