@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="QASYS_67_GrayButton" parallel="tests" thread-count="6">
+
+    <test name="QASYS_69_Registration">
+        <classes>
+            <class name="ATD.QASYS_67_GrayButton.QASYS_69_GrayButton">
+            </class>
+        </classes>
+    </test>
+</suite>
