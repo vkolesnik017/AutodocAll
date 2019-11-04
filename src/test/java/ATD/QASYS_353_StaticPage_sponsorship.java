@@ -34,7 +34,7 @@ public class QASYS_353_StaticPage_sponsorship {
         sponsorshipStaticPage.raceGallery().shouldBe(visible);
         sponsorshipStaticPage.mapText().shouldBe(visible);
         sponsorshipStaticPage.sendShipForm().shouldBe(visible);
-        sponsorshipStaticPage.submitShipDataButton().shouldBe(visible);
+        sponsorshipStaticPage.submitShipDataButton().click();
         sponsorshipStaticPage.emailError().shouldBe(visible);
         close();
     }
