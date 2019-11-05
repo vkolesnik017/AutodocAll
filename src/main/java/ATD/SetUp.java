@@ -7,9 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SetUp {
-//    private String shopFromJenkins = System.getenv("ShopFromJenkins");
-        private String shopFromJenkins = "none";
-
+    private String shopFromJenkins = System.getenv("ShopFromJenkins");
 
     public static void setUpBrowser(Boolean Selenoid, String browser, String browserVersion) {
         Configuration.browser = (browser);
@@ -28,6 +26,7 @@ public class SetUp {
 
     public Object[] setUpShop(String chooseTestOrProd, String shopFromTest) {
         String testOrProd = null;
+        System.out.println(shopFromJenkins);
         String shop;
         if (!shopFromJenkins.equals("none")) {
             shop = shopFromJenkins;
@@ -51,13 +50,19 @@ public class SetUp {
         return finalRouteList.toArray();
     }
 
-//    public Object[] setUpShopWithListParam(String chooseTestOrProd, String shopFromTest, String[] list){
-//        setUpShop(chooseTestOrProd, shopFromTest);
-//        List<String> finalList = new ArrayList<>();
-//        for (String listPars :list){
-//            finalList.add(shopFromTest+listPars);
-//        }
-//        return finalList.toArray();
-//    }
+    public Object[] setUpShopWithListParam(String chooseTestOrProd, String shopFromTest, String[] list) {
+        Object[] shop = setUpShop(chooseTestOrProd, shopFromTest);
+        List<String> shopList = new ArrayList<>();
+        List<String> finalList = new ArrayList<>();
+        for (Object shopPars : shop) {
+            shopList.add(String.valueOf(shopPars));
+        }
+        for (int i = 0; i < list.length; i++) {
+            for (int j = 0; j < shopList.size(); j++) {
+                finalList.add(shopList.get(j) + list[i]);
+            }
+        }
+        return finalList.toArray();
+    }
 
 }
