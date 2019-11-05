@@ -28,7 +28,7 @@ public class SetUp {
     public Object[] setUpShop(String chooseTestOrProd, String shopFromTest) {
         String testOrProd = null;
         String shop;
-        if (!shopFromJenkins.equals("null")) {
+        if (!(shopFromJenkins == null)) {
             shop = shopFromJenkins;
         } else {
             shop = shopFromTest;
