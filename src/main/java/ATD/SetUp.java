@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SetUp {
-    String shopFromJenkins = System.getenv("ShopFromJenkins");
+//    private String shopFromJenkins = System.getenv("ShopFromJenkins");
+        private String shopFromJenkins = "none";
+
 
     public static void setUpBrowser(Boolean Selenoid, String browser, String browserVersion) {
         Configuration.browser = (browser);
@@ -48,5 +50,14 @@ public class SetUp {
         }
         return finalRouteList.toArray();
     }
+
+//    public Object[] setUpShopWithListParam(String chooseTestOrProd, String shopFromTest, String[] list){
+//        setUpShop(chooseTestOrProd, shopFromTest);
+//        List<String> finalList = new ArrayList<>();
+//        for (String listPars :list){
+//            finalList.add(shopFromTest+listPars);
+//        }
+//        return finalList.toArray();
+//    }
 
 }
