@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SetUp {
+
     private String shopFromJenkins = System.getenv("ShopFromJenkins");
 
     public static void setUpBrowser(Boolean Selenoid, String browser, String browserVersion) {
@@ -26,9 +27,8 @@ public class SetUp {
 
     public Object[] setUpShop(String chooseTestOrProd, String shopFromTest) {
         String testOrProd = null;
-        System.out.println(shopFromJenkins);
         String shop;
-        if (!shopFromJenkins.equals("none")) {
+        if (!shopFromJenkins.equals("null")) {
             shop = shopFromJenkins;
         } else {
             shop = shopFromTest;
