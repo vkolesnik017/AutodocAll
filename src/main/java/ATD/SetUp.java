@@ -28,13 +28,13 @@ public class SetUp {
 
     public Object[] setUpShop(String chooseTestOrProd, String shopFromTest) {
         String testOrProd = null;
-        System.out.println(shopFromJenkins);
         String shop;
         if (!(shopFromJenkins == null)) {
             shop = shopFromJenkins;
         } else {
             shop = shopFromTest;
         }
+        System.out.println(shop);
         if (chooseTestOrProd.equalsIgnoreCase("test")) {
             testOrProd = "https://test.";
         } else if (chooseTestOrProd.equalsIgnoreCase("prod")) {
