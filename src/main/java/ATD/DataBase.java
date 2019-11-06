@@ -10,12 +10,12 @@ class DataBase {
     private String password = "24201901";
 
 
-    private Connection coonectionDB() {
+    private Connection coonectionDB(String nameDB) {
         Connection conn = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
             conn = DriverManager.getConnection(url, username, password);
-            System.out.println("Connection to autodoc DB succesfull!");
+            System.out.println("Connection to "+nameDB+" DB succesfull!");
         } catch (Exception ex) {
             System.out.println("Connection failed...");
         }
@@ -23,7 +23,7 @@ class DataBase {
     }
 
     List<String> getRouteForMain(String shop) throws SQLException {
-        Connection conn = coonectionDB();
+        Connection conn = coonectionDB("routes_atd");
         ArrayList<String> route = new ArrayList<>();
         String query = "SELECT " + shop + " FROM autodoc.routes_atd where id = 1";
         Statement statement = conn.createStatement();
@@ -37,5 +37,19 @@ class DataBase {
         statement.close();
         conn.close();
         return route;
+    }
+
+    String getCurrency(String shop) throws SQLException {
+        Connection conn = coonectionDB("currency");
+        String curency = null;
+        String query = "SELECT " + shop + " FROM autodoc.currency where id = 1";
+        Statement statement = conn.createStatement();
+        ResultSet resultSet = statement.executeQuery(query);
+        while (resultSet.next()) {
+            curency = resultSet.getString(1);
+        }
+        statement.close();
+        conn.close();
+        return curency;
     }
 }
