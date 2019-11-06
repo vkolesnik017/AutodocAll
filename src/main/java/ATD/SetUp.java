@@ -15,6 +15,7 @@ public class SetUp {
         Configuration.browserVersion = (browserVersion);
         Configuration.startMaximized = true;
         Configuration.holdBrowserOpen = false;
+        Configuration.timeout = 10000;
         if (Selenoid) {
             Configuration.remote = "http://192.168.99.100:4444/wd/hub";
 //            Configuration.driverManagerEnabled = false;
@@ -57,9 +58,9 @@ public class SetUp {
         for (Object shopPars : shop) {
             shopList.add(String.valueOf(shopPars));
         }
-        for (int i = 0; i < list.length; i++) {
-            for (int j = 0; j < shopList.size(); j++) {
-                finalList.add(shopList.get(j) + list[i]);
+        for (String aList : list) {
+            for (String aShopList : shopList) {
+                finalList.add(aShopList + aList);
             }
         }
         return finalList.toArray();
