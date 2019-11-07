@@ -11,7 +11,6 @@ import org.testng.annotations.Test;
 import static ATD.CommonMethods.closeCookiesFooterMessage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
 public class QASYS_313_StaticPage_contacts {
@@ -48,6 +47,5 @@ public class QASYS_313_StaticPage_contacts {
         contactStaticPage.submitNoOrderButton().click();
         contactStaticPage.noOrderEmailError().shouldBe(visible);
         contactStaticPage.noOrderDetailError().shouldBe(visible);
-        close();
     }
 }

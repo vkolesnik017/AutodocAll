@@ -10,8 +10,8 @@ import org.testng.annotations.Test;
 
 import static ATD.CommonMethods.closeCookiesFooterMessage;
 import static ATD.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
 public class QASYS_309_StaticPage_versand {
@@ -49,6 +49,31 @@ public class QASYS_309_StaticPage_versand {
         versandStaticPage.deliveryLink().shouldBe(visible);
         versandStaticPage.recommendationBlock().shouldBe(visible);
         versandStaticPage.checkUncheckCheckbox(versandStaticPage.deliveryCheckbox(), versandStaticPage.deliveryCheckboxClick());
-        close();
+        versandStaticPage.soDays().shouldHave(text("14"));
+        versandStaticPage.soDaysBig().shouldHave(text("200"));
+        versandStaticPage.soTime().shouldHave(text("14"));
+        versandStaticPage.soPrice1().shouldHave(text("0"));
+        versandStaticPage.soPrice2().shouldHave(text("2,99"));
+        versandStaticPage.soDays2().shouldHave(text("14"));
+        versandStaticPage.soDays3().shouldHave(text("200"));
+        versandStaticPage.soText().shouldBe(visible);
+        versandStaticPage.soReturnText().shouldBe(visible);
+        versandStaticPage.tyresDelivery().shouldBe(visible);
+        versandStaticPage.shippingBlock().shouldBe(visible);
+        versandStaticPage.tabUnfoldingButton().click();
+        versandStaticPage.fullTab1().shouldBe(visible);
+        versandStaticPage.shippingTab2().click();
+        versandStaticPage.countryBlock().shouldBe(visible);
+        versandStaticPage.chooseDeliveryTitle().shouldBe(visible);
+        versandStaticPage.checkUncheckCheckbox(versandStaticPage.glsCheckbox(), versandStaticPage.glsCheckboxClick());
+        versandStaticPage.checkUncheckCheckbox(versandStaticPage.dhlCheckbox(), versandStaticPage.dhlCheckboxClick());
+        versandStaticPage.checkUncheckCheckbox(versandStaticPage.noxCheckbox(), versandStaticPage.noxCheckboxClick());
+        versandStaticPage.checkUncheckCheckbox(versandStaticPage.dpdCheckbox(), versandStaticPage.dpdCheckboxClick());
+        versandStaticPage.checkUncheckCheckbox(versandStaticPage.pnordCheckbox(), versandStaticPage.pnordCheckboxClick());
+        versandStaticPage.chooseDeliveryInput().sendKeys("Test Delivery");
+        versandStaticPage.chooseDeliveryButton().click();
+        versandStaticPage.chooseDeliveryAnswerText().shouldHave(text("Danke für Ihre Antwort! Wir tun unser Bestes, um Ihnen Ersatzteile auf den bequemsten Weg zu liefern."));
+        versandStaticPage.chooseDeliveryBlock().shouldNotBe(visible);
+        versandStaticPage.chooseDeliveryInput().shouldNotBe(visible);
     }
 }

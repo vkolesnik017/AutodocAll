@@ -11,7 +11,6 @@ import org.testng.annotations.Test;
 import static ATD.CommonMethods.closeCookiesFooterMessage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
 public class QASYS_310_StaticPage_datenschutz {
@@ -36,6 +35,5 @@ public class QASYS_310_StaticPage_datenschutz {
         datenschutzPage.titlePage().shouldBe(visible);
         datenschutzPage.logo().shouldBe(visible);
         datenschutzPage.mainBlock().shouldBe(visible);
-        close();
     }
 }

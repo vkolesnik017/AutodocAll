@@ -75,7 +75,5 @@ public class QASYS_352_StaticPage_mobile_app {
         mobileAppStaticPage.googlePlayPageLogo().shouldBe(visible);
         WebDriverRunner.getWebDriver().close();
         switchTo().window(0);
-
-        close();
     }
 }

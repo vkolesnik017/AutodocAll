@@ -11,7 +11,6 @@ import org.testng.annotations.Test;
 import static ATD.CommonMethods.closeCookiesFooterMessage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
 public class QASYS_155_StaticPage_zahlung {
@@ -36,6 +35,5 @@ public class QASYS_155_StaticPage_zahlung {
         zahlungStaticPage.logo().shouldBe(visible);
         zahlungStaticPage.title().shouldBe(visible);
         zahlungStaticPage.checkMainBlock().shouldBe(visible);
-        close();
     }
 }
