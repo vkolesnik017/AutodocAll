@@ -24,7 +24,7 @@
                 <version>2.22.0</version>
                 <configuration>
                     <argLine>
-                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/1.9.4/aspectjweaver-1.9.4.jar"
                     </argLine>
                     <suiteXmlFiles>
                         <suiteXmlFile>${basedir}${TEST_SUITE}.xml</suiteXmlFile>

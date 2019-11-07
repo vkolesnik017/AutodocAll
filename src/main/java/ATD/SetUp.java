@@ -34,7 +34,6 @@ public class SetUp {
         } else {
             shop = shopFromTest;
         }
-        System.out.println(shop);
         if (chooseTestOrProd.equalsIgnoreCase("test")) {
             testOrProd = "https://test.";
         } else if (chooseTestOrProd.equalsIgnoreCase("prod")) {
