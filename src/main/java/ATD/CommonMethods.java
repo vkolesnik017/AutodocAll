@@ -1,18 +1,11 @@
 package ATD;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Configuration;
 import org.openqa.selenium.By;
-import org.openqa.selenium.remote.DesiredCapabilities;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
-import static com.codeborne.selenide.Condition.and;
-import static com.codeborne.selenide.Condition.enabled;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 
 public class CommonMethods {
@@ -31,7 +24,7 @@ public class CommonMethods {
     }
 
     public static String getRandomNumber() {
-        int n = (int) Math.round(Math.random()*1000000);
+        int n = (int) Math.round(Math.random() * 1000000);
         return String.valueOf(n);
     }
 

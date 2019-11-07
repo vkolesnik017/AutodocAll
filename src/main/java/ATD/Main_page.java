@@ -17,11 +17,11 @@ public class Main_page {
         return $(byCssSelector(".sigin_btn>a"));
     }
 
-    SelenideElement searchBar() {
+    private SelenideElement searchBar() {
         return $(byId("search"));
     }
 
-    SelenideElement searchButton() {
+    private SelenideElement searchButton() {
         return $(byCssSelector("#search_form>a"));
     }
 
@@ -29,7 +29,7 @@ public class Main_page {
         return  $(byCssSelector(".logout_but"));
     }
 
-    SelenideElement cartIcon() {
+    private SelenideElement cartIcon() {
         return $(byCssSelector(".header-cart__count"));
     }
 
@@ -82,7 +82,7 @@ public class Main_page {
         return $(byXpath("//*[@class='popup ']//*[contains(text(),'Um Ihr Passwort zu ändern')]/..//a"));
     }
 
-    public Main_page fillRequiredFieldsForRegistration(String firstName, String secondName, String mail) {
+    public Main_page fillRequiredFieldsForRegistration(String firstName, String secondName, String mail) { //TODO вынести локаторы
         $(By.xpath("//input[@id='form_rVorname']")).setValue(firstName);
         $(By.xpath("//input[@id='rName']")).setValue(secondName);
         $(By.xpath("//input[@id='email']")).setValue(mail);
@@ -90,7 +90,7 @@ public class Main_page {
         return this;
     }
 
-    public Profile_page fillPasswordFieldsAndClickRegistration() {
+    public Profile_page fillPasswordFieldsAndClickRegistration() { //TODO вынести локаторы
         $(By.xpath("//input[@name='new_pass']")).setValue(password);
         $(By.xpath("//input[@name='new_pass_confirm']")).setValue(password);
         $(By.xpath("//div[@class='button register_submit fast']/a")).click();
