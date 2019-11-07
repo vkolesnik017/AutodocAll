@@ -85,4 +85,17 @@
         <aspectj.version>1.8.5</aspectj.version>
     </properties>
 
+    <reporting>
+        <excludeDefaults>true</excludeDefaults>
+        <plugins>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <configuration>
+                    <reportVersion>2.6.0</reportVersion>
+                </configuration>
+                <version>2.9</version>
+            </plugin>
+        </plugins>
+    </reporting>
 </project>
