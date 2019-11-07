@@ -11,7 +11,6 @@ import org.testng.annotations.Test;
 import static ATD.CommonMethods.closeCookiesFooterMessage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
 public class QASYS_360_StaticPage_vacancies {
@@ -37,6 +36,5 @@ public class QASYS_360_StaticPage_vacancies {
         vacanciesStaticPage.subtitle().shouldBe(visible);
         vacanciesStaticPage.vacancyPositions().shouldBe(visible);
         vacanciesStaticPage.checkVacanciesPDF();
-        close();
     }
 }

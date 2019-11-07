@@ -12,7 +12,6 @@ import static ATD.CommonMethods.clickable;
 import static ATD.CommonMethods.closeCookiesFooterMessage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
 public class QASYS_314_StaticPage_agb {
@@ -42,6 +41,5 @@ public class QASYS_314_StaticPage_agb {
         agbStaticPage.klarnaLink().shouldBe(clickable);
         agbStaticPage.klarnaLink2().shouldBe(clickable);
         agbStaticPage.euLink().shouldBe(clickable);
-        close();
     }
 }
