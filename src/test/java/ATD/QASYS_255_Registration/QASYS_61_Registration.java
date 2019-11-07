@@ -23,7 +23,7 @@ public class QASYS_61_Registration {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() {
-        return new SetUp().setUpShop("prod", "AT");
+        return new SetUp().setUpShop("prod", "DE");
     }
 
     @Test(dataProvider = "route")
