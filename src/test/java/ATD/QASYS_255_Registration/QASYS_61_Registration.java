@@ -2,6 +2,8 @@ package ATD.QASYS_255_Registration;
 
 import ATD.*;
 import com.codeborne.selenide.Condition;
+import io.qameta.allure.Flaky;
+import io.qameta.allure.Owner;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -26,6 +28,8 @@ public class QASYS_61_Registration {
         return new SetUp().setUpShop("prod", "DE");
     }
 
+    @Flaky
+    @Owner(value = "alex_qa")
     @Test(dataProvider = "route")
     public void registrationButtonLogin(String route) {
         open(route);
@@ -37,6 +41,8 @@ public class QASYS_61_Registration {
         new Profile_page().nameOfClient().shouldHave(Condition.text(firstName));
     }
 
+    @Flaky
+    @Owner(value = "alex_qa")
     @Test(dataProvider = "route")
     public void registrationInBasket(String route) {
         open(route);

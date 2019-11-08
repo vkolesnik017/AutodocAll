@@ -4,6 +4,8 @@ package ATD.QASYS_252_StaticPage;
 import ATD.Impressum_static_page;
 import ATD.Main_page;
 import ATD.SetUp;
+import io.qameta.allure.Flaky;
+import io.qameta.allure.Owner;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -28,6 +30,8 @@ public class QASYS_316_StaticPage_impressum {
         return new SetUp().setUpShop("prod", "DE");
     }
 
+    @Flaky
+    @Owner(value = "Oleg Romanyuta")
     @Test(dataProvider = "route")
     public void checkImpressumPageElements(String route) {
         open(route);

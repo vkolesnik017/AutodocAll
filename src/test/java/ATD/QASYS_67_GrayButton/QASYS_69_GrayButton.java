@@ -6,7 +6,8 @@ import ATD.Search_page;
 import ATD.SetUp;
 import AWS.Login_aws;
 import AWS.WishlistReminderAvailability_aws;
-import io.qameta.allure.Step;
+import io.qameta.allure.Flaky;
+import io.qameta.allure.Owner;
 import mailinator.Mailinator;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -38,6 +39,8 @@ public class QASYS_69_GrayButton {
         return new SetUp().setUpShop("prod", "DE");
     }
 
+    @Flaky
+    @Owner(value = "Evlentiev")
     @Test(dataProvider = "route")
     public void testGrayButton(String route) {
         new Login_aws().loginInAws();
@@ -65,7 +68,6 @@ public class QASYS_69_GrayButton {
         open(wishlistReminderAvailability.urlWithParameters);
         int afterCountRequests = Integer.parseInt(wishlistReminderAvailability.numberOfRequestsInProductByHisId(idProduct).text());
         assertEquals(afterCountRequests, beforeCountRequests + 2);
-        close();
     }
 
 }
