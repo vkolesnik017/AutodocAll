@@ -6,6 +6,7 @@ import ATD.Search_page;
 import ATD.SetUp;
 import AWS.Login_aws;
 import AWS.WishlistReminderAvailability_aws;
+import io.qameta.allure.Step;
 import mailinator.Mailinator;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
