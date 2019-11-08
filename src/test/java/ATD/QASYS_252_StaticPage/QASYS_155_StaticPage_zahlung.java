@@ -29,9 +29,9 @@ public class QASYS_155_StaticPage_zahlung {
         return new SetUp().setUpShop("prod", "DE");
     }
 
-    @Flaky
     @Owner(value = "Oleg Romanyuta")
     @Test(dataProvider = "route")
+    @Flaky
     public void checkZahlungPageElements(String route) {
         open(route);
         closeCookiesFooterMessage();

@@ -30,9 +30,9 @@ public class QASYS_314_StaticPage_agb {
         return new SetUp().setUpShop("prod", "DE");
     }
 
-    @Flaky
     @Owner(value = "Oleg Romanyuta")
     @Test(dataProvider = "route")
+    @Flaky
     public void checkAgbPageElements(String route) {
         open(route);
         closeCookiesFooterMessage();

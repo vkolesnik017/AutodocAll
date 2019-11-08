@@ -38,9 +38,9 @@ public class QASYS_69_GrayButton {
         return new SetUp().setUpShop("prod", "DE");
     }
 
-    @Flaky
     @Owner(value = "Evlentiev")
     @Test(dataProvider = "route")
+    @Flaky
     public void testGrayButton(String route) {
         new Login_aws().loginInAws();
         open(wishlistReminderAvailability.urlWithParameters);

@@ -28,9 +28,9 @@ public class QASYS_61_Registration {
         return new SetUp().setUpShop("prod", "DE");
     }
 
-    @Flaky
     @Owner(value = "alex_qa")
     @Test(dataProvider = "route")
+    @Flaky
     public void registrationButtonLogin(String route) {
         open(route);
         mainPage.loginBtnInHeader().click();
@@ -41,9 +41,9 @@ public class QASYS_61_Registration {
         new Profile_page().nameOfClient().shouldHave(Condition.text(firstName));
     }
 
-    @Flaky
     @Owner(value = "alex_qa")
     @Test(dataProvider = "route")
+    @Flaky
     public void registrationInBasket(String route) {
         open(route);
         mainPage.useSearch(ridex_82B0896);

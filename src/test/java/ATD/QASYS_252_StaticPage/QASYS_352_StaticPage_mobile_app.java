@@ -31,9 +31,9 @@ public class QASYS_352_StaticPage_mobile_app {
         return new SetUp().setUpShop("prod", "DE");
     }
 
-    @Flaky
     @Owner(value = "Oleg Romanyuta")
     @Test(dataProvider = "route")
+    @Flaky
     public void checkMobileAppPageElements(String route) {
         open(route);
         closeCookiesFooterMessage();

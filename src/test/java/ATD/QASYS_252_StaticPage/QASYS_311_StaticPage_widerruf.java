@@ -30,9 +30,9 @@ public class QASYS_311_StaticPage_widerruf {
         return new SetUp().setUpShop("prod", "DE");
     }
 
-    @Flaky
     @Owner(value = "Oleg Romanyuta")
     @Test(dataProvider = "route")
+    @Flaky
     public void checkWiderrufPageElements(String route) {
         open(route);
         closeCookiesFooterMessage();

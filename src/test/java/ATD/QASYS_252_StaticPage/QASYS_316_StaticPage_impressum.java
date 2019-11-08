@@ -30,9 +30,9 @@ public class QASYS_316_StaticPage_impressum {
         return new SetUp().setUpShop("prod", "DE");
     }
 
-    @Flaky
     @Owner(value = "Oleg Romanyuta")
     @Test(dataProvider = "route")
+    @Flaky
     public void checkImpressumPageElements(String route) {
         open(route);
         closeCookiesFooterMessage();

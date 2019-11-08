@@ -30,9 +30,9 @@ public class QASYS_309_StaticPage_versand {
         return new SetUp().setUpShop("prod", "DE");
     }
 
-    @Flaky
     @Owner(value = "Oleg Romanyuta")
     @Test(dataProvider = "route")
+    @Flaky
     public void checkVersandPageElements(String route) {
         open(route);
         closeCookiesFooterMessage();

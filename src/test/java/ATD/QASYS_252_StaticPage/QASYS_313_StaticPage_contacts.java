@@ -29,9 +29,9 @@ public class QASYS_313_StaticPage_contacts {
         return new SetUp().setUpShop("prod", "DE");
     }
 
-    @Flaky
     @Owner(value = "Oleg Romanyuta")
     @Test(dataProvider = "route")
+    @Flaky
     public void checkContactsPageElements(String route) {
         open(route);
         closeCookiesFooterMessage();

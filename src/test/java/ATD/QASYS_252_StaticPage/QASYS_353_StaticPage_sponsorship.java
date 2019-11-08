@@ -29,9 +29,9 @@ public class QASYS_353_StaticPage_sponsorship {
         return new SetUp().setUpShop("prod", "DE");
     }
 
-    @Flaky
     @Owner(value = "Oleg Romanyuta")
     @Test(dataProvider = "route")
+    @Flaky
     public void checkSponsorshipPgeElements(String route) {
         open(route);
         closeCookiesFooterMessage();

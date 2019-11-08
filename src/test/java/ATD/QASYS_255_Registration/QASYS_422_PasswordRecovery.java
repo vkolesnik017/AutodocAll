@@ -67,9 +67,9 @@ public class QASYS_422_PasswordRecovery {
         profile_page.nameOfClient().shouldBe(visible);
     }
 
-    @Flaky
     @Owner(value = "Evlentiev")
     @Test(dataProvider = "route")
+    @Flaky
     public void testPasswordRecoveryFromCart(String route) {
         newPassword = getRandomNumber();
         open(route);

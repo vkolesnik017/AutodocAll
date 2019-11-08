@@ -30,9 +30,9 @@ public class QASYS_356_StaticPage_partnership {
         return new SetUp().setUpShop("prod", "DE");
     }
 
-    @Flaky
     @Owner(value = "Oleg Romanyuta")
     @Test(dataProvider = "route")
+    @Flaky
     public void checkPartnershipPageElements(String route) {
         open(route);
         closeCookiesFooterMessage();

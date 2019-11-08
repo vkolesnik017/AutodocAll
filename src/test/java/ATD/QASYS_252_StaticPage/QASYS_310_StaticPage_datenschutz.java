@@ -29,9 +29,9 @@ public class QASYS_310_StaticPage_datenschutz {
         return new SetUp().setUpShop("prod", "DE");
     }
 
-    @Flaky
     @Owner(value = "Oleg Romanyuta")
     @Test(dataProvider = "route")
+    @Flaky
     public void checkDatenschutzPageElements(String route) {
         open(route);
         closeCookiesFooterMessage();

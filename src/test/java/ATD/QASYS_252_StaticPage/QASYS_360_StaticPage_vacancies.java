@@ -29,9 +29,9 @@ public class QASYS_360_StaticPage_vacancies {
         return new SetUp().setUpShop("prod", "DE");
     }
 
-    @Flaky
     @Owner(value = "Oleg Romanyuta")
     @Test(dataProvider = "route")
+    @Flaky
     public void checkVacanciesPageElements(String route) {
         open(route);
         closeCookiesFooterMessage();
