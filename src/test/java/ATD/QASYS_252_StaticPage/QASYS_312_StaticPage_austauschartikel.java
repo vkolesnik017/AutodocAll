@@ -52,14 +52,14 @@ public class QASYS_312_StaticPage_austauschartikel {
         austauschartikelStaticPage.pfandAllCategories().shouldHave(size(34));
         austauschartikelStaticPage.allCategoriesButton().click();
         austauschartikelStaticPage.requirmentsBlock().shouldBe(visible);
+        austauschartikelStaticPage.plzSearchButton().click();
+        austauschartikelStaticPage.popupError().shouldBe(visible);
+        austauschartikelStaticPage.closePopupButton().click();
 
         //Check opened category
         austauschartikelStaticPage.randomCategory().click();
         austauschartikelStaticPage.randomCategoryTitle().shouldHave(text(austauschartikelStaticPage.openedCategoryTitle().getText()));
         austauschartikelStaticPage.openedCategoryDescription().shouldBe(visible);
         austauschartikelStaticPage.openedCategoryTitle().click();
-
-        austauschartikelStaticPage.plzSearchButton().click();
-        austauschartikelStaticPage.popupErrorText().shouldBe(visible);
     }
 }

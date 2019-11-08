@@ -66,5 +66,7 @@ public class Austauschartikel_static_page {
 
     public SelenideElement plzSearchButton() { return $(By.xpath("//*[@class='row button']/a")); }
 
-    public SelenideElement popupErrorText() { return $(By.xpath("//*[@class='txt ']")); }
+    public SelenideElement popupError() { return $(By.id("popup_update")); }
+
+    public SelenideElement closePopupButton() { return $(By.cssSelector(".buttons-inner>a")); }
 }
