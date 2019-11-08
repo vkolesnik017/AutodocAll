@@ -16,7 +16,6 @@ import org.testng.annotations.Test;
 import static ATD.CommonMethods.closeCookiesFooterMessage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 import static org.testng.Assert.assertEquals;
 
