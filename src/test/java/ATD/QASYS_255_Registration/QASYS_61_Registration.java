@@ -47,8 +47,7 @@ public class QASYS_61_Registration {
     public void registrationInBasket(String route) {
         open(route);
         mainPage.useSearch(ridex_82B0896);
-        search_page.buyButton().click();
-        search_page.cartClick();
+        search_page.addFirstProductAndGoToCart();
         new Cart_page().nextButtonClick();
         String mail = mailRandom();
         cartAccount_page.registrationFormEmailInput().setValue(mail);
