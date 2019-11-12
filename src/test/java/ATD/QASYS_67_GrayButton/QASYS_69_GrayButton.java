@@ -6,7 +6,8 @@ import ATD.Search_page;
 import ATD.SetUp;
 import AWS.Login_aws;
 import AWS.WishlistReminderAvailability_aws;
-import io.qameta.allure.Step;
+import io.qameta.allure.Flaky;
+import io.qameta.allure.Owner;
 import mailinator.Mailinator;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -15,7 +16,6 @@ import org.testng.annotations.Test;
 import static ATD.CommonMethods.closeCookiesFooterMessage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 import static org.testng.Assert.assertEquals;
 
@@ -38,7 +38,9 @@ public class QASYS_69_GrayButton {
         return new SetUp().setUpShop("prod", "DE");
     }
 
+    @Owner(value = "Evlentiev")
     @Test(dataProvider = "route")
+    @Flaky
     public void testGrayButton(String route) {
         new Login_aws().loginInAws();
         open(wishlistReminderAvailability.urlWithParameters);
@@ -65,7 +67,6 @@ public class QASYS_69_GrayButton {
         open(wishlistReminderAvailability.urlWithParameters);
         int afterCountRequests = Integer.parseInt(wishlistReminderAvailability.numberOfRequestsInProductByHisId(idProduct).text());
         assertEquals(afterCountRequests, beforeCountRequests + 2);
-        close();
     }
 
 }

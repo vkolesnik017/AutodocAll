@@ -2,6 +2,8 @@ package ATD.QASYS_255_Registration;
 
 import ATD.*;
 import com.codeborne.selenide.Condition;
+import io.qameta.allure.Flaky;
+import io.qameta.allure.Owner;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -26,7 +28,9 @@ public class QASYS_61_Registration {
         return new SetUp().setUpShop("prod", "DE");
     }
 
+    @Owner(value = "alex_qa")
     @Test(dataProvider = "route")
+    @Flaky
     public void registrationButtonLogin(String route) {
         open(route);
         mainPage.loginBtnInHeader().click();
@@ -37,12 +41,13 @@ public class QASYS_61_Registration {
         new Profile_page().nameOfClient().shouldHave(Condition.text(firstName));
     }
 
+    @Owner(value = "alex_qa")
     @Test(dataProvider = "route")
+    @Flaky
     public void registrationInBasket(String route) {
         open(route);
         mainPage.useSearch(ridex_82B0896);
-        search_page.buyButton().click();
-        search_page.cartClick();
+        search_page.addFirstProductAndGoToCart();
         new Cart_page().nextButtonClick();
         String mail = mailRandom();
         cartAccount_page.registrationFormEmailInput().setValue(mail);

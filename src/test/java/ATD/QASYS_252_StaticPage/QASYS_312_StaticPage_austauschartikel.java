@@ -4,6 +4,8 @@ package ATD.QASYS_252_StaticPage;
 import ATD.Austauschartikel_static_page;
 import ATD.Main_page;
 import ATD.SetUp;
+import io.qameta.allure.Flaky;
+import io.qameta.allure.Owner;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -29,7 +31,9 @@ public class QASYS_312_StaticPage_austauschartikel {
         return new SetUp().setUpShop("prod", "DE");
     }
 
+    @Owner(value = "Oleg Romanyuta")
     @Test(dataProvider = "route")
+    @Flaky
     public void checkAustauschartikelPageElements(String route) {
         open(route);
         closeCookiesFooterMessage();

@@ -4,6 +4,8 @@ package ATD.QASYS_252_StaticPage;
 import ATD.Main_page;
 import ATD.Partnership_static_page;
 import ATD.SetUp;
+import io.qameta.allure.Flaky;
+import io.qameta.allure.Owner;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -28,7 +30,9 @@ public class QASYS_356_StaticPage_partnership {
         return new SetUp().setUpShop("prod", "DE");
     }
 
+    @Owner(value = "Oleg Romanyuta")
     @Test(dataProvider = "route")
+    @Flaky
     public void checkPartnershipPageElements(String route) {
         open(route);
         closeCookiesFooterMessage();
