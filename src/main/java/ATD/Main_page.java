@@ -29,7 +29,7 @@ public class Main_page {
         return  $(byCssSelector(".logout_but"));
     }
 
-    private SelenideElement cartIcon() {
+    SelenideElement cartIcon() {
         return $(byCssSelector(".header-cart__count"));
     }
 
@@ -42,6 +42,16 @@ public class Main_page {
         searchBar().setValue(searchArticle);
         searchButton().click();
         return page(Search_page.class);
+    }
+
+    // Menu in header
+    SelenideElement tiresTab() {
+        return $(byCssSelector("[data-ga-action='23208']"));
+    }
+
+    public Tyres_page clickTiresTab() {
+        tiresTab().click();
+        return page(Tyres_page.class);
     }
 
     // Login popup

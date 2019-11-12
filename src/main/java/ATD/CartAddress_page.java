@@ -3,6 +3,7 @@ package ATD;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
+import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.page;
 
@@ -14,6 +15,12 @@ public class CartAddress_page {
     }
 
     public SelenideElement nextButton() {
-        return $(By.xpath("//div[@class='button-continue address-continue']/a"));
+        return $(byCssSelector(".address-continue>a"));
     }
+
+    public CartPayments_page nextBtnClick() {
+        nextButton().click();
+        return page(CartPayments_page.class);
+    }
+
 }

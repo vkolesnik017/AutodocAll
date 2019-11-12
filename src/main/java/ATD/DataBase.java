@@ -4,7 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-class DataBase {
+public class DataBase {
     private String url = "jdbc:mysql://10.10.31.145:3306/autodoc?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     private String username = "alexeym";
     private String password = "24201901";
@@ -39,7 +39,7 @@ class DataBase {
         return route;
     }
 
-    String getCurrency(String shop) throws SQLException {
+    public String getCurrency(String shop) throws SQLException {
         Connection conn = coonectionDB("currency");
         String curency = null;
         String query = "SELECT " + shop + " FROM autodoc.currency where id = 1";

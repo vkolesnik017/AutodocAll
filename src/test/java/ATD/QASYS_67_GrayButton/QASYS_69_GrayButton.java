@@ -62,8 +62,8 @@ public class QASYS_69_GrayButton {
         product_page.sendButtonInPopUpOfGrayBtn().click();
         product_page.closeSuccessPopUpOfGrayBtn().click();
         mailinator.openEmail(email);
-        mailinator.letter(1).shouldHave(text("moments ago")).shouldHave(text("Wir bearbeiten"));
-        mailinator.letter(2).shouldHave(text("moments ago")).shouldHave(text("Wir bearbeiten"));
+        mailinator.letterInfo(1).shouldHave(text("moments ago")).shouldHave(text("Wir bearbeiten"));
+        mailinator.letterInfo(2).shouldHave(text("moments ago")).shouldHave(text("Wir bearbeiten"));
         open(wishlistReminderAvailability.urlWithParameters);
         int afterCountRequests = Integer.parseInt(wishlistReminderAvailability.numberOfRequestsInProductByHisId(idProduct).text());
         assertEquals(afterCountRequests, beforeCountRequests + 2);

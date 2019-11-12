@@ -52,7 +52,7 @@ public class QASYS_61_Registration {
         String mail = mailRandom();
         cartAccount_page.registrationFormEmailInput().setValue(mail);
         cartAccount_page.registrationFormPasswordInput().setValue(password);
-        cartAccount_page.registrationFormNextButtonClick();
+        cartAccount_page.registrationFormNextBtnClick();
         cartAddress_page.nextButton().shouldBe(Condition.visible);
         cartAddress_page.logoClick();
         mainPage.logoutButton().click();
