@@ -1,12 +1,15 @@
 package ATD;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
 import java.util.Random;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.executeJavaScript;
+import static org.testng.Assert.assertEquals;
 
 public class CommonMethods {
 
@@ -21,6 +24,11 @@ public class CommonMethods {
         } catch (Exception e) {
             System.out.println("Cookies block doesn't appear");
         }
+    }
+
+    public static String getCurrentShopFromJSVarInHTML() {
+        String currentShop = executeJavaScript("return $siteSettings.lang");
+        return currentShop.toUpperCase();
     }
 
     public static String getRandomNumber() {
@@ -44,6 +52,16 @@ public class CommonMethods {
         Random randomGenerator = new Random();
         int random = randomGenerator.nextInt();
         return "autotestMail" + random + "@test.com";
+    }
+
+    public static void getCurrencyAndVerify(SelenideElement currencyLocator, String nameLocator, String shop, String expectedCurrency) {
+        String actualCurrency;
+        if (shop.equals("EN")) {
+            actualCurrency = currencyLocator.getText().split("\\s")[0];
+        } else {
+            actualCurrency = currencyLocator.getText().split("\\s")[1];
+        }
+        assertEquals(actualCurrency, expectedCurrency, "Currency in " + nameLocator);
     }
 
     //Checks element clickability
