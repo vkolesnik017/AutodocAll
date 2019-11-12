@@ -60,7 +60,7 @@ public class SetUp {
         }
         for (String aList : list) {
             for (String aShopList : shopList) {
-                finalList.add(aShopList + aList);
+                finalList.add(aShopList + "_" + aList);
             }
         }
         return finalList.toArray();
