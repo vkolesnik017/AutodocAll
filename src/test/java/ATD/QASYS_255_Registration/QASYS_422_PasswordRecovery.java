@@ -49,7 +49,7 @@ public class QASYS_422_PasswordRecovery {
         main_page.sendBtnInPasswordRecoveryPopUp().click();
         main_page.closePopupMessageSentForChangePassword().click();
         main_page.closePopupMessageSentForChangePassword().shouldBe(not(visible));
-        mailinator.openEmail(PasswordRecoveryFromHeader).letter(1).shouldHave(text("moments ago")).shouldHave(text("neues Passwort"));
+        mailinator.openEmail(PasswordRecoveryFromHeader).letterInfo(1).shouldHave(text("moments ago")).shouldHave(text("neues Passwort"));
         mailinator.openLetter(1)
                 .clickLinkRecoveryPasswordInLetter()
                 .fillPasswordFieldsAndClickSubmit(newPassword)
@@ -65,6 +65,13 @@ public class QASYS_422_PasswordRecovery {
         main_page.passwordInputInLoginPopup().setValue(newPassword);
         main_page.loginBtnInPopUp().click();
         profile_page.nameOfClient().shouldBe(visible);
+        // change password ro default
+        profile_page.settingsTabBtn().click();
+        profile_page.oldPasswordFiled().setValue(newPassword);
+        profile_page.newPasswordField().setValue(password);
+        profile_page.newPasswordConfirmField().setValue(password);
+        profile_page.changePasswordBtn().click();
+        profile_page.closeSuccessfulPasswordChangePopup().shouldBe(visible);
     }
 
     @Owner(value = "Evlentiev")
@@ -81,7 +88,7 @@ public class QASYS_422_PasswordRecovery {
         cartAccount_page.sendBtnInPasswordRecoveryPopUp().click();
         cartAccount_page.closePopupMessageSentForChangePassword().click();
         cartAccount_page.closePopupMessageSentForChangePassword().shouldBe(not(visible));
-        mailinator.openEmail(PasswordRecoveryFromCart).letter(1).shouldHave(text("moments ago")).shouldHave(text("neues Passwort"));
+        mailinator.openEmail(PasswordRecoveryFromCart).letterInfo(1).shouldHave(text("moments ago")).shouldHave(text("neues Passwort"));
         mailinator.openLetter(1)
                 .clickLinkRecoveryPasswordInLetter()
                 .fillPasswordFieldsAndClickSubmit(newPassword)
@@ -97,10 +104,7 @@ public class QASYS_422_PasswordRecovery {
         main_page.passwordInputInLoginPopup().setValue(newPassword);
         main_page.loginBtnInPopUp().click();
         profile_page.nameOfClient().shouldBe(visible);
-    }
-
-    @AfterMethod
-    private void changePasswordToDefault() {
+        // change password ro default
         profile_page.settingsTabBtn().click();
         profile_page.oldPasswordFiled().setValue(newPassword);
         profile_page.newPasswordField().setValue(password);
