@@ -1,15 +1,18 @@
 package ATD;
 
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.ex.ElementNotFound;
+import com.codeborne.selenide.ex.UIAssertionError;
+import io.qameta.allure.Step;
 
-import static com.codeborne.selenide.Selectors.byCssSelector;
-import static com.codeborne.selenide.Selectors.byId;
-import static com.codeborne.selenide.Selectors.byXpath;
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.page;
 
 public class Product_page {
 
+  @Step
   public Cart_page cartClick() {
     new Main_page().cartClick();
     return page(Cart_page.class);
@@ -23,12 +26,36 @@ public class Product_page {
     return $(byCssSelector(".product-button>a"));
   }
 
-  public SelenideElement closeBtnOfPopupOtherCategory() {
+  SelenideElement closeBtnOfPopupOtherCategory() {
     return $(byCssSelector(".popup-other-cat__close"));
   }
 
   public SelenideElement grayButton() {
     return $(byCssSelector(".button.not_active>a"));
+  }
+
+  @Step
+  public Product_page addProductToCart() {
+    buyButton().click();
+    closePopupOtherCategoryIfYes();
+    try {
+      cartIcon().hover();
+      firstProductPriceInPopupOfCart().shouldBe(visible);
+    } catch (UIAssertionError e) {
+      buyButton().click();
+      firstProductPriceInPopupOfCart().shouldBe(visible);
+    }
+    return this;
+  }
+
+  @Step
+  public Product_page closePopupOtherCategoryIfYes() {
+    try {
+      closeBtnOfPopupOtherCategory().waitUntil(visible, 2500);
+      closeBtnOfPopupOtherCategory().click();
+    } catch (ElementNotFound e) {
+    }
+    return this;
   }
 
   // locators of prices with Currencies
