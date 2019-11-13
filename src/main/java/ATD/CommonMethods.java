@@ -3,12 +3,15 @@ package ATD;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 
 import java.util.Random;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.back;
 import static com.codeborne.selenide.Selenide.executeJavaScript;
+import static com.codeborne.selenide.WebDriverRunner.url;
 import static org.testng.Assert.assertEquals;
 
 public class CommonMethods {
@@ -66,4 +69,11 @@ public class CommonMethods {
 
     //Checks element clickability
     public static Condition clickable = and("can be clicked", visible, enabled);
+
+    //Method checking follow url
+    public void checkingUrl( String expectedUrl){
+        String actualUrl = url();
+        Assert.assertEquals(actualUrl, expectedUrl);
+        back();
+    }
 }

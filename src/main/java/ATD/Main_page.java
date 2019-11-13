@@ -25,8 +25,8 @@ public class Main_page {
         return $(byCssSelector("#search_form>a"));
     }
 
-    public SelenideElement logoutButton(){
-        return  $(byCssSelector(".logout_but"));
+    public SelenideElement logoutButton() {
+        return $(byCssSelector(".logout_but"));
     }
 
     SelenideElement cartIcon() {
@@ -108,38 +108,14 @@ public class Main_page {
     }
 
     // Footer
-    SelenideElement footerForm() {
-        return $(By.xpath("//footer"));
+    public SelenideElement footerForm() {
+        return $(By.xpath("//div[@id='footer']"));
     }
 
-    public Contact_static_page clickContact() {
-        $(By.xpath("//*[@class='footer__links']/div[3]/ul/li[3]/a")).click();
-        return page(Contact_static_page.class);
-    }
-
-    public Zahlung_static_page clickZahlung() {
-        $(By.xpath("//*[@class='footer__links']/div[3]/ul/li[1]/a")).click();
-        return page(Zahlung_static_page.class);
-    }
-
-    public Datenschutz_page clickDatenschutz() {
-        $(By.xpath("//*[@class='footer__links']/div[2]/ul/li[7]/a")).click();
-        return page(Datenschutz_page.class);
-    }
-
-    public Versand_static_page clickVersand() {
-        $(By.xpath("//*[@class='footer__links']/div[3]/ul/li[2]/a")).click();
-        return page(Versand_static_page.class);
-    }
-
-    public Widerruf_static_page clickWiderruf() {
-        $(By.xpath("//*[@class='footer__links']/div[2]/ul/li[6]/a")).click();
-        return page(Widerruf_static_page.class);
-    }
-
-    public Vacancies_static_page clickVacancies() {
-        $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[3]/a")).click();
-        return page(Vacancies_static_page.class);
+    //ÜBER AUTODOC
+    public About_us_page clickAboutUs() {
+        $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[2]/a")).click();
+        return page(About_us_page.class);
     }
 
     public Impressum_static_page clickImpressum() {
@@ -147,19 +123,14 @@ public class Main_page {
         return page(Impressum_static_page.class);
     }
 
-    public Agb_static_page clickAgb() {
-        $(By.xpath("//*[@class='footer__links']/div[2]/ul/li[5]/a")).click();
-        return page(Agb_static_page.class);
+    public Vacancies_static_page clickVacancies() {
+        $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[3]/a")).click();
+        return page(Vacancies_static_page.class);
     }
 
-    public MobileApp_static_page clickMobileApp() {
-        $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[8]/a")).click();
-        return page(MobileApp_static_page.class);
-    }
-
-    public Partnership_static_page clickPartnership() {
-        $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[6]/a")).click();
-        return page(Partnership_static_page.class);
+    public Bonusprogramm_page clickBonusprogramm() {
+        $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[5]/a")).click();
+        return page(Bonusprogramm_page.class);
     }
 
     public Sponsorship_static_page clickSponsorship() {
@@ -167,8 +138,90 @@ public class Main_page {
         return page(Sponsorship_static_page.class);
     }
 
+    public Partnership_static_page clickPartnership() {
+        $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[6]/a")).click();
+        return page(Partnership_static_page.class);
+    }
+
+    public Presse_page clickPresse() {
+        $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[8]/a")).click();
+        return page(Presse_page.class);
+    }
+
+    public MobileApp_static_page clickMobileApp() {
+        $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[8]/a")).click();
+        return page(MobileApp_static_page.class);
+    }
+
+    //HILFE & SUPPORT
+    public AutodocClub_page clickAutodocClub() {
+        $(By.xpath("//*[@class='footer__links']/div[2]/ul/li[5]/a")).click();
+        return page(AutodocClub_page.class);
+    }
+
+    public Blog_page clickBlog() {
+        $(By.xpath("//*[@class='footer__links']/div[2]/ul/li[5]/a")).click();
+        return page(Blog_page.class);
+    }
+
+    public VideoTutorials_page clickVideoTutorials() {
+        $(By.xpath("//*[@class='footer__links']/div[2]/ul/li[5]/a")).click();
+        return page(VideoTutorials_page.class);
+    }
+
+    public Altolentsorgung_page clickAltolentsorgung() {
+        $(By.xpath("//*[@class='footer__links']/div[2]/ul/li[5]/a")).click();
+        return page(Altolentsorgung_page.class);
+    }
+
+    public Agb_static_page clickAgb() {
+        $(By.xpath("//*[@class='footer__links']/div[2]/ul/li[5]/a")).click();
+        return page(Agb_static_page.class);
+    }
+
+    public Widerruf_static_page clickWiderruf() {
+        $(By.xpath("//*[@class='footer__links']/div[2]/ul/li[6]/a")).click();
+        return page(Widerruf_static_page.class);
+    }
+
+    public Datenschutz_page clickDatenschutz() {
+        $(By.xpath("//*[@class='footer__links']/div[2]/ul/li[7]/a")).click();
+        return page(Datenschutz_page.class);
+    }
+
+    //KUNDENSERVICE
+    public Zahlung_static_page clickZahlung() {
+        $(By.xpath("//*[@class='footer__links']/div[3]/ul/li[1]/a")).click();
+        return page(Zahlung_static_page.class);
+    }
+
+    public Versand_static_page clickVersand() {
+        $(By.xpath("//*[@class='footer__links']/div[3]/ul/li[2]/a")).click();
+        return page(Versand_static_page.class);
+    }
+
+    public Contact_static_page clickContact() {
+        $(By.xpath("//*[@class='footer__links']/div[3]/ul/li[3]/a")).click();
+        return page(Contact_static_page.class);
+    }
+
+    public Retouren_page clickRetouren() {
+        $(By.xpath("//*[@class='footer__links']/div[3]/ul/li[5]/a")).click();
+        return page(Retouren_page.class);
+    }
+
     public Austauschartikel_static_page clickAustauschartikel() {
         $(By.xpath("//*[@class='footer__links']/div[3]/ul/li[5]/a")).click();
         return page(Austauschartikel_static_page.class);
     }
+
+
+    public SelenideElement appGoogleButton() {
+        return $(byXpath("//div[@class='footer__app-icon']/span[1]/img"));
+    }
+
+    public SelenideElement appAppleButton() {
+        return $(byXpath("//div[@class='footer__app-icon']/span[1]/img"));
+    }
+
 }
