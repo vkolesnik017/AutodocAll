@@ -2,6 +2,7 @@ package ATD;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import java.util.Random;
@@ -54,6 +55,7 @@ public class CommonMethods {
         return "autotestMail" + random + "@test.com";
     }
 
+    @Step("Get currency {nameLocator} and verify")
     public static void getCurrencyAndVerify(SelenideElement currencyLocator, String nameLocator, String shop, String expectedCurrency) {
         String actualCurrency;
         if (shop.equals("EN")) {
