@@ -1,6 +1,7 @@
 package ATD;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selectors.*;
@@ -45,6 +46,7 @@ public class CartAccount_page {
         return $(byCssSelector(".login"));
     }
 
+    @Step("Login with email: {email} and password: {password}")
     public CartAddress_page signIn(String email, String password) {
         emailFieldInLoginForm().setValue(email);
         passwordFieldInLoginForm().setValue(password);

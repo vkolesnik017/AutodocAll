@@ -2,6 +2,7 @@ package ATD;
 
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selectors.byXpath;
@@ -15,6 +16,7 @@ public class Cart_page {
         return $(byCssSelector(".next-step"));
     }
 
+    @Step
     public CartAccount_page nextButtonClick() {
         nextButton().click();
         return page(CartAccount_page.class);
@@ -66,12 +68,13 @@ public class Cart_page {
         return $(byXpath("//*[@id='promo-footer']//span/b"));
     }
 
+    @Step
     public Cart_page makePriceForMiniumOrderForCH() {
         if (closeDeliveryLimitPopupForCH().isDisplayed()) {
             closeDeliveryLimitPopupForCH().click();
             while (nextBtnIsNotActiveForCH().isDisplayed()) {
                 addProductBtn().click();
-                sleep(100);
+                sleep(500);
             }
         }
         return this;

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="QASYS_393_ReconciliationOfCurrencies" parallel="classes" data-provider-thread-count="6">
+
+    <test name="QASYS_393_ReconciliationOfCurrencies">
+        <classes>
+            <class name="ATD.QASYS_253_Pricing.QASYS_393_ReconciliationOfCurrencies">
+            </class>
+        </classes>
+    </test>
+</suite>

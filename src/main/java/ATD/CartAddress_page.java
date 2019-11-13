@@ -1,6 +1,7 @@
 package ATD;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selectors.byCssSelector;
@@ -18,6 +19,7 @@ public class CartAddress_page {
         return $(byCssSelector(".address-continue>a"));
     }
 
+    @Step
     public CartPayments_page nextBtnClick() {
         nextButton().click();
         return page(CartPayments_page.class);

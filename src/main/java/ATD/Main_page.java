@@ -1,6 +1,7 @@
 package ATD;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static ATD.CommonMethods.*;
@@ -33,11 +34,13 @@ public class Main_page {
         return $(byCssSelector(".header-cart__count"));
     }
 
+    @Step
     Cart_page cartClick() {
         cartIcon().click();
         return page(Cart_page.class);
     }
 
+    @Step("Use search with: {searchArticle}")
     public Search_page useSearch(String searchArticle) {
         searchBar().setValue(searchArticle);
         searchButton().click();
@@ -49,6 +52,7 @@ public class Main_page {
         return $(byCssSelector("[data-ga-action='23208']"));
     }
 
+    @Step
     public Tyres_page clickTiresTab() {
         tiresTab().click();
         return page(Tyres_page.class);
