@@ -5,6 +5,7 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selectors.byCssSelector;
+import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.page;
 
@@ -23,6 +24,16 @@ public class CartAddress_page {
     public CartPayments_page nextBtnClick() {
         nextButton().click();
         return page(CartPayments_page.class);
+    }
+
+    SelenideElement countryInSelector(String country) {
+        return $(byXpath("//*[@name='lLand']//*[@data-code='" + country + "']"));
+    }
+
+    @Step
+    public CartAddress_page chooseDeliveryCountry(String country) {
+        countryInSelector(country).click();
+        return this;
     }
 
 }
