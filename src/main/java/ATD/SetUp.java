@@ -38,6 +38,8 @@ public class SetUp {
             testOrProd = "https://test.";
         } else if (chooseTestOrProd.equalsIgnoreCase("prod")) {
             testOrProd = "https://www.";
+        }else if (chooseTestOrProd.equalsIgnoreCase("mob")){
+            testOrProd = "https://m.";
         }
         List<String> finalRouteList = new ArrayList<>();
         try {
