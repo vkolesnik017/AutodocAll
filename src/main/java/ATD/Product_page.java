@@ -8,9 +8,16 @@ import io.qameta.allure.Step;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.page;
 
 public class Product_page {
+
+  @Step
+  public Product_page openProductPageById(String route, String idProduct) {
+    open(route + "/a/" + idProduct);
+    return this;
+  }
 
   @Step
   public Cart_page cartClick() {
@@ -32,6 +39,10 @@ public class Product_page {
 
   public SelenideElement grayButton() {
     return $(byCssSelector(".button.not_active>a"));
+  }
+
+  public SelenideElement productArticle() {
+    return $(byCssSelector(".subtitle-art-nummer>span"));
   }
 
   @Step
