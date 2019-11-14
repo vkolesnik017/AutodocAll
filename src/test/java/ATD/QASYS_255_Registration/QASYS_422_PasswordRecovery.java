@@ -4,6 +4,7 @@ import ATD.CartAccount_page;
 import ATD.Main_page;
 import ATD.Profile_page;
 import ATD.SetUp;
+import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
 import mailinator.Mailinator;
@@ -37,9 +38,10 @@ public class QASYS_422_PasswordRecovery {
         return new SetUp().setUpShop("prod", "DE");
     }
 
-    @Flaky
     @Owner(value = "Evlentiev")
     @Test(dataProvider = "route")
+    @Flaky
+    @Description(value = "Checking recovery password from popup in header")
     public void testPasswordRecoveryFromHeader(String route) {
         newPassword = getRandomNumber();
         open(route);
@@ -77,6 +79,7 @@ public class QASYS_422_PasswordRecovery {
     @Owner(value = "Evlentiev")
     @Test(dataProvider = "route")
     @Flaky
+    @Description(value = "Checking recovery password from cart")
     public void testPasswordRecoveryFromCart(String route) {
         newPassword = getRandomNumber();
         open(route);

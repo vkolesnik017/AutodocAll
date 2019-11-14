@@ -6,6 +6,7 @@ import ATD.Search_page;
 import ATD.SetUp;
 import AWS.Login_aws;
 import AWS.WishlistReminderAvailability_aws;
+import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
 import mailinator.Mailinator;
@@ -41,6 +42,7 @@ public class QASYS_69_GrayButton {
     @Owner(value = "Evlentiev")
     @Test(dataProvider = "route")
     @Flaky
+    @Description(value = "Checking gray button on listing and product page and check requests in AWS")
     public void testGrayButton(String route) {
         new Login_aws().loginInAws();
         open(wishlistReminderAvailability.urlWithParameters);
