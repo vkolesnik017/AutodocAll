@@ -4,6 +4,7 @@ package ATD.QASYS_252_StaticPage;
 import ATD.Datenschutz_page;
 import ATD.Main_page;
 import ATD.SetUp;
+import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
 import org.testng.annotations.BeforeClass;
@@ -32,6 +33,7 @@ public class QASYS_310_StaticPage_datenschutz {
     @Owner(value = "Oleg Romanyuta")
     @Test(dataProvider = "route")
     @Flaky
+    @Description(value = "Test checks elements on datenschutz page")
     public void checkDatenschutzPageElements(String route) {
         open(route);
         closeCookiesFooterMessage();

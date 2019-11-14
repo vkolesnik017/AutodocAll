@@ -4,6 +4,7 @@ package ATD.QASYS_252_StaticPage;
 import ATD.Main_page;
 import ATD.SetUp;
 import ATD.Vacancies_static_page;
+import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
 import org.testng.annotations.BeforeClass;
@@ -32,6 +33,7 @@ public class QASYS_360_StaticPage_vacancies {
     @Owner(value = "Oleg Romanyuta")
     @Test(dataProvider = "route")
     @Flaky
+    @Description(value = "Test checks elements on vacancies page")
     public void checkVacanciesPageElements(String route) {
         open(route);
         closeCookiesFooterMessage();

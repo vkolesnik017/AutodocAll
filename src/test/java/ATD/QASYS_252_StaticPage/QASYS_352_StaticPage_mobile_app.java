@@ -5,6 +5,7 @@ import ATD.Main_page;
 import ATD.MobileApp_static_page;
 import ATD.SetUp;
 import com.codeborne.selenide.WebDriverRunner;
+import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
 import org.testng.annotations.BeforeClass;
@@ -34,6 +35,7 @@ public class QASYS_352_StaticPage_mobile_app {
     @Owner(value = "Oleg Romanyuta")
     @Test(dataProvider = "route")
     @Flaky
+    @Description(value = "Test checks elements on mobile app page")
     public void checkMobileAppPageElements(String route) {
         open(route);
         closeCookiesFooterMessage();
