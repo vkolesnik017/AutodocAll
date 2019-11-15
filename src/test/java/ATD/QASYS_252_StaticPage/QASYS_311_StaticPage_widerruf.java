@@ -4,6 +4,7 @@ package ATD.QASYS_252_StaticPage;
 import ATD.Main_page;
 import ATD.SetUp;
 import ATD.Widerruf_static_page;
+import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
 import org.testng.annotations.BeforeClass;
@@ -33,6 +34,7 @@ public class QASYS_311_StaticPage_widerruf {
     @Owner(value = "Oleg Romanyuta")
     @Test(dataProvider = "route")
     @Flaky
+    @Description(value = "Test checks elements on widerruf page")
     public void checkWiderrufPageElements(String route) {
         open(route);
         closeCookiesFooterMessage();

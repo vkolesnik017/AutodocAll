@@ -4,6 +4,7 @@ package ATD.QASYS_252_StaticPage;
 import ATD.Impressum_static_page;
 import ATD.Main_page;
 import ATD.SetUp;
+import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
 import org.testng.annotations.BeforeClass;
@@ -33,6 +34,7 @@ public class QASYS_316_StaticPage_impressum {
     @Owner(value = "Oleg Romanyuta")
     @Test(dataProvider = "route")
     @Flaky
+    @Description(value = "Test checks elements on impressum page")
     public void checkImpressumPageElements(String route) {
         open(route);
         closeCookiesFooterMessage();

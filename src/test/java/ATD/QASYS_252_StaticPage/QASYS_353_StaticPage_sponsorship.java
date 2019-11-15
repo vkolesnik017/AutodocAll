@@ -4,6 +4,7 @@ package ATD.QASYS_252_StaticPage;
 import ATD.Main_page;
 import ATD.SetUp;
 import ATD.Sponsorship_static_page;
+import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
 import org.testng.annotations.BeforeClass;
@@ -32,6 +33,7 @@ public class QASYS_353_StaticPage_sponsorship {
     @Owner(value = "Oleg Romanyuta")
     @Test(dataProvider = "route")
     @Flaky
+    @Description(value = "Test checks elements on sponsorship page")
     public void checkSponsorshipPgeElements(String route) {
         open(route);
         closeCookiesFooterMessage();
