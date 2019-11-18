@@ -43,7 +43,7 @@ public class Search_page {
 
     // locator for search image by ID product in listing
     public SelenideElement imageProductById(String id) {
-        return $(byXpath("//*[@id='" + id + "']/../../..//*[@class='ovVisLi_image']"));
+        return $(byXpath("//*[@id='" + id + "']/../../..//img[contains(@class,'image')]"));
     }
 
     SelenideElement cartPopupWithProduct() {
