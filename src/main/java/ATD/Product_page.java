@@ -5,6 +5,7 @@ import com.codeborne.selenide.ex.ElementNotFound;
 import com.codeborne.selenide.ex.UIAssertionError;
 import io.qameta.allure.Step;
 
+import static com.codeborne.selenide.Condition.not;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
@@ -48,24 +49,24 @@ public class Product_page {
   @Step
   public Product_page addProductToCart() {
     buyButton().click();
-    closePopupOtherCategoryIfYes();
     try {
-      cartIcon().hover();
-      firstProductPriceInPopupOfCart().shouldBe(visible);
+      goToCartInPopupOfCart().shouldBe(visible);
     } catch (UIAssertionError e) {
+      closePopupOtherCategoryIfYes();
       buyButton().click();
-      firstProductPriceInPopupOfCart().shouldBe(visible);
+      goToCartInPopupOfCart().shouldBe(visible);
     }
     return this;
   }
 
   @Step
   public Product_page closePopupOtherCategoryIfYes() {
-    try {
-      closeBtnOfPopupOtherCategory().waitUntil(visible, 2500);
-      closeBtnOfPopupOtherCategory().click();
-    } catch (ElementNotFound e) {
-    }
+      try {
+        closeBtnOfPopupOtherCategory().waitUntil(visible, 2500);
+        closeBtnOfPopupOtherCategory().click();
+        closeBtnOfPopupOtherCategory().shouldBe(not(visible));
+      } catch (ElementNotFound e) {
+      }
     return this;
   }
 
@@ -89,6 +90,10 @@ public class Product_page {
 
   public SelenideElement totalPriceInPopupOfCart() {
     return $(byCssSelector(".row-right>p"));
+  }
+
+  SelenideElement goToCartInPopupOfCart() {
+    return $(byXpath("//*[@class='cart-items-block__buttons']/a[1]"));
   }
 
   // locators in popup of gray button for subscription for product which is not stock
