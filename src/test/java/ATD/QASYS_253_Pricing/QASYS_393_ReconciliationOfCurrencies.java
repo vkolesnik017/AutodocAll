@@ -17,7 +17,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class QASYS_393_ReconciliationOfCurrencies {
 
-  // accessory, chemistry, tool, oil, ordinary (id product)
+  // productsId: accessory, chemistry, tool, oil, ordinary product
   private String[] productsId = {"13558633" ,"7889318", "15207804", "13626328", "988236"}; //TODO будем ли выносить в базу id товаров для теста ?
   private String emailForCH = "reconciliationOfCurrenciesCH@mailinator.com";
   private String emailForAnotherShop = "reconciliationOfCurrencies@mailinator.com";
@@ -51,7 +51,9 @@ public class QASYS_393_ReconciliationOfCurrencies {
     // checks currency on product page
     getCurrencyAndVerify(productPage.priceWithoutDiscount(), "priceWithoutDiscount", shop, expectedCurrency);
     getCurrencyAndVerify(productPage.productPrice(), "productPrice", shop, expectedCurrency);
-    productPage.addProductToCart();
+    productPage.addProductToCart()
+            .closePopupOtherCategoryIfYes()
+            .cartIcon().hover();
     // checks currency in cart popup
     getCurrencyAndVerify(productPage.firstProductPriceInPopupOfCart(), "productPriceInPopupOfCart", shop, expectedCurrency);
     getCurrencyAndVerify(productPage.totalPriceInPopupOfCart(), "totalPriceInPopupOfCart", shop, expectedCurrency);
@@ -104,7 +106,8 @@ public class QASYS_393_ReconciliationOfCurrencies {
     getCurrencyAndVerify(productPage.priceWithoutDiscount(), "priceWithoutDiscount", shop, expectedCurrency);
     getCurrencyAndVerify(productPage.productPrice(), "productPrice", shop, expectedCurrency);
     // go to cart page
-    productPage.addProductToCart();
+    productPage.addProductToCart()
+            .cartIcon().hover();
     getCurrencyAndVerify(productPage.firstProductPriceInPopupOfCart(), "productPriceInPopupOfCart", shop, expectedCurrency);
     getCurrencyAndVerify(productPage.totalPriceInPopupOfCart(), "totalPriceInPopupOfCart", shop, expectedCurrency);
     productPage.cartClick();
@@ -148,7 +151,9 @@ public class QASYS_393_ReconciliationOfCurrencies {
     getCurrencyAndVerify(productPage.productPrice(), "productPrice", shop, expectedCurrency);
     productPage.productInfoUnderPrice().shouldHave(text(expectedCurrency));
     // go to cart page
-    productPage.addProductToCart();
+    productPage.addProductToCart()
+            .closePopupOtherCategoryIfYes()
+            .cartIcon().hover();
     // checks currency in cart popup
     getCurrencyAndVerify(productPage.firstProductPriceInPopupOfCart(), "productPriceInPopupOfCart", shop, expectedCurrency);
     getCurrencyAndVerify(productPage.totalPriceInPopupOfCart(), "totalPriceInPopupOfCart", shop, expectedCurrency);
