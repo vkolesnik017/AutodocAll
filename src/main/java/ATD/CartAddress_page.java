@@ -28,8 +28,12 @@ public class CartAddress_page {
         return page(CartPayments_page.class);
     }
 
-    public SelenideElement countryInSelector(String country) {
+    SelenideElement countryInSelector(String country) {
         return $(byXpath("//*[@name='lLand']//*[@data-code='" + country + "']"));
+    }
+
+    public SelenideElement currentCountryInSelector() {
+        return $(byXpath("//*[@id='form_lLand']/option[@selected]"));
     }
 
     public SelenideElement postalCodeField() {
