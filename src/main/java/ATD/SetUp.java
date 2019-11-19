@@ -38,6 +38,7 @@ public class SetUp {
         else if (envFromTest.equalsIgnoreCase("prod")) env = "https://www.";
         else if (envFromTest.equalsIgnoreCase("mob")) env = "https://m.";
 
+        System.out.println(env);
         List<String> finalRouteList = new ArrayList<>();
         try {
             List<String> routeFromDB = new DataBase().getRouteForMain(shop);
