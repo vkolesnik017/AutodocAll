@@ -8,15 +8,14 @@ import io.qameta.allure.Step;
 import static com.codeborne.selenide.Condition.not;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.*;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Product_page {
 
   @Step
   public Product_page openProductPageById(String route, String idProduct) {
     open(route + "/a/" + idProduct);
+    cartIcon().shouldBe(visible);
     return this;
   }
 
@@ -24,6 +23,10 @@ public class Product_page {
   public Cart_page cartClick() {
     new Main_page().cartClick();
     return page(Cart_page.class);
+  }
+
+  public SelenideElement numberBasket() {
+    return $(byCssSelector(".code"));
   }
 
   public SelenideElement cartIcon() {
@@ -48,13 +51,15 @@ public class Product_page {
 
   @Step
   public Product_page addProductToCart() {
-    buyButton().click();
+    sleep(1000); // TODO слип для стабилизации. Без слипа бывает что добавленный товар исчезает из корзины после перехода в неё, причну пока выяснить не удалось
+    buyButton().hover().click();
     try {
-      goToCartInPopupOfCart().shouldBe(visible);
+      numberBasket().shouldBe(visible);
+      firstProductPriceInPopupOfCart().shouldBe(visible);
     } catch (UIAssertionError e) {
       closePopupOtherCategoryIfYes();
       buyButton().click();
-      goToCartInPopupOfCart().shouldBe(visible);
+      firstProductPriceInPopupOfCart().shouldBe(visible);
     }
     return this;
   }

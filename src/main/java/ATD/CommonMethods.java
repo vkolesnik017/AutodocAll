@@ -23,6 +23,7 @@ public class CommonMethods {
     public static String password = "atdtest";
     public static String ridex_82B0896 = "82B0896";
     public static String usualIdProduct = "8340509";
+    public static String idProductTire = "8063235";
 
     public static void closeCookiesFooterMessage() {
         try {
