@@ -15,6 +15,7 @@ import org.testng.annotations.Test;
 import static ATD.CommonMethods.closeCookiesFooterMessage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.attribute;
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -70,7 +71,7 @@ public class QASYS_352_StaticPage_mobile_app {
                 .shouldHave(attribute("href", "https://itunes.apple.com/app/id1014949597"))
                 .click();
         switchTo().window(1);
-        mobileAppStaticPage.applePageLogo().shouldBe(visible);
+        mobileAppStaticPage.applePageTitle().shouldHave(text("Autodoc — Quality Auto Parts"));
         WebDriverRunner.getWebDriver().close();
         switchTo().window(0);
         mobileAppStaticPage.googlePlayButton()
