@@ -127,6 +127,19 @@ public class Main_page {
     public SelenideElement appAppleButton() {
         return $(byXpath("//div[@class='footer__app-icon']/span[1]/img"));
     }
+    public SelenideElement subscriptionButton(){ return $(byXpath("//button[@id='news_yes_footer']"));}
+    public SelenideElement subscriptionField(){ return $(byXpath("//input[@id='subscr_footer']"));}
+    public SelenideElement subscriptionTooltipPopup(){ return $(byXpath("//div[@class='wrong_footer']/p"));}
+    public SelenideElement subscriptionMailCheckbox(){ return $(byXpath("//div[@class='check']/label/span"));}
+    public SelenideElement subscriptionSuccessPopup(){ return $(byXpath("//div[@id='news_subscribe']//h3"));}
+    public SelenideElement subscriptionErrPopup(){ return $(byXpath("//div[@class='txt error_msg']"));}
+    public SelenideElement subscriptionPopupClose(){ return $(byXpath("//div[@class='popup ']//*[@class='close']/span[2]"));}
+    public Datenschutz_page clickDatenschutzInSubscription() {
+        $(By.xpath("//*[@class='footer__links']/div[2]/ul/li[7]/a")).click();
+        return page(Datenschutz_page.class);
+    }
+
+
 
     //ÜBER AUTODOC
     public About_us_page clickAboutUs() {

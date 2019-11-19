@@ -82,7 +82,7 @@ public class MobileApp_static_page {
 
     public SelenideElement googlePlayButton() { return $(By.xpath("//*[@class='download_icons']/a[2]")); }
 
-    public SelenideElement applePageLogo() { return $(By.xpath("//picture[@id='ember164']")); }
+    public SelenideElement applePageTitle() { return $(By.xpath("//*[@class='product-header__title app-header__title']")); }
 
     public SelenideElement googlePlayPageLogo() { return $(By.cssSelector(".xSyT2c>img")); }
 }

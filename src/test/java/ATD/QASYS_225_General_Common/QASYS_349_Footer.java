@@ -4,6 +4,7 @@ import ATD.CommonMethods;
 import ATD.DataBase;
 import ATD.Main_page;
 import ATD.SetUp;
+import com.codeborne.selenide.Condition;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -14,6 +15,7 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.getCurrentShopFromJSVarInHTML;
+import static ATD.CommonMethods.testMail;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -81,7 +83,7 @@ public class QASYS_349_Footer {
 
     @Flaky
     @Owner(value = "alex_qa")
-    @Test(dataProvider = "route")
+    @Test(dataProvider = "route", enabled = false)
     @Description(value = "Test follow the link and check url")
     public void checkingLinksInFooter(String route) throws SQLException {
         open(route);
@@ -103,11 +105,11 @@ public class QASYS_349_Footer {
         main_page.clickMobileApp();
         commonMethods.checkingUrl(route + MobileApp);
         main_page.clickAutodocClub();
-        commonMethods.checkingUrlAndCloseTab(db.getRouteByRouteName(getCurrentShopFromJSVarInHTML(), "club")+"/?_ga=");
+        commonMethods.checkingUrlAndCloseTab(db.getRouteByRouteName(getCurrentShopFromJSVarInHTML(), "club") + "/?_ga=");
         main_page.clickBlog();
         commonMethods.checkingUrl(route + Blog);
         main_page.clickVideoTutorials();
-        commonMethods.checkingUrlAndCloseTab(db.getRouteByRouteName(getCurrentShopFromJSVarInHTML(), "club")+"/manuals?_ga=");
+        commonMethods.checkingUrlAndCloseTab(db.getRouteByRouteName(getCurrentShopFromJSVarInHTML(), "club") + "/manuals?_ga=");
         main_page.clickAltolentsorgung();
         commonMethods.checkingUrl(route + Altolentsorgung);
         main_page.clickAgb();
@@ -146,4 +148,28 @@ public class QASYS_349_Footer {
         commonMethods.checkingUrl(route + NachModellEinkaufen);
     }
 
+    @Flaky
+    @Owner(value = "alex_qa")
+    @Test(dataProvider = "route")
+    @Description(value = "Test check newsletter subscription field")
+    public void checkingSubscriptionField(String route) {
+        open(route);
+        main_page.footerForm().scrollTo();
+        main_page.subscriptionButton().click();
+        main_page.subscriptionTooltipPopup().shouldHave(Condition.text("Bitte geben Sie eine gültige E-mail Adresse an"));
+        main_page.subscriptionField().setValue("123456");
+        main_page.subscriptionButton().click();
+        main_page.subscriptionTooltipPopup().shouldHave(Condition.text("Bitte geben Sie eine gültige E-mail Adresse an"));
+        main_page.subscriptionField().setValue(testMail);
+        main_page.subscriptionButton().click();
+        main_page.subscriptionErrPopup().shouldHave(Condition.text("Um fortzufahren bestätigen Sie bitte Ihr Newsletter-Abo"));
+        main_page.subscriptionPopupClose().click();
+        main_page.subscriptionMailCheckbox().click();
+        main_page.subscriptionButton().click();
+        main_page.subscriptionSuccessPopup().shouldHave(Condition.text("Herzlichen Dank! Viel Spaß beim Shoppen!"));
+        main_page.subscriptionPopupClose().click();
+        main_page.clickDatenschutzInSubscription();
+        commonMethods.checkingUrl(route + Datenschutz);
+
+    }
 }

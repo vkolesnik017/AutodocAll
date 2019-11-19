@@ -18,7 +18,7 @@ import static org.testng.Assert.assertTrue;
 
 public class CommonMethods {
 
-    static String testMail = "test@gmail.com";
+    public static String testMail = "test@gmail.com";
     static String testNumberThatPutOrderInTest = "200+002";
     public static String password = "atdtest";
     public static String ridex_82B0896 = "82B0896";
