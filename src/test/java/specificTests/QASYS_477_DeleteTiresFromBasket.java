@@ -23,7 +23,6 @@ import static org.testng.Assert.assertTrue;
 public class QASYS_477_DeleteTiresFromBasket {
 
   private String rangeOfPostalCode = System.getenv("rangeOfPostalCode");
-  private String env = System.getenv("env");
 
   private String email = "QASYS477ONE2@mailinator.com";
   private String password = "123456";
@@ -42,7 +41,7 @@ public class QASYS_477_DeleteTiresFromBasket {
   @DataProvider(name = "routeAndPostalCodes", parallel = true)
   Object[] dataProvider() {
     String[] zipCodes = listZipCodes.toArray(new String[listZipCodes.size()]);
-    return new SetUp().setUpShopWithListParam(env, "SE", zipCodes);
+    return new SetUp().setUpShopWithListParam("prod", "SE", zipCodes);
   }
 
   @Owner(value = "Evlentiev")
