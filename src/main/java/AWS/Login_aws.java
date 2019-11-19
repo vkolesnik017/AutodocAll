@@ -27,6 +27,7 @@ public class Login_aws {
     return $(byXpath("//*[@class='btm_b clearfix']/button"));
   }
 
+  @Step
   public Main_aws loginInAws() {
     open("https://aws.autodoc.de/");
     loginField().setValue(email);

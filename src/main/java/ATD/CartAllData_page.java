@@ -1,6 +1,7 @@
 package ATD;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selectors.byId;
@@ -8,6 +9,15 @@ import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 
 public class CartAllData_page {
+
+  @Step
+  public SelenideElement searchProductByID(String idProduct) {
+    return $(byCssSelector("[data-article_id='" + idProduct + "']"));
+  }
+
+  public SelenideElement addressInfo() {
+    return $(byCssSelector(".info-user-cart__info"));
+  }
 
   // locator only for CH
   public SelenideElement vatPriceInHead() {
