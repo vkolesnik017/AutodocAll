@@ -8,7 +8,7 @@ import java.util.List;
 
 public class SetUp {
 
-    private String shopFromJenkins = System.getenv("ShopFromJenkins");
+    String shopFromJenkins = System.getenv("ShopFromJenkins");
 
     public static void setUpBrowser(Boolean Selenoid, String browser, String browserVersion) {
         Configuration.browser = (browser);

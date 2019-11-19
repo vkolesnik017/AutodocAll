@@ -9,11 +9,12 @@ import org.testng.Assert;
 import java.util.Random;
 
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.back;
-import static com.codeborne.selenide.Selenide.executeJavaScript;
+import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+import static com.codeborne.selenide.WebDriverRunner.source;
 import static com.codeborne.selenide.WebDriverRunner.url;
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 public class CommonMethods {
 
@@ -21,6 +22,8 @@ public class CommonMethods {
     static String testNumberThatPutOrderInTest = "200+002";
     public static String password = "atdtest";
     public static String ridex_82B0896 = "82B0896";
+    public static String usualIdProduct = "8340509";
+    public static String idProductTire = "8063235";
 
     public static void closeCookiesFooterMessage() {
         try {
@@ -73,9 +76,18 @@ public class CommonMethods {
     public static Condition clickable = and("can be clicked", visible, enabled);
 
     //Method checking follow url
-    public void checkingUrl( String expectedUrl){
+    public void checkingUrl(String expectedUrl){
         String actualUrl = url();
         Assert.assertEquals(actualUrl, expectedUrl);
         back();
+    }
+
+    //Method checking follow url on new tab and close tab
+    public void checkingUrlAndCloseTab(String expectedUrl){
+        switchTo().window(1);
+        String actualUrl = url();
+        assertTrue(actualUrl.contains(expectedUrl));
+        getWebDriver().close();
+        switchTo().window(0);
     }
 }

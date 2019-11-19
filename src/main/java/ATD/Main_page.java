@@ -5,6 +5,7 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static ATD.CommonMethods.*;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byXpath;
@@ -34,8 +35,13 @@ public class Main_page {
         return $(byCssSelector(".header-cart__count"));
     }
 
+    public SelenideElement numberBasket() {
+        return $(byCssSelector(".code"));
+    }
+
     @Step
     Cart_page cartClick() {
+        numberBasket().shouldBe(visible);
         cartIcon().click();
         return page(Cart_page.class);
     }
@@ -115,10 +121,16 @@ public class Main_page {
     public SelenideElement footerForm() {
         return $(By.xpath("//div[@id='footer']"));
     }
+    public SelenideElement appGoogleButton() {
+        return $(byXpath("//div[@class='footer__app-icon']/span[1]/img"));
+    }
+    public SelenideElement appAppleButton() {
+        return $(byXpath("//div[@class='footer__app-icon']/span[1]/img"));
+    }
 
     //ÜBER AUTODOC
     public About_us_page clickAboutUs() {
-        $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[2]/a")).click();
+        $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[1]/a")).click();
         return page(About_us_page.class);
     }
 
@@ -133,7 +145,7 @@ public class Main_page {
     }
 
     public Bonusprogramm_page clickBonusprogramm() {
-        $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[5]/a")).click();
+        $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[4]/a")).click();
         return page(Bonusprogramm_page.class);
     }
 
@@ -148,7 +160,7 @@ public class Main_page {
     }
 
     public Presse_page clickPresse() {
-        $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[8]/a")).click();
+        $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[7]/a")).click();
         return page(Presse_page.class);
     }
 
@@ -159,22 +171,22 @@ public class Main_page {
 
     //HILFE & SUPPORT
     public AutodocClub_page clickAutodocClub() {
-        $(By.xpath("//*[@class='footer__links']/div[2]/ul/li[5]/a")).click();
+        $(By.xpath("//*[@class='footer__links']/div[2]/ul/li[1]/a")).click();
         return page(AutodocClub_page.class);
     }
 
     public Blog_page clickBlog() {
-        $(By.xpath("//*[@class='footer__links']/div[2]/ul/li[5]/a")).click();
+        $(By.xpath("//*[@class='footer__links']/div[2]/ul/li[2]/a")).click();
         return page(Blog_page.class);
     }
 
     public VideoTutorials_page clickVideoTutorials() {
-        $(By.xpath("//*[@class='footer__links']/div[2]/ul/li[5]/a")).click();
+        $(By.xpath("//*[@class='footer__links']/div[2]/ul/li[3]/a")).click();
         return page(VideoTutorials_page.class);
     }
 
     public Altolentsorgung_page clickAltolentsorgung() {
-        $(By.xpath("//*[@class='footer__links']/div[2]/ul/li[5]/a")).click();
+        $(By.xpath("//*[@class='footer__links']/div[2]/ul/li[4]/a")).click();
         return page(Altolentsorgung_page.class);
     }
 
@@ -210,7 +222,7 @@ public class Main_page {
     }
 
     public Retouren_page clickRetouren() {
-        $(By.xpath("//*[@class='footer__links']/div[3]/ul/li[5]/a")).click();
+        $(By.xpath("//*[@class='footer__links']/div[3]/ul/li[4]/a")).click();
         return page(Retouren_page.class);
     }
 
@@ -219,13 +231,43 @@ public class Main_page {
         return page(Austauschartikel_static_page.class);
     }
 
+    //TOP PRODUKTE
 
-    public SelenideElement appGoogleButton() {
-        return $(byXpath("//div[@class='footer__app-icon']/span[1]/img"));
+    public Beleuchtung_page clickBeleuchtung() {
+        $(By.xpath("//*[@class='footer__links']/div[4]/ul/li[1]/a")).click();
+        return page(Beleuchtung_page.class);
     }
-
-    public SelenideElement appAppleButton() {
-        return $(byXpath("//div[@class='footer__app-icon']/span[1]/img"));
+    public Stobdampfer_page clickStobdampfer() {
+        $(By.xpath("//*[@class='footer__links']/div[4]/ul/li[2]/a")).click();
+        return page(Stobdampfer_page.class);
+    }
+    public Kupplungssatz_page clickKupplungssatz() {
+        $(By.xpath("//*[@class='footer__links']/div[4]/ul/li[3]/a")).click();
+        return page(Kupplungssatz_page.class);
+    }
+    public Querlenker_page clickQuerlenker() {
+        $(By.xpath("//*[@class='footer__links']/div[4]/ul/li[4]/a")).click();
+        return page(Querlenker_page.class);
+    }
+    public Radlager_page clickRadlager() {
+        $(By.xpath("//*[@class='footer__links']/div[4]/ul/li[5]/a")).click();
+        return page(Radlager_page.class);
+    }
+    public Autopflege_page clickAutopflege() {
+        $(By.xpath("//*[@class='footer__links']/div[4]/ul/li[6]/a")).click();
+        return page(Autopflege_page.class);
+    }
+    public Ersatzteile_page clickSucheNachAutomodelle() {
+        $(By.xpath("//*[@class='footer__links']/div[4]/ul/li[7]/a")).click();
+        return page(Ersatzteile_page.class);
+    }
+    public ErsatzteileModels_page clickNachHerstellerEinkaufen() {
+        $(By.xpath("//*[@class='footer__links']/div[4]/ul/li[8]/a")).click();
+        return page(ErsatzteileModels_page.class);
+    }
+    public ErsatzteileCars_page clickNachModellEinkaufen() {
+        $(By.xpath("//*[@class='footer__links']/div[4]/ul/li[9]/a")).click();
+        return page(ErsatzteileCars_page.class);
     }
 
 }
