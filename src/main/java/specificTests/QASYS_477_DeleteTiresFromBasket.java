@@ -1,0 +1,88 @@
+package specificTests;
+
+import ATD.*;
+
+import io.qameta.allure.Description;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Step;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static ATD.CommonMethods.getCurrentShopFromJSVarInHTML;
+import static ATD.CommonMethods.idProductTire;
+import static ATD.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selenide.*;
+import static org.testng.Assert.assertTrue;
+
+public class QASYS_477_DeleteTiresFromBasket {
+
+  private String rangeOfPostalCode = System.getenv("rangeOfPostalCode");
+  private String env = System.getenv("env");
+
+  private String email = "QASYS477ONE2@mailinator.com";
+  private String password = "123456";
+
+  private List<String> listZipCodes = new ArrayList<>();
+
+  private Product_page product_page = new Product_page();
+  private CartAllData_page cartAllData_page = new CartAllData_page();
+
+  @BeforeClass
+  void setUp() {
+    setUpBrowser(false, "chrome", "77.0");
+    generatePostalCodes(rangeOfPostalCode);
+  }
+
+  @DataProvider(name = "routeAndPostalCodes", parallel = true)
+  Object[] dataProvider() {
+    String[] zipCodes = listZipCodes.toArray(new String[listZipCodes.size()]);
+    return new SetUp().setUpShopWithListParam(env, "SE", zipCodes);
+  }
+
+  @Owner(value = "Evlentiev")
+  @Test(dataProvider = "routeAndPostalCodes")
+  @Description(value = "Удаление шин из корзины при доставки на остров (SITES-6017)")
+  public void testDeleteTiresFromBasket(String routeAndPostalCode) {
+    String route = routeAndPostalCode.split("_")[0];
+    String postalCode = routeAndPostalCode.split("_")[1];
+    product_page.openProductPageById(route, idProductTire);
+    String currentShop = getCurrentShopFromJSVarInHTML();
+    product_page.addProductToCart()
+            .cartClick()
+            .nextButtonClick()
+            .signIn(email, password)
+            .chooseDeliveryCountry(currentShop)
+            .enterPostalCode(postalCode)
+            .nextBtnClick()
+            .nextBtnClick();
+    cartAllData_page.searchProductByID(idProductTire).shouldBe((visible));
+    assertTrue(cartAllData_page.addressInfo().getText().replaceAll("\\s+", "").contains(postalCode));
+    cartAllData_page.popupOfDangerousProduct().shouldBe(visible);
+    cartAllData_page.deleteProductBtnInPopup().click();
+    new Cart_page().priceOfAllProducts().shouldBe((visible));
+    cartAllData_page.searchProductByID(idProductTire).shouldBe(not(visible));
+  }
+
+  @Step
+  private void generatePostalCodes(String rangeOfPostalCode) {
+    if (rangeOfPostalCode.contains("-")) {
+      int start = Integer.parseInt(rangeOfPostalCode.split("-")[0]);
+      int end = Integer.parseInt(rangeOfPostalCode.substring(rangeOfPostalCode.lastIndexOf("-") + 1));
+      for (int code = start; code <= end; code++) {
+        listZipCodes.add(String.valueOf(code));
+      }
+    }
+  }
+
+  @AfterMethod
+  private void tearDown() {
+    close();
+  }
+
+}
