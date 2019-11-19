@@ -8,7 +8,9 @@ import java.util.List;
 
 public class SetUp {
 
-    String shopFromJenkins = System.getenv("ShopFromJenkins");
+    private String shopFromJenkins = System.getenv("ShopFromJenkins");
+    private String envFromJenkins = System.getenv("EnvFromJenkins");
+
 
     public static void setUpBrowser(Boolean Selenoid, String browser, String browserVersion) {
         Configuration.browser = (browser);
@@ -26,26 +28,21 @@ public class SetUp {
         }
     }
 
-    public Object[] setUpShop(String chooseTestOrProd, String shopFromTest) {
-        String testOrProd = null;
+    public Object[] setUpShop(String envFromTest, String shopFromTest) {
+        String env = null;
         String shop;
-        if (!(shopFromJenkins == null)) {
-            shop = shopFromJenkins;
-        } else {
-            shop = shopFromTest;
-        }
-        if (chooseTestOrProd.equalsIgnoreCase("test")) {
-            testOrProd = "https://test.";
-        } else if (chooseTestOrProd.equalsIgnoreCase("prod")) {
-            testOrProd = "https://www.";
-        }else if (chooseTestOrProd.equalsIgnoreCase("mob")){
-            testOrProd = "https://m.";
-        }
+        if (!(shopFromJenkins == null)) shop = shopFromJenkins; else shop = shopFromTest;
+        if (!(envFromJenkins == null)) envFromTest = envFromJenkins;
+
+        if (envFromTest.equalsIgnoreCase("test")) env = "https://test.";
+        else if (envFromTest.equalsIgnoreCase("prod")) env = "https://www.";
+        else if (envFromTest.equalsIgnoreCase("mob")) env = "https://m.";
+
         List<String> finalRouteList = new ArrayList<>();
         try {
             List<String> routeFromDB = new DataBase().getRouteForMain(shop);
             for (String aRouteFromDB : routeFromDB) {
-                finalRouteList.add(testOrProd + aRouteFromDB);
+                finalRouteList.add(env + aRouteFromDB);
             }
         } catch (Exception e) {
             System.out.println("setUpShop failed...");
@@ -53,8 +50,8 @@ public class SetUp {
         return finalRouteList.toArray();
     }
 
-    public Object[] setUpShopWithListParam(String chooseTestOrProd, String shopFromTest, String[] list) {
-        Object[] shop = setUpShop(chooseTestOrProd, shopFromTest);
+    public Object[] setUpShopWithListParam(String envFromTest, String shopFromTest, String[] list) {
+        Object[] shop = setUpShop(envFromTest, shopFromTest);
         List<String> shopList = new ArrayList<>();
         List<String> finalList = new ArrayList<>();
         for (Object shopPars : shop) {
