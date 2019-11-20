@@ -22,20 +22,21 @@ import static org.testng.Assert.assertTrue;
 
 public class QASYS_477_DeleteTiresFromBasket {
 
-  private String rangeOfPostalCode = System.getenv("rangeOfPostalCode");
+//  private String rangeOfPostalCode = System.getenv("rangeOfPostalCode");
 
-  private String email = "QASYS477ONE2@mailinator.com";
+  private String email = "QASYS477ONE3@mailinator.com";
   private String password = "123456";
 
   private List<String> listZipCodes = new ArrayList<>();
 
   private Product_page product_page = new Product_page();
   private CartAllData_page cartAllData_page = new CartAllData_page();
+  private Cart_page cart_page = new Cart_page();
 
   @BeforeClass
   void setUp() {
     setUpBrowser(false, "chrome", "77.0");
-    generatePostalCodes(rangeOfPostalCode);
+    generatePostalCodes("35000-35999");
   }
 
   @DataProvider(name = "routeAndPostalCodes", parallel = true)
@@ -61,11 +62,10 @@ public class QASYS_477_DeleteTiresFromBasket {
             .nextBtnClick()
             .nextBtnClick();
     cartAllData_page.searchProductByID(idProductTire).shouldBe((visible));
-    assertTrue(cartAllData_page.addressInfo().getText().replaceAll("\\s+", "").contains(postalCode));
     cartAllData_page.popupOfDangerousProduct().shouldBe(visible);
     cartAllData_page.deleteProductBtnInPopup().click();
-    new Cart_page().priceOfAllProducts().shouldBe((visible));
-    cartAllData_page.searchProductByID(idProductTire).shouldBe(not(visible));
+    cart_page.priceOfAllProducts().shouldBe((visible));
+    cart_page.productPrice().shouldBe(not(visible));
   }
 
   @Step
