@@ -18,13 +18,12 @@ import static ATD.CommonMethods.idProductTire;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
-import static org.testng.Assert.assertTrue;
 
 public class QASYS_477_DeleteTiresFromBasket {
 
-//  private String rangeOfPostalCode = System.getenv("rangeOfPostalCode");
+  private String rangeOfPostalCode = System.getenv("rangeOfPostalCode");
 
-  private String email = "QASYS477ONE3@mailinator.com";
+  private String email = "QASYS477ONE2@mailinator.com";
   private String password = "123456";
 
   private List<String> listZipCodes = new ArrayList<>();
@@ -36,7 +35,7 @@ public class QASYS_477_DeleteTiresFromBasket {
   @BeforeClass
   void setUp() {
     setUpBrowser(false, "chrome", "77.0");
-    generatePostalCodes("35000-35999");
+    generatePostalCodes(rangeOfPostalCode);
   }
 
   @DataProvider(name = "routeAndPostalCodes", parallel = true)
