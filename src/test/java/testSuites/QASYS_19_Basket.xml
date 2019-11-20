@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="QASYS_19_Basket" parallel="tests" thread-count="6">
+<suite name="QASYS_19_Basket" data-provider-thread-count="4">
 
     <test name="QASYS_452_NumberBasketOnMobile">
         <classes>
             <class name="ATD.QASYS_19_Basket.QASYS_452_NumberBasketOnMobile">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QASYS_455_DeletingOfDangerousProductFromBasket">
+        <classes>
+            <class name="ATD.QASYS_19_Basket.QASYS_455_DeletingOfDangerousProductFromBasket">
             </class>
         </classes>
     </test>

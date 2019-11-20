@@ -45,13 +45,9 @@ public class Product_page {
     return $(byCssSelector(".button.not_active>a"));
   }
 
-  public SelenideElement productArticle() {
-    return $(byCssSelector(".subtitle-art-nummer>span"));
-  }
-
   @Step
   public Product_page addProductToCart() {
-    sleep(1000); // TODO слип для стабилизации. Без слипа бывает что добавленный товар исчезает из корзины после перехода в неё, причну пока выяснить не удалось
+    sleep(2000); // TODO слип для стабилизации. Без слипа бывает что добавленный товар исчезает из корзины после перехода в неё, причну пока выяснить не удалось
     buyButton().hover().click();
     try {
       numberBasket().shouldBe(visible);
