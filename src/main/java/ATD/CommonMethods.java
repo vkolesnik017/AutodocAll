@@ -38,6 +38,19 @@ public class CommonMethods {
         return currentShop.toUpperCase();
     }
 
+    static String getShopFromRoute(String route) {
+        String shop = null;
+        String[] words = route.split("\\.");
+        if (words.length == 4) {
+            if (words[3].equals("no")) shop = "NO";
+            else if (words[3].equals("uk")) shop = "EN";
+        } else {
+            if (words[2].equals("lu")) shop = "LD";
+            else shop = words[2].toUpperCase();
+        }
+        return shop;
+    }
+
     public static String getRandomNumber() {
         int n = (int) Math.round(Math.random() * 1000000);
         return String.valueOf(n);

@@ -31,7 +31,8 @@ public class SetUp {
     public Object[] setUpShop(String envFromTest, String shopFromTest) {
         String env = null;
         String shop;
-        if (!(shopFromJenkins == null)) shop = shopFromJenkins; else shop = shopFromTest;
+        if (!(shopFromJenkins == null)) shop = shopFromJenkins;
+        else shop = shopFromTest;
         if (!(envFromJenkins == null)) envFromTest = envFromJenkins;
 
         if (envFromTest.equalsIgnoreCase("test")) env = "https://test.";
@@ -39,7 +40,7 @@ public class SetUp {
         else if (envFromTest.equalsIgnoreCase("mob")) env = "https://m.";
         List<String> finalRouteList = new ArrayList<>();
         try {
-            List<String> routeFromDB = new DataBase().getRouteForMain(shop);
+            List<String> routeFromDB = new DataBase().getRouteListForMain(shop);
             for (String aRouteFromDB : routeFromDB) {
                 finalRouteList.add(env + aRouteFromDB);
             }
@@ -48,6 +49,30 @@ public class SetUp {
         }
         return finalRouteList.toArray();
     }
+
+    public Object[] setUpShopWithRoute(String envFromTest, String shopFromTest, String routeName) {
+        String env = null;
+        String shop;
+        if (!(shopFromJenkins == null)) shop = shopFromJenkins;
+        else shop = shopFromTest;
+        if (!(envFromJenkins == null)) envFromTest = envFromJenkins;
+
+        if (envFromTest.equalsIgnoreCase("test")) env = "https://test.";
+        else if (envFromTest.equalsIgnoreCase("prod")) env = "https://";
+        else if (envFromTest.equalsIgnoreCase("mob")) env = "https://m.";
+        List<String> finalRouteList = new ArrayList<>();
+        try {
+            List<String> routeFromDB = new DataBase().getRouteListByRouteName(shop, routeName);
+            for (String aRouteFromDB : routeFromDB) {
+                finalRouteList.add(env + aRouteFromDB);
+            }
+        } catch (Exception e) {
+            System.out.println("setUpShop failed...");
+        }
+        return finalRouteList.toArray();
+    }
+
+
 
     public Object[] setUpShopWithListParam(String envFromTest, String shopFromTest, String[] list) {
         Object[] shop = setUpShop(envFromTest, shopFromTest);
@@ -63,5 +88,7 @@ public class SetUp {
         }
         return finalList.toArray();
     }
+
+
 
 }
