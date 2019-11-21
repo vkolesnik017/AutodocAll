@@ -24,10 +24,27 @@ public class DataBase {
         return conn;
     }
 
-    List<String> getRouteForMain(String shop) throws SQLException {
+    List<String> getRouteListForMain(String shop) throws SQLException {
         Connection conn = coonectionDB("routes_atd");
         ArrayList<String> route = new ArrayList<>();
         String query = "SELECT " + shop + " FROM autodoc.routes_atd where id = 1";
+        Statement statement = conn.createStatement();
+        ResultSet resultSet = statement.executeQuery(query);
+        int columns = resultSet.getMetaData().getColumnCount();
+        while (resultSet.next()) {
+            for (int i = 1; i <= columns; i++) {
+                route.add(resultSet.getString(i));
+            }
+        }
+        statement.close();
+        conn.close();
+        return route;
+    }
+
+    List<String> getRouteListByRouteName(String shop, String routeName) throws SQLException {
+        Connection conn = coonectionDB("routes_atd");
+        ArrayList<String> route = new ArrayList<>();
+        String query = "SELECT " + shop + " FROM autodoc.routes_atd where route_name = '" + routeName + "'";
         Statement statement = conn.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
         int columns = resultSet.getMetaData().getColumnCount();
