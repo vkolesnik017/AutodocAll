@@ -5,6 +5,7 @@ import com.codeborne.selenide.ex.ElementNotFound;
 import com.codeborne.selenide.ex.ElementShould;
 import com.codeborne.selenide.ex.UIAssertionError;
 import io.qameta.allure.Step;
+import org.openqa.selenium.NoSuchElementException;
 
 import static com.codeborne.selenide.Condition.not;
 import static com.codeborne.selenide.Condition.visible;
@@ -72,10 +73,13 @@ public class Product_page {
   }
 
   @Step
-  public Product_page closePopupOtherCategoryIfYes() throws ElementNotFound {
-    closeBtnOfPopupOtherCategory().waitUntil(visible, 2500);
-    closeBtnOfPopupOtherCategory().click();
-    closeBtnOfPopupOtherCategory().shouldBe(not(visible));
+  public Product_page closePopupOtherCategoryIfYes() {
+    try {
+      closeBtnOfPopupOtherCategory().waitUntil(visible, 2500);
+      closeBtnOfPopupOtherCategory().click();
+      closeBtnOfPopupOtherCategory().shouldBe(not(visible));
+    } catch (ElementNotFound e) {
+    }
     return this;
   }
 
