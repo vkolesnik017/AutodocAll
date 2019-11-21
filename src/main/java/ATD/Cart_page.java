@@ -26,6 +26,14 @@ public class Cart_page {
         return $(byCssSelector(".plus"));
     }
 
+    public SelenideElement freeDeliveryIcon() {
+        return $(byCssSelector(".free_icon"));
+    }
+
+    public SelenideElement emptyCart() {
+        return $(byCssSelector(".cart-page-listing__empty-cart"));
+    }
+
     // locators only for CH
     public SelenideElement closeDeliveryLimitPopupForCH() {
         return $(byCssSelector(".delivery-limit-popup>a"));

@@ -63,8 +63,7 @@ public class QASYS_477_DeleteTiresFromBasket {
     cartAllData_page.searchProductByID(idProductTire).shouldBe((visible));
     cartAllData_page.popupOfDangerousProduct().shouldBe(visible);
     cartAllData_page.deleteProductBtnInPopup().click();
-    cart_page.priceOfAllProducts().shouldBe((visible));
-    cart_page.productPrice().shouldBe(not(visible));
+    cart_page.emptyCart().shouldBe(visible);
   }
 
   @Step
