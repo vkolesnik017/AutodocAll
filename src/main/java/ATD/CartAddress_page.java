@@ -57,14 +57,19 @@ public class CartAddress_page {
     public CartAddress_page fillInPostalCode(String postalCodeOrCodeDefault) {
         if (postalCodeOrCodeDefault.equals("default")) {
             String currentShop = getCurrentShopFromJSVarInHTML();
-            if (currentShop.equals("DK")) {
-                postalCodeOrCodeDefault = "1234";
-            } else if (currentShop.equals("NL")) {
-                postalCodeOrCodeDefault = "1234 AA";
-            } else if (currentShop.equals("PT")) {
-                postalCodeOrCodeDefault = "1234-567";
-            } else {
-                postalCodeOrCodeDefault = "12345";
+            switch (currentShop) {
+                case "DK":
+                    postalCodeOrCodeDefault = "1234";
+                    break;
+                case "NL":
+                    postalCodeOrCodeDefault = "1234 AA";
+                    break;
+                case "PT":
+                    postalCodeOrCodeDefault = "1234-567";
+                    break;
+                default:
+                    postalCodeOrCodeDefault = "12345";
+                    break;
             }
         }
         postalCodeField().clear();

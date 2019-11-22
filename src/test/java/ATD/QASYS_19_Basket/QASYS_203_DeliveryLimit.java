@@ -14,7 +14,6 @@ import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.Selenide.sleep;
 
 public class QASYS_203_DeliveryLimit {
 
@@ -49,20 +48,7 @@ public class QASYS_203_DeliveryLimit {
             .closePopupOtherCategoryIfYes()
             .cartClick()
             .freeDeliveryIcon().shouldBe(not(visible));
-    // An increase in the quantity of goods for checking the limit of free delivery
-    float totalPrice = getPriceFromElement(cart_page.totalProductPrice());
-    while (!cart_page.freeDeliveryIcon().isDisplayed() && totalPrice < deliveryLimit) {
-      cart_page.addProductBtn().click();
-      sleep(1500);
-      totalPrice = getPriceFromElement(cart_page.totalProductPrice());
-      System.out.println(totalPrice);
-      if (totalPrice < deliveryLimit) {
-        cart_page.freeDeliveryIcon().shouldBe(not(visible));
-      } else if (totalPrice > deliveryLimit) {
-        cart_page.freeDeliveryIcon().shouldBe(visible);
-        break;
-      }
-    }
+    cart_page.makeAndCheckLimitPriceForFreeDelivery(deliveryLimit);
   }
 
   @Owner(value = "Evlentiev")
@@ -86,20 +72,7 @@ public class QASYS_203_DeliveryLimit {
             .nextBtnClick()
             .nextBtnClick()
             .freeDeliveryIcon().shouldBe(not(visible));
-    // An increase in the quantity of goods for checking the limit of free delivery
-    float totalPrice = getPriceFromElement(cartAllDataPage.totalProductPrice());
-    while (!cartAllDataPage.freeDeliveryIcon().isDisplayed() && totalPrice < deliveryLimit) {
-      cartAllDataPage.addProductBtn().click();
-      sleep(1500);
-      totalPrice = getPriceFromElement(cartAllDataPage.totalProductPrice());
-      System.out.println(totalPrice);
-      if (totalPrice < deliveryLimit) {
-        cartAllDataPage.freeDeliveryIcon().shouldBe(not(visible));
-      } else if (totalPrice > deliveryLimit) {
-        cartAllDataPage.freeDeliveryIcon().shouldBe(visible);
-        break;
-      }
-    }
+    cartAllDataPage.makeAndCheckLimitPriceForFreeDelivery(deliveryLimit);
   }
 
   @AfterMethod
