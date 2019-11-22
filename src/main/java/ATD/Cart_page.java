@@ -4,6 +4,9 @@ package ATD;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
+import static ATD.CommonMethods.getPriceFromElement;
+import static com.codeborne.selenide.Condition.not;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
@@ -88,5 +91,23 @@ public class Cart_page {
         return this;
     }
 
+    @Step
+    public Cart_page makeAndCheckLimitPriceForFreeDelivery(float deliveryLimit) {
+        // An increase in the quantity of goods for checking the limit of free delivery
+        float totalPrice = getPriceFromElement(totalProductPrice());
+        while (!freeDeliveryIcon().isDisplayed() && totalPrice < deliveryLimit) {
+            addProductBtn().click();
+            sleep(1500);
+            totalPrice = getPriceFromElement(totalProductPrice());
+            System.out.println(totalPrice);
+            if (totalPrice < deliveryLimit) {
+                freeDeliveryIcon().shouldBe(not(visible));
+            } else if (totalPrice > deliveryLimit) {
+                freeDeliveryIcon().shouldBe(visible);
+                break;
+            }
+        }
+        return this;
+    }
 
 }

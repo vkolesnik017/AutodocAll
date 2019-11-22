@@ -18,8 +18,6 @@ import static ATD.CommonMethods.usualIdProduct;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.not;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selectors.byXpath;
-import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 import static org.testng.Assert.assertEquals;
@@ -68,7 +66,7 @@ public class QASYS_455_DeletingOfDangerousProductFromBasket {
             .nextButtonClick()
             .signIn(email, password)
             .chooseDeliveryCountry(deliveryCountry)
-            .enterPostalCode("11111")
+            .fillInPostalCode("11111")
             .nextBtnClick()
             .nextBtnClick();
     // check clicks on out of Popup with dangerous product and check deletion product

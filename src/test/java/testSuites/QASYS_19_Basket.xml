@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="QASYS_19_Basket" data-provider-thread-count="4">
+<suite name="QASYS_19_Basket" data-provider-thread-count="6">
 
     <test name="QASYS_452_NumberBasketOnMobile">
         <classes>
@@ -15,4 +15,12 @@
             </class>
         </classes>
     </test>
+
+    <test name="QASYS_203_DeliveryLimit">
+        <classes>
+            <class name="ATD.QASYS_19_Basket.QASYS_203_DeliveryLimit">
+            </class>
+        </classes>
+    </test>
+
 </suite>
