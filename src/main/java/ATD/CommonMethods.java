@@ -24,7 +24,7 @@ public class CommonMethods {
     public static String password = "atdtest";
     public static String ridex_82B0896 = "82B0896";
     public static String usualIdProduct = "8340509";
-    public static String idProductTire = "8064604";
+    public static String idProductTire = "8075786";
     public static String idProductMore35EUR = "1367459";
 
     public static void closeCookiesFooterMessage() {
