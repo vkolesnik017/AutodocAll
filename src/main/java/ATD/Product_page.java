@@ -5,7 +5,6 @@ import com.codeborne.selenide.ex.ElementNotFound;
 import com.codeborne.selenide.ex.ElementShould;
 import com.codeborne.selenide.ex.UIAssertionError;
 import io.qameta.allure.Step;
-import org.openqa.selenium.NoSuchElementException;
 
 import static com.codeborne.selenide.Condition.not;
 import static com.codeborne.selenide.Condition.visible;
@@ -50,6 +49,7 @@ public class Product_page {
   @Step
   public Product_page addProductToCart() {
     checkNumberBasketAndRefreshPageIfNot();
+    sleep(2500); // TODO слип для стабилизации. Без слипа бывает что добавленный товар исчезает из корзины после перехода в неё, причну пока выяснить не удалось
     buyButton().click();
     try {
       firstProductPriceInPopupOfCart().shouldBe(visible);
