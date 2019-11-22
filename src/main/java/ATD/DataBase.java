@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataBase {
-    SetUp setUp = new SetUp();
 
     private String url = "jdbc:mysql://10.10.31.145:3306/autodoc?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     private String username = "alexeym";
@@ -24,6 +23,7 @@ public class DataBase {
         return conn;
     }
 
+    // Return list from route Main By Shops getRouteListForMain("AT,DE,CH")
     List<String> getRouteListForMain(String shop) throws SQLException {
         Connection conn = coonectionDB("routes_atd");
         ArrayList<String> route = new ArrayList<>();
@@ -41,6 +41,7 @@ public class DataBase {
         return route;
     }
 
+    // Return list routes By Shops and route getRouteListByRouteName("AT,DE,CH", "lkw_main")
     List<String> getRouteListByRouteName(String shop, String routeName) throws SQLException {
         Connection conn = coonectionDB("routes_atd");
         ArrayList<String> route = new ArrayList<>();
@@ -58,6 +59,7 @@ public class DataBase {
         return route;
     }
 
+    // Return String route By Shop and route getRouteByRouteName("AT", "lkw_main")
     public String getRouteByRouteName(String shop, String routeName) throws SQLException {
         Connection conn = coonectionDB("routes_atd");
         ArrayList<String> route = new ArrayList<>();
@@ -75,7 +77,7 @@ public class DataBase {
         return route.get(0);
     }
 
-
+    // Return String Currency By Shop getCurrency("AT")
     public String getCurrency(String shop) throws SQLException {
         Connection conn = coonectionDB("currency");
         String curency = null;

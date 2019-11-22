@@ -105,11 +105,11 @@ public class QASYS_349_Footer {
         main_page.clickMobileApp();
         commonMethods.checkingUrl(route + MobileApp);
         main_page.clickAutodocClub();
-        commonMethods.checkingUrlAndCloseTab(db.getRouteByRouteName(getCurrentShopFromJSVarInHTML(), "club") + "/?_ga=");
+        commonMethods.checkingUrlAndCloseTab(db.getRouteByRouteName(getCurrentShopFromJSVarInHTML(), "club_main") + "/?_ga=");
         main_page.clickBlog();
         commonMethods.checkingUrl(route + Blog);
         main_page.clickVideoTutorials();
-        commonMethods.checkingUrlAndCloseTab(db.getRouteByRouteName(getCurrentShopFromJSVarInHTML(), "club") + "/manuals?_ga=");
+        commonMethods.checkingUrlAndCloseTab(db.getRouteByRouteName(getCurrentShopFromJSVarInHTML(), "club_main") + "/manuals?_ga=");
         main_page.clickAltolentsorgung();
         commonMethods.checkingUrl(route + Altolentsorgung);
         main_page.clickAgb();
