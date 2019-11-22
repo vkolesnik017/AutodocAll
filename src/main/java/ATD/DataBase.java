@@ -6,7 +6,7 @@ import java.util.List;
 
 public class DataBase {
 
-    private String url = "jdbc:mysql://10.10.31.145:3306/autodoc?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+    private String url = "jdbc:mysql://10.10.34.37:3306/autodoc?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     private String username = "alexeym";
     private String password = "24201901";
 
