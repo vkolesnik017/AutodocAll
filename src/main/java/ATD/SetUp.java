@@ -72,24 +72,24 @@ public class SetUp {
     }
 
     // Return list Shop+subroute By Shops, main route and list subroutes "prod", "DE", "lkw_main", "lkw_category_car_list,lkw_category_car_list2")
-    public List<String> setUpShopWithSubroutes(String envFromTest, String shopFromTest, String routeName, String subRoutes) throws SQLException {
+    public Object[] setUpShopWithSubroutes(String envFromTest, String shopFromTest, String routeName, String subRoutes) throws SQLException {
         String env = getEnv(envFromTest);
         List<String> mainRouteList = new ArrayList<>(db.getRouteListByRouteName(shopFromTest, routeName));
         List<String> subRoutesList = new ArrayList<>();
         List<String> finalSubRoutesList = new ArrayList<>();
+        List<String> finalList = new ArrayList<>();
         String[] subRoute = subRoutes.split("\\,");
         Collections.addAll(subRoutesList, subRoute);
         for (String subRoutesParce : subRoutesList) {
             List<String> getSubRoutesList = db.getRouteListByRouteName(shopFromTest, subRoutesParce);
             finalSubRoutesList.addAll(getSubRoutesList);
         }
-
         for (String aSubRoutesList : finalSubRoutesList) {
             for (String aMainRouteList : mainRouteList) {
-                System.out.println(env + aMainRouteList + "/" + aSubRoutesList);
+                finalList.add(env + aMainRouteList + "/" + aSubRoutesList);
             }
         }
-        return subRoutesList;
+        return finalList.toArray();
     }
 
 
