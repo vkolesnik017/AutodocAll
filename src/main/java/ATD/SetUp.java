@@ -3,11 +3,14 @@ package ATD;
 import com.codeborne.selenide.Configuration;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class SetUp {
 
+    private DataBase db = new DataBase();
     private String shopFromJenkins = System.getenv("ShopFromJenkins");
     private String envFromJenkins = System.getenv("EnvFromJenkins");
 
@@ -29,15 +32,11 @@ public class SetUp {
     }
 
     public Object[] setUpShop(String envFromTest, String shopFromTest) {
-        String env = null;
         String shop;
         if (!(shopFromJenkins == null)) shop = shopFromJenkins;
         else shop = shopFromTest;
         if (!(envFromJenkins == null)) envFromTest = envFromJenkins;
-
-        if (envFromTest.equalsIgnoreCase("test")) env = "https://test.";
-        else if (envFromTest.equalsIgnoreCase("prod")) env = "https://www.";
-        else if (envFromTest.equalsIgnoreCase("mob")) env = "https://m.";
+        String env = getEnv(envFromTest);
         List<String> finalRouteList = new ArrayList<>();
         try {
             List<String> routeFromDB = new DataBase().getRouteListForMain(shop);
@@ -50,16 +49,16 @@ public class SetUp {
         return finalRouteList.toArray();
     }
 
+    // Return list routes By Shops and route setUpShopWithRoute("prod", "AT,DE,CH", "lkw_main")
     public Object[] setUpShopWithRoute(String envFromTest, String shopFromTest, String routeName) {
-        String env = null;
         String shop;
         if (!(shopFromJenkins == null)) shop = shopFromJenkins;
         else shop = shopFromTest;
         if (!(envFromJenkins == null)) envFromTest = envFromJenkins;
-
-        if (envFromTest.equalsIgnoreCase("test")) env = "https://test.";
-        else if (envFromTest.equalsIgnoreCase("prod")) env = "https://";
-        else if (envFromTest.equalsIgnoreCase("mob")) env = "https://m.";
+        String env = getEnv(envFromTest);
+//        if (envFromTest.equalsIgnoreCase("test")) env = "https://test.";
+//        else if (envFromTest.equalsIgnoreCase("prod")) env = "https://";
+//        else if (envFromTest.equalsIgnoreCase("mob")) env = "https://m.";
         List<String> finalRouteList = new ArrayList<>();
         try {
             List<String> routeFromDB = new DataBase().getRouteListByRouteName(shop, routeName);
@@ -72,8 +71,29 @@ public class SetUp {
         return finalRouteList.toArray();
     }
 
+    // Return list Shop+subroute By Shops, main route and list subroutes "prod", "DE", "lkw_main", "lkw_category_car_list,lkw_category_car_list2")
+    public List<String> setUpShopWithSubroutes(String envFromTest, String shopFromTest, String routeName, String subRoutes) throws SQLException {
+        String env = getEnv(envFromTest);
+        List<String> mainRouteList = new ArrayList<>(db.getRouteListByRouteName(shopFromTest, routeName));
+        List<String> subRoutesList = new ArrayList<>();
+        List<String> finalSubRoutesList = new ArrayList<>();
+        String[] subRoute = subRoutes.split("\\,");
+        Collections.addAll(subRoutesList, subRoute);
+        for (String subRoutesParce : subRoutesList) {
+            List<String> getSubRoutesList = db.getRouteListByRouteName(shopFromTest, subRoutesParce);
+            finalSubRoutesList.addAll(getSubRoutesList);
+        }
+
+        for (String aSubRoutesList : finalSubRoutesList) {
+            for (String aMainRouteList : mainRouteList) {
+                System.out.println(env + aMainRouteList + "/" + aSubRoutesList);
+            }
+        }
+        return subRoutesList;
+    }
 
 
+    // Return list Shop_param By Shops and String[] list setUpShopWithListParam("prod", "AT,DE,CH", list[])
     public Object[] setUpShopWithListParam(String envFromTest, String shopFromTest, String[] list) {
         Object[] shop = setUpShop(envFromTest, shopFromTest);
         List<String> shopList = new ArrayList<>();
@@ -89,6 +109,23 @@ public class SetUp {
         return finalList.toArray();
     }
 
-
+    private String getEnv(String envFromTest) {
+        String env = null;
+        switch (envFromTest) {
+            case ("test"):
+                env = "https://test.";
+                break;
+            case ("prod"):
+                env = "https://www.";
+                break;
+            case ("subprod"):
+                env = "https://";
+                break;
+            case ("mob"):
+                env = "https://m.";
+                break;
+        }
+        return env;
+    }
 
 }
