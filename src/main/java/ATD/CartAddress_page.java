@@ -75,6 +75,9 @@ public class CartAddress_page {
 
     @Step
     public CartAddress_page chooseDeliveryCountry(String country) {
+        if (country.equals("EN")) {
+            country = "GB";
+        }
         countryInSelector(country).shouldBe(visible).click();
         return this;
     }

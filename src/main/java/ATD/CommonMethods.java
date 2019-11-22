@@ -2,7 +2,6 @@ package ATD;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.ex.ElementShould;
 import com.codeborne.selenide.ex.UIAssertionError;
 import io.qameta.allure.Step;
 import org.testng.Assert;
@@ -38,9 +37,6 @@ public class CommonMethods {
 
     public static String getCurrentShopFromJSVarInHTML() {
         String currentShop = executeJavaScript("return $siteSettings.lang");
-        if (currentShop.equals("en")) {
-            currentShop = "gb";
-        }
         return currentShop.toUpperCase();
     }
 
