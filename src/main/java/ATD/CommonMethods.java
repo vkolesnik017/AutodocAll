@@ -2,13 +2,15 @@ package ATD;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.ex.ElementShould;
+import com.codeborne.selenide.ex.UIAssertionError;
 import io.qameta.allure.Step;
-import org.openqa.selenium.By;
 import org.testng.Assert;
 
 import java.util.Random;
 
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static com.codeborne.selenide.WebDriverRunner.source;
@@ -24,17 +26,21 @@ public class CommonMethods {
     public static String ridex_82B0896 = "82B0896";
     public static String usualIdProduct = "8340509";
     public static String idProductTire = "8064604";
+    public static String idProductMore35EUR = "1367459";
 
     public static void closeCookiesFooterMessage() {
         try {
-            $(By.xpath("//div[@class='block-cookies__close']")).click();
-        } catch (Exception e) {
+            $(byXpath("//div[@class='block-cookies__close']")).click();
+        } catch (UIAssertionError e) {
             System.out.println("Cookies block doesn't appear");
         }
     }
 
     public static String getCurrentShopFromJSVarInHTML() {
         String currentShop = executeJavaScript("return $siteSettings.lang");
+        if (currentShop.equals("en")) {
+            currentShop = "gb";
+        }
         return currentShop.toUpperCase();
     }
 
@@ -102,5 +108,11 @@ public class CommonMethods {
         assertTrue(actualUrl.contains(expectedUrl));
         getWebDriver().close();
         switchTo().window(0);
+    }
+
+    @Step
+    // Pulling prices from text of element
+    public static Float getPriceFromElement(SelenideElement element) {
+        return Float.parseFloat(element.text().replaceAll("[^0-9,]", "").replace(",", "."));
     }
 }

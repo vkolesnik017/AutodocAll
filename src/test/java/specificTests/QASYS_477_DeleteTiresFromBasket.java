@@ -57,7 +57,7 @@ public class QASYS_477_DeleteTiresFromBasket {
             .nextButtonClick()
             .signIn(email, password)
             .chooseDeliveryCountry(currentShop)
-            .enterPostalCode(postalCode)
+            .fillInPostalCode(postalCode)
             .nextBtnClick()
             .nextBtnClick();
     cartAllData_page.searchProductByID(idProductTire).shouldBe((visible));

@@ -19,6 +19,14 @@ public class CartAllData_page {
     return $(byCssSelector(".info-user-cart__info"));
   }
 
+  public SelenideElement freeDeliveryIcon() {
+    return $(byXpath("//*[@class='alldata-bottom']//*[@class='free_icon']"));
+  }
+
+  public SelenideElement addProductBtn() {
+    return $(byCssSelector(".plus"));
+  }
+
   // locator only for CH
   public SelenideElement vatPriceInHead() {
     return $(byXpath("//*[contains(@class,'top')]/div[4]/span[2]"));

@@ -2,10 +2,12 @@ package ATD;
 
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.checked;
 import static com.codeborne.selenide.Condition.selected;
+import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 
 public class Versand_static_page {
@@ -25,6 +27,10 @@ public class Versand_static_page {
     public SelenideElement deliveryPriceBlock() {
         return $(By.cssSelector(".prices-block__items"));
     }
+
+    public SelenideElement limitForFreeDelivery() {
+        return $(byXpath("(//*[@class='prices-block__items-item']/p)[2]"));
+}
 
     public SelenideElement vatBlock() {
         return $(By.cssSelector(".prices-block__text"));
@@ -136,5 +142,14 @@ public class Versand_static_page {
         $(clickLocator).click();
         $(checkLocator).shouldNotBe(selected);
         $(checkLocator).shouldNotBe(checked);
+    }
+
+
+    @Step
+    // pulling prices for free delivery from the text in the delivery block
+    public Float getDeliveryLimitFromText() {
+        String deliveryLimit = limitForFreeDelivery().getText();
+        deliveryLimit = deliveryLimit.replaceAll("[^0-9,]", "");
+        return Float.valueOf(deliveryLimit.startsWith(",") ? deliveryLimit.substring(1) : deliveryLimit.split(",")[0]);
     }
 }

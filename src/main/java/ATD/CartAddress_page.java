@@ -4,6 +4,7 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
+import static ATD.CommonMethods.getCurrentShopFromJSVarInHTML;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
@@ -39,11 +40,36 @@ public class CartAddress_page {
         return $(byName("lPlz"));
     }
 
-    @Step("Postal code: {postalCode}")
-    public CartAddress_page enterPostalCode(String postalCode) {
+    public SelenideElement fiscalCodeField() {
+        return $(byName("lFiscalCode"));
+    }
+
+    @Step
+    public CartAddress_page fillInFiscalCode() {
+        if (fiscalCodeField().isDisplayed()) {
+            fiscalCodeField().clear();
+            fiscalCodeField().setValue("1111");
+        }
+        return this;
+    }
+
+    @Step()
+    public CartAddress_page fillInPostalCode(String postalCodeOrCodeDefault) {
+        if (postalCodeOrCodeDefault.equals("default")) {
+            String currentShop = getCurrentShopFromJSVarInHTML();
+            if (currentShop.equals("DK")) {
+                postalCodeOrCodeDefault = "1234";
+            } else if (currentShop.equals("NL")) {
+                postalCodeOrCodeDefault = "1234 AA";
+            } else if (currentShop.equals("PT")) {
+                postalCodeOrCodeDefault = "1234-567";
+            } else {
+                postalCodeOrCodeDefault = "12345";
+            }
+        }
         postalCodeField().clear();
         postalCodeField().click();
-        postalCodeField().setValue(postalCode);
+        postalCodeField().setValue(postalCodeOrCodeDefault);
         return this;
     }
 
