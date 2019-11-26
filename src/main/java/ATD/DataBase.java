@@ -20,8 +20,6 @@ public class DataBase {
         } catch (Exception ex) {
             System.out.println("Connection failed...");
             ex.printStackTrace();
-        } finally {
-            if (conn != null) conn.close();
         }
         return conn;
     }
@@ -45,8 +43,8 @@ public class DataBase {
             e.printStackTrace();
         } finally {
             if (statement != null) statement.close();
-            if (conn != null) conn.close();
-        }
+        if (conn != null) conn.close();
+    }
         return route;
     }
 
