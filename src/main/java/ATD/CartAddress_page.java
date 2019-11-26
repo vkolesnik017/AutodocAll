@@ -73,7 +73,6 @@ public class CartAddress_page {
             }
         }
         postalCodeField().clear();
-        postalCodeField().click();
         postalCodeField().setValue(postalCodeOrCodeDefault);
         return this;
     }

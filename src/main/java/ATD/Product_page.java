@@ -49,7 +49,7 @@ public class Product_page {
   @Step
   public Product_page addProductToCart() {
     checkNumberBasketAndRefreshPageIfNot();
-    sleep(2500); // TODO слип для стабилизации. Без слипа бывает что добавленный товар исчезает из корзины после перехода в неё, причну пока выяснить не удалось
+    sleep(3000); // TODO слип для стабилизации. Без слипа бывает что добавленный товар исчезает из корзины после перехода в неё, причну пока выяснить не удалось
     buyButton().click();
     try {
       firstProductPriceInPopupOfCart().shouldBe(visible);
