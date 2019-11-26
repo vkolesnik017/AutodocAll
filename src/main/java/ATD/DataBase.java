@@ -20,8 +20,8 @@ public class DataBase {
         } catch (Exception ex) {
             System.out.println("Connection failed...");
             ex.printStackTrace();
-        }finally {
-            if (conn !=null) conn.close();
+        } finally {
+            if (conn != null) conn.close();
         }
         return conn;
     }
@@ -41,7 +41,7 @@ public class DataBase {
                     route.add(resultSet.getString(i));
                 }
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             if (statement != null) statement.close();
@@ -65,9 +65,9 @@ public class DataBase {
                     route.add(resultSet.getString(i));
                 }
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             if (statement != null) statement.close();
             if (conn != null) conn.close();
         }
@@ -91,9 +91,9 @@ public class DataBase {
             }
             statement.close();
             conn.close();
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             if (statement != null) statement.close();
             if (conn != null) conn.close();
         }
@@ -114,9 +114,9 @@ public class DataBase {
             }
             statement.close();
             conn.close();
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             if (statement != null) statement.close();
             if (conn != null) conn.close();
         }
