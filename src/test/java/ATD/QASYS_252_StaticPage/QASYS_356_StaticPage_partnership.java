@@ -31,8 +31,8 @@ public class QASYS_356_StaticPage_partnership {
         return new SetUp().setUpShop("prod", "DE");
     }
 
-    @Owner(value = "Oleg Romanyuta")
     @Test(dataProvider = "route")
+    @Owner(value = "Oleg Romanyuta")
     @Flaky
     @Description(value = "Test checks elements on partnership page")
     public void checkPartnershipPageElements(String route) {

@@ -12,7 +12,6 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
-import static com.codeborne.selenide.WebDriverRunner.source;
 import static com.codeborne.selenide.WebDriverRunner.url;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -111,4 +110,16 @@ public class CommonMethods {
     public static Float getPriceFromElement(SelenideElement element) {
         return Float.parseFloat(element.text().replaceAll("[^0-9,]", "").replace(",", "."));
     }
+
+    @Step("Choose car in selector")
+    public void chooseCarInSelector(String brand, String model, String type, Boolean clickSearchButton) {
+        $("#form_maker_id").selectOptionByValue(brand);
+        $("#form_model_id").selectOptionByValue(model);
+        $("#form_car_id").selectOptionByValue(type);
+        if(clickSearchButton) {
+            $(".search_button").click();
+        }
+    }
+
+
 }

@@ -33,8 +33,8 @@ public class QASYS_352_StaticPage_mobile_app {
         return new SetUp().setUpShop("prod", "DE");
     }
 
-    @Owner(value = "Oleg Romanyuta")
     @Test(dataProvider = "route")
+    @Owner(value = "Oleg Romanyuta")
     @Flaky
     @Description(value = "Test checks elements on mobile app page")
     public void checkMobileAppPageElements(String route) {

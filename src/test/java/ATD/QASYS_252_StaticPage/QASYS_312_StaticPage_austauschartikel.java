@@ -32,8 +32,8 @@ public class QASYS_312_StaticPage_austauschartikel {
         return new SetUp().setUpShop("prod", "DE");
     }
 
-    @Owner(value = "Oleg Romanyuta")
     @Test(dataProvider = "route")
+    @Owner(value = "Oleg Romanyuta")
     @Flaky
     @Description(value = "Test checks elements on austauschartikel page")
     public void checkAustauschartikelPageElements(String route) {

@@ -31,8 +31,8 @@ public class QASYS_309_StaticPage_versand {
         return new SetUp().setUpShop("prod", "DE");
     }
 
-    @Owner(value = "Oleg Romanyuta")
     @Test(dataProvider = "route")
+    @Owner(value = "Oleg Romanyuta")
     @Flaky
     @Description(value = "Test checks elements on versand page")
     public void checkVersandPageElements(String route) {
