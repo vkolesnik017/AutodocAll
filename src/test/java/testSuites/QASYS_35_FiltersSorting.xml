@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="QASYS_35_FiltersSorting" data-provider-thread-count="6">
+
+    <test name="QASYS_38_FiltersSorting_byGeneric">
+        <classes>
+            <class name="ATD.QASYS_35_FiltersSorting.QASYS_38_FiltersSorting_byGeneric">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QASYS_479_FiltersSorting_byPrice">
+        <classes>
+            <class name="ATD.QASYS_35_FiltersSorting.QASYS_479_FiltersSorting_byPrice">
+            </class>
+        </classes>
+    </test>
+
+</suite>
