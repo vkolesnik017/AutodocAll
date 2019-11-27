@@ -30,8 +30,8 @@ public class QASYS_313_StaticPage_contacts {
         return new SetUp().setUpShop("prod", "DE");
     }
 
-    @Owner(value = "Oleg Romanyuta")
     @Test(dataProvider = "route")
+    @Owner(value = "Oleg Romanyuta")
     @Flaky
     @Description(value = "Test checks elements on contacts page")
     public void checkContactsPageElements(String route) {

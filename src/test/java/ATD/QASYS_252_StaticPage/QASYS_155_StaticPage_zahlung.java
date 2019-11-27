@@ -30,8 +30,8 @@ public class QASYS_155_StaticPage_zahlung {
         return new SetUp().setUpShop("prod", "DE");
     }
 
-    @Owner(value = "Oleg Romanyuta")
     @Test(dataProvider = "route")
+    @Owner(value = "Oleg Romanyuta")
     @Flaky
     @Description(value = "Test checks elements on zahlung page")
     public void checkZahlungPageElements(String route) {

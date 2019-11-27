@@ -30,8 +30,8 @@ public class QASYS_353_StaticPage_sponsorship {
         return new SetUp().setUpShop("prod", "DE");
     }
 
-    @Owner(value = "Oleg Romanyuta")
     @Test(dataProvider = "route")
+    @Owner(value = "Oleg Romanyuta")
     @Flaky
     @Description(value = "Test checks elements on sponsorship page")
     public void checkSponsorshipPgeElements(String route) {

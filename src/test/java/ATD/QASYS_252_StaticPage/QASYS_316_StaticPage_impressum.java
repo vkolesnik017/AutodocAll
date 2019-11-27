@@ -31,8 +31,8 @@ public class QASYS_316_StaticPage_impressum {
         return new SetUp().setUpShop("prod", "DE");
     }
 
-    @Owner(value = "Oleg Romanyuta")
     @Test(dataProvider = "route")
+    @Owner(value = "Oleg Romanyuta")
     @Flaky
     @Description(value = "Test checks elements on impressum page")
     public void checkImpressumPageElements(String route) {
