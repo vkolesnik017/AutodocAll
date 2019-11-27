@@ -48,6 +48,20 @@ public class ListingTecdoc_page {
 
     public SelenideElement filterByBrand() { return $(By.xpath("//*[@class='slick-track']/li[8]/label/img")); }
 
+    public SelenideElement firstBrandInFilterButton() { return $(By.xpath("//*[@class='slick-track']/li[8]/label")); }
+
+    public SelenideElement preloader() { return $(By.cssSelector(".preloader_wrapper")); }
+
+    public SelenideElement firstGeneric() { return $(By.xpath("//div[contains(@class,'filter-generics-tecdoc__list js-filter-generics-tecdoc')]//label[1]/div[2]")); }
+
+    public SelenideElement secondGeneric() { return $(By.xpath("//div[contains(@class,'filter-generics-tecdoc__list js-filter-generics-tecdoc')]//label[2]/div[2]")); }
+
+    public SelenideElement fourthGeneric() { return $(By.xpath("//div[contains(@class,'filter-generics-tecdoc__list js-filter-generics-tecdoc')]//label[4]/div[2]")); }
+
+    public ElementsCollection productTitleInListMode() { return $$(By.cssSelector(".name")); }
+
+    public ElementsCollection productTitleInTileMode() { return $$(By.cssSelector(".rec_prod_title.small_text")); }
+
     @Step("Method gets price of all products on listing and parse it into float")
     public List<Float> getAllPricesOnListingPage(ElementsCollection listingViewModeLocator) {
         List<Float> listOfFloatPrices = new ArrayList<>();
@@ -60,21 +74,33 @@ public class ListingTecdoc_page {
         return listOfFloatPrices;
     }
 
-    @Step("Method checks if prices on listing are in range of price filter")
+    @Step("Method checks if prices on listing are in range {maxPriceToCheck} - {maxPriceToCheck} of price filter")
     public void checkPricesRange(Float minPriceToCheck, Float maxPriceToCheck, ElementsCollection listingViewModeLocator) {
         List<Float> price = getAllPricesOnListingPage(listingViewModeLocator);
         for (int i = 0; i < price.size()-1; i++) {
             if(price.get(i) >= minPriceToCheck && price.get(i) <= maxPriceToCheck) {
             } else {
-                Assert.fail("Prices on listing are NOT in range of price filter");
+                Assert.fail("Prices on listing are NOT in range of price filter. Range: " + minPriceToCheck + " - " + maxPriceToCheck);
             }
         }
-        System.out.println("Prices on listing are in range of price filter");
+        System.out.println("Prices on listing are in range of price filter. Range: " + minPriceToCheck + " - " + maxPriceToCheck);
     }
 
+    @Step("Method checks that filter by side applied to products on listing")
     public void checkFilterBySide(String attributeText) {
         for(int i = 0; i < sideFilterAttribute().size()-1; i++) {
             sideFilterAttribute().get(i).shouldHave(text(attributeText));
+        }
+    }
+
+    @Step("Method checks that expected text is present in title of all products on listing")
+    public void checkProductTitleOnListing(String expectedTextInTitle, Boolean shouldHaveTextOrNotHave, ElementsCollection titleViewMode) {
+        for(int i = 0; i < titleViewMode.size()-1; i++) {
+            if (shouldHaveTextOrNotHave) {
+               titleViewMode.get(i).shouldHave(text(expectedTextInTitle));
+            } else {
+                titleViewMode.get(i).shouldNotHave(text(expectedTextInTitle));
+            }
         }
     }
 }
