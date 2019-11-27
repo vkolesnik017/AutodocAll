@@ -30,8 +30,8 @@ public class QASYS_360_StaticPage_vacancies {
         return new SetUp().setUpShop("prod", "DE");
     }
 
-    @Owner(value = "Oleg Romanyuta")
     @Test(dataProvider = "route")
+    @Owner(value = "Oleg Romanyuta")
     @Flaky
     @Description(value = "Test checks elements on vacancies page")
     public void checkVacanciesPageElements(String route) {

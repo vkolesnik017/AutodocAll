@@ -31,8 +31,8 @@ public class QASYS_311_StaticPage_widerruf {
         return new SetUp().setUpShop("prod", "DE");
     }
 
-    @Owner(value = "Oleg Romanyuta")
     @Test(dataProvider = "route")
+    @Owner(value = "Oleg Romanyuta")
     @Flaky
     @Description(value = "Test checks elements on widerruf page")
     public void checkWiderrufPageElements(String route) {

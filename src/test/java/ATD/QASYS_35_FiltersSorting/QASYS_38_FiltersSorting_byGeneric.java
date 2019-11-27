@@ -34,9 +34,9 @@ public class QASYS_38_FiltersSorting_byGeneric {
         return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_search2,lkw_category_car_list4,lkw_search2");
     }
 
+    @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "oleg")
-    @Test(dataProvider = "routes")
     @Description(value = "Test checks generic filter on listing (Tecdoc, ACC)")
     public void checkFilterByGeneric(String route) {
         open(route);
@@ -45,9 +45,9 @@ public class QASYS_38_FiltersSorting_byGeneric {
         listingTecdocPage.checkProductTitleOnListing(genericName, true, listingTecdocPage.productTitleInListMode());
     }
 
+    @Test(dataProvider = "routesLKW")
     @Flaky
     @Owner(value = "oleg")
-    @Test(dataProvider = "routesLKW")
     @Description(value = "Test checks generic filter on listing LKW")
     public void checkFilterByGenericLKW(String route) {
         open(route);
@@ -56,9 +56,9 @@ public class QASYS_38_FiltersSorting_byGeneric {
         listingTecdocPage.checkProductTitleOnListing(genericName, true, listingTecdocPage.productTitleInListMode());
     }
 
+    @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "oleg")
-    @Test(dataProvider = "routes")
     @Description(value = "Test checks generic filter on listing (Tecdoc, ACC) with two generics")
     public void checkFilterWithTwoGenerics(String route) {
         open(route);
@@ -70,9 +70,9 @@ public class QASYS_38_FiltersSorting_byGeneric {
         listingTecdocPage.checkProductTitleOnListing(genericName, false, listingTecdocPage.productTitleInListMode());
     }
 
+    @Test(dataProvider = "routesLKW")
     @Flaky
     @Owner(value = "oleg")
-    @Test(dataProvider = "routesLKW")
     @Description(value = "Test checks generic filter on listing LKW with two generics")
     public void checkFilterWithTwoGenericsLKW(String route) {
         open(route);
@@ -84,10 +84,9 @@ public class QASYS_38_FiltersSorting_byGeneric {
         listingTecdocPage.checkProductTitleOnListing(genericName, false, listingTecdocPage.productTitleInListMode());
     }
 
-
+    @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "oleg")
-    @Test(dataProvider = "routes")
     @Description(value = "Test checks generic filter on listing (Tecdoc, ACC) in tile mode")
     public void checkFilterByGenericInTileMode(String route) {
         open(route);
@@ -98,9 +97,9 @@ public class QASYS_38_FiltersSorting_byGeneric {
         listingTecdocPage.checkProductTitleOnListing(genericName, true, listingTecdocPage.productTitleInTileMode());
     }
 
+    @Test(dataProvider = "routesLKW")
     @Flaky
     @Owner(value = "oleg")
-    @Test(dataProvider = "routesLKW")
     @Description(value = "Test checks generic filter on listing LKW in tile mode")
     public void checkFilterByGenericInTileModeLKW(String route) {
         open(route);
@@ -111,9 +110,9 @@ public class QASYS_38_FiltersSorting_byGeneric {
         listingTecdocPage.checkProductTitleOnListing(genericName, true, listingTecdocPage.productTitleInTileMode());
     }
 
+    @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "oleg")
-    @Test(dataProvider = "routes")
     @Description(value = "Test checks generic position in generic block on listing (Tecdoc, ACC)")
     public void checkGenericPosition(String route) {
         open(route);
@@ -122,9 +121,9 @@ public class QASYS_38_FiltersSorting_byGeneric {
         listingTecdocPage.firstGeneric().shouldHave(text(genericName));
     }
 
+    @Test(dataProvider = "routesLKW")
     @Flaky
     @Owner(value = "oleg")
-    @Test(dataProvider = "routesLKW")
     @Description(value = "Test checks generic position in generic block on listing LKW")
     public void checkGenericPositionLKW(String route) {
         open(route);

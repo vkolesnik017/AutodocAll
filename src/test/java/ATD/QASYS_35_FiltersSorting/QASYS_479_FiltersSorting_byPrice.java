@@ -25,9 +25,9 @@ public class QASYS_479_FiltersSorting_byPrice {
         setUpBrowser(false, "chrome", "77.0");
     }
 
+    @Test
     @Flaky
     @Owner(value = "oleg")
-    @Test
     @Description(value = "Test checks price filter on listing (Tecdoc, ACC) in list and tile mode")
     public void checkPriceFilterTecdocAndAcc() throws SQLException{
         //Tecdoc listing check
@@ -57,9 +57,9 @@ public class QASYS_479_FiltersSorting_byPrice {
         listingTecdocPage.checkPricesRange(2.00f, 17.00f, listingTecdocPage.priceOfAllProductsOnPageInTile());
     }
 
+    @Test
     @Flaky
     @Owner(value = "oleg")
-    @Test
     @Description(value = "Test checks price filter on listing (LKW) in list and tile mode")
     public void checkPriceFilterLkw() throws SQLException {
         open("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_category_car_list"));
@@ -75,9 +75,9 @@ public class QASYS_479_FiltersSorting_byPrice {
         listingTecdocPage.checkPricesRange(17.00f, 33.00f, listingTecdocPage.priceOfAllProductsOnPageInTile());
     }
 
+    @Test
     @Flaky
     @Owner(value = "oleg")
-    @Test
     @Description(value = "Test checks price filter on listing (Tecdoc, ACC) with pagination")
     public void checkPriceFilterTecdocAndAccPagination() throws SQLException {
         open("https://autodoc.de/" +  dataBase.getRouteByRouteName("DE", "category_car_list"));
@@ -104,9 +104,9 @@ public class QASYS_479_FiltersSorting_byPrice {
         listingTecdocPage.checkPricesRange(2.00f, 17.00f, listingTecdocPage.priceOfAllProductsOnPageInList());
     }
 
+    @Test
     @Flaky
     @Owner(value = "oleg")
-    @Test
     @Description(value = "Test checks price filter on listing (LKW) with pagination")
     public void checkPriceFilterLkwPagination() throws SQLException {
         open("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_category_car_list"));
@@ -121,9 +121,9 @@ public class QASYS_479_FiltersSorting_byPrice {
         listingTecdocPage.checkPricesRange(7.00f, 33.00f, listingTecdocPage.priceOfAllProductsOnPageInTile());
     }
 
+    @Test
     @Flaky
     @Owner(value = "oleg")
-    @Test
     @Description(value = "Test checks price filter reset on listing (Tecdoc, ACC)")
     public void checkPriceFilterResetTecdocAndAcc() throws SQLException {
         //Tecdoc listing check
@@ -161,9 +161,9 @@ public class QASYS_479_FiltersSorting_byPrice {
         listingTecdocPage.checkPricesRange(minFloatAcc, maxFloatAcc, listingTecdocPage.priceOfAllProductsOnPageInTile());
     }
 
+    @Test
     @Flaky
     @Owner(value = "oleg")
-    @Test
     @Description(value = "Test checks price filter reset on listing (LKW)")
     public void checkPriceFilterResetLKW() throws SQLException {
         open("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_category_car_list"));
@@ -183,9 +183,9 @@ public class QASYS_479_FiltersSorting_byPrice {
         listingTecdocPage.checkPricesRange(minFloat, maxFloat, listingTecdocPage.priceOfAllProductsOnPageInTile());
     }
 
+    @Test
     @Flaky
     @Owner(value = "oleg")
-    @Test
     @Description(value = "Test checks price filter on listing (Tecdoc) with few products")
     public void checkPriceFilterTecdocWithFewProducts() throws SQLException {
         open("https://autodoc.de/" +  dataBase.getRouteByRouteName("DE", "category_car_list3"));
@@ -197,9 +197,9 @@ public class QASYS_479_FiltersSorting_byPrice {
         listingTecdocPage.priceFilterBlock().shouldBe(visible);
     }
 
+    @Test
     @Flaky
     @Owner(value = "oleg")
-    @Test
     @Description(value = "Test checks price filter on listing (Tecdoc) with filter by side")
     public void checkPriceFilterTecdocWithFilerBySide() throws SQLException {
         open("https://autodoc.de/" +  dataBase.getRouteByRouteName("DE", "category_car_list"));
@@ -213,9 +213,9 @@ public class QASYS_479_FiltersSorting_byPrice {
         listingTecdocPage.checkPricesRange(66f, 246f, listingTecdocPage.priceOfAllProductsOnPageInList());
     }
 
+    @Test
     @Flaky
     @Owner(value = "oleg")
-    @Test
     @Description(value = "Test checks price filter on listing (LKW) with filter by side")
     public void checkPriceFilterTecdocWithFilerBySideLKW() throws SQLException {
         open("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_category_car_list"));
@@ -229,9 +229,9 @@ public class QASYS_479_FiltersSorting_byPrice {
         listingTecdocPage.checkPricesRange(12f, 116f, listingTecdocPage.priceOfAllProductsOnPageInList());
     }
 
+    @Test
     @Flaky
     @Owner(value = "oleg")
-    @Test
     @Description(value = "Test checks price filter on listing (Tecdoc, ACC) with filter by characteristic/brand")
     public void checkPriceFilterTecdocWithFilerByBrand() throws SQLException {
         //Tecdoc listing price + characteristic
