@@ -248,12 +248,12 @@ public class QASYS_479_FiltersSorting_byPrice {
         //ACC listing price + brand filter
         open("https://autodoc.de/" +  dataBase.getRouteByRouteName("DE", "listing_accessories2"));
         String brandName = listingTecdocPage.filterByBrand().attr("alt");
-        System.out.println(brandName);
         listingTecdocPage.firstBrandInFilterButton().click();
         listingTecdocPage.preloader().shouldBe(attribute("style", "display: none;"));
         executeJavaScript("arguments[0].value='15';", listingTecdocPage.minPriceValue());
         executeJavaScript("arguments[0].value='25';", listingTecdocPage.maxPriceValue());
         listingTecdocPage.priceFilterSubmitButton().click();
+        listingTecdocPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingTecdocPage.checkPricesRange(12f, 28f, listingTecdocPage.priceOfAllProductsOnPageInList());
         listingTecdocPage.checkProductTitleOnListing(brandName, true, listingTecdocPage.productTitleInListMode());
     }
