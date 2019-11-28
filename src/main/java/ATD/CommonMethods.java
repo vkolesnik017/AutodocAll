@@ -2,6 +2,7 @@ package ATD;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.ex.ElementShould;
 import com.codeborne.selenide.ex.UIAssertionError;
 import io.qameta.allure.Step;
 import org.testng.Assert;
@@ -9,6 +10,7 @@ import org.testng.Assert;
 import java.util.Random;
 
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
@@ -121,5 +123,18 @@ public class CommonMethods {
         }
     }
 
+    @Step
+    public static void clickOfBuyBtnForAllPages() {
+        SelenideElement productBlockForHover = $(byCssSelector(".rec_products_block"));
+        try {
+            if (productBlockForHover.isDisplayed()) {
+                productBlockForHover.hover();
+            }
+            $(byXpath("//a[contains(@class,'add_')]")).waitUntil(visible, 2000).click();
+        } catch (ElementShould e) {
+            $(byXpath("//div[@class='top-small-products__items']//a[contains(@class,'add_')]")).click();
+        }
+        new Product_page().firstProductPriceInPopupOfCart().shouldBe(visible);
+    }
 
 }
