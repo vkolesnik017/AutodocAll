@@ -124,7 +124,7 @@ public class CommonMethods {
     }
 
     @Step
-    public static void clickOfBuyBtnAndGetHisIdForAllPages() {
+    public static void clickOfBuyBtnForAllPages() {
         SelenideElement productBlockForHover = $(byCssSelector(".rec_products_block"));
         try {
             if (productBlockForHover.isDisplayed()) {

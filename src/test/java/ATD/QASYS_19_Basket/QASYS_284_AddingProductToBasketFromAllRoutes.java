@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.clickOfBuyBtnAndGetHisIdForAllPages;
+import static ATD.CommonMethods.clickOfBuyBtnForAllPages;
 import static ATD.CommonMethods.closeCookiesFooterMessage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.visible;
@@ -45,7 +45,7 @@ public class QASYS_284_AddingProductToBasketFromAllRoutes {
     open(route);
     closeCookiesFooterMessage();
     productPage.checkNumberBasketAndRefreshPageIfNot();
-    clickOfBuyBtnAndGetHisIdForAllPages();
+    clickOfBuyBtnForAllPages();
     productPage.closePopupOtherCategoryIfYes()
             .cartClick()
             .productPrice().shouldBe(visible);
@@ -67,7 +67,7 @@ public class QASYS_284_AddingProductToBasketFromAllRoutes {
     open(route);
     closeCookiesFooterMessage();
     productPage.checkNumberBasketAndRefreshPageIfNot();
-    clickOfBuyBtnAndGetHisIdForAllPages();
+    clickOfBuyBtnForAllPages();
     productPage.closePopupOtherCategoryIfYes()
             .cartClick()
             .productPrice().shouldBe(visible);
@@ -89,7 +89,7 @@ public class QASYS_284_AddingProductToBasketFromAllRoutes {
     open(route);
     closeCookiesFooterMessage();
     productPage.checkNumberBasketAndRefreshPageIfNot();
-    clickOfBuyBtnAndGetHisIdForAllPages();
+    clickOfBuyBtnForAllPages();
     productPage.closePopupOtherCategoryIfYes()
             .cartClick()
             .productPrice().shouldBe(visible);
