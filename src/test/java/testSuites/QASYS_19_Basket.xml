@@ -17,4 +17,11 @@
         </classes>
     </test>
 
+    <test name="QASYS_284_AddingProductToBasketFromAllRoutes">
+        <classes>
+            <class name="ATD.QASYS_19_Basket.QASYS_284_AddingProductToBasketFromAllRoutes">
+            </class>
+        </classes>
+    </test>
+
 </suite>

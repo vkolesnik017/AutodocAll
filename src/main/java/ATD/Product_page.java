@@ -16,7 +16,6 @@ public class Product_page {
   @Step
   public Product_page openProductPageById(String route, String idProduct) {
     open(route + "/a/" + idProduct);
-    cartIcon().shouldBe(visible);
     return this;
   }
 
@@ -49,7 +48,7 @@ public class Product_page {
   @Step
   public Product_page addProductToCart() {
     checkNumberBasketAndRefreshPageIfNot();
-    sleep(3000); // TODO слип для стабилизации. Без слипа бывает что добавленный товар исчезает из корзины после перехода в неё, причну пока выяснить не удалось
+    sleep(3000); // TODO для стабилизации. Без слипа иногда добавленный товар исчезает из корзины после перехода в неё, решается в SITES-2830
     buyButton().click();
     try {
       firstProductPriceInPopupOfCart().shouldBe(visible);
@@ -62,7 +61,7 @@ public class Product_page {
   }
 
   @Step
-  private Product_page checkNumberBasketAndRefreshPageIfNot() {  // TODO Бывает при открытии страницы не подгружается номер корзины и товар не добавляется в корзину, причина не известна, что бы стабилизировать тесты добавлен этот метод
+  public Product_page checkNumberBasketAndRefreshPageIfNot() {  // TODO Бывает при открытии страницы не подгружается номер корзины и товар не добавляется в корзину, причина не известна, что бы стабилизировать тесты добавлен этот метод
     try {
       numberBasket().shouldBe(visible);
     } catch (ElementShould e) {
@@ -103,10 +102,6 @@ public class Product_page {
 
   public SelenideElement totalPriceInPopupOfCart() {
     return $(byCssSelector(".row-right>p"));
-  }
-
-  SelenideElement goToCartInPopupOfCart() {
-    return $(byXpath("//*[@class='cart-items-block__buttons']/a[1]"));
   }
 
   // locators in popup of gray button for subscription for product which is not stock
