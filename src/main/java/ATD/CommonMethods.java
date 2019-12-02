@@ -135,6 +135,7 @@ public class CommonMethods {
             $(byXpath("//div[@class='top-small-products__items']//a[contains(@class,'add_')]")).click();
         }
         new Product_page().firstProductPriceInPopupOfCart().shouldBe(visible);
+        sleep(2000);
     }
 
 }
