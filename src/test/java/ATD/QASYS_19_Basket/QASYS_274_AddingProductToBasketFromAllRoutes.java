@@ -18,7 +18,7 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
-public class QASYS_284_AddingProductToBasketFromAllRoutes {
+public class QASYS_274_AddingProductToBasketFromAllRoutes {
 
   private Product_page productPage = new Product_page();
 
@@ -29,10 +29,10 @@ public class QASYS_284_AddingProductToBasketFromAllRoutes {
 
   @DataProvider(name = "routesMain", parallel = true)
   Object[] routesMain() throws SQLException {
-    return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "categories,category_car_list,category_group,category_group_body," +
+    return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "categories,categories_maker,category_car_list,category_group,category_group_body," +
             "category_group_brand,category_group_drive,category_group_fuel,category_group_year,category_maker,category_maker_body,category_maker_brand,category_maker_drive," +
-            "category_model,category_model_brand,category_name_parent,category_oen,group_list,group_list_body,group_list_drive,group_list_fuel,group_list_hp," +
-            "group_list_year,index_accessories,index_instruments,listing_accessories,listing_instruments,maker_car_list,model_maker_list,model_maker_list_year," +
+            "category_model,category_model_brand,,category_name,category_name_parent,category_oen,group_list,group_list_body,group_list_drive,group_list_fuel,group_list_hp," +
+            "group_list_year,index_accessories,index_instruments,listing_accessories,listing_instruments,maker_car_list,model_maker_list,model_maker_list_hp,model_maker_list_year," +
             "product,search,tyre_form,tyre_item,tyres_brand,tyres_brand_dimension,tyres_brand_size,tyres_dimension,tyres_group_season_brand,tyres_season," +
             "tyres_season_dimension,tyres_season_size,tyres_size");
   }
