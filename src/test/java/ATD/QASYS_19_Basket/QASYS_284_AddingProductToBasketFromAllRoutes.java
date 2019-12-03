@@ -47,7 +47,9 @@ public class QASYS_284_AddingProductToBasketFromAllRoutes {
     productPage.checkNumberBasketAndRefreshPageIfNot();
     clickOfBuyBtnForAllPages();
     productPage.closePopupOtherCategoryIfYes()
-            .cartClick()
+            .cartIcon().hover();
+    productPage.firstProductPriceInPopupOfCart().shouldBe(visible);
+    productPage.cartClick()
             .productPrice().shouldBe(visible);
     getWebDriver().manage().deleteAllCookies();
   }
@@ -69,7 +71,9 @@ public class QASYS_284_AddingProductToBasketFromAllRoutes {
     productPage.checkNumberBasketAndRefreshPageIfNot();
     clickOfBuyBtnForAllPages();
     productPage.closePopupOtherCategoryIfYes()
-            .cartClick()
+            .cartIcon().hover();
+    productPage.firstProductPriceInPopupOfCart().shouldBe(visible);
+    productPage.cartClick()
             .productPrice().shouldBe(visible);
     getWebDriver().manage().deleteAllCookies();
   }
@@ -91,7 +95,9 @@ public class QASYS_284_AddingProductToBasketFromAllRoutes {
     productPage.checkNumberBasketAndRefreshPageIfNot();
     clickOfBuyBtnForAllPages();
     productPage.closePopupOtherCategoryIfYes()
-            .cartClick()
+            .cartIcon().hover();
+    productPage.firstProductPriceInPopupOfCart().shouldBe(visible);
+    productPage.cartClick()
             .productPrice().shouldBe(visible);
     getWebDriver().manage().deleteAllCookies();
   }
