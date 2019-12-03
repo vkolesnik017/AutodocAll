@@ -9,6 +9,7 @@ import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class CartAllData_page {
 
@@ -90,10 +91,11 @@ public class CartAllData_page {
 
   @Step
   public CartAllData_page makeAndCheckLimitPriceForFreeDelivery(float deliveryLimit) {
-    // An increase in the quantity of goods for checking the limit of free delivery
+    // An increase in the quantity of products for checking the limit of free delivery
     float totalPrice = getPriceFromElement(totalProductPrice());
     while (!freeDeliveryIcon().isDisplayed() && totalPrice < deliveryLimit) {
-      String beforeClickPrice = totalProductPrice().getText();
+      String beforeClickPrice = totalProductPrice().text();
+      sleep(1000);
       addProductBtn().click();
       totalProductPrice().shouldHave(not(text(beforeClickPrice)));
       totalPrice = getPriceFromElement(totalProductPrice());
