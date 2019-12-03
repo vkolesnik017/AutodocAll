@@ -26,6 +26,10 @@ public class Cart_page {
         return page(CartAccount_page.class);
     }
 
+    public SelenideElement fieldWithQuantityOfProducts() {
+        return $(byCssSelector(".qty>input"));
+    }
+
     public SelenideElement addProductBtn() {
         return $(byCssSelector(".plus"));
     }
@@ -94,10 +98,11 @@ public class Cart_page {
 
     @Step
     public Cart_page makeAndCheckLimitPriceForFreeDelivery(float deliveryLimit) {
-        // An increase in the quantity of goods for checking the limit of free delivery
+        // An increase in the quantity of products for checking the limit of free delivery
         float totalPrice = getPriceFromElement(totalProductPrice());
         while (!freeDeliveryIcon().isDisplayed() && totalPrice < deliveryLimit) {
-            String beforeClickPrice = totalProductPrice().getText();
+            String beforeClickPrice = totalProductPrice().text();
+            sleep(1000);
             addProductBtn().click();
             totalProductPrice().shouldHave(not(text(beforeClickPrice)));
             totalPrice = getPriceFromElement(totalProductPrice());

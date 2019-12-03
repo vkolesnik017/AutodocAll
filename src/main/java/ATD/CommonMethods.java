@@ -123,17 +123,24 @@ public class CommonMethods {
         }
     }
 
+    static SelenideElement universalElementOfBuyBtnForAllPages() {
+        return $(byXpath("//a[contains(@class,'add_')]"));
+    }
+
     @Step
+    // method for test adding product to basket from all routes
     public static void clickOfBuyBtnForAllPages() {
         SelenideElement productBlockForHover = $(byCssSelector(".rec_products_block"));
         try {
             if (productBlockForHover.isDisplayed()) {
                 productBlockForHover.hover();
             }
-            $(byXpath("//a[contains(@class,'add_')]")).waitUntil(visible, 2000).click();
+            sleep(2000); // TODO try delete this sleep after fixed SITES-2830
+            universalElementOfBuyBtnForAllPages().waitUntil(visible, 2000).click();
         } catch (ElementShould e) {
             $(byXpath("//div[@class='top-small-products__items']//a[contains(@class,'add_')]")).click();
         }
+        sleep(2000); // TODO try delete this sleep after fixed SITES-2830
     }
 
 }
