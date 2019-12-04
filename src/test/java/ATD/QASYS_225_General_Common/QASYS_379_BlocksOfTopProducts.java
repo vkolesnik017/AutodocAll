@@ -16,8 +16,8 @@ import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.value;
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class QASYS_379_BlocksOfTopProducts {
 
@@ -80,8 +80,8 @@ public class QASYS_379_BlocksOfTopProducts {
   }
 
   @AfterMethod
-  public void deleteAllCookies() {
-    getWebDriver().manage().deleteAllCookies();
+  public void tearDown() {
+    close();
   }
 
 
