@@ -38,7 +38,7 @@ public class QASYS_203_DeliveryLimit {
   @Owner(value = "Evlentiev")
   @Test(dataProvider = "route")
   @Flaky
-  @Description(value = "Delivery limit in basket")
+  @Description(value = "TC01 Delivery limit in basket")
   public void testDeliveryLimitInBasket(String homepage) {
     open(homepage);
     closeCookiesFooterMessage();
@@ -54,7 +54,7 @@ public class QASYS_203_DeliveryLimit {
   @Owner(value = "Evlentiev")
   @Test(dataProvider = "route")
   @Flaky
-  @Description(value = "Delivery limit in alldata")
+  @Description(value = "TC02 Delivery limit in alldata")
   public void testDeliveryLimitInAllData(String homepage) {
     open(homepage);
     closeCookiesFooterMessage();
