@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="QASYS_225_General_Common" data-provider-thread-count="6">
+
+    <test name="QASYS_379_BlocksOfTopProducts">
+        <classes>
+            <class name="ATD.QASYS_225_General_Common.QASYS_379_BlocksOfTopProducts">
+            </class>
+        </classes>
+    </test>
+
+</suite>
