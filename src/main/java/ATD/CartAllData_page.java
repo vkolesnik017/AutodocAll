@@ -4,8 +4,7 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
 import static ATD.CommonMethods.getPriceFromElement;
-import static com.codeborne.selenide.Condition.not;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byXpath;
@@ -92,13 +91,14 @@ public class CartAllData_page {
 
   @Step
   public CartAllData_page makeAndCheckLimitPriceForFreeDelivery(float deliveryLimit) {
-    // An increase in the quantity of goods for checking the limit of free delivery
+    // An increase in the quantity of products for checking the limit of free delivery
     float totalPrice = getPriceFromElement(totalProductPrice());
     while (!freeDeliveryIcon().isDisplayed() && totalPrice < deliveryLimit) {
+      String beforeClickPrice = totalProductPrice().text();
+      sleep(1000);
       addProductBtn().click();
-      sleep(1500);
+      totalProductPrice().shouldHave(not(text(beforeClickPrice)));
       totalPrice = getPriceFromElement(totalProductPrice());
-      System.out.println(totalPrice);
       if (totalPrice < deliveryLimit) {
         freeDeliveryIcon().shouldBe(not(visible));
       } else if (totalPrice > deliveryLimit) {

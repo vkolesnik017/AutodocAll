@@ -2,12 +2,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="QASYS_19_Basket" data-provider-thread-count="6">
 
-    <test name="QASYS_452_NumberBasketOnMobile">
-        <classes>
-            <class name="ATD.QASYS_19_Basket.QASYS_452_NumberBasketOnMobile">
-            </class>
-        </classes>
-    </test>
 
     <test name="QASYS_455_DeletingOfDangerousProductFromBasket">
         <classes>
@@ -19,6 +13,13 @@
     <test name="QASYS_203_DeliveryLimit">
         <classes>
             <class name="ATD.QASYS_19_Basket.QASYS_203_DeliveryLimit">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QASYS_274_AddingProductToBasketFromAllRoutes">
+        <classes>
+            <class name="ATD.QASYS_19_Basket.QASYS_274_AddingProductToBasketFromAllRoutes">
             </class>
         </classes>
     </test>

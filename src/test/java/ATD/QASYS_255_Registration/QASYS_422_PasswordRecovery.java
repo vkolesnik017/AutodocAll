@@ -41,7 +41,7 @@ public class QASYS_422_PasswordRecovery {
     @Owner(value = "Evlentiev")
     @Test(dataProvider = "route")
     @Flaky
-    @Description(value = "Checking recovery password from popup in header")
+    @Description(value = "TC01 Checking recovery password from popup in header")
     public void testPasswordRecoveryFromHeader(String route) {
         newPassword = getRandomNumber();
         open(route);
@@ -79,7 +79,7 @@ public class QASYS_422_PasswordRecovery {
     @Owner(value = "Evlentiev")
     @Test(dataProvider = "route")
     @Flaky
-    @Description(value = "Checking recovery password from cart")
+    @Description(value = "TC02 Checking recovery password from cart")
     public void testPasswordRecoveryFromCart(String route) {
         newPassword = getRandomNumber();
         open(route);

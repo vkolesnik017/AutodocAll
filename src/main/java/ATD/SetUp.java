@@ -82,6 +82,7 @@ public class SetUp {
         Collections.addAll(subRoutesList, subRoute);
         for (String subRoutesParce : subRoutesList) {
             List<String> getSubRoutesList = db.getRouteListByRouteName(shopFromTest, subRoutesParce);
+            if(subRoutesParce.contains("main")) getSubRoutesList = Collections.singletonList("");
             finalSubRoutesList.addAll(getSubRoutesList);
         }
         for (String aSubRoutesList : finalSubRoutesList) {

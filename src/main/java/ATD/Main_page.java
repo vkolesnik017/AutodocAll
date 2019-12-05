@@ -5,7 +5,6 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static ATD.CommonMethods.*;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byXpath;
@@ -41,7 +40,6 @@ public class Main_page {
 
     @Step
     Cart_page cartClick() {
-        numberBasket().shouldBe(visible);
         cartIcon().click();
         return page(Cart_page.class);
     }

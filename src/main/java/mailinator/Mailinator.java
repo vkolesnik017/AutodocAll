@@ -26,7 +26,7 @@ public class Mailinator {
 
   public Mailinator openEmail(String email) {
     open("https://www.mailinator.com");
-    $(byId("inboxfield")).setValue(email).pressEnter();
+    $(byId("addOverlay")).setValue(email).pressEnter();
     return this;
   }
 

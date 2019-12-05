@@ -1,14 +1,16 @@
 package ATD;
 
-import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.*;
+import com.codeborne.selenide.ex.ElementShould;
 import com.codeborne.selenide.ex.UIAssertionError;
 import io.qameta.allure.Step;
+import org.openqa.selenium.By;
 import org.testng.Assert;
 
 import java.util.Random;
 
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
@@ -121,5 +123,70 @@ public class CommonMethods {
         }
     }
 
+    static SelenideElement universalElementOfBuyBtnForAllPages() {
+        return $(byXpath("//a[contains(@class,'add_')]"));
+    }
+
+    @Step
+    // method for test adding product to basket from all routes
+    public static void clickOfBuyBtnForAllPages() {
+        SelenideElement productBlockForHover = $(byCssSelector(".rec_products_block"));
+        try {
+            if (productBlockForHover.isDisplayed()) {
+                productBlockForHover.hover();
+            }
+            sleep(2000); // TODO try delete this sleep after fixed SITES-2830
+            universalElementOfBuyBtnForAllPages().waitUntil(visible, 2000).click();
+        } catch (ElementShould e) {
+            $(byXpath("//div[@class='top-small-products__items']//a[contains(@class,'add_')]")).click();
+        }
+        sleep(2000); // TODO try delete this sleep after fixed SITES-2830
+    }
+
+    @Step
+    public static void scrollToBlockOfTopProducts() {
+        SelenideElement titleOfBlockOfTopProducts = $(byXpath("//*[@class='title_list'] | //*[@class='top-small-products__title']"));
+        titleOfBlockOfTopProducts.scrollTo();
+        universalElementOfBuyBtnForAllPages().shouldBe(visible);
+    }
+
+    @Step
+    // method for block of top products
+    public static void checksProductsNotInStockInBlockOfTopProducts() {
+        SelenideElement arrowRightBtnInTopProductsBlock = $(byXpath("(//*[@type='button'])[2]"));
+        SelenideElement grayBtn = $(byXpath("//*[contains(@class,'not_active')]/a"));
+        universalElementOfBuyBtnForAllPages().shouldBe(visible);
+        if (arrowRightBtnInTopProductsBlock.isDisplayed()) {
+            while (arrowRightBtnInTopProductsBlock.attr("aria-disabled").equals("false")) {
+                grayBtn.shouldBe(not(visible));
+                arrowRightBtnInTopProductsBlock.click();
+            }
+        }
+        grayBtn.shouldBe(not(visible));
+    }
+
+    @Step
+    // method for checks elements in block of top products
+    public static void checksPresenceElementsInMiniCardInBlocksOfTopProducts() {
+
+        By sticker = (byCssSelector(".product-list__item__promotion"));
+        By oldPrice = (byCssSelector(".product-list__item__old-price"));
+        By image = (byCssSelector(".ovVisLi_image"));
+        By productName = (byCssSelector(".product-list__item__title"));
+        By articleNumber = (byCssSelector(".product-list__item__nummer"));
+        By price = (byCssSelector(".product-list__item__price"));
+        By infoVatAndDelivery = (byCssSelector(".product-list__item__info"));
+
+        ElementsCollection miniCardsOfProducts = $$(byXpath("//*[contains(@class,'product-list__item ')]")).filterBy(visible).shouldHaveSize(4);
+        for(SelenideElement miniCard : miniCardsOfProducts) {
+            miniCard.$(sticker).should(visible);
+            miniCard.$(oldPrice).should(visible);
+            miniCard.$(image).should(visible);
+            miniCard.$(productName).should(visible);
+            miniCard.$(articleNumber).should(visible);
+            miniCard.$(price).should(visible);
+            miniCard.$(infoVatAndDelivery).should(visible);
+        }
+    }
 
 }
