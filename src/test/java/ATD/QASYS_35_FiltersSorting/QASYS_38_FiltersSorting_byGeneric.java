@@ -37,7 +37,7 @@ public class QASYS_38_FiltersSorting_byGeneric {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "oleg")
-    @Description(value = "Test checks generic filter on listing (Tecdoc, ACC)")
+    @Description(value = "TC01 Test checks generic filter on listing (Tecdoc, ACC)")
     public void checkFilterByGeneric(String route) {
         open(route);
         String genericName = listingTecdocPage.firstGeneric().text();
@@ -48,7 +48,7 @@ public class QASYS_38_FiltersSorting_byGeneric {
     @Test(dataProvider = "routesLKW")
     @Flaky
     @Owner(value = "oleg")
-    @Description(value = "Test checks generic filter on listing LKW")
+    @Description(value = "TC01 Test checks generic filter on listing LKW")
     public void checkFilterByGenericLKW(String route) {
         open(route);
         String genericName = listingTecdocPage.secondGeneric().text();
@@ -59,7 +59,7 @@ public class QASYS_38_FiltersSorting_byGeneric {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "oleg")
-    @Description(value = "Test checks generic filter on listing (Tecdoc, ACC) with two generics")
+    @Description(value = "TC02 Test checks generic filter on listing (Tecdoc, ACC) with two generics")
     public void checkFilterWithTwoGenerics(String route) {
         open(route);
         String genericName = listingTecdocPage.secondGeneric().getText();
@@ -73,7 +73,7 @@ public class QASYS_38_FiltersSorting_byGeneric {
     @Test(dataProvider = "routesLKW")
     @Flaky
     @Owner(value = "oleg")
-    @Description(value = "Test checks generic filter on listing LKW with two generics")
+    @Description(value = "TC02 Test checks generic filter on listing LKW with two generics")
     public void checkFilterWithTwoGenericsLKW(String route) {
         open(route);
         String genericName = listingTecdocPage.firstGeneric().getText();
@@ -87,7 +87,7 @@ public class QASYS_38_FiltersSorting_byGeneric {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "oleg")
-    @Description(value = "Test checks generic filter on listing (Tecdoc, ACC) in tile mode")
+    @Description(value = "TC04 Test checks generic filter on listing (Tecdoc, ACC) in tile mode")
     public void checkFilterByGenericInTileMode(String route) {
         open(route);
         String genericName = listingTecdocPage.fourthGeneric().text();
@@ -100,7 +100,7 @@ public class QASYS_38_FiltersSorting_byGeneric {
     @Test(dataProvider = "routesLKW")
     @Flaky
     @Owner(value = "oleg")
-    @Description(value = "Test checks generic filter on listing LKW in tile mode")
+    @Description(value = "TC04 Test checks generic filter on listing LKW in tile mode")
     public void checkFilterByGenericInTileModeLKW(String route) {
         open(route);
         String genericName = listingTecdocPage.secondGeneric().text();
@@ -113,7 +113,7 @@ public class QASYS_38_FiltersSorting_byGeneric {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "oleg")
-    @Description(value = "Test checks generic position in generic block on listing (Tecdoc, ACC)")
+    @Description(value = "TC03 Test checks generic position in generic block on listing (Tecdoc, ACC)")
     public void checkGenericPosition(String route) {
         open(route);
         String genericName = listingTecdocPage.secondGeneric().text();
@@ -124,7 +124,7 @@ public class QASYS_38_FiltersSorting_byGeneric {
     @Test(dataProvider = "routesLKW")
     @Flaky
     @Owner(value = "oleg")
-    @Description(value = "Test checks generic position in generic block on listing LKW")
+    @Description(value = "TC03 Test checks generic position in generic block on listing LKW")
     public void checkGenericPositionLKW(String route) {
         open(route);
         String genericName = listingTecdocPage.secondGeneric().text();
