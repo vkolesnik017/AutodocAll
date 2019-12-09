@@ -9,4 +9,11 @@
         </classes>
     </test>
 
+    <test name="QASYS_350_Header">
+        <classes>
+            <class name="ATD.QASYS_225_General_Common.QASYS_350_Header">
+            </class>
+        </classes>
+    </test>
+
 </suite>

@@ -14,15 +14,36 @@ import static com.codeborne.selenide.Selenide.page;
 public class Main_page {
 
     //Header
+
+    public SelenideElement logoInHeader() {
+        return $(".header__logo-main");
+    }
+
+    public SelenideElement logoOfficialPartnerInHeader() {
+        return $(".header__logo-wrc");
+    }
+
     public SelenideElement loginBtnInHeader() {
         return $(byCssSelector(".sigin_btn>a"));
     }
 
-    private SelenideElement searchBar() {
+    public SelenideElement searchBar() {
         return $(byId("search"));
     }
 
-    private SelenideElement searchButton() {
+    public SelenideElement hintsForSearch() {
+        return $(".autocomplete-suggestions>div");
+    }
+
+    public SelenideElement infoIconForSearch() {
+        return $(".header-i.header-i--info.inf");
+    }
+
+    public SelenideElement infoPopupForSearch() {
+        return $(".ex_popup.ex_popup_shown");
+    }
+
+    public SelenideElement searchButton() {
         return $(byCssSelector("#search_form>a"));
     }
 
@@ -30,16 +51,99 @@ public class Main_page {
         return $(byCssSelector(".logout_but"));
     }
 
-    SelenideElement cartIcon() {
+    public SelenideElement cartIcon() {
         return $(byCssSelector(".header-cart__count"));
+    }
+
+    public SelenideElement totalPriceInCart() {
+        return $(".header-cart__amount");
     }
 
     public SelenideElement numberBasket() {
         return $(byCssSelector(".code"));
     }
 
+    public SelenideElement promotionBanner() {
+        return $(".promotion_header_image");
+    }
+
+    public SelenideElement clockInPromotionBanner() {
+        return $(".flip-clock-wrapper");
+    }
+
+    public SelenideElement textAboveClockInPromotionBanner() {
+        return $(".promotion_header_text_reminder");
+    }
+
+    public SelenideElement closeBtnOfPromotionBanner() {
+        return $(".close_pop_up ");
+    }
+
+    public SelenideElement menuCatalogInHeader() {
+        return $(".menu-catalog>a");
+    }
+
+    public SelenideElement listCategoriesOfCatalog() {
+        return $(byXpath("//*[@class='menu-category__first-lvl']//a"));
+    }
+
+    // Menu in header
     @Step
-    Cart_page cartClick() {
+    public LKW_main_page clickLkwCategory() {
+        $("[data-ga-action='LKW']").click();
+        return page(LKW_main_page.class);
+    }
+
+    @Step
+    public Moto_main_page clickMotoCategory() {
+        $("[data-ga-action='MOTO']").click();
+        return page(Moto_main_page.class);
+    }
+
+    @Step
+    public Tyres_page clickTiresCategory() {
+        $(byCssSelector("[data-ga-action='23208']")).click();
+        return page(Tyres_page.class);
+    }
+
+    @Step
+    public Index_instruments_page clickInstrumentsCategory() {
+        $("[data-ga-action='36000']").click();
+        return page(Index_instruments_page.class);
+    }
+
+    @Step
+    public Index_accessories_page clickAccessoriesCategory() {
+        $("[data-ga-action='33000']").click();
+        return page(Index_accessories_page.class);
+    }
+
+    @Step
+    public CarParts_EngineOil_page clickEngineOilCategory() {
+        $("[data-ga-action='12094']").click();
+        return page(CarParts_EngineOil_page.class);
+    }
+
+    @Step
+    public CarParts_Filters_page clickFiltersCategory() {
+        $("[data-ga-action='10105']").click();
+        return page(CarParts_Filters_page.class);
+    }
+
+    @Step
+    public CarParts_BrakeSystem_page clickBrakeSystemCategory() {
+        $("[data-ga-action='10106']").click();
+        return page(CarParts_BrakeSystem_page.class);
+    }
+
+    @Step
+    public CarParts_Engine_page clickEngineCategory() {
+        $(".header-i.header-i--engine").click();
+        return page(CarParts_Engine_page.class);
+    }
+
+    @Step
+    public Cart_page cartClick() {
         cartIcon().click();
         return page(Cart_page.class);
     }
@@ -49,17 +153,6 @@ public class Main_page {
         searchBar().setValue(searchArticle);
         searchButton().click();
         return page(Search_page.class);
-    }
-
-    // Menu in header
-    SelenideElement tiresTab() {
-        return $(byCssSelector("[data-ga-action='23208']"));
-    }
-
-    @Step
-    public Tyres_page clickTiresTab() {
-        tiresTab().click();
-        return page(Tyres_page.class);
     }
 
     // Login popup
@@ -85,6 +178,10 @@ public class Main_page {
 
     public SelenideElement closePopUpInvalidDataForLogin() {
         return $(byXpath("//*[@class='popup ']//*[contains(text(),'passen nicht zusammen!')]/..//a"));
+    }
+
+    public SelenideElement closeBtnOfLoginPopup() {
+        return $(".close_log_on");
     }
 
     // Password recovery popup

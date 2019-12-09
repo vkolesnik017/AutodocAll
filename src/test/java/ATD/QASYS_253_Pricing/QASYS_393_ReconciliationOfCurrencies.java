@@ -100,7 +100,7 @@ public class QASYS_393_ReconciliationOfCurrencies {
     open(route);
     String shop = getCurrentShopFromJSVarInHTML();
     String  expectedCurrency = dataBase.getCurrency(shop);
-    new Main_page().clickTiresTab()
+    new Main_page().clickTiresCategory()
             .imagesProductsTires().click();
     // checks currency on product page
     getCurrencyAndVerify(productPage.priceWithoutDiscount(), "priceWithoutDiscount", shop, expectedCurrency);
