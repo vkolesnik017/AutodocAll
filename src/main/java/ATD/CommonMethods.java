@@ -5,6 +5,7 @@ import com.codeborne.selenide.ex.ElementShould;
 import com.codeborne.selenide.ex.UIAssertionError;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.testng.Assert;
 
 import java.util.Random;
@@ -96,6 +97,17 @@ public class CommonMethods {
         String actualUrl = url();
         Assert.assertEquals(actualUrl, expectedUrl);
         back();
+    }
+
+    @Step
+    //Method for checking for contains URL
+    public static void checkingContainsUrl(String expectedContainsUrl) {
+        try {
+            Wait().until(webDriver -> url().contains(expectedContainsUrl));
+        } catch (TimeoutException e) {
+            System.out.println(url());
+            Assert.fail("Url doesn't contains: " + expectedContainsUrl);
+        }
     }
 
     //Method checking follow url on new tab and close tab
