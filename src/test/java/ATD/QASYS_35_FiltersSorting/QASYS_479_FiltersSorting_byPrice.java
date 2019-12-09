@@ -28,7 +28,7 @@ public class QASYS_479_FiltersSorting_byPrice {
     @Test
     @Flaky
     @Owner(value = "oleg")
-    @Description(value = "Test checks price filter on listing (Tecdoc, ACC) in list and tile mode")
+    @Description(value = "TC01 TC02 Test checks price filter on listing (Tecdoc, ACC) in list and tile mode")
     public void checkPriceFilterTecdocAndAcc() throws SQLException{
         //Tecdoc listing check
         open("https://autodoc.de/" +  dataBase.getRouteByRouteName("DE", "category_car_list"));
@@ -60,12 +60,13 @@ public class QASYS_479_FiltersSorting_byPrice {
     @Test
     @Flaky
     @Owner(value = "oleg")
-    @Description(value = "Test checks price filter on listing (LKW) in list and tile mode")
+    @Description(value = "TC01 TC02 Test checks price filter on listing (LKW) in list and tile mode")
     public void checkPriceFilterLkw() throws SQLException {
         open("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_category_car_list"));
         executeJavaScript("arguments[0].value='20';", listingTecdocPage.minPriceValue());
         executeJavaScript("arguments[0].value='30';", listingTecdocPage.maxPriceValue());
         listingTecdocPage.priceFilterSubmitButton().click();
+        listingTecdocPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingTecdocPage.minPriceMapping().shouldHave(text("20"));
         listingTecdocPage.maxPriceMapping().shouldHave(text("30"));
         listingTecdocPage.checkPricesRange(17.00f, 33.00f, listingTecdocPage.priceOfAllProductsOnPageInList());
@@ -78,7 +79,7 @@ public class QASYS_479_FiltersSorting_byPrice {
     @Test
     @Flaky
     @Owner(value = "oleg")
-    @Description(value = "Test checks price filter on listing (Tecdoc, ACC) with pagination")
+    @Description(value = "TC03 TC05 Test checks price filter on listing (Tecdoc, ACC) with pagination")
     public void checkPriceFilterTecdocAndAccPagination() throws SQLException {
         open("https://autodoc.de/" +  dataBase.getRouteByRouteName("DE", "category_car_list"));
         executeJavaScript("arguments[0].value='20';", listingTecdocPage.minPriceValue());
@@ -107,7 +108,7 @@ public class QASYS_479_FiltersSorting_byPrice {
     @Test
     @Flaky
     @Owner(value = "oleg")
-    @Description(value = "Test checks price filter on listing (LKW) with pagination")
+    @Description(value = "TC04 Test checks price filter on listing (LKW) with pagination")
     public void checkPriceFilterLkwPagination() throws SQLException {
         open("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_category_car_list"));
         executeJavaScript("arguments[0].value='10';", listingTecdocPage.minPriceValue());
@@ -124,7 +125,7 @@ public class QASYS_479_FiltersSorting_byPrice {
     @Test
     @Flaky
     @Owner(value = "oleg")
-    @Description(value = "Test checks price filter reset on listing (Tecdoc, ACC)")
+    @Description(value = "TC06 Test checks price filter reset on listing (Tecdoc, ACC)")
     public void checkPriceFilterResetTecdocAndAcc() throws SQLException {
         //Tecdoc listing check
         open("https://autodoc.de/" +  dataBase.getRouteByRouteName("DE", "category_car_list"));
@@ -164,7 +165,7 @@ public class QASYS_479_FiltersSorting_byPrice {
     @Test
     @Flaky
     @Owner(value = "oleg")
-    @Description(value = "Test checks price filter reset on listing (LKW)")
+    @Description(value = "TC06 Test checks price filter reset on listing (LKW)")
     public void checkPriceFilterResetLKW() throws SQLException {
         open("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_category_car_list"));
         String defaultMinPrice = listingTecdocPage.minPriceMapping().getText();
@@ -186,7 +187,7 @@ public class QASYS_479_FiltersSorting_byPrice {
     @Test
     @Flaky
     @Owner(value = "oleg")
-    @Description(value = "Test checks price filter on listing (Tecdoc) with few products")
+    @Description(value = "TC07 Test checks price filter on listing (Tecdoc) with few products")
     public void checkPriceFilterTecdocWithFewProducts() throws SQLException {
         open("https://autodoc.de/" +  dataBase.getRouteByRouteName("DE", "category_car_list3"));
         executeJavaScript("arguments[0].value='13';", listingTecdocPage.minPriceValue());
@@ -200,7 +201,7 @@ public class QASYS_479_FiltersSorting_byPrice {
     @Test
     @Flaky
     @Owner(value = "oleg")
-    @Description(value = "Test checks price filter on listing (Tecdoc) with filter by side")
+    @Description(value = "TC08 Test checks price filter on listing (Tecdoc) with filter by side")
     public void checkPriceFilterTecdocWithFilerBySide() throws SQLException {
         open("https://autodoc.de/" +  dataBase.getRouteByRouteName("DE", "category_car_list"));
         executeJavaScript("arguments[0].value='69';", listingTecdocPage.minPriceValue());
@@ -208,7 +209,7 @@ public class QASYS_479_FiltersSorting_byPrice {
         listingTecdocPage.priceFilterSubmitButton().click();
         listingTecdocPage.minPriceMapping().shouldHave(text("69"));
         listingTecdocPage.maxPriceMapping().shouldHave(text("243"));
-        listingTecdocPage.filterBySide().click();
+        listingTecdocPage.filterBySideBack().click();
         listingTecdocPage.checkFilterBySide("Hinterachse");
         listingTecdocPage.checkPricesRange(66f, 246f, listingTecdocPage.priceOfAllProductsOnPageInList());
     }
@@ -216,7 +217,7 @@ public class QASYS_479_FiltersSorting_byPrice {
     @Test
     @Flaky
     @Owner(value = "oleg")
-    @Description(value = "Test checks price filter on listing (LKW) with filter by side")
+    @Description(value = "TC09 Test checks price filter on listing (LKW) with filter by side")
     public void checkPriceFilterTecdocWithFilerBySideLKW() throws SQLException {
         open("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_category_car_list"));
         executeJavaScript("arguments[0].value='15';", listingTecdocPage.minPriceValue());
@@ -232,7 +233,7 @@ public class QASYS_479_FiltersSorting_byPrice {
     @Test
     @Flaky
     @Owner(value = "oleg")
-    @Description(value = "Test checks price filter on listing (Tecdoc, ACC) with filter by characteristic/brand")
+    @Description(value = "TC10 TC11 Test checks price filter on listing (Tecdoc, ACC) with filter by characteristic/brand")
     public void checkPriceFilterTecdocWithFilerByBrand() throws SQLException {
         //Tecdoc listing price + characteristic
         open("https://autodoc.de/" +  dataBase.getRouteByRouteName("DE", "category_car_list"));
@@ -247,7 +248,7 @@ public class QASYS_479_FiltersSorting_byPrice {
 
         //ACC listing price + brand filter
         open("https://autodoc.de/" +  dataBase.getRouteByRouteName("DE", "listing_accessories2"));
-        String brandName = listingTecdocPage.filterByBrand().attr("alt");
+        String brandName = listingTecdocPage.firstBrandNameInFiler().attr("alt");
         listingTecdocPage.firstBrandInFilterButton().click();
         listingTecdocPage.preloader().shouldBe(attribute("style", "display: none;"));
         executeJavaScript("arguments[0].value='15';", listingTecdocPage.minPriceValue());

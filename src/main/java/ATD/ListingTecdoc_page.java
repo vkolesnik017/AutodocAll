@@ -7,9 +7,9 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
+import static com.codeborne.selenide.Condition.or;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
@@ -38,17 +38,29 @@ public class ListingTecdoc_page {
 
     public SelenideElement priceFilterBlock() { return $(By.cssSelector(".js-price-range-filter")); }
 
-    public SelenideElement filterBySide() { return $(By.xpath("//*[@class='installation-side__filter back-side']")); }
+    public SelenideElement filterBySideBack() { return $(By.xpath("//*[@class='installation-side__filter back-side']")); }
 
     public ElementsCollection sideFilterAttribute() { return $$(By.xpath("//*[@class='subname']")); }
 
-    public SelenideElement filterBySideLKW() { return $(By.xpath("//*[@class='installation-side__filter front-side']"));}
+    public SelenideElement filterBySideLKW() { return $(By.xpath("//*[@class='installation-side__filter front-side']")); }
 
     public SelenideElement gelochtAttribute() { return $(By.xpath("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_232']/div/ul/li[1]")); }
 
-    public SelenideElement filterByBrand() { return $(By.xpath("//*[@class='slick-track']/li[8]/label/img")); }
+    public SelenideElement firstBrandNameInFiler() { return $(By.xpath("//*[@class='slick-track']/li[8]/label/img")); }
+
+    public SelenideElement secondBrandNameInFilter() { return $(By.xpath("//*[@class='slick-track']/li[9]/label/img")); }
+
+    public SelenideElement thirdBrandNameInFilter() { return $(By.xpath("//*[@class='slick-track']/li[10]/label/img")); }
+
+    public SelenideElement fourthBrandNameInFilter() { return $(By.xpath("//*[@class='slick-track']/li[11]/label/img")); }
+
+    public SelenideElement fifthBrandNameInFilter() { return $(By.xpath("//*[@class='slick-track']/li[12]/label/img")); }
+
+    public SelenideElement sixthBrandNameInFilter() { return $(By.xpath("//*[@class='slick-track']/li[13]/label/img")); }
 
     public SelenideElement firstBrandInFilterButton() { return $(By.xpath("//*[@class='slick-track']/li[8]/label")); }
+
+    public SelenideElement secondBrandInFilterButton() { return $(By.xpath("//*[@class='slick-track']/li[9]/label")); }
 
     public SelenideElement preloader() { return $(By.cssSelector(".preloader_wrapper")); }
 
@@ -61,6 +73,16 @@ public class ListingTecdoc_page {
     public ElementsCollection productTitleInListMode() { return $$(By.cssSelector(".name")); }
 
     public ElementsCollection productTitleInTileMode() { return $$(By.cssSelector(".rec_prod_title.small_text")); }
+
+    public SelenideElement firstBrandButtonOemListing() { return $(By.xpath("//*[@id='selected-instalation__slider']/ul/li[1]")); }
+
+    public SelenideElement secondBrandButtonOemListing() { return $(By.xpath("//*[@id='selected-instalation__slider']/ul/li[2]")); }
+
+    public SelenideElement firstBrandNameOemListing() { return $(By.xpath("//*[@id='selected-instalation__slider']/ul/li[1]//img")); }
+
+    public SelenideElement brandFilterBlock() { return $("#selected-instalation__slider"); }
+
+
 
     @Step("Method gets price of all products on listing and parse it into float")
     public List<Float> getAllPricesOnListingPage(ElementsCollection listingViewModeLocator) {
@@ -95,11 +117,56 @@ public class ListingTecdoc_page {
 
     @Step("Method checks that expected text is present in title of all products on listing")
     public void checkProductTitleOnListing(String expectedTextInTitle, Boolean shouldHaveTextOrNotHave, ElementsCollection titleViewMode) {
-        for(int i = 0; i < titleViewMode.size()-1; i++) {
+        for(int i = 0; i < titleViewMode.size(); i++) {
             if (shouldHaveTextOrNotHave) {
                titleViewMode.get(i).shouldHave(text(expectedTextInTitle));
             } else {
                 titleViewMode.get(i).shouldNotHave(text(expectedTextInTitle));
+            }
+        }
+    }
+
+    @Step("Method checks that expected text is present in title of all products on listing with two conditions")
+    public void checkProductTitleOnListingWithTwoExpectedTexts(String expectedTextInTitle, String secondExpText, Boolean shouldHaveTextOrNotHave, ElementsCollection titleViewMode) {
+        for (int i = 0; i < titleViewMode.size(); i++) {
+            if (shouldHaveTextOrNotHave) {
+                titleViewMode.get(i).shouldHave(or("condition", text(expectedTextInTitle), text(secondExpText)));
+            } else {
+                titleViewMode.get(i).shouldNotHave(or("condition", text(expectedTextInTitle), text(secondExpText)));
+            }
+        }
+    }
+
+    @Step("Method checks that expected text is present in title of all products on listing with six conditions")
+    public void checkProductTitleOnListingWithSixExpectedTexts(String expectedTextInTitle, String secondExpText, String thirdExpText, String fourthExpText, String fifthExpText,
+                                                               String sixthExpText, Boolean shouldHaveTextOrNotHave, ElementsCollection titleViewMode) {
+        for(int i = 0; i < titleViewMode.size(); i++) {
+            if (shouldHaveTextOrNotHave) {
+                titleViewMode.get(i).shouldHave(or("condition", text(expectedTextInTitle), text(secondExpText), text(thirdExpText), text(fourthExpText), text(fifthExpText), text(sixthExpText)));
+            } else {
+                titleViewMode.get(i).shouldNotHave(or("condition", text(expectedTextInTitle), text(secondExpText), text(thirdExpText)));
+            }
+        }
+    }
+
+    @Step("Method checks unique brands on listing")
+    public void checkUniqueBrandsOnListing(int numberOfUniqueBrands, ElementsCollection titleViewMode) {
+        Set<String> uniqueBrandSet = new LinkedHashSet<>();
+        for (SelenideElement aTitleViewMode : titleViewMode) {
+            String brandName = aTitleViewMode.text().split(" ")[0];
+            uniqueBrandSet.add(brandName);
+        }
+        System.out.println(uniqueBrandSet.size());
+        Assert.assertTrue(uniqueBrandSet.size() >= numberOfUniqueBrands);
+    }
+
+    @Step("Method gets brand from product title")
+    public void getBrandFromTitle(String expectedTextInTitle, int brandPositionInAlt, Boolean shouldHaveTextOrNotHave, ElementsCollection titleViewMode) {
+        for(int i = 0; i < titleViewMode.size(); i++) {
+            if (shouldHaveTextOrNotHave) {
+                titleViewMode.get(i).shouldHave(text(expectedTextInTitle.split(" ")[brandPositionInAlt]));
+            } else {
+                titleViewMode.get(i).shouldNotHave(text(expectedTextInTitle.split(" ")[brandPositionInAlt]));
             }
         }
     }
