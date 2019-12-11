@@ -130,16 +130,6 @@ public class CommonMethods {
         return Float.parseFloat(element.text().replaceAll("[^0-9,]", "").replace(",", "."));
     }
 
-    @Step("Choose car in selector")
-    public void chooseCarInSelector(String brand, String model, String type, Boolean clickSearchButton) {
-        $("#form_maker_id").selectOptionByValue(brand);
-        $("#form_model_id").selectOptionByValue(model);
-        $("#form_car_id").selectOptionByValue(type);
-        if(clickSearchButton) {
-            $(".search_button").click();
-        }
-    }
-
     static SelenideElement universalElementOfBuyBtnForAllPages() {
         return $(byXpath("//a[contains(@class,'add_')]"));
     }
