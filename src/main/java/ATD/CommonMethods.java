@@ -8,6 +8,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.testng.Assert;
 
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.Random;
 
 import static com.codeborne.selenide.Condition.*;
@@ -189,6 +194,14 @@ public class CommonMethods {
             miniCard.$(price).should(visible);
             miniCard.$(infoVatAndDelivery).should(visible);
         }
+    }
+
+    public void writer(String fileName, boolean append, String write) throws IOException {
+        BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileName, append), StandardCharsets.UTF_8));
+        System.out.println("Write in file");
+        bufferedWriter.newLine();
+        bufferedWriter.write(write);
+        bufferedWriter.close();
     }
 
 }

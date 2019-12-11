@@ -16,4 +16,11 @@
         </classes>
     </test>
 
+    <test name="QASYS_36_FilterSorting_byBrand">
+        <classes>
+            <class name="ATD.QASYS_35_FiltersSorting.QASYS_36_FilterSorting_byBrand">
+            </class>
+        </classes>
+    </test>
+
 </suite>
