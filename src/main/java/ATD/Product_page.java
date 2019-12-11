@@ -150,8 +150,8 @@ public class Product_page {
 
   @Step
   // return current chosen value from selector
-  public String getChosenValueFromSelector(SelenideElement element) {
-    String selectedValue = executeJavaScript("return arguments[0].selectedOptions[0].innerText", element);
+  public String getChosenValueFromSelector(SelenideElement selector) {
+    String selectedValue = executeJavaScript("return arguments[0].selectedOptions[0].innerText", selector);
     return selectedValue;
   }
 
