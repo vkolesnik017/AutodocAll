@@ -11,8 +11,7 @@ import java.util.*;
 
 import static com.codeborne.selenide.Condition.or;
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Selenide.*;
 
 public class ListingTecdoc_page {
 
@@ -82,7 +81,7 @@ public class ListingTecdoc_page {
 
     public SelenideElement brandFilterBlock() { return $("#selected-instalation__slider"); }
 
-
+    public SelenideElement tooltipCarSelectorClose() { return $(".tooltiptext-close"); }
 
     @Step("Method gets price of all products on listing and parse it into float")
     public List<Float> getAllPricesOnListingPage(ElementsCollection listingViewModeLocator) {
@@ -156,7 +155,6 @@ public class ListingTecdoc_page {
             String brandName = aTitleViewMode.text().split(" ")[0];
             uniqueBrandSet.add(brandName);
         }
-        System.out.println(uniqueBrandSet.size());
         Assert.assertTrue(uniqueBrandSet.size() >= numberOfUniqueBrands);
     }
 

@@ -258,6 +258,9 @@ public class QASYS_36_FilterSorting_byBrand {
         listingTecdocPage.firstBrandInFilterButton().click();
         listingTecdocPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingTecdocPage.firstBrandInFilterButton().click();
+        if(listingTecdocPage.tooltipCarSelectorClose().is(visible)) {
+            listingTecdocPage.tooltipCarSelectorClose().click();
+        }
         listingTecdocPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingTecdocPage.checkUniqueBrandsOnListing(3, listingTecdocPage.productTitleInListMode());
         close();
