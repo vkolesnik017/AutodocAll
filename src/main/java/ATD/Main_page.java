@@ -5,10 +5,12 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static ATD.CommonMethods.*;
+import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.executeJavaScript;
 import static com.codeborne.selenide.Selenide.page;
 
 public class Main_page {
@@ -376,6 +378,83 @@ public class Main_page {
     public ErsatzteileCars_page clickNachModellEinkaufen() {
         $(By.xpath("//*[@class='footer__links']/div[4]/ul/li[9]/a")).click();
         return page(ErsatzteileCars_page.class);
+    }
+
+    //Methods and locators for Selector Vertical
+    @Step("Choose brand in selector")
+    public Main_page chooseBrandInSelector(String brandName) {
+        brandSelector().find("optgroup").should(exist);
+        brandSelector().selectOption(brandName);
+        return this;
+    }
+
+    @Step("Choose model in selector")
+    public Main_page chooseModelInSelector(String modelNumberValue) {
+        modelSelector().find("optgroup").should(exist);
+        modelSelector().selectOptionByValue(modelNumberValue);
+        return this;
+    }
+
+    @Step("Choose type in selector")
+    public Main_page chooseTypeInSelector(String typeNumberValue) {
+        typeSelector().find("optgroup").should(exist);
+        typeSelector().selectOptionByValue(typeNumberValue);
+        return this;
+    }
+
+    @Step("Choose brand, model, type in horizontal selector")
+    public Main_page chooseBrandModelTypeInSelector(String brandName, String modelNumberValue, String typeNumberValue) {
+        chooseBrandInSelector(brandName);
+        chooseModelInSelector(modelNumberValue);
+        chooseTypeInSelector(typeNumberValue);
+        return this;
+    }
+
+    @Step
+    // return current chosen value from selector
+    public String getChosenValueFromSelector(SelenideElement selector) {
+        String selectedValue = executeJavaScript("return arguments[0].selectedOptions[0].innerText", selector);
+        return selectedValue;
+    }
+
+    public SelenideElement brandSelector() {
+        return $("#form_maker_id");
+    }
+
+    public SelenideElement modelSelector() {
+        return $("#form_model_id");
+    }
+
+    public SelenideElement typeSelector() {
+        return $("#form_car_id");
+    }
+
+    public SelenideElement selectorSearchBtn() {
+        return $(".search_button");
+    }
+
+    public SelenideElement errorTooltipOfBrandSelector() {
+        return $(byId("selector-error-tooltip"));
+    }
+
+    public SelenideElement errorToolTipOfModelSelector() {
+        return $(byId("selector-error-tooltip-model"));
+    }
+
+    public SelenideElement errorToolTipOfTypeSelector() {
+        return $(byId("selector-error-tooltip-car"));
+    }
+
+    public SelenideElement resetBtnSelector() {
+        return $(byId("reset_selector_form"));
+    }
+
+    public SelenideElement linkInfoKba() {
+        return $(".block-select-kba__info>a");
+    }
+
+    public SelenideElement kbaPopup() {
+        return $(".kba_popup_example");
     }
 
 }

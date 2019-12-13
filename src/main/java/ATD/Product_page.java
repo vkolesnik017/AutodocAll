@@ -6,8 +6,7 @@ import com.codeborne.selenide.ex.ElementShould;
 import com.codeborne.selenide.ex.UIAssertionError;
 import io.qameta.allure.Step;
 
-import static com.codeborne.selenide.Condition.not;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -124,18 +123,21 @@ public class Product_page {
   //Methods and locators for Selector Horizontal
   @Step("Choose brand in selector")
   public Product_page chooseBrandInSelector(String brandName) {
+    brandSelector().find("optgroup").should(exist);
     brandSelector().selectOption(brandName);
     return this;
   }
 
   @Step("Choose model in selector")
   public Product_page chooseModelInSelector(String modelNumberValue) {
+    modelSelector().find("optgroup").should(exist);
     modelSelector().selectOptionByValue(modelNumberValue);
     return this;
   }
 
   @Step("Choose type in selector")
   public Product_page chooseTypeInSelector(String typeNumberValue) {
+    typeSelector().find("optgroup").should(exist);
     typeSelector().selectOptionByValue(typeNumberValue);
     return this;
   }

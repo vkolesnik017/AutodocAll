@@ -134,6 +134,14 @@ public class CommonMethods {
         return $(byXpath("//a[contains(@class,'add_')]"));
     }
 
+    // open vertical selector if it hidden
+    public static void openVerticalSelectorIfItHidden() {
+        SelenideElement hiddenVerticalSelector = $(".catalog-title__change-car");
+        if (hiddenVerticalSelector.isDisplayed()) {
+            hiddenVerticalSelector.click();
+        }
+    }
+
     @Step
     // method for test adding product to basket from all routes
     public static void clickOfBuyBtnForAllPages() {
