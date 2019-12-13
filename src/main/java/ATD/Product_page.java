@@ -121,4 +121,90 @@ public class Product_page {
     return $(byXpath("//div[@class='popup_top']//a[@class='close']"));
   }
 
+  //Methods and locators for Selector Horizontal
+  @Step("Choose brand in selector")
+  public Product_page chooseBrandInSelector(String brandName) {
+    brandSelector().selectOption(brandName);
+    return this;
+  }
+
+  @Step("Choose model in selector")
+  public Product_page chooseModelInSelector(String modelNumberValue) {
+    modelSelector().selectOptionByValue(modelNumberValue);
+    return this;
+  }
+
+  @Step("Choose type in selector")
+  public Product_page chooseTypeInSelector(String typeNumberValue) {
+    typeSelector().selectOptionByValue(typeNumberValue);
+    return this;
+  }
+
+  @Step("Choose brand, model, type in horizontal selector")
+  public Product_page chooseBrandModelTypeInSelector(String brandName, String modelNumberValue, String typeNumberValue) {
+    chooseBrandInSelector(brandName);
+    chooseModelInSelector(modelNumberValue);
+    chooseTypeInSelector(typeNumberValue);
+    return this;
+  }
+
+  @Step
+  // return current chosen value from selector
+  public String getChosenValueFromSelector(SelenideElement selector) {
+    String selectedValue = executeJavaScript("return arguments[0].selectedOptions[0].innerText", selector);
+    return selectedValue;
+  }
+
+  public SelenideElement brandSelector() {
+    return $("#form_maker_id");
+  }
+
+  public SelenideElement modelSelector() {
+    return $("#form_model_id");
+  }
+
+  public SelenideElement typeSelector() {
+    return $("#form_car_id");
+  }
+
+  public SelenideElement selectorSearchBtn() {
+    return $(".search_button");
+  }
+
+  public SelenideElement errorTooltipOfBrandSelector() {
+    return $(byId("selector-error-tooltip"));
+  }
+
+  public SelenideElement errorToolTipOfModelSelector() {
+    return $(byId("selector-error-tooltip-model"));
+  }
+
+  public SelenideElement errorToolTipOfTypeSelector() {
+    return $(byId("selector-error-tooltip-car"));
+  }
+
+  public SelenideElement errorToolTipOfKbaSelector() {
+    return $(byId("kba-error-tooltip"));
+  }
+
+  public SelenideElement infoBlockWithSelectedCar() {
+    return $(".car-match-block>p>b");
+  }
+
+  public SelenideElement resetBtnSelector() {
+    return $(byId("reset_selector_form"));
+  }
+
+  //Methods and locators for Selector kba
+  @Step
+  public Product_page fillNumberKba(String numberForFirstField, String numberForSecondField) {
+    $(byId("kba1")).setValue(numberForFirstField);
+    $(byId("kba2")).setValue(numberForSecondField);
+    return this;
+  }
+
+  public SelenideElement selectorKbaBtn() {
+    return $(".kba_submit");
+  }
+
 }

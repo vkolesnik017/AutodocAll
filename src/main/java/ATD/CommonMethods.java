@@ -5,8 +5,14 @@ import com.codeborne.selenide.ex.ElementShould;
 import com.codeborne.selenide.ex.UIAssertionError;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.testng.Assert;
 
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.Random;
 
 import static com.codeborne.selenide.Condition.*;
@@ -98,6 +104,17 @@ public class CommonMethods {
         back();
     }
 
+    @Step
+    //Method for checking for contains URL
+    public static void checkingContainsUrl(String expectedContainsUrl) {
+        try {
+            Wait().until(webDriver -> url().contains(expectedContainsUrl));
+        } catch (TimeoutException e) {
+            System.out.println(url());
+            Assert.fail("Url doesn't contains: " + expectedContainsUrl);
+        }
+    }
+
     //Method checking follow url on new tab and close tab
     public void checkingUrlAndCloseTab(String expectedUrl){
         switchTo().window(1);
@@ -111,16 +128,6 @@ public class CommonMethods {
     // Pulling prices from text of element
     public static Float getPriceFromElement(SelenideElement element) {
         return Float.parseFloat(element.text().replaceAll("[^0-9,]", "").replace(",", "."));
-    }
-
-    @Step("Choose car in selector")
-    public void chooseCarInSelector(String brand, String model, String type, Boolean clickSearchButton) {
-        $("#form_maker_id").selectOptionByValue(brand);
-        $("#form_model_id").selectOptionByValue(model);
-        $("#form_car_id").selectOptionByValue(type);
-        if(clickSearchButton) {
-            $(".search_button").click();
-        }
     }
 
     static SelenideElement universalElementOfBuyBtnForAllPages() {
@@ -187,6 +194,14 @@ public class CommonMethods {
             miniCard.$(price).should(visible);
             miniCard.$(infoVatAndDelivery).should(visible);
         }
+    }
+
+    public void writer(String fileName, boolean append, String write) throws IOException {
+        BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileName, append), StandardCharsets.UTF_8));
+        System.out.println("Write in file");
+        bufferedWriter.newLine();
+        bufferedWriter.write(write);
+        bufferedWriter.close();
     }
 
 }

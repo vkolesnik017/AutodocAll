@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="testSuite" data-provider-thread-count="5">
+<suite name="QASYS_515_CheckingCodeResponseAnswer" data-provider-thread-count="9">
 
-    <test name="testSuite" >
+    <test name="QASYS_515_CheckingCodeResponseAnswer">
         <classes>
             <class name="specificTests.QASYS_515_CheckingCodeResponseAnswer">
             </class>
