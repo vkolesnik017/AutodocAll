@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="QASYS_539_Selectors" parallel="methods" thread-count="3">
+<suite name="QASYS_539_Selectors" parallel="methods">
 
-    <test name="QASYS_540_HorizontalSelectors">
+    <test name="QASYS_540_HorizontalSelectors" thread-count="3">
         <classes>
             <class name="ATD.QASYS_539_Selectors.QASYS_540_HorizontalSelectors">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QASYS_541_VerticalSelectors" thread-count="1">
+        <classes>
+            <class name="ATD.QASYS_539_Selectors.QASYS_541_VerticalSelectors">
             </class>
         </classes>
     </test>
