@@ -47,6 +47,10 @@ public class CommonMethods {
         return currentShop.toUpperCase();
     }
 
+    public static String getNameRouteFromJSVarInHTML() {
+        return executeJavaScript("return $siteSettings.route");
+    }
+
     static String getShopFromRoute(String route) {
         String shop = null;
         String[] words = route.split("\\.");
