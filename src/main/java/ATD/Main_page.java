@@ -9,9 +9,7 @@ import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byXpath;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.executeJavaScript;
-import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Main_page {
 
@@ -449,12 +447,65 @@ public class Main_page {
         return $(byId("reset_selector_form"));
     }
 
+    //Methods and locators for Selector kba
+    @Step
+    public Main_page fillNumberKba(String numberForFirstField, String numberForSecondField) {
+        $(byId("kba1")).setValue(numberForFirstField);
+        $(byId("kba2")).setValue(numberForSecondField);
+        return this;
+    }
+
+    public SelenideElement selectorKbaBtn() {
+        return $(".kba_submit");
+    }
+
     public SelenideElement linkInfoKba() {
         return $(".block-select-kba__info>a");
     }
 
     public SelenideElement kbaPopup() {
         return $(".kba_popup_example");
+    }
+
+    // locators in popup of kba number error
+    public SelenideElement kbaPopupError() {
+        return $(".popup-kba-error");
+    }
+
+    public SelenideElement headerInPopupOfKbaError() {
+        return $(".popup-kba-error>p");
+    }
+
+    public SelenideElement headerSelectorCarInPopupOfKbaError() {
+        return $x("//*[@id='top-select-popup']//*[@class='block-select-kba__title']/span");
+    }
+
+    public SelenideElement brandSelectorInPopupOfKbaError() {
+        return $x("//*[@id='top-select-popup']//*[@id='maker-select']");
+    }
+
+    public SelenideElement modelSelectorInPopupOfKbaError() {
+        return $x("//*[@id='top-select-popup']//*[@id='model-select']");
+    }
+
+    public SelenideElement typeSelectorInPopupOfKbaError() {
+        return $x("//*[@id='top-select-popup']//*[@id='car-select']");
+    }
+
+    public SelenideElement firstKbaFieldInPopupOfKbaError() {
+        return $x("//*[@id='top-select-popup']//*[@id='kba1']");
+    }
+
+    public SelenideElement secondKbaFieldInPopupOfKbaError() {
+        return $x("//*[@id='top-select-popup']//*[@id='kba2']");
+    }
+
+    public SelenideElement selectorKbaBtnInPopupOfKbaError() {
+        return $x("//*[@id='top-select-popup']//*[@class='submit kba_submit']");
+    }
+
+    public SelenideElement tooltipErrorKbaInPopupOnKbaError() {
+       return $x("//*[@id='top-select-popup']//*[@id='kba-error-tooltip']");
     }
 
 }
