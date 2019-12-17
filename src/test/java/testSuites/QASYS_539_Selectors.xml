@@ -16,7 +16,7 @@
         </classes>
     </test>
 
-    <test name="QASYS_542_PopUpsOfSelectors" thread-count="2">
+    <test name="QASYS_542_PopUpsOfSelectors" thread-count="1">
         <classes>
             <class name="ATD.QASYS_539_Selectors.QASYS_542_PopUpsOfSelectors">
             </class>
