@@ -120,4 +120,26 @@ public class DataBase {
         }
         return curency;
     }
+
+    public String getKba(String shop) throws SQLException {
+        Statement statement = null;
+        Connection conn = coonectionDB("currency");
+        String curency = null;
+        String query = "SELECT " + shop + " FROM autodoc.kba_ATD where id = 1";
+        try {
+            statement = conn.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                curency = resultSet.getString(1);
+            }
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (statement != null) statement.close();
+            if (conn != null) conn.close();
+        }
+        return curency;
+    }
 }
