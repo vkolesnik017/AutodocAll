@@ -13,14 +13,20 @@ import java.util.List;
 
 public class Excel {
 
+    // read from Excel cell setUpFromExcel(file, 0);
     public Object[] setUpFromExcel(String file, int cellNumber) {
         return readFromExcel(file, cellNumber).toArray();
     }
 
+    // read from Excel cell with choosing sheet name setUpFromExcel(file, "first sheet", 0);
     public Object[] setUpFromExcel(String file, String sheetName, int cellNumber) {
         return readFromExcel(file, sheetName, cellNumber).toArray();
     }
 
+    // read from Excel all rows and cells setUpFromExcel(file);
+    //Example: 2#37292#1453#ALFA ROMEO#Stevlio (949_)
+    // Use with method parseExcel. String text = parseExcel(str From DataProvider)[1];
+    // You get: 37292
     public Object[] setUpAllCellFromExcel(String file) {
         return readAllCellFromExcel(file).toArray();
     }

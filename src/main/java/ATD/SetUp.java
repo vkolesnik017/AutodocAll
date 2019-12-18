@@ -56,9 +56,6 @@ public class SetUp {
         else shop = shopFromTest;
         if (!(envFromJenkins == null)) envFromTest = envFromJenkins;
         String env = getEnv(envFromTest);
-//        if (envFromTest.equalsIgnoreCase("test")) env = "https://test.";
-//        else if (envFromTest.equalsIgnoreCase("prod")) env = "https://";
-//        else if (envFromTest.equalsIgnoreCase("mob")) env = "https://m.";
         List<String> finalRouteList = new ArrayList<>();
         try {
             List<String> routeFromDB = new DataBase().getRouteListByRouteName(shop, routeName);
