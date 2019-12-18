@@ -25,7 +25,7 @@ public class QASYS_542_PopUpsOfSelectors {
     setUpBrowser(false, "chrome", "77.0");
   }
 
-  @DataProvider(name = "routes", parallel = true)
+  @DataProvider(name = "routes")
   Object[] dataProvider() throws SQLException {
     return new SetUp().setUpShopWithSubroutes("prod", "DE", "main","main,category_car_list,product,listing_accessories");
   }

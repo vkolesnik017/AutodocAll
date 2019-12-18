@@ -448,15 +448,27 @@ public class Main_page {
     }
 
     //Methods and locators for Selector kba
-    @Step
+    @Step("For DE")
     public Main_page fillNumberKba(String numberForFirstField, String numberForSecondField) {
         $(byId("kba1")).setValue(numberForFirstField);
         $(byId("kba2")).setValue(numberForSecondField);
         return this;
     }
 
+    @Step("For all shops except DE")
+    public Main_page fillNumberKba(String kbaNumber) {
+        $(byId("kba1")).setValue(kbaNumber);
+        return this;
+    }
+
     public SelenideElement selectorKbaBtn() {
         return $(".kba_submit");
+    }
+
+    @Step
+    public Catalog_page clickKbaBtn() {
+        selectorKbaBtn().click();
+        return page(Catalog_page.class);
     }
 
     public SelenideElement linkInfoKba() {

@@ -1,24 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="QASYS_539_Selectors" parallel="methods">
+<suite name="QASYS_539_Selectors" parallel="methods" thread-count="2" data-provider-thread-count="3">
 
-    <test name="QASYS_540_HorizontalSelectors" thread-count="3">
+    <test name="QASYS_540_HorizontalSelectors">
         <classes>
             <class name="ATD.QASYS_539_Selectors.QASYS_540_HorizontalSelectors">
             </class>
         </classes>
     </test>
 
-    <test name="QASYS_541_VerticalSelectors" thread-count="1">
+    <test name="QASYS_541_VerticalSelectors">
         <classes>
             <class name="ATD.QASYS_539_Selectors.QASYS_541_VerticalSelectors">
             </class>
         </classes>
     </test>
 
-    <test name="QASYS_542_PopUpsOfSelectors" thread-count="1">
+    <test name="QASYS_542_PopUpsOfSelectors">
         <classes>
             <class name="ATD.QASYS_539_Selectors.QASYS_542_PopUpsOfSelectors">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QASYS_543_RegKbaSelectors">
+        <classes>
+            <class name="ATD.QASYS_539_Selectors.QASYS_543_RegKbaSelectors">
             </class>
         </classes>
     </test>
