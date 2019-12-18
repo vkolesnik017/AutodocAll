@@ -104,7 +104,7 @@ public class QASYS_541_VerticalSelectors {
     mainPage.chooseBrandModelTypeInSelector(brandToChoose, modelToChoose, typeToChoose)
             .selectorSearchBtn().click();
     checkingContainsUrl("/citroen/ax/ax-za/20249-1-4-allure");
-    new ListingTecdoc_page().priceFilterSubmitButton().shouldBe(visible);
+    new Listing_page().priceFilterSubmitButton().shouldBe(visible);
   }
 
   @Test(dataProvider = "routes")
