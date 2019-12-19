@@ -9,4 +9,11 @@
         </classes>
     </test>
 
+    <test name="QASYS_7_ListingSearch">
+        <classes>
+            <class name="ATD.QASYS_5_Listings.QASYS_7_ListingSearch">
+            </class>
+        </classes>
+    </test>
+
 </suite>

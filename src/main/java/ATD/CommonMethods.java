@@ -51,7 +51,7 @@ public class CommonMethods {
         return executeJavaScript("return $siteSettings.route");
     }
 
-    static String getShopFromRoute(String route) {
+    public static String getShopFromRoute(String route) {
         String shop = null;
         String[] words = route.split("\\.");
         if (words.length == 4) {
