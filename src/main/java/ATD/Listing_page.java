@@ -77,6 +77,22 @@ public class Listing_page {
 
     public SelenideElement sideFilterOenAttribute2() { return $x("//*[@class='model_list_oem']/li[1]/label/a"); }
 
+    public SelenideElement titleOnOemListing() {
+        return $(".title_count_search>h2");
+    }
+
+    public SelenideElement oemNumberBlock() {
+        return $(".oem-number");
+    }
+
+    public SelenideElement oemDescriptionBlock() {
+        return $(".oem-number__desc");
+    }
+
+    public SelenideElement oemAnalogBlock() {
+        return $(".oem-number__analog");
+    }
+
     //Brand filters locators
 
     public SelenideElement firstBrandNameInFiler() { return $(By.xpath("//*[@class='slick-track']/li[8]/label/img")); }

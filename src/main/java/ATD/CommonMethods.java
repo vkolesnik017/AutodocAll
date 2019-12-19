@@ -119,6 +119,17 @@ public class CommonMethods {
         }
     }
 
+    @Step
+    //Method for waiting while link become expected
+    public static void waitingWhileLinkBecomeExpected(String expectedEqualsUrl) {
+        try {
+            Wait().until(webDriver -> url().equals(expectedEqualsUrl));
+        } catch (TimeoutException e) {
+            System.out.println(url());
+            Assert.fail("Url doesn't equals: " + expectedEqualsUrl);
+        }
+    }
+
     //Method checking follow url on new tab and close tab
     public void checkingUrlAndCloseTab(String expectedUrl){
         switchTo().window(1);
