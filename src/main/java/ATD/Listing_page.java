@@ -64,6 +64,20 @@ public class Listing_page {
 
     public SelenideElement activeSideFilterAttributeLkw2() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_593']//ul/li[2]"); }
 
+    // locator for search listing
+
+    public SelenideElement titleOfSearchListing() {
+        return $(".title_count_search");
+    }
+
+    public SelenideElement blockOfHelpSearchProducts() {
+        return $(".filter-not-found__title");
+    }
+
+    public SelenideElement blockOfLinkingCategory() {
+        return $(".sidebar-category");
+    }
+
     //For Oem listing
     public SelenideElement firstBrandButtonOemListing() { return $(By.xpath("//*[@id='selected-instalation__slider']/ul/li[1]")); }
 
@@ -127,7 +141,7 @@ public class Listing_page {
 
     public SelenideElement fourthGeneric() { return $(By.xpath("//div[contains(@class,'filter-generics-tecdoc__list js-filter-generics-tecdoc')]//label[4]/div[2]")); }
 
-    //Listing locators
+    //Locators for all listings
 
     public ElementsCollection productTitleInTileMode() { return $$(By.cssSelector(".rec_prod_title.small_text")); }
 
@@ -169,6 +183,9 @@ public class Listing_page {
 
     public ElementsCollection hoheProductAttributeGenericRoute() { return $$x("//*[@class='w_search no_margin']/preceding-sibling::li//*[@class='important' and contains(span,'Höhe 1 [mm]:')]/span[2]"); }
 
+    public SelenideElement closeBtnPopupOfChooseCar() {
+        return $(".back");
+    }
 
     @Step("Method gets price of all products on listing and parse it into float")
     public List<Float> getAllPricesOnListingPage(ElementsCollection listingViewModeLocator) {
