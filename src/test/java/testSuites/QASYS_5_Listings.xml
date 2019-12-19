@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="QASYS_5_Listings" parallel="methods" thread-count="3">
+
+    <test name="QASYS_6_ListingOEN">
+        <classes>
+            <class name="ATD.QASYS_5_Listings.QASYS_6_ListingOEN">
+            </class>
+        </classes>
+    </test>
+
+</suite>

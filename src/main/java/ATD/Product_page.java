@@ -1,5 +1,6 @@
 package ATD;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.ex.ElementNotFound;
 import com.codeborne.selenide.ex.ElementShould;
@@ -209,4 +210,9 @@ public class Product_page {
     return $(".kba_submit");
   }
 
+  // locators for OEN block
+  public ElementsCollection linksInOenNumbersBlock() {
+    return $$x("//*[@class='oem-list']//li");
+  }
+  
 }
