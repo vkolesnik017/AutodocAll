@@ -2,6 +2,20 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="QASYS_35_FiltersSorting" data-provider-thread-count="6">
 
+    <test name="QASYS_36_FilterSorting_byBrand">
+        <classes>
+            <class name="ATD.QASYS_35_FiltersSorting.QASYS_36_FilterSorting_byBrand">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QASYS_37_FilterSorting_sideFilters">
+        <classes>
+            <class name="ATD.QASYS_35_FiltersSorting.QASYS_37_FilterSorting_sideFilters">
+            </class>
+        </classes>
+    </test>
+
     <test name="QASYS_38_FiltersSorting_byGeneric">
         <classes>
             <class name="ATD.QASYS_35_FiltersSorting.QASYS_38_FiltersSorting_byGeneric">
@@ -16,11 +30,6 @@
         </classes>
     </test>
 
-    <test name="QASYS_36_FilterSorting_byBrand">
-        <classes>
-            <class name="ATD.QASYS_35_FiltersSorting.QASYS_36_FilterSorting_byBrand">
-            </class>
-        </classes>
-    </test>
+
 
 </suite>

@@ -51,7 +51,7 @@ public class CommonMethods {
         return executeJavaScript("return $siteSettings.route");
     }
 
-    static String getShopFromRoute(String route) {
+    public static String getShopFromRoute(String route) {
         String shop = null;
         String[] words = route.split("\\.");
         if (words.length == 4) {
@@ -116,6 +116,17 @@ public class CommonMethods {
         } catch (TimeoutException e) {
             System.out.println(url());
             Assert.fail("Url doesn't contains: " + expectedContainsUrl);
+        }
+    }
+
+    @Step
+    //Method for waiting while link become expected
+    public static void waitingWhileLinkBecomeExpected(String expectedEqualsUrl) {
+        try {
+            Wait().until(webDriver -> url().equals(expectedEqualsUrl));
+        } catch (TimeoutException e) {
+            System.out.println(url());
+            Assert.fail("Url doesn't equals: " + expectedEqualsUrl);
         }
     }
 

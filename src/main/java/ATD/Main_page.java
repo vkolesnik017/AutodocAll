@@ -1,8 +1,11 @@
 package ATD;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+
+import java.sql.SQLException;
 
 import static ATD.CommonMethods.*;
 import static com.codeborne.selenide.Condition.exist;
@@ -230,12 +233,30 @@ public class Main_page {
     public SelenideElement subscriptionSuccessPopup(){ return $(byXpath("//div[@id='news_subscribe']//h3"));}
     public SelenideElement subscriptionErrPopup(){ return $(byXpath("//div[@class='txt error_msg']"));}
     public SelenideElement subscriptionPopupClose(){ return $(byXpath("//div[@class='popup ']//*[@class='close']/span[2]"));}
+    public SelenideElement techAllianceBlock(){ return  $x("//div[@class='footer__bottom']/div[@class='footer__bottom-first']");}
+    public SelenideElement workTimeBlock(){ return $x("//div[@class='footer__bottom']/div[@class='footer__bottom-center']");}
+    public SelenideElement copyrightBlock(){ return $x("//div[@class='footer__bottom']//div[@class='copyright']");}
+    public SelenideElement facebookButton(){ return $x("//ul[@class='social-inline']/li[1]/span");}
+    public SelenideElement youtubeButton(){ return $x("//ul[@class='social-inline']/li[2]/span");}
+    public SelenideElement instagramButton(){ return  $x("//ul[@class='social-inline']/li[3]/span");}
+
+
     public Datenschutz_page clickDatenschutzInSubscription() {
         $(By.xpath("//*[@class='footer__links']/div[2]/ul/li[7]/a")).click();
         return page(Datenschutz_page.class);
     }
 
-
+    public void checkingCountriesSubscription() throws SQLException {
+        ElementsCollection elements = $$(By.xpath("//div[@class='mCSB_container']/div"));
+        for (SelenideElement element : elements) {
+            String shopName = element.attr("id");
+            shopName = shopName.substring(shopName.indexOf("_") + 1);
+            if (shopName.equalsIgnoreCase("lu")) shopName = "ld";
+            $(By.xpath("//div[@class='footer-language__select']")).click();
+            element.$(By.xpath("./a")).scrollIntoView(true).click();
+            new CommonMethods().checkingUrlAndCloseTab(new DataBase().getRouteByRouteName(shopName, "main"));
+        }
+    }
 
     //ÜBER AUTODOC
     public About_us_page clickAboutUs() {
@@ -350,17 +371,17 @@ public class Main_page {
         $(By.xpath("//*[@class='footer__links']/div[4]/ul/li[2]/a")).click();
         return page(Stobdampfer_page.class);
     }
-    public Kupplungssatz_page clickKupplungssatz() {
-        $(By.xpath("//*[@class='footer__links']/div[4]/ul/li[3]/a")).click();
-        return page(Kupplungssatz_page.class);
-    }
     public Querlenker_page clickQuerlenker() {
-        $(By.xpath("//*[@class='footer__links']/div[4]/ul/li[4]/a")).click();
+        $(By.xpath("//*[@class='footer__links']/div[4]/ul/li[3]/a")).click();
         return page(Querlenker_page.class);
     }
     public Radlager_page clickRadlager() {
-        $(By.xpath("//*[@class='footer__links']/div[4]/ul/li[5]/a")).click();
+        $(By.xpath("//*[@class='footer__links']/div[4]/ul/li[4]/a")).click();
         return page(Radlager_page.class);
+    }
+    public Kupplungssatz_page clickKupplungssatz() {
+        $(By.xpath("//*[@class='footer__links']/div[4]/ul/li[5]/a")).click();
+        return page(Kupplungssatz_page.class);
     }
     public Autopflege_page clickAutopflege() {
         $(By.xpath("//*[@class='footer__links']/div[4]/ul/li[6]/a")).click();
