@@ -3,6 +3,7 @@ package ATD.QASYS_35_FiltersSorting;
 
 import ATD.DataBase;
 import ATD.Listing_page;
+import ATD.Main_page;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -19,6 +20,7 @@ import static com.codeborne.selenide.Selenide.open;
 public class QASYS_479_FiltersSorting_byPrice {
     private Listing_page listingPage = new Listing_page();
     private DataBase dataBase = new DataBase();
+    private Main_page mainPage = new Main_page();
 
     @BeforeClass
     void setUp() {
@@ -27,7 +29,7 @@ public class QASYS_479_FiltersSorting_byPrice {
 
     @Test
     @Flaky
-    @Owner(value = "oleg")
+    @Owner(value = "Romaniuta")
     @Description(value = "TC01 TC02 Test checks price filter on listing (Tecdoc, ACC) in list and tile mode")
     public void checkPriceFilterTecdocAndAcc() throws SQLException{
         //Tecdoc listing check
@@ -59,10 +61,11 @@ public class QASYS_479_FiltersSorting_byPrice {
 
     @Test
     @Flaky
-    @Owner(value = "oleg")
+    @Owner(value = "Romaniuta")
     @Description(value = "TC01 TC02 Test checks price filter on listing (LKW) in list and tile mode")
     public void checkPriceFilterLkw() throws SQLException {
         open("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_category_car_list"));
+        mainPage.closeCarSelectorTooltipIfVisible();
         executeJavaScript("arguments[0].value='20';", listingPage.minPriceValue());
         executeJavaScript("arguments[0].value='30';", listingPage.maxPriceValue());
         listingPage.priceFilterSubmitButton().click();
@@ -78,7 +81,7 @@ public class QASYS_479_FiltersSorting_byPrice {
 
     @Test
     @Flaky
-    @Owner(value = "oleg")
+    @Owner(value = "Romaniuta")
     @Description(value = "TC03 TC05 Test checks price filter on listing (Tecdoc, ACC) with pagination")
     public void checkPriceFilterTecdocAndAccPagination() throws SQLException {
         open("https://autodoc.de/" +  dataBase.getRouteByRouteName("DE", "category_car_list"));
@@ -107,10 +110,11 @@ public class QASYS_479_FiltersSorting_byPrice {
 
     @Test
     @Flaky
-    @Owner(value = "oleg")
+    @Owner(value = "Romaniuta")
     @Description(value = "TC04 Test checks price filter on listing (LKW) with pagination")
     public void checkPriceFilterLkwPagination() throws SQLException {
         open("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_category_car_list"));
+        mainPage.closeCarSelectorTooltipIfVisible();
         executeJavaScript("arguments[0].value='10';", listingPage.minPriceValue());
         executeJavaScript("arguments[0].value='30';", listingPage.maxPriceValue());
         listingPage.priceFilterSubmitButton().click();
@@ -124,7 +128,7 @@ public class QASYS_479_FiltersSorting_byPrice {
 
     @Test
     @Flaky
-    @Owner(value = "oleg")
+    @Owner(value = "Romaniuta")
     @Description(value = "TC06 Test checks price filter reset on listing (Tecdoc, ACC)")
     public void checkPriceFilterResetTecdocAndAcc() throws SQLException {
         //Tecdoc listing check
@@ -164,10 +168,11 @@ public class QASYS_479_FiltersSorting_byPrice {
 
     @Test
     @Flaky
-    @Owner(value = "oleg")
+    @Owner(value = "Romaniuta")
     @Description(value = "TC06 Test checks price filter reset on listing (LKW)")
     public void checkPriceFilterResetLKW() throws SQLException {
         open("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_category_car_list"));
+        mainPage.closeCarSelectorTooltipIfVisible();
         String defaultMinPrice = listingPage.minPriceMapping().getText();
         String defaultMaxPrice = listingPage.maxPriceMapping().getText();
         executeJavaScript("arguments[0].value='20';", listingPage.minPriceValue());
@@ -186,7 +191,7 @@ public class QASYS_479_FiltersSorting_byPrice {
 
     @Test
     @Flaky
-    @Owner(value = "oleg")
+    @Owner(value = "Romaniuta")
     @Description(value = "TC07 Test checks price filter on listing (Tecdoc) with few products")
     public void checkPriceFilterTecdocWithFewProducts() throws SQLException {
         open("https://autodoc.de/" +  dataBase.getRouteByRouteName("DE", "category_car_list3"));
@@ -200,7 +205,7 @@ public class QASYS_479_FiltersSorting_byPrice {
 
     @Test
     @Flaky
-    @Owner(value = "oleg")
+    @Owner(value = "Romaniuta")
     @Description(value = "TC08 Test checks price filter on listing (Tecdoc) with filter by side")
     public void checkPriceFilterTecdocWithFilerBySide() throws SQLException {
         open("https://autodoc.de/" +  dataBase.getRouteByRouteName("DE", "category_car_list"));
@@ -216,10 +221,11 @@ public class QASYS_479_FiltersSorting_byPrice {
 
     @Test
     @Flaky
-    @Owner(value = "oleg")
+    @Owner(value = "Romaniuta")
     @Description(value = "TC09 Test checks price filter on listing (LKW) with filter by side")
     public void checkPriceFilterTecdocWithFilerBySideLKW() throws SQLException {
         open("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_category_car_list"));
+        mainPage.closeCarSelectorTooltipIfVisible();
         executeJavaScript("arguments[0].value='15';", listingPage.minPriceValue());
         executeJavaScript("arguments[0].value='113';", listingPage.maxPriceValue());
         listingPage.priceFilterSubmitButton().click();
@@ -232,7 +238,7 @@ public class QASYS_479_FiltersSorting_byPrice {
 
     @Test
     @Flaky
-    @Owner(value = "oleg")
+    @Owner(value = "Romaniuta")
     @Description(value = "TC10 TC11 Test checks price filter on listing (Tecdoc, ACC) with filter by characteristic/brand")
     public void checkPriceFilterTecdocWithFilerByBrand() throws SQLException {
         //Tecdoc listing price + characteristic

@@ -14,6 +14,7 @@ import java.util.Set;
 
 import static com.codeborne.selenide.Condition.or;
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
 public class Listing_page {
@@ -40,29 +41,29 @@ public class Listing_page {
 
     public SelenideElement produktreiheFilterAttribute() {return $(By.xpath("//*[@id='mCSB_2_container']/li[2]/label")); }
 
-    public SelenideElement langeFilterCheckbox() { return $x("//*[@id='mCSB_3_container']/li[8]"); }
+    public SelenideElement langeFilterCheckbox() { return $x("//*[@id='mCSB_2_container']/li[8]"); }
 
-    public SelenideElement langeFilterAttribute() { return $x("//*[@id='mCSB_3_container']/li[8]/label"); }
+    public SelenideElement langeFilterAttribute() { return $x("//*[@id='mCSB_2_container']/li[8]/label"); }
 
-    public SelenideElement wischblattausfuhrungFilterCheckbox() { return $x("//*[@id='mCSB_4_container']/li[1]"); }
+    public SelenideElement wischblattausfuhrungFilterCheckbox() { return $x("//*[@id='mCSB_3_container']/li[1]"); }
 
-    public SelenideElement wischblattausfuhrungFilterAttribute() { return $x("//*[@id='mCSB_4_container']/li[1]/label"); }
+    public SelenideElement wischblattausfuhrungFilterAttribute() { return $x("//*[@id='mCSB_3_container']/li[1]/label"); }
 
-    public SelenideElement langeFilterCheckbox2() { return $x("//*[@id='mCSB_3_container']/li[2]"); }
+    public SelenideElement langeFilterCheckbox2() { return $x("//*[@id='mCSB_2_container']/li[2]"); }
 
-    public SelenideElement langeFilterAttribute2() { return $x("//*[@id='mCSB_3_container']/li[2]/label"); }
+    public SelenideElement langeFilterAttribute2() { return $x("//*[@id='mCSB_2_container']/li[2]/label"); }
 
     public SelenideElement activeSideFilter() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_203']//li[1]/label"); }
 
     public SelenideElement activeSideFilter2() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_203']//li[2]/label"); }
 
-    public SelenideElement activeSideFilterLkw() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_593']//ul/li[1]/label"); }
+    public SelenideElement activeSideFilterLkw() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_339']//ul/li[1]/label"); }
 
     public SelenideElement activeSideFilterLkwHohe() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_339']//ul/li[1]/label"); }
 
-    public SelenideElement activeSideFilterLkw2() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_593']//ul/li[2]/label"); }
+    public SelenideElement activeSideFilterLkwCheckbox() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_203']//li[1]"); }
 
-    public SelenideElement activeSideFilterAttributeLkw2() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_593']//ul/li[2]"); }
+    public SelenideElement activeSideFilterAttributeLkw2() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_339']//ul/li[2]"); }
 
     //For Oem listing
     public SelenideElement firstBrandButtonOemListing() { return $(By.xpath("//*[@id='selected-instalation__slider']/ul/li[1]")); }
@@ -129,8 +130,6 @@ public class Listing_page {
 
     public ElementsCollection productTitleInListMode() { return $$(By.cssSelector(".name")); }
 
-    public SelenideElement tooltipCarSelectorClose() { return $(".tooltiptext-close"); }
-
     public ElementsCollection produktreiheProductAttributeTecdocRoute() { return $$x("//*[@class='important' and contains(span, 'Produktreihe')]/span[2]"); }
 
     public ElementsCollection produktreiheProductAttributeGenericRoute() { return $$(By.xpath("//*[@class='w_search no_margin']/preceding-sibling::li//*[@class='important' and contains(span, 'Produktreihe')]/span[2]")); }
@@ -153,6 +152,9 @@ public class Listing_page {
 
     public ElementsCollection hoheProductAttributeGenericRoute() { return $$x("//*[@class='w_search no_margin']/preceding-sibling::li//*[@class='important' and contains(span,'Höhe 1 [mm]:')]/span[2]"); }
 
+    public ElementsCollection einbauseiteProductAttributeTecdocRoute() {return $$x("//*[@class='important' and contains(span, 'Einbauseite:')]/span[2]"); }
+
+    public ElementsCollection einbauseiteProductAttributeGenericRoute() {return $$x("//*[@class='w_search no_margin']/preceding-sibling::li//*[@class='important' and contains(span, 'Einbauseite:')]/span[2]"); }
 
     @Step("Method gets price of all products on listing and parse it into float")
     public List<Float> getAllPricesOnListingPage(ElementsCollection listingViewModeLocator) {
@@ -247,6 +249,15 @@ public class Listing_page {
         }
     }
 
+
+    public void checkProductAttributeOnListingWithCarAndFilter(String characteristic, ElementsCollection productAttributeGenericRoute, ElementsCollection productAttributeTecdocRoute) {
+        if(productsForOtherCars().is(visible)) {
+            checkProductAttributeOnListing(characteristic, productAttributeGenericRoute);
+        } else {
+            checkProductAttributeOnListing(characteristic, productAttributeTecdocRoute);
+        }
+    }
+
     @Step("Method checks product attribute on listing in tile mode")
     public void checkProductAttributeOnListingInTileMode(String attributeSelectedInSideFilter, ElementsCollection productAttributeOnListing) {
         for (int i = 0; i < productAttributeOnListing.size(); i++) {
@@ -255,4 +266,6 @@ public class Listing_page {
             langeFilterCheckbox().hover();
         }
     }
+
+
 }

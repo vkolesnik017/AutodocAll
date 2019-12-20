@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 
 import static ATD.CommonMethods.*;
 import static com.codeborne.selenide.Condition.exist;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byXpath;
@@ -408,6 +409,13 @@ public class Main_page {
         return this;
     }
 
+    @Step("Method close car selector tooltip if it is present on page")
+    public void closeCarSelectorTooltipIfVisible() {
+        if(tooltipCarSelectorClose().is(visible)) {
+            tooltipCarSelectorClose().click();
+        }
+    }
+
     @Step
     // return current chosen value from selector
     public String getChosenValueFromSelector(SelenideElement selector) {
@@ -446,6 +454,8 @@ public class Main_page {
     public SelenideElement resetBtnSelector() {
         return $(byId("reset_selector_form"));
     }
+
+    public SelenideElement tooltipCarSelectorClose() { return $(".tooltiptext-close"); }
 
     //Methods and locators for Selector kba
     @Step("For DE")

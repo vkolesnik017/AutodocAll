@@ -3,7 +3,9 @@ package ATD.QASYS_35_FiltersSorting;
 
 import ATD.DataBase;
 import ATD.Listing_page;
+import ATD.Main_page;
 import ATD.SetUp;
+import PKW.Main;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -22,6 +24,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class QASYS_36_FilterSorting_byBrand {
     private Listing_page listingPage = new Listing_page();
     private DataBase dataBase = new DataBase();
+    private Main_page mainPage = new Main_page();
 
     @BeforeClass
     void setUp() {
@@ -55,7 +58,7 @@ public class QASYS_36_FilterSorting_byBrand {
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "oleg")
+    @Owner(value = "Romaniuta")
     @Description(value = "TC01 Test checks brand filter with two brands selected (Tecdoc listing)")
     public void checkBrandFilterWithTwoBrandsSelected(String route) {
         open(route);
@@ -72,7 +75,7 @@ public class QASYS_36_FilterSorting_byBrand {
 
     @Test(dataProvider = "routeOem")
     @Flaky
-    @Owner(value = "oleg")
+    @Owner(value = "Romaniuta")
     @Description(value = "TC01 Test checks brand filter with two brands selected (Oem listing)")
     public void checkBrandFilterWithTwoBrandsSelectedOem(String route) {
         open(route);
@@ -88,7 +91,7 @@ public class QASYS_36_FilterSorting_byBrand {
 
     @Test(dataProvider = "routeAcc")
     @Flaky
-    @Owner(value = "oleg")
+    @Owner(value = "Romaniuta")
     @Description(value = "TC01 Test checks brand filter with two brands selected (Acc listing)")
     public void checkBrandFilterWithTwoBrandsSelectedAcc(String route) {
         open(route);
@@ -103,10 +106,11 @@ public class QASYS_36_FilterSorting_byBrand {
 
     @Test(dataProvider = "routesLKW")
     @Flaky
-    @Owner(value = "oleg")
+    @Owner(value = "Romaniuta")
     @Description(value = "TC01 Test checks brand filter with two brands selected (LKW listing)")
     public void checkBrandFilterWithTwoBrandsSelectedLKW(String route) {
         open(route);
+        mainPage.closeCarSelectorTooltipIfVisible();
         listingPage.firstBrandInFilterButton().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         String firstBrand = listingPage.firstBrandNameInFiler().attr("alt");
@@ -119,7 +123,7 @@ public class QASYS_36_FilterSorting_byBrand {
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "oleg")
+    @Owner(value = "Romaniuta")
     @Description(value = "TC02 Test checks brand filter in tile mode (Tecdoc listing)")
     public void checkBrandFilterInTileMode(String route) {
         open(route);
@@ -134,10 +138,11 @@ public class QASYS_36_FilterSorting_byBrand {
 
     @Test(dataProvider = "routesLKW")
     @Flaky
-    @Owner(value = "oleg")
+    @Owner(value = "Romaniuta")
     @Description(value = "TC02 Test checks brand filter in tile mode (LKW listing)")
     public void checkBrandFilterInTileModeLKW(String route) {
         open(route);
+        mainPage.closeCarSelectorTooltipIfVisible();
         listingPage.firstBrandInFilterButton().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         String brand1 = listingPage.firstBrandNameInFiler().attr("alt");
@@ -148,7 +153,7 @@ public class QASYS_36_FilterSorting_byBrand {
 
     @Test(dataProvider = "routesTecdocBySide")
     @Flaky
-    @Owner(value = "oleg")
+    @Owner(value = "Romaniuta")
     @Description(value = "TC03 Test checks brand filter with filter by side (Tecdoc listing)")
     public void checkBrandFilterWithFilterBySide(String route) {
         open(route);
@@ -163,10 +168,11 @@ public class QASYS_36_FilterSorting_byBrand {
 
     @Test
     @Flaky
-    @Owner(value = "oleg")
+    @Owner(value = "Romaniuta")
     @Description(value = "TC03 Test checks brand filter with filter by side (LKW listing)")
     public void checkBrandFilterWithFilterBySideLKWsearch() throws SQLException {
         open("https://lkwteile.autodoc.de/" +  dataBase.getRouteByRouteName("DE", "lkw_search"));
+        mainPage.closeCarSelectorTooltipIfVisible();
         String brand1 = listingPage.firstBrandNameInFiler().attr("alt");
         listingPage.filterBySideLKW().click();
         listingPage.firstBrandInFilterButton().click();
@@ -176,10 +182,11 @@ public class QASYS_36_FilterSorting_byBrand {
 
     @Test
     @Flaky
-    @Owner(value = "oleg")
+    @Owner(value = "Romaniuta")
     @Description(value = "TC03 Test checks brand filter with filter by side (LKW listing)")
     public void checkBrandFilterWithFilterBySideLKWcategory() throws SQLException {
         open("https://lkwteile.autodoc.de/" +  dataBase.getRouteByRouteName("DE", "lkw_category_car_list"));
+        mainPage.closeCarSelectorTooltipIfVisible();
         String brand1 = listingPage.firstBrandNameInFiler().attr("alt");
         listingPage.filterBySideLKW().click();
         listingPage.firstBrandInFilterButton().click();
@@ -189,10 +196,11 @@ public class QASYS_36_FilterSorting_byBrand {
 
     @Test
     @Flaky
-    @Owner(value = "oleg")
+    @Owner(value = "Romaniuta")
     @Description(value = "TC03 Test checks brand filter with filter by side (LKW listing)")
     public void checkBrandFilterWithFilterBySideLKWcategory2() throws SQLException {
         open("https://lkwteile.autodoc.de/" +  dataBase.getRouteByRouteName("DE", "lkw_category_car_list2"));
+        mainPage.closeCarSelectorTooltipIfVisible();
         listingPage.filterBySideLKW().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         String brand1 = listingPage.firstBrandNameInFiler().attr("alt");
@@ -204,7 +212,7 @@ public class QASYS_36_FilterSorting_byBrand {
 
     @Test
     @Flaky
-    @Owner(value = "oleg")
+    @Owner(value = "Romaniuta")
     @Description(value = "TC04 Test checks brand filter with pagination (Tecdoc listing)")
     public void checkBrandFilterPagination() throws SQLException {
         open("https://autodoc.de/" +  dataBase.getRouteByRouteName("DE", "search2"));
@@ -219,10 +227,11 @@ public class QASYS_36_FilterSorting_byBrand {
 
     @Test
     @Flaky
-    @Owner(value = "oleg")
+    @Owner(value = "Romaniuta")
     @Description(value = "TC05 Test checks brand filter with pagination (LKW listing)")
     public void checkBrandFilterPaginationLKW() throws SQLException {
         open("https://lkwteile.autodoc.de/" +  dataBase.getRouteByRouteName("DE", "lkw_category_car_list5"));
+        mainPage.closeCarSelectorTooltipIfVisible();
         String brandName1 = listingPage.firstBrandNameInFiler().attr("alt").split(" ")[0];
         String brandName2 = listingPage.secondBrandNameInFilter().attr("alt").split(" ")[0];
         String brandName3 = listingPage.thirdBrandNameInFilter().attr("alt").split(" ")[0];
@@ -236,7 +245,7 @@ public class QASYS_36_FilterSorting_byBrand {
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "oleg")
+    @Owner(value = "Romaniuta")
     @Description(value = "TC06 Test checks brand filter reset (Tecdoc listing)")
     public void checkBrandFilterReset(String route) {
         open(route);
@@ -251,15 +260,13 @@ public class QASYS_36_FilterSorting_byBrand {
 
     @Test(dataProvider = "routesLKW")
     @Flaky
-    @Owner(value = "oleg")
+    @Owner(value = "Romaniuta")
     @Description(value = "TC06 Test checks brand filter reset (LKW listing)")
     public void checkBrandFilterResetLKW(String route) {
         open(route);
+        mainPage.closeCarSelectorTooltipIfVisible();
         listingPage.firstBrandInFilterButton().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        if(listingPage.tooltipCarSelectorClose().is(visible)) {
-            listingPage.tooltipCarSelectorClose().click();
-        }
         listingPage.firstBrandInFilterButton().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.checkUniqueBrandsOnListing(3, listingPage.productTitleInListMode());
@@ -268,7 +275,7 @@ public class QASYS_36_FilterSorting_byBrand {
 
     @Test(dataProvider = "routeAcc")
     @Flaky
-    @Owner(value = "oleg")
+    @Owner(value = "Romaniuta")
     @Description(value = "TC06 Test checks brand filter reset (Acc listing)")
     public void checkBrandFilterResetAcc(String route) {
         open(route);
@@ -281,7 +288,7 @@ public class QASYS_36_FilterSorting_byBrand {
 
     @Test(dataProvider = "routeOem")
     @Flaky
-    @Owner(value = "oleg")
+    @Owner(value = "Romaniuta")
     @Description(value = "TC06 Test checks brand filter reset (Oem listing)")
     public void checkBrandFilterResetOem(String route) {
         open(route);
@@ -294,10 +301,11 @@ public class QASYS_36_FilterSorting_byBrand {
 
     @Test
     @Flaky
-    @Owner(value = "oleg")
+    @Owner(value = "Romaniuta")
     @Description(value = "TC07 TC08 Test checks brand filter reset (LKW listing)")
     public void checkBrandFilterBySideLKW() throws SQLException {
         open("https://lkwteile.autodoc.de/" +  dataBase.getRouteByRouteName("DE", "lkw_category_car_list"));
+        mainPage.closeCarSelectorTooltipIfVisible();
         listingPage.filterBySideLKW().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.brandFilterBlock().shouldBe(visible);
@@ -305,10 +313,11 @@ public class QASYS_36_FilterSorting_byBrand {
 
     @Test
     @Flaky
-    @Owner(value = "oleg")
+    @Owner(value = "Romaniuta")
     @Description(value = "TC09 Test checks brand filter with characteristic filter (LKW listing)")
     public void checkBrandFilterCharacteristic() throws SQLException{
         open("https://autodoc.de/" +  dataBase.getRouteByRouteName("DE", "category_car_list"));
+        mainPage.closeCarSelectorTooltipIfVisible();
         String brandName = listingPage.secondBrandNameInFilter().text();
         listingPage.firstBrandInFilterButton().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
