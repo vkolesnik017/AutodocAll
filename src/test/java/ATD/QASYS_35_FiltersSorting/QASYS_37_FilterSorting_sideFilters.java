@@ -18,7 +18,6 @@ import static ATD.SetUp.setUpBrowser;
 import static ATD.CommonMethods.closeCookiesFooterMessage;
 import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
 public class QASYS_37_FilterSorting_sideFilters {
@@ -35,62 +34,45 @@ public class QASYS_37_FilterSorting_sideFilters {
         return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2,search4");
     }
 
-    @DataProvider(name = "routesLKW", parallel = true)
-    Object[] dataProviderLKW2routes() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list6,lkw_category_car_list7");
-    }
-
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "oleg")
+    @Owner(value = "Romaniuta")
     @Description(value = "TC01 Test checks Produktreihe side filter")
     public void testProduktreiheFilter(String route) {
         open(route);
         String characteristic = listingPage.produktreiheFilterAttribute().text();
         listingPage.produktreiheFilterCheckbox().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        if(listingPage.productsForOtherCars().is(visible)) {
-            listingPage.checkProductAttributeOnListing(characteristic, listingPage.produktreiheProductAttributeGenericRoute());
-        } else {
-            listingPage.checkProductAttributeOnListing(characteristic, listingPage.produktreiheProductAttributeTecdocRoute());
-        }
+        listingPage.checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.produktreiheProductAttributeGenericRoute(), listingPage.produktreiheProductAttributeTecdocRoute());
     }
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "oleg")
+    @Owner(value = "Romaniuta")
     @Description(value = "TC02 Test checks Lange side filter")
     public void testLangeFilter(String route) {
         open(route);
         String characteristic = listingPage.langeFilterAttribute().text();
         listingPage.langeFilterCheckbox().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        if(listingPage.productsForOtherCars().is(visible)) {
-            listingPage.checkProductAttributeOnListing(characteristic, listingPage.langeProductAttributeGenericRoute());
-        } else {
-            listingPage.checkProductAttributeOnListing(characteristic, listingPage.langeProductAttributeTecdocRoute());
-        }
+        listingPage.checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.langeProductAttributeGenericRoute(), listingPage.langeProductAttributeTecdocRoute());
     }
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "oleg")
+    @Owner(value = "Romaniuta")
     @Description(value = "TC03 Test checks Wischblattausfuhrung side filter")
     public void testWischblattausfuhrungFilter(String route) {
         open(route);
         String characteristic = listingPage.wischblattausfuhrungFilterAttribute().text();
         listingPage.wischblattausfuhrungFilterCheckbox().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        if(listingPage.productsForOtherCars().is(visible)) {
-            listingPage.checkProductAttributeOnListing(characteristic, listingPage.wischblattausfuhrungProductAttributeGenericRoute());
-        } else {
-            listingPage.checkProductAttributeOnListing(characteristic, listingPage.wischblattausfuhrungProductAttributeTecdocRoute());
-        }
+        listingPage.checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.wischblattausfuhrungProductAttributeGenericRoute(), listingPage.wischblattausfuhrungProductAttributeTecdocRoute());
     }
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "oleg")
+    @Owner(value = "Romaniuta")
     @Description(value = "TC04 Test checks side filter in tile mode")
     public void testSideFilterInTileMode(String route) {
         open(route);
@@ -99,16 +81,12 @@ public class QASYS_37_FilterSorting_sideFilters {
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.showListingInTileModeButton().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        if(listingPage.productsForOtherCars().is(visible)) {
-            listingPage.checkProductAttributeOnListingInTileMode(characteristic, listingPage.langeProductAttributeGenericRoute());
-        } else {
-            listingPage.checkProductAttributeOnListingInTileMode(characteristic, listingPage.langeProductAttributeTecdocRoute());
-        }
+        listingPage.checkProductAttributeOnListingInTileMode(characteristic, listingPage.langeProductAttributeTecdocRoute());
     }
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "oleg")
+    @Owner(value = "Romaniuta")
     @Description(value = "TC05 Test checks side filter with pagination")
     public void testSideFilterWithPagination(String route) {
         open(route);
@@ -118,27 +96,19 @@ public class QASYS_37_FilterSorting_sideFilters {
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.secondListingPage().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        if(listingPage.productsForOtherCars().is(visible)) {
-            listingPage.checkProductAttributeOnListing(characteristic, listingPage.langeProductAttributeGenericRoute());
-        } else {
-            listingPage.checkProductAttributeOnListing(characteristic, listingPage.langeProductAttributeTecdocRoute());
-        }
+        listingPage.checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.langeProductAttributeGenericRoute(), listingPage.langeProductAttributeTecdocRoute());
     }
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "oleg")
+    @Owner(value = "Romaniuta")
     @Description(value = "TC06 Test checks side filter cancelling")
     public void testSideFilterCancelling(String route) {
         open(route);
         String characteristic = listingPage.activeSideFilter2().text();
         listingPage.activeSideFilter2().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-            if(listingPage.productsForOtherCars().is(visible)) {
-                listingPage.checkProductAttributeOnListing(characteristic, listingPage.wischblattausfuhrungProductAttributeGenericRoute());
-            } else {
-                listingPage.checkProductAttributeOnListing(characteristic, listingPage.wischblattausfuhrungProductAttributeTecdocRoute());
-            }
+        listingPage.checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.wischblattausfuhrungProductAttributeGenericRoute(), listingPage.wischblattausfuhrungProductAttributeTecdocRoute());
         int numberOfAttributesFilter = listingPage.wischblattausfuhrungProductAttributeTecdocRoute().size();
         listingPage.activeSideFilter().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
@@ -146,20 +116,16 @@ public class QASYS_37_FilterSorting_sideFilters {
         Assert.assertNotEquals(numberOfAttributesFilter, numberOfAttributesNoFilter);
     }
 
-    @Test(dataProvider = "routesLKW")
+    @Test
     @Flaky
-    @Owner(value = "oleg")
+    @Owner(value = "Romaniuta")
     @Description(value = "TC06 Test checks side filter cancelling on LKW routes")
-    public void testSideFilterCancellingLKW(String route) {
-        open(route);
-        String characteristic = listingPage.wischblattausfuhrungFilterAttribute().text();
-        listingPage.wischblattausfuhrungFilterAttribute().click();
+    public void testSideFilterCancellingLKW() throws SQLException {
+        open("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_category_car_list6"));
+        String characteristic = listingPage.langeFilterAttribute2().text();
+        listingPage.langeFilterCheckbox2().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        if(listingPage.productsForOtherCars().is(visible)) {
-            listingPage.checkProductAttributeOnListing(characteristic, listingPage.hoheProductAttributeGenericRoute());
-        } else {
-            listingPage.checkProductAttributeOnListing(characteristic, listingPage.hoheProductAttributeTecdocRoute());
-        }
+        listingPage.checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.hoheProductAttributeGenericRoute(), listingPage.hoheProductAttributeTecdocRoute());
         int numberOfAttributesFilter = listingPage.hoheProductAttributeTecdocRoute().size();
         listingPage.activeSideFilterLkwHohe().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
@@ -167,9 +133,26 @@ public class QASYS_37_FilterSorting_sideFilters {
         Assert.assertNotEquals(numberOfAttributesFilter, numberOfAttributesNoFilter);
     }
 
+    @Test
+    @Flaky
+    @Owner(value = "Romaniuta")
+    @Description(value = "TC06 Test checks side filter cancelling on LKW routes")
+    public void testSideFilterCancellingLKW2() throws SQLException {
+        open("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_category_car_list7"));
+        String characteristic = listingPage.langeFilterAttribute2().text();
+        listingPage.langeFilterCheckbox2().click();
+        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
+        listingPage.checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.hoheProductAttributeGenericRoute(), listingPage.hoheProductAttributeTecdocRoute());
+        int numberOfAttributesFilter = listingPage.hoheProductAttributeTecdocRoute().size();
+        listingPage.activeSideFilterLkwCheckbox().click();
+        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
+        int numberOfAttributesNoFilter = listingPage.langeProductAttributeTecdocRoute().size();
+        Assert.assertNotEquals(numberOfAttributesFilter, numberOfAttributesNoFilter);
+    }
+
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "oleg")
+    @Owner(value = "Romaniuta")
     @Description(value = "TC07 Test checks filter position")
     public void testFilterPosition(String route) {
         open(route);
@@ -179,12 +162,24 @@ public class QASYS_37_FilterSorting_sideFilters {
         listingPage.activeSideFilter().shouldHave(text(characteristic));
     }
 
-    @Test(dataProvider = "routesLKW")
+    @Test
     @Flaky
-    @Owner(value = "oleg")
+    @Owner(value = "Romaniuta")
     @Description(value = "TC07 Test checks filter position on LKW routes")
-    public void testFilterPositionLKW(String route) {
-        open(route);
+    public void testFilterPositionLKWroute1() throws SQLException{
+        open("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_category_car_list7"));
+        String characteristic = listingPage.langeFilterAttribute2().text();
+        listingPage.langeFilterCheckbox2().click();
+        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
+        listingPage.activeSideFilter().shouldHave(text(characteristic));
+    }
+
+    @Test
+    @Flaky
+    @Owner(value = "Romaniuta")
+    @Description(value = "TC07 Test checks filter position on LKW routes")
+    public void testFilterPositionLKWroute2() throws SQLException{
+        open("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_category_car_list6"));
         String characteristic = listingPage.langeFilterAttribute2().text();
         listingPage.langeFilterCheckbox2().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
@@ -193,7 +188,7 @@ public class QASYS_37_FilterSorting_sideFilters {
 
     @Test
     @Flaky
-    @Owner(value = "oleg")
+    @Owner(value = "Romaniuta")
     @Description(value = "TC07 Test checks filter position on Oem route")
     public void testFilterPositionOem() throws SQLException {
         open("https://autodoc.de/" +  dataBase.getRouteByRouteName("DE", "category_oen2"));
@@ -205,7 +200,7 @@ public class QASYS_37_FilterSorting_sideFilters {
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "oleg")
+    @Owner(value = "Romaniuta")
     @Description(value = "TC08 Test checks two filter attributes in block")
     public void testTwoFilterAttributesInBlock(String route) {
         open(route);
@@ -215,16 +210,12 @@ public class QASYS_37_FilterSorting_sideFilters {
         listingPage.activeSideFilter2().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.activeSideFilter().shouldHave(text(characteristic));
-        if(listingPage.productsForOtherCars().is(visible)) {
-            listingPage.checkProductAttributeOnListing(characteristic, listingPage.langeProductAttributeGenericRoute());
-        } else {
-            listingPage.checkProductAttributeOnListing(characteristic, listingPage.langeProductAttributeTecdocRoute());
-        }
+        listingPage.checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.langeProductAttributeGenericRoute(), listingPage.langeProductAttributeTecdocRoute());
     }
 
     @Test
     @Flaky
-    @Owner(value = "oleg")
+    @Owner(value = "Romaniuta")
     @Description(value = "TC08 Test checks two filter attributes in block on route search with generic")
     public void testTwoFilterAttributesInBlockRouteWithGeneric() throws SQLException {
         open("https://autodoc.de/" +  dataBase.getRouteByRouteName("DE", "search5"));
@@ -234,29 +225,36 @@ public class QASYS_37_FilterSorting_sideFilters {
         listingPage.activeSideFilter2().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.activeSideFilter().shouldHave(text(characteristic));
-        if(listingPage.productsForOtherCars().is(visible)) {
-            listingPage.checkProductAttributeOnListing(characteristic, listingPage.langeProductAttributeGenericRoute());
-        } else {
-            listingPage.checkProductAttributeOnListing(characteristic, listingPage.langeProductAttributeTecdocRoute());
-        }
+        listingPage.checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.langeProductAttributeGenericRoute(), listingPage.langeProductAttributeTecdocRoute());
     }
 
-    @Test(dataProvider = "routesLKW")
+    @Test
     @Flaky
-    @Owner(value = "oleg")
+    @Owner(value = "Romaniuta")
     @Description(value = "TC08 Test checks two filter attributes in block on LKW routes")
-    public void testTwoFilterAttributesLKW(String route) {
-        open(route);
+    public void testTwoFilterAttributesLKW() throws SQLException {
+        open("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_category_car_list7"));
+        listingPage.langeFilterCheckbox2().click();
+        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
+        String characteristic = listingPage.activeSideFilter2().text();
+        listingPage.activeSideFilter2().click();
+        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
+        listingPage.activeSideFilter().shouldHave(text(characteristic));
+        listingPage.checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.hoheProductAttributeGenericRoute(), listingPage.hoheProductAttributeTecdocRoute());
+    }
+
+    @Test
+    @Flaky
+    @Owner(value = "Romaniuta")
+    @Description(value = "TC08 Test checks two filter attributes in block on LKW routes")
+    public void testTwoFilterAttributesLKW2() throws SQLException {
+        open("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_category_car_list6"));
         listingPage.langeFilterCheckbox2().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         String characteristic = listingPage.activeSideFilterAttributeLkw2().text();
-        listingPage.activeSideFilterLkw2().click();
+        listingPage.activeSideFilterAttributeLkw2().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.activeSideFilterLkw().shouldHave(text(characteristic));
-        if(listingPage.productsForOtherCars().is(visible)) {
-            listingPage.checkProductAttributeOnListing(characteristic, listingPage.verschleißwarnkontaktProductAttributeGenericRoute());
-        } else {
-            listingPage.checkProductAttributeOnListing(characteristic, listingPage.verschleißwarnkontaktProductAttributeTecdocRoute());
-        }
+        listingPage.checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.hoheProductAttributeGenericRoute(), listingPage.hoheProductAttributeTecdocRoute());
     }
 }
