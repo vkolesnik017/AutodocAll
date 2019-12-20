@@ -22,7 +22,6 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.Selenide.sleep;
 
 public class QASYS_7_ListingSearch {
 
@@ -50,7 +49,7 @@ public class QASYS_7_ListingSearch {
     mainPage.searchBar().setValue(generic);
     mainPage.hintsForSearch().shouldBe(visible);
     $(byText(generic)).click();
-    listingPage.titleOfSearchListing().shouldBe(visible);
+    listingPage.titleOnListing().shouldBe(visible);
     waitingWhileLinkBecomeExpected(route + "/" + db.getRouteByRouteName(getCurrentShopFromJSVarInHTML(), "search6"));
   }
 
@@ -60,7 +59,7 @@ public class QASYS_7_ListingSearch {
   @Description(value = "Test-2. Checks the presence of required elements on search listing")
   public void testPresenceElementsInSearchListing(String route) throws SQLException {
     open(route + "/" + db.getRouteByRouteName(getShopFromRoute(route), "search6"));
-    listingPage.titleOfSearchListing().shouldBe(visible);
+    listingPage.titleOnListing().shouldBe(visible);
     listingPage.blockOfHelpSearchProducts().shouldBe(visible);
     listingPage.blockOfLinkingCategory().shouldBe(visible);
   }
@@ -84,7 +83,7 @@ public class QASYS_7_ListingSearch {
   @Description(value = "Test-4. Checks presence additional listing on search listing")
   public void testPresenceAdditionalListingInSearchListing(String route) throws SQLException {
     open(route + "/" + db.getRouteByRouteName(getShopFromRoute(route), "search7"));
-    listingPage.titleOfSearchListing().shouldBe(visible);
+    listingPage.titleOnListing().shouldBe(visible);
     listingPage.productsForOtherCars().shouldBe(visible).shouldHave(text("zuendkerzen"));
   }
 }
