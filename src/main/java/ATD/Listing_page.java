@@ -147,17 +147,19 @@ public class Listing_page {
         return $$x("//*[@class='title_list']/../following-sibling::li//*[@class='image']/span[1]");
     }
 
-    //Locators for all listings
-
-    public SelenideElement titleOnListing() {
-        return $(".title_count_search");
-    }
+    //Locators for tile mode listings
 
     public ElementsCollection productTitleInTileMode() { return $$(By.cssSelector(".rec_prod_title.small_text")); }
 
     public ElementsCollection priceOfAllProductsOnPageInTile() { return $$(By.xpath("//*[@class='rpp_price']")); }
 
     public SelenideElement showListingInTileModeButton() { return $(By.xpath("//*[@class='sortby js-change-view-block']/span[3]")); }
+
+    //Locators for all listings
+
+    public SelenideElement titleOnListing() {
+        return $(".title_count_search");
+    }
 
     public ElementsCollection priceOfAllProductsOnPageInList() { return $$(By.xpath("//p[@class='actual_price']")); }
 
@@ -292,7 +294,7 @@ public class Listing_page {
         }
     }
 
-
+    @Step("Method checks product attribute on listing with chosen car and filter (without products for other cars)")
     public void checkProductAttributeOnListingWithCarAndFilter(String characteristic, ElementsCollection productAttributeGenericRoute, ElementsCollection productAttributeTecdocRoute) {
         if(productsForOtherCars().is(visible)) {
             checkProductAttributeOnListing(characteristic, productAttributeGenericRoute);
