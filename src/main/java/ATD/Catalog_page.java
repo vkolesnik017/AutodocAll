@@ -10,7 +10,7 @@ public class Catalog_page {
     return $(".list-ersatz-n--catalog");
   }
 
-  public SelenideElement linkForCateforyOilFilter() {
+  public SelenideElement linkForCategoryOilFilter() {
     return $("[data-ga-action='10359']");
   }
 }
