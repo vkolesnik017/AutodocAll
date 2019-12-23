@@ -65,8 +65,8 @@ public class QASYS_38_FiltersSorting_byGeneric {
     @Description(value = "TC02 Test checks generic filter on listing (Tecdoc, ACC) with two generics")
     public void checkFilterWithTwoGenerics(String route) {
         open(route);
-        String genericName = listingPage.secondGeneric().getText();
-        listingPage.secondGeneric().click();
+        String genericName = listingPage.firstGeneric().getText();
+        listingPage.firstGeneric().click();
         String genericName2 = listingPage.fourthGeneric().getText();
         listingPage.fourthGeneric().click();
         listingPage.checkProductTitleOnListing(genericName2, true, listingPage.productTitleInListMode());
