@@ -246,6 +246,7 @@ public class Main_page {
         return page(Datenschutz_page.class);
     }
 
+    @Step("Checking Countries Subscription")
     public void checkingCountriesSubscription() throws SQLException {
         ElementsCollection elements = $$(By.xpath("//div[@class='mCSB_container']/div"));
         for (SelenideElement element : elements) {

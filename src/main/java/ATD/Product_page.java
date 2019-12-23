@@ -82,6 +82,10 @@ public class Product_page {
     return this;
   }
 
+  public SelenideElement infoBlockWithSelectedCar() {
+    return $(".car-match-block>p>b");
+  }
+
   // locators of prices with Currencies
   public SelenideElement priceWithoutDiscount() {
     return $(byCssSelector(".product-old-price>span"));
@@ -140,6 +144,7 @@ public class Product_page {
   public Product_page chooseTypeInSelector(String typeNumberValue) {
     typeSelector().find("optgroup").should(exist);
     typeSelector().selectOptionByValue(typeNumberValue);
+    typeSelector().shouldHave(value(typeNumberValue));
     return this;
   }
 
@@ -188,10 +193,6 @@ public class Product_page {
 
   public SelenideElement errorToolTipOfKbaSelector() {
     return $(byId("kba-error-tooltip"));
-  }
-
-  public SelenideElement infoBlockWithSelectedCar() {
-    return $(".car-match-block>p>b");
   }
 
   public SelenideElement resetBtnSelector() {
