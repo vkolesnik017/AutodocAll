@@ -144,6 +144,7 @@ public class Product_page {
   public Product_page chooseTypeInSelector(String typeNumberValue) {
     typeSelector().find("optgroup").should(exist);
     typeSelector().selectOptionByValue(typeNumberValue);
+    typeSelector().shouldHave(value(typeNumberValue));
     return this;
   }
 
