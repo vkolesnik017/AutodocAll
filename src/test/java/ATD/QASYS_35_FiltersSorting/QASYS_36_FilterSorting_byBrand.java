@@ -250,11 +250,13 @@ public class QASYS_36_FilterSorting_byBrand {
     public void checkBrandFilterReset(String route) {
         open(route);
         closeCookiesFooterMessage();
+        String brand1 = listingPage.firstBrandNameInFiler().attr("alt");
         listingPage.firstBrandInFilterButton().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.firstBrandInFilterButton().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.checkUniqueBrandsOnListing(3, listingPage.productTitleInListMode());
+        listingPage.checkProductTitleOnListing(brand1, false, listingPage.productTitleInListMode());
+        listingPage.checkUniqueBrandsOnListing(1, listingPage.productTitleInListMode());
         close();
     }
 
