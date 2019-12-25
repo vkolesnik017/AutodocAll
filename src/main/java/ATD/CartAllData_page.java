@@ -9,6 +9,7 @@ import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.Selenide.sleep;
 
 public class CartAllData_page {
@@ -26,8 +27,16 @@ public class CartAllData_page {
     return $(byXpath("//*[@class='alldata-bottom']//*[@class='free_icon']"));
   }
 
-  public SelenideElement addProductBtn() {
+  private SelenideElement addProductBtn() {
     return $(byCssSelector(".plus"));
+  }
+
+  private SelenideElement nextBtn() { return $(byCssSelector(".order-summary__button"));
+  }
+
+  public Payment_handler_page nextBtnClick() {
+    nextBtn().click();
+    return page(Payment_handler_page.class);
   }
 
   // locator only for CH
