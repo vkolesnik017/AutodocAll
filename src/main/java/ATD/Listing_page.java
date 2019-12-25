@@ -12,6 +12,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
+import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.or;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
@@ -37,9 +38,9 @@ public class Listing_page {
 
     public SelenideElement gelochtAttribute() { return $(By.xpath("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_232']/div/ul/li[1]")); }
 
-    public SelenideElement produktreiheFilterCheckbox() { return $x("//*[@id='mCSB_2_container']/li[2]"); }
+    public SelenideElement produktreiheFilterCheckbox() { return $x("//*[@id='mCSB_4_container']/li[2]"); }
 
-    public SelenideElement produktreiheFilterAttribute() {return $(By.xpath("//*[@id='mCSB_2_container']/li[2]/label")); }
+    public SelenideElement produktreiheFilterAttribute() {return $(By.xpath("//*[@id='mCSB_4_container']/li[2]/label")); }
 
     public SelenideElement langeFilterCheckbox() { return $x("//*[@id='mCSB_2_container']/li[8]"); }
 
@@ -67,10 +68,6 @@ public class Listing_page {
 
     // locator for search listing
 
-    public SelenideElement titleOfSearchListing() {
-        return $(".title_count_search");
-    }
-
     public SelenideElement blockOfHelpSearchProducts() {
         return $(".filter-not-found__title");
     }
@@ -91,10 +88,6 @@ public class Listing_page {
     public SelenideElement sideFilterOenCheckbox() { return $x("//*[@class='model_list_oem']/li[2]/label"); }
 
     public SelenideElement sideFilterOenAttribute2() { return $x("//*[@class='model_list_oem']/li[1]/label/a"); }
-
-    public SelenideElement titleOnOemListing() {
-        return $(".title_count_search>h2");
-    }
 
     public SelenideElement oemNumberBlock() {
         return $(".oem-number");
@@ -142,13 +135,31 @@ public class Listing_page {
 
     public SelenideElement fourthGeneric() { return $(By.xpath("//div[contains(@class,'filter-generics-tecdoc__list js-filter-generics-tecdoc')]//label[4]/div[2]")); }
 
-    //Locators for all listings
+    // locators for tecdoc listing
+    public SelenideElement tecDocBlockOfLinkingCategories() {
+        return $(".teile_catalog");
+    }
+    public SelenideElement titleOfAdditionalListingForTecDoc() {
+        return $(".title_list");
+    }
+    // this collection finds only products that are in additional listing, suit only for tecdoc listing
+    public ElementsCollection imagesProductsInAdditionalListingForTecDoc() {
+        return $$x("//*[@class='title_list']/../following-sibling::li//*[@class='image']/span[1]");
+    }
 
-    public ElementsCollection productTitleInTileMode() { return $$(By.cssSelector(".rec_prod_title.small_text")); }
+    //Locators for tile mode listings
+
+    public ElementsCollection productTitleInTileMode() { return $$(By.cssSelector(".rec_prod_title")); }
 
     public ElementsCollection priceOfAllProductsOnPageInTile() { return $$(By.xpath("//*[@class='rpp_price']")); }
 
     public SelenideElement showListingInTileModeButton() { return $(By.xpath("//*[@class='sortby js-change-view-block']/span[3]")); }
+
+    //Locators for all listings
+
+    public SelenideElement titleOnListing() {
+        return $(".title_count_search");
+    }
 
     public ElementsCollection priceOfAllProductsOnPageInList() { return $$(By.xpath("//p[@class='actual_price']")); }
 
@@ -223,6 +234,7 @@ public class Listing_page {
 
     @Step("Method checks that expected text is present in title of all products on listing")
     public void checkProductTitleOnListing(String expectedTextInTitle, Boolean shouldHaveTextOrNotHave, ElementsCollection titleViewMode) {
+        titleViewMode.shouldHave(sizeGreaterThan(0));
         for(int i = 0; i < titleViewMode.size(); i++) {
             if (shouldHaveTextOrNotHave) {
                titleViewMode.get(i).shouldHave(text(expectedTextInTitle));
@@ -234,6 +246,7 @@ public class Listing_page {
 
     @Step("Method checks that expected text is present in title of all products on listing with two conditions")
     public void checkProductTitleOnListingWithTwoExpectedTexts(String expectedTextInTitle, String secondExpText, Boolean shouldHaveTextOrNotHave, ElementsCollection titleViewMode) {
+        titleViewMode.shouldHave(sizeGreaterThan(0));
         for (int i = 0; i < titleViewMode.size(); i++) {
             if (shouldHaveTextOrNotHave) {
                 titleViewMode.get(i).shouldHave(or("condition", text(expectedTextInTitle), text(secondExpText)));
@@ -246,6 +259,7 @@ public class Listing_page {
     @Step("Method checks that expected text is present in title of all products on listing with six conditions")
     public void checkProductTitleOnListingWithSixExpectedTexts(String expectedTextInTitle, String secondExpText, String thirdExpText, String fourthExpText, String fifthExpText,
                                                                String sixthExpText, Boolean shouldHaveTextOrNotHave, ElementsCollection titleViewMode) {
+        titleViewMode.shouldHave(sizeGreaterThan(0));
         for(int i = 0; i < titleViewMode.size(); i++) {
             if (shouldHaveTextOrNotHave) {
                 titleViewMode.get(i).shouldHave(or("condition", text(expectedTextInTitle), text(secondExpText), text(thirdExpText), text(fourthExpText), text(fifthExpText), text(sixthExpText)));
@@ -257,6 +271,7 @@ public class Listing_page {
 
     @Step("Method checks unique brands on listing")
     public void checkUniqueBrandsOnListing(int numberOfUniqueBrands, ElementsCollection titleViewMode) {
+        titleViewMode.shouldHave(sizeGreaterThan(0));
         Set<String> uniqueBrandSet = new LinkedHashSet<>();
         for (SelenideElement aTitleViewMode : titleViewMode) {
             String brandName = aTitleViewMode.text().split(" ")[0];
@@ -267,6 +282,7 @@ public class Listing_page {
 
     @Step("Method gets brand from product title")
     public void getBrandFromTitle(String expectedTextInTitle, int brandPositionInAlt, Boolean shouldHaveTextOrNotHave, ElementsCollection titleViewMode) {
+        titleViewMode.shouldHave(sizeGreaterThan(0));
         for(int i = 0; i < titleViewMode.size(); i++) {
             if (shouldHaveTextOrNotHave) {
                 titleViewMode.get(i).shouldHave(text(expectedTextInTitle.split(" ")[brandPositionInAlt]));
@@ -278,12 +294,13 @@ public class Listing_page {
 
     @Step("Method checks product attribute on listing")
     public void checkProductAttributeOnListing(String attributeSelectedInSideFilter, ElementsCollection productAttributeOnListing) {
+        productAttributeOnListing.shouldHave(sizeGreaterThan(0));
         for (int i = 0; i < productAttributeOnListing.size(); i++) {
             productAttributeOnListing.get(i).shouldHave(text(attributeSelectedInSideFilter));
         }
     }
 
-
+    @Step("Method checks product attribute on listing with chosen car and filter (without products for other cars)")
     public void checkProductAttributeOnListingWithCarAndFilter(String characteristic, ElementsCollection productAttributeGenericRoute, ElementsCollection productAttributeTecdocRoute) {
         if(productsForOtherCars().is(visible)) {
             checkProductAttributeOnListing(characteristic, productAttributeGenericRoute);
@@ -294,10 +311,25 @@ public class Listing_page {
 
     @Step("Method checks product attribute on listing in tile mode")
     public void checkProductAttributeOnListingInTileMode(String attributeSelectedInSideFilter, ElementsCollection productAttributeOnListing) {
+        productAttributeOnListing.shouldHave(sizeGreaterThan(0));
         for (int i = 0; i < productAttributeOnListing.size(); i++) {
             $$(".rec_products_block").get(i).hover();
             productAttributeOnListing.get(i).shouldHave(text(attributeSelectedInSideFilter));
             langeFilterCheckbox().hover();
+        }
+    }
+
+    @Step("The method checks that products at listing  are fits for chosen car. The method clicking on every each product and on the product page checks the text in the selected car's information block.")
+    public void checksThatProductsAtListingAreFitsForChosenCar(String textChosenCar) {
+        ElementsCollection productsFromAdditionalTecDocListing = imagesProductsInAdditionalListingForTecDoc();
+        productsFromAdditionalTecDocListing.shouldHave(sizeGreaterThan(1));
+        for (int product = 0; product < productsFromAdditionalTecDocListing.size(); product++) {
+            productsFromAdditionalTecDocListing.get(product).scrollTo().click();
+            new Product_page().infoBlockWithSelectedCar().shouldBe(visible).shouldHave(text(textChosenCar));
+            back();
+            titleOfAdditionalListingForTecDoc().shouldBe(visible);
+            productsFromAdditionalTecDocListing = imagesProductsInAdditionalListingForTecDoc();
+            productsFromAdditionalTecDocListing.shouldHave(sizeGreaterThan(1));
         }
     }
 }

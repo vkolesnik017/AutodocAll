@@ -73,7 +73,7 @@ public class QASYS_6_ListingOEN {
   @Description(value = "Test-3. Checks the presence of required elements on the OEN listing")
   public void testPresenceElementsInOenListing(String route) {
     open(route);
-    listingPage.titleOnOemListing().shouldHave(text("Bremsscheibe OE - NUMMER 34116785670"));
+    listingPage.titleOnListing().shouldHave(text("Bremsscheibe OE - NUMMER 34116785670"));
     listingPage.oemNumberBlock().shouldBe(visible);
     listingPage.oemDescriptionBlock().shouldBe(visible);
     listingPage.oemAnalogBlock().shouldBe(visible);

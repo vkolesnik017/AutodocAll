@@ -16,4 +16,11 @@
         </classes>
     </test>
 
+    <test name="QASYS_7_ListingTecDoc">
+        <classes>
+            <class name="ATD.QASYS_5_Listings.QASYS_8_ListingTecDoc">
+            </class>
+        </classes>
+    </test>
+
 </suite>

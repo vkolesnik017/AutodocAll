@@ -1,6 +1,7 @@
 package ATD.QASYS_35_FiltersSorting;
 
 
+import ATD.DataBase;
 import ATD.Listing_page;
 import ATD.Main_page;
 import ATD.SetUp;
@@ -14,12 +15,14 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.open;
 
 public class QASYS_38_FiltersSorting_byGeneric {
     private Listing_page listingPage = new Listing_page();
     private Main_page mainPage = new Main_page();
+    private DataBase dataBase = new DataBase();
 
     @BeforeClass
     void setUp() {
@@ -33,7 +36,17 @@ public class QASYS_38_FiltersSorting_byGeneric {
 
     @DataProvider(name = "routesLKW", parallel = true)
     Object[] dataProviderLKW() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_search2,lkw_category_car_list4,lkw_search2");
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list3,lkw_category_car_list4,lkw_search2");
+    }
+
+    @DataProvider(name = "routesLKWcategory", parallel = true)
+    Object[] dataProviderLKWnoCar() throws SQLException {
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list3,lkw_category_car_list4");
+    }
+
+    @DataProvider(name = "routesLKWsearch", parallel = true)
+    Object[] dataProviderLKWwithCar() throws SQLException {
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_search2");
     }
 
     @Test(dataProvider = "routes")
@@ -47,15 +60,28 @@ public class QASYS_38_FiltersSorting_byGeneric {
         listingPage.checkProductTitleOnListing(genericName, true, listingPage.productTitleInListMode());
     }
 
-    @Test(dataProvider = "routesLKW")
+    @Test(dataProvider = "routesLKWsearch")
     @Flaky
     @Owner(value = "Romaniuta")
-    @Description(value = "TC01 Test checks generic filter on listing LKW")
-    public void checkFilterByGenericLKW(String route) {
+    @Description(value = "TC01 Test checks generic filter on listing LKW search")
+    public void checkFilterByGenericLKWsearch(String route) {
         open(route);
         mainPage.closeCarSelectorTooltipIfVisible();
         String genericName = listingPage.secondGeneric().text();
         listingPage.secondGeneric().click();
+        listingPage.checkProductTitleOnListing(genericName, true, listingPage.productTitleInListMode());
+    }
+
+    @Test(dataProvider = "routesLKWcategory")
+    @Flaky
+    @Owner(value = "Romaniuta")
+    @Description(value = "TC01 Test checks generic filter on listing LKW")
+    public void checkFilterByGenericLKWcategory(String route) {
+        open(route);
+        mainPage.closeCarSelectorTooltipIfVisible();
+        String genericName = listingPage.fourthGeneric().text();
+        listingPage.fourthGeneric().click();
+        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.checkProductTitleOnListing(genericName, true, listingPage.productTitleInListMode());
     }
 
@@ -65,25 +91,40 @@ public class QASYS_38_FiltersSorting_byGeneric {
     @Description(value = "TC02 Test checks generic filter on listing (Tecdoc, ACC) with two generics")
     public void checkFilterWithTwoGenerics(String route) {
         open(route);
-        String genericName = listingPage.secondGeneric().getText();
-        listingPage.secondGeneric().click();
+        String genericName = listingPage.firstGeneric().getText();
+        listingPage.firstGeneric().click();
         String genericName2 = listingPage.fourthGeneric().getText();
         listingPage.fourthGeneric().click();
         listingPage.checkProductTitleOnListing(genericName2, true, listingPage.productTitleInListMode());
         listingPage.checkProductTitleOnListing(genericName, false, listingPage.productTitleInListMode());
     }
 
-    @Test(dataProvider = "routesLKW")
+    @Test(dataProvider = "routesLKWsearch")
     @Flaky
     @Owner(value = "Romaniuta")
-    @Description(value = "TC02 Test checks generic filter on listing LKW with two generics")
-    public void checkFilterWithTwoGenericsLKW(String route) {
+    @Description(value = "TC02 Test checks generic filter on listing LKW search with two generics")
+    public void checkFilterWithTwoGenericsLKWsearch(String route) {
         open(route);
         mainPage.closeCarSelectorTooltipIfVisible();
         String genericName = listingPage.firstGeneric().getText();
         listingPage.firstGeneric().click();
         String genericName2 = listingPage.secondGeneric().getText();
         listingPage.secondGeneric().click();
+        listingPage.checkProductTitleOnListing(genericName2, true, listingPage.productTitleInListMode());
+        listingPage.checkProductTitleOnListing(genericName, false, listingPage.productTitleInListMode());
+    }
+
+    @Test(dataProvider = "routesLKWcategory")
+    @Flaky
+    @Owner(value = "Romaniuta")
+    @Description(value = "TC02 Test checks generic filter on listing LKW categoty with two generics")
+    public void checkFilterWithTwoGenericsLKWcategory(String route) {
+        open(route);
+        mainPage.closeCarSelectorTooltipIfVisible();
+        String genericName = listingPage.firstGeneric().getText();
+        listingPage.firstGeneric().click();
+        String genericName2 = listingPage.fourthGeneric().getText();
+        listingPage.fourthGeneric().click();
         listingPage.checkProductTitleOnListing(genericName2, true, listingPage.productTitleInListMode());
         listingPage.checkProductTitleOnListing(genericName, false, listingPage.productTitleInListMode());
     }
@@ -124,15 +165,29 @@ public class QASYS_38_FiltersSorting_byGeneric {
         listingPage.checkProductTitleOnListing(genericName, true, listingPage.productTitleInTileMode());
     }
 
-    @Test(dataProvider = "routesLKW")
+    @Test(dataProvider = "routesLKWsearch")
     @Flaky
     @Owner(value = "Romaniuta")
-    @Description(value = "TC04 Test checks generic filter on listing LKW in tile mode")
-    public void checkFilterByGenericInTileModeLKW(String route) {
+    @Description(value = "TC04 Test checks generic filter on listing LKW search in tile mode")
+    public void checkFilterByGenericInTileModeLKWsearch(String route) {
         open(route);
         mainPage.closeCarSelectorTooltipIfVisible();
         String genericName = listingPage.secondGeneric().text();
         listingPage.secondGeneric().click();
+        listingPage.checkProductTitleOnListing(genericName, true, listingPage.productTitleInListMode());
+        listingPage.showListingInTileModeButton().click();
+        listingPage.checkProductTitleOnListing(genericName, true, listingPage.productTitleInTileMode());
+    }
+
+    @Test(dataProvider = "routesLKWcategory")
+    @Flaky
+    @Owner(value = "Romaniuta")
+    @Description(value = "TC04 Test checks generic filter on listing LKW category in tile mode")
+    public void checkFilterByGenericInTileModeLKWcategory(String route) {
+        open(route);
+        mainPage.closeCarSelectorTooltipIfVisible();
+        String genericName = listingPage.fourthGeneric().text();
+        listingPage.fourthGeneric().click();
         listingPage.checkProductTitleOnListing(genericName, true, listingPage.productTitleInListMode());
         listingPage.showListingInTileModeButton().click();
         listingPage.checkProductTitleOnListing(genericName, true, listingPage.productTitleInTileMode());

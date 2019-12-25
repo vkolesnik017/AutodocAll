@@ -9,4 +9,8 @@ public class Catalog_page {
   public SelenideElement catalogBlog() {
     return $(".list-ersatz-n--catalog");
   }
+
+  public SelenideElement linkForCategoryOilFilter() {
+    return $("[data-ga-action='10359']");
+  }
 }
