@@ -53,7 +53,6 @@ public class QASYS_350_Header {
   public void testPresenceElementsInHeader(String route) {
     open(route);
     mainPage.logoInHeader().shouldBe(visible);
-    mainPage.logoOfficialPartnerInHeader().shouldBe(visible);
     mainPage.loginBtnInHeader().shouldBe(visible);
     mainPage.menuCatalogInHeader().shouldBe(visible);
     mainPage.searchBar().shouldBe(visible);
