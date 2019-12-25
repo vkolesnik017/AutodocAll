@@ -27,8 +27,9 @@ public class QASYS_476_RenameGroupAndModelInSelector {
 //    private String shop = "DE";
 
     @BeforeClass
-    void setUp() {
+    void setUp() throws IOException {
         setUpBrowser(false, "chrome", "77.0");
+        writer(result, true, shop);
     }
 
     @DataProvider(name = "data", parallel = true)
