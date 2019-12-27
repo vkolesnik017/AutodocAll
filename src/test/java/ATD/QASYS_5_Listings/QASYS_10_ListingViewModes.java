@@ -71,7 +71,7 @@ public class QASYS_10_ListingViewModes {
   @Owner(value = "Evlentiev")
   @Description(value = "Test-3. Comparing products between listing modes and check presence elements for search listing")
   public void testCompareProductsBetweenListingViewModesOnSearch(String route) throws SQLException {
-    open(route + "/" + db.getRouteByRouteName(getShopFromRoute(route), "search4"));
+    open(route + "/" + db.getRouteByRouteName(getShopFromRoute(route), "search2"));
     listingPage.blockOfBySideFilters().shouldBe(visible);
     listingPage.brandFilterBlock().shouldBe(visible);
     listingPage.paginationFirstBlock().shouldBe(visible);

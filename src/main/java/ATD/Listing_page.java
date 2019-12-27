@@ -366,7 +366,7 @@ public class Listing_page {
         for (int numberProductName = 0; numberProductName < articlesInListMode.size(); numberProductName++) {
             String articleListMode = articlesInListMode.get(numberProductName);
             String articleNumberTileMode = articlesOnTileMode.get(numberProductName).text().split(": ")[1];
-            assertEquals(articleNumberTileMode, articleListMode, "Product order" + articleListMode + "does not match between list mode and tile mode");
+            assertEquals(articleNumberTileMode, articleListMode, "Product order " + articleListMode + " does not match between list mode and tile mode");
         }
     }
 }
