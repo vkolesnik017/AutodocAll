@@ -12,11 +12,14 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
+import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
+import static com.codeborne.selenide.CollectionCondition.sizeGreaterThanOrEqual;
 import static com.codeborne.selenide.Condition.or;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
+import static org.testng.Assert.assertEquals;
 
 public class Listing_page {
 
@@ -123,6 +126,10 @@ public class Listing_page {
 
     //By side filters locators
 
+    public SelenideElement blockOfBySideFilters() { // By side
+        return $(".installation-side__content");
+    }
+
     public SelenideElement filterBySideBack() { return $(By.xpath("//*[@class='installation-side__filter back-side']")); }
 
     public SelenideElement filterBySideLKW() { return $(By.xpath("//*[@class='installation-side__filter front-side']")); }
@@ -155,7 +162,19 @@ public class Listing_page {
 
     public SelenideElement showListingInTileModeButton() { return $(By.xpath("//*[@class='sortby js-change-view-block']/span[3]")); }
 
-    //Locators for all listings
+    public ElementsCollection articleProductsInTileMode() {
+        return $$(".rec_prod_article");
+    }
+
+    //Locators for all list mode listings
+
+    public SelenideElement paginationFirstBlock() {
+        return $x("(//*[@class='pagination'])[1]");
+    }
+
+    public SelenideElement paginationSecondBlock() {
+        return $x("(//*[@class='pagination'])[2]");
+    }
 
     public SelenideElement titleOnListing() {
         return $(".title_count_search");
@@ -330,6 +349,24 @@ public class Listing_page {
             titleOfAdditionalListingForTecDoc().shouldBe(visible);
             productsFromAdditionalTecDocListing = imagesProductsInAdditionalListingForTecDoc();
             productsFromAdditionalTecDocListing.shouldHave(sizeGreaterThan(1));
+        }
+    }
+
+    @Step("The method saves the order of products on listing, switches to tile view and verifies that order of products remains the same")
+    public void compareProductsOrderBetweenListModeAndTileMode() {
+        ElementsCollection elementsWithArticles = productTitleInListMode().first(12);
+        ArrayList<String> articlesInListMode = new ArrayList<>();
+        for (SelenideElement nameProduct : elementsWithArticles) {
+            String name = nameProduct.text().split("\n")[2].split(": ")[1];
+            articlesInListMode.add(name);
+        }
+        showListingInTileModeButton().click();
+        checkingContainsUrl("?list=table");
+        ElementsCollection articlesOnTileMode = articleProductsInTileMode().shouldHave(sizeGreaterThanOrEqual(10));
+        for (int numberProductName = 0; numberProductName < articlesInListMode.size(); numberProductName++) {
+            String articleListMode = articlesInListMode.get(numberProductName);
+            String articleNumberTileMode = articlesOnTileMode.get(numberProductName).text().split(": ")[1];
+            assertEquals(articleNumberTileMode, articleListMode, "Product order" + articleListMode + "does not match between list mode and tile mode");
         }
     }
 }

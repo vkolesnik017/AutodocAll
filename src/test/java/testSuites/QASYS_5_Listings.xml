@@ -23,4 +23,11 @@
         </classes>
     </test>
 
+    <test name="QASYS_10_ListingViewModes">
+        <classes>
+            <class name="ATD.QASYS_5_Listings.QASYS_10_ListingViewModes">
+            </class>
+        </classes>
+    </test>
+
 </suite>
