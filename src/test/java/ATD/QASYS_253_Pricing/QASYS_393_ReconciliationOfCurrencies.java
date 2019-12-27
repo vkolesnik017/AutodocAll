@@ -158,7 +158,7 @@ public class QASYS_393_ReconciliationOfCurrencies {
     getCurrencyAndVerify(productPage.firstProductPriceInPopupOfCart(), "productPriceInPopupOfCart", shop, expectedCurrency);
     getCurrencyAndVerify(productPage.totalPriceInPopupOfCart(), "totalPriceInPopupOfCart", shop, expectedCurrency);
     productPage.cartClick()
-            .makePriceForMiniumOrderForCH();
+            .makePriceForMinimumOrderForCH();
     // checks currency on cart page
     getCurrencyAndVerify(cartPage.totalOrderPriceInHead(), "orderPriceInHead", shop, expectedCurrency);
     getCurrencyAndVerify(cartPage.priceOfAllProducts(), "priceOfAllProducts", shop, expectedCurrency);
