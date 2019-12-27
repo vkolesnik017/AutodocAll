@@ -12,36 +12,81 @@ import static com.codeborne.selenide.Selenide.page;
 
 public class CartAddress_page {
 
-    @Step
-    public Main_page logoClick() {
-        $(By.xpath("//div[@class='cart-page-head__logo']")).click();
-        return page(Main_page.class);
+    private SelenideElement vorname() {
+        return $(byId("form_lVorname"));
+    }
+
+    private SelenideElement nameIn() {
+        return $(byId("form_lName"));
+    }
+
+    private SelenideElement strasse() {
+        return $(byId("form_lStrasse"));
+    }
+
+    private SelenideElement deliveryHouse() {
+        return $(byId("form_delivery_house"));
+    }
+
+    private SelenideElement ort() {
+        return $(byId("form_lOrt"));
+    }
+
+    private SelenideElement telephon() {
+        return $(byId("form_lTelefon"));
+    }
+
+
+    public SelenideElement currentCountryInSelector() {
+        return $(byXpath("//*[@id='form_lLand']/option[@selected]"));
+    }
+
+    private SelenideElement postalCodeField() {
+        return $(byName("lPlz"));
+    }
+
+    private SelenideElement fiscalCodeField() {
+        return $(byName("lFiscalCode"));
     }
 
     public SelenideElement nextButton() {
         return $(byCssSelector(".address-continue>a"));
     }
 
+    private SelenideElement countryInSelector(String country) {
+        return $(byXpath("//*[@name='lLand']//*[@data-code='" + country + "']"));
+    }
+
+
+    public CartAddress_page fillAllFields(String shop) {
+        checkCorrectTextAndFillInput(vorname(), "autotest");
+        checkCorrectTextAndFillInput(nameIn(), "autotest");
+        checkCorrectTextAndFillInput(strasse(), "autotest");
+        checkCorrectTextAndFillInput(deliveryHouse(), "autotest");
+        fillInPostalCode("default");
+        checkCorrectTextAndFillInput(ort(), "autotest");
+        chooseDeliveryCountry(shop);
+        checkCorrectTextAndFillInput(telephon(), "200+002");
+        return this;
+    }
+
+    private void checkCorrectTextAndFillInput(SelenideElement element, String correctText) {
+        if (!element.getValue().equals(correctText)) {
+            element.clear();
+            element.setValue(correctText);
+        }
+    }
+
+    @Step
+    public Main_page logoClick() {
+        $(By.xpath("//div[@class='cart-page-head__logo']")).click();
+        return page(Main_page.class);
+    }
+
     @Step
     public CartPayments_page nextBtnClick() {
         nextButton().click();
         return page(CartPayments_page.class);
-    }
-
-    SelenideElement countryInSelector(String country) {
-        return $(byXpath("//*[@name='lLand']//*[@data-code='" + country + "']"));
-    }
-
-    public SelenideElement currentCountryInSelector() {
-        return $(byXpath("//*[@id='form_lLand']/option[@selected]"));
-    }
-
-    public SelenideElement postalCodeField() {
-        return $(byName("lPlz"));
-    }
-
-    public SelenideElement fiscalCodeField() {
-        return $(byName("lFiscalCode"));
     }
 
     @Step

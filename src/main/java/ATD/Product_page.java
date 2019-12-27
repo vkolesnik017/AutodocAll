@@ -25,7 +25,7 @@ public class Product_page {
     return page(Cart_page.class);
   }
 
-  public SelenideElement numberBasket() {
+  private SelenideElement numberBasket() {
     return $(byCssSelector(".code"));
   }
 
@@ -33,11 +33,11 @@ public class Product_page {
     return $(byCssSelector(".header-cart__count"));
   }
 
-  public SelenideElement buyButton() {
+  private SelenideElement buyButton() {
     return $(byCssSelector(".product-button>a"));
   }
 
-  SelenideElement closeBtnOfPopupOtherCategory() {
+  private SelenideElement closeBtnOfPopupOtherCategory() {
     return $(byCssSelector(".popup-other-cat__close"));
   }
 
@@ -77,7 +77,7 @@ public class Product_page {
       closeBtnOfPopupOtherCategory().waitUntil(visible, 2500);
       closeBtnOfPopupOtherCategory().click();
       closeBtnOfPopupOtherCategory().shouldBe(not(visible));
-    } catch (ElementNotFound e) {
+    } catch (ElementNotFound ignored) {
     }
     return this;
   }
@@ -141,7 +141,7 @@ public class Product_page {
   }
 
   @Step("Choose type in selector")
-  public Product_page chooseTypeInSelector(String typeNumberValue) {
+  private Product_page chooseTypeInSelector(String typeNumberValue) {
     typeSelector().find("optgroup").should(exist);
     typeSelector().selectOptionByValue(typeNumberValue);
     typeSelector().shouldHave(value(typeNumberValue));
@@ -159,8 +159,7 @@ public class Product_page {
   @Step
   // return current chosen value from selector
   public String getChosenValueFromSelector(SelenideElement selector) {
-    String selectedValue = executeJavaScript("return arguments[0].selectedOptions[0].innerText", selector);
-    return selectedValue;
+    return executeJavaScript("return arguments[0].selectedOptions[0].innerText", selector);
   }
 
   public SelenideElement brandSelector() {
