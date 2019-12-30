@@ -38,7 +38,7 @@ public class QASYS_80_Paired {
         String shop = getShopFromRoute(route);
         open(route + "/" + new DataBase().getRouteByRouteName(shop, "search8"));
         String testMail = "atdautotest@mailinator.com";
-        new Search_page().counterIncrease(2).counterDecrease(4).detailsClick()
-                .counterIncrease(2).counterDecrease(4).counterIncrease(2);
+//        new Search_page().counterIncrease(2).counterDecrease(4).detailsClick()
+//                .counterIncrease(2).counterDecrease(4).counterIncrease(2);
     }
 }
