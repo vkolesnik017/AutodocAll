@@ -146,9 +146,11 @@ public class Listing_page {
     public SelenideElement tecDocBlockOfLinkingCategories() {
         return $(".teile_catalog");
     }
+
     public SelenideElement titleOfAdditionalListingForTecDoc() {
         return $(".title_list");
     }
+
     // this collection finds only products that are in additional listing, suit only for tecdoc listing
     public ElementsCollection imagesProductsInAdditionalListingForTecDoc() {
         return $$x("//*[@class='title_list']/../following-sibling::li//*[@class='image']/span[1]");
@@ -167,6 +169,10 @@ public class Listing_page {
     }
 
     //Locators for all list mode listings
+
+    public SelenideElement listProducts() {
+        return $(".list_products ");
+    }
 
     public SelenideElement paginationFirstBlock() {
         return $x("(//*[@class='pagination'])[1]");
