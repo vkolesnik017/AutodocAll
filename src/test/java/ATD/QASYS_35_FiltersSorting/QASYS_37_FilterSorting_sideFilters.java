@@ -8,6 +8,7 @@ import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -18,6 +19,7 @@ import static ATD.SetUp.setUpBrowser;
 import static ATD.CommonMethods.closeCookiesFooterMessage;
 import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
 public class QASYS_37_FilterSorting_sideFilters {
@@ -236,6 +238,7 @@ public class QASYS_37_FilterSorting_sideFilters {
         open("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_category_car_list7"));
         listingPage.langeFilterCheckbox2().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
+        listingPage.activeSideFilter2().shouldBe(visible);
         String characteristic = listingPage.activeSideFilter2().text();
         listingPage.activeSideFilter2().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
@@ -256,5 +259,10 @@ public class QASYS_37_FilterSorting_sideFilters {
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.activeSideFilterLkw().shouldHave(text(characteristic));
         listingPage.checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.hoheProductAttributeGenericRoute(), listingPage.hoheProductAttributeTecdocRoute());
+    }
+
+    @AfterMethod
+    public void tearDown() {
+        close();
     }
 }
