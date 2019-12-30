@@ -10,23 +10,32 @@ import static com.codeborne.selenide.Selenide.page;
 
 public class CartPayments_page {
 
-  public SelenideElement payPalBtn() {
-    return $(byId("paypal"));
-  }
+    private SelenideElement payPalBtn() {
+        return $(byId("paypal"));
+    }
+    private SelenideElement vorkasseBtn() { return $(byId("hypovereinsbank"));
+    }
 
-  @Step
-  public CartPayments_page choosePayPal() {
-    payPalBtn().click();
-    return this;
-  }
+    @Step
+    public CartPayments_page chooseVorkasse() {
+        vorkasseBtn().click();
+        return this;
+    }
 
-  SelenideElement nextBtn() {
-    return $(byCssSelector("[id='apply_payment']>a"));
-  }
 
-  @Step
-  public CartAllData_page nextBtnClick() {
-    nextBtn().click();
-    return page(CartAllData_page.class);
-  }
+    @Step
+    public CartPayments_page choosePayPal() {
+        payPalBtn().click();
+        return this;
+    }
+
+    private SelenideElement nextBtn() {
+        return $(byCssSelector("[id='apply_payment']>a"));
+    }
+
+    @Step
+    public CartAllData_page nextBtnClick() {
+        nextBtn().click();
+        return page(CartAllData_page.class);
+    }
 }

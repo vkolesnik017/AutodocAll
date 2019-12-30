@@ -31,6 +31,13 @@ public class Excel {
         return readAllCellFromExcel(file).toArray();
     }
 
+    public Object[] setUpAllCellFromExcel(String file, String sheetName) {
+        return readAllCellFromExcel(file, sheetName).toArray();
+    }
+
+   public static String[] parseExcel(String str) {
+        return str.split("#");
+    }
 
     private List<String> readFromExcel(String file, int cellNumber) {
         List<String> finalList = new ArrayList<>();
@@ -87,8 +94,28 @@ public class Excel {
         return listCell;
     }
 
-    String[] parseExcel(String str) {
-        return str.split("#");
+    private List<String> readAllCellFromExcel(String file, String sheetName) {
+        DataFormatter formatter = new DataFormatter();
+        List<String> listCell = null;
+        try (FileInputStream fileInputStream = new FileInputStream(file)) {
+            Workbook wb = new HSSFWorkbook(fileInputStream);
+            Sheet sheet = wb.getSheet(sheetName);
+            listCell = new ArrayList<>();
+            int rowNum = sheet.getLastRowNum();
+            for (int i = 0; i <= rowNum; i++) {
+                int cellNum = sheet.getRow(i).getLastCellNum();
+                StringBuilder txt = new StringBuilder();
+                for (int e = 0; e <= cellNum; e++) {
+                    String getText = formatter.formatCellValue(sheet.getRow(i).getCell(e));
+                    txt.append(getText).append("#");
+                }
+                listCell.add(txt.substring(0, txt.lastIndexOf("##")));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return listCell;
     }
+
 
 }

@@ -165,7 +165,7 @@ public class CommonMethods {
             if (productBlockForHover.isDisplayed()) {
                 productBlockForHover.hover();
             }
-            sleep(4000); // TODO try delete this sleep after fixed SITES-2830
+            sleep(5000); // TODO try delete this sleep after fixed SITES-2830
             universalElementOfBuyBtnForAllPages().waitUntil(visible, 2000).click();
         } catch (ElementShould e) {
             $(byXpath("//div[@class='top-small-products__items']//a[contains(@class,'add_')]")).click();

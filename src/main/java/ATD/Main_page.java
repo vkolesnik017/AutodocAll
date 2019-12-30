@@ -23,10 +23,6 @@ public class Main_page {
         return $(".header__logo-main");
     }
 
-    public SelenideElement logoOfficialPartnerInHeader() {
-        return $(".header__logo-wrc");
-    }
-
     public SelenideElement loginBtnInHeader() {
         return $(byCssSelector(".sigin_btn>a"));
     }
