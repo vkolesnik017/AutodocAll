@@ -16,7 +16,7 @@
         </classes>
     </test>
 
-    <test name="QASYS_7_ListingTecDoc">
+    <test name="QASYS_8_ListingTecDoc">
         <classes>
             <class name="ATD.QASYS_5_Listings.QASYS_8_ListingTecDoc">
             </class>
@@ -30,7 +30,7 @@
         </classes>
     </test>
 
-    <test name="QASYS_10_ListingTecDocSoft404">
+    <test name="QASYS_11_ListingTecDocSoft404">
         <classes>
             <class name="ATD.QASYS_5_Listings.QASYS_11_LisitngSoft404">
             </class>

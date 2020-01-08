@@ -30,8 +30,8 @@ public class Login_aws {
   @Step
   public Main_aws loginInAws() {
     open("https://aws.autodoc.de/");
-    loginField().setValue(email);
     passwordField().setValue(password);
+    loginField().setValue(email);
     loginButton().click();
     loginButton().shouldBe(Condition.not(Condition.visible));
     return page(Main_aws.class);
