@@ -48,7 +48,7 @@ public class QASYS_476_RenameGroupAndModelInSelector {
         String model = parseExcel(data)[7];
 
         String shop = calculateUrlPkw(this.shop.trim());
-        String startUrl = "https://test." + shop + "maker_id=" + makerId + "&model_id=" + modelId + "&group_id=" + groupId;
+        String startUrl = "https://www." + shop + "maker_id=" + makerId + "&model_id=" + modelId + "&group_id=" + groupId;
         open(startUrl);
 
         //locators for selector
