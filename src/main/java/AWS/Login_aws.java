@@ -29,7 +29,9 @@ public class Login_aws {
   public Main_aws loginInAws() {
     open("https://aws.autodoc.de/");
     loginField().setValue(email);
+    System.out.println(email);
     passwordField().setValue(password);
+    System.out.println(password);
     sleep(2000);
     loginButton().click();
     loginButton().shouldBe(Condition.not(Condition.visible));
