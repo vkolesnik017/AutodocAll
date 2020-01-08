@@ -5,6 +5,7 @@ import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -15,8 +16,8 @@ import static ATD.CommonMethods.clickOfBuyBtnForAllPages;
 import static ATD.CommonMethods.closeCookiesFooterMessage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class QASYS_274_AddingProductToBasketFromAllRoutes {
 
@@ -51,7 +52,6 @@ public class QASYS_274_AddingProductToBasketFromAllRoutes {
     productPage.firstProductPriceInPopupOfCart().shouldBe(visible);
     productPage.cartClick()
             .productPrice().shouldBe(visible);
-    getWebDriver().manage().deleteAllCookies();
   }
 
   @DataProvider(name = "routesLKW", parallel = true)
@@ -75,7 +75,6 @@ public class QASYS_274_AddingProductToBasketFromAllRoutes {
     productPage.firstProductPriceInPopupOfCart().shouldBe(visible);
     productPage.cartClick()
             .productPrice().shouldBe(visible);
-    getWebDriver().manage().deleteAllCookies();
   }
 
   @DataProvider(name = "routesMoto", parallel = true)
@@ -99,6 +98,10 @@ public class QASYS_274_AddingProductToBasketFromAllRoutes {
     productPage.firstProductPriceInPopupOfCart().shouldBe(visible);
     productPage.cartClick()
             .productPrice().shouldBe(visible);
-    getWebDriver().manage().deleteAllCookies();
+  }
+
+  @AfterMethod
+  public void testDown() {
+    close();
   }
 }
