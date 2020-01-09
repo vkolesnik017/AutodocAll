@@ -1,5 +1,6 @@
 package ATD;
 
+import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.ex.ElementNotFound;
@@ -7,6 +8,7 @@ import com.codeborne.selenide.ex.ElementShould;
 import com.codeborne.selenide.ex.UIAssertionError;
 import io.qameta.allure.Step;
 
+import static com.codeborne.selenide.CollectionCondition.*;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -19,7 +21,6 @@ public class Product_page {
     return this;
   }
 
-  @Step
   public Cart_page cartClick() {
     new Main_page().cartClick();
     return page(Cart_page.class);
@@ -84,6 +85,11 @@ public class Product_page {
 
   public SelenideElement infoBlockWithSelectedCar() {
     return $(".car-match-block>p>b");
+  }
+
+  @Step("Gets all characteristics product")
+  public ElementsCollection getCharacteristicsOfProduct() {
+    return $$(".show-more-height>li").shouldHave(sizeGreaterThan(10));
   }
 
   // locators of prices with Currencies

@@ -170,6 +170,12 @@ public class Listing_page {
 
     //Locators for all list mode listings
 
+    @Step("Gets all the characteristics of the desired product from listing {productArticle}")
+    // example String for productArticle = Artikelnummer: V99-75-0011
+    public ElementsCollection getCharacteristicsDesiredProduct(String productArticle) {
+        return $$x("//*[text()='" + productArticle + "']/../..//*[@class='about']//li").shouldHave(sizeGreaterThan(10));
+    }
+
     public SelenideElement listProducts() {
         return $(".list_products ");
     }
