@@ -17,11 +17,11 @@
         </classes>
     </test>
 
-    <!--<test name="QASYS_274_AddingProductToBasketFromAllRoutes">-->
-        <!--<classes>-->
-            <!--<class name="ATD.QASYS_19_Basket.QASYS_274_AddingProductToBasketFromAllRoutes">-->
-            <!--</class>-->
-        <!--</classes>-->
-    <!--</test>-->
+    <test name="QASYS_274_AddingProductToBasketFromAllRoutes">
+        <classes>
+            <class name="ATD.QASYS_19_Basket.QASYS_274_AddingProductToBasketFromAllRoutes">
+            </class>
+        </classes>
+    </test>
 
 </suite>
