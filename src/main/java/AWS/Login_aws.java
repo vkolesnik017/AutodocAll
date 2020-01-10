@@ -6,9 +6,7 @@ import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byXpath;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Login_aws {
 
@@ -31,7 +29,10 @@ public class Login_aws {
   public Main_aws loginInAws() {
     open("https://aws.autodoc.de/");
     loginField().setValue(email);
+    System.out.println(email);
     passwordField().setValue(password);
+    System.out.println(password);
+    sleep(2000);
     loginButton().click();
     loginButton().shouldBe(Condition.not(Condition.visible));
     return page(Main_aws.class);
