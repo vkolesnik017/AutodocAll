@@ -1,18 +1,18 @@
 package ATD;
 
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
 import static ATD.CommonMethods.getPriceFromElement;
+import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.not;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selectors.byXpath;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.page;
-import static com.codeborne.selenide.Selenide.sleep;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Cart_page {
 
@@ -24,6 +24,16 @@ public class Cart_page {
     public CartAccount_page nextButtonClick() {
         nextButton().click();
         return page(CartAccount_page.class);
+    }
+
+    @Step("Click uncover characteristics for first product and get his characteristics")
+    public ElementsCollection getCharacteristicsOfProduct() {
+        uncoverCharacteristics().click();
+        return $$(".info__description>li").shouldHave(sizeGreaterThan(10));
+    }
+
+    SelenideElement uncoverCharacteristics() {
+        return $(".open");
     }
 
     public SelenideElement fieldWithQuantityOfProducts() {
