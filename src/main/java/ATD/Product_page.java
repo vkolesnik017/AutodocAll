@@ -1,6 +1,5 @@
 package ATD;
 
-import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.ex.ElementNotFound;
@@ -87,9 +86,15 @@ public class Product_page {
     return $(".car-match-block>p>b");
   }
 
+  @Step
+  public Product_page uncoverCharacteristics() {
+    $(".show-more-button>span").click();
+    return this;
+  }
+
   @Step("Gets all characteristics product")
   public ElementsCollection getCharacteristicsOfProduct() {
-    return $$(".show-more-height>li").shouldHave(sizeGreaterThan(10));
+    return $$(".product-block__description__info>ul>li").shouldHave(sizeGreaterThan(10));
   }
 
   // locators of prices with Currencies
