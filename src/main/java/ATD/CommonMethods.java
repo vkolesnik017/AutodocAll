@@ -175,10 +175,25 @@ public class CommonMethods {
         sleep(3000); // TODO try delete this sleep after fixed SITES-2830
     }
 
-    // methods for block of top products
+    // methods and locators for block of top products
     public SelenideElement titleOfBlockOfTopProducts() {
         return $x("//*[@class='title_list'] | //*[@class='top-small-products__title']");
     }
+
+    public SelenideElement arrowRightBtnInTopProductsBlock() {
+        return $(byXpath("(//*[@type='button'])[2]"));
+    }
+
+    // fits for all pages
+    public SelenideElement grayBtn() {
+        return $(byXpath("//*[contains(@class,'not_active')]/a"));
+    }
+
+    public ElementsCollection miniCardsOfProducts() {
+        return $$(byXpath("//*[contains(@class,'product-list__item ')]"));
+    }
+
+    private By recoveryCharacteristicInBlockOfTopProducts = By.cssSelector(".default_ul_li_class");
 
     @Step
     public void scrollToBlockOfTopProducts() {
@@ -187,33 +202,26 @@ public class CommonMethods {
     }
 
     @Step
-    public static void checksProductsNotInStockInBlockOfTopProducts() {
-        SelenideElement arrowRightBtnInTopProductsBlock = $(byXpath("(//*[@type='button'])[2]"));
-        SelenideElement grayBtn = $(byXpath("//*[contains(@class,'not_active')]/a"));
+    public void checksProductsNotInStockInBlockOfTopProducts() {
         universalElementOfBuyBtnForAllPages().shouldBe(visible);
-        if (arrowRightBtnInTopProductsBlock.isDisplayed()) {
-            while (arrowRightBtnInTopProductsBlock.attr("aria-disabled").equals("false")) {
-                grayBtn.shouldBe(not(visible));
-                arrowRightBtnInTopProductsBlock.click();
+        if (arrowRightBtnInTopProductsBlock().isDisplayed()) {
+            while (arrowRightBtnInTopProductsBlock().attr("aria-disabled").equals("false")) {
+                grayBtn().shouldBe(not(visible));
+                arrowRightBtnInTopProductsBlock().click();
             }
         }
-        grayBtn.shouldBe(not(visible));
-    }
-
-    public ElementsCollection miniCardsOfProducts() {
-        return $$(byXpath("//*[contains(@class,'product-list__item ')]"));
+        grayBtn().shouldBe(not(visible));
     }
 
     @Step
     // method for checks output recovery characteristic in block of top products for QASYS_536 (TEST-1)
     public void cheksOutputRecoveryCharacteristicInBlocksOfTopProducts(String expectedChar) {
-        By recoveryCharacteristic = By.cssSelector(".default_ul_li_class");
         ArrayList<String> actualCharacteristics = new ArrayList<>();
         scrollToBlockOfTopProducts();
         ElementsCollection miniCardsInTopBlock = miniCardsOfProducts().filter(visible).shouldHaveSize(4);
         for (SelenideElement el : miniCardsInTopBlock) {
             el.hover();
-            String text = el.$(recoveryCharacteristic).shouldBe(visible).getText().replaceAll("\n", "");
+            String text = el.$(recoveryCharacteristicInBlockOfTopProducts).shouldBe(visible).getText().replaceAll("\n", "");
             actualCharacteristics.add(text);
             titleOfBlockOfTopProducts().hover();
         }

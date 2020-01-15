@@ -44,7 +44,7 @@ public class QASYS_379_BlocksOfTopProducts {
   public void testProductsNotInStockInBlockOfTopProducts(String route) {
     open(route);
     commonMethods.scrollToBlockOfTopProducts();
-    checksProductsNotInStockInBlockOfTopProducts();
+    commonMethods.checksProductsNotInStockInBlockOfTopProducts();
   }
 
   @DataProvider(name = "routesWithBlocksOfTopPairedProducts", parallel = true)
