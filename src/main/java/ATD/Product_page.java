@@ -1,5 +1,6 @@
 package ATD;
 
+import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.ex.ElementNotFound;
@@ -8,6 +9,7 @@ import com.codeborne.selenide.ex.UIAssertionError;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
+import static com.codeborne.selenide.CollectionCondition.*;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -50,9 +52,10 @@ public class Product_page {
         return $(byCssSelector(".button.not_active>a"));
     }
 
-    public SelenideElement infoBlockWithSelectedCar() {
-        return $(".car-match-block>p>b");
-    }
+
+//    public SelenideElement infoBlockWithSelectedCar() {
+//        return $(".car-match-block>p>b");
+//    }
 
     private SelenideElement heavyCargoLink() { return $(By.xpath("//p[@class='product-inkl-info']/a[2]")); }
 
@@ -100,6 +103,14 @@ public class Product_page {
         return this;
     }
 
+  public SelenideElement infoBlockWithSelectedCar() {
+    return $(".car-match-block>p>b");
+  }
+
+  @Step("Gets all characteristics product")
+  public ElementsCollection getCharacteristicsOfProduct() {
+    return $$(".show-more-height>li").shouldHave(sizeGreaterThan(10));
+  }
 
     // locators of prices with Currencies
     public SelenideElement priceWithoutDiscount() {

@@ -3,6 +3,7 @@ package ATD;
 import com.codeborne.selenide.*;
 import com.codeborne.selenide.ex.ElementShould;
 import com.codeborne.selenide.ex.UIAssertionError;
+import io.qameta.allure.Description;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
@@ -13,6 +14,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 import java.util.Random;
 
 import static com.codeborne.selenide.Condition.*;
@@ -208,7 +210,7 @@ public class CommonMethods {
         By infoVatAndDelivery = (byCssSelector(".product-list__item__info"));
 
         ElementsCollection miniCardsOfProducts = $$(byXpath("//*[contains(@class,'product-list__item ')]")).filterBy(visible).shouldHaveSize(4);
-        for (SelenideElement miniCard : miniCardsOfProducts) {
+        for(SelenideElement miniCard : miniCardsOfProducts) {
             miniCard.$(sticker).should(visible);
             miniCard.$(oldPrice).should(visible);
             miniCard.$(image).should(visible);
@@ -216,6 +218,14 @@ public class CommonMethods {
             miniCard.$(articleNumber).should(visible);
             miniCard.$(price).should(visible);
             miniCard.$(infoVatAndDelivery).should(visible);
+        }
+    }
+
+    @Step("Comparing actual and expected characteristics")
+    @Description("The method gets characteristics from ElementsCollection and compare their with characteristics from ArrayList")
+    public void compareCharacteristics(ElementsCollection actualCharacteristics, List<String> expectedCharacteristics) {
+        for (int a = 0; a < expectedCharacteristics.size(); a++) {
+            actualCharacteristics.get(a).shouldHave(matchText(expectedCharacteristics.get(a)));
         }
     }
 
