@@ -183,10 +183,6 @@ public class Listing_page {
         return $$x("//*[text()='" + productArticle + "']/../..//*[@class='about']//li").shouldHave(sizeGreaterThan(10));
     }
 
-    public ElementsCollection recoveryCharacteristics() {
-        return $$x("//span[@class='rc' and contains(text(),'Wiederaufbereitet')]");
-    }
-
     public SelenideElement listProducts() {
         return $(".list_products ");
     }

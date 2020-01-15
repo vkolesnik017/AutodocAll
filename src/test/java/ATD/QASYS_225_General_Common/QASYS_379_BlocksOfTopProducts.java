@@ -1,6 +1,5 @@
 package ATD.QASYS_225_General_Common;
 
-import ATD.CommonMethods;
 import ATD.Product_page;
 import ATD.SetUp;
 import io.qameta.allure.Description;
@@ -23,7 +22,6 @@ import static com.codeborne.selenide.Selenide.open;
 public class QASYS_379_BlocksOfTopProducts {
 
   private Product_page productPage = new Product_page();
-  private CommonMethods commonMethods = new CommonMethods();
 
   @BeforeClass
   void setUp() {
@@ -43,8 +41,8 @@ public class QASYS_379_BlocksOfTopProducts {
   @Description(value = "TC01 The test checks products not in stock in blocks of top products")
   public void testProductsNotInStockInBlockOfTopProducts(String route) {
     open(route);
-    commonMethods.scrollToBlockOfTopProducts();
-    commonMethods.checksProductsNotInStockInBlockOfTopProducts();
+    scrollToBlockOfTopProducts();
+    checksProductsNotInStockInBlockOfTopProducts();
   }
 
   @DataProvider(name = "routesWithBlocksOfTopPairedProducts", parallel = true)
@@ -77,8 +75,8 @@ public class QASYS_379_BlocksOfTopProducts {
   @Description(value = "TC03 The test checks presence elements in mini-card in blocks of top products")
   public void testPresenceElementsInMiniCardInBlocksOfTopProducts(String route) {
     open(route);
-    commonMethods.scrollToBlockOfTopProducts();
-    commonMethods.checksPresenceElementsInMiniCardInBlocksOfTopProducts();
+    scrollToBlockOfTopProducts();
+    checksPresenceElementsInMiniCardInBlocksOfTopProducts();
   }
 
   @AfterMethod
