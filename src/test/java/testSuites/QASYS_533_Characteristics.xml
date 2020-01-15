@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="QASYS_533_Characteristics" parallel="methods" thread-count="3" data-provider-thread-count="2">
+<suite name="QASYS_533_Characteristics" parallel="methods" thread-count="3">
 
     <test name="QASYS_534_CharacteristicsDynamic">
         <classes>
@@ -12,13 +12,6 @@
     <test name="QASYS_535_CharacteristicsStatic">
         <classes>
             <class name="ATD.QASYS_533_Characteristics.QASYS_535_CharacteristicsStatic">
-            </class>
-        </classes>
-    </test>
-
-    <test name="QASYS_536_CharacteristicsRecovery">
-        <classes>
-            <class name="ATD.QASYS_533_Characteristics.QASYS_536_CharacteristicsRecovery">
             </class>
         </classes>
     </test>

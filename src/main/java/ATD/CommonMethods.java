@@ -3,6 +3,7 @@ package ATD;
 import com.codeborne.selenide.*;
 import com.codeborne.selenide.ex.ElementShould;
 import com.codeborne.selenide.ex.UIAssertionError;
+import io.qameta.allure.Description;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
@@ -13,7 +14,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -175,62 +175,31 @@ public class CommonMethods {
         sleep(3000); // TODO try delete this sleep after fixed SITES-2830
     }
 
-    // methods and locators for block of top products
-    public SelenideElement titleOfBlockOfTopProducts() {
-        return $x("//*[@class='title_list'] | //*[@class='top-small-products__title']");
-    }
-
-    public SelenideElement arrowRightBtnInTopProductsBlock() {
-        return $(byXpath("(//*[@type='button'])[2]"));
-    }
-
-    // fits for all pages
-    public SelenideElement grayBtn() {
-        return $(byXpath("//*[contains(@class,'not_active')]/a"));
-    }
-
-    public ElementsCollection miniCardsOfProducts() {
-        return $$(byXpath("//*[contains(@class,'product-list__item ')]"));
-    }
-
-    private By recoveryCharacteristicInBlockOfTopProducts = By.cssSelector(".default_ul_li_class");
-
     @Step
-    public void scrollToBlockOfTopProducts() {
-        titleOfBlockOfTopProducts().scrollTo();
+    public static void scrollToBlockOfTopProducts() {
+        SelenideElement titleOfBlockOfTopProducts = $(byXpath("//*[@class='title_list'] | //*[@class='top-small-products__title']"));
+        titleOfBlockOfTopProducts.scrollTo();
         universalElementOfBuyBtnForAllPages().shouldBe(visible);
     }
 
     @Step
-    public void checksProductsNotInStockInBlockOfTopProducts() {
+    // method for block of top products
+    public static void checksProductsNotInStockInBlockOfTopProducts() {
+        SelenideElement arrowRightBtnInTopProductsBlock = $(byXpath("(//*[@type='button'])[2]"));
+        SelenideElement grayBtn = $(byXpath("//*[contains(@class,'not_active')]/a"));
         universalElementOfBuyBtnForAllPages().shouldBe(visible);
-        if (arrowRightBtnInTopProductsBlock().isDisplayed()) {
-            while (arrowRightBtnInTopProductsBlock().attr("aria-disabled").equals("false")) {
-                grayBtn().shouldBe(not(visible));
-                arrowRightBtnInTopProductsBlock().click();
+        if (arrowRightBtnInTopProductsBlock.isDisplayed()) {
+            while (arrowRightBtnInTopProductsBlock.attr("aria-disabled").equals("false")) {
+                grayBtn.shouldBe(not(visible));
+                arrowRightBtnInTopProductsBlock.click();
             }
         }
-        grayBtn().shouldBe(not(visible));
-    }
-
-    @Step
-    // method for checks output recovery characteristic in block of top products for QASYS_536 (TEST-1)
-    public void cheksOutputRecoveryCharacteristicInBlocksOfTopProducts(String expectedChar) {
-        ArrayList<String> actualCharacteristics = new ArrayList<>();
-        scrollToBlockOfTopProducts();
-        ElementsCollection miniCardsInTopBlock = miniCardsOfProducts().filter(visible).shouldHaveSize(4);
-        for (SelenideElement el : miniCardsInTopBlock) {
-            el.hover();
-            String text = el.$(recoveryCharacteristicInBlockOfTopProducts).shouldBe(visible).getText().replaceAll("\n", "");
-            actualCharacteristics.add(text);
-            titleOfBlockOfTopProducts().hover();
-        }
-        assertTrue(actualCharacteristics.contains(expectedChar), "not in a single product is not output the recovery characteristic " + expectedChar + " in the block of top product");
+        grayBtn.shouldBe(not(visible));
     }
 
     @Step
     // method for checks elements in block of top products
-    public void checksPresenceElementsInMiniCardInBlocksOfTopProducts() {
+    public static void checksPresenceElementsInMiniCardInBlocksOfTopProducts() {
 
         By sticker = (byCssSelector(".product-list__item__promotion"));
         By oldPrice = (byCssSelector(".product-list__item__old-price"));
@@ -240,7 +209,7 @@ public class CommonMethods {
         By price = (byCssSelector(".product-list__item__price"));
         By infoVatAndDelivery = (byCssSelector(".product-list__item__info"));
 
-        ElementsCollection miniCardsOfProducts = miniCardsOfProducts().filterBy(visible).shouldHaveSize(4);
+        ElementsCollection miniCardsOfProducts = $$(byXpath("//*[contains(@class,'product-list__item ')]")).filterBy(visible).shouldHaveSize(4);
         for(SelenideElement miniCard : miniCardsOfProducts) {
             miniCard.$(sticker).should(visible);
             miniCard.$(oldPrice).should(visible);
@@ -253,7 +222,7 @@ public class CommonMethods {
     }
 
     @Step("Comparing actual and expected characteristics")
-    //The method gets characteristics from ElementsCollection and compare their with characteristics from ArrayList
+    @Description("The method gets characteristics from ElementsCollection and compare their with characteristics from ArrayList")
     public void compareCharacteristics(ElementsCollection actualCharacteristics, List<String> expectedCharacteristics) {
         for (int a = 0; a < expectedCharacteristics.size(); a++) {
             actualCharacteristics.get(a).shouldHave(matchText(expectedCharacteristics.get(a)));
