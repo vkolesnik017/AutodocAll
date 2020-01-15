@@ -45,6 +45,20 @@ public class Product_page {
     return $(byCssSelector(".button.not_active>a"));
   }
 
+  public SelenideElement infoBlockWithSelectedCar() {
+    return $(".car-match-block>p>b");
+  }
+
+  public SelenideElement uncoverCharsBtn() {
+    return $(".show-more-button>span");
+  }
+
+  @Step
+  public Product_page uncoverCharacteristics() {
+    uncoverCharsBtn().click();
+    return this;
+  }
+
   @Step
   public Product_page addProductToCart() {
     checkNumberBasketAndRefreshPageIfNot();
@@ -79,16 +93,6 @@ public class Product_page {
       closeBtnOfPopupOtherCategory().shouldBe(not(visible));
     } catch (ElementNotFound ignored) {
     }
-    return this;
-  }
-
-  public SelenideElement infoBlockWithSelectedCar() {
-    return $(".car-match-block>p>b");
-  }
-
-  @Step
-  public Product_page uncoverCharacteristics() {
-    $(".show-more-button>span").click();
     return this;
   }
 
