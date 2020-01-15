@@ -6,7 +6,6 @@ import io.qameta.allure.Step;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class Login_aws {
 
@@ -27,7 +26,7 @@ public class Login_aws {
 
   @Step
   public Main_aws loginInAws() {
-    if(url() == null) open("https://aws.autodoc.de/login");
+    open("https://aws.autodoc.de/login");
     loginField().setValue(email);
     passwordField().setValue(password);
     loginButton().click();
