@@ -7,41 +7,67 @@ import io.qameta.allure.Step;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 
 public class ProductSearch_aws {
 
-  public final String urlPage = "https://aws.autodoc.de/products/search";
+    public final String urlPage = "https://aws.autodoc.de/products/search";
 
-  SelenideElement dangerousCargoSelector() {
-    return $(byId("form_filterSearch[hazardEnabled]"));
-  }
+    private SelenideElement dangerousCargoSelector() {
+        return $(byId("form_filterSearch[hazardEnabled]"));
+    }
 
-  SelenideElement inStockSelector() {
-    return $(byId("form_filterSearch[onStorage]"));
-  }
+    private SelenideElement inStockSelector() {
+        return $(byId("form_filterSearch[onStorage]"));
+    }
 
-  SelenideElement searchBtn() {
-    return $(byId("form_submit"));
-  }
+    private SelenideElement searchBtn() {
+        return $(byId("form_submit"));
+    }
 
-  SelenideElement idProductsInTable() {
-    return $(byXpath("//*[@id='order_products_list']//tr/td[1]"));
-  }
+    private SelenideElement idProductsInTable() {
+        return $(byXpath("//*[@id='order_products_list']//tr/td[1]"));
+    }
 
-  SelenideElement dangerousProductsColumn() {
-    return $(byXpath("//*[@id='order_products_list']//tr/td[22]"));
-  }
+    private SelenideElement dangerousProductsColumn() {
+        return $(byXpath("//*[@id='order_products_list']//tr/td[22]"));
+    }
 
-  public SelenideElement articleProductsInTable() {
-    return $(byXpath("//*[@id='order_products_list']//tr/td[3]"));
-  }
+    private SelenideElement illiquidColumn() {
+        return $(byId("form_filterSearch[isRock]"));
+    }
 
-  @Step
-  public String chooseFilterForDangerousProductsAndGetId() {
-    dangerousCargoSelector().selectOption("Включен");
-    inStockSelector().selectOption("есть");
-    searchBtn().click();
-    dangerousProductsColumn().shouldHave(Condition.text("yes"));
-    return idProductsInTable().getText();
-  }
+    private SelenideElement articleProductsInTable() {
+        return $(byXpath("//*[@id='order_products_list']//tr/td[3]"));
+    }
+
+    private SelenideElement brandProductsInTable() { return $(byXpath("//*[@id='order_products_list']//tr/td[4]")); }
+
+    @Step
+    public ProductSearch_aws openProductSearchPageAndLogin() {
+        open(urlPage);
+        new Login_aws().loginInAws();
+        return this;
+    }
+
+    @Step
+    public String chooseIlliquidProductAndGetId() {
+        illiquidColumn().selectOption("Да");
+        searchBtn().click();
+        illiquidColumn().shouldHave(Condition.text("Да"));
+        String id = idProductsInTable().getText();
+        String brand = brandProductsInTable().getText().trim().toLowerCase();
+        System.out.println(id);
+        System.out.println(brand);
+        return id + "#" + brand;
+    }
+
+    @Step
+    public String chooseFilterForDangerousProductsAndGetId() {
+        dangerousCargoSelector().selectOption("Включен");
+        inStockSelector().selectOption("есть");
+        searchBtn().click();
+        dangerousProductsColumn().shouldHave(Condition.text("yes"));
+        return idProductsInTable().getText();
+    }
 }

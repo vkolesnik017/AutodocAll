@@ -18,7 +18,7 @@ import static ATD.CommonMethods.password;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.open;
 
-public class QASYS_74_Regular {
+public class QASYS_79_heavyCargo {
 
     @BeforeClass
     void setUp() {
@@ -34,12 +34,12 @@ public class QASYS_74_Regular {
     @Flaky
     @Owner(value = "alex_qa")
     @Test(dataProvider = "route", enabled = true)
-    @Description(value = "Test check making order with regular product")
-    public void checkingOrderWithRegular(String route) throws SQLException {
+    @Description(value = "Test check making order with heavy cargo product")
+    public void checkingOrderWithHeavyCargo (String route) throws SQLException {
         String shop = getShopFromRoute(route);
-        open(route + "/" + new DataBase().getRouteByRouteName(shop, "product2"));
-        String testMail = "atdautotest@mailinator.com";
-        new Product_page().addProductToCart().closePopupOtherCategoryIfYes()
+        open(route + "/" + new DataBase().getRouteByRouteName(shop, "product6"));
+        String testMail = "atdautotest_qasys_79_heavycargo@mailinator.com";
+        new Product_page().checkingHeavyCargoLinkTransition().addProductToCart().closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
                 .signIn(testMail, password)

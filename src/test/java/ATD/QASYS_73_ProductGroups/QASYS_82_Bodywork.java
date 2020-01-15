@@ -1,5 +1,6 @@
 package ATD.QASYS_73_ProductGroups;
 
+import ATD.CartAllData_page;
 import ATD.DataBase;
 import ATD.Product_page;
 import ATD.SetUp;
@@ -18,7 +19,11 @@ import static ATD.CommonMethods.password;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.open;
 
-public class QASYS_74_Regular {
+public class QASYS_82_Bodywork {
+
+    private Product_page pp = new Product_page();
+
+    private String urlProductForBodyFR = "https://www.auto-doc.fr/valeo/1059854";
 
     @BeforeClass
     void setUp() {
@@ -34,18 +39,21 @@ public class QASYS_74_Regular {
     @Flaky
     @Owner(value = "alex_qa")
     @Test(dataProvider = "route", enabled = true)
-    @Description(value = "Test check making order with regular product")
-    public void checkingOrderWithRegular(String route) throws SQLException {
+    @Description(value = "Test check making order with body product")
+    public void checkingOrderWithBody(String route) throws SQLException {
+        open(urlProductForBodyFR);
+        pp.clickAddToCartAndCheckPopupFR();
+
         String shop = getShopFromRoute(route);
-        open(route + "/" + new DataBase().getRouteByRouteName(shop, "product2"));
-        String testMail = "atdautotest@mailinator.com";
-        new Product_page().addProductToCart().closePopupOtherCategoryIfYes()
+        open(route + "/" + new DataBase().getRouteByRouteName(shop, "product7"));
+        String testMail = "atdautotest_qasys_82_bodywork@mailinator.com";
+        pp.addProductToCart().closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
                 .signIn(testMail, password)
-                .fillAllFields(shop).nextBtnClick()
+                .fillAllFields("FR").nextBtnClick()
                 .chooseVorkasse().nextBtnClick()
-                .nextBtnClick()
-                .closePopupAfterOrder().successTextInHeader().shouldHave(Condition.text("Vielen Dank"));
+                .closePopupDeliveryImpossibleAndCheckEmptyCart();
+//                .closePopupAfterOrder().successTextInHeader().shouldHave(Condition.text("Vielen Dank"));
     }
 }

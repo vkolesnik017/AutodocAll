@@ -42,7 +42,8 @@ public class QASYS_75_Ridex_Stark {
         new Product_page().addProductToCart().closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
-                .signIn(testMail, password).fillAllFields(shop).nextBtnClick()
+                .signIn(testMail, password)
+                .fillAllFields(shop).nextBtnClick()
                 .chooseVorkasse().nextBtnClick()
                 .nextBtnClick()
                 .closePopupAfterOrder().successTextInHeader().shouldHave(Condition.text("Vielen Dank"));
@@ -59,7 +60,8 @@ public class QASYS_75_Ridex_Stark {
         new Product_page().addProductToCart().closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
-                .signIn(testMail, password).fillAllFields(shop).nextBtnClick()
+                .signIn(testMail, password)
+                .fillAllFields(shop).nextBtnClick()
                 .chooseVorkasse().nextBtnClick()
                 .nextBtnClick()
                 .closePopupAfterOrder().successTextInHeader().shouldHave(Condition.text("Vielen Dank"));

@@ -42,7 +42,8 @@ public class QASYS_78_Batteries {
         new Product_page().addProductToCart().closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
-                .signIn(testMail, password).fillAllFields(shop).nextBtnClick()
+                .signIn(testMail, password)
+                .fillAllFields(shop).nextBtnClick()
                 .chooseVorkasse().nextBtnClick()
                 .nextBtnClick()
                 .closePopupAfterOrder().successTextInHeader().shouldHave(Condition.text("Vielen Dank"));

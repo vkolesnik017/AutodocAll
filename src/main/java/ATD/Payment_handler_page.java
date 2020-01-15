@@ -13,7 +13,7 @@ public class Payment_handler_page {
         return $(By.xpath("//div[@class='success-order__head']/strong"));
     }
 
-    public SelenideElement orderNumber() {
+    private SelenideElement orderNumber() {
         return $(By.xpath("//div[@class='success-order__info']/b"));
     }
 
@@ -38,4 +38,7 @@ public class Payment_handler_page {
         return this;
     }
 
+    public String getOrderNumber(){
+        return orderNumber().getText();
+    }
 }
