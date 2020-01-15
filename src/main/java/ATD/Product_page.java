@@ -52,10 +52,19 @@ public class Product_page {
         return $(byCssSelector(".button.not_active>a"));
     }
 
+  public SelenideElement infoBlockWithSelectedCar() {
+    return $(".car-match-block>p>b");
+  }
 
-//    public SelenideElement infoBlockWithSelectedCar() {
-//        return $(".car-match-block>p>b");
-//    }
+  public SelenideElement uncoverCharsBtn() {
+    return $(".show-more-button>span");
+  }
+
+  @Step
+  public Product_page uncoverCharacteristics() {
+    uncoverCharsBtn().click();
+    return this;
+  }
 
     private SelenideElement heavyCargoLink() { return $(By.xpath("//p[@class='product-inkl-info']/a[2]")); }
 
@@ -103,13 +112,9 @@ public class Product_page {
         return this;
     }
 
-  public SelenideElement infoBlockWithSelectedCar() {
-    return $(".car-match-block>p>b");
-  }
-
   @Step("Gets all characteristics product")
   public ElementsCollection getCharacteristicsOfProduct() {
-    return $$(".show-more-height>li").shouldHave(sizeGreaterThan(10));
+    return $$(".product-block__description__info>ul>li").shouldHave(sizeGreaterThan(10));
   }
 
     // locators of prices with Currencies
