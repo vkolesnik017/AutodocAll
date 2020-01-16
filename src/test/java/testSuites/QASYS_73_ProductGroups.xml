@@ -2,49 +2,49 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="QASYS_73_ProductGroups" parallel="tests" data-provider-thread-count="6">
 
-    <test name="QASYS_349_Footer">
+    <test name="QASYS_82_Bodywork">
         <classes>
             <class name="ATD.QASYS_73_ProductGroups.QASYS_82_Bodywork">
             </class>
         </classes>
     </test>
 
-    <test name="QASYS_379_BlocksOfTopProducts">
+    <test name="QASYS_74_Regular">
         <classes>
             <class name="ATD.QASYS_73_ProductGroups.QASYS_74_Regular">
             </class>
         </classes>
     </test>
 
-    <test name="QASYS_350_Header">
+    <test name="QASYS_75_Ridex_Stark">
         <classes>
             <class name="ATD.QASYS_73_ProductGroups.QASYS_75_Ridex_Stark">
             </class>
         </classes>
     </test>
 
-    <test name="QASYS_350_Header">
+    <test name="QASYS_78_Batteries">
         <classes>
             <class name="ATD.QASYS_73_ProductGroups.QASYS_78_Batteries">
             </class>
         </classes>
     </test>
 
-    <test name="QASYS_350_Header">
+    <test name="QASYS_79_heavyCargo">
         <classes>
             <class name="ATD.QASYS_73_ProductGroups.QASYS_79_heavyCargo">
             </class>
         </classes>
     </test>
 
-    <test name="QASYS_350_Header">
+    <test name="QASYS_80_Paired">
         <classes>
             <class name="ATD.QASYS_73_ProductGroups.QASYS_80_Paired">
             </class>
         </classes>
     </test>
 
-    <test name="QASYS_350_Header">
+    <test name="QASYS_81_Illiquid">
         <classes>
             <class name="ATD.QASYS_73_ProductGroups.QASYS_81_Illiquid">
             </class>
