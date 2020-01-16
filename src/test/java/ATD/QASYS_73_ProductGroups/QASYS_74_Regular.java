@@ -31,10 +31,10 @@ public class QASYS_74_Regular {
     }
 
 
-    @Flaky
     @Owner(value = "alex_qa")
-    @Test(dataProvider = "route", enabled = true)
+    @Test(dataProvider = "route")
     @Description(value = "Test check making order with regular product")
+    @Flaky
     public void checkingOrderWithRegular(String route) throws SQLException {
         String shop = getShopFromRoute(route);
         open(route + "/" + new DataBase().getRouteByRouteName(shop, "product2"));

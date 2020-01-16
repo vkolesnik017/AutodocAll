@@ -31,10 +31,10 @@ public class QASYS_78_Batteries {
     }
 
 
-    @Flaky
     @Owner(value = "alex_qa")
-    @Test(dataProvider = "route", enabled = true)
+    @Test(dataProvider = "route")
     @Description(value = "Test check making order with batteries product")
+    @Flaky
     public void checkingOrderWithBatteries(String route) throws SQLException {
         String shop = getShopFromRoute(route);
         open(route + "/" + new DataBase().getRouteByRouteName(shop, "product5"));

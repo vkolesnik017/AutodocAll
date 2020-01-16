@@ -1,6 +1,5 @@
 package ATD.QASYS_73_ProductGroups;
 
-import ATD.DataBase;
 import ATD.Product_page;
 import ATD.SetUp;
 import AWS.ProductSearch_aws;
@@ -11,8 +10,6 @@ import io.qameta.allure.Owner;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import java.sql.SQLException;
 
 import static ATD.CommonMethods.getShopFromRoute;
 import static ATD.CommonMethods.password;
@@ -38,10 +35,10 @@ public class QASYS_81_Illiquid {
     }
 
 
-    @Flaky
     @Owner(value = "alex_qa")
-    @Test(dataProvider = "route", enabled = true)
+    @Test(dataProvider = "route")
     @Description(value = "Test check making order with illiquid product")
+    @Flaky
     public void checkingOrderWithIlliquid(String route) {
         String[] url = idAndBrand.split("#");
         String shop = getShopFromRoute(route);

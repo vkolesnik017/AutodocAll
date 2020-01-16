@@ -31,10 +31,10 @@ public class QASYS_79_heavyCargo {
     }
 
 
-    @Flaky
     @Owner(value = "alex_qa")
-    @Test(dataProvider = "route", enabled = true)
+    @Test(dataProvider = "route")
     @Description(value = "Test check making order with heavy cargo product")
+    @Flaky
     public void checkingOrderWithHeavyCargo (String route) throws SQLException {
         String shop = getShopFromRoute(route);
         open(route + "/" + new DataBase().getRouteByRouteName(shop, "product6"));

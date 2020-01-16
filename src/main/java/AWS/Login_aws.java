@@ -26,11 +26,19 @@ public class Login_aws {
 
   @Step
   public Main_aws loginInAws() {
-    open("https://aws.autodoc.de/login");
     loginField().setValue(email);
     passwordField().setValue(password);
     loginButton().click();
 //    loginButton().shouldNotBe(Condition.visible);
+    return page(Main_aws.class);
+  }
+
+  @Step
+  public Main_aws loginInAwsWithOpen() {
+    open("https://aws.autodoc.de/login");
+    loginField().setValue(email);
+    passwordField().setValue(password);
+    loginButton().click();
     return page(Main_aws.class);
   }
 

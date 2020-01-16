@@ -3,6 +3,7 @@ package ATD;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 
 import static ATD.CommonMethods.getPriceFromElement;
 import static com.codeborne.selenide.Condition.*;
@@ -121,7 +122,8 @@ public class CartAllData_page {
         popupOfEmptyBasket().shouldBe(appear);
         closeBtnPopupOfEmptyBasket().click();
         new Main_page().logoInHeader().shouldBe(appear);
-        System.out.println(source());
+        String pageSource = source();
+        if(!pageSource.contains("ROUTE_NAME\":\"main\"")) Assert.fail("Wrong page. Must open Main Page");
         return page(Main_page.class);
     }
 

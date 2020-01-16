@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="QASYS_73_ProductGroups" parallel="tests" data-provider-thread-count="6">
+
+    <test name="QASYS_349_Footer">
+        <classes>
+            <class name="ATD.QASYS_73_ProductGroups.QASYS_82_Bodywork">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QASYS_379_BlocksOfTopProducts">
+        <classes>
+            <class name="ATD.QASYS_73_ProductGroups.QASYS_74_Regular">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QASYS_350_Header">
+        <classes>
+            <class name="ATD.QASYS_73_ProductGroups.QASYS_75_Ridex_Stark">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QASYS_350_Header">
+        <classes>
+            <class name="ATD.QASYS_73_ProductGroups.QASYS_78_Batteries">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QASYS_350_Header">
+        <classes>
+            <class name="ATD.QASYS_73_ProductGroups.QASYS_79_heavyCargo">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QASYS_350_Header">
+        <classes>
+            <class name="ATD.QASYS_73_ProductGroups.QASYS_80_Paired">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QASYS_350_Header">
+        <classes>
+            <class name="ATD.QASYS_73_ProductGroups.QASYS_81_Illiquid">
+            </class>
+        </classes>
+    </test>
+
+</suite>

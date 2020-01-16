@@ -22,9 +22,6 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class QASYS_80_Paired {
 
-    private String orderNumber;
-
-
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -36,10 +33,10 @@ public class QASYS_80_Paired {
     }
 
 
-    @Flaky
     @Owner(value = "alex_qa")
-    @Test(dataProvider = "route", enabled = true)
+    @Test(dataProvider = "route")
     @Description(value = "Test check making order with paired product")
+    @Flaky
     public void checkingOrderWithPaired(String route) throws SQLException {
         String shop = getShopFromRoute(route);
         open(route + "/" + new DataBase().getRouteByRouteName(shop, "search8"));
@@ -52,7 +49,7 @@ public class QASYS_80_Paired {
                 .chooseVorkasse().nextBtnClick()
                 .counterIncrease("4").counterDecrease("6").nextBtnClick()
                 .closePopupAfterOrder().successTextInHeader().shouldHave(Condition.text("Vielen Dank"));
-        orderNumber = new Payment_handler_page().getOrderNumber();
+        String orderNumber = new Payment_handler_page().getOrderNumber();
         new Order_aws(orderNumber).openOrderInAwsWithLogin().checkQuantityOfProduct(4).checkTooltipByAddingIncorrectProductQuantity("3");
     }
 }
