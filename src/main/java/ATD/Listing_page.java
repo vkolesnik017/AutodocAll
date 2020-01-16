@@ -69,6 +69,24 @@ public class Listing_page {
 
     public SelenideElement activeSideFilterAttributeLkw2() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_339']//ul/li[2]"); }
 
+    public SelenideElement hoheThirdSideFilterButton() { return $x("//*[contains(@class,'filter-criteria_209')]//li[3]"); }
+
+    public SelenideElement hoheFirstSideFilterButton() { return $x("//*[contains(@class,'filter-criteria_209')]//li[1]"); }
+
+    public SelenideElement hoheSecondSideFilterButton() { return $x("//*[contains(@class,'filter-criteria_209')]//li[2]"); }
+
+    public SelenideElement oberflacheSideFilterButton() { return $x("//*[contains(@class,'filter-criteria_599')]//li"); }
+
+    public SelenideElement bremsscheibenartSideFilterButton() { return $x("//*[contains(@class,'filter-criteria_232')]//li"); }
+
+    public SelenideElement durchmesserSideFilterButton() { return $x("//*[contains(@class,'filter-criteria_200')]//li[4]"); }
+
+    public SelenideElement furprnummerSideFilterButton() { return $x("//*[contains(@class,'filter-criteria_1197')]//li"); }
+
+    public SelenideElement lochanzahlSideFilterButton() { return $x("//*[contains(@class,'filter-criteria_500')]//li"); }
+
+    public SelenideElement carBrandFilterOem() { return $(".model_list_oem > li > label > input"); }
+
     // locator for search listing
 
     @Step("Gets all the characteristics of the desired product from search listing {productArticle}")
@@ -110,6 +128,8 @@ public class Listing_page {
     public SelenideElement oemAnalogBlock() {
         return $(".oem-number__analog");
     }
+
+    public ElementsCollection carBrandApplicabilityAttribute() { return $$x("//*[@class='list_products ']/li//li[1]/a[@class='pkw-oem__link ga-click']"); }
 
     //Brand filters locators
 
@@ -223,25 +243,49 @@ public class Listing_page {
 
     public ElementsCollection langeProductAttributeGenericRoute() { return $$x("//*[@class='w_search no_margin']/preceding-sibling::li//*[@class='important' and contains(span,'Länge [mm]')]/span[2]"); }
 
-    public ElementsCollection verschleißwarnkontaktProductAttributeTecdocRoute() { return $$x("//*[@class='important' and contains(span,'Verschleißwarnkontakt:')]/span[2]"); }
-
-    public ElementsCollection verschleißwarnkontaktProductAttributeGenericRoute() { return $$x("//*[@class='w_search no_margin']/preceding-sibling::li//*[@class='important' and contains(span,'Verschleißwarnkontakt:')]/span[2]"); }
-
     public ElementsCollection wischblattausfuhrungProductAttributeTecdocRoute() { return $$x("//*[@class='important' and contains(span,'Wischblattausführung')]/span[2]"); }
 
     public ElementsCollection wischblattausfuhrungProductAttributeGenericRoute() { return $$x("//*[@class='w_search no_margin']/preceding-sibling::li//*[@class='important' and contains(span,'Wischblattausführung')]/span[2]"); }
 
-    public ElementsCollection hoheProductAttributeTecdocRoute() { return $$x("//*[@class='important' and contains(span,'Höhe 1 [mm]:')]/span[2]"); }
+    public ElementsCollection hoheProductAttributeTecdocRoute() { return $$x("//*[contains(text(),'Höhe [mm]:')]/ancestor :: li[1]/span[2]"); }
 
-    public ElementsCollection hoheProductAttributeGenericRoute() { return $$x("//*[@class='w_search no_margin']/preceding-sibling::li//*[@class='important' and contains(span,'Höhe 1 [mm]:')]/span[2]"); }
+    public ElementsCollection hoheProductAttributeGenericRoute() { return $$x("//*[@class='w_search no_margin']/preceding-sibling::li//*[contains(text(),'Höhe [mm]:')]/ancestor :: li[1]/span[2]"); }
 
     public ElementsCollection einbauseiteProductAttributeTecdocRoute() {return $$x("//*[contains(text(),'Einbauseite:')]/ancestor :: li[1]/span[2]"); }
 
     public ElementsCollection einbauseiteProductAttributeGenericRoute() {return $$x("//*[@class='w_search no_margin']/preceding-sibling::li//*[contains(text(),'Einbauseite:')]/ancestor :: li[1]/span[2]"); }
 
+    public ElementsCollection oberflacheProductAttributeTecdocRoute() { return $$x("//*[contains(text(),'Oberfläche:')]/ancestor :: li[1]/span[2]"); }
+
+    public ElementsCollection oberflacheProductAttributeGenericRoute() { return $$x("//*[@class='w_search no_margin']/preceding-sibling::li//*[contains(text(),'Oberfläche:')]/ancestor :: li[1]/span[2]"); }
+
+    public ElementsCollection bremsscheibenartProductAttributeTecdocRoute() { return $$x("//*[contains(text(),'Bremsscheibenart:')]/ancestor :: li[1]/span[2]"); }
+
+    public ElementsCollection bremsscheibenartProductAttributeGenericRoute() { return $$x("//*[@class='w_search no_margin']/preceding-sibling::li//*[contains(text(),'Bremsscheibenart:')]/ancestor :: li[1]/span[2]"); }
+
+    public ElementsCollection durchmesserProductAttributeTecdocRoute() { return $$x("//*[contains(text(),'Durchmesser [mm]:')]/ancestor :: li[1]/span[2]"); }
+
+    public ElementsCollection durchmesserProductAttributeGenericRoute() { return $$x("//*[@class='w_search no_margin']/preceding-sibling::li//*[contains(text(),'Durchmesser [mm]:')]/ancestor :: li[1]/span[2]"); }
+
+    public ElementsCollection furprnummerProductAttributeTecdocRoute() { return $$x("//*[contains(text(),'für PR-Nummer:')]/ancestor :: li[1]/span[2]"); }
+
+    public ElementsCollection furprnummerProductAttributeGenericRoute() { return $$x("//*[@class='w_search no_margin']/preceding-sibling::li//*[contains(text(),'für PR-Nummer:')]/ancestor :: li[1]/span[2]"); }
+
+    public ElementsCollection lochanzahlProductAttributeTecdocRoute() { return $$x("//*[contains(text(),'Lochanzahl:')]/ancestor :: li[1]/span[2]"); }
+
+    public ElementsCollection lochanzahlProductAttributeGenericRoute() { return $$x("//*[@class='w_search no_margin']/preceding-sibling::li//*[contains(text(),'Lochanzahl:')]/ancestor :: li[1]/span[2]"); }
+
     public SelenideElement closeBtnPopupOfChooseCar() {
         return $(".back");
     }
+
+    public SelenideElement nextPageButton() { return $(".pagination > .next"); }
+
+    public SelenideElement grayButton() { return $x("//*[contains(@class,'not_active')]/a"); }
+
+    public ElementsCollection addToBasketButtons() { return $$x("//*[@class='add_info']/div[2]"); }
+
+    public ElementsCollection redButtons() { return $$x("//*[@class='button ']"); }
 
     @Step("Method gets price of all products on listing and parse it into float")
     public List<Float> getAllPricesOnListingPage(ElementsCollection listingViewModeLocator) {
@@ -390,6 +434,111 @@ public class Listing_page {
             String articleListMode = articlesInListMode.get(numberProductName);
             String articleNumberTileMode = articlesOnTileMode.get(numberProductName).text().split(": ")[1];
             assertEquals(articleNumberTileMode, articleListMode, "Product order " + articleListMode + " does not match between list mode and tile mode");
+        }
+    }
+
+    @Step("Method checks product attribute on listing in tile mode")
+    public void checkProductAttributeOnListingInTileMode2(String attributeSelectedInSideFilter) {
+        ElementsCollection characS = $$x("//*[contains(text(),'Einbauseite:')]/ancestor :: li[1]/span[2]");
+        for (int i = 0; i < $$(".rec_products_block").size(); i++) {
+            $$(".rec_products_block").get(i).hover();
+            characS.get(i).shouldHave(text(attributeSelectedInSideFilter));
+            $(".filter-disk__head").hover();
+        }
+    }
+
+    @Step("Method checks product attribute on OEM listing")
+    public void checkProductCharacteristicOnListingOem(String attributeSelectedInSideFilter, ElementsCollection productAttributeOnListing) {
+        for (int i = 0; i < $$(".list_products > li").size(); i++) {
+            $$(".product-params-oem").get(i).click();
+            productAttributeOnListing.get(i).shouldHave(text(attributeSelectedInSideFilter));
+            System.out.println(productAttributeOnListing.get(i).text());
+        }
+    }
+
+    @Step("Method checks add to basket buttons sorting on listing")
+    public void checkAddToBasketButtonsSorting() {
+        for (int i = 0; i < addToBasketButtons().size()-1; i++) {
+            if (addToBasketButtons().get(i).text().contains("VERFÜGBARKEIT")) {
+                addToBasketButtons().get(i+1).shouldHave(text("VERFÜGBARKEIT"));
+            }
+        }
+    }
+
+    @Step("Method checks products sorting on listing in increasing order for RIDEX products")
+    public void checkPriceSortingInIncreasingOrderRidex(ElementsCollection listingViewModeLocator) {
+        List<Float> price = getAllPricesOnListingPage(listingViewModeLocator);
+        ElementsCollection ridexProducts = $$x("//*[@class='name']/a[contains (text(),'RIDEX')]");
+        for (int i = 0; i < ridexProducts.size()-1; i++) {
+                if (price.get(i) <= price.get(i + 1)) {
+                    System.out.println(price.get(i));
+                } else {
+                    Assert.fail("Products are NOT sorted by price in increasing order");
+            }
+            System.out.println("Products are sorted by price in increasing order");
+        }
+    }
+
+    @Step("Method checks products sorting on listing in increasing order for not RIDEX products with one generic")
+    public void checkPriceSortingInIncreasingOrderNotRidex(ElementsCollection listingViewModeLocator) {
+        List<Float> price = getAllPricesOnListingPage(listingViewModeLocator);
+        ElementsCollection ridexProducts = $$x("//*[@class='name']/a[contains (text(),'RIDEX')]");
+        ElementsCollection grayButtons = $$x("//*[contains(@class,'not_active')]/a");
+        if (grayButtons.size() < 1) {
+            for (int i = ridexProducts.size(); i < getAllPricesOnListingPage(listingViewModeLocator).size() - 1; i++) {
+                if (price.get(i) <= price.get(i + 1)) {
+                    System.out.println(price.get(i));
+                } else {
+                    Assert.fail("Products are NOT sorted by price in increasing order");
+                }
+                System.out.println("Products are sorted by price in increasing order");
+            }
+        } else {
+            for (int i = redButtons().size(); i < getAllPricesOnListingPage(listingViewModeLocator).size() - 1; i++) {
+                if (price.get(i) <= price.get(i + 1)) {
+                    System.out.println(price.get(i));
+                } else {
+                    Assert.fail("Products are NOT sorted by price in increasing order");
+                }
+                System.out.println("Products are sorted by price in increasing order");
+            }
+        }
+    }
+
+    @Step("Method checks products sorting on listing in increasing order for not RIDEX products with two generics")
+    public void checkPriceSortingInIncreasingOrderNotRidex2generic(ElementsCollection listingViewModeLocator) {
+        List<Float> price = getAllPricesOnListingPage(listingViewModeLocator);
+        ElementsCollection notHalterProducts = $$x("//*[@class='name']/a[not (contains (text(),'Halter'))]");
+        ElementsCollection halterProducts = $$x("//*[@class='name']/a[contains (text(),'Halter')]");
+        if ($$x("//*[contains(@class,'not_active')]/a").size() < 1) {
+            if(halterProducts.size() < 1) {
+                for (int i = halterProducts.size(); i < getAllPricesOnListingPage(listingViewModeLocator).size() - 1; i++) {
+                    if (price.get(i) <= price.get(i + 1)) {
+                        System.out.println(price.get(i));
+                    } else {
+                        Assert.fail("Products are NOT sorted by price in increasing order");
+                    }
+                    System.out.println("Products are sorted by price in increasing order");
+                }
+            } else {
+                for (int i = notHalterProducts.size(); i < getAllPricesOnListingPage(listingViewModeLocator).size() - 1; i++) {
+                    if (price.get(i) <= price.get(i + 1)) {
+                        System.out.println(price.get(i));
+                    } else {
+                        Assert.fail("Products are NOT sorted by price in increasing order");
+                    }
+                    System.out.println("Products are sorted by price in increasing order");
+                }
+            }
+        } else {
+            for (int i = redButtons().size(); i < getAllPricesOnListingPage(listingViewModeLocator).size() - 1; i++) {
+                if (price.get(i) <= price.get(i + 1)) {
+                    System.out.println(price.get(i));
+                } else {
+                    Assert.fail("Products are NOT sorted by price in increasing order");
+                }
+                System.out.println("Products are sorted by price in increasing order");
+            }
         }
     }
 }
