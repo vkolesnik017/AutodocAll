@@ -44,7 +44,7 @@ public class QASYS_69_GrayButton {
     @Flaky
     @Description(value = "Checking gray button on listing and product page and check requests in AWS")
     public void testGrayButton(String route) {
-        new Login_aws().loginInAws();
+        new Login_aws().loginInAwsWithOpen();
         open(wishlistReminderAvailability.urlWithParameters);
         String articleProduct = wishlistReminderAvailability.articleOfFirstProduct().text();
         String idProduct = wishlistReminderAvailability.idOfFirstProduct().text();

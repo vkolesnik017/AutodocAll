@@ -13,6 +13,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import static com.codeborne.selenide.Condition.*;
@@ -102,7 +104,7 @@ public class CommonMethods {
     public static Condition clickable = and("can be clicked", visible, enabled);
 
     //Method checking follow url
-    public void checkingUrl(String expectedUrl){
+    public void checkingUrl(String expectedUrl) {
         String actualUrl = url();
         Assert.assertEquals(actualUrl, expectedUrl);
         back();
@@ -131,7 +133,7 @@ public class CommonMethods {
     }
 
     //Method checking follow url on new tab and close tab
-    public void checkingUrlAndCloseTab(String expectedUrl){
+    public void checkingUrlAndCloseTab(String expectedUrl) {
         switchTo().window(1);
         String actualUrl = url();
         assertTrue(actualUrl.contains(expectedUrl));
@@ -173,31 +175,62 @@ public class CommonMethods {
         sleep(3000); // TODO try delete this sleep after fixed SITES-2830
     }
 
+    // methods and locators for block of top products
+    public SelenideElement titleOfBlockOfTopProducts() {
+        return $x("//*[@class='title_list'] | //*[@class='top-small-products__title']");
+    }
+
+    public SelenideElement arrowRightBtnInTopProductsBlock() {
+        return $(byXpath("(//*[@type='button'])[2]"));
+    }
+
+    // fits for all pages
+    public SelenideElement grayBtn() {
+        return $(byXpath("//*[contains(@class,'not_active')]/a"));
+    }
+
+    public ElementsCollection miniCardsOfProducts() {
+        return $$(byXpath("//*[contains(@class,'product-list__item ')]"));
+    }
+
+    private By recoveryCharacteristicInBlockOfTopProducts = By.cssSelector(".default_ul_li_class");
+
     @Step
-    public static void scrollToBlockOfTopProducts() {
-        SelenideElement titleOfBlockOfTopProducts = $(byXpath("//*[@class='title_list'] | //*[@class='top-small-products__title']"));
-        titleOfBlockOfTopProducts.scrollTo();
+    public void scrollToBlockOfTopProducts() {
+        titleOfBlockOfTopProducts().scrollTo();
         universalElementOfBuyBtnForAllPages().shouldBe(visible);
     }
 
     @Step
-    // method for block of top products
-    public static void checksProductsNotInStockInBlockOfTopProducts() {
-        SelenideElement arrowRightBtnInTopProductsBlock = $(byXpath("(//*[@type='button'])[2]"));
-        SelenideElement grayBtn = $(byXpath("//*[contains(@class,'not_active')]/a"));
+    public void checksProductsNotInStockInBlockOfTopProducts() {
         universalElementOfBuyBtnForAllPages().shouldBe(visible);
-        if (arrowRightBtnInTopProductsBlock.isDisplayed()) {
-            while (arrowRightBtnInTopProductsBlock.attr("aria-disabled").equals("false")) {
-                grayBtn.shouldBe(not(visible));
-                arrowRightBtnInTopProductsBlock.click();
+        if (arrowRightBtnInTopProductsBlock().isDisplayed()) {
+            while (arrowRightBtnInTopProductsBlock().attr("aria-disabled").equals("false")) {
+                grayBtn().shouldBe(not(visible));
+                arrowRightBtnInTopProductsBlock().click();
             }
         }
-        grayBtn.shouldBe(not(visible));
+        grayBtn().shouldBe(not(visible));
+    }
+
+    @Step
+    // method for checks output recovery characteristic in block of top products for QASYS_536 (TEST-1)
+    public void cheksOutputRecoveryCharacteristicInBlocksOfTopProducts(String expectedChar) {
+        ArrayList<String> actualCharacteristics = new ArrayList<>();
+        scrollToBlockOfTopProducts();
+        ElementsCollection miniCardsInTopBlock = miniCardsOfProducts().filter(visible).shouldHaveSize(4);
+        for (SelenideElement el : miniCardsInTopBlock) {
+            el.hover();
+            String text = el.$(recoveryCharacteristicInBlockOfTopProducts).shouldBe(visible).getText().replaceAll("\n", "");
+            actualCharacteristics.add(text);
+            titleOfBlockOfTopProducts().hover();
+        }
+        assertTrue(actualCharacteristics.contains(expectedChar), "not in a single product is not output the recovery characteristic " + expectedChar + " in the block of top product");
     }
 
     @Step
     // method for checks elements in block of top products
-    public static void checksPresenceElementsInMiniCardInBlocksOfTopProducts() {
+    public void checksPresenceElementsInMiniCardInBlocksOfTopProducts() {
 
         By sticker = (byCssSelector(".product-list__item__promotion"));
         By oldPrice = (byCssSelector(".product-list__item__old-price"));
@@ -207,7 +240,7 @@ public class CommonMethods {
         By price = (byCssSelector(".product-list__item__price"));
         By infoVatAndDelivery = (byCssSelector(".product-list__item__info"));
 
-        ElementsCollection miniCardsOfProducts = $$(byXpath("//*[contains(@class,'product-list__item ')]")).filterBy(visible).shouldHaveSize(4);
+        ElementsCollection miniCardsOfProducts = miniCardsOfProducts().filterBy(visible).shouldHaveSize(4);
         for(SelenideElement miniCard : miniCardsOfProducts) {
             miniCard.$(sticker).should(visible);
             miniCard.$(oldPrice).should(visible);
@@ -219,6 +252,14 @@ public class CommonMethods {
         }
     }
 
+    @Step("Comparing actual and expected characteristics")
+    //The method gets characteristics from ElementsCollection and compare their with characteristics from ArrayList
+    public void compareCharacteristics(ElementsCollection actualCharacteristics, List<String> expectedCharacteristics) {
+        for (int a = 0; a < expectedCharacteristics.size(); a++) {
+            actualCharacteristics.get(a).shouldHave(matchText(expectedCharacteristics.get(a)));
+        }
+    }
+
     public void writer(String fileName, boolean append, String write) throws IOException {
         BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileName, append), StandardCharsets.UTF_8));
         System.out.println("Write in file");
@@ -227,4 +268,22 @@ public class CommonMethods {
         bufferedWriter.close();
     }
 
+    //Methods for checking Counter Product
+    @Step
+    public void checkingCounterIncrease(String startCount, SelenideElement value, SelenideElement counterPlus) {
+        value.shouldHave(value(startCount));
+        counterPlus.click();
+        String countAfterIncrease = String.valueOf(Integer.parseInt(startCount) + 2);
+        value.shouldHave(value(countAfterIncrease));
+        sleep(2000);
+    }
+
+    @Step
+    public void checkingCounterDecrease(String startCount, SelenideElement value, SelenideElement counterMinus) {
+        value.shouldHave(value(startCount));
+        counterMinus.click();
+        String countAfterDecrease = String.valueOf(Integer.parseInt(startCount) - 2);
+        value.shouldHave(value(countAfterDecrease));
+        sleep(2000);
+    }
 }

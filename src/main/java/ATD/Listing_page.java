@@ -89,6 +89,13 @@ public class Listing_page {
 
     // locator for search listing
 
+    @Step("Gets all the characteristics of the desired product from search listing {productArticle}")
+    // example String for productArticle = V99-75-0011
+    public ElementsCollection getCharacteristicsDesiredProductForSearch(String productArticle) {
+        return $$x("//*[@class='rc' and contains(text(),'" + productArticle +"')]/ancestor::div[@class='box criteria_toogle_active']//li")
+                .shouldHave(sizeGreaterThan(10));
+    }
+
     public SelenideElement blockOfHelpSearchProducts() {
         return $(".filter-not-found__title");
     }
@@ -189,6 +196,16 @@ public class Listing_page {
     }
 
     //Locators for all list mode listings
+
+    @Step("Gets all the characteristics of the desired product from listing {productArticle}")
+    // example String for productArticle = Artikelnummer: V99-75-0011 , don't fits for search listing when used search by article product
+    public ElementsCollection getCharacteristicsDesiredProduct(String productArticle) {
+        return $$x("//*[text()='" + productArticle + "']/../..//*[@class='about']//li").shouldHave(sizeGreaterThan(10));
+    }
+
+    public ElementsCollection recoveryCharacteristics() {
+        return $$x("//span[@class='rc' and contains(text(),'Wiederaufbereitet')]");
+    }
 
     public SelenideElement listProducts() {
         return $(".list_products ");

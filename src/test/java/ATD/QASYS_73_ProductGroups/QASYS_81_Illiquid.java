@@ -1,8 +1,8 @@
 package ATD.QASYS_73_ProductGroups;
 
-import ATD.DataBase;
 import ATD.Product_page;
 import ATD.SetUp;
+import AWS.ProductSearch_aws;
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -11,18 +11,22 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.sql.SQLException;
-
 import static ATD.CommonMethods.getShopFromRoute;
 import static ATD.CommonMethods.password;
 import static ATD.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
-public class QASYS_74_Regular {
+public class QASYS_81_Illiquid {
+
+    private ProductSearch_aws product_page_aws = new ProductSearch_aws();
+    private String idAndBrand;
 
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
+        idAndBrand = product_page_aws.openProductSearchPageAndLogin().chooseIlliquidProductAndGetId();
+        close();
     }
 
     @DataProvider(name = "route", parallel = true)
@@ -33,12 +37,13 @@ public class QASYS_74_Regular {
 
     @Owner(value = "alex_qa")
     @Test(dataProvider = "route")
-    @Description(value = "Test check making order with regular product")
+    @Description(value = "Test check making order with illiquid product")
     @Flaky
-    public void checkingOrderWithRegular(String route) throws SQLException {
+    public void checkingOrderWithIlliquid(String route) {
+        String[] url = idAndBrand.split("#");
         String shop = getShopFromRoute(route);
-        open(route + "/" + new DataBase().getRouteByRouteName(shop, "product2"));
-        String testMail = "atdautotest@mailinator.com";
+        open(route + "/" + url[1] + "/" + url[0]);
+        String testMail = "atdautotest_qasys_81_Illiquid@mailinator.com";
         new Product_page().addProductToCart().closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()

@@ -30,16 +30,16 @@ public class QASYS_455_DeletingOfDangerousProductFromBasket {
   private String password = "1234";
   private String idDangerousProduct;
 
-  Login_aws login_aws = new Login_aws();
-  CartAllData_page cartAllDataPage = new CartAllData_page();
-  ProductSearch_aws productSearch_aws = new ProductSearch_aws();
-  Product_page productPage = new Product_page();
-  CartAddress_page cartAddressPage = new CartAddress_page();
+  private Login_aws login_aws = new Login_aws();
+  private CartAllData_page cartAllDataPage = new CartAllData_page();
+  private ProductSearch_aws productSearch_aws = new ProductSearch_aws();
+  private Product_page productPage = new Product_page();
+  private CartAddress_page cartAddressPage = new CartAddress_page();
 
   @BeforeClass
   void setUp() {
     setUpBrowser(false, "chrome", "77.0");
-    login_aws.loginInAws();
+    login_aws.loginInAwsWithOpen();
     open(productSearch_aws.urlPage);
     idDangerousProduct = productSearch_aws.chooseFilterForDangerousProductsAndGetId();
     close();

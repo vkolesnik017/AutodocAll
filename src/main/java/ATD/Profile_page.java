@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.$;
 public class Profile_page {
 
     public SelenideElement nameOfClient(){
-        return $(byXpath("//div[@data-tab-id='vehicle']//span[@class='name']"));
+        return $(byXpath("//div[@class='name_cash']//span[@class='name']"));
     }
 
     // settings tab
