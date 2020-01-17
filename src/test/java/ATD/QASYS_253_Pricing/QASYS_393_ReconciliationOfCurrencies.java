@@ -18,7 +18,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class QASYS_393_ReconciliationOfCurrencies {
 
   // productsId: accessory, chemistry, tool, oil, ordinary product
-  private String[] productsId = {"13558633" ,"7889318", "13502627", "13626328", "988236"}; //TODO будем ли выносить в базу id товаров для теста ?
+  private String[] productsId = {"13558633" ,"7889318", "12251034", "13626328", "988236"}; //TODO будем ли выносить в базу id товаров для теста ?
   private String emailForCH = "reconciliationOfCurrenciesCH@mailinator.com";
   private String emailForAnotherShop = "reconciliationOfCurrencies@mailinator.com";
   private String password = "1234";
