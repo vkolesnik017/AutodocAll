@@ -30,6 +30,20 @@
         </classes>
     </test>
 
+    <test name="QASYS_40_FiltersSorting_outputSorting">
+        <classes>
+            <class name="ATD.QASYS_35_FiltersSorting.QASYS_40_FiltersSorting_outputSorting">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QASYS_480_FilterSorting_interaction">
+        <classes>
+            <class name="ATD.QASYS_35_FiltersSorting.QASYS_480_FilterSorting_interaction">
+            </class>
+        </classes>
+    </test>
+
 
 
 </suite>

@@ -4,16 +4,16 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.*;
+import static ATD.CommonMethods.password;
 import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selectors.byCssSelector;
-import static com.codeborne.selenide.Selectors.byId;
-import static com.codeborne.selenide.Selectors.byXpath;
+import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
+
 
 public class Main_page {
 
@@ -85,6 +85,16 @@ public class Main_page {
 
     public SelenideElement listCategoriesOfCatalog() {
         return $(byXpath("//*[@class='menu-category__first-lvl']//a"));
+    }
+
+    private SelenideElement numberOfProductInCart() {
+        return $x("//div[@class='header-cart__name ga-click']/span[1]");
+    }
+
+    @Step("Checking number of product in cart")
+    public void checkingNumberOfProductInCart(int expectedNumber) {
+        int actualNumber = Integer.parseInt(numberOfProductInCart().getText());
+        Assert.assertEquals(actualNumber, expectedNumber);
     }
 
     // Menu in header
@@ -216,25 +226,66 @@ public class Main_page {
     public SelenideElement footerForm() {
         return $(By.xpath("//div[@id='footer']"));
     }
+
     public SelenideElement appGoogleButton() {
         return $(byXpath("//div[@class='footer__app-icon']/span[1]/img"));
     }
+
     public SelenideElement appAppleButton() {
         return $(byXpath("//div[@class='footer__app-icon']/span[1]/img"));
     }
-    public SelenideElement subscriptionButton(){ return $(byXpath("//button[@id='news_yes_footer']"));}
-    public SelenideElement subscriptionField(){ return $(byXpath("//input[@id='subscr_footer']"));}
-    public SelenideElement subscriptionTooltipPopup(){ return $(byXpath("//div[@class='wrong_footer']/p"));}
-    public SelenideElement subscriptionMailCheckbox(){ return $(byXpath("//div[@class='check']/label/span"));}
-    public SelenideElement subscriptionSuccessPopup(){ return $(byXpath("//div[@id='news_subscribe']//h3"));}
-    public SelenideElement subscriptionErrPopup(){ return $(byXpath("//div[@class='txt error_msg']"));}
-    public SelenideElement subscriptionPopupClose(){ return $(byXpath("//div[@class='popup ']//*[@class='close']/span[2]"));}
-    public SelenideElement techAllianceBlock(){ return  $x("//div[@class='footer__bottom']/div[@class='footer__bottom-first']");}
-    public SelenideElement workTimeBlock(){ return $x("//div[@class='footer__bottom']/div[@class='footer__bottom-center']");}
-    public SelenideElement copyrightBlock(){ return $x("//div[@class='footer__bottom']//div[@class='copyright']");}
-    public SelenideElement facebookButton(){ return $x("//ul[@class='social-inline']/li[1]/span");}
-    public SelenideElement youtubeButton(){ return $x("//ul[@class='social-inline']/li[2]/span");}
-    public SelenideElement instagramButton(){ return  $x("//ul[@class='social-inline']/li[3]/span");}
+
+    public SelenideElement subscriptionButton() {
+        return $(byXpath("//button[@id='news_yes_footer']"));
+    }
+
+    public SelenideElement subscriptionField() {
+        return $(byXpath("//input[@id='subscr_footer']"));
+    }
+
+    public SelenideElement subscriptionTooltipPopup() {
+        return $(byXpath("//div[@class='wrong_footer']/p"));
+    }
+
+    public SelenideElement subscriptionMailCheckbox() {
+        return $(byXpath("//div[@class='check']/label/span"));
+    }
+
+    public SelenideElement subscriptionSuccessPopup() {
+        return $(byXpath("//div[@id='news_subscribe']//h3"));
+    }
+
+    public SelenideElement subscriptionErrPopup() {
+        return $(byXpath("//div[@class='txt error_msg']"));
+    }
+
+    public SelenideElement subscriptionPopupClose() {
+        return $(byXpath("//div[@class='popup ']//*[@class='close']/span[2]"));
+    }
+
+    public SelenideElement techAllianceBlock() {
+        return $x("//div[@class='footer__bottom']/div[@class='footer__bottom-first']");
+    }
+
+    public SelenideElement workTimeBlock() {
+        return $x("//div[@class='footer__bottom']/div[@class='footer__bottom-center']");
+    }
+
+    public SelenideElement copyrightBlock() {
+        return $x("//div[@class='footer__bottom']//div[@class='copyright']");
+    }
+
+    public SelenideElement facebookButton() {
+        return $x("//ul[@class='social-inline']/li[1]/span");
+    }
+
+    public SelenideElement youtubeButton() {
+        return $x("//ul[@class='social-inline']/li[2]/span");
+    }
+
+    public SelenideElement instagramButton() {
+        return $x("//ul[@class='social-inline']/li[3]/span");
+    }
 
 
     public Datenschutz_page clickDatenschutzInSubscription() {
@@ -364,34 +415,42 @@ public class Main_page {
         $(By.xpath("//*[@class='footer__links']/div[4]/ul/li[1]/a")).click();
         return page(Beleuchtung_page.class);
     }
+
     public Stobdampfer_page clickStobdampfer() {
         $(By.xpath("//*[@class='footer__links']/div[4]/ul/li[2]/a")).click();
         return page(Stobdampfer_page.class);
     }
+
     public Querlenker_page clickQuerlenker() {
         $(By.xpath("//*[@class='footer__links']/div[4]/ul/li[3]/a")).click();
         return page(Querlenker_page.class);
     }
+
     public Radlager_page clickRadlager() {
         $(By.xpath("//*[@class='footer__links']/div[4]/ul/li[4]/a")).click();
         return page(Radlager_page.class);
     }
+
     public Kupplungssatz_page clickKupplungssatz() {
         $(By.xpath("//*[@class='footer__links']/div[4]/ul/li[5]/a")).click();
         return page(Kupplungssatz_page.class);
     }
+
     public Autopflege_page clickAutopflege() {
         $(By.xpath("//*[@class='footer__links']/div[4]/ul/li[6]/a")).click();
         return page(Autopflege_page.class);
     }
+
     public Ersatzteile_page clickSucheNachAutomodelle() {
         $(By.xpath("//*[@class='footer__links']/div[4]/ul/li[7]/a")).click();
         return page(Ersatzteile_page.class);
     }
+
     public ErsatzteileModels_page clickNachHerstellerEinkaufen() {
         $(By.xpath("//*[@class='footer__links']/div[4]/ul/li[8]/a")).click();
         return page(ErsatzteileModels_page.class);
     }
+
     public ErsatzteileCars_page clickNachModellEinkaufen() {
         $(By.xpath("//*[@class='footer__links']/div[4]/ul/li[9]/a")).click();
         return page(ErsatzteileCars_page.class);
@@ -413,7 +472,7 @@ public class Main_page {
     }
 
     @Step("Choose type in selector")
-    public Main_page chooseTypeInSelector(String typeNumberValue) {
+    private Main_page chooseTypeInSelector(String typeNumberValue) {
         typeSelector().find("optgroup").should(exist);
         typeSelector().selectOptionByValue(typeNumberValue);
         return this;
@@ -429,7 +488,7 @@ public class Main_page {
 
     @Step("Method close car selector tooltip if it is present on page")
     public void closeCarSelectorTooltipIfVisible() {
-        if(tooltipCarSelectorClose().is(visible)) {
+        if (tooltipCarSelectorClose().is(visible)) {
             tooltipCarSelectorClose().click();
         }
     }
@@ -437,19 +496,18 @@ public class Main_page {
     @Step
     // return current chosen value from selector
     public String getChosenValueFromSelector(SelenideElement selector) {
-        String selectedValue = executeJavaScript("return arguments[0].selectedOptions[0].innerText", selector);
-        return selectedValue;
+        return executeJavaScript("return arguments[0].selectedOptions[0].innerText", selector);
     }
 
     public SelenideElement brandSelector() {
         return $("#form_maker_id");
     }
 
-    public SelenideElement modelSelector() {
+    private SelenideElement modelSelector() {
         return $("#form_model_id");
     }
 
-    public SelenideElement typeSelector() {
+    private SelenideElement typeSelector() {
         return $("#form_car_id");
     }
 
@@ -473,7 +531,9 @@ public class Main_page {
         return $(byId("reset_selector_form"));
     }
 
-    public SelenideElement tooltipCarSelectorClose() { return $(".tooltiptext-close"); }
+    private SelenideElement tooltipCarSelectorClose() {
+        return $(".tooltiptext-close");
+    }
 
     //Methods and locators for Selector kba
     @Step("For DE")
@@ -545,7 +605,7 @@ public class Main_page {
     }
 
     public SelenideElement tooltipErrorKbaInPopupOnKbaError() {
-       return $x("//*[@id='top-select-popup']//*[@id='kba-error-tooltip']");
+        return $x("//*[@id='top-select-popup']//*[@id='kba-error-tooltip']");
     }
 
 }

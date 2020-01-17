@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="testSuite" data-provider-thread-count="5">
+<suite name="testSuite" data-provider-thread-count="1">
 
     <test name="testSuite" >
         <classes>
-            <class name="specificTests.QASYS_515_CheckingCodeResponseAnswer">
+            <class name="ATD.QASYS_73_ProductGroups.QASYS_80_Paired">
             </class>
         </classes>
     </test>

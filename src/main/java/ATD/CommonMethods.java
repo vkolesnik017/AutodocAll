@@ -104,7 +104,7 @@ public class CommonMethods {
     public static Condition clickable = and("can be clicked", visible, enabled);
 
     //Method checking follow url
-    public void checkingUrl(String expectedUrl){
+    public void checkingUrl(String expectedUrl) {
         String actualUrl = url();
         Assert.assertEquals(actualUrl, expectedUrl);
         back();
@@ -133,7 +133,7 @@ public class CommonMethods {
     }
 
     //Method checking follow url on new tab and close tab
-    public void checkingUrlAndCloseTab(String expectedUrl){
+    public void checkingUrlAndCloseTab(String expectedUrl) {
         switchTo().window(1);
         String actualUrl = url();
         assertTrue(actualUrl.contains(expectedUrl));
@@ -268,4 +268,22 @@ public class CommonMethods {
         bufferedWriter.close();
     }
 
+    //Methods for checking Counter Product
+    @Step
+    public void checkingCounterIncrease(String startCount, SelenideElement value, SelenideElement counterPlus) {
+        value.shouldHave(value(startCount));
+        counterPlus.click();
+        String countAfterIncrease = String.valueOf(Integer.parseInt(startCount) + 2);
+        value.shouldHave(value(countAfterIncrease));
+        sleep(2000);
+    }
+
+    @Step
+    public void checkingCounterDecrease(String startCount, SelenideElement value, SelenideElement counterMinus) {
+        value.shouldHave(value(startCount));
+        counterMinus.click();
+        String countAfterDecrease = String.valueOf(Integer.parseInt(startCount) - 2);
+        value.shouldHave(value(countAfterDecrease));
+        sleep(2000);
+    }
 }

@@ -42,7 +42,7 @@ public class CartAddress_page {
     }
 
     private SelenideElement postalCodeField() {
-        return $(byName("lPlz"));
+        return $(By.id("form_lPlz"));
     }
 
     private SelenideElement fiscalCodeField() {
@@ -117,8 +117,11 @@ public class CartAddress_page {
                     break;
             }
         }
-        postalCodeField().clear();
-        postalCodeField().setValue(postalCodeOrCodeDefault);
+
+        System.out.println(postalCodeOrCodeDefault);
+        checkCorrectTextAndFillInput(postalCodeField(), postalCodeOrCodeDefault);
+//        postalCodeField().clear();
+//        postalCodeField().setValue(postalCodeOrCodeDefault);
         return this;
     }
 

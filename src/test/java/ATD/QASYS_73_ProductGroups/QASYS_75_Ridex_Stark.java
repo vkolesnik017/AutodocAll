@@ -31,10 +31,10 @@ public class QASYS_75_Ridex_Stark {
     }
 
 
-    @Flaky
     @Owner(value = "alex_qa")
-    @Test(dataProvider = "route", enabled = true)
+    @Test(dataProvider = "route")
     @Description(value = "Test check making order with ridex product")
+    @Flaky
     public void checkingOrderWithRidex(String route) throws SQLException {
         String shop = getShopFromRoute(route);
         open(route + "/" + new DataBase().getRouteByRouteName(shop, "product3"));
@@ -42,16 +42,17 @@ public class QASYS_75_Ridex_Stark {
         new Product_page().addProductToCart().closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
-                .signIn(testMail, password).fillAllFields(shop).nextBtnClick()
+                .signIn(testMail, password)
+                .fillAllFields(shop).nextBtnClick()
                 .chooseVorkasse().nextBtnClick()
                 .nextBtnClick()
                 .closePopupAfterOrder().successTextInHeader().shouldHave(Condition.text("Vielen Dank"));
     }
 
-    @Flaky
     @Owner(value = "alex_qa")
-    @Test(dataProvider = "route", enabled = true)
+    @Test(dataProvider = "route")
     @Description(value = "Test check making order with stark product")
+    @Flaky
     public void checkingOrderWithStark(String route) throws SQLException {
         String shop = getShopFromRoute(route);
         open(route + "/" + new DataBase().getRouteByRouteName(shop, "product4"));
@@ -59,7 +60,8 @@ public class QASYS_75_Ridex_Stark {
         new Product_page().addProductToCart().closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
-                .signIn(testMail, password).fillAllFields(shop).nextBtnClick()
+                .signIn(testMail, password)
+                .fillAllFields(shop).nextBtnClick()
                 .chooseVorkasse().nextBtnClick()
                 .nextBtnClick()
                 .closePopupAfterOrder().successTextInHeader().shouldHave(Condition.text("Vielen Dank"));

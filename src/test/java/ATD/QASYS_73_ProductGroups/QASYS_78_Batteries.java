@@ -31,10 +31,10 @@ public class QASYS_78_Batteries {
     }
 
 
-    @Flaky
     @Owner(value = "alex_qa")
-    @Test(dataProvider = "route", enabled = true)
+    @Test(dataProvider = "route")
     @Description(value = "Test check making order with batteries product")
+    @Flaky
     public void checkingOrderWithBatteries(String route) throws SQLException {
         String shop = getShopFromRoute(route);
         open(route + "/" + new DataBase().getRouteByRouteName(shop, "product5"));
@@ -42,7 +42,8 @@ public class QASYS_78_Batteries {
         new Product_page().addProductToCart().closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
-                .signIn(testMail, password).fillAllFields(shop).nextBtnClick()
+                .signIn(testMail, password)
+                .fillAllFields(shop).nextBtnClick()
                 .chooseVorkasse().nextBtnClick()
                 .nextBtnClick()
                 .closePopupAfterOrder().successTextInHeader().shouldHave(Condition.text("Vielen Dank"));

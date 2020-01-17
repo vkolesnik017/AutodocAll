@@ -16,7 +16,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class Cart_page {
 
-    SelenideElement nextButton() {
+    private SelenideElement nextButton() {
         return $(byCssSelector(".next-step"));
     }
 
@@ -40,8 +40,12 @@ public class Cart_page {
         return $(byCssSelector(".qty>input"));
     }
 
-    public SelenideElement addProductBtn() {
+    private SelenideElement counterPlusBtn() {
         return $(byCssSelector(".plus"));
+    }
+
+    private SelenideElement counterMinusBtn() {
+        return $(byCssSelector(".minus"));
     }
 
     public SelenideElement freeDeliveryIcon() {
@@ -53,11 +57,11 @@ public class Cart_page {
     }
 
     // locators only for CH
-    public SelenideElement closeDeliveryLimitPopupForCH() {
+    private SelenideElement closeDeliveryLimitPopupForCH() {
         return $(byCssSelector(".delivery-limit-popup>a"));
     }
 
-    public SelenideElement nextBtnIsNotActiveForCH() {
+    private SelenideElement nextBtnIsNotActiveForCH() {
         return $(byCssSelector(".noclicked"));
     }
 
@@ -99,7 +103,7 @@ public class Cart_page {
         if (closeDeliveryLimitPopupForCH().isDisplayed()) {
             closeDeliveryLimitPopupForCH().click();
             while (nextBtnIsNotActiveForCH().isDisplayed()) {
-                addProductBtn().click();
+                counterPlusBtn().click();
                 sleep(500);
             }
         }
@@ -113,7 +117,7 @@ public class Cart_page {
         while (!freeDeliveryIcon().isDisplayed() && totalPrice < deliveryLimit) {
             String beforeClickPrice = totalProductPrice().text();
             sleep(1000);
-            addProductBtn().click();
+            counterPlusBtn().click();
             totalProductPrice().shouldHave(not(text(beforeClickPrice)));
             totalPrice = getPriceFromElement(totalProductPrice());
             if (totalPrice < deliveryLimit) {
@@ -123,6 +127,18 @@ public class Cart_page {
                 break;
             }
         }
+        return this;
+    }
+
+    @Step
+    public Cart_page counterIncrease(String startValue) {
+        new CommonMethods().checkingCounterIncrease(startValue, fieldWithQuantityOfProducts(), counterPlusBtn());
+        return this;
+    }
+
+    @Step
+    public Cart_page counterDecrease(String startValue) {
+        new CommonMethods().checkingCounterDecrease(startValue, fieldWithQuantityOfProducts(), counterMinusBtn());
         return this;
     }
 
