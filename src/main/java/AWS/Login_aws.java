@@ -1,8 +1,10 @@
 package AWS;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
@@ -39,6 +41,7 @@ public class Login_aws {
     loginField().setValue(email);
     passwordField().setValue(password);
     loginButton().click();
+    loginButton().shouldNotBe(visible);
     return page(Main_aws.class);
   }
 
