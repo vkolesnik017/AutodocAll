@@ -172,7 +172,7 @@ public class CommonMethods {
         } catch (ElementShould e) {
             $(byXpath("//div[@class='top-small-products__items']//a[contains(@class,'add_')]")).click();
         }
-        sleep(3000); // TODO try delete this sleep after fixed SITES-2830
+        sleep(4000); // TODO try delete this sleep after fixed SITES-2830
     }
 
     // methods and locators for block of top products
