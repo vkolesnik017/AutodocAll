@@ -74,6 +74,10 @@ public class Cart_page {
         return $(byCssSelector(".price"));
     }
 
+    public SelenideElement pfandPriceInProductBlock() {
+        return $x("(//td[@class='price'])[2]");
+    }
+
     public SelenideElement totalProductPrice() {
         return $(byCssSelector(".total-price"));
     }
@@ -84,6 +88,10 @@ public class Cart_page {
 
     public SelenideElement totalOrderPrice() {
         return $(byXpath("//*[@class='order-summary__row order-summary__row--total']/span[2]"));
+    }
+
+    public SelenideElement pfandPriceInTotalPriceBlock() {
+        return $x("//span[contains(text(),'Pfand')]/following-sibling::span");
     }
 
     public SelenideElement priceWithoutDiscount() {
