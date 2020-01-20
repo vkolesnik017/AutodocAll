@@ -291,6 +291,14 @@ public class Listing_page {
 
     public ElementsCollection redButtons() { return $$x("//*[@class='button ']"); }
 
+    public ElementsCollection vorderachseAttributeInTileMode() { return $$x("//*[@class='product_desc_table_container']//*[contains(text(),'Vorderachse')]"); }
+
+    public ElementsCollection vorderachseAttributeInListMode() { return $$x("//div[@class='about']//*[contains(text(),'Vorderachse')]"); }
+
+    public ElementsCollection productsOnListingInTileMode() { return $$(".rec_products_block"); }
+
+    public ElementsCollection productsOnListingInListMode() { return $$(".description"); }
+
     @Step("Method gets price of all products on listing and parse it into float")
     public List<Float> getAllPricesOnListingPage(ElementsCollection listingViewModeLocator) {
         List<Float> listOfFloatPrices = new ArrayList<>();
@@ -403,7 +411,7 @@ public class Listing_page {
     public void checkProductAttributeOnListingInTileMode(String attributeSelectedInSideFilter, ElementsCollection productAttributeOnListing) {
         productAttributeOnListing.shouldHave(sizeGreaterThan(0));
         for (int i = 0; i < productAttributeOnListing.size(); i++) {
-            $$(".rec_products_block").get(i).hover();
+            productsOnListingInTileMode().get(i).hover();
             productAttributeOnListing.get(i).shouldHave(text(attributeSelectedInSideFilter));
             langeFilterCheckbox().hover();
         }
@@ -442,12 +450,20 @@ public class Listing_page {
     }
 
     @Step("Method checks product attribute on listing in tile mode")
-    public void checkProductAttributeOnListingInTileMode2(String attributeSelectedInSideFilter) {
+    public void checkProductAttributeOnListingInTileMode2(String attributeSelectedInSideFilter, int productWithFiler) {
         ElementsCollection characS = $$x("//*[contains(text(),'Einbauseite:')]/ancestor :: li[1]/span[2]");
-        for (int i = 0; i < $$(".rec_products_block").size(); i++) {
-            $$(".rec_products_block").get(i).hover();
-            characS.get(i).shouldHave(text(attributeSelectedInSideFilter));
-            $(".filter-disk__head").hover();
+        if (productWithFiler > 0) {
+            for (int i = 0; i < productWithFiler; i++) {
+                productsOnListingInTileMode().get(i).hover();
+                characS.get(i).shouldHave(text(attributeSelectedInSideFilter));
+                $(".search_button").hover();
+            }
+        } else {
+            for (int i = 0; i < productsOnListingInTileMode().size(); i++) {
+                productsOnListingInTileMode().get(i).hover();
+                characS.get(i).shouldHave(text(attributeSelectedInSideFilter));
+                $(".search_button").hover();
+            }
         }
     }
 
