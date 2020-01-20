@@ -207,6 +207,10 @@ public class Listing_page {
         return $$x("//span[@class='rc' and contains(text(),'Wiederaufbereitet')]");
     }
 
+    public SelenideElement pfandBlock() {
+        return $(".price_vat_icon p span");
+    }
+
     public SelenideElement listProducts() {
         return $(".list_products ");
     }

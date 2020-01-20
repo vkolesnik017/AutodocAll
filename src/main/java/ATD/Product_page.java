@@ -1,6 +1,5 @@
 package ATD;
 
-import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.ex.ElementNotFound;
@@ -9,7 +8,7 @@ import com.codeborne.selenide.ex.UIAssertionError;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.CollectionCondition.*;
+import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -52,12 +51,16 @@ public class Product_page {
         return $(byCssSelector(".button.not_active>a"));
     }
 
-  public SelenideElement infoBlockWithSelectedCar() {
+    public SelenideElement infoBlockWithSelectedCar() {
     return $(".car-match-block>p>b");
   }
 
-  public SelenideElement uncoverCharsBtn() {
+    public SelenideElement uncoverCharsBtn() {
     return $(".show-more-button>span");
+  }
+
+  public SelenideElement pfandBlock() {
+    return $(".product-eco-block");
   }
 
   @Step
