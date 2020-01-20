@@ -108,6 +108,9 @@ public class Cart_page {
 
     @Step
     public Cart_page makePriceForMinimumOrderForCH() {
+        if (!closeDeliveryLimitPopupForCH().isDisplayed()) {
+            sleep(2000);
+        }
         if (closeDeliveryLimitPopupForCH().isDisplayed()) {
             closeDeliveryLimitPopupForCH().click();
             while (nextBtnIsNotActiveForCH().isDisplayed()) {
