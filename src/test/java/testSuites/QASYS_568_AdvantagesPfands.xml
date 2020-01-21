@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="QASYS_568_AdvanragesPfands" parallel="methods" thread-count="2" data-provider-thread-count="3">
+<suite name="QASYS_568_Advanrages" parallel="methods" thread-count="2" data-provider-thread-count="3">
 
     <test name="QASYS_569_AdvantagesPfands">
         <classes>
-            <class name="ATD.QASYS_568_AdvantagesPfands.QASYS_569_AdvantagesPfands">
+            <class name="ATD.QASYS_568_Advantages.QASYS_569_AdvantagesPfands">
             </class>
         </classes>
     </test>
 
     <test name="QASYS_570_AdvantagesDiesAndBlocks">
         <classes>
-            <class name="ATD.QASYS_568_AdvantagesPfands.QASYS_570_AdvantagesDiesAndBlocks">
+            <class name="ATD.QASYS_568_Advantages.QASYS_570_AdvantagesDiesAndBlocks">
             </class>
         </classes>
     </test>

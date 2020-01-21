@@ -1,4 +1,4 @@
-package ATD.QASYS_568_AdvantagesPfands;
+package ATD.QASYS_568_Advantages;
 
 import ATD.Product_page;
 import ATD.SetUp;

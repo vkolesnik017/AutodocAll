@@ -1,4 +1,4 @@
-package ATD.QASYS_568_AdvantagesPfands;
+package ATD.QASYS_568_Advantages;
 
 import ATD.*;
 import AWS.Order_aws;
