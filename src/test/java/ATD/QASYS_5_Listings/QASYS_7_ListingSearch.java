@@ -1,9 +1,6 @@
 package ATD.QASYS_5_Listings;
 
-import ATD.DataBase;
-import ATD.Listing_page;
-import ATD.Main_page;
-import ATD.SetUp;
+import ATD.*;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -27,6 +24,7 @@ public class QASYS_7_ListingSearch {
 
   private Main_page mainPage = new Main_page();
   private Listing_page listingPage = new Listing_page();
+  private Search_page searchPage = new Search_page();
   private DataBase db = new DataBase();
 
   @BeforeClass
@@ -60,8 +58,8 @@ public class QASYS_7_ListingSearch {
   public void testPresenceElementsInSearchListing(String route) throws SQLException {
     open(route + "/" + db.getRouteByRouteName(getShopFromRoute(route), "search6"));
     listingPage.titleOnListing().shouldBe(visible);
-    listingPage.blockOfHelpSearchProducts().shouldBe(visible);
-    listingPage.blockOfLinkingCategory().shouldBe(visible);
+    searchPage.blockOfHelpSearchProducts().shouldBe(visible);
+    searchPage.blockOfLinkingCategory().shouldBe(visible);
   }
 
   @Test(dataProvider = "route")

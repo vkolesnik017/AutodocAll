@@ -87,23 +87,6 @@ public class Listing_page {
 
     public SelenideElement carBrandFilterOem() { return $(".model_list_oem > li > label > input"); }
 
-    // locator for search listing
-
-    @Step("Gets all the characteristics of the desired product from search listing {productArticle}")
-    // example String for productArticle = V99-75-0011
-    public ElementsCollection getCharacteristicsDesiredProductForSearch(String productArticle) {
-        return $$x("//*[@class='rc' and contains(text(),'" + productArticle +"')]/ancestor::div[@class='box criteria_toogle_active']//li")
-                .shouldHave(sizeGreaterThan(10));
-    }
-
-    public SelenideElement blockOfHelpSearchProducts() {
-        return $(".filter-not-found__title");
-    }
-
-    public SelenideElement blockOfLinkingCategory() {
-        return $(".sidebar-category");
-    }
-
     //For Oem listing
     public SelenideElement firstBrandButtonOemListing() { return $(By.xpath("//*[@id='selected-instalation__slider']/ul/li[1]")); }
 
