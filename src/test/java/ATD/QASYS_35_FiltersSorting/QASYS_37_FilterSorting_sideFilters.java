@@ -127,7 +127,7 @@ public class QASYS_37_FilterSorting_sideFilters {
         String characteristic = listingPage.langeFilterAttribute2().text();
         listingPage.langeFilterCheckbox2().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.hoheProductAttributeGenericRoute(), listingPage.hoheProductAttributeTecdocRoute());
+        listingPage.checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.hoheProductAttributeGenericRouteLKW(), listingPage.hoheProductAttributeTecdocRouteLKW());
         int numberOfAttributesFilter = listingPage.hoheProductAttributeTecdocRoute().size();
         listingPage.activeSideFilterLkwHohe().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
@@ -258,7 +258,7 @@ public class QASYS_37_FilterSorting_sideFilters {
         listingPage.activeSideFilterAttributeLkw2().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.activeSideFilterLkw().shouldHave(text(characteristic));
-        listingPage.checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.hoheProductAttributeGenericRoute(), listingPage.hoheProductAttributeTecdocRoute());
+        listingPage.checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.hoheProductAttributeGenericRouteLKW(), listingPage.hoheProductAttributeTecdocRouteLKW());
     }
 
     @AfterMethod
