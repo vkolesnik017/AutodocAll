@@ -63,6 +63,30 @@ public class Product_page {
     return $(".product-eco-block");
   }
 
+  public SelenideElement freeDeliveryIcon() {
+    return $(".features-gratis-icon");
+  }
+
+  public SelenideElement safeOrderIcon() {
+    return $(".features-safe-icon");
+  }
+
+  public SelenideElement days14ForReturnOfGoodsIcon() {
+    return $(".features-tage-icon");
+  }
+
+  public SelenideElement years2OnWarrantyIcon() {
+    return $(".features-guarantee-icon");
+  }
+
+  public SelenideElement paymentMethodsBlock() {
+    return $(".pay-method__items");
+  }
+
+  public SelenideElement deliveryServicesBlock() {
+    return $(".delivery-method");
+  }
+
   @Step
   public Product_page uncoverCharacteristics() {
     uncoverCharsBtn().click();

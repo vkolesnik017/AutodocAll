@@ -9,4 +9,11 @@
         </classes>
     </test>
 
+    <test name="QASYS_570_AdvantagesDiesAndBlocks">
+        <classes>
+            <class name="ATD.QASYS_568_AdvantagesPfands.QASYS_570_AdvantagesDiesAndBlocks">
+            </class>
+        </classes>
+    </test>
+
 </suite>
