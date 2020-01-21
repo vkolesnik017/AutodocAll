@@ -262,10 +262,6 @@ public class Listing_page {
 
     public ElementsCollection lochanzahlProductAttributeGenericRoute() { return $$x("//*[@class='w_search no_margin']/preceding-sibling::li//*[contains(text(),'Lochanzahl:')]/ancestor :: li[1]/span[2]"); }
 
-    public SelenideElement closeBtnPopupOfChooseCar() {
-        return $(".back");
-    }
-
     public SelenideElement nextPageButton() { return $(".pagination > .next"); }
 
     public SelenideElement grayButton() { return $x("//*[contains(@class,'not_active')]/a"); }
@@ -543,5 +539,16 @@ public class Listing_page {
                 System.out.println("Products are sorted by price in increasing order");
             }
         }
+    }
+
+    // The method can check everything that is contained in the product title by going through all the pages. Fits for all listing (TecDoc, Search, OEN etc...)
+    @Step("The method verifies that the product titles on listing contain the expected text {expectedText}. Verification works for all the pagination by switching pages one by one")
+    public Listing_page checksProductTitlesContainExpectedTextGoingAllPagination(String expectedText) {
+        checkProductTitleOnListing(expectedText, true, productTitleInListMode());
+        while (nextPageButton().is(visible)) {
+            nextPageButton().click();
+            checkProductTitleOnListing(expectedText, true, productTitleInListMode());
+        }
+        return this;
     }
 }

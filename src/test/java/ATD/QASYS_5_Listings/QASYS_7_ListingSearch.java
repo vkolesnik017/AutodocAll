@@ -70,7 +70,7 @@ public class QASYS_7_ListingSearch {
     String url = route + "/" + db.getRouteByRouteName(getShopFromRoute(route), "search6");
     open(url);
     listingPage.secondListingPage().scrollTo();
-    listingPage.closeBtnPopupOfChooseCar().click();
+    searchPage.closePopupOfChooseCar();
     listingPage.secondListingPage().click();
     waitingWhileLinkBecomeExpected(url.concat("&page=2"));
   }
