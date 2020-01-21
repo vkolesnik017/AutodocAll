@@ -57,16 +57,33 @@ public class CartAllData_page {
     }
 
     // locators of prices with Currencies
+
+    public SelenideElement uncoverPriceInHead() {
+        return $(".order-summary__open");
+    }
+
     public SelenideElement totalOrderPriceInHead() {
         return $(byXpath("//*[contains(@class,'top')]/div[2]/span[2]"));
+    }
+
+    public SelenideElement pfandPriceInHead() {
+        return $x("(//span[contains(text(),'Pfand')]/following-sibling::span)[1]");
     }
 
     public SelenideElement productPrice() {
         return $(byCssSelector(".price"));
     }
 
+    public SelenideElement pfandPriceInProductBlock() {
+        return $x("(//td[@class='price'])[2]");
+    }
+
     public SelenideElement totalProductPrice() {
         return $(byCssSelector(".total-price"));
+    }
+
+    public SelenideElement pfandPriceInTotalPriceBlock() {
+        return $x("(//span[contains(text(),'Pfand')]/following-sibling::span)[2]");
     }
 
     public SelenideElement priceOfAllProducts() {

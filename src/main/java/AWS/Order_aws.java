@@ -1,11 +1,13 @@
 package AWS;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
+import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selectors.byId;
+import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -13,6 +15,22 @@ public class Order_aws {
 
     private String orderNumber;
     private String url = "https://aws.autodoc.de/order/view/";
+
+    private SelenideElement statusOrder() {
+        return $("a.btn-link.btn-ajaxmode");
+    }
+
+    private SelenideElement phoneNumberField() {
+        return $(byName("Order[rTelefon]"));
+    }
+
+    private SelenideElement pfandField() {
+        return $(byId("Pfand"));
+    }
+
+    private SelenideElement testIcon() {
+        return $("[data-hint='Test']");
+    }
 
     private SelenideElement productQuantity() {
         return $(By.xpath("//*[@id='table_order_products_list']/tbody/tr/td[16]"));
@@ -43,7 +61,6 @@ public class Order_aws {
         return $(By.xpath("//input[@id='AddProduct[count]']/../i"));
     }
 
-
     public Order_aws(String orderNumber) {
         this.orderNumber = orderNumber;
     }
@@ -67,7 +84,26 @@ public class Order_aws {
         articleNumberField().setValue(articleNumber);
         countAddProductField().setValue(productQuantity);
         addingProductBtn().click();
-        errorPopup().shouldHave(Condition.attribute("data-hint", "Это парный продукт, количество должно быть чётным"));
+        errorPopup().shouldHave(attribute("data-hint", "Это парный продукт, количество должно быть чётным"));
+        return this;
+    }
+
+    @Step
+    public Order_aws checkOrderHasTestStatus() {
+        statusOrder().shouldHave(text(": Testbestellungen"));
+        return this;
+    }
+
+    @Step
+    public Order_aws checkOrderHasTestPhone() {
+        phoneNumberField().shouldHave(value("+002"));
+        testIcon().shouldBe(visible);
+        return this;
+    }
+
+    @Step
+    public Order_aws checkOrderHasExpectedPfandPrice(String pfandPrice) {
+        pfandField().shouldHave(exactValue(pfandPrice));
         return this;
     }
 }

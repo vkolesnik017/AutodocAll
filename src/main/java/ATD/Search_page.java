@@ -1,15 +1,15 @@
 package ATD;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static ATD.CommonMethods.closeCookiesFooterMessage;
+import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Selectors.*;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$x;
-import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Search_page {
 
@@ -21,6 +21,14 @@ public class Search_page {
     public Search_page closeFooterMessageCookies(){
         closeCookiesFooterMessage();
         return this;
+    }
+
+    public SelenideElement blockOfHelpSearchProducts() {
+        return $(".filter-not-found__title");
+    }
+
+    public SelenideElement blockOfLinkingCategory() {
+        return $(".sidebar-category");
     }
 
     private SelenideElement buyButton() {
@@ -97,6 +105,13 @@ public class Search_page {
     public Product_page detailsClick(){
         detalisBtn().click();
         return page(Product_page.class);
+    }
+
+    @Step("Gets all the characteristics of the desired product from search listing {productArticle}")
+    // example String for productArticle = V99-75-0011
+    public ElementsCollection getCharacteristicsDesiredProductForSearch(String productArticle) {
+        return $$x("//*[@class='rc' and contains(text(),'" + productArticle +"')]/ancestor::div[@class='box criteria_toogle_active']//li")
+                .shouldHave(sizeGreaterThan(10));
     }
 
 }

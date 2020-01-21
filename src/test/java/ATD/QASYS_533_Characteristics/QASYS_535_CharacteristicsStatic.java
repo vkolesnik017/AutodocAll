@@ -2,7 +2,6 @@ package ATD.QASYS_533_Characteristics;
 
 import ATD.*;
 import com.codeborne.selenide.ElementsCollection;
-import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -25,6 +24,7 @@ public class QASYS_535_CharacteristicsStatic {
 
   private Product_page productPage = new Product_page();
   private Listing_page listingPage = new Listing_page();
+  private Search_page searchPage = new Search_page();
   private CommonMethods commonMethods = new CommonMethods();
   private DataBase db = new DataBase();
 
@@ -112,7 +112,7 @@ public class QASYS_535_CharacteristicsStatic {
     expectedCharacteristics.add("Bohrung-Ø \\[mm]:\\n15,8");
 
     open(route + "/" + db.getRouteByRouteName(getShopFromRoute(route), "search10"));
-    ElementsCollection actualCharacteristics = listingPage.getCharacteristicsDesiredProductForSearch(articleProductForSearchListing);
+    ElementsCollection actualCharacteristics = searchPage.getCharacteristicsDesiredProductForSearch(articleProductForSearchListing);
     commonMethods.compareCharacteristics(actualCharacteristics, expectedCharacteristics);
   }
 
