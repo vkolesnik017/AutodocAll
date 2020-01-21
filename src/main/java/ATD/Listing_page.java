@@ -251,6 +251,10 @@ public class Listing_page {
 
     public ElementsCollection hoheProductAttributeGenericRoute() { return $$x("//*[@class='w_search no_margin']/preceding-sibling::li//*[contains(text(),'Höhe [mm]:')]/ancestor :: li[1]/span[2]"); }
 
+    public ElementsCollection hoheProductAttributeTecdocRouteLKW() { return $$x("//*[contains(text(),'Höhe 1 [mm]:')]/ancestor :: li[1]/span[2]"); }
+
+    public ElementsCollection hoheProductAttributeGenericRouteLKW() { return $$x("//*[@class='w_search no_margin']/preceding-sibling::li//*[contains(text(),'Höhe 1 [mm]:')]/ancestor :: li[1]/span[2]"); }
+
     public ElementsCollection einbauseiteProductAttributeTecdocRoute() {return $$x("//*[contains(text(),'Einbauseite:')]/ancestor :: li[1]/span[2]"); }
 
     public ElementsCollection einbauseiteProductAttributeGenericRoute() {return $$x("//*[@class='w_search no_margin']/preceding-sibling::li//*[contains(text(),'Einbauseite:')]/ancestor :: li[1]/span[2]"); }
