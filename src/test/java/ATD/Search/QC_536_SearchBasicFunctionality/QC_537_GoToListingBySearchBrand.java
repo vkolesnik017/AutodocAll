@@ -36,7 +36,7 @@ public class QC_537_GoToListingBySearchBrand {
   @Flaky
   @Owner(value = "Evlentiev")
   @Description(value = "The test verifies that at the listing have only products of brand ridex after search by text RIDEX")
-  public void testGoToListingBySearchBrand(String route) {
+  public void testListingHaveOnlyProductOfBrandRidex(String route) {
     open(route);
     mainPage.useSearch(brandForSearch);
     listingPage.checksProductTitlesContainExpectedTextGoingAllPagination(brandForSearch);
