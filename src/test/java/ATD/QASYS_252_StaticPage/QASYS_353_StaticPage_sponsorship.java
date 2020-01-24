@@ -30,7 +30,7 @@ public class QASYS_353_StaticPage_sponsorship {
         return new SetUp().setUpShop("prod", "DE");
     }
 
-    @Test(dataProvider = "route")
+    @Test(dataProvider = "route", enabled = false) //disabled in SITES-7313
     @Owner(value = "Oleg Romanyuta")
     @Flaky
     @Description(value = "Test checks elements on sponsorship page")
