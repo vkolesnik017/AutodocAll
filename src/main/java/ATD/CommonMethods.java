@@ -1,6 +1,7 @@
 package ATD;
 
 import com.codeborne.selenide.*;
+import com.codeborne.selenide.ex.ElementNotFound;
 import com.codeborne.selenide.ex.ElementShould;
 import com.codeborne.selenide.ex.UIAssertionError;
 import io.qameta.allure.Step;
@@ -164,15 +165,21 @@ public class CommonMethods {
     public static void clickOfBuyBtnForAllPages() {
         SelenideElement productBlockForHover = $(byCssSelector(".rec_products_block"));
         try {
+            sleep(2000); // TODO try delete this sleep if fixed SITES-2830
             if (productBlockForHover.isDisplayed()) {
                 productBlockForHover.hover();
             }
-            sleep(5000); // TODO try delete this sleep after fixed SITES-2830
+            sleep(3000); // TODO try delete this sleep if fixed SITES-2830
             universalElementOfBuyBtnForAllPages().waitUntil(visible, 2000).click();
         } catch (ElementShould e) {
-            $(byXpath("//div[@class='top-small-products__items']//a[contains(@class,'add_')]")).click();
+            try {
+                $(byXpath("//div[@class='top-small-products__items']//a[contains(@class,'add_')]")).waitUntil(visible, 3000).click();
+            } catch (ElementNotFound e2) {
+                // for tires listing
+                $(byXpath("(//*[@data-ga-action='Add_to_basket'])[5]")).click();
+            }
         }
-        sleep(4000); // TODO try delete this sleep after fixed SITES-2830
+        sleep(4000); // TODO try delete this sleep if fixed SITES-2830
     }
 
     // methods and locators for block of top products
