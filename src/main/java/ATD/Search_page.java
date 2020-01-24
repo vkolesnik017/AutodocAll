@@ -39,6 +39,10 @@ public class Search_page {
         return $x("//div[@class='about']/button");
     }
 
+    private SelenideElement closeBtnPopupOfChooseCar() {
+        return $(".back");
+    }
+
     // locator for counter
     private SelenideElement counterValue() {
         return $(By.xpath("//input[@class='amount qty_2']"));
@@ -112,6 +116,12 @@ public class Search_page {
     public ElementsCollection getCharacteristicsDesiredProductForSearch(String productArticle) {
         return $$x("//*[@class='rc' and contains(text(),'" + productArticle +"')]/ancestor::div[@class='box criteria_toogle_active']//li")
                 .shouldHave(sizeGreaterThan(10));
+    }
+
+    @Step
+    public Search_page closePopupOfChooseCar() {
+        closeBtnPopupOfChooseCar().click();
+        return this;
     }
 
 }
