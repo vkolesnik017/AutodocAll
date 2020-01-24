@@ -1,9 +1,9 @@
 package AWS;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
@@ -54,7 +54,7 @@ public class ProductSearch_aws {
     public String chooseIlliquidProductAndGetId() {
         illiquidColumn().selectOption("Да");
         searchBtn().click();
-        illiquidColumn().shouldHave(Condition.text("Да"));
+        illiquidColumn().shouldHave(text("Да"));
         String id = idProductsInTable().getText();
         String brand = brandProductsInTable().getText().trim().toLowerCase();
         System.out.println(id);
@@ -64,10 +64,10 @@ public class ProductSearch_aws {
 
     @Step
     public String chooseFilterForDangerousProductsAndGetId() {
-        dangerousCargoSelector().selectOption("Включен");
-        inStockSelector().selectOption("есть");
+        dangerousCargoSelector().selectOption(2); // switched on
+        inStockSelector().selectOption(1); // yes
         searchBtn().click();
-        dangerousProductsColumn().shouldHave(Condition.text("yes"));
+        dangerousProductsColumn().shouldHave(text("yes"));
         return idProductsInTable().getText();
     }
 }
