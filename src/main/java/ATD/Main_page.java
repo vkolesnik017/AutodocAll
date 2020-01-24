@@ -333,17 +333,17 @@ public class Main_page {
     }
 
     public Partnership_static_page clickPartnership() {
-        $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[6]/a")).click();
+        $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[5]/a")).click();
         return page(Partnership_static_page.class);
     }
 
     public Presse_page clickPresse() {
-        $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[7]/a")).click();
+        $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[6]/a")).click();
         return page(Presse_page.class);
     }
 
     public MobileApp_static_page clickMobileApp() {
-        $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[8]/a")).click();
+        $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[7]/a")).click();
         return page(MobileApp_static_page.class);
     }
 
