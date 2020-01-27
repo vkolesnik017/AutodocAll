@@ -115,11 +115,11 @@ public class Product_page {
     closeClubPopup();
     buyButton().click();
     try {
-      firstProductPriceInPopupOfCart().shouldBe(visible);
+      checksPresentProductInCartPopup();
     } catch (UIAssertionError e) {
       closePopupOtherCategoryIfYes();
       buyButton().click();
-      firstProductPriceInPopupOfCart().shouldBe(visible);
+      checksPresentProductInCartPopup();
     }
     return this;
   }
@@ -167,6 +167,14 @@ public class Product_page {
   // locators in popup of cart
   public SelenideElement firstProductPriceInPopupOfCart() {
     return $(byCssSelector(".row-price"));
+  }
+
+  @Step
+  public Product_page checksPresentProductInCartPopup() {
+    closeClubPopup();
+    cartIcon().hover();
+    firstProductPriceInPopupOfCart().shouldBe(visible);
+    return this;
   }
 
   public SelenideElement totalPriceInPopupOfCart() {

@@ -12,6 +12,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static ATD.CommonMethods.closeCookiesFooterMessage;
+import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.text;
@@ -37,7 +38,7 @@ public class QASYS_312_StaticPage_austauschartikel {
     @Flaky
     @Description(value = "Test checks elements on austauschartikel page")
     public void checkAustauschartikelPageElements(String route) {
-        open(route);
+        openPage(route);
         closeCookiesFooterMessage();
         mainPage.clickAustauschartikel();
         austauschartikelStaticPage.logo().shouldBe(visible);
