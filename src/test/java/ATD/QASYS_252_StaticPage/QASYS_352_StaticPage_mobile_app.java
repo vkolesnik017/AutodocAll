@@ -13,6 +13,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static ATD.CommonMethods.closeCookiesFooterMessage;
+import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.text;
@@ -38,7 +39,7 @@ public class QASYS_352_StaticPage_mobile_app {
     @Flaky
     @Description(value = "Test checks elements on mobile app page")
     public void checkMobileAppPageElements(String route) {
-        open(route);
+        openPage(route);
         closeCookiesFooterMessage();
         mainPage.clickMobileApp();
         mobileAppStaticPage.appLogo().shouldBe(visible);
