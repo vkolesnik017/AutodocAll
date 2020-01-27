@@ -49,8 +49,8 @@ public class QASYS_274_AddingProductToBasketFromAllRoutes {
     clickOfBuyBtnForAllPages();
     productPage.closePopupOtherCategoryIfYes()
             .cartIcon().hover();
-    productPage.firstProductPriceInPopupOfCart().shouldBe(visible);
-    productPage.cartClick()
+    productPage.checksPresentProductInCartPopup()
+            .cartClick()
             .productPrice().shouldBe(visible);
   }
 
