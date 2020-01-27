@@ -52,9 +52,9 @@ public class ProductSearch_aws {
 
     @Step
     public String chooseIlliquidProductAndGetId() {
-        illiquidColumn().selectOption("Да");
+        illiquidColumn().selectOption(1);
         searchBtn().click();
-        illiquidColumn().shouldHave(text("Да"));
+        illiquidColumn().shouldHave(text("yes"));
         String id = idProductsInTable().getText();
         String brand = brandProductsInTable().getText().trim().toLowerCase();
         System.out.println(id);
