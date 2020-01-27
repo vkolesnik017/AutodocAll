@@ -8,6 +8,7 @@ import com.codeborne.selenide.ex.UIAssertionError;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
+import static ATD.CommonMethods.closeClubPopup;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
@@ -24,6 +25,7 @@ public class Product_page {
   @Step
   public Product_page openProductPageById(String route, String idProduct) {
     open(route + "/a/" + idProduct);
+    closeClubPopup();
     return this;
   }
 
@@ -31,10 +33,6 @@ public class Product_page {
   public Cart_page cartClick() {
     new Main_page().cartClick();
     return page(Cart_page.class);
-  }
-
-  private SelenideElement clubPopup() {
-    return $(".popup-after-order>span");
   }
 
   private SelenideElement numberBasket() {
@@ -313,14 +311,6 @@ public class Product_page {
   public Product_page clickAddToCartAndCheckPopupFR() {
     addToCartBtnFR().click();
     emailFieldInPopUpOfGrayBtn().shouldBe(appear);
-    return this;
-  }
-
-  public Product_page closeClubPopup() {
-    if (clubPopup().isDisplayed()) {
-      clubPopup().click();
-      clubPopup().shouldNotBe(visible);
-    }
     return this;
   }
 }
