@@ -115,11 +115,11 @@ public class Product_page {
     closeClubPopup();
     buyButton().click();
     try {
-      firstProductPriceInPopupOfCart().shouldBe(visible);
+      checksPresentProductInCartPopup();
     } catch (UIAssertionError e) {
       closePopupOtherCategoryIfYes();
       buyButton().click();
-      firstProductPriceInPopupOfCart().shouldBe(visible);
+      checksPresentProductInCartPopup();
     }
     return this;
   }
@@ -171,8 +171,8 @@ public class Product_page {
 
   @Step
   public Product_page checksPresentProductInCartPopup() {
-    cartIcon().hover();
     closeClubPopup();
+    cartIcon().hover();
     firstProductPriceInPopupOfCart().shouldBe(visible);
     return this;
   }
