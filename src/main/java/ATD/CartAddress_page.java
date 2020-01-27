@@ -117,9 +117,9 @@ public class CartAddress_page {
                     break;
             }
         }
+        postalCodeField().clear();
+        postalCodeField().click();
         checkCorrectTextAndFillInput(postalCodeField(), postalCodeOrCodeDefault);
-//        postalCodeField().clear();
-//        postalCodeField().setValue(postalCodeOrCodeDefault);
         return this;
     }
 
