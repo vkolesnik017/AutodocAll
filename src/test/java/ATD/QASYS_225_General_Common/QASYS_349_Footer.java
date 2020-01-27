@@ -14,9 +14,7 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.getCurrentShopFromJSVarInHTML;
-import static ATD.CommonMethods.getShopFromRoute;
-import static ATD.CommonMethods.testMail;
+import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -50,7 +48,7 @@ public class QASYS_349_Footer {
     @Test(dataProvider = "route", enabled = true)
     @Description(value = "TC1 Test check App installation links")
     public void checkingAppLinks(String route) {
-        open(route);
+        openPage(route);
         main_page.footerForm().scrollTo();
         main_page.appGoogleButton().click();
         commonMethods.checkingUrl(appUrl);
@@ -64,7 +62,7 @@ public class QASYS_349_Footer {
     @Description(value = "TC2 Test follow the link and check url")
     public void checkingLinksInFooter(String route) throws SQLException {
         String shop = getShopFromRoute(route);
-        open(route);
+        openPage(route);
         main_page.footerForm().scrollTo();
         main_page.clickAboutUs();
         commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "staticAboutUs"));
@@ -132,7 +130,7 @@ public class QASYS_349_Footer {
     @Test(dataProvider = "route", enabled = true)
     @Description(value = "TC3 Test check country dropdown and transitions")
     public void checkingDropdownCountry(String route) throws SQLException {
-        open(route);
+        openPage(route);
         main_page.footerForm().scrollTo();
         main_page.checkingCountriesSubscription();
     }
@@ -142,7 +140,7 @@ public class QASYS_349_Footer {
     @Test(dataProvider = "route", enabled = true)
     @Description(value = "TC4 Test check newsletter subscription field")
     public void checkingSubscriptionField(String route) {
-        open(route);
+        openPage(route);
         main_page.footerForm().scrollTo();
         main_page.subscriptionButton().click();
         main_page.subscriptionTooltipPopup().shouldHave(Condition.text("Bitte geben Sie eine gültige E-mail Adresse an"));
@@ -165,7 +163,7 @@ public class QASYS_349_Footer {
     @Test(dataProvider = "route", enabled = true)
     @Description(value = "TC5 Test check social network links transitions and footer center blocks")
     public void checkingSocial(String route) {
-        open(route);
+        openPage(route);
         main_page.footerForm().scrollTo();
         main_page.techAllianceBlock().shouldBe(Condition.visible);
         main_page.workTimeBlock().shouldBe(Condition.visible);
@@ -183,7 +181,7 @@ public class QASYS_349_Footer {
     @Test(dataProvider = "route", enabled = true)
     @Description(value = "TC6 Test check Datenschutzerklärung link")
     public void checkingDatenschutzLink(String route) throws SQLException {
-        open(route);
+        openPage(route);
         main_page.footerForm().scrollTo();
         main_page.clickDatenschutzInSubscription();
         commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(getShopFromRoute(route), "staticDatenschutz"));

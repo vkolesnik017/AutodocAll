@@ -65,12 +65,12 @@
         </classes>
     </test>
 
-    <test name="QASYS_353_StaticPage_sponsorship">
-        <classes>
-            <class name="ATD.QASYS_252_StaticPage.QASYS_353_StaticPage_sponsorship">
-            </class>
-        </classes>
-    </test>
+    <!--<test name="QASYS_353_StaticPage_sponsorship">-->
+        <!--<classes>-->
+            <!--<class name="ATD.QASYS_252_StaticPage.QASYS_353_StaticPage_sponsorship">-->
+            <!--</class>-->
+        <!--</classes>-->
+    <!--</test>-->
 
     <test name="QASYS_356_StaticPage_partnership">
         <classes>

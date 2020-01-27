@@ -12,6 +12,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static ATD.CommonMethods.closeCookiesFooterMessage;
+import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
@@ -36,7 +37,7 @@ public class QASYS_309_StaticPage_versand {
     @Flaky
     @Description(value = "Test checks elements on versand page")
     public void checkVersandPageElements(String route) {
-        open(route);
+        openPage(route);
         closeCookiesFooterMessage();
         mainPage.clickVersand();
         versandStaticPage.topBlockLeft().shouldBe(visible);

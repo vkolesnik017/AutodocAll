@@ -12,6 +12,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static ATD.CommonMethods.closeCookiesFooterMessage;
+import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.open;
@@ -35,7 +36,7 @@ public class QASYS_360_StaticPage_vacancies {
     @Flaky
     @Description(value = "Test checks elements on vacancies page")
     public void checkVacanciesPageElements(String route) {
-        open(route);
+        openPage(route);
         closeCookiesFooterMessage();
         mainPage.clickVacancies();
         vacanciesStaticPage.title().shouldBe(visible);
