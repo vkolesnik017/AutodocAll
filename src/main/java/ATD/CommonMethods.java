@@ -192,6 +192,7 @@ public class CommonMethods {
                 productBlockForHover.hover();
             }
             sleep(3000); // TODO try delete this sleep if fixed SITES-2830
+            closeClubPopup();
             universalElementOfBuyBtnForAllPages().waitUntil(visible, 2000).click();
         } catch (ElementShould e) {
             try {
