@@ -13,6 +13,7 @@ import org.testng.annotations.Test;
 
 import static ATD.CommonMethods.clickable;
 import static ATD.CommonMethods.closeCookiesFooterMessage;
+import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.open;
@@ -36,7 +37,7 @@ public class QASYS_316_StaticPage_impressum {
     @Flaky
     @Description(value = "Test checks elements on impressum page")
     public void checkImpressumPageElements(String route) {
-        open(route);
+        openPage(route);
         closeCookiesFooterMessage();
         mainPage.clickImpressum();
         impressumStaticPage.title().shouldBe(visible);

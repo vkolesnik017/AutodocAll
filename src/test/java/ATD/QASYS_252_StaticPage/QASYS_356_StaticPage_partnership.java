@@ -12,6 +12,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static ATD.CommonMethods.closeCookiesFooterMessage;
+import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.open;
@@ -36,7 +37,7 @@ public class QASYS_356_StaticPage_partnership {
     @Flaky
     @Description(value = "Test checks elements on partnership page")
     public void checkPartnershipPageElements(String route) {
-        open(route);
+        openPage(route);
         closeCookiesFooterMessage();
         mainPage.clickPartnership();
         partnershipStaticPage.logo().shouldBe(visible);

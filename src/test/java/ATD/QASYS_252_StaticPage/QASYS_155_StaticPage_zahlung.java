@@ -12,6 +12,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static ATD.CommonMethods.closeCookiesFooterMessage;
+import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.open;
@@ -35,7 +36,7 @@ public class QASYS_155_StaticPage_zahlung {
     @Flaky
     @Description(value = "Test checks elements on zahlung page")
     public void checkZahlungPageElements(String route) {
-        open(route);
+        openPage(route);
         closeCookiesFooterMessage();
         mainPage.clickZahlung();
         zahlungStaticPage.logo().shouldBe(visible);
