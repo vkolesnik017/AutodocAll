@@ -74,8 +74,8 @@ public class QASYS_349_Footer {
         commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "vacancies"));
         main_page.clickBonusprogramm();
         commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "bonus_system"));
-        main_page.clickSponsorship();
-        commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "staticSponsorship"));
+//        main_page.clickSponsorship();
+//        commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "staticSponsorship"));
         main_page.clickPartnership();
         commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "staticPartnership"));
         main_page.clickPresse();
