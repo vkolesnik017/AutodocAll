@@ -35,6 +35,10 @@ public class Product_page {
     return page(Cart_page.class);
   }
 
+  private SelenideElement quantityOnBasketIcon() {
+    return $x("//div[@class='header-cart__info']//span[1]");
+  }
+
   private SelenideElement numberBasket() {
     return $(byCssSelector(".code"));
   }
@@ -121,6 +125,12 @@ public class Product_page {
       buyButton().click();
       checksPresentProductInCartPopup();
     }
+    return this;
+  }
+
+  @Step
+  public Product_page checkQuantityOnBasketIconEquals(int quantityInCart) {
+    quantityOnBasketIcon().shouldHave(exactText(String.valueOf(quantityInCart)));
     return this;
   }
 
