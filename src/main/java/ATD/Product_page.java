@@ -169,6 +169,14 @@ public class Product_page {
     return $(byCssSelector(".row-price"));
   }
 
+  @Step
+  public Product_page checksPresentProductInCartPopup() {
+    cartIcon().hover();
+    closeClubPopup();
+    firstProductPriceInPopupOfCart().shouldBe(visible);
+    return this;
+  }
+
   public SelenideElement totalPriceInPopupOfCart() {
     return $(byCssSelector(".row-right>p"));
   }
