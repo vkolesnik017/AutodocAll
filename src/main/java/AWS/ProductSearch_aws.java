@@ -4,6 +4,7 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.value;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
@@ -52,9 +53,10 @@ public class ProductSearch_aws {
 
     @Step
     public String chooseIlliquidProductAndGetId() {
-        illiquidColumn().selectOption("Да");
+        illiquidColumn().selectOption(1);
         searchBtn().click();
-        illiquidColumn().shouldHave(text("Да"));
+//        illiquidColumn().shouldHave(text("Да"));
+        illiquidColumn().shouldHave(value("yes"));
         String id = idProductsInTable().getText();
         String brand = brandProductsInTable().getText().trim().toLowerCase();
         System.out.println(id);
