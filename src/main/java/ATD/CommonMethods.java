@@ -37,11 +37,28 @@ public class CommonMethods {
     public static String idProductTire = "8075786";
     public static String idProductMore35EUR = "1367459";
 
+    @Step("{url} Open page with close popup")
+    public static void openPage(String url) {
+        open(url);
+        closeClubPopup();
+    }
+
     public static void closeCookiesFooterMessage() {
         try {
             $(byXpath("//div[@class='block-cookies__close']")).click();
         } catch (UIAssertionError e) {
             System.out.println("Cookies block doesn't appear");
+        }
+    }
+
+    private static SelenideElement clubPopup() {
+        return $(".popup-after-order>span");
+    }
+
+    public static void closeClubPopup() {
+        if (clubPopup().isDisplayed()) {
+            clubPopup().click();
+            clubPopup().shouldNotBe(visible);
         }
     }
 
@@ -52,6 +69,11 @@ public class CommonMethods {
 
     public static String getNameRouteFromJSVarInHTML() {
         return executeJavaScript("return $siteSettings.route");
+    }
+
+    @Step("Get name route and verify with expected {expected route}")
+    public static void getNameRouteAndVerifyWithExpected(String expectedRoute) {
+        assertEquals(getNameRouteFromJSVarInHTML(), expectedRoute);
     }
 
     public static String getShopFromRoute(String route) {
