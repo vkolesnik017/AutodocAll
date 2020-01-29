@@ -1,19 +1,22 @@
-package ATD.Search.QC_536_SearchBasicFunctionality;
+package ATD.Search.QC_548_SearchTooltips;
 
 import ATD.Main_page;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
-public class QC_540_SearchByValueReifen {
+public class QC_550_GoToListingFromTooltipInSearch {
+
+  private String searchText = "Lenkersatz";
 
   @BeforeClass
   void setUp() {
@@ -28,10 +31,18 @@ public class QC_540_SearchByValueReifen {
   @Test(dataProvider = "route")
   @Flaky
   @Owner(value = "Evlentiev")
-  @Description(value = "The test verifies redirect to tires catalog after search by text reifen")
-  public void testSearchByValueReifen(String route) {
+  @Description(value = "Go to search listing by click tooltip in search")
+  public void testGoToListingFromTooltipInSearch(String route) {
     open(route);
-    new Main_page().useSearch("Reifen");
-    checkingContainsUrl("https://www.autodoc.de/reifen");
+    new Main_page().inputTextInSearchBar(searchText)
+            .clickTooltipInSearchByExactText(searchText)
+            .verifyNameRouteEqualsSearch()
+            .verifyTextInSearchBar(searchText);
   }
+
+  @AfterMethod
+  private void tearDown() {
+    close();
+  }
+
 }
