@@ -60,6 +60,7 @@ public class QASYS_379_BlocksOfTopProducts {
   public void testAddingPairedProductsToBasketFromBlockOfTopProducts(String route) {
     open(route);
     closeCookiesFooterMessage();
+    commonMethods.scrollToBlockOfTopProducts();
     clickOfBuyBtnForAllPages();
     productPage.firstProductPriceInPopupOfCart().shouldBe(visible);
     productPage.cartClick()
