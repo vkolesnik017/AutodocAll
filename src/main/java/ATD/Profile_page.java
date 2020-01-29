@@ -9,8 +9,18 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class Profile_page {
 
-    public SelenideElement nameOfClient(){
+    public SelenideElement nameOfClient() {
         return $(byXpath("//div[@class='name_cash']//span[@class='name']"));
+    }
+
+    private SelenideElement clientID() {
+        return $(byXpath("//div[@class='top_title']/span"));
+    }
+
+    public String getDigitClientId() {
+        String digit = clientID().getText();
+        digit = digit.substring(digit.indexOf(":") + 1).trim();
+        return digit;
     }
 
     // settings tab

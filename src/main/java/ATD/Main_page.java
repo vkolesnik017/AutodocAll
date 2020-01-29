@@ -194,6 +194,14 @@ public class Main_page {
         return $(".close_log_on");
     }
 
+    public Profile_page loginUserFromMain(String login){
+        loginBtnInHeader().click();
+        emailInputInLoginPopup().setValue(login);
+        passwordInputInLoginPopup().setValue(password);
+        loginBtnInPopUp().click();
+        return page(Profile_page.class);
+    }
+
     // Password recovery popup
     public SelenideElement emailFieldInPasswordRecoveryPopUp() {
         return $(byId("recovery-email"));
