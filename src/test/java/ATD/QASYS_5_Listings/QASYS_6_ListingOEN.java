@@ -45,7 +45,7 @@ public class QASYS_6_ListingOEN {
   public void testGoingToRootOe_numberFromSearchBar(String route) throws SQLException {
     open(route);
     mainPage.searchBar().setValue("1j0615124a");
-    mainPage.hintsForSearch().shouldBe(visible);
+    mainPage.tooltipToSearch().shouldBe(visible);
     $(byText("OEN 1J0615124A")).click();
     waitingWhileLinkBecomeExpected("https://www.autodoc.de/autoteile/oem/1j0615124a?search=OEN%201J0615124A");
   }

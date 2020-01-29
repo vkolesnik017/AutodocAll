@@ -1,13 +1,15 @@
 package ATD;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static ATD.CommonMethods.closeCookiesFooterMessage;
+import static ATD.CommonMethods.getNameRouteAndVerifyWithExpected;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
+import static com.codeborne.selenide.Condition.exactValue;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -18,8 +20,24 @@ public class Search_page {
         return page(Cart_page.class);
     }
 
+    public Search_page checksProductTitlesContainExpectedTextGoingAllPagination(String expectedText) {
+        new Listing_page().checksProductTitlesContainExpectedTextGoingAllPagination(expectedText);
+        return this;
+    }
+
     public Search_page closeFooterMessageCookies(){
         closeCookiesFooterMessage();
+        return this;
+    }
+
+    public Search_page verifyNameRouteEqualsSearch() {
+        getNameRouteAndVerifyWithExpected("search");
+        return this;
+    }
+
+    @Step
+    public Search_page verifyTextInSearchBar(String expectedText) {
+        new Main_page().searchBar().shouldHave(exactValue(expectedText));
         return this;
     }
 
@@ -100,7 +118,7 @@ public class Search_page {
     @Step
     public Cart_page addFirstProductAndGoToCart() {
         buyButton().click();
-        cartPopupWithProduct().shouldBe(Condition.visible);
+        cartPopupWithProduct().shouldBe(visible);
         cartClick();
         return page(Cart_page.class);
     }

@@ -1,24 +1,25 @@
-package ATD.Search.QC_536_SearchBasicFunctionality;
+package ATD.Search.QC_548_SearchTooltips;
 
-import ATD.Listing_page;
 import ATD.Main_page;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static ATD.SetUp.setUpBrowser;
+import static com.codeborne.selenide.CollectionCondition.sizeGreaterThanOrEqual;
 import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
-import static com.codeborne.selenide.Condition.have;
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
-public class QC_539_SearchByArticle {
+public class QC_552_ArticleNumberTooltipsInSearch {
 
-  private String articleForSearch = "20049";
+  private String articleNumber = "40594";
 
   @BeforeClass
   void setUp() {
@@ -33,11 +34,16 @@ public class QC_539_SearchByArticle {
   @Test(dataProvider = "route")
   @Flaky
   @Owner(value = "Evlentiev")
-  @Description(value = "The test verifies that at the listing have product with article 20046 after search")
-  public void testSearchByArticle(String route) {
+  @Description(value = "At the top of the tooltips, at least three values are displayed that contain 40594")
+  public void testArticleNumberTooltipsInSearch(String route) {
     open(route);
-    new Main_page().useSearch(articleForSearch);
-    new Listing_page().productTitleInListMode().filter(have(text(articleForSearch))).shouldHave(sizeNotEqual(0));
+    new Main_page().inputTextInSearchBar(articleNumber)
+           .tooltipsToSearch().shouldHave(sizeNotEqual(0)).filter(text(articleNumber + ")")).shouldHave(sizeGreaterThanOrEqual(3));
+  }
+
+  @AfterMethod
+  private void tearDown() {
+    close();
   }
 
 }

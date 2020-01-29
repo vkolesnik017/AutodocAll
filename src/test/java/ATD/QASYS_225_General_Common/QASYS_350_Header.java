@@ -90,9 +90,9 @@ public class QASYS_350_Header {
     open(route);
     // test hints
     mainPage.searchBar().click();
-    mainPage.hintsForSearch().shouldBe(visible);
+    mainPage.tooltipToSearch().shouldBe(visible);
     mainPage.logoInHeader().click();
-    mainPage.hintsForSearch().shouldBe(not(visible));
+    mainPage.tooltipToSearch().shouldBe(not(visible));
     // test info for search
     mainPage.infoIconForSearch().click();
     mainPage.infoPopupForSearch().shouldBe(visible);

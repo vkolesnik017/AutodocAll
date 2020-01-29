@@ -18,6 +18,7 @@ import static com.codeborne.selenide.Selenide.open;
 public class QC_538_SearchByGeneric {
 
   private String genericName = "Stoßdämpfer";
+  private String genericNameForCheck = "dämpfer";
 
   @BeforeClass
   void setUp() {
@@ -36,6 +37,6 @@ public class QC_538_SearchByGeneric {
   public void testSearchByGeneric(String route) {
     open(route);
     new Main_page().useSearch(genericName);
-    new Listing_page().checksProductTitlesContainExpectedTextGoingAllPagination(genericName);
+    new Listing_page().checksProductTitlesContainExpectedTextGoingAllPagination(genericNameForCheck);
   }
 }
