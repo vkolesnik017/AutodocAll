@@ -1,9 +1,10 @@
 package ATD;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.ex.ElementNotFound;
 import org.openqa.selenium.By;
 
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 
 public class Payment_handler_page {
@@ -31,9 +32,9 @@ public class Payment_handler_page {
 
     public Payment_handler_page closePopupAfterOrder(){
         try {
-            popupAfterOrder().shouldBe(Condition.visible);
+            popupAfterOrder().shouldBe(visible);
             closePopupAfterOrderBtn().click();
-        }catch (Exception ignored){
+        }catch (ElementNotFound e){
         }
         return this;
     }
