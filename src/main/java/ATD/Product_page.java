@@ -8,7 +8,7 @@ import com.codeborne.selenide.ex.UIAssertionError;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
-import static ATD.CommonMethods.closeClubPopup;
+import static ATD.CommonMethods.closePopup;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
@@ -25,7 +25,7 @@ public class Product_page {
   @Step
   public Product_page openProductPageById(String route, String idProduct) {
     open(route + "/a/" + idProduct);
-    closeClubPopup();
+    closePopup();
     return this;
   }
 
@@ -116,7 +116,7 @@ public class Product_page {
   public Product_page addProductToCart() {
     checkNumberBasketAndRefreshPageIfNot();
     sleep(3000); // TODO для стабилизации. Без слипа иногда добавленный товар исчезает из корзины после перехода в неё, решается в SITES-2830
-    closeClubPopup();
+    closePopup();
     buyButton().click();
     try {
       checksPresentProductInCartPopup();
@@ -181,7 +181,7 @@ public class Product_page {
 
   @Step
   public Product_page checksPresentProductInCartPopup() {
-    closeClubPopup();
+    closePopup();
     cartIcon().hover();
     firstProductPriceInPopupOfCart().shouldBe(visible);
     return this;
