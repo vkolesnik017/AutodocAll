@@ -43,7 +43,6 @@ public class CommonMethods {
         String value = "bQP_O--EnX0Wy-qELE8sCNRyoi24NECN78TGhxe-SzEEUQmy12KwvU3d2IU1Ebq7yNKZ05GXatib_nZEU3k6VWYyS284SE1UYWxzcF9sMHJNT2V4NDNVa01SeWs2US15SDFGSllDbXpzMEk";
         open(url);
         getWebDriver().manage().addCookie(new Cookie("fuelrid1", value, ".autodoc.de", "/", null)); // That would not appear popup
-        closePopup();
         closeCookiesFooterMessage();
     }
 
@@ -52,17 +51,6 @@ public class CommonMethods {
             $(byXpath("//div[@class='block-cookies__close']")).click();
         } catch (UIAssertionError e) {
             System.out.println("Cookies block doesn't appear");
-        }
-    }
-
-    private static SelenideElement clubPopup() {
-        return $(".popup-after-order>span");
-    }
-
-    public static void closePopup() {
-        if (clubPopup().isDisplayed()) {
-            clubPopup().click();
-            clubPopup().shouldNotBe(visible);
         }
     }
 
@@ -196,7 +184,6 @@ public class CommonMethods {
                 productBlockForHover.hover();
             }
             sleep(3000); // TODO try delete this sleep if fixed SITES-2830
-            closePopup();
             universalElementOfBuyBtnForAllPages().waitUntil(visible, 2000).click();
         } catch (ElementShould e) {
             try {

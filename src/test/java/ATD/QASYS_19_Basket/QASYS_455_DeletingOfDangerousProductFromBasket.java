@@ -14,6 +14,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import static ATD.CommonMethods.openPage;
 import static ATD.CommonMethods.usualIdProduct;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.not;
@@ -57,6 +58,7 @@ public class QASYS_455_DeletingOfDangerousProductFromBasket {
   public void testDeletingOfDangerousProductFromBasket(String routeAndDeliveryCountry) {
     String route = routeAndDeliveryCountry.split("_")[0];
     String deliveryCountry = routeAndDeliveryCountry.split("_")[1];
+    openPage(route);
     productPage.openProductPageById(route, usualIdProduct)
             .addProductToCart()
             .checkQuantityOnBasketIconEquals(1)
