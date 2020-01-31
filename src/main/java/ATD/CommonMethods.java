@@ -42,7 +42,7 @@ public class CommonMethods {
     public static void openPage(String url) {
         String value = "bQP_O--EnX0Wy-qELE8sCNRyoi24NECN78TGhxe-SzEEUQmy12KwvU3d2IU1Ebq7yNKZ05GXatib_nZEU3k6VWYyS284SE1UYWxzcF9sMHJNT2V4NDNVa01SeWs2US15SDFGSllDbXpzMEk";
         open(url);
-        getWebDriver().manage().addCookie(new Cookie("fuelrid1", value, ".autodoc.de", "/", null));
+        getWebDriver().manage().addCookie(new Cookie("fuelrid1", value, ".autodoc.de", "/", null)); // That would not appear popup
         closePopup();
         closeCookiesFooterMessage();
     }
