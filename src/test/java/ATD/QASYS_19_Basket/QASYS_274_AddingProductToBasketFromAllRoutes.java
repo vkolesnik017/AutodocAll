@@ -13,11 +13,10 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.clickOfBuyBtnForAllPages;
-import static ATD.CommonMethods.closeCookiesFooterMessage;
+import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.close;
-import static com.codeborne.selenide.Selenide.open;
 
 public class QASYS_274_AddingProductToBasketFromAllRoutes {
 
@@ -43,8 +42,7 @@ public class QASYS_274_AddingProductToBasketFromAllRoutes {
   @Owner(value = "Evlentiev")
   @Description(value = "The test checks the addition of products to the basket from all root main")
   public void testAddingProductToBasketFromAllRoutesMain(String route) {
-    open(route);
-    closeCookiesFooterMessage();
+    openPage(route);
     productPage.checkNumberBasketAndRefreshPageIfNot();
     clickOfBuyBtnForAllPages();
     productPage.closePopupOtherCategoryIfYes()
@@ -66,8 +64,7 @@ public class QASYS_274_AddingProductToBasketFromAllRoutes {
   @Owner(value = "Evlentiev")
   @Description(value = "The test checks the addition of products to the basket from all root LKW")
   public void testAddingProductToBasketFromAllRoutesLKW(String route) {
-    open(route);
-    closeCookiesFooterMessage();
+    openPage(route);
     productPage.checkNumberBasketAndRefreshPageIfNot();
     clickOfBuyBtnForAllPages();
     productPage.closePopupOtherCategoryIfYes()
@@ -89,8 +86,7 @@ public class QASYS_274_AddingProductToBasketFromAllRoutes {
   @Owner(value = "Evlentiev")
   @Description(value = "The test checks the addition of products to the basket from all root Moto")
   public void testAddingProductToBasketFromAllRoutesMoto(String route) {
-    open(route);
-    closeCookiesFooterMessage();
+    openPage(route);
     productPage.checkNumberBasketAndRefreshPageIfNot();
     clickOfBuyBtnForAllPages();
     productPage.closePopupOtherCategoryIfYes()
