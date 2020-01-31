@@ -6,6 +6,7 @@ import com.codeborne.selenide.ex.ElementShould;
 import com.codeborne.selenide.ex.UIAssertionError;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.TimeoutException;
 import org.testng.Assert;
 
@@ -39,8 +40,11 @@ public class CommonMethods {
 
     @Step("{url} Open page with close popup")
     public static void openPage(String url) {
+        String value = "bQP_O--EnX0Wy-qELE8sCNRyoi24NECN78TGhxe-SzEEUQmy12KwvU3d2IU1Ebq7yNKZ05GXatib_nZEU3k6VWYyS284SE1UYWxzcF9sMHJNT2V4NDNVa01SeWs2US15SDFGSllDbXpzMEk";
         open(url);
-        closeClubPopup();
+        getWebDriver().manage().addCookie(new Cookie("fuelrid1", value, ".autodoc.de", "/", null));
+        closePopup();
+        closeCookiesFooterMessage();
     }
 
     public static void closeCookiesFooterMessage() {
@@ -55,7 +59,7 @@ public class CommonMethods {
         return $(".popup-after-order>span");
     }
 
-    public static void closeClubPopup() {
+    public static void closePopup() {
         if (clubPopup().isDisplayed()) {
             clubPopup().click();
             clubPopup().shouldNotBe(visible);
@@ -192,7 +196,7 @@ public class CommonMethods {
                 productBlockForHover.hover();
             }
             sleep(3000); // TODO try delete this sleep if fixed SITES-2830
-            closeClubPopup();
+            closePopup();
             universalElementOfBuyBtnForAllPages().waitUntil(visible, 2000).click();
         } catch (ElementShould e) {
             try {
