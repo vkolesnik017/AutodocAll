@@ -1,6 +1,8 @@
 package ATD;
 
-import com.codeborne.selenide.*;
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.ex.ElementNotFound;
 import com.codeborne.selenide.ex.ElementShould;
 import com.codeborne.selenide.ex.UIAssertionError;
@@ -40,7 +42,7 @@ public class CommonMethods {
     @Step("{url} Open page with close popup")
     public static void openPage(String url) {
         open(url);
-        closeClubPopup();
+        closeCookiesFooterMessage();
     }
 
     public static void closeCookiesFooterMessage() {
@@ -48,17 +50,6 @@ public class CommonMethods {
             $(byXpath("//div[@class='block-cookies__close']")).click();
         } catch (UIAssertionError e) {
             System.out.println("Cookies block doesn't appear");
-        }
-    }
-
-    private static SelenideElement clubPopup() {
-        return $(".popup-after-order>span");
-    }
-
-    public static void closeClubPopup() {
-        if (clubPopup().isDisplayed()) {
-            clubPopup().click();
-            clubPopup().shouldNotBe(visible);
         }
     }
 
@@ -200,7 +191,6 @@ public class CommonMethods {
                 productBlockForHover.hover();
             }
             sleep(3000); // TODO try delete this sleep if fixed SITES-2830
-            closeClubPopup();
             universalElementOfBuyBtnForAllPages().waitUntil(visible, 2000).click();
         } catch (ElementShould e) {
             try {
