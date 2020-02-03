@@ -7,12 +7,15 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashSet;
 
 import static ATD.CommonMethods.password;
-import static com.codeborne.selenide.Condition.exist;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
+import static org.testng.Assert.assertEquals;
 
 
 public class Main_page {
@@ -31,8 +34,14 @@ public class Main_page {
         return $(byId("search"));
     }
 
-    public SelenideElement hintsForSearch() {
-        return $(".autocomplete-suggestions>div");
+    private By tooltipsToSearch = byCssSelector(".autocomplete-suggestions>div");
+
+    public SelenideElement tooltipToSearch() {
+        return $(tooltipsToSearch);
+    }
+
+    public ElementsCollection tooltipsToSearch() {
+        return $$(tooltipsToSearch);
     }
 
     public SelenideElement infoIconForSearch() {
@@ -97,6 +106,34 @@ public class Main_page {
         Assert.assertEquals(actualNumber, expectedNumber);
     }
 
+    @Step("The method verifies that no duplicates in the dropdown menu with tips when entered text {searchText} in search bar")
+    public Main_page checkingThatNoDuplicatesInTooltipsToSearch() {
+        tooltipToSearch().shouldBe(visible);
+        ArrayList<String> tooltipsArr = new ArrayList<>();
+        HashSet<String> tooltipsSet = new HashSet<>();
+        ElementsCollection tooltips = tooltipsToSearch().shouldHave(sizeNotEqual(0));
+        for (SelenideElement tooltip : tooltips) {
+            String tooltipText = tooltip.getText();
+            tooltipsArr.add(tooltipText);
+            tooltipsSet.add(tooltipText);
+        }
+        assertEquals(tooltipsArr.size(), tooltipsSet.size());
+        return this;
+    }
+
+    @Step("The method verifies that generics are under synonyms when entered text {searchText} in search bar")
+    public Main_page checkingThatGenericsAreUnderSynonymsInSearchTooltips(String searchText) {
+        ElementsCollection tooltipsToSearch = inputTextInSearchBar(searchText).tooltipsToSearch().shouldHave(sizeNotEqual(0));
+        for (int i = 0; i < tooltipsToSearch.size(); i++) {
+            String hint = tooltipsToSearch.get(i).hover().getText().replaceAll("[^0-9]", "");
+            boolean areTheNumbers = hint.matches("-?\\d+(\\.\\d+)?");
+            if (areTheNumbers && i+1 < tooltipsToSearch.size()) {
+                tooltipsToSearch.get(i + 1).shouldHave(matchText("[0-9]").because("Not all generics are displayed under synonyms in tooltips to search"));
+            }
+        }
+        return this;
+    }
+
     // Menu in header
     @Step
     public LKW_main_page clickLkwCategory() {
@@ -158,10 +195,23 @@ public class Main_page {
         return page(Cart_page.class);
     }
 
+    @Step
+    public Main_page inputTextInSearchBar(String text) {
+        searchBar().setValue(text);
+        return this;
+    }
+
     @Step("Use search with: {searchArticle}")
     public Search_page useSearch(String searchArticle) {
-        searchBar().setValue(searchArticle);
-        searchButton().click();
+        inputTextInSearchBar(searchArticle)
+                .searchButton().click();
+        return page(Search_page.class);
+    }
+
+    @Step("click tooltip in search by exact text {exactTooltipText}")
+    public Search_page clickTooltipInSearchByExactText(String exactTooltipText) {
+        tooltipToSearch().shouldBe(visible);
+        tooltipsToSearch().filter(exactText(exactTooltipText)).shouldHaveSize(1).get(0).click();
         return page(Search_page.class);
     }
 
@@ -192,6 +242,14 @@ public class Main_page {
 
     public SelenideElement closeBtnOfLoginPopup() {
         return $(".close_log_on");
+    }
+
+    public Profile_page loginUserFromMain(String login){
+        loginBtnInHeader().click();
+        emailInputInLoginPopup().setValue(login);
+        passwordInputInLoginPopup().setValue(password);
+        loginBtnInPopUp().click();
+        return page(Profile_page.class);
     }
 
     // Password recovery popup

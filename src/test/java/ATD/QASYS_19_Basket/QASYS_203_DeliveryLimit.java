@@ -13,7 +13,6 @@ import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.close;
-import static com.codeborne.selenide.Selenide.open;
 
 public class QASYS_203_DeliveryLimit {
 
@@ -40,8 +39,7 @@ public class QASYS_203_DeliveryLimit {
   @Flaky
   @Description(value = "TC01 Delivery limit in basket")
   public void testDeliveryLimitInBasket(String homepage) {
-    open(homepage);
-    closeCookiesFooterMessage();
+    openPage(homepage);
     Float deliveryLimit = main_page.clickVersand().getDeliveryLimitFromText();
     product_page.openProductPageById(homepage, idProductMore35EUR)
             .addProductToCart()
@@ -56,8 +54,7 @@ public class QASYS_203_DeliveryLimit {
   @Flaky
   @Description(value = "TC02 Delivery limit in alldata")
   public void testDeliveryLimitInAllData(String homepage) {
-    open(homepage);
-    closeCookiesFooterMessage();
+    openPage(homepage);
     String currentShop = getCurrentShopFromJSVarInHTML();
     Float deliveryLimit = main_page.clickVersand().getDeliveryLimitFromText();
     product_page.openProductPageById(homepage, idProductMore35EUR)

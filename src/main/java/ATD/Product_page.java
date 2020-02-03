@@ -8,7 +8,7 @@ import com.codeborne.selenide.ex.UIAssertionError;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
-import static ATD.CommonMethods.closeClubPopup;
+import static ATD.CommonMethods.openPage;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
@@ -25,7 +25,6 @@ public class Product_page {
   @Step
   public Product_page openProductPageById(String route, String idProduct) {
     open(route + "/a/" + idProduct);
-    closeClubPopup();
     return this;
   }
 
@@ -33,6 +32,10 @@ public class Product_page {
   public Cart_page cartClick() {
     new Main_page().cartClick();
     return page(Cart_page.class);
+  }
+
+  private SelenideElement quantityOnBasketIcon() {
+    return $x("//div[@class='header-cart__info']//span[1]");
   }
 
   private SelenideElement numberBasket() {
@@ -112,15 +115,20 @@ public class Product_page {
   public Product_page addProductToCart() {
     checkNumberBasketAndRefreshPageIfNot();
     sleep(3000); // TODO для стабилизации. Без слипа иногда добавленный товар исчезает из корзины после перехода в неё, решается в SITES-2830
-    closeClubPopup();
     buyButton().click();
     try {
-      firstProductPriceInPopupOfCart().shouldBe(visible);
+      checksPresentProductInCartPopup();
     } catch (UIAssertionError e) {
       closePopupOtherCategoryIfYes();
       buyButton().click();
-      firstProductPriceInPopupOfCart().shouldBe(visible);
+      checksPresentProductInCartPopup();
     }
+    return this;
+  }
+
+  @Step
+  public Product_page checkQuantityOnBasketIconEquals(int quantityInCart) {
+    quantityOnBasketIcon().shouldHave(exactText(String.valueOf(quantityInCart)));
     return this;
   }
 
@@ -167,6 +175,13 @@ public class Product_page {
   // locators in popup of cart
   public SelenideElement firstProductPriceInPopupOfCart() {
     return $(byCssSelector(".row-price"));
+  }
+
+  @Step
+  public Product_page checksPresentProductInCartPopup() {
+    cartIcon().hover();
+    firstProductPriceInPopupOfCart().shouldBe(visible);
+    return this;
   }
 
   public SelenideElement totalPriceInPopupOfCart() {

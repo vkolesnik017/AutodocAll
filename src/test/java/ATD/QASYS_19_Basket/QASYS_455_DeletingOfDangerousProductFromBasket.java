@@ -14,6 +14,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import static ATD.CommonMethods.openPage;
 import static ATD.CommonMethods.usualIdProduct;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.not;
@@ -57,10 +58,13 @@ public class QASYS_455_DeletingOfDangerousProductFromBasket {
   public void testDeletingOfDangerousProductFromBasket(String routeAndDeliveryCountry) {
     String route = routeAndDeliveryCountry.split("_")[0];
     String deliveryCountry = routeAndDeliveryCountry.split("_")[1];
+    openPage(route);
     productPage.openProductPageById(route, usualIdProduct)
             .addProductToCart()
+            .checkQuantityOnBasketIconEquals(1)
             .openProductPageById(route, idDangerousProduct)
             .addProductToCart()
+            .checkQuantityOnBasketIconEquals(2)
             .closePopupOtherCategoryIfYes()
             .cartClick()
             .nextButtonClick()
@@ -77,6 +81,7 @@ public class QASYS_455_DeletingOfDangerousProductFromBasket {
     // check clicks on close button in Popup with dangerous product0
     productPage.openProductPageById(route, idDangerousProduct)
             .addProductToCart()
+            .checkQuantityOnBasketIconEquals(2)
             .cartClick();
     cartAllDataPage.searchProductByID(idDangerousProduct).shouldBe(visible);
     cartAllDataPage.popupOfDangerousProduct().shouldBe(visible);
@@ -85,6 +90,7 @@ public class QASYS_455_DeletingOfDangerousProductFromBasket {
     // check clicks on delete product in Popup with dangerous product and check deletion product
     productPage.openProductPageById(route, idDangerousProduct)
             .addProductToCart()
+            .checkQuantityOnBasketIconEquals(2)
             .cartClick();
     cartAllDataPage.searchProductByID(idDangerousProduct).shouldBe(visible);
     cartAllDataPage.popupOfDangerousProduct().shouldBe(visible);
@@ -93,6 +99,7 @@ public class QASYS_455_DeletingOfDangerousProductFromBasket {
     // check clicks on change address button in Popup with dangerous product and check redirect on cart/address
     productPage.openProductPageById(route, idDangerousProduct)
             .addProductToCart()
+            .checkQuantityOnBasketIconEquals(2)
             .cartClick();
     cartAllDataPage.searchProductByID(idDangerousProduct).shouldBe(visible);
     cartAllDataPage.popupOfDangerousProduct().shouldBe(visible);

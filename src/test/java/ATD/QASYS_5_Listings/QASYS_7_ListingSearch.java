@@ -45,7 +45,7 @@ public class QASYS_7_ListingSearch {
     open(route);
     String generic = "Bremscheiben";
     mainPage.searchBar().setValue(generic);
-    mainPage.hintsForSearch().shouldBe(visible);
+    mainPage.tooltipToSearch().shouldBe(visible);
     $(byText(generic)).click();
     listingPage.titleOnListing().shouldBe(visible);
     waitingWhileLinkBecomeExpected(route + "/" + db.getRouteByRouteName(getCurrentShopFromJSVarInHTML(), "search6"));

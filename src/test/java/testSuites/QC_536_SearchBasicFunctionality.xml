@@ -9,7 +9,7 @@
         </classes>
     </test>
 
-    <test name="QC_538_SearchByGeneric" enabled="false">
+    <test name="QC_538_SearchByGeneric">
         <classes>
             <class name="ATD.Search.QC_536_SearchBasicFunctionality.QC_538_SearchByGeneric">
             </class>
