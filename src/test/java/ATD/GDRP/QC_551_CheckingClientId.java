@@ -2,7 +2,7 @@ package ATD.GDRP;
 
 import ATD.Main_page;
 import ATD.SetUp;
-import AWS.Customer_search;
+import AWS.Customer_search_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -37,7 +37,7 @@ public class QC_551_CheckingClientId {
     public void testVerificationClientId(String route) {
         openPage(route);
         id = new Main_page().loginUserFromMain(mail).getDigitClientId();
-        idAws = new Customer_search().openSearchInAwsWithLogin().enterMailAndClickSearch(mail).getClientId();
+        idAws = new Customer_search_aws().openSearchInAwsWithLogin().enterMailAndClickSearch(mail).getClientId();
         Assert.assertEquals(id, idAws);
     }
 }

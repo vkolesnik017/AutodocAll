@@ -109,7 +109,15 @@ public class CommonMethods {
     public static String mailRandom() {
         Random randomGenerator = new Random();
         int random = randomGenerator.nextInt();
-        return "autotestMail" + random + "@test.com";
+        return "autotest" + random + "@test.com";
+    }
+
+    public void checkingDatenschutzerklarungLinkBehavior(SelenideElement datenschutzerklarungLink) {
+        datenschutzerklarungLink.shouldHave(attribute("title", "Datenschutzerklärung"));
+        datenschutzerklarungLink.shouldHave(cssValue("cursor", "pointer"));
+        datenschutzerklarungLink.shouldHave(cssValue("text-decoration", "underline solid rgb(0, 0, 0)"));
+        datenschutzerklarungLink.click();
+        checkingUrlAndCloseTab("https://www.autodoc.de/services/datenschutz");
     }
 
     @Step("Get currency {nameLocator} and verify")
@@ -206,20 +214,20 @@ public class CommonMethods {
     }
 
     // methods and locators for block of top products
-    public SelenideElement titleOfBlockOfTopProducts() {
+    private SelenideElement titleOfBlockOfTopProducts() {
         return $x("//*[@class='title_list'] | //*[@class='top-small-products__title']");
     }
 
-    public SelenideElement arrowRightBtnInTopProductsBlock() {
+    private SelenideElement arrowRightBtnInTopProductsBlock() {
         return $(byXpath("(//*[@type='button'])[2]"));
     }
 
     // fits for all pages
-    public SelenideElement grayBtn() {
+    private SelenideElement grayBtn() {
         return $(byXpath("//*[contains(@class,'not_active')]/a"));
     }
 
-    public ElementsCollection miniCardsOfProducts() {
+    private ElementsCollection miniCardsOfProducts() {
         return $$(byXpath("//*[contains(@class,'product-list__item ')]"));
     }
 

@@ -14,6 +14,8 @@ public class Login_aws {
   private final String email = "autodoc-6731";
   private final String password = "0e8f9863";
 
+
+
   private SelenideElement loginField() {
     return $(byId("login"));
   }
@@ -26,8 +28,17 @@ public class Login_aws {
     return $(byXpath("//button[@class='btn btn-default btn-sm pull-right']"));
   }
 
-  @Step
+  @Step("Login in AWS")
   public Main_aws loginInAws() {
+    loginField().setValue(email);
+    passwordField().setValue(password);
+    loginButton().click();
+//    loginButton().shouldNotBe(Condition.visible);
+    return page(Main_aws.class);
+  }
+
+  @Step("Login in AWS")
+  public Main_aws loginInAws(String email, String password) {
     loginField().setValue(email);
     passwordField().setValue(password);
     loginButton().click();
