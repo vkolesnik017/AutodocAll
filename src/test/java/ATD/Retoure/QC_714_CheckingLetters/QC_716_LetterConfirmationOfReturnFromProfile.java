@@ -21,7 +21,7 @@ import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.open;
 
-public class QC_716_LetterConfirmationOfReceiptOfApplicationFromProfile {
+public class QC_716_LetterConfirmationOfReturnFromProfile {
 
   private String idUserAws = "13751304";
   private String orderNumber = null;
@@ -45,8 +45,8 @@ public class QC_716_LetterConfirmationOfReceiptOfApplicationFromProfile {
   @Flaky
   @Owner(value = "Evlentiev")
   @Description(value = "Verification of the letter \"Confirmation of receipt of the application\" from profile")
-  public void testLetterConfirmationOfReceiptOfApplicationFromProfile(String route) throws SQLException {
-    orderNumber = productPage.openProductPageById(route, usualIdProduct)
+  public void testLetterConfirmationOfReturnFromProfile(String route) throws SQLException {
+    orderNumber = productPage.openProductPageById(route, idPfandProduct)
             .addProductToCart()
             .closePopupOtherCategoryIfYes()
             .cartClick()

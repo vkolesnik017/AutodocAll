@@ -38,6 +38,7 @@ public class CommonMethods {
     public static String usualIdProduct = "8340509";
     public static String idProductTire = "8075786";
     public static String idProductMore35EUR = "1367459";
+    public static String idPfandProduct = "1145093";
 
     @Step("{url} Open page with close popup")
     public static void openPage(String url) {
