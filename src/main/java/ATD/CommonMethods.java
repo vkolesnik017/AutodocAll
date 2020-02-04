@@ -253,6 +253,14 @@ public class CommonMethods {
             actualCharacteristics.add(text);
             titleOfBlockOfTopProducts().hover();
         }
+        arrowRightBtnInTopProductsBlock().click();
+        ElementsCollection miniCardsInTopBlockTwoSlide = miniCardsOfProducts().filter(visible).shouldHaveSize(4);
+        for (SelenideElement el : miniCardsInTopBlockTwoSlide) {
+            el.hover();
+            String text = el.$(recoveryCharacteristicInBlockOfTopProducts).shouldBe(visible).getText().replaceAll("\n", "");
+            actualCharacteristics.add(text);
+            titleOfBlockOfTopProducts().hover();
+        }
         assertTrue(actualCharacteristics.contains(expectedChar), "not in a single product is not output the recovery characteristic " + expectedChar + " in the block of top product");
     }
 
