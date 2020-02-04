@@ -1,7 +1,6 @@
 package ATD;
 
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
@@ -49,11 +48,11 @@ public class Retouren_page {
     return $x("//label[@class='checkbox color']//span");
   }
 
-  private SelenideElement selectWithProductCondition() {
+  private SelenideElement selectMountedOrNot() {
     return $x("//select[@name='mounting']");
   }
 
-  private ElementsCollection optionsProductConditionInSelect() {
+  private ElementsCollection optionsInSelectMountedOrNot() {
     return $$x("//select[@name='mounting']/option[position()>1]");
   }
 
@@ -90,10 +89,10 @@ public class Retouren_page {
       int randomCause = (int) (Math.random() * causes.size()) + 1;
       selectWithCausesReturn().selectOption(randomCause);
       sleep(2000);
-    if (selectWithProductCondition().isDisplayed()) {
-      ElementsCollection options = optionsProductConditionInSelect().shouldHave(sizeNotEqual(0));
+    if (selectMountedOrNot().isDisplayed()) {
+      ElementsCollection options = optionsInSelectMountedOrNot().shouldHave(sizeNotEqual(0));
       int randomOption = (int) (Math.random() * options.size()) + 1;
-      selectWithProductCondition().selectOption(randomOption);
+      selectMountedOrNot().selectOption(randomOption);
     }
     return this;
   }
