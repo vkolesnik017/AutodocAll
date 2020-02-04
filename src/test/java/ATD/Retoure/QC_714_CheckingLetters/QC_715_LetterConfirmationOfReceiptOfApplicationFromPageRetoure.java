@@ -25,6 +25,7 @@ public class QC_715_LetterConfirmationOfReceiptOfApplicationFromPageRetoure {
 
   private String idUserAws = "13674919";
   private String orderNumber = null;
+  private String mail = "QC_715_retoure@mailinator.com";
 
   private Product_page productPage = new Product_page();
   private Retouren_page retourenPage = new Retouren_page();
@@ -52,7 +53,7 @@ public class QC_715_LetterConfirmationOfReceiptOfApplicationFromPageRetoure {
             .closePopupOtherCategoryIfYes()
             .cartClick()
             .nextButtonClick()
-            .signIn("QC_715_retoure@mailinator.com", password)
+            .signIn(mail, password)
             .nextBtnClick()
             .chooseVorkasse()
             .nextBtnClick()
@@ -68,7 +69,7 @@ public class QC_715_LetterConfirmationOfReceiptOfApplicationFromPageRetoure {
             .fillInFormForMessage()
             .addFileIfIsDisplayedFileBlock()
             .clickSendenButtonWithCorrectData();
-    mailinator.openEmail("QC_715_retoure@mailinator.com")
+    mailinator.openEmail(mail)
             .letterInfo(1).shouldHave(text("moments ago")).shouldHave(text("Ihre Reklamation zur Bestellnummer: ".concat(orderNumber)));
   }
 
