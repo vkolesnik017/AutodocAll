@@ -20,6 +20,8 @@ public class Mailinator {
     return $(byXpath("//*[contains(@class,'pointer')]/../tr["+ numberLetter + "]//a"));
   }
 
+  public SelenideElement linkFAQemailConfirm() { return $(".btn-wrapper > a"); }
+
   public SelenideElement linkInRestorePasswordLetter() {
     return $(byCssSelector(".forgot>a"));
   }
