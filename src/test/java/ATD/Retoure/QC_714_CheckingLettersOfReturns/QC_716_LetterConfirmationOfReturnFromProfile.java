@@ -1,8 +1,8 @@
-package ATD.Retoure.QC_714_CheckingLetters;
+package ATD.Retoure.QC_714_CheckingLettersOfReturns;
 
 import ATD.DataBase;
 import ATD.Product_page;
-import ATD.Retouren_page;
+import ATD.Profile_page;
 import ATD.SetUp;
 import AWS.Order_aws;
 import io.qameta.allure.Description;
@@ -21,17 +21,15 @@ import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.open;
 
-public class QC_715_LetterConfirmationOfReturnFromRetourePage {
+public class QC_716_LetterConfirmationOfReturnFromProfile {
 
-  private String idUserAws = "13674919";
+  private String idUserAws = "13751304";
   private String orderNumber = null;
-  private String mail = "QC_715_retoure@mailinator.com";
+  private String mail = "QC_716_retoure@mailinator.com";
 
   private Product_page productPage = new Product_page();
-  private Retouren_page retourenPage = new Retouren_page();
   private Mailinator mailinator = new Mailinator();
   private DataBase db = new DataBase();
-
 
   @BeforeClass
   void setUp() {
@@ -46,8 +44,8 @@ public class QC_715_LetterConfirmationOfReturnFromRetourePage {
   @Test(dataProvider = "route")
   @Flaky
   @Owner(value = "Evlentiev")
-  @Description(value = "Verification of the letter \"Confirmation of receipt of the application\" from the page /retoure")
-  public void testLetterConfirmationOfReturnFromRetourePage(String route) throws SQLException {
+  @Description(value = "Verification of the letter \"Confirmation of receipt of the application\" from profile")
+  public void testLetterConfirmationOfReturnFromProfile(String route) throws SQLException {
     orderNumber = productPage.openProductPageById(route, idPfandProduct)
             .addProductToCart()
             .closePopupOtherCategoryIfYes()
@@ -62,8 +60,9 @@ public class QC_715_LetterConfirmationOfReturnFromRetourePage {
     new Order_aws(orderNumber).openOrderInAwsWithLogin()
             .setStatusOrderToVersendetVorkasse()
             .addDeliveryConditionGLS();
-    open(route + "/" + db.getRouteByRouteName(getShopFromRoute(route), "return_return"));
-    retourenPage.findOrder("11111", orderNumber)
+    open(route + "/" + db.getRouteByRouteName(getShopFromRoute(route), "profile_orders"));
+    new Profile_page().clickBestelldetailsButton(orderNumber)
+            .clickReturnOrReplaceItemButton()
             .clickCheckbox()
             .chooseRandomCauseReturnInSelect()
             .fillInFormForMessage()
