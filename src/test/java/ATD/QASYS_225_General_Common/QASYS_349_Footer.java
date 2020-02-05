@@ -184,7 +184,6 @@ public class QASYS_349_Footer {
         openPage(route);
         main_page.footerForm().scrollTo();
         main_page.clickDatenschutzInSubscribeBlock().click();
-        commonMethods.checkingDatenschutzerklarungLinkBehavior(main_page.clickDatenschutzInSubscribeBlock());
         commonMethods.checkingUrlAndCloseTab(route + "/" + db.getRouteByRouteName(getShopFromRoute(route), "staticDatenschutz"));
     }
 }
