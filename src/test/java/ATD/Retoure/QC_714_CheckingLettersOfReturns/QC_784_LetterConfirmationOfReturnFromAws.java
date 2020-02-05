@@ -1,4 +1,4 @@
-package ATD.Retoure.QC_714_CheckingLetters;
+package ATD.Retoure.QC_714_CheckingLettersOfReturns;
 
 import ATD.Product_page;
 import ATD.SetUp;
