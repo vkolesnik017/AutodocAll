@@ -63,6 +63,11 @@ public class Profile_page {
         return this;
     }
 
+    public Profile_page chekingToAppearPopupErrorsOfReturn() {
+        retourenPage.chekingToAppearPopupErrorsOfReturn();
+        return this;
+    }
+
     public Profile_page fillInFormForMessage() {
         retourenPage.fillInFormForMessage();
         return this;
