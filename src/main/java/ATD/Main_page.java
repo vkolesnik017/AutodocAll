@@ -345,11 +345,7 @@ public class Main_page {
         return $x("//ul[@class='social-inline']/li[3]/span");
     }
 
-
-    public Datenschutz_page clickDatenschutzInSubscription() {
-        $(By.xpath("//*[@class='footer__links']/div[2]/ul/li[7]/a")).click();
-        return page(Datenschutz_page.class);
-    }
+    public SelenideElement clickDatenschutzInSubscribeBlock() {return $(By.cssSelector("#privacy_policy_footer>span")); }
 
     @Step("Checking Countries Subscription")
     public void checkingCountriesSubscription() throws SQLException {

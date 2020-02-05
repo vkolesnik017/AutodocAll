@@ -4,7 +4,7 @@
 
     <test name="testSuite" >
         <classes>
-            <class name="ATD.QASYS_73_ProductGroups.QASYS_80_Paired">
+            <class name="ATD.QASYS_225_General_Common.QASYS_349_Footer">
             </class>
         </classes>
     </test>

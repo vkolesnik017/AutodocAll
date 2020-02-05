@@ -183,7 +183,8 @@ public class QASYS_349_Footer {
     public void checkingDatenschutzLink(String route) throws SQLException {
         openPage(route);
         main_page.footerForm().scrollTo();
-        main_page.clickDatenschutzInSubscription();
-        commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(getShopFromRoute(route), "staticDatenschutz"));
+        main_page.clickDatenschutzInSubscribeBlock().click();
+        commonMethods.checkingDatenschutzerklarungLinkBehavior(main_page.clickDatenschutzInSubscribeBlock());
+        commonMethods.checkingUrlAndCloseTab(route + "/" + db.getRouteByRouteName(getShopFromRoute(route), "staticDatenschutz"));
     }
 }
