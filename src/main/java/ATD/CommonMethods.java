@@ -38,6 +38,7 @@ public class CommonMethods {
     public static String usualIdProduct = "8340509";
     public static String idProductTire = "8075786";
     public static String idProductMore35EUR = "1367459";
+    public static String idPfandProduct = "1145093";
 
     @Step("{url} Open page with close popup")
     public static void openPage(String url) {
@@ -109,6 +110,13 @@ public class CommonMethods {
         datenschutzerklarungLink.shouldHave(cssValue("text-decoration", "underline solid rgb(0, 0, 0)"));
         datenschutzerklarungLink.click();
         checkingUrlAndCloseTab("https://www.autodoc.de/services/datenschutz");
+    }
+
+    @Step("Generates random email on @mailinator.com")
+    public static String mailRandomMailinator() {
+        Random randomGenerator = new Random();
+        int random = randomGenerator.nextInt();
+        return "autotestMail" + random + "@mailinator.com";
     }
 
     @Step("Get currency {nameLocator} and verify")
@@ -248,6 +256,14 @@ public class CommonMethods {
         scrollToBlockOfTopProducts();
         ElementsCollection miniCardsInTopBlock = miniCardsOfProducts().filter(visible).shouldHaveSize(4);
         for (SelenideElement el : miniCardsInTopBlock) {
+            el.hover();
+            String text = el.$(recoveryCharacteristicInBlockOfTopProducts).shouldBe(visible).getText().replaceAll("\n", "");
+            actualCharacteristics.add(text);
+            titleOfBlockOfTopProducts().hover();
+        }
+        arrowRightBtnInTopProductsBlock().click();
+        ElementsCollection miniCardsInTopBlockTwoSlide = miniCardsOfProducts().filter(visible).shouldHaveSize(4);
+        for (SelenideElement el : miniCardsInTopBlockTwoSlide) {
             el.hover();
             String text = el.$(recoveryCharacteristicInBlockOfTopProducts).shouldBe(visible).getText().replaceAll("\n", "");
             actualCharacteristics.add(text);
