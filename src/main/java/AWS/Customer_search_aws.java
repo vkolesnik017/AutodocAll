@@ -6,30 +6,30 @@ import org.openqa.selenium.By;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
-public class Customer_search {
+public class Customer_search_aws {
 
     private final String urlPage = "https://aws.autodoc.de/customer/search";
 
-    public Customer_search openSearchInAwsWithLogin() {
+    public Customer_search_aws openSearchInAwsWithLogin() {
         open(urlPage);
         new Login_aws().loginInAws();
         return this;
     }
 
-    public SelenideElement emailFiled() {
+    private SelenideElement emailFiled() {
         return $(By.xpath("//input[@name='Filter[email]']"));
     }
 
-    public SelenideElement searchBtn() {
+    private SelenideElement searchBtn() {
         return $(By.xpath("//div[@class='form-group']/input[@name='search']"));
     }
 
-    public SelenideElement idClientField() {
+    private SelenideElement idClientField() {
         return $(By.xpath("//td[@class='customer-id-cell']/a[2]"));
     }
 
 
-    public Customer_search enterMailAndClickSearch(String mail){
+    public Customer_search_aws enterMailAndClickSearch(String mail){
         emailFiled().setValue(mail);
         searchBtn().click();
         return this;

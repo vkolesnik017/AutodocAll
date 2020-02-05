@@ -38,6 +38,7 @@ public class CommonMethods {
     public static String usualIdProduct = "8340509";
     public static String idProductTire = "8075786";
     public static String idProductMore35EUR = "1367459";
+    public static String idPfandProduct = "1145093";
 
     @Step("{url} Open page with close popup")
     public static void openPage(String url) {
@@ -100,7 +101,15 @@ public class CommonMethods {
     public static String mailRandom() {
         Random randomGenerator = new Random();
         int random = randomGenerator.nextInt();
-        return "autotestMail" + random + "@test.com";
+        return "autotest" + random + "@test.com";
+    }
+
+    public void checkingDatenschutzerklarungLinkBehavior(SelenideElement datenschutzerklarungLink) {
+        datenschutzerklarungLink.shouldHave(attribute("title", "Datenschutzerklärung"));
+        datenschutzerklarungLink.shouldHave(cssValue("cursor", "pointer"));
+        datenschutzerklarungLink.shouldHave(cssValue("text-decoration", "underline solid rgb(0, 0, 0)"));
+        datenschutzerklarungLink.click();
+        checkingUrlAndCloseTab("https://www.autodoc.de/services/datenschutz");
     }
 
     @Step("Generates random email on @mailinator.com")
@@ -203,20 +212,20 @@ public class CommonMethods {
     }
 
     // methods and locators for block of top products
-    public SelenideElement titleOfBlockOfTopProducts() {
+    private SelenideElement titleOfBlockOfTopProducts() {
         return $x("//*[@class='title_list'] | //*[@class='top-small-products__title']");
     }
 
-    public SelenideElement arrowRightBtnInTopProductsBlock() {
+    private SelenideElement arrowRightBtnInTopProductsBlock() {
         return $(byXpath("(//*[@type='button'])[2]"));
     }
 
     // fits for all pages
-    public SelenideElement grayBtn() {
+    private SelenideElement grayBtn() {
         return $(byXpath("//*[contains(@class,'not_active')]/a"));
     }
 
-    public ElementsCollection miniCardsOfProducts() {
+    private ElementsCollection miniCardsOfProducts() {
         return $$(byXpath("//*[contains(@class,'product-list__item ')]"));
     }
 
@@ -247,6 +256,14 @@ public class CommonMethods {
         scrollToBlockOfTopProducts();
         ElementsCollection miniCardsInTopBlock = miniCardsOfProducts().filter(visible).shouldHaveSize(4);
         for (SelenideElement el : miniCardsInTopBlock) {
+            el.hover();
+            String text = el.$(recoveryCharacteristicInBlockOfTopProducts).shouldBe(visible).getText().replaceAll("\n", "");
+            actualCharacteristics.add(text);
+            titleOfBlockOfTopProducts().hover();
+        }
+        arrowRightBtnInTopProductsBlock().click();
+        ElementsCollection miniCardsInTopBlockTwoSlide = miniCardsOfProducts().filter(visible).shouldHaveSize(4);
+        for (SelenideElement el : miniCardsInTopBlockTwoSlide) {
             el.hover();
             String text = el.$(recoveryCharacteristicInBlockOfTopProducts).shouldBe(visible).getText().replaceAll("\n", "");
             actualCharacteristics.add(text);

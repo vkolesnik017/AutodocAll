@@ -9,6 +9,9 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
+
+
+import static ATD.CommonMethods.mailRandom;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
@@ -474,9 +477,65 @@ public class Product_page {
     return $(By.xpath("//div[@class='product-button button not_active out-of-stock']/a"));
   }
 
-  public Product_page clickAddToCartAndCheckPopupFR() {
-    addToCartBtnFR().click();
-    emailFieldInPopUpOfGrayBtn().shouldBe(appear);
-    return this;
-  }
+    public Product_page clickAddToCartAndCheckPopupFR() {
+        addToCartBtnFR().click();
+        emailFieldInPopUpOfGrayBtn().shouldBe(appear);
+        return this;
+    }
+
+    //locators and methods for FAQ form
+    private SelenideElement faqForm() {
+        return $(By.id("faq"));
+    }
+
+    private SelenideElement faqFormNameField() {
+        return $(By.id("zum_name2"));
+    }
+
+    private SelenideElement faqFormMailField() {
+        return $(By.id("zum_email2"));
+    }
+
+    private SelenideElement faqFormCommentField() {
+        return $(By.id("zum_message2"));
+    }
+
+    private SelenideElement faqFormSendenBtn() {
+        return $(By.id("sended_btn2"));
+    }
+
+    private SelenideElement faqFormSuccesPopup() {
+        return $(By.id("popup_update"));
+    }
+
+    private SelenideElement faqFormSuccesPopupCloseBtn() {
+        return $(By.xpath("//div[@id='popup_update']//div[@class='buttons-inner']/a"));
+    }
+
+    private SelenideElement datenschutzerklarungLink() {
+        return $(By.xpath("//div[@id='faq']//a[@title='Datenschutzerklärung']"));
+    }
+
+    public Product_page scrollToFaqForm() {
+        faqForm().scrollTo();
+        faqForm().shouldBe(visible);
+        return this;
+    }
+
+    public Product_page checkingDatenschutzerklarungLinkBehavior() {
+        new CommonMethods().checkingDatenschutzerklarungLinkBehavior(datenschutzerklarungLink());
+        return this;
+    }
+
+    public String fillingFieldsAndCheckBehaviorFaqForm() {
+        faqFormNameField().setValue("autotest");
+        String mail = "qc535_" + mailRandom();
+        faqFormMailField().setValue(mail);
+        faqFormCommentField().setValue("autotest");
+        faqFormSendenBtn().click();
+        faqFormSuccesPopup().shouldBe(appear);
+        faqFormSuccesPopupCloseBtn().click();
+        return mail;
+    }
+
 }

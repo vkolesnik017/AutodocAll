@@ -1,16 +1,16 @@
 package AWS;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
+import static com.codeborne.selenide.CollectionCondition.*;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byName;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$x;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Order_aws {
 
@@ -153,7 +153,7 @@ public class Order_aws {
         return $(byId("form_OrderDelivery[0][DeliveryNr]"));
     }
 
-    private SelenideElement deliveryInforDeltiField() {
+    private SelenideElement deliveryInfoDeltiField() {
         return $(byId("form_OrderDelivery[0][DeltiId]"));
     }
 
@@ -161,13 +161,89 @@ public class Order_aws {
     public Order_aws addDeliveryConditionGLS() {
         deliveryInfoRadioGLS().click();
         deliveryInfoSendungsnummerField().setValue("test");
-        deliveryInforDeltiField().setValue("test");
         saveChangesInOrderBtn().click();
-        deliveryInforDeltiField().shouldBe(not(visible));
+        deliveryInfoDeltiField().shouldBe(not(visible));
         return this;
     }
 
+    // Block with Products
 
+    private SelenideElement reclamationButton() {
+        return $(".show-reclamation");
+    }
 
+    // locators and methods for Popup of reclamation, appears after click reclamation button
+    private SelenideElement addNewReclamationButton() {
+        return $(byId("addNewReclamation"));
+    }
+
+    private SelenideElement checkBoxProductInPopupOfAddedReclamation() {
+        return $x("//input[@name='reclamationOrderProductId']");
+    }
+
+    private ElementsCollection causesReturnInSelect() {
+        return $$x("//select[@name='causes']/optgroup/option");
+    }
+
+    private SelenideElement selectWithCausesReturn() {
+        return $x("//select[@name='causes']");
+    }
+
+    private SelenideElement selectMountedOrNot() {
+        return $x("//select[contains(@id,'reclamation-mounting')]");
+    }
+
+    private ElementsCollection optionsInSelectMountedOrNot() {
+        return $$x("//select[contains(@id,'reclamation-mounting')]/option[position()>1]");
+    }
+
+    private SelenideElement formForMessage() {
+        return $(byId("reclamation-comment"));
+    }
+
+    private SelenideElement saveButtonInPopupOfReturn() {
+        return $(".btn-save");
+    }
+
+    private SelenideElement listWithReclamations() {
+        return $(byId("statistic_list"));
+    }
+
+    @Step
+    public Order_aws openPopupOfAddReclamation() {
+        executeJavaScript("window.scrollTo(0, document.body.scrollHeight)");
+        reclamationButton().click();
+        addNewReclamationButton().click();
+        sleep(3000);
+        checkBoxProductInPopupOfAddedReclamation().click();
+        return this;
+    }
+
+    @Step
+    public Order_aws chooseRandomCauseReturnInSelect() {
+        ElementsCollection causes = causesReturnInSelect().shouldHave(sizeNotEqual(0));
+        int randomCause = (int) (Math.random() * causes.size()) + 1;
+        selectWithCausesReturn().selectOption(randomCause);
+        sleep(2000);
+        if (selectMountedOrNot().isDisplayed()) {
+            ElementsCollection options = optionsInSelectMountedOrNot().shouldHave(sizeNotEqual(0));
+            int randomOption = (int) (Math.random() * options.size()) + 1;
+            selectMountedOrNot().selectOption(randomOption);
+        }
+        return this;
+    }
+
+    @Step
+    public Order_aws fillInFormForMessageReture() {
+        formForMessage().setValue("autotest");
+        return this;
+    }
+
+    @Step
+    public Order_aws clickSaveReclamationButton() {
+        saveButtonInPopupOfReturn().click();
+        listWithReclamations().waitUntil(appear, 30000);
+        return this;
+    }
 
 }
