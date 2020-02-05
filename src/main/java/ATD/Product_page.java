@@ -7,6 +7,7 @@ import com.codeborne.selenide.ex.ElementShould;
 import com.codeborne.selenide.ex.UIAssertionError;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 
 
 
@@ -36,6 +37,7 @@ public class Product_page {
     return page(Cart_page.class);
   }
 
+  //common locators
   private SelenideElement quantityOnBasketIcon() {
     return $x("//div[@class='header-cart__info']//span[1]");
   }
@@ -64,9 +66,9 @@ public class Product_page {
     return $(".car-match-block>p>b");
   }
 
-    private SelenideElement uncoverCharsBtn() {
-        return $(".show-more-button>span");
-    }
+  public SelenideElement uncoverCharactericticBtn() {    return $(".show-more-button>span"); }
+
+  public SelenideElement coverCharacteristicBtn() { return $(".show-more-button > .active"); }
 
   public SelenideElement pfandBlock() {
     return $(".product-eco-block");
@@ -96,9 +98,155 @@ public class Product_page {
     return $(".delivery-method");
   }
 
+  public SelenideElement carSelectorBlock() { return $(".atd-carselector__content"); }
+
+  public SelenideElement minimizedCharactericticBlock() { return $(".show-more-height"); }
+
+  public SelenideElement maximizedCharacteristicBlock() { return $(".height"); }
+
+  public SelenideElement featuresBlock() { return $(".product-block__description__features"); }
+
+  public SelenideElement jahreIcon() { return $(".features-guarantee-icon > span > b"); }
+
+  public SelenideElement tagePopup() { return $(".tage > div"); }
+
+  public SelenideElement tageIcon() { return $(".features-tage-icon > span > b"); }
+
+  public SelenideElement safeOrderIconColor() { return $(".features-safe-icon > span > b"); }
+
+  public SelenideElement safeOrderPopup() { return $(".safe_order  > div"); }
+
+  public SelenideElement productImageBlock() { return $(".im-prod-zoom"); }
+
+  public SelenideElement imageInSlider() { return $x("//*[@class='product-thumbnail-slider']/li[2]"); }
+
+  public SelenideElement closeFullImagePreview() { return $(".fancybox-close"); }
+
+  public SelenideElement fullProductImage() { return $(".fancybox-skin"); }
+
+  public SelenideElement productImageSlider() { return $(".product-block__image-slider"); }
+
+  public SelenideElement priceBlock() { return $(".product-block__price-block__price"); }
+
+  public SelenideElement brandButtonOnImage() { return $(".brand.btn"); }
+
+  public SelenideElement versandkostenButton() { return $(".product-inkl-info > a"); }
+
+  public SelenideElement raitingBlock() { return $(".product-block__price-block__rating"); }
+
+  public SelenideElement feedbackBlock() { return $(".product-feedback"); }
+
+  public SelenideElement similarPropertiesBlock() { return  $(".product-same-specification"); }
+
+  public SelenideElement linkInSimilarPropertiesBlock() { return $(".product-same-specification__item > p > a"); }
+
+  public SelenideElement minicardsBlock() { return $(".product-same-artikel-tyres"); }
+
+  public SelenideElement productInMinicard() { return $x("//*[contains(@class,'product-list__item ')]"); }
+
+  public SelenideElement characteristicsInMinicard() { return $(".item-table-box"); }
+
+  public SelenideElement videoBlock() { return $(".product-video-tutorial__video"); }
+
+  public SelenideElement pdfTutorialsBlock() { return $(".product-video-tutorial__tutorials"); }
+
+  private ElementsCollection pdfLinksForDownload() { return $$(".tutorial-text > a"); }
+
+  @Step("Checks that links contain pdf file")
+  public void checkPdfLinksForDownload() {
+    for (int i = 0; i < pdfLinksForDownload().size(); i++) {
+      Assert.assertTrue(pdfLinksForDownload().get(i).attr("href").contains(".pdf"), "Document for tutorial downloading is not in .pdf format");
+    }
+  }
+
+  //breadcrumbs locators
+  public SelenideElement breadcrumbsBlock() { return $(".search_mod_n"); }
+
+  public SelenideElement breadcrumbsCategoryDropdownButton() { return $x("//*[@class='step_3 active parts_step_3']//i"); }
+
+  public SelenideElement breadcrumbsFirstCategoryFromDropdown() { return $x("//*[@id='mCSB_3_container']//li[2]"); }
+
+  public SelenideElement breadcrumbsCategoryButton() { return $(".parts_step_3"); }
+
+  public SelenideElement breadcrumbsFirstParentCategoryFromDropdown() { return $x("//*[@id='mCSB_2_container']//li[2]"); }
+
+  public SelenideElement breadcrumbsParentCategoryDropdownButton() { return $x("//*[@class='step_2 active parts_step_2']//i"); }
+
+  public SelenideElement breadcrumbsParentCategotyButton() { return $(".parts_step_2"); }
+
+  public SelenideElement breadcrumbsCatalogButton() { return $(".parts_step_1"); }
+
+  //locators for FAQ block
+  public SelenideElement faqSubmitButton() { return $("#sended_btn2"); }
+
+  public SelenideElement faqNameInput() { return $("#zum_name2"); }
+
+  public SelenideElement faqEmailInput() { return $("#zum_email2"); }
+
+  public SelenideElement faqMessageInput() { return $("#zum_message2"); }
+
+  public SelenideElement faqPopup() { return $("#popup_update"); }
+
+  public SelenideElement faqPopupText() { return $(".ttl"); }
+
+  public SelenideElement faqPopupClose() { return $(".buttons-inner"); }
+
+  public SelenideElement validationNameInputFAQ() { return $("#zum_name2.invalid"); }
+
+  public SelenideElement validationEmailInputFAQ() { return $("#zum_email2.invalid"); }
+
+  public SelenideElement validationMessageInputFAQ() { return $("#zum_message2.invalid"); }
+
+  public SelenideElement vinInfo() { return $(".product-leave-feedback__wrap__row > a"); }
+
+  public SelenideElement vinInfoDropdown() { return $(".vin-info-dropdown"); }
+
+  //locators for Reviews block
+  public SelenideElement reviewsNameInput() { return $("#form_rating_name"); }
+
+  public SelenideElement reviewsEmailInput() { return $("#form_rating_email"); }
+
+  public SelenideElement reviewsMessageInput() { return $("#form_rating_message"); }
+
+  public SelenideElement validationNameInputReviews() { return $(".rating_name"); }
+
+  public SelenideElement validationEmailInputReviews() { return $(".rating_email"); }
+
+  public SelenideElement validationSubscribeCheckbox() { return $(".subscribe_accept"); }
+
+  public SelenideElement validationMessageInputReviews() { return $(".rating_message"); }
+
+  public SelenideElement reviewsSubmitButton() { return $(".btn_leave_review_from_page"); }
+
+  public SelenideElement subscribeAcceptCheckbox() { return $("#subscribe_accept"); }
+
+  //locators for compatibility block
+  public SelenideElement compatibleCarBrand() { return $(".accordion-button > span"); }
+
+  public SelenideElement firstBrandInCompabilityList() { return $x("//*[@class='details_info_box']/div[1]//a"); }
+
+  public SelenideElement secondBrandInCompabilityList() { return $x("//*[@class='details_info_box']/div[2]//a"); }
+
+  public SelenideElement thirdBrandInCompabilityList() { return $x("//*[@class='details_info_box']/div[3]//a"); }
+
+  public SelenideElement fourthBrandInCompabilityList() { return $x("//*[@class='details_info_box']/div[4]//a"); }
+
+  public SelenideElement firstModelInFirstBrandInCompatibilityList() { return $x("//*[@class='details_info_box']/div[1]/div/div[2]"); }
+
+  public SelenideElement carListInFirstModelCompabilityList() { return $x("//*[@class='dropdown_list']"); }
+
+  public SelenideElement compatibleCarInCompabilityList() { return $x("//*[@class='accordion-selected']"); }
+
+  public SelenideElement productOnListing() { return $x("//*[@class='name']"); }
+
+  public SelenideElement incompatibilityMessage() { return $(".car-match-block--false"); }
+
+  public void checkTextIsVisibleOnPage(String textToCheck) { $x("//*[contains(text(),'" + textToCheck + "')]").shouldBe(visible); }
+
+
   @Step
   public Product_page uncoverCharacteristics() {
-    uncoverCharsBtn().click();
+    uncoverCharactericticBtn().click();
     return this;
   }
 
@@ -296,6 +444,10 @@ public class Product_page {
   public ElementsCollection linksInOenNumbersBlock() {
     return $$x("//*[@class='oem-list']//li");
   }
+
+  public SelenideElement boldOenText() { return $(".text-semibold"); }
+
+  public SelenideElement linkInOemBlock() { return $x("//*[@class='oem-list']//li/a"); }
 
   // locator for counter
   private SelenideElement counterValue() {

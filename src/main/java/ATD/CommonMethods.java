@@ -112,6 +112,13 @@ public class CommonMethods {
         checkingUrlAndCloseTab("https://www.autodoc.de/services/datenschutz");
     }
 
+    @Step("Generates random email on @mailinator.com")
+    public static String mailRandomMailinator() {
+        Random randomGenerator = new Random();
+        int random = randomGenerator.nextInt();
+        return "autotestMail" + random + "@mailinator.com";
+    }
+
     @Step("Get currency {nameLocator} and verify")
     public static void getCurrencyAndVerify(SelenideElement currencyLocator, String nameLocator, String shop, String expectedCurrency) {
         String actualCurrency;
