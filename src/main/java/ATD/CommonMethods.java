@@ -103,6 +103,13 @@ public class CommonMethods {
         return "autotestMail" + random + "@test.com";
     }
 
+    @Step("Generates random email on @mailinator.com")
+    public static String mailRandomMailinator() {
+        Random randomGenerator = new Random();
+        int random = randomGenerator.nextInt();
+        return "autotestMail" + random + "@mailinator.com";
+    }
+
     @Step("Get currency {nameLocator} and verify")
     public static void getCurrencyAndVerify(SelenideElement currencyLocator, String nameLocator, String shop, String expectedCurrency) {
         String actualCurrency;
