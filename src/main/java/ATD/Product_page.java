@@ -191,9 +191,11 @@ public class Product_page {
   }
 
   // locators in popup of gray button for subscription for product which is not stock
-  public SelenideElement emailFieldInPopUpOfGrayBtn() {
-    return $(byId("form_AvailabilityReminder[email]"));
+  private SelenideElement popupAvailableForm() {
+    return $(byClassName("popup-available"));
   }
+
+  public SelenideElement emailFieldInPopUpOfGrayBtn() { return $(byId("form_AvailabilityReminder[email]")); }
 
   public SelenideElement sendButtonInPopUpOfGrayBtn() {
     return $(byCssSelector(".popup-available__button"));
@@ -206,6 +208,40 @@ public class Product_page {
   public SelenideElement closeSuccessPopUpOfGrayBtn() {
     return $(byXpath("//div[@class='popup_top']//a[@class='close']"));
   }
+
+  private SelenideElement datenschutzerklarungLinkInAvailableForm() {
+    return $(byCssSelector("#AvailabilityReminderprivacy_policy>a"));
+  }
+
+  private SelenideElement sendMailFormSuccesPopup() {
+    return $(By.id("news_subscribe"));
+  }
+
+  private SelenideElement sendMailFormSuccesPopupCloseBtn() {
+    return $(By.xpath("//div[@class='buttons']//div[@class='buttons-inner']/a"));
+  }
+
+  public Product_page clickGrayButtonAndCheckAvailableForm() {
+    grayButton().click();
+    popupAvailableForm().should(appear);
+    return this;
+  }
+
+  public Product_page checkingDatenschutzerklarungLinkBehaviorInAvailableForm() {
+    new CommonMethods().checkingDatenschutzerklarungLinkBehavior(datenschutzerklarungLinkInAvailableForm());
+    return this;
+  }
+
+  public String fillingFieldsAndCheckBehaviorAvailablelForm() {
+    String mail = "qc497_" + mailRandom();
+    emailFieldInPopUpOfGrayBtn().setValue(mail);
+    checkboxInPopUpOfGrayBtn().click();
+    sendButtonInPopUpOfGrayBtn().click();
+    sendMailFormSuccesPopup().shouldBe(appear);
+    sendMailFormSuccesPopupCloseBtn().click();
+    return mail;
+  }
+
 
   //Methods and locators for Selector Horizontal
   @Step("Choose brand in selector")
@@ -320,7 +356,7 @@ public class Product_page {
     return this;
   }
 
-  //locators adn methods for body products FR
+  //locators and methods for body products FR
   private SelenideElement addToCartBtnFR() {
     return $(By.xpath("//div[@class='product-button button not_active out-of-stock']/a"));
   }

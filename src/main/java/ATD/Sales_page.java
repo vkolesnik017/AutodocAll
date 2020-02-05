@@ -8,22 +8,22 @@ import static ATD.CommonMethods.mailRandom;
 import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Selenide.$;
 
-public class Blog_page {
+public class Sales_page {
 
     private SelenideElement datenschutzerklarungLink() {
-        return $(By.cssSelector("#privacy_policy_blog>a"));
+        return $(By.cssSelector("#privacy_policy1>a"));
     }
 
     private SelenideElement sendFormMailField() {
-        return $(By.cssSelector("#blog_subscribe_form>input"));
-    }
-
-    private SelenideElement subscribeCheckbox() {
-        return $(By.id("isSubscribe"));
+        return $(By.xpath("//input[@id='subscr']"));
     }
 
     private SelenideElement submitMailButton() {
-        return $(By.xpath("//button[@class='send']"));
+        return $(By.id("news-yes"));
+    }
+
+    private SelenideElement subscribeCheckbox() {
+        return $(By.name("isSubscribe"));
     }
 
     private SelenideElement sendMailFormSuccesPopup() {
@@ -35,15 +35,13 @@ public class Blog_page {
     }
 
 
-
-    public Blog_page checkingDatenschutzerklarungLinkBehavior() {
+    public Sales_page checkingDatenschutzerklarungLinkBehavior() {
         new CommonMethods().checkingDatenschutzerklarungLinkBehavior(datenschutzerklarungLink());
         return this;
     }
 
-
     public String fillingFieldsAndCheckBehaviorSendMailForm() {
-        String mail = "qc515_" + mailRandom();
+        String mail = "qc517_" + mailRandom();
         sendFormMailField().setValue(mail);
         subscribeCheckbox().click();
         submitMailButton().click();
