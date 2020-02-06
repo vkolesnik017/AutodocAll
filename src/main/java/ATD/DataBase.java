@@ -11,7 +11,7 @@ public class DataBase {
     private String password = "24201901";
 
 
-    private Connection coonectionDB(String nameDB) throws SQLException {
+    private Connection coonectionDB(String nameDB) {
         Connection conn = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
@@ -124,7 +124,7 @@ public class DataBase {
     // Return String KBA By Shop getKba("AT")
     public String getKba(String shop) throws SQLException {
         Statement statement = null;
-        Connection conn = coonectionDB("currency");
+        Connection conn = coonectionDB("kba_atd");
         String kba = null;
         String query = "SELECT " + shop + " FROM autodoc.kba_ATD where id = 1";
         try {
@@ -146,7 +146,7 @@ public class DataBase {
 
     public String getRetoureCauseTranslate(String shop, String value) throws SQLException {
         Statement statement = null;
-        Connection conn = coonectionDB("currency");
+        Connection conn = coonectionDB("retoure_translate");
         String translation = null;
         String query = "SELECT " .concat(shop) + " FROM autodoc.retoure_translate where valueCause="+"\"".concat(value)+"\"";
         try {
