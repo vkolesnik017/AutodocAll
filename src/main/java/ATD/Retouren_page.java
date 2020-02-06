@@ -6,7 +6,10 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
 import java.io.File;
+import java.sql.SQLException;
 
+import static ATD.CommonMethods.getCurrentShopFromJSVarInHTML;
+import static ATD.CommonMethods.getPriceFromElement;
 import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byId;
@@ -84,7 +87,13 @@ public class Retouren_page {
     return $x("//div[@id='popup_update']//*[@class='close']");
   }
 
+  private SelenideElement productPriceForReturn() {
+    return $x("//div[contains(@class,'popup-retoure__wrap')]//td[4]");
+  }
 
+  public Float getProductPriceForReturn() {
+    return getPriceFromElement(productPriceForReturn());
+  }
 
   @Step
   public Retouren_page clickCheckbox() {
@@ -117,6 +126,17 @@ public class Retouren_page {
       errorPopupForReturn().shouldBe(visible);
       closePopupButton().click();
       errorPopupForReturn().shouldBe(not(visible));
+    }
+    return this;
+  }
+
+  @Step("Checking translation of causes on the retoure page")
+  public Retouren_page checkingTranslateOfCausesForReturn() throws SQLException {
+    ElementsCollection causes = causesReturnInSelect().shouldHave(sizeNotEqual(0));
+    for (SelenideElement cause : causes) {
+      String valueText = cause.getValue();
+      String expectedText = new DataBase().getRetoureCauseTranslate(getCurrentShopFromJSVarInHTML(), valueText);
+      cause.shouldHave(exactText(expectedText));
     }
     return this;
   }

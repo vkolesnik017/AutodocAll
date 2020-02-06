@@ -172,6 +172,15 @@ public class Order_aws {
         return $(".show-reclamation");
     }
 
+    private SelenideElement sellingProductPrice() {
+        return $x("//table[@id='table_order_products_list']//td[13]/a");
+    }
+
+    @Step
+    public Float getSellingProductPrice() {
+        return Float.valueOf(sellingProductPrice().attr("data-sum"));
+    }
+
     // locators and methods for Popup of reclamation, appears after click reclamation button
     private SelenideElement addNewReclamationButton() {
         return $(byId("addNewReclamation"));
