@@ -135,7 +135,7 @@ public class Retouren_page {
     ElementsCollection causes = causesReturnInSelect().shouldHave(sizeNotEqual(0));
     for (SelenideElement cause : causes) {
       String valueText = cause.getValue();
-      String expectedText = new DataBase().getRetoureCauseTranslate(getCurrentShopFromJSVarInHTML(), valueText);
+      String expectedText = new DataBase().getRetoureCauseTranslate("retoure_translate", getCurrentShopFromJSVarInHTML(), valueText);
       cause.shouldHave(exactText(expectedText));
     }
     return this;

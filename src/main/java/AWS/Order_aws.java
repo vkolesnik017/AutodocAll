@@ -1,12 +1,15 @@
 package AWS;
 
+import ATD.DataBase;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
-import static com.codeborne.selenide.CollectionCondition.*;
+import java.sql.SQLException;
+
+import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byName;
@@ -70,8 +73,13 @@ public class Order_aws {
         open(url + orderNumber);
         new Login_aws().loginInAws();
         checkOrderHasTestPhone();
-        checkOrderHasTestStatus();
         testIcon().shouldBe(visible);
+        return this;
+    }
+
+    public Order_aws openOrderInAwsWithoutLogin() {
+        open(url + orderNumber);
+        checkOrderHasTestPhone();
         return this;
     }
 
@@ -223,8 +231,19 @@ public class Order_aws {
         executeJavaScript("window.scrollTo(0, document.body.scrollHeight)");
         reclamationButton().click();
         addNewReclamationButton().click();
-        sleep(3000);
+        sleep(2000);
         checkBoxProductInPopupOfAddedReclamation().click();
+        return this;
+    }
+
+    @Step("Checking translation of causes in popup of reclamation in aws")
+    public Order_aws checkingTranslateOfCausesForReturn(String language) throws SQLException {
+        ElementsCollection causes = causesReturnInSelect().shouldHave(sizeNotEqual(16));
+        for (SelenideElement cause : causes) {
+            String valueText = cause.getValue();
+            String expectedText = new DataBase().getRetoureCauseTranslate("retoure_translate_aws", language, valueText);
+            cause.shouldHave(exactText(expectedText));
+        }
         return this;
     }
 
