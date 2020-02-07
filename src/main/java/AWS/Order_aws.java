@@ -238,7 +238,7 @@ public class Order_aws {
 
     @Step("Checking translation of causes in popup of reclamation in aws")
     public Order_aws checkingTranslateOfCausesForReturn(String language) throws SQLException {
-        ElementsCollection causes = causesReturnInSelect().shouldHave(sizeNotEqual(16));
+        ElementsCollection causes = causesReturnInSelect().shouldHaveSize(16);
         for (SelenideElement cause : causes) {
             String valueText = cause.getValue();
             String expectedText = new DataBase().getRetoureCauseTranslate("retoure_translate_aws", language, valueText);

@@ -17,16 +17,16 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class QC_710_TranslationOfCausesInAws {
 
-  private UsersSettings_aws usersSettingsAws = new UsersSettings_aws();
-
   private String idUserAws = "13803213";
-  private String orderNumber = "28005811";
   private String mail = "QC_710_retoure@mailinator.com";
+
+  private UsersSettings_aws usersSettingsAws = new UsersSettings_aws();
+  private Order_aws orderAws = new Order_aws("28005811");
 
   @BeforeClass
   void setUp() {
     setUpBrowser(false, "chrome", "77.0");
-    new Order_aws(orderNumber).openOrderInAwsWithLogin()
+    orderAws.openOrderInAwsWithLogin()
             .setStatusOrderToVersendetVorkasse();
   }
 
@@ -47,13 +47,13 @@ public class QC_710_TranslationOfCausesInAws {
   public void testTranslationOfCausesOnRetourePage(String language) throws SQLException {
     open(usersSettingsAws.urlUsersSettings);
     new UsersSettings_aws().chooseLanguage(language);
-    new Order_aws(orderNumber).openOrderInAwsWithoutLogin()
+    orderAws.openOrderInAwsWithoutLogin()
             .openPopupOfAddReclamation()
             .checkingTranslateOfCausesForReturn(language);
   }
 
   @AfterClass
   public void setStatusTestToOrder() {
-    new Order_aws(orderNumber).setStatusOrderToTestbestellungen();
+    orderAws.setStatusOrderToTestbestellungen();
   }
 }
