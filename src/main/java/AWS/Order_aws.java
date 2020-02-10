@@ -3,6 +3,7 @@ package AWS;
 import ATD.DataBase;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.ex.ElementShould;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.testng.Assert;
@@ -69,9 +70,19 @@ public class Order_aws {
         this.orderNumber = orderNumber;
     }
 
+    private Order_aws checkWhatOrderOpened() {
+        // Иногда, если заказ в AWS открыть сразу быстро после создания, он может не успеть подгрузися в AWS
+        if ($("body").text().equals("Not found")) {
+            refresh();
+            phoneNumberField().shouldBe(visible);
+        }
+        return this;
+    }
+
     public Order_aws openOrderInAwsWithLogin() {
         open(url + orderNumber);
         new Login_aws().loginInAws();
+        checkWhatOrderOpened();
         checkOrderHasTestPhone();
         testIcon().shouldBe(visible);
         return this;
@@ -131,15 +142,21 @@ public class Order_aws {
 
     @Step
     public Order_aws setStatusOrderToTestbestellungen() {
+        String valueOfTestStatus = "60";
         if (!orderNumber.equals(null)) {
             open(url + orderNumber);
-            if (!statusOrder().attr("data-status-id").equals("60")) {
-                selectorOfStatuses().selectOptionByValue("60");
+            if (!statusOrder().attr("data-status-id").equals(valueOfTestStatus)) {
+                selectorOfStatuses().selectOptionByValue(valueOfTestStatus);
                 saveChangesInOrderBtn().click();
-                statusOrder().shouldHave(attribute("data-status-id", "60")).shouldHave(text("Testbestellungen"));
+                try { // Иногда приме смене статуса заказа, визуально он меняется, после повторного обновления страницы подргужается смененный статус, причина пока не установлена
+                    statusOrder().waitUntil(attribute("data-status-id", valueOfTestStatus), 20000);
+                } catch (ElementShould e) {
+                    refresh();
+                    statusOrder().shouldBe(attribute("data-status-id", valueOfTestStatus));
+                }
+                checkOrderHasTestStatus();
+                }
             }
-            checkOrderHasTestStatus();
-        }
         return this;
     }
 
@@ -147,7 +164,12 @@ public class Order_aws {
     public Order_aws setStatusOrderToVersendetVorkasse() {
         selectorOfStatuses().selectOptionByValue("3");
         saveChangesInOrderBtn().click();
-        statusOrder().shouldHave(attribute("data-status-id", "3"));
+        try { // Иногда приме смене статуса заказа, визуально он меняется, после повторного обновления страницы подргужается смененный статус, причина пока не установлена
+            statusOrder().waitUntil(attribute("data-status-id", "3"), 30000);
+        } catch (ElementShould e) {
+            refresh();
+            statusOrder().waitUntil(attribute("data-status-id", "3"), 30000);
+        }
         return this;
     }
 
@@ -161,8 +183,8 @@ public class Order_aws {
         return $(byId("form_OrderDelivery[0][DeliveryNr]"));
     }
 
-    private SelenideElement deliveryInfoDeltiField() {
-        return $(byId("form_OrderDelivery[0][DeltiId]"));
+    private SelenideElement packageContentButton() {
+        return $("[name='packageContent']");
     }
 
     @Step
@@ -170,7 +192,7 @@ public class Order_aws {
         deliveryInfoRadioGLS().click();
         deliveryInfoSendungsnummerField().setValue("test");
         saveChangesInOrderBtn().click();
-        deliveryInfoDeltiField().shouldBe(not(visible));
+        packageContentButton().shouldBe(visible);
         return this;
     }
 
@@ -270,7 +292,7 @@ public class Order_aws {
     @Step
     public Order_aws clickSaveReclamationButton() {
         saveButtonInPopupOfReturn().click();
-        listWithReclamations().waitUntil(appear, 30000);
+        listWithReclamations().waitUntil(appear, 40000);
         return this;
     }
 
