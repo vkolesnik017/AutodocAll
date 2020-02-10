@@ -19,6 +19,7 @@ import static ATD.CommonMethods.getShopFromRoute;
 import static ATD.CommonMethods.idPfandProduct;
 import static ATD.CommonMethods.password;
 import static ATD.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 import static org.testng.Assert.assertEquals;
 
@@ -73,6 +74,7 @@ public class QC_898_MatchPricesInAwsOrderAndProfile {
   @AfterMethod
   public void setStatusTestToOrder() {
     new Order_aws(orderNumber).setStatusOrderToTestbestellungen();
+    close();
   }
 
 }

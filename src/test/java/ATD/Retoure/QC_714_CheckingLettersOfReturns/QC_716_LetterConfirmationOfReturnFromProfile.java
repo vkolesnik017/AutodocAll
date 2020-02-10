@@ -19,6 +19,7 @@ import java.sql.SQLException;
 import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
 public class QC_716_LetterConfirmationOfReturnFromProfile {
@@ -75,6 +76,7 @@ public class QC_716_LetterConfirmationOfReturnFromProfile {
   @AfterMethod
   public void setStatusTestToOrder() {
     new Order_aws(orderNumber).setStatusOrderToTestbestellungen();
+    close();
   }
 
 }

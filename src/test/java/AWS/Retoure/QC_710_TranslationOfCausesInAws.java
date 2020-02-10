@@ -13,6 +13,7 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
 public class QC_710_TranslationOfCausesInAws {
@@ -55,5 +56,6 @@ public class QC_710_TranslationOfCausesInAws {
   @AfterClass
   public void setStatusTestToOrder() {
     orderAws.setStatusOrderToTestbestellungen();
+    close();
   }
 }
