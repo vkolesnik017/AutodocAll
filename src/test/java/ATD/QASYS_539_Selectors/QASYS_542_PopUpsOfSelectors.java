@@ -1,6 +1,7 @@
 package ATD.QASYS_539_Selectors;
 
 import ATD.Main_page;
+import ATD.Main_page_logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -19,6 +20,7 @@ import static com.codeborne.selenide.Selenide.open;
 public class QASYS_542_PopUpsOfSelectors {
 
   private Main_page mainPage = new Main_page();
+  private Main_page_logic mainPageLogic = new Main_page_logic();
 
   @BeforeClass
   void setUp() {
@@ -36,8 +38,8 @@ public class QASYS_542_PopUpsOfSelectors {
   @Description(value = "Appears popup when input wrong kba number")
   public void testAppearsPopupWhenWrongKbaNumber(String route) {
     open(route);
-    mainPage.fillNumberKba("0000", "000")
-            .selectorKbaBtn().click();
+    mainPageLogic.fillNumberKba("0000", "000")
+            .clickKbaBtn();
     mainPage.kbaPopupError().shouldBe(visible);
     mainPage.headerInPopupOfKbaError().shouldBe(visible).shouldHave(text("0000.000"));
     mainPage.brandSelectorInPopupOfKbaError().shouldBe(visible);
