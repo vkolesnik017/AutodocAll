@@ -1,12 +1,16 @@
 package AWS;
 
+import ATD.DataBase;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.ex.ElementShould;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
-import static com.codeborne.selenide.CollectionCondition.*;
+import java.sql.SQLException;
+
+import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byName;
@@ -66,12 +70,27 @@ public class Order_aws {
         this.orderNumber = orderNumber;
     }
 
+    private Order_aws checkWhatOrderOpened() {
+        // Иногда, если заказ в AWS открыть сразу быстро после создания, он может не успеть подгрузися в AWS
+        if ($("body").text().equals("Not found")) {
+            refresh();
+            phoneNumberField().shouldBe(visible);
+        }
+        return this;
+    }
+
     public Order_aws openOrderInAwsWithLogin() {
         open(url + orderNumber);
         new Login_aws().loginInAws();
+        checkWhatOrderOpened();
         checkOrderHasTestPhone();
-        checkOrderHasTestStatus();
         testIcon().shouldBe(visible);
+        return this;
+    }
+
+    public Order_aws openOrderInAwsWithoutLogin() {
+        open(url + orderNumber);
+        checkOrderHasTestPhone();
         return this;
     }
 
@@ -123,15 +142,21 @@ public class Order_aws {
 
     @Step
     public Order_aws setStatusOrderToTestbestellungen() {
+        String valueOfTestStatus = "60";
         if (!orderNumber.equals(null)) {
             open(url + orderNumber);
-            if (!statusOrder().attr("data-status-id").equals("60")) {
-                selectorOfStatuses().selectOptionByValue("60");
+            if (!statusOrder().attr("data-status-id").equals(valueOfTestStatus)) {
+                selectorOfStatuses().selectOptionByValue(valueOfTestStatus);
                 saveChangesInOrderBtn().click();
-                statusOrder().shouldHave(attribute("data-status-id", "60")).shouldHave(text("Testbestellungen"));
+                try { // Иногда приме смене статуса заказа, визуально он меняется, после повторного обновления страницы подргужается смененный статус, причина пока не установлена
+                    statusOrder().waitUntil(attribute("data-status-id", valueOfTestStatus), 20000);
+                } catch (ElementShould e) {
+                    refresh();
+                    statusOrder().shouldBe(attribute("data-status-id", valueOfTestStatus));
+                }
+                checkOrderHasTestStatus();
+                }
             }
-            checkOrderHasTestStatus();
-        }
         return this;
     }
 
@@ -139,7 +164,12 @@ public class Order_aws {
     public Order_aws setStatusOrderToVersendetVorkasse() {
         selectorOfStatuses().selectOptionByValue("3");
         saveChangesInOrderBtn().click();
-        statusOrder().shouldHave(attribute("data-status-id", "3"));
+        try { // Иногда приме смене статуса заказа, визуально он меняется, после повторного обновления страницы подргужается смененный статус, причина пока не установлена
+            statusOrder().waitUntil(attribute("data-status-id", "3"), 30000);
+        } catch (ElementShould e) {
+            refresh();
+            statusOrder().waitUntil(attribute("data-status-id", "3"), 30000);
+        }
         return this;
     }
 
@@ -153,8 +183,8 @@ public class Order_aws {
         return $(byId("form_OrderDelivery[0][DeliveryNr]"));
     }
 
-    private SelenideElement deliveryInfoDeltiField() {
-        return $(byId("form_OrderDelivery[0][DeltiId]"));
+    private SelenideElement packageContentButton() {
+        return $("[name='packageContent']");
     }
 
     @Step
@@ -162,7 +192,7 @@ public class Order_aws {
         deliveryInfoRadioGLS().click();
         deliveryInfoSendungsnummerField().setValue("test");
         saveChangesInOrderBtn().click();
-        deliveryInfoDeltiField().shouldBe(not(visible));
+        packageContentButton().shouldBe(visible);
         return this;
     }
 
@@ -170,6 +200,15 @@ public class Order_aws {
 
     private SelenideElement reclamationButton() {
         return $(".show-reclamation");
+    }
+
+    private SelenideElement sellingProductPrice() {
+        return $x("//table[@id='table_order_products_list']//td[13]/a");
+    }
+
+    @Step
+    public Float getSellingProductPrice() {
+        return Float.valueOf(sellingProductPrice().attr("data-sum"));
     }
 
     // locators and methods for Popup of reclamation, appears after click reclamation button
@@ -214,8 +253,19 @@ public class Order_aws {
         executeJavaScript("window.scrollTo(0, document.body.scrollHeight)");
         reclamationButton().click();
         addNewReclamationButton().click();
-        sleep(3000);
+        sleep(2000);
         checkBoxProductInPopupOfAddedReclamation().click();
+        return this;
+    }
+
+    @Step("Checking translation of causes in popup of reclamation in aws")
+    public Order_aws checkingTranslateOfCausesForReturn(String language) throws SQLException {
+        ElementsCollection causes = causesReturnInSelect().shouldHaveSize(16);
+        for (SelenideElement cause : causes) {
+            String valueText = cause.getValue();
+            String expectedText = new DataBase().getRetoureCauseTranslate("retoure_translate_aws", language, valueText);
+            cause.shouldHave(exactText(expectedText));
+        }
         return this;
     }
 
@@ -242,7 +292,7 @@ public class Order_aws {
     @Step
     public Order_aws clickSaveReclamationButton() {
         saveButtonInPopupOfReturn().click();
-        listWithReclamations().waitUntil(appear, 30000);
+        listWithReclamations().waitUntil(appear, 40000);
         return this;
     }
 

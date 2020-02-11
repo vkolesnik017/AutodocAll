@@ -174,6 +174,7 @@ public class CommonMethods {
     @Step
     // Pulling prices from text of element
     public static Float getPriceFromElement(SelenideElement element) {
+        element.shouldBe(visible);
         return Float.parseFloat(element.text().replaceAll("[^0-9,]", "").replace(",", "."));
     }
 

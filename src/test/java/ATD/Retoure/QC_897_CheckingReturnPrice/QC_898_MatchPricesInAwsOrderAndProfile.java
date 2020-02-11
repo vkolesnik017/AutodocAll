@@ -1,4 +1,4 @@
-package ATD.Retoure.QC_714_CheckingLettersOfReturns;
+package ATD.Retoure.QC_897_CheckingReturnPrice;
 
 import ATD.DataBase;
 import ATD.Product_page;
@@ -8,7 +8,6 @@ import AWS.Order_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
-import mailinator.Mailinator;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -16,21 +15,23 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.*;
+import static ATD.CommonMethods.getShopFromRoute;
+import static ATD.CommonMethods.idPfandProduct;
+import static ATD.CommonMethods.password;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
+import static org.testng.Assert.assertEquals;
 
-public class QC_716_LetterConfirmationOfReturnFromProfile {
-
-  private String idUserAws = "13751304";
-  private String orderNumber = null;
-  private String mail = "QC_716_retoure@mailinator.com";
+public class QC_898_MatchPricesInAwsOrderAndProfile {
 
   private Product_page productPage = new Product_page();
-  private Mailinator mailinator = new Mailinator();
+  private Profile_page profilePage = new Profile_page();
   private DataBase db = new DataBase();
+
+  private String idUserAws = "13785243";
+  private String orderNumber;
+  private String mail = "QC_898_retoure@mailinator.com";
 
   @BeforeClass
   void setUp() {
@@ -45,8 +46,8 @@ public class QC_716_LetterConfirmationOfReturnFromProfile {
   @Test(dataProvider = "route")
   @Flaky
   @Owner(value = "Evlentiev")
-  @Description(value = "Verification of the letter \"Confirmation of receipt of the application\" from profile")
-  public void testLetterConfirmationOfReturnFromProfile(String route) throws SQLException {
+  @Description(value = "Verify that product prices match the order on AWS and on the profile")
+  public void testMatchPricesInAwsOrderAndProfile(String route) throws SQLException {
     orderNumber = productPage.openProductPageById(route, idPfandProduct)
             .addProductToCart()
             .closePopupOtherCategoryIfYes()
@@ -58,19 +59,16 @@ public class QC_716_LetterConfirmationOfReturnFromProfile {
             .nextBtnClick()
             .nextBtnClick()
             .getOrderNumber();
-    new Order_aws(orderNumber).openOrderInAwsWithLogin()
+    Float productPriceInAwsOrder = new Order_aws(orderNumber).openOrderInAwsWithLogin()
+            .checkOrderHasTestStatus()
             .setStatusOrderToVersendetVorkasse()
-            .addDeliveryConditionGLS();
+            .addDeliveryConditionGLS()
+            .getSellingProductPrice();
     open(route + "/" + db.getRouteByRouteName(getShopFromRoute(route), "profile_orders"));
-    new Profile_page().clickBestelldetailsButton(orderNumber)
+    Float productPriceOnRetourenPage = profilePage.clickBestelldetailsButton(orderNumber)
             .clickReturnOrReplaceItemButton()
-            .clickCheckbox()
-            .chooseRandomCauseReturnInSelect()
-            .fillInFormForMessage()
-            .addFileIfIsDisplayedFileBlock()
-            .clickSendenButtonWithCorrectData();
-    mailinator.openEmail(mail)
-            .letterInfo(1).shouldHave(text("moments ago")).shouldHave(text("Ihre Reklamation zur Bestellnummer: ".concat(orderNumber)));
+            .getProductPriceForReturn();
+    assertEquals(productPriceInAwsOrder, productPriceOnRetourenPage);
   }
 
   @AfterMethod

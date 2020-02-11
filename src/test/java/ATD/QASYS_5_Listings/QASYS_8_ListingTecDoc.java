@@ -17,7 +17,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class QASYS_8_ListingTecDoc {
 
-  private Main_page mainPage = new Main_page();
+  private Main_page_logic mainPageLogic = new Main_page_logic();
   private Listing_page listingPage = new Listing_page();
   private DataBase db = new DataBase();
   private ListingTecDocSoft404_page tecDocSoft404Page = new ListingTecDocSoft404_page();
@@ -40,7 +40,7 @@ public class QASYS_8_ListingTecDoc {
     open(route);
     String shop = getCurrentShopFromJSVarInHTML();
     String kba = db.getKba(shop);
-    mainPage.fillNumberKba(kba.split(" ")[0], kba.split(" ")[1])
+    mainPageLogic.fillNumberKba(kba.split(" ")[0], kba.split(" ")[1])
             .clickKbaBtn()
             .linkForCategoryOilFilter().click();
     waitingWhileLinkBecomeExpected(route + "/" + db.getRouteByRouteName(shop, "category_car_list8"));
