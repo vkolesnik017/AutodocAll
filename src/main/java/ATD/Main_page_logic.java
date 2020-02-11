@@ -23,7 +23,7 @@ public class Main_page_logic extends Main_page {
     return this;
   }
 
-  @Step("Click search KBA button with correct filled in fields")
+  @Step("Click search KBA button")
   public Catalog_page clickKbaBtn() {
     selectorKbaBtn().click();
     return page(Catalog_page.class);

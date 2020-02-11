@@ -610,45 +610,29 @@ public class Main_page {
         return $(".kba_popup_example");
     }
 
-    // locators in popup of kba number error
-    public SelenideElement kbaPopupError() {
-        return $(".popup-kba-error");
-    }
-
-    public SelenideElement headerInPopupOfKbaError() {
+    //KBA Popup
+    public SelenideElement headingInKbaPopup() {
         return $(".popup-kba-error>p");
     }
 
-    public SelenideElement headerSelectorCarInPopupOfKbaError() {
+    public SelenideElement blockWithDropdownsOfChooseCarInKbaPopup() {
+        return $x("(.//*[@id='selector-wrapper'])[2]");
+    }
+
+    public SelenideElement headingSelectorCarInKbaPopup() {
         return $x("//*[@id='top-select-popup']//*[@class='block-select-kba__title']/span");
     }
 
-    public SelenideElement brandSelectorInPopupOfKbaError() {
-        return $x("//*[@id='top-select-popup']//*[@id='maker-select']");
+    public SelenideElement blockWithKbaFieldsInKbaPopup() {
+        return $x("//form[@id='top-select-popup']//div[@class='block-select-kba__row']");
     }
 
-    public SelenideElement modelSelectorInPopupOfKbaError() {
-        return $x("//*[@id='top-select-popup']//*[@id='model-select']");
+    public SelenideElement linkForTooltipInKbaPopup() {
+        return $("#kba_tooltip");
     }
 
-    public SelenideElement typeSelectorInPopupOfKbaError() {
-        return $x("//*[@id='top-select-popup']//*[@id='car-select']");
-    }
-
-    public SelenideElement firstKbaFieldInPopupOfKbaError() {
-        return $x("//*[@id='top-select-popup']//*[@id='kba1']");
-    }
-
-    public SelenideElement secondKbaFieldInPopupOfKbaError() {
-        return $x("//*[@id='top-select-popup']//*[@id='kba2']");
-    }
-
-    public SelenideElement selectorKbaBtnInPopupOfKbaError() {
-        return $x("//*[@id='top-select-popup']//*[@class='submit kba_submit']");
-    }
-
-    public SelenideElement tooltipErrorKbaInPopupOnKbaError() {
-        return $x("//*[@id='top-select-popup']//*[@id='kba-error-tooltip']");
+    public SelenideElement tooltipInKbaPopup() {
+        return $(".kba_tooltip>img");
     }
 
 }
