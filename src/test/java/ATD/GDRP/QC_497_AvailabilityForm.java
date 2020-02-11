@@ -35,7 +35,7 @@ public class QC_497_AvailabilityForm {
     @Description(value = "Test verify working of availability form")
     public void testAvailabilityForm(String route) {
         openPage(route);
-        mail = new Product_page_Logic().clickGrayButtonAndCheckAvailableForm().checkingDatenschutzerklarungLinkBehaviorInAvailableForm().fillingFieldsAndCheckBehaviorAvailablelForm("qc497_");
+        mail = new Product_page_Logic().clickGrayButtonAndCheckAvailableForm().checkingDatenschutzerklarungLinkBehaviorInAvailableForm().fillingFieldsAndCheckBehaviorAvailableForm("qc497_");
         new PrivacyPolicySubscription_aws().openPolicySubscriptionWithLogin().checkingPolicyAndSubscribeForMail(this.mail);
     }
 }

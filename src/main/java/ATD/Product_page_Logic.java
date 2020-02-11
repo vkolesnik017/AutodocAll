@@ -19,7 +19,7 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
-    public String fillingFieldsAndCheckBehaviorAvailablelForm(String qc) {
+    public String fillingFieldsAndCheckBehaviorAvailableForm(String qc) {
         String mail = qc + mailRandom();
         emailFieldInPopUpOfGrayBtn().setValue(mail);
         checkboxInPopUpOfGrayBtn().click();
