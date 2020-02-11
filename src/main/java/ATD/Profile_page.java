@@ -3,6 +3,8 @@ package ATD;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
+import java.sql.SQLException;
+
 import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selectors.byXpath;
@@ -39,7 +41,7 @@ public class Profile_page {
         return this;
     }
 
-    // details order page, appear after click bestelldetailsButton
+    // details order page, appear after click bestelldetails Button
 
     private SelenideElement returnOrReplaceItemButton() {
         return $(".returnOrdersPopupCaller");
@@ -53,6 +55,10 @@ public class Profile_page {
     }
 
     // popup return, the necessary methods are fits from the Retoure_page
+    public Float getProductPriceForReturn() {
+        return retourenPage.getProductPriceForReturn();
+    }
+
     public Profile_page clickCheckbox() {
         retourenPage.clickCheckbox();
         return this;
@@ -60,6 +66,11 @@ public class Profile_page {
 
     public Profile_page chooseRandomCauseReturnInSelect() {
         retourenPage.chooseRandomCauseReturnInSelect();
+        return this;
+    }
+
+    public Profile_page checkingTranslateOfCausesForReturn() throws SQLException {
+        retourenPage.checkingTranslateOfCausesForReturn();
         return this;
     }
 
