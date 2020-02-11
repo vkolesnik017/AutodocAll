@@ -610,29 +610,55 @@ public class Main_page {
         return $(".kba_popup_example");
     }
 
-    //KBA Popup
-    public SelenideElement headingInKbaPopup() {
+    //Car selector popup
+    public SelenideElement headingInCarSelectorPopup() {
         return $(".popup-kba-error>p");
     }
 
-    public SelenideElement blockWithDropdownsOfChooseCarInKbaPopup() {
-        return $x("(.//*[@id='selector-wrapper'])[2]");
+    public SelenideElement blockWithDropdownsOfChooseCarInCarSelectorPopup() {
+        return $x("(//*[@id='selector-wrapper'])[2]");
     }
 
-    public SelenideElement headingSelectorCarInKbaPopup() {
-        return $x("//*[@id='top-select-popup']//*[@class='block-select-kba__title']/span");
+    public SelenideElement headingCarInCarSelectorPopup() {
+        return $x("//form[@id='top-select-popup']//*[@class='block-select-kba__title']/span");
     }
 
-    public SelenideElement blockWithKbaFieldsInKbaPopup() {
+    public SelenideElement blockWithKbaFieldsInCarSelectorPopup() {
         return $x("//form[@id='top-select-popup']//div[@class='block-select-kba__row']");
     }
 
-    public SelenideElement linkForTooltipInKbaPopup() {
+    public SelenideElement linkForTooltipInCarSelectorPopup() {
         return $("#kba_tooltip");
     }
 
-    public SelenideElement tooltipInKbaPopup() {
+    public SelenideElement tooltipInCarSelectorPopup() {
         return $(".kba_tooltip>img");
     }
+
+    public SelenideElement suchenCarBtnInCarSelectorPopup() {
+        return $x("//form[@id='top-select-popup']//a[@class='submit search_button']");
+    }
+
+    SelenideElement brandSelectorInCarSelectorPopup() {
+        return $x("//form[@id='top-select-popup']//select[@id='form_maker_id']");
+    }
+
+    SelenideElement modelSelectorInCarSelectorPopup() {
+        return $x("//form[@id='top-select-popup']//select[@id='form_model_id']");
+    }
+
+    public SelenideElement errorTooltipForChooseBrandInCarSelectorPopup() {
+        return $x("//form[@id='top-select-popup']//div[@id='selector-error-tooltip']");
+    }
+
+    public SelenideElement errorTooltipForChooseModelInCarSelectorPopup() {
+        return $x("//form[@id='top-select-popup']//div[@id='selector-error-tooltip-model']");
+    }
+
+    public SelenideElement errorTooltipForChooseTypeInCarSelectorPopup() {
+        return $x("//form[@id='top-select-popup']//div[@id='selector-error-tooltip-car']");
+    }
+
+
 
 }

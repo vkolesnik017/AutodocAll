@@ -29,4 +29,17 @@ public class Main_page_logic extends Main_page {
     return page(Catalog_page.class);
   }
 
+  //Car selector popup
+  @Step("Choose brand in car selector popup")
+  public Main_page_logic chooseBrandInPopupSelectorForChooseCar(String brandName) {
+    brandSelectorInCarSelectorPopup().selectOption(brandName);
+    return this;
+  }
+
+  @Step("Choose model in car selector popup")
+  public Main_page_logic chooseModelInPopupSelectorForChooseCar(String modelNumberValue) {
+    modelSelectorInCarSelectorPopup().selectOptionByValue(modelNumberValue);
+    return this;
+  }
+
 }

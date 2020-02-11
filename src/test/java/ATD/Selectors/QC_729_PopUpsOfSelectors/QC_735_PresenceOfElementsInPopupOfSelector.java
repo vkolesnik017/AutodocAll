@@ -39,12 +39,12 @@ public class QC_735_PresenceOfElementsInPopupOfSelector {
     open(route);
     mainPageLogic.fillNumberKba("0000", "000")
             .clickKbaBtn();
-    mainPageLogic.headingInKbaPopup().shouldHave(exactText("Ihre KBA Eingabe 0000.000 ergab keine Übereinstimmung mit unserer Datenbank"));
-    mainPageLogic.blockWithDropdownsOfChooseCarInKbaPopup().shouldBe(visible);
-    mainPageLogic.headingSelectorCarInKbaPopup().shouldHave(exactText("Oder stellen Sie sicher, dass Sie die KBA-Nummer korrekt eingeben"));
-    mainPageLogic.blockWithKbaFieldsInKbaPopup().shouldBe(visible);
-    mainPageLogic.linkForTooltipInKbaPopup().hover();
-    mainPageLogic.tooltipInKbaPopup().shouldBe(visible);
+    mainPageLogic.headingInCarSelectorPopup().shouldHave(exactText("Ihre KBA Eingabe 0000.000 ergab keine Übereinstimmung mit unserer Datenbank"));
+    mainPageLogic.blockWithDropdownsOfChooseCarInCarSelectorPopup().shouldBe(visible);
+    mainPageLogic.headingCarInCarSelectorPopup().shouldHave(exactText("Oder stellen Sie sicher, dass Sie die KBA-Nummer korrekt eingeben"));
+    mainPageLogic.blockWithKbaFieldsInCarSelectorPopup().shouldBe(visible);
+    mainPageLogic.linkForTooltipInCarSelectorPopup().hover();
+    mainPageLogic.tooltipInCarSelectorPopup().shouldBe(visible);
   }
 
 }
