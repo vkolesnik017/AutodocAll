@@ -1,6 +1,6 @@
 package ATD.GDRP;
 
-import ATD.Product_page;
+import ATD.Product_page_Logic;
 import ATD.SetUp;
 import AWS.PrivacyPolicySubscription_aws;
 import io.qameta.allure.Description;
@@ -35,7 +35,7 @@ public class QC_497_AvailabilityForm {
     @Description(value = "Test verify working of availability form")
     public void testAvailabilityForm(String route) {
         openPage(route);
-        mail = new Product_page().clickGrayButtonAndCheckAvailableForm().checkingDatenschutzerklarungLinkBehaviorInAvailableForm().fillingFieldsAndCheckBehaviorAvailablelForm();
+        mail = new Product_page_Logic().clickGrayButtonAndCheckAvailableForm().checkingDatenschutzerklarungLinkBehaviorInAvailableForm().fillingFieldsAndCheckBehaviorAvailablelForm("qc497_");
         new PrivacyPolicySubscription_aws().openPolicySubscriptionWithLogin().checkingPolicyAndSubscribeForMail(this.mail);
     }
 }

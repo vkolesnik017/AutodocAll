@@ -220,6 +220,26 @@ public class Product_page {
 
   public SelenideElement subscribeAcceptCheckbox() { return $("#subscribe_accept"); }
 
+  public SelenideElement reviewsForm() {
+    return $(By.id("add_review_form"));
+  }
+
+  public SelenideElement checkboxInReviewsForm() {
+    return $(By.xpath("//form[@id='add_review_form']//input[@id='subscribe_accept']"));
+  }
+
+  public SelenideElement datenschutzerklarungLinkInReviewsForm() {
+    return $(By.xpath("//form[@id='add_review_form']//label[@id='privacy_policy_review_form']/a"));
+  }
+
+  public SelenideElement succesPopup() {
+    return $(By.id("popup_update"));
+  }
+
+  public SelenideElement succesPopupCloseBtn() {
+    return $(By.xpath("//div[@id='popup_update']//div[@class='buttons-inner']/a"));
+  }
+
   //locators for compatibility block
   public SelenideElement compatibleCarBrand() { return $(".accordion-button > span"); }
 
@@ -338,8 +358,8 @@ public class Product_page {
     return $(byCssSelector(".row-right>p"));
   }
 
-  // locators in popup of gray button for subscription for product which is not stock
-  private SelenideElement popupAvailableForm() {
+  // locators gray button popup for subscription for product which is not stock
+  SelenideElement popupAvailableForm() {
     return $(byClassName("popup-available"));
   }
 
@@ -357,37 +377,16 @@ public class Product_page {
     return $(byXpath("//div[@class='popup_top']//a[@class='close']"));
   }
 
-  private SelenideElement datenschutzerklarungLinkInAvailableForm() {
+  SelenideElement datenschutzerklarungLinkInAvailableForm() {
     return $(byCssSelector("#AvailabilityReminderprivacy_policy>a"));
   }
 
-  private SelenideElement sendMailFormSuccesPopup() {
+  SelenideElement sendMailFormSuccesPopup() {
     return $(By.id("news_subscribe"));
   }
 
-  private SelenideElement sendMailFormSuccesPopupCloseBtn() {
+  SelenideElement sendMailFormSuccesPopupCloseBtn() {
     return $(By.xpath("//div[@class='buttons']//div[@class='buttons-inner']/a"));
-  }
-
-  public Product_page clickGrayButtonAndCheckAvailableForm() {
-    grayButton().click();
-    popupAvailableForm().should(appear);
-    return this;
-  }
-
-  public Product_page checkingDatenschutzerklarungLinkBehaviorInAvailableForm() {
-    new CommonMethods().checkingDatenschutzerklarungLinkBehavior(datenschutzerklarungLinkInAvailableForm());
-    return this;
-  }
-
-  public String fillingFieldsAndCheckBehaviorAvailablelForm() {
-    String mail = "qc497_" + mailRandom();
-    emailFieldInPopUpOfGrayBtn().setValue(mail);
-    checkboxInPopUpOfGrayBtn().click();
-    sendButtonInPopUpOfGrayBtn().click();
-    sendMailFormSuccesPopup().shouldBe(appear);
-    sendMailFormSuccesPopupCloseBtn().click();
-    return mail;
   }
 
 
@@ -520,58 +519,36 @@ public class Product_page {
     }
 
     //locators and methods for FAQ form
-    private SelenideElement faqForm() {
+    SelenideElement faqForm() {
         return $(By.id("faq"));
     }
 
-    private SelenideElement faqFormNameField() {
+    SelenideElement faqFormNameField() {
         return $(By.id("zum_name2"));
     }
 
-    private SelenideElement faqFormMailField() {
+    SelenideElement faqFormMailField() {
         return $(By.id("zum_email2"));
     }
 
-    private SelenideElement faqFormCommentField() {
+    SelenideElement faqFormCommentField() {
         return $(By.id("zum_message2"));
     }
 
-    private SelenideElement faqFormSendenBtn() {
+    SelenideElement faqFormSendenBtn() {
         return $(By.id("sended_btn2"));
     }
 
-    private SelenideElement faqFormSuccesPopup() {
+    SelenideElement faqFormSuccesPopup() {
         return $(By.id("popup_update"));
     }
 
-    private SelenideElement faqFormSuccesPopupCloseBtn() {
+    SelenideElement faqFormSuccesPopupCloseBtn() {
         return $(By.xpath("//div[@id='popup_update']//div[@class='buttons-inner']/a"));
     }
 
-    private SelenideElement datenschutzerklarungLink() {
+    SelenideElement datenschutzerklarungLink() {
         return $(By.xpath("//div[@id='faq']//a[@title='Datenschutzerklärung']"));
-    }
-
-    public Product_page scrollToFaqForm() {
-        faqForm().scrollTo();
-        faqForm().shouldBe(visible);
-        return this;
-    }
-
-    public Product_page checkingDatenschutzerklarungLinkBehavior() {
-        new CommonMethods().checkingDatenschutzerklarungLinkBehavior(datenschutzerklarungLink());
-        return this;
-    }
-
-    public String fillingFieldsAndCheckBehaviorFaqForm() {
-        faqFormNameField().setValue("autotest");
-        String mail = "qc535_" + mailRandom();
-        faqFormMailField().setValue(mail);
-        faqFormCommentField().setValue("autotest");
-        faqFormSendenBtn().click();
-        faqFormSuccesPopup().shouldBe(appear);
-        faqFormSuccesPopupCloseBtn().click();
-        return mail;
     }
 
 }
