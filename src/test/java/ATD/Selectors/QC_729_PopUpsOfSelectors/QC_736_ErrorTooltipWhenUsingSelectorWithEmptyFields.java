@@ -42,7 +42,7 @@ public class QC_736_ErrorTooltipWhenUsingSelectorWithEmptyFields {
     mainPageLogic.errorTooltipForChooseBrandInCarSelectorPopup().shouldHave(
             exactText("Um Autoteile für Ihren Wagen zu suchen, geben Sie bitte Ihr genaues Automodell an"));
 
-    mainPageLogic.chooseBrandInPopupSelectorForChooseCar("VW")
+    mainPageLogic.chooseBrandInCarSelectorPopup("VW")
             .suchenCarBtnInCarSelectorPopup().click();
     mainPageLogic.errorTooltipForChooseModelInCarSelectorPopup().shouldHave(
             exactText("Wählen Sie ein Modell aus"));

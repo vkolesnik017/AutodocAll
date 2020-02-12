@@ -37,7 +37,7 @@ public class QC_742_CarSelectorPopupNotCloseAfterResetCar {
     open(route);
     mainPageLogic.fillNumberKba("0000", "000")
             .clickKbaBtn();
-    mainPageLogic.chooseBrandInPopupSelectorForChooseCar("VW")
+    mainPageLogic.chooseBrandInCarSelectorPopup("VW")
             .resetSelector();
     assertEquals(mainPageLogic.brandSelectorInCarSelectorPopup().getSelectedText(), "Marke wählen");
   }

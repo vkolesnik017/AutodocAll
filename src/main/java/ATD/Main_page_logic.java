@@ -36,7 +36,7 @@ public class Main_page_logic extends Main_page {
 
   //Car selector popup
   @Step("Choose brand in car selector popup")
-  public Main_page_logic chooseBrandInPopupSelectorForChooseCar(String brandName) {
+  public Main_page_logic chooseBrandInCarSelectorPopup(String brandName) {
     brandSelectorInCarSelectorPopup().selectOption(brandName);
     try {
       Wait().until(webDriver -> brandSelectorInCarSelectorPopup().getSelectedText().equals(brandName));
