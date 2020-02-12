@@ -16,7 +16,7 @@ import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.open;
 
-public class QC_735_PresenceOfElementsInPopupOfSelector {
+public class QC_735_PresenceOfElementsInCarSelectorPopup {
 
   private Main_page_logic mainPageLogic = new Main_page_logic();
 
@@ -37,8 +37,7 @@ public class QC_735_PresenceOfElementsInPopupOfSelector {
   @Description(value = "Presence of elements in popup of selector")
   public void testPresenceOfElementsInPopupOfSelector(String route) {
     open(route);
-    mainPageLogic.fillNumberKba("0000", "000")
-            .clickKbaBtn();
+    mainPageLogic.fillNumberKba("0000", "000").clickKbaBtn();
     mainPageLogic.headingInCarSelectorPopup().shouldHave(exactText("Ihre KBA Eingabe 0000.000 ergab keine Übereinstimmung mit unserer Datenbank"));
     mainPageLogic.blockWithDropdownsOfChooseCarInCarSelectorPopup().shouldBe(visible);
     mainPageLogic.headingCarInCarSelectorPopup().shouldHave(exactText("Oder stellen Sie sicher, dass Sie die KBA-Nummer korrekt eingeben"));

@@ -35,8 +35,7 @@ public class QC_736_ErrorTooltipWhenUsingSelectorWithEmptyFields {
   @Description(value = "The presence of a tooltip with an error when using the selector with empty fields in the pop-up with selector")
   public void testErrorTooltipWhenUsingSelectorWithEmptyFields(String route) {
     open(route);
-    mainPageLogic.fillNumberKba("0000", "000")
-            .clickKbaBtn();
+    mainPageLogic.fillNumberKba("0000", "000").clickKbaBtn();
 
     mainPageLogic.suchenCarBtnInCarSelectorPopup().click();
     mainPageLogic.errorTooltipForChooseBrandInCarSelectorPopup().shouldHave(

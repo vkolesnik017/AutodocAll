@@ -11,11 +11,14 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
+import static ATD.CommonMethods.closeAnyPopupByClickOverlay;
 import static ATD.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Condition.not;
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.Selenide.open;
-import static org.testng.Assert.assertEquals;
 
-public class QC_742_CarSelectorPopupNotCloseAfterResetCar {
+public class QC_743_CloseCarSelectorPopup {
 
   private Main_page_logic mainPageLogic = new Main_page_logic();
 
@@ -24,21 +27,22 @@ public class QC_742_CarSelectorPopupNotCloseAfterResetCar {
     setUpBrowser(false, "chrome", "77.0");
   }
 
-  @DataProvider(name = "routes", parallel = true)
+  @DataProvider(name = "routes")
   Object[] dataProvider() throws SQLException {
-    return new SetUp().setUpShopWithSubroutes("prod", "DE", "main","main,product");
+    return new SetUp().setUpShopWithSubroutes("prod", "DE", "main","main,category_car_list,product,listing_accessories");
   }
 
   @Test(dataProvider = "routes")
   @Flaky
   @Owner(value = "Evlentiev")
-  @Description(value = "Car selector popup not close after reset car")
-  public void testCarSelectorPopupNotCloseAfterResetCar(String route) {
+  @Description(value = "Close car selector popup")
+  public void testCloseCarSelectorPopup(String route) {
     open(route);
     mainPageLogic.fillNumberKba("0000", "000").clickKbaBtn();
-    mainPageLogic.chooseBrandInCarSelectorPopup("VW").resetSelector();
-    assertEquals(mainPageLogic.brandSelectorInCarSelectorPopup().getSelectedText(), "Marke wählen");
+    mainPageLogic.closeBtnInCarSelectorPopup().click();
+    mainPageLogic.closeBtnInCarSelectorPopup().shouldBe(not(visible));
+    mainPageLogic.fillNumberKba("0000", "000").clickKbaBtn();
+    closeAnyPopupByClickOverlay();
+
   }
-
-
 }

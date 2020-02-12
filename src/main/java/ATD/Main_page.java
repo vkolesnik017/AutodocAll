@@ -657,6 +657,9 @@ public class Main_page {
         return $x("//form[@id='top-select-popup']//a[@id='reset_selector_form']");
     }
 
+    public SelenideElement closeBtnInCarSelectorPopup() {
+        return $(".popup-kba-error>a");
+    }
 
 
 }
