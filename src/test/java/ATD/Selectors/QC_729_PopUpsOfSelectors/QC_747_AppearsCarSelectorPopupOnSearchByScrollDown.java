@@ -13,8 +13,7 @@ import java.sql.SQLException;
 
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.executeJavaScript;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class QC_747_AppearsCarSelectorPopupOnSearchByScrollDown {
 
@@ -38,5 +37,6 @@ public class QC_747_AppearsCarSelectorPopupOnSearchByScrollDown {
     open(route);
     executeJavaScript("window.scrollTo(0, 2000)");
     mainPageLogic.blockWithDropdownsOfChooseCarInCarSelectorPopup().shouldBe(visible);
+    close();
   }
 }

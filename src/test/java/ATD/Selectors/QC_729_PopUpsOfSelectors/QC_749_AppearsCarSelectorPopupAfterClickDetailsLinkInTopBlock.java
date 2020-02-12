@@ -6,6 +6,7 @@ import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -15,7 +16,9 @@ import java.sql.SQLException;
 import static ATD.CommonMethods.universalElementOfBuyBtnForAllPages;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class QC_749_AppearsCarSelectorPopupAfterClickDetailsLinkInTopBlock {
 
@@ -40,7 +43,13 @@ public class QC_749_AppearsCarSelectorPopupAfterClickDetailsLinkInTopBlock {
     open(route);
     commonMethods.scrollToBlockOfTopProducts();
     universalElementOfBuyBtnForAllPages().hover();
+    sleep(1000);
     commonMethods.detailsButtonInTopProductsBlock().click();
     mainPageLogic.blockWithDropdownsOfChooseCarInCarSelectorPopup().shouldBe(visible);
+  }
+
+  @AfterMethod
+  private void tearDown() {
+    close();
   }
 }
