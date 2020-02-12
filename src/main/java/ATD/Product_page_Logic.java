@@ -15,7 +15,7 @@ public class Product_page_Logic extends Product_page {
     }
 
     public Product_page_Logic checkingDatenschutzerklarungLinkBehaviorInAvailableForm() {
-        new CommonMethods().checkingDatenschutzerklarungLinkBehavior(datenschutzerklarungLinkInAvailableForm());
+        new CommonMethods().checkingDatenschutzerklarungLinkBehavior(datenschutzerklarungLinkInAvailableForm(), "underline solid rgb(0, 0, 0)");
         return this;
     }
 
@@ -37,7 +37,7 @@ public class Product_page_Logic extends Product_page {
     }
 
     public Product_page_Logic checkingDatenschutzerklarungLinkBehaviorInReviewsForm() {
-        new CommonMethods().checkingDatenschutzerklarungLinkBehavior(datenschutzerklarungLinkInReviewsForm());
+        new CommonMethods().checkingDatenschutzerklarungLinkBehavior(datenschutzerklarungLinkInReviewsForm(), "underline solid rgb(0, 0, 0)");
         return this;
     }
 
@@ -61,7 +61,7 @@ public class Product_page_Logic extends Product_page {
     }
 
     public Product_page_Logic checkingDatenschutzerklarungLinkBehavior() {
-        new CommonMethods().checkingDatenschutzerklarungLinkBehavior(datenschutzerklarungLink());
+        new CommonMethods().checkingDatenschutzerklarungLinkBehavior(datenschutzerklarungLink(), "underline solid rgb(0, 0, 0)");
         return this;
     }
 

@@ -143,11 +143,11 @@ public class QASYS_349_Footer {
         openPage(route);
         main_page.footerForm().scrollTo();
         main_page.subscriptionButton().click();
-        main_page.subscriptionTooltipPopup().shouldHave(Condition.text("Bitte geben Sie eine gültige E-mail Adresse an"));
-        main_page.subscriptionField().setValue("123456");
+        main_page.subscriptionErrTooltip().shouldHave(Condition.text("Bitte geben Sie eine gültige E-mail Adresse an"));
+        main_page.subscriptionMailField().setValue("123456");
         main_page.subscriptionButton().click();
-        main_page.subscriptionTooltipPopup().shouldHave(Condition.text("Bitte geben Sie eine gültige E-mail Adresse an"));
-        main_page.subscriptionField().setValue(testMail);
+        main_page.subscriptionErrTooltip().shouldHave(Condition.text("Bitte geben Sie eine gültige E-mail Adresse an"));
+        main_page.subscriptionMailField().setValue(testMail);
         main_page.subscriptionButton().click();
         main_page.subscriptionErrPopup().shouldHave(Condition.text("Um fortzufahren bestätigen Sie bitte Ihr Newsletter-Abo"));
         main_page.subscriptionPopupClose().click();

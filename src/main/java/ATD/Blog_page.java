@@ -37,7 +37,7 @@ public class Blog_page {
 
 
     public Blog_page checkingDatenschutzerklarungLinkBehavior() {
-        new CommonMethods().checkingDatenschutzerklarungLinkBehavior(datenschutzerklarungLink());
+        new CommonMethods().checkingDatenschutzerklarungLinkBehavior(datenschutzerklarungLink(), "underline solid rgb(0, 0, 0)");
         return this;
     }
 
