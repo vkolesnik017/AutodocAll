@@ -35,16 +35,16 @@ public class QASYS_541_VerticalSelectors {
     return new SetUp().setUpShopWithSubroutes("prod", "DE", "main","main,category_name,categories,category_name_brand");
   }
 
-  @Test(dataProvider = "routes")
-  @Flaky
-  @Owner(value = "Evlentiev")
-  @Description(value = "Test-1 Checks appears error what not selected brand when used vertical selector with empty value")
-  public void testErrorThatBrandCarNotSelected(String route) {
-    open(route);
-    openVerticalSelectorIfItHidden();
-    mainPage.selectorSearchBtn().click();
-    mainPage.errorTooltipOfBrandSelector().shouldBe(visible);
-  }
+//  @Test(dataProvider = "routes")
+//  @Flaky
+//  @Owner(value = "Evlentiev")
+//  @Description(value = "Test-1 Checks appears error what not selected brand when used vertical selector with empty value")
+//  public void testErrorThatBrandCarNotSelected(String route) {
+//    open(route);
+//    openVerticalSelectorIfItHidden();
+//    mainPage.selectorSearchBtn().click();
+//    mainPage.errorTooltipOfBrandSelector().shouldBe(visible);
+//  }
 
   @Test(dataProvider = "routes")
   @Flaky

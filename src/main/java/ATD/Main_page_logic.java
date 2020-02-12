@@ -11,7 +11,7 @@ import static com.codeborne.selenide.Selenide.page;
 
 public class Main_page_logic extends Main_page {
 
-  //Selector kba
+  // Selector kba
 
   // Only for DE
   @Step("Fill in KBA fields")
@@ -34,7 +34,7 @@ public class Main_page_logic extends Main_page {
     return page(Catalog_page.class);
   }
 
-  //Car selector popup
+  // Car selector popup
   @Step("Choose brand in car selector popup")
   public Main_page_logic chooseBrandInCarSelectorPopup(String brandName) {
     brandSelectorInCarSelectorPopup().selectOption(brandName);
