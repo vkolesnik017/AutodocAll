@@ -547,12 +547,6 @@ public class Main_page {
         }
     }
 
-    @Step
-    // return current chosen value from selector
-    public String getChosenValueFromSelector(SelenideElement selector) {
-        return executeJavaScript("return arguments[0].selectedOptions[0].innerText", selector);
-    }
-
     public SelenideElement brandSelector() {
         return $("#form_maker_id");
     }
@@ -610,45 +604,62 @@ public class Main_page {
         return $(".kba_popup_example");
     }
 
-    // locators in popup of kba number error
-    public SelenideElement kbaPopupError() {
-        return $(".popup-kba-error");
-    }
-
-    public SelenideElement headerInPopupOfKbaError() {
+    //Car selector popup
+    public SelenideElement headingInCarSelectorPopup() {
         return $(".popup-kba-error>p");
     }
 
-    public SelenideElement headerSelectorCarInPopupOfKbaError() {
-        return $x("//*[@id='top-select-popup']//*[@class='block-select-kba__title']/span");
+    public SelenideElement blockWithDropdownsOfChooseCarInCarSelectorPopup() {
+        return $x("//form[@id='top-select-popup']//*[@id='selector-wrapper']");
     }
 
-    public SelenideElement brandSelectorInPopupOfKbaError() {
-        return $x("//*[@id='top-select-popup']//*[@id='maker-select']");
+    public SelenideElement headingCarInCarSelectorPopup() {
+        return $x("//form[@id='top-select-popup']//*[@class='block-select-kba__title']/span");
     }
 
-    public SelenideElement modelSelectorInPopupOfKbaError() {
-        return $x("//*[@id='top-select-popup']//*[@id='model-select']");
+    public SelenideElement blockWithKbaFieldsInCarSelectorPopup() {
+        return $x("//form[@id='top-select-popup']//div[@class='block-select-kba__row']");
     }
 
-    public SelenideElement typeSelectorInPopupOfKbaError() {
-        return $x("//*[@id='top-select-popup']//*[@id='car-select']");
+    public SelenideElement linkForTooltipInCarSelectorPopup() {
+        return $("#kba_tooltip");
     }
 
-    public SelenideElement firstKbaFieldInPopupOfKbaError() {
-        return $x("//*[@id='top-select-popup']//*[@id='kba1']");
+    public SelenideElement tooltipInCarSelectorPopup() {
+        return $(".kba_tooltip>img");
     }
 
-    public SelenideElement secondKbaFieldInPopupOfKbaError() {
-        return $x("//*[@id='top-select-popup']//*[@id='kba2']");
+    public SelenideElement suchenCarBtnInCarSelectorPopup() {
+        return $x("//form[@id='top-select-popup']//a[@class='submit search_button']");
     }
 
-    public SelenideElement selectorKbaBtnInPopupOfKbaError() {
-        return $x("//*[@id='top-select-popup']//*[@class='submit kba_submit']");
+    public SelenideElement brandSelectorInCarSelectorPopup() {
+        return $x("//form[@id='top-select-popup']//select[@id='form_maker_id']");
     }
 
-    public SelenideElement tooltipErrorKbaInPopupOnKbaError() {
-        return $x("//*[@id='top-select-popup']//*[@id='kba-error-tooltip']");
+    SelenideElement modelSelectorInCarSelectorPopup() {
+        return $x("//form[@id='top-select-popup']//select[@id='form_model_id']");
     }
+
+    public SelenideElement errorTooltipForChooseBrandInCarSelectorPopup() {
+        return $x("//form[@id='top-select-popup']//div[@id='selector-error-tooltip']");
+    }
+
+    public SelenideElement errorTooltipForChooseModelInCarSelectorPopup() {
+        return $x("//form[@id='top-select-popup']//div[@id='selector-error-tooltip-model']");
+    }
+
+    public SelenideElement errorTooltipForChooseTypeInCarSelectorPopup() {
+        return $x("//form[@id='top-select-popup']//div[@id='selector-error-tooltip-car']");
+    }
+
+    SelenideElement resetCarBtnInCarSelectorPopup() {
+        return $x("//form[@id='top-select-popup']//a[@id='reset_selector_form']");
+    }
+
+    public SelenideElement closeBtnInCarSelectorPopup() {
+        return $(".popup-kba-error>a");
+    }
+
 
 }

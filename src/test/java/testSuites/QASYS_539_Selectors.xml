@@ -16,18 +16,4 @@
         </classes>
     </test>
 
-    <test name="QASYS_542_PopUpsOfSelectors">
-        <classes>
-            <class name="ATD.QASYS_539_Selectors.QASYS_542_PopUpsOfSelectors">
-            </class>
-        </classes>
-    </test>
-
-    <test name="QASYS_543_RegKbaSelectors">
-        <classes>
-            <class name="ATD.QASYS_539_Selectors.QASYS_543_RegKbaSelectors">
-            </class>
-        </classes>
-    </test>
-
 </suite>

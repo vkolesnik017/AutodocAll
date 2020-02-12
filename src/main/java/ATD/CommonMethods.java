@@ -178,7 +178,7 @@ public class CommonMethods {
         return Float.parseFloat(element.text().replaceAll("[^0-9,]", "").replace(",", "."));
     }
 
-    static SelenideElement universalElementOfBuyBtnForAllPages() {
+    public static SelenideElement universalElementOfBuyBtnForAllPages() {
         return $(byXpath("//a[contains(@class,'add_')]"));
     }
 
@@ -188,6 +188,13 @@ public class CommonMethods {
         if (hiddenVerticalSelector.isDisplayed()) {
             hiddenVerticalSelector.click();
         }
+    }
+
+    @Step("Close any popup by click overlay")
+    public static void closeAnyPopupByClickOverlay() {
+        By overlay = (byXpath("//div[@class='overlay black']"));
+        $(overlay).click(1, 1);
+        $(overlay).shouldBe(not(visible));
     }
 
     @Step
@@ -221,6 +228,10 @@ public class CommonMethods {
         return $(byXpath("(//*[@type='button'])[2]"));
     }
 
+    public SelenideElement detailsButtonInTopProductsBlock() {
+        return $(".linkShowPopup ");
+    }
+
     // fits for all pages
     private SelenideElement grayBtn() {
         return $(byXpath("//*[contains(@class,'not_active')]/a"));
@@ -235,7 +246,6 @@ public class CommonMethods {
     @Step
     public void scrollToBlockOfTopProducts() {
         titleOfBlockOfTopProducts().scrollTo();
-        universalElementOfBuyBtnForAllPages().shouldBe(visible);
     }
 
     @Step

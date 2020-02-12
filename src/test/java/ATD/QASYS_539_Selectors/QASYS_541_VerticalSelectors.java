@@ -115,10 +115,10 @@ public class QASYS_541_VerticalSelectors {
     open(route);
     openVerticalSelectorIfItHidden();
     mainPage.chooseBrandInSelector(brandToChoose);
-    assertEquals(mainPage.getChosenValueFromSelector(mainPage.brandSelector()), brandToChoose);
+    assertEquals(mainPage.brandSelector().getSelectedText(), brandToChoose);
     mainPage.resetBtnSelector().click();
     mainPage.resetBtnSelector().shouldBe(not(visible));
-    assertEquals(mainPage.getChosenValueFromSelector(mainPage.brandSelector()), "Marke wählen");
+    assertEquals(mainPage.brandSelector().getSelectedText(), "Marke wählen");
   }
 
   @Test(dataProvider = "routes")
