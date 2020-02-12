@@ -11,13 +11,12 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.closeAnyPopupByClickOverlay;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Condition.not;
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.executeJavaScript;
 import static com.codeborne.selenide.Selenide.open;
 
-public class QC_743_CloseCarSelectorPopup {
+public class QC_747_AppearanceCarSelectorPopupOnSearchByScrollDown {
 
   private Main_page_logic mainPageLogic = new Main_page_logic();
 
@@ -28,19 +27,16 @@ public class QC_743_CloseCarSelectorPopup {
 
   @DataProvider(name = "routes")
   Object[] dataProvider() throws SQLException {
-    return new SetUp().setUpShopWithSubroutes("prod", "DE", "main","main,category_car_list,product,listing_accessories");
+    return new SetUp().setUpShopWithSubroutes("prod", "DE", "main","search6");
   }
 
   @Test(dataProvider = "routes")
   @Flaky
   @Owner(value = "Evlentiev")
-  @Description(value = "Close car selector popup")
-  public void testCloseCarSelectorPopup(String route) {
+  @Description(value = "Appearance car selector popup on search by scroll down")
+  public void testAppearanceCarSelectorPopupOnSearchByScrollDown(String route) {
     open(route);
-    mainPageLogic.fillNumberKba("0000", "000").clickKbaBtn();
-    mainPageLogic.closeBtnInCarSelectorPopup().click();
-    mainPageLogic.closeBtnInCarSelectorPopup().shouldBe(not(visible));
-    mainPageLogic.fillNumberKba("0000", "000").clickKbaBtn();
-    closeAnyPopupByClickOverlay();
+    executeJavaScript("window.scrollTo(0, 2000)");
+    mainPageLogic.blockWithDropdownsOfChooseCarInCarSelectorPopup().shouldBe(visible);
   }
 }

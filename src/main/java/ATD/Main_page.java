@@ -610,7 +610,7 @@ public class Main_page {
     }
 
     public SelenideElement blockWithDropdownsOfChooseCarInCarSelectorPopup() {
-        return $x("(//*[@id='selector-wrapper'])[2]");
+        return $x("//form[@id='top-select-popup']//*[@id='selector-wrapper']");
     }
 
     public SelenideElement headingCarInCarSelectorPopup() {
