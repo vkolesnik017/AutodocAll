@@ -547,12 +547,6 @@ public class Main_page {
         }
     }
 
-    @Step
-    // return current chosen value from selector
-    public String getChosenValueFromSelector(SelenideElement selector) {
-        return executeJavaScript("return arguments[0].selectedOptions[0].innerText", selector);
-    }
-
     public SelenideElement brandSelector() {
         return $("#form_maker_id");
     }
@@ -639,7 +633,7 @@ public class Main_page {
         return $x("//form[@id='top-select-popup']//a[@class='submit search_button']");
     }
 
-    SelenideElement brandSelectorInCarSelectorPopup() {
+    public SelenideElement brandSelectorInCarSelectorPopup() {
         return $x("//form[@id='top-select-popup']//select[@id='form_maker_id']");
     }
 
@@ -657,6 +651,10 @@ public class Main_page {
 
     public SelenideElement errorTooltipForChooseTypeInCarSelectorPopup() {
         return $x("//form[@id='top-select-popup']//div[@id='selector-error-tooltip-car']");
+    }
+
+    SelenideElement resetCarBtnInCarSelectorPopup() {
+        return $x("//form[@id='top-select-popup']//a[@id='reset_selector_form']");
     }
 
 
