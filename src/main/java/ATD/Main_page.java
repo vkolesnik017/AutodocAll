@@ -559,7 +559,7 @@ public class Main_page {
         return $("#form_car_id");
     }
 
-    public SelenideElement selectorSearchBtn() {
+    public SelenideElement searchBtnInVerticalSelector() {
         return $(".search_button");
     }
 

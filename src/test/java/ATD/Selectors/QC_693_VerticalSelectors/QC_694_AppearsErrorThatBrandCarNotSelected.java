@@ -37,7 +37,7 @@ public class QC_694_AppearsErrorThatBrandCarNotSelected {
   public void testAppearsErrorThatBrandCarNotSelected(String route) {
     open(route);
     openVerticalSelectorIfItHidden();
-    mainPageLogic.selectorSearchBtn().click();
+    mainPageLogic.searchBtnInVerticalSelector().click();
     mainPageLogic.errorTooltipOfBrandSelector().shouldBe(visible);
   }
 }

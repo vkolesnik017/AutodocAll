@@ -42,7 +42,7 @@ public class QASYS_541_VerticalSelectors {
 //  public void testErrorThatBrandCarNotSelected(String route) {
 //    open(route);
 //    openVerticalSelectorIfItHidden();
-//    mainPage.selectorSearchBtn().click();
+//    mainPage.searchBtnInVerticalSelector().click();
 //    mainPage.errorTooltipOfBrandSelector().shouldBe(visible);
 //  }
 
@@ -54,7 +54,7 @@ public class QASYS_541_VerticalSelectors {
     open(route);
     openVerticalSelectorIfItHidden();
     mainPage.chooseBrandInSelector(brandToChoose)
-            .selectorSearchBtn().click();
+            .searchBtnInVerticalSelector().click();
     mainPage.errorToolTipOfModelSelector().shouldBe(visible);
   }
 
@@ -67,7 +67,7 @@ public class QASYS_541_VerticalSelectors {
     openVerticalSelectorIfItHidden();
     mainPage.chooseBrandInSelector(brandToChoose)
             .chooseModelInSelector(modelToChoose)
-            .selectorSearchBtn().click();
+            .searchBtnInVerticalSelector().click();
     mainPage.errorToolTipOfTypeSelector().shouldBe(visible);
   }
 
@@ -84,7 +84,7 @@ public class QASYS_541_VerticalSelectors {
     open(route);
     openVerticalSelectorIfItHidden();
     mainPage.chooseBrandModelTypeInSelector(brandToChoose, modelToChoose, typeToChoose)
-            .selectorSearchBtn().click();
+            .searchBtnInVerticalSelector().click();
     checkingContainsUrl("ersatzteile/citroen/ax/ax-za/20249-1-4-allure");
     new Catalog_page().catalogBlog().shouldBe(visible);
   }
@@ -102,7 +102,7 @@ public class QASYS_541_VerticalSelectors {
     open(route);
     openVerticalSelectorIfItHidden();
     mainPage.chooseBrandModelTypeInSelector(brandToChoose, modelToChoose, typeToChoose)
-            .selectorSearchBtn().click();
+            .searchBtnInVerticalSelector().click();
     checkingContainsUrl("/citroen/ax/ax-za/20249-1-4-allure");
     new Listing_page().priceFilterSubmitButton().shouldBe(visible);
   }
@@ -147,7 +147,7 @@ public class QASYS_541_VerticalSelectors {
     open(urlWithSelectedCar);
     open(listingAcc);
     mainPage.resetBtnSelector().click();
-    mainPage.selectorSearchBtn().shouldBe((visible));
+    mainPage.searchBtnInVerticalSelector().shouldBe((visible));
   }
 
   @AfterMethod
