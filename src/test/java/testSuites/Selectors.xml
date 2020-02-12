@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Selectors" parallel="methods" thread-count="2" data-provider-thread-count="3">
+
+    <test name="QC_771_RegKbaSelector">
+        <classes>
+            <class name="ATD.Selectors.QC_771_RegKbaSelector.QC_772_RegKbaSelector"/>
+        </classes>
+    </test>
+
+    <test name="QC_729_PopUpsOfSelectors">
+        <classes>
+            <class name="ATD.Selectors.QC_729_PopUpsOfSelectors.QC_747_AppearsCarSelectorPopupOnSearchByScrollDown"/>
+            <class name="ATD.Selectors.QC_729_PopUpsOfSelectors.QC_735_PresenceOfElementsInCarSelectorPopup"/>
+            <class name="ATD.Selectors.QC_729_PopUpsOfSelectors.QC_736_ErrorTooltipWhenUsingSelectorWithEmptyFields"/>
+            <class name="ATD.Selectors.QC_729_PopUpsOfSelectors.QC_742_CarSelectorPopupNotCloseAfterResetCar"/>
+            <class name="ATD.Selectors.QC_729_PopUpsOfSelectors.QC_743_CloseCarSelectorPopup"/>
+            <class name="ATD.Selectors.QC_729_PopUpsOfSelectors.QC_749_AppearsCarSelectorPopupAfterClickDetailsLinkInTopBlock"/>
+        </classes>
+    </test>
+
+</suite>
