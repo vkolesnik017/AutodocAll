@@ -31,7 +31,7 @@ public class Product_page {
     return this;
   }
 
-  @Step
+  @Step(":from product page")
   public Cart_page cartClick() {
     new Main_page().cartClick();
     return page(Cart_page.class);
@@ -201,7 +201,7 @@ public class Product_page {
 
   public SelenideElement vinInfoDropdown() { return $(".vin-info-dropdown"); }
 
-  //locators for Reviews block
+  //locators for Reviews Form
   public SelenideElement reviewsNameInput() { return $("#form_rating_name"); }
 
   public SelenideElement reviewsEmailInput() { return $("#form_rating_email"); }

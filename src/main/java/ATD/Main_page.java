@@ -189,7 +189,7 @@ public class Main_page {
         return page(CarParts_Engine_page.class);
     }
 
-    @Step
+    @Step("Cart click")
     public Cart_page cartClick() {
         cartIcon().click();
         return page(Cart_page.class);
@@ -297,11 +297,11 @@ public class Main_page {
         return $(byXpath("//button[@id='news_yes_footer']"));
     }
 
-    public SelenideElement subscriptionField() {
+    public SelenideElement subscriptionMailField() {
         return $(byXpath("//input[@id='subscr_footer']"));
     }
 
-    public SelenideElement subscriptionTooltipPopup() {
+    public SelenideElement subscriptionErrTooltip() {
         return $(byXpath("//div[@class='wrong_footer']/p"));
     }
 

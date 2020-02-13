@@ -104,10 +104,10 @@ public class CommonMethods {
         return "autotest" + random + "@test.com";
     }
 
-    public void checkingDatenschutzerklarungLinkBehavior(SelenideElement datenschutzerklarungLink) {
+    public void checkingDatenschutzerklarungLinkBehavior(SelenideElement datenschutzerklarungLink, String cssValue) {
         datenschutzerklarungLink.shouldHave(attribute("title", "Datenschutzerklärung"));
         datenschutzerklarungLink.shouldHave(cssValue("cursor", "pointer"));
-        datenschutzerklarungLink.shouldHave(cssValue("text-decoration", "underline solid rgb(0, 0, 0)"));
+        datenschutzerklarungLink.shouldHave(cssValue("text-decoration", cssValue));
         datenschutzerklarungLink.click();
         checkingUrlAndCloseTab("https://www.autodoc.de/services/datenschutz");
     }

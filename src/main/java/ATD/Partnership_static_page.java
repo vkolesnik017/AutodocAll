@@ -65,7 +65,7 @@ public class Partnership_static_page {
     }
 
     public Partnership_static_page checkingDatenschutzerklarungLinkBehavior() {
-        new CommonMethods().checkingDatenschutzerklarungLinkBehavior(datenschutzerklarungLink());
+        new CommonMethods().checkingDatenschutzerklarungLinkBehavior(datenschutzerklarungLink(), "underline solid rgb(0, 0, 0)");
         return this;
     }
 
