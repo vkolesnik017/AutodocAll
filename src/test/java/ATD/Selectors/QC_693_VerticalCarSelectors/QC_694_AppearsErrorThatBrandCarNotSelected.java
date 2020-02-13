@@ -1,4 +1,4 @@
-package ATD.Selectors.QC_693_VerticalSelectors;
+package ATD.Selectors.QC_693_VerticalCarSelectors;
 
 import ATD.Main_page_logic;
 import ATD.SetUp;
@@ -11,9 +11,8 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.openVerticalSelectorIfItHidden;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Selenide.open;
 
 public class QC_694_AppearsErrorThatBrandCarNotSelected {
@@ -36,8 +35,8 @@ public class QC_694_AppearsErrorThatBrandCarNotSelected {
   @Description(value = "Appears error what not selected brand when used vertical selector with empty value")
   public void testAppearsErrorThatBrandCarNotSelected(String route) {
     open(route);
-    openVerticalSelectorIfItHidden();
-    mainPageLogic.searchBtnInVerticalSelector().click();
-    mainPageLogic.errorTooltipOfBrandSelector().shouldBe(visible);
+    mainPageLogic.clickSearchBtnInVerticalSelectorWhenNotSelectedAllFields()
+            .errorTooltipOfBrandSelector().shouldHave(
+                    exactText("Um Autoteile für Ihren Wagen zu suchen, geben Sie bitte Ihr genaues Automodell an"));
   }
 }

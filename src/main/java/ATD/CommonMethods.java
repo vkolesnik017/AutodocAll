@@ -141,7 +141,7 @@ public class CommonMethods {
     }
 
     @Step
-    //Method for checking for contains URL
+    //Method for waiting while link become contains expected
     public static void checkingContainsUrl(String expectedContainsUrl) {
         try {
             Wait().until(webDriver -> url().contains(expectedContainsUrl));
@@ -180,14 +180,6 @@ public class CommonMethods {
 
     public static SelenideElement universalElementOfBuyBtnForAllPages() {
         return $(byXpath("//a[contains(@class,'add_')]"));
-    }
-
-    // open vertical selector if it hidden
-    public static void openVerticalSelectorIfItHidden() {
-        SelenideElement hiddenVerticalSelector = $(".catalog-title__change-car");
-        if (hiddenVerticalSelector.isDisplayed()) {
-            hiddenVerticalSelector.click();
-        }
     }
 
     @Step("Close any popup by click overlay")

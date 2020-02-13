@@ -511,34 +511,6 @@ public class Main_page {
     }
 
     //Methods and locators for Selector Vertical
-    @Step("Choose brand in selector")
-    public Main_page chooseBrandInSelector(String brandName) {
-        brandSelector().find("optgroup").should(exist);
-        brandSelector().selectOption(brandName);
-        return this;
-    }
-
-    @Step("Choose model in selector")
-    public Main_page chooseModelInSelector(String modelNumberValue) {
-        modelSelector().find("optgroup").should(exist);
-        modelSelector().selectOptionByValue(modelNumberValue);
-        return this;
-    }
-
-    @Step("Choose type in selector")
-    private Main_page chooseTypeInSelector(String typeNumberValue) {
-        typeSelector().find("optgroup").should(exist);
-        typeSelector().selectOptionByValue(typeNumberValue);
-        return this;
-    }
-
-    @Step("Choose brand, model, type in horizontal selector")
-    public Main_page chooseBrandModelTypeInSelector(String brandName, String modelNumberValue, String typeNumberValue) {
-        chooseBrandInSelector(brandName);
-        chooseModelInSelector(modelNumberValue);
-        chooseTypeInSelector(typeNumberValue);
-        return this;
-    }
 
     @Step("Method close car selector tooltip if it is present on page")
     public void closeCarSelectorTooltipIfVisible() {
@@ -547,19 +519,19 @@ public class Main_page {
         }
     }
 
-    public SelenideElement brandSelector() {
+    public SelenideElement brandSelectorInVerticalCarSelector() {
         return $("#form_maker_id");
     }
 
-    private SelenideElement modelSelector() {
+    SelenideElement modelSelectorInVerticalCarSelector() {
         return $("#form_model_id");
     }
 
-    private SelenideElement typeSelector() {
+    SelenideElement typeSelectorInVerticalCarSelector() {
         return $("#form_car_id");
     }
 
-    public SelenideElement searchBtnInVerticalSelector() {
+    SelenideElement searchBtnInVerticalSelector() {
         return $(".search_button");
     }
 
@@ -575,12 +547,16 @@ public class Main_page {
         return $(byId("selector-error-tooltip-car"));
     }
 
-    public SelenideElement resetBtnSelector() {
+    SelenideElement resetBtnInVerticalCarSelector() {
         return $(byId("reset_selector_form"));
     }
 
     private SelenideElement tooltipCarSelectorClose() {
         return $(".tooltiptext-close");
+    }
+
+    SelenideElement hiddenVerticalSelector() {
+        return $(".catalog-title__change-car");
     }
 
     //Selector kba
