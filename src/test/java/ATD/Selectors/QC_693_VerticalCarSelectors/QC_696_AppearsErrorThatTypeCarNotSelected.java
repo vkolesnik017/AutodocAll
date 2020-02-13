@@ -1,0 +1,44 @@
+package ATD.Selectors.QC_693_VerticalCarSelectors;
+
+import ATD.Main_page_logic;
+import ATD.SetUp;
+import io.qameta.allure.Description;
+import io.qameta.allure.Flaky;
+import io.qameta.allure.Owner;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import java.sql.SQLException;
+
+import static ATD.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Condition.exactText;
+import static com.codeborne.selenide.Selenide.open;
+
+public class QC_696_AppearsErrorThatTypeCarNotSelected {
+
+  private Main_page_logic mainPageLogic = new Main_page_logic();
+
+  @BeforeClass
+  void setUp() {
+    setUpBrowser(false, "chrome", "77.0");
+  }
+
+  @DataProvider(name = "routes", parallel = true)
+  Object[] dataProvider() throws SQLException {
+    return new SetUp().setUpShopWithSubroutes("prod", "DE", "main","main,category_name,categories,category_name_brand");
+  }
+
+  @Test(dataProvider = "routes")
+  @Flaky
+  @Owner(value = "Evlentiev")
+  @Description(value = "Appears error what not selected type when used vertical selector with empty value")
+  public void testAppearsErrorThatTypeCarNotSelected(String route) {
+    open(route);
+    mainPageLogic.chooseBrandInVerticalCarSelector("CITROЁN")
+            .chooseModelInVerticalCarSelector("393")
+            .clickSearchBtnInVerticalSelectorWhenNotSelectedAllFields()
+            .errorToolTipOfTypeSelector().shouldHave(
+                    exactText("Wählen Sie eine Modifikation aus"));
+  }
+}
