@@ -14,7 +14,7 @@ public class Main_page_logic extends Main_page {
 
   // Selector kba
 
-  // Only for DE
+  // This method only for DE
   @Step("Fill in KBA fields")
   public Main_page_logic fillNumberKba(String numberForFirstField, String numberForSecondField) {
     firstFieldKBA().setValue(numberForFirstField);
@@ -22,7 +22,7 @@ public class Main_page_logic extends Main_page {
     return this;
   }
 
-  // For all shop, except DE
+  // This method for all shop, except DE
   @Step("Fill in KBA field")
   public Main_page_logic fillNumberKba(String kbaNumber) {
     firstFieldKBA().setValue(kbaNumber);
@@ -33,6 +33,13 @@ public class Main_page_logic extends Main_page {
   public Catalog_page clickKbaBtn() {
     selectorKbaBtn().click();
     return page(Catalog_page.class);
+  }
+
+  @Step("Click link \"Was ist eine Schlüsselnummer?\" and check appears info KBA popup")
+  public Main_page_logic clickLinkAndCheckAppearsInfoKbaPopup() {
+    linkInfoKba().click();
+    kbaPopup().shouldBe(visible);
+    return this;
   }
 
   // Car selector popup
@@ -57,11 +64,19 @@ public class Main_page_logic extends Main_page {
   }
 
   // Vertical car selector popup
+
+  // The method needed for pages where the vertical car selector is hidden by default
+  @Step("Open vertical car selector if it hidden")
+  public Main_page_logic openVerticalCarSelectorIfItHidden() {
+    if (hiddenVerticalSelector().isDisplayed()) {
+      hiddenVerticalSelector().click();
+    }
+    return this;
+  }
+
   @Step("Choose brand in vertical car selector")
   public Main_page_logic chooseBrandInVerticalCarSelector(String brandName) {
-      if (hiddenVerticalSelector().isDisplayed()) {
-        hiddenVerticalSelector().click();
-      }
+    openVerticalCarSelectorIfItHidden();
     brandSelectorInVerticalCarSelector().selectOption(brandName);
     Wait().until(webDriver -> brandSelectorInVerticalCarSelector().getSelectedText().equals(brandName));
     return this;

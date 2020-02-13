@@ -572,11 +572,11 @@ public class Main_page {
         return $(".kba_submit");
     }
 
-    public SelenideElement linkInfoKba() {
+    SelenideElement linkInfoKba() {
         return $(".block-select-kba__info>a");
     }
 
-    public SelenideElement kbaPopup() {
+    SelenideElement kbaPopup() {
         return $(".kba_popup_example");
     }
 
