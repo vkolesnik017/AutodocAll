@@ -35,7 +35,7 @@ public class QC_535_FaqFormOnProductPage {
     @Description(value = "Test verify working of FAQ form on product page")
     public void testVerificationFAQForm(String route) {
         openPage(route);
-        mail = new Product_page_Logic().scrollToFaqForm().checkingDatenschutzerklarungLinkBehavior().fillingFieldsAndCheckBehaviorFaqForm("qc535_");
+        mail = new Product_page_Logic().scrollToFaqForm().checkingDatenschutzerklarungLinkBehaviorFaqForm().fillingFieldsAndCheckBehaviorFaqForm("qc535_");
         new PrivacyPolicySubscription_aws().openPolicySubscriptionWithLogin().checkingPolicyForMail(this.mail);
     }
 }

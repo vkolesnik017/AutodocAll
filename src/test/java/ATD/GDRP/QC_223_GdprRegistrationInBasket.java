@@ -35,10 +35,10 @@ public class QC_223_GdprRegistrationInBasket {
     @Description(value = "Test verify working GDPR form in basket registration page")
     public void testGdprRegistrationInBasket(String route) {
         openPage(route);
-        mail = new Product_page_Logic().addProductToCart()
+        mail = new Product_page_Logic().addProductToCart().closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
-                .checkingDatenschutzerklarungLinkBehavior().fillindRegistrationFields("qc_223_");
+                .checkingDatenschutzerklarungLinkBehaviorRegistrationForm().fillingRegistrationFields("qc_223_");
         new PrivacyPolicySubscription_aws().openPolicySubscriptionWithLogin().checkingPolicyForMail(this.mail);
     }
 }
