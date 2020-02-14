@@ -36,7 +36,7 @@ public class QC_695_AppearsErrorThatModelCarNotSelected {
   public void testAppearsErrorThatModelCarNotSelected(String route) {
     open(route);
     mainPageLogic.chooseBrandInVerticalCarSelector("CITROЁN")
-            .clickSearchBtnInVerticalSelectorWhenNotSelectedAllFields().errorToolTipOfModelSelector().shouldHave(
+            .clickSearchBtnInVerticalSelectorWhenNotSelectedFields().errorToolTipOfModelSelector().shouldHave(
                     exactText("Wählen Sie ein Modell aus"));
   }
 }

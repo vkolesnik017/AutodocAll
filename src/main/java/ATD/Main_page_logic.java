@@ -46,6 +46,7 @@ public class Main_page_logic extends Main_page {
 
   @Step("Click link \"Was ist eine Schlüsselnummer?\" and check appears info KBA popup")
   public Main_page_logic clickLinkAndCheckAppearsInfoKbaPopup() {
+    arrowInBrandSelectorVerticalCar().waitUntil(visible, 30000);
     linkInfoKba().click();
     kbaPopup().shouldBe(visible);
     return this;
@@ -77,7 +78,7 @@ public class Main_page_logic extends Main_page {
   // The method needed for pages where the vertical car selector is hidden by default
   @Step("Open vertical car selector if it hidden")
   public Main_page_logic openVerticalCarSelectorIfItHidden() {
-    if (hiddenVerticalSelector().isDisplayed()) {
+    if (!brandSelectorInVerticalCarSelector().isDisplayed()) {
       hiddenVerticalSelector().click();
     }
     return this;
@@ -120,7 +121,7 @@ public class Main_page_logic extends Main_page {
   }
 
   @Step("Click search button in vertical car selector when NOT selected all fields")
-  public Main_page_logic clickSearchBtnInVerticalSelectorWhenNotSelectedAllFields() {
+  public Main_page_logic clickSearchBtnInVerticalSelectorWhenNotSelectedFields() {
     searchBtnInVerticalSelector().click();
     return this;
   }

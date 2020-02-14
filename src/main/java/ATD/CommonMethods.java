@@ -63,9 +63,9 @@ public class CommonMethods {
         return executeJavaScript("return $siteSettings.route");
     }
 
-    @Step("Get name route and verify with expected {expected route}")
-    public static void getNameRouteAndVerifyWithExpected(String expectedRoute) {
-        assertEquals(getNameRouteFromJSVarInHTML(), expectedRoute);
+    @Step("Wait while route become expected {expected route}")
+    public static void waitWhileRouteBecomeExpected(String expectedRoute) {
+            Wait().until(WebDriver -> getNameRouteFromJSVarInHTML().equals(expectedRoute));
     }
 
     public static String getShopFromRoute(String route) {

@@ -13,7 +13,6 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.open;
 
 public class QC_697_UseCarSelectorWhenChooseBrandModelType {
@@ -37,8 +36,7 @@ public class QC_697_UseCarSelectorWhenChooseBrandModelType {
   public void testUseCarSelectorWhenChooseBrandModelType(String route) {
     open(route);
     mainPageLogic.chooseBrandModelTypeInSelector("CITROЁN", "393", "20249")
-            .clickSearchBtnInVerticalSelectorWhenSelectedAllFields()
-            .catalogBlog().shouldBe(visible);
+            .clickSearchBtnInVerticalSelectorWhenSelectedAllFields();
     checkingContainsUrl("ersatzteile/citroen/ax/ax-za/20249-1-4-allure");
   }
 

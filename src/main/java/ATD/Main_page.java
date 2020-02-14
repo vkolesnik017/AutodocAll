@@ -523,6 +523,10 @@ public class Main_page {
         return $("#form_maker_id");
     }
 
+    SelenideElement arrowInBrandSelectorVerticalCar() {
+        return $x("//div[@id='maker-select']/span[@class='arrow']");
+    }
+
     SelenideElement modelSelectorInVerticalCarSelector() {
         return $("#form_model_id");
     }
