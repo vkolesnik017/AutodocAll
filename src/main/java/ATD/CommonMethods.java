@@ -107,6 +107,7 @@ public class CommonMethods {
         return "autotest" + random + "@test.com";
     }
 
+    @Step("Checking datenschutzerklarung link behavior")
     public void checkingDatenschutzerklarungLinkBehavior(SelenideElement datenschutzerklarungLink, String cssValue) {
         datenschutzerklarungLink.shouldHave(attribute("title", "Datenschutzerklärung"));
         datenschutzerklarungLink.shouldHave(cssValue("cursor", "pointer"));
@@ -319,8 +320,8 @@ public class CommonMethods {
     }
 
     //Methods for checking Counter Product
-    @Step
-    public void checkingCounterIncrease(String startCount, SelenideElement value, SelenideElement counterPlus) {
+    @Step("Checking counter increase of product quantity")
+    void checkingCounterIncrease(String startCount, SelenideElement value, SelenideElement counterPlus) {
         value.shouldHave(value(startCount));
         counterPlus.click();
         String countAfterIncrease = String.valueOf(Integer.parseInt(startCount) + 2);
@@ -328,8 +329,8 @@ public class CommonMethods {
         sleep(2000);
     }
 
-    @Step
-    public void checkingCounterDecrease(String startCount, SelenideElement value, SelenideElement counterMinus) {
+    @Step("Checking counter decrease of product quantity")
+    void checkingCounterDecrease(String startCount, SelenideElement value, SelenideElement counterMinus) {
         value.shouldHave(value(startCount));
         counterMinus.click();
         String countAfterDecrease = String.valueOf(Integer.parseInt(startCount) - 2);
