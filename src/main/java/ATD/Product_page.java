@@ -31,7 +31,7 @@ public class Product_page {
     return this;
   }
 
-  @Step
+  @Step(":from product page")
   public Cart_page cartClick() {
     new Main_page().cartClick();
     return page(Cart_page.class);
@@ -203,7 +203,7 @@ public class Product_page {
 
   public SelenideElement vinInfoDropdown() { return $(".vin-info-dropdown"); }
 
-  //locators for Reviews block
+  //locators for Reviews Form
   public SelenideElement reviewsNameInput() { return $("#form_rating_name"); }
 
   public SelenideElement reviewsEmailInput() { return $("#form_rating_email"); }
@@ -221,6 +221,26 @@ public class Product_page {
   public SelenideElement reviewsSubmitButton() { return $(".btn_leave_review_from_page"); }
 
   public SelenideElement subscribeAcceptCheckbox() { return $("#subscribe_accept"); }
+
+  public SelenideElement reviewsForm() {
+    return $(By.id("add_review_form"));
+  }
+
+  public SelenideElement checkboxInReviewsForm() {
+    return $(By.xpath("//form[@id='add_review_form']//input[@id='subscribe_accept']"));
+  }
+
+  public SelenideElement datenschutzerklarungLinkInReviewsForm() {
+    return $(By.xpath("//form[@id='add_review_form']//label[@id='privacy_policy_review_form']/a"));
+  }
+
+  public SelenideElement succesPopup() {
+    return $(By.id("popup_update"));
+  }
+
+  public SelenideElement succesPopupCloseBtn() {
+    return $(By.xpath("//div[@id='popup_update']//div[@class='buttons-inner']/a"));
+  }
 
   //locators for compatibility block
   public SelenideElement compatibleCarBrand() { return $(".accordion-button > span"); }
@@ -340,10 +360,12 @@ public class Product_page {
     return $(byCssSelector(".row-right>p"));
   }
 
-  // locators in popup of gray button for subscription for product which is not stock
-  public SelenideElement emailFieldInPopUpOfGrayBtn() {
-    return $(byId("form_AvailabilityReminder[email]"));
+  // locators gray button popup for subscription for product which is not stock
+  SelenideElement popupAvailableForm() {
+    return $(byClassName("popup-available"));
   }
+
+  public SelenideElement emailFieldInPopUpOfGrayBtn() { return $(byId("form_AvailabilityReminder[email]")); }
 
   public SelenideElement sendButtonInPopUpOfGrayBtn() {
     return $(byCssSelector(".popup-available__button"));
@@ -356,6 +378,19 @@ public class Product_page {
   public SelenideElement closeSuccessPopUpOfGrayBtn() {
     return $(byXpath("//div[@class='popup_top']//a[@class='close']"));
   }
+
+  SelenideElement datenschutzerklarungLinkInAvailableForm() {
+    return $(byCssSelector("#AvailabilityReminderprivacy_policy>a"));
+  }
+
+  SelenideElement sendMailFormSuccesPopup() {
+    return $(By.id("news_subscribe"));
+  }
+
+  SelenideElement sendMailFormSuccesPopupCloseBtn() {
+    return $(By.xpath("//div[@class='buttons']//div[@class='buttons-inner']/a"));
+  }
+
 
   //Methods and locators for Selector Horizontal
   @Step("Choose brand in selector")
@@ -474,7 +509,7 @@ public class Product_page {
     return this;
   }
 
-  //locators adn methods for body products FR
+  //locators and methods for body products FR
   private SelenideElement addToCartBtnFR() {
     return $(By.xpath("//div[@class='product-button button not_active out-of-stock']/a"));
   }
@@ -486,58 +521,36 @@ public class Product_page {
     }
 
     //locators and methods for FAQ form
-    private SelenideElement faqForm() {
+    SelenideElement faqForm() {
         return $(By.id("faq"));
     }
 
-    private SelenideElement faqFormNameField() {
+    SelenideElement faqFormNameField() {
         return $(By.id("zum_name2"));
     }
 
-    private SelenideElement faqFormMailField() {
+    SelenideElement faqFormMailField() {
         return $(By.id("zum_email2"));
     }
 
-    private SelenideElement faqFormCommentField() {
+    SelenideElement faqFormCommentField() {
         return $(By.id("zum_message2"));
     }
 
-    private SelenideElement faqFormSendenBtn() {
+    SelenideElement faqFormSendenBtn() {
         return $(By.id("sended_btn2"));
     }
 
-    private SelenideElement faqFormSuccesPopup() {
+    SelenideElement faqFormSuccesPopup() {
         return $(By.id("popup_update"));
     }
 
-    private SelenideElement faqFormSuccesPopupCloseBtn() {
+    SelenideElement faqFormSuccesPopupCloseBtn() {
         return $(By.xpath("//div[@id='popup_update']//div[@class='buttons-inner']/a"));
     }
 
-    private SelenideElement datenschutzerklarungLink() {
+    SelenideElement datenschutzerklarungLink() {
         return $(By.xpath("//div[@id='faq']//a[@title='Datenschutzerklärung']"));
-    }
-
-    public Product_page scrollToFaqForm() {
-        faqForm().scrollTo();
-        faqForm().shouldBe(visible);
-        return this;
-    }
-
-    public Product_page checkingDatenschutzerklarungLinkBehavior() {
-        new CommonMethods().checkingDatenschutzerklarungLinkBehavior(datenschutzerklarungLink());
-        return this;
-    }
-
-    public String fillingFieldsAndCheckBehaviorFaqForm() {
-        faqFormNameField().setValue("autotest");
-        String mail = "qc535_" + mailRandom();
-        faqFormMailField().setValue(mail);
-        faqFormCommentField().setValue("autotest");
-        faqFormSendenBtn().click();
-        faqFormSuccesPopup().shouldBe(appear);
-        faqFormSuccesPopupCloseBtn().click();
-        return mail;
     }
 
 }

@@ -11,7 +11,7 @@ public class DataBase {
     private String password = "24201901";
 
 
-    private Connection coonectionDB(String nameDB) throws SQLException {
+    private Connection coonectionDB(String nameDB) {
         Connection conn = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
@@ -121,16 +121,17 @@ public class DataBase {
         return curency;
     }
 
+    // Return String KBA By Shop getKba("AT")
     public String getKba(String shop) throws SQLException {
         Statement statement = null;
-        Connection conn = coonectionDB("currency");
-        String curency = null;
+        Connection conn = coonectionDB("kba_atd");
+        String kba = null;
         String query = "SELECT " + shop + " FROM autodoc.kba_ATD where id = 1";
         try {
             statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
-                curency = resultSet.getString(1);
+                kba = resultSet.getString(1);
             }
             statement.close();
             conn.close();
@@ -140,6 +141,30 @@ public class DataBase {
             if (statement != null) statement.close();
             if (conn != null) conn.close();
         }
-        return curency;
+        return kba;
     }
+
+    public String getRetoureCauseTranslate(String dbName, String shop, String value) throws SQLException {
+        Statement statement = null;
+        Connection conn = coonectionDB(dbName);
+        String translation = null;
+        String query = "SELECT " .concat(shop) + " FROM autodoc.".concat(dbName)+" where valueCause="+"\"".concat(value)+"\"";
+        try {
+            statement = conn.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                translation = resultSet.getString(1);
+            }
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (statement != null) statement.close();
+            if (conn != null) conn.close();
+        }
+        return translation;
+    }
+
+
 }

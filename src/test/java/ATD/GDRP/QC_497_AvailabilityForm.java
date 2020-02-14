@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 
-public class QC_535_FaqFormOnProductPage {
+public class QC_497_AvailabilityForm {
 
     private String mail;
 
@@ -26,17 +26,17 @@ public class QC_535_FaqFormOnProductPage {
 
     @DataProvider(name = "route")
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product3");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product12");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "alex_qa")
-    @Description(value = "Test verify working of FAQ form on product page")
-    public void testVerificationFAQForm(String route) {
+    @Description(value = "Test verify working of availability form")
+    public void testAvailabilityForm(String route) {
         openPage(route);
-        mail = new Product_page_Logic().scrollToFaqForm().checkingDatenschutzerklarungLinkBehavior().fillingFieldsAndCheckBehaviorFaqForm("qc535_");
-        new PrivacyPolicySubscription_aws().openPolicySubscriptionWithLogin().checkingPolicyForMail(this.mail);
+        mail = new Product_page_Logic().clickGrayButtonAndCheckAvailableForm().checkingDatenschutzerklarungLinkBehaviorInAvailableForm().fillingFieldsAndCheckBehaviorAvailableForm("qc497_");
+        new PrivacyPolicySubscription_aws().openPolicySubscriptionWithLogin().checkingPolicyAndSubscribeForMail(this.mail);
     }
 }
 

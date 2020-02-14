@@ -30,6 +30,12 @@
                         <suiteXmlFile>${basedir}${TEST_SUITE}.xml</suiteXmlFile>
                         <!--<suiteXmlFile>${basedir}/src/test/java/testSuites/testSuite.xml</suiteXmlFile>-->
                     </suiteXmlFiles>
+                    <!--<properties>-->
+                        <!--<property>-->
+                            <!--<name>${NAME}</name>-->
+                            <!--<value>${VALUE}</value>-->
+                        <!--</property>-->
+                    <!--</properties>-->
                     <systemProperties>
                         <property>
                             <name>allure.results.directory</name>

@@ -1,4 +1,4 @@
-package ATD.Retoure.QC_714_CheckingLettersOfReturns;
+package ATD.Retoure.QC_884_CheckingPopupErrorsForReturns;
 
 import ATD.DataBase;
 import ATD.Product_page;
@@ -8,7 +8,6 @@ import AWS.Order_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
-import mailinator.Mailinator;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -16,21 +15,22 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.*;
+import static ATD.CommonMethods.getShopFromRoute;
+import static ATD.CommonMethods.idPfandProduct;
+import static ATD.CommonMethods.password;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
-public class QC_716_LetterConfirmationOfReturnFromProfile {
-
-  private String idUserAws = "13751304";
-  private String orderNumber = null;
-  private String mail = "QC_716_retoure@mailinator.com";
+public class QC_885_PopupErrorsInProfileForReturns {
 
   private Product_page productPage = new Product_page();
-  private Mailinator mailinator = new Mailinator();
+  private Profile_page profilePage = new Profile_page();
   private DataBase db = new DataBase();
+
+  private String idUserAws = "13781002";
+  private String orderNumber;
+  private String mail = "QC_885_retoure@mailinator.com";
 
   @BeforeClass
   void setUp() {
@@ -45,8 +45,8 @@ public class QC_716_LetterConfirmationOfReturnFromProfile {
   @Test(dataProvider = "route")
   @Flaky
   @Owner(value = "Evlentiev")
-  @Description(value = "Verification of the letter \"Confirmation of receipt of the application\" from profile")
-  public void testLetterConfirmationOfReturnFromProfile(String route) throws SQLException {
+  @Description(value = "The test checks for pop-up errors when clicking on the submit button without the selected product for return in profile")
+  public void testPopupErrorsInProfileForReturns(String route) throws SQLException {
     orderNumber = productPage.openProductPageById(route, idPfandProduct)
             .addProductToCart()
             .closePopupOtherCategoryIfYes()
@@ -59,18 +59,13 @@ public class QC_716_LetterConfirmationOfReturnFromProfile {
             .nextBtnClick()
             .getOrderNumber();
     new Order_aws(orderNumber).openOrderInAwsWithLogin()
+            .checkOrderHasTestStatus()
             .setStatusOrderToVersendetVorkasse()
             .addDeliveryConditionGLS();
     open(route + "/" + db.getRouteByRouteName(getShopFromRoute(route), "profile_orders"));
-    new Profile_page().clickBestelldetailsButton(orderNumber)
+    profilePage.clickBestelldetailsButton(orderNumber)
             .clickReturnOrReplaceItemButton()
-            .clickCheckbox()
-            .chooseRandomCauseReturnInSelect()
-            .fillInFormForMessage()
-            .addFileIfIsDisplayedFileBlock()
-            .clickSendenButtonWithCorrectData();
-    mailinator.openEmail(mail)
-            .letterInfo(1).shouldHave(text("moments ago")).shouldHave(text("Ihre Reklamation zur Bestellnummer: ".concat(orderNumber)));
+            .chekingToAppearPopupErrorsOfReturn();
   }
 
   @AfterMethod

@@ -104,10 +104,10 @@ public class CommonMethods {
         return "autotest" + random + "@test.com";
     }
 
-    public void checkingDatenschutzerklarungLinkBehavior(SelenideElement datenschutzerklarungLink) {
+    public void checkingDatenschutzerklarungLinkBehavior(SelenideElement datenschutzerklarungLink, String cssValue) {
         datenschutzerklarungLink.shouldHave(attribute("title", "Datenschutzerklärung"));
         datenschutzerklarungLink.shouldHave(cssValue("cursor", "pointer"));
-        datenschutzerklarungLink.shouldHave(cssValue("text-decoration", "underline solid rgb(0, 0, 0)"));
+        datenschutzerklarungLink.shouldHave(cssValue("text-decoration", cssValue));
         datenschutzerklarungLink.click();
         checkingUrlAndCloseTab("https://www.autodoc.de/services/datenschutz");
     }
@@ -174,10 +174,11 @@ public class CommonMethods {
     @Step
     // Pulling prices from text of element
     public static Float getPriceFromElement(SelenideElement element) {
+        element.shouldBe(visible);
         return Float.parseFloat(element.text().replaceAll("[^0-9,]", "").replace(",", "."));
     }
 
-    static SelenideElement universalElementOfBuyBtnForAllPages() {
+    public static SelenideElement universalElementOfBuyBtnForAllPages() {
         return $(byXpath("//a[contains(@class,'add_')]"));
     }
 
@@ -187,6 +188,13 @@ public class CommonMethods {
         if (hiddenVerticalSelector.isDisplayed()) {
             hiddenVerticalSelector.click();
         }
+    }
+
+    @Step("Close any popup by click overlay")
+    public static void closeAnyPopupByClickOverlay() {
+        By overlay = (byXpath("//div[@class='overlay black']"));
+        $(overlay).click(1, 1);
+        $(overlay).shouldBe(not(visible));
     }
 
     @Step
@@ -220,6 +228,10 @@ public class CommonMethods {
         return $(byXpath("(//*[@type='button'])[2]"));
     }
 
+    public SelenideElement detailsButtonInTopProductsBlock() {
+        return $(".linkShowPopup ");
+    }
+
     // fits for all pages
     private SelenideElement grayBtn() {
         return $(byXpath("//*[contains(@class,'not_active')]/a"));
@@ -234,7 +246,6 @@ public class CommonMethods {
     @Step
     public void scrollToBlockOfTopProducts() {
         titleOfBlockOfTopProducts().scrollTo();
-        universalElementOfBuyBtnForAllPages().shouldBe(visible);
     }
 
     @Step

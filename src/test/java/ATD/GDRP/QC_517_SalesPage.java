@@ -1,6 +1,6 @@
 package ATD.GDRP;
 
-import ATD.Product_page_Logic;
+import ATD.Sales_page;
 import ATD.SetUp;
 import AWS.PrivacyPolicySubscription_aws;
 import io.qameta.allure.Description;
@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 
-public class QC_535_FaqFormOnProductPage {
+public class QC_517_SalesPage {
 
     private String mail;
 
@@ -26,17 +26,17 @@ public class QC_535_FaqFormOnProductPage {
 
     @DataProvider(name = "route")
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product3");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "staticSales");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "alex_qa")
-    @Description(value = "Test verify working of FAQ form on product page")
-    public void testVerificationFAQForm(String route) {
+    @Description(value = "Test verify working of send ship form on Sales page")
+    public void testFormOnSalesPage(String route) {
         openPage(route);
-        mail = new Product_page_Logic().scrollToFaqForm().checkingDatenschutzerklarungLinkBehavior().fillingFieldsAndCheckBehaviorFaqForm("qc535_");
-        new PrivacyPolicySubscription_aws().openPolicySubscriptionWithLogin().checkingPolicyForMail(this.mail);
+        mail = new Sales_page().checkingDatenschutzerklarungLinkBehavior().fillingFieldsAndCheckBehaviorSendMailForm();
+        new PrivacyPolicySubscription_aws().openPolicySubscriptionWithLogin().checkingPolicyAndSubscribeForMail(this.mail);
     }
 }
 

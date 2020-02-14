@@ -13,10 +13,10 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.*;
+import static ATD.CommonMethods.clickOfBuyBtnForAllPages;
+import static ATD.CommonMethods.closeCookiesFooterMessage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.value;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -62,8 +62,8 @@ public class QASYS_379_BlocksOfTopProducts {
     closeCookiesFooterMessage();
     commonMethods.scrollToBlockOfTopProducts();
     clickOfBuyBtnForAllPages();
-    productPage.firstProductPriceInPopupOfCart().shouldBe(visible);
-    productPage.cartClick()
+    productPage.checksPresentProductInCartPopup()
+            .cartClick()
             .fieldWithQuantityOfProducts().shouldHave(value("2"));
   }
 
