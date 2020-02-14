@@ -43,9 +43,13 @@ public class Listing_page {
 
     public SelenideElement produktreiheFilterCheckbox() { return $x("//*[@id='mCSB_4_container']/li[2]"); }
 
+    public SelenideElement produktreiheFilterCheckboxLKW() { return $(".js-filter-criteria_30056 li:nth-child(2) > label"); }
+
     public SelenideElement produktreiheFilterAttribute() {return $(By.xpath("//*[@id='mCSB_4_container']/li[2]/label")); }
 
     public SelenideElement langeFilterCheckbox() { return $x("//*[@id='mCSB_2_container']/li[8]"); }
+
+    public SelenideElement langeFilterCheckboxLKW() { return $x("//*[@id='mCSB_2_container']/li[2]/label"); }
 
     public SelenideElement langeFilterAttribute() { return $x("//*[@id='mCSB_2_container']/li[8]/label"); }
 
@@ -80,6 +84,10 @@ public class Listing_page {
     public SelenideElement bremsscheibenartSideFilterButton() { return $x("//*[contains(@class,'filter-criteria_232')]//li"); }
 
     public SelenideElement durchmesserSideFilterButton() { return $x("//*[contains(@class,'filter-criteria_200')]//li[4]"); }
+
+    public SelenideElement durchmesserSideFilterButtonFirstValue() { return $x("//*[contains(@class,'filter-criteria_200')]//li[1]"); }
+
+    public SelenideElement durchmesserSideFilterButtonSecondValue() { return $x("//*[contains(@class,'filter-criteria_200')]//li[2]"); }
 
     public SelenideElement furprnummerSideFilterButton() { return $x("//*[contains(@class,'filter-criteria_1197')]//li"); }
 
@@ -222,13 +230,21 @@ public class Listing_page {
 
     public ElementsCollection produktreiheProductAttributeTecdocRoute() { return $$x("//*[@class='important' and contains(span, 'Produktreihe')]/span[2]"); }
 
+    public ElementsCollection produktreiheProductAttributeTecdocRouteLKW() { return $$x("//span[contains(text(),'Produktreihe:')]/../span[2]"); }
+
     public ElementsCollection produktreiheProductAttributeGenericRoute() { return $$(By.xpath("//*[@class='w_search no_margin']/preceding-sibling::li//*[@class='important' and contains(span, 'Produktreihe')]/span[2]")); }
+
+    public ElementsCollection produktreiheProductAttributeGenericRouteLKW() { return $$(By.xpath("//*[@class='w_search no_margin']/preceding-sibling::li//span[contains(text(),'Produktreihe:')]/../span[2]")); }
 
     public SelenideElement productsForOtherCars() { return $x("//*[@class='w_search no_margin']"); }
 
     public ElementsCollection langeProductAttributeTecdocRoute() { return $$x("//*[@class='important' and contains(span,'Länge [mm]')]/span[2]"); }
 
+    public ElementsCollection langeProductAttributeTecdocRouteLKW() { return $$x("//span[contains(text(),'Länge [mm]:')]/../span[2]"); }
+
     public ElementsCollection langeProductAttributeGenericRoute() { return $$x("//*[@class='w_search no_margin']/preceding-sibling::li//*[@class='important' and contains(span,'Länge [mm]')]/span[2]"); }
+
+    public ElementsCollection langeProductAttributeGenericRouteLKW() { return $$x("//*[@class='w_search no_margin']/preceding-sibling::li//span[contains(text(),'Länge [mm]:')]/../span[2]"); }
 
     public ElementsCollection wischblattausfuhrungProductAttributeTecdocRoute() { return $$x("//*[@class='important' and contains(span,'Wischblattausführung')]/span[2]"); }
 
@@ -396,7 +412,7 @@ public class Listing_page {
         for (int i = 0; i < productAttributeOnListing.size(); i++) {
             productsOnListingInTileMode().get(i).hover();
             productAttributeOnListing.get(i).shouldHave(text(attributeSelectedInSideFilter));
-            langeFilterCheckbox().hover();
+            showListingInTileModeButton().hover();
         }
     }
 

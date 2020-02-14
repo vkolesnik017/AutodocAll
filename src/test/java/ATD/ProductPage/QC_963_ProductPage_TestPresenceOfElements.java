@@ -3,6 +3,7 @@ package ATD.ProductPage;
 
 import ATD.CommonMethods;
 import ATD.DataBase;
+import ATD.Main_page;
 import ATD.Product_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -13,7 +14,6 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.closeCookiesFooterMessage;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.visible;
@@ -23,6 +23,7 @@ public class QC_963_ProductPage_TestPresenceOfElements {
     private Product_page_Logic product_page_logic = new Product_page_Logic();
     private CommonMethods commonMethods = new CommonMethods();
     private DataBase dataBase = new DataBase();
+    private Main_page mainPage = new Main_page();
 
     @BeforeClass
     void setUp() {
@@ -36,7 +37,6 @@ public class QC_963_ProductPage_TestPresenceOfElements {
     public void testPresenceOfElements() throws SQLException {
         //steps in QC: 1
         openPage("https://autodoc.de/" + dataBase.getRouteByRouteName("DE", "product13"));
-        closeCookiesFooterMessage();
         //2
         product_page_logic.carSelectorBlock().shouldBe(visible);
         //3
@@ -48,20 +48,32 @@ public class QC_963_ProductPage_TestPresenceOfElements {
         //5
         product_page_logic.breadcrumbsBlock().shouldBe(visible);
         //6
+        mainPage.closeCarSelectorTooltipIfVisible();
+        product_page_logic.breadcrumbsCategoryDropdownButton().click();
+        product_page_logic.breadcrumbsFirstCategoryFromDropdown().click();
         product_page_logic.breadcrumbsCategoryDropdownButton().click();
         product_page_logic.breadcrumbsFirstCategoryFromDropdown().click();
         commonMethods.checkingUrl("https://www.autodoc.de/autoteile/bremsbelag-10130");
         //7
+        mainPage.closeCarSelectorTooltipIfVisible();
+        product_page_logic.breadcrumbsCategoryButton().click();
         product_page_logic.breadcrumbsCategoryButton().click();
         commonMethods.checkingUrl("https://www.autodoc.de/autoteile/bremsscheibe-10132");
         //8
+        mainPage.closeCarSelectorTooltipIfVisible();
+        product_page_logic.breadcrumbsParentCategoryDropdownButton().click();
+        product_page_logic.breadcrumbsFirstParentCategoryFromDropdown().click();
         product_page_logic.breadcrumbsParentCategoryDropdownButton().click();
         product_page_logic.breadcrumbsFirstParentCategoryFromDropdown().click();
         commonMethods.checkingUrl("https://www.autodoc.de/autoteile/filter");
         //9
+        mainPage.closeCarSelectorTooltipIfVisible();
+        product_page_logic.breadcrumbsParentCategotyButton().click();
         product_page_logic.breadcrumbsParentCategotyButton().click();
         commonMethods.checkingUrl("https://www.autodoc.de/autoteile/bremsanlage");
         //10
+        mainPage.closeCarSelectorTooltipIfVisible();
+        product_page_logic.breadcrumbsCatalogButton().click();
         product_page_logic.breadcrumbsCatalogButton().click();
         commonMethods.checkingUrl("https://www.autodoc.de/autoteile");
         //4
@@ -118,6 +130,11 @@ public class QC_963_ProductPage_TestPresenceOfElements {
         //26
         product_page_logic.pdfTutorialsBlock().shouldBe(visible);
         product_page_logic.checkPdfLinksForDownload();
+        //22
+        product_page_logic.minicardsBlock().shouldBe(visible);
+        product_page_logic.tetleMiniCardBlock().scrollTo();
+        product_page_logic.productInMinicard().shouldBe(visible).hover();
+        product_page_logic.characteristicsInMinicard().shouldBe(visible);
         close();
     }
 }
