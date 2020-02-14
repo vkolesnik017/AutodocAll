@@ -46,7 +46,9 @@ public class QC_715_LetterConfirmationOfReturnFromRetourePage {
   @Owner(value = "Evlentiev")
   @Description(value = "Verification of the letter \"Confirmation of receipt of the application\" from the page /retoure")
   public void testLetterConfirmationOfReturnFromRetourePage(String route) throws SQLException {
-    orderNumber = product_page_logic
+    orderNumber = product_page_logic.openProductPageById(route, idPfandProduct)
+            .addProductToCart()
+            .closePopupOtherCategoryIfYes()
             .cartClick()
             .nextButtonClick()
             .signIn(mail, password)

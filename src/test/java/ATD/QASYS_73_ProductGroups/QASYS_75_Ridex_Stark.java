@@ -39,7 +39,7 @@ public class QASYS_75_Ridex_Stark {
         String shop = getShopFromRoute(route);
         open(route + "/" + new DataBase().getRouteByRouteName(shop, "product3"));
         String testMail = "atdautotest_qasys_75_ridex@mailinator.com";
-        new Product_page_Logic()
+        new Product_page_Logic().addProductToCart().closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
                 .signIn(testMail, password)
@@ -57,7 +57,7 @@ public class QASYS_75_Ridex_Stark {
         String shop = getShopFromRoute(route);
         open(route + "/" + new DataBase().getRouteByRouteName(shop, "product4"));
         String testMail = "atdautotest_qasys_75_stark@mailinator.com";
-        new Product_page_Logic()
+        new Product_page_Logic().addProductToCart().closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
                 .signIn(testMail, password)

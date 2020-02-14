@@ -46,7 +46,7 @@ public class QASYS_82_Bodywork {
         String shop = getShopFromRoute(route);
         open(route + "/" + new DataBase().getRouteByRouteName(shop, "product7"));
         String testMail = "atdautotest_qasys_82_bodywork@mailinator.com";
-        product_page_logic
+        product_page_logic.addProductToCart().closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
                 .signIn(testMail, password)
@@ -55,7 +55,7 @@ public class QASYS_82_Bodywork {
                 .closePopupDeliveryImpossibleAndCheckEmptyCart();
         close();
         open(route + "/" + new DataBase().getRouteByRouteName(shop, "product7"));
-        product_page_logic
+        product_page_logic.addProductToCart().closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
                 .signIn(testMail, password)

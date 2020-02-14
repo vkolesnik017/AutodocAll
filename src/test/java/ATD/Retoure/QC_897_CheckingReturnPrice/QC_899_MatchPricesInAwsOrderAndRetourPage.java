@@ -43,7 +43,9 @@ public class QC_899_MatchPricesInAwsOrderAndRetourPage {
   @Owner(value = "Evlentiev")
   @Description(value = "Verify that product prices match the order on AWS and on the retour page")
   public void testMatchPricesInAwsOrderAndRetourPage(String route) throws SQLException {
-    orderNumber = product_page_logic
+    orderNumber = product_page_logic.openProductPageById(route, idPfandProduct)
+            .addProductToCart()
+            .closePopupOtherCategoryIfYes()
             .cartClick()
             .nextButtonClick()
             .signIn(mail, password)

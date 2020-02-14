@@ -16,12 +16,6 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class Product_page {
 
-    @Step("Checking number of product in cart")
-    public Product_page checkingNumberOfProductInCart(int expectedNumber) {
-        new Main_page().checkingNumberOfProductInCart(expectedNumber);
-        return this;
-    }
-
 
     //common locators
     SelenideElement quantityOnBasketIcon() {
@@ -398,7 +392,7 @@ public class Product_page {
         return this;
     }
 
-    private SelenideElement heavyCargoLink() {
+    SelenideElement heavyCargoLink() {
         return $(By.xpath("//p[@class='product-inkl-info']/a[2]"));
     }
 
@@ -431,13 +425,6 @@ public class Product_page {
     // locators in popup of cart
     public SelenideElement firstProductPriceInPopupOfCart() {
         return $(byCssSelector(".row-price"));
-    }
-
-    @Step
-    Product_page checksPresentProductInCartPopup() {
-        cartIcon().hover();
-        firstProductPriceInPopupOfCart().shouldBe(visible);
-        return this;
     }
 
     public SelenideElement totalPriceInPopupOfCart() {
@@ -577,27 +564,19 @@ public class Product_page {
     }
 
     // locator for counter
-    private SelenideElement counterValue() {
+    SelenideElement counterValue() {
         return $(By.xpath("//input[@class=' qty_2']"));
     }
 
-    private SelenideElement counterPlus() {
+    SelenideElement counterPlus() {
         return $(By.xpath("//a[@class='ga-click plus add']"));
     }
 
-    private SelenideElement counterMinus() {
+    SelenideElement counterMinus() {
         return $(By.xpath("//a[@class='ga-click minus remove']"));
     }
 
-    public Product_page counterIncrease(String startValue) {
-        new CommonMethods().checkingCounterIncrease(startValue, counterValue(), counterPlus());
-        return this;
-    }
 
-    public Product_page counterDecrease(String startValue) {
-        new CommonMethods().checkingCounterDecrease(startValue, counterValue(), counterMinus());
-        return this;
-    }
 
     //locators and methods for body products FR
     private SelenideElement addToCartBtnFR() {

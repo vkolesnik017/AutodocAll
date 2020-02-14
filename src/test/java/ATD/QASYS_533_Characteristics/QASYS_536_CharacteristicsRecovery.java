@@ -68,7 +68,9 @@ public class QASYS_536_CharacteristicsRecovery {
   @Owner(value = "Evlentiev")
   @Description(value = "Test-3. Checks output characteristic recovery in basket")
   public void testOutputCharacteristicsRecoveryInBasket(String route) {
-    product_page_logic
+    product_page_logic.openProductPageById(route, "1099441")
+            .addProductToCart()
+            .closePopupOtherCategoryIfYes()
             .cartClick()
             .getCharacteristicsOfProduct().filter(matchText("Zustand:\\nWiederaufbereitet")).shouldHaveSize(1);
   }

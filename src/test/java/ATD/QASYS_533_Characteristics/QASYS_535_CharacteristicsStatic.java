@@ -166,7 +166,9 @@ public class QASYS_535_CharacteristicsStatic {
     expectedCharacteristics.add("Bohrung-Ø \\[mm]:\\n15,8");
 
     ElementsCollection actualCharacteristics =
-    product_page_logic
+            product_page_logic.openProductPageById(route, "7999323")
+                    .addProductToCart()
+                    .closePopupOtherCategoryIfYes()
             .cartClick()
             .getCharacteristicsOfProduct();
     commonMethods.compareCharacteristics(actualCharacteristics, expectedCharacteristics);

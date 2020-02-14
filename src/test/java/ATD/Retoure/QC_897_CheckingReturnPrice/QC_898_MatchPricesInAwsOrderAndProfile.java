@@ -13,6 +13,7 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.getShopFromRoute;
+import static ATD.CommonMethods.idPfandProduct;
 import static ATD.CommonMethods.password;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
@@ -44,7 +45,9 @@ public class QC_898_MatchPricesInAwsOrderAndProfile {
   @Owner(value = "Evlentiev")
   @Description(value = "Verify that product prices match the order on AWS and on the profile")
   public void testMatchPricesInAwsOrderAndProfile(String route) throws SQLException {
-    orderNumber = product_page_logic
+    orderNumber = product_page_logic.openProductPageById(route, idPfandProduct)
+            .addProductToCart()
+            .closePopupOtherCategoryIfYes()
             .cartClick()
             .nextButtonClick()
             .signIn(mail, password)

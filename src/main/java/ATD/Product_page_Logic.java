@@ -23,6 +23,36 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
+    @Step
+    public Product_page_Logic checksPresentProductInCartPopup() {
+        cartIcon().hover();
+        firstProductPriceInPopupOfCart().shouldBe(visible);
+        return this;
+    }
+
+    @Step
+    public Product_page_Logic checkingHeavyCargoLinkTransition() {
+        heavyCargoLink().click();
+        new CommonMethods().checkingUrlAndCloseTab("services/versand#surcharge");
+        return this;
+    }
+
+    public Product_page_Logic counterIncrease(String startValue) {
+        new CommonMethods().checkingCounterIncrease(startValue, counterValue(), counterPlus());
+        return this;
+    }
+
+    public Product_page_Logic counterDecrease(String startValue) {
+        new CommonMethods().checkingCounterDecrease(startValue, counterValue(), counterMinus());
+        return this;
+    }
+
+
+    @Step("Checking number of product in cart")
+    public Product_page_Logic checkingNumberOfProductInCart(int expectedNumber) {
+        new Main_page().checkingNumberOfProductInCart(expectedNumber);
+        return this;
+    }
 
 
     @Step(":from Product_page")
