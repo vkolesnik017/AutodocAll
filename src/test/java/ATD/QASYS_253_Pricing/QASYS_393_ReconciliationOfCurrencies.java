@@ -25,7 +25,7 @@ public class QASYS_393_ReconciliationOfCurrencies {
 
   private DataBase dataBase = new DataBase();
   private  Product_page_Logic product_page_logic = new Product_page_Logic();
-  private Cart_page cartPage = new Cart_page();
+  private Cart_page_Logic cart_page_logic = new Cart_page_Logic();
   private CartAllData_page cartAllDataPage = new CartAllData_page();
 
   @BeforeClass
@@ -60,16 +60,16 @@ public class QASYS_393_ReconciliationOfCurrencies {
     // go to cart page
     product_page_logic.cartClick();
     // checks currency on cart page
-    getCurrencyAndVerify(cartPage.totalOrderPriceInHead(), "orderPriceInHead", shop, expectedCurrency);
-    getCurrencyAndVerify(cartPage.priceOfAllProducts(), "priceOfAllProducts", shop, expectedCurrency);
-    getCurrencyAndVerify(cartPage.totalOrderPrice(), "totalOrderPrice", shop, expectedCurrency);
-    getCurrencyAndVerify(cartPage.productPrice(), "productPrice", shop, expectedCurrency);
-    getCurrencyAndVerify(cartPage.totalProductPrice(), "totalProductPrice", shop, expectedCurrency);
-    getCurrencyAndVerify(cartPage.priceWithoutDiscount(), "priceWithoutDiscount", shop, expectedCurrency);
-    getCurrencyAndVerify(cartPage.priceWithDiscount(), "priceWithDiscount", shop, expectedCurrency);
-    getCurrencyAndVerify(cartPage.discount(), "discount", shop, expectedCurrency);
+    getCurrencyAndVerify(cart_page_logic.totalOrderPriceInHead(), "orderPriceInHead", shop, expectedCurrency);
+    getCurrencyAndVerify(cart_page_logic.priceOfAllProducts(), "priceOfAllProducts", shop, expectedCurrency);
+    getCurrencyAndVerify(cart_page_logic.totalOrderPrice(), "totalOrderPrice", shop, expectedCurrency);
+    getCurrencyAndVerify(cart_page_logic.productPrice(), "productPrice", shop, expectedCurrency);
+    getCurrencyAndVerify(cart_page_logic.totalProductPrice(), "totalProductPrice", shop, expectedCurrency);
+    getCurrencyAndVerify(cart_page_logic.priceWithoutDiscount(), "priceWithoutDiscount", shop, expectedCurrency);
+    getCurrencyAndVerify(cart_page_logic.priceWithDiscount(), "priceWithDiscount", shop, expectedCurrency);
+    getCurrencyAndVerify(cart_page_logic.discount(), "discount", shop, expectedCurrency);
     //login and go to all data page
-    cartPage.nextButtonClick()
+    cart_page_logic.nextButtonClick()
               .signIn(emailForAnotherShop, password)
               .nextBtnClick()
               .choosePayPal()
@@ -112,13 +112,13 @@ public class QASYS_393_ReconciliationOfCurrencies {
     getCurrencyAndVerify(product_page_logic.totalPriceInPopupOfCart(), "totalPriceInPopupOfCart", shop, expectedCurrency);
     product_page_logic.cartClick();
     // checks currency on cart page
-    getCurrencyAndVerify(cartPage.totalOrderPriceInHead(), "orderPriceInHead", shop, expectedCurrency);
-    getCurrencyAndVerify(cartPage.priceOfAllProducts(), "priceOfAllProducts", shop, expectedCurrency);
-    getCurrencyAndVerify(cartPage.totalOrderPrice(), "totalOrderPrice", shop, expectedCurrency);
-    getCurrencyAndVerify(cartPage.productPrice(), "productPrice", shop, expectedCurrency);
-    getCurrencyAndVerify(cartPage.totalProductPrice(), "totalProductPrice", shop, expectedCurrency);
+    getCurrencyAndVerify(cart_page_logic.totalOrderPriceInHead(), "orderPriceInHead", shop, expectedCurrency);
+    getCurrencyAndVerify(cart_page_logic.priceOfAllProducts(), "priceOfAllProducts", shop, expectedCurrency);
+    getCurrencyAndVerify(cart_page_logic.totalOrderPrice(), "totalOrderPrice", shop, expectedCurrency);
+    getCurrencyAndVerify(cart_page_logic.productPrice(), "productPrice", shop, expectedCurrency);
+    getCurrencyAndVerify(cart_page_logic.totalProductPrice(), "totalProductPrice", shop, expectedCurrency);
     //login and go to all data page
-    cartPage.nextButtonClick()
+    cart_page_logic.nextButtonClick()
             .signIn(emailForAnotherShop, password)
             .nextBtnClick()
             .choosePayPal()
@@ -160,13 +160,13 @@ public class QASYS_393_ReconciliationOfCurrencies {
     product_page_logic.cartClick()
             .makePriceForMinimumOrderForCH();
     // checks currency on cart page
-    getCurrencyAndVerify(cartPage.totalOrderPriceInHead(), "orderPriceInHead", shop, expectedCurrency);
-    getCurrencyAndVerify(cartPage.priceOfAllProducts(), "priceOfAllProducts", shop, expectedCurrency);
-    getCurrencyAndVerify(cartPage.totalOrderPrice(), "totalOrderPrice", shop, expectedCurrency);
-    getCurrencyAndVerify(cartPage.productPrice(), "productPrice", shop, expectedCurrency);
-    getCurrencyAndVerify(cartPage.totalProductPrice(), "totalProductPrice", shop, expectedCurrency);
+    getCurrencyAndVerify(cart_page_logic.totalOrderPriceInHead(), "orderPriceInHead", shop, expectedCurrency);
+    getCurrencyAndVerify(cart_page_logic.priceOfAllProducts(), "priceOfAllProducts", shop, expectedCurrency);
+    getCurrencyAndVerify(cart_page_logic.totalOrderPrice(), "totalOrderPrice", shop, expectedCurrency);
+    getCurrencyAndVerify(cart_page_logic.productPrice(), "productPrice", shop, expectedCurrency);
+    getCurrencyAndVerify(cart_page_logic.totalProductPrice(), "totalProductPrice", shop, expectedCurrency);
     //login and go to all data page
-    cartPage.nextButtonClick()
+    cart_page_logic.nextButtonClick()
             .signIn(emailForCH, password)
             .nextBtnClick()
             .choosePayPal()

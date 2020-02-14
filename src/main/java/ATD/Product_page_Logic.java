@@ -15,9 +15,9 @@ public class Product_page_Logic extends Product_page {
 
 
     @Step(":from product page")
-    public Cart_page cartClick() {
+    public Cart_page_Logic cartClick() {
       new Main_page().cartClick();
-      return page(Cart_page.class);
+      return page(Cart_page_Logic.class);
     }
 
     @Step

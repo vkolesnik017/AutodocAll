@@ -116,11 +116,11 @@ public class Search_page {
     }
 
     @Step
-    public Cart_page addFirstProductAndGoToCart() {
+    public Cart_page_Logic addFirstProductAndGoToCart() {
         buyButton().click();
         cartPopupWithProduct().shouldBe(visible);
         cartClick();
-        return page(Cart_page.class);
+        return page(Cart_page_Logic.class);
     }
 
     @Step

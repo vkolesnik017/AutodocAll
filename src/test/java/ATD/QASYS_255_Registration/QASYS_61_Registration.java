@@ -51,7 +51,7 @@ public class QASYS_61_Registration {
         open(route);
         mainPage.useSearch(ridex_82B0896);
         search_page.addFirstProductAndGoToCart();
-        new Cart_page().nextButtonClick();
+        new Cart_page_Logic().nextButtonClick();
         String mail = mailRandom();
         cartAccount_page.registrationFormEmailInput().setValue(mail);
         cartAccount_page.registrationFormPasswordInput().setValue(password);
