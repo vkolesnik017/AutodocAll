@@ -1,9 +1,6 @@
 package ATD.Retoure.QC_714_CheckingLettersOfReturns;
 
-import ATD.DataBase;
-import ATD.Product_page;
-import ATD.Retouren_page;
-import ATD.SetUp;
+import ATD.*;
 import AWS.Order_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -28,7 +25,7 @@ public class QC_715_LetterConfirmationOfReturnFromRetourePage {
   private String orderNumber = null;
   private String mail = "QC_715_retoure@mailinator.com";
 
-  private Product_page productPage = new Product_page();
+  private Product_page_Logic product_page_logic = new Product_page_Logic();
   private Retouren_page retourenPage = new Retouren_page();
   private Mailinator mailinator = new Mailinator();
   private DataBase db = new DataBase();
@@ -49,9 +46,7 @@ public class QC_715_LetterConfirmationOfReturnFromRetourePage {
   @Owner(value = "Evlentiev")
   @Description(value = "Verification of the letter \"Confirmation of receipt of the application\" from the page /retoure")
   public void testLetterConfirmationOfReturnFromRetourePage(String route) throws SQLException {
-    orderNumber = productPage.openProductPageById(route, idPfandProduct)
-            .addProductToCart()
-            .closePopupOtherCategoryIfYes()
+    orderNumber = product_page_logic
             .cartClick()
             .nextButtonClick()
             .signIn(mail, password)

@@ -1,14 +1,9 @@
 package ATD.QASYS_533_Characteristics;
 
 import ATD.*;
-import com.codeborne.selenide.CollectionCondition;
-import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.ElementsCollection;
-import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
-import org.apache.http.util.Asserts;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -26,7 +21,7 @@ public class QASYS_536_CharacteristicsRecovery {
 
   private CommonMethods commonMethods = new CommonMethods();
   private Listing_page listingPage = new Listing_page();
-  private Product_page productPage = new Product_page();
+  private Product_page_Logic product_page_logic = new Product_page_Logic();
 
   private String expecetedChar = "Zustand  Wiederaufbereitet";
 
@@ -73,9 +68,7 @@ public class QASYS_536_CharacteristicsRecovery {
   @Owner(value = "Evlentiev")
   @Description(value = "Test-3. Checks output characteristic recovery in basket")
   public void testOutputCharacteristicsRecoveryInBasket(String route) {
-    productPage.openProductPageById(route, "1099441")
-            .addProductToCart()
-            .closePopupOtherCategoryIfYes()
+    product_page_logic
             .cartClick()
             .getCharacteristicsOfProduct().filter(matchText("Zustand:\\nWiederaufbereitet")).shouldHaveSize(1);
   }
@@ -85,7 +78,7 @@ public class QASYS_536_CharacteristicsRecovery {
   @Owner(value = "Evlentiev")
   @Description(value = "Test-4. Checks output characteristic recovery in product page")
   public void testOutputCharacteristicsRecoveryInProductPage(String route) {
-    productPage.openProductPageById(route, "1099441")
+    product_page_logic.openProductPageById(route, "1099441")
             .uncoverCharacteristics()
             .getCharacteristicsOfProduct().filter(matchText("Zustand  \\nWiederaufbereitet")).shouldHaveSize(1);
 

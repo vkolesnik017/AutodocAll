@@ -4,20 +4,17 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.ex.ElementNotFound;
 import com.codeborne.selenide.ex.ElementShould;
-import com.codeborne.selenide.ex.UIAssertionError;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
 
-
-import static ATD.CommonMethods.mailRandom;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
-public class Product_page {
+public class Product_page{
 
   @Step("Checking number of product in cart")
   public Product_page checkingNumberOfProductInCart(int expectedNumber) {
@@ -31,18 +28,12 @@ public class Product_page {
     return this;
   }
 
-  @Step(":from product page")
-  public Cart_page cartClick() {
-    new Main_page().cartClick();
-    return page(Cart_page.class);
-  }
-
   //common locators
   private SelenideElement quantityOnBasketIcon() {
     return $x("//div[@class='header-cart__info']//span[1]");
   }
 
-  private SelenideElement numberBasket() {
+    SelenideElement numberBasket() {
     return $(byCssSelector(".code"));
   }
 
@@ -50,7 +41,7 @@ public class Product_page {
     return $(byCssSelector(".header-cart__count"));
   }
 
-  private SelenideElement buyButton() {
+    SelenideElement buyButton() {
     return $(byCssSelector(".product-button>a"));
   }
 
@@ -222,23 +213,23 @@ public class Product_page {
 
   public SelenideElement subscribeAcceptCheckbox() { return $("#subscribe_accept"); }
 
-  public SelenideElement reviewsForm() {
+  SelenideElement reviewsForm() {
     return $(By.id("add_review_form"));
   }
 
-  public SelenideElement checkboxInReviewsForm() {
+  SelenideElement checkboxInReviewsForm() {
     return $(By.xpath("//form[@id='add_review_form']//input[@id='subscribe_accept']"));
   }
 
-  public SelenideElement datenschutzerklarungLinkInReviewsForm() {
+  SelenideElement datenschutzerklarungLinkInReviewsForm() {
     return $(By.xpath("//form[@id='add_review_form']//label[@id='privacy_policy_review_form']/a"));
   }
 
-  public SelenideElement succesPopup() {
+  SelenideElement succesPopup() {
     return $(By.id("popup_update"));
   }
 
-  public SelenideElement succesPopupCloseBtn() {
+  SelenideElement succesPopupCloseBtn() {
     return $(By.xpath("//div[@id='popup_update']//div[@class='buttons-inner']/a"));
   }
 
@@ -284,34 +275,8 @@ public class Product_page {
   }
 
   @Step
-  public Product_page addProductToCart() {
-    checkNumberBasketAndRefreshPageIfNot();
-    sleep(3000); // TODO для стабилизации. Без слипа иногда добавленный товар исчезает из корзины после перехода в неё, решается в SITES-2830
-    buyButton().click();
-    try {
-      checksPresentProductInCartPopup();
-    } catch (UIAssertionError e) {
-      closePopupOtherCategoryIfYes();
-      buyButton().click();
-      checksPresentProductInCartPopup();
-    }
-    return this;
-  }
-
-  @Step
   public Product_page checkQuantityOnBasketIconEquals(int quantityInCart) {
     quantityOnBasketIcon().shouldHave(exactText(String.valueOf(quantityInCart)));
-    return this;
-  }
-
-  @Step
-  public Product_page checkNumberBasketAndRefreshPageIfNot() {  // TODO Бывает при открытии страницы не подгружается номер корзины и товар не добавляется в корзину, причина не известна, что бы стабилизировать тесты добавлен этот метод
-    try {
-      numberBasket().shouldBe(visible);
-    } catch (ElementShould e) {
-      refresh();
-      numberBasket().shouldBe(visible);
-    }
     return this;
   }
 
@@ -350,7 +315,7 @@ public class Product_page {
   }
 
   @Step
-  public Product_page checksPresentProductInCartPopup() {
+  Product_page checksPresentProductInCartPopup() {
     cartIcon().hover();
     firstProductPriceInPopupOfCart().shouldBe(visible);
     return this;

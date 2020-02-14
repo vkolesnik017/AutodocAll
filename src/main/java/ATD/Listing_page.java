@@ -170,7 +170,7 @@ public class Listing_page {
     }
 
     // this collection finds only products that are in additional listing, suit only for tecdoc listing
-    public ElementsCollection imagesProductsInAdditionalListingForTecDoc() {
+    private ElementsCollection imagesProductsInAdditionalListingForTecDoc() {
         return $$x("//*[@class='title_list']/../following-sibling::li//*[@class='image']/span[1]");
     }
 
@@ -182,7 +182,7 @@ public class Listing_page {
 
     public SelenideElement showListingInTileModeButton() { return $(By.xpath("//*[@class='sortby js-change-view-block']/span[3]")); }
 
-    public ElementsCollection articleProductsInTileMode() {
+    private ElementsCollection articleProductsInTileMode() {
         return $$(".rec_prod_article");
     }
 
@@ -222,7 +222,7 @@ public class Listing_page {
 
     public SelenideElement secondListingPage() { return $(By.xpath("//*[@class='pagination']/span[3]/a")); }
 
-    public ElementsCollection sideFilterAttribute() { return $$(By.xpath("//*[@class='subname']")); }
+    private ElementsCollection sideFilterAttribute() { return $$(By.xpath("//*[@class='subname']")); }
 
     public SelenideElement preloader() { return $(By.cssSelector(".preloader_wrapper")); }
 
@@ -286,9 +286,9 @@ public class Listing_page {
 
     public SelenideElement grayButton() { return $x("//*[contains(@class,'not_active')]/a"); }
 
-    public ElementsCollection addToBasketButtons() { return $$x("//*[@class='add_info']/div[2]"); }
+    private ElementsCollection addToBasketButtons() { return $$x("//*[@class='add_info']/div[2]"); }
 
-    public ElementsCollection redButtons() { return $$x("//*[@class='button ']"); }
+    private ElementsCollection redButtons() { return $$x("//*[@class='button ']"); }
 
     public ElementsCollection vorderachseAttributeInTileMode() { return $$x("//*[@class='product_desc_table_container']//*[contains(text(),'Vorderachse')]"); }
 
@@ -299,7 +299,7 @@ public class Listing_page {
     public ElementsCollection productsOnListingInListMode() { return $$(".description"); }
 
     @Step("Method gets price of all products on listing and parse it into float")
-    public List<Float> getAllPricesOnListingPage(ElementsCollection listingViewModeLocator) {
+    private List<Float> getAllPricesOnListingPage(ElementsCollection listingViewModeLocator) {
         List<Float> listOfFloatPrices = new ArrayList<>();
         for (SelenideElement price : listingViewModeLocator) {
             String priceProduct = price.getText();
@@ -390,7 +390,7 @@ public class Listing_page {
     }
 
     @Step("Method checks product attribute on listing")
-    public void checkProductAttributeOnListing(String attributeSelectedInSideFilter, ElementsCollection productAttributeOnListing) {
+    private void checkProductAttributeOnListing(String attributeSelectedInSideFilter, ElementsCollection productAttributeOnListing) {
         productAttributeOnListing.shouldHave(sizeGreaterThan(0));
         for (int i = 0; i < productAttributeOnListing.size(); i++) {
             productAttributeOnListing.get(i).shouldHave(text(attributeSelectedInSideFilter));
@@ -422,7 +422,7 @@ public class Listing_page {
         productsFromAdditionalTecDocListing.shouldHave(sizeGreaterThan(1));
         for (int product = 0; product < productsFromAdditionalTecDocListing.size(); product++) {
             productsFromAdditionalTecDocListing.get(product).scrollTo().click();
-            new Product_page().infoBlockWithSelectedCar().shouldBe(visible).shouldHave(text(textChosenCar));
+            new Product_page_Logic().infoBlockWithSelectedCar().shouldBe(visible).shouldHave(text(textChosenCar));
             back();
             titleOfAdditionalListingForTecDoc().shouldBe(visible);
             productsFromAdditionalTecDocListing = imagesProductsInAdditionalListingForTecDoc();

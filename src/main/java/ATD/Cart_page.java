@@ -16,14 +16,8 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class Cart_page {
 
-    private SelenideElement nextButton() {
+    SelenideElement nextButton() {
         return $(byCssSelector(".next-step"));
-    }
-
-    @Step
-    public CartAccount_page nextButtonClick() {
-        nextButton().click();
-        return page(CartAccount_page.class);
     }
 
     @Step("Click uncover characteristics for first product and get his characteristics")
@@ -32,7 +26,7 @@ public class Cart_page {
         return $$(".info__description>li").shouldHave(sizeGreaterThan(10));
     }
 
-    SelenideElement uncoverCharacteristics() {
+    private SelenideElement uncoverCharacteristics() {
         return $(".open");
     }
 
@@ -40,11 +34,11 @@ public class Cart_page {
         return $(byCssSelector(".qty>input"));
     }
 
-    private SelenideElement counterPlusBtn() {
+    SelenideElement counterPlusBtn() {
         return $(byCssSelector(".plus"));
     }
 
-    private SelenideElement counterMinusBtn() {
+    SelenideElement counterMinusBtn() {
         return $(byCssSelector(".minus"));
     }
 
@@ -141,16 +135,5 @@ public class Cart_page {
         return this;
     }
 
-    @Step
-    public Cart_page counterIncrease(String startValue) {
-        new CommonMethods().checkingCounterIncrease(startValue, fieldWithQuantityOfProducts(), counterPlusBtn());
-        return this;
-    }
-
-    @Step
-    public Cart_page counterDecrease(String startValue) {
-        new CommonMethods().checkingCounterDecrease(startValue, fieldWithQuantityOfProducts(), counterMinusBtn());
-        return this;
-    }
 
 }

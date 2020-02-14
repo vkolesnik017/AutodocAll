@@ -1,7 +1,7 @@
 package ATD.QASYS_67_GrayButton;
 
 import ATD.Main_page;
-import ATD.Product_page;
+import ATD.Product_page_Logic;
 import ATD.Search_page;
 import ATD.SetUp;
 import AWS.Login_aws;
@@ -26,7 +26,7 @@ public class QASYS_69_GrayButton {
 
     private Mailinator mailinator = new Mailinator();
     private Search_page search_page = new Search_page();
-    private Product_page product_page = new Product_page();
+    private Product_page_Logic product_page = new Product_page_Logic();
     private WishlistReminderAvailability_aws wishlistReminderAvailability = new WishlistReminderAvailability_aws();
 
     @BeforeClass

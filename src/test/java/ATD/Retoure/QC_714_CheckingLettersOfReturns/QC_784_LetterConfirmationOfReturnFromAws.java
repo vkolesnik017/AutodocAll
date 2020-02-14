@@ -1,6 +1,6 @@
 package ATD.Retoure.QC_714_CheckingLettersOfReturns;
 
-import ATD.Product_page;
+import ATD.Product_page_Logic;
 import ATD.SetUp;
 import AWS.Order_aws;
 import io.qameta.allure.Description;
@@ -12,7 +12,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import static ATD.CommonMethods.idPfandProduct;
 import static ATD.CommonMethods.password;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.text;
@@ -20,7 +19,7 @@ import static com.codeborne.selenide.Selenide.close;
 
 public class QC_784_LetterConfirmationOfReturnFromAws {
 
-  private Product_page productPage = new Product_page();
+  private Product_page_Logic product_page_logic = new Product_page_Logic();
   private Mailinator mailinator = new Mailinator();
 
   private String idUserAws = "13767378";
@@ -42,9 +41,7 @@ public class QC_784_LetterConfirmationOfReturnFromAws {
   @Owner(value = "Evlentiev")
   @Description(value = "Verification of the letter \"Confirmation of receipt of the application\" from AWS")
   public void testLetterConfirmationOfReturnFromAws(String route) {
-    orderNumber = productPage.openProductPageById(route, idPfandProduct)
-            .addProductToCart()
-            .closePopupOtherCategoryIfYes()
+    orderNumber = product_page_logic
             .cartClick()
             .nextButtonClick()
             .signIn(mail, password)
