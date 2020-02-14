@@ -1,6 +1,7 @@
 package ATD;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.ex.ElementNotFound;
@@ -65,7 +66,9 @@ public class CommonMethods {
 
     @Step("Wait while route become expected {expected route}")
     public static void waitWhileRouteBecomeExpected(String expectedRoute) {
-            Wait().until(WebDriver -> getNameRouteFromJSVarInHTML().equals(expectedRoute));
+        Configuration.timeout = 30000;
+        Wait().until(WebDriver -> getNameRouteFromJSVarInHTML().equals(expectedRoute));
+        Configuration.timeout = 10000;
     }
 
     public static String getShopFromRoute(String route) {
