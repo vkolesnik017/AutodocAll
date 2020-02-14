@@ -510,12 +510,12 @@ public class Main_page {
         return page(ErsatzteileCars_page.class);
     }
 
-    //Methods and locators for Selector Vertical
+    // Vertical car selector popup
 
     @Step("Method close car selector tooltip if it is present on page")
     public void closeCarSelectorTooltipIfVisible() {
-        if (tooltipCarSelectorClose().is(visible)) {
-            tooltipCarSelectorClose().click();
+        if (tooltipInCarSelectorCloseBtn().is(visible)) {
+            tooltipInCarSelectorCloseBtn().click();
         }
     }
 
@@ -551,7 +551,7 @@ public class Main_page {
         return $(byId("reset_selector_form"));
     }
 
-    private SelenideElement tooltipCarSelectorClose() {
+    public SelenideElement tooltipInCarSelectorCloseBtn() {
         return $(".tooltiptext-close");
     }
 

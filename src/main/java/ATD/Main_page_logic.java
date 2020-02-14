@@ -12,6 +12,15 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class Main_page_logic extends Main_page {
 
+  // Selector
+
+  @Step("Close tooltip in car selector")
+  public Main_page_logic closeTooltipInCarSelector() {
+    tooltipInCarSelectorCloseBtn().click();
+    tooltipInCarSelectorCloseBtn().shouldNot(visible);
+    return this;
+  }
+
   // Selector kba
 
   // This method only for DE
