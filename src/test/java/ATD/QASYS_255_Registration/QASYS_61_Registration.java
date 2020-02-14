@@ -16,7 +16,7 @@ import static com.codeborne.selenide.Selenide.open;
 public class QASYS_61_Registration {
     private Main_page mainPage = new Main_page();
     private Search_page search_page = new Search_page();
-    private CartAccount_page cartAccount_page = new CartAccount_page();
+    private CartAccount_page_Logic cartAccount_page_logic= new CartAccount_page_Logic();
     private CartAddress_page cartAddress_page = new CartAddress_page();
 
     @BeforeClass
@@ -53,9 +53,9 @@ public class QASYS_61_Registration {
         search_page.addFirstProductAndGoToCart();
         new Cart_page_Logic().nextButtonClick();
         String mail = mailRandom();
-        cartAccount_page.registrationFormEmailInput().setValue(mail);
-        cartAccount_page.registrationFormPasswordInput().setValue(password);
-        cartAccount_page.registrationFormNextBtnClick();
+        cartAccount_page_logic.registrationFormEmailInput().setValue(mail);
+        cartAccount_page_logic.registrationFormPasswordInput().setValue(password);
+        cartAccount_page_logic.registrationFormNextBtnClick();
         cartAddress_page.nextButton().shouldBe(Condition.visible);
         cartAddress_page.logoClick();
         mainPage.logoutButton().click();

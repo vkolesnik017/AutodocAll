@@ -7,9 +7,9 @@ import static com.codeborne.selenide.Selenide.page;
 public class Cart_page_Logic extends Cart_page {
 
     @Step
-    public CartAccount_page nextButtonClick() {
+    public CartAccount_page_Logic nextButtonClick() {
         nextButton().click();
-        return page(CartAccount_page.class);
+        return page(CartAccount_page_Logic.class);
     }
 
     @Step
