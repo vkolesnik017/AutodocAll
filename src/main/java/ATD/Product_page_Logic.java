@@ -1,11 +1,50 @@
 package ATD;
 
+import com.codeborne.selenide.ex.ElementShould;
+import com.codeborne.selenide.ex.UIAssertionError;
+import io.qameta.allure.Step;
+
 import static ATD.CommonMethods.mailRandom;
 import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.refresh;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class Product_page_Logic extends Product_page {
 
+
+    @Step(":from product page")
+    public Cart_page cartClick() {
+      new Main_page().cartClick();
+      return page(Cart_page.class);
+    }
+
+    @Step
+    public Product_page_Logic checkNumberBasketAndRefreshPageIfNot() {  // TODO Бывает при открытии страницы не подгружается номер корзины и товар не добавляется в корзину, причина не известна, что бы стабилизировать тесты добавлен этот метод
+      try {
+        numberBasket().shouldBe(visible);
+      } catch (ElementShould e) {
+        refresh();
+        numberBasket().shouldBe(visible);
+      }
+      return this;
+    }
+
+    @Step
+    public Product_page_Logic addProductToCart() {
+      checkNumberBasketAndRefreshPageIfNot();
+      sleep(3000); // TODO для стабилизации. Без слипа иногда добавленный товар исчезает из корзины после перехода в неё, решается в SITES-2830
+      buyButton().click();
+      try {
+        checksPresentProductInCartPopup();
+      } catch (UIAssertionError e) {
+        closePopupOtherCategoryIfYes();
+        buyButton().click();
+        checksPresentProductInCartPopup();
+      }
+      return this;
+    }
 
     //Gray button popup for subscription for product which is not stock
     public Product_page_Logic clickGrayButtonAndCheckAvailableForm() {

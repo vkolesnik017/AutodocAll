@@ -1,9 +1,6 @@
 package ATD.QASYS_19_Basket;
 
-import ATD.CartAddress_page;
-import ATD.CartAllData_page;
-import ATD.Product_page;
-import ATD.SetUp;
+import ATD.*;
 import AWS.Login_aws;
 import AWS.ProductSearch_aws;
 import io.qameta.allure.Description;
@@ -15,7 +12,6 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static ATD.CommonMethods.openPage;
-import static ATD.CommonMethods.usualIdProduct;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.not;
 import static com.codeborne.selenide.Condition.visible;
@@ -34,7 +30,7 @@ public class QASYS_455_DeletingOfDangerousProductFromBasket {
   private Login_aws login_aws = new Login_aws();
   private CartAllData_page cartAllDataPage = new CartAllData_page();
   private ProductSearch_aws productSearch_aws = new ProductSearch_aws();
-  private Product_page productPage = new Product_page();
+  private Product_page_Logic product_page_logic = new Product_page_Logic();
   private CartAddress_page cartAddressPage = new CartAddress_page();
 
   @BeforeClass
@@ -59,13 +55,7 @@ public class QASYS_455_DeletingOfDangerousProductFromBasket {
     String route = routeAndDeliveryCountry.split("_")[0];
     String deliveryCountry = routeAndDeliveryCountry.split("_")[1];
     openPage(route);
-    productPage.openProductPageById(route, usualIdProduct)
-            .addProductToCart()
-            .checkQuantityOnBasketIconEquals(1)
-            .openProductPageById(route, idDangerousProduct)
-            .addProductToCart()
-            .checkQuantityOnBasketIconEquals(2)
-            .closePopupOtherCategoryIfYes()
+    product_page_logic
             .cartClick()
             .nextButtonClick()
             .signIn(email, password)
@@ -79,27 +69,21 @@ public class QASYS_455_DeletingOfDangerousProductFromBasket {
     cartAllDataPage.areaOutOfPopup().click(1, 1);
     cartAllDataPage.searchProductByID(idDangerousProduct).shouldBe(not(visible));
     // check clicks on close button in Popup with dangerous product0
-    productPage.openProductPageById(route, idDangerousProduct)
-            .addProductToCart()
-            .checkQuantityOnBasketIconEquals(2)
+    product_page_logic
             .cartClick();
     cartAllDataPage.searchProductByID(idDangerousProduct).shouldBe(visible);
     cartAllDataPage.popupOfDangerousProduct().shouldBe(visible);
     cartAllDataPage.closePopupBtn().click();
     cartAllDataPage.searchProductByID(idDangerousProduct).shouldBe(not(visible));
     // check clicks on delete product in Popup with dangerous product and check deletion product
-    productPage.openProductPageById(route, idDangerousProduct)
-            .addProductToCart()
-            .checkQuantityOnBasketIconEquals(2)
+    product_page_logic
             .cartClick();
     cartAllDataPage.searchProductByID(idDangerousProduct).shouldBe(visible);
     cartAllDataPage.popupOfDangerousProduct().shouldBe(visible);
     cartAllDataPage.deleteProductBtnInPopup().click();
     cartAllDataPage.searchProductByID(idDangerousProduct).shouldBe(not(visible));
     // check clicks on change address button in Popup with dangerous product and check redirect on cart/address
-    productPage.openProductPageById(route, idDangerousProduct)
-            .addProductToCart()
-            .checkQuantityOnBasketIconEquals(2)
+    product_page_logic
             .cartClick();
     cartAllDataPage.searchProductByID(idDangerousProduct).shouldBe(visible);
     cartAllDataPage.popupOfDangerousProduct().shouldBe(visible);

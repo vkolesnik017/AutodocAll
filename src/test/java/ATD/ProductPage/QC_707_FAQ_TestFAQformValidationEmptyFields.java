@@ -2,7 +2,7 @@ package ATD.ProductPage;
 
 
 import ATD.DataBase;
-import ATD.Product_page;
+import ATD.Product_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -19,7 +19,7 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.close;
 
 public class QC_707_FAQ_TestFAQformValidationEmptyFields {
-    private Product_page productPage = new Product_page();
+    private Product_page_Logic product_page_logic = new Product_page_Logic();
     private DataBase dataBase = new DataBase();
 
     @BeforeClass
@@ -34,36 +34,36 @@ public class QC_707_FAQ_TestFAQformValidationEmptyFields {
     public void testInputValidationFAQ() throws SQLException {
         openPage("https://autodoc.de/" +  dataBase.getRouteByRouteName("DE", "product14"));
         closeCookiesFooterMessage();
-        productPage.faqSubmitButton().click();
-        productPage.faqPopup().shouldBe(visible);
-        productPage.faqPopupText().shouldHave(text("Fehler"));
-        productPage.faqPopupClose().click();
-        productPage.validationEmailInputFAQ().shouldBe(visible);
-        productPage.validationNameInputFAQ().shouldBe(visible);
-        productPage.validationMessageInputFAQ().shouldBe(visible);
-        productPage.faqNameInput().sendKeys("test_atd_faq");
-        productPage.faqSubmitButton().click();
-        productPage.faqPopupText().shouldHave(text("Fehler"));
-        productPage.faqPopupClose().click();
-        productPage.validationEmailInputFAQ().shouldBe(visible);
-        productPage.validationNameInputFAQ().shouldNotBe(visible);
-        productPage.validationMessageInputFAQ().shouldBe(visible);
-        productPage.faqNameInput().clear();
-        productPage.faqEmailInput().sendKeys("test@mailinator.com");
-        productPage.faqSubmitButton().click();
-        productPage.faqPopupText().shouldHave(text("Fehler"));
-        productPage.faqPopupClose().click();
-        productPage.validationEmailInputFAQ().shouldNotBe(visible);
-        productPage.validationNameInputFAQ().shouldBe(visible);
-        productPage.validationMessageInputFAQ().shouldBe(visible);
-        productPage.faqEmailInput().clear();
-        productPage.faqMessageInput().sendKeys("TEST_MESSAGE");
-        productPage.faqSubmitButton().click();
-        productPage.faqPopupText().shouldHave(text("Fehler"));
-        productPage.faqPopupClose().click();
-        productPage.validationEmailInputFAQ().shouldBe(visible);
-        productPage.validationNameInputFAQ().shouldBe(visible);
-        productPage.validationMessageInputFAQ().shouldNotBe(visible);
+        product_page_logic.faqSubmitButton().click();
+        product_page_logic.faqPopup().shouldBe(visible);
+        product_page_logic.faqPopupText().shouldHave(text("Fehler"));
+        product_page_logic.faqPopupClose().click();
+        product_page_logic.validationEmailInputFAQ().shouldBe(visible);
+        product_page_logic.validationNameInputFAQ().shouldBe(visible);
+        product_page_logic.validationMessageInputFAQ().shouldBe(visible);
+        product_page_logic.faqNameInput().sendKeys("test_atd_faq");
+        product_page_logic.faqSubmitButton().click();
+        product_page_logic.faqPopupText().shouldHave(text("Fehler"));
+        product_page_logic.faqPopupClose().click();
+        product_page_logic.validationEmailInputFAQ().shouldBe(visible);
+        product_page_logic.validationNameInputFAQ().shouldNotBe(visible);
+        product_page_logic.validationMessageInputFAQ().shouldBe(visible);
+        product_page_logic.faqNameInput().clear();
+        product_page_logic.faqEmailInput().sendKeys("test@mailinator.com");
+        product_page_logic.faqSubmitButton().click();
+        product_page_logic.faqPopupText().shouldHave(text("Fehler"));
+        product_page_logic.faqPopupClose().click();
+        product_page_logic.validationEmailInputFAQ().shouldNotBe(visible);
+        product_page_logic.validationNameInputFAQ().shouldBe(visible);
+        product_page_logic.validationMessageInputFAQ().shouldBe(visible);
+        product_page_logic.faqEmailInput().clear();
+        product_page_logic.faqMessageInput().sendKeys("TEST_MESSAGE");
+        product_page_logic.faqSubmitButton().click();
+        product_page_logic.faqPopupText().shouldHave(text("Fehler"));
+        product_page_logic.faqPopupClose().click();
+        product_page_logic.validationEmailInputFAQ().shouldBe(visible);
+        product_page_logic.validationNameInputFAQ().shouldBe(visible);
+        product_page_logic.validationMessageInputFAQ().shouldNotBe(visible);
         close();
     }
 }

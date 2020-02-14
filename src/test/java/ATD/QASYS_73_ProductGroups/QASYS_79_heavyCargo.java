@@ -1,7 +1,7 @@
 package ATD.QASYS_73_ProductGroups;
 
 import ATD.DataBase;
-import ATD.Product_page;
+import ATD.Product_page_Logic;
 import ATD.SetUp;
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Description;
@@ -35,11 +35,11 @@ public class QASYS_79_heavyCargo {
     @Test(dataProvider = "route")
     @Description(value = "Test check making order with heavy cargo product")
     @Flaky
-    public void checkingOrderWithHeavyCargo (String route) throws SQLException {
+    public void checkingOrderWithHeavyCargo(String route) throws SQLException {
         String shop = getShopFromRoute(route);
         open(route + "/" + new DataBase().getRouteByRouteName(shop, "product6"));
         String testMail = "atdautotest_qasys_79_heavycargo@mailinator.com";
-        new Product_page().checkingHeavyCargoLinkTransition().addProductToCart().closePopupOtherCategoryIfYes()
+        new Product_page_Logic()
                 .cartClick()
                 .nextButtonClick()
                 .signIn(testMail, password)

@@ -22,7 +22,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class QASYS_569_AdvantagesPfands {
 
-  private Product_page productPage = new Product_page();
+  private Product_page_Logic product_page_logic = new Product_page_Logic();
   private Listing_page listingPage = new Listing_page();
   private Cart_page cartPage = new Cart_page();
   private CartAllData_page cartAllDataPage = new CartAllData_page();
@@ -43,7 +43,7 @@ public class QASYS_569_AdvantagesPfands {
   @Description(value = "Test-1. Checks availability pfand on product page")
   public void testAvailabilityPfandOnProductPage(String route) {
     open(route);
-    productPage.pfandBlock().shouldBe(visible);
+    product_page_logic.pfandBlock().shouldBe(visible);
   }
 
   @DataProvider(name = "oen", parallel = true)
@@ -100,9 +100,8 @@ public class QASYS_569_AdvantagesPfands {
   public void testAvailabilityPfandInCartAndInOrderInAws(String route) {
     String testMail = "atdautotest_qasys_569_advantagespfands@mailinator.com";
     open(route);
-    productPage.pfandBlock().shouldBe(visible);
-    productPage.addProductToCart()
-            .closePopupOtherCategoryIfYes()
+    product_page_logic.pfandBlock().shouldBe(visible);
+    product_page_logic
             .cartClick();
     String pfandPrice = cartPage.pfandPriceInProductBlock().getText();
     cartPage.pfandPriceInTotalPriceBlock().shouldHave(exactText(pfandPrice));

@@ -3,7 +3,7 @@ package ATD.ProductPage;
 
 import ATD.CommonMethods;
 import ATD.DataBase;
-import ATD.Product_page;
+import ATD.Product_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -20,7 +20,7 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.close;
 
 public class QC_963_ProductPage_TestPresenceOfElements {
-    private Product_page productPage = new Product_page();
+    private Product_page_Logic product_page_logic = new Product_page_Logic();
     private CommonMethods commonMethods = new CommonMethods();
     private DataBase dataBase = new DataBase();
 
@@ -38,86 +38,86 @@ public class QC_963_ProductPage_TestPresenceOfElements {
         openPage("https://autodoc.de/" + dataBase.getRouteByRouteName("DE", "product13"));
         closeCookiesFooterMessage();
         //2
-        productPage.carSelectorBlock().shouldBe(visible);
+        product_page_logic.carSelectorBlock().shouldBe(visible);
         //3
-        productPage.minimizedCharactericticBlock().shouldBe(visible);
-        productPage.uncoverCharactericticBtn().click();
-        productPage.maximizedCharacteristicBlock().shouldBe(visible);
-        productPage.coverCharacteristicBtn().click();
-        productPage.minimizedCharactericticBlock().shouldBe(visible);
+        product_page_logic.minimizedCharactericticBlock().shouldBe(visible);
+        product_page_logic.uncoverCharactericticBtn().click();
+        product_page_logic.maximizedCharacteristicBlock().shouldBe(visible);
+        product_page_logic.coverCharacteristicBtn().click();
+        product_page_logic.minimizedCharactericticBlock().shouldBe(visible);
         //5
-        productPage.breadcrumbsBlock().shouldBe(visible);
+        product_page_logic.breadcrumbsBlock().shouldBe(visible);
         //6
-        productPage.breadcrumbsCategoryDropdownButton().click();
-        productPage.breadcrumbsFirstCategoryFromDropdown().click();
+        product_page_logic.breadcrumbsCategoryDropdownButton().click();
+        product_page_logic.breadcrumbsFirstCategoryFromDropdown().click();
         commonMethods.checkingUrl("https://www.autodoc.de/autoteile/bremsbelag-10130");
         //7
-        productPage.breadcrumbsCategoryButton().click();
+        product_page_logic.breadcrumbsCategoryButton().click();
         commonMethods.checkingUrl("https://www.autodoc.de/autoteile/bremsscheibe-10132");
         //8
-        productPage.breadcrumbsParentCategoryDropdownButton().click();
-        productPage.breadcrumbsFirstParentCategoryFromDropdown().click();
+        product_page_logic.breadcrumbsParentCategoryDropdownButton().click();
+        product_page_logic.breadcrumbsFirstParentCategoryFromDropdown().click();
         commonMethods.checkingUrl("https://www.autodoc.de/autoteile/filter");
         //9
-        productPage.breadcrumbsParentCategotyButton().click();
+        product_page_logic.breadcrumbsParentCategotyButton().click();
         commonMethods.checkingUrl("https://www.autodoc.de/autoteile/bremsanlage");
         //10
-        productPage.breadcrumbsCatalogButton().click();
+        product_page_logic.breadcrumbsCatalogButton().click();
         commonMethods.checkingUrl("https://www.autodoc.de/autoteile");
         //4
-        productPage.featuresBlock().shouldBe(visible);
-        productPage.jahreIcon().shouldBe(visible).hover();
-        Assert.assertEquals(productPage.jahreIcon().getCssValue("color"), "rgba(51, 100, 219, 1)");
-        productPage.tageIcon().shouldBe(visible).hover();
-        Assert.assertEquals(productPage.tageIcon().getCssValue("color"), "rgba(51, 100, 219, 1)");
-        productPage.tagePopup().shouldBe(visible);
-        productPage.safeOrderIcon().shouldBe(visible).hover();
-        Assert.assertEquals(productPage.safeOrderIconColor().getCssValue("color"), "rgba(51, 100, 219, 1)");
-        productPage.safeOrderPopup().shouldBe(visible);
+        product_page_logic.featuresBlock().shouldBe(visible);
+        product_page_logic.jahreIcon().shouldBe(visible).hover();
+        Assert.assertEquals(product_page_logic.jahreIcon().getCssValue("color"), "rgba(51, 100, 219, 1)");
+        product_page_logic.tageIcon().shouldBe(visible).hover();
+        Assert.assertEquals(product_page_logic.tageIcon().getCssValue("color"), "rgba(51, 100, 219, 1)");
+        product_page_logic.tagePopup().shouldBe(visible);
+        product_page_logic.safeOrderIcon().shouldBe(visible).hover();
+        Assert.assertEquals(product_page_logic.safeOrderIconColor().getCssValue("color"), "rgba(51, 100, 219, 1)");
+        product_page_logic.safeOrderPopup().shouldBe(visible);
         //11
-        productPage.productImageBlock().shouldBe(visible);
+        product_page_logic.productImageBlock().shouldBe(visible);
         //12
-        productPage.imageInSlider().click();
-        productPage.productImageBlock().click();
-        productPage.fullProductImage().shouldBe(visible);
-        productPage.closeFullImagePreview().click();
+        product_page_logic.imageInSlider().click();
+        product_page_logic.productImageBlock().click();
+        product_page_logic.fullProductImage().shouldBe(visible);
+        product_page_logic.closeFullImagePreview().click();
         //13
-        productPage.productImageSlider().shouldBe(visible);
+        product_page_logic.productImageSlider().shouldBe(visible);
         //14
-        productPage.priceBlock().shouldBe(visible);
+        product_page_logic.priceBlock().shouldBe(visible);
         //15
-        productPage.addProductToCart();
-        productPage.closePopupOtherCategoryIfYes();
+        product_page_logic.addProductToCart();
+        product_page_logic.closePopupOtherCategoryIfYes();
         //16
-        productPage.counterIncrease("2");
-        productPage.counterDecrease("4");
+        product_page_logic.counterIncrease("2");
+        product_page_logic.counterDecrease("4");
         //17
-        productPage.brandButtonOnImage().click();
+        product_page_logic.brandButtonOnImage().click();
         commonMethods.checkingUrlAndCloseTab("https://www.autodoc.de/autoteile/bremsscheibe-10132/mf-ridex");
         //18
-        productPage.versandkostenButton().click();
+        product_page_logic.versandkostenButton().click();
         commonMethods.checkingUrl("https://www.autodoc.de/services/versand");
         //19
-        productPage.raitingBlock().click();
+        product_page_logic.raitingBlock().click();
         //20
-        productPage.feedbackBlock().shouldBe(visible);
+        product_page_logic.feedbackBlock().shouldBe(visible);
         //21
-        productPage.similarPropertiesBlock().shouldBe(visible);
-        productPage.linkInSimilarPropertiesBlock().click();
+        product_page_logic.similarPropertiesBlock().shouldBe(visible);
+        product_page_logic.linkInSimilarPropertiesBlock().click();
         commonMethods.checkingUrl("https://www.autodoc.de/bosch/1165812");
         //22
-        productPage.minicardsBlock().shouldBe(visible);
-        productPage.productInMinicard().hover();
-        productPage.characteristicsInMinicard().shouldBe(visible);
+        product_page_logic.minicardsBlock().shouldBe(visible);
+        product_page_logic.productInMinicard().hover();
+        product_page_logic.characteristicsInMinicard().shouldBe(visible);
         //23
-        productPage.paymentMethodsBlock().shouldBe(visible);
+        product_page_logic.paymentMethodsBlock().shouldBe(visible);
         //24
-        productPage.deliveryServicesBlock().shouldBe(visible);
+        product_page_logic.deliveryServicesBlock().shouldBe(visible);
         //25
-        productPage.videoBlock().shouldBe(visible);
+        product_page_logic.videoBlock().shouldBe(visible);
         //26
-        productPage.pdfTutorialsBlock().shouldBe(visible);
-        productPage.checkPdfLinksForDownload();
+        product_page_logic.pdfTutorialsBlock().shouldBe(visible);
+        product_page_logic.checkPdfLinksForDownload();
         close();
     }
 }

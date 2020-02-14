@@ -2,7 +2,7 @@ package ATD.ProductPage;
 
 
 import ATD.DataBase;
-import ATD.Product_page;
+import ATD.Product_page_Logic;
 import ATD.Reviews_Confirmation_page;
 import AWS.Login_aws;
 import AWS.Reviews_aws;
@@ -23,7 +23,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class QC_777_Reviews_TestReviewsFormWithValidData {
 
-    private Product_page productPage = new Product_page();
+    private Product_page_Logic product_page_logic = new Product_page_Logic();
     private Mailinator mailinator = new Mailinator();
     private Reviews_Confirmation_page reviewsConfirmationPage = new Reviews_Confirmation_page();
     private Login_aws loginAws = new Login_aws();
@@ -44,12 +44,12 @@ public class QC_777_Reviews_TestReviewsFormWithValidData {
         closeCookiesFooterMessage();
         String randomEmail = mailRandomMailinator();
         String reviewMessage = ("AUTOTEST_REVIEWS" + getRandomNumber());
-        productPage.reviewsNameInput().sendKeys("test_atd_reviews");
-        productPage.reviewsEmailInput().sendKeys(randomEmail);
-        productPage.reviewsMessageInput().sendKeys(reviewMessage);
-        productPage.subscribeAcceptCheckbox().click();
-        productPage.reviewsSubmitButton().click();
-        productPage.faqPopupText().shouldHave(text("Danke für Ihre Beurteilung."));
+        product_page_logic.reviewsNameInput().sendKeys("test_atd_reviews");
+        product_page_logic.reviewsEmailInput().sendKeys(randomEmail);
+        product_page_logic.reviewsMessageInput().sendKeys(reviewMessage);
+        product_page_logic.subscribeAcceptCheckbox().click();
+        product_page_logic.reviewsSubmitButton().click();
+        product_page_logic.faqPopupText().shouldHave(text("Danke für Ihre Beurteilung."));
         mailinator.openEmail(randomEmail)
                 .openLetter(2)
                 .linkFAQemailConfirm()

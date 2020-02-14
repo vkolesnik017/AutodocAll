@@ -2,7 +2,7 @@ package ATD.ProductPage;
 
 
 import ATD.DataBase;
-import ATD.Product_page;
+import ATD.Product_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -17,7 +17,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.close;
 
 public class QC_942_CompatibilityList_TestNotCompatibleCarAndProduct {
-    private Product_page productPage = new Product_page();
+    private Product_page_Logic product_page_logic = new Product_page_Logic();
     private DataBase dataBase = new DataBase();
     @BeforeClass
     void setUp() {
@@ -30,14 +30,14 @@ public class QC_942_CompatibilityList_TestNotCompatibleCarAndProduct {
     @Description(value = "Test checks product compatibility with car")
     public void testNotCompatibleCarAndProduct() throws SQLException {
         openPage("https://autodoc.de/" +  dataBase.getRouteByRouteName("DE", "product16"));
-        productPage.firstBrandInCompabilityList().shouldHave(text("AUTOBIANCHI"));
-        productPage.secondBrandInCompabilityList().shouldHave(text("FIAT"));
-        productPage.thirdBrandInCompabilityList().shouldHave(text("LANCIA"));
-        productPage.fourthBrandInCompabilityList().shouldHave(text("SEAT"));
-        productPage.chooseBrandModelTypeInSelector("VW", "4644", "14881");
-        productPage.selectorSearchBtn().click();
-        productPage.checkTextIsVisibleOnPage("Es tut uns leid!");
-        productPage.checkTextIsVisibleOnPage("Kfz-Ersatzteile für VW 166 SUV Cabrio 1.1 Benzin (24 PS, Bj ab 1942)");
+        product_page_logic.firstBrandInCompabilityList().shouldHave(text("AUTOBIANCHI"));
+        product_page_logic.secondBrandInCompabilityList().shouldHave(text("FIAT"));
+        product_page_logic.thirdBrandInCompabilityList().shouldHave(text("LANCIA"));
+        product_page_logic.fourthBrandInCompabilityList().shouldHave(text("SEAT"));
+        product_page_logic.chooseBrandModelTypeInSelector("VW", "4644", "14881");
+        product_page_logic.selectorSearchBtn().click();
+        product_page_logic.checkTextIsVisibleOnPage("Es tut uns leid!");
+        product_page_logic.checkTextIsVisibleOnPage("Kfz-Ersatzteile für VW 166 SUV Cabrio 1.1 Benzin (24 PS, Bj ab 1942)");
         close();
     }
 }

@@ -2,7 +2,7 @@ package ATD.ProductPage;
 
 
 import ATD.DataBase;
-import ATD.Product_page;
+import ATD.Product_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -17,7 +17,7 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.close;
 
 public class QC_918_OEN_TestOEMlistWithCar {
-    private Product_page productPage = new Product_page();
+    private Product_page_Logic product_page_logic = new Product_page_Logic();
     private DataBase dataBase = new DataBase();
     @BeforeClass
     void setUp() {
@@ -30,8 +30,8 @@ public class QC_918_OEN_TestOEMlistWithCar {
     @Description(value = "Test checks oem list with car")
     public void testOEMlistWithCar() throws SQLException {
         openPage("https://autodoc.de/" +  dataBase.getRouteByRouteName("DE", "category_car_list17"));
-        productPage.productOnListing().click();
-        productPage.boldOenText().shouldBe(visible);
+        product_page_logic.productOnListing().click();
+        product_page_logic.boldOenText().shouldBe(visible);
         close();
     }
 }

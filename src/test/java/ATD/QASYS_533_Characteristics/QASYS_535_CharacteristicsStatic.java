@@ -22,7 +22,7 @@ public class QASYS_535_CharacteristicsStatic {
   private String articleProduct = "Artikelnummer: 82B0691";
   private String articleProductForSearchListing = "82B0691";
 
-  private Product_page productPage = new Product_page();
+  private Product_page_Logic product_page_logic = new Product_page_Logic();
   private Listing_page listingPage = new Listing_page();
   private Search_page searchPage = new Search_page();
   private CommonMethods commonMethods = new CommonMethods();
@@ -52,7 +52,7 @@ public class QASYS_535_CharacteristicsStatic {
     expectedCharacteristics.add("Lochkreis-Ø \\[mm]:\\n100,0");
     expectedCharacteristics.add("Bremsscheibendicke \\[mm]:\\n9,0");
 
-    ElementsCollection actualCharacteristics = productPage.openProductPageById(route, "7998901")
+    ElementsCollection actualCharacteristics = product_page_logic.openProductPageById(route, "7998901")
             .getCharacteristicsOfProduct();
    commonMethods.compareCharacteristics(actualCharacteristics, expectedCharacteristics);
   }
@@ -166,9 +166,7 @@ public class QASYS_535_CharacteristicsStatic {
     expectedCharacteristics.add("Bohrung-Ø \\[mm]:\\n15,8");
 
     ElementsCollection actualCharacteristics =
-    productPage.openProductPageById(route, "7999323")
-            .addProductToCart()
-            .closePopupOtherCategoryIfYes()
+    product_page_logic
             .cartClick()
             .getCharacteristicsOfProduct();
     commonMethods.compareCharacteristics(actualCharacteristics, expectedCharacteristics);

@@ -124,9 +124,9 @@ public class Search_page {
     }
 
     @Step
-    public Product_page detailsClick(){
+    public Product_page_Logic detailsClick(){
         detalisBtn().click();
-        return page(Product_page.class);
+        return page(Product_page_Logic.class);
     }
 
     @Step("Gets all the characteristics of the desired product from search listing {productArticle}")

@@ -24,7 +24,7 @@ public class QASYS_393_ReconciliationOfCurrencies {
   private String password = "1234";
 
   private DataBase dataBase = new DataBase();
-  private Product_page productPage = new Product_page();
+  private  Product_page_Logic product_page_logic = new Product_page_Logic();
   private Cart_page cartPage = new Cart_page();
   private CartAllData_page cartAllDataPage = new CartAllData_page();
 
@@ -49,16 +49,16 @@ public class QASYS_393_ReconciliationOfCurrencies {
     String shop = getCurrentShopFromJSVarInHTML();
     String expectedCurrency = dataBase.getCurrency(shop);
     // checks currency on product page
-    getCurrencyAndVerify(productPage.priceWithoutDiscount(), "priceWithoutDiscount", shop, expectedCurrency);
-    getCurrencyAndVerify(productPage.productPrice(), "productPrice", shop, expectedCurrency);
-    productPage.addProductToCart()
+    getCurrencyAndVerify(product_page_logic.priceWithoutDiscount(), "priceWithoutDiscount", shop, expectedCurrency);
+    getCurrencyAndVerify(product_page_logic.productPrice(), "productPrice", shop, expectedCurrency);
+    product_page_logic.addProductToCart()
             .closePopupOtherCategoryIfYes()
             .cartIcon().hover();
     // checks currency in cart popup
-    getCurrencyAndVerify(productPage.firstProductPriceInPopupOfCart(), "productPriceInPopupOfCart", shop, expectedCurrency);
-    getCurrencyAndVerify(productPage.totalPriceInPopupOfCart(), "totalPriceInPopupOfCart", shop, expectedCurrency);
+    getCurrencyAndVerify(product_page_logic.firstProductPriceInPopupOfCart(), "productPriceInPopupOfCart", shop, expectedCurrency);
+    getCurrencyAndVerify(product_page_logic.totalPriceInPopupOfCart(), "totalPriceInPopupOfCart", shop, expectedCurrency);
     // go to cart page
-    productPage.cartClick();
+    product_page_logic.cartClick();
     // checks currency on cart page
     getCurrencyAndVerify(cartPage.totalOrderPriceInHead(), "orderPriceInHead", shop, expectedCurrency);
     getCurrencyAndVerify(cartPage.priceOfAllProducts(), "priceOfAllProducts", shop, expectedCurrency);
@@ -103,14 +103,14 @@ public class QASYS_393_ReconciliationOfCurrencies {
     new Main_page().clickTiresCategory()
             .imagesProductsTires().click();
     // checks currency on product page
-    getCurrencyAndVerify(productPage.priceWithoutDiscount(), "priceWithoutDiscount", shop, expectedCurrency);
-    getCurrencyAndVerify(productPage.productPrice(), "productPrice", shop, expectedCurrency);
+    getCurrencyAndVerify(product_page_logic.priceWithoutDiscount(), "priceWithoutDiscount", shop, expectedCurrency);
+    getCurrencyAndVerify(product_page_logic.productPrice(), "productPrice", shop, expectedCurrency);
     // go to cart page
-    productPage.addProductToCart()
+    product_page_logic.addProductToCart()
             .cartIcon().hover();
-    getCurrencyAndVerify(productPage.firstProductPriceInPopupOfCart(), "productPriceInPopupOfCart", shop, expectedCurrency);
-    getCurrencyAndVerify(productPage.totalPriceInPopupOfCart(), "totalPriceInPopupOfCart", shop, expectedCurrency);
-    productPage.cartClick();
+    getCurrencyAndVerify(product_page_logic.firstProductPriceInPopupOfCart(), "productPriceInPopupOfCart", shop, expectedCurrency);
+    getCurrencyAndVerify(product_page_logic.totalPriceInPopupOfCart(), "totalPriceInPopupOfCart", shop, expectedCurrency);
+    product_page_logic.cartClick();
     // checks currency on cart page
     getCurrencyAndVerify(cartPage.totalOrderPriceInHead(), "orderPriceInHead", shop, expectedCurrency);
     getCurrencyAndVerify(cartPage.priceOfAllProducts(), "priceOfAllProducts", shop, expectedCurrency);
@@ -148,16 +148,16 @@ public class QASYS_393_ReconciliationOfCurrencies {
     String shop = getCurrentShopFromJSVarInHTML();
     String expectedCurrency = dataBase.getCurrency(shop);
     // checks currency on product page
-    getCurrencyAndVerify(productPage.productPrice(), "productPrice", shop, expectedCurrency);
-    productPage.productInfoUnderPrice().shouldHave(text(expectedCurrency));
+    getCurrencyAndVerify(product_page_logic.productPrice(), "productPrice", shop, expectedCurrency);
+    product_page_logic.productInfoUnderPrice().shouldHave(text(expectedCurrency));
     // go to cart page
-    productPage.addProductToCart()
+    product_page_logic.addProductToCart()
             .closePopupOtherCategoryIfYes()
             .cartIcon().hover();
     // checks currency in cart popup
-    getCurrencyAndVerify(productPage.firstProductPriceInPopupOfCart(), "productPriceInPopupOfCart", shop, expectedCurrency);
-    getCurrencyAndVerify(productPage.totalPriceInPopupOfCart(), "totalPriceInPopupOfCart", shop, expectedCurrency);
-    productPage.cartClick()
+    getCurrencyAndVerify(product_page_logic.firstProductPriceInPopupOfCart(), "productPriceInPopupOfCart", shop, expectedCurrency);
+    getCurrencyAndVerify(product_page_logic.totalPriceInPopupOfCart(), "totalPriceInPopupOfCart", shop, expectedCurrency);
+    product_page_logic.cartClick()
             .makePriceForMinimumOrderForCH();
     // checks currency on cart page
     getCurrencyAndVerify(cartPage.totalOrderPriceInHead(), "orderPriceInHead", shop, expectedCurrency);
