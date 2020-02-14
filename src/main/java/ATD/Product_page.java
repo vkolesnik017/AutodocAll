@@ -22,14 +22,9 @@ public class Product_page {
         return this;
     }
 
-    @Step
-    public Product_page openProductPageById(String route, String idProduct) {
-        open(route + "/a/" + idProduct);
-        return this;
-    }
 
     //common locators
-    private SelenideElement quantityOnBasketIcon() {
+    SelenideElement quantityOnBasketIcon() {
         return $x("//div[@class='header-cart__info']//span[1]");
     }
 
@@ -414,11 +409,6 @@ public class Product_page {
         return this;
     }
 
-    @Step
-    public Product_page checkQuantityOnBasketIconEquals(int quantityInCart) {
-        quantityOnBasketIcon().shouldHave(exactText(String.valueOf(quantityInCart)));
-        return this;
-    }
 
     @Step("Gets all characteristics product")
     public ElementsCollection getCharacteristicsOfProduct() {
