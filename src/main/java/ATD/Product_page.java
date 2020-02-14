@@ -142,7 +142,9 @@ public class Product_page {
 
   public SelenideElement minicardsBlock() { return $(".product-same-artikel-tyres"); }
 
-  public SelenideElement productInMinicard() { return $x("//*[contains(@class,'product-list__item ')]"); }
+  public SelenideElement productInMinicard() { return $x("//*[contains(@class,'product-list__item active')]"); }
+
+  public SelenideElement tetleMiniCardBlock() { return $(".top-product-block__title"); }
 
   public SelenideElement characteristicsInMinicard() { return $(".item-table-box"); }
 

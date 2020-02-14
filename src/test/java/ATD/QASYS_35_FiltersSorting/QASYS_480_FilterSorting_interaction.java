@@ -170,8 +170,8 @@ public class QASYS_480_FilterSorting_interaction {
         open("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_category_car_list2"));
         listingPage.filterBySideBack().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        String hoheValue = listingPage.hoheSecondSideFilterButton().text();
-        listingPage.hoheSecondSideFilterButton().click();
+        String hoheValue = listingPage.hoheThirdSideFilterButton().text();
+        listingPage.hoheThirdSideFilterButton().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         String brandName = listingPage.firstBrandNameOemListing().attr("alt");
         listingPage.firstBrandButtonOemListing().click();

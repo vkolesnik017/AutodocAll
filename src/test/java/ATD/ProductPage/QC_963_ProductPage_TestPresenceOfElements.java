@@ -3,6 +3,7 @@ package ATD.ProductPage;
 
 import ATD.CommonMethods;
 import ATD.DataBase;
+import ATD.Main_page;
 import ATD.Product_page;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -13,7 +14,6 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.closeCookiesFooterMessage;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.visible;
@@ -23,6 +23,7 @@ public class QC_963_ProductPage_TestPresenceOfElements {
     private Product_page productPage = new Product_page();
     private CommonMethods commonMethods = new CommonMethods();
     private DataBase dataBase = new DataBase();
+    private Main_page mainPage = new Main_page();
 
     @BeforeClass
     void setUp() {
@@ -36,7 +37,6 @@ public class QC_963_ProductPage_TestPresenceOfElements {
     public void testPresenceOfElements() throws SQLException {
         //steps in QC: 1
         openPage("https://autodoc.de/" + dataBase.getRouteByRouteName("DE", "product13"));
-        closeCookiesFooterMessage();
         //2
         productPage.carSelectorBlock().shouldBe(visible);
         //3
@@ -48,20 +48,25 @@ public class QC_963_ProductPage_TestPresenceOfElements {
         //5
         productPage.breadcrumbsBlock().shouldBe(visible);
         //6
+        mainPage.closeCarSelectorTooltipIfVisible();
         productPage.breadcrumbsCategoryDropdownButton().click();
         productPage.breadcrumbsFirstCategoryFromDropdown().click();
         commonMethods.checkingUrl("https://www.autodoc.de/autoteile/bremsbelag-10130");
         //7
+        mainPage.closeCarSelectorTooltipIfVisible();
         productPage.breadcrumbsCategoryButton().click();
         commonMethods.checkingUrl("https://www.autodoc.de/autoteile/bremsscheibe-10132");
         //8
+        mainPage.closeCarSelectorTooltipIfVisible();
         productPage.breadcrumbsParentCategoryDropdownButton().click();
         productPage.breadcrumbsFirstParentCategoryFromDropdown().click();
         commonMethods.checkingUrl("https://www.autodoc.de/autoteile/filter");
         //9
+        mainPage.closeCarSelectorTooltipIfVisible();
         productPage.breadcrumbsParentCategotyButton().click();
         commonMethods.checkingUrl("https://www.autodoc.de/autoteile/bremsanlage");
         //10
+        mainPage.closeCarSelectorTooltipIfVisible();
         productPage.breadcrumbsCatalogButton().click();
         commonMethods.checkingUrl("https://www.autodoc.de/autoteile");
         //4
@@ -105,10 +110,6 @@ public class QC_963_ProductPage_TestPresenceOfElements {
         productPage.similarPropertiesBlock().shouldBe(visible);
         productPage.linkInSimilarPropertiesBlock().click();
         commonMethods.checkingUrl("https://www.autodoc.de/bosch/1165812");
-        //22
-        productPage.minicardsBlock().shouldBe(visible);
-        productPage.productInMinicard().hover();
-        productPage.characteristicsInMinicard().shouldBe(visible);
         //23
         productPage.paymentMethodsBlock().shouldBe(visible);
         //24
@@ -118,6 +119,11 @@ public class QC_963_ProductPage_TestPresenceOfElements {
         //26
         productPage.pdfTutorialsBlock().shouldBe(visible);
         productPage.checkPdfLinksForDownload();
+        //22
+        productPage.minicardsBlock().shouldBe(visible);
+        productPage.tetleMiniCardBlock().scrollTo();
+        productPage.productInMinicard().shouldBe(visible).hover();
+        productPage.characteristicsInMinicard().shouldBe(visible);
         close();
     }
 }
