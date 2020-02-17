@@ -45,30 +45,6 @@ public class QC_963_ProductPage_TestPresenceOfElements {
         productPage.maximizedCharacteristicBlock().shouldBe(visible);
         productPage.coverCharacteristicBtn().click();
         productPage.minimizedCharactericticBlock().shouldBe(visible);
-        //5
-        productPage.breadcrumbsBlock().shouldBe(visible);
-        //6
-        mainPage.closeCarSelectorTooltipIfVisible();
-        productPage.breadcrumbsCategoryDropdownButton().click();
-        productPage.breadcrumbsFirstCategoryFromDropdown().click();
-        commonMethods.checkingUrl("https://www.autodoc.de/autoteile/bremsbelag-10130");
-        //7
-        mainPage.closeCarSelectorTooltipIfVisible();
-        productPage.breadcrumbsCategoryButton().click();
-        commonMethods.checkingUrl("https://www.autodoc.de/autoteile/bremsscheibe-10132");
-        //8
-        mainPage.closeCarSelectorTooltipIfVisible();
-        productPage.breadcrumbsParentCategoryDropdownButton().click();
-        productPage.breadcrumbsFirstParentCategoryFromDropdown().click();
-        commonMethods.checkingUrl("https://www.autodoc.de/autoteile/filter");
-        //9
-        mainPage.closeCarSelectorTooltipIfVisible();
-        productPage.breadcrumbsParentCategotyButton().click();
-        commonMethods.checkingUrl("https://www.autodoc.de/autoteile/bremsanlage");
-        //10
-        mainPage.closeCarSelectorTooltipIfVisible();
-        productPage.breadcrumbsCatalogButton().click();
-        commonMethods.checkingUrl("https://www.autodoc.de/autoteile");
         //4
         productPage.featuresBlock().shouldBe(visible);
         productPage.jahreIcon().shouldBe(visible).hover();
@@ -79,6 +55,35 @@ public class QC_963_ProductPage_TestPresenceOfElements {
         productPage.safeOrderIcon().shouldBe(visible).hover();
         Assert.assertEquals(productPage.safeOrderIconColor().getCssValue("color"), "rgba(51, 100, 219, 1)");
         productPage.safeOrderPopup().shouldBe(visible);
+        //5
+        productPage.breadcrumbsBlock().shouldBe(visible);
+        //6
+        mainPage.closeCarSelectorTooltipIfVisible();
+        productPage.breadcrumbsBlock().shouldBe(visible);
+        productPage.breadcrumbsCategoryDropdownButton().click();
+        productPage.breadcrumbsFirstCategoryFromDropdown().click();
+        commonMethods.checkingUrl("https://www.autodoc.de/autoteile/bremsbelag-10130");
+        //7
+        mainPage.closeCarSelectorTooltipIfVisible();
+        productPage.breadcrumbsBlock().shouldBe(visible);
+        productPage.breadcrumbsCategoryButton().click();
+        commonMethods.checkingUrl("https://www.autodoc.de/autoteile/bremsscheibe-10132");
+        //8
+        mainPage.closeCarSelectorTooltipIfVisible();
+        productPage.breadcrumbsBlock().shouldBe(visible);
+        productPage.breadcrumbsParentCategoryDropdownButton().click();
+        productPage.breadcrumbsFirstParentCategoryFromDropdown().click();
+        commonMethods.checkingUrl("https://www.autodoc.de/autoteile/filter");
+        //9
+        mainPage.closeCarSelectorTooltipIfVisible();
+        productPage.breadcrumbsBlock().shouldBe(visible);
+        productPage.breadcrumbsParentCategotyButton().click();
+        commonMethods.checkingUrl("https://www.autodoc.de/autoteile/bremsanlage");
+        //10
+        mainPage.closeCarSelectorTooltipIfVisible();
+        productPage.breadcrumbsBlock().shouldBe(visible);
+        productPage.breadcrumbsCatalogButton().click();
+        commonMethods.checkingUrl("https://www.autodoc.de/autoteile");
         //11
         productPage.productImageBlock().shouldBe(visible);
         //12
