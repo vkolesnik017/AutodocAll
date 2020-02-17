@@ -1,4 +1,4 @@
-package ATD.Selectors.QC_729_PopUpsOfSelectors;
+package ATD.Selectors.QC_693_VerticalCarSelectors;
 
 import ATD.Main_page_logic;
 import ATD.SetUp;
@@ -15,7 +15,7 @@ import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.open;
 import static org.testng.Assert.assertEquals;
 
-public class QC_742_CarSelectorPopupNotCloseAfterResetCar {
+public class QC_698_ResetCarSelector {
 
   private Main_page_logic mainPageLogic = new Main_page_logic();
 
@@ -26,19 +26,18 @@ public class QC_742_CarSelectorPopupNotCloseAfterResetCar {
 
   @DataProvider(name = "routes", parallel = true)
   Object[] dataProvider() throws SQLException {
-    return new SetUp().setUpShopWithSubroutes("prod", "DE", "main","main,product");
+    return new SetUp().setUpShopWithSubroutes("prod", "DE", "main","main,category_name,categories,category_name_brand");
   }
 
   @Test(dataProvider = "routes")
   @Flaky
   @Owner(value = "Evlentiev")
-  @Description(value = "Car selector popup not close after reset car")
-  public void testCarSelectorPopupNotCloseAfterResetCar(String route) {
+  @Description(value = "Reset vertical car selector")
+  public void testResetCarSelector(String route) {
     open(route);
-    mainPageLogic.fillNumberKba("0000", "000").clickKbaBtn();
-    mainPageLogic.chooseBrandInCarSelectorPopup("VW").resetCarSelectorPopup();
-    assertEquals(mainPageLogic.brandSelectorInCarSelectorPopup().getSelectedText(), "Marke wählen");
+    mainPageLogic.chooseBrandInVerticalCarSelector("VW")
+            .resetVerticalCarSelector();
+    assertEquals(mainPageLogic.brandSelectorInVerticalCarSelector().getSelectedText(), "Marke wählen");
   }
-
 
 }

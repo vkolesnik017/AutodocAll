@@ -2,20 +2,28 @@ package ATD;
 
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
-import org.openqa.selenium.TimeoutException;
-import org.testng.Assert;
 
 import static com.codeborne.selenide.Condition.not;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.Wait;
 import static ATD.CommonMethods.mailRandom;
 import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Main_page_logic extends Main_page {
 
-  //Selector kba
+  // Selector
 
-  // Only for DE
+  @Step("Close tooltip in car selector")
+  public Main_page_logic closeTooltipInCarSelector() {
+    tooltipInCarSelectorCloseBtn().click();
+    tooltipInCarSelectorCloseBtn().shouldNot(visible);
+    return this;
+  }
+
+  // Selector kba
+
+  // This method only for DE
   @Step("Fill in KBA fields")
   public Main_page_logic fillNumberKba(String numberForFirstField, String numberForSecondField) {
     firstFieldKBA().setValue(numberForFirstField);
@@ -23,7 +31,7 @@ public class Main_page_logic extends Main_page {
     return this;
   }
 
-  // For all shop, except DE
+  // This method for all shop, except DE
   @Step("Fill in KBA field")
   public Main_page_logic fillNumberKba(String kbaNumber) {
     firstFieldKBA().setValue(kbaNumber);
@@ -36,15 +44,19 @@ public class Main_page_logic extends Main_page {
     return page(Catalog_page.class);
   }
 
-  //Car selector popup
+  @Step("Click link \"Was ist eine Schlüsselnummer?\" and check appears info KBA popup")
+  public Main_page_logic clickLinkAndCheckAppearsInfoKbaPopup() {
+    arrowInBrandSelectorVerticalCar().waitUntil(visible, 30000);
+    linkInfoKba().click();
+    kbaPopup().shouldBe(visible);
+    return this;
+  }
+
+  // Car selector popup
   @Step("Choose brand in car selector popup")
   public Main_page_logic chooseBrandInCarSelectorPopup(String brandName) {
     brandSelectorInCarSelectorPopup().selectOption(brandName);
-    try {
-      Wait().until(webDriver -> brandSelectorInCarSelectorPopup().getSelectedText().equals(brandName));
-    } catch (TimeoutException e) {
-      Assert.fail("Brand name doesn't equals: " + brandName);
-    }
+    Wait().until(webDriver -> brandSelectorInCarSelectorPopup().getSelectedText().equals(brandName));
     return this;
   }
 
@@ -55,10 +67,69 @@ public class Main_page_logic extends Main_page {
   }
 
   @Step("Click reset button in car selector popup")
-  public Main_page_logic resetSelector() {
+  public Main_page_logic resetCarSelectorPopup() {
     resetCarBtnInCarSelectorPopup().click();
     resetCarBtnInCarSelectorPopup().shouldBe(not(visible));
     return this;
+  }
+
+  // Vertical car selector popup
+
+  // The method needed for pages where the vertical car selector is hidden by default
+  @Step("Open vertical car selector if it hidden")
+  public Main_page_logic openVerticalCarSelectorIfItHidden() {
+    if (!brandSelectorInVerticalCarSelector().isDisplayed()) {
+      hiddenVerticalSelector().click();
+    }
+    return this;
+  }
+
+  @Step("Choose brand in vertical car selector")
+  public Main_page_logic chooseBrandInVerticalCarSelector(String brandName) {
+    openVerticalCarSelectorIfItHidden();
+    brandSelectorInVerticalCarSelector().selectOption(brandName);
+    Wait().until(webDriver -> brandSelectorInVerticalCarSelector().getSelectedText().equals(brandName));
+    return this;
+  }
+
+  @Step("Choose model in vertical car selector")
+  public Main_page_logic chooseModelInVerticalCarSelector(String modelNumberValue) {
+    modelSelectorInVerticalCarSelector().selectOptionByValue(modelNumberValue);
+    sleep(1500);
+    return this;
+  }
+
+  @Step("Choose type in vertical car selector")
+  private Main_page_logic chooseTypeInVerticalCarSelector(String typeNumberValue) {
+    typeSelectorInVerticalCarSelector().selectOptionByValue(typeNumberValue);
+    return this;
+  }
+
+  @Step("Choose brand, model, type in vertical car selector")
+  public Main_page_logic chooseBrandModelTypeInSelector(String brandName, String modelNumberValue, String typeNumberValue) {
+    chooseBrandInVerticalCarSelector(brandName);
+    chooseModelInVerticalCarSelector(modelNumberValue);
+    chooseTypeInVerticalCarSelector(typeNumberValue);
+    return this;
+  }
+
+  @Step("Click reset button in vertical car selector")
+  public Main_page_logic resetVerticalCarSelector() {
+    resetBtnInVerticalCarSelector().click();
+    resetBtnInVerticalCarSelector().shouldBe(not(visible));
+    return this;
+  }
+
+  @Step("Click search button in vertical car selector when NOT selected all fields")
+  public Main_page_logic clickSearchBtnInVerticalSelectorWhenNotSelectedFields() {
+    searchBtnInVerticalSelector().click();
+    return this;
+  }
+
+  @Step("Click search button in vertical car selector when SELECTED all fields, for redirect to catalog page")
+  public Catalog_page clickSearchBtnInVerticalSelectorWhenSelectedAllFields() {
+    searchBtnInVerticalSelector().click();
+    return page(Catalog_page.class);
   }
 
 

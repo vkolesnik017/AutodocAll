@@ -13,9 +13,9 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.*;
+import static ATD.CommonMethods.getCurrentShopFromJSVarInHTML;
+import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.close;
 
 public class QC_772_RegKbaSelector {
@@ -41,8 +41,8 @@ public class QC_772_RegKbaSelector {
     openPage(route);
     String kba = db.getKba(getCurrentShopFromJSVarInHTML());
     mainPageLogic.fillNumberKba(kba)
-            .clickKbaBtn().catalogBlog().shouldBe(visible);
-    getNameRouteAndVerifyWithExpected("maker_car_list");
+            .clickKbaBtn()
+            .verifyNameRouteEqualsMakerCarList();
   }
 
   @DataProvider(name = "routeAndKbaNumberForDE")
@@ -58,8 +58,8 @@ public class QC_772_RegKbaSelector {
     openPage(route);
     String kba = db.getKba(getCurrentShopFromJSVarInHTML());
     mainPageLogic.fillNumberKba(kba.split(" ")[0], kba.split(" ")[1])
-            .clickKbaBtn().catalogBlog().shouldBe(visible);
-    getNameRouteAndVerifyWithExpected("maker_car_list");
+            .clickKbaBtn()
+            .verifyNameRouteEqualsMakerCarList();
   }
 
   @AfterMethod
