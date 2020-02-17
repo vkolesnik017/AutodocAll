@@ -9,11 +9,4 @@
         </classes>
     </test>
 
-    <test name="QASYS_541_VerticalSelectors">
-        <classes>
-            <class name="ATD.QASYS_539_Selectors.QASYS_541_VerticalSelectors">
-            </class>
-        </classes>
-    </test>
-
 </suite>

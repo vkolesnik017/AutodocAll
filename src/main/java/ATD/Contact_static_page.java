@@ -3,8 +3,6 @@ package ATD;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
-import static ATD.CommonMethods.testMail;
-import static ATD.CommonMethods.testNumberThatPutOrderInTest;
 import static com.codeborne.selenide.Selenide.$;
 
 public class Contact_static_page {
@@ -34,8 +32,12 @@ public class Contact_static_page {
         return $(By.xpath("//div[@class='dropdown-wrapper open-tab']//div[@class='contact-page__form-error privacy-policy-error']"));
     }
 
-    SelenideElement privacyPolicyDatenschutzerklarungLink() {
-        return $(By.xpath("//div[@class='dropdown-wrapper open-tab']//div[@class='privacy_policy_checkbox']/label/a"));
+    public SelenideElement noOrderDatenschutzerklarungLink() {
+        return $(By.cssSelector("#NoOrderprivacy_policy>a"));
+    }
+
+    public SelenideElement orderDatenschutzerklarungLink() {
+        return $(By.cssSelector("#Orderprivacy_policy>a"));
     }
 
     SelenideElement sendenButton() {
@@ -46,28 +48,47 @@ public class Contact_static_page {
         return $(By.xpath("//div[@class='popup ']"));
     }
 
-    SelenideElement successPopupButton() {
+    SelenideElement addingAnotherProductBtn() {
+        return $(By.xpath("//div[@class='contact-tabs__add-field']"));
+    }
+
+    SelenideElement successPopupCloseButton() {
         return $(By.xpath("//div[@class='popup_content']//a"));
-    }
-
-    Contact_static_page fillRequiredFieldsNoOrder() {
-        $(By.xpath("//input[@name='NoOrder[email]']")).setValue(testMail);
-        $(By.xpath("//input[@class='article_no article_no_input']")).setValue("10000/1");
-        $(By.xpath("//div[@class='autocomplete-suggestion'][@data-index=0]")).click();
-        return this;
-    }
-
-    Contact_static_page fillRequiredFieldsOrder() {
-        $(By.xpath("//input[@name='Order[email]']")).setValue(testMail);
-        $(By.xpath("//input[@name='Order[orderId]']")).setValue("1111+TEST");
-        $(By.xpath("//input[@name='Order[phone]']")).setValue(testNumberThatPutOrderInTest);
-        return this;
     }
 
     //Selenide Elements for Static Page test
     SelenideElement logo() {
         return $(By.cssSelector(".logo>a>img"));
     }
+
+    SelenideElement nameFieldNoOrder() {
+        return $(By.id("form_NoOrder[name]"));
+    }
+
+    SelenideElement mailFieldNoOrder() {
+        return $(By.id("form_NoOrder[email]"));
+    }
+
+    SelenideElement articleFieldNoOrder() {
+        return $(By.id("form_NoOrder[article][0][articleNo]"));
+    }
+
+    SelenideElement firstProductInArticleAutocomplete() {
+        return $(By.xpath("//div[@id='contact-page-autocomplete-suggestions-list']//div[@data-index='0']"));
+    }
+
+    SelenideElement orderFormOrderField() {
+        return $(By.id("form_Order[orderId]"));
+    }
+
+    SelenideElement orderFormTelField() {
+        return $(By.id("form_Order[phone]"));
+    }
+
+    SelenideElement orderFormMailField() {
+        return $(By.id("form_Order[email]"));
+    }
+
 
     public SelenideElement contactsBlock() {
         return $(By.cssSelector(".contact-page__info-descroption"));
