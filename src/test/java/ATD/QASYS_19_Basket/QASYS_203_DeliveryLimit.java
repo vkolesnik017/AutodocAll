@@ -20,7 +20,7 @@ public class QASYS_203_DeliveryLimit {
   private String password = "1234";
 
   private Main_page main_page = new Main_page();
-  private Product_page product_page = new Product_page();
+  private Product_page_Logic product_page_logic = new Product_page_Logic();
   private Cart_page cart_page = new Cart_page();
   private CartAllData_page cartAllDataPage = new CartAllData_page();
 
@@ -41,7 +41,7 @@ public class QASYS_203_DeliveryLimit {
   public void testDeliveryLimitInBasket(String homepage) {
     openPage(homepage);
     Float deliveryLimit = main_page.clickVersand().getDeliveryLimitFromText();
-    product_page.openProductPageById(homepage, idProductMore35EUR)
+    product_page_logic.openProductPageById(homepage, idProductMore35EUR)
             .addProductToCart()
             .closePopupOtherCategoryIfYes()
             .cartClick()
@@ -57,7 +57,7 @@ public class QASYS_203_DeliveryLimit {
     openPage(homepage);
     String currentShop = getCurrentShopFromJSVarInHTML();
     Float deliveryLimit = main_page.clickVersand().getDeliveryLimitFromText();
-    product_page.openProductPageById(homepage, idProductMore35EUR)
+    product_page_logic.openProductPageById(homepage, idProductMore35EUR)
             .addProductToCart()
             .closePopupOtherCategoryIfYes()
             .cartClick()

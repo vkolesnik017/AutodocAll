@@ -1,7 +1,7 @@
 package ATD.QASYS_539_Selectors;
 
 import ATD.DataBase;
-import ATD.Product_page;
+import ATD.Product_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -26,7 +26,7 @@ public class QASYS_540_HorizontalSelectors {
 
   private String idProductForThisTest = "10019946";
 
-  private Product_page productPage = new Product_page();
+  private Product_page_Logic product_page_logic = new Product_page_Logic();
 
   @BeforeClass
   void setUp() {
@@ -43,9 +43,9 @@ public class QASYS_540_HorizontalSelectors {
   @Owner(value = "Evlentiev")
   @Description(value = "Test-1 Checks appears error what not selected brand when used horizontal selector with empty value")
   public void testErrorThatBrandCarNotSelected(String route) {
-    productPage.openProductPageById(route, idProductForThisTest);
-    productPage.selectorSearchBtn().click();
-    productPage.errorTooltipOfBrandSelector().shouldBe(visible);
+    product_page_logic.openProductPageById(route, idProductForThisTest);
+    product_page_logic.selectorSearchBtn().click();
+    product_page_logic.errorTooltipOfBrandSelector().shouldBe(visible);
   }
 
   @Test(dataProvider = "route")
@@ -53,10 +53,10 @@ public class QASYS_540_HorizontalSelectors {
   @Owner(value = "Evlentiev")
   @Description(value = "Test-2 Checks appears error what not selected model when used horizontal selector with empty value")
   public void testErrorThatModelCarNotSelected(String route) {
-    productPage.openProductPageById(route, idProductForThisTest);
-    productPage.chooseBrandInSelector("VW");
-    productPage.selectorSearchBtn().click();
-    productPage.errorToolTipOfModelSelector().shouldBe(visible);
+    product_page_logic.openProductPageById(route, idProductForThisTest);
+    product_page_logic.chooseBrandInSelector("VW");
+    product_page_logic.selectorSearchBtn().click();
+    product_page_logic.errorToolTipOfModelSelector().shouldBe(visible);
   }
 
   @Test(dataProvider = "route")
@@ -64,11 +64,11 @@ public class QASYS_540_HorizontalSelectors {
   @Owner(value = "Evlentiev")
   @Description(value = "Test-3 Checks appears error what not selected type when used horizontal selector with empty value")
   public void testErrorThatTypeCarNotSelected(String route) {
-    productPage.openProductPageById(route, idProductForThisTest);
-    productPage.chooseBrandInSelector("VW");
-    productPage.chooseModelInSelector("4644");
-    productPage.selectorSearchBtn().click();
-    productPage.errorToolTipOfTypeSelector().shouldBe(visible);
+    product_page_logic.openProductPageById(route, idProductForThisTest);
+    product_page_logic.chooseBrandInSelector("VW");
+    product_page_logic.chooseModelInSelector("4644");
+    product_page_logic.selectorSearchBtn().click();
+    product_page_logic.errorToolTipOfTypeSelector().shouldBe(visible);
   }
 
   @Test(dataProvider = "route")
@@ -76,10 +76,10 @@ public class QASYS_540_HorizontalSelectors {
   @Owner(value = "Evlentiev")
   @Description(value = "Test-4 Checks use of cars in the selector when choosing a brand + model + type")
   public void testUseOfSelectorWhenChoosingBrandModelType(String route) {
-    productPage.openProductPageById(route, idProductForThisTest);
-    productPage.chooseBrandModelTypeInSelector("CITROЁN", "393", "20249");
-    productPage.selectorSearchBtn().click();
-    productPage.infoBlockWithSelectedCar().shouldHave(text("CITROЁN AX 1.4 Allure"));
+    product_page_logic.openProductPageById(route, idProductForThisTest);
+    product_page_logic.chooseBrandModelTypeInSelector("CITROЁN", "393", "20249");
+    product_page_logic.selectorSearchBtn().click();
+    product_page_logic.infoBlockWithSelectedCar().shouldHave(text("CITROЁN AX 1.4 Allure"));
   }
 
   @Test(dataProvider = "route")
@@ -87,10 +87,10 @@ public class QASYS_540_HorizontalSelectors {
   @Owner(value = "Evlentiev")
   @Description(value = "Test-5 Checks use of cars in the selector when choosing existing KBA")
   public void testUseOfSelectorWhenChoosingExistingKBA(String route) {
-    productPage.openProductPageById(route, idProductForThisTest);
-    productPage.fillNumberKba("0603", "419");
-    productPage.selectorKbaBtn().click();
-    productPage.selectorKbaBtn().shouldBe(not(visible));
+    product_page_logic.openProductPageById(route, idProductForThisTest);
+    product_page_logic.fillNumberKba("0603", "419");
+    product_page_logic.selectorKbaBtn().click();
+    product_page_logic.selectorKbaBtn().shouldBe(not(visible));
     checkingContainsUrl("ersatzteile/vw/golf/golf-iv-1j1/8799-1-4-16v");
   }
 
@@ -99,9 +99,9 @@ public class QASYS_540_HorizontalSelectors {
   @Owner(value = "Evlentiev")
   @Description(value = "Test-6 Checks appears error what not filled kba")
   public void testErrorThatKbaNotFilled(String route) {
-    productPage.openProductPageById(route, idProductForThisTest);
-    productPage.selectorKbaBtn().click();
-    productPage.errorToolTipOfKbaSelector().shouldBe(visible);
+    product_page_logic.openProductPageById(route, idProductForThisTest);
+    product_page_logic.selectorKbaBtn().click();
+    product_page_logic.errorToolTipOfKbaSelector().shouldBe(visible);
   }
 
   @Test(dataProvider = "route")
@@ -111,12 +111,12 @@ public class QASYS_540_HorizontalSelectors {
   public void testSelectorReset(String route) throws SQLException {
     String urlWithSelectedCar = route + "/" + new DataBase().getRouteByRouteName("DE", "category_car_list");
     open(urlWithSelectedCar);
-    productPage.openProductPageById(route, idProductForThisTest);
-    productPage.resetBtnSelector().click();
-    productPage.resetBtnSelector().shouldBe(not(visible));
-    assertEquals(productPage.getChosenValueFromSelector(productPage.brandSelector()), "Marke wählen");
-    assertEquals(productPage.getChosenValueFromSelector(productPage.modelSelector()), "Modell wählen");
-    assertEquals(productPage.getChosenValueFromSelector(productPage.typeSelector()), "Motor (Typ) wählen");
+    product_page_logic.openProductPageById(route, idProductForThisTest);
+    product_page_logic.resetBtnSelector().click();
+    product_page_logic.resetBtnSelector().shouldBe(not(visible));
+    assertEquals(product_page_logic.getChosenValueFromSelector(product_page_logic.brandSelector()), "Marke wählen");
+    assertEquals(product_page_logic.getChosenValueFromSelector(product_page_logic.modelSelector()), "Modell wählen");
+    assertEquals(product_page_logic.getChosenValueFromSelector(product_page_logic.typeSelector()), "Motor (Typ) wählen");
   }
 
   @AfterTest

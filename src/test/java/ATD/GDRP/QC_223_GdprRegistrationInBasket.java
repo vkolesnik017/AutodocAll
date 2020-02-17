@@ -1,5 +1,6 @@
 package ATD.GDRP;
 
+import ATD.Product_page_Logic;
 import ATD.SetUp;
 import AWS.PrivacyPolicySubscription_aws;
 import io.qameta.allure.Description;
@@ -34,8 +35,11 @@ public class QC_223_GdprRegistrationInBasket {
     @Description(value = "Test verify working GDPR form in basket registration page")
     public void testGdprRegistrationInBasket(String route) {
         openPage(route);
-
-        new PrivacyPolicySubscription_aws().openPolicySubscriptionWithLogin().checkingPolicyAndSubscribeForMail(this.mail);
+        mail = new Product_page_Logic().addProductToCart().closePopupOtherCategoryIfYes()
+                .cartClick()
+                .nextButtonClick()
+                .checkingDatenschutzerklarungLinkBehaviorRegistrationForm().fillingRegistrationFields("qc_223_");
+        new PrivacyPolicySubscription_aws().openPolicySubscriptionWithLogin().checkingPolicyForMail(this.mail);
     }
 }
 

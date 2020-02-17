@@ -1,9 +1,6 @@
 package ATD.Retoure.QC_897_CheckingReturnPrice;
 
-import ATD.DataBase;
-import ATD.Product_page;
-import ATD.Profile_page;
-import ATD.SetUp;
+import ATD.*;
 import AWS.Order_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -25,7 +22,7 @@ import static org.testng.Assert.assertEquals;
 
 public class QC_898_MatchPricesInAwsOrderAndProfile {
 
-  private Product_page productPage = new Product_page();
+  private Product_page_Logic product_page_logic = new Product_page_Logic();
   private Profile_page profilePage = new Profile_page();
   private DataBase db = new DataBase();
 
@@ -48,7 +45,7 @@ public class QC_898_MatchPricesInAwsOrderAndProfile {
   @Owner(value = "Evlentiev")
   @Description(value = "Verify that product prices match the order on AWS and on the profile")
   public void testMatchPricesInAwsOrderAndProfile(String route) throws SQLException {
-    orderNumber = productPage.openProductPageById(route, idPfandProduct)
+    orderNumber = product_page_logic.openProductPageById(route, idPfandProduct)
             .addProductToCart()
             .closePopupOtherCategoryIfYes()
             .cartClick()

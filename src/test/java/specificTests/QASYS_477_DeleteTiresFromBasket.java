@@ -28,7 +28,7 @@ public class QASYS_477_DeleteTiresFromBasket {
 
   private List<String> listZipCodes = new ArrayList<>();
 
-  private Product_page product_page = new Product_page();
+  private Product_page_Logic product_page_logic = new Product_page_Logic();
   private CartAllData_page cartAllData_page = new CartAllData_page();
   private Cart_page cart_page = new Cart_page();
 
@@ -50,9 +50,9 @@ public class QASYS_477_DeleteTiresFromBasket {
   public void testDeleteTiresFromBasket(String routeAndPostalCode) {
     String route = routeAndPostalCode.split("_")[0];
     String postalCode = routeAndPostalCode.split("_")[1];
-    product_page.openProductPageById(route, idProductTire);
+    product_page_logic.openProductPageById(route, idProductTire);
     String currentShop = getCurrentShopFromJSVarInHTML();
-    product_page.addProductToCart()
+    product_page_logic.addProductToCart()
             .cartClick()
             .nextButtonClick()
             .signIn(email, password)

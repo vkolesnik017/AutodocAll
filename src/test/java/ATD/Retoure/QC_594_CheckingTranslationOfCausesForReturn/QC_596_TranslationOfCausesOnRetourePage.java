@@ -1,9 +1,6 @@
 package ATD.Retoure.QC_594_CheckingTranslationOfCausesForReturn;
 
-import ATD.DataBase;
-import ATD.Product_page;
-import ATD.Retouren_page;
-import ATD.SetUp;
+import ATD.*;
 import AWS.Order_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -24,7 +21,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class QC_596_TranslationOfCausesOnRetourePage {
 
-  private Product_page productPage = new Product_page();
+  private Product_page_Logic product_page_logic = new Product_page_Logic();
   private Retouren_page retourenPage = new Retouren_page();
   private DataBase db = new DataBase();
 
@@ -47,7 +44,7 @@ public class QC_596_TranslationOfCausesOnRetourePage {
   @Owner(value = "Evlentiev")
   @Description(value = "Checking translation of causes on the retoure page")
   public void testTranslationOfCausesOnRetourePage(String route) throws SQLException {
-    orderNumber = productPage.openProductPageById(route, idPfandProduct)
+    orderNumber = product_page_logic.openProductPageById(route, idPfandProduct)
             .addProductToCart()
             .closePopupOtherCategoryIfYes()
             .cartClick()

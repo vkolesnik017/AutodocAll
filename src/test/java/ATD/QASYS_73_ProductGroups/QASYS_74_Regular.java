@@ -1,7 +1,7 @@
 package ATD.QASYS_73_ProductGroups;
 
 import ATD.DataBase;
-import ATD.Product_page;
+import ATD.Product_page_Logic;
 import ATD.SetUp;
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Description;
@@ -39,7 +39,7 @@ public class QASYS_74_Regular {
         String shop = getShopFromRoute(route);
         open(route + "/" + new DataBase().getRouteByRouteName(shop, "product2"));
         String testMail = "atdautotest@mailinator.com";
-        new Product_page().addProductToCart().closePopupOtherCategoryIfYes()
+        new Product_page_Logic().addProductToCart().closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
                 .signIn(testMail, password)

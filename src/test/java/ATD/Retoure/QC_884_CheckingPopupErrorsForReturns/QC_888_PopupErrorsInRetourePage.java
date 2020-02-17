@@ -1,9 +1,6 @@
 package ATD.Retoure.QC_884_CheckingPopupErrorsForReturns;
 
-import ATD.DataBase;
-import ATD.Product_page;
-import ATD.Retouren_page;
-import ATD.SetUp;
+import ATD.*;
 import AWS.Order_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -24,7 +21,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class QC_888_PopupErrorsInRetourePage {
 
-  private Product_page productPage = new Product_page();
+  private Product_page_Logic product_page_logic = new Product_page_Logic();
   private Retouren_page retourenPage = new Retouren_page();
   private DataBase db = new DataBase();
 
@@ -47,7 +44,7 @@ public class QC_888_PopupErrorsInRetourePage {
   @Owner(value = "Evlentiev")
   @Description(value = "The test checks for pop-up errors when clicking on the submit button without the selected product for return on retoure page")
   public void testPopupErrorsInRetourePage(String route) throws SQLException {
-    orderNumber = productPage.openProductPageById(route, idPfandProduct)
+    orderNumber = product_page_logic.openProductPageById(route, idPfandProduct)
             .addProductToCart()
             .closePopupOtherCategoryIfYes()
             .cartClick()

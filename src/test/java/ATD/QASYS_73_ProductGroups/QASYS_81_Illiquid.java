@@ -1,6 +1,6 @@
 package ATD.QASYS_73_ProductGroups;
 
-import ATD.Product_page;
+import ATD.Product_page_Logic;
 import ATD.SetUp;
 import AWS.ProductSearch_aws;
 import com.codeborne.selenide.Condition;
@@ -44,7 +44,7 @@ public class QASYS_81_Illiquid {
         String shop = getShopFromRoute(route);
         open(route + "/" + url[1] + "/" + url[0]);
         String testMail = "atdautotest_qasys_81_Illiquid@mailinator.com";
-        new Product_page().addProductToCart().closePopupOtherCategoryIfYes()
+        new Product_page_Logic().addProductToCart().closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
                 .signIn(testMail, password)

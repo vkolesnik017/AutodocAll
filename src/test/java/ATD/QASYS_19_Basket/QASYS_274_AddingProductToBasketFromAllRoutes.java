@@ -1,6 +1,6 @@
 package ATD.QASYS_19_Basket;
 
-import ATD.Product_page;
+import ATD.Product_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -20,7 +20,8 @@ import static com.codeborne.selenide.Selenide.close;
 
 public class QASYS_274_AddingProductToBasketFromAllRoutes {
 
-  private Product_page productPage = new Product_page();
+//  private Product_page_logic product_page_logic = new Product_page_logic();
+  private Product_page_Logic product_page_logic = new Product_page_Logic();
 
   @BeforeClass
   void setUp() {
@@ -43,11 +44,11 @@ public class QASYS_274_AddingProductToBasketFromAllRoutes {
   @Description(value = "The test checks the addition of products to the basket from all root main")
   public void testAddingProductToBasketFromAllRoutesMain(String route) {
     openPage(route);
-    productPage.checkNumberBasketAndRefreshPageIfNot();
+    product_page_logic.checkNumberBasketAndRefreshPageIfNot();
     clickOfBuyBtnForAllPages();
-    productPage.closePopupOtherCategoryIfYes()
+    product_page_logic.closePopupOtherCategoryIfYes()
             .cartIcon().hover();
-    productPage.checksPresentProductInCartPopup()
+    product_page_logic.checksPresentProductInCartPopup()
             .cartClick()
             .productPrice().shouldBe(visible);
   }
@@ -65,12 +66,12 @@ public class QASYS_274_AddingProductToBasketFromAllRoutes {
   @Description(value = "The test checks the addition of products to the basket from all root LKW")
   public void testAddingProductToBasketFromAllRoutesLKW(String route) {
     openPage(route);
-    productPage.checkNumberBasketAndRefreshPageIfNot();
+    product_page_logic.checkNumberBasketAndRefreshPageIfNot();
     clickOfBuyBtnForAllPages();
-    productPage.closePopupOtherCategoryIfYes()
+    product_page_logic.closePopupOtherCategoryIfYes()
             .cartIcon().hover();
-    productPage.firstProductPriceInPopupOfCart().shouldBe(visible);
-    productPage.cartClick()
+    product_page_logic.firstProductPriceInPopupOfCart().shouldBe(visible);
+    product_page_logic.cartClick()
             .productPrice().shouldBe(visible);
   }
 
@@ -87,12 +88,12 @@ public class QASYS_274_AddingProductToBasketFromAllRoutes {
   @Description(value = "The test checks the addition of products to the basket from all root Moto")
   public void testAddingProductToBasketFromAllRoutesMoto(String route) {
     openPage(route);
-    productPage.checkNumberBasketAndRefreshPageIfNot();
+    product_page_logic.checkNumberBasketAndRefreshPageIfNot();
     clickOfBuyBtnForAllPages();
-    productPage.closePopupOtherCategoryIfYes()
+    product_page_logic.closePopupOtherCategoryIfYes()
             .cartIcon().hover();
-    productPage.firstProductPriceInPopupOfCart().shouldBe(visible);
-    productPage.cartClick()
+    product_page_logic.firstProductPriceInPopupOfCart().shouldBe(visible);
+    product_page_logic.cartClick()
             .productPrice().shouldBe(visible);
   }
 

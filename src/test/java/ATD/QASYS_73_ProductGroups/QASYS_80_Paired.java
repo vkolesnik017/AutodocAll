@@ -1,9 +1,6 @@
 package ATD.QASYS_73_ProductGroups;
 
-import ATD.DataBase;
-import ATD.Payment_handler_page;
-import ATD.Search_page;
-import ATD.SetUp;
+import ATD.*;
 import AWS.Order_aws;
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Description;

@@ -2,7 +2,7 @@ package ATD.QASYS_5_Listings;
 
 import ATD.Listing_page;
 import ATD.Main_page;
-import ATD.Product_page;
+import ATD.Product_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -25,7 +25,7 @@ import static org.testng.Assert.assertEquals;
 public class QASYS_6_ListingOEN {
 
   private Main_page mainPage = new Main_page();
-  private Product_page productPage = new Product_page();
+  private Product_page_Logic product_page_logic = new Product_page_Logic();
   private Listing_page listingPage = new Listing_page();
 
   @BeforeClass
@@ -42,7 +42,7 @@ public class QASYS_6_ListingOEN {
   @Flaky
   @Owner(value = "Evlentiev")
   @Description(value = "Test-1. Going to root oe_number from search bar")
-  public void testGoingToRootOe_numberFromSearchBar(String route) throws SQLException {
+  public void testGoingToRootOe_numberFromSearchBar(String route) {
     open(route);
     mainPage.searchBar().setValue("1j0615124a");
     mainPage.tooltipToSearch().shouldBe(visible);
@@ -55,9 +55,9 @@ public class QASYS_6_ListingOEN {
   @Owner(value = "Evlentiev")
   @Description(value = "Test-2. Going to root oe_number from OEN block on product page")
   public void testGoingToRootOe_numberFromOenBlockOnProductPage(String route) {
-    productPage.openProductPageById(route, "2036775");
+    product_page_logic.openProductPageById(route, "2036775");
     closeCookiesFooterMessage();
-    productPage.linksInOenNumbersBlock().get(1).click();
+    product_page_logic.linksInOenNumbersBlock().get(1).click();
     listingPage.oemNumberBlock().shouldBe(visible);
     assertEquals(getNameRouteFromJSVarInHTML(), "category_oen");
   }

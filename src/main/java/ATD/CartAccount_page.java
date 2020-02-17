@@ -20,21 +20,20 @@ public class CartAccount_page {
         return $(By.xpath("//form[@class='registerForm']//input[@name='Password']"));
     }
 
-    public SelenideElement registrationButton() {
+    SelenideElement registrationButton() {
         return $(byCssSelector(".register"));
     }
 
-    public CartAddress_page registrationFormNextBtnClick() {
-        registrationButton().click();
-        return page(CartAddress_page.class);
+    SelenideElement datenschutzerklarungLink() {
+        return $(By.cssSelector("#privacy_policy1>a"));
     }
 
     // locators in login form
-    public SelenideElement emailFieldInLoginForm() {
+    private SelenideElement emailFieldInLoginForm() {
         return $(byXpath("//*[@class='loginForm']//*[@id='form_Email']"));
     }
 
-    public SelenideElement passwordFieldInLoginForm() {
+    private SelenideElement passwordFieldInLoginForm() {
         return $(byXpath("//*[@class='loginForm']//*[@id='form_Password']"));
     }
 
@@ -42,7 +41,7 @@ public class CartAccount_page {
         return $(byCssSelector(".signin-user-box-form__recovery>a"));
     }
 
-    public SelenideElement loginButton() {
+    private SelenideElement loginButton() {
         return $(byCssSelector(".login"));
     }
 

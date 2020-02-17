@@ -116,17 +116,17 @@ public class Search_page {
     }
 
     @Step
-    public Cart_page addFirstProductAndGoToCart() {
+    public Cart_page_Logic addFirstProductAndGoToCart() {
         buyButton().click();
         cartPopupWithProduct().shouldBe(visible);
         cartClick();
-        return page(Cart_page.class);
+        return page(Cart_page_Logic.class);
     }
 
     @Step
-    public Product_page detailsClick(){
+    public Product_page_Logic detailsClick(){
         detalisBtn().click();
-        return page(Product_page.class);
+        return page(Product_page_Logic.class);
     }
 
     @Step("Gets all the characteristics of the desired product from search listing {productArticle}")

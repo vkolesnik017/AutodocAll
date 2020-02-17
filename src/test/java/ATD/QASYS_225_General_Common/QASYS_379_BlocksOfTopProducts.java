@@ -1,7 +1,7 @@
 package ATD.QASYS_225_General_Common;
 
 import ATD.CommonMethods;
-import ATD.Product_page;
+import ATD.Product_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -22,7 +22,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class QASYS_379_BlocksOfTopProducts {
 
-  private Product_page productPage = new Product_page();
+  private Product_page_Logic product_page_logic = new Product_page_Logic();
   private CommonMethods commonMethods = new CommonMethods();
 
   @BeforeClass
@@ -62,7 +62,7 @@ public class QASYS_379_BlocksOfTopProducts {
     closeCookiesFooterMessage();
     commonMethods.scrollToBlockOfTopProducts();
     clickOfBuyBtnForAllPages();
-    productPage.checksPresentProductInCartPopup()
+    product_page_logic.checksPresentProductInCartPopup()
             .cartClick()
             .fieldWithQuantityOfProducts().shouldHave(value("2"));
   }
