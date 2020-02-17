@@ -6,31 +6,70 @@ import com.codeborne.selenide.ex.UIAssertionError;
 import io.qameta.allure.Step;
 
 import static ATD.CommonMethods.mailRandom;
-import static com.codeborne.selenide.Condition.appear;
-import static com.codeborne.selenide.Condition.not;
-import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.page;
-import static com.codeborne.selenide.Selenide.refresh;
-import static com.codeborne.selenide.Selenide.sleep;
+import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Product_page_Logic extends Product_page {
+
+    @Step
+    public Product_page_Logic openProductPageById(String route, String idProduct) {
+        open(route + "/a/" + idProduct);
+        return this;
+    }
+
+    @Step
+    public Product_page_Logic checkQuantityOnBasketIconEquals(int quantityInCart) {
+        quantityOnBasketIcon().shouldHave(exactText(String.valueOf(quantityInCart)));
+        return this;
+    }
+
+    @Step
+    public Product_page_Logic checksPresentProductInCartPopup() {
+        cartIcon().hover();
+        firstProductPriceInPopupOfCart().shouldBe(visible);
+        return this;
+    }
+
+    @Step
+    public Product_page_Logic checkingHeavyCargoLinkTransition() {
+        heavyCargoLink().click();
+        new CommonMethods().checkingUrlAndCloseTab("services/versand#surcharge");
+        return this;
+    }
+
+    public Product_page_Logic counterIncrease(String startValue) {
+        new CommonMethods().checkingCounterIncrease(startValue, counterValue(), counterPlus());
+        return this;
+    }
+
+    public Product_page_Logic counterDecrease(String startValue) {
+        new CommonMethods().checkingCounterDecrease(startValue, counterValue(), counterMinus());
+        return this;
+    }
+
+
+    @Step("Checking number of product in cart")
+    public Product_page_Logic checkingNumberOfProductInCart(int expectedNumber) {
+        new Main_page().checkingNumberOfProductInCart(expectedNumber);
+        return this;
+    }
 
 
     @Step(":from Product_page")
     public Cart_page_Logic cartClick() {
-      new Main_page().cartClick();
-      return page(Cart_page_Logic.class);
+        new Main_page().cartClick();
+        return page(Cart_page_Logic.class);
     }
 
     @Step("Checking number basket and refresh page if not. Product_page")
     public Product_page_Logic checkNumberBasketAndRefreshPageIfNot() {  // TODO Бывает при открытии страницы не подгружается номер корзины и товар не добавляется в корзину, причина не известна, что бы стабилизировать тесты добавлен этот метод
-      try {
-        numberBasket().shouldBe(visible);
-      } catch (ElementShould e) {
-        refresh();
-        numberBasket().shouldBe(visible);
-      }
-      return this;
+        try {
+            numberBasket().shouldBe(visible);
+        } catch (ElementShould e) {
+            refresh();
+            numberBasket().shouldBe(visible);
+        }
+        return this;
     }
 
     @Step("Closing other category popup after adding product in basket. Product_page")
@@ -46,17 +85,17 @@ public class Product_page_Logic extends Product_page {
 
     @Step("Adding product to basket. Product_page")
     public Product_page_Logic addProductToCart() {
-      checkNumberBasketAndRefreshPageIfNot();
-      sleep(3000); // TODO для стабилизации. Без слипа иногда добавленный товар исчезает из корзины после перехода в неё, решается в SITES-2830
-      buyButton().click();
-      try {
-        checksPresentProductInCartPopup();
-      } catch (UIAssertionError e) {
-        closePopupOtherCategoryIfYes();
+        checkNumberBasketAndRefreshPageIfNot();
+        sleep(3000); // TODO для стабилизации. Без слипа иногда добавленный товар исчезает из корзины после перехода в неё, решается в SITES-2830
         buyButton().click();
-        checksPresentProductInCartPopup();
-      }
-      return this;
+        try {
+            checksPresentProductInCartPopup();
+        } catch (UIAssertionError e) {
+            closePopupOtherCategoryIfYes();
+            buyButton().click();
+            checksPresentProductInCartPopup();
+        }
+        return this;
     }
 
     //Gray button popup for subscription for product which is not stock

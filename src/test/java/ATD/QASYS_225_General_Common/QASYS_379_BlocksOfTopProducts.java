@@ -62,7 +62,7 @@ public class QASYS_379_BlocksOfTopProducts {
     closeCookiesFooterMessage();
     commonMethods.scrollToBlockOfTopProducts();
     clickOfBuyBtnForAllPages();
-    product_page_logic
+    product_page_logic.checksPresentProductInCartPopup()
             .cartClick()
             .fieldWithQuantityOfProducts().shouldHave(value("2"));
   }

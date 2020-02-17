@@ -39,7 +39,7 @@ public class QASYS_79_heavyCargo {
         String shop = getShopFromRoute(route);
         open(route + "/" + new DataBase().getRouteByRouteName(shop, "product6"));
         String testMail = "atdautotest_qasys_79_heavycargo@mailinator.com";
-        new Product_page_Logic()
+        new Product_page_Logic().checkingHeavyCargoLinkTransition().addProductToCart().closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
                 .signIn(testMail, password)

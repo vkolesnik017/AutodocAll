@@ -41,7 +41,9 @@ public class QASYS_203_DeliveryLimit {
   public void testDeliveryLimitInBasket(String homepage) {
     openPage(homepage);
     Float deliveryLimit = main_page.clickVersand().getDeliveryLimitFromText();
-    product_page_logic
+    product_page_logic.openProductPageById(homepage, idProductMore35EUR)
+            .addProductToCart()
+            .closePopupOtherCategoryIfYes()
             .cartClick()
             .freeDeliveryIcon().shouldBe(not(visible));
     cart_page.makeAndCheckLimitPriceForFreeDelivery(deliveryLimit);
@@ -55,7 +57,9 @@ public class QASYS_203_DeliveryLimit {
     openPage(homepage);
     String currentShop = getCurrentShopFromJSVarInHTML();
     Float deliveryLimit = main_page.clickVersand().getDeliveryLimitFromText();
-    product_page_logic
+    product_page_logic.openProductPageById(homepage, idProductMore35EUR)
+            .addProductToCart()
+            .closePopupOtherCategoryIfYes()
             .cartClick()
             .nextButtonClick()
             .signIn(email, password)

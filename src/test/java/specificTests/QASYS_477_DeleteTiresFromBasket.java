@@ -52,7 +52,7 @@ public class QASYS_477_DeleteTiresFromBasket {
     String postalCode = routeAndPostalCode.split("_")[1];
     product_page_logic.openProductPageById(route, idProductTire);
     String currentShop = getCurrentShopFromJSVarInHTML();
-    product_page_logic
+    product_page_logic.addProductToCart()
             .cartClick()
             .nextButtonClick()
             .signIn(email, password)

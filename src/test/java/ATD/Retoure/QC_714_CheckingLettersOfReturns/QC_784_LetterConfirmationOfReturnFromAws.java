@@ -12,6 +12,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import static ATD.CommonMethods.idPfandProduct;
 import static ATD.CommonMethods.password;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.text;
@@ -41,7 +42,9 @@ public class QC_784_LetterConfirmationOfReturnFromAws {
   @Owner(value = "Evlentiev")
   @Description(value = "Verification of the letter \"Confirmation of receipt of the application\" from AWS")
   public void testLetterConfirmationOfReturnFromAws(String route) {
-    orderNumber = product_page_logic
+    orderNumber = product_page_logic.openProductPageById(route, idPfandProduct)
+            .addProductToCart()
+            .closePopupOtherCategoryIfYes()
             .cartClick()
             .nextButtonClick()
             .signIn(mail, password)

@@ -101,7 +101,8 @@ public class QASYS_569_AdvantagesPfands {
     String testMail = "atdautotest_qasys_569_advantagespfands@mailinator.com";
     open(route);
     product_page_logic.pfandBlock().shouldBe(visible);
-    product_page_logic
+    product_page_logic.addProductToCart()
+            .closePopupOtherCategoryIfYes()
             .cartClick();
     String pfandPrice = cart_page_logic.pfandPriceInProductBlock().getText();
     cart_page_logic.pfandPriceInTotalPriceBlock().shouldHave(exactText(pfandPrice));

@@ -39,7 +39,7 @@ public class QASYS_74_Regular {
         String shop = getShopFromRoute(route);
         open(route + "/" + new DataBase().getRouteByRouteName(shop, "product2"));
         String testMail = "atdautotest@mailinator.com";
-        new Product_page_Logic()
+        new Product_page_Logic().addProductToCart().closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
                 .signIn(testMail, password)

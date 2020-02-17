@@ -44,7 +44,7 @@ public class QASYS_81_Illiquid {
         String shop = getShopFromRoute(route);
         open(route + "/" + url[1] + "/" + url[0]);
         String testMail = "atdautotest_qasys_81_Illiquid@mailinator.com";
-        new Product_page_Logic()
+        new Product_page_Logic().addProductToCart().closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
                 .signIn(testMail, password)
