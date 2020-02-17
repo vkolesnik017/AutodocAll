@@ -6,7 +6,7 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static ATD.CommonMethods.closeCookiesFooterMessage;
-import static ATD.CommonMethods.getNameRouteAndVerifyWithExpected;
+import static ATD.CommonMethods.waitWhileRouteBecomeExpected;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.exactValue;
 import static com.codeborne.selenide.Condition.visible;
@@ -31,7 +31,7 @@ public class Search_page {
     }
 
     public Search_page verifyNameRouteEqualsSearch() {
-        getNameRouteAndVerifyWithExpected("search");
+        waitWhileRouteBecomeExpected("search");
         return this;
     }
 

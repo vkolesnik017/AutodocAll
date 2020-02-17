@@ -49,31 +49,29 @@ public class QC_963_ProductPage_TestPresenceOfElements {
         product_page_logic.breadcrumbsBlock().shouldBe(visible);
         //6
         mainPage.closeCarSelectorTooltipIfVisible();
-        product_page_logic.breadcrumbsCategoryDropdownButton().click();
-        product_page_logic.breadcrumbsFirstCategoryFromDropdown().click();
+        product_page_logic.breadcrumbsBlock().shouldBe(visible);
         product_page_logic.breadcrumbsCategoryDropdownButton().click();
         product_page_logic.breadcrumbsFirstCategoryFromDropdown().click();
         commonMethods.checkingUrl("https://www.autodoc.de/autoteile/bremsbelag-10130");
         //7
         mainPage.closeCarSelectorTooltipIfVisible();
-        product_page_logic.breadcrumbsCategoryButton().click();
+        product_page_logic.breadcrumbsBlock().shouldBe(visible);
         product_page_logic.breadcrumbsCategoryButton().click();
         commonMethods.checkingUrl("https://www.autodoc.de/autoteile/bremsscheibe-10132");
         //8
         mainPage.closeCarSelectorTooltipIfVisible();
-        product_page_logic.breadcrumbsParentCategoryDropdownButton().click();
-        product_page_logic.breadcrumbsFirstParentCategoryFromDropdown().click();
+        product_page_logic.breadcrumbsBlock().shouldBe(visible);
         product_page_logic.breadcrumbsParentCategoryDropdownButton().click();
         product_page_logic.breadcrumbsFirstParentCategoryFromDropdown().click();
         commonMethods.checkingUrl("https://www.autodoc.de/autoteile/filter");
         //9
         mainPage.closeCarSelectorTooltipIfVisible();
-        product_page_logic.breadcrumbsParentCategotyButton().click();
+        product_page_logic.breadcrumbsBlock().shouldBe(visible);
         product_page_logic.breadcrumbsParentCategotyButton().click();
         commonMethods.checkingUrl("https://www.autodoc.de/autoteile/bremsanlage");
         //10
         mainPage.closeCarSelectorTooltipIfVisible();
-        product_page_logic.breadcrumbsCatalogButton().click();
+        product_page_logic.breadcrumbsBlock().shouldBe(visible);
         product_page_logic.breadcrumbsCatalogButton().click();
         commonMethods.checkingUrl("https://www.autodoc.de/autoteile");
         //4
@@ -117,10 +115,6 @@ public class QC_963_ProductPage_TestPresenceOfElements {
         product_page_logic.similarPropertiesBlock().shouldBe(visible);
         product_page_logic.linkInSimilarPropertiesBlock().click();
         commonMethods.checkingUrl("https://www.autodoc.de/bosch/1165812");
-        //22
-        product_page_logic.minicardsBlock().shouldBe(visible);
-        product_page_logic.productInMinicard().hover();
-        product_page_logic.characteristicsInMinicard().shouldBe(visible);
         //23
         product_page_logic.paymentMethodsBlock().shouldBe(visible);
         //24

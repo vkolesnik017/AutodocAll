@@ -1,6 +1,7 @@
 package ATD;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.ex.ElementNotFound;
@@ -63,9 +64,9 @@ public class CommonMethods {
         return executeJavaScript("return $siteSettings.route");
     }
 
-    @Step("Get name route and verify with expected {expected route}")
-    public static void getNameRouteAndVerifyWithExpected(String expectedRoute) {
-        assertEquals(getNameRouteFromJSVarInHTML(), expectedRoute);
+    @Step("Wait while route become expected {expected route}")
+    public static void waitWhileRouteBecomeExpected(String expectedRoute) {
+        Wait().until(WebDriver -> getNameRouteFromJSVarInHTML().equals(expectedRoute));
     }
 
     public static String getShopFromRoute(String route) {
@@ -142,7 +143,7 @@ public class CommonMethods {
     }
 
     @Step
-    //Method for checking for contains URL
+    //Method for waiting while link become contains expected
     public static void checkingContainsUrl(String expectedContainsUrl) {
         try {
             Wait().until(webDriver -> url().contains(expectedContainsUrl));
@@ -181,14 +182,6 @@ public class CommonMethods {
 
     public static SelenideElement universalElementOfBuyBtnForAllPages() {
         return $(byXpath("//a[contains(@class,'add_')]"));
-    }
-
-    // open vertical selector if it hidden
-    public static void openVerticalSelectorIfItHidden() {
-        SelenideElement hiddenVerticalSelector = $(".catalog-title__change-car");
-        if (hiddenVerticalSelector.isDisplayed()) {
-            hiddenVerticalSelector.click();
-        }
     }
 
     @Step("Close any popup by click overlay")
