@@ -3,7 +3,6 @@ package ATD.ProductPage;
 
 import ATD.CommonMethods;
 import ATD.DataBase;
-import ATD.Main_page;
 import ATD.Product_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -15,15 +14,16 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
+import static ATD.CommonMethods.waitingWhileLinkBecomeExpected;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.open;
 
 public class QC_963_ProductPage_TestPresenceOfElements {
     private Product_page_Logic product_page_logic = new Product_page_Logic();
     private CommonMethods commonMethods = new CommonMethods();
     private DataBase dataBase = new DataBase();
-    private Main_page mainPage = new Main_page();
 
     @BeforeClass
     void setUp() {
@@ -48,32 +48,34 @@ public class QC_963_ProductPage_TestPresenceOfElements {
         //5
         product_page_logic.breadcrumbsBlock().shouldBe(visible);
         //6
-        mainPage.closeCarSelectorTooltipIfVisible();
         product_page_logic.breadcrumbsBlock().shouldBe(visible);
         product_page_logic.breadcrumbsCategoryDropdownButton().click();
         product_page_logic.breadcrumbsFirstCategoryFromDropdown().click();
-        commonMethods.checkingUrl("https://www.autodoc.de/autoteile/bremsbelag-10130");
+        waitingWhileLinkBecomeExpected("https://www.autodoc.de/autoteile/bremsbelag-10130");
+        open("https://autodoc.de/" + dataBase.getRouteByRouteName("DE", "product13"));
         //7
-        mainPage.closeCarSelectorTooltipIfVisible();
         product_page_logic.breadcrumbsBlock().shouldBe(visible);
         product_page_logic.breadcrumbsCategoryButton().click();
-        commonMethods.checkingUrl("https://www.autodoc.de/autoteile/bremsscheibe-10132");
+        waitingWhileLinkBecomeExpected("https://www.autodoc.de/autoteile/bremsscheibe-10132");
+        open("https://autodoc.de/" + dataBase.getRouteByRouteName("DE", "product13"));
+
         //8
-        mainPage.closeCarSelectorTooltipIfVisible();
         product_page_logic.breadcrumbsBlock().shouldBe(visible);
         product_page_logic.breadcrumbsParentCategoryDropdownButton().click();
         product_page_logic.breadcrumbsFirstParentCategoryFromDropdown().click();
-        commonMethods.checkingUrl("https://www.autodoc.de/autoteile/filter");
+        waitingWhileLinkBecomeExpected("https://www.autodoc.de/autoteile/filter");
+        open("https://autodoc.de/" + dataBase.getRouteByRouteName("DE", "product13"));
         //9
-        mainPage.closeCarSelectorTooltipIfVisible();
         product_page_logic.breadcrumbsBlock().shouldBe(visible);
         product_page_logic.breadcrumbsParentCategotyButton().click();
-        commonMethods.checkingUrl("https://www.autodoc.de/autoteile/bremsanlage");
+        waitingWhileLinkBecomeExpected("https://www.autodoc.de/autoteile/bremsanlage");
+        open("https://autodoc.de/" + dataBase.getRouteByRouteName("DE", "product13"));
+
         //10
-        mainPage.closeCarSelectorTooltipIfVisible();
         product_page_logic.breadcrumbsBlock().shouldBe(visible);
         product_page_logic.breadcrumbsCatalogButton().click();
-        commonMethods.checkingUrl("https://www.autodoc.de/autoteile");
+        waitingWhileLinkBecomeExpected("https://www.autodoc.de/autoteile");
+        open("https://autodoc.de/" + dataBase.getRouteByRouteName("DE", "product13"));
         //4
         product_page_logic.featuresBlock().shouldBe(visible);
         product_page_logic.jahreIcon().shouldBe(visible).hover();
@@ -106,7 +108,8 @@ public class QC_963_ProductPage_TestPresenceOfElements {
         commonMethods.checkingUrlAndCloseTab("https://www.autodoc.de/autoteile/bremsscheibe-10132/mf-ridex");
         //18
         product_page_logic.versandkostenButton().click();
-        commonMethods.checkingUrl("https://www.autodoc.de/services/versand");
+        waitingWhileLinkBecomeExpected("https://www.autodoc.de/services/versand");
+        open("https://autodoc.de/" + dataBase.getRouteByRouteName("DE", "product13"));
         //19
         product_page_logic.raitingBlock().click();
         //20
@@ -114,7 +117,8 @@ public class QC_963_ProductPage_TestPresenceOfElements {
         //21
         product_page_logic.similarPropertiesBlock().shouldBe(visible);
         product_page_logic.linkInSimilarPropertiesBlock().click();
-        commonMethods.checkingUrl("https://www.autodoc.de/bosch/1165812");
+        waitingWhileLinkBecomeExpected("https://www.autodoc.de/bosch/1165812");
+        open("https://autodoc.de/" + dataBase.getRouteByRouteName("DE", "product13"));
         //23
         product_page_logic.paymentMethodsBlock().shouldBe(visible);
         //24
