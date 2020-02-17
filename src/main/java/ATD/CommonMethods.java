@@ -66,9 +66,7 @@ public class CommonMethods {
 
     @Step("Wait while route become expected {expected route}")
     public static void waitWhileRouteBecomeExpected(String expectedRoute) {
-        Configuration.timeout = 30000;
         Wait().until(WebDriver -> getNameRouteFromJSVarInHTML().equals(expectedRoute));
-        Configuration.timeout = 10000;
     }
 
     public static String getShopFromRoute(String route) {
