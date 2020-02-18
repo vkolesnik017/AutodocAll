@@ -162,13 +162,13 @@ public class Order_aws {
 
     @Step
     public Order_aws setStatusOrderToVersendetVorkasse() {
-        selectorOfStatuses().selectOptionByValue("3");
+        selectorOfStatuses().selectOptionByValue("40");
         saveChangesInOrderBtn().click();
         try { // Иногда приме смене статуса заказа, визуально он меняется, после повторного обновления страницы подргужается смененный статус, причина пока не установлена
-            statusOrder().waitUntil(attribute("data-status-id", "3"), 30000);
+            statusOrder().waitUntil(attribute("data-status-id", "40"), 30000);
         } catch (ElementShould e) {
             refresh();
-            statusOrder().waitUntil(attribute("data-status-id", "3"), 30000);
+            statusOrder().waitUntil(attribute("data-status-id", "40"), 30000);
         }
         return this;
     }
