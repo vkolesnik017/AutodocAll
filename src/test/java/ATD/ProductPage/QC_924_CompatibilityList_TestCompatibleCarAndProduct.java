@@ -36,7 +36,7 @@ public class QC_924_CompatibilityList_TestCompatibleCarAndProduct {
         product_page_logic.firstBrandInCompabilityList().shouldHave(text("AUTOBIANCHI")).click();
         product_page_logic.firstModelInFirstBrandInCompatibilityList().click();
         product_page_logic.carListInFirstModelCompabilityList().shouldBe(visible);
-        product_page_logic.chooseBrandModelTypeInSelector("AUTOBIANCHI", "4822", "16213");
+        product_page_logic.chooseBrandModelTypeInHorizontalSelector("AUTOBIANCHI", "4822", "16213");
         product_page_logic.selectorSearchBtn().click();
         product_page_logic.compatibleCarInCompabilityList().shouldBe(visible);
         close();
