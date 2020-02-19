@@ -34,7 +34,7 @@ public class QC_942_CompatibilityList_TestNotCompatibleCarAndProduct {
         product_page_logic.secondBrandInCompabilityList().shouldHave(text("FIAT"));
         product_page_logic.thirdBrandInCompabilityList().shouldHave(text("LANCIA"));
         product_page_logic.fourthBrandInCompabilityList().shouldHave(text("SEAT"));
-        product_page_logic.chooseBrandModelTypeInSelector("VW", "4644", "14881");
+        product_page_logic.chooseBrandModelTypeInHorizontalSelector("VW", "4644", "14881");
         product_page_logic.selectorSearchBtn().click();
         product_page_logic.checkTextIsVisibleOnPage("Es tut uns leid!");
         product_page_logic.checkTextIsVisibleOnPage("Kfz-Ersatzteile für VW 166 SUV Cabrio 1.1 Benzin (24 PS, Bj ab 1942)");

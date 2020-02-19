@@ -18,6 +18,10 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class Order_aws {
 
+    public Order_aws(String orderNumber) {
+        this.orderNumber = orderNumber;
+    }
+
     private String orderNumber;
     private String url = "https://aws.autodoc.de/order/view/";
 
@@ -64,10 +68,6 @@ public class Order_aws {
 
     private SelenideElement errorPopup() {
         return $(By.xpath("//input[@id='AddProduct[count]']/../i"));
-    }
-
-    public Order_aws(String orderNumber) {
-        this.orderNumber = orderNumber;
     }
 
     private Order_aws checkWhatOrderOpened() {
@@ -143,7 +143,7 @@ public class Order_aws {
     @Step
     public Order_aws setStatusOrderToTestbestellungen() {
         String valueOfTestStatus = "60";
-        if (!orderNumber.equals(null)) {
+        if (orderNumber != null) {
             open(url + orderNumber);
             if (!statusOrder().attr("data-status-id").equals(valueOfTestStatus)) {
                 selectorOfStatuses().selectOptionByValue(valueOfTestStatus);
@@ -162,13 +162,13 @@ public class Order_aws {
 
     @Step
     public Order_aws setStatusOrderToVersendetVorkasse() {
-        selectorOfStatuses().selectOptionByValue("3");
+        selectorOfStatuses().selectOptionByValue("40");
         saveChangesInOrderBtn().click();
         try { // Иногда приме смене статуса заказа, визуально он меняется, после повторного обновления страницы подргужается смененный статус, причина пока не установлена
-            statusOrder().waitUntil(attribute("data-status-id", "3"), 30000);
+            statusOrder().waitUntil(attribute("data-status-id", "40"), 30000);
         } catch (ElementShould e) {
             refresh();
-            statusOrder().waitUntil(attribute("data-status-id", "3"), 30000);
+            statusOrder().waitUntil(attribute("data-status-id", "40"), 30000);
         }
         return this;
     }
