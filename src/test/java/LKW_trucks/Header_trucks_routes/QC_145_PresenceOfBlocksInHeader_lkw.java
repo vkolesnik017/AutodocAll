@@ -3,6 +3,7 @@ package LKW_trucks.Header_trucks_routes;
 import ATD.LKW_main_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
+import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -27,6 +28,7 @@ public class QC_145_PresenceOfBlocksInHeader_lkw {
     }
 
     @Test(dataProvider = "routes")
+    @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test checks elements on main page LKW")
     public void testChecksElementsOnMainPageLKW(String route) {
