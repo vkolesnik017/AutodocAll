@@ -136,9 +136,9 @@ public class Main_page {
 
     // Menu in header
     @Step
-    public LKW_main_page clickLkwCategory() {
+    public LKW_main_page_Logic clickLkwCategory() {
         $("[data-ga-action='LKW']").click();
-        return page(LKW_main_page.class);
+        return page(LKW_main_page_Logic.class);
     }
 
     @Step
