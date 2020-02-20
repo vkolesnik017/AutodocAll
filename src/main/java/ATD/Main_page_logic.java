@@ -5,12 +5,35 @@ import io.qameta.allure.Step;
 
 import static ATD.CommonMethods.mailRandom;
 import static ATD.CommonMethods.password;
+import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.not;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
 public class Main_page_logic extends Main_page {
 
+  // Search bar
+  @Step("Input text in search bar")
+  public Main_page_logic inputTextInSearchBar(String text) {
+    searchBar().setValue(text);
+    return this;
+  }
+
+  @Step("Click tooltip in search by exact text {exactTooltipText}")
+  public Search_page_Logic clickTooltipInSearchByExactText(String exactTooltipText) {
+    tooltipToSearch().shouldBe(visible);
+    tooltipsToSearch().filter(exactText(exactTooltipText)).shouldHaveSize(1).get(0).click();
+    return page(Search_page_Logic.class);
+  }
+
+  // Selector
+
+  @Step("Close tooltip in car selector")
+  public Main_page_logic closeTooltipInCarSelector() {
+    tooltipInCarSelectorCloseBtn().click();
+    tooltipInCarSelectorCloseBtn().shouldNot(visible);
+    return this;
+  }
 
     // Registration popup
     @Step("Open registration popup.")
@@ -40,14 +63,6 @@ public class Main_page_logic extends Main_page {
     @Step(":registration form. Main_page")
     public Main_page_logic checkingDatenschutzerklarungLinkBehaviorRegistrationForm() {
         new CommonMethods().checkingDatenschutzerklarungLinkBehavior(datenschutzerklarungLinkInRegPopup(), "underline solid rgb(50, 103, 214)");
-        return this;
-    }
-
-    // Selector
-    @Step("Close tooltip in car selector")
-    public Main_page_logic closeTooltipInCarSelector() {
-        tooltipInCarSelectorCloseBtn().click();
-        tooltipInCarSelectorCloseBtn().shouldNot(visible);
         return this;
     }
 

@@ -41,7 +41,7 @@ public class Product_page {
     }
 
     public SelenideElement infoBlockWithSelectedCar() {
-        return $(".car-match-block>p>b");
+        return $x("//div[@class='car-match-block']/p");
     }
 
     public SelenideElement uncoverCharactericticBtn() {
@@ -514,7 +514,7 @@ public class Product_page {
         return $(".kba_submit");
     }
 
-    // locators for OEN block
+    // OEN block
     public ElementsCollection linksInOenNumbersBlock() {
         return $$x("//*[@class='oem-list']//li");
     }

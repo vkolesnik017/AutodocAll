@@ -101,7 +101,7 @@ public class Main_page {
     }
 
     @Step("Checking number of product in cart")
-    void checkingNumberOfProductInCart(int expectedNumber) {
+    public void checkingNumberOfProductInCart(int expectedNumber) {
         int actualNumber = Integer.parseInt(numberOfProductInCart().getText());
         Assert.assertEquals(actualNumber, expectedNumber);
     }
@@ -127,7 +127,7 @@ public class Main_page {
         for (int i = 0; i < tooltipsToSearch.size(); i++) {
             String hint = tooltipsToSearch.get(i).hover().getText().replaceAll("[^0-9]", "");
             boolean areTheNumbers = hint.matches("-?\\d+(\\.\\d+)?");
-            if (areTheNumbers && i + 1 < tooltipsToSearch.size()) {
+            if (areTheNumbers && i+1 < tooltipsToSearch.size()) {
                 tooltipsToSearch.get(i + 1).shouldHave(matchText("[0-9]").because("Not all generics are displayed under synonyms in tooltips to search"));
             }
         }
@@ -195,6 +195,8 @@ public class Main_page {
         return page(Cart_page.class);
     }
 
+    // Search bar
+
     @Step
     public Main_page inputTextInSearchBar(String text) {
         searchBar().setValue(text);
@@ -209,10 +211,10 @@ public class Main_page {
     }
 
     @Step("click tooltip in search by exact text {exactTooltipText}")
-    public Search_page clickTooltipInSearchByExactText(String exactTooltipText) {
+    public Search_page_Logic clickTooltipInSearchByExactText(String exactTooltipText) {
         tooltipToSearch().shouldBe(visible);
         tooltipsToSearch().filter(exactText(exactTooltipText)).shouldHaveSize(1).get(0).click();
-        return page(Search_page.class);
+        return page(Search_page_Logic.class);
     }
 
     // Login popup
@@ -244,7 +246,7 @@ public class Main_page {
         return $(".close_log_on");
     }
 
-    public Profile_page loginUserFromMain(String login) {
+    public Profile_page loginUserFromMain(String login){
         loginBtnInHeader().click();
         emailInputInLoginPopup().setValue(login);
         passwordInputInLoginPopup().setValue(password);

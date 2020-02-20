@@ -181,6 +181,13 @@ public class Product_page_Logic extends Product_page {
         return mail;
     }
 
+    // OEN block
+    @Step("Click first link in OEN block")
+    public Product_page_Logic clickFirstLinkInOenBlock() {
+        linksInOenNumbersBlock().get(1).click();
+        return this;
+    }
+
     //Reviews Form
     @Step("Scroll to reviews from and checking appearing. Product_page")
     public Product_page_Logic checkingReviewsForm() {
