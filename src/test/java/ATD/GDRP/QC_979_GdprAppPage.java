@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
 
-public class QC_220_GdprRegistrationOnMain {
+public class QC_979_GdprAppPage {
 
     private String mail;
 
@@ -31,8 +31,8 @@ public class QC_220_GdprRegistrationOnMain {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "alex_qa")
-    @Description(value = "Test verify working GDPR on main page in form of registration")
-    public void testGdprRegistrationOnMain(String route) {
+    @Description(value = "Test verify working GDPR on app page")
+    public void testGdprAppPage(String route) {
         openPage(route);
         mail = "QC_220_" + mailRandom();
         new Main_page_logic().openRegistrationPopup()
