@@ -195,6 +195,8 @@ public class Main_page {
         return page(Cart_page.class);
     }
 
+    // Search bar
+
     @Step
     public Main_page inputTextInSearchBar(String text) {
         searchBar().setValue(text);
@@ -209,10 +211,10 @@ public class Main_page {
     }
 
     @Step("click tooltip in search by exact text {exactTooltipText}")
-    public Search_page clickTooltipInSearchByExactText(String exactTooltipText) {
+    public Search_page_logic clickTooltipInSearchByExactText(String exactTooltipText) {
         tooltipToSearch().shouldBe(visible);
         tooltipsToSearch().filter(exactText(exactTooltipText)).shouldHaveSize(1).get(0).click();
-        return page(Search_page.class);
+        return page(Search_page_logic.class);
     }
 
     // Login popup

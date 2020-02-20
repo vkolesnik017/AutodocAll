@@ -3,6 +3,7 @@ package ATD;
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
 
+import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.not;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.Wait;
@@ -11,6 +12,20 @@ import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.Selenide.*;
 
 public class Main_page_logic extends Main_page {
+
+  // Search bar
+  @Step("Input text in search bar")
+  public Main_page_logic inputTextInSearchBar(String text) {
+    searchBar().setValue(text);
+    return this;
+  }
+
+  @Step("Click tooltip in search by exact text {exactTooltipText}")
+  public Search_page_logic clickTooltipInSearchByExactText(String exactTooltipText) {
+    tooltipToSearch().shouldBe(visible);
+    tooltipsToSearch().filter(exactText(exactTooltipText)).shouldHaveSize(1).get(0).click();
+    return page(Search_page_logic.class);
+  }
 
   // Selector
 
