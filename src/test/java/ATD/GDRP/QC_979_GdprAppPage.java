@@ -1,9 +1,8 @@
 package ATD.GDRP;
 
-import ATD.Main_page_logic;
+import ATD.MobileApp_static_page_Logic;
 import ATD.SetUp;
 import AWS.PrivacyPolicySubscription_aws;
-import com.codeborne.selenide.Condition;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -11,7 +10,9 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import static ATD.CommonMethods.*;
+import java.sql.SQLException;
+
+import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 
 public class QC_979_GdprAppPage {
@@ -24,8 +25,8 @@ public class QC_979_GdprAppPage {
     }
 
     @DataProvider(name = "route")
-    Object[] dataProvider() {
-        return new SetUp().setUpShop("prod", "DE");
+    Object[] dataProvider() throws SQLException {
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "staticMobileApp");
     }
 
     @Test(dataProvider = "route")
@@ -34,13 +35,9 @@ public class QC_979_GdprAppPage {
     @Description(value = "Test verify working GDPR on app page")
     public void testGdprAppPage(String route) {
         openPage(route);
-        mail = "QC_220_" + mailRandom();
-        new Main_page_logic().openRegistrationPopup()
-                .checkingDatenschutzerklarungLinkBehaviorRegistrationForm()
-                .fillRequiredFieldsForRegistration(firstNameRandom(), secondNameRandom(), mail)
-                .fillPasswordFieldsAndClickRegistration()
-                .nameOfClient().shouldBe(Condition.visible);
-        new PrivacyPolicySubscription_aws().openPolicySubscriptionWithLogin().checkingPolicyForMail(this.mail);
+        mail = new MobileApp_static_page_Logic().checkingDatenschutzerklarungLinkBehavior()
+                .fillingFieldsAndCheckBehaviorSubscribeForm("qc_979_");
+        new PrivacyPolicySubscription_aws().openPolicySubscriptionWithLogin().checkingPolicyAndSubscribeForMail(this.mail);
     }
 }
 
