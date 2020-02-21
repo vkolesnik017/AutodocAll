@@ -1,4 +1,4 @@
-package ATD.Advantages.LeibsAndBlocks;
+package ATD.Advantages.QC_1408_LeibsAndBlocks;
 
 import ATD.Product_page_Logic;
 import ATD.SetUp;

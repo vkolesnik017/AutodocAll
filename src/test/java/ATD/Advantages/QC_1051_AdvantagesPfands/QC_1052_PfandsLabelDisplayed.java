@@ -1,4 +1,4 @@
-package ATD.Advantages.AdvantagesPfands;
+package ATD.Advantages.QC_1051_AdvantagesPfands;
 
 import ATD.*;
 import io.qameta.allure.Description;
