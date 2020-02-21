@@ -14,9 +14,9 @@ import org.testng.annotations.Test;
 import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
 
-public class QC_220_GdprRegistrationOnMain {
+public class QC_1012_GdprRegistrationWithSubscribeCheckbox {
 
-    private String mail;
+    private String mail, firstName, secondName;
 
     @BeforeClass
     void setUp() {
@@ -32,16 +32,16 @@ public class QC_220_GdprRegistrationOnMain {
     @Flaky
     @Owner(value = "alex_qa")
     @Description(value = "Test verify working GDPR on main page in form of registration")
-    public void testGdprRegistrationOnMain(String route) {
+    public void testGdprRegistrationWithSubscribeCheckbox(String route) {
         openPage(route);
-        mail = "QC_220_" + mailRandom();
+        mail = "QC_1012_" + mailRandom();
+        firstName = firstNameRandom();
+        secondName = secondNameRandom();
         new Main_page_logic().openRegistrationPopup()
-                .checkingDatenschutzerklarungLinkBehaviorRegistrationForm()
-                .fillRequiredFieldsForRegistration(firstNameRandom(), secondNameRandom(), mail, false)
+                .fillRequiredFieldsForRegistration(firstName, secondName, mail, true)
                 .fillPasswordFieldsAndClickRegistration()
-                .checkingAppearingNameOfClient();
-        new PrivacyPolicySubscription_aws().openPolicySubscriptionWithLogin().checkingPolicyForMail(this.mail);
+                .checkingAutodocPlusActive().clickSetting().checkingCheckedCheckbox();
     }
 }
-
+//autotests_qc1012@test.com
 

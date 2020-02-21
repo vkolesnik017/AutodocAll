@@ -38,7 +38,7 @@ public class QASYS_61_Registration {
         main_page_logic.loginBtnInHeader().click();
         main_page_logic.registrationButtonInLoginPopup().click();
         String firstName = firstNameRandom();
-        main_page_logic.fillRequiredFieldsForRegistration(firstName, secondNameRandom(), mailRandom());
+        main_page_logic.fillRequiredFieldsForRegistration(firstName, secondNameRandom(), mailRandom(), false);
         main_page_logic.fillPasswordFieldsAndClickRegistration();
         new Profile_page().nameOfClient().shouldHave(Condition.text(firstName));
     }
