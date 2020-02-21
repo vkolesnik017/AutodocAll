@@ -56,6 +56,10 @@ public class Product_page {
         return $(".product-eco-block");
     }
 
+    public SelenideElement pfandPagelink() {
+        return $x("//div[@class='product-eco-block']//a[@target='_blank']");
+    }
+
     public SelenideElement freeDeliveryIcon() {
         return $(".features-gratis-icon");
     }

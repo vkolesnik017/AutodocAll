@@ -202,6 +202,14 @@ public class Listing_page {
         return $(".price_vat_icon p span");
     }
 
+    public SelenideElement pfandPagelink(){
+        return $x("//p[@class='top']//a[@target='_blank']");
+    }
+
+    public SelenideElement productsWithPfandBlock() {
+        return $x("//div[@class='price_vat price_vat_icon']/../..//div[@class='name']");
+    }
+
     public SelenideElement listProducts() {
         return $(".list_products ");
     }
@@ -570,5 +578,19 @@ public class Listing_page {
             checkProductTitleOnListing(expectedText, true, productTitleInListMode());
         }
         return this;
+    }
+
+    @Step ("Goes to pfand link from listing page")
+    public Austauschartikel_static_page clickLinkPfandFromListing(){
+        pfandPagelink().click();
+        switchTo().window(1);
+        return page(Austauschartikel_static_page.class);
+    }
+
+    @Step("Go to First Pfand Product from listing")
+    public Product_page_Logic goToFirstPfandProduct() {
+        productsWithPfandBlock().click();
+        new Product_page_Logic().pfandBlock().shouldBe(visible);
+        return page(Product_page_Logic.class);
     }
 }
