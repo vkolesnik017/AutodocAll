@@ -26,7 +26,7 @@ public class QC_1409_ShowLabelsPaymentAndAdvantages {
     }
 
     @DataProvider(name = "product")
-    Object[] dataProvider() throws SQLException {
+    Object[] dataProviderProduct() throws SQLException {
         return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product11");
     }
 
@@ -36,6 +36,6 @@ public class QC_1409_ShowLabelsPaymentAndAdvantages {
     @Description(value = "Show labels with payment methods and benefits")
     public void testShowLabelsPaymentAndAdvantages(String route) {
         openPage(route);
-        product_page_logic.testShowLabelsPaymentAndAdvantages();
+        product_page_logic.checkLabelsPaymenMethodstAndAdvantages();
     }
 }

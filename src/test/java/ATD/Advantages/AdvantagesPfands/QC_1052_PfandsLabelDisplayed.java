@@ -19,7 +19,6 @@ import static com.codeborne.selenide.Selenide.close;
 
 public class QC_1052_PfandsLabelDisplayed {
 
-    private Product_page_Logic product_page_logic = new Product_page_Logic();
     private Listing_page listingPage = new Listing_page();
 
     @BeforeClass
@@ -28,7 +27,7 @@ public class QC_1052_PfandsLabelDisplayed {
     }
 
     @DataProvider(name = "products", parallel = true)
-    Object[] dataProvider() throws SQLException {
+    Object[] dataProviderProducts() throws SQLException {
         return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product8,product9,product10");
     }
 
@@ -38,11 +37,11 @@ public class QC_1052_PfandsLabelDisplayed {
     @Description(value = "Checks availability pfand on product page")
     public void testAvailabilityPfandOnProductPage(String route) {
         openPage(route);
-        product_page_logic.pfandBlock().shouldBe(visible);
+        new Product_page_Logic().pfandBlock().shouldBe(visible);
     }
 
     @DataProvider(name = "search", parallel = true)
-    Object[] dataProvider3() throws SQLException {
+    Object[] dataProviderSearch() throws SQLException {
         return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "search12,search13,search14");
     }
 
@@ -56,7 +55,7 @@ public class QC_1052_PfandsLabelDisplayed {
     }
 
     @DataProvider(name = "tecdoc", parallel = true)
-    Object[] dataProvider4() throws SQLException {
+    Object[] dataProviderTecdoc() throws SQLException {
         return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list14,category_car_list15,category_car_list16");
     }
 
