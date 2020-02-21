@@ -101,7 +101,7 @@ public class Main_page {
     }
 
     @Step("Checking number of product in cart")
-    public void checkingNumberOfProductInCart(int expectedNumber) {
+    void checkingNumberOfProductInCart(int expectedNumber) {
         int actualNumber = Integer.parseInt(numberOfProductInCart().getText());
         Assert.assertEquals(actualNumber, expectedNumber);
     }
@@ -269,6 +269,10 @@ public class Main_page {
 
     SelenideElement mailInRegForm() {
         return $(By.xpath("//input[@id='email']"));
+    }
+
+    SelenideElement checkboxInRegForm() {
+        return $(By.xpath("//label[@for='isSubscribe_header_modal']"));
     }
 
     SelenideElement passStepInRegForm() {

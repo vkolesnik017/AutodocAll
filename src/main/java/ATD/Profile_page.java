@@ -2,6 +2,7 @@ package ATD;
 
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import org.openqa.selenium.By;
 
 import java.sql.SQLException;
 
@@ -16,6 +17,8 @@ public class Profile_page {
     public SelenideElement nameOfClient() {
         return $(byXpath("//div[@class='name_cash']//span[@class='name']"));
     }
+
+    SelenideElement autodocLinkActiveFirst(){return $(By.xpath("//li[@class='plus-link active']"));}
 
     private SelenideElement clientID() {
         return $(byXpath("//div[@class='top_title']/span"));
@@ -118,4 +121,7 @@ public class Profile_page {
         return $(byXpath("//*[@class='popup ']//*[contains(text(),'wurden aktualisiert')]/..//a"));
     }
 
+    SelenideElement einstellungenCheckbox() {
+        return $(By.xpath("//div[@class='change_pass another_email']//input[@type='checkbox']"));
+    }
 }

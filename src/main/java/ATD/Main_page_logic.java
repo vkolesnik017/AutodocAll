@@ -46,20 +46,21 @@ public class Main_page_logic extends Main_page {
     }
 
     @Step("Filling required fields for registration")
-    public Main_page_logic fillRequiredFieldsForRegistration(String firstName, String secondName, String mail) {
+    public Main_page_logic fillRequiredFieldsForRegistration(String firstName, String secondName, String mail, Boolean checkbox) {
         vornameInRegForm().setValue(firstName);
         nameInRegForm().setValue(secondName);
         mailInRegForm().setValue(mail);
+        if(checkbox) checkboxInRegForm().click();
         passStepInRegForm().click();
         return this;
     }
 
     @Step("Filling password fields and click registration")
-    public Profile_page fillPasswordFieldsAndClickRegistration() {
+    public Profile_page_Logic fillPasswordFieldsAndClickRegistration() {
         newPassRegForm().setValue(password);
         newPassConfirmRegForm().setValue(password);
         registrationBtnRegForm().click();
-        return page(Profile_page.class);
+        return page(Profile_page_Logic.class);
     }
 
     @Step(":registration form. Main_page")
