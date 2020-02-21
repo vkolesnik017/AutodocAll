@@ -195,6 +195,8 @@ public class Main_page {
         return page(Cart_page.class);
     }
 
+    // Search bar
+
     @Step
     public Main_page inputTextInSearchBar(String text) {
         searchBar().setValue(text);
@@ -209,10 +211,10 @@ public class Main_page {
     }
 
     @Step("click tooltip in search by exact text {exactTooltipText}")
-    public Search_page clickTooltipInSearchByExactText(String exactTooltipText) {
+    public Search_page_Logic clickTooltipInSearchByExactText(String exactTooltipText) {
         tooltipToSearch().shouldBe(visible);
         tooltipsToSearch().filter(exactText(exactTooltipText)).shouldHaveSize(1).get(0).click();
-        return page(Search_page.class);
+        return page(Search_page_Logic.class);
     }
 
     // Login popup
@@ -252,6 +254,40 @@ public class Main_page {
         return page(Profile_page.class);
     }
 
+    // Registration popup
+    SelenideElement datenschutzerklarungLinkInRegPopup() {
+        return $(By.cssSelector("#privacy_policy_header_modal>a"));
+    }
+
+    SelenideElement vornameInRegForm() {
+        return $(By.xpath("//input[@id='form_rVorname']"));
+    }
+
+    SelenideElement nameInRegForm() {
+        return $(By.xpath("//input[@id='rName']"));
+    }
+
+    SelenideElement mailInRegForm() {
+        return $(By.xpath("//input[@id='email']"));
+    }
+
+    SelenideElement passStepInRegForm() {
+        return $(By.xpath("//a[@class='register_step']"));
+    }
+
+    SelenideElement newPassRegForm() {
+        return $(By.xpath("//input[@name='new_pass']"));
+    }
+
+    SelenideElement newPassConfirmRegForm() {
+        return $(By.xpath("//input[@name='new_pass_confirm']"));
+    }
+
+    SelenideElement registrationBtnRegForm() {
+        return $(By.xpath("//div[@class='button register_submit fast']/a"));
+    }
+
+
     // Password recovery popup
     public SelenideElement emailFieldInPasswordRecoveryPopUp() {
         return $(byId("recovery-email"));
@@ -263,21 +299,6 @@ public class Main_page {
 
     public SelenideElement closePopupMessageSentForChangePassword() {
         return $(byXpath("//*[@class='popup ']//*[contains(text(),'Um Ihr Passwort zu ändern')]/..//a"));
-    }
-
-    public Main_page fillRequiredFieldsForRegistration(String firstName, String secondName, String mail) { //TODO вынести локаторы
-        $(By.xpath("//input[@id='form_rVorname']")).setValue(firstName);
-        $(By.xpath("//input[@id='rName']")).setValue(secondName);
-        $(By.xpath("//input[@id='email']")).setValue(mail);
-        $(By.xpath("//a[@class='register_step']")).click();
-        return this;
-    }
-
-    public Profile_page fillPasswordFieldsAndClickRegistration() { //TODO вынести локаторы
-        $(By.xpath("//input[@name='new_pass']")).setValue(password);
-        $(By.xpath("//input[@name='new_pass_confirm']")).setValue(password);
-        $(By.xpath("//div[@class='button register_submit fast']/a")).click();
-        return page(Profile_page.class);
     }
 
     // Footer
@@ -345,7 +366,9 @@ public class Main_page {
         return $x("//ul[@class='social-inline']/li[3]/span");
     }
 
-    public SelenideElement clickDatenschutzInSubscribeBlock() {return $(By.cssSelector("#privacy_policy_footer>span")); }
+    public SelenideElement clickDatenschutzInSubscribeBlock() {
+        return $(By.cssSelector("#privacy_policy_footer>span"));
+    }
 
     @Step("Checking Countries Subscription")
     public void checkingCountriesSubscription() throws SQLException {

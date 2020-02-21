@@ -5,9 +5,7 @@ import io.qameta.allure.Step;
 
 import java.sql.SQLException;
 
-import static com.codeborne.selenide.Selectors.byCssSelector;
-import static com.codeborne.selenide.Selectors.byName;
-import static com.codeborne.selenide.Selectors.byXpath;
+import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 

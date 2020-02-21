@@ -198,6 +198,10 @@ public class Listing_page {
         return $$x("//span[@class='rc' and contains(text(),'Wiederaufbereitet')]");
     }
 
+    public SelenideElement titleOfListing() {
+        return $(".title_count_search");
+    }
+
     public SelenideElement pfandBlock() {
         return $(".price_vat_icon p span");
     }
@@ -225,7 +229,6 @@ public class Listing_page {
     public SelenideElement titleOnListing() {
         return $(".title_count_search");
     }
-
     public ElementsCollection priceOfAllProductsOnPageInList() { return $$(By.xpath("//p[@class='actual_price']")); }
 
     public SelenideElement secondListingPage() { return $(By.xpath("//*[@class='pagination']/span[3]/a")); }
@@ -235,6 +238,10 @@ public class Listing_page {
     public SelenideElement preloader() { return $(By.cssSelector(".preloader_wrapper")); }
 
     public ElementsCollection productTitleInListMode() { return $$(By.cssSelector(".name")); }
+
+    public ElementsCollection productArticlesInListing() {
+        return $$x("//div[@class='description']//span[@class='article_number' and contains(text(),'Artikelnummer')]");
+    }
 
     public ElementsCollection produktreiheProductAttributeTecdocRoute() { return $$x("//*[@class='important' and contains(span, 'Produktreihe')]/span[2]"); }
 
@@ -439,11 +446,11 @@ public class Listing_page {
     }
 
     @Step("The method saves the order of products on listing, switches to tile view and verifies that order of products remains the same")
-    public void compareProductsOrderBetweenListModeAndTileMode() {
-        ElementsCollection elementsWithArticles = productTitleInListMode().first(12);
+    public Listing_page compareProductsOrderBetweenListModeAndTileMode() {
+        ElementsCollection elementsWithArticles = productArticlesInListing().first(12);
         ArrayList<String> articlesInListMode = new ArrayList<>();
         for (SelenideElement nameProduct : elementsWithArticles) {
-            String name = nameProduct.text().split("\n")[2].split(": ")[1];
+            String name = nameProduct.text().split(": ")[1];
             articlesInListMode.add(name);
         }
         showListingInTileModeButton().click();
@@ -454,6 +461,7 @@ public class Listing_page {
             String articleNumberTileMode = articlesOnTileMode.get(numberProductName).text().split(": ")[1];
             assertEquals(articleNumberTileMode, articleListMode, "Product order " + articleListMode + " does not match between list mode and tile mode");
         }
+        return this;
     }
 
     @Step("Method checks product attribute on listing in tile mode")
@@ -577,6 +585,33 @@ public class Listing_page {
             nextPageButton().click();
             checkProductTitleOnListing(expectedText, true, productTitleInListMode());
         }
+        return this;
+    }
+
+    @Step("Checks important elements on TecDoc listing (Side filters block, Brand filter block, Pagination blocks)")
+    public Listing_page checksImportantElementsOnTecDocListing() {
+        blockOfBySideFilters().shouldBe(visible);
+        brandFilterBlock().shouldBe(visible);
+        paginationFirstBlock().shouldBe(visible);
+        paginationSecondBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checks important elements on OEN listing (Brand filter block, Pagination blocks, OEN analog block)")
+    public Listing_page checksImportantElementsOnOenListing() {
+        brandFilterBlock().shouldBe(visible);
+        paginationFirstBlock().shouldBe(visible);
+        paginationSecondBlock().shouldBe(visible);
+        oemAnalogBlock().shouldBe(visible);
+        return this;
+    }
+
+    // The method fits search and lkw listing
+    @Step("Checks important elements on listing (Side filters block, Brand filter block, Pagination block)")
+    public Listing_page checksImportantElementsOnListing() {
+        blockOfBySideFilters().shouldBe(visible);
+        brandFilterBlock().shouldBe(visible);
+        paginationFirstBlock().shouldBe(visible);
         return this;
     }
 

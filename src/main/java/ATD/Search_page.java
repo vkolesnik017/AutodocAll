@@ -6,7 +6,6 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static ATD.CommonMethods.closeCookiesFooterMessage;
-import static ATD.CommonMethods.waitWhileRouteBecomeExpected;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.exactValue;
 import static com.codeborne.selenide.Condition.visible;
@@ -30,15 +29,14 @@ public class Search_page {
         return this;
     }
 
-    public Search_page verifyNameRouteEqualsSearch() {
-        waitWhileRouteBecomeExpected("search");
-        return this;
-    }
-
     @Step
     public Search_page verifyTextInSearchBar(String expectedText) {
         new Main_page().searchBar().shouldHave(exactValue(expectedText));
         return this;
+    }
+
+    public SelenideElement titleOnSearchPage() {
+        return $(".title_count_search");
     }
 
     public SelenideElement blockOfHelpSearchProducts() {
@@ -57,7 +55,9 @@ public class Search_page {
         return $x("//div[@class='about']/button");
     }
 
-    private SelenideElement closeBtnPopupOfChooseCar() {
+    public SelenideElement dividingLineForProductsOtherCategories() { return $x("//*[@class='w_search no_margin']"); }
+
+    SelenideElement closeBtnPopupOfChooseCar() {
         return $(".back");
     }
 
@@ -136,11 +136,7 @@ public class Search_page {
                 .shouldHave(sizeGreaterThan(10));
     }
 
-    @Step
-    public Search_page closePopupOfChooseCar() {
-        closeBtnPopupOfChooseCar().click();
-        return this;
-    }
+    SelenideElement secondListingPage() { return $(By.xpath("//*[@class='pagination']/span[3]/a")); }
 
 }
 

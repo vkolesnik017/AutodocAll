@@ -85,4 +85,15 @@ public class MobileApp_static_page {
     public SelenideElement applePageTitle() { return $(By.xpath("//*[@class='product-header__title app-header__title']")); }
 
     public SelenideElement googlePlayPageLogo() { return $(By.cssSelector(".xSyT2c>img")); }
+
+    public SelenideElement datenschutzerklarungLink() { return $(By.cssSelector("#privacy_policy_app>a")); }
+
+    SelenideElement mailFieldInSubscribeForm() { return $(By.id("mobile_app_page_email")); }
+
+    SelenideElement checkboxInSubscribeForm() { return $(By.id("subscribe_rules")); }
+
+    SelenideElement getMailBtnInSubscribeForm() { return $(By.id("mobile_app_page_get_email")); }
+
+    SelenideElement successPopupInSubscribeForm() { return $(By.id("news_subscribe")); }
+    SelenideElement successPopupCloseBtnInSubscribeForm() { return $(By.xpath("//div[@class='buttons-inner']")); }
 }

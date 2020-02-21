@@ -181,6 +181,13 @@ public class Product_page_Logic extends Product_page {
         return mail;
     }
 
+    // OEN block
+    @Step("Click first link in OEN block")
+    public Product_page_Logic clickFirstLinkInOenBlock() {
+        linksInOenNumbersBlock().get(1).click();
+        return this;
+    }
+
     @Step("Subscriptions for product that are not in stock. Product_page")
     public Product_page_Logic sendRequestByGrayButtonFromProductPage(String email) {
         grayButton().click();
