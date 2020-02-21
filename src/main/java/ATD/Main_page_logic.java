@@ -30,6 +30,8 @@ public class Main_page_logic extends Main_page {
 
   @Step("Close tooltip in car selector")
   public Main_page_logic closeTooltipInCarSelector() {
+    tooltipInCarSelectorCloseBtn().shouldBe(visible);
+    sleep(2000);
     tooltipInCarSelectorCloseBtn().click();
     tooltipInCarSelectorCloseBtn().shouldNot(visible);
     return this;
