@@ -251,7 +251,7 @@ public class Product_page_Logic extends Product_page {
         return mail;
     }
 
-    @Step("Goes to pfand link from product page. Product_page")
+    @Step("Transition to pfand link from product page. Product_page")
     public Austauschartikel_static_page clickLinkPfandFromProductPage(){
         pfandPagelink().click();
         switchTo().window(1);
@@ -259,7 +259,7 @@ public class Product_page_Logic extends Product_page {
     }
 
     @Step("Check presence labels with payment methods and advantages. Product_page")
-    public Product_page_Logic testShowLabelsPaymentAndAdvantages(){
+    public Product_page_Logic checkLabelsPaymenMethodstAndAdvantages(){
         freeDeliveryIcon().shouldBe(visible);
         safeOrderIcon().shouldBe(visible);
         days14ForReturnOfGoodsIcon().shouldBe(visible);
