@@ -1,9 +1,6 @@
 package ATD.GrayButton;
 
-import ATD.Main_page;
-import ATD.Product_page_Logic;
-import ATD.Search_page;
-import ATD.SetUp;
+import ATD.*;
 import AWS.Login_aws;
 import AWS.WishlistReminderAvailability_aws;
 import io.qameta.allure.Description;
@@ -15,7 +12,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import static ATD.CommonMethods.closeCookiesFooterMessage;
+import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.close;
@@ -29,6 +26,7 @@ public class QC_1015_GrayButtonOnSearchPage {
     private Mailinator mailinator = new Mailinator();
     private Search_page search_page = new Search_page();
     private WishlistReminderAvailability_aws wishlistReminderAvailability = new WishlistReminderAvailability_aws();
+    private Search_page_Logic search_page_logic = new Search_page_Logic();
 
     @BeforeClass
     void setUp() {
@@ -50,14 +48,10 @@ public class QC_1015_GrayButtonOnSearchPage {
         String articleProduct = wishlistReminderAvailability.articleOfFirstProduct().text();
         String idProduct = wishlistReminderAvailability.idOfFirstProduct().text();
         int beforeCountRequests = Integer.parseInt(wishlistReminderAvailability.numberOfRequestsInFirstProduct().text());
-        open(route);
+        openPage(route);
         new Main_page().useSearch(articleProduct);
-        closeCookiesFooterMessage();
-        search_page.buttonProductById(idProduct).click();
-        search_page.emailFieldInPopUpOfGrayBtn().setValue(email);
-        search_page.checkboxInPopUpOfGrayBtn().click();
-        search_page.sendButtonInPopUpOfGrayBtn().click();
-        search_page.closeSuccessPopUpOfGrayBtn().click();
+        search_page_logic.clickButtonProductById(idProduct)
+                         .sendRequestByGrayButtonFromSearchPage(email);
         mailinator.openEmail(email);
         mailinator.letterInfo(1).shouldHave(text("moments ago")).shouldHave(text("Wir bearbeiten"));
         open(wishlistReminderAvailability.urlWithCurrentDate);
