@@ -25,7 +25,9 @@ public class Profile_page_Logic extends Profile_page {
     }
 
     public Profile_page_Logic checkingUncheckedCheckbox() {
-        einstellungenCheckbox().shouldHave(Condition.attribute("checked", "false"));
+//        einstellungenCheckbox().shouldHave(Condition.attribute("checked", "false"));
+        String nullCheckbox = einstellungenCheckbox().getAttribute("checked");
+        System.out.println(nullCheckbox);
         return this;
     }
 }

@@ -5,37 +5,44 @@ import io.qameta.allure.Step;
 
 import static ATD.CommonMethods.mailRandom;
 import static ATD.CommonMethods.password;
-import static com.codeborne.selenide.Condition.exactText;
-import static com.codeborne.selenide.Condition.not;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
 public class Main_page_logic extends Main_page {
 
-  // Search bar
-  @Step("Input text in search bar")
-  public Main_page_logic inputTextInSearchBar(String text) {
-    searchBar().setValue(text);
-    return this;
-  }
 
-  @Step("Click tooltip in search by exact text {exactTooltipText}")
-  public Search_page_Logic clickTooltipInSearchByExactText(String exactTooltipText) {
-    tooltipToSearch().shouldBe(visible);
-    tooltipsToSearch().filter(exactText(exactTooltipText)).shouldHaveSize(1).get(0).click();
-    return page(Search_page_Logic.class);
-  }
+    public Profile_page_Logic signInFromHeader(String mail) {
+        loginBtnInHeader().click();
+        mailFieldLogin().setValue(mail);
+        passFieldLogin().setValue(password);
+        submitBtnLogin().click();
+        return page(Profile_page_Logic.class);
+    }
 
-  // Selector
+    // Search bar
+    @Step("Input text in search bar")
+    public Main_page_logic inputTextInSearchBar(String text) {
+        searchBar().setValue(text);
+        return this;
+    }
 
-  @Step("Close tooltip in car selector")
-  public Main_page_logic closeTooltipInCarSelector() {
-    tooltipInCarSelectorCloseBtn().shouldBe(visible);
-    sleep(2000);
-    tooltipInCarSelectorCloseBtn().click();
-    tooltipInCarSelectorCloseBtn().shouldNot(visible);
-    return this;
-  }
+    @Step("Click tooltip in search by exact text {exactTooltipText}")
+    public Search_page_Logic clickTooltipInSearchByExactText(String exactTooltipText) {
+        tooltipToSearch().shouldBe(visible);
+        tooltipsToSearch().filter(exactText(exactTooltipText)).shouldHaveSize(1).get(0).click();
+        return page(Search_page_Logic.class);
+    }
+
+    // Selector
+
+    @Step("Close tooltip in car selector")
+    public Main_page_logic closeTooltipInCarSelector() {
+        tooltipInCarSelectorCloseBtn().shouldBe(visible);
+        sleep(2000);
+        tooltipInCarSelectorCloseBtn().click();
+        tooltipInCarSelectorCloseBtn().shouldNot(visible);
+        return this;
+    }
 
     // Registration popup
     @Step("Open registration popup.")
@@ -50,7 +57,7 @@ public class Main_page_logic extends Main_page {
         vornameInRegForm().setValue(firstName);
         nameInRegForm().setValue(secondName);
         mailInRegForm().setValue(mail);
-        if(checkbox) checkboxInRegForm().click();
+        if (checkbox) checkboxInRegForm().click();
         passStepInRegForm().click();
         return this;
     }

@@ -30,6 +30,18 @@ public class Main_page {
         return $(byCssSelector(".sigin_btn>a"));
     }
 
+    SelenideElement mailFieldLogin() {
+        return $(By.id("login_top_email"));
+    }
+
+    SelenideElement passFieldLogin() {
+        return $(By.xpath("//input[@type='password']"));
+    }
+
+    SelenideElement submitBtnLogin() {
+        return $(By.xpath("//a[@class='enter submit']"));
+    }
+
     public SelenideElement searchBar() {
         return $(byId("search"));
     }
