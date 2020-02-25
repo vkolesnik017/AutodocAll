@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
 
-public class QC_1012_GdprRegistrationWithSubscribeCheckbox {
+public class QC_1013_GdprRegistrationWithoutSubscribeCheckbox {
 
     private String mail, firstName, secondName;
 
@@ -31,24 +31,24 @@ public class QC_1012_GdprRegistrationWithSubscribeCheckbox {
     @Flaky
     @Owner(value = "alex_qa")
     @Description(value = "Test verify working GDPR checkbox in profile desktop and profile mobile")
-    public void testGdprRegistrationWithSubscribeCheckbox(String route) {
+    public void testGdprRegistrationWithoutSubscribeCheckbox(String route) {
         openPage(route);
-        mail = "qc_1012_" + mailRandom();
+        mail = "qc_1013_" + mailRandom();
         firstName = firstNameRandom();
         secondName = secondNameRandom();
         new Main_page_logic().openRegistrationPopup()
-                .fillRequiredFieldsForRegistration(firstName, secondName, mail, true)
+                .fillRequiredFieldsForRegistration(firstName, secondName, mail, false)
                 .fillPasswordFieldsAndClickRegistration()
-                .checkingAutodocPlusActive().clickSetting().checkingCheckedCheckbox();
+                .checkingAutodocPlusActive().clickSetting().checkingUncheckedCheckbox();
         openPage("https://m.autodoc.de/?force=mobile");
         new Main_page_mob_Logic().closeFirstPopup().clickSignInInMenu()
                 .closeFooterPopup().signIn(mail)
                 .goToProfilePage().clickAddresseBtn().clickBillingAddress()
-                .checkingCheckedCheckbox().clickCheckbox()
+                .checkingUnCheckedCheckbox().clickCheckbox()
                 .fillingFieldsInBillingAddress().fillingFieldsInShippingAddress().fillingNameVornameField()
-                .clickSubmit().checkingSuccessPopup().checkingUnCheckedCheckbox();
+                .clickSubmit().checkingSuccessPopup().checkingCheckedCheckbox();
         openPage(route);
         new Main_page_logic().profileBtnClickInHeader()
-                .clickSetting().checkingUncheckedCheckbox();
+                .clickSetting().checkingCheckedCheckbox();
     }
 }

@@ -30,6 +30,11 @@ public class Main_page {
         return $(byCssSelector(".sigin_btn>a"));
     }
 
+    // When user signIn
+    SelenideElement profileBtn(){
+        return $(By.xpath("//a[@class='header-i header-i--user']"));
+    }
+
     SelenideElement mailFieldLogin() {
         return $(By.id("login_top_email"));
     }
@@ -270,6 +275,8 @@ public class Main_page {
     SelenideElement datenschutzerklarungLinkInRegPopup() {
         return $(By.cssSelector("#privacy_policy_header_modal>a"));
     }
+
+    SelenideElement datenschutzerklarungTextInRegPopup() { return $(By.cssSelector("#privacy_policy_header_modal")); }
 
     SelenideElement vornameInRegForm() {
         return $(By.xpath("//input[@id='form_rVorname']"));

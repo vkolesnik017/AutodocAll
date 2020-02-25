@@ -11,11 +11,21 @@ import static com.codeborne.selenide.Selenide.*;
 public class Main_page_logic extends Main_page {
 
 
-    public Profile_page_Logic signInFromHeader(String mail) {
+    public Profile_page_Logic loginFromHeader(String mail) {
         loginBtnInHeader().click();
         mailFieldLogin().setValue(mail);
         passFieldLogin().setValue(password);
         submitBtnLogin().click();
+        return page(Profile_page_Logic.class);
+    }
+
+    Main_page_logic logOutClick() {
+        logoutButton().click();
+        return page(Main_page_logic.class);
+    }
+
+    public Profile_page_Logic profileBtnClickInHeader() {
+        profileBtn().click();
         return page(Profile_page_Logic.class);
     }
 
@@ -54,6 +64,7 @@ public class Main_page_logic extends Main_page {
 
     @Step("Filling required fields for registration")
     public Main_page_logic fillRequiredFieldsForRegistration(String firstName, String secondName, String mail, Boolean checkbox) {
+        datenschutzerklarungTextInRegPopup().shouldBe(visible);
         vornameInRegForm().setValue(firstName);
         nameInRegForm().setValue(secondName);
         mailInRegForm().setValue(mail);
