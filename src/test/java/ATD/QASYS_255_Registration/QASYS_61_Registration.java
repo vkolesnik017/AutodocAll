@@ -14,7 +14,7 @@ import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.open;
 
 public class QASYS_61_Registration {
-    private Main_page mainPage = new Main_page();
+    private Main_page_logic main_page_logic = new Main_page_logic();
     private Search_page search_page = new Search_page();
     private CartAccount_page_Logic cartAccount_page_logic= new CartAccount_page_Logic();
     private CartAddress_page cartAddress_page = new CartAddress_page();
@@ -35,11 +35,11 @@ public class QASYS_61_Registration {
     @Flaky
     public void registrationButtonLogin(String route) {
         open(route);
-        mainPage.loginBtnInHeader().click();
-        mainPage.registrationButtonInLoginPopup().click();
+        main_page_logic.loginBtnInHeader().click();
+        main_page_logic.registrationButtonInLoginPopup().click();
         String firstName = firstNameRandom();
-        mainPage.fillRequiredFieldsForRegistration(firstName, secondNameRandom(), mailRandom());
-        mainPage.fillPasswordFieldsAndClickRegistration();
+        main_page_logic.fillRequiredFieldsForRegistration(firstName, secondNameRandom(), mailRandom(), false);
+        main_page_logic.fillPasswordFieldsAndClickRegistration();
         new Profile_page().nameOfClient().shouldHave(Condition.text(firstName));
     }
 
@@ -49,7 +49,7 @@ public class QASYS_61_Registration {
     @Flaky
     public void registrationInBasket(String route) {
         open(route);
-        mainPage.useSearch(ridex_82B0896);
+        main_page_logic.useSearch(ridex_82B0896);
         search_page.addFirstProductAndGoToCart();
         new Cart_page_Logic().nextButtonClick();
         String mail = mailRandom();
@@ -58,11 +58,11 @@ public class QASYS_61_Registration {
         cartAccount_page_logic.registrationFormNextBtnClick();
         cartAddress_page.nextButton().shouldBe(Condition.visible);
         cartAddress_page.logoClick();
-        mainPage.logoutButton().click();
-        mainPage.loginBtnInHeader().click();
-        mainPage.emailInputInLoginPopup().setValue(mail);
-        mainPage.passwordInputInLoginPopup().setValue(password);
-        mainPage.loginBtnInPopUp().click();
-        mainPage.logoutButton().shouldBe(Condition.visible);
+        main_page_logic.logoutButton().click();
+        main_page_logic.loginBtnInHeader().click();
+        main_page_logic.emailInputInLoginPopup().setValue(mail);
+        main_page_logic.passwordInputInLoginPopup().setValue(password);
+        main_page_logic.loginBtnInPopUp().click();
+        main_page_logic.logoutButton().shouldBe(Condition.visible);
     }
 }

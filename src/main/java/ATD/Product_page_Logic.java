@@ -11,7 +11,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class Product_page_Logic extends Product_page {
 
-    @Step
+    @Step("Open product page by his ID number")
     public Product_page_Logic openProductPageById(String route, String idProduct) {
         open(route + "/a/" + idProduct);
         return this;
@@ -29,6 +29,64 @@ public class Product_page_Logic extends Product_page {
         firstProductPriceInPopupOfCart().shouldBe(visible);
         return this;
     }
+
+    // Horizontal car selector
+
+    @Step("Choose brand in horizontal car selector")
+    public Product_page_Logic chooseBrandInHorizontalCarSelector(String brandName) {
+        brandSelector().selectOption(brandName);
+        Wait().until(webDriver -> brandSelector().getSelectedText().equals(brandName));
+        return this;
+    }
+
+    @Step("Choose model in horizontal car selector")
+    public Product_page_Logic chooseModelInHorizontalCarSelector(String modelNumberValue) {
+        modelSelector().selectOptionByValue(modelNumberValue);
+        sleep(1500);
+        return this;
+    }
+
+    @Step("Choose type in horizontal car selector")
+    private Product_page_Logic chooseTypeInHorizontalCarSelector(String typeNumberValue) {
+        typeSelector().selectOptionByValue(typeNumberValue);
+        return this;
+    }
+
+    @Step("Choose brand, model, type in horizontal selector")
+    public Product_page_Logic chooseBrandModelTypeInHorizontalSelector(String brandName, String modelNumberValue, String typeNumberValue) {
+        chooseBrandInHorizontalCarSelector(brandName)
+                .chooseModelInHorizontalCarSelector(modelNumberValue)
+                .chooseTypeInHorizontalCarSelector(typeNumberValue);
+        return this;
+    }
+
+    @Step("Click search button in horizontal car selector")
+    public Product_page_Logic clickSearchBtnInHorizontalSelector() {
+        selectorSearchBtn().click();
+        return this;
+    }
+
+    @Step("Click reset button in horizontal car selector")
+    public Product_page_Logic resetHorizontalCarSelector() {
+        resetBtnSelector().click();
+        resetBtnSelector().shouldBe(not(visible));
+        return this;
+    }
+
+    // Selector kba
+    @Step("Fill in KBA fields")
+    public Product_page_Logic fillNumberKba(String numberForFirstField, String numberForSecondField) {
+        firstFieldKBA().setValue(numberForFirstField);
+        secondFieldKBA().setValue(numberForSecondField);
+        return this;
+    }
+
+    @Step("Click search KBA button")
+    public Catalog_page clickKbaBtn() {
+        selectorKbaBtn().click();
+        return page(Catalog_page.class);
+    }
+    //----------------------------------------------------------------------------------------------------------
 
     @Step
     public Product_page_Logic checkingHeavyCargoLinkTransition() {
@@ -123,6 +181,23 @@ public class Product_page_Logic extends Product_page {
         return mail;
     }
 
+    // OEN block
+    @Step("Click first link in OEN block")
+    public Product_page_Logic clickFirstLinkInOenBlock() {
+        linksInOenNumbersBlock().get(1).click();
+        return this;
+    }
+
+    @Step("Subscriptions for product that are not in stock. Product_page")
+    public Product_page_Logic sendRequestByGrayButtonFromProductPage(String email) {
+        grayButton().click();
+        emailFieldInPopUpOfGrayBtn().setValue(email);
+        checkboxInPopUpOfGrayBtn().click();
+        sendButtonInPopUpOfGrayBtn().click();
+        closeSuccessPopUpOfGrayBtn().click();
+        return this;
+    }
+
     //Reviews Form
     @Step("Scroll to reviews from and checking appearing. Product_page")
     public Product_page_Logic checkingReviewsForm() {
@@ -176,4 +251,21 @@ public class Product_page_Logic extends Product_page {
         return mail;
     }
 
+    @Step("Transition to pfand link from product page. Product_page")
+    public Austauschartikel_static_page clickLinkPfandFromProductPage(){
+        pfandPagelink().click();
+        switchTo().window(1);
+        return page(Austauschartikel_static_page.class);
+    }
+
+    @Step("Check presence labels with payment methods and advantages. Product_page")
+    public Product_page_Logic checkLabelsPaymenMethodstAndAdvantages(){
+        freeDeliveryIcon().shouldBe(visible);
+        safeOrderIcon().shouldBe(visible);
+        days14ForReturnOfGoodsIcon().shouldBe(visible);
+        years2OnWarrantyIcon().shouldBe(visible);
+        paymentMethodsBlock().shouldBe(visible);
+        deliveryServicesBlock().shouldBe(visible);
+        return this;
+    }
 }

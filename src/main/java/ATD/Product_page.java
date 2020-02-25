@@ -2,15 +2,13 @@ package ATD;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.ex.ElementNotFound;
-import com.codeborne.selenide.ex.ElementShould;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
-
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
-import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Condition.appear;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -43,7 +41,7 @@ public class Product_page {
     }
 
     public SelenideElement infoBlockWithSelectedCar() {
-        return $(".car-match-block>p>b");
+        return $x("//div[@class='car-match-block']/p");
     }
 
     public SelenideElement uncoverCharactericticBtn() {
@@ -56,6 +54,10 @@ public class Product_page {
 
     public SelenideElement pfandBlock() {
         return $(".product-eco-block");
+    }
+
+    public SelenideElement pfandPagelink() {
+        return $x("//div[@class='product-eco-block']//a[@target='_blank']");
     }
 
     public SelenideElement freeDeliveryIcon() {
@@ -465,42 +467,7 @@ public class Product_page {
     }
 
 
-    //Methods and locators for Selector Horizontal
-    @Step("Choose brand in selector")
-    public Product_page chooseBrandInSelector(String brandName) {
-        brandSelector().find("optgroup").should(exist);
-        brandSelector().selectOption(brandName);
-        return this;
-    }
-
-    @Step("Choose model in selector")
-    public Product_page chooseModelInSelector(String modelNumberValue) {
-        modelSelector().find("optgroup").should(exist);
-        modelSelector().selectOptionByValue(modelNumberValue);
-        return this;
-    }
-
-    @Step("Choose type in selector")
-    private Product_page chooseTypeInSelector(String typeNumberValue) {
-        typeSelector().find("optgroup").should(exist);
-        typeSelector().selectOptionByValue(typeNumberValue);
-        typeSelector().shouldHave(value(typeNumberValue));
-        return this;
-    }
-
-    @Step("Choose brand, model, type in horizontal selector")
-    public Product_page chooseBrandModelTypeInSelector(String brandName, String modelNumberValue, String typeNumberValue) {
-        chooseBrandInSelector(brandName);
-        chooseModelInSelector(modelNumberValue);
-        chooseTypeInSelector(typeNumberValue);
-        return this;
-    }
-
-    @Step
-    // return current chosen value from selector
-    public String getChosenValueFromSelector(SelenideElement selector) {
-        return executeJavaScript("return arguments[0].selectedOptions[0].innerText", selector);
-    }
+    // Horizontal car selector
 
     public SelenideElement brandSelector() {
         return $("#form_maker_id");
@@ -538,19 +505,20 @@ public class Product_page {
         return $(byId("reset_selector_form"));
     }
 
-    //Methods and locators for Selector kba
-    @Step
-    public Product_page fillNumberKba(String numberForFirstField, String numberForSecondField) {
-        $(byId("kba1")).setValue(numberForFirstField);
-        $(byId("kba2")).setValue(numberForSecondField);
-        return this;
+    // Selector kba
+    SelenideElement firstFieldKBA() {
+        return $(byId("kba1"));
     }
 
-    public SelenideElement selectorKbaBtn() {
+    SelenideElement secondFieldKBA() {
+        return $(byId("kba2"));
+    }
+
+    SelenideElement selectorKbaBtn() {
         return $(".kba_submit");
     }
 
-    // locators for OEN block
+    // OEN block
     public ElementsCollection linksInOenNumbersBlock() {
         return $$x("//*[@class='oem-list']//li");
     }
