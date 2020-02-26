@@ -74,16 +74,18 @@ public class Main_page_logic extends Main_page {
     // This method only for DE
     @Step("Fill in KBA fields")
     public Main_page_logic fillNumberKba(String numberForFirstField, String numberForSecondField) {
-        firstFieldKBA().setValue(numberForFirstField);
-        secondFieldKBA().setValue(numberForSecondField);
-        return this;
+      sleep(4000); // added sleep SITES-7691
+      firstFieldKBA().setValue(numberForFirstField);
+      secondFieldKBA().setValue(numberForSecondField);
+      return this;
     }
 
     // This method for all shop, except DE
     @Step("Fill in KBA field")
     public Main_page_logic fillNumberKba(String kbaNumber) {
-        firstFieldKBA().setValue(kbaNumber);
-        return this;
+      sleep(3000); // added sleep SITES-7691
+      firstFieldKBA().setValue(kbaNumber);
+      return this;
     }
 
     @Step("Click search KBA button")

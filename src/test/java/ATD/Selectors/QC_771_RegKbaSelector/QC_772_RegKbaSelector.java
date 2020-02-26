@@ -17,6 +17,7 @@ import static ATD.CommonMethods.getCurrentShopFromJSVarInHTML;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.refresh;
 
 public class QC_772_RegKbaSelector {
 
@@ -39,6 +40,7 @@ public class QC_772_RegKbaSelector {
   @Description(value = "Checks redirect when kba number is entered, except DE")
   public void testRedirectWhenKbaIsEntered(String route) throws SQLException {
     openPage(route);
+    refresh();
     String kba = db.getKba(getCurrentShopFromJSVarInHTML());
     mainPageLogic.fillNumberKba(kba)
             .clickKbaBtn()
@@ -56,6 +58,7 @@ public class QC_772_RegKbaSelector {
   @Description(value = "Checks redirect when kba number is entered on DE")
   public void testRedirectWhenKbaIsEnteredForDE(String route) throws SQLException {
     openPage(route);
+    refresh();
     String kba = db.getKba(getCurrentShopFromJSVarInHTML());
     mainPageLogic.fillNumberKba(kba.split(" ")[0], kba.split(" ")[1])
             .clickKbaBtn()
