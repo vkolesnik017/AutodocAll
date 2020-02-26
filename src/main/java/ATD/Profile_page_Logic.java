@@ -9,10 +9,10 @@ import static org.testng.AssertJUnit.assertNull;
 
 public class Profile_page_Logic extends Profile_page {
 
-    public Main_page_logic logOut() {
-        new Main_page_logic().logOutClick();
+    public Main_page_Logic logOut() {
+        new Main_page_Logic().logOutClick();
         Wait().until(WebDriver -> getNameRouteFromJSVarInHTML().equals("main"));
-        return page(Main_page_logic.class);
+        return page(Main_page_Logic.class);
     }
 
     public Profile_page_Logic checkingAutodocPlusActive() {
