@@ -1,9 +1,6 @@
 package ATD.QASYS_255_Registration;
 
-import ATD.CartAccount_page;
-import ATD.Main_page;
-import ATD.Profile_page;
-import ATD.SetUp;
+import ATD.*;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -23,7 +20,7 @@ public class QASYS_422_PasswordRecovery {
     private String PasswordRecoveryFromHeader = "PasswordRecoveryFromHeader@mailinator.com";
     private String PasswordRecoveryFromCart = "PasswordRecoveryFromCart@mailinator.com";
 
-    private Main_page main_page = new Main_page();
+    private Main_page_Logic main_page = new Main_page_Logic();
     private Mailinator mailinator = new Mailinator();
     private Profile_page profile_page = new Profile_page();
     private CartAccount_page cartAccount_page = new CartAccount_page();

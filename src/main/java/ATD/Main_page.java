@@ -21,7 +21,6 @@ import static org.testng.Assert.assertEquals;
 public class Main_page {
 
     //Header
-
     public SelenideElement logoInHeader() {
         return $(".header__logo-main");
     }
@@ -138,19 +137,6 @@ public class Main_page {
         return this;
     }
 
-    @Step("The method verifies that generics are under synonyms when entered text {searchText} in search bar")
-    public Main_page checkingThatGenericsAreUnderSynonymsInSearchTooltips(String searchText) {
-        ElementsCollection tooltipsToSearch = inputTextInSearchBar(searchText).tooltipsToSearch().shouldHave(sizeNotEqual(0));
-        for (int i = 0; i < tooltipsToSearch.size(); i++) {
-            String hint = tooltipsToSearch.get(i).hover().getText().replaceAll("[^0-9]", "");
-            boolean areTheNumbers = hint.matches("-?\\d+(\\.\\d+)?");
-            if (areTheNumbers && i+1 < tooltipsToSearch.size()) {
-                tooltipsToSearch.get(i + 1).shouldHave(matchText("[0-9]").because("Not all generics are displayed under synonyms in tooltips to search"));
-            }
-        }
-        return this;
-    }
-
     // Menu in header
     @Step
     public LKW_main_page clickLkwCategory() {
@@ -214,18 +200,11 @@ public class Main_page {
 
     // Search bar
 
-    @Step
-    public Main_page inputTextInSearchBar(String text) {
-        searchBar().setValue(text);
-        return this;
-    }
-
-    @Step("Use search with: {searchArticle}")
-    public Search_page useSearch(String searchArticle) {
-        inputTextInSearchBar(searchArticle)
-                .searchButton().click();
-        return page(Search_page.class);
-    }
+//    @Step
+//    public Main_page inputTextInSearchBar(String text) {
+//        searchBar().setValue(text);
+//        return this;
+//    }
 
     @Step("click tooltip in search by exact text {exactTooltipText}")
     public Search_page_Logic clickTooltipInSearchByExactText(String exactTooltipText) {
