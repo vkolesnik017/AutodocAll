@@ -181,6 +181,23 @@ public class Product_page_Logic extends Product_page {
         return mail;
     }
 
+    // OEN block
+    @Step("Click first link in OEN block")
+    public Product_page_Logic clickFirstLinkInOenBlock() {
+        linksInOenNumbersBlock().get(1).click();
+        return this;
+    }
+
+    @Step("Subscriptions for product that are not in stock. Product_page")
+    public Product_page_Logic sendRequestByGrayButtonFromProductPage(String email) {
+        grayButton().click();
+        emailFieldInPopUpOfGrayBtn().setValue(email);
+        checkboxInPopUpOfGrayBtn().click();
+        sendButtonInPopUpOfGrayBtn().click();
+        closeSuccessPopUpOfGrayBtn().click();
+        return this;
+    }
+
     //Reviews Form
     @Step("Scroll to reviews from and checking appearing. Product_page")
     public Product_page_Logic checkingReviewsForm() {
@@ -234,4 +251,21 @@ public class Product_page_Logic extends Product_page {
         return mail;
     }
 
+    @Step("Transition to pfand link from product page. Product_page")
+    public Austauschartikel_static_page clickLinkPfandFromProductPage(){
+        pfandPagelink().click();
+        switchTo().window(1);
+        return page(Austauschartikel_static_page.class);
+    }
+
+    @Step("Check presence labels with payment methods and advantages. Product_page")
+    public Product_page_Logic checkLabelsPaymenMethodstAndAdvantages(){
+        freeDeliveryIcon().shouldBe(visible);
+        safeOrderIcon().shouldBe(visible);
+        days14ForReturnOfGoodsIcon().shouldBe(visible);
+        years2OnWarrantyIcon().shouldBe(visible);
+        paymentMethodsBlock().shouldBe(visible);
+        deliveryServicesBlock().shouldBe(visible);
+        return this;
+    }
 }

@@ -1,6 +1,6 @@
 package ATD.Selectors.QC_729_PopUpsOfSelectors;
 
-import ATD.Main_page_logic;
+import ATD.Main_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -18,7 +18,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class QC_735_PresenceOfElementsInCarSelectorPopup {
 
-  private Main_page_logic mainPageLogic = new Main_page_logic();
+  private Main_page_Logic mainPageLogic = new Main_page_Logic();
 
   @BeforeClass
   void setUp() {

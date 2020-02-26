@@ -1,8 +1,7 @@
 package ATD.Selectors.QC_693_VerticalCarSelectors;
 
-import ATD.Main_page_logic;
+import ATD.Main_page_Logic;
 import ATD.SetUp;
-import com.codeborne.selenide.Condition;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -22,7 +21,7 @@ import static com.codeborne.selenide.Selenide.refresh;
 
 public class QC_722_DisappearsTooltipAfterRefreshPage {
 
-  private Main_page_logic mainPageLogic = new Main_page_logic();
+  private Main_page_Logic mainPageLogic = new Main_page_Logic();
 
   @BeforeClass
   void setUp() {

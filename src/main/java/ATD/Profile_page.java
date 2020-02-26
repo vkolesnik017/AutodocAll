@@ -2,12 +2,11 @@ package ATD;
 
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import org.openqa.selenium.By;
 
 import java.sql.SQLException;
 
-import static com.codeborne.selenide.Selectors.byCssSelector;
-import static com.codeborne.selenide.Selectors.byName;
-import static com.codeborne.selenide.Selectors.byXpath;
+import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
@@ -17,6 +16,10 @@ public class Profile_page {
 
     public SelenideElement nameOfClient() {
         return $(byXpath("//div[@class='name_cash']//span[@class='name']"));
+    }
+
+    SelenideElement autodocLinkActiveFirst() {
+        return $(By.xpath("//li[@class='plus-link active']"));
     }
 
     private SelenideElement clientID() {
@@ -96,9 +99,12 @@ public class Profile_page {
 
 
     // settings tab (Einstellungen)
-    public SelenideElement settingsTabBtn() {
-        return $(byCssSelector(".settings_link"));
+
+    SelenideElement einstellungenActive() {
+        return $(By.xpath("//li[@class='settings_link active']"));
     }
+
+    public SelenideElement settingsTabBtn() { return $(byCssSelector(".settings_link")); }
 
     public SelenideElement oldPasswordFiled() {
         return $(byName("old_pass"));
@@ -118,6 +124,17 @@ public class Profile_page {
 
     public SelenideElement closeSuccessfulPasswordChangePopup() {
         return $(byXpath("//*[@class='popup ']//*[contains(text(),'wurden aktualisiert')]/..//a"));
+    }
+    SelenideElement einstellungenCheckbox() {
+        return $(By.xpath("//div[@class='change_pass another_email']//input[@type='checkbox']"));
+    }
+
+    SelenideElement popupAfterCheckedCheckbox() {
+        return $(By.id("popup_update"));
+    }
+
+    SelenideElement closePopupAfterCheckedCheckbox() {
+        return $(By.xpath("//div[@class='popup_content']//a[@class='close']"));
     }
 
 }

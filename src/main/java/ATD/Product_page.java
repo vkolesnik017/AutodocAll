@@ -41,7 +41,7 @@ public class Product_page {
     }
 
     public SelenideElement infoBlockWithSelectedCar() {
-        return $(".car-match-block>p>b");
+        return $x("//div[@class='car-match-block']/p");
     }
 
     public SelenideElement uncoverCharactericticBtn() {
@@ -54,6 +54,10 @@ public class Product_page {
 
     public SelenideElement pfandBlock() {
         return $(".product-eco-block");
+    }
+
+    public SelenideElement pfandPagelink() {
+        return $x("//div[@class='product-eco-block']//a[@target='_blank']");
     }
 
     public SelenideElement freeDeliveryIcon() {
@@ -161,7 +165,7 @@ public class Product_page {
     }
 
     public SelenideElement linkInSimilarPropertiesBlock() {
-        return $(".product-same-specification__item > p > a");
+        return $x("//div[2][@class='product-same-specification__item']//a");
     }
 
     public SelenideElement minicardsBlock() {
@@ -514,7 +518,7 @@ public class Product_page {
         return $(".kba_submit");
     }
 
-    // locators for OEN block
+    // OEN block
     public ElementsCollection linksInOenNumbersBlock() {
         return $$x("//*[@class='oem-list']//li");
     }

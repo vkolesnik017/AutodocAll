@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Advantages" parallel="methods" thread-count="2" data-provider-thread-count="3">
+
+    <test name="AdvantagesPfands">
+        <classes>
+            <class name="ATD.Advantages.QC_1051_AdvantagesPfands.QC_1052_PfandsLabelDisplayed"/>
+            <class name="ATD.Advantages.QC_1051_AdvantagesPfands.QC_1053_PfandPriceMatchesInBasketAndListing"/>
+            <class name="ATD.Advantages.QC_1051_AdvantagesPfands.QC_1407_GoPfandPageThroughLinkInLabels"/>
+        </classes>
+    </test>
+
+    <test name="LeibsAndBlocks">
+        <classes>
+            <class name="ATD.Advantages.QC_1408_LeibsAndBlocks.QC_1409_ShowLabelsPaymentAndAdvantages"/>
+        </classes>
+    </test>
+</suite>

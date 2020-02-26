@@ -95,6 +95,19 @@ public class Listing_page {
 
     public SelenideElement carBrandFilterOem() { return $(".model_list_oem > li > label > input"); }
 
+    //Rating filters locators
+    public ElementsCollection ratingInProductBlock() { return $$(".review-vote"); }
+
+    private ElementsCollection activeRatingStarsInEveryProduct(int productPosition) {
+        return $$x("(//div[@class='description'])[ " + productPosition + "]//div[@class='review-vote']//li[not(contains(@class,'empty'))]");
+    }
+
+    public SelenideElement ratingFiveStarsFilterCheckbox() { return $x("//*[@class='sort-rating__form-list']/li[1]/label"); }
+
+    public SelenideElement ratingThreeStarsFilterCheckbox() { return $x("//*[@class='sort-rating__form-list']/li[3]/label"); }
+
+    public SelenideElement ratingFilterBlock() { return $(".sort-rating__form"); }
+
     //For Oem listing
     public SelenideElement firstBrandButtonOemListing() { return $(By.xpath("//*[@id='selected-instalation__slider']/ul/li[1]")); }
 
@@ -182,6 +195,8 @@ public class Listing_page {
 
     public SelenideElement showListingInTileModeButton() { return $(By.xpath("//*[@class='sortby js-change-view-block']/span[3]")); }
 
+    public SelenideElement showListingInListModeButton() { return $(By.xpath("//*[@class='sortby js-change-view-block']/span[2]")); }
+
     private ElementsCollection articleProductsInTileMode() {
         return $$(".rec_prod_article");
     }
@@ -198,8 +213,20 @@ public class Listing_page {
         return $$x("//span[@class='rc' and contains(text(),'Wiederaufbereitet')]");
     }
 
+    public SelenideElement titleOfListing() {
+        return $(".title_count_search");
+    }
+
     public SelenideElement pfandBlock() {
         return $(".price_vat_icon p span");
+    }
+
+    public SelenideElement pfandPagelink(){
+        return $x("//p[@class='top']//a[@target='_blank']");
+    }
+
+    public SelenideElement productsWithPfandBlock() {
+        return $x("//div[@class='price_vat price_vat_icon']/../..//div[@class='name']");
     }
 
     public SelenideElement listProducts() {
@@ -217,7 +244,6 @@ public class Listing_page {
     public SelenideElement titleOnListing() {
         return $(".title_count_search");
     }
-
     public ElementsCollection priceOfAllProductsOnPageInList() { return $$(By.xpath("//p[@class='actual_price']")); }
 
     public SelenideElement secondListingPage() { return $(By.xpath("//*[@class='pagination']/span[3]/a")); }
@@ -227,6 +253,10 @@ public class Listing_page {
     public SelenideElement preloader() { return $(By.cssSelector(".preloader_wrapper")); }
 
     public ElementsCollection productTitleInListMode() { return $$(By.cssSelector(".name")); }
+
+    public ElementsCollection productArticlesInListing() {
+        return $$x("//div[@class='description']//span[@class='article_number' and contains(text(),'Artikelnummer')]");
+    }
 
     public ElementsCollection produktreiheProductAttributeTecdocRoute() { return $$x("//*[@class='important' and contains(span, 'Produktreihe')]/span[2]"); }
 
@@ -297,6 +327,12 @@ public class Listing_page {
     public ElementsCollection productsOnListingInTileMode() { return $$(".rec_products_block"); }
 
     public ElementsCollection productsOnListingInListMode() { return $$(".description"); }
+
+    public SelenideElement resetAllFiltersButton() { return $(".reset-buttons__all"); }
+
+    public SelenideElement labelOfActiveFilter() { return $x("//*[@class='reset-buttons__list']/li[1]"); }
+
+    public SelenideElement closeLabelOfActiveFilter() { return $x("//*[@class='reset-buttons__list']/li[1]/div[2]"); }
 
     @Step("Method gets price of all products on listing and parse it into float")
     private List<Float> getAllPricesOnListingPage(ElementsCollection listingViewModeLocator) {
@@ -377,6 +413,18 @@ public class Listing_page {
         Assert.assertTrue(uniqueBrandSet.size() >= numberOfUniqueBrands);
     }
 
+    @Step("Method checks unique generic on listing")
+    public void checkUniqueGenericsOnListing(int numberOfUniqueGenerics, ElementsCollection titleViewMode) {
+        titleViewMode.shouldHave(sizeGreaterThan(0));
+        Set<String> uniqueGenericSet = new LinkedHashSet<>();
+        for (SelenideElement aTitleViewMode : titleViewMode) {
+            String brandName = aTitleViewMode.text().split(" ")[1];
+            uniqueGenericSet.add(brandName);
+            System.out.println(brandName);
+        }
+        Assert.assertTrue(uniqueGenericSet.size() >= numberOfUniqueGenerics);
+    }
+
     @Step("Method gets brand from product title")
     public void getBrandFromTitle(String expectedTextInTitle, int brandPositionInAlt, Boolean shouldHaveTextOrNotHave, ElementsCollection titleViewMode) {
         titleViewMode.shouldHave(sizeGreaterThan(0));
@@ -431,11 +479,11 @@ public class Listing_page {
     }
 
     @Step("The method saves the order of products on listing, switches to tile view and verifies that order of products remains the same")
-    public void compareProductsOrderBetweenListModeAndTileMode() {
-        ElementsCollection elementsWithArticles = productTitleInListMode().first(12);
+    public Listing_page compareProductsOrderBetweenListModeAndTileMode() {
+        ElementsCollection elementsWithArticles = productArticlesInListing().first(12);
         ArrayList<String> articlesInListMode = new ArrayList<>();
         for (SelenideElement nameProduct : elementsWithArticles) {
-            String name = nameProduct.text().split("\n")[2].split(": ")[1];
+            String name = nameProduct.text().split(": ")[1];
             articlesInListMode.add(name);
         }
         showListingInTileModeButton().click();
@@ -446,6 +494,7 @@ public class Listing_page {
             String articleNumberTileMode = articlesOnTileMode.get(numberProductName).text().split(": ")[1];
             assertEquals(articleNumberTileMode, articleListMode, "Product order " + articleListMode + " does not match between list mode and tile mode");
         }
+        return this;
     }
 
     @Step("Method checks product attribute on listing in tile mode")
@@ -527,11 +576,12 @@ public class Listing_page {
     @Step("Method checks products sorting on listing in increasing order for not RIDEX products with two generics")
     public void checkPriceSortingInIncreasingOrderNotRidex2generic(ElementsCollection listingViewModeLocator) {
         List<Float> price = getAllPricesOnListingPage(listingViewModeLocator);
+        ElementsCollection ridexProducts = $$x("//*[@class='name']/a[contains (text(),'RIDEX')]");
         ElementsCollection notHalterProducts = $$x("//*[@class='name']/a[not (contains (text(),'Halter'))]");
         ElementsCollection halterProducts = $$x("//*[@class='name']/a[contains (text(),'Halter')]");
         if ($$x("//*[contains(@class,'not_active')]/a").size() < 1) {
             if(halterProducts.size() < 1) {
-                for (int i = halterProducts.size(); i < getAllPricesOnListingPage(listingViewModeLocator).size() - 1; i++) {
+                for (int i = ridexProducts.size(); i < getAllPricesOnListingPage(listingViewModeLocator).size() - 1; i++) {
                     if (price.get(i) <= price.get(i + 1)) {
                         System.out.println(price.get(i));
                     } else {
@@ -571,4 +621,63 @@ public class Listing_page {
         }
         return this;
     }
+
+    @Step("Checks important elements on TecDoc listing (Side filters block, Brand filter block, Pagination blocks)")
+    public Listing_page checksImportantElementsOnTecDocListing() {
+        blockOfBySideFilters().shouldBe(visible);
+        brandFilterBlock().shouldBe(visible);
+        paginationFirstBlock().shouldBe(visible);
+        paginationSecondBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checks important elements on OEN listing (Brand filter block, Pagination blocks, OEN analog block)")
+    public Listing_page checksImportantElementsOnOenListing() {
+        brandFilterBlock().shouldBe(visible);
+        paginationFirstBlock().shouldBe(visible);
+        paginationSecondBlock().shouldBe(visible);
+        oemAnalogBlock().shouldBe(visible);
+        return this;
+    }
+
+    // The method fits search and lkw listing
+    @Step("Checks important elements on listing (Side filters block, Brand filter block, Pagination block)")
+    public Listing_page checksImportantElementsOnListing() {
+        blockOfBySideFilters().shouldBe(visible);
+        brandFilterBlock().shouldBe(visible);
+        paginationFirstBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step ("Goes to pfand link from listing page")
+    public Austauschartikel_static_page clickLinkPfandFromListing(){
+        pfandPagelink().click();
+        switchTo().window(1);
+        return page(Austauschartikel_static_page.class);
+    }
+
+    @Step("Go to First Pfand Product from listing")
+    public Product_page_Logic goToFirstPfandProduct() {
+        productsWithPfandBlock().click();
+        new Product_page_Logic().pfandBlock().shouldBe(visible);
+        return page(Product_page_Logic.class);
+    }
+
+    @Step("Method checks quantity of rating stars in each product on listing")
+    public void checkQuantityOfRatingStarsOnListing(int choosenRatingInFilter, ElementsCollection collectionOfRatingElements) {
+        for (int i = 1; i < collectionOfRatingElements.size(); i++) {
+            activeRatingStarsInEveryProduct(i).shouldHaveSize(choosenRatingInFilter);
+            }
+        }
+
+    @Step("Method checks unique ratings on listing")
+    public void checkUniqueRatingOnListing(int numberOfUniqueRatings) {
+        Set<Integer> uniqueRatingSet = new LinkedHashSet<>();
+        for (int i = 1; i < ratingInProductBlock().size(); i++) {
+            int rating = activeRatingStarsInEveryProduct(i).size();
+            uniqueRatingSet.add(rating);
+        }
+        Assert.assertTrue(uniqueRatingSet.size() >= numberOfUniqueRatings);
+    }
 }
+

@@ -1,7 +1,7 @@
 package ATD.Selectors.QC_729_PopUpsOfSelectors;
 
 import ATD.CommonMethods;
-import ATD.Main_page_logic;
+import ATD.Main_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -22,7 +22,7 @@ import static com.codeborne.selenide.Selenide.sleep;
 
 public class QC_749_AppearsCarSelectorPopupAfterClickDetailsLinkInTopBlock {
 
-  private Main_page_logic mainPageLogic = new Main_page_logic();
+  private Main_page_Logic mainPageLogic = new Main_page_Logic();
   private CommonMethods commonMethods = new CommonMethods();
 
   @BeforeClass
