@@ -8,7 +8,7 @@ import static ATD.CommonMethods.password;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
-public class Main_page_logic extends Main_page {
+public class Main_page_Logic extends Main_page {
 
 
     public Profile_page_Logic loginFromHeader(String mail) {
@@ -19,9 +19,9 @@ public class Main_page_logic extends Main_page {
         return page(Profile_page_Logic.class);
     }
 
-    Main_page_logic logOutClick() {
+    Main_page_Logic logOutClick() {
         logoutButton().click();
-        return page(Main_page_logic.class);
+        return page(Main_page_Logic.class);
     }
 
     public Profile_page_Logic profileBtnClickInHeader() {
@@ -31,7 +31,7 @@ public class Main_page_logic extends Main_page {
 
     // Search bar
     @Step("Input text in search bar")
-    public Main_page_logic inputTextInSearchBar(String text) {
+    public Main_page_Logic inputTextInSearchBar(String text) {
         searchBar().setValue(text);
         return this;
     }
@@ -46,7 +46,7 @@ public class Main_page_logic extends Main_page {
     // Selector
 
     @Step("Close tooltip in car selector")
-    public Main_page_logic closeTooltipInCarSelector() {
+    public Main_page_Logic closeTooltipInCarSelector() {
         tooltipInCarSelectorCloseBtn().shouldBe(visible);
         sleep(2000);
         tooltipInCarSelectorCloseBtn().click();
@@ -56,14 +56,14 @@ public class Main_page_logic extends Main_page {
 
     // Registration popup
     @Step("Open registration popup.")
-    public Main_page_logic openRegistrationPopup() {
+    public Main_page_Logic openRegistrationPopup() {
         loginBtnInHeader().click();
         registrationButtonInLoginPopup().click();
         return this;
     }
 
     @Step("Filling required fields for registration")
-    public Main_page_logic fillRequiredFieldsForRegistration(String firstName, String secondName, String mail, Boolean checkbox) {
+    public Main_page_Logic fillRequiredFieldsForRegistration(String firstName, String secondName, String mail, Boolean checkbox) {
         datenschutzerklarungTextInRegPopup().shouldBe(visible);
         vornameInRegForm().setValue(firstName);
         nameInRegForm().setValue(secondName);
@@ -82,7 +82,7 @@ public class Main_page_logic extends Main_page {
     }
 
     @Step(":registration form. Main_page")
-    public Main_page_logic checkingDatenschutzerklarungLinkBehaviorRegistrationForm() {
+    public Main_page_Logic checkingDatenschutzerklarungLinkBehaviorRegistrationForm() {
         new CommonMethods().checkingDatenschutzerklarungLinkBehavior(datenschutzerklarungLinkInRegPopup(), "underline solid rgb(50, 103, 214)");
         return this;
     }
@@ -91,17 +91,19 @@ public class Main_page_logic extends Main_page {
 
     // This method only for DE
     @Step("Fill in KBA fields")
-    public Main_page_logic fillNumberKba(String numberForFirstField, String numberForSecondField) {
-        firstFieldKBA().setValue(numberForFirstField);
-        secondFieldKBA().setValue(numberForSecondField);
-        return this;
+    public Main_page_Logic fillNumberKba(String numberForFirstField, String numberForSecondField) {
+      sleep(4000); // added sleep SITES-7691
+      firstFieldKBA().setValue(numberForFirstField);
+      secondFieldKBA().setValue(numberForSecondField);
+      return this;
     }
 
     // This method for all shop, except DE
     @Step("Fill in KBA field")
-    public Main_page_logic fillNumberKba(String kbaNumber) {
-        firstFieldKBA().setValue(kbaNumber);
-        return this;
+    public Main_page_Logic fillNumberKba(String kbaNumber) {
+      sleep(3000); // added sleep SITES-7691
+      firstFieldKBA().setValue(kbaNumber);
+      return this;
     }
 
     @Step("Click search KBA button")
@@ -111,7 +113,7 @@ public class Main_page_logic extends Main_page {
     }
 
     @Step("Click link \"Was ist eine Schlüsselnummer?\" and check appears info KBA popup")
-    public Main_page_logic clickLinkAndCheckAppearsInfoKbaPopup() {
+    public Main_page_Logic clickLinkAndCheckAppearsInfoKbaPopup() {
         arrowInBrandSelectorVerticalCar().waitUntil(visible, 30000);
         linkInfoKba().click();
         kbaPopup().shouldBe(visible);
@@ -120,20 +122,20 @@ public class Main_page_logic extends Main_page {
 
     // Car selector popup
     @Step("Choose brand in car selector popup")
-    public Main_page_logic chooseBrandInCarSelectorPopup(String brandName) {
+    public Main_page_Logic chooseBrandInCarSelectorPopup(String brandName) {
         brandSelectorInCarSelectorPopup().selectOption(brandName);
         Wait().until(webDriver -> brandSelectorInCarSelectorPopup().getSelectedText().equals(brandName));
         return this;
     }
 
     @Step("Choose model in car selector popup")
-    public Main_page_logic chooseModelInPopupSelectorForChooseCar(String modelNumberValue) {
+    public Main_page_Logic chooseModelInPopupSelectorForChooseCar(String modelNumberValue) {
         modelSelectorInCarSelectorPopup().selectOptionByValue(modelNumberValue);
         return this;
     }
 
     @Step("Click reset button in car selector popup")
-    public Main_page_logic resetCarSelectorPopup() {
+    public Main_page_Logic resetCarSelectorPopup() {
         resetCarBtnInCarSelectorPopup().click();
         resetCarBtnInCarSelectorPopup().shouldBe(not(visible));
         return this;
@@ -143,7 +145,7 @@ public class Main_page_logic extends Main_page {
 
     // The method needed for pages where the vertical car selector is hidden by default
     @Step("Open vertical car selector if it hidden")
-    public Main_page_logic openVerticalCarSelectorIfItHidden() {
+    public Main_page_Logic openVerticalCarSelectorIfItHidden() {
         if (!brandSelectorInVerticalCarSelector().isDisplayed()) {
             hiddenVerticalSelector().click();
         }
@@ -151,7 +153,7 @@ public class Main_page_logic extends Main_page {
     }
 
     @Step("Choose brand in vertical car selector")
-    public Main_page_logic chooseBrandInVerticalCarSelector(String brandName) {
+    public Main_page_Logic chooseBrandInVerticalCarSelector(String brandName) {
         openVerticalCarSelectorIfItHidden();
         brandSelectorInVerticalCarSelector().selectOption(brandName);
         Wait().until(webDriver -> brandSelectorInVerticalCarSelector().getSelectedText().equals(brandName));
@@ -159,20 +161,20 @@ public class Main_page_logic extends Main_page {
     }
 
     @Step("Choose model in vertical car selector")
-    public Main_page_logic chooseModelInVerticalCarSelector(String modelNumberValue) {
+    public Main_page_Logic chooseModelInVerticalCarSelector(String modelNumberValue) {
         modelSelectorInVerticalCarSelector().selectOptionByValue(modelNumberValue);
         sleep(1500);
         return this;
     }
 
     @Step("Choose type in vertical car selector")
-    private Main_page_logic chooseTypeInVerticalCarSelector(String typeNumberValue) {
+    private Main_page_Logic chooseTypeInVerticalCarSelector(String typeNumberValue) {
         typeSelectorInVerticalCarSelector().selectOptionByValue(typeNumberValue);
         return this;
     }
 
     @Step("Choose brand, model, type in vertical car selector")
-    public Main_page_logic chooseBrandModelTypeInSelector(String brandName, String modelNumberValue, String typeNumberValue) {
+    public Main_page_Logic chooseBrandModelTypeInSelector(String brandName, String modelNumberValue, String typeNumberValue) {
         chooseBrandInVerticalCarSelector(brandName);
         chooseModelInVerticalCarSelector(modelNumberValue);
         chooseTypeInVerticalCarSelector(typeNumberValue);
@@ -180,14 +182,14 @@ public class Main_page_logic extends Main_page {
     }
 
     @Step("Click reset button in vertical car selector")
-    public Main_page_logic resetVerticalCarSelector() {
+    public Main_page_Logic resetVerticalCarSelector() {
         resetBtnInVerticalCarSelector().click();
         resetBtnInVerticalCarSelector().shouldBe(not(visible));
         return this;
     }
 
     @Step("Click search button in vertical car selector when NOT selected all fields")
-    public Main_page_logic clickSearchBtnInVerticalSelectorWhenNotSelectedFields() {
+    public Main_page_Logic clickSearchBtnInVerticalSelectorWhenNotSelectedFields() {
         searchBtnInVerticalSelector().click();
         return this;
     }
@@ -200,18 +202,18 @@ public class Main_page_logic extends Main_page {
 
 
     // GDPR footer
-    public Main_page_logic scrollToFooterSubscribeBlock() {
+    public Main_page_Logic scrollToFooterSubscribeBlock() {
         footerForm().scrollTo();
         footerForm().shouldBe(Condition.visible);
         return this;
     }
 
-    public Main_page_logic checkingDatenschutzerklarungLinkBehaviorInReviewsForm() {
+    public Main_page_Logic checkingDatenschutzerklarungLinkBehaviorInReviewsForm() {
         new CommonMethods().checkingDatenschutzerklarungLinkBehavior(clickDatenschutzInSubscribeBlock(), "none solid rgb(0, 104, 215)");
         return this;
     }
 
-    public Main_page_logic checkingErrorPopupUnclickCheckbox(String qc) {
+    public Main_page_Logic checkingErrorPopupUnclickCheckbox(String qc) {
         String mail = qc + mailRandom();
         subscriptionMailField().setValue(mail);
         subscriptionButton().click();

@@ -1,9 +1,8 @@
 package ATD.GDRP;
 
-import ATD.Main_page_logic;
+import ATD.Main_page_Logic;
 import ATD.SetUp;
 import AWS.PrivacyPolicySubscription_aws;
-import com.codeborne.selenide.Condition;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -35,7 +34,7 @@ public class QC_220_GdprRegistrationOnMain {
     public void testGdprRegistrationOnMain(String route) {
         openPage(route);
         mail = "QC_220_" + mailRandom();
-        new Main_page_logic().openRegistrationPopup()
+        new Main_page_Logic().openRegistrationPopup()
                 .checkingDatenschutzerklarungLinkBehaviorRegistrationForm()
                 .fillRequiredFieldsForRegistration(firstNameRandom(), secondNameRandom(), mail, false)
                 .fillPasswordFieldsAndClickRegistration()

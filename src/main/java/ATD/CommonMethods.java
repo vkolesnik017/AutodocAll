@@ -1,7 +1,6 @@
 package ATD;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.ex.ElementNotFound;
@@ -40,6 +39,7 @@ public class CommonMethods {
     public static String idProductTire = "8075786";
     public static String idProductMore35EUR = "1367459";
     public static String idPfandProduct = "1145093";
+    public static String idProductWithDynamicChar = "2295352";
 
     @Step("{url} Open page with close popup")
     public static void openPage(String url) {
@@ -66,7 +66,12 @@ public class CommonMethods {
 
     @Step("Wait while route become expected {expected route}")
     public static void waitWhileRouteBecomeExpected(String expectedRoute) {
-        Wait().until(WebDriver -> getNameRouteFromJSVarInHTML().equals(expectedRoute));
+        try {
+            Wait().until(WebDriver -> getNameRouteFromJSVarInHTML().equals(expectedRoute));
+        } catch (TimeoutException e) {
+            Assert.fail("Current route: [" + getNameRouteFromJSVarInHTML() + "] don't equals expected route: " + expectedRoute);
+        }
+
     }
 
     public static String getShopFromRoute(String route) {
@@ -256,7 +261,7 @@ public class CommonMethods {
 
     @Step
     // method for checks output recovery characteristic in block of top products for QASYS_536 (TEST-1)
-    public void cheksOutputRecoveryCharacteristicInBlocksOfTopProducts(String expectedChar) {
+    public void checksOutputRecoveryCharacteristicInBlocksOfTopProducts(String expectedChar) {
         ArrayList<String> actualCharacteristics = new ArrayList<>();
         scrollToBlockOfTopProducts();
         ElementsCollection miniCardsInTopBlock = miniCardsOfProducts().filter(visible).shouldHaveSize(4);

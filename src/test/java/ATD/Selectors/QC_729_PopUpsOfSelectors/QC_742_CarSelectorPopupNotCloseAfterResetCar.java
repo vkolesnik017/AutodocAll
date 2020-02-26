@@ -1,6 +1,6 @@
 package ATD.Selectors.QC_729_PopUpsOfSelectors;
 
-import ATD.Main_page_logic;
+import ATD.Main_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -17,7 +17,7 @@ import static org.testng.Assert.assertEquals;
 
 public class QC_742_CarSelectorPopupNotCloseAfterResetCar {
 
-  private Main_page_logic mainPageLogic = new Main_page_logic();
+  private Main_page_Logic mainPageLogic = new Main_page_Logic();
 
   @BeforeClass
   void setUp() {

@@ -1,6 +1,6 @@
 package ATD.GDRP;
 
-import ATD.Main_page_logic;
+import ATD.Main_page_Logic;
 import ATD.SetUp;
 import AWS.PrivacyPolicySubscription_aws;
 import io.qameta.allure.Description;
@@ -33,7 +33,7 @@ public class QC_271_GdprFooter {
     @Description(value = "Test verify working GDPR form in footer on Main Page")
     public void testGdprFooterForm(String route) {
         openPage(route);
-        mail = new Main_page_logic()
+        mail = new Main_page_Logic()
                 .scrollToFooterSubscribeBlock()
                 .checkingDatenschutzerklarungLinkBehaviorInReviewsForm()
                 .checkingErrorPopupUnclickCheckbox("qc_403_")

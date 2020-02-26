@@ -1,6 +1,6 @@
 package ATD.Selectors.QC_663_HorizontalCarSelector;
 
-import ATD.Main_page_logic;
+import ATD.Main_page_Logic;
 import ATD.Product_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
@@ -16,7 +16,7 @@ import static ATD.SetUp.setUpBrowser;
 public class QC_681_AppearsTooltipChooseBrandFirstTimeEnterSession {
 
   private Product_page_Logic product_page_logic = new Product_page_Logic();
-  private Main_page_logic main_page_logic = new Main_page_logic();
+  private Main_page_Logic main_page_logic = new Main_page_Logic();
 
   @BeforeClass
   void setUp() {
