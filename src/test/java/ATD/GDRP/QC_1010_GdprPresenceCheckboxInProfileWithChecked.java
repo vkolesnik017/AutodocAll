@@ -1,6 +1,6 @@
 package ATD.GDRP;
 
-import ATD.Main_page_logic;
+import ATD.Main_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -33,7 +33,7 @@ public class QC_1010_GdprPresenceCheckboxInProfileWithChecked {
     public void testGdprPresenceCheckboxInProfileWithChecked(String route){
         openPage(route);
         mail = "qc_1011_" + mailRandom();
-        new Main_page_logic().openRegistrationPopup()
+        new Main_page_Logic().openRegistrationPopup()
                 .fillRequiredFieldsForRegistration(firstNameRandom(), secondNameRandom(), mail, true).fillPasswordFieldsAndClickRegistration()
                 .checkingAutodocPlusActive().clickSetting().checkingCheckedCheckbox().logOut()
                 .loginFromHeader(mail)

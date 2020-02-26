@@ -1,6 +1,6 @@
 package ATD.GDRP;
 
-import ATD.Main_page_logic;
+import ATD.Main_page_Logic;
 import ATD.Main_page_mob_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
@@ -36,7 +36,7 @@ public class QC_1013_GdprRegistrationWithoutSubscribeCheckbox {
         mail = "qc_1013_" + mailRandom();
         firstName = firstNameRandom();
         secondName = secondNameRandom();
-        new Main_page_logic().openRegistrationPopup()
+        new Main_page_Logic().openRegistrationPopup()
                 .fillRequiredFieldsForRegistration(firstName, secondName, mail, false)
                 .fillPasswordFieldsAndClickRegistration()
                 .checkingAutodocPlusActive().clickSetting().checkingUncheckedCheckbox();
@@ -48,7 +48,7 @@ public class QC_1013_GdprRegistrationWithoutSubscribeCheckbox {
                 .fillingFieldsInBillingAddress().fillingFieldsInShippingAddress().fillingNameVornameField()
                 .clickSubmit().checkingSuccessPopup().checkingCheckedCheckbox();
         openPage(route);
-        new Main_page_logic().profileBtnClickInHeader()
+        new Main_page_Logic().profileBtnClickInHeader()
                 .clickSetting().checkingCheckedCheckbox();
     }
 }
