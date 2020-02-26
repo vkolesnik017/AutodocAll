@@ -1,4 +1,4 @@
-package LKW_trucks.Header_trucks_routes;
+package LKW_trucks.QC_144_Header_trucks_routes;
 
 import ATD.LKW_main_page_Logic;
 import ATD.SetUp;
@@ -34,7 +34,7 @@ public class QC_145_PresenceOfBlocksInHeader_lkw {
     public void testChecksElementsOnMainPageLKW(String route) {
         open(route);
         new LKW_main_page_Logic()
-                .checkPagesIssuccessfulyLoaded()
+                .checkPagesIsSuccessfulyLoaded()
                 .chekingOfVisibilityOfLogoInHeader()
                 .checkAppearanceOfHintBlock()
                 .checkAppearanceOfBeispielPopUp();
