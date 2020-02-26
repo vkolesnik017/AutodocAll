@@ -1,7 +1,7 @@
 package ATD.Selectors.QC_771_RegKbaSelector;
 
 import ATD.DataBase;
-import ATD.Main_page_logic;
+import ATD.Main_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -21,7 +21,7 @@ import static com.codeborne.selenide.Selenide.refresh;
 
 public class QC_772_RegKbaSelector {
 
-  private Main_page_logic mainPageLogic = new Main_page_logic();
+  private Main_page_Logic mainPageLogic = new Main_page_Logic();
   private DataBase db = new DataBase();
 
   @BeforeClass
