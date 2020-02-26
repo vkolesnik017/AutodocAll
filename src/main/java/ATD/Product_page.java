@@ -165,7 +165,7 @@ public class Product_page {
     }
 
     public SelenideElement linkInSimilarPropertiesBlock() {
-        return $(".product-same-specification__item > p > a");
+        return $x("//div[2][@class='product-same-specification__item']//a");
     }
 
     public SelenideElement minicardsBlock() {

@@ -1,6 +1,6 @@
 package ATD.QASYS_19_Basket;
 
-import ATD.Main_page_mobile;
+import ATD.Main_page_mob;
 import ATD.SetUp;
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Description;
@@ -31,6 +31,6 @@ public class QASYS_452_NumberBasketOnMobile {
   @Description(value = "check number basket on mobile site")
   public void checkNumberBasketOnMobile(String route) {
     open(route);
-    new Main_page_mobile().numberBasket().shouldBe(Condition.visible);
+    new Main_page_mob().numberBasket().shouldBe(Condition.visible);
   }
 }
