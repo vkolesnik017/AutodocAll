@@ -1,23 +1,27 @@
 package ATD;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$x;
 
 public class Datenschutz_page {
 
-    public SelenideElement titlePage() {
+    protected SelenideElement titlePage() {
        return $(By.xpath("//div[@class='head_name']"));
     }
 
-    public SelenideElement logo() {
+    protected SelenideElement logo() {
         return $(By.cssSelector(".logo>a>img"));
     }
 
-    public SelenideElement mainBlock() {
+    protected SelenideElement mainBlock() {
         return $(By.cssSelector(".text_page.agb_page"));
     }
 
-
+    protected ElementsCollection links() {
+        return $$x("//div[@class='text_page agb_page']//a");
+    }
 }
