@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="StaticPage" parallel="tests" thread-count="3">
+
+
+    <test name="QC_216_StaticPage_zahlung">
+        <classes>
+            <class name="ATD.StaticPage.QC_216_StaticPage_zahlung">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QC_234_StaticPage_datenschutz">
+        <classes>
+            <class name="ATD.StaticPage.QC_234_StaticPage_datenschutz">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QC_243_StaticPage_versand">
+        <classes>
+            <class name="ATD.StaticPage.QC_243_StaticPage_versand">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QC_717_StaticPage_widerruf">
+        <classes>
+            <class name="ATD.StaticPage.QC_717_StaticPage_widerruf">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QC_1091_StaticPage_austauschartikel">
+        <classes>
+            <class name="ATD.StaticPage.QC_1091_StaticPage_austauschartikel">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QC_1175_StaticPage_contacts">
+        <classes>
+            <class name="ATD.StaticPage.QC_1175_StaticPage_contacts">
+            </class>
+        </classes>
+    </test>
+
+</suite>

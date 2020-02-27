@@ -49,7 +49,7 @@ public class QC_1015_GrayButtonOnSearchPage {
         String idProduct = wishlistReminderAvailability.idOfFirstProduct().text();
         int beforeCountRequests = Integer.parseInt(wishlistReminderAvailability.numberOfRequestsInFirstProduct().text());
         openPage(route);
-        new Main_page().useSearch(articleProduct);
+        new Main_page_Logic().useSearch(articleProduct);
         search_page_logic.clickButtonProductById(idProduct)
                          .sendRequestByGrayButtonFromSearchPage(email);
         mailinator.openEmail(email);

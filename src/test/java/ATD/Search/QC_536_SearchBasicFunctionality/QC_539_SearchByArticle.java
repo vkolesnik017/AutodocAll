@@ -2,6 +2,7 @@ package ATD.Search.QC_536_SearchBasicFunctionality;
 
 import ATD.Listing_page;
 import ATD.Main_page;
+import ATD.Main_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -36,7 +37,7 @@ public class QC_539_SearchByArticle {
   @Description(value = "The test verifies that at the listing have product with article 20046 after search")
   public void testSearchByArticle(String route) {
     open(route);
-    new Main_page().useSearch(articleForSearch);
+    new Main_page_Logic().useSearch(articleForSearch);
     new Listing_page().productTitleInListMode().filter(have(text(articleForSearch))).shouldHave(sizeNotEqual(0));
   }
 
