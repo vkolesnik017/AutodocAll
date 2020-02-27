@@ -3,6 +3,7 @@ package ATD;
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
 
+import static ATD.CommonMethods.waitWhileRouteBecomeExpected;
 import static ATD.CommonMethods.waitingWhileLinkBecomeExpected;
 
 public class Category_car_list_page_Logic extends Category_car_list_page {
