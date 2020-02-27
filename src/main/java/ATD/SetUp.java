@@ -50,7 +50,7 @@ public class SetUp {
     }
 
     // Return list routes By Shops and route setUpShopWithRoute("prod", "AT,DE,CH", "lkw_main")
-    public Object[] setUpShopWithRoute(String envFromTest, String shopFromTest, String routeName) {
+    public Object[] setUpShopsWithMainRoute(String envFromTest, String shopFromTest, String routeName) {
         String shop;
         if (!(shopFromJenkins == null)) shop = shopFromJenkins;
         else shop = shopFromTest;
