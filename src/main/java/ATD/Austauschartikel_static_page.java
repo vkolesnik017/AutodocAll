@@ -21,7 +21,7 @@ public class Austauschartikel_static_page {
 
      SelenideElement ausLogo() { return $(By.xpath("//div[@class='phand-about__price']")); }
 
-     SelenideElement title2() { return $(By.xpath("//div[@class='return-rules__title']")); }
+     SelenideElement titleForImage() { return $(By.xpath("//div[@class='return-rules__title']")); }
 
      SelenideElement instruction() { return $(By.xpath("//div[@class='instruction']")); }
 
@@ -67,7 +67,6 @@ public class Austauschartikel_static_page {
         return $(By.cssSelector(".formular"));
     }
 
-//     SelenideElement plzTooltip() { return $(By.cssSelector(".info_link_index")); }
      SelenideElement plzTooltip() { return $(By.xpath("//a[@class='info_link_index']")); }
 
      SelenideElement closePlzTooltip() { return $(By.cssSelector(".closeInfoIndex")); }

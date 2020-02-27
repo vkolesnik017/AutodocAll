@@ -123,7 +123,7 @@ public class Versand_static_page {
         return $x("//*[@class='full-text full-text-js active']");
     }
 
-    protected SelenideElement fullTab1() { return $(By.xpath("//*[@class='oversize-block__tabs-list list-full']")); }
+    protected SelenideElement fullPartsList() { return $(By.xpath("//*[@class='oversize-block__tabs-list list-full']")); }
 
     protected SelenideElement countryBlock() { return $(By.xpath("//*[@class='oversize-block__tabs-wrap-country']")); }
 

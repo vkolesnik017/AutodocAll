@@ -96,7 +96,7 @@ public class Versand_static_page_Logic extends Versand_static_page {
     public Versand_static_page_Logic checkOversizeShippingProductBlock(){
         shippingBlock().shouldBe(visible);
         tabUnfoldingButton().click();
-        fullTab1().shouldBe(visible);
+        fullPartsList().shouldBe(visible);
         tabMinimizingButton().click();
         shippingTab2().click();
         countryBlock().shouldBe(visible);

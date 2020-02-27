@@ -14,8 +14,6 @@ import static ATD.SetUp.setUpBrowser;
 
 public class QC_717_StaticPage_widerruf {
 
-    private Main_page mainPage = new Main_page();
-
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -32,7 +30,7 @@ public class QC_717_StaticPage_widerruf {
     @Description(value = "Test checks elements on widerruf page")
     public void checkWiderrufPageElements(String route) {
         openPage(route);
-        mainPage.clickWiderruf()
+        new Main_page().clickWiderruf()
                 .checkItemsOnPage();
     }
 }

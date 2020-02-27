@@ -14,8 +14,6 @@ import static ATD.SetUp.setUpBrowser;
 
 public class QC_1091_StaticPage_austauschartikel {
 
-    private Main_page mainPage = new Main_page();
-
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -32,7 +30,7 @@ public class QC_1091_StaticPage_austauschartikel {
     @Description(value = "Test checks elements on austauschartikel page")
     public void checkAustauschartikelPageElements(String route) {
         openPage(route);
-        mainPage.clickAustauschartikel()
+        new Main_page().clickAustauschartikel()
                 .checkItemsTopPage()
                 .checkInstructionBlock()
                 .checkReturnPolicyBlock()
