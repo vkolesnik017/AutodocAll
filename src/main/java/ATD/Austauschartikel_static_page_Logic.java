@@ -77,8 +77,8 @@ public class Austauschartikel_static_page_Logic extends Austauschartikel_static_
         depositRefundBlock().shouldBe(visible);
         titleFromDepositRefundBlock().shouldBe(visible);
         informTextFromDepositRefundBlock().shouldBe(visible);
+        depositRefundForm().scrollTo();
         depositRefundForm().shouldBe(visible);
-        plzTooltip().scrollIntoView(true);
         plzTooltip().click(10, 10);
         closePlzTooltip().click();
         numberTooltip().click();
