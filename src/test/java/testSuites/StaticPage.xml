@@ -3,28 +3,28 @@
 <suite name="StaticPage" parallel="tests" thread-count="3">
 
 
-    <test name="QC_216_StaticPage_zahlung" enabled="false">
+    <test name="QC_216_StaticPage_zahlung" enabled="true">
         <classes>
             <class name="ATD.StaticPage.QC_216_StaticPage_zahlung">
             </class>
         </classes>
     </test>
 
-    <test name="QC_234_StaticPage_datenschutz" enabled="false">
+    <test name="QC_234_StaticPage_datenschutz" enabled="true">
         <classes>
             <class name="ATD.StaticPage.QC_234_StaticPage_datenschutz">
             </class>
         </classes>
     </test>
 
-    <test name="QC_243_StaticPage_versand" enabled="false">
+    <test name="QC_243_StaticPage_versand" enabled="true">
         <classes>
             <class name="ATD.StaticPage.QC_243_StaticPage_versand">
             </class>
         </classes>
     </test>
 
-    <test name="QC_717_StaticPage_widerruf" enabled="false">
+    <test name="QC_717_StaticPage_widerruf" enabled="true">
         <classes>
             <class name="ATD.StaticPage.QC_717_StaticPage_widerruf">
             </class>
@@ -38,7 +38,7 @@
         </classes>
     </test>
 
-    <test name="QC_1175_StaticPage_contacts" enabled="false">
+    <test name="QC_1175_StaticPage_contacts" enabled="true">
         <classes>
             <class name="ATD.StaticPage.QC_1175_StaticPage_contacts">
             </class>
