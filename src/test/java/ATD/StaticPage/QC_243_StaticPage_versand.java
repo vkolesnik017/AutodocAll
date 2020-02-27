@@ -14,9 +14,6 @@ import static ATD.SetUp.setUpBrowser;
 
 public class QC_243_StaticPage_versand {
 
-
-    private Main_page mainPage = new Main_page();
-
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -33,7 +30,7 @@ public class QC_243_StaticPage_versand {
     @Description(value = "Test checks elements on versand page")
     public void checkVersandPageElements(String route) {
         openPage(route);
-        mainPage.clickVersand()
+        new Main_page().clickVersand()
                 .checkBlockTop()
                 .checkPricesBlock()
                 .checkCountryPricesBlock()

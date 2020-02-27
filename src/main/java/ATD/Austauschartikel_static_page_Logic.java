@@ -20,7 +20,7 @@ public class Austauschartikel_static_page_Logic extends Austauschartikel_static_
         title().shouldBe(visible);
         mainTextFromPage().shouldBe(visible);
         ausLogo().shouldBe(visible);
-        title2().shouldBe(visible);
+        titleForImage().shouldBe(visible);
         mainImage().shouldBe(visible);
         return this;
     }
