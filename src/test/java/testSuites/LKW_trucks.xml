@@ -6,6 +6,7 @@
         <classes>
             <class name="LKW_trucks.QC_144_Header_trucks_routes.QC_145_PresenceOfBlocksInHeader_lkw"/>
             <class name="LKW_trucks.QC_144_Header_trucks_routes.QC_149_TrucksCatalogInHeader_lkw"/>
+            <class name="LKW_trucks.QC_144_Header_trucks_routes.QC_153_NavigationBlockInHeader_lkw"/>
         </classes>
     </test>
 
