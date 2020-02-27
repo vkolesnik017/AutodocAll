@@ -8,6 +8,7 @@ import java.util.Random;
 import static ATD.CommonMethods.clickable;
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.value;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.page;
 
@@ -77,6 +78,8 @@ public class Austauschartikel_static_page_Logic extends Austauschartikel_static_
         titleFromDepositRefundBlock().shouldBe(visible);
         informTextFromDepositRefundBlock().shouldBe(visible);
         depositRefundForm().shouldBe(visible);
+        plzTooltip().scrollIntoView(true);
+        plzTooltip().shouldBe(visible);
         plzTooltip().click();
         closePlzTooltip().click();
         numberTooltip().click();
