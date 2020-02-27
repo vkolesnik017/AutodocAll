@@ -19,65 +19,66 @@ public class Austauschartikel_static_page {
 
     public SelenideElement mainTextFromPage() { return $(By.xpath("//div[@class='phand-about__text']")); }
 
-    protected SelenideElement ausLogo() { return $(By.xpath("//div[@class='phand-about__price']")); }
+     SelenideElement ausLogo() { return $(By.xpath("//div[@class='phand-about__price']")); }
 
-    protected SelenideElement title2() { return $(By.xpath("//div[@class='return-rules__title']")); }
+     SelenideElement title2() { return $(By.xpath("//div[@class='return-rules__title']")); }
 
-    protected SelenideElement instruction() { return $(By.xpath("//div[@class='instruction']")); }
+     SelenideElement instruction() { return $(By.xpath("//div[@class='instruction']")); }
 
-    protected SelenideElement mainImage() { return $(By.xpath("//img[@class='return-rules__infograph-img']")); }
+     SelenideElement mainImage() { return $(By.xpath("//img[@class='return-rules__infograph-img']")); }
 
-    protected SelenideElement returnPolicy() { return $(By.cssSelector(".return-policy")); }
+     SelenideElement returnPolicy() { return $(By.cssSelector(".return-policy")); }
 
-    protected SelenideElement formLink() { return $(By.cssSelector(".anchor-on-form")); }
+     SelenideElement formLink() { return $(By.cssSelector(".anchor-on-form")); }
 
-    protected SelenideElement categoriesPfandBlock() { return $(By.cssSelector(".ccollateral-parts__list")); }
+     SelenideElement categoriesPfandBlock() { return $(By.cssSelector(".ccollateral-parts__list")); }
 
-    protected SelenideElement allCategoriesButton() { return $(By.cssSelector(".ccollateral-parts__list-more-btn")); }
+     SelenideElement allCategoriesButton() { return $(By.cssSelector(".ccollateral-parts__list-more-btn")); }
 
-    protected ElementsCollection pfandAllCategories() { return $$(".ccollateral-parts__list-item"); }
+     ElementsCollection pfandAllCategories() { return $$(".ccollateral-parts__list-item"); }
 
-    protected ElementsCollection categoriesWithDeposits() { return $$(By.cssSelector(".ccollateral-parts__list>div>div>img")); }
+     ElementsCollection categoriesWithDeposits() { return $$(By.cssSelector(".ccollateral-parts__list>div>div>img")); }
 
-    protected SelenideElement randomCategoryTitle() { return $(By.xpath("//*[@class='ccollateral-parts__list-item active']/span")); }
+     SelenideElement randomCategoryTitle() { return $(By.xpath("//*[@class='ccollateral-parts__list-item active']/span")); }
 
-    protected SelenideElement openedCategoryTitle() { return $(By.xpath("//*[@class='collateral-parts__desc-item active']/div/span")); }
+     SelenideElement openedCategoryTitle() { return $(By.xpath("//*[@class='collateral-parts__desc-item active']/div/span")); }
 
-    protected SelenideElement openedCategoryDescription() { return $(By.xpath("//*[@class='collateral-parts__desc-item active']/div[2]/div[1]")); }
+     SelenideElement openedCategoryDescription() { return $(By.xpath("//*[@class='collateral-parts__desc-item active']/div[2]/div[1]")); }
 
-    protected SelenideElement requirementForPartsBlock(){
+     SelenideElement requirementForPartsBlock(){
         return $(By.cssSelector(".ccollateral-parts__desc"));
     }
 
-    protected SelenideElement categoriesList() {
+     SelenideElement categoriesList() {
         return $(By.cssSelector(".collateral-parts__desc-list"));
     }
 
-    protected SelenideElement requirementTitle() { return $(By.cssSelector(".collateral-parts__desc-title")); }
+     SelenideElement requirementTitle() { return $(By.cssSelector(".collateral-parts__desc-title")); }
 
-    protected SelenideElement depositRefundBlock(){
+     SelenideElement depositRefundBlock(){
         return $(By.cssSelector(".ccollateral-parts__form-wrapper"));
     }
 
-    protected SelenideElement titleFromDepositRefundBlock(){ return $(By.cssSelector(".ccollateral-parts__form-title")); }
+     SelenideElement titleFromDepositRefundBlock(){ return $(By.cssSelector(".ccollateral-parts__form-title")); }
 
-    protected SelenideElement informTextFromDepositRefundBlock(){ return $(By.cssSelector(".ccollateral-parts__form-subtitle"));}
+     SelenideElement informTextFromDepositRefundBlock(){ return $(By.cssSelector(".ccollateral-parts__form-subtitle"));}
 
-    public SelenideElement depositRefundForm(){
+    SelenideElement depositRefundForm(){
         return $(By.cssSelector(".formular"));
     }
 
-    protected SelenideElement plzTooltip() { return $(By.cssSelector(".info_link_index")); }
+//     SelenideElement plzTooltip() { return $(By.cssSelector(".info_link_index")); }
+     SelenideElement plzTooltip() { return $(By.xpath("//a[@class='info_link_index']")); }
 
-    protected SelenideElement closePlzTooltip() { return $(By.cssSelector(".closeInfoIndex")); }
+     SelenideElement closePlzTooltip() { return $(By.cssSelector(".closeInfoIndex")); }
 
-    protected SelenideElement numberTooltip() { return $(By.cssSelector(".info_link_order")); }
+     SelenideElement numberTooltip() { return $(By.cssSelector(".info_link_order")); }
 
-    protected SelenideElement closeNumbetTooltip() { return $(By.cssSelector(".closeInfoOrder")); }
+     SelenideElement closeNumbetTooltip() { return $(By.cssSelector(".closeInfoOrder")); }
 
-    protected SelenideElement plzSearchButton() { return $(By.xpath("//*[@class='row button']/a")); }
+     SelenideElement plzSearchButton() { return $(By.xpath("//*[@class='row button']/a")); }
 
-    protected SelenideElement popupError() { return $(By.id("popup_update")); }
+     SelenideElement popupError() { return $(By.id("popup_update")); }
 
-    protected SelenideElement closePopupButton() { return $(By.cssSelector(".buttons-inner>a")); }
+     SelenideElement closePopupButton() { return $(By.cssSelector(".buttons-inner>a")); }
 }

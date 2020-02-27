@@ -1,4 +1,4 @@
-package ATD.Listings.QC_445_ListingTecDoc;
+package ATD.Search.QC_570_SearchByCatalog;
 
 import ATD.Maker_car_list_page_Logic;
 import ATD.SetUp;
@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 
-public class QC_446_GoingToRouteTecDoc {
+public class QC_572_GoesToSubCategoryFromCatalogWithCar {
 
   private Maker_car_list_page_Logic makerCarListPage = new Maker_car_list_page_Logic();
 
@@ -24,17 +24,19 @@ public class QC_446_GoingToRouteTecDoc {
   }
 
   @DataProvider(name = "route")
-  Object[] dataProvider() throws SQLException {
-    return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "maker_car_list3");
+  Object[] test1() throws SQLException {
+    return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "maker_car_list6");
   }
 
   @Test(dataProvider = "route")
   @Flaky
   @Owner(value = "Evlentiev")
-  @Description(value = "Going to route TecDoc (category_car_list)")
-  public void testGoingToRouteTecDoc(String route) {
+  @Description(value = "Goes to subcategory from catalog with car")
+  public void testGoesToSubCategoryFromCatalogWithCar(String route) {
     openPage(route);
-    makerCarListPage.clickOilFilterCategoryLink()
+    String valueForSearch = "Bremsbeläge";
+    makerCarListPage.inputTextInSearchBarByCatalog(valueForSearch)
+            .clickTooltipInSearchByCatalogByExactText(valueForSearch)
             .verifyNameRouteEqualsCategoryCarList();
   }
 
