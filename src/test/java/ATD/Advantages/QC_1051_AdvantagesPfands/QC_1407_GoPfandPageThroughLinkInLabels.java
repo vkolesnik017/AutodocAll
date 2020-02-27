@@ -42,7 +42,7 @@ public class QC_1407_GoPfandPageThroughLinkInLabels {
     public void testGoPfandPageFromProductPage(String route) {
         openPage(route);
         product_page_logic.clickLinkPfandFromProductPage()
-                .mainText().shouldBe(visible);
+                .mainTextFromPage().shouldBe(visible);
     }
 
 
@@ -58,7 +58,7 @@ public class QC_1407_GoPfandPageThroughLinkInLabels {
     public void testGoPfandPageFromListingPage(String route) {
         openPage(route);
         listing_page.clickLinkPfandFromListing()
-                .mainText().shouldBe(visible);
+                .mainTextFromPage().shouldBe(visible);
     }
 
     @AfterMethod

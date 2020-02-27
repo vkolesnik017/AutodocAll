@@ -452,30 +452,30 @@ public class Main_page {
         return page(Agb_static_page.class);
     }
 
-    public Widerruf_static_page clickWiderruf() {
+    public Widerruf_static_page_Ligic clickWiderruf() {
         $(By.xpath("//*[@class='footer__links']/div[2]/ul/li[7]/a")).click();
-        return page(Widerruf_static_page.class);
+        return page(Widerruf_static_page_Ligic.class);
     }
 
-    public Datenschutz_page clickDatenschutz() {
+    public Datenschutz_page_Logic clickDatenschutz() {
         $(By.xpath("//*[@class='footer__links']/div[2]/ul/li[8]/a")).click();
-        return page(Datenschutz_page.class);
+        return page(Datenschutz_page_Logic.class);
     }
 
     //KUNDENSERVICE
-    public Zahlung_static_page clickZahlung() {
+    public Zahlung_static_page_Logic clickZahlung() {
         $(By.xpath("//*[@class='footer__links']/div[3]/ul/li[1]/a")).click();
-        return page(Zahlung_static_page.class);
+        return page(Zahlung_static_page_Logic.class);
     }
 
-    public Versand_static_page clickVersand() {
+    public Versand_static_page_Logic clickVersand() {
         $(By.xpath("//*[@class='footer__links']/div[3]/ul/li[2]/a")).click();
-        return page(Versand_static_page.class);
+        return page(Versand_static_page_Logic.class);
     }
 
-    public Contact_static_page clickContact() {
+    public Contact_static_page_Logic clickContact() {
         $(By.xpath("//*[@class='footer__links']/div[3]/ul/li[3]/a")).click();
-        return page(Contact_static_page.class);
+        return page(Contact_static_page_Logic.class);
     }
 
     public Retouren_page clickRetouren() {
@@ -483,9 +483,9 @@ public class Main_page {
         return page(Retouren_page.class);
     }
 
-    public Austauschartikel_static_page clickAustauschartikel() {
+    public Austauschartikel_static_page_Logic clickAustauschartikel() {
         $(By.xpath("//*[@class='footer__links']/div[3]/ul/li[5]/a")).click();
-        return page(Austauschartikel_static_page.class);
+        return page(Austauschartikel_static_page_Logic.class);
     }
 
     //TOP PRODUKTE

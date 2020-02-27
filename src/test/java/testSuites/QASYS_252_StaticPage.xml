@@ -2,47 +2,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="QASYS_252_StaticPage" parallel="tests" thread-count="3">
 
-    <test name="QASYS_155_StaticPage_zahlung">
-        <classes>
-            <class name="ATD.QASYS_252_StaticPage.QASYS_155_StaticPage_zahlung">
-            </class>
-        </classes>
-    </test>
-
-    <test name="QASYS_309_StaticPage_versand">
-        <classes>
-            <class name="ATD.QASYS_252_StaticPage.QASYS_309_StaticPage_versand">
-            </class>
-        </classes>
-    </test>
-
-    <test name="QASYS_310_StaticPage_datenschutz">
-        <classes>
-            <class name="ATD.QASYS_252_StaticPage.QASYS_310_StaticPage_datenschutz">
-            </class>
-        </classes>
-    </test>
-
-    <test name="QASYS_311_StaticPage_widerruf">
-        <classes>
-            <class name="ATD.QASYS_252_StaticPage.QASYS_311_StaticPage_widerruf">
-            </class>
-        </classes>
-    </test>
-
-    <test name="QASYS_312_StaticPage_austauschartikel">
-        <classes>
-            <class name="ATD.QASYS_252_StaticPage.QASYS_312_StaticPage_austauschartikel">
-            </class>
-        </classes>
-    </test>
-
-    <test name="QASYS_313_StaticPage_contacts">
-        <classes>
-            <class name="ATD.QASYS_252_StaticPage.QASYS_313_StaticPage_contacts">
-            </class>
-        </classes>
-    </test>
 
     <test name="QASYS_314_StaticPage_agb">
         <classes>
