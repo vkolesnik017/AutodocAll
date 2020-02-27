@@ -79,7 +79,7 @@ public class Austauschartikel_static_page_Logic extends Austauschartikel_static_
         informTextFromDepositRefundBlock().shouldBe(visible);
         depositRefundForm().scrollTo();
         depositRefundForm().shouldBe(visible);
-        plzTooltip().click(10, 10);
+        plzTooltip().click(0, 0);
         closePlzTooltip().click();
         numberTooltip().click();
         closeNumbetTooltip().click();
