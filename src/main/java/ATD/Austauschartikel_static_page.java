@@ -1,73 +1,84 @@
 package ATD;
 
-
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
-
-import java.util.Random;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class Austauschartikel_static_page {
 
-    public SelenideElement logo() {
+    protected SelenideElement logo() {
         return $(By.cssSelector(".logo>a>img"));
     }
 
-    public SelenideElement title() {
+    protected SelenideElement title() {
         return $(By.xpath("//div[@class='phand-about__title']"));
     }
 
-    public SelenideElement mainText() { return $(By.xpath("//div[@class='phand-about__text']")); }
+    public SelenideElement mainTextFromPage() { return $(By.xpath("//div[@class='phand-about__text']")); }
 
-    public SelenideElement ausLogo() { return $(By.xpath("//div[@class='phand-about__price']")); }
+     SelenideElement ausLogo() { return $(By.xpath("//div[@class='phand-about__price']")); }
 
-    public SelenideElement title2() { return $(By.xpath("//div[@class='return-rules__title']")); }
+     SelenideElement title2() { return $(By.xpath("//div[@class='return-rules__title']")); }
 
-    public SelenideElement instruction() { return $(By.xpath("//div[@class='instruction']")); }
+     SelenideElement instruction() { return $(By.xpath("//div[@class='instruction']")); }
 
-    public SelenideElement mainImage() { return $(By.xpath("//img[@class='return-rules__infograph-img']")); }
+     SelenideElement mainImage() { return $(By.xpath("//img[@class='return-rules__infograph-img']")); }
 
-    public SelenideElement returnPolicy() { return $(By.cssSelector(".return-policy")); }
+     SelenideElement returnPolicy() { return $(By.cssSelector(".return-policy")); }
 
-    public SelenideElement formLink() { return $(By.cssSelector(".anchor-on-form")); }
+     SelenideElement formLink() { return $(By.cssSelector(".anchor-on-form")); }
 
-    public SelenideElement categoriesPfandBlock() { return $(By.cssSelector(".ccollateral-parts__list")); }
+     SelenideElement categoriesPfandBlock() { return $(By.cssSelector(".ccollateral-parts__list")); }
 
-    public SelenideElement allCategoriesButton() { return $(By.cssSelector(".ccollateral-parts__list-more-btn")); }
+     SelenideElement allCategoriesButton() { return $(By.cssSelector(".ccollateral-parts__list-more-btn")); }
 
-    public ElementsCollection pfandAllCategories() { return $$(".ccollateral-parts__list-item"); }
+     ElementsCollection pfandAllCategories() { return $$(".ccollateral-parts__list-item"); }
 
-    public SelenideElement randomCategory() {
-        {
-           ElementsCollection categoriesList = $$(".ccollateral-parts__list>div>div>img");
-           Random random = new Random();
-           return categoriesList.get(random.nextInt(categoriesList.size()));
-        }
+     ElementsCollection categoriesWithDeposits() { return $$(By.cssSelector(".ccollateral-parts__list>div>div>img")); }
+
+     SelenideElement randomCategoryTitle() { return $(By.xpath("//*[@class='ccollateral-parts__list-item active']/span")); }
+
+     SelenideElement openedCategoryTitle() { return $(By.xpath("//*[@class='collateral-parts__desc-item active']/div/span")); }
+
+     SelenideElement openedCategoryDescription() { return $(By.xpath("//*[@class='collateral-parts__desc-item active']/div[2]/div[1]")); }
+
+     SelenideElement requirementForPartsBlock(){
+        return $(By.cssSelector(".ccollateral-parts__desc"));
     }
 
-    public SelenideElement randomCategoryTitle() { return $(By.xpath("//*[@class='ccollateral-parts__list-item active']/span")); }
+     SelenideElement categoriesList() {
+        return $(By.cssSelector(".collateral-parts__desc-list"));
+    }
 
-    public SelenideElement openedCategoryTitle() { return $(By.xpath("//*[@class='collateral-parts__desc-item active']/div/span")); }
+     SelenideElement requirementTitle() { return $(By.cssSelector(".collateral-parts__desc-title")); }
 
-    public SelenideElement openedCategoryDescription() { return $(By.xpath("//*[@class='collateral-parts__desc-item active']/div[2]/div[1]")); }
+     SelenideElement depositRefundBlock(){
+        return $(By.cssSelector(".ccollateral-parts__form-wrapper"));
+    }
 
-    public SelenideElement requirmentsBlock() { return $(By.cssSelector(".collateral-parts__desc-title")); }
+     SelenideElement titleFromDepositRefundBlock(){ return $(By.cssSelector(".ccollateral-parts__form-title")); }
 
-    public SelenideElement plzTooltip() { return $(By.cssSelector(".info_link_index")); }
+     SelenideElement informTextFromDepositRefundBlock(){ return $(By.cssSelector(".ccollateral-parts__form-subtitle"));}
 
-    public SelenideElement closePlzTooltip() { return $(By.cssSelector(".closeInfoIndex")); }
+    SelenideElement depositRefundForm(){
+        return $(By.cssSelector(".formular"));
+    }
 
-    public SelenideElement numberTooltip() { return $(By.cssSelector(".info_link_order")); }
+//     SelenideElement plzTooltip() { return $(By.cssSelector(".info_link_index")); }
+     SelenideElement plzTooltip() { return $(By.xpath("//a[@class='info_link_index']")); }
 
-    public SelenideElement closeNumbetTooltip() { return $(By.cssSelector(".closeInfoOrder")); }
+     SelenideElement closePlzTooltip() { return $(By.cssSelector(".closeInfoIndex")); }
 
-    public SelenideElement plzSearchButton() { return $(By.xpath("//*[@class='row button']/a")); }
+     SelenideElement numberTooltip() { return $(By.cssSelector(".info_link_order")); }
 
-    public SelenideElement popupError() { return $(By.id("popup_update")); }
+     SelenideElement closeNumbetTooltip() { return $(By.cssSelector(".closeInfoOrder")); }
 
-    public SelenideElement closePopupButton() { return $(By.cssSelector(".buttons-inner>a")); }
+     SelenideElement plzSearchButton() { return $(By.xpath("//*[@class='row button']/a")); }
 
+     SelenideElement popupError() { return $(By.id("popup_update")); }
+
+     SelenideElement closePopupButton() { return $(By.cssSelector(".buttons-inner>a")); }
 }

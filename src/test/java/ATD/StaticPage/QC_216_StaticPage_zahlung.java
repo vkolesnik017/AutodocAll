@@ -1,9 +1,7 @@
-package ATD.QASYS_252_StaticPage;
-
+package ATD.StaticPage;
 
 import ATD.Main_page;
 import ATD.SetUp;
-import ATD.Zahlung_static_page;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -11,15 +9,12 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import static ATD.CommonMethods.closeCookiesFooterMessage;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.open;
 
-public class QASYS_155_StaticPage_zahlung {
+public class QC_216_StaticPage_zahlung {
+
     private Main_page mainPage = new Main_page();
-    private Zahlung_static_page zahlungStaticPage = new Zahlung_static_page();
 
     @BeforeClass
     void setUp() {
@@ -32,15 +27,12 @@ public class QASYS_155_StaticPage_zahlung {
     }
 
     @Test(dataProvider = "route")
-    @Owner(value = "Oleg Romanyuta")
+    @Owner(value = "Chelombitko")
     @Flaky
     @Description(value = "Test checks elements on zahlung page")
     public void checkZahlungPageElements(String route) {
         openPage(route);
-        closeCookiesFooterMessage();
-        mainPage.clickZahlung();
-        zahlungStaticPage.logo().shouldBe(visible);
-        zahlungStaticPage.title().shouldBe(visible);
-        zahlungStaticPage.checkMainBlock().shouldBe(visible);
+        mainPage.clickZahlung()
+                .checkElementsOnPage();
     }
 }
