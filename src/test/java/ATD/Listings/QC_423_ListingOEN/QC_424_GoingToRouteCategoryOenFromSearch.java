@@ -1,6 +1,6 @@
 package ATD.Listings.QC_423_ListingOEN;
 
-import ATD.Main_page_logic;
+import ATD.Main_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -15,7 +15,7 @@ import static ATD.SetUp.setUpBrowser;
 
 public class QC_424_GoingToRouteCategoryOenFromSearch {
 
-  private Main_page_logic mainPageLogic = new Main_page_logic();
+  private Main_page_Logic mainPageLogic = new Main_page_Logic();
 
   @BeforeClass
   void setUp() {

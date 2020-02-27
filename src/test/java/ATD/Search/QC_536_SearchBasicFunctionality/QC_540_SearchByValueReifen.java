@@ -1,6 +1,7 @@
 package ATD.Search.QC_536_SearchBasicFunctionality;
 
 import ATD.Main_page;
+import ATD.Main_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -31,7 +32,7 @@ public class QC_540_SearchByValueReifen {
   @Description(value = "The test verifies redirect to tires catalog after search by text reifen")
   public void testSearchByValueReifen(String route) {
     open(route);
-    new Main_page().useSearch("Reifen");
+    new Main_page_Logic().useSearch("Reifen");
     checkingContainsUrl("https://www.autodoc.de/reifen");
   }
 }

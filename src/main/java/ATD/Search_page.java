@@ -85,24 +85,24 @@ public class Search_page {
     }
 
     // locators in popup of gray button for subscription for product which is not stock
-    public SelenideElement emailFieldInPopUpOfGrayBtn() {
+    SelenideElement emailFieldInPopUpOfGrayBtn() {
         return $(byId("form_AvailabilityReminder[email]"));
     }
 
-    public SelenideElement sendButtonInPopUpOfGrayBtn() {
+    SelenideElement sendButtonInPopUpOfGrayBtn() {
         return $(byCssSelector(".popup-available__button"));
     }
 
-    public SelenideElement checkboxInPopUpOfGrayBtn() {
+    SelenideElement checkboxInPopUpOfGrayBtn() {
         return $(byCssSelector(".popup-available__label"));
     }
 
-    public SelenideElement closeSuccessPopUpOfGrayBtn() {
+    SelenideElement closeSuccessPopUpOfGrayBtn() {
         return $(byXpath("//div[@class='popup_top']//a[@class='close']"));
     }
 
     // locator for search button by ID product in listing
-    public SelenideElement buttonProductById(String id) {
+    SelenideElement buttonProductById(String id) {
         return $(byId(id));
     }
 
@@ -137,6 +137,23 @@ public class Search_page {
     }
 
     SelenideElement secondListingPage() { return $(By.xpath("//*[@class='pagination']/span[3]/a")); }
+
+    // Form soft 404
+    SelenideElement mailFieldSoftForm() { return $(By.id("form_email")); }
+
+    SelenideElement submitBtnSoftForm() { return $(By.cssSelector(".notification-form__row > button")); }
+
+    SelenideElement subscribeCheckboxSoftForm() { return $(By.id("subscribe_on")); }
+
+    SelenideElement errPopupSoftForm() { return $(By.id("popup_update")); }
+
+    SelenideElement successPopupSoftForm() { return $(By.xpath("//div[@class='new_popup popup_email_not']")); }
+
+    SelenideElement closeErrPopupSoftForm() { return $(By.xpath("//div[@class='popup_content']//a[@class='close']")); }
+
+    SelenideElement closeSuccessPopupSoftForm() { return $(By.xpath("//div[@class='button loc']")); }
+
+    SelenideElement datenschutzerklarungLinkSoftForm() { return $(By.cssSelector("#privacy_policy1>a")); }
 
 }
 
