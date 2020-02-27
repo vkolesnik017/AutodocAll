@@ -128,9 +128,9 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Click search KBA button")
-    public Catalog_page clickKbaBtn() {
+    public Maker_car_list_page_Logic clickKbaBtn() {
         selectorKbaBtn().click();
-        return page(Catalog_page.class);
+        return page(Maker_car_list_page_Logic.class);
     }
 
     @Step("Click link \"Was ist eine Schlüsselnummer?\" and check appears info KBA popup")
@@ -216,9 +216,9 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Click search button in vertical car selector when SELECTED all fields, for redirect to catalog page")
-    public Catalog_page clickSearchBtnInVerticalSelectorWhenSelectedAllFields() {
+    public Categories_page clickSearchBtnInVerticalSelectorWhenSelectedAllFields() {
         searchBtnInVerticalSelector().click();
-        return page(Catalog_page.class);
+        return page(Categories_page.class);
     }
 
 

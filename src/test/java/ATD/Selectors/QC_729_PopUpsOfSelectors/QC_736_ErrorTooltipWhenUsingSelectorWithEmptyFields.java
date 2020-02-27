@@ -11,9 +11,10 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
+import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.exactText;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.refresh;
 
 public class QC_736_ErrorTooltipWhenUsingSelectorWithEmptyFields {
 
@@ -34,7 +35,8 @@ public class QC_736_ErrorTooltipWhenUsingSelectorWithEmptyFields {
   @Owner(value = "Evlentiev")
   @Description(value = "The presence of a tooltip with an error when using the selector with empty fields in the pop-up with selector")
   public void testErrorTooltipWhenUsingSelectorWithEmptyFields(String route) {
-    open(route);
+    openPage(route);
+    refresh();
     mainPageLogic.fillNumberKba("0000", "000").clickKbaBtn();
 
     mainPageLogic.suchenCarBtnInCarSelectorPopup().click();
