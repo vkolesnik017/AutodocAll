@@ -31,7 +31,7 @@ public class QC_772_RegKbaSelector {
 
   @DataProvider(name = "routeAndKbaNumbers", parallel = true)
   Object[] dataProvider() {
-    return new SetUp().setUpShop("prod", "FI, FR, IT, DK, SE, NO, NL, PT, CH");
+    return new SetUp().setUpShop("prod", "FI, FR, IT, DK, SE, NO, NL, PT, CH, EN");
   }
 
   @Test(dataProvider = "routeAndKbaNumbers")
