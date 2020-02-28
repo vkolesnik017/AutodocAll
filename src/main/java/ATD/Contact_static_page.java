@@ -40,9 +40,7 @@ public class Contact_static_page {
         return $(By.cssSelector("#Orderprivacy_policy>a"));
     }
 
-    SelenideElement sendenButton() {
-        return $(By.xpath("//div[@class='dropdown-wrapper open-tab']/div[last()]/button"));
-    }
+    SelenideElement sendenButton() { return $(By.xpath("//div[@class='dropdown-wrapper open-tab']/div[last()]/button"));}
 
     SelenideElement successPopup() {
         return $(By.xpath("//div[@class='popup ']"));
@@ -89,64 +87,57 @@ public class Contact_static_page {
         return $(By.id("form_Order[email]"));
     }
 
+    protected SelenideElement contactBlock(){ return $(By.cssSelector(".contact-page__info")); }
 
-    public SelenideElement contactsBlock() {
+    protected SelenideElement logoBlock(){ return $(By.cssSelector(".contact-page__info-logo")); }
+
+    protected SelenideElement infoDescriptionBlock() {
         return $(By.cssSelector(".contact-page__info-descroption"));
     }
 
-    public SelenideElement addressBlock() {
+    protected SelenideElement addressBlock() {
         return $(By.cssSelector(".contact-page__info-adress"));
     }
 
-    public SelenideElement orderEmailInput() {
+    protected SelenideElement addressField(){
+        return $(By.cssSelector(".adress"));
+    }
+
+    protected SelenideElement emailField(){
+        return $(By.cssSelector(".email"));
+    }
+
+    protected SelenideElement webSiteField(){
+        return $(By.cssSelector(".web-site"));
+    }
+
+    protected SelenideElement orderEmailInput() {
         return $(By.xpath("//input[@name='Order[email]']"));
     }
 
-    public SelenideElement haveOrderButton() {
+    protected SelenideElement haveOrderButton() {
         return $(By.xpath("//*[@class='contact-page__form']/div[2]/span"));
     }
 
-    public SelenideElement haveOrderBlock() {
-        return $(By.xpath("//*[@class='contact-page__form-tab'][@data-tab='order']/div"));
-    }
+    protected SelenideElement haveOrderBlock() { return $(By.xpath("//*[@class='contact-page__form-tab'][@data-tab='order']/div")); }
 
-    public SelenideElement submitOrderButton() {
-        return $(By.xpath("//*[@class='contact-page__form']/div[2]/div/div[6]/button"));
-    }
+    protected SelenideElement submitOrderButton() { return $(By.xpath("//*[@class='contact-page__form']/div[2]/div/div[6]/button")); }
 
-    public SelenideElement emailError() {
-        return $(By.xpath("//*[@class='contact-page__form-error'][@data-name='error_Order[email]']"));
-    }
+    protected SelenideElement emailError() { return $(By.xpath("//*[@class='contact-page__form-error'][@data-name='error_Order[email]']")); }
 
-    public SelenideElement orderIdError() {
-        return $(By.xpath("//*[@class='contact-page__form-error'][@data-name='error_Order[orderId]']"));
-    }
+    protected SelenideElement orderIdError() { return $(By.xpath("//*[@class='contact-page__form-error'][@data-name='error_Order[orderId]']")); }
 
-    public SelenideElement phoneNumberError() {
-        return $(By.xpath("//*[@class='contact-page__form-error'][@data-name='error_Order[phone]']"));
-    }
+    protected SelenideElement phoneNumberError() { return $(By.xpath("//*[@class='contact-page__form-error'][@data-name='error_Order[phone]']")); }
 
-    public SelenideElement haveNoOrderButton() {
-        return $(By.xpath("//*[@class='contact-page__form']/div[3]/span"));
-    }
+    protected SelenideElement haveNoOrderButton() { return $(By.xpath("//*[@class='contact-page__form']/div[3]/span")); }
 
-    public SelenideElement haveNoOrderBlock() {
-        return $(By.xpath("//*[@class='contact-page__form-tab'][@data-tab='no_order']/div"));
-    }
+    protected SelenideElement haveNoOrderBlock() { return $(By.xpath("//*[@class='contact-page__form-tab'][@data-tab='no_order']/div")); }
 
-    public SelenideElement submitNoOrderButton() {
-        return $(By.xpath("//*[@class='contact-page__form']/div[3]/div/div[8]/button"));
-    }
+    protected SelenideElement submitNoOrderButton() { return $(By.xpath("//*[@class='contact-page__form']/div[3]/div/div[8]/button")); }
 
-    public SelenideElement noOrderEmailError() {
-        return $(By.xpath("//*[@class='contact-page__form-error'][@data-name='error_NoOrder[email]']"));
-    }
+    protected SelenideElement noOrderEmailError() { return $(By.xpath("//*[@class='contact-page__form-error'][@data-name='error_NoOrder[email]']")); }
 
-    public SelenideElement noOrderDetailError() {
-        return $(By.xpath("//*[@class='contact-page__form-error'][@data-name='error_NoOrder[article][0][articleNo]']"));
-    }
+    protected SelenideElement noOrderDetailError() { return $(By.xpath("//*[@class='contact-page__form-error'][@data-name='error_NoOrder[article][0][articleNo]']")); }
 
-    public SelenideElement noOrderEmailInput() {
-        return $(By.xpath("//input[@name='NoOrder[email]']"));
-    }
+    public SelenideElement noOrderEmailInput() { return $(By.xpath("//input[@name='NoOrder[email]']")); }
 }

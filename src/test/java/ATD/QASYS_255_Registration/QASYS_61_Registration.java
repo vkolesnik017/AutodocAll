@@ -14,7 +14,7 @@ import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.open;
 
 public class QASYS_61_Registration {
-    private Main_page_logic main_page_logic = new Main_page_logic();
+    private Main_page_Logic main_page_logic = new Main_page_Logic();
     private Search_page search_page = new Search_page();
     private CartAccount_page_Logic cartAccount_page_logic= new CartAccount_page_Logic();
     private CartAddress_page cartAddress_page = new CartAddress_page();

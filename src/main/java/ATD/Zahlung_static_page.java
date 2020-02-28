@@ -8,15 +8,15 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class Zahlung_static_page {
 
-    public SelenideElement logo() {
+    protected SelenideElement logo() {
         return $(By.cssSelector(".logo>a>img"));
     }
 
-    public SelenideElement title() {
+    protected SelenideElement title() {
         return $(By.cssSelector(".head_name"));
     }
 
-    public SelenideElement checkMainBlock() {
+    protected SelenideElement checkMainBlock() {
         return $(By.cssSelector(".text_page.agb_page"));
     }
 }

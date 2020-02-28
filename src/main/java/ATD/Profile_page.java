@@ -18,7 +18,9 @@ public class Profile_page {
         return $(byXpath("//div[@class='name_cash']//span[@class='name']"));
     }
 
-    SelenideElement autodocLinkActiveFirst(){return $(By.xpath("//li[@class='plus-link active']"));}
+    SelenideElement autodocLinkActiveFirst() {
+        return $(By.xpath("//li[@class='plus-link active']"));
+    }
 
     private SelenideElement clientID() {
         return $(byXpath("//div[@class='top_title']/span"));
@@ -97,9 +99,12 @@ public class Profile_page {
 
 
     // settings tab (Einstellungen)
-    public SelenideElement settingsTabBtn() {
-        return $(byCssSelector(".settings_link"));
+
+    SelenideElement einstellungenActive() {
+        return $(By.xpath("//li[@class='settings_link active']"));
     }
+
+    public SelenideElement settingsTabBtn() { return $(byCssSelector(".settings_link")); }
 
     public SelenideElement oldPasswordFiled() {
         return $(byName("old_pass"));
@@ -120,8 +125,16 @@ public class Profile_page {
     public SelenideElement closeSuccessfulPasswordChangePopup() {
         return $(byXpath("//*[@class='popup ']//*[contains(text(),'wurden aktualisiert')]/..//a"));
     }
-
     SelenideElement einstellungenCheckbox() {
         return $(By.xpath("//div[@class='change_pass another_email']//input[@type='checkbox']"));
     }
+
+    SelenideElement popupAfterCheckedCheckbox() {
+        return $(By.id("popup_update"));
+    }
+
+    SelenideElement closePopupAfterCheckedCheckbox() {
+        return $(By.xpath("//div[@class='popup_content']//a[@class='close']"));
+    }
+
 }

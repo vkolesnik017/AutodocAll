@@ -218,7 +218,7 @@ public class Listing_page {
     }
 
     public SelenideElement pfandBlock() {
-        return $(".price_vat_icon p span");
+        return $(".product-eco-block");
     }
 
     public SelenideElement pfandPagelink(){
@@ -226,7 +226,7 @@ public class Listing_page {
     }
 
     public SelenideElement productsWithPfandBlock() {
-        return $x("//div[@class='price_vat price_vat_icon']/../..//div[@class='name']");
+        return $x("//div[@class='product-eco-block']/../..//div[@class='name']");
     }
 
     public SelenideElement listProducts() {

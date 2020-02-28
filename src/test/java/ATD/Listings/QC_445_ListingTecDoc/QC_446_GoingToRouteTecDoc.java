@@ -1,6 +1,6 @@
 package ATD.Listings.QC_445_ListingTecDoc;
 
-import ATD.Catalog_page;
+import ATD.Maker_car_list_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -12,13 +12,11 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
-import static ATD.CommonMethods.waitWhileRouteBecomeExpected;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.open;
 
 public class QC_446_GoingToRouteTecDoc {
 
-  private Catalog_page catalogPage = new Catalog_page();
+  private Maker_car_list_page_Logic makerCarListPage = new Maker_car_list_page_Logic();
 
   @BeforeClass
   void setUp() {
@@ -36,8 +34,8 @@ public class QC_446_GoingToRouteTecDoc {
   @Description(value = "Going to route TecDoc (category_car_list)")
   public void testGoingToRouteTecDoc(String route) {
     openPage(route);
-    catalogPage.linkForCategoryOilFilter().click();
-    waitWhileRouteBecomeExpected("category_car_list");
+    makerCarListPage.clickOilFilterCategoryLink()
+            .verifyNameRouteEqualsCategoryCarList();
   }
 
 }

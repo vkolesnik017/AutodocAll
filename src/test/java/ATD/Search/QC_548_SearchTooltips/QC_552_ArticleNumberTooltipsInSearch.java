@@ -1,6 +1,6 @@
 package ATD.Search.QC_548_SearchTooltips;
 
-import ATD.Main_page;
+import ATD.Main_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -19,31 +19,31 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class QC_552_ArticleNumberTooltipsInSearch {
 
-  private String articleNumber = "40594";
+    private String articleNumber = "40594";
 
-  @BeforeClass
-  void setUp() {
-    setUpBrowser(false, "chrome", "77.0");
-  }
+    @BeforeClass
+    void setUp() {
+        setUpBrowser(false, "chrome", "77.0");
+    }
 
-  @DataProvider(name = "route")
-  Object[] dataProvider() {
-    return new SetUp().setUpShop("prod", "DE");
-  }
+    @DataProvider(name = "route")
+    Object[] dataProvider() {
+        return new SetUp().setUpShop("prod", "DE");
+    }
 
-  @Test(dataProvider = "route")
-  @Flaky
-  @Owner(value = "Evlentiev")
-  @Description(value = "At the top of the tooltips, at least three values are displayed that contain 40594")
-  public void testArticleNumberTooltipsInSearch(String route) {
-    open(route);
-    new Main_page().inputTextInSearchBar(articleNumber)
-           .tooltipsToSearch().shouldHave(sizeNotEqual(0)).filter(text(articleNumber + ")")).shouldHave(sizeGreaterThanOrEqual(3));
-  }
+    @Test(dataProvider = "route")
+    @Flaky
+    @Owner(value = "Evlentiev")
+    @Description(value = "At the top of the tooltips, at least three values are displayed that contain 40594")
+    public void testArticleNumberTooltipsInSearch(String route) {
+        open(route);
+        new Main_page_Logic().inputTextInSearchBar(articleNumber)
+                .tooltipsToSearch().shouldHave(sizeNotEqual(0)).filter(text(articleNumber + ")")).shouldHave(sizeGreaterThanOrEqual(3));
+    }
 
-  @AfterMethod
-  private void tearDown() {
-    close();
-  }
+    @AfterMethod
+    private void tearDown() {
+        close();
+    }
 
 }

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Characteristics" parallel="methods" thread-count="3" data-provider-thread-count="4">
+
+    <test name="QC_486_DynamicCharacteristics">
+        <classes>
+            <class name="ATD.Characteristics.QC_486_DynamicCharacteristics.QC_487_OutputDynamicCharacteristicOnProductPage"/>
+            <class name="ATD.Characteristics.QC_486_DynamicCharacteristics.QC_488_OutputDynamicCharacteristicOnTecDocListing"/>
+            <class name="ATD.Characteristics.QC_486_DynamicCharacteristics.QC_490_OutputDynamicCharacteristicsOnOenListing"/>
+            <class name="ATD.Characteristics.QC_486_DynamicCharacteristics.QC_493_OutputDynamicCharacterisitcOnSearchListing"/>
+            <class name="ATD.Characteristics.QC_486_DynamicCharacteristics.QC_494_DynamicCharacteristicIsNotOutputWithoutSelectedCar"/>
+            <class name="ATD.Characteristics.QC_486_DynamicCharacteristics.QC_495_DynamicCharacterisitcsIsNotOutputIfSelectedCarDoesNotFitSparePart"/>
+        </classes>
+    </test>
+
+    <test name="QC_506_StaticCharacteristics">
+        <classes>
+            <class name="ATD.Characteristics.QC_506_StaticCharacteristics.QC_507_PresenceStaticCharacteristicOnProductPage"/>
+            <class name="ATD.Characteristics.QC_506_StaticCharacteristics.QC_509_PresenceStaticCharacteristicsOnTecDocListing"/>
+            <class name="ATD.Characteristics.QC_506_StaticCharacteristics.QC_511_PresenceStaticCharacteristicOnSearchListing"/>
+            <class name="ATD.Characteristics.QC_506_StaticCharacteristics.QC_512_PresenceStaticCharacteristicOnOenListing"/>
+            <class name="ATD.Characteristics.QC_506_StaticCharacteristics.QC_513_PresenceStaticCharacteristicInBasket"/>
+        </classes>
+    </test>
+
+    <test name="QC_526_RecoveryCharacteristics">
+        <classes>
+            <class name="ATD.Characteristics.QC_526_RecoveryCharacteristics.QC_527_PresenceRecoveryCharacteristicsOnMiniCard"/>
+            <class name="ATD.Characteristics.QC_526_RecoveryCharacteristics.QC_528_PresenceRecoveryCharacteristicsOnListingsAndProductPage"/>
+            <class name="ATD.Characteristics.QC_526_RecoveryCharacteristics.QC_529_PresenceRecoveryCharacteristicsInBasket"/>
+        </classes>
+    </test>
+
+
+</suite>

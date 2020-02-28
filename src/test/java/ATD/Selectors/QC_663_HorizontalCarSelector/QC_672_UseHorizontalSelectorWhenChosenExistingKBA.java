@@ -11,6 +11,8 @@ import org.testng.annotations.Test;
 
 import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Selenide.refresh;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class QC_672_UseHorizontalSelectorWhenChosenExistingKBA {
 
@@ -31,8 +33,10 @@ public class QC_672_UseHorizontalSelectorWhenChosenExistingKBA {
   @Owner(value = "Evlentiev")
   @Description(value = "Use horizontal selector when chosen existing kna number")
   public void testUseHorizontalSelectorWhenChosenExistingKBA(String route) {
-    product_page_logic.openProductPageById(route, "0019946")
-            .fillNumberKba("0603", "419")
+    product_page_logic.openProductPageById(route, "0019946");
+    refresh();
+    sleep(3000);
+    product_page_logic.fillNumberKba("0603", "419")
             .clickKbaBtn()
             .verifyNameRouteEqualsMakerCarList();
     checkingContainsUrl("ersatzteile/vw/golf/golf-iv-1j1/8799-1-4-16v");

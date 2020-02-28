@@ -2,6 +2,7 @@ package ATD.Search.QC_536_SearchBasicFunctionality;
 
 import ATD.Listing_page;
 import ATD.Main_page;
+import ATD.Main_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -36,7 +37,7 @@ public class QC_538_SearchByGeneric {
   @Description(value = "The test verifies that at the listing have only products of generic Stoßdämpfer after search by text Stoßdämpfer")
   public void testSearchByGeneric(String route) {
     open(route);
-    new Main_page().useSearch(genericName);
+    new Main_page_Logic().useSearch(genericName);
     new Listing_page().checksProductTitlesContainExpectedTextGoingAllPagination(genericNameForCheck);
   }
 }
