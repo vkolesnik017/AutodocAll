@@ -131,6 +131,32 @@ public class CartAllData_page {
         return $(By.xpath("//div[@class='cart-popup close-redirect']//a[@class='color close_popup']"));
     }
 
+    //locators for tyres
+    SelenideElement tyresAreNotDeliveredToCountryPopup() { return $(".delivery_limit_tyres"); }
+
+    SelenideElement closeTyresNotDeliveredPopupButton() { return $("close_popup"); }
+
+    @Step("Check tyres are not delivered popup and clicking close popup, after that checking one more popup and after clicking close must redirect us on main page")
+    public Main_page checkTyresNotDeliveredPopupAndRedirect() {
+        tyresAreNotDeliveredToCountryPopup().shouldBe(visible);
+        closePopupBtn().click();
+        popupOfEmptyBasket().shouldBe(visible);
+        closeBtnPopupOfEmptyBasket().click();
+        new Main_page().logoInHeader().shouldBe(visible);
+        String pageSource = source();
+        if(!pageSource.contains("ROUTE_NAME\":\"main\"")) Assert.fail("Wrong page. Must open Main Page");
+        return page(Main_page.class);
+    }
+
+    @Step("Check removing tyres on alldata with other products with delivery to other country")
+    public CartAllData_page checkRemovingTyresFromAlldataWithOtherProducts(String productId) {
+        searchProductByID(productId).shouldBe(visible);
+        tyresAreNotDeliveredToCountryPopup().shouldBe(visible);
+        closePopupBtn().click();
+        searchProductByID(productId).shouldNotBe(visible);
+        return this;
+    }
+
     @Step("Checking popup that appear when delivery impossible and clicking close popup,after that checking one more popup and after clicking close must redirect us on main page ")
     public Main_page closePopupDeliveryImpossibleAndCheckEmptyCart() {
         popupOfDangerousProduct().shouldBe(appear);
@@ -175,6 +201,12 @@ public class CartAllData_page {
     public CartAllData_page counterDecrease(String startValue) {
         new CommonMethods().checkingCounterDecrease(startValue, fieldWithQuantityOfProducts(), counterMinusBtn());
         sleep(1000);
+        return this;
+    }
+
+    @Step("Check delivery price on alldata page")
+    public CartAllData_page checkDeliveryPriceAlldata(String deliveryPrice) {
+        freeDeliveryIcon().shouldHave(text(deliveryPrice));
         return this;
     }
 }

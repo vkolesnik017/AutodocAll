@@ -211,6 +211,8 @@ public class Order_aws {
         return Float.valueOf(sellingProductPrice().attr("data-sum"));
     }
 
+    private SelenideElement deliveryDeliveryPriceOrderAWS() { return $(".inf_deliveryCost > a"); }
+
     // locators and methods for Popup of reclamation, appears after click reclamation button
     private SelenideElement addNewReclamationButton() {
         return $(byId("addNewReclamation"));
@@ -296,4 +298,10 @@ public class Order_aws {
         return this;
     }
 
+    @Step("Check delivery price in order AWS")
+    public Order_aws checkDeliveryPriceOrderAWS( String expectedDeliveryPriceOrderAWS) {
+        System.out.println(deliveryDeliveryPriceOrderAWS().getAttribute("data-sum"));
+        deliveryDeliveryPriceOrderAWS().shouldHave(attribute("data-sum", expectedDeliveryPriceOrderAWS));
+        return this;
+    }
 }
