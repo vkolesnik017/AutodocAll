@@ -39,7 +39,7 @@ public class QC_1006_GdprReviewFormNameShorting {
     @Description(value = "Test verify working of name shorting functionality in Review form")
     public void testReviewFormNameShorting(String route) {
         openPage(route);
-        mail = product_page_logic.checkingReviewsForm().fillingFieldsAndCheckBehaviorReviewsForm("qc_1006");
+        mail = product_page_logic.checkingReviewsForm().fillingFieldsAndCheckBehaviorReviewsForm("qc1006_");
         System.out.println(mail);
         faq_aws.openAndLoginFaqAwsPage().searchQuestionAndPublished(mail);
         openPage(route);

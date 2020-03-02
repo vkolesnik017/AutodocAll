@@ -243,7 +243,7 @@ public class Main_page_Logic extends Main_page {
         return this;
     }
 
-    public String checkingErrorPopupClickCheckbox(String qc) {
+    public String checkingSuccessPopupClickCheckbox(String qc) {
         String mail = qc + mailRandom();
         subscriptionMailField().setValue(mail);
         subscriptionMailCheckbox().click();
