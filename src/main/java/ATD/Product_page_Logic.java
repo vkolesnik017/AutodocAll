@@ -82,9 +82,9 @@ public class Product_page_Logic extends Product_page {
     }
 
     @Step("Click search KBA button")
-    public Catalog_page clickKbaBtn() {
+    public Maker_car_list_page_Logic clickKbaBtn() {
         selectorKbaBtn().click();
-        return page(Catalog_page.class);
+        return page(Maker_car_list_page_Logic.class);
     }
     //----------------------------------------------------------------------------------------------------------
 

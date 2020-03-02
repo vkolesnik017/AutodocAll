@@ -14,8 +14,6 @@ import static ATD.SetUp.setUpBrowser;
 
 public class QC_234_StaticPage_datenschutz {
 
-    private Main_page mainPage = new Main_page();
-
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -32,7 +30,7 @@ public class QC_234_StaticPage_datenschutz {
     @Description(value = "Test checks elements on datenschutz page")
     public void checkDatenschutzPageElements(String route) {
         openPage(route);
-        mainPage.clickDatenschutz()
+        new Main_page().clickDatenschutz()
                 .checkItemsOnPage()
                 .checkClickableLinks();
     }

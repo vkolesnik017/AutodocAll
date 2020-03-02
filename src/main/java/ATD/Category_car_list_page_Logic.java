@@ -3,10 +3,18 @@ package ATD;
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
 
+import static ATD.CommonMethods.waitWhileRouteBecomeExpected;
 import static ATD.CommonMethods.waitingWhileLinkBecomeExpected;
 
 public class Category_car_list_page_Logic extends Category_car_list_page {
-//form soft 404
+
+  @Step("Verify name route equals category_car_list")
+  public Category_car_list_page_Logic verifyNameRouteEqualsCategoryCarList() {
+    waitWhileRouteBecomeExpected("category_car_list");
+    return this;
+  }
+
+  //form soft 404
 
     @Step("Checking behavior of soft form 404. Category_car_list_page")
     public Category_car_list_page_Logic checkingBehaviorSoft404(String mail) {
@@ -27,5 +35,4 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
         new CommonMethods().checkingDatenschutzerklarungLinkBehavior(datenschutzerklarungLinkSoftForm(), "underline solid rgb(0, 0, 0)");
         return this;
     }
-
 }

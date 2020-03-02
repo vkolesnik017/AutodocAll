@@ -3,27 +3,6 @@
 <suite name="QASYS_252_StaticPage" parallel="tests" thread-count="3">
 
 
-    <test name="QASYS_314_StaticPage_agb">
-        <classes>
-            <class name="ATD.QASYS_252_StaticPage.QASYS_314_StaticPage_agb">
-            </class>
-        </classes>
-    </test>
-
-    <test name="QASYS_316_StaticPage_impressum">
-        <classes>
-            <class name="ATD.QASYS_252_StaticPage.QASYS_316_StaticPage_impressum">
-            </class>
-        </classes>
-    </test>
-
-    <test name="QASYS_352_StaticPage_mobile_app">
-        <classes>
-            <class name="ATD.QASYS_252_StaticPage.QASYS_352_StaticPage_mobile_app">
-            </class>
-        </classes>
-    </test>
-
     <!--<test name="QASYS_353_StaticPage_sponsorship">-->
         <!--<classes>-->
             <!--<class name="ATD.QASYS_252_StaticPage.QASYS_353_StaticPage_sponsorship">-->

@@ -14,8 +14,6 @@ import static ATD.SetUp.setUpBrowser;
 
 public class QC_1175_StaticPage_contacts {
 
-    private Main_page mainPage = new Main_page();
-
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -32,7 +30,7 @@ public class QC_1175_StaticPage_contacts {
     @Description(value = "Test checks elements on contacts page")
     public void checkContactsPageElements(String route) {
         openPage(route);
-        mainPage.clickContact()
+        new Main_page().clickContact()
                 .checkContactsBlock()
                 .checkAlreadyPlacedOrderBlock()
                 .checkNonPlacedOrderBlock();
