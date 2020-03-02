@@ -411,9 +411,9 @@ public class Main_page {
         return page(Sponsorship_static_page.class);
     }
 
-    public Partnership_static_page clickPartnership() {
+    public Partnership_static_page_Logic clickPartnership() {
         $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[5]/a")).click();
-        return page(Partnership_static_page.class);
+        return page(Partnership_static_page_Logic.class);
     }
 
     public Presse_page clickPresse() {

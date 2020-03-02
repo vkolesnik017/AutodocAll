@@ -66,4 +66,11 @@
         </classes>
     </test>
 
+    <test name="QC_1552_StaticPage_partnership" enabled="true">
+        <classes>
+            <class name="ATD.StaticPage.QC_1552_StaticPage_partnership">
+            </class>
+        </classes>
+    </test>
+
 </suite>
