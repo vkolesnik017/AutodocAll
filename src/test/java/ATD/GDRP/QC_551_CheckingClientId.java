@@ -17,7 +17,7 @@ import static ATD.SetUp.setUpBrowser;
 public class QC_551_CheckingClientId {
 
     private String id, idAws;
-    private String mail = "qc_551_checkingclientid@mailinator.com";
+    private String mail = "QC_551_checkingclientid@mailinator.com";
 
 
     @BeforeClass
