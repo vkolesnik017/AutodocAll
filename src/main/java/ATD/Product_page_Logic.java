@@ -215,15 +215,32 @@ public class Product_page_Logic extends Product_page {
     @Step("Filling fields and checking behavior of reviews form. Product_page")
     public String fillingFieldsAndCheckBehaviorReviewsForm(String qc) {
         String mail = qc + mailRandom();
-        reviewsNameInput().setValue("test");
+        reviewsNameInput().setValue("autotest autotest");
         reviewsEmailInput().setValue(mail);
-        reviewsMessageInput().setValue("test");
+        reviewsMessageInput().setValue("autotest");
         checkboxInReviewsForm().click();
         reviewsSubmitButton().click();
         succesPopup().shouldBe(appear);
         succesPopupCloseBtn().click();
         return mail;
     }
+
+    @Step("Checking correct shorting name in reviews form. Product_page")
+    public Product_page_Logic checkingCorrectShortingNameReviewsForm() {
+        refresh();
+        checkingReviewsForm();
+        reviewsFormAnsweredQuestionField().shouldHave(text("A.A.: autotest"));
+        return this;
+    }
+
+    @Step("Check that reviews form doesn't have any answered questions. Product_page")
+    public Product_page_Logic checkAnswerQuestionsDoesntAppearReviewsForm() {
+        refresh();
+        checkingReviewsForm();
+        reviewsFormAnsweredQuestionField().shouldNotBe(visible);
+        return this;
+    }
+
 
     //FAQ form
     @Step("Scroll to faq from and checking appearing. Product_page")

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="GDPR" parallel="methods" thread-count="2" data-provider-thread-count="3">
+
+    <test name="QC_220_GdprRegistrationOnMain">
+        <classes>
+            <class name="ATD.GDRP.QC_220_GdprRegistrationOnMain"/>
+        </classes>
+    </test>
+
+    <test name="QC_223_GdprRegistrationInBasket">
+        <classes>
+            <class name="ATD.GDRP.QC_223_GdprRegistrationInBasket"/>
+        </classes>
+    </test>
+
+    <test name="QC_269_GdprContacts">
+        <classes>
+            <class name="ATD.GDRP.QC_269_GdprContacts"/>
+        </classes>
+    </test>
+
+    <test name="QC_271_GdprFooter">
+        <classes>
+            <class name="ATD.GDRP.QC_271_GdprFooter"/>
+        </classes>
+    </test>
+
+    <test name="QC_403_ReviewsOnProductPage">
+        <classes>
+            <class name="ATD.GDRP.QC_403_ReviewsOnProductPage"/>
+        </classes>
+    </test>
+
+    <test name="QC_497_AvailabilityForm">
+        <classes>
+            <class name="ATD.GDRP.QC_497_AvailabilityForm"/>
+        </classes>
+    </test>
+
+    <test name="QC_515_BlogPage">
+        <classes>
+            <class name="ATD.GDRP.QC_515_BlogPage"/>
+        </classes>
+    </test>
+
+    <test name="QC_517_SalesPage">
+        <classes>
+            <class name="ATD.GDRP.QC_517_SalesPage"/>
+        </classes>
+    </test>
+
+    <test name="QC_519_PartnershipPage">
+        <classes>
+            <class name="ATD.GDRP.QC_519_PartnershipPage"/>
+        </classes>
+    </test>
+
+    <test name="QC_525_SponsoringPage">
+        <classes>
+            <class name="ATD.GDRP.QC_525_SponsoringPage"/>
+        </classes>
+    </test>
+
+    <test name="QC_535_FaqFormOnProductPage">
+        <classes>
+            <class name="ATD.GDRP.QC_535_FaqFormOnProductPage"/>
+        </classes>
+    </test>
+
+    <test name="QC_551_CheckingClientId">
+        <classes>
+            <class name="ATD.GDRP.QC_551_CheckingClientId"/>
+        </classes>
+    </test>
+
+    <test name="QC_979_GdprAppPage">
+        <classes>
+            <class name="ATD.GDRP.QC_979_GdprAppPage"/>
+        </classes>
+    </test>
+
+    <test name="QC_985_GdprFaqFormNameShorting">
+        <classes>
+            <class name="ATD.GDRP.QC_985_GdprFaqFormNameShorting"/>
+        </classes>
+    </test>
+
+    <test name="QC_1006_GdprReviewFormNameShorting" enabled="false">
+        <classes>
+            <class name="ATD.GDRP.QC_1006_GdprReviewFormNameShorting"/>
+        </classes>
+    </test>
+
+    <test name="QC_1008_GdprFormSoft404SelectorSearch">
+        <classes>
+            <class name="ATD.GDRP.QC_1008_GdprFormSoft404SelectorSearch"/>
+        </classes>
+    </test>
+
+    <test name="QC_1009_GdprFormSoft404HeaderSearch">
+        <classes>
+            <class name="ATD.GDRP.QC_1009_GdprFormSoft404HeaderSearch"/>
+        </classes>
+    </test>
+
+    <test name="QC_1010_GdprPresenceCheckboxInProfileWithChecked">
+        <classes>
+            <class name="ATD.GDRP.QC_1010_GdprPresenceCheckboxInProfileWithChecked"/>
+        </classes>
+    </test>
+
+    <test name="QC_1011_GdprPresenceCheckboxInProfileWithoutChecked">
+        <classes>
+            <class name="ATD.GDRP.QC_1011_GdprPresenceCheckboxInProfileWithoutChecked"/>
+        </classes>
+    </test>
+
+    <test name="QC_1012_GdprRegistrationWithSubscribeCheckbox">
+        <classes>
+            <class name="ATD.GDRP.QC_1012_GdprRegistrationWithSubscribeCheckbox"/>
+        </classes>
+    </test>
+
+    <test name="QC_1013_GdprRegistrationWithoutSubscribeCheckbox">
+        <classes>
+            <class name="ATD.GDRP.QC_1013_GdprRegistrationWithoutSubscribeCheckbox"/>
+        </classes>
+    </test>
+
+</suite>

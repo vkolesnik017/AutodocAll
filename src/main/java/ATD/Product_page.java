@@ -342,6 +342,11 @@ public class Product_page {
         return $(By.xpath("//div[@id='popup_update']//div[@class='buttons-inner']/a"));
     }
 
+    SelenideElement reviewsFormAnsweredQuestionField() {
+        return $(By.id("popup_update"));
+    }
+
+
     //locators for compatibility block
     public SelenideElement compatibleCarBrand() {
         return $(".accordion-button > span");
