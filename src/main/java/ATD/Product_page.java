@@ -61,7 +61,7 @@ public class Product_page {
     }
 
     public SelenideElement freeDeliveryIcon() {
-        return $(".features-gratis-icon");
+        return $(".gratis-versand__in-card");
     }
 
     public SelenideElement safeOrderIcon() {
