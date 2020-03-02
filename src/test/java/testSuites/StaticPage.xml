@@ -59,16 +59,23 @@
         </classes>
     </test>
 
-    <test name="Q QC_1547_StaticPage_mobile_app" enabled="true">
+    <test name="QC_1552_StaticPage_partnership" enabled="true">
         <classes>
-            <class name="ATD.StaticPage.QC_1547_StaticPage_mobile_app">
+            <class name="ATD.StaticPage.QC_1552_StaticPage_partnership">
             </class>
         </classes>
     </test>
 
-    <test name="QC_1552_StaticPage_partnership" enabled="true">
+    <test name="QC_1559_StaticPage_vacancies" enabled="true">
         <classes>
-            <class name="ATD.StaticPage.QC_1552_StaticPage_partnership">
+            <class name="ATD.StaticPage.QC_1559_StaticPage_vacancies">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QC_1547_StaticPage_mobile_app" enabled="true">
+        <classes>
+            <class name="ATD.StaticPage.QC_1547_StaticPage_mobile_app">
             </class>
         </classes>
     </test>

@@ -396,9 +396,9 @@ public class Main_page {
         return page(Impressum_static_page_logic.class);
     }
 
-    public Vacancies_static_page clickVacancies() {
+    public Vacancies_static_page_Logic clickVacancies() {
         $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[3]/a")).click();
-        return page(Vacancies_static_page.class);
+        return page(Vacancies_static_page_Logic.class);
     }
 
     public Bonusprogramm_page clickBonusprogramm() {

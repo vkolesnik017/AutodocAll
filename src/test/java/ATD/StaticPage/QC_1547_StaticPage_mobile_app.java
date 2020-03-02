@@ -32,10 +32,10 @@ public class QC_1547_StaticPage_mobile_app {
         openPage(route);
         new Main_page().clickMobileApp()
                 .checkForItemsFromTopPage()
-                .checkAppStoreAndGooglePlayButtonsFunctionality()
                 .checkBlockWithSlider()
                 .checkAutoBannerSwitching()
                 .checkBannerSwitchButtons()
-                .checkReviewsBlock();
+                .checkReviewsBlock()
+                .checkAppStoreAndGooglePlayButtonsFunctionality();
     }
 }
