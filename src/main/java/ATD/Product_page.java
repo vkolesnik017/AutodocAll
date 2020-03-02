@@ -60,8 +60,8 @@ public class Product_page {
         return $x("//div[@class='product-eco-block']//a[@target='_blank']");
     }
 
-    SelenideElement freeDeliveryIcon() {
-        return $(".features-gratis-icon");
+    public SelenideElement freeDeliveryIcon() {
+        return $(".gratis-versand__in-card");
     }
 
     public SelenideElement safeOrderIcon() {
