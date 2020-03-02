@@ -5,95 +5,123 @@ import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$x;
 
 public class MobileApp_static_page {
 
-    public SelenideElement appLogo() { return $(By.cssSelector(".logo_app")); }
+    SelenideElement appLogo() {
+        return $(By.cssSelector(".logo_app"));
+    }
 
-    public SelenideElement appQR() {
+    SelenideElement appQR() {
         return $(By.cssSelector(".qr_code>img"));
     }
 
-    public SelenideElement appDiscount() {
+    SelenideElement appDiscount() {
         return $(By.cssSelector(".icons_discount>img"));
     }
 
-    public SelenideElement appTitle() {
-        return $(By.cssSelector(".title"));
+    SelenideElement appTitle() {
+        return $x("//div[text()='Autodoc App']");
     }
 
-    public SelenideElement appSubmitEmailButton() {
-        return $(By.cssSelector("#mobile_app_page_get_email"));
+    SelenideElement subscribeBlock() {
+        return $(By.cssSelector(".subscribe"));
     }
 
-    public SelenideElement appWrongEmailError() {
+    SelenideElement mailFieldInSubscribeForm() {
+        return $(By.id("mobile_app_page_email"));
+    }
+
+    SelenideElement getMailBtnInSubscribeForm() {
+        return $(By.id("mobile_app_page_get_email"));
+    }
+
+    SelenideElement appWrongEmailError() {
         return $(By.cssSelector("#wrong_ma_page>span"));
     }
 
-    public SelenideElement appServicesList() {
-        return $(By.cssSelector(".services_list"));
-    }
-
-    public SelenideElement appSubscribeCheckbox() {
+    SelenideElement appSubscribeCheckbox() {
         return $(By.xpath("//*[@class='checkbox subscribe_checkbox']"));
     }
 
-    public SelenideElement appReviewsBlock() {
-        return $(By.cssSelector(".app_reviews"));
+    SelenideElement privacyPolicyLink() {
+        return $(By.cssSelector("#privacy_policy_app>a"));
     }
 
-    public SelenideElement appLeftList() {
+    SelenideElement appServicesList() {
+        return $(By.cssSelector(".services_list"));
+    }
+
+    SelenideElement blockWithSlider() {
+        return $x("//div[@class='slider_description']");
+    }
+
+    SelenideElement sliderTitle() {
+        return $x("//div[@class='slider_description']//div[@class='title']");
+    }
+
+    SelenideElement leftListFeature() {
         return $(By.cssSelector(".left"));
     }
 
-    public SelenideElement appRightList() {
+    SelenideElement rightListFeature() {
         return $(By.cssSelector(".right"));
     }
 
-    public SelenideElement appSlider() {
+    SelenideElement appSlider() {
         return $(By.cssSelector("#slider"));
     }
 
-    public SelenideElement appLeftSliderButton() {
+    SelenideElement appLeftSliderButton() {
         return $(By.xpath("//*[@class='prev left_arrow']"));
     }
 
-    public SelenideElement appRightSliderButton() {
+    SelenideElement appRightSliderButton() {
         return $(By.xpath("//*[@class='next right_arrow']"));
     }
 
-    public SelenideElement firstImageInSlider() {
+    SelenideElement firstImageInSlider() {
         return $(By.xpath("//*[@id='slider']/div/ul/li[1]/img"));
     }
 
-    public SelenideElement secondImageInSlider() {
+    SelenideElement secondImageInSlider() {
         return $(By.xpath("//*[@id='slider']/div/ul/li[2]/img"));
     }
 
-    public SelenideElement thirdImaigeInSlider() {
+    SelenideElement thirdImaigeInSlider() {
         return $(By.xpath("//*[@id='slider']/div/ul/li[3]/img"));
     }
 
-    public SelenideElement fourthImageInSlider() {
+    SelenideElement fourthImageInSlider() {
         return $(By.xpath("//*[@id='slider']/div/ul/li[4]/img"));
     }
 
-    public SelenideElement appStoreButton() { return $(By.xpath("//*[@class='download_icons']/a[1]")); }
+    SelenideElement appStoreButton() {
+        return $(By.xpath("//*[@class='download_icons']/a[1]"));
+    }
 
-    public SelenideElement googlePlayButton() { return $(By.xpath("//*[@class='download_icons']/a[2]")); }
+    SelenideElement googlePlayButton() {
+        return $(By.xpath("//*[@class='download_icons']/a[2]"));
+    }
 
-    public SelenideElement applePageTitle() { return $(By.xpath("//*[@class='product-header__title app-header__title']")); }
+    SelenideElement applePageTitle() {
+        return $(By.xpath("//*[@class='product-header__title app-header__title']"));
+    }
 
-    public SelenideElement googlePlayPageLogo() { return $(By.cssSelector(".xSyT2c>img")); }
+    SelenideElement googlePlayPageLogo() {
+        return $(By.cssSelector(".xSyT2c>img"));
+    }
 
-    public SelenideElement datenschutzerklarungLink() { return $(By.cssSelector("#privacy_policy_app>a")); }
+    SelenideElement appReviewsBlock() {
+        return $(By.cssSelector(".app_reviews"));
+    }
 
-    SelenideElement mailFieldInSubscribeForm() { return $(By.id("mobile_app_page_email")); }
+    SelenideElement successPopupInSubscribeForm() {
+        return $(By.id("news_subscribe"));
+    }
 
-    SelenideElement checkboxInSubscribeForm() { return $(By.id("subscribe_rules")); }
-
-    SelenideElement getMailBtnInSubscribeForm() { return $(By.id("mobile_app_page_get_email")); }
-
-    SelenideElement successPopupInSubscribeForm() { return $(By.id("news_subscribe")); }
-    SelenideElement successPopupCloseBtnInSubscribeForm() { return $(By.xpath("//div[@class='buttons-inner']")); }
+    SelenideElement successPopupCloseBtnInSubscribeForm() {
+        return $(By.xpath("//div[@class='buttons-inner']"));
+    }
 }

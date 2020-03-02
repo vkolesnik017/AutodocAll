@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 
-public class QC_1091_StaticPage_austauschartikel {
+public class QC_1547_StaticPage_mobile_app {
 
     @BeforeClass
     void setUp() {
@@ -27,18 +27,15 @@ public class QC_1091_StaticPage_austauschartikel {
     @Test(dataProvider = "route")
     @Owner(value = "Chelombitko")
     @Flaky
-    @Description(value = "Test checks elements on austauschartikel page")
-    public void checkAustauschartikelPageElements(String route) throws Exception {
+    @Description(value = "Test checks elements on mobile app page")
+    public void checkMobileAppPageElements(String route) {
         openPage(route);
-        new Main_page().clickAustauschartikel()
-                .checkItemsTopPage()
-                .checkInstructionBlock()
-                .checkReturnPolicyBlock()
-                .checkCategoriesPfandBlock()
-                .checkRequirementForPartsBlock()
-                .SelectsRandomCategory()
-                .getStatusImageCod()
-                .checkTitleAndDDescriptionOfCategory()
-                .checkDepositRefundForm();
+        new Main_page().clickMobileApp()
+                .checkForItemsFromTopPage()
+                .checkAppStoreAndGooglePlayButtonsFunctionality()
+                .checkBlockWithSlider()
+                .checkAutoBannerSwitching()
+                .checkBannerSwitchButtons()
+                .checkReviewsBlock();
     }
 }

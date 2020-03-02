@@ -45,4 +45,25 @@
         </classes>
     </test>
 
+    <test name="QC_1465_StaticPage_agb" enabled="true">
+        <classes>
+            <class name="ATD.StaticPage.QC_1465_StaticPage_agb">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QC_1529_StaticPage_impressum" enabled="true">
+        <classes>
+            <class name="ATD.StaticPage.QC_1529_StaticPage_impressum">
+            </class>
+        </classes>
+    </test>
+
+    <test name="Q QC_1547_StaticPage_mobile_app" enabled="true">
+        <classes>
+            <class name="ATD.StaticPage.QC_1547_StaticPage_mobile_app">
+            </class>
+        </classes>
+    </test>
+
 </suite>
