@@ -128,6 +128,9 @@ public class LKW_main_page {
     public SelenideElement buttonSuchenOfVerticaltruckSelector() {
         return $x("//a[@class='truck_submit js--lkw_selector-btn-submit']");
     }
+    public SelenideElement buttonSuchenOfVerticaltruckSelectorMainPage() {
+        return $x("//div[@class='block-select-truck__button']");
+    }
 
     public SelenideElement parentCategoryFilter() {
         return $x("//a[contains(text(),'Filter')]");

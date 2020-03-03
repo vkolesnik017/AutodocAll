@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="LKW_trucks" parallel="methods" thread-count="3" data-provider-thread-count="2">
+<suite name="LKW_trucks" parallel="methods" thread-count="4" data-provider-thread-count="2">
 
     <test name="QC_144_Header_trucks_routes">
         <classes>
             <class name="LKW_trucks.QC_144_Header_trucks_routes.QC_145_PresenceOfBlocksInHeader_lkw"/>
             <class name="LKW_trucks.QC_144_Header_trucks_routes.QC_149_TrucksCatalogInHeader_lkw"/>
             <class name="LKW_trucks.QC_144_Header_trucks_routes.QC_153_NavigationBlockInHeader_lkw"/>
+            <class name="LKW_trucks.QC_144_Header_trucks_routes.QC_1508_ConformityHeaderCatalogAndTecDocCatalogWithTruck_lkw"/>
         </classes>
     </test>
 
