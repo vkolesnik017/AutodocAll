@@ -20,7 +20,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class QASYS_349_Footer {
 
-    private String appUrl = "https://apps.apple.com/US/app/id1014949597?mt=8";
+/*    private String appUrl = "https://apps.apple.com/US/app/id1014949597?mt=8";
     private String facebook = "https://www.facebook.com/autodoc.de/";
     private String youTube = "https://www.youtube.com/channel/UCH1orNkIIGZ1jJRjhgY4JeA";
     private String instagram = "https://www.instagram.com/autodoc_autoparts/";
@@ -124,7 +124,6 @@ public class QASYS_349_Footer {
         commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "hub_models"));
         }
 
-
     @Flaky
     @Owner(value = "alex_qa")
     @Test(dataProvider = "route", enabled = true)
@@ -185,5 +184,5 @@ public class QASYS_349_Footer {
         main_page.footerForm().scrollTo();
         main_page.clickDatenschutzInSubscribeBlock().click();
         commonMethods.checkingUrlAndCloseTab(route + "/" + db.getRouteByRouteName(getShopFromRoute(route), "staticDatenschutz"));
-    }
+    }*/
 }

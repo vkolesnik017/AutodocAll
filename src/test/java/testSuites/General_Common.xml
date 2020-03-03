@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="General_Common" parallel="tests" data-provider-thread-count="3">
+
+    <test name="QC_1554_Footer">
+        <classes>
+            <class name="ATD.General_Common.QC_1554_Footer.QC_1569_TransitionTheLink_Datenschutzerklärung"/>
+            <class name="ATD.General_Common.QC_1554_Footer.QC_1555_ApplicationInstallBanner"/>
+            <class name="ATD.General_Common.QC_1554_Footer.QC_1556_LinksToStaticPages"/>
+            <class name="ATD.General_Common.QC_1554_Footer.QC_1558_DroplistCountryBlock"/>
+            <class name="ATD.General_Common.QC_1554_Footer.QC_1564_SuccessfulNewsletterSubscription"/>
+            <class name="ATD.General_Common.QC_1554_Footer.QC_1565_DisplayingOfNon_validEmailTooltip"/>
+            <class name="ATD.General_Common.QC_1554_Footer.QC_1567_TransitionFromBlockOfSocialNetworks"/>
+            <class name="ATD.General_Common.QC_1554_Footer.QC_1568_PresenceOfTextBlocks"/>
+            <class name="ATD.General_Common.QC_1554_Footer.QC_1566_Pop_upErrorAbutNon_confirmedNewsletterSubscription"/>
+        </classes>
+    </test>
+
+</suite>

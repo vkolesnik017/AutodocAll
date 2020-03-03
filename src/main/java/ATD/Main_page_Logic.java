@@ -2,10 +2,14 @@ package ATD;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import org.openqa.selenium.By;
 
-import static ATD.CommonMethods.mailRandom;
-import static ATD.CommonMethods.password;
+import java.sql.SQLException;
+
+import static ATD.CommonMethods.*;
+import static ATD.CommonMethods.getCurrentShopFromJSVarInHTML;
 import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -58,7 +62,7 @@ public class Main_page_Logic extends Main_page {
         for (int i = 0; i < tooltipsToSearch.size(); i++) {
             String hint = tooltipsToSearch.get(i).hover().getText().replaceAll("[^0-9]", "");
             boolean areTheNumbers = hint.matches("-?\\d+(\\.\\d+)?");
-            if (areTheNumbers && i+1 < tooltipsToSearch.size()) {
+            if (areTheNumbers && i + 1 < tooltipsToSearch.size()) {
                 tooltipsToSearch.get(i + 1).shouldHave(matchText("[0-9]").because("Not all generics are displayed under synonyms in tooltips to search"));
             }
         }
@@ -113,18 +117,18 @@ public class Main_page_Logic extends Main_page {
     // This method only for DE
     @Step("Fill in KBA fields")
     public Main_page_Logic fillNumberKba(String numberForFirstField, String numberForSecondField) {
-      sleep(4000); // added sleep SITES-7691
-      firstFieldKBA().setValue(numberForFirstField);
-      secondFieldKBA().setValue(numberForSecondField);
-      return this;
+        sleep(4000); // added sleep SITES-7691
+        firstFieldKBA().setValue(numberForFirstField);
+        secondFieldKBA().setValue(numberForSecondField);
+        return this;
     }
 
     // This method for all shop, except DE
     @Step("Fill in KBA field")
     public Main_page_Logic fillNumberKba(String kbaNumber) {
-      sleep(3000); // added sleep SITES-7691
-      firstFieldKBA().setValue(kbaNumber);
-      return this;
+        sleep(3000); // added sleep SITES-7691
+        firstFieldKBA().setValue(kbaNumber);
+        return this;
     }
 
     @Step("Click search KBA button")
@@ -253,4 +257,171 @@ public class Main_page_Logic extends Main_page {
         return mail;
     }
 
+    @Step("Checks application links")
+    public Main_page_Logic checkApplicationLinks(String appUrl) {
+        CommonMethods commonMethods = new CommonMethods();
+        footerForm().scrollTo();
+        appGoogleButton().click();
+        commonMethods.checkingUrl(appUrl);
+        appAppleButton().click();
+        commonMethods.checkingUrl(appUrl);
+        return this;
+    }
+
+    @Step("Checks transition to links and checks URLs")
+    public Main_page_Logic checkForLinksAndUrls(String route) throws SQLException {
+        String shop = getShopFromRoute(route);
+        CommonMethods commonMethods = new CommonMethods();
+        DataBase db = new DataBase();
+        footerForm().scrollTo();
+        clickAboutUs();
+        commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "staticAboutUs"));
+        clickImpressum();
+        commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "staticImpressum"));
+        clickVacancies();
+        commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "vacancies"));
+        clickBonusprogramm();
+        commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "bonus_system"));
+//      clickSponsorship();
+//      commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "staticSponsorship"));
+        clickPartnership();
+        commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "staticPartnership"));
+        clickPresse();
+        commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "staticPresse"));
+        clickMobileApp();
+        commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "staticMobileApp"));
+        clickAutodocClub();
+        commonMethods.checkingUrlAndCloseTab(db.getRouteByRouteName(getCurrentShopFromJSVarInHTML(), "club_main") + "/?_ga=");
+        clickBlog();
+        commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "info_section_index"));
+        clickVideoTutorials();
+        commonMethods.checkingUrlAndCloseTab(db.getRouteByRouteName(getCurrentShopFromJSVarInHTML(), "club_main") + "/manuals?_ga=");
+        clickAltolentsorgung();
+        commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "staticAltolentsorgung"));
+        clickAgb();
+        commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "staticAgb"));
+        clickWiderruf();
+        commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "staticWiderruf"));
+        clickDatenschutz();
+        commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "staticDatenschutz"));
+        clickZahlung();
+        commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "staticZahlung"));
+        clickVersand();
+        commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "staticVersand"));
+        clickContact();
+        commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "staticContact"));
+        clickRetouren();
+        commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "return_return"));
+        clickAustauschartikel();
+        commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "staticAustauschartikel"));
+        clickBeleuchtung();
+        commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "category_name_parent2"));
+        clickStobdampfer();
+        commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "category_name2"));
+        clickKupplungssatz();
+        commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "category_name3"));
+        clickQuerlenker();
+        commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "category_name4"));
+        clickRadlager();
+        commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "category_name5"));
+        clickAutopflege();
+        commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "index_chemicals"));
+        clickSucheNachAutomodelle();
+        commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "makers"));
+        clickNachHerstellerEinkaufen();
+        commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "hub_groups"));
+        clickNachModellEinkaufen();
+        commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "hub_models"));
+        return this;
+    }
+
+    @Step("Checks open and close droplist with countries")
+    public Main_page_Logic checkOpenAndCloseDroplistCountries() {
+        footerForm().scrollTo();
+        languageSelector().click();
+        dropdownCountry().shouldBe(visible);
+        languageSelector().click();
+        dropdownCountry().shouldNotBe(visible);
+        sleep(2000);
+        return this;
+    }
+
+    @Step("Checking Countries Subscription")
+    public Main_page_Logic checkingCountriesSubscription() throws SQLException {
+        ElementsCollection elements = $$(By.xpath("//div[@class='mCSB_container']/div"));
+        for (SelenideElement element : elements) {
+            String shopName = element.attr("id");
+            shopName = shopName.substring(shopName.indexOf("_") + 1);
+            if (shopName.equalsIgnoreCase("lu")) shopName = "ld";
+            $(By.xpath("//div[@class='footer-language__select']")).click();
+            element.$(By.xpath("./a")).scrollIntoView(true).click();
+            new CommonMethods().checkingUrlAndCloseTab(new DataBase().getRouteByRouteName(shopName, "main"));
+        }
+        return this;
+    }
+
+    @Step("Checks for successful newsletter subscription")
+    public Main_page_Logic checkSuccessfulNewsletterSubscription() {
+        footerForm().scrollTo();
+        subscriptionMailField().setValue(testMail);
+        subscriptionMailCheckbox().click();
+        subscriptionButton().click();
+        subscriptionSuccessPopup().shouldHave(Condition.text("Herzlichen Dank! Viel Spaß beim Shoppen!"));
+        subscriptionPopupClose().click();
+        return this;
+    }
+
+    @Step("Checks displaying of non-valid email tooltip")
+    public Main_page_Logic checkTooltipWithErrorMessage() {
+        footerForm().scrollTo();
+        subscriptionButton().click();
+        subscriptionErrTooltip().shouldHave(Condition.text("Bitte geben Sie eine gültige E-mail Adresse an"));
+        subscriptionMailField().setValue("123456");
+        subscriptionButton().click();
+        subscriptionErrTooltip().shouldHave(Condition.text("Bitte geben Sie eine gültige E-mail Adresse an"));
+        return this;
+    }
+
+    @Step("Checks for pop-up with error about non-confirmed newsletter subscription")
+    public Main_page_Logic checkPopUp() {
+        footerForm().scrollTo();
+        subscriptionMailField().setValue(testMail);
+        subscriptionButton().click();
+        subscriptionErrPopup().shouldHave(Condition.text("Um fortzufahren bestätigen Sie bitte Ihr Newsletter-Abo"));
+        subscriptionPopupClose().click();
+        return this;
+    }
+
+    @Step("Checks link transitions on social networks")
+    public Main_page_Logic checkTransitionToSocialNetwork() {
+        CommonMethods commonMethods = new CommonMethods();
+        String facebook = "https://www.facebook.com/autodoc.de/";
+        String youTube = "https://www.youtube.com/channel/UCH1orNkIIGZ1jJRjhgY4JeA";
+        String instagram = "https://www.instagram.com/autodoc_autoparts/";
+        footerForm().scrollTo();
+        facebookButton().click();
+        commonMethods.checkingUrlAndCloseTab(facebook);
+        youtubeButton().click();
+        commonMethods.checkingUrlAndCloseTab(youTube);
+        instagramButton().click();
+        commonMethods.checkingUrlAndCloseTab(instagram);
+        return this;
+    }
+
+    @Step("Checks text blocks in the footer")
+    public Main_page_Logic checkTextBlocksInFooter() {
+        footerForm().scrollTo();
+        techAllianceBlock().shouldBe(Condition.visible);
+        workTimeBlock().shouldBe(Condition.visible);
+        copyrightBlock().shouldBe(Condition.visible);
+        return this;
+    }
+
+    @Step("Checks transition the link Datenschutzerklärung")
+    public Main_page_Logic checkTransitionToLink(String route) throws SQLException {
+        footerForm().scrollTo();
+        clickDatenschutzInSubscribeBlock().click();
+        new CommonMethods().checkingUrlAndCloseTab(route + "/" + new DataBase().getRouteByRouteName(getShopFromRoute(route), "staticDatenschutz"));
+        return this;
+    }
 }
