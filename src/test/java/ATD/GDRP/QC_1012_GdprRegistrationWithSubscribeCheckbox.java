@@ -40,7 +40,7 @@ public class QC_1012_GdprRegistrationWithSubscribeCheckbox {
                 .fillRequiredFieldsForRegistration(firstName, secondName, mail, true)
                 .fillPasswordFieldsAndClickRegistration()
                 .checkingAutodocPlusActive().clickSetting().checkingCheckedCheckbox();
-        openPage("https://m.autodoc.de/?force=mobile");
+        openPage("https://m.autodoc.de/?force=mobile");//TODO url from database
         new Main_page_mob_Logic().closeFirstPopup().clickSignInInMenu()
                 .closeFooterPopup().signIn(mail)
                 .goToProfilePage().clickAddresseBtn().clickBillingAddress()

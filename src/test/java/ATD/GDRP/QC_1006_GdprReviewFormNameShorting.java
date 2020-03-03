@@ -6,7 +6,10 @@ import AWS.FAQ_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
@@ -14,7 +17,7 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_985_GdprFaqFormNameShorting {
+public class QC_1006_GdprReviewFormNameShorting {
 
     private String mail;
     private Product_page_Logic product_page_logic = new Product_page_Logic();
@@ -33,10 +36,10 @@ public class QC_985_GdprFaqFormNameShorting {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "alex_qa")
-    @Description(value = "Test verify working of name shorting functionality in FAQ form")
-    public void testFaqFormNameShorting(String route) {
+    @Description(value = "Test verify working of name shorting functionality in Review form")
+    public void testReviewFormNameShorting(String route) {
         openPage(route);
-        mail = product_page_logic.scrollToFaqForm().fillingFieldsAndCheckBehaviorFaqForm("qc985_");
+        mail = product_page_logic.checkingReviewsForm().fillingFieldsAndCheckBehaviorReviewsForm("qc1006_");
         System.out.println(mail);
         faq_aws.openAndLoginFaqAwsPage().searchQuestionAndPublished(mail);
         openPage(route);
@@ -54,3 +57,4 @@ public class QC_985_GdprFaqFormNameShorting {
 }
 
 
+//autotest_qc1006@test.com
