@@ -32,7 +32,8 @@ public class QC_1175_StaticPage_contacts {
         openPage(route);
         new Main_page().clickContact()
                 .checkContactsBlock()
-                .checkAlreadyPlacedOrderBlock()
-                .checkNonPlacedOrderBlock();
+                .checkNonPlacedOrderBlock()
+                .checkAlreadyPlacedOrderBlock();
+
     }
 }
