@@ -6,6 +6,7 @@ import io.qameta.allure.Step;
 import static ATD.CommonMethods.mailRandom;
 import static ATD.CommonMethods.testNumberThatPutOrderInTest;
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class Contact_static_page_Logic extends Contact_static_page {
 
@@ -66,6 +67,7 @@ public class Contact_static_page_Logic extends Contact_static_page {
         haveOrderButton().click();
         haveOrderBlock().shouldBe(visible);
         submitOrderButton().click();
+        sleep(2000);
         orderIdError().shouldBe(visible);
         phoneNumberError().shouldBe(visible);
         emailError().shouldBe(visible);
@@ -77,6 +79,7 @@ public class Contact_static_page_Logic extends Contact_static_page {
         haveNoOrderButton().click();
         haveNoOrderBlock().shouldBe(visible);
         submitNoOrderButton().click();
+        sleep(2000);
         noOrderEmailError().shouldBe(visible);
         noOrderDetailError().shouldBe(visible);
         return this;

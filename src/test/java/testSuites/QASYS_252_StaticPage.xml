@@ -10,18 +10,4 @@
         <!--</classes>-->
     <!--</test>-->
 
-    <test name="QASYS_356_StaticPage_partnership">
-        <classes>
-            <class name="ATD.QASYS_252_StaticPage.QASYS_356_StaticPage_partnership">
-            </class>
-        </classes>
-    </test>
-
-    <test name="QASYS_360_StaticPage_vacancies">
-        <classes>
-            <class name="ATD.QASYS_252_StaticPage.QASYS_360_StaticPage_vacancies">
-            </class>
-        </classes>
-    </test>
-
 </suite>
