@@ -215,15 +215,32 @@ public class Product_page_Logic extends Product_page {
     @Step("Filling fields and checking behavior of reviews form. Product_page")
     public String fillingFieldsAndCheckBehaviorReviewsForm(String qc) {
         String mail = qc + mailRandom();
-        reviewsNameInput().setValue("test");
+        reviewsNameInput().setValue("autotest autotest");
         reviewsEmailInput().setValue(mail);
-        reviewsMessageInput().setValue("test");
+        reviewsMessageInput().setValue("autotest");
         checkboxInReviewsForm().click();
         reviewsSubmitButton().click();
         succesPopup().shouldBe(appear);
         succesPopupCloseBtn().click();
         return mail;
     }
+
+    @Step("Checking correct shorting name in reviews form. Product_page")
+    public Product_page_Logic checkingCorrectShortingNameReviewsForm() {
+        refresh();
+        checkingReviewsForm();
+        reviewsFormAnsweredQuestionField().shouldHave(text("A.A.: autotest"));
+        return this;
+    }
+
+    @Step("Check that reviews form doesn't have any answered questions. Product_page")
+    public Product_page_Logic checkAnswerQuestionsDoesntAppearReviewsForm() {
+        refresh();
+        checkingReviewsForm();
+        reviewsFormAnsweredQuestionField().shouldNotBe(visible);
+        return this;
+    }
+
 
     //FAQ form
     @Step("Scroll to faq from and checking appearing. Product_page")
@@ -241,7 +258,7 @@ public class Product_page_Logic extends Product_page {
 
     @Step("Filling fields and checking behavior of faq form. Product_page")
     public String fillingFieldsAndCheckBehaviorFaqForm(String qc) {
-        faqFormNameField().setValue("autotest");
+        faqFormNameField().setValue("autotest autotest");
         String mail = qc + mailRandom();
         faqFormMailField().setValue(mail);
         faqFormCommentField().setValue("autotest");
@@ -251,15 +268,32 @@ public class Product_page_Logic extends Product_page {
         return mail;
     }
 
+    @Step("Checking correct shorting name in faq form. Product_page")
+    public Product_page_Logic checkingCorrectShortingNameFaqForm() {
+        refresh();
+        scrollToFaqForm();
+        faqFormAnsweredQuestionField().shouldHave(text("A.A.: autotest"));
+        return this;
+    }
+
+    @Step("Check that faq form doesn't have any answered questions. Product_page")
+    public Product_page_Logic checkAnswerQuestionsDoesntAppearFaqForm() {
+        refresh();
+        scrollToFaqForm();
+        faqFormAnsweredQuestionField().shouldNotBe(visible);
+        return this;
+    }
+
+
     @Step("Transition to pfand link from product page. Product_page")
-    public Austauschartikel_static_page clickLinkPfandFromProductPage(){
+    public Austauschartikel_static_page clickLinkPfandFromProductPage() {
         pfandPagelink().click();
         switchTo().window(1);
         return page(Austauschartikel_static_page.class);
     }
 
     @Step("Check presence labels with payment methods and advantages. Product_page")
-    public Product_page_Logic checkLabelsPaymenMethodstAndAdvantages(){
+    public Product_page_Logic checkLabelsPaymenMethodstAndAdvantages() {
         freeDeliveryIcon().shouldBe(visible);
         safeOrderIcon().shouldBe(visible);
         days14ForReturnOfGoodsIcon().shouldBe(visible);

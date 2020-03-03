@@ -14,8 +14,6 @@ import static ATD.SetUp.setUpBrowser;
 
 public class QC_216_StaticPage_zahlung {
 
-    private Main_page mainPage = new Main_page();
-
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -32,7 +30,7 @@ public class QC_216_StaticPage_zahlung {
     @Description(value = "Test checks elements on zahlung page")
     public void checkZahlungPageElements(String route) {
         openPage(route);
-        mainPage.clickZahlung()
+        new Main_page().clickZahlung()
                 .checkElementsOnPage();
     }
 }

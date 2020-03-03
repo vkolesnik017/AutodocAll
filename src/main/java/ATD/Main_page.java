@@ -391,14 +391,14 @@ public class Main_page {
         return page(About_us_page.class);
     }
 
-    public Impressum_static_page clickImpressum() {
+    public Impressum_static_page_logic clickImpressum() {
         $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[2]/a")).click();
-        return page(Impressum_static_page.class);
+        return page(Impressum_static_page_logic.class);
     }
 
-    public Vacancies_static_page clickVacancies() {
+    public Vacancies_static_page_Logic clickVacancies() {
         $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[3]/a")).click();
-        return page(Vacancies_static_page.class);
+        return page(Vacancies_static_page_Logic.class);
     }
 
     public Bonusprogramm_page clickBonusprogramm() {
@@ -411,9 +411,9 @@ public class Main_page {
         return page(Sponsorship_static_page.class);
     }
 
-    public Partnership_static_page clickPartnership() {
+    public Partnership_static_page_Logic clickPartnership() {
         $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[5]/a")).click();
-        return page(Partnership_static_page.class);
+        return page(Partnership_static_page_Logic.class);
     }
 
     public Presse_page clickPresse() {
@@ -421,9 +421,9 @@ public class Main_page {
         return page(Presse_page.class);
     }
 
-    public MobileApp_static_page clickMobileApp() {
+    public MobileApp_static_page_Logic clickMobileApp() {
         $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[7]/a")).click();
-        return page(MobileApp_static_page.class);
+        return page(MobileApp_static_page_Logic.class);
     }
 
     //HILFE & SUPPORT
@@ -447,9 +447,9 @@ public class Main_page {
         return page(Altolentsorgung_page.class);
     }
 
-    public Agb_static_page clickAgb() {
+    public Agb_static_page_Logic clickAgb() {
         $(By.xpath("//*[@class='footer__links']/div[2]/ul/li[5]/a")).click();
-        return page(Agb_static_page.class);
+        return page(Agb_static_page_Logic.class);
     }
 
     public Widerruf_static_page_Ligic clickWiderruf() {

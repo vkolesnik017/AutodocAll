@@ -36,8 +36,8 @@ public class QC_271_GdprFooter {
         mail = new Main_page_Logic()
                 .scrollToFooterSubscribeBlock()
                 .checkingDatenschutzerklarungLinkBehaviorInReviewsForm()
-                .checkingErrorPopupUnclickCheckbox("qc_403_")
-                .checkingErrorPopupClickCheckbox("qc_403_");
+                .checkingErrorPopupUnclickCheckbox("qc_271_")
+                .checkingSuccessPopupClickCheckbox("qc_271_");
         new PrivacyPolicySubscription_aws()
                 .openPolicySubscriptionWithLogin()
                 .checkingPolicyAndSubscribeForMail(this.mail);

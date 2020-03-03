@@ -6,6 +6,7 @@ import io.qameta.allure.Step;
 import static ATD.CommonMethods.mailRandom;
 import static ATD.CommonMethods.testNumberThatPutOrderInTest;
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class Contact_static_page_Logic extends Contact_static_page {
 

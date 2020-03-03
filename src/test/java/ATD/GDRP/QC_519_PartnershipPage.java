@@ -1,5 +1,6 @@
 package ATD.GDRP;
 
+import ATD.Partnership_static_page_Logic;
 import ATD.SetUp;
 import ATD.Partnership_static_page;
 import AWS.PrivacyPolicySubscription_aws;
@@ -35,7 +36,7 @@ public class QC_519_PartnershipPage {
     @Description(value = "Test verify working of send ship form on Partnership page")
     public void testFormOnPartnershipPage(String route) {
         openPage(route);
-        mail = new Partnership_static_page().scrollToSendShipForm().checkingDatenschutzerklarungLinkBehavior().fillingFieldsAndCheckBehaviorSendShipForm();
+        mail = new Partnership_static_page_Logic().scrollToSendShipForm().checkingDatenschutzerklarungLinkBehavior().fillingFieldsAndCheckBehaviorSendShipForm();
         new PrivacyPolicySubscription_aws().openPolicySubscriptionWithLogin().checkingPolicyForMail(this.mail);
     }
 }

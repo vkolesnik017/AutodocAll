@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 
-public class QC_717_StaticPage_widerruf {
+public class QC_1529_StaticPage_impressum {
 
     @BeforeClass
     void setUp() {
@@ -27,10 +27,10 @@ public class QC_717_StaticPage_widerruf {
     @Test(dataProvider = "route")
     @Owner(value = "Chelombitko")
     @Flaky
-    @Description(value = "Test checks elements on widerruf page")
-    public void checkWiderrufPageElements(String route) {
+    @Description(value = "Test checks elements on impressum page")
+    public void checkImpressumPageElements(String route) {
         openPage(route);
-        new Main_page().clickWiderruf()
+        new Main_page().clickImpressum()
                 .checkItemsOnPage();
     }
 }

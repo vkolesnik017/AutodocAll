@@ -1,7 +1,6 @@
 package ATD.GDRP;
 
 import ATD.Category_car_list_page_Logic;
-import ATD.Main_page_Logic;
 import ATD.SetUp;
 import AWS.PrivacyPolicySubscription_aws;
 import io.qameta.allure.Description;
