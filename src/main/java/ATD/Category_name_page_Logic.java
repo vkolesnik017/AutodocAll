@@ -8,7 +8,7 @@ import static ATD.CommonMethods.waitWhileRouteBecomeExpected;
 
 public class Category_name_page_Logic {
 
-  @Step("Verify name route equals category_name")
+  @Step("Verify name route equals category_name. Category_name_page")
   public Category_name_page_Logic verifyNameRouteEqualsCategoryName() {
     waitWhileRouteBecomeExpected("category_name");
     return this;

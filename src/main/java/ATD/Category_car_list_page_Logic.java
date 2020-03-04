@@ -8,7 +8,7 @@ import static ATD.CommonMethods.waitingWhileLinkBecomeExpected;
 
 public class Category_car_list_page_Logic extends Category_car_list_page {
 
-  @Step("Verify name route equals category_car_list")
+  @Step("Verify name route equals category_car_list. Category_car_list_page")
   public Category_car_list_page_Logic verifyNameRouteEqualsCategoryCarList() {
     waitWhileRouteBecomeExpected("category_car_list");
     return this;
@@ -16,7 +16,7 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
 
   //form soft 404
 
-    @Step("Checking behavior of soft form 404. Category_car_list_page")
+    @Step("Checking behavior of soft form 404.Using mail {mail} Category_car_list_page")
     public Category_car_list_page_Logic checkingBehaviorSoft404(String mail) {
         mailFieldSoftForm().setValue(mail);
         submitBtnSoftForm().click();

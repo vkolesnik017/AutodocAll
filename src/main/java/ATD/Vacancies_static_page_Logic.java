@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.switchTo;
 public class Vacancies_static_page_Logic extends Vacancies_static_page {
 
 
-    @Step("Checks for items on the Vacancies page")
+    @Step("Checks for items. Vacancies_static_page")
     public Vacancies_static_page_Logic checkItemsFromPage(){
         title().shouldBe(visible);
         subtitle().shouldBe(visible);
@@ -20,7 +20,7 @@ public class Vacancies_static_page_Logic extends Vacancies_static_page {
     }
 
 
-    @Step("Checks the availability of PDF files by link")
+    @Step("Checks the availability of PDF files by link. Vacancies_static_page")
     public Vacancies_static_page_Logic checkForPdfFilesByLink(){
         for (SelenideElement pdfButton : openBtnVacanciesPDF()) {
             pdfButton.click();

@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class Versand_static_page_Logic extends Versand_static_page {
 
-    @Step("Checks for the presence of a TOP block and elements inside it")
+    @Step("Checks for the presence of a TOP block and elements inside it. Versand_static_page")
     public Versand_static_page_Logic checkBlockTop(){
         topBlock().shouldBe(visible);
         topBlockLeft().shouldBe(visible);
@@ -19,7 +19,7 @@ public class Versand_static_page_Logic extends Versand_static_page {
         return this;
     }
 
-    @Step("Checks for the presence of a Prices block and elements inside it")
+    @Step("Checks for the presence of a Prices block and elements inside it. Versand_static_page")
     public Versand_static_page_Logic checkPricesBlock(){
         pricesBlock().shouldBe(visible);
         deliveryPriceBlock().shouldBe(visible);
@@ -27,7 +27,7 @@ public class Versand_static_page_Logic extends Versand_static_page {
         return this;
     }
 
-    @Step("Checks for the presence of a Country Prices block and elements inside it")
+    @Step("Checks for the presence of a Country Prices block and elements inside it. Versand_static_page")
     public Versand_static_page_Logic checkCountryPricesBlock(){
         countryPricesBlock().shouldBe(visible);
         countyPriceDelivery().shouldHave(size(3));
@@ -38,7 +38,7 @@ public class Versand_static_page_Logic extends Versand_static_page {
         return this;
     }
 
-    @Step("Checks for the presence of a Delivery Time block and elements inside it")
+    @Step("Checks for the presence of a Delivery Time block and elements inside it. Versand_static_page")
     public Versand_static_page_Logic checkDeliveryTimeBlock(){
         deliveryTimeBlock().shouldBe(visible);
         textDelivery().shouldBe(visible);
@@ -48,14 +48,14 @@ public class Versand_static_page_Logic extends Versand_static_page {
         return this;
     }
 
-    @Step("Checks for the presence of a Recommendation block")
+    @Step("Checks for the presence of a Recommendation block. Versand_static_page")
     public Versand_static_page_Logic checkRecommendationBlock(){
         recommendationBlock().shouldBe(visible);
         return this;
     }
 
-    @Step("Checks the functionality of the checkbox")
-    public Versand_static_page_Logic checkUncheckCheckbox(SelenideElement checkLocator, SelenideElement clickLocator) {
+    @Step("Checks the functionality of the checkbox. Versand_static_page")
+    private Versand_static_page_Logic checkUncheckCheckbox(SelenideElement checkLocator, SelenideElement clickLocator) {
         $(checkLocator).shouldNotBe(selected);
         $(checkLocator).shouldNotBe(checked);
         $(clickLocator).click();
@@ -67,7 +67,7 @@ public class Versand_static_page_Logic extends Versand_static_page {
         return this;
     }
 
-    @Step("Checks for the presence of a Safe Order block and elements inside it")
+    @Step("Checks for the presence of a Safe Order block and elements inside it. Versand_static_page")
     public Versand_static_page_Logic checkSafeOrderBlock(){
         safeOrderBlock().shouldBe(visible);
         checkUncheckCheckbox(deliveryCheckbox(), deliveryCheckboxClick());
@@ -83,7 +83,7 @@ public class Versand_static_page_Logic extends Versand_static_page {
         return this;
     }
 
-    @Step("Checks for the presence of a Tyres Delivery block and elements inside it")
+    @Step("Checks for the presence of a Tyres Delivery block and elements inside it. Versand_static_page")
     public Versand_static_page_Logic checkTyresDeliveryBlock(){
         tyresDelivery().shouldBe(visible);
         tyresDeliveryRowItemFree().shouldBe(visible);
@@ -92,7 +92,7 @@ public class Versand_static_page_Logic extends Versand_static_page {
         return this;
     }
 
-    @Step("Checks for the presence of a Oversize shipping product block and elements inside it")
+    @Step("Checks for the presence of a Oversize shipping product block and elements inside it. Versand_static_page")
     public Versand_static_page_Logic checkOversizeShippingProductBlock(){
         shippingBlock().shouldBe(visible);
         tabUnfoldingButton().click();
@@ -103,7 +103,7 @@ public class Versand_static_page_Logic extends Versand_static_page {
         return this;
     }
 
-    @Step("Checks for the presence of a Choose Delivery block and elements and options inside it")
+    @Step("Checks for the presence of a Choose Delivery block and elements and options inside it. Versand_static_page")
     public Versand_static_page_Logic checkChooseDeliveryBlock(){
         chooseDeliveryBlock().shouldBe(visible);
         chooseDeliveryTitle().shouldBe(visible);
@@ -120,7 +120,7 @@ public class Versand_static_page_Logic extends Versand_static_page {
         return this;
     }
 
-    @Step ("Pulling prices for free delivery from the text in the delivery block")
+    @Step ("Pulling prices for free delivery from the text in the delivery block. Versand_static_page")
     public Float getDeliveryLimitFromText() {
         String deliveryLimit = limitForFreeDelivery().getText();
         deliveryLimit = deliveryLimit.replaceAll("[^0-9,]", "");

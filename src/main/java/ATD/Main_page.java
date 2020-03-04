@@ -6,7 +6,6 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -304,71 +303,71 @@ public class Main_page {
     }
 
     // Footer
-    public SelenideElement footerForm() {
+    SelenideElement footerForm() {
         return $(By.xpath("//div[@id='footer']"));
     }
 
-    public SelenideElement appGoogleButton() {
+    SelenideElement appGoogleButton() {
         return $(byXpath("//div[@class='footer__app-icon']/span[1]/img"));
     }
 
-    public SelenideElement appAppleButton() {
+    SelenideElement appAppleButton() {
         return $(byXpath("//div[@class='footer__app-icon']/span[1]/img"));
     }
 
-    public SelenideElement subscriptionButton() {
+    SelenideElement subscriptionButton() {
         return $(byXpath("//button[@id='news_yes_footer']"));
     }
 
-    public SelenideElement subscriptionMailField() {
+    SelenideElement subscriptionMailField() {
         return $(byXpath("//input[@id='subscr_footer']"));
     }
 
-    public SelenideElement subscriptionErrTooltip() {
+    SelenideElement subscriptionErrTooltip() {
         return $(byXpath("//div[@class='wrong_footer']/p"));
     }
 
-    public SelenideElement subscriptionMailCheckbox() {
+    SelenideElement subscriptionMailCheckbox() {
         return $(byXpath("//div[@class='check']/label/span"));
     }
 
-    public SelenideElement subscriptionSuccessPopup() {
+    SelenideElement subscriptionSuccessPopup() {
         return $(byXpath("//div[@id='news_subscribe']//h3"));
     }
 
-    public SelenideElement subscriptionErrPopup() {
+    SelenideElement subscriptionErrPopup() {
         return $(byXpath("//div[@class='txt error_msg']"));
     }
 
-    public SelenideElement subscriptionPopupClose() {
+    SelenideElement subscriptionPopupClose() {
         return $(byXpath("//div[@class='popup ']//*[@class='close']/span[2]"));
     }
 
-    public SelenideElement techAllianceBlock() {
+    SelenideElement techAllianceBlock() {
         return $x("//div[@class='footer__bottom']/div[@class='footer__bottom-first']");
     }
 
-    public SelenideElement workTimeBlock() {
+    SelenideElement workTimeBlock() {
         return $x("//div[@class='footer__bottom']/div[@class='footer__bottom-center']");
     }
 
-    public SelenideElement copyrightBlock() {
+    SelenideElement copyrightBlock() {
         return $x("//div[@class='footer__bottom']//div[@class='copyright']");
     }
 
-    public SelenideElement facebookButton() {
+    SelenideElement facebookButton() {
         return $x("//ul[@class='social-inline']/li[1]/span");
     }
 
-    public SelenideElement youtubeButton() {
+    SelenideElement youtubeButton() {
         return $x("//ul[@class='social-inline']/li[2]/span");
     }
 
-    public SelenideElement instagramButton() {
+    SelenideElement instagramButton() {
         return $x("//ul[@class='social-inline']/li[3]/span");
     }
 
-    public SelenideElement clickDatenschutzInSubscribeBlock() {
+    SelenideElement datenschutzLinkInSubscribeBlock() {
         return $(By.cssSelector("#privacy_policy_footer>span"));
     }
 
@@ -379,9 +378,9 @@ public class Main_page {
         return page(About_us_page.class);
     }
 
-    public Impressum_static_page_logic clickImpressum() {
+    public Impressum_static_page_Logic clickImpressum() {
         $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[2]/a")).click();
-        return page(Impressum_static_page_logic.class);
+        return page(Impressum_static_page_Logic.class);
     }
 
     public Vacancies_static_page_Logic clickVacancies() {
@@ -440,9 +439,9 @@ public class Main_page {
         return page(Agb_static_page_Logic.class);
     }
 
-    public Widerruf_static_page_Ligic clickWiderruf() {
+    public Widerruf_static_page_Logic clickWiderruf() {
         $(By.xpath("//*[@class='footer__links']/div[2]/ul/li[7]/a")).click();
-        return page(Widerruf_static_page_Ligic.class);
+        return page(Widerruf_static_page_Logic.class);
     }
 
     public Datenschutz_page_Logic clickDatenschutz() {

@@ -11,19 +11,19 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class Product_page_Logic extends Product_page {
 
-    @Step("Open product page by his ID number")
+    @Step("Open product page by route {route} and his ID {idProduct} number. Product_page")
     public Product_page_Logic openProductPageById(String route, String idProduct) {
         open(route + "/a/" + idProduct);
         return this;
     }
 
-    @Step
+    @Step("Checking quantity {quantityInCart} on basket icon. Product_page")
     public Product_page_Logic checkQuantityOnBasketIconEquals(int quantityInCart) {
         quantityOnBasketIcon().shouldHave(exactText(String.valueOf(quantityInCart)));
         return this;
     }
 
-    @Step
+    @Step("Checking present product in cart popup. Product_page")
     public Product_page_Logic checksPresentProductInCartPopup() {
         cartIcon().hover();
         firstProductPriceInPopupOfCart().shouldBe(visible);
@@ -32,27 +32,27 @@ public class Product_page_Logic extends Product_page {
 
     // Horizontal car selector
 
-    @Step("Choose brand in horizontal car selector")
+    @Step("Choose brand {brandName} in horizontal car selector. Product_page")
     public Product_page_Logic chooseBrandInHorizontalCarSelector(String brandName) {
         brandSelector().selectOption(brandName);
         Wait().until(webDriver -> brandSelector().getSelectedText().equals(brandName));
         return this;
     }
 
-    @Step("Choose model in horizontal car selector")
+    @Step("Choose model be value {modelNumberValue} in horizontal car selector. Product_page")
     public Product_page_Logic chooseModelInHorizontalCarSelector(String modelNumberValue) {
         modelSelector().selectOptionByValue(modelNumberValue);
         sleep(1500);
         return this;
     }
 
-    @Step("Choose type in horizontal car selector")
+    @Step("Choose type by value {typeNumberValue} in horizontal car selector. Product_page")
     private Product_page_Logic chooseTypeInHorizontalCarSelector(String typeNumberValue) {
         typeSelector().selectOptionByValue(typeNumberValue);
         return this;
     }
 
-    @Step("Choose brand, model, type in horizontal selector")
+    @Step("Choose brand {brandName}, model value {modelNumberValue}, type value {typeNumberValue} in horizontal selector. Product_page")
     public Product_page_Logic chooseBrandModelTypeInHorizontalSelector(String brandName, String modelNumberValue, String typeNumberValue) {
         chooseBrandInHorizontalCarSelector(brandName)
                 .chooseModelInHorizontalCarSelector(modelNumberValue)
@@ -60,13 +60,13 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
-    @Step("Click search button in horizontal car selector")
+    @Step("Click search button in horizontal car selector. Product_page")
     public Product_page_Logic clickSearchBtnInHorizontalSelector() {
         selectorSearchBtn().click();
         return this;
     }
 
-    @Step("Click reset button in horizontal car selector")
+    @Step("Click reset button in horizontal car selector. Product_page")
     public Product_page_Logic resetHorizontalCarSelector() {
         resetBtnSelector().click();
         resetBtnSelector().shouldBe(not(visible));
@@ -74,39 +74,41 @@ public class Product_page_Logic extends Product_page {
     }
 
     // Selector kba
-    @Step("Fill in KBA fields")
+    @Step("Fill in KBA fields.First files {numberForFirstField} and second field {numberForSecondField}. Product_page")
     public Product_page_Logic fillNumberKba(String numberForFirstField, String numberForSecondField) {
         firstFieldKBA().setValue(numberForFirstField);
         secondFieldKBA().setValue(numberForSecondField);
         return this;
     }
 
-    @Step("Click search KBA button")
+    @Step("Click search KBA button. Product_page")
     public Maker_car_list_page_Logic clickKbaBtn() {
         selectorKbaBtn().click();
         return page(Maker_car_list_page_Logic.class);
     }
     //----------------------------------------------------------------------------------------------------------
 
-    @Step
+    @Step("Checking heavy cargo link transition. Product_page")
     public Product_page_Logic checkingHeavyCargoLinkTransition() {
         heavyCargoLink().click();
         new CommonMethods().checkingUrlAndCloseTab("services/versand#surcharge");
         return this;
     }
 
+    @Step(":on Product_page")
     public Product_page_Logic counterIncrease(String startValue) {
         new CommonMethods().checkingCounterIncrease(startValue, counterValue(), counterPlus());
         return this;
     }
 
+    @Step(":on Product_page")
     public Product_page_Logic counterDecrease(String startValue) {
         new CommonMethods().checkingCounterDecrease(startValue, counterValue(), counterMinus());
         return this;
     }
 
 
-    @Step("Checking number of product in cart")
+    @Step("Checking expected number {expectedNumber} of product in cart. Product_page")
     public Product_page_Logic checkingNumberOfProductInCart(int expectedNumber) {
         new Main_page().checkingNumberOfProductInCart(expectedNumber);
         return this;
@@ -182,13 +184,13 @@ public class Product_page_Logic extends Product_page {
     }
 
     // OEN block
-    @Step("Click first link in OEN block")
+    @Step("Click first link in OEN block. Product_page")
     public Product_page_Logic clickFirstLinkInOenBlock() {
         linksInOenNumbersBlock().get(1).click();
         return this;
     }
 
-    @Step("Subscriptions for product that are not in stock. Product_page")
+    @Step("Subscriptions for product that are not in stock. Using mail {email}. Product_page")
     public Product_page_Logic sendRequestByGrayButtonFromProductPage(String email) {
         grayButton().click();
         emailFieldInPopUpOfGrayBtn().setValue(email);
