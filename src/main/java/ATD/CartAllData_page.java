@@ -150,7 +150,6 @@ public class CartAllData_page {
 
     @Step("Check removing tyres on alldata with other products with delivery to other country")
     public CartAllData_page checkRemovingTyresFromAlldataWithOtherProducts(String productId) {
-        searchProductByID(productId).shouldBe(visible);
         tyresAreNotDeliveredToCountryPopup().shouldBe(visible);
         closePopupBtn().click();
         searchProductByID(productId).shouldNotBe(visible);

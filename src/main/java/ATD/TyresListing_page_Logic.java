@@ -21,7 +21,6 @@ public class TyresListing_page_Logic extends TyresListing_page {
 
     @Step("Gets tyre id")
     public String getTyreId() {
-        System.out.println(buyButton().attr("data-id"));
         return buyButton().attr("data-id");
     }
 }
