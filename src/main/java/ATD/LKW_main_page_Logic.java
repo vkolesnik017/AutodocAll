@@ -7,6 +7,7 @@ import org.testng.Assert;
 
 import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.Selenide.title;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
@@ -165,4 +166,12 @@ public class LKW_main_page_Logic extends LKW_main_page {
         return titleOfSelectingElement;
     }
 
+    @Step("Select truck in vertical selector")
+    public Catalog_Page_Logic_lkw selectTruckInSelector(){
+        markeOfVerticalTruckSelector().selectOptionByValue("36");
+        modelOfVerticalTruckSelector().selectOptionByValue("682");
+        motorOfVerticalTruckSelector().selectOptionByValue("1008978");
+        buttonSuchenOfVerticaltruckSelectorMainPage().click();
+        return page(Catalog_Page_Logic_lkw.class);
+    }
 }

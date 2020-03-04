@@ -2,6 +2,7 @@ package ATD;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.*;
@@ -127,6 +128,9 @@ public class LKW_main_page {
     public SelenideElement buttonSuchenOfVerticaltruckSelector() {
         return $x("//a[@class='truck_submit js--lkw_selector-btn-submit']");
     }
+    public SelenideElement buttonSuchenOfVerticaltruckSelectorMainPage() {
+        return $x("//div[@class='block-select-truck__button']");
+    }
 
     public SelenideElement parentCategoryFilter() {
         return $x("//a[contains(text(),'Filter')]");
@@ -144,6 +148,62 @@ public class LKW_main_page {
     public ElementsCollection categoriesOfThirdBlockWithOutDropMenu() {
         return $$(byXpath("//div[@class='menu-category__3-block']//li[contains(@class,'menu-category__item')]/a/span")).filter(visible);
     }
+
+    // Menu in header
+    @Step
+    public Main_page clickPkwCategory() {
+        $("[data-ga-action='PKW']").click();
+        return page(Main_page.class);
+    }
+
+    @Step
+    public Moto_main_page clickMotoCategory() {
+        $("[data-ga-action='MOTO']").click();
+        return page(Moto_main_page.class);
+    }
+
+    @Step
+    public Tyres_page clickTiresCategory() {
+        $(byCssSelector("[data-ga-action='23208']")).click();
+        return page(Tyres_page.class);
+    }
+
+    @Step
+    public Index_instruments_page clickInstrumentsCategory() {
+        $("[data-ga-action='36000']").click();
+        return page(Index_instruments_page.class);
+    }
+
+    @Step
+    public Index_accessories_page clickAccessoriesCategory() {
+        $("[data-ga-action='33000']").click();
+        return page(Index_accessories_page.class);
+    }
+
+    @Step
+    public CarParts_EngineOil_page clickEngineOilCategory() {
+        $("[data-ga-action='12094']").click();
+        return page(CarParts_EngineOil_page.class);
+    }
+
+    @Step
+    public CarParts_Filters_page clickFiltersCategory() {
+        $("[data-ga-action='10105']").click();
+        return page(CarParts_Filters_page.class);
+    }
+
+    @Step
+    public CarParts_BrakeSystem_page clickBrakeSystemCategory() {
+        $("[data-ga-action='10106']").click();
+        return page(CarParts_BrakeSystem_page.class);
+    }
+
+    @Step
+    public CarParts_Engine_page clickEngineCategory() {
+        $(".header-i.header-i--engine").click();
+        return page(CarParts_Engine_page.class);
+    }
+
 }
 
 
