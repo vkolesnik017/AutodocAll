@@ -1,21 +1,25 @@
 package ATD;
 
 import com.codeborne.selenide.Condition;
+import io.qameta.allure.Step;
 
 import static org.testng.AssertJUnit.assertNull;
 
 public class Profile_addresses_page_mob_Logic extends Profile_addresses_page_mob {
 
+    @Step("Clicking billing Address. Profile_addresses_page_mob")
     public Profile_addresses_page_mob_Logic clickBillingAddress() {
         billingAddress().click();
         return this;
     }
 
+    @Step("Checking checked checkbox. Profile_addresses_page_mob")
     public Profile_addresses_page_mob_Logic checkingCheckedCheckbox() {
         subscribeCheckbox().shouldHave(Condition.attribute("checked", "true"));
         return this;
     }
 
+    @Step("Checking unchecked checkbox. Profile_addresses_page_mob")
     public Profile_addresses_page_mob_Logic checkingUnCheckedCheckbox() {
         plzBilling().scrollIntoView(true);
         String nullCheckbox = subscribeCheckbox().getAttribute("checked");
@@ -23,17 +27,20 @@ public class Profile_addresses_page_mob_Logic extends Profile_addresses_page_mob
         return this;
     }
 
+    @Step("Clicking checkbox. Profile_addresses_page_mob")
     public Profile_addresses_page_mob_Logic clickCheckbox() {
         plzBilling().scrollIntoView(true);
         clickLocatorSubscribeCheckbox().click();
         return this;
     }
 
+    @Step("Checking success popup. Profile_addresses_page_mob")
     public Profile_addresses_page_mob_Logic checkingSuccessPopup() {
         successPopup().shouldBe(Condition.appear).shouldHave(Condition.text("Die Daten wurden aktualisiert"));
         return this;
     }
 
+    @Step("Filling fields in billing address. Profile_addresses_page_mob")
     public Profile_addresses_page_mob_Logic fillingFieldsInBillingAddress() {
         ortBilling().setValue("autotest");
         strasseBilling().setValue("autotest");
@@ -43,6 +50,7 @@ public class Profile_addresses_page_mob_Logic extends Profile_addresses_page_mob
         return this;
     }
 
+    @Step("Filling fields in shipping address. Profile_addresses_page_mob")
     public Profile_addresses_page_mob_Logic fillingFieldsInShippingAddress() {
         ortShipping().setValue("autotest");
         strasseShipping().setValue("autotest");
@@ -52,12 +60,14 @@ public class Profile_addresses_page_mob_Logic extends Profile_addresses_page_mob
         return this;
     }
 
+    @Step("Filling name and vorname field. Profile_addresses_page_mob")
     public Profile_addresses_page_mob_Logic fillingNameVornameField() {
         name().setValue("autotest");
         vorname().setValue("autotest");
         return this;
     }
 
+    @Step("Clicking submit. Profile_addresses_page_mob")
     public Profile_addresses_page_mob_Logic clickSubmit() {
         submitBtn().click();
         return this;

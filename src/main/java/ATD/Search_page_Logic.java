@@ -13,19 +13,19 @@ import static org.testng.Assert.assertEquals;
 
 public class Search_page_Logic extends Search_page {
 
-    @Step("Verify name route equals search")
+    @Step("Verify name route equals search. Search_page")
     public Search_page_Logic verifyNameRouteEqualsSearch() {
         waitWhileRouteBecomeExpected("search");
         return this;
     }
 
-    @Step("Close popup of choose car")
-    public Search_page_Logic closePopupOfChooseCar() {
+    @Step("Close popup of choose car. Search_page")
+    private Search_page_Logic closePopupOfChooseCar() {
         closeBtnPopupOfChooseCar().click();
         return this;
     }
 
-    @Step("Switch on second page")
+    @Step("Switch on second page. Search_page")
     public Search_page_Logic switchOnSecondPage() {
         secondListingPage().scrollTo();
         closePopupOfChooseCar().secondListingPage().click();
