@@ -10,9 +10,9 @@ import java.util.List;
 
 import static com.codeborne.selenide.Condition.visible;
 
-public class LKW_Catalog_Page_Logic extends LKW_Catalog_Page {
+public class LKW_Catalog_page_Logic extends LKW_Catalog_page {
 
-    @Step("Getting category in TecDock catalog")
+    @Step("Getting category in TecDock catalog. LKW_Catalog_page")
     public List<Integer> getCategoryInTecDocCatalog() {
         List<Integer> tecDocCatalogList = new ArrayList<>();
         catalogTecDoc().shouldBe(visible);
@@ -21,7 +21,7 @@ public class LKW_Catalog_Page_Logic extends LKW_Catalog_Page {
         return tecDocCatalogList;
     }
 
-    @Step("Getting category in Header Catalog")
+    @Step("Getting category in Header Catalog. LKW_Catalog_page")
     public List<Integer> getCategoryInHeaderCatalog() {
         List<Integer> catalogInHeaderList = new ArrayList<>();
         menuCatalogInHeader().scrollTo().click();
@@ -32,23 +32,23 @@ public class LKW_Catalog_Page_Logic extends LKW_Catalog_Page {
         return catalogInHeaderList;
     }
 
-    @Step("Comparison TecDoc and InHeader catalogs")
-    public LKW_Catalog_Page_Logic comparisonTecDocAndInHeaderCatalogs() {
+    @Step("Comparison TecDoc and InHeader catalogs. LKW_Catalog_page")
+    public LKW_Catalog_page_Logic comparisonTecDocAndInHeaderCatalogs() {
         List<Integer> attributeOfTecDocCatalog = new ArrayList<>(getCategoryInTecDocCatalog());
         List<Integer> attributeOfInHeaderCatalog = new ArrayList<>(getCategoryInHeaderCatalog());
         Assert.assertEquals(sortingListWithAttributes(attributeOfInHeaderCatalog), sortingListWithAttributes(attributeOfTecDocCatalog));
         return this;
     }
 
-    @Step("Sorting of list with attributes")
-    public List<Integer> sortingListWithAttributes(List<Integer> attributeList) {
+    @Step("Sorting of list with attributes. LKW_Catalog_page")
+    private List<Integer> sortingListWithAttributes(List<Integer> attributeList) {
         List<Integer> expectedAttributeList = new ArrayList<>(attributeList);
         Collections.sort(expectedAttributeList);
         return expectedAttributeList;
     }
 
-    @Step("add attributes to list")
-    public LKW_Catalog_Page_Logic addAttributeOfProductToList(ElementsCollection category, List<Integer> listWithAttribute) {
+    @Step("add attributes to list. LKW_Catalog_page")
+    private LKW_Catalog_page_Logic addAttributeOfProductToList(ElementsCollection category, List<Integer> listWithAttribute) {
         for (int k = 0; k < category.size(); k++) {
             listWithAttribute.add(Integer.parseInt(category.get(k).getAttribute("data-category-id")));
         }

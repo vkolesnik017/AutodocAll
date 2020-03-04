@@ -47,15 +47,15 @@ public class QC_1046_CreatingTyresAndOtherProductOrderShopNotMatchDeliveryCountr
         tyresListingPageLogic.addFirstProductToCart();
         open("https://autodoc.de/" + dataBase.getRouteByRouteName("DE", "search3"));
         clickOfBuyBtnForAllPages();
-        new Product_page_Logic().closePopupOtherCategoryIfYes().cartClick();
-        new Cart_page_Logic().nextButtonClick()
+        String orderNumber = new Product_page_Logic().closePopupOtherCategoryIfYes().cartClick()
+                            .nextButtonClick()
                             .signIn(emailDE, passwordDE)
                             .nextBtnClick()
                             .chooseVorkasse()
                             .nextBtnClick()
                             .checkRemovingTyresFromAlldataWithOtherProducts(tyreId)
-                            .nextBtnClick();
-        String orderNumber = new Payment_handler_page().getOrderNumber();
+                            .nextBtnClick()
+                            .getOrderNumber();
         new Order_aws(orderNumber).openOrderInAwsWithLogin();
     }
 

@@ -1,6 +1,6 @@
 package LKW_trucks.QC_144_Header_trucks_routes;
 
-import ATD.LKW_Catalog_Page_Logic;
+import ATD.LKW_Catalog_page_Logic;
 import ATD.LKW_main_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
@@ -34,7 +34,7 @@ public class QC_1508_ConformityHeaderCatalogAndTecDocCatalogWithTruck_lkw {
     @Description(value = "Test check compliance Of Header_Catalog and TecDoc catalog with selecting truck")
     public void testCheckComplianceOfHeaderCatalogAndTecDocCatalog(String route) {
         open(route);
-        LKW_Catalog_Page_Logic catalogPage = mainPage.selectTruckInSelector();
+        LKW_Catalog_page_Logic catalogPage = mainPage.selectTruckInSelector();
         catalogPage.getCategoryInTecDocCatalog();
         catalogPage.getCategoryInHeaderCatalog();
         catalogPage.comparisonTecDocAndInHeaderCatalogs();

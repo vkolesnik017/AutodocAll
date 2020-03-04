@@ -2,11 +2,12 @@ package ATD;
 
 import io.qameta.allure.Step;
 
+import static ATD.CommonMethods.testMail;
 import static com.codeborne.selenide.Condition.text;
 
 public class ListingTecDocSoft404_page_Logic extends ListingTecDocSoft404_page {
 
-  @Step("Fill in form and send request")
+  @Step("Fill in form and send request. ListingTecDocSoft404_page")
   public ListingTecDocSoft404_page sendRequestForm() {
     emailForm().setValue("testatd@gmail.com");
     newsletterSubscriptionCheckbox().click();
@@ -15,16 +16,16 @@ public class ListingTecDocSoft404_page_Logic extends ListingTecDocSoft404_page {
     return this;
   }
 
-  @Step("Check validation email field")
+  @Step("Check validation email field. ListingTecDocSoft404_page")
   public ListingTecDocSoft404_page_Logic checkValidationEmail() {
     submitBtn().click();
     errorTooltipOfEmailField().shouldHave(text("Bitte geben Sie eine gültige E-mail Adresse an"));
     return this;
   }
 
-  @Step("Check validation checkbox newsletter subscribe")
+  @Step("Check validation checkbox newsletter subscribe. ListingTecDocSoft404_page")
   public ListingTecDocSoft404_page_Logic checkValidationCheckboxNewsletter() {
-    emailForm().setValue("testatd@gmail.com");
+    emailForm().setValue(testMail);
     submitBtn().click();
     popupErrorConfirmYourNewsletter().shouldHave(text("Um fortzufahren bestätigen Sie bitte Ihr Newsletter-Abo"));
     return this;

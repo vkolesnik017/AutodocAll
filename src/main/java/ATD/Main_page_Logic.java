@@ -9,14 +9,13 @@ import org.openqa.selenium.By;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.*;
-import static ATD.CommonMethods.getCurrentShopFromJSVarInHTML;
 import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
 public class Main_page_Logic extends Main_page {
 
-
+    @Step("Login in header with mail {mail}. Main_page")
     public Profile_page_Logic loginFromHeader(String mail) {
         loginBtnInHeader().click();
         mailFieldLogin().setValue(mail);
@@ -25,38 +24,40 @@ public class Main_page_Logic extends Main_page {
         return page(Profile_page_Logic.class);
     }
 
+    @Step("Clicking log out in header. Main_page")
     Main_page_Logic logOutClick() {
         logoutButton().click();
-        return page(Main_page_Logic.class);
+        return this;
     }
 
+    @Step("Clicking profile in header. Main_page")
     public Profile_page_Logic profileBtnClickInHeader() {
         profileBtn().click();
         return page(Profile_page_Logic.class);
     }
 
     // Search bar
-    @Step("Input text in search bar")
+    @Step("Input text in search bar. Main_page")
     public Main_page_Logic inputTextInSearchBar(String text) {
         searchBar().setValue(text);
         return this;
     }
 
-    @Step("Click tooltip in search by exact text {exactTooltipText}")
+    @Step("Click tooltip in search by exact text {exactTooltipText}. Main_page")
     public Search_page_Logic clickTooltipInSearchByExactText(String exactTooltipText) {
         tooltipToSearch().shouldBe(visible);
         tooltipsToSearch().filter(exactText(exactTooltipText)).shouldHaveSize(1).get(0).click();
         return page(Search_page_Logic.class);
     }
 
-    @Step("Use search with: {searchArticle}")
+    @Step("Use search with: {searchArticle}. Main_page")
     public Search_page_Logic useSearch(String searchArticle) {
         inputTextInSearchBar(searchArticle)
                 .searchButton().click();
         return page(Search_page_Logic.class);
     }
 
-    @Step("The method verifies that generics are under synonyms when entered text {searchText} in search bar")
+    @Step("The method verifies that generics are under synonyms when entered text {searchText} in search bar. Main_page")
     public Main_page checkingThatGenericsAreUnderSynonymsInSearchTooltips(String searchText) {
         ElementsCollection tooltipsToSearch = inputTextInSearchBar(searchText).tooltipsToSearch().shouldHave(sizeNotEqual(0));
         for (int i = 0; i < tooltipsToSearch.size(); i++) {
@@ -70,7 +71,7 @@ public class Main_page_Logic extends Main_page {
     }
     // Selector
 
-    @Step("Close tooltip in car selector")
+    @Step("Close tooltip in car selector. Main_page")
     public Main_page_Logic closeTooltipInCarSelector() {
         tooltipInCarSelectorCloseBtn().shouldBe(visible);
         sleep(2000);
@@ -80,14 +81,14 @@ public class Main_page_Logic extends Main_page {
     }
 
     // Registration popup
-    @Step("Open registration popup.")
+    @Step("Open registration popup. Main_page")
     public Main_page_Logic openRegistrationPopup() {
         loginBtnInHeader().click();
         registrationButtonInLoginPopup().click();
         return this;
     }
 
-    @Step("Filling required fields for registration")
+    @Step("Filling required fields for registration. Main_page")
     public Main_page_Logic fillRequiredFieldsForRegistration(String firstName, String secondName, String mail, Boolean checkbox) {
         datenschutzerklarungTextInRegPopup().shouldBe(visible);
         vornameInRegForm().setValue(firstName);
@@ -98,7 +99,7 @@ public class Main_page_Logic extends Main_page {
         return this;
     }
 
-    @Step("Filling password fields and click registration")
+    @Step("Filling password fields and click registration. Main_page")
     public Profile_page_Logic fillPasswordFieldsAndClickRegistration() {
         newPassRegForm().setValue(password);
         newPassConfirmRegForm().setValue(password);
@@ -115,7 +116,7 @@ public class Main_page_Logic extends Main_page {
     // Selector kba
 
     // This method only for DE
-    @Step("Fill in KBA fields")
+    @Step("Fill in KBA fields. Main_page")
     public Main_page_Logic fillNumberKba(String numberForFirstField, String numberForSecondField) {
         sleep(4000); // added sleep SITES-7691
         firstFieldKBA().setValue(numberForFirstField);
@@ -124,20 +125,20 @@ public class Main_page_Logic extends Main_page {
     }
 
     // This method for all shop, except DE
-    @Step("Fill in KBA field")
+    @Step("Fill in KBA field. Main_page")
     public Main_page_Logic fillNumberKba(String kbaNumber) {
         sleep(3000); // added sleep SITES-7691
         firstFieldKBA().setValue(kbaNumber);
         return this;
     }
 
-    @Step("Click search KBA button")
+    @Step("Click search KBA button. Main_page")
     public Maker_car_list_page_Logic clickKbaBtn() {
         selectorKbaBtn().click();
         return page(Maker_car_list_page_Logic.class);
     }
 
-    @Step("Click link \"Was ist eine Schlüsselnummer?\" and check appears info KBA popup")
+    @Step("Click link \"Was ist eine Schlüsselnummer?\" and check appears info KBA popup. Main_page")
     public Main_page_Logic clickLinkAndCheckAppearsInfoKbaPopup() {
         arrowInBrandSelectorVerticalCar().waitUntil(visible, 30000);
         linkInfoKba().click();
@@ -146,20 +147,20 @@ public class Main_page_Logic extends Main_page {
     }
 
     // Car selector popup
-    @Step("Choose brand in car selector popup")
+    @Step("Choose brand in car selector popup. Main_page")
     public Main_page_Logic chooseBrandInCarSelectorPopup(String brandName) {
         brandSelectorInCarSelectorPopup().selectOption(brandName);
         Wait().until(webDriver -> brandSelectorInCarSelectorPopup().getSelectedText().equals(brandName));
         return this;
     }
 
-    @Step("Choose model in car selector popup")
+    @Step("Choose model in car selector popup. Main_page")
     public Main_page_Logic chooseModelInPopupSelectorForChooseCar(String modelNumberValue) {
         modelSelectorInCarSelectorPopup().selectOptionByValue(modelNumberValue);
         return this;
     }
 
-    @Step("Click reset button in car selector popup")
+    @Step("Click reset button in car selector popup. Main_page")
     public Main_page_Logic resetCarSelectorPopup() {
         resetCarBtnInCarSelectorPopup().click();
         resetCarBtnInCarSelectorPopup().shouldBe(not(visible));
@@ -169,7 +170,7 @@ public class Main_page_Logic extends Main_page {
     // Vertical car selector popup
 
     // The method needed for pages where the vertical car selector is hidden by default
-    @Step("Open vertical car selector if it hidden")
+    @Step("Open vertical car selector if it hidden. Main_page")
     public Main_page_Logic openVerticalCarSelectorIfItHidden() {
         if (!brandSelectorInVerticalCarSelector().isDisplayed()) {
             hiddenVerticalSelector().click();
@@ -177,7 +178,7 @@ public class Main_page_Logic extends Main_page {
         return this;
     }
 
-    @Step("Choose brand in vertical car selector")
+    @Step("Choose brand in vertical car selector. Main_page")
     public Main_page_Logic chooseBrandInVerticalCarSelector(String brandName) {
         openVerticalCarSelectorIfItHidden();
         brandSelectorInVerticalCarSelector().selectOption(brandName);
@@ -185,20 +186,20 @@ public class Main_page_Logic extends Main_page {
         return this;
     }
 
-    @Step("Choose model in vertical car selector")
+    @Step("Choose model in vertical car selector. Main_page")
     public Main_page_Logic chooseModelInVerticalCarSelector(String modelNumberValue) {
         modelSelectorInVerticalCarSelector().selectOptionByValue(modelNumberValue);
         sleep(1500);
         return this;
     }
 
-    @Step("Choose type in vertical car selector")
+    @Step("Choose type in vertical car selector. Main_page")
     private Main_page_Logic chooseTypeInVerticalCarSelector(String typeNumberValue) {
         typeSelectorInVerticalCarSelector().selectOptionByValue(typeNumberValue);
         return this;
     }
 
-    @Step("Choose brand, model, type in vertical car selector")
+    @Step("Choose brand, model, type in vertical car selector. Main_page")
     public Main_page_Logic chooseBrandModelTypeInSelector(String brandName, String modelNumberValue, String typeNumberValue) {
         chooseBrandInVerticalCarSelector(brandName);
         chooseModelInVerticalCarSelector(modelNumberValue);
@@ -206,20 +207,20 @@ public class Main_page_Logic extends Main_page {
         return this;
     }
 
-    @Step("Click reset button in vertical car selector")
+    @Step("Click reset button in vertical car selector. Main_page")
     public Main_page_Logic resetVerticalCarSelector() {
         resetBtnInVerticalCarSelector().click();
         resetBtnInVerticalCarSelector().shouldBe(not(visible));
         return this;
     }
 
-    @Step("Click search button in vertical car selector when NOT selected all fields")
+    @Step("Click search button in vertical car selector when NOT selected all fields. Main_page")
     public Main_page_Logic clickSearchBtnInVerticalSelectorWhenNotSelectedFields() {
         searchBtnInVerticalSelector().click();
         return this;
     }
 
-    @Step("Click search button in vertical car selector when SELECTED all fields, for redirect to catalog page")
+    @Step("Click search button in vertical car selector when SELECTED all fields, for redirect to catalog page. Main_page")
     public Categories_page_Logic clickSearchBtnInVerticalSelectorWhenSelectedAllFields() {
         searchBtnInVerticalSelector().click();
         return page(Categories_page_Logic.class);
@@ -227,17 +228,20 @@ public class Main_page_Logic extends Main_page {
 
 
     // GDPR footer
+    @Step("Scrolling to footer subscribe block. Main_page")
     public Main_page_Logic scrollToFooterSubscribeBlock() {
         footerForm().scrollTo();
         footerForm().shouldBe(Condition.visible);
         return this;
     }
 
+    @Step(":in review form on Main_page")
     public Main_page_Logic checkingDatenschutzerklarungLinkBehaviorInReviewsForm() {
-        new CommonMethods().checkingDatenschutzerklarungLinkBehavior(clickDatenschutzInSubscribeBlock(), "none solid rgb(0, 104, 215)");
+        new CommonMethods().checkingDatenschutzerklarungLinkBehavior(datenschutzLinkInSubscribeBlock(), "none solid rgb(0, 104, 215)");
         return this;
     }
 
+    @Step("Checking error popup with unclick checkbox in footer subscribe block. Main_page")
     public Main_page_Logic checkingErrorPopupUnclickCheckbox(String qc) {
         String mail = qc + mailRandom();
         subscriptionMailField().setValue(mail);
@@ -247,6 +251,7 @@ public class Main_page_Logic extends Main_page {
         return this;
     }
 
+    @Step("Checking success popup with click checkbox in footer subscribe block. Main_page")
     public String checkingSuccessPopupClickCheckbox(String qc) {
         String mail = qc + mailRandom();
         subscriptionMailField().setValue(mail);
@@ -257,7 +262,7 @@ public class Main_page_Logic extends Main_page {
         return mail;
     }
 
-    @Step("Checks application links")
+    @Step("Checks application links. Main_page")
     public Main_page_Logic checkApplicationLinks(String appUrl) {
         CommonMethods commonMethods = new CommonMethods();
         footerForm().scrollTo();
@@ -268,7 +273,7 @@ public class Main_page_Logic extends Main_page {
         return this;
     }
 
-    @Step("Checks transition to links and checks URLs")
+    @Step("Checks transition to footer links and checks URLs. Main_page")
     public Main_page_Logic checkTransitionToLinksOfStaticPage(String route) throws SQLException {
         String shop = getShopFromRoute(route);
         CommonMethods commonMethods = new CommonMethods();
@@ -335,7 +340,7 @@ public class Main_page_Logic extends Main_page {
         return this;
     }
 
-    @Step("Checks open and close droplist with countries")
+    @Step("Checks open and close footer droplist with countries. Main_page")
     public Main_page_Logic checkOpenAndCloseDroplistCountries() {
         footerForm().scrollTo();
         languageSelector().click();
@@ -346,7 +351,7 @@ public class Main_page_Logic extends Main_page {
         return this;
     }
 
-    @Step("Checking Countries Subscription")
+    @Step("Checking countries subscription from footer country list. Main_page")
     public Main_page_Logic checkingCountriesSubscription() throws SQLException {
         ElementsCollection elements = $$(By.xpath("//div[@class='mCSB_container']/div"));
         for (SelenideElement element : elements) {
@@ -360,7 +365,7 @@ public class Main_page_Logic extends Main_page {
         return this;
     }
 
-    @Step("Checks for successful newsletter subscription")
+    @Step("Checks for successful newsletter subscription in footer. Main_page")
     public Main_page_Logic checkSuccessfulNewsletterSubscription() {
         footerForm().scrollTo();
         subscriptionMailField().setValue(testMail);
@@ -371,7 +376,7 @@ public class Main_page_Logic extends Main_page {
         return this;
     }
 
-    @Step("Checks tooltip display for invalid email")
+    @Step("Checks tooltip display for invalid email in newsletter subscription form in footer. Main_page")
     public Main_page_Logic checkTooltipForInvalidEmail() {
         footerForm().scrollTo();
         subscriptionButton().click();
@@ -382,7 +387,7 @@ public class Main_page_Logic extends Main_page {
         return this;
     }
 
-    @Step("Checks for pop-up with error about non-confirmed newsletter subscription")
+    @Step("Checks for pop-up with error about non-confirmed newsletter subscription. Main_page")
     public Main_page_Logic checkPopUpNonConfirmedNewsletterSubscription() {
         footerForm().scrollTo();
         subscriptionMailField().setValue(testMail);
@@ -392,7 +397,7 @@ public class Main_page_Logic extends Main_page {
         return this;
     }
 
-    @Step("Checks link transitions on social networks")
+    @Step("Checks link transitions on social networks in footer. Main_page")
     public Main_page_Logic checkTransitionToSocialNetwork() {
         CommonMethods commonMethods = new CommonMethods();
         String facebook = "https://www.facebook.com/autodoc.de/";
@@ -408,7 +413,7 @@ public class Main_page_Logic extends Main_page {
         return this;
     }
 
-    @Step("Checks text blocks in the footer")
+    @Step("Checks text blocks in the footer. Main_page")
     public Main_page_Logic checkTextBlocksInFooter() {
         footerForm().scrollTo();
         techAllianceBlock().shouldBe(Condition.visible);
@@ -417,10 +422,10 @@ public class Main_page_Logic extends Main_page {
         return this;
     }
 
-    @Step("Checks transition the link Datenschutzerklärung")
+    @Step(": footer subscribe block om Main_page")
     public Main_page_Logic checkTransitionToLinkPrivacyPolicy(String route) throws SQLException {
         footerForm().scrollTo();
-        clickDatenschutzInSubscribeBlock().click();
+        datenschutzLinkInSubscribeBlock().click();
         new CommonMethods().checkingUrlAndCloseTab(route + "/" + new DataBase().getRouteByRouteName(getShopFromRoute(route), "staticDatenschutz"));
         return this;
     }

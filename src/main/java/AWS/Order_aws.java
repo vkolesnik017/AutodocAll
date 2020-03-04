@@ -300,7 +300,6 @@ public class Order_aws {
 
     @Step("Check delivery price in order AWS")
     public Order_aws checkDeliveryPriceOrderAWS( String expectedDeliveryPriceOrderAWS) {
-        System.out.println(deliveryDeliveryPriceOrderAWS().getAttribute("data-sum"));
         deliveryDeliveryPriceOrderAWS().shouldHave(attribute("data-sum", expectedDeliveryPriceOrderAWS));
         return this;
     }
