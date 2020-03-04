@@ -10,19 +10,19 @@ import java.util.List;
 
 import static com.codeborne.selenide.Condition.visible;
 
-public class Catalog_Page_Logic_lkw extends Catalog_Page_lkw {
+public class LKW_Catalog_Page_Logic extends LKW_Catalog_Page {
 
-    @Step("Selecting category in TecDock catalog")
-    public List<Integer> selectCategoryInTecDocCatalog() {
-        List<Integer> teckDockCatalogList = new ArrayList<>();
+    @Step("Getting category in TecDock catalog")
+    public List<Integer> getCategoryInTecDocCatalog() {
+        List<Integer> tecDocCatalogList = new ArrayList<>();
         catalogTecDoc().shouldBe(visible);
-        addAttributeOfProductToList(categoriesTeckDockCatalog(), teckDockCatalogList);
-        addAttributeOfProductToList(categoriesTeckDockCatalogSecondLevel(), teckDockCatalogList);
-        return teckDockCatalogList;
+        addAttributeOfProductToList(categoriesTecDockCatalog(), tecDocCatalogList);
+        addAttributeOfProductToList(categoriesTecDockCatalogSecondLevel(), tecDocCatalogList);
+        return tecDocCatalogList;
     }
 
-    @Step("Selecting category in Header Catalog")
-    public List<Integer> selectCategoryInHeaderCatalog() {
+    @Step("Getting category in Header Catalog")
+    public List<Integer> getCategoryInHeaderCatalog() {
         List<Integer> catalogInHeaderList = new ArrayList<>();
         menuCatalogInHeader().scrollTo().click();
         customCategory().hover();
@@ -33,10 +33,10 @@ public class Catalog_Page_Logic_lkw extends Catalog_Page_lkw {
     }
 
     @Step("Comparison TecDoc and InHeader catalogs")
-    public Catalog_Page_Logic_lkw comparisonTecDocAndInHeaderCatalogs() {
-        List<Integer> attributeOfTecDocCatalog = new ArrayList<>(selectCategoryInTecDocCatalog());
-        List<Integer> attributeOfInHeaderCatalog = new ArrayList<>(selectCategoryInHeaderCatalog());
-        Assert.assertEquals(sortingListWithAttributes(attributeOfInHeaderCatalog),sortingListWithAttributes(attributeOfTecDocCatalog));
+    public LKW_Catalog_Page_Logic comparisonTecDocAndInHeaderCatalogs() {
+        List<Integer> attributeOfTecDocCatalog = new ArrayList<>(getCategoryInTecDocCatalog());
+        List<Integer> attributeOfInHeaderCatalog = new ArrayList<>(getCategoryInHeaderCatalog());
+        Assert.assertEquals(sortingListWithAttributes(attributeOfInHeaderCatalog), sortingListWithAttributes(attributeOfTecDocCatalog));
         return this;
     }
 
@@ -48,7 +48,7 @@ public class Catalog_Page_Logic_lkw extends Catalog_Page_lkw {
     }
 
     @Step("add attributes to list")
-    public Catalog_Page_Logic_lkw addAttributeOfProductToList(ElementsCollection category, List<Integer> listWithAttribute) {
+    public LKW_Catalog_Page_Logic addAttributeOfProductToList(ElementsCollection category, List<Integer> listWithAttribute) {
         for (int k = 0; k < category.size(); k++) {
             listWithAttribute.add(Integer.parseInt(category.get(k).getAttribute("data-category-id")));
         }

@@ -19,6 +19,7 @@ import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class QC_963_ProductPage_TestPresenceOfElements {
     private Product_page_Logic product_page_logic = new Product_page_Logic();
@@ -117,6 +118,7 @@ public class QC_963_ProductPage_TestPresenceOfElements {
         //21
         product_page_logic.similarPropertiesBlock().shouldBe(visible);
         product_page_logic.linkInSimilarPropertiesBlock().click();
+        sleep(2000);
         waitingWhileLinkBecomeExpected("https://www.autodoc.de/bosch/1165812");
         open("https://autodoc.de/" + dataBase.getRouteByRouteName("DE", "product13"));
         //23

@@ -35,8 +35,8 @@ public class QC_149_TrucksCatalogInHeader_lkw {
         open(route);
         new LKW_main_page_Logic()
                 .checkPagesIsSuccessfulyLoaded()
-                .chekingOfAllCategoriesOfMainBlockTruckCatalog()
-                .chekingChildCategoryOlfilter();
+                .checkingOfAllCategoriesOfMainBlockTruckCatalog()
+                .checkingChildCategoryOlfilter();
     }
 
     @AfterMethod
