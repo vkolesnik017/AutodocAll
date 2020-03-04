@@ -47,7 +47,7 @@ public class Search_page {
         return $(".sidebar-category");
     }
 
-    private SelenideElement buyButton() {
+    SelenideElement buyButton() {
         return $(By.xpath("//div[@class='button ']/a[@id='search_page_product']"));
     }
 
@@ -111,16 +111,8 @@ public class Search_page {
         return $(byXpath("//*[@id='" + id + "']/../../..//img[contains(@class,'image')]"));
     }
 
-    private SelenideElement cartPopupWithProduct() {
+    SelenideElement cartPopupWithProduct() {
         return $(byCssSelector(".cart-items-block__title"));
-    }
-
-    @Step
-    public Cart_page_Logic addFirstProductAndGoToCart() {
-        buyButton().click();
-        cartPopupWithProduct().shouldBe(visible);
-        cartClick();
-        return page(Cart_page_Logic.class);
     }
 
     @Step

@@ -5,6 +5,7 @@ import io.qameta.allure.Step;
 
 import static ATD.CommonMethods.waitWhileRouteBecomeExpected;
 import static ATD.CommonMethods.waitingWhileLinkBecomeExpected;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.WebDriverRunner.url;
 import static org.testng.Assert.assertEquals;
@@ -67,6 +68,12 @@ public class Search_page_Logic extends Search_page {
         return this;
     }
 
-
+    @Step("Adds the first product and goes to the basket")
+    public Cart_page_Logic addFirstProductAndGoToCart() {
+        buyButton().click();
+        cartPopupWithProduct().shouldBe(visible);
+        cartClick();
+        return page(Cart_page_Logic.class);
+    }
 }
 

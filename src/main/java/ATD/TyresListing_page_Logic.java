@@ -9,7 +9,7 @@ public class TyresListing_page_Logic extends TyresListing_page {
 
     @Step("Adds first product to basket from tyres listing and goes to basket.")
     public Cart_page_Logic addFirstProductAndGoToCart() {
-        new Search_page().addFirstProductAndGoToCart();
+        new Search_page_Logic().addFirstProductAndGoToCart();
         return page(Cart_page_Logic.class);
     }
 
