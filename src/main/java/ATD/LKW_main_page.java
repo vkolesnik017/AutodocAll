@@ -123,6 +123,9 @@ public class LKW_main_page {
     protected SelenideElement childCategoryOlfilter() {
         return $x("//li[@class='menu-category__item']//span[contains(text(),'Ölfilter')]");
     }
+    protected SelenideElement childCategoryOnMainPage() {
+        return $x("//div[@class='truck-home-parts__cat-list']//span[contains(text(),'Ölfilter')]");
+    }
 
     protected ElementsCollection categoriesOfThirdBlockWitnDropMenu() {
         return $$(byXpath("//div[@class='menu-category__3-block']//li[contains(@class,'menu-category__item')]/span/span")).filter(visible);
@@ -131,6 +134,7 @@ public class LKW_main_page {
     protected ElementsCollection categoriesOfThirdBlockWithOutDropMenu() {
         return $$(byXpath("//div[@class='menu-category__3-block']//li[contains(@class,'menu-category__item')]/a/span")).filter(visible);
     }
+    protected SelenideElement tecDocCatalogOnMainPageLKW() {return $x("//div[@class='truck-home-parts']");}
 }
 
 
