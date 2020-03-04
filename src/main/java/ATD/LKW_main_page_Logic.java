@@ -225,7 +225,9 @@ public class LKW_main_page_Logic extends LKW_main_page {
     }
 
     @Step("Select child category on LKW main page")
-    public void selectChildCategory() {
-
+    public LKW_main_page_Logic selectChildCategory() {
+        tecDocCatalogOnMainPageLKW().scrollTo();
+         childCategoryOnMainPage().click();
+         return this;
     }
 }

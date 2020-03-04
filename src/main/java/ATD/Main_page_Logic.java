@@ -220,9 +220,9 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Click search button in vertical car selector when SELECTED all fields, for redirect to catalog page")
-    public Categories_page clickSearchBtnInVerticalSelectorWhenSelectedAllFields() {
+    public Categories_page_Logic clickSearchBtnInVerticalSelectorWhenSelectedAllFields() {
         searchBtnInVerticalSelector().click();
-        return page(Categories_page.class);
+        return page(Categories_page_Logic.class);
     }
 
 
