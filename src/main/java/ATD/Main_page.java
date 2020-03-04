@@ -372,20 +372,8 @@ public class Main_page {
         return $(By.cssSelector("#privacy_policy_footer>span"));
     }
 
-    @Step("Checking Countries Subscription")
-    public void checkingCountriesSubscription() throws SQLException {
-        ElementsCollection elements = $$(By.xpath("//div[@class='mCSB_container']/div"));
-        for (SelenideElement element : elements) {
-            String shopName = element.attr("id");
-            shopName = shopName.substring(shopName.indexOf("_") + 1);
-            if (shopName.equalsIgnoreCase("lu")) shopName = "ld";
-            $(By.xpath("//div[@class='footer-language__select']")).click();
-            element.$(By.xpath("./a")).scrollIntoView(true).click();
-            new CommonMethods().checkingUrlAndCloseTab(new DataBase().getRouteByRouteName(shopName, "main"));
-        }
-    }
-
     //ÜBER AUTODOC
+
     public About_us_page clickAboutUs() {
         $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[1]/a")).click();
         return page(About_us_page.class);
@@ -533,6 +521,16 @@ public class Main_page {
     public ErsatzteileCars_page clickNachModellEinkaufen() {
         $(By.xpath("//*[@class='footer__links']/div[4]/ul/li[9]/a")).click();
         return page(ErsatzteileCars_page.class);
+    }
+
+    //KUNDENSERVICE INTERNATIONAL
+
+    SelenideElement languageSelector(){
+        return $(By.cssSelector(".footer-language__select"));
+    }
+
+    SelenideElement dropdownCountry(){
+        return $x("//div[@class='footer-language__country-list mCustomScrollbar _mCS_1'] [@style='visibility: visible;']");
     }
 
     // Vertical car selector popup
