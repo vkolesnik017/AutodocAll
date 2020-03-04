@@ -269,7 +269,7 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Checks transition to links and checks URLs")
-    public Main_page_Logic checkForLinksAndUrls(String route) throws SQLException {
+    public Main_page_Logic checkTransitionToLinksOfStaticPage(String route) throws SQLException {
         String shop = getShopFromRoute(route);
         CommonMethods commonMethods = new CommonMethods();
         DataBase db = new DataBase();
@@ -371,8 +371,8 @@ public class Main_page_Logic extends Main_page {
         return this;
     }
 
-    @Step("Checks displaying of non-valid email tooltip")
-    public Main_page_Logic checkTooltipWithErrorMessage() {
+    @Step("Checks tooltip display for invalid email")
+    public Main_page_Logic checkTooltipForInvalidEmail() {
         footerForm().scrollTo();
         subscriptionButton().click();
         subscriptionErrTooltip().shouldHave(Condition.text("Bitte geben Sie eine gültige E-mail Adresse an"));
@@ -383,7 +383,7 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Checks for pop-up with error about non-confirmed newsletter subscription")
-    public Main_page_Logic checkPopUp() {
+    public Main_page_Logic checkPopUpNonConfirmedNewsletterSubscription() {
         footerForm().scrollTo();
         subscriptionMailField().setValue(testMail);
         subscriptionButton().click();
@@ -418,7 +418,7 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Checks transition the link Datenschutzerklärung")
-    public Main_page_Logic checkTransitionToLink(String route) throws SQLException {
+    public Main_page_Logic checkTransitionToLinkPrivacyPolicy(String route) throws SQLException {
         footerForm().scrollTo();
         clickDatenschutzInSubscribeBlock().click();
         new CommonMethods().checkingUrlAndCloseTab(route + "/" + new DataBase().getRouteByRouteName(getShopFromRoute(route), "staticDatenschutz"));

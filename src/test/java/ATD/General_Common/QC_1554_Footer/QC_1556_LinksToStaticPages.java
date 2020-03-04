@@ -28,9 +28,9 @@ public class QC_1556_LinksToStaticPages {
     @Flaky
     @Owner(value = "Chelombitko")
     @Test(dataProvider = "route")
-    @Description(value = "Test follow the link and check url")
+    @Description(value = "Test transition the link and check url")
     public void checkingLinksInFooter(String route) throws SQLException {
         openPage(route);
-        new Main_page_Logic().checkForLinksAndUrls(route);
+        new Main_page_Logic().checkTransitionToLinksOfStaticPage(route);
     }
 }

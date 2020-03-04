@@ -32,6 +32,6 @@ public class QC_1569_TransitionTheLink_Datenschutzerklärung {
     @Description(value = "Test check Datenschutzerklärung link")
     public void checkingDatenschutzLink(String route) throws SQLException {
         openPage(route);
-        new Main_page_Logic().checkTransitionToLink(route);
+        new Main_page_Logic().checkTransitionToLinkPrivacyPolicy(route);
     }
 }

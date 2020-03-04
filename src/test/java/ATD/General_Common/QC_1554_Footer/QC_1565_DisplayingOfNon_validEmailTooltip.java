@@ -27,10 +27,10 @@ public class QC_1565_DisplayingOfNon_validEmailTooltip {
     @Flaky
     @Owner(value = "Chelombitko")
     @Test(dataProvider = "route", enabled = true)
-    @Description(value = "Test displaying of non-valid email tooltip")
+    @Description(value = "Test checks displaying of non-valid email tooltip")
     public void checkValidationField(String route) {
         openPage(route);
-        new Main_page_Logic().checkTooltipWithErrorMessage();
+        new Main_page_Logic().checkTooltipForInvalidEmail();
 
     }
 }

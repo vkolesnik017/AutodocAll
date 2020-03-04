@@ -30,6 +30,6 @@ public class QC_1566_Pop_upErrorAbutNon_confirmedNewsletterSubscription {
     @Description(value = "Test checks for pop-up with error about non-confirmed newsletter subscription")
     public void checkPopupWithErrorMessage(String route) {
         openPage(route);
-        new Main_page_Logic().checkPopUp();
+        new Main_page_Logic().checkPopUpNonConfirmedNewsletterSubscription();
     }
 }

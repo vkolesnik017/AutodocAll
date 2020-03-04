@@ -28,7 +28,7 @@ public class QC_1568_PresenceOfTextBlocks {
     @Owner(value = "Chelombitko")
     @Test(dataProvider = "route", enabled = true)
     @Description(value = "Test checks text blocks in page footer")
-    public void checkingSocial(String route) {
+    public void checkTextBlocksInPageFooter(String route) {
         openPage(route);
         new Main_page_Logic().checkTextBlocksInFooter();
     }

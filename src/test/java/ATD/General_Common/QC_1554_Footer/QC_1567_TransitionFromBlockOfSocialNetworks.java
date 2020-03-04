@@ -28,7 +28,7 @@ public class QC_1567_TransitionFromBlockOfSocialNetworks {
     @Owner(value = "alex_qa")
     @Test(dataProvider = "route", enabled = true)
     @Description(value = "Test check social network links transitions")
-    public void checkingSocial(String route) {
+    public void checkingSocialNetworks(String route) {
         openPage(route);
         new Main_page_Logic().checkTransitionToSocialNetwork();
     }
