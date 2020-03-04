@@ -97,7 +97,7 @@ public class LKW_main_page_Logic extends LKW_main_page {
                 categoriesOfThirdBlockWitnDropMenu().get(i).scrollIntoView("{block: \"end\"}").hover();
                 fourthLevelDropMainMenuTrucksCatalogInHeader().should(appear);
                 titleOfFourthLevelMainDropMenuTruckCatalog().get(0).shouldHave(exactText(categoriesOfThirdBlockWitnDropMenu().get(i).getText())
-                .because(titleOfFourthLevelMainDropMenuTruckCatalog().get(0).getText() + "- title of the fourth block doesn't match the selected category of third block"));
+                        .because(titleOfFourthLevelMainDropMenuTruckCatalog().get(0).getText() + "- title of the fourth block doesn't match the selected category of third block"));
             }
         } else {
             categoriesOfThirdBlockWithOutDropMenu().shouldHave(sizeNotEqual(0).because(titleOfFourthLevelMainDropMenuTruckCatalog().get(0) + " - fourth block is empty"));
@@ -147,28 +147,8 @@ public class LKW_main_page_Logic extends LKW_main_page {
 
     }
 
-    @Step("clearing of Vertical selector if car was added")
-    public LKW_main_page_Logic clearOfVerticalSelector() {
-        if (resetBtnInVerticalCarSelector().isDisplayed()) {
-            resetBtnInVerticalCarSelector().click();
-        }
-        return this;
-    }
-
-    @Step("selecting first parent category in drop Mein Truck catalog menu")
-    public LKW_main_page_Logic selectFirstParentInMainDropTruckCatalogMenu() {
-        listOfParentsDropMainTruckCatalog().get(0).hover();
-        return this;
-    }
-
-    @Step("Get title of selecting element of main drop truck catalog menu")
-    public String titleOfSelectingParent() {
-        String titleOfSelectingElement = listOfParentsDropMainTruckCatalog().get(0).getText();
-        return titleOfSelectingElement;
-    }
-
     @Step("Select truck in vertical selector")
-    public LKW_Catalog_Page_Logic selectTruckInSelector(){
+    public LKW_Catalog_Page_Logic selectTruckInSelector() {
         markeOfVerticalTruckSelector().selectOptionByValue("36");
         modelOfVerticalTruckSelector().selectOptionByValue("682");
         motorOfVerticalTruckSelector().selectOptionByValue("1008978");
@@ -177,57 +157,75 @@ public class LKW_main_page_Logic extends LKW_main_page {
     }
 
     // Menu in header
-    @Step ("Click on PKW category")
+    @Step("Click on PKW category")
     public Main_page clickPkwCategory() {
         $("[data-ga-action='PKW']").click();
         return page(Main_page.class);
     }
 
-    @Step ("Click on Moto category")
+    @Step("Click on Moto category")
     public Moto_main_page clickMotoCategory() {
         $("[data-ga-action='MOTO']").click();
         return page(Moto_main_page.class);
     }
 
-    @Step ("Click on Tires category")
+    @Step("Click on Tires category")
     public Tyres_page clickTiresCategory() {
         $(byCssSelector("[data-ga-action='23208']")).click();
         return page(Tyres_page.class);
     }
 
-    @Step ("Click on Instrument category")
+    @Step("Click on Instrument category")
     public Index_instruments_page clickInstrumentsCategory() {
         $("[data-ga-action='36000']").click();
         return page(Index_instruments_page.class);
     }
 
-    @Step ("Click on Accessories category")
+    @Step("Click on Accessories category")
     public Index_accessories_page clickAccessoriesCategory() {
         $("[data-ga-action='33000']").click();
         return page(Index_accessories_page.class);
     }
 
-    @Step ("Click on EngineOil category")
+    @Step("Click on EngineOil category")
     public CarParts_EngineOil_page clickEngineOilCategory() {
         $("[data-ga-action='12094']").click();
         return page(CarParts_EngineOil_page.class);
     }
 
-    @Step ("Click on Filters category")
+    @Step("Click on Filters category")
     public CarParts_Filters_page clickFiltersCategory() {
         $("[data-ga-action='10105']").click();
         return page(CarParts_Filters_page.class);
     }
 
-    @Step ("Click on BrakeSystem category")
+    @Step("Click on BrakeSystem category")
     public CarParts_BrakeSystem_page clickBrakeSystemCategory() {
         $("[data-ga-action='10106']").click();
         return page(CarParts_BrakeSystem_page.class);
     }
 
-    @Step ("Click on Engine category")
+    @Step("Click on Engine category")
     public CarParts_Engine_page clickEngineCategory() {
         $(".header-i.header-i--engine").click();
         return page(CarParts_Engine_page.class);
+    }
+
+    @Step("Check successfully LKW page loading")
+    public LKW_main_page_Logic checkSuccessfullyLKWPageLoading() {
+        menuCatalogInHeader().shouldBe(visible);
+        Assert.assertTrue(url().contains("https://lkwteile.autodoc.de/"));
+        return this;
+    }
+
+    @Step("Checking that selector is empty")
+    public LKW_main_page_Logic checkOfEmptySelector() {
+        markeOfVerticalTruckSelector().shouldHave(exactValue("0"));
+        return this;
+    }
+
+    @Step("Select child category on LKW main page")
+    public void selectChildCategory() {
+
     }
 }
