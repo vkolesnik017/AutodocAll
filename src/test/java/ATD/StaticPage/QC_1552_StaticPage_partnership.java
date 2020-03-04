@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 
-public class QC_1175_StaticPage_contacts {
+public class QC_1552_StaticPage_partnership {
 
     @BeforeClass
     void setUp() {
@@ -27,13 +27,11 @@ public class QC_1175_StaticPage_contacts {
     @Test(dataProvider = "route")
     @Owner(value = "Chelombitko")
     @Flaky
-    @Description(value = "Test checks elements on contacts page")
-    public void checkContactsPageElements(String route) {
+    @Description(value = "Test checks elements on partnership page")
+    public void checkPartnershipPageElements(String route) {
         openPage(route);
-        new Main_page().clickContact()
-                .checkContactsBlock()
-                .checkNonPlacedOrderBlock()
-                .checkAlreadyPlacedOrderBlock();
-
+        new Main_page().clickPartnership()
+                .checkPageElements()
+                .checkAddPartnerBlock();
     }
 }

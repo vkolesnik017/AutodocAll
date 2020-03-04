@@ -28,7 +28,7 @@ public class QC_1091_StaticPage_austauschartikel {
     @Owner(value = "Chelombitko")
     @Flaky
     @Description(value = "Test checks elements on austauschartikel page")
-    public void checkAustauschartikelPageElements(String route) {
+    public void checkAustauschartikelPageElements(String route) throws Exception {
         openPage(route);
         new Main_page().clickAustauschartikel()
                 .checkItemsTopPage()
@@ -37,6 +37,7 @@ public class QC_1091_StaticPage_austauschartikel {
                 .checkCategoriesPfandBlock()
                 .checkRequirementForPartsBlock()
                 .SelectsRandomCategory()
+                .getStatusImageCod()
                 .checkTitleAndDDescriptionOfCategory()
                 .checkDepositRefundForm();
     }

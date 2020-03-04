@@ -31,7 +31,7 @@ public class QC_269_GdprContacts {
         return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "staticContact");
     }
 
-    @Test(dataProvider = "route", enabled = false)
+    @Test(dataProvider = "route", enabled = true)
     @Flaky
     @Owner(value = "alex_qa")
     @Description(value = "Test verify working GDPR form on noOrder tab")

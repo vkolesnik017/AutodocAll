@@ -36,7 +36,7 @@ public class Product_page {
         return $(byCssSelector(".popup-other-cat__close"));
     }
 
-    public SelenideElement grayButton() {
+    SelenideElement grayButton() {
         return $(byCssSelector(".button.not_active>a"));
     }
 
@@ -56,23 +56,23 @@ public class Product_page {
         return $(".product-eco-block");
     }
 
-    public SelenideElement pfandPagelink() {
+    SelenideElement pfandPagelink() {
         return $x("//div[@class='product-eco-block']//a[@target='_blank']");
     }
 
     public SelenideElement freeDeliveryIcon() {
-        return $(".features-gratis-icon");
+        return $(".gratis-versand__in-card");
     }
 
     public SelenideElement safeOrderIcon() {
         return $(".features-safe-icon");
     }
 
-    public SelenideElement days14ForReturnOfGoodsIcon() {
+    SelenideElement days14ForReturnOfGoodsIcon() {
         return $(".features-tage-icon");
     }
 
-    public SelenideElement years2OnWarrantyIcon() {
+    SelenideElement years2OnWarrantyIcon() {
         return $(".features-guarantee-icon");
     }
 
@@ -342,6 +342,11 @@ public class Product_page {
         return $(By.xpath("//div[@id='popup_update']//div[@class='buttons-inner']/a"));
     }
 
+    SelenideElement reviewsFormAnsweredQuestionField() {
+        return $(By.id("popup_update"));
+    }
+
+
     //locators for compatibility block
     public SelenideElement compatibleCarBrand() {
         return $(".accordion-button > span");
@@ -438,19 +443,19 @@ public class Product_page {
         return $(byClassName("popup-available"));
     }
 
-    public SelenideElement emailFieldInPopUpOfGrayBtn() {
+    SelenideElement emailFieldInPopUpOfGrayBtn() {
         return $(byId("form_AvailabilityReminder[email]"));
     }
 
-    public SelenideElement sendButtonInPopUpOfGrayBtn() {
+    SelenideElement sendButtonInPopUpOfGrayBtn() {
         return $(byCssSelector(".popup-available__button"));
     }
 
-    public SelenideElement checkboxInPopUpOfGrayBtn() {
+    SelenideElement checkboxInPopUpOfGrayBtn() {
         return $(byCssSelector(".popup-available__label"));
     }
 
-    public SelenideElement closeSuccessPopUpOfGrayBtn() {
+    SelenideElement closeSuccessPopUpOfGrayBtn() {
         return $(byXpath("//div[@class='popup_top']//a[@class='close']"));
     }
 
@@ -501,7 +506,7 @@ public class Product_page {
         return $(byId("kba-error-tooltip"));
     }
 
-    public SelenideElement resetBtnSelector() {
+    SelenideElement resetBtnSelector() {
         return $(byId("reset_selector_form"));
     }
 
@@ -519,7 +524,7 @@ public class Product_page {
     }
 
     // OEN block
-    public ElementsCollection linksInOenNumbersBlock() {
+    ElementsCollection linksInOenNumbersBlock() {
         return $$x("//*[@class='oem-list']//li");
     }
 
@@ -576,6 +581,10 @@ public class Product_page {
 
     SelenideElement faqFormSendenBtn() {
         return $(By.id("sended_btn2"));
+    }
+
+    SelenideElement faqFormAnsweredQuestionField() {
+        return $(By.xpath("//p[@class='question']"));
     }
 
     SelenideElement faqFormSuccesPopup() {

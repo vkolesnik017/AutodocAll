@@ -1,15 +1,21 @@
 package ATD;
 
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Random;
 
 import static ATD.CommonMethods.clickable;
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.Selenide.sleep;
+import static org.testng.Assert.assertEquals;
 
 
 public class Austauschartikel_static_page_Logic extends Austauschartikel_static_page {
@@ -60,6 +66,21 @@ public class Austauschartikel_static_page_Logic extends Austauschartikel_static_
         ElementsCollection categoriesList = (categoriesWithDeposits());
         Random random = new Random();
         categoriesList.get(random.nextInt(categoriesList.size())).click();
+        return this;
+    }
+
+
+    @Step("Gets the status of the image code")
+    public Austauschartikel_static_page_Logic getStatusImageCod() throws IOException {
+        // I added a condition in order to prevent a test fail in case there are no images
+        if (categoryImage().isDisplayed()) {
+            String linkInsideImage = categoryImage().getAttribute("src");
+            URL url = new URL(linkInsideImage);
+            HttpURLConnection http = (HttpURLConnection) url.openConnection();
+            http.setInstanceFollowRedirects(true);
+            int responseCode = http.getResponseCode();
+            assertEquals(responseCode, 200);
+        }
         return this;
     }
 
