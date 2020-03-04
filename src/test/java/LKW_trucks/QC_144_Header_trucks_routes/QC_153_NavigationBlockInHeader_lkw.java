@@ -2,6 +2,7 @@ package LKW_trucks.QC_144_Header_trucks_routes;
 
 import ATD.DataBase;
 import ATD.LKW_main_page;
+import ATD.LKW_main_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -18,7 +19,7 @@ import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.open;
 
 public class QC_153_NavigationBlockInHeader_lkw {
-    private LKW_main_page mainPage = new LKW_main_page();
+    private LKW_main_page_Logic mainPage = new LKW_main_page_Logic();
     private DataBase db = new DataBase();
     @BeforeClass
     void setUp() {
