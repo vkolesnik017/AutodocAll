@@ -7,8 +7,9 @@ import org.testng.Assert;
 
 import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.page;
-import static com.codeborne.selenide.Selenide.title;
+import static com.codeborne.selenide.Selectors.byCssSelector;
+import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class LKW_main_page_Logic extends LKW_main_page {
@@ -35,14 +36,14 @@ public class LKW_main_page_Logic extends LKW_main_page {
     }
 
     @Step("checking of appearance Pop-Up block after click on Beispiel link")
-    public LKW_main_page_Logic chekingOfVisibilityOfLogoInHeader() {
+    public LKW_main_page_Logic checkingOfVisibilityOfLogoInHeader() {
         logoInHeader().shouldBe(visible);
         return this;
     }
 
 
     @Step("checking of all categories of Trucks catalog drop menu")
-    public LKW_main_page_Logic chekingOfAllCategoriesOfMainBlockTruckCatalog() {
+    public LKW_main_page_Logic checkingOfAllCategoriesOfMainBlockTruckCatalog() {
         logoInHeader().shouldBe(visible);
         closeBtnOfCookiesPopUp().click();
         menuCatalogInHeader().click();
@@ -105,21 +106,21 @@ public class LKW_main_page_Logic extends LKW_main_page {
     }
 
 
-    @Step("cheking of child category with and without car")
-    public LKW_main_page_Logic chekingChildCategoryOlfilter() {
+    @Step("checking of child category with and without car")
+    public LKW_main_page_Logic checkingChildCategoryOlfilter() {
         selectChildCategoryWithOutCar()
                 .selectChildCategoryWithCar();
         return this;
     }
 
-    @Step("cheking of child category without car")
+    @Step("checking of child category without car")
     public LKW_main_page_Logic selectChildCategoryWithOutCar() {
         selectingOlifilterModel();
         Assert.assertEquals(url(), "https://lkwteile.autodoc.de/ersatzteile/olfilter-200157");
         return this;
     }
 
-    @Step("cheking of child category category with car")
+    @Step("checking of child category category with car")
     public LKW_main_page_Logic selectChildCategoryWithCar() {
         verticalTruckSelector().shouldBe(visible);
         markeOfVerticalTruckSelector().selectOptionByValue("69");
@@ -167,11 +168,66 @@ public class LKW_main_page_Logic extends LKW_main_page {
     }
 
     @Step("Select truck in vertical selector")
-    public Catalog_Page_Logic_lkw selectTruckInSelector(){
+    public LKW_Catalog_Page_Logic selectTruckInSelector(){
         markeOfVerticalTruckSelector().selectOptionByValue("36");
         modelOfVerticalTruckSelector().selectOptionByValue("682");
         motorOfVerticalTruckSelector().selectOptionByValue("1008978");
         buttonSuchenOfVerticaltruckSelectorMainPage().click();
-        return page(Catalog_Page_Logic_lkw.class);
+        return page(LKW_Catalog_Page_Logic.class);
+    }
+
+    // Menu in header
+    @Step ("Click on PKW category")
+    public Main_page clickPkwCategory() {
+        $("[data-ga-action='PKW']").click();
+        return page(Main_page.class);
+    }
+
+    @Step ("Click on Moto category")
+    public Moto_main_page clickMotoCategory() {
+        $("[data-ga-action='MOTO']").click();
+        return page(Moto_main_page.class);
+    }
+
+    @Step ("Click on Tires category")
+    public Tyres_page clickTiresCategory() {
+        $(byCssSelector("[data-ga-action='23208']")).click();
+        return page(Tyres_page.class);
+    }
+
+    @Step ("Click on Instrument category")
+    public Index_instruments_page clickInstrumentsCategory() {
+        $("[data-ga-action='36000']").click();
+        return page(Index_instruments_page.class);
+    }
+
+    @Step ("Click on Accessories category")
+    public Index_accessories_page clickAccessoriesCategory() {
+        $("[data-ga-action='33000']").click();
+        return page(Index_accessories_page.class);
+    }
+
+    @Step ("Click on EngineOil category")
+    public CarParts_EngineOil_page clickEngineOilCategory() {
+        $("[data-ga-action='12094']").click();
+        return page(CarParts_EngineOil_page.class);
+    }
+
+    @Step ("Click on Filters category")
+    public CarParts_Filters_page clickFiltersCategory() {
+        $("[data-ga-action='10105']").click();
+        return page(CarParts_Filters_page.class);
+    }
+
+    @Step ("Click on BrakeSystem category")
+    public CarParts_BrakeSystem_page clickBrakeSystemCategory() {
+        $("[data-ga-action='10106']").click();
+        return page(CarParts_BrakeSystem_page.class);
+    }
+
+    @Step ("Click on Engine category")
+    public CarParts_Engine_page clickEngineCategory() {
+        $(".header-i.header-i--engine").click();
+        return page(CarParts_Engine_page.class);
     }
 }
