@@ -2,11 +2,13 @@ package ATD;
 
 import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.Step;
+import org.testng.Assert;
 
 import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class Categories_page_Logic extends Categories_page {
 
@@ -34,6 +36,19 @@ public class Categories_page_Logic extends Categories_page {
   Categories_page_Logic clickOilFilterCategoryLink() {
     linkForCategoryOilFilter().click();
     return page(Categories_page_Logic.class);
+  }
+
+  @Step("Сheck that the page loads successfully")
+  public Categories_page_Logic checkSuccessfullyPageLoading(){
+    searchBarByCatalog().shouldBe(visible);
+    Assert.assertEquals(url(),"https://www.autodoc.de/ersatzteile/mercedes-benz/a-klasse/a-class-w177/130593-a-180-d-177-003");
+    return this;
+  }
+
+  @Step("Select LKW category")
+  public LKW_main_page_Logic selectLKWCategory(){
+    lkwCategory().click();
+    return page(LKW_main_page_Logic.class);
   }
 
 }

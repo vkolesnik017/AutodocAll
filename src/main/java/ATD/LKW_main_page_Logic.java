@@ -147,28 +147,8 @@ public class LKW_main_page_Logic extends LKW_main_page {
 
     }
 
-    @Step("Clearing of Vertical selector if car was added. LKW_main_page")
-    public LKW_main_page_Logic clearOfVerticalSelector() {
-        if (resetBtnInVerticalCarSelector().isDisplayed()) {
-            resetBtnInVerticalCarSelector().click();
-        }
-        return this;
-    }
-
-    @Step("Selecting first parent category in drop Mein Truck catalog menu. LKW_main_page")
-    public LKW_main_page_Logic selectFirstParentInMainDropTruckCatalogMenu() {
-        listOfParentsDropMainTruckCatalog().get(0).hover();
-        return this;
-    }
-
-    @Step("Get title of selecting element of main drop truck catalog menu. LKW_main_page")
-    public String titleOfSelectingParent() {
-        String titleOfSelectingElement = listOfParentsDropMainTruckCatalog().get(0).getText();
-        return titleOfSelectingElement;
-    }
-
-    @Step("Select truck in vertical selector. LKW_main_page")
-    public LKW_Catalog_page_Logic selectTruckInSelector(){
+    @Step("Select truck in vertical selector")
+    public LKW_Catalog_page_Logic selectTruckInSelector() {
         markeOfVerticalTruckSelector().selectOptionByValue("36");
         modelOfVerticalTruckSelector().selectOptionByValue("682");
         motorOfVerticalTruckSelector().selectOptionByValue("1008978");
@@ -229,5 +209,25 @@ public class LKW_main_page_Logic extends LKW_main_page {
     public CarParts_Engine_page clickEngineCategory() {
         $(".header-i.header-i--engine").click();
         return page(CarParts_Engine_page.class);
+    }
+
+    @Step("Check successfully LKW page loading")
+    public LKW_main_page_Logic checkSuccessfullyLKWPageLoading() {
+        menuCatalogInHeader().shouldBe(visible);
+        Assert.assertTrue(url().contains("https://lkwteile.autodoc.de/"));
+        return this;
+    }
+
+    @Step("Checking that selector is empty")
+    public LKW_main_page_Logic checkOfEmptySelector() {
+        markeOfVerticalTruckSelector().shouldHave(exactValue("0"));
+        return this;
+    }
+
+    @Step("Select child category on LKW main page")
+    public LKW_main_page_Logic selectChildCategory() {
+        tecDocCatalogOnMainPageLKW().scrollTo();
+         childCategoryOnMainPage().click();
+         return this;
     }
 }
