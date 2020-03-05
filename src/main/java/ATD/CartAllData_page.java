@@ -1,19 +1,14 @@
 package ATD;
 
 import com.codeborne.selenide.SelenideElement;
-import io.qameta.allure.Step;
 import org.openqa.selenium.By;
-import org.testng.Assert;
 
-import static ATD.CommonMethods.getPriceFromElement;
-import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
-import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.WebDriverRunner.source;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$x;
 
 public class CartAllData_page {
 
-    @Step
     public SelenideElement searchProductByID(String idProduct) {
         return $(byCssSelector("[data-article_id='" + idProduct + "']"));
     }
@@ -26,25 +21,20 @@ public class CartAllData_page {
         return $(byXpath("//*[@class='alldata-bottom']//*[@class='free_icon']"));
     }
 
-    private SelenideElement fieldWithQuantityOfProducts() {
+    SelenideElement fieldWithQuantityOfProducts() {
         return $(byCssSelector(".qty>input"));
     }
 
-    private SelenideElement counterPlusBtn() {
+    SelenideElement counterPlusBtn() {
         return $(byCssSelector(".plus"));
     }
 
-    private SelenideElement counterMinusBtn() {
+    SelenideElement counterMinusBtn() {
         return $(byCssSelector(".minus"));
     }
 
-    private SelenideElement nextBtn() {
+    SelenideElement nextBtn() {
         return $(byCssSelector(".order-summary__button"));
-    }
-
-    public Payment_handler_page nextBtnClick() {
-        nextBtn().click();
-        return page(Payment_handler_page.class);
     }
 
     // locator only for CH
@@ -123,89 +113,21 @@ public class CartAllData_page {
         return $(byCssSelector(".change_address"));
     }
 
-    private SelenideElement popupOfEmptyBasket() {
+    SelenideElement popupOfEmptyBasket() {
         return $(By.xpath("//div[@class='cart-popup close-redirect']"));
     }
 
-    private SelenideElement closeBtnPopupOfEmptyBasket() {
+    SelenideElement closeBtnPopupOfEmptyBasket() {
         return $(By.xpath("//div[@class='cart-popup close-redirect']//a[@class='color close_popup']"));
     }
 
     //locators for tyres
-    SelenideElement tyresAreNotDeliveredToCountryPopup() { return $(".delivery_limit_tyres"); }
-
-    SelenideElement closeTyresNotDeliveredPopupButton() { return $("close_popup"); }
-
-    @Step("Check tyres are not delivered popup and clicking close popup, after that checking one more popup and after clicking close must redirect us on main page")
-    public Main_page checkTyresNotDeliveredPopupAndRedirect() {
-        tyresAreNotDeliveredToCountryPopup().shouldBe(visible);
-        closePopupBtn().click();
-        popupOfEmptyBasket().shouldBe(visible);
-        closeBtnPopupOfEmptyBasket().click();
-        new Main_page().logoInHeader().shouldBe(visible);
-        String pageSource = source();
-        if(!pageSource.contains("ROUTE_NAME\":\"main\"")) Assert.fail("Wrong page. Must open Main Page");
-        return page(Main_page.class);
+    SelenideElement tyresAreNotDeliveredToCountryPopup() {
+        return $(".delivery_limit_tyres");
     }
 
-    @Step("Check removing tyres on alldata with other products with delivery to other country")
-    public CartAllData_page checkRemovingTyresFromAlldataWithOtherProducts(String productId) {
-        tyresAreNotDeliveredToCountryPopup().shouldBe(visible);
-        closePopupBtn().click();
-        searchProductByID(productId).shouldNotBe(visible);
-        return this;
+    SelenideElement closeTyresNotDeliveredPopupButton() {
+        return $("close_popup");
     }
 
-    @Step("Checking popup that appear when delivery impossible and clicking close popup,after that checking one more popup and after clicking close must redirect us on main page ")
-    public Main_page closePopupDeliveryImpossibleAndCheckEmptyCart() {
-        popupOfDangerousProduct().shouldBe(appear);
-        closePopupBtn().click();
-//        areaOutOfPopup(), deleteProductBtnInPopup();
-        popupOfEmptyBasket().shouldBe(appear);
-        closeBtnPopupOfEmptyBasket().click();
-        new Main_page().logoInHeader().shouldBe(appear);
-        String pageSource = source();
-        if(!pageSource.contains("ROUTE_NAME\":\"main\"")) Assert.fail("Wrong page. Must open Main Page");
-        return page(Main_page.class);
-    }
-
-
-    @Step
-    public CartAllData_page makeAndCheckLimitPriceForFreeDelivery(float deliveryLimit) {
-        // An increase in the quantity of products for checking the limit of free delivery
-        float totalPrice = getPriceFromElement(totalProductPrice());
-        while (!freeDeliveryIcon().isDisplayed() && totalPrice < deliveryLimit) {
-            String beforeClickPrice = totalProductPrice().text();
-            sleep(1000);
-            counterPlusBtn().click();
-            totalProductPrice().shouldHave(not(text(beforeClickPrice)));
-            totalPrice = getPriceFromElement(totalProductPrice());
-            if (totalPrice < deliveryLimit) {
-                freeDeliveryIcon().shouldBe(not(visible));
-            } else if (totalPrice > deliveryLimit) {
-                freeDeliveryIcon().shouldBe(visible);
-                break;
-            }
-        }
-        return this;
-    }
-
-    @Step
-    public CartAllData_page counterIncrease(String startValue) {
-        new CommonMethods().checkingCounterIncrease(startValue, fieldWithQuantityOfProducts(), counterPlusBtn());
-        return this;
-    }
-
-    @Step
-    public CartAllData_page counterDecrease(String startValue) {
-        new CommonMethods().checkingCounterDecrease(startValue, fieldWithQuantityOfProducts(), counterMinusBtn());
-        sleep(1000);
-        return this;
-    }
-
-    @Step("Check delivery price on alldata page")
-    public CartAllData_page checkDeliveryPriceAlldata(String deliveryPrice) {
-        freeDeliveryIcon().shouldHave(text(deliveryPrice));
-        return this;
-    }
 }

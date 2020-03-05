@@ -1,6 +1,6 @@
 package ATD;
 
 
-public class Altolentsorgung_page {
+class Altolentsorgung_page {
 
 }

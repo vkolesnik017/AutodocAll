@@ -1,6 +1,7 @@
 package ATD.GDRP;
 
 import ATD.Sales_page;
+import ATD.Sales_page_Logic;
 import ATD.SetUp;
 import AWS.PrivacyPolicySubscription_aws;
 import io.qameta.allure.Description;
@@ -35,7 +36,7 @@ public class QC_517_SalesPage {
     @Description(value = "Test verify working of send ship form on Sales page")
     public void testFormOnSalesPage(String route) {
         openPage(route);
-        mail = new Sales_page().checkingDatenschutzerklarungLinkBehavior().fillingFieldsAndCheckBehaviorSendMailForm();
+        mail = new Sales_page_Logic().checkingDatenschutzerklarungLinkBehavior().fillingFieldsAndCheckBehaviorSendMailForm();
         new PrivacyPolicySubscription_aws().openPolicySubscriptionWithLogin().checkingPolicyAndSubscribeForMail(this.mail);
     }
 }

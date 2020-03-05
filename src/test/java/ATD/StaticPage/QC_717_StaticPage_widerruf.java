@@ -1,16 +1,19 @@
 package ATD.StaticPage;
 
 import ATD.Main_page;
+import ATD.Main_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Selenide.close;
 
 public class QC_717_StaticPage_widerruf {
 
@@ -30,7 +33,12 @@ public class QC_717_StaticPage_widerruf {
     @Description(value = "Test checks elements on widerruf page")
     public void checkWiderrufPageElements(String route) {
         openPage(route);
-        new Main_page().clickWiderruf()
+        new Main_page_Logic().clickWiderruf()
                 .checkItemsOnPage();
+    }
+
+    @AfterMethod
+    private void tearDown() {
+        close();
     }
 }

@@ -1,6 +1,6 @@
 package ATD;
 
 
-public class Autopflege_page {
+class Autopflege_page {
 
 }

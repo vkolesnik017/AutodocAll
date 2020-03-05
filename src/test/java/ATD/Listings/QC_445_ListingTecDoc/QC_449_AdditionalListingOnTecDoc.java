@@ -1,6 +1,6 @@
 package ATD.Listings.QC_445_ListingTecDoc;
 
-import ATD.Listing_page;
+import ATD.Listing_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,25 +16,23 @@ import static ATD.SetUp.setUpBrowser;
 
 public class QC_449_AdditionalListingOnTecDoc {
 
-  private Listing_page listingPage = new Listing_page();
+    @BeforeClass
+    void setUp() {
+        setUpBrowser(false, "chrome", "77.0");
+    }
 
-  @BeforeClass
-  void setUp() {
-    setUpBrowser(false, "chrome", "77.0");
-  }
+    @DataProvider(name = "route")
+    Object[] dataProvider() throws SQLException {
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list10");
+    }
 
-  @DataProvider(name = "route")
-  Object[] dataProvider() throws SQLException {
-    return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list10");
-  }
-
-  @Test(dataProvider = "route")
-  @Flaky
-  @Owner(value = "Evlentiev")
-  @Description(value = "Checks additional listing on TecDoc listing")
-  public void testPresenceAdditionalListingOnTecDoc(String route) {
-    openPage(route);
-    listingPage.checksThatProductsAtListingAreFitsForChosenCar("FORD C-Max II (DXA/CB7, DXA/CEU) 1.0 EcoBoost");
-  }
+    @Test(dataProvider = "route")
+    @Flaky
+    @Owner(value = "Evlentiev")
+    @Description(value = "Checks additional listing on TecDoc listing")
+    public void testPresenceAdditionalListingOnTecDoc(String route) {
+        openPage(route);
+        new Listing_page_Logic().checksThatProductsAtListingAreFitsForChosenCar("FORD C-Max II (DXA/CB7, DXA/CEU) 1.0 EcoBoost");
+    }
 
 }

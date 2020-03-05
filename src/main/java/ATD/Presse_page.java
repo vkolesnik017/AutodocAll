@@ -1,6 +1,6 @@
 package ATD;
 
 
-public class Presse_page {
+class Presse_page {
 
 }

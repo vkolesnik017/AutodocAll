@@ -1,4 +1,4 @@
-package ATD.QASYS_73_ProductGroups;
+package ATD.ProductGroups;
 
 import ATD.DataBase;
 import ATD.Product_page_Logic;
@@ -7,18 +7,18 @@ import com.codeborne.selenide.Condition;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.getShopFromRoute;
-import static ATD.CommonMethods.password;
+import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.close;
 
-public class QASYS_74_Regular {
+public class QC_1584_Regular {
 
     @BeforeClass
     void setUp() {
@@ -31,13 +31,13 @@ public class QASYS_74_Regular {
     }
 
 
-    @Owner(value = "alex_qa")
+    @Owner(value = "Chelombitko")
     @Test(dataProvider = "route")
     @Description(value = "Test check making order with regular product")
     @Flaky
     public void checkingOrderWithRegular(String route) throws SQLException {
         String shop = getShopFromRoute(route);
-        open(route + "/" + new DataBase().getRouteByRouteName(shop, "product2"));
+        openPage(route + "/" + new DataBase().getRouteByRouteName(shop, "product2"));
         String testMail = "atdautotest@mailinator.com";
         new Product_page_Logic().addProductToCart().closePopupOtherCategoryIfYes()
                 .cartClick()
@@ -47,5 +47,10 @@ public class QASYS_74_Regular {
                 .chooseVorkasse().nextBtnClick()
                 .nextBtnClick()
                 .closePopupAfterOrder().successTextInHeader().shouldHave(Condition.text("Vielen Dank"));
+    }
+
+    @AfterMethod
+    private void tearDown() {
+        close();
     }
 }

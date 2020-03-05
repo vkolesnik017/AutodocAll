@@ -11,13 +11,15 @@ import static com.codeborne.selenide.Selenide.switchTo;
 
 public class MobileApp_static_page_Logic extends MobileApp_static_page {
 
-    @Step(":registration form. MobileApp_static_page")
+    @Step(":registration form. MobileApp_static_page. MobileApp_static_page")
     public MobileApp_static_page_Logic checkingDatenschutzerklarungLinkBehavior() {
         new CommonMethods().checkingDatenschutzerklarungLinkBehavior(privacyPolicyLink(), "underline solid rgb(0, 0, 0)");
         return this;
     }
 
-    public String fillingFieldsAndCheckBehaviorSubscribeForm(String qc){
+
+    @Step("Filling fields and checking behavior of subscribe form. MobileApp_static_page")
+    public String fillingFieldsAndCheckBehaviorSubscribeForm(String qc) {
         String mail = qc + mailRandom();
         mailFieldInSubscribeForm().setValue(mail);
         appSubscribeCheckbox().click();
@@ -29,8 +31,8 @@ public class MobileApp_static_page_Logic extends MobileApp_static_page {
     }
 
 
-    @Step("Checks for items at the top of the page MobileApp")
-    public MobileApp_static_page_Logic checkForItemsFromTopPage(){
+    @Step("Checks for items at the top of the page MobileApp. MobileApp_static_page")
+    public MobileApp_static_page_Logic checkForItemsFromTopPage() {
         appLogo().shouldBe(visible);
         appTitle().shouldBe(visible);
         appStoreButton().shouldBe(visible).shouldBe(clickable);
@@ -48,8 +50,8 @@ public class MobileApp_static_page_Logic extends MobileApp_static_page {
         return this;
     }
 
-    @Step("Checks App Store and Google Play buttons functionality")
-    public MobileApp_static_page_Logic checkAppStoreAndGooglePlayButtonsFunctionality(){
+    @Step("Checks App Store and Google Play buttons functionality. MobileApp_static_page")
+    public MobileApp_static_page_Logic checkAppStoreAndGooglePlayButtonsFunctionality() {
         appStoreButton()
                 .shouldBe(visible)
                 .shouldHave(attribute("href", "https://itunes.apple.com/app/id1014949597"))
@@ -69,8 +71,8 @@ public class MobileApp_static_page_Logic extends MobileApp_static_page {
         return this;
     }
 
-    @Step("Checks for the presence of a block with a slider and elements inside it")
-    public MobileApp_static_page_Logic checkBlockWithSlider(){
+    @Step("Checks for the presence of a block with a slider and elements inside it. MobileApp_static_page")
+    public MobileApp_static_page_Logic checkBlockWithSlider() {
         blockWithSlider().scrollTo();
         blockWithSlider().shouldBe(visible);
         sliderTitle().shouldBe(visible);
@@ -80,8 +82,8 @@ public class MobileApp_static_page_Logic extends MobileApp_static_page {
         return this;
     }
 
-    @Step("Checks auto banner switching")
-    public MobileApp_static_page_Logic checkAutoBannerSwitching(){
+    @Step("Checks auto banner switching. MobileApp_static_page")
+    public MobileApp_static_page_Logic checkAutoBannerSwitching() {
         firstImageInSlider().waitUntil(visible, 10000);
         secondImageInSlider().waitUntil(visible, 10000);
         thirdImaigeInSlider().waitUntil(visible, 12000);
@@ -89,8 +91,8 @@ public class MobileApp_static_page_Logic extends MobileApp_static_page {
         return this;
     }
 
-    @Step("Checks the banner switch buttons")
-    public MobileApp_static_page_Logic checkBannerSwitchButtons(){
+    @Step("Checks the banner switch buttons. MobileApp_static_page")
+    public MobileApp_static_page_Logic checkBannerSwitchButtons() {
         appRightSliderButton().click();
         appRightSliderButton().click();
         secondImageInSlider().shouldBe(visible);
@@ -99,8 +101,8 @@ public class MobileApp_static_page_Logic extends MobileApp_static_page {
         return this;
     }
 
-    @Step("Checks for the presence of a block Reviews")
-    public MobileApp_static_page_Logic checkReviewsBlock(){
+    @Step("Checks for the presence of a block Reviews. MobileApp_static_page")
+    public MobileApp_static_page_Logic checkReviewsBlock() {
         appReviewsBlock().shouldBe(visible);
         return this;
     }

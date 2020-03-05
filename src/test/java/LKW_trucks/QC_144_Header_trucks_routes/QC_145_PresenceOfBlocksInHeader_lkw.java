@@ -35,7 +35,7 @@ public class QC_145_PresenceOfBlocksInHeader_lkw {
         open(route);
         new LKW_main_page_Logic()
                 .checkPagesIsSuccessfulyLoaded()
-                .chekingOfVisibilityOfLogoInHeader()
+                .checkingOfVisibilityOfLogoInHeader()
                 .checkAppearanceOfHintBlock()
                 .checkAppearanceOfBeispielPopUp();
     }

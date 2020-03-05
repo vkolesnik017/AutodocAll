@@ -1,6 +1,6 @@
 package ATD;
 
 
-public class Kupplungssatz_page {
+class Kupplungssatz_page {
 
 }

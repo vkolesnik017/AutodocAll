@@ -2,6 +2,7 @@ package ATD.Characteristics.QC_486_DynamicCharacteristics;
 
 import ATD.DataBase;
 import ATD.Listing_page;
+import ATD.Listing_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -21,7 +22,7 @@ import static com.codeborne.selenide.Selenide.open;
 public class QC_490_OutputDynamicCharacteristicsOnOenListing {
 
   private DataBase db = new DataBase();
-  private Listing_page listingPage = new Listing_page();
+  private Listing_page_Logic listingPage = new Listing_page_Logic();
 
   @BeforeClass
   void setUp() {

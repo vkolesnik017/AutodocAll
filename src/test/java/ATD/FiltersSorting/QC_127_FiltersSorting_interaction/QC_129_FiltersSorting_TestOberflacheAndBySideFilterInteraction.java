@@ -2,6 +2,7 @@ package ATD.FiltersSorting.QC_127_FiltersSorting_interaction;
 
 
 import ATD.Listing_page;
+import ATD.Listing_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -19,7 +20,7 @@ import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Selenide.close;
 
 public class QC_129_FiltersSorting_TestOberflacheAndBySideFilterInteraction {
-    private Listing_page listingPage = new Listing_page();
+    private Listing_page_Logic listingPage = new Listing_page_Logic();
 
     @BeforeClass
     void setUp() {

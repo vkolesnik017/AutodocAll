@@ -2,6 +2,7 @@ package ATD.QASYS_252_StaticPage;
 
 
 import ATD.Main_page;
+import ATD.Main_page_Logic;
 import ATD.SetUp;
 import ATD.Sponsorship_static_page;
 import io.qameta.allure.Description;
@@ -18,7 +19,6 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.open;
 
 public class QASYS_353_StaticPage_sponsorship {
-    private Main_page mainPage = new Main_page();
     private Sponsorship_static_page sponsorshipStaticPage = new Sponsorship_static_page();
 
     @BeforeClass
@@ -38,7 +38,7 @@ public class QASYS_353_StaticPage_sponsorship {
     public void checkSponsorshipPgeElements(String route) {
         openPage(route);
         closeCookiesFooterMessage();
-        mainPage.clickSponsorship();
+        new Main_page_Logic().clickSponsorship();
         sponsorshipStaticPage.sponsorsHeader().shouldBe(visible);
         sponsorshipStaticPage.raceGallery().shouldBe(visible);
         sponsorshipStaticPage.mapText().shouldBe(visible);

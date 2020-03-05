@@ -60,7 +60,7 @@ public class QC_596_TranslationOfCausesOnRetourePage {
             .setStatusOrderToVersendetVorkasse()
             .addDeliveryConditionGLS();
     open(route + "/" + db.getRouteByRouteName(getShopFromRoute(route), "return_return"));
-    retourenPage.findOrder("11111", orderNumber)
+    new Retouren_page_Logic().findOrder("11111", orderNumber)
             .checkingTranslateOfCausesForReturn();
   }
 

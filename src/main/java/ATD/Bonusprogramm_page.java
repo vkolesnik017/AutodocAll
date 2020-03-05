@@ -1,6 +1,6 @@
 package ATD;
 
 
-public class Bonusprogramm_page {
+class Bonusprogramm_page {
 
 }

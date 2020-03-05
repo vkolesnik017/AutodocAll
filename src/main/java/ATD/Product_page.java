@@ -2,18 +2,13 @@ package ATD;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import io.qameta.allure.Step;
 import org.openqa.selenium.By;
-import org.testng.Assert;
 
-import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
-import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
 public class Product_page {
-
 
     //common locators
     SelenideElement quantityOnBasketIcon() {
@@ -60,7 +55,7 @@ public class Product_page {
         return $x("//div[@class='product-eco-block']//a[@target='_blank']");
     }
 
-    public SelenideElement freeDeliveryIcon() {
+    SelenideElement freeDeliveryIcon() {
         return $(".gratis-versand__in-card");
     }
 
@@ -192,16 +187,10 @@ public class Product_page {
         return $(".product-video-tutorial__tutorials");
     }
 
-    private ElementsCollection pdfLinksForDownload() {
+    ElementsCollection pdfLinksForDownload() {
         return $$(".tutorial-text > a");
     }
 
-    @Step("Checks that links contain pdf file")
-    public void checkPdfLinksForDownload() {
-        for (int i = 0; i < pdfLinksForDownload().size(); i++) {
-            Assert.assertTrue(pdfLinksForDownload().get(i).attr("href").contains(".pdf"), "Document for tutorial downloading is not in .pdf format");
-        }
-    }
 
     //breadcrumbs locators
     public SelenideElement breadcrumbsBlock() {
@@ -392,29 +381,10 @@ public class Product_page {
         $x("//*[contains(text(),'" + textToCheck + "')]").shouldBe(visible);
     }
 
-
-    @Step
-    public Product_page uncoverCharacteristics() {
-        uncoverCharactericticBtn().click();
-        return this;
-    }
-
     SelenideElement heavyCargoLink() {
         return $(By.xpath("//p[@class='product-inkl-info']/a[2]"));
     }
 
-    @Step
-    public Product_page checkingHeavyCargoLinkTransition() {
-        heavyCargoLink().click();
-        new CommonMethods().checkingUrlAndCloseTab("services/versand#surcharge");
-        return this;
-    }
-
-
-    @Step("Gets all characteristics product")
-    public ElementsCollection getCharacteristicsOfProduct() {
-        return $$(".product-block__description__info>ul>li").shouldHave(sizeGreaterThan(10));
-    }
 
     // locators of prices with Currencies
     public SelenideElement priceWithoutDiscount() {
@@ -552,16 +522,9 @@ public class Product_page {
     }
 
 
-
-    //locators and methods for body products FR
-    private SelenideElement addToCartBtnFR() {
+    //locators for body products FR
+    SelenideElement addToCartBtnFR() {
         return $(By.xpath("//div[@class='product-button button not_active out-of-stock']/a"));
-    }
-
-    public Product_page clickAddToCartAndCheckPopupFR() {
-        addToCartBtnFR().click();
-        emailFieldInPopUpOfGrayBtn().shouldBe(appear);
-        return this;
     }
 
     //locators and methods for FAQ form

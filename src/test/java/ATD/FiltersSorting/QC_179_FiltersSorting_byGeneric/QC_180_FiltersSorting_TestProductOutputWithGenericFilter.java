@@ -1,10 +1,7 @@
 package ATD.FiltersSorting.QC_179_FiltersSorting_byGeneric;
 
 
-import ATD.DataBase;
-import ATD.Listing_page;
-import ATD.Main_page;
-import ATD.SetUp;
+import ATD.*;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -23,8 +20,7 @@ import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.refresh;
 
 public class QC_180_FiltersSorting_TestProductOutputWithGenericFilter {
-    private Listing_page listingPage = new Listing_page();
-    private Main_page mainPage = new Main_page();
+    private Listing_page_Logic listingPage = new Listing_page_Logic();
     private DataBase dataBase = new DataBase();
 
     @BeforeClass
@@ -71,7 +67,7 @@ public class QC_180_FiltersSorting_TestProductOutputWithGenericFilter {
     @Description(value = "Test checks generic position in generic block on listing LKW")
     public void checkGenericPositionLKW(String route) {
         openPage(route);
-        mainPage.closeCarSelectorTooltipIfVisible();
+        new Main_page_Logic().closeCarSelectorTooltipIfVisible();
         String genericName = listingPage.fourthGeneric().text();
         listingPage.fourthGeneric().click();
         listingPage.firstGeneric().shouldHave(text(genericName));

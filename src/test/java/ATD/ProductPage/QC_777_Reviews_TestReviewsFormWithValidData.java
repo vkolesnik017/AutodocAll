@@ -4,6 +4,7 @@ package ATD.ProductPage;
 import ATD.DataBase;
 import ATD.Product_page_Logic;
 import ATD.Reviews_Confirmation_page;
+import ATD.Reviews_Confirmation_page_Logic;
 import AWS.Login_aws;
 import AWS.Reviews_aws;
 import io.qameta.allure.Description;
@@ -25,7 +26,6 @@ public class QC_777_Reviews_TestReviewsFormWithValidData {
 
     private Product_page_Logic product_page_logic = new Product_page_Logic();
     private Mailinator mailinator = new Mailinator();
-    private Reviews_Confirmation_page reviewsConfirmationPage = new Reviews_Confirmation_page();
     private Login_aws loginAws = new Login_aws();
     private Reviews_aws reviewsAws = new Reviews_aws();
     private DataBase dataBase = new DataBase();
@@ -55,7 +55,7 @@ public class QC_777_Reviews_TestReviewsFormWithValidData {
                 .linkFAQemailConfirm()
                 .click();
         switchTo().window(1);
-        reviewsConfirmationPage.checkReviewsConfirmationMessage();
+        new Reviews_Confirmation_page_Logic().checkReviewsConfirmationMessage();
         loginAws.loginInAwsWithOpen();
         open("https://aws.autodoc.de/reviews");
         reviewsAws.searchTextOnPage(randomEmail).shouldBe(visible);

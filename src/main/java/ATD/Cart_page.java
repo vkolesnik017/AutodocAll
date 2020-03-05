@@ -1,18 +1,12 @@
 package ATD;
 
 
-import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import io.qameta.allure.Step;
 
-import static ATD.CommonMethods.getPriceFromElement;
-import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
-import static com.codeborne.selenide.Condition.not;
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selectors.byXpath;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$x;
 
 public class Cart_page {
 
@@ -20,13 +14,7 @@ public class Cart_page {
         return $(byCssSelector(".next-step"));
     }
 
-    @Step("Click uncover characteristics for first product and get his characteristics")
-    public ElementsCollection getCharacteristicsOfProduct() {
-        uncoverCharacteristics().click();
-        return $$(".info__description>li").shouldHave(sizeGreaterThan(10));
-    }
-
-    private SelenideElement uncoverCharacteristics() {
+    SelenideElement uncoverCharacteristics() {
         return $(".open");
     }
 
@@ -51,11 +39,11 @@ public class Cart_page {
     }
 
     // locators only for CH
-    private SelenideElement closeDeliveryLimitPopupForCH() {
+    SelenideElement closeDeliveryLimitPopupForCH() {
         return $(byCssSelector(".delivery-limit-popup>a"));
     }
 
-    private SelenideElement nextBtnIsNotActiveForCH() {
+    SelenideElement nextBtnIsNotActiveForCH() {
         return $(byCssSelector(".noclicked"));
     }
 
@@ -99,41 +87,5 @@ public class Cart_page {
     public SelenideElement discount() {
         return $(byXpath("//*[@id='promo-footer']//span/b"));
     }
-
-    @Step
-    public Cart_page makePriceForMinimumOrderForCH() {
-        if (!closeDeliveryLimitPopupForCH().isDisplayed()) {
-            sleep(2000);
-        }
-        if (closeDeliveryLimitPopupForCH().isDisplayed()) {
-            closeDeliveryLimitPopupForCH().click();
-            while (nextBtnIsNotActiveForCH().isDisplayed()) {
-                counterPlusBtn().click();
-                sleep(500);
-            }
-        }
-        return this;
-    }
-
-    @Step
-    public Cart_page makeAndCheckLimitPriceForFreeDelivery(float deliveryLimit) {
-        // An increase in the quantity of products for checking the limit of free delivery
-        float totalPrice = getPriceFromElement(totalProductPrice());
-        while (!freeDeliveryIcon().isDisplayed() && totalPrice < deliveryLimit) {
-            String beforeClickPrice = totalProductPrice().text();
-            sleep(1000);
-            counterPlusBtn().click();
-            totalProductPrice().shouldHave(not(text(beforeClickPrice)));
-            totalPrice = getPriceFromElement(totalProductPrice());
-            if (totalPrice < deliveryLimit) {
-                freeDeliveryIcon().shouldBe(not(visible));
-            } else if (totalPrice > deliveryLimit) {
-                freeDeliveryIcon().shouldBe(visible);
-                break;
-            }
-        }
-        return this;
-    }
-
 
 }

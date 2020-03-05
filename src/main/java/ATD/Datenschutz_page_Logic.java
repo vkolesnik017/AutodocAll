@@ -7,7 +7,7 @@ import static com.codeborne.selenide.Condition.visible;
 
 public class Datenschutz_page_Logic extends Datenschutz_page {
 
-    @Step("Checks items on a page Datenschutz")
+    @Step("Checks items on a page. Datenschutz_page")
     public Datenschutz_page_Logic checkItemsOnPage() {
         titlePage().shouldBe(visible);
         logo().shouldBe(visible);
@@ -15,7 +15,7 @@ public class Datenschutz_page_Logic extends Datenschutz_page {
         return this;
     }
 
-    @Step("Checks clickable links")
+    @Step("Checks clickable links. Datenschutz_page")
     public Datenschutz_page_Logic checkClickableLinks() {
         for (int i = 0; i < links().size(); i++) {
             links().get(i).shouldBe(clickable);

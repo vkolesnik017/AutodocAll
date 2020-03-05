@@ -7,7 +7,7 @@ import org.openqa.selenium.By;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
-public class MobileApp_static_page {
+class MobileApp_static_page {
 
     SelenideElement appLogo() {
         return $(By.cssSelector(".logo_app"));

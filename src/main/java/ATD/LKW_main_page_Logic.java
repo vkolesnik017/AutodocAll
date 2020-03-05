@@ -7,19 +7,20 @@ import org.testng.Assert;
 
 import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.page;
-import static com.codeborne.selenide.Selenide.title;
+import static com.codeborne.selenide.Selectors.byCssSelector;
+import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class LKW_main_page_Logic extends LKW_main_page {
 
-    @Step("Validation page loading")
+    @Step("Validation page loading. LKW_main_page")
     public LKW_main_page_Logic checkPagesIsSuccessfulyLoaded() {
         Assert.assertNotEquals(title(), "404");
         return this;
     }
 
-    @Step("checking of appearance Hint block after click on search field")
+    @Step("Checking of appearance Hint block after click on search field. LKW_main_page")
     public LKW_main_page_Logic checkAppearanceOfHintBlock() {
         searchBar().clear();
         searchBar().click();
@@ -27,22 +28,22 @@ public class LKW_main_page_Logic extends LKW_main_page {
         return this;
     }
 
-    @Step("checking of appearance Pop-Up block after click on Beispiel link")
+    @Step("Checking of appearance Pop-Up block after click on Beispiel link. LKW_main_page")
     public LKW_main_page_Logic checkAppearanceOfBeispielPopUp() {
         infoIconForSearch().click();
         infoPopupForSearch().should(appear);
         return this;
     }
 
-    @Step("checking of appearance Pop-Up block after click on Beispiel link")
-    public LKW_main_page_Logic chekingOfVisibilityOfLogoInHeader() {
+    @Step("Checking of appearance Pop-Up block after click on Beispiel link. LKW_main_page")
+    public LKW_main_page_Logic checkingOfVisibilityOfLogoInHeader() {
         logoInHeader().shouldBe(visible);
         return this;
     }
 
 
-    @Step("checking of all categories of Trucks catalog drop menu")
-    public LKW_main_page_Logic chekingOfAllCategoriesOfMainBlockTruckCatalog() {
+    @Step("Checking of all categories of Trucks catalog drop menu. LKW_main_page")
+    public LKW_main_page_Logic checkingOfAllCategoriesOfMainBlockTruckCatalog() {
         logoInHeader().shouldBe(visible);
         closeBtnOfCookiesPopUp().click();
         menuCatalogInHeader().click();
@@ -52,9 +53,9 @@ public class LKW_main_page_Logic extends LKW_main_page {
         return this;
     }
 
-    @Step("checking of child blocks of second and third level")
-    public LKW_main_page_Logic checkOfChildBlocksSecondAndThirdLevel(ElementsCollection nameOfcategoriesOfSecondBlock,
-                                                                     SelenideElement thirdChildBlock, ElementsCollection nameOfCategoriesOfThirdBlock, ElementsCollection sizeOfCategoriesOfThirdBlock) {
+    @Step("Checking of child blocks of second and third level. LKW_main_page")
+    private LKW_main_page_Logic checkOfChildBlocksSecondAndThirdLevel(ElementsCollection nameOfcategoriesOfSecondBlock,
+                                                                      SelenideElement thirdChildBlock, ElementsCollection nameOfCategoriesOfThirdBlock, ElementsCollection sizeOfCategoriesOfThirdBlock) {
 
         for (int i = 0; i < listOfParentsDropMainTruckCatalog().size(); i++) {
             listOfParentsDropMainTruckCatalog().get(i).scrollIntoView("{block: \"end\"}").hover();
@@ -70,10 +71,10 @@ public class LKW_main_page_Logic extends LKW_main_page {
         return this;
     }
 
-    @Step("checking of  third level of Trucks catalog drop menu")
-    public LKW_main_page_Logic checkThirdBlock(ElementsCollection titleOfCategoriesOfSecondBlock,
-                                               SelenideElement thirdBlock, ElementsCollection titleOfCategoriesOfThirdLevel,
-                                               ElementsCollection listOfCategoriesThirdBlock) {
+    @Step("Checking of  third level of Trucks catalog drop menu. LKW_main_page")
+    private LKW_main_page_Logic checkThirdBlock(ElementsCollection titleOfCategoriesOfSecondBlock,
+                                                SelenideElement thirdBlock, ElementsCollection titleOfCategoriesOfThirdLevel,
+                                                ElementsCollection listOfCategoriesThirdBlock) {
 
         if (titleOfCategoriesOfSecondBlock.get(0).isDisplayed()) {
             for (int j = 0; j < titleOfCategoriesOfSecondBlock.size(); j++) {
@@ -88,8 +89,8 @@ public class LKW_main_page_Logic extends LKW_main_page {
         return this;
     }
 
-    @Step("checking of  fourth level of Trucks catalog drop menu")
-    public LKW_main_page_Logic checkFourthBlock() {
+    @Step("Checking of  fourth level of Trucks catalog drop menu. LKW_main_page")
+    private LKW_main_page_Logic checkFourthBlock() {
 
         if (categoriesOfThirdBlockWitnDropMenu().get(0).isDisplayed()) {
             for (int i = 0; i < categoriesOfThirdBlockWitnDropMenu().size(); i++) {
@@ -105,22 +106,22 @@ public class LKW_main_page_Logic extends LKW_main_page {
     }
 
 
-    @Step("cheking of child category with and without car")
-    public LKW_main_page_Logic chekingChildCategoryOlfilter() {
+    @Step("Checking of child category with and without car. LKW_main_page")
+    public LKW_main_page_Logic checkingChildCategoryOlfilter() {
         selectChildCategoryWithOutCar()
                 .selectChildCategoryWithCar();
         return this;
     }
 
-    @Step("cheking of child category without car")
-    public LKW_main_page_Logic selectChildCategoryWithOutCar() {
+    @Step("Checking of child category without car. LKW_main_page")
+    private LKW_main_page_Logic selectChildCategoryWithOutCar() {
         selectingOlifilterModel();
         Assert.assertEquals(url(), "https://lkwteile.autodoc.de/ersatzteile/olfilter-200157");
         return this;
     }
 
-    @Step("cheking of child category category with car")
-    public LKW_main_page_Logic selectChildCategoryWithCar() {
+    @Step("Checking of child category category with car. LKW_main_page")
+    private LKW_main_page_Logic selectChildCategoryWithCar() {
         verticalTruckSelector().shouldBe(visible);
         markeOfVerticalTruckSelector().selectOptionByValue("69");
         modelOfVerticalTruckSelector().selectOptionByValue("9539");
@@ -136,8 +137,8 @@ public class LKW_main_page_Logic extends LKW_main_page {
         return this;
     }
 
-    @Step(" selecting Olifilter category in DropMenu Truck Catalog ")
-    public LKW_main_page_Logic selectingOlifilterModel() {
+    @Step("Selecting Olifilter category in DropMenu Truck Catalog. LKW_main_page")
+    private LKW_main_page_Logic selectingOlifilterModel() {
         parentCategoryFilter().scrollIntoView("{block: \"end\"}").hover();
         secondLevelDropMainMenuTrucksCatalogInHeader().should(appear);
         childCategoryOlfilter().shouldBe(visible).click();
@@ -146,32 +147,87 @@ public class LKW_main_page_Logic extends LKW_main_page {
 
     }
 
-    @Step("clearing of Vertical selector if car was added")
-    public LKW_main_page_Logic clearOfVerticalSelector() {
-        if (resetBtnInVerticalCarSelector().isDisplayed()) {
-            resetBtnInVerticalCarSelector().click();
-        }
-        return this;
-    }
-
-    @Step("selecting first parent category in drop Mein Truck catalog menu")
-    public LKW_main_page_Logic selectFirstParentInMainDropTruckCatalogMenu() {
-        listOfParentsDropMainTruckCatalog().get(0).hover();
-        return this;
-    }
-
-    @Step("Get title of selecting element of main drop truck catalog menu")
-    public String titleOfSelectingParent() {
-        String titleOfSelectingElement = listOfParentsDropMainTruckCatalog().get(0).getText();
-        return titleOfSelectingElement;
-    }
-
     @Step("Select truck in vertical selector")
-    public Catalog_Page_Logic_lkw selectTruckInSelector(){
+    public LKW_Catalog_page_Logic selectTruckInSelector() {
         markeOfVerticalTruckSelector().selectOptionByValue("36");
         modelOfVerticalTruckSelector().selectOptionByValue("682");
         motorOfVerticalTruckSelector().selectOptionByValue("1008978");
         buttonSuchenOfVerticaltruckSelectorMainPage().click();
-        return page(Catalog_Page_Logic_lkw.class);
+        return page(LKW_Catalog_page_Logic.class);
+    }
+
+    // Menu in header
+    @Step ("Click on PKW category. LKW_main_page")
+    public Main_page clickPkwCategory() {
+        $("[data-ga-action='PKW']").click();
+        return page(Main_page.class);
+    }
+
+    @Step ("Click on Moto category. LKW_main_page")
+    public Moto_main_page clickMotoCategory() {
+        $("[data-ga-action='MOTO']").click();
+        return page(Moto_main_page.class);
+    }
+
+    @Step ("Click on Tires category. LKW_main_page")
+    public Tyres_page clickTiresCategory() {
+        $(byCssSelector("[data-ga-action='23208']")).click();
+        return page(Tyres_page.class);
+    }
+
+    @Step ("Click on Instrument category. LKW_main_page")
+    public Index_instruments_page clickInstrumentsCategory() {
+        $("[data-ga-action='36000']").click();
+        return page(Index_instruments_page.class);
+    }
+
+    @Step ("Click on Accessories category. LKW_main_page")
+    public Index_accessories_page clickAccessoriesCategory() {
+        $("[data-ga-action='33000']").click();
+        return page(Index_accessories_page.class);
+    }
+
+    @Step ("Click on EngineOil category. LKW_main_page")
+    public CarParts_EngineOil_page clickEngineOilCategory() {
+        $("[data-ga-action='12094']").click();
+        return page(CarParts_EngineOil_page.class);
+    }
+
+    @Step ("Click on Filters category. LKW_main_page")
+    public CarParts_Filters_page clickFiltersCategory() {
+        $("[data-ga-action='10105']").click();
+        return page(CarParts_Filters_page.class);
+    }
+
+    @Step ("Click on BrakeSystem category. LKW_main_page")
+    public CarParts_BrakeSystem_page clickBrakeSystemCategory() {
+        $("[data-ga-action='10106']").click();
+        return page(CarParts_BrakeSystem_page.class);
+    }
+
+    @Step ("Click on Engine category. LKW_main_page")
+    public CarParts_Engine_page clickEngineCategory() {
+        $(".header-i.header-i--engine").click();
+        return page(CarParts_Engine_page.class);
+    }
+
+    @Step("Check successfully LKW page loading")
+    public LKW_main_page_Logic checkSuccessfullyLKWPageLoading() {
+        menuCatalogInHeader().shouldBe(visible);
+        Assert.assertTrue(url().contains("https://lkwteile.autodoc.de/"));
+        return this;
+    }
+
+    @Step("Checking that selector is empty")
+    public LKW_main_page_Logic checkOfEmptySelector() {
+        markeOfVerticalTruckSelector().shouldHave(exactValue("0"));
+        return this;
+    }
+
+    @Step("Select child category on LKW main page")
+    public LKW_main_page_Logic selectChildCategory() {
+        tecDocCatalogOnMainPageLKW().scrollTo();
+         childCategoryOnMainPage().click();
+         return this;
     }
 }

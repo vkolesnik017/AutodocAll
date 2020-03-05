@@ -10,46 +10,27 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class Blog_page {
 
-    private SelenideElement datenschutzerklarungLink() {
+    SelenideElement datenschutzerklarungLink() {
         return $(By.cssSelector("#privacy_policy_blog>a"));
     }
 
-    private SelenideElement sendFormMailField() {
+    SelenideElement sendFormMailField() {
         return $(By.cssSelector("#blog_subscribe_form>input"));
     }
 
-    private SelenideElement subscribeCheckbox() {
+    SelenideElement subscribeCheckbox() {
         return $(By.id("isSubscribe"));
     }
 
-    private SelenideElement submitMailButton() {
+    SelenideElement submitMailButton() {
         return $(By.xpath("//button[@class='send']"));
     }
 
-    private SelenideElement sendMailFormSuccesPopup() {
+    SelenideElement sendMailFormSuccesPopup() {
         return $(By.id("news_subscribe"));
     }
 
-    private SelenideElement sendMailFormSuccesPopupCloseBtn() {
+    SelenideElement sendMailFormSuccesPopupCloseBtn() {
         return $(By.xpath("//div[@class='buttons']//div[@class='buttons-inner']/a"));
     }
-
-
-
-    public Blog_page checkingDatenschutzerklarungLinkBehavior() {
-        new CommonMethods().checkingDatenschutzerklarungLinkBehavior(datenschutzerklarungLink(), "underline solid rgb(0, 0, 0)");
-        return this;
-    }
-
-
-    public String fillingFieldsAndCheckBehaviorSendMailForm() {
-        String mail = "qc515_" + mailRandom();
-        sendFormMailField().setValue(mail);
-        subscribeCheckbox().click();
-        submitMailButton().click();
-        sendMailFormSuccesPopup().shouldBe(appear);
-        sendMailFormSuccesPopupCloseBtn().click();
-        return mail;
-    }
-
 }
