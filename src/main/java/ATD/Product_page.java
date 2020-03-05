@@ -529,12 +529,14 @@ public class Product_page {
     }
 
     public SelenideElement boldOenText() {
-        return $(".text-semibold");
+        return $x("//li[@class='text-semibold']");
     }
 
     public SelenideElement linkInOemBlock() {
         return $x("//*[@class='oem-list']//li/a");
     }
+
+    SelenideElement oenBlockTitle() {return $(".product-info-block__oem__title"); }
 
     // locator for counter
     SelenideElement counterValue() {

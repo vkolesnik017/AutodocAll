@@ -33,6 +33,7 @@ public class Mailinator {
   }
 
   public Mailinator openLetter(int numberLetter) {
+    sleep(3000);
     letter(numberLetter).click();
     switchTo().frame("msg_body");
     return this;

@@ -39,8 +39,6 @@ public class Listing_page {
 
     public SelenideElement priceFilterBlock() { return $(By.cssSelector(".js-price-range-filter")); }
 
-    public SelenideElement gelochtAttribute() { return $(By.xpath("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_232']/div/ul/li[1]")); }
-
     public SelenideElement produktreiheFilterCheckbox() { return $x("//*[@id='mCSB_4_container']/li[2]"); }
 
     public SelenideElement produktreiheFilterCheckboxLKW() { return $(".js-filter-criteria_30056 li:nth-child(2) > label"); }
@@ -65,19 +63,15 @@ public class Listing_page {
 
     public SelenideElement activeSideFilter2() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_203']//li[2]/label"); }
 
-    public SelenideElement activeSideFilterLkw() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_339']//ul/li[1]/label"); }
-
-    public SelenideElement activeSideFilterLkwHohe() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_339']//ul/li[1]/label"); }
+    public SelenideElement activeSideFilterLkw() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_339']//ul//li[1]/label"); }
 
     public SelenideElement activeSideFilterLkwCheckbox() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_203']//li[1]"); }
 
-    public SelenideElement activeSideFilterAttributeLkw2() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_339']//ul/li[2]"); }
+    public SelenideElement activeSideFilterAttributeLkw2() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_339']//ul//li[2]"); }
 
     public SelenideElement hoheThirdSideFilterButton() { return $x("//*[contains(@class,'filter-criteria_209')]//li[3]"); }
 
     public SelenideElement hoheFirstSideFilterButton() { return $x("//*[contains(@class,'filter-criteria_209')]//li[1]"); }
-
-    public SelenideElement hoheSecondSideFilterButton() { return $x("//*[contains(@class,'filter-criteria_209')]//li[2]"); }
 
     public SelenideElement oberflacheSideFilterButton() { return $x("//*[contains(@class,'filter-criteria_599')]//li"); }
 

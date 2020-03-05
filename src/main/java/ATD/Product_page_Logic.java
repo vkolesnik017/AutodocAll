@@ -198,6 +198,12 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
+    @Step("Scroll to OEN block")
+    public Product_page_Logic scrollToOenBlock() {
+        oenBlockTitle().scrollTo();
+        return this;
+    }
+
     //Reviews Form
     @Step("Scroll to reviews from and checking appearing. Product_page")
     public Product_page_Logic checkingReviewsForm() {
