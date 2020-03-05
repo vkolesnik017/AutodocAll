@@ -1,15 +1,25 @@
 package ATD;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.ex.ElementNotFound;
 import com.codeborne.selenide.ex.ElementShould;
 import com.codeborne.selenide.ex.UIAssertionError;
 import io.qameta.allure.Step;
+import org.testng.Assert;
 
 import static ATD.CommonMethods.mailRandom;
+import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
 public class Product_page_Logic extends Product_page {
+
+    @Step("Checks that links contain pdf file")
+    public void checkPdfLinksForDownload() {
+        for (int i = 0; i < pdfLinksForDownload().size(); i++) {
+            Assert.assertTrue(pdfLinksForDownload().get(i).attr("href").contains(".pdf"), "Document for tutorial downloading is not in .pdf format");
+        }
+    }
 
     @Step("Open product page by route {route} and his ID {idProduct} number. Product_page")
     public Product_page_Logic openProductPageById(String route, String idProduct) {
@@ -110,14 +120,14 @@ public class Product_page_Logic extends Product_page {
 
     @Step("Checking expected number {expectedNumber} of product in cart. Product_page")
     public Product_page_Logic checkingNumberOfProductInCart(int expectedNumber) {
-        new Main_page().checkingNumberOfProductInCart(expectedNumber);
+        new Main_page_Logic().checkingNumberOfProductInCart(expectedNumber);
         return this;
     }
 
 
     @Step(":from Product_page")
     public Cart_page_Logic cartClick() {
-        new Main_page().cartClick();
+        new Main_page_Logic().cartClick();
         return page(Cart_page_Logic.class);
     }
 
@@ -304,4 +314,25 @@ public class Product_page_Logic extends Product_page {
         deliveryServicesBlock().shouldBe(visible);
         return this;
     }
+
+    //compatibility block
+    @Step("Clicking uncover characteristics. Product_page")
+    public Product_page_Logic uncoverCharacteristics() {
+        uncoverCharactericticBtn().click();
+        return this;
+    }
+
+    @Step("Gets all characteristics product. Product_page")
+    public ElementsCollection getCharacteristicsOfProduct() {
+        return $$(".product-block__description__info>ul>li").shouldHave(sizeGreaterThan(10));
+    }
+
+    // methods for body products FR
+    @Step("Clicking and adding product to cart and checking popup for FR shop. Product_page")
+    public Product_page clickAddToCartAndCheckPopupFR() {
+        addToCartBtnFR().click();
+        emailFieldInPopUpOfGrayBtn().shouldBe(appear);
+        return this;
+    }
+
 }

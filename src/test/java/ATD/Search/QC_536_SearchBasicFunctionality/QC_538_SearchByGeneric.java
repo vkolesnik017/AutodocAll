@@ -1,9 +1,6 @@
 package ATD.Search.QC_536_SearchBasicFunctionality;
 
-import ATD.Listing_page;
-import ATD.Main_page;
-import ATD.Main_page_Logic;
-import ATD.SetUp;
+import ATD.*;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -38,6 +35,6 @@ public class QC_538_SearchByGeneric {
   public void testSearchByGeneric(String route) {
     open(route);
     new Main_page_Logic().useSearch(genericName);
-    new Listing_page().checksProductTitlesContainExpectedTextGoingAllPagination(genericNameForCheck);
+    new Listing_page_Logic().checksProductTitlesContainExpectedTextGoingAllPagination(genericNameForCheck);
   }
 }

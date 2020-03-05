@@ -1,6 +1,7 @@
 package ATD.Listings.QC_458_ListingViewModes;
 
 import ATD.Listing_page;
+import ATD.Listing_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,7 +17,7 @@ import static ATD.SetUp.setUpBrowser;
 
 public class QC_463_CompareProductsBetweenListingViewModesOnLKW {
 
-  private Listing_page listingPage = new Listing_page();
+  private Listing_page_Logic listingPage = new Listing_page_Logic();
 
   @BeforeClass
   void setUp() {

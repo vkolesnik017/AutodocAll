@@ -2,6 +2,7 @@ package ATD.GDRP;
 
 import ATD.SetUp;
 import ATD.Sponsorship_static_page;
+import ATD.Sponsorship_static_page_Logic;
 import AWS.PrivacyPolicySubscription_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -35,7 +36,7 @@ public class QC_525_SponsoringPage {
     @Description(value = "Test verify working of send ship form on sponsoring page")
     public void testFormOnSponsoringPage(String route) {
         openPage(route);
-        mail = new Sponsorship_static_page().scrollToSendShipForm().checkingDatenschutzerklarungLinkBehavior().fillingFieldsAndCheckBehaviorSendShipForm();
+        mail = new Sponsorship_static_page_Logic().scrollToSendShipForm().checkingDatenschutzerklarungLinkBehavior().fillingFieldsAndCheckBehaviorSendShipForm();
         new PrivacyPolicySubscription_aws().openPolicySubscriptionWithLogin().checkingPolicyForMail(this.mail);
     }
 }

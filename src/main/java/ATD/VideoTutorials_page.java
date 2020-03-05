@@ -1,6 +1,6 @@
 package ATD;
 
 
-public class VideoTutorials_page {
+class VideoTutorials_page {
 
 }

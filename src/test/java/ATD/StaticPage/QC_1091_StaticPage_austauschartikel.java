@@ -1,6 +1,6 @@
 package ATD.StaticPage;
 
-import ATD.Main_page;
+import ATD.Main_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -32,7 +32,7 @@ public class QC_1091_StaticPage_austauschartikel {
     @Description(value = "Test checks elements on austauschartikel page")
     public void checkAustauschartikelPageElements(String route) throws Exception {
         openPage(route);
-        new Main_page().clickAustauschartikel()
+        new Main_page_Logic().clickAustauschartikel()
                 .checkItemsTopPage()
                 .checkInstructionBlock()
                 .checkReturnPolicyBlock()

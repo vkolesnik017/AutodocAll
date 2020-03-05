@@ -60,7 +60,7 @@ public class QC_885_PopupErrorsInProfileForReturns {
             .setStatusOrderToVersendetVorkasse()
             .addDeliveryConditionGLS();
     open(route + "/" + db.getRouteByRouteName(getShopFromRoute(route), "profile_orders"));
-    profilePage.clickBestelldetailsButton(orderNumber)
+    new Profile_page_Logic().clickBestelldetailsButton(orderNumber)
             .clickReturnOrReplaceItemButton()
             .chekingToAppearPopupErrorsOfReturn();
   }

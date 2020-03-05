@@ -6,19 +6,19 @@ import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selenide.*;
 
-public class Categories_page {
+class Categories_page {
 
-  public SelenideElement linkForCategoryOilFilter() {
+  SelenideElement linkForCategoryOilFilter() {
     return $("[data-ga-action='10359']");
   }
 
-  public SelenideElement searchBarByCatalog() {
+  SelenideElement searchBarByCatalog() {
     return $(byId("page_search"));
   }
 
-  public ElementsCollection tooltipsToSearchByCatalog() {
+  ElementsCollection tooltipsToSearchByCatalog() {
     return $$(".ui-autocomplete>li");
   }
 
-  public SelenideElement lkwCategory(){return $x("//a[@class='header-i header-i--truck ga-click']");}
+  SelenideElement lkwCategory(){return $x("//a[@class='header-i header-i--truck ga-click']");}
 }

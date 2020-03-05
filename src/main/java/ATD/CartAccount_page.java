@@ -1,12 +1,10 @@
 package ATD;
 
 import com.codeborne.selenide.SelenideElement;
-import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.page;
 
 public class CartAccount_page {
 
@@ -29,11 +27,11 @@ public class CartAccount_page {
     }
 
     // locators in login form
-    private SelenideElement emailFieldInLoginForm() {
+    SelenideElement emailFieldInLoginForm() {
         return $(byXpath("//*[@class='loginForm']//*[@id='form_Email']"));
     }
 
-    private SelenideElement passwordFieldInLoginForm() {
+    SelenideElement passwordFieldInLoginForm() {
         return $(byXpath("//*[@class='loginForm']//*[@id='form_Password']"));
     }
 
@@ -41,16 +39,8 @@ public class CartAccount_page {
         return $(byCssSelector(".signin-user-box-form__recovery>a"));
     }
 
-    private SelenideElement loginButton() {
+    SelenideElement loginButton() {
         return $(byCssSelector(".login"));
-    }
-
-    @Step("Login with email: {email} and password: {password}")
-    public CartAddress_page signIn(String email, String password) {
-        emailFieldInLoginForm().setValue(email);
-        passwordFieldInLoginForm().setValue(password);
-        loginButton().click();
-        return page(CartAddress_page.class);
     }
 
     //locators in password recovery popup

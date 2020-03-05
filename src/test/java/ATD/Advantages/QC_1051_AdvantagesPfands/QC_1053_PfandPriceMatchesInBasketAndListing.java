@@ -20,7 +20,7 @@ import static com.codeborne.selenide.Selenide.close;
 
 public class QC_1053_PfandPriceMatchesInBasketAndListing {
 
-    private Listing_page listing_page = new Listing_page();
+    private Listing_page_Logic listing_page = new Listing_page_Logic();
     private Cart_page_Logic cart_page_logic = new Cart_page_Logic();
     private CartAllData_page cartAllDataPage = new CartAllData_page();
 

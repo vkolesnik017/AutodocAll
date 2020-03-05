@@ -3,6 +3,7 @@ package ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters;
 
 import ATD.DataBase;
 import ATD.Listing_page;
+import ATD.Listing_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -22,7 +23,7 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.close;
 
 public class QC_126_FiltersSorting_TestTwoFilterAttributesInBlock {
-    private Listing_page listingPage = new Listing_page();
+    private Listing_page_Logic listingPage = new Listing_page_Logic();
     private DataBase dataBase = new DataBase();
 
     @BeforeClass

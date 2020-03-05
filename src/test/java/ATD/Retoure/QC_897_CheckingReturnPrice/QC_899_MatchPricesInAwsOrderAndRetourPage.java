@@ -21,7 +21,6 @@ import static org.testng.Assert.assertEquals;
 public class QC_899_MatchPricesInAwsOrderAndRetourPage {
 
   private Product_page_Logic product_page_logic = new Product_page_Logic();
-  private Retouren_page retourenPage = new Retouren_page();
   private DataBase db = new DataBase();
 
   private String idUserAws = "13784381";
@@ -60,7 +59,7 @@ public class QC_899_MatchPricesInAwsOrderAndRetourPage {
             .addDeliveryConditionGLS()
             .getSellingProductPrice();
     open(route + "/" + db.getRouteByRouteName(getShopFromRoute(route), "return_return"));
-    Float productPriceOnRetourenPage = retourenPage.findOrder("11111", orderNumber)
+    Float productPriceOnRetourenPage = new Retouren_page_Logic().findOrder("11111", orderNumber)
             .getProductPriceForReturn();
     assertEquals(productPriceInAwsOrder, productPriceOnRetourenPage);
   }

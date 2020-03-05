@@ -1,6 +1,7 @@
 package ATD.GDRP;
 
 import ATD.Blog_page;
+import ATD.Blog_page_Logic;
 import ATD.Sales_page;
 import ATD.SetUp;
 import AWS.PrivacyPolicySubscription_aws;
@@ -36,7 +37,7 @@ public class QC_515_BlogPage {
     @Description(value = "Test verify working of send ship form on Blog page")
     public void testFormOnBlogPage(String route) {
         openPage(route);
-        mail = new Blog_page().checkingDatenschutzerklarungLinkBehavior().fillingFieldsAndCheckBehaviorSendMailForm();
+        mail = new Blog_page_Logic().checkingDatenschutzerklarungLinkBehavior().fillingFieldsAndCheckBehaviorSendMailForm();
         new PrivacyPolicySubscription_aws().openPolicySubscriptionWithLogin().checkingPolicyAndSubscribeForMail(this.mail);
     }
 }

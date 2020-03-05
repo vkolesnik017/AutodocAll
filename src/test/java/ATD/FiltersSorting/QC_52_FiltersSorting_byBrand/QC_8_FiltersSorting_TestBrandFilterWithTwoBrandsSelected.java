@@ -1,8 +1,9 @@
 package ATD.FiltersSorting.QC_52_FiltersSorting_byBrand;
 
 
-import ATD.Listing_page;
+import ATD.Listing_page_Logic;
 import ATD.Main_page;
+import ATD.Main_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -19,8 +20,7 @@ import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Selenide.close;
 
 public class QC_8_FiltersSorting_TestBrandFilterWithTwoBrandsSelected {
-    private Listing_page listingPage = new Listing_page();
-    private Main_page mainPage = new Main_page();
+    private Listing_page_Logic listingPage = new Listing_page_Logic();
 
     @BeforeClass
     void setUp() {
@@ -100,7 +100,7 @@ public class QC_8_FiltersSorting_TestBrandFilterWithTwoBrandsSelected {
     @Description(value = "Test checks brand filter with two brands selected (LKW listing)")
     public void checkBrandFilterWithTwoBrandsSelectedLKW(String route) {
         openPage(route);
-        mainPage.closeCarSelectorTooltipIfVisible();
+        new Main_page_Logic().closeCarSelectorTooltipIfVisible();
         listingPage.firstBrandInFilterButton().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         String firstBrand = listingPage.firstBrandNameInFiler().attr("alt");

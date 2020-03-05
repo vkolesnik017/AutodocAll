@@ -3,6 +3,7 @@ package ATD.FiltersSorting.QC_52_FiltersSorting_byBrand;
 
 import ATD.DataBase;
 import ATD.Listing_page;
+import ATD.Listing_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -17,7 +18,7 @@ import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Selenide.close;
 
 public class QC_54_FiltersSorting_TestBrandFilterWithPagination {
-    private Listing_page listingPage = new Listing_page();
+    private Listing_page_Logic listingPage = new Listing_page_Logic();
     private DataBase dataBase = new DataBase();
 
     @BeforeClass

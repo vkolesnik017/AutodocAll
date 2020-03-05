@@ -2,6 +2,7 @@ package ATD.QASYS_225_General_Common;
 
 import ATD.DataBase;
 import ATD.Main_page;
+import ATD.Main_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -20,7 +21,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class QASYS_350_Header {
 
-  private Main_page mainPage = new Main_page();
+  private Main_page_Logic mainPage = new Main_page_Logic();
   private DataBase db = new DataBase();
 
   @BeforeClass

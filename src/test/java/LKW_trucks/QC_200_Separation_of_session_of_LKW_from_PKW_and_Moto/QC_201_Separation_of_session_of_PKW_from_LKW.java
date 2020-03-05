@@ -37,8 +37,6 @@ public class QC_201_Separation_of_session_of_PKW_from_LKW {
         categoriesPage.checkSuccessfullyPageLoading();
         LKW_main_page_Logic lkwPage = categoriesPage.selectLKWCategory();
         lkwPage.checkSuccessfullyLKWPageLoading().checkOfEmptySelector().selectChildCategory();
-
-
     }
 
     @AfterMethod
