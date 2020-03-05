@@ -32,7 +32,8 @@ public class QC_921_OEN_TestOEMlistWithoutCar {
     @Description(value = "Test checks oem list without car")
     public void testOEMlistWithoutCar() throws SQLException {
         openPage("https://autodoc.de/" +  dataBase.getRouteByRouteName("DE", "product15"));
-        product_page_logic.boldOenText().shouldNotBe(visible);
+        product_page_logic.scrollToOenBlock()
+                          .boldOenText().shouldNotBe(visible);
         String oenLink = product_page_logic.linkInOemBlock().attr("href");
         product_page_logic.linkInOemBlock().click();
         waitingWhileLinkBecomeExpected(oenLink);

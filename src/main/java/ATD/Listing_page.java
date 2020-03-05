@@ -90,20 +90,13 @@ public class Listing_page {
         return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_203']//li[2]/label");
     }
 
-    public SelenideElement activeSideFilterLkw() {
-        return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_339']//ul/li[1]/label");
-    }
-
-    public SelenideElement activeSideFilterLkwHohe() {
-        return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_339']//ul/li[1]/label");
-    }
-
     public SelenideElement activeSideFilterLkwCheckbox() {
         return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_203']//li[1]");
     }
+    public SelenideElement activeSideFilterLkw() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_339']//ul//li[1]/label"); }
 
     public SelenideElement activeSideFilterAttributeLkw2() {
-        return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_339']//ul/li[2]");
+        return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_339']//ul//li[2]");
     }
 
     public SelenideElement hoheThirdSideFilterButton() {

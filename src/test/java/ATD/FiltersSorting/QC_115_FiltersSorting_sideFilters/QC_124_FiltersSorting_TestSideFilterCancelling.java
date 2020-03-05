@@ -63,7 +63,7 @@ public class QC_124_FiltersSorting_TestSideFilterCancelling {
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.hoheProductAttributeGenericRouteLKW(), listingPage.hoheProductAttributeTecdocRouteLKW());
         int numberOfAttributesFilter = listingPage.hoheProductAttributeTecdocRoute().size();
-        listingPage.activeSideFilterLkwHohe().click();
+        listingPage.activeSideFilterLkw().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         int numberOfAttributesNoFilter = listingPage.hoheProductAttributeTecdocRoute().size();
         Assert.assertNotEquals(numberOfAttributesFilter, numberOfAttributesNoFilter);
