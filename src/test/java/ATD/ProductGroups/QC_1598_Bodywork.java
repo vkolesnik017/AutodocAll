@@ -1,4 +1,4 @@
-package ATD.QASYS_73_ProductGroups;
+package ATD.ProductGroups;
 
 import ATD.DataBase;
 import ATD.Product_page_Logic;
@@ -7,6 +7,7 @@ import com.codeborne.selenide.Condition;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -19,7 +20,7 @@ import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
-public class QASYS_82_Bodywork {
+public class QC_1598_Bodywork {
 
     private Product_page_Logic product_page_logic = new Product_page_Logic();
 
@@ -36,7 +37,7 @@ public class QASYS_82_Bodywork {
     }
 
 
-    @Owner(value = "alex_qa")
+    @Owner(value = "Chelombitko")
     @Test(dataProvider = "route")
     @Description(value = "Test check making order with body product")
     @Flaky
@@ -63,5 +64,10 @@ public class QASYS_82_Bodywork {
                 .chooseVorkasse().nextBtnClick()
                 .nextBtnClick()
                 .closePopupAfterOrder().successTextInHeader().shouldHave(Condition.text("Vielen Dank"));
+    }
+
+    @AfterMethod
+    private void tearDown() {
+        close();
     }
 }
