@@ -1,11 +1,10 @@
-package LKW_trucks.QC_144_Header_trucks_routes;
+package LKW_trucks.QC_200_Separation_of_selector_session_of_LKW_from_PKW_and_Moto;
 
 import ATD.LKW_main_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -14,10 +13,8 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
-import static com.codeborne.selenide.Selenide.open;
 
-public class QC_145_PresenceOfBlocksInHeader_lkw {
+public class QC_204_Separation_of_LKW_selector_session_from_Moto {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -31,19 +28,14 @@ public class QC_145_PresenceOfBlocksInHeader_lkw {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks elements on main page LKW")
-    public void testChecksElementsOnMainPageLKW(String route) {
+    @Description(value = "Test checks separation of LKW selector session from Moto")
+    public void testChecksSeparationOfLKWSelectorSessionFromMoto(String route) {
         openPage(route);
-        new LKW_main_page_Logic()
-                .checkPagesIsSuccessfulyLoaded()
-                .checkingOfVisibilityOfLogoInHeader()
-                .checkAppearanceOfHintBlock()
-                .checkAppearanceOfBeispielPopUp();
-    }
+        new LKW_main_page_Logic().selectTruckInSelector("24", "714", "1004434")
+                .checkSuccessfullyPageLoading()
+                .selectMotoCategory().checkSuccessfullyMotoPageLoading()
+                .checkOfEmptyMotoSelector().selectChildCategory()
+                .checkSuccessfullyChildCategoryPageLoading();
 
-    @AfterMethod
-    private void tearDown() {
-        close();
     }
 }
-

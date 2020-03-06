@@ -29,7 +29,7 @@ public class Main_page {
     }
 
     // When user signIn
-    SelenideElement profileBtn(){
+    SelenideElement profileBtn() {
         return $(By.xpath("//a[@class='header-i header-i--user']"));
     }
 
@@ -241,7 +241,7 @@ public class Main_page {
         return $(".close_log_on");
     }
 
-    public Profile_page loginUserFromMain(String login){
+    public Profile_page loginUserFromMain(String login) {
         loginBtnInHeader().click();
         emailInputInLoginPopup().setValue(login);
         passwordInputInLoginPopup().setValue(password);
@@ -254,7 +254,9 @@ public class Main_page {
         return $(By.cssSelector("#privacy_policy_header_modal>a"));
     }
 
-    SelenideElement datenschutzerklarungTextInRegPopup() { return $(By.cssSelector("#privacy_policy_header_modal")); }
+    SelenideElement datenschutzerklarungTextInRegPopup() {
+        return $(By.cssSelector("#privacy_policy_header_modal"));
+    }
 
     SelenideElement vornameInRegForm() {
         return $(By.xpath("//input[@id='form_rVorname']"));
@@ -524,11 +526,11 @@ public class Main_page {
 
     //KUNDENSERVICE INTERNATIONAL
 
-    SelenideElement languageSelector(){
+    SelenideElement languageSelector() {
         return $(By.cssSelector(".footer-language__select"));
     }
 
-    SelenideElement dropdownCountry(){
+    SelenideElement dropdownCountry() {
         return $x("//div[@class='footer-language__country-list mCustomScrollbar _mCS_1'] [@style='visibility: visible;']");
     }
 
@@ -663,5 +665,11 @@ public class Main_page {
         return $(".popup-kba-error>a");
     }
 
+    public SelenideElement tecDocCatalogMainPage() {
+        return $(byId("parts"));
+    }
 
+    public SelenideElement childCategoryOnMainPage(String category) {
+        return $x("//ul[@class='ersats_listing']//span[contains(text(),'"+category+"')]");
+    }
 }

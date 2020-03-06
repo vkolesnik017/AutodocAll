@@ -11,4 +11,15 @@
         </classes>
     </test>
 
+    <test name="QC_200_Separation_of_session_of_truck_selector_from_car_and_moto">
+        <classes>
+            <class name="LKW_trucks.QC_200_Separation_of_selector_session_of_LKW_from_PKW_and_Moto.QC_201_Separation_of_car_selector_session_from_LKW"/>
+            <class name="LKW_trucks.QC_200_Separation_of_selector_session_of_LKW_from_PKW_and_Moto.QC_202_Separation_of_car_selector_from_Moto"/>
+            <class name="LKW_trucks.QC_200_Separation_of_selector_session_of_LKW_from_PKW_and_Moto.QC_203_Separation_of_LKW_selector_session_from_car"/>
+            <class name="LKW_trucks.QC_200_Separation_of_selector_session_of_LKW_from_PKW_and_Moto.QC_204_Separation_of_LKW_selector_session_from_Moto"/>
+            <class name="LKW_trucks.QC_200_Separation_of_selector_session_of_LKW_from_PKW_and_Moto.QC_205_Separation_of_moto_selector_session_from_car"/>
+            <class name="LKW_trucks.QC_200_Separation_of_selector_session_of_LKW_from_PKW_and_Moto.QC_206__Separation_of_moto_selector_session_from_LKW"/>
+        </classes>
+    </test>
+
 </suite>
