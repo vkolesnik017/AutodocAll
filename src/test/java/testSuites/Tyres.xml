@@ -2,6 +2,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Tyres" parallel="methods" thread-count="2" data-provider-thread-count="2">
 
+    <listeners>
+        <listener class-name="ATD.ProjectListener"/>
+    </listeners>
+
     <test name="QC_1038_CreatingTyresOrder">
         <classes>
             <class name="ATD.Tyres.QC_1038_CreatingTyresOrder.QC_1039_CreatingTyresOrderShopMatchDeliveryCountry"/>

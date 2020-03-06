@@ -2,6 +2,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="QASYS_19_Basket" data-provider-thread-count="5">
 
+    <listeners>
+        <listener class-name="ATD.ProjectListener"/>
+    </listeners>
+
 
     <test name="QASYS_455_DeletingOfDangerousProductFromBasket">
         <classes>
