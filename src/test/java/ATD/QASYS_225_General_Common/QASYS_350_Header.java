@@ -44,7 +44,7 @@ public class QASYS_350_Header {
     mainPage.discountBoxClock().shouldBe(visible);
   }
 
-  @Test(dataProvider = "route", enabled = false)
+  @Test(dataProvider = "route", enabled = true)
   @Flaky
   @Owner(value = "Evlentiev")
   @Description(value = "TC 2  Checks presence elements in header")
@@ -61,7 +61,7 @@ public class QASYS_350_Header {
     mainPage.totalPriceInCart().shouldBe(visible);
   }
 
-  @Test(dataProvider = "route", enabled = false)
+  @Test(dataProvider = "route", enabled = true)
   @Flaky
   @Owner(value = "Evlentiev")
   @Description(value = "TC 2.1  Checks click logo and sign in button")
@@ -80,7 +80,7 @@ public class QASYS_350_Header {
     mainPage.loginBtnInPopUp().shouldBe(not(visible));
   }
 
-  @Test(dataProvider = "route", enabled = false)
+  @Test(dataProvider = "route", enabled = true)
   @Flaky
   @Owner(value = "Evlentiev")
   @Description(value = "TC 2.2  Checks hints and info popup for search in header")
@@ -98,7 +98,7 @@ public class QASYS_350_Header {
     mainPage.infoPopupForSearch().shouldBe(not(visible));
   }
 
-  @Test(dataProvider = "route", enabled = false)
+  @Test(dataProvider = "route", enabled = true)
   @Flaky
   @Owner(value = "Evlentiev")
   @Description(value = "TC 2.3  Checks catalog menu and click cart")
@@ -117,7 +117,7 @@ public class QASYS_350_Header {
     mainPage.cartClick().emptyCart().shouldBe(visible);
   }
 
-  @Test(dataProvider = "route", enabled = false)
+  @Test(dataProvider = "route", enabled = true)
   @Flaky
   @Owner(value = "Evlentiev")
   @Description(value = "TC 3.1  Checks navigate categories in header")
