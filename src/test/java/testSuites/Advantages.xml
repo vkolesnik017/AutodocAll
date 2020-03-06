@@ -2,6 +2,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Advantages" parallel="methods" thread-count="2" data-provider-thread-count="3">
 
+    <listeners>
+        <listener class-name="ATD.ProjectListener"/>
+    </listeners>
+
     <test name="AdvantagesPfands">
         <classes>
             <class name="ATD.Advantages.QC_1051_AdvantagesPfands.QC_1052_PfandsLabelDisplayed"/>

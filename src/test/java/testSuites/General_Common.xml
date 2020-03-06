@@ -2,6 +2,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="General_Common" parallel="tests" data-provider-thread-count="3">
 
+    <listeners>
+        <listener class-name="ATD.ProjectListener"/>
+    </listeners>
+
     <test name="QC_1554_Footer">
         <classes>
             <class name="ATD.General_Common.QC_1554_Footer.QC_1569_TransitionTheLink_Datenschutzerklärung"/>

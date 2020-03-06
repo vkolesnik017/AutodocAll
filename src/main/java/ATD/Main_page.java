@@ -78,20 +78,12 @@ public class Main_page {
         return $(byCssSelector(".code"));
     }
 
-    public SelenideElement promotionBanner() {
-        return $(".promotion_header_image");
+    public SelenideElement discountBox() {
+        return $(By.id("discount-box"));
     }
 
-    public SelenideElement clockInPromotionBanner() {
-        return $(".flip-clock-wrapper");
-    }
-
-    public SelenideElement textAboveClockInPromotionBanner() {
-        return $(".promotion_header_text_reminder");
-    }
-
-    public SelenideElement closeBtnOfPromotionBanner() {
-        return $(".close_pop_up ");
+  public SelenideElement discountBoxClock() {
+        return $(By.id("js-discount-box-timer"));
     }
 
     public SelenideElement menuCatalogInHeader() {

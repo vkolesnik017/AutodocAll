@@ -2,10 +2,15 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="ProductGroups" parallel="tests" data-provider-thread-count="6">
 
+    <listeners>
+        <listener class-name="ATD.ProjectListener"/>
+    </listeners>
+
     <test name="ProductGroups">
         <classes>
             <class name="ATD.ProductGroups.QC_1584_Regular"/>
             <class name="ATD.ProductGroups.QC_1586_Ridex_Stark"/>
+            <class name="ATD.ProductGroups.QC_1598_Bodywork"/>
         </classes>
     </test>
 

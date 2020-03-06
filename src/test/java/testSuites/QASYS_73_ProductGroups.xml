@@ -2,12 +2,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="QASYS_73_ProductGroups" parallel="tests" data-provider-thread-count="6">
 
-    <test name="QASYS_82_Bodywork">
-        <classes>
-            <class name="ATD.QASYS_73_ProductGroups.QASYS_82_Bodywork">
-            </class>
-        </classes>
-    </test>
+    <listeners>
+        <listener class-name="ATD.ProjectListener"/>
+    </listeners>
+
 
     <test name="QASYS_78_Batteries">
         <classes>
