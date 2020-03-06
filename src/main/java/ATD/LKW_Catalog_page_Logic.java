@@ -60,20 +60,20 @@ public class LKW_Catalog_page_Logic extends LKW_Catalog_page {
         return this;
     }
 
-    @Step("Сheck that the page loads successfully")
+    @Step("Сheck that the page loads successfully. LKW_Catalog_page")
     public LKW_Catalog_page_Logic checkSuccessfullyPageLoading() {
         catalogTecDoc().shouldBe(visible);
         Assert.assertEquals(url(), "https://lkwteile.autodoc.de/lastkraftwagen/daf/45?car_id=1004434");
         return this;
     }
 
-    @Step("Select Car category")
+    @Step("Select Car category. LKW_Catalog_page")
     public Main_page_Logic selectCarCategory() {
         carCategory().click();
         return page(Main_page_Logic.class);
     }
 
-    @Step("Select Moto category")
+    @Step("Select Moto category. LKW_Catalog_page")
     public Moto_main_page_Logic selectMotoCategory() {
         motoCategory().click();
         return page(Moto_main_page_Logic.class);

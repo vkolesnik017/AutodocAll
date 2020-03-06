@@ -51,7 +51,7 @@ public class Categories_page_Logic extends Categories_page {
     return page(LKW_main_page_Logic.class);
   }
 
-    @Step("Select Moto category")
+    @Step("Select Moto category. Categories_page")
     public Moto_main_page_Logic selectMotoCategory() {
         motoCategory().click();
         return page(Moto_main_page_Logic.class);
