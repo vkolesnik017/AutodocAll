@@ -17,6 +17,7 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selenide.*;
 import static org.testng.Assert.assertEquals;
+import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class Main_page_Logic extends Main_page {
 
@@ -685,5 +686,27 @@ public class Main_page_Logic extends Main_page {
         datenschutzLinkInSubscribeBlock().click();
         new CommonMethods().checkingUrlAndCloseTab(route + "/" + new DataBase().getRouteByRouteName(getShopFromRoute(route), "staticDatenschutz"));
         return this;
+    }
+
+    @Step("Check successfully Car main page loading")
+    public Main_page_Logic checkSuccessfullyMainPageLoading() {
+        menuCatalogInHeader().shouldBe(visible);
+        Assert.assertTrue(url().contains("https://www.autodoc.de/"));
+        return this;
+    }
+
+    @Step("Checking that selector is empty")
+    public Main_page_Logic checkOfEmptyOfVerticalSelector() {
+        brandSelectorInVerticalCarSelector().shouldHave(exactValue("0"));
+        modelSelectorInVerticalCarSelector().shouldHave(exactValue("0"));
+        modelSelectorInVerticalCarSelector().shouldHave(exactValue("0"));
+        return this;
+    }
+
+    @Step("Select child category on main page")
+    public Category_name_page_Logic selectChildCategory(String childCategory) {
+        tecDocCatalogMainPage().scrollTo();
+        childCategoryOnMainPage(childCategory).click();
+        return page(Category_name_page_Logic.class);
     }
 }

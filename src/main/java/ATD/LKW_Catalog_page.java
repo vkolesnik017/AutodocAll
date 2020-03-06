@@ -38,4 +38,12 @@ class LKW_Catalog_page {
     SelenideElement customCategory() {
         return $x("//a[contains(text(),'Elektrik')]");
     }
+
+    SelenideElement carCategory() {
+        return $x("//a[@class='header-i header-i--car ga-click']");
+    }
+
+    public SelenideElement motoCategory() {
+        return $x("//a[contains(@class,'header-i--moto')]");
+    }
 }

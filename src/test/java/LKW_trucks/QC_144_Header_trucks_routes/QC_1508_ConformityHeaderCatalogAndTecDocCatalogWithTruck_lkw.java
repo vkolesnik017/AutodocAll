@@ -9,14 +9,12 @@ import io.qameta.allure.Owner;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import java.sql.SQLException;
 
+import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.open;
 
 public class QC_1508_ConformityHeaderCatalogAndTecDocCatalogWithTruck_lkw {
-    private LKW_main_page_Logic mainPage = new LKW_main_page_Logic();
 
     @BeforeClass
     void setUp() {
@@ -33,10 +31,8 @@ public class QC_1508_ConformityHeaderCatalogAndTecDocCatalogWithTruck_lkw {
     @Owner(value = "Kolesnik")
     @Description(value = "Test check compliance Of Header_Catalog and TecDoc catalog with selecting truck")
     public void testCheckComplianceOfHeaderCatalogAndTecDocCatalog(String route) {
-        open(route);
-        LKW_Catalog_page_Logic catalogPage = mainPage.selectTruckInSelector();
-        catalogPage.getCategoryInTecDocCatalog();
-        catalogPage.getCategoryInHeaderCatalog();
-        catalogPage.comparisonTecDocAndInHeaderCatalogs();
+        openPage(route);
+        new LKW_Catalog_page_Logic().comparisonTecDocAndInHeaderCatalogs();
+
     }
 }

@@ -9,6 +9,8 @@ import java.util.Collections;
 import java.util.List;
 
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class LKW_Catalog_page_Logic extends LKW_Catalog_page {
 
@@ -34,7 +36,10 @@ public class LKW_Catalog_page_Logic extends LKW_Catalog_page {
 
     @Step("Comparison TecDoc and InHeader catalogs. LKW_Catalog_page")
     public LKW_Catalog_page_Logic comparisonTecDocAndInHeaderCatalogs() {
+        new LKW_main_page_Logic().selectTruckInSelector("36","682","1008978");
+        getCategoryInTecDocCatalog();
         List<Integer> attributeOfTecDocCatalog = new ArrayList<>(getCategoryInTecDocCatalog());
+        getCategoryInHeaderCatalog();
         List<Integer> attributeOfInHeaderCatalog = new ArrayList<>(getCategoryInHeaderCatalog());
         Assert.assertEquals(sortingListWithAttributes(attributeOfInHeaderCatalog), sortingListWithAttributes(attributeOfTecDocCatalog));
         return this;
@@ -53,5 +58,24 @@ public class LKW_Catalog_page_Logic extends LKW_Catalog_page {
             listWithAttribute.add(Integer.parseInt(category.get(k).getAttribute("data-category-id")));
         }
         return this;
+    }
+
+    @Step("Сheck that the page loads successfully")
+    public LKW_Catalog_page_Logic checkSuccessfullyPageLoading() {
+        catalogTecDoc().shouldBe(visible);
+        Assert.assertEquals(url(), "https://lkwteile.autodoc.de/lastkraftwagen/daf/45?car_id=1004434");
+        return this;
+    }
+
+    @Step("Select Car category")
+    public Main_page_Logic selectCarCategory() {
+        carCategory().click();
+        return page(Main_page_Logic.class);
+    }
+
+    @Step("Select Moto category")
+    public Moto_main_page_Logic selectMotoCategory() {
+        motoCategory().click();
+        return page(Moto_main_page_Logic.class);
     }
 }

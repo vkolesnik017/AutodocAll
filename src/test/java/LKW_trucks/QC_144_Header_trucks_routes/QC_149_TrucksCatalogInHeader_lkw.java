@@ -12,6 +12,7 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
+import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -32,7 +33,7 @@ public class QC_149_TrucksCatalogInHeader_lkw {
     @Owner(value = "Kolesnik")
     @Description(value = "Test checks elements of trucks catalog")
     public void testChecksCategoriesOfTrucksCatalog(String route) {
-        open(route);
+        openPage(route);
         new LKW_main_page_Logic()
                 .checkPagesIsSuccessfulyLoaded()
                 .checkingOfAllCategoriesOfMainBlockTruckCatalog()
