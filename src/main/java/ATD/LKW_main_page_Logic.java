@@ -45,7 +45,6 @@ public class LKW_main_page_Logic extends LKW_main_page {
     @Step("Checking of all categories of Trucks catalog drop menu. LKW_main_page")
     public LKW_main_page_Logic checkingOfAllCategoriesOfMainBlockTruckCatalog() {
         logoInHeader().shouldBe(visible);
-        closeBtnOfCookiesPopUp().click();
         menuCatalogInHeader().click();
         dropMainMenuTrucksCatalogInHeader().shouldBe(visible);
         listOfParentsDropMainTruckCatalog().shouldHave(sizeNotEqual(0));
