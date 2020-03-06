@@ -1,23 +1,27 @@
-package ATD.QASYS_73_ProductGroups;
+package ATD.ProductGroups;
 
-import ATD.*;
+import ATD.DataBase;
+import ATD.Payment_handler_page_Logic;
+import ATD.Search_page_Logic;
+import ATD.SetUp;
 import AWS.Order_aws;
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.getShopFromRoute;
-import static ATD.CommonMethods.password;
+import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.close;
 
-public class QASYS_80_Paired {
+
+public class QC_1594_Paired {
 
     @BeforeClass
     void setUp() {
@@ -30,13 +34,13 @@ public class QASYS_80_Paired {
     }
 
 
-    @Owner(value = "alex_qa")
+    @Owner(value = "Chelombitko")
     @Test(dataProvider = "route")
     @Description(value = "Test check making order with paired product")
     @Flaky
     public void checkingOrderWithPaired(String route) throws SQLException {
         String shop = getShopFromRoute(route);
-        open(route + "/" + new DataBase().getRouteByRouteName(shop, "search8"));
+        openPage(route + "/" + new DataBase().getRouteByRouteName(shop, "search8"));
         String testMail = "atdautotest_qasys_80_paired@mailinator.com";
         new Search_page_Logic().counterIncrease("2").counterDecrease("4").closeFooterMessageCookies().detailsClick()
                 .counterIncrease("2").counterDecrease("4").counterIncrease("2").addProductToCart().closePopupOtherCategoryIfYes().checkingNumberOfProductInCart(4).cartClick()
@@ -48,5 +52,10 @@ public class QASYS_80_Paired {
                 .closePopupAfterOrder().successTextInHeader().shouldHave(Condition.text("Vielen Dank"));
         String orderNumber = new Payment_handler_page_Logic().getOrderNumber();
         new Order_aws(orderNumber).openOrderInAwsWithLogin().checkQuantityOfProduct(4).checkTooltipByAddingIncorrectProductQuantity("3");
+    }
+
+    @AfterMethod
+    private void tearDown() {
+        close();
     }
 }

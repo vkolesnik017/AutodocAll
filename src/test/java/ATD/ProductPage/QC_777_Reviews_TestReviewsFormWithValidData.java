@@ -18,6 +18,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
@@ -52,8 +53,7 @@ public class QC_777_Reviews_TestReviewsFormWithValidData {
         product_page_logic.faqPopupText().shouldHave(text("Danke für Ihre Beurteilung."));
         mailinator.openEmail(randomEmail)
                 .openLetter(2)
-                .linkFAQemailConfirm()
-                .click();
+                .linkFAQemailConfirm().shouldBe(appear).click();
         switchTo().window(1);
         new Reviews_Confirmation_page_Logic().checkReviewsConfirmationMessage();
         loginAws.loginInAwsWithOpen();

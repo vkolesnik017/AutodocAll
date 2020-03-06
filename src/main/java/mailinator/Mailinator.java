@@ -2,6 +2,7 @@ package mailinator;
 
 import ATD.PasswordRecovery_page;
 import ATD.PasswordRecovery_page_Logic;
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selectors.byCssSelector;
@@ -34,7 +35,7 @@ public class Mailinator {
   }
 
   public Mailinator openLetter(int numberLetter) {
-    sleep(3000);
+    letter(numberLetter).shouldBe(Condition.appear);
     letter(numberLetter).click();
     switchTo().frame("msg_body");
     return this;
