@@ -17,7 +17,7 @@ public class Category_name_page_Logic extends Category_name_page {
     return this;
   }
 
-  @Step("check successfully child category page loading")
+  @Step("check successfully child category page loading. Category_name_page")
   public Category_name_page_Logic checkSuccessfullyChildCategoryLoadingFromMainPage() {
     imageOfChildCategory().shouldBe(visible);
     Assert.assertEquals(url(), "https://www.autodoc.de/autoteile/olfilter-10359");

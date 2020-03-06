@@ -688,14 +688,14 @@ public class Main_page_Logic extends Main_page {
         return this;
     }
 
-    @Step("Check successfully Car main page loading")
+    @Step("Check successfully Car main page loading. Main_page")
     public Main_page_Logic checkSuccessfullyMainPageLoading() {
         menuCatalogInHeader().shouldBe(visible);
         Assert.assertTrue(url().contains("https://www.autodoc.de/"));
         return this;
     }
 
-    @Step("Checking that selector is empty")
+    @Step("Checking that selector is empty. Main_page")
     public Main_page_Logic checkOfEmptyOfVerticalSelector() {
         brandSelectorInVerticalCarSelector().shouldHave(exactValue("0"));
         modelSelectorInVerticalCarSelector().shouldHave(exactValue("0"));
@@ -703,7 +703,7 @@ public class Main_page_Logic extends Main_page {
         return this;
     }
 
-    @Step("Select child category on main page")
+    @Step("Select child category on main page. Main_page")
     public Category_name_page_Logic selectChildCategory(String childCategory) {
         tecDocCatalogMainPage().scrollTo();
         childCategoryOnMainPage(childCategory).click();
