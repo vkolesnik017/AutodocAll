@@ -2,6 +2,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="FiltersSorting" parallel="methods" thread-count="2" data-provider-thread-count="2">
 
+    <listeners>
+        <listener class-name="ATD.ProjectListener"/>
+    </listeners>
+
     <test name="FiltersSorting_sideFilters">
         <classes>
             <class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_118_FiltersSorting_TestProductreiheFilterApplying"/>

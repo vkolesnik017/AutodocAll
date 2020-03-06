@@ -2,6 +2,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Characteristics" parallel="methods" thread-count="3" data-provider-thread-count="4">
 
+    <listeners>
+        <listener class-name="ATD.ProjectListener"/>
+    </listeners>
+
     <test name="QC_486_DynamicCharacteristics">
         <classes>
             <class name="ATD.Characteristics.QC_486_DynamicCharacteristics.QC_487_OutputDynamicCharacteristicOnProductPage"/>

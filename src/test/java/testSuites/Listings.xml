@@ -2,6 +2,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Listings" parallel="methods" thread-count="2">
 
+    <listeners>
+        <listener class-name="ATD.ProjectListener"/>
+    </listeners>
+
     <test name="QC_423_ListingOEN">
         <classes>
             <class name="ATD.Listings.QC_423_ListingOEN.QC_424_GoingToRouteCategoryOenFromSearch"/>

@@ -3,7 +3,7 @@
 <suite name="ProductPage" parallel="methods" thread-count="2">
 
     <listeners>
-        <listener class-name="ATD.FailScreenshotListener"/>
+        <listener class-name="ATD.ProjectListener"/>
     </listeners>
 
     <test name="ProductPage">
