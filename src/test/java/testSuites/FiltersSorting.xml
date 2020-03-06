@@ -2,6 +2,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="FiltersSorting" parallel="methods" thread-count="2" data-provider-thread-count="2">
 
+    <listeners>
+        <listener class-name="ATD.ProjectListener"/>
+    </listeners>
+
     <test name="FiltersSorting_sideFilters">
         <classes>
             <class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_118_FiltersSorting_TestProductreiheFilterApplying"/>
@@ -52,17 +56,17 @@
         </classes>
     </test>
 
-    <test name="FiltersSorting_byGeneric">
-        <classes>
-            <class name="ATD.FiltersSorting.QC_179_FiltersSorting_byGeneric.QC_180_FiltersSorting_TestProductOutputWithGenericFilter"/>
-        </classes>
-    </test>
+    <!--<test name="FiltersSorting_byGeneric">-->
+        <!--<classes>-->
+            <!--<class name="ATD.FiltersSorting.QC_179_FiltersSorting_byGeneric.QC_180_FiltersSorting_TestProductOutputWithGenericFilter"/>-->
+        <!--</classes>-->
+    <!--</test>-->
 
-    <test name="FiltersSorting_byRating">
-        <classes>
-            <class name="ATD.FiltersSorting.QC_185_FiltersSorting_byRating.QC_186_FiltersSorting_TestOutputWithFilterByRating"/>
-        </classes>
-    </test>
+    <!--<test name="FiltersSorting_byRating">-->
+        <!--<classes>-->
+            <!--<class name="ATD.FiltersSorting.QC_185_FiltersSorting_byRating.QC_186_FiltersSorting_TestOutputWithFilterByRating"/>-->
+        <!--</classes>-->
+    <!--</test>-->
 
     <test name="FiltersSorting_outputSorting">
         <classes>

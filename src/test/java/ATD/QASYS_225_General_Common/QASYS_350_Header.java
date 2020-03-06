@@ -2,6 +2,7 @@ package ATD.QASYS_225_General_Common;
 
 import ATD.DataBase;
 import ATD.Main_page;
+import ATD.Main_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -20,7 +21,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class QASYS_350_Header {
 
-  private Main_page mainPage = new Main_page();
+  private Main_page_Logic mainPage = new Main_page_Logic();
   private DataBase db = new DataBase();
 
   @BeforeClass
@@ -39,14 +40,11 @@ public class QASYS_350_Header {
   @Description(value = "TC 1.1 and 1.2 Checks presence elements in promotion banner and its closing")
   public void testPromotionBannerInHeader(String route) {
     open(route);
-    mainPage.promotionBanner().shouldBe(visible);
-    mainPage.clockInPromotionBanner().shouldBe(visible);
-    mainPage.textAboveClockInPromotionBanner().shouldBe(visible);
-    mainPage.closeBtnOfPromotionBanner().click();
-    mainPage.promotionBanner().shouldBe(not(visible));
+    mainPage.discountBox().shouldBe(visible);
+    mainPage.discountBoxClock().shouldBe(visible);
   }
 
-  @Test(dataProvider = "route")
+  @Test(dataProvider = "route", enabled = true)
   @Flaky
   @Owner(value = "Evlentiev")
   @Description(value = "TC 2  Checks presence elements in header")
@@ -63,7 +61,7 @@ public class QASYS_350_Header {
     mainPage.totalPriceInCart().shouldBe(visible);
   }
 
-  @Test(dataProvider = "route")
+  @Test(dataProvider = "route", enabled = true)
   @Flaky
   @Owner(value = "Evlentiev")
   @Description(value = "TC 2.1  Checks click logo and sign in button")
@@ -82,7 +80,7 @@ public class QASYS_350_Header {
     mainPage.loginBtnInPopUp().shouldBe(not(visible));
   }
 
-  @Test(dataProvider = "route")
+  @Test(dataProvider = "route", enabled = true)
   @Flaky
   @Owner(value = "Evlentiev")
   @Description(value = "TC 2.2  Checks hints and info popup for search in header")
@@ -100,7 +98,7 @@ public class QASYS_350_Header {
     mainPage.infoPopupForSearch().shouldBe(not(visible));
   }
 
-  @Test(dataProvider = "route")
+  @Test(dataProvider = "route", enabled = true)
   @Flaky
   @Owner(value = "Evlentiev")
   @Description(value = "TC 2.3  Checks catalog menu and click cart")
@@ -119,7 +117,7 @@ public class QASYS_350_Header {
     mainPage.cartClick().emptyCart().shouldBe(visible);
   }
 
-  @Test(dataProvider = "route")
+  @Test(dataProvider = "route", enabled = true)
   @Flaky
   @Owner(value = "Evlentiev")
   @Description(value = "TC 3.1  Checks navigate categories in header")

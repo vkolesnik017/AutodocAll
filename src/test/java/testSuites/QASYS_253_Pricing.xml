@@ -2,6 +2,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="QASYS_253_Pricing" parallel="tests" data-provider-thread-count="6">
 
+    <listeners>
+        <listener class-name="ATD.ProjectListener"/>
+    </listeners>
+
     <test name="QASYS_393_ReconciliationOfCurrencies">
         <classes>
             <class name="ATD.QASYS_253_Pricing.QASYS_393_ReconciliationOfCurrencies">

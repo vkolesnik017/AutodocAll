@@ -1,4 +1,4 @@
 package ATD;
 
-public class Index_instruments_page {
+class Index_instruments_page {
 }

@@ -1,6 +1,7 @@
 package ATD.StaticPage;
 
 import ATD.Main_page;
+import ATD.Main_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -32,7 +33,7 @@ public class QC_717_StaticPage_widerruf {
     @Description(value = "Test checks elements on widerruf page")
     public void checkWiderrufPageElements(String route) {
         openPage(route);
-        new Main_page().clickWiderruf()
+        new Main_page_Logic().clickWiderruf()
                 .checkItemsOnPage();
     }
 

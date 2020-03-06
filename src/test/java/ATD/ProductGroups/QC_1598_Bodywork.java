@@ -1,4 +1,4 @@
-package ATD.QASYS_73_ProductGroups;
+package ATD.ProductGroups;
 
 import ATD.DataBase;
 import ATD.Product_page_Logic;
@@ -7,18 +7,24 @@ import com.codeborne.selenide.Condition;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-
-import static ATD.CommonMethods.*;
+import static ATD.CommonMethods.getShopFromRoute;
+import static ATD.CommonMethods.password;
 import static ATD.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
-public class QASYS_75_Ridex_Stark {
+public class QC_1598_Bodywork {
+
+    private Product_page_Logic product_page_logic = new Product_page_Logic();
+
+    private String urlProductForBodyFR = "https://www.auto-doc.fr/valeo/1059854";
 
     @BeforeClass
     void setUp() {
@@ -31,15 +37,26 @@ public class QASYS_75_Ridex_Stark {
     }
 
 
-    @Owner(value = "alex_qa")
+    @Owner(value = "Chelombitko")
     @Test(dataProvider = "route")
-    @Description(value = "Test check making order with ridex product")
+    @Description(value = "Test check making order with body product")
     @Flaky
-    public void checkingOrderWithRidex(String route) throws SQLException {
+    public void checkingOrderWithBody(String route) throws SQLException {
+        open(urlProductForBodyFR);
+        product_page_logic.clickAddToCartAndCheckPopupFR();
         String shop = getShopFromRoute(route);
-        open(route + "/" + new DataBase().getRouteByRouteName(shop, "product3"));
-        String testMail = "atdautotest_qasys_75_ridex@mailinator.com";
-        new Product_page_Logic().addProductToCart().closePopupOtherCategoryIfYes()
+        open(route + "/" + new DataBase().getRouteByRouteName(shop, "product7"));
+        String testMail = "atdautotest_qasys_82_bodywork@mailinator.com";
+        product_page_logic.addProductToCart().closePopupOtherCategoryIfYes()
+                .cartClick()
+                .nextButtonClick()
+                .signIn(testMail, password)
+                .fillAllFields("FR").nextBtnClick()
+                .chooseVorkasse().nextBtnClick()
+                .closePopupDeliveryImpossibleAndCheckEmptyCart();
+        close();
+        open(route + "/" + new DataBase().getRouteByRouteName(shop, "product7"));
+        product_page_logic.addProductToCart().closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
                 .signIn(testMail, password)
@@ -49,21 +66,8 @@ public class QASYS_75_Ridex_Stark {
                 .closePopupAfterOrder().successTextInHeader().shouldHave(Condition.text("Vielen Dank"));
     }
 
-    @Owner(value = "alex_qa")
-    @Test(dataProvider = "route")
-    @Description(value = "Test check making order with stark product")
-    @Flaky
-    public void checkingOrderWithStark(String route) throws SQLException {
-        String shop = getShopFromRoute(route);
-        open(route + "/" + new DataBase().getRouteByRouteName(shop, "product4"));
-        String testMail = "atdautotest_qasys_75_stark@mailinator.com";
-        new Product_page_Logic().addProductToCart().closePopupOtherCategoryIfYes()
-                .cartClick()
-                .nextButtonClick()
-                .signIn(testMail, password)
-                .fillAllFields(shop).nextBtnClick()
-                .chooseVorkasse().nextBtnClick()
-                .nextBtnClick()
-                .closePopupAfterOrder().successTextInHeader().shouldHave(Condition.text("Vielen Dank"));
+    @AfterMethod
+    private void tearDown() {
+        close();
     }
 }

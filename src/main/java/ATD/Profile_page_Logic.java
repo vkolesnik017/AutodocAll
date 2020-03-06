@@ -3,12 +3,22 @@ package ATD;
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
 
+import java.sql.SQLException;
+
 import static ATD.CommonMethods.getNameRouteFromJSVarInHTML;
 import static com.codeborne.selenide.Selenide.Wait;
 import static com.codeborne.selenide.Selenide.page;
 import static org.testng.AssertJUnit.assertNull;
 
 public class Profile_page_Logic extends Profile_page {
+    private Retouren_page_Logic retourenPage = new Retouren_page_Logic();
+
+    @Step("Get client ID(digit). Profile_page")
+    public String getDigitClientId() {
+        String digit = clientID().getText();
+        digit = digit.substring(digit.indexOf(":") + 1).trim();
+        return digit;
+    }
 
     @Step("Logout user. Profile_page")
     public Main_page_Logic logOut() {
@@ -61,4 +71,68 @@ public class Profile_page_Logic extends Profile_page {
         einstellungenActive().shouldBe(Condition.appear);
         return this;
     }
+
+    // history orders tab (page) (Meine Bestellungen)
+    @Step("Clicking Bestelldetails. Profile_page")
+    public Profile_page_Logic clickBestelldetailsButton(String numberOrder) {
+        bestelldetailsButton(numberOrder).click();
+        return this;
+    }
+
+    // details order page, appear after click bestelldetails Button
+    @Step("Clicking return or replace item button. Profile_page")
+    public Profile_page_Logic clickReturnOrReplaceItemButton() {
+        // [Artikel zurücksenden oder ersetzen] > button
+        returnOrReplaceItemButton().click();
+        return this;
+    }
+
+    // popup return, the necessary methods are fits from the Retoure_page
+    @Step(":on Profile_page")
+    public Float getProductPriceForReturn() {
+        return retourenPage.getProductPriceForReturn();
+    }
+
+    @Step(":on Profile_page")
+    public Profile_page_Logic clickCheckbox() {
+        retourenPage.clickCheckbox();
+        return this;
+    }
+
+    @Step(":on Profile_page")
+    public Profile_page_Logic chooseRandomCauseReturnInSelect() {
+        retourenPage.chooseRandomCauseReturnInSelect();
+        return this;
+    }
+
+    @Step(":on Profile_page")
+    public Profile_page checkingTranslateOfCausesForReturn() throws SQLException {
+        retourenPage.checkingTranslateOfCausesForReturn();
+        return this;
+    }
+
+    @Step(":on Profile_page")
+    public Profile_page_Logic chekingToAppearPopupErrorsOfReturn() {
+        retourenPage.chekingToAppearPopupErrorsOfReturn();
+        return this;
+    }
+
+    @Step(":on Profile_page")
+    public Profile_page_Logic fillInFormForMessage() {
+        retourenPage.fillInFormForMessage();
+        return this;
+    }
+
+    @Step(":on Profile_page")
+    public Profile_page_Logic addFileIfIsDisplayedFileBlock() {
+        retourenPage.addFileIfIsDisplayedFileBlock();
+        return this;
+    }
+
+    @Step(":on Profile_page")
+    public Profile_page_Logic clickSendenButtonWithCorrectData() {
+        retourenPage.clickSendenButtonWithCorrectData();
+        return this;
+    }
+
 }

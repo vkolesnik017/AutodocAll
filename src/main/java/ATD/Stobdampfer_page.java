@@ -1,6 +1,6 @@
 package ATD;
 
 
-public class Stobdampfer_page {
+class Stobdampfer_page {
 
 }

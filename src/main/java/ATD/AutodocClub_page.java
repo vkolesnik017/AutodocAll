@@ -1,6 +1,6 @@
 package ATD;
 
 
-public class AutodocClub_page {
+class AutodocClub_page {
 
 }

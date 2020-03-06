@@ -7,7 +7,7 @@ import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.*;
 
-public class Vacancies_static_page {
+class Vacancies_static_page {
 
     SelenideElement title() {
         return $(By.xpath("//*[@class='vacancy-header__title']/h2"));

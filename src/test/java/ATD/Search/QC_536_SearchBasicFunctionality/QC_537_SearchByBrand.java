@@ -1,9 +1,6 @@
 package ATD.Search.QC_536_SearchBasicFunctionality;
 
-import ATD.Listing_page;
-import ATD.Main_page;
-import ATD.Main_page_Logic;
-import ATD.SetUp;
+import ATD.*;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -17,8 +14,6 @@ import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.open;
 
 public class QC_537_SearchByBrand {
-
-  private Listing_page listingPage = new Listing_page();
 
   private String brandName = "RIDEX";
 
@@ -39,6 +34,6 @@ public class QC_537_SearchByBrand {
   public void testSearchByBrand(String route) {
     open(route);
     new Main_page_Logic().useSearch(brandName);
-    listingPage.checksProductTitlesContainExpectedTextGoingAllPagination(brandName);
+    new Listing_page_Logic().checksProductTitlesContainExpectedTextGoingAllPagination(brandName);
   }
 }

@@ -22,7 +22,6 @@ import static com.codeborne.selenide.Selenide.open;
 public class QC_888_PopupErrorsInRetourePage {
 
   private Product_page_Logic product_page_logic = new Product_page_Logic();
-  private Retouren_page retourenPage = new Retouren_page();
   private DataBase db = new DataBase();
 
   private String idUserAws = "13782304";
@@ -60,7 +59,7 @@ public class QC_888_PopupErrorsInRetourePage {
             .setStatusOrderToVersendetVorkasse()
             .addDeliveryConditionGLS();
     open(route + "/" + db.getRouteByRouteName(getShopFromRoute(route), "return_return"));
-    retourenPage.findOrder("11111", orderNumber)
+    new Retouren_page_Logic().findOrder("11111", orderNumber)
             .chekingToAppearPopupErrorsOfReturn();
   }
 

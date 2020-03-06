@@ -1,4 +1,4 @@
 package ATD;
 
-public class Index_accessories_page {
+class Index_accessories_page {
 }

@@ -6,7 +6,7 @@ import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
-public class Moto_main_page {
+class Moto_main_page {
     protected SelenideElement menuCatalogInHeader() {
         return $(".menu-catalog>a");
     }

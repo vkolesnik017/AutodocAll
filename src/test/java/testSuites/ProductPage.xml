@@ -2,10 +2,13 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="ProductPage" parallel="methods" thread-count="2">
 
+    <listeners>
+        <listener class-name="ATD.ProjectListener"/>
+    </listeners>
+
     <test name="ProductPage">
         <classes>
-            <class name="ATD.ProductPage.QC_963_ProductPage_TestPresenceOfElements"/>
-            <class name="ATD.ProductPage.QC_918_OEN_TestOEMlistWithCar"/>
+            <!--<class name="ATD.ProductPage.QC_963_ProductPage_TestPresenceOfElements"/>-->
             <class name="ATD.ProductPage.QC_921_OEN_TestOEMlistWithoutCar"/>
             <class name="ATD.ProductPage.QC_924_CompatibilityList_TestCompatibleCarAndProduct"/>
             <class name="ATD.ProductPage.QC_942_CompatibilityList_TestNotCompatibleCarAndProduct"/>
@@ -13,6 +16,7 @@
             <class name="ATD.ProductPage.QC_707_FAQ_TestFAQformValidationEmptyFields"/>
             <class name="ATD.ProductPage.QC_708_FAQ_TestVinPopupAfterHover"/>
             <class name="ATD.ProductPage.QC_709_FAQ_TestFAQformWithValidData"/>
+            <!--<class name="ATD.ProductPage.QC_918_OEN_TestOEMlistWithCar"/>-->
             <class name="ATD.ProductPage.QC_744_Reviews_TestReviewsFormValidation"/>
             <class name="ATD.ProductPage.QC_777_Reviews_TestReviewsFormWithValidData"/>
         </classes>

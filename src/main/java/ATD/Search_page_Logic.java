@@ -1,16 +1,41 @@
 package ATD;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.Step;
 
-import static ATD.CommonMethods.waitWhileRouteBecomeExpected;
-import static ATD.CommonMethods.waitingWhileLinkBecomeExpected;
+import static ATD.CommonMethods.*;
+import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
+import static com.codeborne.selenide.Condition.exactValue;
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.page;
-import static com.codeborne.selenide.WebDriverRunner.url;
-import static org.testng.Assert.assertEquals;
-
 
 public class Search_page_Logic extends Search_page {
+
+    @Step(":on Search_page")
+    public Cart_page_Logic cartClick() {
+        new Main_page_Logic().cartClick();
+        return page(Cart_page_Logic.class);
+    }
+
+    @Step(":on Search_page")
+    public Search_page checksProductTitlesContainExpectedTextGoingAllPagination(String expectedText) {
+        new Listing_page_Logic().checksProductTitlesContainExpectedTextGoingAllPagination(expectedText);
+        return this;
+    }
+
+    @Step("Close footer message cookies. Search_page")
+    public Search_page_Logic closeFooterMessageCookies() {
+        closeCookiesFooterMessage();
+        return this;
+    }
+
+    @Step("Verify text in search bar. Search_page")
+    public Search_page_Logic verifyTextInSearchBar(String expectedText) {
+        new Main_page().searchBar().shouldHave(exactValue(expectedText));
+        return this;
+    }
 
     @Step("Verify name route equals search. Search_page")
     public Search_page_Logic verifyNameRouteEqualsSearch() {
@@ -67,6 +92,37 @@ public class Search_page_Logic extends Search_page {
         return this;
     }
 
+    @Step("Adds the first product and goes to the basket")
+    public Cart_page_Logic addFirstProductAndGoToCart() {
+        buyButton().click();
+        cartPopupWithProduct().shouldBe(visible);
+        cartClick();
+        return page(Cart_page_Logic.class);
+    }
 
+    @Step(": on Search_page")
+    public Search_page_Logic counterIncrease(String startValue){
+        new CommonMethods().checkingCounterIncrease(startValue, counterValue(), counterPlus());
+        return this;
+    }
+
+    @Step(": on Search_page")
+    public Search_page_Logic counterDecrease(String startValue) {
+        new CommonMethods().checkingCounterDecrease(startValue, counterValue(), counterMinus());
+        return this;
+    }
+
+    @Step("Clicking details. Search_page")
+    public Product_page_Logic detailsClick(){
+        detalisBtn().click();
+        return page(Product_page_Logic.class);
+    }
+
+    @Step("Gets all the characteristics of the desired product from search listing {productArticle}. Search_page")
+    // example String for productArticle = V99-75-0011
+    public ElementsCollection getCharacteristicsDesiredProductForSearch(String productArticle) {
+        return $$x("//*[@class='rc' and contains(text(),'" + productArticle +"')]/ancestor::div[@class='box criteria_toogle_active']//li")
+                .shouldHave(sizeGreaterThan(10));
+    }
 }
 

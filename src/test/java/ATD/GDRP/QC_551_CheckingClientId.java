@@ -1,6 +1,6 @@
 package ATD.GDRP;
 
-import ATD.Main_page;
+import ATD.Main_page_Logic;
 import ATD.SetUp;
 import AWS.Customer_search_aws;
 import io.qameta.allure.Description;
@@ -36,7 +36,7 @@ public class QC_551_CheckingClientId {
     @Description(value = "Test verifies that ID Number of client are correct in profile page and in AWS")
     public void testVerificationClientId(String route) {
         openPage(route);
-        id = new Main_page().loginUserFromMain(mail).getDigitClientId();
+        id = new Main_page_Logic().loginUserFromMain(mail).getDigitClientId();
         idAws = new Customer_search_aws().openSearchInAwsWithLogin().enterMailAndClickSearch(mail).getClientId();
         Assert.assertEquals(id, idAws);
     }

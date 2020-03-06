@@ -1,6 +1,7 @@
 package mailinator;
 
 import ATD.PasswordRecovery_page;
+import ATD.PasswordRecovery_page_Logic;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selectors.byCssSelector;
@@ -22,7 +23,7 @@ public class Mailinator {
 
   public SelenideElement linkFAQemailConfirm() { return $(".btn-wrapper > a"); }
 
-  public SelenideElement linkInRestorePasswordLetter() {
+  private SelenideElement linkInRestorePasswordLetter() {
     return $(byCssSelector(".forgot>a"));
   }
 
@@ -33,14 +34,15 @@ public class Mailinator {
   }
 
   public Mailinator openLetter(int numberLetter) {
+    sleep(3000);
     letter(numberLetter).click();
     switchTo().frame("msg_body");
     return this;
   }
 
-  public PasswordRecovery_page clickLinkRecoveryPasswordInLetter() {
+  public PasswordRecovery_page_Logic clickLinkRecoveryPasswordInLetter() {
     linkInRestorePasswordLetter().click();
     switchTo().window("recovery");
-    return page(PasswordRecovery_page.class);
+    return page(PasswordRecovery_page_Logic.class);
   }
 }

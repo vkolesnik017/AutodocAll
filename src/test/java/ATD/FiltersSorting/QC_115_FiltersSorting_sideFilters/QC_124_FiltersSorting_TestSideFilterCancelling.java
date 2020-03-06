@@ -3,6 +3,7 @@ package ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters;
 
 import ATD.DataBase;
 import ATD.Listing_page;
+import ATD.Listing_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -20,7 +21,7 @@ import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Selenide.close;
 
 public class QC_124_FiltersSorting_TestSideFilterCancelling {
-    private Listing_page listingPage = new Listing_page();
+    private Listing_page_Logic listingPage = new Listing_page_Logic();
     private DataBase dataBase = new DataBase();
 
     @BeforeClass
@@ -62,7 +63,7 @@ public class QC_124_FiltersSorting_TestSideFilterCancelling {
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.hoheProductAttributeGenericRouteLKW(), listingPage.hoheProductAttributeTecdocRouteLKW());
         int numberOfAttributesFilter = listingPage.hoheProductAttributeTecdocRoute().size();
-        listingPage.activeSideFilterLkwHohe().click();
+        listingPage.activeSideFilterLkw().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         int numberOfAttributesNoFilter = listingPage.hoheProductAttributeTecdocRoute().size();
         Assert.assertNotEquals(numberOfAttributesFilter, numberOfAttributesNoFilter);

@@ -33,7 +33,7 @@ public class Partnership_static_page_Logic extends Partnership_static_page {
     }
 
     @Step("Checks items at the top of the Partnership pages. Partnership_static_page")
-    public Partnership_static_page_Logic checkPageElements(){
+    public Partnership_static_page_Logic checkPageElements() {
         mainLogo().shouldBe(visible).shouldBe(clickable);
         title().shouldBe(visible);
         logoAboveText().shouldBe(visible);
@@ -49,7 +49,7 @@ public class Partnership_static_page_Logic extends Partnership_static_page {
     }
 
     @Step("Checks for Add partner block and elements inside it. Partnership_static_page")
-    public Partnership_static_page_Logic checkAddPartnerBlock(){
+    public Partnership_static_page_Logic checkAddPartnerBlock() {
         addPartnerBlock().shouldBe(visible);
         mapText().shouldBe(visible);
         sendShipForm().shouldBe(visible);

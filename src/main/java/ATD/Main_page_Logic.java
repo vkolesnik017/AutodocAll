@@ -8,14 +8,39 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashSet;
 
 import static ATD.CommonMethods.*;
 import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selenide.*;
+import static org.testng.Assert.assertEquals;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class Main_page_Logic extends Main_page {
+
+    @Step("Checking number of product in cart. Main_page")
+    void checkingNumberOfProductInCart(int expectedNumber) {
+        int actualNumber = Integer.parseInt(numberOfProductInCart().getText());
+        Assert.assertEquals(actualNumber, expectedNumber);
+    }
+
+    @Step("The method verifies that no duplicates in the dropdown menu with tips when entered text {searchText} in search bar. Main_page")
+    public Main_page checkingThatNoDuplicatesInTooltipsToSearch() {
+        tooltipToSearch().shouldBe(visible);
+        ArrayList<String> tooltipsArr = new ArrayList<>();
+        HashSet<String> tooltipsSet = new HashSet<>();
+        ElementsCollection tooltips = tooltipsToSearch().shouldHave(sizeNotEqual(0));
+        for (SelenideElement tooltip : tooltips) {
+            String tooltipText = tooltip.getText();
+            tooltipsArr.add(tooltipText);
+            tooltipsSet.add(tooltipText);
+        }
+        assertEquals(tooltipsArr.size(), tooltipsSet.size());
+        return this;
+    }
 
     @Step("Login in header with mail {mail}. Main_page")
     public Profile_page_Logic loginFromHeader(String mail) {
@@ -71,6 +96,68 @@ public class Main_page_Logic extends Main_page {
         }
         return this;
     }
+
+    // Menu in header
+    @Step("Clicking LKW category. Main_page")
+    public LKW_main_page_Logic clickLkwCategory() {
+        $("[data-ga-action='LKW']").click();
+        return page(LKW_main_page_Logic.class);
+    }
+
+    @Step("Clicking moto category. Main_page")
+    public Moto_main_page clickMotoCategory() {
+        $("[data-ga-action='MOTO']").click();
+        return page(Moto_main_page.class);
+    }
+
+    @Step("Clicking tyres category. Main_page")
+    public Tyres_page clickTiresCategory() {
+        $(byCssSelector("[data-ga-action='23208']")).click();
+        return page(Tyres_page.class);
+    }
+
+    @Step("Clicking instruments category. Main_page")
+    public Index_instruments_page clickInstrumentsCategory() {
+        $("[data-ga-action='36000']").click();
+        return page(Index_instruments_page.class);
+    }
+
+    @Step("Clicking accessories category. Main_page")
+    public Index_accessories_page clickAccessoriesCategory() {
+        $("[data-ga-action='33000']").click();
+        return page(Index_accessories_page.class);
+    }
+
+    @Step("Clicking oil engine category. Main_page")
+    public CarParts_EngineOil_page clickEngineOilCategory() {
+        $("[data-ga-action='12094']").click();
+        return page(CarParts_EngineOil_page.class);
+    }
+
+    @Step("Clicking filters category. Main_page")
+    public CarParts_Filters_page clickFiltersCategory() {
+        $("[data-ga-action='10105']").click();
+        return page(CarParts_Filters_page.class);
+    }
+
+    @Step("Clicking brake system category. Main_page")
+    public CarParts_BrakeSystem_page clickBrakeSystemCategory() {
+        $("[data-ga-action='10106']").click();
+        return page(CarParts_BrakeSystem_page.class);
+    }
+
+    @Step("Clicking engine category. Main_page")
+    public CarParts_Engine_page clickEngineCategory() {
+        $(".header-i.header-i--engine").click();
+        return page(CarParts_Engine_page.class);
+    }
+
+    @Step("Cart clicking. Main_page")
+    public Cart_page cartClick() {
+        cartIcon().click();
+        return page(Cart_page.class);
+    }
+
     // Selector
 
     @Step("Close tooltip in car selector. Main_page")
@@ -80,6 +167,16 @@ public class Main_page_Logic extends Main_page {
         tooltipInCarSelectorCloseBtn().click();
         tooltipInCarSelectorCloseBtn().shouldNot(visible);
         return this;
+    }
+
+    // Login popup
+    @Step("Sign in from login popup. Main_page")
+    public Profile_page_Logic loginUserFromMain(String login) {
+        loginBtnInHeader().click();
+        emailInputInLoginPopup().setValue(login);
+        passwordInputInLoginPopup().setValue(password);
+        loginBtnInPopUp().click();
+        return page(Profile_page_Logic.class);
     }
 
     // Registration popup
@@ -170,6 +267,13 @@ public class Main_page_Logic extends Main_page {
     }
 
     // Vertical car selector popup
+
+    @Step("Method close car selector tooltip if it is present on page. Main_page")
+    public void closeCarSelectorTooltipIfVisible() {
+        if (tooltipInCarSelectorCloseBtn().is(visible)) {
+            tooltipInCarSelectorCloseBtn().click();
+        }
+    }
 
     // The method needed for pages where the vertical car selector is hidden by default
     @Step("Open vertical car selector if it hidden. Main_page")
@@ -274,6 +378,158 @@ public class Main_page_Logic extends Main_page {
         commonMethods.checkingUrl(appUrl);
         return this;
     }
+
+    //ÜBER AUTODOC
+
+    public About_us_page clickAboutUs() {
+        $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[1]/a")).click();
+        return page(About_us_page.class);
+    }
+
+    public Impressum_static_page_Logic clickImpressum() {
+        $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[2]/a")).click();
+        return page(Impressum_static_page_Logic.class);
+    }
+
+    public Vacancies_static_page_Logic clickVacancies() {
+        $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[3]/a")).click();
+        return page(Vacancies_static_page_Logic.class);
+    }
+
+    public Bonusprogramm_page clickBonusprogramm() {
+        $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[4]/a")).click();
+        return page(Bonusprogramm_page.class);
+    }
+
+    public Sponsorship_static_page clickSponsorship() {
+        $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[5]/a")).click();
+        return page(Sponsorship_static_page.class);
+    }
+
+    public Partnership_static_page_Logic clickPartnership() {
+        $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[5]/a")).click();
+        return page(Partnership_static_page_Logic.class);
+    }
+
+    public Presse_page clickPresse() {
+        $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[6]/a")).click();
+        return page(Presse_page.class);
+    }
+
+    public MobileApp_static_page_Logic clickMobileApp() {
+        $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[7]/a")).click();
+        return page(MobileApp_static_page_Logic.class);
+    }
+
+    //HILFE & SUPPORT
+    public AutodocClub_page clickAutodocClub() {
+        $(By.xpath("//*[@class='footer__links']/div[2]/ul/li[1]/a")).click();
+        return page(AutodocClub_page.class);
+    }
+
+    public Blog_page clickBlog() {
+        $(By.xpath("//*[@class='footer__links']/div[2]/ul/li[2]/a")).click();
+        return page(Blog_page.class);
+    }
+
+    public VideoTutorials_page clickVideoTutorials() {
+        $(By.xpath("//*[@class='footer__links']/div[2]/ul/li[3]/a")).click();
+        return page(VideoTutorials_page.class);
+    }
+
+    public Altolentsorgung_page clickAltolentsorgung() {
+        $(By.xpath("//*[@class='footer__links']/div[2]/ul/li[4]/a")).click();
+        return page(Altolentsorgung_page.class);
+    }
+
+    public Agb_static_page_Logic clickAgb() {
+        $(By.xpath("//*[@class='footer__links']/div[2]/ul/li[5]/a")).click();
+        return page(Agb_static_page_Logic.class);
+    }
+
+    public Widerruf_static_page_Logic clickWiderruf() {
+        $(By.xpath("//*[@class='footer__links']/div[2]/ul/li[7]/a")).click();
+        return page(Widerruf_static_page_Logic.class);
+    }
+
+    public Datenschutz_page_Logic clickDatenschutz() {
+        $(By.xpath("//*[@class='footer__links']/div[2]/ul/li[8]/a")).click();
+        return page(Datenschutz_page_Logic.class);
+    }
+
+    //KUNDENSERVICE
+    public Zahlung_static_page_Logic clickZahlung() {
+        $(By.xpath("//*[@class='footer__links']/div[3]/ul/li[1]/a")).click();
+        return page(Zahlung_static_page_Logic.class);
+    }
+
+    public Versand_static_page_Logic clickVersand() {
+        $(By.xpath("//*[@class='footer__links']/div[3]/ul/li[2]/a")).click();
+        return page(Versand_static_page_Logic.class);
+    }
+
+    public Contact_static_page_Logic clickContact() {
+        $(By.xpath("//*[@class='footer__links']/div[3]/ul/li[3]/a")).click();
+        return page(Contact_static_page_Logic.class);
+    }
+
+    public Retouren_page clickRetouren() {
+        $(By.xpath("//*[@class='footer__links']/div[3]/ul/li[4]/a")).click();
+        return page(Retouren_page.class);
+    }
+
+    public Austauschartikel_static_page_Logic clickAustauschartikel() {
+        $(By.xpath("//*[@class='footer__links']/div[3]/ul/li[5]/a")).click();
+        return page(Austauschartikel_static_page_Logic.class);
+    }
+
+    //TOP PRODUKTE
+
+    public Beleuchtung_page clickBeleuchtung() {
+        $(By.xpath("//*[@class='footer__links']/div[4]/ul/li[1]/a")).click();
+        return page(Beleuchtung_page.class);
+    }
+
+    public Stobdampfer_page clickStobdampfer() {
+        $(By.xpath("//*[@class='footer__links']/div[4]/ul/li[2]/a")).click();
+        return page(Stobdampfer_page.class);
+    }
+
+    public Querlenker_page clickQuerlenker() {
+        $(By.xpath("//*[@class='footer__links']/div[4]/ul/li[3]/a")).click();
+        return page(Querlenker_page.class);
+    }
+
+    public Radlager_page clickRadlager() {
+        $(By.xpath("//*[@class='footer__links']/div[4]/ul/li[4]/a")).click();
+        return page(Radlager_page.class);
+    }
+
+    public Kupplungssatz_page clickKupplungssatz() {
+        $(By.xpath("//*[@class='footer__links']/div[4]/ul/li[5]/a")).click();
+        return page(Kupplungssatz_page.class);
+    }
+
+    public Autopflege_page clickAutopflege() {
+        $(By.xpath("//*[@class='footer__links']/div[4]/ul/li[6]/a")).click();
+        return page(Autopflege_page.class);
+    }
+
+    public Ersatzteile_page clickSucheNachAutomodelle() {
+        $(By.xpath("//*[@class='footer__links']/div[4]/ul/li[7]/a")).click();
+        return page(Ersatzteile_page.class);
+    }
+
+    public ErsatzteileModels_page clickNachHerstellerEinkaufen() {
+        $(By.xpath("//*[@class='footer__links']/div[4]/ul/li[8]/a")).click();
+        return page(ErsatzteileModels_page.class);
+    }
+
+    public ErsatzteileCars_page clickNachModellEinkaufen() {
+        $(By.xpath("//*[@class='footer__links']/div[4]/ul/li[9]/a")).click();
+        return page(ErsatzteileCars_page.class);
+    }
+
 
     @Step("Checks transition to footer links and checks URLs. Main_page")
     public Main_page_Logic checkTransitionToLinksOfStaticPage(String route) throws SQLException {
@@ -424,7 +680,7 @@ public class Main_page_Logic extends Main_page {
         return this;
     }
 
-    @Step(": footer subscribe block om Main_page")
+    @Step(": footer subscribe block on Main_page")
     public Main_page_Logic checkTransitionToLinkPrivacyPolicy(String route) throws SQLException {
         footerForm().scrollTo();
         datenschutzLinkInSubscribeBlock().click();

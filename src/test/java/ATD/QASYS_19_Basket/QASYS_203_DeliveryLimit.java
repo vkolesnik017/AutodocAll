@@ -19,10 +19,10 @@ public class QASYS_203_DeliveryLimit {
   private String email = "deliveryLimitTestQASYS203@mailinator.com";
   private String password = "1234";
 
-  private Main_page main_page = new Main_page();
+  private Main_page_Logic main_page = new Main_page_Logic();
   private Product_page_Logic product_page_logic = new Product_page_Logic();
-  private Cart_page cart_page = new Cart_page();
-  private CartAllData_page cartAllDataPage = new CartAllData_page();
+  private Cart_page_Logic cart_page = new Cart_page_Logic();
+  private CartAllData_page_Logic cartAllDataPage = new CartAllData_page_Logic();
 
   @BeforeClass
   void setUp() {

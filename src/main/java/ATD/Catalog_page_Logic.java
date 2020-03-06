@@ -1,5 +1,5 @@
 package ATD;
 
-public class Catalog_page_Logic {
+class Catalog_page_Logic {
 
 }

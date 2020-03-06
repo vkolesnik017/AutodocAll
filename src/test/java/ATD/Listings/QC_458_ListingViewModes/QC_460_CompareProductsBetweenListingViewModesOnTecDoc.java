@@ -1,6 +1,7 @@
 package ATD.Listings.QC_458_ListingViewModes;
 
 import ATD.Listing_page;
+import ATD.Listing_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,7 +17,6 @@ import static ATD.SetUp.setUpBrowser;
 
 public class QC_460_CompareProductsBetweenListingViewModesOnTecDoc {
 
-  private Listing_page listingPage = new Listing_page();
 
   @BeforeClass
   void setUp() {
@@ -34,7 +34,7 @@ public class QC_460_CompareProductsBetweenListingViewModesOnTecDoc {
   @Description(value = "Comparing products between listing modes and check presence elements for Tectdoc listing")
   public void testCompareProductsBetweenListingViewModesOnTecDoc(String route) {
     openPage(route);
-    listingPage.checksImportantElementsOnTecDocListing()
+    new Listing_page_Logic().checksImportantElementsOnTecDocListing()
             .compareProductsOrderBetweenListModeAndTileMode()
             .checksImportantElementsOnTecDocListing();
   }

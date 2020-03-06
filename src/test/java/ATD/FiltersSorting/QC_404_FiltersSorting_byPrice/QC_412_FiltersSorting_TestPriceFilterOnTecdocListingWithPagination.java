@@ -3,6 +3,7 @@ package ATD.FiltersSorting.QC_404_FiltersSorting_byPrice;
 
 import ATD.DataBase;
 import ATD.Listing_page;
+import ATD.Listing_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -18,7 +19,7 @@ import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class QC_412_FiltersSorting_TestPriceFilterOnTecdocListingWithPagination {
-    private Listing_page listingPage = new Listing_page();
+    private Listing_page_Logic listingPage = new Listing_page_Logic();
     private DataBase dataBase = new DataBase();
 
     @BeforeClass

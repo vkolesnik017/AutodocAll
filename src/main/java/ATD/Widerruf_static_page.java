@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
 
-public class Widerruf_static_page {
+class Widerruf_static_page {
 
     SelenideElement logo() {
         return $(By.cssSelector(".logo>a>img"));

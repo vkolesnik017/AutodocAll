@@ -2,6 +2,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="StaticPage" parallel="tests" thread-count="3">
 
+    <listeners>
+        <listener class-name="ATD.ProjectListener"/>
+    </listeners>
+
 
     <test name="QC_216_StaticPage_zahlung" enabled="true">
         <classes>
@@ -66,7 +70,7 @@
         </classes>
     </test>
 
-    <test name="QC_1559_StaticPage_vacancies" enabled="true">
+    <test name="QC_1559_StaticPage_vacancies" enabled="false">
         <classes>
             <class name="ATD.StaticPage.QC_1559_StaticPage_vacancies">
             </class>

@@ -34,8 +34,8 @@ public class CartPayments_page {
     }
 
     @Step
-    public CartAllData_page nextBtnClick() {
+    public CartAllData_page_Logic nextBtnClick() {
         nextBtn().click();
-        return page(CartAllData_page.class);
+        return page(CartAllData_page_Logic.class);
     }
 }
