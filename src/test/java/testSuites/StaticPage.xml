@@ -66,7 +66,7 @@
         </classes>
     </test>
 
-    <test name="QC_1559_StaticPage_vacancies" enabled="true">
+    <test name="QC_1559_StaticPage_vacancies" enabled="false">
         <classes>
             <class name="ATD.StaticPage.QC_1559_StaticPage_vacancies">
             </class>
