@@ -1,6 +1,6 @@
 package ATD.StaticPage;
 
-import ATD.Main_page;
+import ATD.Main_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -32,7 +32,7 @@ public class QC_1465_StaticPage_agb {
     @Description(value = "Test checks elements on agb page")
     public void checkAgbPageElements(String route) {
         openPage(route);
-        new Main_page().clickAgb()
+        new Main_page_Logic().clickAgb()
                 .checkElementPage()
                 .checkClickableLinks();
     }

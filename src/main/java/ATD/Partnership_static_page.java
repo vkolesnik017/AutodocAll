@@ -4,9 +4,6 @@ package ATD;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
-import static ATD.CommonMethods.mailRandom;
-import static com.codeborne.selenide.Condition.appear;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;

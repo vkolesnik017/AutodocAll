@@ -8,7 +8,7 @@ import org.openqa.selenium.By;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$x;
 
-public class Agb_static_page {
+class Agb_static_page {
 
     SelenideElement logo() {
         return $(By.cssSelector(".logo>a>img"));

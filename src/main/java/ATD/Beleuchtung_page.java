@@ -1,6 +1,6 @@
 package ATD;
 
 
-public class Beleuchtung_page {
+class Beleuchtung_page {
 
 }

@@ -1,6 +1,6 @@
 package ATD.StaticPage;
 
-import ATD.Main_page;
+import ATD.Main_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -32,7 +32,7 @@ public class QC_243_StaticPage_versand {
     @Description(value = "Test checks elements on versand page")
     public void checkVersandPageElements(String route) {
         openPage(route);
-        new Main_page().clickVersand()
+        new Main_page_Logic().clickVersand()
                 .checkBlockTop()
                 .checkPricesBlock()
                 .checkCountryPricesBlock()
@@ -43,6 +43,7 @@ public class QC_243_StaticPage_versand {
                 .checkOversizeShippingProductBlock()
                 .checkChooseDeliveryBlock();
     }
+
     @AfterMethod
     private void tearDown() {
         close();

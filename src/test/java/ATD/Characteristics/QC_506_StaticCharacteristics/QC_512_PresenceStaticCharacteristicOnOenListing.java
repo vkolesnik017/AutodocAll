@@ -1,9 +1,6 @@
 package ATD.Characteristics.QC_506_StaticCharacteristics;
 
-import ATD.CommonMethods;
-import ATD.DataBase;
-import ATD.Listing_page;
-import ATD.SetUp;
+import ATD.*;
 import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -23,7 +20,7 @@ import static com.codeborne.selenide.Selenide.open;
 public class QC_512_PresenceStaticCharacteristicOnOenListing {
 
   private DataBase db = new DataBase();
-  private Listing_page listingPage = new Listing_page();
+  private Listing_page_Logic listingPage = new Listing_page_Logic();
 
   @BeforeClass
   void setUp() {

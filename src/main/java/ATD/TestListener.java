@@ -63,7 +63,7 @@ public class TestListener implements ITestListener {
     }
 
     @Attachment
-    public File captureScreenshot() {
+    private File captureScreenshot() {
         return ((TakesScreenshot) getWebDriver()).getScreenshotAs(OutputType.FILE);
     }
 }

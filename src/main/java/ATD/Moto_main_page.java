@@ -1,4 +1,4 @@
 package ATD;
 
-public class Moto_main_page {
+class Moto_main_page {
 }

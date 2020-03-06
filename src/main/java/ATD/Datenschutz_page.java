@@ -9,15 +9,15 @@ import static com.codeborne.selenide.Selenide.$$x;
 
 public class Datenschutz_page {
 
-    protected SelenideElement titlePage() {
-       return $(By.xpath("//div[@class='head_name']"));
+    SelenideElement titlePage() {
+        return $(By.xpath("//div[@class='head_name']"));
     }
 
     protected SelenideElement logo() {
         return $(By.cssSelector(".logo>a>img"));
     }
 
-    protected SelenideElement mainBlock() {
+    SelenideElement mainBlock() {
         return $(By.cssSelector(".text_page.agb_page"));
     }
 

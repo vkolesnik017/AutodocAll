@@ -87,57 +87,57 @@ public class Contact_static_page {
         return $(By.id("form_Order[email]"));
     }
 
-    protected SelenideElement contactBlock(){ return $(By.cssSelector(".contact-page__info")); }
+    SelenideElement contactBlock(){ return $(By.cssSelector(".contact-page__info")); }
 
-    protected SelenideElement logoBlock(){ return $(By.cssSelector(".contact-page__info-logo")); }
+    SelenideElement logoBlock(){ return $(By.cssSelector(".contact-page__info-logo")); }
 
-    protected SelenideElement infoDescriptionBlock() {
+    SelenideElement infoDescriptionBlock() {
         return $(By.cssSelector(".contact-page__info-descroption"));
     }
 
-    protected SelenideElement addressBlock() {
+    SelenideElement addressBlock() {
         return $(By.cssSelector(".contact-page__info-adress"));
     }
 
-    protected SelenideElement addressField(){
+    SelenideElement addressField(){
         return $(By.cssSelector(".adress"));
     }
 
-    protected SelenideElement emailField(){
+    SelenideElement emailField(){
         return $(By.cssSelector(".email"));
     }
 
-    protected SelenideElement webSiteField(){
+    SelenideElement webSiteField(){
         return $(By.cssSelector(".web-site"));
     }
 
-    protected SelenideElement orderEmailInput() {
+    SelenideElement orderEmailInput() {
         return $(By.xpath("//input[@name='Order[email]']"));
     }
 
-    protected SelenideElement haveOrderButton() {
+    SelenideElement haveOrderButton() {
         return $(By.xpath("//*[@class='contact-page__form']/div[2]/span"));
     }
 
-    protected SelenideElement haveOrderBlock() { return $(By.xpath("//*[@class='contact-page__form-tab'][@data-tab='order']/div")); }
+    SelenideElement haveOrderBlock() { return $(By.xpath("//*[@class='contact-page__form-tab'][@data-tab='order']/div")); }
 
-    protected SelenideElement submitOrderButton() { return $(By.xpath("//*[@class='contact-page__form']/div[2]/div/div[6]/button")); }
+    SelenideElement submitOrderButton() { return $(By.xpath("//*[@class='contact-page__form']/div[2]/div/div[6]/button")); }
 
-    protected SelenideElement emailError() { return $(By.xpath("//*[@class='contact-page__form-error'][@data-name='error_Order[email]']")); }
+    SelenideElement emailError() { return $(By.xpath("//*[@class='contact-page__form-error'][@data-name='error_Order[email]']")); }
 
-    protected SelenideElement orderIdError() { return $(By.xpath("//*[@class='contact-page__form-error'][@data-name='error_Order[orderId]']")); }
+    SelenideElement orderIdError() { return $(By.xpath("//*[@class='contact-page__form-error'][@data-name='error_Order[orderId]']")); }
 
-    protected SelenideElement phoneNumberError() { return $(By.xpath("//*[@class='contact-page__form-error'][@data-name='error_Order[phone]']")); }
+    SelenideElement phoneNumberError() { return $(By.xpath("//*[@class='contact-page__form-error'][@data-name='error_Order[phone]']")); }
 
-    protected SelenideElement haveNoOrderButton() { return $(By.xpath("//*[@class='contact-page__form']/div[3]/span")); }
+    SelenideElement haveNoOrderButton() { return $(By.xpath("//*[@class='contact-page__form']/div[3]/span")); }
 
-    protected SelenideElement haveNoOrderBlock() { return $(By.xpath("//*[@class='contact-page__form-tab'][@data-tab='no_order']/div")); }
+    SelenideElement haveNoOrderBlock() { return $(By.xpath("//*[@class='contact-page__form-tab'][@data-tab='no_order']/div")); }
 
-    protected SelenideElement submitNoOrderButton() { return $(By.xpath("//*[@class='contact-page__form']/div[3]/div/div[8]/button")); }
+    SelenideElement submitNoOrderButton() { return $(By.xpath("//*[@class='contact-page__form']/div[3]/div/div[8]/button")); }
 
-    protected SelenideElement noOrderEmailError() { return $(By.xpath("//*[@class='contact-page__form-error'][@data-name='error_NoOrder[email]']")); }
+    SelenideElement noOrderEmailError() { return $(By.xpath("//*[@class='contact-page__form-error'][@data-name='error_NoOrder[email]']")); }
 
-    protected SelenideElement noOrderDetailError() { return $(By.xpath("//*[@class='contact-page__form-error'][@data-name='error_NoOrder[article][0][articleNo]']")); }
+    SelenideElement noOrderDetailError() { return $(By.xpath("//*[@class='contact-page__form-error'][@data-name='error_NoOrder[article][0][articleNo]']")); }
 
     public SelenideElement noOrderEmailInput() { return $(By.xpath("//input[@name='NoOrder[email]']")); }
 }

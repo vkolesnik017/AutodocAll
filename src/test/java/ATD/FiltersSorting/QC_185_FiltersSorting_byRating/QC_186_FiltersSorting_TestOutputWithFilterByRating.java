@@ -3,6 +3,7 @@ package ATD.FiltersSorting.QC_185_FiltersSorting_byRating;
 
 import ATD.DataBase;
 import ATD.Listing_page;
+import ATD.Listing_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -21,7 +22,7 @@ import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.refresh;
 
 public class QC_186_FiltersSorting_TestOutputWithFilterByRating {
-    private Listing_page listingPage = new Listing_page();
+    private Listing_page_Logic listingPage = new Listing_page_Logic();
     private DataBase dataBase = new DataBase();
 
     @BeforeClass

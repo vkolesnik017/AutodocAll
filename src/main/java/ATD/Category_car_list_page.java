@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
 
-public class Category_car_list_page {
+class Category_car_list_page {
     // Form soft 404
     SelenideElement mailFieldSoftForm() {
         return $(By.id("form_email"));

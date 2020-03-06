@@ -62,7 +62,7 @@ public class QC_898_MatchPricesInAwsOrderAndProfile {
             .addDeliveryConditionGLS()
             .getSellingProductPrice();
     open(route + "/" + db.getRouteByRouteName(getShopFromRoute(route), "profile_orders"));
-    Float productPriceOnRetourenPage = profilePage.clickBestelldetailsButton(orderNumber)
+    Float productPriceOnRetourenPage = new Profile_page_Logic().clickBestelldetailsButton(orderNumber)
             .clickReturnOrReplaceItemButton()
             .getProductPriceForReturn();
     assertEquals(productPriceInAwsOrder, productPriceOnRetourenPage);

@@ -3,6 +3,7 @@ package ATD.FiltersSorting.QC_195_FiltersSorting_outputSorting;
 
 import ATD.DataBase;
 import ATD.Listing_page;
+import ATD.Listing_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -18,7 +19,7 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.close;
 
 public class QC_252_FiltersSorting_TestOutputSortingWithFilterByCarBrandOen {
-    private Listing_page listingPage = new Listing_page();
+    private Listing_page_Logic listingPage = new Listing_page_Logic();
     private DataBase dataBase = new DataBase();
 
     @BeforeClass

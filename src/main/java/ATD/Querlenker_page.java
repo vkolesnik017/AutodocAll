@@ -1,6 +1,6 @@
 package ATD;
 
 
-public class Querlenker_page {
+class Querlenker_page {
 
 }

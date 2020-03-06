@@ -1,6 +1,6 @@
 package ATD;
 
 
-public class ErsatzteileModels_page {
+class ErsatzteileModels_page {
 
 }

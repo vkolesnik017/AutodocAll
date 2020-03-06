@@ -1,6 +1,7 @@
 package ATD.StaticPage;
 
 import ATD.Main_page;
+import ATD.Main_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -32,7 +33,7 @@ public class QC_1547_StaticPage_mobile_app {
     @Description(value = "Test checks elements on mobile app page")
     public void checkMobileAppPageElements(String route) {
         openPage(route);
-        new Main_page().clickMobileApp()
+        new Main_page_Logic().clickMobileApp()
                 .checkForItemsFromTopPage()
                 .checkBlockWithSlider()
                 .checkAutoBannerSwitching()

@@ -20,27 +20,27 @@ public class ListingTecDocSoft404_page {
     return $(".top-small-products");
   }
 
-  public SelenideElement emailForm() {
+  SelenideElement emailForm() {
     return $(byId("form_email"));
   }
 
-  public SelenideElement newsletterSubscriptionCheckbox() {
+  SelenideElement newsletterSubscriptionCheckbox() {
     return $(byId("subscribe_on"));
   }
 
-  public SelenideElement submitBtn() {
+  SelenideElement submitBtn() {
     return $(byName("submit"));
   }
 
-  public SelenideElement successPopupAfterSubscribeOnProductsForCar() {
+  SelenideElement successPopupAfterSubscribeOnProductsForCar() {
     return $(".popup_email_not");
   }
 
-  public SelenideElement errorTooltipOfEmailField() {
+  SelenideElement errorTooltipOfEmailField() {
     return $(".wrong_soft");
   }
 
-  public SelenideElement popupErrorConfirmYourNewsletter() {
+  SelenideElement popupErrorConfirmYourNewsletter() {
     return $(byId("popup_update"));
   }
 }

@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
 
-public class Impressum_static_page {
+class Impressum_static_page {
     SelenideElement logo() {
         return $(By.cssSelector(".logo>a>img"));
     }

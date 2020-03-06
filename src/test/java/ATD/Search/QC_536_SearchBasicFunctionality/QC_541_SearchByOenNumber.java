@@ -1,9 +1,6 @@
 package ATD.Search.QC_536_SearchBasicFunctionality;
 
-import ATD.Listing_page;
-import ATD.Main_page;
-import ATD.Main_page_Logic;
-import ATD.SetUp;
+import ATD.*;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -35,6 +32,6 @@ public class QC_541_SearchByOenNumber {
   public void testSearchByOenNumber(String route) {
     open(route);
     new Main_page_Logic().useSearch(oenNumber);
-    new Listing_page().checksProductTitlesContainExpectedTextGoingAllPagination(oenNumber);
+    new Listing_page_Logic().checksProductTitlesContainExpectedTextGoingAllPagination(oenNumber);
   }
 }

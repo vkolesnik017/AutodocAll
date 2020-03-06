@@ -2,6 +2,7 @@ package ATD.Characteristics.QC_486_DynamicCharacteristics;
 
 import ATD.DataBase;
 import ATD.Listing_page;
+import ATD.Listing_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -20,7 +21,6 @@ import static com.codeborne.selenide.Condition.matchesText;
 public class QC_493_OutputDynamicCharacterisitcOnSearchListing {
 
   private DataBase db = new DataBase();
-  private Listing_page listingPage = new Listing_page();
 
   @BeforeClass
   void setUp() {
@@ -40,7 +40,7 @@ public class QC_493_OutputDynamicCharacterisitcOnSearchListing {
     openPage(route + "/" + db.getRouteByRouteName(getShopFromRoute(route), "search9"));
     String articleProduct = "Artikelnummer: V99-75-0011";
     String desiredCharacteristicRegEx = "einzustellender Elektrodenabstand \\[mm]:\\n0,7";
-    listingPage.getCharacteristicsDesiredProduct(articleProduct)
+    new Listing_page_Logic().getCharacteristicsDesiredProduct(articleProduct)
             .filter(matchesText(desiredCharacteristicRegEx)).shouldHaveSize(1);
   }
 

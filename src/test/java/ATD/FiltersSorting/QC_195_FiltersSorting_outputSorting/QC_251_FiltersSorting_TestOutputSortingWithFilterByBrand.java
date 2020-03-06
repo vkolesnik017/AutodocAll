@@ -3,6 +3,7 @@ package ATD.FiltersSorting.QC_195_FiltersSorting_outputSorting;
 
 import ATD.DataBase;
 import ATD.Listing_page;
+import ATD.Listing_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -17,7 +18,7 @@ import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
 public class QC_251_FiltersSorting_TestOutputSortingWithFilterByBrand {
-    private Listing_page listingPage = new Listing_page();
+    private Listing_page_Logic listingPage = new Listing_page_Logic();
     private DataBase dataBase = new DataBase();
 
     @BeforeClass

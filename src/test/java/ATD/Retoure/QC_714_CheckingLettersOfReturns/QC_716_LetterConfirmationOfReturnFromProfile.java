@@ -59,7 +59,7 @@ public class QC_716_LetterConfirmationOfReturnFromProfile {
             .setStatusOrderToVersendetVorkasse()
             .addDeliveryConditionGLS();
     open(route + "/" + db.getRouteByRouteName(getShopFromRoute(route), "profile_orders"));
-    new Profile_page().clickBestelldetailsButton(orderNumber)
+    new Profile_page_Logic().clickBestelldetailsButton(orderNumber)
             .clickReturnOrReplaceItemButton()
             .clickCheckbox()
             .chooseRandomCauseReturnInSelect()

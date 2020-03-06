@@ -9,41 +9,41 @@ import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
 public class LKW_main_page {
-    protected SelenideElement logoInHeader() {
+    SelenideElement logoInHeader() {
         return $(".header__logo-main");
     }
 
-    protected SelenideElement searchBar() {
+    SelenideElement searchBar() {
         return $(byId("search"));
     }
 
     private By tooltipsToSearch = byCssSelector(".autocomplete-suggestions>div");
 
-    protected SelenideElement tooltipToSearch() {
+    SelenideElement tooltipToSearch() {
         return $(tooltipsToSearch);
     }
 
-    protected SelenideElement infoIconForSearch() {
+    SelenideElement infoIconForSearch() {
         return $(".header-i.header-i--info.inf");
     }
 
-    protected SelenideElement infoPopupForSearch() {
+    SelenideElement infoPopupForSearch() {
         return $(".ex_popup.ex_popup_shown");
     }
 
-    protected SelenideElement menuCatalogInHeader() {
+    SelenideElement menuCatalogInHeader() {
         return $(".menu-catalog>a");
     }
 
-    protected SelenideElement closeBtnOfCookiesPopUp() {
+    SelenideElement closeBtnOfCookiesPopUp() {
         return $x("//div[contains(@class,'block-cookies__close')]");
     }
 
-    protected SelenideElement dropMainMenuTrucksCatalogInHeader() {
+    SelenideElement dropMainMenuTrucksCatalogInHeader() {
         return $(byId("menu-category-lkw"));
     }
 
-    protected SelenideElement secondLevelDropMainMenuTrucksCatalogInHeader() {
+    SelenideElement secondLevelDropMainMenuTrucksCatalogInHeader() {
         return $(byXpath("//div[@class='menu-category__2-block']"));
     }
 
@@ -51,90 +51,90 @@ public class LKW_main_page {
         return $(byId("reset_selector_form"));
     }
 
-    protected ElementsCollection listOfParentsDropMainTruckCatalog() {
+    ElementsCollection listOfParentsDropMainTruckCatalog() {
         return $$(byXpath("//li[contains(@class,'menu-category__first-item')]/a"));
     }
 
-    protected ElementsCollection titleOfSecondLevelMainDropMenuTruckCatalog() {
+    ElementsCollection titleOfSecondLevelMainDropMenuTruckCatalog() {
         return $$(byXpath("//div[@class='menu-category__2-block']//div[@class='menu-category__title']")).filter(visible);
     }
 
-    protected ElementsCollection titleOfThirdLevelMainDropMenuTruckCatalog() {
+    ElementsCollection titleOfThirdLevelMainDropMenuTruckCatalog() {
         return $$(byXpath("//div[@class='menu-category__3-block']//div[@class='menu-category__title']")).filter(visible);
     }
 
-    protected ElementsCollection titleOfFourthLevelMainDropMenuTruckCatalog() {
+    ElementsCollection titleOfFourthLevelMainDropMenuTruckCatalog() {
         return $$(byXpath("//div[@class='menu-category__4-block']//div[@class='menu-category__title']")).filter(visible);
     }
 
-    protected ElementsCollection imageOfSecondLevelMainDropMenuTruckCatalog() {
+    ElementsCollection imageOfSecondLevelMainDropMenuTruckCatalog() {
         return $$(byXpath("//div[@class='menu-category__2-block']//div[@class='menu-category__header']/img")).filter(visible);
     }
 
 
-    protected ElementsCollection listOfCategoriesSecondLevelDropMainTruckCatalog() {
+    ElementsCollection listOfCategoriesSecondLevelDropMainTruckCatalog() {
         return $$(byXpath("//div[@class='menu-category__2-block']//li[contains(@class,'menu-category__item')]")).filter(visible);
     }
 
-    protected ElementsCollection categoriesOfSecondBlockWitnDropMenu() {
+    ElementsCollection categoriesOfSecondBlockWitnDropMenu() {
         return $$(byXpath("//div[@class='menu-category__2-block']//li[contains(@class,'menu-category__item')]/span/span")).filter(visible);
     }
 
-    protected ElementsCollection categoriesOfThirdBlock() {
+    ElementsCollection categoriesOfThirdBlock() {
         return $$(byXpath("//div[@class='menu-category__3-block']//li[@class='menu-category__item']")).filter(visible);
     }
 
-    protected SelenideElement thirdLevelDropMainMenuTrucksCatalogInHeader() {
+    SelenideElement thirdLevelDropMainMenuTrucksCatalogInHeader() {
         return $(byXpath("//div[@class='menu-category__3-block']"));
     }
 
-    protected SelenideElement fourthLevelDropMainMenuTrucksCatalogInHeader() {
+    SelenideElement fourthLevelDropMainMenuTrucksCatalogInHeader() {
         return $(byXpath("//div[@class='menu-category__4-block']"));
     }
 
-    protected SelenideElement verticalTruckSelector() {
+    SelenideElement verticalTruckSelector() {
         return $x("//form[@class='js--lkw_selector']");
     }
 
-    protected SelenideElement markeOfVerticalTruckSelector() {
+    SelenideElement markeOfVerticalTruckSelector() {
         return $(byName("maker_id"));
     }
 
-    protected SelenideElement modelOfVerticalTruckSelector() {
+    SelenideElement modelOfVerticalTruckSelector() {
         return $(byName("model_id"));
     }
 
-    protected SelenideElement motorOfVerticalTruckSelector() {
+    SelenideElement motorOfVerticalTruckSelector() {
         return $(byName("car_id"));
     }
 
-    protected SelenideElement buttonSuchenOfVerticaltruckSelector() {
+    SelenideElement buttonSuchenOfVerticaltruckSelector() {
         return $x("//a[@class='truck_submit js--lkw_selector-btn-submit']");
     }
 
-    protected SelenideElement buttonSuchenOfVerticaltruckSelectorMainPage() {
+    SelenideElement buttonSuchenOfVerticaltruckSelectorMainPage() {
         return $x("//div[@class='block-select-truck__button']");
     }
 
-    protected SelenideElement parentCategoryFilter() {
+    SelenideElement parentCategoryFilter() {
         return $x("//a[contains(text(),'Filter')]");
     }
 
-    protected SelenideElement childCategoryOlfilter() {
+    SelenideElement childCategoryOlfilter() {
         return $x("//li[@class='menu-category__item']//span[contains(text(),'Ölfilter')]");
     }
-    protected SelenideElement childCategoryOnMainPage() {
+    SelenideElement childCategoryOnMainPage() {
         return $x("//div[@class='truck-home-parts__cat-list']//span[contains(text(),'Ölfilter')]");
     }
 
-    protected ElementsCollection categoriesOfThirdBlockWitnDropMenu() {
+    ElementsCollection categoriesOfThirdBlockWitnDropMenu() {
         return $$(byXpath("//div[@class='menu-category__3-block']//li[contains(@class,'menu-category__item')]/span/span")).filter(visible);
     }
 
-    protected ElementsCollection categoriesOfThirdBlockWithOutDropMenu() {
+    ElementsCollection categoriesOfThirdBlockWithOutDropMenu() {
         return $$(byXpath("//div[@class='menu-category__3-block']//li[contains(@class,'menu-category__item')]/a/span")).filter(visible);
     }
-    protected SelenideElement tecDocCatalogOnMainPageLKW() {return $x("//div[@class='truck-home-parts']");}
+    SelenideElement tecDocCatalogOnMainPageLKW() {return $x("//div[@class='truck-home-parts']");}
 }
 
 
