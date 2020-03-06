@@ -14,11 +14,10 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.getShopFromRoute;
-import static ATD.CommonMethods.password;
+import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
-import static com.codeborne.selenide.Selenide.open;
+
 
 public class QC_1598_Bodywork {
 
@@ -42,10 +41,10 @@ public class QC_1598_Bodywork {
     @Description(value = "Test check making order with body product")
     @Flaky
     public void checkingOrderWithBody(String route) throws SQLException {
-        open(urlProductForBodyFR);
+        openPage(urlProductForBodyFR);
         product_page_logic.clickAddToCartAndCheckPopupFR();
         String shop = getShopFromRoute(route);
-        open(route + "/" + new DataBase().getRouteByRouteName(shop, "product7"));
+        openPage(route + "/" + new DataBase().getRouteByRouteName(shop, "product7"));
         String testMail = "atdautotest_qasys_82_bodywork@mailinator.com";
         product_page_logic.addProductToCart().closePopupOtherCategoryIfYes()
                 .cartClick()
@@ -55,7 +54,7 @@ public class QC_1598_Bodywork {
                 .chooseVorkasse().nextBtnClick()
                 .closePopupDeliveryImpossibleAndCheckEmptyCart();
         close();
-        open(route + "/" + new DataBase().getRouteByRouteName(shop, "product7"));
+        openPage(route + "/" + new DataBase().getRouteByRouteName(shop, "product7"));
         product_page_logic.addProductToCart().closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
