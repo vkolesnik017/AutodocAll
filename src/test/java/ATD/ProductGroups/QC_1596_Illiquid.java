@@ -1,28 +1,32 @@
-package ATD.QASYS_73_ProductGroups;
+package ATD.ProductGroups;
 
-import ATD.DataBase;
 import ATD.Product_page_Logic;
 import ATD.SetUp;
+import AWS.ProductSearch_aws;
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.sql.SQLException;
-
-import static ATD.CommonMethods.getShopFromRoute;
-import static ATD.CommonMethods.password;
+import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.close;
 
-public class QASYS_79_heavyCargo {
+
+public class QC_1596_Illiquid {
+
+    private ProductSearch_aws product_page_aws = new ProductSearch_aws();
+    private String idAndBrand;
 
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
+        idAndBrand = product_page_aws.openProductSearchPageAndLogin().chooseIlliquidProductAndGetId();
+        close();
     }
 
     @DataProvider(name = "route", parallel = true)
@@ -31,15 +35,16 @@ public class QASYS_79_heavyCargo {
     }
 
 
-    @Owner(value = "alex_qa")
+    @Owner(value = "Chelombitko")
     @Test(dataProvider = "route")
-    @Description(value = "Test check making order with heavy cargo product")
+    @Description(value = "Test check making order with illiquid product")
     @Flaky
-    public void checkingOrderWithHeavyCargo(String route) throws SQLException {
+    public void checkingOrderWithIlliquid(String route) {
+        String[] url = idAndBrand.split("#");
         String shop = getShopFromRoute(route);
-        open(route + "/" + new DataBase().getRouteByRouteName(shop, "product6"));
-        String testMail = "atdautotest_qasys_79_heavycargo@mailinator.com";
-        new Product_page_Logic().checkingHeavyCargoLinkTransition().addProductToCart().closePopupOtherCategoryIfYes()
+        openPage(route + "/" + url[1] + "/" + url[0]);
+        String testMail = "atdautotest_qasys_81_Illiquid@mailinator.com";
+        new Product_page_Logic().addProductToCart().closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
                 .signIn(testMail, password)
@@ -47,5 +52,10 @@ public class QASYS_79_heavyCargo {
                 .chooseVorkasse().nextBtnClick()
                 .nextBtnClick()
                 .closePopupAfterOrder().successTextInHeader().shouldHave(Condition.text("Vielen Dank"));
+    }
+
+    @AfterMethod
+    private void tearDown() {
+        close();
     }
 }
