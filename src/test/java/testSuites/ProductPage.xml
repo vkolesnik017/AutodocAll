@@ -3,12 +3,12 @@
 <suite name="ProductPage" parallel="methods" thread-count="2">
 
     <listeners>
-        <listener class-name="ATD.TestListener"/>
+        <listener class-name="ATD.FailScreenshotListener"/>
     </listeners>
 
     <test name="ProductPage">
         <classes>
-            <class name="ATD.ProductPage.QC_963_ProductPage_TestPresenceOfElements"/>
+            <!--<class name="ATD.ProductPage.QC_963_ProductPage_TestPresenceOfElements"/>-->
             <class name="ATD.ProductPage.QC_921_OEN_TestOEMlistWithoutCar"/>
             <class name="ATD.ProductPage.QC_924_CompatibilityList_TestCompatibleCarAndProduct"/>
             <class name="ATD.ProductPage.QC_942_CompatibilityList_TestNotCompatibleCarAndProduct"/>

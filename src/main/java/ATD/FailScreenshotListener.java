@@ -17,7 +17,7 @@ import java.nio.file.Paths;
 
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
-public class TestListener implements ITestListener {
+public class FailScreenshotListener implements ITestListener {
     @Override
     public void onTestStart(ITestResult iTestResult) {
 
