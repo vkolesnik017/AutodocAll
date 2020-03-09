@@ -25,7 +25,7 @@ public class QC_1563_CheckingSelector_Mark_Model_Type {
     private final String dataFile = "C://Autotests/files/data/QC_1563_data.xls";
     private final String result = "C://Autotests/files/res/QC_1563_result.txt";
 
-    private String shop = System.getenv("ShopFromJenkins");
+    private String shop = System.getenv("ShopFromJenkins").toLowerCase();
 //    private String shop = "DE";
 
     @BeforeClass
@@ -98,7 +98,7 @@ public class QC_1563_CheckingSelector_Mark_Model_Type {
     private String calculateUrl(String shopFromTest) {
         String shop = null;
         switch (shopFromTest) {
-            case "DE":
+            case "de":
                 shop = "pkwteile.de/ersatzteile-suche?";
                 break;
             case "fr":
