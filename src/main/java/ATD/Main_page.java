@@ -3,6 +3,7 @@ package ATD;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.Sleeper;
 
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -82,8 +83,24 @@ public class Main_page {
         return $(By.id("discount-box"));
     }
 
-  public SelenideElement discountBoxClock() {
+    public SelenideElement discountBoxClock() {
         return $(By.id("js-discount-box-timer"));
+    }
+
+    SelenideElement headerTop(){
+        return $(By.cssSelector(".header__top"));
+    }
+
+    SelenideElement headerGarageIcon(){
+        return $x("//div[@class='header-garage js-header-garage']");
+    }
+
+    SelenideElement headerGarageTooltip(){
+        return $x("//div[@class='header-garage__notlogged  header-garage-drop active']");
+    }
+
+    SelenideElement headerLinkPrivacyPolicy(){
+        return $x("//span[@class='link privacy-policy']");
     }
 
     public SelenideElement menuCatalogInHeader() {
@@ -183,6 +200,46 @@ public class Main_page {
         return $(byXpath("//*[@class='popup ']//*[contains(text(),'Um Ihr Passwort zu ändern')]/..//a"));
     }
 
+
+    // Menu in header
+    SelenideElement LkwCategory(){
+        return $x("//a[@class='header-i header-i--truck ga-click']");
+    }
+
+    SelenideElement motoCategory(){
+        return $x("//a[@class='header-i header-i--moto ga-click']");
+    }
+
+    SelenideElement tiresCategory(){
+        return $x("//a[@class='header-i header-i--tyre ga-click']");
+    }
+
+    SelenideElement instrumentsCategory(){
+        return $x("//a[@class='header-i header-i--tool ga-click']");
+    }
+
+    SelenideElement accessoriesCategory(){
+        return $x("//a[@class='header-i header-i--accessories ga-click']");
+    }
+
+    SelenideElement engineOilCategory(){
+        return $x("//a[@class='header-i header-i--oil ga-click']");
+    }
+
+    SelenideElement filtersCategory(){
+        return $x("//a[@class='header-i header-i--filter ga-click']");
+    }
+
+    SelenideElement brakeSystemCategory(){
+        return $x("//a[@class='header-i header-i--brackes ga-click']");
+    }
+
+    SelenideElement engineCategory(){
+        return $x("//a[@class='header-i header-i--engine ga-click']");
+    }
+
+
+
     // Footer
     SelenideElement footerForm() {
         return $(By.xpath("//div[@id='footer']"));
@@ -251,6 +308,139 @@ public class Main_page {
     SelenideElement datenschutzLinkInSubscribeBlock() {
         return $(By.cssSelector("#privacy_policy_footer>span"));
     }
+
+    //ÜBER AUTODOC
+
+    SelenideElement aboutUsLink(){
+        return $x("//*[@class='footer__links']/div[1]/ul/li[1]/a");
+    }
+
+    SelenideElement impressumLink(){
+        return $x("//*[@class='footer__links']/div[1]/ul/li[2]/a");
+    }
+
+    SelenideElement vacanciesLink(){
+        return $x("//*[@class='footer__links']/div[1]/ul/li[3]/a");
+    }
+
+    SelenideElement bonusprogrammLink(){
+        return $x("//*[@class='footer__links']/div[1]/ul/li[4]/a");
+    }
+
+    SelenideElement partnershipLink(){
+        return $x("//*[@class='footer__links']/div[1]/ul/li[5]/a");
+    }
+
+    SelenideElement presseLink(){
+        return $x("//*[@class='footer__links']/div[1]/ul/li[6]/a");
+    }
+
+    SelenideElement mobileAppLink(){
+        return $x("//*[@class='footer__links']/div[1]/ul/li[7]/a");
+    }
+
+    SelenideElement autodocPlusLink(){
+        return $x("//*[@class='footer__links']/div[1]/ul/li[8]/a");
+    }
+
+    //HILFE & SUPPORT
+
+    SelenideElement autodocClubLink(){
+        return $x("//*[@class='footer__links']/div[2]/ul/li[1]/a");
+    }
+
+    SelenideElement blogLink(){
+        return $x("//*[@class='footer__links']/div[2]/ul/li[2]/a");
+    }
+
+    SelenideElement videoTutorialsLink(){
+        return $x("//*[@class='footer__links']/div[2]/ul/li[3]/a");
+    }
+
+    SelenideElement altolentsorgungLink(){
+        return $x("//*[@class='footer__links']/div[2]/ul/li[4]/a");
+    }
+
+    SelenideElement agbLink(){
+        return $x("//*[@class='footer__links']/div[2]/ul/li[5]/a");
+    }
+
+    SelenideElement agb_plusLink(){
+        return $x("//*[@class='link'][text()='PLUS-AGB']");
+    }
+
+    SelenideElement widerrufLink(){
+        return $x("//*[@class='footer__links']/div[2]/ul/li[7]/a");
+    }
+
+    SelenideElement datenschutzLink(){
+        return $x("//*[@class='footer__links']/div[2]/ul/li[8]/a");
+    }
+
+    //KUNDENSERVICE
+
+    SelenideElement zahlungLink(){
+        return $x("//*[@class='footer__links']/div[3]/ul/li[1]/a");
+    }
+
+    SelenideElement versandLink(){
+        return $x("//*[@class='footer__links']/div[3]/ul/li[2]/a");
+    }
+
+    SelenideElement contactLink(){
+        return $x("//*[@class='footer__links']/div[3]/ul/li[3]/a");
+    }
+
+    SelenideElement retourenLink(){
+        return $x("//*[@class='footer__links']/div[3]/ul/li[4]/a");
+    }
+
+    SelenideElement austauschartikelLink(){
+        return $x("//*[@class='footer__links']/div[3]/ul/li[5]/a");
+    }
+
+    //TOP PRODUKTE
+
+    SelenideElement beleuchtungLink(){
+        return $x("//*[@class='footer__links']/div[4]/ul/li[1]/a");
+    }
+
+    SelenideElement stobdampferLink(){
+        return $x("//*[@class='footer__links']/div[4]/ul/li[2]/a");
+    }
+
+    SelenideElement querlenkerLink(){
+        return $x("//*[@class='footer__links']/div[4]/ul/li[3]/a");
+    }
+
+    SelenideElement radlagerLink(){
+        return $x("//*[@class='footer__links']/div[4]/ul/li[4]/a");
+    }
+
+    SelenideElement kupplungssatzLink(){
+        return $x("//*[@class='footer__links']/div[4]/ul/li[5]/a");
+    }
+
+    SelenideElement autopflegeLink(){
+        return $x("//*[@class='footer__links']/div[4]/ul/li[6]/a");
+    }
+
+    SelenideElement sucheNachAutomodelleLink(){
+        return $x("//*[@class='footer__links']/div[4]/ul/li[7]/a");
+    }
+
+    SelenideElement nachHerstellerEinkaufenLink(){
+        return $x("//*[@class='footer__links']/div[4]/ul/li[8]/a");
+    }
+
+    SelenideElement nachModellEinkaufenLink(){
+        return $x("//*[@class='footer__links']/div[4]/ul/li[9]/a");
+    }
+
+    SelenideElement autoteileHerstellerLink(){
+        return $x("//*[@class='footer__links']/div[4]/ul/li[10]/a");
+    }
+
 
     //KUNDENSERVICE INTERNATIONAL
 
