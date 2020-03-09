@@ -576,5 +576,11 @@ public class Main_page {
         return $(".popup-kba-error>a");
     }
 
+    public SelenideElement tecDocCatalogMainPage() {
+        return $(byId("parts"));
+    }
 
+    public SelenideElement childCategoryOnMainPage(String category) {
+        return $x("//ul[@class='ersats_listing']//span[contains(text(),'"+category+"')]");
+    }
 }

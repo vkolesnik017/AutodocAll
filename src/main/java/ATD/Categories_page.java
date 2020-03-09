@@ -6,19 +6,25 @@ import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selenide.*;
 
-class Categories_page {
+public class Categories_page {
 
-  SelenideElement linkForCategoryOilFilter() {
+  public SelenideElement linkForCategoryOilFilter() {
     return $("[data-ga-action='10359']");
   }
 
-  SelenideElement searchBarByCatalog() {
+  public SelenideElement searchBarByCatalog() {
     return $(byId("page_search"));
   }
 
-  ElementsCollection tooltipsToSearchByCatalog() {
+  public ElementsCollection tooltipsToSearchByCatalog() {
     return $$(".ui-autocomplete>li");
   }
 
-  SelenideElement lkwCategory(){return $x("//a[@class='header-i header-i--truck ga-click']");}
+    public SelenideElement lkwCategory() {
+        return $x("//a[@class='header-i header-i--truck ga-click']");
+    }
+
+    public SelenideElement motoCategory() {
+        return $x("//a[contains(@class,'header-i--moto')]");
+    }
 }

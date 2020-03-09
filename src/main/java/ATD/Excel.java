@@ -99,7 +99,7 @@ public class Excel {
         List<String> listCell = null;
         try (FileInputStream fileInputStream = new FileInputStream(file)) {
             Workbook wb = new HSSFWorkbook(fileInputStream);
-            Sheet sheet = wb.getSheet(sheetName);
+            Sheet sheet = wb.getSheet(sheetName.toUpperCase());
             listCell = new ArrayList<>();
             int rowNum = sheet.getLastRowNum();
             for (int i = 0; i <= rowNum; i++) {

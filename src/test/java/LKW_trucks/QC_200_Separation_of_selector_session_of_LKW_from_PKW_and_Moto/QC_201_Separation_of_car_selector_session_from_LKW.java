@@ -1,7 +1,6 @@
-package LKW_trucks.QC_144_Header_trucks_routes;
+package LKW_trucks.QC_200_Separation_of_selector_session_of_LKW_from_PKW_and_Moto;
 
-import ATD.LKW_main_page_Logic;
-import ATD.SetUp;
+import ATD.*;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -17,7 +16,7 @@ import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
-public class QC_145_PresenceOfBlocksInHeader_lkw {
+public class QC_201_Separation_of_car_selector_session_from_LKW {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -25,20 +24,21 @@ public class QC_145_PresenceOfBlocksInHeader_lkw {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_main");
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "main", "main");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks elements on main page LKW")
-    public void testChecksElementsOnMainPageLKW(String route) {
+    @Description(value = "Test checks separation of a car selector session from LKW")
+    public void testChecksSeparationOfCarSelectorSessionFromLKW(String route) {
         openPage(route);
-        new LKW_main_page_Logic()
-                .checkPagesIsSuccessfulyLoaded()
-                .checkingOfVisibilityOfLogoInHeader()
-                .checkAppearanceOfHintBlock()
-                .checkAppearanceOfBeispielPopUp();
+        new Main_page_Logic().chooseBrandModelTypeInSelector("MERCEDES-BENZ", "38539", "130593")
+                .clickSearchBtnInVerticalSelectorWhenSelectedAllFields()
+                .checkSuccessfullyPageLoading()
+                .selectLKWCategory().checkSuccessfullyLKWPageLoading()
+                .checkOfEmptySelector().selectChildCategory()
+                .checkSuccessfullyChildCategoryPageLoading();
     }
 
     @AfterMethod
@@ -46,4 +46,3 @@ public class QC_145_PresenceOfBlocksInHeader_lkw {
         close();
     }
 }
-

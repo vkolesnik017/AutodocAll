@@ -58,6 +58,7 @@ public class QC_168_TestProductOutputWithFilterBySide {
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.checkProductAttributeOnListingWithCarAndFilter("hinten", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute());
         listingPage.filterBySideBack().click();
+        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.checkUniqueBrandsOnListing(2, listingPage.einbauseiteProductAttributeTecdocRoute());
     }
 
@@ -79,6 +80,7 @@ public class QC_168_TestProductOutputWithFilterBySide {
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.checkProductAttributeOnListingWithCarAndFilter("vorne", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute());
         listingPage.filterBySideLKW().click();
+        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.checkUniqueBrandsOnListing(2, listingPage.einbauseiteProductAttributeTecdocRoute());
     }
 
@@ -101,6 +103,7 @@ public class QC_168_TestProductOutputWithFilterBySide {
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.checkProductAttributeOnListingWithCarAndFilter("Vorderachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute());
         listingPage.filterBySideLKW().click();
+        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.checkUniqueBrandsOnListing(2, listingPage.einbauseiteProductAttributeTecdocRoute());
     }
 

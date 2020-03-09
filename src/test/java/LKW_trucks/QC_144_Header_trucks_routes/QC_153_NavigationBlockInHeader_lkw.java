@@ -13,8 +13,7 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.checkingContainsUrl;
-import static ATD.CommonMethods.getCurrentShopFromJSVarInHTML;
+import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -36,7 +35,7 @@ public class QC_153_NavigationBlockInHeader_lkw {
     @Owner(value = "Kolesnik")
     @Description(value = "Checks navigate categories in header LKW")
     public void testNavigateCategoriesInHeader(String route) throws SQLException {
-        open(route);
+        openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
         mainPage.clickPkwCategory();
         checkingContainsUrl(db.getRouteByRouteName(shop, "main"));
