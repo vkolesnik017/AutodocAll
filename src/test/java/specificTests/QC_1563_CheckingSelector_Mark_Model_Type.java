@@ -107,7 +107,7 @@ public class QC_1563_CheckingSelector_Mark_Model_Type {
             case "it":
                 shop = "autoparti.it/ricerca?";
                 break;
-            case "en":
+            case "gb":
                 shop = "buycarparts.co.uk/search?&";
                 break;
             case "gr":
