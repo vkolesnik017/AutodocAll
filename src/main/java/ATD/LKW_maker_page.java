@@ -18,4 +18,7 @@ public class LKW_maker_page {
     protected ElementsCollection linksOfLinkingBlocks(int position) {
         return $$x("//div[@class='box']["+position+"]//a");
     }
+    protected SelenideElement titleOfTopCar(String title) {
+        return $x("//a[contains(text(),'"+title+"')]");
+    }
 }
