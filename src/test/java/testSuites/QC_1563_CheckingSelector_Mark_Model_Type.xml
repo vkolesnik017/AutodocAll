@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="QC_1563_CheckingSelector_Mark_Model_Type" data-provider-thread-count="3">
+
+    <listeners>
+        <listener class-name="ATD.ProjectListener"/>
+    </listeners>
+
+    <test name="QC_1563_CheckingSelector_Mark_Model_Type">
+        <classes>
+            <class name="specificTests.QC_1563_CheckingSelector_Mark_Model_Type">
+            </class>
+        </classes>
+    </test>
+
+</suite>
