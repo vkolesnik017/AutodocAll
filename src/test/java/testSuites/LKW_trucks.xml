@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="LKW_trucks" parallel="methods" thread-count="4" data-provider-thread-count="2">
+<suite name="LKW_trucks" parallel="methods" thread-count="5" data-provider-thread-count="2">
 
     <listeners>
         <listener class-name="ATD.ProjectListener"/>
@@ -23,6 +23,26 @@
             <class name="LKW_trucks.QC_200_Separation_of_selector_session_of_LKW_from_PKW_and_Moto.QC_204_Separation_of_LKW_selector_session_from_Moto"/>
             <class name="LKW_trucks.QC_200_Separation_of_selector_session_of_LKW_from_PKW_and_Moto.QC_205_Separation_of_moto_selector_session_from_car"/>
             <class name="LKW_trucks.QC_200_Separation_of_selector_session_of_LKW_from_PKW_and_Moto.QC_206__Separation_of_moto_selector_session_from_LKW"/>
+        </classes>
+    </test>
+
+    <test name="QC_123_Trucks_Catalog_of_brands_page">
+        <classes>
+            <class name="LKW_trucks.QC_123_Sidebar_block_linking_to_catalog_of_model_on_catalog_brands"/>
+        </classes>
+    </test>
+
+    <test name="QC_49_Bread_crumbs">
+        <classes>
+            <class name="LKW_trucks.QC_49_Bread_crumbs.QC_130_BreadCrumbsInCategoriesMaker"/>
+        </classes>
+    </test>
+    <test name="LKW_trucks_route">
+        <classes>
+            <class name="LKW_trucks.QC_133_MainIconOfMarkInCategoriesMaker"/>
+            <class name="LKW_trucks.QC_134_TopParentAndChildCategoriesBlocks"/>
+            <class name="LKW_trucks.QC_135_SeoDescriptionBlock"/>
+            <class name="LKW_trucks.QC_136_LinkBlockOfTopBrands"/>
         </classes>
     </test>
 
