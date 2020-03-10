@@ -1,6 +1,6 @@
 package LKW_trucks;
 
-import ATD.LKW_maker_page_Logic;
+import ATD.LKW_Categories_maker_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 
-public class QC_123_Sidebar_block_linking_to_catalog_of_model_on_catalog_brands {
+public class QC_134_TopParentAndChildCategoriesBlocks {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -22,17 +22,19 @@ public class QC_123_Sidebar_block_linking_to_catalog_of_model_on_catalog_brands 
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_makers");
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_categories_maker");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks Sidebar block linking to the catalog of the model on the root catalog of brands")
-    public void testChecksSidebarBlockLinkingCatalog(String route) {
+    @Description(value = "Test checks elements in Top parent and child category blocks")
+    public void testChecksTopParentAndChildCategoryBlocksElements(String route) {
         openPage(route);
-         new LKW_maker_page_Logic().checkElementsOnPage()
-                 .selectTopCar("MERCEDES-BENZ UNIMOG")
-                 .checkSuccessfullyMakerCarListPageLoading();
+
+        new LKW_Categories_maker_page_Logic()
+                .checkingOfElementsInParentAndChildBlocks()
+                .selectChildCategoryInTopCategoryBlock()
+                .checkSuccessfullyCategoryMakerPageLoading();
     }
 }
