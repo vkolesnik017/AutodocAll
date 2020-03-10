@@ -332,7 +332,15 @@ public class Product_page {
     }
 
     SelenideElement reviewsFormAnsweredQuestionField() {
-        return $(By.id("popup_update"));
+        return $(By.xpath("//div[@class='product-feedback_wrap_comments']"));
+    }
+
+    SelenideElement reviewsFormAnsweredQuestionNameField() {
+        return $(By.xpath("//span[@class='product-comments__user']"));
+    }
+
+    SelenideElement reviewsFormAnsweredQuestionCommentField() {
+        return $(By.xpath("//div[@class='product-comments__text']"));
     }
 
 
