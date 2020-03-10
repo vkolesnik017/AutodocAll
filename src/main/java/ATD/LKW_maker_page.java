@@ -5,20 +5,20 @@ import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.*;
 
-public class LKW_maker_page {
+class LKW_maker_page {
 
-    protected SelenideElement titleOfSidebar() {
+    SelenideElement titleOfSidebar() {
         return $x("//div[@class='links-title']");
     }
 
-    protected ElementsCollection linkingBlocks() {
+    ElementsCollection linkingBlocks() {
         return $$x("//div[@class='box']");
     }
 
-    protected ElementsCollection linksOfLinkingBlocks(int position) {
+    ElementsCollection linksOfLinkingBlocks(int position) {
         return $$x("//div[@class='box']["+position+"]//a");
     }
-    protected SelenideElement titleOfTopCar(String title) {
+    SelenideElement titleOfTopCar(String title) {
         return $x("//a[contains(text(),'"+title+"')]");
     }
 }

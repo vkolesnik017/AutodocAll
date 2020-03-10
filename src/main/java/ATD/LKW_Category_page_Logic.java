@@ -1,10 +1,9 @@
 package ATD;
 
-import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
-import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class LKW_Category_page_Logic extends LKW_Category_page {
