@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Registration" parallel="tests" thread-count="6">
+
+    <listeners>
+        <listener class-name="ATD.ProjectListener"/>
+    </listeners>
+
+    <test name="Registration">
+        <classes>
+            <class name="ATD.Registration.QC_1635_RegistrationFromLoginButton"/>
+            <class name="ATD.Registration.QC_1637_RegistrationFromBasket"/>
+        </classes>
+    </test>
+</suite>

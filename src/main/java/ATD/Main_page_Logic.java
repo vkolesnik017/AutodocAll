@@ -842,8 +842,6 @@ public class Main_page_Logic extends Main_page {
         return this;
     }
 
-
-
     @Step("Check presence of categories in the header. Main_page")
     public Main_page_Logic checkPresenceCategoriesInHeader(){
         LkwCategory().shouldBe(visible);
@@ -880,6 +878,29 @@ public class Main_page_Logic extends Main_page {
         checkingContainsUrl(db.getRouteByRouteName(shop, "brake_system"));
         clickEngineCategory();
         checkingContainsUrl(db.getRouteByRouteName(shop, "engine"));
+        return this;
+    }
+
+    @Step("Checks registration from login button in header. Main_page")
+    public Main_page_Logic checkRegistrationFromLoginButton(String mail){
+        Profile_page profile_page = new Profile_page();
+        loginBtnInHeader().click();
+        registrationButtonInLoginPopup().click();
+        String firstName = firstNameRandom();
+        fillRequiredFieldsForRegistration(firstName, secondNameRandom(), mail, false);
+        fillPasswordFieldsAndClickRegistration();
+        profile_page.nameOfClient().shouldHave(Condition.text(firstName));
+        return this;
+    }
+
+    @Step("Logs out of the account and logs in as a previously registered user. Main_page")
+    public Main_page_Logic logsOutOfAccountAndLogInAsPreviouslyRegisteredUser(String mail){
+        logoutButton().click();
+        loginBtnInHeader().click();
+        emailInputInLoginPopup().setValue(mail);
+        passwordInputInLoginPopup().setValue(password);
+        loginBtnInPopUp().click();
+        logoutButton().shouldBe(Condition.visible);
         return this;
     }
 }
