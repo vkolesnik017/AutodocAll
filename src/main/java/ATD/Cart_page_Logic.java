@@ -3,7 +3,9 @@ package ATD;
 import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.Step;
 
-import static ATD.CommonMethods.getPriceFromElement;
+import java.sql.SQLException;
+
+import static ATD.CommonMethods.*;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -69,5 +71,23 @@ public class Cart_page_Logic extends Cart_page {
         return this;
     }
 
+    @Step("Checks currency on cart page. Cart_page")
+    public Cart_page_Logic checkCurrencyOnCartPage(String shop) throws SQLException {
+        String expectedCurrency = new DataBase().getCurrency(shop);
+        getCurrencyAndVerify(totalOrderPriceInHead(), "orderPriceInHead", shop, expectedCurrency);
+        getCurrencyAndVerify(priceOfAllProducts(), "priceOfAllProducts", shop, expectedCurrency);
+        getCurrencyAndVerify(totalOrderPrice(), "totalOrderPrice", shop, expectedCurrency);
+        getCurrencyAndVerify(productPrice(), "productPrice", shop, expectedCurrency);
+        getCurrencyAndVerify(totalProductPrice(), "totalProductPrice", shop, expectedCurrency);
+        return this;
+    }
 
+    @Step("Checks currency on cart page from discount block. Cart_page")
+    public Cart_page_Logic checkCurrencyOnCartPageFromDiscountBlock(String shop) throws SQLException {
+        String expectedCurrency = new DataBase().getCurrency(shop);
+        getCurrencyAndVerify(priceWithoutDiscount(), "priceWithoutDiscount", shop, expectedCurrency);
+        getCurrencyAndVerify(priceWithDiscount(), "priceWithDiscount", shop, expectedCurrency);
+        getCurrencyAndVerify(discount(), "discount", shop, expectedCurrency);
+        return this;
+    }
 }
