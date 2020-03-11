@@ -72,8 +72,7 @@ public class ProjectListener implements ITestListener, IRetryAnalyzer {
     @Override
     public boolean retry(ITestResult iTestResult) {
         int retryLimit = 1;
-        if(counter < retryLimit)
-        {
+        if (counter < retryLimit) {
             counter++;
             return true;
         }
