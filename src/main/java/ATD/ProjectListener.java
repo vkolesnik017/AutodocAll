@@ -4,6 +4,7 @@ import io.qameta.allure.Allure;
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.testng.IRetryAnalyzer;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -17,7 +18,7 @@ import java.nio.file.Paths;
 
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
-public class ProjectListener implements ITestListener {
+public class ProjectListener implements ITestListener, IRetryAnalyzer {
     @Override
     public void onTestStart(ITestResult iTestResult) {
 
@@ -65,5 +66,17 @@ public class ProjectListener implements ITestListener {
     @Attachment
     private File captureScreenshot() {
         return ((TakesScreenshot) getWebDriver()).getScreenshotAs(OutputType.FILE);
+    }
+
+    private int counter = 0;
+    @Override
+    public boolean retry(ITestResult iTestResult) {
+        int retryLimit = 1;
+        if(counter < retryLimit)
+        {
+            counter++;
+            return true;
+        }
+        return false;
     }
 }
