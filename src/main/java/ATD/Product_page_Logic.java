@@ -249,8 +249,10 @@ public class Product_page_Logic extends Product_page {
     @Step("Checking correct shorting name in reviews form. Product_page")
     public Product_page_Logic checkingCorrectShortingNameReviewsForm() {
         refresh();
-        checkingReviewsForm();
-        reviewsFormAnsweredQuestionField().shouldHave(text("A.A.: autotest"));
+        reviewsFormAnsweredQuestionField().scrollTo();
+        reviewsFormAnsweredQuestionField().shouldBe(visible);
+        reviewsFormAnsweredQuestionNameField().shouldHave(text("A.A."));
+        reviewsFormAnsweredQuestionCommentField().shouldHave(text("autotest"));
         return this;
     }
 

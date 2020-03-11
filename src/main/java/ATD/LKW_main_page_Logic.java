@@ -210,20 +210,20 @@ public class LKW_main_page_Logic extends LKW_main_page {
         return page(CarParts_Engine_page.class);
     }
 
-    @Step("Check successfully LKW page loading")
+    @Step("Check successfully LKW page loading. LKW_main_page")
     public LKW_main_page_Logic checkSuccessfullyLKWPageLoading() {
         menuCatalogInHeader().shouldBe(visible);
         Assert.assertTrue(url().contains("https://lkwteile.autodoc.de/"));
         return this;
     }
 
-    @Step("Checking that selector is empty")
+    @Step("Checking that selector is empty. LKW_main_page")
     public LKW_main_page_Logic checkOfEmptySelector() {
         markeOfVerticalTruckSelector().shouldHave(exactValue("0"));
         return this;
     }
 
-    @Step("Select child category on LKW main page")
+    @Step("Select child category on LKW main page. LKW_main_page")
     public LKW_Category_page_Logic selectChildCategory() {
         tecDocCatalogOnMainPageLKW().scrollTo();
         childCategoryOnMainPage().click();
