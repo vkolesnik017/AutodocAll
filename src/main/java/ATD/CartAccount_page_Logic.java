@@ -6,6 +6,8 @@ import io.qameta.allure.Step;
 import static ATD.CommonMethods.password;
 
 import static ATD.CommonMethods.mailRandom;
+import static com.codeborne.selenide.Condition.not;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.page;
 
 public class CartAccount_page_Logic extends CartAccount_page{
@@ -49,5 +51,15 @@ public class CartAccount_page_Logic extends CartAccount_page{
         cartAddress_page.nextButton().shouldBe(Condition.visible);
         cartAddress_page.logoClick();
         return page(Main_page_Logic.class);
+    }
+
+    @Step("Password Recovery Request from cart account page. CartAccount_page")
+    public CartAccount_page_Logic passwordRecoveryRequestFromCart(String mail){
+        forgotPasswordLink().click();
+        emailFieldInPasswordRecoveryPopUp().setValue(mail);
+        sendBtnInPasswordRecoveryPopUp().click();
+        closePopupMessageSentForChangePassword().click();
+        closePopupMessageSentForChangePassword().shouldBe(not(visible));
+        return this;
     }
 }
