@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="QASYS_255_Registration" parallel="tests" thread-count="6">
+<suite name="Pricing" parallel="tests" data-provider-thread-count="3">
 
     <listeners>
         <listener class-name="ATD.ProjectListener"/>
     </listeners>
 
-
-    <test name="QASYS_422_PasswordRecovery">
+    <test name="Pricing">
         <classes>
-            <class name="ATD.QASYS_255_Registration.QASYS_422_PasswordRecovery">
+            <class name="ATD.Pricing.QC_1553_ReconciliationOfCurrencies">
             </class>
         </classes>
     </test>
+
 </suite>

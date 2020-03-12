@@ -2,7 +2,7 @@ package ATD.GDRP;
 
 import ATD.Product_page_Logic;
 import ATD.SetUp;
-import AWS.FAQ_aws;
+import AWS.Reviews_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -21,7 +21,7 @@ public class QC_1006_GdprReviewFormNameShorting {
 
     private String mail;
     private Product_page_Logic product_page_logic = new Product_page_Logic();
-    private FAQ_aws faq_aws = new FAQ_aws();
+    private Reviews_aws reviews_aws = new Reviews_aws();
 
     @BeforeClass
     void setUp() {
@@ -41,18 +41,18 @@ public class QC_1006_GdprReviewFormNameShorting {
         openPage(route);
         mail = product_page_logic.checkingReviewsForm().fillingFieldsAndCheckBehaviorReviewsForm("qc1006_");
         System.out.println(mail);
-        faq_aws.openAndLoginFaqAwsPage().searchQuestionAndPublished(mail);
+        reviews_aws.openAndLoginReviewsAwsPage().searchQuestionAndPublished(mail);
         openPage(route);
-        product_page_logic.checkingCorrectShortingNameFaqForm();
-        faq_aws.openFaqAwsPage().searchQuestionAndUnPublished(mail);
+        product_page_logic.checkingCorrectShortingNameReviewsForm();
+        reviews_aws.openReviewsAwsPage().searchQuestionAndUnPublished(mail);
         openPage(route);
-        product_page_logic.checkAnswerQuestionsDoesntAppearFaqForm();
+        product_page_logic.checkAnswerQuestionsDoesntAppearReviewsForm();
     }
 
     @AfterMethod
     void checkingUnpublished() {
         close();
-        if(mail!=null) faq_aws.openAndLoginFaqAwsPage().searchQuestionAndUnPublished(mail);
+        if (mail != null) reviews_aws.openAndLoginReviewsAwsPage().searchQuestionAndUnPublished(mail);
     }
 }
 

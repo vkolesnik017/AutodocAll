@@ -7,7 +7,10 @@ import com.codeborne.selenide.ex.UIAssertionError;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
-import static ATD.CommonMethods.mailRandom;
+import java.sql.SQLException;
+
+import static ATD.CommonMethods.*;
+import static ATD.CommonMethods.getCurrencyAndVerify;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -246,8 +249,10 @@ public class Product_page_Logic extends Product_page {
     @Step("Checking correct shorting name in reviews form. Product_page")
     public Product_page_Logic checkingCorrectShortingNameReviewsForm() {
         refresh();
-        checkingReviewsForm();
-        reviewsFormAnsweredQuestionField().shouldHave(text("A.A.: autotest"));
+        reviewsFormAnsweredQuestionField().scrollTo();
+        reviewsFormAnsweredQuestionField().shouldBe(visible);
+        reviewsFormAnsweredQuestionNameField().shouldHave(text("A.A."));
+        reviewsFormAnsweredQuestionCommentField().shouldHave(text("autotest"));
         return this;
     }
 
@@ -341,4 +346,16 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
+    @Step("Compares the currency on the product page and in the cart popup. Product_page")
+    public Product_page_Logic CompareCurrencyOnProductPageAndInBasketPopup(String shop) throws SQLException {
+        String expectedCurrency = new DataBase().getCurrency(shop);
+        if (priceWithoutDiscount().isDisplayed()) {
+            getCurrencyAndVerify(priceWithoutDiscount(), "priceWithoutDiscount", shop, expectedCurrency);
+        }
+        getCurrencyAndVerify(productPrice(), "productPrice", shop, expectedCurrency);
+                 addProductToCart().closePopupOtherCategoryIfYes().cartIcon().hover();
+        getCurrencyAndVerify(firstProductPriceInPopupOfCart(), "productPriceInPopupOfCart", shop, expectedCurrency);
+        getCurrencyAndVerify(totalPriceInPopupOfCart(), "totalPriceInPopupOfCart", shop, expectedCurrency);
+        return this;
+    }
 }

@@ -380,38 +380,38 @@ public class Main_page_Logic extends Main_page {
 
     //ÜBER AUTODOC
 
-    @Step("Click About Us link in the footer")
+    @Step("Click About Us link in the footer. Main_page")
     public About_us_page clickAboutUs() {
         aboutUsLink().click();
         return page(About_us_page.class);
     }
 
-    @Step("Click Impressum link in the footer")
+    @Step("Click Impressum link in the footer. Main_page")
     public Impressum_static_page_Logic clickImpressum() {
         impressumLink().click();
         return page(Impressum_static_page_Logic.class);
     }
 
 
-    @Step("Click Vacancies link in the footer")
+    @Step("Click Vacancies link in the footer. Main_page")
     public Vacancies_static_page_Logic clickVacancies() {
         vacanciesLink().click();
         return page(Vacancies_static_page_Logic.class);
     }
 
-    @Step("Click Bonusprogramm link in the footer")
+    @Step("Click Bonusprogramm link in the footer. Main_page")
     public Bonusprogramm_page clickBonusprogramm() {
         bonusprogrammLink().click();
         return page(Bonusprogramm_page.class);
     }
 
-    @Step("Click Partnership link in the footer")
+    @Step("Click Partnership link in the footer. Main_page")
     public Partnership_static_page_Logic clickPartnership() {
         partnershipLink().click();
         return page(Partnership_static_page_Logic.class);
     }
 
-    @Step("Click Presse link in the footer")
+    @Step("Click Presse link in the footer. Main_page")
     public Presse_page clickPresse() {
         presseLink().click();
         return page(Presse_page.class);
@@ -423,7 +423,7 @@ public class Main_page_Logic extends Main_page {
         return page(MobileApp_static_page_Logic.class);
     }
 
-    @Step("Click AutodocPlus link in the footer")
+    @Step("Click AutodocPlus link in the footer. Main_page")
     public AutodocPlus_page_Logic clickAutodocPlus(){
         autodocPlusLink().click();
         return page(AutodocPlus_page_Logic.class);
@@ -431,49 +431,49 @@ public class Main_page_Logic extends Main_page {
 
     //HILFE & SUPPORT
 
-    @Step("Click AutodocClub link in the footer")
+    @Step("Click AutodocClub link in the footer. Main_page")
     public AutodocClub_page clickAutodocClub() {
         autodocClubLink().click();
         return page(AutodocClub_page.class);
     }
 
-    @Step("Click Blog link in the footer")
+    @Step("Click Blog link in the footer. Main_page")
     public Blog_page clickBlog() {
         blogLink().click();
         return page(Blog_page.class);
     }
 
-    @Step("Click VideoTutorials link in the footer")
+    @Step("Click VideoTutorials link in the footer. Main_page")
     public VideoTutorials_page clickVideoTutorials() {
         videoTutorialsLink().click();
         return page(VideoTutorials_page.class);
     }
 
-    @Step("Click Hinweise zur Altölentsorgung link in the footer")
+    @Step("Click Hinweise zur Altölentsorgung link in the footer. Main_page")
     public Altolentsorgung_page clickAltolentsorgung() {
         altolentsorgungLink().click();
         return page(Altolentsorgung_page.class);
     }
 
-    @Step("Click AGB link in the footer")
+    @Step("Click AGB link in the footer. Main_page")
     public Agb_static_page_Logic clickAgb() {
         agbLink().click();
         return page(Agb_static_page_Logic.class);
     }
 
-    @Step("Click PLUS-AGB link in the footer")
+    @Step("Click PLUS-AGB link in the footer. Main_page")
     public Agb_plus_static_page_Logic clickAgbPlus(){
         agb_plusLink().click();
         return page(Agb_plus_static_page_Logic.class);
     }
 
-    @Step("Click Widerruf link in the footer")
+    @Step("Click Widerruf link in the footer. Main_page")
     public Widerruf_static_page_Logic clickWiderruf() {
         widerrufLink().click();
         return page(Widerruf_static_page_Logic.class);
     }
 
-    @Step("Click Datenschutz link in the footer")
+    @Step("Click Datenschutz link in the footer. Main_page")
     public Datenschutz_page_Logic clickDatenschutz() {
         datenschutzLink().click();
         return page(Datenschutz_page_Logic.class);
@@ -481,31 +481,31 @@ public class Main_page_Logic extends Main_page {
 
     //KUNDENSERVICE
 
-    @Step("Click Zahlung link in the footer")
+    @Step("Click Zahlung link in the footer. Main_page")
     public Zahlung_static_page_Logic clickZahlung() {
         zahlungLink().click();
         return page(Zahlung_static_page_Logic.class);
     }
 
-    @Step("Click Versand link in the footer")
+    @Step("Click Versand link in the footer. Main_page")
     public Versand_static_page_Logic clickVersand() {
         versandLink().click();
         return page(Versand_static_page_Logic.class);
     }
 
-    @Step("Click Contact link in the footer")
+    @Step("Click Contact link in the footer. Main_page")
     public Contact_static_page_Logic clickContact() {
         contactLink().click();
         return page(Contact_static_page_Logic.class);
     }
 
-    @Step("Click Retouren link in the footer")
+    @Step("Click Retouren link in the footer. Main_page")
     public Retouren_page clickRetouren() {
         retourenLink().click();
         return page(Retouren_page.class);
     }
 
-    @Step("Click Austauschartikel link in the footer")
+    @Step("Click Austauschartikel link in the footer. Main_page")
     public Austauschartikel_static_page_Logic clickAustauschartikel() {
         austauschartikelLink().click();
         return page(Austauschartikel_static_page_Logic.class);
@@ -513,61 +513,61 @@ public class Main_page_Logic extends Main_page {
 
     //TOP PRODUKTE
 
-    @Step("Click Beleuchtung link in the footer")
+    @Step("Click Beleuchtung link in the footer. Main_page")
     public Beleuchtung_page clickBeleuchtung() {
         beleuchtungLink().click();
         return page(Beleuchtung_page.class);
     }
 
-    @Step("Click Stobdampfer link in the footer")
+    @Step("Click Stobdampfer link in the footer. Main_page")
     public Stobdampfer_page clickStobdampfer() {
         stobdampferLink().click();
         return page(Stobdampfer_page.class);
     }
 
-    @Step("Click Querlenker link in the footer")
+    @Step("Click Querlenker link in the footer. Main_page")
     public Querlenker_page clickQuerlenker() {
         querlenkerLink().click();
         return page(Querlenker_page.class);
     }
 
-    @Step("Click Radlager link in the footer")
+    @Step("Click Radlager link in the footer. Main_page")
     public Radlager_page clickRadlager() {
         radlagerLink().click();
         return page(Radlager_page.class);
     }
 
-    @Step("Click Kupplungssatz link in the footer")
+    @Step("Click Kupplungssatz link in the footer. Main_page")
     public Kupplungssatz_page clickKupplungssatz() {
         kupplungssatzLink().click();
         return page(Kupplungssatz_page.class);
     }
 
-    @Step("Click Autopflege link in the footer")
+    @Step("Click Autopflege link in the footer. Main_page")
     public Autopflege_page clickAutopflege() {
         autopflegeLink().click();
         return page(Autopflege_page.class);
     }
 
-    @Step("Click Nach Hersteller Einkaufen link in the footer")
+    @Step("Click Nach Hersteller Einkaufen link in the footer. Main_page")
     public Ersatzteile_page clickNachHerstellerEinkaufen() {
         sucheNachAutomodelleLink().click();
         return page(Ersatzteile_page.class);
     }
 
-    @Step("Click Nach Modell Einkaufen link in the footer")
+    @Step("Click Nach Modell Einkaufen link in the footer. Main_page")
     public ErsatzteileModels_page clickNachModellEinkaufen() {
         nachHerstellerEinkaufenLink().click();
         return page(ErsatzteileModels_page.class);
     }
 
-    @Step("Click Suche Nach Automodelle link in the footer")
+    @Step("Click Suche Nach Automodelle link in the footer. Main_page")
     public ErsatzteileCars_page clickSucheNachAutomodelle() {
         nachModellEinkaufenLink().click();
         return page(ErsatzteileCars_page.class);
     }
 
-    @Step("Click Autoteile Hersteller link in the footer")
+    @Step("Click Autoteile Hersteller link in the footer. Main_page")
     public AutoteileHersteller_page_Logic clickAutoteileHersteller(){
         autoteileHerstellerLink().click();
         return page(AutoteileHersteller_page_Logic.class);
@@ -761,14 +761,14 @@ public class Main_page_Logic extends Main_page {
         return page(Category_name_page_Logic.class);
     }
 
-    @Step("Checks for a discount block")
+    @Step("Checks for a discount block. Main_page")
     public Main_page_Logic checkDiscountBlock() {
         discountBox().shouldBe(visible);
         discountBoxClock().shouldBe(visible);
         return this;
     }
 
-    @Step("Checks the header block and elements inside it")
+    @Step("Checks the header block and elements inside it. Main_page")
     public Main_page_Logic checkHeaderTopBlock() {
         headerTop().shouldBe(visible);
         logoInHeader().shouldBe(visible);
@@ -778,7 +778,7 @@ public class Main_page_Logic extends Main_page {
         return this;
     }
 
-    @Step("Checks the transition to the main page through the logo in the Header")
+    @Step("Checks the transition to the main page through the logo in the Header. Main_page")
     public Main_page_Logic checkTransitionToMainPageThroughTheLogoInHeader() {
         logoInHeader().shouldHave(not(attribute("href")));
         clickVersand();
@@ -787,7 +787,7 @@ public class Main_page_Logic extends Main_page {
         return this;
     }
 
-    @Step("Checks the appearance of login pop-up after clicking on the login button in the Header")
+    @Step("Checks the appearance of login pop-up after clicking on the login button in the Header. Main_page")
     public Main_page_Logic checkAppearanceOfLoginPopUpAfterClickingOnLoginButtonInHeader() {
         loginBtnInHeader().click();
         loginBtnInPopUp().shouldBe(visible);
@@ -796,7 +796,7 @@ public class Main_page_Logic extends Main_page {
         return this;
     }
 
-    @Step("Checks the transition on the privacy-policy link in the Header")
+    @Step("Checks the transition on the privacy-policy link in the Header. Main_page")
     public Main_page_Logic checkTransitionOnPrivacyPolicyLinkInHeader() {
         headerLinkPrivacyPolicy().click();
         new Datenschutz_page().mainBlock().shouldBe(visible);
@@ -804,14 +804,14 @@ public class Main_page_Logic extends Main_page {
         return this;
     }
 
-    @Step("Checks the appearance of pop-up when you hover over the image of the garage in the Header")
+    @Step("Checks the appearance of pop-up when you hover over the image of the garage in the Header. Main_page")
     public Main_page_Logic checkAppearanceOfPopUpWhenHoverOverImageOfGarageInHeader() {
         headerGarageIcon().hover();
         headerGarageTooltip().shouldBe(visible);
         return this;
     }
 
-    @Step("Checks catalog menu in the Header")
+    @Step("Checks catalog menu in the Header. Main_page")
     public Main_page_Logic checkCatalogMenuInHeader(){
         menuCatalogInHeader().hover();
         listCategoriesOfCatalog().shouldBe(not(visible));
@@ -824,7 +824,7 @@ public class Main_page_Logic extends Main_page {
         return this;
     }
 
-    @Step("Checks pop-up block with hints when clicking on a search in Header")
+    @Step("Checks pop-up block with hints when clicking on a search in Header. Main_page")
     public Main_page_Logic checkPopUpBlockWithHintsWhenClickingOnSearch(){
         searchBar().click();
         tooltipToSearch().shouldBe(visible);
@@ -833,7 +833,7 @@ public class Main_page_Logic extends Main_page {
         return this;
     }
 
-    @Step("Checks info popup for search in header")
+    @Step("Checks info popup for search in header. Main_page")
     public Main_page_Logic checkInfoPopUpForSearch(){
         infoIconForSearch().click();
         infoPopupForSearch().shouldBe(visible);
@@ -842,9 +842,7 @@ public class Main_page_Logic extends Main_page {
         return this;
     }
 
-
-
-    @Step("Check presence of categories in the header")
+    @Step("Check presence of categories in the header. Main_page")
     public Main_page_Logic checkPresenceCategoriesInHeader(){
         LkwCategory().shouldBe(visible);
         motoCategory().shouldBe(visible);
@@ -858,7 +856,7 @@ public class Main_page_Logic extends Main_page {
         return this;
     }
 
-    @Step("Checks navigate categories in Header_nav block")
+    @Step("Checks navigate categories in Header_nav block. Main_page")
     public Main_page_Logic checkNavigateCategoriesInHeaderNavBlock() throws SQLException{
         DataBase db = new DataBase();
         String shop = getCurrentShopFromJSVarInHTML();
@@ -880,6 +878,29 @@ public class Main_page_Logic extends Main_page {
         checkingContainsUrl(db.getRouteByRouteName(shop, "brake_system"));
         clickEngineCategory();
         checkingContainsUrl(db.getRouteByRouteName(shop, "engine"));
+        return this;
+    }
+
+    @Step("Checks registration from login button in header. Main_page")
+    public Main_page_Logic registrationFromLoginButton(String mail){
+        Profile_page profile_page = new Profile_page();
+        loginBtnInHeader().click();
+        registrationButtonInLoginPopup().click();
+        String firstName = firstNameRandom();
+        fillRequiredFieldsForRegistration(firstName, secondNameRandom(), mail, false);
+        fillPasswordFieldsAndClickRegistration();
+        profile_page.nameOfClient().shouldHave(Condition.text(firstName));
+        return this;
+    }
+
+    @Step("Logs out of the account and logs in as a previously registered user. Main_page")
+    public Main_page_Logic logOuAndLoginWithUser(String mail){
+        logoutButton().click();
+        loginBtnInHeader().click();
+        emailInputInLoginPopup().setValue(mail);
+        passwordInputInLoginPopup().setValue(password);
+        loginBtnInPopUp().click();
+        logoutButton().shouldBe(Condition.visible);
         return this;
     }
 }

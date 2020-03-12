@@ -3,7 +3,9 @@ package ATD;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
-import static ATD.CommonMethods.getPriceFromElement;
+import java.sql.SQLException;
+
+import static ATD.CommonMethods.*;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.Selenide.sleep;
@@ -87,6 +89,30 @@ public class CartAllData_page_Logic extends CartAllData_page {
     @Step("Check delivery price. CartAllData_page")
     public CartAllData_page_Logic checkDeliveryPriceAlldata(String deliveryPrice) {
         freeDeliveryIcon().shouldHave(text(deliveryPrice));
+        return this;
+    }
+
+    @Step("Checks currency on all data page. CartAllData_page")
+    public CartAllData_page_Logic checkCurrencyOnAllDataPage(String shop) throws SQLException {
+        String expectedCurrency = new DataBase().getCurrency(shop);
+        getCurrencyAndVerify(totalOrderPriceInHead(), "totalOrderPriceInHead", shop, expectedCurrency);
+        getCurrencyAndVerify(productPrice(), "productPrice", shop, expectedCurrency);
+        getCurrencyAndVerify(totalProductPrice(), "totalProductPrice", shop, expectedCurrency);
+        getCurrencyAndVerify(priceOfAllProducts(), "priceOfAllProducts", shop, expectedCurrency);
+        getCurrencyAndVerify(deliveryPrice(), "deliveryPrice", shop, expectedCurrency);
+        getCurrencyAndVerify(totalOrderPrice(), "totalOrderPrice", shop, expectedCurrency);
+        //checks currency for safe order price
+        if (priceOfSafeOrder().isDisplayed()) {
+            getCurrencyAndVerify(priceOfSafeOrder(), "priceSafeOrder", shop, expectedCurrency);
+        }
+        return this;
+    }
+
+    @Step("Check currency for VAT price only for CH. CartAllData_page")
+    public CartAllData_page_Logic checkCurrencyForVatPrice(String shop) throws SQLException {
+        String expectedCurrency = new DataBase().getCurrency(shop);
+        getCurrencyAndVerify(vatPriceInHead(), "vatPriceInHead", shop, expectedCurrency);
+        getCurrencyAndVerify(vatPriceInTotalOrder(), "vatPriceInTotalOrder", shop, expectedCurrency);
         return this;
     }
 }

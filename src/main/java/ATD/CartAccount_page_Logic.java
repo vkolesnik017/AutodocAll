@@ -1,5 +1,6 @@
 package ATD;
 
+import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
 
 import static ATD.CommonMethods.password;
@@ -39,4 +40,14 @@ public class CartAccount_page_Logic extends CartAccount_page{
         return page(CartAddress_page_Logic.class);
     }
 
+    @Step("Check registration from cart. CartAccount_page")
+    public Main_page_Logic registrationFromCart(String mail){
+        CartAddress_page_Logic cartAddress_page = new CartAddress_page_Logic();
+        registrationFormEmailInput().setValue(mail);
+        registrationFormPasswordInput().setValue(password);
+        registrationFormNextBtnClick();
+        cartAddress_page.nextButton().shouldBe(Condition.visible);
+        cartAddress_page.logoClick();
+        return page(Main_page_Logic.class);
+    }
 }
