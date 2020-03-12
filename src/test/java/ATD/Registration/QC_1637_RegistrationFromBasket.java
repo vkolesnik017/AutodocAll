@@ -35,11 +35,11 @@ public class QC_1637_RegistrationFromBasket {
     public void TestRegistrationInBasket(String route) {
         String mail = mailRandom();
         openPage(route);
-        new Main_page_Logic().useSearch(ridex_82B0896);
-        new Search_page_Logic().addFirstProductAndGoToCart()
+        new Main_page_Logic().useSearch(ridex_82B0896)
+                .addFirstProductAndGoToCart()
                 .nextButtonClick()
-                .checkRegistrationFromCart(mail)
-                .logsOutOfAccountAndLogInAsPreviouslyRegisteredUser(mail);
+                .registrationFromCart(mail)
+                .logOuAndLoginWithUser(mail);
     }
 
     @AfterMethod
