@@ -41,7 +41,7 @@ public class CartAccount_page_Logic extends CartAccount_page{
     }
 
     @Step("Check registration from cart. CartAccount_page")
-    public Main_page_Logic checkRegistrationFromCart(String mail){
+    public Main_page_Logic registrationFromCart(String mail){
         CartAddress_page_Logic cartAddress_page = new CartAddress_page_Logic();
         registrationFormEmailInput().setValue(mail);
         registrationFormPasswordInput().setValue(password);

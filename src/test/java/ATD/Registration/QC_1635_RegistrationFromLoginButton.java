@@ -35,8 +35,8 @@ public class QC_1635_RegistrationFromLoginButton {
     public void testRegistrationFromButtonLogin(String route) {
         String mail = mailRandom();
         openPage(route);
-        new Main_page_Logic().checkRegistrationFromLoginButton(mail)
-                .logsOutOfAccountAndLogInAsPreviouslyRegisteredUser(mail);
+        new Main_page_Logic().registrationFromLoginButton(mail)
+                .logOuAndLoginWithUser(mail);
     }
 
     @AfterMethod

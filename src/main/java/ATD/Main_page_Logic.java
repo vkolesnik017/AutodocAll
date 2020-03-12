@@ -882,7 +882,7 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Checks registration from login button in header. Main_page")
-    public Main_page_Logic checkRegistrationFromLoginButton(String mail){
+    public Main_page_Logic registrationFromLoginButton(String mail){
         Profile_page profile_page = new Profile_page();
         loginBtnInHeader().click();
         registrationButtonInLoginPopup().click();
@@ -894,7 +894,7 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Logs out of the account and logs in as a previously registered user. Main_page")
-    public Main_page_Logic logsOutOfAccountAndLogInAsPreviouslyRegisteredUser(String mail){
+    public Main_page_Logic logOuAndLoginWithUser(String mail){
         logoutButton().click();
         loginBtnInHeader().click();
         emailInputInLoginPopup().setValue(mail);
