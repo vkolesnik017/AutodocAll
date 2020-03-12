@@ -6,12 +6,6 @@
         <listener class-name="ATD.ProjectListener"/>
     </listeners>
 
-    <test name="QASYS_61_Registration">
-        <classes>
-            <class name="ATD.QASYS_255_Registration.QASYS_61_Registration">
-            </class>
-        </classes>
-    </test>
 
     <test name="QASYS_422_PasswordRecovery">
         <classes>

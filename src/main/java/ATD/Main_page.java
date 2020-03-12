@@ -410,15 +410,15 @@ public class Main_page {
     }
 
     SelenideElement querlenkerLink(){
-        return $x("//*[@class='footer__links']/div[4]/ul/li[3]/a");
-    }
-
-    SelenideElement radlagerLink(){
         return $x("//*[@class='footer__links']/div[4]/ul/li[4]/a");
     }
 
-    SelenideElement kupplungssatzLink(){
+    SelenideElement radlagerLink(){
         return $x("//*[@class='footer__links']/div[4]/ul/li[5]/a");
+    }
+
+    SelenideElement kupplungssatzLink(){
+        return $x("//*[@class='footer__links']/div[4]/ul/li[3]/a");
     }
 
     SelenideElement autopflegeLink(){
