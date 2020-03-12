@@ -1,6 +1,8 @@
-package LKW_trucks;
+package LKW_trucks.QC_49_Bread_crumbs;
 
 import ATD.LKW_Categories_maker_page_Logic;
+import ATD.LKW_Category_brand_page_Logic;
+import ATD.LKW_Category_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -14,7 +16,7 @@ import java.sql.SQLException;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 
-public class QC_134_TopParentAndChildCategoriesBlocks {
+public class QC_65_BreadCrumbsInCategory {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -22,19 +24,15 @@ public class QC_134_TopParentAndChildCategoriesBlocks {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_categories_maker");
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_brand");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks elements in Top parent and child category blocks")
-    public void testChecksTopParentAndChildCategoryBlocksElements(String route) {
+    @Description(value = "Test checks bread crumbs block in Category route")
+    public void testChecksBreadCrumbsInCategory(String route) {
         openPage(route);
-
-        new LKW_Categories_maker_page_Logic()
-                .checkingOfElementsInParentAndChildBlocks()
-                .selectChildCategoryInTopCategoryBlock()
-                .checkSuccessfullyCategoryMakerPageLoading("https://lkwteile.autodoc.de/ersatzteile/keilrippenriemen-satz-204335/mercedes-benz");
+        new LKW_Category_brand_page_Logic().checkLinksInBreadCrumbsBlock().checkVerificationLinkClick();
     }
 }
