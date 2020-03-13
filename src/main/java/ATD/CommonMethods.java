@@ -242,9 +242,10 @@ public class CommonMethods {
 
     private By recoveryCharacteristicInBlockOfTopProducts = By.cssSelector(".default_ul_li_class");
 
-    @Step
-    public void scrollToBlockOfTopProducts() {
+    @Step("Scrolling to block of top products")
+    public CommonMethods scrollToBlockOfTopProducts() {
         titleOfBlockOfTopProducts().scrollTo();
+        return this;
     }
 
     @Step

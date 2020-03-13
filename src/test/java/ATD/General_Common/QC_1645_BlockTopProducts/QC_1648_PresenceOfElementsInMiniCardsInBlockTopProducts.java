@@ -37,8 +37,7 @@ public class QC_1648_PresenceOfElementsInMiniCardsInBlockTopProducts {
     @Description(value = "The test checks presence elements in mini-card in blocks of top products")
     public void testPresenceElementsInMiniCardInBlocksOfTopProducts(String route) {
         openPage(route);
-        commonMethods.scrollToBlockOfTopProducts();
-        commonMethods.checksPresenceElementsInMiniCardInBlocksOfTopProducts();
+        commonMethods.scrollToBlockOfTopProducts().checksPresenceElementsInMiniCardInBlocksOfTopProducts();
     }
 
     @AfterMethod
