@@ -31,4 +31,12 @@
         </classes>
     </test>
 
+    <test name="QC_1645_BlockTopProducts">
+        <classes>
+        <class name="ATD.General_Common.QC_1645_BlockTopProducts.QC_1646_lackOfNotAvailableGoodsInTheTopBlocks"/>
+        <class name="ATD.General_Common.QC_1645_BlockTopProducts.QC_1647_AddingPairedProductsToBasketFromBlockOfTopProducts"/>
+        <class name="ATD.General_Common.QC_1645_BlockTopProducts.QC_1648_PresenceOfElementsInMiniCardsInBlockTopProducts"/>
+        </classes>
+    </test>
+
 </suite>

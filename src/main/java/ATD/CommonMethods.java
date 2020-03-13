@@ -282,8 +282,7 @@ public class CommonMethods {
         assertTrue(actualCharacteristics.contains(expectedChar), "not in a single product is not output the recovery characteristic " + expectedChar + " in the block of top product");
     }
 
-    @Step
-    // method for checks elements in block of top products
+    @Step("Method for checks elements in mini card in block of top products")
     public void checksPresenceElementsInMiniCardInBlocksOfTopProducts() {
 
         By sticker = (byCssSelector(".product-list__item__promotion"));
@@ -293,17 +292,31 @@ public class CommonMethods {
         By articleNumber = (byCssSelector(".product-list__item__nummer"));
         By price = (byCssSelector(".product-list__item__price"));
         By infoVatAndDelivery = (byCssSelector(".product-list__item__info"));
+        SelenideElement sliderPrev = $x("//button[@class='slick-prev slick-arrow']");
+        SelenideElement sliderNext = $x("//button[@class='slick-next slick-arrow']");
 
         ElementsCollection miniCardsOfProducts = miniCardsOfProducts().filterBy(visible).shouldHaveSize(4);
-        for(SelenideElement miniCard : miniCardsOfProducts) {
-            miniCard.$(sticker).should(visible);
-            miniCard.$(oldPrice).should(visible);
-            miniCard.$(image).should(visible);
-            miniCard.$(productName).should(visible);
-            miniCard.$(articleNumber).should(visible);
-            miniCard.$(price).should(visible);
-            miniCard.$(infoVatAndDelivery).should(visible);
+        for(SelenideElement miniCardFirsSlide : miniCardsOfProducts) {
+            miniCardFirsSlide.$(sticker).should(visible);
+            miniCardFirsSlide.$(oldPrice).should(visible);
+            miniCardFirsSlide.$(image).should(visible);
+            miniCardFirsSlide.$(productName).should(visible);
+            miniCardFirsSlide.$(articleNumber).should(visible);
+            miniCardFirsSlide.$(price).should(visible);
+            miniCardFirsSlide.$(infoVatAndDelivery).should(visible);
         }
+        sliderNext.click();
+        sleep(2000);
+        for(SelenideElement miniCardSecondSlide : miniCardsOfProducts){
+            miniCardSecondSlide.$(sticker).should(visible);
+            miniCardSecondSlide.$(oldPrice).should(visible);
+            miniCardSecondSlide.$(image).should(visible);
+            miniCardSecondSlide.$(productName).should(visible);
+            miniCardSecondSlide.$(articleNumber).should(visible);
+            miniCardSecondSlide.$(price).should(visible);
+            miniCardSecondSlide.$(infoVatAndDelivery).should(visible);
+        }
+        sliderPrev.click();
     }
 
     @Step("Comparing actual and expected characteristics")
