@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="LKW_trucks" parallel="methods" thread-count="5" data-provider-thread-count="2">
+<suite name="LKW_trucks" parallel="methods" thread-count="3" data-provider-thread-count="2">
 
     <listeners>
         <listener class-name="ATD.ProjectListener"/>
@@ -35,6 +35,16 @@
     <test name="QC_49_Bread_crumbs">
         <classes>
             <class name="LKW_trucks.QC_49_Bread_crumbs.QC_130_BreadCrumbsInCategoriesMaker"/>
+            <class name="LKW_trucks.QC_49_Bread_crumbs.QC_50_PresenceOfBreadCrumbsBlock"/>
+            <class name="LKW_trucks.QC_49_Bread_crumbs.QC_65_BreadCrumbsInCategory"/>
+            <class name="LKW_trucks.QC_49_Bread_crumbs.QC_66_BreadCrumbsInCategoryMakerBrand"/>
+            <class name="LKW_trucks.QC_49_Bread_crumbs.QC_67_BreadCrumbsInCategoryParent"/>
+            <class name="LKW_trucks.QC_49_Bread_crumbs.QC_68_BreadCrumbsInProductPage_ActiveProduct"/>
+            <class name="LKW_trucks.QC_49_Bread_crumbs.QC_68_BreadCrumbsInProductPage_NotActiveProduct"/>
+            <class name="LKW_trucks.QC_49_Bread_crumbs.QC_69_BreadCrumbsInCategoryMaker"/>
+            <class name="LKW_trucks.QC_49_Bread_crumbs.QC_70_BreadCrumbsInChildCategory"/>
+            <class name="LKW_trucks.QC_49_Bread_crumbs.QC_71_BreadCrumbsInTecDocListing"/>
+            <class name="LKW_trucks.QC_49_Bread_crumbs.QC_72_BreadCrumbsInTecDocCatalog"/>
         </classes>
     </test>
     <test name="LKW_trucks_route">
