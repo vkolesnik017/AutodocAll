@@ -29,23 +29,23 @@ public class LKW_Category_page_Logic extends LKW_Category_page {
         return this;
     }
 
-    @Step("Check verification link click in bread crumbs block .LKW_Category_page")
-    public LKW_Category_page_Logic checkVerificationLinkClickInBreadCrumbsBlock() {
-        checkVerificationFirstLinkClick().checkSuccessfullyLKWCategoriesPageLoading();
+    @Step("Check  link click in bread crumbs block .LKW_Category_page")
+    public LKW_Category_page_Logic checkLinkClickInBreadCrumbsBlock() {
+        firstLinkClick().checkSuccessfullyLKWCategoriesPageLoading();
         back();
-        checkVerificationSecondLinkClick().checkSuccessfullyLKWParentCategoryPageLoading();
+        secondLinkClick().checkSuccessfullyLKWParentCategoryPageLoading();
 
         return this;
     }
 
-    @Step("Check verification first link click in bread crumbs block .LKW_Category_page")
-    public LKW_Categories_page_Logic checkVerificationFirstLinkClick() {
+    @Step("Click on first link in bread crumbs block .LKW_Category_page")
+    public LKW_Categories_page_Logic firstLinkClick() {
         firstLinkOfBreadCrumbsBlock().click();
         return page(LKW_Categories_page_Logic.class);
     }
 
-    @Step("Check verification second link click in bread crumbs block .LKW_Category_page")
-    public LKW_Parent_Category_page_Logic checkVerificationSecondLinkClick() {
+    @Step("Click on second link in bread crumbs block .LKW_Category_page")
+    public LKW_Parent_Category_page_Logic secondLinkClick() {
         secondLinkOfBreadCrumbsBlock().click();
         return page(LKW_Parent_Category_page_Logic.class);
     }

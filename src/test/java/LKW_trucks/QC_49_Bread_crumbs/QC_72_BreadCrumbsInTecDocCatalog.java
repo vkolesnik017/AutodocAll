@@ -33,6 +33,6 @@ public class QC_72_BreadCrumbsInTecDocCatalog {
         openPage(route);
 
         new LKW_Category_car_list_page_Logic().checkLinksInBreadCrumbsBlockTecDocCatalog()
-                .checkVerificationLinkClickTecDocCatalog();
+                .checkLinkClickTecDocCatalog();
     }
 }

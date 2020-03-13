@@ -29,38 +29,38 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         return this;
     }
 
-    @Step("Check verification link click in bread crumbs block .LKW_Category_car_list_page")
-    public LKW_Category_car_list_page_Logic checkVerificationLinkClick() {
-        checkVerificationFirstLinkClick().checkSuccessfullyMakerCarListPageLoading("https://lkwteile.autodoc.de/lastkraftwagen/mercedes-benz/actros");
+    @Step("Check link click in bread crumbs block  TecDoc Listing.LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic checkLinkClickInBreadCrumbsBlock() {
+        firstLinkClick().checkSuccessfullyMakerCarListPageLoading("https://lkwteile.autodoc.de/lastkraftwagen/mercedes-benz/actros");
         back();
-        checkVerificationSecondLinkClick().checkSuccessfullyCategoryMakerPageLoading("https://lkwteile.autodoc.de/ersatzteile/filter");
+        secondLinkClick().checkSuccessfullyCategoryMakerPageLoading("https://lkwteile.autodoc.de/ersatzteile/filter");
         back();
-        checkVerificationThirdLinkClick().checkSuccessfullyLKWCategoryCarListPageLoading("https://lkwteile.autodoc.de/ersatzteile/olfilter-200157/mercedes-benz/actros?car_id=1000784");
+        thirdLinkClick().checkSuccessfullyLKWCategoryCarListPageLoading("https://lkwteile.autodoc.de/ersatzteile/olfilter-200157/mercedes-benz/actros?car_id=1000784");
         back();
-        checkVerificationFourthLinkClick().checkSuccessfullyCategoryMakerPageLoading("https://lkwteile.autodoc.de/ersatzteile/olfilter-200157/mercedes-benz");
+        fourthLinkClick().checkSuccessfullyCategoryMakerPageLoading("https://lkwteile.autodoc.de/ersatzteile/olfilter-200157/mercedes-benz");
         return this;
     }
 
-    @Step("Check verification first link click in bread crumbs block .LKW_Category_car_list_page")
-    public LKW_maker_car_list_Logic checkVerificationFirstLinkClick() {
+    @Step("Click on first link in bread crumbs block .LKW_Category_car_list_page")
+    public LKW_maker_car_list_Logic firstLinkClick() {
         firstLinkOfBreadCrumbsBlock().click();
         return page(LKW_maker_car_list_Logic.class);
     }
 
-    @Step("Check verification second link click in bread crumbs block .LKW_Category_car_list_page")
-    public LKW_Category_maker_Logic checkVerificationSecondLinkClick() {
+    @Step("Click on second link in bread crumbs block .LKW_Category_car_list_page")
+    public LKW_Category_maker_Logic secondLinkClick() {
         secondLinkOfBreadCrumbsBlock().click();
         return page(LKW_Category_maker_Logic.class);
     }
 
-    @Step("Check verification third link click in bread crumbs block .LKW_Category_car_list_page")
-    public LKW_Category_car_list_page_Logic checkVerificationThirdLinkClick() {
+    @Step("Click on third link in bread crumbs block .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic thirdLinkClick() {
         thirdLinkOfBreadCrumbsBlock().click();
         return this;
     }
 
-    @Step("Check verification fourth link click in bread crumbs block .LKW_Category_car_list_page")
-    public LKW_Category_maker_Logic checkVerificationFourthLinkClick() {
+    @Step("Click on fourth link in bread crumbs block .LKW_Category_car_list_page")
+    public LKW_Category_maker_Logic fourthLinkClick() {
         fourthLinkOfBreadCrumbsBlock().click();
         return page(LKW_Category_maker_Logic.class);
     }
@@ -75,22 +75,22 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         return this;
     }
 
-    @Step("Check verification link click in bread crumbs block TecDoc Catalog .LKW_Category_car_list_page")
-    public LKW_Category_car_list_page_Logic checkVerificationLinkClickTecDocCatalog() {
-        checkVerificationFirstLinkClickTecDocCatalog().checkUrlWithSelectingCar("https://lkwteile.autodoc.de/lastkraftwagen/mercedes-benz");
+    @Step("Check link click in bread crumbs block TecDoc Catalog .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic checkLinkClickTecDocCatalog() {
+        firstLinkClickTecDocCatalog().checkUrlWithSelectingCar("https://lkwteile.autodoc.de/lastkraftwagen/mercedes-benz");
         back();
-        checkVerificationSecondLinkClickTecDocCatalog().checkSuccessfullyMakerCarListPageLoading("https://lkwteile.autodoc.de/lastkraftwagen/mercedes-benz/actros");
+        secondLinkClickTecDocCatalog().checkSuccessfullyMakerCarListPageLoading("https://lkwteile.autodoc.de/lastkraftwagen/mercedes-benz/actros");
         return this;
     }
 
-    @Step("Check verification first link click in bread crumbs block TecDoc catalog .LKW_Category_car_list_page")
-    public LKW_Categories_maker_page_Logic checkVerificationFirstLinkClickTecDocCatalog() {
+    @Step("Click on first link in bread crumbs block TecDoc catalog .LKW_Category_car_list_page")
+    public LKW_Categories_maker_page_Logic firstLinkClickTecDocCatalog() {
         firstLinkOfBreadCrumbsBlockTitleTecDoC().click();
         return page(LKW_Categories_maker_page_Logic.class);
     }
 
-    @Step("Check verification second link click in bread crumbs block TecDoc catalog .LKW_Category_car_list_page")
-    public LKW_maker_car_list_Logic checkVerificationSecondLinkClickTecDocCatalog() {
+    @Step("Click on second link in bread crumbs block TecDoc catalog .LKW_Category_car_list_page")
+    public LKW_maker_car_list_Logic secondLinkClickTecDocCatalog() {
         secondLinkOfBreadCrumbsBlock().click();
         return page(LKW_maker_car_list_Logic.class);
     }

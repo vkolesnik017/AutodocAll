@@ -33,6 +33,6 @@ public class QC_70_BreadCrumbsInChildCategory {
     public void testChecksBreadCrumbsInChildCategory(String route) {
         openPage(route);
 
-        new LKW_Category_page_Logic().checkLinksInBreadCrumbsBlock().checkVerificationLinkClickInBreadCrumbsBlock();
+        new LKW_Category_page_Logic().checkLinksInBreadCrumbsBlock().checkLinkClickInBreadCrumbsBlock();
     }
 }

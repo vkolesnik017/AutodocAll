@@ -33,6 +33,6 @@ public class QC_65_BreadCrumbsInCategory {
     @Description(value = "Test checks bread crumbs block in Category route")
     public void testChecksBreadCrumbsInCategory(String route) {
         openPage(route);
-        new LKW_Category_brand_page_Logic().checkLinksInBreadCrumbsBlock().checkVerificationLinkClick();
+        new LKW_Category_brand_page_Logic().checkLinksInBreadCrumbsBlock().checkLinkClickInBreadCrumbsBlock();
     }
 }

@@ -25,19 +25,19 @@ public class LKW_Parent_Category_page_Logic extends LKW_Parent_Category_page {
         thirdLinkOfBreadCrumbsBlock().shouldHave(exactText("Hersteller auswählen")).shouldNotHave(attribute("href"));
         fourthLinkOfBreadCrumbsBlock().shouldHave(exactText("Modell auswählen")).shouldNotHave(attribute("href"));
         closeToolTipPopUpIfVisible();
-        checkVerificationFirstLinkClick().checkSuccessfullyLKWCategoriesPageLoading();
+        firstLinkClick().checkSuccessfullyLKWCategoriesPageLoading();
         return this;
     }
 
-    @Step("Check verification first link click in bread crumbs block .LKW_Category_maker_brand_page")
-    public LKW_Categories_page_Logic checkVerificationFirstLinkClick() {
+    @Step("Click on first link in bread crumbs block .LKW_Category_maker_brand_page")
+    public LKW_Categories_page_Logic firstLinkClick() {
         firstLinkOfBreadCrumbsBlock().click();
         return page(LKW_Categories_page_Logic.class);
     }
 
     @Step("Close tooltip text pop-up in vertical selector .LKW_Category_maker_brand_page")
     public LKW_Parent_Category_page_Logic closeToolTipPopUpIfVisible() {
-        if (closeToolTipTextSelector().isDisplayed()){
+        if (closeToolTipTextSelector().isDisplayed()) {
             closeToolTipTextSelector().click();
         }
         return this;

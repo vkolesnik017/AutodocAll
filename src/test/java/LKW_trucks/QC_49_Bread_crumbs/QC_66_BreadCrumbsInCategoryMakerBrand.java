@@ -33,6 +33,6 @@ public class QC_66_BreadCrumbsInCategoryMakerBrand {
     public void testChecksBreadCrumbsInCategoryMakerBrand(String route) {
         openPage(route);
         new LKW_Category_maker_brand_page_Logic().checkLinksInBreadCrumbsBlock()
-                .checkVerificationLinkClick();
+                .checkLinkClickInBreadCrumbsBlock();
     }
 }

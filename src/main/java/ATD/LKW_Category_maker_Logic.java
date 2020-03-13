@@ -36,30 +36,30 @@ public class LKW_Category_maker_Logic extends LKW_Category_maker {
         return this;
     }
 
-    @Step("Check verification link click in bread crumbs block .LKW_Category_maker")
-    public LKW_Category_maker_Logic checkVerificationLinkClickInBreadCrumbsBlock() {
-        checkVerificationFirstLinkClick().checkSuccessfullyLKWCategoriesPageLoading();
+    @Step("Check  link click in bread crumbs block .LKW_Category_maker")
+    public LKW_Category_maker_Logic checkLinkClickInBreadCrumbsBlock() {
+        firstLinkClick().checkSuccessfullyLKWCategoriesPageLoading();
         back();
-        checkVerificationSecondLinkClick().checkSuccessfullyLKWParentCategoryPageLoading();
+        secondLinkClick().checkSuccessfullyLKWParentCategoryPageLoading();
         back();
-        checkVerificationThirdLinkClick().checkSuccessfullyChildCategoryPageLoading();
+        thirdLinkClick().checkSuccessfullyChildCategoryPageLoading();
         return this;
     }
 
-    @Step("Check verification first link click in bread crumbs block .LKW_Category_maker")
-    public LKW_Categories_page_Logic checkVerificationFirstLinkClick() {
+    @Step("Click on first link in bread crumbs block .LKW_Category_maker")
+    public LKW_Categories_page_Logic firstLinkClick() {
         firstLinkOfBreadCrumbsBlock().click();
         return page(LKW_Categories_page_Logic.class);
     }
 
-    @Step("Check verification second link click in bread crumbs block .LKW_Category_maker")
-    public LKW_Parent_Category_page_Logic checkVerificationSecondLinkClick() {
+    @Step("Click on second link in bread crumbs block .LKW_Category_maker")
+    public LKW_Parent_Category_page_Logic secondLinkClick() {
         secondLinkOfBreadCrumbsBlock().click();
         return page(LKW_Parent_Category_page_Logic.class);
     }
 
-    @Step("Check verification third link click in bread crumbs block .LKW_Category_maker")
-    public LKW_Category_page_Logic checkVerificationThirdLinkClick() {
+    @Step("Click on third link in bread crumbs block .LKW_Category_maker")
+    public LKW_Category_page_Logic thirdLinkClick() {
         thirdLinkOfBreadCrumbsBlock().click();
         return page(LKW_Category_page_Logic.class);
     }

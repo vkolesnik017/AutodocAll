@@ -33,6 +33,6 @@ public class QC_68_BreadCrumbsInProductPage_NotActiveProduct {
         openPage(route);
 
         new LKW_Product_page_Logic().checkLinksInBreadCrumbsBlockWithNotActiveProduct()
-                .goToTecDocCatalogInBreadCrumbs().checkSuccessfullyLKWCategoriesPageLoading();
+                .goToTecDocCatalogFromBreadCrumbs().checkSuccessfullyLKWCategoriesPageLoading();
     }
 }

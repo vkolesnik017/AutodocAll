@@ -45,7 +45,7 @@ public class LKW_Product_page_Logic extends LKW_Product_page {
     }
 
     @Step("Select tecDoc Catalog in bread crumbs .LKW_Product_page")
-    public LKW_Categories_page_Logic goToTecDocCatalogInBreadCrumbs() {
+    public LKW_Categories_page_Logic goToTecDocCatalogFromBreadCrumbs() {
         firstLinkOfBreadCrumbsBlock().click();
         return page(LKW_Categories_page_Logic.class);
     }
