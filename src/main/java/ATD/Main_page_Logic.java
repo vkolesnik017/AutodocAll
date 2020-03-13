@@ -15,8 +15,8 @@ import static ATD.CommonMethods.*;
 import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
-import static org.testng.Assert.assertEquals;
 import static com.codeborne.selenide.WebDriverRunner.url;
+import static org.testng.Assert.assertEquals;
 
 public class Main_page_Logic extends Main_page {
 
@@ -48,6 +48,24 @@ public class Main_page_Logic extends Main_page {
         passFieldLogin().setValue(password);
         submitBtnLogin().click();
         return page(Profile_page_Logic.class);
+    }
+
+    //in order to try to log in with old password
+    @Step("Login in header with old password. Main_page")
+    public Main_page_Logic loginWithOldPassword(String mail) {
+        logOutClick();
+        loginFromHeader(mail);
+        closePopUpInvalidDataForLogin().click();
+        return this;
+    }
+
+    //to enter with a new password
+    @Step("Login with new password. Main_page")
+    public Main_page_Logic loginWithNewPassword(String newPassword) {
+        passwordInputInLoginPopup().setValue(newPassword);
+        loginBtnInPopUp().click();
+        new Profile_page().nameOfClient().shouldBe(visible);
+        return this;
     }
 
     @Step("Clicking log out in header. Main_page")
@@ -424,7 +442,7 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Click AutodocPlus link in the footer. Main_page")
-    public AutodocPlus_page_Logic clickAutodocPlus(){
+    public AutodocPlus_page_Logic clickAutodocPlus() {
         autodocPlusLink().click();
         return page(AutodocPlus_page_Logic.class);
     }
@@ -462,7 +480,7 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Click PLUS-AGB link in the footer. Main_page")
-    public Agb_plus_static_page_Logic clickAgbPlus(){
+    public Agb_plus_static_page_Logic clickAgbPlus() {
         agb_plusLink().click();
         return page(Agb_plus_static_page_Logic.class);
     }
@@ -812,7 +830,7 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Checks catalog menu in the Header. Main_page")
-    public Main_page_Logic checkCatalogMenuInHeader(){
+    public Main_page_Logic checkCatalogMenuInHeader() {
         menuCatalogInHeader().hover();
         listCategoriesOfCatalog().shouldBe(not(visible));
         menuCatalogInHeader().click();
@@ -825,7 +843,7 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Checks pop-up block with hints when clicking on a search in Header. Main_page")
-    public Main_page_Logic checkPopUpBlockWithHintsWhenClickingOnSearch(){
+    public Main_page_Logic checkPopUpBlockWithHintsWhenClickingOnSearch() {
         searchBar().click();
         tooltipToSearch().shouldBe(visible);
         logoInHeader().click();
@@ -834,7 +852,7 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Checks info popup for search in header. Main_page")
-    public Main_page_Logic checkInfoPopUpForSearch(){
+    public Main_page_Logic checkInfoPopUpForSearch() {
         infoIconForSearch().click();
         infoPopupForSearch().shouldBe(visible);
         infoPopupForSearch().click();
@@ -843,7 +861,7 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Check presence of categories in the header. Main_page")
-    public Main_page_Logic checkPresenceCategoriesInHeader(){
+    public Main_page_Logic checkPresenceCategoriesInHeader() {
         LkwCategory().shouldBe(visible);
         motoCategory().shouldBe(visible);
         tiresCategory().shouldBe(visible);
@@ -857,7 +875,7 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Checks navigate categories in Header_nav block. Main_page")
-    public Main_page_Logic checkNavigateCategoriesInHeaderNavBlock() throws SQLException{
+    public Main_page_Logic checkNavigateCategoriesInHeaderNavBlock() throws SQLException {
         DataBase db = new DataBase();
         String shop = getCurrentShopFromJSVarInHTML();
         clickLkwCategory();
@@ -882,7 +900,7 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Checks registration from login button in header. Main_page")
-    public Main_page_Logic registrationFromLoginButton(String mail){
+    public Main_page_Logic registrationFromLoginButton(String mail) {
         Profile_page profile_page = new Profile_page();
         loginBtnInHeader().click();
         registrationButtonInLoginPopup().click();
@@ -894,13 +912,24 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Logs out of the account and logs in as a previously registered user. Main_page")
-    public Main_page_Logic logOuAndLoginWithUser(String mail){
+    public Main_page_Logic logOuAndLoginWithUser(String mail) {
         logoutButton().click();
         loginBtnInHeader().click();
         emailInputInLoginPopup().setValue(mail);
         passwordInputInLoginPopup().setValue(password);
         loginBtnInPopUp().click();
         logoutButton().shouldBe(Condition.visible);
+        return this;
+    }
+
+    @Step("Password Recovery Request. Main_page")
+    public Main_page_Logic passwordRecoveryRequest(String mail) {
+        loginBtnInHeader().click();
+        forgotPasswordLink().click();
+        emailFieldInPasswordRecoveryPopUp().setValue(mail);
+        sendBtnInPasswordRecoveryPopUp().click();
+        closePopupMessageSentForChangePassword().click();
+        closePopupMessageSentForChangePassword().shouldBe(not(visible));
         return this;
     }
 }
