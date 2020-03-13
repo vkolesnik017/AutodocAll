@@ -6,9 +6,9 @@ import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;
 
-class LKW_Category_page {
-    SelenideElement imageOfChildCategory() {
-        return $x("//div[@class='autoteile-top-content__image']");
+public class LKW_Parent_Category_page {
+    SelenideElement childCategoryBlock() {
+        return $x("//div[@class='filter_small_img']");
     }
 
     ElementsCollection breadCrumbsLinks() {
@@ -24,18 +24,15 @@ class LKW_Category_page {
     }
 
     SelenideElement thirdLinkOfBreadCrumbsBlock() {
-        return $x("//li[@class='step_3 active parts_step_3']//a");
+        return $x("//li[@class='step_3 not_active parts_step_3']/span/span");
     }
 
     SelenideElement fourthLinkOfBreadCrumbsBlock() {
         return $x("//li[@class='step_4 not_active parts_step_4']/span/span");
     }
 
-    SelenideElement fifthLinkOfBreadCrumbsBlock() {
-        return $x("//li[@class='step_5 not_active parts_step_5']/span/span");
+    SelenideElement closeToolTipTextSelector() {
+        return $x("//div[@class='tooltiptext-close js-tooltiptext-close']");
     }
 
-    SelenideElement sixthLinkOfBreadCrumbsBlock() {
-        return $x("//li[@class='step_6 not_active parts_step_6']/span/span");
-    }
 }

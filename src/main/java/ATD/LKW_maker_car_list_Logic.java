@@ -9,9 +9,9 @@ import static com.codeborne.selenide.WebDriverRunner.url;
 public class LKW_maker_car_list_Logic  extends LKW_maker_car_list{
 
     @Step("check successfully child category page loading. LKW_maker_car_list ")
-    public LKW_maker_car_list_Logic checkSuccessfullyMakerCarListPageLoading() {
+    public LKW_maker_car_list_Logic checkSuccessfullyMakerCarListPageLoading(String currentUrl) {
         tecDocCatalog().shouldBe(visible);
-        Assert.assertEquals(url(), "https://lkwteile.autodoc.de/lastkraftwagen/mercedes-benz/unimog");
+        Assert.assertEquals(url(), currentUrl);
         return this;
     }
 }
