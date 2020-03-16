@@ -41,8 +41,8 @@ public class QC_122_FiltersSorting_TestSideFilterWithPagination {
     public void testSideFilterWithPagination(String route) {
         openPage(route);
         closeCookiesFooterMessage();
-        String characteristic = listingPage.langeFilterAttribute().text();
-        listingPage.langeFilterCheckbox().click();
+        String characteristic = listingPage.langeFilterAttribute450().text();
+        listingPage.langeFilterCheckbox450().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.secondListingPage().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
@@ -57,8 +57,8 @@ public class QC_122_FiltersSorting_TestSideFilterWithPagination {
     public void testSideFilterWithPaginationLKW() throws SQLException {
         openPage("https://lkwteile.autodoc.de/" +  dataBase.getRouteByRouteName("DE", "lkw_category_car_list"));
         closeCookiesFooterMessage();
-        String characteristic = listingPage.langeFilterCheckboxLKW().text();
-        listingPage.langeFilterCheckboxLKW().click();
+        String characteristic = listingPage.langeFilterCheckboxLKW700().text();
+        listingPage.langeFilterCheckboxLKW700().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.secondListingPage().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
