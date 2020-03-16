@@ -4,21 +4,24 @@ import io.qameta.allure.Allure;
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.testng.IRetryAnalyzer;
+import org.testng.IAnnotationTransformer;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
+import org.testng.annotations.ITestAnnotation;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
-public class ProjectListener implements ITestListener, IRetryAnalyzer {
+public class ProjectListener implements ITestListener, IAnnotationTransformer {
     @Override
     public void onTestStart(ITestResult iTestResult) {
 
@@ -68,15 +71,8 @@ public class ProjectListener implements ITestListener, IRetryAnalyzer {
         return ((TakesScreenshot) getWebDriver()).getScreenshotAs(OutputType.FILE);
     }
 
-    private int retryCount =0;
-    private int maxRetryCount = 1;
     @Override
-    public boolean retry(ITestResult iTestResult) {
-        if(retryCount < maxRetryCount)
-        {
-            retryCount++;
-            return true;
-        }
-        return false;
+    public void transform(ITestAnnotation annotation, Class testClass, Constructor testConstructor, Method testMethod) {
+        annotation.setRetryAnalyzer(Retry.class);
     }
 }
