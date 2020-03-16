@@ -76,8 +76,8 @@ public class QC_124_FiltersSorting_TestSideFilterCancelling {
     @Description(value = "Test checks side filter cancelling on LKW routes")
     public void testSideFilterCancellingLKWmodel() throws SQLException {
         openPage("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_category_car_list7"));
-        String characteristic = listingPage.langeFilterAttribute2().text();
-        listingPage.langeFilterCheckbox2().click();
+        String characteristic = listingPage.langeFilterAttribute3().text();
+        listingPage.langeFilterCheckbox3().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.langeProductAttributeGenericRoute(), listingPage.langeProductAttributeTecdocRoute());
         int numberOfAttributesFilter = listingPage.langeProductAttributeTecdocRoute().size();
