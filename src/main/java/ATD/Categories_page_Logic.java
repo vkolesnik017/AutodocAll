@@ -25,18 +25,18 @@ public class Categories_page_Logic extends Categories_page {
     return this;
   }
 
-  @Step("Click tooltip in search by catalog by exact text {exactTooltipText}. Categories_page")
-  public Category_name_page_Logic clickTooltipInSearchByCatalogByExactText(String exactTooltipText) {
-    tooltipsToSearchByCatalog().get(0).shouldBe(visible);
-    tooltipsToSearchByCatalog().filter(exactText(exactTooltipText)).shouldHaveSize(1).get(0).click();
-    return page(Category_name_page_Logic.class);
-  }
+    @Step("Click tooltip in search by catalog by exact text {exactTooltipText}. Categories_page")
+    public Category_name_page_Logic clickTooltipInSearchByCatalogByExactText(String exactTooltipText) {
+        tooltipsToSearchByCatalog().get(0).shouldBe(visible);
+        tooltipsToSearchByCatalog().filter(exactText(exactTooltipText)).shouldHaveSize(1).get(0).click();
+        return page(Category_name_page_Logic.class);
+    }
 
-  @Step("Click oil filter category link. Categories_page")
-  Categories_page_Logic clickOilFilterCategoryLink() {
-    linkForCategoryOilFilter().click();
-    return page(Categories_page_Logic.class);
-  }
+    @Step("Click oil filter category link. Categories_page")
+    Categories_page_Logic clickOilFilterCategoryLink() {
+        linkForCategoryOilFilter().click();
+        return page(Categories_page_Logic.class);
+    }
 
   @Step("Сheck that the page loads successfully. Categories_page")
   public Categories_page_Logic checkSuccessfullyPageLoading(){
@@ -50,5 +50,12 @@ public class Categories_page_Logic extends Categories_page {
     lkwCategory().click();
     return page(LKW_main_page_Logic.class);
   }
+
+    @Step("Select Moto category. Categories_page")
+    public Moto_main_page_Logic selectMotoCategory() {
+        motoCategory().click();
+        return page(Moto_main_page_Logic.class);
+    }
+
 
 }

@@ -20,4 +20,23 @@
         </classes>
     </test>
 
+    <test name="QC_1571_Header">
+        <classes>
+            <class name="ATD.General_Common.QC_1571_Header.QC_1601_PresenceBlocksOfPromotionalHeader"/>
+            <class name="ATD.General_Common.QC_1571_Header.QC_1602_HeaderTopBlock"/>
+            <class name="ATD.General_Common.QC_1571_Header.QC_1603_TransitionLinksFromBlockHeaderTop"/>
+            <class name="ATD.General_Common.QC_1571_Header.QC_1604_PresenceOfCategoriesInHeaderNavBlock"/>
+            <class name="ATD.General_Common.QC_1571_Header.QC_1605_NavigateCategoriesInHeaderNavBlock"/>
+            <class name="ATD.General_Common.QC_1571_Header.QC_1606_BlockHeaderMain"/>
+        </classes>
+    </test>
+
+    <test name="QC_1645_BlockTopProducts">
+        <classes>
+        <class name="ATD.General_Common.QC_1645_BlockTopProducts.QC_1646_lackOfNotAvailableGoodsInTheTopBlocks"/>
+        <class name="ATD.General_Common.QC_1645_BlockTopProducts.QC_1647_AddingPairedProductsToBasketFromBlockOfTopProducts"/>
+        <class name="ATD.General_Common.QC_1645_BlockTopProducts.QC_1648_PresenceOfElementsInMiniCardsInBlockTopProducts"/>
+        </classes>
+    </test>
+
 </suite>

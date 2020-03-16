@@ -6,7 +6,10 @@ import AWS.FAQ_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
@@ -49,7 +52,7 @@ public class QC_985_GdprFaqFormNameShorting {
     @AfterMethod
     void checkingUnpublished() {
         close();
-        if(mail!=null) faq_aws.openAndLoginFaqAwsPage().searchQuestionAndUnPublished(mail);
+        if (mail != null) faq_aws.openAndLoginFaqAwsPage().searchQuestionAndUnPublished(mail);
     }
 }
 

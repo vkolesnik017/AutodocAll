@@ -14,8 +14,8 @@ import java.util.HashSet;
 import static ATD.CommonMethods.*;
 import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverRunner.url;
 import static org.testng.Assert.assertEquals;
 
 public class Main_page_Logic extends Main_page {
@@ -48,6 +48,24 @@ public class Main_page_Logic extends Main_page {
         passFieldLogin().setValue(password);
         submitBtnLogin().click();
         return page(Profile_page_Logic.class);
+    }
+
+    //in order to try to log in with old password
+    @Step("Login in header with old password. Main_page")
+    public Main_page_Logic loginWithOldPassword(String mail) {
+        logOutClick();
+        loginFromHeader(mail);
+        closePopUpInvalidDataForLogin().click();
+        return this;
+    }
+
+    //to enter with a new password
+    @Step("Login with new password. Main_page")
+    public Main_page_Logic loginWithNewPassword(String newPassword) {
+        passwordInputInLoginPopup().setValue(newPassword);
+        loginBtnInPopUp().click();
+        new Profile_page().nameOfClient().shouldBe(visible);
+        return this;
     }
 
     @Step("Clicking log out in header. Main_page")
@@ -99,55 +117,55 @@ public class Main_page_Logic extends Main_page {
     // Menu in header
     @Step("Clicking LKW category. Main_page")
     public LKW_main_page_Logic clickLkwCategory() {
-        $("[data-ga-action='LKW']").click();
+        LkwCategory().click();
         return page(LKW_main_page_Logic.class);
     }
 
     @Step("Clicking moto category. Main_page")
     public Moto_main_page clickMotoCategory() {
-        $("[data-ga-action='MOTO']").click();
+        motoCategory().click();
         return page(Moto_main_page.class);
     }
 
     @Step("Clicking tyres category. Main_page")
     public Tyres_page clickTiresCategory() {
-        $(byCssSelector("[data-ga-action='23208']")).click();
+        tiresCategory().click();
         return page(Tyres_page.class);
     }
 
     @Step("Clicking instruments category. Main_page")
     public Index_instruments_page clickInstrumentsCategory() {
-        $("[data-ga-action='36000']").click();
+        instrumentsCategory().click();
         return page(Index_instruments_page.class);
     }
 
     @Step("Clicking accessories category. Main_page")
     public Index_accessories_page clickAccessoriesCategory() {
-        $("[data-ga-action='33000']").click();
+        accessoriesCategory().click();
         return page(Index_accessories_page.class);
     }
 
     @Step("Clicking oil engine category. Main_page")
     public CarParts_EngineOil_page clickEngineOilCategory() {
-        $("[data-ga-action='12094']").click();
+        engineOilCategory().click();
         return page(CarParts_EngineOil_page.class);
     }
 
     @Step("Clicking filters category. Main_page")
     public CarParts_Filters_page clickFiltersCategory() {
-        $("[data-ga-action='10105']").click();
+        filtersCategory().click();
         return page(CarParts_Filters_page.class);
     }
 
     @Step("Clicking brake system category. Main_page")
     public CarParts_BrakeSystem_page clickBrakeSystemCategory() {
-        $("[data-ga-action='10106']").click();
+        brakeSystemCategory().click();
         return page(CarParts_BrakeSystem_page.class);
     }
 
     @Step("Clicking engine category. Main_page")
     public CarParts_Engine_page clickEngineCategory() {
-        $(".header-i.header-i--engine").click();
+        engineCategory().click();
         return page(CarParts_Engine_page.class);
     }
 
@@ -380,153 +398,197 @@ public class Main_page_Logic extends Main_page {
 
     //ÜBER AUTODOC
 
+    @Step("Click About Us link in the footer. Main_page")
     public About_us_page clickAboutUs() {
-        $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[1]/a")).click();
+        aboutUsLink().click();
         return page(About_us_page.class);
     }
 
+    @Step("Click Impressum link in the footer. Main_page")
     public Impressum_static_page_Logic clickImpressum() {
-        $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[2]/a")).click();
+        impressumLink().click();
         return page(Impressum_static_page_Logic.class);
     }
 
+
+    @Step("Click Vacancies link in the footer. Main_page")
     public Vacancies_static_page_Logic clickVacancies() {
-        $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[3]/a")).click();
+        vacanciesLink().click();
         return page(Vacancies_static_page_Logic.class);
     }
 
+    @Step("Click Bonusprogramm link in the footer. Main_page")
     public Bonusprogramm_page clickBonusprogramm() {
-        $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[4]/a")).click();
+        bonusprogrammLink().click();
         return page(Bonusprogramm_page.class);
     }
 
-    public Sponsorship_static_page clickSponsorship() {
-        $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[5]/a")).click();
-        return page(Sponsorship_static_page.class);
-    }
-
+    @Step("Click Partnership link in the footer. Main_page")
     public Partnership_static_page_Logic clickPartnership() {
-        $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[5]/a")).click();
+        partnershipLink().click();
         return page(Partnership_static_page_Logic.class);
     }
 
+    @Step("Click Presse link in the footer. Main_page")
     public Presse_page clickPresse() {
-        $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[6]/a")).click();
+        presseLink().click();
         return page(Presse_page.class);
     }
 
+    @Step("Click MobileApp link in the footer")
     public MobileApp_static_page_Logic clickMobileApp() {
-        $(By.xpath("//*[@class='footer__links']/div[1]/ul/li[7]/a")).click();
+        mobileAppLink().click();
         return page(MobileApp_static_page_Logic.class);
     }
 
+    @Step("Click AutodocPlus link in the footer. Main_page")
+    public AutodocPlus_page_Logic clickAutodocPlus() {
+        autodocPlusLink().click();
+        return page(AutodocPlus_page_Logic.class);
+    }
+
     //HILFE & SUPPORT
+
+    @Step("Click AutodocClub link in the footer. Main_page")
     public AutodocClub_page clickAutodocClub() {
-        $(By.xpath("//*[@class='footer__links']/div[2]/ul/li[1]/a")).click();
+        autodocClubLink().click();
         return page(AutodocClub_page.class);
     }
 
+    @Step("Click Blog link in the footer. Main_page")
     public Blog_page clickBlog() {
-        $(By.xpath("//*[@class='footer__links']/div[2]/ul/li[2]/a")).click();
+        blogLink().click();
         return page(Blog_page.class);
     }
 
+    @Step("Click VideoTutorials link in the footer. Main_page")
     public VideoTutorials_page clickVideoTutorials() {
-        $(By.xpath("//*[@class='footer__links']/div[2]/ul/li[3]/a")).click();
+        videoTutorialsLink().click();
         return page(VideoTutorials_page.class);
     }
 
+    @Step("Click Hinweise zur Altölentsorgung link in the footer. Main_page")
     public Altolentsorgung_page clickAltolentsorgung() {
-        $(By.xpath("//*[@class='footer__links']/div[2]/ul/li[4]/a")).click();
+        altolentsorgungLink().click();
         return page(Altolentsorgung_page.class);
     }
 
+    @Step("Click AGB link in the footer. Main_page")
     public Agb_static_page_Logic clickAgb() {
-        $(By.xpath("//*[@class='footer__links']/div[2]/ul/li[5]/a")).click();
+        agbLink().click();
         return page(Agb_static_page_Logic.class);
     }
 
+    @Step("Click PLUS-AGB link in the footer. Main_page")
+    public Agb_plus_static_page_Logic clickAgbPlus() {
+        agb_plusLink().click();
+        return page(Agb_plus_static_page_Logic.class);
+    }
+
+    @Step("Click Widerruf link in the footer. Main_page")
     public Widerruf_static_page_Logic clickWiderruf() {
-        $(By.xpath("//*[@class='footer__links']/div[2]/ul/li[7]/a")).click();
+        widerrufLink().click();
         return page(Widerruf_static_page_Logic.class);
     }
 
+    @Step("Click Datenschutz link in the footer. Main_page")
     public Datenschutz_page_Logic clickDatenschutz() {
-        $(By.xpath("//*[@class='footer__links']/div[2]/ul/li[8]/a")).click();
+        datenschutzLink().click();
         return page(Datenschutz_page_Logic.class);
     }
 
     //KUNDENSERVICE
+
+    @Step("Click Zahlung link in the footer. Main_page")
     public Zahlung_static_page_Logic clickZahlung() {
-        $(By.xpath("//*[@class='footer__links']/div[3]/ul/li[1]/a")).click();
+        zahlungLink().click();
         return page(Zahlung_static_page_Logic.class);
     }
 
+    @Step("Click Versand link in the footer. Main_page")
     public Versand_static_page_Logic clickVersand() {
-        $(By.xpath("//*[@class='footer__links']/div[3]/ul/li[2]/a")).click();
+        versandLink().click();
         return page(Versand_static_page_Logic.class);
     }
 
+    @Step("Click Contact link in the footer. Main_page")
     public Contact_static_page_Logic clickContact() {
-        $(By.xpath("//*[@class='footer__links']/div[3]/ul/li[3]/a")).click();
+        contactLink().click();
         return page(Contact_static_page_Logic.class);
     }
 
+    @Step("Click Retouren link in the footer. Main_page")
     public Retouren_page clickRetouren() {
-        $(By.xpath("//*[@class='footer__links']/div[3]/ul/li[4]/a")).click();
+        retourenLink().click();
         return page(Retouren_page.class);
     }
 
+    @Step("Click Austauschartikel link in the footer. Main_page")
     public Austauschartikel_static_page_Logic clickAustauschartikel() {
-        $(By.xpath("//*[@class='footer__links']/div[3]/ul/li[5]/a")).click();
+        austauschartikelLink().click();
         return page(Austauschartikel_static_page_Logic.class);
     }
 
     //TOP PRODUKTE
 
+    @Step("Click Beleuchtung link in the footer. Main_page")
     public Beleuchtung_page clickBeleuchtung() {
-        $(By.xpath("//*[@class='footer__links']/div[4]/ul/li[1]/a")).click();
+        beleuchtungLink().click();
         return page(Beleuchtung_page.class);
     }
 
+    @Step("Click Stobdampfer link in the footer. Main_page")
     public Stobdampfer_page clickStobdampfer() {
-        $(By.xpath("//*[@class='footer__links']/div[4]/ul/li[2]/a")).click();
+        stobdampferLink().click();
         return page(Stobdampfer_page.class);
     }
 
+    @Step("Click Querlenker link in the footer. Main_page")
     public Querlenker_page clickQuerlenker() {
-        $(By.xpath("//*[@class='footer__links']/div[4]/ul/li[3]/a")).click();
+        querlenkerLink().click();
         return page(Querlenker_page.class);
     }
 
+    @Step("Click Radlager link in the footer. Main_page")
     public Radlager_page clickRadlager() {
-        $(By.xpath("//*[@class='footer__links']/div[4]/ul/li[4]/a")).click();
+        radlagerLink().click();
         return page(Radlager_page.class);
     }
 
+    @Step("Click Kupplungssatz link in the footer. Main_page")
     public Kupplungssatz_page clickKupplungssatz() {
-        $(By.xpath("//*[@class='footer__links']/div[4]/ul/li[5]/a")).click();
+        kupplungssatzLink().click();
         return page(Kupplungssatz_page.class);
     }
 
+    @Step("Click Autopflege link in the footer. Main_page")
     public Autopflege_page clickAutopflege() {
-        $(By.xpath("//*[@class='footer__links']/div[4]/ul/li[6]/a")).click();
+        autopflegeLink().click();
         return page(Autopflege_page.class);
     }
 
-    public Ersatzteile_page clickSucheNachAutomodelle() {
-        $(By.xpath("//*[@class='footer__links']/div[4]/ul/li[7]/a")).click();
+    @Step("Click Nach Hersteller Einkaufen link in the footer. Main_page")
+    public Ersatzteile_page clickNachHerstellerEinkaufen() {
+        sucheNachAutomodelleLink().click();
         return page(Ersatzteile_page.class);
     }
 
-    public ErsatzteileModels_page clickNachHerstellerEinkaufen() {
-        $(By.xpath("//*[@class='footer__links']/div[4]/ul/li[8]/a")).click();
+    @Step("Click Nach Modell Einkaufen link in the footer. Main_page")
+    public ErsatzteileModels_page clickNachModellEinkaufen() {
+        nachHerstellerEinkaufenLink().click();
         return page(ErsatzteileModels_page.class);
     }
 
-    public ErsatzteileCars_page clickNachModellEinkaufen() {
-        $(By.xpath("//*[@class='footer__links']/div[4]/ul/li[9]/a")).click();
+    @Step("Click Suche Nach Automodelle link in the footer. Main_page")
+    public ErsatzteileCars_page clickSucheNachAutomodelle() {
+        nachModellEinkaufenLink().click();
         return page(ErsatzteileCars_page.class);
+    }
+
+    @Step("Click Autoteile Hersteller link in the footer. Main_page")
+    public AutoteileHersteller_page_Logic clickAutoteileHersteller(){
+        autoteileHerstellerLink().click();
+        return page(AutoteileHersteller_page_Logic.class);
     }
 
 
@@ -536,6 +598,7 @@ public class Main_page_Logic extends Main_page {
         CommonMethods commonMethods = new CommonMethods();
         DataBase db = new DataBase();
         footerForm().scrollTo();
+        //ÜBER AUTODOC
         clickAboutUs();
         commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "staticAboutUs"));
         clickImpressum();
@@ -544,14 +607,15 @@ public class Main_page_Logic extends Main_page {
         commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "vacancies"));
         clickBonusprogramm();
         commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "bonus_system"));
-//      clickSponsorship();
-//      commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "staticSponsorship"));
         clickPartnership();
         commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "staticPartnership"));
         clickPresse();
         commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "staticPresse"));
         clickMobileApp();
         commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "staticMobileApp"));
+        clickAutodocPlus();
+        commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "service_packages"));
+        //HILFE & SUPPORT
         clickAutodocClub();
         commonMethods.checkingUrlAndCloseTab(db.getRouteByRouteName(getCurrentShopFromJSVarInHTML(), "club_main") + "/?_ga=");
         clickBlog();
@@ -562,10 +626,13 @@ public class Main_page_Logic extends Main_page {
         commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "staticAltolentsorgung"));
         clickAgb();
         commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "staticAgb"));
+        clickAgbPlus();
+        commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "staticAgdPlus"));
         clickWiderruf();
         commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "staticWiderruf"));
         clickDatenschutz();
         commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "staticDatenschutz"));
+        //KUNDENSERVICE
         clickZahlung();
         commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "staticZahlung"));
         clickVersand();
@@ -576,6 +643,7 @@ public class Main_page_Logic extends Main_page {
         commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "return_return"));
         clickAustauschartikel();
         commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "staticAustauschartikel"));
+        //TOP PRODUKTE
         clickBeleuchtung();
         commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "category_name_parent2"));
         clickStobdampfer();
@@ -588,12 +656,14 @@ public class Main_page_Logic extends Main_page {
         commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "category_name5"));
         clickAutopflege();
         commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "index_chemicals"));
-        clickSucheNachAutomodelle();
-        commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "makers"));
         clickNachHerstellerEinkaufen();
-        commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "hub_groups"));
+        commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "makers"));
         clickNachModellEinkaufen();
+        commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "hub_groups"));
+        clickSucheNachAutomodelle();
         commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "hub_models"));
+        clickAutoteileHersteller();
+        commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "autoteileHersteller"));
         return this;
     }
 
@@ -684,6 +754,182 @@ public class Main_page_Logic extends Main_page {
         footerForm().scrollTo();
         datenschutzLinkInSubscribeBlock().click();
         new CommonMethods().checkingUrlAndCloseTab(route + "/" + new DataBase().getRouteByRouteName(getShopFromRoute(route), "staticDatenschutz"));
+        return this;
+    }
+
+    @Step("Check successfully Car main page loading. Main_page")
+    public Main_page_Logic checkSuccessfullyMainPageLoading() {
+        menuCatalogInHeader().shouldBe(visible);
+        Assert.assertTrue(url().contains("https://www.autodoc.de/"));
+        return this;
+    }
+
+    @Step("Checking that selector is empty. Main_page")
+    public Main_page_Logic checkOfEmptyOfVerticalSelector() {
+        brandSelectorInVerticalCarSelector().shouldHave(exactValue("0"));
+        modelSelectorInVerticalCarSelector().shouldHave(exactValue("0"));
+        modelSelectorInVerticalCarSelector().shouldHave(exactValue("0"));
+        return this;
+    }
+
+    @Step("Select child category on main page. Main_page")
+    public Category_name_page_Logic selectChildCategory(String childCategory) {
+        tecDocCatalogMainPage().scrollTo();
+        childCategoryOnMainPage(childCategory).click();
+        return page(Category_name_page_Logic.class);
+    }
+
+    @Step("Checks for a discount block. Main_page")
+    public Main_page_Logic checkDiscountBlock() {
+        discountBox().shouldBe(visible);
+        discountBoxClock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checks the header block and elements inside it. Main_page")
+    public Main_page_Logic checkHeaderTopBlock() {
+        headerTop().shouldBe(visible);
+        logoInHeader().shouldBe(visible);
+        headerGarageIcon().shouldBe(visible);
+        headerLinkPrivacyPolicy().shouldBe(visible);
+        loginBtnInHeader().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checks the transition to the main page through the logo in the Header. Main_page")
+    public Main_page_Logic checkTransitionToMainPageThroughTheLogoInHeader() {
+        logoInHeader().shouldHave(not(attribute("href")));
+        clickVersand();
+        logoInHeader().shouldHave(attribute("href")).click();
+        logoInHeader().shouldHave(not(attribute("href")));
+        return this;
+    }
+
+    @Step("Checks the appearance of login pop-up after clicking on the login button in the Header. Main_page")
+    public Main_page_Logic checkAppearanceOfLoginPopUpAfterClickingOnLoginButtonInHeader() {
+        loginBtnInHeader().click();
+        loginBtnInPopUp().shouldBe(visible);
+        closeBtnOfLoginPopup().click();
+        loginBtnInPopUp().shouldBe(not(visible));
+        return this;
+    }
+
+    @Step("Checks the transition on the privacy-policy link in the Header. Main_page")
+    public Main_page_Logic checkTransitionOnPrivacyPolicyLinkInHeader() {
+        headerLinkPrivacyPolicy().click();
+        new Datenschutz_page().mainBlock().shouldBe(visible);
+        logoInHeader().click();
+        return this;
+    }
+
+    @Step("Checks the appearance of pop-up when you hover over the image of the garage in the Header. Main_page")
+    public Main_page_Logic checkAppearanceOfPopUpWhenHoverOverImageOfGarageInHeader() {
+        headerGarageIcon().hover();
+        headerGarageTooltip().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checks catalog menu in the Header. Main_page")
+    public Main_page_Logic checkCatalogMenuInHeader() {
+        menuCatalogInHeader().hover();
+        listCategoriesOfCatalog().shouldBe(not(visible));
+        menuCatalogInHeader().click();
+        listCategoriesOfCatalog().shouldBe(visible);
+        logoInHeader().hover();
+        listCategoriesOfCatalog().shouldBe(not(visible));
+        menuCatalogInHeader().hover();
+        listCategoriesOfCatalog().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checks pop-up block with hints when clicking on a search in Header. Main_page")
+    public Main_page_Logic checkPopUpBlockWithHintsWhenClickingOnSearch() {
+        searchBar().click();
+        tooltipToSearch().shouldBe(visible);
+        logoInHeader().click();
+        tooltipToSearch().shouldBe(not(visible));
+        return this;
+    }
+
+    @Step("Checks info popup for search in header. Main_page")
+    public Main_page_Logic checkInfoPopUpForSearch() {
+        infoIconForSearch().click();
+        infoPopupForSearch().shouldBe(visible);
+        infoPopupForSearch().click();
+        infoPopupForSearch().shouldBe(not(visible));
+        return this;
+    }
+
+    @Step("Check presence of categories in the header. Main_page")
+    public Main_page_Logic checkPresenceCategoriesInHeader() {
+        LkwCategory().shouldBe(visible);
+        motoCategory().shouldBe(visible);
+        tiresCategory().shouldBe(visible);
+        instrumentsCategory().shouldBe(visible);
+        accessoriesCategory().shouldBe(visible);
+        engineOilCategory().shouldBe(visible);
+        filtersCategory().shouldBe(visible);
+        brakeSystemCategory().shouldBe(visible);
+        engineCategory().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checks navigate categories in Header_nav block. Main_page")
+    public Main_page_Logic checkNavigateCategoriesInHeaderNavBlock() throws SQLException {
+        DataBase db = new DataBase();
+        String shop = getCurrentShopFromJSVarInHTML();
+        clickLkwCategory();
+        checkingContainsUrl(db.getRouteByRouteName(shop, "lkw_main"));
+        clickMotoCategory();
+        checkingContainsUrl(db.getRouteByRouteName(shop, "moto_main"));
+        clickTiresCategory();
+        checkingContainsUrl(db.getRouteByRouteName(shop, "tyres"));
+        clickInstrumentsCategory();
+        checkingContainsUrl(db.getRouteByRouteName(shop, "index_instruments"));
+        clickAccessoriesCategory();
+        checkingContainsUrl(db.getRouteByRouteName(shop, "index_accessories"));
+        clickEngineOilCategory();
+        checkingContainsUrl(db.getRouteByRouteName(shop, "engine_oil"));
+        clickFiltersCategory();
+        checkingContainsUrl(db.getRouteByRouteName(shop, "filters"));
+        clickBrakeSystemCategory();
+        checkingContainsUrl(db.getRouteByRouteName(shop, "brake_system"));
+        clickEngineCategory();
+        checkingContainsUrl(db.getRouteByRouteName(shop, "engine"));
+        return this;
+    }
+
+    @Step("Checks registration from login button in header. Main_page")
+    public Main_page_Logic registrationFromLoginButton(String mail) {
+        Profile_page profile_page = new Profile_page();
+        loginBtnInHeader().click();
+        registrationButtonInLoginPopup().click();
+        String firstName = firstNameRandom();
+        fillRequiredFieldsForRegistration(firstName, secondNameRandom(), mail, false);
+        fillPasswordFieldsAndClickRegistration();
+        profile_page.nameOfClient().shouldHave(Condition.text(firstName));
+        return this;
+    }
+
+    @Step("Logs out of the account and logs in as a previously registered user. Main_page")
+    public Main_page_Logic logOuAndLoginWithUser(String mail) {
+        logoutButton().click();
+        loginBtnInHeader().click();
+        emailInputInLoginPopup().setValue(mail);
+        passwordInputInLoginPopup().setValue(password);
+        loginBtnInPopUp().click();
+        logoutButton().shouldBe(Condition.visible);
+        return this;
+    }
+
+    @Step("Password Recovery Request. Main_page")
+    public Main_page_Logic passwordRecoveryRequest(String mail) {
+        loginBtnInHeader().click();
+        forgotPasswordLink().click();
+        emailFieldInPasswordRecoveryPopUp().setValue(mail);
+        sendBtnInPasswordRecoveryPopUp().click();
+        closePopupMessageSentForChangePassword().click();
+        closePopupMessageSentForChangePassword().shouldBe(not(visible));
         return this;
     }
 }

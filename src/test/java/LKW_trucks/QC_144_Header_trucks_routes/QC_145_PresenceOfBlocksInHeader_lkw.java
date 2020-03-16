@@ -12,6 +12,7 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
+import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
@@ -24,7 +25,7 @@ public class QC_145_PresenceOfBlocksInHeader_lkw {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main","lkw_main");
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_main");
     }
 
     @Test(dataProvider = "routes")
@@ -32,7 +33,7 @@ public class QC_145_PresenceOfBlocksInHeader_lkw {
     @Owner(value = "Kolesnik")
     @Description(value = "Test checks elements on main page LKW")
     public void testChecksElementsOnMainPageLKW(String route) {
-        open(route);
+        openPage(route);
         new LKW_main_page_Logic()
                 .checkPagesIsSuccessfulyLoaded()
                 .checkingOfVisibilityOfLogoInHeader()
@@ -44,5 +45,5 @@ public class QC_145_PresenceOfBlocksInHeader_lkw {
     private void tearDown() {
         close();
     }
-    }
+}
 
