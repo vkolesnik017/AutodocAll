@@ -5,6 +5,7 @@ import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -13,6 +14,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Selenide.close;
 
 public class QC_203_Separation_of_LKW_selector_session_from_car {
     @BeforeClass
@@ -39,5 +41,9 @@ public class QC_203_Separation_of_LKW_selector_session_from_car {
                 .selectChildCategory("Ölfilter")
                 .checkSuccessfullyChildCategoryLoadingFromMainPage();
 
+    }
+    @AfterMethod
+    private void tearDown() {
+        close();
     }
 }

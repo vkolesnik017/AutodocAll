@@ -7,6 +7,7 @@ import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -15,6 +16,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
 public class QC_153_NavigationBlockInHeader_lkw {
@@ -55,5 +57,9 @@ public class QC_153_NavigationBlockInHeader_lkw {
         checkingContainsUrl(db.getRouteByRouteName(shop, "brake_system"));
         mainPage.clickEngineCategory();
         checkingContainsUrl(db.getRouteByRouteName(shop, "engine"));
+    }
+    @AfterMethod
+    private void tearDown() {
+        close();
     }
 }

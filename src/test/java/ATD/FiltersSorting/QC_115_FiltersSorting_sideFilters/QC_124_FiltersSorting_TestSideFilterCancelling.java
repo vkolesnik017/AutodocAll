@@ -2,13 +2,13 @@ package ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters;
 
 
 import ATD.DataBase;
-import ATD.Listing_page;
 import ATD.Listing_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -49,7 +49,6 @@ public class QC_124_FiltersSorting_TestSideFilterCancelling {
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         int numberOfAttributesNoFilter = listingPage.langeProductAttributeTecdocRoute().size();
         Assert.assertNotEquals(numberOfAttributesFilter, numberOfAttributesNoFilter);
-        close();
     }
 
     @Test
@@ -67,7 +66,6 @@ public class QC_124_FiltersSorting_TestSideFilterCancelling {
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         int numberOfAttributesNoFilter = listingPage.hoheProductAttributeTecdocRoute().size();
         Assert.assertNotEquals(numberOfAttributesFilter, numberOfAttributesNoFilter);
-        close();
     }
 
     @Test
@@ -85,7 +83,6 @@ public class QC_124_FiltersSorting_TestSideFilterCancelling {
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         int numberOfAttributesNoFilter = listingPage.langeProductAttributeTecdocRoute().size();
         Assert.assertNotEquals(numberOfAttributesFilter, numberOfAttributesNoFilter);
-        close();
     }
 
     @Test
@@ -103,6 +100,10 @@ public class QC_124_FiltersSorting_TestSideFilterCancelling {
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         int numberOfAttributesNoFilter = listingPage.durchmesserProductAttributeTecdocRoute().size();
         Assert.assertNotEquals(numberOfAttributesFilter, numberOfAttributesNoFilter);
+    }
+
+    @AfterMethod
+    private void teatDown() {
         close();
     }
 }

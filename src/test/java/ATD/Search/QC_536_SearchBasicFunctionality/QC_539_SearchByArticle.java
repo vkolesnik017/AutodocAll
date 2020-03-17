@@ -7,6 +7,7 @@ import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -15,6 +16,7 @@ import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.have;
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
 public class QC_539_SearchByArticle {
@@ -40,5 +42,8 @@ public class QC_539_SearchByArticle {
     new Main_page_Logic().useSearch(articleForSearch);
     new Listing_page().productTitleInListMode().filter(have(text(articleForSearch))).shouldHave(sizeNotEqual(0));
   }
-
+  @AfterMethod
+  private void tearDown() {
+    close();
+  }
 }

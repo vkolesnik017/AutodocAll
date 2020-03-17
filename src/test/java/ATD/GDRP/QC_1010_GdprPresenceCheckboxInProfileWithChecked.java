@@ -5,12 +5,14 @@ import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Selenide.close;
 
 public class QC_1010_GdprPresenceCheckboxInProfileWithChecked {
 
@@ -38,5 +40,10 @@ public class QC_1010_GdprPresenceCheckboxInProfileWithChecked {
                 .checkingAutodocPlusActive().clickSetting().checkingCheckedCheckbox().logOut()
                 .loginFromHeader(mail)
                 .checkingAutodocPlusActive().clickSetting().checkingCheckedCheckbox().clickCheckboxInSetting().checkingPopupAfterClickCheckbox().checkingUncheckedCheckbox();
+    }
+
+    @AfterMethod
+    private void teatDown() {
+        close();
     }
 }

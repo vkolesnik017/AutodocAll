@@ -5,12 +5,14 @@ import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.matchText;
+import static com.codeborne.selenide.Selenide.close;
 
 public class QC_529_PresenceRecoveryCharacteristicsInBasket {
 
@@ -34,5 +36,10 @@ public class QC_529_PresenceRecoveryCharacteristicsInBasket {
             .closePopupOtherCategoryIfYes()
             .cartClick()
             .getCharacteristicsOfProduct().filter(matchText("Zustand:\\nWiederaufbereitet")).shouldHaveSize(1);
+  }
+
+  @AfterMethod
+  private void teatDown() {
+    close();
   }
 }

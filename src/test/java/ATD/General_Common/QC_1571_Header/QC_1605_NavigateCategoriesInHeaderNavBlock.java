@@ -5,10 +5,7 @@ import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.sql.SQLException;
 import static ATD.CommonMethods.openPage;
@@ -38,7 +35,7 @@ public class QC_1605_NavigateCategoriesInHeaderNavBlock {
         new Main_page_Logic().checkNavigateCategoriesInHeaderNavBlock();
     }
 
-    @AfterTest
+    @AfterMethod
     private void teatDown() {
         close();
     }

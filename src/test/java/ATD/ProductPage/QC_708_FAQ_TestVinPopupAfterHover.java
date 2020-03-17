@@ -6,6 +6,7 @@ import ATD.Product_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import java.sql.SQLException;
@@ -28,6 +29,10 @@ public class QC_708_FAQ_TestVinPopupAfterHover {
         closeCookiesFooterMessage();
         product_page_logic.vinInfo().hover();
         product_page_logic.vinInfoDropdown().shouldBe(visible);
+    }
+
+    @AfterMethod
+    private void tearDown() {
         close();
     }
 }

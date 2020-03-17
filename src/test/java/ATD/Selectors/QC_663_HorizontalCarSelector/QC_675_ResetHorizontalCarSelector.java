@@ -6,6 +6,7 @@ import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -14,6 +15,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.usualIdProduct;
 import static ATD.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 import static org.testng.Assert.assertEquals;
 
@@ -44,5 +46,8 @@ public class QC_675_ResetHorizontalCarSelector {
     assertEquals(product_page_logic.modelSelector().getSelectedText(), "Modell wählen");
     assertEquals(product_page_logic.typeSelector().getSelectedText(), "Motor (Typ) wählen");
   }
-
+  @AfterMethod
+  private void tearDown() {
+    close();
+  }
 }

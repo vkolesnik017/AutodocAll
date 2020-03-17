@@ -6,6 +6,7 @@ import ATD.Listing_page;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -36,6 +37,10 @@ public class QC_228_FiltersSorting_TestOutputSortingOvercategoryRoute {
             listingPage.grayButton().shouldNot(exist);
             listingPage.nextPageButton().click();
         } while (listingPage.nextPageButton().is(visible));
+    }
+
+    @AfterMethod
+    private void teatDown() {
         close();
     }
 }

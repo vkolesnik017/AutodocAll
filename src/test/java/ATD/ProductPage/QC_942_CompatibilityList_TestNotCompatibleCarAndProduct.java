@@ -6,6 +6,7 @@ import ATD.Product_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -38,6 +39,9 @@ public class QC_942_CompatibilityList_TestNotCompatibleCarAndProduct {
         product_page_logic.selectorSearchBtn().click();
         product_page_logic.checkTextIsVisibleOnPage("Es tut uns leid!");
         product_page_logic.checkTextIsVisibleOnPage("Kfz-Ersatzteile für VW 166 SUV Cabrio 1.1 Benzin (24 PS, Bj ab 1942)");
+    }
+    @AfterMethod
+    private void tearDown() {
         close();
     }
 }
