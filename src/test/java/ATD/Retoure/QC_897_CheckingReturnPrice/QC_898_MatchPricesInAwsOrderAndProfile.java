@@ -66,10 +66,12 @@ public class QC_898_MatchPricesInAwsOrderAndProfile {
         assertEquals(productPriceInAwsOrder, productPriceOnRetourenPage);
     }
 
-//    @AfterMethod
-//    public void setStatusTestToOrder() {
-//        new Order_aws(orderNumber).setStatusOrderToTestbestellungen();
-//        close();
-//    }
+
+@AfterMethod
+public void setStatusTestToOrder() {
+new Order_aws(orderNumber).setStatusOrderToTestbestellungen();
+close();
+}
+
 
 }
