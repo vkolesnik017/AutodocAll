@@ -15,7 +15,7 @@ public class ProductCard_aws {
 
 
     @Step
-    public ProductCard_aws openProductSearchPageAndLogin() {
+    public ProductCard_aws openProductCardPageAndLogin() {
         open(url);
         new Login_aws().loginInAws();
         return this;
