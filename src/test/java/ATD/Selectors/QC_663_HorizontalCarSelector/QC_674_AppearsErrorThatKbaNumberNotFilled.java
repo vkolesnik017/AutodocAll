@@ -5,6 +5,7 @@ import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -12,6 +13,7 @@ import org.testng.annotations.Test;
 import static ATD.CommonMethods.usualIdProduct;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selenide.close;
 
 public class QC_674_AppearsErrorThatKbaNumberNotFilled {
 
@@ -37,5 +39,8 @@ public class QC_674_AppearsErrorThatKbaNumberNotFilled {
     product_page_logic.errorToolTipOfKbaSelector().shouldHave(
             text("Geben Sie bitte eine Schlüsselnummer ein, um nach einem Wagen zu suchen"));
   }
-
+  @AfterMethod
+  private void tearDown() {
+    close();
+  }
 }

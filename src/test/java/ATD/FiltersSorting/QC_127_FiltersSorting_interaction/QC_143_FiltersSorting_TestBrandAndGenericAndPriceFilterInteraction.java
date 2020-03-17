@@ -7,6 +7,7 @@ import ATD.Listing_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -43,6 +44,11 @@ public class QC_143_FiltersSorting_TestBrandAndGenericAndPriceFilterInteraction 
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.checkProductTitleOnListing(brandName, true, listingPage.productTitleInListMode());
         listingPage.checkProductTitleOnListing(genericName, true, listingPage.productTitleInListMode());
+        close();
+    }
+
+    @AfterMethod
+    private void teatDown() {
         close();
     }
 }

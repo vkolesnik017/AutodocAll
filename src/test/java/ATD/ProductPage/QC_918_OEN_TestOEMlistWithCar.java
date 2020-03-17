@@ -6,6 +6,7 @@ import ATD.Product_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -32,6 +33,9 @@ public class QC_918_OEN_TestOEMlistWithCar {
         openPage("https://autodoc.de/" +  dataBase.getRouteByRouteName("DE", "category_car_list17"));
         product_page_logic.productOnListing().click();
         product_page_logic.boldOenText().shouldBe(visible);
+    }
+    @AfterMethod
+    private void tearDown() {
         close();
     }
 }

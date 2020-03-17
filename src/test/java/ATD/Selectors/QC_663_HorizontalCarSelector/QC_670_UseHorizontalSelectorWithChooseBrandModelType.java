@@ -5,12 +5,14 @@ import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selenide.close;
 
 public class QC_670_UseHorizontalSelectorWithChooseBrandModelType {
 
@@ -37,5 +39,8 @@ public class QC_670_UseHorizontalSelectorWithChooseBrandModelType {
             .infoBlockWithSelectedCar().waitUntil(
             text("Dieses Produkt passt zu Ihrem CITROЁN AX 1.4 Allure"), 20000);
   }
-
+  @AfterMethod
+  private void tearDown() {
+    close();
+  }
 }

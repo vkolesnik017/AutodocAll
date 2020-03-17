@@ -11,6 +11,7 @@ import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
 import mailinator.Mailinator;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -60,6 +61,10 @@ public class QC_777_Reviews_TestReviewsFormWithValidData {
         open("https://aws.autodoc.de/reviews");
         reviewsAws.searchTextOnPage(randomEmail).shouldBe(visible);
         reviewsAws.searchTextOnPage(reviewMessage).shouldBe(visible);
+    }
+
+    @AfterMethod
+    private void tearDown() {
         close();
     }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="testSuite" data-provider-thread-count="1">
+<suite name="testSuite">
 
     <listeners>
         <listener class-name="ATD.ProjectListener"/>
@@ -8,7 +8,7 @@
 
     <test name="testSuite" >
         <classes>
-            <class name="ATD.test">
+            <class name="ATD.ForTest">
             </class>
         </classes>
     </test>

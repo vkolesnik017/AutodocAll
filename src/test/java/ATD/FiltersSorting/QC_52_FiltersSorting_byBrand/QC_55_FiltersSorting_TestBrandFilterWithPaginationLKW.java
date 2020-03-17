@@ -8,6 +8,7 @@ import ATD.Main_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -41,6 +42,10 @@ public class QC_55_FiltersSorting_TestBrandFilterWithPaginationLKW {
         String brandName6 = listingPage.sixthBrandNameInFilter().attr("alt").split(" ")[0];
         listingPage.secondListingPage().click();
         listingPage.checkProductTitleOnListingWithSixExpectedTexts(brandName1, brandName2, brandName3, brandName4, brandName5, brandName6, true, listingPage.productTitleInListMode());
+    }
+
+    @AfterMethod
+    private void teatDown() {
         close();
     }
 }

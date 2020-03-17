@@ -5,6 +5,7 @@ import ATD.*;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -47,7 +48,6 @@ public class QC_53_FiltersSorting_TestBrandFilterInTileMode {
         String brand1 = listingPage.firstBrandNameInFiler().attr("alt");
         listingPage.showListingInTileModeButton().click();
         listingPage.checkProductTitleOnListing(brand1, true, listingPage.productTitleInTileMode());
-        close();
     }
 
     @Test(dataProvider = "routesLKW")
@@ -62,6 +62,9 @@ public class QC_53_FiltersSorting_TestBrandFilterInTileMode {
         String brand1 = listingPage.firstBrandNameInFiler().attr("alt");
         listingPage.showListingInTileModeButton().click();
         listingPage.checkProductTitleOnListing(brand1, true, listingPage.productTitleInTileMode());
+    }
+    @AfterMethod
+    private void teatDown() {
         close();
     }
 }

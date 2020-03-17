@@ -2,7 +2,6 @@ package ATD.FiltersSorting.QC_127_FiltersSorting_interaction;
 
 
 import ATD.DataBase;
-import ATD.Listing_page;
 import ATD.Listing_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;

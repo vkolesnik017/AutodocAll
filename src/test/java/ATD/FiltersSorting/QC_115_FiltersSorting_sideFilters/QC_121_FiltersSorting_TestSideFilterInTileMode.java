@@ -2,12 +2,12 @@ package ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters;
 
 
 import ATD.DataBase;
-import ATD.Listing_page;
 import ATD.Listing_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -45,7 +45,6 @@ public class QC_121_FiltersSorting_TestSideFilterInTileMode {
         listingPage.showListingInTileModeButton().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.checkProductAttributeOnListingInTileMode(characteristic, listingPage.langeProductAttributeTecdocRoute());
-        close();
     }
 
     @Test
@@ -53,13 +52,17 @@ public class QC_121_FiltersSorting_TestSideFilterInTileMode {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks side filter in tile mode LKW")
     public void testSideFilterInTileModeLKW() throws SQLException {
-        openPage("https://lkwteile.autodoc.de/" +  dataBase.getRouteByRouteName("DE", "lkw_category_car_list"));
+        openPage("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_category_car_list"));
         String characteristic = listingPage.langeFilterCheckboxLKW().text();
         listingPage.langeFilterCheckboxLKW().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.showListingInTileModeButton().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.checkProductAttributeOnListingInTileMode(characteristic, listingPage.langeProductAttributeTecdocRouteLKW());
+    }
+
+    @AfterMethod
+    private void teatDown() {
         close();
     }
 }

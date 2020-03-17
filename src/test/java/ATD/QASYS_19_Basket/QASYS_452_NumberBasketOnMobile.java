@@ -6,11 +6,13 @@ import com.codeborne.selenide.Condition;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static ATD.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
 public class QASYS_452_NumberBasketOnMobile {
@@ -32,5 +34,10 @@ public class QASYS_452_NumberBasketOnMobile {
   public void checkNumberBasketOnMobile(String route) {
     open(route);
     new Main_page_mob().numberBasket().shouldBe(Condition.visible);
+  }
+
+  @AfterMethod
+  private void tearDown() {
+    close();
   }
 }

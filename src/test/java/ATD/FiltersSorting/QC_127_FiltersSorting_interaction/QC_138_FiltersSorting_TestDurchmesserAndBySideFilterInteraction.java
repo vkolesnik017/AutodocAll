@@ -2,7 +2,6 @@ package ATD.FiltersSorting.QC_127_FiltersSorting_interaction;
 
 
 import ATD.DataBase;
-import ATD.Listing_page;
 import ATD.Listing_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
@@ -54,7 +53,7 @@ public class QC_138_FiltersSorting_TestDurchmesserAndBySideFilterInteraction {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks Durchmesser and by side filters interaction LKW route")
     public void testDurchmesserAndSideFilterInteractionLKW() throws SQLException {
-        openPage("https://lkwteile.autodoc.de/" +  dataBase.getRouteByRouteName("DE", "lkw_category_car_list9"));
+        openPage("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_category_car_list9"));
         String durchmesserValue = listingPage.durchmesserSideFilterButtonSecondValue().text();
         listingPage.durchmesserSideFilterButtonSecondValue().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
@@ -69,7 +68,7 @@ public class QC_138_FiltersSorting_TestDurchmesserAndBySideFilterInteraction {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks Durchmesser and by side filters interaction LKW route")
     public void testDurchmesserAndSideFilterInteractionLKW2() throws SQLException {
-        openPage("https://lkwteile.autodoc.de/" +  dataBase.getRouteByRouteName("DE", "lkw_category_car_list2"));
+        openPage("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_category_car_list2"));
         String durchmesserValue = listingPage.durchmesserSideFilterButton().text();
         listingPage.durchmesserSideFilterButton().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));

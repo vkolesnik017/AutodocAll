@@ -7,6 +7,7 @@ import ATD.Listing_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -37,6 +38,10 @@ public class QC_54_FiltersSorting_TestBrandFilterWithPagination {
         String brand1 = listingPage.firstBrandNameInFiler().attr("alt");
         listingPage.secondListingPage().click();
         listingPage.checkProductTitleOnListing(brand1, true, listingPage.productTitleInListMode());
+    }
+
+    @AfterMethod
+    private void teatDown() {
         close();
     }
 }

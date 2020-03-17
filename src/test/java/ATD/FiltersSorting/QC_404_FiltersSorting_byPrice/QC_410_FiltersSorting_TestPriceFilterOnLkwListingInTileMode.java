@@ -5,6 +5,7 @@ import ATD.*;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -44,6 +45,10 @@ public class QC_410_FiltersSorting_TestPriceFilterOnLkwListingInTileMode {
         listingPage.minPriceMapping().shouldHave(text("20"));
         listingPage.maxPriceMapping().shouldHave(text("30"));
         listingPage.checkPricesRange(17.00f, 33.00f, listingPage.priceOfAllProductsOnPageInTile());
+    }
+
+    @AfterMethod
+    private void teatDown() {
         close();
     }
 }

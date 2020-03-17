@@ -7,6 +7,7 @@ import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -59,7 +60,6 @@ public class QC_56_FiltersSorting_TestBrandFilterReset {
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.checkProductTitleOnListing(brand1, false, listingPage.productTitleInListMode());
         listingPage.checkUniqueBrandsOnListing(2, listingPage.productTitleInListMode());
-        close();
     }
 
     @Test(dataProvider = "routesLKW")
@@ -74,7 +74,6 @@ public class QC_56_FiltersSorting_TestBrandFilterReset {
         listingPage.firstBrandInFilterButton().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.checkUniqueBrandsOnListing(2, listingPage.productTitleInListMode());
-        close();
     }
 
     @Test(dataProvider = "routeAcc")
@@ -88,7 +87,6 @@ public class QC_56_FiltersSorting_TestBrandFilterReset {
         listingPage.firstBrandInFilterButton().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.checkUniqueBrandsOnListing(2, listingPage.productTitleInListMode());
-        close();
     }
 
     @Test(dataProvider = "routeOem")
@@ -102,6 +100,10 @@ public class QC_56_FiltersSorting_TestBrandFilterReset {
         listingPage.firstBrandButtonOemListing().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.checkUniqueBrandsOnListing(2, listingPage.productTitleInListMode());
+    }
+
+    @AfterMethod
+    private void teatDown() {
         close();
     }
 }

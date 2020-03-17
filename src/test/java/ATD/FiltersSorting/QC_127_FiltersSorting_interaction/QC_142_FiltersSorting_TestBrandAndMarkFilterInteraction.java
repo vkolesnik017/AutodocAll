@@ -7,6 +7,7 @@ import ATD.Listing_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -42,6 +43,11 @@ public class QC_142_FiltersSorting_TestBrandAndMarkFilterInteraction {
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.getBrandFromTitle(brandName, 4, true, listingPage.productTitleInListMode());
         listingPage.checkProductCharacteristicOnListingOem(carBrandName, listingPage.carBrandApplicabilityAttribute());
+        close();
+    }
+
+    @AfterMethod
+    private void teatDown() {
         close();
     }
 }

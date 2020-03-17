@@ -5,12 +5,14 @@ import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Selenide.close;
 
 public class QC_1555_ApplicationInstallBanner {
 
@@ -31,5 +33,9 @@ public class QC_1555_ApplicationInstallBanner {
     public void checkingAppLinks(String route) {
         openPage(route);
         new Main_page_Logic().checkApplicationLinks("https://apps.apple.com/US/app/id1014949597?mt=8");
+    }
+    @AfterMethod
+    private void teatDown() {
+        close();
     }
 }
