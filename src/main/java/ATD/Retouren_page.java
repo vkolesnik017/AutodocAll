@@ -71,7 +71,7 @@ public class Retouren_page {
     }
 
     SelenideElement productPriceForReturn() {
-        return $x("//div[contains(@class,'popup-retoure__wrap')]//td[4]");
+        return $x("//div[contains(@class,'popup-retoure__wrap')]");
     }
 
 }
