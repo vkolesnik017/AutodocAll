@@ -56,6 +56,7 @@ public class QC_898_MatchPricesInAwsOrderAndProfile {
             .nextBtnClick()
             .nextBtnClick()
             .getOrderNumber();
+    close();
     Float productPriceInAwsOrder = new Order_aws(orderNumber).openOrderInAwsWithLogin()
             .checkOrderHasTestStatus()
             .setStatusOrderToVersendetVorkasse()
