@@ -8,7 +8,7 @@
 
     <test name="testSuite" >
         <classes>
-            <class name="ATD.GrayButton.test">
+            <class name="ATD.test">
             </class>
         </classes>
     </test>
