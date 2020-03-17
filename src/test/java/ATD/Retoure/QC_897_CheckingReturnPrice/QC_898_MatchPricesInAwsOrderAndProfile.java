@@ -61,16 +61,17 @@ public class QC_898_MatchPricesInAwsOrderAndProfile {
             .setStatusOrderToVersendetVorkasse()
             .addDeliveryConditionGLS()
             .getSellingProductPrice();
+    close();
     open(route + "/" + db.getRouteByRouteName(getShopFromRoute(route), "profile_orders"));
     Float productPriceOnRetourenPage = new Profile_page_Logic().clickBestelldetailsButton(orderNumber)
             .clickReturnOrReplaceItemButton()
             .getProductPriceForReturn();
     assertEquals(productPriceInAwsOrder, productPriceOnRetourenPage);
+    close();
   }
 
   @AfterMethod
   public void setStatusTestToOrder() {
-    close();
     new Order_aws(orderNumber).setStatusOrderToTestbestellungen();
   }
 
