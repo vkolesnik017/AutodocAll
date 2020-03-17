@@ -6,27 +6,27 @@
         <!--<listener class-name="ATD.ProjectListener"/>-->
     <!--</listeners>-->
 
-    <test name="QC_594_CheckingTranslationOfCausesForReturn">
-        <classes>
-            <class name="ATD.Retoure.QC_594_CheckingTranslationOfCausesForReturn.QC_595_TranslationOfCausesInProfile"/>
-            <class name="ATD.Retoure.QC_594_CheckingTranslationOfCausesForReturn.QC_596_TranslationOfCausesOnRetourePage"/>
-        </classes>
-    </test>
+    <!--<test name="QC_594_CheckingTranslationOfCausesForReturn">-->
+        <!--<classes>-->
+            <!--<class name="ATD.Retoure.QC_594_CheckingTranslationOfCausesForReturn.QC_595_TranslationOfCausesInProfile"/>-->
+            <!--<class name="ATD.Retoure.QC_594_CheckingTranslationOfCausesForReturn.QC_596_TranslationOfCausesOnRetourePage"/>-->
+        <!--</classes>-->
+    <!--</test>-->
 
-    <test name="QC_714_CheckingLettersOfReturns">
-        <classes>
-            <class name="ATD.Retoure.QC_714_CheckingLettersOfReturns.QC_715_LetterConfirmationOfReturnFromRetourePage"/>
-            <class name="ATD.Retoure.QC_714_CheckingLettersOfReturns.QC_716_LetterConfirmationOfReturnFromProfile"/>
-            <class name="ATD.Retoure.QC_714_CheckingLettersOfReturns.QC_784_LetterConfirmationOfReturnFromAws"/>
-        </classes>
-    </test>
+    <!--<test name="QC_714_CheckingLettersOfReturns">-->
+        <!--<classes>-->
+            <!--<class name="ATD.Retoure.QC_714_CheckingLettersOfReturns.QC_715_LetterConfirmationOfReturnFromRetourePage"/>-->
+            <!--<class name="ATD.Retoure.QC_714_CheckingLettersOfReturns.QC_716_LetterConfirmationOfReturnFromProfile"/>-->
+            <!--<class name="ATD.Retoure.QC_714_CheckingLettersOfReturns.QC_784_LetterConfirmationOfReturnFromAws"/>-->
+        <!--</classes>-->
+    <!--</test>-->
 
-    <test name="QC_884_CheckingPopupErrorsForReturns">
-        <classes>
-            <class name="ATD.Retoure.QC_884_CheckingPopupErrorsForReturns.QC_888_PopupErrorsInRetourePage"/>
-            <class name="ATD.Retoure.QC_884_CheckingPopupErrorsForReturns.QC_885_PopupErrorsInProfileForReturns"/>
-        </classes>
-    </test>
+    <!--<test name="QC_884_CheckingPopupErrorsForReturns">-->
+        <!--<classes>-->
+            <!--<class name="ATD.Retoure.QC_884_CheckingPopupErrorsForReturns.QC_888_PopupErrorsInRetourePage"/>-->
+            <!--<class name="ATD.Retoure.QC_884_CheckingPopupErrorsForReturns.QC_885_PopupErrorsInProfileForReturns"/>-->
+        <!--</classes>-->
+    <!--</test>-->
 
     <test name="QC_897_CheckingReturnPrice">
         <classes>
@@ -35,10 +35,10 @@
         </classes>
     </test>
 
-    <test name="QC_710_TranslationOfCausesInAws">
-        <classes>
-            <class name="AWS.Retoure.QC_710_TranslationOfCausesInAws"/>
-        </classes>
-    </test>
+    <!--<test name="QC_710_TranslationOfCausesInAws">-->
+        <!--<classes>-->
+            <!--<class name="AWS.Retoure.QC_710_TranslationOfCausesInAws"/>-->
+        <!--</classes>-->
+    <!--</test>-->
 
 </suite>
