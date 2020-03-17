@@ -11,6 +11,7 @@ import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
 import mailinator.Mailinator;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -69,6 +70,9 @@ public class QC_709_FAQ_TestFAQformWithValidData {
         mailinator.openEmail(randomEmail)
                 .openLetter(1);
         faqAws.searchTextOnPage(faqResponse).shouldBe(visible);
+    }
+    @AfterMethod
+    private void tearDown() {
         close();
     }
 }

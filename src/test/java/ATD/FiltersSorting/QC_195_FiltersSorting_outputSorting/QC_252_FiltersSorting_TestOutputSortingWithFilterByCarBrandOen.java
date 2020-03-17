@@ -7,6 +7,7 @@ import ATD.Listing_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -39,6 +40,10 @@ public class QC_252_FiltersSorting_TestOutputSortingWithFilterByCarBrandOen {
             listingPage.checkAddToBasketButtonsSorting();
             listingPage.nextPageButton().click();
         } while (listingPage.nextPageButton().is(visible));
+    }
+
+    @AfterMethod
+    private void teatDown() {
         close();
     }
 }

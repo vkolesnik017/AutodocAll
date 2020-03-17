@@ -5,6 +5,7 @@ import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -37,6 +38,10 @@ public class QC_747_AppearsCarSelectorPopupOnSearchByScrollDown {
     open(route);
     executeJavaScript("window.scrollTo(0, 2000)");
     mainPageLogic.blockWithDropdownsOfChooseCarInCarSelectorPopup().shouldBe(visible);
+    close();
+  }
+  @AfterMethod
+  private void tearDown() {
     close();
   }
 }

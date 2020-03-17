@@ -5,6 +5,7 @@ import ATD.*;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -48,6 +49,10 @@ public class QC_417_FiltersSorting_TestPriceFilterResetLKW {
         float maxFloat = Float.parseFloat(defaultMaxPrice);
         listingPage.checkPricesRange(minFloat, maxFloat, listingPage.priceOfAllProductsOnPageInTile());
         waitingWhileLinkBecomeExpected("https://lkwteile.autodoc.de/ersatzteile/scheibenreinigung-zubehor-200794/mercedes-benz/actros-mp2-mp3?car_id=1007730");
+    }
+
+    @AfterMethod
+    private void teatDown() {
         close();
     }
 }

@@ -6,6 +6,7 @@ import ATD.Product_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -37,6 +38,9 @@ public class QC_921_OEN_TestOEMlistWithoutCar {
         String oenLink = product_page_logic.linkInOemBlock().attr("href");
         product_page_logic.linkInOemBlock().click();
         waitingWhileLinkBecomeExpected(oenLink);
+    }
+    @AfterMethod
+    private void tearDown() {
         close();
     }
 }

@@ -6,6 +6,7 @@ import AWS.PrivacyPolicySubscription_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -14,6 +15,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Selenide.close;
 
 public class QC_269_GdprContacts {
 
@@ -51,6 +53,10 @@ public class QC_269_GdprContacts {
         mail = contact_static_page_logic.switchToOrderTab().checkingDatenschutzerklarungLinkBehavior(contact_static_page_logic.orderDatenschutzerklarungLink())
                 .fillRequiredFieldsOrderAndCheckBehavior("qc_269_");
         new PrivacyPolicySubscription_aws().openPolicySubscriptionWithLogin().checkingPolicyForMail(this.mail);
+    }
+    @AfterMethod
+    private void teatDown() {
+        close();
     }
 }
 

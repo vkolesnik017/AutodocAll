@@ -5,10 +5,7 @@ import AWS.UsersSettings_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.sql.SQLException;
 
@@ -53,9 +50,13 @@ public class QC_710_TranslationOfCausesInAws {
             .checkingTranslateOfCausesForReturn(language);
   }
 
+  @AfterMethod
+  private void tearDown() {
+    close();
+  }
+
   @AfterClass
   public void setStatusTestToOrder() {
     orderAws.setStatusOrderToTestbestellungen();
-    close();
   }
 }

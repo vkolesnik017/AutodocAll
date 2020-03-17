@@ -5,6 +5,7 @@ import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -12,6 +13,7 @@ import org.testng.annotations.Test;
 import static ATD.CommonMethods.openPage;
 import static ATD.CommonMethods.waitWhileRouteBecomeExpected;
 import static ATD.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Selenide.close;
 
 public class QC_424_GoingToRouteCategoryOenFromSearch {
 
@@ -36,6 +38,11 @@ public class QC_424_GoingToRouteCategoryOenFromSearch {
     mainPageLogic.inputTextInSearchBar("1j0615124a")
             .clickTooltipInSearchByExactText("OEN 1J0615124A");
     waitWhileRouteBecomeExpected("category_oen");
+  }
+
+  @AfterMethod
+  private void tearDown() {
+    close();
   }
 
 }

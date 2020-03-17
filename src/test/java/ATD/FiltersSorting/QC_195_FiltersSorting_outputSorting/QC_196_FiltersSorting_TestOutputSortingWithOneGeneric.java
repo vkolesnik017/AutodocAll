@@ -1,12 +1,12 @@
 package ATD.FiltersSorting.QC_195_FiltersSorting_outputSorting;
 
 
-import ATD.Listing_page;
 import ATD.Listing_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -43,6 +43,10 @@ public class QC_196_FiltersSorting_TestOutputSortingWithOneGeneric {
             listingPage.checkAddToBasketButtonsSorting();
             listingPage.nextPageButton().click();
         } while (listingPage.nextPageButton().is(visible));
+    }
+
+    @AfterMethod
+    private void teatDown() {
         close();
     }
 }

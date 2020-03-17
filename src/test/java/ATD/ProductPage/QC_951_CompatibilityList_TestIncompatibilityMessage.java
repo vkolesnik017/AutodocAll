@@ -8,6 +8,7 @@ import com.codeborne.selenide.Condition;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -37,6 +38,9 @@ public class QC_951_CompatibilityList_TestIncompatibilityMessage {
         mainPage.searchButton().click();
         product_page_logic.productOnListing().click();
         product_page_logic.incompatibilityMessage().shouldBe(Condition.visible);
+    }
+    @AfterMethod
+    private void tearDown() {
         close();
     }
 }

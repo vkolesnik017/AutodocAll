@@ -2,7 +2,6 @@ package ATD.FiltersSorting.QC_167_FiltersSorting_bySide;
 
 
 import ATD.DataBase;
-import ATD.Listing_page;
 import ATD.Listing_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
@@ -67,7 +66,7 @@ public class QC_168_TestProductOutputWithFilterBySide {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks filter by side in tile mode")
     public void testFilterBySideInTileModeSearchRoute() throws SQLException {
-        openPage("https://autodoc.de/" +  dataBase.getRouteByRouteName("DE", "search5"));
+        openPage("https://autodoc.de/" + dataBase.getRouteByRouteName("DE", "search5"));
         listingPage.filterBySideLKW().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         int productWithFiler = listingPage.einbauseiteProductAttributeGenericRoute().size();

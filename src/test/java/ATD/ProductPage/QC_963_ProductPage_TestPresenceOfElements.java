@@ -8,6 +8,7 @@ import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -136,6 +137,9 @@ public class QC_963_ProductPage_TestPresenceOfElements {
         product_page_logic.tetleMiniCardBlock().scrollTo();
         product_page_logic.productInMinicard().shouldBe(visible).hover();
         product_page_logic.characteristicsInMinicard().shouldBe(visible);
+    }
+    @AfterMethod
+    private void tearDown() {
         close();
     }
 }

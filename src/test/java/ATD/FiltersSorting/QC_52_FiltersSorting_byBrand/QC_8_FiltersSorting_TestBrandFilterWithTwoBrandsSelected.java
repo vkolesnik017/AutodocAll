@@ -8,6 +8,7 @@ import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -60,7 +61,6 @@ public class QC_8_FiltersSorting_TestBrandFilterWithTwoBrandsSelected {
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         String brand2 = listingPage.firstBrandNameInFiler().attr("alt");
         listingPage.checkProductTitleOnListingWithTwoExpectedTexts(brand1, brand2, true, listingPage.productTitleInListMode());
-        close();
     }
 
     @Test(dataProvider = "routeOem")
@@ -76,7 +76,6 @@ public class QC_8_FiltersSorting_TestBrandFilterWithTwoBrandsSelected {
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         String brand2 = listingPage.firstBrandNameOemListing().attr("alt");
         listingPage.checkProductTitleOnListingWithTwoExpectedTexts(brand1, brand2, true, listingPage.productTitleInListMode());
-        close();
     }
 
     @Test(dataProvider = "routeAcc")
@@ -108,6 +107,9 @@ public class QC_8_FiltersSorting_TestBrandFilterWithTwoBrandsSelected {
         listingPage.secondBrandInFilterButton().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.checkProductTitleOnListingWithTwoExpectedTexts(firstBrand, secondBrand, true, listingPage.productTitleInListMode());
+    }
+    @AfterMethod
+    private void teatDown() {
         close();
     }
 }

@@ -6,6 +6,7 @@ import ATD.Product_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -64,6 +65,10 @@ public class QC_707_FAQ_TestFAQformValidationEmptyFields {
         product_page_logic.validationEmailInputFAQ().shouldBe(visible);
         product_page_logic.validationNameInputFAQ().shouldBe(visible);
         product_page_logic.validationMessageInputFAQ().shouldNotBe(visible);
+    }
+
+    @AfterMethod
+    private void tearDown() {
         close();
     }
 }

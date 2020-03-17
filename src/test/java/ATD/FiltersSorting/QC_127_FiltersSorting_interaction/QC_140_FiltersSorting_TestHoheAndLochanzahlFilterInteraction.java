@@ -2,7 +2,6 @@ package ATD.FiltersSorting.QC_127_FiltersSorting_interaction;
 
 
 import ATD.DataBase;
-import ATD.Listing_page;
 import ATD.Listing_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
@@ -55,7 +54,7 @@ public class QC_140_FiltersSorting_TestHoheAndLochanzahlFilterInteraction {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks Hohe and Lochanzahl filters interaction searchroute")
     public void testHoheAndLochanzahlFilterInteractionSearchRoute() throws SQLException {
-        openPage("https://autodoc.de/" +  dataBase.getRouteByRouteName("DE", "search16"));
+        openPage("https://autodoc.de/" + dataBase.getRouteByRouteName("DE", "search16"));
         String hoheValue = listingPage.hoheFirstSideFilterButton().text();
         listingPage.hoheFirstSideFilterButton().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
