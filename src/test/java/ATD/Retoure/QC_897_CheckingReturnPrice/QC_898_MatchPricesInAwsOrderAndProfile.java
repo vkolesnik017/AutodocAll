@@ -63,7 +63,7 @@ public class QC_898_MatchPricesInAwsOrderAndProfile {
         Float productPriceOnRetourenPage = new Profile_page_Logic().clickBestelldetailsButton(orderNumber)
                 .clickReturnOrReplaceItemButton()
                 .getProductPriceForReturn();
-//        assertEquals(productPriceInAwsOrder, productPriceOnRetourenPage);
+        assertEquals(productPriceInAwsOrder, productPriceOnRetourenPage);
     }
 
     @AfterMethod
