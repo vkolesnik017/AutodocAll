@@ -70,8 +70,8 @@ public class QC_898_MatchPricesInAwsOrderAndProfile {
 
   @AfterMethod
   public void setStatusTestToOrder() {
-    new Order_aws(orderNumber).setStatusOrderToTestbestellungen();
     close();
+    new Order_aws(orderNumber).setStatusOrderToTestbestellungen();
   }
 
 }
