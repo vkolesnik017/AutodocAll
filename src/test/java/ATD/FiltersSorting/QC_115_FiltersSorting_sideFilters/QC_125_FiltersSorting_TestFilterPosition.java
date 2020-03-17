@@ -40,10 +40,10 @@ public class QC_125_FiltersSorting_TestFilterPosition {
     @Description(value = "Test checks filter position")
     public void testFilterPosition(String route) {
         openPage(route);
-        String characteristic = listingPage.langeFilterAttribute2().text();
-        listingPage.langeFilterCheckbox2().click();
+        String characteristic = listingPage.langeFilterAttribute3().text();
+        listingPage.langeFilterCheckbox3().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.activeSideFilter().shouldHave(text(characteristic));
+        listingPage.activeSideFilter3().shouldHave(text(characteristic));
     }
 
     @Test
@@ -52,8 +52,8 @@ public class QC_125_FiltersSorting_TestFilterPosition {
     @Description(value = "Test checks filter position on LKW model")
     public void testFilterPositionLKWmodel() throws SQLException{
         openPage("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_category_car_list7"));
-        String characteristic = listingPage.langeFilterAttribute2().text();
-        listingPage.langeFilterCheckbox2().click();
+        String characteristic = listingPage.langeFilterAttribute3().text();
+        listingPage.langeFilterCheckbox3().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.activeSideFilter().shouldHave(text(characteristic));
     }
@@ -76,8 +76,8 @@ public class QC_125_FiltersSorting_TestFilterPosition {
     @Description(value = "Test checks filter position on LKW search")
     public void testFilterPositionLKWsearch() throws SQLException{
         openPage("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_search"));
-        String characteristic = listingPage.langeFilterAttribute2().text();
-        listingPage.langeFilterCheckbox2().click();
+        String characteristic = listingPage.langeFilterAttribute3().text();
+        listingPage.langeFilterCheckbox3().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.durchmesserSideFilterButtonFirstValue().shouldHave(text(characteristic));
     }

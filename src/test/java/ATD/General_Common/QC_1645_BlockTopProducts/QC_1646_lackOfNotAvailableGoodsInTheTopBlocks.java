@@ -39,8 +39,7 @@ public class QC_1646_lackOfNotAvailableGoodsInTheTopBlocks {
     @Description(value = "The test checks products not in stock in blocks of top products")
     public void testProductsNotInStockInBlockOfTopProducts(String route) {
         openPage(route);
-        commonMethods.scrollToBlockOfTopProducts();
-        commonMethods.checksProductsNotInStockInBlockOfTopProducts();
+        commonMethods.scrollToBlockOfTopProducts().checksProductsNotInStockInBlockOfTopProducts();
     }
 
     @AfterMethod
