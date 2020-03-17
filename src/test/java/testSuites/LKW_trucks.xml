@@ -56,4 +56,14 @@
         </classes>
     </test>
 
+    <test name="QC_18_SideBarBlocksOfParentCategoriesAndLinkingChildCategory">
+        <classes>
+            <class name="LKW_trucks.QC_18_SideBarBlocksOfParentCategoriesAndLinkingChildCategory.QC_20_AvailabilityParentCatalogBlock"/>
+            <class name="LKW_trucks.QC_18_SideBarBlocksOfParentCategoriesAndLinkingChildCategory.QC_22_PresenceOfParentCategoryListInSidebar"/>
+            <class name="LKW_trucks.QC_18_SideBarBlocksOfParentCategoriesAndLinkingChildCategory.QC_23_TransitionOnParentCategoryPageFromSidebar"/>
+            <class name="LKW_trucks.QC_18_SideBarBlocksOfParentCategoriesAndLinkingChildCategory.QC_24_PresenceOfChildCategoriesInSideBar"/>
+            <class name="LKW_trucks.QC_18_SideBarBlocksOfParentCategoriesAndLinkingChildCategory.QC_26_VisibilityOfChildCategoriesInTopChildBlockInSideBar"/>
+        </classes>
+    </test>
+
 </suite>

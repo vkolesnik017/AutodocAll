@@ -50,4 +50,10 @@ public class LKW_Product_page_Logic extends LKW_Product_page {
         return page(LKW_Categories_page_Logic.class);
     }
 
+    @Step("checking the compatibility of goods and cars")
+    public LKW_Product_page_Logic checkCompatibilityProductAndTruck(){
+        titleInTruckSelectorHeader().shouldHave(text("Dieses Produkt passt zu Ihrem"));
+        return this;
+    }
+
 }

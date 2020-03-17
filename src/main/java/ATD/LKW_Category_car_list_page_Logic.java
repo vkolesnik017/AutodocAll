@@ -95,5 +95,42 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         return page(LKW_maker_car_list_Logic.class);
     }
 
+    @Step("checking of visibility of TecDoc Listing block .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic visibilityOfTecDocListingBlock() {
+        listOfProductInTecDocListingBlock().shouldBe(visible);
+        return this;
+    }
+
+
+    @Step("checking the applicability of product for selected truck .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic checkingApplicabilityOfProductForSelectedTruck() {
+        while (nextPagePagination().isDisplayed()) {
+            selectProductInTecDocListing();
+            nextPagePagination().click();
+        }
+        selectProductInTecDocListing();
+        return this;
+    }
+
+    @Step("click on product in TecDoc Listing .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic selectProductInTecDocListing() {
+        for (int i = 1; i <= productsOnPage().size(); i++) {
+            clickOnProductInTecDocListing(i).checkCompatibilityProductAndTruck();
+            back();
+        }
+        return this;
+    }
+
+    @Step("get total amount of pages in TecDoc listing page .LKW_Category_car_list_page")
+    public int getTotalAmountOfPages() {
+        int totalAmountOfPages = Integer.parseInt(countOfPagesInTecDocListing().getAttribute("href").substring(97));
+        return totalAmountOfPages;
+    }
+
+    @Step("click on Product in TecDoc listing .LKW_Category_car_list_page")
+    public LKW_Product_page_Logic clickOnProductInTecDocListing(int point) {
+        imageOfProductTecDocListingBlock(point).click();
+        return page(LKW_Product_page_Logic.class);
+    }
 
 }

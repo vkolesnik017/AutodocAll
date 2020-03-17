@@ -29,7 +29,7 @@ public class LKW_Category_brand_page_Logic extends LKW_Category_brand_page {
     public LKW_Category_brand_page_Logic checkLinkClickInBreadCrumbsBlock() {
         firstLinkClick().checkSuccessfullyLKWCategoriesPageLoading();
         back();
-        secondLinkClick().checkSuccessfullyLKWParentCategoryPageLoading();
+        secondLinkClick().checkSuccessfullyLKWParentCategoryPageLoading("https://lkwteile.autodoc.de/ersatzteile/filter");
         back();
         thirdLinkClick().checkSuccessfullyChildCategoryPageLoading();
         return this;

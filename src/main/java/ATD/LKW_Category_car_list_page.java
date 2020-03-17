@@ -38,4 +38,28 @@ public class LKW_Category_car_list_page {
     SelenideElement firstLinkOfBreadCrumbsBlockTitleTecDoC() {
         return $x("//div[@class='steps breadcrumbs']//li[1]/span/a");
     }
+
+    SelenideElement listOfProductInTecDocListingBlock() {
+        return $x("//ul[@class='list_products ']");
+    }
+
+    ElementsCollection productsOnPage() {
+        return $$x("//div[@class='image']//span[2]/img");
+    }
+
+    SelenideElement imageOfProductTecDocListingBlock(int position) {
+        return $x("(//div[@class='image']//span[2]/img)[" + position + "]");
+    }
+
+    SelenideElement paginationOfTecDocListing() {
+        return $x("//div[@class='pagination']");
+    }
+
+    SelenideElement countOfPagesInTecDocListing() {
+        return $x("//span[@class='last']/a ");
+    }
+
+    SelenideElement nextPagePagination() {
+        return $x("//span[@class='next']");
+    }
 }
