@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Basket" parallel="methods" thread-count="2" data-provider-thread-count="2">
+
+    <listeners>
+        <listener class-name="ATD.ProjectListener"/>
+    </listeners>
+
+    <test name="QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods">
+        <classes>
+            <class name="ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1676_HeavyLoadsPositiveCase"/>
+        </classes>
+    </test>
+
+</suite>

@@ -86,11 +86,24 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return this;
     }
 
-    @Step("Check delivery price. CartAllData_page")
-    public CartAllData_page_Logic checkDeliveryPriceAlldata(String deliveryPrice) {
+    @Step("Check free delivery price. CartAllData_page")
+    public CartAllData_page_Logic checkFreeDeliveryPriceAllData(String deliveryPrice) {
         freeDeliveryIcon().shouldHave(text(deliveryPrice));
         return this;
     }
+
+    @Step("Checks regular delivery price. CartAllData_page")
+    public CartAllData_page_Logic checkRegularDeliveryPriceAllData(String regularDeliveryPrice) {
+        deliveryPrice().shouldHave(text(regularDeliveryPrice));
+        return this;
+    }
+
+    @Step("Checks Heavy loads delivery price. CartAllData_page")
+    public CartAllData_page_Logic checkHeavyLoadsDeliveryPriceAllData(String heavyLoadsDeliveryPrice) {
+        heavyLoadsShippingCost().shouldHave(text(heavyLoadsDeliveryPrice));
+        return this;
+    }
+
 
     @Step("Checks currency on all data page. CartAllData_page")
     public CartAllData_page_Logic checkCurrencyOnAllDataPage(String shop) throws SQLException {
@@ -114,5 +127,18 @@ public class CartAllData_page_Logic extends CartAllData_page {
         getCurrencyAndVerify(vatPriceInHead(), "vatPriceInHead", shop, expectedCurrency);
         getCurrencyAndVerify(vatPriceInTotalOrder(), "vatPriceInTotalOrder", shop, expectedCurrency);
         return this;
+    }
+
+    @Step("Checks for absence Safe Order block for Heavy Loads. CartAllData_page")
+    public CartAllData_page_Logic checkAbsenceSafeOrderBlock(){
+        safeOrderBlock().shouldNot(visible);
+        return this;
+    }
+
+    @Step("Return the total price of the CartAllData_page")
+    public String returnTotalPrice(){
+        String price = "88,38 €↵inkl. 19% MwSt.";
+        price = price.substring(0, price.indexOf(" ")).replaceAll(",",".");
+        return price;
     }
 }
