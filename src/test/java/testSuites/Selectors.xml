@@ -6,50 +6,50 @@
         <listener class-name="ATD.ProjectListener"/>
     </listeners>
 
-    <!--<test name="QC_771_RegKbaSelector">-->
-        <!--<classes>-->
-            <!--<class name="ATD.Selectors.QC_771_RegKbaSelector.QC_772_RegKbaSelector"/>-->
-        <!--</classes>-->
-    <!--</test>-->
-
-    <test name="QC_729_PopUpsOfSelectors">
+    <test name="QC_771_RegKbaSelector">
         <classes>
-            <!--<class name="ATD.Selectors.QC_729_PopUpsOfSelectors.QC_747_AppearsCarSelectorPopupOnSearchByScrollDown"/>-->
-            <!--<class name="ATD.Selectors.QC_729_PopUpsOfSelectors.QC_735_PresenceOfElementsInCarSelectorPopup"/>-->
-            <!--<class name="ATD.Selectors.QC_729_PopUpsOfSelectors.QC_736_ErrorTooltipWhenUsingSelectorWithEmptyFields"/>-->
-            <!--<class name="ATD.Selectors.QC_729_PopUpsOfSelectors.QC_742_CarSelectorPopupNotCloseAfterResetCar"/>-->
-            <class name="ATD.Selectors.QC_729_PopUpsOfSelectors.QC_743_CloseCarSelectorPopup"/>
-            <!--<class name="ATD.Selectors.QC_729_PopUpsOfSelectors.QC_749_AppearsCarSelectorPopupAfterClickDetailsLinkInTopBlock"/>-->
+            <class name="ATD.Selectors.QC_771_RegKbaSelector.QC_772_RegKbaSelector"/>
         </classes>
     </test>
 
-    <!--<test name="QC_693_VerticalCarSelectors">-->
-        <!--<classes>-->
-            <!--<class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_694_AppearsErrorThatBrandCarNotSelected"/>-->
-            <!--<class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_695_AppearsErrorThatModelCarNotSelected"/>-->
-            <!--<class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_696_AppearsErrorThatTypeCarNotSelected"/>-->
-            <!--<class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_697_UseCarSelectorWhenChooseBrandModelType"/>-->
-            <!--<class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_698_ResetCarSelector"/>-->
-            <!--<class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_699_AppearsKbaPopupAfterClickLink"/>-->
-            <!--<class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_700_ResetCarOnRouteAcc"/>-->
-            <!--<class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_719_AppearsTooltipChooseBrandFirstTimeEnterSession"/>-->
-            <!--<class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_720_AppearsTooltipChooseModelFirstTimeEnterSession"/>-->
-            <!--<class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_721_AppearsTooltipChooseTypeFirstTimeEnterSession"/>-->
-            <!--<class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_722_DisappearsTooltipAfterRefreshPage"/>-->
-        <!--</classes>-->
-    <!--</test>-->
+    <test name="QC_729_PopUpsOfSelectors">
+        <classes>
+            <class name="ATD.Selectors.QC_729_PopUpsOfSelectors.QC_747_AppearsCarSelectorPopupOnSearchByScrollDown"/>
+            <class name="ATD.Selectors.QC_729_PopUpsOfSelectors.QC_735_PresenceOfElementsInCarSelectorPopup"/>
+            <class name="ATD.Selectors.QC_729_PopUpsOfSelectors.QC_736_ErrorTooltipWhenUsingSelectorWithEmptyFields"/>
+            <class name="ATD.Selectors.QC_729_PopUpsOfSelectors.QC_742_CarSelectorPopupNotCloseAfterResetCar"/>
+            <class name="ATD.Selectors.QC_729_PopUpsOfSelectors.QC_743_CloseCarSelectorPopup"/>
+            <class name="ATD.Selectors.QC_729_PopUpsOfSelectors.QC_749_AppearsCarSelectorPopupAfterClickDetailsLinkInTopBlock"/>
+        </classes>
+    </test>
 
-    <!--<test name="QC_663_HorizontalCarSelector">-->
-        <!--<classes>-->
-            <!--<class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_664_AppearsErrorThatBrandCarNotSelected"/>-->
-            <!--<class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_666_AppearsErrorThatModelCarNotSelected"/>-->
-            <!--<class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_669_AppearsErrorThatTypeCarNotSelected"/>-->
-            <!--<class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_670_UseHorizontalSelectorWithChooseBrandModelType"/>-->
-            <!--<class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_672_UseHorizontalSelectorWhenChosenExistingKBA"/>-->
-            <!--<class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_674_AppearsErrorThatKbaNumberNotFilled"/>-->
-            <!--<class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_675_ResetHorizontalCarSelector"/>-->
-            <!--<class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_681_AppearsTooltipChooseBrandFirstTimeEnterSession"/>-->
-        <!--</classes>-->
-    <!--</test>-->
+    <test name="QC_693_VerticalCarSelectors">
+        <classes>
+            <class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_694_AppearsErrorThatBrandCarNotSelected"/>
+            <class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_695_AppearsErrorThatModelCarNotSelected"/>
+            <class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_696_AppearsErrorThatTypeCarNotSelected"/>
+            <class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_697_UseCarSelectorWhenChooseBrandModelType"/>
+            <class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_698_ResetCarSelector"/>
+            <class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_699_AppearsKbaPopupAfterClickLink"/>
+            <class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_700_ResetCarOnRouteAcc"/>
+            <class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_719_AppearsTooltipChooseBrandFirstTimeEnterSession"/>
+            <class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_720_AppearsTooltipChooseModelFirstTimeEnterSession"/>
+            <class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_721_AppearsTooltipChooseTypeFirstTimeEnterSession"/>
+            <class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_722_DisappearsTooltipAfterRefreshPage"/>
+        </classes>
+    </test>
+
+    <test name="QC_663_HorizontalCarSelector">
+        <classes>
+            <class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_664_AppearsErrorThatBrandCarNotSelected"/>
+            <class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_666_AppearsErrorThatModelCarNotSelected"/>
+            <class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_669_AppearsErrorThatTypeCarNotSelected"/>
+            <class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_670_UseHorizontalSelectorWithChooseBrandModelType"/>
+            <class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_672_UseHorizontalSelectorWhenChosenExistingKBA"/>
+            <class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_674_AppearsErrorThatKbaNumberNotFilled"/>
+            <class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_675_ResetHorizontalCarSelector"/>
+            <class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_681_AppearsTooltipChooseBrandFirstTimeEnterSession"/>
+        </classes>
+    </test>
 
 </suite>
