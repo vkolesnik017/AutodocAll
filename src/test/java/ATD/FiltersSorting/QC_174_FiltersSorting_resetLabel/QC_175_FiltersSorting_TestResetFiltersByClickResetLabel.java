@@ -6,6 +6,7 @@ import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -50,6 +51,10 @@ public class QC_175_FiltersSorting_TestResetFiltersByClickResetLabel {
         listingPage.closeLabelOfActiveFilter().click();
         listingPage.labelOfActiveFilter().shouldNotBe(visible);
         listingPage.resetAllFiltersButton().shouldNotBe(visible);
+    }
+
+    @AfterMethod
+    private void teatDown() {
         close();
     }
 }

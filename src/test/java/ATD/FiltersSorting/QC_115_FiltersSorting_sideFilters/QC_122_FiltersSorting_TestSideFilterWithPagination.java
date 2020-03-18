@@ -2,12 +2,12 @@ package ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters;
 
 
 import ATD.DataBase;
-import ATD.Listing_page;
 import ATD.Listing_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -47,7 +47,6 @@ public class QC_122_FiltersSorting_TestSideFilterWithPagination {
         listingPage.secondListingPage().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.langeProductAttributeGenericRoute(), listingPage.langeProductAttributeTecdocRoute());
-        close();
     }
 
     @Test
@@ -55,7 +54,7 @@ public class QC_122_FiltersSorting_TestSideFilterWithPagination {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks side filter with pagination")
     public void testSideFilterWithPaginationLKW() throws SQLException {
-        openPage("https://lkwteile.autodoc.de/" +  dataBase.getRouteByRouteName("DE", "lkw_category_car_list"));
+        openPage("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_category_car_list"));
         closeCookiesFooterMessage();
         String characteristic = listingPage.langeFilterCheckboxLKW700().text();
         listingPage.langeFilterCheckboxLKW700().click();
@@ -63,6 +62,10 @@ public class QC_122_FiltersSorting_TestSideFilterWithPagination {
         listingPage.secondListingPage().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.langeProductAttributeGenericRouteLKW(), listingPage.langeProductAttributeTecdocRouteLKW());
+    }
+
+    @AfterMethod
+    private void teatDown() {
         close();
     }
 }

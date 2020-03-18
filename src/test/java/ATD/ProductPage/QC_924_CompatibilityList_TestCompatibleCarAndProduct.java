@@ -6,6 +6,7 @@ import ATD.Product_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -39,6 +40,9 @@ public class QC_924_CompatibilityList_TestCompatibleCarAndProduct {
         product_page_logic.chooseBrandModelTypeInHorizontalSelector("AUTOBIANCHI", "4822", "16213");
         product_page_logic.selectorSearchBtn().click();
         product_page_logic.compatibleCarInCompabilityList().shouldBe(visible);
+    }
+    @AfterMethod
+    private void tearDown() {
         close();
     }
 }

@@ -5,6 +5,7 @@ import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -14,6 +15,7 @@ import java.sql.SQLException;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.exactText;
+import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.refresh;
 
 public class QC_736_ErrorTooltipWhenUsingSelectorWithEmptyFields {
@@ -53,5 +55,8 @@ public class QC_736_ErrorTooltipWhenUsingSelectorWithEmptyFields {
     mainPageLogic.errorTooltipForChooseTypeInCarSelectorPopup().shouldHave(
             exactText("Wählen Sie eine Modifikation aus"));
   }
-
+  @AfterMethod
+  private void tearDown() {
+    close();
+  }
 }

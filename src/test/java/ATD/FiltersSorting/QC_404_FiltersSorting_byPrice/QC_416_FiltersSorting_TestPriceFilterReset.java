@@ -7,6 +7,7 @@ import ATD.Listing_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -49,6 +50,10 @@ public class QC_416_FiltersSorting_TestPriceFilterReset {
         float maxFloat = Float.parseFloat(defaultMaxPrice);
         listingPage.checkPricesRange(minFloat, maxFloat, listingPage.priceOfAllProductsOnPageInTile());
         waitingWhileLinkBecomeExpected("https://www.autodoc.de/autoteile/innenraumfilter-10363/vw/golf/golf-iv-1j1/8799-1-4-16v?");
+    }
+
+    @AfterMethod
+    private void teatDown() {
         close();
     }
 }

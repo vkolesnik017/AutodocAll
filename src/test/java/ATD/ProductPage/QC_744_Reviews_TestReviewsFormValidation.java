@@ -6,6 +6,7 @@ import ATD.Product_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -40,6 +41,10 @@ public class QC_744_Reviews_TestReviewsFormValidation {
         product_page_logic.validationNameInputReviews().shouldBe(visible);
         product_page_logic.validationMessageInputReviews().shouldBe(visible);
         product_page_logic.validationSubscribeCheckbox().shouldBe(visible);
+    }
+
+    @AfterMethod
+    private void tearDown() {
         close();
     }
 }

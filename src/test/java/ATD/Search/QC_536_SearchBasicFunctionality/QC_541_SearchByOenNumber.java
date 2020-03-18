@@ -4,11 +4,13 @@ import ATD.*;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static ATD.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
 public class QC_541_SearchByOenNumber {
@@ -33,5 +35,9 @@ public class QC_541_SearchByOenNumber {
     open(route);
     new Main_page_Logic().useSearch(oenNumber);
     new Listing_page_Logic().checksProductTitlesContainExpectedTextGoingAllPagination(oenNumber);
+  }
+  @AfterMethod
+  private void tearDown() {
+    close();
   }
 }

@@ -7,6 +7,7 @@ import com.codeborne.selenide.CollectionCondition;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -41,6 +42,10 @@ public class QC_421_FiltersSorting_TestPriceFilterWithFewProducts {
         listingPage.maxPriceMapping().shouldHave(text("16"));
         listingPage.priceFilterBlock().shouldBe(visible);
         listingPage.productTitleInListMode().shouldBe(CollectionCondition.sizeLessThan(5));
+    }
+
+    @AfterMethod
+    private void teatDown() {
         close();
     }
 }

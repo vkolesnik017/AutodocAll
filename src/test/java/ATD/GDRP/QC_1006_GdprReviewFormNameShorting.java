@@ -57,4 +57,3 @@ public class QC_1006_GdprReviewFormNameShorting {
 }
 
 
-//autotest_qc1006@test.com

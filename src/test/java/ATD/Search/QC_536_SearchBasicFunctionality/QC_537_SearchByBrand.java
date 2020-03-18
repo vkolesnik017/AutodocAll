@@ -4,6 +4,7 @@ import ATD.*;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -11,6 +12,7 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
 public class QC_537_SearchByBrand {
@@ -35,5 +37,9 @@ public class QC_537_SearchByBrand {
     open(route);
     new Main_page_Logic().useSearch(brandName);
     new Listing_page_Logic().checksProductTitlesContainExpectedTextGoingAllPagination(brandName);
+  }
+  @AfterMethod
+  private void tearDown() {
+    close();
   }
 }

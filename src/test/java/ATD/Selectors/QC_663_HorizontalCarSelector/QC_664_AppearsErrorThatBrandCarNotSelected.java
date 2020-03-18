@@ -5,6 +5,7 @@ import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -12,6 +13,7 @@ import org.testng.annotations.Test;
 import static ATD.CommonMethods.usualIdProduct;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.exactText;
+import static com.codeborne.selenide.Selenide.close;
 
 public class QC_664_AppearsErrorThatBrandCarNotSelected {
 
@@ -36,5 +38,9 @@ public class QC_664_AppearsErrorThatBrandCarNotSelected {
             .clickSearchBtnInHorizontalSelector()
             .errorTooltipOfBrandSelector().shouldHave(
             exactText("Um Autoteile für Ihren Wagen zu suchen, geben Sie bitte Ihr genaues Automodell an"));
+  }
+  @AfterMethod
+  private void tearDown() {
+    close();
   }
 }

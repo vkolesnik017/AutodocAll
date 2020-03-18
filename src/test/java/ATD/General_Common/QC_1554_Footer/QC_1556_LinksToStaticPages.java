@@ -4,6 +4,7 @@ import ATD.*;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -12,6 +13,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Selenide.close;
 
 public class QC_1556_LinksToStaticPages {
 
@@ -32,5 +34,9 @@ public class QC_1556_LinksToStaticPages {
     public void checkingLinksInFooter(String route) throws SQLException {
         openPage(route);
         new Main_page_Logic().checkTransitionToLinksOfStaticPage(route);
+    }
+    @AfterMethod
+    private void teatDown() {
+        close();
     }
 }
