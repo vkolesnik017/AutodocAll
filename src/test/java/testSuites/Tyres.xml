@@ -14,4 +14,25 @@
         </classes>
     </test>
 
+    <test name="QC_1104_TyresSelector">
+        <classes>
+            <class name="ATD.Tyres.QC_1104_TyresSelector.QC_1105_TestTyresSearchBySelectorPKW"/>
+            <class name="ATD.Tyres.QC_1104_TyresSelector.QC_1106_TestTyresSearchBySelectorSUV"/>
+            <class name="ATD.Tyres.QC_1104_TyresSelector.QC_1107_TestTyresSearchBySelectorLLKW"/>
+            <class name="ATD.Tyres.QC_1104_TyresSelector.QC_1111_TestTyresSearchBySelectorMOTO"/>
+            <class name="ATD.Tyres.QC_1104_TyresSelector.QC_1113_TestTyresSearchBySelectorOnListingPKW"/>
+            <class name="ATD.Tyres.QC_1104_TyresSelector.QC_1117_TestTyresSearchBySelectorOnListingSUV"/>
+            <class name="ATD.Tyres.QC_1104_TyresSelector.QC_1118_TestTyresSearchBySelectorOnListingLLKW"/>
+            <!--<class name="ATD.Tyres.QC_1104_TyresSelector.QC_1231_TestTyresSearchBySelectorOnListingMOTO"/>-->
+            <class name="ATD.Tyres.QC_1104_TyresSelector.QC_1233_TestValidationPopupWithClearHeightWidthDiameter"/>
+            <class name="ATD.Tyres.QC_1104_TyresSelector.QC_1237_TestValidationPopupWithClearHeightDiameter"/>
+            <class name="ATD.Tyres.QC_1104_TyresSelector.QC_1240_TestValidationPopupWithClearDiameter"/>
+            <class name="ATD.Tyres.QC_1104_TyresSelector.QC_1248_TestValidationPopupWithClearSelectorMoto"/>
+            <class name="ATD.Tyres.QC_1104_TyresSelector.QC_1258_TestValidationPopupWithClearSelectorOnListing"/>
+            <class name="ATD.Tyres.QC_1104_TyresSelector.QC_1268_TestValidationPopupWithClearSelectorOnListingMOTO"/>
+            <class name="ATD.Tyres.QC_1104_TyresSelector.QC_1287_TestTyresSelectorWithSeacrByBrand"/>
+            <class name="ATD.Tyres.QC_1104_TyresSelector.QC_1288_TestTyresSelectorWithSeacrBySpeedIndex"/>
+        </classes>
+    </test>
+
 </suite>
