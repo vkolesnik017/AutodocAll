@@ -39,7 +39,7 @@ public class QC_1676_HeavyLoadsPositiveCase {
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks the purchase of a heavy load")
-    public void testOfHeavyTruckPurchase(String route) {
+    public void testOfHeavyLoadsPurchase(String route) {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
         totalPrice = new Product_page_Logic().addProductToCart()
@@ -52,7 +52,7 @@ public class QC_1676_HeavyLoadsPositiveCase {
                 .checkRegularDeliveryPriceAllData("6,95")
                 .checkHeavyLoadsDeliveryPriceAllData("10,00")
                 .checkAbsenceSafeOrderBlock()
-                .returnTotalPrice();
+                .returnTotalPriceAllDataPage();
         new CartAllData_page_Logic().nextBtnClick();
         orderNumber = new Payment_handler_page_Logic().getOrderNumber();
         new Order_aws(orderNumber).openOrderInAwsWithLogin()

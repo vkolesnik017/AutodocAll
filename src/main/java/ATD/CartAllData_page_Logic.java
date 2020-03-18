@@ -136,9 +136,14 @@ public class CartAllData_page_Logic extends CartAllData_page {
     }
 
     @Step("Return the total price of the CartAllData_page")
-    public String returnTotalPrice(){
-        String price = "88,38 €↵inkl. 19% MwSt.";
+    public String returnTotalPriceAllDataPage(){
+        String price = getTotalPriceAllDataPage();
         price = price.substring(0, price.indexOf(" ")).replaceAll(",",".");
         return price;
+    }
+
+    @Step("Get total price of the CartAllData_page")
+    public String getTotalPriceAllDataPage(){
+        return totalOrderPrice().getText();
     }
 }
