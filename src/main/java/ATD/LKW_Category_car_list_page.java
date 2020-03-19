@@ -77,15 +77,11 @@ public class LKW_Category_car_list_page {
         return $x("//a[@class='header-cart__link']");
     }
 
-    SelenideElement articleNumberOfProduct(String titleOfArticle){
-        return $x("//span[contains(text(),'"+titleOfArticle+"')]");
+    SelenideElement articleNumberOfProduct(String titleOfArticle) {
+        return $x("//span[contains(text(),'" + titleOfArticle + "')]");
     }
 
-//    SelenideElement dynamicCharacteristicInTecDocListingBlock(String titleOfArticle){
-//        return $x("//span[contains(text(),'"+titleOfArticle+"')]/ancestor::div[@class='description']//li[@class='important desc_group']//li[1]/span[@class='rg']");
-//    }
-
-    SelenideElement dynamicCharacteristicInTecDocListingBlock(String titleOfArticle){
-        return $x("//span[contains(text(),'"+titleOfArticle+"')]/ancestor::div[@class='description']//ul[@class='criteria']//li[1]/span[2]");
+    SelenideElement dynamicCharacteristicInTecDocListingBlock(String titleOfArticle) {
+        return $x("//span[contains(text(),'" + titleOfArticle + "')]/ancestor::div[@class='description']//ul[@class='criteria']//li[1]/span[2]");
     }
 }
