@@ -35,7 +35,7 @@
         </classes>
     </test>
 
-    <test name="QC_710_TranslationOfCausesInAws">
+    <test name="QC_710_TranslationOfCausesInAws" enabled="false">
         <classes>
             <class name="AWS.Retoure.QC_710_TranslationOfCausesInAws"/>
         </classes>
