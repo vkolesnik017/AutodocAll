@@ -34,7 +34,7 @@ public class QC_1240_TestValidationPopupWithClearDiameter {
     @Description(value = "Test checks validation popup with clear diameter on main tyres page")
     public void testValidationPopupWithClearDiameter(String route) {
         openPage(route);
-        new Tyres_page_Logic().checkTyresSelectorVisibilityPKW()
+        new Tyres_page_Logic().checkTyresSelectorVisibility()
                 .selectSeasonTyre("Alle")
                 .selectWidth("215")
                 .selectHeight("70")
