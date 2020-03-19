@@ -138,4 +138,21 @@ public class CartAllData_page {
         return $("close_popup");
     }
 
+    //Locators for popup Delivery Limit
+    SelenideElement popupDeliveryLimitAllDataPage() {
+        return $x("//div[@class='delivery-limit-popup new_cart_delivery_limit']");
+    }
+
+    SelenideElement btnDeleteGoodsInDeliveryPopupAllDataPage(){
+        return $x("//a[@class='color close_popup delete_items']");
+    }
+
+    SelenideElement btnChangeAddressInDeliveryPopupAllDataPage(){
+        return $x("//a[@class='color close_popup change_address']");
+    }
+
+    SelenideElement closePopupDeliveryLimitAllDataPage() {
+        return $x("//a[@class='close_popup close ']");
+    }
+
 }

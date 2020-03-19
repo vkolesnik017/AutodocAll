@@ -124,5 +124,11 @@ public class Search_page_Logic extends Search_page {
         return $$x("//*[@class='rc' and contains(text(),'" + productArticle +"')]/ancestor::div[@class='box criteria_toogle_active']//li")
                 .shouldHave(sizeGreaterThan(10));
     }
+
+    @Step(": on Search_page")
+    public Search_page_Logic closePopupOtherCategoryIfYes(){
+        new Product_page_Logic().closePopupOtherCategoryIfYes();
+        return this;
+    }
 }
 

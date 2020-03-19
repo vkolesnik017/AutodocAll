@@ -335,10 +335,11 @@ public class Order_aws {
         return this;
     }
 
-    @Step("Compares the total price in AWS with the price on the cartAllData page")
-    public Order_aws compareTotalPriceInAwsWithPriceCartAllDataPage(String totalPrice) {
-        totalPriceOrder().shouldHave(text(totalPrice));
-        return this;
+
+    @Step("Get total Price in Order AWS")
+    public String getTotalPriceOrder(){
+        String price = totalPriceOrder().getText();
+        return price;
     }
 
     @Step("Checks that Safe Order is turned off. Order_aws")

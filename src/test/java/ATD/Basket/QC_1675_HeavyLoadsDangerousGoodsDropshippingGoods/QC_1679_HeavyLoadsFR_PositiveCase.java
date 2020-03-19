@@ -1,6 +1,9 @@
 package ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods;
 
-import ATD.*;
+import ATD.CartAllData_page_Logic;
+import ATD.Payment_handler_page_Logic;
+import ATD.Product_page_Logic;
+import ATD.SetUp;
 import AWS.Order_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -13,19 +16,17 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.getCurrentShopFromJSVarInHTML;
 import static ATD.CommonMethods.openPage;
+import static ATD.CommonMethods.password;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_1676_HeavyLoadsPositiveCase {
+public class QC_1679_HeavyLoadsFR_PositiveCase {
 
-    private String email = "checksPurchaseHeavyLoad@mailinator.com";
-    private String password = "atdtest";
+    private String email = "qc_1679autotestDE@mailinator.com";
     private String totalPrice;
     private String totalPriceAWSOrder;
     private String orderNumber;
-
 
     @BeforeClass
     void setUp() {
@@ -34,39 +35,37 @@ public class QC_1676_HeavyLoadsPositiveCase {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product19");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product20");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks the purchase of a heavy load")
-    public void testOfHeavyLoadsPurchase(String route) {
+    @Description(value = "Test checks the purchase of a heavy load in FR")
+    public void testOfHeavyLoadsPurchaseInFR(String route) {
         openPage(route);
-        String shop = getCurrentShopFromJSVarInHTML();
         totalPrice = new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
-                .signIn(email, password)
-                .fillAllFields(shop).nextBtnClick()
+                .signIn(email, password).nextBtnClick()
                 .chooseVorkasse().nextBtnClick()
-                .checkRegularDeliveryPriceAllData("6,95")
-                .checkHeavyLoadsDeliveryPriceAllData("10,00")
+                .checkRegularDeliveryPriceAllData("9,95")
+                .checkHeavyLoadsDeliveryPriceAllData("36,95")
                 .checkAbsenceSafeOrderBlock()
                 .returnTotalPriceAllDataPage();
         new CartAllData_page_Logic().nextBtnClick();
         orderNumber = new Payment_handler_page_Logic().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumber);
-        totalPriceAWSOrder =  order_aws.openOrderInAwsWithLogin().getTotalPriceOrder();
+        totalPriceAWSOrder = order_aws.openOrderInAwsWithLogin().getTotalPriceOrder();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
-        order_aws.checkDeliveryPriceOrderAWS("6.95")
-                .checkHeavyLoadsDeliveryPriceOrderAWS("10")
+        order_aws.checkDeliveryPriceOrderAWS("9.95")
+                .checkHeavyLoadsDeliveryPriceOrderAWS("36.95")
                 .checkStatusSafeOrder()
                 .reSaveOrder();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
-        order_aws.checkDeliveryPriceOrderAWS("6.95")
-                .checkHeavyLoadsDeliveryPriceOrderAWS("10");
+        order_aws.checkDeliveryPriceOrderAWS("9.95")
+                .checkHeavyLoadsDeliveryPriceOrderAWS("36.95");
     }
 
     @AfterMethod

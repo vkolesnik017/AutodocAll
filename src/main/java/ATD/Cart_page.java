@@ -3,8 +3,6 @@ package ATD;
 
 import com.codeborne.selenide.SelenideElement;
 
-import java.nio.file.attribute.UserPrincipalLookupService;
-
 import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
@@ -90,23 +88,27 @@ public class Cart_page {
         return $(byXpath("//*[@id='promo-footer']//span/b"));
     }
 
-    SelenideElement popupDeliveryLimit() {
+    SelenideElement popupDeliveryLimitCartPage() {
         return $x("//div[@class='delivery-limit-popup delivery_limit']");
     }
 
-    SelenideElement btnDeleteGoodsInDeliveryPopup(){
+    SelenideElement btnDeleteGoodsInDeliveryPopupCartPage(){
         return $x("//a[@class='color close_popup delete_items']");
     }
 
-    SelenideElement btnContinueShoppingInDeliveryPopup(){
+    SelenideElement btnContinueShoppingInDeliveryPopupCartPage(){
         return $x("//a[@class='color close_popup continue_shopping']");
     }
 
-    SelenideElement closePopupDeliveryLimit() {
+    SelenideElement closePopupDeliveryLimitCartPage() {
         return $x("//a[@class='close_popup close ']");
     }
 
     SelenideElement productsIDLocator (String idProducts) {
         return $x("//*[@data-article_id='" + idProducts + "']");
+    }
+
+    SelenideElement btnChangeAddressInDeliveryPopupCartPage(){
+        return $x("//a[@class='color close_popup change_address']");
     }
 }

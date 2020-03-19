@@ -11,15 +11,14 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.clickOfBuyBtnForAllPages;
-import static ATD.CommonMethods.openPage;
+import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
-public class QC_1677_HeavyLoadsNegativeCase {
+public class QC_1678_HeavyLoadsNegativeCasAllData {
 
-    private String email = "qc_1677_autotestDE@mailinator.com";
+    private String email = "qc_1678_autotestDE@mailinator.com";
 
     private Product_page_Logic product_page_logic = new Product_page_Logic();
 
@@ -36,32 +35,42 @@ public class QC_1677_HeavyLoadsNegativeCase {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks negative purchase of a heavy loads / Basket")
-    public void testOfHeavyLoadsNegativePurchaseBasket(String route) throws SQLException {
+    @Description(value = "Test checks negative purchase of a heavy loads / AllData")
+    public void testOfHeavyLoadsNegativePurchaseAllDataPage(String route) throws SQLException {
         openPage(route);
         product_page_logic.addProductToCart();
         open("https://autodoc.de/" + new DataBase().getRouteByRouteName("DE", "search3"));
         clickOfBuyBtnForAllPages();
-        new Search_page_Logic().closePopupOtherCategoryIfYes();
-        new Main_page_Logic().loginFromHeader(email)
-                .cartClick()
-                .closePopUpDeliveryLimitCartPage()
+        new Search_page_Logic().closePopupOtherCategoryIfYes()
+                .cartClick().nextButtonClick()
+                .signIn(email, password).nextBtnClick()
+                .chooseVorkasse().nextBtnClick()
+                .closePopUpDeliveryLimit()
                 .checkAbsenceGoodsInCartPage("7037462")
-                .checkPresenceGoodsInCardPage("1187466");
+                .checkPresenceGoodsInCardPage("1187466")
+                .checkPresenceSafeOrderBlock()
+                .checkPresenceRegularDeliveryPrice();
         openPage(route);
         product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
-                .deleteGoodsInDeliveryPopupCartPage()
+                .clickBtnChangeAddressInDeliveryPopupCartPageCartPage()
+                .nextBtnClick()
+                .chooseVorkasse().nextBtnClick()
+                .deleteGoodsInDeliveryPopupCartAllDataPage()
                 .checkAbsenceGoodsInCartPage("7037462")
-                .checkPresenceGoodsInCardPage("1187466");
+                .checkPresenceGoodsInCardPage("1187466")
+                .checkPresenceSafeOrderBlock()
+                .checkPresenceRegularDeliveryPrice();
         openPage(route);
         product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
-                .clickBtnContinueShoppingInDeliveryPopupCartPage()
-                .checkPresenceGoodsInCardPage("7037462")
-                .checkPresenceGoodsInCardPage("1187466");
+                .clickBtnChangeAddressInDeliveryPopupCartPageCartPage()
+                .nextBtnClick()
+                .chooseVorkasse().nextBtnClick()
+                .clickBtnChangeAddressInDeliveryPopupCartAllDataPage();
+        new CommonMethods().checkingContainsUrl("https://www.autodoc.de/basket/address");
     }
 
     @AfterMethod
