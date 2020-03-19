@@ -135,4 +135,10 @@ public class Profile_page_Logic extends Profile_page {
         return this;
     }
 
+    @Step(":on Profile_page")
+    public Cart_page_Logic cartClick() {
+        new Main_page_Logic().cartClick();
+        return page(Cart_page_Logic.class);
+    }
+
 }
