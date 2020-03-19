@@ -36,7 +36,12 @@ public class QC_168_TestProductOutputWithFilterBySide {
 
     @DataProvider(name = "routesLKW", parallel = true)
     Object[] dataProviderLKW2routes() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list6,lkw_category_car_list7,lkw_search");
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list7,lkw_search");
+    }
+
+    @DataProvider(name = "routesLKWcar", parallel = true)
+    Object[] dataProviderLKWcarRoutes() throws SQLException {
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list6");
     }
 
     @Test(dataProvider = "routes")
@@ -99,6 +104,29 @@ public class QC_168_TestProductOutputWithFilterBySide {
         listingPage.showListingInListModeButton().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.secondListingPage().click();
+        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
+        listingPage.checkProductAttributeOnListingWithCarAndFilter("Vorderachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute());
+        listingPage.filterBySideLKW().click();
+        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
+        listingPage.checkUniqueBrandsOnListing(2, listingPage.einbauseiteProductAttributeTecdocRoute());
+    }
+
+    @Test(dataProvider = "routesLKWcar")
+    @Flaky
+    @Owner(value = "Romaniuta")
+    @Description(value = "Test checks filter by side in tile mode LKW route with car")
+    public void testFilterBySideInTileModeLKWrouteWithCar(String route) {
+        openPage(route);
+        listingPage.filterBySideLKW().click();
+        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
+        listingPage.showListingInTileModeButton().click();
+        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
+        int vorderachseAttributes = listingPage.vorderachseAttributeInTileMode().size();
+        int producntsOnListing = listingPage.productsOnListingInTileMode().size();
+        Assert.assertEquals(vorderachseAttributes, producntsOnListing);
+        listingPage.showListingInListModeButton().click();
+        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
+        listingPage.thirdListingPage().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.checkProductAttributeOnListingWithCarAndFilter("Vorderachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute());
         listingPage.filterBySideLKW().click();

@@ -29,7 +29,7 @@
             <class name="ATD.Tyres.QC_1104_TyresSelector.QC_1240_TestValidationPopupWithClearDiameter"/>
             <class name="ATD.Tyres.QC_1104_TyresSelector.QC_1248_TestValidationPopupWithClearSelectorMoto"/>
             <class name="ATD.Tyres.QC_1104_TyresSelector.QC_1258_TestValidationPopupWithClearSelectorOnListing"/>
-            <class name="ATD.Tyres.QC_1104_TyresSelector.QC_1268_TestValidationPopupWithClearSelectorOnListingMOTO"/>
+            <!--<class name="ATD.Tyres.QC_1104_TyresSelector.QC_1268_TestValidationPopupWithClearSelectorOnListingMOTO"/>-->
             <class name="ATD.Tyres.QC_1104_TyresSelector.QC_1287_TestTyresSelectorWithSeacrByBrand"/>
             <class name="ATD.Tyres.QC_1104_TyresSelector.QC_1288_TestTyresSelectorWithSeacrBySpeedIndex"/>
         </classes>
