@@ -1,7 +1,6 @@
 package ATD;
 
 import com.codeborne.selenide.ElementsCollection;
-import com.sun.xml.internal.ws.server.ServerRtException;
 import io.qameta.allure.Step;
 
 import java.sql.SQLException;
@@ -89,41 +88,6 @@ public class Cart_page_Logic extends Cart_page {
         getCurrencyAndVerify(priceWithoutDiscount(), "priceWithoutDiscount", shop, expectedCurrency);
         getCurrencyAndVerify(priceWithDiscount(), "priceWithDiscount", shop, expectedCurrency);
         getCurrencyAndVerify(discount(), "discount", shop, expectedCurrency);
-        return this;
-    }
-
-    @Step("Close popup delivery limit")
-    public Cart_page_Logic closePopUpDeliveryLimit() {
-        popupDeliveryLimit().shouldBe(visible);
-        closePopupDeliveryLimit().click();
-        return this;
-    }
-
-    @Step("Deletes goods from cart when click on the (Artikel entfernen) button in the delivery pop-up")
-    public Cart_page_Logic deleteGoodsInDeliveryPopup(){
-        popupDeliveryLimit().shouldBe(visible);
-        btnDeleteGoodsInDeliveryPopup().click();
-        return this;
-    }
-
-    @Step("Click the button (Einkauf fortsetzen) in the delivery pop-up")
-    public Cart_page_Logic clickBtnContinueShoppingInDeliveryPopup(){
-        popupDeliveryLimit().shouldBe(visible);
-        btnContinueShoppingInDeliveryPopup().click();
-        return this;
-    }
-
-
-    @Step("Checks the absence of goods in cart page")
-    public Cart_page_Logic checkAbsenceGoodsInCartPage(String idProducts) {
-        productsIDLocator(idProducts).shouldNotBe(visible);
-        return this;
-    }
-
-
-    @Step("Checks the presence of goods in cart page")
-    public Cart_page_Logic checkPresenceGoodsInCardPage(String idProducts) {
-        productsIDLocator(idProducts).shouldBe(visible);
         return this;
     }
 }
