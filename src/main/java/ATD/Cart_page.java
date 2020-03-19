@@ -88,4 +88,27 @@ public class Cart_page {
         return $(byXpath("//*[@id='promo-footer']//span/b"));
     }
 
+    SelenideElement popupDeliveryLimitCartPage() {
+        return $x("//div[@class='delivery-limit-popup delivery_limit']");
+    }
+
+    SelenideElement btnDeleteGoodsInDeliveryPopupCartPage(){
+        return $x("//a[@class='color close_popup delete_items']");
+    }
+
+    SelenideElement btnContinueShoppingInDeliveryPopupCartPage(){
+        return $x("//a[@class='color close_popup continue_shopping']");
+    }
+
+    SelenideElement closePopupDeliveryLimitCartPage() {
+        return $x("//a[@class='close_popup close ']");
+    }
+
+    SelenideElement productsIDLocator (String idProducts) {
+        return $x("//*[@data-article_id='" + idProducts + "']");
+    }
+
+    SelenideElement btnChangeAddressInDeliveryPopupCartPage(){
+        return $x("//a[@class='color close_popup change_address']");
+    }
 }
