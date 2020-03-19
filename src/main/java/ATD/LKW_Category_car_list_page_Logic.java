@@ -1,12 +1,17 @@
 package ATD;
 
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.back;
-import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page {
@@ -104,11 +109,12 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
 
     @Step("checking the applicability of product for selected truck .LKW_Category_car_list_page")
     public LKW_Category_car_list_page_Logic checkingApplicabilityOfProductForSelectedTruck() {
-        while (nextPagePagination().isDisplayed()) {
-            selectProductInTecDocListing();
-            nextPagePagination().click();
-        }
         selectProductInTecDocListing();
+        while (nextPagePagination().isDisplayed()) {
+            nextPagePagination().click();
+            selectProductInTecDocListing();
+        }
+
         return this;
     }
 
@@ -121,16 +127,73 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         return this;
     }
 
-    @Step("get total amount of pages in TecDoc listing page .LKW_Category_car_list_page")
-    public int getTotalAmountOfPages() {
-        int totalAmountOfPages = Integer.parseInt(countOfPagesInTecDocListing().getAttribute("href").substring(97));
-        return totalAmountOfPages;
-    }
-
     @Step("click on Product in TecDoc listing .LKW_Category_car_list_page")
     public LKW_Product_page_Logic clickOnProductInTecDocListing(int point) {
-        imageOfProductTecDocListingBlock(point).click();
+        imageOfProductTecDocListingBlock(point).scrollIntoView("{block: \"center\"}").click();
         return page(LKW_Product_page_Logic.class);
     }
 
+    @Step("added product to basket .LKW_Category_car_list_page")
+    public Cart_page_Logic addProductToBasket() {
+        listingOfProducts().shouldBe(visible);
+        btnOfFirstProductInTecDocListing().click();
+        basketDropMenu().should(appear);
+        basketDropMenu().should(disappear);
+        basket().click();
+        return page(Cart_page_Logic.class);
+    }
+
+    @Step("get id of product in TecDoc Listing .LKW_Category_car_list_page")
+    public String getIdOfProductFromTecDocListing() {
+        String idOfProduct = btnOfFirstProductInTecDocListing().getAttribute("id");
+        return idOfProduct;
+    }
+
+    @Step("Go to product page from tecDoc listing through Image, icon of brand, title in tecDoc listing .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic goToProductPageFromImageBrandTitle() {
+        clickOnImageOfProduct().checkSuccessfullyLKWProductPageLoading("https://lkwteile.autodoc.de/boss-filters/7175133");
+        back();
+        clickOnIconBrandOfProduct().checkSuccessfullyLKWProductPageLoading("https://lkwteile.autodoc.de/boss-filters/7175133");
+        back();
+        clickOnTitleOfProduct().checkSuccessfullyLKWProductPageLoading("https://lkwteile.autodoc.de/boss-filters/7175133");
+        return this;
+    }
+
+    @Step("Click on image of product in tecDoc listing .LKW_Category_car_list_page")
+    public LKW_Product_page_Logic clickOnImageOfProduct() {
+        imageOfProductTecDocListingBlock(1).click();
+        return page(LKW_Product_page_Logic.class);
+    }
+
+    @Step("Click on image of brand of product in tecDoc listing .LKW_Category_car_list_page")
+    public LKW_Product_page_Logic clickOnIconBrandOfProduct() {
+        imageBrandOfProductTecDocListingBlock(1).click();
+        return page(LKW_Product_page_Logic.class);
+    }
+
+    @Step("Click on title of product in tecDoc listing .LKW_Category_car_list_page")
+    public LKW_Product_page_Logic clickOnTitleOfProduct() {
+        titleOfProductInTecDocListingBlock(1).click();
+        return page(LKW_Product_page_Logic.class);
+    }
+
+    @Step("Check of visibility dynamic characteristics of product in TecDoc listing .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic checkOfVisibilityDynamicCharacteristics() {
+        List<String> artNumberOfProduct = new ArrayList<>();
+        artNumberOfProduct.add("Artikelnummer: V31-1013");
+        artNumberOfProduct.add("Artikelnummer: HU 12 140 x");
+        artNumberOfProduct.add("Artikelnummer: PFU 19 226 x");
+
+        for (int i = 0; i < artNumberOfProduct.size(); i++) {
+            articleNumberOfProduct(artNumberOfProduct.get(i)).scrollTo();
+            if (i == 0) {
+                dynamicCharacteristicInTecDocListingBlock(artNumberOfProduct.get(i)).shouldHave(exactText("OM541 LA"));
+            } else {
+                dynamicCharacteristicInTecDocListingBlock(artNumberOfProduct.get(i)).shouldHave(exactText("OM 541 LA"));
+            }
+        }
+        return this;
+    }
+
 }
+

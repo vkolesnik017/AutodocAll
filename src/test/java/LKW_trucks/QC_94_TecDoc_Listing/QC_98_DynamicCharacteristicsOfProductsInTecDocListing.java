@@ -1,8 +1,6 @@
 package LKW_trucks.QC_94_TecDoc_Listing;
 
 import ATD.LKW_Category_car_list_page_Logic;
-import ATD.LKW_Category_page_Logic;
-import ATD.Main_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -18,7 +16,8 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_95_ApplicabilityOfProductsInTecDocListing {
+public class QC_98_DynamicCharacteristicsOfProductsInTecDocListing {
+
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -32,10 +31,10 @@ public class QC_95_ApplicabilityOfProductsInTecDocListing {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks applicability of products in TecDoc Listing")
-    public void testChecksApplicabilityOfProductsInTecDocListing(String route) {
+    @Description(value = "Test checks transition on Product page from TecDoc listing ")
+    public void testChecksTransitionOnProductPageFromTecDocListing(String route) {
         openPage(route);
-        new LKW_Category_car_list_page_Logic().visibilityOfTecDocListingBlock().checkingApplicabilityOfProductForSelectedTruck();
+        new LKW_Category_car_list_page_Logic().checkOfVisibilityDynamicCharacteristics();
     }
 
     @AfterMethod

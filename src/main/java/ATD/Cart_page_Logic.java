@@ -90,4 +90,10 @@ public class Cart_page_Logic extends Cart_page {
         getCurrencyAndVerify(discount(), "discount", shop, expectedCurrency);
         return this;
     }
+
+    @Step("check of id added product to basket from listing. Cart_page")
+    public Cart_page_Logic checkOfIdAddedProductInBasket(String idOfProductFromListing) {
+        idOfAddedProduct().shouldHave(attribute("data-article_id", idOfProductFromListing));
+        return this;
+    }
 }

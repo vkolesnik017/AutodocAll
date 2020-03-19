@@ -88,4 +88,6 @@ public class Cart_page {
         return $(byXpath("//*[@id='promo-footer']//span/b"));
     }
 
+    SelenideElement idOfAddedProduct(){return $x("//div[@class='cart-page-listing']//tr[2]");}
+
 }
