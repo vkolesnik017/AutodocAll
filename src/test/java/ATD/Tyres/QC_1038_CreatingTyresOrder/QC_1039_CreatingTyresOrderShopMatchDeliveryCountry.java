@@ -44,7 +44,7 @@ public class QC_1039_CreatingTyresOrderShopMatchDeliveryCountry {
                                      .nextBtnClick()
                                      .chooseVorkasse()
                                      .nextBtnClick()
-                                     .checkFreeDeliveryPriceAllData("0,00")
+                                     .checkDeliveryPriceAlldata("0,00")
                                      .nextBtnClick()
                                      .getOrderNumber();
         new Order_aws(orderNumber).openOrderInAwsWithLogin()

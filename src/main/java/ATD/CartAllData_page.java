@@ -88,16 +88,8 @@ public class CartAllData_page {
         return $(byXpath("//*[@class='alldata-bottom']//*[contains(@class,'total')]/span[2]"));
     }
 
-    SelenideElement heavyLoadsShippingCost(){
-        return $x("//div[@class='order-summary ']//div[4]//span[2]");
-    }
-
     public SelenideElement priceOfSafeOrder() {
         return $(byCssSelector(".bestelen-block__col>label"));
-    }
-
-    SelenideElement safeOrderBlock(){
-        return $(byCssSelector(".bestelen-block__row"));
     }
 
     // locators of popup of dangerous product

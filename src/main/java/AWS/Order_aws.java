@@ -25,10 +25,6 @@ public class Order_aws {
     private String orderNumber;
     private String url = "https://aws.autodoc.de/order/view/";
 
-    private SelenideElement totalPriceOrder() {
-        return $x("//td[@class='inf_grandTotal']");
-    }
-
     private SelenideElement phoneNumberField() {
         return $(byName("Order[rTelefon]"));
     }
@@ -217,10 +213,6 @@ public class Order_aws {
 
     private SelenideElement deliveryDeliveryPriceOrderAWS() { return $(".inf_deliveryCost > a"); }
 
-    private SelenideElement  heavyLoadsDeliveryPriceOrderAWS() {
-        return $(".inf_surcharge > a");
-    }
-
     // locators and methods for Popup of reclamation, appears after click reclamation button
     private SelenideElement addNewReclamationButton() {
         return $(byId("addNewReclamation"));
@@ -256,23 +248,6 @@ public class Order_aws {
 
     private SelenideElement listWithReclamations() {
         return $(byId("statistic_list"));
-    }
-
-    private SelenideElement safeOrderSelector() {
-        return $(byId("form_securityDeliveryStatusChange"));
-    }
-
-    private SelenideElement btnChangeOrderStatusInTest() {
-        return $x("//button[@class='btn btn-info']");
-    }
-
-
-    @Step("Re save order. Order_aws")
-    public Order_aws reSaveOrder(){
-        btnChangeOrderStatusInTest().scrollTo();
-        btnChangeOrderStatusInTest().click();
-        saveChangesInOrderBtn().click();
-        return this;
     }
 
     @Step
@@ -326,24 +301,6 @@ public class Order_aws {
     @Step("Check delivery price in order AWS")
     public Order_aws checkDeliveryPriceOrderAWS( String expectedDeliveryPriceOrderAWS) {
         deliveryDeliveryPriceOrderAWS().shouldHave(attribute("data-sum", expectedDeliveryPriceOrderAWS));
-        return this;
-    }
-
-    @Step("Check Heavy Loads delivery price in order AWS")
-    public Order_aws checkHeavyLoadsDeliveryPriceOrderAWS(String expectedHeavyLoadsDeliveryPriceOrderAWS) {
-        heavyLoadsDeliveryPriceOrderAWS().shouldHave(attribute("data-sum",expectedHeavyLoadsDeliveryPriceOrderAWS));
-        return this;
-    }
-
-    @Step("Compares the total price in AWS with the price on the cartAllData page")
-    public Order_aws compareTotalPriceInAwsWithPriceCartAllDataPage(String totalPrice) {
-        totalPriceOrder().shouldHave(text(totalPrice));
-        return this;
-    }
-
-    @Step("Checks that Safe Order is turned off. Order_aws")
-    public Order_aws checkStatusSafeOrder() {
-        safeOrderSelector().shouldHave(text("Выключен"));
         return this;
     }
 }
