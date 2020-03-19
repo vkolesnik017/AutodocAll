@@ -13,6 +13,12 @@ import static org.testng.AssertJUnit.assertNull;
 public class Profile_page_Logic extends Profile_page {
     private Retouren_page_Logic retourenPage = new Retouren_page_Logic();
 
+    @Step(":on Profile_page")
+    public Cart_page_Logic cartClick() {
+        new Main_page_Logic().cartClick();
+        return page(Cart_page_Logic.class);
+    }
+
     @Step("Get client ID(digit). Profile_page")
     public String getDigitClientId() {
         String digit = clientID().getText();
