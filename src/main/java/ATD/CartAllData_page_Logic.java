@@ -31,7 +31,7 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return page(Main_page.class);
     }
 
-    @Step("Check removing tyres on alldata with other products with delivery to other country. CartAllData_page")
+    @Step("Check removing tyres on alldata withgetTotalPriceAllDataPage other products with delivery to other country. CartAllData_page")
     public CartAllData_page_Logic checkRemovingTyresFromAlldataWithOtherProducts(String productId) {
         tyresAreNotDeliveredToCountryPopup().shouldBe(visible);
         closePopupBtn().click();
@@ -153,7 +153,7 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return this;
     }
 
-    @Step("et total price of the CartAllData_page")
+    @Step("Get total price of the CartAllData_page")
     public Double getTotalPriceAllDataPage(){
         String realPrice = totalOrderPrice().getText();
         realPrice = realPrice.substring(0, realPrice.indexOf(" ")).replaceAll(",",".");
