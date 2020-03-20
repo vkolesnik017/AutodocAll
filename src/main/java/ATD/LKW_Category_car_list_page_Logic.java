@@ -2,6 +2,7 @@ package ATD;
 
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import org.apache.poi.ss.formula.functions.Match;
 import org.testng.Assert;
 
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 import static com.codeborne.selenide.CollectionCondition.size;
+import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
@@ -195,5 +197,17 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         return this;
     }
 
+    @Step("Check amount of pages in TecDoc listing .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic checkAmountOfPagesInTecDocListing() {
+        int actualAmountPagesInTecDocListing = (int) Math.ceil(Integer.parseInt(totalAmountOfProductsInTecDocListing().getText()) / 20.0);
+        int expectedAmountPagesInTecDocListing = Integer.parseInt(lastPagePaginator().getAttribute("href").substring(97));
+        Assert.assertTrue(actualAmountPagesInTecDocListing == expectedAmountPagesInTecDocListing);
+        nextPagePagination().click();
+        productsOnPage().shouldHave(sizeNotEqual(0));
+        return this;
+    }
+
 }
+
+
 

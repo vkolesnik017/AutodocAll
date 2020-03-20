@@ -64,6 +64,8 @@ public class LKW_Category_car_list_page {
         return $x("//span[@class='next']");
     }
 
+    SelenideElement lastPagePaginator() {return $x("//span[@class='last']/a");}
+
 
     SelenideElement btnOfFirstProductInTecDocListing() {
         return $x("(//div[@class='button '])[1]");
@@ -84,4 +86,6 @@ public class LKW_Category_car_list_page {
     SelenideElement dynamicCharacteristicInTecDocListingBlock(String titleOfArticle) {
         return $x("//span[contains(text(),'" + titleOfArticle + "')]/ancestor::div[@class='description']//ul[@class='criteria']//li[1]/span[2]");
     }
+
+    SelenideElement totalAmountOfProductsInTecDocListing(){ return $x("//div[@class='product_count']/span");}
 }

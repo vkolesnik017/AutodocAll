@@ -1,6 +1,6 @@
-package LKW_trucks.QC_18_SideBarBlocksOfParentCategoriesAndLinkingChildCategory;
+package LKW_trucks.QC_94_TecDoc_Listing;
 
-import ATD.LKW_Parent_Category_page_Logic;
+import ATD.LKW_Category_car_list_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,7 +16,8 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_24_PresenceOfChildCategoriesInSideBar {
+public class QC_101_PaginationOnTecDocListing {
+
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -24,17 +25,18 @@ public class QC_24_PresenceOfChildCategoriesInSideBar {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_parent_category,lkw_category,lkw_category_maker,lkw_category_brand,lkw_category_maker_brand,lkw_category_car_list10");
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list10");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks child categories block in Sidebar")
-    public void testChecksChildCategoriesBlockInsideBar(String route) {
+    @Description(value = "Test checks pagination on TecDoc listing ")
+    public void testChecksPaginationInTecDocListing(String route) {
         openPage(route);
-        new LKW_Parent_Category_page_Logic().presenceOfElementsChildCategoriesBlockInSideBar();
+        new LKW_Category_car_list_page_Logic().checkAmountOfPagesInTecDocListing();
     }
+
     @AfterMethod
     private void tearDown() {
         close();

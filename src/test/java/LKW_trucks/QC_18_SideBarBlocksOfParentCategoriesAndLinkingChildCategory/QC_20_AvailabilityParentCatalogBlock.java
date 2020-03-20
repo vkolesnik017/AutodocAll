@@ -5,6 +5,7 @@ import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -13,6 +14,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Selenide.close;
 
 public class QC_20_AvailabilityParentCatalogBlock {
     @BeforeClass
@@ -32,5 +34,9 @@ public class QC_20_AvailabilityParentCatalogBlock {
     public void testChecksPresenceOfCatalogBlock(String route) {
         openPage(route);
          new LKW_Parent_Category_page_Logic().presenceOfCatalogBlockInSidebar();
+    }
+    @AfterMethod
+    private void tearDown() {
+        close();
     }
 }
