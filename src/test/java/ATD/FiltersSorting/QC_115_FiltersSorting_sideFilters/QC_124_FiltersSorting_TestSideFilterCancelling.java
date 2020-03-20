@@ -31,7 +31,12 @@ public class QC_124_FiltersSorting_TestSideFilterCancelling {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2,search4,search5");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2,search4,search5,search17,search18");
+    }
+
+    @DataProvider(name = "routesLKW", parallel = true)
+    Object[] dataProviderLKW() throws SQLException {
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_search5");
     }
 
     @Test(dataProvider = "routes")
@@ -99,6 +104,23 @@ public class QC_124_FiltersSorting_TestSideFilterCancelling {
         listingPage.durchmesserSideFilterButtonFirstValue().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         int numberOfAttributesNoFilter = listingPage.durchmesserProductAttributeTecdocRoute().size();
+        Assert.assertNotEquals(numberOfAttributesFilter, numberOfAttributesNoFilter);
+    }
+
+    @Test(dataProvider = "routesLKW")
+    @Flaky
+    @Owner(value = "Romaniuta")
+    @Description(value = "Test checks side filter cancelling")
+    public void testSideFilterCancellingLKW(String route) {
+        openPage(route);
+        String characteristic = listingPage.activeSideFilter2().text();
+        listingPage.activeSideFilter2().click();
+        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
+        listingPage.checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.langeProductAttributeGenericRoute(), listingPage.langeProductAttributeTecdocRoute());
+        int numberOfAttributesFilter = listingPage.langeProductAttributeGenericRoute().size();
+        listingPage.activeSideFilter().click();
+        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
+        int numberOfAttributesNoFilter = listingPage.langeProductAttributeTecdocRoute().size();
         Assert.assertNotEquals(numberOfAttributesFilter, numberOfAttributesNoFilter);
     }
 

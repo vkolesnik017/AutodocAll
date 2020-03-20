@@ -2,7 +2,6 @@ package ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters;
 
 
 import ATD.DataBase;
-import ATD.Listing_page;
 import ATD.Listing_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
@@ -31,7 +30,12 @@ public class QC_119_FiltersSorting_TestLangeFilterApplying {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2,search4");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2,search4,search17,search18");
+    }
+
+    @DataProvider(name = "routesLKWsearch", parallel = true)
+    Object[] dataProviderLKWsearch() throws SQLException {
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_search5");
     }
 
     @Test(dataProvider = "routes")
@@ -56,6 +60,18 @@ public class QC_119_FiltersSorting_TestLangeFilterApplying {
         listingPage.langeFilterCheckboxLKW().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.langeProductAttributeGenericRouteLKW(), listingPage.langeProductAttributeTecdocRouteLKW());
+    }
+
+    @Test(dataProvider = "routesLKWsearch")
+    @Flaky
+    @Owner(value = "Romaniuta")
+    @Description(value = "Test checks Lange side filter route LKW search")
+    public void testLangeFilterLKWsearch(String route) {
+        openPage(route);
+        String characteristic = listingPage.langeFilterAttribute().text();
+        listingPage.langeFilterCheckbox().click();
+        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
+        listingPage.checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.langeProductAttributeGenericRoute(), listingPage.langeProductAttributeTecdocRoute());
     }
 
     @AfterMethod
