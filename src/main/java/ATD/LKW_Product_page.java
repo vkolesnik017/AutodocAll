@@ -11,7 +11,9 @@ public class LKW_Product_page {
         return $$x("//div[@class='steps breadcrumbs']//li");
     }
 
-    SelenideElement firstLinkOfBreadCrumbsBlock() {return $x("//div[@class='steps breadcrumbs']//img");}
+    SelenideElement firstLinkOfBreadCrumbsBlock() {
+        return $x("//div[@class='steps breadcrumbs']//img");
+    }
 
     SelenideElement secondLinkOfBreadCrumbsBlock() {
         return $x("//li[@class='step_2 active parts_step_2']//a");
@@ -37,7 +39,23 @@ public class LKW_Product_page {
         return $(byName("car_id"));
     }
 
-    SelenideElement searchBtnInHorizontalTruckSelector() { return $x("//button[@class='search-button-truck js--lkw_selector-btn-submit']");}
+    SelenideElement searchBtnInHorizontalTruckSelector() {
+        return $x("//button[@class='search-button-truck js--lkw_selector-btn-submit']");
+    }
 
-    SelenideElement titleInTruckSelectorHeader() {return $x("//div[@class='car-match-block car-match-block--truck car-match-block--select']/p");}
+    SelenideElement titleInTruckSelectorHeader() {
+        return $x("//div[@class='car-match-block car-match-block--truck car-match-block--select']/p");
+    }
+
+    SelenideElement breadCrumbsBlock() {
+        return $x("//div[@class='steps breadcrumbs']");
+    }
+
+    SelenideElement compatibilityTruckBlock() {
+        return $x("//div[@class='product-info-block-accordion js--roll-up']");
+    }
+
+    SelenideElement linkOfCompatibilityTruckAndProduct() {
+        return $x("//div[@class='accordion-selected']");
+    }
 }

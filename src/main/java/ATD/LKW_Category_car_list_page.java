@@ -38,4 +38,54 @@ public class LKW_Category_car_list_page {
     SelenideElement firstLinkOfBreadCrumbsBlockTitleTecDoC() {
         return $x("//div[@class='steps breadcrumbs']//li[1]/span/a");
     }
+
+    SelenideElement listOfProductInTecDocListingBlock() {
+        return $x("//ul[@class='list_products ']");
+    }
+
+    ElementsCollection productsOnPage() {
+        return $$x("//div[@class='image']//span[2]/img");
+    }
+
+    SelenideElement imageOfProductTecDocListingBlock(int position) {
+        return $x("(//div[@class='image']//span[2]/img)[" + position + "]");
+    }
+
+    SelenideElement imageBrandOfProductTecDocListingBlock(int position) {
+        return $x("(//div[@class='image']/span[1]/img)[" + position + "]");
+    }
+
+    SelenideElement titleOfProductInTecDocListingBlock(int position) {
+        return $x("(//div[@class='name']/a)[" + position + "]");
+    }
+
+
+    SelenideElement nextPagePagination() {
+        return $x("//span[@class='next']");
+    }
+
+    SelenideElement lastPagePaginator() {return $x("//span[@class='last']/a");}
+
+
+    SelenideElement btnOfFirstProductInTecDocListing() {
+        return $x("(//div[@class='button '])[1]");
+    }
+
+    SelenideElement basketDropMenu() {
+        return $x("//div[@class='cart-items-block ']");
+    }
+
+    SelenideElement basket() {
+        return $x("//a[@class='header-cart__link']");
+    }
+
+    SelenideElement articleNumberOfProduct(String titleOfArticle) {
+        return $x("//span[contains(text(),'" + titleOfArticle + "')]");
+    }
+
+    SelenideElement dynamicCharacteristicInTecDocListingBlock(String titleOfArticle) {
+        return $x("//span[contains(text(),'" + titleOfArticle + "')]/ancestor::div[@class='description']//ul[@class='criteria']//li[1]/span[2]");
+    }
+
+    SelenideElement totalAmountOfProductsInTecDocListing(){ return $x("//div[@class='product_count']/span");}
 }

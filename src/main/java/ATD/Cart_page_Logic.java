@@ -90,4 +90,61 @@ public class Cart_page_Logic extends Cart_page {
         getCurrencyAndVerify(discount(), "discount", shop, expectedCurrency);
         return this;
     }
+
+    @Step("check of id added product to basket from listing. Cart_page")
+    public Cart_page_Logic checkOfIdAddedProductInBasket(String idOfProductFromListing) {
+        idOfAddedProduct().shouldHave(attribute("data-article_id", idOfProductFromListing));
+        return this;
+    }
+
+    @Step("Checks the presence of pop up delivery limit. Cart_page")
+    public Cart_page_Logic checkPresencePopUpDeliveryLimit() {
+        popupDeliveryLimitCartPage().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Close popup delivery limit. Cart_page")
+    public Cart_page_Logic closePopUpDeliveryLimitCartPage() {
+        closePopupDeliveryLimitCartPage().click();
+        return this;
+    }
+
+    @Step("Deletes goods from cart when click on the (Artikel entfernen) button in the delivery pop-up. Cart_page")
+    public Cart_page_Logic deleteGoodsInDeliveryPopupCartPage(){
+        btnDeleteGoodsInDeliveryPopupCartPage().click();
+        return this;
+    }
+
+    @Step("Click the button (Einkauf fortsetzen) in the delivery pop-up. Cart_page")
+    public Cart_page_Logic clickBtnContinueShoppingInDeliveryPopupCartPage(){
+        btnContinueShoppingInDeliveryPopupCartPage().click();
+        return this;
+    }
+
+    @Step("Click the button (Adresse ändern) in the delivery pop-up. Cart_page")
+    public CartAddress_page_Logic clickBtnChangeAddressInDeliveryPopupCartPageCartPage() {
+        btnChangeAddressInDeliveryPopupCartPage().click();
+        return page(CartAddress_page_Logic.class);
+    }
+
+    //The method is used when delivering goods to FR
+    @Step("Checks for absence btn (Einkauf fortsetzen) in the delivery pop-up. Cart_page")
+    public Cart_page_Logic checkAbsenceBtnContinueShoppingInDeliveryPopupCartPage() {
+        popupCountryDeliveryLimitCartPage().shouldBe(visible);
+        btnContinueShoppingInDeliveryPopupCartPage().shouldNotBe(visible);
+        return this;
+    }
+
+    @Step("Checks the absence of good by id {idProducts} in cart page. Cart_page")
+    public Cart_page_Logic checkAbsenceGoodsInCartPage(String idProducts) {
+        productsIDLocator(idProducts).shouldNotBe(visible);
+        return this;
+    }
+
+
+    @Step("Checks the presence of good by id {idProducts} in cart page. Cart_page")
+    public Cart_page_Logic checkPresenceGoodsInCardPage(String idProducts) {
+        productsIDLocator(idProducts).shouldBe(visible);
+        return this;
+    }
 }
