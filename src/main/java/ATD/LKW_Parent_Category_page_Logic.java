@@ -1,9 +1,14 @@
 package ATD;
 
 import io.qameta.allure.Step;
+import javafx.collections.transformation.SortedList;
 import org.testng.Assert;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.codeborne.selenide.CollectionCondition.size;
+import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.WebDriverRunner.url;
@@ -11,9 +16,9 @@ import static com.codeborne.selenide.WebDriverRunner.url;
 public class LKW_Parent_Category_page_Logic extends LKW_Parent_Category_page {
 
     @Step("Check successfully LKW_Categories page loading .LKW_Parent_Category_page")
-    public LKW_Parent_Category_page_Logic checkSuccessfullyLKWParentCategoryPageLoading() {
+    public LKW_Parent_Category_page_Logic checkSuccessfullyLKWParentCategoryPageLoading(String currentUrl) {
         childCategoryBlock().shouldBe(visible);
-        Assert.assertTrue(url().contains("https://lkwteile.autodoc.de/ersatzteile/filter"));
+        Assert.assertTrue(url().contains(currentUrl));
         return this;
     }
 
@@ -41,7 +46,35 @@ public class LKW_Parent_Category_page_Logic extends LKW_Parent_Category_page {
             closeToolTipTextSelector().click();
         }
         return this;
-
     }
+
+    @Step("presence of a Catalog block in the sidebar .LKW_Category_maker_brand_page")
+    public LKW_Parent_Category_page_Logic presenceOfCatalogBlockInSidebar() {
+        catalogBlockInSideBar().shouldBe(visible);
+        return this;
+    }
+
+    @Step("presence of all parent categories in the sidebar .LKW_Category_maker_brand_page")
+    public LKW_Parent_Category_page_Logic presenceOfAllParentCategoriesInSideBar() {
+        catalogBlockInSideBar().shouldBe(visible).click();
+        categoriesInParentCatalogInSideBar().shouldHave(size(31));
+        return this;
+    }
+
+    @Step("go to child category from sidebar .LKW_Category_maker_brand_page")
+    public LKW_Parent_Category_page_Logic goToParentCategoryPage() {
+        parentCategoryInSideBar("Abgasanlage").scrollTo().click();
+        return this;
+    }
+
+    @Step("Presence of elements in Child categories block in sidebar .LKW_Category_maker_brand_page")
+    public LKW_Parent_Category_page_Logic presenceOfElementsChildCategoriesBlockInSideBar() {
+        titleOfChildCategoriesBlockInSideBar().shouldBe(visible);
+        childCategoryBlockInSideBar().shouldBe(visible);
+        linksOfChildCategoriesBlockInSideBar().shouldHave(sizeNotEqual(0));
+        return this;
+    }
+
+
 
 }

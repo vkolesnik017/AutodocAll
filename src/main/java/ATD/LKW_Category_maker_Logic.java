@@ -40,7 +40,7 @@ public class LKW_Category_maker_Logic extends LKW_Category_maker {
     public LKW_Category_maker_Logic checkLinkClickInBreadCrumbsBlock() {
         firstLinkClick().checkSuccessfullyLKWCategoriesPageLoading();
         back();
-        secondLinkClick().checkSuccessfullyLKWParentCategoryPageLoading();
+        secondLinkClick().checkSuccessfullyLKWParentCategoryPageLoading("https://lkwteile.autodoc.de/ersatzteile/filter");
         back();
         thirdLinkClick().checkSuccessfullyChildCategoryPageLoading();
         return this;

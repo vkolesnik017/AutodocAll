@@ -91,6 +91,12 @@ public class Cart_page_Logic extends Cart_page {
         return this;
     }
 
+    @Step("check of id added product to basket from listing. Cart_page")
+    public Cart_page_Logic checkOfIdAddedProductInBasket(String idOfProductFromListing) {
+        idOfAddedProduct().shouldHave(attribute("data-article_id", idOfProductFromListing));
+        return this;
+    }
+
     @Step("Checks the presence of pop up delivery limit. Cart_page")
     public Cart_page_Logic checkPresencePopUpDeliveryLimit() {
         popupDeliveryLimitCartPage().shouldBe(visible);
