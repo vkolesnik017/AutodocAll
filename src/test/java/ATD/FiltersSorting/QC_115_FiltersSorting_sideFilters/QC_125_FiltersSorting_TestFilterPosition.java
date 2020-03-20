@@ -31,7 +31,12 @@ public class QC_125_FiltersSorting_TestFilterPosition {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2,search4,search5");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2,search4,search5,search17,search18");
+    }
+
+    @DataProvider(name = "routesLKW", parallel = true)
+    Object[] dataProviderLKW() throws SQLException {
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_search5");
     }
 
     @Test(dataProvider = "routes")
@@ -92,6 +97,18 @@ public class QC_125_FiltersSorting_TestFilterPosition {
         listingPage.sideFilterOenCheckbox().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.sideFilterOenAttribute2().shouldHave(text(characteristic));
+    }
+
+    @Test(dataProvider = "routesLKW")
+    @Flaky
+    @Owner(value = "Romaniuta")
+    @Description(value = "Test checks filter position LKW")
+    public void testFilterPositionLKW(String route) {
+        openPage(route);
+        String characteristic = listingPage.langeFilterAttribute3().text();
+        listingPage.langeFilterCheckbox3().click();
+        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
+        listingPage.activeSideFilter3().shouldHave(text(characteristic));
     }
 
     @AfterMethod
