@@ -97,42 +97,52 @@ public class Cart_page_Logic extends Cart_page {
         return this;
     }
 
-    @Step("Close popup delivery limit. CartPage")
-    public Cart_page_Logic closePopUpDeliveryLimitCartPage() {
+    @Step("Checks the presence of pop up delivery limit. Cart_page")
+    public Cart_page_Logic checkPresencePopUpDeliveryLimit() {
         popupDeliveryLimitCartPage().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Close popup delivery limit. Cart_page")
+    public Cart_page_Logic closePopUpDeliveryLimitCartPage() {
         closePopupDeliveryLimitCartPage().click();
         return this;
     }
 
-    @Step("Deletes goods from cart when click on the (Artikel entfernen) button in the delivery pop-up. CartPage")
+    @Step("Deletes goods from cart when click on the (Artikel entfernen) button in the delivery pop-up. Cart_page")
     public Cart_page_Logic deleteGoodsInDeliveryPopupCartPage(){
-        popupDeliveryLimitCartPage().shouldBe(visible);
         btnDeleteGoodsInDeliveryPopupCartPage().click();
         return this;
     }
 
-    @Step("Click the button (Einkauf fortsetzen) in the delivery pop-up. CartPage")
+    @Step("Click the button (Einkauf fortsetzen) in the delivery pop-up. Cart_page")
     public Cart_page_Logic clickBtnContinueShoppingInDeliveryPopupCartPage(){
-        popupDeliveryLimitCartPage().shouldBe(visible);
         btnContinueShoppingInDeliveryPopupCartPage().click();
         return this;
     }
 
-    @Step("Click the button (Adresse ändern) in the delivery pop-up. CartPage")
+    @Step("Click the button (Adresse ändern) in the delivery pop-up. Cart_page")
     public CartAddress_page_Logic clickBtnChangeAddressInDeliveryPopupCartPageCartPage() {
         btnChangeAddressInDeliveryPopupCartPage().click();
         return page(CartAddress_page_Logic.class);
     }
 
+    //The method is used when delivering goods to FR
+    @Step("Checks for absence btn (Einkauf fortsetzen) in the delivery pop-up. Cart_page")
+    public Cart_page_Logic checkAbsenceBtnContinueShoppingInDeliveryPopupCartPage() {
+        popupCountryDeliveryLimitCartPage().shouldBe(visible);
+        btnContinueShoppingInDeliveryPopupCartPage().shouldNotBe(visible);
+        return this;
+    }
 
-    @Step("Checks the absence of goods in cart page. CartPage")
+    @Step("Checks the absence of good by id {idProducts} in cart page. Cart_page")
     public Cart_page_Logic checkAbsenceGoodsInCartPage(String idProducts) {
         productsIDLocator(idProducts).shouldNotBe(visible);
         return this;
     }
 
 
-    @Step("Checks the presence of goods in cart page. CartPage")
+    @Step("Checks the presence of good by id {idProducts} in cart page. Cart_page")
     public Cart_page_Logic checkPresenceGoodsInCardPage(String idProducts) {
         productsIDLocator(idProducts).shouldBe(visible);
         return this;

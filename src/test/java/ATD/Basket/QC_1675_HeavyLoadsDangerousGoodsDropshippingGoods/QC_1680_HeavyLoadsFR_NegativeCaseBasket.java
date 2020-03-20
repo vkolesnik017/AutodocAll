@@ -16,9 +16,9 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_1677_HeavyLoadsNegativeCase {
+public class QC_1680_HeavyLoadsFR_NegativeCaseBasket {
 
-    private String email = "qc_1677_autotestDE@mailinator.com";
+    private String email = "qc_1680_autotestDE@mailinator.com";
 
     private Product_page_Logic product_page_logic = new Product_page_Logic();
 
@@ -35,8 +35,8 @@ public class QC_1677_HeavyLoadsNegativeCase {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks negative purchase of a heavy loads / Basket")
-    public void testOfHeavyLoadsNegativePurchaseBasket(String route) throws SQLException {
+    @Description(value = "Test checks negative purchase of a heavy loads in FR / Basket")
+    public void testOfHeavyLoadsNegativePurchaseBasketInFR (String route) throws SQLException {
         openPage(route);
         product_page_logic.addProductToCart();
         openPage("https://autodoc.de/" + new DataBase().getRouteByRouteName("DE", "search3"));
@@ -44,7 +44,7 @@ public class QC_1677_HeavyLoadsNegativeCase {
         new Search_page_Logic().closePopupOtherCategoryIfYes();
         new Main_page_Logic().loginFromHeader(email)
                 .cartClick()
-                .checkPresencePopUpDeliveryLimit()
+                .checkAbsenceBtnContinueShoppingInDeliveryPopupCartPage()
                 .closePopUpDeliveryLimitCartPage()
                 .checkAbsenceGoodsInCartPage("7037462")
                 .checkPresenceGoodsInCardPage("1187466");
@@ -52,17 +52,8 @@ public class QC_1677_HeavyLoadsNegativeCase {
         product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
-                .checkPresencePopUpDeliveryLimit()
                 .deleteGoodsInDeliveryPopupCartPage()
                 .checkAbsenceGoodsInCartPage("7037462")
-                .checkPresenceGoodsInCardPage("1187466");
-        openPage(route);
-        product_page_logic.addProductToCart()
-                .closePopupOtherCategoryIfYes()
-                .cartClick()
-                .checkPresencePopUpDeliveryLimit()
-                .clickBtnContinueShoppingInDeliveryPopupCartPage()
-                .checkPresenceGoodsInCardPage("7037462")
                 .checkPresenceGoodsInCardPage("1187466");
     }
 

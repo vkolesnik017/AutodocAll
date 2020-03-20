@@ -12,6 +12,8 @@
             <class name="ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1677_HeavyLoadsNegativeCase"/>
             <class name="ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1678_HeavyLoadsNegativeCasAllData"/>
             <class name="ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1679_HeavyLoadsFR_PositiveCase"/>
+            <class name="ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1680_HeavyLoadsFR_NegativeCaseBasket"/>
+            <class name="ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1681_HeavyLoadsFR_NegativeCaseAllData"/>
         </classes>
     </test>
 
