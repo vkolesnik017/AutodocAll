@@ -153,17 +153,12 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return this;
     }
 
-    @Step("Get and Transform the total price of the CartAllData_page")
-    public Double getAndTransformTotalPriceAllDataPage(){
-        String price = getTotalPriceAllDataPage();
-        price = price.substring(0, price.indexOf(" ")).replaceAll(",",".");
-        Double totalPrice = Double.parseDouble(price);
+    @Step("et total price of the CartAllData_page")
+    public Double getTotalPriceAllDataPage(){
+        String realPrice = totalOrderPrice().getText();
+        realPrice = realPrice.substring(0, realPrice.indexOf(" ")).replaceAll(",",".");
+        Double totalPrice = Double.parseDouble(realPrice);
         return totalPrice;
-    }
-
-    @Step("Get total price of the CartAllData_page")
-    public String getTotalPriceAllDataPage(){
-        return totalOrderPrice().getText();
     }
 
     @Step(": on CartAllData_page")
