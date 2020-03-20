@@ -26,7 +26,7 @@ public class LKW_Category_maker_brand_page_Logic extends LKW_Category_maker_bran
     public LKW_Category_maker_brand_page_Logic checkLinkClickInBreadCrumbsBlock() {
         firstLinkClick().checkSuccessfullyLKWCategoriesPageLoading();
         back();
-        secondLinkClick().checkSuccessfullyLKWParentCategoryPageLoading();
+        secondLinkClick().checkSuccessfullyLKWParentCategoryPageLoading("https://lkwteile.autodoc.de/ersatzteile/filter");
         back();
         thirdLinkClick().checkSuccessfullyChildCategoryPageLoading();
         back();

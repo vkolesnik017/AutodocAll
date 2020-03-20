@@ -38,4 +38,12 @@ class LKW_Category_page {
     SelenideElement sixthLinkOfBreadCrumbsBlock() {
         return $x("//li[@class='step_6 not_active parts_step_6']/span/span");
     }
+
+    SelenideElement topChildCategoryBlockInSidebar() {
+        return $x("//div[@class='block categories blue topSubCats']");
+    }
+
+    ElementsCollection linksOfChildCategoriesOfTopChildBlockInSidebar() {
+        return $$x("//div[@class='block categories blue topSubCats']//li//span");
+    }
 }

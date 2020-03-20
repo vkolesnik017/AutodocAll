@@ -35,4 +35,29 @@ public class LKW_Parent_Category_page {
         return $x("//div[@class='tooltiptext-close js-tooltiptext-close']");
     }
 
+    SelenideElement catalogBlockInSideBar() {
+        return $x("//div[@class='teile_catalog']/a");
+    }
+
+    ElementsCollection categoriesInParentCatalogInSideBar() {
+        return $$x("//div[@id='teile_catalog_list']//ul[@class='filetree cat_tree treeview']//li");
+    }
+
+    SelenideElement parentCategoryInSideBar(String titleOfParentCategory) {
+        return $x("//div[@id='teile_catalog_list']//ul[@class='filetree cat_tree treeview']//span[contains(text(),'" + titleOfParentCategory + "')]");
+    }
+
+    SelenideElement childCategoryBlockInSideBar() {
+        return $x("//div[@class='block categories blue topSubCats']");
+    }
+
+    ElementsCollection linksOfChildCategoriesBlockInSideBar() {
+        return $$x("//div[@class='block categories blue topSubCats']//li");
+    }
+
+    SelenideElement titleOfChildCategoriesBlockInSideBar() {
+        return $x("//div[@class='block categories blue topSubCats']/../b");
+    }
+
+    ElementsCollection childCategoriesInChildCategoryBlock() {return $$x("//ul[@class='simple_links']//li");}
 }
