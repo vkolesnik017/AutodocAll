@@ -92,6 +92,10 @@ public class Cart_page {
         return $x("//div[@class='delivery-limit-popup delivery_limit']");
     }
 
+    SelenideElement popupCountryDeliveryLimitCartPage() {
+        return $x("//div[@class='delivery-limit-popup country_delivery_limit']");
+    }
+
     SelenideElement btnDeleteGoodsInDeliveryPopupCartPage(){
         return $x("//a[@class='color close_popup delete_items']");
     }

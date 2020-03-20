@@ -24,8 +24,8 @@ import static com.codeborne.selenide.Selenide.close;
 public class QC_1679_HeavyLoadsFR_PositiveCase {
 
     private String email = "qc_1679autotestDE@mailinator.com";
-    private String totalPrice;
-    private String totalPriceAWSOrder;
+    private Double totalPrice;
+    private Double totalPriceAWSOrder;
     private String orderNumber;
 
     @BeforeClass
@@ -53,7 +53,7 @@ public class QC_1679_HeavyLoadsFR_PositiveCase {
                 .checkRegularDeliveryPriceAllData("9,95")
                 .checkHeavyLoadsDeliveryPriceAllData("36,95")
                 .checkAbsenceSafeOrderBlock()
-                .returnTotalPriceAllDataPage();
+                .getAndTransformTotalPriceAllDataPage();
         new CartAllData_page_Logic().nextBtnClick();
         orderNumber = new Payment_handler_page_Logic().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumber);
