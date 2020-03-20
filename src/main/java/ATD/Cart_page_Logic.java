@@ -96,4 +96,45 @@ public class Cart_page_Logic extends Cart_page {
         idOfAddedProduct().shouldHave(attribute("data-article_id", idOfProductFromListing));
         return this;
     }
+
+    @Step("Close popup delivery limit. CartPage")
+    public Cart_page_Logic closePopUpDeliveryLimitCartPage() {
+        popupDeliveryLimitCartPage().shouldBe(visible);
+        closePopupDeliveryLimitCartPage().click();
+        return this;
+    }
+
+    @Step("Deletes goods from cart when click on the (Artikel entfernen) button in the delivery pop-up. CartPage")
+    public Cart_page_Logic deleteGoodsInDeliveryPopupCartPage(){
+        popupDeliveryLimitCartPage().shouldBe(visible);
+        btnDeleteGoodsInDeliveryPopupCartPage().click();
+        return this;
+    }
+
+    @Step("Click the button (Einkauf fortsetzen) in the delivery pop-up. CartPage")
+    public Cart_page_Logic clickBtnContinueShoppingInDeliveryPopupCartPage(){
+        popupDeliveryLimitCartPage().shouldBe(visible);
+        btnContinueShoppingInDeliveryPopupCartPage().click();
+        return this;
+    }
+
+    @Step("Click the button (Adresse ändern) in the delivery pop-up. CartPage")
+    public CartAddress_page_Logic clickBtnChangeAddressInDeliveryPopupCartPageCartPage() {
+        btnChangeAddressInDeliveryPopupCartPage().click();
+        return page(CartAddress_page_Logic.class);
+    }
+
+
+    @Step("Checks the absence of goods in cart page. CartPage")
+    public Cart_page_Logic checkAbsenceGoodsInCartPage(String idProducts) {
+        productsIDLocator(idProducts).shouldNotBe(visible);
+        return this;
+    }
+
+
+    @Step("Checks the presence of goods in cart page. CartPage")
+    public Cart_page_Logic checkPresenceGoodsInCardPage(String idProducts) {
+        productsIDLocator(idProducts).shouldBe(visible);
+        return this;
+    }
 }

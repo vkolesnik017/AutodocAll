@@ -571,5 +571,4 @@ public class Product_page {
     SelenideElement datenschutzerklarungLink() {
         return $(By.xpath("//div[@id='faq']//a[@title='Datenschutzerklärung']"));
     }
-
 }

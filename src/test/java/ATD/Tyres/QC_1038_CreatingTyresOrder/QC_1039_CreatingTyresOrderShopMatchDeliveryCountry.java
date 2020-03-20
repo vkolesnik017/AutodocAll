@@ -1,3 +1,4 @@
+
 package ATD.Tyres.QC_1038_CreatingTyresOrder;
 
 
@@ -44,7 +45,7 @@ public class QC_1039_CreatingTyresOrderShopMatchDeliveryCountry {
                                      .nextBtnClick()
                                      .chooseVorkasse()
                                      .nextBtnClick()
-                                     .checkDeliveryPriceAlldata("0,00")
+                                     .checkFreeDeliveryPriceAllData("0,00")
                                      .nextBtnClick()
                                      .getOrderNumber();
         new Order_aws(orderNumber).openOrderInAwsWithLogin()
