@@ -155,4 +155,7 @@ public class CartAllData_page {
         return $x("//a[@class='close_popup close ']");
     }
 
+    SelenideElement popupCountryDeliveryLimitAllDataPage() {
+        return $x("//div[@class='delivery-limit-popup country_delivery_limit']");
+    }
 }

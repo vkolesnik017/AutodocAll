@@ -110,6 +110,12 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return this;
     }
 
+    @Step("Checks for absence Heavy loads delivery price. CartAllData_page")
+    public CartAllData_page_Logic checkAbsenceHeavyLoadsDeliveryPrice() {
+        heavyLoadsShippingCost().shouldNotBe(visible);
+        return this;
+    }
+
 
     @Step("Checks currency on all data page. CartAllData_page")
     public CartAllData_page_Logic checkCurrencyOnAllDataPage(String shop) throws SQLException {
@@ -147,11 +153,12 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return this;
     }
 
-    @Step("Return the total price of the CartAllData_page")
-    public String returnTotalPriceAllDataPage(){
+    @Step("Get and Transform the total price of the CartAllData_page")
+    public Double getAndTransformTotalPriceAllDataPage(){
         String price = getTotalPriceAllDataPage();
         price = price.substring(0, price.indexOf(" ")).replaceAll(",",".");
-        return price;
+        Double totalPrice = Double.parseDouble(price);
+        return totalPrice;
     }
 
     @Step("Get total price of the CartAllData_page")
@@ -171,24 +178,40 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return this;
     }
 
+    @Step("Checks the presence of pop up delivery limit. CartAllData_page")
+    public CartAllData_page_Logic checkPresencePopUpDeliveryLimitAllDataPage() {
+        popupDeliveryLimitAllDataPage().shouldBe(visible);
+        return this;
+    }
+
     @Step("Close popup delivery limit. CartAllData_page")
     public CartAllData_page_Logic closePopUpDeliveryLimit() {
-        popupDeliveryLimitAllDataPage().shouldBe(visible);
         closePopupDeliveryLimitAllDataPage().click();
         return this;
     }
 
     @Step("Deletes goods from cart when click on the (Artikel entfernen) button in the delivery pop-up. CartAllData_page")
     public CartAllData_page_Logic deleteGoodsInDeliveryPopupCartAllDataPage(){
-        popupDeliveryLimitAllDataPage().shouldBe(visible);
         btnDeleteGoodsInDeliveryPopupAllDataPage().click();
         return this;
     }
 
     @Step("Click the button (Adresse ändern) in the delivery pop-up. CartAllData_page")
     public CartAddress_page_Logic clickBtnChangeAddressInDeliveryPopupCartAllDataPage() {
-        popupDeliveryLimitAllDataPage().shouldBe(visible);
         btnChangeAddressInDeliveryPopupAllDataPage().click();
         return page(CartAddress_page_Logic.class);
+    }
+
+    //The method is used when delivering goods to FR
+    @Step("Checks for absence btn (Adresse ändern) in the delivery pop-up.")
+    public CartAllData_page_Logic checkAbsenceBtnChangeAddressInDeliveryPopup() {
+        btnChangeAddressInDeliveryPopupAllDataPage().shouldNotBe(visible);
+        return this;
+    }
+
+    @Step("Checks the presence of pop up country delivery limit. CartAllData_page")
+    public CartAllData_page_Logic checkPresencePopUpCountryDeliveryLimit() {
+        popupCountryDeliveryLimitAllDataPage().shouldBe(visible);
+        return this;
     }
 }

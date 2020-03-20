@@ -22,8 +22,8 @@ public class QC_1676_HeavyLoadsPositiveCase {
 
     private String email = "checksPurchaseHeavyLoad@mailinator.com";
     private String password = "atdtest";
-    private String totalPrice;
-    private String totalPriceAWSOrder;
+    private Double totalPrice;
+    private Double totalPriceAWSOrder;
     private String orderNumber;
 
 
@@ -54,7 +54,7 @@ public class QC_1676_HeavyLoadsPositiveCase {
                 .checkRegularDeliveryPriceAllData("6,95")
                 .checkHeavyLoadsDeliveryPriceAllData("10,00")
                 .checkAbsenceSafeOrderBlock()
-                .returnTotalPriceAllDataPage();
+                .getAndTransformTotalPriceAllDataPage();
         new CartAllData_page_Logic().nextBtnClick();
         orderNumber = new Payment_handler_page_Logic().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumber);

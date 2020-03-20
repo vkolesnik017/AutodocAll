@@ -337,9 +337,10 @@ public class Order_aws {
 
 
     @Step("Get total Price in Order AWS")
-    public String getTotalPriceOrder(){
+    public Double getTotalPriceOrder(){
         String price = totalPriceOrder().getText();
-        return price;
+        Double totalPriceOrder = Double.parseDouble(price);
+        return totalPriceOrder;
     }
 
     @Step("Checks that Safe Order is turned off. Order_aws")
