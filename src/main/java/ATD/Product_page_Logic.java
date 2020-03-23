@@ -358,4 +358,11 @@ public class Product_page_Logic extends Product_page {
         getCurrencyAndVerify(totalPriceInPopupOfCart(), "totalPriceInPopupOfCart", shop, expectedCurrency);
         return this;
     }
+
+    @Step("Add procuct to basket and check related products popup")
+    public Product_page_Logic checkRelatedProductsPopup(int numberCategories) {
+        buyButton().click();
+        categoriesInRelatedProductsPopup().shouldHaveSize(numberCategories);
+        return this;
+    }
 }

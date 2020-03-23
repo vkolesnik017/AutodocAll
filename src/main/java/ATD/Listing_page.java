@@ -557,5 +557,7 @@ public class Listing_page {
         return $x("//*[@class='reset-buttons__list']/li[1]/div[2]");
     }
 
+    SelenideElement buyButton() { return $x("//div[@class='button ']/a"); }
+
 }
 
