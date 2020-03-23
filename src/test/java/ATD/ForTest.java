@@ -33,7 +33,6 @@ public class ForTest {
         open(route);
         new CommonMethods().checkingCounterIncrease(3, counterValue, counterPlus);
         System.out.println("test");
-        System.out.println("test2");
     }
 
 //    @AfterMethod
