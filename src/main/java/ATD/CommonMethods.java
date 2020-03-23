@@ -297,7 +297,7 @@ public class CommonMethods {
         SelenideElement sliderNext = $x("//button[@class='slick-next slick-arrow']");
 
         ElementsCollection miniCardsOfProducts = miniCardsOfProducts().filterBy(visible).shouldHaveSize(4);
-        for(SelenideElement miniCardFirsSlide : miniCardsOfProducts) {
+        for (SelenideElement miniCardFirsSlide : miniCardsOfProducts) {
             miniCardFirsSlide.$(sticker).should(visible);
             miniCardFirsSlide.$(oldPrice).should(visible);
             miniCardFirsSlide.$(image).should(visible);
@@ -308,7 +308,7 @@ public class CommonMethods {
         }
         sliderNext.click();
         sleep(2000);
-        for(SelenideElement miniCardSecondSlide : miniCardsOfProducts){
+        for (SelenideElement miniCardSecondSlide : miniCardsOfProducts) {
             miniCardSecondSlide.$(sticker).should(visible);
             miniCardSecondSlide.$(oldPrice).should(visible);
             miniCardSecondSlide.$(image).should(visible);
@@ -337,8 +337,8 @@ public class CommonMethods {
     }
 
     //Methods for checking Counter Product
-    @Step("Checking counter increase of product quantity")
-    void checkingCounterIncrease(String startCount, SelenideElement value, SelenideElement counterPlus) {
+    @Step("Checking counter increase of paired product quantity")
+    void checkingCounterIncreaseForPaired(String startCount, SelenideElement value, SelenideElement counterPlus) {
         value.shouldHave(value(startCount));
         counterPlus.click();
         String countAfterIncrease = String.valueOf(Integer.parseInt(startCount) + 2);
@@ -346,12 +346,50 @@ public class CommonMethods {
         sleep(2000);
     }
 
-    @Step("Checking counter decrease of product quantity")
-    void checkingCounterDecrease(String startCount, SelenideElement value, SelenideElement counterMinus) {
+    @Step("Checking counter decrease of paired product quantity")
+    void checkingCounterDecreaseForPaired(String startCount, SelenideElement value, SelenideElement counterMinus) {
         value.shouldHave(value(startCount));
         counterMinus.click();
         String countAfterDecrease = String.valueOf(Integer.parseInt(startCount) - 2);
         value.shouldHave(value(countAfterDecrease));
         sleep(2000);
+    }
+
+    @Step("Checking counter increase on {increaseCount} of product quantity")
+    void checkingCounterIncrease(int increaseCount, SelenideElement counterValue, SelenideElement counterPlus) {
+        int startValue = Integer.parseInt(counterValue.getValue());
+        for (int i = 1; i <= increaseCount; i++) {
+            counterPlus.click();
+            int valueAfterIncrease = startValue + i;
+            counterValue.shouldHave(value(String.valueOf(valueAfterIncrease)));
+        }
+        int valueAfterAllIncrease = startValue + increaseCount;
+        counterValue.shouldHave(value(String.valueOf(valueAfterAllIncrease)));
+    }
+
+    @Step("Checking counter decrease on {decreaseCount} of product quantity")
+    void checkingCounterDecrease(int decreaseCount, SelenideElement counterValue, SelenideElement counterMinus) {
+        int startValue = Integer.parseInt(counterValue.getValue());
+        for (int i = 1; i <= decreaseCount; i++) {
+            counterMinus.click();
+            int valueAfterDecrease = startValue - i;
+            counterValue.shouldHave(value(String.valueOf(valueAfterDecrease)));
+        }
+        int valueAfterAllDecrease = startValue - decreaseCount;
+        counterValue.shouldHave(value(String.valueOf(valueAfterAllDecrease)));
+    }
+
+    @Step("Waiting until element will be visible")
+    void waitingElementVisibility(SelenideElement element, int minute) {
+        minute = (minute * 60 * 1000) / 5;
+        for (int i = 1; i <= 5; i++) {
+            try {
+                element.waitUntil(Condition.visible, minute);
+            } catch (ElementNotFound e) {
+                System.out.println("Retry number " + i + ". Element doesn't visible");
+                refresh();
+                if (i == 5) Assert.fail("After 5 retrying " + element);
+            }
+        }
     }
 }

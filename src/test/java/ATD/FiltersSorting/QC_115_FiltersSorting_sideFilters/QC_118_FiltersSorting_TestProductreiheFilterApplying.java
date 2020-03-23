@@ -1,8 +1,5 @@
 package ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters;
 
-
-import ATD.DataBase;
-import ATD.Listing_page;
 import ATD.Listing_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
@@ -22,7 +19,6 @@ import static com.codeborne.selenide.Selenide.close;
 
 public class QC_118_FiltersSorting_TestProductreiheFilterApplying {
     private Listing_page_Logic listingPage = new Listing_page_Logic();
-    private DataBase dataBase = new DataBase();
 
     @BeforeClass
     void setUp() {
@@ -31,7 +27,17 @@ public class QC_118_FiltersSorting_TestProductreiheFilterApplying {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2,search4");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2,search4,search17,search18");
+    }
+
+    @DataProvider(name = "routesLKW", parallel = true)
+    Object[] dataProviderLKW() throws SQLException {
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list6");
+    }
+
+    @DataProvider(name = "routesLKWsearch", parallel = true)
+    Object[] dataProviderLKWsearch() throws SQLException {
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_search5");
     }
 
     @Test(dataProvider = "routes")
@@ -44,20 +50,30 @@ public class QC_118_FiltersSorting_TestProductreiheFilterApplying {
         listingPage.produktreiheFilterCheckbox().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.produktreiheProductAttributeGenericRoute(), listingPage.produktreiheProductAttributeTecdocRoute());
-        close();
     }
 
-    @Test
+    @Test(dataProvider = "routesLKW")
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks Produktreihe side filter LKW")
-    public void testProduktreiheFilterLkw() throws SQLException {
-        openPage("https://lkwteile.autodoc.de/" +  dataBase.getRouteByRouteName("DE", "lkw_category_car_list6"));
+    public void testProduktreiheFilterLkw(String route) {
+        openPage(route);
         String characteristic = listingPage.produktreiheFilterCheckboxLKW().text();
         listingPage.produktreiheFilterCheckboxLKW().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.produktreiheProductAttributeGenericRouteLKW(), listingPage.produktreiheProductAttributeTecdocRouteLKW());
-        close();
+    }
+
+    @Test(dataProvider = "routesLKWsearch")
+    @Flaky
+    @Owner(value = "Romaniuta")
+    @Description(value = "Test checks Produktreihe side filter")
+    public void testProduktreiheFilterLKWsearch(String route) {
+        openPage(route);
+        String characteristic = listingPage.produktreiheFilterAttribute().text();
+        listingPage.produktreiheFilterCheckbox().click();
+        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
+        listingPage.checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.produktreiheProductAttributeGenericRoute(), listingPage.produktreiheProductAttributeTecdocRoute());
     }
 
     @AfterMethod
