@@ -183,7 +183,6 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return this;
     }
 
-    @Step("et total price of the CartAllData_page")
     @Step("Get total price of the CartAllData_page")
     public Double getTotalPriceAllDataPage(){
         String realPrice = totalOrderPrice().getText();
