@@ -42,13 +42,13 @@ public class QC_1594_Paired {
         String shop = getShopFromRoute(route);
         openPage(route + "/" + new DataBase().getRouteByRouteName(shop, "search8"));
         String testMail = "atdautotest_qasys_80_paired@mailinator.com";
-        new Search_page_Logic().counterIncrease("2").counterDecrease("4").closeFooterMessageCookies().detailsClick()
-                .counterIncrease("2").counterDecrease("4").counterIncrease("2").addProductToCart().closePopupOtherCategoryIfYes().checkingNumberOfProductInCart(4).cartClick()
-                .counterIncrease("4").counterDecrease("6").nextButtonClick()
+        new Search_page_Logic().counterIncreaseForPaired("2").counterDecreaseForPaired("4").closeFooterMessageCookies().detailsClick()
+                .counterIncreaseForPaired("2").counterDecreaseForPaired("4").counterIncreaseForPaired("2").addProductToCart().closePopupOtherCategoryIfYes().checkingNumberOfProductInCart(4).cartClick()
+                .counterIncreaseForPaired("4").counterDecreaseForPaired("6").nextButtonClick()
                 .signIn(testMail, password)
                 .fillAllFields(shop).nextBtnClick()
                 .chooseVorkasse().nextBtnClick()
-                .counterIncrease("4").counterDecrease("6").nextBtnClick()
+                .counterIncreaseForPaired("4").counterDecreaseForPaired("6").nextBtnClick()
                 .closePopupAfterOrder().successTextInHeader().shouldHave(Condition.text("Vielen Dank"));
         String orderNumber = new Payment_handler_page_Logic().getOrderNumber();
         new Order_aws(orderNumber).openOrderInAwsWithLogin().checkQuantityOfProduct(4).checkTooltipByAddingIncorrectProductQuantity("3");

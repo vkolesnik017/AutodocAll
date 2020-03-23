@@ -54,7 +54,7 @@ public class QC_1676_HeavyLoadsPositiveCase {
                 .checkRegularDeliveryPriceAllData("6,95")
                 .checkHeavyLoadsDeliveryPriceAllData("10,00")
                 .checkAbsenceSafeOrderBlock()
-                .getAndTransformTotalPriceAllDataPage();
+                .getTotalPriceAllDataPage();
         new CartAllData_page_Logic().nextBtnClick();
         orderNumber = new Payment_handler_page_Logic().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumber);

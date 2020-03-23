@@ -19,14 +19,14 @@ public class Cart_page_Logic extends Cart_page {
     }
 
     @Step(":in Cart_page")
-    public Cart_page_Logic counterIncrease(String startValue) {
-        new CommonMethods().checkingCounterIncrease(startValue, fieldWithQuantityOfProducts(), counterPlusBtn());
+    public Cart_page_Logic counterIncreaseForPaired(String startValue) {
+        new CommonMethods().checkingCounterIncreaseForPaired(startValue, fieldWithQuantityOfProducts(), counterPlusBtn());
         return this;
     }
 
     @Step(":in Cart_page")
-    public Cart_page_Logic counterDecrease(String startValue) {
-        new CommonMethods().checkingCounterDecrease(startValue, fieldWithQuantityOfProducts(), counterMinusBtn());
+    public Cart_page_Logic counterDecreaseForPaired(String startValue) {
+        new CommonMethods().checkingCounterDecreaseForPaired(startValue, fieldWithQuantityOfProducts(), counterMinusBtn());
         return this;
     }
 

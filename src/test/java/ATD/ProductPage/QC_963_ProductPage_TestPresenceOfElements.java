@@ -104,8 +104,8 @@ public class QC_963_ProductPage_TestPresenceOfElements {
         product_page_logic.addProductToCart();
         product_page_logic.closePopupOtherCategoryIfYes();
         //16
-        product_page_logic.counterIncrease("2");
-        product_page_logic.counterDecrease("4");
+        product_page_logic.counterIncreaseForPaired("2");
+        product_page_logic.counterDecreaseForPaired("4");
         //17
         product_page_logic.brandButtonOnImage().click();
         commonMethods.checkingUrlAndCloseTab("https://www.autodoc.de/autoteile/bremsscheibe-10132/mf-ridex");

@@ -31,7 +31,7 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return page(Main_page.class);
     }
 
-    @Step("Check removing tyres on alldata with other products with delivery to other country. CartAllData_page")
+    @Step("Check removing tyres on alldata withgetTotalPriceAllDataPage other products with delivery to other country. CartAllData_page")
     public CartAllData_page_Logic checkRemovingTyresFromAlldataWithOtherProducts(String productId) {
         tyresAreNotDeliveredToCountryPopup().shouldBe(visible);
         closePopupBtn().click();
@@ -74,14 +74,14 @@ public class CartAllData_page_Logic extends CartAllData_page {
     }
 
     @Step(":on CartAllData_page")
-    public CartAllData_page_Logic counterIncrease(String startValue) {
-        new CommonMethods().checkingCounterIncrease(startValue, fieldWithQuantityOfProducts(), counterPlusBtn());
+    public CartAllData_page_Logic counterIncreaseForPaired(String startValue) {
+        new CommonMethods().checkingCounterIncreaseForPaired(startValue, fieldWithQuantityOfProducts(), counterPlusBtn());
         return this;
     }
 
     @Step(":on CartAllData_page")
-    public CartAllData_page_Logic counterDecrease(String startValue) {
-        new CommonMethods().checkingCounterDecrease(startValue, fieldWithQuantityOfProducts(), counterMinusBtn());
+    public CartAllData_page_Logic counterDecreaseForPaired(String startValue) {
+        new CommonMethods().checkingCounterDecreaseForPaired(startValue, fieldWithQuantityOfProducts(), counterMinusBtn());
         sleep(1000);
         return this;
     }
@@ -153,17 +153,12 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return this;
     }
 
-    @Step("Get and Transform the total price of the CartAllData_page")
-    public Double getAndTransformTotalPriceAllDataPage(){
-        String price = getTotalPriceAllDataPage();
-        price = price.substring(0, price.indexOf(" ")).replaceAll(",",".");
-        Double totalPrice = Double.parseDouble(price);
-        return totalPrice;
-    }
-
     @Step("Get total price of the CartAllData_page")
-    public String getTotalPriceAllDataPage(){
-        return totalOrderPrice().getText();
+    public Double getTotalPriceAllDataPage(){
+        String realPrice = totalOrderPrice().getText();
+        realPrice = realPrice.substring(0, realPrice.indexOf(" ")).replaceAll(",",".");
+        Double totalPrice = Double.parseDouble(realPrice);
+        return totalPrice;
     }
 
     @Step(": on CartAllData_page")

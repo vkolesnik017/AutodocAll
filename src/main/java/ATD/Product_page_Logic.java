@@ -109,14 +109,14 @@ public class Product_page_Logic extends Product_page {
     }
 
     @Step(":on Product_page")
-    public Product_page_Logic counterIncrease(String startValue) {
-        new CommonMethods().checkingCounterIncrease(startValue, counterValue(), counterPlus());
+    public Product_page_Logic counterIncreaseForPaired(String startValue) {
+        new CommonMethods().checkingCounterIncreaseForPaired(startValue, counterValue(), counterPlus());
         return this;
     }
 
     @Step(":on Product_page")
-    public Product_page_Logic counterDecrease(String startValue) {
-        new CommonMethods().checkingCounterDecrease(startValue, counterValue(), counterMinus());
+    public Product_page_Logic counterDecreaseForPaired(String startValue) {
+        new CommonMethods().checkingCounterDecreaseForPaired(startValue, counterValue(), counterMinus());
         return this;
     }
 
