@@ -2,7 +2,6 @@ package ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters;
 
 
 import ATD.DataBase;
-import ATD.Listing_page;
 import ATD.Listing_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
@@ -33,7 +32,12 @@ public class QC_126_FiltersSorting_TestTwoFilterAttributesInBlock {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2,search4,search5");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2,search4,search17,search18");
+    }
+
+    @DataProvider(name = "routesLKW", parallel = true)
+    Object[] dataProviderLKWsearch() throws SQLException {
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_search5");
     }
 
     @Test(dataProvider = "routes")
@@ -41,6 +45,21 @@ public class QC_126_FiltersSorting_TestTwoFilterAttributesInBlock {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks two filter attributes in block")
     public void testTwoFilterAttributesInBlock(String route) {
+        openPage(route);
+        listingPage.langeFilterCheckbox().click();
+        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
+        String characteristic = listingPage.activeSideFilter2().text();
+        listingPage.activeSideFilter2().click();
+        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
+        listingPage.activeSideFilter().shouldHave(text(characteristic));
+        listingPage.checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.langeProductAttributeGenericRoute(), listingPage.langeProductAttributeTecdocRoute());
+    }
+
+    @Test(dataProvider = "routesLKW")
+    @Flaky
+    @Owner(value = "Romaniuta")
+    @Description(value = "Test checks two filter attributes in block LKW")
+    public void testTwoFilterAttributesInBlockLKW(String route) {
         openPage(route);
         listingPage.langeFilterCheckbox().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
@@ -62,6 +81,7 @@ public class QC_126_FiltersSorting_TestTwoFilterAttributesInBlock {
         String characteristic = listingPage.activeSideFilter4().text();
         listingPage.activeSideFilter4().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
+        listingPage.activeSideFilter4FirstPosition().waitUntil(visible, 5000);
         listingPage.activeSideFilter4FirstPosition().shouldHave(text(characteristic));
         listingPage.checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.langeProductAttributeGenericRoute(), listingPage.langeProductAttributeTecdocRoute());
     }

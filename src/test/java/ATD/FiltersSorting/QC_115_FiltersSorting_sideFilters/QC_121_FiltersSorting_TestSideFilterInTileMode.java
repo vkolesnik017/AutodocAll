@@ -30,7 +30,12 @@ public class QC_121_FiltersSorting_TestSideFilterInTileMode {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2,search4");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2,search4,search17,search18");
+    }
+
+    @DataProvider(name = "routesLKWsearch", parallel = true)
+    Object[] dataProviderLKWsearch() throws SQLException {
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_search5");
     }
 
     @Test(dataProvider = "routes")
@@ -59,6 +64,20 @@ public class QC_121_FiltersSorting_TestSideFilterInTileMode {
         listingPage.showListingInTileModeButton().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.checkProductAttributeOnListingInTileMode(characteristic, listingPage.langeProductAttributeTecdocRouteLKW());
+    }
+
+    @Test(dataProvider = "routesLKWsearch")
+    @Flaky
+    @Owner(value = "Romaniuta")
+    @Description(value = "Test checks side filter in tile mode LKW search")
+    public void testSideFilterInTileModeLKWsearch(String route) {
+        openPage(route);
+        String characteristic = listingPage.langeFilterAttribute().text();
+        listingPage.langeFilterCheckbox().click();
+        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
+        listingPage.showListingInTileModeButton().click();
+        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
+        listingPage.checkProductAttributeOnListingInTileMode(characteristic, listingPage.langeProductAttributeTecdocRoute());
     }
 
     @AfterMethod

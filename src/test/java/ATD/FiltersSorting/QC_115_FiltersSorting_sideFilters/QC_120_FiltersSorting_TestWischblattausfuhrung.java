@@ -2,7 +2,6 @@ package ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters;
 
 
 import ATD.DataBase;
-import ATD.Listing_page;
 import ATD.Listing_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
@@ -31,7 +30,12 @@ public class QC_120_FiltersSorting_TestWischblattausfuhrung {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2,search4");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2,search4,search17,search18");
+    }
+
+    @DataProvider(name = "routesLKWsearch", parallel = true)
+    Object[] dataProviderLKWsearch() throws SQLException {
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_search5");
     }
 
     @Test(dataProvider = "routes")
@@ -52,6 +56,18 @@ public class QC_120_FiltersSorting_TestWischblattausfuhrung {
     @Description(value = "Test checks Wischblattausfuhrung side filter LKW")
     public void testWischblattausfuhrungFilterLKw() throws SQLException {
         openPage("https://lkwteile.autodoc.de/" +  dataBase.getRouteByRouteName("DE", "lkw_category_car_list"));
+        String characteristic = listingPage.wischblattausfuhrungFilterAttribute().text();
+        listingPage.wischblattausfuhrungFilterCheckbox().click();
+        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
+        listingPage.checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.wischblattausfuhrungProductAttributeGenericRoute(), listingPage.wischblattausfuhrungProductAttributeTecdocRoute());
+    }
+
+    @Test(dataProvider = "routesLKWsearch")
+    @Flaky
+    @Owner(value = "Romaniuta")
+    @Description(value = "Test checks Wischblattausfuhrung side filter LKW search")
+    public void testWischblattausfuhrungFilterLKWsearch(String route) {
+        openPage(route);
         String characteristic = listingPage.wischblattausfuhrungFilterAttribute().text();
         listingPage.wischblattausfuhrungFilterCheckbox().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
