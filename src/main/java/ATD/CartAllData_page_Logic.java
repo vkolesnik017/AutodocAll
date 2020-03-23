@@ -74,14 +74,14 @@ public class CartAllData_page_Logic extends CartAllData_page {
     }
 
     @Step(":on CartAllData_page")
-    public CartAllData_page_Logic counterIncrease(String startValue) {
-        new CommonMethods().checkingCounterIncrease(startValue, fieldWithQuantityOfProducts(), counterPlusBtn());
+    public CartAllData_page_Logic counterIncreaseForPaired(String startValue) {
+        new CommonMethods().checkingCounterIncreaseForPaired(startValue, fieldWithQuantityOfProducts(), counterPlusBtn());
         return this;
     }
 
     @Step(":on CartAllData_page")
-    public CartAllData_page_Logic counterDecrease(String startValue) {
-        new CommonMethods().checkingCounterDecrease(startValue, fieldWithQuantityOfProducts(), counterMinusBtn());
+    public CartAllData_page_Logic counterDecreaseForPaired(String startValue) {
+        new CommonMethods().checkingCounterDecreaseForPaired(startValue, fieldWithQuantityOfProducts(), counterMinusBtn());
         sleep(1000);
         return this;
     }
