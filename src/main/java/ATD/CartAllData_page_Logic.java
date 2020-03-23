@@ -92,6 +92,12 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return this;
     }
 
+    @Step("Check for presence free delivery price. CartAllData_page")
+    public CartAllData_page_Logic checkPresenceFreeDeliveryPriceCartAllDataPage() {
+        freeDeliveryIcon().shouldBe(visible);
+        return this;
+    }
+
     @Step("Checks for presence regular delivery price. CartAllData_page")
     public CartAllData_page_Logic checkPresenceRegularDeliveryPrice() {
         deliveryPrice().shouldBe(visible);
@@ -107,6 +113,12 @@ public class CartAllData_page_Logic extends CartAllData_page {
     @Step("Checks Heavy loads delivery price. CartAllData_page")
     public CartAllData_page_Logic checkHeavyLoadsDeliveryPriceAllData(String heavyLoadsDeliveryPrice) {
         heavyLoadsShippingCost().shouldHave(text(heavyLoadsDeliveryPrice));
+        return this;
+    }
+
+    @Step("Check for presence Heavy loads delivery price. CartAllData_page")
+    public CartAllData_page_Logic checkPresenceHeavyLoadsDeliveryPriceAllDataPage() {
+        heavyLoadsShippingCost().shouldBe(visible);
         return this;
     }
 
@@ -153,6 +165,24 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return this;
     }
 
+    @Step("Click Safe Order Checkbox. CartAllData_page")
+    public CartAllData_page_Logic clickSafeOrderCheckbox() {
+        safeOrderCheckbox().click();
+        return this;
+    }
+
+    @Step("Check presence Safe Order price from order summery block . CartAllData_page")
+    public CartAllData_page_Logic checkPresenceSafeOrderPriceFromOrderSummeryBlock() {
+        safeOrderCost().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Check absence Safe Order price from order summery block . CartAllData_page")
+    public CartAllData_page_Logic checkAbsenceSafeOrderPriceFromOrderSummeryBlock() {
+        safeOrderCost().shouldNotBe(visible);
+        return this;
+    }
+
     @Step("et total price of the CartAllData_page")
     public Double getTotalPriceAllDataPage(){
         String realPrice = totalOrderPrice().getText();
@@ -180,7 +210,7 @@ public class CartAllData_page_Logic extends CartAllData_page {
     }
 
     @Step("Close popup delivery limit. CartAllData_page")
-    public CartAllData_page_Logic closePopUpDeliveryLimit() {
+    public CartAllData_page_Logic closePopUpDeliveryLimitCartAllDataPage() {
         closePopupDeliveryLimitAllDataPage().click();
         return this;
     }
@@ -207,6 +237,18 @@ public class CartAllData_page_Logic extends CartAllData_page {
     @Step("Checks the presence of pop up country delivery limit. CartAllData_page")
     public CartAllData_page_Logic checkPresencePopUpCountryDeliveryLimit() {
         popupCountryDeliveryLimitAllDataPage().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Delete goods {idGoods} from CartAllData_page")
+    public CartAllData_page_Logic deleteGoodsFromCartAllDataPage(String idGoods) {
+        deleteGoodsFromAllDataPage(idGoods).click();
+        return this;
+    }
+
+    @Step("Click button confirm product delete. CartAllData_page")
+    public CartAllData_page_Logic clickBtnConfirmProductDelete() {
+        btnConfirmProductDelete().click();
         return this;
     }
 }

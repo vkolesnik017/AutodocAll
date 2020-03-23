@@ -13,19 +13,18 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.getCurrentShopFromJSVarInHTML;
-import static ATD.CommonMethods.openPage;
+import static ATD.CommonMethods.*;
+import static ATD.CommonMethods.password;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.open;
 
-public class QC_1676_HeavyLoadsPositiveCase {
+public class QC_1685_HeavyLoadsAndOrdinaryGoods_DeletedOFGoods {
 
-    private String email = "checksPurchaseHeavyLoad@mailinator.com";
-    private String password = "atdtest";
+    private String email = "qc_1685_autotestDE@mailinator.com";
     private Double totalPrice;
     private Double totalPriceAWSOrder;
     private String orderNumber;
-
 
     @BeforeClass
     void setUp() {
@@ -40,20 +39,26 @@ public class QC_1676_HeavyLoadsPositiveCase {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks the purchase of a heavy load")
-    public void testOfHeavyLoadsPurchase(String route) {
+    @Description(value = "Test checks the purchase of a heavy load and ordinary goods")
+    public void testOfHeavyLoadsPurchaseAndOrdinaryGoods(String route) throws SQLException {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
-        totalPrice = new Product_page_Logic().addProductToCart()
-                .closePopupOtherCategoryIfYes()
-                .cartClick()
-                .nextButtonClick()
+        new Product_page_Logic().addProductToCart();
+        open("https://autodoc.de/" + new DataBase().getRouteByRouteName("DE", "search3"));
+        clickOfBuyBtnForAllPages();
+        totalPrice = new Search_page_Logic().closePopupOtherCategoryIfYes()
+                .cartClick().nextButtonClick()
                 .signIn(email, password)
                 .fillAllFields(shop).nextBtnClick()
                 .chooseVorkasse().nextBtnClick()
                 .checkRegularDeliveryPriceAllData("6,95")
                 .checkHeavyLoadsDeliveryPriceAllData("10,00")
+                .checkPresenceSafeOrderBlock()
+                .clickSafeOrderCheckbox()
+                .deleteGoodsFromCartAllDataPage("1187466")
+                .clickBtnConfirmProductDelete()
                 .checkAbsenceSafeOrderBlock()
+                .checkAbsenceSafeOrderPriceFromOrderSummeryBlock()
                 .getTotalPriceAllDataPage();
         new CartAllData_page_Logic().nextBtnClick();
         orderNumber = new Payment_handler_page_Logic().getOrderNumber();

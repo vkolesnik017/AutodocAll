@@ -61,7 +61,7 @@ public class QC_1679_HeavyLoadsFR_PositiveCase {
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
         order_aws.checkDeliveryPriceOrderAWS("9.95")
                 .checkHeavyLoadsDeliveryPriceOrderAWS("36.95")
-                .checkStatusSafeOrder()
+                .checkThatStatusSafeOrderIsOff()
                 .reSaveOrder();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
         order_aws.checkDeliveryPriceOrderAWS("9.95")
