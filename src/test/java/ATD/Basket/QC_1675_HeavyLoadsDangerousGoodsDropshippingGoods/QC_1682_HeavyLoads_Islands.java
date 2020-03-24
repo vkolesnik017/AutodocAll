@@ -15,10 +15,9 @@ import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_1681_HeavyLoadsFR_NegativeCaseAllData {
+public class QC_1682_HeavyLoads_Islands {
 
-    private String email = "qc_1681autotestDE@mailinator.com";
-
+    private String email = "qc_1682_autotestDE@mailinator.com";
     private Product_page_Logic product_page_logic = new Product_page_Logic();
 
     @BeforeClass
@@ -34,8 +33,8 @@ public class QC_1681_HeavyLoadsFR_NegativeCaseAllData {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks negative purchase of a heavy loads in FR / AllData")
-    public void testOfHeavyLoadsNegativePurchaseAllDataInFR (String route) throws SQLException {
+    @Description(value = "Test checks purchase of a heavy loads for islands")
+    public void testOfHeavyLoadsPurchaseForIslands(String route) throws SQLException {
         openPage(route);
         product_page_logic.addProductToCart();
         openPage("https://autodoc.de/" + new DataBase().getRouteByRouteName("DE", "search3"));
@@ -44,22 +43,19 @@ public class QC_1681_HeavyLoadsFR_NegativeCaseAllData {
                 .cartClick().nextButtonClick()
                 .signIn(email, password).nextBtnClick()
                 .chooseVorkasse().nextBtnClick()
-                .checkPresencePopUpCountryDeliveryLimit()
-                .checkAbsenceBtnChangeAddressInDeliveryPopup()
+                .checkPresencePopUpDeliveryLimitAllDataPage()
                 .closePopUpDeliveryLimitCartAllDataPage()
                 .checkAbsenceGoodsInCartPage("7037462")
                 .checkPresenceGoodsInCardPage("1187466")
                 .checkPresenceSafeOrderBlock()
-                .checkPresenceRegularDeliveryPrice()
-                .checkAbsenceHeavyLoadsDeliveryPrice();
+                .checkPresenceRegularDeliveryPrice();
         openPage(route);
         product_page_logic.addProductToCart().closePopupOtherCategoryIfYes().cartClick();
         new CartAllData_page_Logic().deleteGoodsInDeliveryPopupCartAllDataPage()
                 .checkAbsenceGoodsInCartPage("7037462")
                 .checkPresenceGoodsInCardPage("1187466")
                 .checkPresenceSafeOrderBlock()
-                .checkPresenceRegularDeliveryPrice()
-                .checkAbsenceHeavyLoadsDeliveryPrice();
+                .checkPresenceRegularDeliveryPrice();
     }
 
     @AfterMethod

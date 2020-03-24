@@ -46,7 +46,7 @@ public class QC_1678_HeavyLoadsNegativeCasAllData {
                 .signIn(email, password).nextBtnClick()
                 .chooseVorkasse().nextBtnClick()
                 .checkPresencePopUpDeliveryLimitAllDataPage()
-                .closePopUpDeliveryLimit()
+                .closePopUpDeliveryLimitCartAllDataPage()
                 .checkAbsenceGoodsInCartPage("7037462")
                 .checkPresenceGoodsInCardPage("1187466")
                 .checkPresenceSafeOrderBlock()

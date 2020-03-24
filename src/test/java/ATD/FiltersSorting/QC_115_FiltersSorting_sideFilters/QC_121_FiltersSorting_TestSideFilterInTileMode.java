@@ -42,13 +42,14 @@ public class QC_121_FiltersSorting_TestSideFilterInTileMode {
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks side filter in tile mode")
-    public void testSideFilterInTileMode(String route) {
+    public void testSideFilterInTileMode(String route) throws Exception {
         openPage(route);
         String characteristic = listingPage.langeFilterAttribute().text();
         listingPage.langeFilterCheckbox().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.showListingInTileModeButton().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
+        Thread.sleep(3000);
         listingPage.checkProductAttributeOnListingInTileMode(characteristic, listingPage.langeProductAttributeTecdocRoute());
     }
 
@@ -56,13 +57,14 @@ public class QC_121_FiltersSorting_TestSideFilterInTileMode {
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks side filter in tile mode LKW")
-    public void testSideFilterInTileModeLKW() throws SQLException {
+    public void testSideFilterInTileModeLKW() throws Exception {
         openPage("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_category_car_list"));
         String characteristic = listingPage.langeFilterCheckboxLKW().text();
         listingPage.langeFilterCheckboxLKW().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.showListingInTileModeButton().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
+        Thread.sleep(3000);
         listingPage.checkProductAttributeOnListingInTileMode(characteristic, listingPage.langeProductAttributeTecdocRouteLKW());
     }
 
@@ -70,13 +72,14 @@ public class QC_121_FiltersSorting_TestSideFilterInTileMode {
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks side filter in tile mode LKW search")
-    public void testSideFilterInTileModeLKWsearch(String route) {
+    public void testSideFilterInTileModeLKWsearch(String route) throws Exception {
         openPage(route);
         String characteristic = listingPage.langeFilterAttribute().text();
         listingPage.langeFilterCheckbox().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.showListingInTileModeButton().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
+        Thread.sleep(3000);
         listingPage.checkProductAttributeOnListingInTileMode(characteristic, listingPage.langeProductAttributeTecdocRoute());
     }
 

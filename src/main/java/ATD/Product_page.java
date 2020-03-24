@@ -517,8 +517,12 @@ public class Product_page {
     SelenideElement oenBlockTitle() {return $(".product-info-block__oem__title"); }
 
     // locator for counter
-    SelenideElement counterValue() {
+    SelenideElement counterValuePairedGood() {
         return $(By.xpath("//input[@class=' qty_2']"));
+    }
+
+    SelenideElement counterValue() {
+        return $x("//input[@class=' qty_1']");
     }
 
     SelenideElement counterPlus() {
@@ -571,4 +575,14 @@ public class Product_page {
     SelenideElement datenschutzerklarungLink() {
         return $(By.xpath("//div[@id='faq']//a[@title='Datenschutzerklärung']"));
     }
+
+    //locators for related products popup
+    ElementsCollection categoriesInRelatedProductsPopup() { return $$(".popup-other-cat__content-item"); }
+
+    SelenideElement backButtonInRelatedPopup() { return $(".back"); }
+
+    SelenideElement relatedProductsPopup() { return $(".popup-other-cat"); }
+
+    SelenideElement relatedProductPopupGoToCartButton() { return $(".go-cart"); }
+
 }
