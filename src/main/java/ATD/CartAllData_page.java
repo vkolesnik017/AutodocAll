@@ -3,8 +3,6 @@ package ATD;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
-import java.security.cert.Certificate;
-
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
@@ -58,6 +56,10 @@ public class CartAllData_page {
 
     public SelenideElement vatPriceInTotalOrder() {
         return $(byXpath("//*[@class='alldata-bottom']//div[6]/span[2]"));
+    }
+
+    SelenideElement percentageOfVat() {
+        return $x("//div[@class='order-summary__row order-summary__row--total']//i");
     }
 
     // locators of prices with Currencies
