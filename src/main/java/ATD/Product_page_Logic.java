@@ -364,7 +364,7 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
-    @Step("Add procuct to basket and check related products popup")
+    @Step("Add product to basket and check related products popup")
     public Product_page_Logic checkRelatedProductsPopup(int numberCategories) {
         buyButton().click();
         categoriesInRelatedProductsPopup().shouldHaveSize(numberCategories);
