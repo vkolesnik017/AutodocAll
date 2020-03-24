@@ -134,6 +134,12 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return this;
     }
 
+    @Step("Checks for the absence of VAT percentage")
+    public CartAllData_page_Logic checkAbsenceOfVatPercentage() {
+        percentageOfVat().shouldNotBe(visible);
+        return this;
+    }
+
 
     @Step("Checks currency on all data page. CartAllData_page")
     public CartAllData_page_Logic checkCurrencyOnAllDataPage(String shop) throws SQLException {

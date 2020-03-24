@@ -40,9 +40,9 @@ public class CartAddress_page_Logic extends CartAddress_page{
     }
 
     @Step("Next button click. CartAddress_page")
-    public CartPayments_page nextBtnClick() {
+    public CartPayments_page_Logic nextBtnClick() {
         nextButton().click();
-        return page(CartPayments_page.class);
+        return page(CartPayments_page_Logic.class);
     }
 
     @Step("Filling fiscal code field. CartAddress_page")
@@ -88,4 +88,9 @@ public class CartAddress_page_Logic extends CartAddress_page{
         return this;
     }
 
+    @Step("Click checkbox billing. CartAddress_page")
+    public CartAddress_page_Logic clickCheckboxBilling() {
+        billingCheckbox().click();
+        return this;
+    }
 }
