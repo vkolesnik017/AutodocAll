@@ -55,8 +55,8 @@ public class LKW_Category_car_list_page {
         return $x("(//div[@class='image']/span[1]/img)[" + position + "]");
     }
 
-    SelenideElement titleOfProductInTecDocListingBlock(int position) {
-        return $x("(//div[@class='name']/a)[" + position + "]");
+    ElementsCollection titleOfProductInTecDocListingBlock() {
+        return $$x("//div[@class='name']/*[self::a or self::span][1]");
     }
 
 
@@ -88,4 +88,36 @@ public class LKW_Category_car_list_page {
     }
 
     SelenideElement totalAmountOfProductsInTecDocListing(){ return $x("//div[@class='product_count']/span");}
+
+    SelenideElement filterByGenericBlock() {
+        return $x("//div[@class='filter-generics-tecdoc__content']");
+    }
+
+    ElementsCollection genericsInFilterGenericBlock() {
+        return $$x("//label[@class='filter-generics-tecdoc__item ']");
+    }
+
+    SelenideElement loaderInTecDocListing() {
+        return $x("//div[@class='preloader_wrapper']");
+    }
+
+    SelenideElement allFiltersGeneric() {
+        return $x("//label[@class='filter-generics-tecdoc__all show_all  ']");
+    }
+
+    SelenideElement brandBlock() {
+        return $x("//div[@id='selected-instalation__slider']");
+    }
+
+    ElementsCollection brandsOfBrandBlock() {
+        return $$x("//div[@id='selected-instalation__slider']//li");
+    }
+
+    SelenideElement installationSideBlock() {
+        return $x("//div[@class='installation-side__content']");
+    }
+
+    ElementsCollection sidesOfInstallation() {
+        return $$x("//div[@class='installation-side__content']/div");
+    }
 }

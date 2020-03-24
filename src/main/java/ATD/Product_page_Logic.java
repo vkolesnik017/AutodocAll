@@ -363,4 +363,11 @@ public class Product_page_Logic extends Product_page {
         new CommonMethods().checkingCounterIncrease(increaseCount, counterValue(), counterPlus());
         return this;
     }
+
+    @Step("Add procuct to basket and check related products popup")
+    public Product_page_Logic checkRelatedProductsPopup(int numberCategories) {
+        buyButton().click();
+        categoriesInRelatedProductsPopup().shouldHaveSize(numberCategories);
+        return this;
+    }
 }

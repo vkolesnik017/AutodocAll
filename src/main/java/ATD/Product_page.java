@@ -575,4 +575,6 @@ public class Product_page {
     SelenideElement datenschutzerklarungLink() {
         return $(By.xpath("//div[@id='faq']//a[@title='Datenschutzerklärung']"));
     }
+
+    ElementsCollection categoriesInRelatedProductsPopup() { return $$(".popup-other-cat__content-item"); }
 }
