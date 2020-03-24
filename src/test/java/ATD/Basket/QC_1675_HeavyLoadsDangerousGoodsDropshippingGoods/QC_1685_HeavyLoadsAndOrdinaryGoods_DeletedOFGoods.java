@@ -55,7 +55,7 @@ public class QC_1685_HeavyLoadsAndOrdinaryGoods_DeletedOFGoods {
                 .checkHeavyLoadsDeliveryPriceAllData("10,00")
                 .checkPresenceSafeOrderBlock()
                 .clickSafeOrderCheckbox()
-                .deleteGoodsFromCartAllDataPage("1187466")
+                .deleteGoodFromCartAllDataPage("1187466")
                 .clickBtnConfirmProductDelete()
                 .checkAbsenceSafeOrderBlock()
                 .checkAbsenceSafeOrderPriceFromOrderSummeryBlock()

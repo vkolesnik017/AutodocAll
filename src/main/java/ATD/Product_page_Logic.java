@@ -110,16 +110,15 @@ public class Product_page_Logic extends Product_page {
 
     @Step(":on Product_page")
     public Product_page_Logic counterIncreaseForPaired(String startValue) {
-        new CommonMethods().checkingCounterIncreaseForPaired(startValue, counterValue(), counterPlus());
+        new CommonMethods().checkingCounterIncreaseForPaired(startValue, counterValuePairedGood(), counterPlus());
         return this;
     }
 
     @Step(":on Product_page")
     public Product_page_Logic counterDecreaseForPaired(String startValue) {
-        new CommonMethods().checkingCounterDecreaseForPaired(startValue, counterValue(), counterMinus());
+        new CommonMethods().checkingCounterDecreaseForPaired(startValue, counterValuePairedGood(), counterMinus());
         return this;
     }
-
 
     @Step("Checking expected number {expectedNumber} of product in cart. Product_page")
     public Product_page_Logic checkingNumberOfProductInCart(int expectedNumber) {
@@ -356,6 +355,12 @@ public class Product_page_Logic extends Product_page {
                  addProductToCart().closePopupOtherCategoryIfYes().cartIcon().hover();
         getCurrencyAndVerify(firstProductPriceInPopupOfCart(), "productPriceInPopupOfCart", shop, expectedCurrency);
         getCurrencyAndVerify(totalPriceInPopupOfCart(), "totalPriceInPopupOfCart", shop, expectedCurrency);
+        return this;
+    }
+
+    @Step(":on Product_page")
+    public Product_page_Logic checkingCounterIncrease(int increaseCount) {
+        new CommonMethods().checkingCounterIncrease(increaseCount, counterValue(), counterPlus());
         return this;
     }
 }
