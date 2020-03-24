@@ -75,6 +75,7 @@
             <class name="LKW_trucks.QC_94_TecDoc_Listing.QC_101_PaginationOnTecDocListing"/>
             <class name="LKW_trucks.QC_94_TecDoc_Listing.QC_102_FilterByGenericInTecDocListing"/>
             <class name="LKW_trucks.QC_94_TecDoc_Listing.QC_103_FilterByBrandsInTecDocListing"/>
+            <class name="LKW_trucks.QC_94_TecDoc_Listing.QC_104_FilterByInstallationOfSideInTecDocListing"/>
         </classes>
     </test>
 

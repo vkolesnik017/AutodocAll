@@ -59,13 +59,13 @@ public class LKW_Category_car_list_page {
         return $$x("//div[@class='name']/*[self::a or self::span][1]");
     }
 
-
     SelenideElement nextPagePagination() {
         return $x("//span[@class='next']");
     }
 
-    SelenideElement lastPagePaginator() {return $x("//span[@class='last']/a");}
-
+    SelenideElement lastPagePaginator() {
+        return $x("//span[@class='last']/a");
+    }
 
     SelenideElement btnOfFirstProductInTecDocListing() {
         return $x("(//div[@class='button '])[1]");
@@ -87,7 +87,9 @@ public class LKW_Category_car_list_page {
         return $x("//span[contains(text(),'" + titleOfArticle + "')]/ancestor::div[@class='description']//ul[@class='criteria']//li[1]/span[2]");
     }
 
-    SelenideElement totalAmountOfProductsInTecDocListing(){ return $x("//div[@class='product_count']/span");}
+    SelenideElement totalAmountOfProductsInTecDocListing() {
+        return $x("//div[@class='product_count']/span");
+    }
 
     SelenideElement filterByGenericBlock() {
         return $x("//div[@class='filter-generics-tecdoc__content']");
@@ -120,4 +122,17 @@ public class LKW_Category_car_list_page {
     ElementsCollection sidesOfInstallation() {
         return $$x("//div[@class='installation-side__content']/div");
     }
+
+    ElementsCollection characteristicsBlock() {
+        return $$x("//div[@class='description']");
+    }
+
+    SelenideElement descriptionOfCharacteristics(int position) {
+        return $x("(//div[@class='description'])[" + position + "]//span[contains(text(),'Einbauseite:')]/following-sibling::*[self::span[contains(text(),'Hinterachse')] or self::span//b[contains(text(),'Hinterachse')]]");
+    }
+
+    SelenideElement descriptionOfCharacteristicsFrontSide(int position) {
+        return $x("(//div[@class='description'])[" + position + "]//span[contains(text(),'Einbauseite:')]/following-sibling::*[self::span[contains(text(),'Vorderachse')] or self::span//b[contains(text(),'Vorderachse')]]");
+    }
+
 }
