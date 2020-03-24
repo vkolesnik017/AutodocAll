@@ -517,8 +517,12 @@ public class Product_page {
     SelenideElement oenBlockTitle() {return $(".product-info-block__oem__title"); }
 
     // locator for counter
-    SelenideElement counterValue() {
+    SelenideElement counterValuePairedGood() {
         return $(By.xpath("//input[@class=' qty_2']"));
+    }
+
+    SelenideElement counterValue() {
+        return $x("//input[@class=' qty_1']");
     }
 
     SelenideElement counterPlus() {

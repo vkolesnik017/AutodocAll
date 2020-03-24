@@ -13,19 +13,17 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.getCurrentShopFromJSVarInHTML;
-import static ATD.CommonMethods.openPage;
+import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_1676_HeavyLoadsPositiveCase {
+public class QC_1683_HeavyLoads_FreeShippingLimit {
 
-    private String email = "checksPurchaseHeavyLoad@mailinator.com";
-    private String password = "atdtest";
+    private String email = "qc_1683_autotestDE@mailinator.com";
+    private Product_page_Logic product_page_logic = new Product_page_Logic();
     private Double totalPrice;
     private Double totalPriceAWSOrder;
     private String orderNumber;
-
 
     @BeforeClass
     void setUp() {
@@ -40,33 +38,44 @@ public class QC_1676_HeavyLoadsPositiveCase {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks the purchase of a heavy load")
-    public void testOfHeavyLoadsPurchase(String route) {
+    @Description(value = "Test checks free shipping limit and the purchase of a heavy load")
+    public void testOfHeavyLoadsPurchaseAndFreeShippingLimit(String route) throws SQLException {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
-        totalPrice = new Product_page_Logic().addProductToCart()
-                .closePopupOtherCategoryIfYes()
-                .cartClick()
+        product_page_logic.addProductToCart();
+        openPage("https://autodoc.de/" + new DataBase().getRouteByRouteName("DE", "product21"));
+        totalPrice = product_page_logic.checkingCounterIncrease(2)
+                .addProductToCart().closePopupOtherCategoryIfYes().cartClick()
                 .nextButtonClick()
                 .signIn(email, password)
                 .fillAllFields(shop).nextBtnClick()
                 .chooseVorkasse().nextBtnClick()
+                .checkPresenceFreeDeliveryPriceCartAllDataPage()
+                .checkPresenceHeavyLoadsDeliveryPriceAllDataPage()
+                .checkPresenceSafeOrderBlock()
+                .checkingCounterDecrease(1,"7712294", "7712294")
+                .checkAbsenceFreeDeliveryPriceCartAllDataPage()
                 .checkRegularDeliveryPriceAllData("6,95")
                 .checkHeavyLoadsDeliveryPriceAllData("10,00")
-                .checkAbsenceSafeOrderBlock()
+                .checkingCounterIncrease(1,"7712294","7712294")
+                .checkPresenceFreeDeliveryPriceCartAllDataPage()
+                .checkHeavyLoadsDeliveryPriceAllData("10,00")
+                .clickSafeOrderCheckbox()
+                .checkPresenceSafeOrderPriceFromOrderSummeryBlock()
                 .getTotalPriceAllDataPage();
         new CartAllData_page_Logic().nextBtnClick();
         orderNumber = new Payment_handler_page_Logic().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumber);
         totalPriceAWSOrder =  order_aws.openOrderInAwsWithLogin().getTotalPriceOrder();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
-        order_aws.checkDeliveryPriceOrderAWS("6.95")
+        order_aws.checkDeliveryPriceOrderAWS("2.99")
                 .checkHeavyLoadsDeliveryPriceOrderAWS("10")
-                .checkThatStatusSafeOrderIsOff()
+                .checkThatStatusSafeOrderIsOn()
                 .reSaveOrder();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
-        order_aws.checkDeliveryPriceOrderAWS("6.95")
-                .checkHeavyLoadsDeliveryPriceOrderAWS("10");
+        order_aws.checkDeliveryPriceOrderAWS("2.99")
+                .checkHeavyLoadsDeliveryPriceOrderAWS("10")
+                .checkThatStatusSafeOrderIsOn();
     }
 
     @AfterMethod

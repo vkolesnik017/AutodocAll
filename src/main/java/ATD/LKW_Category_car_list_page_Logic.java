@@ -175,7 +175,7 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
 
     @Step("Click on title of product in tecDoc listing .LKW_Category_car_list_page")
     public LKW_Product_page_Logic clickOnTitleOfProduct() {
-        titleOfProductInTecDocListingBlock(1).click();
+        titleOfProductInTecDocListingBlock().get(0).click();
         return page(LKW_Product_page_Logic.class);
     }
 
@@ -204,6 +204,64 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         Assert.assertTrue(actualAmountPagesInTecDocListing == expectedAmountPagesInTecDocListing);
         nextPagePagination().click();
         productsOnPage().shouldHave(sizeNotEqual(0));
+        return this;
+    }
+    @Step("Check filter by Generic in TecDoc listing .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic checkFilterByGeneric() {
+        filterByGenericBlock().shouldBe(visible);
+        genericsInFilterGenericBlock().shouldHave(sizeNotEqual(0));
+        return this;
+    }
+
+    @Step("Check TecDoc listing with selecting filter .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic checkTecDocListingWithSelectingFilterByGeneric() {
+        genericsInFilterGenericBlock().get(1).click();
+        appearsOfLoader();
+        Assert.assertTrue(url().contains("&categories%5B1%5D=133"));
+        for (int i = 0; i < titleOfProductInTecDocListingBlock().size(); i++) {
+            titleOfProductInTecDocListingBlock().get(i).shouldHave(text("Dichtung, Ölfilter"));
+        }
+        allFiltersGeneric().click();
+        appearsOfLoader();
+        titleOfProductInTecDocListingBlock().shouldHave(sizeNotEqual(0));
+        return this;
+    }
+
+    @Step("appears of Loader .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic appearsOfLoader() {
+        loaderInTecDocListing().should(appear);
+        loaderInTecDocListing().should(disappear);
+        return this;
+    }
+
+    @Step("check visibility of Brands block .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic visibilityOfBrandsBlock() {
+        brandBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Check TecDoc listing with selecting brand .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic checkTecDocListingWithSelectingFilterByBrand() {
+        brandsOfBrandBlock().get(12).click();
+        appearsOfLoader();
+        Assert.assertTrue(url().equals("https://lkwteile.autodoc.de/ersatzteile/olfilter-200157/mercedes-benz/actros?car_id=1000784&supplier%5B2%5D=4868"));
+        for (int i = 0; i < titleOfProductInTecDocListingBlock().size(); i++) {
+            titleOfProductInTecDocListingBlock().get(i).shouldHave(text("DONALDSON"));
+        }
+        return this;
+    }
+
+    @Step("check visibility of Installation side block .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic visibilityOfInstallationSideBlock() {
+        installationSideBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Check TecDoc listing with selecting brand .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic checkTecDocListingWithSelectingInstallationSide() {
+        sidesOfInstallation().get(0).click();
+        appearsOfLoader();
+        Assert.assertTrue(url().equals("https://lkwteile.autodoc.de/ersatzteile/scheibenbremsbelag-200342/iveco/eurostar?car_id=1006726&criteria%5B100%5D=HA"));
         return this;
     }
 

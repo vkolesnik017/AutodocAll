@@ -3,6 +3,8 @@ package ATD;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
+import java.security.cert.Certificate;
+
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
@@ -25,12 +27,24 @@ public class CartAllData_page {
         return $(byCssSelector(".qty>input"));
     }
 
+    SelenideElement counterValue(String idGood) {
+        return $x("//tr[@data-article_id='" + idGood + "']//input[@class='item_qty qty_1']");
+    }
+
     SelenideElement counterPlusBtn() {
         return $(byCssSelector(".plus"));
     }
 
+    SelenideElement counterPlus(String idGoodFromBtnPlus) {
+        return $x("//tr[@data-article_id='" + idGoodFromBtnPlus + "']//a[@class='ga-click plus changeQty']");
+    }
+
     SelenideElement counterMinusBtn() {
         return $(byCssSelector(".minus"));
+    }
+
+    SelenideElement counterMinus(String idGoodFromBtnMinus) {
+        return $x("//tr[@data-article_id='" + idGoodFromBtnMinus + "']//a[@class='ga-click minus changeQty']");
     }
 
     SelenideElement nextBtn() {
@@ -92,12 +106,20 @@ public class CartAllData_page {
         return $x("//div[@class='order-summary ']//div[4]//span[2]");
     }
 
+    SelenideElement safeOrderCost() {
+        return $x("//div[@class='order-summary ']//div[5]//span[2]");
+    }
+
     public SelenideElement priceOfSafeOrder() {
         return $(byCssSelector(".bestelen-block__col>label"));
     }
 
     SelenideElement safeOrderBlock(){
         return $(byCssSelector(".bestelen-block__row"));
+    }
+
+    SelenideElement safeOrderCheckbox() {
+        return $x("//input[@name='security_delivery']");
     }
 
     // locators of popup of dangerous product
@@ -157,5 +179,13 @@ public class CartAllData_page {
 
     SelenideElement popupCountryDeliveryLimitAllDataPage() {
         return $x("//div[@class='delivery-limit-popup country_delivery_limit']");
+    }
+
+    SelenideElement deleteGoodFromAllDataPage(String idGood) {
+        return $x("//tr[@data-article_id='" + idGood + "']//td[1]//a");
+    }
+
+    SelenideElement btnConfirmProductDelete() {
+        return $x("//a[@class='submit']");
     }
 }
