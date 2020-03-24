@@ -159,8 +159,8 @@ public class Order_aws {
                     statusOrder().shouldBe(attribute("data-status-id", valueOfTestStatus));
                 }
                 checkOrderHasTestStatus();
-                }
             }
+        }
         return this;
     }
 
@@ -215,9 +215,11 @@ public class Order_aws {
         return Float.valueOf(sellingProductPrice().attr("data-sum"));
     }
 
-    private SelenideElement deliveryDeliveryPriceOrderAWS() { return $(".inf_deliveryCost > a"); }
+    private SelenideElement deliveryDeliveryPriceOrderAWS() {
+        return $(".inf_deliveryCost > a");
+    }
 
-    private SelenideElement  heavyLoadsDeliveryPriceOrderAWS() {
+    private SelenideElement heavyLoadsDeliveryPriceOrderAWS() {
         return $(".inf_surcharge > a");
     }
 
@@ -268,7 +270,7 @@ public class Order_aws {
 
 
     @Step("Re save order. Order_aws")
-    public Order_aws reSaveOrder(){
+    public Order_aws reSaveOrder() {
         btnChangeOrderStatusInTest().scrollTo();
         btnChangeOrderStatusInTest().click();
         saveChangesInOrderBtn().click();
@@ -324,28 +326,34 @@ public class Order_aws {
     }
 
     @Step("Check delivery price in order AWS")
-    public Order_aws checkDeliveryPriceOrderAWS( String expectedDeliveryPriceOrderAWS) {
+    public Order_aws checkDeliveryPriceOrderAWS(String expectedDeliveryPriceOrderAWS) {
         deliveryDeliveryPriceOrderAWS().shouldHave(attribute("data-sum", expectedDeliveryPriceOrderAWS));
         return this;
     }
 
     @Step("Check Heavy Loads delivery price in order AWS")
     public Order_aws checkHeavyLoadsDeliveryPriceOrderAWS(String expectedHeavyLoadsDeliveryPriceOrderAWS) {
-        heavyLoadsDeliveryPriceOrderAWS().shouldHave(attribute("data-sum",expectedHeavyLoadsDeliveryPriceOrderAWS));
+        heavyLoadsDeliveryPriceOrderAWS().shouldHave(attribute("data-sum", expectedHeavyLoadsDeliveryPriceOrderAWS));
         return this;
     }
 
 
     @Step("Get total Price in Order AWS")
-    public Double getTotalPriceOrder(){
+    public Double getTotalPriceOrder() {
         String price = totalPriceOrder().getText();
         Double totalPriceOrder = Double.parseDouble(price);
         return totalPriceOrder;
     }
 
     @Step("Checks that Safe Order is turned off. Order_aws")
-    public Order_aws checkStatusSafeOrder() {
+    public Order_aws checkThatStatusSafeOrderIsOff() {
         safeOrderSelector().shouldHave(text("Выключен"));
+        return this;
+    }
+
+    @Step("Checks that Safe Order is turned On. Order_aws")
+    public Order_aws checkThatSafeOrderStatusIsOn() {
+        safeOrderSelector().shouldHave(text("Включен"));
         return this;
     }
 }

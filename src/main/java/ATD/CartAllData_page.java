@@ -92,12 +92,20 @@ public class CartAllData_page {
         return $x("//div[@class='order-summary ']//div[4]//span[2]");
     }
 
+    SelenideElement safeOrderCost() {
+        return $x("//div[@class='order-summary ']//div[5]//span[2]");
+    }
+
     public SelenideElement priceOfSafeOrder() {
         return $(byCssSelector(".bestelen-block__col>label"));
     }
 
     SelenideElement safeOrderBlock(){
         return $(byCssSelector(".bestelen-block__row"));
+    }
+
+    SelenideElement safeOrderCheckbox() {
+        return $x("//input[@name='security_delivery']");
     }
 
     // locators of popup of dangerous product
@@ -157,5 +165,13 @@ public class CartAllData_page {
 
     SelenideElement popupCountryDeliveryLimitAllDataPage() {
         return $x("//div[@class='delivery-limit-popup country_delivery_limit']");
+    }
+
+    SelenideElement deleteGoodsFromAllDataPage(String idGoods) {
+        return $x("//tr[@data-article_id='" + idGoods + "']//td[1]//a");
+    }
+
+    SelenideElement btnConfirmProductDelete() {
+        return $x("//a[@class='submit']");
     }
 }
