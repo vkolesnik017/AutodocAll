@@ -53,7 +53,7 @@ public class QC_777_Reviews_TestReviewsFormWithValidData {
         product_page_logic.reviewsSubmitButton().click();
         product_page_logic.faqPopupText().shouldHave(text("Danke für Ihre Beurteilung."));
         mailinator.openEmail(randomEmail)
-                .openLetter(2)
+                .openLetter(1)
                 .linkFAQemailConfirm().shouldBe(appear).click();
         switchTo().window(1);
         new Reviews_Confirmation_page_Logic().checkReviewsConfirmationMessage();
