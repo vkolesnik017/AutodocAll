@@ -3,6 +3,8 @@ package ATD;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
+import java.security.cert.Certificate;
+
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
@@ -25,12 +27,24 @@ public class CartAllData_page {
         return $(byCssSelector(".qty>input"));
     }
 
+    SelenideElement counterValue(String idGood) {
+        return $x("//tr[@data-article_id='" + idGood + "']//input[@class='item_qty qty_1']");
+    }
+
     SelenideElement counterPlusBtn() {
         return $(byCssSelector(".plus"));
     }
 
+    SelenideElement counterPlus(String idGoodFromBtnPlus) {
+        return $x("//tr[@data-article_id='" + idGoodFromBtnPlus + "']//a[@class='ga-click plus changeQty']");
+    }
+
     SelenideElement counterMinusBtn() {
         return $(byCssSelector(".minus"));
+    }
+
+    SelenideElement counterMinus(String idGoodFromBtnMinus) {
+        return $x("//tr[@data-article_id='" + idGoodFromBtnMinus + "']//a[@class='ga-click minus changeQty']");
     }
 
     SelenideElement nextBtn() {
@@ -167,8 +181,8 @@ public class CartAllData_page {
         return $x("//div[@class='delivery-limit-popup country_delivery_limit']");
     }
 
-    SelenideElement deleteGoodsFromAllDataPage(String idGoods) {
-        return $x("//tr[@data-article_id='" + idGoods + "']//td[1]//a");
+    SelenideElement deleteGoodFromAllDataPage(String idGood) {
+        return $x("//tr[@data-article_id='" + idGood + "']//td[1]//a");
     }
 
     SelenideElement btnConfirmProductDelete() {

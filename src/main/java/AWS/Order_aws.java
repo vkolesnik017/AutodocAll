@@ -352,7 +352,7 @@ public class Order_aws {
     }
 
     @Step("Checks that Safe Order is turned On. Order_aws")
-    public Order_aws checkThatSafeOrderStatusIsOn() {
+    public Order_aws checkThatStatusSafeOrderIsOn() {
         safeOrderSelector().shouldHave(text("Включен"));
         return this;
     }

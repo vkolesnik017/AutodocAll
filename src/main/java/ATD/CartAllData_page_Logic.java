@@ -98,6 +98,12 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return this;
     }
 
+    @Step("Check for absence free delivery price. CartAllData_page")
+    public CartAllData_page_Logic checkAbsenceFreeDeliveryPriceCartAllDataPage() {
+        freeDeliveryIcon().shouldNotBe(visible);
+        return this;
+    }
+
     @Step("Checks for presence regular delivery price. CartAllData_page")
     public CartAllData_page_Logic checkPresenceRegularDeliveryPrice() {
         deliveryPrice().shouldBe(visible);
@@ -241,14 +247,26 @@ public class CartAllData_page_Logic extends CartAllData_page {
     }
 
     @Step("Delete goods {idGoods} from CartAllData_page")
-    public CartAllData_page_Logic deleteGoodsFromCartAllDataPage(String idGoods) {
-        deleteGoodsFromAllDataPage(idGoods).click();
+    public CartAllData_page_Logic deleteGoodFromCartAllDataPage(String idGood) {
+        deleteGoodFromAllDataPage(idGood).click();
         return this;
     }
 
     @Step("Click button confirm product delete. CartAllData_page")
     public CartAllData_page_Logic clickBtnConfirmProductDelete() {
         btnConfirmProductDelete().click();
+        return this;
+    }
+
+    @Step(":on CartAllData_page")
+    public CartAllData_page_Logic checkingCounterIncrease(int increaseCount, String idGood, String idGoodFromBtnPlus) {
+        new CommonMethods().checkingCounterIncrease(increaseCount, counterValue(idGood), counterPlus(idGoodFromBtnPlus));
+        return this;
+    }
+
+    @Step(":on CartAllData_page")
+    public CartAllData_page_Logic checkingCounterDecrease(int decreaseCount, String idGood, String idGoodFromBtnMinus) {
+        new CommonMethods().checkingCounterDecrease(decreaseCount, counterValue(idGood), counterMinus(idGoodFromBtnMinus));
         return this;
     }
 }
