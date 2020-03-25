@@ -74,14 +74,14 @@ public class QC_126_FiltersSorting_TestTwoFilterAttributesInBlock {
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks two filter attributes in block on route search with generic")
-    public void testTwoFilterAttributesInBlockRouteWithGeneric() throws SQLException {
+    public void testTwoFilterAttributesInBlockRouteWithGeneric() throws Exception {
         openPage("https://autodoc.de/" +  dataBase.getRouteByRouteName("DE", "search5"));
         listingPage.langeFilterCheckbox().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
+        Thread.sleep(5000);
         String characteristic = listingPage.activeSideFilter4().text();
         listingPage.activeSideFilter4().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.activeSideFilter4FirstPosition().waitUntil(visible, 5000);
         listingPage.activeSideFilter4FirstPosition().shouldHave(text(characteristic));
         listingPage.checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.langeProductAttributeGenericRoute(), listingPage.langeProductAttributeTecdocRoute());
     }

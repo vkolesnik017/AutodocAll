@@ -576,5 +576,13 @@ public class Product_page {
         return $(By.xpath("//div[@id='faq']//a[@title='Datenschutzerklärung']"));
     }
 
+    //locators for related products popup
     ElementsCollection categoriesInRelatedProductsPopup() { return $$(".popup-other-cat__content-item"); }
+
+    SelenideElement backButtonInRelatedPopup() { return $(".back"); }
+
+    SelenideElement relatedProductsPopup() { return $(".popup-other-cat"); }
+
+    SelenideElement relatedProductPopupGoToCartButton() { return $(".go-cart"); }
+
 }

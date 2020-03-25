@@ -37,10 +37,11 @@ public class QC_141_FiltersSorting_TestBySideAndBrandAndHoheFilterInteraction {
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks side, brand and Hohe filters interaction LKW route search")
-    public void testSideAndBrandAndHoheFilterInteractionLKWsearch() throws SQLException {
+    public void testSideAndBrandAndHoheFilterInteractionLKWsearch() throws Exception {
         openPage("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_search"));
         listingPage.filterBySideBack().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
+        Thread.sleep(3000);
         String brandName = listingPage.firstBrandNameInFiler().attr("alt");
         listingPage.firstBrandInFilterButton().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
@@ -56,13 +57,14 @@ public class QC_141_FiltersSorting_TestBySideAndBrandAndHoheFilterInteraction {
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks side, brand and Hohe filters interaction LKW route model")
-    public void testSideAndBrandAndHoheFilterInteractionLKWmodel(String route) {
+    public void testSideAndBrandAndHoheFilterInteractionLKWmodel(String route) throws Exception{
         openPage(route);
         listingPage.filterBySideBack().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         String hoheValue = listingPage.hoheThirdSideFilterButton().text();
         listingPage.hoheThirdSideFilterButton().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
+        Thread.sleep(3000);
         String brandName = listingPage.firstBrandNameOemListing().attr("alt");
         listingPage.firstBrandButtonOemListing().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));

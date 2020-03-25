@@ -1,6 +1,7 @@
 package ATD;
 
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.ex.ElementNotFound;
 import com.codeborne.selenide.ex.ElementShould;
 import com.codeborne.selenide.ex.UIAssertionError;
@@ -8,6 +9,7 @@ import io.qameta.allure.Step;
 import org.testng.Assert;
 
 import java.sql.SQLException;
+import java.util.Random;
 
 import static ATD.CommonMethods.*;
 import static ATD.CommonMethods.getCurrencyAndVerify;
@@ -364,10 +366,65 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
+    //methods for related products popup
     @Step("Add product to basket and check related products popup")
     public Product_page_Logic checkRelatedProductsPopup(int numberCategories) {
         buyButton().click();
         categoriesInRelatedProductsPopup().shouldHaveSize(numberCategories);
+        return this;
+    }
+
+    @Step("Check related product popup close button")
+    public Product_page_Logic checkRelatedProductPopupClose(String route) {
+        openPage(route);
+        buyButton().click();
+        closeBtnOfPopupOtherCategory().click();
+        relatedProductsPopup().shouldNotBe(visible);
+        close();
+        return this;
+    }
+
+    @Step("Check related product popup back button")
+    public Product_page_Logic checkRelatedProductPopupBack(String route) {
+        openPage(route);
+        buyButton().click();
+        backButtonInRelatedPopup().click();
+        relatedProductsPopup().shouldNotBe(visible);
+        close();
+        return this;
+    }
+
+    @Step("Check related product popup go to basket button")
+    public Product_page_Logic checkRelatedProductPopupGoToBasket(String route) {
+        openPage(route);
+        buyButton().click();
+        relatedProductPopupGoToCartButton().click();
+        checkingContainsUrl("https://www.autodoc.de/basket/account");
+        close();
+        return this;
+    }
+
+    @Step("Check Realated Popup Categories")
+    public Product_page_Logic checkRealatedPopupCategories(String route) {
+        openPage(route);
+        buyButton().click();
+        Random random = new Random();
+        relatedProductsPopup().shouldBe(visible);
+        SelenideElement randomCategory = categoriesInRelatedProductsPopup().get(random.nextInt(categoriesInRelatedProductsPopup().size()));
+        String categotyRef = randomCategory.attr("href");
+        randomCategory.click();
+        checkingContainsUrl(categotyRef);
+        close();
+        return this;
+    }
+
+    @Step("Check Realated Popup Overlay")
+    public Product_page_Logic checkRelatedPopupOverlay(String route) {
+        openPage(route);
+        buyButton().click();
+        closeAnyPopupByClickOverlay();
+        relatedProductsPopup().shouldNotBe(visible);
+        close();
         return this;
     }
 }
