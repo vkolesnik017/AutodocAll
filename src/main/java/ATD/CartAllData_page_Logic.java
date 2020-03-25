@@ -204,14 +204,14 @@ public class CartAllData_page_Logic extends CartAllData_page {
     }
 
     @Step(": on CartAllData_page")
-    public CartAllData_page_Logic checkAbsenceGoodsInCartPage(String idProduct){
-        new Cart_page_Logic().checkAbsenceGoodsInCartPage(idProduct);
+    public CartAllData_page_Logic checkAbsenceGoodInCartPage(String idProduct){
+        new Cart_page_Logic().checkAbsenceGoodInCartPage(idProduct);
         return this;
     }
 
     @Step(": on CartAllData_page")
-    public CartAllData_page_Logic checkPresenceGoodsInCardPage(String idProduct){
-        new Cart_page_Logic().checkPresenceGoodsInCardPage(idProduct);
+    public CartAllData_page_Logic checkPresenceGoodInCardPage(String idProduct){
+        new Cart_page_Logic().checkPresenceGoodInCardPage(idProduct);
         return this;
     }
 

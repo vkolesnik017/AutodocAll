@@ -35,28 +35,29 @@ public class QC_1681_HeavyLoadsFR_NegativeCaseAllData {
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks negative purchase of a heavy loads in FR / AllData")
-    public void testOfHeavyLoadsNegativePurchaseAllDataInFR (String route) throws SQLException {
+    public void testOfHeavyLoadsNegativePurchaseAllDataInFR(String route) throws SQLException {
         openPage(route);
         product_page_logic.addProductToCart();
-        openPage("https://autodoc.de/" + new DataBase().getRouteByRouteName("DE", "search3"));
-        clickOfBuyBtnForAllPages();
-        new Search_page_Logic().closePopupOtherCategoryIfYes()
+        openPage("https://autodoc.de/" + new DataBase().getRouteByRouteName("DE", "product2"));
+        product_page_logic.addProductToCart()
+                .closePopupOtherCategoryIfYes()
                 .cartClick().nextButtonClick()
-                .signIn(email, password).nextBtnClick()
+                .signIn(email, password)
+                .nextBtnClick()
                 .chooseVorkasse().nextBtnClick()
                 .checkPresencePopUpCountryDeliveryLimit()
                 .checkAbsenceBtnChangeAddressInDeliveryPopup()
                 .closePopUpDeliveryLimitCartAllDataPage()
-                .checkAbsenceGoodsInCartPage("7037462")
-                .checkPresenceGoodsInCardPage("1187466")
+                .checkAbsenceGoodInCartPage("7037462")
+                .checkPresenceGoodInCardPage("7807629")
                 .checkPresenceSafeOrderBlock()
                 .checkPresenceRegularDeliveryPrice()
                 .checkAbsenceHeavyLoadsDeliveryPrice();
         openPage(route);
         product_page_logic.addProductToCart().closePopupOtherCategoryIfYes().cartClick();
         new CartAllData_page_Logic().deleteGoodsInDeliveryPopupCartAllDataPage()
-                .checkAbsenceGoodsInCartPage("7037462")
-                .checkPresenceGoodsInCardPage("1187466")
+                .checkAbsenceGoodInCartPage("7037462")
+                .checkPresenceGoodInCardPage("7807629")
                 .checkPresenceSafeOrderBlock()
                 .checkPresenceRegularDeliveryPrice()
                 .checkAbsenceHeavyLoadsDeliveryPrice();

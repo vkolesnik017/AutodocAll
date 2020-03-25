@@ -25,6 +25,7 @@ public class QC_1685_HeavyLoadsAndOrdinaryGoods_DeletedOFGoods {
     private Double totalPrice;
     private Double totalPriceAWSOrder;
     private String orderNumber;
+    private Product_page_Logic product_page_logic = new Product_page_Logic();
 
     @BeforeClass
     void setUp() {
@@ -43,10 +44,10 @@ public class QC_1685_HeavyLoadsAndOrdinaryGoods_DeletedOFGoods {
     public void testOfHeavyLoadsPurchaseAndOrdinaryGoods(String route) throws SQLException {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
-        new Product_page_Logic().addProductToCart();
-        open("https://autodoc.de/" + new DataBase().getRouteByRouteName("DE", "search3"));
-        clickOfBuyBtnForAllPages();
-        totalPrice = new Search_page_Logic().closePopupOtherCategoryIfYes()
+        product_page_logic.addProductToCart();
+        open("https://autodoc.de/" + new DataBase().getRouteByRouteName("DE", "product2"));
+        totalPrice = product_page_logic.addProductToCart()
+                .closePopupOtherCategoryIfYes()
                 .cartClick().nextButtonClick()
                 .signIn(email, password)
                 .fillAllFields(shop).nextBtnClick()
@@ -55,7 +56,7 @@ public class QC_1685_HeavyLoadsAndOrdinaryGoods_DeletedOFGoods {
                 .checkHeavyLoadsDeliveryPriceAllData("10,00")
                 .checkPresenceSafeOrderBlock()
                 .clickSafeOrderCheckbox()
-                .deleteGoodFromCartAllDataPage("1187466")
+                .deleteGoodFromCartAllDataPage("7807629")
                 .clickBtnConfirmProductDelete()
                 .checkAbsenceSafeOrderBlock()
                 .checkAbsenceSafeOrderPriceFromOrderSummeryBlock()
@@ -63,7 +64,7 @@ public class QC_1685_HeavyLoadsAndOrdinaryGoods_DeletedOFGoods {
         new CartAllData_page_Logic().nextBtnClick();
         orderNumber = new Payment_handler_page_Logic().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumber);
-        totalPriceAWSOrder =  order_aws.openOrderInAwsWithLogin().getTotalPriceOrder();
+        totalPriceAWSOrder = order_aws.openOrderInAwsWithLogin().getTotalPriceOrder();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
         order_aws.checkDeliveryPriceOrderAWS("6.95")
                 .checkHeavyLoadsDeliveryPriceOrderAWS("10")

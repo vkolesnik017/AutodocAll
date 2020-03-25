@@ -36,25 +36,25 @@ public class QC_1680_HeavyLoadsFR_NegativeCaseBasket {
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks negative purchase of a heavy loads in FR / Basket")
-    public void testOfHeavyLoadsNegativePurchaseBasketInFR (String route) throws SQLException {
+    public void testOfHeavyLoadsNegativePurchaseBasketInFR(String route) throws SQLException {
         openPage(route);
         product_page_logic.addProductToCart();
-        openPage("https://autodoc.de/" + new DataBase().getRouteByRouteName("DE", "search3"));
-        clickOfBuyBtnForAllPages();
-        new Search_page_Logic().closePopupOtherCategoryIfYes();
+        openPage("https://autodoc.de/" + new DataBase().getRouteByRouteName("DE", "product2"));
+        product_page_logic.addProductToCart()
+                .closePopupOtherCategoryIfYes();
         new Main_page_Logic().loginFromHeader(email)
                 .cartClick()
                 .checkAbsenceBtnContinueShoppingInDeliveryPopupCartPage()
                 .closePopUpDeliveryLimitCartPage()
-                .checkAbsenceGoodsInCartPage("7037462")
-                .checkPresenceGoodsInCardPage("1187466");
+                .checkAbsenceGoodInCartPage("7037462")
+                .checkPresenceGoodInCardPage("7807629");
         openPage(route);
         product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
                 .deleteGoodsInDeliveryPopupCartPage()
-                .checkAbsenceGoodsInCartPage("7037462")
-                .checkPresenceGoodsInCardPage("1187466");
+                .checkAbsenceGoodInCartPage("7037462")
+                .checkPresenceGoodInCardPage("7807629");
     }
 
     @AfterMethod
