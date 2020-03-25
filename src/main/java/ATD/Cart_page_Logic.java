@@ -106,6 +106,7 @@ public class Cart_page_Logic extends Cart_page {
     @Step("Close popup delivery limit. Cart_page")
     public Cart_page_Logic closePopUpDeliveryLimitCartPage() {
         closePopupDeliveryLimitCartPage().click();
+        sleep(2000);
         return this;
     }
 
@@ -136,14 +137,14 @@ public class Cart_page_Logic extends Cart_page {
     }
 
     @Step("Checks the absence of good by id {idProducts} in cart page. Cart_page")
-    public Cart_page_Logic checkAbsenceGoodsInCartPage(String idProducts) {
+    public Cart_page_Logic checkAbsenceGoodInCartPage(String idProducts) {
         productsIDLocator(idProducts).shouldNotBe(visible);
         return this;
     }
 
 
     @Step("Checks the presence of good by id {idProducts} in cart page. Cart_page")
-    public Cart_page_Logic checkPresenceGoodsInCardPage(String idProducts) {
+    public Cart_page_Logic checkPresenceGoodInCardPage(String idProducts) {
         productsIDLocator(idProducts).shouldBe(visible);
         return this;
     }

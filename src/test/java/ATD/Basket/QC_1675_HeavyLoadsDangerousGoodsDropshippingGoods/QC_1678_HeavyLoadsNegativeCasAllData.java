@@ -39,16 +39,16 @@ public class QC_1678_HeavyLoadsNegativeCasAllData {
     public void testOfHeavyLoadsNegativePurchaseAllDataPage(String route) throws SQLException {
         openPage(route);
         product_page_logic.addProductToCart();
-        open("https://autodoc.de/" + new DataBase().getRouteByRouteName("DE", "search3"));
-        clickOfBuyBtnForAllPages();
-        new Search_page_Logic().closePopupOtherCategoryIfYes()
+        open("https://autodoc.de/" + new DataBase().getRouteByRouteName("DE", "product2"));
+        product_page_logic.addProductToCart()
+                .closePopupOtherCategoryIfYes()
                 .cartClick().nextButtonClick()
                 .signIn(email, password).nextBtnClick()
                 .chooseVorkasse().nextBtnClick()
                 .checkPresencePopUpDeliveryLimitAllDataPage()
                 .closePopUpDeliveryLimitCartAllDataPage()
-                .checkAbsenceGoodsInCartPage("7037462")
-                .checkPresenceGoodsInCardPage("1187466")
+                .checkAbsenceGoodInCartPage("7037462")
+                .checkPresenceGoodInCardPage("7807629")
                 .checkPresenceSafeOrderBlock()
                 .checkPresenceRegularDeliveryPrice();
         openPage(route);
@@ -60,8 +60,8 @@ public class QC_1678_HeavyLoadsNegativeCasAllData {
                 .chooseVorkasse().nextBtnClick()
                 .checkPresencePopUpDeliveryLimitAllDataPage()
                 .deleteGoodsInDeliveryPopupCartAllDataPage()
-                .checkAbsenceGoodsInCartPage("7037462")
-                .checkPresenceGoodsInCardPage("1187466")
+                .checkAbsenceGoodInCartPage("7037462")
+                .checkPresenceGoodInCardPage("7807629")
                 .checkPresenceSafeOrderBlock()
                 .checkPresenceRegularDeliveryPrice();
         openPage(route);

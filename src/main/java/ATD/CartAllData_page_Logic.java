@@ -134,6 +134,12 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return this;
     }
 
+    @Step("Checks for the absence of VAT percentage")
+    public CartAllData_page_Logic checkAbsenceOfVatPercentage() {
+        percentageOfVat().shouldNotBe(visible);
+        return this;
+    }
+
 
     @Step("Checks currency on all data page. CartAllData_page")
     public CartAllData_page_Logic checkCurrencyOnAllDataPage(String shop) throws SQLException {
@@ -198,14 +204,14 @@ public class CartAllData_page_Logic extends CartAllData_page {
     }
 
     @Step(": on CartAllData_page")
-    public CartAllData_page_Logic checkAbsenceGoodsInCartPage(String idProduct){
-        new Cart_page_Logic().checkAbsenceGoodsInCartPage(idProduct);
+    public CartAllData_page_Logic checkAbsenceGoodInCartPage(String idProduct){
+        new Cart_page_Logic().checkAbsenceGoodInCartPage(idProduct);
         return this;
     }
 
     @Step(": on CartAllData_page")
-    public CartAllData_page_Logic checkPresenceGoodsInCardPage(String idProduct){
-        new Cart_page_Logic().checkPresenceGoodsInCardPage(idProduct);
+    public CartAllData_page_Logic checkPresenceGoodInCardPage(String idProduct){
+        new Cart_page_Logic().checkPresenceGoodInCardPage(idProduct);
         return this;
     }
 
