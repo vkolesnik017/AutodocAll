@@ -101,14 +101,14 @@ public class Search_page_Logic extends Search_page {
     }
 
     @Step(": on Search_page")
-    public Search_page_Logic counterIncrease(String startValue){
-        new CommonMethods().checkingCounterIncrease(startValue, counterValue(), counterPlus());
+    public Search_page_Logic counterIncreaseForPaired(String startValue){
+        new CommonMethods().checkingCounterIncreaseForPaired(startValue, counterValue(), counterPlus());
         return this;
     }
 
     @Step(": on Search_page")
-    public Search_page_Logic counterDecrease(String startValue) {
-        new CommonMethods().checkingCounterDecrease(startValue, counterValue(), counterMinus());
+    public Search_page_Logic counterDecreaseForPaired(String startValue) {
+        new CommonMethods().checkingCounterDecreaseForPaired(startValue, counterValue(), counterMinus());
         return this;
     }
 
@@ -123,6 +123,12 @@ public class Search_page_Logic extends Search_page {
     public ElementsCollection getCharacteristicsDesiredProductForSearch(String productArticle) {
         return $$x("//*[@class='rc' and contains(text(),'" + productArticle +"')]/ancestor::div[@class='box criteria_toogle_active']//li")
                 .shouldHave(sizeGreaterThan(10));
+    }
+
+    @Step(": on Search_page")
+    public Search_page_Logic closePopupOtherCategoryIfYes(){
+        new Product_page_Logic().closePopupOtherCategoryIfYes();
+        return this;
     }
 }
 

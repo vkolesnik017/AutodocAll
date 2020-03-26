@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Basket" parallel="methods" data-provider-thread-count="2">
+
+    <listeners>
+        <listener class-name="ATD.ProjectListener"/>
+    </listeners>
+
+    <test name="QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods">
+        <classes>
+            <class name="ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1676_HeavyLoadsPositiveCase"/>
+            <class name="ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1677_HeavyLoadsNegativeCase"/>
+            <class name="ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1678_HeavyLoadsNegativeCasAllData"/>
+            <!--<class name="ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1679_HeavyLoadsFR_PositiveCase"/>-->
+            <class name="ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1680_HeavyLoadsFR_NegativeCaseBasket"/>
+            <class name="ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1681_HeavyLoadsFR_NegativeCaseAllData"/>
+            <class name="ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1682_HeavyLoads_Islands"/>
+            <class name="ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1684_HeavyLoadsAndOrdinaryGoods_PositiveCase"/>
+            <class name="ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1685_HeavyLoadsAndOrdinaryGoods_DeletedOFGoods"/>
+            <class name="ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1683_HeavyLoads_FreeShippingLimit"/>
+        </classes>
+    </test>
+
+</suite>

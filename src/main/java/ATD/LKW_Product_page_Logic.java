@@ -1,10 +1,13 @@
 package ATD;
 
+import AWS.ProductCard_aws;
 import io.qameta.allure.Step;
+import org.testng.Assert;
 
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class LKW_Product_page_Logic extends LKW_Product_page {
 
@@ -48,6 +51,29 @@ public class LKW_Product_page_Logic extends LKW_Product_page {
     public LKW_Categories_page_Logic goToTecDocCatalogFromBreadCrumbs() {
         firstLinkOfBreadCrumbsBlock().click();
         return page(LKW_Categories_page_Logic.class);
+    }
+
+    @Step("checking the compatibility of goods and cars .LKW_Product_page")
+    public LKW_Product_page_Logic checkCompatibilityProductAndTruck() {
+        breadCrumbsBlock().shouldBe(visible);
+        if (compatibilityTruckBlock().isDisplayed()) {
+          linkOfCompatibilityTruckAndProduct().shouldBe(visible);
+        } else {
+            String idOfProduct = url().replaceAll("[^0-9]", "");
+            executeJavaScript("window.open('about:blank','_blank')");
+            switchTo().window(1);
+            new ProductCard_aws(idOfProduct).openProductCardPageAndLogin();
+            switchTo().window(1).close();
+            switchTo().window(0);
+        }
+           return this;
+    }
+
+    @Step("Check successfully LKW_Product page loading .LKW_Product_page")
+    public LKW_Product_page_Logic checkSuccessfullyLKWProductPageLoading(String currentUrl) {
+        breadCrumbsBlock().shouldBe(visible);
+        Assert.assertTrue(url().equals(currentUrl));
+        return this;
     }
 
 }

@@ -1,12 +1,19 @@
 package ATD;
 
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import org.apache.poi.ss.formula.functions.Match;
 import org.testng.Assert;
 
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
 import static com.codeborne.selenide.CollectionCondition.size;
+import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.back;
-import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page {
@@ -95,5 +102,204 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         return page(LKW_maker_car_list_Logic.class);
     }
 
+    @Step("checking of visibility of TecDoc Listing block .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic visibilityOfTecDocListingBlock() {
+        listOfProductInTecDocListingBlock().shouldBe(visible);
+        return this;
+    }
+
+
+    @Step("checking the applicability of product for selected truck .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic checkingApplicabilityOfProductForSelectedTruck() {
+        selectProductInTecDocListing();
+        while (nextPagePagination().isDisplayed()) {
+            nextPagePagination().click();
+            selectProductInTecDocListing();
+        }
+
+        return this;
+    }
+
+    @Step("click on product in TecDoc Listing .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic selectProductInTecDocListing() {
+        for (int i = 1; i <= productsOnPage().size(); i++) {
+            clickOnProductInTecDocListing(i).checkCompatibilityProductAndTruck();
+            back();
+        }
+        return this;
+    }
+
+    @Step("click on Product in TecDoc listing .LKW_Category_car_list_page")
+    public LKW_Product_page_Logic clickOnProductInTecDocListing(int point) {
+        imageOfProductTecDocListingBlock(point).scrollIntoView("{block: \"center\"}").click();
+        return page(LKW_Product_page_Logic.class);
+    }
+
+    @Step("added product to basket .LKW_Category_car_list_page")
+    public Cart_page_Logic addProductToBasket() {
+        listingOfProducts().shouldBe(visible);
+        btnOfFirstProductInTecDocListing().click();
+        basketDropMenu().should(appear);
+        basketDropMenu().should(disappear);
+        basket().click();
+        return page(Cart_page_Logic.class);
+    }
+
+    @Step("get id of product in TecDoc Listing .LKW_Category_car_list_page")
+    public String getIdOfProductFromTecDocListing() {
+        String idOfProduct = btnOfFirstProductInTecDocListing().getAttribute("id");
+        return idOfProduct;
+    }
+
+    @Step("Go to product page from tecDoc listing through Image, icon of brand, title in tecDoc listing .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic goToProductPageFromImageBrandTitle() {
+        clickOnImageOfProduct().checkSuccessfullyLKWProductPageLoading("https://lkwteile.autodoc.de/boss-filters/7175133");
+        back();
+        clickOnIconBrandOfProduct().checkSuccessfullyLKWProductPageLoading("https://lkwteile.autodoc.de/boss-filters/7175133");
+        back();
+        clickOnTitleOfProduct().checkSuccessfullyLKWProductPageLoading("https://lkwteile.autodoc.de/boss-filters/7175133");
+        return this;
+    }
+
+    @Step("Click on image of product in tecDoc listing .LKW_Category_car_list_page")
+    public LKW_Product_page_Logic clickOnImageOfProduct() {
+        imageOfProductTecDocListingBlock(1).click();
+        return page(LKW_Product_page_Logic.class);
+    }
+
+    @Step("Click on image of brand of product in tecDoc listing .LKW_Category_car_list_page")
+    public LKW_Product_page_Logic clickOnIconBrandOfProduct() {
+        imageBrandOfProductTecDocListingBlock(1).click();
+        return page(LKW_Product_page_Logic.class);
+    }
+
+    @Step("Click on title of product in tecDoc listing .LKW_Category_car_list_page")
+    public LKW_Product_page_Logic clickOnTitleOfProduct() {
+        titleOfProductInTecDocListingBlock().get(0).click();
+        return page(LKW_Product_page_Logic.class);
+    }
+
+    @Step("Check of visibility dynamic characteristics of product in TecDoc listing .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic checkOfVisibilityDynamicCharacteristics() {
+        List<String> artNumberOfProduct = new ArrayList<>();
+        artNumberOfProduct.add("Artikelnummer: V31-1013");
+        artNumberOfProduct.add("Artikelnummer: HU 12 140 x");
+        artNumberOfProduct.add("Artikelnummer: PFU 19 226 x");
+
+        for (int i = 0; i < artNumberOfProduct.size(); i++) {
+            articleNumberOfProduct(artNumberOfProduct.get(i)).scrollTo();
+            if (i == 0) {
+                dynamicCharacteristicInTecDocListingBlock(artNumberOfProduct.get(i)).shouldHave(exactText("OM541 LA"));
+            } else {
+                dynamicCharacteristicInTecDocListingBlock(artNumberOfProduct.get(i)).shouldHave(exactText("OM 541 LA"));
+            }
+        }
+        return this;
+    }
+
+    @Step("Check amount of pages in TecDoc listing .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic checkAmountOfPagesInTecDocListing() {
+        int actualAmountPagesInTecDocListing = (int) Math.ceil(Integer.parseInt(totalAmountOfProductsInTecDocListing().getText()) / 20.0);
+        int expectedAmountPagesInTecDocListing = Integer.parseInt(lastPagePaginator().getAttribute("href").substring(97));
+        Assert.assertTrue(actualAmountPagesInTecDocListing == expectedAmountPagesInTecDocListing);
+        nextPagePagination().click();
+        productsOnPage().shouldHave(sizeNotEqual(0));
+        return this;
+    }
+
+    @Step("Check filter by Generic in TecDoc listing .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic checkFilterByGeneric() {
+        filterByGenericBlock().shouldBe(visible);
+        genericsInFilterGenericBlock().shouldHave(sizeNotEqual(0));
+        return this;
+    }
+
+    @Step("Check TecDoc listing with selecting filter .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic checkTecDocListingWithSelectingFilterByGeneric() {
+        genericsInFilterGenericBlock().get(1).click();
+        appearsOfLoader();
+        Assert.assertTrue(url().contains("&categories%5B1%5D=133"));
+        for (int i = 0; i < titleOfProductInTecDocListingBlock().size(); i++) {
+            titleOfProductInTecDocListingBlock().get(i).shouldHave(text("Dichtung, Ölfilter"));
+        }
+        allFiltersGeneric().click();
+        appearsOfLoader();
+        titleOfProductInTecDocListingBlock().shouldHave(sizeNotEqual(0));
+        return this;
+    }
+
+    @Step("appears of Loader .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic appearsOfLoader() {
+        loaderInTecDocListing().should(appear);
+        loaderInTecDocListing().should(disappear);
+        return this;
+    }
+
+    @Step("check visibility of Brands block .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic visibilityOfBrandsBlock() {
+        brandBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Check TecDoc listing with selecting brand .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic checkTecDocListingWithSelectingFilterByBrand() {
+        brandsOfBrandBlock().get(12).click();
+        appearsOfLoader();
+        Assert.assertTrue(url().equals("https://lkwteile.autodoc.de/ersatzteile/olfilter-200157/mercedes-benz/actros?car_id=1000784&supplier%5B2%5D=4868"));
+        for (int i = 0; i < titleOfProductInTecDocListingBlock().size(); i++) {
+            titleOfProductInTecDocListingBlock().get(i).shouldHave(text("DONALDSON"));
+        }
+        return this;
+    }
+
+    @Step("check visibility of Installation side block .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic visibilityOfInstallationSideBlock() {
+        installationSideBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Check TecDoc listing with selecting brand .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic checkTecDocListingWithSelectingInstallationSide() {
+        sidesOfInstallation().get(0).click();
+        appearsOfLoader();
+        Assert.assertTrue(url().equals("https://lkwteile.autodoc.de/ersatzteile/scheibenbremsbelag-200342/iveco/eurostar?car_id=1006726&criteria%5B100%5D=HA"));
+        checkOfPresenceInstallationSide();
+        while (nextPagePagination().isDisplayed()) {
+            nextPagePagination().click();
+            checkOfPresenceInstallationSide();
+        }
+        return this;
+    }
+
+    @Step("Checking the presence of the installation side .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic checkOfPresenceInstallationSide() {
+        for (int i = 1; i <= characteristicsBlock().size(); i++) {
+            descriptionOfCharacteristics(i).shouldBe(exist);
+
+        }
+        return this;
+    }
+
+    @Step("select Vorderachse installation side .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic selectVorderachseInstallationSide() {
+        sidesOfInstallation().get(1).click();
+        appearsOfLoader();
+        Assert.assertTrue(url().equals("https://lkwteile.autodoc.de/ersatzteile/scheibenbremsbelag-200342/iveco/eurostar?car_id=1006726&criteria%5B100%5D=VA"));
+        for (int i = 1; i <= characteristicsBlock().size(); i++) {
+            descriptionOfCharacteristicsFrontSide(i).shouldBe(exist);
+        }
+        return this;
+    }
+
+    @Step("reset Vorderachse installation side .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic resetVorderachseInstallationSide() {
+        sidesOfInstallation().get(0).click();
+        appearsOfLoader();
+        Assert.assertTrue(url().equals("https://lkwteile.autodoc.de/ersatzteile/scheibenbremsbelag-200342/iveco/eurostar?car_id=1006726"));
+        return this;
+    }
 
 }
+
+
+

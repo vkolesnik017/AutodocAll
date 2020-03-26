@@ -387,6 +387,8 @@ public class Listing_page {
         return $(By.xpath("//*[@class='pagination']/span[3]/a"));
     }
 
+    public SelenideElement thirdListingPage() { return $x("//*[@class='pagination']/span[4]/a"); }
+
     ElementsCollection sideFilterAttribute() {
         return $$(By.xpath("//*[@class='subname']"));
     }
@@ -554,6 +556,8 @@ public class Listing_page {
     public SelenideElement closeLabelOfActiveFilter() {
         return $x("//*[@class='reset-buttons__list']/li[1]/div[2]");
     }
+
+    SelenideElement buyButton() { return $x("//div[@class='button ']/a"); }
 
 }
 
