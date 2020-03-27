@@ -374,10 +374,40 @@ public class Listing_page_Logic extends Listing_page {
         Assert.assertTrue(uniqueRatingSet.size() >= numberOfUniqueRatings);
     }
 
-    @Step("Add procuct to basket and check related products popup on listing")
+    @Step("Add procuct to basket and check related products popup on listing. Listing_page")
     public Listing_page_Logic checkRelatedProductsPopupOnListing(int numberCategories) {
         buyButton().click();
         new Product_page_Logic().categoriesInRelatedProductsPopup().shouldHaveSize(numberCategories);
+        return this;
+    }
+
+    @Step("Wait until preloader disappear. Listing_page")
+    public Listing_page_Logic waitUntilPreloaderDisappear() {
+        preloader().waitUntil(attribute("style", "display: none;"), 20000);
+        return this;
+    }
+
+    @Step("Click Filter By Side Back. Listing_page")
+    public Listing_page_Logic clickFilterBySideBack() {
+        filterBySideBack().click();
+        return this;
+    }
+
+    @Step("Click Filter By Side Front. Listing_page")
+    public Listing_page_Logic clickFilterBySideFront() {
+        filterBySideLKW().click();
+        return this;
+    }
+
+    @Step("Click Show Listing In Tile Mode Button. Listing_page")
+    public Listing_page_Logic clickShowListingInTileModeButton() {
+        showListingInTileModeButton().click();
+        return this;
+    }
+
+    @Step("Click Show Listing In List Mode Button. Listing_page")
+    public Listing_page_Logic clickShowListingInListModeButton() {
+        showListingInListModeButton().click();
         return this;
     }
 }

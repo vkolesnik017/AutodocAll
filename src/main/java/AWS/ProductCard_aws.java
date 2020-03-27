@@ -3,6 +3,8 @@ package AWS;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
+import java.util.ArrayList;
+
 import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byId;
@@ -23,9 +25,16 @@ public class ProductCard_aws {
 
     String productId;
 
+    public ProductCard_aws() {
+    }
 
     public ProductCard_aws(String productId) {
         this.productId = productId;
+    }
+
+    public SelenideElement searchTextOnPage(String textForSearch) {
+        return $x("//*[contains(text(),'" + textForSearch + "')]");
+
     }
 
     @Step("get current Url")
@@ -42,6 +51,16 @@ public class ProductCard_aws {
         }
         truckLabel().shouldBe(visible);
         truckCheckBox().shouldHave(attribute("checked", "checked"));
+        return this;
+    }
+
+    @Step("Check alternatives in AWS")
+    public ProductCard_aws checkAlternativesInAws(ArrayList articlesToCheck) {
+        new Login_aws().loginInAwsWithOpen();
+        open("https://aws.autodoc.de/products/view/7868162");
+        for (int i = 0; i < articlesToCheck.size(); i++) {
+            searchTextOnPage(articlesToCheck.get(i).toString()).shouldBe(visible);
+        }
         return this;
     }
 }
