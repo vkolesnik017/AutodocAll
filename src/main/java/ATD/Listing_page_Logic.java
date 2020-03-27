@@ -380,5 +380,35 @@ public class Listing_page_Logic extends Listing_page {
         new Product_page_Logic().categoriesInRelatedProductsPopup().shouldHaveSize(numberCategories);
         return this;
     }
+
+    @Step("Wait until preloader disappear")
+    public Listing_page_Logic waitUntilPreloaderDisappear() {
+        preloader().waitUntil(attribute("style", "display: none;"), 20000);
+        return this;
+    }
+
+    @Step("Click Filter By Side Back")
+    public Listing_page_Logic clickFilterBySideBack() {
+        filterBySideBack().click();
+        return this;
+    }
+
+    @Step("Click Filter By Side Front")
+    public Listing_page_Logic clickFilterBySideFront() {
+        filterBySideLKW().click();
+        return this;
+    }
+
+    @Step("Click Show Listing In Tile Mode Button")
+    public Listing_page_Logic clickShowListingInTileModeButton() {
+        showListingInTileModeButton().click();
+        return this;
+    }
+
+    @Step("Click Show Listing In List Mode Button")
+    public Listing_page_Logic clickShowListingInListModeButton() {
+        showListingInListModeButton().click();
+        return this;
+    }
 }
 

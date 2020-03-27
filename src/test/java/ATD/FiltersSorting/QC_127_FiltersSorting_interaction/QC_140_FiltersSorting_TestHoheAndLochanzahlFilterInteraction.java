@@ -16,7 +16,6 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Selenide.close;
 
 public class QC_140_FiltersSorting_TestHoheAndLochanzahlFilterInteraction {
@@ -41,10 +40,10 @@ public class QC_140_FiltersSorting_TestHoheAndLochanzahlFilterInteraction {
         openPage(route);
         String hoheValue = listingPage.hoheThirdSideFilterButton().text();
         listingPage.hoheThirdSideFilterButton().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
+        listingPage.waitUntilPreloaderDisappear();
         String lochanzahlValue = listingPage.lochanzahlSideFilterButton().text();
         listingPage.lochanzahlSideFilterButton().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
+        listingPage.waitUntilPreloaderDisappear();
         listingPage.checkProductAttributeOnListingWithCarAndFilter(hoheValue, listingPage.hoheProductAttributeGenericRoute(), listingPage.hoheProductAttributeTecdocRoute());
         listingPage.checkProductAttributeOnListingWithCarAndFilter(lochanzahlValue, listingPage.lochanzahlProductAttributeGenericRoute(), listingPage.lochanzahlProductAttributeTecdocRoute());
     }
@@ -57,10 +56,10 @@ public class QC_140_FiltersSorting_TestHoheAndLochanzahlFilterInteraction {
         openPage("https://autodoc.de/" + dataBase.getRouteByRouteName("DE", "search16"));
         String hoheValue = listingPage.hoheFirstSideFilterButton().text();
         listingPage.hoheFirstSideFilterButton().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
+        listingPage.waitUntilPreloaderDisappear();
         String lochanzahlValue = listingPage.lochanzahlSideFilterButton().text();
         listingPage.lochanzahlSideFilterButton().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
+        listingPage.waitUntilPreloaderDisappear();
         listingPage.checkProductAttributeOnListingWithCarAndFilter(hoheValue, listingPage.hoheProductAttributeGenericRoute(), listingPage.hoheProductAttributeTecdocRoute());
         listingPage.checkProductAttributeOnListingWithCarAndFilter(lochanzahlValue, listingPage.lochanzahlProductAttributeGenericRoute(), listingPage.lochanzahlProductAttributeTecdocRoute());
     }

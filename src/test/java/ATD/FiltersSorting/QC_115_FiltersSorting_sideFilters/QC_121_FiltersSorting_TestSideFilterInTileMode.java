@@ -16,7 +16,6 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Selenide.close;
 
 public class QC_121_FiltersSorting_TestSideFilterInTileMode {
@@ -46,10 +45,10 @@ public class QC_121_FiltersSorting_TestSideFilterInTileMode {
         openPage(route);
         String characteristic = listingPage.langeFilterAttribute().text();
         listingPage.langeFilterCheckbox().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.showListingInTileModeButton().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
+        listingPage.waitUntilPreloaderDisappear();
         Thread.sleep(3000);
+        listingPage.showListingInTileModeButton().click();
+        listingPage.waitUntilPreloaderDisappear();
         listingPage.checkProductAttributeOnListingInTileMode(characteristic, listingPage.langeProductAttributeTecdocRoute());
     }
 
@@ -61,10 +60,10 @@ public class QC_121_FiltersSorting_TestSideFilterInTileMode {
         openPage("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_category_car_list"));
         String characteristic = listingPage.langeFilterCheckboxLKW().text();
         listingPage.langeFilterCheckboxLKW().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.showListingInTileModeButton().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
+        listingPage.waitUntilPreloaderDisappear();
         Thread.sleep(3000);
+        listingPage.showListingInTileModeButton().click();
+        listingPage.waitUntilPreloaderDisappear();
         listingPage.checkProductAttributeOnListingInTileMode(characteristic, listingPage.langeProductAttributeTecdocRouteLKW());
     }
 
@@ -76,10 +75,10 @@ public class QC_121_FiltersSorting_TestSideFilterInTileMode {
         openPage(route);
         String characteristic = listingPage.langeFilterAttribute().text();
         listingPage.langeFilterCheckbox().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.showListingInTileModeButton().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
+        listingPage.waitUntilPreloaderDisappear();
         Thread.sleep(3000);
+        listingPage.showListingInTileModeButton().click();
+        listingPage.waitUntilPreloaderDisappear();
         listingPage.checkProductAttributeOnListingInTileMode(characteristic, listingPage.langeProductAttributeTecdocRoute());
     }
 
