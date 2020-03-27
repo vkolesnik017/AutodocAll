@@ -5,7 +5,6 @@ import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.ex.ElementNotFound;
 import com.codeborne.selenide.ex.ElementShould;
 import com.codeborne.selenide.ex.UIAssertionError;
-import com.sun.xml.internal.ws.policy.AssertionSet;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
