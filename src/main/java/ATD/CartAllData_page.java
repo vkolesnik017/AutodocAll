@@ -49,6 +49,10 @@ public class CartAllData_page {
         return $(byCssSelector(".order-summary__button"));
     }
 
+    SelenideElement returnToPageCartAddress() {
+        return $x("//div[@class='cart-page-steps']//ul//li[2]//a");
+    }
+
     // locator only for CH
     public SelenideElement vatPriceInHead() {
         return $(byXpath("//*[contains(@class,'top')]/div[4]/span[2]"));

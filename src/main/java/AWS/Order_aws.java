@@ -362,8 +362,8 @@ public class Order_aws {
     }
 
     @Step("Checks VAT status in order. Order_aws")
-    public Order_aws checkVatStatusInOrder() {
-        vatPercentageInOrder().shouldHave(text("Ohne Mwst"));
+    public Order_aws checkVatStatusInOrder(String statusVatOrder) {
+        vatPercentageInOrder().shouldHave(text(statusVatOrder));
         return this;
     }
 }

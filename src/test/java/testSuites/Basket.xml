@@ -21,4 +21,10 @@
         </classes>
     </test>
 
+    <test name="QC_1486_Island">
+        <classes>
+            <class name="ATD.Basket.QC_1486_Island.QC_1487_ChecksVerificationIslands_BillingIsUndivided_PositiveCase"/>
+        </classes>
+    </test>
+
 </suite>

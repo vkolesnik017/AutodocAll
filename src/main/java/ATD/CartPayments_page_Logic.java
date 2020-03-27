@@ -12,7 +12,6 @@ public class CartPayments_page_Logic extends CartPayments_page{
         return this;
     }
 
-
     @Step("Click PayPal. CartPayments_page")
     public CartPayments_page_Logic choosePayPal() {
         payPalBtn().click();
@@ -28,6 +27,12 @@ public class CartPayments_page_Logic extends CartPayments_page{
     @Step("Checks for the absence of PayPal method")
     public CartPayments_page_Logic checkAbsenceOfPayPalMethod(){
         payPalBtn().shouldNotBe(visible);
+        return this;
+    }
+
+    @Step("Checks for the presence of PayPal method")
+    public CartPayments_page_Logic checkPresenceOfPayPalMethod(){
+        payPalBtn().shouldBe(visible);
         return this;
     }
 }

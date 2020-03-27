@@ -134,9 +134,15 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return this;
     }
 
-    @Step("Checks for the absence of VAT percentage")
+    @Step("Checks for the absence of VAT percentage. CartAllData_page")
     public CartAllData_page_Logic checkAbsenceOfVatPercentage() {
         percentageOfVat().shouldNotBe(visible);
+        return this;
+    }
+
+    @Step("Checks for text containing VAT percentage. CartAllData_page")
+    public CartAllData_page_Logic checkTextContainingVatPercentage(String textWithPercentageOfVAT) {
+        percentageOfVat().shouldHave(text(textWithPercentageOfVAT));
         return this;
     }
 
@@ -274,5 +280,11 @@ public class CartAllData_page_Logic extends CartAllData_page {
     public CartAllData_page_Logic checkingCounterDecrease(int decreaseCount, String idGood, String idGoodFromBtnMinus) {
         new CommonMethods().checkingCounterDecrease(decreaseCount, counterValue(idGood), counterMinus(idGoodFromBtnMinus));
         return this;
+    }
+
+    @Step("Transition to page Cart Address. CartAllData_page")
+    public CartAddress_page_Logic clickBtnReturnToCartAddressPage() {
+        returnToPageCartAddress().click();
+        return page(CartAddress_page_Logic.class);
     }
 }
