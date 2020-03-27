@@ -74,6 +74,10 @@ public class Order_aws {
         return $(By.xpath("//input[@id='AddProduct[count]']/../i"));
     }
 
+    SelenideElement vatPercentageInOrder() {
+        return $x("//select[@id='form_Order[isVat]']");
+    }
+
     private Order_aws checkWhatOrderOpened() {
         // Иногда, если заказ в AWS открыть сразу быстро после создания, он может не успеть подгрузися в AWS
         if ($("body").text().equals("Not found")) {
@@ -354,6 +358,12 @@ public class Order_aws {
     @Step("Checks that Safe Order is turned On. Order_aws")
     public Order_aws checkThatStatusSafeOrderIsOn() {
         safeOrderSelector().shouldHave(text("Включен"));
+        return this;
+    }
+
+    @Step("Checks VAT status in order. Order_aws")
+    public Order_aws checkVatStatusInOrder() {
+        vatPercentageInOrder().shouldHave(text("Ohne Mwst"));
         return this;
     }
 }

@@ -206,6 +206,7 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         productsOnPage().shouldHave(sizeNotEqual(0));
         return this;
     }
+
     @Step("Check filter by Generic in TecDoc listing .LKW_Category_car_list_page")
     public LKW_Category_car_list_page_Logic checkFilterByGeneric() {
         filterByGenericBlock().shouldBe(visible);
@@ -262,6 +263,39 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         sidesOfInstallation().get(0).click();
         appearsOfLoader();
         Assert.assertTrue(url().equals("https://lkwteile.autodoc.de/ersatzteile/scheibenbremsbelag-200342/iveco/eurostar?car_id=1006726&criteria%5B100%5D=HA"));
+        checkOfPresenceInstallationSide();
+        while (nextPagePagination().isDisplayed()) {
+            nextPagePagination().click();
+            checkOfPresenceInstallationSide();
+        }
+        return this;
+    }
+
+    @Step("Checking the presence of the installation side .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic checkOfPresenceInstallationSide() {
+        for (int i = 1; i <= characteristicsBlock().size(); i++) {
+            descriptionOfCharacteristics(i).shouldBe(exist);
+
+        }
+        return this;
+    }
+
+    @Step("select Vorderachse installation side .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic selectVorderachseInstallationSide() {
+        sidesOfInstallation().get(1).click();
+        appearsOfLoader();
+        Assert.assertTrue(url().equals("https://lkwteile.autodoc.de/ersatzteile/scheibenbremsbelag-200342/iveco/eurostar?car_id=1006726&criteria%5B100%5D=VA"));
+        for (int i = 1; i <= characteristicsBlock().size(); i++) {
+            descriptionOfCharacteristicsFrontSide(i).shouldBe(exist);
+        }
+        return this;
+    }
+
+    @Step("reset Vorderachse installation side .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic resetVorderachseInstallationSide() {
+        sidesOfInstallation().get(0).click();
+        appearsOfLoader();
+        Assert.assertTrue(url().equals("https://lkwteile.autodoc.de/ersatzteile/scheibenbremsbelag-200342/iveco/eurostar?car_id=1006726"));
         return this;
     }
 
