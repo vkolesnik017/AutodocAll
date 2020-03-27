@@ -6,9 +6,7 @@ import org.openqa.selenium.By;
 
 import static ATD.CommonMethods.getCurrentShopFromJSVarInHTML;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selectors.*;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.*;
 
 public class CartAddress_page_Logic extends CartAddress_page{
 
@@ -92,5 +90,18 @@ public class CartAddress_page_Logic extends CartAddress_page{
     public CartAddress_page_Logic clickCheckboxBilling() {
         billingCheckbox().click();
         return this;
+    }
+
+
+    @Step("Checks presence popup with an error about the wrong company. CartAddress_page")
+    public CartAddress_page_Logic checkPresencePopupErrorAboutWrongCompany() {
+        popupErrorAboutWrongCompany().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Click button EinkaufFortsetzen from popup with an error about the wrong company. CartAddress_page")
+    public CartPayments_page_Logic clickBtnEinkaufFortsetzenFromPopupErrorAboutWrongCompany() {
+        btnEinkaufFortsetzenFromPopupErrorAboutWrongCompany().click();
+        return page(CartPayments_page_Logic.class);
     }
 }

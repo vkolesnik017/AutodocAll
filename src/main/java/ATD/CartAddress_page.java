@@ -58,4 +58,12 @@ public class CartAddress_page {
         return $x("//input[@id='showBilling']");
     }
 
+    SelenideElement popupErrorAboutWrongCompany() {
+        return $x("//div[@class='cart-popup ']");
+    }
+
+    SelenideElement btnEinkaufFortsetzenFromPopupErrorAboutWrongCompany() {
+        return $x("//div[@class='popup-content__buttons']//a[2]");
+    }
+
 }
