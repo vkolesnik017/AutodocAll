@@ -145,6 +145,7 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         return page(Cart_page_Logic.class);
     }
 
+
     @Step("get id of product in TecDoc Listing .LKW_Category_car_list_page")
     public String getIdOfProductFromTecDocListing() {
         String idOfProduct = btnOfFirstProductInTecDocListing().getAttribute("id");
@@ -299,6 +300,48 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         return this;
     }
 
+    @Step("check of appears block of analog in products with grey button .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic checkOfAppearsAnalogBlock() {
+        nextPagePagination().click();
+        Assert.assertTrue(url().equals("https://lkwteile.autodoc.de/ersatzteile/olfilter-200157/mercedes-benz/actros?car_id=1000784&page=2"));
+        for (int i = 0; i < showReplacementButton().size(); i++) {
+            showReplacementButton().get(i).scrollIntoView("{block: \"start\"}").click();
+            analogProductBlock().get(i).shouldBe(visible);
+            if (productsInAnalogBlock().get(i).isDisplayed()) {
+                titleOfAnalogBlock().get(i).shouldHave(exactText("EMPFOHLENER ERSATZ FÜR DIESEN ARTIKEL:"));
+            } else {
+                titleOfAnalogBlock().get(i).shouldHave(exactText("Keine Äquivalente verfügbar"));
+            }
+            sleep(1000);
+        }
+        return this;
+    }
+
+    @Step("check of visibility PopUp with subscription .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic checkOfVisibilityPopUpAboutSubscribe() {
+        popUpWithSubscribeButton().get(0).scrollIntoView("{block: \"start\"}").click();
+        popUpWithSubscriptionAboutAppearOfProduct().should(appear);
+        closePopUpWithSubscriptionAboutAppearOfProduct().click();
+        popUpWithSubscriptionAboutAppearOfProduct().should(disappear);
+        return this;
+    }
+
+    @Step("get id of product in TecDoc Listing .LKW_Category_car_list_page")
+    public String getIdOfProductFromTecDocListingInAnalogBlock() {
+        showReplacementButton().get(0).scrollIntoView("{block: \"center\"}").click();
+        analogProductBlock().get(0).shouldBe(visible);
+        String idOfProduct = btnOfFirstProductInTecDocListingOfAnalogBlock().getAttribute("data-ga-label");
+        return idOfProduct;
+    }
+
+    @Step("added product to basket .LKW_Category_car_list_page")
+    public Cart_page_Logic addProductToBasketFromAnalogBlock() {
+        btnOfFirstProductInTecDocListingOfAnalogBlock().scrollIntoView("{block: \"center\"}").click();
+        basketDropMenu().should(appear);
+        basketDropMenu().should(disappear);
+        basket().click();
+        return page(Cart_page_Logic.class);
+    }
 }
 
 

@@ -1,8 +1,10 @@
 package ATD;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;
 
@@ -135,4 +137,35 @@ public class LKW_Category_car_list_page {
         return $x("(//div[@class='description'])[" + position + "]//span[contains(text(),'Einbauseite:')]/following-sibling::*[self::span[contains(text(),'Vorderachse')] or self::span//b[contains(text(),'Vorderachse')]]");
     }
 
+    ElementsCollection showReplacementButton() {
+        return $$x("//div[@class='show_alternative__btn ga-click button additional_btn']");
+    }
+
+    ElementsCollection popUpWithSubscribeButton() {
+        return $$x("//div[@class='button not_active']");
+    }
+
+    ElementsCollection analogProductBlock() {
+        return $$x("//div[@class='product_description_box_alternative analogs']");
+    }
+
+    ElementsCollection productsInAnalogBlock() {
+        return $$x("//div[@class='top-small-products top-small-products--alternative']/div[2]");
+    }
+
+    ElementsCollection titleOfAnalogBlock() {
+        return $$x("//div[@class='top-small-products__title']");
+    }
+
+    SelenideElement popUpWithSubscriptionAboutAppearOfProduct() {
+        return $x("//div[@class='popup-available']");
+    }
+
+    SelenideElement closePopUpWithSubscriptionAboutAppearOfProduct() {
+        return $x("//div[@class='popup-available__close ga-popup-available-close']");
+    }
+
+    SelenideElement btnOfFirstProductInTecDocListingOfAnalogBlock() {
+        return $x("(//div[@class='small-product-button price_box']//a)[1]");
+    }
 }
