@@ -5,10 +5,12 @@ import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.ex.ElementNotFound;
 import com.codeborne.selenide.ex.ElementShould;
 import com.codeborne.selenide.ex.UIAssertionError;
+import com.sun.xml.internal.ws.policy.AssertionSet;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Random;
 
 import static ATD.CommonMethods.*;
@@ -427,4 +429,43 @@ public class Product_page_Logic extends Product_page {
         close();
         return this;
     }
+
+    @Step("Check link in alternative block")
+    public Product_page_Logic checkLinkInAlternativeBlock() {
+        String articleNumberInBlock = tecdocAlternativeLink().text().replace("Artikel-Nr.:", "");
+        String priceInBlock = tecdocAlternativePrice().text().replace("*", "");
+        tecdocAlternativeLink().click();
+        productPrice().shouldHave(text(priceInBlock));
+        articleNumber().shouldHave(text(articleNumberInBlock));
+        return this;
+    }
+
+    @Step("Check product in stock alternative block")
+    public Product_page_Logic checkProductInStockAlternativeBlock() {
+        for (int i = 0; i < 6; i++) {
+            analogAddToBasketButtons().get(i).shouldBe(visible);
+        }
+        return this;
+    }
+
+    @Step("Add artikel number to collection")
+    public ArrayList addArtikelNumberToCollection() {
+        ArrayList<String> listOfArtikel = new ArrayList<>();
+        for (int i = 0; i < 6; i++) {
+            String cutArtikel = analogArtikelNumbers().get(i).text().replace("Artikelnummer: ", "");
+            listOfArtikel.add(cutArtikel);
+        }
+        return listOfArtikel;
+    }
+
+    @Step("Check Analog Product Match Car")
+    public Product_page_Logic checkAnalogProductMatchCar() {
+        for (int i = 0; i < 6; i++) {
+            analogProductsTitle().get(i).click();
+            carMatchBlock().shouldHave(text("Dieses Produkt passt zu Ihrem VW Golf IV Schrägheck (1J1) 1.4 16V"));
+            open("https://www.autodoc.de/automega/7868162");
+        }
+        return this;
+    }
+
 }
