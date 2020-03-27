@@ -12,7 +12,6 @@ import java.sql.SQLException;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.Selenide.sleep;
 
 public class QC_710_TranslationOfCausesInAws {
 
