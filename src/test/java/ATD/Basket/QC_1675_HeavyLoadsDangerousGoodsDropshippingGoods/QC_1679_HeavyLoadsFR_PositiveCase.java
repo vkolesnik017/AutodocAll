@@ -54,18 +54,19 @@ public class QC_1679_HeavyLoadsFR_PositiveCase {
                 .checkHeavyLoadsDeliveryPriceAllData("36,95")
                 .checkAbsenceSafeOrderBlock()
                 .getTotalPriceAllDataPage();
-        new CartAllData_page_Logic().nextBtnClick();
-        orderNumber = new Payment_handler_page_Logic().getOrderNumber();
+        orderNumber = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumber);
-        totalPriceAWSOrder = order_aws.openOrderInAwsWithLogin().getTotalPriceOrder();
-        Assert.assertEquals(totalPrice, totalPriceAWSOrder);
-        order_aws.checkDeliveryPriceOrderAWS("9.95")
+        totalPriceAWSOrder = order_aws.openOrderInAwsWithLogin()
+                .checkDeliveryPriceOrderAWS("9.95")
                 .checkHeavyLoadsDeliveryPriceOrderAWS("36.95")
                 .checkThatStatusSafeOrderIsOff()
-                .reSaveOrder();
+                .getTotalPriceOrder();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
-        order_aws.checkDeliveryPriceOrderAWS("9.95")
+        order_aws.reSaveOrder()
+                .checkThatStatusSafeOrderIsOff()
+                .checkDeliveryPriceOrderAWS("9.95")
                 .checkHeavyLoadsDeliveryPriceOrderAWS("36.95");
+        Assert.assertEquals(totalPrice, totalPriceAWSOrder);
     }
 
     @AfterMethod

@@ -19,11 +19,9 @@ import static com.codeborne.selenide.Selenide.close;
 
 public class QC_1683_HeavyLoads_FreeShippingLimit {
 
-    private String email = "qc_1683_autotestDE@mailinator.com";
+    private String email = "qc_1683_autotestDE@mailinator.com", orderNumber;
     private Product_page_Logic product_page_logic = new Product_page_Logic();
-    private Double totalPrice;
-    private Double totalPriceAWSOrder;
-    private String orderNumber;
+    private Double totalPrice, totalPriceAWSOrder;
 
     @BeforeClass
     void setUp() {
@@ -53,29 +51,29 @@ public class QC_1683_HeavyLoads_FreeShippingLimit {
                 .checkPresenceFreeDeliveryPriceCartAllDataPage()
                 .checkPresenceHeavyLoadsDeliveryPriceAllDataPage()
                 .checkPresenceSafeOrderBlock()
-                .checkingCounterDecrease(1,"7712294", "7712294")
+                .checkingCounterDecrease(1, "7712294", "7712294")
                 .checkAbsenceFreeDeliveryPriceCartAllDataPage()
                 .checkRegularDeliveryPriceAllData("6,95")
                 .checkHeavyLoadsDeliveryPriceAllData("10,00")
-                .checkingCounterIncrease(1,"7712294","7712294")
+                .checkingCounterIncrease(1, "7712294", "7712294")
                 .checkPresenceFreeDeliveryPriceCartAllDataPage()
                 .checkHeavyLoadsDeliveryPriceAllData("10,00")
                 .clickSafeOrderCheckbox()
                 .checkPresenceSafeOrderPriceFromOrderSummeryBlock()
                 .getTotalPriceAllDataPage();
-        new CartAllData_page_Logic().nextBtnClick();
-        orderNumber = new Payment_handler_page_Logic().getOrderNumber();
+        orderNumber = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumber);
-        totalPriceAWSOrder =  order_aws.openOrderInAwsWithLogin().getTotalPriceOrder();
-        Assert.assertEquals(totalPrice, totalPriceAWSOrder);
-        order_aws.checkDeliveryPriceOrderAWS("2.99")
+        totalPriceAWSOrder = order_aws.openOrderInAwsWithLogin()
+                .checkDeliveryPriceOrderAWS("2.99")
                 .checkHeavyLoadsDeliveryPriceOrderAWS("10")
                 .checkThatStatusSafeOrderIsOn()
-                .reSaveOrder();
+                .getTotalPriceOrder();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
-        order_aws.checkDeliveryPriceOrderAWS("2.99")
+        order_aws.reSaveOrder()
+                .checkDeliveryPriceOrderAWS("2.99")
                 .checkHeavyLoadsDeliveryPriceOrderAWS("10")
                 .checkThatStatusSafeOrderIsOn();
+        Assert.assertEquals(totalPrice, totalPriceAWSOrder);
     }
 
     @AfterMethod

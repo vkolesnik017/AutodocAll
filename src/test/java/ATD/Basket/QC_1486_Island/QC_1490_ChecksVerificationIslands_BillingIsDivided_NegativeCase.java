@@ -23,11 +23,8 @@ import static com.codeborne.selenide.Selenide.close;
 
 public class QC_1490_ChecksVerificationIslands_BillingIsDivided_NegativeCase {
 
-    private String email = "qc_1490_autotestDE@mailinator.com";
-    private Double totalPrice;
-    private Double totalPriceAWSOrder;
-    private String orderNumber;
-    private Double totalPriceInEmail;
+    private String email = "qc_1490_autotestDE@mailinator.com",orderNumber;
+    private Double totalPrice, totalPriceAWSOrder, totalPriceInEmail;
 
     @BeforeClass
     void setUp() {
@@ -56,14 +53,14 @@ public class QC_1490_ChecksVerificationIslands_BillingIsDivided_NegativeCase {
                 .checkRegularDeliveryPriceAllData("9,95")
                 .checkPresenceSafeOrderBlock()
                 .getTotalPriceAllDataPage();
-        new CartAllData_page_Logic().nextBtnClick();
-        orderNumber = new Payment_handler_page_Logic().getOrderNumber();
+        orderNumber = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumber);
-        totalPriceAWSOrder = order_aws.openOrderInAwsWithLogin().getTotalPriceOrder();
-        Assert.assertEquals(totalPrice, totalPriceAWSOrder);
-        order_aws.checkVatStatusInOrder("Mit MwSt 20%")
+        totalPriceAWSOrder = order_aws.openOrderInAwsWithLogin()
+                .checkVatStatusInOrder("Mit MwSt 20%")
                 .checkDeliveryPriceOrderAWS("9.95")
-                .reSaveOrder()
+                .getTotalPriceOrder();
+        Assert.assertEquals(totalPrice, totalPriceAWSOrder);
+        order_aws.reSaveOrder()
                 .checkVatStatusInOrder("Mit MwSt 20%")
                 .checkDeliveryPriceOrderAWS("9.95");
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);

@@ -21,10 +21,8 @@ import static com.codeborne.selenide.Selenide.open;
 public class QC_1684_HeavyLoadsAndOrdinaryGoods_PositiveCase {
 
 
-    private String email = "qc_1684_autotestDE@mailinator.com";
-    private Double totalPrice;
-    private Double totalPriceAWSOrder;
-    private String orderNumber;
+    private String email = "qc_1684_autotestDE@mailinator.com", orderNumber;
+    private Double totalPrice, totalPriceAWSOrder;
 
     @BeforeClass
     void setUp() {
@@ -57,18 +55,19 @@ public class QC_1684_HeavyLoadsAndOrdinaryGoods_PositiveCase {
                 .clickSafeOrderCheckbox()
                 .checkPresenceSafeOrderPriceFromOrderSummeryBlock()
                 .getTotalPriceAllDataPage();
-        new CartAllData_page_Logic().nextBtnClick();
-        orderNumber = new Payment_handler_page_Logic().getOrderNumber();
+        orderNumber = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumber);
-        totalPriceAWSOrder =  order_aws.openOrderInAwsWithLogin().getTotalPriceOrder();
-        Assert.assertEquals(totalPrice, totalPriceAWSOrder);
-        order_aws.checkDeliveryPriceOrderAWS("9.94")
+        totalPriceAWSOrder = order_aws.openOrderInAwsWithLogin()
+                .checkDeliveryPriceOrderAWS("9.94")
                 .checkHeavyLoadsDeliveryPriceOrderAWS("10")
                 .checkThatStatusSafeOrderIsOn()
-                .reSaveOrder();
+                .getTotalPriceOrder();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
-        order_aws.checkDeliveryPriceOrderAWS("9.94")
+        order_aws.reSaveOrder()
+                .checkThatStatusSafeOrderIsOn()
+                .checkDeliveryPriceOrderAWS("9.94")
                 .checkHeavyLoadsDeliveryPriceOrderAWS("10");
+        Assert.assertEquals(totalPrice, totalPriceAWSOrder);
     }
 
     @AfterMethod
