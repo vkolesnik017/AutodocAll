@@ -19,7 +19,6 @@ import static com.codeborne.selenide.Selenide.close;
 public class QC_1680_HeavyLoadsFR_NegativeCaseBasket {
 
     private String email = "qc_1680_autotestDE@mailinator.com";
-
     private Product_page_Logic product_page_logic = new Product_page_Logic();
 
     @BeforeClass

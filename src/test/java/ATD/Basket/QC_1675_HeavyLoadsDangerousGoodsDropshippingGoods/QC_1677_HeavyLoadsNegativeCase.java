@@ -17,7 +17,6 @@ import static com.codeborne.selenide.Selenide.close;
 public class QC_1677_HeavyLoadsNegativeCase {
 
     private String email = "qc_1677_autotestDE@mailinator.com";
-
     private Product_page_Logic product_page_logic = new Product_page_Logic();
 
     @BeforeClass

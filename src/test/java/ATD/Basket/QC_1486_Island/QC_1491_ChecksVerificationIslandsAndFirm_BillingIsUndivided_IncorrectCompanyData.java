@@ -20,11 +20,8 @@ import static com.codeborne.selenide.Selenide.close;
 
 public class QC_1491_ChecksVerificationIslandsAndFirm_BillingIsUndivided_IncorrectCompanyData {
 
-    private String email = "qc_1491_autotestDE@mailinator.com";
-    private Double totalPrice;
-    private Double totalPriceAWSOrder;
-    private String orderNumber;
-    private Double totalPriceInEmail;
+    private String email = "qc_1491_autotestDE@mailinator.com", orderNumber;
+    private Double totalPrice, totalPriceAWSOrder, totalPriceInEmail;
 
     @BeforeClass
     void setUp() {
@@ -55,14 +52,14 @@ public class QC_1491_ChecksVerificationIslandsAndFirm_BillingIsUndivided_Incorre
                 .checkTextContainingVatPercentage("inkl. 20% MwSt.")
                 .checkPresenceSafeOrderBlock()
                 .getTotalPriceAllDataPage();
-        new CartAllData_page_Logic().nextBtnClick();
-        orderNumber = new Payment_handler_page_Logic().getOrderNumber();
+        orderNumber = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumber);
-        totalPriceAWSOrder = order_aws.openOrderInAwsWithLogin().getTotalPriceOrder();
-        Assert.assertEquals(totalPrice, totalPriceAWSOrder);
-        order_aws.checkVatStatusInOrder("Mit MwSt 20%")
+        totalPriceAWSOrder = order_aws.openOrderInAwsWithLogin()
+                .checkVatStatusInOrder("Mit MwSt 20%")
                 .checkDeliveryPriceOrderAWS("10.95")
-                .reSaveOrder()
+                .getTotalPriceOrder();
+        Assert.assertEquals(totalPrice, totalPriceAWSOrder);
+        order_aws.reSaveOrder()
                 .checkVatStatusInOrder("Mit MwSt 20%")
                 .checkDeliveryPriceOrderAWS("10.95");
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
