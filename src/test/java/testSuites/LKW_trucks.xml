@@ -70,6 +70,7 @@
         <classes>
             <class name="LKW_trucks.QC_94_TecDoc_Listing.QC_95_ApplicabilityOfProductsInTecDocListing"/>
             <class name="LKW_trucks.QC_94_TecDoc_Listing.QC_96_AddProductToBasketFromTecDocListing"/>
+            <class name="LKW_trucks.QC_94_TecDoc_Listing.QC_97_SortingOfProductsInTecDocListing"/>
             <class name="LKW_trucks.QC_94_TecDoc_Listing.QC_98_DynamicCharacteristicsOfProductsInTecDocListing"/>
             <class name="LKW_trucks.QC_94_TecDoc_Listing.QC_99_GoToProductPageFromTecDocListing"/>
             <class name="LKW_trucks.QC_94_TecDoc_Listing.QC_100_AnalogBlockInTecDocListing"/>

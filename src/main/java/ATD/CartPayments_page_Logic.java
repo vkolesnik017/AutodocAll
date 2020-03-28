@@ -24,13 +24,13 @@ public class CartPayments_page_Logic extends CartPayments_page{
         return page(CartAllData_page_Logic.class);
     }
 
-    @Step("Checks for the absence of PayPal method")
+    @Step("Checks for the absence of PayPal method.CartPayments_page")
     public CartPayments_page_Logic checkAbsenceOfPayPalMethod(){
         payPalBtn().shouldNotBe(visible);
         return this;
     }
 
-    @Step("Checks for the presence of PayPal method")
+    @Step("Checks for the presence of PayPal method. CartPayments_page")
     public CartPayments_page_Logic checkPresenceOfPayPalMethod(){
         payPalBtn().shouldBe(visible);
         return this;

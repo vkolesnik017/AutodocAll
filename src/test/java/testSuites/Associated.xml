@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Associated" parallel="methods" thread-count="4">
+
+    <listeners>
+        <listener class-name="ATD.ProjectListener"/>
+    </listeners>
+
+    <test name="QC_776_RelatedProductsLogic">
+        <classes>
+            <class name="ATD.Associated.QC_776_RelatedProductsLogic.QC_779_TestRelatedProductsPopupOnProductPageWithoutCar"/>
+            <class name="ATD.Associated.QC_776_RelatedProductsLogic.QC_780_TestRelatedProductsPopupOnProductPageWithCar"/>
+            <class name="ATD.Associated.QC_776_RelatedProductsLogic.QC_781_TestRelatedProductsPopupOnListing"/>
+            <class name="ATD.Associated.QC_776_RelatedProductsLogic.QC_782_TestRelatedProductsBlockFunctionality"/>
+        </classes>
+    </test>
+
+    <test name="QC_790_AlternativeProductsOutputTecdoc">
+        <classes>
+            <class name="ATD.Associated.QC_790_AlternativeProductsOutputTecdoc.QC_791_MatchElementsInAlternativeBlockAndInProductPage"/>
+        </classes>
+    </test>
+
+    <test name="QC_802_AnalogsForProductsNotInStock">
+        <classes>
+            <class name="ATD.Associated.QC_802_AnalogsForProductsNotInStock.QC_806_TestEmpfohlenerProductsMatchAws"/>
+            <class name="ATD.Associated.QC_802_AnalogsForProductsNotInStock.QC_808_TestEmpfohlenerProductsMatchCar"/>
+        </classes>
+    </test>
+
+</suite>

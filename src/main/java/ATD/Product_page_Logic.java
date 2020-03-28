@@ -9,6 +9,7 @@ import io.qameta.allure.Step;
 import org.testng.Assert;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Random;
 
 import static ATD.CommonMethods.*;
@@ -367,14 +368,14 @@ public class Product_page_Logic extends Product_page {
     }
 
     //methods for related products popup
-    @Step("Add product to basket and check related products popup")
+    @Step("Add product to basket and check related products popup. Product_page")
     public Product_page_Logic checkRelatedProductsPopup(int numberCategories) {
         buyButton().click();
         categoriesInRelatedProductsPopup().shouldHaveSize(numberCategories);
         return this;
     }
 
-    @Step("Check related product popup close button")
+    @Step("Check related product popup close button. Product_page")
     public Product_page_Logic checkRelatedProductPopupClose(String route) {
         openPage(route);
         buyButton().click();
@@ -384,7 +385,7 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
-    @Step("Check related product popup back button")
+    @Step("Check related product popup back button. Product_page")
     public Product_page_Logic checkRelatedProductPopupBack(String route) {
         openPage(route);
         buyButton().click();
@@ -394,7 +395,7 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
-    @Step("Check related product popup go to basket button")
+    @Step("Check related product popup go to basket button. Product_page")
     public Product_page_Logic checkRelatedProductPopupGoToBasket(String route) {
         openPage(route);
         buyButton().click();
@@ -404,7 +405,7 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
-    @Step("Check Realated Popup Categories")
+    @Step("Check Realated Popup Categories. Product_page")
     public Product_page_Logic checkRealatedPopupCategories(String route) {
         openPage(route);
         buyButton().click();
@@ -418,7 +419,7 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
-    @Step("Check Realated Popup Overlay")
+    @Step("Check Realated Popup Overlay. Product_page")
     public Product_page_Logic checkRelatedPopupOverlay(String route) {
         openPage(route);
         buyButton().click();
@@ -427,4 +428,43 @@ public class Product_page_Logic extends Product_page {
         close();
         return this;
     }
+
+    @Step("Check link in alternative block. Product_page")
+    public Product_page_Logic checkLinkInAlternativeBlock() {
+        String articleNumberInBlock = tecdocAlternativeLink().text().replace("Artikel-Nr.:", "");
+        String priceInBlock = tecdocAlternativePrice().text().replace("*", "");
+        tecdocAlternativeLink().click();
+        productPrice().shouldHave(text(priceInBlock));
+        articleNumber().shouldHave(text(articleNumberInBlock));
+        return this;
+    }
+
+    @Step("Check product in stock alternative block. Product_page")
+    public Product_page_Logic checkProductInStockAlternativeBlock() {
+        for (int i = 0; i < 6; i++) {
+            analogAddToBasketButtons().get(i).shouldBe(visible);
+        }
+        return this;
+    }
+
+    @Step("Add artikel number to collection. Product_page")
+    public ArrayList addArtikelNumberToCollection() {
+        ArrayList<String> listOfArtikel = new ArrayList<>();
+        for (int i = 0; i < 6; i++) {
+            String cutArtikel = analogArtikelNumbers().get(i).text().replace("Artikelnummer: ", "");
+            listOfArtikel.add(cutArtikel);
+        }
+        return listOfArtikel;
+    }
+
+    @Step("Check Analog Product Match Car. Product_page")
+    public Product_page_Logic checkAnalogProductMatchCar() {
+        for (int i = 0; i < 6; i++) {
+            analogProductsTitle().get(i).click();
+            carMatchBlock().shouldHave(text("Dieses Produkt passt zu Ihrem VW Golf IV Schrägheck (1J1) 1.4 16V"));
+            open("https://www.autodoc.de/automega/7868162");
+        }
+        return this;
+    }
+
 }
