@@ -86,7 +86,7 @@ public class CartAddress_page_Logic extends CartAddress_page {
         char[] array = Integer.toString(sendPostalCode).toCharArray();
         for (char anArray : array) {
             String send = String.valueOf(anArray);
-            sleep(1000);
+            sleep(2000);
             getWebDriver().findElement(By.id("form_lPlz")).sendKeys(send);
         }
 
