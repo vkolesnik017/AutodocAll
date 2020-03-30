@@ -81,4 +81,12 @@
         </classes>
     </test>
 
+    <test name="QC_87_SelectorInProductPage">
+        <classes>
+            <class name="LKW_trucks.QC_87_SelectorInProductPage.QC_88_FillingTheSelectorWithSuitableCarInProductPage"/>
+            <class name="LKW_trucks.QC_87_SelectorInProductPage.QC_90_GoToProductPageWithSelectedSuitableCar"/>
+            <class name="LKW_trucks.QC_87_SelectorInProductPage.QC_91_GoToProductPageWithSelectedNotSuitableCar"/>
+        </classes>
+    </test>
+
 </suite>

@@ -57,7 +57,7 @@ public class LKW_Product_page_Logic extends LKW_Product_page {
     public LKW_Product_page_Logic checkCompatibilityProductAndTruck() {
         breadCrumbsBlock().shouldBe(visible);
         if (compatibilityTruckBlock().isDisplayed()) {
-          linkOfCompatibilityTruckAndProduct().shouldBe(visible);
+            linkOfCompatibilityTruckAndProduct().shouldBe(visible);
         } else {
             String idOfProduct = url().replaceAll("[^0-9]", "");
             executeJavaScript("window.open('about:blank','_blank')");
@@ -66,7 +66,7 @@ public class LKW_Product_page_Logic extends LKW_Product_page {
             switchTo().window(1).close();
             switchTo().window(0);
         }
-           return this;
+        return this;
     }
 
     @Step("Check successfully LKW_Product page loading .LKW_Product_page")
@@ -74,6 +74,33 @@ public class LKW_Product_page_Logic extends LKW_Product_page {
         breadCrumbsBlock().shouldBe(visible);
         Assert.assertTrue(url().equals(currentUrl));
         return this;
+    }
+
+
+    @Step("Check visibility of message about compatibility truck and product .LKW_Product_page")
+    public LKW_Product_page_Logic visibilityOfMessageAboutCompatibilityTruckAndProduct(String exactText) {
+        titleInTruckSelectorHeader().shouldBe(visible).shouldHave(exactText(exactText));
+        return this;
+    }
+
+    @Step("Check visibility of message about compatibility truck and product .LKW_Product_page")
+    public LKW_Product_page_Logic visibilityOfTitleAboutNotCompatibilityTruckAndProduct(String exactText) {
+        titleInTruckSelectorHeaderWithNotSuitableCar().shouldBe(visible).shouldHave(exactText(exactText));
+        return this;
+    }
+
+    @Step("Check visibility of message about compatibility truck and product  in Car compatibility block .LKW_Product_page")
+    public LKW_Product_page_Logic visibilityOfSuitableCarInCarCompatibilityBlock() {
+        carCompatibilityBlock().scrollIntoView("{block: \"center\"}");
+        titleOfSuitableCarInCompatibilityBlock().shouldHave(exactText("DAF 65 CF FA 65 CF 180, Baujahr 02.1998 - 12.2000, 6240 , 181 PS")).shouldHave(cssValue("color", "rgba(74, 182, 73, 1)"));
+        return this;
+    }
+
+    @Step("Check сomparison of selected not suitable car and product .LKW_Product_page")
+    public LKW_maker_car_list_Logic сomparisonOfSelectedNotSuitableCarAndProduct() {
+        selectTruckInHorizontalSelector("2242", "8959", "1012748");
+     
+        return page(LKW_maker_car_list_Logic.class);
     }
 
 }
