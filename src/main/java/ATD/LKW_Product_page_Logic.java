@@ -99,11 +99,7 @@ public class LKW_Product_page_Logic extends LKW_Product_page {
     @Step("Check сomparison of selected not suitable car and product .LKW_Product_page")
     public LKW_maker_car_list_Logic сomparisonOfSelectedNotSuitableCarAndProduct() {
         selectTruckInHorizontalSelector("2242", "8959", "1012748");
-        System.out.println(url());
-      $x("//div[contains(@class,'txt')]").shouldBe(enabled);
-    //    $x("//div[@class='txt ']").should(disappear);
-
-       //   $x("//div[contains(text(),'Es tut uns leid! Dieses Ersatzteil ist nicht mit dem von Ihnen gewählten Fahrzeug kompatibel.')]").shouldBe(visible);
+     
         return page(LKW_maker_car_list_Logic.class);
     }
 
