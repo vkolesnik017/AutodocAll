@@ -83,10 +83,11 @@ public class CartAddress_page_Logic extends CartAddress_page {
     @Step("Filling postal code {sendPostalCode}. CartAddress_page")
     public CartAddress_page_Logic fillingPostalCodeField(int sendPostalCode) {
         postalCodeField().clear();
+        sleep(2000);
         char[] array = Integer.toString(sendPostalCode).toCharArray();
         for (char anArray : array) {
             String send = String.valueOf(anArray);
-            sleep(2000);
+            sleep(1000);
             getWebDriver().findElement(By.id("form_lPlz")).sendKeys(send);
         }
 
