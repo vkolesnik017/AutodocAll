@@ -170,7 +170,7 @@ public class Listing_page {
     }
 
     public SelenideElement lochanzahlSideFilterButton() {
-        return $x("//*[contains(@class,'filter-criteria_500')]//li");
+        return $x("//*[contains(@class,'filter-criteria_500')]//li[1]");
     }
 
     public SelenideElement carBrandFilterOem() {
@@ -559,5 +559,16 @@ public class Listing_page {
 
     SelenideElement buyButton() { return $x("//div[@class='button ']/a"); }
 
+    SelenideElement nextButtonInBySideSlider() { return $x("//*[@class='js-filter-criteria-top']//span[@class='next slick-arrow']"); }
+
+    SelenideElement nextButtonInBySideSliderDisabled() { return $x("//*[@class='js-filter-criteria-top']//span[@class='next slick-arrow slick-disabled']"); }
+
+    SelenideElement previousButtonInBySideSlider() { return $x("//*[@class='installation-side__filter__nav']/span[@class='prev slick-arrow']"); }
+
+    SelenideElement previousButtonInBySideSliderDisabled() { return $x("//*[@class='js-filter-criteria-top']//span[@class='prev slick-arrow slick-disabled']"); }
+
+    SelenideElement firstPageInBySideSlider() { return $x("//*[@aria-describedby='slick-slide00']"); }
+
+    SelenideElement secondPageInBySideSlider() { return $x("//*[@aria-describedby='slick-slide01']"); }
 }
 

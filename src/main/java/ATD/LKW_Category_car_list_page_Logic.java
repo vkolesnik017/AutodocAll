@@ -391,6 +391,12 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         }
         return this;
     }
+    @Step("Click on image of product in tecDoc listing .LKW_Category_car_list_page")
+    public LKW_Product_page_Logic goToProductPageFromImageWithArticle() {
+        imageOfProductWithArticle("4.90930").scrollIntoView("{block: \"center\"}").click();
+        return page(LKW_Product_page_Logic.class);
+    }
+
 }
 
 
