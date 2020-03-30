@@ -38,11 +38,17 @@ public class Mailinator {
 
   private SelenideElement percentageOfVatInEmail() {
     return $x("//table[@class='info-total']//tr[6]//td[2]//p");
-  }
+}
 
   @Step("Checks for text containing VAT percentage in email. Mailinator")
   public Mailinator checkTextContainingVatPercentageInEmail(String textWithPercentageOfVAT) {
     percentageOfVatInEmail().shouldHave(text(textWithPercentageOfVAT));
+    return this;
+  }
+
+  @Step("Checks absence text containing VAT percentage in email. Mailinator")
+  public Mailinator checkAbsenceVatPercentageInEmail() {
+    percentageOfVatInEmail().shouldNotBe(visible);
     return this;
   }
 

@@ -79,7 +79,7 @@ public class QC_1553_ReconciliationOfCurrencies {
                 .checkCurrencyOnAllDataPage(shop);
     }
 
-    @DataProvider(name = "routeAndProductsIdForCH", parallel = false)
+    @DataProvider(name = "routeAndProductsIdForCH", parallel = true)
     Object[] dataProviderForCH() throws SQLException {
         return new SetUp().setUpShopWithListParam("prod", "CH", productsId);
     }

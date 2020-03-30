@@ -36,8 +36,8 @@ public class QC_1491_ChecksVerificationIslandsAndFirm_BillingIsUndivided_Incorre
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks verification of islands, billing is undivided (Positive case)")
-    public void testChecksVerificationIslandsBillingIsUndividedPositiveCas(String route) {
+    @Description(value = "Test checks verification of islands + Firm, billing is undivided (Positive case)")
+    public void testChecksVerificationIslandsAndFirmBillingIsUndividedPositiveCas(String route) {
         openPage(route);
         clickOfBuyBtnForAllPages();
         new Search_page_Logic().closePopupOtherCategoryIfYes()
