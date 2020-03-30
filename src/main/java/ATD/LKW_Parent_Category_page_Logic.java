@@ -1,11 +1,7 @@
 package ATD;
 
 import io.qameta.allure.Step;
-import javafx.collections.transformation.SortedList;
 import org.testng.Assert;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
@@ -74,7 +70,6 @@ public class LKW_Parent_Category_page_Logic extends LKW_Parent_Category_page {
         linksOfChildCategoriesBlockInSideBar().shouldHave(sizeNotEqual(0));
         return this;
     }
-
 
 
 }
