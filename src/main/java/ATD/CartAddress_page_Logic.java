@@ -1,14 +1,16 @@
 package ATD;
 
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static ATD.CommonMethods.getCurrentShopFromJSVarInHTML;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.page;
 
-public class CartAddress_page_Logic extends CartAddress_page{
+public class CartAddress_page_Logic extends CartAddress_page {
 
     @Step("Filling fields. CartAddress_page")
     public CartAddress_page_Logic fillAllFields(String shop) {
@@ -25,6 +27,7 @@ public class CartAddress_page_Logic extends CartAddress_page{
 
     @Step("Checking correct text in input field. CartAddress_page")
     private void checkCorrectTextAndFillInput(SelenideElement element, String correctText) {
+        Configuration.fastSetValue = false;
         if (!element.getValue().equals(correctText)) {
             element.clear();
             element.setValue(correctText);
@@ -74,6 +77,14 @@ public class CartAddress_page_Logic extends CartAddress_page{
         postalCodeField().clear();
         postalCodeField().click();
         checkCorrectTextAndFillInput(postalCodeField(), postalCodeOrCodeDefault);
+        return this;
+    }
+
+    @Step("Filling postal code {sendPostalCode}. CartAddress_page")
+    public CartAddress_page_Logic fillingPostalCodeField(String sendPostalCode) {
+        Configuration.fastSetValue = false;
+        postalCodeField().setValue(sendPostalCode);
+        checkCorrectTextAndFillInput(postalCodeField(), sendPostalCode);
         return this;
     }
 
