@@ -43,8 +43,8 @@ public class DataBase {
             e.printStackTrace();
         } finally {
             if (statement != null) statement.close();
-        if (conn != null) conn.close();
-    }
+            if (conn != null) conn.close();
+        }
         return route;
     }
 
@@ -72,7 +72,7 @@ public class DataBase {
         return route;
     }
 
-    // Return String route By Shop and route getRouteByRouteName("AT", "lkw_main")
+    // Return String route By Shop and route or subroute getRouteByRouteName("AT", "lkw_main")
     public String getRouteByRouteName(String shop, String routeName) throws SQLException {
         Statement statement = null;
         Connection conn = coonectionDB("routes_atd");
@@ -97,6 +97,17 @@ public class DataBase {
         }
         return route.get(0);
     }
+
+    // Return String route By Shop and route getRouteByRouteName("AT", "lkw_main", "product1")
+    public String getFullRouteByRouteAndSubroute(String envFromTest, String shop, String routeName, String subRoute) throws SQLException {
+        String result;
+        String env = new SetUp().getEnv(envFromTest);
+        String mainRoute = getRouteByRouteName(shop, routeName);
+        String subroute = getRouteByRouteName(shop, subRoute);
+        result = env + mainRoute + "/" + subroute;
+        return result;
+    }
+
 
     // Return String Currency By Shop getCurrency("AT")
     public String getCurrency(String shop) throws SQLException {
@@ -148,7 +159,7 @@ public class DataBase {
         Statement statement = null;
         Connection conn = coonectionDB(dbName);
         String translation = null;
-        String query = "SELECT " .concat(shop) + " FROM autodoc.".concat(dbName)+" where value="+"\"".concat(value)+"\"";
+        String query = "SELECT ".concat(shop) + " FROM autodoc.".concat(dbName) + " where value=" + "\"".concat(value) + "\"";
         try {
             statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
