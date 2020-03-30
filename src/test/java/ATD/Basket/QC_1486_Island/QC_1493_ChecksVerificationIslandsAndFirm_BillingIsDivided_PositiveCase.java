@@ -1,6 +1,9 @@
 package ATD.Basket.QC_1486_Island;
 
-import ATD.*;
+import ATD.CartAddress_page_Logic;
+import ATD.CartAllData_page_Logic;
+import ATD.Search_page_Logic;
+import ATD.SetUp;
 import AWS.Order_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -18,9 +21,9 @@ import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_1491_ChecksVerificationIslandsAndFirm_BillingIsUndivided_IncorrectCompanyData {
+public class QC_1493_ChecksVerificationIslandsAndFirm_BillingIsDivided_PositiveCase {
 
-    private String email = "qc_1491_autotestDE@mailinator.com", orderNumber;
+    private String email = "qc_1493_autotestDE@mailinator.com", orderNumber;
     private Double totalPrice, totalPriceAWSOrder, totalPriceInEmail;
 
     @BeforeClass
@@ -36,8 +39,8 @@ public class QC_1491_ChecksVerificationIslandsAndFirm_BillingIsUndivided_Incorre
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks verification of islands + Firm, billing is undivided (Positive case)")
-    public void testChecksVerificationIslandsAndFirmBillingIsUndividedPositiveCas(String route) {
+    @Description(value = "Test checks verification of islands + island, billing is divided (Positive case)")
+    public void testChecksVerificationIslandsAndFirmBillingIsDividedPositiveCas(String route) {
         openPage(route);
         clickOfBuyBtnForAllPages();
         new Search_page_Logic().closePopupOtherCategoryIfYes()
@@ -48,9 +51,9 @@ public class QC_1491_ChecksVerificationIslandsAndFirm_BillingIsUndivided_Incorre
                 .clickBtnEinkaufFortsetzenFromPopupErrorAboutWrongCompany()
                 .checkAbsenceOfPayPalMethod()
                 .chooseVorkasse().nextBtnClick()
+                .checkPresenceSafeOrderBlock()
                 .checkRegularDeliveryPriceAllData("10,95")
                 .checkTextContainingVatPercentage("inkl. 20% MwSt.")
-                .checkPresenceSafeOrderBlock()
                 .getTotalPriceAllDataPage();
         orderNumber = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumber);
@@ -63,7 +66,7 @@ public class QC_1491_ChecksVerificationIslandsAndFirm_BillingIsUndivided_Incorre
                 .checkVatStatusInOrder("Mit MwSt 20%")
                 .checkDeliveryPriceOrderAWS("10.95");
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
-        totalPriceInEmail = new Mailinator().openEmail("qc_1491_autotestDE@mailinator.com")
+        totalPriceInEmail = new Mailinator().openEmail("qc_1493_autotestDE@mailinator.com")
                 .openLetter(1)
                 .checkRegularDeliveryPriceInEmail("10,95")
                 .checkTextContainingVatPercentageInEmail("Inkl. 20% MwSt.")
