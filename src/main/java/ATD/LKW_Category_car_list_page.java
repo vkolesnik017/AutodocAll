@@ -168,4 +168,22 @@ public class LKW_Category_car_list_page {
     SelenideElement btnOfFirstProductInTecDocListingOfAnalogBlock() {
         return $x("(//div[@class='small-product-button price_box']//a)[1]");
     }
+
+    ElementsCollection activeProductOlifilter() {
+        return $$x("//div[@class='button ' and @data-generic-article-id='7']/ancestor::div[@class='price_box']//p[@class='actual_price']");
+    }
+
+    ElementsCollection notActiveProductsOlifilter() {
+        return $$x("//div[@class='button not_active' and @data-generic-article-id='7']/ancestor::div[@class='price_box']//p[@class='actual_price']");
+    }
+
+    ElementsCollection activeProductsDichtungOlifilter() {
+        return $$x("//div[@class='button ' and @data-generic-article-id='133']/ancestor::div[@class='price_box']//p[@class='actual_price']");
+    }
+
+    ElementsCollection notActiveProductsDichtungOlifilter() {
+        return $$x("//div[@class='button not_active' and @data-generic-article-id='133']/ancestor::div[@class='price_box']//p[@class='actual_price']");
+    }
+
+    SelenideElement imageOfProductWithArticle(String article){return $x("//span[contains(text(),'"+article+"')]/ancestor::div[@class='all_desc_item']//div[@class='image']/span[2]/img");}
 }

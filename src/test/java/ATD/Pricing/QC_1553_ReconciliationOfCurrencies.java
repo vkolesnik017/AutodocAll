@@ -1,6 +1,9 @@
 package ATD.Pricing;
 
-import ATD.*;
+import ATD.Cart_page_Logic;
+import ATD.Main_page_Logic;
+import ATD.Product_page_Logic;
+import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -11,7 +14,8 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.*;
+import static ATD.CommonMethods.getCurrentShopFromJSVarInHTML;
+import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
@@ -19,7 +23,7 @@ import static com.codeborne.selenide.Selenide.close;
 public class QC_1553_ReconciliationOfCurrencies {
 
     // productsId: accessory, chemistry, tool, oil, ordinary product
-    private String[] productsId = {"988236", "13558633", "7889318", "12251034", "13626328"}; //TODO будем ли выносить в базу id товаров для теста ?
+    private String[] productsId = {"988236", "13558633", "12251034", "13626328", "7831937"}; //TODO будем ли выносить в базу id товаров для теста ?
     private String emailForAnotherShop = "reconciliationOfCurrencies@mailinator.com";
     private String password = "1234";
 
@@ -44,7 +48,9 @@ public class QC_1553_ReconciliationOfCurrencies {
         String productId = routeAndProductId.split("_")[1];
         openPage(route + "/a/" + productId);
         String shop = getCurrentShopFromJSVarInHTML();
-        product_page_logic.CompareCurrencyOnProductPageAndInBasketPopup(shop).cartClick().checkCurrencyOnCartPage(shop).checkCurrencyOnCartPageFromDiscountBlock(shop)
+        product_page_logic.CompareCurrencyOnProductPageAndInBasketPopup(shop).cartClick()
+                .checkCurrencyOnCartPage(shop)
+                .checkCurrencyOnCartPageFromDiscountBlock(shop)
                 .nextButtonClick()
                 .signIn(emailForAnotherShop, password)
                 .nextBtnClick()

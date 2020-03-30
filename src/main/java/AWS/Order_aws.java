@@ -296,7 +296,7 @@ public class Order_aws {
         ElementsCollection causes = causesReturnInSelect().shouldHaveSize(16);
         for (SelenideElement cause : causes) {
             String valueText = cause.getValue();
-            String expectedText = new DataBase().getRetoureCauseTranslate("retoure_translate_aws", language, valueText);
+            String expectedText = new DataBase().getTranslate("retoure_translate_aws", language, valueText);
             cause.shouldHave(exactText(expectedText));
         }
         return this;
@@ -362,8 +362,8 @@ public class Order_aws {
     }
 
     @Step("Checks VAT status in order. Order_aws")
-    public Order_aws checkVatStatusInOrder() {
-        vatPercentageInOrder().shouldHave(text("Ohne Mwst"));
+    public Order_aws checkVatStatusInOrder(String statusVatOrder) {
+        vatPercentageInOrder().shouldHave(text(statusVatOrder));
         return this;
     }
 }

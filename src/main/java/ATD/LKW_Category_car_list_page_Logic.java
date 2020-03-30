@@ -1,14 +1,12 @@
 package ATD;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.apache.poi.ss.formula.functions.Match;
 import org.testng.Assert;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
@@ -342,6 +340,63 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         basket().click();
         return page(Cart_page_Logic.class);
     }
+
+    @Step("check sorting of product .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic checkSortingPrice() {
+        List<Double> activeOlifilter = new ArrayList<>();
+        List<Double> notActiveOlifilter = new ArrayList<>();
+        List<Double> activeDichtungOlifilter = new ArrayList<>();
+        List<Double> notActiveDichtungOlifilter = new ArrayList<>();
+        addedPriceToList(activeOlifilter, notActiveOlifilter, activeDichtungOlifilter, notActiveDichtungOlifilter);
+        while (nextPagePagination().isDisplayed()) {
+            nextPagePagination().click();
+            addedPriceToList(activeOlifilter, notActiveOlifilter, activeDichtungOlifilter, notActiveDichtungOlifilter);
+        }
+        checkOfSortingSelectedGeneric(activeOlifilter);
+        checkOfSortingSelectedGeneric(notActiveOlifilter);
+        checkOfSortingSelectedGeneric(activeDichtungOlifilter);
+        checkOfSortingSelectedGeneric(notActiveDichtungOlifilter);
+        return this;
+    }
+
+    @Step("check of sorting of selected generic .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic checkOfSortingSelectedGeneric(List<Double> pricesList) {
+        List<Double> expectedSortedPrices = new ArrayList<>(pricesList);
+        Collections.sort(expectedSortedPrices);
+        Assert.assertEquals(expectedSortedPrices, pricesList);
+        return this;
+    }
+
+    @Step("add price to list .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic addedPriceToList(List<Double> first, List<Double> second, List<Double> third, List<Double> fourth) {
+        addedPriceIfVisibility(activeProductOlifilter(), first);
+        addedPriceIfVisibility(activeProductsDichtungOlifilter(), second);
+        addedPriceIfVisibility(notActiveProductsOlifilter(), third);
+        addedPriceIfVisibility(notActiveProductsDichtungOlifilter(), fourth);
+        return this;
+    }
+
+    @Step("add price if it visible .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic addedPriceIfVisibility(ElementsCollection priceOfProduct, List<Double> listOfPrice) {
+        if (priceOfProduct.get(0).isDisplayed()) {
+            getPrice(priceOfProduct, listOfPrice);
+        }
+        return this;
+    }
+
+    @Step("get price .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic getPrice(ElementsCollection priceOfProduct, List<Double> listOfPrice) {
+        for (int i = 0; i < priceOfProduct.size(); i++) {
+            listOfPrice.add(Double.parseDouble(priceOfProduct.get(i).getText().replaceAll("[^,0-9]", "").replaceAll(",", ".")));
+        }
+        return this;
+    }
+    @Step("Click on image of product in tecDoc listing .LKW_Category_car_list_page")
+    public LKW_Product_page_Logic goToProductPageFromImageWithArticle() {
+        imageOfProductWithArticle("4.90930").scrollIntoView("{block: \"center\"}").click();
+        return page(LKW_Product_page_Logic.class);
+    }
+
 }
 
 

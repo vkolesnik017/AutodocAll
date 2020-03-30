@@ -1,10 +1,14 @@
-package ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods;
+package ATD.Basket.QC_1486_Island;
 
-import ATD.*;
+import ATD.CartAllData_page_Logic;
+import ATD.Payment_handler_page_Logic;
+import ATD.Search_page_Logic;
+import ATD.SetUp;
 import AWS.Order_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import mailinator.Mailinator;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -16,13 +20,12 @@ import java.sql.SQLException;
 import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
-import static com.codeborne.selenide.Selenide.open;
-
-public class QC_1684_HeavyLoadsAndOrdinaryGoods_PositiveCase {
 
 
-    private String email = "qc_1684_autotestDE@mailinator.com", orderNumber;
-    private Double totalPrice, totalPriceAWSOrder;
+public class QC_1489_ChecksVerificationIslands_BillingIsDivided_PositiveCase {
+
+    private String email = "qc_1489_autotestDE@mailinator.com", orderNumber;
+    private Double totalPrice, totalPriceAWSOrder, totalPriceInEmail;
 
     @BeforeClass
     void setUp() {
@@ -31,43 +34,42 @@ public class QC_1684_HeavyLoadsAndOrdinaryGoods_PositiveCase {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product19");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "search9");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks the purchase of a heavy load and ordinary goods")
-    public void testOfHeavyLoadsPurchaseAndOrdinaryGoods(String route) throws SQLException {
+    @Description(value = "Test checks verification of islands, billing is undivided (Positive case)")
+    public void testChecksVerificationIslandsBillingIsUndividedPositiveCas(String route) {
         openPage(route);
-        String shop = getCurrentShopFromJSVarInHTML();
-        new Product_page_Logic().addProductToCart();
-        open("https://autodoc.de/" + new DataBase().getRouteByRouteName("DE", "search3"));
         clickOfBuyBtnForAllPages();
         totalPrice = new Search_page_Logic().closePopupOtherCategoryIfYes()
                 .cartClick().nextButtonClick()
                 .signIn(email, password)
-                .fillAllFields(shop).nextBtnClick()
+                .nextBtnClick()
+                .checkAbsenceOfPayPalMethod()
                 .chooseVorkasse().nextBtnClick()
-                .checkRegularDeliveryPriceAllData("6,95")
-                .checkHeavyLoadsDeliveryPriceAllData("10,00")
-                .checkPresenceSafeOrderBlock()
-                .clickSafeOrderCheckbox()
-                .checkPresenceSafeOrderPriceFromOrderSummeryBlock()
+                .checkAbsenceOfVatPercentage()
+                .checkRegularDeliveryPriceAllData("165,00")
+                .checkAbsenceSafeOrderBlock()
                 .getTotalPriceAllDataPage();
         orderNumber = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumber);
         totalPriceAWSOrder = order_aws.openOrderInAwsWithLogin()
-                .checkDeliveryPriceOrderAWS("9.94")
-                .checkHeavyLoadsDeliveryPriceOrderAWS("10")
-                .checkThatStatusSafeOrderIsOn()
+                .checkVatStatusInOrder("Ohne Mwst")
+                .checkDeliveryPriceOrderAWS("165")
                 .getTotalPriceOrder();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
         order_aws.reSaveOrder()
-                .checkThatStatusSafeOrderIsOn()
-                .checkDeliveryPriceOrderAWS("9.94")
-                .checkHeavyLoadsDeliveryPriceOrderAWS("10");
+                .checkVatStatusInOrder("Ohne Mwst")
+                .checkDeliveryPriceOrderAWS("165");
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
+        totalPriceInEmail = new Mailinator().openEmail("qc_1489_autotestDE@mailinator.com")
+                .openLetter(1)
+                .checkRegularDeliveryPriceInEmail("165,00")
+                .getTotalPriceInEmail();
+        Assert.assertEquals(totalPrice, totalPriceInEmail);
     }
 
     @AfterMethod
@@ -75,3 +77,4 @@ public class QC_1684_HeavyLoadsAndOrdinaryGoods_PositiveCase {
         close();
     }
 }
+

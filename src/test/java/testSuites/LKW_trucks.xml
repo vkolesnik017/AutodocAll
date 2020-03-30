@@ -70,6 +70,7 @@
         <classes>
             <class name="LKW_trucks.QC_94_TecDoc_Listing.QC_95_ApplicabilityOfProductsInTecDocListing"/>
             <class name="LKW_trucks.QC_94_TecDoc_Listing.QC_96_AddProductToBasketFromTecDocListing"/>
+            <class name="LKW_trucks.QC_94_TecDoc_Listing.QC_97_SortingOfProductsInTecDocListing"/>
             <class name="LKW_trucks.QC_94_TecDoc_Listing.QC_98_DynamicCharacteristicsOfProductsInTecDocListing"/>
             <class name="LKW_trucks.QC_94_TecDoc_Listing.QC_99_GoToProductPageFromTecDocListing"/>
             <class name="LKW_trucks.QC_94_TecDoc_Listing.QC_100_AnalogBlockInTecDocListing"/>
@@ -77,6 +78,14 @@
             <class name="LKW_trucks.QC_94_TecDoc_Listing.QC_102_FilterByGenericInTecDocListing"/>
             <class name="LKW_trucks.QC_94_TecDoc_Listing.QC_103_FilterByBrandsInTecDocListing"/>
             <class name="LKW_trucks.QC_94_TecDoc_Listing.QC_104_FilterByInstallationOfSideInTecDocListing"/>
+        </classes>
+    </test>
+
+    <test name="QC_87_SelectorInProductPage">
+        <classes>
+            <class name="LKW_trucks.QC_87_SelectorInProductPage.QC_88_FillingTheSelectorWithSuitableCarInProductPage"/>
+            <class name="LKW_trucks.QC_87_SelectorInProductPage.QC_90_GoToProductPageWithSelectedSuitableCar"/>
+            <class name="LKW_trucks.QC_87_SelectorInProductPage.QC_91_GoToProductPageWithSelectedNotSuitableCar"/>
         </classes>
     </test>
 
