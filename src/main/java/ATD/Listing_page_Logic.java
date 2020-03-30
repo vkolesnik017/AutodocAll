@@ -97,7 +97,7 @@ public class Listing_page_Logic extends Listing_page {
     }
 
     @Step("Method checks unique brands on listing. Listing_page")
-    public void checkUniqueBrandsOnListing(int numberOfUniqueBrands, ElementsCollection titleViewMode) {
+    public Listing_page_Logic checkUniqueBrandsOnListing(int numberOfUniqueBrands, ElementsCollection titleViewMode) {
         titleViewMode.shouldHave(sizeGreaterThan(0));
         Set<String> uniqueBrandSet = new LinkedHashSet<>();
         for (SelenideElement aTitleViewMode : titleViewMode) {
@@ -105,6 +105,7 @@ public class Listing_page_Logic extends Listing_page {
             uniqueBrandSet.add(brandName);
         }
         Assert.assertTrue(uniqueBrandSet.size() >= numberOfUniqueBrands);
+        return this;
     }
 
     @Step("Method checks unique generic on listing. Listing_page")
@@ -140,12 +141,14 @@ public class Listing_page_Logic extends Listing_page {
     }
 
     @Step("Method checks product attribute on listing with chosen car and filter (without products for other cars). Listing_page")
-    public void checkProductAttributeOnListingWithCarAndFilter(String characteristic, ElementsCollection productAttributeGenericRoute, ElementsCollection productAttributeTecdocRoute) {
+    public Listing_page_Logic checkProductAttributeOnListingWithCarAndFilter(String characteristic, ElementsCollection productAttributeGenericRoute, ElementsCollection productAttributeTecdocRoute) {
         if (productsForOtherCars().is(visible)) {
+            productsForOtherCars().waitUntil(visible, 2000);
             checkProductAttributeOnListing(characteristic, productAttributeGenericRoute);
         } else {
             checkProductAttributeOnListing(characteristic, productAttributeTecdocRoute);
         }
+        return this;
     }
 
     @Step("Method checks product attribute on listing in tile mode. Listing_page")
@@ -192,7 +195,7 @@ public class Listing_page_Logic extends Listing_page {
     }
 
     @Step("Method checks product attribute on listing in tile mode. Listing_page")
-    public void checkProductAttributeOnListingInTileMode2(String attributeSelectedInSideFilter, int productWithFiler) {
+    public Listing_page_Logic checkProductAttributeOnListingInTileMode2(String attributeSelectedInSideFilter, int productWithFiler) {
         ElementsCollection characS = $$x("//*[contains(text(),'Einbauseite:')]/ancestor :: li[1]/span[2]");
         if (productWithFiler > 0) {
             for (int i = 0; i < productWithFiler; i++) {
@@ -207,6 +210,7 @@ public class Listing_page_Logic extends Listing_page {
                 $(".search_button").hover();
             }
         }
+        return this;
     }
 
     @Step("Method checks product attribute on OEM listing. Listing_page")
@@ -374,40 +378,95 @@ public class Listing_page_Logic extends Listing_page {
         Assert.assertTrue(uniqueRatingSet.size() >= numberOfUniqueRatings);
     }
 
-    @Step("Add procuct to basket and check related products popup on listing")
+    @Step("Add procuct to basket and check related products popup on listing. Listing_page")
     public Listing_page_Logic checkRelatedProductsPopupOnListing(int numberCategories) {
         buyButton().click();
         new Product_page_Logic().categoriesInRelatedProductsPopup().shouldHaveSize(numberCategories);
         return this;
     }
 
-    @Step("Wait until preloader disappear")
+    @Step("Wait until preloader disappear. Listing_page")
     public Listing_page_Logic waitUntilPreloaderDisappear() {
         preloader().waitUntil(attribute("style", "display: none;"), 20000);
         return this;
     }
 
-    @Step("Click Filter By Side Back")
+    @Step("Click Filter By Side Back. Listing_page")
     public Listing_page_Logic clickFilterBySideBack() {
         filterBySideBack().click();
         return this;
     }
 
-    @Step("Click Filter By Side Front")
+    @Step("Click Filter By Side Front. Listing_page")
     public Listing_page_Logic clickFilterBySideFront() {
         filterBySideLKW().click();
         return this;
     }
 
-    @Step("Click Show Listing In Tile Mode Button")
+    @Step("Click Show Listing In Tile Mode Button. Listing_page")
     public Listing_page_Logic clickShowListingInTileModeButton() {
         showListingInTileModeButton().click();
         return this;
     }
 
-    @Step("Click Show Listing In List Mode Button")
+    @Step("Click Show Listing In List Mode Button. Listing_page")
     public Listing_page_Logic clickShowListingInListModeButton() {
         showListingInListModeButton().click();
+        return this;
+    }
+
+    @Step("Click Second Listing Page Button. Listing_page")
+    public Listing_page_Logic clickSecondListingPageButton() {
+        secondListingPage().click();
+        return this;
+    }
+
+    @Step("Check Side In Tile Mode LKW. Listing_page")
+    public Listing_page_Logic checkSideInTileModeLKW() {
+        int vorderachseAttributes = vorderachseAttributeInTileMode().size();
+        int producntsOnListing = productsOnListingInTileMode().size();
+        Assert.assertEquals(vorderachseAttributes, producntsOnListing);
+        return this;
+    }
+
+    @Step("Check Side In Tile Mode. Listing_page")
+    public Listing_page_Logic checkSideInTileMode(String expectedSide) {
+        int productWithFiler = einbauseiteProductAttributeGenericRoute().size();
+        clickShowListingInTileModeButton();
+        waitUntilPreloaderDisappear();
+        checkProductAttributeOnListingInTileMode2(expectedSide, productWithFiler);
+        return this;
+    }
+
+    @Step("Check By Side Slider. Listing_page")
+    public Listing_page_Logic checkBySideSlider() throws InterruptedException {
+        blockOfBySideFilters().shouldBe(visible);
+        nextButtonInBySideSlider().click();
+        secondPageInBySideSlider().shouldBe(visible);
+        nextButtonInBySideSliderDisabled().shouldHave(attribute("aria-disabled", "true"));
+        Thread.sleep(3000);
+        previousButtonInBySideSlider().click();
+        firstPageInBySideSlider().shouldBe(visible);
+        previousButtonInBySideSliderDisabled().shouldHave(attribute("aria-disabled", "true"));
+        return this;
+    }
+
+    @Step("Click third hohe value. Listing_page")
+    public Listing_page_Logic clickThirdHoheValue() {
+        hoheThirdSideFilterButton().click();
+        return this;
+    }
+
+    @Step("Click first hohe value. Listing_page")
+    public Listing_page_Logic clickFirstHoheValue() {
+        hoheFirstSideFilterButton().click();
+        return this;
+    }
+
+    @Step("Click first lochanzahl value. Listing_page")
+    public Listing_page_Logic clickFirstLochanzahlValue() throws Exception {
+        Thread.sleep(2000);
+        lochanzahlSideFilterButton().click();
         return this;
     }
 }
