@@ -296,7 +296,7 @@ public class Order_aws {
         ElementsCollection causes = causesReturnInSelect().shouldHaveSize(16);
         for (SelenideElement cause : causes) {
             String valueText = cause.getValue();
-            String expectedText = new DataBase().getRetoureCauseTranslate("retoure_translate_aws", language, valueText);
+            String expectedText = new DataBase().getTranslate("retoure_translate_aws", language, valueText);
             cause.shouldHave(exactText(expectedText));
         }
         return this;

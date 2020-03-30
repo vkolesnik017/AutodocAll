@@ -144,11 +144,11 @@ public class DataBase {
         return kba;
     }
 
-    public String getRetoureCauseTranslate(String dbName, String shop, String value) throws SQLException {
+    public String getTranslate(String dbName, String shop, String value) throws SQLException {
         Statement statement = null;
         Connection conn = coonectionDB(dbName);
         String translation = null;
-        String query = "SELECT " .concat(shop) + " FROM autodoc.".concat(dbName)+" where valueCause="+"\"".concat(value)+"\"";
+        String query = "SELECT " .concat(shop) + " FROM autodoc.".concat(dbName)+" where value="+"\"".concat(value)+"\"";
         try {
             statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
