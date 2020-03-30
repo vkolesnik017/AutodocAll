@@ -7,8 +7,8 @@ import org.openqa.selenium.By;
 
 import static ATD.CommonMethods.getCurrentShopFromJSVarInHTML;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class CartAddress_page_Logic extends CartAddress_page {
 
@@ -81,10 +81,15 @@ public class CartAddress_page_Logic extends CartAddress_page {
     }
 
     @Step("Filling postal code {sendPostalCode}. CartAddress_page")
-    public CartAddress_page_Logic fillingPostalCodeField(String sendPostalCode) {
-        Configuration.fastSetValue = false;
-        postalCodeField().setValue(sendPostalCode);
-        checkCorrectTextAndFillInput(postalCodeField(), sendPostalCode);
+    public CartAddress_page_Logic fillingPostalCodeField(int sendPostalCode) {
+        postalCodeField().clear();
+        char[] array = Integer.toString(sendPostalCode).toCharArray();
+        for (char anArray : array) {
+            String send = String.valueOf(anArray);
+            sleep(1000);
+            getWebDriver().findElement(By.id("form_lPlz")).sendKeys(send);
+        }
+
         return this;
     }
 
