@@ -82,6 +82,7 @@ public class CartAddress_page_Logic extends CartAddress_page {
 
     @Step("Filling postal code {sendPostalCode}. CartAddress_page")
     public CartAddress_page_Logic fillingPostalCodeField(int sendPostalCode) {
+        postalCodeField().click();
         postalCodeField().clear();
         sleep(2000);
         char[] array = Integer.toString(sendPostalCode).toCharArray();
