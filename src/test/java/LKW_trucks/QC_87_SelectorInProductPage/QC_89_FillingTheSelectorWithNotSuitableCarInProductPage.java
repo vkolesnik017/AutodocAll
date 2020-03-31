@@ -36,6 +36,7 @@ public class QC_89_FillingTheSelectorWithNotSuitableCarInProductPage {
         new LKW_Product_page_Logic()
                 .сomparisonOfSelectedNotSuitableCarAndProduct()
                 .checkSuccessfullyMakerCarListPageLoading("https://lkwteile.autodoc.de/lastkraftwagen/askam-fargo-desoto/as-950?car_id=1012748");
+        
     }
 
     @AfterMethod
