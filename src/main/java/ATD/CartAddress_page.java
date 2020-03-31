@@ -66,4 +66,7 @@ public class CartAddress_page {
         return $x("//div[@class='popup-content__buttons']//a[2]");
     }
 
+    SelenideElement tooltipCOVID19() {
+        return $x("//div[@class='error-message']");
+    }
 }
