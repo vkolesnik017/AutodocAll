@@ -10,6 +10,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.*;
@@ -20,7 +21,12 @@ public class QC_1695_CheckAddressBlockingOnAddressPage {
     private String email = "qc_1695_autotestCOVID19@mailinator.com";
     private String actualText, textFromSite;
 
-    String[] plzFCZ = {"78321", "78324", "78391", "78401"};
+//    String[] plzFCZ = {"78321", "78324", "78391", "78401"};
+    String[] plzFCZ = {"78321"};
+    private String[] plzIt = {"04000-04999", "05100-05199", "07000-07100", "10000-10100", "16000-17100", "20000-20100", "23800-23900" , "24000-24100" , "25000-25100" , "37000-37100",
+            "40000-40199", "41000-41100", "42000-42100", "46000-46100", "64000-64999", "65000-65100", "83000-83100", "84000-89100"};
+
+
 
     @BeforeClass
     void setUp() {
@@ -36,7 +42,7 @@ public class QC_1695_CheckAddressBlockingOnAddressPage {
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks verification of islands + Firm, billing is undivided, incorrect company data")
-    public void testChecksVerificationIslandsAndFirmIncorrectCompanyData(String route) throws SQLException {
+    public void testChecksVerificationIslandsAndFirmIncorrectCompanyData(String route) throws SQLException, IOException {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
         actualText = new DataBase().getTranslate("convir_translate", shop, "addres");
@@ -45,6 +51,7 @@ public class QC_1695_CheckAddressBlockingOnAddressPage {
                 .cartClick()
                 .nextButtonClick()
                 .signIn(email, password)
-                .checkingCOVID19Tooltip("CZ", plzFCZ, shop);
+//                .checkingCOVID19Tooltip("CZ", plzFCZ, shop)
+                .checkingCOVID19Tooltip("IT", plzIt, shop);
     }
 }
