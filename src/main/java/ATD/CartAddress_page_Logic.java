@@ -4,6 +4,9 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.testng.Assert;
+
+import java.sql.SQLException;
 
 import static ATD.CommonMethods.getCurrentShopFromJSVarInHTML;
 import static com.codeborne.selenide.Condition.visible;
@@ -81,19 +84,39 @@ public class CartAddress_page_Logic extends CartAddress_page {
     }
 
     @Step("Filling postal code {sendPostalCode}. CartAddress_page")
-    public CartAddress_page_Logic fillingPostalCodeField(int sendPostalCode) {
+    public CartAddress_page_Logic fillingPostalCodeField(String sendPostalCode) {
 //        postalCodeField().click();
 //        postalCodeField().clear();
 //        sleep(2000);
         postalCodeField().click();
-        char[] array = Integer.toString(sendPostalCode).toCharArray();
+        char[] array = sendPostalCode.toCharArray();
         for (char anArray : array) {
             String send = String.valueOf(anArray);
             sleep(1000);
             getWebDriver().findElement(By.id("form_lPlz")).sendKeys(send);
         }
-
         return this;
+    }
+
+    public void checkingCOVID19Tooltip(String countryCheck, String[] shopPlz, String shop) throws SQLException {
+        chooseDeliveryCountry(countryCheck);
+        for (String plz : shopPlz) {
+            checkingCOVID19TooltipTranslate((plz), shop);
+            if (countryCheck.equals("IT")) {
+                int beginIndex = Integer.parseInt(plz.substring(0, plz.indexOf("-")));
+                int endIndex = Integer.parseInt(plz.substring(plz.indexOf("-") + 1));
+                for (int i = beginIndex; i <= endIndex; i++) {
+                    checkingCOVID19TooltipTranslate(String.valueOf(i), shop);
+                }
+            }
+        }
+    }
+
+    private void checkingCOVID19TooltipTranslate(String plz, String shop) throws SQLException {
+        fillingPostalCodeField(plz);
+        nextBtnClick();
+        String plzPopupText = getTextFromTooltipCOVID19();
+        Assert.assertEquals(plzPopupText, new DataBase().getTranslate("convir_translate", shop, "addres"));
     }
 
     @Step("Choosing delivery country {country}. CartAddress_page")

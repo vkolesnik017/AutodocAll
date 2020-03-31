@@ -1,10 +1,11 @@
 package ATD.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
 
-import ATD.*;
+import ATD.DataBase;
+import ATD.Product_page_Logic;
+import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
-import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -18,6 +19,8 @@ public class QC_1695_CheckAddressBlockingOnAddressPage {
 
     private String email = "qc_1695_autotestCOVID19@mailinator.com";
     private String actualText, textFromSite;
+
+    String[] plzFCZ = {"78321", "78324", "78391", "78401"};
 
     @BeforeClass
     void setUp() {
@@ -42,9 +45,6 @@ public class QC_1695_CheckAddressBlockingOnAddressPage {
                 .cartClick()
                 .nextButtonClick()
                 .signIn(email, password)
-                .fillingPostalCodeField(00100)
-                .nextBtnClick();
-        textFromSite = new CartAddress_page_Logic().getTextFromTooltipCOVID19();
-        Assert.assertEquals(textFromSite, actualText);
+                .checkingCOVID19Tooltip("CZ", plzFCZ, shop);
     }
 }
