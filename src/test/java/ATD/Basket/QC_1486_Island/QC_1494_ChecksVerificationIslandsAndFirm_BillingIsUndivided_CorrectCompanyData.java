@@ -38,8 +38,8 @@ public class QC_1494_ChecksVerificationIslandsAndFirm_BillingIsUndivided_Correct
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks verification of islands + island, billing is undivided (Correct Company Data)")
-    public void testChecksVerificationIslandsAndFirmBillingIsUndividedCorrectCompanyData(String route) {
+    @Description(value = "Test checks verification of islands + Firm, billing is undivided (Correct Company Data)")
+    public void testChecksVerificationIslandsAndFirmCorrectCompanyData(String route) {
         openPage(route);
         clickOfBuyBtnForAllPages();
         totalPrice = new Search_page_Logic().closePopupOtherCategoryIfYes()

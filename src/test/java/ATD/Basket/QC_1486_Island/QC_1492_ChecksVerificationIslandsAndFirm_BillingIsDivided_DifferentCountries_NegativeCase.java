@@ -20,7 +20,7 @@ import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_1492_ChecksVerificationIslandsAndFirm_BillingIsUndivided_DifferentCountries_NegativeCase {
+public class QC_1492_ChecksVerificationIslandsAndFirm_BillingIsDivided_DifferentCountries_NegativeCase {
 
     private String email = "qc_1492_autotestDE@mailinator.com", orderNumber;
     private Double totalPrice, totalPriceAWSOrder, totalPriceInEmail;
@@ -38,8 +38,8 @@ public class QC_1492_ChecksVerificationIslandsAndFirm_BillingIsUndivided_Differe
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks verification of islands + Firm, Different Countries, billing is undivided (Positive case)")
-    public void testChecksVerificationIslandsAndFirmAndDifferentCountriesBillingIsUndividedPositiveCas(String route) {
+    @Description(value = "Test checks verification of islands + Firm, Different Countries, billing is divided (Negative case)")
+    public void testChecksVerificationIslandsAndFirmAndDifferentCountries(String route) {
         openPage(route);
         clickOfBuyBtnForAllPages();
         totalPrice = new Search_page_Logic().closePopupOtherCategoryIfYes()
