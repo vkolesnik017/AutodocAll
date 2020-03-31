@@ -123,4 +123,11 @@ public class CartAddress_page_Logic extends CartAddress_page {
         btnEinkaufFortsetzenFromPopupErrorAboutWrongCompany().click();
         return page(CartPayments_page_Logic.class);
     }
+
+    @Step("Get text from tooltip COVID-19. CartAddress_page")
+    public String getTextFromTooltipCOVID19() {
+        tooltipCOVID19().shouldBe(visible);
+        String textFromSite = tooltipCOVID19().getText();
+        return textFromSite;
+    }
 }

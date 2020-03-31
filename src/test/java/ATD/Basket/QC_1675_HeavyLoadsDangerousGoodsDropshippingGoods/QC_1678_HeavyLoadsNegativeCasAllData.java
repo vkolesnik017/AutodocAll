@@ -72,7 +72,7 @@ public class QC_1678_HeavyLoadsNegativeCasAllData {
                 .chooseVorkasse().nextBtnClick()
                 .checkPresencePopUpDeliveryLimitAllDataPage()
                 .clickBtnChangeAddressInDeliveryPopupCartAllDataPage();
-        new CommonMethods().checkingContainsUrl("https://www.autodoc.de/basket/address");
+        checkingContainsUrl("https://www.autodoc.de/basket/address");
     }
 
     @AfterMethod
