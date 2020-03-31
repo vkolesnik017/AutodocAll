@@ -60,7 +60,7 @@ public class Listing_page_Logic extends Listing_page {
     }
 
     @Step("Method checks that expected text is present in title of all products on listing. Listing_page")
-    public void checkProductTitleOnListing(String expectedTextInTitle, Boolean shouldHaveTextOrNotHave, ElementsCollection titleViewMode) {
+    public Listing_page_Logic checkProductTitleOnListing(String expectedTextInTitle, Boolean shouldHaveTextOrNotHave, ElementsCollection titleViewMode) {
         titleViewMode.shouldHave(sizeGreaterThan(0));
         for (int i = 0; i < titleViewMode.size(); i++) {
             if (shouldHaveTextOrNotHave) {
@@ -69,10 +69,11 @@ public class Listing_page_Logic extends Listing_page {
                 titleViewMode.get(i).shouldNotHave(text(expectedTextInTitle));
             }
         }
+        return this;
     }
 
     @Step("Method checks that expected text is present in title of all products on listing with two conditions. Listing_page")
-    public void checkProductTitleOnListingWithTwoExpectedTexts(String expectedTextInTitle, String secondExpText, Boolean shouldHaveTextOrNotHave, ElementsCollection titleViewMode) {
+    public Listing_page_Logic checkProductTitleOnListingWithTwoExpectedTexts(String expectedTextInTitle, String secondExpText, Boolean shouldHaveTextOrNotHave, ElementsCollection titleViewMode) {
         titleViewMode.shouldHave(sizeGreaterThan(0));
         for (int i = 0; i < titleViewMode.size(); i++) {
             if (shouldHaveTextOrNotHave) {
@@ -81,6 +82,7 @@ public class Listing_page_Logic extends Listing_page {
                 titleViewMode.get(i).shouldNotHave(or("condition", text(expectedTextInTitle), text(secondExpText)));
             }
         }
+        return this;
     }
 
     @Step("Method checks that expected text is present in title of all products on listing with six conditions. Listing_page")
@@ -469,5 +471,64 @@ public class Listing_page_Logic extends Listing_page {
         lochanzahlSideFilterButton().click();
         return this;
     }
+
+    @Step("Click first first brand name in filter button. Listing_page")
+    public Listing_page_Logic clickFirstBrandNameInFilter() {
+        firstBrandInFilterButton().click();
+        return this;
+    }
+
+    @Step("Click first second brand name in filter button. Listing_page")
+    public Listing_page_Logic clickSecondBrandNameInFilter() {
+        secondBrandInFilterButton().click();
+        return this;
+    }
+
+    @Step("Click first first brand name in filter button OEM. Listing_page")
+    public Listing_page_Logic clickFirstBrandNameOemListing() {
+        firstBrandButtonOemListing().click();
+        return this;
+    }
+
+    @Step("Click first second brand name in filter button OEM. Listing_page")
+    public Listing_page_Logic clickSecondBrandNameOemListing() {
+        secondBrandButtonOemListing().click();
+        return this;
+    }
+
+    @Step("Check brand filter with six choosen bands + pagination (LKW). Listing_page")
+    public Listing_page_Logic checkBrandFilterWithSixBrandsPagination() {
+        String brandName1 = firstBrandNameInFiler().attr("alt").split(" ")[0];
+        String brandName2 = secondBrandNameInFilter().attr("alt").split(" ")[0];
+        String brandName3 = thirdBrandNameInFilter().attr("alt").split(" ")[0];
+        String brandName4 = fourthBrandNameInFilter().attr("alt").split(" ")[0];
+        String brandName5 = fifthBrandNameInFilter().attr("alt").split(" ")[0];
+        String brandName6 = sixthBrandNameInFilter().attr("alt").split(" ")[0];
+        clickSecondListingPageButton();
+        checkProductTitleOnListingWithSixExpectedTexts(brandName1, brandName2, brandName3, brandName4, brandName5, brandName6, true, productTitleInListMode());
+        return this;
+    }
+
+    @Step("Check brand filter with two choosen bands + pagination. Listing_page")
+    public Listing_page_Logic checkBrandFilterWithTwoBrandsPagination() {
+        String brandName1 = firstBrandNameInFiler().attr("alt").split(" ")[0];
+        String brandName2 = secondBrandNameInFilter().attr("alt").split(" ")[0];
+        clickSecondListingPageButton();
+        checkProductTitleOnListingWithTwoExpectedTexts(brandName1, brandName2, true, productTitleInListMode());
+        return this;
+    }
+
+    @Step("Check brand filter with two choosen bands + pagination (LKW without car). Listing_page")
+    public Listing_page_Logic checkBrandFilterWithTwoBrandsPaginationLKW() {
+        String brandName1 = firstBrandNameInFiler().attr("alt").split(" ")[2];
+        String brandName2 = secondBrandNameInFilter().attr("alt").split(" ")[2];
+        clickSecondListingPageButton();
+        checkProductTitleOnListingWithTwoExpectedTexts(brandName1, brandName2, true, productTitleInListMode());
+        return this;
+    }
+
+
+
+
 }
 
