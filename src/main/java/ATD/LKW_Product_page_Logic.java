@@ -1,7 +1,9 @@
 package ATD;
 
 import AWS.ProductCard_aws;
+import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.Step;
+import org.openqa.selenium.By;
 import org.testng.Assert;
 
 import static com.codeborne.selenide.CollectionCondition.size;
@@ -99,7 +101,7 @@ public class LKW_Product_page_Logic extends LKW_Product_page {
     @Step("Check сomparison of selected not suitable car and product .LKW_Product_page")
     public LKW_maker_car_list_Logic сomparisonOfSelectedNotSuitableCarAndProduct() {
         selectTruckInHorizontalSelector("2242", "8959", "1012748");
-     
+  
         return page(LKW_maker_car_list_Logic.class);
     }
 
