@@ -12,14 +12,12 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.closeCookiesFooterMessage;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Selenide.close;
 
 public class QC_53_FiltersSorting_TestBrandFilterInTileMode {
-    private Listing_page_Logic listingPage = new Listing_page_Logic();
+    private Listing_page_Logic listingPageLogic = new Listing_page_Logic();
 
     @BeforeClass
     void setUp() {
@@ -28,12 +26,12 @@ public class QC_53_FiltersSorting_TestBrandFilterInTileMode {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list,search2");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list,search2,search19");
     }
 
     @DataProvider(name = "routesLKW", parallel = true)
     Object[] dataProviderLKW() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_search,lkw_category_car_list,lkw_category_car_list2");
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_search,lkw_category_car_list,lkw_category_car_list2,lkw_search6");
     }
 
     @Test(dataProvider = "routes")
@@ -42,12 +40,11 @@ public class QC_53_FiltersSorting_TestBrandFilterInTileMode {
     @Description(value = "Test checks brand filter in tile mode (Tecdoc listing)")
     public void checkBrandFilterInTileMode(String route) {
         openPage(route);
-        closeCookiesFooterMessage();
-        listingPage.firstBrandInFilterButton().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        String brand1 = listingPage.firstBrandNameInFiler().attr("alt");
-        listingPage.showListingInTileModeButton().click();
-        listingPage.checkProductTitleOnListing(brand1, true, listingPage.productTitleInTileMode());
+        listingPageLogic.clickFirstBrandNameInFilter()
+                    .waitUntilPreloaderDisappear();
+        String brand1 = listingPageLogic.firstBrandNameInFiler().attr("alt");
+        listingPageLogic.clickShowListingInTileModeButton()
+                    .checkProductTitleOnListing(brand1, true, listingPageLogic.productTitleInTileMode());
     }
 
     @Test(dataProvider = "routesLKW")
@@ -57,11 +54,11 @@ public class QC_53_FiltersSorting_TestBrandFilterInTileMode {
     public void checkBrandFilterInTileModeLKW(String route) {
         openPage(route);
         new Main_page_Logic().closeCarSelectorTooltipIfVisible();
-        listingPage.firstBrandInFilterButton().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        String brand1 = listingPage.firstBrandNameInFiler().attr("alt");
-        listingPage.showListingInTileModeButton().click();
-        listingPage.checkProductTitleOnListing(brand1, true, listingPage.productTitleInTileMode());
+        listingPageLogic.clickFirstBrandNameInFilter()
+                    .waitUntilPreloaderDisappear();
+        String brand1 = listingPageLogic.firstBrandNameInFiler().attr("alt");
+        listingPageLogic.clickShowListingInTileModeButton()
+                    .checkProductTitleOnListing(brand1, true, listingPageLogic.productTitleInTileMode());
     }
     @AfterMethod
     private void teatDown() {

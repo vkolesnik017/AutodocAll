@@ -16,11 +16,10 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Selenide.close;
 
 public class QC_56_FiltersSorting_TestBrandFilterReset {
-    private Listing_page_Logic listingPage = new Listing_page_Logic();
+    private Listing_page_Logic listingPageLogic = new Listing_page_Logic();
 
     @BeforeClass
     void setUp() {
@@ -53,13 +52,11 @@ public class QC_56_FiltersSorting_TestBrandFilterReset {
     @Description(value = "Test checks brand filter reset (Tecdoc listing)")
     public void checkBrandFilterReset(String route) {
         openPage(route);
-        String brand1 = listingPage.firstBrandNameInFiler().attr("alt");
-        listingPage.firstBrandInFilterButton().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.firstBrandInFilterButton().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.checkProductTitleOnListing(brand1, false, listingPage.productTitleInListMode());
-        listingPage.checkUniqueBrandsOnListing(2, listingPage.productTitleInListMode());
+        listingPageLogic.clickFirstBrandNameInFilter()
+                    .waitUntilPreloaderDisappear()
+                    .clickFirstBrandNameInFilter()
+                    .waitUntilPreloaderDisappear()
+                    .checkUniqueBrandsOnListing(2, listingPageLogic.productTitleInListMode());
     }
 
     @Test(dataProvider = "routesLKW")
@@ -69,11 +66,11 @@ public class QC_56_FiltersSorting_TestBrandFilterReset {
     public void checkBrandFilterResetLKW(String route) {
         openPage(route);
         new Main_page_Logic().closeCarSelectorTooltipIfVisible();
-        listingPage.firstBrandInFilterButton().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.firstBrandInFilterButton().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.checkUniqueBrandsOnListing(2, listingPage.productTitleInListMode());
+        listingPageLogic.clickFirstBrandNameInFilter()
+                .waitUntilPreloaderDisappear()
+                .clickFirstBrandNameInFilter()
+                .waitUntilPreloaderDisappear()
+                .checkUniqueBrandsOnListing(2, listingPageLogic.productTitleInListMode());
     }
 
     @Test(dataProvider = "routeAcc")
@@ -82,11 +79,11 @@ public class QC_56_FiltersSorting_TestBrandFilterReset {
     @Description(value = "Test checks brand filter reset (Acc listing)")
     public void checkBrandFilterResetAcc(String route) {
         openPage(route);
-        listingPage.firstBrandInFilterButton().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.firstBrandInFilterButton().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.checkUniqueBrandsOnListing(2, listingPage.productTitleInListMode());
+        listingPageLogic.clickFirstBrandNameInFilter()
+                .waitUntilPreloaderDisappear()
+                .clickFirstBrandNameInFilter()
+                .waitUntilPreloaderDisappear()
+                .checkUniqueBrandsOnListing(2, listingPageLogic.productTitleInListMode());
     }
 
     @Test(dataProvider = "routeOem")
@@ -95,11 +92,11 @@ public class QC_56_FiltersSorting_TestBrandFilterReset {
     @Description(value = "Test checks brand filter reset (Oem listing)")
     public void checkBrandFilterResetOem(String route) {
         openPage(route);
-        listingPage.firstBrandButtonOemListing().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.firstBrandButtonOemListing().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.checkUniqueBrandsOnListing(2, listingPage.productTitleInListMode());
+        listingPageLogic.clickFirstBrandNameOemListing()
+                    .waitUntilPreloaderDisappear()
+                    .clickFirstBrandNameOemListing()
+                    .waitUntilPreloaderDisappear()
+                    .checkUniqueBrandsOnListing(2, listingPageLogic.productTitleInListMode());
     }
 
     @AfterMethod
