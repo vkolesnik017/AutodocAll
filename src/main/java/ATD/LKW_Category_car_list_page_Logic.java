@@ -242,7 +242,7 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
 
     @Step("Check TecDoc listing with selecting brand .LKW_Category_car_list_page")
     public LKW_Category_car_list_page_Logic checkTecDocListingWithSelectingFilterByBrand() {
-        brandsOfBrandBlock().get(12).click();
+        brandsOfBrandBlock().get(13).click();
         appearsOfLoader();
         Assert.assertTrue(url().equals("https://lkwteile.autodoc.de/ersatzteile/olfilter-200157/mercedes-benz/actros?car_id=1000784&supplier%5B2%5D=4868"));
         for (int i = 0; i < titleOfProductInTecDocListingBlock().size(); i++) {
