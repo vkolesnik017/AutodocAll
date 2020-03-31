@@ -45,7 +45,7 @@ public class QC_1488_ChecksVerificationIslands_BillingIsUndivided_NegativeCase {
         new Search_page_Logic().closePopupOtherCategoryIfYes()
                 .cartClick().nextButtonClick()
                 .signIn(email, password)
-                .fillingPostalCodeField(97100)
+                .fillingPostalCodeField("97100")
                 .nextBtnClick()
                 .checkAbsenceOfPayPalMethod()
                 .chooseVorkasse().nextBtnClick()
@@ -53,7 +53,7 @@ public class QC_1488_ChecksVerificationIslands_BillingIsUndivided_NegativeCase {
                 .checkRegularDeliveryPriceAllData("165,00")
                 .checkAbsenceSafeOrderBlock();
         totalPrice = new CartAllData_page_Logic().clickBtnReturnToCartAddressPage()
-                .fillingPostalCodeField(33333)
+                .fillingPostalCodeField("33333")
                 .nextBtnClick()
                 .checkAbsenceOfPayPalMethod()
                 .chooseVorkasse().nextBtnClick()

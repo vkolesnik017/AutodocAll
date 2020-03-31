@@ -43,7 +43,7 @@ public class QC_1491_ChecksVerificationIslandsAndFirm_BillingIsUndivided_Incorre
         new Search_page_Logic().closePopupOtherCategoryIfYes()
                 .cartClick().nextButtonClick()
                 .signIn(email, password)
-                .fillingPostalCodeField(20000)
+                .fillingPostalCodeField("20000")
                 .nextBtnClick();
         totalPrice = new CartAddress_page_Logic().checkPresencePopupErrorAboutWrongCompany()
                 .clickBtnEinkaufFortsetzenFromPopupErrorAboutWrongCompany()
@@ -74,9 +74,9 @@ public class QC_1491_ChecksVerificationIslandsAndFirm_BillingIsUndivided_Incorre
         clickOfBuyBtnForAllPages();
         new Search_page_Logic().closePopupOtherCategoryIfYes()
                 .cartClick().nextButtonClick();
-        new CartAddress_page_Logic().fillingPostalCodeField(97100)
+        new CartAddress_page_Logic().fillingPostalCodeField("97100")
                 .nextBtnClick();
-        new CommonMethods().checkingContainsUrl("https://www.autodoc.de/basket/address");
+        checkingContainsUrl("https://www.autodoc.de/basket/address");
     }
 
     @AfterMethod
