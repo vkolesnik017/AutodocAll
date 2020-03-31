@@ -59,5 +59,23 @@ public class LKW_Parent_Category_page {
         return $x("//div[@class='block categories blue topSubCats']/../b");
     }
 
-    ElementsCollection childCategoriesInChildCategoryBlock() {return $$x("//ul[@class='simple_links']//li");}
+    ElementsCollection childCategoriesInChildCategoryBlock() {
+        return $$x("//ul[@class='simple_links']//li");
+    }
+
+    SelenideElement titleOfChildCategoriesBlock() {
+        return $x("//div[@class='title']");
+    }
+
+    SelenideElement mainImageOfChildCategoriesBlock() {
+        return $x("//div[@class='filter_small_img']/img");
+    }
+
+    ElementsCollection titleOfLinksInChildCategoriesBlock() {
+        return $$x("//ul[@class='simple_links']//li//span");
+    }
+
+    ElementsCollection imageOfLinksInChildCategoriesBlock() {
+        return $$x("//ul[@class='simple_links']//li//img");
+    }
 }

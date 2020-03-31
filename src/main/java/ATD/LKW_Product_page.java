@@ -2,6 +2,7 @@ package ATD;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selenide.*;
@@ -67,4 +68,6 @@ public class LKW_Product_page {
         return $x("//div[@class='product-info-block__auto product-info-block--lkw single']");
     }
     SelenideElement titleOfSuitableCarInCompatibilityBlock() {return $x("//div[@class='accordion-selected']/p");}
+
+
 }

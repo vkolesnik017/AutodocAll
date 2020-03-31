@@ -2,7 +2,6 @@ package ATD.FiltersSorting.QC_52_FiltersSorting_byBrand;
 
 
 import ATD.Listing_page_Logic;
-import ATD.Main_page;
 import ATD.Main_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
@@ -17,11 +16,10 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Selenide.close;
 
 public class QC_8_FiltersSorting_TestBrandFilterWithTwoBrandsSelected {
-    private Listing_page_Logic listingPage = new Listing_page_Logic();
+    private Listing_page_Logic listingPageLogic = new Listing_page_Logic();
 
     @BeforeClass
     void setUp() {
@@ -30,7 +28,7 @@ public class QC_8_FiltersSorting_TestBrandFilterWithTwoBrandsSelected {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list,search2,category_car_list6");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list,search2,category_car_list6,search19");
     }
 
     @DataProvider(name = "routeOem", parallel = true)
@@ -45,7 +43,7 @@ public class QC_8_FiltersSorting_TestBrandFilterWithTwoBrandsSelected {
 
     @DataProvider(name = "routesLKW", parallel = true)
     Object[] dataProviderLKW() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_search,lkw_category_car_list,lkw_category_car_list2");
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_search,lkw_category_car_list,lkw_category_car_list2,lkw_search6");
     }
 
     @Test(dataProvider = "routes")
@@ -54,13 +52,13 @@ public class QC_8_FiltersSorting_TestBrandFilterWithTwoBrandsSelected {
     @Description(value = "Test checks brand filter with two brands selected (Tecdoc listing)")
     public void checkBrandFilterWithTwoBrandsSelected(String route) {
         openPage(route);
-        listingPage.firstBrandInFilterButton().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        String brand1 = listingPage.firstBrandNameInFiler().attr("alt");
-        listingPage.secondBrandInFilterButton().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        String brand2 = listingPage.firstBrandNameInFiler().attr("alt");
-        listingPage.checkProductTitleOnListingWithTwoExpectedTexts(brand1, brand2, true, listingPage.productTitleInListMode());
+        listingPageLogic.clickFirstBrandNameInFilter()
+                    .waitUntilPreloaderDisappear();
+        String brand1 = listingPageLogic.firstBrandNameInFiler().attr("alt");
+        listingPageLogic.clickSecondBrandNameInFilter()
+                    .waitUntilPreloaderDisappear();
+        String brand2 = listingPageLogic.firstBrandNameInFiler().attr("alt");
+        listingPageLogic.checkProductTitleOnListingWithTwoExpectedTexts(brand1, brand2, true, listingPageLogic.productTitleInListMode());
     }
 
     @Test(dataProvider = "routeOem")
@@ -69,13 +67,13 @@ public class QC_8_FiltersSorting_TestBrandFilterWithTwoBrandsSelected {
     @Description(value = "Test checks brand filter with two brands selected (Oem listing)")
     public void checkBrandFilterWithTwoBrandsSelectedOem(String route) {
         openPage(route);
-        listingPage.firstBrandButtonOemListing().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        String brand1 = listingPage.firstBrandNameOemListing().attr("alt");
-        listingPage.secondBrandButtonOemListing().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        String brand2 = listingPage.firstBrandNameOemListing().attr("alt");
-        listingPage.checkProductTitleOnListingWithTwoExpectedTexts(brand1, brand2, true, listingPage.productTitleInListMode());
+        listingPageLogic.clickFirstBrandNameOemListing()
+                    .waitUntilPreloaderDisappear();
+        String brand1 = listingPageLogic.firstBrandNameOemListing().attr("alt");
+        listingPageLogic.clickSecondBrandNameOemListing()
+                    .waitUntilPreloaderDisappear();
+        String brand2 = listingPageLogic.firstBrandNameOemListing().attr("alt");
+        listingPageLogic.checkProductTitleOnListingWithTwoExpectedTexts(brand1, brand2, true, listingPageLogic.productTitleInListMode());
     }
 
     @Test(dataProvider = "routeAcc")
@@ -84,13 +82,13 @@ public class QC_8_FiltersSorting_TestBrandFilterWithTwoBrandsSelected {
     @Description(value = "Test checks brand filter with two brands selected (Acc listing)")
     public void checkBrandFilterWithTwoBrandsSelectedAcc(String route) {
         openPage(route);
-        String brand1 = listingPage.firstBrandNameInFiler().attr("alt");
-        String brand2 = listingPage.secondBrandNameInFilter().attr("alt");
-        listingPage.firstBrandInFilterButton().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.secondBrandInFilterButton().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.checkProductTitleOnListingWithTwoExpectedTexts(brand1, brand2, true, listingPage.productTitleInListMode());
+        String brand1 = listingPageLogic.firstBrandNameInFiler().attr("alt");
+        String brand2 = listingPageLogic.secondBrandNameInFilter().attr("alt");
+        listingPageLogic.clickFirstBrandNameInFilter()
+                .waitUntilPreloaderDisappear()
+                .clickSecondBrandNameInFilter()
+                .waitUntilPreloaderDisappear()
+                .checkProductTitleOnListingWithTwoExpectedTexts(brand1, brand2, true, listingPageLogic.productTitleInListMode());
     }
 
     @Test(dataProvider = "routesLKW")
@@ -100,13 +98,13 @@ public class QC_8_FiltersSorting_TestBrandFilterWithTwoBrandsSelected {
     public void checkBrandFilterWithTwoBrandsSelectedLKW(String route) {
         openPage(route);
         new Main_page_Logic().closeCarSelectorTooltipIfVisible();
-        listingPage.firstBrandInFilterButton().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        String firstBrand = listingPage.firstBrandNameInFiler().attr("alt");
-        String secondBrand = listingPage.secondBrandNameInFilter().attr("alt");
-        listingPage.secondBrandInFilterButton().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.checkProductTitleOnListingWithTwoExpectedTexts(firstBrand, secondBrand, true, listingPage.productTitleInListMode());
+        listingPageLogic.clickFirstBrandNameInFilter()
+                    .waitUntilPreloaderDisappear();
+        String firstBrand = listingPageLogic.firstBrandNameInFiler().attr("alt");
+        String secondBrand = listingPageLogic.secondBrandNameInFilter().attr("alt");
+        listingPageLogic.clickSecondBrandNameInFilter()
+                    .waitUntilPreloaderDisappear()
+                    .checkProductTitleOnListingWithTwoExpectedTexts(firstBrand, secondBrand, true, listingPageLogic.productTitleInListMode());
     }
     @AfterMethod
     private void teatDown() {

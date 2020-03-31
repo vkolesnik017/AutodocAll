@@ -71,5 +71,23 @@ public class LKW_Parent_Category_page_Logic extends LKW_Parent_Category_page {
         return this;
     }
 
+    @Step("check of main elements in Child categories block .LKW_Category_maker_brand_page")
+    public LKW_Parent_Category_page_Logic checkOfMainElementsInChildCategoriesBlock() {
+        titleOfChildCategoriesBlock().shouldBe(visible).shouldHave(exactText("Wählen Sie die benötigten Filter Ersatzteile aus"));
+        mainImageOfChildCategoriesBlock().shouldBe(visible);
+        for (int i = 0; i < childCategoriesInChildCategoryBlock().size(); i++) {
+            titleOfLinksInChildCategoriesBlock().get(i).shouldBe(visible);
+            imageOfLinksInChildCategoriesBlock().get(i).shouldBe(visible);
+        }
+        return this;
+    }
 
+    @Step("select child category in Child Categories block .LKW_Category_maker_brand_page")
+    public LKW_Category_page_Logic selectChildCategoryInHeader(String titleOfChildCategory) {
+        for (int i=0; i<titleOfLinksInChildCategoriesBlock().size();i++){
+            titleOfLinksInChildCategoriesBlock().get(i).shouldHave(exactText(titleOfChildCategory)).click();
+        }
+
+        return page(LKW_Category_page_Logic.class);
+    }
 }
