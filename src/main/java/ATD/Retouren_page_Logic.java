@@ -12,7 +12,6 @@ import static ATD.CommonMethods.getCurrentShopFromJSVarInHTML;
 import static ATD.CommonMethods.getPriceFromElement;
 import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selenide.*;
 
 public class Retouren_page_Logic extends Retouren_page{
@@ -72,7 +71,7 @@ public class Retouren_page_Logic extends Retouren_page{
     ElementsCollection causes = causesReturnInSelect().shouldHave(sizeNotEqual(0));
     for (SelenideElement cause : causes) {
       String valueText = cause.getValue();
-      String expectedText = new DataBase().getRetoureCauseTranslate("retoure_translate", getCurrentShopFromJSVarInHTML(), valueText);
+      String expectedText = new DataBase().getTranslate("retoure_translate", getCurrentShopFromJSVarInHTML(), valueText);
       cause.shouldHave(exactText(expectedText));
     }
     return this;

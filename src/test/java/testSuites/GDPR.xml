@@ -84,13 +84,13 @@
         </classes>
     </test>
 
-    <test name="QC_985_GdprFaqFormNameShorting" enabled="true">
+    <test name="QC_985_GdprFaqFormNameShorting" enabled="false">
         <classes>
             <class name="ATD.GDRP.QC_985_GdprFaqFormNameShorting"/>
         </classes>
     </test>
 
-    <test name="QC_1006_GdprReviewFormNameShorting" enabled="true">
+    <test name="QC_1006_GdprReviewFormNameShorting" enabled="false">
         <classes>
             <class name="ATD.GDRP.QC_1006_GdprReviewFormNameShorting"/>
         </classes>

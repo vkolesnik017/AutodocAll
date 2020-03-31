@@ -79,7 +79,7 @@ public class SetUp {
         Collections.addAll(subRoutesList, subRoute);
         for (String subRoutesParce : subRoutesList) {
             List<String> getSubRoutesList = db.getRouteListByRouteName(shopFromTest, subRoutesParce);
-            if(subRoutesParce.contains("main")) getSubRoutesList = Collections.singletonList("");
+            if (subRoutesParce.contains("main")) getSubRoutesList = Collections.singletonList("");
             finalSubRoutesList.addAll(getSubRoutesList);
         }
         for (String aSubRoutesList : finalSubRoutesList) {
@@ -107,7 +107,7 @@ public class SetUp {
         return finalList.toArray();
     }
 
-    private String getEnv(String envFromTest) {
+    String getEnv(String envFromTest) {
         String env = null;
         switch (envFromTest) {
             case ("test"):

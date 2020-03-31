@@ -47,6 +47,10 @@ public class LKW_Product_page {
         return $x("//div[@class='car-match-block car-match-block--truck car-match-block--select']/p");
     }
 
+    SelenideElement titleInTruckSelectorHeaderWithNotSuitableCar() {
+        return $x("//div[@class='atd-carselector__header']//p");
+    }
+
     SelenideElement breadCrumbsBlock() {
         return $x("//div[@class='steps breadcrumbs']");
     }
@@ -58,4 +62,9 @@ public class LKW_Product_page {
     SelenideElement linkOfCompatibilityTruckAndProduct() {
         return $x("//div[@class='accordion-selected']");
     }
+
+    SelenideElement carCompatibilityBlock() {
+        return $x("//div[@class='product-info-block__auto product-info-block--lkw single']");
+    }
+    SelenideElement titleOfSuitableCarInCompatibilityBlock() {return $x("//div[@class='accordion-selected']/p");}
 }
