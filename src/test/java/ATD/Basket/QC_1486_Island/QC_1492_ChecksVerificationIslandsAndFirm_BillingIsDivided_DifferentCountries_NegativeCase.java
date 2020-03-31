@@ -1,7 +1,6 @@
 package ATD.Basket.QC_1486_Island;
 
 import ATD.CartAllData_page_Logic;
-import ATD.Payment_handler_page_Logic;
 import ATD.Search_page_Logic;
 import ATD.SetUp;
 import AWS.Order_aws;
@@ -21,9 +20,9 @@ import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_1490_ChecksVerificationIslands_BillingIsDivided_NegativeCase {
+public class QC_1492_ChecksVerificationIslandsAndFirm_BillingIsDivided_DifferentCountries_NegativeCase {
 
-    private String email = "qc_1490_autotestDE@mailinator.com",orderNumber;
+    private String email = "qc_1492_autotestDE@mailinator.com", orderNumber;
     private Double totalPrice, totalPriceAWSOrder, totalPriceInEmail;
 
     @BeforeClass
@@ -39,35 +38,36 @@ public class QC_1490_ChecksVerificationIslands_BillingIsDivided_NegativeCase {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks verification of islands, billing is divided (Negative case)")
-    public void testChecksVerificationIslandsBillingIsDividedNegativeCas(String route) {
+    @Description(value = "Test checks verification of islands + Firm, Different Countries, billing is divided (Negative case)")
+    public void testChecksVerificationIslandsAndFirmAndDifferentCountries(String route) {
         openPage(route);
         clickOfBuyBtnForAllPages();
         totalPrice = new Search_page_Logic().closePopupOtherCategoryIfYes()
                 .cartClick().nextButtonClick()
                 .signIn(email, password)
+                .clickCheckboxBilling()
                 .nextBtnClick()
                 .checkPresenceOfPayPalMethod()
                 .chooseVorkasse().nextBtnClick()
-                .checkTextContainingVatPercentage("inkl. 20% MwSt.")
-                .checkRegularDeliveryPriceAllData("9,95")
+                .checkAbsenceOfVatPercentage()
+                .checkRegularDeliveryPriceAllData("9,09")
                 .checkPresenceSafeOrderBlock()
                 .getTotalPriceAllDataPage();
         orderNumber = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumber);
         totalPriceAWSOrder = order_aws.openOrderInAwsWithLogin()
-                .checkVatStatusInOrder("Mit MwSt 20%")
-                .checkDeliveryPriceOrderAWS("9.95")
+                .checkVatStatusInOrder("Ohne Mwst")
+                .checkDeliveryPriceOrderAWS("9.09")
                 .getTotalPriceOrder();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
         order_aws.reSaveOrder()
-                .checkVatStatusInOrder("Mit MwSt 20%")
-                .checkDeliveryPriceOrderAWS("9.95");
+                .checkVatStatusInOrder("Ohne Mwst")
+                .checkDeliveryPriceOrderAWS("9.09");
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
-        totalPriceInEmail = new Mailinator().openEmail("qc_1490_autotestDE@mailinator.com")
+        totalPriceInEmail = new Mailinator().openEmail("qc_1492_autotestDE@mailinator.com")
                 .openLetter(1)
-                .checkRegularDeliveryPriceInEmail("9,95")
-                .checkTextContainingVatPercentageInEmail("Inkl. 20% MwSt.")
+                .checkRegularDeliveryPriceInEmail("9,09")
+                .checkAbsenceVatPercentageInEmail()
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPrice, totalPriceInEmail);
     }

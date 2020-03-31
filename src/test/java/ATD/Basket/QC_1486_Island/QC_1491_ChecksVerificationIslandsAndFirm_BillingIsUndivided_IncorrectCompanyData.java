@@ -36,13 +36,14 @@ public class QC_1491_ChecksVerificationIslandsAndFirm_BillingIsUndivided_Incorre
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks verification of islands, billing is undivided (Positive case)")
-    public void testChecksVerificationIslandsBillingIsUndividedPositiveCas(String route) {
+    @Description(value = "Test checks verification of islands + Firm, billing is undivided, incorrect company data")
+    public void testChecksVerificationIslandsAndFirmIncorrectCompanyData(String route) {
         openPage(route);
         clickOfBuyBtnForAllPages();
         new Search_page_Logic().closePopupOtherCategoryIfYes()
                 .cartClick().nextButtonClick()
                 .signIn(email, password)
+                .fillingPostalCodeField(20000)
                 .nextBtnClick();
         totalPrice = new CartAddress_page_Logic().checkPresencePopupErrorAboutWrongCompany()
                 .clickBtnEinkaufFortsetzenFromPopupErrorAboutWrongCompany()
@@ -69,6 +70,13 @@ public class QC_1491_ChecksVerificationIslandsAndFirm_BillingIsUndivided_Incorre
                 .checkTextContainingVatPercentageInEmail("Inkl. 20% MwSt.")
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPrice, totalPriceInEmail);
+        openPage(route);
+        clickOfBuyBtnForAllPages();
+        new Search_page_Logic().closePopupOtherCategoryIfYes()
+                .cartClick().nextButtonClick();
+        new CartAddress_page_Logic().fillingPostalCodeField(97100)
+                .nextBtnClick();
+        new CommonMethods().checkingContainsUrl("https://www.autodoc.de/basket/address");
     }
 
     @AfterMethod
