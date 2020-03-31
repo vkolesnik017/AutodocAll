@@ -39,8 +39,8 @@ public class QC_1493_ChecksVerificationIslandsAndFirm_BillingIsDivided_PositiveC
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks verification of islands + island, billing is divided (Positive case)")
-    public void testChecksVerificationIslandsAndFirmBillingIsDividedPositiveCas(String route) {
+    @Description(value = "Test checks verification of islands + Firm, billing is divided (Positive case)")
+    public void testChecksVerificationIslandsAndFirmBillingIsDivided(String route) {
         openPage(route);
         clickOfBuyBtnForAllPages();
         new Search_page_Logic().closePopupOtherCategoryIfYes()

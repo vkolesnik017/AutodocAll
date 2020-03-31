@@ -39,8 +39,8 @@ public class QC_1490_ChecksVerificationIslands_BillingIsDivided_NegativeCase {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks verification of islands, billing is undivided (Positive case)")
-    public void testChecksVerificationIslandsBillingIsUndividedPositiveCas(String route) {
+    @Description(value = "Test checks verification of islands, billing is divided (Negative case)")
+    public void testChecksVerificationIslandsBillingIsDividedNegativeCas(String route) {
         openPage(route);
         clickOfBuyBtnForAllPages();
         totalPrice = new Search_page_Logic().closePopupOtherCategoryIfYes()
