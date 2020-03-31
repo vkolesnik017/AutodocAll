@@ -49,6 +49,7 @@
     </test>
     <test name="LKW_trucks_route">
         <classes>
+            <class name="LKW_trucks.QC_116_AllChildCategoriesBlockOfParent"/>
             <class name="LKW_trucks.QC_133_MainIconOfMarkInCategoriesMaker"/>
             <class name="LKW_trucks.QC_134_TopParentAndChildCategoriesBlocks"/>
             <class name="LKW_trucks.QC_135_SeoDescriptionBlock"/>
