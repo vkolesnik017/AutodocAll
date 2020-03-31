@@ -6,11 +6,7 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
-import java.io.BufferedWriter;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.nio.charset.StandardCharsets;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.getCurrentShopFromJSVarInHTML;
@@ -103,7 +99,7 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return this;
     }
 
-        @Step("Choosing delivery country {country}. CartAddress_page")
+    @Step("Choosing delivery country {country}. CartAddress_page")
     public CartAddress_page_Logic chooseDeliveryCountry(String country) {
         if (country.equals("EN")) {
             country = "GB";
@@ -134,8 +130,7 @@ public class CartAddress_page_Logic extends CartAddress_page {
     @Step("Get text from tooltip COVID-19. CartAddress_page")
     public String getTextFromTooltipCOVID19() {
         tooltipCOVID19().shouldBe(visible);
-        String textFromSite = tooltipCOVID19().getText();
-        return textFromSite;
+        return tooltipCOVID19().getText();
     }
 
 
@@ -143,28 +138,14 @@ public class CartAddress_page_Logic extends CartAddress_page {
     public CartAddress_page_Logic checkingCOVID19Tooltip(String countryCheck, String[] shopPlz, String shop) throws SQLException, IOException {
         chooseDeliveryCountry(countryCheck);
         for (String plz : shopPlz) {
-            if (countryCheck.equals("IT")) checkingCOVID19TooltipForIT(plz, shop);
-            checkingCOVID19TooltipTranslate((plz), shop);
+            if (countryCheck.equals("IT")) parsingCOVID19PlzForIT(plz, shop);
+//            checkingCOVID19TooltipTranslate((plz), shop);
         }
         return this;
     }
 
-    private void checkingCOVID19TooltipTranslate(String plz, String shop) throws SQLException, IOException {
-        System.out.println(plz);
-        fillingPostalCodeField(plz);
-        nextBtnClick();
-        String plzPopupText = getTextFromTooltipCOVID19();
-        try {
-            Assert.assertEquals(plzPopupText, new DataBase().getTranslate("convir_translate", shop, "addres"), "Error plz:" + plz);
-        } catch (AssertionError e) {
-            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("C://Autotests/files/res/convid.txt", true), StandardCharsets.UTF_8));
-            bufferedWriter.newLine();
-            bufferedWriter.write(plz);
-            bufferedWriter.close();
-        }
-    }
 
-    private CartAddress_page_Logic checkingCOVID19TooltipForIT(String plz, String shop) throws SQLException, IOException {
+    private CartAddress_page_Logic parsingCOVID19PlzForIT(String plz, String shop) throws SQLException, IOException {
         int beginIndex = Integer.parseInt(plz.substring(0, plz.indexOf("-")));
         int endIndex = Integer.parseInt(plz.substring(plz.indexOf("-") + 1));
         for (int i = beginIndex; i <= endIndex; i++) {
@@ -172,8 +153,17 @@ public class CartAddress_page_Logic extends CartAddress_page {
             while (plzParce.length() < 5) {
                 plzParce.insert(0, "0");
             }
-            checkingCOVID19TooltipTranslate(String.valueOf(plzParce), shop);
+//            checkingCOVID19TooltipTranslate(String.valueOf(plzParce), shop);
         }
+        return this;
+    }
+
+    public CartAddress_page_Logic checkingCOVID19TooltipTranslate(String countryCheck, String plz, String shop) throws SQLException{
+        chooseDeliveryCountry(countryCheck);
+        fillingPostalCodeField(plz);
+        nextBtnClick();
+        String plzPopupText = getTextFromTooltipCOVID19();
+        Assert.assertEquals(plzPopupText, new DataBase().getTranslate("convir_translate", shop, "addres"), "Error plz:" + plz);
         return this;
     }
 }
