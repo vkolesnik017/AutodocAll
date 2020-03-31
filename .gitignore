@@ -4,4 +4,4 @@
 
 log/
 target/
-allure-results/
+/allure-results/
