@@ -15,13 +15,13 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 public class CartAddress_page_Logic extends CartAddress_page{
 
     @Step("Next button click. CartAddress_page")
-    public PKW.CartPayments_page_Logic nextBtnClick() {
+    public CartPayments_page_Logic nextBtnClick() {
         nextButton().click();
         return page(CartPayments_page_Logic.class);
     }
 
     @Step("Filling postal code {sendPostalCode}. CartAddress_page")
-    public PKW.CartAddress_page_Logic fillingPostalCodeField(String sendPostalCode) {
+    public CartAddress_page_Logic fillingPostalCodeField(String sendPostalCode) {
         postalCodeField().click();
         char[] array = sendPostalCode.toCharArray();
         for (char anArray : array) {
@@ -33,7 +33,7 @@ public class CartAddress_page_Logic extends CartAddress_page{
     }
 
     @Step("Choosing delivery country {country}. CartAddress_page")
-    public PKW.CartAddress_page_Logic chooseDeliveryCountry(String country) {
+    public CartAddress_page_Logic chooseDeliveryCountry(String country) {
         if (country.equals("EN")) {
             country = "GB";
         }
@@ -48,7 +48,7 @@ public class CartAddress_page_Logic extends CartAddress_page{
         return tooltipCOVID19().getText();
     }
 
-    private PKW.CartAddress_page_Logic parsingCOVID19PlzForIT(String plz, String shop) throws SQLException, IOException {
+    private CartAddress_page_Logic parsingCOVID19PlzForIT(String plz, String shop) throws SQLException, IOException {
         int beginIndex = Integer.parseInt(plz.substring(0, plz.indexOf("-")));
         int endIndex = Integer.parseInt(plz.substring(plz.indexOf("-") + 1));
         for (int i = beginIndex; i <= endIndex; i++) {
@@ -61,7 +61,7 @@ public class CartAddress_page_Logic extends CartAddress_page{
         return this;
     }
 
-    public PKW.CartAddress_page_Logic checkingCOVID19TooltipTranslate(String countryCheck, String plz, String shop) throws SQLException{
+    public CartAddress_page_Logic checkingCOVID19TooltipTranslate(String countryCheck, String plz, String shop) throws SQLException{
         chooseDeliveryCountry(countryCheck);
         fillingPostalCodeField(plz);
         nextBtnClick();

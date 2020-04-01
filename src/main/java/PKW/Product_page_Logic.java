@@ -14,7 +14,7 @@ public class Product_page_Logic extends Product_page {
 
 
     @Step("Closing other category popup after adding product in basket. Product_page")
-    public PKW.Product_page_Logic closePopupOtherCategoryIfYes() {
+    public Product_page_Logic closePopupOtherCategoryIfYes() {
         try {
             closeBtnOfPopupOtherCategory().waitUntil(visible, 2500);
             closeBtnOfPopupOtherCategory().click();
@@ -24,7 +24,7 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
-    public PKW.Product_page_Logic closeBtnOFPopupReviewIfYes() {
+    public Product_page_Logic closeBtnOFPopupReviewIfYes() {
         try {
             closeBtnOFPopupReview().waitUntil(visible, 2500);
             closeBtnOFPopupReview().click();
@@ -35,14 +35,14 @@ public class Product_page_Logic extends Product_page {
     }
 
     @Step("Checking present product in cart popup. Product_page")
-    public PKW.Product_page_Logic checksPresentProductInCartPopup() {
+    public Product_page_Logic checksPresentProductInCartPopup() {
         cartIcon().hover();
         firstProductPriceInPopupOfCart().shouldBe(visible);
         return this;
     }
 
     @Step("Checking number basket and refresh page if not. Product_page")
-    public PKW.Product_page_Logic checkNumberBasketAndRefreshPageIfNot() {  // TODO Бывает при открытии страницы не подгружается номер корзины и товар не добавляется в корзину, причина не известна, что бы стабилизировать тесты добавлен этот метод
+    public Product_page_Logic checkNumberBasketAndRefreshPageIfNot() {  // TODO Бывает при открытии страницы не подгружается номер корзины и товар не добавляется в корзину, причина не известна, что бы стабилизировать тесты добавлен этот метод
         try {
             numberBasket().shouldBe(visible);
         } catch (ElementShould e) {
@@ -53,7 +53,7 @@ public class Product_page_Logic extends Product_page {
     }
 
     @Step("Adding product to basket. Product_page")
-    public PKW.Product_page_Logic addProductToCart() {
+    public Product_page_Logic addProductToCart() {
         checkNumberBasketAndRefreshPageIfNot();
         sleep(3000); // TODO для стабилизации. Без слипа иногда добавленный товар исчезает из корзины после перехода в неё, решается в SITES-2830
         buyButton().click();
@@ -68,7 +68,7 @@ public class Product_page_Logic extends Product_page {
     }
 
     @Step(":from Product_page")
-    public PKW.Cart_page_Logic cartClick() {
+    public Cart_page_Logic cartClick() {
         new Main_page_Logic().cartClick();
         return page(PKW.Cart_page_Logic.class);
     }

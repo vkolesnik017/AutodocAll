@@ -14,6 +14,12 @@ public class SetUp {
     private String shopFromJenkins = System.getenv("ShopFromJenkins");
     private String envFromJenkins = System.getenv("EnvFromJenkins");
 
+    public String getShopsDesktop() {
+        return shopsDesktop;
+    }
+
+    private String shopsDesktop = "DE,AT,BG,BE,CH,CZ,DK,EN,EE,ES,FI,FR,GR,HU,IT,LD,LT,LV,NL,NO,PL,PT,RO,SE,SI,SK";
+
 
     public static void setUpBrowser(Boolean Selenoid, String browser, String browserVersion) {
         Configuration.browser = (browser);
@@ -68,7 +74,7 @@ public class SetUp {
         return finalRouteList.toArray();
     }
 
-    // Return list Shop+subroute By Shops, main route and list subroutes "prod", "DE", "lkw_main", "lkw_category_car_list,lkw_category_car_list2")
+    // Return list Shop + subroutes By Shop, main route and list subroutes ("prod", "DE", "lkw_main", "lkw_category_car_list,lkw_category_car_list2")
     public Object[] setUpShopWithSubroutes(String envFromTest, String shopFromTest, String routeName, String subRoutes) throws SQLException {
         String env = getEnv(envFromTest);
         List<String> mainRouteList = new ArrayList<>(db.getRouteListByRouteName(shopFromTest, routeName));
@@ -76,8 +82,10 @@ public class SetUp {
         List<String> finalSubRoutesList = new ArrayList<>();
         List<String> finalList = new ArrayList<>();
         String[] subRoute = subRoutes.split("\\,");
+        //Adding String subRoutes in list subRoutesList
         Collections.addAll(subRoutesList, subRoute);
         for (String subRoutesParce : subRoutesList) {
+            //Adding subRoutes in list getSubRoutesList
             List<String> getSubRoutesList = db.getRouteListByRouteName(shopFromTest, subRoutesParce);
             if (subRoutesParce.contains("main")) getSubRoutesList = Collections.singletonList("");
             finalSubRoutesList.addAll(getSubRoutesList);
@@ -90,6 +98,18 @@ public class SetUp {
         return finalList.toArray();
     }
 
+    // Return list Shops + subroute By Shops, main route and subroute ("prod", "DE", "lkw_main", "lkw_category_car_list,lkw_category_car_list2")
+    public Object[] setUpShopsWithSubroute(String envFromTest, String shopFromTest, String routeName, String subRoutes) throws SQLException {
+        String env = getEnv(envFromTest);
+        List<String> mainRouteList = new ArrayList<>(db.getRouteListByRouteName(shopFromTest, routeName));
+        List<String> subRoutesList = new ArrayList<>(db.getRouteListByRouteName(shopFromTest, subRoutes));
+        List<String> finalList = new ArrayList<>();
+        for (int i = 0; i < mainRouteList.size(); i++) {
+            String route = env + mainRouteList.get(i) + "/" + subRoutesList.get(i);
+            finalList.add(route);
+        }
+        return finalList.toArray();
+    }
 
     // Return list Shop_param By Shops and String[] list setUpShopWithListParam("prod", "AT,DE,CH", list[])
     public Object[] setUpShopWithListParam(String envFromTest, String shopFromTest, String[] list) {
@@ -106,6 +126,7 @@ public class SetUp {
         }
         return finalList.toArray();
     }
+
 
     String getEnv(String envFromTest) {
         String env = null;

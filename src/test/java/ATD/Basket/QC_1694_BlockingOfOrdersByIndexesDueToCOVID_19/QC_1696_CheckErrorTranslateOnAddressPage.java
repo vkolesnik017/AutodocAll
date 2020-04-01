@@ -26,21 +26,24 @@ public class QC_1696_CheckErrorTranslateOnAddressPage {
     private String plzFR = "67111";
     private String plzPT = "3880-365";
 
+    SetUp setUp = new SetUp();
+
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "route", parallel = true)
+    @DataProvider(name = "route", parallel = false)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product2");
+//        return setUp.setUpShopsWithSubroute("prod", setUp.getShopsDesktop(), "main", "product2");
+        return setUp.setUpShopsWithSubroute("prod", "AT", "main", "product2");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks translation of error popup on address page")
-    public void testBlockingPlzOnAddressPage(String route) throws SQLException, IOException {
+    public void testCheckErrorTranslateOnAddressPage(String route) throws SQLException, IOException {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
         new Product_page_Logic().addProductToCart()
@@ -48,11 +51,11 @@ public class QC_1696_CheckErrorTranslateOnAddressPage {
                 .cartClick()
                 .nextButtonClick()
                 .signIn(email, password)
-                .checkingCOVID19TooltipTranslate("IT", plzIT, shop)
-                .checkingCOVID19TooltipTranslate("ES", plzES, shop)
-                .checkingCOVID19TooltipTranslate("AT", plzAT, shop)
-                .checkingCOVID19TooltipTranslate("CZ", plzCZ, shop)
-                .checkingCOVID19TooltipTranslate("FR", plzFR, shop)
-                .checkingCOVID19TooltipTranslate("PT", plzPT, shop);
+//                .checkingCOVID19TooltipTranslate("IT", plzIT, shop)
+//                .checkingCOVID19TooltipTranslate("ES", plzES, shop)
+                .checkingCOVID19TooltipTranslate("AT", plzAT, shop);
+//                .checkingCOVID19TooltipTranslate("CZ", plzCZ, shop)
+//                .checkingCOVID19TooltipTranslate("FR", plzFR, shop)
+//                .checkingCOVID19TooltipTranslate("PT", plzPT, shop);
     }
 }

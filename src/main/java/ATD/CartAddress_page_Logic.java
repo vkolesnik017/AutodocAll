@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.getCurrentShopFromJSVarInHTML;
+import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
@@ -158,11 +159,13 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return this;
     }
 
-    public CartAddress_page_Logic checkingCOVID19TooltipTranslate(String countryCheck, String plz, String shop) throws SQLException{
+    public CartAddress_page_Logic checkingCOVID19TooltipTranslate(String countryCheck, String plz, String shop) throws SQLException {
         chooseDeliveryCountry(countryCheck);
         fillingPostalCodeField(plz);
         nextBtnClick();
+        tooltipCOVID19().waitUntil(appear, 5000);
         String plzPopupText = getTextFromTooltipCOVID19();
+        System.out.println(new DataBase().getTranslate("convir_translate", shop, "addres"));
         Assert.assertEquals(plzPopupText, new DataBase().getTranslate("convir_translate", shop, "addres"), "Error plz:" + plz);
         return this;
     }
