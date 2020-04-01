@@ -7,7 +7,6 @@ import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
-import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -17,7 +16,6 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Selenide.close;
 
 public class QC_124_FiltersSorting_TestSideFilterCancelling {
@@ -45,15 +43,15 @@ public class QC_124_FiltersSorting_TestSideFilterCancelling {
     @Description(value = "Test checks side filter cancelling")
     public void testSideFilterCancelling(String route) {
         openPage(route);
-        String characteristic = listingPage.activeSideFilter2().text();
-        listingPage.activeSideFilter2().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.langeProductAttributeGenericRoute(), listingPage.langeProductAttributeTecdocRoute());
-        int numberOfAttributesFilter = listingPage.langeProductAttributeGenericRoute().size();
-        listingPage.activeSideFilter().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        int numberOfAttributesNoFilter = listingPage.langeProductAttributeTecdocRoute().size();
-        Assert.assertNotEquals(numberOfAttributesFilter, numberOfAttributesNoFilter);
+        String characteristic = listingPage.getTextFromElement(listingPage.activeSideFilter2());
+        listingPage.hoverOnSideFilterAndClick(listingPage.activeSideFilter2())
+                    .waitUntilPreloaderDisappear()
+                    .checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.langeProductAttributeGenericRoute(), listingPage.langeProductAttributeTecdocRoute());
+        int numberOfAttributesFilter = listingPage.getSizeOfCollection(listingPage.langeProductAttributeGenericRoute());
+        listingPage.hoverOnSideFilterAndClick(listingPage.activeSideFilter())
+                    .waitUntilPreloaderDisappear();
+        int numberOfAttributesNoFilter = listingPage.getSizeOfCollection(listingPage.langeProductAttributeTecdocRoute());
+        listingPage.checkFilterIsCanceled(numberOfAttributesFilter, numberOfAttributesNoFilter);
     }
 
     @Test
@@ -62,15 +60,15 @@ public class QC_124_FiltersSorting_TestSideFilterCancelling {
     @Description(value = "Test checks side filter cancelling on LKW routes")
     public void testSideFilterCancellingLKWcar() throws SQLException {
         openPage("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_category_car_list6"));
-        String characteristic = listingPage.langeFilterAttribute2().text();
-        listingPage.langeFilterCheckbox2().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.hoheProductAttributeGenericRouteLKW(), listingPage.hoheProductAttributeTecdocRouteLKW());
-        int numberOfAttributesFilter = listingPage.hoheProductAttributeTecdocRoute().size();
-        listingPage.activeSideFilterLkw().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        int numberOfAttributesNoFilter = listingPage.hoheProductAttributeTecdocRoute().size();
-        Assert.assertNotEquals(numberOfAttributesFilter, numberOfAttributesNoFilter);
+        String characteristic = listingPage.getTextFromElement(listingPage.langeFilterAttribute2());
+        listingPage.clickFilterButton(listingPage.langeFilterCheckbox2())
+                    .waitUntilPreloaderDisappear()
+                    .checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.hoheProductAttributeGenericRouteLKW(), listingPage.hoheProductAttributeTecdocRouteLKW());
+        int numberOfAttributesFilter = listingPage.getSizeOfCollection(listingPage.hoheProductAttributeTecdocRoute());
+        listingPage.clickFilterButton(listingPage.activeSideFilterLkw())
+                    .waitUntilPreloaderDisappear();
+        int numberOfAttributesNoFilter = listingPage.getSizeOfCollection(listingPage.hoheProductAttributeTecdocRoute());
+        listingPage.checkFilterIsCanceled(numberOfAttributesFilter, numberOfAttributesNoFilter);
     }
 
     @Test
@@ -79,15 +77,15 @@ public class QC_124_FiltersSorting_TestSideFilterCancelling {
     @Description(value = "Test checks side filter cancelling on LKW routes")
     public void testSideFilterCancellingLKWmodel() throws SQLException {
         openPage("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_category_car_list7"));
-        String characteristic = listingPage.langeFilterAttribute3().text();
-        listingPage.langeFilterCheckbox3().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.langeProductAttributeGenericRoute(), listingPage.langeProductAttributeTecdocRoute());
-        int numberOfAttributesFilter = listingPage.langeProductAttributeTecdocRoute().size();
-        listingPage.activeSideFilterLkwCheckbox().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        int numberOfAttributesNoFilter = listingPage.langeProductAttributeTecdocRoute().size();
-        Assert.assertNotEquals(numberOfAttributesFilter, numberOfAttributesNoFilter);
+        String characteristic = listingPage.getTextFromElement(listingPage.langeFilterAttribute3());
+        listingPage.clickFilterButton(listingPage.langeFilterCheckbox3())
+                    .waitUntilPreloaderDisappear()
+                    .checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.langeProductAttributeGenericRoute(), listingPage.langeProductAttributeTecdocRoute());
+        int numberOfAttributesFilter = listingPage.getSizeOfCollection(listingPage.langeProductAttributeTecdocRoute());
+        listingPage.clickFilterButton(listingPage.activeSideFilterLkwCheckbox())
+                    .waitUntilPreloaderDisappear();
+        int numberOfAttributesNoFilter = listingPage.getSizeOfCollection(listingPage.langeProductAttributeTecdocRoute());
+        listingPage.checkFilterIsCanceled(numberOfAttributesFilter, numberOfAttributesNoFilter);
     }
 
     @Test
@@ -96,15 +94,15 @@ public class QC_124_FiltersSorting_TestSideFilterCancelling {
     @Description(value = "Test checks side filter cancelling on LKW routes")
     public void testSideFilterCancellingLKWsearch() throws SQLException {
         openPage("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_search"));
-        String characteristic = listingPage.durchmesserSideFilterButtonFirstValue().text();
-        listingPage.durchmesserSideFilterButtonFirstValue().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.durchmesserProductAttributeGenericRoute(), listingPage.durchmesserProductAttributeTecdocRoute());
-        int numberOfAttributesFilter = listingPage.durchmesserProductAttributeGenericRoute().size();
-        listingPage.durchmesserSideFilterButtonFirstValue().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        int numberOfAttributesNoFilter = listingPage.durchmesserProductAttributeTecdocRoute().size();
-        Assert.assertNotEquals(numberOfAttributesFilter, numberOfAttributesNoFilter);
+        String characteristic = listingPage.getTextFromElement(listingPage.durchmesserSideFilterButtonFirstValue());
+        listingPage.clickFilterButton(listingPage.durchmesserSideFilterButtonFirstValue())
+                    .waitUntilPreloaderDisappear()
+                    .checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.durchmesserProductAttributeGenericRoute(), listingPage.durchmesserProductAttributeTecdocRoute());
+        int numberOfAttributesFilter = listingPage.getSizeOfCollection(listingPage.durchmesserProductAttributeGenericRoute());
+        listingPage.clickFilterButton(listingPage.durchmesserSideFilterButtonFirstValue())
+                    .waitUntilPreloaderDisappear();
+        int numberOfAttributesNoFilter = listingPage.getSizeOfCollection(listingPage.durchmesserProductAttributeTecdocRoute());
+        listingPage.checkFilterIsCanceled(numberOfAttributesFilter, numberOfAttributesNoFilter);
     }
 
     @Test(dataProvider = "routesLKW")
@@ -113,15 +111,15 @@ public class QC_124_FiltersSorting_TestSideFilterCancelling {
     @Description(value = "Test checks side filter cancelling")
     public void testSideFilterCancellingLKW(String route) {
         openPage(route);
-        String characteristic = listingPage.activeSideFilter2().text();
-        listingPage.activeSideFilter2().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.langeProductAttributeGenericRoute(), listingPage.langeProductAttributeTecdocRoute());
-        int numberOfAttributesFilter = listingPage.langeProductAttributeGenericRoute().size();
-        listingPage.activeSideFilter().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        int numberOfAttributesNoFilter = listingPage.langeProductAttributeTecdocRoute().size();
-        Assert.assertNotEquals(numberOfAttributesFilter, numberOfAttributesNoFilter);
+        String characteristic = listingPage.getTextFromElement(listingPage.activeSideFilter2());
+        listingPage.clickFilterButton(listingPage.activeSideFilter2())
+                    .waitUntilPreloaderDisappear()
+                    .checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.langeProductAttributeGenericRoute(), listingPage.langeProductAttributeTecdocRoute());
+        int numberOfAttributesFilter = listingPage.getSizeOfCollection(listingPage.langeProductAttributeTecdocRoute());
+        listingPage.clickFilterButton(listingPage.activeSideFilter())
+                    .waitUntilPreloaderDisappear();
+        int numberOfAttributesNoFilter = listingPage.getSizeOfCollection(listingPage.langeProductAttributeTecdocRoute());
+        listingPage.checkFilterIsCanceled(numberOfAttributesFilter, numberOfAttributesNoFilter);
     }
 
     @AfterMethod

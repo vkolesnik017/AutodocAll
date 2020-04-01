@@ -14,7 +14,6 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Selenide.close;
 
 public class QC_118_FiltersSorting_TestProductreiheFilterApplying {
@@ -46,10 +45,10 @@ public class QC_118_FiltersSorting_TestProductreiheFilterApplying {
     @Description(value = "Test checks Produktreihe side filter")
     public void testProduktreiheFilter(String route) {
         openPage(route);
-        String characteristic = listingPage.produktreiheFilterAttribute().text();
-        listingPage.produktreiheFilterCheckbox().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.produktreiheProductAttributeGenericRoute(), listingPage.produktreiheProductAttributeTecdocRoute());
+        String characteristic = listingPage.getTextFromElement(listingPage.produktreiheFilterAttribute());
+        listingPage.clickFilterButton(listingPage.produktreiheFilterCheckbox())
+                    .waitUntilPreloaderDisappear()
+                    .checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.produktreiheProductAttributeGenericRoute(), listingPage.produktreiheProductAttributeTecdocRoute());
     }
 
     @Test(dataProvider = "routesLKW")
@@ -58,10 +57,10 @@ public class QC_118_FiltersSorting_TestProductreiheFilterApplying {
     @Description(value = "Test checks Produktreihe side filter LKW")
     public void testProduktreiheFilterLkw(String route) {
         openPage(route);
-        String characteristic = listingPage.produktreiheFilterCheckboxLKW().text();
-        listingPage.produktreiheFilterCheckboxLKW().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.produktreiheProductAttributeGenericRouteLKW(), listingPage.produktreiheProductAttributeTecdocRouteLKW());
+        String characteristic = listingPage.getTextFromElement(listingPage.produktreiheFilterCheckboxLKW());
+        listingPage.clickFilterButton(listingPage.produktreiheFilterCheckboxLKW())
+                    .waitUntilPreloaderDisappear()
+                    .checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.produktreiheProductAttributeGenericRouteLKW(), listingPage.produktreiheProductAttributeTecdocRouteLKW());
     }
 
     @Test(dataProvider = "routesLKWsearch")
@@ -70,10 +69,10 @@ public class QC_118_FiltersSorting_TestProductreiheFilterApplying {
     @Description(value = "Test checks Produktreihe side filter")
     public void testProduktreiheFilterLKWsearch(String route) {
         openPage(route);
-        String characteristic = listingPage.produktreiheFilterAttribute().text();
-        listingPage.produktreiheFilterCheckbox().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.produktreiheProductAttributeGenericRoute(), listingPage.produktreiheProductAttributeTecdocRoute());
+        String characteristic = listingPage.getTextFromElement(listingPage.produktreiheFilterAttribute());
+        listingPage.clickFilterButton(listingPage.produktreiheFilterCheckbox())
+                    .waitUntilPreloaderDisappear()
+                    .checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.produktreiheProductAttributeGenericRoute(), listingPage.produktreiheProductAttributeTecdocRoute());
     }
 
     @AfterMethod

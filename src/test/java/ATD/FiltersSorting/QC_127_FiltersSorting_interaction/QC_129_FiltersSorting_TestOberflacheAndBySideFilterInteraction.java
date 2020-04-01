@@ -37,13 +37,13 @@ public class QC_129_FiltersSorting_TestOberflacheAndBySideFilterInteraction {
     @Description(value = "Test checks Oberflache and by side filters interaction")
     public void testOberflacheAndSideFilterInteraction(String route) {
         openPage(route);
-        listingPage.filterBySideBack().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        String oberflacheValue = listingPage.oberflacheSideFilterButton().text();
-        listingPage.oberflacheSideFilterButton().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.checkProductAttributeOnListingWithCarAndFilter("Hinterachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute());
-        listingPage.checkProductAttributeOnListingWithCarAndFilter(oberflacheValue, listingPage.oberflacheProductAttributeGenericRoute(), listingPage.oberflacheProductAttributeTecdocRoute());
+        listingPage.hoverOnSideFilterAndClick(listingPage.filterBySideBack())
+                    .waitUntilPreloaderDisappear();
+        String oberflacheValue = listingPage.getTextFromElement(listingPage.oberflacheSideFilterButton());
+        listingPage.hoverOnSideFilterAndClick(listingPage.oberflacheSideFilterButton())
+                    .waitUntilPreloaderDisappear()
+                    .checkProductAttributeOnListingWithCarAndFilter("Hinterachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute())
+                    .checkProductAttributeOnListingWithCarAndFilter(oberflacheValue, listingPage.oberflacheProductAttributeGenericRoute(), listingPage.oberflacheProductAttributeTecdocRoute());
     }
 
     @AfterMethod

@@ -393,6 +393,13 @@ public class Listing_page_Logic extends Listing_page {
         return this;
     }
 
+    @Step("Wait until preloader disappear. Listing_page")
+    public Listing_page_Logic waitUntilPreloaderDisappearAndSleep(int sleepTime) throws Exception {
+        preloader().waitUntil(attribute("style", "display: none;"), 20000);
+        Thread.sleep(sleepTime);
+        return this;
+    }
+
     @Step("Click Filter By Side Back. Listing_page")
     public Listing_page_Logic clickFilterBySideBack() {
         filterBySideBack().click();
@@ -527,8 +534,48 @@ public class Listing_page_Logic extends Listing_page {
         return this;
     }
 
+    @Step("Get attribute from element. Listing_page")
+    public String getAtributeFromElement(SelenideElement element, String attribute) {
+        String textFromAttribute = element.attr(attribute);
+        return textFromAttribute;
+    }
 
+    @Step("Click filter button. Listing_page")
+    public Listing_page_Logic clickFilterButton(SelenideElement filterButton) {
+        filterButton.click();
+        return this;
+    }
 
+    @Step("Get text from filter. Listing_page")
+    public String getTextFromElement(SelenideElement element) {
+        String textFromElement = element.text();
+        return textFromElement;
+    }
+
+    @Step("Get size of collection. Listing_page")
+    public int getSizeOfCollection(ElementsCollection collection) {
+        int collectionSize = collection.size();
+        return collectionSize;
+    }
+
+    @Step("Hover on side filter and click button. Listing_page")
+    public Listing_page_Logic hoverOnSideFilterAndClick(SelenideElement filterButton) {
+        sideJSfilterForm().hover();
+        filterButton.hover().click();
+        return this;
+    }
+
+    @Step("Check filter is canceled. Listing_page")
+    public Listing_page_Logic checkFilterIsCanceled(int filterOn, int filterOff) {
+        Assert.assertNotEquals(filterOn, filterOff);
+        return this;
+    }
+
+    @Step("Check text in element. Listing_page")
+    public Listing_page_Logic checkTextInElement(SelenideElement element, String expectedText) {
+        element.shouldHave(text(expectedText));
+        return this;
+    }
 
 }
 

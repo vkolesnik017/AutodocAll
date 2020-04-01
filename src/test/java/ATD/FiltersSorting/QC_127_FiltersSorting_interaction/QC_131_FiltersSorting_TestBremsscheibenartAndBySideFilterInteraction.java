@@ -44,13 +44,13 @@ public class QC_131_FiltersSorting_TestBremsscheibenartAndBySideFilterInteractio
     @Description(value = "Test checks Bremsscheibenart and by side filters interaction")
     public void testBremsscheibenartAndSideFilterInteraction(String route) {
         openPage(route);
-        listingPage.filterBySideBack().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        String bremsscheibenartValue = listingPage.bremsscheibenartSideFilterButton().text();
-        listingPage.bremsscheibenartSideFilterButton().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.checkProductAttributeOnListingWithCarAndFilter("Hinterachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute());
-        listingPage.checkProductAttributeOnListingWithCarAndFilter(bremsscheibenartValue, listingPage.bremsscheibenartProductAttributeGenericRoute(), listingPage.bremsscheibenartProductAttributeTecdocRoute());
+        listingPage.hoverOnSideFilterAndClick(listingPage.filterBySideBack())
+                    .waitUntilPreloaderDisappear();
+        String bremsscheibenartValue = listingPage.getTextFromElement(listingPage.bremsscheibenartSideFilterButton());
+        listingPage.hoverOnSideFilterAndClick(listingPage.bremsscheibenartSideFilterButton())
+                    .waitUntilPreloaderDisappear()
+                    .checkProductAttributeOnListingWithCarAndFilter("Hinterachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute())
+                    .checkProductAttributeOnListingWithCarAndFilter(bremsscheibenartValue, listingPage.bremsscheibenartProductAttributeGenericRoute(), listingPage.bremsscheibenartProductAttributeTecdocRoute());
     }
 
     @Test(dataProvider = "routesLKW")
@@ -59,13 +59,13 @@ public class QC_131_FiltersSorting_TestBremsscheibenartAndBySideFilterInteractio
     @Description(value = "Test checks Bremsscheibenart and by side filters interaction LKW")
     public void testBremsscheibenartAndSideFilterInteractionLKW(String route) {
         openPage(route);
-        listingPage.filterBySideBack().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        String bremsscheibenartValue = listingPage.bremsscheibenartSideFilterButton().text();
-        listingPage.bremsscheibenartSideFilterButton().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.checkProductAttributeOnListingWithCarAndFilter("Hinterachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute());
-        listingPage.checkProductAttributeOnListingWithCarAndFilter(bremsscheibenartValue, listingPage.bremsscheibenartProductAttributeGenericRoute(), listingPage.bremsscheibenartProductAttributeTecdocRoute());
+        listingPage.clickFilterButton(listingPage.filterBySideBack())
+                    .waitUntilPreloaderDisappear();
+        String bremsscheibenartValue = listingPage.getTextFromElement(listingPage.bremsscheibenartSideFilterButton());
+        listingPage.clickFilterButton(listingPage.bremsscheibenartSideFilterButton())
+                    .waitUntilPreloaderDisappear()
+                    .checkProductAttributeOnListingWithCarAndFilter("Hinterachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute())
+                    .checkProductAttributeOnListingWithCarAndFilter(bremsscheibenartValue, listingPage.bremsscheibenartProductAttributeGenericRoute(), listingPage.bremsscheibenartProductAttributeTecdocRoute());
     }
 
     @AfterMethod

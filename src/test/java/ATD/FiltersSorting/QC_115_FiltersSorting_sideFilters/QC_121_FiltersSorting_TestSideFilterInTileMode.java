@@ -43,13 +43,12 @@ public class QC_121_FiltersSorting_TestSideFilterInTileMode {
     @Description(value = "Test checks side filter in tile mode")
     public void testSideFilterInTileMode(String route) throws Exception {
         openPage(route);
-        String characteristic = listingPage.langeFilterAttribute().text();
-        listingPage.langeFilterCheckbox().click();
-        listingPage.waitUntilPreloaderDisappear();
-        Thread.sleep(3000);
-        listingPage.showListingInTileModeButton().click();
-        listingPage.waitUntilPreloaderDisappear();
-        listingPage.checkProductAttributeOnListingInTileMode(characteristic, listingPage.langeProductAttributeTecdocRoute());
+        String characteristic = listingPage.getTextFromElement(listingPage.langeFilterAttribute());
+        listingPage.hoverOnSideFilterAndClick(listingPage.langeFilterCheckbox())
+                    .waitUntilPreloaderDisappearAndSleep(3000)
+                    .clickShowListingInTileModeButton()
+                    .waitUntilPreloaderDisappear()
+                    .checkProductAttributeOnListingInTileMode(characteristic, listingPage.langeProductAttributeTecdocRoute());
     }
 
     @Test
@@ -58,13 +57,12 @@ public class QC_121_FiltersSorting_TestSideFilterInTileMode {
     @Description(value = "Test checks side filter in tile mode LKW")
     public void testSideFilterInTileModeLKW() throws Exception {
         openPage("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_category_car_list"));
-        String characteristic = listingPage.langeFilterCheckboxLKW().text();
-        listingPage.langeFilterCheckboxLKW().click();
-        listingPage.waitUntilPreloaderDisappear();
-        Thread.sleep(3000);
-        listingPage.showListingInTileModeButton().click();
-        listingPage.waitUntilPreloaderDisappear();
-        listingPage.checkProductAttributeOnListingInTileMode(characteristic, listingPage.langeProductAttributeTecdocRouteLKW());
+        String characteristic = listingPage.getTextFromElement(listingPage.langeFilterCheckboxLKW());
+        listingPage.clickFilterButton(listingPage.langeFilterCheckboxLKW())
+                .waitUntilPreloaderDisappearAndSleep(3000)
+                .clickShowListingInTileModeButton()
+                .waitUntilPreloaderDisappear()
+                .checkProductAttributeOnListingInTileMode(characteristic, listingPage.langeProductAttributeTecdocRouteLKW());
     }
 
     @Test(dataProvider = "routesLKWsearch")
@@ -73,13 +71,12 @@ public class QC_121_FiltersSorting_TestSideFilterInTileMode {
     @Description(value = "Test checks side filter in tile mode LKW search")
     public void testSideFilterInTileModeLKWsearch(String route) throws Exception {
         openPage(route);
-        String characteristic = listingPage.langeFilterAttribute().text();
-        listingPage.langeFilterCheckbox().click();
-        listingPage.waitUntilPreloaderDisappear();
-        Thread.sleep(3000);
-        listingPage.showListingInTileModeButton().click();
-        listingPage.waitUntilPreloaderDisappear();
-        listingPage.checkProductAttributeOnListingInTileMode(characteristic, listingPage.langeProductAttributeTecdocRoute());
+        String characteristic = listingPage.getTextFromElement(listingPage.langeFilterAttribute());
+        listingPage.hoverOnSideFilterAndClick(listingPage.langeFilterCheckbox())
+                .waitUntilPreloaderDisappearAndSleep(3000)
+                .clickShowListingInTileModeButton()
+                .waitUntilPreloaderDisappear()
+                .checkProductAttributeOnListingInTileMode(characteristic, listingPage.langeProductAttributeTecdocRoute());
     }
 
     @AfterMethod
