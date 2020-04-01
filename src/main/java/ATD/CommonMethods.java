@@ -57,6 +57,7 @@ public class CommonMethods {
 
     public static String getCurrentShopFromJSVarInHTML() {
         String currentShop = executeJavaScript("return $siteSettings.lang");
+        if (currentShop.equals("lu")) currentShop = "ld";
         return currentShop.toUpperCase();
     }
 
