@@ -26,7 +26,7 @@ public class QC_1696_CheckErrorTranslateOnAddressPage {
     private String plzFR = "67111";
     private String plzPT = "3880-365";
 
-    SetUp setUp = new SetUp();
+    private SetUp setUp = new SetUp();
 
     @BeforeClass
     void setUp() {
@@ -43,7 +43,7 @@ public class QC_1696_CheckErrorTranslateOnAddressPage {
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks translation of error popup on address page")
-    public void testCheckErrorTranslateOnAddressPage(String route) throws SQLException, IOException {
+    public void testCheckErrorTranslateOnAddressPage(String route) throws SQLException {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
         new Product_page_Logic().addProductToCart()
