@@ -57,4 +57,11 @@ public class LKW_Category_maker_brand_page_Logic extends LKW_Category_maker_bran
         fourthLinkOfBreadCrumbsBlock().click();
         return page(LKW_Category_brand_page_Logic.class);
     }
+
+    @Step("visibility of Image of brand in headline .LKW_Category_maker_brand_page ")
+    public LKW_Category_maker_brand_page_Logic visibilityOfImageBrandInHeadLine() {
+        imageOfTruckInHeadLine().shouldBe(visible);
+
+        return this;
+    }
 }
