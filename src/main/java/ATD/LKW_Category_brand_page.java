@@ -39,4 +39,6 @@ public class LKW_Category_brand_page {
     SelenideElement childCategoryBlockInSideBar() {
         return $x("//div[@class='sidebar']");
     }
+
+    SelenideElement imageOfBrandInHeadLine() {return $x("//div[contains(@class,'image_padding')]");}
 }

@@ -60,4 +60,12 @@ public class LKW_Category_brand_page_Logic extends LKW_Category_brand_page {
         Assert.assertEquals(url(), "https://lkwteile.autodoc.de/ersatzteile/olfilter-200157/mf-mann-filter");
         return this;
     }
+
+
+    @Step("visibility of Image of brand in headline .LKW_Category_brand_page ")
+    public LKW_Category_brand_page_Logic visibilityOfImageBrandInHeadLine() {
+        imageOfBrandInHeadLine().shouldBe(visible);
+
+        return this;
+    }
 }

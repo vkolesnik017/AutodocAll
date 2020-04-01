@@ -59,7 +59,7 @@ public class LKW_Parent_Category_page_Logic extends LKW_Parent_Category_page {
 
     @Step("go to child category from sidebar .LKW_Category_maker_brand_page")
     public LKW_Parent_Category_page_Logic goToParentCategoryPage() {
-        parentCategoryInSideBar("Abgasanlage").scrollTo().click();
+        parentCategoryInSideBar("Abgasanlage").scrollIntoView("{block: \"center\"}").click();
         return this;
     }
 
@@ -84,7 +84,7 @@ public class LKW_Parent_Category_page_Logic extends LKW_Parent_Category_page {
 
     @Step("select child category in Child Categories block .LKW_Category_maker_brand_page")
     public LKW_Category_page_Logic selectChildCategoryInHeader(String titleOfChildCategory) {
-        for (int i=0; i<titleOfLinksInChildCategoriesBlock().size();i++){
+        for (int i = 0; i < titleOfLinksInChildCategoriesBlock().size(); i++) {
             titleOfLinksInChildCategoriesBlock().get(i).shouldHave(exactText(titleOfChildCategory)).click();
         }
 
