@@ -95,9 +95,9 @@
         <classes>
             <class name="LKW_trucks.QC_10_MainHeadlines.QC_12_VisibilityOfImageLogoBrandInHeadLine"/>
             <class name="LKW_trucks.QC_10_MainHeadlines.QC_13_VisibilityOfImageTrackInHeadline"/>
-            <class name="LKW_trucks.QC_10_MainHeadlines.QC_13_2_VisibilityOfImageTrackInHeadlineInMakerCarList"/>
             <class name="LKW_trucks.QC_10_MainHeadlines.QC_16_VisibilityOfMarkModelMotorInHeadLine"/>
             <class name="LKW_trucks.QC_10_MainHeadlines.QC_17_AvailabilityOfLinkOnPopUpWithSelectedCar"/>
+            <class name="LKW_trucks.QC_10_MainHeadlines.QC_1702_AvailabilityOfHeadLineInCatalog"/>
         </classes>
     </test>
 
