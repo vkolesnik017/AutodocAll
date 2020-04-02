@@ -9,24 +9,21 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
 
 public class QC_1696_CheckErrorTranslateOnAddressPage {
+    private SetUp setUp = new SetUp();
 
     private String email = "qc_1695_autotestCOVID19@mailinator.com";
-
     private String plzIT = "00100";
     private String plzES = "10900";
     private String plzAT = "6450";
     private String plzCZ = "78321";
     private String plzFR = "67111";
     private String plzPT = "3880-365";
-
-    private SetUp setUp = new SetUp();
 
     @BeforeClass
     void setUp() {

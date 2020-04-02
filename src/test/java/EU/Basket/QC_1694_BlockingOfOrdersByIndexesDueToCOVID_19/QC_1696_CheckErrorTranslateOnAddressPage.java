@@ -1,6 +1,7 @@
 package EU.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
 
 import EU.Product_page_Logic;
+import EU.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -10,8 +11,8 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static PKW.CommonMethods.getCurrentShopFromJSVarInHTML;
-import static PKW.SetUp.setUpBrowser;
+import static EU.CommonMethods.getCurrentShopFromJSVarInHTML;
+import static EU.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.open;
 
 public class QC_1696_CheckErrorTranslateOnAddressPage {
@@ -33,15 +34,15 @@ public class QC_1696_CheckErrorTranslateOnAddressPage {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new EU.SetUp().setUpShopsWithSubroute("prod", "DE", "main", "product");
+        return new SetUp().setUpShopsWithSubroute("prod", "DE", "main", "product");
     }
 
-    @Test//(dataProvider = "route")
+    @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks translation of error popup on address page")
-    public void testCheckErrorTranslateOnAddressPage()/*(String route)*/ throws SQLException {
-        open("https://www.euautoteile.de/teil/bosch/707452");
+    public void testCheckErrorTranslateOnAddressPage(String route) throws SQLException {
+        open(route);
         String shop = getCurrentShopFromJSVarInHTML();
         new Product_page_Logic().addProductToCart()
                 .cartClick()
