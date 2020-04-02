@@ -16,7 +16,6 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Selenide.close;
 
 public class QC_120_FiltersSorting_TestWischblattausfuhrung {
@@ -44,10 +43,10 @@ public class QC_120_FiltersSorting_TestWischblattausfuhrung {
     @Description(value = "Test checks Wischblattausfuhrung side filter")
     public void testWischblattausfuhrungFilter(String route) {
         openPage(route);
-        String characteristic = listingPage.wischblattausfuhrungFilterAttribute().text();
-        listingPage.wischblattausfuhrungFilterCheckbox().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.wischblattausfuhrungProductAttributeGenericRoute(), listingPage.wischblattausfuhrungProductAttributeTecdocRoute());
+        String characteristic = listingPage.getTextFromElement(listingPage.wischblattausfuhrungFilterAttribute());
+        listingPage.hoverOnSideFilterAndClick(listingPage.wischblattausfuhrungFilterCheckbox())
+                    .waitUntilPreloaderDisappear()
+                    .checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.wischblattausfuhrungProductAttributeGenericRoute(), listingPage.wischblattausfuhrungProductAttributeTecdocRoute());
     }
 
     @Test
@@ -56,10 +55,10 @@ public class QC_120_FiltersSorting_TestWischblattausfuhrung {
     @Description(value = "Test checks Wischblattausfuhrung side filter LKW")
     public void testWischblattausfuhrungFilterLKw() throws SQLException {
         openPage("https://lkwteile.autodoc.de/" +  dataBase.getRouteByRouteName("DE", "lkw_category_car_list"));
-        String characteristic = listingPage.wischblattausfuhrungFilterAttribute().text();
-        listingPage.wischblattausfuhrungFilterCheckbox().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.wischblattausfuhrungProductAttributeGenericRoute(), listingPage.wischblattausfuhrungProductAttributeTecdocRoute());
+        String characteristic = listingPage.getTextFromElement(listingPage.wischblattausfuhrungFilterAttribute());
+        listingPage.clickFilterButton(listingPage.wischblattausfuhrungFilterCheckbox())
+                    .waitUntilPreloaderDisappear()
+                    .checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.wischblattausfuhrungProductAttributeGenericRoute(), listingPage.wischblattausfuhrungProductAttributeTecdocRoute());
     }
 
     @Test(dataProvider = "routesLKWsearch")
@@ -68,10 +67,10 @@ public class QC_120_FiltersSorting_TestWischblattausfuhrung {
     @Description(value = "Test checks Wischblattausfuhrung side filter LKW search")
     public void testWischblattausfuhrungFilterLKWsearch(String route) {
         openPage(route);
-        String characteristic = listingPage.wischblattausfuhrungFilterAttribute().text();
-        listingPage.wischblattausfuhrungFilterCheckbox().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.wischblattausfuhrungProductAttributeGenericRoute(), listingPage.wischblattausfuhrungProductAttributeTecdocRoute());
+        String characteristic = listingPage.getTextFromElement(listingPage.wischblattausfuhrungFilterAttribute());
+        listingPage.hoverOnSideFilterAndClick(listingPage.wischblattausfuhrungFilterCheckbox())
+                    .waitUntilPreloaderDisappear()
+                    .checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.wischblattausfuhrungProductAttributeGenericRoute(), listingPage.wischblattausfuhrungProductAttributeTecdocRoute());
     }
 
     @AfterMethod

@@ -113,8 +113,8 @@ public class LKW_Category_car_list_page {
         return $x("//div[@id='selected-instalation__slider']");
     }
 
-    ElementsCollection brandsOfBrandBlock() {
-        return $$x("//div[@id='selected-instalation__slider']//li");
+    SelenideElement brandsOfBrandBlock(String idOfBrand) {
+        return $x("//input[@id='" + idOfBrand + "']/..");
     }
 
     SelenideElement installationSideBlock() {
@@ -185,5 +185,7 @@ public class LKW_Category_car_list_page {
         return $$x("//div[@class='button not_active' and @data-generic-article-id='133']/ancestor::div[@class='price_box']//p[@class='actual_price']");
     }
 
-    SelenideElement imageOfProductWithArticle(String article){return $x("//span[contains(text(),'"+article+"')]/ancestor::div[@class='all_desc_item']//div[@class='image']/span[2]/img");}
+    SelenideElement imageOfProductWithArticle(String article) {
+        return $x("//span[contains(text(),'" + article + "')]/ancestor::div[@class='all_desc_item']//div[@class='image']/span[2]/img");
+    }
 }

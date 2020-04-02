@@ -1,5 +1,6 @@
-package LKW_trucks.QC_18_SideBarBlocksOfParentCategoriesAndLinkingChildCategory;
+package LKW_trucks.QC_10_MainHeadlines;
 
+import ATD.LKW_Category_brand_page_Logic;
 import ATD.LKW_Parent_Category_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
@@ -16,7 +17,7 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_23_TransitionOnParentCategoryPageFromSidebar {
+public class QC_12_VisibilityOfImageLogoBrandInHeadLine {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -24,18 +25,16 @@ public class QC_23_TransitionOnParentCategoryPageFromSidebar {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_parent_category,lkw_category,lkw_category_maker,lkw_category_brand,lkw_category_maker_brand,lkw_category_car_list14,lkw_categories_maker");
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_brand,lkw_category_maker_brand");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks transition on Parent category page from child category in Sidebar")
-    public void testChecksTransitionOnParentCategoryPage(String route) {
+    @Description(value = "Test checks visibility of image logo brand in headline")
+    public void testChecksVisibilityOfImageLogoBrandInHeadLine(String route) {
         openPage(route);
-        new LKW_Parent_Category_page_Logic().presenceOfAllParentCategoriesInSideBar()
-                .goToParentCategoryPage()
-                .checkSuccessfullyLKWParentCategoryPageLoading("https://lkwteile.autodoc.de/ersatzteile/abgasanlage");
+        new LKW_Category_brand_page_Logic().visibilityOfImageBrandInHeadLine();
     }
 
     @AfterMethod

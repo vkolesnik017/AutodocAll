@@ -43,7 +43,7 @@ public class QC_54_FiltersSorting_TestBrandFilterWithPagination {
         openPage(route);
         listingPageLogic.clickFirstBrandNameInFilter()
                     .waitUntilPreloaderDisappear();
-        String brand1 = listingPageLogic.firstBrandNameInFiler().attr("alt");
+        String brand1 = listingPageLogic.getAtributeFromElement(listingPageLogic.firstBrandNameInFiler(),"alt");
         listingPageLogic.clickSecondListingPageButton()
                     .checkProductTitleOnListing(brand1, true, listingPageLogic.productTitleInListMode());
     }
@@ -56,7 +56,7 @@ public class QC_54_FiltersSorting_TestBrandFilterWithPagination {
         openPage(route);
         listingPageLogic.clickFirstBrandNameInFilter()
                 .waitUntilPreloaderDisappear();
-        String brand1 = listingPageLogic.firstBrandNameInFiler().attr("alt");
+        String brand1 = listingPageLogic.getAtributeFromElement(listingPageLogic.firstBrandNameInFiler(),"alt");
         listingPageLogic.clickSecondListingPageButton()
                 .checkProductTitleOnListing(brand1, true, listingPageLogic.productTitleInListMode());
     }

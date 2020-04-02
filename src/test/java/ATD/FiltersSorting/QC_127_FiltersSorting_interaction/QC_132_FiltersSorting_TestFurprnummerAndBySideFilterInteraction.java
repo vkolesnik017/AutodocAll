@@ -15,7 +15,6 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Selenide.close;
 
 public class QC_132_FiltersSorting_TestFurprnummerAndBySideFilterInteraction {
@@ -37,13 +36,13 @@ public class QC_132_FiltersSorting_TestFurprnummerAndBySideFilterInteraction {
     @Description(value = "Test checks Furprnummer and by side filters interaction")
     public void testFurprnummerAndSideFilterInteraction(String route) {
         openPage(route);
-        listingPage.filterBySideBack().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        String furprnummerValue = listingPage.furprnummerSideFilterButton().text();
-        listingPage.furprnummerSideFilterButton().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.checkProductAttributeOnListingWithCarAndFilter("Hinterachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute());
-        listingPage.checkProductAttributeOnListingWithCarAndFilter(furprnummerValue, listingPage.furprnummerProductAttributeGenericRoute(), listingPage.furprnummerProductAttributeTecdocRoute());
+        listingPage.hoverOnSideFilterAndClick(listingPage.filterBySideBack())
+                    .waitUntilPreloaderDisappear();
+        String furprnummerValue = listingPage.getTextFromElement(listingPage.furprnummerSideFilterButton());
+        listingPage.hoverOnSideFilterAndClick(listingPage.furprnummerSideFilterButton())
+                .waitUntilPreloaderDisappear()
+                .checkProductAttributeOnListingWithCarAndFilter("Hinterachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute())
+                .checkProductAttributeOnListingWithCarAndFilter(furprnummerValue, listingPage.furprnummerProductAttributeGenericRoute(), listingPage.furprnummerProductAttributeTecdocRoute());
     }
 
     @AfterMethod

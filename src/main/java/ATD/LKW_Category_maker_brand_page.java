@@ -38,4 +38,6 @@ public class LKW_Category_maker_brand_page {
     SelenideElement seventhLinkOfBreadCrumbsBlock() {
         return $x("//li[@class='step_7 not_active parts_step_7']/span/span");
     }
+
+    SelenideElement imageOfTruckInHeadLine() {return $x("//div[contains(@class,'title_count_search')]//img");}
 }
