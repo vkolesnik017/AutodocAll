@@ -17,4 +17,12 @@ public class LKW_Categories_page_Logic extends LKW_Categories_page {
         return this;
     }
 
+    @Step("visibility of headline. LKW_Categories_page")
+    public LKW_Categories_page_Logic visibilityOfHeadLine() {
+        headlineInHeader().shouldBe(visible);
+        titleOfCatalog().shouldBe(visible);
+        return this;
+    }
+
+
 }
