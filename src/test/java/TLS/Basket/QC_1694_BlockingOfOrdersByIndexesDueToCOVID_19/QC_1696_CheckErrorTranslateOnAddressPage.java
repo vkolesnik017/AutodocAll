@@ -1,7 +1,6 @@
-package ATD.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
+package TLS.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
 
-import ATD.Product_page_Logic;
-import ATD.SetUp;
+import TLS.Product_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -11,13 +10,15 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.*;
-import static ATD.SetUp.setUpBrowser;
+import static BVS.CommonMethods.getCurrentShopFromJSVarInHTML;
+import static BVS.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Selenide.open;
 
 public class QC_1696_CheckErrorTranslateOnAddressPage {
-    private SetUp setUp = new SetUp();
 
     private String email = "qc_1695_autotestCOVID19@mailinator.com";
+    private String password = "atdtest";
+
     private String plzIT = "00100";
     private String plzES = "10900";
     private String plzAT = "6450";
@@ -30,29 +31,27 @@ public class QC_1696_CheckErrorTranslateOnAddressPage {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "route", parallel = false)
+    @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-//        return setUp.setUpShopsWithSubroute("prod", setUp.getShopsDesktop(), "main", "product2");
-        return setUp.setUpShopsWithSubroute("prod", "AT", "main", "product2");
+        return new TLS.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product");
     }
 
-    @Test(dataProvider = "route")
+    @Test//(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks translation of error popup on address page")
-    public void testCheckErrorTranslateOnAddressPage(String route) throws SQLException {
-        openPage(route);
+    public void testCheckErrorTranslateOnAddressPage()/*(String route)*/ throws SQLException {
+        open("https://www.teilestore.de/bosch/olfilter-1156070");
         String shop = getCurrentShopFromJSVarInHTML();
         new Product_page_Logic().addProductToCart()
-                .closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
                 .signIn(email, password)
-//                .checkingCOVID19TooltipTranslate("IT", plzIT, shop)
-//                .checkingCOVID19TooltipTranslate("ES", plzES, shop)
-                .checkingCOVID19TooltipTranslate("AT", plzAT, shop);
+                .checkingCOVID19TooltipTranslate("IT", plzIT, shop)
+                .checkingCOVID19TooltipTranslate("ES", plzES, shop)
+                .checkingCOVID19TooltipTranslate("AT", plzAT, shop)
 //                .checkingCOVID19TooltipTranslate("CZ", plzCZ, shop)
-//                .checkingCOVID19TooltipTranslate("FR", plzFR, shop)
-//                .checkingCOVID19TooltipTranslate("PT", plzPT, shop);
+                .checkingCOVID19TooltipTranslate("FR", plzFR, shop)
+                .checkingCOVID19TooltipTranslate("PT", plzPT, shop);
     }
 }

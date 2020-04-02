@@ -1,4 +1,4 @@
-package Direkt;
+package TSP;
 
 import ATD.DataBase;
 import io.qameta.allure.Step;
@@ -47,8 +47,8 @@ public class CartAddress_page_Logic extends CartAddress_page {
     //CONVID TEST
     @Step("Get text from tooltip COVID-19. CartAddress_page")
     public String getTextFromTooltipCOVID19() {
-        popupCOVID19().shouldBe(visible);
-        return popupCOVID19().getText();
+        textFromPopUpCOVID19().shouldBe(visible);
+        return textFromPopUpCOVID19().getText();
     }
 
     @Step("Close popup COVID19. CartAddress_page")
