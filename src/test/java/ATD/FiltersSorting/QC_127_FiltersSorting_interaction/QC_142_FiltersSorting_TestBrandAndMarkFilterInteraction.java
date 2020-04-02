@@ -2,7 +2,6 @@ package ATD.FiltersSorting.QC_127_FiltersSorting_interaction;
 
 
 import ATD.DataBase;
-import ATD.Listing_page;
 import ATD.Listing_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -13,10 +12,8 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.closeCookiesFooterMessage;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Selenide.close;
 
 public class QC_142_FiltersSorting_TestBrandAndMarkFilterInteraction {
@@ -34,16 +31,14 @@ public class QC_142_FiltersSorting_TestBrandAndMarkFilterInteraction {
     @Description(value = "Test checks brand and mark filters interaction Oem listing")
     public void testBrandAndMarkFilterInteractionOem() throws SQLException {
         openPage("https://autodoc.de/" +  dataBase.getRouteByRouteName("DE", "category_oen3"));
-        closeCookiesFooterMessage();
-        String carBrandName = listingPage.carBrandFilterOem().attr("data-value");
-        String brandName = listingPage.firstBrandNameOemListing().attr("alt");
-        listingPage.carBrandFilterOem().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.firstBrandButtonOemListing().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.getBrandFromTitle(brandName, 4, true, listingPage.productTitleInListMode());
-        listingPage.checkProductCharacteristicOnListingOem(carBrandName, listingPage.carBrandApplicabilityAttribute());
-        close();
+        String carBrandName = listingPage.getAtributeFromElement(listingPage.carBrandFilterOem(),"data-value");
+        String brandName = listingPage.getAtributeFromElement(listingPage.firstBrandNameOemListing(),"alt");
+        listingPage.clickFilterButton(listingPage.carBrandFilterOem())
+                    .waitUntilPreloaderDisappear()
+                    .clickFilterButton(listingPage.firstBrandButtonOemListing())
+                    .waitUntilPreloaderDisappear()
+                    .getBrandFromTitle(brandName, 4, true, listingPage.productTitleInListMode())
+                    .checkProductCharacteristicOnListingOem(carBrandName, listingPage.carBrandApplicabilityAttribute());
     }
 
     @AfterMethod
