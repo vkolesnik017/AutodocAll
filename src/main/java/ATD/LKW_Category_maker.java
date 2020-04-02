@@ -43,4 +43,6 @@ class LKW_Category_maker {
     SelenideElement sixthLinkOfBreadCrumbsBlock() {
         return $x("//li[@class='step_6 not_active parts_step_6']/span/span");
     }
+
+    SelenideElement  headlineInHeader() {return $x("//div[@class='title_count_search']/h2");}
 }

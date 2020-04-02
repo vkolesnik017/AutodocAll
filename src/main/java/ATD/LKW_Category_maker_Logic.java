@@ -64,5 +64,11 @@ public class LKW_Category_maker_Logic extends LKW_Category_maker {
         return page(LKW_Category_page_Logic.class);
     }
 
+    @Step("visibility of headline   .LKW_Category_maker")
+    public LKW_Category_maker_Logic visibilityOfHeadLine() {
+        headlineInHeader().shouldBe(visible);
+        return this;
+    }
+
 
 }

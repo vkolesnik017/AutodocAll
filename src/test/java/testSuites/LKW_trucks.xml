@@ -93,11 +93,15 @@
 
     <test name="QC_10_MainHeadLines">
         <classes>
+            <class name="LKW_trucks.QC_10_MainHeadlines.QC_11_AvailabilityOfHeadLineInErrorPage"/>
             <class name="LKW_trucks.QC_10_MainHeadlines.QC_12_VisibilityOfImageLogoBrandInHeadLine"/>
             <class name="LKW_trucks.QC_10_MainHeadlines.QC_13_VisibilityOfImageTrackInHeadline"/>
             <class name="LKW_trucks.QC_10_MainHeadlines.QC_16_VisibilityOfMarkModelMotorInHeadLine"/>
             <class name="LKW_trucks.QC_10_MainHeadlines.QC_17_AvailabilityOfLinkOnPopUpWithSelectedCar"/>
             <class name="LKW_trucks.QC_10_MainHeadlines.QC_1702_AvailabilityOfHeadLineInCatalog"/>
+            <class name="LKW_trucks.QC_10_MainHeadlines.QC_1703_AvailabilityOfHeadlineInTecDocCatalogAndModelCatalog"/>
+            <class name="LKW_trucks.QC_10_MainHeadlines.QC_1704_AvailabilityOfHeadLineInParentChildCategoryMarkCatalog"/>
+            <class name="LKW_trucks.QC_10_MainHeadlines.QC_1706_AvailabilityOfHeadLineInChildMark"/>
         </classes>
     </test>
 
