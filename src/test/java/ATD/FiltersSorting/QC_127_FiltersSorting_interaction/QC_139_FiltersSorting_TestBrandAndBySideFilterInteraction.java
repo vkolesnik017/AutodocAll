@@ -15,7 +15,6 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Selenide.close;
 
 public class QC_139_FiltersSorting_TestBrandAndBySideFilterInteraction {
@@ -42,13 +41,13 @@ public class QC_139_FiltersSorting_TestBrandAndBySideFilterInteraction {
     @Description(value = "Test checks side and brand filters interaction")
     public void testSideAndBrandFilterInteraction(String route) {
         openPage(route);
-        listingPage.filterBySideBack().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        String brandName = listingPage.firstBrandNameInFiler().attr("alt");
-        listingPage.firstBrandInFilterButton().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.checkProductAttributeOnListingWithCarAndFilter("Hinterachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute());
-        listingPage.checkProductTitleOnListing(brandName, true, listingPage.productTitleInListMode());
+        listingPage.clickFilterBySideBack()
+                    .waitUntilPreloaderDisappear();
+        String brandName = listingPage.getAtributeFromElement(listingPage.firstBrandNameInFiler(), "alt");
+        listingPage.clickFilterButton(listingPage.firstBrandInFilterButton())
+                    .waitUntilPreloaderDisappear()
+                    .checkProductAttributeOnListingWithCarAndFilter("Hinterachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute())
+                    .checkProductTitleOnListing(brandName, true, listingPage.productTitleInListMode());
     }
 
     @Test(dataProvider = "routesLKW")
@@ -57,13 +56,13 @@ public class QC_139_FiltersSorting_TestBrandAndBySideFilterInteraction {
     @Description(value = "Test checks side and brand filters interaction")
     public void testSideAndBrandFilterInteractionLKW(String route) {
         openPage(route);
-        listingPage.filterBySideBack().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        String brandName = listingPage.firstBrandNameInFiler().attr("alt");
-        listingPage.firstBrandInFilterButton().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.checkProductAttributeOnListingWithCarAndFilter("Hinterachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute());
-        listingPage.checkProductTitleOnListing(brandName, true, listingPage.productTitleInListMode());
+        listingPage.clickFilterBySideBack()
+                .waitUntilPreloaderDisappear();
+        String brandName = listingPage.getAtributeFromElement(listingPage.firstBrandNameInFiler(), "alt");
+        listingPage.clickFilterButton(listingPage.firstBrandInFilterButton())
+                .waitUntilPreloaderDisappear()
+                .checkProductAttributeOnListingWithCarAndFilter("Hinterachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute())
+                .checkProductTitleOnListing(brandName, true, listingPage.productTitleInListMode());
     }
 
     @AfterMethod

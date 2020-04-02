@@ -30,13 +30,13 @@ public class LKW_Parent_Category_page_Logic extends LKW_Parent_Category_page {
         return this;
     }
 
-    @Step("Click on first link in bread crumbs block .LKW_Category_maker_brand_page")
+    @Step("Click on first link in bread crumbs block .LKW_Parent_Category_page")
     public LKW_Categories_page_Logic firstLinkClick() {
         firstLinkOfBreadCrumbsBlock().click();
         return page(LKW_Categories_page_Logic.class);
     }
 
-    @Step("Close tooltip text pop-up in vertical selector .LKW_Category_maker_brand_page")
+    @Step("Close tooltip text pop-up in vertical selector .LKW_Parent_Category_page")
     public LKW_Parent_Category_page_Logic closeToolTipPopUpIfVisible() {
         if (closeToolTipTextSelector().isDisplayed()) {
             closeToolTipTextSelector().click();
@@ -44,26 +44,26 @@ public class LKW_Parent_Category_page_Logic extends LKW_Parent_Category_page {
         return this;
     }
 
-    @Step("presence of a Catalog block in the sidebar .LKW_Category_maker_brand_page")
+    @Step("presence of a Catalog block in the sidebar .LKW_Parent_Category_page")
     public LKW_Parent_Category_page_Logic presenceOfCatalogBlockInSidebar() {
         catalogBlockInSideBar().shouldBe(visible);
         return this;
     }
 
-    @Step("presence of all parent categories in the sidebar .LKW_Category_maker_brand_page")
+    @Step("presence of all parent categories in the sidebar .LKW_Parent_Category_page")
     public LKW_Parent_Category_page_Logic presenceOfAllParentCategoriesInSideBar() {
         catalogBlockInSideBar().shouldBe(visible).click();
         categoriesInParentCatalogInSideBar().shouldHave(size(31));
         return this;
     }
 
-    @Step("go to child category from sidebar .LKW_Category_maker_brand_page")
+    @Step("go to child category from sidebar .LKW_Parent_Category_page")
     public LKW_Parent_Category_page_Logic goToParentCategoryPage() {
         parentCategoryInSideBar("Abgasanlage").scrollIntoView("{block: \"center\"}").click();
         return this;
     }
 
-    @Step("Presence of elements in Child categories block in sidebar .LKW_Category_maker_brand_page")
+    @Step("Presence of elements in Child categories block in sidebar .LKW_Parent_Category_page")
     public LKW_Parent_Category_page_Logic presenceOfElementsChildCategoriesBlockInSideBar() {
         titleOfChildCategoriesBlockInSideBar().shouldBe(visible);
         childCategoryBlockInSideBar().shouldBe(visible);
@@ -71,7 +71,7 @@ public class LKW_Parent_Category_page_Logic extends LKW_Parent_Category_page {
         return this;
     }
 
-    @Step("check of main elements in Child categories block .LKW_Category_maker_brand_page")
+    @Step("check of main elements in Child categories block .LKW_Parent_Category_page")
     public LKW_Parent_Category_page_Logic checkOfMainElementsInChildCategoriesBlock() {
         titleOfChildCategoriesBlock().shouldBe(visible).shouldHave(exactText("Wählen Sie die benötigten Filter Ersatzteile aus"));
         mainImageOfChildCategoriesBlock().shouldBe(visible);
@@ -82,12 +82,18 @@ public class LKW_Parent_Category_page_Logic extends LKW_Parent_Category_page {
         return this;
     }
 
-    @Step("select child category in Child Categories block .LKW_Category_maker_brand_page")
+    @Step("select child category in Child Categories block .LKW_Parent_Category_page")
     public LKW_Category_page_Logic selectChildCategoryInHeader(String titleOfChildCategory) {
         for (int i = 0; i < titleOfLinksInChildCategoriesBlock().size(); i++) {
             titleOfLinksInChildCategoriesBlock().get(i).shouldHave(exactText(titleOfChildCategory)).click();
         }
 
         return page(LKW_Category_page_Logic.class);
+    }
+
+    @Step("visibility of headline   .LKW_Parent_Category_page")
+    public LKW_Parent_Category_page_Logic visibilityOfHeadLine() {
+        headlineInHeader().shouldBe(visible);
+        return this;
     }
 }
