@@ -16,12 +16,10 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Selenide.close;
 
 public class QC_128_FiltersSorting_TestHoheAndBySideFilterInteraction {
     private Listing_page_Logic listingPage = new Listing_page_Logic();
-    private DataBase dataBase = new DataBase();
 
     @BeforeClass
     void setUp() {
@@ -39,28 +37,28 @@ public class QC_128_FiltersSorting_TestHoheAndBySideFilterInteraction {
     @Description(value = "Test checks Hohe and by side filters interaction")
     public void testHoheAndSideFilterInteraction(String route) {
         openPage(route);
-        listingPage.filterBySideBack().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        String hoheValue = listingPage.hoheThirdSideFilterButton().text();
-        listingPage.hoheThirdSideFilterButton().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.checkProductAttributeOnListingWithCarAndFilter("Hinterachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute());
-        listingPage.checkProductAttributeOnListingWithCarAndFilter(hoheValue, listingPage.hoheProductAttributeGenericRoute(), listingPage.hoheProductAttributeTecdocRoute());
+        listingPage.hoverOnSideFilterAndClick(listingPage.filterBySideBack())
+                    .waitUntilPreloaderDisappear();
+        String hoheValue = listingPage.getTextFromElement(listingPage.hoheThirdSideFilterButton());
+        listingPage.hoverOnSideFilterAndClick(listingPage.hoheThirdSideFilterButton())
+                    .waitUntilPreloaderDisappear()
+                    .checkProductAttributeOnListingWithCarAndFilter("Hinterachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute())
+                    .checkProductAttributeOnListingWithCarAndFilter(hoheValue, listingPage.hoheProductAttributeGenericRoute(), listingPage.hoheProductAttributeTecdocRoute());
     }
 
     @Test
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks Hohe and by side filters interaction")
-    public void testHoheAndSideFilterInteractionLKW() {
-        openPage("https://lkwteile.autodoc.de/ersatzteile/bremsscheibe-200338/mercedes-benz/actros-mp2-mp3?car_id=1007730");
-        listingPage.filterBySideBack().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        String hoheValue = listingPage.hoheThirdSideFilterButton().text();
-        listingPage.hoheThirdSideFilterButton().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.checkProductAttributeOnListingWithCarAndFilter("Hinterachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute());
-        listingPage.checkProductAttributeOnListingWithCarAndFilter(hoheValue, listingPage.hoheProductAttributeGenericRoute(), listingPage.hoheProductAttributeTecdocRoute());
+    public void testHoheAndSideFilterInteractionLKW() throws SQLException {
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list9"));
+        listingPage.clickFilterBySideBack()
+                    .waitUntilPreloaderDisappear();
+        String hoheValue = listingPage.getTextFromElement(listingPage.hoheThirdSideFilterButton());
+        listingPage.clickFilterButton(listingPage.hoheThirdSideFilterButton())
+                    .waitUntilPreloaderDisappear()
+                    .checkProductAttributeOnListingWithCarAndFilter("Hinterachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute())
+                    .checkProductAttributeOnListingWithCarAndFilter(hoheValue, listingPage.hoheProductAttributeGenericRoute(), listingPage.hoheProductAttributeTecdocRoute());
     }
 
     @AfterMethod

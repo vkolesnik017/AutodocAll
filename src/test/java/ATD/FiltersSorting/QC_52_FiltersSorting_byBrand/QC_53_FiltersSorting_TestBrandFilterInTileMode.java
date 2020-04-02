@@ -42,7 +42,7 @@ public class QC_53_FiltersSorting_TestBrandFilterInTileMode {
         openPage(route);
         listingPageLogic.clickFirstBrandNameInFilter()
                     .waitUntilPreloaderDisappear();
-        String brand1 = listingPageLogic.firstBrandNameInFiler().attr("alt");
+        String brand1 = listingPageLogic.getAtributeFromElement(listingPageLogic.firstBrandNameInFiler(),"alt");
         listingPageLogic.clickShowListingInTileModeButton()
                     .checkProductTitleOnListing(brand1, true, listingPageLogic.productTitleInTileMode());
     }
@@ -56,7 +56,7 @@ public class QC_53_FiltersSorting_TestBrandFilterInTileMode {
         new Main_page_Logic().closeCarSelectorTooltipIfVisible();
         listingPageLogic.clickFirstBrandNameInFilter()
                     .waitUntilPreloaderDisappear();
-        String brand1 = listingPageLogic.firstBrandNameInFiler().attr("alt");
+        String brand1 = listingPageLogic.getAtributeFromElement(listingPageLogic.firstBrandNameInFiler(),"alt");
         listingPageLogic.clickShowListingInTileModeButton()
                     .checkProductTitleOnListing(brand1, true, listingPageLogic.productTitleInTileMode());
     }
