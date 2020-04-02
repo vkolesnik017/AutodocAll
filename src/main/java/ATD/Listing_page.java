@@ -572,5 +572,7 @@ public class Listing_page {
     SelenideElement secondPageInBySideSlider() { return $x("//*[@aria-describedby='slick-slide01']"); }
 
     SelenideElement sideJSfilterForm() { return $(".js-filter-form-sidebar"); }
+
+    SelenideElement hoheBlock() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_209']"); }
 }
 
