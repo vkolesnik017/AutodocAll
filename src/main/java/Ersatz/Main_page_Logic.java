@@ -1,13 +1,14 @@
-package PKW;
+package Ersatz;
 
 import io.qameta.allure.Step;
+
 import static com.codeborne.selenide.Selenide.page;
 
-public class Main_page_Logic extends Main_page{
+public class Main_page_Logic extends Main_page {
 
     @Step("Cart clicking. Main_page")
-    public Cart_page cartClick() {
+    public Cart_page_Logic cartClick() {
         cartIcon().click();
-        return page(PKW.Cart_page.class);
+        return page(Cart_page_Logic.class);
     }
 }

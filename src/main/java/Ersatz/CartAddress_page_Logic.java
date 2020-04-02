@@ -1,9 +1,10 @@
-package PKW;
+package Ersatz;
 
 import ATD.DataBase;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.testng.Assert;
+
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -12,7 +13,7 @@ import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.Selenide.sleep;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
-public class CartAddress_page_Logic extends CartAddress_page{
+public class CartAddress_page_Logic extends CartAddress_page {
 
     @Step("Next button click. CartAddress_page")
     public CartPayments_page_Logic nextBtnClick() {

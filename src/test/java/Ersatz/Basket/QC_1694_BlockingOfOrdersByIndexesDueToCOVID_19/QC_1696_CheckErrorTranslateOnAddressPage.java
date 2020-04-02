@@ -1,6 +1,7 @@
-package Direkt.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
+package Ersatz.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
 
-import Direkt.SetUp;
+import Ersatz.Product_page_Logic;
+import Ersatz.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -10,11 +11,12 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static Direkt.CommonMethods.getCurrentShopFromJSVarInHTML;
-import static Direkt.SetUp.setUpBrowser;
+import static Ersatz.CommonMethods.getCurrentShopFromJSVarInHTML;
+import static Ersatz.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.open;
 
 public class QC_1696_CheckErrorTranslateOnAddressPage {
+
     private String email = "qc_1695_autotestCOVID19@mailinator.com";
     private String password = "atdtest";
 
@@ -42,7 +44,7 @@ public class QC_1696_CheckErrorTranslateOnAddressPage {
     public void testCheckErrorTranslateOnAddressPage(String route) throws SQLException {
         open(route);
         String shop = getCurrentShopFromJSVarInHTML();
-        new Direkt.Product_page_Logic().addProductToCart()
+        new Product_page_Logic().addProductToCart()
                 .cartClick()
                 .nextButtonClick()
                 .signIn(email, password)

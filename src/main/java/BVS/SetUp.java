@@ -1,4 +1,4 @@
-package ATD;
+package BVS;
 
 import com.codeborne.selenide.Configuration;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -18,7 +18,7 @@ public class SetUp {
         return shopsDesktop;
     }
 
-    private String shopsDesktop = "DE,AT,BG,BE,CH,CZ,DK,EN,EE,ES,FI,FR,GR,HU,IT,LD,LT,LV,NL,NO,PL,PT,RO,SE,SI,SK";
+    private String shopsDesktop = "DE,AT,CH,DK,ES,FI,FR,IT,NL,NO,PT,SE,EN";
 
 
     public static void setUpBrowser(Boolean Selenoid, String browser, String browserVersion) {
