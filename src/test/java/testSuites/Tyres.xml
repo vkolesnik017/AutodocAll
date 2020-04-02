@@ -19,7 +19,7 @@
             <class name="ATD.Tyres.QC_1104_TyresSelector.QC_1105_TestTyresSearchBySelectorPKW"/>
             <class name="ATD.Tyres.QC_1104_TyresSelector.QC_1106_TestTyresSearchBySelectorSUV"/>
             <class name="ATD.Tyres.QC_1104_TyresSelector.QC_1107_TestTyresSearchBySelectorLLKW"/>
-            <class name="ATD.Tyres.QC_1104_TyresSelector.QC_1111_TestTyresSearchBySelectorMOTO"/>
+            <!--<class name="ATD.Tyres.QC_1104_TyresSelector.QC_1111_TestTyresSearchBySelectorMOTO"/>-->
             <class name="ATD.Tyres.QC_1104_TyresSelector.QC_1113_TestTyresSearchBySelectorOnListingPKW"/>
             <class name="ATD.Tyres.QC_1104_TyresSelector.QC_1117_TestTyresSearchBySelectorOnListingSUV"/>
             <class name="ATD.Tyres.QC_1104_TyresSelector.QC_1118_TestTyresSearchBySelectorOnListingLLKW"/>

@@ -128,6 +128,7 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return page(CartPayments_page_Logic.class);
     }
 
+    //CONVID TEST
     @Step("Get text from tooltip COVID-19. CartAddress_page")
     public String getTextFromTooltipCOVID19() {
         tooltipCOVID19().shouldBe(visible);
@@ -135,7 +136,6 @@ public class CartAddress_page_Logic extends CartAddress_page {
     }
 
 
-    //CONVID TEST
     public CartAddress_page_Logic checkingCOVID19Tooltip(String countryCheck, String[] shopPlz, String shop) throws SQLException, IOException {
         chooseDeliveryCountry(countryCheck);
         for (String plz : shopPlz) {
@@ -159,6 +159,7 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return this;
     }
 
+    @Step("Checking COVID-19 tooltip translate for country {countryCheck} with PLZ {plz} on shop {shop}. CartAddress_page")
     public CartAddress_page_Logic checkingCOVID19TooltipTranslate(String countryCheck, String plz, String shop) throws SQLException {
         chooseDeliveryCountry(countryCheck);
         fillingPostalCodeField(plz);

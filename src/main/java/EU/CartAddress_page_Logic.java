@@ -1,4 +1,4 @@
-package Direkt;
+package EU;
 
 import ATD.DataBase;
 import io.qameta.allure.Step;
@@ -17,7 +17,6 @@ public class CartAddress_page_Logic extends CartAddress_page {
 
     @Step("Next button click. CartAddress_page")
     public CartPayments_page_Logic nextBtnClick() {
-        nextButton().scrollTo();
         nextButton().click();
         return page(CartPayments_page_Logic.class);
     }
@@ -25,7 +24,6 @@ public class CartAddress_page_Logic extends CartAddress_page {
     @Step("Filling postal code {sendPostalCode}. CartAddress_page")
     public CartAddress_page_Logic fillingPostalCodeField(String sendPostalCode) {
         postalCodeField().click();
-        postalCodeField().clear();
         char[] array = sendPostalCode.toCharArray();
         for (char anArray : array) {
             String send = String.valueOf(anArray);
@@ -47,13 +45,13 @@ public class CartAddress_page_Logic extends CartAddress_page {
     //CONVID TEST
     @Step("Get text from tooltip COVID-19. CartAddress_page")
     public String getTextFromTooltipCOVID19() {
-        popupCOVID19().shouldBe(visible);
-        return popupCOVID19().getText();
+        textFromPopUpCOVID19().shouldBe(visible);
+        return textFromPopUpCOVID19().getText();
     }
 
     @Step("Close popup COVID19. CartAddress_page")
     public CartAddress_page closePopupCOVID19() {
-        closeBtnPopupCOVID19().click();
+        closeBtnPopUpCOVID19().click();
         return this;
     }
 
