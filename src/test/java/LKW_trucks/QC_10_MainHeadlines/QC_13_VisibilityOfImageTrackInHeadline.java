@@ -2,6 +2,7 @@ package LKW_trucks.QC_10_MainHeadlines;
 
 import ATD.LKW_Category_brand_page_Logic;
 import ATD.LKW_Category_maker_brand_page_Logic;
+import ATD.LKW_maker_car_list_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -35,6 +36,21 @@ public class QC_13_VisibilityOfImageTrackInHeadline {
     public void testChecksVisibilityOfImageTruckInHeadLine(String route) {
         openPage(route);
         new LKW_Category_maker_brand_page_Logic().visibilityOfImageBrandInHeadLine();
+    }
+
+    @DataProvider(name = "routesMakerCarList", parallel = true)
+    Object[] dataProviderForMakerCarList() throws SQLException {
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_maker_car_list2");
+    }
+
+    @Test(dataProvider = "routesMakerCarList")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test checks visibility of image truck in headline in Maker car list route")
+    public void testChecksVisibilityOfImageTruckInHeadLineInMakerCarList(String routesMakerCarList) {
+        openPage(routesMakerCarList);
+        new LKW_maker_car_list_Logic().visibilityOfImageBrandInHeadLine();
+
     }
 
     @AfterMethod
