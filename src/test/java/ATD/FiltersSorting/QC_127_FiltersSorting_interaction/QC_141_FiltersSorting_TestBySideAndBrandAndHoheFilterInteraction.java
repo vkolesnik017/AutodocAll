@@ -16,7 +16,6 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Selenide.close;
 
 public class QC_141_FiltersSorting_TestBySideAndBrandAndHoheFilterInteraction {
@@ -39,18 +38,17 @@ public class QC_141_FiltersSorting_TestBySideAndBrandAndHoheFilterInteraction {
     @Description(value = "Test checks side, brand and Hohe filters interaction LKW route search")
     public void testSideAndBrandAndHoheFilterInteractionLKWsearch() throws Exception {
         openPage("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_search"));
-        listingPage.filterBySideBack().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        Thread.sleep(3000);
-        String brandName = listingPage.firstBrandNameInFiler().attr("alt");
-        listingPage.firstBrandInFilterButton().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        String hoheValue = listingPage.hoheFirstSideFilterButton().text();
-        listingPage.hoheFirstSideFilterButton().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.checkProductAttributeOnListingWithCarAndFilter("Hinterachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute());
-        listingPage.checkProductAttributeOnListingWithCarAndFilter(hoheValue, listingPage.hoheProductAttributeGenericRoute(), listingPage.hoheProductAttributeTecdocRoute());
-        listingPage.checkProductTitleOnListing(brandName, true, listingPage.productTitleInListMode());
+        listingPage.clickFilterBySideBack()
+                    .waitUntilPreloaderDisappearAndSleep(3000);
+        String brandName = listingPage.getAtributeFromElement(listingPage.firstBrandNameInFiler(),"alt");
+        listingPage.clickFilterButton(listingPage.firstBrandInFilterButton())
+                    .waitUntilPreloaderDisappear();
+        String hoheValue = listingPage.getTextFromElement(listingPage.hoheFirstSideFilterButton());
+        listingPage.clickFilterButton(listingPage.hoheFirstSideFilterButton())
+                    .waitUntilPreloaderDisappear()
+                    .checkProductAttributeOnListingWithCarAndFilter("Hinterachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute())
+                    .checkProductAttributeOnListingWithCarAndFilter(hoheValue, listingPage.hoheProductAttributeGenericRoute(), listingPage.hoheProductAttributeTecdocRoute())
+                    .checkProductTitleOnListing(brandName, true, listingPage.productTitleInListMode());
     }
 
     @Test(dataProvider = "routesLKW")
@@ -59,18 +57,17 @@ public class QC_141_FiltersSorting_TestBySideAndBrandAndHoheFilterInteraction {
     @Description(value = "Test checks side, brand and Hohe filters interaction LKW route model")
     public void testSideAndBrandAndHoheFilterInteractionLKWmodel(String route) throws Exception{
         openPage(route);
-        listingPage.filterBySideBack().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        String hoheValue = listingPage.hoheThirdSideFilterButton().text();
-        listingPage.hoheThirdSideFilterButton().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        Thread.sleep(3000);
-        String brandName = listingPage.firstBrandNameOemListing().attr("alt");
-        listingPage.firstBrandButtonOemListing().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.checkProductAttributeOnListingWithCarAndFilter("Hinterachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute());
-        listingPage.checkProductAttributeOnListingWithCarAndFilter(hoheValue, listingPage.hoheProductAttributeGenericRoute(), listingPage.hoheProductAttributeTecdocRoute());
-        listingPage.checkProductTitleOnListing(brandName, true, listingPage.productTitleInListMode());
+        listingPage.clickFilterBySideBack()
+                    .waitUntilPreloaderDisappear();
+        String hoheValue = listingPage.getTextFromElement(listingPage.hoheThirdSideFilterButton());
+        listingPage.clickFilterButton(listingPage.hoheThirdSideFilterButton())
+                    .waitUntilPreloaderDisappearAndSleep(3000);
+        String brandName = listingPage.getAtributeFromElement(listingPage.firstBrandNameOemListing(),"alt");
+        listingPage.clickFilterButton(listingPage.firstBrandButtonOemListing())
+                    .waitUntilPreloaderDisappear()
+                    .checkProductAttributeOnListingWithCarAndFilter("Hinterachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute())
+                    .checkProductAttributeOnListingWithCarAndFilter(hoheValue, listingPage.hoheProductAttributeGenericRoute(), listingPage.hoheProductAttributeTecdocRoute())
+                    .checkProductTitleOnListing(brandName, true, listingPage.productTitleInListMode());
     }
 
     @AfterMethod
