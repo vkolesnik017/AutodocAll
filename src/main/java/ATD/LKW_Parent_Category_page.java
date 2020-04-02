@@ -78,4 +78,5 @@ public class LKW_Parent_Category_page {
     ElementsCollection imageOfLinksInChildCategoriesBlock() {
         return $$x("//ul[@class='simple_links']//li//img");
     }
+    SelenideElement headlineInHeader() {return $x("//div[@class='top_title no_image']");}
 }
