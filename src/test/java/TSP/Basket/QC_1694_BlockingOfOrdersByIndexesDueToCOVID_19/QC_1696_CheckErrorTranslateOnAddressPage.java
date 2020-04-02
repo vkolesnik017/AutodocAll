@@ -11,8 +11,8 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static BVS.CommonMethods.getCurrentShopFromJSVarInHTML;
-import static BVS.SetUp.setUpBrowser;
+import static TSP.CommonMethods.getCurrentShopFromJSVarInHTML;
+import static TSP.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.open;
 
 public class QC_1696_CheckErrorTranslateOnAddressPage {
@@ -37,12 +37,12 @@ public class QC_1696_CheckErrorTranslateOnAddressPage {
         return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product");
     }
 
-    @Test//(dataProvider = "route")
+    @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks translation of error popup on address page")
-    public void testCheckErrorTranslateOnAddressPage()/*(String route)*/ throws SQLException {
-        open("https://www.bildelebutik.dk/products/8101526-oliefilter.htm");
+    public void testCheckErrorTranslateOnAddressPage(String route) throws SQLException {
+        open(route);
         String shop = getCurrentShopFromJSVarInHTML();
         new Product_page_Logic().addProductToCart()
                 .cartClick()

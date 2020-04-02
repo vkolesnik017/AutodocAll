@@ -10,16 +10,13 @@ import java.util.List;
 
 public class SetUp {
 
-    private TSP.DataBase db = new TSP.DataBase();
+    private DataBase db = new DataBase();
     private String shopFromJenkins = System.getenv("ShopFromJenkins");
     private String envFromJenkins = System.getenv("EnvFromJenkins");
-
+    private String shopsDesktop = "DE,AT,CH,DK,ES,FI,FR,IT,NL,NO,PT,SE.CF";
     public String getShopsDesktop() {
         return shopsDesktop;
     }
-
-    private String shopsDesktop = "DE,AT,BN,CH,DK,EE,ES,FI,FR,GR,HU,IT,LV,NL,NO,PL,PT,SE,SK,EN,LF";
-
 
 
 
@@ -47,7 +44,7 @@ public class SetUp {
         String env = getEnv(envFromTest);
         List<String> finalRouteList = new ArrayList<>();
         try {
-            List<String> routeFromDB = new TSP.DataBase().getRouteListForMain(shop);
+            List<String> routeFromDB = new DataBase().getRouteListForMain(shop);
             for (String aRouteFromDB : routeFromDB) {
                 finalRouteList.add(env + aRouteFromDB);
             }
