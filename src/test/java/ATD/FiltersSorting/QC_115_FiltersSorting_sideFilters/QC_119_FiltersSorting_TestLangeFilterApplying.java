@@ -16,7 +16,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Condition.attribute;
+import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.close;
 
 public class QC_119_FiltersSorting_TestLangeFilterApplying {
@@ -44,10 +44,10 @@ public class QC_119_FiltersSorting_TestLangeFilterApplying {
     @Description(value = "Test checks Lange side filter")
     public void testLangeFilter(String route) {
         openPage(route);
-        String characteristic = listingPage.langeFilterAttribute().text();
-        listingPage.langeFilterCheckbox().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.langeProductAttributeGenericRoute(), listingPage.langeProductAttributeTecdocRoute());
+        String characteristic = listingPage.getTextFromElement(listingPage.langeFilterAttribute());
+        listingPage.hoverOnSideFilterAndClick(listingPage.langeFilterCheckbox())
+                    .waitUntilPreloaderDisappear()
+                    .checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.langeProductAttributeGenericRoute(), listingPage.langeProductAttributeTecdocRoute());
     }
 
     @Test
@@ -56,10 +56,10 @@ public class QC_119_FiltersSorting_TestLangeFilterApplying {
     @Description(value = "Test checks Lange side filter LKW")
     public void testLangeFilterLKW() throws SQLException {
         openPage("https://lkwteile.autodoc.de/" +  dataBase.getRouteByRouteName("DE", "lkw_category_car_list"));
-        String characteristic = listingPage.langeFilterCheckboxLKW().text();
-        listingPage.langeFilterCheckboxLKW().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.langeProductAttributeGenericRouteLKW(), listingPage.langeProductAttributeTecdocRouteLKW());
+        String characteristic = listingPage.getTextFromElement(listingPage.langeFilterCheckboxLKW());
+        listingPage.clickFilterButton(listingPage.langeFilterCheckboxLKW())
+                    .waitUntilPreloaderDisappear()
+                    .checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.langeProductAttributeGenericRouteLKW(), listingPage.langeProductAttributeTecdocRouteLKW());
     }
 
     @Test(dataProvider = "routesLKWsearch")
@@ -68,10 +68,10 @@ public class QC_119_FiltersSorting_TestLangeFilterApplying {
     @Description(value = "Test checks Lange side filter route LKW search")
     public void testLangeFilterLKWsearch(String route) {
         openPage(route);
-        String characteristic = listingPage.langeFilterAttribute().text();
-        listingPage.langeFilterCheckbox().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.langeProductAttributeGenericRoute(), listingPage.langeProductAttributeTecdocRoute());
+        String characteristic = listingPage.getTextFromElement(listingPage.langeFilterAttribute());
+        listingPage.clickFilterButton(listingPage.langeFilterCheckbox())
+                    .waitUntilPreloaderDisappear()
+                    .checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.langeProductAttributeGenericRoute(), listingPage.langeProductAttributeTecdocRoute());
     }
 
     @AfterMethod

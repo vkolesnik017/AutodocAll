@@ -54,10 +54,10 @@ public class QC_8_FiltersSorting_TestBrandFilterWithTwoBrandsSelected {
         openPage(route);
         listingPageLogic.clickFirstBrandNameInFilter()
                     .waitUntilPreloaderDisappear();
-        String brand1 = listingPageLogic.firstBrandNameInFiler().attr("alt");
+        String brand1 = listingPageLogic.getAtributeFromElement(listingPageLogic.firstBrandNameInFiler(),"alt");
         listingPageLogic.clickSecondBrandNameInFilter()
                     .waitUntilPreloaderDisappear();
-        String brand2 = listingPageLogic.firstBrandNameInFiler().attr("alt");
+        String brand2 = listingPageLogic.getAtributeFromElement(listingPageLogic.firstBrandNameInFiler(),"alt");
         listingPageLogic.checkProductTitleOnListingWithTwoExpectedTexts(brand1, brand2, true, listingPageLogic.productTitleInListMode());
     }
 
@@ -69,10 +69,10 @@ public class QC_8_FiltersSorting_TestBrandFilterWithTwoBrandsSelected {
         openPage(route);
         listingPageLogic.clickFirstBrandNameOemListing()
                     .waitUntilPreloaderDisappear();
-        String brand1 = listingPageLogic.firstBrandNameOemListing().attr("alt");
+        String brand1 = listingPageLogic.getAtributeFromElement(listingPageLogic.firstBrandNameOemListing(),"alt");
         listingPageLogic.clickSecondBrandNameOemListing()
                     .waitUntilPreloaderDisappear();
-        String brand2 = listingPageLogic.firstBrandNameOemListing().attr("alt");
+        String brand2 = listingPageLogic.getAtributeFromElement(listingPageLogic.firstBrandNameOemListing(),"alt");
         listingPageLogic.checkProductTitleOnListingWithTwoExpectedTexts(brand1, brand2, true, listingPageLogic.productTitleInListMode());
     }
 
@@ -82,8 +82,8 @@ public class QC_8_FiltersSorting_TestBrandFilterWithTwoBrandsSelected {
     @Description(value = "Test checks brand filter with two brands selected (Acc listing)")
     public void checkBrandFilterWithTwoBrandsSelectedAcc(String route) {
         openPage(route);
-        String brand1 = listingPageLogic.firstBrandNameInFiler().attr("alt");
-        String brand2 = listingPageLogic.secondBrandNameInFilter().attr("alt");
+        String brand1 = listingPageLogic.getAtributeFromElement(listingPageLogic.firstBrandNameInFiler(),"alt");
+        String brand2 = listingPageLogic.getAtributeFromElement(listingPageLogic.secondBrandNameInFilter(),"alt");
         listingPageLogic.clickFirstBrandNameInFilter()
                 .waitUntilPreloaderDisappear()
                 .clickSecondBrandNameInFilter()
@@ -100,8 +100,8 @@ public class QC_8_FiltersSorting_TestBrandFilterWithTwoBrandsSelected {
         new Main_page_Logic().closeCarSelectorTooltipIfVisible();
         listingPageLogic.clickFirstBrandNameInFilter()
                     .waitUntilPreloaderDisappear();
-        String firstBrand = listingPageLogic.firstBrandNameInFiler().attr("alt");
-        String secondBrand = listingPageLogic.secondBrandNameInFilter().attr("alt");
+        String firstBrand = listingPageLogic.getAtributeFromElement(listingPageLogic.firstBrandNameInFiler(),"alt");
+        String secondBrand = listingPageLogic.getAtributeFromElement(listingPageLogic.secondBrandNameInFilter(),"alt");
         listingPageLogic.clickSecondBrandNameInFilter()
                     .waitUntilPreloaderDisappear()
                     .checkProductTitleOnListingWithTwoExpectedTexts(firstBrand, secondBrand, true, listingPageLogic.productTitleInListMode());

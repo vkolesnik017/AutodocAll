@@ -2,7 +2,7 @@ package ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters;
 
 
 import ATD.DataBase;
-import ATD.Listing_page;
+import ATD.Listing_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,12 +16,10 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Condition.attribute;
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.close;
 
 public class QC_125_FiltersSorting_TestFilterPosition {
-    private Listing_page listingPage = new Listing_page();
+    private Listing_page_Logic listingPageLogic = new Listing_page_Logic();
     private DataBase dataBase = new DataBase();
 
     @BeforeClass
@@ -45,10 +43,10 @@ public class QC_125_FiltersSorting_TestFilterPosition {
     @Description(value = "Test checks filter position")
     public void testFilterPosition(String route) {
         openPage(route);
-        String characteristic = listingPage.langeFilterAttribute3().text();
-        listingPage.langeFilterCheckbox3().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.activeSideFilter3().shouldHave(text(characteristic));
+        String characteristic = listingPageLogic.getTextFromElement(listingPageLogic.langeFilterAttribute3());
+        listingPageLogic.clickFilterButton(listingPageLogic.langeFilterCheckbox3())
+                        .waitUntilPreloaderDisappear()
+                        .checkTextInElement(listingPageLogic.activeSideFilter3(), characteristic);
     }
 
     @Test
@@ -57,10 +55,10 @@ public class QC_125_FiltersSorting_TestFilterPosition {
     @Description(value = "Test checks filter position on LKW model")
     public void testFilterPositionLKWmodel() throws SQLException{
         openPage("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_category_car_list7"));
-        String characteristic = listingPage.langeFilterAttribute3().text();
-        listingPage.langeFilterCheckbox3().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.activeSideFilter().shouldHave(text(characteristic));
+        String characteristic = listingPageLogic.getTextFromElement(listingPageLogic.langeFilterAttribute3());
+        listingPageLogic.clickFilterButton(listingPageLogic.langeFilterCheckbox3())
+                .waitUntilPreloaderDisappear()
+                .checkTextInElement(listingPageLogic.activeSideFilter(), characteristic);
     }
 
     @Test
@@ -69,10 +67,10 @@ public class QC_125_FiltersSorting_TestFilterPosition {
     @Description(value = "Test checks filter position on LKW car")
     public void testFilterPositionLKWcar() throws SQLException{
         openPage("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_category_car_list6"));
-        String characteristic = listingPage.langeFilterAttribute2().text();
-        listingPage.langeFilterCheckbox2().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.activeSideFilterLkw().shouldHave(text(characteristic));
+        String characteristic = listingPageLogic.getTextFromElement(listingPageLogic.langeFilterAttribute2());
+        listingPageLogic.clickFilterButton(listingPageLogic.langeFilterCheckbox2())
+                .waitUntilPreloaderDisappear()
+                .checkTextInElement(listingPageLogic.activeSideFilterLkw(), characteristic);
     }
 
     @Test
@@ -81,10 +79,10 @@ public class QC_125_FiltersSorting_TestFilterPosition {
     @Description(value = "Test checks filter position on LKW search")
     public void testFilterPositionLKWsearch() throws SQLException{
         openPage("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_search"));
-        String characteristic = listingPage.langeFilterAttribute3().text();
-        listingPage.langeFilterCheckbox3().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.durchmesserSideFilterButtonFirstValue().shouldHave(text(characteristic));
+        String characteristic = listingPageLogic.getTextFromElement(listingPageLogic.langeFilterAttribute3());
+        listingPageLogic.clickFilterButton(listingPageLogic.langeFilterCheckbox3())
+                .waitUntilPreloaderDisappear()
+                .checkTextInElement(listingPageLogic.durchmesserSideFilterButtonFirstValue(), characteristic);
     }
 
     @Test
@@ -93,10 +91,10 @@ public class QC_125_FiltersSorting_TestFilterPosition {
     @Description(value = "Test checks filter position on Oem route")
     public void testFilterPositionOem() throws SQLException {
         openPage("https://autodoc.de/" +  dataBase.getRouteByRouteName("DE", "category_oen2"));
-        String characteristic = listingPage.sideFilterOenAttribute().text();
-        listingPage.sideFilterOenCheckbox().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.sideFilterOenAttribute2().shouldHave(text(characteristic));
+        String characteristic = listingPageLogic.getTextFromElement(listingPageLogic.sideFilterOenAttribute());
+        listingPageLogic.clickFilterButton(listingPageLogic.sideFilterOenCheckbox())
+                .waitUntilPreloaderDisappear()
+                .checkTextInElement(listingPageLogic.sideFilterOenAttribute2(), characteristic);
     }
 
     @Test(dataProvider = "routesLKW")
@@ -105,10 +103,10 @@ public class QC_125_FiltersSorting_TestFilterPosition {
     @Description(value = "Test checks filter position LKW")
     public void testFilterPositionLKW(String route) {
         openPage(route);
-        String characteristic = listingPage.langeFilterAttribute3().text();
-        listingPage.langeFilterCheckbox3().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.activeSideFilter3().shouldHave(text(characteristic));
+        String characteristic = listingPageLogic.getTextFromElement(listingPageLogic.langeFilterAttribute3());
+        listingPageLogic.clickFilterButton(listingPageLogic.langeFilterCheckbox3())
+                .waitUntilPreloaderDisappear()
+                .checkTextInElement(listingPageLogic.activeSideFilter3(), characteristic);
     }
 
     @AfterMethod

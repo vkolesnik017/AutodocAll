@@ -38,30 +38,30 @@ public class QC_140_FiltersSorting_TestHoheAndLochanzahlFilterInteraction {
     @Description(value = "Test checks Hohe and Lochanzahl filters interaction")
     public void testHoheAndLochanzahlFilterInteraction(String route) throws Exception {
         openPage(route);
-        String hoheValue = listingPageLogic.hoheThirdSideFilterButton().text();
-        listingPageLogic.clickThirdHoheValue()
-                   .waitUntilPreloaderDisappear();
-        String lochanzahlValue = listingPageLogic.lochanzahlSideFilterButton().text();
-        listingPageLogic.clickFirstLochanzahlValue()
-                   .waitUntilPreloaderDisappear()
-                   .checkProductAttributeOnListingWithCarAndFilter(hoheValue, listingPageLogic.hoheProductAttributeGenericRoute(), listingPageLogic.hoheProductAttributeTecdocRoute())
-                   .checkProductAttributeOnListingWithCarAndFilter(lochanzahlValue, listingPageLogic.lochanzahlProductAttributeGenericRoute(), listingPageLogic.lochanzahlProductAttributeTecdocRoute());
+        String hoheValue = listingPageLogic.getTextFromElement(listingPageLogic.hoheThirdSideFilterButton());
+        listingPageLogic.hoverOnSideFilterAndClick(listingPageLogic.hoheThirdSideFilterButton())
+                .waitUntilPreloaderDisappear();
+        String lochanzahlValue = listingPageLogic.getTextFromElement(listingPageLogic.lochanzahlSideFilterButton());
+        listingPageLogic.hoverOnSideFilterAndClick(listingPageLogic.lochanzahlSideFilterButton())
+                .waitUntilPreloaderDisappear()
+                .checkProductAttributeOnListingWithCarAndFilter(hoheValue, listingPageLogic.hoheProductAttributeGenericRoute(), listingPageLogic.hoheProductAttributeTecdocRoute())
+                .checkProductAttributeOnListingWithCarAndFilter(lochanzahlValue, listingPageLogic.lochanzahlProductAttributeGenericRoute(), listingPageLogic.lochanzahlProductAttributeTecdocRoute());
     }
 
-    @Test
+    @Test(enabled = false)
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks Hohe and Lochanzahl filters interaction search route")
     public void testHoheAndLochanzahlFilterInteractionSearchRoute() throws Exception {
         openPage("https://autodoc.de/" + dataBase.getRouteByRouteName("DE", "search16"));
-        String hoheValue = listingPageLogic.hoheFirstSideFilterButton().text();
-        listingPageLogic.clickFirstHoheValue()
-                   .waitUntilPreloaderDisappear();
-        String lochanzahlValue = listingPageLogic.lochanzahlSideFilterButton().text();
-        listingPageLogic.clickFirstLochanzahlValue()
-                   .waitUntilPreloaderDisappear()
-                   .checkProductAttributeOnListingWithCarAndFilter(hoheValue, listingPageLogic.hoheProductAttributeGenericRoute(), listingPageLogic.hoheProductAttributeTecdocRoute())
-                   .checkProductAttributeOnListingWithCarAndFilter(lochanzahlValue, listingPageLogic.lochanzahlProductAttributeGenericRoute(), listingPageLogic.lochanzahlProductAttributeTecdocRoute());
+        String hoheValue = listingPageLogic.getTextFromElement(listingPageLogic.hoheFirstSideFilterButton());
+        listingPageLogic.clickFilterButton(listingPageLogic.hoheFirstSideFilterButton())
+                        .waitUntilPreloaderDisappear();
+        String lochanzahlValue = listingPageLogic.getTextFromElement(listingPageLogic.lochanzahlSideFilterButton());
+        listingPageLogic.hoverOnSideFilterAndClick(listingPageLogic.lochanzahlSideFilterButton())
+                           .waitUntilPreloaderDisappear()
+                           .checkProductAttributeOnListingWithCarAndFilter(hoheValue, listingPageLogic.hoheProductAttributeGenericRoute(), listingPageLogic.hoheProductAttributeTecdocRoute())
+                           .checkProductAttributeOnListingWithCarAndFilter(lochanzahlValue, listingPageLogic.lochanzahlProductAttributeGenericRoute(), listingPageLogic.lochanzahlProductAttributeTecdocRoute());
     }
 
     @AfterMethod
