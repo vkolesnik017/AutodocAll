@@ -13,7 +13,7 @@ public class SetUp {
     private DataBase db = new DataBase();
     private String shopFromJenkins = System.getenv("ShopFromJenkins");
     private String envFromJenkins = System.getenv("EnvFromJenkins");
-    private String shopsDesktop = "DE,AT,CH,DK,ES,FI,FR,IT,NL,NO,PT,SE.CF";
+    private String shopsDesktop = "DE,AT,CH,DK,ES,FI,FR,IT,NL,NO,PT,SE,CF";
     public String getShopsDesktop() {
         return shopsDesktop;
     }
