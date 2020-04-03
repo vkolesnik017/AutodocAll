@@ -35,6 +35,6 @@ public class QASYS_515_CheckingCodeResponseAnswer {
         int responseCode = http.getResponseCode();
         System.out.println(data);
         System.out.println(responseCode);
-        new CommonMethods().writer(result, true, data + "#" + responseCode);
+        new CommonMethods().writerInFile(result, true, data + "#" + responseCode);
     }
 }
