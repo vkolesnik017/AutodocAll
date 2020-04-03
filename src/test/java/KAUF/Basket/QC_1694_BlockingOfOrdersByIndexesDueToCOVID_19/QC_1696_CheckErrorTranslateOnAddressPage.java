@@ -1,7 +1,8 @@
-package EXPERT.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
+package KAUF.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
 
-import EXPERT.Product_page_Logic;
-import EXPERT.SetUp;
+
+import KAUF.Product_page_Logic;
+import KAUF.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -10,8 +11,9 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.sql.SQLException;
-import static EXPERT.CommonMethods.getCurrentShopFromJSVarInHTML;
-import static EXPERT.SetUp.setUpBrowser;
+
+import static KAUF.CommonMethods.getCurrentShopFromJSVarInHTML;
+import static KAUF.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.open;
 
 public class QC_1696_CheckErrorTranslateOnAddressPage {
@@ -43,7 +45,7 @@ public class QC_1696_CheckErrorTranslateOnAddressPage {
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks translation of error popup on address page")
     public void testCheckErrorTranslateOnAddressPage()/*(String route)*/ throws SQLException {
-        open("https://www.rexbo.at/maxgear/bremsscheibe-190839sport");
+        open("https://www.ersatzteilekauf24.de/autoteile/abs-7714780");
         String shop = getCurrentShopFromJSVarInHTML();
         new Product_page_Logic().addProductToCart()
                 .cartClick()
@@ -55,5 +57,6 @@ public class QC_1696_CheckErrorTranslateOnAddressPage {
 //                .checkingCOVID19TooltipTranslate("CZ", plzCZ, shop)
                 .checkingCOVID19TooltipTranslate("FR", plzFR, shop)
                 .checkingCOVID19TooltipTranslate("PT", plzPT, shop);
+
     }
 }
