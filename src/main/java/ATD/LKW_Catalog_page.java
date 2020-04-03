@@ -46,4 +46,8 @@ class LKW_Catalog_page {
     public SelenideElement motoCategory() {
         return $x("//a[contains(@class,'header-i--moto')]");
     }
+
+    SelenideElement logoInHeader() {
+        return $(".header__logo-main");
+    }
 }

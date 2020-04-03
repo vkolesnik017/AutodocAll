@@ -1,4 +1,4 @@
-package LKW_trucks.QC_200_Separation_of_selector_session_of_LKW_from_PKW_and_Moto;
+package LKW_trucks;
 
 import ATD.LKW_main_page_Logic;
 import ATD.SetUp;
@@ -16,7 +16,8 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_203_Separation_of_LKW_selector_session_from_car {
+public class QC_178_TopParentAndChildCategoriesBlocks {
+
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -30,18 +31,17 @@ public class QC_203_Separation_of_LKW_selector_session_from_car {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks separation of LKW selector session from car")
-    public void testChecksSeparationOfLKWSelectorSessionFromCar(String route) {
+    @Description(value = "Test checks Top parent and child categories blocks")
+    public void testChecksTopParentAndChildCategoriesBlocks(String route) {
         openPage(route);
-        new LKW_main_page_Logic().selectTruckInSelector("24", "714", "1004434")
-                .checkSuccessfullyPageLoading("https://lkwteile.autodoc.de/lastkraftwagen/daf/45?car_id=1004434")
-                .selectCarCategory()
-                .checkSuccessfullyMainPageLoading()
-                .checkOfEmptyOfVerticalSelector()
-                .selectChildCategory("Ölfilter")
-                .checkSuccessfullyChildCategoryLoadingFromMainPage();
-
+        new LKW_main_page_Logic().visibilityOfTopParentBlock()
+                .checkMainElementsOfParentCategoryBlock()
+                .checkOfTransitionToParentCategory()
+                .checkOfTransitionToChildCategory()
+                .checkOfTransitionToCatalog()
+                .checkSuccessfullyLKWCategoriesPageLoading();
     }
+
     @AfterMethod
     private void tearDown() {
         close();

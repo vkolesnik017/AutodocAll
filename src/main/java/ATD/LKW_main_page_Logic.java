@@ -5,6 +5,7 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
+import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byCssSelector;
@@ -228,5 +229,70 @@ public class LKW_main_page_Logic extends LKW_main_page {
         tecDocCatalogOnMainPageLKW().scrollTo();
         childCategoryOnMainPage().click();
         return page(LKW_Category_page_Logic.class);
+    }
+
+    @Step("visibility of Top parent block and his elements .LKW_main_page")
+    public LKW_main_page_Logic visibilityOfTopParentBlock() {
+        tecDocCatalogOnMainPageLKW().shouldBe(visible);
+        titleOfTecDocCatalog().shouldBe(visible);
+        topCatalogBlock().shouldBe(visible);
+        linkOnCatalogPage().shouldBe(visible);
+        return this;
+    }
+
+    @Step("check of main elements in Parent category block .LKW_main_page")
+    public LKW_main_page_Logic checkMainElementsOfParentCategoryBlock() {
+        topParentCategories().shouldHave(size(12));
+
+        for (int i = 0; i < topParentCategories().size(); i++) {
+            imageOfTopParentCategoryInParentBlock().get(i).shouldBe(visible);
+            titleOfTopParentCategoryInParentBlock().get(i).shouldBe(visible);
+            linksOfChildCategoriesBlock().get(i).shouldBe(visible);
+        }
+        return this;
+    }
+
+    @Step("check of transition to Child category .LKW_main_page")
+    public LKW_main_page_Logic checkOfTransitionToChildCategory() {
+        goToChildCategoryWithOutCar().checkSuccessfullyChildCategoryPageLoading();
+        back();
+        goToChildCategoryWithCar().checkSuccessfullyLKWCategoryCarListPageLoading("https://lkwteile.autodoc.de/ersatzteile/olfilter-200157/askam-fargo-desoto/as-950?car_id=1012748");
+        back();
+        return this;
+    }
+
+    @Step("check of transition to Child category without car .LKW_main_page")
+    public LKW_Category_page_Logic goToChildCategoryWithOutCar() {
+        childCategoryInParentCategoryBLock("Ölfilter").click();
+        return page(LKW_Category_page_Logic.class);
+    }
+
+    @Step("check of transition to Child category without car .LKW_main_page")
+    public LKW_Category_car_list_page_Logic goToChildCategoryWithCar() {
+        selectTruckInSelector("2242", "8959", "1012748").checkSuccessfullyPageLoading("https://lkwteile.autodoc.de/lastkraftwagen/askam-fargo-desoto/as-950?car_id=1012748");
+        back();//.goToLKWMainPage();
+        tecDocCatalogOnMainPageLKW().shouldBe(visible).scrollTo();
+        childCategoryInParentCategoryBLock("Ölfilter").click();
+        return page(LKW_Category_car_list_page_Logic.class);
+    }
+
+    @Step("check of transition to Parent category .LKW_main_page")
+    public LKW_main_page_Logic checkOfTransitionToParentCategory() {
+        clickOnImageOfParentCategory().checkSuccessfullyLKWParentCategoryPageLoading("https://lkwteile.autodoc.de/ersatzteile/filter");
+        back();
+        return this;
+    }
+
+    @Step("click on image Of parent category .LKW_main_page")
+    public LKW_Parent_Category_page_Logic clickOnImageOfParentCategory() {
+        imageOfFilterParentCategory().click();
+        return page(LKW_Parent_Category_page_Logic.class);
+    }
+
+
+    @Step("check of transition to Catalog .LKW_main_page")
+    public LKW_Categories_page_Logic checkOfTransitionToCatalog() {
+        linkOnCatalogPage().click();
+        return page(LKW_Categories_page_Logic.class);
     }
 }
