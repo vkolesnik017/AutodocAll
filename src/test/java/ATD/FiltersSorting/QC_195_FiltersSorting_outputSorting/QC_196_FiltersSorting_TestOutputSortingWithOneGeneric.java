@@ -15,11 +15,9 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.close;
 
 public class QC_196_FiltersSorting_TestOutputSortingWithOneGeneric {
-    private Listing_page_Logic listingPage = new Listing_page_Logic();
 
     @BeforeClass
     void setUp() {
@@ -37,12 +35,7 @@ public class QC_196_FiltersSorting_TestOutputSortingWithOneGeneric {
     @Description(value = "Test checks price and addToBasket buttons sorting with one generic")
     public void testSortingOneGeneric(String route) {
         openPage(route);
-        do {
-            listingPage.checkPriceSortingInIncreasingOrderRidex(listingPage.priceOfAllProductsOnPageInList());
-            listingPage.checkPriceSortingInIncreasingOrderNotRidex(listingPage.priceOfAllProductsOnPageInList());
-            listingPage.checkAddToBasketButtonsSorting();
-            listingPage.nextPageButton().click();
-        } while (listingPage.nextPageButton().is(visible));
+        new Listing_page_Logic().checkOutptuSortingWithGeneric();
     }
 
     @AfterMethod
