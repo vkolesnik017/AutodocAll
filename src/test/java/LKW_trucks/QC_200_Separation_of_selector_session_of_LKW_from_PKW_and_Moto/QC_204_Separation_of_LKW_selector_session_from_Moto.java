@@ -34,7 +34,7 @@ public class QC_204_Separation_of_LKW_selector_session_from_Moto {
     public void testChecksSeparationOfLKWSelectorSessionFromMoto(String route) {
         openPage(route);
         new LKW_main_page_Logic().selectTruckInSelector("24", "714", "1004434")
-                .checkSuccessfullyPageLoading()
+                .checkSuccessfullyPageLoading("https://lkwteile.autodoc.de/lastkraftwagen/daf/45?car_id=1004434")
                 .selectMotoCategory().checkSuccessfullyMotoPageLoading()
                 .checkOfEmptyMotoSelector().selectChildCategory()
                 .checkSuccessfullyChildCategoryPageLoading();
