@@ -1,7 +1,8 @@
-package PKW.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
+package XXL.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
 
-import PKW.Product_page_Logic;
-import PKW.SetUp;
+
+import XXL.Product_page_Logic;
+import XXL.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -12,8 +13,8 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static PKW.CommonMethods.getCurrentShopFromJSVarInHTML;
-import static PKW.SetUp.setUpBrowser;
+import static XXL.CommonMethods.getCurrentShopFromJSVarInHTML;
+import static XXL.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -35,9 +36,9 @@ public class QC_1696_CheckErrorTranslateOnAddressPage {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "route", parallel = false)
+    @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return setUp.setUpShopsWithSubroute("prod", setUp.getShopsDesktop(), "main", "product");
+        return setUp.setUpShopWithSubroutes("prod", setUp.getShopsDesktop(), "main", "product");
     }
 
     @Test(dataProvider = "route")
@@ -47,9 +48,7 @@ public class QC_1696_CheckErrorTranslateOnAddressPage {
     public void testCheckErrorTranslateOnAddressPage(String route) throws SQLException {
         open(route);
         String shop = getCurrentShopFromJSVarInHTML();
-        new Product_page_Logic().closeBtnOFPopupReviewIfYes()
-                .addProductToCart()
-                .closePopupOtherCategoryIfYes()
+        new Product_page_Logic().addProductToCart()
                 .cartClick()
                 .nextButtonClick()
                 .signIn(email, password)

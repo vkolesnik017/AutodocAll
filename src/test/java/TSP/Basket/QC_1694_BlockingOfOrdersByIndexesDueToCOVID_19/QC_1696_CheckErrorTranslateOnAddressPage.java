@@ -5,17 +5,20 @@ import TSP.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static BVS.CommonMethods.getCurrentShopFromJSVarInHTML;
-import static BVS.SetUp.setUpBrowser;
+import static TSP.CommonMethods.getCurrentShopFromJSVarInHTML;
+import static TSP.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
 public class QC_1696_CheckErrorTranslateOnAddressPage {
+    private SetUp setUp = new SetUp();
 
     private String email = "qc_1695_autotestCOVID19@mailinator.com";
     private String password = "atdtest";
@@ -32,27 +35,32 @@ public class QC_1696_CheckErrorTranslateOnAddressPage {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "route", parallel = true)
+    @DataProvider(name = "route", parallel = false)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product");
+        return setUp.setUpShopWithSubroutes("prod", setUp.getShopsDesktop(), "main", "product");
     }
 
-    @Test//(dataProvider = "route")
+    @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks translation of error popup on address page")
-    public void testCheckErrorTranslateOnAddressPage()/*(String route)*/ throws SQLException {
-        open("https://www.bildelebutik.dk/products/8101526-oliefilter.htm");
+    public void testCheckErrorTranslateOnAddressPage(String route) throws SQLException {
+        System.out.println(route);
+        open(route);
         String shop = getCurrentShopFromJSVarInHTML();
         new Product_page_Logic().addProductToCart()
                 .cartClick()
                 .nextButtonClick()
                 .signIn(email, password)
-                .checkingCOVID19TooltipTranslate("IT", plzIT, shop)
-                .checkingCOVID19TooltipTranslate("ES", plzES, shop)
-                .checkingCOVID19TooltipTranslate("AT", plzAT, shop)
+                .checkingCOVID19TooltipTranslate("IT", plzIT, shop);
+//                .checkingCOVID19TooltipTranslate("ES", plzES, shop)
+//                .checkingCOVID19TooltipTranslate("AT", plzAT, shop)
 //                .checkingCOVID19TooltipTranslate("CZ", plzCZ, shop)
-                .checkingCOVID19TooltipTranslate("FR", plzFR, shop)
-                .checkingCOVID19TooltipTranslate("PT", plzPT, shop);
+//                .checkingCOVID19TooltipTranslate("FR", plzFR, shop)
+//                .checkingCOVID19TooltipTranslate("PT", plzPT, shop);
+    }
+    @AfterMethod
+    private void teatDown() {
+        close();
     }
 }

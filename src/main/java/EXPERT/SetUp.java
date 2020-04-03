@@ -1,4 +1,4 @@
-package TSP;
+package EXPERT;
 
 import com.codeborne.selenide.Configuration;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -10,14 +10,13 @@ import java.util.List;
 
 public class SetUp {
 
-    private DataBase db = new DataBase();
+    private EXPERT.DataBase db = new EXPERT.DataBase();
     private String shopFromJenkins = System.getenv("ShopFromJenkins");
     private String envFromJenkins = System.getenv("EnvFromJenkins");
-    private String shopsDesktop = "DE,AT,CH,DK,ES,FI,FR,IT,NL,NO,PT,SE,CF";
+    private String shopsDesktop = "DE,AT,CH,DK,ES,FI,FR,IT,NL,NO,PT,SE";
     public String getShopsDesktop() {
         return shopsDesktop;
     }
-
 
 
     public static void setUpBrowser(Boolean Selenoid, String browser, String browserVersion) {
@@ -145,5 +144,4 @@ public class SetUp {
         }
         return env;
     }
-
 }

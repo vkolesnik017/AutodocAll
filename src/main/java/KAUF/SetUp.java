@@ -1,4 +1,4 @@
-package TSP;
+package KAUF;
 
 import com.codeborne.selenide.Configuration;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -13,10 +13,13 @@ public class SetUp {
     private DataBase db = new DataBase();
     private String shopFromJenkins = System.getenv("ShopFromJenkins");
     private String envFromJenkins = System.getenv("EnvFromJenkins");
-    private String shopsDesktop = "DE,AT,CH,DK,ES,FI,FR,IT,NL,NO,PT,SE,CF";
+
     public String getShopsDesktop() {
         return shopsDesktop;
     }
+
+    private String shopsDesktop = "DE,AT,BG,CH,CZ,ES,DK,FI,FR,GR,HU,IT,NL,NO,PL,PT,RO,SE,EN";
+
 
 
 
@@ -145,5 +148,4 @@ public class SetUp {
         }
         return env;
     }
-
 }

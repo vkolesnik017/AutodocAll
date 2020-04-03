@@ -1,23 +1,23 @@
-package PKW.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
+package KAUF.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
 
-import PKW.Product_page_Logic;
-import PKW.SetUp;
+
+import KAUF.Product_page_Logic;
+import KAUF.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static PKW.CommonMethods.getCurrentShopFromJSVarInHTML;
-import static PKW.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static KAUF.CommonMethods.getCurrentShopFromJSVarInHTML;
+import static KAUF.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.open;
 
 public class QC_1696_CheckErrorTranslateOnAddressPage {
+
     private SetUp setUp = new SetUp();
 
     private String email = "qc_1695_autotestCOVID19@mailinator.com";
@@ -40,28 +40,23 @@ public class QC_1696_CheckErrorTranslateOnAddressPage {
         return setUp.setUpShopsWithSubroute("prod", setUp.getShopsDesktop(), "main", "product");
     }
 
-    @Test(dataProvider = "route")
+    @Test//(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks translation of error popup on address page")
-    public void testCheckErrorTranslateOnAddressPage(String route) throws SQLException {
-        open(route);
+    public void testCheckErrorTranslateOnAddressPage()/*(String route)*/ throws SQLException {
+        open("https://www.ersatzteilekauf24.de/autoteile/abs-7714780");
         String shop = getCurrentShopFromJSVarInHTML();
-        new Product_page_Logic().closeBtnOFPopupReviewIfYes()
-                .addProductToCart()
-                .closePopupOtherCategoryIfYes()
+        new Product_page_Logic().addProductToCart()
                 .cartClick()
                 .nextButtonClick()
                 .signIn(email, password)
-                .checkingCOVID19TooltipTranslate("IT", plzIT, shop);
-//                .checkingCOVID19TooltipTranslate("ES", plzES, shop)
+                .checkingCOVID19TooltipTranslate("IT", plzIT, shop)
+                .checkingCOVID19TooltipTranslate("ES", plzES, shop)
 //                .checkingCOVID19TooltipTranslate("AT", plzAT, shop)
 //                .checkingCOVID19TooltipTranslate("CZ", plzCZ, shop)
-//                .checkingCOVID19TooltipTranslate("FR", plzFR, shop)
-//                .checkingCOVID19TooltipTranslate("PT", plzPT, shop);
-    }
-    @AfterMethod
-    private void teatDown() {
-        close();
+                .checkingCOVID19TooltipTranslate("FR", plzFR, shop)
+                .checkingCOVID19TooltipTranslate("PT", plzPT, shop);
+
     }
 }

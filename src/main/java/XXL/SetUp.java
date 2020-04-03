@@ -1,4 +1,4 @@
-package TSP;
+package XXL;
 
 import com.codeborne.selenide.Configuration;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -13,11 +13,11 @@ public class SetUp {
     private DataBase db = new DataBase();
     private String shopFromJenkins = System.getenv("ShopFromJenkins");
     private String envFromJenkins = System.getenv("EnvFromJenkins");
-    private String shopsDesktop = "DE,AT,CH,DK,ES,FI,FR,IT,NL,NO,PT,SE,CF";
+    private String shopsDesktop = "DE,AT,CH,DK,ES,FI,FR,IT,NL,NO,PT,SE,EN";
+
     public String getShopsDesktop() {
         return shopsDesktop;
     }
-
 
 
     public static void setUpBrowser(Boolean Selenoid, String browser, String browserVersion) {
@@ -145,5 +145,4 @@ public class SetUp {
         }
         return env;
     }
-
 }
