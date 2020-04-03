@@ -1,7 +1,7 @@
 package ATD.FiltersSorting.QC_174_FiltersSorting_resetLabel;
 
 
-import ATD.Listing_page;
+import ATD.Listing_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -15,12 +15,11 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.refresh;
 
 public class QC_175_FiltersSorting_TestResetFiltersByClickResetLabel {
-    private Listing_page listingPage = new Listing_page();
+    private Listing_page_Logic listingPage = new Listing_page_Logic();
 
     @BeforeClass
     void setUp() {
@@ -38,19 +37,19 @@ public class QC_175_FiltersSorting_TestResetFiltersByClickResetLabel {
     @Description(value = "Test checks reset filter label")
     public void testResetFiltersByClickResetLabel(String route) {
         openPage(route);
-        listingPage.firstBrandInFilterButton().click();
-        listingPage.labelOfActiveFilter().shouldBe(visible);
-        listingPage.resetAllFiltersButton().shouldBe(visible);
-        refresh();
-        listingPage.labelOfActiveFilter().shouldBe(visible);
-        listingPage.resetAllFiltersButton().shouldBe(visible);
-        listingPage.resetAllFiltersButton().click();
-        listingPage.labelOfActiveFilter().shouldNotBe(visible);
-        listingPage.resetAllFiltersButton().shouldNotBe(visible);
-        listingPage.firstBrandInFilterButton().click();
-        listingPage.closeLabelOfActiveFilter().click();
-        listingPage.labelOfActiveFilter().shouldNotBe(visible);
-        listingPage.resetAllFiltersButton().shouldNotBe(visible);
+        listingPage.clickFilterButton(listingPage.firstBrandInFilterButton())
+                    .checkVisibilityOfElement(listingPage.labelOfActiveFilter())
+                    .checkVisibilityOfElement(listingPage.resetAllFiltersButton());
+                    refresh();
+        listingPage.checkVisibilityOfElement(listingPage.labelOfActiveFilter())
+                    .checkVisibilityOfElement(listingPage.resetAllFiltersButton())
+                    .clickFilterButton(listingPage.resetAllFiltersButton())
+                    .checkElementIsNotVisible(listingPage.labelOfActiveFilter())
+                    .checkElementIsNotVisible(listingPage.resetAllFiltersButton())
+                    .clickFilterButton(listingPage.firstBrandInFilterButton())
+                    .clickFilterButton(listingPage.closeLabelOfActiveFilter())
+                    .checkElementIsNotVisible(listingPage.labelOfActiveFilter())
+                    .checkElementIsNotVisible(listingPage.resetAllFiltersButton());
     }
 
     @AfterMethod

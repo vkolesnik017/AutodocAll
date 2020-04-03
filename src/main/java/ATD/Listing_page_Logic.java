@@ -123,7 +123,7 @@ public class Listing_page_Logic extends Listing_page {
     }
 
     @Step("Method gets brand from product title. Listing_page")
-    public void getBrandFromTitle(String expectedTextInTitle, int brandPositionInAlt, Boolean shouldHaveTextOrNotHave, ElementsCollection titleViewMode) {
+    public Listing_page_Logic getBrandFromTitle(String expectedTextInTitle, int brandPositionInAlt, Boolean shouldHaveTextOrNotHave, ElementsCollection titleViewMode) {
         titleViewMode.shouldHave(sizeGreaterThan(0));
         for (int i = 0; i < titleViewMode.size(); i++) {
             if (shouldHaveTextOrNotHave) {
@@ -132,6 +132,7 @@ public class Listing_page_Logic extends Listing_page {
                 titleViewMode.get(i).shouldNotHave(text(expectedTextInTitle.split(" ")[brandPositionInAlt]));
             }
         }
+        return this;
     }
 
     @Step("Method checks product attribute on listing. Listing_page")
@@ -216,12 +217,12 @@ public class Listing_page_Logic extends Listing_page {
     }
 
     @Step("Method checks product attribute on OEM listing. Listing_page")
-    public void checkProductCharacteristicOnListingOem(String attributeSelectedInSideFilter, ElementsCollection productAttributeOnListing) {
+    public Listing_page_Logic checkProductCharacteristicOnListingOem(String attributeSelectedInSideFilter, ElementsCollection productAttributeOnListing) {
         for (int i = 0; i < $$(".list_products > li").size(); i++) {
             $$(".product-params-oem").get(i).click();
             productAttributeOnListing.get(i).shouldHave(text(attributeSelectedInSideFilter));
-            System.out.println(productAttributeOnListing.get(i).text());
         }
+        return this;
     }
 
     @Step("Method checks add to basket buttons sorting on listing. Listing_page")
@@ -565,6 +566,14 @@ public class Listing_page_Logic extends Listing_page {
         return this;
     }
 
+    @Step("Hover on side filter and click button on search route hohe. Listing_page")
+    public Listing_page_Logic hoverOnSideFilterAndClickSearchRouteHohe(SelenideElement filterButton) {
+        sideJSfilterForm().hover();
+        hoheBlock().hover();
+        filterButton.hover().click();
+        return this;
+    }
+
     @Step("Check filter is canceled. Listing_page")
     public Listing_page_Logic checkFilterIsCanceled(int filterOn, int filterOff) {
         Assert.assertNotEquals(filterOn, filterOff);
@@ -574,6 +583,18 @@ public class Listing_page_Logic extends Listing_page {
     @Step("Check text in element. Listing_page")
     public Listing_page_Logic checkTextInElement(SelenideElement element, String expectedText) {
         element.shouldHave(text(expectedText));
+        return this;
+    }
+
+    @Step("Check visibility of element. Listing_page")
+    public Listing_page_Logic checkVisibilityOfElement(SelenideElement element) {
+        element.shouldBe(visible);
+        return this;
+    }
+
+    @Step("Check element is not visibile. Listing_page")
+    public Listing_page_Logic checkElementIsNotVisible(SelenideElement element) {
+        element.shouldNotBe(visible);
         return this;
     }
 

@@ -48,17 +48,17 @@ public class QC_140_FiltersSorting_TestHoheAndLochanzahlFilterInteraction {
                 .checkProductAttributeOnListingWithCarAndFilter(lochanzahlValue, listingPageLogic.lochanzahlProductAttributeGenericRoute(), listingPageLogic.lochanzahlProductAttributeTecdocRoute());
     }
 
-    @Test(enabled = false)
+    @Test
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks Hohe and Lochanzahl filters interaction search route")
     public void testHoheAndLochanzahlFilterInteractionSearchRoute() throws Exception {
         openPage("https://autodoc.de/" + dataBase.getRouteByRouteName("DE", "search16"));
         String hoheValue = listingPageLogic.getTextFromElement(listingPageLogic.hoheFirstSideFilterButton());
-        listingPageLogic.clickFilterButton(listingPageLogic.hoheFirstSideFilterButton())
+        listingPageLogic.hoverOnSideFilterAndClickSearchRouteHohe(listingPageLogic.hoheFirstSideFilterButton())
                         .waitUntilPreloaderDisappear();
         String lochanzahlValue = listingPageLogic.getTextFromElement(listingPageLogic.lochanzahlSideFilterButton());
-        listingPageLogic.hoverOnSideFilterAndClick(listingPageLogic.lochanzahlSideFilterButton())
+        listingPageLogic.hoverOnSideFilterAndClickSearchRouteHohe(listingPageLogic.lochanzahlSideFilterButton())
                            .waitUntilPreloaderDisappear()
                            .checkProductAttributeOnListingWithCarAndFilter(hoheValue, listingPageLogic.hoheProductAttributeGenericRoute(), listingPageLogic.hoheProductAttributeTecdocRoute())
                            .checkProductAttributeOnListingWithCarAndFilter(lochanzahlValue, listingPageLogic.lochanzahlProductAttributeGenericRoute(), listingPageLogic.lochanzahlProductAttributeTecdocRoute());
