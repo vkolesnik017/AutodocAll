@@ -602,7 +602,7 @@ public class Listing_page_Logic extends Listing_page {
         return this;
     }
 
-    @Step("Check price and add to basket button sorting with generic")
+    @Step("Check price and add to basket button sorting with generic. Listing_page")
     public Listing_page_Logic checkOutptuSortingWithGeneric() {
         do {
             checkPriceSortingInIncreasingOrderRidex(priceOfAllProductsOnPageInList());
@@ -613,7 +613,7 @@ public class Listing_page_Logic extends Listing_page {
         return this;
     }
 
-    @Step("Check price and add to basket button sorting with two generic")
+    @Step("Check price and add to basket button sorting with two generic. Listing_page")
     public Listing_page_Logic checkOutptuSortingWithTwoGeneric() {
         do {
             checkPriceSortingInIncreasingOrderRidex(priceOfAllProductsOnPageInList());
@@ -624,7 +624,7 @@ public class Listing_page_Logic extends Listing_page {
         return this;
     }
 
-    @Step("Check gray button not visible")
+    @Step("Check gray button not visible. Listing_page")
     public Listing_page_Logic checkGrayButtonNotVisible() {
         do {
             grayButton().shouldNot(exist);
@@ -633,7 +633,7 @@ public class Listing_page_Logic extends Listing_page {
         return this;
     }
 
-    @Step("Check add to basket buttons sorting with pagination")
+    @Step("Check add to basket buttons sorting with pagination. Listing_page")
     public Listing_page_Logic checkAddToBasketButtonsSortingWithPagination() {
         do {
             checkAddToBasketButtonsSorting();
