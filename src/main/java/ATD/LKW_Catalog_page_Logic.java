@@ -36,7 +36,7 @@ public class LKW_Catalog_page_Logic extends LKW_Catalog_page {
 
     @Step("Comparison TecDoc and InHeader catalogs. LKW_Catalog_page")
     public LKW_Catalog_page_Logic comparisonTecDocAndInHeaderCatalogs() {
-        new LKW_main_page_Logic().selectTruckInSelector("36","682","1008978");
+        new LKW_main_page_Logic().selectTruckInSelector("36", "682", "1008978");
         getCategoryInTecDocCatalog();
         List<Integer> attributeOfTecDocCatalog = new ArrayList<>(getCategoryInTecDocCatalog());
         getCategoryInHeaderCatalog();
@@ -61,9 +61,9 @@ public class LKW_Catalog_page_Logic extends LKW_Catalog_page {
     }
 
     @Step("Сheck that the page loads successfully. LKW_Catalog_page")
-    public LKW_Catalog_page_Logic checkSuccessfullyPageLoading() {
+    public LKW_Catalog_page_Logic checkSuccessfullyPageLoading(String currentUrl) {
         catalogTecDoc().shouldBe(visible);
-        Assert.assertEquals(url(), "https://lkwteile.autodoc.de/lastkraftwagen/daf/45?car_id=1004434");
+        Assert.assertEquals(url(), currentUrl);
         return this;
     }
 

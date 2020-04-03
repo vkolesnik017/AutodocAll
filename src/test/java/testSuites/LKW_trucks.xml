@@ -54,6 +54,7 @@
             <class name="LKW_trucks.QC_134_TopParentAndChildCategoriesBlocks"/>
             <class name="LKW_trucks.QC_135_SeoDescriptionBlock"/>
             <class name="LKW_trucks.QC_136_LinkBlockOfTopBrands"/>
+            <class name="LKW_trucks.QC_178_TopParentAndChildCategoriesBlocks"/>
         </classes>
     </test>
 

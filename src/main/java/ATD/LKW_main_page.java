@@ -135,6 +135,41 @@ public class LKW_main_page {
     SelenideElement tecDocCatalogOnMainPageLKW() {
         return $x("//div[@class='truck-home-parts']");
     }
+
+    SelenideElement titleOfTecDocCatalog() {
+        return $x("//h2[@class='truck-home-parts__title']");
+    }
+
+    SelenideElement linkOnCatalogPage() {
+        return $x("//span[@class='truck-home-parts__show-all link']");
+    }
+
+    SelenideElement topCatalogBlock() {
+        return $x("//ul[@class='truck-home-parts__list']");
+    }
+
+    SelenideElement imageOfFilterParentCategory() {
+        return $x("//span[contains(text(),'Filter')]/..//img");
+    }
+
+    ElementsCollection topParentCategories() {
+        return $$x("//li[@class='truck-home-parts__item']");
+    }
+
+    ElementsCollection imageOfTopParentCategoryInParentBlock() {
+        return $$x("//span[@class='truck-home-parts__item-image']");
+    }
+
+    ElementsCollection titleOfTopParentCategoryInParentBlock() {
+        return $$x("//span[@class='truck-home-parts__item-title']");
+    }
+
+    ElementsCollection linksOfChildCategoriesBlock() {
+        return $$x("//*[@class='truck-home-parts__cat-list']");
+    }
+
+    SelenideElement childCategoryInParentCategoryBLock(String titleOfChildCategory)
+    {return $x("//a[@class='truck-home-parts__cat-link js--lkw-modal__cat-link']/span[contains(text(),'"+titleOfChildCategory+"')]");}
 }
 
 
