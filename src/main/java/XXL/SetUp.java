@@ -15,6 +15,7 @@ public class SetUp {
     private String envFromJenkins = System.getenv("EnvFromJenkins");
     private String shopsDesktop = "DE,AT,CH,DK,ES,FI,FR,IT,NL,NO,PT,SE,EN";
 
+
     public String getShopsDesktop() {
         return shopsDesktop;
     }
