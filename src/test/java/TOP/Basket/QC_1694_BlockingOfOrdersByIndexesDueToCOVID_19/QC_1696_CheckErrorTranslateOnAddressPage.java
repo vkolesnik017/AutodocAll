@@ -1,26 +1,28 @@
-package ATD.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
+package TOP.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
 
-import ATD.Cart_page_Logic;
-import ATD.Product_page_Logic;
-import ATD.SetUp;
+
+import TOP.Product_page_Logic;
+import TOP.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.*;
-import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static TOP.CommonMethods.getCurrentShopFromJSVarInHTML;
+import static TOP.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Selenide.open;
 
 public class QC_1696_CheckErrorTranslateOnAddressPage {
+
     private SetUp setUp = new SetUp();
 
     private String email = "qc_1695_autotestCOVID19@mailinator.com";
+    private String password = "atdtest";
+
     private String plzIT = "00100";
     private String plzES = "10900";
     private String plzAT = "6450";
@@ -35,32 +37,26 @@ public class QC_1696_CheckErrorTranslateOnAddressPage {
 
     @DataProvider(name = "route", parallel = false)
     Object[] dataProviderProducts() throws SQLException {
-        return setUp.setUpShopsWithSubroute("prod", setUp.getShopsDesktop(), "main", "product2");
-//        return setUp.setUpShopsWithSubroute("prod", "AT", "main", "product2");
+        return setUp.setUpShopsWithSubroute("prod", setUp.getShopsDesktop(), "main", "product");
     }
 
-    @Test(dataProvider = "route")
+    @Test//(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks translation of error popup on address page")
-    public void testCheckErrorTranslateOnAddressPage(String route) throws SQLException {
-        openPage(route);
+    public void testCheckErrorTranslateOnAddressPage()/*(String route)*/ throws SQLException {
+        open("https://www.topersatzteile.de/hersteller/vaico/2215782");
         String shop = getCurrentShopFromJSVarInHTML();
         new Product_page_Logic().addProductToCart()
-                .closePopupOtherCategoryIfYes()
                 .cartClick()
-                .makePriceForMinimumOrderForCH(shop);
-                new Cart_page_Logic().nextButtonClick()
+                .nextButtonClick()
                 .signIn(email, password)
-//                .checkingCOVID19TooltipTranslate("IT", plzIT, shop);
-                .checkingCOVID19TooltipTranslate("ES", plzES, shop)
-//                .checkingCOVID19TooltipTranslate("AT", plzAT, shop);
+//                .checkingCOVID19TooltipTranslate("IT", plzIT, shop)
+//                .checkingCOVID19TooltipTranslate("ES", plzES, shop)
+//                .checkingCOVID19TooltipTranslate("AT", plzAT, shop)
 //                .checkingCOVID19TooltipTranslate("CZ", plzCZ, shop)
 //                .checkingCOVID19TooltipTranslate("FR", plzFR, shop)
                 .checkingCOVID19TooltipTranslate("PT", plzPT, shop);
-    }
-    @AfterMethod
-    private void teatDown() {
-        close();
+
     }
 }

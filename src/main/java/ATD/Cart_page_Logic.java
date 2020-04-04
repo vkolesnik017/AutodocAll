@@ -37,15 +37,17 @@ public class Cart_page_Logic extends Cart_page {
     }
 
     @Step("Make price for minimum order for CH. Cart_page")
-    public Cart_page makePriceForMinimumOrderForCH() {
-        if (!closeDeliveryLimitPopupForCH().isDisplayed()) {
-            sleep(2000);
-        }
-        if (closeDeliveryLimitPopupForCH().isDisplayed()) {
-            closeDeliveryLimitPopupForCH().click();
-            while (nextBtnIsNotActiveForCH().isDisplayed()) {
-                counterPlusBtn().click();
-                sleep(500);
+    public Cart_page makePriceForMinimumOrderForCH(String shop) {
+        if(shop.equals("CH")) {
+            if (!closeDeliveryLimitPopupForCH().isDisplayed()) {
+                sleep(2000);
+            }
+            if (closeDeliveryLimitPopupForCH().isDisplayed()) {
+                closeDeliveryLimitPopupForCH().click();
+                while (nextBtnIsNotActiveForCH().isDisplayed()) {
+                    counterPlusBtn().click();
+                    sleep(500);
+                }
             }
         }
         return this;
@@ -73,6 +75,7 @@ public class Cart_page_Logic extends Cart_page {
 
     @Step("Checks currency on cart page. Cart_page")
     public Cart_page_Logic checkCurrencyOnCartPage(String shop) throws SQLException {
+        makePriceForMinimumOrderForCH(shop);
         String expectedCurrency = new DataBase().getCurrency(shop);
         getCurrencyAndVerify(totalOrderPriceInHead(), "orderPriceInHead", shop, expectedCurrency);
         getCurrencyAndVerify(priceOfAllProducts(), "priceOfAllProducts", shop, expectedCurrency);
@@ -84,11 +87,14 @@ public class Cart_page_Logic extends Cart_page {
 
     @Step("Checks currency on cart page from discount block. Cart_page")
     public Cart_page_Logic checkCurrencyOnCartPageFromDiscountBlock(String shop) throws SQLException {
-        String expectedCurrency = new DataBase().getCurrency(shop);
-        getCurrencyAndVerify(priceWithoutDiscount(), "priceWithoutDiscount", shop, expectedCurrency);
-        getCurrencyAndVerify(priceWithDiscount(), "priceWithDiscount", shop, expectedCurrency);
-        getCurrencyAndVerify(discount(), "discount", shop, expectedCurrency);
-        return this;
+        if (discountBlock().isDisplayed()) {
+            String expectedCurrency = new DataBase().getCurrency(shop);
+            getCurrencyAndVerify(priceWithoutDiscount(), "priceWithoutDiscount", shop, expectedCurrency);
+            getCurrencyAndVerify(priceWithDiscount(), "priceWithDiscount", shop, expectedCurrency);
+            getCurrencyAndVerify(discount(), "discount", shop, expectedCurrency);
+        }
+            return this;
+
     }
 
     @Step("check of id added product to basket from listing. Cart_page")
