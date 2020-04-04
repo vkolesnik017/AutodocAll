@@ -1,6 +1,6 @@
 package TKF;
 
-import ATD.DataBase;
+import com.codeborne.selenide.ex.ElementNotFound;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -8,10 +8,11 @@ import org.testng.Assert;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
-import static com.codeborne.selenide.Condition.appear;
-import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class CartAddress_page_Logic extends CartAddress_page {
@@ -21,6 +22,18 @@ public class CartAddress_page_Logic extends CartAddress_page {
         nextButton().scrollTo();
         nextButton().click();
         return page(CartPayments_page_Logic.class);
+    }
+
+    @Step("Filling postal code {sendPostalCode}. CartAddress_page")
+    public CartAddress_page_Logic fillingPostalCodeField(String sendPostalCode) {
+        postalCodeField().click();
+        char[] array = sendPostalCode.toCharArray();
+        for (char anArray : array) {
+            String send = String.valueOf(anArray);
+            sleep(1000);
+            getWebDriver().findElement(By.id("form_lPlz")).sendKeys(send);
+        }
+        return this;
     }
 
     @Step("Filling postal code {sendPostalCode}. CartAddress_page")
@@ -53,15 +66,77 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return this;
     }
 
-    private CartAddress_page_Logic parsingCOVID19PlzForIT(String plz, String shop) throws SQLException, IOException {
-        int beginIndex = Integer.parseInt(plz.substring(0, plz.indexOf("-")));
-        int endIndex = Integer.parseInt(plz.substring(plz.indexOf("-") + 1));
-        for (int i = beginIndex; i <= endIndex; i++) {
-            StringBuilder plzParce = new StringBuilder(String.valueOf(i));
+    @Step("Checking block plz for country {countryCheck} on skin {skin}. CartAddress_page")
+    public CartAddress_page_Logic checkingCOVID19Block(String countryCheck, String[] shopPlz, String file, String skin) throws IOException {
+        chooseDeliveryCountry(countryCheck);
+        for (String plz : shopPlz) {
+            List<String> plzForChek = new ArrayList<>();
+            if (countryCheck.equals("IT")) plzForChek = parsingAndCheckCOVIDBlockPlzForIT(plz);
+            if (countryCheck.equals("PT")) plzForChek = parsingAndCheckCOVIDBlockPlzForPT(plz);
+            for (String plzForShop : plzForChek) {
+                checkingAppearingCOVIDTooltip(countryCheck, plzForShop, file, skin);
+            }
+            checkingAppearingCOVIDTooltip(countryCheck, plz, file, skin);
+        }
+
+        return this;
+    }
+
+    @Step("Parsing plz {plz} and checking block for IT shop. CartAddress_page")
+    private List<String> parsingAndCheckCOVIDBlockPlzForIT(String plz) {
+        List<String> plzForIT = new ArrayList<>();
+        if (plz.contains("-")) {
+            int beginIndex = Integer.parseInt(plz.substring(0, plz.indexOf("-")));
+            int endIndex = Integer.parseInt(plz.substring(plz.indexOf("-") + 1));
+            for (int i = beginIndex; i <= endIndex; i++) {
+                StringBuilder plzParce = new StringBuilder(String.valueOf(i));
+                while (plzParce.length() < 5) {
+                    plzParce.insert(0, "0");
+                }
+                plzForIT.add(String.valueOf(plzParce));
+            }
+        } else {
+            StringBuilder plzParce = new StringBuilder(String.valueOf(plz));
             while (plzParce.length() < 5) {
                 plzParce.insert(0, "0");
             }
-//            checkingCOVID19TooltipTranslate(String.valueOf(plzParce), shop);
+            plzForIT.add(String.valueOf(plzParce));
+        }
+        return plzForIT;
+    }
+
+    @Step("Parsing plz {plz} and checking block for PT shop. CartAddress_page")
+    public List<String> parsingAndCheckCOVIDBlockPlzForPT(String plz) {
+        List<String> plzForPT = new ArrayList<>();
+        int firstPlzValue = Integer.parseInt(plz.substring(0, plz.indexOf("-")));
+        int beginIndex = Integer.parseInt(plz.substring(plz.indexOf("-"), 8));
+        int endIndex = Integer.parseInt(plz.substring(plz.lastIndexOf("-") + 1, 17));
+        for (int i = beginIndex; i <= endIndex; i++) {
+            StringBuilder plzParce = new StringBuilder(String.valueOf(i));
+            while (plzParce.length() < 3) {
+                plzParce.insert(0, "0");
+            }
+            plzForPT.add(firstPlzValue + "-" + String.valueOf(plzParce));
+        }
+        return plzForPT;
+    }
+
+    @Step("Checking appearing COVID Tooltip for country {countryCheck} with {plz} on skin {skin} . CartAddress_page")
+    private CartAddress_page_Logic checkingAppearingCOVIDTooltip(String countryCheck, String plz, String
+            file, String skin) throws IOException {
+        fillingPostalCodeFieldJS(plz);
+        nextBtnClick();
+        try {
+            if (!textFromPopUpCOVID19().getText().contains("COVID")) {
+                sleep(2000);
+                postalCodeField().click();
+                nextBtnClick();
+            }
+            textFromPopUpCOVID19().shouldHave(text("COVID"));
+        } catch (ElementNotFound redirectOnPaymentsPage) {
+            System.err.println(plz + " err");
+            new CommonMethods().writerInFile(file, true, "Country check: " + countryCheck + " PLZ: " + plz + " On skin: " + skin);
+            back();
         }
         return this;
     }
