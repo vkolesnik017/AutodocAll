@@ -17,7 +17,6 @@ import static com.codeborne.selenide.Selenide.open;
 
 
 public class QC_1696_CheckErrorTranslateOnAddressPage {
-
     private SetUp setUp = new SetUp();
 
     private String email = "qc_1695_autotestCOVID19@mailinator.com";
@@ -37,7 +36,7 @@ public class QC_1696_CheckErrorTranslateOnAddressPage {
 
     @DataProvider(name = "route", parallel = false)
     Object[] dataProviderProducts() throws SQLException {
-        return setUp.setUpShopWithSubroutes("prod", setUp.getShopsDesktop(), "main", "product");
+        return setUp.setUpShopsWithSubroute("prod", setUp.getShopsDesktop(), "main", "product");
     }
 
     @Test//(dataProvider = "route")
