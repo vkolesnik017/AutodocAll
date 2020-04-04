@@ -76,6 +76,10 @@ public class Cart_page {
         return $x("//span[contains(text(),'Pfand')]/following-sibling::span");
     }
 
+    public SelenideElement discountBlock() {
+        return $x("//*[@id='promo-footer']");
+    }
+
     public SelenideElement priceWithoutDiscount() {
         return $(byXpath("//*[@id='promo-footer']//p/b[1]"));
     }
