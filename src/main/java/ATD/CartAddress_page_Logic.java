@@ -144,7 +144,7 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return tooltipCOVID19().getText();
     }
 
-
+    @Step("Checking block plz for country {countryCheck} on skin {skin}. CartAddress_page")
     public CartAddress_page_Logic checkingCOVID19Block(String countryCheck, String[] shopPlz, String file, String skin) throws IOException {
         chooseDeliveryCountry(countryCheck);
         for (String plz : shopPlz) {
@@ -160,6 +160,7 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return this;
     }
 
+    @Step("Parsing plz {plz} and checking block for IT shop. CartAddress_page")
     private List<String> parsingAndCheckCOVIDBlockPlzForIT(String plz) {
         List<String> plzForIT = new ArrayList<>();
         if (plz.contains("-")) {
@@ -182,6 +183,7 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return plzForIT;
     }
 
+    @Step("Parsing plz {plz} and checking block for PT shop. CartAddress_page")
     public List<String> parsingAndCheckCOVIDBlockPlzForPT(String plz) {
         List<String> plzForPT = new ArrayList<>();
         int firstPlzValue = Integer.parseInt(plz.substring(0, plz.indexOf("-")));
@@ -197,6 +199,7 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return plzForPT;
     }
 
+    @Step("Checking appearing COVID Tooltip for country {countryCheck} with {plz} on skin {skin} . CartAddress_page")
     private CartAddress_page_Logic checkingAppearingCOVIDTooltip(String countryCheck, String plz, String
             file, String skin) throws IOException {
         fillingPostalCodeFieldJS(plz);
@@ -221,7 +224,7 @@ public class CartAddress_page_Logic extends CartAddress_page {
     public CartAddress_page_Logic checkingCOVID19TooltipTranslate(String countryCheck, String plz, String shop) throws
             SQLException {
         chooseDeliveryCountry(countryCheck);
-        fillingPostalCodeField(plz);
+        fillingPostalCodeFieldJS(plz);
         nextBtnClick();
         tooltipCOVID19().waitUntil(appear, 5000);
         String plzPopupText = getTextFromTooltipCOVID19();
