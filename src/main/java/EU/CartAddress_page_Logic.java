@@ -14,6 +14,7 @@ import java.util.List;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+import static com.codeborne.selenide.WebDriverRunner.source;
 
 public class CartAddress_page_Logic extends CartAddress_page {
 
@@ -124,14 +125,18 @@ public class CartAddress_page_Logic extends CartAddress_page {
     private CartAddress_page_Logic checkingAppearingCOVIDTooltip(String countryCheck, String plz, String
             file, String skin) throws IOException {
         fillingPostalCodeFieldJS(plz);
+        System.out.println(plz);
         nextBtnClick();
         try {
-            if (!textFromPopUpCOVID19().getText().contains("COVID")) {
+            textFromPopUpCOVID19().waitUntil(appear, 10000);
+            if (!textFromPopUpCOVID19().getText().contains("COVID-19")) {
                 sleep(2000);
+                closePopupCOVID19();
                 postalCodeField().click();
                 nextBtnClick();
             }
             textFromPopUpCOVID19().shouldHave(text("COVID"));
+            closePopupCOVID19();
         } catch (ElementNotFound redirectOnPaymentsPage) {
             System.err.println(plz + " err");
             new CommonMethods().writerInFile(file, true, "Country check: " + countryCheck + " PLZ: " + plz + " On skin: " + skin);

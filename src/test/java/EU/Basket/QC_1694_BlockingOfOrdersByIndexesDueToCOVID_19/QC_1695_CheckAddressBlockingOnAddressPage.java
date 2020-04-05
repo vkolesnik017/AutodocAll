@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import static EU.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.open;
 
-public class QC_1695_CheckAddressBlockingOnAddressPage {
+public class  QC_1695_CheckAddressBlockingOnAddressPage {
 
     private String file = "C://Autotests/files/res/convid_qc_1695_block.txt";
     private String email = "qc_1695_autotestCOVID19@mailinator.com";
@@ -52,8 +52,8 @@ public class QC_1695_CheckAddressBlockingOnAddressPage {
                 .cartClick()
                 .nextButtonClick()
                 .signIn(email, password)
-                .checkingCOVID19Block("ES", plzES, file, "EU")
-                .checkingCOVID19Block("IT", plzIT, file, "EU")
+//                .checkingCOVID19Block("ES", plzES, file, "EU")
+//                .checkingCOVID19Block("IT", plzIT, file, "EU")
                 .checkingCOVID19Block("PT", plzPT, file, "EU");
     }
 }
