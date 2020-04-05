@@ -28,9 +28,9 @@ public class DataBase {
     // Return list from route Main By Shops getRouteListForMain("AT,DE,CH")
     List<String> getRouteListForMain(String shop) throws SQLException {
         Statement statement = null;
-        Connection conn = coonectionDB("routes_pkw");
+        Connection conn = coonectionDB("routes_kauf");
         ArrayList<String> route = new ArrayList<>();
-        String query = "SELECT " + shop + " FROM autodoc.routes_pkw where id = 1";
+        String query = "SELECT " + shop + " FROM autodoc.routes_kauf where id = 1";
         try {
             statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
@@ -52,9 +52,9 @@ public class DataBase {
     // Return list routes By Shops and route getRouteListByRouteName("AT,DE,CH", "lkw_main")
     List<String> getRouteListByRouteName(String shop, String routeName) throws SQLException {
         Statement statement = null;
-        Connection conn = coonectionDB("routes_pkw");
+        Connection conn = coonectionDB("routes_kauf");
         ArrayList<String> route = new ArrayList<>();
-        String query = "SELECT " + shop + " FROM autodoc.routes_pkw where route_name = '" + routeName + "'";
+        String query = "SELECT " + shop + " FROM autodoc.routes_kauf where route_name = '" + routeName + "'";
         try {
             statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
@@ -76,9 +76,9 @@ public class DataBase {
     // Return String route By Shop and route or subroute getRouteByRouteName("AT", "lkw_main")
     public String getRouteByRouteName(String shop, String routeName) throws SQLException {
         Statement statement = null;
-        Connection conn = coonectionDB("routes_pkw");
+        Connection conn = coonectionDB("routes_kauf");
         ArrayList<String> route = new ArrayList<>();
-        String query = "SELECT " + shop + " FROM autodoc.routes_pkw where route_name = '" + routeName + "'";
+        String query = "SELECT " + shop + " FROM autodoc.routes_kauf where route_name = '" + routeName + "'";
         try {
             statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
@@ -136,9 +136,9 @@ public class DataBase {
     // Return String KBA By Shop getKba("AT")
     public String getKba(String shop) throws SQLException {
         Statement statement = null;
-        Connection conn = coonectionDB("kba_pkw");
+        Connection conn = coonectionDB("kba_kauf");
         String kba = null;
-        String query = "SELECT " + shop + " FROM autodoc.kba_pkw where id = 1";
+        String query = "SELECT " + shop + " FROM autodoc.kba_kauf where id = 1";
         try {
             statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
