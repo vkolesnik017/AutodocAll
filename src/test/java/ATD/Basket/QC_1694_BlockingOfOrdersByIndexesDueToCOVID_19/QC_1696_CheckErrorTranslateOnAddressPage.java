@@ -33,7 +33,6 @@ public class QC_1696_CheckErrorTranslateOnAddressPage {
     @DataProvider(name = "route", parallel = false)
     Object[] dataProviderProducts() throws SQLException {
         return setUp.setUpShopsWithSubroute("prod", setUp.getShopsDesktop(), "main", "product2");
-//        return setUp.setUpShopsWithSubroute("prod", "AT", "main", "product2");
     }
 
     @Test(dataProvider = "route")
