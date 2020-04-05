@@ -41,12 +41,12 @@ public class QC_1695_CheckAddressBlockingOnAddressPage {
         return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product");
     }
 
-    @Test//(dataProvider = "route")
+    @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks blocking plz on address page")
-    public void testBlockingPlzOnAddressPage()/*(String route)*/ throws IOException {
-        open("https://www.autoteileprofi.de/abe-3327591");
+    public void testBlockingPlzOnAddressPage(String route) throws IOException {
+        open(route);
         new Product_page_Logic().addProductToCart()
                 .cartClick()
                 .nextButtonClick()

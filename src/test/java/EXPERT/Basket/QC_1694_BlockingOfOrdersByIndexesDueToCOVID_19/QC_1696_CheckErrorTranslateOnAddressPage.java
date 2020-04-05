@@ -38,12 +38,12 @@ public class QC_1696_CheckErrorTranslateOnAddressPage {
         return setUp.setUpShopsWithSubroute("prod", setUp.getShopsDesktop(), "main", "product");
     }
 
-    @Test//(dataProvider = "route")
+    @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks translation of error popup on address page")
-    public void testCheckErrorTranslateOnAddressPage()/*(String route)*/ throws SQLException {
-        open("https://www.rexbo.ch/van-wezel/trockner-klimaanlage-5800d210");
+    public void testCheckErrorTranslateOnAddressPage(String route) throws SQLException {
+        open(route);
         String shop = getCurrentShopFromJSVarInHTML();
         new Product_page_Logic().addProductToCart()
                 .cartClick()

@@ -40,12 +40,12 @@ public class QC_1696_CheckErrorTranslateOnAddressPage {
         return setUp.setUpShopsWithSubroute("prod", setUp.getShopsDesktop(), "main", "product");
     }
 
-    @Test//(dataProvider = "route")
+    @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks translation of error popup on address page")
-    public void testCheckErrorTranslateOnAddressPage()/*(String route)*/ throws SQLException {
-        open("https://www.ersatzteilekauf24.ch/autoteile/denckermann-10584487");
+    public void testCheckErrorTranslateOnAddressPage(String route) throws SQLException {
+        open(route);
         String shop = getCurrentShopFromJSVarInHTML();
         new Product_page_Logic().addProductToCart()
                 .cartClick()
