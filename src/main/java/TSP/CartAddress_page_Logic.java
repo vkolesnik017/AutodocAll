@@ -149,7 +149,7 @@ public class CartAddress_page_Logic extends CartAddress_page {
     @Step("Checking COVID-19 tooltip translate for country {countryCheck} with PLZ {plz} on shop {shop}. CartAddress_page")
     public CartAddress_page_Logic checkingCOVID19TooltipTranslate(String countryCheck, String plz, String shop) throws SQLException{
         chooseDeliveryCountry(countryCheck);
-        fillingPostalCodeField(plz);
+        fillingPostalCodeFieldJS(plz);
         nextBtnClick();
         String plzPopupText = getTextFromTooltipCOVID19();
         Assert.assertEquals(plzPopupText, new DataBase().getTranslate("convir_translate", shop, "addres"), "Error plz:" + plz);
