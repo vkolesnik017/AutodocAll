@@ -16,6 +16,7 @@ import java.util.List;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class CartAddress_page_Logic extends CartAddress_page {
 
@@ -131,25 +132,31 @@ public class CartAddress_page_Logic extends CartAddress_page {
         System.out.println(plz);
         nextBtnClick();
         try {
-            textFromPopUpCOVID19().waitUntil(appear, 10000);
+            textFromPopUpCOVID19().waitUntil(appear, 10000).shouldHave(text("COVID"));
             if (!textFromPopUpCOVID19().getText().contains("COVID-19")) {
                 sleep(2000);
                 closePopupCOVID19();
                 postalCodeField().click();
                 nextBtnClick();
+                textFromPopUpCOVID19().waitUntil(appear, 10000).shouldHave(text("COVID"));
             }
-            textFromPopUpCOVID19().shouldHave(text("COVID"));
             closePopupCOVID19();
         } catch (ElementNotFound redirectOnPaymentsPage) {
-            System.err.println(plz + " err");
-            new CommonMethods().writerInFile(file, true, "Country check: " + countryCheck + " PLZ: " + plz + " On skin: " + skin);
-            back();
+            if (!url().contains("address")) {
+                System.err.println(plz + " err");
+                new CommonMethods().writerInFile(file, true, "Country check: " + countryCheck + " PLZ: " + plz + " On skin: " + skin);
+                back();
+            } else {
+                nextBtnClick();
+                textFromPopUpCOVID19().waitUntil(appear, 10000).shouldHave(text("COVID"));
+                closePopupCOVID19();
+            }
         }
         return this;
     }
 
     @Step("Checking COVID-19 tooltip translate for country {countryCheck} with PLZ {plz} on shop {shop}. CartAddress_page")
-    public CartAddress_page_Logic checkingCOVID19TooltipTranslate(String countryCheck, String plz, String shop) throws SQLException{
+    public CartAddress_page_Logic checkingCOVID19TooltipTranslate(String countryCheck, String plz, String shop) throws SQLException {
         chooseDeliveryCountry(countryCheck);
         fillingPostalCodeField(plz);
         nextBtnClick();

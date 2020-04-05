@@ -126,14 +126,18 @@ public class CartAddress_page_Logic extends CartAddress_page {
     private CartAddress_page_Logic checkingAppearingCOVIDTooltip(String countryCheck, String plz, String
             file, String skin) throws IOException {
         fillingPostalCodeFieldJS(plz);
+        System.out.println(plz);
         nextBtnClick();
         try {
+            popupCOVID19().waitUntil(appear, 10000);
             if (!popupCOVID19().getText().contains("COVID")) {
                 sleep(2000);
+                closePopupCOVID19();
                 postalCodeField().click();
                 nextBtnClick();
             }
             popupCOVID19().shouldHave(text("COVID"));
+            closePopupCOVID19();
         } catch (ElementNotFound redirectOnPaymentsPage) {
             System.err.println(plz + " err");
             new CommonMethods().writerInFile(file, true, "Country check: " + countryCheck + " PLZ: " + plz + " On skin: " + skin);

@@ -117,8 +117,10 @@ public class CartAddress_page_Logic extends CartAddress_page {
     private CartAddress_page_Logic checkingAppearingCOVIDTooltip(String countryCheck, String plz, String
             file, String skin) throws IOException {
         fillingPostalCodeFieldJS(plz);
+        System.out.println(plz);
         nextBtnClick();
         try {
+            tooltipCOVID19().waitUntil(appear, 10000);
             if (!tooltipCOVID19().getText().contains("COVID")) {
                 sleep(2000);
                 postalCodeField().click();
