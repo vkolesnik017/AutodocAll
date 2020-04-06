@@ -28,7 +28,7 @@ public class Cart_page_Logic extends Cart_page {
                 }
             }
         }
-        if (shop.equals("CF")) {
+        if (shop.equals("FR")) {
             if (!closeDeliveryLimitPopupForCH().isDisplayed()) {
                 sleep(2000);
             }
