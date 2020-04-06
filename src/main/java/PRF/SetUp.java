@@ -13,10 +13,12 @@ public class SetUp {
     private DataBase db = new DataBase();
     private String shopFromJenkins = System.getenv("ShopFromJenkins");
     private String envFromJenkins = System.getenv("EnvFromJenkins");
-    private String shopsDesktop = "DE,AT,CH,DK,ES,FI,FR,IT,NL,NO,PT,SE";
+    private String shopsDesktop = "DE,AT,BN,CH,DK,ES,FI,FR,GR,IT,LT,LV,NL,NO,PL,PT,SE,SI,SK,EN,BF";
     public String getShopsDesktop() {
         return shopsDesktop;
     }
+
+
 
 
     public static void setUpBrowser(Boolean Selenoid, String browser, String browserVersion) {

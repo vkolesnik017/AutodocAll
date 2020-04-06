@@ -18,8 +18,7 @@ public class SetUp {
         return shopsDesktop;
     }
 
-    private String shopsDesktop = "DE,AT,BG,CH,CZ,ES,DK,FI,FR,GR,HU,IT,NL,NO,PL,PT,RO,SE,EN";
-
+    private String shopsDesktop = "DE,AT,CH,DK,ES,FI,FR,IT,NL,NO,PT,SE";
 
 
 
