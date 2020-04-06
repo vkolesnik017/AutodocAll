@@ -329,7 +329,7 @@ public class CommonMethods {
         }
     }
 
-    public void writer(String fileName, boolean append, String write) throws IOException {
+    public void writerInFile(String fileName, boolean append, String write) throws IOException {
         BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileName, append), StandardCharsets.UTF_8));
         System.out.println("Write in file");
         bufferedWriter.newLine();

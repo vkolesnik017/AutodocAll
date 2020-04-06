@@ -19,6 +19,7 @@ public class SetUp {
     }
 
 
+
     public static void setUpBrowser(Boolean Selenoid, String browser, String browserVersion) {
         Configuration.browser = (browser);
         Configuration.browserVersion = (browserVersion);

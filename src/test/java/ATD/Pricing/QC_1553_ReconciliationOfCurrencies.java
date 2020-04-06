@@ -98,7 +98,7 @@ public class QC_1553_ReconciliationOfCurrencies {
         String emailForCH = "reconciliationOfCurrenciesCH@mailinator.com";
         openPage(route + "/a/" + productId);
         String shop = getCurrentShopFromJSVarInHTML();
-        product_page_logic.CompareCurrencyOnProductPageAndInBasketPopup(shop).cartClick().makePriceForMinimumOrderForCH();
+        product_page_logic.CompareCurrencyOnProductPageAndInBasketPopup(shop).cartClick().makePriceForMinimumOrderForCH(shop);
         new Cart_page_Logic().checkCurrencyOnCartPage(shop)
                 .nextButtonClick()
                 .signIn(emailForCH, password)

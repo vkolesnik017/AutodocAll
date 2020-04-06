@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="QC_1696_CheckErrorTranslateOnAddressPage" parallel="methods" thread-count="2"
+       data-provider-thread-count="3">
+
+    <listeners>
+        <listener class-name="ATD.ProjectListener"/>
+    </listeners>
+
+    <test name="ATD_QC_1696_CheckErrorTranslateOnAddressPage">
+        <classes>
+            <class name="ATD.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1696_CheckErrorTranslateOnAddressPage"/>
+        </classes>
+    </test>
+
+    <test name="PKW_QC_1696_CheckErrorTranslateOnAddressPage">
+        <classes>
+            <class name="PKW.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1696_CheckErrorTranslateOnAddressPage"/>
+        </classes>
+    </test>
+
+    <test name="BVS_QC_1696_CheckErrorTranslateOnAddressPage">
+        <classes>
+            <class name="BVS.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1696_CheckErrorTranslateOnAddressPage"/>
+        </classes>
+    </test>
+
+    <test name="Direkt_QC_1696_CheckErrorTranslateOnAddressPage">
+        <classes>
+            <class name="Direkt.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1696_CheckErrorTranslateOnAddressPage"/>
+        </classes>
+    </test>
+
+    <test name="Ersatz_QC_1696_CheckErrorTranslateOnAddressPage">
+        <classes>
+            <class name="Ersatz.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1696_CheckErrorTranslateOnAddressPage"/>
+        </classes>
+    </test>
+
+    <test name="EU_QC_1696_CheckErrorTranslateOnAddressPage">
+        <classes>
+            <class name="EU.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1696_CheckErrorTranslateOnAddressPage"/>
+        </classes>
+    </test>
+
+    <test name="EXPERT_QC_1696_CheckErrorTranslateOnAddressPage">
+        <classes>
+            <class name="EXPERT.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1696_CheckErrorTranslateOnAddressPage"/>
+        </classes>
+    </test>
+
+    <test name="KAUF_QC_1696_CheckErrorTranslateOnAddressPage">
+        <classes>
+            <class name="KAUF.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1696_CheckErrorTranslateOnAddressPage"/>
+        </classes>
+    </test>
+
+    <test name="PRF_QC_1696_CheckErrorTranslateOnAddressPage">
+        <classes>
+            <class name="PRF.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1696_CheckErrorTranslateOnAddressPage"/>
+        </classes>
+    </test>
+
+    <test name="TKF_QC_1696_CheckErrorTranslateOnAddressPage">
+        <classes>
+            <class name="TKF.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1696_CheckErrorTranslateOnAddressPage"/>
+        </classes>
+    </test>
+
+    <test name="TLS_QC_1696_CheckErrorTranslateOnAddressPage">
+        <classes>
+            <class name="TLS.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1696_CheckErrorTranslateOnAddressPage"/>
+        </classes>
+    </test>
+
+    <!--<test name="TOP_QC_1696_CheckErrorTranslateOnAddressPage">-->
+    <!--<classes>-->
+    <!--<class name="TOP.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1696_CheckErrorTranslateOnAddressPage"/>-->
+    <!--</classes>-->
+    <!--</test>-->
+
+    <test name="TSP_QC_1696_CheckErrorTranslateOnAddressPage">
+        <classes>
+            <class name="TSP.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1696_CheckErrorTranslateOnAddressPage"/>
+        </classes>
+    </test>
+
+    <test name="XXL_QC_1696_CheckErrorTranslateOnAddressPage">
+        <classes>
+            <class name="XXL.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1696_CheckErrorTranslateOnAddressPage"/>
+        </classes>
+    </test>
+</suite>
