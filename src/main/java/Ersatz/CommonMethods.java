@@ -7,12 +7,14 @@ import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 
 import static com.codeborne.selenide.Selenide.executeJavaScript;
+import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class CommonMethods {
 
 
     public static String getCurrentShopFromJSVarInHTML() {
         String currentShop = executeJavaScript("return $siteSettings.lang");
+        if (url().contains("piecesauto24.be")) currentShop = "bf";
         return currentShop.toUpperCase();
     }
 
