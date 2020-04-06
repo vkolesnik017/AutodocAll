@@ -295,4 +295,20 @@ public class LKW_main_page_Logic extends LKW_main_page {
         linkOnCatalogPage().click();
         return page(LKW_Categories_page_Logic.class);
     }
+
+    @Step("check of visibility  headline in Top brands block .LKW_main_page")
+    public LKW_main_page_Logic visibilityHeadlineOfTopBrandsBlock() {
+        titleOfTopBrandsBlock().shouldBe(visible);
+        return this;
+    }
+
+
+    @Step("check of visibility  Top brands block .LKW_main_page")
+    public LKW_main_page_Logic visibilityOfTopBrandsBlock() {
+        brandsInTopBrandsBlock().shouldHaveSize(8);
+        for (int i = 0; i < brandsInTopBrandsBlock().size(); i++) {
+            brandsInTopBrandsBlock().get(i).shouldNotHave(attribute("href"));
+        }
+        return this;
+    }
 }
