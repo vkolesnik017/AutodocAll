@@ -14,6 +14,7 @@ import java.util.List;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class CartAddress_page_Logic extends CartAddress_page {
 
@@ -70,15 +71,15 @@ public class CartAddress_page_Logic extends CartAddress_page {
     public CartAddress_page_Logic checkingCOVID19Block(String countryCheck, String[] shopPlz, String file, String skin) throws IOException {
         chooseDeliveryCountry(countryCheck);
         for (String plz : shopPlz) {
-            List<String> plzForChek = new ArrayList<>();
-            if (countryCheck.equals("IT")) plzForChek = parsingAndCheckCOVIDBlockPlzForIT(plz);
-            if (countryCheck.equals("PT")) plzForChek = parsingAndCheckCOVIDBlockPlzForPT(plz);
-            for (String plzForShop : plzForChek) {
-                checkingAppearingCOVIDTooltip(countryCheck, plzForShop, file, skin);
-            }
-            checkingAppearingCOVIDTooltip(countryCheck, plz, file, skin);
+            if (countryCheck.equals("IT") || countryCheck.equals("PT")) {
+                List<String> plzForChek = new ArrayList<>();
+                if (countryCheck.equals("IT")) plzForChek = parsingAndCheckCOVIDBlockPlzForIT(plz);
+                if (countryCheck.equals("PT")) plzForChek = parsingAndCheckCOVIDBlockPlzForPT(plz);
+                for (String plzForShop : plzForChek) {
+                    checkingAppearingCOVIDTooltip(countryCheck, plzForShop, file, skin);
+                }
+            } else checkingAppearingCOVIDTooltip(countryCheck, plz, file, skin);
         }
-
         return this;
     }
 
@@ -138,15 +139,22 @@ public class CartAddress_page_Logic extends CartAddress_page {
             textFromPopUpCOVID19().shouldHave(text("COVID"));
             closePopupCOVID19();
         } catch (ElementNotFound redirectOnPaymentsPage) {
-            System.err.println(plz + " err");
-            new CommonMethods().writerInFile(file, true, "Country check: " + countryCheck + " PLZ: " + plz + " On skin: " + skin);
-            back();
+            if (!url().contains("address")) {
+                System.err.println(plz + " err");
+                new CommonMethods().writerInFile(file, true, "Country check: " + countryCheck + " PLZ: " + plz + " On skin: " + skin);
+                back();
+            } else {
+                System.out.println("HERE");
+                nextBtnClick();
+                closeBtnPopupCOVID19().waitUntil(appear, 10000);
+                closePopupCOVID19();
+            }
         }
         return this;
     }
 
     @Step("Checking COVID-19 tooltip translate for country {countryCheck} with PLZ {plz} on shop {shop}. CartAddress_page")
-    public CartAddress_page_Logic checkingCOVID19TooltipTranslate(String countryCheck, String plz, String shop) throws SQLException{
+    public CartAddress_page_Logic checkingCOVID19TooltipTranslate(String countryCheck, String plz, String shop) throws SQLException {
         chooseDeliveryCountry(countryCheck);
         fillingPostalCodeFieldJS(plz);
         nextBtnClick();

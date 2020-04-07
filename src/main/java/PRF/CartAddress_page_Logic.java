@@ -41,6 +41,7 @@ public class CartAddress_page_Logic extends CartAddress_page {
         postalCodeField().waitUntil(appear, 10000);
         JavascriptExecutor js = (JavascriptExecutor) getWebDriver();
         js.executeScript("arguments[0].value='" + sendPostalCode + "';", postalCodeField());
+        postalCodeField().waitUntil(attribute("value", sendPostalCode), 10000);
         return this;
     }
 
@@ -64,15 +65,15 @@ public class CartAddress_page_Logic extends CartAddress_page {
     public CartAddress_page_Logic checkingCOVID19Block(String countryCheck, String[] shopPlz, String file, String skin) throws IOException {
         chooseDeliveryCountry(countryCheck);
         for (String plz : shopPlz) {
-            List<String> plzForChek = new ArrayList<>();
-            if (countryCheck.equals("IT")) plzForChek = parsingAndCheckCOVIDBlockPlzForIT(plz);
-            if (countryCheck.equals("PT")) plzForChek = parsingAndCheckCOVIDBlockPlzForPT(plz);
-            for (String plzForShop : plzForChek) {
-                checkingAppearingCOVIDTooltip(countryCheck, plzForShop, file, skin);
-            }
-            checkingAppearingCOVIDTooltip(countryCheck, plz, file, skin);
+            if (countryCheck.equals("IT") || countryCheck.equals("PT")) {
+                List<String> plzForChek = new ArrayList<>();
+                if (countryCheck.equals("IT")) plzForChek = parsingAndCheckCOVIDBlockPlzForIT(plz);
+                if (countryCheck.equals("PT")) plzForChek = parsingAndCheckCOVIDBlockPlzForPT(plz);
+                for (String plzForShop : plzForChek) {
+                    checkingAppearingCOVIDTooltip(countryCheck, plzForShop, file, skin);
+                }
+            } else checkingAppearingCOVIDTooltip(countryCheck, plz, file, skin);
         }
-
         return this;
     }
 
@@ -118,15 +119,17 @@ public class CartAddress_page_Logic extends CartAddress_page {
     @Step("Checking appearing COVID Tooltip for country {countryCheck} with {plz} on skin {skin} . CartAddress_page")
     private CartAddress_page_Logic checkingAppearingCOVIDTooltip(String countryCheck, String plz, String
             file, String skin) throws IOException {
+        System.out.println(plz);
         fillingPostalCodeFieldJS(plz);
         nextBtnClick();
         try {
-            if (!errorMessageCOVID19().getText().contains("COVID")) {
+            errorMessageCOVID19().waitUntil(appear, 10000);
+            if (!errorMessageCOVID19().getText().contains("COVID-19")) {
                 sleep(2000);
                 postalCodeField().click();
                 nextBtnClick();
             }
-            errorMessageCOVID19().shouldHave(text("COVID"));
+            errorMessageCOVID19().shouldHave(text("COVID-19"));
         } catch (ElementNotFound redirectOnPaymentsPage) {
             System.err.println(plz + " err");
             new CommonMethods().writerInFile(file, true, "Country check: " + countryCheck + " PLZ: " + plz + " On skin: " + skin);
@@ -136,7 +139,7 @@ public class CartAddress_page_Logic extends CartAddress_page {
     }
 
     @Step("Checking COVID-19 tooltip translate for country {countryCheck} with PLZ {plz} on shop {shop}. CartAddress_page")
-    public CartAddress_page_Logic checkingCOVID19TooltipTranslate(String countryCheck, String plz, String shop) throws SQLException{
+    public CartAddress_page_Logic checkingCOVID19TooltipTranslate(String countryCheck, String plz, String shop) throws SQLException {
         chooseDeliveryCountry(countryCheck);
         fillingPostalCodeFieldJS(plz);
         nextBtnClick();
