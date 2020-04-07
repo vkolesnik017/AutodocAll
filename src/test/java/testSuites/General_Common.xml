@@ -23,7 +23,7 @@
     <test name="QC_1571_Header">
         <classes>
             <class name="ATD.General_Common.QC_1571_Header.QC_1601_PresenceBlocksOfPromotionalHeader"/>
-            <class name="ATD.General_Common.QC_1571_Header.QC_1602_HeaderTopBlock"/>
+            <!--<class name="ATD.General_Common.QC_1571_Header.QC_1602_HeaderTopBlock"/>-->
             <!--<class name="ATD.General_Common.QC_1571_Header.QC_1603_TransitionLinksFromBlockHeaderTop"/>-->
             <class name="ATD.General_Common.QC_1571_Header.QC_1604_PresenceOfCategoriesInHeaderNavBlock"/>
             <class name="ATD.General_Common.QC_1571_Header.QC_1605_NavigateCategoriesInHeaderNavBlock"/>
