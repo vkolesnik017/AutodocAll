@@ -66,7 +66,7 @@ public class QASYS_455_DeletingOfDangerousProductFromBasket {
                 .cartClick()
                 .nextButtonClick()
                 .signIn(email, password)
-                .chooseDeliveryCountry(deliveryCountry)
+                .chooseDeliveryCountryForShipping(deliveryCountry)
                 .fillInPostalCode("11111")
                 .nextBtnClick()
                 .nextBtnClick();

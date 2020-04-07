@@ -1,8 +1,7 @@
-package PKW.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
+package Direkt.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
 
-import PKW.Cart_page_Logic;
-import PKW.Product_page_Logic;
-import PKW.SetUp;
+import Direkt.Product_page_Logic;
+import Direkt.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -13,9 +12,8 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static PKW.CommonMethods.checkingContainsUrl;
-import static PKW.CommonMethods.getCurrentShopFromJSVarInHTML;
-import static PKW.SetUp.setUpBrowser;
+import static Direkt.CommonMethods.checkingContainsUrl;
+import static Direkt.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -44,21 +42,19 @@ public class QC_1697_CheckOfNotBlockingOfIndexInTheBillingBlock {
     @Description(value = "Test checks translation of error popup on address page")
     public void testCheckErrorTranslateOnAddressPage(String route) {
         open(route);
-        new Product_page_Logic().closeBtnOFPopupReviewIfYes()
-                .addProductToCart()
-                .closePopupOtherCategoryIfYes()
+        new Product_page_Logic().addProductToCart()
                 .cartClick()
                 .nextButtonClick()
                 .signIn(email, password)
-                .chooseDeliveryCountryAndFillingPostalCode("IT", "12345", "IT", plzIT)
+                .chooseDeliveryCountryAndFillingPostalCode("IT", plzIT, "IT", "12345")
                 .nextBtnClick()
                 .clickBtnReturnTheAddressPage()
-                .chooseDeliveryCountryAndFillingPostalCode("ES", "12345", "ES", plzES)
+                .chooseDeliveryCountryAndFillingPostalCode("ES", plzES, "ES", "12345")
                 .nextBtnClick()
                 .clickBtnReturnTheAddressPage()
-                .chooseDeliveryCountryAndFillingPostalCode("PT", "1234-567", "PT", plzPT)
+                .chooseDeliveryCountryAndFillingPostalCode("PT", plzPT, "PT", "1234-567")
                 .nextBtnClick();
-        checkingContainsUrl("https://www.pkwteile.de/basket/payments");
+        checkingContainsUrl("https://www.autoteiledirekt.de/basket/payments.html");
     }
 
     @AfterMethod
@@ -66,4 +62,3 @@ public class QC_1697_CheckOfNotBlockingOfIndexInTheBillingBlock {
         close();
     }
 }
-

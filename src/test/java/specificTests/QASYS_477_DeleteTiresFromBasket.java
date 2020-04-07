@@ -56,7 +56,7 @@ public class QASYS_477_DeleteTiresFromBasket {
             .cartClick()
             .nextButtonClick()
             .signIn(email, password)
-            .chooseDeliveryCountry(currentShop)
+            .chooseDeliveryCountryForShipping(currentShop)
             .fillInPostalCode(postalCode)
             .nextBtnClick()
             .nextBtnClick();
