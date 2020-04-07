@@ -18,20 +18,13 @@ import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.Selenide.sleep;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
-public class CartAddress_page_Logic extends CartAddress_page{
+public class CartAddress_page_Logic extends CartAddress_page {
 
     @Step("Next button click. CartAddress_page")
     public CartPayments_page_Logic nextBtnClick() {
         nextButton().click();
         return page(CartPayments_page_Logic.class);
     }
-
-    @Step("Click checkBox billing. CartAddress_page")
-    public CartAddress_page_Logic clickCheckBoxBilling() {
-        billingCheckBox().click();
-        return this;
-    }
-
 
     @Step("Filling postal code {sendPostalCode}. CartAddress_page")
     public CartAddress_page_Logic fillingPostalCodeField(String sendPostalCode) {
@@ -76,6 +69,18 @@ public class CartAddress_page_Logic extends CartAddress_page{
         postalCodeFieldForBilling().waitUntil(appear, 10000);
         JavascriptExecutor js = (JavascriptExecutor) getWebDriver();
         js.executeScript("arguments[0].value='" + sendPostalCode + "';", postalCodeFieldForBilling());
+        return this;
+    }
+
+    @Step("Choosing delivery country {country} and Filling postal code {sendPostalCode} for shipping and billing. CartAddress_page")
+    public CartAddress_page_Logic chooseDeliveryCountryAndFillingPostalCode(String countryShipping, String sendPostalCodeShipping, String countryBilling, String sendPostalCodeBilling) {
+        chooseDeliveryCountryForShipping(countryShipping);
+        fillingPostalCodeFieldJSForShipping(sendPostalCodeShipping);
+        if (!billingForm().isDisplayed()) {
+            billingCheckBox().click();
+        }
+        chooseDeliveryCountryForBilling(countryBilling);
+        fillingPostalCodeFieldJSForBilling(sendPostalCodeBilling);
         return this;
     }
 

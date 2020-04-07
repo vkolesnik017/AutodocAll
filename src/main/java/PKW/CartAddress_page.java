@@ -34,6 +34,10 @@ public class CartAddress_page {
         return $x("//input[@id='showBilling']");
     }
 
+    SelenideElement billingForm() {
+        return $(By.id("billing_form"));
+    }
+
     SelenideElement tooltipCOVID19() {
         return $x("//div[@class='error-message']");
     }
