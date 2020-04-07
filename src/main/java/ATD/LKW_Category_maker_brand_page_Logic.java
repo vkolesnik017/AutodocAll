@@ -2,7 +2,7 @@ package ATD;
 
 import io.qameta.allure.Step;
 
-import static com.codeborne.selenide.CollectionCondition.size;
+import static com.codeborne.selenide.CollectionCondition.*;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.back;
 import static com.codeborne.selenide.Selenide.page;
@@ -61,7 +61,36 @@ public class LKW_Category_maker_brand_page_Logic extends LKW_Category_maker_bran
     @Step("visibility of Image of brand in headline .LKW_Category_maker_brand_page ")
     public LKW_Category_maker_brand_page_Logic visibilityOfImageBrandInHeadLine() {
         imageOfTruckInHeadLine().shouldBe(visible);
+        return this;
+    }
 
+    @Step("visibility of headline in Top brands block .LKW_Category_maker_brand_page ")
+    public LKW_Category_maker_brand_page_Logic visibilityOfHeadlineInTopBrandsBlock() {
+        titleOfTopBrandsBlock().shouldBe(visible);
+        return this;
+    }
+
+
+    @Step("visibility  Top brands block .LKW_Category_maker_brand_page ")
+    public LKW_Category_maker_brand_page_Logic visibilityOfTopBrandsBlock() {
+        topBrandsBlock().shouldBe(visible);
+        brandsOfTopBrandsBlock().shouldHave(size(6));
+        return this;
+    }
+
+    @Step("check opportunity to open Top brands block .LKW_Category_maker_brand_page ")
+    public LKW_Category_maker_brand_page_Logic openOfTopBrandsBlock() {
+        linkMoreOfTopBrandsBlock().shouldBe(visible).click();
+        linkCloseOfTopBrandsBlock().shouldBe(visible);
+        brandsOfTopBrandsBlock().shouldHave(sizeGreaterThan(6));
+        return this;
+    }
+
+
+    @Step("check opportunity to close Top brands block .LKW_Category_maker_brand_page ")
+    public LKW_Category_maker_brand_page_Logic closeOfTopBrandsBlock() {
+        linkCloseOfTopBrandsBlock().click();
+        brandsOfTopBrandsBlock().shouldHaveSize(6);
         return this;
     }
 }

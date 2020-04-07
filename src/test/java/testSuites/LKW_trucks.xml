@@ -106,4 +106,12 @@
         </classes>
     </test>
 
+    <test name="QC_33_BrandsBlock">
+        <classes>
+            <class name="LKW_trucks.QC_33_BrandsBLock.QC_34_AvailabilityHeadlineOfTopBrands"/>
+            <class name="LKW_trucks.QC_33_BrandsBLock.QC_37_AvailabilityOfBrandsBlock"/>
+            <class name="LKW_trucks.QC_33_BrandsBLock.QC_40_OpenAndCloseOfBrandsBlock"/>
+        </classes>
+    </test>
+
 </suite>
