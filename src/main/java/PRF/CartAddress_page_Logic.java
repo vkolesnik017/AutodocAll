@@ -65,15 +65,15 @@ public class CartAddress_page_Logic extends CartAddress_page {
     public CartAddress_page_Logic checkingCOVID19Block(String countryCheck, String[] shopPlz, String file, String skin) throws IOException {
         chooseDeliveryCountry(countryCheck);
         for (String plz : shopPlz) {
-            List<String> plzForChek = new ArrayList<>();
-            if (countryCheck.equals("IT")) plzForChek = parsingAndCheckCOVIDBlockPlzForIT(plz);
-            if (countryCheck.equals("PT")) plzForChek = parsingAndCheckCOVIDBlockPlzForPT(plz);
-            for (String plzForShop : plzForChek) {
-                checkingAppearingCOVIDTooltip(countryCheck, plzForShop, file, skin);
-            }
-            checkingAppearingCOVIDTooltip(countryCheck, plz, file, skin);
+            if (countryCheck.equals("IT") || countryCheck.equals("PT")) {
+                List<String> plzForChek = new ArrayList<>();
+                if (countryCheck.equals("IT")) plzForChek = parsingAndCheckCOVIDBlockPlzForIT(plz);
+                if (countryCheck.equals("PT")) plzForChek = parsingAndCheckCOVIDBlockPlzForPT(plz);
+                for (String plzForShop : plzForChek) {
+                    checkingAppearingCOVIDTooltip(countryCheck, plzForShop, file, skin);
+                }
+            } else checkingAppearingCOVIDTooltip(countryCheck, plz, file, skin);
         }
-
         return this;
     }
 
@@ -139,7 +139,7 @@ public class CartAddress_page_Logic extends CartAddress_page {
     }
 
     @Step("Checking COVID-19 tooltip translate for country {countryCheck} with PLZ {plz} on shop {shop}. CartAddress_page")
-    public CartAddress_page_Logic checkingCOVID19TooltipTranslate(String countryCheck, String plz, String shop) throws SQLException{
+    public CartAddress_page_Logic checkingCOVID19TooltipTranslate(String countryCheck, String plz, String shop) throws SQLException {
         chooseDeliveryCountry(countryCheck);
         fillingPostalCodeFieldJS(plz);
         nextBtnClick();

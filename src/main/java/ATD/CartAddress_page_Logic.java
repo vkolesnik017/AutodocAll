@@ -157,7 +157,6 @@ public class CartAddress_page_Logic extends CartAddress_page {
                 }
             } else checkingAppearingCOVIDTooltip(countryCheck, plz, file, skin);
         }
-
         return this;
     }
 
