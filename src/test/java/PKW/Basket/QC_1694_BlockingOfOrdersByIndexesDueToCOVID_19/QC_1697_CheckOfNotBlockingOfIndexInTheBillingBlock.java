@@ -54,25 +54,14 @@ public class QC_1697_CheckOfNotBlockingOfIndexInTheBillingBlock {
                 .makePriceForMinimumOrderForCH(shop);
         new Cart_page_Logic().nextButtonClick()
                 .signIn(email, password)
-                .chooseDeliveryCountryForShipping("IT")
-                .fillingPostalCodeFieldJSForShipping("12345")
-                .clickCheckBoxBilling()
-                .chooseDeliveryCountryForBilling("IT")
-                .fillingPostalCodeFieldJSForBilling(plzIT)
+                .chooseDeliveryCountryAndFillingPostalCode("IT", "12345", "IT", plzIT)
                 .nextBtnClick()
                 .clickBtnReturnTheAddressPage()
-                .chooseDeliveryCountryForShipping("ES")
-                .fillingPostalCodeFieldJSForShipping("12345")
-                .chooseDeliveryCountryForBilling("ES")
-                .fillingPostalCodeFieldJSForBilling(plzES)
+                .chooseDeliveryCountryAndFillingPostalCode("ES", "12345", "ES", plzES)
                 .nextBtnClick()
                 .clickBtnReturnTheAddressPage()
-                .chooseDeliveryCountryForShipping("PT")
-                .fillingPostalCodeFieldJSForShipping("1234-567")
-                .chooseDeliveryCountryForBilling("PT")
-                .fillingPostalCodeFieldJSForBilling(plzPT)
-                .nextBtnClick()
-                .clickBtnReturnTheAddressPage();
+                .chooseDeliveryCountryAndFillingPostalCode("PT", "1234-567", "PT", plzPT)
+                .nextBtnClick();
         checkingContainsUrl("https://www.pkwteile.de/basket/payments");
     }
 
