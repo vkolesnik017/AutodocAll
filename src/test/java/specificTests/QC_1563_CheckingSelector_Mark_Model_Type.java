@@ -35,7 +35,7 @@ public class QC_1563_CheckingSelector_Mark_Model_Type {
         writer(result, true, shop);
     }
 
-    @DataProvider(name = "data", parallel = false)
+    @DataProvider(name = "data", parallel = true)
     Object[] dataProvider() {
         return new Excel().setUpAllCellFromExcel(dataFile, shop);
     }
