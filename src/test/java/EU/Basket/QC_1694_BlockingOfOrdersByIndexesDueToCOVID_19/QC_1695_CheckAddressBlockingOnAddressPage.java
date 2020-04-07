@@ -51,8 +51,8 @@ public class  QC_1695_CheckAddressBlockingOnAddressPage {
                 .cartClick()
                 .nextButtonClick()
                 .signIn(email, password)
-//                .checkingCOVID19Block("ES", plzES, file, "EU")
-//                .checkingCOVID19Block("IT", plzIT, file, "EU")
+                .checkingCOVID19Block("ES", plzES, file, "EU")
+                .checkingCOVID19Block("IT", plzIT, file, "EU")
                 .checkingCOVID19Block("PT", plzPT, file, "EU");
     }
 }

@@ -148,15 +148,15 @@ public class CartAddress_page_Logic extends CartAddress_page {
     public CartAddress_page_Logic checkingCOVID19Block(String countryCheck, String[] shopPlz, String file, String skin) throws IOException {
         chooseDeliveryCountry(countryCheck);
         for (String plz : shopPlz) {
-            List<String> plzForChek = new ArrayList<>();
-            if (countryCheck.equals("IT")) plzForChek = parsingAndCheckCOVIDBlockPlzForIT(plz);
-            if (countryCheck.equals("PT")) plzForChek = parsingAndCheckCOVIDBlockPlzForPT(plz);
-            for (String plzForShop : plzForChek) {
-                checkingAppearingCOVIDTooltip(countryCheck, plzForShop, file, skin);
-            }
-            checkingAppearingCOVIDTooltip(countryCheck, plz, file, skin);
+            if (countryCheck.equals("IT") || countryCheck.equals("PT")) {
+                List<String> plzForChek = new ArrayList<>();
+                if (countryCheck.equals("IT")) plzForChek = parsingAndCheckCOVIDBlockPlzForIT(plz);
+                if (countryCheck.equals("PT")) plzForChek = parsingAndCheckCOVIDBlockPlzForPT(plz);
+                for (String plzForShop : plzForChek) {
+                    checkingAppearingCOVIDTooltip(countryCheck, plzForShop, file, skin);
+                }
+            } else checkingAppearingCOVIDTooltip(countryCheck, plz, file, skin);
         }
-
         return this;
     }
 

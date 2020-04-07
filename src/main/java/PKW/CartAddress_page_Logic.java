@@ -5,17 +5,14 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.codeborne.selenide.Condition.appear;
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.back;
-import static com.codeborne.selenide.Selenide.page;
-import static com.codeborne.selenide.Selenide.sleep;
+import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class CartAddress_page_Logic extends CartAddress_page {
@@ -96,15 +93,15 @@ public class CartAddress_page_Logic extends CartAddress_page {
     public CartAddress_page_Logic checkingCOVID19Block(String countryCheck, String[] shopPlz, String file, String skin) throws IOException {
         chooseDeliveryCountryForShipping(countryCheck);
         for (String plz : shopPlz) {
-            List<String> plzForChek = new ArrayList<>();
-            if (countryCheck.equals("IT")) plzForChek = parsingAndCheckCOVIDBlockPlzForIT(plz);
-            if (countryCheck.equals("PT")) plzForChek = parsingAndCheckCOVIDBlockPlzForPT(plz);
-            for (String plzForShop : plzForChek) {
-                checkingAppearingCOVIDTooltip(countryCheck, plzForShop, file, skin);
-            }
-            checkingAppearingCOVIDTooltip(countryCheck, plz, file, skin);
+            if (countryCheck.equals("IT") || countryCheck.equals("PT")) {
+                List<String> plzForChek = new ArrayList<>();
+                if (countryCheck.equals("IT")) plzForChek = parsingAndCheckCOVIDBlockPlzForIT(plz);
+                if (countryCheck.equals("PT")) plzForChek = parsingAndCheckCOVIDBlockPlzForPT(plz);
+                for (String plzForShop : plzForChek) {
+                    checkingAppearingCOVIDTooltip(countryCheck, plzForShop, file, skin);
+                }
+            } else checkingAppearingCOVIDTooltip(countryCheck, plz, file, skin);
         }
-
         return this;
     }
 
