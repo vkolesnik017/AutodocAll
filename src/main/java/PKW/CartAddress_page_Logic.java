@@ -23,13 +23,6 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return page(CartPayments_page_Logic.class);
     }
 
-    @Step("Click checkBox billing. CartAddress_page")
-    public CartAddress_page_Logic clickCheckBoxBilling() {
-        billingCheckBox().click();
-        return this;
-    }
-
-
     @Step("Filling postal code {sendPostalCode}. CartAddress_page")
     public CartAddress_page_Logic fillingPostalCodeField(String sendPostalCode) {
         postalCodeFieldForShipping().click();
@@ -73,6 +66,18 @@ public class CartAddress_page_Logic extends CartAddress_page {
         postalCodeFieldForBilling().waitUntil(appear, 10000);
         JavascriptExecutor js = (JavascriptExecutor) getWebDriver();
         js.executeScript("arguments[0].value='" + sendPostalCode + "';", postalCodeFieldForBilling());
+        return this;
+    }
+
+    @Step("Choosing delivery country {country} and Filling postal code {sendPostalCode} for shipping and billing. CartAddress_page")
+    public CartAddress_page_Logic chooseDeliveryCountryAndFillingPostalCode(String countryShipping, String sendPostalCodeShipping, String countryBilling, String sendPostalCodeBilling) {
+        chooseDeliveryCountryForShipping(countryShipping);
+        fillingPostalCodeFieldJSForShipping(sendPostalCodeShipping);
+        if (!billingForm().isDisplayed()) {
+            billingCheckBox().click();
+        }
+        chooseDeliveryCountryForBilling(countryBilling);
+        fillingPostalCodeFieldJSForBilling(sendPostalCodeBilling);
         return this;
     }
 
