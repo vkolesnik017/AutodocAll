@@ -14,6 +14,7 @@ import java.util.List;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class CartAddress_page_Logic extends CartAddress_page {
 
@@ -138,9 +139,16 @@ public class CartAddress_page_Logic extends CartAddress_page {
             textFromPopUpCOVID19().shouldHave(text("COVID"));
             closePopupCOVID19();
         } catch (ElementNotFound redirectOnPaymentsPage) {
-            System.err.println(plz + " err");
-            new CommonMethods().writerInFile(file, true, "Country check: " + countryCheck + " PLZ: " + plz + " On skin: " + skin);
-            back();
+            if (!url().contains("address")) {
+                System.err.println(plz + " err");
+                new CommonMethods().writerInFile(file, true, "Country check: " + countryCheck + " PLZ: " + plz + " On skin: " + skin);
+                back();
+            }else {
+                System.out.println("HERE");
+                nextBtnClick();
+                closeBtnPopupCOVID19().waitUntil(appear, 10000);
+                closePopupCOVID19();
+            }
         }
         return this;
     }
