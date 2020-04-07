@@ -29,7 +29,7 @@ public class QASYS_203_DeliveryLimit {
     setUpBrowser(false, "chrome", "77.0");
   }
 
-  @DataProvider(name = "route", parallel = true)
+  @DataProvider(name = "route", parallel = false)
   Object[] dataProvider() {
     return new SetUp().setUpShop("prod", "AT, BG, BE, CH, CZ, DE, DK, EE, ES, FI, FR, EN, GR, HU, IT, LD, LT, LV, NL, NO, PL, PT, RO, SE, SI, SK");
   }
@@ -63,7 +63,7 @@ public class QASYS_203_DeliveryLimit {
             .cartClick()
             .nextButtonClick()
             .signIn(email, password)
-            .chooseDeliveryCountry(currentShop)
+            .chooseDeliveryCountryForShipping(currentShop)
             .fillInPostalCode("default")
             .fillInFiscalCode()
             .nextBtnClick()
