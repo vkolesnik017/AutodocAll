@@ -110,9 +110,8 @@ public class CartAddress_page_Logic extends CartAddress_page {
 
     @Step("Choosing delivery country {country}. CartAddress_page")
     public CartAddress_page_Logic chooseDeliveryCountry(String country) {
-        if (country.equals("EN")) {
-            country = "GB";
-        }
+        if (country.equals("EN")) country = "GB";
+        if (country.equals("LD")) country = "LU";
         countryInSelector(country).shouldBe(visible).click();
         return this;
     }
