@@ -91,4 +91,11 @@ public class LKW_Category_page_Logic extends LKW_Category_page {
         return this;
     }
 
+
+    @Step("click on brand .LKW_Category_page")
+    public LKW_Category_brand_page_Logic clickOnBrand(String titleOfBrand) {
+        titleOfBrand(titleOfBrand).click();
+        return page(LKW_Category_brand_page_Logic.class);
+    }
+
 }
