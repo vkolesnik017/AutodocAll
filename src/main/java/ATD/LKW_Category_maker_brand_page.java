@@ -56,7 +56,16 @@ public class LKW_Category_maker_brand_page {
     ElementsCollection brandsOfTopBrandsBlock() {
         return $$x("//div[@class='kategorie_top_brands']//li").filter(visible);
     }
-    SelenideElement linkMoreOfTopBrandsBlock() {return $x("//div[@class='kategorie_top_brands']//div[@class='m_text show']");}
 
-    SelenideElement linkCloseOfTopBrandsBlock() {return $x("//div[@class='kategorie_top_brands']//div[@class='m_text hide']");}
+    SelenideElement linkMoreOfTopBrandsBlock() {
+        return $x("//div[@class='kategorie_top_brands']//div[@class='m_text show']");
+    }
+
+    SelenideElement linkCloseOfTopBrandsBlock() {
+        return $x("//div[@class='kategorie_top_brands']//div[@class='m_text hide']");
+    }
+
+    SelenideElement childCategoryBlockInSideBar() {
+        return $x("//div[@class='sidebar']");
+    }
 }

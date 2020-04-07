@@ -38,8 +38,12 @@ public class CartAddress_page {
         return $(byXpath("//*[@id='form_lLand']/option[@selected]"));
     }
 
-    SelenideElement postalCodeField() {
+    SelenideElement postalCodeFieldForShipping() {
         return $(By.id("form_lPlz"));
+    }
+
+    SelenideElement postalCodeFieldForBilling() {
+        return $(By.id("form_rPlz"));
     }
 
     SelenideElement fiscalCodeField() {
@@ -50,12 +54,20 @@ public class CartAddress_page {
         return $(byCssSelector(".address-continue>a"));
     }
 
-    SelenideElement countryInSelector(String country) {
+    SelenideElement countryInSelectorForShipping(String country) {
         return $(byXpath("//*[@name='lLand']//*[@data-code='" + country + "']"));
     }
 
-    SelenideElement billingCheckbox() {
+    SelenideElement countryInSelectorForBilling(String country) {
+        return $(byXpath("//*[@name='rLand']//*[@data-code='" + country + "']"));
+    }
+
+    SelenideElement billingCheckBox() {
         return $x("//input[@id='showBilling']");
+    }
+
+    SelenideElement billingForm() {
+        return $(By.id("billing_form"));
     }
 
     SelenideElement popupErrorAboutWrongCompany() {

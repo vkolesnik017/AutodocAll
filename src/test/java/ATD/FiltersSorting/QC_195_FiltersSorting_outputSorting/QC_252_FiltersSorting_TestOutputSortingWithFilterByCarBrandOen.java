@@ -2,7 +2,6 @@ package ATD.FiltersSorting.QC_195_FiltersSorting_outputSorting;
 
 
 import ATD.DataBase;
-import ATD.Listing_page;
 import ATD.Listing_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -15,8 +14,6 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Condition.attribute;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.close;
 
 public class QC_252_FiltersSorting_TestOutputSortingWithFilterByCarBrandOen {
@@ -33,14 +30,11 @@ public class QC_252_FiltersSorting_TestOutputSortingWithFilterByCarBrandOen {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks addToBasket buttons sorting with car brand filter Oen route")
     public void testSortingWithFilterByCarBrandOen() throws SQLException {
-        openPage("https://autodoc.de/" +  dataBase.getRouteByRouteName("DE", "category_oen"));
-        listingPage.carBrandFilterOem().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        do {
-            listingPage.checkAddToBasketButtonsSorting();
-            listingPage.nextPageButton().click();
-        } while (listingPage.nextPageButton().is(visible));
-    }
+        openPage("https://autodoc.de/" + dataBase.getRouteByRouteName("DE", "category_oen"));
+        listingPage.clickFilterButton(listingPage.carBrandFilterOem())
+                        .waitUntilPreloaderDisappear()
+                        .checkAddToBasketButtonsSortingWithPagination();
+            }
 
     @AfterMethod
     private void teatDown() {

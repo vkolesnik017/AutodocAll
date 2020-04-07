@@ -22,12 +22,15 @@ public class LKW_Category_brand_page {
     SelenideElement thirdLinkOfBreadCrumbsBlock() {
         return $x("//li[@class='step_3 active parts_step_3']//a");
     }
+
     SelenideElement fourthLinkOfBreadCrumbsBlock() {
         return $x("//li[@class='step_4 active parts_step_4']//a");
     }
+
     SelenideElement fifthLinkOfBreadCrumbsBlock() {
         return $x("//li[@class='step_5 not_active parts_step_5']//span");
     }
+
     SelenideElement sixthLinkOfBreadCrumbsBlock() {
         return $x("//li[@class='step_6 not_active parts_step_6']//span");
     }
@@ -40,5 +43,11 @@ public class LKW_Category_brand_page {
         return $x("//div[@class='sidebar']");
     }
 
-    SelenideElement imageOfBrandInHeadLine() {return $x("//div[contains(@class,'image_padding')]");}
+    SelenideElement imageOfBrandInHeadLine() {
+        return $x("//div[contains(@class,'image_padding')]");
+    }
+
+    SelenideElement titleOfBrand(String title) {
+        return $x("//li[@data-brand-name='" + title + "']/a");
+    }
 }

@@ -46,4 +46,8 @@ class LKW_Category_page {
     ElementsCollection linksOfChildCategoriesOfTopChildBlockInSidebar() {
         return $$x("//div[@class='block categories blue topSubCats']//li//span");
     }
+
+    SelenideElement titleOfBrand(String title) {
+        return $x("//li[@data-brand-name='" + title + "']/a");
+    }
 }
