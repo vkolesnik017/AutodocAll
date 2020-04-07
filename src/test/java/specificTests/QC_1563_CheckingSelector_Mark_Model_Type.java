@@ -34,7 +34,7 @@ public class QC_1563_CheckingSelector_Mark_Model_Type {
         writer(result, true, shop);
     }
 
-    @DataProvider(name = "data", parallel = true)
+    @DataProvider(name = "data", parallel = false)
     Object[] dataProvider() {
         return new Excel().setUpAllCellFromExcel(dataFile, shop);
     }
@@ -48,11 +48,12 @@ public class QC_1563_CheckingSelector_Mark_Model_Type {
         String groupId = parseExcel(data)[2];
         String groupTitle = parseExcel(data)[3];
         String brand = parseExcel(data)[1];
-        String model = parseExcel(data)[7];
+        String model = parseExcel(data)[6];
 
 
         String shop = calculateUrl(this.shop.trim());
         String startUrl = "https://test." + shop + "maker_id=" + makerId + "&model_id=" + modelId + "&group_id=" + groupId;
+        System.out.println(startUrl);
         openPage(startUrl);
 
         //locators for selector
