@@ -1,7 +1,7 @@
-package PKW.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
+package Ersatz.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
 
-import PKW.Product_page_Logic;
-import PKW.SetUp;
+import Ersatz.Product_page_Logic;
+import Ersatz.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -12,8 +12,8 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static PKW.CommonMethods.checkingContainsUrl;
-import static PKW.SetUp.setUpBrowser;
+import static Ersatz.CommonMethods.checkingContainsUrl;
+import static Ersatz.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -42,9 +42,7 @@ public class QC_1697_CheckOfNotBlockingOfIndexInTheBillingBlock {
     @Description(value = "Test checks translation of error popup on address page")
     public void testCheckErrorTranslateOnAddressPage(String route) {
         open(route);
-        new Product_page_Logic().closeBtnOFPopupReviewIfYes()
-                .addProductToCart()
-                .closePopupOtherCategoryIfYes()
+        new Product_page_Logic().addProductToCart()
                 .cartClick()
                 .nextButtonClick()
                 .signIn(email, password)
@@ -56,7 +54,7 @@ public class QC_1697_CheckOfNotBlockingOfIndexInTheBillingBlock {
                 .clickBtnReturnTheAddressPage()
                 .chooseDeliveryCountryAndFillingPostalCode("PT", "1234-567", "PT", plzPT)
                 .nextBtnClick();
-        checkingContainsUrl("https://www.pkwteile.de/basket/payments");
+        checkingContainsUrl("https://www.autoersatzteile.de/basket/payments");
     }
 
     @AfterMethod
@@ -64,4 +62,3 @@ public class QC_1697_CheckOfNotBlockingOfIndexInTheBillingBlock {
         close();
     }
 }
-
