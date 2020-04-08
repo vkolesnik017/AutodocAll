@@ -2,6 +2,7 @@ package PKW.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
 
 import PKW.Product_page_Logic;
 import PKW.SetUp;
+import files.ForAllSkins;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -22,15 +23,13 @@ public class QC_1695_CheckAddressBlockingOnAddressPage {
     private String email = "qc_1695_autotestCOVID19@mailinator.com";
     private String password = "atdtest";
 
+    private ForAllSkins forAllSkins = new ForAllSkins();
 
-    private String[] plzIT = {"00017", "84030", "02043", "84034-84036", "04022", "85047", "20070", "86012", "20077", "86016", "20080", "86077", "20097", "86079",
-            "20098", "87038", "20100-20199", "87054", "25010", "87056", "25040", "87060", "25050", "88050", "25051", "88060", "25056", "88064", "25059", "88067",
-            "25070", "88068", "25072", "88842", "25074", "89064", "25078", "89822", "25080", "89823", "25084", "90030", "25088", "91018", "39030-39043",
-            "94011", "39045-39049", "94018", "40059", "64030", "64031", "64033-64035", "65010", "65017", "83031"};
+    private String[] plzIT = forAllSkins.getPlzIT();
 
-    private String[] plzPT = {"3880-000-3880-999" ,"3885-000-3885-999"};
+    private String[] plzPT = forAllSkins.getPlzPT();
 
-    private String[] plzES = {"10900"};
+    private String[] plzES = forAllSkins.getPlzES();
 
 
     @BeforeClass

@@ -617,11 +617,11 @@ public class Main_page_Logic extends Main_page {
         commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "service_packages"));
         //HILFE & SUPPORT
         clickAutodocClub();
-        commonMethods.checkingUrlAndCloseTab(db.getRouteByRouteName(getCurrentShopFromJSVarInHTML(), "club_main") + "/?_ga=");
+        commonMethods.checkingUrlAndCloseTab(db.getRouteByRouteName(getCurrentShopFromJSVarInHTML(), "club_main") + "/?utm_source=");
         clickBlog();
         commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "info_section_index"));
         clickVideoTutorials();
-        commonMethods.checkingUrlAndCloseTab(db.getRouteByRouteName(getCurrentShopFromJSVarInHTML(), "club_main") + "/manuals?_ga=");
+        commonMethods.checkingUrlAndCloseTab(db.getRouteByRouteName(getCurrentShopFromJSVarInHTML(), "club_main") + "/manuals?utm_source=");
         clickAltolentsorgung();
         commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "staticAltolentsorgung"));
         clickAgb();

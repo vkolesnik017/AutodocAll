@@ -11,7 +11,7 @@
             <class name="ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1676_HeavyLoadsPositiveCase"/>
             <class name="ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1677_HeavyLoadsNegativeCase"/>
             <class name="ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1678_HeavyLoadsNegativeCasAllData"/>
-            <!--<class name="ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1679_HeavyLoadsFR_PositiveCase"/>-->
+            <class name="ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1679_HeavyLoadsFR_PositiveCase"/>
             <class name="ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1680_HeavyLoadsFR_NegativeCaseBasket"/>
             <class name="ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1681_HeavyLoadsFR_NegativeCaseAllData"/>
             <class name="ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1682_HeavyLoads_Islands"/>
@@ -22,17 +22,17 @@
     </test>
 
     <test name="QC_1486_Island">
-        <classes>
-            <class name="ATD.Basket.QC_1486_Island.QC_1487_ChecksVerificationIslands_BillingIsUndivided_PositiveCase"/>
-            <class name="ATD.Basket.QC_1486_Island.QC_1488_ChecksVerificationIslands_BillingIsUndivided_NegativeCase"/>
-            <class name="ATD.Basket.QC_1486_Island.QC_1489_ChecksVerificationIslands_BillingIsDivided_PositiveCase"/>
-            <class name="ATD.Basket.QC_1486_Island.QC_1491_ChecksVerificationIslandsAndFirm_BillingIsUndivided_IncorrectCompanyData"/>
-            <class name="ATD.Basket.QC_1486_Island.QC_1490_ChecksVerificationIslands_BillingIsDivided_NegativeCase"/>
-            <class name="ATD.Basket.QC_1486_Island.QC_1492_ChecksVerificationIslandsAndFirm_BillingIsDivided_DifferentCountries_NegativeCase"/>
-            <class name="ATD.Basket.QC_1486_Island.QC_1493_ChecksVerificationIslandsAndFirm_BillingIsDivided_PositiveCase"/>
-            <class name="ATD.Basket.QC_1486_Island.QC_1494_ChecksVerificationIslandsAndFirm_BillingIsUndivided_CorrectCompanyData"/>
-            <class name="ATD.Basket.QC_1486_Island.QC_1495_ChecksVerificationIslandsAndFirm_BillingIsDivided_SameCountriesInShipping_IslandWithoutVat"/>
-        </classes>
+    <classes>
+        <class name="ATD.Basket.QC_1486_Island.QC_1487_ChecksVerificationIslands_BillingIsUndivided_PositiveCase"/>
+        <class name="ATD.Basket.QC_1486_Island.QC_1488_ChecksVerificationIslands_BillingIsUndivided_NegativeCase"/>
+        <class name="ATD.Basket.QC_1486_Island.QC_1489_ChecksVerificationIslands_BillingIsDivided_PositiveCase"/>
+        <class name="ATD.Basket.QC_1486_Island.QC_1491_ChecksVerificationIslandsAndFirm_BillingIsUndivided_IncorrectCompanyData"/>
+        <class name="ATD.Basket.QC_1486_Island.QC_1490_ChecksVerificationIslands_BillingIsDivided_NegativeCase"/>
+        <class name="ATD.Basket.QC_1486_Island.QC_1492_ChecksVerificationIslandsAndFirm_BillingIsDivided_DifferentCountries_NegativeCase"/>
+        <class name="ATD.Basket.QC_1486_Island.QC_1493_ChecksVerificationIslandsAndFirm_BillingIsDivided_PositiveCase"/>
+        <class name="ATD.Basket.QC_1486_Island.QC_1494_ChecksVerificationIslandsAndFirm_BillingIsUndivided_CorrectCompanyData"/>
+        <class name="ATD.Basket.QC_1486_Island.QC_1495_ChecksVerificationIslandsAndFirm_BillingIsDivided_SameCountriesInShipping_IslandWithoutVat"/>
+    </classes>
     </test>
 
 </suite>

@@ -13,7 +13,7 @@ public class CommonMethods {
 
     public static String getCurrentShopFromJSVarInHTML() {
         String currentShop = executeJavaScript("return $siteSettings.lang");
-        if(url().contains("piecesdetachees.ch")) currentShop = "ch";
+        if (url().contains("piecesautopro.be")) currentShop = "bf";
         return currentShop.toUpperCase();
     }
 

@@ -1,8 +1,10 @@
 package ATD;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;
 
@@ -39,5 +41,31 @@ public class LKW_Category_maker_brand_page {
         return $x("//li[@class='step_7 not_active parts_step_7']/span/span");
     }
 
-    SelenideElement imageOfTruckInHeadLine() {return $x("//div[contains(@class,'title_count_search')]//img");}
+    SelenideElement imageOfTruckInHeadLine() {
+        return $x("//div[contains(@class,'title_count_search')]//img");
+    }
+
+    SelenideElement titleOfTopBrandsBlock() {
+        return $x("//h3[@class='title_list no_border_top pad_size']");
+    }
+
+    SelenideElement topBrandsBlock() {
+        return $x("//div[@class='kategorie_top_brands']");
+    }
+
+    ElementsCollection brandsOfTopBrandsBlock() {
+        return $$x("//div[@class='kategorie_top_brands']//li").filter(visible);
+    }
+
+    SelenideElement linkMoreOfTopBrandsBlock() {
+        return $x("//div[@class='kategorie_top_brands']//div[@class='m_text show']");
+    }
+
+    SelenideElement linkCloseOfTopBrandsBlock() {
+        return $x("//div[@class='kategorie_top_brands']//div[@class='m_text hide']");
+    }
+
+    SelenideElement childCategoryBlockInSideBar() {
+        return $x("//div[@class='sidebar']");
+    }
 }

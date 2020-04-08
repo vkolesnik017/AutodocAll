@@ -1,13 +1,16 @@
 package ATD;
 
 import io.qameta.allure.Step;
+import org.testng.Assert;
 
-import static com.codeborne.selenide.CollectionCondition.size;
+import static com.codeborne.selenide.CollectionCondition.*;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.back;
 import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class LKW_Category_maker_brand_page_Logic extends LKW_Category_maker_brand_page {
+
     @Step("Check links in bread crumbs block .LKW_Category_maker_brand_page")
     public LKW_Category_maker_brand_page_Logic checkLinksInBreadCrumbsBlock() {
         breadCrumbsLinks().shouldHave(size(7));
@@ -30,7 +33,7 @@ public class LKW_Category_maker_brand_page_Logic extends LKW_Category_maker_bran
         back();
         thirdLinkClick().checkSuccessfullyChildCategoryPageLoading();
         back();
-        fourthLinkClick().checkSuccessfullyCategoryBrandPageLoading();
+        fourthLinkClick().checkSuccessfullyCategoryBrandPageLoading("https://lkwteile.autodoc.de/ersatzteile/olfilter-200157/mf-mann-filter");
         return this;
     }
 
@@ -61,7 +64,44 @@ public class LKW_Category_maker_brand_page_Logic extends LKW_Category_maker_bran
     @Step("visibility of Image of brand in headline .LKW_Category_maker_brand_page ")
     public LKW_Category_maker_brand_page_Logic visibilityOfImageBrandInHeadLine() {
         imageOfTruckInHeadLine().shouldBe(visible);
+        return this;
+    }
 
+    @Step("visibility of headline in Top brands block .LKW_Category_maker_brand_page ")
+    public LKW_Category_maker_brand_page_Logic visibilityOfHeadlineInTopBrandsBlock() {
+        titleOfTopBrandsBlock().shouldBe(visible);
+        return this;
+    }
+
+
+    @Step("visibility  Top brands block .LKW_Category_maker_brand_page ")
+    public LKW_Category_maker_brand_page_Logic visibilityOfTopBrandsBlock() {
+        topBrandsBlock().shouldBe(visible);
+        brandsOfTopBrandsBlock().shouldHave(size(6));
+        return this;
+    }
+
+    @Step("check opportunity to open Top brands block .LKW_Category_maker_brand_page ")
+    public LKW_Category_maker_brand_page_Logic openOfTopBrandsBlock() {
+        linkMoreOfTopBrandsBlock().shouldBe(visible).click();
+        linkCloseOfTopBrandsBlock().shouldBe(visible);
+        brandsOfTopBrandsBlock().shouldHave(sizeGreaterThan(6));
+        return this;
+    }
+
+
+    @Step("check opportunity to close Top brands block .LKW_Category_maker_brand_page ")
+    public LKW_Category_maker_brand_page_Logic closeOfTopBrandsBlock() {
+        linkCloseOfTopBrandsBlock().click();
+        brandsOfTopBrandsBlock().shouldHaveSize(6);
+        return this;
+    }
+
+
+    @Step("check successfully Category maker brand page loading .LKW_Category_brand_page ")
+    public LKW_Category_maker_brand_page_Logic checkSuccessfullyCategoryMakerBrandPageLoading(String currentUrl) {
+        childCategoryBlockInSideBar().shouldBe(visible);
+        Assert.assertEquals(url(), currentUrl);
         return this;
     }
 }
