@@ -38,11 +38,9 @@ public class QC_435_PresenceElementsOnSearchPage {
   @Description(value = "Checks presence elements on search page")
   public void testPresenceElementsOnSearchPage(String route) {
     openPage(route);
-    searchPageLogic.titleOnSearchPage().shouldHave(
-            text("Treffer gefunden für Bremscheiben"));
-    searchPageLogic.blockOfHelpSearchProducts().shouldBe(visible);
-    searchPageLogic.blockOfLinkingCategory().shouldBe(visible);
+    new Search_page_Logic().checkElementsOnSearchPage();
   }
+
   @AfterMethod
   private void tearDown() {
     close();

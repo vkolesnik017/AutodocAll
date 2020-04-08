@@ -3,6 +3,7 @@ package specificTests;
 import ATD.Excel;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.ex.ElementNotFound;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
 import org.testng.annotations.BeforeClass;
@@ -25,8 +26,8 @@ public class QC_1563_CheckingSelector_Mark_Model_Type {
     private final String dataFile = "C://Autotests/files/data/QC_1563_data.xls";
     private final String result = "C://Autotests/files/res/QC_1563_result.txt";
 
-    private String shop = System.getenv("ShopFromJenkins").toLowerCase();
-//    private String shop = "DE";
+        private String shop = System.getenv("ShopFromJenkins").toLowerCase();
+//    private String shop = "de";
 
     @BeforeClass
     void setUp() throws IOException {
@@ -34,7 +35,7 @@ public class QC_1563_CheckingSelector_Mark_Model_Type {
         writer(result, true, shop);
     }
 
-    @DataProvider(name = "data", parallel = false)
+    @DataProvider(name = "data", parallel = true)
     Object[] dataProvider() {
         return new Excel().setUpAllCellFromExcel(dataFile, shop);
     }
@@ -43,12 +44,12 @@ public class QC_1563_CheckingSelector_Mark_Model_Type {
     @Test(dataProvider = "data")
     public void listing(String data) throws Exception {
         System.out.println(data);
-        String makerId = parseExcel(data)[0];
-        String modelId = parseExcel(data)[4];
-        String groupId = parseExcel(data)[2];
-        String groupTitle = parseExcel(data)[3];
-        String brand = parseExcel(data)[1];
-        String model = parseExcel(data)[6];
+        String makerId = parseExcel(data)[0].trim();
+        String modelId = parseExcel(data)[4].trim();
+        String groupId = parseExcel(data)[2].trim();
+        String groupTitle = parseExcel(data)[3].trim();
+        String brand = parseExcel(data)[1].trim();
+        String model = parseExcel(data)[6].trim();
 
 
         String shop = calculateUrl(this.shop.trim());
@@ -56,33 +57,38 @@ public class QC_1563_CheckingSelector_Mark_Model_Type {
         System.out.println(startUrl);
         openPage(startUrl);
 
-        //locators for selector
-        SelenideElement markFromSelector = $(By.xpath("//select[@id='form_maker_id']//option[@selected]"));
-        SelenideElement modelFromSelector = $(By.xpath("//select[@id='form_model_id']//option[@selected]"));
-        SelenideElement groupModelTitleFromSelector = $(By.xpath("//select[@id='form_model_id']//option[@selected]/.."));
+        try {
+            //locators for selector
+            SelenideElement markFromSelector = $(By.xpath("//select[@id='form_maker_id']//option[@selected]"));
+            SelenideElement modelFromSelector = $(By.xpath("//select[@id='form_model_id']//option[@selected]"));
+            SelenideElement groupModelTitleFromSelector = $(By.xpath("//select[@id='form_model_id']//option[@selected]/.."));
 
-        // markFromSelector
-        markFromSelector.shouldBe(Condition.visible);
-        String markFromSelectorText = markFromSelector.getAttribute("innerText");
+            // markFromSelector
+            markFromSelector.shouldBe(Condition.visible);
+            String markFromSelectorText = markFromSelector.getAttribute("innerText");
 
-        //modelFromSelector
-        modelFromSelector.shouldBe(Condition.visible);
-        String modelFromSelectorText = modelFromSelector.getAttribute("innerText");
-        modelFromSelectorText = substring_2(model, modelFromSelectorText, startUrl);
+            //modelFromSelector
+            modelFromSelector.shouldBe(Condition.visible);
+            String modelFromSelectorText = modelFromSelector.getAttribute("innerText");
+            modelFromSelectorText = substring_2(model, modelFromSelectorText, startUrl);
 
-        //modelGroupTitleFromSelector
-        groupModelTitleFromSelector.shouldBe(Condition.visible);
-        String modelGroupTitleFromSelectorText = groupModelTitleFromSelector.getAttribute("label");
+            //modelGroupTitleFromSelector
+            groupModelTitleFromSelector.shouldBe(Condition.visible);
+            String modelGroupTitleFromSelectorText = groupModelTitleFromSelector.getAttribute("label");
 
-        if (!brand.equals(markFromSelectorText))
-            writer(result, true, "MakerTitle" + "#" + brand + "#" + "MakerTitle from page" + "#" + markFromSelectorText + "#" + startUrl);
 
-        if (!model.equals(modelFromSelectorText))
-            writer(result, true, "ModelTitle" + "#" + model + "#" + "ModelTitle from page" + "#" + modelFromSelectorText + "#" + startUrl);
+            if (!brand.equals(markFromSelectorText))
+                writer(result, true, "MakerTitle" + "#" + brand + "#" + "MakerTitle from page" + "#" + markFromSelectorText + "#" + startUrl);
 
-        if (!groupTitle.equals(modelGroupTitleFromSelectorText))
-            writer(result, true, "GroupTitle" + "#" + groupTitle + "#" + "GroupTitle from page" + "#" + modelGroupTitleFromSelectorText + "#" + startUrl);
+            if (!model.equals(modelFromSelectorText))
+                writer(result, true, "ModelTitle" + "#" + model + "#" + "ModelTitle from page" + "#" + modelFromSelectorText + "#" + startUrl);
 
+            if (!groupTitle.equals(modelGroupTitleFromSelectorText))
+                writer(result, true, "GroupTitle" + "#" + groupTitle + "#" + "GroupTitle from page" + "#" + modelGroupTitleFromSelectorText + "#" + startUrl);
+
+        } catch (ElementNotFound element) {
+            writer(result, true, "Trouble with element in selector:  " + startUrl);
+        }
         close();
 
     }

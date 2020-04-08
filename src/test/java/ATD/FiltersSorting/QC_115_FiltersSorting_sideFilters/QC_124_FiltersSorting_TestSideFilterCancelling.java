@@ -20,7 +20,6 @@ import static com.codeborne.selenide.Selenide.close;
 
 public class QC_124_FiltersSorting_TestSideFilterCancelling {
     private Listing_page_Logic listingPage = new Listing_page_Logic();
-    private DataBase dataBase = new DataBase();
 
     @BeforeClass
     void setUp() {
@@ -54,12 +53,12 @@ public class QC_124_FiltersSorting_TestSideFilterCancelling {
         listingPage.checkFilterIsCanceled(numberOfAttributesFilter, numberOfAttributesNoFilter);
     }
 
-    @Test
+    @Test(enabled = false)
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks side filter cancelling on LKW routes")
     public void testSideFilterCancellingLKWcar() throws SQLException {
-        openPage("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_category_car_list6"));
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list6"));
         String characteristic = listingPage.getTextFromElement(listingPage.langeFilterAttribute2());
         listingPage.clickFilterButton(listingPage.langeFilterCheckbox2())
                     .waitUntilPreloaderDisappear()
@@ -76,7 +75,7 @@ public class QC_124_FiltersSorting_TestSideFilterCancelling {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks side filter cancelling on LKW routes")
     public void testSideFilterCancellingLKWmodel() throws SQLException {
-        openPage("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_category_car_list7"));
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list7"));
         String characteristic = listingPage.getTextFromElement(listingPage.langeFilterAttribute3());
         listingPage.clickFilterButton(listingPage.langeFilterCheckbox3())
                     .waitUntilPreloaderDisappear()
@@ -93,7 +92,7 @@ public class QC_124_FiltersSorting_TestSideFilterCancelling {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks side filter cancelling on LKW routes")
     public void testSideFilterCancellingLKWsearch() throws SQLException {
-        openPage("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_search"));
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_search"));
         String characteristic = listingPage.getTextFromElement(listingPage.durchmesserSideFilterButtonFirstValue());
         listingPage.clickFilterButton(listingPage.durchmesserSideFilterButtonFirstValue())
                     .waitUntilPreloaderDisappear()

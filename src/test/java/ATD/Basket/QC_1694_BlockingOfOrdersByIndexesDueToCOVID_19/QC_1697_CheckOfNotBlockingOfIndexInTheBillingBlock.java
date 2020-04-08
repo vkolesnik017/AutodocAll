@@ -1,7 +1,8 @@
-package PKW.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
+package ATD.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
 
-import PKW.Product_page_Logic;
-import PKW.SetUp;
+import ATD.Cart_page_Logic;
+import ATD.Product_page_Logic;
+import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -12,10 +13,12 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
+import static ATD.CommonMethods.openPage;
+import static ATD.SetUp.setUpBrowser;
 import static PKW.CommonMethods.checkingContainsUrl;
-import static PKW.SetUp.setUpBrowser;
+import static PKW.CommonMethods.getCurrentShopFromJSVarInHTML;
 import static com.codeborne.selenide.Selenide.close;
-import static com.codeborne.selenide.Selenide.open;
+
 
 public class QC_1697_CheckOfNotBlockingOfIndexInTheBillingBlock {
 
@@ -41,9 +44,8 @@ public class QC_1697_CheckOfNotBlockingOfIndexInTheBillingBlock {
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks translation of error popup on address page")
     public void testCheckErrorTranslateOnAddressPage(String route) {
-        open(route);
-        new Product_page_Logic().closeBtnOFPopupReviewIfYes()
-                .addProductToCart()
+        openPage(route);
+        new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
@@ -56,7 +58,7 @@ public class QC_1697_CheckOfNotBlockingOfIndexInTheBillingBlock {
                 .clickBtnReturnTheAddressPage()
                 .chooseDeliveryCountryAndFillingPostalCode("PT", "1234-567", "PT", plzPT)
                 .nextBtnClick();
-        checkingContainsUrl("https://www.pkwteile.de/basket/payments");
+        checkingContainsUrl("https://www.autodoc.de/basket/payments");
     }
 
     @AfterMethod
@@ -64,4 +66,3 @@ public class QC_1697_CheckOfNotBlockingOfIndexInTheBillingBlock {
         close();
     }
 }
-

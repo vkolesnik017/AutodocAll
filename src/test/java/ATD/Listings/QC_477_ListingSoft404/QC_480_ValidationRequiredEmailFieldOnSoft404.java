@@ -38,6 +38,7 @@ public class QC_480_ValidationRequiredEmailFieldOnSoft404 {
     openPage(route);
     listingTecDocSoft404PageLogic.checkValidationEmail();
   }
+
   @AfterMethod
   private void tearDown() {
     close();

@@ -1,20 +1,18 @@
-package PKW.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
+package BVS.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
 
-import PKW.Product_page_Logic;
-import PKW.SetUp;
+import BVS.Product_page_Logic;
+import BVS.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static PKW.CommonMethods.checkingContainsUrl;
-import static PKW.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static BVS.CommonMethods.checkingContainsUrl;
+import static BVS.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.open;
 
 public class QC_1697_CheckOfNotBlockingOfIndexInTheBillingBlock {
@@ -42,26 +40,19 @@ public class QC_1697_CheckOfNotBlockingOfIndexInTheBillingBlock {
     @Description(value = "Test checks translation of error popup on address page")
     public void testCheckErrorTranslateOnAddressPage(String route) {
         open(route);
-        new Product_page_Logic().closeBtnOFPopupReviewIfYes()
-                .addProductToCart()
-                .closePopupOtherCategoryIfYes()
+        new Product_page_Logic().addProductToCart()
                 .cartClick()
                 .nextButtonClick()
                 .signIn(email, password)
                 .chooseDeliveryCountryAndFillingPostalCode("IT", "12345", "IT", plzIT)
                 .nextBtnClick()
                 .clickBtnReturnTheAddressPage()
-                .chooseDeliveryCountryAndFillingPostalCode("ES", "12345", "ES", plzES)
+                .chooseDeliveryCountryAndFillingPostalCode("ES", "12345","ES", plzES)
                 .nextBtnClick()
                 .clickBtnReturnTheAddressPage()
                 .chooseDeliveryCountryAndFillingPostalCode("PT", "1234-567", "PT", plzPT)
                 .nextBtnClick();
-        checkingContainsUrl("https://www.pkwteile.de/basket/payments");
-    }
+        checkingContainsUrl("https://www.motordoctor.de/basket/payments");
 
-    @AfterMethod
-    private void teatDown() {
-        close();
     }
 }
-
