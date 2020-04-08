@@ -1,6 +1,5 @@
 package ATD.Listings.QC_458_ListingViewModes;
 
-import ATD.Listing_page;
 import ATD.Listing_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
@@ -17,7 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_463_CompareProductsBetweenListingViewModesOnLKW {
+public class  QC_463_CompareProductsBetweenListingViewModesOnLKW {
 
   private Listing_page_Logic listingPage = new Listing_page_Logic();
 

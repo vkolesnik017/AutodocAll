@@ -3,7 +3,9 @@ package ATD;
 import io.qameta.allure.Step;
 
 import static ATD.CommonMethods.testMail;
+import static com.codeborne.selenide.Condition.not;
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 
 public class ListingTecDocSoft404_page_Logic extends ListingTecDocSoft404_page {
 
@@ -28,6 +30,21 @@ public class ListingTecDocSoft404_page_Logic extends ListingTecDocSoft404_page {
     emailForm().setValue(testMail);
     submitBtn().click();
     popupErrorConfirmYourNewsletter().shouldHave(text("Um fortzufahren bestätigen Sie bitte Ihr Newsletter-Abo"));
+    return this;
+  }
+
+  @Step("Check soft404 on tecdoc listing. ListingTecDocSoft404_page")
+  public ListingTecDocSoft404_page_Logic check404TecdocListing() {
+    blockOfNoFindProduct().shouldBe(visible);
+    blockWithCategories().shouldBe(visible);
+    blockWithTopProducts().shouldBe(visible);
+    return this;
+  }
+
+  @Step("Check no list products on 404. ListingTecDocSoft404_page")
+  public ListingTecDocSoft404_page_Logic checkNoListProductsOn404() {
+    blockOfNoFindProduct().shouldBe(visible);
+    new Listing_page().listProducts().shouldBe(not(visible));
     return this;
   }
 

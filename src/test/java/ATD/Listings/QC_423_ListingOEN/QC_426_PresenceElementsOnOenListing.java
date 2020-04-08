@@ -1,6 +1,6 @@
 package ATD.Listings.QC_423_ListingOEN;
 
-import ATD.Listing_page;
+import ATD.Listing_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -14,13 +14,11 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.close;
 
 public class QC_426_PresenceElementsOnOenListing {
 
-  private Listing_page listingPage = new Listing_page();
+  private Listing_page_Logic listingPage = new Listing_page_Logic();
 
   @BeforeClass
   void setUp() {
@@ -38,10 +36,7 @@ public class QC_426_PresenceElementsOnOenListing {
   @Description(value = "Presence of required elements on OEN listing")
   public void testPresenceElementsOnOenListing(String route) {
     openPage(route);
-    listingPage.titleOfListing().shouldHave(text("Bremsscheibe OE - NUMMER 34116785670"));
-    listingPage.oemNumberBlock().shouldBe(visible);
-    listingPage.oemDescriptionBlock().shouldBe(visible);
-    listingPage.oemAnalogBlock().shouldBe(visible);
+    new Listing_page_Logic().checkOENListingElements();
   }
 
   @AfterMethod
