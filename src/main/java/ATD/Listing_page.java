@@ -55,28 +55,36 @@ public class Listing_page {
     }
 
     public SelenideElement langeFilterCheckbox() {
-        return $x("//*[@id='mCSB_3_container']/li[4]");
+        return $x("//*[@id='mCSB_2_container']/li[4]");
     }
 
     public SelenideElement langeFilterCheckboxLKW() {
-        return $x("//*[@id='mCSB_3_container']/li[2]/label");
+        return $x("//*[@id='mCSB_2_container']/li[2]/label");
     }
 
     public SelenideElement langeFilterCheckboxLKW700() {
-        return $x("//*[@id='mCSB_3_container']/li[3]/label");
+        return $x("//*[@id='mCSB_2_container']/li[3]/label");
     }
 
     public SelenideElement langeFilterCheckbox450() {
-        return $x("//*[@id='mCSB_3_container']/li[9]/label");
+        return $x("//*[@id='mCSB_2_container']/li[9]/label");
     }
 
     public SelenideElement langeFilterAttribute450() {
-        return $x("//*[@id='mCSB_3_container']/li[9]");
+        return $x("//*[@id='mCSB_2_container']/li[9]");
+    }
+
+    public SelenideElement langeFilterCheckbox280() {
+        return $x("//*[@id='mCSB_2_container']/li[19]/label");
+    }
+
+    public SelenideElement langeFilterAttribute280() {
+        return $x("//*[@id='mCSB_2_container']/li[19]");
     }
 
 
     public SelenideElement langeFilterAttribute() {
-        return $x("//*[@id='mCSB_3_container']/li[4]/label");
+        return $x("//*[@id='mCSB_2_container']/li[4]/label");
     }
 
     public SelenideElement wischblattausfuhrungFilterCheckbox() {
@@ -574,5 +582,7 @@ public class Listing_page {
     SelenideElement sideJSfilterForm() { return $(".js-filter-form-sidebar"); }
 
     SelenideElement hoheBlock() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_209']"); }
+
+    SelenideElement moreCharacteristicButtonInFilter() { return $(".filter-disk__more"); }
 }
 

@@ -20,7 +20,6 @@ import static com.codeborne.selenide.Selenide.close;
 
 public class QC_122_FiltersSorting_TestSideFilterWithPagination {
     private Listing_page_Logic listingPage = new Listing_page_Logic();
-    private DataBase dataBase = new DataBase();
 
     @BeforeClass
     void setUp() {
@@ -49,9 +48,24 @@ public class QC_122_FiltersSorting_TestSideFilterWithPagination {
     @Test
     @Flaky
     @Owner(value = "Romaniuta")
+    @Description(value = "Test checks side filter with pagination search")
+    public void testSideFilterWithPaginationSearch() throws SQLException {
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "search17"));
+        listingPage.clickMoreCharacteristicInFilter();
+        String characteristic = listingPage.getTextFromElement(listingPage.langeFilterAttribute280());
+        listingPage.hoverOnSideFilterAndClick(listingPage.langeFilterCheckbox280())
+                .waitUntilPreloaderDisappear()
+                .clickSecondListingPageButton()
+                .waitUntilPreloaderDisappear()
+                .checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.langeProductAttributeGenericRoute(), listingPage.langeProductAttributeTecdocRoute());
+    }
+
+    @Test
+    @Flaky
+    @Owner(value = "Romaniuta")
     @Description(value = "Test checks side filter with pagination")
     public void testSideFilterWithPaginationLKW() throws SQLException {
-        openPage("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_category_car_list"));
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list"));
         String characteristic = listingPage.getTextFromElement(listingPage.langeFilterCheckboxLKW700());
         listingPage.clickFilterButton(listingPage.langeFilterCheckboxLKW700())
                     .waitUntilPreloaderDisappear()
