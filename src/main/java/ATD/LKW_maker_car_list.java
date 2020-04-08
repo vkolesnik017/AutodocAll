@@ -37,4 +37,16 @@ class LKW_maker_car_list {
     SelenideElement infoPopUp() {return $x("//div[@class='selected_car_info_popap']");}
 
     SelenideElement titleOfInfoPopUp() {return $x("//div[@class='selected_car_info_popap']//b[1]");}
+
+    SelenideElement verticalTruckSelectorInOpenState() {
+        return $x("//div[contains(@class,'home-select-car--dropdown')]");
+    }
+
+    SelenideElement verticalTruckSelectorInCloseState() {
+        return $x("//div[@class='catalog-title__change-car']");
+    }
+    SelenideElement verticalTruckSelectorInCloseStateSecond() {
+        return $x("//div[@class='catalog-title__change-car ']");
+    }
+    SelenideElement tooltipOfVerticalCarSelector() {return $x("//div[@class='validation-tooltip popup-error-select']");}
 }

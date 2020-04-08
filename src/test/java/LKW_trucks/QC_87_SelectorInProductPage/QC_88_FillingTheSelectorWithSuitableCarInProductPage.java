@@ -30,11 +30,11 @@ public class QC_88_FillingTheSelectorWithSuitableCarInProductPage {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks fillin the selector with suitable car in Product page")
+    @Description(value = "Test checks filling the selector with suitable car in Product page")
     public void testChecksFillingSelectorWithSuitableCarInProductPage(String route) {
         openPage(route);
         new LKW_Product_page_Logic()
-                . selectTruckInHorizontalSelector("24", "4177", "1004416")
+                .selectTruckInHorizontalSelector("24", "4177", "1004416")
                 .visibilityOfMessageAboutCompatibilityTruckAndProduct("Dieses Produkt passt zu Ihrem DAF 65 CF FA 65 CF 180");
     }
 
