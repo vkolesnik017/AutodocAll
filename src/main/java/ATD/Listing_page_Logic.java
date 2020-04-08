@@ -226,16 +226,17 @@ public class Listing_page_Logic extends Listing_page {
     }
 
     @Step("Method checks add to basket buttons sorting on listing. Listing_page")
-    public void checkAddToBasketButtonsSorting() {
+    public Listing_page_Logic checkAddToBasketButtonsSorting() {
         for (int i = 0; i < addToBasketButtons().size() - 1; i++) {
             if (addToBasketButtons().get(i).text().contains("VERFÜGBARKEIT")) {
                 addToBasketButtons().get(i + 1).shouldHave(text("VERFÜGBARKEIT"));
             }
         }
+        return this;
     }
 
     @Step("Method checks products sorting on listing in increasing order for RIDEX products. Listing_page")
-    public void checkPriceSortingInIncreasingOrderRidex(ElementsCollection listingViewModeLocator) {
+    public Listing_page_Logic checkPriceSortingInIncreasingOrderRidex(ElementsCollection listingViewModeLocator) {
         List<Float> price = getAllPricesOnListingPage(listingViewModeLocator);
         ElementsCollection ridexProducts = $$x("//*[@class='name']/a[contains (text(),'RIDEX')]");
         for (int i = 0; i < ridexProducts.size() - 1; i++) {
@@ -246,10 +247,11 @@ public class Listing_page_Logic extends Listing_page {
             }
             System.out.println("Products are sorted by price in increasing order");
         }
+        return this;
     }
 
     @Step("Method checks products sorting on listing in increasing order for not RIDEX products with one generic. Listing_page")
-    public void checkPriceSortingInIncreasingOrderNotRidex(ElementsCollection listingViewModeLocator) {
+    public Listing_page_Logic checkPriceSortingInIncreasingOrderNotRidex(ElementsCollection listingViewModeLocator) {
         List<Float> price = getAllPricesOnListingPage(listingViewModeLocator);
         ElementsCollection ridexProducts = $$x("//*[@class='name']/a[contains (text(),'RIDEX')]");
         ElementsCollection grayButtons = $$x("//*[contains(@class,'not_active')]/a");
@@ -272,10 +274,11 @@ public class Listing_page_Logic extends Listing_page {
                 System.out.println("Products are sorted by price in increasing order");
             }
         }
+        return this;
     }
 
     @Step("Method checks products sorting on listing in increasing order for not RIDEX products with two generics. Listing_page")
-    public void checkPriceSortingInIncreasingOrderNotRidex2generic(ElementsCollection listingViewModeLocator) {
+    public Listing_page_Logic checkPriceSortingInIncreasingOrderNotRidex2generic(ElementsCollection listingViewModeLocator) {
         List<Float> price = getAllPricesOnListingPage(listingViewModeLocator);
         ElementsCollection ridexProducts = $$x("//*[@class='name']/a[contains (text(),'RIDEX')]");
         ElementsCollection notHalterProducts = $$x("//*[@class='name']/a[not (contains (text(),'Halter'))]");
@@ -310,6 +313,7 @@ public class Listing_page_Logic extends Listing_page {
                 System.out.println("Products are sorted by price in increasing order");
             }
         }
+        return this;
     }
 
     // The method can check everything that is contained in the product title by going through all the pages. Fits for all listing (TecDoc, Search, OEN etc...)
@@ -597,6 +601,47 @@ public class Listing_page_Logic extends Listing_page {
         element.shouldNotBe(visible);
         return this;
     }
+
+    @Step("Check price and add to basket button sorting with generic. Listing_page")
+    public Listing_page_Logic checkOutptuSortingWithGeneric() {
+        do {
+            checkPriceSortingInIncreasingOrderRidex(priceOfAllProductsOnPageInList());
+            checkPriceSortingInIncreasingOrderNotRidex(priceOfAllProductsOnPageInList());
+            checkAddToBasketButtonsSorting();
+            nextPageButton().click();
+        } while (nextPageButton().is(visible));
+        return this;
+    }
+
+    @Step("Check price and add to basket button sorting with two generic. Listing_page")
+    public Listing_page_Logic checkOutptuSortingWithTwoGeneric() {
+        do {
+            checkPriceSortingInIncreasingOrderRidex(priceOfAllProductsOnPageInList());
+            checkPriceSortingInIncreasingOrderNotRidex2generic(priceOfAllProductsOnPageInList());
+            checkAddToBasketButtonsSorting();
+            nextPageButton().click();
+        } while (nextPageButton().is(visible));
+        return this;
+    }
+
+    @Step("Check gray button not visible. Listing_page")
+    public Listing_page_Logic checkGrayButtonNotVisible() {
+        do {
+            grayButton().shouldNot(exist);
+            nextPageButton().click();
+        } while (nextPageButton().is(visible));
+        return this;
+    }
+
+    @Step("Check add to basket buttons sorting with pagination. Listing_page")
+    public Listing_page_Logic checkAddToBasketButtonsSortingWithPagination() {
+        do {
+            checkAddToBasketButtonsSorting();
+            nextPageButton().click();
+        } while (nextPageButton().is(visible));
+        return this;
+    }
+
 
 }
 

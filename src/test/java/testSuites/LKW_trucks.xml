@@ -110,6 +110,7 @@
         <classes>
             <class name="LKW_trucks.QC_33_BrandsBLock.QC_34_AvailabilityHeadlineOfTopBrands"/>
             <class name="LKW_trucks.QC_33_BrandsBLock.QC_37_AvailabilityOfBrandsBlock"/>
+            <class name="LKW_trucks.QC_33_BrandsBLock.QC_38_TransitionsByClickOnImageOfLogoBrand"/>
             <class name="LKW_trucks.QC_33_BrandsBLock.QC_40_OpenAndCloseOfBrandsBlock"/>
         </classes>
     </test>
