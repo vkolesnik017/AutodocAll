@@ -49,7 +49,7 @@ public class QC_1696_CheckErrorTranslateOnAddressPage {
                 .addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
-                . makePriceForMinimumOrderForCH(shop);
+                .makePriceForMinimumOrderForCH(shop);
                 new Cart_page_Logic().nextButtonClick()
                 .signIn(email, password)
                         .checkingCOVID19TooltipTranslate("PT", plzPT, shop)
