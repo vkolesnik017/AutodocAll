@@ -657,5 +657,11 @@ public class Listing_page_Logic extends Listing_page {
         tecDocBlockOfLinkingCategories().shouldBe(visible);
         return this;
     }
+
+    @Step("Click show more characteristic button. Listing_page")
+    public Listing_page_Logic clickMoreCharacteristicInFilter() {
+        moreCharacteristicButtonInFilter().click();
+        return this;
+    }
 }
 

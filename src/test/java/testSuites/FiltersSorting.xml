@@ -8,9 +8,9 @@
 
     <test name="FiltersSorting_sideFilters">
         <classes>
-            <class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_118_FiltersSorting_TestProductreiheFilterApplying"/>
+            <!--<class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_118_FiltersSorting_TestProductreiheFilterApplying"/>-->
             <class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_119_FiltersSorting_TestLangeFilterApplying"/>
-            <class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_120_FiltersSorting_TestWischblattausfuhrung"/>
+            <!--<class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_120_FiltersSorting_TestWischblattausfuhrung"/>-->
             <class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_121_FiltersSorting_TestSideFilterInTileMode"/>
             <class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_122_FiltersSorting_TestSideFilterWithPagination"/>
             <class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_124_FiltersSorting_TestSideFilterCancelling"/>
