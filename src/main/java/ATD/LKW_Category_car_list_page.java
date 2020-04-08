@@ -188,4 +188,8 @@ public class LKW_Category_car_list_page {
     SelenideElement imageOfProductWithArticle(String article) {
         return $x("//span[contains(text(),'" + article + "')]/ancestor::div[@class='all_desc_item']//div[@class='image']/span[2]/img");
     }
+
+    SelenideElement verticalTruckSelector() {
+        return $x("//form[@class='js--lkw_selector car-fully-selected']");
+    }
 }

@@ -1,9 +1,7 @@
 package ATD;
 
 import com.codeborne.selenide.ElementsCollection;
-import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
-import org.apache.poi.ss.formula.functions.Match;
 import org.testng.Assert;
 
 import java.util.*;
@@ -396,6 +394,12 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
     public LKW_Product_page_Logic goToProductPageFromImageWithArticle() {
         imageOfProductWithArticle("4.90930").scrollIntoView("{block: \"center\"}").click();
         return page(LKW_Product_page_Logic.class);
+    }
+
+    @Step("availability of vertical truck selector .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic availabilityOfVerticalTruckSelector() {
+        verticalTruckSelector().shouldBe(visible);
+        return this;
     }
 
 }

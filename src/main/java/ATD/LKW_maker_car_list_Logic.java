@@ -9,7 +9,7 @@ import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class LKW_maker_car_list_Logic extends LKW_maker_car_list {
 
-    @Step("check successfully child category page loading. LKW_maker_car_list ")
+    @Step("check successfully child category page loading .LKW_maker_car_list ")
     public LKW_maker_car_list_Logic checkSuccessfullyMakerCarListPageLoading(String currentUrl) {
         tecDocCatalog().shouldBe(visible);
         Assert.assertEquals(url(), currentUrl);
@@ -29,29 +29,64 @@ public class LKW_maker_car_list_Logic extends LKW_maker_car_list {
         return page(LKW_Product_page_Logic.class);
     }
 
-    @Step("visibility of Image of brand in headline .LKW_Category_maker_brand_page ")
+    @Step("visibility of Image of brand in headline .LKW_maker_car_list ")
     public LKW_maker_car_list_Logic visibilityOfImageBrandInHeadLine() {
         imageOfTruckInHeadLine().shouldBe(visible);
         return this;
     }
 
-    @Step("visibility of Image of brand in headline .LKW_Category_maker_brand_page ")
+    @Step("visibility of Image of brand in headline .LKW_maker_car_list ")
     public LKW_maker_car_list_Logic visibilityOfMakrModelMotorInHeadLine() {
         titleOfTruckInHeadLine().shouldHave(exactText("Ersatzteile für MERCEDES-BENZ ACTROS 1835, 1835 L"));
         return this;
     }
 
-    @Step("visibility of info link in headline .LKW_Category_maker_brand_page ")
+    @Step("visibility of info link in headline .LKW_maker_car_list ")
     public LKW_maker_car_list_Logic visibilityOfInfoLink() {
         infoLinkInHeadline().shouldBe(visible);
         return this;
     }
 
-    @Step("appearance of info popup with data about selected car.LKW_Category_maker_brand_page ")
-    public LKW_maker_car_list_Logic  appearanceOfInfoPopUpWithSelectedCar() {
+    @Step("appearance of info popup with data about selected car .LKW_maker_car_list ")
+    public LKW_maker_car_list_Logic appearanceOfInfoPopUpWithSelectedCar() {
         infoLinkInHeadline().click();
         infoPopUp().should(appear);
         titleOfInfoPopUp().shouldHave(exactText("Info: MERCEDES-BENZ ACTROS 1835, 1835 L (260 kW / 354 PS):"));
         return this;
     }
+
+    @Step("availability of vertical truck selector СatalogByModel .LKW_maker_car_list")
+    public LKW_maker_car_list_Logic availabilityOfVerticalTruckSelectorСatalogByModel() {
+        verticalTruckSelectorInCloseState().shouldBe(visible);
+        return this;
+    }
+
+    @Step("availability of vertical truck selector  TecDoc catalog .LKW_maker_car_list")
+    public LKW_maker_car_list_Logic availabilityOfVerticalTruckSelectorTecDocCatalog() {
+        verticalTruckSelectorInCloseStateSecond().shouldBe(visible);
+        return this;
+    }
+
+    @Step("availability of vertical truck selector СatalogByModel .LKW_maker_car_list")
+    public LKW_maker_car_list_Logic visibilityOfSelectorInOpenConditionСatalogByModel() {
+        verticalTruckSelectorInCloseState().click();
+        verticalTruckSelectorInOpenState().shouldBe(visible);
+        return this;
+    }
+
+    @Step("availability of vertical truck selector TecDoc catalog .LKW_maker_car_list")
+    public LKW_maker_car_list_Logic visibilityOfSelectorInOpenConditionTecDocCatalog() {
+        verticalTruckSelectorInCloseStateSecond().click();
+        verticalTruckSelectorInOpenState().shouldBe(visible);
+        return this;
+    }
+
+    @Step("availability of vertical truck selector TecDoc catalog .LKW_maker_car_list")
+    public LKW_maker_car_list_Logic visibilityOfTooltipInVerticalSelector() {
+        verticalTruckSelectorInOpenState().shouldBe(visible);
+        tooltipOfVerticalCarSelector().shouldBe(visible);
+        return this;
+    }
+
+
 }
