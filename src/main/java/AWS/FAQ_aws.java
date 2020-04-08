@@ -2,9 +2,12 @@ package AWS;
 
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
+import mailinator.Mailinator;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.appear;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
 public class FAQ_aws {
@@ -89,6 +92,18 @@ public class FAQ_aws {
 
     public SelenideElement searchTextOnPage(String textForSearch) {
         return $x("//*[contains(text(),'" + textForSearch + "')]");
+    }
 
+    @Step("Check FAQ in AWS. FAQ_aws")
+    public FAQ_aws checkFAQinAWS(String randomEmail, String faqMessage, String faqResponse) {
+        searchTextOnPage(randomEmail).shouldBe(visible);
+        searchTextOnPage(faqMessage).click();
+        faqResponseInput().sendKeys(faqResponse);
+        faqAWSsubmitButton().click();
+        searchTextOnPage(faqResponse).click();
+        new Mailinator().openEmail(randomEmail)
+                .openLetter(1);
+        searchTextOnPage(faqResponse).shouldBe(visible);
+        return this;
     }
 }

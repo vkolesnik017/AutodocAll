@@ -1,6 +1,7 @@
 package ATD.Listings.QC_445_ListingTecDoc;
 
 import ATD.ListingTecDocSoft404_page;
+import ATD.ListingTecDocSoft404_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -37,9 +38,7 @@ public class QC_450_Soft404OnTecDoc {
   @Description(value = "Checks soft 404 on TecDoc")
   public void testSoft404OnTecDoc(String route) {
     openPage(route);
-    listingTecDocSoft404Page.blockOfNoFindProduct().shouldBe(visible);
-    listingTecDocSoft404Page.blockWithCategories().shouldBe(visible);
-    listingTecDocSoft404Page.blockWithTopProducts().shouldBe(visible);
+    new ListingTecDocSoft404_page_Logic().check404TecdocListing();
   }
 
   @AfterMethod

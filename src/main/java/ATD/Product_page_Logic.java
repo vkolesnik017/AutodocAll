@@ -467,4 +467,142 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
+    @Step("Check Faq Validation With Empty Fields. Product_page")
+    public Product_page_Logic faqValidationEmptyFields() {
+        faqSubmitButton().click();
+        faqPopup().shouldBe(visible);
+        faqPopupText().shouldHave(text("Fehler"));
+        faqPopupClose().click();
+        validationEmailInputFAQ().shouldBe(visible);
+        validationNameInputFAQ().shouldBe(visible);
+        validationMessageInputFAQ().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Check Faq Validation With Name. Product_page")
+    public Product_page_Logic faqValidationWithName() {
+        faqNameInput().sendKeys("test_atd_faq");
+        faqSubmitButton().click();
+        faqPopupText().shouldHave(text("Fehler"));
+        faqPopupClose().click();
+        validationEmailInputFAQ().shouldBe(visible);
+        validationNameInputFAQ().shouldNotBe(visible);
+        validationMessageInputFAQ().shouldBe(visible);
+        faqNameInput().clear();
+        return this;
+    }
+
+    @Step("Check Faq Validation With Mail. Product_page")
+    public Product_page_Logic faqValidationWithMail() {
+        faqEmailInput().sendKeys("test@mailinator.com");
+        faqSubmitButton().click();
+        faqPopupText().shouldHave(text("Fehler"));
+        faqPopupClose().click();
+        validationEmailInputFAQ().shouldNotBe(visible);
+        validationNameInputFAQ().shouldBe(visible);
+        validationMessageInputFAQ().shouldBe(visible);
+        faqEmailInput().clear();
+        return this;
+    }
+
+    @Step("Check Faq Validation With Message. Product_page")
+    public Product_page_Logic faqValidationWithMessage() {
+        faqMessageInput().sendKeys("TEST_MESSAGE");
+        faqSubmitButton().click();
+        faqPopupText().shouldHave(text("Fehler"));
+        faqPopupClose().click();
+        validationEmailInputFAQ().shouldBe(visible);
+        validationNameInputFAQ().shouldBe(visible);
+        validationMessageInputFAQ().shouldNotBe(visible);
+        return this;
+    }
+
+    @Step("Check vin popup. Product_page")
+    public Product_page_Logic checkVinPopup() {
+        vinInfo().hover();
+        vinInfoDropdown().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Enter FAQ valid data. Product_page")
+    public Product_page_Logic enterFAQValidData(String randomEmail, String faqMessage) {
+        faqNameInput().sendKeys("test_atd_faq");
+        faqEmailInput().sendKeys(randomEmail);
+        faqMessageInput().sendKeys(faqMessage);
+        faqSubmitButton().click();
+        faqPopupText().shouldHave(text("FAQ"));
+        return this;
+    }
+
+    @Step("Check review form. Product_page")
+    public Product_page_Logic checkReviewForm() {
+        reviewsSubmitButton().click();
+        faqPopup().shouldBe(visible);
+        faqPopupClose().click();
+        validationEmailInputReviews().shouldBe(visible);
+        validationNameInputReviews().shouldBe(visible);
+        validationMessageInputReviews().shouldBe(visible);
+        validationSubscribeCheckbox().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Enter valid review data. Product_page")
+    public Product_page_Logic enterValidReviewData(String randomEmail, String reviewMessage) {
+        reviewsNameInput().sendKeys("test_atd_reviews");
+        reviewsEmailInput().sendKeys(randomEmail);
+        reviewsMessageInput().sendKeys(reviewMessage);
+        subscribeAcceptCheckbox().click();
+        reviewsSubmitButton().click();
+        faqPopupText().shouldHave(text("Danke für Ihre Beurteilung."));
+        return this;
+    }
+
+    @Step("Check OEM list. Product_page")
+    public Product_page_Logic checkOEMlist() {
+        productOnListing().click();
+        boldOenText().shouldBe(visible);
+        return this;
+    }
+
+    @Step("checkOEM list without car. Product_page")
+    public Product_page_Logic checkOEMlistWithoutCar() {
+        boldOenText().shouldNotBe(visible);
+        String oenLink = linkInOemBlock().attr("href");
+        linkInOemBlock().click();
+        waitingWhileLinkBecomeExpected(oenLink);
+        return this;
+    }
+
+    @Step("Check compatible car and product. Product_page")
+    public Product_page_Logic checkCompatibilityCarAndProduct() {
+        firstBrandInCompabilityList().shouldHave(text("AUTOBIANCHI")).click();
+        firstModelInFirstBrandInCompatibilityList().click();
+        carListInFirstModelCompabilityList().shouldBe(visible);
+        chooseBrandModelTypeInHorizontalSelector("AUTOBIANCHI", "4822", "16213");
+        selectorSearchBtn().click();
+        compatibleCarInCompabilityList().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Check not compatible car and product. Product_page")
+    public Product_page_Logic checkNotCompatibilityCarAndProduct() {
+        firstBrandInCompabilityList().shouldHave(text("AUTOBIANCHI"));
+        secondBrandInCompabilityList().shouldHave(text("FIAT"));
+        thirdBrandInCompabilityList().shouldHave(text("LANCIA"));
+        fourthBrandInCompabilityList().shouldHave(text("SEAT"));
+        chooseBrandModelTypeInHorizontalSelector("VW", "4644", "14881");
+        selectorSearchBtn().click();
+        checkTextIsVisibleOnPage("Es tut uns leid!");
+        checkTextIsVisibleOnPage("Kfz-Ersatzteile für VW 166 SUV Cabrio 1.1 Benzin (24 PS, Bj ab 1942)");
+        return this;
+    }
+
+    @Step("Check incompstibility message. Product_page")
+    public Product_page_Logic checkIncompatibilityMessage() {
+        new Main_page_Logic().searchBar().sendKeys("Bremsscheiben");
+        new Main_page_Logic().searchButton().click();
+        productOnListing().click();
+        incompatibilityMessage().shouldBe(visible);
+        return this;
+    }
 }

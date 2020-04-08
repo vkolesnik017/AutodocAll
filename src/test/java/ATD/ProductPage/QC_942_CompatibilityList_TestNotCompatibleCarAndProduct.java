@@ -14,12 +14,10 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.close;
 
 public class QC_942_CompatibilityList_TestNotCompatibleCarAndProduct {
-    private Product_page_Logic product_page_logic = new Product_page_Logic();
-    private DataBase dataBase = new DataBase();
+
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -30,16 +28,10 @@ public class QC_942_CompatibilityList_TestNotCompatibleCarAndProduct {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks product compatibility with car")
     public void testNotCompatibleCarAndProduct() throws SQLException {
-        openPage("https://autodoc.de/" +  dataBase.getRouteByRouteName("DE", "product16"));
-        product_page_logic.firstBrandInCompabilityList().shouldHave(text("AUTOBIANCHI"));
-        product_page_logic.secondBrandInCompabilityList().shouldHave(text("FIAT"));
-        product_page_logic.thirdBrandInCompabilityList().shouldHave(text("LANCIA"));
-        product_page_logic.fourthBrandInCompabilityList().shouldHave(text("SEAT"));
-        product_page_logic.chooseBrandModelTypeInHorizontalSelector("VW", "4644", "14881");
-        product_page_logic.selectorSearchBtn().click();
-        product_page_logic.checkTextIsVisibleOnPage("Es tut uns leid!");
-        product_page_logic.checkTextIsVisibleOnPage("Kfz-Ersatzteile für VW 166 SUV Cabrio 1.1 Benzin (24 PS, Bj ab 1942)");
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "product16"));
+        new Product_page_Logic().checkNotCompatibilityCarAndProduct();
     }
+
     @AfterMethod
     private void tearDown() {
         close();
