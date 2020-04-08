@@ -2,9 +2,11 @@ package AWS;
 
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.appear;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
 public class Reviews_aws {
@@ -79,5 +81,12 @@ public class Reviews_aws {
 
     public SelenideElement searchTextOnPage(String textForSearch) {
         return $x("//*[contains(text(),'" + textForSearch + "')]");
+    }
+
+    @Step("Check review in aws. Reviews_aws")
+    public Reviews_aws checkReviewInAWS(String randomEmail, String reviewMessage) {
+        searchTextOnPage(randomEmail).shouldBe(visible);
+        searchTextOnPage(reviewMessage).shouldBe(visible);
+        return this;
     }
 }

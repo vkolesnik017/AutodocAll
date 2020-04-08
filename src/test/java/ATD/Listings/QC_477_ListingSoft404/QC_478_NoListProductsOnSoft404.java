@@ -1,7 +1,6 @@
 package ATD.Listings.QC_477_ListingSoft404;
 
 import ATD.ListingTecDocSoft404_page_Logic;
-import ATD.Listing_page;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -15,8 +14,6 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Condition.not;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.close;
 
 public class QC_478_NoListProductsOnSoft404 {
@@ -39,9 +36,9 @@ public class QC_478_NoListProductsOnSoft404 {
   @Description(value = "Checks that no list products on soft 404")
   public void testNoListProductsOnSoft404(String route) {
     openPage(route);
-    listingTecDocSoft404PageLogic.blockOfNoFindProduct().shouldBe(visible);
-    new Listing_page().listProducts().shouldBe(not(visible));
+    new ListingTecDocSoft404_page_Logic().checkNoListProductsOn404();
   }
+
   @AfterMethod
   private void tearDown() {
     close();

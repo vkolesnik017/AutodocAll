@@ -13,14 +13,10 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
-import static ATD.CommonMethods.waitingWhileLinkBecomeExpected;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.close;
 
 public class QC_921_OEN_TestOEMlistWithoutCar {
-    private Product_page_Logic product_page_logic = new Product_page_Logic();
-    private DataBase dataBase = new DataBase();
 
     @BeforeClass
     void setUp() {
@@ -32,12 +28,9 @@ public class QC_921_OEN_TestOEMlistWithoutCar {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks oem list without car")
     public void testOEMlistWithoutCar() throws SQLException {
-        openPage("https://autodoc.de/" +  dataBase.getRouteByRouteName("DE", "product15"));
-        product_page_logic.scrollToOenBlock()
-                          .boldOenText().shouldNotBe(visible);
-        String oenLink = product_page_logic.linkInOemBlock().attr("href");
-        product_page_logic.linkInOemBlock().click();
-        waitingWhileLinkBecomeExpected(oenLink);
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "product15"));
+        new Product_page_Logic().scrollToOenBlock()
+                          .checkOEMlistWithoutCar();
     }
     @AfterMethod
     private void tearDown() {

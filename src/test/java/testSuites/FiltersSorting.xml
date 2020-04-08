@@ -21,14 +21,14 @@
 
     <test name="FiltersSorting_interaction">
         <classes>
-            <class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_128_FiltersSorting_TestHoheAndBySideFilterInteraction"/>
-            <class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_129_FiltersSorting_TestOberflacheAndBySideFilterInteraction"/>
+            <!--<class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_128_FiltersSorting_TestHoheAndBySideFilterInteraction"/>-->
+            <!--<class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_129_FiltersSorting_TestOberflacheAndBySideFilterInteraction"/>-->
             <class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_131_FiltersSorting_TestBremsscheibenartAndBySideFilterInteraction"/>
             <class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_132_FiltersSorting_TestFurprnummerAndBySideFilterInteraction"/>
             <class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_138_FiltersSorting_TestDurchmesserAndBySideFilterInteraction"/>
             <class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_139_FiltersSorting_TestBrandAndBySideFilterInteraction"/>
-            <class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_140_FiltersSorting_TestHoheAndLochanzahlFilterInteraction"/>
-            <class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_141_FiltersSorting_TestBySideAndBrandAndHoheFilterInteraction"/>
+            <!--<class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_140_FiltersSorting_TestHoheAndLochanzahlFilterInteraction"/>-->
+            <!--<class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_141_FiltersSorting_TestBySideAndBrandAndHoheFilterInteraction"/>-->
             <class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_142_FiltersSorting_TestBrandAndMarkFilterInteraction"/>
             <!--<class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_143_FiltersSorting_TestBrandAndGenericAndPriceFilterInteraction"/>--> <!-- Filter by price is inactive-->
         </classes>

@@ -46,15 +46,14 @@ public class QC_1025_GrayButtonOnProductPage {
     public void testGrayButton(String route) {
         new Login_aws().loginInAwsWithOpen();
         open(wishlistReminderAvailability.urlWithCurrentDate);
-        String idProduct = wishlistReminderAvailability.idOfFirstProduct().text();
-        int beforeCountRequests = Integer.parseInt(wishlistReminderAvailability.numberOfRequestsInFirstProduct().text());
+        String idProduct = wishlistReminderAvailability.getTextFromId();
+        int beforeCountRequests = wishlistReminderAvailability.getBeforeCountRequests();
         product_page.openProductPageById(route, idProduct)
                 .sendRequestByGrayButtonFromProductPage(email);
         mailinator.openEmail(email)
-                .letterInfo(1).shouldHave(text("moments ago")).shouldHave(text("Wir bearbeiten"));
+                .checkLetterInfoText(1, "moments ago", "Wir bearbeiten");
         open(wishlistReminderAvailability.urlWithCurrentDate);
-        int afterCountRequests = Integer.parseInt(wishlistReminderAvailability.numberOfRequestsInProductByHisId(idProduct).text());
-        assertEquals(afterCountRequests, beforeCountRequests + 1);
+        wishlistReminderAvailability.checkAfterCountRequest(beforeCountRequests, idProduct);
     }
 
     @AfterMethod

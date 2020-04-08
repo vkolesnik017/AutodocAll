@@ -14,19 +14,15 @@ import org.testng.annotations.Test;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
-import static org.testng.Assert.assertEquals;
 
 public class QC_1015_GrayButtonOnSearchPage {
 
     private String email = "CheckGrayButton@mailinator.com";
 
     private Mailinator mailinator = new Mailinator();
-    private Search_page search_page = new Search_page();
     private WishlistReminderAvailability_aws wishlistReminderAvailability = new WishlistReminderAvailability_aws();
-    private Search_page_Logic search_page_logic = new Search_page_Logic();
 
     @BeforeClass
     void setUp() {
@@ -45,18 +41,17 @@ public class QC_1015_GrayButtonOnSearchPage {
     public void testGrayButton(String route) {
         new Login_aws().loginInAwsWithOpen();
         open(wishlistReminderAvailability.urlWithCurrentDate);
-        String articleProduct = wishlistReminderAvailability.articleOfFirstProduct().text();
-        String idProduct = wishlistReminderAvailability.idOfFirstProduct().text();
-        int beforeCountRequests = Integer.parseInt(wishlistReminderAvailability.numberOfRequestsInFirstProduct().text());
+        String articleProduct = wishlistReminderAvailability.getTextFromArticle();
+        String idProduct = wishlistReminderAvailability.getTextFromId();
+        int beforeCountRequests = wishlistReminderAvailability.getBeforeCountRequests();
         openPage(route);
-        new Main_page_Logic().useSearch(articleProduct);
-        search_page_logic.clickButtonProductById(idProduct)
+        new Main_page_Logic().useSearch(articleProduct)
+                         .clickButtonProductById(idProduct)
                          .sendRequestByGrayButtonFromSearchPage(email);
-        mailinator.openEmail(email);
-        mailinator.letterInfo(1).shouldHave(text("moments ago")).shouldHave(text("Wir bearbeiten"));
+        mailinator.openEmail(email)
+                        .checkLetterInfoText(1, "moments ago", "Wir bearbeiten");
         open(wishlistReminderAvailability.urlWithCurrentDate);
-        int afterCountRequests = Integer.parseInt(wishlistReminderAvailability.numberOfRequestsInProductByHisId(idProduct).text());
-        assertEquals(afterCountRequests, beforeCountRequests + 1);
+        wishlistReminderAvailability.checkAfterCountRequest(beforeCountRequests, idProduct);
     }
 
     @AfterMethod

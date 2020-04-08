@@ -7,6 +7,7 @@ import io.qameta.allure.Step;
 import static ATD.CommonMethods.*;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.exactValue;
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.page;
@@ -130,5 +131,20 @@ public class Search_page_Logic extends Search_page {
         new Product_page_Logic().closePopupOtherCategoryIfYes();
         return this;
     }
+
+    @Step("Check additional listing. Search_page")
+    public Search_page_Logic checkAdditionalListing() {
+        dividingLineForProductsOtherCategories().shouldHave(text("Ergebnisse für zuendkerzen für andere Fahrzeuge"));
+        return this;
+    }
+
+    @Step("Check elements on search page. Search_page")
+    public Search_page_Logic checkElementsOnSearchPage() {
+        titleOnSearchPage().shouldHave(text("Treffer gefunden für Bremscheiben"));
+        blockOfHelpSearchProducts().shouldBe(visible);
+        blockOfLinkingCategory().shouldBe(visible);
+        return this;
+    }
+
 }
 

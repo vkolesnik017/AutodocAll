@@ -20,7 +20,6 @@ import static com.codeborne.selenide.Selenide.close;
 
 public class QC_125_FiltersSorting_TestFilterPosition {
     private Listing_page_Logic listingPageLogic = new Listing_page_Logic();
-    private DataBase dataBase = new DataBase();
 
     @BeforeClass
     void setUp() {
@@ -54,19 +53,19 @@ public class QC_125_FiltersSorting_TestFilterPosition {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks filter position on LKW model")
     public void testFilterPositionLKWmodel() throws SQLException{
-        openPage("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_category_car_list7"));
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list7"));
         String characteristic = listingPageLogic.getTextFromElement(listingPageLogic.langeFilterAttribute3());
         listingPageLogic.clickFilterButton(listingPageLogic.langeFilterCheckbox3())
                 .waitUntilPreloaderDisappear()
                 .checkTextInElement(listingPageLogic.activeSideFilter(), characteristic);
     }
 
-    @Test
+    @Test(enabled = false)
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks filter position on LKW car")
     public void testFilterPositionLKWcar() throws SQLException{
-        openPage("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_category_car_list6"));
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list6"));
         String characteristic = listingPageLogic.getTextFromElement(listingPageLogic.langeFilterAttribute2());
         listingPageLogic.clickFilterButton(listingPageLogic.langeFilterCheckbox2())
                 .waitUntilPreloaderDisappear()
@@ -78,7 +77,7 @@ public class QC_125_FiltersSorting_TestFilterPosition {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks filter position on LKW search")
     public void testFilterPositionLKWsearch() throws SQLException{
-        openPage("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_search"));
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_search"));
         String characteristic = listingPageLogic.getTextFromElement(listingPageLogic.langeFilterAttribute3());
         listingPageLogic.clickFilterButton(listingPageLogic.langeFilterCheckbox3())
                 .waitUntilPreloaderDisappear()
@@ -90,7 +89,7 @@ public class QC_125_FiltersSorting_TestFilterPosition {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks filter position on Oem route")
     public void testFilterPositionOem() throws SQLException {
-        openPage("https://autodoc.de/" +  dataBase.getRouteByRouteName("DE", "category_oen2"));
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "category_oen2"));
         String characteristic = listingPageLogic.getTextFromElement(listingPageLogic.sideFilterOenAttribute());
         listingPageLogic.clickFilterButton(listingPageLogic.sideFilterOenCheckbox())
                 .waitUntilPreloaderDisappear()

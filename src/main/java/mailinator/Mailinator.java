@@ -84,4 +84,10 @@ public class Mailinator {
     switchTo().window("recovery");
     return page(PasswordRecovery_page_Logic.class);
   }
+
+  @Step("Check letter info text. Mailinator")
+  public Mailinator checkLetterInfoText(int letterNumber, String expectedText1, String expectedText2) {
+    letterInfo(letterNumber).shouldHave(text(expectedText1)).shouldHave(text(expectedText2));
+    return this;
+  }
 }

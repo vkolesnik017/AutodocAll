@@ -1,6 +1,5 @@
 package ATD.Listings.QC_458_ListingViewModes;
 
-import ATD.Listing_page;
 import ATD.Listing_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
@@ -40,6 +39,7 @@ public class QC_460_CompareProductsBetweenListingViewModesOnTecDoc {
             .compareProductsOrderBetweenListModeAndTileMode()
             .checksImportantElementsOnTecDocListing();
   }
+
   @AfterMethod
   private void tearDown() {
     close();

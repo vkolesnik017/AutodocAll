@@ -38,6 +38,7 @@ public class QC_481_ValidationRequiredCheckboxNewsletterSubscriptionOnSoft404 {
     openPage(route);
     listingTecDocSoft404PageLogic.checkValidationCheckboxNewsletter();
   }
+
   @AfterMethod
   private void tearDown() {
     close();
