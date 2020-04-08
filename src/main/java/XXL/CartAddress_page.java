@@ -21,6 +21,10 @@ public class CartAddress_page {
         return $(byXpath("//a[@class='green']"));
     }
 
+    SelenideElement billingCheckBox() {
+        return $x("//input[@name='delivery_mode']");
+    }
+
     SelenideElement textFromPopUpCOVID19() {
         return $x("//div[@class='popup pop_soft404 ']//ul//li");
     }

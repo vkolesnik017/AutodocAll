@@ -1,7 +1,7 @@
-package ATD.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
+package PRF.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
 
-import ATD.Product_page_Logic;
-import ATD.SetUp;
+import PRF.Product_page_Logic;
+import PRF.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -12,11 +12,8 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.checkingContainsUrl;
-import static ATD.CommonMethods.openPage;
-import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
-
+import static PRF.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Selenide.*;
 
 public class QC_1697_CheckOfNotBlockingOfIndexInTheBillingBlock {
 
@@ -42,21 +39,14 @@ public class QC_1697_CheckOfNotBlockingOfIndexInTheBillingBlock {
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks translation of error popup on address page")
     public void testCheckErrorTranslateOnAddressPage(String route) {
-        openPage(route);
+        open(route);
         new Product_page_Logic().addProductToCart()
-                .closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
                 .signIn(email, password)
                 .chooseDeliveryCountryAndFillingPostalCode("IT", "12345", "IT", plzIT)
-                .nextBtnClick()
-                .clickBtnReturnTheAddressPage()
                 .chooseDeliveryCountryAndFillingPostalCode("ES", "12345", "ES", plzES)
-                .nextBtnClick()
-                .clickBtnReturnTheAddressPage()
-                .chooseDeliveryCountryAndFillingPostalCode("PT", "1234-567", "PT", plzPT)
-                .nextBtnClick();
-        checkingContainsUrl("https://www.autodoc.de/basket/payments");
+                .chooseDeliveryCountryAndFillingPostalCode("PT", "1234-567", "PT", plzPT);
     }
 
     @AfterMethod

@@ -9,16 +9,37 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class CartAddress_page {
 
-    SelenideElement countryInSelector(String country) {
-        return $(byXpath("//select[contains(@class,'country input')]//*[@data-code='" + country + "']"));
+    SelenideElement countryInSelectorForShipping(String country) {
+        return $(byXpath("//*[@name='lLand']//*[@data-code='" + country + "']"));
     }
 
-    SelenideElement postalCodeField() {
+    SelenideElement countryInSelectorForBilling(String country) {
+        return $(byXpath("//*[@name='rLand']//*[@data-code='" + country + "']"));
+    }
+
+    SelenideElement postalCodeFieldForShipping() {
         return $(By.id("form_lPlz"));
     }
 
+    SelenideElement postalCodeFieldForBilling() {
+        return $(By.id("form_rPlz"));
+    }
+
+    SelenideElement billingCheckBox() {
+        return $x("//input[@id='isBilling']/..//span[@class='radio-text']");
+    }
+
+    SelenideElement billingForm() {
+        return $x("//form[@id='address-form']");
+    }
+
+
     SelenideElement nextButton() {
-        return $x("//a[@class='crumbs-button address-form-confirm']");
+        return $x("//div[@class='delivery']//a[contains(@class,'crumbs-button')]");
+    }
+
+    SelenideElement nextButtonShipping() {
+        return $x("//a[@class='crumbs-button shipping-form-confirm']");
     }
 
     SelenideElement textFromPopUpCOVID19() {
