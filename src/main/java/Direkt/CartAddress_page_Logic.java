@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static Direkt.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
@@ -26,8 +27,8 @@ public class CartAddress_page_Logic extends CartAddress_page {
 
     @Step("Filling postal code {sendPostalCode}. CartAddress_page")
     public CartAddress_page_Logic fillingPostalCodeField(String sendPostalCode) {
-        postalCodeFieldForShipping().click();
-        postalCodeFieldForShipping().clear();
+        postalCodeField().click();
+        postalCodeField().clear();
         char[] array = sendPostalCode.toCharArray();
         for (char anArray : array) {
             String send = String.valueOf(anArray);
@@ -37,48 +38,36 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return this;
     }
 
-    @Step("Filling postal code {sendPostalCode} for shipping. CartAddress_page")
-    public CartAddress_page_Logic fillingPostalCodeFieldJSForShipping(String sendPostalCode) {
-        postalCodeFieldForShipping().waitUntil(appear, 10000);
+    @Step("Filling postal code {sendPostalCode}. CartAddress_page")
+    public CartAddress_page_Logic fillingPostalCodeFieldJS(String sendPostalCode) {
+        postalCodeField().waitUntil(appear, 10000);
         JavascriptExecutor js = (JavascriptExecutor) getWebDriver();
-        js.executeScript("arguments[0].value='" + sendPostalCode + "';", postalCodeFieldForShipping());
+        js.executeScript("arguments[0].value='" + sendPostalCode + "';", postalCodeField());
         return this;
     }
 
-    @Step("Filling postal code {sendPostalCode} for billing. CartAddress_page")
-    public CartAddress_page_Logic fillingPostalCodeFieldJSForBilling(String sendPostalCode) {
-        postalCodeFieldForBilling().waitUntil(appear, 10000);
-        JavascriptExecutor js = (JavascriptExecutor) getWebDriver();
-        js.executeScript("arguments[0].value='" + sendPostalCode + "';", postalCodeFieldForBilling());
-        return this;
-    }
-
-    @Step("Choosing delivery country {country} for shipping. CartAddress_page")
-    public CartAddress_page_Logic chooseDeliveryCountryForShipping(String country) {
+    @Step("Choosing delivery country {country}. CartAddress_page")
+    public CartAddress_page_Logic chooseDeliveryCountry(String country) {
         if (country.equals("EN")) {
             country = "GB";
         }
-        countryInSelectorForShipping(country).shouldBe(visible).click();
+        countryInSelector(country).shouldBe(visible).click();
         return this;
     }
 
-    @Step("Choosing delivery country {country} for billing. CartAddress_page")
-    public CartAddress_page_Logic chooseDeliveryCountryForBilling(String country) {
-        if (country.equals("EN")) {
-            country = "GB";
-        }
-        countryInSelectorForBilling(country).shouldBe(visible).click();
-        return this;
-    }
 
     @Step("Choosing delivery country {country} and Filling postal code {sendPostalCode} for shipping and billing. CartAddress_page")
-    public CartAddress_page_Logic chooseDeliveryCountryAndFillingPostalCode(String countryShipping, String sendPostalCodeShipping, String countryBilling, String sendPostalCodeBilling) {
-        chooseDeliveryCountryForShipping(countryShipping);
-        fillingPostalCodeFieldJSForShipping(sendPostalCodeShipping);
+    public CartAddress_page_Logic chooseDeliveryCountryAndFillingPostalCode(String countryBilling, String sendPostalCodeBilling,String countryShipping, String sendPostalCodeShipping) {
+        CartShipping_page_Logic cartShipping_page_logic = new CartShipping_page_Logic();
         billingCheckBox().click();
-        nextBtnClick();
-        chooseDeliveryCountryForBilling(countryBilling);
-        fillingPostalCodeFieldJSForBilling(sendPostalCodeBilling);
+        chooseDeliveryCountry(countryBilling);
+        fillingPostalCodeFieldJS(sendPostalCodeBilling);
+        nextButton().click();
+        cartShipping_page_logic.chooseDeliveryCountryForShipping(countryShipping);
+        cartShipping_page_logic.fillingPostalCodeFieldJSForShipping(sendPostalCodeShipping);
+        cartShipping_page_logic.nextBtnClick();
+        checkingContainsUrl("https://www.autoteiledirekt.de/basket/payments.html");
+        new CartPayments_page_Logic().clickBtnReturnTheAddressPage();
         return this;
     }
 
@@ -96,9 +85,27 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return this;
     }
 
+    @Step("Checking of blocking plz {sendPostalCode} for country {country} with split billing and shipping. CartAddress_page")
+    public CartAddress_page_Logic checkBlockingPLZForCountry(String countryBilling, String sendPostalCodeBilling, String countryShipping, String sendPostalCodeShipping) {
+        CartShipping_page_Logic cartShipping_page_logic = new CartShipping_page_Logic();
+        if (billingCheckBox().isSelected()){
+            billingCheckBox().click();
+        }
+            chooseDeliveryCountry(countryBilling);
+            fillingPostalCodeFieldJS(sendPostalCodeBilling);
+            nextButton().click();
+            cartShipping_page_logic.chooseDeliveryCountryForShipping(countryShipping);
+            cartShipping_page_logic.fillingPostalCodeFieldJSForShipping(sendPostalCodeShipping);
+            cartShipping_page_logic.nextBtnClick();
+            popupCOVID19().shouldBe(visible);
+            closePopupCOVID19();
+            back();
+        return this;
+    }
+
     @Step("Checking block plz for country {countryCheck} on skin {skin}. CartAddress_page")
     public CartAddress_page_Logic checkingCOVID19Block(String countryCheck, String[] shopPlz, String file, String skin) throws IOException {
-        chooseDeliveryCountryForShipping(countryCheck);
+        chooseDeliveryCountry(countryCheck);
         for (String plz : shopPlz) {
             List<String> plzForChek = new ArrayList<>();
             if (countryCheck.equals("IT")) plzForChek = parsingAndCheckCOVIDBlockPlzForIT(plz);
@@ -154,7 +161,7 @@ public class CartAddress_page_Logic extends CartAddress_page {
     @Step("Checking appearing COVID Tooltip for country {countryCheck} with {plz} on skin {skin} . CartAddress_page")
     private CartAddress_page_Logic checkingAppearingCOVIDTooltip(String countryCheck, String plz, String
             file, String skin) throws IOException {
-        fillingPostalCodeFieldJSForShipping(plz);
+        fillingPostalCodeFieldJS(plz);
         System.out.println(plz);
         nextBtnClick();
         try {
@@ -162,7 +169,7 @@ public class CartAddress_page_Logic extends CartAddress_page {
             if (!popupCOVID19().getText().contains("COVID")) {
                 sleep(2000);
                 closePopupCOVID19();
-                postalCodeFieldForShipping().click();
+                postalCodeField().click();
                 nextBtnClick();
             }
             popupCOVID19().shouldHave(text("COVID"));
@@ -177,8 +184,8 @@ public class CartAddress_page_Logic extends CartAddress_page {
 
     @Step("Checking COVID-19 tooltip translate for country {countryCheck} with PLZ {plz} on shop {shop}. CartAddress_page")
     public CartAddress_page_Logic checkingCOVID19TooltipTranslate(String countryCheck, String plz, String shop) throws SQLException{
-        chooseDeliveryCountryForShipping(countryCheck);
-        fillingPostalCodeFieldJSForShipping(plz);
+        chooseDeliveryCountry(countryCheck);
+        fillingPostalCodeFieldJS(plz);
         nextBtnClick();
         String plzPopupText = getTextFromTooltipCOVID19();
         Assert.assertEquals(plzPopupText, new DataBase().getTranslate("convir_translate", shop, "addres"), "Error plz:" + plz);

@@ -1,7 +1,7 @@
-package ATD.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
+package Direkt.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
 
-import ATD.Product_page_Logic;
-import ATD.SetUp;
+import Direkt.Product_page_Logic;
+import Direkt.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -12,15 +12,13 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.checkingContainsUrl;
-import static ATD.CommonMethods.openPage;
-import static ATD.SetUp.setUpBrowser;
+import static Direkt.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.open;
 
+public class QC_1698_CheckOfBlockingForSplitBillingAndShipping {
 
-public class QC_1697_CheckOfNotBlockingOfIndexInTheBillingBlock {
-
-    private String email = "qc_1697_autotestCOVID19@mailinator.com";
+    private String email = "qc_1698_autotestCOVID19@mailinator.com";
     private String password = "atdtest";
 
     private String plzIT = "00017";
@@ -39,20 +37,15 @@ public class QC_1697_CheckOfNotBlockingOfIndexInTheBillingBlock {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test check of not blocking of index in the billing block")
-    public void testCheckNotBlockingIndexInBillingBlock(String route) {
-        openPage(route);
+    @Description(value = "Test check of blocking for split billing and shipping")
+    public void testCheckBlockingForSplitBillingAndShipping(String route) {
+        open(route);
         new Product_page_Logic().addProductToCart()
-                .closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
                 .signIn(email, password)
-                .chooseDeliveryCountryAndFillingPostalCode("IT", "12345", "IT", plzIT)
-                .nextBtnClick()
-                .clickBtnReturnTheAddressPage()
-                .chooseDeliveryCountryAndFillingPostalCode("ES", "12345", "ES", plzES)
-                .nextBtnClick();
-        checkingContainsUrl("https://www.autodoc.de/basket/payments");
+                .checkBlockingPLZForCountry("IT", "12345", "IT", plzIT)
+                .checkBlockingPLZForCountry("ES", "67890", "ES", plzES);
     }
 
     @AfterMethod

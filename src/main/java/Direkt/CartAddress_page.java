@@ -8,20 +8,12 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class CartAddress_page {
 
-    SelenideElement countryInSelectorForShipping(String country) {
+    SelenideElement countryInSelector(String country) {
         return $(byXpath("//*[@name='rLand']//*[@data-code='" + country + "']"));
     }
 
-    SelenideElement countryInSelectorForBilling(String country) {
-        return $(byXpath("//*[@name='lLand']//*[@data-code='" + country + "']"));
-    }
-
-    SelenideElement postalCodeFieldForShipping() {
+    SelenideElement postalCodeField() {
         return $(By.id("form_rPlz"));
-    }
-
-    SelenideElement postalCodeFieldForBilling() {
-        return $(By.id("form_lPlz"));
     }
 
     SelenideElement billingCheckBox() {
