@@ -1,8 +1,8 @@
-package EU.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
+package EXPERT.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
 
-import EU.Cart_page_Logic;
-import EU.Product_page_Logic;
-import EU.SetUp;
+
+import EXPERT.Product_page_Logic;
+import EXPERT.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -13,19 +13,19 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static EU.CommonMethods.getCurrentShopFromJSVarInHTML;
-import static EU.SetUp.setUpBrowser;
+
+import static EXPERT.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
-public class QC_1696_CheckErrorTranslateOnAddressPage {
-    private SetUp setUp = new SetUp();
+public class QC_1698_CheckOfBlockingForSplitBillingAndShipping {
 
-    private String email = "qc_1695_autotestCOVID19@mailinator.com";
+    private String email = "qc_1698_autotestCOVID19@mailinator.com";
     private String password = "atdtest";
 
     private String plzIT = "00017";
     private String plzES = "10900";
+
 
     @BeforeClass
     void setUp() {
@@ -34,23 +34,21 @@ public class QC_1696_CheckErrorTranslateOnAddressPage {
 
     @DataProvider(name = "route", parallel = false)
     Object[] dataProviderProducts() throws SQLException {
-        return setUp.setUpShopsWithSubroute("prod", setUp.getShopsDesktop(), "main", "product");
+        return new SetUp().setUpShopsWithSubroute("prod", "DE", "main", "product");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks translation of error popup on address page")
-    public void testCheckErrorTranslateOnAddressPage(String route) throws SQLException {
+    @Description(value = "Test check of blocking for split billing and shipping")
+    public void testCheckBlockingForSplitBillingAndShipping(String route) {
         open(route);
-        String shop = getCurrentShopFromJSVarInHTML();
         new Product_page_Logic().addProductToCart()
                 .cartClick()
-                .makePriceForMinimumOrderForCH(shop);
-        new Cart_page_Logic().nextButtonClick()
+                .nextButtonClick()
                 .signIn(email, password)
-                .checkingCOVID19TooltipTranslate("IT", plzIT, shop)
-                .checkingCOVID19TooltipTranslate("ES", plzES, shop);
+                .checkBlockingPLZForCountry("IT", plzIT, "IT", "12345")
+                .checkBlockingPLZForCountry("ES", plzES, "ES", "12345");
     }
 
     @AfterMethod
