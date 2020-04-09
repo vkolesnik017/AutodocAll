@@ -16,7 +16,6 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.close;
 
 public class QC_119_FiltersSorting_TestLangeFilterApplying {
@@ -55,7 +54,7 @@ public class QC_119_FiltersSorting_TestLangeFilterApplying {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks Lange side filter LKW")
     public void testLangeFilterLKW() throws SQLException {
-        openPage("https://lkwteile.autodoc.de/" +  dataBase.getRouteByRouteName("DE", "lkw_category_car_list"));
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list"));
         String characteristic = listingPage.getTextFromElement(listingPage.langeFilterCheckboxLKW());
         listingPage.clickFilterButton(listingPage.langeFilterCheckboxLKW())
                     .waitUntilPreloaderDisappear()

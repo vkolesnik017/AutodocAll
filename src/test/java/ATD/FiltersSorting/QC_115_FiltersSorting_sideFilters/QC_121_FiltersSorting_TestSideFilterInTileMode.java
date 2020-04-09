@@ -20,7 +20,6 @@ import static com.codeborne.selenide.Selenide.close;
 
 public class QC_121_FiltersSorting_TestSideFilterInTileMode {
     private Listing_page_Logic listingPage = new Listing_page_Logic();
-    private DataBase dataBase = new DataBase();
 
     @BeforeClass
     void setUp() {
@@ -56,7 +55,7 @@ public class QC_121_FiltersSorting_TestSideFilterInTileMode {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks side filter in tile mode LKW")
     public void testSideFilterInTileModeLKW() throws Exception {
-        openPage("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_category_car_list"));
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list"));
         String characteristic = listingPage.getTextFromElement(listingPage.langeFilterCheckboxLKW());
         listingPage.clickFilterButton(listingPage.langeFilterCheckboxLKW())
                 .waitUntilPreloaderDisappearAndSleep(3000)

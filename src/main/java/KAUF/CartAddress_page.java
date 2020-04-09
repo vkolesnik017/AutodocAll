@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.$x;
 public class CartAddress_page {
 
     SelenideElement countryInSelector(String country) {
-        return $(byXpath("//select[@class='country']//*[@data-code='" + country + "']"));
+        return $(byXpath("//*[@name='rLand']//*[@data-code='" + country + "']"));
     }
 
     SelenideElement postalCodeField() {
@@ -27,5 +27,9 @@ public class CartAddress_page {
 
     SelenideElement closeBtnPopupCOVID19() {
         return $x("//a[@class='close middle']");
+    }
+
+    SelenideElement billingCheckBox() {
+        return $x("//div[@class='jq-checkbox__div']");
     }
 }
