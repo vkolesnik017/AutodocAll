@@ -12,7 +12,6 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static Direkt.CommonMethods.checkingContainsUrl;
 import static Direkt.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
@@ -47,14 +46,8 @@ public class QC_1697_CheckOfNotBlockingOfIndexInTheBillingBlock {
                 .nextButtonClick()
                 .signIn(email, password)
                 .chooseDeliveryCountryAndFillingPostalCode("IT", plzIT, "IT", "12345")
-                .nextBtnClick()
-                .clickBtnReturnTheAddressPage()
                 .chooseDeliveryCountryAndFillingPostalCode("ES", plzES, "ES", "12345")
-                .nextBtnClick()
-                .clickBtnReturnTheAddressPage()
-                .chooseDeliveryCountryAndFillingPostalCode("PT", plzPT, "PT", "1234-567")
-                .nextBtnClick();
-        checkingContainsUrl("https://www.autoteiledirekt.de/basket/payments.html");
+                .chooseDeliveryCountryAndFillingPostalCode("PT", plzPT, "PT", "1234-567");
     }
 
     @AfterMethod
