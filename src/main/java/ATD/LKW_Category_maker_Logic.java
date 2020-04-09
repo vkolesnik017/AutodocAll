@@ -77,4 +77,36 @@ public class LKW_Category_maker_Logic extends LKW_Category_maker {
     }
 
 
+    @Step("reset of vertical selector   .LKW_Category_maker")
+    public LKW_Category_maker_Logic setupDefaultValueForVerticalSelector() {
+         if (!markeInVerticalCarSelector().has(value("0"))) {
+            markeInVerticalCarSelector().selectOptionByValue("0");
+        }
+        return this;
+    }
+
+
+    @Step("visibility of tooltip for marke_field in selector  .LKW_Category_maker")
+    public LKW_Category_maker_Logic visibilityOfTooltipForMarkeFieldInSelector() {
+        btnSearchInVerticalCarSelector().click();
+        tooltipForMarkeFieldInVerticalCarSelector().shouldBe(visible);
+        return this;
+    }
+    @Step("visibility of tooltip for model_field in selector  .LKW_Category_maker")
+    public LKW_Category_maker_Logic visibilityOfTooltipForModelFieldInSelector() {
+        markeInVerticalCarSelector().selectOptionByValue("24");
+        btnSearchInVerticalCarSelector().click();
+        tooltipForMarkeFieldInVerticalCarSelector().shouldBe(visible);
+        return this;
+    }
+
+
+    @Step("visibility of tooltip for motor_field in selector  .LKW_Category_maker")
+    public LKW_Category_maker_Logic visibilityOfTooltipForMotorFieldInSelector() {
+        motorInVerticalCarSelector().selectOptionByValue("714");
+        btnSearchInVerticalCarSelector().click();
+        tooltipForMarkeFieldInVerticalCarSelector().shouldBe(visible);
+        return this;
+    }
+
 }

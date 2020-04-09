@@ -3,8 +3,9 @@ package ATD;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Selenide.$$x;
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selectors.byId;
+import static com.codeborne.selenide.Selectors.byName;
+import static com.codeborne.selenide.Selenide.*;
 
 class LKW_Category_maker {
 
@@ -51,4 +52,16 @@ class LKW_Category_maker {
     SelenideElement titleOfBrand(String title) {
         return $x("//li[@data-brand-name='" + title + "']/a");
     }
+
+    SelenideElement resetSelector() {return $(byId("reset_selector_form"));}
+
+    SelenideElement markeInVerticalCarSelector() {return $(byName("maker_id"));}
+
+    SelenideElement motorInVerticalCarSelector() {return $(byName("model_id"));}
+
+    SelenideElement btnSearchInVerticalCarSelector() {
+        return $x("//a[@class='truck_submit js--lkw_selector-btn-submit']");
+    }
+
+    SelenideElement tooltipForMarkeFieldInVerticalCarSelector() { return $x("//div[@class='validation-tooltip popup-error-select']");}
 }

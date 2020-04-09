@@ -89,4 +89,44 @@ public class LKW_maker_car_list_Logic extends LKW_maker_car_list {
     }
 
 
+    @Step("open vertical selector if it close .LKW_maker_car_list")
+    public LKW_maker_car_list_Logic openVerticalSelector() {
+        if (verticalTruckSelectorInCloseState().isDisplayed()) {
+            verticalTruckSelectorInCloseState().click();
+        }
+        verticalTruckSelectorInOpenState().shouldBe(visible);
+        return this;
+    }
+
+    @Step("reset of vertical selector   .LKW_maker_car_list")
+    public LKW_maker_car_list_Logic setupDefaultValueForVerticalSelector() {
+        if (!markeInVerticalCarSelector().has(value("0"))) {
+            markeInVerticalCarSelector().selectOptionByValue("0");
+        }
+        return this;
+    }
+
+    @Step("visibility of tooltip for marke_field in selector  .LKW_maker_car_list")
+    public LKW_maker_car_list_Logic visibilityOfTooltipForMarkeFieldInCloseSelector() {
+        btnSearchInVerticalCarSelector().click();
+        tooltipForFieldInVerticalCarSelector().shouldBe(visible);
+        return this;
+    }
+    @Step("visibility of tooltip for model_field in selector  .LKW_maker_car_list")
+    public LKW_maker_car_list_Logic visibilityOfTooltipForModelFieldInCloseSelector() {
+        markeInVerticalCarSelector().selectOptionByValue("24");
+        btnSearchInVerticalCarSelector().click();
+        tooltipForFieldInVerticalCarSelector().shouldBe(visible);
+        return this;
+    }
+
+
+    @Step("visibility of tooltip for motor_field in selector  .LKW_maker_car_list")
+    public LKW_maker_car_list_Logic visibilityOfTooltipForMotorFieldInCloseSelector() {
+        motorInVerticalCarSelector().selectOptionByValue("714");
+        btnSearchInVerticalCarSelector().click();
+        tooltipForFieldInVerticalCarSelector().shouldBe(visible);
+        return this;
+    }
+
 }
