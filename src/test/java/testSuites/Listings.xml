@@ -36,7 +36,7 @@
         <classes>
             <class name="ATD.Listings.QC_458_ListingViewModes.QC_460_CompareProductsBetweenListingViewModesOnTecDoc"/>
             <class name="ATD.Listings.QC_458_ListingViewModes.QC_461_CompareProductsBetweenListingViewModesOnOEN"/>
-            <class name="ATD.Listings.QC_458_ListingViewModes.QC_462_CompareProductsBetweenListingViewModesOnSearch"/>
+            <!--<class name="ATD.Listings.QC_458_ListingViewModes.QC_462_CompareProductsBetweenListingViewModesOnSearch"/>-->
             <class name="ATD.Listings.QC_458_ListingViewModes.QC_463_CompareProductsBetweenListingViewModesOnLKW"/>
             <class name="ATD.Listings.QC_458_ListingViewModes.QC_464_CompareProductsBetweenListingViewModesOnACC"/>
         </classes>
