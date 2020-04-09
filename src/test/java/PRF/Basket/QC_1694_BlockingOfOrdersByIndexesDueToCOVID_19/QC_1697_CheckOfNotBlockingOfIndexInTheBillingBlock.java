@@ -1,7 +1,7 @@
-package Direkt.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
+package PRF.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
 
-import Direkt.Product_page_Logic;
-import Direkt.SetUp;
+import PRF.Product_page_Logic;
+import PRF.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -12,9 +12,8 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static Direkt.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
-import static com.codeborne.selenide.Selenide.open;
+import static PRF.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Selenide.*;
 
 public class QC_1697_CheckOfNotBlockingOfIndexInTheBillingBlock {
 
@@ -45,9 +44,9 @@ public class QC_1697_CheckOfNotBlockingOfIndexInTheBillingBlock {
                 .cartClick()
                 .nextButtonClick()
                 .signIn(email, password)
-                .chooseDeliveryCountryAndFillingPostalCode("IT", plzIT, "IT", "12345")
-                .chooseDeliveryCountryAndFillingPostalCode("ES", plzES, "ES", "12345")
-                .chooseDeliveryCountryAndFillingPostalCode("PT", plzPT, "PT", "1234-567");
+                .chooseDeliveryCountryAndFillingPostalCode("IT", "12345", "IT", plzIT)
+                .chooseDeliveryCountryAndFillingPostalCode("ES", "12345", "ES", plzES)
+                .chooseDeliveryCountryAndFillingPostalCode("PT", "1234-567", "PT", plzPT);
     }
 
     @AfterMethod

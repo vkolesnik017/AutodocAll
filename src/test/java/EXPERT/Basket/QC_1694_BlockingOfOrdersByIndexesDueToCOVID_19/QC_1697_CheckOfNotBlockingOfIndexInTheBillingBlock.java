@@ -1,7 +1,7 @@
-package Direkt.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
+package EXPERT.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
 
-import Direkt.Product_page_Logic;
-import Direkt.SetUp;
+import EXPERT.Product_page_Logic;
+import EXPERT.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -12,7 +12,9 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static Direkt.SetUp.setUpBrowser;
+
+import static EXPERT.CommonMethods.checkingContainsUrl;
+import static EXPERT.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -45,9 +47,15 @@ public class QC_1697_CheckOfNotBlockingOfIndexInTheBillingBlock {
                 .cartClick()
                 .nextButtonClick()
                 .signIn(email, password)
-                .chooseDeliveryCountryAndFillingPostalCode("IT", plzIT, "IT", "12345")
-                .chooseDeliveryCountryAndFillingPostalCode("ES", plzES, "ES", "12345")
-                .chooseDeliveryCountryAndFillingPostalCode("PT", plzPT, "PT", "1234-567");
+                .chooseDeliveryCountryAndFillingPostalCode("IT", "12345", "IT", plzIT)
+                .nextBtnClick()
+                .clickBtnReturnTheAddressPage()
+                .chooseDeliveryCountryAndFillingPostalCode("ES", "12345", "ES", plzES)
+                .nextBtnClick()
+                .clickBtnReturnTheAddressPage()
+                .chooseDeliveryCountryAndFillingPostalCode("PT", "1234-567", "PT", plzPT)
+                .nextBtnClick();
+        checkingContainsUrl("https://www.rexbo.de/basket/payments");
     }
 
     @AfterMethod

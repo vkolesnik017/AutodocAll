@@ -1,6 +1,5 @@
 package ATD.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
 
-import ATD.Cart_page_Logic;
 import ATD.Product_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
@@ -13,10 +12,9 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
+import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static PKW.CommonMethods.checkingContainsUrl;
-import static PKW.CommonMethods.getCurrentShopFromJSVarInHTML;
 import static com.codeborne.selenide.Selenide.close;
 
 

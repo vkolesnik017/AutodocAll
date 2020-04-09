@@ -53,7 +53,8 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return this;
     }
 
-    @Step("Choosing delivery country {country} and Filling postal code {sendPostalCode} for billing and shipping. CartAddress_page")
+    @Step("Choosing delivery country {country} and Filling postal code {sendPostalCode} for " +
+            "shipping and billing and checks the link of the next step. CartAddress_page")
     public CartAddress_page_Logic chooseDeliveryCountryAndFillingPostalCode(String countryBilling, String sendPostalCodeBilling, String countryShipping, String sendPostalCodeShipping) {
         CartShipping_page_Logic cartShipping_page_logic = new CartShipping_page_Logic();
         billingCheckBox().click();

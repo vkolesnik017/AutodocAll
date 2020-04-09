@@ -311,4 +311,10 @@ public class LKW_main_page_Logic extends LKW_main_page {
         }
         return this;
     }
+
+    @Step("availability of vertical truck selector .LKW_main_page")
+    public LKW_main_page_Logic availabilityOfVerticalTruckSelector() {
+        verticalTruckSelector().shouldBe(visible);
+        return this;
+    }
 }

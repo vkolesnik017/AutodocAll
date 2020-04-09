@@ -9,13 +9,30 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class CartAddress_page {
 
-    SelenideElement countryInSelector(String country) {
-        return $(byXpath("//*[@class='country inp_text']//*[@data-code='" + country + "']"));
+    SelenideElement countryInSelectorForShipping(String country) {
+        return $(byXpath("//*[@name='lLand']//*[@data-code='" + country + "']"));
     }
 
-    SelenideElement postalCodeField() {
+    SelenideElement countryInSelectorForBilling(String country) {
+        return $(byXpath("//*[@name='rLand']//*[@data-code='" + country + "']"));
+    }
+
+    SelenideElement postalCodeFieldForShipping() {
         return $(By.id("form_lPlz"));
     }
+
+    SelenideElement postalCodeFieldForBilling() {
+        return $(By.id("form_rPlz"));
+    }
+
+    SelenideElement billingCheckBox() {
+        return $x("//input[@id='showBilling']");
+    }
+
+    SelenideElement billingForm() {
+        return $(By.id("billing_form"));
+    }
+
 
     SelenideElement nextButton() {
         return $x("//a[@class='btn next_button']");

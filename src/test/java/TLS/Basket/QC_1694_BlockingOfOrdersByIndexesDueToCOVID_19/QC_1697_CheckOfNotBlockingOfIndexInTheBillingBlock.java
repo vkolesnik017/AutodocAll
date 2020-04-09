@@ -1,7 +1,7 @@
-package Direkt.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
+package TLS.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
 
-import Direkt.Product_page_Logic;
-import Direkt.SetUp;
+import TLS.Product_page_Logic;
+import TLS.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static Direkt.SetUp.setUpBrowser;
+import static TLS.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 

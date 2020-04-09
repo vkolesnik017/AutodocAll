@@ -1,7 +1,7 @@
-package Direkt.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
+package TKF.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
 
-import Direkt.Product_page_Logic;
-import Direkt.SetUp;
+import TKF.Product_page_Logic;
+import TKF.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -12,7 +12,8 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static Direkt.SetUp.setUpBrowser;
+import static TKF.CommonMethods.checkingContainsUrl;
+import static TKF.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -43,11 +44,17 @@ public class QC_1697_CheckOfNotBlockingOfIndexInTheBillingBlock {
         open(route);
         new Product_page_Logic().addProductToCart()
                 .cartClick()
-                .nextButtonClick()
+                .nextBtnClick()
                 .signIn(email, password)
-                .chooseDeliveryCountryAndFillingPostalCode("IT", plzIT, "IT", "12345")
-                .chooseDeliveryCountryAndFillingPostalCode("ES", plzES, "ES", "12345")
-                .chooseDeliveryCountryAndFillingPostalCode("PT", plzPT, "PT", "1234-567");
+                .chooseDeliveryCountryAndFillingPostalCode("IT", "12345", "IT", plzIT)
+                .nextBtnClick()
+                .clickBtnReturnTheAddressPage()
+                .chooseDeliveryCountryAndFillingPostalCode("ES", "12345", "ES", plzES)
+                .nextBtnClick()
+                .clickBtnReturnTheAddressPage()
+                .chooseDeliveryCountryAndFillingPostalCode("PT", "1234-567", "PT", plzPT)
+                .nextBtnClick();
+        checkingContainsUrl("https://www.autotex.de/basket/payments");
     }
 
     @AfterMethod
