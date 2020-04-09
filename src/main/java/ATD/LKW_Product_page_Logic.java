@@ -104,4 +104,29 @@ public class LKW_Product_page_Logic extends LKW_Product_page {
         return page(LKW_maker_car_list_Logic.class);
     }
 
+    @Step("visibility of tooltip for marke_field in selector  .LKW_Product_page")
+    public LKW_Product_page_Logic visibilityOfTooltipForMarkeFieldInHorizontalSelector() {
+        markeInHorizontalTruckSelector().shouldHave(value("0"));
+        searchBtnInHorizontalTruckSelector().click();
+        tooltipForFieldInHorizontalCarSelector().shouldBe(visible);
+        return this;
+    }
+
+    @Step("visibility of tooltip for model_field in selector  .LKW_Product_page")
+    public LKW_Product_page_Logic visibilityOfTooltipForModelFieldInHorizontalSelector() {
+        markeInHorizontalTruckSelector().selectOptionByValue("24");
+        searchBtnInHorizontalTruckSelector().click();
+        tooltipForFieldInHorizontalCarSelector().shouldBe(visible);
+        return this;
+    }
+
+
+    @Step("visibility of tooltip for motor_field in selector  .LKW_Product_page")
+    public LKW_Product_page_Logic visibilityOfTooltipForMotorFieldInHorizontalSelector() {
+        modelInHorizontalTruckSelector().selectOptionByValue("714");
+        searchBtnInHorizontalTruckSelector().click();
+        tooltipForFieldInHorizontalCarSelector().shouldBe(visible);
+        return this;
+    }
+
 }
