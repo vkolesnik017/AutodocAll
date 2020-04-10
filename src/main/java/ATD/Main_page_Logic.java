@@ -905,7 +905,8 @@ public class Main_page_Logic extends Main_page {
         loginBtnInHeader().click();
         registrationButtonInLoginPopup().click();
         String firstName = firstNameRandom();
-        fillRequiredFieldsForRegistration(firstName, secondNameRandom(), mail, false);
+        String secondName = secondNameRandom();
+        fillRequiredFieldsForRegistration(firstName, secondName, mail, false);
         fillPasswordFieldsAndClickRegistration();
         profile_page.nameOfClient().shouldHave(Condition.text(firstName));
         return this;

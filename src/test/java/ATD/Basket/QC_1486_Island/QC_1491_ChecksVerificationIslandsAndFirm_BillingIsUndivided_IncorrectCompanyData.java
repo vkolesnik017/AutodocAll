@@ -67,7 +67,7 @@ public class QC_1491_ChecksVerificationIslandsAndFirm_BillingIsUndivided_Incorre
         totalPriceInEmail = new Mailinator().openEmail("qc_1491_autotestDE@mailinator.com")
                 .openLetter(1)
                 .checkRegularDeliveryPriceInEmail("10,95")
-                .checkTextContainingVatPercentageInEmail("Inkl. 20% MwSt.")
+                .checkTextContainingVatPercentageInEmail("inkl. 20% MwSt")
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPrice, totalPriceInEmail);
         openPage(route);
