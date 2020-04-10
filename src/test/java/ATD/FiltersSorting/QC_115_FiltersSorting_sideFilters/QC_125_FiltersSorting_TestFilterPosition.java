@@ -57,7 +57,7 @@ public class QC_125_FiltersSorting_TestFilterPosition {
         String characteristic = listingPageLogic.getTextFromElement(listingPageLogic.langeFilterAttribute3());
         listingPageLogic.clickFilterButton(listingPageLogic.langeFilterCheckbox3())
                 .waitUntilPreloaderDisappear()
-                .checkTextInElement(listingPageLogic.activeSideFilter(), characteristic);
+                .checkTextInElement(listingPageLogic.activeSideFilterLkwCheckbox(), characteristic);
     }
 
     @Test(enabled = false)
