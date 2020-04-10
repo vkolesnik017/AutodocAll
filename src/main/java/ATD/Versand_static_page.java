@@ -234,4 +234,6 @@ class Versand_static_page {
         return $(By.xpath("//*[@class='choose-delivery__wrap delivery-wrap-js']"));
     }
 
+    SelenideElement deliveryPriceForUKlocator() { return $x("//*[@class='country-prices__pop country-prices-pop-js']//span[contains (text(), 'Großbritannien')]/../../span"); }
+
 }
