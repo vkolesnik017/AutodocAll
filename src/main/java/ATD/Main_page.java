@@ -99,10 +99,6 @@ public class Main_page {
         return $x("//div[@class='header-garage__notlogged  header-garage-drop active']");
     }
 
-    SelenideElement headerLinkPrivacyPolicy(){
-        return $x("//span[@class='link privacy-policy']");
-    }
-
     public SelenideElement menuCatalogInHeader() {
         return $(".menu-catalog>a");
     }
