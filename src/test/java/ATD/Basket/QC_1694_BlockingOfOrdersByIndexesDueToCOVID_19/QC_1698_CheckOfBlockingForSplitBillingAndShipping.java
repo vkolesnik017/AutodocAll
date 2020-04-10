@@ -12,19 +12,19 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
+public class QC_1698_CheckOfBlockingForSplitBillingAndShipping {
 
-public class QC_1697_CheckOfNotBlockingOfIndexInTheBillingBlock {
 
-    private String email = "qc_1697_autotestCOVID19@mailinator.com";
+    private String email = "qc_1698_autotestCOVID19@mailinator.com";
     private String password = "atdtest";
 
     private String plzIT = "00017";
     private String plzES = "10900";
+
 
     @BeforeClass
     void setUp() {
@@ -39,20 +39,16 @@ public class QC_1697_CheckOfNotBlockingOfIndexInTheBillingBlock {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test check of not blocking of index in the billing block")
-    public void testCheckNotBlockingIndexInBillingBlock(String route) {
+    @Description(value = "Test check of blocking for split billing and shipping")
+    public void testCheckBlockingForSplitBillingAndShipping(String route) {
         openPage(route);
         new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
                 .signIn(email, password)
-                .chooseDeliveryCountryAndFillingPostalCode("IT", "12345", "IT", plzIT)
-                .nextBtnClick()
-                .clickBtnReturnTheAddressPage()
-                .chooseDeliveryCountryAndFillingPostalCode("ES", "12345", "ES", plzES)
-                .nextBtnClick();
-        checkingContainsUrl("https://www.autodoc.de/basket/payments");
+                .checkBlockingPLZForCountry("IT", plzIT, "IT", "12345")
+                .checkBlockingPLZForCountry("ES", plzES, "ES", "67890");
     }
 
     @AfterMethod

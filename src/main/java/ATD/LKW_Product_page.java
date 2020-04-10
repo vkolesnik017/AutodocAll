@@ -67,7 +67,14 @@ public class LKW_Product_page {
     SelenideElement carCompatibilityBlock() {
         return $x("//div[@class='product-info-block__auto product-info-block--lkw single']");
     }
-    SelenideElement titleOfSuitableCarInCompatibilityBlock() {return $x("//div[@class='accordion-selected']/p");}
 
+    SelenideElement titleOfSuitableCarInCompatibilityBlock() {
+        return $x("//div[@class='accordion-selected']/p");
+    }
+
+
+    SelenideElement tooltipForFieldInHorizontalCarSelector() {
+        return $x("//div[@class='validation-tooltip popup-error-select']");
+    }
 
 }
