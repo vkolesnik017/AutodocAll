@@ -79,11 +79,11 @@ public class QC_124_FiltersSorting_TestSideFilterCancelling {
         String characteristic = listingPage.getTextFromElement(listingPage.langeFilterAttribute3());
         listingPage.clickFilterButton(listingPage.langeFilterCheckbox3())
                     .waitUntilPreloaderDisappear()
-                    .checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.langeProductAttributeGenericRoute(), listingPage.langeProductAttributeTecdocRoute());
-        int numberOfAttributesFilter = listingPage.getSizeOfCollection(listingPage.langeProductAttributeTecdocRoute());
+                    .checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.verschleiswarnkontaktProductAttributeGenericRouteLKW(), listingPage.verschleiswarnkontaktProductAttributeTecdocRouteLKW());
+        int numberOfAttributesFilter = listingPage.getSizeOfCollection(listingPage.verschleiswarnkontaktProductAttributeTecdocRouteLKW());
         listingPage.clickFilterButton(listingPage.activeSideFilterLkwCheckbox())
                     .waitUntilPreloaderDisappear();
-        int numberOfAttributesNoFilter = listingPage.getSizeOfCollection(listingPage.langeProductAttributeTecdocRoute());
+        int numberOfAttributesNoFilter = listingPage.getSizeOfCollection(listingPage.verschleiswarnkontaktProductAttributeTecdocRouteLKW());
         listingPage.checkFilterIsCanceled(numberOfAttributesFilter, numberOfAttributesNoFilter);
     }
 
