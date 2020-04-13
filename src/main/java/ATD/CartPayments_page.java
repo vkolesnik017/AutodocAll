@@ -17,6 +17,11 @@ public class CartPayments_page {
         return $(byId("hypovereinsbank"));
     }
 
+    //for PL shop
+    SelenideElement przelewBankowyBtn() {
+        return $(byId("przelew_bankowy"));
+    }
+
     SelenideElement nextBtn() {
         return $(byCssSelector("[id='apply_payment']>a"));
     }

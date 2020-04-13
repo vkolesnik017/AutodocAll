@@ -33,6 +33,14 @@ public class CartAddress_page {
         return $(byId("form_lTelefon"));
     }
 
+    SelenideElement checkboxFirmShipping() {
+        return $x("//input[@id='is_company_shipping']");
+    }
+
+    SelenideElement firm() {
+        return $(byId("form_lFirma"));
+    }
+
 
     public SelenideElement currentCountryInSelector() {
         return $(byXpath("//*[@id='form_lLand']/option[@selected]"));

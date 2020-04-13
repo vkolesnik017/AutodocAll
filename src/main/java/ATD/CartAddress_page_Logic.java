@@ -33,6 +33,23 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return this;
     }
 
+    @Step("Fill all fields with default values and Firm {nameFirm} and City {city}. CartAddress_page")
+    public CartAddress_page_Logic fillAllFieldsAndFirm(String shop, String nameFirm, String city) {
+        checkCorrectTextAndFillInput(vorname(), "autotest");
+        checkCorrectTextAndFillInput(nameIn(), "autotest");
+        checkCorrectTextAndFillInput(strasse(), "autotest");
+        checkCorrectTextAndFillInput(deliveryHouse(), "autotest");
+        fillInPostalCode("default");
+        checkCorrectTextAndFillInput(ort(), city);
+        chooseDeliveryCountryForShipping(shop);
+        checkCorrectTextAndFillInput(telephon(), "200+002");
+        if (!firm().isDisplayed()) {
+            checkboxFirmShipping().click();
+        }
+        checkCorrectTextAndFillInput(firm(), nameFirm);
+        return this;
+    }
+
     @Step("Checking correct text in input field. CartAddress_page")
     private void checkCorrectTextAndFillInput(SelenideElement element, String correctText) {
         Configuration.fastSetValue = false;
