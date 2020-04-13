@@ -98,10 +98,19 @@ public class LKW_Category_maker_brand_page_Logic extends LKW_Category_maker_bran
     }
 
 
-    @Step("check successfully Category maker brand page loading .LKW_Category_brand_page ")
+    @Step("check successfully Category maker brand page loading .LKW_Category_maker_brand_page ")
     public LKW_Category_maker_brand_page_Logic checkSuccessfullyCategoryMakerBrandPageLoading(String currentUrl) {
         childCategoryBlockInSideBar().shouldBe(visible);
         Assert.assertEquals(url(), currentUrl);
+        return this;
+    }
+
+
+    @Step("check successfully Category maker brand page loading .LKW_Category_maker_brand_page ")
+    public LKW_Category_maker_brand_page_Logic availabilityOfCarBrandInSelectorFromUrl() {
+         markeInVerticalTruckSelector().shouldNotHave(exactValue("0"));
+         String selectedCarBrandFromSelector = markeInVerticalTruckSelector().getText().toLowerCase();
+         Assert.assertTrue(url().contains(selectedCarBrandFromSelector));
         return this;
     }
 }

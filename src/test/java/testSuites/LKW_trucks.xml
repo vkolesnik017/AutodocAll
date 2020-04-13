@@ -115,10 +115,12 @@
         </classes>
     </test>
 
-    <test name="QC_83_AvailabilityOfTruckSelector">
+    <test name="QC_82_AvailabilityOfTruckSelector">
         <classes>
             <class name="LKW_trucks.QC_82_TruckSelectorBlock.QC_83_AvailabilityOfTruckSelector"/>
             <class name="LKW_trucks.QC_82_TruckSelectorBlock.QC_84_RequiredFieldsForSelectionInSelector"/>
+            <class name="LKW_trucks.QC_82_TruckSelectorBlock.QC_93_VisibilityOfCarInInputFieldOfSelectorFromUrl"/>
+            <class name="LKW_trucks.QC_82_TruckSelectorBlock.QC_157_PopUpOfSpecificationsInTruckSelector"/>
             </classes>
     </test>
 
