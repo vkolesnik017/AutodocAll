@@ -791,7 +791,6 @@ public class Main_page_Logic extends Main_page {
         headerTop().shouldBe(visible);
         logoInHeader().shouldBe(visible);
         headerGarageIcon().shouldBe(visible);
-        headerLinkPrivacyPolicy().shouldBe(visible);
         loginBtnInHeader().shouldBe(visible);
         return this;
     }
@@ -811,14 +810,6 @@ public class Main_page_Logic extends Main_page {
         loginBtnInPopUp().shouldBe(visible);
         closeBtnOfLoginPopup().click();
         loginBtnInPopUp().shouldBe(not(visible));
-        return this;
-    }
-
-    @Step("Checks the transition on the privacy-policy link in the Header. Main_page")
-    public Main_page_Logic checkTransitionOnPrivacyPolicyLinkInHeader() {
-        headerLinkPrivacyPolicy().click();
-        new Datenschutz_page().mainBlock().shouldBe(visible);
-        logoInHeader().click();
         return this;
     }
 
@@ -905,7 +896,8 @@ public class Main_page_Logic extends Main_page {
         loginBtnInHeader().click();
         registrationButtonInLoginPopup().click();
         String firstName = firstNameRandom();
-        fillRequiredFieldsForRegistration(firstName, secondNameRandom(), mail, false);
+        String secondName = secondNameRandom();
+        fillRequiredFieldsForRegistration(firstName, secondName, mail, false);
         fillPasswordFieldsAndClickRegistration();
         profile_page.nameOfClient().shouldHave(Condition.text(firstName));
         return this;

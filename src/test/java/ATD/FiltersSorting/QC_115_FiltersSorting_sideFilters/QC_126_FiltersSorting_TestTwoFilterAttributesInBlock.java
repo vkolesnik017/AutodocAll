@@ -89,11 +89,11 @@ public class QC_126_FiltersSorting_TestTwoFilterAttributesInBlock {
         openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list7"));
         listingPage.clickFilterButton(listingPage.langeFilterCheckbox3())
                 .waitUntilPreloaderDisappear();
-        String characteristic = listingPage.getTextFromElement(listingPage.activeSideFilter2());
-        listingPage.clickFilterButton(listingPage.activeSideFilter2())
+        String characteristic = listingPage.getTextFromElement(listingPage.secondValueInActiveSideFilter());
+        listingPage.clickFilterButton(listingPage.secondValueInActiveSideFilter())
                 .waitUntilPreloaderDisappear()
-                .checkTextInElement(listingPage.activeSideFilter(), characteristic)
-                .checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.langeProductAttributeGenericRoute(), listingPage.langeProductAttributeTecdocRoute());
+                .checkTextInElement(listingPage.activeSideFilterLkwCheckbox(), characteristic)
+                .checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.verschleiswarnkontaktProductAttributeGenericRouteLKW(), listingPage.verschleiswarnkontaktProductAttributeTecdocRouteLKW());
     }
 
     @Test(enabled = false)

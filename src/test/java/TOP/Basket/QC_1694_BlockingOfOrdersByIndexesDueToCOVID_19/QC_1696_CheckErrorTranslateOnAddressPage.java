@@ -45,7 +45,7 @@ public class QC_1696_CheckErrorTranslateOnAddressPage {
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks translation of error popup on address page")
     public void testCheckErrorTranslateOnAddressPage()/*(String route)*/ throws SQLException {
-        open("https://www.topersatzteile.ch/hersteller/knecht/7435");
+        open("https://www.topersatzteile.de/hersteller/mapco/67962");
         String shop = getCurrentShopFromJSVarInHTML();
         new Product_page_Logic().addProductToCart()
                 .cartClick()

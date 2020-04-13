@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static EU.CommonMethods.checkingContainsUrl;
+import static KAUF.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
@@ -81,6 +81,25 @@ public class CartAddress_page_Logic extends CartAddress_page {
     @Step("Close popup COVID19. CartAddress_page")
     public CartAddress_page closePopupCOVID19() {
         closeBtnPopupCOVID19().click();
+        return this;
+    }
+
+    @Step("Checking of blocking plz {sendPostalCode} for country {country} with split billing and shipping. CartAddress_page")
+    public CartAddress_page_Logic checkBlockingPLZForCountry(String countryBilling, String sendPostalCodeBilling, String countryShipping, String sendPostalCodeShipping) {
+        CartShipping_page_Logic cartShipping_page_logic = new CartShipping_page_Logic();
+        sleep(2000);
+        while (billingCheckBox().isDisplayed()) {
+            billingCheckBox().click();
+        }
+        chooseDeliveryCountry(countryBilling);
+        fillingPostalCodeFieldJS(sendPostalCodeBilling);
+        nextButton().click();
+        cartShipping_page_logic.chooseDeliveryCountryForShipping(countryShipping);
+        cartShipping_page_logic.fillingPostalCodeFieldJSForShipping(sendPostalCodeShipping);
+        cartShipping_page_logic.nextBtnClick();
+        textFromPopUpCOVID19().shouldBe(visible);
+        closePopupCOVID19();
+        back();
         return this;
     }
 

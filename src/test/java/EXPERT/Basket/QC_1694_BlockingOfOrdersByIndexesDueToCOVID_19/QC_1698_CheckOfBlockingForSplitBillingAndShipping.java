@@ -1,7 +1,8 @@
-package KAUF.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
+package EXPERT.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
 
-import KAUF.Product_page_Logic;
-import KAUF.SetUp;
+
+import EXPERT.Product_page_Logic;
+import EXPERT.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -12,17 +13,19 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static KAUF.SetUp.setUpBrowser;
+
+import static EXPERT.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
-public class QC_1697_CheckOfNotBlockingOfIndexInTheBillingBlock {
+public class QC_1698_CheckOfBlockingForSplitBillingAndShipping {
 
-    private String email = "qc_1697_autotestCOVID19@mailinator.com";
+    private String email = "qc_1698_autotestCOVID19@mailinator.com";
     private String password = "atdtest";
 
     private String plzIT = "00017";
     private String plzES = "10900";
+
 
     @BeforeClass
     void setUp() {
@@ -37,15 +40,15 @@ public class QC_1697_CheckOfNotBlockingOfIndexInTheBillingBlock {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test check of not blocking of index in the billing block")
-    public void testCheckNotBlockingIndexInBillingBlock(String route) {
+    @Description(value = "Test check of blocking for split billing and shipping")
+    public void testCheckBlockingForSplitBillingAndShipping(String route) {
         open(route);
         new Product_page_Logic().addProductToCart()
                 .cartClick()
                 .nextButtonClick()
                 .signIn(email, password)
-                .chooseDeliveryCountryAndFillingPostalCode("IT", plzIT, "IT", "12345")
-                .chooseDeliveryCountryAndFillingPostalCode("ES", plzES, "ES", "12345");
+                .checkBlockingPLZForCountry("IT", plzIT, "IT", "12345")
+                .checkBlockingPLZForCountry("ES", plzES, "ES", "12345");
     }
 
     @AfterMethod

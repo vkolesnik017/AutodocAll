@@ -108,7 +108,7 @@ public class CommonMethods {
     public static String mailRandom() {
         Random randomGenerator = new Random();
         int random = randomGenerator.nextInt();
-        return "autotest" + random + "@test.com";
+        return "autotest" + random + "@mailinator.com";
     }
 
     @Step("Checking datenschutzerklarung link behavior")

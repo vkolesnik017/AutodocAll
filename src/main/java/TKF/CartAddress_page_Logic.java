@@ -99,6 +99,21 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return this;
     }
 
+    @Step("Checking of blocking plz {sendPostalCode} for country {country} with split billing and shipping. CartAddress_page")
+    public CartAddress_page_Logic checkBlockingPLZForCountry(String countryShipping, String sendPostalCodeShipping, String countryBilling, String sendPostalCodeBilling) {
+        chooseDeliveryCountryForShipping(countryShipping);
+        fillingPostalCodeFieldJSForShipping(sendPostalCodeShipping);
+        if (!billingForm().isDisplayed()) {
+            billingCheckBox().click();
+        }
+        chooseDeliveryCountryForBilling(countryBilling);
+        fillingPostalCodeFieldJSForBilling(sendPostalCodeBilling);
+        nextBtnClick();
+        textFromPopUpCOVID19().shouldBe(visible);
+        closePopupCOVID19();
+        return this;
+    }
+
     @Step("Checking block plz for country {countryCheck} on skin {skin}. CartAddress_page")
     public CartAddress_page_Logic checkingCOVID19Block(String countryCheck, String[] shopPlz, String file, String skin) throws IOException {
         chooseDeliveryCountryForShipping(countryCheck);
