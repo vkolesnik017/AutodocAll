@@ -112,6 +112,7 @@ public class LKW_maker_car_list_Logic extends LKW_maker_car_list {
         tooltipForFieldInVerticalCarSelector().shouldBe(visible);
         return this;
     }
+
     @Step("visibility of tooltip for model_field in selector  .LKW_maker_car_list")
     public LKW_maker_car_list_Logic visibilityOfTooltipForModelFieldInCloseSelector() {
         markeInVerticalCarSelector().selectOptionByValue("24");
@@ -126,6 +127,17 @@ public class LKW_maker_car_list_Logic extends LKW_maker_car_list {
         motorInVerticalCarSelector().selectOptionByValue("714");
         btnSearchInVerticalCarSelector().click();
         tooltipForFieldInVerticalCarSelector().shouldBe(visible);
+        return this;
+    }
+
+
+    @Step("visibility of truck in selector from url  .LKW_maker_car_list")
+    public LKW_maker_car_list_Logic availabilityOfTruckInSelectorFromUrl() {
+        markeInVerticalCarSelector().shouldNotHave(exactValue("0"));
+        motorInVerticalCarSelector().shouldNotHave(exactValue("0"));
+        String brandOfCarFromSelector = markeInVerticalCarSelector().getText().toLowerCase();
+        String modelOfCarFromSelector = motorInVerticalCarSelector().getText().substring(0, 2);
+        Assert.assertTrue(url().contains(brandOfCarFromSelector) && url().contains(modelOfCarFromSelector));
         return this;
     }
 

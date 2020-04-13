@@ -168,12 +168,26 @@ public class LKW_main_page {
         return $$x("//*[@class='truck-home-parts__cat-list']");
     }
 
-    SelenideElement childCategoryInParentCategoryBLock(String titleOfChildCategory)
-    {return $x("//a[@class='truck-home-parts__cat-link js--lkw-modal__cat-link']/span[contains(text(),'"+titleOfChildCategory+"')]");}
+    SelenideElement childCategoryInParentCategoryBLock(String titleOfChildCategory) {
+        return $x("//a[@class='truck-home-parts__cat-link js--lkw-modal__cat-link']/span[contains(text(),'" + titleOfChildCategory + "')]");
+    }
 
-    SelenideElement titleOfTopBrandsBlock() {return $x("//div[@class='truck-home-top-brands__title']/h3");}
+    SelenideElement titleOfTopBrandsBlock() {
+        return $x("//div[@class='truck-home-top-brands__title']/h3");
+    }
 
-    ElementsCollection brandsInTopBrandsBlock() {return $$x("//div[@class='truck-home-top-brands']//li/img");}
+    ElementsCollection brandsInTopBrandsBlock() {
+        return $$x("//div[@class='truck-home-top-brands']//li/img");
+    }
+
+    SelenideElement popUpOfSpecification() {
+        return $x("//div[@class='popup-selector-lkw']");
+    }
+
+    SelenideElement specificationInPopUp(String tonna) {
+        return $x("//a[contains(@class,'popup-selector-lkw__table-row')]//div[contains(text(),'" + tonna + "')]");
+    }
+
 }
 
 
