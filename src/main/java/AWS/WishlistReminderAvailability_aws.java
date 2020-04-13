@@ -1,12 +1,14 @@
 package AWS;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
+import static org.testng.Assert.assertEquals;
 
 public class WishlistReminderAvailability_aws {
 
@@ -34,4 +36,27 @@ public class WishlistReminderAvailability_aws {
     return $(byXpath(".//*[@id='availability_reminder_table']//tr[1]/td[4]"));
   }
 
+  @Step("Check After Count Request. WishlistReminderAvailability_aws")
+  public WishlistReminderAvailability_aws checkAfterCountRequest(int beforeCountRequests, String idProduct) {
+    int afterCountRequests = Integer.parseInt(numberOfRequestsInProductByHisId(idProduct).text());
+    assertEquals(afterCountRequests, beforeCountRequests + 1);
+    return this;
+  }
+
+  @Step("Get text from article. WishlistReminderAvailability_aws")
+  public String getTextFromArticle() {
+    String textFromElement = articleOfFirstProduct().text();
+    return textFromElement;
+  }
+
+  @Step("Get text from id. WishlistReminderAvailability_aws")
+  public String getTextFromId() {
+    String textFromElement = idOfFirstProduct().text();
+    return textFromElement;
+  }
+
+  @Step("Get Before Count Requests. WishlistReminderAvailability_aws")
+  public int getBeforeCountRequests() {
+    return Integer.parseInt(numberOfRequestsInFirstProduct().text());
+  }
 }

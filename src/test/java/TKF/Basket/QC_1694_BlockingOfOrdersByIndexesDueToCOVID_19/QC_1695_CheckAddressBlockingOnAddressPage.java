@@ -49,7 +49,7 @@ public class QC_1695_CheckAddressBlockingOnAddressPage {
         open(route);
         new Product_page_Logic().addProductToCart()
                 .cartClick()
-                .nextButtonClick()
+                .nextBtnClick()
                 .signIn(email, password)
                 .checkingCOVID19Block("ES", plzES, file, "TKF")
                 .checkingCOVID19Block("IT", plzIT, file, "TKF")

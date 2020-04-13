@@ -20,7 +20,6 @@ import static com.codeborne.selenide.Selenide.close;
 
 public class QC_126_FiltersSorting_TestTwoFilterAttributesInBlock {
     private Listing_page_Logic listingPage = new Listing_page_Logic();
-    private DataBase dataBase = new DataBase();
 
     @BeforeClass
     void setUp() {
@@ -43,7 +42,7 @@ public class QC_126_FiltersSorting_TestTwoFilterAttributesInBlock {
     @Description(value = "Test checks two filter attributes in block")
     public void testTwoFilterAttributesInBlock(String route) {
         openPage(route);
-        listingPage.hoverOnSideFilterAndClick(listingPage.langeFilterCheckbox())
+        listingPage.hoverOnSideFilterAndClick(listingPage.langeFilterCheckbox3())
                     .waitUntilPreloaderDisappear();
         String characteristic = listingPage.getTextFromElement(listingPage.activeSideFilter2());
         listingPage.hoverOnSideFilterAndClick(listingPage.activeSideFilter2())
@@ -58,7 +57,7 @@ public class QC_126_FiltersSorting_TestTwoFilterAttributesInBlock {
     @Description(value = "Test checks two filter attributes in block LKW")
     public void testTwoFilterAttributesInBlockLKW(String route) {
         openPage(route);
-        listingPage.clickFilterButton(listingPage.langeFilterCheckbox())
+        listingPage.clickFilterButton(listingPage.langeFilterCheckbox3())
                     .waitUntilPreloaderDisappear();
         String characteristic = listingPage.getTextFromElement(listingPage.activeSideFilter2());
         listingPage.clickFilterButton(listingPage.activeSideFilter2())
@@ -67,15 +66,15 @@ public class QC_126_FiltersSorting_TestTwoFilterAttributesInBlock {
                     .checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.langeProductAttributeGenericRoute(), listingPage.langeProductAttributeTecdocRoute());
     }
 
-    @Test
+    @Test(enabled = false)
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks two filter attributes in block on route search with generic")
     public void testTwoFilterAttributesInBlockRouteWithGeneric() throws Exception {
-        openPage("https://autodoc.de/" +  dataBase.getRouteByRouteName("DE", "search5"));
-        listingPage.clickFilterButton(listingPage.langeFilterCheckbox())
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "search5"));
+        listingPage.clickFilterButton(listingPage.langeFilterCheckbox3())
                     .waitUntilPreloaderDisappearAndSleep(5000);
-        String characteristic = listingPage.getTextFromElement(listingPage.activeSideFilter4());
+        String characteristic = listingPage.getTextFromElement(listingPage.activeSideFilter2());
         listingPage.clickFilterButton(listingPage.activeSideFilter2())
                     .waitUntilPreloaderDisappear()
                     .checkTextInElement(listingPage.activeSideFilter4FirstPosition(), characteristic)
@@ -87,23 +86,23 @@ public class QC_126_FiltersSorting_TestTwoFilterAttributesInBlock {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks two filter attributes in block on LKW model")
     public void testTwoFilterAttributesLKWmodel() throws SQLException {
-        openPage("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_category_car_list7"));
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list7"));
         listingPage.clickFilterButton(listingPage.langeFilterCheckbox3())
                 .waitUntilPreloaderDisappear();
-        String characteristic = listingPage.getTextFromElement(listingPage.activeSideFilter2());
-        listingPage.clickFilterButton(listingPage.activeSideFilter2())
+        String characteristic = listingPage.getTextFromElement(listingPage.secondValueInActiveSideFilter());
+        listingPage.clickFilterButton(listingPage.secondValueInActiveSideFilter())
                 .waitUntilPreloaderDisappear()
-                .checkTextInElement(listingPage.activeSideFilter(), characteristic)
-                .checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.langeProductAttributeGenericRoute(), listingPage.langeProductAttributeTecdocRoute());
+                .checkTextInElement(listingPage.activeSideFilterLkwCheckbox(), characteristic)
+                .checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.verschleiswarnkontaktProductAttributeGenericRouteLKW(), listingPage.verschleiswarnkontaktProductAttributeTecdocRouteLKW());
     }
 
-    @Test
+    @Test(enabled = false)
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks two filter attributes in block on LKW car")
     public void testTwoFilterAttributesLKWcar() throws Exception {
-        openPage("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_category_car_list6"));
-        listingPage.clickFilterButton(listingPage.langeFilterCheckbox2())
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list6"));
+        listingPage.clickFilterButton(listingPage.langeFilterCheckbox3())
                 .waitUntilPreloaderDisappearAndSleep(2000);
         String characteristic = listingPage.getTextFromElement(listingPage.activeSideFilterAttributeLkw2());
         listingPage.clickFilterButton(listingPage.activeSideFilterAttributeLkw2())
@@ -117,7 +116,7 @@ public class QC_126_FiltersSorting_TestTwoFilterAttributesInBlock {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks two filter attributes in block on LKW search")
     public void testTwoFilterAttributesLKWsearch() throws SQLException {
-        openPage("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_search"));
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_search"));
         listingPage.clickFilterButton(listingPage.langeFilterCheckbox3())
                 .waitUntilPreloaderDisappear();
         String characteristic = listingPage.getTextFromElement(listingPage.durchmesserSideFilterButtonSecondValue());

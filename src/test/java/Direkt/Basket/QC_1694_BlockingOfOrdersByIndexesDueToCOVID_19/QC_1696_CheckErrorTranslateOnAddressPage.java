@@ -25,7 +25,6 @@ public class QC_1696_CheckErrorTranslateOnAddressPage {
 
     private String plzIT = "00017";
     private String plzES = "10900";
-    private String plzPT = "3880-365";
 
     @BeforeClass
     void setUp() {
@@ -49,7 +48,6 @@ public class QC_1696_CheckErrorTranslateOnAddressPage {
                 .makePriceForMinimumOrderForCH(shop);
         new Cart_page_Logic().nextButtonClick()
                 .signIn(email, password)
-                .checkingCOVID19TooltipTranslate("PT", plzPT, shop)
                 .checkingCOVID19TooltipTranslate("IT", plzIT, shop)
                 .checkingCOVID19TooltipTranslate("ES", plzES, shop);
     }

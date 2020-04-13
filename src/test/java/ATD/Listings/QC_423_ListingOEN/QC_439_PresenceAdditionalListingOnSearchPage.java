@@ -14,7 +14,6 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.close;
 
 public class QC_439_PresenceAdditionalListingOnSearchPage {
@@ -37,8 +36,7 @@ public class QC_439_PresenceAdditionalListingOnSearchPage {
   @Description(value = "Checks presence additional listing on search listing")
   public void testPresenceAdditionalListingOnSearchPage(String route) {
     openPage(route);
-    searchPageLogic.dividingLineForProductsOtherCategories().shouldHave(
-            text("Ergebnisse für zuendkerzen für andere Fahrzeuge"));
+    new Search_page_Logic().checkAdditionalListing();
   }
 
   @AfterMethod

@@ -1,6 +1,5 @@
 package ATD.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
 
-import ATD.Cart_page_Logic;
 import ATD.Product_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
@@ -13,10 +12,9 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
+import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static PKW.CommonMethods.checkingContainsUrl;
-import static PKW.CommonMethods.getCurrentShopFromJSVarInHTML;
 import static com.codeborne.selenide.Selenide.close;
 
 
@@ -27,7 +25,6 @@ public class QC_1697_CheckOfNotBlockingOfIndexInTheBillingBlock {
 
     private String plzIT = "00017";
     private String plzES = "10900";
-    private String plzPT = "3880-365";
 
     @BeforeClass
     void setUp() {
@@ -42,8 +39,8 @@ public class QC_1697_CheckOfNotBlockingOfIndexInTheBillingBlock {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks translation of error popup on address page")
-    public void testCheckErrorTranslateOnAddressPage(String route) {
+    @Description(value = "Test check of not blocking of index in the billing block")
+    public void testCheckNotBlockingIndexInBillingBlock(String route) {
         openPage(route);
         new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
@@ -54,9 +51,6 @@ public class QC_1697_CheckOfNotBlockingOfIndexInTheBillingBlock {
                 .nextBtnClick()
                 .clickBtnReturnTheAddressPage()
                 .chooseDeliveryCountryAndFillingPostalCode("ES", "12345", "ES", plzES)
-                .nextBtnClick()
-                .clickBtnReturnTheAddressPage()
-                .chooseDeliveryCountryAndFillingPostalCode("PT", "1234-567", "PT", plzPT)
                 .nextBtnClick();
         checkingContainsUrl("https://www.autodoc.de/basket/payments");
     }

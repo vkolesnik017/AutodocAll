@@ -3,6 +3,7 @@ package ATD;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
+import static ATD.CommonMethods.openPage;
 import static com.codeborne.selenide.CollectionCondition.*;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Condition.visible;
@@ -125,5 +126,19 @@ public class Versand_static_page_Logic extends Versand_static_page {
         String deliveryLimit = limitForFreeDelivery().getText();
         deliveryLimit = deliveryLimit.replaceAll("[^0-9,]", "");
         return Float.valueOf(deliveryLimit.startsWith(",") ? deliveryLimit.substring(1) : deliveryLimit.split(",")[0]);
+    }
+
+    @Step("Get delivery price to UK for alldata. Versand_static_page")
+    public String deliveryPriceToUK() throws Exception {
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "staticVersand"));
+        allCountriesButton().click();
+        return deliveryPriceForUKlocator().text().replace(" €", "");
+    }
+
+    @Step("Get delivery price to UK for AWS. Versand_static_page")
+    public String deliveryPriceToUKforAWS() throws Exception {
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "staticVersand"));
+        allCountriesButton().click();
+        return deliveryPriceForUKlocator().text().replace(" €", "").replace(",", ".");
     }
 }

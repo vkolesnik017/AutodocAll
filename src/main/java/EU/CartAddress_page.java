@@ -9,11 +9,15 @@ import static com.codeborne.selenide.Selenide.$x;
 public class CartAddress_page {
 
     SelenideElement countryInSelector(String country) {
-        return $(byXpath("//div[@class='or_sel']//*[@data-code='" + country + "']"));
+        return $(byXpath("//*[@name='rLand']//*[@data-code='" + country + "']"));
     }
 
     SelenideElement postalCodeField() {
         return $(By.id("form_rPlz"));
+    }
+
+    SelenideElement billingCheckBox() {
+        return $x("//div[@id='form_delivery_mode-styler']");
     }
 
     SelenideElement nextButton() {

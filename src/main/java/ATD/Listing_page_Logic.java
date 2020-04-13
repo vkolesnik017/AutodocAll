@@ -642,6 +642,26 @@ public class Listing_page_Logic extends Listing_page {
         return this;
     }
 
+    @Step("Check OEN listing elements. Listing_page")
+    public Listing_page_Logic checkOENListingElements() {
+        titleOfListing().shouldHave(text("Bremsscheibe OE - NUMMER 34116785670"));
+        oemNumberBlock().shouldBe(visible);
+        oemDescriptionBlock().shouldBe(visible);
+        oemAnalogBlock().shouldBe(visible);
+        return this;
+    }
 
+    @Step("Check Tecdoc listing elements. Listing_page")
+    public  Listing_page_Logic checkTecdocListingElements() {
+        titleOfListing().shouldHave(text("Aktuelle Angebote zu Ölfilter für VW Golf IV Schrägheck (1J1) 1.4 16V Benzin 75 PS"));
+        tecDocBlockOfLinkingCategories().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Click show more characteristic button. Listing_page")
+    public Listing_page_Logic clickMoreCharacteristicInFilter() {
+        moreCharacteristicButtonInFilter().click();
+        return this;
+    }
 }
 

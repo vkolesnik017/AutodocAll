@@ -38,6 +38,7 @@ public class QC_479_AvailabilityRequestForm {
     openPage(route);
     listingTecDocSoft404PageLogic.sendRequestForm();
   }
+
   @AfterMethod
   private void tearDown() {
     close();

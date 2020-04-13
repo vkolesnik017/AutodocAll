@@ -55,28 +55,36 @@ public class Listing_page {
     }
 
     public SelenideElement langeFilterCheckbox() {
-        return $x("//*[@id='mCSB_3_container']/li[4]");
+        return $x("//*[@id='mCSB_2_container']/li[4]");
     }
 
     public SelenideElement langeFilterCheckboxLKW() {
-        return $x("//*[@id='mCSB_3_container']/li[2]/label");
+        return $x("//*[@id='mCSB_2_container']/li[2]/label");
     }
 
     public SelenideElement langeFilterCheckboxLKW700() {
-        return $x("//*[@id='mCSB_3_container']/li[3]/label");
+        return $x("//*[@id='mCSB_2_container']/li[3]/label");
     }
 
     public SelenideElement langeFilterCheckbox450() {
-        return $x("//*[@id='mCSB_3_container']/li[9]/label");
+        return $x("//*[@id='mCSB_2_container']/li[9]/label");
     }
 
     public SelenideElement langeFilterAttribute450() {
-        return $x("//*[@id='mCSB_3_container']/li[9]");
+        return $x("//*[@id='mCSB_2_container']/li[9]");
+    }
+
+    public SelenideElement langeFilterCheckbox280() {
+        return $x("//*[@id='mCSB_2_container']/li[19]/label");
+    }
+
+    public SelenideElement langeFilterAttribute280() {
+        return $x("//*[@id='mCSB_2_container']/li[19]");
     }
 
 
     public SelenideElement langeFilterAttribute() {
-        return $x("//*[@id='mCSB_3_container']/li[4]/label");
+        return $x("//*[@id='mCSB_2_container']/li[4]/label");
     }
 
     public SelenideElement wischblattausfuhrungFilterCheckbox() {
@@ -115,8 +123,8 @@ public class Listing_page {
         return $x("//*[@class='mCSB_container mCS_y_hidden mCS_no_scrollbar_y']//li[1]/label");
     }
 
-    public SelenideElement activeSideFilter4() {
-        return $x("(//*[@class='mCSB_container mCS_y_hidden mCS_no_scrollbar_y'])[2]//li[2]/label");
+    public SelenideElement secondValueInActiveSideFilter() {
+        return $x("//*[@class='checkbox js-filter-click ga-click ga-click-criteria-filter active']/../../li[2]");
     }
 
     public SelenideElement activeSideFilter4FirstPosition() {
@@ -124,7 +132,7 @@ public class Listing_page {
     }
 
     public SelenideElement activeSideFilterLkwCheckbox() {
-        return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_203']//li[1]");
+        return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_593']//li[1]");
     }
     public SelenideElement activeSideFilterLkw() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_339']//ul//li[1]/label"); }
 
@@ -441,6 +449,14 @@ public class Listing_page {
         return $$x("//*[@class='w_search no_margin']/preceding-sibling::li//span[contains(text(),'Länge [mm]:')]/../span[2]");
     }
 
+    public ElementsCollection verschleiswarnkontaktProductAttributeTecdocRouteLKW() {
+        return $$x("//span[contains(text(),'Verschleißwarnkontakt:')]/../span[2]");
+    }
+
+    public ElementsCollection verschleiswarnkontaktProductAttributeGenericRouteLKW() {
+        return $$x("//*[@class='w_search no_margin']/preceding-sibling::li//span[contains(text(),'Verschleißwarnkontakt:')]/../span[2]");
+    }
+
     public ElementsCollection wischblattausfuhrungProductAttributeTecdocRoute() {
         return $$x("//*[@class='important' and contains(span,'Wischblattausführung')]/span[2]");
     }
@@ -574,5 +590,7 @@ public class Listing_page {
     SelenideElement sideJSfilterForm() { return $(".js-filter-form-sidebar"); }
 
     SelenideElement hoheBlock() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_209']"); }
+
+    SelenideElement moreCharacteristicButtonInFilter() { return $(".filter-disk__more"); }
 }
 

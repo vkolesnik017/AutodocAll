@@ -32,7 +32,6 @@ public class QC_1603_TransitionLinksFromBlockHeaderTop {
         openPage(route);
         new Main_page_Logic().checkTransitionToMainPageThroughTheLogoInHeader()
                 .checkAppearanceOfLoginPopUpAfterClickingOnLoginButtonInHeader()
-                .checkTransitionOnPrivacyPolicyLinkInHeader()
                 .checkAppearanceOfPopUpWhenHoverOverImageOfGarageInHeader();
     }
 

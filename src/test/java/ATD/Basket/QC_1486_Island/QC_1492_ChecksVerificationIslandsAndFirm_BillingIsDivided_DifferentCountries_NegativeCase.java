@@ -3,6 +3,7 @@ package ATD.Basket.QC_1486_Island;
 import ATD.CartAllData_page_Logic;
 import ATD.Search_page_Logic;
 import ATD.SetUp;
+import ATD.Versand_static_page_Logic;
 import AWS.Order_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -39,7 +40,9 @@ public class QC_1492_ChecksVerificationIslandsAndFirm_BillingIsDivided_Different
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks verification of islands + Firm, Different Countries, billing is divided (Negative case)")
-    public void testChecksVerificationIslandsAndFirmAndDifferentCountries(String route) {
+    public void testChecksVerificationIslandsAndFirmAndDifferentCountries(String route) throws Exception {
+        String deliveryPriceToUKalldata = new Versand_static_page_Logic().deliveryPriceToUK();
+        String deliveryPriceToUKaws = new Versand_static_page_Logic().deliveryPriceToUKforAWS();
         openPage(route);
         clickOfBuyBtnForAllPages();
         totalPrice = new Search_page_Logic().closePopupOtherCategoryIfYes()
@@ -50,23 +53,23 @@ public class QC_1492_ChecksVerificationIslandsAndFirm_BillingIsDivided_Different
                 .checkPresenceOfPayPalMethod()
                 .chooseVorkasse().nextBtnClick()
                 .checkAbsenceOfVatPercentage()
-                .checkRegularDeliveryPriceAllData("9,21")
+                .checkRegularDeliveryPriceAllData(deliveryPriceToUKalldata)
                 .checkPresenceSafeOrderBlock()
                 .getTotalPriceAllDataPage();
         orderNumber = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumber);
         totalPriceAWSOrder = order_aws.openOrderInAwsWithLogin()
                 .checkVatStatusInOrder("Ohne Mwst")
-                .checkDeliveryPriceOrderAWS("9.21")
+                .checkDeliveryPriceOrderAWS(deliveryPriceToUKaws)
                 .getTotalPriceOrder();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
         order_aws.reSaveOrder()
                 .checkVatStatusInOrder("Ohne Mwst")
-                .checkDeliveryPriceOrderAWS("9.21");
+                .checkDeliveryPriceOrderAWS(deliveryPriceToUKaws);
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
         totalPriceInEmail = new Mailinator().openEmail("qc_1492_autotestDE@mailinator.com")
                 .openLetter(1)
-                .checkRegularDeliveryPriceInEmail("9,21")
+                .checkRegularDeliveryPriceInEmail(deliveryPriceToUKalldata)
                 .checkAbsenceVatPercentageInEmail()
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPrice, totalPriceInEmail);
