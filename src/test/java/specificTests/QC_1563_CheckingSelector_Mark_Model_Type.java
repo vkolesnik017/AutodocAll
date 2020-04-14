@@ -26,7 +26,7 @@ public class QC_1563_CheckingSelector_Mark_Model_Type {
     private final String dataFile = "C://Autotests/files/data/QC_1563_data.xls";
     private final String result = "C://Autotests/files/res/QC_1563_result.txt";
 
-        private String shop = System.getenv("ShopFromJenkins").toLowerCase();
+    private String shop = System.getenv("ShopFromJenkins").toLowerCase();
 //    private String shop = "de";
 
     @BeforeClass
@@ -87,7 +87,7 @@ public class QC_1563_CheckingSelector_Mark_Model_Type {
                 writer(result, true, "GroupTitle" + "#" + groupTitle + "#" + "GroupTitle from page" + "#" + modelGroupTitleFromSelectorText + "#" + startUrl);
 
         } catch (ElementNotFound element) {
-            writer(result, true, "Trouble with element in selector:  " + startUrl);
+            writer(result, true, "Trouble with element in selector" + "#" + startUrl);
         }
         close();
 

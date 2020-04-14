@@ -22,7 +22,6 @@ public class QC_1697_CheckOfNotBlockingOfIndexInTheBillingBlock {
 
     private String plzIT = "00017";
     private String plzES = "10900";
-    private String plzPT = "3880-365";
 
     @BeforeClass
     void setUp() {
@@ -37,16 +36,15 @@ public class QC_1697_CheckOfNotBlockingOfIndexInTheBillingBlock {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks translation of error popup on address page")
-    public void testCheckErrorTranslateOnAddressPage(String route) {
+    @Description(value = "Test check of not blocking of index in the billing block")
+    public void testCheckNotBlockingIndexInBillingBlock(String route) {
         open(route);
         new Product_page_Logic().addProductToCart()
                 .cartClick()
                 .nextButtonClick()
                 .signIn(email, password)
                 .chooseDeliveryCountryAndFillingPostalCode("IT", "12345", "IT", plzIT)
-                .chooseDeliveryCountryAndFillingPostalCode("ES", "12345", "ES", plzES)
-                .chooseDeliveryCountryAndFillingPostalCode("PT", "1234-567", "PT", plzPT);
+                .chooseDeliveryCountryAndFillingPostalCode("ES", "12345", "ES", plzES);
     }
 
     @AfterMethod

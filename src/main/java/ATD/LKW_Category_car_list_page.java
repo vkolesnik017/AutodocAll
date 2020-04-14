@@ -5,8 +5,8 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.$$x;
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selectors.byName;
+import static com.codeborne.selenide.Selenide.*;
 
 public class LKW_Category_car_list_page {
     SelenideElement listingOfProducts() {
@@ -192,4 +192,17 @@ public class LKW_Category_car_list_page {
     SelenideElement verticalTruckSelector() {
         return $x("//form[@class='js--lkw_selector car-fully-selected']");
     }
+
+    SelenideElement markeInVerticalTruckSelector() {
+        return $(byName("maker_id"));
+    }
+
+    SelenideElement modelInVerticalTruckSelector() {
+        return $(byName("model_id"));
+    }
+
+    SelenideElement motorInVerticalTruckSelector() {
+        return $(byName("car_id"));
+    }
+
 }

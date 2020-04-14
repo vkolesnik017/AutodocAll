@@ -5,8 +5,8 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.$$x;
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selectors.byName;
+import static com.codeborne.selenide.Selenide.*;
 
 public class LKW_Category_maker_brand_page {
     ElementsCollection breadCrumbsLinks() {
@@ -67,5 +67,9 @@ public class LKW_Category_maker_brand_page {
 
     SelenideElement childCategoryBlockInSideBar() {
         return $x("//div[@class='sidebar']");
+    }
+
+    SelenideElement markeInVerticalTruckSelector() { return $(byName("maker_id"));
+
     }
 }

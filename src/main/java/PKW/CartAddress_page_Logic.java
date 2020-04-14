@@ -89,6 +89,20 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return tooltipCOVID19().getText();
     }
 
+    @Step("Checking of blocking plz {sendPostalCode} for country {country} with split billing and shipping. CartAddress_page")
+    public CartAddress_page_Logic checkBlockingPLZForCountry(String countryShipping, String sendPostalCodeShipping, String countryBilling, String sendPostalCodeBilling) {
+        chooseDeliveryCountryForShipping(countryShipping);
+        fillingPostalCodeFieldJSForShipping(sendPostalCodeShipping);
+        if (!billingForm().isDisplayed()) {
+            billingCheckBox().click();
+        }
+        chooseDeliveryCountryForBilling(countryBilling);
+        fillingPostalCodeFieldJSForBilling(sendPostalCodeBilling);
+        nextBtnClick();
+        tooltipCOVID19().shouldBe(visible);
+        return this;
+    }
+
     @Step("Checking block plz for country {countryCheck} on skin {skin}. CartAddress_page")
     public CartAddress_page_Logic checkingCOVID19Block(String countryCheck, String[] shopPlz, String file, String skin) throws IOException {
         chooseDeliveryCountryForShipping(countryCheck);

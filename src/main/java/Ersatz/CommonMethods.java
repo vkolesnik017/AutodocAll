@@ -20,6 +20,7 @@ public class CommonMethods {
     public static String getCurrentShopFromJSVarInHTML() {
         String currentShop = executeJavaScript("return $siteSettings.lang");
         if (url().contains("piecesauto24.be")) currentShop = "bf";
+        if (currentShop.equals("lv")) currentShop = "lr";
         return currentShop.toUpperCase();
     }
 
