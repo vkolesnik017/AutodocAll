@@ -14,7 +14,7 @@ public class CartAllData_page {
     }
 
     public SelenideElement addressInfo() {
-        return $(byCssSelector(".info-user-cart__info"));
+        return $x(" //*[@id='cart-page']/div[2]/div[1]/div[1]/div[2]");
     }
 
     public SelenideElement freeDeliveryIcon() {

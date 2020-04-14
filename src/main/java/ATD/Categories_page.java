@@ -27,4 +27,13 @@ public class Categories_page {
     public SelenideElement motoCategory() {
         return $x("//a[contains(@class,'header-i--moto')]");
     }
+
+    ElementsCollection tecdocCategoriesA() { return  $$x("//*[@class='list_ersats_n list-ersatz-n--catalog']//li//a");}
+
+    ElementsCollection tecdocCategoriesSpan() { return  $$x("//*[@class='list_links']/li/span");}
+
+    ElementsCollection dropdownCategories() { return $$(".mCSB_container  a"); }
+
+    SelenideElement catalogInHeader() { return $(".menu-catalog"); }
+
 }

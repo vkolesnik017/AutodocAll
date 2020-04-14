@@ -12,6 +12,13 @@ public class CartPayments_page_Logic extends CartPayments_page{
         return this;
     }
 
+    // For PL shop
+    @Step("Click przelew bankowy. CartPayments_page")
+    public CartPayments_page_Logic chossePrzelewBankowy() {
+        przelewBankowyBtn().click();
+        return this;
+    }
+
     @Step("Click PayPal. CartPayments_page")
     public CartPayments_page_Logic choosePayPal() {
         payPalBtn().click();
