@@ -96,4 +96,11 @@ public class LKW_Parent_Category_page_Logic extends LKW_Parent_Category_page {
         headlineInHeader().shouldBe(visible);
         return this;
     }
+    @Step("visibility of headline of selector and icon of truck  .LKW_Parent_Category_page")
+    public LKW_Parent_Category_page_Logic visibilityOfHeadLineSelectorAndIconOfTruck(String selectTruck) {
+        iconOfTruckInHeadlineOfSelector().shouldBe(visible);
+        titleOfTruckInHeadlineOfSelector().shouldHave(exactText(selectTruck));
+        return this;
+    }
+
 }

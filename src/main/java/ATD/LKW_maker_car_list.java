@@ -70,4 +70,10 @@ class LKW_maker_car_list {
         return $x("//a[@class='truck_submit js--lkw_selector-btn-submit']");}
 
     SelenideElement tooltipForFieldInVerticalCarSelector() { return $x("//div[@class='validation-tooltip popup-error-select']");}
+
+    SelenideElement logoInHeader() {return $x("//a[@class='header__logo-main']/img");}
+
+    SelenideElement iconOfTruckInHeadlineOfSelector() {return $x("//span[@class='car-icon']");}
+
+    SelenideElement titleOfTruckInHeadlineOfSelector() {return $x("//div[@class='block-select-car__head-car']/span[2]");}
 }

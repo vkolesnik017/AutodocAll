@@ -332,4 +332,17 @@ public class LKW_main_page_Logic extends LKW_main_page {
         specificationInPopUp("37.00").click();
         return page(LKW_maker_car_list_Logic.class);
     }
+
+    @Step("go to lkw_makers route .LKW_main_page")
+    public LKW_makers_page_Logic goToAllTruckBrandsPage() {
+        btnAllTruckBrands().click();
+        return page(LKW_makers_page_Logic.class);
+    }
+
+    @Step("visibility of headline of selector and icon of truck  .LKW_main_page")
+    public LKW_main_page_Logic visibilityOfHeadLineSelectorAndIconOfTruck(String selectTruck) {
+        iconOfTruckInHeadlineOfSelector().shouldBe(visible);
+        titleOfTruckInHeadlineOfSelector().shouldHave(exactText(selectTruck));
+        return this;
+    }
 }
