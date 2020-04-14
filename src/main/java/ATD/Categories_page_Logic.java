@@ -61,7 +61,7 @@ public class Categories_page_Logic extends Categories_page {
         return page(Moto_main_page_Logic.class);
     }
 
-    @Step("Check response code is 200 for all categories in tecdoc catalog")
+    @Step("Check response code is 200 for all categories in tecdoc catalog. Categories_page")
     public Categories_page_Logic check200ResponseTecdoc() throws IOException {
       for (int i = 0; i < tecdocCategoriesA().size(); i++) {
         System.out.println(tecdocCategoriesA().get(i).attr("href"));
@@ -84,7 +84,7 @@ public class Categories_page_Logic extends Categories_page {
       return this;
     }
 
-    @Step("Check response code is 200 for all categories in dropdown catalog")
+    @Step("Check response code is 200 for all categories in dropdown catalog. Categories_page")
     public Categories_page_Logic check200ResponseDropdown() throws Exception {
       catalogInHeader().click();
       Thread.sleep(5000);
