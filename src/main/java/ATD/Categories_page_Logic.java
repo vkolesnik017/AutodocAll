@@ -4,6 +4,10 @@ import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.visible;
@@ -57,5 +61,42 @@ public class Categories_page_Logic extends Categories_page {
         return page(Moto_main_page_Logic.class);
     }
 
+    @Step("Check response code is 200 for all categories in tecdoc catalog")
+    public Categories_page_Logic check200ResponseTecdoc() throws IOException {
+      for (int i = 0; i < tecdocCategoriesA().size(); i++) {
+        System.out.println(tecdocCategoriesA().get(i).attr("href"));
+        URL url = new URL(tecdocCategoriesA().get(i).attr("href"));
+        HttpURLConnection http = (HttpURLConnection) url.openConnection();
+        http.setInstanceFollowRedirects(true);
+        int responseCode = http.getResponseCode();
+        Assert.assertEquals(responseCode, 200);
+      }
 
-}
+      for (int i = 0; i < tecdocCategoriesSpan().size(); i++) {
+        System.out.println(tecdocCategoriesSpan().get(i).attr("url"));
+        URL url = new URL(tecdocCategoriesSpan().get(i).attr("url"));
+        HttpURLConnection http = (HttpURLConnection) url.openConnection();
+        http.setInstanceFollowRedirects(true);
+        int responseCode = http.getResponseCode();
+        System.out.println(responseCode);
+        Assert.assertEquals(responseCode, 200);
+      }
+      return this;
+    }
+
+    @Step("Check response code is 200 for all categories in dropdown catalog")
+    public Categories_page_Logic check200ResponseDropdown() throws Exception {
+      catalogInHeader().click();
+      Thread.sleep(5000);
+      for (int i = 0; i < dropdownCategories().size(); i++) {
+        System.out.println(dropdownCategories().get(i).attr("href"));
+        URL url = new URL(dropdownCategories().get(i).attr("href"));
+        HttpURLConnection http = (HttpURLConnection) url.openConnection();
+        http.setInstanceFollowRedirects(true);
+        int responseCode = http.getResponseCode();
+        Assert.assertEquals(responseCode, 200);
+      }
+      return this;
+    }
+
+  }

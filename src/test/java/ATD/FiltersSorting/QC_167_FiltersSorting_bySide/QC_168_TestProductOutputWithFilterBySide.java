@@ -56,7 +56,7 @@ public class QC_168_TestProductOutputWithFilterBySide {
                 .checkUniqueBrandsOnListing(2, listingPageLogic.einbauseiteProductAttributeTecdocRoute());
     }
 
-    @Test(enabled = false)
+    @Test
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks filter by side in tile mode")
