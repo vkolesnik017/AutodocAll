@@ -663,5 +663,19 @@ public class Listing_page_Logic extends Listing_page {
         moreCharacteristicButtonInFilter().click();
         return this;
     }
+
+    @Step("Check Filters Fix In Sidebar. Listing_page")
+    public Listing_page_Logic checkFiltersFixInSidebar() {
+        blockOfBySideFilters().shouldBe(visible);
+        brandFilterBlock().shouldBe(visible);
+        ratingFilterBlock().shouldBe(visible);
+        langeFilterBlockInSidebar().shouldBe(visible);
+        sideJSfilterForm().scrollTo();
+        bySideFilterBlockInSidebar().shouldBe(visible);
+        brandFilterBlockInSidebar().shouldBe(visible);
+        ratingFilterBlock().shouldBe(visible);
+        langeFilterBlockInSidebar().hover().shouldBe(visible);
+        return this;
+    }
 }
 

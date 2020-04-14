@@ -185,6 +185,12 @@ public class Listing_page {
         return $(".model_list_oem > li > label > input");
     }
 
+    SelenideElement langeFilterBlockInSidebar() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_203']"); }
+
+    SelenideElement bySideFilterBlockInSidebar() { return $(".installation-side--sidebar-fixed"); }
+
+    SelenideElement brandFilterBlockInSidebar() { return $(".branded-filter-sidebar"); }
+
     //Rating filters locators
     public ElementsCollection ratingInProductBlock() {
         return $$(".review-vote");

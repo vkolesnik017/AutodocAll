@@ -14,6 +14,7 @@
             <class name="ATD.Characteristics.QC_486_DynamicCharacteristics.QC_493_OutputDynamicCharacterisitcOnSearchListing"/>
             <class name="ATD.Characteristics.QC_486_DynamicCharacteristics.QC_494_DynamicCharacteristicIsNotOutputWithoutSelectedCar"/>
             <class name="ATD.Characteristics.QC_486_DynamicCharacteristics.QC_495_DynamicCharacterisitcsIsNotOutputIfSelectedCarDoesNotFitSparePart"/>
+            <class name="ATD.Characteristics.QC_486_DynamicCharacteristics.QC_496_DynamicCharacteristicNotDisplayedWithCarBrand"/>
         </classes>
     </test>
 
