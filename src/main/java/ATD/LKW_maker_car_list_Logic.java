@@ -141,4 +141,19 @@ public class LKW_maker_car_list_Logic extends LKW_maker_car_list {
         return this;
     }
 
+
+    @Step("go to main page  .LKW_maker_car_list")
+    public LKW_main_page_Logic goToMainPage() {
+        logoInHeader().click();
+        return page(LKW_main_page_Logic.class);
+    }
+
+    @Step("visibility of headline of selector and icon of truck  .LKW_maker_car_list")
+    public LKW_maker_car_list_Logic visibilityOfHeadLineSelectorAndIconOfTruck(String selectTruck) {
+        iconOfTruckInHeadlineOfSelector().shouldBe(visible);
+        titleOfTruckInHeadlineOfSelector().shouldHave(exactText(selectTruck));
+        return this;
+    }
+
+
 }

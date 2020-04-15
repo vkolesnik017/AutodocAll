@@ -205,4 +205,8 @@ public class LKW_Category_car_list_page {
         return $(byName("car_id"));
     }
 
+    SelenideElement iconOfTruckInHeadlineOfSelector() {return $x("//span[@class='car-icon']");}
+
+    SelenideElement titleOfTruckInHeadlineOfSelector() {return $x("//div[contains(@class,'block-select-car__head-car--lkw')]/span[2]");}
+
 }

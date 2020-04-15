@@ -188,6 +188,11 @@ public class LKW_main_page {
         return $x("//a[contains(@class,'popup-selector-lkw__table-row')]//div[contains(text(),'" + tonna + "')]");
     }
 
+    SelenideElement btnAllTruckBrands() {return $x("//a[@class='truck-home-cars__show-all']");}
+
+    SelenideElement iconOfTruckInHeadlineOfSelector() {return $x("//span[@class='car-icon']");}
+
+    SelenideElement titleOfTruckInHeadlineOfSelector() {return $x("//div[contains(@class,'block-select-car__head-car--lkw')]/span[2]");}
 }
 
 

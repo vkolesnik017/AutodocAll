@@ -412,6 +412,13 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         Assert.assertTrue(url().contains(carBrandFromSelector));
         return this;
     }
+
+    @Step("visibility of headline of selector and icon of truck  .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic visibilityOfHeadLineSelectorAndIconOfTruck(String selectTruck) {
+        iconOfTruckInHeadlineOfSelector().shouldBe(visible);
+        titleOfTruckInHeadlineOfSelector().shouldHave(exactText(selectTruck));
+        return this;
+    }
 }
 
 

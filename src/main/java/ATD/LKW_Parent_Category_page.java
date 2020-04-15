@@ -78,5 +78,11 @@ public class LKW_Parent_Category_page {
     ElementsCollection imageOfLinksInChildCategoriesBlock() {
         return $$x("//ul[@class='simple_links']//li//img");
     }
-    SelenideElement headlineInHeader() {return $x("//div[@class='top_title no_image']");}
+
+    SelenideElement headlineInHeader() {
+        return $x("//div[@class='top_title no_image']");
+    }
+    SelenideElement iconOfTruckInHeadlineOfSelector() {return $x("//span[@class='car-icon']");}
+
+    SelenideElement titleOfTruckInHeadlineOfSelector() {return $x("//div[contains(@class,'block-select-car__head-car--lkw')]/span[2]");}
 }
