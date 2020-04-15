@@ -664,17 +664,79 @@ public class Listing_page_Logic extends Listing_page {
         return this;
     }
 
+    @Step("Scroll And Check Fix Filters In Sidebar. Listing_page")
+    public Listing_page_Logic scrollAndCheckFixFiltersInSidebar() {
+        thirdProductOnListing().scrollTo();
+        sideJSfilterForm().shouldBe(visible);
+        return this;
+    }
+
     @Step("Check Filters Fix In Sidebar. Listing_page")
     public Listing_page_Logic checkFiltersFixInSidebar() {
         blockOfBySideFilters().shouldBe(visible);
         brandFilterBlock().shouldBe(visible);
         ratingFilterBlock().shouldBe(visible);
         langeFilterBlockInSidebar().shouldBe(visible);
-        sideJSfilterForm().scrollTo();
+        scrollAndCheckFixFiltersInSidebar();
         bySideFilterBlockInSidebar().shouldBe(visible);
         brandFilterBlockInSidebar().shouldBe(visible);
         ratingFilterBlock().shouldBe(visible);
         langeFilterBlockInSidebar().hover().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Check Filters Fix In Sidebar Search Route. Listing_page")
+    public Listing_page_Logic checkFiltersFixInSidebarSearchRoute() {
+        blockOfBySideFilters().shouldBe(visible);
+        brandFilterBlock().shouldBe(visible);
+        furPrnummerBlockInSidebar().shouldBe(visible);
+        verschleisswarnkontaktBlockInSidebar().shouldBe(visible);
+        scrollAndCheckFixFiltersInSidebar();
+        bySideFilterBlockInSidebar().shouldBe(visible);
+        brandFilterBlockInSidebar().shouldBe(visible);
+        furPrnummerBlockInSidebar().hover().shouldBe(visible);
+        verschleisswarnkontaktBlockInSidebar().hover().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Check Filters Fix In Sidebar LKW. Listing_page")
+    public Listing_page_Logic checkFiltersFixInSidebarLKW() {
+        blockOfBySideFilters().shouldBe(visible);
+        brandFilterBlock().shouldBe(visible);
+        ratingFilterBlock().shouldBe(visible);
+        scrollAndCheckFixFiltersInSidebar();
+        bySideFilterBlockInSidebar().shouldBe(visible);
+        brandFilterBlockInSidebar().shouldBe(visible);
+        ratingFilterBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Check Filters Fix In Sidebar LKW Search Route. Listing_page")
+    public Listing_page_Logic checkFiltersFixInSidebarLKWsearchRoute() {
+        blockOfBySideFilters().shouldBe(visible);
+        brandFilterBlock().shouldBe(visible);
+        ratingFilterBlock().shouldBe(visible);
+        durchmesserBlockInSidebar().shouldBe(visible);
+        bremsscheibenartBlockInSidebar().shouldBe(visible);
+        scrollAndCheckFixFiltersInSidebar();
+        bySideFilterBlockInSidebar().shouldBe(visible);
+        brandFilterBlockInSidebar().shouldBe(visible);
+        ratingFilterBlock().shouldBe(visible);
+        durchmesserBlockInSidebar().hover().shouldBe(visible);
+        bremsscheibenartBlockInSidebar().hover().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Check Output With Filters By Side Fix In Sidebar. Listing_page")
+    public Listing_page_Logic checkOutputWithFiltersBySideFixInSidebar() {
+        scrollAndCheckFixFiltersInSidebar();
+        bySideFilterInSidebarFront().click();
+        waitUntilPreloaderDisappear();
+        checkProductAttributeOnListingWithCarAndFilter("vorne", einbauseiteProductAttributeGenericRoute(), einbauseiteProductAttributeTecdocRoute());
+        scrollAndCheckFixFiltersInSidebar();
+        bySideFilterInSidebarFront().click();
+        waitUntilPreloaderDisappear();
+        checkUniqueBrandsOnListing(2, einbauseiteProductAttributeTecdocRoute());
         return this;
     }
 }

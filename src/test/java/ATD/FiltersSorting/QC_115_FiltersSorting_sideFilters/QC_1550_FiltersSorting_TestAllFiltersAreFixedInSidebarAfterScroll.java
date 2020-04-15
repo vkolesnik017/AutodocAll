@@ -1,6 +1,7 @@
 package ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters;
 
 
+import ATD.DataBase;
 import ATD.Listing_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
@@ -25,21 +26,48 @@ public class QC_1550_FiltersSorting_TestAllFiltersAreFixedInSidebarAfterScroll {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list21");
     }
 
     @DataProvider(name = "routesLKW", parallel = true)
     Object[] dataProviderLKWsearch() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "");
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list15");
     }
 
-    @Test//(dataProvider = "routes")
+    @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks All Filters Are Fixed In Sidebar After Scroll")
-    public void testAllFiltersAreFixedInSidebarAfterScroll() {
-        openPage("https://www.autodoc.de/autoteile/scheibenwischer-10233/vw/passat/passat-variant-3b6/16347-2-0");
+    public void testAllFiltersAreFixedInSidebarAfterScroll(String route) {
+        openPage(route);
         new Listing_page_Logic().checkFiltersFixInSidebar();
+    }
+
+    @Test
+    @Flaky
+    @Owner(value = "Romaniuta")
+    @Description(value = "Test checks All Filters Are Fixed In Sidebar After Scroll Search Route")
+    public void testAllFiltersAreFixedInSidebarAfterScrollSeachRoute() throws SQLException {
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "search21"));
+        new Listing_page_Logic().checkFiltersFixInSidebarSearchRoute();
+    }
+
+    @Test(dataProvider = "routesLKW")
+    @Flaky
+    @Owner(value = "Romaniuta")
+    @Description(value = "Test checks All Filters Are Fixed In Sidebar After Scroll LKW")
+    public void testAllFiltersAreFixedInSidebarAfterScrollLKW(String route) {
+        openPage(route);
+        new Listing_page_Logic().checkFiltersFixInSidebarLKW();
+    }
+
+    @Test
+    @Flaky
+    @Owner(value = "Romaniuta")
+    @Description(value = "Test checks All Filters Are Fixed In Sidebar After Scroll LKW Search Route")
+    public void testAllFiltersAreFixedInSidebarAfterScrollLKWsearchRoute() throws SQLException {
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_search"));
+        new Listing_page_Logic().checkFiltersFixInSidebarLKWsearchRoute();
     }
 
     @AfterMethod
