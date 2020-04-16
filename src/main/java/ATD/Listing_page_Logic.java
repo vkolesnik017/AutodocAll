@@ -728,15 +728,71 @@ public class Listing_page_Logic extends Listing_page {
     }
 
     @Step("Check Output With Filters By Side Fix In Sidebar. Listing_page")
-    public Listing_page_Logic checkOutputWithFiltersBySideFixInSidebar() {
+    public Listing_page_Logic checkOutputWithFiltersBySideFixInSidebar(String characteristic) {
         scrollAndCheckFixFiltersInSidebar();
         bySideFilterInSidebarFront().click();
         waitUntilPreloaderDisappear();
-        checkProductAttributeOnListingWithCarAndFilter("vorne", einbauseiteProductAttributeGenericRoute(), einbauseiteProductAttributeTecdocRoute());
+        checkProductAttributeOnListingWithCarAndFilter(characteristic, einbauseiteProductAttributeGenericRoute(), einbauseiteProductAttributeTecdocRoute());
         scrollAndCheckFixFiltersInSidebar();
         bySideFilterInSidebarFront().click();
         waitUntilPreloaderDisappear();
         checkUniqueBrandsOnListing(2, einbauseiteProductAttributeTecdocRoute());
+        return this;
+    }
+
+    @Step("Check Output With Filters By Brand Fix In Sidebar. Listing_page")
+    public Listing_page_Logic checkOutputWithFiltersByBrandFixInSidebar(int brandPositionInAlt) {
+        scrollAndCheckFixFiltersInSidebar();
+        String brand = brandFilterButtonInSidebarName().attr("alt");
+        brandFilterButtonInSidebarButton().click();
+        waitUntilPreloaderDisappear();
+        getBrandFromTitle(brand, brandPositionInAlt, true, productTitleInListMode());
+        scrollAndCheckFixFiltersInSidebar();
+        brandFilterButtonInSidebarButton().click();
+        waitUntilPreloaderDisappear();
+        checkUniqueBrandsOnListing(2, productTitleInListMode());
+        return this;
+    }
+
+    @Step("Check Output With Filters By Brand Fix In Sidebar Route Search. Listing_page")
+    public Listing_page_Logic checkOutputWithFiltersByBrandFixInSidebarRouteSearch(int brandPositionInAlt) {
+        scrollAndCheckFixFiltersInSidebar();
+        closePopupByClickOverlayOnListingSearch();
+        String brand = brandFilterButtonInSidebarName().attr("alt");
+        brandFilterButtonInSidebarButton().click();
+        waitUntilPreloaderDisappear();
+        getBrandFromTitle(brand, brandPositionInAlt, true, productTitleInListMode());
+        scrollAndCheckFixFiltersInSidebar();
+        brandFilterButtonInSidebarButton().click();
+        waitUntilPreloaderDisappear();
+        getBrandFromTitle(brand, brandPositionInAlt, false, productTitleInListMode());
+        return this;
+    }
+
+    @Step("Close popup by click overlay. Listing_page")
+    public Listing_page_Logic closePopupByClickOverlayOnListingSearch() {
+        blackOverlay().click(1, 1);
+        blackOverlay().shouldNotBe(visible);
+        return this;
+    }
+
+    @Step("Check Output With Filters By Rating Fix In Sidebar. Listing_page")
+    public Listing_page_Logic checkOutputWithFiltersByRatingFixInSidebar() {
+        scrollAndCheckFixFiltersInSidebar();
+        ratingThreeStarsFilterCheckbox().click();
+        waitUntilPreloaderDisappear();
+        checkQuantityOfRatingStarsOnListingInPercent(ratingInProductBlock());
+        scrollAndCheckFixFiltersInSidebar();
+        ratingThreeStarsFilterCheckbox().click();
+        checkUniqueRatingOnListing(2);
+        return this;
+    }
+
+    @Step("Method checks quantity of rating stars in each product on listing. Listing_page")
+    public Listing_page_Logic checkQuantityOfRatingStarsOnListingInPercent(ElementsCollection collectionOfRatingElements) {
+        for (int i = 1; i < collectionOfRatingElements.size(); i++) {
+            activeRatingStarsInEveryProductPercent(i).shouldHave(attribute("style", "width: 60%;"));
+        }
         return this;
     }
 }
