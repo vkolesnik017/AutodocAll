@@ -283,6 +283,7 @@ public class Order_aws {
 
     @Step("Transition to the personal account of the customer. Order_aws")
     public Customer_view_aws clickCustomerId() {
+        sleep(2000);
         customerId().click();
         return page(Customer_view_aws.class);
     }
@@ -381,7 +382,7 @@ public class Order_aws {
         return this;
     }
 
-    @Step("Checks firm confirmation status in order. Order_aws")
+    @Step("Checks firm confirmation status in order {firmConfirmationStatus}. Order_aws")
     public Order_aws checkFirmConfirmationStatus(String firmConfirmationStatus) {
         firmConfirmationSelector().shouldHave(text(firmConfirmationStatus));
         return this;

@@ -8,85 +8,85 @@
 
     <test name="ATD_QC_1695_CheckAddressBlockingOnAddressPage">
         <classes>
-            <class name="ATD.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1695_CheckAddressBlockingOnAddressPage"/>
+            <class name="ATD.Basket.SpecificTests.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1695_CheckAddressBlockingOnAddressPage"/>
         </classes>
     </test>
 
     <test name="PKW_QC_1695_CheckAddressBlockingOnAddressPage">
         <classes>
-            <class name="PKW.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1695_CheckAddressBlockingOnAddressPage"/>
+            <class name="PKW.Basket.SpecificTests.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1695_CheckAddressBlockingOnAddressPage"/>
         </classes>
     </test>
 
     <test name="BVS_QC_1695_CheckAddressBlockingOnAddressPage">
         <classes>
-            <class name="BVS.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1695_CheckAddressBlockingOnAddressPage"/>
+            <class name="BVS.Basket.SpecificTests.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1695_CheckAddressBlockingOnAddressPage"/>
         </classes>
     </test>
 
     <test name="Direkt_QC_1695_CheckAddressBlockingOnAddressPage">
         <classes>
-            <class name="Direkt.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1695_CheckAddressBlockingOnAddressPage"/>
+            <class name="Direkt.Basket.SpecificTests.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1695_CheckAddressBlockingOnAddressPage"/>
         </classes>
     </test>
 
     <test name="Ersatz_QC_1695_CheckAddressBlockingOnAddressPage">
         <classes>
-            <class name="Ersatz.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1695_CheckAddressBlockingOnAddressPage"/>
+            <class name="Ersatz.Basket.SpecificTests.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1695_CheckAddressBlockingOnAddressPage"/>
         </classes>
     </test>
 
     <test name="EU_QC_1695_CheckAddressBlockingOnAddressPage">
         <classes>
-            <class name="EU.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1695_CheckAddressBlockingOnAddressPage"/>
+            <class name="EU.Basket.SpecificTests.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1695_CheckAddressBlockingOnAddressPage"/>
         </classes>
     </test>
 
     <test name="EXPERT_QC_1695_CheckAddressBlockingOnAddressPage">
         <classes>
-            <class name="EXPERT.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1695_CheckAddressBlockingOnAddressPage"/>
+            <class name="EXPERT.Basket.SpecificTests.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1695_CheckAddressBlockingOnAddressPage"/>
         </classes>
     </test>
 
     <test name="KAUF_QC_1695_CheckAddressBlockingOnAddressPage">
         <classes>
-            <class name="KAUF.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1695_CheckAddressBlockingOnAddressPage"/>
+            <class name="KAUF.Basket.SpecificTests.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1695_CheckAddressBlockingOnAddressPage"/>
         </classes>
     </test>
 
     <test name="PRF_QC_1695_CheckAddressBlockingOnAddressPage">
         <classes>
-            <class name="PRF.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1695_CheckAddressBlockingOnAddressPage"/>
+            <class name="PRF.Basket.SpecificTests.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1695_CheckAddressBlockingOnAddressPage"/>
         </classes>
     </test>
 
     <test name="TKF_QC_1695_CheckAddressBlockingOnAddressPage">
         <classes>
-            <class name="TKF.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1695_CheckAddressBlockingOnAddressPage"/>
+            <class name="TKF.Basket.SpecificTests.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1695_CheckAddressBlockingOnAddressPage"/>
         </classes>
     </test>
 
     <test name="TLS_QC_1695_CheckAddressBlockingOnAddressPage">
         <classes>
-            <class name="TLS.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1695_CheckAddressBlockingOnAddressPage"/>
+            <class name="TLS.Basket.SpecificTests.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1695_CheckAddressBlockingOnAddressPage"/>
         </classes>
     </test>
 
     <test name="TOP_QC_1695_CheckAddressBlockingOnAddressPage" enabled="false">
         <classes>
-            <class name="TOP.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1695_CheckAddressBlockingOnAddressPage"/>
+            <class name="TOP.Basket.SpecificTests.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1695_CheckAddressBlockingOnAddressPage"/>
         </classes>
     </test>
 
     <test name="TSP_QC_1695_CheckAddressBlockingOnAddressPage">
         <classes>
-            <class name="TSP.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1695_CheckAddressBlockingOnAddressPage"/>
+            <class name="TSP.Basket.SpecificTests.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1695_CheckAddressBlockingOnAddressPage"/>
         </classes>
     </test>
 
     <test name="XXL_QC_1695_CheckAddressBlockingOnAddressPage">
         <classes>
-            <class name="XXL.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1695_CheckAddressBlockingOnAddressPage"/>
+            <class name="XXL.Basket.SpecificTests.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1695_CheckAddressBlockingOnAddressPage"/>
         </classes>
     </test>
 </suite>
