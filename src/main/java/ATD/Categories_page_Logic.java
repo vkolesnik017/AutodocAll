@@ -78,7 +78,6 @@ public class Categories_page_Logic extends Categories_page {
         HttpURLConnection http = (HttpURLConnection) url.openConnection();
         http.setInstanceFollowRedirects(true);
         int responseCode = http.getResponseCode();
-        System.out.println(responseCode);
         Assert.assertEquals(responseCode, 200);
       }
       return this;

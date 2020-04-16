@@ -191,6 +191,8 @@ public class Product_page {
         return $$(".tutorial-text > a");
     }
 
+    SelenideElement einzustellenderElektrodenabstandCharacteristic() { return $x("//span[contains(text(),'einzustellender Elektrodenabstand [mm]:')]"); }
+
 
     //breadcrumbs locators
     public SelenideElement breadcrumbsBlock() {
@@ -598,4 +600,6 @@ public class Product_page {
     ElementsCollection analogProductsTitle() { return $$x("//*[@class='product-list__item active']"); }
 
     SelenideElement carMatchBlock() { return $x("//*[@class='car-match-block']/p"); }
+
+
 }

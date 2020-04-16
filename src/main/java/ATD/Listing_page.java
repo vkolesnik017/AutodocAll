@@ -185,6 +185,22 @@ public class Listing_page {
         return $(".model_list_oem > li > label > input");
     }
 
+    SelenideElement langeFilterBlockInSidebar() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_203']"); }
+
+    SelenideElement bySideFilterBlockInSidebar() { return $(".installation-side--sidebar-fixed"); }
+
+    SelenideElement brandFilterBlockInSidebar() { return $(".branded-filter-sidebar"); }
+
+    SelenideElement furPrnummerBlockInSidebar() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_1197']"); }
+
+    SelenideElement verschleisswarnkontaktBlockInSidebar() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_593']"); }
+
+    SelenideElement thirdProductOnListing() { return $(".list_products > li:nth-child(5)"); }
+
+    SelenideElement durchmesserBlockInSidebar() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_200']"); }
+
+    SelenideElement bremsscheibenartBlockInSidebar() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_232']"); }
+
     //Rating filters locators
     public ElementsCollection ratingInProductBlock() {
         return $$(".review-vote");
@@ -592,5 +608,7 @@ public class Listing_page {
     SelenideElement hoheBlock() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_209']"); }
 
     SelenideElement moreCharacteristicButtonInFilter() { return $(".filter-disk__more"); }
+
+    SelenideElement bySideFilterInSidebarFront() { return $(".installation-side--sidebar-fixed > div > .front-side"); }
 }
 

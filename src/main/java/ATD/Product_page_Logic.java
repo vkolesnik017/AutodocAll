@@ -605,4 +605,10 @@ public class Product_page_Logic extends Product_page {
         incompatibilityMessage().shouldBe(visible);
         return this;
     }
+
+    @Step("Check dynamic characteristic. Product_page")
+    public Product_page_Logic checkDynamicCharacteristic() {
+        einzustellenderElektrodenabstandCharacteristic().shouldNotBe(visible);
+        return this;
+    }
 }
