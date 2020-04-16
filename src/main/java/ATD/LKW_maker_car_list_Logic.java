@@ -112,6 +112,7 @@ public class LKW_maker_car_list_Logic extends LKW_maker_car_list {
         tooltipForFieldInVerticalCarSelector().shouldBe(visible);
         return this;
     }
+
     @Step("visibility of tooltip for model_field in selector  .LKW_maker_car_list")
     public LKW_maker_car_list_Logic visibilityOfTooltipForModelFieldInCloseSelector() {
         markeInVerticalCarSelector().selectOptionByValue("24");
@@ -128,5 +129,31 @@ public class LKW_maker_car_list_Logic extends LKW_maker_car_list {
         tooltipForFieldInVerticalCarSelector().shouldBe(visible);
         return this;
     }
+
+
+    @Step("visibility of truck in selector from url  .LKW_maker_car_list")
+    public LKW_maker_car_list_Logic availabilityOfTruckInSelectorFromUrl() {
+        markeInVerticalCarSelector().shouldNotHave(exactValue("0"));
+        motorInVerticalCarSelector().shouldNotHave(exactValue("0"));
+        String brandOfCarFromSelector = markeInVerticalCarSelector().getText().toLowerCase();
+        String modelOfCarFromSelector = motorInVerticalCarSelector().getText().substring(0, 2);
+        Assert.assertTrue(url().contains(brandOfCarFromSelector) && url().contains(modelOfCarFromSelector));
+        return this;
+    }
+
+
+    @Step("go to main page  .LKW_maker_car_list")
+    public LKW_main_page_Logic goToMainPage() {
+        logoInHeader().click();
+        return page(LKW_main_page_Logic.class);
+    }
+
+    @Step("visibility of headline of selector and icon of truck  .LKW_maker_car_list")
+    public LKW_maker_car_list_Logic visibilityOfHeadLineSelectorAndIconOfTruck(String selectTruck) {
+        iconOfTruckInHeadlineOfSelector().shouldBe(visible);
+        titleOfTruckInHeadlineOfSelector().shouldHave(exactText(selectTruck));
+        return this;
+    }
+
 
 }
