@@ -42,14 +42,24 @@ public class Mailinator {
         return $x("//p[contains(text(),'%')]");
     }
 
-    private SelenideElement firmNameInEmail() {
+    private SelenideElement firstFirmNameInEmail() {
       return $x("//table[@class='to-column-table to-column-table--border']//p[@class='to-column-table__title']/following-sibling::b");
     }
 
-    @Step("Checks text in company name in email. Mailinator")
-    public Mailinator checkFirmNameInEmail(String firmName) {
-      firmNameInEmail().shouldHave(text(firmName));
+    private SelenideElement secondFirmNameInEmail() {
+        return $x("//table[@class='to-column-table']//p[@class='to-column-table__title']/following-sibling::b");
+    }
+
+    @Step("Checks text {firmName} in first company name in email. Mailinator")
+    public Mailinator checkFirstFirmNameInEmail(String firmName) {
+      firstFirmNameInEmail().shouldHave(text(firmName));
       return this;
+    }
+
+    @Step("Checks text {firmName} in second company name in email. Mailinator")
+    public Mailinator checkSecondFirmNameInEmail(String firmName) {
+        secondFirmNameInEmail().shouldHave(text(firmName));
+        return this;
     }
 
     @Step("Checks for text containing VAT percentage in email. Mailinator")

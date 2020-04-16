@@ -33,22 +33,45 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return this;
     }
 
-    @Step("Fill all fields with default values and Firm {nameFirm} and City {city}. CartAddress_page")
-    public CartAddress_page_Logic fillAllFieldsAndFirm(String shop, String nameFirm, String city) {
+    @Step("Fill all fields with default values and Firm {nameFirm} and City {city} for Shipping. CartAddress_page")
+    public CartAddress_page_Logic fillAllFieldsAndFirmForShipping(String shop, String nameFirm, String city) {
         checkCorrectTextAndFillInput(vorname(), "autotest");
         checkCorrectTextAndFillInput(nameIn(), "autotest");
         checkCorrectTextAndFillInput(strasse(), "autotest");
         checkCorrectTextAndFillInput(deliveryHouse(), "autotest");
-        fillInPostalCode("default");
+        fillingPostalCodeFieldJSForShipping("12345");
         checkCorrectTextAndFillInput(ort(), city);
         chooseDeliveryCountryForShipping(shop);
         checkCorrectTextAndFillInput(telephon(), "200+002");
-        if (!firm().isDisplayed()) {
+        if (!fieldFirm().isDisplayed()) {
             checkboxFirmShipping().click();
         }
-        checkCorrectTextAndFillInput(firm(), nameFirm);
+        checkCorrectTextAndFillInput(fieldFirm(), nameFirm);
         return this;
     }
+
+    @Step("Fill all fields with default values and Firm {nameFirm}, City {city} and ID firm {firmID} for Billing. CartAddress_page")
+    public CartAddress_page_Logic fillAllFieldsAndFirmForBilling(String shopBilling, String nameFirmBilling, String cityBilling, String firmID) {
+        if (!billingForm().isDisplayed()) {
+            billingCheckBox().click();
+        }
+        checkCorrectTextAndFillInput(vornameBilling(), "autotest");
+        checkCorrectTextAndFillInput(nameInBilling(), "autotest");
+        checkCorrectTextAndFillInput(strasseBilling(), "autotest");
+        checkCorrectTextAndFillInput(paymentHouseBilling(), "autotest");
+        fillingPostalCodeFieldJSForBilling("12345");
+        checkCorrectTextAndFillInput(ortBilling(), cityBilling);
+        chooseDeliveryCountryForBilling(shopBilling);
+        checkCorrectTextAndFillInput(telephonBilling(), "200+002");
+        if (!fieldFirmBilling().isDisplayed()) {
+            checkboxFirmBilling().click();
+        }
+            checkCorrectTextAndFillInput(fieldFirmBilling(), nameFirmBilling);
+            checkCorrectTextAndFillInput(firmID(), firmID);
+
+        return this;
+    }
+
 
     @Step("Checking correct text in input field. CartAddress_page")
     private void checkCorrectTextAndFillInput(SelenideElement element, String correctText) {
@@ -140,6 +163,7 @@ public class CartAddress_page_Logic extends CartAddress_page {
         countryInSelectorForShipping(country).shouldBe(visible).click();
         return this;
     }
+
     @Step("Choosing delivery country {country} for billing. CartAddress_page")
     public CartAddress_page_Logic chooseDeliveryCountryForBilling(String country) {
         if (country.equals("EN")) country = "GB";

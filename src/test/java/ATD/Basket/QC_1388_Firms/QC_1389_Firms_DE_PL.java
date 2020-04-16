@@ -50,11 +50,11 @@ public class QC_1389_Firms_DE_PL {
                 .cartClick()
                 .nextButtonClick()
                 .signIn(emailPL, password)
-                .fillAllFieldsAndFirm(shop, "FB-MONT A. Fułek Spółka Komandytowa", "Kalisz")
+                .fillAllFieldsAndFirmForShipping(shop, "FB-MONT A. Fułek Spółka Komandytowa", "Kalisz")
                 .nextBtnClick()
                 .chossePrzelewBankowy()
                 .nextBtnClick()
-                .checkTextInAddressInfoBlock("Firma FB-MONT A. Fułek Spółka Komandytowa")
+                .checkTextInDeliveryAddressInfoBlock("Firma FB-MONT A. Fułek Spółka Komandytowa")
                 .checkTextContainingVatPercentage("23% VAT")
                 .getTotalPriceAllDataPage();
         orderNumberPL = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
@@ -64,16 +64,18 @@ public class QC_1389_Firms_DE_PL {
                 .checkFirmConfirmationStatus("Пров. вручную")
                 .getTotalPriceOrder();
         Assert.assertEquals(totalPricePL, totalPriceAWSOrderPL);
-        order_aws.reSaveOrder()
+        totalPriceAWSOrderPL = order_aws.reSaveOrder()
                 .checkVatStatusInOrder("Mit MwSt 23%")
                 .checkFirmConfirmationStatus("Пров. вручную")
-                .clickCustomerId()
+                .getTotalPriceOrder();
+        Assert.assertEquals(totalPricePL, totalPriceAWSOrderPL);
+        order_aws.clickCustomerId()
                 .checkAbsenceBlockLogsCompanyNumber();
-        switchTo().window(0);
+        switchTo().window(1);
         totalPriceInEmailPL = new Mailinator().openEmail("qc_1389_autotestPL@mailinator.com")
                 .openLetter(1)
                 .checkTextContainingVatPercentageInEmail("w tym 23% VAT")
-                .checkFirmNameInEmail("FB-MONT A. Fułek Spółka Komandytowa")
+                .checkFirstFirmNameInEmail("FB-MONT A. Fułek Spółka Komandytowa")
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPricePL, totalPriceInEmailPL);
     }
@@ -99,11 +101,11 @@ public class QC_1389_Firms_DE_PL {
                 .cartClick()
                 .nextButtonClick()
                 .signIn(emailDE, password)
-                .fillAllFieldsAndFirm(shop, "Autodoc GmbH", "Berlin")
+                .fillAllFieldsAndFirmForShipping(shop, "Autodoc GmbH", "Berlin")
                 .nextBtnClick()
                 .chooseVorkasse()
                 .nextBtnClick()
-                .checkTextInAddressInfoBlock("Firma Autodoc GmbH")
+                .checkTextInDeliveryAddressInfoBlock("Firma Autodoc GmbH")
                 .checkTextContainingVatPercentage("inkl. 19% MwSt.")
                 .getTotalPriceAllDataPage();
         orderNumberDE = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
@@ -113,16 +115,18 @@ public class QC_1389_Firms_DE_PL {
                 .checkFirmConfirmationStatus("Пров. вручную")
                 .getTotalPriceOrder();
         Assert.assertEquals(totalPriceDE, totalPriceAWSOrderDE);
-        order_aws.reSaveOrder()
+        totalPriceAWSOrderDE = order_aws.reSaveOrder()
                 .checkVatStatusInOrder("Mit MwSt 19%")
                 .checkFirmConfirmationStatus("Пров. вручную")
-                .clickCustomerId()
+                .getTotalPriceOrder();
+        Assert.assertEquals(totalPriceDE, totalPriceAWSOrderDE);
+        order_aws.clickCustomerId()
                 .checkAbsenceBlockLogsCompanyNumber();
-        switchTo().window(0);
+        switchTo().window(1);
         totalPriceInEmailDE = new Mailinator().openEmail("qc_1389_autotestDE@mailinator.com")
                 .openLetter(1)
                 .checkTextContainingVatPercentageInEmail("inkl. 19% MwSt.")
-                .checkFirmNameInEmail("Autodoc GmbH")
+                .checkFirstFirmNameInEmail("Autodoc GmbH")
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPriceDE, totalPriceInEmailDE);
     }
@@ -147,11 +151,11 @@ public class QC_1389_Firms_DE_PL {
                 .cartClick()
                 .nextButtonClick()
                 .signIn(emailES, password)
-                .fillAllFieldsAndFirm("DE", "Autodoc GmbH", "Berlin")
+                .fillAllFieldsAndFirmForShipping("DE", "Autodoc GmbH", "Berlin")
                 .nextBtnClick()
                 .chooseVorkasse()
                 .nextBtnClick()
-                .checkTextInAddressInfoBlock("Entidad Autodoc GmbH")
+                .checkTextInDeliveryAddressInfoBlock("Entidad Autodoc GmbH")
                 .checkTextContainingVatPercentage("IVA incluido 19%")
                 .getTotalPriceAllDataPage();
     orderNumberES = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
@@ -161,16 +165,18 @@ public class QC_1389_Firms_DE_PL {
                 .checkFirmConfirmationStatus("Пров. вручную")
                 .getTotalPriceOrder();
         Assert.assertEquals(totalPriceES, totalPriceAWSOrderES);
-        order_aws.reSaveOrder()
+        totalPriceAWSOrderES = order_aws.reSaveOrder()
                 .checkVatStatusInOrder("Mit MwSt 19%")
                 .checkFirmConfirmationStatus("Пров. вручную")
-                .clickCustomerId()
+                .getTotalPriceOrder();
+        Assert.assertEquals(totalPriceES, totalPriceAWSOrderES);
+        order_aws.clickCustomerId()
                 .checkAbsenceBlockLogsCompanyNumber();
-    switchTo().window(0);
+    switchTo().window(1);
     totalPriceInEmailES = new Mailinator().openEmail("qc_1389_autotestES@mailinator.com")
                 .openLetter(1)
                 .checkTextContainingVatPercentageInEmail("IVA incluido 19%")
-                .checkFirmNameInEmail("Autodoc GmbH")
+                .checkFirstFirmNameInEmail("Autodoc GmbH")
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPriceES, totalPriceInEmailES);
 }
