@@ -195,11 +195,13 @@ public class Listing_page {
 
     SelenideElement verschleisswarnkontaktBlockInSidebar() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_593']"); }
 
-    SelenideElement thirdProductOnListing() { return $(".list_products > li:nth-child(5)"); }
+    SelenideElement thirdProductOnListing() { return $(".list_products > li:nth-child(3)"); }
 
     SelenideElement durchmesserBlockInSidebar() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_200']"); }
 
     SelenideElement bremsscheibenartBlockInSidebar() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_232']"); }
+
+    SelenideElement blackOverlay() { return $(".overlay.black"); }
 
     //Rating filters locators
     public ElementsCollection ratingInProductBlock() {
@@ -208,6 +210,10 @@ public class Listing_page {
 
     ElementsCollection activeRatingStarsInEveryProduct(int productPosition) {
         return $$x("(//div[@class='description'])[ " + productPosition + "]//div[@class='review-vote']//li[not(contains(@class,'empty'))]");
+    }
+
+    SelenideElement activeRatingStarsInEveryProductPercent(int productPosition) {
+        return $x("(//div[@class='description'])[ " + productPosition + "]//div[@class='review-vote']/span/span");
     }
 
     public SelenideElement ratingFiveStarsFilterCheckbox() {
@@ -610,5 +616,9 @@ public class Listing_page {
     SelenideElement moreCharacteristicButtonInFilter() { return $(".filter-disk__more"); }
 
     SelenideElement bySideFilterInSidebarFront() { return $(".installation-side--sidebar-fixed > div > .front-side"); }
+
+    SelenideElement brandFilterButtonInSidebarName() { return $(".branded-filter-sidebar__list img"); }
+
+    SelenideElement brandFilterButtonInSidebarButton() { return $(".branded-filter-sidebar__list label"); }
 }
 
