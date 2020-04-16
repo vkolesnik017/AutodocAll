@@ -146,7 +146,7 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return this;
     }
 
-    @Step("Checks the text in the address info block. CartAllData_page")
+    @Step("Check text {textWithAddressInfo} in address info block. CartAllData_page")
         public CartAllData_page_Logic checkTextInAddressInfoBlock(String textWithAddressInfo) {
         addressInfo().shouldHave(text(textWithAddressInfo));
         return this;

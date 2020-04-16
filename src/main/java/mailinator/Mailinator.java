@@ -12,82 +12,94 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class Mailinator {
 
-  // The Mailinator Email System. It is Email Workflow Testing tool.
+    // The Mailinator Email System. It is Email Workflow Testing tool.
 
-  public SelenideElement letterInfo(int numberLetter) {
-    return $(byXpath("//*[contains(@class,'pointer')]/../tr["+ numberLetter +"]"));
-  }
+    public SelenideElement letterInfo(int numberLetter) {
+        return $(byXpath("//*[contains(@class,'pointer')]/../tr[" + numberLetter + "]"));
+    }
 
-  public SelenideElement letter(int numberLetter) {
-    return $(byXpath("//*[contains(@class,'pointer')]/../tr["+ numberLetter + "]//a"));
-  }
+    public SelenideElement letter(int numberLetter) {
+        return $(byXpath("//*[contains(@class,'pointer')]/../tr[" + numberLetter + "]//a"));
+    }
 
-  public SelenideElement linkFAQemailConfirm() { return $(".btn-wrapper > a"); }
+    public SelenideElement linkFAQemailConfirm() {
+        return $(".btn-wrapper > a");
+    }
 
-  private SelenideElement linkInRestorePasswordLetter() {
-    return $(byCssSelector(".forgot>a"));
-  }
+    private SelenideElement linkInRestorePasswordLetter() {
+        return $(byCssSelector(".forgot>a"));
+    }
 
-  private SelenideElement infoTotalPriceInEmail() {
-    return $x("//p[@class='info-total__price']");
-  }
+    private SelenideElement infoTotalPriceInEmail() {
+        return $x("//p[@class='info-total__price']");
+    }
 
-  private SelenideElement regularDeliveryPriceInEmail() {
-    return $x("//table[@class='info-total']//tr[3]//td[2]//p");
-  }
+    private SelenideElement regularDeliveryPriceInEmail() {
+        return $x("//table[@class='info-total']//tr[3]//td[2]//p");
+    }
 
-  private SelenideElement percentageOfVatInEmail() {
-    return $x("//table[@class='info-total']//tr[6]//td[2]//p");
-}
+    private SelenideElement percentageOfVatInEmail() {
+        return $x("//p[contains(text(),'%')]");
+    }
 
-  @Step("Checks for text containing VAT percentage in email. Mailinator")
-  public Mailinator checkTextContainingVatPercentageInEmail(String textWithPercentageOfVAT) {
-    percentageOfVatInEmail().shouldHave(text(textWithPercentageOfVAT));
-    return this;
-  }
+    private SelenideElement firmNameInEmail() {
+      return $x("//table[@class='to-column-table to-column-table--border']//p[@class='to-column-table__title']/following-sibling::b");
+    }
 
-  @Step("Checks absence text containing VAT percentage in email. Mailinator")
-  public Mailinator checkAbsenceVatPercentageInEmail() {
-    percentageOfVatInEmail().shouldNotBe(visible);
-    return this;
-  }
+    @Step("Checks text in company name in email. Mailinator")
+    public Mailinator checkFirmNameInEmail(String firmName) {
+      firmNameInEmail().shouldHave(text(firmName));
+      return this;
+    }
 
-  @Step("Checks regular delivery price. Mailinator")
-  public Mailinator checkRegularDeliveryPriceInEmail(String regularDeliveryPrice) {
-    regularDeliveryPriceInEmail().shouldHave(text(regularDeliveryPrice));
-    return this;
-  }
+    @Step("Checks for text containing VAT percentage in email. Mailinator")
+    public Mailinator checkTextContainingVatPercentageInEmail(String textWithPercentageOfVAT) {
+        percentageOfVatInEmail().shouldHave(text(textWithPercentageOfVAT));
+        return this;
+    }
 
-  @Step("Get total price in email. Mailinator")
-  public Double getTotalPriceInEmail(){
-    String realPrice = infoTotalPriceInEmail().getText();
-    realPrice = realPrice.substring(0, realPrice.indexOf(" ")).replaceAll(",",".");
-    Double totalPrice = Double.parseDouble(realPrice);
-    return totalPrice;
-  }
+    @Step("Checks absence text containing VAT percentage in email. Mailinator")
+    public Mailinator checkAbsenceVatPercentageInEmail() {
+        percentageOfVatInEmail().shouldNotBe(visible);
+        return this;
+    }
 
-  public Mailinator openEmail(String email) {
-    open("https://www.mailinator.com");
-    $(byId("addOverlay")).setValue(email).pressEnter();
-    return this;
-  }
+    @Step("Checks regular delivery price. Mailinator")
+    public Mailinator checkRegularDeliveryPriceInEmail(String regularDeliveryPrice) {
+        regularDeliveryPriceInEmail().shouldHave(text(regularDeliveryPrice));
+        return this;
+    }
 
-  public Mailinator openLetter(int numberLetter) {
-    letter(numberLetter).shouldBe(appear);
-    letter(numberLetter).click();
-    switchTo().frame("msg_body");
-    return this;
-  }
+    @Step("Get total price in email. Mailinator")
+    public Double getTotalPriceInEmail() {
+        String realPrice = infoTotalPriceInEmail().getText();
+        realPrice = realPrice.substring(0, realPrice.indexOf(" ")).replaceAll(",", ".");
+        Double totalPrice = Double.parseDouble(realPrice);
+        return totalPrice;
+    }
 
-  public PasswordRecovery_page_Logic clickLinkRecoveryPasswordInLetter() {
-    linkInRestorePasswordLetter().click();
-    switchTo().window("recovery");
-    return page(PasswordRecovery_page_Logic.class);
-  }
+    public Mailinator openEmail(String email) {
+        open("https://www.mailinator.com");
+        $(byId("addOverlay")).setValue(email).pressEnter();
+        return this;
+    }
 
-  @Step("Check letter info text. Mailinator")
-  public Mailinator checkLetterInfoText(int letterNumber, String expectedText1, String expectedText2) {
-    letterInfo(letterNumber).shouldHave(text(expectedText1)).shouldHave(text(expectedText2));
-    return this;
-  }
+    public Mailinator openLetter(int numberLetter) {
+        letter(numberLetter).shouldBe(appear);
+        letter(numberLetter).click();
+        switchTo().frame("msg_body");
+        return this;
+    }
+
+    public PasswordRecovery_page_Logic clickLinkRecoveryPasswordInLetter() {
+        linkInRestorePasswordLetter().click();
+        switchTo().window("recovery");
+        return page(PasswordRecovery_page_Logic.class);
+    }
+
+    @Step("Check letter info text. Mailinator")
+    public Mailinator checkLetterInfoText(int letterNumber, String expectedText1, String expectedText2) {
+        letterInfo(letterNumber).shouldHave(text(expectedText1)).shouldHave(text(expectedText2));
+        return this;
+    }
 }
