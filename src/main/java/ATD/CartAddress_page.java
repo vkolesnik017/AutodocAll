@@ -37,37 +37,60 @@ public class CartAddress_page {
         return $x("//input[@id='is_company_shipping']");
     }
 
-    SelenideElement firm() {
+    SelenideElement fieldFirm() {
         return $(byId("form_lFirma"));
-    }
-
-
-    public SelenideElement currentCountryInSelector() {
-        return $(byXpath("//*[@id='form_lLand']/option[@selected]"));
     }
 
     SelenideElement postalCodeFieldForShipping() {
         return $(By.id("form_lPlz"));
     }
 
-    SelenideElement postalCodeFieldForBilling() {
-        return $(By.id("form_rPlz"));
-    }
-
-    SelenideElement fiscalCodeField() {
-        return $(byName("lFiscalCode"));
-    }
-
-    public SelenideElement nextButton() {
-        return $(byCssSelector(".address-continue>a"));
-    }
-
     SelenideElement countryInSelectorForShipping(String country) {
         return $(byXpath("//*[@name='lLand']//*[@data-code='" + country + "']"));
     }
 
+    SelenideElement vornameBilling() {
+        return $(byId("form_rVorname"));
+    }
+
+    SelenideElement nameInBilling() {
+        return $(byId("form_rName"));
+    }
+
+    SelenideElement strasseBilling() {
+        return $(byId("form_rStrasse"));
+    }
+
+    SelenideElement paymentHouseBilling() {
+        return $(byId("form_payment_house"));
+    }
+
+    SelenideElement ortBilling() {
+        return $(byId("form_rOrt"));
+    }
+
+    SelenideElement telephonBilling() {
+        return $(byId("form_rTelefon"));
+    }
+
+    SelenideElement fieldFirmBilling() {
+        return $(byId("form_Firma"));
+    }
+
+    SelenideElement firmID() {
+        return $(byId("form_rUmsatzId"));
+    }
+
+    SelenideElement checkboxFirmBilling() {
+        return $x("//input[@id='is_company_billing']");
+    }
+
     SelenideElement countryInSelectorForBilling(String country) {
         return $(byXpath("//*[@name='rLand']//*[@data-code='" + country + "']"));
+    }
+
+    SelenideElement postalCodeFieldForBilling() {
+        return $(By.id("form_rPlz"));
     }
 
     SelenideElement billingCheckBox() {
@@ -76,6 +99,18 @@ public class CartAddress_page {
 
     SelenideElement billingForm() {
         return $(By.id("billing_form"));
+    }
+
+    public SelenideElement currentCountryInSelector() {
+        return $(byXpath("//*[@id='form_lLand']/option[@selected]"));
+    }
+
+    SelenideElement fiscalCodeField() {
+        return $(byName("lFiscalCode"));
+    }
+
+    public SelenideElement nextButton() {
+        return $(byCssSelector(".address-continue>a"));
     }
 
     SelenideElement popupErrorAboutWrongCompany() {
