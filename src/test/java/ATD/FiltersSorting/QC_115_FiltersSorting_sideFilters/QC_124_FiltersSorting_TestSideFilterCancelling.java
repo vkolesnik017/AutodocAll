@@ -28,7 +28,7 @@ public class QC_124_FiltersSorting_TestSideFilterCancelling {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2,search4,search5,search17,search18");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2,search4,search5,search17");
     }
 
     @DataProvider(name = "routesLKW", parallel = true)

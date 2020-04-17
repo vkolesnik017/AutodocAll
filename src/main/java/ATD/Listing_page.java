@@ -605,9 +605,9 @@ public class Listing_page {
 
     SelenideElement previousButtonInBySideSliderDisabled() { return $x("//*[@class='js-filter-criteria-top']//span[@class='prev slick-arrow slick-disabled']"); }
 
-    SelenideElement firstPageInBySideSlider() { return $x("//*[@aria-describedby='slick-slide00']"); }
+    SelenideElement firstPageInBySideSlider() { return $x("//*[@class='slick-track']//div[@data-slick-index='0']"); }
 
-    SelenideElement secondPageInBySideSlider() { return $x("//*[@aria-describedby='slick-slide01']"); }
+    SelenideElement secondPageInBySideSlider() { return $x("//*[@class='slick-track']//div[@data-slick-index='1']"); }
 
     SelenideElement sideJSfilterForm() { return $(".js-filter-form-sidebar"); }
 
