@@ -303,7 +303,7 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         for (int i = 0; i < showReplacementButton().size(); i++) {
             showReplacementButton().get(i).scrollIntoView("{block: \"start\"}").click();
             analogProductBlock().get(i).shouldBe(visible);
-            if (productsInAnalogBlock().get(i).isDisplayed()) {
+            if (productsInAnalogBlock(i + 1).size() > 0) {
                 titleOfAnalogBlock().get(i).shouldHave(exactText("EMPFOHLENER ERSATZ FÜR DIESEN ARTIKEL:"));
             } else {
                 titleOfAnalogBlock().get(i).shouldHave(exactText("Keine Äquivalente verfügbar"));
@@ -417,6 +417,23 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
     public LKW_Category_car_list_page_Logic visibilityOfHeadLineSelectorAndIconOfTruck(String selectTruck) {
         iconOfTruckInHeadlineOfSelector().shouldBe(visible);
         titleOfTruckInHeadlineOfSelector().shouldHave(exactText(selectTruck));
+        return this;
+    }
+
+    @Step("Select truck in vertical selector .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic selectTruckInSelector(String markeOfTruck, String modelOfTruck, String motorOfTruck) {
+        String oldSelectedTruck = titleOfTruckInHeadlineOfSelector().getText();
+        markeOfVerticalTruckSelector().selectOptionByValue(markeOfTruck);
+        modelOfVerticalTruckSelector().selectOptionByValue(modelOfTruck);
+        motorOfVerticalTruckSelector().selectOptionByValue(motorOfTruck);
+        buttonSuchenOfVerticaltruckSelector().click();
+        titleOfTruckInHeadlineOfSelector().shouldNotHave(exactText(oldSelectedTruck));
+        return this;
+    }
+
+    @Step("Visibility of selected brand in block of brands .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic visibilityOfSelectedBrand() {
+        brandsOfBrandBlock("cb-brand-4").shouldHave(attribute("class", "active slick-slide slick-current slick-active"));
         return this;
     }
 }

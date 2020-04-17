@@ -149,8 +149,8 @@ public class LKW_Category_car_list_page {
         return $$x("//div[@class='product_description_box_alternative analogs']");
     }
 
-    ElementsCollection productsInAnalogBlock() {
-        return $$x("//div[@class='top-small-products top-small-products--alternative']/div[2]");
+    ElementsCollection productsInAnalogBlock(int position) {
+        return $$x("(//div[@class='top-small-products__title'])[" + position + "]/following-sibling::div//div[@class='top-small-products-items__item']");
     }
 
     ElementsCollection titleOfAnalogBlock() {
@@ -205,8 +205,28 @@ public class LKW_Category_car_list_page {
         return $(byName("car_id"));
     }
 
-    SelenideElement iconOfTruckInHeadlineOfSelector() {return $x("//span[@class='car-icon']");}
+    SelenideElement iconOfTruckInHeadlineOfSelector() {
+        return $x("//span[@class='car-icon']");
+    }
 
-    SelenideElement titleOfTruckInHeadlineOfSelector() {return $x("//div[contains(@class,'block-select-car__head-car--lkw')]/span[2]");}
+    SelenideElement titleOfTruckInHeadlineOfSelector() {
+        return $x("//div[contains(@class,'block-select-car__head-car--lkw')]/span[2]");
+    }
+
+    SelenideElement markeOfVerticalTruckSelector() {
+        return $(byName("maker_id"));
+    }
+
+    SelenideElement modelOfVerticalTruckSelector() {
+        return $(byName("model_id"));
+    }
+
+    SelenideElement motorOfVerticalTruckSelector() {
+        return $(byName("car_id"));
+    }
+
+    SelenideElement buttonSuchenOfVerticaltruckSelector() {
+        return $x("//a[@class='truck_submit js--lkw_selector-btn-submit']");
+    }
 
 }
