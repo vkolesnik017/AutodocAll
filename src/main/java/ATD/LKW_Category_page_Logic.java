@@ -9,8 +9,7 @@ import java.util.List;
 
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.back;
-import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class LKW_Category_page_Logic extends LKW_Category_page {
@@ -96,6 +95,15 @@ public class LKW_Category_page_Logic extends LKW_Category_page {
     public LKW_Category_brand_page_Logic clickOnBrand(String titleOfBrand) {
         titleOfBrand(titleOfBrand).click();
         return page(LKW_Category_brand_page_Logic.class);
+    }
+
+    @Step("Select truck in vertical selector .LKW_Category_page")
+    public LKW_Category_car_list_page_Logic selectTruckInSelector(String markeOfTruck, String modelOfTruck, String motorOfTruck) {
+        markeOfVerticalTruckSelector().selectOptionByValue(markeOfTruck);
+        modelOfVerticalTruckSelector().selectOptionByValue(modelOfTruck);
+        motorOfVerticalTruckSelector().selectOptionByValue(motorOfTruck);
+                buttonSuchenOfVerticaltruckSelector().click();
+           return page(LKW_Category_car_list_page_Logic.class);
     }
 
 }
