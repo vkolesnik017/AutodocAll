@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Basket" parallel="methods" data-provider-thread-count="2">
+<suite name="Basket" parallel="methods" thread-count="3" data-provider-thread-count="3">
 
     <listeners>
         <listener class-name="ATD.ProjectListener"/>
@@ -9,6 +9,8 @@
     <test name="QC_1388_Firms">
             <classes>
                     <class name="ATD.Basket.QC_1388_Firms.QC_1389_Firms_DE_PL"/>
+                    <class name="ATD.Basket.QC_1388_Firms.QC_1390_Firms_DE_PL_SplitBilling_DifferentCountries"/>
+                    <class name="ATD.Basket.QC_1388_Firms.QC_1391_Firms_DE_PL_SplitBilling_SameCountries"/>
             </classes>
     </test>
 

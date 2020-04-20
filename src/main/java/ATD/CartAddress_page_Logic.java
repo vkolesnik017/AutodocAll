@@ -33,7 +33,7 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return this;
     }
 
-    @Step("Fill all fields with default values and Firm {nameFirm} and City {city} for Shipping. CartAddress_page")
+    @Step("Fill in all fields with default values and also fill fields Shop {shop}, Firm {name Form} and City {city} for Shipping. CartAddress_page")
     public CartAddress_page_Logic fillAllFieldsAndFirmForShipping(String shop, String nameFirm, String city) {
         checkCorrectTextAndFillInput(vorname(), "autotest");
         checkCorrectTextAndFillInput(nameIn(), "autotest");
@@ -50,7 +50,7 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return this;
     }
 
-    @Step("Fill all fields with default values and Firm {nameFirm}, City {city} and ID firm {firmID} for Billing. CartAddress_page")
+    @Step("Fill in all fields with default values and also fill fields Shop {shop}, Firm {nameFirm}, City {city} and ID firm {firmID} for Billing. CartAddress_page")
     public CartAddress_page_Logic fillAllFieldsAndFirmForBilling(String shopBilling, String nameFirmBilling, String cityBilling, String firmID) {
         if (!billingForm().isDisplayed()) {
             billingCheckBox().click();
@@ -66,9 +66,30 @@ public class CartAddress_page_Logic extends CartAddress_page {
         if (!fieldFirmBilling().isDisplayed()) {
             checkboxFirmBilling().click();
         }
-            checkCorrectTextAndFillInput(fieldFirmBilling(), nameFirmBilling);
+        checkCorrectTextAndFillInput(fieldFirmBilling(), nameFirmBilling);
+        if (firmID().isDisplayed()) {
             checkCorrectTextAndFillInput(firmID(), firmID);
+        }
+        return this;
+    }
 
+    @Step("Fill in all fields with default values and also fill fields Shop {shop}, Firm {nameFirm} and City {city} for Billing. CartAddress_page")
+    public CartAddress_page_Logic fillAllFieldsAndFirmForBilling(String shopBilling, String nameFirmBilling, String cityBilling) {
+        if (!billingForm().isDisplayed()) {
+            billingCheckBox().click();
+        }
+        checkCorrectTextAndFillInput(vornameBilling(), "autotest");
+        checkCorrectTextAndFillInput(nameInBilling(), "autotest");
+        checkCorrectTextAndFillInput(strasseBilling(), "autotest");
+        checkCorrectTextAndFillInput(paymentHouseBilling(), "autotest");
+        fillingPostalCodeFieldJSForBilling("12345");
+        checkCorrectTextAndFillInput(ortBilling(), cityBilling);
+        chooseDeliveryCountryForBilling(shopBilling);
+        checkCorrectTextAndFillInput(telephonBilling(), "200+002");
+        if (!fieldFirmBilling().isDisplayed()) {
+            checkboxFirmBilling().click();
+        }
+        checkCorrectTextAndFillInput(fieldFirmBilling(), nameFirmBilling);
         return this;
     }
 
