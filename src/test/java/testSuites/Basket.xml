@@ -10,6 +10,7 @@
             <classes>
                     <class name="ATD.Basket.QC_1388_Firms.QC_1389_Firms_DE_PL"/>
                     <class name="ATD.Basket.QC_1388_Firms.QC_1390_Firms_DE_PL_SplitBilling_DifferentCountries"/>
+                    <class name="ATD.Basket.QC_1388_Firms.QC_1391_Firms_DE_PL_SplitBilling_SameCountries"/>
             </classes>
     </test>
 
