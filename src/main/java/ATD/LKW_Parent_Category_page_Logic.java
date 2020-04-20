@@ -103,4 +103,13 @@ public class LKW_Parent_Category_page_Logic extends LKW_Parent_Category_page {
         return this;
     }
 
+    @Step("Select truck in vertical selector .LKW_Parent_Category_page")
+    public LKW_maker_car_list_Logic selectTruckInSelector(String markeOfTruck, String modelOfTruck, String motorOfTruck) {
+        markeOfVerticalTruckSelector().selectOptionByValue(markeOfTruck);
+        modelOfVerticalTruckSelector().selectOptionByValue(modelOfTruck);
+        motorOfVerticalTruckSelector().selectOptionByValue(motorOfTruck);
+        buttonSuchenOfVerticaltruckSelector().click();
+        return page(LKW_maker_car_list_Logic.class);
+    }
+
 }
