@@ -21,9 +21,7 @@ public class QC_1698_CheckOfBlockingForSplitBillingAndShipping {
     private String email = "qc_1698_autotestCOVID19@mailinator.com";
     private String password = "atdtest";
 
-    private String plzIT = "00017";
-    private String plzES = "10900";
-
+    private String plzIT = "40059";
 
     @BeforeClass
     void setUp() {
@@ -45,8 +43,7 @@ public class QC_1698_CheckOfBlockingForSplitBillingAndShipping {
                 .cartClick()
                 .nextButtonClick()
                 .signIn(email, password)
-                .checkBlockingPLZForCountry("IT", "12345", "IT", plzIT)
-                .checkBlockingPLZForCountry("ES", "67890", "ES", plzES);
+                .checkBlockingPLZForCountry("IT", "12345", "IT", plzIT);
     }
 
     @AfterMethod

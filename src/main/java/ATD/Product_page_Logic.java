@@ -611,4 +611,11 @@ public class Product_page_Logic extends Product_page {
         einzustellenderElektrodenabstandCharacteristic().shouldNotBe(visible);
         return this;
     }
+
+    @Step("Get product price. Product_page")
+    public double getProductPrice() {
+        String productPrice = productPrice().getText().replace("£ ", "");
+        productPrice = productPrice.replaceAll(",",".");
+        return Double.parseDouble(productPrice);
+    }
 }

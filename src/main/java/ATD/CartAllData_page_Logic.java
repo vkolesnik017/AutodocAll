@@ -4,6 +4,7 @@ import io.qameta.allure.Step;
 import org.testng.Assert;
 
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 
 import static ATD.CommonMethods.*;
 import static com.codeborne.selenide.Condition.*;
@@ -219,6 +220,36 @@ public class CartAllData_page_Logic extends CartAllData_page {
         realPrice = realPrice.substring(0, realPrice.indexOf(" ")).replaceAll(",",".");
         Double totalPrice = Double.parseDouble(realPrice);
         return totalPrice;
+    }
+
+    @Step("Get total price for EN shop. CartAllData_page")
+    public Double getTotalPriceAllDataPageForEnShop(){
+        String realPrice = totalOrderPrice().getText().replace("£ ", "");
+        realPrice = realPrice.replaceAll(",",".");
+        Double totalPrice = Double.parseDouble(realPrice);
+        return totalPrice;
+    }
+
+
+    @Step("Transition to Product page. CartAllData_page")
+    public Product_page_Logic transitionToProductPage() {
+        imageProduct().click();
+        return page(Product_page_Logic.class);
+    }
+
+
+    @Step("Get price including VAT For EN shop. CartAllData_page")
+    public double getPriceIncludingVatForEnShop(String vat) {
+        String regularProductPrice = productPrice().getText().replace("£ ", "");
+        regularProductPrice = regularProductPrice.replaceAll(",",".");
+        Double productPrice = Double.parseDouble(regularProductPrice);
+        double priseWithVat = 0;
+        if (vat.equals("20")) {
+            priseWithVat = (productPrice * 1.2);
+        }
+        String formatPriseWithVat = new DecimalFormat("#.##").format(priseWithVat).replace(",",".");
+        Double doublePriseWithVat = Double.parseDouble(formatPriseWithVat);
+        return doublePriseWithVat;
     }
 
     @Step(": on CartAllData_page")

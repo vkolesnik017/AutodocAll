@@ -51,6 +51,7 @@ public class LKW_Category_brand_page {
     SelenideElement titleOfBrand(String title) {
         return $x("//li[@data-brand-name='" + title + "']/a");
     }
+
     SelenideElement markeOfVerticalTruckSelector() {
         return $(byName("maker_id"));
     }

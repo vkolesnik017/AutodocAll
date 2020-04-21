@@ -88,6 +88,15 @@ public class Mailinator {
         return totalPrice;
     }
 
+    @Step("Get total price in email for EN shop. Mailinator")
+    public Double getTotalPriceInEmailForENShop() {
+        String realPrice = infoTotalPriceInEmail().getText().replace("£ ", "");
+        realPrice = realPrice.replaceAll(",",".");
+        Double totalPrice = Double.parseDouble(realPrice);
+        return totalPrice;
+    }
+
+
     public Mailinator openEmail(String email) {
         open("https://www.mailinator.com");
         $(byId("addOverlay")).setValue(email).pressEnter();
