@@ -4,6 +4,7 @@ import io.qameta.allure.Step;
 import org.testng.Assert;
 
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 
 import static ATD.CommonMethods.*;
 import static com.codeborne.selenide.Condition.*;
@@ -228,8 +229,9 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return page(Product_page_Logic.class);
     }
 
-    @Step("Get price including VAT. CartAllData_page")
-    public double getPriceIncludingVat(String vat) {
+
+    @Step("Get price including VAT For EN shop. CartAllData_page")
+    public double getPriceIncludingVatForEnShop(String vat) {
         String regularProductPrice = productPrice().getText().replace("£ ", "");
         regularProductPrice = regularProductPrice.replaceAll(",",".");
         Double productPrice = Double.parseDouble(regularProductPrice);
@@ -237,7 +239,9 @@ public class CartAllData_page_Logic extends CartAllData_page {
         if (vat.equals("20")) {
             priseWithVat = (productPrice * 1.2);
         }
-        return priseWithVat;
+        String formatPriseWithVat = new DecimalFormat("#.##").format(priseWithVat).replace(",",".");
+        Double doublePriseWithVat = Double.parseDouble(formatPriseWithVat);
+        return doublePriseWithVat;
     }
 
     @Step(": on CartAllData_page")

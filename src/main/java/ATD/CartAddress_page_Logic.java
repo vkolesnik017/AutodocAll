@@ -197,7 +197,9 @@ public class CartAddress_page_Logic extends CartAddress_page {
 
     @Step("Click checkbox billing. CartAddress_page")
     public CartAddress_page_Logic clickCheckboxBilling() {
-        billingCheckBox().click();
+        if (!billingForm().isDisplayed()) {
+            billingCheckBox().click();
+        }
         return this;
     }
 

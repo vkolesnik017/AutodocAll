@@ -350,6 +350,12 @@ public class Order_aws {
         return this;
     }
 
+    @Step("Check delivery price in order AWS")
+    public Order_aws checkDeliveryPriceOrderAWS(Double expectedDeliveryPriceOrderAWS) {
+        deliveryDeliveryPriceOrderAWS().shouldHave(attribute("data-sum", String.valueOf(expectedDeliveryPriceOrderAWS)));
+        return this;
+    }
+
     @Step("Check Heavy Loads delivery price in order AWS")
     public Order_aws checkHeavyLoadsDeliveryPriceOrderAWS(String expectedHeavyLoadsDeliveryPriceOrderAWS) {
         heavyLoadsDeliveryPriceOrderAWS().shouldHave(attribute("data-sum", expectedHeavyLoadsDeliveryPriceOrderAWS));
