@@ -221,6 +221,25 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return totalPrice;
     }
 
+
+    @Step("Transition to Product page. CartAllData_page")
+    public Product_page_Logic transitionToProductPage() {
+        imageProduct().click();
+        return page(Product_page_Logic.class);
+    }
+
+    @Step("Get price including VAT. CartAllData_page")
+    public double getPriceIncludingVat(String vat) {
+        String regularProductPrice = productPrice().getText().replace("£ ", "");
+        regularProductPrice = regularProductPrice.replaceAll(",",".");
+        Double productPrice = Double.parseDouble(regularProductPrice);
+        double priseWithVat = 0;
+        if (vat.equals("20")) {
+            priseWithVat = (productPrice * 1.2);
+        }
+        return priseWithVat;
+    }
+
     @Step(": on CartAllData_page")
     public CartAllData_page_Logic checkAbsenceGoodInCartPage(String idProduct){
         new Cart_page_Logic().checkAbsenceGoodInCartPage(idProduct);

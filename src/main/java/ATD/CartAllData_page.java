@@ -13,6 +13,10 @@ public class CartAllData_page {
         return $(byCssSelector("[data-article_id='" + idProduct + "']"));
     }
 
+    SelenideElement imageProduct() {
+        return $x("//div[@class='image__product ']");
+    }
+
     public SelenideElement deliveryAddressInfo() {
         return $x(" //*[@id='cart-page']/div[2]/div[1]/div[1]/div[2]");
     }
