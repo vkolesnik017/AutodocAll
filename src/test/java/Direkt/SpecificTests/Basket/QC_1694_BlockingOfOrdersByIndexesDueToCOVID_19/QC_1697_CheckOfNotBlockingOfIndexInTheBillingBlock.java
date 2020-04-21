@@ -21,8 +21,7 @@ public class QC_1697_CheckOfNotBlockingOfIndexInTheBillingBlock {
     private String email = "qc_1697_autotestCOVID19@mailinator.com";
     private String password = "atdtest";
 
-    private String plzIT = "00017";
-    private String plzES = "10900";
+    private String plzIT = "40059";
 
     @BeforeClass
     void setUp() {
@@ -44,8 +43,7 @@ public class QC_1697_CheckOfNotBlockingOfIndexInTheBillingBlock {
                 .cartClick()
                 .nextButtonClick()
                 .signIn(email, password)
-                .chooseDeliveryCountryAndFillingPostalCode("IT", plzIT, "IT", "12345")
-                .chooseDeliveryCountryAndFillingPostalCode("ES", plzES, "ES", "12345");
+                .chooseDeliveryCountryAndFillingPostalCode("IT", plzIT, "IT", "12345");
     }
 
     @AfterMethod
