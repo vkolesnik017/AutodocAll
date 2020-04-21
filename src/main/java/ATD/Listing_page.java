@@ -187,11 +187,17 @@ public class Listing_page {
 
     SelenideElement langeFilterBlockInSidebar() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_203']"); }
 
+    SelenideElement langeSecondButtonInFixedSidebarFilter() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_203']//li[2]/label"); }
+
+    SelenideElement langeFirstButtonInFixedSidebarFilter() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_203']//li[1]/label"); }
+
     SelenideElement bySideFilterBlockInSidebar() { return $(".installation-side--sidebar-fixed"); }
 
     SelenideElement brandFilterBlockInSidebar() { return $(".branded-filter-sidebar"); }
 
     SelenideElement furPrnummerBlockInSidebar() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_1197']"); }
+
+    SelenideElement furPrnummerFirstButtonInSidebar() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_1197']//label"); }
 
     SelenideElement verschleisswarnkontaktBlockInSidebar() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_593']"); }
 
@@ -210,6 +216,10 @@ public class Listing_page {
 
     ElementsCollection activeRatingStarsInEveryProduct(int productPosition) {
         return $$x("(//div[@class='description'])[ " + productPosition + "]//div[@class='review-vote']//li[not(contains(@class,'empty'))]");
+    }
+
+    ElementsCollection threeRatingStarsInProduct() {
+        return $$x("//div[@class='description']//div[@class='review-vote']//span[@style='width:60%']");
     }
 
     SelenideElement activeRatingStarsInEveryProductPercent(int productPosition) {
@@ -616,6 +626,10 @@ public class Listing_page {
     SelenideElement moreCharacteristicButtonInFilter() { return $(".filter-disk__more"); }
 
     SelenideElement bySideFilterInSidebarFront() { return $(".installation-side--sidebar-fixed > div > .front-side"); }
+
+    SelenideElement bySideFilterInSidebarFrontSearchRoute() { return $(".installation-side--sidebar-fixed .front-side"); }
+
+    SelenideElement bySideFilterInSidebarBack() { return $(".installation-side--sidebar-fixed > div > .back-side"); }
 
     SelenideElement brandFilterButtonInSidebarName() { return $(".branded-filter-sidebar__list img"); }
 

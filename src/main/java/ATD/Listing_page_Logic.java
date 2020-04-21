@@ -748,6 +748,34 @@ public class Listing_page_Logic extends Listing_page {
         return this;
     }
 
+    @Step("Check Output With Filters By Side Fix In Sidebar. Listing_page")
+    public Listing_page_Logic checkOutputWithFiltersBySideFixInSidebarSearchRoute(String characteristic) {
+        scrollAndCheckFixFiltersInSidebar();
+        closePopupByClickOverlayOnListingSearch();
+        bySideFilterInSidebarFrontSearchRoute().click();
+        waitUntilPreloaderDisappear();
+        checkProductAttributeOnListingWithCarAndFilter(characteristic, einbauseiteProductAttributeGenericRoute(), einbauseiteProductAttributeTecdocRoute());
+        scrollAndCheckFixFiltersInSidebar();
+        closePopupByClickOverlayOnListingSearch();
+        bySideFilterInSidebarFrontSearchRoute().click();
+        waitUntilPreloaderDisappear();
+        checkUniqueBrandsOnListing(2, einbauseiteProductAttributeTecdocRoute());
+        return this;
+    }
+
+    @Step("Check Output With Filters By Side Fix In Sidebar Back Side Filter. Listing_page")
+    public Listing_page_Logic checkOutputWithFiltersBySideFixInSidebarBackSide(String characteristic) {
+        scrollAndCheckFixFiltersInSidebar();
+        bySideFilterInSidebarBack().click();
+        waitUntilPreloaderDisappear();
+        checkProductAttributeOnListingWithCarAndFilter(characteristic, einbauseiteProductAttributeGenericRoute(), einbauseiteProductAttributeTecdocRoute());
+        scrollAndCheckFixFiltersInSidebar();
+        bySideFilterInSidebarBack().click();
+        waitUntilPreloaderDisappear();
+        checkUniqueBrandsOnListing(2, einbauseiteProductAttributeTecdocRoute());
+        return this;
+    }
+
     @Step("Check Output With Filters By Brand Fix In Sidebar. Listing_page")
     public Listing_page_Logic checkOutputWithFiltersByBrandFixInSidebar(int brandPositionInAlt) {
         scrollAndCheckFixFiltersInSidebar();
@@ -771,6 +799,7 @@ public class Listing_page_Logic extends Listing_page {
         waitUntilPreloaderDisappear();
         getBrandFromTitle(brand, brandPositionInAlt, true, productTitleInListMode());
         scrollAndCheckFixFiltersInSidebar();
+        closePopupByClickOverlayOnListingSearch();
         brandFilterButtonInSidebarButton().click();
         waitUntilPreloaderDisappear();
         getBrandFromTitle(brand, brandPositionInAlt, false, productTitleInListMode());
@@ -792,7 +821,8 @@ public class Listing_page_Logic extends Listing_page {
         checkQuantityOfRatingStarsOnListingInPercent(ratingInProductBlock());
         scrollAndCheckFixFiltersInSidebar();
         ratingThreeStarsFilterCheckbox().click();
-        checkUniqueRatingOnListing(2);
+        waitUntilPreloaderDisappear();
+        checkTwoUniqueRatingOnListing();
         return this;
     }
 
@@ -801,6 +831,42 @@ public class Listing_page_Logic extends Listing_page {
         for (int i = 1; i < collectionOfRatingElements.size(); i++) {
             activeRatingStarsInEveryProductPercent(i).shouldHave(attribute("style", "width: 60%;"));
         }
+        return this;
+    }
+
+    @Step("Method checks two unique ratings on listing. Listing_page")
+    public Listing_page_Logic checkTwoUniqueRatingOnListing() {
+        Assert.assertTrue(threeRatingStarsInProduct().size() < ratingInProductBlock().size());
+        return this;
+    }
+
+    @Step("Check output with lange filter fix in sidebar. Listing_page")
+    public Listing_page_Logic checkLangeFilterFixInSidebar() {
+        scrollAndCheckFixFiltersInSidebar();
+        String langeValue = langeSecondButtonInFixedSidebarFilter().text();
+        langeSecondButtonInFixedSidebarFilter().hover().click();
+        waitUntilPreloaderDisappear();
+        checkProductAttributeOnListing(langeValue, langeProductAttributeTecdocRoute());
+        scrollAndCheckFixFiltersInSidebar();
+        langeFirstButtonInFixedSidebarFilter().hover().click();
+        waitUntilPreloaderDisappear();
+        checkUniqueBrandsOnListing(2, langeProductAttributeTecdocRoute());
+        return this;
+    }
+
+    @Step("Check output with lange filter fix in sidebar. Listing_page")
+    public Listing_page_Logic checkfurprNummerFilterFixInSidebar() {
+        scrollAndCheckFixFiltersInSidebar();
+        String nummerValue = furPrnummerFirstButtonInSidebar().text().split(" ")[0];
+        closePopupByClickOverlayOnListingSearch();
+        furPrnummerFirstButtonInSidebar().hover().click();
+        waitUntilPreloaderDisappear();
+        checkProductAttributeOnListing(nummerValue, furprnummerProductAttributeTecdocRoute());
+        scrollAndCheckFixFiltersInSidebar();
+        closePopupByClickOverlayOnListingSearch();
+        furPrnummerFirstButtonInSidebar().hover().click();
+        waitUntilPreloaderDisappear();
+        furprnummerProductAttributeTecdocRoute().shouldHaveSize(0);
         return this;
     }
 }
