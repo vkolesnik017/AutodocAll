@@ -222,6 +222,14 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return totalPrice;
     }
 
+    @Step("Get total price for EN shop. CartAllData_page")
+    public Double getTotalPriceAllDataPageForEnShop(){
+        String realPrice = totalOrderPrice().getText().replace("£ ", "");
+        realPrice = realPrice.replaceAll(",",".");
+        Double totalPrice = Double.parseDouble(realPrice);
+        return totalPrice;
+    }
+
 
     @Step("Transition to Product page. CartAllData_page")
     public Product_page_Logic transitionToProductPage() {

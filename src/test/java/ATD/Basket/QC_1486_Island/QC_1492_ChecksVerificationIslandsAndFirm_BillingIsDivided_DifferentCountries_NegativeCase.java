@@ -49,7 +49,7 @@ public class QC_1492_ChecksVerificationIslandsAndFirm_BillingIsDivided_Different
                 .cartClick().nextButtonClick()
                 .signIn(email, password)
                 .fillAllFieldsAndFirmForShipping("EN", "12345", "Gear4music Limited", "York")
-                .fillFieldTaxNumberShipping("552033282")
+                .fillFieldIdCompanyShipping("552033282")
                 .clickCheckboxBilling()
                 .chooseDeliveryCountryForBilling("FR")
                 .fillingPostalCodeFieldJSForBilling("20000")
