@@ -327,6 +327,14 @@ public class Listing_page_Logic extends Listing_page {
         return this;
     }
 
+    @Step("The method verifies that the product titles on listing contain the expected text on first two pages. Listing_page")
+    public Listing_page_Logic checksProductTitlesContainExpectedTextGoingTwoPagesPagination(String expectedText) {
+        checkProductTitleOnListing(expectedText, true, productTitleInListMode());
+        nextPageButton().click();
+        checkProductTitleOnListing(expectedText, true, productTitleInListMode());
+        return this;
+    }
+
     @Step("Checks important elements on TecDoc listing (Side filters block, Brand filter block, Pagination blocks). Listing_page")
     public Listing_page_Logic checksImportantElementsOnTecDocListing() {
         blockOfBySideFilters().shouldBe(visible);

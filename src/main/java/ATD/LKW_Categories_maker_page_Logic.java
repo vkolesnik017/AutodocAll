@@ -4,8 +4,7 @@ import io.qameta.allure.Step;
 import org.testng.Assert;
 
 import static com.codeborne.selenide.CollectionCondition.*;
-import static com.codeborne.selenide.Condition.exactText;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
@@ -86,10 +85,19 @@ public class LKW_Categories_maker_page_Logic extends LKW_Categories_maker_page {
         return this;
     }
 
-    @Step("Check current url with selecting car")
-    public  LKW_Categories_maker_page_Logic checkUrlWithSelectingCar(String currentUrl) {
+    @Step("Check current url with selecting car .LKW_Categories_maker_page")
+    public LKW_Categories_maker_page_Logic checkUrlWithSelectingCar(String currentUrl) {
         Assert.assertEquals(url(), currentUrl);
         return this;
+    }
+
+    @Step("Select truck in vertical selector .LKW_makers_page .LKW_Categories_maker_page")
+    public LKW_maker_car_list_Logic selectTruckInSelector(String markeOfTruck, String modelOfTruck, String motorOfTruck) {
+        markeOfVerticalTruckSelector().selectOptionByValue(markeOfTruck);
+        modelOfVerticalTruckSelector().selectOptionByValue(modelOfTruck);
+        motorOfVerticalTruckSelector().selectOptionByValue(motorOfTruck);
+        buttonSuchenOfVerticaltruckSelector().click();
+        return page(LKW_maker_car_list_Logic.class);
     }
 
 }

@@ -436,6 +436,16 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         brandsOfBrandBlock("cb-brand-4").shouldHave(attribute("class", "active slick-slide slick-current slick-active"));
         return this;
     }
+
+
+
+    @Step("check title of product with selected brand in TecDoc listing .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic checkTitleOfProductWithSelectedBrand(String titleOfBrand){
+       for (int i=0; i<titleOfProductInTecDocListingBlock().size();i++) {
+           titleOfProductInTecDocListingBlock().get(i).shouldHave(text(titleOfBrand));
+       }
+        return this;
+    }
 }
 
 
