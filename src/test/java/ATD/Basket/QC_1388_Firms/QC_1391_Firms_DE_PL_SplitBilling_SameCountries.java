@@ -50,7 +50,7 @@ public class QC_1391_Firms_DE_PL_SplitBilling_SameCountries {
                 .nextButtonClick()
                 .signIn(emailPL, password)
                 .fillAllFields(shop)
-                .fillAllFieldsAndFirmForBilling(shop,"12345","FB-MONT A. Fułek Spółka Komandytowa", "Kaliszc")
+                .fillAllFieldsAndFirmForBilling(shop,"12345","Kaliszc", "FB-MONT A. Fułek Spółka Komandytowa")
                 .nextBtnClick()
                 .chossePrzelewBankowy()
                 .nextBtnClick()
@@ -71,7 +71,7 @@ public class QC_1391_Firms_DE_PL_SplitBilling_SameCountries {
                 .getTotalPriceOrder();
         Assert.assertEquals(totalPricePL, totalPriceAWSOrderPL);
         order_aws.clickCustomerId()
-                .checkAbsenceBlockLogsCompanyNumber();
+                .checkAbsenceBlockLogsCompanyNumbers();
         switchTo().window(1);
         totalPriceInEmailPL = new Mailinator().openEmail("qc_1391_autotestPL@mailinator.com")
                 .openLetter(1)
@@ -104,7 +104,7 @@ public class QC_1391_Firms_DE_PL_SplitBilling_SameCountries {
                 .nextButtonClick()
                 .signIn(emailDE, password)
                 .fillAllFields(shop)
-                .fillAllFieldsAndFirmForBilling(shop,"12345","Autodoc GmbH", "Berlin")
+                .fillAllFieldsAndFirmForBilling(shop,"12345","Berlin", "Autodoc GmbH")
                 .nextBtnClick()
                 .chooseVorkasse()
                 .nextBtnClick()
@@ -125,7 +125,7 @@ public class QC_1391_Firms_DE_PL_SplitBilling_SameCountries {
                 .getTotalPriceOrder();
         Assert.assertEquals(totalPriceDE, totalPriceAWSOrderDE);
         order_aws.clickCustomerId()
-                .checkAbsenceBlockLogsCompanyNumber();
+                .checkAbsenceBlockLogsCompanyNumbers();
         switchTo().window(1);
         totalPriceInEmailDE = new Mailinator().openEmail("qc_1391_autotestDE@mailinator.com")
                 .openLetter(1)
@@ -177,7 +177,7 @@ public class QC_1391_Firms_DE_PL_SplitBilling_SameCountries {
                 .getTotalPriceOrder();
         Assert.assertEquals(totalPriceES, totalPriceAWSOrderES);
         order_aws.clickCustomerId()
-                .checkAbsenceBlockLogsCompanyNumber();
+                .checkAbsenceBlockLogsCompanyNumbers();
         switchTo().window(1);
         totalPriceInEmailES = new Mailinator().openEmail("qc_1391_autotestES@mailinator.com")
                 .openLetter(1)

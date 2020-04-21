@@ -51,8 +51,8 @@ public class CartAddress_page_Logic extends CartAddress_page {
     }
 
     @Step("Fill field tax number {taxNumber} for Shipping. CartAddress_page")
-    public CartAddress_page_Logic fillFieldTaxNumberShipping(String taxNumber) {
-        checkCorrectTextAndFillInput(taxNumberShipping(), taxNumber);
+    public CartAddress_page_Logic fillFieldIdCompanyShipping(String taxNumber) {
+        checkCorrectTextAndFillInput(idCompanyShipping(), taxNumber);
         return this;
     }
 
@@ -77,8 +77,8 @@ public class CartAddress_page_Logic extends CartAddress_page {
     }
 
     @Step("Fill field tax number {taxNumber} for Billing. CartAddress_page")
-    public CartAddress_page_Logic fillFieldTaxNumberBilling(String taxNumber) {
-        checkCorrectTextAndFillInput(taxNumberBilling(), taxNumber);
+    public CartAddress_page_Logic fillFieldIdCompanyBilling(String taxNumber) {
+        checkCorrectTextAndFillInput(idCompanyBilling(), taxNumber);
         return this;
     }
 
