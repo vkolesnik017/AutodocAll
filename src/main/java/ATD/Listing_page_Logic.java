@@ -553,6 +553,12 @@ public class Listing_page_Logic extends Listing_page {
         return textFromAttribute;
     }
 
+    @Step("Get attribute from element with split. Listing_page")
+    public String getAtributeFromElementLKWsearch(SelenideElement element, String attribute) {
+        String textFromAttribute = element.attr(attribute).split(" ")[2];
+        return textFromAttribute;
+    }
+
     @Step("Click filter button. Listing_page")
     public Listing_page_Logic clickFilterButton(SelenideElement filterButton) {
         filterButton.click();
