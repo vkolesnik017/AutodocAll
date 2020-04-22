@@ -54,16 +54,17 @@ public class QC_1573_FiltersSorting_TestProductOutputWithFixedFiltersInSidebar {
         openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "search21"));
         new Listing_page_Logic().checkOutputWithFiltersByBrandFixInSidebarRouteSearch(0)
                                 .checkOutputWithFiltersBySideFixInSidebarSearchRoute("Vorderachse")
-                                .checkfurprNummerFilterFixInSidebar();
+                                .checkfurprNummerFilterFixInSidebar()
+                                .checkVerschleisswarnkontaktFilterFixInSidebar();
     }
 
-    @Test
+    @Test(dataProvider = "routesLKW")
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks All Filters Are Fixed In Sidebar After Scroll Route LKW")
     public void testProductOutputWithFixedFiltersInSidebarRouteLKW(String route) {
         openPage(route);
-        new Listing_page_Logic().checkOutputWithFiltersByBrandFixInSidebar(2)
+        new Listing_page_Logic().checkOutputWithFiltersByBrandFixInSidebarLKW(0)
                                 .checkOutputWithFiltersBySideFixInSidebar("Vorderachse")
                                 .checkOutputWithFiltersByRatingFixInSidebar();
     }
@@ -76,7 +77,9 @@ public class QC_1573_FiltersSorting_TestProductOutputWithFixedFiltersInSidebar {
         openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_search"));
         new Listing_page_Logic().checkOutputWithFiltersByBrandFixInSidebar(2)
                                 .checkOutputWithFiltersBySideFixInSidebar("Vorderachse")
-                                .checkOutputWithFiltersByRatingFixInSidebar();
+                                .checkOutputWithFiltersByRatingFixInSidebar()
+                                .checkDurchmesserFilterFixInSidebar()
+                                .checkBremsscheibenartFilterFixInSidebar();
     }
 
     @AfterMethod

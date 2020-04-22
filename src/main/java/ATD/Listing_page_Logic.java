@@ -790,6 +790,20 @@ public class Listing_page_Logic extends Listing_page {
         return this;
     }
 
+    @Step("Check Output With Filters By Brand Fix In Sidebar LKW. Listing_page")
+    public Listing_page_Logic checkOutputWithFiltersByBrandFixInSidebarLKW(int brandPositionInAlt) {
+        scrollAndCheckFixFiltersInSidebar();
+        String brand = brandFilterSecondButtonInSidebarName().attr("alt");
+        brandFilterSecondButtonInSidebarButton().click();
+        waitUntilPreloaderDisappear();
+        getBrandFromTitle(brand, brandPositionInAlt, true, productTitleInListMode());
+        scrollAndCheckFixFiltersInSidebar();
+        brandFilterButtonInSidebarButton().click();
+        waitUntilPreloaderDisappear();
+        checkUniqueBrandsOnListing(2, productTitleInListMode());
+        return this;
+    }
+
     @Step("Check Output With Filters By Brand Fix In Sidebar Route Search. Listing_page")
     public Listing_page_Logic checkOutputWithFiltersByBrandFixInSidebarRouteSearch(int brandPositionInAlt) {
         scrollAndCheckFixFiltersInSidebar();
@@ -854,7 +868,7 @@ public class Listing_page_Logic extends Listing_page {
         return this;
     }
 
-    @Step("Check output with lange filter fix in sidebar. Listing_page")
+    @Step("Check output with furprNummer filter fix in sidebar. Listing_page")
     public Listing_page_Logic checkfurprNummerFilterFixInSidebar() {
         scrollAndCheckFixFiltersInSidebar();
         String nummerValue = furPrnummerFirstButtonInSidebar().text().split(" ")[0];
@@ -867,6 +881,49 @@ public class Listing_page_Logic extends Listing_page {
         furPrnummerFirstButtonInSidebar().hover().click();
         waitUntilPreloaderDisappear();
         furprnummerProductAttributeTecdocRoute().shouldHaveSize(0);
+        return this;
+    }
+
+    @Step("Check output with verschleisswarnkontakt filter fix in sidebar. Listing_page")
+    public Listing_page_Logic checkVerschleisswarnkontaktFilterFixInSidebar() {
+        scrollAndCheckFixFiltersInSidebar();
+        closePopupByClickOverlayOnListingSearch();
+        verschleisswarnkontaktFirstButtonInSidebar().hover().click();
+        waitUntilPreloaderDisappear();
+        checkProductAttributeOnListing("für Verschleißwarnanzeiger vorbereitet", verschleiswarnkontaktProductAttributeTecdocRouteLKW());
+        scrollAndCheckFixFiltersInSidebar();
+        closePopupByClickOverlayOnListingSearch();
+        verschleisswarnkontaktFirstButtonInSidebar().hover().click();
+        waitUntilPreloaderDisappear();
+        checkUniqueBrandsOnListing(2, verschleiswarnkontaktProductAttributeTecdocRouteLKW());
+        return this;
+    }
+
+    @Step("Check output with durchmesser filter fix in sidebar. Listing_page")
+    public Listing_page_Logic checkDurchmesserFilterFixInSidebar() {
+        scrollAndCheckFixFiltersInSidebar();
+        String durchmesserValue = durchmesserSecondButtonInSidebar().text();
+        durchmesserSecondButtonInSidebar().hover().click();
+        waitUntilPreloaderDisappear();
+        checkProductAttributeOnListing(durchmesserValue, durchmesserProductAttributeTecdocRoute());
+        scrollAndCheckFixFiltersInSidebar();
+        durchmesserFirstButtonInSidebar().hover().click();
+        waitUntilPreloaderDisappear();
+        checkUniqueBrandsOnListing(2, durchmesserProductAttributeTecdocRoute());
+        return this;
+    }
+
+    @Step("Check output with bremsscheibenart filter fix in sidebar. Listing_page")
+    public Listing_page_Logic checkBremsscheibenartFilterFixInSidebar() {
+        scrollAndCheckFixFiltersInSidebar();
+        String bremsscheibenartValue = bremsscheibenartFirstButtonInSidebar().text();
+        bremsscheibenartFirstButtonInSidebar().hover().click();
+        waitUntilPreloaderDisappear();
+        checkProductAttributeOnListing(bremsscheibenartValue, bremsscheibenartProductAttributeTecdocRoute());
+        scrollAndCheckFixFiltersInSidebar();
+        bremsscheibenartFirstButtonInSidebar().hover().click();
+        waitUntilPreloaderDisappear();
+        checkUniqueBrandsOnListing(2, bremsscheibenartProductAttributeTecdocRoute());
         return this;
     }
 }

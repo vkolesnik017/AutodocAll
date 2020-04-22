@@ -17,6 +17,7 @@
             <class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_125_FiltersSorting_TestFilterPosition"/>
             <class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_126_FiltersSorting_TestTwoFilterAttributesInBlock"/>
             <class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_1550_FiltersSorting_TestAllFiltersAreFixedInSidebarAfterScroll"/>
+            <class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_1573_FiltersSorting_TestProductOutputWithFixedFiltersInSidebar"/>
         </classes>
     </test>
 
