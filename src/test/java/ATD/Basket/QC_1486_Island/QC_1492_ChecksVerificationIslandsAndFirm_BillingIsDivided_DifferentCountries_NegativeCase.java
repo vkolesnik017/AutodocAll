@@ -42,13 +42,17 @@ public class QC_1492_ChecksVerificationIslandsAndFirm_BillingIsDivided_Different
     @Description(value = "Test checks verification of islands + Firm, Different Countries, billing is divided (Negative case)")
     public void testChecksVerificationIslandsAndFirmAndDifferentCountries(String route) throws Exception {
         String deliveryPriceToUKalldata = new Versand_static_page_Logic().deliveryPriceToUK();
-        String deliveryPriceToUKaws = new Versand_static_page_Logic().deliveryPriceToUKforAWS();
+        Double deliveryPriceToUKaws = new Versand_static_page_Logic().deliveryPriceToUKforAWS();
         openPage(route);
         clickOfBuyBtnForAllPages();
         totalPrice = new Search_page_Logic().closePopupOtherCategoryIfYes()
                 .cartClick().nextButtonClick()
                 .signIn(email, password)
+                .fillAllFieldsAndFirmForShipping("EN", "12345", "Gear4music Limited", "York")
+                .fillFieldIdCompanyShipping("552033282")
                 .clickCheckboxBilling()
+                .chooseDeliveryCountryForBilling("FR")
+                .fillingPostalCodeFieldJSForBilling("20000")
                 .nextBtnClick()
                 .checkPresenceOfPayPalMethod()
                 .chooseVorkasse().nextBtnClick()
@@ -63,9 +67,10 @@ public class QC_1492_ChecksVerificationIslandsAndFirm_BillingIsDivided_Different
                 .checkDeliveryPriceOrderAWS(deliveryPriceToUKaws)
                 .getTotalPriceOrder();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
-        order_aws.reSaveOrder()
+        totalPriceAWSOrder = order_aws.reSaveOrder()
                 .checkVatStatusInOrder("Ohne Mwst")
-                .checkDeliveryPriceOrderAWS(deliveryPriceToUKaws);
+                .checkDeliveryPriceOrderAWS(deliveryPriceToUKaws)
+                .getTotalPriceOrder();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
         totalPriceInEmail = new Mailinator().openEmail("qc_1492_autotestDE@mailinator.com")
                 .openLetter(1)

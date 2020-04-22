@@ -21,10 +21,9 @@ import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.switchTo;
 
+public class QC_1391_Firms_DE_PL_SplitBilling_SameCountries {
 
-public class QC_1389_Firms_DE_PL {
-
-    private String emailPL = "qc_1389_autotestPL@mailinator.com", orderNumberPL;
+    private String emailPL = "qc_1391_autotestPL@mailinator.com", orderNumberPL;
     private Double totalPricePL, totalPriceAWSOrderPL, totalPriceInEmailPL;
 
     @BeforeClass
@@ -40,9 +39,9 @@ public class QC_1389_Firms_DE_PL {
     @Test(dataProvider = "routePL")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks the successful placement of the order indicating the company for the PL shop. " +
-                         "Country of shop == country of delivery")
-    public void testSuccessfulPlacementOfOrder_Firm_PL(String routePL) {
+    @Description(value = "Test checks the successful placement of the order indicating the company, split billing " +
+            "and same countries for the PL shop. Country of shop == country of delivery")
+    public void testSuccessfulPlacementOfOrder_Firm_SameCountries_PL(String routePL) {
         openPage(routePL);
         String shop = getCurrentShopFromJSVarInHTML();
         totalPricePL = new Product_page_Logic().addProductToCart()
@@ -50,11 +49,13 @@ public class QC_1389_Firms_DE_PL {
                 .cartClick()
                 .nextButtonClick()
                 .signIn(emailPL, password)
-                .fillAllFieldsAndFirmForShipping(shop, "12345","FB-MONT A. Fułek Spółka Komandytowa", "Kalisz")
+                .fillAllFields(shop)
+                .fillAllFieldsAndFirmForBilling(shop,"12345","Kaliszc", "FB-MONT A. Fułek Spółka Komandytowa")
                 .nextBtnClick()
                 .chossePrzelewBankowy()
                 .nextBtnClick()
-                .checkTextInDeliveryAddressInfoBlock("Firma FB-MONT A. Fułek Spółka Komandytowa")
+                .checkTextInDeliveryAddressInfoBlock("autotest autotest")
+                .checkTextInPayersAddressInfoBlock("Firma FB-MONT A. Fułek Spółka Komandytowa")
                 .checkTextContainingVatPercentage("23% VAT")
                 .getTotalPriceAllDataPage();
         orderNumberPL = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
@@ -72,7 +73,7 @@ public class QC_1389_Firms_DE_PL {
         order_aws.clickCustomerId()
                 .checkAbsenceBlockLogsCompanyNumbers();
         switchTo().window(1);
-        totalPriceInEmailPL = new Mailinator().openEmail("qc_1389_autotestPL@mailinator.com")
+        totalPriceInEmailPL = new Mailinator().openEmail("qc_1391_autotestPL@mailinator.com")
                 .openLetter(1)
                 .checkTextContainingVatPercentageInEmail("w tym 23% VAT")
                 .checkFirstFirmNameInEmail("FB-MONT A. Fułek Spółka Komandytowa")
@@ -80,7 +81,8 @@ public class QC_1389_Firms_DE_PL {
         Assert.assertEquals(totalPricePL, totalPriceInEmailPL);
     }
 
-    private String emailDE = "qc_1389_autotestDE@mailinator.com", orderNumberDE;
+
+    private String emailDE = "qc_1391_autotestDE@mailinator.com", orderNumberDE;
     private Double totalPriceDE, totalPriceAWSOrderDE, totalPriceInEmailDE;
 
     @DataProvider(name = "routeDE", parallel = true)
@@ -91,21 +93,23 @@ public class QC_1389_Firms_DE_PL {
     @Test(dataProvider = "routeDE")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks the successful placement of the order indicating the company for the DE shop. " +
-                         "Country of shop == country of delivery")
-    public void testSuccessfulPlacementOfOrder_Firm_DE(String routeDE) {
-        openPage(routeDE);
+    @Description(value = "Test checks the successful placement of the order indicating the company, split billing " +
+            "and same countries for the DE shop. Country of shop == country of delivery")
+    public void testSuccessfulPlacementOfOrder_Firm_SameCountries_DE(String routePL) {
+        openPage(routePL);
         String shop = getCurrentShopFromJSVarInHTML();
         totalPriceDE = new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
                 .signIn(emailDE, password)
-                .fillAllFieldsAndFirmForShipping(shop, "12345","Autodoc GmbH", "Berlin")
+                .fillAllFields(shop)
+                .fillAllFieldsAndFirmForBilling(shop,"12345","Berlin", "Autodoc GmbH")
                 .nextBtnClick()
                 .chooseVorkasse()
                 .nextBtnClick()
-                .checkTextInDeliveryAddressInfoBlock("Firma Autodoc GmbH")
+                .checkTextInDeliveryAddressInfoBlock("autotest autotest")
+                .checkTextInPayersAddressInfoBlock("Firma Autodoc GmbH")
                 .checkTextContainingVatPercentage("inkl. 19% MwSt.")
                 .getTotalPriceAllDataPage();
         orderNumberDE = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
@@ -123,7 +127,7 @@ public class QC_1389_Firms_DE_PL {
         order_aws.clickCustomerId()
                 .checkAbsenceBlockLogsCompanyNumbers();
         switchTo().window(1);
-        totalPriceInEmailDE = new Mailinator().openEmail("qc_1389_autotestDE@mailinator.com")
+        totalPriceInEmailDE = new Mailinator().openEmail("qc_1391_autotestDE@mailinator.com")
                 .openLetter(1)
                 .checkTextContainingVatPercentageInEmail("inkl. 19% MwSt.")
                 .checkFirstFirmNameInEmail("Autodoc GmbH")
@@ -131,7 +135,7 @@ public class QC_1389_Firms_DE_PL {
         Assert.assertEquals(totalPriceDE, totalPriceInEmailDE);
     }
 
-    private String emailES = "qc_1389_autotestES@mailinator.com", orderNumberES;
+    private String emailES = "qc_1391_autotestES@mailinator.com", orderNumberES;
     private Double totalPriceES, totalPriceAWSOrderES, totalPriceInEmailES;
 
     @DataProvider(name = "routeES", parallel = true)
@@ -142,44 +146,46 @@ public class QC_1389_Firms_DE_PL {
     @Test(dataProvider = "routeES")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks the successful placement of the order indicating the company and " +
-                         "delivery to another country, from the ES shop. Country of shop != country of delivery")
-    public void testSuccessfulPlacementOfOrder_Firm_ES(String routeES) {
-    openPage(routeES);
-    totalPriceES = new Product_page_Logic().addProductToCart()
+    @Description(value = "Test checks successful order placement with indicating of company, split billing " +
+            " and some countries and shipping to another country for ES shop. Country of shop != country of delivery")
+    public void testSuccessfulPlacementOfOrder_Firm_SameCountries_ES(String routePL) {
+        openPage(routePL);
+        totalPriceES = new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
                 .signIn(emailES, password)
-                .fillAllFieldsAndFirmForShipping("DE", "12345", "Autodoc GmbH", "Berlin")
+                .fillAllFields("PL")
+                .fillAllFieldsAndFirmForBilling("PL","12345","Kaliszc", "FB-MONT A. Fułek Spółka Komandytowa")
                 .nextBtnClick()
                 .chooseVorkasse()
                 .nextBtnClick()
-                .checkTextInDeliveryAddressInfoBlock("Entidad Autodoc GmbH")
-                .checkTextContainingVatPercentage("IVA incluido 19%")
+                .checkTextInDeliveryAddressInfoBlock("autotest autotest")
+                .checkTextInPayersAddressInfoBlock("Entidad FB-MONT A. Fułek Spółka Komandytowa")
+                .checkTextContainingVatPercentage("IVA incluido 23%")
                 .getTotalPriceAllDataPage();
-    orderNumberES = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
-    Order_aws order_aws = new Order_aws(orderNumberES);
-    totalPriceAWSOrderES = order_aws.openOrderInAwsWithLogin()
-            .checkVatStatusInOrder("Mit MwSt 19%")
+        orderNumberES = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
+        Order_aws order_aws = new Order_aws(orderNumberES);
+        totalPriceAWSOrderES = order_aws.openOrderInAwsWithLogin()
+                .checkVatStatusInOrder("Mit MwSt 23%")
                 .checkFirmConfirmationStatus("Пров. вручную")
                 .getTotalPriceOrder();
         Assert.assertEquals(totalPriceES, totalPriceAWSOrderES);
         totalPriceAWSOrderES = order_aws.reSaveOrder()
-                .checkVatStatusInOrder("Mit MwSt 19%")
+                .checkVatStatusInOrder("Mit MwSt 23%")
                 .checkFirmConfirmationStatus("Пров. вручную")
                 .getTotalPriceOrder();
         Assert.assertEquals(totalPriceES, totalPriceAWSOrderES);
         order_aws.clickCustomerId()
                 .checkAbsenceBlockLogsCompanyNumbers();
-    switchTo().window(1);
-    totalPriceInEmailES = new Mailinator().openEmail("qc_1389_autotestES@mailinator.com")
+        switchTo().window(1);
+        totalPriceInEmailES = new Mailinator().openEmail("qc_1391_autotestES@mailinator.com")
                 .openLetter(1)
-                .checkTextContainingVatPercentageInEmail("IVA incluido 19%")
-                .checkFirstFirmNameInEmail("Autodoc GmbH")
+                .checkTextContainingVatPercentageInEmail("IVA incluido 23%")
+                .checkFirstFirmNameInEmail("FB-MONT A. Fułek Spółka Komandytowa")
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPriceES, totalPriceInEmailES);
-}
+    }
 
     @AfterMethod
     private void tearDown() {

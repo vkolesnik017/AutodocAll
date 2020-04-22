@@ -1,6 +1,6 @@
 package ATD.Search.QC_548_SearchTooltips;
 
-import ATD.Main_page_Logic;
+import ATD.Search_page_Logic;
 import ATD.SetUp;
 import AWS.CategoriesSynonyms_aws;
 import AWS.Login_aws;
@@ -13,6 +13,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
@@ -32,20 +33,17 @@ public class QC_554_GoToLisingFromSynonymTooltipInSearch {
         return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "maker_car_list6");
     }
 
-    @Test(dataProvider = "route", enabled = false) // false, details in comment QC_554
+    @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Evlentiev")
     @Description(value = "Going to listing through a generic synonym. All products have the expected generic in title")
     public void testGoToListingFromSynonymTooltipSearch(String route) {
+        new Login_aws().loginInAwsWithOpen();
         open(categoriesSynonymsAws.urlWithSynonymTurboAndShopDE);
-        new Login_aws().loginInAws();
-        String generic = categoriesSynonymsAws.getRandomGenericFromSearchBlock();
-        String synonymForGeneric = categoriesSynonymsAws.getSynonymByGenericInSearchBlock(generic);
-        System.out.println(generic + " >>> " + synonymForGeneric);
+        String genericName = categoriesSynonymsAws.getGenericNameFromAWS("2234");
+        ArrayList<String> synonymsFromAWS = categoriesSynonymsAws.getGenericSynonymsAWS("2234");
         open(route);
-        new Main_page_Logic().inputTextInSearchBar(synonymForGeneric)
-                .clickTooltipInSearchByExactText(synonymForGeneric)
-                .checksProductTitlesContainExpectedTextGoingAllPagination(generic);
+        new Search_page_Logic().checkGenericSynonyms(genericName, synonymsFromAWS);
     }
 
     @AfterMethod

@@ -41,6 +41,10 @@ public class CartAddress_page {
         return $(byId("form_lFirma"));
     }
 
+    SelenideElement idCompanyShipping() {
+        return $(byId("form_lUmsatzId"));
+    }
+
     SelenideElement postalCodeFieldForShipping() {
         return $(By.id("form_lPlz"));
     }
@@ -77,7 +81,7 @@ public class CartAddress_page {
         return $(byId("form_Firma"));
     }
 
-    SelenideElement firmID() {
+    SelenideElement idCompanyBilling() {
         return $(byId("form_rUmsatzId"));
     }
 

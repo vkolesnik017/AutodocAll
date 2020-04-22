@@ -33,13 +33,13 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return this;
     }
 
-    @Step("Fill all fields with default values and Firm {nameFirm} and City {city} for Shipping. CartAddress_page")
-    public CartAddress_page_Logic fillAllFieldsAndFirmForShipping(String shop, String nameFirm, String city) {
+    @Step("Fill in all fields with default values and also fill fields Shop {shop}, Index {index}, Firm {name Form} and City {city} for Shipping. CartAddress_page")
+    public CartAddress_page_Logic fillAllFieldsAndFirmForShipping(String shop, String index, String nameFirm, String city) {
         checkCorrectTextAndFillInput(vorname(), "autotest");
         checkCorrectTextAndFillInput(nameIn(), "autotest");
         checkCorrectTextAndFillInput(strasse(), "autotest");
         checkCorrectTextAndFillInput(deliveryHouse(), "autotest");
-        fillingPostalCodeFieldJSForShipping("12345");
+        fillingPostalCodeFieldJSForShipping(index);
         checkCorrectTextAndFillInput(ort(), city);
         chooseDeliveryCountryForShipping(shop);
         checkCorrectTextAndFillInput(telephon(), "200+002");
@@ -50,8 +50,14 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return this;
     }
 
-    @Step("Fill all fields with default values and Firm {nameFirm}, City {city} and ID firm {firmID} for Billing. CartAddress_page")
-    public CartAddress_page_Logic fillAllFieldsAndFirmForBilling(String shopBilling, String nameFirmBilling, String cityBilling, String firmID) {
+    @Step("Fill field tax number {taxNumber} for Shipping. CartAddress_page")
+    public CartAddress_page_Logic fillFieldIdCompanyShipping(String taxNumber) {
+        checkCorrectTextAndFillInput(idCompanyShipping(), taxNumber);
+        return this;
+    }
+
+    @Step("Fill in all fields with default values and also fill fields Shop {shop}, Index {index}, Firm {nameFirm}, City {city} for Billing. CartAddress_page")
+    public CartAddress_page_Logic fillAllFieldsAndFirmForBilling(String shopBilling, String indexBilling, String cityBilling, String nameFirmBilling) {
         if (!billingForm().isDisplayed()) {
             billingCheckBox().click();
         }
@@ -59,16 +65,20 @@ public class CartAddress_page_Logic extends CartAddress_page {
         checkCorrectTextAndFillInput(nameInBilling(), "autotest");
         checkCorrectTextAndFillInput(strasseBilling(), "autotest");
         checkCorrectTextAndFillInput(paymentHouseBilling(), "autotest");
-        fillingPostalCodeFieldJSForBilling("12345");
+        fillingPostalCodeFieldJSForBilling(indexBilling);
         checkCorrectTextAndFillInput(ortBilling(), cityBilling);
         chooseDeliveryCountryForBilling(shopBilling);
         checkCorrectTextAndFillInput(telephonBilling(), "200+002");
         if (!fieldFirmBilling().isDisplayed()) {
             checkboxFirmBilling().click();
         }
-            checkCorrectTextAndFillInput(fieldFirmBilling(), nameFirmBilling);
-            checkCorrectTextAndFillInput(firmID(), firmID);
+        checkCorrectTextAndFillInput(fieldFirmBilling(), nameFirmBilling);
+        return this;
+    }
 
+    @Step("Fill field tax number {taxNumber} for Billing. CartAddress_page")
+    public CartAddress_page_Logic fillFieldIdCompanyBilling(String taxNumber) {
+        checkCorrectTextAndFillInput(idCompanyBilling(), taxNumber);
         return this;
     }
 
@@ -187,7 +197,9 @@ public class CartAddress_page_Logic extends CartAddress_page {
 
     @Step("Click checkbox billing. CartAddress_page")
     public CartAddress_page_Logic clickCheckboxBilling() {
-        billingCheckBox().click();
+        if (!billingForm().isDisplayed()) {
+            billingCheckBox().click();
+        }
         return this;
     }
 
