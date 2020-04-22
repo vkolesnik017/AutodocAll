@@ -11,7 +11,11 @@ public class PageVAT_aws {
     public String pageVAT_aws = "https://aws.autodoc.de/prices/country/tva/edit";
 
     private SelenideElement vatForGB() {
-        return $x("//*[@data-letter='U']//td//*[@id='form_tva']");
+        return $x("//*[@data-letter='U']//td//*[@data-country='11']");
+    }
+
+    private SelenideElement vatForDE() {
+        return $x("//*[@data-letter='G']//td//*[@data-country='1']");
     }
 
     @Step("Get VAT for United Kingdom. PageVAT_aws")
@@ -20,5 +24,13 @@ public class PageVAT_aws {
         new Login_aws().loginInAws();
         String vatGB = vatForGB().getText();
         return vatGB;
+    }
+
+    @Step("Get VAT for Germany. PageVAT_aws")
+    public String getVatForDE() {
+        open(pageVAT_aws);
+        new Login_aws().loginInAws();
+        String vatDE = vatForDE().getText();
+        return vatDE;
     }
 }
