@@ -5,6 +5,8 @@ import org.testng.Assert;
 
 import java.sql.SQLException;
 import java.text.DecimalFormat;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static ATD.CommonMethods.*;
 import static com.codeborne.selenide.Condition.*;
@@ -239,7 +241,7 @@ public class CartAllData_page_Logic extends CartAllData_page {
 
 
     @Step("Get price including VAT For EN shop. CartAllData_page")
-    public double getPriceIncludingVatForEnShop(String vat) {
+    public Double getPriceIncludingVatForEnShop(String vat) {
         String regularProductPrice = productPrice().getText().replace("£ ", "");
         regularProductPrice = regularProductPrice.replaceAll(",",".");
         Double productPrice = Double.parseDouble(regularProductPrice);
@@ -247,8 +249,27 @@ public class CartAllData_page_Logic extends CartAllData_page {
         if (vat.equals("20")) {
             priseWithVat = (productPrice * 1.2);
         }
-        String formatPriseWithVat = new DecimalFormat("#.##").format(priseWithVat).replace(",",".");
-        Double doublePriseWithVat = Double.parseDouble(formatPriseWithVat);
+        Pattern pattern = Pattern.compile("\\d+\\.\\d{2}");
+        Matcher matcher = pattern.matcher(String.valueOf(priseWithVat));
+        String result = null;
+        if (matcher.find()) {
+            result = matcher.group(0);
+        }
+        return Double.valueOf((result));
+    }
+
+
+    @Step("Get price including VAT For DE shop. CartAllData_page")
+    public double getPriceIncludingVatForDeShop(String vat) {
+        String regularProductPrice = productPrice().getText().replace(" €", "");
+        regularProductPrice = regularProductPrice.replaceAll(",",".");
+        Double productPrice = Double.parseDouble(regularProductPrice);
+        double priseWithVat = 0;
+        if (vat.equals("19")) {
+            priseWithVat = (productPrice * 1.19);
+        }
+        String formattedDouble = new DecimalFormat(".##").format(priseWithVat).replace(",", ".");
+        Double doublePriseWithVat = Double.parseDouble(formattedDouble);
         return doublePriseWithVat;
     }
 

@@ -102,6 +102,13 @@ public class Order_aws {
         return this;
     }
 
+    public Order_aws openOrderInAwsWithoutLoginAndCheckTestIcon() {
+        open(url + orderNumber);
+        checkOrderHasTestPhone();
+        testIcon().shouldBe(visible);
+        return this;
+    }
+
     public Order_aws checkQuantityOfProduct(int expectedQuantity) {
         int quantityOfProduct = Integer.parseInt(productQuantity().getText());
         Assert.assertEquals(quantityOfProduct, expectedQuantity);

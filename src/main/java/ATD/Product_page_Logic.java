@@ -9,6 +9,7 @@ import io.qameta.allure.Step;
 import org.testng.Assert;
 
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -355,7 +356,7 @@ public class Product_page_Logic extends Product_page {
             getCurrencyAndVerify(priceWithoutDiscount(), "priceWithoutDiscount", shop, expectedCurrency);
         }
         getCurrencyAndVerify(productPrice(), "productPrice", shop, expectedCurrency);
-                 addProductToCart().closePopupOtherCategoryIfYes().cartIcon().hover();
+        addProductToCart().closePopupOtherCategoryIfYes().cartIcon().hover();
         getCurrencyAndVerify(firstProductPriceInPopupOfCart(), "productPriceInPopupOfCart", shop, expectedCurrency);
         getCurrencyAndVerify(totalPriceInPopupOfCart(), "totalPriceInPopupOfCart", shop, expectedCurrency);
         return this;
@@ -612,10 +613,19 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
+    @Step("Get product price for EN shop. Product_page")
+    public double getProductPriceForEnShop() {
+        String productPrice = productPrice().getText().replace("£ ", "");
+        productPrice = productPrice.replaceAll(",", ".");
+        Double doublePrise = Double.parseDouble(productPrice);
+        return doublePrise;
+    }
+
     @Step("Get product price. Product_page")
     public double getProductPrice() {
-        String productPrice = productPrice().getText().replace("£ ", "");
-        productPrice = productPrice.replaceAll(",",".");
-        return Double.parseDouble(productPrice);
+        String productPrice = productPrice().getText().replace(" €", "");
+        productPrice = productPrice.replaceAll(",", ".");
+        Double doublePrise = Double.parseDouble(productPrice);
+        return doublePrise;
     }
 }
