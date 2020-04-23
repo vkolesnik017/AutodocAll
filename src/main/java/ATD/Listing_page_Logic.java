@@ -915,7 +915,8 @@ public class Listing_page_Logic extends Listing_page {
         scrollAndCheckFixFiltersInSidebar();
         durchmesserFirstButtonInSidebar().hover().click();
         waitUntilPreloaderDisappear();
-        checkUniqueBrandsOnListing(2, durchmesserProductAttributeTecdocRoute());
+        durchmesserFirstButtonInSidebar().shouldNotBe(selected);
+        durchmesserSecondButtonInSidebar().shouldNotBe(selected);
         return this;
     }
 
