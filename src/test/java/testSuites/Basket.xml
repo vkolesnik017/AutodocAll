@@ -16,7 +16,7 @@
             </classes>
     </test>
 
-    <!--<test name="QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods">
+    <test name="QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods">
         <classes>
             <class name="ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1676_HeavyLoadsPositiveCase"/>
             <class name="ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1677_HeavyLoadsNegativeCase"/>
@@ -43,6 +43,6 @@
         <class name="ATD.Basket.QC_1486_Island.QC_1494_ChecksVerificationIslandsAndFirm_BillingIsUndivided_CorrectCompanyData"/>
         <class name="ATD.Basket.QC_1486_Island.QC_1495_ChecksVerificationIslandsAndFirm_BillingIsDivided_SameCountriesInShipping_IslandWithoutVat"/>
     </classes>
-    </test>-->
+    </test>
 
 </suite>
