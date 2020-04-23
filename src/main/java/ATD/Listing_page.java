@@ -187,19 +187,33 @@ public class Listing_page {
 
     SelenideElement langeFilterBlockInSidebar() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_203']"); }
 
+    SelenideElement langeSecondButtonInFixedSidebarFilter() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_203']//li[2]/label"); }
+
+    SelenideElement langeFirstButtonInFixedSidebarFilter() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_203']//li[1]/label"); }
+
     SelenideElement bySideFilterBlockInSidebar() { return $(".installation-side--sidebar-fixed"); }
 
     SelenideElement brandFilterBlockInSidebar() { return $(".branded-filter-sidebar"); }
 
     SelenideElement furPrnummerBlockInSidebar() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_1197']"); }
 
+    SelenideElement furPrnummerFirstButtonInSidebar() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_1197']//label"); }
+
     SelenideElement verschleisswarnkontaktBlockInSidebar() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_593']"); }
+
+    SelenideElement verschleisswarnkontaktFirstButtonInSidebar() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_593']//label"); }
 
     SelenideElement thirdProductOnListing() { return $(".list_products > li:nth-child(3)"); }
 
     SelenideElement durchmesserBlockInSidebar() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_200']"); }
 
+    SelenideElement durchmesserFirstButtonInSidebar() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_200']//li[1]/label"); }
+
+    SelenideElement durchmesserSecondButtonInSidebar() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_200']//li[2]/label"); }
+
     SelenideElement bremsscheibenartBlockInSidebar() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_232']"); }
+
+    SelenideElement bremsscheibenartFirstButtonInSidebar() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_232']//label"); }
 
     SelenideElement blackOverlay() { return $(".overlay.black"); }
 
@@ -210,6 +224,10 @@ public class Listing_page {
 
     ElementsCollection activeRatingStarsInEveryProduct(int productPosition) {
         return $$x("(//div[@class='description'])[ " + productPosition + "]//div[@class='review-vote']//li[not(contains(@class,'empty'))]");
+    }
+
+    ElementsCollection threeRatingStarsInProduct() {
+        return $$x("//div[@class='description']//div[@class='review-vote']//span[@style='width:60%']");
     }
 
     SelenideElement activeRatingStarsInEveryProductPercent(int productPosition) {
@@ -617,8 +635,16 @@ public class Listing_page {
 
     SelenideElement bySideFilterInSidebarFront() { return $(".installation-side--sidebar-fixed > div > .front-side"); }
 
+    SelenideElement bySideFilterInSidebarFrontSearchRoute() { return $(".installation-side--sidebar-fixed .front-side"); }
+
+    SelenideElement bySideFilterInSidebarBack() { return $(".installation-side--sidebar-fixed > div > .back-side"); }
+
     SelenideElement brandFilterButtonInSidebarName() { return $(".branded-filter-sidebar__list img"); }
 
     SelenideElement brandFilterButtonInSidebarButton() { return $(".branded-filter-sidebar__list label"); }
+
+    SelenideElement brandFilterSecondButtonInSidebarName() { return $x("//*[@class='branded-filter-sidebar']//li[2]//img"); }
+
+    SelenideElement brandFilterSecondButtonInSidebarButton() { return $x("//*[@class='branded-filter-sidebar']//li[2]//label"); }
 }
 
