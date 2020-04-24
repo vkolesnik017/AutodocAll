@@ -19,6 +19,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byCssSelector;
@@ -393,4 +395,16 @@ public class CommonMethods {
             }
         }
     }
+
+    @Step("Cut price to the first decimal place")
+    public static Double cutPriceToFirstDecimalPlace(Double price) {
+        Pattern pattern = Pattern.compile("\\d+\\.\\d{1}");
+        Matcher matcher = pattern.matcher(String.valueOf(price));
+        String result = null;
+        if (matcher.find()) {
+            result = matcher.group(0);
+        }
+        return Double.valueOf((result));
+    }
+
 }
