@@ -102,8 +102,34 @@ public class LKW_Category_page_Logic extends LKW_Category_page {
         markeOfVerticalTruckSelector().selectOptionByValue(markeOfTruck);
         modelOfVerticalTruckSelector().selectOptionByValue(modelOfTruck);
         motorOfVerticalTruckSelector().selectOptionByValue(motorOfTruck);
-                buttonSuchenOfVerticaltruckSelector().click();
-           return page(LKW_Category_car_list_page_Logic.class);
+        buttonSuchenOfVerticaltruckSelector().click();
+        return page(LKW_Category_car_list_page_Logic.class);
     }
 
+
+    @Step("availability of headline in TOP block brands .LKW_Category_page")
+    public LKW_Category_page_Logic availabilityOfHeadlineOfTopBlockBrands() {
+        headlineOfTopBlockBrands().shouldBe(visible).shouldHave(text("TOP"));
+        return this;
+    }
+
+
+    @Step("availability of  TOP  brands block .LKW_Category_page")
+    public LKW_Category_page_Logic availabilityOfTopBrandsBlock() {
+        topBrandsBlock().shouldBe(visible);
+        return this;
+    }
+
+
+    @Step("visibility of brands in TOP block .LKW_Category_page")
+    public LKW_Category_page_Logic visibilityOfBrandsInTopBlock() {
+        brandsInTopBrandsBlock().shouldHaveSize(6);
+        for (int i = 0; i < brandsInTopBrandsBlock().size(); i++) {
+            int imageWidth = imageOfBrandsInTopBrandsBlock().get(i).getSize().getWidth();
+            int imageHeight = imageOfBrandsInTopBrandsBlock().get(i).getSize().getHeight();
+            Assert.assertEquals(imageWidth,100);
+            Assert.assertEquals(imageHeight,100);
+        }
+        return this;
+    }
 }

@@ -89,6 +89,39 @@ class LKW_Categories_maker_page {
     }
 
     SelenideElement buttonSuchenOfVerticaltruckSelector() {
-        return $x("//a[@class='truck_submit js--lkw_selector-btn-submit']");}
+        return $x("//a[@class='truck_submit js--lkw_selector-btn-submit']");
+    }
 
+    SelenideElement headlineOfTopModelBlockFirstLevel() {
+        return $x("//div[@class='title_list no_border_top']/h3");
+    }
+
+    SelenideElement headlineOfTopModelBlockSecondLevel() {
+        return $x("//div[@class='title_list no_border_top']/b");
+    }
+
+    ElementsCollection modelsOfTruckBrandBlock() {
+        return $$x("//div[@class='lkw_top_models']//li");
+    }
+
+    SelenideElement modelListBlock() {
+        return $x("//div[@class='lkw_top_models']/ul");
+    }
+
+    ElementsCollection modelsInListBlock() {
+        return $$x("//div[@class='lkw_top_models']/ul//li");
+    }
+
+    ElementsCollection
+    imageOfModelsInListBlock() {
+        return $$x("//div[@class='lkw_top_models']/ul//li//img");
+    }
+
+    ElementsCollection titleOfModelsInListBlock() {
+        return $$x("//div[@class='lkw_top_models']/ul//li//span[2]");
+    }
+
+    ElementsCollection yearOfModelsInListBlock() {
+        return $$x("//div[@class='lkw_top_models']/ul//li/span");
+    }
 }
