@@ -7,6 +7,8 @@ import org.testng.Assert;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collections;
 
 import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.exactText;
@@ -98,4 +100,29 @@ public class Categories_page_Logic extends Categories_page {
       return this;
     }
 
+    @Step("Get All Categories From Catalog Dropdown Menu")
+    public ArrayList<Integer> getAllCategoriesFromCatalogDropdownMenu() throws Exception {
+        catalogInHeader().click();
+        Thread.sleep(5000);
+        System.out.println(secondListInDropdownCatalog().size());
+        System.out.println(firstListInDropdownCatalog().size());
+        ArrayList<Integer> listWithCategoriesInDropdownCatalog = new ArrayList<>();
+        for (int i = 0; i < firstListInDropdownCatalog().size(); i++) {
+            System.out.println(firstListInDropdownCatalog().get(i).attr("data-for-first-list"));
+            listWithCategoriesInDropdownCatalog.add(Integer.parseInt(firstListInDropdownCatalog().get(i).attr("data-for-first-list")));
+          }
+        for (int i = 0; i < secondListInDropdownCatalog().size(); i++) {
+          System.out.println(secondListInDropdownCatalog().get(i).attr("data-category-id"));
+          listWithCategoriesInDropdownCatalog.add(Integer.parseInt(secondListInDropdownCatalog().get(i).attr("data-category-id")));
+        }
+        Collections.sort(listWithCategoriesInDropdownCatalog);
+          System.out.println(listWithCategoriesInDropdownCatalog.size());
+          return listWithCategoriesInDropdownCatalog;
+    }
+
+    @Step("Compare categories from catalog and AWS")
+    public Categories_page_Logic compareCategories(ArrayList<Integer> listFromcatalog, ArrayList<Integer> listFromAWS) {
+      Assert.assertEquals(listFromcatalog, listFromAWS);
+      return this;
+    }
   }
