@@ -254,13 +254,7 @@ public class CartAllData_page_Logic extends CartAllData_page {
         if (vat.equals("20")) {
             priseWithVat = (productPrice * 1.2);
         }
-        Pattern pattern = Pattern.compile("\\d+\\.\\d{2}");
-        Matcher matcher = pattern.matcher(String.valueOf(priseWithVat));
-        String result = null;
-        if (matcher.find()) {
-            result = matcher.group(0);
-        }
-        return Double.valueOf((result));
+        return priseWithVat;
     }
 
     @Step("Get regular product price for DE shop. CartAllData_page")
@@ -278,9 +272,7 @@ public class CartAllData_page_Logic extends CartAllData_page {
         if (vat.equals("19")) {
             priseWithVat = (productPrice * 1.19);
         }
-        String formattedDouble = new DecimalFormat(".##").format(priseWithVat).replace(",", ".");
-        Double doublePriseWithVat = Double.parseDouble(formattedDouble);
-        return doublePriseWithVat;
+        return priseWithVat;
     }
 
     @Step(": on CartAllData_page")

@@ -11,7 +11,8 @@
                     <class name="ATD.Basket.QC_1388_Firms.QC_1389_Firms_DE_PL"/>
                     <class name="ATD.Basket.QC_1388_Firms.QC_1390_Firms_DE_PL_SplitBilling_DifferentCountries"/>
                     <class name="ATD.Basket.QC_1388_Firms.QC_1391_Firms_DE_PL_SplitBilling_SameCountries"/>
-                   <!-- <class name="ATD.Basket.QC_1388_Firms.QC_1392_SplitBilling_TwoFirms_SameCountries_PositiveCase"/>-->
+                    <class name="ATD.Basket.QC_1388_Firms.QC_1392_SplitBilling_TwoFirms_SameCountries_PositiveCase"/>
+                    <class name="ATD.Basket.QC_1388_Firms.QC_1393_SplitBilling_FirmAndPhysicalPerson_SameCountries_PositiveCase"/>
                     <class name="ATD.Basket.QC_1388_Firms.QC_1481_SplitBilling_FirmAndPhysicalPerson_SameCountries_NegativeCase"/>
             </classes>
     </test>
