@@ -49,8 +49,9 @@ public class QC_1390_Firms_DE_PL_SplitBilling_DifferentCountries {
                 .cartClick()
                 .nextButtonClick()
                 .signIn(emailPL, password)
-                .fillAllFieldsAndFirmForShipping(shop, "FB-MONT A. Fułek Spółka Komandytowa", "Kalisz")
-                .fillAllFieldsAndFirmForBilling("GB", "Gear4music Limited", "York", "552033282")
+                .fillAllFieldsAndFirmForShipping(shop,"12345","FB-MONT A. Fułek Spółka Komandytowa", "Kalisz")
+                .fillAllFieldsAndFirmForBilling("GB","12345","York", "Gear4music Limited")
+                .fillFieldIdCompanyBilling("552033282")
                 .nextBtnClick()
                 .chossePrzelewBankowy()
                 .nextBtnClick()
@@ -71,7 +72,7 @@ public class QC_1390_Firms_DE_PL_SplitBilling_DifferentCountries {
                 .getTotalPriceOrder();
         Assert.assertEquals(totalPricePL, totalPriceAWSOrderPL);
         order_aws.clickCustomerId()
-                .checkAbsenceBlockLogsCompanyNumber();
+                .checkAbsenceBlockLogsCompanyNumbers();
         switchTo().window(1);
         totalPriceInEmailPL = new Mailinator().openEmail("qc_1390_autotestPL@mailinator.com")
                 .openLetter(1)
@@ -103,8 +104,9 @@ public class QC_1390_Firms_DE_PL_SplitBilling_DifferentCountries {
                 .cartClick()
                 .nextButtonClick()
                 .signIn(emailDE, password)
-                .fillAllFieldsAndFirmForShipping(shop, "Autodoc GmbH", "Berlin")
-                .fillAllFieldsAndFirmForBilling("GB", "Gear4music Limited", "York", "552033282")
+                .fillAllFieldsAndFirmForShipping(shop, "12345","Autodoc GmbH", "Berlin")
+                .fillAllFieldsAndFirmForBilling("GB","12345","York", "Gear4music Limited")
+                .fillFieldIdCompanyBilling("552033282")
                 .nextBtnClick()
                 .chooseVorkasse()
                 .nextBtnClick()
@@ -125,7 +127,7 @@ public class QC_1390_Firms_DE_PL_SplitBilling_DifferentCountries {
                 .getTotalPriceOrder();
         Assert.assertEquals(totalPriceDE, totalPriceAWSOrderDE);
         order_aws.clickCustomerId()
-                .checkAbsenceBlockLogsCompanyNumber();
+                .checkAbsenceBlockLogsCompanyNumbers();
         switchTo().window(1);
         totalPriceInEmailDE = new Mailinator().openEmail("qc_1390_autotestDE@mailinator.com")
                 .openLetter(1)
@@ -156,8 +158,9 @@ public class QC_1390_Firms_DE_PL_SplitBilling_DifferentCountries {
                 .cartClick()
                 .nextButtonClick()
                 .signIn(emailES, password)
-                .fillAllFieldsAndFirmForShipping( "DE", "Autodoc GmbH", "Berlin")
-                .fillAllFieldsAndFirmForBilling("GB", "Gear4music Limited", "York", "552033282")
+                .fillAllFieldsAndFirmForShipping( "DE","12345","Autodoc GmbH", "Berlin")
+                .fillAllFieldsAndFirmForBilling("GB","12345","York", "Gear4music Limited")
+                .fillFieldIdCompanyBilling("552033282")
                 .nextBtnClick()
                 .chooseVorkasse()
                 .nextBtnClick()
@@ -178,7 +181,7 @@ public class QC_1390_Firms_DE_PL_SplitBilling_DifferentCountries {
                 .getTotalPriceOrder();
         Assert.assertEquals(totalPriceES, totalPriceAWSOrderES);
         order_aws.clickCustomerId()
-                .checkAbsenceBlockLogsCompanyNumber();
+                .checkAbsenceBlockLogsCompanyNumbers();
         switchTo().window(1);
         totalPriceInEmailES = new Mailinator().openEmail("qc_1390_autotestES@mailinator.com")
                 .openLetter(1)

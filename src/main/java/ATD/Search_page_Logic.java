@@ -4,6 +4,8 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.Step;
 
+import java.util.ArrayList;
+
 import static ATD.CommonMethods.*;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.exactValue;
@@ -23,6 +25,12 @@ public class Search_page_Logic extends Search_page {
     @Step(":on Search_page")
     public Search_page checksProductTitlesContainExpectedTextGoingAllPagination(String expectedText) {
         new Listing_page_Logic().checksProductTitlesContainExpectedTextGoingAllPagination(expectedText);
+        return this;
+    }
+
+    @Step(":on Search_page")
+    public Search_page checksProductTitlesContainExpectedTextGoingTwoPages(String expectedText) {
+        new Listing_page_Logic().checksProductTitlesContainExpectedTextGoingTwoPagesPagination(expectedText);
         return this;
     }
 
@@ -146,5 +154,14 @@ public class Search_page_Logic extends Search_page {
         return this;
     }
 
+    @Step("Check generic synonyms. Search_page")
+    public Search_page_Logic checkGenericSynonyms(String genericName, ArrayList<String> genericSynonyms) {
+        for (int i = 0; i < genericSynonyms.size(); i++ ) {
+            new Main_page_Logic().inputTextInSearchBar(genericSynonyms.get(i))
+                    .clickTooltipInSearchByExactText(genericSynonyms.get(i))
+                    .checksProductTitlesContainExpectedTextGoingTwoPages(genericName);
+        }
+        return this;
+    }
 }
 

@@ -50,7 +50,7 @@ public class QC_1389_Firms_DE_PL {
                 .cartClick()
                 .nextButtonClick()
                 .signIn(emailPL, password)
-                .fillAllFieldsAndFirmForShipping(shop, "FB-MONT A. Fułek Spółka Komandytowa", "Kalisz")
+                .fillAllFieldsAndFirmForShipping(shop, "12345","FB-MONT A. Fułek Spółka Komandytowa", "Kalisz")
                 .nextBtnClick()
                 .chossePrzelewBankowy()
                 .nextBtnClick()
@@ -70,7 +70,7 @@ public class QC_1389_Firms_DE_PL {
                 .getTotalPriceOrder();
         Assert.assertEquals(totalPricePL, totalPriceAWSOrderPL);
         order_aws.clickCustomerId()
-                .checkAbsenceBlockLogsCompanyNumber();
+                .checkAbsenceBlockLogsCompanyNumbers();
         switchTo().window(1);
         totalPriceInEmailPL = new Mailinator().openEmail("qc_1389_autotestPL@mailinator.com")
                 .openLetter(1)
@@ -101,7 +101,7 @@ public class QC_1389_Firms_DE_PL {
                 .cartClick()
                 .nextButtonClick()
                 .signIn(emailDE, password)
-                .fillAllFieldsAndFirmForShipping(shop, "Autodoc GmbH", "Berlin")
+                .fillAllFieldsAndFirmForShipping(shop, "12345","Autodoc GmbH", "Berlin")
                 .nextBtnClick()
                 .chooseVorkasse()
                 .nextBtnClick()
@@ -121,7 +121,7 @@ public class QC_1389_Firms_DE_PL {
                 .getTotalPriceOrder();
         Assert.assertEquals(totalPriceDE, totalPriceAWSOrderDE);
         order_aws.clickCustomerId()
-                .checkAbsenceBlockLogsCompanyNumber();
+                .checkAbsenceBlockLogsCompanyNumbers();
         switchTo().window(1);
         totalPriceInEmailDE = new Mailinator().openEmail("qc_1389_autotestDE@mailinator.com")
                 .openLetter(1)
@@ -151,7 +151,7 @@ public class QC_1389_Firms_DE_PL {
                 .cartClick()
                 .nextButtonClick()
                 .signIn(emailES, password)
-                .fillAllFieldsAndFirmForShipping("DE", "Autodoc GmbH", "Berlin")
+                .fillAllFieldsAndFirmForShipping("DE", "12345", "Autodoc GmbH", "Berlin")
                 .nextBtnClick()
                 .chooseVorkasse()
                 .nextBtnClick()
@@ -171,7 +171,7 @@ public class QC_1389_Firms_DE_PL {
                 .getTotalPriceOrder();
         Assert.assertEquals(totalPriceES, totalPriceAWSOrderES);
         order_aws.clickCustomerId()
-                .checkAbsenceBlockLogsCompanyNumber();
+                .checkAbsenceBlockLogsCompanyNumbers();
     switchTo().window(1);
     totalPriceInEmailES = new Mailinator().openEmail("qc_1389_autotestES@mailinator.com")
                 .openLetter(1)

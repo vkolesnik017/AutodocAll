@@ -19,6 +19,13 @@ public class CartPayments_page_Logic extends CartPayments_page{
         return this;
     }
 
+    // For EN shop
+    @Step("Click Unicredit Bank. CartPayments_page")
+    public CartPayments_page_Logic chosseUnicreditBank() {
+        unicreditBankBtn().click();
+        return this;
+    }
+
     @Step("Click PayPal. CartPayments_page")
     public CartPayments_page_Logic choosePayPal() {
         payPalBtn().click();

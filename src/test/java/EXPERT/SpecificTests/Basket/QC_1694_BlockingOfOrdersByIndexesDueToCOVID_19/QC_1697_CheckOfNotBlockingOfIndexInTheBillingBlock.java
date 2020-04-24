@@ -23,8 +23,7 @@ public class QC_1697_CheckOfNotBlockingOfIndexInTheBillingBlock {
     private String email = "qc_1697_autotestCOVID19@mailinator.com";
     private String password = "atdtest";
 
-    private String plzIT = "00017";
-    private String plzES = "10900";
+    private String plzIT = "40059";
 
     @BeforeClass
     void setUp() {
@@ -47,9 +46,6 @@ public class QC_1697_CheckOfNotBlockingOfIndexInTheBillingBlock {
                 .nextButtonClick()
                 .signIn(email, password)
                 .chooseDeliveryCountryAndFillingPostalCode("IT", "12345", "IT", plzIT)
-                .nextBtnClick()
-                .clickBtnReturnTheAddressPage()
-                .chooseDeliveryCountryAndFillingPostalCode("ES", "12345", "ES", plzES)
                 .nextBtnClick();
         checkingContainsUrl("https://www.rexbo.de/basket/payments");
     }

@@ -22,6 +22,11 @@ public class CartPayments_page {
         return $(byId("przelew_bankowy"));
     }
 
+    //for EN shop
+    SelenideElement unicreditBankBtn() {
+        return $(byId("unicredit_bank_en"));
+    }
+
     SelenideElement nextBtn() {
         return $(byCssSelector("[id='apply_payment']>a"));
     }

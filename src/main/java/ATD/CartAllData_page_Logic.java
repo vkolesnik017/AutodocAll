@@ -4,6 +4,9 @@ import io.qameta.allure.Step;
 import org.testng.Assert;
 
 import java.sql.SQLException;
+import java.text.DecimalFormat;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static ATD.CommonMethods.*;
 import static com.codeborne.selenide.Condition.*;
@@ -147,7 +150,7 @@ public class CartAllData_page_Logic extends CartAllData_page {
     }
 
     @Step("Check text {textWithAddressInfo} in delivery address info block. CartAllData_page")
-        public CartAllData_page_Logic checkTextInDeliveryAddressInfoBlock(String textWithAddressInfo) {
+    public CartAllData_page_Logic checkTextInDeliveryAddressInfoBlock(String textWithAddressInfo) {
         deliveryAddressInfo().shouldHave(text(textWithAddressInfo));
         return this;
     }
@@ -184,13 +187,13 @@ public class CartAllData_page_Logic extends CartAllData_page {
     }
 
     @Step("Checks for absence Safe Order block for Heavy Loads. CartAllData_page")
-    public CartAllData_page_Logic checkAbsenceSafeOrderBlock(){
+    public CartAllData_page_Logic checkAbsenceSafeOrderBlock() {
         safeOrderBlock().shouldNot(visible);
         return this;
     }
 
     @Step("Checks for presence Safe Order block for Heavy Loads. CartAllData_page")
-    public CartAllData_page_Logic checkPresenceSafeOrderBlock(){
+    public CartAllData_page_Logic checkPresenceSafeOrderBlock() {
         safeOrderBlock().shouldBe(visible);
         return this;
     }
@@ -214,21 +217,72 @@ public class CartAllData_page_Logic extends CartAllData_page {
     }
 
     @Step("Get total price of the CartAllData_page")
-    public Double getTotalPriceAllDataPage(){
+    public Double getTotalPriceAllDataPage() {
         String realPrice = totalOrderPrice().getText();
-        realPrice = realPrice.substring(0, realPrice.indexOf(" ")).replaceAll(",",".");
+        realPrice = realPrice.substring(0, realPrice.indexOf(" ")).replaceAll(",", ".");
         Double totalPrice = Double.parseDouble(realPrice);
         return totalPrice;
     }
 
+    @Step("Get total price for EN shop. CartAllData_page")
+    public Double getTotalPriceAllDataPageForEnShop() {
+        String realPrice = totalOrderPrice().getText().replace("£ ", "").replace("incl. 20% VAT", "");
+        realPrice = realPrice.replaceAll(",", ".");
+        Double totalPrice = Double.parseDouble(realPrice);
+        return totalPrice;
+    }
+
+
+    @Step("Transition to Product page. CartAllData_page")
+    public Product_page_Logic transitionToProductPage() {
+        imageProduct().click();
+        return page(Product_page_Logic.class);
+    }
+
+    @Step("Get regular product price for EN shop. CartAllData_page")
+    public Double getRegularProductPriceForEnShop() {
+        String regularProductPrice = productPrice().getText().replace("£ ", "");
+        regularProductPrice = regularProductPrice.replaceAll(",", ".");
+        Double productPrice = Double.parseDouble(regularProductPrice);
+        return productPrice;
+    }
+
+    @Step("Get price including VAT For EN shop. CartAllData_page")
+    public Double getPriceIncludingVatForEnShop(String vat) {
+        Double productPrice = getRegularProductPriceForEnShop();
+        double priseWithVat = 0;
+        if (vat.equals("20")) {
+            priseWithVat = (productPrice * 1.2);
+        }
+        return priseWithVat;
+    }
+
+    @Step("Get regular product price for DE shop. CartAllData_page")
+    public Double getRegularProductPriceForDeShop() {
+        String regularProductPrice = productPrice().getText().replace(" €", "");
+        regularProductPrice = regularProductPrice.replaceAll(",", ".");
+        Double productPrice = Double.parseDouble(regularProductPrice);
+        return productPrice;
+    }
+
+    @Step("Get price including VAT For DE shop. CartAllData_page")
+    public double getPriceIncludingVatForDeShop(String vat) {
+        Double productPrice = getRegularProductPriceForDeShop();
+        double priseWithVat = 0;
+        if (vat.equals("19")) {
+            priseWithVat = (productPrice * 1.19);
+        }
+        return priseWithVat;
+    }
+
     @Step(": on CartAllData_page")
-    public CartAllData_page_Logic checkAbsenceGoodInCartPage(String idProduct){
+    public CartAllData_page_Logic checkAbsenceGoodInCartPage(String idProduct) {
         new Cart_page_Logic().checkAbsenceGoodInCartPage(idProduct);
         return this;
     }
 
     @Step(": on CartAllData_page")
-    public CartAllData_page_Logic checkPresenceGoodInCardPage(String idProduct){
+    public CartAllData_page_Logic checkPresenceGoodInCardPage(String idProduct) {
         new Cart_page_Logic().checkPresenceGoodInCardPage(idProduct);
         return this;
     }
@@ -246,7 +300,7 @@ public class CartAllData_page_Logic extends CartAllData_page {
     }
 
     @Step("Deletes goods from cart when click on the (Artikel entfernen) button in the delivery pop-up. CartAllData_page")
-    public CartAllData_page_Logic deleteGoodsInDeliveryPopupCartAllDataPage(){
+    public CartAllData_page_Logic deleteGoodsInDeliveryPopupCartAllDataPage() {
         btnDeleteGoodsInDeliveryPopupAllDataPage().click();
         return this;
     }

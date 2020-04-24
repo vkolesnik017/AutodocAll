@@ -78,6 +78,10 @@ public class Order_aws {
         return $x("//select[@id='form_Order[isVat]']");
     }
 
+    SelenideElement sellingPrice() {
+        return $x("//a[@class='payment-in-order']//abbr");
+    }
+
     private Order_aws checkWhatOrderOpened() {
         // Иногда, если заказ в AWS открыть сразу быстро после создания, он может не успеть подгрузися в AWS
         if ($("body").text().equals("Not found")) {
@@ -99,6 +103,13 @@ public class Order_aws {
     public Order_aws openOrderInAwsWithoutLogin() {
         open(url + orderNumber);
         checkOrderHasTestPhone();
+        return this;
+    }
+
+    public Order_aws openOrderInAwsWithoutLoginAndCheckTestIcon() {
+        open(url + orderNumber);
+        checkOrderHasTestPhone();
+        testIcon().shouldBe(visible);
         return this;
     }
 
@@ -350,6 +361,12 @@ public class Order_aws {
         return this;
     }
 
+    @Step("Check delivery price in order AWS")
+    public Order_aws checkDeliveryPriceOrderAWS(Double expectedDeliveryPriceOrderAWS) {
+        deliveryDeliveryPriceOrderAWS().shouldHave(attribute("data-sum", String.valueOf(expectedDeliveryPriceOrderAWS)));
+        return this;
+    }
+
     @Step("Check Heavy Loads delivery price in order AWS")
     public Order_aws checkHeavyLoadsDeliveryPriceOrderAWS(String expectedHeavyLoadsDeliveryPriceOrderAWS) {
         heavyLoadsDeliveryPriceOrderAWS().shouldHave(attribute("data-sum", expectedHeavyLoadsDeliveryPriceOrderAWS));
@@ -362,6 +379,13 @@ public class Order_aws {
         String price = totalPriceOrder().getText();
         Double totalPriceOrder = Double.parseDouble(price);
         return totalPriceOrder;
+    }
+
+    @Step("Get selling price in Order AWS")
+    public Double getSellingPriceOrderAWS() {
+        String price = sellingPrice().getText();
+        Double sellingPriceOrder = Double.parseDouble(price);
+        return sellingPriceOrder;
     }
 
     @Step("Checks that Safe Order is turned off. Order_aws")
