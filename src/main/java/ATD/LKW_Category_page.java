@@ -1,8 +1,10 @@
 package ATD;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.$;
@@ -67,4 +69,12 @@ class LKW_Category_page {
     SelenideElement buttonSuchenOfVerticaltruckSelector() {
         return $x("//a[@class='truck_submit js--lkw_selector-btn-submit']");
     }
+
+    SelenideElement headlineOfTopBlockBrands() {return $x("//h3[@class='title_list no_border_top']");}
+
+    SelenideElement topBrandsBlock() {return  $x("//div[@class='kategorie_top_autos']");}
+
+    ElementsCollection brandsInTopBrandsBlock() {return  $$x("//div[@class='kategorie_top_autos']//li").filter(visible);}
+
+    ElementsCollection imageOfBrandsInTopBrandsBlock() {return  $$x("//div[@class='kategorie_top_autos']//li//img").filter(visible);}
 }

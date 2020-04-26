@@ -1,10 +1,10 @@
 package ATD;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selectors.byName;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.*;
 
 public class LKW_makers_page {
     SelenideElement iconOfTruckInHeadlineOfSelector() {return $x("//span[@class='car-icon']");}
@@ -26,4 +26,14 @@ public class LKW_makers_page {
     SelenideElement buttonSuchenOfVerticaltruckSelector() {
         return $x("//a[@class='truck_submit js--lkw_selector-btn-submit']");
     }
+
+    SelenideElement brandsListBlock() {return $x("//div[@class='cont']");}
+
+    ElementsCollection brandsInListBlock() {return $$x("//ul[contains(@class,'cars_list')]//li");}
+
+    ElementsCollection  imageOfBrandsList() {return $$x("//ul[contains(@class,'cars_list')]//li//img");}
+
+    ElementsCollection  titleOfBrandsList()  {return $$x("//span[@class='name']");}
+
+    ElementsCollection  modelCountsOfBrandsList()   {return $$x("//span[@class='count']");}
 }
