@@ -348,9 +348,6 @@ public class LKW_main_page_Logic extends LKW_main_page {
 
     @Step("select brand of car in vertical truck selector .LKW_main_page")
     public LKW_main_page_Logic selectBrandOfCarInVerticalSelector(String valueOfBrand) {
-       /* if (verticalSelectorInCloseCondition().isDisplayed()) {
-            verticalSelectorInCloseCondition().click();
-        }*/
         markeOfVerticalTruckSelector().shouldBe(visible).selectOptionByValue(valueOfBrand);
         markeOfVerticalTruckSelector().shouldHave(value(valueOfBrand));
         return this;
