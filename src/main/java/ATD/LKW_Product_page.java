@@ -77,4 +77,6 @@ public class LKW_Product_page {
         return $x("//div[@class='validation-tooltip popup-error-select']");
     }
 
-}
+    SelenideElement resetBtnInHorizontalCarSelector() {return $x("//div[@class='atd-carselector__reset js--btn_reset_form']");}
+
+  }

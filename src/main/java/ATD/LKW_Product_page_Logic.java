@@ -1,14 +1,16 @@
 package ATD;
 
 import AWS.ProductCard_aws;
-import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.Step;
-import org.openqa.selenium.By;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
+
+import javax.swing.*;
 
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverRunner.source;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class LKW_Product_page_Logic extends LKW_Product_page {
@@ -126,6 +128,25 @@ public class LKW_Product_page_Logic extends LKW_Product_page {
         modelInHorizontalTruckSelector().selectOptionByValue("714");
         searchBtnInHorizontalTruckSelector().click();
         tooltipForFieldInHorizontalCarSelector().shouldBe(visible);
+        return this;
+    }
+
+
+    @Step("select brand of car in horizontal truck selector .LKW_Product_page")
+    public LKW_Product_page_Logic selectBrandOfCarInHorizontalSelector(String valueOfBrand) {
+        markeInHorizontalTruckSelector().selectOptionByValue(valueOfBrand);
+        markeInHorizontalTruckSelector().shouldHave(value(valueOfBrand));
+        return this;
+    }
+
+    @Step("reset of car brand field in vertical selector .LKW_Product_page")
+    public LKW_Product_page_Logic resetOfCarBrandFieldInVerticalSelector() {
+        String currentUrl = url();
+        modelInHorizontalTruckSelector().shouldHave(value("0")).shouldBe(visible);
+        actions().moveToElement(resetBtnInHorizontalCarSelector(), 0, 10).click().build().perform();
+        markeInHorizontalTruckSelector().shouldBe(visible).shouldHave(value("0"));
+        modelInHorizontalTruckSelector().shouldHave(value("0"));
+        Assert.assertTrue(currentUrl.equals(url()));
         return this;
     }
 

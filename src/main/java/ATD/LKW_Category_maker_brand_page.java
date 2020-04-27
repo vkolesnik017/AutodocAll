@@ -5,6 +5,7 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -69,7 +70,9 @@ public class LKW_Category_maker_brand_page {
         return $x("//div[@class='sidebar']");
     }
 
-    SelenideElement markeInVerticalTruckSelector() { return $(byName("maker_id"));
+    SelenideElement markeInVerticalTruckSelector() { return $(byName("maker_id"));    }
 
-    }
+    SelenideElement resetBtnInVerticalCarSelector() {return $(byId("reset_selector_form"));}
+
+    SelenideElement headlineOfTopModelBlock() {return $x("//div[@class='title_list no_border_top']");}
 }
