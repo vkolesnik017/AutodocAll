@@ -239,7 +239,7 @@ public class Listing_page {
     }
 
     public SelenideElement ratingThreeStarsFilterCheckbox() {
-        return $x("//*[@class='sort-rating__form-list']/li[3]/label");
+        return $x("//*[@class='sort-rating__form-list']/li/label[@for='rating_3']");
     }
 
     public SelenideElement ratingFilterBlock() {

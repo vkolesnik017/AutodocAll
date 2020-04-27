@@ -36,4 +36,15 @@ public class Categories_page {
 
     SelenideElement catalogInHeader() { return $(".menu-catalog"); }
 
+    ElementsCollection categories() { return $$x("//*[@class='mCSB_container']//a[@data-for-first-list]"); }
+
+    ElementsCollection categoriesHasSubmenu() { return $$x("//*[@class='mCSB_container']//a[@class='item-has-submenu']"); }
+
+    ElementsCollection underCategories() { return $$x("//*[@class='mCSB_container']//li[@class='menu-category__second-item']"); }
+
+    ElementsCollection firstListInDropdownCatalog() { return $$x("//*[@class='menu-category__first-item']/a"); }
+
+    ElementsCollection secondListInDropdownCatalog() { return $$x("//*[@class='menu-category__second-item']/a"); }
+
+
 }

@@ -345,4 +345,54 @@ public class LKW_main_page_Logic extends LKW_main_page {
         titleOfTruckInHeadlineOfSelector().shouldHave(exactText(selectTruck));
         return this;
     }
+
+    @Step("select brand of car in vertical truck selector .LKW_main_page")
+    public LKW_main_page_Logic selectBrandOfCarInVerticalSelector(String valueOfBrand) {
+        if (verticalSelectorInCloseCondition().isDisplayed()) {
+            verticalSelectorInCloseCondition().click();
+        }
+        markeOfVerticalTruckSelector().shouldBe(visible).selectOptionByValue(valueOfBrand);
+        markeOfVerticalTruckSelector().shouldHave(value(valueOfBrand));
+        return this;
+    }
+
+
+    @Step("reset of car brand field in vertical selector .LKW_main_page")
+    public LKW_main_page_Logic resetOfCarBrandFieldInVerticalSelector() {
+        String currentUrl = url();
+        if (verticalTruckSelectorInOpenCondition().isDisplayed()) {
+            resetBtnInVerticalCarSelectorInOpenCondition().shouldBe(visible).click();
+            verticalSelectorInCloseCondition().click();
+            Assert.assertTrue(currentUrl.equals(url()));
+        } else {
+            resetBtnInVerticalCarSelector().shouldBe(visible).click();
+            checkDefaultValuesInVerticalSelector();
+            Assert.assertTrue(currentUrl.equals(url()));
+        }
+        return this;
+    }
+
+    @Step("checking default values in vertical selector .LKW_main_page")
+    public LKW_main_page_Logic checkDefaultValuesInVerticalSelector() {
+        markeOfVerticalTruckSelector().shouldHave(exactValue("0"));
+        modelOfVerticalTruckSelector().shouldHave(exactValue("0"));
+        return this;
+    }
+
+
+
+    @Step("availability of headline of brands model block .LKW_main_page")
+    public LKW_main_page_Logic  availabilityOfHeadlineOfBrandsModelBlock() {
+        truckBrandsBlock().shouldBe(visible);
+        headlineOfTruckBrandsBlock().shouldBe(visible);
+        return this;
+    }
+
+
+    @Step("availability of headline of brands model block .LKW_main_page")
+    public LKW_main_page_Logic  availabilityOfAutoPartsTopBrandsBlock() {
+        truckBrandsBlock().shouldBe(visible);
+        brandsOfTruckInTopBrandsBlock().shouldHaveSize(8);
+        return this;
+    }
 }

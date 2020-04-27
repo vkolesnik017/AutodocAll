@@ -100,4 +100,36 @@ public class LKW_Categories_maker_page_Logic extends LKW_Categories_maker_page {
         return page(LKW_maker_car_list_Logic.class);
     }
 
+    @Step("availability of headline in TOP model block .LKW_Categories_maker_page")
+    public LKW_Categories_maker_page_Logic availabilityOfHeadlineOfTopModelBlock(String partOfHeadline) {
+        headlineOfTopModelBlockFirstLevel().shouldBe(visible).shouldHave(text(partOfHeadline));
+        headlineOfTopModelBlockSecondLevel().shouldBe(visible).shouldHave(text(partOfHeadline));
+        return this;
+    }
+
+
+    @Step("check of model count in model block .LKW_Categories_maker_page")
+    public LKW_Categories_maker_page_Logic checkOfModelCountInModelBlock() {
+        int countFromHeadLine = Integer.parseInt(headlineOfTopModelBlockFirstLevel().getText().replaceAll("[^0-9]", ""));
+        Assert.assertEquals(modelsOfTruckBrandBlock().size(), countFromHeadLine);
+        return this;
+    }
+
+
+    @Step("availability of model list block .LKW_Categories_maker_page")
+    public LKW_Categories_maker_page_Logic availabilityOfModelListBlock() {
+        modelListBlock().shouldBe(visible);
+        return this;
+    }
+
+
+    @Step("check of elements in model list block .LKW_Categories_maker_page")
+    public LKW_Categories_maker_page_Logic checkOfElementsInModelListBlock() {
+        for (int i = 0; i < modelsInListBlock().size(); i++) {
+            imageOfModelsInListBlock().get(i).shouldBe(visible);
+            titleOfModelsInListBlock().get(i).shouldBe(visible);
+            yearOfModelsInListBlock().get(i).shouldBe(visible);
+        }
+        return this;
+    }
 }
