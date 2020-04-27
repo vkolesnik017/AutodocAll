@@ -120,7 +120,7 @@ public class LKW_Category_maker_Logic extends LKW_Category_maker {
     @Step("reset of car brand field in vertical selector .LKW_Category_maker")
     public LKW_Category_page_Logic resetOfVerticalSelector() {
         resetBtnInVerticalCarSelector().click();
-        resetBtnInVerticalCarSelector().shouldNotBe(visible);
+        headLine().should(disappear);
         return page(LKW_Category_page_Logic.class);
     }
 
@@ -134,13 +134,10 @@ public class LKW_Category_maker_Logic extends LKW_Category_maker {
     @Step("availability of  elements in Top brands block .LKW_Category_maker")
     public LKW_Category_maker_Logic availabilityOfElementsInTopBrandsBlock() {
         brandsInTopBrandsBlock().shouldHaveSize(6);
-
         for (int i = 0; i < brandsInTopBrandsBlock().size(); i++) {
             imageOfBrandsInTopBrandsBlock().get(i).shouldBe(visible);
             titleOfBrandsInTopBrandsBlock().get(i).shouldBe(visible);
             yearOfBrandsInTopBrandsBlock().get(i).shouldBe(visible);
-
-
         }
         return this;
     }

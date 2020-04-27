@@ -438,13 +438,39 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
     }
 
 
-
     @Step("check title of product with selected brand in TecDoc listing .LKW_Category_car_list_page")
-    public LKW_Category_car_list_page_Logic checkTitleOfProductWithSelectedBrand(String titleOfBrand){
-       for (int i=0; i<titleOfProductInTecDocListingBlock().size();i++) {
-           titleOfProductInTecDocListingBlock().get(i).shouldHave(text(titleOfBrand));
-       }
+    public LKW_Category_car_list_page_Logic checkTitleOfProductWithSelectedBrand(String titleOfBrand) {
+        for (int i = 0; i < titleOfProductInTecDocListingBlock().size(); i++) {
+            titleOfProductInTecDocListingBlock().get(i).shouldHave(text(titleOfBrand));
+        }
         return this;
+    }
+
+    @Step("select brand of car in vertical truck selector .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic selectBrandOfCarInVerticalSelector(String valueOfBrand) {
+        markeInVerticalTruckSelector().shouldBe(visible).selectOptionByValue(valueOfBrand);
+        markeInVerticalTruckSelector().shouldHave(value(valueOfBrand));
+        return this;
+    }
+
+
+    @Step("open vertical truck selector  .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic openVerticalSelector() {
+        verticalSelectorInCloseCondition().click();
+        return this;
+    }
+
+    @Step("reset of car brand field in vertical selector .LKW_Category_car_list_page")
+    public LKW_Categories_page_Logic resetOfVerticalSelector() {
+        resetBtnInVerticalCarSelector().click();
+        return page(LKW_Categories_page_Logic.class);
+    }
+
+
+    @Step("reset of car brand field in vertical selector .LKW_Category_car_list_page")
+    public LKW_Category_page_Logic resetOfOpenVerticalSelector() {
+        resetBtnInVerticalCarSelector().click();
+        return page(LKW_Category_page_Logic.class);
     }
 }
 

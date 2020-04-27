@@ -16,6 +16,7 @@ public class LKW_Category_page_Logic extends LKW_Category_page {
     @Step("check successfully child category page loading .LKW_Category_page ")
     public LKW_Category_page_Logic checkSuccessfullyChildCategoryPageLoading() {
         imageOfChildCategory().shouldBe(visible);
+        headlineOfTopBlockBrands().shouldBe(visible);
         Assert.assertEquals(url(), "https://lkwteile.autodoc.de/ersatzteile/olfilter-200157");
         return this;
     }
@@ -127,8 +128,8 @@ public class LKW_Category_page_Logic extends LKW_Category_page {
         for (int i = 0; i < brandsInTopBrandsBlock().size(); i++) {
             int imageWidth = imageOfBrandsInTopBrandsBlock().get(i).getSize().getWidth();
             int imageHeight = imageOfBrandsInTopBrandsBlock().get(i).getSize().getHeight();
-            Assert.assertEquals(imageWidth,100);
-            Assert.assertEquals(imageHeight,100);
+            Assert.assertEquals(imageWidth, 100);
+            Assert.assertEquals(imageHeight, 100);
         }
         return this;
     }
