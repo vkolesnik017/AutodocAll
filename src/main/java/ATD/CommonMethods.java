@@ -289,7 +289,7 @@ public class CommonMethods {
     @Step("Method for checks elements in mini card in block of top products")
     public void checksPresenceElementsInMiniCardInBlocksOfTopProducts() {
 
-        By sticker = (byCssSelector(".product-list__item__promotion"));
+        By sticker = (byCssSelector(".discount"));
         By oldPrice = (byCssSelector(".product-list__item__old-price"));
         By image = (byCssSelector(".ovVisLi_image"));
         By productName = (byCssSelector(".product-list__item__title"));
@@ -302,7 +302,6 @@ public class CommonMethods {
         ElementsCollection miniCardsOfProducts = miniCardsOfProducts().filterBy(visible).shouldHaveSize(4);
         for (SelenideElement miniCardFirsSlide : miniCardsOfProducts) {
             miniCardFirsSlide.$(sticker).should(visible);
-            miniCardFirsSlide.$(oldPrice).should(visible);
             miniCardFirsSlide.$(image).should(visible);
             miniCardFirsSlide.$(productName).should(visible);
             miniCardFirsSlide.$(articleNumber).should(visible);
@@ -313,7 +312,6 @@ public class CommonMethods {
         sleep(2000);
         for (SelenideElement miniCardSecondSlide : miniCardsOfProducts) {
             miniCardSecondSlide.$(sticker).should(visible);
-            miniCardSecondSlide.$(oldPrice).should(visible);
             miniCardSecondSlide.$(image).should(visible);
             miniCardSecondSlide.$(productName).should(visible);
             miniCardSecondSlide.$(articleNumber).should(visible);
