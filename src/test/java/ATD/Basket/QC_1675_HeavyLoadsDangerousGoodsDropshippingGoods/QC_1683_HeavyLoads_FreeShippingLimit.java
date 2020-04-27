@@ -41,8 +41,8 @@ public class QC_1683_HeavyLoads_FreeShippingLimit {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
         product_page_logic.addProductToCart();
-        openPage("https://autodoc.de/" + new DataBase().getRouteByRouteName("DE", "product21"));
-        totalPrice = product_page_logic.checkingCounterIncrease(2)
+        openPage("https://autodoc.de/" + new DataBase().getRouteByRouteName("DE", "product26"));
+        totalPrice = product_page_logic.checkingCounterIncrease(3)
                 .addProductToCart().closePopupOtherCategoryIfYes().cartClick()
                 .nextButtonClick()
                 .signIn(email, password)
@@ -51,11 +51,11 @@ public class QC_1683_HeavyLoads_FreeShippingLimit {
                 .checkPresenceFreeDeliveryPriceCartAllDataPage()
                 .checkPresenceHeavyLoadsDeliveryPriceAllDataPage()
                 .checkPresenceSafeOrderBlock()
-                .checkingCounterDecrease(1, "7712294", "7712294")
+                .checkingCounterDecrease(3, "13811516", "13811516")
                 .checkAbsenceFreeDeliveryPriceCartAllDataPage()
                 .checkRegularDeliveryPriceAllData("6,95")
                 .checkHeavyLoadsDeliveryPriceAllData("10,00")
-                .checkingCounterIncrease(1, "7712294", "7712294")
+                .checkingCounterIncrease(3, "13811516", "13811516")
                 .checkPresenceFreeDeliveryPriceCartAllDataPage()
                 .checkHeavyLoadsDeliveryPriceAllData("10,00")
                 .clickSafeOrderCheckbox()
