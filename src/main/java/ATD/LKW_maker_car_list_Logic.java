@@ -157,10 +157,10 @@ public class LKW_maker_car_list_Logic extends LKW_maker_car_list {
 
     @Step("select brand of car in vertical truck selector .LKW_maker_car_list")
     public LKW_maker_car_list_Logic selectBrandOfCarInVerticalSelector(String valueOfBrand) {
-
+/*
         if (verticalTruckSelectorInCloseState().isDisplayed()) {
             verticalTruckSelectorInCloseState().click();
-        }
+        }*/
         markeInVerticalCarSelector().shouldBe(visible).selectOptionByValue(valueOfBrand);
         markeInVerticalCarSelector().shouldHave(value(valueOfBrand));
         return this;
