@@ -290,7 +290,6 @@ public class CommonMethods {
     public void checksPresenceElementsInMiniCardInBlocksOfTopProducts() {
 
         By sticker = (byCssSelector(".discount"));
-        By oldPrice = (byCssSelector(".product-list__item__old-price"));
         By image = (byCssSelector(".ovVisLi_image"));
         By productName = (byCssSelector(".product-list__item__title"));
         By articleNumber = (byCssSelector(".product-list__item__nummer"));
@@ -361,6 +360,7 @@ public class CommonMethods {
         int startValue = Integer.parseInt(counterValue.getValue());
         for (int i = 1; i <= increaseCount; i++) {
             counterPlus.click();
+            sleep(2000);
             int valueAfterIncrease = startValue + i;
             counterValue.shouldHave(value(String.valueOf(valueAfterIncrease)));
         }
@@ -373,6 +373,7 @@ public class CommonMethods {
         int startValue = Integer.parseInt(counterValue.getValue());
         for (int i = 1; i <= decreaseCount; i++) {
             counterMinus.click();
+            sleep(2000);
             int valueAfterDecrease = startValue - i;
             counterValue.shouldHave(value(String.valueOf(valueAfterDecrease)));
         }

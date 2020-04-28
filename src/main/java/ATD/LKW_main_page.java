@@ -220,7 +220,13 @@ public class LKW_main_page {
         return $x("//h2[@class='truck-home-cars__title']");
     }
 
-    ElementsCollection brandsOfTruckInTopBrandsBlock() {return $$x("//ul[@class='truck-home-cars__list']//li").filter(visible);}
+    ElementsCollection brandsOfTruckInTopBrandsBlock() {
+        return $$x("//ul[@class='truck-home-cars__list']//li").filter(visible);
+    }
+
+    SelenideElement arrowForMarkeFiled() {
+        return $x("//div[@class='block-select-car__select filled js--lkw_selector-select_basic active']//span[@class='arrow']");
+    }
 }
 
 

@@ -124,4 +124,8 @@ class LKW_Categories_maker_page {
     ElementsCollection yearOfModelsInListBlock() {
         return $$x("//div[@class='lkw_top_models']/ul//li/span");
     }
+
+    SelenideElement markeInVerticalCarSelector() {return $(byName("maker_id"));}
+
+    SelenideElement resetBtnInVerticalCarSelector() {return $x("//a[@class='block-select-car__update hidden js--btn_reset_form']");}
 }
