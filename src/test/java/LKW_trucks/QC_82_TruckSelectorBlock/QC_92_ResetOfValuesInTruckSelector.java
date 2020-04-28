@@ -54,7 +54,6 @@ public class QC_92_ResetOfValuesInTruckSelector {
                 .resetOfCarBrandFieldInVerticalSelector()
                 .checkSuccessfullyLKWCategoriesPageLoading();
     }
-
     @DataProvider(name = "routesProduct", parallel = true)
     Object[] dataProviderProduct() throws SQLException {
         return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_product3");
