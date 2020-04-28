@@ -100,29 +100,37 @@ public class Categories_page_Logic extends Categories_page {
       return this;
     }
 
-    @Step("Get All Categories From Catalog Dropdown Menu")
-    public ArrayList<Integer> getAllCategoriesFromCatalogDropdownMenu() throws Exception {
+    @Step("Get All Child Categories From Catalog Dropdown Menu")
+    public ArrayList<String> getAllChildCategoriesFromCatalogDropdownMenu() throws Exception {
         catalogInHeader().click();
         Thread.sleep(5000);
-        System.out.println(secondListInDropdownCatalog().size());
-        System.out.println(firstListInDropdownCatalog().size());
-        ArrayList<Integer> listWithCategoriesInDropdownCatalog = new ArrayList<>();
-        for (int i = 0; i < firstListInDropdownCatalog().size(); i++) {
-            System.out.println(firstListInDropdownCatalog().get(i).attr("data-for-first-list"));
-            listWithCategoriesInDropdownCatalog.add(Integer.parseInt(firstListInDropdownCatalog().get(i).attr("data-for-first-list")));
+        ArrayList<String> listWithCategoriesInDropdownCatalog = new ArrayList<>();
+          for (int i = 0; i < secondListInDropdownCatalog().size(); i++) {
+            listWithCategoriesInDropdownCatalog.add(secondListInDropdownCatalog().get(i).attr("data-category-id"));
           }
-        for (int i = 0; i < secondListInDropdownCatalog().size(); i++) {
-          System.out.println(secondListInDropdownCatalog().get(i).attr("data-category-id"));
-          listWithCategoriesInDropdownCatalog.add(Integer.parseInt(secondListInDropdownCatalog().get(i).attr("data-category-id")));
-        }
         Collections.sort(listWithCategoriesInDropdownCatalog);
-          System.out.println(listWithCategoriesInDropdownCatalog.size());
-          return listWithCategoriesInDropdownCatalog;
+        System.out.println(listWithCategoriesInDropdownCatalog.size());
+        return listWithCategoriesInDropdownCatalog;
+    }
+
+    @Step("Get All Parent Categories From Catalog Dropdown Menu")
+    public ArrayList<String> getAllParentCategoriesFromCatalogDropdownMenu() throws Exception {
+      ArrayList<String> listWithCategoriesInDropdownCatalog = new ArrayList<>();
+        for (int i = 0; i < firstListInDropdownCatalog().size(); i++) {
+          listWithCategoriesInDropdownCatalog.add(firstListInDropdownCatalog().get(i).attr("data-for-first-list"));
+        }
+      Collections.sort(listWithCategoriesInDropdownCatalog);
+        String tyresParentId = "23208";
+        String engineOilParentId = "12094";
+        listWithCategoriesInDropdownCatalog.remove(tyresParentId);
+        listWithCategoriesInDropdownCatalog.remove(engineOilParentId);
+      System.out.println(listWithCategoriesInDropdownCatalog.size());
+      return listWithCategoriesInDropdownCatalog;
     }
 
     @Step("Compare categories from catalog and AWS")
-    public Categories_page_Logic compareCategories(ArrayList<Integer> listFromcatalog, ArrayList<Integer> listFromAWS) {
-      Assert.assertEquals(listFromcatalog, listFromAWS);
+    public Categories_page_Logic compareCategoriesFromCatalogAndAWS(ArrayList<String> listFromCatalog, ArrayList<String> listFromAWS) {
+      Assert.assertEquals(listFromCatalog, listFromAWS);
       return this;
     }
   }
