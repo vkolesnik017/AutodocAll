@@ -144,10 +144,9 @@ public class LKW_Product_page_Logic extends LKW_Product_page {
         String currentUrl = url();
         modelInHorizontalTruckSelector().shouldHave(value("0")).shouldBe(visible);
         actions().moveToElement(resetBtnInHorizontalCarSelector(), 0, 10).click().build().perform();
-        activeMarkeField().should(appear);
+        Assert.assertTrue(currentUrl.equals(url()));
         markeInHorizontalTruckSelector().shouldBe(visible).shouldHave(value("0"));
         modelInHorizontalTruckSelector().shouldHave(value("0"));
-        Assert.assertTrue(currentUrl.equals(url()));
         return this;
     }
 
