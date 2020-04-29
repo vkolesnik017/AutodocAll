@@ -133,4 +133,20 @@ public class Categories_page_Logic extends Categories_page {
       Assert.assertEquals(listFromCatalog, listFromAWS);
       return this;
     }
+
+  @Step("Get All Parent Categories From Tecdoc Catalog")
+  public ArrayList<String> getAllParentCategoriesFromTecdocCatalog() throws Exception {
+    ArrayList<String> listWithCategoriesInTecdocCatalog = new ArrayList<>();
+    for (int i = 0; i < parentCategoriesTecdocName().size(); i++) {
+      listWithCategoriesInTecdocCatalog.add(parentCategoriesTecdocName().get(i).text());
+    }
+    String tyresParentName = "Reifen";
+    listWithCategoriesInTecdocCatalog.remove(tyresParentName);
+    System.out.println(listWithCategoriesInTecdocCatalog.size());
+    for (int i = 0; i < listWithCategoriesInTecdocCatalog.size(); i++) {
+      System.out.println(listWithCategoriesInTecdocCatalog.get(i));
+    }
+    return listWithCategoriesInTecdocCatalog;
+  }
+
   }
