@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="QC_1695_CheckAddressBlockingOnAddressPage" parallel="tests" thread-count="3">
 
-    <listeners>
+   <!-- <listeners>
         <listener class-name="ATD.ProjectListener"/>
     </listeners>
 
@@ -88,5 +88,5 @@
         <classes>
             <class name="XXL.SpecificTests.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1695_CheckAddressBlockingOnAddressPage"/>
         </classes>
-    </test>
+    </test>-->
 </suite>

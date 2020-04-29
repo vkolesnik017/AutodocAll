@@ -3,7 +3,7 @@
 <suite name="QC_1698_CheckOfBlockingForSplitBillingAndShipping" parallel="methods" thread-count="2"
        data-provider-thread-count="3">
 
-    <listeners>
+    <!--<listeners>
         <listener class-name="ATD.ProjectListener"/>
     </listeners>
 
@@ -73,11 +73,11 @@
         </classes>
     </test>
 
-    <!--<test name="TOP_QC_1696_CheckErrorTranslateOnAddressPage">-->
-    <!--<classes>-->
-    <!--<class name="TOP.Basket.SpecificTests.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1698_CheckOfBlockingForSplitBillingAndShipping"/>-->
-    <!--</classes>-->
-    <!--</test>-->
+    &lt;!&ndash;<test name="TOP_QC_1696_CheckErrorTranslateOnAddressPage">&ndash;&gt;
+    &lt;!&ndash;<classes>&ndash;&gt;
+    &lt;!&ndash;<class name="TOP.Basket.SpecificTests.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1698_CheckOfBlockingForSplitBillingAndShipping"/>&ndash;&gt;
+    &lt;!&ndash;</classes>&ndash;&gt;
+    &lt;!&ndash;</test>&ndash;&gt;
 
     <test name="TSP_QC_1696_CheckErrorTranslateOnAddressPage">
         <classes>
@@ -89,5 +89,5 @@
         <classes>
             <class name="XXL.SpecificTests.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1698_CheckOfBlockingForSplitBillingAndShipping"/>
         </classes>
-    </test>
+    </test>-->
 </suite>

@@ -34,6 +34,10 @@ public class Mailinator {
         return $x("//p[@class='info-total__price']");
     }
 
+    private SelenideElement unitPrice() {
+        return $x("//p[@class='info-bot-2col__text-dark']//b");
+    }
+
     private SelenideElement regularDeliveryPriceInEmail() {
         return $x("//table[@class='info-total']//tr[3]//td[2]//p");
     }
@@ -88,12 +92,28 @@ public class Mailinator {
         return totalPrice;
     }
 
+    @Step("Get unit price in email. Mailinator")
+    public Double getUnitPriceInEmail() {
+        String realPrice = unitPrice().getText();
+        realPrice = realPrice.substring(0, realPrice.indexOf(" ")).replaceAll(",", ".");
+        Double unitPrice = Double.parseDouble(realPrice);
+        return unitPrice;
+    }
+
     @Step("Get total price in email for EN shop. Mailinator")
     public Double getTotalPriceInEmailForENShop() {
         String realPrice = infoTotalPriceInEmail().getText().replace("£ ", "");
         realPrice = realPrice.replaceAll(",",".");
         Double totalPrice = Double.parseDouble(realPrice);
         return totalPrice;
+    }
+
+    @Step("Get unit price in email for EN shop. Mailinator")
+    public Double getUnitPriceForEnShop() {
+        String realPrice = unitPrice().getText().replace("£ ", "");
+        realPrice = realPrice.replaceAll(",", ".");
+        Double unitPrice = Double.parseDouble(realPrice);
+        return unitPrice;
     }
 
 
