@@ -42,5 +42,7 @@ public class Categories_page {
 
     ElementsCollection secondListInDropdownCatalog() { return $$x("//*[@class='menu-category__second-item']/a"); }
 
+    ElementsCollection parentCategoriesTecdocName() { return $$x("//*[@class='list_ersats_n list-ersatz-n--catalog']//span[@class='name']"); }
+
 
 }
