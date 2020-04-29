@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.codeborne.selenide.CollectionCondition.size;
+import static com.codeborne.selenide.CollectionCondition.sizeGreaterThanOrEqual;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
@@ -131,6 +132,33 @@ public class LKW_Category_page_Logic extends LKW_Category_page {
             Assert.assertEquals(imageWidth, 100);
             Assert.assertEquals(imageHeight, 100);
         }
+        return this;
+    }
+
+    @Step("check transition at icon of truck brands in TOP brands block .LKW_Category_page")
+    public LKW_Category_maker_Logic checkTransitionAtIconOfTruckBrand() {
+        brandOfTruckInTopBlock().shouldBe(visible).click();
+        return page(LKW_Category_maker_Logic.class);
+    }
+
+
+    @Step("click at link More for opening brands block .LKW_Category_page")
+    public LKW_Category_page_Logic openOfBrandsBlock() {
+        linkMoreOfTopBrandBlock().click();
+        return this;
+    }
+
+
+    @Step("visibility of brands block in open condition .LKW_Category_page")
+    public LKW_Category_page_Logic brandBlockInOpenCondition() {
+        brandsOfTruckInBlock().shouldHave(sizeGreaterThanOrEqual(24));
+        return this;
+    }
+
+    @Step("close of truck brands block .LKW_Category_page")
+    public LKW_Category_page_Logic closeOfBrandsBlock() {
+        linkLessOfTopBrandBlock().scrollTo().click();
+        brandsOfTruckInBlock().shouldHaveSize(6);
         return this;
     }
 }

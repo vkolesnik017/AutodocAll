@@ -77,4 +77,12 @@ class LKW_Category_page {
     ElementsCollection brandsInTopBrandsBlock() {return  $$x("//div[@class='kategorie_top_autos']//li").filter(visible);}
 
     ElementsCollection imageOfBrandsInTopBrandsBlock() {return  $$x("//div[@class='kategorie_top_autos']//li//img").filter(visible);}
+
+    SelenideElement brandOfTruckInTopBlock() {return $x("//div[@class='kategorie_top_autos']/ul/li[1]/a");}
+
+    SelenideElement linkMoreOfTopBrandBlock() {return $x("//div[@class='kategorie_top_autos']//span[contains(text(),'Mehr')]");}
+
+    SelenideElement linkLessOfTopBrandBlock() {return $x("//div[@class='m_text hide']");}
+
+    ElementsCollection brandsOfTruckInBlock() {return $$x("//div[@class='kategorie_top_autos']//li//img").filter(visible);}
 }

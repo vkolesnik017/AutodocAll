@@ -10,7 +10,6 @@ import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class LKW_main_page_Logic extends LKW_main_page {
@@ -385,5 +384,12 @@ public class LKW_main_page_Logic extends LKW_main_page {
         truckBrandsBlock().shouldBe(visible);
         brandsOfTruckInTopBrandsBlock().shouldHaveSize(8);
         return this;
+    }
+
+
+    @Step("check transition at icon of truck brands in TOP brands block .LKW_main_page")
+    public LKW_Categories_maker_page_Logic checkTransitionAtIconOfTruckBrand() {
+        brandOfTruckInTopBlock("MERCEDES-BENZ").click();
+        return page(LKW_Categories_maker_page_Logic.class);
     }
 }

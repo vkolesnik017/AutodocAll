@@ -145,4 +145,17 @@ public class LKW_Categories_maker_page_Logic extends LKW_Categories_maker_page {
         resetBtnInVerticalCarSelector().click();
         return page(LKW_Categories_page_Logic.class);
     }
+
+    @Step("check successfully child category page loading .LKW_Categories_maker_page")
+    public LKW_Categories_maker_page_Logic checkSuccessfullyCategoriesMakerLoading(String currentUrl) {
+        mainImageBlock().shouldBe(visible);
+        Assert.assertEquals(url(), currentUrl);
+        return this;
+    }
+
+    @Step("check transition at icon of truck model in TOP brands block .LKW_Categories_maker_page")
+    public LKW_maker_car_list_Logic checkTransitionAtIconOfTruckModel() {
+        modelOfTruckInTopBlock("ACTROS MP4").shouldBe(visible).click();
+        return page(LKW_maker_car_list_Logic.class);
+    }
 }

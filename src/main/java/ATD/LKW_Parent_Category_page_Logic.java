@@ -112,4 +112,6 @@ public class LKW_Parent_Category_page_Logic extends LKW_Parent_Category_page {
         return page(LKW_maker_car_list_Logic.class);
     }
 
+
+
 }
