@@ -67,4 +67,6 @@ public class LKW_Category_brand_page {
     SelenideElement buttonSuchenOfVerticaltruckSelector() {
         return $x("//a[@class='truck_submit js--lkw_selector-btn-submit']");
     }
+
+    SelenideElement brandOfTruckInTopBlock() {return $x("//div[@class='kategorie_top_autos']/ul/li[1]/a");}
 }

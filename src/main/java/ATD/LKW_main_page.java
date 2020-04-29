@@ -227,6 +227,8 @@ public class LKW_main_page {
     SelenideElement arrowForMarkeFiled() {
         return $x("//div[@class='block-select-car__select filled js--lkw_selector-select_basic active']//span[@class='arrow']");
     }
+
+    SelenideElement brandOfTruckInTopBlock(String brand) {return $x("//span[contains(text(),'"+brand+"')]/ancestor::a[@class='truck-home-cars__link']");}
 }
 
 

@@ -36,4 +36,6 @@ public class LKW_makers_page {
     ElementsCollection  titleOfBrandsList()  {return $$x("//span[@class='name']");}
 
     ElementsCollection  modelCountsOfBrandsList()   {return $$x("//span[@class='count']");}
+
+    SelenideElement  brandOfTruckInTopBlock(String brand) {return $x("//span[contains(text(),'"+brand+"')]");}
 }
