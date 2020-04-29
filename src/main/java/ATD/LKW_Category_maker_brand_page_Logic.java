@@ -113,4 +113,24 @@ public class LKW_Category_maker_brand_page_Logic extends LKW_Category_maker_bran
          Assert.assertTrue(url().contains(selectedCarBrandFromSelector));
         return this;
     }
+
+    @Step("select brand of car in vertical truck selector .LKW_Category_maker_brand_page")
+    public LKW_Category_maker_brand_page_Logic selectBrandOfCarInVerticalSelector(String valueOfBrand) {
+        markeInVerticalTruckSelector().selectOptionByValue(valueOfBrand);
+        markeInVerticalTruckSelector().shouldHave(value(valueOfBrand));
+        return this;
+    }
+
+    @Step("reset of car brand field in vertical selector .LKW_Category_maker_brand_page")
+    public LKW_Category_brand_page_Logic resetOfVerticalSelector() {
+        resetBtnInVerticalCarSelector().click();
+        resetBtnInVerticalCarSelector().should(disappear);
+        return page(LKW_Category_brand_page_Logic.class);
+    }
+
+    @Step("availability of headline in TOP model block .LKW_Category_maker_brand_page")
+    public LKW_Category_maker_brand_page_Logic availabilityOfHeadlineOfTopModelBlock(String partOfHeadline) {
+        headlineOfTopModelBlock().shouldBe(visible).shouldHave(text(partOfHeadline));
+        return this;
+    }
 }

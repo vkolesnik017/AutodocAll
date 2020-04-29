@@ -11,9 +11,9 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
+import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
-import static com.codeborne.selenide.Selenide.open;
 
 public class QC_537_SearchByBrand {
 
@@ -34,7 +34,7 @@ public class QC_537_SearchByBrand {
   @Owner(value = "Evlentiev")
   @Description(value = "The test verifies that at the listing have only products of brand ridex after search by text RIDEX")
   public void testSearchByBrand(String route) {
-    open(route);
+    openPage(route);
     new Main_page_Logic().useSearch(brandName);
     new Listing_page_Logic().checksProductTitlesContainExpectedTextGoingAllPagination(brandName);
   }

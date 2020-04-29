@@ -43,4 +43,8 @@ public class LKW_Categories_page {
     SelenideElement buttonSuchenOfVerticaltruckSelector() {
         return $x("//a[@class='truck_submit js--lkw_selector-btn-submit']");
     }
+
+    SelenideElement resetBtnInVerticalCarSelectorInOpenCondition() {
+        return $x("//a[@class='block-select-car__update hidden js--btn_reset_form']");
+    }
 }

@@ -79,7 +79,7 @@ public class LKW_Category_maker_Logic extends LKW_Category_maker {
 
     @Step("reset of vertical selector   .LKW_Category_maker")
     public LKW_Category_maker_Logic setupDefaultValueForVerticalSelector() {
-         if (!markeInVerticalCarSelector().has(value("0"))) {
+        if (!markeInVerticalCarSelector().has(value("0"))) {
             markeInVerticalCarSelector().selectOptionByValue("0");
         }
         return this;
@@ -92,6 +92,7 @@ public class LKW_Category_maker_Logic extends LKW_Category_maker {
         tooltipForMarkeFieldInVerticalCarSelector().shouldBe(visible);
         return this;
     }
+
     @Step("visibility of tooltip for model_field in selector  .LKW_Category_maker")
     public LKW_Category_maker_Logic visibilityOfTooltipForModelFieldInSelector() {
         markeInVerticalCarSelector().selectOptionByValue("24");
@@ -106,6 +107,38 @@ public class LKW_Category_maker_Logic extends LKW_Category_maker {
         motorInVerticalCarSelector().selectOptionByValue("714");
         btnSearchInVerticalCarSelector().click();
         tooltipForMarkeFieldInVerticalCarSelector().shouldBe(visible);
+        return this;
+    }
+
+    @Step("select brand of car in vertical truck selector .LKW_Category_maker")
+    public LKW_Category_maker_Logic selectBrandOfCarInVerticalSelector(String valueOfBrand) {
+        markeInVerticalCarSelector().selectOptionByValue(valueOfBrand);
+        markeInVerticalCarSelector().shouldHave(value(valueOfBrand));
+        return this;
+    }
+
+    @Step("reset of car brand field in vertical selector .LKW_Category_maker")
+    public LKW_Category_page_Logic resetOfVerticalSelector() {
+        resetBtnInVerticalCarSelector().click();
+        headLine().should(disappear);
+        return page(LKW_Category_page_Logic.class);
+    }
+
+    @Step("availability of  TOP  brands block .LKW_Category_maker")
+    public LKW_Category_maker_Logic availabilityOfTopBrandsBlock() {
+        topBrandsBlock().shouldBe(visible);
+        return this;
+    }
+
+
+    @Step("availability of  elements in Top brands block .LKW_Category_maker")
+    public LKW_Category_maker_Logic availabilityOfElementsInTopBrandsBlock() {
+        brandsInTopBrandsBlock().shouldHaveSize(6);
+        for (int i = 0; i < brandsInTopBrandsBlock().size(); i++) {
+            imageOfBrandsInTopBrandsBlock().get(i).shouldBe(visible);
+            titleOfBrandsInTopBrandsBlock().get(i).shouldBe(visible);
+            yearOfBrandsInTopBrandsBlock().get(i).shouldBe(visible);
+        }
         return this;
     }
 

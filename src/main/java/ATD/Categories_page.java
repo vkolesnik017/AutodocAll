@@ -36,4 +36,13 @@ public class Categories_page {
 
     SelenideElement catalogInHeader() { return $(".menu-catalog"); }
 
+    ElementsCollection categories() { return $$x("//*[@class='mCSB_container']//a[@data-for-first-list]"); }
+
+    ElementsCollection firstListInDropdownCatalog() { return $$x("//*[@class='menu-category__first-item']/a"); }
+
+    ElementsCollection secondListInDropdownCatalog() { return $$x("//*[@class='menu-category__second-item']/a"); }
+
+    ElementsCollection parentCategoriesTecdocName() { return $$x("//*[@class='list_ersats_n list-ersatz-n--catalog']//span[@class='name']"); }
+
+
 }

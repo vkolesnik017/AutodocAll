@@ -23,6 +23,10 @@ class LKW_Catalog_page {
         return $$x("//div[contains(@class,'car-parts-categories__item')]//li/span").filter(exist);
     }
 
+    ElementsCollection categoriesTecDockCatalogThirdLevel() {
+        return $$x("//div[contains(@class,'car-parts-categories-modal__level3')]/div/span").filter(exist);
+    }
+
     ElementsCollection categoriesInHeaderCatalogSecondBlock() {
         return $$x("//div[@class='menu-category__2-block']//*[@class='mCSB_container mCS_y_hidden mCS_no_scrollbar_y']//a").filter(exist);
     }

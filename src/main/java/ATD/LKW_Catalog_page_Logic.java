@@ -20,6 +20,7 @@ public class LKW_Catalog_page_Logic extends LKW_Catalog_page {
         catalogTecDoc().shouldBe(visible);
         addAttributeOfProductToList(categoriesTecDockCatalog(), tecDocCatalogList);
         addAttributeOfProductToList(categoriesTecDockCatalogSecondLevel(), tecDocCatalogList);
+        addAttributeOfProductToList(categoriesTecDockCatalogThirdLevel(), tecDocCatalogList);
         return tecDocCatalogList;
     }
 
@@ -37,9 +38,7 @@ public class LKW_Catalog_page_Logic extends LKW_Catalog_page {
     @Step("Comparison TecDoc and InHeader catalogs. LKW_Catalog_page")
     public LKW_Catalog_page_Logic comparisonTecDocAndInHeaderCatalogs() {
         new LKW_main_page_Logic().selectTruckInSelector("36", "682", "1008978");
-        getCategoryInTecDocCatalog();
         List<Integer> attributeOfTecDocCatalog = new ArrayList<>(getCategoryInTecDocCatalog());
-        getCategoryInHeaderCatalog();
         List<Integer> attributeOfInHeaderCatalog = new ArrayList<>(getCategoryInHeaderCatalog());
         Assert.assertEquals(sortingListWithAttributes(attributeOfInHeaderCatalog), sortingListWithAttributes(attributeOfTecDocCatalog));
         return this;

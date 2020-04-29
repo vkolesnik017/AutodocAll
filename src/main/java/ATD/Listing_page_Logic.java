@@ -154,6 +154,25 @@ public class Listing_page_Logic extends Listing_page {
         return this;
     }
 
+    @Step("Method checks product attribute on listing with two expected values. Listing_page")
+    public Listing_page_Logic checkProductAttributeOnListingWithCarAndFilterWithTwoValues(String characteristic, String secondCaracteristicValue, ElementsCollection productAttributeGenericRoute, ElementsCollection productAttributeTecdocRoute) {
+        if (productsForOtherCars().is(visible)) {
+            productsForOtherCars().waitUntil(visible, 2000);
+            checkProductAttributeOnListingTwoValues(characteristic, secondCaracteristicValue, productAttributeGenericRoute);
+        } else {
+            checkProductAttributeOnListingTwoValues(characteristic, secondCaracteristicValue, productAttributeTecdocRoute);
+        }
+        return this;
+    }
+
+    @Step("Method checks product attribute on listing with two expected values. Listing_page")
+    private void checkProductAttributeOnListingTwoValues(String attributeSelectedInSideFilter, String secondValue, ElementsCollection productAttributeOnListing) {
+        productAttributeOnListing.shouldHave(sizeGreaterThan(0));
+        for (int i = 0; i < productAttributeOnListing.size(); i++) {
+            productAttributeOnListing.get(i).shouldHave(or ("values", text(attributeSelectedInSideFilter), (text(secondValue))));
+        }
+    }
+
     @Step("Method checks product attribute on listing in tile mode. Listing_page")
     public void checkProductAttributeOnListingInTileMode(String attributeSelectedInSideFilter, ElementsCollection productAttributeOnListing) {
         productAttributeOnListing.shouldHave(sizeGreaterThan(0));
@@ -321,7 +340,7 @@ public class Listing_page_Logic extends Listing_page {
     public Listing_page_Logic checksProductTitlesContainExpectedTextGoingAllPagination(String expectedText) {
         checkProductTitleOnListing(expectedText, true, productTitleInListMode());
         while (nextPageButton().is(visible)) {
-            nextPageButton().click();
+            nextPageButton().hover().click();
             checkProductTitleOnListing(expectedText, true, productTitleInListMode());
         }
         return this;
@@ -553,6 +572,12 @@ public class Listing_page_Logic extends Listing_page {
         return textFromAttribute;
     }
 
+    @Step("Get attribute from element with split. Listing_page")
+    public String getAtributeFromElementLKWsearch(SelenideElement element, String attribute) {
+        String textFromAttribute = element.attr(attribute).split(" ")[2];
+        return textFromAttribute;
+    }
+
     @Step("Click filter button. Listing_page")
     public Listing_page_Logic clickFilterButton(SelenideElement filterButton) {
         filterButton.click();
@@ -748,11 +773,66 @@ public class Listing_page_Logic extends Listing_page {
         return this;
     }
 
+    @Step("Check Output With Filters By Side Fix In Sidebar Route LKW. Listing_page")
+    public Listing_page_Logic checkOutputWithFiltersBySideFixInSidebarRouteLKW(String characteristic, String secondCharacteristic) {
+        scrollAndCheckFixFiltersInSidebar();
+        bySideFilterInSidebarFront().click();
+        waitUntilPreloaderDisappear();
+        checkProductAttributeOnListingWithCarAndFilterWithTwoValues(characteristic, secondCharacteristic, einbauseiteProductAttributeGenericRoute(), einbauseiteProductAttributeTecdocRoute());
+        scrollAndCheckFixFiltersInSidebar();
+        bySideFilterInSidebarFront().click();
+        waitUntilPreloaderDisappear();
+        checkUniqueBrandsOnListing(2, einbauseiteProductAttributeTecdocRoute());
+        return this;
+    }
+
+    @Step("Check Output With Filters By Side Fix In Sidebar. Listing_page")
+    public Listing_page_Logic checkOutputWithFiltersBySideFixInSidebarSearchRoute(String characteristic) {
+        scrollAndCheckFixFiltersInSidebar();
+        closePopupByClickOverlayOnListingSearch();
+        bySideFilterInSidebarFrontSearchRoute().click();
+        waitUntilPreloaderDisappear();
+        checkProductAttributeOnListingWithCarAndFilter(characteristic, einbauseiteProductAttributeGenericRoute(), einbauseiteProductAttributeTecdocRoute());
+        scrollAndCheckFixFiltersInSidebar();
+        closePopupByClickOverlayOnListingSearch();
+        bySideFilterInSidebarFrontSearchRoute().click();
+        waitUntilPreloaderDisappear();
+        checkUniqueBrandsOnListing(2, einbauseiteProductAttributeTecdocRoute());
+        return this;
+    }
+
+    @Step("Check Output With Filters By Side Fix In Sidebar Back Side Filter. Listing_page")
+    public Listing_page_Logic checkOutputWithFiltersBySideFixInSidebarBackSide(String characteristic) {
+        scrollAndCheckFixFiltersInSidebar();
+        bySideFilterInSidebarBack().click();
+        waitUntilPreloaderDisappear();
+        checkProductAttributeOnListingWithCarAndFilter(characteristic, einbauseiteProductAttributeGenericRoute(), einbauseiteProductAttributeTecdocRoute());
+        scrollAndCheckFixFiltersInSidebar();
+        bySideFilterInSidebarBack().click();
+        waitUntilPreloaderDisappear();
+        checkUniqueBrandsOnListing(2, einbauseiteProductAttributeTecdocRoute());
+        return this;
+    }
+
     @Step("Check Output With Filters By Brand Fix In Sidebar. Listing_page")
     public Listing_page_Logic checkOutputWithFiltersByBrandFixInSidebar(int brandPositionInAlt) {
         scrollAndCheckFixFiltersInSidebar();
         String brand = brandFilterButtonInSidebarName().attr("alt");
         brandFilterButtonInSidebarButton().click();
+        waitUntilPreloaderDisappear();
+        getBrandFromTitle(brand, brandPositionInAlt, true, productTitleInListMode());
+        scrollAndCheckFixFiltersInSidebar();
+        brandFilterButtonInSidebarButton().click();
+        waitUntilPreloaderDisappear();
+        checkUniqueBrandsOnListing(2, productTitleInListMode());
+        return this;
+    }
+
+    @Step("Check Output With Filters By Brand Fix In Sidebar LKW. Listing_page")
+    public Listing_page_Logic checkOutputWithFiltersByBrandFixInSidebarLKW(int brandPositionInAlt) {
+        scrollAndCheckFixFiltersInSidebar();
+        String brand = brandFilterSecondButtonInSidebarName().attr("alt");
+        brandFilterSecondButtonInSidebarButton().click();
         waitUntilPreloaderDisappear();
         getBrandFromTitle(brand, brandPositionInAlt, true, productTitleInListMode());
         scrollAndCheckFixFiltersInSidebar();
@@ -771,6 +851,7 @@ public class Listing_page_Logic extends Listing_page {
         waitUntilPreloaderDisappear();
         getBrandFromTitle(brand, brandPositionInAlt, true, productTitleInListMode());
         scrollAndCheckFixFiltersInSidebar();
+        closePopupByClickOverlayOnListingSearch();
         brandFilterButtonInSidebarButton().click();
         waitUntilPreloaderDisappear();
         getBrandFromTitle(brand, brandPositionInAlt, false, productTitleInListMode());
@@ -792,7 +873,8 @@ public class Listing_page_Logic extends Listing_page {
         checkQuantityOfRatingStarsOnListingInPercent(ratingInProductBlock());
         scrollAndCheckFixFiltersInSidebar();
         ratingThreeStarsFilterCheckbox().click();
-        checkUniqueRatingOnListing(2);
+        waitUntilPreloaderDisappear();
+        checkTwoUniqueRatingOnListing();
         return this;
     }
 
@@ -801,6 +883,86 @@ public class Listing_page_Logic extends Listing_page {
         for (int i = 1; i < collectionOfRatingElements.size(); i++) {
             activeRatingStarsInEveryProductPercent(i).shouldHave(attribute("style", "width: 60%;"));
         }
+        return this;
+    }
+
+    @Step("Method checks two unique ratings on listing. Listing_page")
+    public Listing_page_Logic checkTwoUniqueRatingOnListing() {
+        Assert.assertTrue(threeRatingStarsInProduct().size() < ratingInProductBlock().size());
+        return this;
+    }
+
+    @Step("Check output with lange filter fix in sidebar. Listing_page")
+    public Listing_page_Logic checkLangeFilterFixInSidebar() {
+        scrollAndCheckFixFiltersInSidebar();
+        String langeValue = langeSecondButtonInFixedSidebarFilter().text();
+        langeSecondButtonInFixedSidebarFilter().hover().click();
+        waitUntilPreloaderDisappear();
+        checkProductAttributeOnListing(langeValue, langeProductAttributeTecdocRoute());
+        scrollAndCheckFixFiltersInSidebar();
+        langeFirstButtonInFixedSidebarFilter().hover().click();
+        waitUntilPreloaderDisappear();
+        checkUniqueBrandsOnListing(2, langeProductAttributeTecdocRoute());
+        return this;
+    }
+
+    @Step("Check output with furprNummer filter fix in sidebar. Listing_page")
+    public Listing_page_Logic checkfurprNummerFilterFixInSidebar() {
+        scrollAndCheckFixFiltersInSidebar();
+        String nummerValue = furPrnummerFirstButtonInSidebar().text().split(" ")[0];
+        closePopupByClickOverlayOnListingSearch();
+        furPrnummerFirstButtonInSidebar().hover().click();
+        waitUntilPreloaderDisappear();
+        checkProductAttributeOnListing(nummerValue, furprnummerProductAttributeTecdocRoute());
+        scrollAndCheckFixFiltersInSidebar();
+        closePopupByClickOverlayOnListingSearch();
+        furPrnummerFirstButtonInSidebar().hover().click();
+        waitUntilPreloaderDisappear();
+        furprnummerProductAttributeTecdocRoute().shouldHaveSize(0);
+        return this;
+    }
+
+    @Step("Check output with verschleisswarnkontakt filter fix in sidebar. Listing_page")
+    public Listing_page_Logic checkVerschleisswarnkontaktFilterFixInSidebar() {
+        scrollAndCheckFixFiltersInSidebar();
+        closePopupByClickOverlayOnListingSearch();
+        verschleisswarnkontaktFirstButtonInSidebar().hover().click();
+        waitUntilPreloaderDisappear();
+        checkProductAttributeOnListing("für Verschleißwarnanzeiger vorbereitet", verschleiswarnkontaktProductAttributeTecdocRouteLKW());
+        scrollAndCheckFixFiltersInSidebar();
+        closePopupByClickOverlayOnListingSearch();
+        verschleisswarnkontaktFirstButtonInSidebar().hover().click();
+        waitUntilPreloaderDisappear();
+        checkUniqueBrandsOnListing(2, verschleiswarnkontaktProductAttributeTecdocRouteLKW());
+        return this;
+    }
+
+    @Step("Check output with durchmesser filter fix in sidebar. Listing_page")
+    public Listing_page_Logic checkDurchmesserFilterFixInSidebar() {
+        scrollAndCheckFixFiltersInSidebar();
+        String durchmesserValue = durchmesserSecondButtonInSidebar().text();
+        durchmesserSecondButtonInSidebar().hover().click();
+        waitUntilPreloaderDisappear();
+        checkProductAttributeOnListing(durchmesserValue, durchmesserProductAttributeTecdocRoute());
+        scrollAndCheckFixFiltersInSidebar();
+        durchmesserFirstButtonInSidebar().hover().click();
+        waitUntilPreloaderDisappear();
+        durchmesserFirstButtonInSidebar().shouldNotBe(selected);
+        durchmesserSecondButtonInSidebar().shouldNotBe(selected);
+        return this;
+    }
+
+    @Step("Check output with bremsscheibenart filter fix in sidebar. Listing_page")
+    public Listing_page_Logic checkBremsscheibenartFilterFixInSidebar() {
+        scrollAndCheckFixFiltersInSidebar();
+        String bremsscheibenartValue = bremsscheibenartFirstButtonInSidebar().text();
+        bremsscheibenartFirstButtonInSidebar().hover().click();
+        waitUntilPreloaderDisappear();
+        checkProductAttributeOnListing(bremsscheibenartValue, bremsscheibenartProductAttributeTecdocRoute());
+        scrollAndCheckFixFiltersInSidebar();
+        bremsscheibenartFirstButtonInSidebar().hover().click();
+        waitUntilPreloaderDisappear();
+        checkUniqueBrandsOnListing(2, bremsscheibenartProductAttributeTecdocRoute());
         return this;
     }
 }

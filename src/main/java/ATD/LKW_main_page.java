@@ -43,7 +43,7 @@ public class LKW_main_page {
         return $(byXpath("//div[@class='menu-category__2-block']"));
     }
 
-    protected SelenideElement resetBtnInVerticalCarSelector() {
+    SelenideElement resetBtnInVerticalCarSelector() {
         return $(byId("reset_selector_form"));
     }
 
@@ -188,11 +188,45 @@ public class LKW_main_page {
         return $x("//a[contains(@class,'popup-selector-lkw__table-row')]//div[contains(text(),'" + tonna + "')]");
     }
 
-    SelenideElement btnAllTruckBrands() {return $x("//a[@class='truck-home-cars__show-all']");}
+    SelenideElement btnAllTruckBrands() {
+        return $x("//a[@class='truck-home-cars__show-all']");
+    }
 
-    SelenideElement iconOfTruckInHeadlineOfSelector() {return $x("//span[@class='car-icon']");}
+    SelenideElement iconOfTruckInHeadlineOfSelector() {
+        return $x("//span[@class='car-icon']");
+    }
 
-    SelenideElement titleOfTruckInHeadlineOfSelector() {return $x("//div[contains(@class,'block-select-car__head-car--lkw')]/span[2]");}
+    SelenideElement titleOfTruckInHeadlineOfSelector() {
+        return $x("//div[contains(@class,'block-select-car__head-car--lkw')]/span[2]");
+    }
+
+    SelenideElement verticalSelectorInCloseCondition() {
+        return $x("//div[contains(@class,'catalog-title__change-car')]");
+    }
+
+    SelenideElement resetBtnInVerticalCarSelectorInOpenCondition() {
+        return $x("//a[@class='block-select-car__update hidden js--btn_reset_form']");
+    }
+
+    SelenideElement verticalTruckSelectorInOpenCondition() {
+        return $x("//div[@class='block-select-car block-select-car--sidebar']");
+    }
+
+    SelenideElement truckBrandsBlock() {
+        return $x("//div[@class='truck-home-cars']");
+    }
+
+    SelenideElement headlineOfTruckBrandsBlock() {
+        return $x("//h2[@class='truck-home-cars__title']");
+    }
+
+    ElementsCollection brandsOfTruckInTopBrandsBlock() {
+        return $$x("//ul[@class='truck-home-cars__list']//li").filter(visible);
+    }
+
+    SelenideElement arrowForMarkeFiled() {
+        return $x("//div[@class='block-select-car__select filled js--lkw_selector-select_basic active']//span[@class='arrow']");
+    }
 }
 
 

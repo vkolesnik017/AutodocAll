@@ -7,6 +7,8 @@ import org.testng.Assert;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collections;
 
 import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.exactText;
@@ -97,5 +99,54 @@ public class Categories_page_Logic extends Categories_page {
       }
       return this;
     }
+
+    @Step("Get All Child Categories From Catalog Dropdown Menu")
+    public ArrayList<String> getAllChildCategoriesFromCatalogDropdownMenu() throws Exception {
+        catalogInHeader().click();
+        Thread.sleep(5000);
+        ArrayList<String> listWithCategoriesInDropdownCatalog = new ArrayList<>();
+          for (int i = 0; i < secondListInDropdownCatalog().size(); i++) {
+            listWithCategoriesInDropdownCatalog.add(secondListInDropdownCatalog().get(i).attr("data-category-id"));
+          }
+        Collections.sort(listWithCategoriesInDropdownCatalog);
+        System.out.println(listWithCategoriesInDropdownCatalog.size());
+        return listWithCategoriesInDropdownCatalog;
+    }
+
+    @Step("Get All Parent Categories From Catalog Dropdown Menu")
+    public ArrayList<String> getAllParentCategoriesFromCatalogDropdownMenu() throws Exception {
+      ArrayList<String> listWithCategoriesInDropdownCatalog = new ArrayList<>();
+        for (int i = 0; i < firstListInDropdownCatalog().size(); i++) {
+          listWithCategoriesInDropdownCatalog.add(firstListInDropdownCatalog().get(i).attr("data-for-first-list"));
+        }
+      Collections.sort(listWithCategoriesInDropdownCatalog);
+        String tyresParentId = "23208";
+        String engineOilParentId = "12094";
+        listWithCategoriesInDropdownCatalog.remove(tyresParentId);
+        listWithCategoriesInDropdownCatalog.remove(engineOilParentId);
+      System.out.println(listWithCategoriesInDropdownCatalog.size());
+      return listWithCategoriesInDropdownCatalog;
+    }
+
+    @Step("Compare categories from catalog and AWS")
+    public Categories_page_Logic compareCategoriesFromCatalogAndAWS(ArrayList<String> listFromCatalog, ArrayList<String> listFromAWS) {
+      Assert.assertEquals(listFromCatalog, listFromAWS);
+      return this;
+    }
+
+  @Step("Get All Parent Categories From Tecdoc Catalog")
+  public ArrayList<String> getAllParentCategoriesFromTecdocCatalog() throws Exception {
+    ArrayList<String> listWithCategoriesInTecdocCatalog = new ArrayList<>();
+    for (int i = 0; i < parentCategoriesTecdocName().size(); i++) {
+      listWithCategoriesInTecdocCatalog.add(parentCategoriesTecdocName().get(i).text());
+    }
+    String tyresParentName = "Reifen";
+    listWithCategoriesInTecdocCatalog.remove(tyresParentName);
+    System.out.println(listWithCategoriesInTecdocCatalog.size());
+    for (int i = 0; i < listWithCategoriesInTecdocCatalog.size(); i++) {
+      System.out.println(listWithCategoriesInTecdocCatalog.get(i));
+    }
+    return listWithCategoriesInTecdocCatalog;
+  }
 
   }

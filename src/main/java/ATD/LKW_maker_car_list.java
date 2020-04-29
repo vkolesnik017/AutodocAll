@@ -76,4 +76,8 @@ class LKW_maker_car_list {
     SelenideElement iconOfTruckInHeadlineOfSelector() {return $x("//span[@class='car-icon']");}
 
     SelenideElement titleOfTruckInHeadlineOfSelector() {return $x("//div[@class='block-select-car__head-car']/span[2]");}
+
+    SelenideElement resetBtnInVerticalCarSelector() {return $x("//a[@class='block-select-car__update hidden js--btn_reset_form']");}
+
+
 }

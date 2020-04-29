@@ -19,6 +19,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byCssSelector;
@@ -287,8 +289,7 @@ public class CommonMethods {
     @Step("Method for checks elements in mini card in block of top products")
     public void checksPresenceElementsInMiniCardInBlocksOfTopProducts() {
 
-        By sticker = (byCssSelector(".product-list__item__promotion"));
-        By oldPrice = (byCssSelector(".product-list__item__old-price"));
+        By sticker = (byCssSelector(".discount"));
         By image = (byCssSelector(".ovVisLi_image"));
         By productName = (byCssSelector(".product-list__item__title"));
         By articleNumber = (byCssSelector(".product-list__item__nummer"));
@@ -300,7 +301,6 @@ public class CommonMethods {
         ElementsCollection miniCardsOfProducts = miniCardsOfProducts().filterBy(visible).shouldHaveSize(4);
         for (SelenideElement miniCardFirsSlide : miniCardsOfProducts) {
             miniCardFirsSlide.$(sticker).should(visible);
-            miniCardFirsSlide.$(oldPrice).should(visible);
             miniCardFirsSlide.$(image).should(visible);
             miniCardFirsSlide.$(productName).should(visible);
             miniCardFirsSlide.$(articleNumber).should(visible);
@@ -311,7 +311,6 @@ public class CommonMethods {
         sleep(2000);
         for (SelenideElement miniCardSecondSlide : miniCardsOfProducts) {
             miniCardSecondSlide.$(sticker).should(visible);
-            miniCardSecondSlide.$(oldPrice).should(visible);
             miniCardSecondSlide.$(image).should(visible);
             miniCardSecondSlide.$(productName).should(visible);
             miniCardSecondSlide.$(articleNumber).should(visible);
@@ -361,6 +360,7 @@ public class CommonMethods {
         int startValue = Integer.parseInt(counterValue.getValue());
         for (int i = 1; i <= increaseCount; i++) {
             counterPlus.click();
+            sleep(2000);
             int valueAfterIncrease = startValue + i;
             counterValue.shouldHave(value(String.valueOf(valueAfterIncrease)));
         }
@@ -373,6 +373,7 @@ public class CommonMethods {
         int startValue = Integer.parseInt(counterValue.getValue());
         for (int i = 1; i <= decreaseCount; i++) {
             counterMinus.click();
+            sleep(2000);
             int valueAfterDecrease = startValue - i;
             counterValue.shouldHave(value(String.valueOf(valueAfterDecrease)));
         }
@@ -393,4 +394,16 @@ public class CommonMethods {
             }
         }
     }
+
+    @Step("Cut price to the first decimal place")
+    public static Double cutPriceToFirstDecimalPlace(Double price) {
+        Pattern pattern = Pattern.compile("\\d+\\.\\d{1}");
+        Matcher matcher = pattern.matcher(String.valueOf(price));
+        String result = null;
+        if (matcher.find()) {
+            result = matcher.group(0);
+        }
+        return Double.valueOf((result));
+    }
+
 }

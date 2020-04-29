@@ -1,8 +1,10 @@
 package ATD;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selenide.*;
@@ -53,15 +55,47 @@ class LKW_Category_maker {
         return $x("//li[@data-brand-name='" + title + "']/a");
     }
 
-    SelenideElement resetSelector() {return $(byId("reset_selector_form"));}
+    SelenideElement markeInVerticalCarSelector() {
+        return $(byName("maker_id"));
+    }
 
-    SelenideElement markeInVerticalCarSelector() {return $(byName("maker_id"));}
-
-    SelenideElement motorInVerticalCarSelector() {return $(byName("model_id"));}
+    SelenideElement motorInVerticalCarSelector() {
+        return $(byName("model_id"));
+    }
 
     SelenideElement btnSearchInVerticalCarSelector() {
         return $x("//a[@class='truck_submit js--lkw_selector-btn-submit']");
     }
 
-    SelenideElement tooltipForMarkeFieldInVerticalCarSelector() { return $x("//div[@class='validation-tooltip popup-error-select']");}
+    SelenideElement tooltipForMarkeFieldInVerticalCarSelector() {
+        return $x("//div[@class='validation-tooltip popup-error-select']");
+    }
+
+    SelenideElement resetBtnInVerticalCarSelector() {
+        return $(byId("reset_selector_form"));
+    }
+
+    SelenideElement topBrandsBlock() {
+        return $x("//div[@class='lkw_top_models']");
+    }
+
+    ElementsCollection brandsInTopBrandsBlock() {
+        return $$x("//div[@class='lkw_top_models']//li").filter(visible);
+    }
+
+    ElementsCollection imageOfBrandsInTopBrandsBlock() {
+        return $$x("//div[@class='lkw_top_models']//li//img").filter(visible);
+    }
+
+    ElementsCollection titleOfBrandsInTopBrandsBlock() {
+        return $$x("//div[@class='lkw_top_models']//li//span[2]").filter(visible);
+    }
+
+    ElementsCollection yearOfBrandsInTopBrandsBlock() {
+        return $$x("//div[@class='lkw_top_models']//li//span[contains(text(),'ab')]").filter(visible);
+    }
+
+    SelenideElement headLine() {
+        return $x("//div[@class='title_count_search ']");
+    }
 }

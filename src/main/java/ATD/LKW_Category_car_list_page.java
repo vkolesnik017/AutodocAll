@@ -229,4 +229,11 @@ public class LKW_Category_car_list_page {
         return $x("//a[@class='truck_submit js--lkw_selector-btn-submit']");
     }
 
+    SelenideElement verticalSelectorInCloseCondition() {
+        return $x("//div[@class='catalog-title__change-car ']");
+    }
+
+    SelenideElement resetBtnInVerticalCarSelector() {
+        return $x("//a[@class='block-select-car__update hidden js--btn_reset_form']");
+    }
 }

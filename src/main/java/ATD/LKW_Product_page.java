@@ -77,4 +77,11 @@ public class LKW_Product_page {
         return $x("//div[@class='validation-tooltip popup-error-select']");
     }
 
+    SelenideElement resetBtnInHorizontalCarSelector() {
+        return $x("//div[@class='atd-carselector__reset js--btn_reset_form']");
+    }
+
+    SelenideElement activeMarkeField() {
+        return $x("//select[@name='maker_id']/ancestor::div[@class='atd-carselector__select-wrapper  js--lkw_selector-select_basic active']");
+    }
 }

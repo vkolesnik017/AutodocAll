@@ -106,6 +106,13 @@
         </classes>
     </test>
 
+    <test name="QC_27_BlockOfBrandsAndModelsOfCarManufacturers">
+        <classes>
+            <class name="LKW_trucks.QC_27_BlockOfBrandsAndModelsOfCarManufacturers.QC_28_AvailabilityOfHeadlineForBrandsAndModelsBlocks"/>
+            <class name="LKW_trucks.QC_27_BlockOfBrandsAndModelsOfCarManufacturers.QC_29_AvailabilityOfBrandAndModelBlocks"/>
+        </classes>
+    </test>
+
     <test name="QC_33_BrandsBlock">
         <classes>
             <class name="LKW_trucks.QC_33_BrandsBLock.QC_34_AvailabilityHeadlineOfTopBrands"/>
@@ -121,9 +128,10 @@
             <class name="LKW_trucks.QC_82_TruckSelectorBlock.QC_84_RequiredFieldsForSelectionInSelector"/>
             <class name="LKW_trucks.QC_82_TruckSelectorBlock.QC_85_TitleOfTruckSelector"/>
             <class name="LKW_trucks.QC_82_TruckSelectorBlock.QC_86_TransitionToCorrespondingRoutWithSelectingTruck"/>
+            <class name="LKW_trucks.QC_82_TruckSelectorBlock.QC_92_ResetOfValuesInTruckSelector"/>
             <class name="LKW_trucks.QC_82_TruckSelectorBlock.QC_93_VisibilityOfCarInInputFieldOfSelectorFromUrl"/>
             <class name="LKW_trucks.QC_82_TruckSelectorBlock.QC_157_PopUpOfSpecificationsInTruckSelector"/>
-            </classes>
+        </classes>
     </test>
 
 </suite>
