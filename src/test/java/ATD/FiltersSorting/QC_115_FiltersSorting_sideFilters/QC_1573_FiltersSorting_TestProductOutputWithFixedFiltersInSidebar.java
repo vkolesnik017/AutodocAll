@@ -65,7 +65,7 @@ public class QC_1573_FiltersSorting_TestProductOutputWithFixedFiltersInSidebar {
     public void testProductOutputWithFixedFiltersInSidebarRouteLKW(String route) {
         openPage(route);
         new Listing_page_Logic().checkOutputWithFiltersByBrandFixInSidebarLKW(0)
-                                .checkOutputWithFiltersBySideFixInSidebar("Vorderachse")
+                                .checkOutputWithFiltersBySideFixInSidebarRouteLKW("Vorderachse", "Lenkstockhebel zur 1. VA")
                                 .checkOutputWithFiltersByRatingFixInSidebar();
     }
 
