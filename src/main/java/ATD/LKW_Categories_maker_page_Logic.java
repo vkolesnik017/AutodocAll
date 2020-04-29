@@ -132,4 +132,17 @@ public class LKW_Categories_maker_page_Logic extends LKW_Categories_maker_page {
         }
         return this;
     }
+
+    @Step("select brand of car in vertical truck selector .LKW_Categories_maker_page")
+    public LKW_Categories_maker_page_Logic selectBrandOfCarInVerticalSelector(String valueOfBrand) {
+        markeInVerticalCarSelector().shouldBe(visible).selectOptionByValue(valueOfBrand);
+        markeInVerticalCarSelector().shouldHave(value(valueOfBrand));
+        return this;
+    }
+
+    @Step("reset of car brand field in vertical selector .LKW_Categories_maker_page")
+    public LKW_Categories_page_Logic resetOfVerticalSelector() {
+        resetBtnInVerticalCarSelector().click();
+        return page(LKW_Categories_page_Logic.class);
+    }
 }

@@ -154,6 +154,25 @@ public class Listing_page_Logic extends Listing_page {
         return this;
     }
 
+    @Step("Method checks product attribute on listing with two expected values. Listing_page")
+    public Listing_page_Logic checkProductAttributeOnListingWithCarAndFilterWithTwoValues(String characteristic, String secondCaracteristicValue, ElementsCollection productAttributeGenericRoute, ElementsCollection productAttributeTecdocRoute) {
+        if (productsForOtherCars().is(visible)) {
+            productsForOtherCars().waitUntil(visible, 2000);
+            checkProductAttributeOnListingTwoValues(characteristic, secondCaracteristicValue, productAttributeGenericRoute);
+        } else {
+            checkProductAttributeOnListingTwoValues(characteristic, secondCaracteristicValue, productAttributeTecdocRoute);
+        }
+        return this;
+    }
+
+    @Step("Method checks product attribute on listing with two expected values. Listing_page")
+    private void checkProductAttributeOnListingTwoValues(String attributeSelectedInSideFilter, String secondValue, ElementsCollection productAttributeOnListing) {
+        productAttributeOnListing.shouldHave(sizeGreaterThan(0));
+        for (int i = 0; i < productAttributeOnListing.size(); i++) {
+            productAttributeOnListing.get(i).shouldHave(or ("values", text(attributeSelectedInSideFilter), (text(secondValue))));
+        }
+    }
+
     @Step("Method checks product attribute on listing in tile mode. Listing_page")
     public void checkProductAttributeOnListingInTileMode(String attributeSelectedInSideFilter, ElementsCollection productAttributeOnListing) {
         productAttributeOnListing.shouldHave(sizeGreaterThan(0));
@@ -747,6 +766,19 @@ public class Listing_page_Logic extends Listing_page {
         bySideFilterInSidebarFront().click();
         waitUntilPreloaderDisappear();
         checkProductAttributeOnListingWithCarAndFilter(characteristic, einbauseiteProductAttributeGenericRoute(), einbauseiteProductAttributeTecdocRoute());
+        scrollAndCheckFixFiltersInSidebar();
+        bySideFilterInSidebarFront().click();
+        waitUntilPreloaderDisappear();
+        checkUniqueBrandsOnListing(2, einbauseiteProductAttributeTecdocRoute());
+        return this;
+    }
+
+    @Step("Check Output With Filters By Side Fix In Sidebar Route LKW. Listing_page")
+    public Listing_page_Logic checkOutputWithFiltersBySideFixInSidebarRouteLKW(String characteristic, String secondCharacteristic) {
+        scrollAndCheckFixFiltersInSidebar();
+        bySideFilterInSidebarFront().click();
+        waitUntilPreloaderDisappear();
+        checkProductAttributeOnListingWithCarAndFilterWithTwoValues(characteristic, secondCharacteristic, einbauseiteProductAttributeGenericRoute(), einbauseiteProductAttributeTecdocRoute());
         scrollAndCheckFixFiltersInSidebar();
         bySideFilterInSidebarFront().click();
         waitUntilPreloaderDisappear();

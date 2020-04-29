@@ -55,10 +55,6 @@ class LKW_Category_maker {
         return $x("//li[@data-brand-name='" + title + "']/a");
     }
 
-    SelenideElement resetSelector() {
-        return $(byId("reset_selector_form"));
-    }
-
     SelenideElement markeInVerticalCarSelector() {
         return $(byName("maker_id"));
     }
@@ -97,5 +93,9 @@ class LKW_Category_maker {
 
     ElementsCollection yearOfBrandsInTopBrandsBlock() {
         return $$x("//div[@class='lkw_top_models']//li//span[contains(text(),'ab')]").filter(visible);
+    }
+
+    SelenideElement headLine() {
+        return $x("//div[@class='title_count_search ']");
     }
 }
