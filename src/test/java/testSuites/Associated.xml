@@ -24,7 +24,7 @@
     <test name="QC_802_AnalogsForProductsNotInStock">
         <classes>
             <class name="ATD.Associated.QC_802_AnalogsForProductsNotInStock.QC_806_TestEmpfohlenerProductsMatchAws"/>
-            <!--<class name="ATD.Associated.QC_802_AnalogsForProductsNotInStock.QC_808_TestEmpfohlenerProductsMatchCar"/>-->
+            <class name="ATD.Associated.QC_802_AnalogsForProductsNotInStock.QC_808_TestEmpfohlenerProductsMatchCar"/>
         </classes>
     </test>
 

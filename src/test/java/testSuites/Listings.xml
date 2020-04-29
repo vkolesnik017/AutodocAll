@@ -27,7 +27,7 @@
         <classes>
             <class name="ATD.Listings.QC_445_ListingTecDoc.QC_446_GoingToRouteTecDoc"/>
             <class name="ATD.Listings.QC_445_ListingTecDoc.QC_447_PresenceElementsOnTecDocListing"/>
-            <!--<class name="ATD.Listings.QC_445_ListingTecDoc.QC_449_AdditionalListingOnTecDoc"/>-->
+            <class name="ATD.Listings.QC_445_ListingTecDoc.QC_449_AdditionalListingOnTecDoc"/>
             <class name="ATD.Listings.QC_445_ListingTecDoc.QC_450_Soft404OnTecDoc"/>
         </classes>
     </test>
