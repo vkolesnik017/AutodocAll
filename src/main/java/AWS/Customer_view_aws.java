@@ -25,6 +25,26 @@ public class Customer_view_aws {
         return $x("//div[@class='mt-20']//tbody//tr//td[text()='" + billingOrShipping + "']");
     }
 
+    private SelenideElement errorNameStatus() {
+        return $x("//div[@class='mt-20']//td[6]");
+    }
+
+    private SelenideElement errorCityStatus() {
+        return $x("//div[@class='mt-20']//td[7]");
+    }
+
+    @Step("Checks Error status in (Error in the name) column. Customer_view_aws")
+    public Customer_view_aws checkErrorStatusInNameErrorColumn(String errorStatus) {
+        errorNameStatus().shouldHave(text(errorStatus));
+        return this;
+    }
+
+    @Step("Checks Error status in (Error in the city) column. Customer_view_aws")
+    public Customer_view_aws checkErrorStatusInCityErrorColumn(String errorStatus) {
+        errorCityStatus().shouldHave(text(errorStatus));
+        return this;
+    }
+
     @Step("Checks billingOrShipping in block logs company numbers. Customer_view_aws")
     public Customer_view_aws checkBillingOrShippingInBlockLogsCompanyNumbers(String billingOrShipping) {
         columnBillingOrShipping(billingOrShipping).shouldBe(visible);
