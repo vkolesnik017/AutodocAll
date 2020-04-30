@@ -7,10 +7,10 @@ import org.testng.Assert;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.codeborne.selenide.CollectionCondition.size;
-import static com.codeborne.selenide.CollectionCondition.sizeGreaterThanOrEqual;
+import static com.codeborne.selenide.CollectionCondition.*;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.back;
+import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class LKW_Category_page_Logic extends LKW_Category_page {
@@ -159,6 +159,31 @@ public class LKW_Category_page_Logic extends LKW_Category_page {
     public LKW_Category_page_Logic closeOfBrandsBlock() {
         linkLessOfTopBrandBlock().scrollTo().click();
         brandsOfTruckInBlock().shouldHaveSize(6);
+        return this;
+    }
+
+    @Step("availability of popular model list in first row of TOP brands block .LKW_Category_page")
+    public LKW_Category_page_Logic availabilityOfPopularModelList() {
+        for (int i = 1; i <= firstRowOfBrands().size(); i++) {
+            linksOfPopularModelList(i).shouldHave(sizeGreaterThan(1));
+            for (int j = 0; j < linksOfPopularModelList(i).size(); j++) {
+                linksOfPopularModelList(i).get(j).shouldHave(attribute("href"));
+            }
+        }
+        return this;
+    }
+
+
+    @Step("select popular model from TOP brands block .LKW_Category_page")
+    public LKW_Category_car_list_page_Logic selectPopularModel(int positionOfBrand, int positionOfModel) {
+        linksOfPopularModelList(positionOfBrand).get(positionOfModel).click();
+        return page(LKW_Category_car_list_page_Logic.class);
+    }
+
+
+    @Step("visibility of advantage block .LKW_Category_page")
+    public LKW_Category_page_Logic visibilityOfAdvantageBlock() {
+        advantageBlock().shouldBe(visible);
         return this;
     }
 }

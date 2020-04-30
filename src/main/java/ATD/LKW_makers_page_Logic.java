@@ -1,11 +1,21 @@
 package ATD;
 
 import io.qameta.allure.Step;
+import org.testng.Assert;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class LKW_makers_page_Logic extends LKW_makers_page {
+
+    @Step("Check successfully LKW_makers page loading .LKW_makers_page")
+    public LKW_makers_page_Logic checkSuccessfullyLKWMakersPageLoading() {
+        brandsListBlock().shouldBe(visible);
+        Assert.assertTrue(url().contains("https://lkwteile.autodoc.de/lastkraftwagen"));
+        return this;
+    }
+
     @Step("visibility of headline of selector and icon of truck  .LKW_makers_page")
     public LKW_makers_page_Logic visibilityOfHeadLineSelectorAndIconOfTruck(String selectTruck) {
         iconOfTruckInHeadlineOfSelector().shouldBe(visible);
