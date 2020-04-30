@@ -100,7 +100,7 @@ public class Categories_page_Logic extends Categories_page {
       return this;
     }
 
-    @Step("Get All Child Categories From Catalog Dropdown Menu")
+    @Step("Get All Child Categories From Catalog Dropdown Menu. Categories_page")
     public ArrayList<String> getAllChildCategoriesFromCatalogDropdownMenu() throws Exception {
         catalogInHeader().click();
         Thread.sleep(5000);
@@ -113,8 +113,8 @@ public class Categories_page_Logic extends Categories_page {
         return listWithCategoriesInDropdownCatalog;
     }
 
-    @Step("Get All Parent Categories From Catalog Dropdown Menu")
-    public ArrayList<String> getAllParentCategoriesFromCatalogDropdownMenu() throws Exception {
+    @Step("Get All Parent Categories From Catalog Dropdown Menu. Categories_page")
+    public ArrayList<String> getAllParentCategoriesFromCatalogDropdownMenu() {
       ArrayList<String> listWithCategoriesInDropdownCatalog = new ArrayList<>();
         for (int i = 0; i < firstListInDropdownCatalog().size(); i++) {
           listWithCategoriesInDropdownCatalog.add(firstListInDropdownCatalog().get(i).attr("data-for-first-list"));
@@ -128,20 +128,34 @@ public class Categories_page_Logic extends Categories_page {
       return listWithCategoriesInDropdownCatalog;
     }
 
-    @Step("Compare categories from catalog and AWS")
+    @Step("Compare categories from catalog and AWS. Categories_page")
     public Categories_page_Logic compareCategoriesFromCatalogAndAWS(ArrayList<String> listFromCatalog, ArrayList<String> listFromAWS) {
       Assert.assertEquals(listFromCatalog, listFromAWS);
       return this;
     }
 
-  @Step("Get All Parent Categories From Tecdoc Catalog")
-  public ArrayList<String> getAllParentCategoriesFromTecdocCatalog() throws Exception {
+  @Step("Get All Parent Categories From Tecdoc Catalog. Categories_page")
+  public ArrayList<String> getAllParentCategoriesFromTecdocCatalog() {
     ArrayList<String> listWithCategoriesInTecdocCatalog = new ArrayList<>();
     for (int i = 0; i < parentCategoriesTecdocName().size(); i++) {
-      listWithCategoriesInTecdocCatalog.add(parentCategoriesTecdocName().get(i).text());
+      listWithCategoriesInTecdocCatalog.add(parentCategoriesTecdocName().get(i).text().trim());
     }
     String tyresParentName = "Reifen";
     listWithCategoriesInTecdocCatalog.remove(tyresParentName);
+    System.out.println(listWithCategoriesInTecdocCatalog.size());
+    for (int i = 0; i < listWithCategoriesInTecdocCatalog.size(); i++) {
+      System.out.println(listWithCategoriesInTecdocCatalog.get(i));
+    }
+    return listWithCategoriesInTecdocCatalog;
+  }
+
+  @Step("Get All Child Categories From Tecdoc Catalog. Categories_page")
+  public ArrayList<String> getAllChildCategoriesFromTecdocCatalog() {
+    ArrayList<String> listWithCategoriesInTecdocCatalog = new ArrayList<>();
+    for (int i = 0; i < childCategoriesTecdocName().size(); i++) {
+      System.out.println(childCategoriesTecdocName().get(i).attr("alt").trim());
+      listWithCategoriesInTecdocCatalog.add(childCategoriesTecdocName().get(i).attr("alt").trim());
+    }
     System.out.println(listWithCategoriesInTecdocCatalog.size());
     for (int i = 0; i < listWithCategoriesInTecdocCatalog.size(); i++) {
       System.out.println(listWithCategoriesInTecdocCatalog.get(i));
