@@ -40,4 +40,10 @@ public class LKW_makers_page_Logic extends LKW_makers_page {
         }
         return this;
     }
+
+    @Step("check transition at icon of truck brands in TOP brands block .LKW_makers_page")
+    public LKW_Categories_maker_page_Logic checkTransitionAtIconOfTruckBrand() {
+        brandOfTruckInTopBlock("MERCEDES-BENZ").click();
+        return page(LKW_Categories_maker_page_Logic.class);
+    }
 }

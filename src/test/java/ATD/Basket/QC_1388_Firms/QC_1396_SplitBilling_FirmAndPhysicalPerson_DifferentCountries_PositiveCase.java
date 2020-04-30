@@ -23,14 +23,15 @@ import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.switchTo;
 
-public class QC_1393_SplitBilling_FirmAndPhysicalPerson_SameCountries_PositiveCase {
+public class QC_1396_SplitBilling_FirmAndPhysicalPerson_DifferentCountries_PositiveCase {
 
     private double regularProductPricePerAllDataPageGB, priceWithVatPerAllDataPageGB, priceProductPerProductPageGB,
-                   totalPriceGB, totalPriceAWSOrderGB, totalPriceInEmailGB, sellingPriceAWSOrderGB, prunedProductPriceGB, prunedPriceWithVatGB;
-    private String emailGB = "qc_1393_autotestGB@mailinator.com", vatForGB, orderNumberGB;
+            totalPriceGB, totalPriceAWSOrderGB, totalPriceInEmailGB, sellingPriceAWSOrderGB, prunedProductPriceGB, prunedPriceWithVatGB, unitPriceGB;
+    private String emailGB = "qc_1396_autotestGB@mailinator.com", vatForGB, orderNumberGB;
 
     private Product_page_Logic product_page_logic = new Product_page_Logic();
     private CartAllData_page_Logic cartAllData_page_logic = new CartAllData_page_Logic();
+    private Mailinator mailinator = new Mailinator();
 
     @BeforeClass
     void setUp() {
@@ -46,26 +47,26 @@ public class QC_1393_SplitBilling_FirmAndPhysicalPerson_SameCountries_PositiveCa
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks the successful execution of an order with split billing, firm and physical person, " +
-                         "same countries, for EN shop. Positive Case")
-    public void testSuccessfulPlacementOfOrder_SplitBillingAndPhysicalPerson_EN(String routeEN) {
+            "Different Countries, for EN shop. Positive Case")
+    public void testSuccessfulPlacementOfOrder_FirmAndPhysicalPerson_DifferentCountries_EN(String routeEN) {
         vatForGB = new PageVAT_aws().getVatForGB();
         openPage(routeEN);
-        String shop = getCurrentShopFromJSVarInHTML();
         priceWithVatPerAllDataPageGB = product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
                 .signIn(emailGB, password)
+                .fillAllFieldsAndFirmForShipping("EN", "YO10 4NT", "Gear4music Limited", "York")
+                .fillFieldIdCompanyShipping("552033282")
                 .clickCheckboxBilling()
-                .fillAllFields(shop)
-                .fillAllFieldsAndFirmForBilling(shop, "YO10 4NT", "York", "Gear4music Limited")
-                .fillFieldIdCompanyBilling("552033282")
+                .chooseDeliveryCountryForBilling("PL")
+                .fillingPostalCodeFieldJSForBilling("11111")
                 .nextBtnClick()
                 .chosseUnicreditBank()
                 .nextBtnClick()
-                .checkTextInDeliveryAddressInfoBlock("autotest autotest")
-                .checkTextInPayersAddressInfoBlock("Company Gear4music Limited")
                 .checkAbsenceOfVatPercentage()
+                .checkTextInDeliveryAddressInfoBlock("Company Gear4music Limited")
+                .checkTextInPayersAddressInfoBlock("autotest autotest")
                 .getPriceIncludingVatForEnShop(vatForGB);
         prunedPriceWithVatGB = cutPriceToFirstDecimalPlace(priceWithVatPerAllDataPageGB);
         cartAllData_page_logic.transitionToProductPage();
@@ -97,19 +98,21 @@ public class QC_1393_SplitBilling_FirmAndPhysicalPerson_SameCountries_PositiveCa
         new Customer_view_aws().checkPresenceBlockLogsCompanyNumbers()
                 .checkIdCompanyInBlockLogsCompanyNumbers("GB552033282")
                 .checkResponseInBlockLogsCompanyNumbers("success(200)")
-                .checkBillingOrShippingInBlockLogsCompanyNumbers("billing");
-        totalPriceInEmailGB = new Mailinator().openEmail("qc_1393_autotestGB@mailinator.com")
+                .checkBillingOrShippingInBlockLogsCompanyNumbers("shipping");
+        totalPriceInEmailGB = mailinator.openEmail("qc_1396_autotestGB@mailinator.com")
                 .openLetter(1)
                 .checkAbsenceVatPercentageInEmail()
-                .checkFirstFirmNameInEmail("Gear4music Limited")
+                .checkSecondFirmNameInEmail("Gear4music Limited")
                 .getTotalPriceInEmailForENShop();
         Assert.assertEquals(totalPriceGB, totalPriceInEmailGB);
+        unitPriceGB = mailinator.getUnitPriceForEnShop();
+        Assert.assertEquals(regularProductPricePerAllDataPageGB, unitPriceGB);
     }
 
 
     private double regularProductPricePerAllDataPageDE, priceWithVatPerAllDataPageDE, priceProductPerProductPageDE,
-            totalPriceDE, totalPriceAWSOrderDE, totalPriceInEmailDE, sellingPriceAWSOrderDE, prunedProductPriceDE, prunedPriceWithVatDE;
-    private String emailDE = "qc_1393_autotestDE@mailinator.com", vatForDE, orderNumberDE;
+            totalPriceDE, totalPriceAWSOrderDE, totalPriceInEmailDE, sellingPriceAWSOrderDE, prunedProductPriceDE, prunedPriceWithVatDE, unitPriceDE;
+    private String emailDE = "qc_1396_autotestDE@mailinator.com", vatForDE, orderNumberDE;
 
 
     @DataProvider(name = "routeDE", parallel = true)
@@ -120,27 +123,27 @@ public class QC_1393_SplitBilling_FirmAndPhysicalPerson_SameCountries_PositiveCa
     @Test(dataProvider = "routeDE")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks the successful execution of an order with split billing and physical person, " +
-            "same countries, for DE shop. Positive Case")
-    public void testSuccessfulPlacementOfOrder_SplitBillingAndPhysicalPerson_DE(String routeDE) {
+    @Description(value = "Test checks the successful execution of an order with split billing, firm and physical person, " +
+                         "Different Countries, for DE shop. Positive Case. Positive Case")
+    public void testSuccessfulPlacementOfOrder_NonSplitBillingAndShipping_DE(String routeDE) {
         vatForDE = new PageVAT_aws().getVatForDE();
         openPage(routeDE);
-        String shop = getCurrentShopFromJSVarInHTML();
         priceWithVatPerAllDataPageDE = product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
                 .signIn(emailDE, password)
+                .fillAllFieldsAndFirmForShipping("EN", "YO10 4NT", "Gear4music Limited", "York")
+                .fillFieldIdCompanyShipping("552033282")
                 .clickCheckboxBilling()
-                .fillAllFields("EN")
-                .fillAllFieldsAndFirmForBilling("EN", "YO10 4NT", "York", "Gear4music Limited")
-                .fillFieldIdCompanyBilling("552033282")
+                .chooseDeliveryCountryForBilling("PL")
+                .fillingPostalCodeFieldJSForBilling("11111")
                 .nextBtnClick()
                 .chooseVorkasse()
                 .nextBtnClick()
-                .checkTextInDeliveryAddressInfoBlock("autotest autotest")
-                .checkTextInPayersAddressInfoBlock("Firma Gear4music Limited")
                 .checkAbsenceOfVatPercentage()
+                .checkTextInDeliveryAddressInfoBlock("Firma Gear4music Limited")
+                .checkTextInPayersAddressInfoBlock("autotest autotest")
                 .getPriceIncludingVatForDeShop(vatForDE);
         prunedPriceWithVatDE = cutPriceToFirstDecimalPlace(priceWithVatPerAllDataPageDE);
         cartAllData_page_logic.transitionToProductPage();
@@ -172,14 +175,17 @@ public class QC_1393_SplitBilling_FirmAndPhysicalPerson_SameCountries_PositiveCa
         new Customer_view_aws().checkPresenceBlockLogsCompanyNumbers()
                 .checkIdCompanyInBlockLogsCompanyNumbers("GB552033282")
                 .checkResponseInBlockLogsCompanyNumbers("success(200)")
-                .checkBillingOrShippingInBlockLogsCompanyNumbers("billing");
-        totalPriceInEmailDE = new Mailinator().openEmail("qc_1393_autotestDE@mailinator.com")
+                .checkBillingOrShippingInBlockLogsCompanyNumbers("shipping");
+        totalPriceInEmailDE = mailinator.openEmail("qc_1396_autotestDE@mailinator.com")
                 .openLetter(1)
                 .checkAbsenceVatPercentageInEmail()
-                .checkFirstFirmNameInEmail("Gear4music Limited")
+                .checkSecondFirmNameInEmail("Gear4music Limited")
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPriceDE, totalPriceInEmailDE);
+        unitPriceDE = mailinator.getUnitPriceInEmail();
+        Assert.assertEquals(regularProductPricePerAllDataPageDE, unitPriceDE);
     }
+
 
     @AfterMethod
     private void tearDown() {

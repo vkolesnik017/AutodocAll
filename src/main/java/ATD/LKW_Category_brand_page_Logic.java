@@ -83,4 +83,10 @@ public class LKW_Category_brand_page_Logic extends LKW_Category_brand_page {
         buttonSuchenOfVerticaltruckSelector().click();
        return page(LKW_Category_car_list_page_Logic.class);
     }
+
+    @Step("check transition at icon of truck brands in TOP brands block .LKW_Category_brand_page")
+    public LKW_Category_maker_brand_page_Logic checkTransitionAtIconOfTruckBrand() {
+        brandOfTruckInTopBlock().shouldBe(visible).click();
+        return page(LKW_Category_maker_brand_page_Logic.class);
+    }
 }

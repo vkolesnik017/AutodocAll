@@ -110,6 +110,8 @@
         <classes>
             <class name="LKW_trucks.QC_27_BlockOfBrandsAndModelsOfCarManufacturers.QC_28_AvailabilityOfHeadlineForBrandsAndModelsBlocks"/>
             <class name="LKW_trucks.QC_27_BlockOfBrandsAndModelsOfCarManufacturers.QC_29_AvailabilityOfBrandAndModelBlocks"/>
+            <class name="LKW_trucks.QC_27_BlockOfBrandsAndModelsOfCarManufacturers.QC_30_TransitionByClickAtBrandAndModel"/>
+            <class name="LKW_trucks.QC_27_BlockOfBrandsAndModelsOfCarManufacturers.QC_31_OpportunityToOpenAndCloseBrandBlock"/>
         </classes>
     </test>
 
