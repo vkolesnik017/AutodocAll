@@ -54,6 +54,10 @@ public class Mailinator {
         return $x("//table[@class='to-column-table']//p[@class='to-column-table__title']/following-sibling::b");
     }
 
+    private SelenideElement namePhysicalPersonInEmail() {
+        return $x("//table[@class='to-column-table to-column-table--border']//p[@class='to-column-table__text']/following-sibling::p");
+    }
+
     @Step("Checks text {firmName} in first company name in email. Mailinator")
     public Mailinator checkFirstFirmNameInEmail(String firmName) {
       firstFirmNameInEmail().shouldHave(text(firmName));
@@ -63,6 +67,12 @@ public class Mailinator {
     @Step("Checks text {firmName} in second company name in email. Mailinator")
     public Mailinator checkSecondFirmNameInEmail(String firmName) {
         secondFirmNameInEmail().shouldHave(text(firmName));
+        return this;
+    }
+
+    @Step("Checks text {namePhysicalPerson} in physical person name in email. Mailinator")
+    public Mailinator checkNamePhysicalPersonInEmail(String namePhysicalPerson) {
+        namePhysicalPersonInEmail().shouldHave(text(namePhysicalPerson));
         return this;
     }
 
