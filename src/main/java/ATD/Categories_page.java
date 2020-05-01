@@ -44,5 +44,8 @@ public class Categories_page {
 
     ElementsCollection parentCategoriesTecdocName() { return $$x("//*[@class='list_ersats_n list-ersatz-n--catalog']//span[@class='name']"); }
 
+//    ElementsCollection childCategoriesTecdocName() { return $$x("//*[@class='list_links']/li//img/../span"); }
+
+    ElementsCollection childCategoriesTecdocName() { return $$x("//*[@class='list_links']/li//img"); }
 
 }
