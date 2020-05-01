@@ -139,4 +139,10 @@ public class LKW_Category_maker_brand_page_Logic extends LKW_Category_maker_bran
         modelOfTruckInTopBlock("F 10").shouldBe(visible).click();
         return page(LKW_Category_model_brand_page_Logic.class);
     }
+
+    @Step("visibility of headline of TOP products block .LKW_Category_maker_brand_page")
+    public LKW_Category_maker_brand_page_Logic visibilityOfHeadlineOfTopProductsBlock() {
+        headlineOfTopProductsBlock().shouldBe(visible);
+        return this;
+    }
 }

@@ -392,4 +392,10 @@ public class LKW_main_page_Logic extends LKW_main_page {
         brandOfTruckInTopBlock("MERCEDES-BENZ").click();
         return page(LKW_Categories_maker_page_Logic.class);
     }
+
+    @Step("visibility of headline of TOP products block .LKW_main_page")
+    public LKW_main_page_Logic visibilityOfHeadlineOfTopProductsBlock() {
+        headlineOfTopProductsBlock().shouldBe(visible);
+        return this;
+    }
 }

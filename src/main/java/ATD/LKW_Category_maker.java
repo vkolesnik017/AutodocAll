@@ -106,4 +106,8 @@ class LKW_Category_maker {
     ElementsCollection modelsOfTruckInBlock() {return $$x("//div[@class='lkw_top_models']//li").filter(visible);}
 
     SelenideElement linkLessOfModelsBlock() {return $x("//div[@class='m_text hide']");}
+
+    SelenideElement headlineOfAdvantageBlock() {return $x("//div[@class='autoteile-features__title']");}
+
+    ElementsCollection advantagesInBlock() {return  $$x("//ul[@class='autoteile-features__list']//li");}
 }
