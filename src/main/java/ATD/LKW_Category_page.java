@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 class LKW_Category_page {
     SelenideElement imageOfChildCategory() {
-        return $x("//div[@class='autoteile-top-content__image']");
+        return $x("//div[@class='autoteile-top-content__image']/img");
     }
 
     ElementsCollection breadCrumbsLinks() {
@@ -108,5 +108,29 @@ class LKW_Category_page {
         return $$x("//div[@class='kategorie_top_autos']//ul[1]/li[" + position + "]//ul//a");
     }
 
-    SelenideElement advantageBlock() {return $x("//div[@class='autoteile-features']");}
+    SelenideElement advantageBlock() {
+        return $x("//div[@class='autoteile-features']");
+    }
+
+    SelenideElement headlineOfAdvantageBlock() {
+        return $x("//div[@class='autoteile-features']/b");
+    }
+
+    ElementsCollection advantagesInBlock() {
+        return $$x("//ul[@class='autoteile-features__list']//li");
+    }
+
+    ElementsCollection tooltipOfAdvantage() {
+        return $$x("//div[@class='tooltip-container']");
+    }
+
+    ElementsCollection imageOfAdvantageInBlock() {
+        return $$x("//ul[@class='autoteile-features__list']//li//img");
+    }
+
+    ElementsCollection titleOfAdvantageInBlock() {
+        return $$x("//ul[@class='autoteile-features__list']//li/span");
+    }
+
+    SelenideElement headlineOfTopProductsBlock() {return $x("//div[@class='title_list no_border_top'] ");}
 }

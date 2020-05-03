@@ -9,8 +9,7 @@ import java.util.List;
 
 import static com.codeborne.selenide.CollectionCondition.*;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.back;
-import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class LKW_Category_page_Logic extends LKW_Category_page {
@@ -173,17 +172,60 @@ public class LKW_Category_page_Logic extends LKW_Category_page {
         return this;
     }
 
-
     @Step("select popular model from TOP brands block .LKW_Category_page")
     public LKW_Category_car_list_page_Logic selectPopularModel(int positionOfBrand, int positionOfModel) {
         linksOfPopularModelList(positionOfBrand).get(positionOfModel).click();
         return page(LKW_Category_car_list_page_Logic.class);
     }
 
-
     @Step("visibility of advantage block .LKW_Category_page")
     public LKW_Category_page_Logic visibilityOfAdvantageBlock() {
         advantageBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("presence of headline and two advantages in Advantage block .LKW_Category_page")
+    public LKW_Category_page_Logic presenceOfHeadlineAndAdvantagesInBlock() {
+        headlineOfAdvantageBlock().shouldBe(visible);
+        advantagesInBlock().shouldHaveSize(2);
+        return this;
+    }
+
+
+    @Step("appearance of tooltip when you hover on advantage .LKW_Category_page")
+    public LKW_Category_page_Logic visibilityOfTooltips() {
+        for (int i = 0; i < imageOfAdvantageInBlock().size(); i++) {
+            imageOfAdvantageInBlock().get(i).hover();
+            tooltipOfAdvantage().get(i).should(appear);
+        }
+        return this;
+    }
+
+    @Step("visibility of main elements in advantage block .LKW_Category_page")
+    public LKW_Category_page_Logic visibilityOfElementsInAdvantageBlock() {
+        for (int i = 0; i < imageOfAdvantageInBlock().size(); i++) {
+            imageOfAdvantageInBlock().get(i).shouldBe(visible);
+            titleOfAdvantageInBlock().get(i).shouldBe(visible);
+        }
+        return this;
+    }
+
+
+    @Step("visibility of main image in advantage block .LKW_Category_page")
+    public LKW_Category_page_Logic visibilityOfMainImageInAdvantageBlock() {
+        imageOfChildCategory().shouldBe(visible);
+        int widthOfChildImage = imageOfChildCategory().getSize().getWidth();
+        int heightOfChildImage = imageOfChildCategory().getSize().getHeight();
+        Assert.assertEquals(widthOfChildImage, 200);
+        Assert.assertEquals(heightOfChildImage, 200);
+        return this;
+    }
+
+
+
+    @Step("visibility of headline of TOP products block .LKW_Category_page")
+    public LKW_Category_page_Logic visibilityOfHeadlineOfTopProductsBlock() {
+        headlineOfTopProductsBlock().shouldBe(visible);
         return this;
     }
 }

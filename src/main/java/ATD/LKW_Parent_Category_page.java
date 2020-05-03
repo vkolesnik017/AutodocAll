@@ -102,4 +102,8 @@ public class LKW_Parent_Category_page {
     SelenideElement buttonSuchenOfVerticaltruckSelector() {
         return $x("//a[@class='truck_submit js--lkw_selector-btn-submit']");
     }
+
+    SelenideElement headlineOfTopProductsBlock() {return $x("//div[@class='title_list']");}
+
+    SelenideElement textForHeadlineOfTopProductsBlock() {return $x("//span[@class='more_text']");}
 }

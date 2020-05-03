@@ -113,5 +113,12 @@ public class LKW_Parent_Category_page_Logic extends LKW_Parent_Category_page {
     }
 
 
+    @Step("visibility of headline of TOP products block .LKW_Parent_Category_page")
+    public LKW_Parent_Category_page_Logic visibilityOfHeadlineOfTopProductsBlock() {
+        headlineOfTopProductsBlock().shouldBe(visible);
+        textForHeadlineOfTopProductsBlock().shouldBe(visible);
+        return this;
+    }
+
 
 }

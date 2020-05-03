@@ -229,6 +229,8 @@ public class LKW_main_page {
     }
 
     SelenideElement brandOfTruckInTopBlock(String brand) {return $x("//span[contains(text(),'"+brand+"')]/ancestor::a[@class='truck-home-cars__link']");}
+
+    SelenideElement headlineOfTopProductsBlock() {return $x("//div[@class='truck-home-top-products']/h3");}
 }
 
 
