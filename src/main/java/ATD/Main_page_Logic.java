@@ -514,6 +514,7 @@ public class Main_page_Logic extends Main_page {
     @Step("Click Contact link in the footer. Main_page")
     public Contact_static_page_Logic clickContact() {
         contactLink().click();
+        closeCookiesFooterMessage();
         return page(Contact_static_page_Logic.class);
     }
 
@@ -526,6 +527,7 @@ public class Main_page_Logic extends Main_page {
     @Step("Click Austauschartikel link in the footer. Main_page")
     public Austauschartikel_static_page_Logic clickAustauschartikel() {
         austauschartikelLink().click();
+        closeCookiesFooterMessage();
         return page(Austauschartikel_static_page_Logic.class);
     }
 
