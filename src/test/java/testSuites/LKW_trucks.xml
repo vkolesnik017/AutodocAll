@@ -139,6 +139,7 @@
     <test name="QC_73_TopProductsBlock">
         <classes>
             <class name="LKW_trucks.QC_73_TopProductsBlock.QC_74_HeadlineOfTopProductsBlock"/>
+            <class name="LKW_trucks.QC_73_TopProductsBlock.QC_75_ProductsCountInTopBlock"/>
         </classes>
     </test>
 
