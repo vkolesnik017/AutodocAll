@@ -203,6 +203,9 @@ public class CommonMethods {
     // method for test adding product to basket from all routes
     public static void clickOfBuyBtnForAllPages() {
         SelenideElement productBlockForHover = $(byCssSelector(".rec_products_block"));
+        SelenideElement avaliablePopup = $(".popup-available");
+        SelenideElement thirdProductInBlockForHover = $x("//div[3][@class='rec_products_block']");
+        SelenideElement thirdProductBuyButton = $x("(//a[contains(@class,'add_')])[3]");
         try {
             sleep(2000); // TODO try delete this sleep if fixed SITES-2830
             if (productBlockForHover.isDisplayed()) {
@@ -210,6 +213,12 @@ public class CommonMethods {
             }
             sleep(3000); // TODO try delete this sleep if fixed SITES-2830
             universalElementOfBuyBtnForAllPages().waitUntil(visible, 2000).click();
+            sleep(2000);
+            if (avaliablePopup.is(visible)) {
+                new Listing_page_Logic().closePopupByClickOverlayOnListingSearch();
+                thirdProductInBlockForHover.hover();
+                thirdProductBuyButton.click();
+            }
         } catch (ElementShould e) {
             try {
                 $(byXpath("//div[@class='top-small-products__items']//a[contains(@class,'add_')]")).waitUntil(visible, 3000).click();
