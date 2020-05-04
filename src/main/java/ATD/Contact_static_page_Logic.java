@@ -69,6 +69,7 @@ public class Contact_static_page_Logic extends Contact_static_page {
         haveOrderBlock().shouldNotBe(visible);
         haveOrderButton().click();
         haveOrderBlock().shouldBe(visible);
+        sleep(2000);
         submitOrderButton().click();
         orderIdError().shouldBe(visible);
         phoneNumberError().shouldBe(visible);

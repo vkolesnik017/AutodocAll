@@ -97,9 +97,9 @@ public class Cart_page_Logic extends Cart_page {
 
     }
 
-    @Step("check of id added product to basket from listing. Cart_page")
-    public Cart_page_Logic checkOfIdAddedProductInBasket(String idOfProductFromListing) {
-        idOfAddedProduct().shouldHave(attribute("data-article_id", idOfProductFromListing));
+    @Step("Check of id {idOfProduct} added product to basket. Cart_page")
+    public Cart_page_Logic checkOfIdAddedProductInBasket(String idOfProduct) {
+        idOfAddedProduct().shouldHave(attribute("data-article_id", idOfProduct));
         return this;
     }
 

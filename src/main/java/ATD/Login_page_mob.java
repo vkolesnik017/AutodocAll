@@ -20,7 +20,7 @@ class Login_page_mob {
     }
 
     SelenideElement footerPopup() {
-        return $(By.xpath("//div[@class='cps_app position_bottom']/a[1]"));
+        return $(By.xpath("//div[@class='cps_app hidden position_bottom']/a[1]"));
     }
 
 }
