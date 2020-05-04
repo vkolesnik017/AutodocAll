@@ -627,4 +627,10 @@ public class Product_page_Logic extends Product_page {
         Double doublePrise = Double.parseDouble(productPrice);
         return doublePrise;
     }
+
+    @Step("Get product ID. Product_page")
+        public String getProductId() {
+        String productId = productId().getAttribute("id");
+        return productId;
+    }
 }
