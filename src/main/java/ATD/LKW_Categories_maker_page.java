@@ -130,4 +130,6 @@ class LKW_Categories_maker_page {
     SelenideElement resetBtnInVerticalCarSelector() {return $x("//a[@class='block-select-car__update hidden js--btn_reset_form']");}
 
     SelenideElement modelOfTruckInTopBlock(String model) {return $x("//div[@class='lkw_top_models']//span[contains(text(),'"+model+"')]");}
+
+    SelenideElement  headlineOfTopProductsBlock() {return $x("//div[@class='top-small-products__title']");}
 }

@@ -262,7 +262,7 @@ public class LKW_main_page_Logic extends LKW_main_page {
 
     @Step("check of transition to Child category without car .LKW_main_page")
     public LKW_Category_page_Logic goToChildCategoryWithOutCar() {
-        childCategoryInParentCategoryBLock("Ölfilter").click();
+        childCategoryInParentCategoryBLock("Ölfilter").scrollIntoView("{block: \"center\"}").click();
         return page(LKW_Category_page_Logic.class);
     }
 
@@ -334,7 +334,7 @@ public class LKW_main_page_Logic extends LKW_main_page {
 
     @Step("go to lkw_makers route .LKW_main_page")
     public LKW_makers_page_Logic goToAllTruckBrandsPage() {
-        btnAllTruckBrands().click();
+        btnAllTruckBrands().scrollIntoView("{block: \"center\"}").click();
         return page(LKW_makers_page_Logic.class);
     }
 
@@ -391,5 +391,11 @@ public class LKW_main_page_Logic extends LKW_main_page {
     public LKW_Categories_maker_page_Logic checkTransitionAtIconOfTruckBrand() {
         brandOfTruckInTopBlock("MERCEDES-BENZ").click();
         return page(LKW_Categories_maker_page_Logic.class);
+    }
+
+    @Step("visibility of headline of TOP products block .LKW_main_page")
+    public LKW_main_page_Logic visibilityOfHeadlineOfTopProductsBlock() {
+        headlineOfTopProductsBlock().shouldBe(visible);
+        return this;
     }
 }

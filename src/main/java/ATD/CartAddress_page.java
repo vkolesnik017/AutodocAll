@@ -121,6 +121,14 @@ public class CartAddress_page {
         return $x("//div[@class='cart-popup ']");
     }
 
+    SelenideElement fixBtnInPopupAboutWrongCompany() {
+        return $x("//a[@class='color close_popup stay']");
+    }
+
+    SelenideElement continueBtnInPopupAboutWrongCompany() {
+        return $x("//a[@class='color close_popup continue']");
+    }
+
     SelenideElement btnEinkaufFortsetzenFromPopupErrorAboutWrongCompany() {
         return $x("//div[@class='popup-content__buttons']//a[2]");
     }

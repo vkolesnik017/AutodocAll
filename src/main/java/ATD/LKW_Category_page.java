@@ -1,17 +1,15 @@
 package ATD;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.Selenide.$;
 
 class LKW_Category_page {
     SelenideElement imageOfChildCategory() {
-        return $x("//div[@class='autoteile-top-content__image']");
+        return $x("//div[@class='autoteile-top-content__image']/img");
     }
 
     ElementsCollection breadCrumbsLinks() {
@@ -70,19 +68,69 @@ class LKW_Category_page {
         return $x("//a[@class='truck_submit js--lkw_selector-btn-submit']");
     }
 
-    SelenideElement headlineOfTopBlockBrands() {return $x("//h3[@class='title_list no_border_top']");}
+    SelenideElement headlineOfTopBlockBrands() {
+        return $x("//h3[@class='title_list no_border_top']");
+    }
 
-    SelenideElement topBrandsBlock() {return  $x("//div[@class='kategorie_top_autos']");}
+    SelenideElement topBrandsBlock() {
+        return $x("//div[@class='kategorie_top_autos']");
+    }
 
-    ElementsCollection brandsInTopBrandsBlock() {return  $$x("//div[@class='kategorie_top_autos']//li").filter(visible);}
+    ElementsCollection brandsInTopBrandsBlock() {
+        return $$x("//div[@class='kategorie_top_autos']//li").filter(visible);
+    }
 
-    ElementsCollection imageOfBrandsInTopBrandsBlock() {return  $$x("//div[@class='kategorie_top_autos']//li//img").filter(visible);}
+    ElementsCollection imageOfBrandsInTopBrandsBlock() {
+        return $$x("//div[@class='kategorie_top_autos']//li//img").filter(visible);
+    }
 
-    SelenideElement brandOfTruckInTopBlock() {return $x("//div[@class='kategorie_top_autos']/ul/li[1]/a");}
+    SelenideElement brandOfTruckInTopBlock() {
+        return $x("//div[@class='kategorie_top_autos']/ul/li[1]/a");
+    }
 
-    SelenideElement linkMoreOfTopBrandBlock() {return $x("//div[@class='kategorie_top_autos']//span[contains(text(),'Mehr')]");}
+    SelenideElement linkMoreOfTopBrandBlock() {
+        return $x("//div[@class='kategorie_top_autos']//span[contains(text(),'Mehr')]");
+    }
 
-    SelenideElement linkLessOfTopBrandBlock() {return $x("//div[@class='m_text hide']");}
+    SelenideElement linkLessOfTopBrandBlock() {
+        return $x("//div[@class='m_text hide']");
+    }
 
-    ElementsCollection brandsOfTruckInBlock() {return $$x("//div[@class='kategorie_top_autos']//li//img").filter(visible);}
+    ElementsCollection brandsOfTruckInBlock() {
+        return $$x("//div[@class='kategorie_top_autos']//li//img").filter(visible);
+    }
+
+    ElementsCollection firstRowOfBrands() {
+        return $$x("//div[@class='kategorie_top_autos']//ul[1]//img");
+    }
+
+    ElementsCollection linksOfPopularModelList(int position) {
+        return $$x("//div[@class='kategorie_top_autos']//ul[1]/li[" + position + "]//ul//a");
+    }
+
+    SelenideElement advantageBlock() {
+        return $x("//div[@class='autoteile-features']");
+    }
+
+    SelenideElement headlineOfAdvantageBlock() {
+        return $x("//div[@class='autoteile-features']/b");
+    }
+
+    ElementsCollection advantagesInBlock() {
+        return $$x("//ul[@class='autoteile-features__list']//li");
+    }
+
+    ElementsCollection tooltipOfAdvantage() {
+        return $$x("//div[@class='tooltip-container']");
+    }
+
+    ElementsCollection imageOfAdvantageInBlock() {
+        return $$x("//ul[@class='autoteile-features__list']//li//img");
+    }
+
+    ElementsCollection titleOfAdvantageInBlock() {
+        return $$x("//ul[@class='autoteile-features__list']//li/span");
+    }
+
+    SelenideElement headlineOfTopProductsBlock() {return $x("//div[@class='title_list no_border_top'] ");}
 }

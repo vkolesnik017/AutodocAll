@@ -166,5 +166,10 @@ public class LKW_Category_maker_Logic extends LKW_Category_maker {
         modelsOfTruckInBlock().shouldHaveSize(6);
         return this;
     }
-
+    @Step("presence of headline and two advantages in Advantage block .LKW_Category_maker")
+    public LKW_Category_maker_Logic presenceOfHeadlineAndAdvantagesInBlock() {
+        headlineOfAdvantageBlock().shouldBe(visible);
+        advantagesInBlock().shouldHaveSize(2);
+        return this;
+    }
 }
