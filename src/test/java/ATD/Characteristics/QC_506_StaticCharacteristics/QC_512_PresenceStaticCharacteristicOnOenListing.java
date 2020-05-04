@@ -1,6 +1,7 @@
 package ATD.Characteristics.QC_506_StaticCharacteristics;
 
 import ATD.CommonMethods;
+import ATD.DataBase;
 import ATD.Listing_page_Logic;
 import ATD.SetUp;
 import com.codeborne.selenide.ElementsCollection;
@@ -33,11 +34,11 @@ public class QC_512_PresenceStaticCharacteristicOnOenListing {
         return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_oen4");
     }
 
-    @Test(dataProvider = "routes")
+    @Test
     @Flaky
     @Owner(value = "Evlentiev")
     @Description(value = "Checks presence static characteristics on oen listing")
-    public void testPresenceStaticCharacteristicOnOenListing(String route) {
+    public void testPresenceStaticCharacteristicOnOenListing() throws SQLException {
         ArrayList<String> expectedCharacteristics = new ArrayList<>();
         expectedCharacteristics.add("Einbauseite:\\nHinterachse");
         expectedCharacteristics.add("Durchmesser \\[mm]:\\n239");
@@ -54,7 +55,7 @@ public class QC_512_PresenceStaticCharacteristicOnOenListing {
         expectedCharacteristics.add("Höhe \\[mm]:\\n33,4");
         expectedCharacteristics.add("Bohrung-Ø \\[mm]:\\n15,8");
 
-        openPage(route + "?page=2");
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "category_oen4") + "?page=2");
         String articleProduct = "Artikelnummer: 82B0691";
         ElementsCollection actualCharacteristics = listingPage.getCharacteristicsDesiredProduct(articleProduct);
         new CommonMethods().compareCharacteristics(actualCharacteristics, expectedCharacteristics);
