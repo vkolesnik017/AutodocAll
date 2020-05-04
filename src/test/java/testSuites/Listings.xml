@@ -9,7 +9,7 @@
     <test name="QC_423_ListingOEN">
         <classes>
             <class name="ATD.Listings.QC_423_ListingOEN.QC_424_GoingToRouteCategoryOenFromSearch"/>
-            <class name="ATD.Listings.QC_423_ListingOEN.QC_425_GoingToRouteCategoryOenFromOenNumbersBlockOnProductPage"/>
+            <!--<class name="ATD.Listings.QC_423_ListingOEN.QC_425_GoingToRouteCategoryOenFromOenNumbersBlockOnProductPage"/>-->
             <class name="ATD.Listings.QC_423_ListingOEN.QC_426_PresenceElementsOnOenListing"/>
             <class name="ATD.Listings.QC_423_ListingOEN.QC_439_PresenceAdditionalListingOnSearchPage"/>
         </classes>

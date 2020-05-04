@@ -48,7 +48,7 @@
 
     <test name="FiltersSorting_bySide">
         <classes>
-            <class name="ATD.FiltersSorting.QC_167_FiltersSorting_bySide.QC_168_TestProductOutputWithFilterBySide"/>
+            <!--<class name="ATD.FiltersSorting.QC_167_FiltersSorting_bySide.QC_168_TestProductOutputWithFilterBySide"/>-->
             <!--<class name="ATD.FiltersSorting.QC_167_FiltersSorting_bySide.QC_1548_TestProductOutputWithFilterBySideWithoutCar"/>-->
             <class name="ATD.FiltersSorting.QC_167_FiltersSorting_bySide.QC_1549_TestFilterBySideSlider"/>
         </classes>
