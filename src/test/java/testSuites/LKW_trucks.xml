@@ -129,10 +129,18 @@
     <test name="QC_41_AdvantageBlockAndMainImageOfCategory">
         <classes>
             <class name="LKW_trucks.QC_41_AdvantageBlockAndMainImageOfCategory.QC_43_AvailabilityOfAdvantageBlock"/>
-                   </classes>
+            <class name="LKW_trucks.QC_41_AdvantageBlockAndMainImageOfCategory.QC_45_PresenceOfHeadlineAndAdvantagesInBlock"/>
+            <class name="LKW_trucks.QC_41_AdvantageBlockAndMainImageOfCategory.QC_46_PresenceOfTooltipsInAdvantageBlock"/>
+            <class name="LKW_trucks.QC_41_AdvantageBlockAndMainImageOfCategory.QC_47_ElementsOfAdvantageBlock"/>
+            <class name="LKW_trucks.QC_41_AdvantageBlockAndMainImageOfCategory.QC_48_MainImageOfAdvantageBlock"/>
+        </classes>
     </test>
 
-
+    <test name="QC_73_TopProductsBlock">
+        <classes>
+            <class name="LKW_trucks.QC_73_TopProductsBlock.QC_74_HeadlineOfTopProductsBlock"/>
+        </classes>
+    </test>
 
     <test name="QC_82_AvailabilityOfTruckSelector">
         <classes>

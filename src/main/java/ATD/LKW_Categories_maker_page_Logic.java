@@ -158,4 +158,10 @@ public class LKW_Categories_maker_page_Logic extends LKW_Categories_maker_page {
         modelOfTruckInTopBlock("ACTROS MP4").shouldBe(visible).click();
         return page(LKW_maker_car_list_Logic.class);
     }
+
+    @Step("visibility of headline of TOP products block .LKW_Categories_maker_page")
+    public LKW_Categories_maker_page_Logic visibilityOfHeadlineOfTopProductsBlock() {
+        headlineOfTopProductsBlock().shouldBe(visible);
+       return this;
+    }
 }

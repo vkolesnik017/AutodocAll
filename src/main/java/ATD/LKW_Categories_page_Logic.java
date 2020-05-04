@@ -49,4 +49,10 @@ public class LKW_Categories_page_Logic extends LKW_Categories_page {
         resetBtnInVerticalCarSelectorInOpenCondition().shouldBe(visible).click();
         return this;
     }
+
+    @Step("visibility of headline of TOP products block .LKW_Categories_page")
+    public LKW_Categories_page_Logic visibilityOfHeadlineOfTopProductsBlock() {
+        headlineOfTopProductsBlock().shouldBe(visible);
+        return this;
+    }
 }

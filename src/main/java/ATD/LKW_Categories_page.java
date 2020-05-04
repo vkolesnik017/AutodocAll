@@ -47,4 +47,6 @@ public class LKW_Categories_page {
     SelenideElement resetBtnInVerticalCarSelectorInOpenCondition() {
         return $x("//a[@class='block-select-car__update hidden js--btn_reset_form']");
     }
+
+    SelenideElement headlineOfTopProductsBlock() {return $x("//div[@class='truck-car-parts-top-product__title']");}
 }
