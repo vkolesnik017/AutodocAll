@@ -1,6 +1,7 @@
 package ATD.Characteristics.QC_506_StaticCharacteristics;
 
 import ATD.CommonMethods;
+import ATD.DataBase;
 import ATD.Listing_page_Logic;
 import ATD.SetUp;
 import com.codeborne.selenide.ElementsCollection;
@@ -34,11 +35,11 @@ public class QC_509_PresenceStaticCharacteristicsOnTecDocListing {
         return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list");
     }
 
-    @Test(dataProvider = "routes")
+    @Test
     @Flaky
     @Owner(value = "Evlentiev")
     @Description(value = "Checks presence static characteristics on TecDoc listing")
-    public void testPresenceStaticCharacteristicsOnTecDocListing(String route) {
+    public void testPresenceStaticCharacteristicsOnTecDocListing() throws SQLException {
 
         ArrayList<String> expectedCharacteristics = new ArrayList<>();
         expectedCharacteristics.add("");
@@ -59,7 +60,7 @@ public class QC_509_PresenceStaticCharacteristicsOnTecDocListing {
         expectedCharacteristics.add("Höhe \\[mm]:\\n33,4");
         expectedCharacteristics.add("Bohrung-Ø \\[mm]:\\n15,8");
 
-        openPage(route + "?page=10");
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "category_car_list") + "?page=10");
         String articleProduct = "Artikelnummer: 82B0691";
         ElementsCollection actualCharacteristics = listingPage.getCharacteristicsDesiredProduct(articleProduct);
         commonMethods.compareCharacteristics(actualCharacteristics, expectedCharacteristics);
