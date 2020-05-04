@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$x;
 
 public class Main_page_mob {
 
@@ -25,4 +26,7 @@ public class Main_page_mob {
         return $(byCssSelector(".name.signin"));
     }
 
+    SelenideElement cartIcon() {
+        return $x("//a[@data-gac='Go_to_basket']");
+    }
 }
