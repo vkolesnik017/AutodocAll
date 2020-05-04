@@ -1,8 +1,10 @@
 package ATD;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -125,11 +127,49 @@ class LKW_Categories_maker_page {
         return $$x("//div[@class='lkw_top_models']/ul//li/span");
     }
 
-    SelenideElement markeInVerticalCarSelector() {return $(byName("maker_id"));}
+    SelenideElement markeInVerticalCarSelector() {
+        return $(byName("maker_id"));
+    }
 
-    SelenideElement resetBtnInVerticalCarSelector() {return $x("//a[@class='block-select-car__update hidden js--btn_reset_form']");}
+    SelenideElement resetBtnInVerticalCarSelector() {
+        return $x("//a[@class='block-select-car__update hidden js--btn_reset_form']");
+    }
 
-    SelenideElement modelOfTruckInTopBlock(String model) {return $x("//div[@class='lkw_top_models']//span[contains(text(),'"+model+"')]");}
+    SelenideElement modelOfTruckInTopBlock(String model) {
+        return $x("//div[@class='lkw_top_models']//span[contains(text(),'" + model + "')]");
+    }
 
-    SelenideElement  headlineOfTopProductsBlock() {return $x("//div[@class='top-small-products__title']");}
+    SelenideElement headlineOfTopProductsBlock() {
+        return $x("//div[@class='top-small-products__title']");
+    }
+
+    SelenideElement topProductsBlock() {
+        return $x("//div[@class='top-small-products']");
+    }
+
+    ElementsCollection productsInTopBlock() {
+        return $$x("//div[@class='top-small-products__items']/div");
+    }
+
+    SelenideElement forwardLinkOfTopBLock() {return $x("//a[@class='bx-next']");}
+
+    SelenideElement backLinkOfTopBLock() {return $x("//a[@class='bx-prev']");}
+
+    SelenideElement productsInTopBlockFirstLevel() {
+        return $x("//div[@class='top-small-products__items'][1]");
+    }
+
+    SelenideElement productsInTopBlockSecondLevel() {
+        return $x("//div[@class='top-small-products__items'][2]");
+    }
+
+    ElementsCollection btnAddToBasketTopBLock() {return $$x("//a[@class='ga-click button still_add_to_basket']").filter(visible);}
+
+    SelenideElement basketDropMenu() {
+        return $x("//div[@class='cart-items-block ']");
+    }
+
+    SelenideElement basket() {
+        return $x("//a[@class='header-cart__link']");
+    }
 }
