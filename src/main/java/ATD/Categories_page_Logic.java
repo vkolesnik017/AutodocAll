@@ -157,14 +157,12 @@ public class Categories_page_Logic extends Categories_page {
       listWithCategoriesInTecdocCatalog.add(childCategoriesTecdocName().get(i).attr("alt").trim());
     }
 
-    System.out.println("----------------------------------------------------------------------------1");
     ArrayList<String> listWithACCCategoriesInTecdocCatalog = new ArrayList<>();
     for (int i = 0; i < accessoriesCategories().size(); i++) {
       System.out.println(accessoriesCategories().get(i).attr("alt").trim());
       listWithACCCategoriesInTecdocCatalog.add(accessoriesCategories().get(i).attr("alt").trim());
     }
 
-    System.out.println("-------------------------------------------------------------------------2");
     System.out.println(listWithACCCategoriesInTecdocCatalog.size());
     listWithCategoriesInTecdocCatalog.removeAll(listWithACCCategoriesInTecdocCatalog);
     System.out.println(listWithCategoriesInTecdocCatalog.size());
