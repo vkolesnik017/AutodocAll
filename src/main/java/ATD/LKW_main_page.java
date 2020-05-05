@@ -273,16 +273,10 @@ public class LKW_main_page {
     }
 
     ElementsCollection imageOfTopProducts() {
-        return $$x("//div[@class='product-list__row']/ul/li//img").filter(visible);
+        return $$x("//div[@class='product-list__row']/ul/li//img");
     }
 
-    ElementsCollection additionInfoBlockOfTopProductFirstLevel() {
-        return $$x("//div[@class='product-list__row'][1]//div[@class='product-list__item__popup']");
-    }
-
-    ElementsCollection additionInfoBlockOfTopProductSecondLevel() {
-        return $$x("//div[@class='product-list__row'][2]//div[@class='product-list__item__popup']");
-    }
+    ElementsCollection additionInfoBlockOfTopProduct() {return $$x("//div[@class='product-list__item__popup']").filter(visible);}
 }
 
 
