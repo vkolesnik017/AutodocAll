@@ -646,5 +646,7 @@ public class Listing_page {
     SelenideElement brandFilterSecondButtonInSidebarName() { return $x("//*[@class='branded-filter-sidebar']//li[2]//img"); }
 
     SelenideElement brandFilterSecondButtonInSidebarButton() { return $x("//*[@class='branded-filter-sidebar']//li[2]//label"); }
+
+    ElementsCollection characteristicsOfProduct(String productArticle) { return $$x("//*[text()='" + productArticle + "']/../..//*[@class='about']//li"); }
 }
 

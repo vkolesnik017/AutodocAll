@@ -48,4 +48,6 @@ public class Categories_page {
 
     ElementsCollection childCategoriesTecdocName() { return $$x("//*[@class='list_links']/li//img"); }
 
+    ElementsCollection accessoriesCategories() { return $$x("//*[@id='category-33000']//li//img"); }
+
 }
