@@ -1,10 +1,10 @@
 package ATD;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selectors.byName;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.*;
 
 public class LKW_Categories_page {
     SelenideElement tecDocCatalog() {
@@ -49,4 +49,8 @@ public class LKW_Categories_page {
     }
 
     SelenideElement headlineOfTopProductsBlock() {return $x("//div[@class='truck-car-parts-top-product__title']");}
+
+    SelenideElement topBLock() {return $x("//div[@class='truck-car-parts-top-product']");}
+
+    ElementsCollection productsOfTopBlock() {return $$x("//div[@class='product-list__row']/ul/li");}
 }

@@ -228,4 +228,38 @@ public class LKW_Category_page_Logic extends LKW_Category_page {
         headlineOfTopProductsBlock().shouldBe(visible);
         return this;
     }
+
+    @Step("availability of top block and top products .LKW_Category_page")
+    public LKW_Category_page_Logic availabilityOfTopProductsBlock() {
+        topBLock().shouldBe(visible);
+        productsOfTopBlock().shouldHaveSize(8);
+        return this;
+    }
+
+    @Step("get id of product in Top products block .LKW_Category_page")
+    public String getIdOfTopProduct(){
+        productsOfTopBlock().get(0).hover();
+        btnAddToBasketTopBLock(1).should(appear);
+        String idOfProduct = btnAddToBasketTopBLock(1).getAttribute("id");
+        return idOfProduct;
+    }
+
+    @Step("added top product to basket .LKW_Category_page")
+    public Cart_page_Logic addTopProductToBasket() {
+        btnAddToBasketTopBLock(1).shouldBe(visible).click();
+        basketDropMenu().should(appear);
+        basketDropMenu().should(disappear);
+        basket().click();
+        return page(Cart_page_Logic.class);
+    }
+
+    @Step("visibility of addition information when hover on the product in Top block .LKW_Category_page")
+    public LKW_Category_page_Logic visibilityOfAdditionInfoInTopBlock() {
+        for (int i=0; i<productsOfTopBlock().size(); i++) {
+            productsOfTopBlock().get(i).hover();
+            additionInfoBlockOfTopProduct().get(i).should(appear);
+            blockBefore().hover();
+        }
+        return this;
+    }
 }
