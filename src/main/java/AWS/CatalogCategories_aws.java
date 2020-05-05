@@ -32,6 +32,10 @@ public class CatalogCategories_aws {
 
     private ElementsCollection notActiveChildCategoriesName() { return $$(".catalog-table-content-items-item.disabled > div > div:nth-child(5) > input"); }
 
+    private ElementsCollection notInCatalogCategories() { return $$(".catalog-table-content-items-item > ul >li > div >div:nth-child(5) > input[data-entity-id^=\"3\"]"); }
+
+    private ElementsCollection notInCatalogCateg2() { return $$(".catalog-table-content-items-item[data-node-id^=\"3\"] > ul >li > div >div:nth-child(5) > input"); }
+
     @Step("Get All Child Categories From Catalog AWS. CatalogCategories_aws")
     public ArrayList<String> getAllChildCategoriesFromAWS() {
         new Login_aws().loginInAwsWithOpen();
@@ -119,19 +123,34 @@ public class CatalogCategories_aws {
             }
         }
 
+        System.out.println(notActiveChildCategoriesName().size());
         ArrayList<String> notActiveCategories = new ArrayList<>();
         for (int i = 0; i < notActiveChildCategoriesName().size(); i++) {
-            if (!notActiveChildCategoriesName().get(i).text().isEmpty()) {
                 notActiveCategories.add(notActiveChildCategoriesName().get(i).attr("value").trim());
-            }
         }
 
+        System.out.println(notInCatalogCategories().size());
+        ArrayList<String> notInCatalogCategoriesList = new ArrayList<>();
+        for (int i = 0; i < notInCatalogCategories().size(); i++) {
+                notInCatalogCategoriesList.add(notInCatalogCategories().get(i).attr("value").trim());
+
+        }
+
+        System.out.println(notInCatalogCateg2().size());
+        ArrayList<String> notInCatalogCategories2 = new ArrayList<>();
+        for (int i = 0; i < notInCatalogCateg2().size(); i++) {
+                notInCatalogCategories2.add(notInCatalogCateg2().get(i).attr("value").trim());
+        }
+        System.out.println("-------------------------------------------------------------");
         allActiveChildCategoriesAWS.removeAll(notActiveCategories);
-        allActiveChildCategoriesAWS.removeIf(e -> e.startsWith("3"));
+        allActiveChildCategoriesAWS.removeAll(notInCatalogCategoriesList);
+        allActiveChildCategoriesAWS.removeAll(notInCatalogCategories2);
+     //   allActiveChildCategoriesAWS.removeIf(e -> e.startsWith("3"));
         System.out.println(allActiveChildCategoriesAWS.size());
         for (int i = 0; i < allActiveChildCategoriesAWS.size(); i++) {
             System.out.println(allActiveChildCategoriesAWS.get(i));
         }
+
         return allActiveChildCategoriesAWS;
     }
 }

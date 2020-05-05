@@ -60,7 +60,7 @@ public class QC_509_PresenceStaticCharacteristicsOnTecDocListing {
         expectedCharacteristics.add("Höhe \\[mm]:\\n33,4");
         expectedCharacteristics.add("Bohrung-Ø \\[mm]:\\n15,8");
 
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "category_car_list") + "?page=10");
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "category_car_list") + "?page=11");
         String articleProduct = "Artikelnummer: 82B0691";
         ElementsCollection actualCharacteristics = listingPage.getCharacteristicsDesiredProduct(articleProduct);
         commonMethods.compareCharacteristics(actualCharacteristics, expectedCharacteristics);
