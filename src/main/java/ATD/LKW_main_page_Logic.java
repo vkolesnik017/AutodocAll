@@ -434,23 +434,14 @@ public class LKW_main_page_Logic extends LKW_main_page {
     @Step("visibility of addition information when hover on the product in Top block .LKW_main_page")
     public LKW_main_page_Logic visibilityOfAdditionInfoInTopBlock() {
         topProductsBlock().scrollIntoView("{block: \"end\"}");
-        hoverOnTopProduct(additionInfoBlockOfTopProductFirstLevel());
-        if (additionInfoBlockOfTopProductFirstLevel().get(5).isDisplayed()) {
-            forwardLinkOfTopBLock().click();
-        }
-        productsInTopBlockSecondLevel().shouldBe(visible);
-        hoverOnTopProduct(additionInfoBlockOfTopProductSecondLevel());
-        return this;
-    }
-
-    @Step(" hover on top product in top products block .LKW_main_page")
-    public LKW_main_page_Logic hoverOnTopProduct(ElementsCollection additionBlock) {
         for (int i = 0; i < imageOfTopProducts().size(); i++) {
-            linkOnCatalogPage().hover();
+               linkOnCatalogPage().hover();
             imageOfTopProducts().get(i).hover();
-            additionBlock.get(i).should(appear);
+            additionInfoBlockOfTopProduct().get(0).should(appear);
+            if (i == 5) {
+                forwardLinkOfTopBLock().click();
+            }
         }
         return this;
     }
-
 }

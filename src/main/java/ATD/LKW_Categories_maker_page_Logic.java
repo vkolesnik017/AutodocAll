@@ -196,4 +196,18 @@ public class LKW_Categories_maker_page_Logic extends LKW_Categories_maker_page {
         basket().click();
         return page(Cart_page_Logic.class);
     }
+
+    @Step("visibility of addition information when hover on the product in Top block .LKW_Categories_maker_page")
+    public LKW_Categories_maker_page_Logic visibilityOfAdditionInfoInTopBlock() {
+        topProductsBlock().scrollIntoView("{block: \"end\"}");
+        for (int i = 0; i < productsInTopBlock().size(); i++) {
+            headlineOfTopProductsBlock().hover();
+            productsInTopBlock().get(i).hover();
+            additionInfoBlockOfTopProduct().get(0).should(appear);
+            if (i == 4) {
+                forwardLinkOfTopBLock().click();
+            }
+        }
+        return this;
+    }
 }
