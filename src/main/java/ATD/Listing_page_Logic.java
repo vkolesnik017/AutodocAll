@@ -24,7 +24,10 @@ public class Listing_page_Logic extends Listing_page {
     @Step("Gets all the characteristics of the desired product from listing {productArticle}. Listing_page")
     // example String for productArticle = Artikelnummer: V99-75-0011 , don't fits for search listing when used search by article product
     public ElementsCollection getCharacteristicsDesiredProduct(String productArticle) {
-        return $$x("//*[text()='" + productArticle + "']/../..//*[@class='about']//li").shouldHave(sizeGreaterThan(10));
+        if (characteristicsOfProduct(productArticle).size() < 10) {
+            nextPageButton().click();
+        }
+        return characteristicsOfProduct(productArticle).shouldHave(sizeGreaterThan(10));
     }
 
 
