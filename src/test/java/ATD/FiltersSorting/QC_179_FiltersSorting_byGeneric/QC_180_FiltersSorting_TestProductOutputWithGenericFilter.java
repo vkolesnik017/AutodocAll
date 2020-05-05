@@ -14,14 +14,12 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Condition.attribute;
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.close;
-import static com.codeborne.selenide.Selenide.refresh;
 
 public class QC_180_FiltersSorting_TestProductOutputWithGenericFilter {
     private Listing_page_Logic listingPage = new Listing_page_Logic();
-    private DataBase dataBase = new DataBase();
+
+    private String genericName;
 
     @BeforeClass
     void setUp() {
@@ -30,35 +28,24 @@ public class QC_180_FiltersSorting_TestProductOutputWithGenericFilter {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list4,search,listing_accessories");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list4,search,listing_accessories,search23");
     }
 
     @DataProvider(name = "routesLKW", parallel = true)
     Object[] dataProviderLKW() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list3,lkw_category_car_list4,lkw_search2");
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list,lkw_search2,lkw_search8");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Romaniuta")
-    @Description(value = "Test checks generic position in generic block on listing (Tecdoc, ACC)")
+    @Description(value = "Test checks generic position in generic block on listing (Tecdoc, ACC, search)")
     public void checkGenericPosition(String route) {
         openPage(route);
-        String genericName = listingPage.secondGeneric().text();
-        listingPage.secondGeneric().click();
-        listingPage.firstGeneric().shouldHave(text(genericName));
-        listingPage.checkProductTitleOnListing(genericName, true, listingPage.productTitleInListMode());
-        refresh();
-        listingPage.firstGeneric().shouldHave(text(genericName));
-        listingPage.checkProductTitleOnListing(genericName, true, listingPage.productTitleInListMode());
-        listingPage.secondGeneric().click();
-        listingPage.secondGeneric().click();
-        listingPage.checkProductTitleOnListing(genericName, true, listingPage.productTitleInListMode());
-        listingPage.showListingInTileModeButton().click();
-        listingPage.checkProductTitleOnListing(genericName, true, listingPage.productTitleInTileMode());
-        listingPage.firstGeneric().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.checkUniqueGenericsOnListing(2, listingPage.productTitleInTileMode());
+        genericName = listingPage.getTextFromGeneric();
+        listingPage.checkFirstGenericApplying(genericName)
+                    .checkSecondGenericApplying(genericName);
+
     }
 
     @Test(dataProvider = "routesLKW")
@@ -68,21 +55,19 @@ public class QC_180_FiltersSorting_TestProductOutputWithGenericFilter {
     public void checkGenericPositionLKW(String route) {
         openPage(route);
         new Main_page_Logic().closeCarSelectorTooltipIfVisible();
-        String genericName = listingPage.fourthGeneric().text();
-        listingPage.fourthGeneric().click();
-        listingPage.firstGeneric().shouldHave(text(genericName));
-        listingPage.checkProductTitleOnListing(genericName, true, listingPage.productTitleInListMode());
-        refresh();
-        listingPage.firstGeneric().shouldHave(text(genericName));
-        listingPage.checkProductTitleOnListing(genericName, true, listingPage.productTitleInListMode());
-        listingPage.secondGeneric().click();
-        listingPage.fourthGeneric().click();
-        listingPage.checkProductTitleOnListing(genericName, true, listingPage.productTitleInListMode());
-        listingPage.showListingInTileModeButton().click();
-        listingPage.checkProductTitleOnListing(genericName, true, listingPage.productTitleInTileMode());
-        listingPage.firstGeneric().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.checkUniqueGenericsOnListing(2, listingPage.productTitleInTileMode());
+        genericName = listingPage.getTextFromGeneric();
+        listingPage.checkFirstGenericApplying(genericName)
+                    .checkSecondGenericApplyingLKW();
+    }
+
+    @Test
+    @Flaky
+    @Owner(value = "Romaniuta")
+    @Description(value = "Test checks generic position in generic block on listing LKW model")
+    public void checkGenericPositionLKWmodel() throws SQLException {
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list4"));
+        new Main_page_Logic().closeCarSelectorTooltipIfVisible();
+        listingPage.checkGenericFilterApplyingLKWmodelRoute();
     }
 
     @AfterMethod
