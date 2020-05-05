@@ -162,6 +162,38 @@ public class LKW_Categories_maker_page_Logic extends LKW_Categories_maker_page {
     @Step("visibility of headline of TOP products block .LKW_Categories_maker_page")
     public LKW_Categories_maker_page_Logic visibilityOfHeadlineOfTopProductsBlock() {
         headlineOfTopProductsBlock().shouldBe(visible);
-       return this;
+        return this;
+    }
+
+    @Step("availability of top list block and top products .LKW_Categories_maker_page")
+    public LKW_Categories_maker_page_Logic availabilityOfTopProductsBlock() {
+        topProductsBlock().shouldBe(visible);
+        productsInTopBlock().shouldHaveSize(10);
+        return this;
+    }
+
+    @Step("availability of forward and back links of TOP products block .LKW_Categories_maker_page")
+    public LKW_Categories_maker_page_Logic availabilityOfForwardBackLinksOfTopBLock() {
+        forwardLinkOfTopBLock().shouldBe(visible).click();
+        productsInTopBlockSecondLevel().shouldBe(visible);
+        backLinkOfTopBLock().shouldBe(visible).click();
+        productsInTopBlockFirstLevel().shouldBe(visible);
+        return this;
+    }
+
+    @Step("get id of product in Top products block .LKW_Categories_maker_page")
+    public String getIdOfTopProduct() {
+        topProductsBlock().shouldBe(visible).scrollTo();
+        String idOfProduct = btnAddToBasketTopBLock().get(0).getAttribute("data-ga-action");
+        return idOfProduct;
+    }
+
+    @Step("added top product to basket .LKW_Categories_maker_page")
+    public Cart_page_Logic addTopProductToBasket() {
+        btnAddToBasketTopBLock().get(0).click();
+        basketDropMenu().should(appear);
+        basketDropMenu().should(disappear);
+        basket().click();
+        return page(Cart_page_Logic.class);
     }
 }

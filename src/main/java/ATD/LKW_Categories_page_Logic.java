@@ -55,4 +55,12 @@ public class LKW_Categories_page_Logic extends LKW_Categories_page {
         headlineOfTopProductsBlock().shouldBe(visible);
         return this;
     }
+
+
+    @Step("availability of top block and top products .LKW_Categories_page")
+    public LKW_Categories_page_Logic availabilityOfTopProductsBlock() {
+        topBLock().shouldBe(visible);
+        productsOfTopBlock().shouldHaveSize(6);
+        return this;
+    }
 }

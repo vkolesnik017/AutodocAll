@@ -133,4 +133,25 @@ class LKW_Category_page {
     }
 
     SelenideElement headlineOfTopProductsBlock() {return $x("//div[@class='title_list no_border_top'] ");}
+
+    SelenideElement topBLock() {return $x("//div[@class='sub_catalog_grid gfre4']");}
+
+    ElementsCollection productsOfTopBlock() {return $$x("//div[@class='rec_products_block']");}
+
+    SelenideElement btnAddToBasketTopBLock(int position) {return $x("(//div[@class='rec_prod_btn button '])["+position+"]");}
+
+    SelenideElement basketDropMenu() {
+        return $x("//div[@class='cart-items-block ']");
+    }
+
+    SelenideElement basket() {
+        return $x("//a[@class='header-cart__link']");
+    }
+
+    SelenideElement headLineOfTopProductsBlock() {return $x("//div[@class='title_list no_border_top']");}
+
+    ElementsCollection additionInfoBlockOfTopProduct() {return $$x("//div[@class='rec_prod_info_popup']");}
+
+    SelenideElement blockBefore()  {return $x("//div[@class='sub_catalog_grid gfre4']/preceding-sibling::div[1]");}
+
 }

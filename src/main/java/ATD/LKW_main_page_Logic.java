@@ -10,6 +10,7 @@ import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverRunner.source;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class LKW_main_page_Logic extends LKW_main_page {
@@ -269,7 +270,7 @@ public class LKW_main_page_Logic extends LKW_main_page {
     @Step("check of transition to Child category without car .LKW_main_page")
     public LKW_Category_car_list_page_Logic goToChildCategoryWithCar() {
         selectTruckInSelector("2242", "8959", "1012748").checkSuccessfullyPageLoading("https://lkwteile.autodoc.de/lastkraftwagen/askam-fargo-desoto/as-950?car_id=1012748");
-        back();//.goToLKWMainPage();
+        back();
         tecDocCatalogOnMainPageLKW().shouldBe(visible).scrollTo();
         childCategoryInParentCategoryBLock("Ölfilter").click();
         return page(LKW_Category_car_list_page_Logic.class);
@@ -398,4 +399,58 @@ public class LKW_main_page_Logic extends LKW_main_page {
         headlineOfTopProductsBlock().shouldBe(visible);
         return this;
     }
+
+    @Step("availability of top list block and top products .LKW_main_page")
+    public LKW_main_page_Logic availabilityOfTopProductsBlock() {
+        topProductsBlock().shouldBe(visible);
+        productsInTopBlock().shouldHaveSize(12);
+        return this;
+    }
+
+    @Step("availability of forward and back links of TOP products block .LKW_main_page")
+    public LKW_main_page_Logic availabilityOfForwardBackLinksOfTopBLock() {
+        forwardLinkOfTopBLock().shouldBe(visible).click();
+        productsInTopBlockSecondLevel().shouldBe(visible);
+        backLinkOfTopBLock().shouldBe(visible).click();
+        productsInTopBlockFirstLevel().shouldBe(visible);
+        return this;
+    }
+
+    @Step("get id of product in Top products block .LKW_main_page")
+    public String getIdOfTopProduct() {
+        String idOfProduct = btnAddToBasketTopBLock(1).getAttribute("id");
+        return idOfProduct;
+    }
+
+    @Step("added top product to basket .LKW_main_page")
+    public Cart_page_Logic addTopProductToBasket() {
+        btnAddToBasketTopBLock(1).shouldBe(visible).click();
+        basketDropMenu().should(appear);
+        basketDropMenu().should(disappear);
+        basket().click();
+        return page(Cart_page_Logic.class);
+    }
+
+    @Step("visibility of addition information when hover on the product in Top block .LKW_main_page")
+    public LKW_main_page_Logic visibilityOfAdditionInfoInTopBlock() {
+        topProductsBlock().scrollIntoView("{block: \"end\"}");
+        hoverOnTopProduct(additionInfoBlockOfTopProductFirstLevel());
+        if (additionInfoBlockOfTopProductFirstLevel().get(5).isDisplayed()) {
+            forwardLinkOfTopBLock().click();
+        }
+        productsInTopBlockSecondLevel().shouldBe(visible);
+        hoverOnTopProduct(additionInfoBlockOfTopProductSecondLevel());
+        return this;
+    }
+
+    @Step(" hover on top product in top products block .LKW_main_page")
+    public LKW_main_page_Logic hoverOnTopProduct(ElementsCollection additionBlock) {
+        for (int i = 0; i < imageOfTopProducts().size(); i++) {
+            linkOnCatalogPage().hover();
+            imageOfTopProducts().get(i).hover();
+            additionBlock.get(i).should(appear);
+        }
+        return this;
+    }
+
 }
