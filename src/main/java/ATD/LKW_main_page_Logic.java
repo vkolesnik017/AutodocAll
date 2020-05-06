@@ -10,7 +10,6 @@ import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.WebDriverRunner.source;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class LKW_main_page_Logic extends LKW_main_page {
@@ -321,7 +320,7 @@ public class LKW_main_page_Logic extends LKW_main_page {
 
     @Step("availability of pop-up specification .LKW_main_page")
     public LKW_main_page_Logic visibilityOfPopUpSpecification() {
-        selectTruckInSelector("120", "11871", "1021805");
+        selectTruckInSelector("120", "11871", "1021789");
         popUpOfSpecification().shouldBe(visible);
         return this;
     }
@@ -329,7 +328,7 @@ public class LKW_main_page_Logic extends LKW_main_page {
 
     @Step("select specification in pop-up of specification .LKW_main_page")
     public LKW_maker_car_list_Logic selectSpecificationInPopUp() {
-        specificationInPopUp("37.00").click();
+        specificationInPopUp("27.00").click();
         return page(LKW_maker_car_list_Logic.class);
     }
 
@@ -435,7 +434,7 @@ public class LKW_main_page_Logic extends LKW_main_page {
     public LKW_main_page_Logic visibilityOfAdditionInfoInTopBlock() {
         topProductsBlock().scrollIntoView("{block: \"end\"}");
         for (int i = 0; i < imageOfTopProducts().size(); i++) {
-               linkOnCatalogPage().hover();
+            linkOnCatalogPage().hover();
             imageOfTopProducts().get(i).hover();
             additionInfoBlockOfTopProduct().get(0).should(appear);
             if (i == 5) {
@@ -443,5 +442,52 @@ public class LKW_main_page_Logic extends LKW_main_page {
             }
         }
         return this;
+    }
+
+    @Step("transition to product page by click on top image of product .LKW_main_page")
+    public LKW_main_page_Logic transitionToProductPageByClickOnTopImage() {
+        clickOnImageOfTopProduct().checkSuccessfullyLKWProductPageLoading("autodoc.de/mann-filter/");
+        back();
+        return this;
+    }
+
+    @Step("click on image of top product .LKW_main_page")
+    public LKW_Product_page_Logic clickOnImageOfTopProduct() {
+        imageOfTopProductWithSelectedTitle("MANN-FILTER").click();
+        return page(LKW_Product_page_Logic.class);
+    }
+
+    @Step("transition to product page by click on title of top product .LKW_main_page")
+    public LKW_main_page_Logic transitionToProductPageByClickOnTitleOfTopProduct() {
+        if (closeCookiesPopUp().isDisplayed()) {
+            closeCookiesPopUp().click();
+        }
+        clickOnTitleOfTopProduct().checkSuccessfullyLKWProductPageLoading("autodoc.de/mann-filter/");
+        back();
+        return this;
+    }
+
+    @Step("click on title of top product .LKW_main_page")
+    public LKW_Product_page_Logic clickOnTitleOfTopProduct() {
+        topProductWithSelectedTitle("MANN-FILTER").click();
+        return page(LKW_Product_page_Logic.class);
+    }
+
+    @Step("transition to product page by click on link Details .LKW_main_page")
+    public LKW_main_page_Logic transitionToProductPageByClickOnLinkDetails() {
+        if (closeCookiesPopUp().isDisplayed()) {
+            closeCookiesPopUp().click();
+        }
+        clickOnLinkDetails().checkSuccessfullyLKWProductPageLoading("autodoc.de/mann-filter/");
+        back();
+        return this;
+    }
+
+    @Step("click on Details link .LKW_main_page")
+    public LKW_Product_page_Logic clickOnLinkDetails() {
+        imageOfTopProductWithSelectedTitle("MANN-FILTER").hover();
+        additionInfoBlockOfTopProductWithSelectedTitle("MANN-FILTER").should(appear);
+        linkDetailsWithSelectedTitle("MANN-FILTER").shouldBe(visible).click();
+        return page(LKW_Product_page_Logic.class);
     }
 }

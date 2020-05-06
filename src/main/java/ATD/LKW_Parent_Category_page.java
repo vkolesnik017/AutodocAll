@@ -133,4 +133,14 @@ public class LKW_Parent_Category_page {
     SelenideElement basket() {
         return $x("//a[@class='header-cart__link']");
     }
+
+    ElementsCollection imageOfTopProduct() {return $$x("//div[@class='image']/span[2]/img");}
+
+    ElementsCollection titleOfTopProduct() {return $$x("//div[@class='name']/a");}
+
+    ElementsCollection linkDetails() {return $$x("//button[@class='link details ga-click']");}
+
+    SelenideElement closeCookiesPopUp() {
+        return $x("//div[@class='block-cookies__close']");
+    }
 }

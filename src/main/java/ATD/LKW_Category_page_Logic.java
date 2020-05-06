@@ -270,4 +270,53 @@ public class LKW_Category_page_Logic extends LKW_Category_page {
         }
         return this;
     }
+
+
+    @Step("transition to product page by click on top image of product .LKW_Category_page")
+    public LKW_Category_page_Logic transitionToProductPageByClickOnTopImage() {
+        clickOnImageOfTopProduct().checkSuccessfullyLKWProductPageLoading("autodoc.de/mann-filter/");
+        back();
+        return this;
+    }
+
+    @Step("click on image of top product .LKW_Category_page")
+    public LKW_Product_page_Logic clickOnImageOfTopProduct() {
+        imageOfTopProduct().get(0).click();
+        return page(LKW_Product_page_Logic.class);
+    }
+
+    @Step("transition to product page by click on title of top product .LKW_Category_page")
+    public LKW_Category_page_Logic transitionToProductPageByClickOnTitleOfTopProduct() {
+        if (closeCookiesPopUp().isDisplayed()) {
+            closeCookiesPopUp().click();
+        }
+        clickOnTitleOfTopProduct().checkSuccessfullyLKWProductPageLoading("autodoc.de/mann-filter/");
+        back();
+        return this;
+    }
+
+    @Step("click on title of top product .LKW_Category_page")
+    public LKW_Product_page_Logic clickOnTitleOfTopProduct() {
+        titleOfTopProduct().get(0).click();
+        return page(LKW_Product_page_Logic.class);
+    }
+
+
+    @Step("transition to product page by click on link Details .LKW_Category_page")
+    public LKW_Category_page_Logic transitionToProductPageByClickOnLinkDetails() {
+        if (closeCookiesPopUp().isDisplayed()) {
+            closeCookiesPopUp().click();
+        }
+        clickOnLinkDetails().checkSuccessfullyLKWProductPageLoading("autodoc.de/mann-filter/");
+        back();
+        return this;
+    }
+
+    @Step("click on Details link .LKW_Category_page")
+    public LKW_Product_page_Logic clickOnLinkDetails() {
+        imageOfTopProduct().get(0).hover();
+        additionInfoBlockOfTopProduct().get(0).should(appear);
+        linkDetails().get(0).shouldBe(visible).click();
+        return page(LKW_Product_page_Logic.class);
+    }
 }

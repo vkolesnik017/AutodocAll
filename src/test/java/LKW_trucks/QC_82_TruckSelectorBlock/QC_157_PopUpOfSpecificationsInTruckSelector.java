@@ -36,7 +36,7 @@ public class QC_157_PopUpOfSpecificationsInTruckSelector {
         new LKW_main_page_Logic()
                 .visibilityOfPopUpSpecification()
                 .selectSpecificationInPopUp()
-                .checkSuccessfullyMakerCarListPageLoading("https://lkwteile.autodoc.de/lastkraftwagen/volvo/fh-16-ii?car_id=1021799");
+                .checkSuccessfullyMakerCarListPageLoading("https://lkwteile.autodoc.de/lastkraftwagen/volvo/fh-16-ii?car_id=1021790");
     }
 
     @AfterMethod
