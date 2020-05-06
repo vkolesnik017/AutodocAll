@@ -321,7 +321,7 @@ public class LKW_main_page_Logic extends LKW_main_page {
     @Step("availability of pop-up specification .LKW_main_page")
     public LKW_main_page_Logic visibilityOfPopUpSpecification() {
         selectTruckInSelector("120", "11871", "1021789");
-        popUpOfSpecification().shouldBe(visible);
+        popUpOfSpecification().should(appear);
         return this;
     }
 
