@@ -16,14 +16,9 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Condition.attribute;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.close;
-import static com.codeborne.selenide.Selenide.refresh;
 
 public class QC_186_FiltersSorting_TestOutputWithFilterByRating {
-    private Listing_page_Logic listingPage = new Listing_page_Logic();
-    private DataBase dataBase = new DataBase();
 
     @BeforeClass
     void setUp() {
@@ -47,15 +42,17 @@ public class QC_186_FiltersSorting_TestOutputWithFilterByRating {
     @Description(value = "Test checks output with filter by rating")
     public void testOutputWithFilterByRating(String route) {
         openPage(route);
-        listingPage.ratingThreeStarsFilterCheckbox().click();
-        listingPage.checkQuantityOfRatingStarsOnListing(3, listingPage.ratingInProductBlock());
-        listingPage.ratingFiveStarsFilterCheckbox().click();
-        listingPage.checkQuantityOfRatingStarsOnListing(5, listingPage.ratingInProductBlock());
-        refresh();
-        listingPage.checkQuantityOfRatingStarsOnListing(5, listingPage.ratingInProductBlock());
-        listingPage.ratingFiveStarsFilterCheckbox().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.checkUniqueRatingOnListing(2);
+        new Listing_page_Logic().clickFourRatingStarsInFilter()
+                                .waitUntilPreloaderDisappear()
+                                .checkFourStarsRatingInEveryProductOnListing()
+                                .clickFiveRatingStarsInFilter()
+                                .waitUntilPreloaderDisappear()
+                                .checkFiveStarsRatingInEveryProductOnListing()
+                                .refreshPage()
+                                .checkFiveStarsRatingInEveryProductOnListing()
+                                .clickFiveRatingStarsInFilter()
+                                .waitUntilPreloaderDisappear()
+                                .checkTwoUniqueRatingOnListing();
     }
 
     @Test(dataProvider = "routesLKW")
@@ -64,15 +61,17 @@ public class QC_186_FiltersSorting_TestOutputWithFilterByRating {
     @Description(value = "Test checks output with filter by rating LKW")
     public void testOutputWithFilterByRatingLKW(String route) {
         openPage(route);
-        listingPage.ratingThreeStarsFilterCheckbox().click();
-        listingPage.checkQuantityOfRatingStarsOnListing(3, listingPage.ratingInProductBlock());
-        listingPage.ratingFiveStarsFilterCheckbox().click();
-        listingPage.checkQuantityOfRatingStarsOnListing(5, listingPage.ratingInProductBlock());
-        refresh();
-        listingPage.checkQuantityOfRatingStarsOnListing(5, listingPage.ratingInProductBlock());
-        listingPage.ratingFiveStarsFilterCheckbox().click();
-        listingPage.preloader().shouldBe(attribute("style", "display: none;"));
-        listingPage.checkUniqueRatingOnListing(2);
+        new Listing_page_Logic().clickThreeRatingStarsInFilter()
+                                .waitUntilPreloaderDisappear()
+                                .checkThreeStarsRatingInEveryProductOnListing()
+                                .clickFiveRatingStarsInFilter()
+                                .waitUntilPreloaderDisappear()
+                                .checkFiveStarsRatingInEveryProductOnListing()
+                                .refreshPage()
+                                .checkFiveStarsRatingInEveryProductOnListing()
+                                .clickFiveRatingStarsInFilter()
+                                .waitUntilPreloaderDisappear()
+                                .checkTwoUniqueRatingOnListing();
     }
 
     @Test
@@ -80,12 +79,12 @@ public class QC_186_FiltersSorting_TestOutputWithFilterByRating {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks that rating filter is not present on search route")
     public void testRatingFilterPresenceOnSearchRoute() throws SQLException {
-        openPage("https://autodoc.de/" + dataBase.getRouteByRouteName("DE", "search6"));
-        listingPage.ratingFilterBlock().shouldNotBe(visible);
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "search6"));
+        new Listing_page_Logic().checkRatingfilterIsNotPresent();
     }
 
     @AfterMethod
-    private void teatDown() {
+    private void tearDown() {
         close();
     }
 }
