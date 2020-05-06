@@ -18,7 +18,7 @@ public class Sponsorship_static_page_Logic extends Sponsorship_static_page {
 
     @Step(":on Sponsorship_static_page")
     public Sponsorship_static_page_Logic checkingDatenschutzerklarungLinkBehavior() {
-        new CommonMethods().checkingDatenschutzerklarungLinkBehavior(datenschutzerklarungLink(), "underline solid rgb(0, 0, 0)");
+        new CommonMethods().checkingDatenschutzerklarungLinkBehavior(datenschutzerklarungLink(), "underline solid rgb(27, 69, 95)");
         return this;
     }
 

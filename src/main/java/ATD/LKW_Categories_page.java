@@ -53,4 +53,8 @@ public class LKW_Categories_page {
     SelenideElement topBLock() {return $x("//div[@class='truck-car-parts-top-product']");}
 
     ElementsCollection productsOfTopBlock() {return $$x("//div[@class='product-list__row']/ul/li");}
+
+    SelenideElement topProductsBlock() {return $x("//div[@class='truck-car-parts-top-product']");}
+
+    ElementsCollection additionInfoBlockOfTopProduct() {return $$x("//div[@class='product-list__item__popup']");}
 }

@@ -968,5 +968,77 @@ public class Listing_page_Logic extends Listing_page {
         checkUniqueBrandsOnListing(2, bremsscheibenartProductAttributeTecdocRoute());
         return this;
     }
+
+    @Step("Get text from generic. Listing_page")
+    public String getTextFromGeneric() {
+        return secondGeneric().text();
+    }
+
+    @Step("Check first generic filter applying on listing. Listing_page")
+    public Listing_page_Logic checkFirstGenericApplying(String genericName) {
+        secondGeneric().click();
+        firstGeneric().shouldHave(text(genericName));
+        checkProductTitleOnListing(genericName, true, productTitleInListMode());
+        refresh();
+        firstGeneric().shouldHave(text(genericName));
+        checkProductTitleOnListing(genericName, true, productTitleInListMode());
+        return this;
+    }
+
+    @Step("Check second generic filter applying on listing. Listing_page")
+    public Listing_page_Logic checkSecondGenericApplying(String genericName) {
+
+        secondGeneric().click();
+        waitUntilPreloaderDisappear();
+        secondGeneric().click();
+        waitUntilPreloaderDisappear();
+        checkProductTitleOnListing(genericName, true, productTitleInListMode());
+        showListingInTileModeButton().click();
+        waitUntilPreloaderDisappear();
+        checkProductTitleOnListing(genericName, true, productTitleInTileMode());
+        firstGeneric().click();
+        waitUntilPreloaderDisappear();
+        checkUniqueGenericsOnListing(2, productTitleInTileMode());
+        return this;
+    }
+
+    @Step("Check second generic filter applying on listing LKW. Listing_page")
+    public Listing_page_Logic checkSecondGenericApplyingLKW() {
+        String secondGenericName = getTextFromGeneric();
+        secondGeneric().click();
+        waitUntilPreloaderDisappear();
+        checkProductTitleOnListing(secondGenericName, true, productTitleInListMode());
+        showListingInTileModeButton().click();
+        waitUntilPreloaderDisappear();
+        checkProductTitleOnListing(secondGenericName, true, productTitleInTileMode());
+        firstGeneric().click();
+        waitUntilPreloaderDisappear();
+        checkUniqueGenericsOnListing(2, productTitleInTileMode());
+        return this;
+    }
+
+    @Step("Check generic filter applying on listing LKW model. Listing_page")
+    public Listing_page_Logic checkGenericFilterApplyingLKWmodelRoute() {
+        String genericName = thirdGeneric().text();
+        thirdGeneric().click();
+        waitUntilPreloaderDisappear();
+        firstGeneric().shouldHave(text(genericName));
+        checkProductTitleOnListing(genericName, true, productTitleInListMode());
+        refresh();
+        firstGeneric().shouldHave(text(genericName));
+        checkProductTitleOnListing(genericName, true, productTitleInListMode());
+        secondGeneric().click();
+        waitUntilPreloaderDisappear();
+        thirdGeneric().click();
+        waitUntilPreloaderDisappear();
+        checkProductTitleOnListing(genericName, true, productTitleInListMode());
+        showListingInTileModeButton().click();
+        waitUntilPreloaderDisappear();
+        checkProductTitleOnListing(genericName, true, productTitleInTileMode());
+        firstGeneric().click();
+        waitUntilPreloaderDisappear();
+        checkUniqueGenericsOnListing(2, productTitleInTileMode());
+        return this;
+    }
 }
 

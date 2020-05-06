@@ -18,7 +18,6 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Selenide.*;
 
 public class QC_777_Reviews_TestReviewsFormWithValidData {
@@ -40,7 +39,7 @@ public class QC_777_Reviews_TestReviewsFormWithValidData {
         new Product_page_Logic().enterValidReviewData(randomEmail, reviewMessage);
         new Mailinator().openEmail(randomEmail)
                 .openLetter(2)
-                .linkFAQemailConfirm().shouldBe(appear).click();
+                .clickFAQemailConfirm();
         switchTo().window(1);
         new Reviews_Confirmation_page_Logic().checkReviewsConfirmationMessage();
         new Login_aws().loginInAwsWithOpen();

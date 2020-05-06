@@ -349,6 +349,10 @@ public class Listing_page {
         return $(By.xpath("//div[contains(@class,'filter-generics-tecdoc__list js-filter-generics-tecdoc')]//label[2]/div[2]"));
     }
 
+    SelenideElement thirdGeneric() {
+        return $(By.xpath("//div[contains(@class,'filter-generics-tecdoc__list js-filter-generics-tecdoc')]//label[3]/div[2]"));
+    }
+
     public SelenideElement fourthGeneric() {
         return $(By.xpath("//div[contains(@class,'filter-generics-tecdoc__list js-filter-generics-tecdoc')]//label[4]/div[2]"));
     }

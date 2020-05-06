@@ -98,7 +98,7 @@ public class SetUp {
         return finalList.toArray();
     }
 
-    // Return list Shops + subroute By Shops, main route and subroute ("prod", "DE", "lkw_main", "lkw_category_car_list,lkw_category_car_list2")
+    // Return list Shops + subroute By Shops, main route and subroute ("prod", "AT,DE", "lkw_main", "lkw_category_car_list")
     public Object[] setUpShopsWithSubroute(String envFromTest, String shopFromTest, String routeName, String subRoutes) throws SQLException {
         String env = getEnv(envFromTest);
         List<String> mainRouteList = new ArrayList<>(db.getRouteListByRouteName(shopFromTest, routeName));

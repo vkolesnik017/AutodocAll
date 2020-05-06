@@ -3,7 +3,6 @@ package ATD;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.Sleeper;
 
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -387,6 +386,10 @@ public class Main_page {
 
     SelenideElement datenschutzLink(){
         return $x("//a[@data-ga-action='confidential']");
+    }
+
+    SelenideElement datenschutzLink(){
+        return $x("//*[@class='footer__links']/div[2]/ul/li[9]/a");
     }
 
     //KUNDENSERVICE
