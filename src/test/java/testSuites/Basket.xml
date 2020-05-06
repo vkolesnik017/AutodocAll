@@ -11,6 +11,7 @@
             <class name="ATD.Basket.QC_1129_BasketSession.QC_1130_RestorationWebBasketSessionOnWebHomepageVersion"/>
             <class name="ATD.Basket.QC_1129_BasketSession.QC_1131_SynchronizationWebSessionOfBasketOnMobVersion"/>
             <class name="ATD.Basket.QC_1129_BasketSession.QC_1132_SynchronizationMobSessionOfBasketOnWebVersion"/>
+            <class name="ATD.Basket.QC_1129_BasketSession.QC_1133_LoginInBasketWhenBasketSessionAbandoned"/>
         </classes>
     </test>
 

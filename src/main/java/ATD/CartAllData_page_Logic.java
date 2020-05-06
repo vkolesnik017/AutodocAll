@@ -330,6 +330,14 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return this;
     }
 
+    @Step("Delete goods from CartAllData_page")
+    public Main_page_Logic deleteGoodFromCartAllDataPage() {
+        deleteGoodBtn().click();
+        btnConfirmProductDelete().click();
+        closeBtnPopupOfEmptyBasket().click();
+        return page(Main_page_Logic.class);
+    }
+
     @Step("Click button confirm product delete. CartAllData_page")
     public CartAllData_page_Logic clickBtnConfirmProductDelete() {
         btnConfirmProductDelete().click();
@@ -352,5 +360,17 @@ public class CartAllData_page_Logic extends CartAllData_page {
     public CartAddress_page_Logic clickBtnReturnToCartAddressPage() {
         returnToPageCartAddress().click();
         return page(CartAddress_page_Logic.class);
+    }
+
+    @Step("Check of id {idOfProduct} added product in AllData. CartAllData_page")
+    public CartAllData_page_Logic checkOfIdAddedProductInAllData(String idOfProduct) {
+        idOfAddedProduct().shouldHave(attribute("data-article_id", idOfProduct));
+        return this;
+    }
+
+    @Step("Check of absence id {idOfProduct} added product in AllData. CartAllData_page")
+    public CartAllData_page_Logic checkOfAbsenceIdAddedProductInAllData(String idOfProduct) {
+        idOfAddedProduct().shouldNotHave(attribute("data-article_id", idOfProduct));
+        return this;
     }
 }
