@@ -66,11 +66,11 @@
         </classes>
     </test>
 
-    <!--<test name="FiltersSorting_byRating">-->
-        <!--<classes>-->
-            <!--<class name="ATD.FiltersSorting.QC_185_FiltersSorting_byRating.QC_186_FiltersSorting_TestOutputWithFilterByRating"/>-->
-        <!--</classes>-->
-    <!--</test>-->
+    <test name="FiltersSorting_byRating">
+        <classes>
+            <class name="ATD.FiltersSorting.QC_185_FiltersSorting_byRating.QC_186_FiltersSorting_TestOutputWithFilterByRating"/>
+        </classes>
+    </test>
 
     <test name="FiltersSorting_outputSorting">
         <classes>
