@@ -52,7 +52,8 @@ public class QC_1132_SynchronizationMobSessionOfBasketOnWebVersion {
         new Main_page_Logic().loginFromHeader(mail)
                 .checkingAppearingNameOfClient()
                 .cartClick()
-                .checkOfIdAddedProductInBasket(productIdOnProductPage);
+                .checkOfIdAddedProductInBasket(productIdOnProductPage)
+                .deleteGoodFromCartPage();
     }
 
 
@@ -76,7 +77,8 @@ public class QC_1132_SynchronizationMobSessionOfBasketOnWebVersion {
         new Main_page_Logic().signInFromFB(mailFB, passFB)
                 .checkingAppearingNameOfClient()
                 .cartClick()
-                .checkOfIdAddedProductInBasket(productIdOnProductPage);
+                .checkOfIdAddedProductInBasket(productIdOnProductPage)
+                .deleteGoodFromCartPage();
     }
 
 

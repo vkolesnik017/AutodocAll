@@ -323,45 +323,45 @@ public class Main_page {
     //ÜBER AUTODOC
 
     SelenideElement aboutUsLink(){
-        return $x("//*[@class='footer__links']/div[1]/ul/li[1]/a");
+        return $x("//a[@data-ga-action='about_us_big']");
     }
 
     SelenideElement impressumLink(){
-        return $x("//*[@class='footer__links']/div[1]/ul/li[2]/a");
+        return $x("//a[@data-ga-action='imprint']");
     }
 
     SelenideElement vacanciesLink(){
-        return $x("//*[@class='footer__links']/div[1]/ul/li[3]/a");
+        return $x("//a[@data-ga-action='vacancies']");
     }
 
     SelenideElement bonusprogrammLink(){
-        return $x("//*[@class='footer__links']/div[1]/ul/li[4]/a");
+        return $x("//a[@data-ga-action='bonus_system']");
     }
 
     SelenideElement partnershipLink(){
-        return $x("//*[@class='footer__links']/div[1]/ul/li[6]/a");
+        return $x("//a[@data-ga-action='partnership']");
     }
 
     SelenideElement presseLink(){
-        return $x("//*[@class='footer__links']/div[1]/ul/li[6]/a");
+        return $x("//a[@data-ga-action='presse']");
     }
 
     SelenideElement mobileAppLink(){
-        return $x("//*[@class='footer__links']/div[1]/ul/li[8]/a");
+        return $x("//a[@data-ga-action='mobile_app']");
     }
 
     SelenideElement autodocPlusLink(){
-        return $x("//*[@class='footer__links']/div[1]/ul/li[8]/a");
+        return $x("//a[@data-ga-action='footer']");
     }
 
     //HILFE & SUPPORT
 
     SelenideElement autodocClubLink(){
-        return $x("//*[@class='footer__links']/div[2]/ul/li[1]/a");
+        return $x("//a[@data-ga-action='club']");
     }
 
     SelenideElement blogLink(){
-        return $x("//*[@class='footer__links']/div[2]/ul/li[2]/a");
+        return $x("//a[@data-ga-action='blog']");
     }
 
     SelenideElement videoTutorialsLink(){
@@ -369,11 +369,11 @@ public class Main_page {
     }
 
     SelenideElement altolentsorgungLink(){
-        return $x("//*[@class='footer__links']/div[2]/ul/li[4]/a");
+        return $x("//a[@data-ga-action='waste_oil_disposal']");
     }
 
     SelenideElement agbLink(){
-        return $x("//*[@class='footer__links']/div[2]/ul/li[5]/a");
+        return $x("//a[@data-ga-action='terms']");
     }
 
     SelenideElement agb_plusLink(){
@@ -381,70 +381,70 @@ public class Main_page {
     }
 
     SelenideElement widerrufLink(){
-        return $x("//*[@class='footer__links']/div[2]/ul/li[8]/a");
+        return $x("//a[@data-ga-action='revocation']");
     }
 
     SelenideElement datenschutzLink(){
-        return $x("//*[@class='footer__links']/div[2]/ul/li[9]/a");
+        return $x("//a[@data-ga-action='confidential']");
     }
 
     //KUNDENSERVICE
 
     SelenideElement zahlungLink(){
-        return $x("//*[@class='footer__links']/div[3]/ul/li[1]/a");
+        return $x("//a[@data-ga-action='payment']");
     }
 
     SelenideElement versandLink(){
-        return $x("//*[@class='footer__links']/div[3]/ul/li[2]/a");
+        return $x("//a[@data-ga-action='delivery']");
     }
 
     SelenideElement contactLink(){
-        return $x("//*[@class='footer__links']/div[3]/ul/li[3]/a");
+        return $x("//a[@data-ga-action='contact']");
     }
 
     SelenideElement retourenLink(){
-        return $x("//*[@class='footer__links']/div[3]/ul/li[4]/a");
+        return $x("//a[@data-ga-action='return_return']");
     }
 
     SelenideElement austauschartikelLink(){
-        return $x("//*[@class='footer__links']/div[3]/ul/li[5]/a");
+        return $x("//a[@data-ga-action='article_change']");
     }
 
     //TOP PRODUKTE
 
     SelenideElement beleuchtungLink(){
-        return $x("//*[@class='footer__links']/div[4]/ul/li[1]/a");
+        return $x("//a[@data-ga-action='lighting']");
     }
 
     SelenideElement stobdampferLink(){
-        return $x("//*[@class='footer__links']/div[4]/ul/li[2]/a");
-    }
-
-    SelenideElement querlenkerLink(){
-        return $x("//*[@class='footer__links']/div[4]/ul/li[4]/a");
-    }
-
-    SelenideElement radlagerLink(){
-        return $x("//*[@class='footer__links']/div[4]/ul/li[5]/a");
+        return $x("//a[@data-ga-action='shock-absorber']");
     }
 
     SelenideElement kupplungssatzLink(){
-        return $x("//*[@class='footer__links']/div[4]/ul/li[3]/a");
+        return $x("//a[@data-ga-action='clutch-kit']");
+    }
+
+    SelenideElement querlenkerLink(){
+        return $x("//a[@data-ga-action='suspension-arm']");
+    }
+
+    SelenideElement radlagerLink(){
+        return $x("//a[@data-ga-action='wheel-bearing']");
     }
 
     SelenideElement autopflegeLink(){
-        return $x("//*[@class='footer__links']/div[4]/ul/li[6]/a");
-    }
-
-    SelenideElement sucheNachAutomodelleLink(){
-        return $x("//*[@class='footer__links']/div[4]/ul/li[7]/a");
+        return $x("//a[@data-ga-action='chemical']");
     }
 
     SelenideElement nachHerstellerEinkaufenLink(){
-        return $x("//*[@class='footer__links']/div[4]/ul/li[8]/a");
+        return $x("//a[@data-ga-action='spares']");
     }
 
     SelenideElement nachModellEinkaufenLink(){
+        return $x("//*[@class='footer__links']/div[4]/ul/li[8]/a");
+    }
+
+    SelenideElement sucheNachAutomodelleLink(){
         return $x("//*[@class='footer__links']/div[4]/ul/li[9]/a");
     }
 
