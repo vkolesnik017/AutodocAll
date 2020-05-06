@@ -19,6 +19,22 @@ public class Main_page {
         return $(byCssSelector(".sigin_btn>a"));
     }
 
+    SelenideElement loginBtnFromFaceBook() {
+        return $x("//a[@class='social-auth__link']//img");
+    }
+
+    SelenideElement emailFieldForFB() {
+        return $x("//input[@id='email']");
+    }
+
+    SelenideElement passFieldFB() {
+        return $x("//input[@id='pass']");
+    }
+
+    SelenideElement loginBtnFB() {
+        return $x("//input[@name='login']");
+    }
+
     // When user signIn
     SelenideElement profileBtn() {
         return $(By.xpath("//a[@class='header-i header-i--user']"));

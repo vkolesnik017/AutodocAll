@@ -222,7 +222,6 @@ public class LKW_Category_page_Logic extends LKW_Category_page {
     }
 
 
-
     @Step("visibility of headline of TOP products block .LKW_Category_page")
     public LKW_Category_page_Logic visibilityOfHeadlineOfTopProductsBlock() {
         headlineOfTopProductsBlock().shouldBe(visible);
@@ -237,7 +236,7 @@ public class LKW_Category_page_Logic extends LKW_Category_page {
     }
 
     @Step("get id of product in Top products block .LKW_Category_page")
-    public String getIdOfTopProduct(){
+    public String getIdOfTopProduct() {
         productsOfTopBlock().get(0).hover();
         btnAddToBasketTopBLock(1).should(appear);
         String idOfProduct = btnAddToBasketTopBLock(1).getAttribute("id");
@@ -255,10 +254,19 @@ public class LKW_Category_page_Logic extends LKW_Category_page {
 
     @Step("visibility of addition information when hover on the product in Top block .LKW_Category_page")
     public LKW_Category_page_Logic visibilityOfAdditionInfoInTopBlock() {
-        for (int i=0; i<productsOfTopBlock().size(); i++) {
+        for (int i = 0; i < productsOfTopBlock().size(); i++) {
             productsOfTopBlock().get(i).hover();
             additionInfoBlockOfTopProduct().get(i).should(appear);
             blockBefore().hover();
+        }
+        return this;
+    }
+
+
+    @Step("ratio of product's generic to category .LKW_Category_page")
+    public LKW_Category_page_Logic ratioOfProductsGenericToCategory() {
+        for (int i = 0; i < titleOfTopProduct().size(); i++) {
+            titleOfTopProduct().get(i).shouldHave(text("Ölfilter"));
         }
         return this;
     }

@@ -63,4 +63,15 @@ public class LKW_Categories_page_Logic extends LKW_Categories_page {
         productsOfTopBlock().shouldHaveSize(6);
         return this;
     }
+
+    @Step("visibility of addition information when hover on the product in Top block .LKW_Categories_page")
+    public LKW_Categories_page_Logic visibilityOfAdditionInfoInTopBlock() {
+        topProductsBlock().scrollIntoView("{block: \"end\"}");
+        for (int i = 0; i < productsOfTopBlock().size(); i++) {
+            headlineOfTopProductsBlock().hover();
+            productsOfTopBlock().get(i).hover();
+            additionInfoBlockOfTopProduct().get(i).should(appear);
+        }
+        return this;
+    }
 }

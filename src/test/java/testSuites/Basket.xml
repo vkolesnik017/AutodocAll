@@ -6,6 +6,14 @@
         <listener class-name="ATD.ProjectListener"/>
     </listeners>
 
+    <test name="QC_1129_BasketSession">
+        <classes>
+            <class name="ATD.Basket.QC_1129_BasketSession.QC_1130_RestorationWebBasketSessionOnWebHomepageVersion"/>
+            <class name="ATD.Basket.QC_1129_BasketSession.QC_1131_SynchronizationWebSessionOfBasketOnMobVersion"/>
+            <class name="ATD.Basket.QC_1129_BasketSession.QC_1132_SynchronizationMobSessionOfBasketOnWebVersion"/>
+        </classes>
+    </test>
+
     <test name="QC_1388_Firms">
         <classes>
             <class name="ATD.Basket.QC_1388_Firms.QC_1389_Firms_DE_PL"/>

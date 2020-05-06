@@ -172,4 +172,6 @@ class LKW_Categories_maker_page {
     SelenideElement basket() {
         return $x("//a[@class='header-cart__link']");
     }
+
+    ElementsCollection additionInfoBlockOfTopProduct() {return $$x("//div[@class='top-small-products__items']/div//div[@class='rec_prod_info_popup']").filter(visible);}
 }
