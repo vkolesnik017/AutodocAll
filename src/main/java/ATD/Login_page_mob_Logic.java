@@ -6,8 +6,7 @@ import java.util.NoSuchElementException;
 
 import static ATD.CommonMethods.getNameRouteFromJSVarInHTML;
 import static ATD.CommonMethods.password;
-import static com.codeborne.selenide.Selenide.Wait;
-import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Login_page_mob_Logic extends Login_page_mob {
 
@@ -28,6 +27,17 @@ public class Login_page_mob_Logic extends Login_page_mob {
             System.out.println("Footer popup doesn't appear");
         }
         return this;
+    }
+
+    @Step("Login from facebook {mail}, {password}. Login_page_mob")
+    public Profile_page_mob_Logic signInFromFB(String mail, String pass) {
+        loginBtnForFaceBook().click();
+        switchTo().window(1);
+        emailFieldForFB().setValue(mail);
+        passFieldFB().setValue(pass);
+        loginBtnFB().click();
+        switchTo().window(0);
+        return page(Profile_page_mob_Logic.class);
     }
 
 }

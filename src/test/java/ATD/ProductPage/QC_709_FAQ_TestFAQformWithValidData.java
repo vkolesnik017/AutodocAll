@@ -44,8 +44,7 @@ public class QC_709_FAQ_TestFAQformWithValidData {
         product_page_logic.enterFAQValidData(randomEmail, faqMessage);
         mailinator.openEmail(randomEmail)
                 .openLetter(1)
-                .linkFAQemailConfirm()
-                .click();
+                .clickFAQemailConfirm();
         switchTo().window(1);
         faqConfirmationPage.checkFaqConfirmationMessage();
         loginAws.loginInAwsWithOpen();

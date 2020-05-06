@@ -34,6 +34,10 @@ public class Mailinator {
         return $x("//p[@class='info-total__price']");
     }
 
+    private SelenideElement unitPrice() {
+        return $x("//p[@class='info-bot-2col__text-dark']//b");
+    }
+
     private SelenideElement regularDeliveryPriceInEmail() {
         return $x("//table[@class='info-total']//tr[3]//td[2]//p");
     }
@@ -50,6 +54,10 @@ public class Mailinator {
         return $x("//table[@class='to-column-table']//p[@class='to-column-table__title']/following-sibling::b");
     }
 
+    private SelenideElement namePhysicalPersonInEmail() {
+        return $x("//table[@class='to-column-table to-column-table--border']//p[@class='to-column-table__text']/following-sibling::p");
+    }
+
     @Step("Checks text {firmName} in first company name in email. Mailinator")
     public Mailinator checkFirstFirmNameInEmail(String firmName) {
       firstFirmNameInEmail().shouldHave(text(firmName));
@@ -59,6 +67,12 @@ public class Mailinator {
     @Step("Checks text {firmName} in second company name in email. Mailinator")
     public Mailinator checkSecondFirmNameInEmail(String firmName) {
         secondFirmNameInEmail().shouldHave(text(firmName));
+        return this;
+    }
+
+    @Step("Checks text {namePhysicalPerson} in physical person name in email. Mailinator")
+    public Mailinator checkNamePhysicalPersonInEmail(String namePhysicalPerson) {
+        namePhysicalPersonInEmail().shouldHave(text(namePhysicalPerson));
         return this;
     }
 
@@ -88,12 +102,28 @@ public class Mailinator {
         return totalPrice;
     }
 
+    @Step("Get unit price in email. Mailinator")
+    public Double getUnitPriceInEmail() {
+        String realPrice = unitPrice().getText();
+        realPrice = realPrice.substring(0, realPrice.indexOf(" ")).replaceAll(",", ".");
+        Double unitPrice = Double.parseDouble(realPrice);
+        return unitPrice;
+    }
+
     @Step("Get total price in email for EN shop. Mailinator")
     public Double getTotalPriceInEmailForENShop() {
         String realPrice = infoTotalPriceInEmail().getText().replace("£ ", "");
         realPrice = realPrice.replaceAll(",",".");
         Double totalPrice = Double.parseDouble(realPrice);
         return totalPrice;
+    }
+
+    @Step("Get unit price in email for EN shop. Mailinator")
+    public Double getUnitPriceForEnShop() {
+        String realPrice = unitPrice().getText().replace("£ ", "");
+        realPrice = realPrice.replaceAll(",", ".");
+        Double unitPrice = Double.parseDouble(realPrice);
+        return unitPrice;
     }
 
 
@@ -119,6 +149,13 @@ public class Mailinator {
     @Step("Check letter info text. Mailinator")
     public Mailinator checkLetterInfoText(int letterNumber, String expectedText1, String expectedText2) {
         letterInfo(letterNumber).shouldHave(text(expectedText1)).shouldHave(text(expectedText2));
+        return this;
+    }
+
+    @Step("Click FAQ email Confirm")
+    public Mailinator clickFAQemailConfirm() {
+        linkFAQemailConfirm().waitUntil(visible, 5000)
+                                .click();
         return this;
     }
 }

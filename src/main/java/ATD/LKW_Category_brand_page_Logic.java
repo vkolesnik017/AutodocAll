@@ -83,4 +83,39 @@ public class LKW_Category_brand_page_Logic extends LKW_Category_brand_page {
         buttonSuchenOfVerticaltruckSelector().click();
        return page(LKW_Category_car_list_page_Logic.class);
     }
+
+    @Step("check transition at icon of truck brands in TOP brands block .LKW_Category_brand_page")
+    public LKW_Category_maker_brand_page_Logic checkTransitionAtIconOfTruckBrand() {
+        brandOfTruckInTopBlock().shouldBe(visible).click();
+        return page(LKW_Category_maker_brand_page_Logic.class);
+    }
+
+    @Step("click at link More for opening brands block .LKW_Category_brand_page")
+    public LKW_Category_brand_page_Logic openOfBrandsBlock() {
+        linkMoreOfTopBrandBlock().click();
+        return this;
+    }
+
+    @Step("visibility of brands block in open condition .LKW_Category_brand_page")
+    public LKW_Category_brand_page_Logic brandBlockInOpenCondition() {
+        brandsOfTruckInBlock().shouldHave(sizeGreaterThanOrEqual(24));
+        return this;
+    }
+
+    @Step("availability of popular model list in first row of TOP brands block .LKW_Category_brand_page")
+    public LKW_Category_brand_page_Logic availabilityOfPopularModelList() {
+        for (int i = 1; i <= firstRowOfBrands().size(); i++) {
+            linksOfPopularModelList(i).shouldHave(sizeGreaterThan(1));
+            for (int j = 0; j < linksOfPopularModelList(i).size(); j++) {
+                linksOfPopularModelList(i).get(j).shouldHave(attribute("href"));
+            }
+        }
+        return this;
+    }
+
+    @Step("select popular model from TOP brands block .LKW_Category_brand_page")
+    public LKW_Category_model_brand_page_Logic selectPopularModel(int positionOfBrand, int positionOfModel) {
+        linksOfPopularModelList(positionOfBrand).get(positionOfModel).click();
+        return page(LKW_Category_model_brand_page_Logic.class);
+    }
 }

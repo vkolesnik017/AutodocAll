@@ -210,6 +210,19 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return this;
     }
 
+    @Step("Click button Fix in popup about wrong company. CartAddress_page")
+    public CartAddress_page_Logic clickBtnFixInPopupAboutWrongCompany() {
+        fixBtnInPopupAboutWrongCompany().click();
+        return this;
+    }
+
+    @Step("Click button Continue in popup about wrong company. CartAddress_page")
+    public CartPayments_page_Logic clickBtnContinueInPopupAboutWrongCompany() {
+        continueBtnInPopupAboutWrongCompany().click();
+        return page(CartPayments_page_Logic.class);
+    }
+
+
     @Step("Click button EinkaufFortsetzen from popup with an error about the wrong company. CartAddress_page")
     public CartPayments_page_Logic clickBtnEinkaufFortsetzenFromPopupErrorAboutWrongCompany() {
         btnEinkaufFortsetzenFromPopupErrorAboutWrongCompany().click();

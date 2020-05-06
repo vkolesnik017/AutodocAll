@@ -45,7 +45,7 @@ public class QC_1393_SplitBilling_FirmAndPhysicalPerson_SameCountries_PositiveCa
     @Test(dataProvider = "routeEN")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks the successful execution of an order with split billing and physical person, " +
+    @Description(value = "Test checks the successful execution of an order with split billing, firm and physical person, " +
                          "same countries, for EN shop. Positive Case")
     public void testSuccessfulPlacementOfOrder_SplitBillingAndPhysicalPerson_EN(String routeEN) {
         vatForGB = new PageVAT_aws().getVatForGB();

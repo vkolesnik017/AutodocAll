@@ -227,6 +227,56 @@ public class LKW_main_page {
     SelenideElement arrowForMarkeFiled() {
         return $x("//div[@class='block-select-car__select filled js--lkw_selector-select_basic active']//span[@class='arrow']");
     }
+
+    SelenideElement brandOfTruckInTopBlock(String brand) {
+        return $x("//span[contains(text(),'" + brand + "')]/ancestor::a[@class='truck-home-cars__link']");
+    }
+
+    SelenideElement headlineOfTopProductsBlock() {
+        return $x("//div[@class='truck-home-top-products']/h3");
+    }
+
+    SelenideElement topProductsBlock() {
+        return $x("//div[@class='truck-home-top-products']");
+    }
+
+    ElementsCollection productsInTopBlock() {
+        return $$x("//div[@class='product-list__row']/ul/li");
+    }
+
+    SelenideElement forwardLinkOfTopBLock() {
+        return $x("//a[@class='bx-next']");
+    }
+
+    SelenideElement backLinkOfTopBLock() {
+        return $x("//a[@class='bx-prev']");
+    }
+
+    SelenideElement productsInTopBlockFirstLevel() {
+        return $x("//div[@class='product-list__row'][1]");
+    }
+
+    SelenideElement productsInTopBlockSecondLevel() {
+        return $x("//div[@class='product-list__row'][2]");
+    }
+
+    SelenideElement btnAddToBasketTopBLock(int position) {
+        return $x("(//div[@class='price_box product-list__item__button'])[" + position + "]");
+    }
+
+    SelenideElement basketDropMenu() {
+        return $x("//div[@class='cart-items-block ']");
+    }
+
+    SelenideElement basket() {
+        return $x("//a[@class='header-cart__link']");
+    }
+
+    ElementsCollection imageOfTopProducts() {
+        return $$x("//div[@class='product-list__row']/ul/li//img");
+    }
+
+    ElementsCollection additionInfoBlockOfTopProduct() {return $$x("//div[@class='product-list__item__popup']").filter(visible);}
 }
 
 

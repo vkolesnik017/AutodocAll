@@ -7,7 +7,7 @@ import org.testng.Assert;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.codeborne.selenide.CollectionCondition.size;
+import static com.codeborne.selenide.CollectionCondition.*;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
@@ -130,6 +130,143 @@ public class LKW_Category_page_Logic extends LKW_Category_page {
             int imageHeight = imageOfBrandsInTopBrandsBlock().get(i).getSize().getHeight();
             Assert.assertEquals(imageWidth, 100);
             Assert.assertEquals(imageHeight, 100);
+        }
+        return this;
+    }
+
+    @Step("check transition at icon of truck brands in TOP brands block .LKW_Category_page")
+    public LKW_Category_maker_Logic checkTransitionAtIconOfTruckBrand() {
+        brandOfTruckInTopBlock().shouldBe(visible).click();
+        return page(LKW_Category_maker_Logic.class);
+    }
+
+
+    @Step("click at link More for opening brands block .LKW_Category_page")
+    public LKW_Category_page_Logic openOfBrandsBlock() {
+        linkMoreOfTopBrandBlock().click();
+        return this;
+    }
+
+
+    @Step("visibility of brands block in open condition .LKW_Category_page")
+    public LKW_Category_page_Logic brandBlockInOpenCondition() {
+        brandsOfTruckInBlock().shouldHave(sizeGreaterThanOrEqual(24));
+        return this;
+    }
+
+    @Step("close of truck brands block .LKW_Category_page")
+    public LKW_Category_page_Logic closeOfBrandsBlock() {
+        linkLessOfTopBrandBlock().scrollTo().click();
+        brandsOfTruckInBlock().shouldHaveSize(6);
+        return this;
+    }
+
+    @Step("availability of popular model list in first row of TOP brands block .LKW_Category_page")
+    public LKW_Category_page_Logic availabilityOfPopularModelList() {
+        for (int i = 1; i <= firstRowOfBrands().size(); i++) {
+            linksOfPopularModelList(i).shouldHave(sizeGreaterThan(1));
+            for (int j = 0; j < linksOfPopularModelList(i).size(); j++) {
+                linksOfPopularModelList(i).get(j).shouldHave(attribute("href"));
+            }
+        }
+        return this;
+    }
+
+    @Step("select popular model from TOP brands block .LKW_Category_page")
+    public LKW_Category_car_list_page_Logic selectPopularModel(int positionOfBrand, int positionOfModel) {
+        linksOfPopularModelList(positionOfBrand).get(positionOfModel).click();
+        return page(LKW_Category_car_list_page_Logic.class);
+    }
+
+    @Step("visibility of advantage block .LKW_Category_page")
+    public LKW_Category_page_Logic visibilityOfAdvantageBlock() {
+        advantageBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("presence of headline and two advantages in Advantage block .LKW_Category_page")
+    public LKW_Category_page_Logic presenceOfHeadlineAndAdvantagesInBlock() {
+        headlineOfAdvantageBlock().shouldBe(visible);
+        advantagesInBlock().shouldHaveSize(2);
+        return this;
+    }
+
+
+    @Step("appearance of tooltip when you hover on advantage .LKW_Category_page")
+    public LKW_Category_page_Logic visibilityOfTooltips() {
+        for (int i = 0; i < imageOfAdvantageInBlock().size(); i++) {
+            imageOfAdvantageInBlock().get(i).hover();
+            tooltipOfAdvantage().get(i).should(appear);
+        }
+        return this;
+    }
+
+    @Step("visibility of main elements in advantage block .LKW_Category_page")
+    public LKW_Category_page_Logic visibilityOfElementsInAdvantageBlock() {
+        for (int i = 0; i < imageOfAdvantageInBlock().size(); i++) {
+            imageOfAdvantageInBlock().get(i).shouldBe(visible);
+            titleOfAdvantageInBlock().get(i).shouldBe(visible);
+        }
+        return this;
+    }
+
+
+    @Step("visibility of main image in advantage block .LKW_Category_page")
+    public LKW_Category_page_Logic visibilityOfMainImageInAdvantageBlock() {
+        imageOfChildCategory().shouldBe(visible);
+        int widthOfChildImage = imageOfChildCategory().getSize().getWidth();
+        int heightOfChildImage = imageOfChildCategory().getSize().getHeight();
+        Assert.assertEquals(widthOfChildImage, 200);
+        Assert.assertEquals(heightOfChildImage, 200);
+        return this;
+    }
+
+
+    @Step("visibility of headline of TOP products block .LKW_Category_page")
+    public LKW_Category_page_Logic visibilityOfHeadlineOfTopProductsBlock() {
+        headlineOfTopProductsBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("availability of top block and top products .LKW_Category_page")
+    public LKW_Category_page_Logic availabilityOfTopProductsBlock() {
+        topBLock().shouldBe(visible);
+        productsOfTopBlock().shouldHaveSize(8);
+        return this;
+    }
+
+    @Step("get id of product in Top products block .LKW_Category_page")
+    public String getIdOfTopProduct() {
+        productsOfTopBlock().get(0).hover();
+        btnAddToBasketTopBLock(1).should(appear);
+        String idOfProduct = btnAddToBasketTopBLock(1).getAttribute("id");
+        return idOfProduct;
+    }
+
+    @Step("added top product to basket .LKW_Category_page")
+    public Cart_page_Logic addTopProductToBasket() {
+        btnAddToBasketTopBLock(1).shouldBe(visible).click();
+        basketDropMenu().should(appear);
+        basketDropMenu().should(disappear);
+        basket().click();
+        return page(Cart_page_Logic.class);
+    }
+
+    @Step("visibility of addition information when hover on the product in Top block .LKW_Category_page")
+    public LKW_Category_page_Logic visibilityOfAdditionInfoInTopBlock() {
+        for (int i = 0; i < productsOfTopBlock().size(); i++) {
+            productsOfTopBlock().get(i).hover();
+            additionInfoBlockOfTopProduct().get(i).should(appear);
+            blockBefore().hover();
+        }
+        return this;
+    }
+
+
+    @Step("ratio of product's generic to category .LKW_Category_page")
+    public LKW_Category_page_Logic ratioOfProductsGenericToCategory() {
+        for (int i = 0; i < titleOfTopProduct().size(); i++) {
+            titleOfTopProduct().get(i).shouldHave(text("Ölfilter"));
         }
         return this;
     }

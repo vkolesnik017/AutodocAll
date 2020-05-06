@@ -28,7 +28,15 @@ public class CatalogCategories_aws {
 
     private ElementsCollection notActiveParentCategoriesName() { return $$(".catalog-table-content-items-item.parent.disabled > div > div:nth-child(5) > input"); }
 
-    @Step("Get All Child Categories From Catalog AWS")
+    private ElementsCollection childNameInAWS() { return $$(".catalog-table-content-items-item.parent > ul >li > div >div:nth-child(5) > input"); }
+
+    private ElementsCollection notActiveChildCategoriesName() { return $$(".catalog-table-content-items-item.disabled > div > div:nth-child(5) > input"); }
+
+    private ElementsCollection notInCatalogCategories() { return $$(".catalog-table-content-items-item > ul >li > div >div:nth-child(5) > input[data-entity-id^=\"3\"]"); }
+
+    private ElementsCollection notInCatalogCateg2() { return $$(".catalog-table-content-items-item[data-node-id^=\"3\"] > ul >li > div >div:nth-child(5) > input"); }
+
+    @Step("Get All Child Categories From Catalog AWS. CatalogCategories_aws")
     public ArrayList<String> getAllChildCategoriesFromAWS() {
         new Login_aws().loginInAwsWithOpen();
         openPage(categoriesInAwsPage);
@@ -53,7 +61,7 @@ public class CatalogCategories_aws {
         return allActiveChildCategoriesAWS;
     }
 
-    @Step("Get All Parent Categories From AWS")
+    @Step("Get All Parent Categories From AWS. CatalogCategories_aws")
     public ArrayList<String> getAllParentCategoriesFromAWS() {
         ArrayList<String> allActiveParentCategoriesAWS = new ArrayList<>();
         for (int i = 0; i < parentIdInAws().size(); i++) {
@@ -75,21 +83,22 @@ public class CatalogCategories_aws {
         return allActiveParentCategoriesAWS;
     }
 
-    @Step("Get All Parent Categories Name From AWS")
+    @Step("Get All Parent Categories Name From AWS. CatalogCategories_aws")
     public ArrayList<String> getAllParentCategoriesNameFromAWS() {
         new Login_aws().loginInAwsWithOpen();
         openPage(parentCategoriesInAwsPage);
         ArrayList<String> allActiveParentCategoriesAWS = new ArrayList<>();
         for (int i = 0; i < parentNameInAWS().size(); i++) {
             if (!parentNameInAWS().get(i).attr("value").isEmpty()) {
-                allActiveParentCategoriesAWS.add(parentNameInAWS().get(i).attr("value"));
+                System.out.println(parentNameInAWS().get(i).attr("value").trim());
+                allActiveParentCategoriesAWS.add(parentNameInAWS().get(i).attr("value").trim());
             }
         }
 
         ArrayList<String> notActiveParentCategories = new ArrayList<>();
         for (int i = 0; i < notActiveParentCategoriesName().size(); i++) {
             if (!notActiveParentCategoriesName().get(i).attr("value").isEmpty()) {
-                notActiveParentCategories.add(notActiveParentCategoriesName().get(i).attr("value"));
+                notActiveParentCategories.add(notActiveParentCategoriesName().get(i).attr("value").trim());
             }
         }
 
@@ -99,5 +108,49 @@ public class CatalogCategories_aws {
             System.out.println(allActiveParentCategoriesAWS.get(i));
         }
         return allActiveParentCategoriesAWS;
+    }
+
+    @Step("Get All Child Categories From Catalog AWS. CatalogCategories_aws")
+    public ArrayList<String> getAllChildCategoriesNameFromAWS() {
+        new Login_aws().loginInAwsWithOpen();
+        openPage(categoriesInAwsPage);
+        ArrayList<String> allActiveChildCategoriesAWS = new ArrayList<>();
+        System.out.println(childNameInAWS().size());
+        for (int i = 0; i < childNameInAWS().size(); i++) {
+            if (!childNameInAWS().get(i).attr("value").isEmpty()) {
+                System.out.println(childNameInAWS().get(i).attr("value").trim());
+                allActiveChildCategoriesAWS.add(childNameInAWS().get(i).attr("value").trim());
+            }
+        }
+
+        System.out.println(notActiveChildCategoriesName().size());
+        ArrayList<String> notActiveCategories = new ArrayList<>();
+        for (int i = 0; i < notActiveChildCategoriesName().size(); i++) {
+                notActiveCategories.add(notActiveChildCategoriesName().get(i).attr("value").trim());
+        }
+
+        System.out.println(notInCatalogCategories().size());
+        ArrayList<String> notInCatalogCategoriesList = new ArrayList<>();
+        for (int i = 0; i < notInCatalogCategories().size(); i++) {
+                notInCatalogCategoriesList.add(notInCatalogCategories().get(i).attr("value").trim());
+
+        }
+
+        System.out.println(notInCatalogCateg2().size());
+        ArrayList<String> notInCatalogCategories2 = new ArrayList<>();
+        for (int i = 0; i < notInCatalogCateg2().size(); i++) {
+                notInCatalogCategories2.add(notInCatalogCateg2().get(i).attr("value").trim());
+        }
+        System.out.println("-------------------------------------------------------------");
+        allActiveChildCategoriesAWS.removeAll(notActiveCategories);
+        allActiveChildCategoriesAWS.removeAll(notInCatalogCategoriesList);
+        allActiveChildCategoriesAWS.removeAll(notInCatalogCategories2);
+     //   allActiveChildCategoriesAWS.removeIf(e -> e.startsWith("3"));
+        System.out.println(allActiveChildCategoriesAWS.size());
+        for (int i = 0; i < allActiveChildCategoriesAWS.size(); i++) {
+            System.out.println(allActiveChildCategoriesAWS.get(i));
+        }
+
+        return allActiveChildCategoriesAWS;
     }
 }

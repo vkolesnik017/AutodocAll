@@ -2,15 +2,11 @@ package ATD;
 
 import AWS.ProductCard_aws;
 import io.qameta.allure.Step;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
-
-import javax.swing.*;
 
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.WebDriverRunner.source;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class LKW_Product_page_Logic extends LKW_Product_page {
@@ -145,8 +141,6 @@ public class LKW_Product_page_Logic extends LKW_Product_page {
         modelInHorizontalTruckSelector().shouldHave(value("0")).shouldBe(visible);
         actions().moveToElement(resetBtnInHorizontalCarSelector(), 0, 10).click().build().perform();
         Assert.assertTrue(currentUrl.equals(url()));
-        markeInHorizontalTruckSelector().shouldBe(visible).shouldHave(value("0"));
-        modelInHorizontalTruckSelector().shouldHave(value("0"));
         return this;
     }
 

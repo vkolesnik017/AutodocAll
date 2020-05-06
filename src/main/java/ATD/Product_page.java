@@ -27,6 +27,10 @@ public class Product_page {
         return $(byCssSelector(".product-button>a"));
     }
 
+    SelenideElement productId() {
+        return $(byCssSelector(".product-button"));
+    }
+
     SelenideElement closeBtnOfPopupOtherCategory() {
         return $(byCssSelector(".popup-other-cat__close"));
     }

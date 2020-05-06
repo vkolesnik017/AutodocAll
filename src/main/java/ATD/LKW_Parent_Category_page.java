@@ -83,9 +83,14 @@ public class LKW_Parent_Category_page {
     SelenideElement headlineInHeader() {
         return $x("//div[@class='top_title no_image']");
     }
-    SelenideElement iconOfTruckInHeadlineOfSelector() {return $x("//span[@class='car-icon']");}
 
-    SelenideElement titleOfTruckInHeadlineOfSelector() {return $x("//div[contains(@class,'block-select-car__head-car--lkw')]/span[2]");}
+    SelenideElement iconOfTruckInHeadlineOfSelector() {
+        return $x("//span[@class='car-icon']");
+    }
+
+    SelenideElement titleOfTruckInHeadlineOfSelector() {
+        return $x("//div[contains(@class,'block-select-car__head-car--lkw')]/span[2]");
+    }
 
     SelenideElement markeOfVerticalTruckSelector() {
         return $(byName("maker_id"));
@@ -101,5 +106,31 @@ public class LKW_Parent_Category_page {
 
     SelenideElement buttonSuchenOfVerticaltruckSelector() {
         return $x("//a[@class='truck_submit js--lkw_selector-btn-submit']");
+    }
+
+    SelenideElement headlineOfTopProductsBlock() {
+        return $x("//div[@class='title_list']");
+    }
+
+    SelenideElement textForHeadlineOfTopProductsBlock() {
+        return $x("//span[@class='more_text']");
+    }
+
+    SelenideElement topListBlock() {
+        return $x("//ul[@class='list_products']");
+    }
+
+    ElementsCollection productsInTopListBlock() {
+        return $$x("//ul[@class='list_products']/li");
+    }
+
+    SelenideElement  btnAddToBasketTopBLock(int position) {return $x("(//div[@class='button '])["+position+"]");}
+
+    SelenideElement basketDropMenu() {
+        return $x("//div[@class='cart-items-block ']");
+    }
+
+    SelenideElement basket() {
+        return $x("//a[@class='header-cart__link']");
     }
 }

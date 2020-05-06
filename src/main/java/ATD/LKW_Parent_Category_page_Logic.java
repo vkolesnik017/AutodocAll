@@ -96,6 +96,7 @@ public class LKW_Parent_Category_page_Logic extends LKW_Parent_Category_page {
         headlineInHeader().shouldBe(visible);
         return this;
     }
+
     @Step("visibility of headline of selector and icon of truck  .LKW_Parent_Category_page")
     public LKW_Parent_Category_page_Logic visibilityOfHeadLineSelectorAndIconOfTruck(String selectTruck) {
         iconOfTruckInHeadlineOfSelector().shouldBe(visible);
@@ -112,4 +113,34 @@ public class LKW_Parent_Category_page_Logic extends LKW_Parent_Category_page {
         return page(LKW_maker_car_list_Logic.class);
     }
 
+
+    @Step("visibility of headline of TOP products block .LKW_Parent_Category_page")
+    public LKW_Parent_Category_page_Logic visibilityOfHeadlineOfTopProductsBlock() {
+        headlineOfTopProductsBlock().shouldBe(visible);
+        textForHeadlineOfTopProductsBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("availability of top list block and top products .LKW_Parent_Category_page")
+    public LKW_Parent_Category_page_Logic availabilityOfTopProductsBlock() {
+        topListBlock().shouldBe(visible);
+        productsInTopListBlock().shouldHaveSize(10);
+        return this;
+    }
+
+    @Step("get id of product in Top products block .LKW_Parent_Category_page")
+    public String getIdOfTopProduct(){
+        topListBlock().shouldBe(visible);
+        String idOfProduct = btnAddToBasketTopBLock(1).getAttribute("id");
+        return idOfProduct;
+    }
+
+    @Step("added top product to basket .LKW_Parent_Category_page")
+    public Cart_page_Logic addTopProductToBasket() {
+        btnAddToBasketTopBLock(1).shouldBe(visible).click();
+        basketDropMenu().should(appear);
+        basketDropMenu().should(disappear);
+        basket().click();
+        return page(Cart_page_Logic.class);
+    }
 }

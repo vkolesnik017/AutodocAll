@@ -110,6 +110,10 @@
         <classes>
             <class name="LKW_trucks.QC_27_BlockOfBrandsAndModelsOfCarManufacturers.QC_28_AvailabilityOfHeadlineForBrandsAndModelsBlocks"/>
             <class name="LKW_trucks.QC_27_BlockOfBrandsAndModelsOfCarManufacturers.QC_29_AvailabilityOfBrandAndModelBlocks"/>
+            <class name="LKW_trucks.QC_27_BlockOfBrandsAndModelsOfCarManufacturers.QC_30_TransitionByClickAtBrandAndModel"/>
+            <class name="LKW_trucks.QC_27_BlockOfBrandsAndModelsOfCarManufacturers.QC_31_OpportunityToOpenAndCloseBrandBlock"/>
+            <class name="LKW_trucks.QC_27_BlockOfBrandsAndModelsOfCarManufacturers.QC_32_AvailabilityOfTopModelsList"/>
+            <class name="LKW_trucks.QC_27_BlockOfBrandsAndModelsOfCarManufacturers.QC_161_BrandCatalogLinkInModelBlock"/>
         </classes>
     </test>
 
@@ -119,6 +123,25 @@
             <class name="LKW_trucks.QC_33_BrandsBLock.QC_37_AvailabilityOfBrandsBlock"/>
             <class name="LKW_trucks.QC_33_BrandsBLock.QC_38_TransitionsByClickOnImageOfLogoBrand"/>
             <class name="LKW_trucks.QC_33_BrandsBLock.QC_40_OpenAndCloseOfBrandsBlock"/>
+        </classes>
+    </test>
+
+    <test name="QC_41_AdvantageBlockAndMainImageOfCategory">
+        <classes>
+            <class name="LKW_trucks.QC_41_AdvantageBlockAndMainImageOfCategory.QC_43_AvailabilityOfAdvantageBlock"/>
+            <class name="LKW_trucks.QC_41_AdvantageBlockAndMainImageOfCategory.QC_45_PresenceOfHeadlineAndAdvantagesInBlock"/>
+            <class name="LKW_trucks.QC_41_AdvantageBlockAndMainImageOfCategory.QC_46_PresenceOfTooltipsInAdvantageBlock"/>
+            <class name="LKW_trucks.QC_41_AdvantageBlockAndMainImageOfCategory.QC_47_ElementsOfAdvantageBlock"/>
+            <class name="LKW_trucks.QC_41_AdvantageBlockAndMainImageOfCategory.QC_48_MainImageOfAdvantageBlock"/>
+        </classes>
+    </test>
+
+    <test name="QC_73_TopProductsBlock">
+        <classes>
+            <class name="LKW_trucks.QC_73_TopProductsBlock.QC_74_HeadlineOfTopProductsBlock"/>
+            <class name="LKW_trucks.QC_73_TopProductsBlock.QC_75_ProductsCountInTopBlock"/>
+            <class name="LKW_trucks.QC_73_TopProductsBlock.QC_76_AddTopProductsToBasket"/>
+            <class name="LKW_trucks.QC_73_TopProductsBlock.QC_79_GenericOfProductInTopBLock"/>
         </classes>
     </test>
 

@@ -50,6 +50,18 @@ public class Main_page_Logic extends Main_page {
         return page(Profile_page_Logic.class);
     }
 
+    @Step("Login from facebook {mail}, {password}. Login_page_mob")
+    public Profile_page_Logic signInFromFB(String mail, String pass) {
+        loginBtnInHeader().click();
+        loginBtnFromFaceBook().click();
+        switchTo().window(1);
+        emailFieldForFB().setValue(mail);
+        passFieldFB().setValue(pass);
+        loginBtnFB().click();
+        switchTo().window(0);
+        return page(Profile_page_Logic.class);
+    }
+
     //in order to try to log in with old password
     @Step("Login in header with old password. Main_page")
     public Main_page_Logic loginWithOldPassword(String mail) {
@@ -514,6 +526,7 @@ public class Main_page_Logic extends Main_page {
     @Step("Click Contact link in the footer. Main_page")
     public Contact_static_page_Logic clickContact() {
         contactLink().click();
+        closeCookiesFooterMessage();
         return page(Contact_static_page_Logic.class);
     }
 
@@ -526,6 +539,7 @@ public class Main_page_Logic extends Main_page {
     @Step("Click Austauschartikel link in the footer. Main_page")
     public Austauschartikel_static_page_Logic clickAustauschartikel() {
         austauschartikelLink().click();
+        closeCookiesFooterMessage();
         return page(Austauschartikel_static_page_Logic.class);
     }
 

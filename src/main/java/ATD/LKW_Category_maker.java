@@ -98,4 +98,16 @@ class LKW_Category_maker {
     SelenideElement headLine() {
         return $x("//div[@class='title_count_search ']");
     }
+
+    SelenideElement modelOfTruckInTopBlock(String model) {return $x("//div[@class='lkw_top_models']//span[contains(text(),'"+model+"')]");}
+
+    SelenideElement linkMoreOfTopBrandBlock() {return $x("//div[@class='lkw_top_models']//span[contains(text(),'Mehr')]");}
+
+    ElementsCollection modelsOfTruckInBlock() {return $$x("//div[@class='lkw_top_models']//li").filter(visible);}
+
+    SelenideElement linkLessOfModelsBlock() {return $x("//div[@class='m_text hide']");}
+
+    SelenideElement headlineOfAdvantageBlock() {return $x("//div[@class='autoteile-features__title']");}
+
+    ElementsCollection advantagesInBlock() {return  $$x("//ul[@class='autoteile-features__list']//li");}
 }

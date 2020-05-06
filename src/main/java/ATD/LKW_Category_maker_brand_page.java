@@ -75,4 +75,8 @@ public class LKW_Category_maker_brand_page {
     SelenideElement resetBtnInVerticalCarSelector() {return $(byId("reset_selector_form"));}
 
     SelenideElement headlineOfTopModelBlock() {return $x("//div[@class='title_list no_border_top']");}
+
+    SelenideElement modelOfTruckInTopBlock(String model) {return $x("//div[@class='lkw_top_models']//span[contains(text(),'"+model+"')]");}
+
+    SelenideElement headlineOfTopProductsBlock() {return $x("//section[@class='title_list']");}
 }

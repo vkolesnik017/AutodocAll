@@ -142,4 +142,34 @@ public class LKW_Category_maker_Logic extends LKW_Category_maker {
         return this;
     }
 
+    @Step("check transition at icon of truck model in TOP brands block .LKW_Category_maker")
+    public LKW_Category_car_list_page_Logic checkTransitionAtIconOfTruckModel() {
+        modelOfTruckInTopBlock("F 10").shouldBe(visible).click();
+        return page(LKW_Category_car_list_page_Logic.class);
+    }
+
+    @Step("click at link More for opening models block .LKW_Category_maker")
+    public LKW_Category_maker_Logic openOfModelsBlock() {
+        linkMoreOfTopBrandBlock().click();
+        return this;
+    }
+
+    @Step("visibility of models block in open condition .LKW_Category_maker")
+    public LKW_Category_maker_Logic modelBlockInOpenCondition() {
+        modelsOfTruckInBlock().shouldHaveSize(37);
+        return this;
+    }
+
+    @Step("close of truck models block .LKW_Category_maker")
+    public LKW_Category_maker_Logic closeOfModelsBlock() {
+        linkLessOfModelsBlock().scrollTo().click();
+        modelsOfTruckInBlock().shouldHaveSize(6);
+        return this;
+    }
+    @Step("presence of headline and two advantages in Advantage block .LKW_Category_maker")
+    public LKW_Category_maker_Logic presenceOfHeadlineAndAdvantagesInBlock() {
+        headlineOfAdvantageBlock().shouldBe(visible);
+        advantagesInBlock().shouldHaveSize(2);
+        return this;
+    }
 }

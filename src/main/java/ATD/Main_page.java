@@ -3,7 +3,6 @@ package ATD;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.Sleeper;
 
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -18,6 +17,22 @@ public class Main_page {
 
     public SelenideElement loginBtnInHeader() {
         return $(byCssSelector(".sigin_btn>a"));
+    }
+
+    SelenideElement loginBtnFromFaceBook() {
+        return $x("//a[@class='social-auth__link']//img");
+    }
+
+    SelenideElement emailFieldForFB() {
+        return $x("//input[@id='email']");
+    }
+
+    SelenideElement passFieldFB() {
+        return $x("//input[@id='pass']");
+    }
+
+    SelenideElement loginBtnFB() {
+        return $x("//input[@name='login']");
     }
 
     // When user signIn
@@ -324,7 +339,7 @@ public class Main_page {
     }
 
     SelenideElement partnershipLink(){
-        return $x("//*[@class='footer__links']/div[1]/ul/li[5]/a");
+        return $x("//*[@class='footer__links']/div[1]/ul/li[6]/a");
     }
 
     SelenideElement presseLink(){
@@ -332,7 +347,7 @@ public class Main_page {
     }
 
     SelenideElement mobileAppLink(){
-        return $x("//*[@class='footer__links']/div[1]/ul/li[7]/a");
+        return $x("//*[@class='footer__links']/div[1]/ul/li[8]/a");
     }
 
     SelenideElement autodocPlusLink(){

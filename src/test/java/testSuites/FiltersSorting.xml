@@ -48,7 +48,7 @@
 
     <test name="FiltersSorting_bySide">
         <classes>
-            <class name="ATD.FiltersSorting.QC_167_FiltersSorting_bySide.QC_168_TestProductOutputWithFilterBySide"/>
+            <!--<class name="ATD.FiltersSorting.QC_167_FiltersSorting_bySide.QC_168_TestProductOutputWithFilterBySide"/>-->
             <!--<class name="ATD.FiltersSorting.QC_167_FiltersSorting_bySide.QC_1548_TestProductOutputWithFilterBySideWithoutCar"/>-->
             <class name="ATD.FiltersSorting.QC_167_FiltersSorting_bySide.QC_1549_TestFilterBySideSlider"/>
         </classes>
@@ -60,11 +60,11 @@
         </classes>
     </test>
 
-    <!--<test name="FiltersSorting_byGeneric">-->
-        <!--<classes>-->
-            <!--<class name="ATD.FiltersSorting.QC_179_FiltersSorting_byGeneric.QC_180_FiltersSorting_TestProductOutputWithGenericFilter"/>-->
-        <!--</classes>-->
-    <!--</test>-->
+    <test name="FiltersSorting_byGeneric">
+        <classes>
+            <class name="ATD.FiltersSorting.QC_179_FiltersSorting_byGeneric.QC_180_FiltersSorting_TestProductOutputWithGenericFilter"/>
+        </classes>
+    </test>
 
     <!--<test name="FiltersSorting_byRating">-->
         <!--<classes>-->

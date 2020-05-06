@@ -7,6 +7,12 @@ import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class Main_page_mob_Logic extends Main_page_mob {
 
+    @Step("Cart clicking. Main_page_mob")
+    public Cart_page_mob_Logic cartClick() {
+        cartIcon().click();
+        return page(Cart_page_mob_Logic.class);
+    }
+
     @Step("Closing first appearing popup. Main_page_mob")
     public Main_page_mob_Logic closeFirstPopup() {
         firstPopup().click();

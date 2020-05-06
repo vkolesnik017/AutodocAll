@@ -3,6 +3,7 @@ package ATD;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -66,5 +67,23 @@ public class LKW_Category_brand_page {
 
     SelenideElement buttonSuchenOfVerticaltruckSelector() {
         return $x("//a[@class='truck_submit js--lkw_selector-btn-submit']");
+    }
+
+    SelenideElement brandOfTruckInTopBlock() {return $x("//div[@class='kategorie_top_autos']/ul/li[1]/a");}
+
+    SelenideElement linkMoreOfTopBrandBlock() {
+        return $x("//div[@class='kategorie_top_autos']//span[contains(text(),'Mehr')]");
+    }
+
+    ElementsCollection brandsOfTruckInBlock() {
+        return $$x("//div[@class='kategorie_top_autos']//li//img").filter(visible);
+    }
+
+    ElementsCollection firstRowOfBrands() {
+        return $$x("//div[@class='kategorie_top_autos']//ul[1]//img");
+    }
+
+    ElementsCollection linksOfPopularModelList(int position) {
+        return $$x("//div[@class='kategorie_top_autos']//ul[1]/li[" + position + "]//ul//a");
     }
 }

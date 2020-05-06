@@ -10,7 +10,7 @@ import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.WebDriverRunner.source;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class LKW_main_page_Logic extends LKW_main_page {
@@ -263,14 +263,14 @@ public class LKW_main_page_Logic extends LKW_main_page {
 
     @Step("check of transition to Child category without car .LKW_main_page")
     public LKW_Category_page_Logic goToChildCategoryWithOutCar() {
-        childCategoryInParentCategoryBLock("Ölfilter").click();
+        childCategoryInParentCategoryBLock("Ölfilter").scrollIntoView("{block: \"center\"}").click();
         return page(LKW_Category_page_Logic.class);
     }
 
     @Step("check of transition to Child category without car .LKW_main_page")
     public LKW_Category_car_list_page_Logic goToChildCategoryWithCar() {
         selectTruckInSelector("2242", "8959", "1012748").checkSuccessfullyPageLoading("https://lkwteile.autodoc.de/lastkraftwagen/askam-fargo-desoto/as-950?car_id=1012748");
-        back();//.goToLKWMainPage();
+        back();
         tecDocCatalogOnMainPageLKW().shouldBe(visible).scrollTo();
         childCategoryInParentCategoryBLock("Ölfilter").click();
         return page(LKW_Category_car_list_page_Logic.class);
@@ -335,7 +335,7 @@ public class LKW_main_page_Logic extends LKW_main_page {
 
     @Step("go to lkw_makers route .LKW_main_page")
     public LKW_makers_page_Logic goToAllTruckBrandsPage() {
-        btnAllTruckBrands().click();
+        btnAllTruckBrands().scrollIntoView("{block: \"center\"}").click();
         return page(LKW_makers_page_Logic.class);
     }
 
@@ -384,6 +384,64 @@ public class LKW_main_page_Logic extends LKW_main_page {
     public LKW_main_page_Logic availabilityOfAutoPartsTopBrandsBlock() {
         truckBrandsBlock().shouldBe(visible);
         brandsOfTruckInTopBrandsBlock().shouldHaveSize(8);
+        return this;
+    }
+
+
+    @Step("check transition at icon of truck brands in TOP brands block .LKW_main_page")
+    public LKW_Categories_maker_page_Logic checkTransitionAtIconOfTruckBrand() {
+        brandOfTruckInTopBlock("MERCEDES-BENZ").click();
+        return page(LKW_Categories_maker_page_Logic.class);
+    }
+
+    @Step("visibility of headline of TOP products block .LKW_main_page")
+    public LKW_main_page_Logic visibilityOfHeadlineOfTopProductsBlock() {
+        headlineOfTopProductsBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("availability of top list block and top products .LKW_main_page")
+    public LKW_main_page_Logic availabilityOfTopProductsBlock() {
+        topProductsBlock().shouldBe(visible);
+        productsInTopBlock().shouldHaveSize(12);
+        return this;
+    }
+
+    @Step("availability of forward and back links of TOP products block .LKW_main_page")
+    public LKW_main_page_Logic availabilityOfForwardBackLinksOfTopBLock() {
+        forwardLinkOfTopBLock().shouldBe(visible).click();
+        productsInTopBlockSecondLevel().shouldBe(visible);
+        backLinkOfTopBLock().shouldBe(visible).click();
+        productsInTopBlockFirstLevel().shouldBe(visible);
+        return this;
+    }
+
+    @Step("get id of product in Top products block .LKW_main_page")
+    public String getIdOfTopProduct() {
+        String idOfProduct = btnAddToBasketTopBLock(1).getAttribute("id");
+        return idOfProduct;
+    }
+
+    @Step("added top product to basket .LKW_main_page")
+    public Cart_page_Logic addTopProductToBasket() {
+        btnAddToBasketTopBLock(1).shouldBe(visible).click();
+        basketDropMenu().should(appear);
+        basketDropMenu().should(disappear);
+        basket().click();
+        return page(Cart_page_Logic.class);
+    }
+
+    @Step("visibility of addition information when hover on the product in Top block .LKW_main_page")
+    public LKW_main_page_Logic visibilityOfAdditionInfoInTopBlock() {
+        topProductsBlock().scrollIntoView("{block: \"end\"}");
+        for (int i = 0; i < imageOfTopProducts().size(); i++) {
+               linkOnCatalogPage().hover();
+            imageOfTopProducts().get(i).hover();
+            additionInfoBlockOfTopProduct().get(0).should(appear);
+            if (i == 5) {
+                forwardLinkOfTopBLock().click();
+            }
+        }
         return this;
     }
 }

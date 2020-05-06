@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="QC_1697_CheckOfNotBlockingOfIndexInTheBillingBlock" parallel="methods" thread-count="2"
        data-provider-thread-count="3">
-
+<!--
     <listeners>
         <listener class-name="ATD.ProjectListener"/>
     </listeners>
@@ -73,11 +73,11 @@
         </classes>
     </test>
 
-    <!--<test name="TOP_QC_1696_CheckErrorTranslateOnAddressPage">-->
-    <!--<classes>-->
-    <!--<class name="QC_1696_CheckErrorTranslateOnAddressPage"/>-->
-    <!--</classes>-->
-    <!--</test>-->
+    &lt;!&ndash;<test name="TOP_QC_1696_CheckErrorTranslateOnAddressPage">&ndash;&gt;
+    &lt;!&ndash;<classes>&ndash;&gt;
+    &lt;!&ndash;<class name="QC_1696_CheckErrorTranslateOnAddressPage"/>&ndash;&gt;
+    &lt;!&ndash;</classes>&ndash;&gt;
+    &lt;!&ndash;</test>&ndash;&gt;
 
     <test name="TSP_QC_1696_CheckErrorTranslateOnAddressPage">
         <classes>
@@ -89,5 +89,5 @@
         <classes>
             <class name="XXL.SpecificTests.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1697_CheckOfNotBlockingOfIndexInTheBillingBlock"/>
         </classes>
-    </test>
+    </test>-->
 </suite>
