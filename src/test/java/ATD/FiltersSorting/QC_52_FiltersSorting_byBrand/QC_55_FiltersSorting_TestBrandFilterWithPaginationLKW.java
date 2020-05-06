@@ -48,7 +48,7 @@ public class QC_55_FiltersSorting_TestBrandFilterWithPaginationLKW {
         new Listing_page_Logic().checkBrandFilterWithSixBrandsPagination();
     }
 
-    @Test(dataProvider = "routes")
+    @Test(dataProvider = "routes", enabled = false)
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks brand filter with pagination")
@@ -58,7 +58,7 @@ public class QC_55_FiltersSorting_TestBrandFilterWithPaginationLKW {
         new Listing_page_Logic().checkBrandFilterWithTwoBrandsPagination();
     }
 
-    @Test(dataProvider = "routesLKWnoCar")
+    @Test(dataProvider = "routesLKWnoCar", enabled = false)
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks brand filter with pagination")

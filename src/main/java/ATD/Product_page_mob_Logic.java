@@ -3,12 +3,14 @@ package ATD;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class Product_page_mob_Logic extends Product_page_mob {
 
     @Step("Adding product to basket. Product_page")
     public Product_page_mob_Logic addProductToCart() {
         buyButton().click();
+        sleep(2000);
         return this;
     }
 

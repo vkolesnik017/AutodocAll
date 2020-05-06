@@ -50,6 +50,18 @@ public class Main_page_Logic extends Main_page {
         return page(Profile_page_Logic.class);
     }
 
+    @Step("Login from facebook {mail}, {password}. Login_page_mob")
+    public Profile_page_Logic signInFromFB(String mail, String pass) {
+        loginBtnInHeader().click();
+        loginBtnFromFaceBook().click();
+        switchTo().window(1);
+        emailFieldForFB().setValue(mail);
+        passFieldFB().setValue(pass);
+        loginBtnFB().click();
+        switchTo().window(0);
+        return page(Profile_page_Logic.class);
+    }
+
     //in order to try to log in with old password
     @Step("Login in header with old password. Main_page")
     public Main_page_Logic loginWithOldPassword(String mail) {
