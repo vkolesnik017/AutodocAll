@@ -151,4 +151,11 @@ public class Mailinator {
         letterInfo(letterNumber).shouldHave(text(expectedText1)).shouldHave(text(expectedText2));
         return this;
     }
+
+    @Step("Click FAQ email Confirm")
+    public Mailinator clickFAQemailConfirm() {
+        linkFAQemailConfirm().waitUntil(visible, 5000)
+                                .click();
+        return this;
+    }
 }
