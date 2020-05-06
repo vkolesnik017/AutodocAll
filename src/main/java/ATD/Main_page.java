@@ -388,10 +388,6 @@ public class Main_page {
         return $x("//a[@data-ga-action='confidential']");
     }
 
-    SelenideElement datenschutzLink(){
-        return $x("//*[@class='footer__links']/div[2]/ul/li[9]/a");
-    }
-
     //KUNDENSERVICE
 
     SelenideElement zahlungLink(){
