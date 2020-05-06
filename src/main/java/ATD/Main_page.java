@@ -381,11 +381,11 @@ public class Main_page {
     }
 
     SelenideElement widerrufLink(){
-        return $x("//*[@class='footer__links']/div[2]/ul/li[7]/a");
+        return $x("//*[@class='footer__links']/div[2]/ul/li[8]/a");
     }
 
     SelenideElement datenschutzLink(){
-        return $x("//*[@class='footer__links']/div[2]/ul/li[8]/a");
+        return $x("//*[@class='footer__links']/div[2]/ul/li[9]/a");
     }
 
     //KUNDENSERVICE
