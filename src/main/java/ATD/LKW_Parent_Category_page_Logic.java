@@ -6,6 +6,7 @@ import org.testng.Assert;
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selenide.back;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
@@ -129,7 +130,7 @@ public class LKW_Parent_Category_page_Logic extends LKW_Parent_Category_page {
     }
 
     @Step("get id of product in Top products block .LKW_Parent_Category_page")
-    public String getIdOfTopProduct(){
+    public String getIdOfTopProduct() {
         topListBlock().shouldBe(visible);
         String idOfProduct = btnAddToBasketTopBLock(1).getAttribute("id");
         return idOfProduct;
@@ -142,5 +143,47 @@ public class LKW_Parent_Category_page_Logic extends LKW_Parent_Category_page {
         basketDropMenu().should(disappear);
         basket().click();
         return page(Cart_page_Logic.class);
+    }
+
+    @Step("transition to product page by click on top image of product .LKW_Parent_Category_page")
+    public LKW_Parent_Category_page_Logic transitionToProductPageByClickOnTopImage() {
+        clickOnImageOfTopProduct().checkSuccessfullyLKWProductPageLoading("https://lkwteile.autodoc.de/mann-filter/");
+        back();
+        return this;
+    }
+
+    @Step("click on image of top product .LKW_Parent_Category_page")
+    public LKW_Product_page_Logic clickOnImageOfTopProduct() {
+        imageOfTopProduct().get(0).click();
+        return page(LKW_Product_page_Logic.class);
+    }
+
+    @Step("transition to product page by click on title of top product .LKW_Parent_Category_page")
+    public LKW_Parent_Category_page_Logic transitionToProductPageByClickOnTitleOfTopProduct() {
+        clickOnTitleOfTopProduct().checkSuccessfullyLKWProductPageLoading("https://lkwteile.autodoc.de/mann-filter/");
+        back();
+        return this;
+    }
+
+    @Step("click on title of top product .LKW_Parent_Category_page")
+    public LKW_Product_page_Logic clickOnTitleOfTopProduct() {
+        titleOfTopProduct().get(0).click();
+        return page(LKW_Product_page_Logic.class);
+    }
+
+    @Step("transition to product page by click on link Details .LKW_Parent_Category_page")
+    public LKW_Parent_Category_page_Logic transitionToProductPageByClickOnLinkDetails() {
+        if (closeCookiesPopUp().isDisplayed()) {
+            closeCookiesPopUp().click();
+        }
+        clickOnLinkDetails().checkSuccessfullyLKWProductPageLoading("https://lkwteile.autodoc.de/mann-filter/");
+        back();
+        return this;
+    }
+
+    @Step("click on Details link .LKW_Parent_Category_page")
+    public LKW_Product_page_Logic clickOnLinkDetails() {
+        linkDetails().get(0).click();
+        return page(LKW_Product_page_Logic.class);
     }
 }

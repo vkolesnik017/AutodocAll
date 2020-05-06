@@ -156,4 +156,10 @@ class LKW_Category_page {
 
     ElementsCollection titleOfTopProduct() {return $$x("//span[@class='link ga-click']");}
 
+    ElementsCollection imageOfTopProduct() {return $$x("//a[@class='ga-click']/img");}
+
+    ElementsCollection linkDetails() {return $$x("//span[@class='details link']");}
+
+    SelenideElement closeCookiesPopUp() {return $x("//div[@class='block-cookies__close']");}
+
 }
