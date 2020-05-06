@@ -3,7 +3,6 @@ package ATD;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.Sleeper;
 
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -324,7 +323,7 @@ public class Main_page {
     }
 
     SelenideElement partnershipLink(){
-        return $x("//*[@class='footer__links']/div[1]/ul/li[5]/a");
+        return $x("//*[@class='footer__links']/div[1]/ul/li[6]/a");
     }
 
     SelenideElement presseLink(){
@@ -332,7 +331,7 @@ public class Main_page {
     }
 
     SelenideElement mobileAppLink(){
-        return $x("//*[@class='footer__links']/div[1]/ul/li[7]/a");
+        return $x("//*[@class='footer__links']/div[1]/ul/li[8]/a");
     }
 
     SelenideElement autodocPlusLink(){
