@@ -20,7 +20,7 @@ public class Sponsorship_static_page {
         return $(By.xpath("//*[@class='add_part']/p"));
     }
 
-    public SelenideElement sendShipForm() {
+    SelenideElement sendShipForm() {
         return $(By.cssSelector("#send_ship"));
     }
 
@@ -33,11 +33,11 @@ public class Sponsorship_static_page {
     }
 
     SelenideElement datenschutzerklarungLink() {
-        return $(By.xpath("//label[@id='privacy_policy_sponsorship']/a"));
+        return $(By.xpath("//div[@class='sponsor-form__check']//a"));
     }
 
     SelenideElement sendShipFormMailField() {
-        return $(By.xpath("//div[@class='row inp_t']//input[@id='email']"));
+        return $(By.xpath("//input[@id='email']"));
     }
 
     SelenideElement sendShipFormSendenBtn() {
