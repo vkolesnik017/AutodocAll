@@ -97,7 +97,8 @@ public class Mailinator {
     @Step("Get total price in email. Mailinator")
     public Double getTotalPriceInEmail() {
         String realPrice = infoTotalPriceInEmail().getText();
-        realPrice = realPrice.substring(0, realPrice.indexOf(" ")).replaceAll(",", ".");
+        realPrice = realPrice.replaceAll("[^0-9,]", "");
+        realPrice = realPrice.replaceAll(",",".");
         Double totalPrice = Double.parseDouble(realPrice);
         return totalPrice;
     }
@@ -105,22 +106,7 @@ public class Mailinator {
     @Step("Get unit price in email. Mailinator")
     public Double getUnitPriceInEmail() {
         String realPrice = unitPrice().getText();
-        realPrice = realPrice.substring(0, realPrice.indexOf(" ")).replaceAll(",", ".");
-        Double unitPrice = Double.parseDouble(realPrice);
-        return unitPrice;
-    }
-
-    @Step("Get total price in email for EN shop. Mailinator")
-    public Double getTotalPriceInEmailForENShop() {
-        String realPrice = infoTotalPriceInEmail().getText().replace("£ ", "");
-        realPrice = realPrice.replaceAll(",",".");
-        Double totalPrice = Double.parseDouble(realPrice);
-        return totalPrice;
-    }
-
-    @Step("Get unit price in email for EN shop. Mailinator")
-    public Double getUnitPriceForEnShop() {
-        String realPrice = unitPrice().getText().replace("£ ", "");
+        realPrice = realPrice.replaceAll("[^0-9,]", "");
         realPrice = realPrice.replaceAll(",", ".");
         Double unitPrice = Double.parseDouble(realPrice);
         return unitPrice;

@@ -77,7 +77,7 @@ public class QC_1481_SplitBilling_FirmAndPhysicalPerson_SameCountries_NegativeCa
                 .openLetter(1)
                 .checkTextContainingVatPercentageInEmail("incl. 20% VAT")
                 .checkSecondFirmNameInEmail("Gear4music Limited")
-                .getTotalPriceInEmailForENShop();
+                .getTotalPriceInEmail();
         Assert.assertEquals(totalPrice, totalPriceInEmail);
     }
 }

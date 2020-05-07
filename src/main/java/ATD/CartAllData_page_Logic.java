@@ -4,9 +4,6 @@ import io.qameta.allure.Step;
 import org.testng.Assert;
 
 import java.sql.SQLException;
-import java.text.DecimalFormat;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import static ATD.CommonMethods.*;
 import static com.codeborne.selenide.Condition.*;
@@ -239,47 +236,36 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return page(Product_page_Logic.class);
     }
 
-    @Step("Get regular product price for EN shop. CartAllData_page")
-    public Double getRegularProductPriceForEnShop() {
-        String regularProductPrice = productPrice().getText().replace("£ ", "");
-        regularProductPrice = regularProductPrice.replaceAll(",", ".");
-        Double productPrice = Double.parseDouble(regularProductPrice);
-        return productPrice;
-    }
 
-    @Step("Get price including VAT For EN shop. CartAllData_page")
-    public Double getPriceIncludingVatForEnShop(String vat) {
-        Double productPrice = getRegularProductPriceForEnShop();
+    @Step("Get price including VAT. CartAllData_page")
+    public Double getPriceIncludingVat(String vat) {
+        Double productPrice = getRegularProductPriceFormAllDataPage();
         double priseWithVat = 0;
         if (vat.equals("20")) {
-            priseWithVat = (productPrice * 1.2);
+            priseWithVat = (productPrice * 1.2); // For shop EN
+        }
+        if (vat.equals("19")) {
+            priseWithVat = (productPrice * 1.19); // For shop DE
         }
         return priseWithVat;
     }
 
-    @Step("Get regular product price for DE shop. CartAllData_page")
-    public Double getRegularProductPriceForDeShop() {
-        String regularProductPrice = productPrice().getText().replace(" €", "");
+
+    @Step("Get regular product price. CartAllData_page")
+    public Double getRegularProductPriceFormAllDataPage() {
+        String regularProductPrice = productPrice().getText().replaceAll("[^0-9,]", "");
         regularProductPrice = regularProductPrice.replaceAll(",", ".");
         Double productPrice = Double.parseDouble(regularProductPrice);
         return productPrice;
     }
 
-    @Step("Get price including VAT For DE shop. CartAllData_page")
-    public double getPriceIncludingVatForDeShop(String vat) {
-        Double productPrice = getRegularProductPriceForDeShop();
-        double priseWithVat = 0;
-        if (vat.equals("19")) {
-            priseWithVat = (productPrice * 1.19);
-        }
-        return priseWithVat;
-    }
 
     @Step(": on CartAllData_page")
     public CartAllData_page_Logic checkAbsenceGoodInCartPage(String idProduct) {
         new Cart_page_Logic().checkAbsenceGoodInCartPage(idProduct);
         return this;
     }
+
 
     @Step(": on CartAllData_page")
     public CartAllData_page_Logic checkPresenceGoodInCardPage(String idProduct) {
