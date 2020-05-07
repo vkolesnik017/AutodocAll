@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$x;
 
 public class CartAccount_page {
 
@@ -41,6 +42,22 @@ public class CartAccount_page {
 
     SelenideElement loginButton() {
         return $(byCssSelector(".login"));
+    }
+
+    SelenideElement facebookLoginBtn() {
+        return $x("//form[@class='loginForm']//a[@class='social-auth__link']//img");
+    }
+
+    SelenideElement emailFieldForFB() {
+        return $x("//input[@id='email']");
+    }
+
+    SelenideElement passFieldFB() {
+        return $x("//input[@id='pass']");
+    }
+
+    SelenideElement loginBtnFB() {
+        return $x("//input[@name='login']");
     }
 
     //locators in password recovery popup

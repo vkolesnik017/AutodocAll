@@ -154,4 +154,12 @@ public class Cart_page_Logic extends Cart_page {
         productsIDLocator(idProducts).shouldBe(visible);
         return this;
     }
+
+    @Step("Delete goods from cart page. Cart_page")
+    public Main_page_Logic deleteGoodFromCartPage() {
+        deleteGoodsBtn().click();
+        confirmationDeleteGoodsBtn().click();
+        closeBtnPopupOfEmptyBasket().click();
+        return page(Main_page_Logic.class);
+    }
 }

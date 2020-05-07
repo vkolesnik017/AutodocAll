@@ -986,16 +986,14 @@ public class Listing_page_Logic extends Listing_page {
     }
 
     @Step("Check second generic filter applying on listing. Listing_page")
-    public Listing_page_Logic checkSecondGenericApplying(String genericName) {
-
+    public Listing_page_Logic checkSecondGenericApplying() {
+        String secondGenericName = getTextFromGeneric();
         secondGeneric().click();
         waitUntilPreloaderDisappear();
-        secondGeneric().click();
-        waitUntilPreloaderDisappear();
-        checkProductTitleOnListing(genericName, true, productTitleInListMode());
+        checkProductTitleOnListing(secondGenericName, true, productTitleInListMode());
         showListingInTileModeButton().click();
         waitUntilPreloaderDisappear();
-        checkProductTitleOnListing(genericName, true, productTitleInTileMode());
+        checkProductTitleOnListing(secondGenericName, true, productTitleInTileMode());
         firstGeneric().click();
         waitUntilPreloaderDisappear();
         checkUniqueGenericsOnListing(2, productTitleInTileMode());

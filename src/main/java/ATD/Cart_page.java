@@ -38,6 +38,18 @@ public class Cart_page {
         return $(byCssSelector(".cart-page-listing__empty-cart"));
     }
 
+    SelenideElement deleteGoodsBtn() {
+        return $x("//a[@class='delBtn']");
+    }
+
+    SelenideElement confirmationDeleteGoodsBtn() {
+        return $x("//div[@class='popup-content__buttons']//a[2]");
+    }
+
+    SelenideElement closeBtnPopupOfEmptyBasket() {
+        return $x("//a[@class='color close_popup']");
+    }
+
     // locators only for CH
     SelenideElement closeDeliveryLimitPopupForCH() {
         return $(byCssSelector(".delivery-limit-popup>a"));
