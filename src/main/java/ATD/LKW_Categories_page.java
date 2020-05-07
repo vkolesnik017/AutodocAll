@@ -57,4 +57,15 @@ public class LKW_Categories_page {
     SelenideElement topProductsBlock() {return $x("//div[@class='truck-car-parts-top-product']");}
 
     ElementsCollection additionInfoBlockOfTopProduct() {return $$x("//div[@class='product-list__item__popup']");}
+
+    ElementsCollection imageOfTopProduct() {return $$x("//a[@class='ga-click']/img");}
+
+    SelenideElement closeCookiesPopUp() {return $x("//div[@class='block-cookies__close']");}
+
+    ElementsCollection titleOfTopProduct() {return $$x("//div[@class='product-list__item__title']/span");}
+
+    ElementsCollection linkDetails() {return $$x("//div[@class='item-table-box__details']/span");}
+
+
+
 }

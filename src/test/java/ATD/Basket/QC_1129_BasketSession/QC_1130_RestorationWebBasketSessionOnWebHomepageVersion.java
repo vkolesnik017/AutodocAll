@@ -54,7 +54,8 @@ public class QC_1130_RestorationWebBasketSessionOnWebHomepageVersion {
         main_page_logic.loginFromHeader(mail)
                 .checkingAppearingNameOfClient()
                 .cartClick()
-                .checkOfIdAddedProductInBasket(productIdOnProductPage);
+                .checkOfIdAddedProductInBasket(productIdOnProductPage)
+                .deleteGoodFromCartPage();
     }
 
     @AfterMethod
