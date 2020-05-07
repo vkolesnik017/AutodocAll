@@ -13,6 +13,10 @@ public class CartAllData_page {
         return $(byCssSelector("[data-article_id='" + idProduct + "']"));
     }
 
+    SelenideElement idOfAddedProduct() {
+        return $x("//div[@class='cart-page-listing']//tr[2]");
+    }
+
     SelenideElement imageProduct() {
         return $x("//div[@class='image__product ']");
     }
@@ -197,6 +201,10 @@ public class CartAllData_page {
 
     SelenideElement deleteGoodFromAllDataPage(String idGood) {
         return $x("//tr[@data-article_id='" + idGood + "']//td[1]//a");
+    }
+
+    SelenideElement deleteGoodBtn() {
+        return $x("//a[@class='delBtn']");
     }
 
     SelenideElement btnConfirmProductDelete() {

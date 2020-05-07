@@ -9,6 +9,7 @@ import static ATD.CommonMethods.mailRandom;
 import static com.codeborne.selenide.Condition.not;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.switchTo;
 
 public class CartAccount_page_Logic extends CartAccount_page{
 
@@ -61,5 +62,16 @@ public class CartAccount_page_Logic extends CartAccount_page{
         closePopupMessageSentForChangePassword().click();
         closePopupMessageSentForChangePassword().shouldBe(not(visible));
         return this;
+    }
+
+    @Step("Login from facebook {mail}, {password}. Login_page_mob")
+    public CartAddress_page_Logic signInFromFB(String mail, String pass) {
+        facebookLoginBtn().click();
+        switchTo().window(1);
+        emailFieldForFB().setValue(mail);
+        passFieldFB().setValue(pass);
+        loginBtnFB().click();
+        switchTo().window(0);
+        return page(CartAddress_page_Logic.class);
     }
 }
