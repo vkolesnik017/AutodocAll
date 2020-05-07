@@ -24,4 +24,8 @@ public class Cart_page {
     SelenideElement nextBtnIsNotActiveForCH() {
         return $(byCssSelector(".noclicked"));
     }
+
+    SelenideElement emptyCart() {
+        return $x("//div[@class='cart-page-listing__empty-cart']");
+    }
 }

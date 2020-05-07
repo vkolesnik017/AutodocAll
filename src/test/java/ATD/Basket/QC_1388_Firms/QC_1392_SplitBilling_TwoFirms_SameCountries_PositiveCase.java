@@ -65,11 +65,11 @@ public class QC_1392_SplitBilling_TwoFirms_SameCountries_PositiveCase {
                 .checkTextInDeliveryAddressInfoBlock("Company North 51 Ltd")
                 .checkTextInPayersAddressInfoBlock("Company Gear4music Limited")
                 .checkAbsenceOfVatPercentage()
-                .getPriceIncludingVatForEnShop(vatForGB);
+                .getPriceIncludingVat(vatForGB);
         prunedPriceWithVatGB = cutPriceToFirstDecimalPlace(priceWithVatPerAllDataPageGB);
         cartAllData_page_logic.transitionToProductPage();
         switchTo().window(1);
-        priceProductPerProductPageGB = product_page_logic.getProductPriceForEnShop();
+        priceProductPerProductPageGB = product_page_logic.getProductPrice();
         prunedProductPriceGB = cutPriceToFirstDecimalPlace(priceProductPerProductPageGB);
         Assert.assertEquals(prunedPriceWithVatGB, prunedProductPriceGB);
         product_page_logic.cartClick();
@@ -97,7 +97,7 @@ public class QC_1392_SplitBilling_TwoFirms_SameCountries_PositiveCase {
                 .checkAbsenceVatPercentageInEmail()
                 .checkFirstFirmNameInEmail("Gear4music Limited")
                 .checkSecondFirmNameInEmail("North 51 Ltd")
-                .getTotalPriceInEmailForENShop();
+                .getTotalPriceInEmail();
         Assert.assertEquals(totalPriceGB, totalPriceInEmailGB);
     }
 
@@ -134,7 +134,7 @@ public class QC_1392_SplitBilling_TwoFirms_SameCountries_PositiveCase {
                 .checkTextInDeliveryAddressInfoBlock("Firma North 51 Ltd")
                 .checkTextInPayersAddressInfoBlock("Firma Gear4music Limited")
                 .checkAbsenceOfVatPercentage()
-                .getPriceIncludingVatForDeShop(vatForDE);
+                .getPriceIncludingVat(vatForDE);
         prunedPriceWithVatDE = cutPriceToFirstDecimalPlace(priceWithVatPerAllDataPageDE);
         cartAllData_page_logic.transitionToProductPage();
         switchTo().window(1);
