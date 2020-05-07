@@ -4,6 +4,9 @@ import AWS.ProductCard_aws;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -142,6 +145,24 @@ public class LKW_Product_page_Logic extends LKW_Product_page {
         actions().moveToElement(resetBtnInHorizontalCarSelector(), 0, 10).click().build().perform();
         Assert.assertTrue(currentUrl.equals(url()));
         return this;
+    }
+
+    @Step("select brand of car in horizontal truck selector .LKW_Product_page")
+    public LKW_Product_page_Logic matchingProductToSelectedTruck(String selectedBrand) {
+        truckingBlockOfMatching().shouldBe(visible).hover();
+        List<String> truckingBrands = new ArrayList<>(getTruckBrandsFromBLock());
+        Assert.assertTrue(truckingBrands.contains(selectedBrand));
+        truckingBrands.clear();
+        return this;
+    }
+
+    @Step("get truck brand from block .LKW_Product_page")
+    public List<String> getTruckBrandsFromBLock() {
+        List<String> brands = new ArrayList<>();
+        for (int i = 0; i < brandsOfTruckInMatchingBLock().size(); i++) {
+            brands.add(brandsOfTruckInMatchingBLock().get(i).getText());
+        }
+        return brands;
     }
 
 }

@@ -86,4 +86,6 @@ public class LKW_Category_brand_page {
     ElementsCollection linksOfPopularModelList(int position) {
         return $$x("//div[@class='kategorie_top_autos']//ul[1]/li[" + position + "]//ul//a");
     }
+
+    ElementsCollection titleOfTopProducts() {return $$x("//span[@class='link ga-click']");}
 }

@@ -84,4 +84,8 @@ public class LKW_Product_page {
     SelenideElement activeMarkeField() {
         return $x("//select[@name='maker_id']/ancestor::div[@class='atd-carselector__select-wrapper  js--lkw_selector-select_basic active']");
     }
+
+    SelenideElement truckingBlockOfMatching() {return $x("//div[@class='product-info-block__auto__title product-info-block__title--lkw']");}
+
+    ElementsCollection brandsOfTruckInMatchingBLock() {return $$x("//div[2]//div[@class='accordion-button']/span");}
 }

@@ -110,4 +110,6 @@ class LKW_Category_maker {
     SelenideElement headlineOfAdvantageBlock() {return $x("//div[@class='autoteile-features__title']");}
 
     ElementsCollection advantagesInBlock() {return  $$x("//ul[@class='autoteile-features__list']//li");}
+
+    ElementsCollection imageOfTopProduct() {return $$x("//a[@class='ga-click']/img");}
 }
