@@ -201,5 +201,4 @@ class LKW_Categories_maker_page {
 
     ElementsCollection topProductsFirstLevel() {return $$x("//div[@class='top-small-products__items'][1]/div/div/a/img");}
 
-    ElementsCollection topProductsSecondLevel() {return $$x("//div[@class='top-small-products__items'][2]/div/div/a/img");}
 }
