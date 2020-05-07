@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="QC_1766_AddingNewCar2020Selector"  data-provider-thread-count="3">
+
+    <listeners>
+        <listener class-name="ATD.ProjectListener"/>
+    </listeners>
+
+    <test name="QC_1766_AddingNewCar2020Selector">
+        <classes>
+            <class name="specificTests.QC_1766_AddingNewCar2020Selector">
+            </class>
+        </classes>
+    </test>
+
+</suite>
