@@ -198,4 +198,7 @@ class LKW_Categories_maker_page {
     SelenideElement closeCookiesPopUp() {
         return $x("//div[@class='block-cookies__close']");
     }
+
+    ElementsCollection topProductsFirstLevel() {return $$x("//div[@class='top-small-products__items'][1]/div/div/a/img");}
+
 }

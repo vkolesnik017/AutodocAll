@@ -81,7 +81,7 @@ public class LKW_Category_brand_page_Logic extends LKW_Category_brand_page {
         modelOfVerticalTruckSelector().selectOptionByValue(modelOfTruck);
         motorOfVerticalTruckSelector().selectOptionByValue(motorOfTruck);
         buttonSuchenOfVerticaltruckSelector().click();
-       return page(LKW_Category_car_list_page_Logic.class);
+        return page(LKW_Category_car_list_page_Logic.class);
     }
 
     @Step("check transition at icon of truck brands in TOP brands block .LKW_Category_brand_page")
@@ -117,5 +117,14 @@ public class LKW_Category_brand_page_Logic extends LKW_Category_brand_page {
     public LKW_Category_model_brand_page_Logic selectPopularModel(int positionOfBrand, int positionOfModel) {
         linksOfPopularModelList(positionOfBrand).get(positionOfModel).click();
         return page(LKW_Category_model_brand_page_Logic.class);
+    }
+
+
+    @Step("corresponding of product to selected brand .LKW_Category_brand_page")
+    public LKW_Category_brand_page_Logic productCorrespondTOSelectedBrand(String selectedBrand) {
+        for (int i = 0; i < titleOfTopProducts().size(); i++) {
+            titleOfTopProducts().get(i).shouldHave(text(selectedBrand));
+        }
+        return this;
     }
 }
