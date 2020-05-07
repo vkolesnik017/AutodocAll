@@ -238,12 +238,20 @@ public class Listing_page {
         return $x("//*[@class='sort-rating__form-list']/li[1]/label");
     }
 
+    public SelenideElement ratingFourStarsFilterCheckbox() {
+        return $x("//*[@class='sort-rating__form-list']/li/label[@for='rating_4']");
+    }
+
     public SelenideElement ratingThreeStarsFilterCheckbox() {
         return $x("//*[@class='sort-rating__form-list']/li/label[@for='rating_3']");
     }
 
     public SelenideElement ratingFilterBlock() {
         return $(".sort-rating__form");
+    }
+
+    ElementsCollection fiveRatingStarsInProduct() {
+        return $$x("//div[@class='description']//div[@class='review-vote']//span[@style='width:100%']");
     }
 
     //For Oem listing

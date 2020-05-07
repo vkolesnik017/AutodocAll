@@ -161,7 +161,7 @@ public class Cart_page_Logic extends Cart_page {
         return this;
     }
 
-    @Step("Delete goods from. Cart_page")
+    @Step("Delete goods from cart page. Cart_page")
     public Main_page_Logic deleteGoodFromCartPage() {
         deleteGoodsBtn().click();
         confirmationDeleteGoodsBtn().click();

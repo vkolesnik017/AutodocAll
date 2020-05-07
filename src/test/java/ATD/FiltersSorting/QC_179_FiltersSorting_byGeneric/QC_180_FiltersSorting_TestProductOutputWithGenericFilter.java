@@ -44,7 +44,7 @@ public class QC_180_FiltersSorting_TestProductOutputWithGenericFilter {
         openPage(route);
         genericName = listingPage.getTextFromGeneric();
         listingPage.checkFirstGenericApplying(genericName)
-                    .checkSecondGenericApplying(genericName);
+                    .checkSecondGenericApplying();
 
     }
 

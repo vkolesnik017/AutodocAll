@@ -72,7 +72,7 @@ public class LKW_Product_page_Logic extends LKW_Product_page {
     @Step("Check successfully LKW_Product page loading .LKW_Product_page")
     public LKW_Product_page_Logic checkSuccessfullyLKWProductPageLoading(String currentUrl) {
         breadCrumbsBlock().shouldBe(visible);
-        Assert.assertTrue(url().equals(currentUrl));
+        Assert.assertTrue(url().contains(currentUrl));
         return this;
     }
 

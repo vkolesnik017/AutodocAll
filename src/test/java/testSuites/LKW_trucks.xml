@@ -141,6 +141,7 @@
             <class name="LKW_trucks.QC_73_TopProductsBlock.QC_74_HeadlineOfTopProductsBlock"/>
             <class name="LKW_trucks.QC_73_TopProductsBlock.QC_75_ProductsCountInTopBlock"/>
             <class name="LKW_trucks.QC_73_TopProductsBlock.QC_76_AddTopProductsToBasket"/>
+            <class name="LKW_trucks.QC_73_TopProductsBlock.QC_77_VisibilityOfAdditionInfoInTopBlock"/>
             <class name="LKW_trucks.QC_73_TopProductsBlock.QC_79_GenericOfProductInTopBLock"/>
         </classes>
     </test>
