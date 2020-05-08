@@ -64,11 +64,11 @@ public class QC_1485_FirmValidationAfterError {
                 .nextBtnClick()
                 .checkTextInDeliveryAddressInfoBlock("Company Gear4music Limited")
                 .checkAbsenceOfVatPercentage()
-                .getPriceIncludingVatForEnShop(vatForEN);
+                .getPriceIncludingVat(vatForEN);
         prunedPriceWithVat = cutPriceToFirstDecimalPlace(priceWithVatPerAllDataPage);
         cartAllData_page_logic.transitionToProductPage();
         switchTo().window(1);
-        priceProductPerProductPage = product_page_logic.getProductPriceForEnShop();
+        priceProductPerProductPage = product_page_logic.getProductPrice();
         prunedProductPrice = cutPriceToFirstDecimalPlace(priceProductPerProductPage);
         Assert.assertEquals(prunedPriceWithVat, prunedProductPrice);
         product_page_logic.cartClick();
@@ -87,7 +87,7 @@ public class QC_1485_FirmValidationAfterError {
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
         sellingPriceAWSOrder = order_aws.getSellingPriceOrderAWS();
         switchTo().window(0);
-        regularProductPricePerAllDataPage = cartAllData_page_logic.getRegularProductPriceForEnShop();
+        regularProductPricePerAllDataPage = cartAllData_page_logic.getRegularProductPriceFormAllDataPage();
         Assert.assertEquals(sellingPriceAWSOrder, regularProductPricePerAllDataPage);
         switchTo().window(1);
         order_aws.clickCustomerId();
@@ -100,9 +100,9 @@ public class QC_1485_FirmValidationAfterError {
                 .openLetter(1)
                 .checkAbsenceVatPercentageInEmail()
                 .checkFirstFirmNameInEmail("Gear4music Limited")
-                .getTotalPriceInEmailForENShop();
+                .getTotalPriceInEmail();
         Assert.assertEquals(totalPrice, totalPriceInEmail);
-        unitPrice = mailinator.getUnitPriceForEnShop();
+        unitPrice = mailinator.getUnitPriceInEmail();
         Assert.assertEquals(regularProductPricePerAllDataPage, unitPrice);
 
 

@@ -1,6 +1,9 @@
 package PKW;
 
+import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
+
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.Selenide.sleep;
 
@@ -26,6 +29,12 @@ public class Cart_page_Logic extends Cart_page{
                 }
             }
         }
+        return this;
+    }
+
+    @Step("Check that the basket is empty. Cart_page")
+    public Cart_page_Logic checkEmptyCart() {
+        emptyCart().shouldBe(visible);
         return this;
     }
 }

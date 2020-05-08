@@ -21,4 +21,10 @@ public class Payment_handler_page_Logic extends Payment_handler_page {
     public String getOrderNumber() {
         return orderNumber().getText();
     }
+
+    @Step("Checks success text in header. Payment_handler_page")
+    public Payment_handler_page_Logic checkSuccessTextInHeader() {
+        successTextInHeader().shouldBe(visible);
+        return this;
+    }
 }
