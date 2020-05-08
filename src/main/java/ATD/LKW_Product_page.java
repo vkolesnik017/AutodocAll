@@ -88,4 +88,10 @@ public class LKW_Product_page {
     SelenideElement truckingBlockOfMatching() {return $x("//div[@class='product-info-block__auto__title product-info-block__title--lkw']");}
 
     ElementsCollection brandsOfTruckInMatchingBLock() {return $$x("//div[2]//div[@class='accordion-button']/span");}
+
+    SelenideElement dynamicCharacteristic(String titleOfCharacteristic, String valueOfCharacteristic) {return $x("//li[@class='important']/span[contains(text(),'"+titleOfCharacteristic+"')]/following-sibling::span[contains(text(),'"+valueOfCharacteristic+"')]");}
+
+    SelenideElement oenBlock() {return $x("//div[@class='product-info-block__oem']");}
+
+    ElementsCollection listOfOen() {return $$x("//div[@class='oem-list__col']/ul/li/span");}
 }
