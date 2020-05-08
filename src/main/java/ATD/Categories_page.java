@@ -50,4 +50,8 @@ public class Categories_page {
 
     ElementsCollection accessoriesCategories() { return $$x("//*[@id='category-33000']//li//img"); }
 
+    String categoryURL(String categoryId) {
+      return "https://www.autodoc.de/autoteile/stecker-zundkerze-" + categoryId + "/vw/golf/golf-iv-1j1/8799-1-4-16v";
+    }
+
 }

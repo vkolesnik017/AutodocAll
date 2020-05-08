@@ -7,8 +7,7 @@ import org.testng.Assert;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.*;
 
 import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.exactText;
@@ -172,4 +171,42 @@ public class Categories_page_Logic extends Categories_page {
     return listWithCategoriesInTecdocCatalog;
   }
 
+  @Step("Get All Child Categories From Tecdoc Catalog Using Set. Categories_page")
+  public Set<String> getAllChildCategoriesFromTecdocCatalogUsingSet() {
+    Set<String> listWithCategoriesInTecdocCatalog = new LinkedHashSet<>();
+    for (int i = 0; i < childCategoriesTecdocName().size(); i++) {
+      System.out.println(childCategoriesTecdocName().get(i).attr("alt").trim());
+      listWithCategoriesInTecdocCatalog.add(childCategoriesTecdocName().get(i).attr("alt").trim());
+    }
+
+    Set<String> listWithACCCategoriesInTecdocCatalog = new LinkedHashSet<>();
+    for (int i = 0; i < accessoriesCategories().size(); i++) {
+      System.out.println(accessoriesCategories().get(i).attr("alt").trim());
+      listWithACCCategoriesInTecdocCatalog.add(accessoriesCategories().get(i).attr("alt").trim());
+    }
+
+    System.out.println(listWithACCCategoriesInTecdocCatalog.size());
+    listWithCategoriesInTecdocCatalog.removeAll(listWithACCCategoriesInTecdocCatalog);
+    System.out.println(listWithCategoriesInTecdocCatalog.size());
+    System.out.println("-------------------------------------------------------------------------------------------------1");
+    Iterator iterator = listWithCategoriesInTecdocCatalog.iterator();
+    while (iterator.hasNext()) {
+      System.out.println(iterator.next());
+    }
+    return listWithCategoriesInTecdocCatalog;
+  }
+
+  @Step("Check url undercategories id on soft 404. Categories_page")
+  public Categories_page_Logic checkUrlUndercategoriesId404(ArrayList<String> notActiveCategories) throws IOException {
+    for (int i = 0; i < notActiveCategories.size(); i++) {
+      String urlWithCategoryId = categoryURL(notActiveCategories.get(i));
+      System.out.println(urlWithCategoryId);
+      URL url = new URL(urlWithCategoryId);
+      HttpURLConnection http = (HttpURLConnection) url.openConnection();
+      http.setInstanceFollowRedirects(true);
+      int responseCode = http.getResponseCode();
+      Assert.assertEquals(responseCode, 404);
+    }
+    return this;
+  }
   }
