@@ -15,15 +15,15 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.*;
-import static ATD.CommonMethods.passFB;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_1134_CheckBasketSessionSynchronizationOnDifferentSkins {
+public class QC_1136_RecoveryBasketWebSessionOnWebVersionMainPageViaFacebook {
 
-    private String mail = "QC_1134_autotestDE@mailinator.com", productIdOnProductPage;
     private Product_page_Logic product_page_logic = new Product_page_Logic();
     private Main_page_Logic main_page_logic = new Main_page_Logic();
+
+    private String productIdOnProductPage;
 
     @BeforeClass
     void setUp() {
@@ -38,10 +38,10 @@ public class QC_1134_CheckBasketSessionSynchronizationOnDifferentSkins {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description("Test checks basket session synchronization on different skins")
-    public void testBasketSessionSynchronizationOnDifferentSkins(String route) throws SQLException {
+    @Description("Test checks recovery of basket web session on the web version main page via Facebook")
+    public void testRecoveryBasketWebSessionOnWebVersionMainPageViaFB(String route) throws SQLException {
         openPage(route);
-        main_page_logic.loginFromHeader(mail)
+        main_page_logic.loginFromHeader(mailFB, passFB)
                 .checkingAppearingNameOfClient();
         openPage(route + "/" + new DataBase().getRouteByRouteName("DE", "product25"));
         productIdOnProductPage = product_page_logic.getProductId();
@@ -50,32 +50,12 @@ public class QC_1134_CheckBasketSessionSynchronizationOnDifferentSkins {
                 .cartClick()
                 .checkOfIdAddedProductInBasket(productIdOnProductPage);
         close();
-        openPage("https://www.pkwteile.de/");
-        new PKW.Main_page_Logic().loginFromHeader(mail, password)
-                .cartClick()
-                .checkEmptyCart();
-    }
-
-
-    @Test(dataProvider = "route")
-    @Flaky
-    @Owner(value = "Chelombitko")
-    @Description("Test checks basket session synchronization on different skins. login via Facebook")
-    public void testBasketSessionSynchronizationOnDifferentSkinsLoginViaFB(String route) throws SQLException {
         openPage(route);
         main_page_logic.signInFromFB(mailFB, passFB)
-                .checkingAppearingNameOfClient();
-        openPage(route + "/" + new DataBase().getRouteByRouteName("DE", "product25"));
-        productIdOnProductPage = product_page_logic.getProductId();
-        product_page_logic.addProductToCart()
-                .closePopupOtherCategoryIfYes()
+                .checkingAppearingNameOfClient()
                 .cartClick()
-                .checkOfIdAddedProductInBasket(productIdOnProductPage);
-        close();
-        openPage("https://www.pkwteile.de/");
-        new PKW.Main_page_Logic().loginFromHeader(mailFB, passFB)
-                .cartClick()
-                .checkEmptyCart();
+                .checkOfIdAddedProductInBasket(productIdOnProductPage)
+                .deleteGoodFromCartPage();
     }
 
     @AfterMethod
