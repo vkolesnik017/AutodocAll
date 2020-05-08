@@ -67,11 +67,11 @@ public class QC_1396_SplitBilling_FirmAndPhysicalPerson_DifferentCountries_Posit
                 .checkAbsenceOfVatPercentage()
                 .checkTextInDeliveryAddressInfoBlock("Company Gear4music Limited")
                 .checkTextInPayersAddressInfoBlock("autotest autotest")
-                .getPriceIncludingVatForEnShop(vatForGB);
+                .getPriceIncludingVat(vatForGB);
         prunedPriceWithVatGB = cutPriceToFirstDecimalPlace(priceWithVatPerAllDataPageGB);
         cartAllData_page_logic.transitionToProductPage();
         switchTo().window(1);
-        priceProductPerProductPageGB = product_page_logic.getProductPriceForEnShop();
+        priceProductPerProductPageGB = product_page_logic.getProductPrice();
         prunedProductPriceGB = cutPriceToFirstDecimalPlace(priceProductPerProductPageGB);
         Assert.assertEquals(prunedPriceWithVatGB, prunedProductPriceGB);
         product_page_logic.cartClick();
@@ -90,7 +90,7 @@ public class QC_1396_SplitBilling_FirmAndPhysicalPerson_DifferentCountries_Posit
         Assert.assertEquals(totalPriceGB, totalPriceAWSOrderGB);
         sellingPriceAWSOrderGB = order_aws.getSellingPriceOrderAWS();
         switchTo().window(0);
-        regularProductPricePerAllDataPageGB = cartAllData_page_logic.getRegularProductPriceForEnShop();
+        regularProductPricePerAllDataPageGB = cartAllData_page_logic.getRegularProductPriceFormAllDataPage();
         Assert.assertEquals(sellingPriceAWSOrderGB, regularProductPricePerAllDataPageGB);
         switchTo().window(1);
         order_aws.clickCustomerId();
@@ -103,9 +103,9 @@ public class QC_1396_SplitBilling_FirmAndPhysicalPerson_DifferentCountries_Posit
                 .openLetter(1)
                 .checkAbsenceVatPercentageInEmail()
                 .checkSecondFirmNameInEmail("Gear4music Limited")
-                .getTotalPriceInEmailForENShop();
+                .getTotalPriceInEmail();
         Assert.assertEquals(totalPriceGB, totalPriceInEmailGB);
-        unitPriceGB = mailinator.getUnitPriceForEnShop();
+        unitPriceGB = mailinator.getUnitPriceInEmail();
         Assert.assertEquals(regularProductPricePerAllDataPageGB, unitPriceGB);
     }
 
@@ -144,7 +144,7 @@ public class QC_1396_SplitBilling_FirmAndPhysicalPerson_DifferentCountries_Posit
                 .checkAbsenceOfVatPercentage()
                 .checkTextInDeliveryAddressInfoBlock("Firma Gear4music Limited")
                 .checkTextInPayersAddressInfoBlock("autotest autotest")
-                .getPriceIncludingVatForDeShop(vatForDE);
+                .getPriceIncludingVat(vatForDE);
         prunedPriceWithVatDE = cutPriceToFirstDecimalPlace(priceWithVatPerAllDataPageDE);
         cartAllData_page_logic.transitionToProductPage();
         switchTo().window(1);
@@ -167,7 +167,7 @@ public class QC_1396_SplitBilling_FirmAndPhysicalPerson_DifferentCountries_Posit
         Assert.assertEquals(totalPriceDE, totalPriceAWSOrderDE);
         sellingPriceAWSOrderDE = order_aws.getSellingPriceOrderAWS();
         switchTo().window(0);
-        regularProductPricePerAllDataPageDE = cartAllData_page_logic.getRegularProductPriceForDeShop();
+        regularProductPricePerAllDataPageDE = cartAllData_page_logic.getRegularProductPriceFormAllDataPage();
         Assert.assertEquals(sellingPriceAWSOrderDE, regularProductPricePerAllDataPageDE);
         switchTo().window(1);
         order_aws.clickCustomerId();

@@ -612,17 +612,9 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
-    @Step("Get product price for EN shop. Product_page")
-    public double getProductPriceForEnShop() {
-        String productPrice = productPrice().getText().replace("£ ", "");
-        productPrice = productPrice.replaceAll(",", ".");
-        Double doublePrise = Double.parseDouble(productPrice);
-        return doublePrise;
-    }
-
     @Step("Get product price. Product_page")
     public double getProductPrice() {
-        String productPrice = productPrice().getText().replace(" €", "");
+        String productPrice = productPrice().getText().replaceAll("[^0-9,]", "");
         productPrice = productPrice.replaceAll(",", ".");
         Double doublePrise = Double.parseDouble(productPrice);
         return doublePrise;

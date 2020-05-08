@@ -90,7 +90,7 @@ public class QC_1482_SplitBilling_TwoFirms_SameCountries_NegativeCase {
                 .checkTextContainingVatPercentageInEmail("incl. 20% VAT")
                 .checkFirstFirmNameInEmail("North 51 Ltd")
                 .checkSecondFirmNameInEmail("Gear4music Limited")
-                .getTotalPriceInEmailForENShop();
+                .getTotalPriceInEmail();
         Assert.assertEquals(totalPrice, totalPriceInEmail);
     }
 
