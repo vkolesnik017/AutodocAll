@@ -41,11 +41,11 @@ public class QC_614_DisplayUndercategoriesInCatalogRouteWithCar {
     @Description(value = "Test Display Undercategories In Catalog Route With Car")
     public void testDisplayUndercategoriesInCatalogRouteWithCar(String route) throws Exception {
         openPage(route);
-        categoriesPageLogic.check200ResponseTecdoc();
+        categoriesPageLogic.checkProductOutputOnRoutes();
         openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "maker_car_list8"));
-        categoriesPageLogic.check200ResponseTecdoc();
+        categoriesPageLogic.checkProductOutputOnRoutes();
         notActiveCategories = new CatalogCategories_aws().getNotActiveUndercategoriesFromAWS();
-        categoriesPageLogic.checkUrlUndercategoriesId404(notActiveCategories);
+//        categoriesPageLogic.checkUrlUndercategoriesId404(notActiveCategories);
     }
 
     @AfterMethod
