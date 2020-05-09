@@ -165,4 +165,23 @@ public class LKW_Product_page_Logic extends LKW_Product_page {
         return brands;
     }
 
+    @Step("visibility of dynamic characteristic .LKW_Product_page")
+    public LKW_Product_page_Logic visibilityOfDynamicCharacteristic() {
+        dynamicCharacteristic("Motorcode", "OM 936 LA").should(appear);
+        return this;
+    }
+
+    @Step("visibility of EON block .LKW_Product_page")
+    public LKW_Product_page_Logic visibilityOfOemBlock() {
+        oenBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("lack of links in OEN block .LKW_Product_page")
+    public LKW_Product_page_Logic lackOfLinksInOenBlock() {
+        for (int i = 0; i < listOfOen().size(); i++) {
+            listOfOen().get(i).shouldNotHave(attribute("href"));
+        }
+        return this;
+    }
 }

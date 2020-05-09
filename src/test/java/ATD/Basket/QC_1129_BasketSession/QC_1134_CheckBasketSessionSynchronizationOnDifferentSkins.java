@@ -1,6 +1,9 @@
 package ATD.Basket.QC_1129_BasketSession;
 
-import ATD.*;
+import ATD.DataBase;
+import ATD.Main_page_Logic;
+import ATD.Product_page_Logic;
+import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -12,15 +15,15 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.*;
+import static ATD.CommonMethods.passFB;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_1133_LoginInBasketWhenBasketSessionAbandoned {
+public class QC_1134_CheckBasketSessionSynchronizationOnDifferentSkins {
 
-    private String mail = "QC_1133_autotestDE@mailinator.com", productIdOnProductPage, productIdOnProductPageForAllData;
-
-    private Main_page_Logic main_page_logic = new Main_page_Logic();
+    private String mail = "QC_1134_autotestDE@mailinator.com", productIdOnProductPage;
     private Product_page_Logic product_page_logic = new Product_page_Logic();
+    private Main_page_Logic main_page_logic = new Main_page_Logic();
 
     @BeforeClass
     void setUp() {
@@ -35,8 +38,8 @@ public class QC_1133_LoginInBasketWhenBasketSessionAbandoned {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description("Test checks Login in the basket when the basket session is abandoned")
-    public void testLoginInBasketWhenBasketSessionAbandoned(String route) throws SQLException {
+    @Description("Test checks basket session synchronization on different skins")
+    public void testBasketSessionSynchronizationOnDifferentSkins(String route) throws SQLException {
         openPage(route);
         main_page_logic.loginFromHeader(mail)
                 .checkingAppearingNameOfClient();
@@ -47,27 +50,18 @@ public class QC_1133_LoginInBasketWhenBasketSessionAbandoned {
                 .cartClick()
                 .checkOfIdAddedProductInBasket(productIdOnProductPage);
         close();
-        openPage(route + "/" + new DataBase().getRouteByRouteName("DE", "product"));
-        productIdOnProductPageForAllData = product_page_logic.getProductId();
-        product_page_logic.addProductToCart()
-                .closePopupOtherCategoryIfYes()
+        openPage("https://www.pkwteile.de/");
+        new PKW.Main_page_Logic().loginFromHeader(mail, password)
                 .cartClick()
-                .nextButtonClick()
-                .signIn(mail, password)
-                .fillAllFields("DE")
-                .nextBtnClick()
-                .chooseVorkasse()
-                .nextBtnClick()
-                .checkOfAbsenceIdAddedProductInAllData(productIdOnProductPage)
-                .checkOfIdAddedProductInAllData(productIdOnProductPageForAllData)
-                .deleteGoodFromCartAllDataPage();
+                .checkEmptyCart();
     }
+
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description("Test checks Login in the basket when the basket session is abandoned. login via Facebook")
-    public void testLoginInBasketWhenBasketSessionAbandonedFaceBookLogin(String route) throws SQLException {
+    @Description("Test checks basket session synchronization on different skins. login via Facebook")
+    public void testBasketSessionSynchronizationOnDifferentSkinsLoginViaFB(String route) throws SQLException {
         openPage(route);
         main_page_logic.signInFromFB(mailFB, passFB)
                 .checkingAppearingNameOfClient();
@@ -78,20 +72,10 @@ public class QC_1133_LoginInBasketWhenBasketSessionAbandoned {
                 .cartClick()
                 .checkOfIdAddedProductInBasket(productIdOnProductPage);
         close();
-        openPage(route + "/" + new DataBase().getRouteByRouteName("DE", "product"));
-        productIdOnProductPageForAllData = product_page_logic.getProductId();
-        product_page_logic.addProductToCart()
-                .closePopupOtherCategoryIfYes()
+        openPage("https://www.pkwteile.de/");
+        new PKW.Main_page_Logic().loginFromHeader(mailFB, passFB)
                 .cartClick()
-                .nextButtonClick()
-                .signInFromFB(mailFB, passFB)
-                .fillAllFields("DE")
-                .nextBtnClick()
-                .chooseVorkasse()
-                .nextBtnClick()
-                .checkOfAbsenceIdAddedProductInAllData(productIdOnProductPage)
-                .checkOfIdAddedProductInAllData(productIdOnProductPageForAllData)
-                .deleteGoodFromCartAllDataPage();
+                .checkEmptyCart();
     }
 
     @AfterMethod

@@ -89,7 +89,7 @@ public class QC_1484_SplitBilling_FirmAndPhysicalPerson_DifferentCountries_Negat
                 .checkTextContainingVatPercentageInEmail("incl. 20% VAT")
                 .checkNamePhysicalPersonInEmail("autotest autotest")
                 .checkSecondFirmNameInEmail("Gear4music Limited")
-                .getTotalPriceInEmailForENShop();
+                .getTotalPriceInEmail();
         Assert.assertEquals(totalPrice, totalPriceInEmail);
     }
 

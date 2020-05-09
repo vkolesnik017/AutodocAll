@@ -1,6 +1,9 @@
 package ATD.Basket.QC_1129_BasketSession;
 
-import ATD.*;
+import ATD.DataBase;
+import ATD.Main_page_Logic;
+import ATD.Product_page_Logic;
+import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -11,15 +14,16 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.openPage;
+import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_1131_SynchronizationWebSessionOfBasketOnMobVersion {
+public class QC_1136_RecoveryBasketWebSessionOnWebVersionMainPageViaFacebook {
 
-    private String mail = "QC_1131_autotestDE@mailinator.com", productIdOnProductPage;
     private Product_page_Logic product_page_logic = new Product_page_Logic();
     private Main_page_Logic main_page_logic = new Main_page_Logic();
+
+    private String productIdOnProductPage;
 
     @BeforeClass
     void setUp() {
@@ -34,10 +38,10 @@ public class QC_1131_SynchronizationWebSessionOfBasketOnMobVersion {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description("Test checks synchronization of the web session of the basket on the mob. version")
-    public void testSynchronizationWebSessionOnMobVersion(String route) throws SQLException {
+    @Description("Test checks recovery of basket web session on the web version main page via Facebook")
+    public void testRecoveryBasketWebSessionOnWebVersionMainPageViaFB(String route) throws SQLException {
         openPage(route);
-        main_page_logic.loginFromHeader(mail)
+        main_page_logic.loginFromHeader(mailFB, passFB)
                 .checkingAppearingNameOfClient();
         openPage(route + "/" + new DataBase().getRouteByRouteName("DE", "product25"));
         productIdOnProductPage = product_page_logic.getProductId();
@@ -46,15 +50,12 @@ public class QC_1131_SynchronizationWebSessionOfBasketOnMobVersion {
                 .cartClick()
                 .checkOfIdAddedProductInBasket(productIdOnProductPage);
         close();
-        openPage("https://m.autodoc.de/?force=mobile");
-        new Main_page_mob_Logic().closeFirstPopup()
-                .clickSignInInMenu()
-                .closeFooterPopup()
-                .signIn(mail)
+        openPage(route);
+        main_page_logic.signInFromFB(mailFB, passFB)
+                .checkingAppearingNameOfClient()
                 .cartClick()
                 .checkOfIdAddedProductInBasket(productIdOnProductPage)
-                .deleteItemFromCart()
-                .checkEmptyCart();
+                .deleteGoodFromCartPage();
     }
 
     @AfterMethod

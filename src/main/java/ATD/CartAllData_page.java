@@ -38,7 +38,7 @@ public class CartAllData_page {
     }
 
     SelenideElement counterValue(String idGood) {
-        return $x("//tr[@data-article_id='" + idGood + "']//input[@class='item_qty qty_1']");
+        return $x("//tr[@data-article_id='" + idGood + "']//input[@class='item_qty']");
     }
 
     SelenideElement counterPlusBtn() {

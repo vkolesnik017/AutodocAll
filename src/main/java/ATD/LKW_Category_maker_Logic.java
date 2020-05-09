@@ -194,7 +194,7 @@ public class LKW_Category_maker_Logic extends LKW_Category_maker {
 
     @Step("get selected brand of truck from selector .LKW_Category_maker")
     public String getSelectedTruck() {
-          String brandOfTruck = markeInVerticalCarSelector().getText();
+        String brandOfTruck = markeInVerticalCarSelector().getText();
         return brandOfTruck;
     }
 }

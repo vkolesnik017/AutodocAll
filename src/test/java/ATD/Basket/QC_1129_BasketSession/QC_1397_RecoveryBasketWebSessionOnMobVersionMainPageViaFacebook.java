@@ -11,15 +11,17 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.openPage;
+import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_1131_SynchronizationWebSessionOfBasketOnMobVersion {
+public class QC_1397_RecoveryBasketWebSessionOnMobVersionMainPageViaFacebook {
 
-    private String mail = "QC_1131_autotestDE@mailinator.com", productIdOnProductPage;
     private Product_page_Logic product_page_logic = new Product_page_Logic();
     private Main_page_Logic main_page_logic = new Main_page_Logic();
+    private Main_page_mob_Logic main_page_mob_logic = new Main_page_mob_Logic();
+
+    private String productIdOnProductPage;
 
     @BeforeClass
     void setUp() {
@@ -34,10 +36,10 @@ public class QC_1131_SynchronizationWebSessionOfBasketOnMobVersion {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description("Test checks synchronization of the web session of the basket on the mob. version")
-    public void testSynchronizationWebSessionOnMobVersion(String route) throws SQLException {
+    @Description("Test checks recovery of basket web session on the mobile version main page via Facebook")
+    public void testRecoveryBasketWebSessionOnMobVersionMainPageViaFB(String route) throws SQLException {
         openPage(route);
-        main_page_logic.loginFromHeader(mail)
+        main_page_logic.signInFromFB(mailFB, passFB)
                 .checkingAppearingNameOfClient();
         openPage(route + "/" + new DataBase().getRouteByRouteName("DE", "product25"));
         productIdOnProductPage = product_page_logic.getProductId();
@@ -47,10 +49,11 @@ public class QC_1131_SynchronizationWebSessionOfBasketOnMobVersion {
                 .checkOfIdAddedProductInBasket(productIdOnProductPage);
         close();
         openPage("https://m.autodoc.de/?force=mobile");
-        new Main_page_mob_Logic().closeFirstPopup()
+        main_page_mob_logic.closeFirstPopup()
                 .clickSignInInMenu()
                 .closeFooterPopup()
-                .signIn(mail)
+                .signInFromFB(mailFB, passFB)
+                .checkPresenceIconUserId()
                 .cartClick()
                 .checkOfIdAddedProductInBasket(productIdOnProductPage)
                 .deleteItemFromCart()
