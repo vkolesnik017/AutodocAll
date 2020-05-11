@@ -453,7 +453,10 @@ public class LKW_main_page_Logic extends LKW_main_page {
 
     @Step("click on image of top product .LKW_main_page")
     public LKW_Product_page_Logic clickOnImageOfTopProduct() {
-        imageOfTopProductWithSelectedTitle("MANN-FILTER").click();
+        if (!imageOfTopProductWithSelectedTitle("MANN-FILTER").isDisplayed()){
+            forwardLinkOfTopBLock().click();
+        }
+        imageOfTopProductWithSelectedTitle("MANN-FILTER").shouldBe(visible).click();
         return page(LKW_Product_page_Logic.class);
     }
 
@@ -469,7 +472,10 @@ public class LKW_main_page_Logic extends LKW_main_page {
 
     @Step("click on title of top product .LKW_main_page")
     public LKW_Product_page_Logic clickOnTitleOfTopProduct() {
-        topProductWithSelectedTitle("MANN-FILTER").click();
+        if (!imageOfTopProductWithSelectedTitle("MANN-FILTER").isDisplayed()){
+            forwardLinkOfTopBLock().click();
+        }
+        topProductWithSelectedTitle("MANN-FILTER").shouldBe(visible).click();
         return page(LKW_Product_page_Logic.class);
     }
 
@@ -485,8 +491,11 @@ public class LKW_main_page_Logic extends LKW_main_page {
 
     @Step("click on Details link .LKW_main_page")
     public LKW_Product_page_Logic clickOnLinkDetails() {
-        imageOfTopProductWithSelectedTitle("MANN-FILTER").hover();
-        additionInfoBlockOfTopProductWithSelectedTitle("MANN-FILTER").should(appear);
+        if (!imageOfTopProductWithSelectedTitle("MANN-FILTER").isDisplayed()){
+            forwardLinkOfTopBLock().click();
+        }
+        imageOfTopProductWithSelectedTitle("MANN-FILTER").shouldBe(visible).hover();
+        additionInfoBlockOfTopProductWithSelectedTitle("MANN-FILTER").shouldBe(visible);
         linkDetailsWithSelectedTitle("MANN-FILTER").shouldBe(visible).click();
         return page(LKW_Product_page_Logic.class);
     }
