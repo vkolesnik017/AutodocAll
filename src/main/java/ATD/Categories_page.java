@@ -32,6 +32,8 @@ public class Categories_page {
 
     ElementsCollection tecdocCategoriesSpan() { return  $$x("//*[@class='list_links']/li/span");}
 
+    ElementsCollection tecdocChildCategoriesUrlA() { return $$x("//*[@class='ctg']//li//a"); }
+
     ElementsCollection dropdownCategories() { return $$(".mCSB_container  a"); }
 
     SelenideElement catalogInHeader() { return $(".menu-catalog"); }
@@ -53,5 +55,13 @@ public class Categories_page {
     String categoryURL(String categoryId) {
       return "https://www.autodoc.de/autoteile/stecker-zundkerze-" + categoryId + "/vw/golf/golf-iv-1j1/8799-1-4-16v";
     }
+
+    ElementsCollection childCategoriesTopBlock() { return $$x("//*[@class='col']/ul/li/span"); }
+
+    ElementsCollection parentCategoriesTopBlock() { return $$x("//*[@class='col']/div");}
+
+    SelenideElement nextButtonTopBlock() { return $(".bx-next"); }
+
+    SelenideElement listOfProducts() { return $(".list_products"); }
 
 }
