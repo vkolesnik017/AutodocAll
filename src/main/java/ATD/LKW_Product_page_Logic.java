@@ -122,7 +122,6 @@ public class LKW_Product_page_Logic extends LKW_Product_page {
         return this;
     }
 
-
     @Step("visibility of tooltip for motor_field in selector  .LKW_Product_page")
     public LKW_Product_page_Logic visibilityOfTooltipForMotorFieldInHorizontalSelector() {
         modelInHorizontalTruckSelector().selectOptionByValue("714");
@@ -130,7 +129,6 @@ public class LKW_Product_page_Logic extends LKW_Product_page {
         tooltipForFieldInHorizontalCarSelector().shouldBe(visible);
         return this;
     }
-
 
     @Step("select brand of car in horizontal truck selector .LKW_Product_page")
     public LKW_Product_page_Logic selectBrandOfCarInHorizontalSelector(String valueOfBrand) {
@@ -246,7 +244,6 @@ public class LKW_Product_page_Logic extends LKW_Product_page {
         return this;
     }
 
-
     @Step("open of characteristic block .LKW_Product_page")
     public LKW_Product_page_Logic openCharacteristicBlock() {
         openBlockOfCharacteristic().click();
@@ -260,5 +257,62 @@ public class LKW_Product_page_Logic extends LKW_Product_page {
         selectedTruckSelector().should(appear);
         darkBackground().should(appear);
         return this;
+    }
+
+    @Step("visibility of related and analogues products block .LKW_Product_page")
+    public LKW_Product_page_Logic visibilityOfAnaloguesAndRelatedProductsBlock() {
+        relatedProductsBlock().shouldBe(visible);
+        analoguesBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("visibility of analogues addition info block .LKW_Product_page")
+    public LKW_Product_page_Logic visibilityOfAnaloguesAdditionInfoBlock() {
+        analoguesBlock().scrollIntoView("{block: \"center\"}");
+        for (int i = 0; i < imageOfAnaloguesProducts().size(); i++) {
+            headlineOfAnaloguesBlock().hover();
+            imageOfAnaloguesProducts().get(i).shouldBe(visible).hover();
+            additionInfoBlockOfAnaloguesProduct().get(0).should(appear);
+            if (i == 5) {
+                forwardLinkAnaloguesBlock().click();
+            }
+        }
+        return this;
+    }
+
+
+    @Step("visibility of related addition info block .LKW_Product_page")
+    public LKW_Product_page_Logic visibilityOfRelatedAdditionInfoBlock() {
+        while (forwardLinkRelatedBlock().isDisplayed()) {
+            hoverOnImageOfRelatedProduct();
+            forwardLinkRelatedBlock().click();
+        }
+        hoverOnImageOfRelatedProduct();
+        return this;
+    }
+
+    @Step("hover on image of product in related block .LKW_Product_page")
+    public LKW_Product_page_Logic hoverOnImageOfRelatedProduct() {
+        for (int i = 0; i < imageOfRelatedProductsBlock().size(); i++) {
+            headlineOfRelatedBlock().hover();
+            imageOfRelatedProductsBlock().get(i).shouldBe(visible).hover();
+            additionInfoBlockOfRelatesProduct().get(0).should(appear);
+        }
+        return this;
+    }
+
+    @Step("get id of related product .LKW_Product_page")
+    public String getIdOfRelatedProduct() {
+        String idOfBtnAddToBasket = btnAddToBasketRelatedBlock().get(0).getAttribute("id");
+        return idOfBtnAddToBasket;
+    }
+
+    @Step("added related product to basket .LKW_Product_page")
+    public Cart_page_Logic addRelatedProductToBasket() {
+        btnAddToBasketRelatedBlock().get(0).shouldBe(visible).click();
+        basketDropMenu().should(appear);
+        basketDropMenu().should(disappear);
+        basket().click();
+        return page(Cart_page_Logic.class);
     }
 }
