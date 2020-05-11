@@ -6,11 +6,16 @@
         <listener class-name="ATD.ProjectListener"/>
     </listeners>
 
-    <test name="QC_1129_BasketSession">
+    <test name="QC_1129_BasketSession" thread-count="1">
         <classes>
             <class name="ATD.Basket.QC_1129_BasketSession.QC_1130_RestorationWebBasketSessionOnWebHomepageVersion"/>
             <class name="ATD.Basket.QC_1129_BasketSession.QC_1131_SynchronizationWebSessionOfBasketOnMobVersion"/>
             <class name="ATD.Basket.QC_1129_BasketSession.QC_1132_SynchronizationMobSessionOfBasketOnWebVersion"/>
+            <class name="ATD.Basket.QC_1129_BasketSession.QC_1133_LoginInBasketWhenBasketSessionAbandoned"/>
+            <class name="ATD.Basket.QC_1129_BasketSession.QC_1134_CheckBasketSessionSynchronizationOnDifferentSkins"/>
+            <class name="ATD.Basket.QC_1129_BasketSession.QC_1135_SynchronizationOfBasketSessionAfterPlacingAnOrder"/>
+            <class name="ATD.Basket.QC_1129_BasketSession.QC_1136_RecoveryBasketWebSessionOnWebVersionMainPageViaFacebook"/>
+            <class name="ATD.Basket.QC_1129_BasketSession.QC_1397_RecoveryBasketWebSessionOnMobVersionMainPageViaFacebook"/>
         </classes>
     </test>
 

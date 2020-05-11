@@ -141,7 +141,11 @@
             <class name="LKW_trucks.QC_73_TopProductsBlock.QC_74_HeadlineOfTopProductsBlock"/>
             <class name="LKW_trucks.QC_73_TopProductsBlock.QC_75_ProductsCountInTopBlock"/>
             <class name="LKW_trucks.QC_73_TopProductsBlock.QC_76_AddTopProductsToBasket"/>
+            <class name="LKW_trucks.QC_73_TopProductsBlock.QC_77_VisibilityOfAdditionInfoInTopBlock"/>
+            <class name="LKW_trucks.QC_73_TopProductsBlock.QC_78_TransitionFromProductBLockToProductPage"/>
             <class name="LKW_trucks.QC_73_TopProductsBlock.QC_79_GenericOfProductInTopBLock"/>
+            <class name="LKW_trucks.QC_73_TopProductsBlock.QC_80_ApplicabilityProductToTruck"/>
+            <class name="LKW_trucks.QC_73_TopProductsBlock.QC_81_CorrespondingOfProductBrandToSelectedBrand"/>
         </classes>
     </test>
 
@@ -154,6 +158,13 @@
             <class name="LKW_trucks.QC_82_TruckSelectorBlock.QC_92_ResetOfValuesInTruckSelector"/>
             <class name="LKW_trucks.QC_82_TruckSelectorBlock.QC_93_VisibilityOfCarInInputFieldOfSelectorFromUrl"/>
             <class name="LKW_trucks.QC_82_TruckSelectorBlock.QC_157_PopUpOfSpecificationsInTruckSelector"/>
+        </classes>
+    </test>
+
+    <test name="QC_207_ProductPage">
+        <classes>
+            <class name="LKW_trucks.QC_207_ProductPage.QC_208_DynamicCharacteristicsOfProduct"/>
+            <class name="LKW_trucks.QC_207_ProductPage.QC_212_LackOfLinksInOenBlock"/>
         </classes>
     </test>
 

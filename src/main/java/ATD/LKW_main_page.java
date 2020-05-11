@@ -277,6 +277,24 @@ public class LKW_main_page {
     }
 
     ElementsCollection additionInfoBlockOfTopProduct() {return $$x("//div[@class='product-list__item__popup']").filter(visible);}
+
+    ElementsCollection titleOfTopProducts() {
+        return $$x("//div[@class='product-list__item__title']/span");
+    }
+
+    ElementsCollection linkDetails() {
+        return $$x("//div[@class='item-table-box__details']/span");
+    }
+
+    SelenideElement topProductWithSelectedTitle(String title) {return $x("//div[@class='product-list__item__title']/span[contains(text(),'"+title+"')]");}
+
+    SelenideElement imageOfTopProductWithSelectedTitle(String title) {return $x("//div[@class='product-list__item__title']/span[contains(text(),'"+title+"')]/parent::div/..//img");}
+
+     SelenideElement closeCookiesPopUp() {return $x("//div[@class='block-cookies__close']");}
+
+     SelenideElement additionInfoBlockOfTopProductWithSelectedTitle(String title) {return $x("//div[@class='product-list__item__title']/span[contains(text(),'"+title+"')]/parent::div/..//div[@class='product-list__item__popup']");}
+
+     SelenideElement linkDetailsWithSelectedTitle(String title) {return $x("//div[@class='product-list__item__title']/span[contains(text(),'"+title+"')]/parent::div/..//div[@class='product-list__item__popup']/div/div[2]/span"); }
 }
 
 

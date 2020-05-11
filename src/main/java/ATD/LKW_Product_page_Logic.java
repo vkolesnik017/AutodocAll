@@ -4,6 +4,10 @@ import AWS.ProductCard_aws;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -71,8 +75,8 @@ public class LKW_Product_page_Logic extends LKW_Product_page {
 
     @Step("Check successfully LKW_Product page loading .LKW_Product_page")
     public LKW_Product_page_Logic checkSuccessfullyLKWProductPageLoading(String currentUrl) {
-        breadCrumbsBlock().shouldBe(visible);
-        Assert.assertTrue(url().equals(currentUrl));
+        breadCrumbsBlock().should(appear);
+        Assert.assertTrue(url().contains(currentUrl));
         return this;
     }
 
@@ -144,4 +148,117 @@ public class LKW_Product_page_Logic extends LKW_Product_page {
         return this;
     }
 
+    @Step("select brand of car in horizontal truck selector .LKW_Product_page")
+    public LKW_Product_page_Logic matchingProductToSelectedTruck(String selectedBrand) {
+        truckingBlockOfMatching().shouldBe(visible).hover();
+        List<String> truckingBrands = new ArrayList<>(getTruckBrandsFromBLock());
+        Assert.assertTrue(truckingBrands.contains(selectedBrand));
+        truckingBrands.clear();
+        return this;
+    }
+
+    @Step("get truck brand from block .LKW_Product_page")
+    public List<String> getTruckBrandsFromBLock() {
+        List<String> brands = new ArrayList<>();
+        for (int i = 0; i < brandsOfTruckInMatchingBLock().size(); i++) {
+            brands.add(brandsOfTruckInMatchingBLock().get(i).getText());
+        }
+        return brands;
+    }
+
+    @Step("visibility of dynamic characteristic .LKW_Product_page")
+    public LKW_Product_page_Logic visibilityOfDynamicCharacteristic() {
+        dynamicCharacteristic("Motorcode", "OM 936 LA").should(appear);
+        return this;
+    }
+
+    @Step("visibility of EON block .LKW_Product_page")
+    public LKW_Product_page_Logic visibilityOfOemBlock() {
+        oenBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("lack of links in OEN block .LKW_Product_page")
+    public LKW_Product_page_Logic lackOfLinksInOenBlock() {
+        for (int i = 0; i < listOfOen().size(); i++) {
+            listOfOen().get(i).shouldNotHave(attribute("href"));
+        }
+        return this;
+    }
+
+
+    @Step("visibility of compatible truck block .LKW_Product_page")
+    public LKW_Product_page_Logic visibilityOfCompatibleTruckBLock() {
+        compatibleTruckBLock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("check of sorting compatible truck list .LKW_Product_page")
+    public LKW_Product_page_Logic checkOfSortingCompatibleTruckList() {
+
+        List<String> listOfTruck = new ArrayList<>();
+        for (int i = 0; i < compatibleTruckList().size(); i++) {
+            listOfTruck.add(compatibleTruckList().get(i).getText());
+        }
+        List<String> sortingListOfTruck = new ArrayList<>(listOfTruck);
+        Collections.sort(sortingListOfTruck);
+        Assert.assertEquals(sortingListOfTruck, listOfTruck);
+        return this;
+    }
+
+    @Step("visibility of models list of selected truck in compatible block .LKW_Product_page")
+    public LKW_Product_page_Logic visibilityOfModelsListBlock(String titleOfTruck) {
+        for (int i = 0; i < compatibleTruckList().size(); i++) {
+            if (compatibleTruckList().get(i).has(exactText(titleOfTruck))) {
+                compatibleTruckList().get(i).click();
+            }
+        }
+        modelsListBlock().should(appear);
+        return this;
+    }
+
+    @Step("visibility of  application block specification .LKW_Product_page")
+    public LKW_Product_page_Logic visibilityOfApplicationBlockSpecification(String modelOfTruck) {
+        for (int i = 0; i < compatibleTruckLinks().size(); i++) {
+            if (compatibleTruckLinks().get(i).has(text(modelOfTruck))) {
+                compatibleTruckLinks().get(i).click();
+            }
+        }
+        applicationSpecificationBLock().should(appear);
+        return this;
+    }
+
+
+    @Step("visibility of compatible truck in selector .LKW_Product_page")
+    public LKW_Product_page_Logic availabilityOfCompatibleTruckInSelector() {
+        List<String> brandsOfTrucks = new ArrayList<>();
+        for (int i = 0; i < brandsOfTrucksInSelector().size(); i++) {
+            brandsOfTrucks.add(brandsOfTrucksInSelector().get(i).getText());
+        }
+        if (closeCompatibleTruckModelList().isDisplayed()) {
+            closeCompatibleTruckModelList().click();
+        }
+        for (int i = 0; i < compatibleTruckList().size(); i++) {
+            if (!brandsOfTrucks.contains(compatibleTruckList().get(i).getText())) {
+                compatibleTruckList().get(i).shouldNotHave(attribute("href"));
+            }
+        }
+        return this;
+    }
+
+
+    @Step("open of characteristic block .LKW_Product_page")
+    public LKW_Product_page_Logic openCharacteristicBlock() {
+        openBlockOfCharacteristic().click();
+        listOfCharacteristics().shouldHaveSize(12);
+        return this;
+    }
+
+    @Step("visibility of selected truck selector after click by characteristic .LKW_Product_page")
+    public LKW_Product_page_Logic visibilityOfSelectedTruckSelector() {
+        activeLinksOfCharacteristic().get(0).shouldBe(visible).click();
+        selectedTruckSelector().should(appear);
+        darkBackground().should(appear);
+        return this;
+    }
 }

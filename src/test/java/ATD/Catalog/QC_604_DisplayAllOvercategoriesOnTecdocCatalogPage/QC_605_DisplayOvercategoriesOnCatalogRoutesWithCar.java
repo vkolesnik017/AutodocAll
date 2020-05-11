@@ -21,6 +21,9 @@ import static com.codeborne.selenide.Selenide.close;
 
 public class QC_605_DisplayOvercategoriesOnCatalogRoutesWithCar {
 
+    private ArrayList<String> parentCategoriesTecdocCatalog;
+    private ArrayList<String> parentCategoriesAWS;
+
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -37,8 +40,8 @@ public class QC_605_DisplayOvercategoriesOnCatalogRoutesWithCar {
     @Description(value = "Test Display Overcategories On Catalog Routes With Car")
     public void testDisplayOvercategoriesOnCatalogRoutesWithCar(String route) throws Exception {
         openPage(route);
-        ArrayList<String> parentCategoriesTecdocCatalog = new Categories_page_Logic().getAllParentCategoriesFromTecdocCatalog();
-        ArrayList<String> parentCategoriesAWS = new CatalogCategories_aws(). getAllParentCategoriesNameFromAWS();
+        parentCategoriesTecdocCatalog = new Categories_page_Logic().getAllParentCategoriesFromTecdocCatalog();
+        parentCategoriesAWS = new CatalogCategories_aws(). getAllParentCategoriesNameFromAWS();
         new Categories_page_Logic().compareCategoriesFromCatalogAndAWS(parentCategoriesTecdocCatalog, parentCategoriesAWS);
     }
 

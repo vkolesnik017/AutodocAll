@@ -50,6 +50,15 @@ public class Main_page_Logic extends Main_page {
         return page(Profile_page_Logic.class);
     }
 
+    @Step("Login in header with mail {mail} and password {pass}. Main_page")
+    public Profile_page_Logic loginFromHeader(String mail, String pass) {
+        loginBtnInHeader().click();
+        mailFieldLogin().setValue(mail);
+        passFieldLogin().setValue(pass);
+        submitBtnLogin().click();
+        return page(Profile_page_Logic.class);
+    }
+
     @Step("Login from facebook {mail}, {password}. Login_page_mob")
     public Profile_page_Logic signInFromFB(String mail, String pass) {
         loginBtnInHeader().click();
@@ -583,19 +592,19 @@ public class Main_page_Logic extends Main_page {
 
     @Step("Click Nach Hersteller Einkaufen link in the footer. Main_page")
     public Ersatzteile_page clickNachHerstellerEinkaufen() {
-        sucheNachAutomodelleLink().click();
+        nachHerstellerEinkaufenLink().click();
         return page(Ersatzteile_page.class);
     }
 
     @Step("Click Nach Modell Einkaufen link in the footer. Main_page")
     public ErsatzteileModels_page clickNachModellEinkaufen() {
-        nachHerstellerEinkaufenLink().click();
+        nachModellEinkaufenLink().click();
         return page(ErsatzteileModels_page.class);
     }
 
     @Step("Click Suche Nach Automodelle link in the footer. Main_page")
     public ErsatzteileCars_page clickSucheNachAutomodelle() {
-        nachModellEinkaufenLink().click();
+        sucheNachAutomodelleLink().click();
         return page(ErsatzteileCars_page.class);
     }
 
@@ -829,7 +838,7 @@ public class Main_page_Logic extends Main_page {
 
     @Step("Checks the appearance of pop-up when you hover over the image of the garage in the Header. Main_page")
     public Main_page_Logic checkAppearanceOfPopUpWhenHoverOverImageOfGarageInHeader() {
-        headerGarageIcon().hover();
+        headerGarageIcon().click();
         headerGarageTooltip().shouldBe(visible);
         return this;
     }

@@ -17,7 +17,13 @@
     <test name="QC_604_DisplayAllOvercategoriesOnTecdocCatalogPage">
         <classes>
             <!--<class name="ATD.Catalog.QC_604_DisplayAllOvercategoriesOnTecdocCatalogPage.QC_605_DisplayOvercategoriesOnCatalogRoutesWithCar"/>-->
-            <!--<class name="ATD.Catalog.QC_604_DisplayAllOvercategoriesOnTecdocCatalogPage.QC_609_DisplayOvercategoriesFAQandCatalogRouteWithoutCar"/>-->
+            <class name="ATD.Catalog.QC_604_DisplayAllOvercategoriesOnTecdocCatalogPage.QC_609_DisplayOvercategoriesFAQandCatalogRouteWithoutCar"/>
+        </classes>
+    </test>
+
+    <test name="QC_613_DisplayAllUndercategoriesTecdocCatalog">
+        <classes>
+            <class name="ATD.Catalog.QC_613_DisplayAllUndercategoriesTecdocCatalog.QC_614_DisplayUndercategoriesInCatalogRouteWithCar"/>
         </classes>
     </test>
 

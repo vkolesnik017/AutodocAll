@@ -4,9 +4,6 @@ import io.qameta.allure.Step;
 import org.testng.Assert;
 
 import java.sql.SQLException;
-import java.text.DecimalFormat;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import static ATD.CommonMethods.*;
 import static com.codeborne.selenide.Condition.*;
@@ -239,47 +236,36 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return page(Product_page_Logic.class);
     }
 
-    @Step("Get regular product price for EN shop. CartAllData_page")
-    public Double getRegularProductPriceForEnShop() {
-        String regularProductPrice = productPrice().getText().replace("£ ", "");
-        regularProductPrice = regularProductPrice.replaceAll(",", ".");
-        Double productPrice = Double.parseDouble(regularProductPrice);
-        return productPrice;
-    }
 
-    @Step("Get price including VAT For EN shop. CartAllData_page")
-    public Double getPriceIncludingVatForEnShop(String vat) {
-        Double productPrice = getRegularProductPriceForEnShop();
+    @Step("Get price including VAT. CartAllData_page")
+    public Double getPriceIncludingVat(String vat) {
+        Double productPrice = getRegularProductPriceFormAllDataPage();
         double priseWithVat = 0;
         if (vat.equals("20")) {
-            priseWithVat = (productPrice * 1.2);
+            priseWithVat = (productPrice * 1.2); // For shop EN
+        }
+        if (vat.equals("19")) {
+            priseWithVat = (productPrice * 1.19); // For shop DE
         }
         return priseWithVat;
     }
 
-    @Step("Get regular product price for DE shop. CartAllData_page")
-    public Double getRegularProductPriceForDeShop() {
-        String regularProductPrice = productPrice().getText().replace(" €", "");
+
+    @Step("Get regular product price. CartAllData_page")
+    public Double getRegularProductPriceFormAllDataPage() {
+        String regularProductPrice = productPrice().getText().replaceAll("[^0-9,]", "");
         regularProductPrice = regularProductPrice.replaceAll(",", ".");
         Double productPrice = Double.parseDouble(regularProductPrice);
         return productPrice;
     }
 
-    @Step("Get price including VAT For DE shop. CartAllData_page")
-    public double getPriceIncludingVatForDeShop(String vat) {
-        Double productPrice = getRegularProductPriceForDeShop();
-        double priseWithVat = 0;
-        if (vat.equals("19")) {
-            priseWithVat = (productPrice * 1.19);
-        }
-        return priseWithVat;
-    }
 
     @Step(": on CartAllData_page")
     public CartAllData_page_Logic checkAbsenceGoodInCartPage(String idProduct) {
         new Cart_page_Logic().checkAbsenceGoodInCartPage(idProduct);
         return this;
     }
+
 
     @Step(": on CartAllData_page")
     public CartAllData_page_Logic checkPresenceGoodInCardPage(String idProduct) {
@@ -330,6 +316,14 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return this;
     }
 
+    @Step("Delete goods from CartAllData_page")
+    public Main_page_Logic deleteGoodFromCartAllDataPage() {
+        deleteGoodBtn().click();
+        btnConfirmProductDelete().click();
+        closeBtnPopupOfEmptyBasket().click();
+        return page(Main_page_Logic.class);
+    }
+
     @Step("Click button confirm product delete. CartAllData_page")
     public CartAllData_page_Logic clickBtnConfirmProductDelete() {
         btnConfirmProductDelete().click();
@@ -352,5 +346,17 @@ public class CartAllData_page_Logic extends CartAllData_page {
     public CartAddress_page_Logic clickBtnReturnToCartAddressPage() {
         returnToPageCartAddress().click();
         return page(CartAddress_page_Logic.class);
+    }
+
+    @Step("Check of id {idOfProduct} added product in AllData. CartAllData_page")
+    public CartAllData_page_Logic checkOfIdAddedProductInAllData(String idOfProduct) {
+        idOfAddedProduct().shouldHave(attribute("data-article_id", idOfProduct));
+        return this;
+    }
+
+    @Step("Check of absence id {idOfProduct} added product in AllData. CartAllData_page")
+    public CartAllData_page_Logic checkOfAbsenceIdAddedProductInAllData(String idOfProduct) {
+        idOfAddedProduct().shouldNotHave(attribute("data-article_id", idOfProduct));
+        return this;
     }
 }

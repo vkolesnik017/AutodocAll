@@ -93,7 +93,7 @@ public class QC_1483_SplitBilling_TwoFirms_DifferentCountries_NegativeCase {
                 .checkTextContainingVatPercentageInEmail("incl. 20% VAT")
                 .checkFirstFirmNameInEmail("EURO DISNEY ASSOCIES SAS")
                 .checkSecondFirmNameInEmail("yyyy")
-                .getTotalPriceInEmailForENShop();
+                .getTotalPriceInEmail();
         Assert.assertEquals(totalPrice, totalPriceInEmail);
     }
 

@@ -11,16 +11,18 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.openPage;
+import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
 public class QC_1132_SynchronizationMobSessionOfBasketOnWebVersion {
 
     private String mail = "QC_1132_autotestDE@mailinator.com", productIdOnProductPage;
-    private String mailFB = "garanchenko.oleg@gmail.com", passFB = "garanchenko1992";
 
     private Product_page_mob_Logic product_page_Mob_logic = new Product_page_mob_Logic();
+    private Main_page_Logic main_page_logic = new Main_page_Logic();
+    private Cart_page_mob_Logic cart_page_mob_logic = new Cart_page_mob_Logic();
+    private Main_page_mob_Logic main_page_mob_logic = new Main_page_mob_Logic();
 
     @BeforeClass
     void setUp() {
@@ -38,7 +40,7 @@ public class QC_1132_SynchronizationMobSessionOfBasketOnWebVersion {
     @Description("Test checks synchronization of the mob session of the basket on the web version")
     public void testSynchronizationMobSessionOnWebVersion(String route) throws SQLException {
         openPage("https://m.autodoc.de/?force=mobile");
-        new Main_page_mob_Logic().closeFirstPopup()
+        main_page_mob_logic.closeFirstPopup()
                 .clickSignInInMenu()
                 .closeFooterPopup()
                 .signIn(mail);
@@ -46,13 +48,14 @@ public class QC_1132_SynchronizationMobSessionOfBasketOnWebVersion {
         productIdOnProductPage = product_page_Mob_logic.getProductId();
         product_page_Mob_logic.addProductToCart()
                 .cartClick();
-        new Cart_page_mob_Logic().checkOfIdAddedProductInBasket(productIdOnProductPage);
+        cart_page_mob_logic.checkOfIdAddedProductInBasket(productIdOnProductPage);
         close();
         openPage(route);
-        new Main_page_Logic().loginFromHeader(mail)
+        main_page_logic.loginFromHeader(mail)
                 .checkingAppearingNameOfClient()
                 .cartClick()
-                .checkOfIdAddedProductInBasket(productIdOnProductPage);
+                .checkOfIdAddedProductInBasket(productIdOnProductPage)
+                .deleteGoodFromCartPage();
     }
 
 
@@ -62,7 +65,7 @@ public class QC_1132_SynchronizationMobSessionOfBasketOnWebVersion {
     @Description("Test checks synchronization of the mob session of the basket on the web version when login through FaceBook")
     public void testSynchronizationMobSessionOnWebVersionLoginFromFB(String route) throws SQLException {
         openPage("https://m.autodoc.de/?force=mobile");
-        new Main_page_mob_Logic().closeFirstPopup()
+        main_page_mob_logic.closeFirstPopup()
                 .clickSignInInMenu()
                 .closeFooterPopup()
                 .signInFromFB(mailFB, passFB);
@@ -70,13 +73,14 @@ public class QC_1132_SynchronizationMobSessionOfBasketOnWebVersion {
         productIdOnProductPage = product_page_Mob_logic.getProductId();
         product_page_Mob_logic.addProductToCart()
                 .cartClick();
-        new Cart_page_mob_Logic().checkOfIdAddedProductInBasket(productIdOnProductPage);
+        cart_page_mob_logic.checkOfIdAddedProductInBasket(productIdOnProductPage);
         close();
         openPage(route);
-        new Main_page_Logic().signInFromFB(mailFB, passFB)
+        main_page_logic.signInFromFB(mailFB, passFB)
                 .checkingAppearingNameOfClient()
                 .cartClick()
-                .checkOfIdAddedProductInBasket(productIdOnProductPage);
+                .checkOfIdAddedProductInBasket(productIdOnProductPage)
+                .deleteGoodFromCartPage();
     }
 
 

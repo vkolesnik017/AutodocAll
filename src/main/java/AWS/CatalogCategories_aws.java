@@ -4,8 +4,7 @@ package AWS;
 import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.Step;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.*;
 
 import static ATD.CommonMethods.openPage;
 import static com.codeborne.selenide.Selenide.$$;
@@ -115,7 +114,6 @@ public class CatalogCategories_aws {
         new Login_aws().loginInAwsWithOpen();
         openPage(categoriesInAwsPage);
         ArrayList<String> allActiveChildCategoriesAWS = new ArrayList<>();
-        System.out.println(childNameInAWS().size());
         for (int i = 0; i < childNameInAWS().size(); i++) {
             if (!childNameInAWS().get(i).attr("value").isEmpty()) {
                 System.out.println(childNameInAWS().get(i).attr("value").trim());
@@ -123,34 +121,82 @@ public class CatalogCategories_aws {
             }
         }
 
-        System.out.println(notActiveChildCategoriesName().size());
         ArrayList<String> notActiveCategories = new ArrayList<>();
         for (int i = 0; i < notActiveChildCategoriesName().size(); i++) {
                 notActiveCategories.add(notActiveChildCategoriesName().get(i).attr("value").trim());
         }
 
-        System.out.println(notInCatalogCategories().size());
         ArrayList<String> notInCatalogCategoriesList = new ArrayList<>();
         for (int i = 0; i < notInCatalogCategories().size(); i++) {
                 notInCatalogCategoriesList.add(notInCatalogCategories().get(i).attr("value").trim());
 
         }
 
-        System.out.println(notInCatalogCateg2().size());
         ArrayList<String> notInCatalogCategories2 = new ArrayList<>();
         for (int i = 0; i < notInCatalogCateg2().size(); i++) {
                 notInCatalogCategories2.add(notInCatalogCateg2().get(i).attr("value").trim());
         }
-        System.out.println("-------------------------------------------------------------");
+
         allActiveChildCategoriesAWS.removeAll(notActiveCategories);
         allActiveChildCategoriesAWS.removeAll(notInCatalogCategoriesList);
         allActiveChildCategoriesAWS.removeAll(notInCatalogCategories2);
-     //   allActiveChildCategoriesAWS.removeIf(e -> e.startsWith("3"));
-        System.out.println(allActiveChildCategoriesAWS.size());
         for (int i = 0; i < allActiveChildCategoriesAWS.size(); i++) {
             System.out.println(allActiveChildCategoriesAWS.get(i));
         }
 
         return allActiveChildCategoriesAWS;
+    }
+
+    @Step("Get All Child Categories From Catalog AWS Using Set. CatalogCategories_aws")
+    public Set<String> getAllChildCategoriesNameFromAWSusingSet() {
+        new Login_aws().loginInAwsWithOpen();
+        openPage(categoriesInAwsPage);
+        Set<String> allActiveChildCategoriesAWS = new LinkedHashSet<>();
+        for (int i = 0; i < childNameInAWS().size(); i++) {
+            if (!childNameInAWS().get(i).attr("value").isEmpty()) {
+                allActiveChildCategoriesAWS.add(childNameInAWS().get(i).attr("value").trim());
+            }
+        }
+
+        Set<String> notActiveCategories = new LinkedHashSet<>();
+        for (int i = 0; i < notActiveChildCategoriesName().size(); i++) {
+            notActiveCategories.add(notActiveChildCategoriesName().get(i).attr("value").trim());
+        }
+
+        Set<String> notInCatalogCategoriesList = new LinkedHashSet<>();
+        for (int i = 0; i < notInCatalogCategories().size(); i++) {
+            notInCatalogCategoriesList.add(notInCatalogCategories().get(i).attr("value").trim());
+
+        }
+
+
+        Set<String> notInCatalogCategories2 =  new LinkedHashSet<>();
+        for (int i = 0; i < notInCatalogCateg2().size(); i++) {
+            System.out.println(notInCatalogCateg2().get(i).attr("value").trim());
+            notInCatalogCategories2.add(notInCatalogCateg2().get(i).attr("value").trim());
+        }
+
+        allActiveChildCategoriesAWS.removeAll(notActiveCategories);
+        allActiveChildCategoriesAWS.removeAll(notInCatalogCategoriesList);
+        allActiveChildCategoriesAWS.removeAll(notInCatalogCategories2);
+        Iterator iterator = allActiveChildCategoriesAWS.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+        return allActiveChildCategoriesAWS;
+    }
+
+    @Step("Get not active undercategories from AWS. CatalogCategories_aws")
+    public ArrayList<String> getNotActiveUndercategoriesFromAWS() {
+        new Login_aws().loginInAwsWithOpen();
+        openPage(categoriesInAwsPage);
+        ArrayList<String> notActiveCategories = new ArrayList<>();
+        for (int i = 0; i < notActiveChildCategoriesId().size(); i++) {
+            if (!notActiveChildCategoriesId().get(i).text().isEmpty()) {
+                System.out.println(notActiveChildCategoriesId().get(i).text());
+                notActiveCategories.add(notActiveChildCategoriesId().get(i).text());
+            }
+        }
+        return notActiveCategories;
     }
 }

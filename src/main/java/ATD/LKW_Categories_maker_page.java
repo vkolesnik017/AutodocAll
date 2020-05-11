@@ -151,9 +151,13 @@ class LKW_Categories_maker_page {
         return $$x("//div[@class='top-small-products__items']/div");
     }
 
-    SelenideElement forwardLinkOfTopBLock() {return $x("//a[@class='bx-next']");}
+    SelenideElement forwardLinkOfTopBLock() {
+        return $x("//a[@class='bx-next']");
+    }
 
-    SelenideElement backLinkOfTopBLock() {return $x("//a[@class='bx-prev']");}
+    SelenideElement backLinkOfTopBLock() {
+        return $x("//a[@class='bx-prev']");
+    }
 
     SelenideElement productsInTopBlockFirstLevel() {
         return $x("//div[@class='top-small-products__items'][1]");
@@ -163,7 +167,9 @@ class LKW_Categories_maker_page {
         return $x("//div[@class='top-small-products__items'][2]");
     }
 
-    ElementsCollection btnAddToBasketTopBLock() {return $$x("//a[@class='ga-click button still_add_to_basket']").filter(visible);}
+    ElementsCollection btnAddToBasketTopBLock() {
+        return $$x("//a[@class='ga-click button still_add_to_basket']").filter(visible);
+    }
 
     SelenideElement basketDropMenu() {
         return $x("//div[@class='cart-items-block ']");
@@ -173,5 +179,26 @@ class LKW_Categories_maker_page {
         return $x("//a[@class='header-cart__link']");
     }
 
-    ElementsCollection additionInfoBlockOfTopProduct() {return $$x("//div[@class='top-small-products__items']/div//div[@class='rec_prod_info_popup']").filter(visible);}
+    ElementsCollection additionInfoBlockOfTopProduct() {
+        return $$x("//div[@class='top-small-products__items']/div//div[@class='rec_prod_info_popup']").filter(visible);
+    }
+
+    ElementsCollection imageOfTopProduct() {
+        return $$x("//div[@class='top-small-products__items']/div/div/a/img");
+    }
+
+    ElementsCollection titleOfTopProduct() {
+        return $$x("//div[@class='top-small-products__items']/div/div[2]/span");
+    }
+
+    ElementsCollection linkDetails() {
+        return $$x("//div[@class='top-small-products__items']//div[@class='rec_prod_info_popup']/div/span");
+    }
+
+    SelenideElement closeCookiesPopUp() {
+        return $x("//div[@class='block-cookies__close']");
+    }
+
+    ElementsCollection topProductsFirstLevel() {return $$x("//div[@class='top-small-products__items'][1]/div/div/a/img");}
+
 }

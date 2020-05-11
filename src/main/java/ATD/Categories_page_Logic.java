@@ -7,13 +7,14 @@ import org.testng.Assert;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.*;
 
 import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.sleep;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class Categories_page_Logic extends Categories_page {
@@ -163,13 +164,100 @@ public class Categories_page_Logic extends Categories_page {
       listWithACCCategoriesInTecdocCatalog.add(accessoriesCategories().get(i).attr("alt").trim());
     }
 
-    System.out.println(listWithACCCategoriesInTecdocCatalog.size());
     listWithCategoriesInTecdocCatalog.removeAll(listWithACCCategoriesInTecdocCatalog);
     System.out.println(listWithCategoriesInTecdocCatalog.size());
     for (int i = 0; i < listWithCategoriesInTecdocCatalog.size(); i++) {
       System.out.println(listWithCategoriesInTecdocCatalog.get(i));
     }
     return listWithCategoriesInTecdocCatalog;
+  }
+
+  @Step("Get All Child Categories From Tecdoc Catalog Using Set. Categories_page")
+  public Set<String> getAllChildCategoriesFromTecdocCatalogUsingSet() {
+    Set<String> listWithCategoriesInTecdocCatalog = new LinkedHashSet<>();
+    for (int i = 0; i < childCategoriesTecdocName().size(); i++) {
+      System.out.println(childCategoriesTecdocName().get(i).attr("alt").trim());
+      listWithCategoriesInTecdocCatalog.add(childCategoriesTecdocName().get(i).attr("alt").trim());
+    }
+
+    Set<String> listWithACCCategoriesInTecdocCatalog = new LinkedHashSet<>();
+    for (int i = 0; i < accessoriesCategories().size(); i++) {
+      System.out.println(accessoriesCategories().get(i).attr("alt").trim());
+      listWithACCCategoriesInTecdocCatalog.add(accessoriesCategories().get(i).attr("alt").trim());
+    }
+
+    listWithCategoriesInTecdocCatalog.removeAll(listWithACCCategoriesInTecdocCatalog);
+    Iterator iterator = listWithCategoriesInTecdocCatalog.iterator();
+    while (iterator.hasNext()) {
+      System.out.println(iterator.next());
+    }
+    return listWithCategoriesInTecdocCatalog;
+  }
+
+  @Step("Check url undercategories id on soft 404. Categories_page")
+  public Categories_page_Logic checkUrlUndercategoriesId404(ArrayList<String> notActiveCategories) throws IOException {
+    for (int i = 0; i < notActiveCategories.size(); i++) {
+      String urlWithCategoryId = categoryURL(notActiveCategories.get(i));
+      System.out.println(urlWithCategoryId);
+      URL url = new URL(urlWithCategoryId);
+      HttpURLConnection http = (HttpURLConnection) url.openConnection();
+      http.setInstanceFollowRedirects(true);
+      int responseCode = http.getResponseCode();
+      Assert.assertEquals(responseCode, 404);
+    }
+    return this;
+  }
+
+  @Step("Get parent categories from top block. Categories_page")
+  public List<String> getParentCategoriesTopBlock() {
+    List<String> parentCategoriesInTopBlock = new ArrayList<>();
+    for (int i = 0; i < parentCategoriesTopBlock().size(); i++) {
+      if (i == 5) {
+        nextButtonTopBlock().click();
+        sleep(2000);
+      }
+      System.out.println(parentCategoriesTopBlock().get(i).text().trim());
+      parentCategoriesInTopBlock.add(parentCategoriesTopBlock().get(i).text().trim());
+      if (i == 14) {
+        nextButtonTopBlock().click();
+        sleep(2000);
+      }
+    }
+    return parentCategoriesInTopBlock;
+  }
+
+  @Step("Get child categories from top block. Categories_page")
+  public List<String> getChildCategoriesTopBlock() {
+    List<String> childCategoriesInTopBlock = new ArrayList<>();
+    for (int i = 0; i < childCategoriesTopBlock().size(); i++) {
+      if (i == 15) {
+        nextButtonTopBlock().click();
+        sleep(2000);
+      }
+      System.out.println(childCategoriesTopBlock().get(i).text().trim());
+      childCategoriesInTopBlock.add(childCategoriesTopBlock().get(i).text().trim());
+    }
+    return childCategoriesInTopBlock;
+  }
+
+  @Step("Check product output on routes. Categories_page")
+  public Categories_page_Logic checkProductOutputOnRoutes() {
+    ArrayList<String> listWithRoutes = new ArrayList<>();
+    for (int i = 0; i < tecdocChildCategoriesUrlA().size(); i++) {
+      listWithRoutes.add(tecdocChildCategoriesUrlA().get(i).attr("href"));
+    }
+
+    for (int i = 0; i < tecdocCategoriesSpan().size(); i++) {
+      listWithRoutes.add(tecdocCategoriesSpan().get(i).attr("url"));
+    }
+
+    System.out.println(listWithRoutes.size());
+    for (int i = 0; i < listWithRoutes.size(); i++) {
+      System.out.println(listWithRoutes.get(i));
+      open(listWithRoutes.get(i));
+      listOfProducts().shouldBe(visible);
+    }
+    return this;
   }
 
   }

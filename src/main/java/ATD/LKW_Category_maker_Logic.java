@@ -1,5 +1,6 @@
 package ATD;
 
+import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
@@ -166,10 +167,34 @@ public class LKW_Category_maker_Logic extends LKW_Category_maker {
         modelsOfTruckInBlock().shouldHaveSize(6);
         return this;
     }
+
     @Step("presence of headline and two advantages in Advantage block .LKW_Category_maker")
     public LKW_Category_maker_Logic presenceOfHeadlineAndAdvantagesInBlock() {
         headlineOfAdvantageBlock().shouldBe(visible);
         advantagesInBlock().shouldHaveSize(2);
         return this;
+    }
+
+
+    @Step("applicability of top product to truck on Product page .LKW_Category_maker")
+    public LKW_Category_maker_Logic applicabilityOfTopProductToTruck(String selectedBrand) {
+        for (int i = 0; i < imageOfTopProduct().size(); i++) {
+            clickOnImageOfTopProduct(imageOfTopProduct(), i).matchingProductToSelectedTruck(selectedBrand);
+            back();
+        }
+        return this;
+    }
+
+    @Step("applicability of top product to truck on Product page .LKW_Category_maker")
+    public LKW_Product_page_Logic clickOnImageOfTopProduct(ElementsCollection topProduct, int position) {
+        topProduct.get(position).click();
+        return page(LKW_Product_page_Logic.class);
+    }
+
+
+    @Step("get selected brand of truck from selector .LKW_Category_maker")
+    public String getSelectedTruck() {
+        String brandOfTruck = markeInVerticalCarSelector().getText();
+        return brandOfTruck;
     }
 }

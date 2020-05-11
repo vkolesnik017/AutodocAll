@@ -18,6 +18,12 @@ public class Cart_page_Logic extends Cart_page {
         return page(CartAccount_page_Logic.class);
     }
 
+    @Step("Clicking next button. Cart_page")
+    public CartAddress_page_Logic clickBtnNextAndTransitionOnAddressPage() {
+        nextButton().click();
+        return page(CartAddress_page_Logic.class);
+    }
+
     @Step(":in Cart_page")
     public Cart_page_Logic counterIncreaseForPaired(String startValue) {
         new CommonMethods().checkingCounterIncreaseForPaired(startValue, fieldWithQuantityOfProducts(), counterPlusBtn());
@@ -152,6 +158,20 @@ public class Cart_page_Logic extends Cart_page {
     @Step("Checks the presence of good by id {idProducts} in cart page. Cart_page")
     public Cart_page_Logic checkPresenceGoodInCardPage(String idProducts) {
         productsIDLocator(idProducts).shouldBe(visible);
+        return this;
+    }
+
+    @Step("Delete goods from cart page. Cart_page")
+    public Main_page_Logic deleteGoodFromCartPage() {
+        deleteGoodsBtn().click();
+        confirmationDeleteGoodsBtn().click();
+        closeBtnPopupOfEmptyBasket().click();
+        return page(Main_page_Logic.class);
+    }
+
+    @Step("Check that the basket is empty. Cart_page")
+    public Cart_page_Logic checkEmptyCart() {
+        emptyCart().shouldBe(visible);
         return this;
     }
 }
