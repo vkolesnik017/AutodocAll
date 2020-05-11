@@ -2,8 +2,8 @@ package ATD;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.By;
 
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -85,7 +85,63 @@ public class LKW_Product_page {
         return $x("//select[@name='maker_id']/ancestor::div[@class='atd-carselector__select-wrapper  js--lkw_selector-select_basic active']");
     }
 
-    SelenideElement truckingBlockOfMatching() {return $x("//div[@class='product-info-block__auto__title product-info-block__title--lkw']");}
+    SelenideElement truckingBlockOfMatching() {
+        return $x("//div[@class='product-info-block__auto__title product-info-block__title--lkw']");
+    }
 
-    ElementsCollection brandsOfTruckInMatchingBLock() {return $$x("//div[2]//div[@class='accordion-button']/span");}
+    ElementsCollection brandsOfTruckInMatchingBLock() {
+        return $$x("//div[2]//div[@class='accordion-button']/span");
+    }
+
+    SelenideElement dynamicCharacteristic(String titleOfCharacteristic, String valueOfCharacteristic) {
+        return $x("//li[@class='important']/span[contains(text(),'" + titleOfCharacteristic + "')]/following-sibling::span[contains(text(),'" + valueOfCharacteristic + "')]");
+    }
+
+    SelenideElement oenBlock() {
+        return $x("//div[@class='product-info-block__oem']");
+    }
+
+    ElementsCollection listOfOen() {
+        return $$x("//div[@class='oem-list__col']/ul/li/span");
+    }
+
+    SelenideElement compatibleTruckBLock() {
+        return $x("//div[contains(@class,'product-info-block--lkw single')]");
+    }
+
+    ElementsCollection compatibleTruckList() {
+        return $$x("//i[@class='icon plus']/following-sibling::span");
+    }
+
+    SelenideElement modelsListBlock() {
+        return $x("//div[@class='accordion-button active']/following-sibling::div");
+    }
+
+    ElementsCollection compatibleTruckLinks() {
+        return $$x("//div[@class='accordion-button active']/following-sibling::div/ul/li");
+    }
+
+    SelenideElement applicationSpecificationBLock() {
+        return $x("//div[@class='accordion-button active']/following-sibling::div/ul/li/ul");
+    }
+
+    ElementsCollection brandsOfTrucksInSelector() {
+        return $$x("//select[@name='maker_id']/option");
+    }
+
+    SelenideElement closeCompatibleTruckModelList() {return $x("//i[@class='icon minus']");}
+
+    SelenideElement openBlockOfCharacteristic() {return $x("//p[@class='show-more-button']/span");}
+
+    ElementsCollection listOfCharacteristics() {return $$x("//div[@class='product-block__description__info']/ul/li").filter(visible);}
+
+    SelenideElement selectedTruckSelector() {return $x("//div[@class='atd-carselector enable-overlay']");}
+
+    SelenideElement darkBackground() {return $x("//div[@class='overlay-lkw']");}
+
+    ElementsCollection activeLinksOfCharacteristic() {return $$x("//div[@class='product-block__description__info']/ul/li/span[2]/a");}
+
+    SelenideElement mainImageOfProduct() {return $x("//div[@class='product-block__main-image']");}
+
+    SelenideElement horizontalTruckSelector() {return $x("//form[@class='js--lkw_selector']");}
 }

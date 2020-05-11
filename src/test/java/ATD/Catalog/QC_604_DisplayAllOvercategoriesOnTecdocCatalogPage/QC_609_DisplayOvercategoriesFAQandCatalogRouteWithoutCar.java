@@ -24,6 +24,10 @@ public class QC_609_DisplayOvercategoriesFAQandCatalogRouteWithoutCar {
 
     private Categories_page_Logic categoriesPageLogic = new Categories_page_Logic();
 
+    private ArrayList<String> parentCategoriesTecdocCatalogWithoutCar;
+    private ArrayList<String> parentCategoriesCatalogFAQwithoutCar;
+    private ArrayList<String> parentCategoriesAWS;
+
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -40,14 +44,14 @@ public class QC_609_DisplayOvercategoriesFAQandCatalogRouteWithoutCar {
     @Description(value = "Test Display Overcategories FAQ and Catalog Route Without Car")
     public void testDisplayOvercategoriesFAQandCatalogRouteWithoutCar(String route) throws Exception {
         openPage(route);
-        ArrayList<String> parentCategoriesTecdocCatalogWithoutCar = categoriesPageLogic.getAllParentCategoriesFromTecdocCatalog();
+        parentCategoriesTecdocCatalogWithoutCar = categoriesPageLogic.getAllParentCategoriesFromTecdocCatalog();
 
         openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "faqHash"));
-        ArrayList<String> parentCategoriesCatalogFAQwithoutCar = categoriesPageLogic.getAllParentCategoriesFromTecdocCatalog();
+        parentCategoriesCatalogFAQwithoutCar = categoriesPageLogic.getAllParentCategoriesFromTecdocCatalog();
 
-        ArrayList<String> parentCategoriesAWS = new CatalogCategories_aws(). getAllParentCategoriesNameFromAWS();
-        categoriesPageLogic.compareCategoriesFromCatalogAndAWS(parentCategoriesTecdocCatalogWithoutCar, parentCategoriesAWS);
-        categoriesPageLogic.compareCategoriesFromCatalogAndAWS(parentCategoriesCatalogFAQwithoutCar, parentCategoriesAWS);
+        parentCategoriesAWS = new CatalogCategories_aws(). getAllParentCategoriesNameFromAWS();
+        categoriesPageLogic.compareCategoriesFromCatalogAndAWS(parentCategoriesTecdocCatalogWithoutCar, parentCategoriesAWS)
+                           .compareCategoriesFromCatalogAndAWS(parentCategoriesCatalogFAQwithoutCar, parentCategoriesAWS);
     }
 
     @AfterMethod

@@ -24,6 +24,11 @@ public class QC_647_DisplayAllCategoriesInCatalogDropdownMenu {
     private Categories_page_Logic categoriesPageLogic = new Categories_page_Logic();
     private CatalogCategories_aws catalogCategoriesAws = new CatalogCategories_aws();
 
+    private ArrayList<String> childCategoriesInDropdownMenu;
+    private ArrayList<String> parentCategoriesInDropdownMenu;
+    private ArrayList<String> childCategoriesInAWS;
+    private ArrayList<String> parentCategoriesInAWS;
+
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -40,11 +45,11 @@ public class QC_647_DisplayAllCategoriesInCatalogDropdownMenu {
     @Description(value = "Test Display All Categories In Catalog Dropdown Menu")
     public void testDisplayAllCategoriesInCatalogDropdownMenu(String route) throws Exception {
         openPage(route);
-        ArrayList<String> childCategoriesInDropdownMenu = categoriesPageLogic.getAllChildCategoriesFromCatalogDropdownMenu();
-        ArrayList<String> parentCategoriesInDropdownMenu = categoriesPageLogic.getAllParentCategoriesFromCatalogDropdownMenu();
+        childCategoriesInDropdownMenu = categoriesPageLogic.getAllChildCategoriesFromCatalogDropdownMenu();
+        parentCategoriesInDropdownMenu = categoriesPageLogic.getAllParentCategoriesFromCatalogDropdownMenu();
 
-        ArrayList<String> childCategoriesInAWS = catalogCategoriesAws.getAllChildCategoriesFromAWS();
-        ArrayList<String> parentCategoriesInAWS = catalogCategoriesAws.getAllParentCategoriesFromAWS();
+        childCategoriesInAWS = catalogCategoriesAws.getAllChildCategoriesFromAWS();
+        parentCategoriesInAWS = catalogCategoriesAws.getAllParentCategoriesFromAWS();
 
         categoriesPageLogic.compareCategoriesFromCatalogAndAWS(childCategoriesInDropdownMenu, childCategoriesInAWS)
                            .compareCategoriesFromCatalogAndAWS(parentCategoriesInDropdownMenu, parentCategoriesInAWS);
