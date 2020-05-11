@@ -3,11 +3,21 @@ package AWS;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
+import java.util.ArrayList;
+
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.open;
 
 public class Customer_view_aws {
 
+
+    private String url = "https://aws.autodoc.de/customer/view/";
+
+
+    private SelenideElement customerIdBlock() {
+        return $x("//*[@class='customer-id-cell']");
+    }
 
     private SelenideElement companyNumberLogsBlock() {
         return $x("//div[@class='mt-20']");
@@ -31,6 +41,123 @@ public class Customer_view_aws {
 
     private SelenideElement errorCityStatus() {
         return $x("//div[@class='mt-20']//td[7]");
+    }
+
+    private SelenideElement fieldNameInBilling() {
+        return $x("//input[@id='form_rVorname']");
+    }
+
+    private SelenideElement fieldSurnameInBilling() {
+        return $x("//input[@id='form_rName']");
+    }
+
+    private SelenideElement fieldStreetInBilling() {
+        return $x("//input[@id='form_rStrasse']");
+    }
+
+    private SelenideElement fieldHouseNumberInBilling() {
+        return $x("//input[@id='form_payment_house']");
+    }
+
+    private SelenideElement fieldPostcodeInBilling() {
+        return $x("//input[@id='form_rPlz']");
+    }
+
+    private SelenideElement fieldCityInBilling() {
+        return $x("//input[@id='form_rOrt']");
+    }
+
+    private SelenideElement fieldCountryInBilling() {
+        return $x("//select[@id='form_payment_country_id']");
+    }
+
+    private SelenideElement fieldMailInBilling() {
+        return $x("//input[@id='form_Email']");
+    }
+
+    private SelenideElement fieldPhoneInBilling() {
+        return $x("//input[@id='form_rTelefon']");
+    }
+
+    private SelenideElement fieldNameInDeliveryAddress() {
+        return $x("//input[@id='form_lVorname']");
+    }
+
+    private SelenideElement fieldSurnameInDeliveryAddress() {
+        return $x("//input[@id='form_lName']");
+    }
+
+    private SelenideElement fieldStreetInDeliveryAddress() {
+        return $x("//input[@id='form_lStrasse']");
+    }
+
+    private SelenideElement fieldHouseNumberInDeliveryAddress() {
+        return $x("//input[@id='form_delivery_house']");
+    }
+
+    private SelenideElement fieldPostcodeInDeliveryAddress() {
+        return $x("//input[@id='form_lPlz']");
+    }
+
+    private SelenideElement fieldCityInDeliveryAddress() {
+        return $x("//input[@id='form_lOrt']");
+    }
+
+    private SelenideElement fieldCountryInDeliveryAddress() {
+        return $x("//select[@id='form_delivery_country_id']");
+    }
+
+    private SelenideElement fieldPhoneInDeliveryAddress() {
+        return $x("//input[@id='form_lTelefon']");
+    }
+
+
+    @Step("Open customer personal area {customerID}. Customer_view_aws")
+    public Customer_view_aws openCustomerPersonalArea(String customerID) {
+        open(url + customerID);
+        new Login_aws().loginInAws();
+        customerIdBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Gets user data. Customer_view_aws")
+    public ArrayList getUserData() {
+        String nameText = fieldNameInBilling().getValue();
+        String surnameText = fieldSurnameInBilling().getValue();
+        String streetText = fieldStreetInBilling().getValue();
+        String houseNumberText = fieldHouseNumberInBilling().getValue();
+        String postcodeText = fieldPostcodeInBilling().getValue();
+        String cityText = fieldCityInBilling().getValue();
+        String countryText = fieldCountryInBilling().getText();
+        String mailText = fieldMailInBilling().getValue();
+        String phoneText = fieldPhoneInBilling().getValue();
+        String nameDeliveryAddressText = fieldNameInDeliveryAddress().getValue();
+        String surnameDeliveryAddressText = fieldSurnameInDeliveryAddress().getValue();
+        String streetDeliveryAddressText = fieldStreetInDeliveryAddress().getValue();
+        String houseDeliveryAddressNumberText = fieldHouseNumberInDeliveryAddress().getValue();
+        String postcodeDeliveryAddressText = fieldPostcodeInDeliveryAddress().getValue();
+        String cityDeliveryAddressText = fieldCityInDeliveryAddress().getValue();
+        String countryDeliveryAddressText = fieldCountryInDeliveryAddress().getText();
+        String phoneDeliveryAddressText = fieldPhoneInDeliveryAddress().getValue();
+        ArrayList <String> userData = new ArrayList<>();
+        userData.add(nameText);
+        userData.add(surnameText);
+        userData.add(streetText);
+        userData.add(houseNumberText);
+        userData.add(postcodeText);
+        userData.add(cityText);
+        userData.add(countryText);
+        userData.add(mailText);
+        userData.add(phoneText);
+        userData.add(nameDeliveryAddressText);
+        userData.add(surnameDeliveryAddressText);
+        userData.add(streetDeliveryAddressText);
+        userData.add(houseDeliveryAddressNumberText);
+        userData.add(postcodeDeliveryAddressText);
+        userData.add(cityDeliveryAddressText);
+        userData.add(countryDeliveryAddressText);
+        userData.add(phoneDeliveryAddressText);
+        return userData;
     }
 
     @Step("Checks Error status in (Error in the name) column. Customer_view_aws")
