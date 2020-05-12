@@ -105,7 +105,6 @@ public class DataBase {
         String mainRoute = getRouteByRouteName(shop, routeName);
         String subroute = getRouteByRouteName(shop, subRoute);
         result = env + mainRoute + "/" + subroute;
-        System.out.println(result);
         return result;
     }
 
