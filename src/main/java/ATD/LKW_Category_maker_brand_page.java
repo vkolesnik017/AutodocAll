@@ -79,4 +79,6 @@ public class LKW_Category_maker_brand_page {
     SelenideElement modelOfTruckInTopBlock(String model) {return $x("//div[@class='lkw_top_models']//span[contains(text(),'"+model+"')]");}
 
     SelenideElement headlineOfTopProductsBlock() {return $x("//section[@class='title_list']");}
+
+    SelenideElement mainHeadline() {return $x("//div[@class='title_count_search  image_padding']/h2");}
 }

@@ -282,4 +282,10 @@ public class LKW_Categories_maker_page_Logic extends LKW_Categories_maker_page {
         return brandOfTruck;
     }
 
+
+    @Step("visibility of main headline .LKW_Categories_maker_page")
+    public LKW_Categories_maker_page_Logic visibilityOfMainHeadline() {
+        mainHeadline().shouldBe(visible).shouldHave(text("für MERCEDES-BENZ"));
+        return this;
+    }
 }

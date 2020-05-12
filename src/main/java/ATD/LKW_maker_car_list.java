@@ -79,5 +79,7 @@ class LKW_maker_car_list {
 
     SelenideElement resetBtnInVerticalCarSelector() {return $x("//a[@class='block-select-car__update hidden js--btn_reset_form']");}
 
+    SelenideElement imageOfBrandInMainHeadline() {return $x("//div[@class='catalog-title__block']/img");}
 
+    SelenideElement mainHeadline() {return $x("//div[@class='catalog-title__block']/h2");}
 }
