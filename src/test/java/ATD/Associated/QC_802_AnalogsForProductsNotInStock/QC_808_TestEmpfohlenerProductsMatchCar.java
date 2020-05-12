@@ -38,7 +38,7 @@ public class QC_808_TestEmpfohlenerProductsMatchCar {
     public void testEmpfohlenerProductsMatchCar(String route) throws SQLException {
         open(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "maker_car_list3"));
         open(route);
-        new Product_page_Logic().checkAnalogProductMatchCar();
+        new Product_page_Logic().checkAnalogProductMatchCar(route);
     }
 
     @AfterMethod
