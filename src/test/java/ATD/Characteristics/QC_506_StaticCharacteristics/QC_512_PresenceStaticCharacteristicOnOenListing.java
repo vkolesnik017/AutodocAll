@@ -55,7 +55,7 @@ public class QC_512_PresenceStaticCharacteristicOnOenListing {
         expectedCharacteristics.add("Höhe \\[mm]:\\n33,4");
         expectedCharacteristics.add("Bohrung-Ø \\[mm]:\\n15,8");
 
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "category_oen4") + "?page=2");
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "category_oen4"));
         String articleProduct = "Artikelnummer: 82B0691";
         ElementsCollection actualCharacteristics = listingPage.getCharacteristicsDesiredProduct(articleProduct);
         new CommonMethods().compareCharacteristics(actualCharacteristics, expectedCharacteristics);
