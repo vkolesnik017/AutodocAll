@@ -13,6 +13,7 @@ public class SetUp {
     private DataBase db = new DataBase();
     private String shopFromJenkins = System.getenv("ShopFromJenkins");
     private String envFromJenkins = System.getenv("EnvFromJenkins");
+    private String devBranchFromJenkins = System.getenv("devBranchFromJenkins");
 
     public String getShopsDesktop() {
         return shopsDesktop;
@@ -41,7 +42,7 @@ public class SetUp {
         String shop;
         if (!(shopFromJenkins == null)) shop = shopFromJenkins;
         else shop = shopFromTest;
-        if (!(envFromJenkins == null)) envFromTest = envFromJenkins;
+//        if (!(envFromJenkins == null)) envFromTest = envFromJenkins;
         String env = getEnv(envFromTest);
         List<String> finalRouteList = new ArrayList<>();
         try {
@@ -129,6 +130,7 @@ public class SetUp {
 
 
     String getEnv(String envFromTest) {
+        if (!(envFromJenkins == null)) envFromTest = envFromJenkins;
         String env = null;
         switch (envFromTest) {
             case ("test"):
@@ -142,6 +144,9 @@ public class SetUp {
                 break;
             case ("mob"):
                 env = "https://m.";
+                break;
+            case ("dev"):
+                env = devBranchFromJenkins + ".";
                 break;
         }
         return env;

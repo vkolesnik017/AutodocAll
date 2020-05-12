@@ -90,7 +90,6 @@ public class OrderAdd_page_aws {
         return $x("//select[@id='form_Order[delivery_country_id]']");
     }
 
-
     private SelenideElement fieldPhoneInDeliveryAddress() {
         return $x("//input[@id='Order[lTelefon]']");
     }
@@ -127,7 +126,39 @@ public class OrderAdd_page_aws {
         return $x("//tr[@class='targerProduct ']//td[2]");
     }
 
-    @Step("Added product. OrderAdd_page_aws")
+    private SelenideElement deliveryCost() {
+        return $x("//input[@id='Order[DeliveryCost]']");
+    }
+
+    private SelenideElement safeOrderCost() {
+        return $x("//input[@id='isSecurityDelivery']");
+    }
+
+    private SelenideElement saveOrderBtn() {
+        return $(".submit-order");
+    }
+
+    @Step("Click save order button. OrderAdd_page_aws")
+    public Order_aws clickSaveOrderBtn() {
+        saveOrderBtn().click();
+        return page(Order_aws.class);
+    }
+
+    @Step("Get delivery cost. OrderAdd_page_aws")
+    public Double getDeliveryCost() {
+        String deliveryCost = deliveryCost().getAttribute("data-default");
+        Double realDeliveryCost = Double.parseDouble(deliveryCost);
+        return realDeliveryCost;
+    }
+
+    @Step("Get safe order cost. OrderAdd_page_aws")
+    public Double getSafeOrderCost() {
+        String safeOrderCost = safeOrderCost().getValue();
+        Double realSafeOrderCost = Double.parseDouble(safeOrderCost);
+        return realSafeOrderCost;
+    }
+
+    @Step("Added product {articleNum}. OrderAdd_page_aws")
     public OrderAdd_page_aws addProduct(String articleNum) {
         productSearchField().sendKeys(articleNum);
         btnAddProduct().click();
@@ -141,25 +172,25 @@ public class OrderAdd_page_aws {
         return this;
     }
 
-    @Step("Checks article number of added product. OrderAdd_page_aws")
+    @Step("Checks article number of added product {articleNum}. OrderAdd_page_aws")
     public OrderAdd_page_aws checkArticleOfAddedProduct(String articleNum) {
         articleOfAddedProduct().shouldHave(text(articleNum));
         return this;
     }
 
-    @Step("Selected payment method. OrderAdd_page_aws")
-    public OrderAdd_page_aws selectedPaymentMethod(String method) {
-        paymentMethod().selectOptionContainingText(method);
+    @Step("Selected payment expectedMethod {expectedMethod}. OrderAdd_page_aws")
+    public OrderAdd_page_aws selectedPaymentMethod(String expectedMethod) {
+        paymentMethod().selectOptionContainingText(expectedMethod);
         return this;
     }
 
-    @Step("Selected delivery method. OrderAdd_page_aws")
-    public OrderAdd_page_aws selectedDeliveryMethod(String method) {
-        deliveryMethod().selectOptionContainingText(method);
+    @Step("Selected delivery expectedMethod {expectedMethod}. OrderAdd_page_aws")
+    public OrderAdd_page_aws selectedDeliveryMethod(String expectedMethod) {
+        deliveryMethod().selectOptionContainingText(expectedMethod);
         return this;
     }
 
-    @Step("Selected status in safe order. OrderAdd_page_aws")
+    @Step("Selected status in safe order {status}. OrderAdd_page_aws")
     public OrderAdd_page_aws selectedStatusInSafeOrder(String status) {
         SafeOrder().selectOptionContainingText(status);
         return this;
@@ -206,13 +237,13 @@ public class OrderAdd_page_aws {
         return userData;
     }
 
-    @Step("Fills in the field CustomerID. OrderAdd_page_aws")
+    @Step("Fills in the field CustomerID {CustomerID}. OrderAdd_page_aws")
     public OrderAdd_page_aws fillsInFieldCustomerID(String CustomerID) {
         fieldCustomerID().sendKeys(CustomerID);
         return this;
     }
 
-    @Step("Choosing skin in selector. OrderAdd_page_aws")
+    @Step("Choosing skin in selector {skin}. OrderAdd_page_aws")
     public OrderAdd_page_aws chooseSkinInSelector(String skin) {
         selectorForSkin().click();
         sleep(2000);
