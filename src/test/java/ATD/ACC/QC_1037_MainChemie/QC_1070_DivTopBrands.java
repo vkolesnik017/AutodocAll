@@ -15,7 +15,7 @@ import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
 
-public class QC_1070_DivTopBrands {
+public class QC_1070_BlockTopBrands {
 
 
     @BeforeClass
