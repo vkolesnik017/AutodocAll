@@ -8,23 +8,23 @@
 
     <test name="QC_776_RelatedProductsLogic">
         <classes>
-            <!--<class name="ATD.Associated.QC_776_RelatedProductsLogic.QC_779_TestRelatedProductsPopupOnProductPageWithoutCar"/>-->
+            <class name="ATD.Associated.QC_776_RelatedProductsLogic.QC_779_TestRelatedProductsPopupOnProductPageWithoutCar"/>
             <class name="ATD.Associated.QC_776_RelatedProductsLogic.QC_780_TestRelatedProductsPopupOnProductPageWithCar"/>
-            <!--<class name="ATD.Associated.QC_776_RelatedProductsLogic.QC_781_TestRelatedProductsPopupOnListing"/>-->
-            <!--<class name="ATD.Associated.QC_776_RelatedProductsLogic.QC_782_TestRelatedProductsBlockFunctionality"/>-->
+            <class name="ATD.Associated.QC_776_RelatedProductsLogic.QC_781_TestRelatedProductsPopupOnListing"/>
+            <class name="ATD.Associated.QC_776_RelatedProductsLogic.QC_782_TestRelatedProductsBlockFunctionality"/>
         </classes>
     </test>
 
     <test name="QC_790_AlternativeProductsOutputTecdoc">
         <classes>
-            <!--<class name="ATD.Associated.QC_790_AlternativeProductsOutputTecdoc.QC_791_MatchElementsInAlternativeBlockAndInProductPage"/>-->
+            <class name="ATD.Associated.QC_790_AlternativeProductsOutputTecdoc.QC_791_MatchElementsInAlternativeBlockAndInProductPage"/>
         </classes>
     </test>
 
     <test name="QC_802_AnalogsForProductsNotInStock">
         <classes>
-            <!--<class name="ATD.Associated.QC_802_AnalogsForProductsNotInStock.QC_806_TestEmpfohlenerProductsMatchAws"/>-->
-            <!--<class name="ATD.Associated.QC_802_AnalogsForProductsNotInStock.QC_808_TestEmpfohlenerProductsMatchCar"/>-->
+            <class name="ATD.Associated.QC_802_AnalogsForProductsNotInStock.QC_806_TestEmpfohlenerProductsMatchAws"/>
+            <class name="ATD.Associated.QC_802_AnalogsForProductsNotInStock.QC_808_TestEmpfohlenerProductsMatchCar"/>
         </classes>
     </test>
 

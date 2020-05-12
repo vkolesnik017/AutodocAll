@@ -36,7 +36,7 @@ public class QC_808_TestEmpfohlenerProductsMatchCar {
     @Owner(value = "Romaniuta")
     @Description(value = "Test Checks Empfohlener Products Match Car")
     public void testEmpfohlenerProductsMatchCar(String route) throws SQLException {
-        openPage("https://autodoc.de/" + new DataBase().getRouteByRouteName("DE", "maker_car_list3"));
+        open(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "maker_car_list3"));
         open(route);
         new Product_page_Logic().checkAnalogProductMatchCar();
     }
