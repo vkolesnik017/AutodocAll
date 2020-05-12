@@ -3,6 +3,9 @@ package ATD;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.WebDriverRunner.url;
@@ -55,5 +58,27 @@ public class LKW_makers_page_Logic extends LKW_makers_page {
     public LKW_Categories_maker_page_Logic checkTransitionAtIconOfTruckBrand() {
         brandOfTruckInTopBlock("MERCEDES-BENZ").click();
         return page(LKW_Categories_maker_page_Logic.class);
+    }
+
+
+    @Step("visibility of right count of brands and models in headline  .LKW_makers_page")
+    public LKW_makers_page_Logic visibilityOfCountOfBrandsAndModels() {
+        brandsListOfTruck().shouldHaveSize(28);
+        List<Integer> mainCountOfModels = new ArrayList<>();
+        for (int i = 0; i < countOfModels().size(); i++) {
+            mainCountOfModels.add(Integer.parseInt(countOfModels().get(i).getText().replaceAll("[^0-9]", "")));
+        }
+        int totalAmountOfModels = getMainAmount(mainCountOfModels);
+        Assert.assertEquals(totalAmountOfModels, 243);
+        return this;
+    }
+
+    @Step("get main summ of models .LKW_makers_page")
+    public int getMainAmount(List<Integer> countOfModels) {
+        int amount = 0;
+        for (int e : countOfModels) {
+            amount += e;
+        }
+        return amount;
     }
 }
