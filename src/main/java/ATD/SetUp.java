@@ -42,7 +42,7 @@ public class SetUp {
         String shop;
         if (!(shopFromJenkins == null)) shop = shopFromJenkins;
         else shop = shopFromTest;
-        if (!(envFromJenkins == null)) envFromTest = envFromJenkins;
+//        if (!(envFromJenkins == null)) envFromTest = envFromJenkins;
         String env = getEnv(envFromTest);
         List<String> finalRouteList = new ArrayList<>();
         try {
@@ -77,7 +77,6 @@ public class SetUp {
 
     // Return list Shop + subroutes By Shop, main route and list subroutes ("prod", "DE", "lkw_main", "lkw_category_car_list,lkw_category_car_list2")
     public Object[] setUpShopWithSubroutes(String envFromTest, String shopFromTest, String routeName, String subRoutes) throws SQLException {
-        if (!(envFromJenkins == null)) envFromTest = envFromJenkins;
         String env = getEnv(envFromTest);
         List<String> mainRouteList = new ArrayList<>(db.getRouteListByRouteName(shopFromTest, routeName));
         List<String> subRoutesList = new ArrayList<>();
@@ -131,6 +130,7 @@ public class SetUp {
 
 
     String getEnv(String envFromTest) {
+        if (!(envFromJenkins == null)) envFromTest = envFromJenkins;
         String env = null;
         switch (envFromTest) {
             case ("test"):
