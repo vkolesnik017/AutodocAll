@@ -9,6 +9,9 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.*;
@@ -21,6 +24,8 @@ public class Order_aws {
     public Order_aws(String orderNumber) {
         this.orderNumber = orderNumber;
     }
+
+    public Order_aws() {}
 
     private String orderNumber;
     private String url = "https://aws.autodoc.de/order/view/";
@@ -51,6 +56,82 @@ public class Order_aws {
 
     private SelenideElement saveChangesInOrderBtn() {
         return $x("//button[contains(@class,'submit-order')]");
+    }
+
+    private SelenideElement fieldNameInBilling() {
+        return $x("//input[@id='form_Order[rVorname]']");
+    }
+
+    private SelenideElement fieldSurnameInBilling() {
+        return $x("//input[@id='form_Order[rName]']");
+    }
+
+    private SelenideElement fieldStreetInBilling() {
+        return $x("//input[@id='form_Order[rStrasse]']");
+    }
+
+    private SelenideElement fieldHouseNumberInBilling() {
+        return $x("//input[@id='form_Order[payment_house]']");
+    }
+
+    private SelenideElement fieldPostcodeInBilling() {
+        return $x("//input[@id='form_Order[rPlz]']");
+    }
+
+    private SelenideElement fieldCityInBilling() {
+        return $x("//input[@id='form_Order[rOrt]']");
+    }
+
+    private SelenideElement fieldCountryInBilling() {
+        return $x("//select[@id='form_Order[payment_country_id]']");
+    }
+
+    private SelenideElement fieldMailInBilling() {
+        return $x("//input[@id='form_Order[Email]']");
+    }
+
+    private SelenideElement fieldPhoneInBilling() {
+        return $x("//input[@id='form_Order[rTelefon]']");
+    }
+
+    private SelenideElement fieldNameInDeliveryAddress() {
+        return $x("//input[@id='form_Order[lVorname]']");
+    }
+
+    private SelenideElement fieldSurnameInDeliveryAddress() {
+        return $x("//input[@id='form_Order[lName]']");
+    }
+
+    private SelenideElement fieldStreetInDeliveryAddress() {
+        return $x("//input[@id='form_Order[lStrasse]']");
+    }
+
+    private SelenideElement fieldHouseNumberInDeliveryAddress() {
+        return $x("//input[@id='form_Order[delivery_house]']");
+    }
+
+    private SelenideElement fieldPostcodeInDeliveryAddress() {
+        return $x("//input[@id='form_Order[lPlz]']");
+    }
+
+    private SelenideElement fieldCityInDeliveryAddress() {
+        return $x("//input[@id='form_Order[lOrt]']");
+    }
+
+    private SelenideElement fieldCountryInDeliveryAddress() {
+        return $x("//select[@id='form_Order[delivery_country_id]']");
+    }
+
+    private SelenideElement fieldPhoneInDeliveryAddress() {
+        return $x("//input[@id='form_Order[lTelefon]']");
+    }
+
+    private SelenideElement paymentMethod() {
+        return $x("//select[@name='Order[PaymentID]']");
+    }
+
+    private SelenideElement contoNR() {
+        return $x("//body//div[@id='contentwrapper']//div//div//div//div[1]//div[2]//div[14]//div[1]");
     }
 
     // Adding product to order menu
@@ -304,6 +385,7 @@ public class Order_aws {
         btnChangeOrderStatusInTest().scrollTo();
         btnChangeOrderStatusInTest().click();
         saveChangesInOrderBtn().click();
+        sleep(2000);
         return this;
     }
 
@@ -317,7 +399,7 @@ public class Order_aws {
         return this;
     }
 
-    @Step("Checking translation of causes in popup of reclamation in aws")
+    @Step("Checking translation of causes in popup of reclamation in aws. Order_aws")
     public Order_aws checkingTranslateOfCausesForReturn(String language) throws SQLException {
         ElementsCollection causes = causesReturnInSelect().shouldHaveSize(16);
         for (SelenideElement cause : causes) {
@@ -355,33 +437,38 @@ public class Order_aws {
         return this;
     }
 
-    @Step("Check delivery price in order AWS")
+    @Step("Check delivery price {expectedDeliveryPriceOrderAWS} in order AWS. Order_aws")
     public Order_aws checkDeliveryPriceOrderAWS(String expectedDeliveryPriceOrderAWS) {
         deliveryDeliveryPriceOrderAWS().shouldHave(attribute("data-sum", expectedDeliveryPriceOrderAWS));
         return this;
     }
 
-    @Step("Check delivery price in order AWS")
+    @Step("Check delivery price {expectedDeliveryPriceOrderAWS} in order AWS. Order_aws")
     public Order_aws checkDeliveryPriceOrderAWS(Double expectedDeliveryPriceOrderAWS) {
         deliveryDeliveryPriceOrderAWS().shouldHave(attribute("data-sum", String.valueOf(expectedDeliveryPriceOrderAWS)));
         return this;
     }
 
-    @Step("Check Heavy Loads delivery price in order AWS")
+    @Step("Check Heavy Loads delivery price {expectedHeavyLoadsDeliveryPriceOrderAWS} in order AWS. Order_aws")
     public Order_aws checkHeavyLoadsDeliveryPriceOrderAWS(String expectedHeavyLoadsDeliveryPriceOrderAWS) {
         heavyLoadsDeliveryPriceOrderAWS().shouldHave(attribute("data-sum", expectedHeavyLoadsDeliveryPriceOrderAWS));
         return this;
     }
 
+    @Step("Check total price {expectedTotalPrice} in order AWS. Order_aws")
+    public Order_aws checkTotalPriceOrderAWS(String expectedTotalPrice) {
+        totalPriceOrder().shouldHave(text(expectedTotalPrice));
+        return this;
+    }
 
-    @Step("Get total Price in Order AWS")
+    @Step("Get total Price in Order AWS. Order_aws")
     public Double getTotalPriceOrder() {
         String price = totalPriceOrder().getText();
         Double totalPriceOrder = Double.parseDouble(price);
         return totalPriceOrder;
     }
 
-    @Step("Get selling price in Order AWS")
+    @Step("Get selling price in Order AWS. Order_aws")
     public Double getSellingPriceOrderAWS() {
         String price = sellingPrice().getText();
         Double sellingPriceOrder = Double.parseDouble(price);
@@ -400,15 +487,93 @@ public class Order_aws {
         return this;
     }
 
-    @Step("Checks VAT status in order. Order_aws")
+    @Step("Checks VAT status {statusVatOrder} in order. Order_aws")
     public Order_aws checkVatStatusInOrder(String statusVatOrder) {
         vatPercentageInOrder().shouldHave(text(statusVatOrder));
+        return this;
+    }
+
+    @Step("Checks payment method {PaymentMethod} in order. Order_aws")
+    public Order_aws checkPaymentMethodInOrder(String PaymentMethod) {
+        paymentMethod().shouldHave(text(PaymentMethod));
         return this;
     }
 
     @Step("Checks firm confirmation status in order {firmConfirmationStatus}. Order_aws")
     public Order_aws checkFirmConfirmationStatus(String firmConfirmationStatus) {
         firmConfirmationSelector().shouldHave(text(firmConfirmationStatus));
+        return this;
+    }
+
+    @Step("Gets user data. Order_aws")
+    public ArrayList getUserDataInOrder() {
+        String nameText = fieldNameInBilling().getValue();
+        String surnameText = fieldSurnameInBilling().getValue();
+        String streetText = fieldStreetInBilling().getValue();
+        String houseNumberText = fieldHouseNumberInBilling().getValue();
+        String postcodeText = fieldPostcodeInBilling().getValue();
+        String cityText = fieldCityInBilling().getValue();
+        String countryText = fieldCountryInBilling().getText();
+        String mailText = fieldMailInBilling().getValue();
+        String phoneText = fieldPhoneInBilling().getValue().replaceAll("^\\d{2}", "");
+        String nameDeliveryAddressText = fieldNameInDeliveryAddress().getValue();
+        String surnameDeliveryAddressText = fieldSurnameInDeliveryAddress().getValue();
+        String streetDeliveryAddressText = fieldStreetInDeliveryAddress().getValue();
+        String houseDeliveryAddressNumberText = fieldHouseNumberInDeliveryAddress().getValue();
+        String postcodeDeliveryAddressText = fieldPostcodeInDeliveryAddress().getValue();
+        String cityDeliveryAddressText = fieldCityInDeliveryAddress().getValue();
+        String countryDeliveryAddressText = fieldCountryInDeliveryAddress().getText();
+        String phoneDeliveryAddressText = fieldPhoneInDeliveryAddress().getValue().replaceAll("^\\d{2}", "");
+        ArrayList <String> userData = new ArrayList<>();
+        userData.add(nameText);
+        userData.add(surnameText);
+        userData.add(streetText);
+        userData.add(houseNumberText);
+        userData.add(postcodeText);
+        userData.add(cityText);
+        userData.add(countryText);
+        userData.add(mailText);
+        userData.add(phoneText);
+        userData.add(nameDeliveryAddressText);
+        userData.add(surnameDeliveryAddressText);
+        userData.add(streetDeliveryAddressText);
+        userData.add(houseDeliveryAddressNumberText);
+        userData.add(postcodeDeliveryAddressText);
+        userData.add(cityDeliveryAddressText);
+        userData.add(countryDeliveryAddressText);
+        userData.add(phoneDeliveryAddressText);
+        return userData;
+    }
+
+    @Step("Get total cost delivery amount {deliveryCost} and safe order {safeOrderCost}. Order_aws")
+    public String getTotaCostlDeliveryAmountAndSafeOrder(Double deliveryCost, Double safeOrderCost) {
+        Double totalDeliveryAmountAndSafeOrder = deliveryCost + safeOrderCost;
+        String realTotalDeliveryAmountAndSafeOrder = Double.toString(totalDeliveryAmountAndSafeOrder);
+        Pattern pattern = Pattern.compile("\\d+\\.\\d{2}");
+        Matcher matcher = pattern.matcher(String.valueOf(realTotalDeliveryAmountAndSafeOrder));
+        String result = null;
+        if (matcher.find()) {
+            result = matcher.group(0);
+        }
+        return result;
+    }
+
+    @Step("Get the total cost {sellingCost} including delivery {deliveryCost} and safe order {safeOrderCost}. Order_aws")
+    public String getTotalCostIncludingDeliveryAndSafeOrder(Double sellingCost, Double deliveryCost , Double safeOrderCost) {
+        Double totalCost = sellingCost + deliveryCost + safeOrderCost;
+        String realTotalCost = Double.toString(totalCost);
+        Pattern pattern = Pattern.compile("\\d+\\.\\d{2}");
+        Matcher matcher = pattern.matcher(String.valueOf(realTotalCost));
+        String result = null;
+        if (matcher.find()) {
+            result = matcher.group(0);
+        }
+        return result;
+    }
+
+    @Step("Checks conto NR number {contoNR}. Order_aws")
+    public Order_aws checkContoNR(String contoNR) {
+        contoNR().shouldHave(text(contoNR));
         return this;
     }
 }

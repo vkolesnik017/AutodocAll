@@ -255,7 +255,7 @@ public class Categories_page_Logic extends Categories_page {
     for (int i = 0; i < listWithRoutes.size(); i++) {
       System.out.println(listWithRoutes.get(i));
       open(listWithRoutes.get(i));
-      listOfProducts().shouldBe(visible);
+      listOfProducts().waitUntil(visible, 20000);
     }
     return this;
   }
