@@ -13,6 +13,7 @@ public class SetUp {
     private DataBase db = new DataBase();
     private String shopFromJenkins = System.getenv("ShopFromJenkins");
     private String envFromJenkins = System.getenv("EnvFromJenkins");
+    private String devBranchFromJenkins = System.getenv("devBranchFromJenkins");
 
     public String getShopsDesktop() {
         return shopsDesktop;
@@ -76,6 +77,7 @@ public class SetUp {
 
     // Return list Shop + subroutes By Shop, main route and list subroutes ("prod", "DE", "lkw_main", "lkw_category_car_list,lkw_category_car_list2")
     public Object[] setUpShopWithSubroutes(String envFromTest, String shopFromTest, String routeName, String subRoutes) throws SQLException {
+        if (!(envFromJenkins == null)) envFromTest = envFromJenkins;
         String env = getEnv(envFromTest);
         List<String> mainRouteList = new ArrayList<>(db.getRouteListByRouteName(shopFromTest, routeName));
         List<String> subRoutesList = new ArrayList<>();
@@ -142,6 +144,9 @@ public class SetUp {
                 break;
             case ("mob"):
                 env = "https://m.";
+                break;
+            case ("dev"):
+                env = devBranchFromJenkins + ".";
                 break;
         }
         return env;

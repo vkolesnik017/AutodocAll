@@ -129,19 +129,88 @@ public class LKW_Product_page {
         return $$x("//select[@name='maker_id']/option");
     }
 
-    SelenideElement closeCompatibleTruckModelList() {return $x("//i[@class='icon minus']");}
+    SelenideElement closeCompatibleTruckModelList() {
+        return $x("//i[@class='icon minus']");
+    }
 
-    SelenideElement openBlockOfCharacteristic() {return $x("//p[@class='show-more-button']/span");}
+    SelenideElement openBlockOfCharacteristic() {
+        return $x("//p[@class='show-more-button']/span");
+    }
 
-    ElementsCollection listOfCharacteristics() {return $$x("//div[@class='product-block__description__info']/ul/li").filter(visible);}
+    ElementsCollection listOfCharacteristics() {
+        return $$x("//div[@class='product-block__description__info']/ul/li").filter(visible);
+    }
 
-    SelenideElement selectedTruckSelector() {return $x("//div[@class='atd-carselector enable-overlay']");}
+    SelenideElement selectedTruckSelector() {
+        return $x("//div[@class='atd-carselector enable-overlay']");
+    }
 
-    SelenideElement darkBackground() {return $x("//div[@class='overlay-lkw']");}
+    SelenideElement darkBackground() {
+        return $x("//div[@class='overlay-lkw']");
+    }
 
-    ElementsCollection activeLinksOfCharacteristic() {return $$x("//div[@class='product-block__description__info']/ul/li/span[2]/a");}
+    ElementsCollection activeLinksOfCharacteristic() {
+        return $$x("//div[@class='product-block__description__info']/ul/li/span[2]/a");
+    }
 
-    SelenideElement mainImageOfProduct() {return $x("//div[@class='product-block__main-image']");}
+    SelenideElement mainImageOfProduct() {
+        return $x("//div[@class='product-block__main-image']");
+    }
 
-    SelenideElement horizontalTruckSelector() {return $x("//form[@class='js--lkw_selector']");}
+    SelenideElement horizontalTruckSelector() {
+        return $x("//form[@class='js--lkw_selector']");
+    }
+
+    SelenideElement relatedProductsBlock() {
+        return $x("//div[@class='product-list product-list-slider js-product-list-slider']");
+    }
+
+    SelenideElement analoguesBlock() {
+        return $x("//span[contains(text(),'EMPFOHLENER ERSATZ ')]/../..");
+    }
+
+    ElementsCollection imageOfAnaloguesProducts() {
+        return $$x("//span[contains(text(),'EMPFOHLENER ERSATZ ')]/../../div[2]//div[@class='product-list__row']/ul/li//img").filter(visible);
+    }
+
+    ElementsCollection additionInfoBlockOfAnaloguesProduct() {
+        return $$x("//span[contains(text(),'EMPFOHLENER ERSATZ ')]/../../div[2]//div[@class='product-list__row']/ul/li//div[@class='product-list__item__popup']").filter(visible);
+    }
+
+    SelenideElement forwardLinkAnaloguesBlock() {
+        return $x("//span[contains(text(),'EMPFOHLENER ERSATZ ')]/../..//a[@class='bx-next']");
+    }
+
+    SelenideElement headlineOfAnaloguesBlock() {
+        return $x("//span[contains(text(),'EMPFOHLENER ERSATZ ')]");
+    }
+
+    ElementsCollection imageOfRelatedProductsBlock() {
+        return $$x("//div[contains(@class,'js-product-list-slider')]//img").filter(visible);
+    }
+
+    ElementsCollection additionInfoBlockOfRelatesProduct() {
+        return $$x("//div[contains(@class,'js-product-list-slider')]//div[@class='product-list__item__popup'] ").filter(visible);
+    }
+
+    SelenideElement forwardLinkRelatedBlock() {
+        return $x("//div[contains(@class,'js-product-list-slider')]//a[@class='bx-next']");
+    }
+
+    SelenideElement headlineOfRelatedBlock() {
+        return $x("//span[contains(text(),'Folgende Produkte werden ')]");
+    }
+
+
+    ElementsCollection btnAddToBasketRelatedBlock() {
+        return $$x("//div[@class='product-list__item__button']").filter(visible);
+    }
+
+    SelenideElement basketDropMenu() {
+        return $x("//div[@class='cart-items-block ']");
+    }
+
+    SelenideElement basket() {
+        return $x("//a[@class='header-cart__link']");
+    }
 }
