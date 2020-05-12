@@ -145,4 +145,10 @@ public class LKW_Category_maker_brand_page_Logic extends LKW_Category_maker_bran
         headlineOfTopProductsBlock().shouldBe(visible);
         return this;
     }
+
+    @Step("visibility of headline .LKW_Category_maker_brand_page")
+    public LKW_Category_maker_brand_page_Logic visibilityOfMainHeadline() {
+        mainHeadline().shouldBe(visible).shouldHave(exactText("Ölfilter für VOLVO von MANN-FILTER"));
+        return this;
+    }
 }

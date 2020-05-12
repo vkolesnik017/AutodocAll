@@ -103,6 +103,13 @@
             <class name="LKW_trucks.QC_10_MainHeadlines.QC_1703_AvailabilityOfHeadlineInTecDocCatalogAndModelCatalog"/>
             <class name="LKW_trucks.QC_10_MainHeadlines.QC_1704_AvailabilityOfHeadLineInParentChildCategoryMarkCatalog"/>
             <class name="LKW_trucks.QC_10_MainHeadlines.QC_1706_AvailabilityOfHeadLineInChildMark"/>
+            <class name="LKW_trucks.QC_10_MainHeadlines.QC_1707_AvailabilityOfHeadlineAtCategoryBrand"/>
+            <class name="LKW_trucks.QC_10_MainHeadlines.QC_1708_AvailabilityOfMainHeadlineAtCategoryMakerBrand"/>
+            <class name="LKW_trucks.QC_10_MainHeadlines.QC_1709_AvailabilityOfMainHeadlineAtTecDocListing"/>
+            <class name="LKW_trucks.QC_10_MainHeadlines.QC_1710_CountOfBrandsAndModelsInHeadline"/>
+            <class name="LKW_trucks.QC_10_MainHeadlines.QC_1711_ImageOfBrandInMainHeadline"/>
+            <class name="LKW_trucks.QC_10_MainHeadlines.QC_1712_ImageOfBrandInHeadLineAtCarList"/>
+            <class name="LKW_trucks.QC_10_MainHeadlines.QC_1713_ValueOfBrandAndModelAtMainHeadline"/>
         </classes>
     </test>
 
