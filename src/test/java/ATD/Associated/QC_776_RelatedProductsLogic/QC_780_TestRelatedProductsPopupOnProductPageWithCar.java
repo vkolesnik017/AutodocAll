@@ -36,7 +36,8 @@ public class QC_780_TestRelatedProductsPopupOnProductPageWithCar {
     @Description(value = "Test Checks Related Products Popup On Product Page With Car")
     public void testRelatedProductsPopupOnProductPageWithCar(String route) throws SQLException {
         openPage(route);
-        open("https://autodoc.de/" + new DataBase().getRouteByRouteName("DE", "product22"));
+//        open("https://autodoc.de/" + new DataBase().getRouteByRouteName("DE", "product22"));
+        open(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "product22"));
         new Product_page_Logic().checkRelatedProductsPopup(6);
     }
 

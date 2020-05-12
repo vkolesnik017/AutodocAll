@@ -61,7 +61,7 @@ public class SetUp {
         String shop;
         if (!(shopFromJenkins == null)) shop = shopFromJenkins;
         else shop = shopFromTest;
-        if (!(envFromJenkins == null)) envFromTest = envFromJenkins;
+//        if (!(envFromJenkins == null)) envFromTest = envFromJenkins;
         String env = getEnv(envFromTest);
         List<String> finalRouteList = new ArrayList<>();
         try {
