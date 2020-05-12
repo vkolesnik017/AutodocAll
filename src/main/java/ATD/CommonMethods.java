@@ -49,6 +49,7 @@ public class CommonMethods {
 
     @Step("{url} Open page with close popup")
     public static void openPage(String url) {
+        System.out.println(url);
         open(url);
         closeCookiesFooterMessage();
     }
