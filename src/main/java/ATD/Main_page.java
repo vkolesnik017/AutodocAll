@@ -594,4 +594,6 @@ public class Main_page {
     public SelenideElement childCategoryOnMainPage(String category) {
         return $x("//ul[@class='ersats_listing']//span[contains(text(),'"+category+"')]");
     }
+
+    SelenideElement chooseModelTooltipInCarSelector() { return $(".tooltiptext-line"); }
 }
