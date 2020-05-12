@@ -15,6 +15,7 @@
     <test name="QC_1037_MainChemie">
         <classes>
             <class name="ATD.ACC.QC_1037_MainChemie.QC_1070_DivTopBrands"/>
+            <class name="ATD.ACC.QC_1037_MainChemie.QC_1072_FeatureBlock"/>
         </classes>
     </test>
 
@@ -23,5 +24,13 @@
             <class name="ATD.ACC.QC_1042_MainCategoryCatalogOnMainChemie.QC_1058_PresenceLogicalAssociations"/>
         </classes>
     </test>
+
+    <test name="QC_836_MainAccessories">
+        <classes>
+            <class name="ATD.ACC.QC_836_MainAccessories.QC_988_FeatureBlock"/>
+        </classes>
+    </test>
+
+
 
 </suite>

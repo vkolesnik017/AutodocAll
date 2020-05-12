@@ -25,5 +25,12 @@ public class Index_chemicals_page_Logic extends Index_chemicals_page {
     }
 
 
+    @Step("Checks the visibility of a block with site features . Index_chemicals_page")
+    public Index_chemicals_page_Logic checkVisibilityOfFeaturesBlock() {
+        blockFeatures().shouldBe(visible);
+        return this;
+    }
+
+
 
 }

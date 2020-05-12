@@ -18,4 +18,11 @@ public class Index_chemicals_page {
     SelenideElement blockTopBrands() {
         return $x("//div[@class='top-brands']/ul/img");
     }
+
+    SelenideElement blockFeatures() {
+        return $x("//div[@class='features__wrapp']");
+    }
+
+
+
 }
