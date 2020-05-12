@@ -273,9 +273,6 @@ public class LKW_Product_page_Logic extends LKW_Product_page {
             headlineOfAnaloguesBlock().hover();
             imageOfAnaloguesProducts().get(i).shouldBe(visible).hover();
             additionInfoBlockOfAnaloguesProduct().get(0).should(appear);
-            if (i == 5) {
-                forwardLinkAnaloguesBlock().click();
-            }
         }
         return this;
     }

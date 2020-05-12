@@ -21,7 +21,6 @@ public class QC_78_TransitionFromProductBLockToProductPage {
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
     }
-
     @DataProvider(name = "routesCategory", parallel = true)
     Object[] dataProviderCategory() throws SQLException {
         return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category2,lkw_category_maker2,lkw_category_brand,lkw_category_maker_brand");
@@ -55,7 +54,6 @@ public class QC_78_TransitionFromProductBLockToProductPage {
                 .transitionToProductPageByClickOnTitleOfTopProduct()
                 .transitionToProductPageByClickOnLinkDetails();
     }
-
 
     @DataProvider(name = "routesCategories", parallel = true)
     Object[] dataProviderCategories() throws SQLException {
@@ -107,7 +105,6 @@ public class QC_78_TransitionFromProductBLockToProductPage {
                 .transitionToProductPageByClickOnTitleOfTopProduct()
                 .transitionToProductPageByClickOnLinkDetails();
     }
-
     @AfterMethod
     private void tearDown() {
         close();
