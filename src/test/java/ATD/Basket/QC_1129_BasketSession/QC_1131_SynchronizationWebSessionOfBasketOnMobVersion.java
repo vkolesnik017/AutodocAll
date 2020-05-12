@@ -52,7 +52,9 @@ public class QC_1131_SynchronizationWebSessionOfBasketOnMobVersion {
                 .closeFooterPopup()
                 .signIn(mail)
                 .cartClick()
-                .checkOfIdAddedProductInBasket(productIdOnProductPage);
+                .checkOfIdAddedProductInBasket(productIdOnProductPage)
+                .deleteItemFromCart()
+                .checkEmptyCart();
     }
 
     @AfterMethod

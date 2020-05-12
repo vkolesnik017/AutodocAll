@@ -5,6 +5,7 @@ import io.qameta.allure.Step;
 import org.testng.Assert;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static com.codeborne.selenide.CollectionCondition.size;
@@ -74,7 +75,7 @@ public class LKW_Product_page_Logic extends LKW_Product_page {
 
     @Step("Check successfully LKW_Product page loading .LKW_Product_page")
     public LKW_Product_page_Logic checkSuccessfullyLKWProductPageLoading(String currentUrl) {
-        breadCrumbsBlock().shouldBe(visible);
+        breadCrumbsBlock().should(appear);
         Assert.assertTrue(url().contains(currentUrl));
         return this;
     }
@@ -121,7 +122,6 @@ public class LKW_Product_page_Logic extends LKW_Product_page {
         return this;
     }
 
-
     @Step("visibility of tooltip for motor_field in selector  .LKW_Product_page")
     public LKW_Product_page_Logic visibilityOfTooltipForMotorFieldInHorizontalSelector() {
         modelInHorizontalTruckSelector().selectOptionByValue("714");
@@ -129,7 +129,6 @@ public class LKW_Product_page_Logic extends LKW_Product_page {
         tooltipForFieldInHorizontalCarSelector().shouldBe(visible);
         return this;
     }
-
 
     @Step("select brand of car in horizontal truck selector .LKW_Product_page")
     public LKW_Product_page_Logic selectBrandOfCarInHorizontalSelector(String valueOfBrand) {
@@ -165,4 +164,155 @@ public class LKW_Product_page_Logic extends LKW_Product_page {
         return brands;
     }
 
+    @Step("visibility of dynamic characteristic .LKW_Product_page")
+    public LKW_Product_page_Logic visibilityOfDynamicCharacteristic() {
+        dynamicCharacteristic("Motorcode", "OM 936 LA").should(appear);
+        return this;
+    }
+
+    @Step("visibility of EON block .LKW_Product_page")
+    public LKW_Product_page_Logic visibilityOfOemBlock() {
+        oenBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("lack of links in OEN block .LKW_Product_page")
+    public LKW_Product_page_Logic lackOfLinksInOenBlock() {
+        for (int i = 0; i < listOfOen().size(); i++) {
+            listOfOen().get(i).shouldNotHave(attribute("href"));
+        }
+        return this;
+    }
+
+
+    @Step("visibility of compatible truck block .LKW_Product_page")
+    public LKW_Product_page_Logic visibilityOfCompatibleTruckBLock() {
+        compatibleTruckBLock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("check of sorting compatible truck list .LKW_Product_page")
+    public LKW_Product_page_Logic checkOfSortingCompatibleTruckList() {
+
+        List<String> listOfTruck = new ArrayList<>();
+        for (int i = 0; i < compatibleTruckList().size(); i++) {
+            listOfTruck.add(compatibleTruckList().get(i).getText());
+        }
+        List<String> sortingListOfTruck = new ArrayList<>(listOfTruck);
+        Collections.sort(sortingListOfTruck);
+        Assert.assertEquals(sortingListOfTruck, listOfTruck);
+        return this;
+    }
+
+    @Step("visibility of models list of selected truck in compatible block .LKW_Product_page")
+    public LKW_Product_page_Logic visibilityOfModelsListBlock(String titleOfTruck) {
+        for (int i = 0; i < compatibleTruckList().size(); i++) {
+            if (compatibleTruckList().get(i).has(exactText(titleOfTruck))) {
+                compatibleTruckList().get(i).click();
+            }
+        }
+        modelsListBlock().should(appear);
+        return this;
+    }
+
+    @Step("visibility of  application block specification .LKW_Product_page")
+    public LKW_Product_page_Logic visibilityOfApplicationBlockSpecification(String modelOfTruck) {
+        for (int i = 0; i < compatibleTruckLinks().size(); i++) {
+            if (compatibleTruckLinks().get(i).has(text(modelOfTruck))) {
+                compatibleTruckLinks().get(i).click();
+            }
+        }
+        applicationSpecificationBLock().should(appear);
+        return this;
+    }
+
+
+    @Step("visibility of compatible truck in selector .LKW_Product_page")
+    public LKW_Product_page_Logic availabilityOfCompatibleTruckInSelector() {
+        List<String> brandsOfTrucks = new ArrayList<>();
+        for (int i = 0; i < brandsOfTrucksInSelector().size(); i++) {
+            brandsOfTrucks.add(brandsOfTrucksInSelector().get(i).getText());
+        }
+        if (closeCompatibleTruckModelList().isDisplayed()) {
+            closeCompatibleTruckModelList().click();
+        }
+        for (int i = 0; i < compatibleTruckList().size(); i++) {
+            if (!brandsOfTrucks.contains(compatibleTruckList().get(i).getText())) {
+                compatibleTruckList().get(i).shouldNotHave(attribute("href"));
+            }
+        }
+        return this;
+    }
+
+    @Step("open of characteristic block .LKW_Product_page")
+    public LKW_Product_page_Logic openCharacteristicBlock() {
+        openBlockOfCharacteristic().click();
+        listOfCharacteristics().shouldHaveSize(12);
+        return this;
+    }
+
+    @Step("visibility of selected truck selector after click by characteristic .LKW_Product_page")
+    public LKW_Product_page_Logic visibilityOfSelectedTruckSelector() {
+        activeLinksOfCharacteristic().get(0).shouldBe(visible).click();
+        selectedTruckSelector().should(appear);
+        darkBackground().should(appear);
+        return this;
+    }
+
+    @Step("visibility of related and analogues products block .LKW_Product_page")
+    public LKW_Product_page_Logic visibilityOfAnaloguesAndRelatedProductsBlock() {
+        relatedProductsBlock().shouldBe(visible);
+        analoguesBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("visibility of analogues addition info block .LKW_Product_page")
+    public LKW_Product_page_Logic visibilityOfAnaloguesAdditionInfoBlock() {
+        analoguesBlock().scrollIntoView("{block: \"center\"}");
+        for (int i = 0; i < imageOfAnaloguesProducts().size(); i++) {
+            headlineOfAnaloguesBlock().hover();
+            imageOfAnaloguesProducts().get(i).shouldBe(visible).hover();
+            additionInfoBlockOfAnaloguesProduct().get(0).should(appear);
+            if (i == 5) {
+                forwardLinkAnaloguesBlock().click();
+            }
+        }
+        return this;
+    }
+
+
+    @Step("visibility of related addition info block .LKW_Product_page")
+    public LKW_Product_page_Logic visibilityOfRelatedAdditionInfoBlock() {
+        while (forwardLinkRelatedBlock().isDisplayed()) {
+            hoverOnImageOfRelatedProduct();
+            forwardLinkRelatedBlock().click();
+        }
+        hoverOnImageOfRelatedProduct();
+        return this;
+    }
+
+    @Step("hover on image of product in related block .LKW_Product_page")
+    public LKW_Product_page_Logic hoverOnImageOfRelatedProduct() {
+        for (int i = 0; i < imageOfRelatedProductsBlock().size(); i++) {
+            headlineOfRelatedBlock().hover();
+            imageOfRelatedProductsBlock().get(i).shouldBe(visible).hover();
+            additionInfoBlockOfRelatesProduct().get(0).should(appear);
+        }
+        return this;
+    }
+
+    @Step("get id of related product .LKW_Product_page")
+    public String getIdOfRelatedProduct() {
+        String idOfBtnAddToBasket = btnAddToBasketRelatedBlock().get(0).getAttribute("id");
+        return idOfBtnAddToBasket;
+    }
+
+    @Step("added related product to basket .LKW_Product_page")
+    public Cart_page_Logic addRelatedProductToBasket() {
+        btnAddToBasketRelatedBlock().get(0).shouldBe(visible).click();
+        basketDropMenu().should(appear);
+        basketDropMenu().should(disappear);
+        basket().click();
+        return page(Cart_page_Logic.class);
+    }
 }

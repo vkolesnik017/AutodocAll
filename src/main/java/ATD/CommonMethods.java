@@ -36,15 +36,15 @@ public class CommonMethods {
     public static String testMail = "test@gmail.com";
     static String testNumberThatPutOrderInTest = "200+002";
     public static String password = "atdtest";
-    // TODO До 11.05.2020 будет сделан чисто наш акк на ФБ для тестов
-    public static String mailFB = "garanchenko.oleg@gmail.com";
-    public static String passFB = "garanchenko1992";
+
+    public static String mailFB = "zhoraautomation@gmail.com";
+    public static String passFB = "atdtest2020";
 
     public static String ridex_82B0896 = "82B0896";
     public static String usualIdProduct = "8340509";
     public static String idProductTire = "8075786";
     public static String idProductMore35EUR = "1367459";
-    public static String idPfandProduct = "1145093";
+    public static String idPfandProduct = "1129165";
     public static String idProductWithDynamicChar = "2295352";
 
     @Step("{url} Open page with close popup")
