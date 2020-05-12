@@ -9,18 +9,18 @@ public class Index_chemicals_page_Logic extends Index_chemicals_page {
 
 
 
-    @Step("Check presence Logical Union on main page chemie . Index_chemicals_page")
-    public Index_chemicals_page_Logic CheckLogicalUnion(){
-        GroupLogicalUnion_MainProductCatalog().hover();
+    @Step("Check presence block categories after hover on catalog group. Index_chemicals_page")
+    public Index_chemicals_page_Logic checkLogicalUnion(){
+        catalogFirstGroup().hover();
         sleep(2000);
-        LogicalUnion_MainProductCatalog().shouldBe(visible);
+        catalogCategories().shouldBe(visible);
         return this;
     }
 
 
-    @Step("Check presence div with top brands. Index_chemicals_page")
-    public Index_chemicals_page_Logic CheckDivTopBrands() {
-        DivTopBrands().shouldBe(visible);
+    @Step("Check presence of top brands block. Index_chemicals_page")
+    public Index_chemicals_page_Logic checkingOfTopBrandsBlock() {
+        blockTopBrands().shouldBe(visible);
         return this;
     }
 

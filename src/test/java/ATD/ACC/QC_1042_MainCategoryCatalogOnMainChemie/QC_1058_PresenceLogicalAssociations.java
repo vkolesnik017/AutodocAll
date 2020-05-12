@@ -33,10 +33,10 @@ public class QC_1058_PresenceLogicalAssociations {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test check presence logical union ")
-    public void TestCheckPresenceLogicalUnion(String route) {
+    @Description(value = "Test checks for the presence of a logical union, when hover over a group,  categories  block should appear")
+    public void testCheckPresenceLogicalUnion(String route) {
         openPage(route);
-        new Index_chemicals_page_Logic().CheckLogicalUnion();
+        new Index_chemicals_page_Logic().checkLogicalUnion();
 
     }
 

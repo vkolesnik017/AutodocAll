@@ -31,10 +31,10 @@ public class QC_1070_DivTopBrands {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test check presence div top brands")
-    public void TestCheckDivTopBrands(String route) {
+    @Description(value = "Test check presence of top brands block")
+    public void testCheckingOfTopBrandsBlock(String route) {
         openPage(route);
-        new Index_chemicals_page_Logic().CheckDivTopBrands();
+        new Index_chemicals_page_Logic().checkingOfTopBrandsBlock();
     }
 
     @AfterMethod
