@@ -439,6 +439,12 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
+    @Step("Get article number. Product_page")
+    public String getArticleNumber() {
+        String articleNumber = articleNumber().getText();
+        return articleNumber;
+    }
+
     @Step("Check product in stock alternative block. Product_page")
     public Product_page_Logic checkProductInStockAlternativeBlock() {
         for (int i = 0; i < 6; i++) {
