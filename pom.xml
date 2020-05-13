@@ -31,12 +31,12 @@
                         <!--<suiteXmlFile>${basedir}/src/test/java/testSuites/testSuite.xml</suiteXmlFile>-->
                         <!--<suiteXmlFile>${basedir}/src/test/java/testSuites/Specific/QC_1744_CheckingProductPageDomain.xml</suiteXmlFile>-->
                     </suiteXmlFiles>
-                    <properties>
-                        <property>
-                            <name>${NAME}</name>
-                            <value>${VALUE}</value>
-                        </property>
-                    </properties>
+                    <!--<properties>-->
+                        <!--<property>-->
+                            <!--<name>${NAME}</name>-->
+                            <!--<value>${VALUE}</value>-->
+                        <!--</property>-->
+                    <!--</properties>-->
                     <systemProperties>
                         <property>
                             <name>allure.results.directory</name>
