@@ -36,7 +36,7 @@ public class QC_222_MainImageOnErrorPage {
         openPage(route);
 
         new LKW_Error_page_Logic()
-                .visibilityOfMainImage();
+                .visibilityOfMainErrorImage();
     }
     @AfterMethod
     private void tearDown() {
