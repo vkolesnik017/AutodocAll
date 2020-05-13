@@ -18,7 +18,7 @@ import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
-public class QC_1684_HeavyLoadsAndOrdinaryGoods_PositiveCase {
+public class  QC_1684_HeavyLoadsAndOrdinaryGoods_PositiveCase {
 
 
     private String email = "qc_1684_autotestDE@mailinator.com", orderNumber;
@@ -42,7 +42,7 @@ public class QC_1684_HeavyLoadsAndOrdinaryGoods_PositiveCase {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
         new Product_page_Logic().addProductToCart();
-        open("https://autodoc.de/" + new DataBase().getRouteByRouteName("DE", "search3"));
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "search3"));
         clickOfBuyBtnForAllPages();
         totalPrice = new Search_page_Logic().closePopupOtherCategoryIfYes()
                 .cartClick().nextButtonClick()

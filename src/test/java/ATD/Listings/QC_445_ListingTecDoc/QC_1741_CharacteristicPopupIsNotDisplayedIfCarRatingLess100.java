@@ -1,8 +1,7 @@
-package ATD.Associated.QC_802_AnalogsForProductsNotInStock;
+package ATD.Listings.QC_445_ListingTecDoc;
 
 
-import ATD.DataBase;
-import ATD.Product_page_Logic;
+import ATD.Listing_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -17,9 +16,8 @@ import java.sql.SQLException;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
-import static com.codeborne.selenide.Selenide.open;
 
-public class QC_808_TestEmpfohlenerProductsMatchCar {
+public class QC_1741_CharacteristicPopupIsNotDisplayedIfCarRatingLess100 {
 
     @BeforeClass
     void setUp() {
@@ -28,17 +26,16 @@ public class QC_808_TestEmpfohlenerProductsMatchCar {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product24");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list23");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Romaniuta")
-    @Description(value = "Test Checks Empfohlener Products Match Car")
-    public void testEmpfohlenerProductsMatchCar(String route) throws SQLException {
-        open(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "maker_car_list3"));
-        open(route);
-        new Product_page_Logic().checkAnalogProductMatchCar(route);
+    @Description(value = "Test Characteristic Popup Is Not Displayed If Car Rating Less 100")
+    public void testCharacteristicPopupIsNotDisplayedIfCarRatingLess100(String route) {
+        openPage(route);
+        new Listing_page_Logic().checkInfoPopupInvisibility();
     }
 
     @AfterMethod

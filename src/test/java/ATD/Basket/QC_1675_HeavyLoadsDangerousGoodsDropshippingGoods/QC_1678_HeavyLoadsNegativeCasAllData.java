@@ -38,7 +38,7 @@ public class QC_1678_HeavyLoadsNegativeCasAllData {
     public void testOfHeavyLoadsNegativePurchaseAllDataPage(String route) throws SQLException {
         openPage(route);
         product_page_logic.addProductToCart();
-        open("https://autodoc.de/" + new DataBase().getRouteByRouteName("DE", "product2"));
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "product2"));
         product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick().nextButtonClick()
@@ -72,7 +72,7 @@ public class QC_1678_HeavyLoadsNegativeCasAllData {
                 .chooseVorkasse().nextBtnClick()
                 .checkPresencePopUpDeliveryLimitAllDataPage()
                 .clickBtnChangeAddressInDeliveryPopupCartAllDataPage();
-        checkingContainsUrl("https://www.autodoc.de/basket/address");
+        checkingContainsUrl("/basket/address");
     }
 
     @AfterMethod

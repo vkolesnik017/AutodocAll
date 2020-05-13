@@ -9,7 +9,7 @@ public class Index_chemicals_page_Logic extends Index_chemicals_page {
 
 
 
-    @Step("Check presence block categories after hover on catalog group. Index_chemicals_page")
+    @Step("Check presence block subcategories after hover on catalog category. Index_chemicals_page")
     public Index_chemicals_page_Logic checkLogicalUnion(){
         catalogFirstGroup().hover();
         sleep(2000);

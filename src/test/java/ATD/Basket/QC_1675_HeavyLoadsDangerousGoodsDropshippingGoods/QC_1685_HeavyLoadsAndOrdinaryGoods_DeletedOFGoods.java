@@ -43,7 +43,7 @@ public class QC_1685_HeavyLoadsAndOrdinaryGoods_DeletedOFGoods {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
         product_page_logic.addProductToCart();
-        open("https://autodoc.de/" + new DataBase().getRouteByRouteName("DE", "product2"));
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "product2"));
         totalPrice = product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick().nextButtonClick()

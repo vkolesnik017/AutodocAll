@@ -236,4 +236,6 @@ public class LKW_Category_car_list_page {
     SelenideElement resetBtnInVerticalCarSelector() {
         return $x("//a[@class='block-select-car__update hidden js--btn_reset_form']");
     }
+
+    SelenideElement imageOfBrandAtMainHeadline() {return $x("//div[@class='catalog-title__block']/img");}
 }

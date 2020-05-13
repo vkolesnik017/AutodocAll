@@ -29,6 +29,8 @@
             <class name="ATD.Listings.QC_445_ListingTecDoc.QC_447_PresenceElementsOnTecDocListing"/>
             <class name="ATD.Listings.QC_445_ListingTecDoc.QC_449_AdditionalListingOnTecDoc"/>
             <class name="ATD.Listings.QC_445_ListingTecDoc.QC_450_Soft404OnTecDoc"/>
+            <class name="ATD.Listings.QC_445_ListingTecDoc.QC_1741_CharacteristicPopupIsNotDisplayedIfCarRatingLess100"/>
+            <class name="ATD.Listings.QC_445_ListingTecDoc.QC_1742_ReopeningPopupWithCarCharacteristics"/>
         </classes>
     </test>
 

@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.open;
 
 public class QC_1682_HeavyLoads_Islands {
 
@@ -37,7 +38,7 @@ public class QC_1682_HeavyLoads_Islands {
     public void testOfHeavyLoadsPurchaseForIslands(String route) throws SQLException {
         openPage(route);
         product_page_logic.addProductToCart();
-        openPage("https://autodoc.de/" + new DataBase().getRouteByRouteName("DE", "product2"));
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "product2"));
         product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick().nextButtonClick()

@@ -660,5 +660,12 @@ public class Listing_page {
     SelenideElement brandFilterSecondButtonInSidebarButton() { return $x("//*[@class='branded-filter-sidebar']//li[2]//label"); }
 
     ElementsCollection characteristicsOfProduct(String productArticle) { return $$x("//*[text()='" + productArticle + "']/../..//*[@class='about']//li"); }
+
+    SelenideElement infoButton() { return $("#selected_car_info"); }
+
+    SelenideElement carInfoPopup() { return $(".selected_car_info_popap"); }
+
+    SelenideElement closeCarInfoPopupButton() { return $(".selected_car_info_popap .close"); }
+
 }
 

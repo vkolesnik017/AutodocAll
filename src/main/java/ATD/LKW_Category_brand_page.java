@@ -88,4 +88,6 @@ public class LKW_Category_brand_page {
     }
 
     ElementsCollection titleOfTopProducts() {return $$x("//span[@class='link ga-click']");}
+
+    SelenideElement mainHeadline() {return $x("//div[@class='top_title no_image image_padding']/h2");}
 }

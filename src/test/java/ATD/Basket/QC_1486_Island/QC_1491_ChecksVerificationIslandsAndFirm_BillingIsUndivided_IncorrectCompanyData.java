@@ -76,7 +76,7 @@ public class QC_1491_ChecksVerificationIslandsAndFirm_BillingIsUndivided_Incorre
                 .cartClick().nextButtonClick();
         new CartAddress_page_Logic().fillingPostalCodeField("97100")
                 .nextBtnClick();
-        checkingContainsUrl("https://www.autodoc.de/basket/address");
+        checkingContainsUrl("/basket/address");
     }
 
     @AfterMethod

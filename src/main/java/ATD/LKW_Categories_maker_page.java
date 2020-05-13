@@ -201,4 +201,6 @@ class LKW_Categories_maker_page {
 
     ElementsCollection topProductsFirstLevel() {return $$x("//div[@class='top-small-products__items'][1]/div/div/a/img");}
 
+    SelenideElement mainHeadline() {return $x("//div[@class='title_count_search ']/h2");}
+
 }
