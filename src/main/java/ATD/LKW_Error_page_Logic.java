@@ -13,7 +13,7 @@ public class LKW_Error_page_Logic extends LKW_Error_page {
     }
 
     @Step("visibility of main error image   .LKW_Error_page")
-    public LKW_Error_page_Logic visibilityOfMainImage() {
+    public LKW_Error_page_Logic visibilityOfMainErrorImage() {
         mainErrorImage().shouldBe(visible);
         return this;
     }

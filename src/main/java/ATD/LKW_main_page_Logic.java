@@ -3,7 +3,10 @@ package ATD;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import org.openqa.selenium.By;
 import org.testng.Assert;
+
+import java.sql.SQLException;
 
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
@@ -504,6 +507,21 @@ public class LKW_main_page_Logic extends LKW_main_page {
     @Step("visibility of sales banner .LKW_main_page")
     public LKW_main_page_Logic visibilityOfSalesBanner() {
         salesBanner().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checking countries subscription from footer country list  .LKW_main_page")
+    public LKW_main_page_Logic checkingCountriesSubscription() throws SQLException {
+
+        for (SelenideElement element : languagesOfSubscribe()) {
+            String shopName = element.attr("id");
+            shopName = shopName.substring(shopName.indexOf("_") + 1);
+           if (shopName.equalsIgnoreCase("lu")) shopName = "ld";
+            System.out.println(shopName);
+           languageBlock().click();
+           element.scrollIntoView(true).click();
+           new CommonMethods().checkingUrlAndCloseTab(new DataBase().getRouteByRouteName(shopName, "main"));
+        }
         return this;
     }
 }
