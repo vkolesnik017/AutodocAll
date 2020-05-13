@@ -7,11 +7,11 @@ import static com.codeborne.selenide.Selenide.$x;
 public class Index_chemicals_page {
 
 
-    SelenideElement catalogFirstCategory() {
+    SelenideElement catalogFirstGroup() {
         return $x("//div[@class='special-catalog__row'][1]//div[@class='special-catalog__group'][1]");
     }
 
-    SelenideElement catalogSubcategory() {
+    SelenideElement catalogCategories() {
         return $x("//div[@class='special-catalog__categories' and @style='display: block;']");
     }
 
