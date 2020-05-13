@@ -24,7 +24,7 @@ public class Listing_page_Logic extends Listing_page {
     @Step("Gets all the characteristics of the desired product from listing {productArticle}. Listing_page")
     // example String for productArticle = Artikelnummer: V99-75-0011 , don't fits for search listing when used search by article product
     public ElementsCollection getCharacteristicsDesiredProduct(String productArticle) {
-        if (characteristicsOfProduct(productArticle).size() < 10) {
+        while (characteristicsOfProduct(productArticle).size() < 10) {
             nextPageButton().click();
         }
         return characteristicsOfProduct(productArticle).shouldHave(sizeGreaterThan(10));
@@ -1081,15 +1081,39 @@ public class Listing_page_Logic extends Listing_page {
         return this;
     }
 
-    @Step("Refresh page")
+    @Step("Refresh page. Listing_page")
     public Listing_page_Logic refreshPage() {
         refresh();
         return this;
     }
 
-    @Step("Check that rating filter is not present on listing")
+    @Step("Check that rating filter is not present on listing. Listing_page")
     public Listing_page_Logic checkRatingfilterIsNotPresent() {
         ratingFilterBlock().shouldNotBe(visible);
+        return this;
+    }
+
+    @Step("Click info button. Listing_page")
+    public Listing_page_Logic clickInfoButton() {
+        infoButton().click();
+        return this;
+    }
+
+    @Step("Close car info popup. Listing_page")
+    public Listing_page_Logic closeCarInfoPopup() {
+        closeCarInfoPopupButton().click();
+        return this;
+    }
+
+    @Step("Check info popup visibility. Listing_page")
+    public Listing_page_Logic checkInfoPopupVisibility() {
+        carInfoPopup().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Check info popup invisibility. Listing_page")
+    public Listing_page_Logic checkInfoPopupInvisibility() {
+        carInfoPopup().shouldNotBe(visible);
         return this;
     }
 }

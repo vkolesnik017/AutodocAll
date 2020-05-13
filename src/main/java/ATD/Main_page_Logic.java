@@ -207,6 +207,14 @@ public class Main_page_Logic extends Main_page {
         return this;
     }
 
+    @Step("Check model chose tooltip in selector. Main_page")
+    public Main_page_Logic checkModelChooseTooltipInSelector() {
+        chooseModelTooltipInCarSelector().shouldHave(text("Fahrzeuginformationen hinzufügen, um passende Teile zu finden"));
+        refresh();
+        chooseModelTooltipInCarSelector().shouldNotBe(visible);
+        return this;
+    }
+
     // Login popup
     @Step("Sign in from login popup. Main_page")
     public Profile_page_Logic loginUserFromMain(String login) {

@@ -1,8 +1,7 @@
-package ATD.Associated.QC_802_AnalogsForProductsNotInStock;
+package ATD.Selectors.QC_663_HorizontalCarSelector;
 
 
-import ATD.DataBase;
-import ATD.Product_page_Logic;
+import ATD.Main_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -14,12 +13,11 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
-public class QC_808_TestEmpfohlenerProductsMatchCar {
+public class QC_682_DisplayChooseModelTooltipFirstTimeEnterSession {
 
     @BeforeClass
     void setUp() {
@@ -28,17 +26,16 @@ public class QC_808_TestEmpfohlenerProductsMatchCar {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product24");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "categories_maker");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Romaniuta")
-    @Description(value = "Test Checks Empfohlener Products Match Car")
-    public void testEmpfohlenerProductsMatchCar(String route) throws SQLException {
-        open(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "maker_car_list3"));
+    @Description(value = "Test Display Choose Model Tooltip First Time Enter Session")
+    public void testDisplayChooseModelTooltipFirstTimeEnterSession(String route) {
         open(route);
-        new Product_page_Logic().checkAnalogProductMatchCar(route);
+        new Main_page_Logic().checkModelChooseTooltipInSelector();
     }
 
     @AfterMethod

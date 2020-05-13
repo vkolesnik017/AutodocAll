@@ -49,6 +49,7 @@
             <class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_674_AppearsErrorThatKbaNumberNotFilled"/>
             <class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_675_ResetHorizontalCarSelector"/>
             <class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_681_AppearsTooltipChooseBrandFirstTimeEnterSession"/>
+            <class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_682_DisplayChooseModelTooltipFirstTimeEnterSession"/>
         </classes>
     </test>
 
