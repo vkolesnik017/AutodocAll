@@ -499,4 +499,11 @@ public class LKW_main_page_Logic extends LKW_main_page {
         linkDetailsWithSelectedTitle("MANN-FILTER").shouldBe(visible).click();
         return page(LKW_Product_page_Logic.class);
     }
+
+
+    @Step("visibility of sales banner .LKW_main_page")
+    public LKW_main_page_Logic visibilityOfSalesBanner() {
+        salesBanner().shouldBe(visible);
+        return this;
+    }
 }

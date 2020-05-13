@@ -55,6 +55,8 @@
             <class name="LKW_trucks.QC_135_SeoDescriptionBlock"/>
             <class name="LKW_trucks.QC_136_LinkBlockOfTopBrands"/>
             <class name="LKW_trucks.QC_178_TopParentAndChildCategoriesBlocks"/>
+            <class name="LKW_trucks.QC_158_BannerOnMainPage"/>
+            <class name="LKW_trucks.QC_222_MainImageOnErrorPage"/>
         </classes>
     </test>
 
@@ -173,6 +175,7 @@
             <class name="LKW_trucks.QC_207_ProductPage.QC_208_DynamicCharacteristicsOfProduct"/>
             <class name="LKW_trucks.QC_207_ProductPage.QC_210_CompatibleTrucksBlock"/>
             <class name="LKW_trucks.QC_207_ProductPage.QC_212_LackOfLinksInOenBlock"/>
+            <class name="LKW_trucks.QC_207_ProductPage.QC_209_SelectingOfTruckSelector"/>
             <class name="LKW_trucks.QC_207_ProductPage.QC_213_AnaloguesAndRelatedProductsBlocks"/>
         </classes>
     </test>
