@@ -127,4 +127,11 @@ public class LKW_Category_brand_page_Logic extends LKW_Category_brand_page {
         }
         return this;
     }
+
+
+    @Step("visibility of headline .LKW_Category_brand_page")
+    public LKW_Category_brand_page_Logic visibilityOfMainHeadline() {
+         mainHeadline().shouldBe(visible).shouldHave(exactText("LKW Ölfilter von MANN-FILTER"));
+        return this;
+    }
 }

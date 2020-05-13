@@ -1,8 +1,7 @@
-package ATD.Associated.QC_802_AnalogsForProductsNotInStock;
+package LKW_trucks.QC_10_MainHeadlines;
 
-
-import ATD.DataBase;
-import ATD.Product_page_Logic;
+import ATD.LKW_Category_car_list_page_Logic;
+import ATD.LKW_maker_car_list_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -17,9 +16,8 @@ import java.sql.SQLException;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
-import static com.codeborne.selenide.Selenide.open;
 
-public class QC_808_TestEmpfohlenerProductsMatchCar {
+public class QC_1712_ImageOfBrandInHeadLineAtCarList {
 
     @BeforeClass
     void setUp() {
@@ -28,21 +26,21 @@ public class QC_808_TestEmpfohlenerProductsMatchCar {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product24");
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_maker_car_list2");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "Romaniuta")
-    @Description(value = "Test Checks Empfohlener Products Match Car")
-    public void testEmpfohlenerProductsMatchCar(String route) throws SQLException {
-        open(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "maker_car_list3"));
-        open(route);
-        new Product_page_Logic().checkAnalogProductMatchCar(route);
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test checks image of brand  at main headline")
+    public void testChecksImageOfBrandAtMainHeadline(String route) {
+        openPage(route);
+        new LKW_maker_car_list_Logic()
+                .availabilityOfImageOfBrand();
     }
 
     @AfterMethod
-    public void tearDown() {
+    private void tearDown() {
         close();
     }
 }

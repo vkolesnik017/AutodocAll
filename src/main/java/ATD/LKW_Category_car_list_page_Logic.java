@@ -472,6 +472,13 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         resetBtnInVerticalCarSelector().click();
         return page(LKW_Category_page_Logic.class);
     }
+
+
+    @Step("availability of image of brand in main headline  .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic availabilityOfImageOfBrand() {
+        imageOfBrandAtMainHeadline().shouldBe(visible);
+        return this;
+    }
 }
 
 

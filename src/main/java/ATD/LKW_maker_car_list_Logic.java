@@ -168,4 +168,18 @@ public class LKW_maker_car_list_Logic extends LKW_maker_car_list {
         return page(LKW_Categories_page_Logic.class);
     }
 
+
+    @Step("availability of image of brand in main headline .LKW_maker_car_list")
+    public LKW_maker_car_list_Logic availabilityOfImageOfBrand() {
+          imageOfBrandInMainHeadline().shouldBe(visible);
+        return this;
+    }
+
+
+    @Step("visibility of brand and model at main headline .LKW_maker_car_list")
+    public LKW_maker_car_list_Logic visibilityOfBrandAndModelAtMainHeadline() {
+           mainHeadline().shouldBe(visible).shouldHave(text("DAF 45"));
+        return this;
+    }
+
 }

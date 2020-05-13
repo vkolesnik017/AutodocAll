@@ -400,7 +400,7 @@ public class Product_page_Logic extends Product_page {
         openPage(route);
         buyButton().click();
         relatedProductPopupGoToCartButton().click();
-        checkingContainsUrl("https://www.autodoc.de/basket/account");
+        checkingContainsUrl("basket/account");
         close();
         return this;
     }
@@ -464,11 +464,11 @@ public class Product_page_Logic extends Product_page {
     }
 
     @Step("Check Analog Product Match Car. Product_page")
-    public Product_page_Logic checkAnalogProductMatchCar() {
+    public Product_page_Logic checkAnalogProductMatchCar(String route) {
         for (int i = 0; i < 6; i++) {
             analogProductsTitle().get(i).click();
             carMatchBlock().shouldHave(text("Dieses Produkt passt zu Ihrem VW Golf IV Schrägheck (1J1) 1.4 16V"));
-            open("https://www.autodoc.de/automega/7868162");
+            open(route);
         }
         return this;
     }

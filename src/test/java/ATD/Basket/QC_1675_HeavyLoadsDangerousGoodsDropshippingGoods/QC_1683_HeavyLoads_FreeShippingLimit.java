@@ -16,6 +16,7 @@ import java.sql.SQLException;
 import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.open;
 
 public class QC_1683_HeavyLoads_FreeShippingLimit {
 
@@ -41,7 +42,7 @@ public class QC_1683_HeavyLoads_FreeShippingLimit {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
         product_page_logic.addProductToCart();
-        openPage("https://autodoc.de/" + new DataBase().getRouteByRouteName("DE", "product26"));
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "product26"));
         totalPrice = product_page_logic.checkingCounterIncrease(3)
                 .addProductToCart().closePopupOtherCategoryIfYes().cartClick()
                 .nextButtonClick()
