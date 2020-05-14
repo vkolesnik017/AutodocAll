@@ -57,6 +57,7 @@
             <class name="LKW_trucks.QC_178_TopParentAndChildCategoriesBlocks"/>
             <class name="LKW_trucks.QC_158_BannerOnMainPage"/>
             <class name="LKW_trucks.QC_222_MainImageOnErrorPage"/>
+            <class name="LKW_trucks.QC_183_LanguageBlockInFooter"/>
         </classes>
     </test>
 
@@ -180,4 +181,9 @@
         </classes>
     </test>
 
+    <test name="QC_105_FilterInteractionInTecDocListing">
+        <classes>
+            <class name="LKW_trucks.QC_105_FilterInteractionInTecDocListing.QC_106_InteractionOfBrandAndSideFilters"/>
+        </classes>
+    </test>
 </suite>

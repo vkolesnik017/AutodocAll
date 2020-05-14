@@ -3,7 +3,6 @@ package ATD;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
-import org.openqa.selenium.By;
 import org.testng.Assert;
 
 import java.sql.SQLException;
@@ -456,7 +455,7 @@ public class LKW_main_page_Logic extends LKW_main_page {
 
     @Step("click on image of top product .LKW_main_page")
     public LKW_Product_page_Logic clickOnImageOfTopProduct() {
-        if (!imageOfTopProductWithSelectedTitle("MANN-FILTER").isDisplayed()){
+        if (!imageOfTopProductWithSelectedTitle("MANN-FILTER").isDisplayed()) {
             forwardLinkOfTopBLock().click();
         }
         imageOfTopProductWithSelectedTitle("MANN-FILTER").shouldBe(visible).click();
@@ -475,7 +474,7 @@ public class LKW_main_page_Logic extends LKW_main_page {
 
     @Step("click on title of top product .LKW_main_page")
     public LKW_Product_page_Logic clickOnTitleOfTopProduct() {
-        if (!imageOfTopProductWithSelectedTitle("MANN-FILTER").isDisplayed()){
+        if (!imageOfTopProductWithSelectedTitle("MANN-FILTER").isDisplayed()) {
             forwardLinkOfTopBLock().click();
         }
         topProductWithSelectedTitle("MANN-FILTER").shouldBe(visible).click();
@@ -494,12 +493,12 @@ public class LKW_main_page_Logic extends LKW_main_page {
 
     @Step("click on Details link .LKW_main_page")
     public LKW_Product_page_Logic clickOnLinkDetails() {
-        if (!imageOfTopProductWithSelectedTitle("MANN-FILTER").isDisplayed()){
+        if (!imageOfTopProductWithSelectedTitle("MANN-FILTER").isDisplayed()) {
             forwardLinkOfTopBLock().click();
         }
         imageOfTopProductWithSelectedTitle("MANN-FILTER").shouldBe(visible).hover();
         additionInfoBlockOfTopProductWithSelectedTitle("MANN-FILTER").shouldBe(visible);
-        linkDetailsWithSelectedTitle("MANN-FILTER").shouldBe(visible).click();
+        linkDetailsWithSelectedTitle("MANN-FILTER").scrollIntoView("{block: \"end\"}").click();
         return page(LKW_Product_page_Logic.class);
     }
 
@@ -512,16 +511,28 @@ public class LKW_main_page_Logic extends LKW_main_page {
 
     @Step("Checking countries subscription from footer country list  .LKW_main_page")
     public LKW_main_page_Logic checkingCountriesSubscription() throws SQLException {
-
-        for (SelenideElement element : languagesOfSubscribe()) {
-            String shopName = element.attr("id");
+        languageBlock().click();
+        for (int i = 0; i < languagesOfSubscribe().size(); i++) {
+            if (closeCookiesPopUp().isDisplayed()) {
+                closeCookiesPopUp().click();
+            }
+            String shopName = languagesOfSubscribe().get(i).attr("id");
             shopName = shopName.substring(shopName.indexOf("_") + 1);
-           if (shopName.equalsIgnoreCase("lu")) shopName = "ld";
-            System.out.println(shopName);
-           languageBlock().click();
-           element.scrollIntoView(true).click();
-           new CommonMethods().checkingUrlAndCloseTab(new DataBase().getRouteByRouteName(shopName, "main"));
+            if (shopName.equalsIgnoreCase("lu")) shopName = "ld";
+            languageBlock().click();
+            languagesOfSubscribe().get(i).scrollIntoView("{block: \"center\"}").click();
+            Assert.assertTrue(url().contains(new DataBase().getRouteByRouteName(shopName, "lkw_main")));
         }
+        return this;
+    }
+
+    @Step("Checks open and close footer droplist with countries .LKW_main_page")
+    public LKW_main_page_Logic checkOpenAndCloseDropListCountries() {
+        footerForm().scrollTo();
+        languageBlock().click();
+        dropDownCountry().shouldHave(attribute("style", "visibility: visible;"));
+        languageBlock().click();
+        dropDownCountry().shouldHave(attribute("style", "visibility: hidden;"));
         return this;
     }
 }

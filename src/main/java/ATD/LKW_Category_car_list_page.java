@@ -238,4 +238,10 @@ public class LKW_Category_car_list_page {
     }
 
     SelenideElement imageOfBrandAtMainHeadline() {return $x("//div[@class='catalog-title__block']/img");}
+
+    SelenideElement brandsFilterBlock() {return $x("//div[@class='js-brands-filter js-filter-wrapper']");}
+
+    SelenideElement  brandsLinkInSideBar(String idOfBrand) {return $x("//div[@id='selected-instalation__slider']//li//label[@for='cb-brand-"+idOfBrand+"']");}
+
+    SelenideElement forwardLinkAtBrandsFilter() {return $x("//div[@id='selected-instalation__slider']//a[@class='next slick-arrow']");}
 }
