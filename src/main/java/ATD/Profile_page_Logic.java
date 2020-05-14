@@ -6,6 +6,7 @@ import io.qameta.allure.Step;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.getNameRouteFromJSVarInHTML;
+import static ATD.CommonMethods.waitingElementVisibility;
 import static com.codeborne.selenide.Selenide.Wait;
 import static com.codeborne.selenide.Selenide.page;
 import static org.testng.AssertJUnit.assertNull;
@@ -81,6 +82,7 @@ public class Profile_page_Logic extends Profile_page {
     // history orders tab (page) (Meine Bestellungen)
     @Step("Clicking Bestelldetails. Profile_page")
     public Profile_page_Logic clickBestelldetailsButton(String numberOrder) {
+        waitingElementVisibility(bestelldetailsButton(numberOrder), 5);
         bestelldetailsButton(numberOrder).click();
         return this;
     }
@@ -89,6 +91,7 @@ public class Profile_page_Logic extends Profile_page {
     @Step("Clicking return or replace item button. Profile_page")
     public Profile_page_Logic clickReturnOrReplaceItemButton() {
         // [Artikel zurücksenden oder ersetzen] > button
+        waitingElementVisibility(returnOrReplaceItemButton(), 5);
         returnOrReplaceItemButton().click();
         return this;
     }

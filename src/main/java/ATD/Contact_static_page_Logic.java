@@ -29,7 +29,7 @@ public class Contact_static_page_Logic extends Contact_static_page {
     public Contact_static_page_Logic switchToOrderTab() {
         openedTabTitle().shouldHave(text("Ich habe noch keine Bestellung aufgegeben"));
         orderTab().click();
-        openedTabTitle().shouldHave(text("Ich habe schon einen Auftrag erteilt"));
+        openedTabTitle().shouldHave(text("Ich habe schon eine Bestellung aufgegeben"));
         return this;
     }
 
@@ -42,7 +42,7 @@ public class Contact_static_page_Logic extends Contact_static_page {
         sendenButton().click();
         successPopup().shouldBe(appear);
         successPopupCloseButton().click();
-        openedTabTitle().shouldHave(text("Ich habe schon einen Auftrag erteilt"));
+        openedTabTitle().shouldHave(text("Ich habe schon eine Bestellung aufgegeben"));
         return mail;
     }
 

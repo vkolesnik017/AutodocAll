@@ -295,6 +295,13 @@ public class LKW_main_page {
      SelenideElement additionInfoBlockOfTopProductWithSelectedTitle(String title) {return $x("//div[@class='product-list__item__title']/span[contains(text(),'"+title+"')]/parent::div/..//div[@class='product-list__item__popup']");}
 
      SelenideElement linkDetailsWithSelectedTitle(String title) {return $x("//div[@class='product-list__item__title']/span[contains(text(),'"+title+"')]/parent::div/..//div[@class='product-list__item__popup']/div/div[2]/span"); }
+
+    SelenideElement salesBanner() {return $x("//div[@class='truck-home-top-content__slider']");}
+
+    ElementsCollection languagesOfSubscribe() {return $$x("//div[@class='mCSB_container']/div");}
+
+    SelenideElement languageBlock() {return $x("//div[@class='footer-language__select']");}
+    SelenideElement link() {return $x("./a");}
 }
 
 
