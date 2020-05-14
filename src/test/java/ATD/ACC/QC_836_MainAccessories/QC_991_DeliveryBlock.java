@@ -32,7 +32,7 @@ public class QC_991_DeliveryBlock {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test checks the visibility of the delivery service block on the site page")
+    @Description(value = "Test checks the visibility of the delivery service block")
     public void testCheckingVisibilityOfDeliveryBlock(String route) {
         openPage(route);
         new Index_accessories_page_Logic().checkingVisibilityOfDeliveryBlock();
