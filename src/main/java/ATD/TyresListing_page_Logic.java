@@ -6,6 +6,7 @@ import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selenide.back;
 import static com.codeborne.selenide.Selenide.page;
 
 public class TyresListing_page_Logic extends TyresListing_page {
@@ -139,4 +140,27 @@ public class TyresListing_page_Logic extends TyresListing_page {
         speedIndexOnListingValue().shouldHave(text("H:"));
         return this;
     }
+
+    @Step("Get value from selector. TyresListing_page")
+    public TyresListing_page_Logic getValueFromSelectorAndCheckTopBlockProducts() {
+        String width = widthValueInSelector().text();
+        String height = heightValueInSelector().text();
+        String diameter = diameterValueInSelector().text();
+        for (int n = 0; n < 3; n++) {
+            for (int i = 0; i < productsInTopBlock().size(); i++) {
+                if (n == 1) {
+                    nextButtonInTopBlock().click();
+                } else if (n==2) {
+                    previousButtonInTopBlock().click();
+                }
+                productsInTopBlock().get(i).click();
+                productWidthCharacteristic().shouldHave(text(width));
+                productHeightCharacteristic().shouldHave(text(height));
+                productDiameterCharacteristic().shouldHave(text(diameter));
+                back();
+            }
+        }
+        return this;
+    }
+
 }
