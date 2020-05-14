@@ -91,6 +91,7 @@ public class Profile_page_Logic extends Profile_page {
     @Step("Clicking return or replace item button. Profile_page")
     public Profile_page_Logic clickReturnOrReplaceItemButton() {
         // [Artikel zurücksenden oder ersetzen] > button
+        waitingElementVisibility(returnOrReplaceItemButton(), 5);
         returnOrReplaceItemButton().click();
         return this;
     }
