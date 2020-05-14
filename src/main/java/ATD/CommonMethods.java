@@ -396,7 +396,7 @@ public class CommonMethods {
     }
 
     @Step("Waiting until element will be visible")
-    void waitingElementVisibility(SelenideElement element, int minute) {
+    static void waitingElementVisibility(SelenideElement element, int minute) {
         minute = (minute * 60 * 1000) / 5;
         for (int i = 1; i <= 5; i++) {
             try {
