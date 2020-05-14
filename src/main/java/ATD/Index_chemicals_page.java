@@ -1,7 +1,9 @@
 package ATD;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
+import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class Index_chemicals_page {
@@ -21,6 +23,15 @@ public class Index_chemicals_page {
 
     SelenideElement blockFeatures() {
         return $x("//div[@class='features__wrapp']");
+    }
+
+
+    SelenideElement blockTopProducts() {
+        return $x("//div[@class='top-product-block']");
+    }
+
+    ElementsCollection productsInBlockTop() {
+        return $$x("//div[@class='product-list__item active']");
     }
 
 
