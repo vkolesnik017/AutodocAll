@@ -35,4 +35,10 @@
         </classes>
     </test>
 
+    <test name="QC_1475_TopBlockOnTyresListings">
+        <classes>
+            <class name="ATD.Tyres.QC_1475_TopBlockOnTyresListings.QC_1523_ProductsInTopBlockFitSelector"/>
+        </classes>
+    </test>
+
 </suite>
