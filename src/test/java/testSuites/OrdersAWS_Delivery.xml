@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="OrdersAWS_Delivery" parallel="methods" thread-count="2" data-provider-thread-count="3">
+<suite name="OrdersAWS_Delivery" parallel="methods" thread-count="1" >
 
     <listeners>
         <listener class-name="ATD.ProjectListener"/>
@@ -8,7 +8,9 @@
 
     <test name="QC_19_WorkWithOrdersInAWS">
         <classes>
-            <class name="ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_21_CreatingOrderInAWS"/>
+            <class name="ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_21_CreatingAwsOrder"/>
+            <class name="ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_137_CreatingAwsOrder_WithDropProduct"/>
+            <class name="ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_146_CreatingAesOrder_WithDropProductDeliveredNotToCountryOfShop"/>
         </classes>
     </test>
 
