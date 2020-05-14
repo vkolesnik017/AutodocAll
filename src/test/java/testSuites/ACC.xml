@@ -28,6 +28,13 @@
     <test name="QC_836_MainAccessories">
         <classes>
             <class name="ATD.ACC.QC_836_MainAccessories.QC_988_FeatureBlock"/>
+            <class name="ATD.ACC.QC_836_MainAccessories.QC_991_DeliveryBlock"/>
+        </classes>
+    </test>
+
+    <test name="QC_1064_BlockTopProductsOnMainChemie">
+        <classes>
+            <class name="ATD.ACC.QC_1064_BlockTopProductsOnMainChemie.QC_1065_BlockTopProducts"/>
         </classes>
     </test>
 
