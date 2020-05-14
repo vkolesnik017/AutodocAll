@@ -1116,5 +1116,34 @@ public class Listing_page_Logic extends Listing_page {
         carInfoPopup().shouldNotBe(visible);
         return this;
     }
+
+    @Step("Comparing actual and expected characteristics info popup. Listing_page")
+    public void compareCharacteristicsPopup() {
+        titleInfoPopup().shouldHave(text("Info: TOYOTA PREVIA (MCR3_, ACR3_, CLR3_) 2.4 (ACR30)"));
+        for (int a = 0; a < expectedCharacteristicInfoPopup().size(); a++) {
+            characteristicsFromPopup().get(a).shouldHave(text(expectedCharacteristicInfoPopup().get(a)));
+        }
+    }
+
+    @Step("Expected characteristics info popup. Listing_page")
+    private List<String> expectedCharacteristicInfoPopup() {
+        List<String> expectedCharacteristics = new ArrayList<>();
+        expectedCharacteristics.add("Manuf. year (from - to):\n08.2000-01.2006");
+        expectedCharacteristics.add("Power [kW]:\n115");
+        expectedCharacteristics.add("Power [hp]:\n156");
+        expectedCharacteristics.add("Cylinder capacity (cc):\n2362");
+        expectedCharacteristics.add("Engine type:\nPetrol Engine");
+        expectedCharacteristics.add("Car body type:\nMPV");
+        expectedCharacteristics.add("Manufacturer's model designation:\nMCR3_, ACR3_, CLR3_");
+        expectedCharacteristics.add("Brake type:\nDisc Brake");
+        expectedCharacteristics.add("Brake system:\nHydraulic");
+        expectedCharacteristics.add("Drive:\nFront Wheel Drive");
+        expectedCharacteristics.add("ABS:\nwithout ABS");
+        expectedCharacteristics.add("Traction control system:\nwithout ARS");
+        expectedCharacteristics.add("Engine code:\n2AZ-FE");
+        expectedCharacteristics.add("Model year from:\n...");
+        expectedCharacteristics.add("Model year to:\n...");
+        return expectedCharacteristics;
+    }
 }
 

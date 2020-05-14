@@ -667,5 +667,8 @@ public class Listing_page {
 
     SelenideElement closeCarInfoPopupButton() { return $(".selected_car_info_popap .close"); }
 
+    SelenideElement titleInfoPopup() { return $x("//*[@class='selected_car_info_popap']/b"); }
+
+    ElementsCollection characteristicsFromPopup() { return $$x("//*[@class='selected_car_info_popap']//li"); }
 }
 
