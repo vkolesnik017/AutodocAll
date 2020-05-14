@@ -28,15 +28,15 @@
                     </argLine>
                     <suiteXmlFiles>
                         <suiteXmlFile>${basedir}${TEST_SUITE}.xml</suiteXmlFile>
-                        <!--<suiteXmlFile>${basedir}/src/test/java/testSuites/Specific/Basket/QC_1695_CheckAddressBlockingOnAddressPage.xml</suiteXmlFile>-->
+                        <!--<suiteXmlFile>${basedir}/src/test/java/testSuites/testSuite.xml</suiteXmlFile>-->
                         <!--<suiteXmlFile>${basedir}/src/test/java/testSuites/Specific/QC_1744_CheckingProductPageDomain.xml</suiteXmlFile>-->
                     </suiteXmlFiles>
-                    <!--<properties>-->
-                        <!--<property>-->
-                            <!--<name>${NAME}</name>-->
-                            <!--<value>${VALUE}</value>-->
-                        <!--</property>-->
-                    <!--</properties>-->
+                    <properties>
+                        <property>
+                            <name>${NAME}</name>
+                            <value>${VALUE}</value>
+                        </property>
+                    </properties>
                     <systemProperties>
                         <property>
                             <name>allure.results.directory</name>
