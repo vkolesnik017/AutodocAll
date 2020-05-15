@@ -49,4 +49,10 @@ class TyresListing_page {
     SelenideElement productHeightCharacteristic() { return $x("//*[contains(text(),'Höhe:')]/ancestor :: li[1]/span[2]"); }
 
     SelenideElement productDiameterCharacteristic() { return $x("//*[contains(text(),'Zoll:')]/ancestor :: li[1]/span[2]"); }
+
+    SelenideElement buyButtonInTopBlock() { return $x("(//*[@data-ga-action='Add_to_basket'])[5]"); }
+
+    ElementsCollection buyButtonsInTopBlock() { return $$(".top-products-lkw__slider-item.slick-active > div > .still_add_to_basket"); }
+
+    SelenideElement productPage() { return $(".product-page"); }
 }
