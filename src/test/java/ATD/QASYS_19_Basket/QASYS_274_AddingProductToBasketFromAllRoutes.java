@@ -34,8 +34,8 @@ public class QASYS_274_AddingProductToBasketFromAllRoutes {
             "category_group_brand,category_group_drive,category_group_fuel,category_group_year,category_maker,category_maker_body,category_maker_brand,category_maker_drive," +
             "category_model,category_model_brand,,category_name,category_name_parent,category_oen,group_list,group_list_body,group_list_drive,group_list_fuel,group_list_hp," +
             "group_list_year,index_accessories,index_instruments,listing_accessories,listing_instruments,maker_car_list,model_maker_list,model_maker_list_hp,model_maker_list_year," +
-            "product,search,tyre_form,tyre_item,tyres_brand,tyres_brand_dimension,tyres_brand_size,tyres_dimension,tyres_group_season_brand,tyres_season," +
-            "tyres_season_dimension,tyres_season_size,tyres_size");
+            "product,search,tyre_form,tyre_item,tyres_brand,tyres_brand_dimension,tyres_dimension,tyres_group_season_brand,tyres_season," +
+            "tyres_season_dimension,tyres_season_size");
   }
 
   @Test(dataProvider = "routesMain")
