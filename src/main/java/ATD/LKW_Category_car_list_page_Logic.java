@@ -4,7 +4,10 @@ import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
-import java.util.*;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
@@ -477,6 +480,37 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
     @Step("availability of image of brand in main headline  .LKW_Category_car_list_page")
     public LKW_Category_car_list_page_Logic availabilityOfImageOfBrand() {
         imageOfBrandAtMainHeadline().shouldBe(visible);
+        return this;
+    }
+
+
+    @Step("select brand in sidebar  .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic selectBrandFromFilterOfBrands() throws SQLException {
+        DataBase db = new DataBase();
+        brandsFilterBlock().shouldBe(visible);
+        while (!brandsLinkInSideBar("39").isDisplayed()) {
+            forwardLinkAtBrandsFilter().click();
+        }
+        brandsLinkInSideBar("39").click();
+        appearsOfLoader();
+        Assert.assertEquals(url(), db.getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list21"));
+        return this;
+    }
+
+    @Step("Check TecDoc listing with selecting brand  and installation side.LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic checkTecDocListingWithSelectingBrandAndInstallationSide() {
+        sidesOfInstallation().get(0).click();
+        appearsOfLoader();
+        checkOfPresenceInstallationSide();
+        checkOfPresenceSelectedBrand("TEXTAR");
+        return this;
+    }
+
+    @Step("Checking the presence of products with selecting brand in TecDoc listing .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic checkOfPresenceSelectedBrand(String selectingBrand) {
+               for (int i=0; i<titleOfProductInTecDocListingBlock().size(); i++) {
+                   titleOfProductInTecDocListingBlock().get(i).shouldHave(text(selectingBrand));
+               }
         return this;
     }
 }
