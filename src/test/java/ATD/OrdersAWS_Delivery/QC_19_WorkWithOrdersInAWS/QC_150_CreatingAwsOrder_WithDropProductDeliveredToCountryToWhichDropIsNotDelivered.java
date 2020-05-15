@@ -23,11 +23,11 @@ import static ATD.SetUp.setUpBrowser;
 import static AWS.SearchOrders_page_aws.searchOrderPageURL;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_137_CreatingAwsOrder_WithDropProduct {
+public class QC_150_CreatingAwsOrder_WithDropProductDeliveredToCountryToWhichDropIsNotDelivered {
+
 
     private String userID = "15089943", articleNum, productArticleID;
-    private Double productCost, totalProductCostInOrder, sellingProductCostInOrder;
-    private ArrayList userDataInCreateOrder, userData, userDataInOrder;
+    private ArrayList userDataInCreateOrder, userData;
 
     private Product_page_Logic product_page_logic = new Product_page_Logic();
     private OrderAdd_page_aws orderAdd_page_aws = new OrderAdd_page_aws();
@@ -40,58 +40,30 @@ public class QC_137_CreatingAwsOrder_WithDropProduct {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "productDrop1");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", " productDrop1");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks creating order in AWS with drop product")
+    @Description(value = "Test checks creating AWS order with drop product delivered to country to which drop is not delivered")
     public void testCreatingOrderInAwsWithDropProduct(String route) {
         openPage(route);
         articleNum = product_page_logic.getArticleNumber();
-        productCost = product_page_logic.getProductPrice();
         productArticleID = product_page_logic.getProductId();
         userData = new Customer_view_aws().openCustomerPersonalArea(userID)
                 .getUserData();
         openPage(searchOrderPageURL);
         userDataInCreateOrder = new SearchOrders_page_aws().clickAddOrderBtn()
                 .fillsInFieldCustomerID(userID)
-                .chooseSkinInSelector("autodoc.de (DE)")
+                .chooseSkinInSelector("auto-doc.it (IT)")
                 .getUserDataInOrder();
         Assert.assertEquals(userData, userDataInCreateOrder);
-        userDataInOrder = orderAdd_page_aws.selectedPaymentMethod("PayPal")
+        orderAdd_page_aws.selectedPaymentMethod("PayPal")
                 .selectedDeliveryMethod("Standardversand")
                 .addProduct(articleNum)
                 .chooseArticleIDOfDesiredProductAndClickBtnChooseProduct(productArticleID)
-                .checkArticleOfAddedProduct(articleNum)
-                .clickSaveOrderBtn()
-                .checkOrderHasTestStatus()
-                .getUserDataInOrder();
-        Assert.assertEquals(userData, userDataInOrder);
-        sellingProductCostInOrder = order_aws.checkVatStatusInOrder("Mit MwSt 19%")
-                .checkPaymentMethodInOrder("PayPal")
-                .checkThatStatusSafeOrderIsOff()
-                .checkDeliveryCost("0")
-                .checkContoNR("30047")
-                .getSellingProductPriceOrderAWS();
-        Assert.assertEquals(productCost , sellingProductCostInOrder);
-        /* TODO Раскоментить после исправления дефекта  BSK-698
-        totalProductCostInOrder = order_aws.getTotalPriceOrder();
-        Assert.assertEquals(sellingProductCostInOrder, totalProductCostInOrder);*/
-        order_aws.reSaveOrder()
-                .checkOrderHasTestStatus()
-                .getUserDataInOrder();
-        Assert.assertEquals(userData, userDataInOrder);
-        sellingProductCostInOrder = order_aws.checkVatStatusInOrder("Mit MwSt 19%")
-                .checkPaymentMethodInOrder("PayPal")
-                .checkThatStatusSafeOrderIsOff()
-                .checkDeliveryCost("0")
-                .checkContoNR("30047")
-                .getSellingProductPriceOrderAWS();
-        Assert.assertEquals(productCost , sellingProductCostInOrder);
-        totalProductCostInOrder = order_aws.getTotalPriceOrder();
-        Assert.assertEquals(sellingProductCostInOrder, totalProductCostInOrder);
+                .checkPresencePopupWithDeliveryError();
     }
 
     @AfterMethod
@@ -99,3 +71,4 @@ public class QC_137_CreatingAwsOrder_WithDropProduct {
         close();
     }
 }
+

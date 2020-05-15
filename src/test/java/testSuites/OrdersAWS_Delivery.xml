@@ -10,7 +10,8 @@
         <classes>
             <class name="ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_21_CreatingAwsOrder"/>
             <class name="ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_137_CreatingAwsOrder_WithDropProduct"/>
-            <class name="ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_146_CreatingAesOrder_WithDropProductDeliveredNotToCountryOfShop"/>
+            <class name="ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_146_CreatingAwsOrder_WithDropProductDeliveredNotToCountryOfShop"/>
+            <class name="ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_150_CreatingAwsOrder_WithDropProductDeliveredToCountryToWhichDropIsNotDelivered"/>
         </classes>
     </test>
 

@@ -23,11 +23,10 @@ import static ATD.SetUp.setUpBrowser;
 import static AWS.SearchOrders_page_aws.searchOrderPageURL;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_146_CreatingAesOrder_WithDropProductDeliveredNotToCountryOfShop {
+public class QC_146_CreatingAwsOrder_WithDropProductDeliveredNotToCountryOfShop {
 
     private String userID = "15089943", articleNum, productArticleID;
-    private Double productCost, totalProductCostInOrder, sellingProductCostInOrder;
-    private ArrayList userDataInCreateOrder, userData, userDataInOrder;
+    private ArrayList userDataInCreateOrder, userData;
 
     private Product_page_Logic product_page_logic = new Product_page_Logic();
     private OrderAdd_page_aws orderAdd_page_aws = new OrderAdd_page_aws();
@@ -40,7 +39,7 @@ public class QC_146_CreatingAesOrder_WithDropProductDeliveredNotToCountryOfShop 
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", " productDrop1");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "productDrop1");
     }
 
     @Test(dataProvider = "route")
