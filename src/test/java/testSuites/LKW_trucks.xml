@@ -186,6 +186,7 @@
             <class name="LKW_trucks.QC_105_FilterInteractionInTecDocListing.QC_106_InteractionOfBrandAndSideFilters"/>
             <class name="LKW_trucks.QC_105_FilterInteractionInTecDocListing.QC_112_InteractionOfBrandSideGenericFilters"/>
             <class name="LKW_trucks.QC_105_FilterInteractionInTecDocListing.QC_113_InteractionOfBrandsAndGenericFilters"/>
+            <class name="LKW_trucks.QC_105_FilterInteractionInTecDocListing.QC_114_InteractionOfInstallationSideAndGenericFilters"/>
         </classes>
     </test>
 </suite>
