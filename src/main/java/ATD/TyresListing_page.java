@@ -4,9 +4,7 @@ package ATD;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$x;
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.*;
 
 class TyresListing_page {
 
@@ -33,4 +31,28 @@ class TyresListing_page {
     SelenideElement firstActiveBrandInBlock() { return $x("//*[@class='js-filter-item ga-click-criteria-filter active slick-slide slick-current slick-active']/img"); }
 
     SelenideElement speedIndexOnListingValue() { return $x("(//*[@class='multiple-select__title'])[2]/span/b"); }
+
+    SelenideElement widthValueInSelector() { return $x("//*[@class='main-selector Width']//*[@selected]"); }
+
+    SelenideElement heightValueInSelector() { return $x("//*[@class='main-selector CrossSections']//*[@selected]"); }
+
+    SelenideElement diameterValueInSelector() { return $x("//*[@class='main-selector Size']//*[@selected]"); }
+
+    ElementsCollection productsInTopBlock() { return $$(".top-products-lkw__slider-item.slick-active > span > a"); }
+
+    SelenideElement nextButtonInTopBlock() { return $(".slick-next.slick-arrow"); }
+
+    SelenideElement previousButtonInTopBlock() { return $(".slick-prev.slick-arrow"); }
+
+    SelenideElement productWidthCharacteristic() { return $x("//*[contains(text(),'Breite:')]/ancestor :: li[1]/span[2]"); }
+
+    SelenideElement productHeightCharacteristic() { return $x("//*[contains(text(),'Höhe:')]/ancestor :: li[1]/span[2]"); }
+
+    SelenideElement productDiameterCharacteristic() { return $x("//*[contains(text(),'Zoll:')]/ancestor :: li[1]/span[2]"); }
+
+    SelenideElement buyButtonInTopBlock() { return $x("(//*[@data-ga-action='Add_to_basket'])[5]"); }
+
+    ElementsCollection buyButtonsInTopBlock() { return $$(".top-products-lkw__slider-item.slick-active > div > .still_add_to_basket"); }
+
+    SelenideElement productPage() { return $(".product-page"); }
 }
