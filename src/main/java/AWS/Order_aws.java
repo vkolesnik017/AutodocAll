@@ -566,7 +566,7 @@ public class Order_aws {
     public String getTotalCostIncludingDeliveryAndSafeOrder(Double sellingCost, Double deliveryCost , Double safeOrderCost) {
         Double totalCost = sellingCost + deliveryCost + safeOrderCost;
         String realTotalCost = Double.toString(totalCost);
-        Pattern pattern = Pattern.compile("\\d+\\.\\d{2}");
+        Pattern pattern = Pattern.compile("\\d+\\.\\d{1}");
         Matcher matcher = pattern.matcher(String.valueOf(realTotalCost));
         String result = null;
         if (matcher.find()) {
