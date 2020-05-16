@@ -16,7 +16,8 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_106_InteractionOfBrandAndSideFilters {
+public class QC_114_InteractionOfInstallationSideAndGenericFilters {
+
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -30,13 +31,15 @@ public class QC_106_InteractionOfBrandAndSideFilters {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks  interaction of brands and side filters")
-    public void testChecksInteractionOfBrandsAndSideFilters(String route) throws SQLException {
+    @Description(value = "Test checks interaction of installation side and generic filters")
+    public void testChecksInteractionInstallationSideAndGenericFilters(String route) throws SQLException {
         openPage(route);
 
         new LKW_Category_car_list_page_Logic()
-                .selectBrandFromFilterOfBrands("lkw_category_car_list21","39")
-                .checkTecDocListingWithSelectingBrandAndInstallationSide();
+                .selectGenericFilter("lkw_category_car_list22", "402")
+                .selectInstallationSide("lkw_category_car_list25")
+                .checkOfPresenceSelectingGeneric("Bremsbelagsatz, Scheibenbremse")
+                .checkOfPresenceInstallationSide();
     }
 
     @AfterMethod
