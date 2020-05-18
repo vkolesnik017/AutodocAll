@@ -20,7 +20,17 @@ public class Index_accessories_page_Logic extends Index_accessories_page {
         return this;
     }
 
+    @Step("Check presence of top brands block. Index_accessories_page" )
+    public Index_accessories_page_Logic checkingOfTopBrandsBlock(){
+        blockTopBrands().shouldBe(visible);
+        return this;
+    }
 
+    @Step("Checks the visibility of the top products block.Index_accessories_page")
+    public Index_accessories_page_Logic checkingOfTopProductBlock() {
+        blockTopProducts().shouldBe(visible);
+        return this;
+    }
 
 
 

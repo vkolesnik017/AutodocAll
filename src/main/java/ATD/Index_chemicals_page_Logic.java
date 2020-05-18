@@ -40,7 +40,7 @@ public class Index_chemicals_page_Logic extends Index_chemicals_page {
 
     @Step("Checks the number of products in top block.  Index_chemicals_page")
     public Index_chemicals_page_Logic checkingTheQuantityOfGoods (int expectedSize) {
-        productsInBlockTop().shouldHave(size(expectedSize));
+        productsInTopBlock().shouldHave(size(expectedSize));
         return this;
     }
 
