@@ -143,7 +143,7 @@ public class TyresListing_page_Logic extends TyresListing_page {
         return this;
     }
 
-    @Step("Get value from selector. TyresListing_page")
+    @Step("Get values from selector and check them in all products in top block. TyresListing_page")
     public TyresListing_page_Logic getValueFromSelectorAndCheckTopBlockProducts() {
         String width = widthValueInSelector().text();
         String height = heightValueInSelector().text();
@@ -165,7 +165,7 @@ public class TyresListing_page_Logic extends TyresListing_page {
         return this;
     }
 
-    @Step("Add to basket from top block. TyresListing_page")
+    @Step("Add to basket from top block for all products. TyresListing_page")
     public TyresListing_page_Logic addToBasketFromTopBlock() {
         for (int n = 0; n < 3; n++) {
             for (int i = 0; i < buyButtonsInTopBlock().size(); i++) {
@@ -182,7 +182,7 @@ public class TyresListing_page_Logic extends TyresListing_page {
         }return this;
     }
 
-    @Step("Go to product page from top block. TyresListing_page")
+    @Step("Go to product page from top block for all products. TyresListing_page")
     public TyresListing_page_Logic goToProductPageFromTopBlock() {
         for (int n = 0; n < 3; n++) {
             for (int i = 0; i < buyButtonsInTopBlock().size(); i++) {
