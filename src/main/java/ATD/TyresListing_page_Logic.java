@@ -3,12 +3,14 @@ package ATD;
 
 import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.Step;
+import org.testng.Assert;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.back;
-import static com.codeborne.selenide.Selenide.page;
-import static com.codeborne.selenide.Selenide.refresh;
+import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.clearBrowserCache;
 
 public class TyresListing_page_Logic extends TyresListing_page {
@@ -198,4 +200,35 @@ public class TyresListing_page_Logic extends TyresListing_page {
         }return this;
     }
 
+    @Step("Check Product Page Of All Products In Top Block. TyresListing_page")
+    public TyresListing_page_Logic checkProductPageOfAllProductsInTopBlock() {
+        List<String> urlListTopBlock = new ArrayList<>();
+        for (int i = 0; i < linksInTopBlock().size(); i++) {
+            urlListTopBlock.add(linksInTopBlock().get(i).attr("url"));
+        }
+        for (int i = 0; i < urlListTopBlock.size(); i++) {
+            open(urlListTopBlock.get(i));
+            productPage().waitUntil(visible, 30000);
+        }
+        return this;
+    }
+
+    @Step("Check All Products In Top Block And Brand Filter Interaction. TyresListing_page")
+    public TyresListing_page_Logic checkProductsInTopBlockAndBrandFilter() {
+        List<String> urlListTopBlock = new ArrayList<>();
+        for (int i = 0; i < linksInTopBlock().size(); i++) {
+            urlListTopBlock.add(linksInTopBlock().get(i).attr("url"));
+        }
+        String brandName = brandFilterButton().attr("data-value");
+        brandFilterButton().click();
+        new Listing_page_Logic().waitUntilPreloaderDisappear();
+        new Listing_page_Logic().checkProductAttributeOnListing(brandName, productTitleOnListing());
+        List<String> urlListTopBlockAfterBrandFilterApplying = new ArrayList<>();
+        for (int i = 0; i < linksInTopBlock().size(); i++) {
+            urlListTopBlockAfterBrandFilterApplying.add(linksInTopBlock().get(i).attr("url"));
+        }
+        Assert.assertEquals(urlListTopBlock, urlListTopBlockAfterBrandFilterApplying);
+
+        return this;
+    }
 }
