@@ -122,6 +122,10 @@ public class OrderAdd_page_aws {
         return $(".prices-select");
     }
 
+    private SelenideElement btnChooseProduct() {
+        return $(".btn-change-product");
+    }
+
     private SelenideElement articleOfAddedProduct() {
         return $x("//tr[@class='targerProduct ']//td[2]");
     }
@@ -136,6 +140,14 @@ public class OrderAdd_page_aws {
 
     private SelenideElement saveOrderBtn() {
         return $(".submit-order");
+    }
+
+    private SelenideElement productArticleID(String artID) {
+        return $x("//input[@name='append_article_id'][@value='" + artID + "']");
+    }
+
+    private SelenideElement popUpWithDeliveryError() {
+        return $x("//div[@class='sticky-note']");
     }
 
     @Step("Click save order button. OrderAdd_page_aws")
@@ -169,6 +181,13 @@ public class OrderAdd_page_aws {
     public OrderAdd_page_aws checkPresenceTableOfSuppliersAndClickBtnSelect() {
         tableOfSuppliers().shouldBe(visible);
         btnSelect().click();
+        return this;
+    }
+
+    @Step("Chooses the article id of the desired product {artID} and click button choose product. OrderAdd_page_aws")
+    public OrderAdd_page_aws chooseArticleIDOfDesiredProductAndClickBtnChooseProduct(String artID) {
+        productArticleID(artID).click();
+        btnChooseProduct().click();
         return this;
     }
 
@@ -251,6 +270,12 @@ public class OrderAdd_page_aws {
             selectorForSkin().click();
         }
         listSkins(skin).click();
+        return this;
+    }
+
+    @Step("Checks presence popup with delivery error. OrderAdd_page_aws")
+    public OrderAdd_page_aws checkPresencePopupWithDeliveryError() {
+        popUpWithDeliveryError().shouldBe(visible);
         return this;
     }
 }

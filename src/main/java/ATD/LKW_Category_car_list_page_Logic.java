@@ -4,7 +4,10 @@ import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
-import java.util.*;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
@@ -477,6 +480,70 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
     @Step("availability of image of brand in main headline  .LKW_Category_car_list_page")
     public LKW_Category_car_list_page_Logic availabilityOfImageOfBrand() {
         imageOfBrandAtMainHeadline().shouldBe(visible);
+        return this;
+    }
+
+
+    @Step("select brand in sidebar  .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic selectBrandFromFilterOfBrands(String subRoute, String idOfBrand) throws SQLException {
+        DataBase db = new DataBase();
+        brandsFilterBlock().shouldBe(visible);
+        while (!brandsLinkInSideBar(idOfBrand).isDisplayed()) {
+            forwardLinkAtBrandsFilter().click();
+        }
+        brandsLinkInSideBar(idOfBrand).click();
+        appearsOfLoader();
+        Assert.assertEquals(url(), db.getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", subRoute));
+        return this;
+    }
+
+    @Step("Check TecDoc listing with selecting brand  and installation side.LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic checkTecDocListingWithSelectingBrandAndInstallationSide() {
+        sidesOfInstallation().get(0).click();
+        appearsOfLoader();
+        checkOfPresenceInstallationSide();
+        checkOfPresenceSelectedBrand("TEXTAR");
+        return this;
+    }
+
+    @Step("Checking the presence of products with selecting brand in TecDoc listing .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic checkOfPresenceSelectedBrand(String selectingBrand) {
+        for (int i = 0; i < titleOfProductInTecDocListingBlock().size(); i++) {
+            titleOfProductInTecDocListingBlock().get(i).shouldHave(text(selectingBrand));
+        }
+        return this;
+    }
+
+
+    @Step("select generic filter  .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic selectGenericFilter(String subRoute, String idOfGeneric) throws SQLException {
+        DataBase db = new DataBase();
+        genericsBlock().shouldBe(visible);
+        for (int i = 0; i < typeOfGenerics().size(); i++) {
+            if (typeOfGenerics().get(i).has(attribute("for", "category_" + idOfGeneric + "")))
+                typeOfGenerics().get(i).click();
+        }
+        appearsOfLoader();
+        Assert.assertEquals(url(), db.getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", subRoute));
+        return this;
+    }
+
+    @Step("Checking the presence of products with selecting generic in TecDoc listing .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic checkOfPresenceSelectingGeneric(String selectingGeneric) {
+        for (int i = 0; i < titleOfProductInTecDocListingBlock().size(); i++) {
+            titleOfProductInTecDocListingBlock().get(i).shouldHave(text(selectingGeneric));
+        }
+        return this;
+    }
+
+
+    @Step("selecting of installation side  .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic selectInstallationSide(String subRoute) throws SQLException {
+        DataBase db = new DataBase();
+        installationSideBlock().shouldBe(visible);
+        sidesOfInstallation().get(0).click();
+        appearsOfLoader();
+        Assert.assertEquals(url(), db.getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", subRoute));
         return this;
     }
 }

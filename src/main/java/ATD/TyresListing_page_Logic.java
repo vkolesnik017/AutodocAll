@@ -6,7 +6,10 @@ import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selenide.back;
 import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.refresh;
+import static com.codeborne.selenide.WebDriverRunner.clearBrowserCache;
 
 public class TyresListing_page_Logic extends TyresListing_page {
 
@@ -139,4 +142,60 @@ public class TyresListing_page_Logic extends TyresListing_page {
         speedIndexOnListingValue().shouldHave(text("H:"));
         return this;
     }
+
+    @Step("Get values from selector and check them in all products in top block. TyresListing_page")
+    public TyresListing_page_Logic getValueFromSelectorAndCheckTopBlockProducts() {
+        String width = widthValueInSelector().text();
+        String height = heightValueInSelector().text();
+        String diameter = diameterValueInSelector().text();
+        for (int n = 0; n < 3; n++) {
+            for (int i = 0; i < productsInTopBlock().size(); i++) {
+                if (n == 1) {
+                    nextButtonInTopBlock().click();
+                } else if (n==2) {
+                    previousButtonInTopBlock().click();
+                }
+                productsInTopBlock().get(i).click();
+                productWidthCharacteristic().shouldHave(text(width));
+                productHeightCharacteristic().shouldHave(text(height));
+                productDiameterCharacteristic().shouldHave(text(diameter));
+                back();
+            }
+        }
+        return this;
+    }
+
+    @Step("Add to basket from top block for all products. TyresListing_page")
+    public TyresListing_page_Logic addToBasketFromTopBlock() {
+        for (int n = 0; n < 3; n++) {
+            for (int i = 0; i < buyButtonsInTopBlock().size(); i++) {
+                if (n == 1) {
+                    nextButtonInTopBlock().click();
+                } else if (n == 2) {
+                    previousButtonInTopBlock().click();
+                }
+                buyButtonsInTopBlock().get(i).click();
+                new Product_page_Logic().checksPresentProductInCartPopup();
+                clearBrowserCache();
+                refresh();
+            }
+        }return this;
+    }
+
+    @Step("Go to product page from top block for all products. TyresListing_page")
+    public TyresListing_page_Logic goToProductPageFromTopBlock() {
+        for (int n = 0; n < 3; n++) {
+            for (int i = 0; i < buyButtonsInTopBlock().size(); i++) {
+                if (n == 1) {
+                    nextButtonInTopBlock().click();
+                } else if (n == 2) {
+                    previousButtonInTopBlock().click();
+                }
+                productsInTopBlock().get(i).click();
+                productPage().shouldBe(visible);
+                back();
+            }
+        }return this;
+    }
+
 }
