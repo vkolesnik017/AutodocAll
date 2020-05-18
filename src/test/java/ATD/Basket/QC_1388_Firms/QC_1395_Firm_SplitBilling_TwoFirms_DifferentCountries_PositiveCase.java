@@ -87,7 +87,7 @@ public class QC_1395_Firm_SplitBilling_TwoFirms_DifferentCountries_PositiveCase 
                 .checkFirmConfirmationStatus("ДА/auto")
                 .getTotalPriceOrder();
         Assert.assertEquals(totalPriceGB, totalPriceAWSOrderGB);
-        sellingPriceAWSOrderGB = order_aws.getSellingPriceOrderAWS();
+        sellingPriceAWSOrderGB = order_aws.getSellingProductPriceOrderAWS();
         switchTo().window(0);
         regularProductPricePerAllDataPageGB = cartAllData_page_logic.getRegularProductPriceFormAllDataPage();
         Assert.assertEquals(sellingPriceAWSOrderGB, regularProductPricePerAllDataPageGB);
@@ -163,7 +163,7 @@ public class QC_1395_Firm_SplitBilling_TwoFirms_DifferentCountries_PositiveCase 
                 .checkFirmConfirmationStatus("ДА/auto")
                 .getTotalPriceOrder();
         Assert.assertEquals(totalPriceDE, totalPriceAWSOrderDE);
-        sellingPriceAWSOrderDE = order_aws.getSellingPriceOrderAWS();
+        sellingPriceAWSOrderDE = order_aws.getSellingProductPriceOrderAWS();
         switchTo().window(0);
         regularProductPricePerAllDataPageDE = cartAllData_page_logic.getRegularProductPriceFormAllDataPage();
         Assert.assertEquals(sellingPriceAWSOrderDE, regularProductPricePerAllDataPageDE);

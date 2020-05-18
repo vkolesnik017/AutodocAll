@@ -134,6 +134,10 @@ public class Order_aws {
         return $x("//body//div[@id='contentwrapper']//div//div//div//div[1]//div[2]//div[14]//div[1]");
     }
 
+    private SelenideElement deliveryCost() {
+        return $(".inf_deliveryCost");
+    }
+
     // Adding product to order menu
     private SelenideElement addingBtn() {
         return $(By.xpath("//div[@class='dt_gal_actions']/a[@class='btn btn-success']"));
@@ -469,7 +473,7 @@ public class Order_aws {
     }
 
     @Step("Get selling price in Order AWS. Order_aws")
-    public Double getSellingPriceOrderAWS() {
+    public Double getSellingProductPriceOrderAWS() {
         String price = sellingPrice().getText();
         Double sellingPriceOrder = Double.parseDouble(price);
         return sellingPriceOrder;
@@ -562,7 +566,7 @@ public class Order_aws {
     public String getTotalCostIncludingDeliveryAndSafeOrder(Double sellingCost, Double deliveryCost , Double safeOrderCost) {
         Double totalCost = sellingCost + deliveryCost + safeOrderCost;
         String realTotalCost = Double.toString(totalCost);
-        Pattern pattern = Pattern.compile("\\d+\\.\\d{2}");
+        Pattern pattern = Pattern.compile("\\d+\\.\\d{1}");
         Matcher matcher = pattern.matcher(String.valueOf(realTotalCost));
         String result = null;
         if (matcher.find()) {
@@ -574,6 +578,12 @@ public class Order_aws {
     @Step("Checks conto NR number {contoNR}. Order_aws")
     public Order_aws checkContoNR(String contoNR) {
         contoNR().shouldHave(text(contoNR));
+        return this;
+    }
+
+    @Step("Checks delivery cost {deliveryCost}. Order_aws")
+    public  Order_aws checkDeliveryCost(String deliveryCost) {
+        deliveryCost().shouldHave(text(deliveryCost));
         return this;
     }
 }

@@ -85,7 +85,7 @@ public class QC_1485_FirmValidationAfterError {
                 .checkFirmConfirmationStatus("ДА/auto")
                 .getTotalPriceOrder();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
-        sellingPriceAWSOrder = order_aws.getSellingPriceOrderAWS();
+        sellingPriceAWSOrder = order_aws.getSellingProductPriceOrderAWS();
         switchTo().window(0);
         regularProductPricePerAllDataPage = cartAllData_page_logic.getRegularProductPriceFormAllDataPage();
         Assert.assertEquals(sellingPriceAWSOrder, regularProductPricePerAllDataPage);
