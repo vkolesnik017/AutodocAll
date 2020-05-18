@@ -167,6 +167,10 @@ public class Order_aws {
         return $x("//a[@class='payment-in-order']//abbr");
     }
 
+    ElementsCollection sellingPriceOfAddedGoods() {
+        return $$x("//a[@class='payment-in-order']//abbr");
+    }
+
     private Order_aws checkWhatOrderOpened() {
         // Иногда, если заказ в AWS открыть сразу быстро после создания, он может не успеть подгрузися в AWS
         if ($("body").text().equals("Not found")) {
@@ -552,27 +556,25 @@ public class Order_aws {
     @Step("Get total cost delivery amount {deliveryCost} and safe order {safeOrderCost}. Order_aws")
     public String getTotaCostlDeliveryAmountAndSafeOrder(Double deliveryCost, Double safeOrderCost) {
         Double totalDeliveryAmountAndSafeOrder = deliveryCost + safeOrderCost;
-        String realTotalDeliveryAmountAndSafeOrder = Double.toString(totalDeliveryAmountAndSafeOrder);
         Pattern pattern = Pattern.compile("\\d+\\.\\d{2}");
-        Matcher matcher = pattern.matcher(String.valueOf(realTotalDeliveryAmountAndSafeOrder));
+        Matcher matcher = pattern.matcher(String.valueOf(totalDeliveryAmountAndSafeOrder));
         String result = null;
         if (matcher.find()) {
             result = matcher.group(0);
         }
-        return result;
+        return String.valueOf((result));
     }
 
     @Step("Get the total cost {sellingCost} including delivery {deliveryCost} and safe order {safeOrderCost}. Order_aws")
     public String getTotalCostIncludingDeliveryAndSafeOrder(Double sellingCost, Double deliveryCost , Double safeOrderCost) {
         Double totalCost = sellingCost + deliveryCost + safeOrderCost;
-        String realTotalCost = Double.toString(totalCost);
-        Pattern pattern = Pattern.compile("\\d+\\.\\d{1}");
-        Matcher matcher = pattern.matcher(String.valueOf(realTotalCost));
+        Pattern pattern = Pattern.compile("\\d+\\.\\d{2}");
+        Matcher matcher = pattern.matcher(String.valueOf(totalCost));
         String result = null;
         if (matcher.find()) {
             result = matcher.group(0);
         }
-        return result;
+        return String.valueOf((result));
     }
 
     @Step("Checks conto NR number {contoNR}. Order_aws")
@@ -582,8 +584,31 @@ public class Order_aws {
     }
 
     @Step("Checks delivery cost {deliveryCost}. Order_aws")
-    public  Order_aws checkDeliveryCost(String deliveryCost) {
+    public Order_aws checkDeliveryCost(String deliveryCost) {
         deliveryCost().shouldHave(text(deliveryCost));
         return this;
+    }
+
+    @Step("Compares the prices of added products with the prices on the site {priceWithSite}. Order_aws")
+    public Order_aws comparePriceOfAddedProductWithPricesOnSites(ArrayList priceWithSite) {
+        ArrayList <Double> list = new ArrayList<>();
+        for (int i = 0; i < sellingPriceOfAddedGoods().size(); i++) {
+            list.add(Double.parseDouble(sellingPriceOfAddedGoods().get(i).getText()));
+        }
+        Assert.assertEquals(list, priceWithSite);
+        return this;
+    }
+
+
+    @Step("Get the total cost of all goods including delivery{deliveryCost} and safe order{safeOrderCost}. Order_aws")
+    public Double getTotalCostOfAllGoodsAndDeliveryAndSafeOrder(Double deliveryCost, Double safeOrderCost) {
+        String costDeliveryAndSafeOrder = getTotaCostlDeliveryAmountAndSafeOrder(deliveryCost, safeOrderCost);
+        Double realCostDeliveryAndSafeOrder = Double.parseDouble(costDeliveryAndSafeOrder);
+        Double sumOfAllGoods = 0.0;
+        for (int i = 0; i < sellingPriceOfAddedGoods().size(); i++) {
+            Double priceOfOneItem =  Double.parseDouble(sellingPriceOfAddedGoods().get(i).getText());
+            sumOfAllGoods = sumOfAllGoods + priceOfOneItem;
+        }
+        return (sumOfAllGoods + realCostDeliveryAndSafeOrder);
     }
 }

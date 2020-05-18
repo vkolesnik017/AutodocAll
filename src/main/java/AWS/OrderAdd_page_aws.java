@@ -1,7 +1,9 @@
 package AWS;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import org.testng.Assert;
 
 import java.util.ArrayList;
 
@@ -126,8 +128,8 @@ public class OrderAdd_page_aws {
         return $(".btn-change-product");
     }
 
-    private SelenideElement articleOfAddedProduct() {
-        return $x("//tr[@class='targerProduct ']//td[2]");
+    private ElementsCollection articleOfAddedProduct() {
+        return $$x("//tr[@class='targerProduct ']//td[2]");
     }
 
     private SelenideElement deliveryCost() {
@@ -148,6 +150,10 @@ public class OrderAdd_page_aws {
 
     private SelenideElement popUpWithDeliveryError() {
         return $x("//div[@class='sticky-note']");
+    }
+
+    private SelenideElement tableWithAddedProducts() {
+        return $x("(//div[@class='w-box'])[5]");
     }
 
     @Step("Click save order button. OrderAdd_page_aws")
@@ -193,7 +199,13 @@ public class OrderAdd_page_aws {
 
     @Step("Checks article number of added product {articleNum}. OrderAdd_page_aws")
     public OrderAdd_page_aws checkArticleOfAddedProduct(String articleNum) {
-        articleOfAddedProduct().shouldHave(text(articleNum));
+        tableWithAddedProducts().shouldBe(visible);
+        sleep(2000);
+        ArrayList <String> list = new ArrayList<>();
+        for (int i = 0; i < articleOfAddedProduct().size(); i++) {
+            list.add(articleOfAddedProduct().get(i).getText());
+        }
+        Assert.assertTrue(list.contains(articleNum));
         return this;
     }
 
