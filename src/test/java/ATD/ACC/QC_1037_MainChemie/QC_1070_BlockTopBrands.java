@@ -32,9 +32,9 @@ public class QC_1070_BlockTopBrands {
     @Flaky
     @Owner(value = "Sergey-QA")
     @Description(value = "Test check presence of top brands block")
-    public void testCheckingOfTopBrandsBlock(String route) {
+    public void testCheckingPresenceOfTopBrandsBlock(String route) {
         openPage(route);
-        new Index_chemicals_page_Logic().checkingOfTopBrandsBlock();
+        new Index_chemicals_page_Logic().checkingPresenceOfTopBrandsBlock();
     }
 
     @AfterMethod

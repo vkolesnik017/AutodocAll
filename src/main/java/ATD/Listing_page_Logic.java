@@ -139,7 +139,7 @@ public class Listing_page_Logic extends Listing_page {
     }
 
     @Step("Method checks product attribute on listing. Listing_page")
-    private void checkProductAttributeOnListing(String attributeSelectedInSideFilter, ElementsCollection productAttributeOnListing) {
+    public void checkProductAttributeOnListing(String attributeSelectedInSideFilter, ElementsCollection productAttributeOnListing) {
         productAttributeOnListing.shouldHave(sizeGreaterThan(0));
         for (int i = 0; i < productAttributeOnListing.size(); i++) {
             productAttributeOnListing.get(i).shouldHave(text(attributeSelectedInSideFilter));

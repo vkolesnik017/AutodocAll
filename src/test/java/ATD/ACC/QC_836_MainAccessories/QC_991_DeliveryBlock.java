@@ -32,10 +32,10 @@ public class QC_991_DeliveryBlock {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test checks the visibility of the delivery service block")
-    public void testCheckingVisibilityOfDeliveryBlock(String route) {
+    @Description(value = "Test checks the Presence of the delivery service block")
+    public void testCheckingPresenceOfDeliveryBlock(String route) {
         openPage(route);
-        new Index_accessories_page_Logic().checkingVisibilityOfDeliveryBlock();
+        new Index_accessories_page_Logic().checkingPresenceOfDeliveryBlock();
     }
 
     @AfterMethod

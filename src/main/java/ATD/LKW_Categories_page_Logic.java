@@ -79,7 +79,7 @@ public class LKW_Categories_page_Logic extends LKW_Categories_page {
 
     @Step("transition to product page by click on top image of product .LKW_Categories_page")
     public LKW_Categories_page_Logic transitionToProductPageByClickOnTopImage() {
-        clickOnImageOfTopProduct().checkSuccessfullyLKWProductPageLoading("https://www.autodoc.de/brembo/");
+        clickOnImageOfTopProduct().checkSuccessfullyLKWProductPageLoading("https://lkwteile.autodoc.de/febi-bilstein/");
         back();
         return this;
     }
@@ -95,7 +95,7 @@ public class LKW_Categories_page_Logic extends LKW_Categories_page {
         if (closeCookiesPopUp().isDisplayed()) {
             closeCookiesPopUp().click();
         }
-        clickOnTitleOfTopProduct().checkSuccessfullyLKWProductPageLoading("https://www.autodoc.de/brembo/");
+        clickOnTitleOfTopProduct().checkSuccessfullyLKWProductPageLoading("https://lkwteile.autodoc.de/febi-bilstein/");
         back();
         return this;
     }
@@ -111,7 +111,7 @@ public class LKW_Categories_page_Logic extends LKW_Categories_page {
         if (closeCookiesPopUp().isDisplayed()) {
             closeCookiesPopUp().click();
         }
-        clickOnLinkDetails().checkSuccessfullyLKWProductPageLoading("https://www.autodoc.de/brembo/");
+        clickOnLinkDetails().checkSuccessfullyLKWProductPageLoading("https://lkwteile.autodoc.de/febi-bilstein/");
         back();
         return this;
     }
