@@ -163,16 +163,16 @@ public class OrderAdd_page_aws {
     }
 
     @Step("Get delivery cost. OrderAdd_page_aws")
-    public Double getDeliveryCost() {
+    public Float getDeliveryCost() {
         String deliveryCost = deliveryCost().getAttribute("data-default");
-        Double realDeliveryCost = Double.parseDouble(deliveryCost);
+        Float realDeliveryCost = Float.parseFloat(deliveryCost);
         return realDeliveryCost;
     }
 
     @Step("Get safe order cost. OrderAdd_page_aws")
-    public Double getSafeOrderCost() {
+    public Float getSafeOrderCost() {
         String safeOrderCost = safeOrderCost().getValue();
-        Double realSafeOrderCost = Double.parseDouble(safeOrderCost);
+        Float realSafeOrderCost = Float.parseFloat(safeOrderCost);
         return realSafeOrderCost;
     }
 

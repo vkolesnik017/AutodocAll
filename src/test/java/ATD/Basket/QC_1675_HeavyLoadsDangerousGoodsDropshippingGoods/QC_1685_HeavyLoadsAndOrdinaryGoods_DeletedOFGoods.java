@@ -17,12 +17,11 @@ import static ATD.CommonMethods.*;
 import static ATD.CommonMethods.password;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
-import static com.codeborne.selenide.Selenide.open;
 
 public class QC_1685_HeavyLoadsAndOrdinaryGoods_DeletedOFGoods {
 
     private String email = "qc_1685_autotestDE@mailinator.com", orderNumber;
-    private Double totalPrice, totalPriceAWSOrder;
+    private Float totalPrice, totalPriceAWSOrder;
     private Product_page_Logic product_page_logic = new Product_page_Logic();
 
     @BeforeClass
@@ -65,7 +64,7 @@ public class QC_1685_HeavyLoadsAndOrdinaryGoods_DeletedOFGoods {
                 .checkDeliveryPriceOrderAWS("6.95")
                 .checkHeavyLoadsDeliveryPriceOrderAWS("10")
                 .checkThatStatusSafeOrderIsOff()
-                .getTotalPriceOrder();
+                .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
         order_aws.reSaveOrder()
                 .checkThatStatusSafeOrderIsOff()
