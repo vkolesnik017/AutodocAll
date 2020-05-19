@@ -38,7 +38,9 @@
     <test name="QC_1475_TopBlockOnTyresListings">
         <classes>
             <!--<class name="ATD.Tyres.QC_1475_TopBlockOnTyresListings.QC_1477_AddToBasketFromTyresTopBlock"/>-->
+            <class name="ATD.Tyres.QC_1475_TopBlockOnTyresListings.QC_1478_ProductsInTopBlockNotAdjustToBrandFilter"/>
             <class name="ATD.Tyres.QC_1475_TopBlockOnTyresListings.QC_1500_GoToTyresProductPageFromTopBlock"/>
+            <class name="ATD.Tyres.QC_1475_TopBlockOnTyresListings.QC_1522_ProductsInTopBlockNotAdjustToRatingFilter"/>
             <class name="ATD.Tyres.QC_1475_TopBlockOnTyresListings.QC_1523_ProductsInTopBlockFitSelector"/>
         </classes>
     </test>
