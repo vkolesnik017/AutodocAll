@@ -30,10 +30,10 @@ public class QC_988_FeatureBlock {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test Checks the visibility of a block with site features")
-    public void testCheckVisibilityOfFeaturesBlock(String route) {
+    @Description(value = "Test Checks the Presence of a block with site features")
+    public void testCheckPresenceOfFeaturesBlock(String route) {
         openPage(route);
-        new Index_accessories_page_Logic().checkVisibilityOfFeaturesBlock();
+        new Index_accessories_page_Logic().checkingPresenceOfFeaturesBlock();
     }
 
 

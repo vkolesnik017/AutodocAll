@@ -33,10 +33,10 @@ public class QC_953_BlockTopProducts {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test Checks the visibility of the top products block")
-    public void testCheckVisibilityBlockTopProducts(String route) {
+    @Description(value = "Test Checks the Presence of the top products block")
+    public void testCheckPresenceBlockTopProducts(String route) {
         openPage(route);
-        new Index_accessories_page_Logic().checkingOfTopProductBlock();
+        new Index_accessories_page_Logic().checkingPresenceOfTopProductBlock();
     }
 
     @AfterMethod
