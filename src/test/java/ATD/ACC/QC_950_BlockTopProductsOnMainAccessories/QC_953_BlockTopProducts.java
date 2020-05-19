@@ -1,4 +1,4 @@
-package ATD.ACC.QC_836_MainAccessories;
+package ATD.ACC.QC_950_BlockTopProductsOnMainAccessories;
 
 import ATD.Index_accessories_page_Logic;
 import ATD.SetUp;
@@ -9,13 +9,16 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
 import java.sql.SQLException;
+
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
 
-public class QC_988_FeatureBlock {
+public class QC_953_BlockTopProducts {
+
 
     @BeforeClass
     void setUp() {
@@ -30,17 +33,17 @@ public class QC_988_FeatureBlock {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test Checks the Presence of a block with site features")
-    public void testCheckPresenceOfFeaturesBlock(String route) {
+    @Description(value = "Test Checks the Presence of the top products block")
+    public void testCheckPresenceBlockTopProducts(String route) {
         openPage(route);
-        new Index_accessories_page_Logic().checkingPresenceOfFeaturesBlock();
+        new Index_accessories_page_Logic().checkingPresenceOfTopProductBlock();
     }
-
 
     @AfterMethod
     private void tearDown() {
         close();
     }
+
 
 
 

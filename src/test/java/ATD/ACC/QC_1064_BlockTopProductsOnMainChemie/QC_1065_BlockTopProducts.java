@@ -33,10 +33,10 @@ public class QC_1065_BlockTopProducts {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test Checks the visibility of the top products block and quantity of goods in a block ")
-    public void testCheckVisibilityBlockAndQuantityProducts(String route) {
+    @Description(value = "Test Checks the presence of the top products block and quantity of goods in a block ")
+    public void testCheckPresenceBlockAndQuantityProducts(String route) {
         openPage(route);
-        new Index_chemicals_page_Logic().checkingOfTopProductBlock()
+        new Index_chemicals_page_Logic().checkingPresenceOfTopProductBlock()
                 .checkingTheQuantityOfGoods(6);
     }
 
