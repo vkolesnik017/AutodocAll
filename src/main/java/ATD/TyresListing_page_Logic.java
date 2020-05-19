@@ -222,13 +222,39 @@ public class TyresListing_page_Logic extends TyresListing_page {
         String brandName = brandFilterButton().attr("data-value");
         brandFilterButton().click();
         new Listing_page_Logic().waitUntilPreloaderDisappear()
-                                .checkProductAttributeOnListing(brandName, productTitleOnListing());
+                                .checkProductAttributeOnListingWithProductsNumber(brandName, productTitleOnListing(), 1);
         List<String> urlListTopBlockAfterBrandFilterApplying = new ArrayList<>();
         for (int i = 0; i < linksInTopBlock().size(); i++) {
             urlListTopBlockAfterBrandFilterApplying.add(linksInTopBlock().get(i).attr("url"));
         }
         Assert.assertEquals(urlListTopBlock, urlListTopBlockAfterBrandFilterApplying);
 
+        return this;
+    }
+
+    @Step("Check All Products In Top Block And Rating Filter Interaction. TyresListing_page")
+    public TyresListing_page_Logic checkProductsInTopBlockAndRatingFilter() {
+        List<String> urlListTopBlock = new ArrayList<>();
+        for (int i = 0; i < linksInTopBlock().size(); i++) {
+            urlListTopBlock.add(linksInTopBlock().get(i).attr("url"));
+        }
+        new Listing_page_Logic().clickThreeRatingStarsInFilter()
+                                .waitUntilPreloaderDisappear();
+        checkThreeStarsRatingInEveryProductOnListingTyres();
+        List<String> urlListTopBlockAfterBrandFilterApplying = new ArrayList<>();
+        for (int i = 0; i < linksInTopBlock().size(); i++) {
+            urlListTopBlockAfterBrandFilterApplying.add(linksInTopBlock().get(i).attr("url"));
+        }
+        Assert.assertEquals(urlListTopBlock, urlListTopBlockAfterBrandFilterApplying);
+
+        return this;
+    }
+
+    @Step("Method checks that every product on tyres listing has three stars rating. TyresListing_page")
+    public TyresListing_page_Logic checkThreeStarsRatingInEveryProductOnListingTyres() {
+        for (int i = 1; i < productsRatingOnListing().size(); i++) {
+            productsRatingOnListing().get(i).shouldHave(attribute("style", "width: 61.2%;"));
+        }
         return this;
     }
 }

@@ -60,7 +60,9 @@ class TyresListing_page {
 
     ElementsCollection linksInTopBlock() { return $$(".top-products-link-wrap"); }
 
-    SelenideElement brandFilterButton() { return $(".js-filter-item.slick-current"); }
+    SelenideElement brandFilterButton() { return $x("//*[@class='js-filter-item ga-click-criteria-filter slick-slide slick-active']"); }
 
     ElementsCollection productTitleOnListing() { return $$(".name > a");}
+
+    ElementsCollection productsRatingOnListing() { return $$x("//div[@class='review-vote']/span/span"); }
 }
