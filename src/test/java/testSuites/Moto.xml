@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="LKW_trucks" parallel="methods" thread-count="3" data-provider-thread-count="2">
+
+    <listeners>
+        <listener class-name="ATD.ProjectListener"/>
+    </listeners>
+
+    <test name="QC_301_MotoSelector">
+        <classes>
+            <class name="MOTO.QC_301_MotoSelector.QC_302_AvailabilityOfMotoSelector"/>
+            <class name="MOTO.QC_301_MotoSelector.QC_304_OpeningAreClosedSelector"/>
+        </classes>
+    </test>
+
+    <test name="QC_875_LinkingBannerBlockToTopOnMainPage">
+        <classes>
+            <class name="MOTO.QC_875_LinkingBannerBlockToTopOnMainPage.QC_877_AvailabilityOfLinkingBannerBlock"/>
+            <class name="MOTO.QC_875_LinkingBannerBlockToTopOnMainPage.QC_878_TransitionByClickOnLinkingBanner"/>
+        </classes>
+    </test>
+
+    <test name="QC_880_BlockOfDeliveryAndPaymentMethods">
+        <classes>
+            <class name="MOTO.QC_880_BlockOfDeliveryAndPaymentMethods.QC_887_AvailabilityOfDeliveryAndPaymentsMethodsBlocks"/>
+        </classes>
+    </test>
+
+    <test name="QC_889_SearchOnMotoSubdomain">
+        <classes>
+            <class name="MOTO.QC_889_SearchOnMotoSubdomain.QC_890_AvailabilityOfSearchingField"/>
+            <class name="MOTO.QC_889_SearchOnMotoSubdomain.QC_891_SearchByAnyCriteria"/>
+        </classes>
+    </test>
+
+</suite>
