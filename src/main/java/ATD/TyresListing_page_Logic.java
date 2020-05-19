@@ -221,8 +221,8 @@ public class TyresListing_page_Logic extends TyresListing_page {
         }
         String brandName = brandFilterButton().attr("data-value");
         brandFilterButton().click();
-        new Listing_page_Logic().waitUntilPreloaderDisappear();
-        new Listing_page_Logic().checkProductAttributeOnListing(brandName, productTitleOnListing());
+        new Listing_page_Logic().waitUntilPreloaderDisappear()
+                                .checkProductAttributeOnListing(brandName, productTitleOnListing());
         List<String> urlListTopBlockAfterBrandFilterApplying = new ArrayList<>();
         for (int i = 0; i < linksInTopBlock().size(); i++) {
             urlListTopBlockAfterBrandFilterApplying.add(linksInTopBlock().get(i).attr("url"));
