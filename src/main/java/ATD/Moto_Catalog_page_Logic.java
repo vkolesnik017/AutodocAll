@@ -28,4 +28,10 @@ public class Moto_Catalog_page_Logic extends Moto_Catalog_page {
         return page(LKW_main_page_Logic.class);
     }
 
+    @Step(" availability Of Moto Selector. Moto_Catalog_page")
+    public Moto_Catalog_page_Logic availabilityOfMotoSelector() {
+        motoSelectorBlock().shouldBe(visible);
+        return this;
+    }
+
 }
