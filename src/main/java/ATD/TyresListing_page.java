@@ -55,4 +55,14 @@ class TyresListing_page {
     ElementsCollection buyButtonsInTopBlock() { return $$(".top-products-lkw__slider-item.slick-active > div > .still_add_to_basket"); }
 
     SelenideElement productPage() { return $(".product-page"); }
+
+    ElementsCollection pagesInSlider() { return $$x("//li[@role='presentation']"); }
+
+    ElementsCollection linksInTopBlock() { return $$(".top-products-link-wrap"); }
+
+    SelenideElement brandFilterButton() { return $x("//*[@class='js-filter-item ga-click-criteria-filter slick-slide slick-active']"); }
+
+    ElementsCollection productTitleOnListing() { return $$(".name > a");}
+
+    ElementsCollection productsRatingOnListing() { return $$x("//div[@class='review-vote']/span/span"); }
 }

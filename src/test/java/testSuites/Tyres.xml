@@ -27,8 +27,8 @@
             <class name="ATD.Tyres.QC_1104_TyresSelector.QC_1233_TestValidationPopupWithClearHeightWidthDiameter"/>
             <class name="ATD.Tyres.QC_1104_TyresSelector.QC_1237_TestValidationPopupWithClearHeightDiameter"/>
             <class name="ATD.Tyres.QC_1104_TyresSelector.QC_1240_TestValidationPopupWithClearDiameter"/>
-            <class name="ATD.Tyres.QC_1104_TyresSelector.QC_1248_TestValidationPopupWithClearSelectorMoto"/>
-            <class name="ATD.Tyres.QC_1104_TyresSelector.QC_1258_TestValidationPopupWithClearSelectorOnListing"/>
+            <!--<class name="ATD.Tyres.QC_1104_TyresSelector.QC_1248_TestValidationPopupWithClearSelectorMoto"/>-->
+            <!--<class name="ATD.Tyres.QC_1104_TyresSelector.QC_1258_TestValidationPopupWithClearSelectorOnListing"/>-->
             <!--<class name="ATD.Tyres.QC_1104_TyresSelector.QC_1268_TestValidationPopupWithClearSelectorOnListingMOTO"/>-->
             <class name="ATD.Tyres.QC_1104_TyresSelector.QC_1287_TestTyresSelectorWithSeacrByBrand"/>
             <class name="ATD.Tyres.QC_1104_TyresSelector.QC_1288_TestTyresSelectorWithSeacrBySpeedIndex"/>
@@ -38,7 +38,9 @@
     <test name="QC_1475_TopBlockOnTyresListings">
         <classes>
             <!--<class name="ATD.Tyres.QC_1475_TopBlockOnTyresListings.QC_1477_AddToBasketFromTyresTopBlock"/>-->
+            <class name="ATD.Tyres.QC_1475_TopBlockOnTyresListings.QC_1478_ProductsInTopBlockNotAdjustToBrandFilter"/>
             <class name="ATD.Tyres.QC_1475_TopBlockOnTyresListings.QC_1500_GoToTyresProductPageFromTopBlock"/>
+            <class name="ATD.Tyres.QC_1475_TopBlockOnTyresListings.QC_1522_ProductsInTopBlockNotAdjustToRatingFilter"/>
             <class name="ATD.Tyres.QC_1475_TopBlockOnTyresListings.QC_1523_ProductsInTopBlockFitSelector"/>
         </classes>
     </test>

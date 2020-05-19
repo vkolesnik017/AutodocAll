@@ -12,6 +12,8 @@
             <class name="ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_137_CreatingAwsOrder_WithDropProduct"/>
             <class name="ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_146_CreatingAwsOrder_WithDropProductDeliveredNotToCountryOfShop"/>
             <class name="ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_150_CreatingAwsOrder_WithDropProductDeliveredToCountryToWhichDropIsNotDelivered"/>
+            <class name="ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_562_CreatingAwsOrder_WithDropProductAndRegularProduct"/>
+            <class name="ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_169_CreatingAwsOrder_WithHeavyLoads"/>
         </classes>
     </test>
 

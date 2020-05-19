@@ -1,7 +1,9 @@
 package AWS;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import org.testng.Assert;
 
 import java.util.ArrayList;
 
@@ -126,8 +128,8 @@ public class OrderAdd_page_aws {
         return $(".btn-change-product");
     }
 
-    private SelenideElement articleOfAddedProduct() {
-        return $x("//tr[@class='targerProduct ']//td[2]");
+    private ElementsCollection articleOfAddedProduct() {
+        return $$x("//tr[@class='targerProduct ']//td[2]");
     }
 
     private SelenideElement deliveryCost() {
@@ -150,6 +152,10 @@ public class OrderAdd_page_aws {
         return $x("//div[@class='sticky-note']");
     }
 
+    private SelenideElement tableWithAddedProducts() {
+        return $x("(//div[@class='w-box'])[5]");
+    }
+
     @Step("Click save order button. OrderAdd_page_aws")
     public Order_aws clickSaveOrderBtn() {
         saveOrderBtn().click();
@@ -157,16 +163,16 @@ public class OrderAdd_page_aws {
     }
 
     @Step("Get delivery cost. OrderAdd_page_aws")
-    public Double getDeliveryCost() {
+    public Float getDeliveryCost() {
         String deliveryCost = deliveryCost().getAttribute("data-default");
-        Double realDeliveryCost = Double.parseDouble(deliveryCost);
+        Float realDeliveryCost = Float.parseFloat(deliveryCost);
         return realDeliveryCost;
     }
 
     @Step("Get safe order cost. OrderAdd_page_aws")
-    public Double getSafeOrderCost() {
+    public Float getSafeOrderCost() {
         String safeOrderCost = safeOrderCost().getValue();
-        Double realSafeOrderCost = Double.parseDouble(safeOrderCost);
+        Float realSafeOrderCost = Float.parseFloat(safeOrderCost);
         return realSafeOrderCost;
     }
 
@@ -193,7 +199,13 @@ public class OrderAdd_page_aws {
 
     @Step("Checks article number of added product {articleNum}. OrderAdd_page_aws")
     public OrderAdd_page_aws checkArticleOfAddedProduct(String articleNum) {
-        articleOfAddedProduct().shouldHave(text(articleNum));
+        tableWithAddedProducts().shouldBe(visible);
+        sleep(2000);
+        ArrayList <String> list = new ArrayList<>();
+        for (int i = 0; i < articleOfAddedProduct().size(); i++) {
+            list.add(articleOfAddedProduct().get(i).getText());
+        }
+        Assert.assertTrue(list.contains(articleNum));
         return this;
     }
 

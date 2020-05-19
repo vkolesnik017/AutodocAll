@@ -17,7 +17,7 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_1500_GoToTyresProductPageFromTopBlock {
+public class QC_1522_ProductsInTopBlockNotAdjustToRatingFilter {
 
     @BeforeClass
     void setUp() {
@@ -35,10 +35,10 @@ public class QC_1500_GoToTyresProductPageFromTopBlock {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Romaniuta")
-    @Description(value = "Test Go To Tyres Product Page From Top Block")
-    public void testGoToTyresProductPageFromTopBlock(String route) {
+    @Description(value = "Test Products In Top Block Not Adjust To Rating Filter")
+    public void testProductsInTopBlockNotAdjustToRatingFilter(String route) {
         openPage(route);
-        new TyresListing_page_Logic().checkProductPageOfAllProductsInTopBlock();
+        new TyresListing_page_Logic().checkProductsInTopBlockAndRatingFilter();
     }
 
     @AfterMethod

@@ -24,7 +24,7 @@ import static com.codeborne.selenide.Selenide.switchTo;
 public class QC_1482_SplitBilling_TwoFirms_SameCountries_NegativeCase {
 
     private String email = "qc_1482_autotestEN@mailinator.com", orderNumber;
-    private Double totalPrice, totalPriceAWSOrder, totalPriceInEmail;
+    private Float totalPrice, totalPriceAWSOrder, totalPriceInEmail;
 
     private CartAddress_page_Logic cartAddress_page_logic = new CartAddress_page_Logic();
 
@@ -70,12 +70,12 @@ public class QC_1482_SplitBilling_TwoFirms_SameCountries_NegativeCase {
         totalPriceAWSOrder = order_aws.openOrderInAwsWithLogin()
                 .checkVatStatusInOrder("Mit MwSt 20%")
                 .checkFirmConfirmationStatus("Нев. имя/город")
-                .getTotalPriceOrder();
+                .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
         totalPriceAWSOrder = order_aws.reSaveOrder()
                 .checkVatStatusInOrder("Mit MwSt 20%")
                 .checkFirmConfirmationStatus("Нев. имя/город")
-                .getTotalPriceOrder();
+                .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
         order_aws.clickCustomerId();
         switchTo().window(1);

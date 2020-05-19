@@ -29,6 +29,7 @@
         <classes>
             <class name="ATD.ACC.QC_836_MainAccessories.QC_988_FeatureBlock"/>
             <class name="ATD.ACC.QC_836_MainAccessories.QC_991_DeliveryBlock"/>
+            <class name="ATD.ACC.QC_836_MainAccessories.QC_986_BlockTopBrands"/>
         </classes>
     </test>
 
@@ -37,6 +38,14 @@
             <class name="ATD.ACC.QC_1064_BlockTopProductsOnMainChemie.QC_1065_BlockTopProducts"/>
         </classes>
     </test>
+
+    <test name="QC_950_BlockTopProductsOnMainAccessories">
+        <classes>
+            <class name="ATD.ACC.QC_950_BlockTopProductsOnMainAccessories.QC_953_BlockTopProducts"/>
+        </classes>
+    </test>
+
+
 
 
 

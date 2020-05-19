@@ -22,7 +22,7 @@ public class  QC_1684_HeavyLoadsAndOrdinaryGoods_PositiveCase {
 
 
     private String email = "qc_1684_autotestDE@mailinator.com", orderNumber;
-    private Double totalPrice, totalPriceAWSOrder;
+    private Float totalPrice, totalPriceAWSOrder;
 
     @BeforeClass
     void setUp() {
@@ -61,7 +61,7 @@ public class  QC_1684_HeavyLoadsAndOrdinaryGoods_PositiveCase {
                 .checkDeliveryPriceOrderAWS("9.94")
                 .checkHeavyLoadsDeliveryPriceOrderAWS("10")
                 .checkThatStatusSafeOrderIsOn()
-                .getTotalPriceOrder();
+                .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
         order_aws.reSaveOrder()
                 .checkThatStatusSafeOrderIsOn()

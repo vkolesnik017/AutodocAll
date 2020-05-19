@@ -95,20 +95,20 @@ public class Mailinator {
     }
 
     @Step("Get total price in email. Mailinator")
-    public Double getTotalPriceInEmail() {
+    public Float getTotalPriceInEmail() {
         String realPrice = infoTotalPriceInEmail().getText();
         realPrice = realPrice.replaceAll("[^0-9,]", "");
         realPrice = realPrice.replaceAll(",",".");
-        Double totalPrice = Double.parseDouble(realPrice);
+        Float totalPrice = Float.parseFloat(realPrice);
         return totalPrice;
     }
 
     @Step("Get unit price in email. Mailinator")
-    public Double getUnitPriceInEmail() {
+    public Float getUnitPriceInEmail() {
         String realPrice = unitPrice().getText();
         realPrice = realPrice.replaceAll("[^0-9,]", "");
         realPrice = realPrice.replaceAll(",", ".");
-        Double unitPrice = Double.parseDouble(realPrice);
+        Float unitPrice = Float.parseFloat(realPrice);
         return unitPrice;
     }
 
