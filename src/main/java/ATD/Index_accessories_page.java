@@ -16,6 +16,14 @@ class Index_accessories_page {
         return $x("//div[@class='delivery']");
     }
 
+    SelenideElement blockTopBrands() {
+        return $x("//div[@class='top-brands']");
+    }
+
+    SelenideElement blockTopProducts() {
+        return  $x("//div[@class='top-product-block']");
+    }
+
 
 
 

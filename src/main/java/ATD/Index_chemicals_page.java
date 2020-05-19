@@ -30,7 +30,7 @@ public class Index_chemicals_page {
         return $x("//div[@class='top-product-block']");
     }
 
-    ElementsCollection productsInBlockTop() {
+    ElementsCollection productsInTopBlock() {
         return $$x("//div[@class='product-list__item active']");
     }
 
