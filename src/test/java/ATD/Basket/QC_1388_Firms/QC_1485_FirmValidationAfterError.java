@@ -22,7 +22,7 @@ import static com.codeborne.selenide.Selenide.switchTo;
 
 public class QC_1485_FirmValidationAfterError {
 
-    private double regularProductPricePerAllDataPage, priceWithVatPerAllDataPage, priceProductPerProductPage,
+    private Float regularProductPricePerAllDataPage, priceWithVatPerAllDataPage, priceProductPerProductPage,
             totalPrice, totalPriceAWSOrder, totalPriceInEmail, sellingPriceAWSOrder, prunedProductPrice, prunedPriceWithVat, unitPrice;
     private String email = "qc_1485_autotestEN@mailinator.com", vatForEN, orderNumber;
 
@@ -78,12 +78,12 @@ public class QC_1485_FirmValidationAfterError {
         totalPriceAWSOrder = order_aws.openOrderInAwsWithoutLoginAndCheckTestIcon()
                 .checkVatStatusInOrder("Ohne Mwst")
                 .checkFirmConfirmationStatus("ДА/auto")
-                .getTotalPriceOrder();
+                .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
         totalPriceAWSOrder = order_aws.reSaveOrder()
                 .checkVatStatusInOrder("Ohne Mwst")
                 .checkFirmConfirmationStatus("ДА/auto")
-                .getTotalPriceOrder();
+                .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
         sellingPriceAWSOrder = order_aws.getSellingProductPriceOrderAWS();
         switchTo().window(0);

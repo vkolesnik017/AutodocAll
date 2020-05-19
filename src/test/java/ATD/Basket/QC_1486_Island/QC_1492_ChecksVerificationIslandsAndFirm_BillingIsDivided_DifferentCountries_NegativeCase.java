@@ -24,7 +24,7 @@ import static com.codeborne.selenide.Selenide.close;
 public class QC_1492_ChecksVerificationIslandsAndFirm_BillingIsDivided_DifferentCountries_NegativeCase {
 
     private String email = "qc_1492_autotestDE@mailinator.com", orderNumber;
-    private Double totalPrice, totalPriceAWSOrder, totalPriceInEmail;
+    private Float totalPrice, totalPriceAWSOrder, totalPriceInEmail;
 
     @BeforeClass
     void setUp() {
@@ -65,12 +65,12 @@ public class QC_1492_ChecksVerificationIslandsAndFirm_BillingIsDivided_Different
         totalPriceAWSOrder = order_aws.openOrderInAwsWithLogin()
                 .checkVatStatusInOrder("Ohne Mwst")
                 .checkDeliveryPriceOrderAWS(deliveryPriceToUKaws)
-                .getTotalPriceOrder();
+                .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
         totalPriceAWSOrder = order_aws.reSaveOrder()
                 .checkVatStatusInOrder("Ohne Mwst")
                 .checkDeliveryPriceOrderAWS(deliveryPriceToUKaws)
-                .getTotalPriceOrder();
+                .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
         totalPriceInEmail = new Mailinator().openEmail("qc_1492_autotestDE@mailinator.com")
                 .openLetter(1)

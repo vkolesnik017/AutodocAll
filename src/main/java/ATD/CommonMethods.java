@@ -410,14 +410,14 @@ public class CommonMethods {
     }
 
     @Step("Cut price to the first decimal place")
-    public static Double cutPriceToFirstDecimalPlace(Double price) {
+    public static Float cutPriceToFirstDecimalPlace(Float price) {
         Pattern pattern = Pattern.compile("\\d+\\.\\d{1}");
         Matcher matcher = pattern.matcher(String.valueOf(price));
         String result = null;
         if (matcher.find()) {
             result = matcher.group(0);
         }
-        return Double.valueOf((result));
+        return Float.valueOf((result));
     }
 
 }

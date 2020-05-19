@@ -25,8 +25,8 @@ import static com.codeborne.selenide.Selenide.close;
 
 public class QC_21_CreatingAwsOrder {
 
-    private String userID = "15089943", articleNum, totalDeliveryAmountAndSafeOrder, totalProductCostInOrder;
-    private Double productCost, deliveryCost, safeOrderCost, productCostInOrder;
+    private String userID = "15089943", articleNum, totalDeliveryAmountAndSafeOrder;
+    private Float deliveryCost, safeOrderCost, productCostInOrder, totalProductCostIncludingDeliveryAndSafeOrder, productCost, totalCostInOrder;
     private ArrayList userDataInCreateOrder, userData, userDataInOrder;
 
     private Product_page_Logic product_page_logic = new Product_page_Logic();
@@ -74,27 +74,29 @@ public class QC_21_CreatingAwsOrder {
         order_aws.checkVatStatusInOrder("Mit MwSt 19%")
                 .checkPaymentMethodInOrder("PayPal")
                 .checkThatStatusSafeOrderIsOn();
-        totalDeliveryAmountAndSafeOrder = order_aws.getTotaCostlDeliveryAmountAndSafeOrder(deliveryCost, safeOrderCost);
+        totalDeliveryAmountAndSafeOrder = order_aws.getTotalCostDeliveryAmountAndSafeOrder(deliveryCost, safeOrderCost);
         productCostInOrder = order_aws.checkDeliveryPriceOrderAWS(totalDeliveryAmountAndSafeOrder)
                 .checkContoNR("30047")
                 .getSellingProductPriceOrderAWS();
         Assert.assertEquals(productCost, productCostInOrder);
-        totalProductCostInOrder = order_aws.getTotalCostIncludingDeliveryAndSafeOrder(productCostInOrder, deliveryCost, safeOrderCost);
-        order_aws.checkTotalPriceOrderAWS(totalProductCostInOrder)
-                .reSaveOrder();
+        totalProductCostIncludingDeliveryAndSafeOrder = order_aws.getTotalCostIncludingDeliveryAndSafeOrder(productCostInOrder, deliveryCost, safeOrderCost);
+        totalCostInOrder = order_aws.getTotalPriceOrderAWS();
+        Assert.assertEquals(totalCostInOrder, totalProductCostIncludingDeliveryAndSafeOrder);
+        order_aws.reSaveOrder();
         userDataInOrder = order_aws.checkOrderHasTestStatus()
                 .getUserDataInOrder();
         Assert.assertEquals(userData, userDataInOrder);
         order_aws.checkVatStatusInOrder("Mit MwSt 19%")
                 .checkPaymentMethodInOrder("PayPal")
                 .checkThatStatusSafeOrderIsOn();
-        totalDeliveryAmountAndSafeOrder = order_aws.getTotaCostlDeliveryAmountAndSafeOrder(deliveryCost, safeOrderCost);
+        totalDeliveryAmountAndSafeOrder = order_aws.getTotalCostDeliveryAmountAndSafeOrder(deliveryCost, safeOrderCost);
         productCostInOrder = order_aws.checkDeliveryPriceOrderAWS(totalDeliveryAmountAndSafeOrder)
                 .checkContoNR("30047")
                 .getSellingProductPriceOrderAWS();
         Assert.assertEquals(productCost, productCostInOrder);
-        totalProductCostInOrder = order_aws.getTotalCostIncludingDeliveryAndSafeOrder(productCostInOrder, deliveryCost, safeOrderCost);
-        order_aws.checkTotalPriceOrderAWS(totalProductCostInOrder);
+        totalProductCostIncludingDeliveryAndSafeOrder = order_aws.getTotalCostIncludingDeliveryAndSafeOrder(productCostInOrder, deliveryCost, safeOrderCost);
+        totalCostInOrder = order_aws.getTotalPriceOrderAWS();
+        Assert.assertEquals(totalCostInOrder, totalProductCostIncludingDeliveryAndSafeOrder);
     }
 
     @AfterMethod

@@ -25,7 +25,7 @@ import static com.codeborne.selenide.Selenide.switchTo;
 
 public class QC_1392_SplitBilling_TwoFirms_SameCountries_PositiveCase {
 
-    private double priceWithVatPerAllDataPageGB, priceProductPerProductPageGB, totalPriceGB, totalPriceAWSOrderGB, totalPriceInEmailGB,
+    private Float priceWithVatPerAllDataPageGB, priceProductPerProductPageGB, totalPriceGB, totalPriceAWSOrderGB, totalPriceInEmailGB,
             prunedProductPriceGB, prunedPriceWithVatGB;
     private String emailGB = "qc_1392_autotestGB@mailinator.com", vatForGB, orderNumberGB;
 
@@ -79,12 +79,12 @@ public class QC_1392_SplitBilling_TwoFirms_SameCountries_PositiveCase {
         totalPriceAWSOrderGB = order_aws.openOrderInAwsWithoutLoginAndCheckTestIcon()
                 .checkVatStatusInOrder("Ohne Mwst")
                 .checkFirmConfirmationStatus("ДА/auto")
-                .getTotalPriceOrder();
+                .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceGB, totalPriceAWSOrderGB);
         totalPriceAWSOrderGB = order_aws.reSaveOrder()
                 .checkVatStatusInOrder("Ohne Mwst")
                 .checkFirmConfirmationStatus("ДА/auto")
-                .getTotalPriceOrder();
+                .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceGB, totalPriceAWSOrderGB);
         order_aws.clickCustomerId();
         switchTo().window(2);
@@ -102,7 +102,7 @@ public class QC_1392_SplitBilling_TwoFirms_SameCountries_PositiveCase {
     }
 
 
-    private double priceWithVatPerAllDataPageDE, priceProductPerProductPageDE, totalPriceDE, totalPriceAWSOrderDE, totalPriceInEmailDE,
+    private Float priceWithVatPerAllDataPageDE, priceProductPerProductPageDE, totalPriceDE, totalPriceAWSOrderDE, totalPriceInEmailDE,
             prunedProductPriceDE, prunedPriceWithVatDE;
     private String emailDE = "qc_1392_autotestDE@mailinator.com", vatForDE, orderNumberDE;
 
@@ -148,12 +148,12 @@ public class QC_1392_SplitBilling_TwoFirms_SameCountries_PositiveCase {
         totalPriceAWSOrderDE = order_aws.openOrderInAwsWithoutLoginAndCheckTestIcon()
                 .checkVatStatusInOrder("Ohne Mwst")
                 .checkFirmConfirmationStatus("ДА/auto")
-                .getTotalPriceOrder();
+                .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceDE, totalPriceAWSOrderDE);
         totalPriceAWSOrderDE = order_aws.reSaveOrder()
                 .checkVatStatusInOrder("Ohne Mwst")
                 .checkFirmConfirmationStatus("ДА/auto")
-                .getTotalPriceOrder();
+                .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceDE, totalPriceAWSOrderDE);
         order_aws.clickCustomerId();
         switchTo().window(2);

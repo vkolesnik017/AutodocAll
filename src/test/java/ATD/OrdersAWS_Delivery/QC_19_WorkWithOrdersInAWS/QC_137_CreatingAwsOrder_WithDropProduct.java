@@ -26,7 +26,7 @@ import static com.codeborne.selenide.Selenide.close;
 public class QC_137_CreatingAwsOrder_WithDropProduct {
 
     private String userID = "15089943", articleNum, productArticleID;
-    private Double productCost, totalProductCostInOrder, sellingProductCostInOrder;
+    private Float sellingProductCostInOrder, totalProductCostInOrder, productCost;
     private ArrayList userDataInCreateOrder, userData, userDataInOrder;
 
     private Product_page_Logic product_page_logic = new Product_page_Logic();
@@ -90,7 +90,7 @@ public class QC_137_CreatingAwsOrder_WithDropProduct {
                 .checkContoNR("30047")
                 .getSellingProductPriceOrderAWS();
         Assert.assertEquals(productCost , sellingProductCostInOrder);
-        totalProductCostInOrder = order_aws.getTotalPriceOrder();
+        totalProductCostInOrder = order_aws.getTotalPriceOrderAWS();
         Assert.assertEquals(sellingProductCostInOrder, totalProductCostInOrder);
     }
 

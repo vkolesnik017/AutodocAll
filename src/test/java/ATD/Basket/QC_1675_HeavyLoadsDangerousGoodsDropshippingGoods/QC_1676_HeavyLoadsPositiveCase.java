@@ -21,7 +21,7 @@ import static com.codeborne.selenide.Selenide.close;
 public class QC_1676_HeavyLoadsPositiveCase {
 
     private String email = "checksPurchaseHeavyLoad@mailinator.com", password = "atdtest", orderNumber;
-    private Double totalPrice, totalPriceAWSOrder;
+    private Float totalPrice, totalPriceAWSOrder;
 
     @BeforeClass
     void setUp() {
@@ -57,7 +57,7 @@ public class QC_1676_HeavyLoadsPositiveCase {
                 .checkDeliveryPriceOrderAWS("6.95")
                 .checkHeavyLoadsDeliveryPriceOrderAWS("10")
                 .checkThatStatusSafeOrderIsOff()
-                .getTotalPriceOrder();
+                .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
         order_aws.reSaveOrder()
                 .checkThatStatusSafeOrderIsOff()

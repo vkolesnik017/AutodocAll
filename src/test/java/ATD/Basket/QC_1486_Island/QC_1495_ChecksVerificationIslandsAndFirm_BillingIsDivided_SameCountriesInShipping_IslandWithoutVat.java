@@ -23,7 +23,7 @@ import static com.codeborne.selenide.Selenide.close;
 public class QC_1495_ChecksVerificationIslandsAndFirm_BillingIsDivided_SameCountriesInShipping_IslandWithoutVat {
 
     private String email = "qc_1495_autotestDE@mailinator.com", orderNumber;
-    private Double totalPrice, totalPriceAWSOrder, totalPriceInEmail;
+    private Float totalPrice, totalPriceAWSOrder, totalPriceInEmail;
 
     @BeforeClass
     void setUp() {
@@ -59,7 +59,7 @@ public class QC_1495_ChecksVerificationIslandsAndFirm_BillingIsDivided_SameCount
         totalPriceAWSOrder = order_aws.openOrderInAwsWithLogin()
                 .checkVatStatusInOrder("Ohne Mwst")
                 .checkDeliveryPriceOrderAWS("165")
-                .getTotalPriceOrder();
+                .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
         order_aws.reSaveOrder()
                 .checkVatStatusInOrder("Ohne Mwst")
