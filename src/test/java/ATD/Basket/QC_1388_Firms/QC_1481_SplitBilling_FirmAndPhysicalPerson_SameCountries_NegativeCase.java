@@ -23,7 +23,7 @@ import static com.codeborne.selenide.Selenide.switchTo;
 public class QC_1481_SplitBilling_FirmAndPhysicalPerson_SameCountries_NegativeCase {
 
     private String email = "qc_1481_autotestEN@mailinator.com", orderNumber;
-    private Double totalPrice, totalPriceAWSOrder, totalPriceInEmail;
+    private Float totalPrice, totalPriceAWSOrder, totalPriceInEmail;
 
     @BeforeClass
     void setUp() {
@@ -63,12 +63,12 @@ public class QC_1481_SplitBilling_FirmAndPhysicalPerson_SameCountries_NegativeCa
         totalPriceAWSOrder = order_aws.openOrderInAwsWithLogin()
                 .checkVatStatusInOrder("Mit MwSt 20%")
                 .checkFirmConfirmationStatus("Пров. вручную")
-                .getTotalPriceOrder();
+                .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
         totalPriceAWSOrder = order_aws.reSaveOrder()
                 .checkVatStatusInOrder("Mit MwSt 20%")
                 .checkFirmConfirmationStatus("Пров. вручную")
-                .getTotalPriceOrder();
+                .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
         order_aws.clickCustomerId()
                 .checkAbsenceBlockLogsCompanyNumbers();

@@ -10,8 +10,6 @@ import org.testng.Assert;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.*;
@@ -463,23 +461,17 @@ public class Order_aws {
         return this;
     }
 
-    @Step("Check total price {expectedTotalPrice} in order AWS. Order_aws")
-    public Order_aws checkTotalPriceOrderAWS(String expectedTotalPrice) {
-        totalPriceOrder().shouldHave(text(expectedTotalPrice));
-        return this;
-    }
-
     @Step("Get total Price in Order AWS. Order_aws")
-    public Double getTotalPriceOrder() {
+    public Float getTotalPriceOrderAWS() {
         String price = totalPriceOrder().getText();
-        Double totalPriceOrder = Double.parseDouble(price);
+        Float totalPriceOrder = Float.parseFloat(price);
         return totalPriceOrder;
     }
 
     @Step("Get selling price in Order AWS. Order_aws")
-    public Double getSellingProductPriceOrderAWS() {
+    public Float getSellingProductPriceOrderAWS() {
         String price = sellingPrice().getText();
-        Double sellingPriceOrder = Double.parseDouble(price);
+        Float sellingPriceOrder = Float.parseFloat(price);
         return sellingPriceOrder;
     }
 
@@ -554,27 +546,15 @@ public class Order_aws {
     }
 
     @Step("Get total cost delivery amount {deliveryCost} and safe order {safeOrderCost}. Order_aws")
-    public String getTotaCostlDeliveryAmountAndSafeOrder(Double deliveryCost, Double safeOrderCost) {
-        Double totalDeliveryAmountAndSafeOrder = deliveryCost + safeOrderCost;
-        Pattern pattern = Pattern.compile("\\d+\\.\\d{2}");
-        Matcher matcher = pattern.matcher(String.valueOf(totalDeliveryAmountAndSafeOrder));
-        String result = null;
-        if (matcher.find()) {
-            result = matcher.group(0);
-        }
-        return String.valueOf((result));
+    public String getTotalCostDeliveryAmountAndSafeOrder(Float deliveryCost, Float safeOrderCost) {
+        Float totalDeliveryAmountAndSafeOrder = deliveryCost + safeOrderCost;
+        return String.valueOf((totalDeliveryAmountAndSafeOrder));
     }
 
     @Step("Get the total cost {sellingCost} including delivery {deliveryCost} and safe order {safeOrderCost}. Order_aws")
-    public String getTotalCostIncludingDeliveryAndSafeOrder(Double sellingCost, Double deliveryCost , Double safeOrderCost) {
-        Double totalCost = sellingCost + deliveryCost + safeOrderCost;
-        Pattern pattern = Pattern.compile("\\d+\\.\\d{2}");
-        Matcher matcher = pattern.matcher(String.valueOf(totalCost));
-        String result = null;
-        if (matcher.find()) {
-            result = matcher.group(0);
-        }
-        return String.valueOf((result));
+    public Float getTotalCostIncludingDeliveryAndSafeOrder(Float sellingCost, Float deliveryCost , Float safeOrderCost) {
+        Float totalCost = sellingCost + deliveryCost + safeOrderCost;
+        return totalCost;
     }
 
     @Step("Checks conto NR number {contoNR}. Order_aws")
@@ -591,9 +571,9 @@ public class Order_aws {
 
     @Step("Compares the prices of added products with the prices on the site {priceWithSite}. Order_aws")
     public Order_aws comparePriceOfAddedProductWithPricesOnSites(ArrayList priceWithSite) {
-        ArrayList <Double> list = new ArrayList<>();
+        ArrayList <Float> list = new ArrayList<>();
         for (int i = 0; i < sellingPriceOfAddedGoods().size(); i++) {
-            list.add(Double.parseDouble(sellingPriceOfAddedGoods().get(i).getText()));
+            list.add(Float.parseFloat(sellingPriceOfAddedGoods().get(i).getText()));
         }
         Assert.assertEquals(list, priceWithSite);
         return this;
@@ -601,12 +581,12 @@ public class Order_aws {
 
 
     @Step("Get the total cost of all goods including delivery{deliveryCost} and safe order{safeOrderCost}. Order_aws")
-    public Double getTotalCostOfAllGoodsAndDeliveryAndSafeOrder(Double deliveryCost, Double safeOrderCost) {
-        String costDeliveryAndSafeOrder = getTotaCostlDeliveryAmountAndSafeOrder(deliveryCost, safeOrderCost);
-        Double realCostDeliveryAndSafeOrder = Double.parseDouble(costDeliveryAndSafeOrder);
-        Double sumOfAllGoods = 0.0;
+    public Float getTotalCostOfAllGoodsAndDeliveryAndSafeOrder(Float deliveryCost, Float safeOrderCost) {
+        String costDeliveryAndSafeOrder = getTotalCostDeliveryAmountAndSafeOrder(deliveryCost, safeOrderCost);
+        Float realCostDeliveryAndSafeOrder = Float.parseFloat(costDeliveryAndSafeOrder);
+        Float sumOfAllGoods = 0.0f;
         for (int i = 0; i < sellingPriceOfAddedGoods().size(); i++) {
-            Double priceOfOneItem =  Double.parseDouble(sellingPriceOfAddedGoods().get(i).getText());
+            Float priceOfOneItem = Float.parseFloat(sellingPriceOfAddedGoods().get(i).getText());
             sumOfAllGoods = sumOfAllGoods + priceOfOneItem;
         }
         return (sumOfAllGoods + realCostDeliveryAndSafeOrder);

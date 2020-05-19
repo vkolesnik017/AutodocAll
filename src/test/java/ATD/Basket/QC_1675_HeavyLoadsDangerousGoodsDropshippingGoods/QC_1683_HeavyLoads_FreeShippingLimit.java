@@ -16,13 +16,12 @@ import java.sql.SQLException;
 import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
-import static com.codeborne.selenide.Selenide.open;
 
 public class QC_1683_HeavyLoads_FreeShippingLimit {
 
     private String email = "qc_1683_autotestDE@mailinator.com", orderNumber;
     private Product_page_Logic product_page_logic = new Product_page_Logic();
-    private Double totalPrice, totalPriceAWSOrder;
+    private Float totalPrice, totalPriceAWSOrder;
 
     @BeforeClass
     void setUp() {
@@ -68,7 +67,7 @@ public class QC_1683_HeavyLoads_FreeShippingLimit {
                 .checkDeliveryPriceOrderAWS("2.99")
                 .checkHeavyLoadsDeliveryPriceOrderAWS("10")
                 .checkThatStatusSafeOrderIsOn()
-                .getTotalPriceOrder();
+                .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
         order_aws.reSaveOrder()
                 .checkDeliveryPriceOrderAWS("2.99")

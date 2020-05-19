@@ -14,7 +14,7 @@
             <class name="ATD.ProductGroups.QC_1592_HeavyCargo"/>
             <class name="ATD.ProductGroups.QC_1596_Illiquid"/>
             <class name="ATD.ProductGroups.QC_1590_Batteries"/>
-            <!--<class name="ATD.ProductGroups.QC_1594_Paired"/>-->
+            <class name="ATD.ProductGroups.QC_1594_Paired"/>
         </classes>
     </test>
 

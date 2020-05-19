@@ -1,7 +1,6 @@
 package ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods;
 
 import ATD.CartAllData_page_Logic;
-import ATD.Payment_handler_page_Logic;
 import ATD.Product_page_Logic;
 import ATD.SetUp;
 import AWS.Order_aws;
@@ -24,8 +23,8 @@ import static com.codeborne.selenide.Selenide.close;
 public class QC_1679_HeavyLoadsFR_PositiveCase {
 
     private String email = "qc_1679autotestDE@mailinator.com";
-    private Double totalPrice;
-    private Double totalPriceAWSOrder;
+    private Float totalPrice;
+    private Float totalPriceAWSOrder;
     private String orderNumber;
 
     @BeforeClass
@@ -60,7 +59,7 @@ public class QC_1679_HeavyLoadsFR_PositiveCase {
                 .checkDeliveryPriceOrderAWS("9.95")
                 .checkHeavyLoadsDeliveryPriceOrderAWS("36.95")
                 .checkThatStatusSafeOrderIsOff()
-                .getTotalPriceOrder();
+                .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
         order_aws.reSaveOrder()
                 .checkThatStatusSafeOrderIsOff()

@@ -214,18 +214,18 @@ public class CartAllData_page_Logic extends CartAllData_page {
     }
 
     @Step("Get total price of the CartAllData_page")
-    public Double getTotalPriceAllDataPage() {
+    public Float getTotalPriceAllDataPage() {
         String realPrice = totalOrderPrice().getText();
         realPrice = realPrice.substring(0, realPrice.indexOf(" ")).replaceAll(",", ".");
-        Double totalPrice = Double.parseDouble(realPrice);
+        Float totalPrice = Float.parseFloat(realPrice);
         return totalPrice;
     }
 
     @Step("Get total price for EN shop. CartAllData_page")
-    public Double getTotalPriceAllDataPageForEnShop() {
+    public Float getTotalPriceAllDataPageForEnShop() {
         String realPrice = totalOrderPrice().getText().replace("£ ", "").replace("incl. 20% VAT", "");
         realPrice = realPrice.replaceAll(",", ".");
-        Double totalPrice = Double.parseDouble(realPrice);
+        Float totalPrice = Float.parseFloat(realPrice);
         return totalPrice;
     }
 
@@ -238,24 +238,24 @@ public class CartAllData_page_Logic extends CartAllData_page {
 
 
     @Step("Get price including VAT. CartAllData_page")
-    public Double getPriceIncludingVat(String vat) {
-        Double productPrice = getRegularProductPriceFormAllDataPage();
-        double priseWithVat = 0;
+    public Float getPriceIncludingVat(String vat) {
+        Float productPrice = getRegularProductPriceFormAllDataPage();
+        float priseWithVat = 0.0f;
         if (vat.equals("20")) {
-            priseWithVat = (productPrice * 1.2); // For shop EN
+            priseWithVat = (productPrice * 1.2f); // For shop EN
         }
         if (vat.equals("19")) {
-            priseWithVat = (productPrice * 1.19); // For shop DE
+            priseWithVat = (productPrice * 1.19f); // For shop DE
         }
         return priseWithVat;
     }
 
 
     @Step("Get regular product price. CartAllData_page")
-    public Double getRegularProductPriceFormAllDataPage() {
+    public Float getRegularProductPriceFormAllDataPage() {
         String regularProductPrice = productPrice().getText().replaceAll("[^0-9,]", "");
         regularProductPrice = regularProductPrice.replaceAll(",", ".");
-        Double productPrice = Double.parseDouble(regularProductPrice);
+        Float productPrice = Float.parseFloat(regularProductPrice);
         return productPrice;
     }
 
