@@ -6,20 +6,20 @@
         <listener class-name="ATD.ProjectListener"/>
     </listeners>
 
-    <!--<test name="FiltersSorting_sideFilters">--> <!-- Filter is inactive-->
-        <!--<classes>-->
-            <!--&lt;!&ndash;<class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_118_FiltersSorting_TestProductreiheFilterApplying"/>&ndash;&gt;-->
-            <!--<class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_119_FiltersSorting_TestLangeFilterApplying"/>-->
-            <!--&lt;!&ndash;<class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_120_FiltersSorting_TestWischblattausfuhrung"/>&ndash;&gt;-->
-            <!--<class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_121_FiltersSorting_TestSideFilterInTileMode"/>-->
-            <!--<class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_122_FiltersSorting_TestSideFilterWithPagination"/>-->
-            <!--<class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_124_FiltersSorting_TestSideFilterCancelling"/>-->
-            <!--<class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_125_FiltersSorting_TestFilterPosition"/>-->
-            <!--<class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_126_FiltersSorting_TestTwoFilterAttributesInBlock"/>-->
-            <!--<class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_1550_FiltersSorting_TestAllFiltersAreFixedInSidebarAfterScroll"/>-->
+    <test name="FiltersSorting_sideFilters">
+        <classes>
+            <!--<class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_118_FiltersSorting_TestProductreiheFilterApplying"/>--> <!-- Filter by price is inactive-->
+            <class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_119_FiltersSorting_TestLangeFilterApplying"/>
+            <!--<class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_120_FiltersSorting_TestWischblattausfuhrung"/>--> <!-- Filter by price is inactive-->
+            <class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_121_FiltersSorting_TestSideFilterInTileMode"/>
+            <class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_122_FiltersSorting_TestSideFilterWithPagination"/>
+            <class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_124_FiltersSorting_TestSideFilterCancelling"/>
+            <class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_125_FiltersSorting_TestFilterPosition"/>
+            <class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_126_FiltersSorting_TestTwoFilterAttributesInBlock"/>
+            <class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_1550_FiltersSorting_TestAllFiltersAreFixedInSidebarAfterScroll"/>
             <!--<class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_1573_FiltersSorting_TestProductOutputWithFixedFiltersInSidebar"/>-->
-        <!--</classes>-->
-    <!--</test>-->
+        </classes>
+    </test>
 
     <test name="FiltersSorting_interaction">
         <classes>
