@@ -146,6 +146,14 @@ public class Listing_page_Logic extends Listing_page {
         }
     }
 
+    @Step("Method checks product attribute on listing with products number. Listing_page")
+    public void checkProductAttributeOnListingWithProductsNumber(String attributeSelectedInSideFilter, ElementsCollection productAttributeOnListing, int productsNumber) {
+        productAttributeOnListing.shouldHave(sizeGreaterThan(0));
+        for (int i = 1; i < productsNumber; i++) {
+            productAttributeOnListing.get(i).shouldHave(text(attributeSelectedInSideFilter));
+        }
+    }
+
     @Step("Method checks product attribute on listing with chosen car and filter (without products for other cars). Listing_page")
     public Listing_page_Logic checkProductAttributeOnListingWithCarAndFilter(String characteristic, ElementsCollection productAttributeGenericRoute, ElementsCollection productAttributeTecdocRoute) {
         if (productsForOtherCars().is(visible)) {
