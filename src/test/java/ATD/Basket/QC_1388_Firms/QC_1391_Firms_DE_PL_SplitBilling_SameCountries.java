@@ -24,7 +24,7 @@ import static com.codeborne.selenide.Selenide.switchTo;
 public class QC_1391_Firms_DE_PL_SplitBilling_SameCountries {
 
     private String emailPL = "qc_1391_autotestPL@mailinator.com", orderNumberPL;
-    private Double totalPricePL, totalPriceAWSOrderPL, totalPriceInEmailPL;
+    private Float totalPricePL, totalPriceAWSOrderPL, totalPriceInEmailPL;
 
     @BeforeClass
     void setUp() {
@@ -63,12 +63,12 @@ public class QC_1391_Firms_DE_PL_SplitBilling_SameCountries {
         totalPriceAWSOrderPL = order_aws.openOrderInAwsWithLogin()
                 .checkVatStatusInOrder("Mit MwSt 23%")
                 .checkFirmConfirmationStatus("Пров. вручную")
-                .getTotalPriceOrder();
+                .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPricePL, totalPriceAWSOrderPL);
         totalPriceAWSOrderPL = order_aws.reSaveOrder()
                 .checkVatStatusInOrder("Mit MwSt 23%")
                 .checkFirmConfirmationStatus("Пров. вручную")
-                .getTotalPriceOrder();
+                .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPricePL, totalPriceAWSOrderPL);
         order_aws.clickCustomerId()
                 .checkAbsenceBlockLogsCompanyNumbers();
@@ -83,7 +83,7 @@ public class QC_1391_Firms_DE_PL_SplitBilling_SameCountries {
 
 
     private String emailDE = "qc_1391_autotestDE@mailinator.com", orderNumberDE;
-    private Double totalPriceDE, totalPriceAWSOrderDE, totalPriceInEmailDE;
+    private Float totalPriceDE, totalPriceAWSOrderDE, totalPriceInEmailDE;
 
     @DataProvider(name = "routeDE", parallel = true)
     Object[] dataProviderProductsDE() throws SQLException {
@@ -117,12 +117,12 @@ public class QC_1391_Firms_DE_PL_SplitBilling_SameCountries {
         totalPriceAWSOrderDE = order_aws.openOrderInAwsWithLogin()
                 .checkVatStatusInOrder("Mit MwSt 19%")
                 .checkFirmConfirmationStatus("Пров. вручную")
-                .getTotalPriceOrder();
+                .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceDE, totalPriceAWSOrderDE);
         totalPriceAWSOrderDE = order_aws.reSaveOrder()
                 .checkVatStatusInOrder("Mit MwSt 19%")
                 .checkFirmConfirmationStatus("Пров. вручную")
-                .getTotalPriceOrder();
+                .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceDE, totalPriceAWSOrderDE);
         order_aws.clickCustomerId()
                 .checkAbsenceBlockLogsCompanyNumbers();
@@ -136,7 +136,7 @@ public class QC_1391_Firms_DE_PL_SplitBilling_SameCountries {
     }
 
     private String emailES = "qc_1391_autotestES@mailinator.com", orderNumberES;
-    private Double totalPriceES, totalPriceAWSOrderES, totalPriceInEmailES;
+    private Float totalPriceES, totalPriceAWSOrderES, totalPriceInEmailES;
 
     @DataProvider(name = "routeES", parallel = true)
     Object[] dataProviderProductsES() throws SQLException {
@@ -169,12 +169,12 @@ public class QC_1391_Firms_DE_PL_SplitBilling_SameCountries {
         totalPriceAWSOrderES = order_aws.openOrderInAwsWithLogin()
                 .checkVatStatusInOrder("Mit MwSt 23%")
                 .checkFirmConfirmationStatus("Пров. вручную")
-                .getTotalPriceOrder();
+                .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceES, totalPriceAWSOrderES);
         totalPriceAWSOrderES = order_aws.reSaveOrder()
                 .checkVatStatusInOrder("Mit MwSt 23%")
                 .checkFirmConfirmationStatus("Пров. вручную")
-                .getTotalPriceOrder();
+                .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceES, totalPriceAWSOrderES);
         order_aws.clickCustomerId()
                 .checkAbsenceBlockLogsCompanyNumbers();

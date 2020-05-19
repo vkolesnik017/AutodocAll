@@ -619,10 +619,10 @@ public class Product_page_Logic extends Product_page {
     }
 
     @Step("Get product price. Product_page")
-    public double getProductPrice() {
+    public Float getProductPrice() {
         String productPrice = productPrice().getText().replaceAll("[^0-9,]", "");
         productPrice = productPrice.replaceAll(",", ".");
-        Double doublePrise = Double.parseDouble(productPrice);
+        Float doublePrise = Float.parseFloat(productPrice);
         return doublePrise;
     }
 

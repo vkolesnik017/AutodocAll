@@ -10,8 +10,6 @@ import org.testng.Assert;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.*;
@@ -138,6 +136,10 @@ public class Order_aws {
         return $(".inf_deliveryCost");
     }
 
+    private SelenideElement deliveryCostOfHeavyLoads() {
+        return $x("//td[@class='inf_surcharge']");
+    }
+
     // Adding product to order menu
     private SelenideElement addingBtn() {
         return $(By.xpath("//div[@class='dt_gal_actions']/a[@class='btn btn-success']"));
@@ -170,6 +172,103 @@ public class Order_aws {
     ElementsCollection sellingPriceOfAddedGoods() {
         return $$x("//a[@class='payment-in-order']//abbr");
     }
+
+    // locators and methods for block of status order (Status ändern)
+
+    private SelenideElement selectorOfStatuses() {
+        return $x("//select[@id='form_OrderStatus[newStatus]']");
+    }
+
+    private SelenideElement statusOrder() {
+        return $("a.btn-link.btn-ajaxmode");
+    }
+
+    // locator and methods for block of delivery info (Versandinfo)
+
+    private SelenideElement deliveryInfoRadioGLS() {
+        return $x("//input[@value='GLS' and contains(@name,'Delivery[0]')]");
+    }
+
+    private SelenideElement deliveryInfoSendungsnummerField() {
+        return $(byId("form_OrderDelivery[0][DeliveryNr]"));
+    }
+
+    private SelenideElement packageContentButton() {
+        return $("[name='packageContent']");
+    }
+
+    // Block with Products
+
+    private SelenideElement reclamationButton() {
+        return $(".show-reclamation");
+    }
+
+    private SelenideElement sellingProductPrice() {
+        return $x("//table[@id='table_order_products_list']//td[13]/a");
+    }
+
+    private SelenideElement deliveryDeliveryPriceOrderAWS() {
+        return $(".inf_deliveryCost > a");
+    }
+
+    private SelenideElement heavyLoadsDeliveryPriceOrderAWS() {
+        return $(".inf_surcharge > a");
+    }
+
+    // locators and methods for Popup of reclamation, appears after click reclamation button
+    private SelenideElement addNewReclamationButton() {
+        return $(byId("addNewReclamation"));
+    }
+
+    private SelenideElement checkBoxProductInPopupOfAddedReclamation() {
+        return $x("//input[@name='reclamationOrderProductId']");
+    }
+
+    private ElementsCollection causesReturnInSelect() {
+        return $$x("//select[@name='causes']/optgroup/option");
+    }
+
+    private SelenideElement selectWithCausesReturn() {
+        return $x("//select[@name='causes']");
+    }
+
+    private SelenideElement selectMountedOrNot() {
+        return $x("//select[contains(@id,'reclamation-mounting')]");
+    }
+
+    private ElementsCollection optionsInSelectMountedOrNot() {
+        return $$x("//select[contains(@id,'reclamation-mounting')]/option[position()>1]");
+    }
+
+    private SelenideElement formForMessage() {
+        return $(byId("reclamation-comment"));
+    }
+
+    private SelenideElement saveButtonInPopupOfReturn() {
+        return $(".btn-save");
+    }
+
+    private SelenideElement listWithReclamations() {
+        return $(byId("statistic_list"));
+    }
+
+    private SelenideElement safeOrderSelector() {
+        return $(byId("form_securityDeliveryStatusChange"));
+    }
+
+    private SelenideElement btnChangeOrderStatusInTest() {
+        return $x("//button[@class='btn btn-info']");
+    }
+
+    private SelenideElement firmConfirmationSelector() {
+        return $x("//select[@name='Order[umsatCheck]']");
+    }
+
+    private SelenideElement customerId() {
+        return $x("//div[@class='data-text']//a[@target='_blank']");
+    }
+
+
 
     private Order_aws checkWhatOrderOpened() {
         // Иногда, если заказ в AWS открыть сразу быстро после создания, он может не успеть подгрузися в AWS
@@ -232,16 +331,6 @@ public class Order_aws {
         return this;
     }
 
-    // locators and methods for block of status order (Status ändern)
-
-    private SelenideElement selectorOfStatuses() {
-        return $x("//select[@id='form_OrderStatus[newStatus]']");
-    }
-
-    private SelenideElement statusOrder() {
-        return $("a.btn-link.btn-ajaxmode");
-    }
-
     @Step
     public Order_aws checkOrderHasTestStatus() {
         statusOrder().shouldHave(text(": Testbestellungen"));
@@ -281,20 +370,6 @@ public class Order_aws {
         return this;
     }
 
-    // locator and methods for block of delivery info (Versandinfo)
-
-    private SelenideElement deliveryInfoRadioGLS() {
-        return $x("//input[@value='GLS' and contains(@name,'Delivery[0]')]");
-    }
-
-    private SelenideElement deliveryInfoSendungsnummerField() {
-        return $(byId("form_OrderDelivery[0][DeliveryNr]"));
-    }
-
-    private SelenideElement packageContentButton() {
-        return $("[name='packageContent']");
-    }
-
     @Step
     public Order_aws addDeliveryConditionGLS() {
         deliveryInfoRadioGLS().click();
@@ -304,80 +379,9 @@ public class Order_aws {
         return this;
     }
 
-    // Block with Products
-
-    private SelenideElement reclamationButton() {
-        return $(".show-reclamation");
-    }
-
-    private SelenideElement sellingProductPrice() {
-        return $x("//table[@id='table_order_products_list']//td[13]/a");
-    }
-
     @Step
     public Float getSellingProductPrice() {
         return Float.valueOf(sellingProductPrice().attr("data-sum"));
-    }
-
-    private SelenideElement deliveryDeliveryPriceOrderAWS() {
-        return $(".inf_deliveryCost > a");
-    }
-
-    private SelenideElement heavyLoadsDeliveryPriceOrderAWS() {
-        return $(".inf_surcharge > a");
-    }
-
-    // locators and methods for Popup of reclamation, appears after click reclamation button
-    private SelenideElement addNewReclamationButton() {
-        return $(byId("addNewReclamation"));
-    }
-
-    private SelenideElement checkBoxProductInPopupOfAddedReclamation() {
-        return $x("//input[@name='reclamationOrderProductId']");
-    }
-
-    private ElementsCollection causesReturnInSelect() {
-        return $$x("//select[@name='causes']/optgroup/option");
-    }
-
-    private SelenideElement selectWithCausesReturn() {
-        return $x("//select[@name='causes']");
-    }
-
-    private SelenideElement selectMountedOrNot() {
-        return $x("//select[contains(@id,'reclamation-mounting')]");
-    }
-
-    private ElementsCollection optionsInSelectMountedOrNot() {
-        return $$x("//select[contains(@id,'reclamation-mounting')]/option[position()>1]");
-    }
-
-    private SelenideElement formForMessage() {
-        return $(byId("reclamation-comment"));
-    }
-
-    private SelenideElement saveButtonInPopupOfReturn() {
-        return $(".btn-save");
-    }
-
-    private SelenideElement listWithReclamations() {
-        return $(byId("statistic_list"));
-    }
-
-    private SelenideElement safeOrderSelector() {
-        return $(byId("form_securityDeliveryStatusChange"));
-    }
-
-    private SelenideElement btnChangeOrderStatusInTest() {
-        return $x("//button[@class='btn btn-info']");
-    }
-
-    private SelenideElement firmConfirmationSelector() {
-        return $x("//select[@name='Order[umsatCheck]']");
-    }
-
-    private SelenideElement customerId() {
-        return $x("//div[@class='data-text']//a[@target='_blank']");
     }
 
 
@@ -463,23 +467,17 @@ public class Order_aws {
         return this;
     }
 
-    @Step("Check total price {expectedTotalPrice} in order AWS. Order_aws")
-    public Order_aws checkTotalPriceOrderAWS(String expectedTotalPrice) {
-        totalPriceOrder().shouldHave(text(expectedTotalPrice));
-        return this;
-    }
-
     @Step("Get total Price in Order AWS. Order_aws")
-    public Double getTotalPriceOrder() {
+    public Float getTotalPriceOrderAWS() {
         String price = totalPriceOrder().getText();
-        Double totalPriceOrder = Double.parseDouble(price);
+        Float totalPriceOrder = Float.parseFloat(price);
         return totalPriceOrder;
     }
 
     @Step("Get selling price in Order AWS. Order_aws")
-    public Double getSellingProductPriceOrderAWS() {
+    public Float getSellingProductPriceOrderAWS() {
         String price = sellingPrice().getText();
-        Double sellingPriceOrder = Double.parseDouble(price);
+        Float sellingPriceOrder = Float.parseFloat(price);
         return sellingPriceOrder;
     }
 
@@ -554,27 +552,21 @@ public class Order_aws {
     }
 
     @Step("Get total cost delivery amount {deliveryCost} and safe order {safeOrderCost}. Order_aws")
-    public String getTotaCostlDeliveryAmountAndSafeOrder(Double deliveryCost, Double safeOrderCost) {
-        Double totalDeliveryAmountAndSafeOrder = deliveryCost + safeOrderCost;
-        Pattern pattern = Pattern.compile("\\d+\\.\\d{2}");
-        Matcher matcher = pattern.matcher(String.valueOf(totalDeliveryAmountAndSafeOrder));
-        String result = null;
-        if (matcher.find()) {
-            result = matcher.group(0);
-        }
-        return String.valueOf((result));
+    public String getTotalCostDeliveryAmountAndSafeOrder(Float deliveryCost, Float safeOrderCost) {
+        Float totalDeliveryAmountAndSafeOrder = deliveryCost + safeOrderCost;
+        return String.valueOf((totalDeliveryAmountAndSafeOrder));
     }
 
-    @Step("Get the total cost {sellingCost} including delivery {deliveryCost} and safe order {safeOrderCost}. Order_aws")
-    public String getTotalCostIncludingDeliveryAndSafeOrder(Double sellingCost, Double deliveryCost , Double safeOrderCost) {
-        Double totalCost = sellingCost + deliveryCost + safeOrderCost;
-        Pattern pattern = Pattern.compile("\\d+\\.\\d{2}");
-        Matcher matcher = pattern.matcher(String.valueOf(totalCost));
-        String result = null;
-        if (matcher.find()) {
-            result = matcher.group(0);
-        }
-        return String.valueOf((result));
+    @Step("Get the total cost including selling cost {sellingCost} delivery {deliveryCost} and safe order {safeOrderCost}. Order_aws")
+    public Float getTotalCostIncludingDeliveryAndSafeOrder(Float sellingCost, Float deliveryCost , Float safeOrderCost) {
+        Float totalCost = sellingCost + deliveryCost + safeOrderCost;
+        return totalCost;
+    }
+
+    @Step("Get the total cost including selling cost {sellingCost} delivery {deliveryCost} and delivery cost of heavy loads {costOfHeavyLoads}. Order_aws")
+    public Float getTotalCostIncludingDeliveryAndDeliveryCostOfHeavyLoads(Float sellingCost, Float deliveryCost , Float costOfHeavyLoads) {
+        Float totalCost = sellingCost + deliveryCost + costOfHeavyLoads;
+        return totalCost;
     }
 
     @Step("Checks conto NR number {contoNR}. Order_aws")
@@ -589,11 +581,25 @@ public class Order_aws {
         return this;
     }
 
+    @Step("Get delivery cost in order. Order_aws")
+    public Float getDeliveryCostInOrder() {
+        String cost = deliveryCost().getText();
+        Float deliveryCost = Float.parseFloat(cost);
+        return deliveryCost;
+    }
+
+    @Step("Get delivery cost of heavy loads in order. Order_aws")
+    public Float getDeliveryCostOfHeavyLoads() {
+        String cost = deliveryCostOfHeavyLoads().getText();
+        Float deliveryCost = Float.parseFloat(cost);
+        return deliveryCost;
+    }
+
     @Step("Compares the prices of added products with the prices on the site {priceWithSite}. Order_aws")
     public Order_aws comparePriceOfAddedProductWithPricesOnSites(ArrayList priceWithSite) {
-        ArrayList <Double> list = new ArrayList<>();
+        ArrayList <Float> list = new ArrayList<>();
         for (int i = 0; i < sellingPriceOfAddedGoods().size(); i++) {
-            list.add(Double.parseDouble(sellingPriceOfAddedGoods().get(i).getText()));
+            list.add(Float.parseFloat(sellingPriceOfAddedGoods().get(i).getText()));
         }
         Assert.assertEquals(list, priceWithSite);
         return this;
@@ -601,12 +607,12 @@ public class Order_aws {
 
 
     @Step("Get the total cost of all goods including delivery{deliveryCost} and safe order{safeOrderCost}. Order_aws")
-    public Double getTotalCostOfAllGoodsAndDeliveryAndSafeOrder(Double deliveryCost, Double safeOrderCost) {
-        String costDeliveryAndSafeOrder = getTotaCostlDeliveryAmountAndSafeOrder(deliveryCost, safeOrderCost);
-        Double realCostDeliveryAndSafeOrder = Double.parseDouble(costDeliveryAndSafeOrder);
-        Double sumOfAllGoods = 0.0;
+    public Float getTotalCostOfAllGoodsAndDeliveryAndSafeOrder(Float deliveryCost, Float safeOrderCost) {
+        String costDeliveryAndSafeOrder = getTotalCostDeliveryAmountAndSafeOrder(deliveryCost, safeOrderCost);
+        Float realCostDeliveryAndSafeOrder = Float.parseFloat(costDeliveryAndSafeOrder);
+        Float sumOfAllGoods = 0.0f;
         for (int i = 0; i < sellingPriceOfAddedGoods().size(); i++) {
-            Double priceOfOneItem =  Double.parseDouble(sellingPriceOfAddedGoods().get(i).getText());
+            Float priceOfOneItem = Float.parseFloat(sellingPriceOfAddedGoods().get(i).getText());
             sumOfAllGoods = sumOfAllGoods + priceOfOneItem;
         }
         return (sumOfAllGoods + realCostDeliveryAndSafeOrder);
