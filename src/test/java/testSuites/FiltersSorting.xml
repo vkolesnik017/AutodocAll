@@ -17,20 +17,20 @@
             <class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_125_FiltersSorting_TestFilterPosition"/>
             <class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_126_FiltersSorting_TestTwoFilterAttributesInBlock"/>
             <class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_1550_FiltersSorting_TestAllFiltersAreFixedInSidebarAfterScroll"/>
-            <!--<class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_1573_FiltersSorting_TestProductOutputWithFixedFiltersInSidebar"/>-->
+            <class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_1573_FiltersSorting_TestProductOutputWithFixedFiltersInSidebar"/>
         </classes>
     </test>
 
     <test name="FiltersSorting_interaction">
         <classes>
-            <!--&lt;!&ndash;<class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_128_FiltersSorting_TestHoheAndBySideFilterInteraction"/>&ndash;&gt;-->
-            <!--&lt;!&ndash;<class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_129_FiltersSorting_TestOberflacheAndBySideFilterInteraction"/>&ndash;&gt;-->
-            <!--<class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_131_FiltersSorting_TestBremsscheibenartAndBySideFilterInteraction"/>-->
-            <!--<class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_132_FiltersSorting_TestFurprnummerAndBySideFilterInteraction"/>-->
-            <!--<class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_138_FiltersSorting_TestDurchmesserAndBySideFilterInteraction"/>-->
-            <!--<class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_139_FiltersSorting_TestBrandAndBySideFilterInteraction"/>-->
-            <!--&lt;!&ndash;<class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_140_FiltersSorting_TestHoheAndLochanzahlFilterInteraction"/>&ndash;&gt;-->
-            <!--<class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_141_FiltersSorting_TestBySideAndBrandAndSideFilterInteraction"/>-->
+            <!--<class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_128_FiltersSorting_TestHoheAndBySideFilterInteraction"/>--> <!-- Filter hohe is inactive-->
+            <!--<class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_129_FiltersSorting_TestOberflacheAndBySideFilterInteraction"/>--> <!-- Filter oberflache is inactive-->
+            <class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_131_FiltersSorting_TestBremsscheibenartAndBySideFilterInteraction"/>
+            <class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_132_FiltersSorting_TestFurprnummerAndBySideFilterInteraction"/>
+            <class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_138_FiltersSorting_TestDurchmesserAndBySideFilterInteraction"/>
+            <class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_139_FiltersSorting_TestBrandAndBySideFilterInteraction"/>
+            <!--<class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_140_FiltersSorting_TestHoheAndLochanzahlFilterInteraction"/>--> <!-- Filter hohe is inactive-->
+            <class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_141_FiltersSorting_TestBySideAndBrandAndSideFilterInteraction"/>
             <class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_142_FiltersSorting_TestBrandAndMarkFilterInteraction"/>
             <!--<class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_143_FiltersSorting_TestBrandAndGenericAndPriceFilterInteraction"/>--> <!-- Filter by price is inactive-->
         </classes>
@@ -46,11 +46,11 @@
         </classes>
     </test>
 
-    <!--<test name="FiltersSorting_bySide">--> <!-- Filter is inactive-->
+    <!--<test name="FiltersSorting_bySide">-->
         <!--<classes>-->
-            <!--&lt;!&ndash;<class name="ATD.FiltersSorting.QC_167_FiltersSorting_bySide.QC_168_TestProductOutputWithFilterBySide"/>&ndash;&gt;-->
-            <!--&lt;!&ndash;<class name="ATD.FiltersSorting.QC_167_FiltersSorting_bySide.QC_1548_TestProductOutputWithFilterBySideWithoutCar"/>&ndash;&gt;-->
-            <!--<class name="ATD.FiltersSorting.QC_167_FiltersSorting_bySide.QC_1549_TestFilterBySideSlider"/>-->
+            <!--<class name="ATD.FiltersSorting.QC_167_FiltersSorting_bySide.QC_168_TestProductOutputWithFilterBySide"/>-->
+            <!--&lt;!&ndash;<class name="ATD.FiltersSorting.QC_167_FiltersSorting_bySide.QC_1548_TestProductOutputWithFilterBySideWithoutCar"/>&ndash;&gt; &lt;!&ndash; Filter by price is inactive&ndash;&gt;-->
+            <!--&lt;!&ndash;<class name="ATD.FiltersSorting.QC_167_FiltersSorting_bySide.QC_1549_TestFilterBySideSlider"/> &ndash;&gt; &lt;!&ndash; Filter by price is inactive&ndash;&gt;-->
         <!--</classes>-->
     <!--</test>-->
 
@@ -66,11 +66,11 @@
         </classes>
     </test>
 
-    <!--<test name="FiltersSorting_byRating">--> <!-- Filter is inactive-->
-        <!--<classes>-->
-            <!--<class name="ATD.FiltersSorting.QC_185_FiltersSorting_byRating.QC_186_FiltersSorting_TestOutputWithFilterByRating"/>-->
-        <!--</classes>-->
-    <!--</test>-->
+    <test name="FiltersSorting_byRating">
+        <classes>
+            <class name="ATD.FiltersSorting.QC_185_FiltersSorting_byRating.QC_186_FiltersSorting_TestOutputWithFilterByRating"/>
+        </classes>
+    </test>
 
     <test name="FiltersSorting_outputSorting">
         <classes>
