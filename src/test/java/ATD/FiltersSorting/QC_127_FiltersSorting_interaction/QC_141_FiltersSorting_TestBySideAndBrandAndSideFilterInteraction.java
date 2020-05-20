@@ -28,10 +28,10 @@ public class QC_141_FiltersSorting_TestBySideAndBrandAndSideFilterInteraction {
 
     @DataProvider(name = "routesLKW", parallel = true)
     Object[] dataProviderLKW() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list2,lkw_category_car_list9,lkw_search");
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list2,lkw_category_car_list9");
     }
 
-    @Test
+    @Test(enabled = false)
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks by side, brand and side filters interaction LKW route search")
@@ -69,7 +69,7 @@ public class QC_141_FiltersSorting_TestBySideAndBrandAndSideFilterInteraction {
                     .checkProductTitleOnListing(brandName, true, listingPage.productTitleInListMode());
     }
 
-    @Test
+    @Test(enabled = false)
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks by side, brand and side filters interaction route without car")
@@ -88,7 +88,7 @@ public class QC_141_FiltersSorting_TestBySideAndBrandAndSideFilterInteraction {
                 .checkProductTitleOnListing(brandName, true, listingPage.productTitleInListMode());
     }
 
-    @Test
+    @Test(enabled = false)
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks by side, brand and side filters interaction route brand without car")

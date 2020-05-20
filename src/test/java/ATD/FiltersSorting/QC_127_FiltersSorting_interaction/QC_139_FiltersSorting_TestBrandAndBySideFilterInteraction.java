@@ -27,12 +27,12 @@ public class QC_139_FiltersSorting_TestBrandAndBySideFilterInteraction {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list,search2");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list");
     }
 
     @DataProvider(name = "routesLKW", parallel = true)
     Object[] dataProviderLKW() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_search,lkw_category_car_list2,lkw_category_car_list9");
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list2,lkw_category_car_list9");
     }
 
     @Test(dataProvider = "routes")
