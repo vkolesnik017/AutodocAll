@@ -51,6 +51,12 @@
         </classes>
     </test>
 
+    <test name="QC_1322_BlockTop10Products">
+        <classes>
+            <class name="ATD.ACC.QC_1322_BlockTop10Products.QC_1331_TransitionOnProductPageWithBlockTop10Products"/>
+        </classes>
+    </test>
+
 
 
 

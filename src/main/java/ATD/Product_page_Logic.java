@@ -631,4 +631,11 @@ public class Product_page_Logic extends Product_page {
         String productId = productId().getAttribute("id");
         return productId;
     }
+
+    //Method for instruments product page
+    @Step("Get title name product page")
+    public String getTitleName() {
+        return titleProductPage().getText();
+    }
+
 }
