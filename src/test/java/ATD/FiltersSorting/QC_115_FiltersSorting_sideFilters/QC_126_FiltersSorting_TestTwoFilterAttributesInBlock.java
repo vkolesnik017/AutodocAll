@@ -28,12 +28,12 @@ public class QC_126_FiltersSorting_TestTwoFilterAttributesInBlock {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2,search4,search17");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2");
     }
 
     @DataProvider(name = "routesLKW", parallel = true)
-    Object[] dataProviderLKWsearch() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_search5");
+    Object[] dataProviderLKW() throws SQLException {
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list6,lkw_category_car_list7");
     }
 
     @Test(dataProvider = "routes")
@@ -51,7 +51,7 @@ public class QC_126_FiltersSorting_TestTwoFilterAttributesInBlock {
                     .checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.langeProductAttributeGenericRoute(), listingPage.langeProductAttributeTecdocRoute());
     }
 
-    @Test(dataProvider = "routesLKW")
+    @Test(dataProvider = "routesLKW", enabled = false)
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks two filter attributes in block LKW")
@@ -81,12 +81,12 @@ public class QC_126_FiltersSorting_TestTwoFilterAttributesInBlock {
                     .checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.langeProductAttributeGenericRoute(), listingPage.langeProductAttributeTecdocRoute());
     }
 
-    @Test
+    @Test(dataProvider = "routesLKW")
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks two filter attributes in block on LKW model")
-    public void testTwoFilterAttributesLKWmodel() throws SQLException {
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list7"));
+    public void testTwoFilterAttributesLKWmodel(String route)  {
+        openPage(route);
         listingPage.clickFilterButton(listingPage.langeFilterCheckbox3())
                 .waitUntilPreloaderDisappear();
         String characteristic = listingPage.getTextFromElement(listingPage.secondValueInActiveSideFilter());
@@ -97,21 +97,6 @@ public class QC_126_FiltersSorting_TestTwoFilterAttributesInBlock {
     }
 
     @Test(enabled = false)
-    @Flaky
-    @Owner(value = "Romaniuta")
-    @Description(value = "Test checks two filter attributes in block on LKW car")
-    public void testTwoFilterAttributesLKWcar() throws Exception {
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list6"));
-        listingPage.clickFilterButton(listingPage.langeFilterCheckbox3())
-                .waitUntilPreloaderDisappearAndSleep(2000);
-        String characteristic = listingPage.getTextFromElement(listingPage.activeSideFilterAttributeLkw2());
-        listingPage.clickFilterButton(listingPage.activeSideFilterAttributeLkw2())
-                .waitUntilPreloaderDisappear()
-                .checkTextInElement(listingPage.activeSideFilterLkw(), characteristic)
-                .checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.hoheProductAttributeGenericRouteLKW(), listingPage.hoheProductAttributeTecdocRouteLKW());
-    }
-
-    @Test
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks two filter attributes in block on LKW search")

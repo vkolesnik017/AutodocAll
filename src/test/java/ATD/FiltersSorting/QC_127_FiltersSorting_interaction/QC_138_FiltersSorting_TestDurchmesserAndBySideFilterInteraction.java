@@ -20,7 +20,6 @@ import static com.codeborne.selenide.Selenide.close;
 
 public class QC_138_FiltersSorting_TestDurchmesserAndBySideFilterInteraction {
     private Listing_page_Logic listingPage = new Listing_page_Logic();
-    private DataBase dataBase = new DataBase();
 
     @BeforeClass
     void setUp() {
@@ -29,7 +28,7 @@ public class QC_138_FiltersSorting_TestDurchmesserAndBySideFilterInteraction {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list,search2");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list");
     }
 
     @Test(dataProvider = "routes")
@@ -52,7 +51,7 @@ public class QC_138_FiltersSorting_TestDurchmesserAndBySideFilterInteraction {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks Durchmesser and by side filters interaction LKW route")
     public void testDurchmesserAndSideFilterInteractionLKW() throws SQLException {
-        openPage("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_category_car_list9"));
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list9"));
         String durchmesserValue = listingPage.getTextFromElement(listingPage.durchmesserSideFilterButtonSecondValue());
         listingPage.clickFilterButton(listingPage.durchmesserSideFilterButtonSecondValue())
                 .waitUntilPreloaderDisappear()
@@ -67,7 +66,7 @@ public class QC_138_FiltersSorting_TestDurchmesserAndBySideFilterInteraction {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks Durchmesser and by side filters interaction LKW route")
     public void testDurchmesserAndSideFilterInteractionLKW2() throws SQLException {
-        openPage("https://lkwteile.autodoc.de/" + dataBase.getRouteByRouteName("DE", "lkw_category_car_list2"));
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list2"));
         String durchmesserValue = listingPage.getTextFromElement(listingPage.durchmesserSideFilterButton());
         listingPage.clickFilterButton(listingPage.durchmesserSideFilterButton())
                 .waitUntilPreloaderDisappear()

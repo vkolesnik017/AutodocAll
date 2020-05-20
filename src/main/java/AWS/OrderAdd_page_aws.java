@@ -156,6 +156,16 @@ public class OrderAdd_page_aws {
         return $x("(//div[@class='w-box'])[5]");
     }
 
+    private SelenideElement deliveryCountrySelector(String country) {
+        return $x("//select[@name='Order[delivery_country_id]']//option[text()='" + country + "']");
+    }
+
+    @Step("Chooses delivery country {country}. OrderAdd_page_aws")
+    public OrderAdd_page_aws choosesDeliveryCountry(String country) {
+        deliveryCountrySelector(country).click();
+        return this;
+    }
+
     @Step("Click save order button. OrderAdd_page_aws")
     public Order_aws clickSaveOrderBtn() {
         saveOrderBtn().click();

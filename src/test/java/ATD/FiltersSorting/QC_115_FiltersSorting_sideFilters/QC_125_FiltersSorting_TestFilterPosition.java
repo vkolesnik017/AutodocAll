@@ -28,7 +28,7 @@ public class QC_125_FiltersSorting_TestFilterPosition {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2,search4,search5,search17");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2");
     }
 
     @DataProvider(name = "routesLKW", parallel = true)
@@ -60,19 +60,19 @@ public class QC_125_FiltersSorting_TestFilterPosition {
                 .checkTextInElement(listingPageLogic.activeSideFilterLkwCheckbox(), characteristic);
     }
 
-    @Test(enabled = false)
+    @Test
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks filter position on LKW car")
     public void testFilterPositionLKWcar() throws SQLException{
         openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list6"));
-        String characteristic = listingPageLogic.getTextFromElement(listingPageLogic.langeFilterAttribute2());
-        listingPageLogic.clickFilterButton(listingPageLogic.langeFilterCheckbox2())
+        String characteristic = listingPageLogic.getTextFromElement(listingPageLogic.verschleisswarnkontaktSecondButtonInSidebar());
+        listingPageLogic.clickFilterButton(listingPageLogic. verschleisswarnkontaktSecondButtonInSidebar())
                 .waitUntilPreloaderDisappear()
-                .checkTextInElement(listingPageLogic.activeSideFilterLkw(), characteristic);
+                .checkTextInElement(listingPageLogic.verschleisswarnkontaktFirstButtonInSidebar(), characteristic);
     }
 
-    @Test
+    @Test(enabled = false)
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks filter position on LKW search")
@@ -96,7 +96,7 @@ public class QC_125_FiltersSorting_TestFilterPosition {
                 .checkTextInElement(listingPageLogic.sideFilterOenAttribute2(), characteristic);
     }
 
-    @Test(dataProvider = "routesLKW")
+    @Test(dataProvider = "routesLKW", enabled = false)
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks filter position LKW")

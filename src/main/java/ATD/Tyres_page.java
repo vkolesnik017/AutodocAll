@@ -52,4 +52,6 @@ public class Tyres_page {
 
   SelenideElement speedIndexHinDropdown() { return $x("//*[@id='SpeedIndex_h']/../label"); }
 
+  SelenideElement allBrandsButton() { return $(".tyres-brands-link > a"); }
+
 }

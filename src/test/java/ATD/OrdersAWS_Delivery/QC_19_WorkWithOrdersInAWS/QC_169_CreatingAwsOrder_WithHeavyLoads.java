@@ -23,11 +23,10 @@ import static ATD.SetUp.setUpBrowser;
 import static AWS.SearchOrders_page_aws.searchOrderPageURL;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_21_CreatingAwsOrder {
+public class QC_169_CreatingAwsOrder_WithHeavyLoads {
 
     private String userID = "15089943", articleNum;
-    private Float deliveryCost, safeOrderCost, productCostInOrder, totalProductCostIncludingDeliveryAndSafeOrder,
-            totalDeliveryAmountAndSafeOrder, productCost, totalCostInOrder;
+    private Float  productCost, deliveryCost, deliveryCostInOrder, sellingCostInOrder, deliveryCostOfHeavyLoads, totalCostInOrder, costIncludingDeliveryInOrder;
     private ArrayList userDataInCreateOrder, userData, userDataInOrder;
 
     private Product_page_Logic product_page_logic = new Product_page_Logic();
@@ -41,14 +40,14 @@ public class QC_21_CreatingAwsOrder {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product2");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "HeavyLoasdProduct1");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks creating order in AWS")
-    public void testCreatingOrderInAWS(String route) {
+    @Description(value = "Test checks creating order in AWS with heavy loads")
+    public void testCreatingOrderInAwsWithWithHeavyLoads(String route) throws SQLException {
         openPage(route);
         articleNum = product_page_logic.getArticleNumber();
         productCost = product_page_logic.getProductPrice();
@@ -63,8 +62,6 @@ public class QC_21_CreatingAwsOrder {
         orderAdd_page_aws.selectedPaymentMethod("PayPal");
         deliveryCost = orderAdd_page_aws.selectedDeliveryMethod("Standardversand")
                 .getDeliveryCost();
-        safeOrderCost = orderAdd_page_aws.selectedStatusInSafeOrder("Включен")
-                .getSafeOrderCost();
         userDataInOrder = orderAdd_page_aws.addProduct(articleNum)
                 .checkPresenceTableOfSuppliersAndClickBtnSelect()
                 .checkArticleOfAddedProduct(articleNum)
@@ -72,32 +69,34 @@ public class QC_21_CreatingAwsOrder {
                 .checkOrderHasTestStatus()
                 .getUserDataInOrder();
         Assert.assertEquals(userData, userDataInOrder);
-        order_aws.checkVatStatusInOrder("Mit MwSt 19%")
+        deliveryCostInOrder = order_aws.checkVatStatusInOrder("Mit MwSt 19%")
                 .checkPaymentMethodInOrder("PayPal")
-                .checkThatStatusSafeOrderIsOn();
-        totalDeliveryAmountAndSafeOrder = order_aws.getTotalCostDeliveryAmountAndSafeOrder(deliveryCost, safeOrderCost);
-        productCostInOrder = order_aws.checkDeliveryPriceOrderAWS(totalDeliveryAmountAndSafeOrder)
+                .checkThatStatusSafeOrderIsOff()
                 .checkContoNR("30047")
-                .getSellingProductPriceOrderAWS();
-        Assert.assertEquals(productCost, productCostInOrder);
-        totalProductCostIncludingDeliveryAndSafeOrder = order_aws.getTotalCostIncludingDeliveryAndSafeOrder(productCostInOrder, deliveryCost, safeOrderCost);
+                .getDeliveryCostInOrder();
+        Assert.assertEquals(deliveryCost, deliveryCostInOrder);
+        sellingCostInOrder = order_aws.getSellingProductPriceOrderAWS();
+        Assert.assertEquals(productCost, sellingCostInOrder);
+        deliveryCostOfHeavyLoads = order_aws.getDeliveryCostOfHeavyLoads();
         totalCostInOrder = order_aws.getTotalPriceOrderAWS();
-        Assert.assertEquals(totalCostInOrder, totalProductCostIncludingDeliveryAndSafeOrder);
-        order_aws.reSaveOrder();
-        userDataInOrder = order_aws.checkOrderHasTestStatus()
+        costIncludingDeliveryInOrder = order_aws.getTotalCostIncludingDeliveryAndDeliveryCostOfHeavyLoads(sellingCostInOrder, deliveryCost, deliveryCostOfHeavyLoads);
+        Assert.assertEquals(totalCostInOrder, costIncludingDeliveryInOrder);
+        order_aws.reSaveOrder()
+                .checkOrderHasTestStatus()
                 .getUserDataInOrder();
         Assert.assertEquals(userData, userDataInOrder);
-        order_aws.checkVatStatusInOrder("Mit MwSt 19%")
+        deliveryCostInOrder = order_aws.checkVatStatusInOrder("Mit MwSt 19%")
                 .checkPaymentMethodInOrder("PayPal")
-                .checkThatStatusSafeOrderIsOn();
-        totalDeliveryAmountAndSafeOrder = order_aws.getTotalCostDeliveryAmountAndSafeOrder(deliveryCost, safeOrderCost);
-        productCostInOrder = order_aws.checkDeliveryPriceOrderAWS(totalDeliveryAmountAndSafeOrder)
+                .checkThatStatusSafeOrderIsOff()
                 .checkContoNR("30047")
-                .getSellingProductPriceOrderAWS();
-        Assert.assertEquals(productCost, productCostInOrder);
-        totalProductCostIncludingDeliveryAndSafeOrder = order_aws.getTotalCostIncludingDeliveryAndSafeOrder(productCostInOrder, deliveryCost, safeOrderCost);
+                .getDeliveryCostInOrder();
+        Assert.assertEquals(deliveryCost, deliveryCostInOrder);
+        sellingCostInOrder = order_aws.getSellingProductPriceOrderAWS();
+        Assert.assertEquals(productCost, sellingCostInOrder);
+        deliveryCostOfHeavyLoads = order_aws.getDeliveryCostOfHeavyLoads();
         totalCostInOrder = order_aws.getTotalPriceOrderAWS();
-        Assert.assertEquals(totalCostInOrder, totalProductCostIncludingDeliveryAndSafeOrder);
+        costIncludingDeliveryInOrder = order_aws.getTotalCostIncludingDeliveryAndDeliveryCostOfHeavyLoads(sellingCostInOrder, deliveryCost, deliveryCostOfHeavyLoads);
+        Assert.assertEquals(totalCostInOrder, costIncludingDeliveryInOrder);
     }
 
     @AfterMethod
