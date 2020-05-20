@@ -45,6 +45,12 @@
         </classes>
     </test>
 
+    <test name="QC_929_BlockCategoriesLogicalUnionOnMainAccessories">
+        <classes>
+            <class name="ATD.ACC.QC_929_BlockCategoriesLogicalUnionOnMainAccessories.QC_937_RedirectToListingFromTheCategoryLogicalUnion"/>
+        </classes>
+    </test>
+
 
 
 

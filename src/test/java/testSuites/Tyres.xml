@@ -45,4 +45,16 @@
         </classes>
     </test>
 
+    <test name="QC_1272_TyresMainPage">
+        <classes>
+            <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_1336_GoToAllBrandsPageFromTyresMainPage"/>
+        </classes>
+    </test>
+    
+    <test name="QC_1367_TyresProductPage">
+        <classes>
+            <class name="ATD.Tyres.QC_1367_TyresProductPage.QC_1377_GoToDeliveryPageFromTyresProductPage"/>
+        </classes>
+    </test>
+
 </suite>

@@ -27,12 +27,12 @@ public class QC_186_FiltersSorting_TestOutputWithFilterByRating {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list,search15");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list");
     }
 
     @DataProvider(name = "routesLKW", parallel = true)
     Object[] dataProviderLKW() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_search4,lkw_category_car_list8");
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list8");
     }
 
 

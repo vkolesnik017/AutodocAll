@@ -24,7 +24,13 @@ class Index_accessories_page {
         return  $x("//div[@class='top-product-block']");
     }
 
+    SelenideElement catalogFirstGroup() {
+        return $x("//div[@class='accessories-catalog__row'][1]/div[@class='accessories-catalog__group'][1]");
+    }
 
+    SelenideElement secondCategoryInLogicalUnion(){
+        return $x("//div[@class='accessories-catalog__categories' and @style='display: block;']//li[2]");
+    }
 
 
 }

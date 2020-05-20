@@ -20,7 +20,6 @@ import static com.codeborne.selenide.Selenide.close;
 
 public class QC_120_FiltersSorting_TestWischblattausfuhrung {
     private Listing_page_Logic listingPage = new Listing_page_Logic();
-    private DataBase dataBase = new DataBase();
 
     @BeforeClass
     void setUp() {
@@ -29,7 +28,7 @@ public class QC_120_FiltersSorting_TestWischblattausfuhrung {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2,search4,search17,search18");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2");
     }
 
     @DataProvider(name = "routesLKWsearch", parallel = true)
@@ -54,14 +53,14 @@ public class QC_120_FiltersSorting_TestWischblattausfuhrung {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks Wischblattausfuhrung side filter LKW")
     public void testWischblattausfuhrungFilterLKw() throws SQLException {
-        openPage("https://lkwteile.autodoc.de/" +  dataBase.getRouteByRouteName("DE", "lkw_category_car_list"));
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list"));
         String characteristic = listingPage.getTextFromElement(listingPage.wischblattausfuhrungFilterAttribute());
         listingPage.clickFilterButton(listingPage.wischblattausfuhrungFilterCheckbox())
                     .waitUntilPreloaderDisappear()
                     .checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.wischblattausfuhrungProductAttributeGenericRoute(), listingPage.wischblattausfuhrungProductAttributeTecdocRoute());
     }
 
-    @Test(dataProvider = "routesLKWsearch")
+    @Test(dataProvider = "routesLKWsearch", enabled = false)
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks Wischblattausfuhrung side filter LKW search")

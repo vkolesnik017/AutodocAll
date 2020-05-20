@@ -28,7 +28,7 @@ public class QC_122_FiltersSorting_TestSideFilterWithPagination {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2,search4");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2");
     }
 
     @Test(dataProvider = "routes")
@@ -45,7 +45,7 @@ public class QC_122_FiltersSorting_TestSideFilterWithPagination {
                     .checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.langeProductAttributeGenericRoute(), listingPage.langeProductAttributeTecdocRoute());
     }
 
-    @Test
+    @Test(enabled = false)
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks side filter with pagination search")
