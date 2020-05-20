@@ -23,7 +23,7 @@ import static com.codeborne.selenide.Selenide.close;
 public class QC_1488_ChecksVerificationIslands_BillingIsUndivided_NegativeCase {
 
     private String email = "qc_1488_autotestDE@mailinator.com", orderNumber;
-    private Double totalPrice, totalPriceAWSOrder, totalPriceInEmail;
+    private Float totalPrice, totalPriceAWSOrder, totalPriceInEmail;
 
     @BeforeClass
     void setUp() {
@@ -66,7 +66,7 @@ public class QC_1488_ChecksVerificationIslands_BillingIsUndivided_NegativeCase {
         totalPriceAWSOrder = order_aws.openOrderInAwsWithLogin()
                 .checkVatStatusInOrder("Mit MwSt 20%")
                 .checkDeliveryPriceOrderAWS("9.95")
-                .getTotalPriceOrder();
+                .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
         order_aws.reSaveOrder()
                 .checkVatStatusInOrder("Mit MwSt 20%")

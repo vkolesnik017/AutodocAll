@@ -23,7 +23,8 @@ import static com.codeborne.selenide.Selenide.close;
 public class QC_1494_ChecksVerificationIslandsAndFirm_BillingIsUndivided_CorrectCompanyData {
 
     private String email = "qc_1494_autotestDE@mailinator.com", orderNumber;
-    private Double totalPrice, totalPriceAWSOrder, totalPriceInEmail;
+    private Float totalPrice, totalPriceInEmail;
+    private Float totalPriceAWSOrder;
 
     @BeforeClass
     void setUp() {
@@ -58,7 +59,7 @@ public class QC_1494_ChecksVerificationIslandsAndFirm_BillingIsUndivided_Correct
         totalPriceAWSOrder = order_aws.openOrderInAwsWithLogin()
                 .checkVatStatusInOrder("Ohne Mwst")
                 .checkDeliveryPriceOrderAWS("13")
-                .getTotalPriceOrder();
+                .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
         order_aws.reSaveOrder()
                 .checkVatStatusInOrder("Ohne Mwst")

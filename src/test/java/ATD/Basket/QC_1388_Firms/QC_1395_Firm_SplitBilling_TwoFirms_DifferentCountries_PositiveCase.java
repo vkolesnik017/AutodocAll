@@ -26,7 +26,7 @@ import static com.codeborne.selenide.Selenide.switchTo;
 public class QC_1395_Firm_SplitBilling_TwoFirms_DifferentCountries_PositiveCase {
 
 
-    private double regularProductPricePerAllDataPageGB, priceWithVatPerAllDataPageGB, priceProductPerProductPageGB,
+    private Float regularProductPricePerAllDataPageGB, priceWithVatPerAllDataPageGB, priceProductPerProductPageGB,
             totalPriceGB, totalPriceAWSOrderGB, totalPriceInEmailGB, sellingPriceAWSOrderGB, prunedProductPriceGB, prunedPriceWithVatGB, unitPriceGB;
     private String emailGB = "qc_1395_autotestGB@mailinator.com", vatForGB, orderNumberGB;
 
@@ -80,12 +80,12 @@ public class QC_1395_Firm_SplitBilling_TwoFirms_DifferentCountries_PositiveCase 
         totalPriceAWSOrderGB = order_aws.openOrderInAwsWithoutLoginAndCheckTestIcon()
                 .checkVatStatusInOrder("Ohne Mwst")
                 .checkFirmConfirmationStatus("ДА/auto")
-                .getTotalPriceOrder();
+                .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceGB, totalPriceAWSOrderGB);
         totalPriceAWSOrderGB = order_aws.reSaveOrder()
                 .checkVatStatusInOrder("Ohne Mwst")
                 .checkFirmConfirmationStatus("ДА/auto")
-                .getTotalPriceOrder();
+                .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceGB, totalPriceAWSOrderGB);
         sellingPriceAWSOrderGB = order_aws.getSellingProductPriceOrderAWS();
         switchTo().window(0);
@@ -110,7 +110,7 @@ public class QC_1395_Firm_SplitBilling_TwoFirms_DifferentCountries_PositiveCase 
     }
 
 
-    private double regularProductPricePerAllDataPageDE, priceWithVatPerAllDataPageDE, priceProductPerProductPageDE,
+    private Float regularProductPricePerAllDataPageDE, priceWithVatPerAllDataPageDE, priceProductPerProductPageDE,
             totalPriceDE, totalPriceAWSOrderDE, totalPriceInEmailDE, sellingPriceAWSOrderDE, prunedProductPriceDE, prunedPriceWithVatDE, unitPriceDE;
     private String emailDE = "qc_1395_autotestDE@mailinator.com", vatForDE, orderNumberDE;
 
@@ -156,12 +156,12 @@ public class QC_1395_Firm_SplitBilling_TwoFirms_DifferentCountries_PositiveCase 
         totalPriceAWSOrderDE = order_aws.openOrderInAwsWithoutLoginAndCheckTestIcon()
                 .checkVatStatusInOrder("Ohne Mwst")
                 .checkFirmConfirmationStatus("ДА/auto")
-                .getTotalPriceOrder();
+                .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceDE, totalPriceAWSOrderDE);
         totalPriceAWSOrderDE = order_aws.reSaveOrder()
                 .checkVatStatusInOrder("Ohne Mwst")
                 .checkFirmConfirmationStatus("ДА/auto")
-                .getTotalPriceOrder();
+                .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceDE, totalPriceAWSOrderDE);
         sellingPriceAWSOrderDE = order_aws.getSellingProductPriceOrderAWS();
         switchTo().window(0);

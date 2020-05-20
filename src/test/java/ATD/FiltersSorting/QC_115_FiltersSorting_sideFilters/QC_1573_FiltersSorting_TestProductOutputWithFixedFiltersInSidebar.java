@@ -52,10 +52,7 @@ public class QC_1573_FiltersSorting_TestProductOutputWithFixedFiltersInSidebar {
     @Description(value = "Test checks All Filters Are Fixed In Sidebar After Scroll Route Search")
     public void testProductOutputWithFixedFiltersInSidebarRouteSearch() throws SQLException {
         openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "search21"));
-        new Listing_page_Logic().checkOutputWithFiltersByBrandFixInSidebarRouteSearch(0)
-                                .checkOutputWithFiltersBySideFixInSidebarSearchRoute("Vorderachse")
-                                .checkfurprNummerFilterFixInSidebar()
-                                .checkVerschleisswarnkontaktFilterFixInSidebar();
+        new Listing_page_Logic().checkOutputWithFiltersByBrandFixInSidebarRouteSearch(0);
     }
 
     @Test(dataProvider = "routesLKW")
@@ -75,11 +72,7 @@ public class QC_1573_FiltersSorting_TestProductOutputWithFixedFiltersInSidebar {
     @Description(value = "Test checks All Filters Are Fixed In Sidebar After Scroll Route LKW Search")
     public void testProductOutputWithFixedFiltersInSidebarRouteLKWsearch() throws SQLException {
         openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_search"));
-        new Listing_page_Logic().checkOutputWithFiltersByBrandFixInSidebar(2)
-                                .checkOutputWithFiltersBySideFixInSidebar("Vorderachse")
-                                .checkOutputWithFiltersByRatingFixInSidebar()
-                                .checkDurchmesserFilterFixInSidebar()
-                                .checkBremsscheibenartFilterFixInSidebar();
+        new Listing_page_Logic().checkOutputWithFiltersByBrandFixInSidebar(2);
     }
 
     @AfterMethod

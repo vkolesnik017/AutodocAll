@@ -1,7 +1,6 @@
 package ATD.Basket.QC_1486_Island;
 
 import ATD.CartAllData_page_Logic;
-import ATD.Payment_handler_page_Logic;
 import ATD.Search_page_Logic;
 import ATD.SetUp;
 import AWS.Order_aws;
@@ -24,7 +23,7 @@ import static com.codeborne.selenide.Selenide.close;
 public class QC_1490_ChecksVerificationIslands_BillingIsDivided_NegativeCase {
 
     private String email = "qc_1490_autotestDE@mailinator.com",orderNumber;
-    private Double totalPrice, totalPriceAWSOrder, totalPriceInEmail;
+    private Float totalPrice, totalPriceAWSOrder, totalPriceInEmail;
 
     @BeforeClass
     void setUp() {
@@ -58,7 +57,7 @@ public class QC_1490_ChecksVerificationIslands_BillingIsDivided_NegativeCase {
         totalPriceAWSOrder = order_aws.openOrderInAwsWithLogin()
                 .checkVatStatusInOrder("Mit MwSt 20%")
                 .checkDeliveryPriceOrderAWS("9.95")
-                .getTotalPriceOrder();
+                .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
         order_aws.reSaveOrder()
                 .checkVatStatusInOrder("Mit MwSt 20%")

@@ -28,7 +28,7 @@ public class QC_124_FiltersSorting_TestSideFilterCancelling {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2,search4,search5,search17");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2");
     }
 
     @DataProvider(name = "routesLKW", parallel = true)
@@ -53,20 +53,20 @@ public class QC_124_FiltersSorting_TestSideFilterCancelling {
         listingPage.checkFilterIsCanceled(numberOfAttributesFilter, numberOfAttributesNoFilter);
     }
 
-    @Test(enabled = false)
+    @Test
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks side filter cancelling on LKW routes")
     public void testSideFilterCancellingLKWcar() throws SQLException {
         openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list6"));
-        String characteristic = listingPage.getTextFromElement(listingPage.langeFilterAttribute2());
-        listingPage.clickFilterButton(listingPage.langeFilterCheckbox2())
+        String characteristic = listingPage.getTextFromElement(listingPage.verschleisswarnkontaktFirstButtonInSidebar());
+        listingPage.clickFilterButton(listingPage.verschleisswarnkontaktFirstButtonInSidebar())
                     .waitUntilPreloaderDisappear()
-                    .checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.hoheProductAttributeGenericRouteLKW(), listingPage.hoheProductAttributeTecdocRouteLKW());
-        int numberOfAttributesFilter = listingPage.getSizeOfCollection(listingPage.hoheProductAttributeTecdocRoute());
-        listingPage.clickFilterButton(listingPage.activeSideFilterLkw())
+                    .checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.verschleiswarnkontaktProductAttributeGenericRouteLKW(), listingPage.verschleiswarnkontaktProductAttributeTecdocRouteLKW());
+        int numberOfAttributesFilter = listingPage.getSizeOfCollection(listingPage.verschleiswarnkontaktProductAttributeTecdocRouteLKW());
+        listingPage.clickFilterButton(listingPage.verschleisswarnkontaktFirstButtonInSidebar())
                     .waitUntilPreloaderDisappear();
-        int numberOfAttributesNoFilter = listingPage.getSizeOfCollection(listingPage.hoheProductAttributeTecdocRoute());
+        int numberOfAttributesNoFilter = listingPage.getSizeOfCollection(listingPage.verschleiswarnkontaktProductAttributeTecdocRouteLKW());
         listingPage.checkFilterIsCanceled(numberOfAttributesFilter, numberOfAttributesNoFilter);
     }
 
@@ -87,7 +87,7 @@ public class QC_124_FiltersSorting_TestSideFilterCancelling {
         listingPage.checkFilterIsCanceled(numberOfAttributesFilter, numberOfAttributesNoFilter);
     }
 
-    @Test
+    @Test(enabled = false)
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks side filter cancelling on LKW routes")
@@ -104,7 +104,7 @@ public class QC_124_FiltersSorting_TestSideFilterCancelling {
         listingPage.checkFilterIsCanceled(numberOfAttributesFilter, numberOfAttributesNoFilter);
     }
 
-    @Test(dataProvider = "routesLKW")
+    @Test(dataProvider = "routesLKW", enabled = false)
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks side filter cancelling")

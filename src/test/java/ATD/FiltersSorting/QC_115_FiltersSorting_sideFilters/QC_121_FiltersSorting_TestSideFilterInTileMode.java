@@ -28,7 +28,7 @@ public class QC_121_FiltersSorting_TestSideFilterInTileMode {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2,search4,search17");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2");
     }
 
     @DataProvider(name = "routesLKWsearch", parallel = true)
@@ -64,7 +64,7 @@ public class QC_121_FiltersSorting_TestSideFilterInTileMode {
                 .checkProductAttributeOnListingInTileMode(characteristic, listingPage.langeProductAttributeTecdocRouteLKW());
     }
 
-    @Test(dataProvider = "routesLKWsearch")
+    @Test(dataProvider = "routesLKWsearch", enabled = false)
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks side filter in tile mode LKW search")

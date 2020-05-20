@@ -27,14 +27,14 @@ import static com.codeborne.selenide.Selenide.close;
 public class QC_562_CreatingAwsOrder_WithDropProductAndRegularProduct {
 
     private String userID = "15089943", articleNum, dropArticleNun, productDropArticleID, totalDeliveryAmountAndSafeOrder;
-    private Double productCost, productDropCost, totalProductCostInOrder, deliveryCost, safeOrderCost, productPriceIncludingDeliveryAndSafeOrder;
+    private Float deliveryCost, safeOrderCost, productPriceIncludingDeliveryAndSafeOrder, productCost, productDropCost, totalProductCostInOrder;
     private ArrayList userDataInCreateOrder, userData, userDataInOrder;
 
 
     private Product_page_Logic product_page_logic = new Product_page_Logic();
     private OrderAdd_page_aws orderAdd_page_aws = new OrderAdd_page_aws();
     private Order_aws order_aws = new Order_aws();
-    private ArrayList <Double> allProductCost = new ArrayList<>();
+    private ArrayList <Float> allProductCost = new ArrayList<>();
 
     @BeforeClass
     void setUp() {
@@ -86,11 +86,11 @@ public class QC_562_CreatingAwsOrder_WithDropProductAndRegularProduct {
         order_aws.checkVatStatusInOrder("Mit MwSt 19%")
                 .checkPaymentMethodInOrder("PayPal")
                 .checkThatStatusSafeOrderIsOn();
-        totalDeliveryAmountAndSafeOrder = order_aws.getTotaCostlDeliveryAmountAndSafeOrder(deliveryCost, safeOrderCost);
+        totalDeliveryAmountAndSafeOrder = order_aws.getTotalCostDeliveryAmountAndSafeOrder(deliveryCost, safeOrderCost);
         totalProductCostInOrder = order_aws.checkDeliveryPriceOrderAWS(totalDeliveryAmountAndSafeOrder)
                 .checkContoNR("30047")
                 .comparePriceOfAddedProductWithPricesOnSites(allProductCost)
-                .getTotalPriceOrder();
+                .getTotalPriceOrderAWS();
         productPriceIncludingDeliveryAndSafeOrder = order_aws.getTotalCostOfAllGoodsAndDeliveryAndSafeOrder(deliveryCost, safeOrderCost);
         Assert.assertEquals(totalProductCostInOrder, productPriceIncludingDeliveryAndSafeOrder);
         order_aws.reSaveOrder()
@@ -100,11 +100,11 @@ public class QC_562_CreatingAwsOrder_WithDropProductAndRegularProduct {
         order_aws.checkVatStatusInOrder("Mit MwSt 19%")
                 .checkPaymentMethodInOrder("PayPal")
                 .checkThatStatusSafeOrderIsOn();
-        totalDeliveryAmountAndSafeOrder = order_aws.getTotaCostlDeliveryAmountAndSafeOrder(deliveryCost, safeOrderCost);
+        totalDeliveryAmountAndSafeOrder = order_aws.getTotalCostDeliveryAmountAndSafeOrder(deliveryCost, safeOrderCost);
         totalProductCostInOrder = order_aws.checkDeliveryPriceOrderAWS(totalDeliveryAmountAndSafeOrder)
                 .checkContoNR("30047")
                 .comparePriceOfAddedProductWithPricesOnSites(allProductCost)
-                .getTotalPriceOrder();
+                .getTotalPriceOrderAWS();
         productPriceIncludingDeliveryAndSafeOrder = order_aws.getTotalCostOfAllGoodsAndDeliveryAndSafeOrder(deliveryCost, safeOrderCost);
         Assert.assertEquals(totalProductCostInOrder, productPriceIncludingDeliveryAndSafeOrder);
 
