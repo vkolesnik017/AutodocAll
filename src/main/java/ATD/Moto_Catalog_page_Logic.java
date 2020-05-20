@@ -28,9 +28,37 @@ public class Moto_Catalog_page_Logic extends Moto_Catalog_page {
         return page(LKW_main_page_Logic.class);
     }
 
-    @Step(" availability Of Moto Selector. Moto_Catalog_page")
+    @Step(" availability Of Moto Selector .Moto_Catalog_page")
     public Moto_Catalog_page_Logic availabilityOfMotoSelector() {
         motoSelectorBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step(" appears of tooltip for marke field in selector .Moto_Catalog_page")
+    public Moto_Catalog_page_Logic visibilityOfToolTipForMarkeField() {
+        motoSelectorBlock().shouldBe(visible).click();
+        mainFormOfSelector().shouldBe(visible);
+        if (!brandOfMotoSelector().getSelectedValue().equals("0")) {
+            brandOfMotoSelector().selectOptionByValue("0");
+        }
+        btnSearchAtSelector().click();
+        toolTipForBrandFieldInSelector().shouldBe(visible);
+        return this;
+    }
+
+    @Step(" appears of tooltip for model field in selector .Moto_Catalog_page")
+    public Moto_Catalog_page_Logic visibilityOfToolTipForModelField() {
+        brandOfMotoSelector().selectOptionByValue("4057");
+        btnSearchAtSelector().click();
+        toolTipForModelFieldInSelector().shouldBe(visible);
+        return this;
+    }
+
+    @Step(" appears of tooltip for motor field in selector .Moto_Catalog_page")
+    public Moto_Catalog_page_Logic visibilityOfToolTipForMotorField() {
+        modelOfMotoSelector().selectOptionByValue("13475");
+        btnSearchAtSelector().click();
+        toolTipForMotorFieldInSelector().shouldBe(visible);
         return this;
     }
 

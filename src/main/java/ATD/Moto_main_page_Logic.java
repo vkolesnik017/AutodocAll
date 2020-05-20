@@ -116,4 +116,28 @@ public class Moto_main_page_Logic extends Moto_main_page {
         motorSelectorBlock().shouldBe(visible);
         return this;
     }
+
+
+    @Step(" appears of tooltip for marke field in selector .Moto_main_page")
+    public Moto_main_page_Logic visibilityOfToolTipForMarkeField() {
+        btnSearchInSelector().shouldBe(visible).click();
+        toolTipForBrandFieldInSelector().shouldBe(visible);
+        return this;
+    }
+
+    @Step(" appears of tooltip for model field in selector .Moto_main_page")
+    public Moto_main_page_Logic visibilityOfToolTipForModelField() {
+        markeOfHorizontalMotoSelector().selectOptionByValue("4057");
+        btnSearchInSelector().click();
+        toolTipForModelFieldInSelector().shouldBe(visible);
+        return this;
+    }
+
+    @Step(" appears of tooltip for motor field in selector .Moto_main_page")
+    public Moto_main_page_Logic visibilityOfToolTipForMotorField() {
+        modelOfHorizontalMotoSelector().selectOptionByValue("13475");
+        btnSearchInSelector().click();
+        toolTipForMotorFieldInSelector().shouldBe(visible);
+        return this;
+    }
 }
