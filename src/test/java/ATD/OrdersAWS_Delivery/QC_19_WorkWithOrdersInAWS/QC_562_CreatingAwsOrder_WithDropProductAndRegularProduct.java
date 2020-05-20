@@ -26,8 +26,9 @@ import static com.codeborne.selenide.Selenide.close;
 
 public class QC_562_CreatingAwsOrder_WithDropProductAndRegularProduct {
 
-    private String userID = "15089943", articleNum, dropArticleNun, productDropArticleID, totalDeliveryAmountAndSafeOrder;
-    private Float deliveryCost, safeOrderCost, productPriceIncludingDeliveryAndSafeOrder, productCost, productDropCost, totalProductCostInOrder;
+    private String userID = "15089943", articleNum, dropArticleNun, productDropArticleID;
+    private Float deliveryCost, safeOrderCost, productPriceIncludingDeliveryAndSafeOrder,
+            totalDeliveryAmountAndSafeOrder, productCost, productDropCost, totalProductCostInOrder;
     private ArrayList userDataInCreateOrder, userData, userDataInOrder;
 
 
