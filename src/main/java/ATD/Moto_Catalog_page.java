@@ -2,7 +2,9 @@ package ATD;
 
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selectors.byId;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Moto_Catalog_page {
     protected SelenideElement catalogTecDoc() {
@@ -17,5 +19,39 @@ public class Moto_Catalog_page {
         return $x("//a[@class='header-i header-i--truck ga-click']");
     }
 
-    SelenideElement motoSelectorBlock() {return $x("//div[contains(@class,'catalog-title__change-car')]");}
+    SelenideElement motoSelectorBlock() {
+        return $x("//div[contains(@class,'catalog-title__change-car')]");
+    }
+
+    SelenideElement mainFormOfSelector() {
+        return $(byId("selector-wrapper"));
+    }
+
+    SelenideElement brandOfMotoSelector() {
+        return $(byId("form_maker_id"));
+    }
+
+    SelenideElement modelOfMotoSelector() {
+        return $(byId("form_model_id"));
+    }
+
+    SelenideElement motorOfMotoSelector() {
+        return $(byId("form_car_id"));
+    }
+
+    SelenideElement toolTipForBrandFieldInSelector() {
+        return $(byId("selector-error-tooltip"));
+    }
+
+    SelenideElement toolTipForModelFieldInSelector() {
+        return $(byId("selector-error-tooltip-model"));
+    }
+
+    SelenideElement toolTipForMotorFieldInSelector() {
+        return $(byId("selector-error-tooltip-car"));
+    }
+
+    SelenideElement btnSearchAtSelector() {
+        return $x("//a[@class='submit search_button']");
+    }
 }

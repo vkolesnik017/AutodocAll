@@ -11,11 +11,35 @@ public class Moto_Category_page {
         return $x("//div[@class='autoteile-top-content__image']");
     }
 
-    SelenideElement motoSelectorBlock() {return $(byId("top-select"));}
+    SelenideElement motoSelectorBlock() {
+        return $(byId("top-select"));
+    }
 
-    SelenideElement brandOfMotoField() {return  $(byId("form_maker_id"));}
+    SelenideElement brandOfMotoField() {
+        return $(byId("form_maker_id"));
+    }
 
-    SelenideElement btnSearchAtSelector() {return $x("//a[@class='submit search_button']");}
+    SelenideElement btnSearchAtSelector() {
+        return $x("//a[@class='submit search_button']");
+    }
 
-    SelenideElement tooltipOfMarkeField() {return $x("//div[@id='maker-select']//div[@id='selector-error-tooltip']");}
+    SelenideElement tooltipOfMarkeField() {
+        return $x("//div[@id='maker-select']//div[@id='selector-error-tooltip']");
+    }
+
+    SelenideElement tooltipOfModelField() {
+        return $(byId("selector-error-tooltip-model"));
+    }
+
+    SelenideElement tooltipOfMotorField() {
+        return $(byId("selector-error-tooltip-car"));
+    }
+
+    SelenideElement modelFiledInSelector() {
+        return $(byId("form_model_id"));
+    }
+
+    SelenideElement motorFiledInSelector() {
+        return $(byId("form_car_id"));
+    }
 }

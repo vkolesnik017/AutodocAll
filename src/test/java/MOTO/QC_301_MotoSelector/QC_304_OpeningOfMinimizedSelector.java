@@ -16,7 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_304_OpeningAreClosedSelector {
+public class QC_304_OpeningOfMinimizedSelector {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -30,8 +30,8 @@ public class QC_304_OpeningAreClosedSelector {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks opening are closed selector")
-    public void testChecksOpeningAreClosedSelector(String route) {
+    @Description(value = "Test checks Opening of minimized selector")
+    public void testChecksOpeningOfMinimizedSelector(String route) {
         openPage(route);
 
         new Moto_Catalog_model_page_Logic()
