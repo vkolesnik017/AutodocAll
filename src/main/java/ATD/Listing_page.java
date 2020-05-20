@@ -201,7 +201,9 @@ public class Listing_page {
 
     SelenideElement verschleisswarnkontaktBlockInSidebar() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_593']"); }
 
-    SelenideElement verschleisswarnkontaktFirstButtonInSidebar() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_593']//label"); }
+    public SelenideElement verschleisswarnkontaktFirstButtonInSidebar() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_593']//label"); }
+
+    public SelenideElement verschleisswarnkontaktSecondButtonInSidebar() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_593']//li[2]/label"); }
 
     SelenideElement thirdProductOnListing() { return $(".list_products > li:nth-child(3)"); }
 
@@ -219,19 +221,19 @@ public class Listing_page {
 
     //Rating filters locators
     public ElementsCollection ratingInProductBlock() {
-        return $$(".review-vote");
+        return $$(".review-vote__price-block__rating__bg");
     }
 
     ElementsCollection activeRatingStarsInEveryProduct(int productPosition) {
-        return $$x("(//div[@class='description'])[ " + productPosition + "]//div[@class='review-vote']//li[not(contains(@class,'empty'))]");
+        return $$x("(//div[@class='description'])[ " + productPosition + "]//span[@class='review-vote__price-block__rating__bg']//li[not(contains(@class,'empty'))]");
     }
 
     ElementsCollection threeRatingStarsInProduct() {
-        return $$x("//div[@class='description']//div[@class='review-vote']//span[@style='width:60%']");
+        return $$x("//div[@class='description']//span[@class='review-vote__price-block__rating__bg']//span[@style='width:60%']");
     }
 
     SelenideElement activeRatingStarsInEveryProductPercent(int productPosition) {
-        return $x("(//div[@class='description'])[ " + productPosition + "]//div[@class='review-vote']/span/span");
+        return $x("(//div[@class='description'])[ " + productPosition + "]//span[@class='review-vote__price-block__rating__bg']/span/span");
     }
 
     public SelenideElement ratingFiveStarsFilterCheckbox() {
@@ -251,7 +253,7 @@ public class Listing_page {
     }
 
     ElementsCollection fiveRatingStarsInProduct() {
-        return $$x("//div[@class='description']//div[@class='review-vote']//span[@style='width:100%']");
+        return $$x("//div[@class='description']//span[@class='review-vote__price-block__rating__bg']//span[@style='width:100%']");
     }
 
     //For Oem listing

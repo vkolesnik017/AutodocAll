@@ -3,7 +3,9 @@ package ATD;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.Step;
+import org.testng.Assert;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import static ATD.CommonMethods.*;
@@ -13,6 +15,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class Search_page_Logic extends Search_page {
 
@@ -110,7 +113,7 @@ public class Search_page_Logic extends Search_page {
     }
 
     @Step(": on Search_page")
-    public Search_page_Logic counterIncreaseForPaired(String startValue){
+    public Search_page_Logic counterIncreaseForPaired(String startValue) {
         new CommonMethods().checkingCounterIncreaseForPaired(startValue, counterValue(), counterPlus());
         return this;
     }
@@ -122,7 +125,7 @@ public class Search_page_Logic extends Search_page {
     }
 
     @Step("Clicking details. Search_page")
-    public Product_page_Logic detailsClick(){
+    public Product_page_Logic detailsClick() {
         detalisBtn().click();
         return page(Product_page_Logic.class);
     }
@@ -130,12 +133,12 @@ public class Search_page_Logic extends Search_page {
     @Step("Gets all the characteristics of the desired product from search listing {productArticle}. Search_page")
     // example String for productArticle = V99-75-0011
     public ElementsCollection getCharacteristicsDesiredProductForSearch(String productArticle) {
-        return $$x("//*[@class='rc' and contains(text(),'" + productArticle +"')]/ancestor::div[@class='box criteria_toogle_active']//li")
+        return $$x("//*[@class='rc' and contains(text(),'" + productArticle + "')]/ancestor::div[@class='box criteria_toogle_active']//li")
                 .shouldHave(sizeGreaterThan(10));
     }
 
     @Step(": on Search_page")
-    public Search_page_Logic closePopupOtherCategoryIfYes(){
+    public Search_page_Logic closePopupOtherCategoryIfYes() {
         new Product_page_Logic().closePopupOtherCategoryIfYes();
         return this;
     }
@@ -156,11 +159,18 @@ public class Search_page_Logic extends Search_page {
 
     @Step("Check generic synonyms. Search_page")
     public Search_page_Logic checkGenericSynonyms(String genericName, ArrayList<String> genericSynonyms) {
-        for (int i = 0; i < genericSynonyms.size(); i++ ) {
+        for (int i = 0; i < genericSynonyms.size(); i++) {
             new Main_page_Logic().inputTextInSearchBar(genericSynonyms.get(i))
                     .clickTooltipInSearchByExactText(genericSynonyms.get(i))
                     .checksProductTitlesContainExpectedTextGoingTwoPages(genericName);
         }
+        return this;
+    }
+
+    @Step("check of current url .Search_page")
+    public Search_page_Logic checkOfCurrentUrl(String subRoute) throws SQLException {
+        DataBase db = new DataBase();
+        Assert.assertEquals(url(), db.getFullRouteByRouteAndSubroute("prod", "DE", "main", subRoute));
         return this;
     }
 }

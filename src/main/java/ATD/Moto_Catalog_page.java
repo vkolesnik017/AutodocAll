@@ -16,4 +16,6 @@ public class Moto_Catalog_page {
     public SelenideElement lkwCategory() {
         return $x("//a[@class='header-i header-i--truck ga-click']");
     }
+
+    SelenideElement motoSelectorBlock() {return $x("//div[contains(@class,'catalog-title__change-car')]");}
 }

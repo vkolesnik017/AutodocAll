@@ -731,15 +731,9 @@ public class Listing_page_Logic extends Listing_page {
 
     @Step("Check Filters Fix In Sidebar Search Route. Listing_page")
     public Listing_page_Logic checkFiltersFixInSidebarSearchRoute() {
-        blockOfBySideFilters().shouldBe(visible);
         brandFilterBlock().shouldBe(visible);
-        furPrnummerBlockInSidebar().shouldBe(visible);
-        verschleisswarnkontaktBlockInSidebar().shouldBe(visible);
         scrollAndCheckFixFiltersInSidebar();
-        bySideFilterBlockInSidebar().shouldBe(visible);
         brandFilterBlockInSidebar().shouldBe(visible);
-        furPrnummerBlockInSidebar().hover().shouldBe(visible);
-        verschleisswarnkontaktBlockInSidebar().hover().shouldBe(visible);
         return this;
     }
 
@@ -757,17 +751,9 @@ public class Listing_page_Logic extends Listing_page {
 
     @Step("Check Filters Fix In Sidebar LKW Search Route. Listing_page")
     public Listing_page_Logic checkFiltersFixInSidebarLKWsearchRoute() {
-        blockOfBySideFilters().shouldBe(visible);
         brandFilterBlock().shouldBe(visible);
-        ratingFilterBlock().shouldBe(visible);
-        durchmesserBlockInSidebar().shouldBe(visible);
-        bremsscheibenartBlockInSidebar().shouldBe(visible);
         scrollAndCheckFixFiltersInSidebar();
-        bySideFilterBlockInSidebar().shouldBe(visible);
         brandFilterBlockInSidebar().shouldBe(visible);
-        ratingFilterBlock().shouldBe(visible);
-        durchmesserBlockInSidebar().hover().shouldBe(visible);
-        bremsscheibenartBlockInSidebar().hover().shouldBe(visible);
         return this;
     }
 
@@ -871,8 +857,10 @@ public class Listing_page_Logic extends Listing_page {
 
     @Step("Close popup by click overlay. Listing_page")
     public Listing_page_Logic closePopupByClickOverlayOnListingSearch() {
-        blackOverlay().click(1, 1);
-        blackOverlay().shouldNotBe(visible);
+        if (blackOverlay().is(visible)) {
+            blackOverlay().click(1, 1);
+            blackOverlay().shouldNotBe(visible);
+        }
         return this;
     }
 

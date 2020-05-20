@@ -20,7 +20,6 @@ import static com.codeborne.selenide.Selenide.close;
 
 public class QC_119_FiltersSorting_TestLangeFilterApplying {
     private Listing_page_Logic listingPage = new Listing_page_Logic();
-    private DataBase dataBase = new DataBase();
 
     @BeforeClass
     void setUp() {
@@ -29,7 +28,7 @@ public class QC_119_FiltersSorting_TestLangeFilterApplying {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2,search4,search17");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2");
     }
 
     @DataProvider(name = "routesLKWsearch", parallel = true)
@@ -61,7 +60,7 @@ public class QC_119_FiltersSorting_TestLangeFilterApplying {
                     .checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.langeProductAttributeGenericRouteLKW(), listingPage.langeProductAttributeTecdocRouteLKW());
     }
 
-    @Test(dataProvider = "routesLKWsearch")
+    @Test(dataProvider = "routesLKWsearch", enabled = false)
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks Lange side filter route LKW search")
