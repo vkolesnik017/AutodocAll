@@ -1,6 +1,9 @@
 package ATD;
 
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selenide.page;
+
+
 import io.qameta.allure.Step;
 
 
@@ -31,6 +34,20 @@ public class Index_accessories_page_Logic extends Index_accessories_page {
         blockTopProducts().shouldBe(visible);
         return this;
     }
+
+    @Step("Opens a logical union and gets the category name")
+    public String getCategoryName() {
+        catalogFirstGroup().hover();
+        return secondCategoryInLogicalUnion().getText();
+    }
+
+    @Step("Clicks on a category in a logical union")
+    public Listing_accessories_page_Logic clicksOnCategory() {
+        secondCategoryInLogicalUnion().click();
+        return page(Listing_accessories_page_Logic.class);
+    }
+
+
 
 
 
