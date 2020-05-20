@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
@@ -565,7 +566,9 @@ public class Order_aws {
 
     @Step("Get the total cost including selling cost {sellingCost} delivery {deliveryCost} and delivery cost of heavy loads {costOfHeavyLoads}. Order_aws")
     public Float getTotalCostIncludingDeliveryAndDeliveryCostOfHeavyLoads(Float sellingCost, Float deliveryCost , Float costOfHeavyLoads) {
-        Float totalCost = sellingCost + deliveryCost + costOfHeavyLoads;
+        Float cost = sellingCost + deliveryCost + costOfHeavyLoads;
+        String formatCost = new DecimalFormat(".##").format(cost).replaceAll(",", ".");
+        Float totalCost = Float.parseFloat(formatCost);
         return totalCost;
     }
 
