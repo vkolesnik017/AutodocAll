@@ -233,7 +233,7 @@ public class Listing_page {
     }
 
     SelenideElement activeRatingStarsInEveryProductPercent(int productPosition) {
-        return $x("(//div[@class='description'])[ " + productPosition + "]//span[@class='review-vote__price-block__rating__bg']/span/span");
+        return $x("(//div[@class='description'])[" + productPosition + "]//span[@class='review-vote__price-block__rating__bg']/span");
     }
 
     public SelenideElement ratingFiveStarsFilterCheckbox() {
