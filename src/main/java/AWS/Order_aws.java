@@ -457,7 +457,7 @@ public class Order_aws {
     }
 
     @Step("Check delivery price {expectedDeliveryPriceOrderAWS} in order AWS. Order_aws")
-    public Order_aws checkDeliveryPriceOrderAWS(Double expectedDeliveryPriceOrderAWS) {
+    public Order_aws checkDeliveryPriceOrderAWS(Float expectedDeliveryPriceOrderAWS) {
         deliveryDeliveryPriceOrderAWS().shouldHave(attribute("data-sum", String.valueOf(expectedDeliveryPriceOrderAWS)));
         return this;
     }
@@ -552,20 +552,26 @@ public class Order_aws {
         return userData;
     }
 
-    @Step("Get total cost delivery amount {deliveryCost} and safe order {safeOrderCost}. Order_aws")
-    public String getTotalCostDeliveryAmountAndSafeOrder(Float deliveryCost, Float safeOrderCost) {
-        Float totalDeliveryAmountAndSafeOrder = deliveryCost + safeOrderCost;
-        return String.valueOf((totalDeliveryAmountAndSafeOrder));
+    @Step("Get total cost including selling cost {sellingCost} and delivery cost {deliveryCost}. Order_aws")
+    public Float getTotalCostIncludingSellingCostAndDeliveryCost(Float sellingCost, Float deliveryCost) {
+        Float totalCost = sellingCost + deliveryCost;
+        return totalCost;
     }
 
-    @Step("Get the total cost including selling cost {sellingCost} delivery {deliveryCost} and safe order {safeOrderCost}. Order_aws")
-    public Float getTotalCostIncludingDeliveryAndSafeOrder(Float sellingCost, Float deliveryCost , Float safeOrderCost) {
+    @Step("Get total cost delivery amount {deliveryCost} and safe order {safeOrderCost}. Order_aws")
+    public Float getTotalCostDeliveryAmountAndSafeOrder(Float deliveryCost, Float safeOrderCost) {
+        Float totalCost = deliveryCost + safeOrderCost;
+        return totalCost;
+    }
+
+    @Step("Get the total cost including selling cost {sellingCost} delivery cost {deliveryCost} and safe order {safeOrderCost}. Order_aws")
+    public Float getTotalCostIncludingDeliveryAndSafeOrder(Float sellingCost, Float deliveryCost, Float safeOrderCost) {
         Float totalCost = sellingCost + deliveryCost + safeOrderCost;
         return totalCost;
     }
 
-    @Step("Get the total cost including selling cost {sellingCost} delivery {deliveryCost} and delivery cost of heavy loads {costOfHeavyLoads}. Order_aws")
-    public Float getTotalCostIncludingDeliveryAndDeliveryCostOfHeavyLoads(Float sellingCost, Float deliveryCost , Float costOfHeavyLoads) {
+    @Step("Get the total cost including selling cost {sellingCost} delivery cost {deliveryCost} and delivery cost of heavy loads {costOfHeavyLoads}. Order_aws")
+    public Float getTotalCostIncludingDeliveryAndDeliveryCostOfHeavyLoads(Float sellingCost, Float deliveryCost, Float costOfHeavyLoads) {
         Float cost = sellingCost + deliveryCost + costOfHeavyLoads;
         String formatCost = new DecimalFormat(".##").format(cost).replaceAll(",", ".");
         Float totalCost = Float.parseFloat(formatCost);
@@ -611,13 +617,12 @@ public class Order_aws {
 
     @Step("Get the total cost of all goods including delivery{deliveryCost} and safe order{safeOrderCost}. Order_aws")
     public Float getTotalCostOfAllGoodsAndDeliveryAndSafeOrder(Float deliveryCost, Float safeOrderCost) {
-        String costDeliveryAndSafeOrder = getTotalCostDeliveryAmountAndSafeOrder(deliveryCost, safeOrderCost);
-        Float realCostDeliveryAndSafeOrder = Float.parseFloat(costDeliveryAndSafeOrder);
+        Float costDeliveryAndSafeOrder = getTotalCostDeliveryAmountAndSafeOrder(deliveryCost, safeOrderCost);
         Float sumOfAllGoods = 0.0f;
         for (int i = 0; i < sellingPriceOfAddedGoods().size(); i++) {
             Float priceOfOneItem = Float.parseFloat(sellingPriceOfAddedGoods().get(i).getText());
             sumOfAllGoods = sumOfAllGoods + priceOfOneItem;
         }
-        return (sumOfAllGoods + realCostDeliveryAndSafeOrder);
+        return (sumOfAllGoods + costDeliveryAndSafeOrder);
     }
 }
