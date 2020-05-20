@@ -165,4 +165,10 @@ public class Tyres_page_Logic extends Tyres_page {
             speedIndexHinDropdown().click();
             return this;
         }
+
+        @Step("Click all tyres brands button. Tyres_page")
+        public Tyres_page_Logic clickAllTyresBrandsButton() {
+            allBrandsButton().click();
+            return this;
+        }
 }
