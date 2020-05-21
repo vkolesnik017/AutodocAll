@@ -623,6 +623,9 @@ public class Order_aws {
             Float priceOfOneItem = Float.parseFloat(sellingPriceOfAddedGoods().get(i).getText());
             sumOfAllGoods = sumOfAllGoods + priceOfOneItem;
         }
-        return (sumOfAllGoods + costDeliveryAndSafeOrder);
+        Float sum = (sumOfAllGoods + costDeliveryAndSafeOrder);
+        String totalSum = new DecimalFormat(".##").format(sum).replaceAll(",", ".");
+        Float totalCost = Float.parseFloat(totalSum);
+        return totalCost;
     }
 }
