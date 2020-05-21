@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
+import static com.codeborne.selenide.Selenide.page;
 
 public class Index_instruments_page_Logic extends Index_instruments_page {
 
@@ -22,4 +23,18 @@ public class Index_instruments_page_Logic extends Index_instruments_page {
         Assert.assertEquals(url(), db.getFullRouteByRouteAndSubroute("prod", "DE", "main", subRoute));
         return this;
     }
+
+    @Step(" Gets first  product name in block top-10 ")
+    public String getProductName() {
+        return productInBlockTop10().getText();
+    }
+
+    @Step("Click on first  products in block top-10 and transition to the product page")
+    public Product_page_Logic clickFirstProductInTopBlock() {
+        productInBlockTop10().click();
+        return page (Product_page_Logic.class);
+    }
+
+
+
 }

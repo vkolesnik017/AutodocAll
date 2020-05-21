@@ -52,7 +52,7 @@ public class QC_1550_FiltersSorting_TestAllFiltersAreFixedInSidebarAfterScroll {
         new Listing_page_Logic().checkFiltersFixInSidebarSearchRoute();
     }
 
-    @Test(dataProvider = "routesLKW")
+    @Test(dataProvider = "routesLKW", enabled = false)
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks All Filters Are Fixed In Sidebar After Scroll LKW")

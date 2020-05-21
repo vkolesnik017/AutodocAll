@@ -54,4 +54,8 @@ public class Tyres_page {
 
   SelenideElement allBrandsButton() { return $(".tyres-brands-link > a"); }
 
+  SelenideElement allSizesButton() { return $(".all_sizes"); }
+
+  SelenideElement mobileAppLink() { return $x("//*[@class='features']/li[4]"); }
+
 }

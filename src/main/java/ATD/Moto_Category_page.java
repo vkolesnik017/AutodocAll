@@ -42,4 +42,6 @@ public class Moto_Category_page {
     SelenideElement motorFiledInSelector() {
         return $(byId("form_car_id"));
     }
+
+    SelenideElement searchButton() {return $x("//a[contains(@class,'search_button')]");}
 }

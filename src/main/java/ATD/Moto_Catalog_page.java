@@ -52,6 +52,6 @@ public class Moto_Catalog_page {
     }
 
     SelenideElement btnSearchAtSelector() {
-        return $x("//a[@class='submit search_button']");
+        return $x("//a[contains(@class,'search_button')]");
     }
 }
