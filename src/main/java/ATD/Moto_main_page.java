@@ -52,4 +52,18 @@ class Moto_main_page {
 
     SelenideElement motorSelectorBlock() {return $x("//div[@class='moto-select']");}
 
+    SelenideElement toolTipForBrandFieldInSelector() {
+        return $(byId("selector-error-tooltip"));
+    }
+
+    SelenideElement toolTipForModelFieldInSelector() {
+        return $(byId("selector-error-tooltip-model"));
+    }
+
+    SelenideElement toolTipForMotorFieldInSelector() {
+        return $(byId("form_car_id"));
+    }
+
+    SelenideElement btnSearchInSelector() {return $x("//a[@class='submit search_button']");}
+
 }
