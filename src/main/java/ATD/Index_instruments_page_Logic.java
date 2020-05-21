@@ -30,7 +30,7 @@ public class Index_instruments_page_Logic extends Index_instruments_page {
     }
 
     @Step("Click on products in block top-10 and transition to the product page")
-    public Product_page_Logic clickAndTransitionProductPage() {
+    public Product_page_Logic clickOnBlockTopProduct() {
         productInBlockTop10().click();
         return page (Product_page_Logic.class);
     }

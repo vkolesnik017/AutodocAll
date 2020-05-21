@@ -40,7 +40,7 @@ public class QC_1331_TransitionOnProductPageWithBlockTop10Products {
     public void testCheckingTransitionOnProductPage(String route) {
         openPage(route);
         nameProduct = index_instruments_page_logic.getProductName();
-        index_instruments_page_logic.clickAndTransitionProductPage();
+        index_instruments_page_logic.clickOnBlockTopProduct();
         nameTitle = new Product_page_Logic().getTitleName();
         Assert.assertEquals(nameProduct, nameTitle);
     }

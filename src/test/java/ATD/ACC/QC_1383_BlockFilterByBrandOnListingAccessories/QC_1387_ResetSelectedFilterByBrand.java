@@ -1,0 +1,47 @@
+package ATD.ACC.QC_1383_BlockFilterByBrandOnListingAccessories;
+
+import ATD.Listing_accessories_page_Logic;
+import ATD.SetUp;
+import io.qameta.allure.Description;
+import io.qameta.allure.Flaky;
+import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import java.sql.SQLException;
+
+import static ATD.CommonMethods.openPage;
+import static ATD.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Selenide.close;
+
+
+public class QC_1387_ResetSelectedFilterByBrand {
+
+    @BeforeClass
+    void setUp() {
+        setUpBrowser(false, "chrome", "77.0");
+    }
+
+    @DataProvider(name = "route", parallel = true)
+    Object[] dataProvider() throws SQLException {
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "listing_accessories4");
+    }
+
+    @Test(dataProvider = "route")
+    @Flaky
+    @Owner(value = "Sergey-QA")
+    @Description(value = "Test Checks for the presence of the selected brand, after clicking on it, checks that the brand is not selected")
+    public void testCheckResetSelectedFilterByBrand(String route) {
+        openPage(route);
+        new Listing_accessories_page_Logic().checkResetSelectedFilterByBrand();
+    }
+
+
+    @AfterMethod
+    private void tearDown() {
+        close();
+    }
+
+}
