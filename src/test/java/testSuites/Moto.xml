@@ -9,7 +9,8 @@
     <test name="QC_301_MotoSelector">
         <classes>
             <class name="MOTO.QC_301_MotoSelector.QC_302_AvailabilityOfMotoSelector"/>
-            <class name="MOTO.QC_301_MotoSelector.QC_304_OpeningAreClosedSelector"/>
+            <class name="MOTO.QC_301_MotoSelector.QC_304_OpeningOfMinimizedSelector"/>
+            <class name="MOTO.QC_301_MotoSelector.QC_305_MandatorySelectionOfAllSelectorFields"/>
         </classes>
     </test>
 
