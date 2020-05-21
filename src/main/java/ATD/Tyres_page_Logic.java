@@ -171,4 +171,17 @@ public class Tyres_page_Logic extends Tyres_page {
             allBrandsButton().click();
             return this;
         }
+
+        @Step("Click all tyres sizes button. Tyres_page")
+        public Tyres_page_Logic clickAllTyresSizesButton() {
+            allSizesButton().click();
+            return this;
+        }
+
+        @Step("Click mobile App link. Tyres_page")
+        public Tyres_page_Logic clickMobileAppLink() {
+            mobileAppLink().click();
+            return this;
+        }
+
 }
