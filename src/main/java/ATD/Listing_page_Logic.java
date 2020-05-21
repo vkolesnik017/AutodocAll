@@ -710,7 +710,7 @@ public class Listing_page_Logic extends Listing_page {
 
     @Step("Scroll And Check Fix Filters In Sidebar. Listing_page")
     public Listing_page_Logic scrollAndCheckFixFiltersInSidebar() {
-        thirdProductOnListing().scrollTo();
+        seventhProductOnListing().scrollTo();
         sideJSfilterForm().shouldBe(visible);
         return this;
     }
