@@ -205,7 +205,7 @@ public class Listing_page {
 
     public SelenideElement verschleisswarnkontaktSecondButtonInSidebar() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_593']//li[2]/label"); }
 
-    SelenideElement thirdProductOnListing() { return $(".list_products > li:nth-child(3)"); }
+    SelenideElement seventhProductOnListing() { return $(".list_products > li:nth-child(13)"); }
 
     SelenideElement durchmesserBlockInSidebar() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_200']"); }
 

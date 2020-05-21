@@ -257,4 +257,13 @@ public class TyresListing_page_Logic extends TyresListing_page {
         }
         return this;
     }
+
+    @Step("Check brand relink on tyres listing. TyresListing_page")
+    public TyresListing_page_Logic checkBrandRelink() {
+        new Tyres_page_Logic().clickBrandDropdown();
+        brandInputInSelector().sendKeys("Goodyear");
+        clickSubmitTyresSelectorOnListing();
+
+        return this;
+    }
 }
