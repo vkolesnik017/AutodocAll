@@ -11,7 +11,7 @@ public class Listing_accessories_page_Logic extends Listing_accessories_page {
         return listingTitle().getText();
     }
 
-    @Step("Checks for the presence of the selected brand, after clicking on it, checks that the brand is not selected")
+    @Step("Checking that selected brand become not active after clicking on it")
     public Listing_accessories_page_Logic checkResetSelectedFilterByBrand() {
         selectedBrand().shouldBe(visible).click();
         sleep(3000);

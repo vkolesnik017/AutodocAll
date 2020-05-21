@@ -16,6 +16,7 @@
         <classes>
             <class name="ATD.ACC.QC_1037_MainChemie.QC_1070_BlockTopBrands"/>
             <class name="ATD.ACC.QC_1037_MainChemie.QC_1072_FeatureBlock"/>
+            <class name="ATD.ACC.QC_1037_MainChemie.QC_1069_PresenceAdvantagesBlock"/>
         </classes>
     </test>
 

@@ -1,6 +1,6 @@
-package ATD.ACC.QC_1383_BlockFilterByBrandOnListingAccessories;
+package ATD.ACC.QC_1037_MainChemie;
 
-import ATD.Listing_accessories_page_Logic;
+import ATD.Index_chemicals_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -9,15 +9,13 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import java.sql.SQLException;
-
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
+public class QC_1069_PresenceAdvantagesBlock {
 
-public class QC_1387_ResetSelectedFilterByBrand {
 
     @BeforeClass
     void setUp() {
@@ -26,18 +24,17 @@ public class QC_1387_ResetSelectedFilterByBrand {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "listing_accessories4");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main","index_chemicals");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test checks that selected brand become not active after clicking on it.")
-    public void testCheckResetSelectedFilterByBrand(String route) {
+    @Description(value = "Test checking block Advantages and popup describing the Advantage")
+    public void testCheckingPresenceOfAdvantagesBlockAndAdvantageDescription(String route) {
         openPage(route);
-        new Listing_accessories_page_Logic().checkResetSelectedFilterByBrand();
+        new Index_chemicals_page_Logic().checkingPresenceOfAdvantagesBlockAndAdvantageDescription();
     }
-
 
     @AfterMethod
     private void tearDown() {

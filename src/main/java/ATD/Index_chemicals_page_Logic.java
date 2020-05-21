@@ -44,6 +44,14 @@ public class Index_chemicals_page_Logic extends Index_chemicals_page {
         return this;
     }
 
+    @Step("Checking block Advantages and popup describing the Advantage")
+    public Index_chemicals_page_Logic checkingPresenceOfAdvantagesBlockAndAdvantageDescription() {
+        blockAdvantages().shouldBe(visible);
+        secondAdvantageInBlockAdvantages().hover();
+        blockAdvantagesPopup().shouldBe(visible);
+        return this;
+    }
+
 
 
 }
