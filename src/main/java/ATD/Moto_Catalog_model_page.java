@@ -18,7 +18,7 @@ public class Moto_Catalog_model_page {
     }
 
     SelenideElement btnSearchAtSelector() {
-        return $x("//a[@class='submit search_button']");
+        return $x("//a[contains(@class,'search_button')]");
     }
 
     SelenideElement toolTipForBrandFieldInSelector() {
@@ -34,6 +34,10 @@ public class Moto_Catalog_model_page {
     }
 
     SelenideElement toolTipForMotorFieldInSelector() {
+        return $(byId("form_car_id"));
+    }
+
+    SelenideElement motorOfMotoSelector() {
         return $(byId("form_car_id"));
     }
 }

@@ -11,6 +11,7 @@
             <class name="MOTO.QC_301_MotoSelector.QC_302_AvailabilityOfMotoSelector"/>
             <class name="MOTO.QC_301_MotoSelector.QC_304_OpeningOfMinimizedSelector"/>
             <class name="MOTO.QC_301_MotoSelector.QC_305_MandatorySelectionOfAllSelectorFields"/>
+            <class name="MOTO.QC_301_MotoSelector.QC_306_TransitionToCorrespondingRoute"/>
         </classes>
     </test>
 
