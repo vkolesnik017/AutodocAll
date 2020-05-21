@@ -16,6 +16,12 @@ public class Moto_Catalog_page_Logic extends Moto_Catalog_page {
         return this;
     }
 
+    @Step("Visibility Of TecDoc Catalog. Moto_Catalog_page")
+    public Moto_Catalog_page_Logic visibilityOfTecDocCatalog() {
+        catalogTecDoc().shouldBe(visible);
+        return this;
+    }
+
     @Step("Select Car category. Moto_Catalog_page")
     public Main_page_Logic selectCarCategory() {
         carCategory().click();
@@ -59,6 +65,42 @@ public class Moto_Catalog_page_Logic extends Moto_Catalog_page {
         modelOfMotoSelector().selectOptionByValue("13475");
         btnSearchAtSelector().click();
         toolTipForMotorFieldInSelector().shouldBe(visible);
+        return this;
+    }
+
+    @Step(" selecting motorcycle in selector .Moto_Catalog_page")
+    public Moto_Catalog_page_Logic selectMotoInSelector(String marke, String model, String motor) {
+        motoSelectorBlock().click();
+        mainFormOfSelector().shouldBe(visible);
+        brandOfMotoSelector().selectOptionByValue(marke);
+        modelOfMotoSelector().selectOptionByValue(model);
+        motorOfMotoSelector().selectOptionByValue(motor);
+        btnSearchAtSelector().click();
+        return page(Moto_Catalog_page_Logic.class);
+    }
+
+    @Step("get brand of  motorcycle from Url .Moto_Catalog_page")
+    public String getBrandOfMotoFromUrl() {
+        String[] pathParts = url().split("/");
+        String brandOfMoto = pathParts[pathParts.length - 2];
+        return brandOfMoto;
+    }
+
+    @Step("get model of  motorcycle from Url .Moto_Catalog_page")
+    public String getModelOfMotoFromUrl() {
+        String[] pathParts = url().split("/");
+        String modelOfMoto = pathParts[pathParts.length - 1];
+        return modelOfMoto;
+    }
+
+
+    @Step(" appears of tooltip for motor field in selector .Moto_Catalog_page")
+    public Moto_Catalog_page_Logic presenceBrandAndModelOfMotoInSelector(String brand, String model) {
+        String brandOfMotoFromSelector = brandOfMotoSelector().getSelectedText().replaceAll("[^A-Z]", "");
+        String modelOfMotoFromSelector = modelOfMotoSelector().getSelectedText().replaceAll("[^a-zA-Z]", "");
+        Assert.assertEquals(brandOfMotoFromSelector, brand.replaceAll("[^a-z]", "").toUpperCase());
+        Assert.assertEquals(modelOfMotoFromSelector, model.replaceAll("[^a-z]", "").toUpperCase());
+
         return this;
     }
 

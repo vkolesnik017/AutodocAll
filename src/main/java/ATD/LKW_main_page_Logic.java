@@ -511,7 +511,7 @@ public class LKW_main_page_Logic extends LKW_main_page {
 
     @Step("Checking countries subscription from footer country list  .LKW_main_page")
     public LKW_main_page_Logic checkingCountriesSubscription() throws SQLException {
-        languageBlock().click();
+        languageBlock().shouldBe(visible).click();
         for (int i = 0; i < languagesOfSubscribe().size(); i++) {
             if (closeCookiesPopUp().isDisplayed()) {
                 closeCookiesPopUp().click();
