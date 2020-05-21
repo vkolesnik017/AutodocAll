@@ -24,12 +24,12 @@ public class Index_instruments_page_Logic extends Index_instruments_page {
         return this;
     }
 
-    @Step(" Gets the product name in block top-10 ")
+    @Step("Get first product name in block top-10 ")
     public String getProductName() {
         return productInBlockTop10().getText();
     }
 
-    @Step("Click on products in block top-10 and transition to the product page")
+    @Step("Click on first products in block top-10 and transition to the product page")
     public Product_page_Logic clickOnBlockTopProduct() {
         productInBlockTop10().click();
         return page (Product_page_Logic.class);
