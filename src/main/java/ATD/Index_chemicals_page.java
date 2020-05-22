@@ -34,6 +34,17 @@ public class Index_chemicals_page {
         return $$x("//div[@class='product-list__item active']");
     }
 
+    SelenideElement blockAdvantages() {
+        return $x("//div[@class='advantages']");
+    }
+
+    SelenideElement secondAdvantageInBlockAdvantages() {
+        return $x("//div[@class='advantages']//div[@class='advantages__item'][2]");
+    }
+
+    SelenideElement blockAdvantagesPopup(){
+        return $x("//div[@class='advantages']//div[@class='advantages__item-popup']");
+    }
 
 
 }

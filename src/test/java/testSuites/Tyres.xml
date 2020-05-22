@@ -48,9 +48,16 @@
     <test name="QC_1272_TyresMainPage">
         <classes>
             <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_1336_GoToAllBrandsPageFromTyresMainPage"/>
+            <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_1346_GoToAllSizesPageFromTyresMainPage"/>
         </classes>
     </test>
-    
+
+    <test name="QC_1294_AdvantagesBlockOnCatalogSizeTyresRoute">
+        <classes>
+            <class name="ATD.Tyres.QC_1294_AdvantagesBlockOnCatalogSizeTyresRoute.QC_1302_TransitionToMobileAPPpageFromAdvantagesBlock"/>
+        </classes>
+    </test>
+
     <test name="QC_1367_TyresProductPage">
         <classes>
             <class name="ATD.Tyres.QC_1367_TyresProductPage.QC_1377_GoToDeliveryPageFromTyresProductPage"/>

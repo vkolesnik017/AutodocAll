@@ -65,4 +65,7 @@ class TyresListing_page {
     ElementsCollection productTitleOnListing() { return $$(".name > a");}
 
     ElementsCollection productsRatingOnListing() { return $$x("//div[@class='review-vote']/span/span"); }
+
+    SelenideElement brandInputInSelector() { return $(".multiple-select__dropdown-search > input"); }
+
 }
