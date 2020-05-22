@@ -3,6 +3,7 @@ package ATD;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.page;
 
 public class Moto_Product_page_Logic extends Moto_Product_page {
 
@@ -33,5 +34,22 @@ public class Moto_Product_page_Logic extends Moto_Product_page {
         btnSearchAtSelector().click();
         toolTipForMotorFieldInSelector().shouldBe(visible);
         return this;
+    }
+
+
+    @Step(" select motorcycle in horizontal selector() .Moto_Product_page")
+    public Moto_Product_page_Logic selectMotoInHorizontalSelector(String brand, String model, String motor) {
+        brandOfMotoSelector().selectOptionByValue(brand);
+        modelOfMotoSelector().selectOptionByValue(model);
+        motorOfMotoSelector().selectOptionByValue(motor);
+        btnSearchWithSelectedMoto().click();
+        return this;
+    }
+
+
+    @Step(" visibility Of Error Message .Moto_Product_page")
+    public Moto_Catalog_page_Logic visibilityOfErrorMessage() {
+        infoPopUp().shouldBe(visible);
+        return page(Moto_Catalog_page_Logic.class);
     }
 }
