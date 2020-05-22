@@ -53,6 +53,18 @@ public class Index_accessories_page_Logic extends Index_accessories_page {
         return this;
     }
 
+    @Step("Get name first Category in block top accessories.Index_accessories_page")
+    public String getNameFirstCategoryInBlockTopAccessories(){
+        return nameFirstCategoryBlockTopAccessories().getText();
+    }
+
+
+    @Step("Click on Category in block top accessories")
+    public Listing_accessories_page_Logic clickOnCategoryInBlockTopAccessories(){
+        nameFirstCategoryBlockTopAccessories().click();
+        return page(Listing_accessories_page_Logic.class);
+    }
+
 
 
 

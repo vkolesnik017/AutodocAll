@@ -633,9 +633,15 @@ public class Product_page_Logic extends Product_page {
     }
 
     //Method for instruments product page
-    @Step("Get title name product page. Product_page")
-    public String getTitleName() {
-        return titleProductPage().getText();
+    @Step("Get title name product page instruments. Product_page")
+    public String getTitleNameForProductPageInstruments() {
+        return titleProductPageInstruments().getText();
+    }
+
+    //Method for chemicals product page
+    @Step("Get title name product page chemicals. Product_page")
+    public String getTitleNameForProductPageChemicals() {
+        return titleNameProductPageChemicals().getText();
     }
 
 }

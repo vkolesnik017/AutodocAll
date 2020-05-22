@@ -36,5 +36,9 @@ class Index_accessories_page {
         return $x("//h1[@class='page-title'][text()]");
     }
 
+    SelenideElement nameFirstCategoryBlockTopAccessories() {
+        return $x("//div[@class='accessories-tabs__item active']//div[@class='accessories-tabs__slide-title']");
+    }
+
 
 }

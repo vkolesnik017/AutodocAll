@@ -38,6 +38,7 @@
     <test name="QC_1064_BlockTopProductsOnMainChemie">
         <classes>
             <class name="ATD.ACC.QC_1064_BlockTopProductsOnMainChemie.QC_1065_BlockTopProducts"/>
+            <class name="ATD.ACC.QC_1064_BlockTopProductsOnMainChemie.QC_1068_TransitionOnProductPageWithBlockTopProducts"/>
         </classes>
     </test>
 
@@ -62,6 +63,18 @@
     <test name="QC_1383_BlockFilterByBrandOnListingAccessories">
         <classes>
             <class name="ATD.ACC.QC_1383_BlockFilterByBrandOnListingAccessories.QC_1387_ResetSelectedFilterByBrand"/>
+        </classes>
+    </test>
+
+    <test name="QC_886_TopCategoriesDirectionOnMainAccessories">
+        <classes>
+            <class name="ATD.ACC.QC_886_TopCategoriesDirectionOnMainAccessories.QC_923_TransitionToListingThroughCategoryTopBlock"/>
+        </classes>
+    </test>
+
+    <test name="QC_1356_BlockCategoriesInSidebarOnListingAccessories">
+        <classes>
+            <class name="ATD.ACC.QC_1356_BlockCategoriesInSidebarOnListingAccessories.QC_1360_TitleCategoriesBlockInSidebar"/>
         </classes>
     </test>
 
