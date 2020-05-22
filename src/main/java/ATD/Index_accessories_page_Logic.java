@@ -35,16 +35,22 @@ public class Index_accessories_page_Logic extends Index_accessories_page {
         return this;
     }
 
-    @Step("Opens a logical union and gets the category name")
+    @Step("Opens a logical union and gets the category name. Index_accessories_page")
     public String getCategoryName() {
         catalogFirstGroup().hover();
         return secondCategoryInLogicalUnion().getText();
     }
 
-    @Step("Clicks on a category in a logical union")
+    @Step("Clicks on a category in a logical union. Index_accessories_page")
     public Listing_accessories_page_Logic clicksOnCategory() {
         secondCategoryInLogicalUnion().click();
         return page(Listing_accessories_page_Logic.class);
+    }
+
+    @Step("Checking presence main title page. Index_accessories_page")
+    public Index_accessories_page_Logic CheckPresenceMainTitle(){
+        mainTitlePage().shouldBe(visible);
+        return this;
     }
 
 

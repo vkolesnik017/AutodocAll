@@ -31,6 +31,7 @@
             <class name="ATD.ACC.QC_836_MainAccessories.QC_988_FeatureBlock"/>
             <class name="ATD.ACC.QC_836_MainAccessories.QC_991_DeliveryBlock"/>
             <class name="ATD.ACC.QC_836_MainAccessories.QC_986_BlockTopBrands"/>
+            <class name="ATD.ACC.QC_836_MainAccessories.QC_837_PresenceMainTitleOnMainPage"/>
         </classes>
     </test>
 

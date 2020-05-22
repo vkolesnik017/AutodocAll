@@ -633,7 +633,7 @@ public class Product_page_Logic extends Product_page {
     }
 
     //Method for instruments product page
-    @Step("Get title name product page")
+    @Step("Get title name product page. Product_page")
     public String getTitleName() {
         return titleProductPage().getText();
     }
