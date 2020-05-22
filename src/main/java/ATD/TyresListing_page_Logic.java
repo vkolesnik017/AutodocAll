@@ -8,6 +8,7 @@ import org.testng.Assert;
 import java.util.ArrayList;
 import java.util.List;
 
+import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -260,10 +261,20 @@ public class TyresListing_page_Logic extends TyresListing_page {
 
     @Step("Check brand relink on tyres listing. TyresListing_page")
     public TyresListing_page_Logic checkBrandRelink() {
-        new Tyres_page_Logic().clickBrandDropdown();
-        brandInputInSelector().sendKeys("Goodyear");
-        clickSubmitTyresSelectorOnListing();
+        String brandNameInSidebar = brandFilterTyresInSidebar().attr("data-value");
+        brandFilterTyresInSidebar().click();
+        brandNameInSelector().shouldHave(text(brandNameInSidebar));
+        new Listing_page_Logic().checkProductTitleOnListing(brandNameInSidebar, true, titleOfAllProducts());
+        checkingContainsUrl(brandNameInSidebar.toLowerCase());
+        return this;
+    }
 
+    @Step("Check brand relink on tyres listing. TyresListing_page")
+    public TyresListing_page_Logic checkDiameterRelink() {
+        diameter16InRelinkBlock().click();
+        diameterValueInSelector().shouldHave(text("17"));
+        checkingContainsUrl("/17-zoll");
+        checkCharacteristicOnListing("17", radiusCharacteristic());
         return this;
     }
 }

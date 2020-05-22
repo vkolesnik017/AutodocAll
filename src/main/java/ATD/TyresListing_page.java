@@ -68,4 +68,11 @@ class TyresListing_page {
 
     SelenideElement brandInputInSelector() { return $(".multiple-select__dropdown-search > input"); }
 
+    SelenideElement brandFilterTyresInSidebar() { return $x("//*[@class='tires_marks criteria-filter-block-js']//a"); }
+
+    SelenideElement brandNameInSelector() { return $x("//*[@class='main-selector Brand']//span"); }
+
+    ElementsCollection titleOfAllProducts() { return $$(".name > a"); }
+
+    SelenideElement diameter16InRelinkBlock() { return $x("//*[contains (text(),'17 Zoll')]"); }
 }

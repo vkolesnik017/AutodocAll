@@ -58,4 +58,5 @@ public class Tyres_page {
 
   SelenideElement mobileAppLink() { return $x("//*[@class='features']/li[4]"); }
 
+  SelenideElement videoLink() { return $x("//*[@class='features']/li[5]"); }
 }
