@@ -130,7 +130,7 @@ public class Order_aws {
     }
 
     private SelenideElement contoNR() {
-        return $x("//body//div[@id='contentwrapper']//div//div//div//div[1]//div[2]//div[14]//div[1]");
+        return $x("//strong[contains(text(),'Conto NR')]/..");
     }
 
     private SelenideElement deliveryCost() {
