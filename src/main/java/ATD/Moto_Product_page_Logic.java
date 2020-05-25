@@ -1,6 +1,7 @@
 package ATD;
 
 import io.qameta.allure.Step;
+import org.testng.Assert;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.page;
@@ -37,7 +38,7 @@ public class Moto_Product_page_Logic extends Moto_Product_page {
     }
 
 
-    @Step(" select motorcycle in horizontal selector() .Moto_Product_page")
+    @Step(" select motorcycle in horizontal selector .Moto_Product_page")
     public Moto_Product_page_Logic selectMotoInHorizontalSelector(String brand, String model, String motor) {
         brandOfMotoSelector().selectOptionByValue(brand);
         modelOfMotoSelector().selectOptionByValue(model);
@@ -51,5 +52,36 @@ public class Moto_Product_page_Logic extends Moto_Product_page {
     public Moto_Catalog_page_Logic visibilityOfErrorMessage() {
         infoPopUp().shouldBe(visible);
         return page(Moto_Catalog_page_Logic.class);
+    }
+
+
+    @Step(" get brand and model Of motorcycle .Moto_Product_page")
+    public String getBrandAndModelOfMoto() {
+        String brandOfMoto = getBrandOfMoto();
+        String motorOfMoto = getMotorOfMoto();
+        String brandAndModel = brandOfMoto + " " + motorOfMoto;
+        return brandAndModel;
+    }
+
+    @Step(" get brand Of motorcycle .Moto_Product_page")
+    public String getBrandOfMoto() {
+        productCompatibilityHeader().shouldBe(visible);
+        String brandOfMoto = brandOfMotoSelector().getSelectedText();
+        return brandOfMoto;
+    }
+
+    @Step(" get brand Of motorcycle .Moto_Product_page")
+    public String getMotorOfMoto() {
+        String selectedMotorOfMoto = motorOfMotoSelector().getSelectedText().replace(motorOfMotoSelector().getSelectedText().substring(motorOfMotoSelector().getSelectedText().lastIndexOf("/")), "");
+        String motorOfMoto = selectedMotorOfMoto.replace(selectedMotorOfMoto.substring(selectedMotorOfMoto.lastIndexOf(")")), "");
+
+        return motorOfMoto;
+    }
+
+
+    @Step("presence  of motorcycle brand and model in an information message .Moto_Product_page")
+    public Moto_Product_page_Logic presenceOfMotoBrandAtInfoMessage(String brandOfMoto) {
+        Assert.assertTrue(motoBrandFromInfoMessage().getText().contains(brandOfMoto));
+        return this;
     }
 }

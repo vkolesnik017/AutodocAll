@@ -1,6 +1,5 @@
 package LKW_trucks.QC_94_TecDoc_Listing;
 
-import ATD.Cart_page_Logic;
 import ATD.LKW_Category_car_list_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
