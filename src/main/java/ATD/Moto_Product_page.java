@@ -40,9 +40,11 @@ public class Moto_Product_page {
         return $(byId("selector-error-tooltip-car"));
     }
 
-    SelenideElement errorPopUp() {return $x("//*[contains(text(),'Dieses Ersatzteil ist nicht mit dem von Ihnen gewählten Motorrad kompatibel.')]");}
-
-    SelenideElement infoPopUp() {return $x("//div[@class='popup_content']");}
+       SelenideElement infoPopUp() {return $x("//div[@class='popup_content']");}
 
     SelenideElement btnSearchWithSelectedMoto() {return $x("//button[contains(@class,'search_button ')]");}
+
+    SelenideElement productCompatibilityHeader() {return $x("//p[contains(text(),'Dieses Produkt passt zu Ihrem ')]");}
+
+    SelenideElement motoBrandFromInfoMessage(){return $x("//div[@class='car-match-block car-match-block--moto']//b"); }
 }
