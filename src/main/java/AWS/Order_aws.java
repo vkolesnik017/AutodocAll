@@ -633,19 +633,25 @@ public class Order_aws {
 
     @Step("Get total cost including selling cost {sellingCost} and delivery cost {deliveryCost}. Order_aws")
     public Float getTotalCostIncludingSellingCostAndDeliveryCost(Float sellingCost, Float deliveryCost) {
-        Float totalCost = sellingCost + deliveryCost;
+        Float cost = sellingCost + deliveryCost;
+        String formatCost = new DecimalFormat(".##").format(cost).replaceAll(",", ".");
+        Float totalCost = Float.parseFloat(formatCost);
         return totalCost;
     }
 
     @Step("Get total cost delivery amount {deliveryCost} and safe order {safeOrderCost}. Order_aws")
     public Float getTotalCostDeliveryAmountAndSafeOrder(Float deliveryCost, Float safeOrderCost) {
-        Float totalCost = deliveryCost + safeOrderCost;
+        Float cost = deliveryCost + safeOrderCost;
+        String formatCost = new DecimalFormat(".##").format(cost).replaceAll(",", ".");
+        Float totalCost = Float.parseFloat(formatCost);
         return totalCost;
     }
 
     @Step("Get the total cost including selling cost {sellingCost} delivery cost {deliveryCost} and safe order {safeOrderCost}. Order_aws")
     public Float getTotalCostIncludingDeliveryAndSafeOrder(Float sellingCost, Float deliveryCost, Float safeOrderCost) {
-        Float totalCost = sellingCost + deliveryCost + safeOrderCost;
+        Float cost = sellingCost + deliveryCost + safeOrderCost;
+        String formatCost = new DecimalFormat(".##").format(cost).replaceAll(",", ".");
+        Float totalCost = Float.parseFloat(formatCost);
         return totalCost;
     }
 
