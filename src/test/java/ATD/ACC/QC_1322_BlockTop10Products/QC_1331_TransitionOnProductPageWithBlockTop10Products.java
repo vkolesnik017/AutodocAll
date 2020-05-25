@@ -41,7 +41,7 @@ public class QC_1331_TransitionOnProductPageWithBlockTop10Products {
         openPage(route);
         nameProduct = index_instruments_page_logic.getProductName();
         index_instruments_page_logic.clickFirstProductInTopBlock();
-        nameTitle = new Product_page_Logic().getTitleName();
+        nameTitle = new Product_page_Logic().getTitleNameForProductPageInstruments();
         Assert.assertEquals(nameProduct, nameTitle);
     }
 

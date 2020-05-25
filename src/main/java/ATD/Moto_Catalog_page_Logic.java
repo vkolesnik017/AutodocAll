@@ -81,27 +81,72 @@ public class Moto_Catalog_page_Logic extends Moto_Catalog_page {
 
     @Step("get brand of  motorcycle from Url .Moto_Catalog_page")
     public String getBrandOfMotoFromUrl() {
-        String[] pathParts = url().split("/");
+        String[] pathParts = url().replace(url().substring(url().lastIndexOf("=")), "").split("/");
         String brandOfMoto = pathParts[pathParts.length - 2];
         return brandOfMoto;
     }
 
     @Step("get model of  motorcycle from Url .Moto_Catalog_page")
     public String getModelOfMotoFromUrl() {
-        String[] pathParts = url().split("/");
-        String modelOfMoto = pathParts[pathParts.length - 1];
+
+        String[] pathParts = url().replace(url().substring(url().lastIndexOf("=")), "").split("/");
+        String modelOfMoto = (pathParts[pathParts.length - 1]).replaceAll("\\?(.*)", "");
         return modelOfMoto;
     }
 
+    @Step("get motor of  motorcycle from Url .Moto_Catalog_page")
+    public String getValueOfMotorOfMotoFromUrl() {
+
+        String motorOfMoto = url().substring(3).substring(url().replace(url().substring(url().lastIndexOf("=")), "").lastIndexOf("id"));
+        return motorOfMoto;
+    }
 
     @Step(" appears of tooltip for motor field in selector .Moto_Catalog_page")
-    public Moto_Catalog_page_Logic presenceBrandAndModelOfMotoInSelector(String brand, String model) {
+    public Moto_Catalog_page_Logic presenceBrandAndModelOfMotoInSelector(String brand, String model, String motor) {
+        if (motoSelectorBlock().isDisplayed()) {
+            motoSelectorBlock().click();
+        }
+        mainFormOfSelector().shouldBe(visible);
         String brandOfMotoFromSelector = brandOfMotoSelector().getSelectedText().replaceAll("[^A-Z]", "");
         String modelOfMotoFromSelector = modelOfMotoSelector().getSelectedText().replaceAll("[^a-zA-Z]", "");
+        String motorOfMotoFromSelector = motorOfMotoSelector().getSelectedValue();
         Assert.assertEquals(brandOfMotoFromSelector, brand.replaceAll("[^a-z]", "").toUpperCase());
         Assert.assertEquals(modelOfMotoFromSelector, model.replaceAll("[^a-z]", "").toUpperCase());
-
+        Assert.assertEquals(motorOfMotoFromSelector, motor);
         return this;
+    }
+
+
+    @Step("presence Of Headline In Selector .Moto_Catalog_page")
+    public Moto_Catalog_page_Logic presenceOfHeadlineInSelector() {
+        if (motoSelectorBlock().isDisplayed()) {
+            motoSelectorBlock().click();
+        }
+        headlineBlockInSelector().shouldBe(visible);
+        imageInHeadlineInSelector().shouldBe(visible);
+        return this;
+    }
+
+
+    @Step("presence Of Selected motorcycle In Headline() .Moto_Catalog_page")
+    public Moto_Catalog_page_Logic presenceOfSelectedMotoInHeadline() {
+        String motoModel = getModelOfMotoFromSelector();
+        Assert.assertTrue(textOfHeadlineInSelector().getText().replaceAll("[^A-Z]", "").contains(motoModel.replaceAll("[^A-Z]", "")));
+        return this;
+    }
+
+    @Step("presence Of Headline In Selector .Moto_Catalog_page")
+    public String getModelOfMotoFromSelector() {
+        String brandOfMoto = brandOfMotoSelector().getSelectedText();
+        String modelOfMoto;
+        if (!motorOfMotoSelector().getSelectedValue().equals("0")) {
+            modelOfMoto = motorOfMotoSelector().getSelectedText();
+        } else {
+            modelOfMoto = modelOfMotoSelector().getSelectedText();
+        }
+        String moto = brandOfMoto + " " + modelOfMoto;
+        String motoFromSelector = moto.replace(moto.substring(moto.lastIndexOf("(")), "").toUpperCase();
+        return motoFromSelector;
     }
 
 }
