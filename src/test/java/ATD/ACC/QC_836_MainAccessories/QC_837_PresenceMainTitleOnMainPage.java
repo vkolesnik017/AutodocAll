@@ -32,7 +32,7 @@ public class QC_837_PresenceMainTitleOnMainPage {
     @Description(value = "Test Checks presence main title page.")
     public void TestCheckPresenceMainTitle(String route) {
         openPage(route);
-        new Index_accessories_page_Logic().CheckPresenceMainTitle();
+        new Index_accessories_page_Logic().checkPresenceMainTitle();
     }
 
 

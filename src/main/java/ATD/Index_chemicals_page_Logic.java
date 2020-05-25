@@ -62,7 +62,7 @@ public class Index_chemicals_page_Logic extends Index_chemicals_page {
     @Step("Checking transition on product page after click on button details in popup product block top products. Index_chemicals_page ")
     public Product_page_Logic checkingTransitionOnProductPageAfterClickDetails() {
         nameFirstProductInBlockTopProducts().hover();
-        detailsInPopupProductInBlockTopProducts().click();
+        detailsBtnInPopupInTopProductBlock().click();
         return page(Product_page_Logic.class);
 
     }
