@@ -32,7 +32,17 @@ public class Moto_Product_page {
         return $(byId("form_model_id"));
     }
 
-    SelenideElement toolTipForMotorFieldInSelector() {
+    SelenideElement motorOfMotoSelector() {
         return $(byId("form_car_id"));
     }
+
+    SelenideElement toolTipForMotorFieldInSelector() {
+        return $(byId("selector-error-tooltip-car"));
+    }
+
+    SelenideElement errorPopUp() {return $x("//*[contains(text(),'Dieses Ersatzteil ist nicht mit dem von Ihnen gewählten Motorrad kompatibel.')]");}
+
+    SelenideElement infoPopUp() {return $x("//div[@class='popup_content']");}
+
+    SelenideElement btnSearchWithSelectedMoto() {return $x("//button[contains(@class,'search_button ')]");}
 }
