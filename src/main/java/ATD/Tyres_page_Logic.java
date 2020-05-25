@@ -184,4 +184,10 @@ public class Tyres_page_Logic extends Tyres_page {
             return this;
         }
 
+        @Step("Click video link. Tyres_page")
+        public Tyres_page_Logic clickVideoLink() {
+            videoLink().click();
+            return this;
+    }
+
 }
