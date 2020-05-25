@@ -606,7 +606,12 @@ public class Product_page {
     SelenideElement carMatchBlock() { return $x("//*[@class='car-match-block']/p"); }
 
 // locators for instruments products page
-    SelenideElement titleProductPage() {
+    SelenideElement titleProductPageInstruments() {
+        return $x("//h2/span[@class='title']");
+    }
+
+// locators for chemicals products page
+    SelenideElement titleNameProductPageChemicals() {
         return $x("//h2/span[@class='title']");
     }
 

@@ -1,12 +1,10 @@
-package ATD.ACC.QC_929_BlockCategoriesLogicalUnionOnMainAccessories;
+package ATD.ACC.QC_836_MainAccessories;
 
 import ATD.Index_accessories_page_Logic;
-import ATD.Listing_accessories_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
-import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -16,13 +14,7 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-
-public class QC_937_RedirectToListingFromTheCategoryLogicalUnion {
-
-    private String nameCategory, nameTitle;
-    private Index_accessories_page_Logic index_accessories_page_logic = new Index_accessories_page_Logic();
-
-
+public class QC_837_PresenceMainTitleOnMainPage {
 
     @BeforeClass
     void setUp() {
@@ -34,18 +26,15 @@ public class QC_937_RedirectToListingFromTheCategoryLogicalUnion {
         return new SetUp().setUpShopWithSubroutes("prod", "DE", "main","index_accessories");
     }
 
-
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test checking redirect on listing page when clicking on a category in a logical union")
-    public void testCheckingRedirectWithCategoryLogicalUnion(String route) {
+    @Description(value = "Test Checks presence main title page.")
+    public void TestCheckPresenceMainTitle(String route) {
         openPage(route);
-        nameCategory = index_accessories_page_logic.getCategoryName();
-        index_accessories_page_logic.clicksOnCategory();
-        nameTitle = new Listing_accessories_page_Logic().getTitleName();
-        Assert.assertEquals(nameCategory, nameTitle);
+        new Index_accessories_page_Logic().checkPresenceMainTitle();
     }
+
 
     @AfterMethod
     private void tearDown() {
@@ -53,4 +42,3 @@ public class QC_937_RedirectToListingFromTheCategoryLogicalUnion {
     }
 
 }
-
