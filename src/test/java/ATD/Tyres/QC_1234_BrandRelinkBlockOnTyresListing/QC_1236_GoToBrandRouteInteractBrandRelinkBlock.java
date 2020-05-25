@@ -1,9 +1,8 @@
-package ATD.Tyres.QC_1294_AdvantagesBlockOnCatalogSizeTyresRoute;
+package ATD.Tyres.QC_1234_BrandRelinkBlockOnTyresListing;
 
 
-import ATD.DataBase;
 import ATD.SetUp;
-import ATD.Tyres_page_Logic;
+import ATD.TyresListing_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -15,11 +14,10 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
-import static ATD.CommonMethods.waitingWhileLinkBecomeExpected;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_1302_TransitionToMobileAPPpageFromAdvantagesBlock {
+public class QC_1236_GoToBrandRouteInteractBrandRelinkBlock {
 
     @BeforeClass
     void setUp() {
@@ -28,17 +26,18 @@ public class QC_1302_TransitionToMobileAPPpageFromAdvantagesBlock {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "tyres_type_list,tyres_type_list2,tyres_type_list3,tyres_type_list4");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "tyres_season2,tyres_season6,tyres_season7,tyres_brand," +
+                "tyres_season,tyres_season8,tyres_season9,tyres_brand7,tyres_season5,tyres_season10,tyres_season11,tyres_brand3,tyres_season12,tyres_season4,tyres_brand4");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Romaniuta")
-    @Description(value = "Test Checks Transition To MobileAPP Page From Advantages Block")
-    public void testTransitionToMobileAPPpageFromAdvantagesBlock(String route) throws SQLException {
+    @Description(value = "Test Checks Transition To Brand Route Interact Brand Relink Block")
+    public void testGoToBrandRouteInteractBrandRelinkBlock(String route) {
         openPage(route);
-        new Tyres_page_Logic().clickMobileAppLink();
-        waitingWhileLinkBecomeExpected(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "staticMobileApp"));
+        new TyresListing_page_Logic().checkBrandRelink();
+
     }
 
     @AfterMethod

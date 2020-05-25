@@ -15,11 +15,14 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
+import static ATD.CommonMethods.waitWhileRouteBecomeExpected;
 import static ATD.CommonMethods.waitingWhileLinkBecomeExpected;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.sleep;
+import static com.codeborne.selenide.Selenide.switchTo;
 
-public class QC_1302_TransitionToMobileAPPpageFromAdvantagesBlock {
+public class QC_1300_TransitionToClubPageFromAdvantagesBlock {
 
     @BeforeClass
     void setUp() {
@@ -34,11 +37,12 @@ public class QC_1302_TransitionToMobileAPPpageFromAdvantagesBlock {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Romaniuta")
-    @Description(value = "Test Checks Transition To MobileAPP Page From Advantages Block")
-    public void testTransitionToMobileAPPpageFromAdvantagesBlock(String route) throws SQLException {
+    @Description(value = "Test Checks Transition To Club Page From Advantages Block")
+    public void testTransitionToClubPageFromAdvantagesBlock(String route) throws SQLException {
         openPage(route);
-        new Tyres_page_Logic().clickMobileAppLink();
-        waitingWhileLinkBecomeExpected(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "staticMobileApp"));
+        new Tyres_page_Logic().clickVideoLink();
+        switchTo().window(1);
+        waitingWhileLinkBecomeExpected(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "club_main", "club_manuals_home"));
     }
 
     @AfterMethod
