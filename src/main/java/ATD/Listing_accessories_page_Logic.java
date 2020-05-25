@@ -25,4 +25,10 @@ public class Listing_accessories_page_Logic extends Listing_accessories_page {
         return this;
     }
 
+    @Step("Checking presence title name on listing page.  Listing_accessories_page ")
+    public  Listing_accessories_page_Logic checkingPresenceTitleName() {
+        listingTitle().shouldBe(visible);
+        return this;
+    }
+
 }
