@@ -269,6 +269,85 @@ public class Order_aws {
         return $x("//div[@class='data-text']//a[@target='_blank']");
     }
 
+    private SelenideElement payLinkPayment() {
+        return $x("//select[@name='Paylink[PaymentID]']");
+    }
+
+    private SelenideElement btnGetPayLink() {
+        return $(".submit-add-payment");
+    }
+
+    private SelenideElement btnAddedGoodsInOrder() {
+        return $x("//a[@class='btn btn-success']//i");
+    }
+
+    private SelenideElement popUpAddProduct() {
+        return $x("//div[@id='addProduct']//div[@class='modal-dialog']");
+    }
+
+    private SelenideElement fieldArticleNumInPopUpAddProduct() {
+        return $x("//input[@id='AddProduct[articleNo]']");
+    }
+
+    private SelenideElement btnAddedGoodsInPopUpAddProduct() {
+        return $(".btn-add");
+    }
+
+    private SelenideElement tableWithPopUpAddProduct() {
+        return $x("//table[@id='products_list_add']");
+    }
+
+    private SelenideElement productArticleIDInPopUpAddProduct(String artID) {
+        return $x("//input[@id='form_AddProduct[articleId]'][@value='" + artID + "']");
+    }
+
+    @Step("Chooses the article id of the desired product {artID} in PopUp AddProduct. Order_aws")
+    public Order_aws chooseArticleIDOfDesiredProduct(String artID) {
+        productArticleIDInPopUpAddProduct(artID).click();
+        return this;
+    }
+
+    @Step("Checks presence table with PopUp AddProduct. Order_aws")
+    public Order_aws checkPresenceTableWithPopUpAddProduct() {
+        tableWithPopUpAddProduct().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Click button AddedGoods in PopUp AddProduct. Order_aws")
+    public Order_aws clickBtnAddedGoodsInPopUpAddProduct() {
+        btnAddedGoodsInPopUpAddProduct().click();
+        return this;
+    }
+
+    @Step("Filling field ArticleNum in PopUp AddProduct. Order_aws")
+    public Order_aws fillingFieldArticleNumInPopUpAddProduct(String ArticleNum) {
+        fieldArticleNumInPopUpAddProduct().sendKeys(ArticleNum);
+        return this;
+    }
+
+    @Step("Checks presence popUp AddProduct. Order_aws")
+    public Order_aws checkPresencePopUpAddProduct() {
+        popUpAddProduct().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Click button AddedGoods in order. Order_aws")
+    public Order_aws clickBtnAddedGoodsINOrder() {
+        btnAddedGoodsInOrder().click();
+        return this;
+    }
+
+    @Step("Selected payment expected method {expectedMethod} in pay link payment. Order_aws")
+    public Order_aws selectPaymentInPayLinkPayment(String expectedMethod) {
+        payLinkPayment().selectOptionContainingText(expectedMethod);
+        return this;
+    }
+
+    @Step("Click button GetPayLink. Order_aws")
+    public Order_aws clickBtnGetPayLink() {
+        btnGetPayLink().click();
+        return this;
+    }
 
 
     private Order_aws checkWhatOrderOpened() {
@@ -554,19 +633,25 @@ public class Order_aws {
 
     @Step("Get total cost including selling cost {sellingCost} and delivery cost {deliveryCost}. Order_aws")
     public Float getTotalCostIncludingSellingCostAndDeliveryCost(Float sellingCost, Float deliveryCost) {
-        Float totalCost = sellingCost + deliveryCost;
+        Float cost = sellingCost + deliveryCost;
+        String formatCost = new DecimalFormat(".##").format(cost).replaceAll(",", ".");
+        Float totalCost = Float.parseFloat(formatCost);
         return totalCost;
     }
 
     @Step("Get total cost delivery amount {deliveryCost} and safe order {safeOrderCost}. Order_aws")
     public Float getTotalCostDeliveryAmountAndSafeOrder(Float deliveryCost, Float safeOrderCost) {
-        Float totalCost = deliveryCost + safeOrderCost;
+        Float cost = deliveryCost + safeOrderCost;
+        String formatCost = new DecimalFormat(".##").format(cost).replaceAll(",", ".");
+        Float totalCost = Float.parseFloat(formatCost);
         return totalCost;
     }
 
     @Step("Get the total cost including selling cost {sellingCost} delivery cost {deliveryCost} and safe order {safeOrderCost}. Order_aws")
     public Float getTotalCostIncludingDeliveryAndSafeOrder(Float sellingCost, Float deliveryCost, Float safeOrderCost) {
-        Float totalCost = sellingCost + deliveryCost + safeOrderCost;
+        Float cost = sellingCost + deliveryCost + safeOrderCost;
+        String formatCost = new DecimalFormat(".##").format(cost).replaceAll(",", ".");
+        Float totalCost = Float.parseFloat(formatCost);
         return totalCost;
     }
 

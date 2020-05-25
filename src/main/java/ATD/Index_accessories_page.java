@@ -32,5 +32,13 @@ class Index_accessories_page {
         return $x("//div[@class='accessories-catalog__categories' and @style='display: block;']//li[2]");
     }
 
+    SelenideElement mainTitlePage() {
+        return $x("//h1[@class='page-title'][text()]");
+    }
+
+    SelenideElement nameFirstCategoryBlockTopAccessories() {
+        return $x("//div[@class='accessories-tabs__item active']//div[@class='accessories-tabs__slide-title']");
+    }
+
 
 }

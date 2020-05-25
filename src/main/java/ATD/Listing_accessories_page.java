@@ -15,4 +15,9 @@ public class Listing_accessories_page {
         return $x("//div[@class='js-brands-filter js-filter-wrapper']//li[@class='active']");
     }
 
+    SelenideElement titleCategoriesBlockInSidebar() {
+        return $x("//div[@class='block categories blue topSubCats']//b[text()]");
+    }
+
+
 }
