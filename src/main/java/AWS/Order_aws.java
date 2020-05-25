@@ -174,6 +174,10 @@ public class Order_aws {
         return $$x("//a[@class='payment-in-order']//abbr");
     }
 
+    private SelenideElement sellingPriceOfCertainProduct(String articleID) {
+        return $x("//td[@class='center']//a[text()='" + articleID + "']/../..//abbr");
+    }
+
     // locators and methods for block of status order (Status ändern)
 
     private SelenideElement selectorOfStatuses() {
@@ -297,8 +301,37 @@ public class Order_aws {
         return $x("//table[@id='products_list_add']");
     }
 
+    private SelenideElement tableOfWarehousesAndSuppliers() {
+        return $x("//div[@id='products_list_add']");
+    }
+
     private SelenideElement productArticleIDInPopUpAddProduct(String artID) {
         return $x("//input[@id='form_AddProduct[articleId]'][@value='" + artID + "']");
+    }
+
+    private ElementsCollection incomeWithoutVat() {
+        return $$x("//tbody//input[@name='row_sel']/../..//td[21]");
+    }
+
+    private SelenideElement totalIncomeWithoutVat() {
+        return $x("//span[@class='inf_profit']");
+    }
+
+    private ElementsCollection addedGoods() {
+        return $$x("//input[@name='row_sel']/../..");
+    }
+
+    private SelenideElement countProducts() {
+        return $(".inf_countProducts");
+    }
+
+
+
+    @Step("Compares the quantity of items added to the quantity in the column Quantity of products. Order_aws")
+    public Order_aws compareQuantityOfItemsWithQuantityInColumnQuantityOfProducts() {
+        int quantityProduct = Integer.parseInt(countProducts().getText());
+        Assert.assertEquals(addedGoods().size(), quantityProduct);
+        return this;
     }
 
     @Step("Chooses the article id of the desired product {artID} in PopUp AddProduct. Order_aws")
@@ -310,6 +343,12 @@ public class Order_aws {
     @Step("Checks presence table with PopUp AddProduct. Order_aws")
     public Order_aws checkPresenceTableWithPopUpAddProduct() {
         tableWithPopUpAddProduct().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checks presence table with warehouses and suppliers. Order_aws")
+    public Order_aws checkPresenceTableOfWarehousesAndSuppliers() {
+        tableOfWarehousesAndSuppliers().shouldBe(visible);
         return this;
     }
 
@@ -333,22 +372,10 @@ public class Order_aws {
 
     @Step("Click button AddedGoods in order. Order_aws")
     public Order_aws clickBtnAddedGoodsINOrder() {
+        btnAddedGoodsInOrder().scrollTo();
         btnAddedGoodsInOrder().click();
         return this;
     }
-
-    @Step("Selected payment expected method {expectedMethod} in pay link payment. Order_aws")
-    public Order_aws selectPaymentInPayLinkPayment(String expectedMethod) {
-        payLinkPayment().selectOptionContainingText(expectedMethod);
-        return this;
-    }
-
-    @Step("Click button GetPayLink. Order_aws")
-    public Order_aws clickBtnGetPayLink() {
-        btnGetPayLink().click();
-        return this;
-    }
-
 
     private Order_aws checkWhatOrderOpened() {
         // Иногда, если заказ в AWS открыть сразу быстро после создания, он может не успеть подгрузися в AWS
@@ -549,16 +576,17 @@ public class Order_aws {
 
     @Step("Get total Price in Order AWS. Order_aws")
     public Float getTotalPriceOrderAWS() {
-        String price = totalPriceOrder().getText();
-        Float totalPriceOrder = Float.parseFloat(price);
-        return totalPriceOrder;
+        return Float.valueOf(totalPriceOrder().getText());
     }
 
     @Step("Get selling price in Order AWS. Order_aws")
     public Float getSellingProductPriceOrderAWS() {
-        String price = sellingPrice().getText();
-        Float sellingPriceOrder = Float.parseFloat(price);
-        return sellingPriceOrder;
+        return Float.valueOf(sellingPrice().getText());
+    }
+
+    @Step("Get selling price of a certain product {articleID}. Order_aws")
+    public Float getSellingPriceOfCertainProduct(String articleID) {
+        return Float.valueOf(sellingPriceOfCertainProduct(articleID).getText());
     }
 
     @Step("Checks that Safe Order is turned off. Order_aws")
@@ -635,24 +663,21 @@ public class Order_aws {
     public Float getTotalCostIncludingSellingCostAndDeliveryCost(Float sellingCost, Float deliveryCost) {
         Float cost = sellingCost + deliveryCost;
         String formatCost = new DecimalFormat(".##").format(cost).replaceAll(",", ".");
-        Float totalCost = Float.parseFloat(formatCost);
-        return totalCost;
+        return Float.valueOf(formatCost);
     }
 
     @Step("Get total cost delivery amount {deliveryCost} and safe order {safeOrderCost}. Order_aws")
     public Float getTotalCostDeliveryAmountAndSafeOrder(Float deliveryCost, Float safeOrderCost) {
         Float cost = deliveryCost + safeOrderCost;
         String formatCost = new DecimalFormat(".##").format(cost).replaceAll(",", ".");
-        Float totalCost = Float.parseFloat(formatCost);
-        return totalCost;
+        return Float.valueOf(formatCost);
     }
 
     @Step("Get the total cost including selling cost {sellingCost} delivery cost {deliveryCost} and safe order {safeOrderCost}. Order_aws")
     public Float getTotalCostIncludingDeliveryAndSafeOrder(Float sellingCost, Float deliveryCost, Float safeOrderCost) {
         Float cost = sellingCost + deliveryCost + safeOrderCost;
         String formatCost = new DecimalFormat(".##").format(cost).replaceAll(",", ".");
-        Float totalCost = Float.parseFloat(formatCost);
-        return totalCost;
+        return Float.valueOf(formatCost);
     }
 
     @Step("Get the total cost including selling cost {sellingCost} delivery cost {deliveryCost} and delivery cost of heavy loads {costOfHeavyLoads}. Order_aws")
@@ -677,16 +702,12 @@ public class Order_aws {
 
     @Step("Get delivery cost in order. Order_aws")
     public Float getDeliveryCostInOrder() {
-        String cost = deliveryCost().getText();
-        Float deliveryCost = Float.parseFloat(cost);
-        return deliveryCost;
+        return Float.valueOf(deliveryCost().getText());
     }
 
     @Step("Get delivery cost of heavy loads in order. Order_aws")
     public Float getDeliveryCostOfHeavyLoads() {
-        String cost = deliveryCostOfHeavyLoads().getText();
-        Float deliveryCost = Float.parseFloat(cost);
-        return deliveryCost;
+        return Float.valueOf(deliveryCostOfHeavyLoads().getText());
     }
 
     @Step("Compares the prices of added products with the prices on the site {priceWithSite}. Order_aws")
@@ -710,7 +731,22 @@ public class Order_aws {
         }
         Float sum = (sumOfAllGoods + costDeliveryAndSafeOrder);
         String totalSum = new DecimalFormat(".##").format(sum).replaceAll(",", ".");
-        Float totalCost = Float.parseFloat(totalSum);
-        return totalCost;
+        return Float.valueOf(totalSum);
+    }
+
+    @Step("Plus the amount of income without VAT of all added goods. Order_aws")
+    public Float plusAmountOfIncomeWithoutVatOfAllAddedGoods() {
+        Float sumOfAllVAT = 0.0f;
+        for (int i = 0; i < incomeWithoutVat().size(); i++) {
+            Float priceOfOneItem = Float.parseFloat(incomeWithoutVat().get(i).getText());
+            sumOfAllVAT = sumOfAllVAT + priceOfOneItem;
+        }
+        String totalSum = new DecimalFormat(".##").format(sumOfAllVAT).replaceAll(",", ".");
+        return Float.valueOf(totalSum);
+    }
+
+    @Step("Get total sum of income without VAT. Order_aws")
+    public Float getTotalSumIncomeWithoutVAT() {
+        return Float.valueOf(totalIncomeWithoutVat().getText());
     }
 }
