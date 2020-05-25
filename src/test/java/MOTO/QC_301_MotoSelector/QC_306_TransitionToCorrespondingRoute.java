@@ -38,9 +38,10 @@ public class QC_306_TransitionToCorrespondingRoute {
         openPage(route);
 
         new Moto_Category_page_Logic()
-                .selectMotoInSelector("4081", "12008", "135713");
+                .selectMotoInSelector("4081", "12008", "135713").visibilityOfTecDocListing();
         commonMethods.checkingContainsUrl(db.getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_category_car_list3"));
     }
+
     @DataProvider(name = "routesParentCategory", parallel = true)
     Object[] dataProviderParentCategory() throws SQLException {
         return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_parent_category,moto_makers,moto_categories_maker2,moto_parent_category_maker2");
@@ -54,7 +55,7 @@ public class QC_306_TransitionToCorrespondingRoute {
         openPage(route);
 
         new Moto_Parent_Category_page_Logic()
-                .selectMotoInSelector("4081", "12008", "135713");
+                .selectMotoInSelector("4081", "12008", "135713").visibilityOfTecDocCatalog();
         commonMethods.checkingContainsUrl(db.getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_catalog"));
     }
 

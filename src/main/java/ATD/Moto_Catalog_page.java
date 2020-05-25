@@ -54,4 +54,10 @@ public class Moto_Catalog_page {
     SelenideElement btnSearchAtSelector() {
         return $x("//a[contains(@class,'search_button')]");
     }
+
+    SelenideElement headlineBlockInSelector() {return $x("//div[@class='block-select-car__head-car']");}
+
+    SelenideElement imageInHeadlineInSelector() {return $x("//div[@class='block-select-car__head-car']/span[1]");}
+
+    SelenideElement textOfHeadlineInSelector() {return $x("//div[@class='block-select-car__head-car']/span[2]");}
 }

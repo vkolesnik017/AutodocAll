@@ -236,7 +236,7 @@ public class OrderAdd_page_aws {
         return this;
     }
 
-    @Step("Selected payment expectedMethod {expectedMethod}. OrderAdd_page_aws")
+    @Step("Selected payment expected method {expectedMethod}. OrderAdd_page_aws")
     public OrderAdd_page_aws selectedPaymentMethod(String expectedMethod) {
         paymentMethod().selectOptionContainingText(expectedMethod);
         return this;
