@@ -74,5 +74,10 @@ class TyresListing_page {
 
     ElementsCollection titleOfAllProducts() { return $$(".name > a"); }
 
-    SelenideElement diameter16InRelinkBlock() { return $x("//*[contains (text(),'17 Zoll')]"); }
+    SelenideElement diameter17InRelinkBlock() { return $x("//*[contains (text(),'17 Zoll')]"); }
+
+    SelenideElement allSizesButton() { return $(".all_sizes"); }
+
+    SelenideElement dimensionLink() { return $x("//*[contains (text(),'Die beliebtesten Reifengrößen')]/..//a"); }
+
 }

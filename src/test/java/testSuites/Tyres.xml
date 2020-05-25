@@ -74,8 +74,8 @@
     <test name="QC_1238_SizeRelinkBlockOnTyresListing">
         <classes>
             <class name="ATD.Tyres.QC_1238_SizeRelinkBlockOnTyresListing.QC_1245_GoToDiameterRouteInteractDiameterRelinkBlock"/>
+            <class name="ATD.Tyres.QC_1238_SizeRelinkBlockOnTyresListing.QC_1265_GoToAllSizesRouteInteractSizesRelinkBlock"/>
         </classes>
     </test>
-
 
 </suite>
