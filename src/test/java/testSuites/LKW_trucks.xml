@@ -177,7 +177,6 @@
             <class name="LKW_trucks.QC_207_ProductPage.QC_210_CompatibleTrucksBlock"/>
             <class name="LKW_trucks.QC_207_ProductPage.QC_212_LackOfLinksInOenBlock"/>
             <class name="LKW_trucks.QC_207_ProductPage.QC_209_SelectingOfTruckSelector"/>
-            <class name="LKW_trucks.QC_207_ProductPage.QC_213_AnaloguesAndRelatedProductsBlocks"/>
         </classes>
     </test>
 
