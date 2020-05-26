@@ -2,6 +2,7 @@ package ATD;
 
 import static com.codeborne.selenide.Condition.*;
 import io.qameta.allure.Step;
+import org.testng.Assert;
 
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.Selenide.sleep;
@@ -64,7 +65,24 @@ public class Index_chemicals_page_Logic extends Index_chemicals_page {
         nameFirstProductInBlockTopProducts().hover();
         detailsBtnInPopupInTopProductBlock().click();
         return page(Product_page_Logic.class);
+    }
 
+    @Step("Checking presence subtitle. Index_chemicals_page ")
+    public Index_chemicals_page_Logic checkingPresenceSubtitle() {
+        Assert.assertFalse(subTitleNameMainPage().text().isEmpty());
+        return this;
+    }
+
+    @Step("Checking presence title. Index_chemicals_page")
+    public Index_chemicals_page_Logic checkingPresenceTitle() {
+        Assert.assertFalse(titleNameMainPage().text().isEmpty());
+        return this;
+    }
+
+    @Step("Checking presence block Delivery. Index_chemicals_page")
+    public Index_chemicals_page_Logic checkingPresenceBlockDelivery() {
+        blockDelivery().shouldBe(visible);
+        return this;
     }
 
 

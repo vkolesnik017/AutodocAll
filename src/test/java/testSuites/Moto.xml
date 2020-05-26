@@ -15,6 +15,7 @@
             <class name="MOTO.QC_301_MotoSelector.QC_308_PresenceOfFilledValuesInSelector"/>
             <class name="MOTO.QC_301_MotoSelector.QC_309_PresenceOfHeadlineInSelector"/>
             <class name="MOTO.QC_301_MotoSelector.QC_310_PresenceOfOpeningSelector"/>
+            <class name="MOTO.QC_301_MotoSelector.QC_312_FillingSelectorByCompatibleMoto"/>
             <class name="MOTO.QC_301_MotoSelector.QC_313_FillingSelectorByIncompatibleMoto"/>
         </classes>
     </test>

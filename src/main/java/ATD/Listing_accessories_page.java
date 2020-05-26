@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Selenide.$x;
 public class Listing_accessories_page {
 
     SelenideElement listingTitle() {
-        return $x("//h2[@class='title_count_search']");
+        return $x("//div[@class='cont']//h2[text()]");
     }
 
     SelenideElement selectedBrand() {
