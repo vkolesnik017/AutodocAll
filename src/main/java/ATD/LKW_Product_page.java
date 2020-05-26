@@ -40,17 +40,11 @@ public class LKW_Product_page {
         return $(byName("car_id"));
     }
 
-    SelenideElement searchBtnInHorizontalTruckSelector() {
-        return $x("//button[@class='search-button-truck js--lkw_selector-btn-submit']");
-    }
+    SelenideElement searchBtnInHorizontalTruckSelector() {return $x("//button[@class='search-button-truck js--lkw_selector-btn-submit']");}
 
-    SelenideElement titleInTruckSelectorHeader() {
-        return $x("//div[@class='car-match-block car-match-block--truck car-match-block--select']/p");
-    }
+    SelenideElement titleInTruckSelectorHeader() {return $x("//div[@class='car-match-block car-match-block--truck car-match-block--select']/p");}
 
-    SelenideElement titleInTruckSelectorHeaderWithNotSuitableCar() {
-        return $x("//div[@class='atd-carselector__header']//p");
-    }
+    SelenideElement titleInTruckSelectorHeaderWithNotSuitableCar() {return $x("//div[@class='atd-carselector__header']//p");}
 
     SelenideElement breadCrumbsBlock() {
         return $x("//div[@class='steps breadcrumbs']");
@@ -71,7 +65,6 @@ public class LKW_Product_page {
     SelenideElement titleOfSuitableCarInCompatibilityBlock() {
         return $x("//div[@class='accordion-selected']/p");
     }
-
 
     SelenideElement tooltipForFieldInHorizontalCarSelector() {
         return $x("//div[@class='validation-tooltip popup-error-select']");
@@ -165,46 +158,36 @@ public class LKW_Product_page {
         return $x("//div[@class='product-list product-list-slider js-product-list-slider']");
     }
 
+
     SelenideElement analoguesBlock() {
-        return $x("//span[contains(text(),'EMPFOHLENER ERSATZ ')]/../..");
+        return $x("//div[@class='product-same-artikel']");
     }
 
     ElementsCollection imageOfAnaloguesProducts() {
-        return $$x("//span[contains(text(),'EMPFOHLENER ERSATZ ')]/../../div[2]//div[@class='product-list__row']/ul/li//img").filter(visible);
+        return $$x("//div[@class='product-same-artikel']//div[@class='product-list__row']/ul/li//img").filter(visible);
     }
 
     ElementsCollection additionInfoBlockOfAnaloguesProduct() {
-        return $$x("//span[contains(text(),'EMPFOHLENER ERSATZ ')]/../../div[2]//div[@class='product-list__row']/ul/li//div[@class='product-list__item__popup']").filter(visible);
+        return $$x("//div[@class='product-same-artikel']//div[@class='product-list__row']/ul/li//div[@class='product-list__item__popup']").filter(visible);
     }
 
-    SelenideElement forwardLinkAnaloguesBlock() {
-        return $x("//span[contains(text(),'EMPFOHLENER ERSATZ ')]/../..//a[@class='bx-next']");
+    SelenideElement forwardLinkAnaloguesBlock() {return $x("//span[contains(text(),'EMPFOHLENER ERSATZ ')]/../..//a[@class='bx-next']");}
+
+    SelenideElement headlineOfAnaloguesBlock() {return $x("//span[contains(text(),'Ähnliche Artikel:')]");
     }
 
-    SelenideElement headlineOfAnaloguesBlock() {
-        return $x("//span[contains(text(),'EMPFOHLENER ERSATZ ')]");
+    ElementsCollection imageOfRelatedProductsBlock() {return $$x("//div[contains(@class,'js-product-list-slider')]//img").filter(visible);}
+
+    ElementsCollection additionInfoBlockOfRelatesProduct() {return $$x("//div[contains(@class,'js-product-list-slider')]//div[@class='product-list__item__popup'] ").filter(visible);
     }
 
-    ElementsCollection imageOfRelatedProductsBlock() {
-        return $$x("//div[contains(@class,'js-product-list-slider')]//img").filter(visible);
-    }
-
-    ElementsCollection additionInfoBlockOfRelatesProduct() {
-        return $$x("//div[contains(@class,'js-product-list-slider')]//div[@class='product-list__item__popup'] ").filter(visible);
-    }
-
-    SelenideElement forwardLinkRelatedBlock() {
-        return $x("//div[contains(@class,'js-product-list-slider')]//a[@class='bx-next']");
-    }
+    SelenideElement forwardLinkRelatedBlock() {return $x("//div[contains(@class,'js-product-list-slider')]//a[@class='bx-next']"); }
 
     SelenideElement headlineOfRelatedBlock() {
         return $x("//span[contains(text(),'Folgende Produkte werden ')]");
     }
 
-
-    ElementsCollection btnAddToBasketRelatedBlock() {
-        return $$x("//div[@class='product-list__item__button']").filter(visible);
-    }
+    ElementsCollection btnAddToBasketRelatedBlock() { return $$x("//div[@class='product-list__item__button']").filter(visible); }
 
     SelenideElement basketDropMenu() {
         return $x("//div[@class='cart-items-block ']");

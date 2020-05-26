@@ -153,11 +153,11 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
 
     @Step("Go to product page from tecDoc listing through Image, icon of brand, title in tecDoc listing .LKW_Category_car_list_page")
     public LKW_Category_car_list_page_Logic goToProductPageFromImageBrandTitle() {
-        clickOnImageOfProduct().checkSuccessfullyLKWProductPageLoading("https://lkwteile.autodoc.de/boss-filters/7175133");
+        clickOnImageOfProduct().checkSuccessfullyLKWProductPageLoading("https://lkwteile.autodoc.de/mahle-original/2681215");
         back();
-        clickOnIconBrandOfProduct().checkSuccessfullyLKWProductPageLoading("https://lkwteile.autodoc.de/boss-filters/7175133");
+        clickOnIconBrandOfProduct().checkSuccessfullyLKWProductPageLoading("https://lkwteile.autodoc.de/mahle-original/2681215");
         back();
-        clickOnTitleOfProduct().checkSuccessfullyLKWProductPageLoading("https://lkwteile.autodoc.de/boss-filters/7175133");
+        clickOnTitleOfProduct().checkSuccessfullyLKWProductPageLoading("https://lkwteile.autodoc.de/mahle-original/2681215");
         return this;
     }
 

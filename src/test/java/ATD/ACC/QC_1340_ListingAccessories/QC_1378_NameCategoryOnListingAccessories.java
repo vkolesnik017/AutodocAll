@@ -1,6 +1,6 @@
-package LKW_trucks.QC_94_TecDoc_Listing;
+package ATD.ACC.QC_1340_ListingAccessories;
 
-import ATD.LKW_Category_car_list_page_Logic;
+import ATD.Listing_accessories_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -9,36 +9,36 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import java.sql.SQLException;
-
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_99_GoToProductPageFromTecDocListing {
+public class QC_1378_NameCategoryOnListingAccessories {
 
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "routes", parallel = true)
+    @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list10");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main","listing_accessories");
     }
 
-    @Test(dataProvider = "routes")
+    @Test(dataProvider = "route")
     @Flaky
-    @Owner(value = "Kolesnik")
-    @Description(value = "Test checks transition on Product page from TecDoc listing ")
-    public void testChecksTransitionOnProductPageFromTecDocListing(String route) {
+    @Owner(value = "Sergey-QA")
+    @Description(value = "Test checking presence title name on listing page .")
+    public void testCheckPresenceTitleName(String route) {
         openPage(route);
-        new LKW_Category_car_list_page_Logic().goToProductPageFromImageBrandTitle();
+        new Listing_accessories_page_Logic().checkingPresenceTitleName();
     }
+
 
     @AfterMethod
     private void tearDown() {
         close();
     }
+
 }

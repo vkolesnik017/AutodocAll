@@ -17,6 +17,9 @@
             <class name="ATD.ACC.QC_1037_MainChemie.QC_1070_BlockTopBrands"/>
             <class name="ATD.ACC.QC_1037_MainChemie.QC_1072_FeatureBlock"/>
             <class name="ATD.ACC.QC_1037_MainChemie.QC_1069_PresenceAdvantagesBlock"/>
+            <class name="ATD.ACC.QC_1037_MainChemie.QC_1041_SubtitleMainPageChemie"/>
+            <class name="ATD.ACC.QC_1037_MainChemie.QC_1040_TitleMainPageChemie"/>
+            <class name="ATD.ACC.QC_1037_MainChemie.QC_1073_BlockDeliveryOnMainChemie"/>
         </classes>
     </test>
 
@@ -75,6 +78,12 @@
     <test name="QC_1356_BlockCategoriesInSidebarOnListingAccessories">
         <classes>
             <class name="ATD.ACC.QC_1356_BlockCategoriesInSidebarOnListingAccessories.QC_1360_TitleCategoriesBlockInSidebar"/>
+        </classes>
+    </test>
+
+    <test name="QC_1340_ListingAccessories">
+        <classes>
+            <class name="ATD.ACC.QC_1340_ListingAccessories.QC_1378_NameCategoryOnListingAccessories"/>
         </classes>
     </test>
 
