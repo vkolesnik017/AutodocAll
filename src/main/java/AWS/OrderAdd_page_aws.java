@@ -161,6 +161,10 @@ public class OrderAdd_page_aws {
         return $x("//select[@name='Order[delivery_country_id]']//option[text()='" + country + "']");
     }
 
+    private SelenideElement preLoader() {
+        return $x("//div[@class='block-msg order-view']");
+    }
+
     @Step("Checking correct text in input field. OrderAdd_page_aws")
     private void checkCorrectTextAndFillInput(SelenideElement element, String correctText) {
         Configuration.fastSetValue = false;
@@ -184,6 +188,9 @@ public class OrderAdd_page_aws {
 
     @Step("Click save order button. OrderAdd_page_aws")
     public Order_aws clickSaveOrderBtn() {
+        if (preLoader().isDisplayed()) {
+            preLoader().waitUntil(attribute("style", "display: none;"), 20000);
+        }
         saveOrderBtn().click();
         return page(Order_aws.class);
     }
@@ -219,6 +226,9 @@ public class OrderAdd_page_aws {
 
     @Step("Chooses the article id of the desired product {artID} and click button choose product. OrderAdd_page_aws")
     public OrderAdd_page_aws chooseArticleIDOfDesiredProductAndClickBtnChooseProduct(String artID) {
+        if (preLoader().isDisplayed()) {
+            preLoader().waitUntil(attribute("style", "display: none;"), 20000);
+        }
         productArticleID(artID).click();
         btnChooseProduct().click();
         return this;

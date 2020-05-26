@@ -108,7 +108,6 @@ public class QC_562_CreatingAwsOrder_WithDropProductAndRegularProduct {
                 .getTotalPriceOrderAWS();
         productPriceIncludingDeliveryAndSafeOrder = order_aws.getTotalCostOfAllGoodsAndDeliveryAndSafeOrder(deliveryCost, safeOrderCost);
         Assert.assertEquals(totalProductCostInOrder, productPriceIncludingDeliveryAndSafeOrder);
-
     }
 
     @AfterMethod
