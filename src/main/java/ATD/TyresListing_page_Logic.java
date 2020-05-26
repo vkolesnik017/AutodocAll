@@ -301,9 +301,25 @@ public class TyresListing_page_Logic extends TyresListing_page {
     @Step("Click dimension button and check redirect. TyresListing_page")
     public TyresListing_page_Logic clickDimensionButtonAndCheckRedirect() {
         String baseUrl = url();
-        String dimension = dimensionLink().text();
+        String dimension = dimensionLink().text().replaceAll("\\D|\\s", "");
+        String width = dimension.substring(0,3);
+        String height = dimension.substring(3,5);
+        String diameter = dimension.substring(5,7);
         dimensionLink().click();
-        waitingWhileLinkBecomeExpected(baseUrl + "/" + dimension);
+        widthValueInSelector().shouldHave(text(width));
+        heightValueInSelector().shouldHave(text(height));
+        diameterValueInSelector().shouldHave(text(diameter));
+        checkCharacteristicOnListing(width, widthCharacteristic());
+        checkCharacteristicOnListing(height, heightCharacteristic());
+        checkCharacteristicOnListing(diameter, radiusCharacteristic());
+        if (baseUrl.contains("1")) {
+            String baseUrlWithDimension = baseUrl.replaceAll("\\d", "").replaceAll("\\/--r", "").replaceAll("\\/-zoll", "");
+            String urlWithDimension = (baseUrlWithDimension + "/" + width + "-" + height + "-r" + diameter);
+            waitingWhileLinkBecomeExpected(urlWithDimension);
+        } else {
+            String urlWithDimension = (baseUrl + "/" + width + "-" + height + "-r" + diameter);
+            waitingWhileLinkBecomeExpected(urlWithDimension);
+        }
         return this;
     }
 }
