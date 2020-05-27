@@ -29,6 +29,10 @@ public class Order_aws {
     private String orderNumber;
     private String url = "https://aws.autodoc.de/order/view/";
 
+    private SelenideElement filterHeader() {
+        return $(".row-fluid");
+    }
+
     private SelenideElement totalPriceOrder() {
         return $x("//td[@class='inf_grandTotal']");
     }
@@ -175,7 +179,7 @@ public class Order_aws {
     }
 
     private SelenideElement sellingPriceOfCertainProduct(String articleID) {
-        return $x("//td[@class='center']//a[text()='" + articleID + "']/../..//abbr");
+        return $x("//a[text()='" + articleID + "']/../..//td[14]//abbr");
     }
 
     // locators and methods for block of status order (Status ändern)
@@ -249,7 +253,7 @@ public class Order_aws {
         return $(byId("reclamation-comment"));
     }
 
-    private SelenideElement saveButtonInPopupOfReturn() {
+    private SelenideElement saveButtonInPopup() {
         return $(".btn-save");
     }
 
@@ -271,14 +275,6 @@ public class Order_aws {
 
     private SelenideElement customerId() {
         return $x("//div[@class='data-text']//a[@target='_blank']");
-    }
-
-    private SelenideElement payLinkPayment() {
-        return $x("//select[@name='Paylink[PaymentID]']");
-    }
-
-    private SelenideElement btnGetPayLink() {
-        return $(".submit-add-payment");
     }
 
     private SelenideElement btnAddedGoodsInOrder() {
@@ -325,7 +321,134 @@ public class Order_aws {
         return $(".inf_countProducts");
     }
 
+    private SelenideElement checkboxOfAddedProduct(String artID) {
+        return $x("//a[text()='" + artID + "']/../..//input[@name='row_sel']");
+    }
 
+    private SelenideElement btnRemoveProduct() {
+        return $x("//i[@class='splashy-error_small']");
+    }
+
+    private SelenideElement removeProductPopUp() {
+        return $x("//div[@id='removeProduct']");
+    }
+
+    private SelenideElement btnNoInRemoveProductPopUp() {
+        return $x("//div[@id='removeProduct']//a[2]");
+    }
+
+    private SelenideElement btnYesInRemoveProductPopUp() {
+        return $x("//div[@id='removeProduct']//a[1]");
+    }
+
+    private SelenideElement refundBtn() {
+        return $(".printGu");
+    }
+
+    private SelenideElement productInRefundTable(String articleNum) {
+        return $x("//input[@value='" + articleNum + "']");
+    }
+
+    private SelenideElement editItemBtn(String articleID) {
+        return $x("//a[text()='" + articleID + "']/../..//a[@class='btn btn-default btn-sm edit-product']");
+    }
+
+    private SelenideElement popUpEditItem() {
+        return $x("//div[@id='editProduct']");
+    }
+
+    private SelenideElement fieldEditQuantityInPopUpEditItem() {
+        return $x("//div[@id='editProduct']//input[@id='AddProduct[count]']");
+    }
+
+    private SelenideElement columnProductQuantity() {
+        return $x("//td[16]");
+    }
+
+    private SelenideElement expectedQuantityColumn() {
+        return $x("//body//td[11][@class='show-requests']");
+    }
+
+    private SelenideElement columnSumProduct() {
+        return $x("//td[19]");
+    }
+
+
+
+    @Step("Checks the quantity of goods in column expectedQuantityColumn. Order_aws")
+    public Order_aws checkQuantityOfGoodsInColumnExpectedQuantity(String expectedQuantity) {
+        expectedQuantityColumn().shouldHave(text(expectedQuantity));
+        return this;
+    }
+
+    @Step("Checks the quantity of goods in column Quantity product. Order_aws")
+        public Order_aws checkQuantityOfGoodsInColumnQuantity(String expectedQuantity) {
+        columnProductQuantity().shouldHave(text(expectedQuantity));
+        return this;
+    }
+
+    @Step("Edit quantity of goods {expectedQuantity} and click save button. Order_aws")
+    public Order_aws editQuantityOfItemInPopUpEditItem(String expectedQuantity) {
+        popUpEditItem().shouldBe(visible);
+        fieldEditQuantityInPopUpEditItem().clear();
+        fieldEditQuantityInPopUpEditItem().sendKeys(expectedQuantity);
+        saveButtonInPopup().click();
+        return this;
+    }
+
+    @Step("Click edit item button. Order_aws")
+    public Order_aws clickEditItemBtn(String articleID) {
+        editItemBtn(articleID).scrollTo();
+        editItemBtn(articleID).click();
+        return this;
+    }
+
+    @Step("Checks the absence of goods in the refund table. Order_aws")
+    public Order_aws checkAbsenceOfGoodsInRefundTable(String articleNum) {
+        productInRefundTable(articleNum).shouldNotBe(visible);
+        return this;
+    }
+
+    @Step("Checks the presence of goods in the refund table . Order_aws")
+    public Order_aws checkPresenceOfGoodsInRefundTable(String articleNum) {
+        productInRefundTable(articleNum).shouldBe(visible);
+        return this;
+    }
+
+    @Step("Click refund button. Order_aws")
+    public Order_aws clickRefundBtn() {
+        filterHeader().scrollTo();
+        refundBtn().click();
+        return this;
+    }
+
+    @Step("Click remove product button. Order_aws")
+    public Order_aws clickRemoveProductBtn() {
+        btnRemoveProduct().scrollTo();
+        btnRemoveProduct().click();
+        return this;
+    }
+
+    @Step("Checks presence remove product popUp and click button Yes. Order_aws")
+    public Order_aws clockBtnYesInRemoveProductPopUp() {
+        removeProductPopUp().shouldBe(visible);
+        btnYesInRemoveProductPopUp().click();
+        return this;
+    }
+
+    @Step("Checks presence remove product popUp and click button No. Order_aws")
+    public Order_aws clockBtnNoInRemoveProductPopUp() {
+        removeProductPopUp().shouldBe(visible);
+        btnNoInRemoveProductPopUp().click();
+        return this;
+    }
+
+    @Step("Select the checkbox of the desired product. Order_aws")
+    public Order_aws selectCheckboxDesiredProduct(String artID) {
+        checkboxOfAddedProduct(artID).scrollTo();
+        checkboxOfAddedProduct(artID).click();
+        return this;
+    }
 
     @Step("Compares the quantity of items added to the quantity in the column Quantity of products. Order_aws")
     public Order_aws compareQuantityOfItemsWithQuantityInColumnQuantityOfProducts() {
@@ -355,6 +478,7 @@ public class Order_aws {
     @Step("Click button AddedGoods in PopUp AddProduct. Order_aws")
     public Order_aws clickBtnAddedGoodsInPopUpAddProduct() {
         btnAddedGoodsInPopUpAddProduct().click();
+
         return this;
     }
 
@@ -551,7 +675,7 @@ public class Order_aws {
 
     @Step
     public Order_aws clickSaveReclamationButton() {
-        saveButtonInPopupOfReturn().click();
+        saveButtonInPopup().click();
         listWithReclamations().waitUntil(appear, 40000);
         return this;
     }
@@ -587,6 +711,16 @@ public class Order_aws {
     @Step("Get selling price of a certain product {articleID}. Order_aws")
     public Float getSellingPriceOfCertainProduct(String articleID) {
         return Float.valueOf(sellingPriceOfCertainProduct(articleID).getText());
+    }
+
+    @Step("Get product quantity from column product quantity")
+    public Float getProductQuantity() {
+        return Float.valueOf(columnProductQuantity().getText());
+    }
+
+    @Step("Get total sum product from column sum of product. Order_aws")
+    public  Float getTotalSumProductFromColumnSumOfProduct() {
+        return Float.valueOf(columnSumProduct().getText());
     }
 
     @Step("Checks that Safe Order is turned off. Order_aws")
@@ -688,6 +822,13 @@ public class Order_aws {
         return totalCost;
     }
 
+    @Step("Subtracts removed product cost {sellingCostOneProduct} from the total oder cost {totalCost}. Order_aws")
+    public Float subtractsRemovedProductCostFromTotalOrderCost(Float totalCost, Float sellingCostOneProduct) {
+        Float cost = totalCost - sellingCostOneProduct;
+        String formatCost = new DecimalFormat(".##").format(cost).replaceAll(",", ".");
+        return Float.valueOf(formatCost);
+    }
+
     @Step("Checks conto NR number {contoNR}. Order_aws")
     public Order_aws checkContoNR(String contoNR) {
         contoNR().shouldHave(text(contoNR));
@@ -720,7 +861,6 @@ public class Order_aws {
         return this;
     }
 
-
     @Step("Get the total cost of all goods including delivery{deliveryCost} and safe order{safeOrderCost}. Order_aws")
     public Float getTotalCostOfAllGoodsAndDeliveryAndSafeOrder(Float deliveryCost, Float safeOrderCost) {
         Float costDeliveryAndSafeOrder = getTotalCostDeliveryAmountAndSafeOrder(deliveryCost, safeOrderCost);
@@ -745,8 +885,29 @@ public class Order_aws {
         return Float.valueOf(totalSum);
     }
 
+    @Step("Plus the selling price of all added items including delivery. Order_aws")
+    public Float plusSellingPriceOfAllAddedItemsIncludingDelivery() {
+        Float deliveryPrice = getDeliveryCostInOrder();
+        Float sumOfAllGoods = 0.0f;
+        for (int i = 0; i < sellingPriceOfAddedGoods().size(); i++) {
+            Float priceOfOneItem = Float.parseFloat(sellingPriceOfAddedGoods().get(i).getText());
+            sumOfAllGoods = sumOfAllGoods + priceOfOneItem;
+        }
+        Float sum = (sumOfAllGoods + deliveryPrice);
+        String totalSum = new DecimalFormat(".##").format(sum).replaceAll(",", ".");
+        return Float.valueOf(totalSum);
+    }
+
     @Step("Get total sum of income without VAT. Order_aws")
     public Float getTotalSumIncomeWithoutVAT() {
+        sleep(2000);
         return Float.valueOf(totalIncomeWithoutVat().getText());
+    }
+
+    @Step("Checks the correctness of the amount of goods calculation. Order_aws")
+    public Float checkCorrectnessOfAmountOfGoodsCalculation(Float sellingCostOneProduct, Float productQuantity) {
+        Float cost = sellingCostOneProduct * productQuantity;
+        String formatCost = new DecimalFormat(".##").format(cost).replaceAll(",", ".");
+        return Float.valueOf(formatCost);
     }
 }
