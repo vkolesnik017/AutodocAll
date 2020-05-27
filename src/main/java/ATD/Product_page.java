@@ -531,6 +531,10 @@ public class Product_page {
         return $x("//input[@class=' qty_1']");
     }
 
+    SelenideElement counterValueCommon() {
+        return $x("//div[@class='count product-count']/input");
+    }
+
     SelenideElement counterPlus() {
         return $(By.xpath("//a[@class='ga-click plus add']"));
     }
