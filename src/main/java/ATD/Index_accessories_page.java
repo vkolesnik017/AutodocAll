@@ -40,5 +40,13 @@ class Index_accessories_page {
         return $x("//div[@class='accessories-tabs__item active']//div[@class='accessories-tabs__slide-title']");
     }
 
+    SelenideElement textSubtitle() {
+        return $x("//div[@class='page-subtitle']");
+    }
+
+    SelenideElement blockTopCategories() {
+        return $x("//div[@class='accessories-top']");
+    }
+
 
 }

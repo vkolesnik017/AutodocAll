@@ -31,4 +31,15 @@ public class Listing_accessories_page_Logic extends Listing_accessories_page {
         return this;
     }
 
+    @Step("Get name first category in Sidebar. Listing_accessories_page")
+    public  String getNameFirstCategoryInSidebar() {
+        return firstCategoryInSidebar().getText();
+    }
+
+    @Step("Click on first category in Sidebar.Listing_accessories_page")
+    public Listing_accessories_page_Logic clickOnFirstCategoryInSidebar(){
+        firstCategoryInSidebar().click();
+        return this;
+    }
+
 }

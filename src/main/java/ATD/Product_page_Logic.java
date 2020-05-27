@@ -644,4 +644,9 @@ public class Product_page_Logic extends Product_page {
         return titleNameProductPageChemicals().getText();
     }
 
+
+    @Step("Get product quanity from counter. Product_page")
+    public String getProductQuanity() {
+        return counterValueCommon().getValue();
+    }
 }
