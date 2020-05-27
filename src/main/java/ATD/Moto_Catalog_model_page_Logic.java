@@ -89,4 +89,11 @@ public class Moto_Catalog_model_page_Logic extends Moto_Catalog_model_page {
         return this;
     }
 
+    @Step(" reset of motorcycle selector .Moto_Catalog_model_page")
+    public Moto_Categories_page_Logic resetOfMotoSelector() {
+        mainFormOfSelector().shouldBe(visible);
+        btnResetOfSelector().shouldBe(visible).click();
+        return page(Moto_Categories_page_Logic.class);
+    }
+
 }

@@ -40,4 +40,8 @@ public class Moto_Catalog_model_page {
     SelenideElement motorOfMotoSelector() {
         return $(byId("form_car_id"));
     }
+
+    SelenideElement mainFormOfSelector() {return $(byId("selector-wrapper"));}
+
+    SelenideElement btnResetOfSelector() {return $(byId("reset_selector_form"));}
 }
