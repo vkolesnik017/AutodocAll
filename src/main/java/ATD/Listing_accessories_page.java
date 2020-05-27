@@ -19,5 +19,9 @@ public class Listing_accessories_page {
         return $x("//div[@class='block categories blue topSubCats']//b[text()]");
     }
 
+    SelenideElement firstCategoryInSidebar() {
+        return $x("//div[@class='sidebar']//li[1]//span[text()]");
+    }
+
 
 }

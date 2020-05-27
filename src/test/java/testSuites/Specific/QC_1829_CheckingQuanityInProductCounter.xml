@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="QC_1829_CheckingQuanityInProductCounter"  data-provider-thread-count="5">
+
+    <listeners>
+        <listener class-name="ATD.ProjectListener"/>
+    </listeners>
+
+    <test name="QC_1829_CheckingQuanityInProductCounter">
+        <classes>
+            <class name="ATD.SpecificTests.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1829_CheckingQuanityInProductCounter">
+            </class>
+        </classes>
+    </test>
+
+</suite>

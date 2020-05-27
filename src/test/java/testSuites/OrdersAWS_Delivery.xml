@@ -19,6 +19,8 @@
             <class name="ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_169_CreatingAwsOrder_WithHeavyLoads"/>
             <class name="ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_171_CreatingAwsOrder_WithHeaveLoadsDeliveryToCountryToWhichHeaveLoadsNotDelivery"/>
             <class name="ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_173_CreatingAwsOrder_WithDangerousGoodsToCountryToWhichItIsNotDelivered"/>
+            <class name="ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_1125_AddingAutoPartToAwsOrder"/>
+            <class name="ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_1126_RemovingAutoPartFromAwsOrder"/>
         </classes>
     </test>
 

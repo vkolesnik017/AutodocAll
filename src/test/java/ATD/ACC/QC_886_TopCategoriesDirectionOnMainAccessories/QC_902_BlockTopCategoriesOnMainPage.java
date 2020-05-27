@@ -1,4 +1,4 @@
-package ATD.ACC.QC_836_MainAccessories;
+package ATD.ACC.QC_886_TopCategoriesDirectionOnMainAccessories;
 
 import ATD.Index_accessories_page_Logic;
 import ATD.SetUp;
@@ -14,7 +14,7 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_837_PresenceMainTitleOnMainPage {
+public class QC_902_BlockTopCategoriesOnMainPage {
 
     @BeforeClass
     void setUp() {
@@ -29,10 +29,10 @@ public class QC_837_PresenceMainTitleOnMainPage {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test Checks presence main title page.")
-    public void testCheckPresenceMainTitle(String route) {
+    @Description(value = "Test Checks presence top categories block.")
+    public void testCheckPresenceOfTopCategoriesBlock(String route) {
         openPage(route);
-        new Index_accessories_page_Logic().checkPresenceMainTitle();
+        new Index_accessories_page_Logic().checkingPresenceOfTopCategoriesBlock();
     }
 
 
@@ -40,5 +40,4 @@ public class QC_837_PresenceMainTitleOnMainPage {
     private void tearDown() {
         close();
     }
-
 }
