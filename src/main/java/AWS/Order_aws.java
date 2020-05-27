@@ -29,6 +29,10 @@ public class Order_aws {
     private String orderNumber;
     private String url = "https://aws.autodoc.de/order/view/";
 
+    private SelenideElement filterHeader() {
+        return $(".row-fluid");
+    }
+
     private SelenideElement totalPriceOrder() {
         return $x("//td[@class='inf_grandTotal']");
     }
@@ -175,7 +179,7 @@ public class Order_aws {
     }
 
     private SelenideElement sellingPriceOfCertainProduct(String articleID) {
-        return $x("//td[@class='center']//a[text()='" + articleID + "']/../..//abbr");
+        return $x("//a[text()='" + articleID + "']/../..//td[14]//abbr");
     }
 
     // locators and methods for block of status order (Status ändern)
@@ -337,7 +341,34 @@ public class Order_aws {
         return $x("//div[@id='removeProduct']//a[1]");
     }
 
+    private SelenideElement refundBtn() {
+        return $(".printGu");
+    }
 
+    private SelenideElement productInRefundTable(String articleNum) {
+        return $x("//input[@value='" + articleNum + "']");
+    }
+
+
+
+    @Step("Checks the absence of goods in the refund table . Order_aws")
+    public Order_aws checkAbsenceOfGoodsInRefundTable(String articleNum) {
+        productInRefundTable(articleNum).shouldNotBe(visible);
+        return this;
+    }
+
+    @Step("Checks the presence of goods in the refund table . Order_aws")
+    public Order_aws checkPresenceOfGoodsInRefundTable(String articleNum) {
+        productInRefundTable(articleNum).shouldBe(visible);
+        return this;
+    }
+
+    @Step("Click refund button. Order_aws")
+    public Order_aws clickRefundBtn() {
+        filterHeader().scrollTo();
+        refundBtn().click();
+        return this;
+    }
 
     @Step("Click remove product button. Order_aws")
     public Order_aws clickRemoveProductBtn() {
@@ -727,6 +758,13 @@ public class Order_aws {
         String formatCost = new DecimalFormat(".##").format(cost).replaceAll(",", ".");
         Float totalCost = Float.parseFloat(formatCost);
         return totalCost;
+    }
+
+    @Step("Subtracts removed product cost {sellingCostOneProduct} from the total oder cost {totalCost}. Order_aws")
+    public Float subtractsRemovedProductCostFromTotalOrderCost(Float totalCost, Float sellingCostOneProduct) {
+        Float cost = totalCost - sellingCostOneProduct;
+        String formatCost = new DecimalFormat(".##").format(cost).replaceAll(",", ".");
+        return Float.valueOf(formatCost);
     }
 
     @Step("Checks conto NR number {contoNR}. Order_aws")
