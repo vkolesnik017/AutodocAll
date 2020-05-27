@@ -253,7 +253,7 @@ public class Order_aws {
         return $(byId("reclamation-comment"));
     }
 
-    private SelenideElement saveButtonInPopupOfReturn() {
+    private SelenideElement saveButtonInPopup() {
         return $(".btn-save");
     }
 
@@ -349,9 +349,61 @@ public class Order_aws {
         return $x("//input[@value='" + articleNum + "']");
     }
 
+    private SelenideElement editItemBtn(String articleID) {
+        return $x("//a[text()='" + articleID + "']/../..//a[@class='btn btn-default btn-sm edit-product']");
+    }
+
+    private SelenideElement popUpEditItem() {
+        return $x("//div[@id='editProduct']");
+    }
+
+    private SelenideElement fieldEditQuantityInPopUpEditItem() {
+        return $x("//div[@id='editProduct']//input[@id='AddProduct[count]']");
+    }
+
+    private SelenideElement columnProductQuantity() {
+        return $x("//td[16]");
+    }
+
+    private SelenideElement expectedQuantityColumn() {
+        return $x("//body//td[11][@class='show-requests']");
+    }
+
+    private SelenideElement columnSumProduct() {
+        return $x("//td[19]");
+    }
 
 
-    @Step("Checks the absence of goods in the refund table . Order_aws")
+
+    @Step("Checks the quantity of goods in column expectedQuantityColumn. Order_aws")
+    public Order_aws checkQuantityOfGoodsInColumnExpectedQuantity(String expectedQuantity) {
+        expectedQuantityColumn().shouldHave(text(expectedQuantity));
+        return this;
+    }
+
+    @Step("Checks the quantity of goods in column Quantity product. Order_aws")
+        public Order_aws checkQuantityOfGoodsInColumnQuantity(String expectedQuantity) {
+        columnProductQuantity().shouldHave(text(expectedQuantity));
+        return this;
+    }
+
+    @Step("Edit quantity of goods {expectedQuantity} and click save button. Order_aws")
+    public Order_aws editQuantityOfItemInPopUpEditItem(String expectedQuantity) {
+        popUpEditItem().shouldBe(visible);
+        fieldEditQuantityInPopUpEditItem().clear();
+        fieldEditQuantityInPopUpEditItem().sendKeys(expectedQuantity);
+        saveButtonInPopup().click();
+        return this;
+    }
+
+    @Step("Click edit item button. Order_aws")
+    public Order_aws clickEditItemBtn(String articleID) {
+        editItemBtn(articleID).scrollTo();
+        editItemBtn(articleID).click();
+        return this;
+    }
+
+    @Step("Checks the absence of goods in the refund table. Order_aws")
     public Order_aws checkAbsenceOfGoodsInRefundTable(String articleNum) {
         productInRefundTable(articleNum).shouldNotBe(visible);
         return this;
@@ -623,7 +675,7 @@ public class Order_aws {
 
     @Step
     public Order_aws clickSaveReclamationButton() {
-        saveButtonInPopupOfReturn().click();
+        saveButtonInPopup().click();
         listWithReclamations().waitUntil(appear, 40000);
         return this;
     }
@@ -659,6 +711,16 @@ public class Order_aws {
     @Step("Get selling price of a certain product {articleID}. Order_aws")
     public Float getSellingPriceOfCertainProduct(String articleID) {
         return Float.valueOf(sellingPriceOfCertainProduct(articleID).getText());
+    }
+
+    @Step("Get product quantity from column product quantity")
+    public Float getProductQuantity() {
+        return Float.valueOf(columnProductQuantity().getText());
+    }
+
+    @Step("Get total sum product from column sum of product. Order_aws")
+    public  Float getTotalSumProductFromColumnSumOfProduct() {
+        return Float.valueOf(columnSumProduct().getText());
     }
 
     @Step("Checks that Safe Order is turned off. Order_aws")
@@ -799,7 +861,6 @@ public class Order_aws {
         return this;
     }
 
-
     @Step("Get the total cost of all goods including delivery{deliveryCost} and safe order{safeOrderCost}. Order_aws")
     public Float getTotalCostOfAllGoodsAndDeliveryAndSafeOrder(Float deliveryCost, Float safeOrderCost) {
         Float costDeliveryAndSafeOrder = getTotalCostDeliveryAmountAndSafeOrder(deliveryCost, safeOrderCost);
@@ -841,5 +902,12 @@ public class Order_aws {
     public Float getTotalSumIncomeWithoutVAT() {
         sleep(2000);
         return Float.valueOf(totalIncomeWithoutVat().getText());
+    }
+
+    @Step("Checks the correctness of the amount of goods calculation. Order_aws")
+    public Float checkCorrectnessOfAmountOfGoodsCalculation(Float sellingCostOneProduct, Float productQuantity) {
+        Float cost = sellingCostOneProduct * productQuantity;
+        String formatCost = new DecimalFormat(".##").format(cost).replaceAll(",", ".");
+        return Float.valueOf(formatCost);
     }
 }
