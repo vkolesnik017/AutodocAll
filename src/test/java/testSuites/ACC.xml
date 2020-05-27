@@ -6,9 +6,10 @@
         <listener class-name="ATD.ProjectListener"/>
     </listeners>
 
-    <test name="QC_1261_TitleMainCatalog">
+    <test name="QC_1260_MainProductCatalogOnMainTools">
         <classes>
             <class name="ATD.ACC.QC_1260_MainProductCatalogOnMainTools.QC_1261_TitleMainCatalog"/>
+            <class name="ATD.ACC.QC_1260_MainProductCatalogOnMainTools.QC_1262_SubtitleMainCatalog"/>
         </classes>
     </test>
 
@@ -62,6 +63,7 @@
         <classes>
             <class name="ATD.ACC.QC_1322_BlockTop10ProductsOnMainTools.QC_1331_TransitionOnProductPageWithBlockTop10Products"/>
             <class name="ATD.ACC.QC_1322_BlockTop10ProductsOnMainTools.QC_1323_TitleBlockTop10Products"/>
+            <class name="ATD.ACC.QC_1322_BlockTop10ProductsOnMainTools.QC_1325_SubtitleBlockTop10Products"/>
         </classes>
     </test>
 
@@ -88,6 +90,20 @@
     <test name="QC_1340_ListingAccessories">
         <classes>
             <class name="ATD.ACC.QC_1340_ListingAccessories.QC_1378_NameCategoryOnListingAccessories"/>
+        </classes>
+    </test>
+
+    <test name="QC_1276_BlockTop6ProductsOnMainTools">
+        <classes>
+            <class name="ATD.ACC.QC_1276_BlockTop6ProductsOnMainTools.QC_1278_TitleBlockTop6Products"/>
+        </classes>
+    </test>
+
+    <test name="QC_1254_MainTools">
+        <classes>
+            <class name="ATD.ACC.QC_1254_MainTools.QC_1333_BlockTopBrandsOnMainTools"/>
+            <class name="ATD.ACC.QC_1254_MainTools.QC_1334_BlockFeaturesOnMainTools"/>
+            <class name="ATD.ACC.QC_1254_MainTools.QC_1335_BlockDeliveryOnMainTools"/>
         </classes>
     </test>
 
