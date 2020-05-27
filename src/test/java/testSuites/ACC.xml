@@ -35,6 +35,7 @@
             <class name="ATD.ACC.QC_836_MainAccessories.QC_991_DeliveryBlock"/>
             <class name="ATD.ACC.QC_836_MainAccessories.QC_986_BlockTopBrands"/>
             <class name="ATD.ACC.QC_836_MainAccessories.QC_837_PresenceMainTitleOnMainPage"/>
+            <class name="ATD.ACC.QC_836_MainAccessories.QC_838_SubtitleOnMainAccessories"/>
         </classes>
     </test>
 
@@ -57,9 +58,10 @@
         </classes>
     </test>
 
-    <test name="QC_1322_BlockTop10Products">
+    <test name="QC_1322_BlockTop10ProductsOnMainTools">
         <classes>
-            <class name="ATD.ACC.QC_1322_BlockTop10Products.QC_1331_TransitionOnProductPageWithBlockTop10Products"/>
+            <class name="ATD.ACC.QC_1322_BlockTop10ProductsOnMainTools.QC_1331_TransitionOnProductPageWithBlockTop10Products"/>
+            <class name="ATD.ACC.QC_1322_BlockTop10ProductsOnMainTools.QC_1323_TitleBlockTop10Products"/>
         </classes>
     </test>
 
@@ -72,12 +74,14 @@
     <test name="QC_886_TopCategoriesDirectionOnMainAccessories">
         <classes>
             <class name="ATD.ACC.QC_886_TopCategoriesDirectionOnMainAccessories.QC_923_TransitionToListingThroughCategoryTopBlock"/>
+            <class name="ATD.ACC.QC_886_TopCategoriesDirectionOnMainAccessories.QC_902_BlockTopCategoriesOnMainPage"/>
         </classes>
     </test>
 
     <test name="QC_1356_BlockCategoriesInSidebarOnListingAccessories">
         <classes>
             <class name="ATD.ACC.QC_1356_BlockCategoriesInSidebarOnListingAccessories.QC_1360_TitleCategoriesBlockInSidebar"/>
+            <class name="ATD.ACC.QC_1356_BlockCategoriesInSidebarOnListingAccessories.QC_1368_SelectCategoryFromSidebar"/>
         </classes>
     </test>
 

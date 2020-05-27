@@ -14,7 +14,7 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_837_PresenceMainTitleOnMainPage {
+public class QC_838_SubtitleOnMainAccessories {
 
     @BeforeClass
     void setUp() {
@@ -29,10 +29,10 @@ public class QC_837_PresenceMainTitleOnMainPage {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test Checks presence main title page.")
-    public void testCheckPresenceMainTitle(String route) {
+    @Description(value = "Test Checks presence text subtitle.")
+    public void testCheckPresenceTextSubtitle(String route) {
         openPage(route);
-        new Index_accessories_page_Logic().checkPresenceMainTitle();
+        new Index_accessories_page_Logic().checkingPresenceTextSubtitle();
     }
 
 
@@ -40,5 +40,4 @@ public class QC_837_PresenceMainTitleOnMainPage {
     private void tearDown() {
         close();
     }
-
 }
