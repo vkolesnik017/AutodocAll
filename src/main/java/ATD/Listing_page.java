@@ -655,7 +655,11 @@ public class Listing_page {
 
     SelenideElement brandFilterButtonInSidebarName() { return $(".branded-filter-sidebar__list img"); }
 
+    SelenideElement secondBrandFilterButtonInSidebarName() { return $(".branded-filter-sidebar__list li:nth-child(2) img"); }
+
     SelenideElement brandFilterButtonInSidebarButton() { return $(".branded-filter-sidebar__list label"); }
+
+    SelenideElement secondBrandFilterButtonInSidebarButton() { return $(".branded-filter-sidebar__list li:nth-child(2) label"); }
 
     SelenideElement brandFilterSecondButtonInSidebarName() { return $x("//*[@class='branded-filter-sidebar']//li[2]//img"); }
 
