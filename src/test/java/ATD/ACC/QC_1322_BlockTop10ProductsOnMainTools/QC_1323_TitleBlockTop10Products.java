@@ -1,6 +1,6 @@
-package ATD.ACC.QC_836_MainAccessories;
+package ATD.ACC.QC_1322_BlockTop10ProductsOnMainTools;
 
-import ATD.Index_accessories_page_Logic;
+import ATD.Index_instruments_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -14,7 +14,7 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_837_PresenceMainTitleOnMainPage {
+public class QC_1323_TitleBlockTop10Products {
 
     @BeforeClass
     void setUp() {
@@ -23,16 +23,16 @@ public class QC_837_PresenceMainTitleOnMainPage {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main","index_accessories");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main","index_instruments");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test Checks presence main title page.")
-    public void testCheckPresenceMainTitle(String route) {
+    @Description(value = "Test checking presence title top-10 products block .")
+    public void testCheckPresenceTitleTop10Block(String route) {
         openPage(route);
-        new Index_accessories_page_Logic().checkPresenceMainTitle();
+        new Index_instruments_page_Logic().checkingPresenceTitleTop10Block();
     }
 
 
@@ -40,5 +40,4 @@ public class QC_837_PresenceMainTitleOnMainPage {
     private void tearDown() {
         close();
     }
-
 }

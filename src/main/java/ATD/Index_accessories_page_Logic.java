@@ -5,7 +5,7 @@ import static com.codeborne.selenide.Selenide.page;
 
 
 import io.qameta.allure.Step;
-
+import org.testng.Assert;
 
 
 public class Index_accessories_page_Logic extends Index_accessories_page {
@@ -63,6 +63,18 @@ public class Index_accessories_page_Logic extends Index_accessories_page {
     public Listing_accessories_page_Logic clickOnCategoryInBlockTopAccessories(){
         nameFirstCategoryBlockTopAccessories().click();
         return page(Listing_accessories_page_Logic.class);
+    }
+
+    @Step("Checking presence text subtitle on main page. Index_accessories_page")
+    public Index_accessories_page_Logic checkingPresenceTextSubtitle() {
+        Assert.assertFalse(textSubtitle().text().isEmpty());
+        return this;
+    }
+
+    @Step("Checking presence of the top categories block.Index_accessories_page")
+    public Index_accessories_page_Logic checkingPresenceOfTopCategoriesBlock() {
+        blockTopCategories().shouldBe(visible);
+        return this;
     }
 
 

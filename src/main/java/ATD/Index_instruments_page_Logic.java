@@ -2,9 +2,7 @@ package ATD;
 
 import io.qameta.allure.Step;
 import org.testng.Assert;
-
 import java.sql.SQLException;
-
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 import static com.codeborne.selenide.Selenide.page;
@@ -33,6 +31,12 @@ public class Index_instruments_page_Logic extends Index_instruments_page {
     public Product_page_Logic clickFirstProductInTopBlock() {
         productInBlockTop10().click();
         return page (Product_page_Logic.class);
+    }
+
+    @Step("Checking presence  title top-10 products block.  Index_instruments_page")
+    public Index_instruments_page_Logic checkingPresenceTitleTop10Block() {
+        titleTop10ProductsBlock().shouldBe(visible);
+        return this;
     }
 
 
