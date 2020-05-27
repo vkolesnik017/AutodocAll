@@ -843,13 +843,13 @@ public class Listing_page_Logic extends Listing_page {
     public Listing_page_Logic checkOutputWithFiltersByBrandFixInSidebarRouteSearch(int brandPositionInAlt) {
         scrollAndCheckFixFiltersInSidebar();
         closePopupByClickOverlayOnListingSearch();
-        String brand = brandFilterButtonInSidebarName().attr("alt");
-        brandFilterButtonInSidebarButton().click();
+        String brand = secondBrandFilterButtonInSidebarName().attr("alt");
+        secondBrandFilterButtonInSidebarButton().click();
         waitUntilPreloaderDisappear();
         getBrandFromTitle(brand, brandPositionInAlt, true, productTitleInListMode());
         scrollAndCheckFixFiltersInSidebar();
         closePopupByClickOverlayOnListingSearch();
-        brandFilterButtonInSidebarButton().click();
+        secondBrandFilterButtonInSidebarButton().click();
         waitUntilPreloaderDisappear();
         getBrandFromTitle(brand, brandPositionInAlt, false, productTitleInListMode());
         return this;

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static ATD.CommonMethods.checkingContainsUrl;
+import static ATD.CommonMethods.getNameRouteFromJSVarInHTML;
 import static ATD.CommonMethods.waitingWhileLinkBecomeExpected;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
@@ -300,23 +301,27 @@ public class TyresListing_page_Logic extends TyresListing_page {
 
     @Step("Click dimension button and check redirect. TyresListing_page")
     public TyresListing_page_Logic clickDimensionButtonAndCheckRedirect() {
+        String routeName = getNameRouteFromJSVarInHTML();
         String baseUrl = url();
         String dimension = dimensionLink().text().replaceAll("\\D|\\s", "");
         String width = dimension.substring(0,3);
         String height = dimension.substring(3,5);
         String diameter = dimension.substring(5,7);
-        dimensionLink().click();
-        widthValueInSelector().shouldHave(text(width));
+        dimensionLink().hover().click();
+        widthValueInSelector().waitUntil(visible, 5000).shouldHave(text(width));
         heightValueInSelector().shouldHave(text(height));
         diameterValueInSelector().shouldHave(text(diameter));
         checkCharacteristicOnListing(width, widthCharacteristic());
         checkCharacteristicOnListing(height, heightCharacteristic());
         checkCharacteristicOnListing(diameter, radiusCharacteristic());
-        if (baseUrl.contains("1")) {
+        if (routeName.equals("tyres_dimension") | routeName.equals("tyres_size")) {
             String baseUrlWithDimension = baseUrl.replaceAll("\\d", "").replaceAll("\\/--r", "").replaceAll("\\/-zoll", "");
             String urlWithDimension = (baseUrlWithDimension + "/" + width + "-" + height + "-r" + diameter);
             waitingWhileLinkBecomeExpected(urlWithDimension);
-        } else {
+        } else if (routeName.equals("tyres_season_size")) {
+            checkingContainsUrl( width + "-" + height + "-r" + diameter);
+        }
+        else {
             String urlWithDimension = (baseUrl + "/" + width + "-" + height + "-r" + diameter);
             waitingWhileLinkBecomeExpected(urlWithDimension);
         }
