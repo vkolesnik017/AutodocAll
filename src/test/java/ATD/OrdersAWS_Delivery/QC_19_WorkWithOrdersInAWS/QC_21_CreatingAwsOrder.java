@@ -25,8 +25,9 @@ import static com.codeborne.selenide.Selenide.close;
 
 public class QC_21_CreatingAwsOrder {
 
-    private String userID = "15089943", articleNum, totalDeliveryAmountAndSafeOrder;
-    private Float deliveryCost, safeOrderCost, productCostInOrder, totalProductCostIncludingDeliveryAndSafeOrder, productCost, totalCostInOrder;
+    private String userID = "15089943", articleNum;
+    private Float deliveryCost, safeOrderCost, productCostInOrder, totalProductCostIncludingDeliveryAndSafeOrder,
+            totalDeliveryAmountAndSafeOrder, productCost, totalCostInOrder;
     private ArrayList userDataInCreateOrder, userData, userDataInOrder;
 
     private Product_page_Logic product_page_logic = new Product_page_Logic();

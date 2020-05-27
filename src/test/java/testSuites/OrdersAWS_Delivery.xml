@@ -13,7 +13,12 @@
             <class name="ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_146_CreatingAwsOrder_WithDropProductDeliveredNotToCountryOfShop"/>
             <class name="ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_150_CreatingAwsOrder_WithDropProductDeliveredToCountryToWhichDropIsNotDelivered"/>
             <class name="ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_562_CreatingAwsOrder_WithDropProductAndRegularProduct"/>
+            <class name="ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_563_CreatingAwsOrder_WithDeliveryToIsland"/>
+            <class name="ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_564_CreatingAwsOrder_WithDangerousGoods"/>
+            <class name="ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_565_CreatingAwsOrder_WithDeliveryToIsland_OrdinaryGoodAndHeavyLoads"/>
             <class name="ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_169_CreatingAwsOrder_WithHeavyLoads"/>
+            <class name="ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_171_CreatingAwsOrder_WithHeaveLoadsDeliveryToCountryToWhichHeaveLoadsNotDelivery"/>
+            <class name="ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_173_CreatingAwsOrder_WithDangerousGoodsToCountryToWhichItIsNotDelivered"/>
         </classes>
     </test>
 

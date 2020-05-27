@@ -9,7 +9,14 @@
     <test name="QC_301_MotoSelector">
         <classes>
             <class name="MOTO.QC_301_MotoSelector.QC_302_AvailabilityOfMotoSelector"/>
-            <class name="MOTO.QC_301_MotoSelector.QC_304_OpeningAreClosedSelector"/>
+            <class name="MOTO.QC_301_MotoSelector.QC_304_OpeningOfMinimizedSelector"/>
+            <class name="MOTO.QC_301_MotoSelector.QC_305_MandatorySelectionOfAllSelectorFields"/>
+            <class name="MOTO.QC_301_MotoSelector.QC_306_TransitionToCorrespondingRoute"/>
+            <class name="MOTO.QC_301_MotoSelector.QC_308_PresenceOfFilledValuesInSelector"/>
+            <class name="MOTO.QC_301_MotoSelector.QC_309_PresenceOfHeadlineInSelector"/>
+            <class name="MOTO.QC_301_MotoSelector.QC_310_PresenceOfOpeningSelector"/>
+            <class name="MOTO.QC_301_MotoSelector.QC_312_FillingSelectorByCompatibleMoto"/>
+            <class name="MOTO.QC_301_MotoSelector.QC_313_FillingSelectorByIncompatibleMoto"/>
         </classes>
     </test>
 

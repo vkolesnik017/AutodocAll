@@ -8,10 +8,13 @@ import org.testng.Assert;
 import java.util.ArrayList;
 import java.util.List;
 
+import static ATD.CommonMethods.checkingContainsUrl;
+import static ATD.CommonMethods.waitingWhileLinkBecomeExpected;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.clearBrowserCache;
+import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class TyresListing_page_Logic extends TyresListing_page {
 
@@ -254,6 +257,68 @@ public class TyresListing_page_Logic extends TyresListing_page {
     public TyresListing_page_Logic checkThreeStarsRatingInEveryProductOnListingTyres() {
         for (int i = 1; i < productsRatingOnListing().size(); i++) {
             productsRatingOnListing().get(i).shouldHave(attribute("style", "width: 61.2%;"));
+        }
+        return this;
+    }
+
+    @Step("Check brand relink on tyres listing. TyresListing_page")
+    public TyresListing_page_Logic checkBrandRelink() {
+        String brandNameInSidebar = brandFilterTyresInSidebar().attr("data-value");
+        brandFilterTyresInSidebar().click();
+        brandNameInSelector().shouldHave(text(brandNameInSidebar));
+        new Listing_page_Logic().checkProductTitleOnListing(brandNameInSidebar, true, titleOfAllProducts());
+        checkingContainsUrl(brandNameInSidebar.toLowerCase());
+        return this;
+    }
+
+    @Step("Check brand relink on tyres listing. TyresListing_page")
+    public TyresListing_page_Logic checkDiameterRelink() {
+        diameter17InRelinkBlock().click();
+        diameterValueInSelector().shouldHave(text("17"));
+        checkingContainsUrl("/17-zoll");
+        checkCharacteristicOnListing("17", radiusCharacteristic());
+        return this;
+    }
+
+    @Step("Click all sizes button and check redirect. TyresListing_page")
+    public TyresListing_page_Logic clickAllSizesButtonAndCheckRedirect() {
+        if (url().contains("reifen/offroad-suv")) {
+            allSizesButton().hover().click();
+            checkingContainsUrl("reifen/type_list/offroad-suv");
+        } else if (url().contains("reifen/llkw")) {
+            allSizesButton().hover().click();
+            checkingContainsUrl("reifen/type_list/llkw");
+        } else if (url().contains("reifen/motorrad")) {
+            allSizesButton().hover().click();
+            checkingContainsUrl("reifen/type_list/motorrad");
+        } else {
+            allSizesButton().hover().click();
+            checkingContainsUrl("reifen/type_list");
+        }
+        return this;
+    }
+
+    @Step("Click dimension button and check redirect. TyresListing_page")
+    public TyresListing_page_Logic clickDimensionButtonAndCheckRedirect() {
+        String baseUrl = url();
+        String dimension = dimensionLink().text().replaceAll("\\D|\\s", "");
+        String width = dimension.substring(0,3);
+        String height = dimension.substring(3,5);
+        String diameter = dimension.substring(5,7);
+        dimensionLink().click();
+        widthValueInSelector().shouldHave(text(width));
+        heightValueInSelector().shouldHave(text(height));
+        diameterValueInSelector().shouldHave(text(diameter));
+        checkCharacteristicOnListing(width, widthCharacteristic());
+        checkCharacteristicOnListing(height, heightCharacteristic());
+        checkCharacteristicOnListing(diameter, radiusCharacteristic());
+        if (baseUrl.contains("1")) {
+            String baseUrlWithDimension = baseUrl.replaceAll("\\d", "").replaceAll("\\/--r", "").replaceAll("\\/-zoll", "");
+            String urlWithDimension = (baseUrlWithDimension + "/" + width + "-" + height + "-r" + diameter);
+            waitingWhileLinkBecomeExpected(urlWithDimension);
+        } else {
+            String urlWithDimension = (baseUrl + "/" + width + "-" + height + "-r" + diameter);
+            waitingWhileLinkBecomeExpected(urlWithDimension);
         }
         return this;
     }

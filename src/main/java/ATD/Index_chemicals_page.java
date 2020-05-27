@@ -34,6 +34,37 @@ public class Index_chemicals_page {
         return $$x("//div[@class='product-list__item active']");
     }
 
+    SelenideElement blockAdvantages() {
+        return $x("//div[@class='advantages']");
+    }
+
+    SelenideElement secondAdvantageInBlockAdvantages() {
+        return $x("//div[@class='advantages']//div[@class='advantages__item'][2]");
+    }
+
+    SelenideElement blockAdvantagesPopup(){
+        return $x("//div[@class='advantages']//div[@class='advantages__item-popup']");
+    }
+
+    SelenideElement nameFirstProductInBlockTopProducts() {
+        return $x("//div[@class='top-product-block']//div[@class='product-list__item__title']");
+    }
+
+    SelenideElement detailsBtnInPopupInTopProductBlock() {
+        return $x("//div[@class='top-product-block']//div[@class='item-table-box__details']");
+    }
+
+    SelenideElement subTitleNameMainPage() {
+        return $x("//div[@class='special-catalog__subtitle']");
+    }
+
+    SelenideElement titleNameMainPage() {
+        return $x("//h1[@class='special-catalog__title']");
+    }
+
+    SelenideElement blockDelivery() {
+        return $x("//div[@class='delivery']//ul[@class='delivery__wrapp']");
+    }
 
 
 }

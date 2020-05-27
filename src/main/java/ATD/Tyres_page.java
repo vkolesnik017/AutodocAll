@@ -52,4 +52,11 @@ public class Tyres_page {
 
   SelenideElement speedIndexHinDropdown() { return $x("//*[@id='SpeedIndex_h']/../label"); }
 
+  SelenideElement allBrandsButton() { return $(".tyres-brands-link > a"); }
+
+  SelenideElement allSizesButton() { return $(".all_sizes"); }
+
+  SelenideElement mobileAppLink() { return $x("//*[@class='features']/li[4]"); }
+
+  SelenideElement videoLink() { return $x("//*[@class='features']/li[5]"); }
 }

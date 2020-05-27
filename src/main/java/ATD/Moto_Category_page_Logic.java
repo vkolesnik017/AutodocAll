@@ -5,7 +5,9 @@ import org.testng.Assert;
 
 import java.sql.SQLException;
 
+import static com.codeborne.selenide.Condition.exactValue;
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class Moto_Category_page_Logic extends Moto_Category_page {
@@ -26,14 +28,71 @@ public class Moto_Category_page_Logic extends Moto_Category_page {
 
 
     @Step(" appears of tooltip for marke field in selector. Moto_Category_page")
-    public Moto_Category_page_Logic visibilityOfToolTipOfMarkeField() {
+    public Moto_Category_page_Logic visibilityOfToolTipForMarkeField() {
               if (!brandOfMotoField().getSelectedValue().equals("0")) {
                   brandOfMotoField().selectOptionByValue("0");
               }
-
                 btnSearchAtSelector().click();
                 tooltipOfMarkeField().shouldBe(visible);
         return this;
     }
+
+    @Step(" appears of tooltip for model field in selector. Moto_Category_page")
+    public Moto_Category_page_Logic visibilityOfToolTipForModelField() {
+        brandOfMotoField().selectOptionByValue("4057");
+        btnSearchAtSelector().click();
+        tooltipOfModelField().shouldBe(visible);
+        return this;
+    }
+
+    @Step(" appears of tooltip for motor field in selector. Moto_Category_page")
+    public Moto_Category_page_Logic visibilityOfToolTipForMotorField() {
+        modelFiledInSelector().selectOptionByValue("13475");
+        btnSearchAtSelector().click();
+        tooltipOfMotorField().shouldBe(visible);
+        return this;
+    }
+
+
+    @Step(" selecting motorcycle in selector . Moto_Category_page")
+    public Moto_Category_car_list_page_Logic selectMotoInSelector(String marke, String model, String motor) {
+        brandOfMotoField().selectOptionByValue(marke);
+        modelFiledInSelector().selectOptionByValue(model);
+        motorFiledInSelector().selectOptionByValue(motor);
+        searchButton().click();
+        return page(Moto_Category_car_list_page_Logic.class);
+    }
+
+    @Step(" check current url. Moto_Category_page")
+    public Moto_Category_page_Logic checkCurrentUrl(String subRoute) throws SQLException {
+        CommonMethods commonMethods = new CommonMethods();
+        DataBase db = new DataBase();
+        commonMethods.checkingContainsUrl(db.getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", subRoute));
+        return this;
+    }
+
+
+    @Step(" Select brand of motorcycle .Moto_Category_page")
+    public Moto_Category_page_Logic selectBrandOfMoto(String markeOfMoto) {
+        brandOfMotoField().selectOptionByValue(markeOfMoto);
+        return this;
+    }
+
+    @Step(" reset of motorcycle selector .Moto_Category_page")
+    public Moto_Category_page_Logic resetOfMotoSelector() {
+        btnResetOfSelector().shouldBe(visible).click();
+        return this;
+    }
+
+
+    @Step(" reset of motorcycle selector .Moto_Category_page")
+    public Moto_Category_page_Logic presenceOfEmptyValuesInSelector() {
+        brandOfMotoField().shouldHave(exactValue("0"));
+        modelFiledInSelector().shouldHave(exactValue("0"));
+        motorFiledInSelector().shouldHave(exactValue("0"));
+        return this;
+    }
+
+
 
 }

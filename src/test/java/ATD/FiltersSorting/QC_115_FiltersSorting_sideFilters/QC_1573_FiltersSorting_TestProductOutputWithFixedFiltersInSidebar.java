@@ -34,7 +34,7 @@ public class QC_1573_FiltersSorting_TestProductOutputWithFixedFiltersInSidebar {
         return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list15");
     }
 
-    @Test(dataProvider = "routes")
+    @Test(dataProvider = "routes", enabled = false)
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks All Filters Are Fixed In Sidebar After Scroll")
@@ -55,7 +55,7 @@ public class QC_1573_FiltersSorting_TestProductOutputWithFixedFiltersInSidebar {
         new Listing_page_Logic().checkOutputWithFiltersByBrandFixInSidebarRouteSearch(0);
     }
 
-    @Test(dataProvider = "routesLKW")
+    @Test(dataProvider = "routesLKW", enabled = false)
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks All Filters Are Fixed In Sidebar After Scroll Route LKW")
@@ -66,7 +66,7 @@ public class QC_1573_FiltersSorting_TestProductOutputWithFixedFiltersInSidebar {
                                 .checkOutputWithFiltersByRatingFixInSidebar();
     }
 
-    @Test
+    @Test(enabled = false)
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks All Filters Are Fixed In Sidebar After Scroll Route LKW Search")

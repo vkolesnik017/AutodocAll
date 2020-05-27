@@ -1,6 +1,6 @@
-package MOTO.QC_301_MotoSelector;
+package ATD.ACC.QC_1037_MainChemie;
 
-import ATD.Moto_Catalog_model_page_Logic;
+import ATD.Index_chemicals_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -9,33 +9,30 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import java.sql.SQLException;
-
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_304_OpeningAreClosedSelector {
+public class QC_1073_BlockDeliveryOnMainChemie {
+
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "routes", parallel = true)
+    @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_categories,moto_catalog2");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main","index_chemicals");
     }
 
-    @Test(dataProvider = "routes")
+    @Test(dataProvider = "route")
     @Flaky
-    @Owner(value = "Kolesnik")
-    @Description(value = "Test checks opening are closed selector")
-    public void testChecksOpeningAreClosedSelector(String route) {
+    @Owner(value = "Sergey-QA")
+    @Description(value = "Test checks presence block Delivery")
+    public void testCheckingPresenceBlockDelivery(String route) {
         openPage(route);
-
-        new Moto_Catalog_model_page_Logic()
-                .openingSelector();
+        new Index_chemicals_page_Logic().checkingPresenceBlockDelivery();
     }
 
     @AfterMethod

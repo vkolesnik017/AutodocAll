@@ -632,6 +632,19 @@ public class Product_page_Logic extends Product_page {
         return productId;
     }
 
+    //Method for instruments product page
+    @Step("Get title name product page instruments. Product_page")
+    public String getTitleNameForProductPageInstruments() {
+        return titleProductPageInstruments().getText();
+    }
+
+    //Method for chemicals product page
+    @Step("Get title name product page chemicals. Product_page")
+    public String getTitleNameForProductPageChemicals() {
+        return titleNameProductPageChemicals().getText();
+    }
+
+
     @Step("Get product quanity from counter. Product_page")
     public String getProductQuanity() {
         return counterValueCommon().getValue();

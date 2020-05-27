@@ -39,7 +39,7 @@ public class QC_937_RedirectToListingFromTheCategoryLogicalUnion {
     @Flaky
     @Owner(value = "Sergey-QA")
     @Description(value = "Test checking redirect on listing page when clicking on a category in a logical union")
-    public void testCheckingRedirectOnListingPage(String route) {
+    public void testCheckingRedirectWithCategoryLogicalUnion(String route) {
         openPage(route);
         nameCategory = index_accessories_page_logic.getCategoryName();
         index_accessories_page_logic.clicksOnCategory();

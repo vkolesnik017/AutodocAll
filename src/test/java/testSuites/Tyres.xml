@@ -45,4 +45,38 @@
         </classes>
     </test>
 
+    <test name="QC_1272_TyresMainPage">
+        <classes>
+            <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_1336_GoToAllBrandsPageFromTyresMainPage"/>
+            <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_1346_GoToAllSizesPageFromTyresMainPage"/>
+        </classes>
+    </test>
+
+    <test name="QC_1294_AdvantagesBlockOnCatalogSizeTyresRoute">
+        <classes>
+            <class name="ATD.Tyres.QC_1294_AdvantagesBlockOnCatalogSizeTyresRoute.QC_1300_TransitionToClubPageFromAdvantagesBlock"/>
+            <class name="ATD.Tyres.QC_1294_AdvantagesBlockOnCatalogSizeTyresRoute.QC_1302_TransitionToMobileAPPpageFromAdvantagesBlock"/>
+        </classes>
+    </test>
+
+    <test name="QC_1367_TyresProductPage">
+        <classes>
+            <class name="ATD.Tyres.QC_1367_TyresProductPage.QC_1377_GoToDeliveryPageFromTyresProductPage"/>
+        </classes>
+    </test>
+
+    <test name="QC_1234_BrandRelinkBlockOnTyresListing">
+        <classes>
+            <class name="ATD.Tyres.QC_1234_BrandRelinkBlockOnTyresListing.QC_1236_GoToBrandRouteInteractBrandRelinkBlock"/>
+        </classes>
+    </test>
+
+    <test name="QC_1238_SizeRelinkBlockOnTyresListing">
+        <classes>
+            <class name="ATD.Tyres.QC_1238_SizeRelinkBlockOnTyresListing.QC_1245_GoToDiameterRouteInteractDiameterRelinkBlock"/>
+            <!--<class name="ATD.Tyres.QC_1238_SizeRelinkBlockOnTyresListing.QC_1264_GoToDimensionRouteInteractDimensionRelinkBlock"/>-->
+            <class name="ATD.Tyres.QC_1238_SizeRelinkBlockOnTyresListing.QC_1265_GoToAllSizesRouteInteractSizesRelinkBlock"/>
+        </classes>
+    </test>
+
 </suite>

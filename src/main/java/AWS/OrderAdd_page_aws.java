@@ -1,5 +1,6 @@
 package AWS;
 
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
@@ -156,14 +157,47 @@ public class OrderAdd_page_aws {
         return $x("(//div[@class='w-box'])[5]");
     }
 
+    private SelenideElement deliveryCountrySelector(String country) {
+        return $x("//select[@name='Order[delivery_country_id]']//option[text()='" + country + "']");
+    }
+
+    private SelenideElement preLoader() {
+        return $x("//div[@class='block-msg order-view']");
+    }
+
+    @Step("Checking correct text in input field. OrderAdd_page_aws")
+    private void checkCorrectTextAndFillInput(SelenideElement element, String correctText) {
+        Configuration.fastSetValue = false;
+        if (!element.getValue().equals(correctText)) {
+            element.clear();
+            element.setValue(correctText);
+        }
+    }
+
+    @Step("Filling postal code {postalCodeOrCode} in block delivery address. OrderAdd_page_aws")
+    public OrderAdd_page_aws fillingPostalCodeInBlockDeliveryAddress (String postalCodeOrCode) {
+        checkCorrectTextAndFillInput(fieldPostcodeInDeliveryAddress(), postalCodeOrCode);
+        return this;
+    }
+
+    @Step("Chooses delivery country {country}. OrderAdd_page_aws")
+    public OrderAdd_page_aws choosesDeliveryCountry(String country) {
+        deliveryCountrySelector(country).click();
+        return this;
+    }
+
     @Step("Click save order button. OrderAdd_page_aws")
     public Order_aws clickSaveOrderBtn() {
+        if (preLoader().isDisplayed()) {
+            preLoader().waitUntil(attribute("style", "display: none;"), 20000);
+        }
         saveOrderBtn().click();
         return page(Order_aws.class);
     }
 
     @Step("Get delivery cost. OrderAdd_page_aws")
     public Float getDeliveryCost() {
+        sleep(2000);
         String deliveryCost = deliveryCost().getAttribute("data-default");
         Float realDeliveryCost = Float.parseFloat(deliveryCost);
         return realDeliveryCost;
@@ -192,6 +226,9 @@ public class OrderAdd_page_aws {
 
     @Step("Chooses the article id of the desired product {artID} and click button choose product. OrderAdd_page_aws")
     public OrderAdd_page_aws chooseArticleIDOfDesiredProductAndClickBtnChooseProduct(String artID) {
+        if (preLoader().isDisplayed()) {
+            preLoader().waitUntil(attribute("style", "display: none;"), 20000);
+        }
         productArticleID(artID).click();
         btnChooseProduct().click();
         return this;
@@ -209,7 +246,7 @@ public class OrderAdd_page_aws {
         return this;
     }
 
-    @Step("Selected payment expectedMethod {expectedMethod}. OrderAdd_page_aws")
+    @Step("Selected payment expected method {expectedMethod}. OrderAdd_page_aws")
     public OrderAdd_page_aws selectedPaymentMethod(String expectedMethod) {
         paymentMethod().selectOptionContainingText(expectedMethod);
         return this;

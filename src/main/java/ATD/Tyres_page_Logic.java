@@ -165,4 +165,29 @@ public class Tyres_page_Logic extends Tyres_page {
             speedIndexHinDropdown().click();
             return this;
         }
+
+        @Step("Click all tyres brands button. Tyres_page")
+        public Tyres_page_Logic clickAllTyresBrandsButton() {
+            allBrandsButton().click();
+            return this;
+        }
+
+        @Step("Click all tyres sizes button. Tyres_page")
+        public Tyres_page_Logic clickAllTyresSizesButton() {
+            allSizesButton().click();
+            return this;
+        }
+
+        @Step("Click mobile App link. Tyres_page")
+        public Tyres_page_Logic clickMobileAppLink() {
+            mobileAppLink().click();
+            return this;
+        }
+
+        @Step("Click video link. Tyres_page")
+        public Tyres_page_Logic clickVideoLink() {
+            videoLink().click();
+            return this;
+    }
+
 }
