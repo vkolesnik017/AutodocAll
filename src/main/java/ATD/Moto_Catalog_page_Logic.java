@@ -3,6 +3,8 @@ package ATD;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
+import java.sql.SQLException;
+
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.WebDriverRunner.url;
@@ -147,6 +149,22 @@ public class Moto_Catalog_page_Logic extends Moto_Catalog_page {
         String moto = brandOfMoto + " " + modelOfMoto;
         String motoFromSelector = moto.replace(moto.substring(moto.lastIndexOf("(")), "").toUpperCase();
         return motoFromSelector;
+    }
+
+    @Step("check current url .Moto_Catalog_page")
+    public Moto_Catalog_page_Logic checkCurrentUrl(String subRoute) throws SQLException {
+        catalogTecDoc().shouldBe(visible);
+        DataBase db = new DataBase();
+        Assert.assertEquals(url(),db.getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", subRoute));
+        return this;
+    }
+
+    @Step(" reset of motorcycle selector .Moto_Catalog_page")
+    public Moto_Categories_page_Logic resetOfMotoSelector() {
+        selectorInCloseCondition().shouldBe(visible).click();
+        mainFormOfSelector().shouldBe(visible);
+        btnResetOfSelector().shouldBe(visible).click();
+        return page(Moto_Categories_page_Logic.class);
     }
 
 }

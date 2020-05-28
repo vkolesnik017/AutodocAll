@@ -25,4 +25,6 @@ public class Moto_Category_car_list_page {
     SelenideElement searchButton() {return $x("//a[contains(@class,'search_button')]");}
 
     SelenideElement btnResetOfSelector() {return $(byId("reset_selector_form"));}
+
+    SelenideElement headline() {return $x("//div[@class='title_count_search ']/h2");}
 }

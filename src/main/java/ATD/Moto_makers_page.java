@@ -6,8 +6,7 @@ import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
-public class Moto_Parent_Category_page {
-
+public class Moto_makers_page {
     SelenideElement brandOfMotoField() {
         return $(byId("form_maker_id"));
     }

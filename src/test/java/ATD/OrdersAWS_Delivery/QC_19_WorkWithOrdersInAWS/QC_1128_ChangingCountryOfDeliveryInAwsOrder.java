@@ -2,6 +2,7 @@ package ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS;
 
 import ATD.Product_page_Logic;
 import ATD.SetUp;
+import ATD.Versand_static_page_Logic;
 import AWS.Order_aws;
 import AWS.SearchOrders_page_aws;
 import io.qameta.allure.Description;
@@ -15,20 +16,20 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.cutPriceToFirstDecimalPlace;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_1127_EditingQuantityOfAutoPartsInAwsOrder {
+public class QC_1128_ChangingCountryOfDeliveryInAwsOrder {
 
     private String userID = "15089943", articleNum, productArticleID;
-    private Float totalCostInOrder, sellingCostInOrder, productQuantity, amountOfGoods, totalSumProduct,
+    private Float deliveryCostFromDanemark, deliveryCostInOrder, totalCostInOrder, sellingCostInOrder, productQuantity, amountOfGoods, totalSumProduct,
             totalSumIncomeWithoutVat, costFromColumnIncomeWithoutVat, prunedTotalSumIncomeWithoutVat,
             prunedCostFromColumnIncomeWithoutVat, deliveryCost, totalSumIncludingDelivery;
 
     private Product_page_Logic product_page_logic = new Product_page_Logic();
     private Order_aws order_aws = new Order_aws();
+
 
     @BeforeClass
     void setUp() {
@@ -44,11 +45,12 @@ public class QC_1127_EditingQuantityOfAutoPartsInAwsOrder {
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks editing the quantity of auto parts in AWS order")
-    public void testEditingQuantityOfAutoPartsInAwsOrder(String route) {
+    public void testEditingQuantityOfAutoPartsInAwsOrder(String route) throws Exception {
+        deliveryCostFromDanemark = new Versand_static_page_Logic().getDeliveryPriceForAWS("Dänemark");
         openPage(route);
         articleNum = product_page_logic.getArticleNumber();
         productArticleID = product_page_logic.getProductId();
-        deliveryCost = new SearchOrders_page_aws().openSearchOrderPageWithLogin()
+        deliveryCostInOrder = new SearchOrders_page_aws().openSearchOrderPageWithLogin()
                 .clickAddOrderBtn()
                 .fillsInFieldCustomerID(userID)
                 .chooseSkinInSelector("autodoc.de (DE)")
@@ -59,29 +61,12 @@ public class QC_1127_EditingQuantityOfAutoPartsInAwsOrder {
                 .checkArticleOfAddedProduct(articleNum)
                 .clickSaveOrderBtn()
                 .checkOrderHasTestStatus()
-                .clickEditItemBtn(productArticleID)
-                .editQuantityOfItemInPopUpEditItem("2")
-                .checkQuantityOfGoodsInColumnQuantity("2")
-                .checkQuantityOfGoodsInColumnExpectedQuantity("2")
-                .getDeliveryCostInOrder();
-        sellingCostInOrder = order_aws.getSellingPriceOfCertainProduct(productArticleID);
-        productQuantity = order_aws.getProductQuantity();
-        amountOfGoods = order_aws.multiplyPriceByQuantity(sellingCostInOrder, productQuantity);
-        totalSumProduct = order_aws.getTotalSumProductFromColumnSumOfProduct();
-        Assert.assertEquals(amountOfGoods, totalSumProduct);
-        totalSumIncomeWithoutVat = order_aws.getTotalSumIncomeWithoutVAT();
-        prunedTotalSumIncomeWithoutVat = cutPriceToFirstDecimalPlace(totalSumIncomeWithoutVat);
-        costFromColumnIncomeWithoutVat = order_aws.getCostFromColumnIncomeWithoutVat();
-        prunedCostFromColumnIncomeWithoutVat = cutPriceToFirstDecimalPlace(costFromColumnIncomeWithoutVat);
-        Assert.assertEquals(prunedTotalSumIncomeWithoutVat, prunedCostFromColumnIncomeWithoutVat);
-        totalCostInOrder = order_aws.checkQuantityOfGoodsInColumnCountProduct("1")
+                .choosesDeliveryCountry("Denmark")
+                .fillingPostalCodeInBlockDeliveryAddress("1231")
                 .reSaveOrder()
-                .getTotalPriceOrderAWS();
-        totalSumIncludingDelivery = order_aws.multiplyPriceByQuantityAndPlusDeliveryCost(sellingCostInOrder, productQuantity, deliveryCost);
-        Assert.assertEquals(totalCostInOrder, totalSumIncludingDelivery);
-        order_aws.clickRefundBtn()
-                .checkPresenceOfGoodsInRefundTable(articleNum)
-                .checksQuantityOfGoodsInRefundTable("2");
+                .checkVatStatusInOrder("Mit MwSt 25%")
+                .getDeliveryCostInOrder();
+        Assert.assertEquals(deliveryCostInOrder, deliveryCostFromDanemark);
     }
 
     @AfterMethod
