@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.open;
 
 public class QC_307_ResetValuesInSelector {
 
@@ -58,6 +59,174 @@ public class QC_307_ResetValuesInSelector {
 
     }
 
+    @DataProvider(name = "routesMain", parallel = true)
+    Object[] dataProviderCategoryMain() throws SQLException {
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_main");
+    }
+
+    @Test(dataProvider = "routesMain")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test checks reset values in motorcycle selector ")
+    public void testChecksResetValuesInSelectorMain(String route) throws SQLException {
+        openPage(route);
+
+        new Moto_main_page_Logic()
+                .selectBrandOfMoto("4081").resetOfMotoSelector()
+                .checkCurrentUrl("moto_main")
+                .presenceOfEmptyValuesInSelector();
+    }
+
+    @DataProvider(name = "routesMakers", parallel = true)
+    Object[] dataProviderMakers() throws SQLException {
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_makers");
+    }
+
+    @Test(dataProvider = "routesMakers")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test checks reset values in motorcycle selector ")
+    public void testChecksResetValuesInSelectorMakers(String route) throws SQLException {
+        openPage(route);
+
+        new Moto_makers_page_Logic()
+                .selectBrandOfMoto("4081").resetOfMotoSelector()
+                .checkCurrentUrl("moto_makers")
+                .presenceOfEmptyValuesInSelector();
+
+    }
+
+     @DataProvider(name = "routesParentCategory", parallel = true)
+     Object[] dataProviderParentCategory() throws SQLException {
+         return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_parent_category");
+     }
+
+     @Test(dataProvider = "routesParentCategory")
+     @Flaky
+     @Owner(value = "Kolesnik")
+     @Description(value = "Test checks reset values in motorcycle selector ")
+     public void testChecksResetValuesInSelectorParentCategory(String route) throws SQLException {
+         openPage(route);
+
+         new Moto_Parent_Category_page_Logic()
+                 .selectBrandOfMoto("4081")
+                 .resetOfMotoSelector()
+                 .presenceOfEmptyValuesInSelector()
+                 .checkCurrentUrl("moto_parent_category");
+
+     }
+    @DataProvider(name = "routesCategories", parallel = true)
+    Object[] dataProviderParentCategories() throws SQLException {
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_categories");
+    }
+
+    @Test(dataProvider = "routesCategories")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test checks reset values in motorcycle selector ")
+    public void testChecksResetValuesInSelectorCategories(String route) throws SQLException {
+        openPage(route);
+
+        new Moto_Categories_page_Logic()
+                .selectBrandOfMoto("4081")
+                .resetOfMotoSelector()
+                .presenceOfEmptyValuesInSelector()
+                .checkCurrentUrl("moto_categories");
+    }
+
+    @DataProvider(name = "routesCatalog", parallel = true)
+    Object[] dataProviderCatalog() throws SQLException {
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog2");
+    }
+
+    @Test(dataProvider = "routesCatalog")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test checks reset values in motorcycle selector ")
+    public void testChecksResetValuesInSelectorCatalog(String route) throws SQLException {
+        openPage(route);
+
+        new Moto_Catalog_page_Logic()
+
+                .resetOfMotoSelector()
+                .presenceOfEmptyValuesInSelector()
+                .checkCurrentUrl("moto_categories");
+    }
+
+    @DataProvider(name = "routesCatalogModel", parallel = true)
+    Object[] dataProviderCatalogModel() throws SQLException {
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog_model2");
+    }
+
+    @Test(dataProvider = "routesCatalogModel")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test checks reset values in motorcycle selector ")
+    public void testChecksResetValuesInSelectorCatalogModel(String route) throws SQLException {
+        open(route);
+
+        new Moto_Catalog_model_page_Logic()
+
+                .resetOfMotoSelector()
+                .presenceOfEmptyValuesInSelector()
+                .checkCurrentUrl("moto_categories");
+    }
+
+    @DataProvider(name = "routesCategoriesMaker", parallel = true)
+    Object[] dataProviderCategoriesMaker() throws SQLException {
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_categories_maker2");
+    }
+
+    @Test(dataProvider = "routesCategoriesMaker")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test checks reset values in motorcycle selector ")
+    public void testChecksResetValuesInSelectorCategoriesMaker(String route) throws SQLException {
+        open(route);
+
+        new Moto_Categories_maker_page_Logic()
+
+                .resetOfMotoSelector()
+                .presenceOfEmptyValuesInSelector()
+                .checkCurrentUrl("moto_categories");
+    }
+
+    @DataProvider(name = "routesProduct", parallel = true)
+    Object[] dataProviderProduct() throws SQLException {
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_product");
+    }
+
+    @Test(dataProvider = "routesProduct")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test checks reset values in motorcycle selector ")
+    public void testChecksResetValuesInSelectorProduct(String route) throws SQLException {
+        openPage(route);
+
+        new Moto_Product_page_Logic()
+                .selectBrandOfMoto("4081")
+                .resetOfMotoSelector()
+                .presenceOfEmptyValuesInSelector()
+                .checkCurrentUrl("moto_product");
+    }
+
+    @DataProvider(name = "routesParentCategoryMaker", parallel = true)
+    Object[] dataProviderParentCategoryMaker() throws SQLException {
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_parent_category_maker2");
+    }
+
+    @Test(dataProvider = "routesParentCategoryMaker")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test checks reset values in motorcycle selector ")
+    public void testChecksResetValuesInSelectorParentCategoryMaker(String route) throws SQLException {
+        openPage(route);
+
+        new Moto_Parent_Category_maker_page_Logic()
+                .resetOfMotoSelector()
+                .presenceOfEmptyValuesInSelector()
+                .checkCurrentUrl("moto_parent_category");
+    }
     @AfterMethod
     private void tearDown() {
         close();

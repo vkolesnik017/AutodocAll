@@ -32,9 +32,9 @@ public class QC_103_FilterByBrandsInTecDocListing {
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test checks filer by brands in TecDoc listing ")
-    public void testChecksFilterByBrandsInTecDocListing(String route) {
+    public void testChecksFilterByBrandsInTecDocListing(String route) throws SQLException{
         openPage(route);
-        new LKW_Category_car_list_page_Logic().visibilityOfBrandsBlock().checkTecDocListingWithSelectingFilterByBrand();
+        new LKW_Category_car_list_page_Logic().visibilityOfBrandsBlock().checkTecDocListingWithSelectingFilterByBrand("lkw_category_car_list26");
     }
 
     @AfterMethod

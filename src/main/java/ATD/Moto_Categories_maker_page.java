@@ -18,4 +18,6 @@ public class Moto_Categories_maker_page {
     }
 
     SelenideElement searchButton() {return $x("//a[contains(@class,'search_button')]");}
+
+    SelenideElement btnResetOfSelector() {return $(byId("reset_selector_form"));}
 }

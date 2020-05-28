@@ -242,15 +242,29 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
     }
 
     @Step("Check TecDoc listing with selecting brand .LKW_Category_car_list_page")
-    public LKW_Category_car_list_page_Logic checkTecDocListingWithSelectingFilterByBrand() {
+    public LKW_Category_car_list_page_Logic checkTecDocListingWithSelectingFilterByBrand(String subRoute) throws SQLException {
+        DataBase db = new DataBase();
+        while (!brandsOfBrandBlock("cb-brand-4868").isDisplayed()) {
+            forwardLinkAtBrandsFilter().click();
+        }
         brandsOfBrandBlock("cb-brand-4868").click();
         appearsOfLoader();
-        Assert.assertTrue(url().equals("https://lkwteile.autodoc.de/ersatzteile/olfilter-200157/mercedes-benz/actros?car_id=1000784&supplier%5B2%5D=4868"));
+        Assert.assertTrue(getExpectedUrl(url()).equals(getExpectedUrl(db.getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", subRoute))));
         for (int i = 0; i < titleOfProductInTecDocListingBlock().size(); i++) {
             titleOfProductInTecDocListingBlock().get(i).shouldHave(text("DONALDSON"));
         }
         return this;
     }
+
+    @Step("check visibility of Brands block .LKW_Category_car_list_page")
+    public String getExpectedUrl(String currentUrl) {
+        String urlPart = currentUrl.replace(currentUrl.replace(currentUrl.substring(currentUrl.lastIndexOf("&")), ""), "");
+        String firstPart = urlPart.substring(urlPart.lastIndexOf("="));
+        String secondPart = urlPart.replace(firstPart, "");
+        String lastUrl = currentUrl.replace(secondPart, "");
+        return lastUrl;
+    }
+
 
     @Step("check visibility of Installation side block .LKW_Category_car_list_page")
     public LKW_Category_car_list_page_Logic visibilityOfInstallationSideBlock() {
