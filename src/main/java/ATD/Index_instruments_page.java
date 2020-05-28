@@ -18,4 +18,29 @@ class Index_instruments_page {
         return $x("//div[@class='top-product-block best-product__income']/h2[text()]");
     }
 
+    SelenideElement titleTop6ProductsBlock() {
+        return $x("//div[@class='top-product-block']//h2[text()]");
+    }
+
+    SelenideElement subTitleMainPage() {
+        return $x("//div[@class='special-catalog__subtitle']");
+    }
+
+    SelenideElement blockTopBrands() {
+        return $x("//div[@class='top-brands']");
+    }
+
+    SelenideElement blockFeatures() {
+        return $x("//div[@class='features__wrapp']");
+    }
+
+    SelenideElement blockDelivery() {
+        return $x("//div[@class='delivery']//ul[@class='delivery__wrapp']");
+    }
+
+    SelenideElement subtitleBlockTop10() {
+        return $x("//div[@class='top-product__text']");
+    }
+
+
 }

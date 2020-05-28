@@ -41,8 +41,8 @@ public class QC_1492_ChecksVerificationIslandsAndFirm_BillingIsDivided_Different
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks verification of islands + Firm, Different Countries, billing is divided (Negative case)")
     public void testChecksVerificationIslandsAndFirmAndDifferentCountries(String route) throws Exception {
-        String deliveryPriceToUKalldata = new Versand_static_page_Logic().deliveryPriceToUK();
-        Float deliveryPriceToUKaws = new Versand_static_page_Logic().deliveryPriceToUKforAWS();
+        String deliveryPriceToUKalldata = new Versand_static_page_Logic().getDeliveryPrice("Großbritannien");
+        Float deliveryPriceToUKaws = new Versand_static_page_Logic().getDeliveryPriceForAWS("Großbritannien");
         openPage(route);
         clickOfBuyBtnForAllPages();
         totalPrice = new Search_page_Logic().closePopupOtherCategoryIfYes()
