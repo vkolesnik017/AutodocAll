@@ -128,19 +128,18 @@ public class Versand_static_page_Logic extends Versand_static_page {
         return Float.valueOf(deliveryLimit.startsWith(",") ? deliveryLimit.substring(1) : deliveryLimit.split(",")[0]);
     }
 
-    @Step("Get delivery price to UK for alldata. Versand_static_page")
-    public String deliveryPriceToUK() throws Exception {
+    @Step("Get delivery price. Versand_static_page")
+    public String getDeliveryPrice(String country) throws Exception {
         openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "staticVersand"));
         allCountriesButton().click();
-        return deliveryPriceForUKlocator().getText().replace(" €", "");
+        return deliveryPriceLocator(country).getText().replace(" €", "");
     }
 
-    @Step("Get delivery price to UK for AWS. Versand_static_page")
-    public Float deliveryPriceToUKforAWS() throws Exception {
+    @Step("Get delivery price for AWS. Versand_static_page")
+    public Float getDeliveryPriceForAWS(String country) throws Exception {
         openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "staticVersand"));
         allCountriesButton().click();
-        String deliveryPrice = deliveryPriceForUKlocator().getText().replace(" €", "").replace(",", ".");
-        Float deliveryPriceToUKforAWS = Float.parseFloat(deliveryPrice);
-        return deliveryPriceToUKforAWS;
+        String deliveryPrice = deliveryPriceLocator(country).getText().replace(" €", "").replace(",", ".");
+        return Float.valueOf(deliveryPrice);
     }
 }
