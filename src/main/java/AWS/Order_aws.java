@@ -1,6 +1,7 @@
 package AWS;
 
 import ATD.DataBase;
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.ex.ElementShould;
@@ -125,6 +126,10 @@ public class Order_aws {
         return $x("//select[@id='form_Order[delivery_country_id]']");
     }
 
+    private SelenideElement deliveryCountrySelector(String country) {
+        return $x("//select[@id='form_Order[delivery_country_id]']//option[text()='" + country + "']");
+    }
+
     private SelenideElement fieldPhoneInDeliveryAddress() {
         return $x("//input[@id='form_Order[lTelefon]']");
     }
@@ -167,7 +172,7 @@ public class Order_aws {
     }
 
     SelenideElement vatPercentageInOrder() {
-        return $x("//select[@id='form_Order[isVat]']");
+        return $x("//li[@class='search-choice']//span");
     }
 
     SelenideElement sellingPrice() {
@@ -349,6 +354,10 @@ public class Order_aws {
         return $x("//input[@value='" + articleNum + "']");
     }
 
+    private SelenideElement quantityProductInRefundTable() {
+        return $x("//input[@id='form_RefundProducts[0][quantity]']");
+    }
+
     private SelenideElement editItemBtn(String articleID) {
         return $x("//a[text()='" + articleID + "']/../..//a[@class='btn btn-default btn-sm edit-product']");
     }
@@ -373,19 +382,37 @@ public class Order_aws {
         return $x("//td[19]");
     }
 
+    private SelenideElement columnIncomeWithoutVat() {
+        return $x("//td[21]");
+    }
 
 
-    @Step("Checks the quantity of goods in column expectedQuantityColumn. Order_aws")
+
+
+    @Step("Checks the quantity of goods {expectedQuantity} in column count products. Order_aws")
+    public Order_aws checkQuantityOfGoodsInColumnCountProduct(String expectedQuantity) {
+        countProducts().shouldHave(text(expectedQuantity));
+        return this;
+    }
+
+    @Step("Checks the quantity of goods {expectedQuantity} in column expected quantity column. Order_aws")
     public Order_aws checkQuantityOfGoodsInColumnExpectedQuantity(String expectedQuantity) {
         expectedQuantityColumn().shouldHave(text(expectedQuantity));
         return this;
     }
 
-    @Step("Checks the quantity of goods in column Quantity product. Order_aws")
+    @Step("Checks the quantity of goods {expectedQuantity} in column Quantity product. Order_aws")
         public Order_aws checkQuantityOfGoodsInColumnQuantity(String expectedQuantity) {
         columnProductQuantity().shouldHave(text(expectedQuantity));
         return this;
     }
+
+    @Step("Checks the quantity of goods {expectedQuantity} in refund table. Order_aws")
+    public Order_aws checksQuantityOfGoodsInRefundTable(String expectedQuantity) {
+        quantityProductInRefundTable().shouldHave(attribute("value",expectedQuantity));
+        return this;
+    }
+
 
     @Step("Edit quantity of goods {expectedQuantity} and click save button. Order_aws")
     public Order_aws editQuantityOfItemInPopUpEditItem(String expectedQuantity) {
@@ -857,7 +884,7 @@ public class Order_aws {
         for (int i = 0; i < sellingPriceOfAddedGoods().size(); i++) {
             list.add(Float.parseFloat(sellingPriceOfAddedGoods().get(i).getText()));
         }
-        Assert.assertEquals(list, priceWithSite);
+        Assert.assertEquals(priceWithSite, list);
         return this;
     }
 
@@ -904,10 +931,44 @@ public class Order_aws {
         return Float.valueOf(totalIncomeWithoutVat().getText());
     }
 
-    @Step("Checks the correctness of the amount of goods calculation. Order_aws")
-    public Float checkCorrectnessOfAmountOfGoodsCalculation(Float sellingCostOneProduct, Float productQuantity) {
+    @Step("Get cost from column income without VAT. Order_aws")
+    public Float getCostFromColumnIncomeWithoutVat() {
+        return Float.valueOf(columnIncomeWithoutVat().getText());
+    }
+
+    @Step("Calculates goods amount by multiplying product price {sellingCostOneProduct} by number of goods {productQuantity}. Order_aws")
+    public Float multiplyPriceByQuantity(Float sellingCostOneProduct, Float productQuantity) {
         Float cost = sellingCostOneProduct * productQuantity;
         String formatCost = new DecimalFormat(".##").format(cost).replaceAll(",", ".");
         return Float.valueOf(formatCost);
+    }
+
+    @Step("Calculates goods amount by multiplying product price {sellingCostOneProduct} " +
+            "by number of goods {productQuantity} and plus the delivery{costDelivery}. Order_aws")
+    public Float multiplyPriceByQuantityAndPlusDeliveryCost(Float sellingCostOneProduct, Float productQuantity, Float costDelivery) {
+        Float cost = sellingCostOneProduct * productQuantity + costDelivery;
+        String formatCost = new DecimalFormat(".##").format(cost).replaceAll(",", ".");
+        return Float.valueOf(formatCost);
+    }
+
+    @Step("Checking correct text in input field. Order_aws")
+    private void checkCorrectTextAndFillInput(SelenideElement element, String correctText) {
+        Configuration.fastSetValue = false;
+        if (!element.getValue().equals(correctText)) {
+            element.clear();
+            element.setValue(correctText);
+        }
+    }
+
+    @Step("Filling postal code {postalCodeOrCode} in block delivery address. Order_aws")
+    public Order_aws fillingPostalCodeInBlockDeliveryAddress(String postalCodeOrCode) {
+        checkCorrectTextAndFillInput(fieldPostcodeInDeliveryAddress(), postalCodeOrCode);
+        return this;
+    }
+
+    @Step("Chooses delivery country {country}. Order_aws")
+    public Order_aws choosesDeliveryCountry(String country) {
+        deliveryCountrySelector(country).click();
+        return this;
     }
 }

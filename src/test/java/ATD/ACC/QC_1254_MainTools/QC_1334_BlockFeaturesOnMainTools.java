@@ -1,4 +1,4 @@
-package ATD.ACC.QC_1260_MainProductCatalogOnMainTools;
+package ATD.ACC.QC_1254_MainTools;
 
 import ATD.Index_instruments_page_Logic;
 import ATD.SetUp;
@@ -14,7 +14,8 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_1261_TitleMainCatalog {
+
+public class QC_1334_BlockFeaturesOnMainTools {
 
     @BeforeClass
     void setUp() {
@@ -29,14 +30,16 @@ public class QC_1261_TitleMainCatalog {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test checks presence main title on page tools")
-    public void testCheckPresenceMainTitle(String route) {
+    @Description(value = "Test checks presence Features block ")
+    public void testCheckPresenceFeaturesBlock(String route) {
         openPage(route);
-        new Index_instruments_page_Logic().checkPresenceMainTitle();
+        new Index_instruments_page_Logic().checkingPresenceFeaturesBlock();
     }
 
     @AfterMethod
     private void tearDown() {
         close();
     }
+
+
 }
