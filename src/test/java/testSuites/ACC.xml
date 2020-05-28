@@ -50,6 +50,7 @@
     <test name="QC_950_BlockTopProductsOnMainAccessories">
         <classes>
             <class name="ATD.ACC.QC_950_BlockTopProductsOnMainAccessories.QC_953_BlockTopProducts"/>
+            <class name="ATD.ACC.QC_950_BlockTopProductsOnMainAccessories.QC_956_NumberOfMiniCardsInBlockTopProducts"/>
         </classes>
     </test>
 
@@ -64,6 +65,7 @@
             <class name="ATD.ACC.QC_1322_BlockTop10ProductsOnMainTools.QC_1331_TransitionOnProductPageWithBlockTop10Products"/>
             <class name="ATD.ACC.QC_1322_BlockTop10ProductsOnMainTools.QC_1323_TitleBlockTop10Products"/>
             <class name="ATD.ACC.QC_1322_BlockTop10ProductsOnMainTools.QC_1325_SubtitleBlockTop10Products"/>
+            <class name="ATD.ACC.QC_1322_BlockTop10ProductsOnMainTools.QC_1327_NumberOfMiniCardsInBlockTop10Products"/>
         </classes>
     </test>
 
@@ -90,12 +92,14 @@
     <test name="QC_1340_ListingAccessories">
         <classes>
             <class name="ATD.ACC.QC_1340_ListingAccessories.QC_1378_NameCategoryOnListingAccessories"/>
+            <class name="ATD.ACC.QC_1340_ListingAccessories.QC_1405_BlockWithQuantityProductsOnListingAccessories"/>
         </classes>
     </test>
 
     <test name="QC_1276_BlockTop6ProductsOnMainTools">
         <classes>
             <class name="ATD.ACC.QC_1276_BlockTop6ProductsOnMainTools.QC_1278_TitleBlockTop6Products"/>
+            <class name="ATD.ACC.QC_1276_BlockTop6ProductsOnMainTools.QC_1280_NumberOfMiniCardsBlockTop6Products"/>
         </classes>
     </test>
 

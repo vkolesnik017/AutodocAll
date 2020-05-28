@@ -42,4 +42,10 @@ public class Listing_accessories_page_Logic extends Listing_accessories_page {
         return this;
     }
 
+    @Step("Checking presence quantity products block. Listing_accessories_page")
+    public Listing_accessories_page_Logic checkingPresenceQuantityProductBlock(){
+        blockProductQuantity().shouldBe(visible);
+        return this;
+    }
+
 }
