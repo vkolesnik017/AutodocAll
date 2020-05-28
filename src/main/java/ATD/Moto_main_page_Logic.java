@@ -12,6 +12,8 @@ import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class Moto_main_page_Logic extends Moto_main_page {
+    CommonMethods commonMethods = new CommonMethods();
+    DataBase db = new DataBase();
 
     @Step("Check successfully Moto page loading. Moto_main_page")
     public Moto_main_page_Logic checkSuccessfullyMotoPageLoading() {
@@ -164,10 +166,101 @@ public class Moto_main_page_Logic extends Moto_main_page {
 
     @Step(" check current url .Moto_main_page")
     public Moto_main_page_Logic checkCurrentUrl(String subRoute) throws SQLException {
-        CommonMethods commonMethods = new CommonMethods();
-        DataBase db = new DataBase();
         String urlFromBD = db.getRouteByRouteName("DE", subRoute);
         commonMethods.checkingContainsUrl(urlFromBD);
         return this;
+    }
+
+
+    @Step(" presence Of Top Parent Block .Moto_main_page")
+    public Moto_main_page_Logic presenceOfTopParentBlock() {
+        topParentBlock().shouldBe(visible);
+        linkTopParentBlock().shouldHaveSize(12);
+        return this;
+    }
+
+
+    @Step(" presence Of image Top Parent Block .Moto_main_page")
+    public Moto_main_page_Logic presenceOfImageTopParentBlock() {
+        for (int i = 0; i < linkTopParentBlock().size(); i++) {
+            imageTopParentBlock().get(i).shouldBe(visible);
+        }
+        return this;
+    }
+
+
+    @Step(" presence Of title Top Parent Block .Moto_main_page")
+    public Moto_main_page_Logic presenceOfTitleTopParentBlock() {
+        for (int i = 0; i < linkTopParentBlock().size(); i++) {
+            titleTopParentBlock().get(i).shouldBe(visible);
+        }
+        return this;
+    }
+
+
+    @Step(" presence Of child category block .Moto_main_page")
+    public Moto_main_page_Logic presenceOfChildCategoryLinks() {
+        for (int i = 1; i <= linkTopParentBlock().size(); i++) {
+            childCategoryLinks(i).shouldHaveSize(3);
+        }
+        return this;
+    }
+
+
+    @Step(" click on More link at Parent catalog .Moto_main_page")
+    public Moto_Categories_page_Logic clickOnMoreLinkAtParentCatalog() {
+        linkMoreAtParentCategoryBlock().shouldBe(visible).click();
+        return page(Moto_Categories_page_Logic.class);
+    }
+
+
+    @Step(" presence Of Headline at Top parent block .Moto_main_page")
+    public Moto_main_page_Logic presenceOfHeadlineAtTopParentBlock() {
+        headlineOfTopParentBlock().shouldBe(visible);
+        return this;
+    }
+
+
+    @Step("check transition by click on image parent category .Moto_main_page")
+    public Moto_main_page_Logic checkTransitionByClickOnImageParentCategory(String subRoute) throws SQLException {
+        clickOnImageParentCategory();
+        commonMethods.checkingContainsUrl(db.getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", subRoute));
+        back();
+        return this;
+    }
+
+    @Step("check transition by click on image parent category .Moto_main_page")
+    public Moto_Parent_Category_page_Logic clickOnImageParentCategory() {
+        imageTopParentBlock().get(0).shouldBe(visible).click();
+        return page(Moto_Parent_Category_page_Logic.class);
+    }
+
+
+    @Step("check transition by click on child category .Moto_main_page")
+    public Moto_main_page_Logic checkTransitionByClickOnChildCategory(String subRoute) throws SQLException {
+        clickOnChildCategory();
+        commonMethods.checkingContainsUrl(db.getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", subRoute));
+        back();
+        return this;
+    }
+
+    @Step("check transition by click on image parent category .Moto_main_page")
+    public Moto_Category_page_Logic clickOnChildCategory() {
+        childCategoryLinks(1).get(0).shouldBe(visible).click();
+        return page(Moto_Category_page_Logic.class);
+    }
+
+    @Step("check transition by click on child category with selected motorcycle .Moto_main_page")
+    public Moto_main_page_Logic checkTransitionByClickOnChildCategoryWithMoto(String subRoute) throws SQLException {
+        clickOnChildCategoryWithMoto();
+        commonMethods.checkingContainsUrl(db.getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", subRoute));
+        back();
+        return this;
+    }
+
+    @Step("check transition by click on image parent category with selected motorcycle .Moto_main_page")
+    public Moto_Category_car_list_page_Logic clickOnChildCategoryWithMoto() {
+        childCategoryLinks(1).get(0).shouldBe(visible).click();
+        return page(Moto_Category_car_list_page_Logic.class);
     }
 }
