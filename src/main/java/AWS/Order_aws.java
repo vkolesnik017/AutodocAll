@@ -1,6 +1,7 @@
 package AWS;
 
 import ATD.DataBase;
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.ex.ElementShould;
@@ -123,6 +124,10 @@ public class Order_aws {
 
     private SelenideElement fieldCountryInDeliveryAddress() {
         return $x("//select[@id='form_Order[delivery_country_id]']");
+    }
+
+    private SelenideElement deliveryCountrySelector(String country) {
+        return $x("//select[@id='form_Order[delivery_country_id]']//option[text()='" + country + "']");
     }
 
     private SelenideElement fieldPhoneInDeliveryAddress() {
@@ -944,5 +949,26 @@ public class Order_aws {
         Float cost = sellingCostOneProduct * productQuantity + costDelivery;
         String formatCost = new DecimalFormat(".##").format(cost).replaceAll(",", ".");
         return Float.valueOf(formatCost);
+    }
+
+    @Step("Checking correct text in input field. Order_aws")
+    private void checkCorrectTextAndFillInput(SelenideElement element, String correctText) {
+        Configuration.fastSetValue = false;
+        if (!element.getValue().equals(correctText)) {
+            element.clear();
+            element.setValue(correctText);
+        }
+    }
+
+    @Step("Filling postal code {postalCodeOrCode} in block delivery address. Order_aws")
+    public Order_aws fillingPostalCodeInBlockDeliveryAddress(String postalCodeOrCode) {
+        checkCorrectTextAndFillInput(fieldPostcodeInDeliveryAddress(), postalCodeOrCode);
+        return this;
+    }
+
+    @Step("Chooses delivery country {country}. Order_aws")
+    public Order_aws choosesDeliveryCountry(String country) {
+        deliveryCountrySelector(country).click();
+        return this;
     }
 }
