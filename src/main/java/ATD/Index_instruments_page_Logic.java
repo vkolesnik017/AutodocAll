@@ -39,6 +39,42 @@ public class Index_instruments_page_Logic extends Index_instruments_page {
         return this;
     }
 
+    @Step("Checking presence title top-6 products block. Index_instruments_page")
+    public Index_instruments_page_Logic checkingPresenceTitleTop6Block() {
+        titleTop6ProductsBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checking presence Subtitle main page. Index_instruments_page")
+    public Index_instruments_page_Logic checkingPresenceSubtitleMainPage() {
+        Assert.assertFalse(subTitleMainPage().text().isEmpty());
+        return this;
+    }
+
+    @Step("Checking presence top brands block. Index_instruments_page")
+    public Index_instruments_page_Logic checkingPresenceTopBrandsBlock() {
+        blockTopBrands().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checking presence Features block. Index_instruments_page")
+    public Index_instruments_page_Logic checkingPresenceFeaturesBlock() {
+        blockFeatures().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checking presence delivery block. Index_instruments_page")
+    public Index_instruments_page_Logic checkingPresenceDeliveryBlock() {
+        blockDelivery().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checking presence Subtitle Top-10 block. Index_instruments_page")
+    public Index_instruments_page_Logic checkingPresenceSubtitleTop10Block(){
+        Assert.assertFalse(subtitleBlockTop10().text().isEmpty());
+        return this;
+    }
+
 
 
 }
