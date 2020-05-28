@@ -65,5 +65,6 @@ public class Moto_Catalog_page {
 
     SelenideElement selectorInCloseCondition() {return $x("//div[@class='catalog-title__change-car ']");}
 
+    SelenideElement mainLogoInHeader() {return $x("//a[@class='header__logo-main']/img");}
 
 }

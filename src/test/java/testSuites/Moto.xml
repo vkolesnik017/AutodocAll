@@ -41,4 +41,12 @@
         </classes>
     </test>
 
+    <test name="QC_861_TopParentAndChildCategoryBlock">
+        <classes>
+            <class name="MOTO.QC_861_TopParentAndChildCategoryBlock.QC_865_ParentCategoryBlockComponents"/>
+            <class name="MOTO.QC_861_TopParentAndChildCategoryBlock.QC_866_TransitionByClickOnElementsOfCatalog"/>
+            <class name="MOTO.QC_861_TopParentAndChildCategoryBlock.QC_867_TransitionToCatalog"/>
+        </classes>
+    </test>
+
 </suite>

@@ -13,8 +13,11 @@ public class Moto_Parent_Category_page_Logic  extends Moto_Parent_Category_page{
     @Step(" selecting motorcycle in selector  .Moto_Parent_Category_page")
     public Moto_Catalog_page_Logic selectMotoInSelector(String marke, String model, String motor) {
         brandOfMotoField().selectOptionByValue(marke);
+        brandOfMotoField().shouldHave(exactValue(marke));
         modelFiledInSelector().selectOptionByValue(model);
+        modelFiledInSelector().shouldHave(exactValue(model));
         motorFiledInSelector().selectOptionByValue(motor);
+        motorFiledInSelector().shouldHave(exactValue(motor));
         searchButton().click();
         return page(Moto_Catalog_page_Logic.class);
     }
