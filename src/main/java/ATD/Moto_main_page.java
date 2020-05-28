@@ -66,4 +66,6 @@ class Moto_main_page {
 
     SelenideElement btnSearchInSelector() {return $x("//a[@class='submit search_button']");}
 
+    SelenideElement  btnResetOfSelector() {return $(byId("reset_selector_form"));}
+
 }

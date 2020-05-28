@@ -140,4 +140,34 @@ public class Moto_main_page_Logic extends Moto_main_page {
         toolTipForMotorFieldInSelector().shouldBe(visible);
         return this;
     }
+
+    @Step(" Select brand of motorcycle .Moto_main_page")
+    public Moto_main_page_Logic selectBrandOfMoto(String markeOfMoto) {
+        markeOfHorizontalMotoSelector().selectOptionByValue(markeOfMoto);
+        return this;
+    }
+
+    @Step(" reset of motorcycle selector .Moto_main_page")
+    public Moto_main_page_Logic resetOfMotoSelector() {
+        btnResetOfSelector().shouldBe(visible).click();
+        return this;
+    }
+
+    @Step(" reset of motorcycle selector .Moto_main_page")
+    public Moto_main_page_Logic presenceOfEmptyValuesInSelector() {
+        btnResetOfSelector().shouldNotBe(visible);
+        markeOfHorizontalMotoSelector().shouldHave(exactValue("0"));
+        modelOfHorizontalMotoSelector().shouldHave(exactValue("0"));
+        motorOfHorizontalMotoSelector().shouldHave(exactValue("0"));
+        return this;
+    }
+
+    @Step(" check current url .Moto_main_page")
+    public Moto_main_page_Logic checkCurrentUrl(String subRoute) throws SQLException {
+        CommonMethods commonMethods = new CommonMethods();
+        DataBase db = new DataBase();
+        String urlFromBD = db.getRouteByRouteName("DE", subRoute);
+        commonMethods.checkingContainsUrl(urlFromBD);
+        return this;
+    }
 }

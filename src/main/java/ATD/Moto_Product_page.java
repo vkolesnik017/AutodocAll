@@ -47,4 +47,7 @@ public class Moto_Product_page {
     SelenideElement productCompatibilityHeader() {return $x("//p[contains(text(),'Dieses Produkt passt zu Ihrem ')]");}
 
     SelenideElement motoBrandFromInfoMessage(){return $x("//div[@class='car-match-block car-match-block--moto']//b"); }
+
+    SelenideElement btnResetOfSelector() {return $(byId("reset_selector_form"));}
+
 }

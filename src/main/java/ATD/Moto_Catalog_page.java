@@ -60,4 +60,10 @@ public class Moto_Catalog_page {
     SelenideElement imageInHeadlineInSelector() {return $x("//div[@class='block-select-car__head-car']/span[1]");}
 
     SelenideElement textOfHeadlineInSelector() {return $x("//div[@class='block-select-car__head-car']/span[2]");}
+
+    SelenideElement btnResetOfSelector() {return $(byId("reset_selector_form"));}
+
+    SelenideElement selectorInCloseCondition() {return $x("//div[@class='catalog-title__change-car ']");}
+
+
 }

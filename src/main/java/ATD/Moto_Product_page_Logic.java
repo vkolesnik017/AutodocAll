@@ -3,6 +3,9 @@ package ATD;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
+import java.sql.SQLException;
+
+import static com.codeborne.selenide.Condition.exactValue;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.page;
 
@@ -82,6 +85,37 @@ public class Moto_Product_page_Logic extends Moto_Product_page {
     @Step("presence  of motorcycle brand and model in an information message .Moto_Product_page")
     public Moto_Product_page_Logic presenceOfMotoBrandAtInfoMessage(String brandOfMoto) {
         Assert.assertTrue(motoBrandFromInfoMessage().getText().contains(brandOfMoto));
+        return this;
+    }
+
+
+
+    @Step(" Select brand of motorcycle .Moto_Product_page")
+    public Moto_Product_page_Logic selectBrandOfMoto(String markeOfMoto) {
+        brandOfMotoSelector().selectOptionByValue(markeOfMoto);
+        return this;
+    }
+
+    @Step(" reset of motorcycle selector .Moto_Product_page")
+    public Moto_Product_page_Logic resetOfMotoSelector() {
+        btnResetOfSelector().shouldBe(visible).click();
+        return this;
+    }
+
+
+    @Step(" reset of motorcycle selector .Moto_Product_page")
+    public Moto_Product_page_Logic presenceOfEmptyValuesInSelector() {
+        brandOfMotoSelector().shouldHave(exactValue("0"));
+        modelOfMotoSelector().shouldHave(exactValue("0"));
+        motorOfMotoSelector().shouldHave(exactValue("0"));
+        return this;
+    }
+
+    @Step(" check current url  .Moto_Product_page")
+    public Moto_Product_page_Logic checkCurrentUrl(String subRoute) throws SQLException {
+        CommonMethods commonMethods = new CommonMethods();
+        DataBase db = new DataBase();
+        commonMethods.checkingContainsUrl(db.getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", subRoute));
         return this;
     }
 }
