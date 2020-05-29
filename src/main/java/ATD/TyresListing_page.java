@@ -78,6 +78,19 @@ class TyresListing_page {
 
     SelenideElement allSizesButton() { return $(".all_sizes"); }
 
-    SelenideElement dimensionLink() { return $x("(//*[contains (text(),'Die beliebtesten Reifengrößen')]/..//a)[3]"); }
+    SelenideElement dimensionLink() { return $x("(//*[contains (text(),'Die beliebtesten Reifengrößen')]/..//a)[2]"); }
 
+    SelenideElement brandRelinkBlock() { return $(".tires_marks"); }
+
+    SelenideElement diameterRelinkBlock() { return $x("//*[contains (text(),'Reifen nach Zoll')]/.."); }
+
+    SelenideElement paymentsBlock() { return $(".pays_block"); }
+
+    SelenideElement dimensionRelinkBlock() { return $x("//*[contains (text(),'Die beliebtesten Reifengrößen')]/.."); }
+
+    SelenideElement deliveryBlock() { return $(".pays_block"); }
+
+    ElementsCollection advantagesBlock() { return $$("div .features li"); }
+
+    SelenideElement diameterBlockOnCatalogTyresRoute() { return $(".table_sizes tr"); }
 }

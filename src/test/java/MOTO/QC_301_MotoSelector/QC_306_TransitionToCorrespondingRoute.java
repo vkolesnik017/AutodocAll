@@ -40,7 +40,7 @@ public class QC_306_TransitionToCorrespondingRoute {
 
             new Moto_Category_page_Logic()
                     .selectMotoInSelector("4081", "12008", "135713");
-                                commonMethods.checkingContainsUrl(db.getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_category_car_list3"));
+            commonMethods.checkingContainsUrl(db.getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_category_car_list3"));
         }
     @DataProvider(name = "routesCarList", parallel = true)
     Object[] dataProviderCarList() throws SQLException {
@@ -61,7 +61,6 @@ public class QC_306_TransitionToCorrespondingRoute {
                 .checkCurrentUrl("moto_category_car_list3");
 
     }
-
 
     @DataProvider(name = "routesParentCategory", parallel = true)
     Object[] dataProviderParentCategory() throws SQLException {
