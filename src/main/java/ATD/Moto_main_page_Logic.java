@@ -5,6 +5,7 @@ import org.testng.Assert;
 
 import java.sql.SQLException;
 
+import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.exactValue;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.back;
@@ -12,8 +13,6 @@ import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class Moto_main_page_Logic extends Moto_main_page {
-    CommonMethods commonMethods = new CommonMethods();
-    DataBase db = new DataBase();
 
     @Step("Check successfully Moto page loading. Moto_main_page")
     public Moto_main_page_Logic checkSuccessfullyMotoPageLoading() {
@@ -91,12 +90,11 @@ public class Moto_main_page_Logic extends Moto_main_page {
 
     @Step(" check Transition By Click On Linking Banner .Moto_main_page")
     public Moto_main_page_Logic checkTransitionByClickOnLinkingBanner() throws SQLException {
-        CommonMethods commonMethods = new CommonMethods();
-        DataBase db = new DataBase();
+
         clickOnLeftLinkingBanner().checkCurrentUrl("index_instruments");
         back();
         clickOnRightLinkingBanner();
-        commonMethods.checkingContainsUrl(db.getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_category2"));
+        checkingContainsUrl(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_category2"));
         return this;
     }
 
@@ -166,8 +164,8 @@ public class Moto_main_page_Logic extends Moto_main_page {
 
     @Step(" check current url .Moto_main_page")
     public Moto_main_page_Logic checkCurrentUrl(String subRoute) throws SQLException {
-        String urlFromBD = db.getRouteByRouteName("DE", subRoute);
-        commonMethods.checkingContainsUrl(urlFromBD);
+        String urlFromBD = new DataBase().getRouteByRouteName("DE", subRoute);
+        checkingContainsUrl(urlFromBD);
         return this;
     }
 
@@ -224,7 +222,7 @@ public class Moto_main_page_Logic extends Moto_main_page {
     @Step("check transition by click on image parent category .Moto_main_page")
     public Moto_main_page_Logic checkTransitionByClickOnImageParentCategory(String subRoute) throws SQLException {
         clickOnImageParentCategory();
-        commonMethods.checkingContainsUrl(db.getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", subRoute));
+        checkingContainsUrl(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", subRoute));
         back();
         return this;
     }
@@ -239,7 +237,7 @@ public class Moto_main_page_Logic extends Moto_main_page {
     @Step("check transition by click on child category .Moto_main_page")
     public Moto_main_page_Logic checkTransitionByClickOnChildCategory(String subRoute) throws SQLException {
         clickOnChildCategory();
-        commonMethods.checkingContainsUrl(db.getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", subRoute));
+        checkingContainsUrl(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", subRoute));
         back();
         return this;
     }
@@ -253,7 +251,7 @@ public class Moto_main_page_Logic extends Moto_main_page {
     @Step("check transition by click on child category with selected motorcycle .Moto_main_page")
     public Moto_main_page_Logic checkTransitionByClickOnChildCategoryWithMoto(String subRoute) throws SQLException {
         clickOnChildCategoryWithMoto();
-        commonMethods.checkingContainsUrl(db.getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", subRoute));
+        checkingContainsUrl(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", subRoute));
         back();
         return this;
     }
