@@ -167,4 +167,11 @@ public class Moto_Catalog_page_Logic extends Moto_Catalog_page {
         return page(Moto_Categories_page_Logic.class);
     }
 
+
+    @Step("check current url .Moto_Catalog_page")
+    public Moto_main_page_Logic clickOnMainLogoInHeader() {
+         mainLogoInHeader().shouldBe(visible).click();
+        return page(Moto_main_page_Logic.class);
+    }
+
 }

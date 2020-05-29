@@ -13,7 +13,7 @@ public class Moto_Category_car_list_page_Logic extends Moto_Category_car_list_pa
 
     @Step("visibility of TecDoc listing .Moto_Category_car_list_pag")
     public Moto_Category_car_list_page_Logic visibilityOfTecDocListing(String textInHeadline) {
-        headline().shouldHave(exactText(textInHeadline));
+        headline().shouldNotHave(exactText(textInHeadline));
         tecDocListingBlock().shouldBe(visible);
         return this;
     }

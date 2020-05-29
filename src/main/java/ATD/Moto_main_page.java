@@ -1,11 +1,11 @@
 package ATD;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byName;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.*;
 
 class Moto_main_page {
     protected SelenideElement menuCatalogInHeader() {
@@ -68,4 +68,17 @@ class Moto_main_page {
 
     SelenideElement  btnResetOfSelector() {return $(byId("reset_selector_form"));}
 
+    ElementsCollection linkTopParentBlock() {return $$x("//li[@class='moto-parts-catalog__item']");}
+
+    ElementsCollection imageTopParentBlock() {return $$x("//span[@class='moto-parts-catalog__item-image']");}
+
+    ElementsCollection titleTopParentBlock() {return $$x("//span[@class='moto-parts-catalog__item-title']");}
+
+    ElementsCollection childCategoryLinks(int position) {return $$x("(//li[@class='moto-parts-catalog__item'])["+position+"]//div[@class='moto-parts-catalog__cat-list']/a");}
+
+    SelenideElement linkMoreAtParentCategoryBlock() {return $x("//span[@class='moto-parts-catalog__show-all link']");}
+
+    SelenideElement headlineOfTopParentBlock() {return $x("//strong[@class='moto-parts-catalog__title']");}
+
+    SelenideElement topParentBlock() {return $x("//ul[@class='moto-parts-catalog__list']");}
 }
