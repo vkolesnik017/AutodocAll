@@ -9,6 +9,7 @@ import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
 import mailinator.Mailinator;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -18,6 +19,7 @@ import java.sql.SQLException;
 import static ATD.CommonMethods.*;
 import static ATD.CommonMethods.cutPriceToFirstDecimalPlace;
 import static ATD.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.switchTo;
 
 public class QC_1485_FirmValidationAfterError {
@@ -104,8 +106,10 @@ public class QC_1485_FirmValidationAfterError {
         Assert.assertEquals(totalPrice, totalPriceInEmail);
         unitPrice = mailinator.getUnitPriceInEmail();
         Assert.assertEquals(regularProductPricePerAllDataPage, unitPrice);
+    }
 
-
-
+    @AfterMethod
+    private void tearDown() {
+        close();
     }
 }
