@@ -22,10 +22,9 @@ import static com.codeborne.selenide.Selenide.close;
 
 public class QC_1128_ChangingCountryOfDeliveryInAwsOrder {
 
-    private String userID = "15089943", articleNum, productArticleID;
-    private Float deliveryCostFromDanemark, deliveryCostInOrder, totalCostInOrder, sellingCostInOrder, productQuantity, amountOfGoods, totalSumProduct,
-            totalSumIncomeWithoutVat, costFromColumnIncomeWithoutVat, prunedTotalSumIncomeWithoutVat,
-            prunedCostFromColumnIncomeWithoutVat, deliveryCost, totalSumIncludingDelivery;
+    private String userID = "15371745", articleNum, productArticleID;
+    private Float deliveryCostFromDanemark, deliveryCostInOrder, totalCostInOrderAfterChangeCountry, sellingCostInOrder, totalCostInOrder,
+            totalSumIncludingVat;
 
     private Product_page_Logic product_page_logic = new Product_page_Logic();
     private Order_aws order_aws = new Order_aws();
@@ -50,7 +49,7 @@ public class QC_1128_ChangingCountryOfDeliveryInAwsOrder {
         openPage(route);
         articleNum = product_page_logic.getArticleNumber();
         productArticleID = product_page_logic.getProductId();
-        deliveryCostInOrder = new SearchOrders_page_aws().openSearchOrderPageWithLogin()
+        totalCostInOrder = new SearchOrders_page_aws().openSearchOrderPageWithLogin()
                 .clickAddOrderBtn()
                 .fillsInFieldCustomerID(userID)
                 .chooseSkinInSelector("autodoc.de (DE)")
@@ -61,12 +60,18 @@ public class QC_1128_ChangingCountryOfDeliveryInAwsOrder {
                 .checkArticleOfAddedProduct(articleNum)
                 .clickSaveOrderBtn()
                 .checkOrderHasTestStatus()
-                .choosesDeliveryCountry("Denmark")
+                .getTotalPriceOrderAWS();
+        order_aws.choosesDeliveryCountry("Denmark")
                 .fillingPostalCodeInBlockDeliveryAddress("1231")
-                .reSaveOrder()
-                .checkVatStatusInOrder("Mit MwSt 25%")
+                .reSaveOrder();
+        deliveryCostInOrder = order_aws.checkVatStatusInOrder("Mit MwSt 25%")
                 .getDeliveryCostInOrder();
         Assert.assertEquals(deliveryCostInOrder, deliveryCostFromDanemark);
+        totalCostInOrderAfterChangeCountry = order_aws.getTotalPriceOrderAWS();
+        sellingCostInOrder = order_aws.getSellingProductPriceOrderAWS();
+        totalSumIncludingVat = order_aws.getTotalCostIncludingSellingCostAndDeliveryCost(sellingCostInOrder, deliveryCostInOrder);
+        Assert.assertEquals(totalCostInOrderAfterChangeCountry, totalSumIncludingVat);
+        Assert.assertNotEquals(totalCostInOrder, totalCostInOrderAfterChangeCountry);
     }
 
     @AfterMethod

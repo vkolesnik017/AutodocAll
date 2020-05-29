@@ -22,7 +22,7 @@ import static com.codeborne.selenide.Selenide.close;
 
 public class QC_1127_EditingQuantityOfAutoPartsInAwsOrder {
 
-    private String userID = "15089943", articleNum, productArticleID;
+    private String userID = "15371693 ", articleNum, productArticleID;
     private Float totalCostInOrder, sellingCostInOrder, productQuantity, amountOfGoods, totalSumProduct,
             totalSumIncomeWithoutVat, costFromColumnIncomeWithoutVat, prunedTotalSumIncomeWithoutVat,
             prunedCostFromColumnIncomeWithoutVat, deliveryCost, totalSumIncludingDelivery;

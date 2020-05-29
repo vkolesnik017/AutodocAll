@@ -24,7 +24,7 @@ import static com.codeborne.selenide.Selenide.close;
 
 public class QC_171_CreatingAwsOrder_WithHeaveLoadsDeliveryToCountryToWhichHeaveLoadsNotDelivery {
 
-    private String userID = "15089943", articleNum;
+    private String userID = "15371408", articleNum;
     private ArrayList userDataInCreateOrder, userData;
 
     private Product_page_Logic product_page_logic = new Product_page_Logic();
