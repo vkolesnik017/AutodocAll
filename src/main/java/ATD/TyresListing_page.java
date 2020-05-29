@@ -78,7 +78,7 @@ class TyresListing_page {
 
     SelenideElement allSizesButton() { return $(".all_sizes"); }
 
-    SelenideElement dimensionLink() { return $x("(//*[contains (text(),'Die beliebtesten Reifengrößen')]/..//a)[2]"); }
+    SelenideElement dimensionLink() { return $x("(//*[contains (text(),'Die beliebtesten Reifengrößen')]/..//a)[3]"); }
 
     SelenideElement brandRelinkBlock() { return $(".tires_marks"); }
 
