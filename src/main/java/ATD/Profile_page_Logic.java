@@ -7,8 +7,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.getNameRouteFromJSVarInHTML;
 import static ATD.CommonMethods.waitingElementVisibility;
-import static com.codeborne.selenide.Selenide.Wait;
-import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.*;
 import static org.testng.AssertJUnit.assertNull;
 
 public class Profile_page_Logic extends Profile_page {

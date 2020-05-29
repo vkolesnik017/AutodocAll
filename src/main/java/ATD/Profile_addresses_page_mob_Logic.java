@@ -1,8 +1,8 @@
 package ATD;
 
-import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
 
+import static com.codeborne.selenide.Condition.*;
 import static org.testng.AssertJUnit.assertNull;
 
 public class Profile_addresses_page_mob_Logic extends Profile_addresses_page_mob {
@@ -15,7 +15,7 @@ public class Profile_addresses_page_mob_Logic extends Profile_addresses_page_mob
 
     @Step("Checking checked checkbox. Profile_addresses_page_mob")
     public Profile_addresses_page_mob_Logic checkingCheckedCheckbox() {
-        subscribeCheckbox().shouldHave(Condition.attribute("checked", "true"));
+        subscribeCheckbox().shouldHave(attribute("checked", "true"));
         return this;
     }
 
@@ -36,7 +36,7 @@ public class Profile_addresses_page_mob_Logic extends Profile_addresses_page_mob
 
     @Step("Checking success popup. Profile_addresses_page_mob")
     public Profile_addresses_page_mob_Logic checkingSuccessPopup() {
-        successPopup().shouldBe(Condition.appear).shouldHave(Condition.text("Die Daten wurden aktualisiert"));
+        successPopup().shouldBe(appear).shouldHave(text("Die Daten wurden aktualisiert"));
         return this;
     }
 
@@ -70,6 +70,12 @@ public class Profile_addresses_page_mob_Logic extends Profile_addresses_page_mob
     @Step("Clicking submit. Profile_addresses_page_mob")
     public Profile_addresses_page_mob_Logic clickSubmit() {
         submitBtn().click();
+        return this;
+    }
+
+    @Step("Check presence icon user id. Profile_addresses_page_mob_Logic")
+    public Profile_addresses_page_mob_Logic checkPresenceIconUserId() {
+        iconUserId().shouldBe(visible);
         return this;
     }
 
