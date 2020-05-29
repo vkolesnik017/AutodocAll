@@ -4,8 +4,13 @@ import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$x;
 
 class Profile_addresses_page_mob {
+
+    SelenideElement iconUserId() {
+        return $x("//li[@class='icon user-id']");
+    }
 
     SelenideElement billingAddress() {
         return $(By.xpath("//div[@class='title_table billing']/following::form[1]"));

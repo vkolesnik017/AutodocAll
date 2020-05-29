@@ -13,7 +13,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.*;
 
 public class QC_1132_SynchronizationMobSessionOfBasketOnWebVersion {
 
@@ -23,6 +23,7 @@ public class QC_1132_SynchronizationMobSessionOfBasketOnWebVersion {
     private Main_page_Logic main_page_logic = new Main_page_Logic();
     private Cart_page_mob_Logic cart_page_mob_logic = new Cart_page_mob_Logic();
     private Main_page_mob_Logic main_page_mob_logic = new Main_page_mob_Logic();
+    private Profile_page_Logic profile_page_logic = new Profile_page_Logic();
 
     @BeforeClass
     void setUp() {
@@ -68,7 +69,8 @@ public class QC_1132_SynchronizationMobSessionOfBasketOnWebVersion {
         main_page_mob_logic.closeFirstPopup()
                 .clickSignInInMenu()
                 .closeFooterPopup()
-                .signInFromFB(mailFB, passFB);
+                .signInFromFB(mailFB, passFB)
+                .checkPresenceIconUserId();
         openPage("https://m.autodoc.de/vemo/2295352?force=mobile");
         productIdOnProductPage = product_page_Mob_logic.getProductId();
         product_page_Mob_logic.addProductToCart()
@@ -82,7 +84,6 @@ public class QC_1132_SynchronizationMobSessionOfBasketOnWebVersion {
                 .checkOfIdAddedProductInBasket(productIdOnProductPage)
                 .deleteGoodFromCartPage();
     }
-
 
     @AfterMethod
     private void tearDown() {
