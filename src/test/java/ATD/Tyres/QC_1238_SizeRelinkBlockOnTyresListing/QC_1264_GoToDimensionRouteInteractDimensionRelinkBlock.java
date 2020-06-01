@@ -39,7 +39,7 @@ public class QC_1264_GoToDimensionRouteInteractDimensionRelinkBlock {
     @Description(value = "Test Checks Transition To Dimension Route Interact Dimension Relink Block")
     public void testGoToDimensionRouteInteractDimensionRelinkBlock(String route) {
         openPage(route);
-        new TyresListing_page_Logic().clickDimensionButtonAndCheckRedirect();
+        new TyresListing_page_Logic().clickDimensionButtonAndCheckRedirect(new TyresListing_page_Logic().dimensionLinkListingRoute());
     }
 
     @AfterMethod

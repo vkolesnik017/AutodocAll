@@ -25,7 +25,7 @@ import static com.codeborne.selenide.Selenide.close;
 
 public class QC_563_CreatingAwsOrder_WithDeliveryToIsland {
 
-    private String userID = "15240029", articleNum, productArticleID;
+    private String userID = "15371488", articleNum, productArticleID;
     private Float deliveryCost, deliveryCostInOrder, sellingPriceAWSOrder,
             totalCostIncludingSellingAndDeliveryCost, totalCostInOrder;
     private ArrayList userDataInCreateOrder, userData, userDataInOrder;

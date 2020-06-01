@@ -25,7 +25,7 @@ import static com.codeborne.selenide.Selenide.close;
 
 public class QC_137_CreatingAwsOrder_WithDropProduct {
 
-    private String userID = "15089943", articleNum, productArticleID;
+    private String userID = "15371173", articleNum, productArticleID;
     private Float sellingProductCostInOrder, totalProductCostInOrder, productCost;
     private ArrayList userDataInCreateOrder, userData, userDataInOrder;
 

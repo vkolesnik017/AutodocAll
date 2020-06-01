@@ -2,6 +2,7 @@ package ATD;
 
 
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
@@ -48,13 +49,13 @@ public class TyresListing_page_Logic extends TyresListing_page {
     }
 
     @Step("Select Season Tyre On Listing")
-    public TyresListing_page_Logic selectSeasonTyreOnListing( String season) {
+    public TyresListing_page_Logic selectSeasonTyreOnListing(String season) {
         new Tyres_page_Logic().selectSeasonTyre(season);
         return this;
     }
 
     @Step("Select Width Tyre On Listing")
-    public TyresListing_page_Logic selectWidthTyreOnListing( String width) {
+    public TyresListing_page_Logic selectWidthTyreOnListing(String width) {
         new Tyres_page_Logic().selectWidth(width);
         return this;
     }
@@ -158,7 +159,7 @@ public class TyresListing_page_Logic extends TyresListing_page {
             for (int i = 0; i < productsInTopBlock().size(); i++) {
                 if (n == 1) {
                     nextButtonInTopBlock().click();
-                } else if (n==2) {
+                } else if (n == 2) {
                     previousButtonInTopBlock().click();
                 }
                 productsInTopBlock().get(i).click();
@@ -185,7 +186,8 @@ public class TyresListing_page_Logic extends TyresListing_page {
                 clearBrowserCache();
                 refresh();
             }
-        }return this;
+        }
+        return this;
     }
 
     @Step("Go to product page from top block for all products. TyresListing_page")
@@ -201,7 +203,8 @@ public class TyresListing_page_Logic extends TyresListing_page {
                 productPage().shouldBe(visible);
                 back();
             }
-        }return this;
+        }
+        return this;
     }
 
     @Step("Check Product Page Of All Products In Top Block. TyresListing_page")
@@ -226,7 +229,7 @@ public class TyresListing_page_Logic extends TyresListing_page {
         String brandName = brandFilterButton().attr("data-value");
         brandFilterButton().click();
         new Listing_page_Logic().waitUntilPreloaderDisappear()
-                                .checkProductAttributeOnListingWithProductsNumber(brandName, productTitleOnListing(), 1);
+                .checkProductAttributeOnListingWithProductsNumber(brandName, productTitleOnListing(), 1);
         List<String> urlListTopBlockAfterBrandFilterApplying = new ArrayList<>();
         for (int i = 0; i < linksInTopBlock().size(); i++) {
             urlListTopBlockAfterBrandFilterApplying.add(linksInTopBlock().get(i).attr("url"));
@@ -243,7 +246,7 @@ public class TyresListing_page_Logic extends TyresListing_page {
             urlListTopBlock.add(linksInTopBlock().get(i).attr("url"));
         }
         new Listing_page_Logic().clickThreeRatingStarsInFilter()
-                                .waitUntilPreloaderDisappear();
+                .waitUntilPreloaderDisappear();
         checkThreeStarsRatingInEveryProductOnListingTyres();
         List<String> urlListTopBlockAfterBrandFilterApplying = new ArrayList<>();
         for (int i = 0; i < linksInTopBlock().size(); i++) {
@@ -300,14 +303,14 @@ public class TyresListing_page_Logic extends TyresListing_page {
     }
 
     @Step("Click dimension button and check redirect. TyresListing_page")
-    public TyresListing_page_Logic clickDimensionButtonAndCheckRedirect() {
+    public TyresListing_page_Logic clickDimensionButtonAndCheckRedirect(SelenideElement dimensionLinkButton) {
         String routeName = getNameRouteFromJSVarInHTML();
         String baseUrl = url();
-        String dimension = dimensionLink().text().replaceAll("\\D|\\s", "");
-        String width = dimension.substring(0,3);
-        String height = dimension.substring(3,5);
-        String diameter = dimension.substring(5,7);
-        dimensionLink().hover().click();
+        String dimension = dimensionLinkButton.text().replaceAll("\\D|\\s", "");
+        String width = dimension.substring(0, 3);
+        String height = dimension.substring(3, 5);
+        String diameter = dimension.substring(5, 7);
+        dimensionLinkButton.hover().click();
         widthValueInSelector().waitUntil(visible, 5000).shouldHave(text(width));
         heightValueInSelector().shouldHave(text(height));
         diameterValueInSelector().shouldHave(text(diameter));
@@ -318,13 +321,78 @@ public class TyresListing_page_Logic extends TyresListing_page {
             String baseUrlWithDimension = baseUrl.replaceAll("\\d", "").replaceAll("\\/--r", "").replaceAll("\\/-zoll", "");
             String urlWithDimension = (baseUrlWithDimension + "/" + width + "-" + height + "-r" + diameter);
             waitingWhileLinkBecomeExpected(urlWithDimension);
-        } else if (routeName.equals("tyres_season_size")) {
-            checkingContainsUrl( width + "-" + height + "-r" + diameter);
-        }
-        else {
+        } else if (routeName.equals("tyres_season_size") | routeName.equals("tyres_type_list")) {
+            checkingContainsUrl(width + "-" + height + "-r" + diameter);
+        } else {
             String urlWithDimension = (baseUrl + "/" + width + "-" + height + "-r" + diameter);
             waitingWhileLinkBecomeExpected(urlWithDimension);
         }
+        return this;
+    }
+
+    @Step("Check brand relink block visibility. TyresListing_page")
+    public TyresListing_page_Logic checkBrandRelinkBlockVisibility() {
+        brandRelinkBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Check diameter relink block visibility. TyresListing_page")
+    public TyresListing_page_Logic checkDiameterRelinkBlockVisibility() {
+        diameterRelinkBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Check payments block visibility. TyresListing_page")
+    public TyresListing_page_Logic checkPaymentsBlockVisibility() {
+        paymentsBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Check dimension relink block visibility. TyresListing_page")
+    public TyresListing_page_Logic checkDimensionRelinkBlockVisibility() {
+        dimensionRelinkBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Check delivery block visibility. TyresListing_page")
+    public TyresListing_page_Logic checkDeliveryBlockVisibility() {
+        deliveryBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Check advantages block visibility. TyresListing_page")
+    public TyresListing_page_Logic checkAdvantagesBlockVisibility() {
+        advantagesBlock().shouldHaveSize(5);
+        return this;
+    }
+
+    @Step("Check radius block visibility on tyres catalog route. TyresListing_page")
+    public TyresListing_page_Logic checkRadiusBlockVisibilityOnTyresCatalogRoute() {
+        diameterBlockOnCatalogTyresRoute().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Check sizes block visibility on tyres catalog route. TyresListing_page")
+    public TyresListing_page_Logic checkSizesBlockVisibilityOnTyresCatalogRoute() {
+        sizesBlockOnCatalogTyresRoute().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Click diameter button and check redirect. TyresListing_page")
+    public TyresListing_page_Logic clickDiameterButtonAndCheckRedirectCatalogRoute() {
+        String baseUrl = url().replaceAll("/type_list", "");
+        String diameter = diameterLinkCatalogRoute().text().replace("R", "");
+        diameterLinkCatalogRoute().hover().click();
+        diameterValueInSelector().waitUntil(visible, 5000).shouldHave(text(diameter));
+        checkCharacteristicOnListing(diameter, radiusCharacteristic());
+        String urlWithDiameter = (baseUrl + "/" + diameter + "-zoll");
+        waitingWhileLinkBecomeExpected(urlWithDiameter);
+        return this;
+    }
+
+    @Step("Check breadcrumbs block visibility. TyresListing_page")
+    public TyresListing_page_Logic checkBreadcrumbsBlockVisibility() {
+        breadcrumbsBlock().shouldBe(visible);
         return this;
     }
 }

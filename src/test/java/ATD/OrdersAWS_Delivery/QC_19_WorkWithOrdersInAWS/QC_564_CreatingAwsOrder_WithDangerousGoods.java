@@ -26,7 +26,7 @@ import static com.codeborne.selenide.Selenide.close;
 public class QC_564_CreatingAwsOrder_WithDangerousGoods {
 
 
-    private String userID = "15089943", articleNum;
+    private String userID = "15371520", articleNum;
     private Float deliveryCost, sellingCostInOrder, productCost, totalCostInOrder, totalCostIncludingSellingAndDeliveryCost;
     private ArrayList userDataInCreateOrder, userData, userDataInOrder;
 

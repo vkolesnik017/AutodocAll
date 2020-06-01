@@ -154,8 +154,7 @@ public class Moto_Catalog_page_Logic extends Moto_Catalog_page {
     @Step("check current url .Moto_Catalog_page")
     public Moto_Catalog_page_Logic checkCurrentUrl(String subRoute) throws SQLException {
         catalogTecDoc().shouldBe(visible);
-        DataBase db = new DataBase();
-        Assert.assertEquals(url(),db.getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", subRoute));
+        Assert.assertEquals(url(),new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", subRoute));
         return this;
     }
 
@@ -165,6 +164,13 @@ public class Moto_Catalog_page_Logic extends Moto_Catalog_page {
         mainFormOfSelector().shouldBe(visible);
         btnResetOfSelector().shouldBe(visible).click();
         return page(Moto_Categories_page_Logic.class);
+    }
+
+
+    @Step("check current url .Moto_Catalog_page")
+    public Moto_main_page_Logic clickOnMainLogoInHeader() {
+         mainLogoInHeader().shouldBe(visible).click();
+        return page(Moto_main_page_Logic.class);
     }
 
 }

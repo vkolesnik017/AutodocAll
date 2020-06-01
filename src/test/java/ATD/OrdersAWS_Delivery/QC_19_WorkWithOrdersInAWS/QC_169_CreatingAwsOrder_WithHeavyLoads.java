@@ -25,7 +25,7 @@ import static com.codeborne.selenide.Selenide.close;
 
 public class QC_169_CreatingAwsOrder_WithHeavyLoads {
 
-    private String userID = "15089943", articleNum;
+    private String userID = "15371374", articleNum;
     private Float  productCost, deliveryCost, deliveryCostInOrder, sellingCostInOrder, deliveryCostOfHeavyLoads, totalCostInOrder, costIncludingDeliveryInOrder;
     private ArrayList userDataInCreateOrder, userData, userDataInOrder;
 

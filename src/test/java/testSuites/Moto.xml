@@ -41,4 +41,29 @@
         </classes>
     </test>
 
+    <test name="QC_861_TopParentAndChildCategoryBlock">
+        <classes>
+            <class name="MOTO.QC_861_TopParentAndChildCategoryBlock.QC_865_ParentCategoryBlockComponents"/>
+            <class name="MOTO.QC_861_TopParentAndChildCategoryBlock.QC_866_TransitionByClickOnElementsOfCatalog"/>
+            <class name="MOTO.QC_861_TopParentAndChildCategoryBlock.QC_867_TransitionToCatalog"/>
+        </classes>
+    </test>
+
+    <test name="QC_847_Login_Registration_Blocks">
+        <classes>
+            <class name="MOTO.QC_847_Login_Registration_Blocks.QC_849_Login_Registration"/>
+            <class name="MOTO.QC_847_Login_Registration_Blocks.QC_848_PresenceOfLoginRegistrationBlocks"/>
+        </classes>
+    </test>
+
+    <test name="QC_355_BenefitsBlock">
+        <classes>
+            <class name="MOTO.QC_355_BenefitsBlock.QC_356_PresenceOfBenefitsBlock"/>
+            <class name="MOTO.QC_355_BenefitsBlock.QC_357_BenefitBlockStructure"/>
+            <class name="MOTO.QC_355_BenefitsBlock.QC_358_BehaviorOfBenefitBlock"/>
+            <class name="MOTO.QC_355_BenefitsBlock.QC_359_ElementsOfBenefitsBlock"/>
+            <class name="MOTO.QC_355_BenefitsBlock.QC_360_MainImageOfChildCategory"/>
+        </classes>
+    </test>
+
 </suite>

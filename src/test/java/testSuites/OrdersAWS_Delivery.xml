@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="OrdersAWS_Delivery" parallel="methods" thread-count="1" >
+<suite name="OrdersAWS_Delivery" parallel="methods" thread-count="4" >
 
     <listeners>
         <listener class-name="ATD.ProjectListener"/>
@@ -22,6 +22,7 @@
             <class name="ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_1125_AddingAutoPartToAwsOrder"/>
             <class name="ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_1126_RemovingAutoPartFromAwsOrder"/>
             <class name="ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_1127_EditingQuantityOfAutoPartsInAwsOrder"/>
+            <class name="ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_1128_ChangingCountryOfDeliveryInAwsOrder"/>
         </classes>
     </test>
 

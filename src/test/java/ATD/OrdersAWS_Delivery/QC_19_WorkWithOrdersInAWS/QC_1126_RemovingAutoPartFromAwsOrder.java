@@ -24,7 +24,7 @@ import static com.codeborne.selenide.Selenide.close;
 
 public class QC_1126_RemovingAutoPartFromAwsOrder {
 
-    private String userID = "15089943", firstArticleNum, secondArticleNum, secondProductArticleID, firstProductArticleID;
+    private String userID = "15371629", firstArticleNum, secondArticleNum, secondProductArticleID, firstProductArticleID;
     private Float totalCostOrder, totalCostOrderAfterReSave, totalSumIncomeWithoutVat, sumIncomeWithoutVatAllGoods,
             sellingCostInOrder, prunedTotalSumIncomeWithoutVat, prunedSumIncomeWithoutVatAllGoods, totalCostWithoutOneItem;
 

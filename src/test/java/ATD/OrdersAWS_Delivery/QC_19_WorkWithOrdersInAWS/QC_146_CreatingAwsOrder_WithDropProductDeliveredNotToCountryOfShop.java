@@ -25,12 +25,11 @@ import static com.codeborne.selenide.Selenide.close;
 
 public class QC_146_CreatingAwsOrder_WithDropProductDeliveredNotToCountryOfShop {
 
-    private String userID = "15089943", articleNum, productArticleID;
+    private String userID = "15371273", articleNum, productArticleID;
     private ArrayList userDataInCreateOrder, userData;
 
     private Product_page_Logic product_page_logic = new Product_page_Logic();
     private OrderAdd_page_aws orderAdd_page_aws = new OrderAdd_page_aws();
-    private Order_aws order_aws = new Order_aws();
 
     @BeforeClass
     void setUp() {
