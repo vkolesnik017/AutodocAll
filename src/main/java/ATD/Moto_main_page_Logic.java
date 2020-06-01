@@ -261,4 +261,22 @@ public class Moto_main_page_Logic extends Moto_main_page {
         childCategoryLinks(1).get(0).shouldBe(visible).click();
         return page(Moto_Category_car_list_page_Logic.class);
     }
+
+
+    @Step(" visibility of login/registration block .Moto_main_page")
+    public Moto_main_page_Logic visibilityOfLoginRegistrationBlock() {
+         registrationBlock().shouldBe(visible);
+        return this;
+    }
+
+
+    @Step("login of user .Moto_main_page")
+    public Profile_plus_page_Logic loginOfUser(String login, String password) {
+        registrationBlock().click();
+        loginPopUp().shouldBe(visible);
+        loginFieldAtLoginPopUp().setValue(login);
+        passwordFieldAtLoginPopUp().setValue(password);
+        btnRegistrationAtLoginPopUp().click();
+        return page(Profile_plus_page_Logic.class);
+    }
 }

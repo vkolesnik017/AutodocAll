@@ -113,4 +113,60 @@ public class Moto_Category_page_Logic extends Moto_Category_page {
         searchButton().click();
         return page(Moto_Category_car_list_page_Logic.class);
     }
+
+
+    @Step("presence of benefits block .Moto_Category_page")
+    public Moto_Category_page_Logic presenceOfBenefitsBlock() {
+        benefitsBlock().shouldBe(visible);
+        return this;
+    }
+
+
+    @Step("presence of headline at benefits block .Moto_Category_page")
+    public Moto_Category_page_Logic presenceOfHeadlineAtBenefitsBlock() {
+        headlineBenefitsBlock().shouldBe(visible);
+        return this;
+    }
+
+
+    @Step("presence of benefits links .Moto_Category_page")
+    public Moto_Category_page_Logic presenceOfBenefitsLinks() {
+        benefitsLinks().shouldHaveSize(2);
+        return this;
+    }
+
+
+    @Step("visibility of tooltip at benefits links .Moto_Category_page")
+    public Moto_Category_page_Logic visibilityOfTooltipAtBenefitsLinks() {
+        benefitsBlock().shouldBe(visible);
+        for (int i = 0; i < imageOfBenefitsLinks().size(); i++) {
+            imageOfBenefitsLinks().get(i).hover();
+            tooltipOfBenefitsLinks().get(i).shouldBe(visible);
+        }
+        return this;
+    }
+
+
+    @Step("presence Of elements at benefit block .Moto_Category_page")
+    public Moto_Category_page_Logic presenceOfElementsAtBenefitBlock() {
+        benefitsBlock().shouldBe(visible);
+        for (int i = 0; i < imageOfBenefitsLinks().size(); i++) {
+            imageOfBenefitsLinks().get(i).shouldBe(visible);
+            textOfBenefitsLinks().get(i).shouldBe(visible);
+        }
+        return this;
+    }
+
+
+    @Step("presence of main image at child category .Moto_Category_page")
+    public Moto_Category_page_Logic presenceOfMainImageAtChildCategory() {
+        mainImageOfChildCategory().shouldBe(visible);
+        int widthOfMainImageAtChildCategory = mainImageOfChildCategory().getSize().getWidth();
+        int heightOfMainImageAtChildCategory = mainImageOfChildCategory().getSize().getHeight();
+        Assert.assertEquals(widthOfMainImageAtChildCategory, 200);
+        Assert.assertEquals(heightOfMainImageAtChildCategory, 200);
+
+        return this;
+    }
+
 }
