@@ -33,7 +33,7 @@ public class QC_1327_NumberOfMiniCardsInBlockTop10Products {
     @Description(value = "Test Checks the number of mini-cards in top-10 products block")
     public void testCheckNumberOfMiniCardsTop10Products(String route) {
         openPage(route);
-        new Index_instruments_page_Logic().checkingNumberOfMiniCardsTop10Products(10);
+        new Index_instruments_page_Logic().checkingNumberOfMiniCardsTop10Products();
     }
 
     @AfterMethod

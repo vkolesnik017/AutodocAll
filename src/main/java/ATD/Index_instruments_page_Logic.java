@@ -76,15 +76,15 @@ public class Index_instruments_page_Logic extends Index_instruments_page {
         return this;
     }
 
-    @Step("Checking the number of mini-cards in top-6 products block. Index_instruments_page")
-    public Index_instruments_page_Logic checkingNumberOfMiniCardsTop6Products(int expectedSize) {
-        miniCardsInTop6ProductsBlock().shouldHave(size(expectedSize));
+    @Step("Checking the number of mini-cards in top products block. Index_instruments_page")
+    public Index_instruments_page_Logic checkingNumberOfMiniCardsTopProducts(int expectedSize) {
+        miniCardsInTopProductsBlock().shouldHave(size(expectedSize));
         return this;
     }
 
     @Step("Checking the number of mini-cards in top-10 products block. Index_instruments_page ")
-    public Index_instruments_page_Logic checkingNumberOfMiniCardsTop10Products(int expectedSize) {
-        miniCardsInTop10ProductsBlock().shouldHave(size(expectedSize));
+    public Index_instruments_page_Logic checkingNumberOfMiniCardsTop10Products() {
+        miniCardsInTop10ProductsBlock().shouldHave(size(10));
         return this;
     }
 

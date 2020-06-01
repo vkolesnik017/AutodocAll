@@ -29,10 +29,10 @@ public class QC_1280_NumberOfMiniCardsBlockTop6Products {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test Checks the number of mini-cards in top-6 products block")
-    public void testCheckNumberOfMiniCardsTop6Products(String route) {
+    @Description(value = "Test Checks the number of mini-cards in top products block")
+    public void testCheckNumberOfMiniCardsTopProductsForInstruments(String route) {
         openPage(route);
-        new Index_instruments_page_Logic().checkingNumberOfMiniCardsTop6Products(6);
+        new Index_instruments_page_Logic().checkingNumberOfMiniCardsTopProducts(6);
     }
 
     @AfterMethod

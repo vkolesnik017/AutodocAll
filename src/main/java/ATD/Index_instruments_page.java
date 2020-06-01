@@ -45,7 +45,7 @@ class Index_instruments_page {
         return $x("//div[@class='top-product__text']");
     }
 
-    ElementsCollection miniCardsInTop6ProductsBlock() {
+    ElementsCollection miniCardsInTopProductsBlock() {
         return $$x("//div[@class='top-product']//div[@class='product-list__item active']");
     }
 
