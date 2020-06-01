@@ -22,8 +22,8 @@ import static com.codeborne.selenide.Selenide.close;
 
 public class QC_1127_EditingQuantityOfAutoPartsInAwsOrder {
 
-    private String userID = "15371693 ", articleNum, productArticleID;
-    private Float totalCostInOrder, sellingCostInOrder, productQuantity, amountOfGoods, totalSumProduct,
+    private String userID = "15371693", articleNum, productArticleID;
+    private Float totalCostInOrder, sumProductColumn, productQuantity, amountOfGoods, sellingCostInOrder,
             totalSumIncomeWithoutVat, costFromColumnIncomeWithoutVat, prunedTotalSumIncomeWithoutVat,
             prunedCostFromColumnIncomeWithoutVat, deliveryCost, totalSumIncludingDelivery;
 
@@ -64,11 +64,11 @@ public class QC_1127_EditingQuantityOfAutoPartsInAwsOrder {
                 .checkQuantityOfGoodsInColumnQuantity("2")
                 .checkQuantityOfGoodsInColumnExpectedQuantity("2")
                 .getDeliveryCostInOrder();
-        sellingCostInOrder = order_aws.getSellingPriceOfCertainProduct(productArticleID);
+        sumProductColumn = order_aws.getTotalSumProductFromColumnSumOfProduct();
         productQuantity = order_aws.getProductQuantity();
-        amountOfGoods = order_aws.multiplyPriceByQuantity(sellingCostInOrder, productQuantity);
-        totalSumProduct = order_aws.getTotalSumProductFromColumnSumOfProduct();
-        Assert.assertEquals(amountOfGoods, totalSumProduct);
+        amountOfGoods = order_aws.dividingPriceByQuantity(sumProductColumn, productQuantity);
+        sellingCostInOrder = order_aws.getSellingPriceOfCertainProduct(productArticleID);
+        Assert.assertEquals(amountOfGoods, sellingCostInOrder);
         totalSumIncomeWithoutVat = order_aws.getTotalSumIncomeWithoutVAT();
         prunedTotalSumIncomeWithoutVat = cutPriceToFirstDecimalPlace(totalSumIncomeWithoutVat);
         costFromColumnIncomeWithoutVat = order_aws.getCostFromColumnIncomeWithoutVat();
