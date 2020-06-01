@@ -67,7 +67,6 @@ public class QC_1125_AddingAutoPartToAwsOrder {
                 .chooseArticleIDOfDesiredProduct(productArticleID)
                 .clickBtnAddedGoodsInPopUpAddProduct()
                 .checkPresenceTableOfWarehousesAndSuppliers()
-                .clickBtnAddedGoodsInPopUpAddProduct()
                 .getSellingPriceOfCertainProduct(productArticleID);
         Assert.assertEquals(productCost, sellingCostInOrder);
         totalSumIncomeWithoutVat = order_aws.getTotalSumIncomeWithoutVAT();

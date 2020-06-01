@@ -457,14 +457,14 @@ public class Order_aws {
     }
 
     @Step("Checks presence remove product popUp and click button Yes. Order_aws")
-    public Order_aws clockBtnYesInRemoveProductPopUp() {
+    public Order_aws clickBtnYesInRemoveProductPopUp() {
         removeProductPopUp().shouldBe(visible);
         btnYesInRemoveProductPopUp().click();
         return this;
     }
 
     @Step("Checks presence remove product popUp and click button No. Order_aws")
-    public Order_aws clockBtnNoInRemoveProductPopUp() {
+    public Order_aws clickBtnNoInRemoveProductPopUp() {
         removeProductPopUp().shouldBe(visible);
         btnNoInRemoveProductPopUp().click();
         return this;
@@ -498,14 +498,15 @@ public class Order_aws {
 
     @Step("Checks presence table with warehouses and suppliers. Order_aws")
     public Order_aws checkPresenceTableOfWarehousesAndSuppliers() {
-        tableOfWarehousesAndSuppliers().shouldBe(visible);
+        if (tableOfWarehousesAndSuppliers().isDisplayed()) {
+            clickBtnAddedGoodsInPopUpAddProduct();
+        }
         return this;
     }
 
     @Step("Click button AddedGoods in PopUp AddProduct. Order_aws")
     public Order_aws clickBtnAddedGoodsInPopUpAddProduct() {
         btnAddedGoodsInPopUpAddProduct().click();
-
         return this;
     }
 
@@ -936,9 +937,9 @@ public class Order_aws {
         return Float.valueOf(columnIncomeWithoutVat().getText());
     }
 
-    @Step("Calculates goods amount by multiplying product price {sellingCostOneProduct} by number of goods {productQuantity}. Order_aws")
-    public Float multiplyPriceByQuantity(Float sellingCostOneProduct, Float productQuantity) {
-        Float cost = sellingCostOneProduct * productQuantity;
+    @Step("Calculates the amount of an item by dividing the total amount of the item {sumProduct Column} by the number of items {productQuantity}. Order_aws")
+    public Float dividingPriceByQuantity(Float sumProductColumn, Float productQuantity) {
+        Float cost = sumProductColumn / productQuantity;
         String formatCost = new DecimalFormat(".##").format(cost).replaceAll(",", ".");
         return Float.valueOf(formatCost);
     }
