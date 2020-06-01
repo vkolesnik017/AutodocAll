@@ -1,6 +1,6 @@
-package MOTO.QC_355_BenefitsBlock;
+package MOTO.QC_373_MainIssueBlockAtTecDocListing;
 
-import ATD.Moto_Category_page_Logic;
+import ATD.Moto_Category_car_list_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,28 +16,33 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_359_ElementsOfBenefitsBlock {
+public class QC_374_PresenceOfMainIssueBlock {
+
 
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
     }
 
+
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category,moto_category_maker");
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list_model2,moto_category_car_list2");
+
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks elements of benefits block")
-    public void testChecksElementsOfBenefitsBlock(String route) {
+    @Description(value = "Test checks presence of main issue block at TecDoc listing")
+    public void testChecksPresenceOfMainIssueBlock(String route)  {
         openPage(route);
 
-        new Moto_Category_page_Logic()
-                .presenceOfElementsAtBenefitBlock();
+        new Moto_Category_car_list_page_Logic().presenceOfTecDocListingBlock();
+
+
     }
+
 
     @AfterMethod
     private void tearDown() {

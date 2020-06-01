@@ -1,19 +1,21 @@
 package MOTO.QC_847_Login_Registration_Blocks;
 
+import ATD.DataBase;
 import ATD.Moto_main_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.openPage;
-import static ATD.CommonMethods.password;
+import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Selenide.close;
 
 public class QC_849_Login_Registration {
     private String email = "QC_849_autotestDE@mailinator.com";
@@ -33,11 +35,17 @@ public class QC_849_Login_Registration {
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test checks login and registration of user")
-    public void testChecksLoginAndRegistration(String route) {
+    public void testChecksLoginAndRegistration(String route) throws SQLException {
         openPage(route);
 
         new Moto_main_page_Logic()
                 .loginOfUser(email, password)
                 .visibilityOfUsersName();
+        checkingContainsUrl(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "profile_plus"));
+    }
+
+    @AfterMethod
+    private void tearDown() {
+        close();
     }
 }
