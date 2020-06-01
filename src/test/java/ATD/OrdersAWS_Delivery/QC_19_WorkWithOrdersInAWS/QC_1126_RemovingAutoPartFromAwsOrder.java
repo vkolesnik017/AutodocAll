@@ -24,7 +24,7 @@ import static com.codeborne.selenide.Selenide.close;
 
 public class QC_1126_RemovingAutoPartFromAwsOrder {
 
-    private String userID = "15089943", firstArticleNum, secondArticleNum, secondProductArticleID, firstProductArticleID;
+    private String userID = "15371629", firstArticleNum, secondArticleNum, secondProductArticleID, firstProductArticleID;
     private Float totalCostOrder, totalCostOrderAfterReSave, totalSumIncomeWithoutVat, sumIncomeWithoutVatAllGoods,
             sellingCostInOrder, prunedTotalSumIncomeWithoutVat, prunedSumIncomeWithoutVatAllGoods, totalCostWithoutOneItem;
 
@@ -51,7 +51,7 @@ public class QC_1126_RemovingAutoPartFromAwsOrder {
         openPage(route);
         firstArticleNum = product_page_logic.getArticleNumber();
         firstProductArticleID = product_page_logic.getProductId();
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "product27"));
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "product28"));
         secondArticleNum = product_page_logic.getArticleNumber();
         secondProductArticleID = product_page_logic.getProductId();
         totalCostOrder = new SearchOrders_page_aws().openSearchOrderPageWithLogin()
@@ -65,7 +65,6 @@ public class QC_1126_RemovingAutoPartFromAwsOrder {
                 .checkArticleOfAddedProduct(firstArticleNum)
                 .addProduct(secondArticleNum)
                 .chooseArticleIDOfDesiredProductAndClickBtnChooseProduct(secondProductArticleID)
-                .checkPresenceTableOfSuppliersAndClickBtnSelect()
                 .checkArticleOfAddedProduct(secondArticleNum)
                 .clickSaveOrderBtn()
                 .checkOrderHasTestStatus()
@@ -73,13 +72,13 @@ public class QC_1126_RemovingAutoPartFromAwsOrder {
         sellingCostInOrder = order_aws.getSellingPriceOfCertainProduct(firstProductArticleID);
         totalCostOrderAfterReSave = order_aws.selectCheckboxDesiredProduct(firstProductArticleID)
                 .clickRemoveProductBtn()
-                .clockBtnNoInRemoveProductPopUp()
+                .clickBtnNoInRemoveProductPopUp()
                 .reSaveOrder()
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalCostOrderAfterReSave, totalCostOrder);
         totalSumIncomeWithoutVat = order_aws.selectCheckboxDesiredProduct(firstProductArticleID)
                 .clickRemoveProductBtn()
-                .clockBtnYesInRemoveProductPopUp()
+                .clickBtnYesInRemoveProductPopUp()
                 .compareQuantityOfItemsWithQuantityInColumnQuantityOfProducts()
                 .getTotalSumIncomeWithoutVAT();
         prunedTotalSumIncomeWithoutVat = cutPriceToFirstDecimalPlace(totalSumIncomeWithoutVat);

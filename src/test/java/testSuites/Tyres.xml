@@ -93,13 +93,23 @@
 
     <test name="QC_1317_SizeBlockOnTyresCatalog">
         <classes>
+            <class name="ATD.Tyres.QC_1317_SizeBlockOnTyresCatalog.QC_1319_TestPresenceSizesBlockOnTyresCatalogRoute"/>
+            <class name="ATD.Tyres.QC_1317_SizeBlockOnTyresCatalog.QC_1320_TransitionToListingRouteInteractDimensionBlockOnCatalogRoute"/>
+            <class name="ATD.Tyres.QC_1317_SizeBlockOnTyresCatalog.QC_1328_TransitionToListingRouteInteractDiameterBlockOnCatalogRoute"/>
             <class name="ATD.Tyres.QC_1317_SizeBlockOnTyresCatalog.QC_1337_TestPresenceDiameterBlockOnTyresCatalogRoute"/>
+        </classes>
+    </test>
+
+    <test name="QC_1347_BreadcrumbsOnTyresListing">
+        <classes>
+            <class name="ATD.Tyres.QC_1347_BreadcrumbsOnTyresListing.QC_1348_TestBreadcrumbsPresenceOnTyresListing"/>
         </classes>
     </test>
 
     <test name="QC_1253_PaymentsAndDeliveryBlockOnTyresListing">
         <classes>
             <class name="ATD.Tyres.QC_1253_PaymentsAndDeliveryBlockOnTyresListing.QC_1271_TestPresencePaymentsTypeBlockOnTyresListing"/>
+            <class name="ATD.Tyres.QC_1253_PaymentsAndDeliveryBlockOnTyresListing.QC_1284_TestPresenceDeliveryTypeBlockOnTyresListing"/>
         </classes>
     </test>
 

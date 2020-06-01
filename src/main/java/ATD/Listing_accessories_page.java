@@ -23,5 +23,9 @@ public class Listing_accessories_page {
         return $x("//div[@class='sidebar']//li[1]//span[text()]");
     }
 
+    SelenideElement blockProductQuantity () {
+        return $x("//div[@class='product_count']//span[@class='js-products-qty']");
+    }
+
 
 }
