@@ -1,7 +1,9 @@
 package ATD;
 
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;
 
 
@@ -46,6 +48,10 @@ class Index_accessories_page {
 
     SelenideElement blockTopCategories() {
         return $x("//div[@class='accessories-top']");
+    }
+
+    ElementsCollection miniCardsInTop6ProductsBlock () {
+        return $$x("//div[@class='top-product']//div[@class='product-list__item active']");
     }
 
 

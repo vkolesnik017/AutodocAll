@@ -25,7 +25,7 @@ import static com.codeborne.selenide.Selenide.close;
 
 public class QC_565_CreatingAwsOrder_WithDeliveryToIsland_OrdinaryGoodAndHeavyLoads {
 
-    private String userID = "15240029", articleNum, productArticleID, heavyLoadsArticleNun;
+    private String userID = "15371548", articleNum, productArticleID, heavyLoadsArticleNun;
     private ArrayList userDataInCreateOrder, userData;
 
     private Product_page_Logic product_page_logic = new Product_page_Logic();

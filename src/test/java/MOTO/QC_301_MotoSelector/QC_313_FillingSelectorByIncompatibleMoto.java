@@ -1,6 +1,5 @@
 package MOTO.QC_301_MotoSelector;
 
-import ATD.CommonMethods;
 import ATD.DataBase;
 import ATD.Moto_Product_page_Logic;
 import ATD.SetUp;
@@ -14,15 +13,13 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
+import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
 public class QC_313_FillingSelectorByIncompatibleMoto {
-    CommonMethods commonMethods = new CommonMethods();
-    DataBase db = new DataBase();
     @BeforeClass
-
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
     }
@@ -41,9 +38,9 @@ public class QC_313_FillingSelectorByIncompatibleMoto {
         open(route);
 
         new Moto_Product_page_Logic()
-        .selectMotoInHorizontalSelector("4057","13475", "109218")
-        .visibilityOfErrorMessage();
-        commonMethods.checkingContainsUrl(db.getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_catalog3"));
+                .selectMotoInHorizontalSelector("4057", "13475", "109218")
+                .visibilityOfErrorMessage();
+        checkingContainsUrl(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_catalog3"));
 
     }
 
