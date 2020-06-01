@@ -1,9 +1,8 @@
 package ATD;
 
+import static com.codeborne.selenide.CollectionCondition.*;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.page;
-
-
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
@@ -74,6 +73,12 @@ public class Index_accessories_page_Logic extends Index_accessories_page {
     @Step("Checking presence of the top categories block.Index_accessories_page")
     public Index_accessories_page_Logic checkingPresenceOfTopCategoriesBlock() {
         blockTopCategories().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checking the number of mini-cards in top products block. Index_accessories_page")
+    public Index_accessories_page_Logic checkingNumberOfMiniCardsTopProducts(int expectedSize) {
+        miniCardsInTopProductsBlock().shouldHave(size(expectedSize));
         return this;
     }
 

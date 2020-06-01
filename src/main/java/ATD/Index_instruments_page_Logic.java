@@ -3,6 +3,7 @@ package ATD;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 import java.sql.SQLException;
+import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 import static com.codeborne.selenide.Selenide.page;
@@ -72,6 +73,18 @@ public class Index_instruments_page_Logic extends Index_instruments_page {
     @Step("Checking presence Subtitle Top-10 block. Index_instruments_page")
     public Index_instruments_page_Logic checkingPresenceSubtitleTop10Block(){
         Assert.assertFalse(subtitleBlockTop10().text().isEmpty());
+        return this;
+    }
+
+    @Step("Checking the number of mini-cards in top products block. Index_instruments_page")
+    public Index_instruments_page_Logic checkingNumberOfMiniCardsTopProducts(int expectedSize) {
+        miniCardsInTopProductsBlock().shouldHave(size(expectedSize));
+        return this;
+    }
+
+    @Step("Checking the number of mini-cards in top-10 products block. Index_instruments_page ")
+    public Index_instruments_page_Logic checkingNumberOfMiniCardsTop10Products() {
+        miniCardsInTop10ProductsBlock().shouldHave(size(10));
         return this;
     }
 
