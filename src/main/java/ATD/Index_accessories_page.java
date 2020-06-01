@@ -50,7 +50,7 @@ class Index_accessories_page {
         return $x("//div[@class='accessories-top']");
     }
 
-    ElementsCollection miniCardsInTopProductsBlock () {
+    ElementsCollection miniCardsInTop6ProductsBlock () {
         return $$x("//div[@class='top-product']//div[@class='product-list__item active']");
     }
 

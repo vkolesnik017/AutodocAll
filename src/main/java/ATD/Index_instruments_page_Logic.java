@@ -76,9 +76,9 @@ public class Index_instruments_page_Logic extends Index_instruments_page {
         return this;
     }
 
-    @Step("Checking the number of mini-cards in top products block. Index_instruments_page")
-    public Index_instruments_page_Logic checkingNumberOfMiniCardsTopProducts(int expectedSize) {
-        miniCardsInTopProductsBlock().shouldHave(size(expectedSize));
+    @Step("Checking the number of mini-cards in top-6 products block. Index_instruments_page")
+    public Index_instruments_page_Logic checkingNumberOfMiniCardsTop6Products() {
+        miniCardsInTopProductsBlock().shouldHave(size(6));
         return this;
     }
 
