@@ -9,6 +9,7 @@
     <test name="QC_683_FunctionalTabOfAddresPR">
         <classes>
             <class name="ATD.PrivateRoom.QC_683_FunctionalTabOfAddressPR.QC_864_CheckingBtnAbbrechenInTheDeliveryAddressEditingBlock"/>
+            <class name="ATD.PrivateRoom.QC_683_FunctionalTabOfAddressPR.QC_928_AddressTabElementsInPR"/>
         </classes>
     </test>
 
