@@ -62,9 +62,4 @@ class Index_accessories_page {
         return $x("//div[@class='product-list__item__title']/span[text()]");
     }
 
-    SelenideElement btnGoToBasket() {
-        return $x("//div[@class='header-cart__count']");
-    }
-
-
 }

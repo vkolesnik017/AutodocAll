@@ -96,9 +96,9 @@ public class Index_accessories_page_Logic extends Index_accessories_page {
         return nameFirstProductInTop6Block().getText();
     }
 
-    @Step("Click on button Go to basket. Index_accessories_page")
+    @Step(":from Index_accessories_page")
     public Cart_page_Logic clickOnBtnGoToBasket() {
-        btnGoToBasket().click();
+        new Main_page_Logic().cartClick();
         return page(Cart_page_Logic.class);
     }
 
