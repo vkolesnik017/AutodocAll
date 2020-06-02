@@ -174,4 +174,9 @@ public class Cart_page_Logic extends Cart_page {
         emptyCart().shouldBe(visible);
         return this;
     }
+
+    @Step("Get name title product. Cart_page")
+    public String getNameTitleProduct() {
+      return titleNameProduct().getText();
+    }
 }

@@ -50,8 +50,20 @@ class Index_accessories_page {
         return $x("//div[@class='accessories-top']");
     }
 
-    ElementsCollection miniCardsInTopProductsBlock () {
+    ElementsCollection miniCardsInTopProductsBlock() {
         return $$x("//div[@class='top-product']//div[@class='product-list__item active']");
+    }
+
+    SelenideElement firstBtnAddToBasketInTop6Block() {
+        return $x("//div[@class='product-list__item active']//a[@onclick]");
+    }
+
+    SelenideElement nameFirstProductInTop6Block() {
+        return $x("//div[@class='product-list__item__title']/span[text()]");
+    }
+
+    SelenideElement btnGoToBasket() {
+        return $x("//div[@class='header-cart__count']");
     }
 
 

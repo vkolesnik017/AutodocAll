@@ -3,6 +3,8 @@ package ATD;
 import static com.codeborne.selenide.CollectionCondition.*;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.sleep;
+
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
@@ -80,6 +82,24 @@ public class Index_accessories_page_Logic extends Index_accessories_page {
     public Index_accessories_page_Logic checkingNumberOfMiniCardsTopProducts(int expectedSize) {
         miniCardsInTopProductsBlock().shouldHave(size(expectedSize));
         return this;
+    }
+
+    @Step("Click on button Add to basket in top-6 block. Index_accessories_page")
+    public  Index_accessories_page_Logic clickOnFirstBtnAddToBasketInTop6Block(){
+        firstBtnAddToBasketInTop6Block().click();
+        sleep(2000);
+        return this;
+    }
+
+    @Step("Get name first product in top-6 block. Index_accessories_page")
+    public String getNameFirstProductInTop6Block() {
+        return nameFirstProductInTop6Block().getText();
+    }
+
+    @Step("Click on button Go to basket. Index_accessories_page")
+    public Cart_page_Logic clickOnBtnGoToBasket() {
+        btnGoToBasket().click();
+        return page(Cart_page_Logic.class);
     }
 
 
