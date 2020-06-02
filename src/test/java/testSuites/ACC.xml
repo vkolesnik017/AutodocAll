@@ -51,6 +51,7 @@
         <classes>
             <class name="ATD.ACC.QC_950_BlockTopProductsOnMainAccessories.QC_953_BlockTopProducts"/>
             <class name="ATD.ACC.QC_950_BlockTopProductsOnMainAccessories.QC_956_NumberOfMiniCardsInBlockTopProducts"/>
+            <class name="ATD.ACC.QC_950_BlockTopProductsOnMainAccessories.QC_962_AddProductTopProductsBlockInBasket"/>
         </classes>
     </test>
 
