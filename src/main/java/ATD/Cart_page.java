@@ -133,4 +133,8 @@ public class Cart_page {
     SelenideElement btnChangeAddressInDeliveryPopupCartPage(){
         return $x("//a[@class='color close_popup change_address']");
     }
+
+    SelenideElement titleNameProduct() {
+        return  $x("//div[@class='cart-page-listing']//h3[text()]");
+    }
 }

@@ -50,6 +50,15 @@ public class Main_page_Logic extends Main_page {
         return page(Profile_page_Logic.class);
     }
 
+    @Step("Login in header with mail {mail} and transition to profile plus page. Main_page")
+    public Profile_plus_page_Logic loginAndTransitionToProfilePlusPage(String mail) {
+        loginBtnInHeader().click();
+        mailFieldLogin().setValue(mail);
+        passFieldLogin().setValue(password);
+        submitBtnLogin().click();
+        return page(Profile_plus_page_Logic.class);
+    }
+
     @Step("Login in header with mail {mail} and password {pass}. Main_page")
     public Profile_page_Logic loginFromHeader(String mail, String pass) {
         loginBtnInHeader().click();
