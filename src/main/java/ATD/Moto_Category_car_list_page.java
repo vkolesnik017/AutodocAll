@@ -35,4 +35,18 @@ public class Moto_Category_car_list_page {
     SelenideElement nextForwardOfPagination() {return $x("//span[@class='next']/a");}
 
     ElementsCollection productsAtTecDocListing() {return $$x("//ul[@class='list_products']/li");}
+
+    ElementsCollection btnOutOfStockProducts() {return $$x("//div[@class='button not_active']/a");}
+
+    SelenideElement popUpOfSubscription() {return $x("//div[@class='popup-available']");}
+
+    SelenideElement btnClosePopUpOfSubscription() {return $x("//div[@class='popup-available__close ga-popup-available-close']");}
+
+    ElementsCollection   imageOfProductTecDocListingBlock() {return $$x("//div[@class='image']//span[2]/img");}
+
+    ElementsCollection    titleOfProductInTecDocListingBlock()   {return $$x("//div[@class='name']/*[self::a or self::span][1]");}
+
+    ElementsCollection   imageBrandOfProductTecDocListingBlock() {return $$x("//div[@class='image']//span[2]/img");}
+
+
 }
