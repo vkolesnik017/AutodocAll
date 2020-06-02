@@ -1,5 +1,6 @@
 package ATD;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selectors.byId;
@@ -22,6 +23,10 @@ public class Moto_Parent_Category_maker_page {
     }
 
     SelenideElement searchButton() {return $x("//a[contains(@class,'search_button')]");}
+
+    SelenideElement headlineOfChildCategoryBlock() {return $x("//div[@class='title']");}
+
+    ElementsCollection linksOfChildCategoriesList() {return $$x("//ul[@class='simple_links']/li");}
 
 
 }

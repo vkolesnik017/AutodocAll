@@ -1,10 +1,10 @@
 package ATD;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selectors.byId;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Moto_Category_car_list_page {
 
@@ -27,4 +27,12 @@ public class Moto_Category_car_list_page {
     SelenideElement btnResetOfSelector() {return $(byId("reset_selector_form"));}
 
     SelenideElement headline() {return $x("//div[@class='title_count_search ']/h2");}
+
+    SelenideElement countOfProduct() {return $x("//div[@class='product_count']");}
+
+    SelenideElement lastForwardOfPagination() {return $x("//span[@class='last']/a");}
+
+    SelenideElement nextForwardOfPagination() {return $x("//span[@class='next']/a");}
+
+    ElementsCollection productsAtTecDocListing() {return $$x("//ul[@class='list_products']/li");}
 }
