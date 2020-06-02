@@ -28,7 +28,9 @@ class TyresListing_page {
 
     SelenideElement firstTyreTitleOnListing() { return $x("(//*[@class='name'])[1]"); }
 
-    SelenideElement firstActiveBrandInBlock() { return $x("//*[@class='js-filter-item ga-click-criteria-filter active slick-slide slick-current slick-active']/img"); }
+    SelenideElement firstActiveBrandInBlock() { return $x("//*[@class='js-filter-item ga-click-criteria-filter active slick-slide slick-current slick-active']"); }
+
+    SelenideElement firstActiveBrandInBlockMoto() { return $x("//*[@class='js-filter-item ga-click-criteria-filter active']"); }
 
     SelenideElement speedIndexOnListingValue() { return $x("(//*[@class='multiple-select__title'])[2]/span/b"); }
 
@@ -112,5 +114,6 @@ class TyresListing_page {
 
     SelenideElement breadcrumbsLastButton() { return $(".last_active_element"); }
 
+    SelenideElement brandFilterBlockOnTyresListing() { return $("#selected-instalation__slider"); }
 
 }

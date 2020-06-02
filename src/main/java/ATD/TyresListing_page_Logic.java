@@ -138,8 +138,8 @@ public class TyresListing_page_Logic extends TyresListing_page {
     }
 
     @Step("Check Brand Is Selected In Brand Block")
-    public TyresListing_page_Logic checkBrandIsSelectedInBrandBlock() {
-        firstActiveBrandInBlock().shouldHave(attribute("alt", "Apollo"));
+    public TyresListing_page_Logic checkBrandIsSelectedInBrandBlock(String brandName) {
+        firstActiveBrandInBlock().shouldHave(attribute("data-value", brandName));
         return this;
     }
 
@@ -428,17 +428,41 @@ public class TyresListing_page_Logic extends TyresListing_page {
 
     @Step("Check brand filter applying on tyres listing. TyresListing_page")
     public TyresListing_page_Logic checkBrandFilterApplying() throws SQLException {
+        String brandName;
         if (url().equals(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "tyre_form4"))) {
-            String brandNameMoto = motoBrandFilterButton().attr("data-value");
+            brandName = motoBrandFilterButton().attr("data-value");
             motoBrandFilterButton().click();
-            new Listing_page_Logic().waitUntilPreloaderDisappear()
-                    .checkProductAttributeOnListingWithProductsNumber(brandNameMoto, productTitleOnListing(), 1);
+            waitUntilPreloaderDisappear();
+            checkBrandIsSelectedInBrandBlockMotoRoute(brandName);
+            firstActiveBrandInBlockMoto().shouldHave(cssValue("border", "#66a4e7"));
+            firstActiveBrandInBlockMoto().shouldHave(cssValue("border-bottom-color", "#0067d7"));
         } else {
-            String brandName = brandFilterButton().attr("data-value");
+            brandName = brandFilterButton().attr("data-value");
             brandFilterButton().click();
-            new Listing_page_Logic().waitUntilPreloaderDisappear()
-                    .checkProductAttributeOnListingWithProductsNumber(brandName, productTitleOnListing(), 1);
+            waitUntilPreloaderDisappear();
+            checkBrandIsSelectedInBrandBlock(brandName);
+            firstActiveBrandInBlock().shouldHave(cssValue("border", "1px solid rgb(102, 164, 231)"));
         }
+        new Listing_page_Logic().checkProductAttributeOnListingWithProductsNumber(brandName, productTitleOnListing(), 1);
+        brandNameInSelector().shouldHave(text(brandName));
+        return this;
+    }
+
+    @Step("Check Brand Is Selected In Brand Block Moto Route. TyresListing_page")
+    private TyresListing_page_Logic checkBrandIsSelectedInBrandBlockMotoRoute(String brandName) {
+        firstActiveBrandInBlockMoto().shouldHave(attribute("data-value", brandName));
+        return this;
+    }
+
+    @Step("Wait until preloader disappear. TyresListing_page")
+    private TyresListing_page_Logic waitUntilPreloaderDisappear() {
+        new Listing_page_Logic().waitUntilPreloaderDisappear();
+        return this;
+    }
+
+    @Step("Check brand filter visibility. TyresListing_page")
+    public TyresListing_page_Logic checkBrandFilterVisibility() {
+        brandFilterBlockOnTyresListing().shouldBe(visible);
         return this;
     }
 }

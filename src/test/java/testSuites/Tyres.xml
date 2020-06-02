@@ -108,11 +108,12 @@
         </classes>
     </test>
 
-    <!--<test name="QC_1431_FilterByBrandOnTyresListing">-->
-        <!--<classes>-->
+    <test name="QC_1431_FilterByBrandOnTyresListing">
+        <classes>
+            <class name="ATD.Tyres.QC_1431_FilterByBrandOnTyresListing.QC_1432_BrandFilterPresenceOnTyresListing"/>
             <!--<class name="ATD.Tyres.QC_1431_FilterByBrandOnTyresListing.QC_1433_BrandFilterApplyingOnTyresListing"/>-->
-        <!--</classes>-->
-    <!--</test>-->
+        </classes>
+    </test>
 
     <test name="QC_1475_TopBlockOnTyresListings">
         <classes>

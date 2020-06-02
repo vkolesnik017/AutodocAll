@@ -40,7 +40,7 @@ public class QC_1287_TestTyresSelectorWithSeacrByBrand {
                 .clickApolloBrand()
                 .clickSubmitTyresSelector()
                 .checkFirstTyreBrandApollo()
-                .checkBrandIsSelectedInBrandBlock();
+                .checkBrandIsSelectedInBrandBlock("Apollo");
     }
 
     @AfterMethod
