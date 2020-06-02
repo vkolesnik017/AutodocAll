@@ -189,7 +189,7 @@ public class OrderAdd_page_aws {
     @Step("Click save order button. OrderAdd_page_aws")
     public Order_aws clickSaveOrderBtn() {
         if (preLoader().isDisplayed()) {
-            preLoader().waitUntil(attribute("style", "display: none;"), 20000);
+            preLoader().waitUntil(attribute("style", "display: none;"), 30000);
         }
         saveOrderBtn().click();
         return page(Order_aws.class);
@@ -199,15 +199,13 @@ public class OrderAdd_page_aws {
     public Float getDeliveryCost() {
         sleep(2000);
         String deliveryCost = deliveryCost().getAttribute("data-default");
-        Float realDeliveryCost = Float.parseFloat(deliveryCost);
-        return realDeliveryCost;
+        return Float.valueOf(deliveryCost);
     }
 
     @Step("Get safe order cost. OrderAdd_page_aws")
     public Float getSafeOrderCost() {
         String safeOrderCost = safeOrderCost().getValue();
-        Float realSafeOrderCost = Float.parseFloat(safeOrderCost);
-        return realSafeOrderCost;
+        return Float.valueOf(safeOrderCost);
     }
 
     @Step("Added product {articleNum}. OrderAdd_page_aws")
