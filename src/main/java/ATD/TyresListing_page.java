@@ -62,6 +62,8 @@ class TyresListing_page {
 
     SelenideElement brandFilterButton() { return $x("//*[@class='js-filter-item ga-click-criteria-filter slick-slide slick-active']"); }
 
+    SelenideElement motoBrandFilterButton() { return $x("//*[@class='js-filter-item ga-click-criteria-filter']"); }
+
     ElementsCollection productTitleOnListing() { return $$(".name > a");}
 
     ElementsCollection productsRatingOnListing() { return $$x("//div[@class='review-vote']/span/span"); }
@@ -101,4 +103,14 @@ class TyresListing_page {
     SelenideElement diameterLinkCatalogRoute() { return $x("//*[@class='table_sizes']//th/a"); }
 
     SelenideElement breadcrumbsBlock() { return $x("//*[@class='steps breadcrumbs']"); }
+
+    SelenideElement breadcrumbsFirstButton() { return $x("(//a[@itemprop = 'item'])[1]"); }
+
+    SelenideElement breadcrumbsSecondButton() { return $x("(//a[@itemprop = 'item'])[2]"); }
+
+    SelenideElement breadcrumbsThirdButton() { return $x("(//a[@itemprop = 'item'])[3]"); }
+
+    SelenideElement breadcrumbsLastButton() { return $(".last_active_element"); }
+
+
 }

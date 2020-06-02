@@ -622,14 +622,12 @@ public class Product_page_Logic extends Product_page {
     public Float getProductPrice() {
         String productPrice = productPrice().getText().replaceAll("[^0-9,]", "");
         productPrice = productPrice.replaceAll(",", ".");
-        Float doublePrise = Float.parseFloat(productPrice);
-        return doublePrise;
+        return Float.parseFloat(productPrice);
     }
 
     @Step("Get product ID. Product_page")
         public String getProductId() {
-        String productId = productId().getAttribute("id");
-        return productId;
+        return productId().getAttribute("id");
     }
 
     //Method for instruments product page
