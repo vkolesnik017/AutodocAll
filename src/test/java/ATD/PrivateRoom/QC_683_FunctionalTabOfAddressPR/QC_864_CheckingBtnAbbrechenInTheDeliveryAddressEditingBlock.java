@@ -1,4 +1,4 @@
-package ATD.PrivatRoom.FunctionalTabOfAddresPR;
+package ATD.PrivateRoom.QC_683_FunctionalTabOfAddressPR;
 
 import ATD.Main_page_Logic;
 import ATD.SetUp;
@@ -28,7 +28,7 @@ public class QC_864_CheckingBtnAbbrechenInTheDeliveryAddressEditingBlock {
         return new SetUp().setUpShop("prod", "DE");
     }
 
-    @Test(dataProvider = "route", enabled = true)
+    @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks button (Abbrechen) in the delivery address editing block")

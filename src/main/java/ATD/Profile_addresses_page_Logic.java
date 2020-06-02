@@ -40,6 +40,7 @@ public class Profile_addresses_page_Logic extends Profile_addresses_page {
 
     @Step("Click on the cancel button. Profile_addresses_page")
     public Profile_addresses_page_Logic clickBackupCancelBtn() {
+        sleep(2000);
         backupCancelBtn().click();
         return this;
     }

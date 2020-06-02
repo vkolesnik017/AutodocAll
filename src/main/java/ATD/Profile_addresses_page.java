@@ -23,6 +23,6 @@ public class Profile_addresses_page {
     }
 
     SelenideElement backupCancelBtn() {
-        return $x("//div[@class='address-disable-editor']");
+        return $x("//a[@class='btn address-cancel r']");
     }
 }

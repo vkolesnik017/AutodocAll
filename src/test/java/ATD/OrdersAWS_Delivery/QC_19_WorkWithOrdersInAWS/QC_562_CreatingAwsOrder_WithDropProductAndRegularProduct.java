@@ -35,7 +35,6 @@ public class QC_562_CreatingAwsOrder_WithDropProductAndRegularProduct {
     private Product_page_Logic product_page_logic = new Product_page_Logic();
     private OrderAdd_page_aws orderAdd_page_aws = new OrderAdd_page_aws();
     private Order_aws order_aws = new Order_aws();
-    private ArrayList <Float> allProductCost = new ArrayList<>();
 
     @BeforeClass
     void setUp() {
@@ -53,13 +52,14 @@ public class QC_562_CreatingAwsOrder_WithDropProductAndRegularProduct {
     @Description(value = "Test checks creating order in AWS with drop product and regular product")
     public void testCreatingOrderInAwsWithDropProductAndRegularProduct(String route) throws SQLException {
         openPage(route);
+        ArrayList <Float> allProductCost = new ArrayList<>();
         articleNum = product_page_logic.getArticleNumber();
         productCost = product_page_logic.getProductPrice();
+        allProductCost.add(productCost);
         openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "productDrop1"));
         dropArticleNun = product_page_logic.getArticleNumber();
         productDropCost = product_page_logic.getProductPrice();
         productDropArticleID = product_page_logic.getProductId();
-        allProductCost.add(productCost);
         allProductCost.add(productDropCost);
         userData = new Customer_view_aws().openCustomerPersonalArea(userID)
                 .getUserData();
