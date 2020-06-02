@@ -6,12 +6,11 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static ATD.CommonMethods.checkingContainsUrl;
-import static ATD.CommonMethods.getNameRouteFromJSVarInHTML;
-import static ATD.CommonMethods.waitingWhileLinkBecomeExpected;
+import static ATD.CommonMethods.*;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -393,6 +392,53 @@ public class TyresListing_page_Logic extends TyresListing_page {
     @Step("Check breadcrumbs block visibility. TyresListing_page")
     public TyresListing_page_Logic checkBreadcrumbsBlockVisibility() {
         breadcrumbsBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Check breadcrumbs first button transition. TyresListing_page")
+    public TyresListing_page_Logic checkBreadcrumbsFirstButtonTransiton() {
+        breadcrumbsFirstButton().click();
+        waitWhileRouteBecomeExpected("tyres");
+        back();
+        return this;
+    }
+
+    @Step("Check breadcrumbs second button transition (example: typeOfTransport = llkw). TyresListing_page")
+    public TyresListing_page_Logic checkBreadcrumbsSecondButtonTransiton(String typeOfTransport) {
+        breadcrumbsSecondButton().click();
+        checkingContainsUrl("/reifen/" + typeOfTransport);
+        back();
+        return this;
+    }
+
+    @Step("Check breadcrumbs third button transition (example: parameterInURL  = llkw/205-65-r15). TyresListing_page")
+    public TyresListing_page_Logic checkBreadcrumbsThirdButtonTransiton(String parameterInURL) {
+        breadcrumbsThirdButton().click();
+        checkingContainsUrl("/reifen/" + parameterInURL);
+        back();
+        return this;
+    }
+
+    @Step("Check breadcrumbs third button. (example: buttonTitle = Ganzjahresreifen or 195 75 R16 or Pirelli). TyresListing_page")
+    public TyresListing_page_Logic checkBreadcrumbsLastButton(String buttonTitle) {
+        breadcrumbsLastButton().shouldNotHave(attribute("href"));
+        breadcrumbsLastButton().shouldHave(text(buttonTitle));
+        return this;
+    }
+
+    @Step("Check brand filter applying on tyres listing. TyresListing_page")
+    public TyresListing_page_Logic checkBrandFilterApplying() throws SQLException {
+        if (url().equals(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "tyre_form4"))) {
+            String brandNameMoto = motoBrandFilterButton().attr("data-value");
+            motoBrandFilterButton().click();
+            new Listing_page_Logic().waitUntilPreloaderDisappear()
+                    .checkProductAttributeOnListingWithProductsNumber(brandNameMoto, productTitleOnListing(), 1);
+        } else {
+            String brandName = brandFilterButton().attr("data-value");
+            brandFilterButton().click();
+            new Listing_page_Logic().waitUntilPreloaderDisappear()
+                    .checkProductAttributeOnListingWithProductsNumber(brandName, productTitleOnListing(), 1);
+        }
         return this;
     }
 }
