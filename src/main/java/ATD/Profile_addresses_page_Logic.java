@@ -20,7 +20,7 @@ public class Profile_addresses_page_Logic extends Profile_addresses_page {
     }
 
     @Step("Click shipping edit button. Profile_addresses_page")
-    public Profile_addresses_page_Logic clickShippingEditButton() {
+    public Profile_addresses_page_Logic clickDeliveryEditButton() {
         deliveryEditButton().click();
         return this;
     }
@@ -90,6 +90,60 @@ public class Profile_addresses_page_Logic extends Profile_addresses_page {
         deliveryEditButton().shouldBe(visible);
         deleteDeliveryAddressBtn().shouldBe(visible);
         addDeliveryAddressBtn().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checks presence buttons under form edit address. Profile_addresses_page")
+    public Profile_addresses_page_Logic checkPresenceBtnUnderFormEditAddress() {
+        saveBtn().shouldBe(visible);
+        useBtnAsMainAddress().shouldBe(visible);
+        backupCancelBtn().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Click use button as main address. Profile_addresses_page")
+    public Profile_addresses_page_Logic clickUseBtnAsMainAddress() {
+        useBtnAsMainAddress().click();
+        return this;
+    }
+
+    @Step("Click save button. Profile_addresses_page")
+    public Profile_addresses_page_Logic clickSaveBtn() {
+        saveBtn().click();
+        return this;
+    }
+
+    @Step("Checks presence and close pop up update. Profile_addresses_page")
+    public Profile_addresses_page_Logic checkPresenceAndClosePopUpUpdate() {
+        popUpUpdate().shouldBe(visible);
+        closePopUpUpdate().click();
+        return this;
+    }
+
+    @Step("Delete delivery address. Profile_addresses_page")
+    public Profile_addresses_page_Logic deleteDeliveryAddress() {
+        deleteDeliveryAddressBtn().click();
+        return this;
+    }
+
+    @Step("Added delivery address. Profile_addresses_page")
+    public Profile_addresses_page_Logic addDeliveryAddress() {
+        addDeliveryAddressBtn().click();
+        deliveryAddressForm().shouldBe(visible);
+        fieldName().setValue("autotest");
+        fieldSurname().setValue("autotest");
+        fieldAddressStreet().setValue("autotest");
+        fieldAddressHouse().setValue("autotest");
+        fieldAddressComment().setValue("autotest");
+        fieldPostalCode().setValue("1111");
+        fieldCity().setValue("autotest");
+        fieldPhone().setValue("200+002");
+        return this;
+    }
+
+    @Step("Checks presence main address lable. Profile_addresses_page")
+    public Profile_addresses_page_Logic checkPresenceMainAddressLabel() {
+        mainAddressLabel().shouldBe(visible);
         return this;
     }
 }
