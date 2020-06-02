@@ -84,7 +84,7 @@ public class Index_accessories_page_Logic extends Index_accessories_page {
         return this;
     }
 
-    @Step("Click on button Add to basket in top-6 block. Index_accessories_page")
+    @Step("Click on first button Add to basket in top-6 block. Index_accessories_page")
     public  Index_accessories_page_Logic clickOnFirstBtnAddToBasketInTop6Block(){
         firstBtnAddToBasketInTop6Block().click();
         sleep(2000);
