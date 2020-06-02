@@ -1,6 +1,6 @@
-package MOTO.QC_355_BenefitsBlock;
+package MOTO.QC_745_ChildCategoriesBlock;
 
-import ATD.Moto_Category_page_Logic;
+import ATD.Moto_Parent_Category_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,7 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_359_ElementsOfBenefitsBlock {
+public class QC_750_ListOfAllChildCategories {
 
     @BeforeClass
     void setUp() {
@@ -25,22 +25,24 @@ public class QC_359_ElementsOfBenefitsBlock {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category,moto_category_maker");
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_parent_category,moto_parent_category_maker2");
+
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks elements of benefits block")
-    public void testChecksElementsOfBenefitsBlock(String route) {
+    @Description(value = "Test checks list of all child categories")
+    public void testChecksListOfAllChildCategories(String route)  {
         openPage(route);
 
-        new Moto_Category_page_Logic()
-                .presenceOfElementsAtBenefitBlock();
+        new Moto_Parent_Category_page_Logic()
+                .checkOfChildCategoriesList();
     }
 
     @AfterMethod
     private void tearDown() {
         close();
     }
+
 }

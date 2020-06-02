@@ -66,4 +66,20 @@
         </classes>
     </test>
 
+    <test name="QC_745_ChildCategoriesBlock">
+        <classes>
+            <class name="MOTO.QC_745_ChildCategoriesBlock.QC_746_HeadlineOfChildCategoriesBlock"/>
+            <class name="MOTO.QC_745_ChildCategoriesBlock.QC_748_MainImageOfParentCategory"/>
+            <class name="MOTO.QC_745_ChildCategoriesBlock.QC_750_ListOfAllChildCategories"/>
+            <class name="MOTO.QC_745_ChildCategoriesBlock.QC_751_ElementsOfChildCategoriesBlock"/>
+            <class name="MOTO.QC_745_ChildCategoriesBlock.QC_752_TransitionByClickAtChildCategories"/>
+        </classes>
+    </test>
+
+    <test name="QC_373_MainIssueBlockAtTecDocListing">
+        <classes>
+            <class name="MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_374_PresenceOfMainIssueBlock"/>
+            <class name="MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_384_PaginationOfTecDocListing"/>
+        </classes>
+    </test>
 </suite>
