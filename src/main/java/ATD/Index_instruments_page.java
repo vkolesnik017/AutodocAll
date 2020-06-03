@@ -2,7 +2,6 @@ package ATD;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-
 import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;
 
@@ -51,6 +50,18 @@ class Index_instruments_page {
 
     ElementsCollection miniCardsInTop10ProductsBlock() {
         return $$x("//div[@class='top-product-block best-product__income']//div[@class='rec_products_block']");
+    }
+
+    SelenideElement firstBtnAddToBasketInTop10ProductsBlock() {
+        return $x("//div[@class='rec_products_wrap'][1]//div[@class='rec_products_block'][1]//div[@class='rec_prod_btn button ']");
+    }
+
+    SelenideElement nameFirstProductInTop6ProductsBlock() {
+        return $x("//div[@class='product-list__item active']//div[@class='product-list__item__title']/span[text()]");
+    }
+
+    SelenideElement firstBtnAddToBasketInTop6ProductsBlock() {
+        return $x("//div[@class='product-list__item active']//div[@class='price_box product-list__item__button']");
     }
 
 
