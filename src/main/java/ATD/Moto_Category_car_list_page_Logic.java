@@ -4,6 +4,8 @@ import io.qameta.allure.Step;
 import org.testng.Assert;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
@@ -199,7 +201,8 @@ public class Moto_Category_car_list_page_Logic extends Moto_Category_car_list_pa
 
     @Step("click on Product in TecDoc listing .Moto_Category_car_list_page")
     public Moto_Product_page_Logic clickOnProductInTecDocListing(int point) {
-        imageOfProductTecDocListingBlock().get(point).scrollIntoView("{block: \"center\"}").click();
+        tecDocListingBlock().shouldBe(visible);
+        imageOfProductTecDocListingBlock().get(point).shouldBe(visible).scrollIntoView("{block: \"center\"}").click();
         return page(Moto_Product_page_Logic.class);
     }
 
@@ -207,5 +210,49 @@ public class Moto_Category_car_list_page_Logic extends Moto_Category_car_list_pa
     public String getMotoFromSelector() {
         String motoFromSelector = (brandOfMotoField().getSelectedText() + " " + modelFiledInSelector().getSelectedText()).replaceAll("[^A-Z]", "");
         return motoFromSelector;
+    }
+
+    @Step("get id of product in TecDoc Listing .Moto_Category_car_list_page")
+    public String getIdOfProductFromTecDocListing() {
+        String idOfProduct = btnOfFirstProductInTecDocListing().getAttribute("id");
+        return idOfProduct;
+    }
+
+    @Step("added product to basket .Moto_Category_car_list_page")
+    public Cart_page_Logic addProductToBasket() {
+        tecDocListingBlock().shouldBe(visible);
+        btnOfFirstProductInTecDocListing().click();
+        basketDropMenu().should(appear);
+        basketDropMenu().should(disappear);
+        basket().click();
+        return page(Cart_page_Logic.class);
+    }
+
+    @Step("Check of visibility dynamic characteristics of product in TecDoc listing .Moto_Category_car_list_page")
+    public Moto_Category_car_list_page_Logic presenceOfDynamicCharacteristics() {
+        List<String> artNumberOfProduct = new ArrayList<>();
+        artNumberOfProduct.add("Artikelnummer: SKLS-0140083");
+        artNumberOfProduct.add("Artikelnummer: 0 258 986 506");
+        artNumberOfProduct.add("Artikelnummer: 3922L0226");
+
+        for (int i = 0; i < artNumberOfProduct.size(); i++) {
+            dynamicCharacteristicBlock(artNumberOfProduct.get(i)).shouldBe(visible);
+        }
+        return this;
+    }
+
+    @Step("check dynamic characteristic block .Moto_Category_car_list_page")
+    public Moto_Category_car_list_page_Logic checkDynamicCharacteristicBlock(String artNumOfProduct) {
+        List<String> dynamicCharacteristic = new ArrayList<>();
+        dynamicCharacteristic.add("Baumuster:<0525,0535>");
+        dynamicCharacteristic.add("Lambdasonde:Regelsonde");
+        dynamicCharacteristic.add("Abgasanlage:vor Katalysator");
+        List<String> artNumberOfProduct = new ArrayList<>();
+        for (int i = 0; i < titleOfDynamicCharacteristic(artNumOfProduct).size(); i++) {
+            artNumberOfProduct.add(titleOfDynamicCharacteristic(artNumOfProduct).get(i).getText() + valueOfDynamicCharacteristic(artNumOfProduct).get(i).getText());
+        }
+        Assert.assertTrue(dynamicCharacteristic.containsAll(artNumberOfProduct));
+
+        return this;
     }
 }
