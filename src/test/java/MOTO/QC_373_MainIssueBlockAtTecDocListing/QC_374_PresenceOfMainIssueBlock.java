@@ -18,12 +18,10 @@ import static com.codeborne.selenide.Selenide.close;
 
 public class QC_374_PresenceOfMainIssueBlock {
 
-
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
     }
-
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
@@ -40,9 +38,7 @@ public class QC_374_PresenceOfMainIssueBlock {
 
         new Moto_Category_car_list_page_Logic().presenceOfTecDocListingBlock();
 
-
     }
-
 
     @AfterMethod
     private void tearDown() {
