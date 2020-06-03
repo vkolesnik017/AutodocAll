@@ -23,6 +23,14 @@ public class ProductCard_aws {
         return $x("//td/span[contains(text(),'LKW')]/../following-sibling::td/input");
     }
 
+    private SelenideElement motoLabel() {
+        return $x("//td/span[contains(text(),'MOTO')]");
+    }
+
+    private SelenideElement motoCheckBox() {
+        return $x("//td/span[contains(text(),'MOTO')]/../following-sibling::td/input");
+    }
+
     String productId;
 
     public ProductCard_aws() {
@@ -49,8 +57,6 @@ public class ProductCard_aws {
         if (loginField().isDisplayed()) {
             new Login_aws().loginInAws();
         }
-        truckLabel().shouldBe(visible);
-        truckCheckBox().shouldHave(attribute("checked", "checked"));
         return this;
     }
 
@@ -63,4 +69,19 @@ public class ProductCard_aws {
         }
         return this;
     }
+
+    @Step("check truck label")
+    public ProductCard_aws checkTruckLabel() {
+        truckLabel().shouldBe(visible);
+        truckCheckBox().shouldHave(attribute("checked", "checked"));
+        return this;
+    }
+
+    @Step("check motorcycle label")
+    public ProductCard_aws checkMotoLabel() {
+        motoLabel().shouldBe(visible);
+        motoCheckBox().shouldHave(attribute("checked", "checked"));
+        return this;
+    }
+
 }
