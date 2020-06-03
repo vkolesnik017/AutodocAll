@@ -11,6 +11,7 @@
             <class name="ATD.PrivateRoom.QC_683_FunctionalTabOfAddressPR.QC_864_CheckingBtnAbbrechenInTheDeliveryAddressEditingBlock"/>
             <class name="ATD.PrivateRoom.QC_683_FunctionalTabOfAddressPR.QC_928_AddressTabElementsInPR"/>
             <class name="ATD.PrivateRoom.QC_683_FunctionalTabOfAddressPR.QC_810_SetAsPrimaryDeliveryAddress"/>
+            <class name="ATD.PrivateRoom.QC_683_FunctionalTabOfAddressPR.QC_807_AddNewDeliveryAddress"/>
         </classes>
     </test>
 
