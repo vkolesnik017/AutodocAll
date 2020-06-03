@@ -1,10 +1,10 @@
 package ATD;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selectors.byXpath;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Profile_addresses_page {
 
@@ -32,6 +32,10 @@ public class Profile_addresses_page {
         return $x("//div[@class='adrese_fields']//ul[2]");
     }
 
+    ElementsCollection dataUsersInDeliveryAddressBlock() {
+        return $$x("//div[@class='adrese_fields']//ul[2]//li");
+    }
+
     SelenideElement deliveryBlockName() {
         return $x("//div[@class='adrese_fields']//div[@class='box_title'][2]");
     }
@@ -40,7 +44,7 @@ public class Profile_addresses_page {
         return $x("//ul[2]//a[@class='btn']");
     }
 
-    SelenideElement deliveryAddressForm() {
+    SelenideElement addressForm() {
         return $x("//div[@class='left']//form");
     }
 
@@ -124,12 +128,12 @@ public class Profile_addresses_page {
         return $x("//input[@name='address[postcode]']");
     }
 
-    SelenideElement  fieldCity() {
+    SelenideElement fieldCity() {
         return $x("//input[@name='address[city]']");
     }
 
-    SelenideElement countrySelector() {
-        return $x("//select[@name='address[countryId]']");
+    SelenideElement countryFromSelector(String country) {
+        return $x("//option[contains(text(),'" + country + "')]");
     }
 
     SelenideElement fieldPhone() {
@@ -138,5 +142,9 @@ public class Profile_addresses_page {
 
     SelenideElement mainAddressLabel() {
         return $x("//a[@ng-if='address.isMain()']");
+    }
+
+    SelenideElement radioBtnHerr() {
+        return $x("//input[@id='honorific_mr_']");
     }
 }

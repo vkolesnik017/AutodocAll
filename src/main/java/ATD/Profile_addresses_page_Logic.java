@@ -1,6 +1,8 @@
 package ATD;
 
+import com.codeborne.selenide.CollectionCondition;
 import io.qameta.allure.Step;
+import org.testng.Assert;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.sleep;
@@ -27,14 +29,14 @@ public class Profile_addresses_page_Logic extends Profile_addresses_page {
 
     @Step("Checks presence shipping address form. Profile_addresses_page")
     public Profile_addresses_page_Logic checkPresenceShippingAddressForm() {
-        deliveryAddressForm().shouldBe(visible);
+        addressForm().shouldBe(visible);
         return this;
     }
 
     @Step("Checks absence shipping address form. Profile_addresses_page")
     public Profile_addresses_page_Logic checkAbsenceShippingAddressForm() {
         sleep(2000);
-        deliveryAddressForm().shouldNotBe(visible);
+        addressForm().shouldNotBe(visible);
         return this;
     }
 
@@ -135,7 +137,7 @@ public class Profile_addresses_page_Logic extends Profile_addresses_page {
 
     @Step("Filling fields address. Profile_addresses_page")
     public Profile_addresses_page_Logic fillingFieldsAddress() {
-        deliveryAddressForm().shouldBe(visible);
+        addressForm().shouldBe(visible);
         fieldName().setValue("autotest");
         fieldSurname().setValue("autotest");
         fieldAddressStreet().setValue("autotest");
@@ -147,9 +149,32 @@ public class Profile_addresses_page_Logic extends Profile_addresses_page {
         return this;
     }
 
-    @Step("Checks presence main address lable. Profile_addresses_page")
+    @Step("Checks presence main address label. Profile_addresses_page")
     public Profile_addresses_page_Logic checkPresenceMainAddressLabel() {
         mainAddressLabel().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checks that the radio button Herr is active. Profile_addresses_page")
+    public Profile_addresses_page_Logic checkThatRadioBtnHerrIsActive() {
+        Assert.assertTrue(radioBtnHerr().isSelected());
+        return this;
+    }
+
+    @Step("Choosing delivery country {country} in address form. Profile_addresses_page")
+    public Profile_addresses_page_Logic chooseDeliveryCountry(String country) {
+        countryFromSelector(country).shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("Get the number of user delivery addresses. Profile_addresses_page")
+    public int getNumberOfUserDeliveryAddress() {
+       return dataUsersInDeliveryAddressBlock().size();
+    }
+
+    @Step("Checks that the number of delivery addresses has increased. Profile_addresses_page")
+    public Profile_addresses_page_Logic checkThatNumberOfDeliveryAddressHasIncreased(int oldCountAddressUser) {
+        dataUsersInDeliveryAddressBlock().shouldHave(CollectionCondition.sizeGreaterThan(oldCountAddressUser));
         return this;
     }
 }
