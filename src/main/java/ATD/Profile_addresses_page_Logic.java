@@ -177,4 +177,9 @@ public class Profile_addresses_page_Logic extends Profile_addresses_page {
         dataUsersInDeliveryAddressBlock().shouldHave(CollectionCondition.sizeGreaterThan(oldCountAddressUser));
         return this;
     }
+
+    @Step("Checks absence address delivery. Profile_addresses_page")
+    public Profile_addresses_page_Logic checkAbsenceAddressDelivery() {
+        unitWithoutDeliveryAddressData().shouldBe(visible);
+        return this;    }
 }
