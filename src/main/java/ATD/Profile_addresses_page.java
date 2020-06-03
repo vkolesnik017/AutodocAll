@@ -36,6 +36,10 @@ public class Profile_addresses_page {
         return $$x("//div[@class='adrese_fields']//ul[2]//li");
     }
 
+    SelenideElement unitWithoutDeliveryAddressData() {
+        return $x("//li[@class='ng-scope']");
+    }
+
     SelenideElement deliveryBlockName() {
         return $x("//div[@class='adrese_fields']//div[@class='box_title'][2]");
     }
