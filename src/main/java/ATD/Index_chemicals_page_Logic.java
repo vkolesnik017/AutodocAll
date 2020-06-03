@@ -85,6 +85,18 @@ public class Index_chemicals_page_Logic extends Index_chemicals_page {
         return this;
     }
 
+    @Step("Click on first button Add to basket in top products block. Index_chemicals_page")
+    public Index_chemicals_page_Logic clickOnFirstBtnAddToBasketInTopProductsBlock() {
+        firstBtnAddToBasketInTopProductsBlock().click();
+        return this;
+    }
+
+    @Step(":from Index_chemicals_page")
+    public Cart_page_Logic clickOnBtnGoToBasket() {
+        new Main_page_Logic().cartClick();
+        return page(Cart_page_Logic.class);
+    }
+
 
 
 }

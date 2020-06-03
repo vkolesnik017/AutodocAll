@@ -82,9 +82,32 @@ public class Index_instruments_page_Logic extends Index_instruments_page {
         return this;
     }
 
-    @Step("Checking the number of mini-cards in top-10 products block. Index_instruments_page ")
+    @Step("Checking the number of mini-cards in top-10 products block. Index_instruments_page")
     public Index_instruments_page_Logic checkingNumberOfMiniCardsTop10Products() {
         miniCardsInTop10ProductsBlock().shouldHave(size(10));
+        return this;
+    }
+
+    @Step("Hover and Click on first button Add to basket in top-10 products block. Index_instruments_page")
+    public Index_instruments_page_Logic hoverAndClickOnFirstBtnAddToBasketInTop10ProductsBlock() {
+        firstBtnAddToBasketInTop10ProductsBlock().hover().click();
+        return this;
+    }
+
+    @Step(":from Index_instruments_page")
+    public Cart_page_Logic clickOnBtnGoToBasket() {
+        new Main_page_Logic().cartClick();
+        return page(Cart_page_Logic.class);
+    }
+
+    @Step("Gets name first product in block top-6 products. Index_instruments_page")
+    public String getNameFirstProductInTop6ProductBlock() {
+        return nameFirstProductInTop6ProductsBlock().getText();
+    }
+
+    @Step("Click on first button Add to basket in top-6 products block. Index_instruments_page")
+    public Index_instruments_page_Logic clickOnFirstBtnAddToBasketInTop6ProductsBlock() {
+        firstBtnAddToBasketInTop6ProductsBlock().click();
         return this;
     }
 

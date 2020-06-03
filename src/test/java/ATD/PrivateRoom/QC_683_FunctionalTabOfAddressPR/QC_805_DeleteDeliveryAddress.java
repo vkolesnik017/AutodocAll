@@ -14,9 +14,9 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_864_CheckingBtnAbbrechenInTheDeliveryAddressEditingBlock {
+public class QC_805_DeleteDeliveryAddress {
 
-    private String mail = "QC_864_autotest@mailinator.com";
+    private String mail = "QC_805_autotest@mailinator.com";
 
     @BeforeClass
     void setUp() {
@@ -31,17 +31,19 @@ public class QC_864_CheckingBtnAbbrechenInTheDeliveryAddressEditingBlock {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks button (Abbrechen) in the delivery address editing block")
-    public void testCheckBtnAbbrechenInTheDeliveryAddressEditingBlock(String route) {
+    @Description(value = "Test checks deleted delivery address")
+    public void testDeleteDeliveryAddress(String route) {
         openPage(route);
         new Main_page_Logic().loginAndTransitionToProfilePlusPage(mail)
                 .goToProfileAddressesPage()
                 .checkPresenceBillingAddressBlock()
                 .checkPresenceDeliveryAddressBlock()
-                .clickDeliveryEditButton()
-                .checkPresenceShippingAddressForm()
-                .clickBackupCancelBtn()
-                .checkAbsenceShippingAddressForm();
+                .deleteDeliveryAddress()
+                .checkAbsenceAddressDelivery()
+                .clickBtnAddDeliveryAddress()
+                .fillingFieldsAddress()
+                .clickSaveBtn()
+                .checkPresenceAndClosePopUpUpdate();
     }
 
     @AfterMethod

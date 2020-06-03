@@ -66,5 +66,8 @@ public class Index_chemicals_page {
         return $x("//div[@class='delivery']//ul[@class='delivery__wrapp']");
     }
 
+    SelenideElement firstBtnAddToBasketInTopProductsBlock() {
+        return $x("//div[@class='product-list__item active']//div[@class='price_box product-list__item__button']");
+    }
 
 }
