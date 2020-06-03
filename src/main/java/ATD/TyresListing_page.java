@@ -32,6 +32,10 @@ class TyresListing_page {
 
     SelenideElement firstActiveBrandInBlockMoto() { return $x("//*[@class='js-filter-item ga-click-criteria-filter active']"); }
 
+    SelenideElement secondActiveBrandInBlockMoto() { return $x("//*[@class='js-filter-item ga-click-criteria-filter active'][2]"); }
+
+    SelenideElement secondActiveBrandInBlock() { return $x("//*[@class='js-filter-item ga-click-criteria-filter active slick-slide slick-active']"); }
+
     SelenideElement speedIndexOnListingValue() { return $x("(//*[@class='multiple-select__title'])[2]/span/b"); }
 
     SelenideElement widthValueInSelector() { return $x("//*[@class='main-selector Width']//*[@selected]"); }
