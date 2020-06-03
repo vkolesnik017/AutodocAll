@@ -103,6 +103,7 @@ public class Profile_addresses_page_Logic extends Profile_addresses_page {
 
     @Step("Click use button as main address. Profile_addresses_page")
     public Profile_addresses_page_Logic clickUseBtnAsMainAddress() {
+        sleep(2000);
         useBtnAsMainAddress().click();
         return this;
     }
@@ -126,9 +127,14 @@ public class Profile_addresses_page_Logic extends Profile_addresses_page {
         return this;
     }
 
-    @Step("Added delivery address. Profile_addresses_page")
-    public Profile_addresses_page_Logic addDeliveryAddress() {
+    @Step("Click add delivery address button. Profile_addresses_page")
+    public Profile_addresses_page_Logic clickBtnAddDeliveryAddress()  {
         addDeliveryAddressBtn().click();
+        return this;
+    }
+
+    @Step("Filling fields address. Profile_addresses_page")
+    public Profile_addresses_page_Logic fillingFieldsAddress() {
         deliveryAddressForm().shouldBe(visible);
         fieldName().setValue("autotest");
         fieldSurname().setValue("autotest");

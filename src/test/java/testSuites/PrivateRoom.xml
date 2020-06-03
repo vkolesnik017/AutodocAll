@@ -6,10 +6,11 @@
         <listener class-name="ATD.ProjectListener"/>
     </listeners>
 
-    <test name="QC_683_FunctionalTabOfAddresPR">
+    <test name="QC_683_FunctionalTabOfAddressPR">
         <classes>
             <class name="ATD.PrivateRoom.QC_683_FunctionalTabOfAddressPR.QC_864_CheckingBtnAbbrechenInTheDeliveryAddressEditingBlock"/>
             <class name="ATD.PrivateRoom.QC_683_FunctionalTabOfAddressPR.QC_928_AddressTabElementsInPR"/>
+            <class name="ATD.PrivateRoom.QC_683_FunctionalTabOfAddressPR.QC_810_SetAsPrimaryDeliveryAddress"/>
         </classes>
     </test>
 
