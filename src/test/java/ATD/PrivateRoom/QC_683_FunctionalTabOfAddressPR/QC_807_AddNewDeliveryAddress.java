@@ -1,6 +1,7 @@
 package ATD.PrivateRoom.QC_683_FunctionalTabOfAddressPR;
 
 import ATD.Main_page_Logic;
+import ATD.Profile_addresses_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -14,9 +15,10 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_864_CheckingBtnAbbrechenInTheDeliveryAddressEditingBlock {
+public class QC_807_AddNewDeliveryAddress {
 
-    private String mail = "QC_864_autotest@mailinator.com";
+    private String mail = "QC_807_autotest@mailinator.com";
+    private int numberUserAddress;
 
     @BeforeClass
     void setUp() {
@@ -31,17 +33,20 @@ public class QC_864_CheckingBtnAbbrechenInTheDeliveryAddressEditingBlock {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks button (Abbrechen) in the delivery address editing block")
-    public void testCheckBtnAbbrechenInTheDeliveryAddressEditingBlock(String route) {
+    @Description(value = "Test checks the addition of a new delivery address")
+    public void testAdditionOfNewDeliveryAddress(String route) {
         openPage(route);
-        new Main_page_Logic().loginAndTransitionToProfilePlusPage(mail)
+        numberUserAddress = new Main_page_Logic().loginAndTransitionToProfilePlusPage(mail)
                 .goToProfileAddressesPage()
-                .checkPresenceBillingAddressBlock()
-                .checkPresenceDeliveryAddressBlock()
-                .clickDeliveryEditButton()
-                .checkPresenceShippingAddressForm()
-                .clickBackupCancelBtn()
-                .checkAbsenceShippingAddressForm();
+                .getNumberOfUserDeliveryAddress();
+        new Profile_addresses_page_Logic().clickBtnAddDeliveryAddress()
+                .checkThatRadioBtnHerrIsActive()
+                .fillingFieldsAddress()
+                .chooseDeliveryCountry("Deutschland")
+                .clickSaveBtn()
+                .checkPresenceAndClosePopUpUpdate()
+                .checkThatNumberOfDeliveryAddressHasIncreased(numberUserAddress)
+                .deleteDeliveryAddress();
     }
 
     @AfterMethod

@@ -1,6 +1,8 @@
 package ATD;
 
+import com.codeborne.selenide.CollectionCondition;
 import io.qameta.allure.Step;
+import org.testng.Assert;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.sleep;
@@ -20,21 +22,21 @@ public class Profile_addresses_page_Logic extends Profile_addresses_page {
     }
 
     @Step("Click shipping edit button. Profile_addresses_page")
-    public Profile_addresses_page_Logic clickShippingEditButton() {
+    public Profile_addresses_page_Logic clickDeliveryEditButton() {
         deliveryEditButton().click();
         return this;
     }
 
     @Step("Checks presence shipping address form. Profile_addresses_page")
     public Profile_addresses_page_Logic checkPresenceShippingAddressForm() {
-        deliveryAddressForm().shouldBe(visible);
+        addressForm().shouldBe(visible);
         return this;
     }
 
     @Step("Checks absence shipping address form. Profile_addresses_page")
     public Profile_addresses_page_Logic checkAbsenceShippingAddressForm() {
         sleep(2000);
-        deliveryAddressForm().shouldNotBe(visible);
+        addressForm().shouldNotBe(visible);
         return this;
     }
 
@@ -92,4 +94,92 @@ public class Profile_addresses_page_Logic extends Profile_addresses_page {
         addDeliveryAddressBtn().shouldBe(visible);
         return this;
     }
+
+    @Step("Checks presence buttons under form edit address. Profile_addresses_page")
+    public Profile_addresses_page_Logic checkPresenceBtnUnderFormEditAddress() {
+        saveBtn().shouldBe(visible);
+        useBtnAsMainAddress().shouldBe(visible);
+        backupCancelBtn().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Click use button as main address. Profile_addresses_page")
+    public Profile_addresses_page_Logic clickUseBtnAsMainAddress() {
+        sleep(2000);
+        useBtnAsMainAddress().click();
+        return this;
+    }
+
+    @Step("Click save button. Profile_addresses_page")
+    public Profile_addresses_page_Logic clickSaveBtn() {
+        saveBtn().click();
+        return this;
+    }
+
+    @Step("Checks presence and close pop up update. Profile_addresses_page")
+    public Profile_addresses_page_Logic checkPresenceAndClosePopUpUpdate() {
+        popUpUpdate().shouldBe(visible);
+        closePopUpUpdate().click();
+        return this;
+    }
+
+    @Step("Delete delivery address. Profile_addresses_page")
+    public Profile_addresses_page_Logic deleteDeliveryAddress() {
+        deleteDeliveryAddressBtn().click();
+        return this;
+    }
+
+    @Step("Click add delivery address button. Profile_addresses_page")
+    public Profile_addresses_page_Logic clickBtnAddDeliveryAddress()  {
+        addDeliveryAddressBtn().click();
+        return this;
+    }
+
+    @Step("Filling fields address. Profile_addresses_page")
+    public Profile_addresses_page_Logic fillingFieldsAddress() {
+        addressForm().shouldBe(visible);
+        fieldName().setValue("autotest");
+        fieldSurname().setValue("autotest");
+        fieldAddressStreet().setValue("autotest");
+        fieldAddressHouse().setValue("autotest");
+        fieldAddressComment().setValue("autotest");
+        fieldPostalCode().setValue("1111");
+        fieldCity().setValue("autotest");
+        fieldPhone().setValue("200+002");
+        return this;
+    }
+
+    @Step("Checks presence main address label. Profile_addresses_page")
+    public Profile_addresses_page_Logic checkPresenceMainAddressLabel() {
+        mainAddressLabel().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checks that the radio button Herr is active. Profile_addresses_page")
+    public Profile_addresses_page_Logic checkThatRadioBtnHerrIsActive() {
+        Assert.assertTrue(radioBtnHerr().isSelected());
+        return this;
+    }
+
+    @Step("Choosing delivery country {country} in address form. Profile_addresses_page")
+    public Profile_addresses_page_Logic chooseDeliveryCountry(String country) {
+        countryFromSelector(country).shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("Get the number of user delivery addresses. Profile_addresses_page")
+    public int getNumberOfUserDeliveryAddress() {
+       return dataUsersInDeliveryAddressBlock().size();
+    }
+
+    @Step("Checks that the number of delivery addresses has increased. Profile_addresses_page")
+    public Profile_addresses_page_Logic checkThatNumberOfDeliveryAddressHasIncreased(int oldCountAddressUser) {
+        dataUsersInDeliveryAddressBlock().shouldHave(CollectionCondition.sizeGreaterThan(oldCountAddressUser));
+        return this;
+    }
+
+    @Step("Checks absence address delivery. Profile_addresses_page")
+    public Profile_addresses_page_Logic checkAbsenceAddressDelivery() {
+        unitWithoutDeliveryAddressData().shouldBe(visible);
+        return this;    }
 }

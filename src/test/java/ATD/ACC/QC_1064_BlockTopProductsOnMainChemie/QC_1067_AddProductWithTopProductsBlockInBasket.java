@@ -1,7 +1,7 @@
-package ATD.ACC.QC_950_BlockTopProductsOnMainAccessories;
+package ATD.ACC.QC_1064_BlockTopProductsOnMainChemie;
 
 import ATD.Cart_page_Logic;
-import ATD.Index_accessories_page_Logic;
+import ATD.Index_chemicals_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -11,17 +11,15 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import java.sql.SQLException;
-
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_962_AddProductTopProductsBlockInBasket {
+public class QC_1067_AddProductWithTopProductsBlockInBasket {
 
-    private String nameProduct,titleProduct;
-    private Index_accessories_page_Logic index_accessories_page_logic = new Index_accessories_page_Logic();
+    private String nameProduct, titleProduct;
+    private Index_chemicals_page_Logic index_chemicals_page_logic = new Index_chemicals_page_Logic();
 
     @BeforeClass
     void setUp() {
@@ -30,24 +28,26 @@ public class QC_962_AddProductTopProductsBlockInBasket {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main","index_accessories");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main","index_chemicals");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test Checks adding a product to the cart when selecting it from top-6 block")
-    public void testChecksAddingProductToCartWithTop6BlockForAccessories(String route) {
+    @Description(value = "Test Checks adding a product to the cart when selecting it from top products block ")
+    public void testChecksAddingProductToCartWithTopProductsBlockForChemistry(String route) {
         openPage(route);
-        nameProduct = index_accessories_page_logic.getNameFirstProductInTop6Block();
-        index_accessories_page_logic.clickOnFirstBtnAddToBasketInTop6Block()
+        nameProduct = index_chemicals_page_logic.getNameProductInBlockTopProducts();
+        index_chemicals_page_logic.clickOnFirstBtnAddToBasketInTopProductsBlock()
                 .clickOnBtnGoToBasket();
         titleProduct = new Cart_page_Logic().getNameTitleProduct();
         Assert.assertEquals(nameProduct, titleProduct);
     }
 
+
     @AfterMethod
     private void tearDown() {
         close();
     }
+
 }

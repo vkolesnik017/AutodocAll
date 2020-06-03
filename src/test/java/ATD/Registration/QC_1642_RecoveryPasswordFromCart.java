@@ -50,7 +50,8 @@ public class QC_1642_RecoveryPasswordFromCart {
                 .clickLinkRecoveryPasswordInLetter()
                 .fillPasswordFieldsAndClickSubmit(newPassword)
                 .nameOfClient().shouldBe(visible);
-        main_page_logic.loginWithOldPassword(mail).loginWithNewPassword(newPassword);
+        main_page_logic.loginWithOldPassword(mail)
+                .loginWithNewPassword(newPassword);
     }
 
     @AfterMethod
