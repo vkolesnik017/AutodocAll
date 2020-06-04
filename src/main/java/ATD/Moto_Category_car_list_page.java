@@ -95,4 +95,8 @@ public class Moto_Category_car_list_page {
 
     ElementsCollection valueOfDynamicCharacteristic(String artNumOfProduct) {
         return $$x("//span[contains(text(),'"+artNumOfProduct+"')]/ancestor::div[@class='description']//li[@class='important desc_group']/ul/li/span[2]"); }
+
+        ElementsCollection activePriceOfProduct() {return $$x("//span[contains(text(),'Kaufen')]/ancestor::div[@class='price_box']//p[@class='actual_price']");}
+
+    ElementsCollection notActivePriceOfProduct() {return $$x("//span[contains(text(),'Verfügbarkeit')]/ancestor::div[@class='price_box']//p[@class='actual_price']");}
 }
