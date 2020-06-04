@@ -116,6 +116,17 @@ public class Index_accessories_page_Logic extends Index_accessories_page {
         return this;
     }
 
+    @Step("Checking the number of categories in each tab of the top accessories block. Index_accessories_page")
+    public Index_accessories_page_Logic checkNumberOfCategoriesInEachTabBlockTopAcc() {
+        firstTabInBlockTopAccessories().shouldBe(visible);
+        categoriesInTabBlockTopAccessories().shouldHaveSize(4);
+        secondTabInBlockTopAccessories().click();
+        categoriesInTabBlockTopAccessories().shouldHaveSize(4);
+        thirdTabInBlockTopAccessories().click();
+        categoriesInTabBlockTopAccessories().shouldHaveSize(4);
+        return this;
+    }
+
 
 
 

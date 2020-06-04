@@ -114,6 +114,24 @@ public class Index_instruments_page_Logic extends Index_instruments_page {
         return this;
     }
 
+    @Step("Get name first category in Logical Union after Hover. Index_instruments_page")
+    public String getNameFirstCategoryInLogicalUnionAfterHover() {
+        firstGroupLogicalUnion().hover();
+        return firstCategoryInLogicalUnion().getText();
+    }
+
+    @Step("Click on first category in Logical Union. Index_instruments_page")
+    public Listing_instruments_page_Logic clickOnFirstCategoryInLogicalUnion() {
+        firstCategoryInLogicalUnion().click();
+        return page(Listing_instruments_page_Logic.class);
+    }
+
+    @Step("Checking presence popup with details product in block top-6. Index_instruments_page")
+    public Index_instruments_page_Logic checkingPresencePopupWithDetailsProductInTop6Block() {
+        nameFirstProductInTop6ProductsBlock().hover();
+        btnDetailsInPopupGoodsTop6Block().shouldBe(visible);
+        return this;
+    }
 
 
 }

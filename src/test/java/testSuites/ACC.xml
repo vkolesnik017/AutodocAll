@@ -10,6 +10,7 @@
         <classes>
             <class name="ATD.ACC.QC_1260_MainProductCatalogOnMainTools.QC_1261_TitleMainCatalog"/>
             <class name="ATD.ACC.QC_1260_MainProductCatalogOnMainTools.QC_1262_SubtitleMainCatalog"/>
+            <class name="ATD.ACC.QC_1260_MainProductCatalogOnMainTools.QC_1267_LogicalUnionMainCatalogTools"/>
         </classes>
     </test>
 
@@ -83,8 +84,9 @@
 
     <test name="QC_886_TopCategoriesDirectionOnMainAccessories">
         <classes>
-            <class name="ATD.ACC.QC_886_TopCategoriesDirectionOnMainAccessories.QC_923_TransitionToListingThroughCategoryTopBlock"/>
             <class name="ATD.ACC.QC_886_TopCategoriesDirectionOnMainAccessories.QC_902_BlockTopCategoriesOnMainPage"/>
+            <class name="ATD.ACC.QC_886_TopCategoriesDirectionOnMainAccessories.QC_920_TabsBlockTopCategories"/>
+            <class name="ATD.ACC.QC_886_TopCategoriesDirectionOnMainAccessories.QC_923_TransitionToListingThroughCategoryTopBlock"/>
         </classes>
     </test>
 
@@ -106,6 +108,7 @@
         <classes>
             <class name="ATD.ACC.QC_1276_BlockTop6ProductsOnMainTools.QC_1278_TitleBlockTop6Products"/>
             <class name="ATD.ACC.QC_1276_BlockTop6ProductsOnMainTools.QC_1280_NumberOfMiniCardsBlockTop6Products"/>
+            <class name="ATD.ACC.QC_1276_BlockTop6ProductsOnMainTools.QC_1281_HoverMiniCardsBlockTop6OnMainTools"/>
             <class name="ATD.ACC.QC_1276_BlockTop6ProductsOnMainTools.QC_1283_AddProductBlockTop6ProductsInBasket"/>
         </classes>
     </test>

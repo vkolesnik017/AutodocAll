@@ -64,5 +64,17 @@ class Index_instruments_page {
         return $x("//div[@class='product-list__item active']//div[@class='price_box product-list__item__button']");
     }
 
+    SelenideElement firstGroupLogicalUnion() {
+        return $x("//div[@class='special-catalog__row'][1]//div[@class='special-catalog__group'][1]");
+    }
+
+    SelenideElement firstCategoryInLogicalUnion() {
+        return $x("//div[@class='special-catalog__categories' and @style='display: block;']//li[1]//span");
+    }
+
+    SelenideElement btnDetailsInPopupGoodsTop6Block() {
+        return $x("//div[@class='product-list__item active']//div[@class='item-table-box__details']");
+    }
+
 
 }
