@@ -1,8 +1,7 @@
-package ATD.Tyres.QC_1104_TyresSelector;
+package MOTO.QC_373_MainIssueBlockAtTecDocListing;
 
-
+import ATD.Moto_Category_car_list_page_Logic;
 import ATD.SetUp;
-import ATD.Tyres_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -17,8 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_1287_TestTyresSelectorWithSeacrByBrand {
-
+public class QC_375_ApplicabilityOfProductsInTecDocListing {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -26,25 +24,24 @@ public class QC_1287_TestTyresSelectorWithSeacrByBrand {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "tyres");
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list_model2,moto_category_car_list2");
+
     }
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "Romaniuta")
-    @Description(value = "Test checks tyres selector search by brand")
-    public void testTyresSearchByBrand(String route) {
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test checks applicability of products in TecDoc listing")
+    public void testChecksApplicabilityOfProductsInTecDocListing(String route) {
         openPage(route);
-        new Tyres_page_Logic().checkTyresSelectorVisibilityPKW()
-                .clickBrandDropdown()
-                .clickApolloBrand()
-                .clickSubmitTyresSelector()
-                .checkFirstTyreBrandApollo()
-                .checkBrandIsSelectedInBrandBlock("Apollo");
+
+        String brandOfMoto = new Moto_Category_car_list_page_Logic().getMotoFromSelector();
+        new Moto_Category_car_list_page_Logic()
+                .checkingApplicabilityOfProductForSelectedMoto(brandOfMoto);
     }
 
     @AfterMethod
-    public void tearDown() {
+    private void tearDown() {
         close();
     }
 }

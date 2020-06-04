@@ -1,13 +1,16 @@
 package ATD;
 
-import com.codeborne.selenide.CollectionCondition;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
-import static com.codeborne.selenide.CollectionCondition.*;
+import static ATD.CommonMethods.checkingContainsUrl;
+import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selenide.back;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
@@ -115,4 +118,141 @@ public class Moto_Category_car_list_page_Logic extends Moto_Category_car_list_pa
         return this;
     }
 
+
+    @Step(" appearance pop-up Of Subscription for out of stock products  .Moto_Category_car_list_page")
+    public Moto_Category_car_list_page_Logic appearancePopUpOfSubscription() {
+        clickOnOutOfStockButton();
+        while (lastForwardOfPagination().isDisplayed()) {
+            nextForwardOfPagination().click();
+            clickOnOutOfStockButton();
+        }
+        return this;
+    }
+
+    @Step(" click on button at out of stock product  .Moto_Category_car_list_page")
+    public Moto_Category_car_list_page_Logic clickOnOutOfStockButton() {
+        for (int i = 0; i < btnOutOfStockProducts().size(); i++) {
+            btnOutOfStockProducts().get(i).shouldBe(visible).click();
+            popUpOfSubscription().should(appear);
+            btnClosePopUpOfSubscription().click();
+            popUpOfSubscription().should(disappear);
+        }
+        return this;
+    }
+
+
+    @Step("Go to product page from tecDoc listing through Image, icon of brand, title in tecDoc listing .Moto_Category_car_list_page")
+    public Moto_Category_car_list_page_Logic goToProductPageFromImageBrandTitle(String urlOfProduct) {
+        clickOnImageOfProduct(0).availabilityOfMotoSelector();
+        checkingContainsUrl(urlOfProduct);
+        back();
+        clickOnIconBrandOfProduct(0).availabilityOfMotoSelector();
+        checkingContainsUrl(urlOfProduct);
+        back();
+        clickOnTitleOfProduct(0).availabilityOfMotoSelector();
+        checkingContainsUrl(urlOfProduct);
+        return this;
+    }
+
+    @Step("Click on image of product in tecDoc listing .Moto_Category_car_list_page")
+    public Moto_Product_page_Logic clickOnImageOfProduct(int position) {
+        imageOfProductTecDocListingBlock().get(position).click();
+        return page(Moto_Product_page_Logic.class);
+    }
+
+    @Step("Click on image of brand of product in tecDoc listing .Moto_Category_car_list_page")
+    public Moto_Product_page_Logic clickOnIconBrandOfProduct(int position) {
+        imageBrandOfProductTecDocListingBlock().get(position).click();
+        return page(Moto_Product_page_Logic.class);
+    }
+
+    @Step("Click on title of product in tecDoc listing .Moto_Category_car_list_page")
+    public Moto_Product_page_Logic clickOnTitleOfProduct(int position) {
+        titleOfProductInTecDocListingBlock().get(position).click();
+        return page(Moto_Product_page_Logic.class);
+    }
+
+
+    @Step("get id of product from his title .Moto_Category_car_list_page")
+    public String getIdOfProduct(int position) {
+        tecDocListingBlock().shouldBe(visible);
+        String idOfSelectedProduct = titleOfProductInTecDocListingBlock().get(position).getAttribute("href");
+        return idOfSelectedProduct;
+    }
+
+    @Step("checking the applicability of product for selected truck .Moto_Category_car_list_page")
+    public Moto_Category_car_list_page_Logic checkingApplicabilityOfProductForSelectedMoto(String moto) {
+        selectProductInTecDocListing(moto);
+        while (lastForwardOfPagination().isDisplayed()) {
+            nextForwardOfPagination().click();
+            selectProductInTecDocListing(moto);
+        }
+        return this;
+    }
+
+    @Step("select product in TecDoc Listing .Moto_Category_car_list_page")
+    public Moto_Category_car_list_page_Logic selectProductInTecDocListing(String moto) {
+        for (int i = 0; i < productsAtTecDocListing().size(); i++) {
+            clickOnProductInTecDocListing(i).checkCompatibilityProductAndTruck(moto);
+            back();
+        }
+        return this;
+    }
+
+    @Step("click on Product in TecDoc listing .Moto_Category_car_list_page")
+    public Moto_Product_page_Logic clickOnProductInTecDocListing(int point) {
+        tecDocListingBlock().shouldBe(visible);
+        imageOfProductTecDocListingBlock().get(point).shouldBe(visible).scrollIntoView("{block: \"center\"}").click();
+        return page(Moto_Product_page_Logic.class);
+    }
+
+    @Step(" get value of motorcycle from vertical selector .Moto_Category_car_list_page")
+    public String getMotoFromSelector() {
+        String motoFromSelector = (brandOfMotoField().getSelectedText() + " " + modelFiledInSelector().getSelectedText()).replaceAll("[^A-Z]", "");
+        return motoFromSelector;
+    }
+
+    @Step("get id of product in TecDoc Listing .Moto_Category_car_list_page")
+    public String getIdOfProductFromTecDocListing() {
+        String idOfProduct = btnOfFirstProductInTecDocListing().getAttribute("id");
+        return idOfProduct;
+    }
+
+    @Step("added product to basket .Moto_Category_car_list_page")
+    public Cart_page_Logic addProductToBasket() {
+        tecDocListingBlock().shouldBe(visible);
+        btnOfFirstProductInTecDocListing().click();
+        basketDropMenu().should(appear);
+        basketDropMenu().should(disappear);
+        basket().click();
+        return page(Cart_page_Logic.class);
+    }
+
+    @Step("Check of visibility dynamic characteristics of product in TecDoc listing .Moto_Category_car_list_page")
+    public Moto_Category_car_list_page_Logic presenceOfDynamicCharacteristics() {
+        List<String> artNumberOfProduct = new ArrayList<>();
+        artNumberOfProduct.add("Artikelnummer: SKLS-0140083");
+        artNumberOfProduct.add("Artikelnummer: 0 258 986 506");
+        artNumberOfProduct.add("Artikelnummer: 3922L0226");
+
+        for (int i = 0; i < artNumberOfProduct.size(); i++) {
+            dynamicCharacteristicBlock(artNumberOfProduct.get(i)).shouldBe(visible);
+        }
+        return this;
+    }
+
+    @Step("check dynamic characteristic block .Moto_Category_car_list_page")
+    public Moto_Category_car_list_page_Logic checkDynamicCharacteristicBlock(String artNumOfProduct) {
+        List<String> dynamicCharacteristic = new ArrayList<>();
+        dynamicCharacteristic.add("Baumuster:<0525,0535>");
+        dynamicCharacteristic.add("Lambdasonde:Regelsonde");
+        dynamicCharacteristic.add("Abgasanlage:vor Katalysator");
+        List<String> artNumberOfProduct = new ArrayList<>();
+        for (int i = 0; i < titleOfDynamicCharacteristic(artNumOfProduct).size(); i++) {
+            artNumberOfProduct.add(titleOfDynamicCharacteristic(artNumOfProduct).get(i).getText() + valueOfDynamicCharacteristic(artNumOfProduct).get(i).getText());
+        }
+        Assert.assertTrue(dynamicCharacteristic.containsAll(artNumberOfProduct));
+
+        return this;
+    }
 }

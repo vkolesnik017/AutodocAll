@@ -79,6 +79,11 @@
     <test name="QC_373_MainIssueBlockAtTecDocListing">
         <classes>
             <class name="MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_374_PresenceOfMainIssueBlock"/>
+            <class name="MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_375_ApplicabilityOfProductsInTecDocListing"/>
+            <class name="MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_376_AddProductToBasketFromTecDocListing"/>
+            <class name="MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_378_DynamicCharacteristicsOfProductsInTecDocListing"/>
+            <class name="MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_379_GoToProductPageFromTecDocListing"/>
+            <class name="MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_383_PopUpOfSubscriptionForOutOfStockProducts"/>
             <class name="MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_384_PaginationOfTecDocListing"/>
         </classes>
     </test>

@@ -1,10 +1,10 @@
 package ATD;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selectors.byXpath;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Profile_addresses_page {
 
@@ -32,6 +32,14 @@ public class Profile_addresses_page {
         return $x("//div[@class='adrese_fields']//ul[2]");
     }
 
+    ElementsCollection dataUsersInDeliveryAddressBlock() {
+        return $$x("//div[@class='adrese_fields']//ul[2]//li");
+    }
+
+    SelenideElement unitWithoutDeliveryAddressData() {
+        return $x("//li[@class='ng-scope']");
+    }
+
     SelenideElement deliveryBlockName() {
         return $x("//div[@class='adrese_fields']//div[@class='box_title'][2]");
     }
@@ -40,7 +48,7 @@ public class Profile_addresses_page {
         return $x("//ul[2]//a[@class='btn']");
     }
 
-    SelenideElement deliveryAddressForm() {
+    SelenideElement addressForm() {
         return $x("//div[@class='left']//form");
     }
 
@@ -50,10 +58,6 @@ public class Profile_addresses_page {
 
     SelenideElement addDeliveryAddressBtn() {
         return $x("//*[@id='content']/div[2]/div[1]/div[3]/a[2]");
-    }
-
-    SelenideElement backupCancelBtn() {
-        return $x("//a[@class='btn address-cancel r']");
     }
 
     SelenideElement topTitleBlock() {
@@ -82,5 +86,69 @@ public class Profile_addresses_page {
 
     SelenideElement namePage() {
         return $x("//div[@class='title']");
+    }
+
+    SelenideElement saveBtn() {
+        return $x("//div[@class='save']");
+    }
+
+    SelenideElement useBtnAsMainAddress() {
+        return $x("//a[@ng-click='setMain(editor, address)']");
+    }
+
+    SelenideElement backupCancelBtn() {
+        return $x("//a[@class='btn address-cancel r']");
+    }
+
+    SelenideElement popUpUpdate() {
+        return $x("//div[@id='popup_update']");
+    }
+
+    SelenideElement closePopUpUpdate() {
+        return $x("//div[@class='buttons-inner']");
+    }
+
+    SelenideElement fieldName() {
+        return $x("//input[@name='address[name]']");
+    }
+
+    SelenideElement fieldSurname() {
+        return $x("//input[@name='address[surname]']");
+    }
+
+    SelenideElement fieldAddressStreet() {
+        return $x("//input[@name='address[street]']");
+    }
+
+    SelenideElement fieldAddressHouse() {
+        return $x("//input[@name='address[house]']");
+    }
+
+    SelenideElement fieldAddressComment() {
+        return $x("//input[@name='address[comment]']");
+    }
+
+    SelenideElement fieldPostalCode() {
+        return $x("//input[@name='address[postcode]']");
+    }
+
+    SelenideElement fieldCity() {
+        return $x("//input[@name='address[city]']");
+    }
+
+    SelenideElement countryFromSelector(String country) {
+        return $x("//option[contains(text(),'" + country + "')]");
+    }
+
+    SelenideElement fieldPhone() {
+        return $x("//input[@name='address[phone]']");
+    }
+
+    SelenideElement mainAddressLabel() {
+        return $x("//a[@ng-if='address.isMain()']");
+    }
+
+    SelenideElement radioBtnHerr() {
+        return $x("//input[@id='honorific_mr_']");
     }
 }

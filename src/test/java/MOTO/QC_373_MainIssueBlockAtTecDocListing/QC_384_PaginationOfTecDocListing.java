@@ -23,7 +23,6 @@ public class QC_384_PaginationOfTecDocListing {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
         return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list5");
@@ -34,15 +33,13 @@ public class QC_384_PaginationOfTecDocListing {
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test checks headline of child categories block")
-    public void testChecksPaginationOfTecDocListing(String route)  {
+    public void testChecksPaginationOfTecDocListing(String route) {
         openPage(route);
 
         new Moto_Category_car_list_page_Logic()
                 .checkCountOfPagesAtTecDocListing()
-                 .checkTecDocListingOnPages();
-
+                .checkTecDocListingOnPages();
     }
-
 
     @AfterMethod
     private void tearDown() {

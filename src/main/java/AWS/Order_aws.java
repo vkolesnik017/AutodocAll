@@ -507,6 +507,7 @@ public class Order_aws {
     @Step("Click button AddedGoods in PopUp AddProduct. Order_aws")
     public Order_aws clickBtnAddedGoodsInPopUpAddProduct() {
         btnAddedGoodsInPopUpAddProduct().click();
+        sleep(3000);
         return this;
     }
 

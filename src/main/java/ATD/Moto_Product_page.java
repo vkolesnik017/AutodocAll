@@ -1,10 +1,11 @@
 package ATD;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byId;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Moto_Product_page {
 
@@ -40,14 +41,46 @@ public class Moto_Product_page {
         return $(byId("selector-error-tooltip-car"));
     }
 
-       SelenideElement infoPopUp() {return $x("//div[@class='popup_content']");}
+    SelenideElement infoPopUp() {
+        return $x("//div[@class='popup_content']");
+    }
 
-    SelenideElement btnSearchWithSelectedMoto() {return $x("//button[contains(@class,'search_button ')]");}
+    SelenideElement btnSearchWithSelectedMoto() {
+        return $x("//button[contains(@class,'search_button ')]");
+    }
 
-    SelenideElement productCompatibilityHeader() {return $x("//p[contains(text(),'Dieses Produkt passt zu Ihrem ')]");}
+    SelenideElement productCompatibilityHeader() {
+        return $x("//p[contains(text(),'Dieses Produkt passt zu Ihrem ')]");
+    }
 
-    SelenideElement motoBrandFromInfoMessage(){return $x("//div[@class='car-match-block car-match-block--moto']//b"); }
+    SelenideElement motoBrandFromInfoMessage() {
+        return $x("//div[@class='car-match-block car-match-block--moto']//b");
+    }
 
-    SelenideElement btnResetOfSelector() {return $(byId("reset_selector_form"));}
+    SelenideElement btnResetOfSelector() {
+        return $(byId("reset_selector_form"));
+    }
+
+    SelenideElement compatibilityMotoBlock() {
+        return $x("//div[@class='product-info-block-accordion js--roll-up']");
+    }
+
+    SelenideElement linkOfCompatibilityMotoAndProduct() {
+        return $x("//div[@class='accordion-selected']");
+    }
+
+       ElementsCollection listOfMotoAtCompatibilityBlock() {
+       return $$x("//div[@class='product-info-block-accordion js--roll-up']/div[contains(@class,'product-info-block--moto')]//div[@class='accordion-content']/ul/li/b").filter(visible);}
+
+
+    SelenideElement compatibilityMotoBrand() {
+        return $x("//div[@class='product-info-block-accordion js--roll-up']/div[contains(@class,'product-info-block--moto')]//div[@class='accordion-button']/i");
+    }
+
+    SelenideElement titleOfProduct() {
+        return $x("//div[@class='product-block__description__title product-block__equal-height-wrap']/h2/span");
+    }
+
+    SelenideElement  compatibilityModelBlock() {return $x("//div[@class='accordion-button active']/following-sibling::div/ul");}
 
 }

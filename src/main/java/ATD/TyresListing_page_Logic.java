@@ -6,7 +6,6 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -138,8 +137,8 @@ public class TyresListing_page_Logic extends TyresListing_page {
     }
 
     @Step("Check Brand Is Selected In Brand Block")
-    public TyresListing_page_Logic checkBrandIsSelectedInBrandBlock() {
-        firstActiveBrandInBlock().shouldHave(attribute("alt", "Apollo"));
+    public TyresListing_page_Logic checkBrandIsSelectedInBrandBlock(String brandName) {
+        firstActiveBrandInBlock().shouldHave(attribute("data-value", brandName));
         return this;
     }
 
@@ -427,18 +426,85 @@ public class TyresListing_page_Logic extends TyresListing_page {
     }
 
     @Step("Check brand filter applying on tyres listing. TyresListing_page")
-    public TyresListing_page_Logic checkBrandFilterApplying() throws SQLException {
-        if (url().equals(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "tyre_form4"))) {
-            String brandNameMoto = motoBrandFilterButton().attr("data-value");
-            motoBrandFilterButton().click();
-            new Listing_page_Logic().waitUntilPreloaderDisappear()
-                    .checkProductAttributeOnListingWithProductsNumber(brandNameMoto, productTitleOnListing(), 1);
-        } else {
-            String brandName = brandFilterButton().attr("data-value");
-            brandFilterButton().click();
-            new Listing_page_Logic().waitUntilPreloaderDisappear()
-                    .checkProductAttributeOnListingWithProductsNumber(brandName, productTitleOnListing(), 1);
-        }
+    public TyresListing_page_Logic checkBrandFilterApplying() {
+        String brandName = brandFilterButton().attr("data-value");
+        brandFilterButton().click();
+        waitUntilPreloaderDisappear();
+        checkBrandIsSelectedInBrandBlock(brandName);
+        new Listing_page_Logic().checkProductAttributeOnListingWithProductsNumber(brandName, productTitleOnListing(), 1);
+        brandNameInSelector().shouldHave(text(brandName));
+
+        String secondBrandName = brandFilterButton().attr("data-value");
+        brandFilterButton().click();
+        waitUntilPreloaderDisappear();
+        secondActiveBrandInBlock().shouldHave(attribute("data-value", secondBrandName));
+        new Listing_page_Logic().checkProductAttributeOnListingWithProductsNumber(secondBrandName, productTitleOnListing(), 1);
+        brandNameInSelector().shouldHave(text(secondBrandName));
+        brandNameInSelector().shouldHave(text(brandName));
+
+        secondActiveBrandInBlock().click();
+        waitUntilPreloaderDisappear();
+        secondActiveBrandInBlock().shouldNotBe(visible);
+        brandNameInSelector().shouldNotHave(text(secondBrandName));
+        brandNameInSelector().shouldHave(text(brandName));
+        new Listing_page_Logic().checkProductAttributeOnListingWithProductsNumber(brandName, productTitleOnListing(), 1);
+
+        firstActiveBrandInBlock().click();
+        waitUntilPreloaderDisappear();
+        firstActiveBrandInBlock().shouldNotBe(visible);
+        brandNameInSelector().shouldHave(text("Alle"));
+
+        return this;
+    }
+
+    @Step("Check brand filter applying on tyres listing moto route. TyresListing_page")
+    public TyresListing_page_Logic checkBrandFilterApplyingMotoRoute() {
+        String brandName = motoBrandFilterButton().attr("data-value");
+        motoBrandFilterButton().click();
+        waitUntilPreloaderDisappear();
+        checkBrandIsSelectedInBrandBlockMotoRoute(brandName);
+        new Listing_page_Logic().checkProductAttributeOnListingWithProductsNumber(brandName, productTitleOnListing(), 1);
+        brandNameInSelector().shouldHave(text(brandName));
+
+        String secondBrandName = motoBrandFilterButton().attr("data-value");
+        motoBrandFilterButton().click();
+        waitUntilPreloaderDisappear();
+        checkBrandIsSelectedInBrandBlockMotoRoute(secondBrandName);
+        new Listing_page_Logic().checkProductAttributeOnListingWithProductsNumber(secondBrandName, productTitleOnListing(), 1);
+        brandNameInSelector().shouldHave(text(secondBrandName));
+        brandNameInSelector().shouldHave(text(brandName));
+
+        secondActiveBrandInBlockMoto().click();
+        waitUntilPreloaderDisappear();
+        secondActiveBrandInBlockMoto().shouldNotBe(visible);
+        brandNameInSelector().shouldNotHave(text(brandName));
+        brandNameInSelector().shouldHave(text(secondBrandName));
+        new Listing_page_Logic().checkProductAttributeOnListingWithProductsNumber(secondBrandName, productTitleOnListing(), 1);
+
+        firstActiveBrandInBlockMoto().click();
+        waitUntilPreloaderDisappear();
+        firstActiveBrandInBlockMoto().shouldNotBe(visible);
+        brandNameInSelector().shouldHave(text("Alle"));
+
+        return this;
+    }
+
+
+    @Step("Check Brand Is Selected In Brand Block Moto Route. TyresListing_page")
+    private TyresListing_page_Logic checkBrandIsSelectedInBrandBlockMotoRoute(String brandName) {
+        firstActiveBrandInBlockMoto().shouldHave(attribute("data-value", brandName));
+        return this;
+    }
+
+    @Step("Wait until preloader disappear. TyresListing_page")
+    private TyresListing_page_Logic waitUntilPreloaderDisappear() {
+        new Listing_page_Logic().waitUntilPreloaderDisappear();
+        return this;
+    }
+
+    @Step("Check brand filter visibility. TyresListing_page")
+    public TyresListing_page_Logic checkBrandFilterVisibility() {
+        brandFilterBlockOnTyresListing().shouldBe(visible);
         return this;
     }
 }

@@ -1,5 +1,6 @@
 package MOTO.QC_373_MainIssueBlockAtTecDocListing;
 
+import ATD.Cart_page_Logic;
 import ATD.Moto_Category_car_list_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
@@ -16,8 +17,7 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_374_PresenceOfMainIssueBlock {
-
+public class QC_376_AddProductToBasketFromTecDocListing {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -32,12 +32,13 @@ public class QC_374_PresenceOfMainIssueBlock {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks presence of main issue block at TecDoc listing")
-    public void testChecksPresenceOfMainIssueBlock(String route)  {
+    @Description(value = "Test checks add product to basket from TecDoc listing")
+    public void testChecksAddProductToBasketFromTecDocListing(String route) {
         openPage(route);
 
-        new Moto_Category_car_list_page_Logic().presenceOfTecDocListingBlock();
-
+        String idOfAddedProduct = new Moto_Category_car_list_page_Logic().getIdOfProductFromTecDocListing();
+        new Moto_Category_car_list_page_Logic().addProductToBasket();
+        new Cart_page_Logic().checkOfIdAddedProductInBasket(idOfAddedProduct);
     }
 
     @AfterMethod

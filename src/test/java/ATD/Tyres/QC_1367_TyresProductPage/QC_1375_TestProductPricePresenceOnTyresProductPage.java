@@ -1,8 +1,10 @@
-package ATD.Tyres.QC_1104_TyresSelector;
+package ATD.Tyres.QC_1367_TyresProductPage;
 
 
+import ATD.DataBase;
 import ATD.SetUp;
-import ATD.Tyres_page_Logic;
+import ATD.TyresListing_page_Logic;
+import ATD.TyresProduct_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -17,7 +19,7 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_1287_TestTyresSelectorWithSeacrByBrand {
+public class QC_1375_TestProductPricePresenceOnTyresProductPage {
 
     @BeforeClass
     void setUp() {
@@ -26,21 +28,16 @@ public class QC_1287_TestTyresSelectorWithSeacrByBrand {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "tyres");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "tyre_item");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Romaniuta")
-    @Description(value = "Test checks tyres selector search by brand")
-    public void testTyresSearchByBrand(String route) {
+    @Description(value = "Test Checks Product Price Presence On Tyres Product Page")
+    public void testProductPricePresenceOnTyresProductPage(String route) {
         openPage(route);
-        new Tyres_page_Logic().checkTyresSelectorVisibilityPKW()
-                .clickBrandDropdown()
-                .clickApolloBrand()
-                .clickSubmitTyresSelector()
-                .checkFirstTyreBrandApollo()
-                .checkBrandIsSelectedInBrandBlock("Apollo");
+        new TyresProduct_page_Logic().checkProductPriceVisibility();
     }
 
     @AfterMethod
