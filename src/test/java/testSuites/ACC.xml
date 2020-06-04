@@ -27,6 +27,7 @@
     <test name="QC_1042_MainCategoryCatalogOnMainChemie">
         <classes>
             <class name="ATD.ACC.QC_1042_MainCategoryCatalogOnMainChemie.QC_1058_PresenceLogicalAssociations"/>
+            <class name="ATD.ACC.QC_1042_MainCategoryCatalogOnMainChemie.QC_1059_TransitionToListingPageWithCategoryLogicalUnion"/>
         </classes>
     </test>
 
@@ -53,11 +54,13 @@
             <class name="ATD.ACC.QC_950_BlockTopProductsOnMainAccessories.QC_953_BlockTopProducts"/>
             <class name="ATD.ACC.QC_950_BlockTopProductsOnMainAccessories.QC_956_NumberOfMiniCardsInBlockTopProducts"/>
             <class name="ATD.ACC.QC_950_BlockTopProductsOnMainAccessories.QC_962_AddProductTopProductsBlockInBasket"/>
+            <class name="ATD.ACC.QC_950_BlockTopProductsOnMainAccessories.QC_961_TransitionOnProductPageWithMiniCardTopProductBlock"/>
         </classes>
     </test>
 
     <test name="QC_929_BlockCategoriesLogicalUnionOnMainAccessories">
         <classes>
+            <class name="ATD.ACC.QC_929_BlockCategoriesLogicalUnionOnMainAccessories.QC_935_HoverLogicalUnion"/>
             <class name="ATD.ACC.QC_929_BlockCategoriesLogicalUnionOnMainAccessories.QC_937_RedirectToListingFromTheCategoryLogicalUnion"/>
         </classes>
     </test>

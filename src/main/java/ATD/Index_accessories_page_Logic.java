@@ -102,6 +102,20 @@ public class Index_accessories_page_Logic extends Index_accessories_page {
         return page(Cart_page_Logic.class);
     }
 
+    @Step("Click on first product in top-6 block. Index_accessories_page")
+    public Product_page_Logic clickOnFirstProductInTop6Block() {
+        nameFirstProductInTop6Block().click();
+        return page(Product_page_Logic.class);
+    }
+
+    @Step("Check presence categories after hover on Logical Union. Index_accessories_page")
+    public Index_accessories_page_Logic checkLogicalUnion() {
+        catalogFirstGroup().hover();
+        sleep(2000);
+        secondCategoryInLogicalUnion().shouldBe(visible);
+        return this;
+    }
+
 
 
 
