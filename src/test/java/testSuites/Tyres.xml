@@ -52,9 +52,12 @@
 
     <test name="QC_1367_TyresProductPage">
         <classes>
+            <class name="ATD.Tyres.QC_1367_TyresProductPage.QC_1374_TestRatingBlockPresenceOnTyresProductPage"/>
             <class name="ATD.Tyres.QC_1367_TyresProductPage.QC_1375_TestProductPricePresenceOnTyresProductPage"/>
             <class name="ATD.Tyres.QC_1367_TyresProductPage.QC_1376_TestDeliveryLinkPresenceOnTyresProductPage"/>
             <class name="ATD.Tyres.QC_1367_TyresProductPage.QC_1377_GoToDeliveryPageFromTyresProductPage"/>
+            <class name="ATD.Tyres.QC_1367_TyresProductPage.QC_1412_TestPaymentMethodsBlockPresenceOnTyresProductPage"/>
+            <class name="ATD.Tyres.QC_1367_TyresProductPage.QC_1413_TestDeliveryMethodsBlockPresenceOnTyresProductPage"/>
             <class name="ATD.Tyres.QC_1367_TyresProductPage.QC_1414_TestFaqBlockPresenceOnTyresProductPage"/>
         </classes>
     </test>
@@ -108,6 +111,12 @@
         <classes>
             <class name="ATD.Tyres.QC_1253_PaymentsAndDeliveryBlockOnTyresListing.QC_1271_TestPresencePaymentsTypeBlockOnTyresListing"/>
             <class name="ATD.Tyres.QC_1253_PaymentsAndDeliveryBlockOnTyresListing.QC_1284_TestPresenceDeliveryTypeBlockOnTyresListing"/>
+        </classes>
+    </test>
+
+    <test name="QC_1427_FilterByRatingOnTyresListing">
+        <classes>
+            <class name="ATD.Tyres.QC_1427_FilterByRatingOnTyresListing.QC_1428_TestFilterByRatingPresenceOnTyresListing"/>
         </classes>
     </test>
 
