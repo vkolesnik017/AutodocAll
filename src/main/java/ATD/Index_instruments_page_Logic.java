@@ -126,12 +126,24 @@ public class Index_instruments_page_Logic extends Index_instruments_page {
         return page(Listing_instruments_page_Logic.class);
     }
 
-    @Step("Checking presence popup with details product in block top-6. Index_instruments_page")
-    public Index_instruments_page_Logic checkingPresencePopupWithDetailsProductInTop6Block() {
+    @Step("Checking hover popup in top 6 product block. Index_instruments_page")
+    public Index_instruments_page_Logic checkingHoverPopupInTop6ProductBlock() {
         nameFirstProductInTop6ProductsBlock().hover();
         btnDetailsInPopupGoodsTop6Block().shouldBe(visible);
         return this;
     }
 
+    @Step("Click on first goods in block top-6. Index_instruments_page")
+    public Product_page_Logic clickOnFirstGoodsInBlockTop6() {
+        nameFirstProductInTop6ProductsBlock().click();
+        return page(Product_page_Logic.class);
+    }
+
+    @Step("Checking hover popup in top 10 product block. Index_instruments_page")
+    public Index_instruments_page_Logic checkingHoverPopupInTop10ProductBlock() {
+        productInBlockTop10().hover();
+        btnDetailsInPopupGoodsTop10ProductsBlock().shouldBe(visible);
+        return this;
+    }
 
 }

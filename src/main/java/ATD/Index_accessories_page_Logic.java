@@ -127,6 +127,13 @@ public class Index_accessories_page_Logic extends Index_accessories_page {
         return this;
     }
 
+    @Step("Checking hover popup in top 6 product block. Index_accessories_page")
+    public Index_accessories_page_Logic checkingHoverPopupInTop6ProductBlock() {
+        nameFirstProductInTop6Block().hover();
+        btnDetailsInPopupTop6Block().shouldBe(visible);
+        return this;
+    }
+
 
 
 
