@@ -76,5 +76,9 @@ class Index_instruments_page {
         return $x("//div[@class='product-list__item active']//div[@class='item-table-box__details']");
     }
 
+    SelenideElement btnDetailsInPopupGoodsTop10ProductsBlock() {
+        return $x("//div[@class='rec_prod_info_popup']//span[@class='details link']");
+    }
+
 
 }
