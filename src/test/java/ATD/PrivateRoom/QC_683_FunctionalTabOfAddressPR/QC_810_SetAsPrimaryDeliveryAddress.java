@@ -45,7 +45,8 @@ public class QC_810_SetAsPrimaryDeliveryAddress {
                 .checkPresenceMainAddressLabel()
                 .deleteDeliveryAddress()
                 .clickBtnAddDeliveryAddress()
-                .fillingFieldsAddress()
+                .fillingFieldsAddress("Autotest", "Autotest", "Autotest", "Autotest",
+                        "Autotest", "1111", "Autotest", "200+002")
                 .clickSaveBtn()
                 .checkPresenceAndClosePopUpUpdate();
     }

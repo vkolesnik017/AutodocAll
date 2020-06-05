@@ -1,6 +1,6 @@
-package MOTO.QC_889_SearchOnMotoSubdomain;
+package MOTO.QC_373_MainIssueBlockAtTecDocListing;
 
-import ATD.Moto_main_page_Logic;
+import ATD.Moto_Category_car_list_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,7 +16,8 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_891_SearchByAnyCriteria {
+public class QC_377_SortingOfProductsInTecDocListing {
+
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -24,19 +25,18 @@ public class QC_891_SearchByAnyCriteria {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_main");
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list2");
+
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks Search by any criteria")
-    public void testChecksSearchByAnyCriteria(String route) throws SQLException {
+    @Description(value = "Test checks sorting Of products in TecDoc listing")
+    public void testChecksSortingOfProductsInTecDocListing(String route) {
         openPage(route);
 
-        new Moto_main_page_Logic()
-                .inputOfBrandInMainSearchField("Bosch")
-                .checkOfCurrentUrl("search24");
+        new Moto_Category_car_list_page_Logic().checkSortingPrice();
     }
 
     @AfterMethod

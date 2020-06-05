@@ -140,7 +140,7 @@ public class CommonMethods {
         if (shop.equals("EN")) {
             actualCurrency = currencyLocator.getText().split("\\s")[0];
         } else {
-            actualCurrency = currencyLocator.getText().split("\\s")[1];
+            actualCurrency = currencyLocator.getText().split("\\s")[1].replaceAll("[*]", "");
         }
         assertEquals(actualCurrency, expectedCurrency, "Currency in " + nameLocator);
     }
