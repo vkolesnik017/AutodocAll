@@ -41,7 +41,8 @@ public class QC_805_DeleteDeliveryAddress {
                 .deleteDeliveryAddress()
                 .checkAbsenceAddressDelivery()
                 .clickBtnAddDeliveryAddress()
-                .fillingFieldsAddress()
+                .fillingFieldsAddress("Autotest", "Autotest", "Autotest", "Autotest",
+                        "Autotest", "1111", "Autotest", "200+002")
                 .clickSaveBtn()
                 .checkPresenceAndClosePopUpUpdate();
     }

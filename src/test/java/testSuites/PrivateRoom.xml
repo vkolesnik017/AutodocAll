@@ -8,11 +8,15 @@
 
     <test name="QC_683_FunctionalTabOfAddressPR">
         <classes>
+            <class name="ATD.PrivateRoom.QC_683_FunctionalTabOfAddressPR.QC_673_AddNewBillingAddress"/>
+            <class name="ATD.PrivateRoom.QC_683_FunctionalTabOfAddressPR.QC_792_EditBillingAddress"/>
+            <class name="ATD.PrivateRoom.QC_683_FunctionalTabOfAddressPR.QC_799_DeleteBillingAddress"/>
+            <class name="ATD.PrivateRoom.QC_683_FunctionalTabOfAddressPR.QC_801_EditDeliveryAddress"/>
+            <class name="ATD.PrivateRoom.QC_683_FunctionalTabOfAddressPR.QC_805_DeleteDeliveryAddress"/>
+            <class name="ATD.PrivateRoom.QC_683_FunctionalTabOfAddressPR.QC_807_AddNewDeliveryAddress"/>
+            <class name="ATD.PrivateRoom.QC_683_FunctionalTabOfAddressPR.QC_810_SetAsPrimaryDeliveryAddress"/>
             <class name="ATD.PrivateRoom.QC_683_FunctionalTabOfAddressPR.QC_864_CheckingBtnAbbrechenInTheDeliveryAddressEditingBlock"/>
             <class name="ATD.PrivateRoom.QC_683_FunctionalTabOfAddressPR.QC_928_AddressTabElementsInPR"/>
-            <class name="ATD.PrivateRoom.QC_683_FunctionalTabOfAddressPR.QC_810_SetAsPrimaryDeliveryAddress"/>
-            <class name="ATD.PrivateRoom.QC_683_FunctionalTabOfAddressPR.QC_807_AddNewDeliveryAddress"/>
-            <class name="ATD.PrivateRoom.QC_683_FunctionalTabOfAddressPR.QC_805_DeleteDeliveryAddress"/>
         </classes>
     </test>
 

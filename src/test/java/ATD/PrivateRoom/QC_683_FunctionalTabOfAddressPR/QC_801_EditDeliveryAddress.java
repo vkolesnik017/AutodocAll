@@ -6,6 +6,7 @@ import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -15,10 +16,9 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_807_AddNewDeliveryAddress {
+public class QC_801_EditDeliveryAddress {
 
-    private String mail = "QC_807_autotest@mailinator.com";
-    private int numberUserAddress;
+    private String mail = "QC_801_autotest@mailinator.com", deliveryAddress, newDeliveryAddress;
 
     @BeforeClass
     void setUp() {
@@ -33,21 +33,29 @@ public class QC_807_AddNewDeliveryAddress {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks the addition of a new delivery address")
-    public void testAdditionOfNewDeliveryAddress(String route) {
+    @Description(value = "Test checks edit delivery address")
+    public void testEditDeliveryAddress(String route) {
         openPage(route);
-        numberUserAddress = new Main_page_Logic().loginAndTransitionToProfilePlusPage(mail)
+        deliveryAddress = new Main_page_Logic().loginAndTransitionToProfilePlusPage(mail)
                 .goToProfileAddressesPage()
-                .getNumberOfUserDeliveryAddress();
-        new Profile_addresses_page_Logic().clickBtnAddDeliveryAddress()
-                .checkThatRadioBtnHerrIsActive()
+                .checkPresenceBillingAddressBlock()
+                .checkPresenceDeliveryAddressBlock()
+                .getDailyDeliveryAddress();
+        newDeliveryAddress = new Profile_addresses_page_Logic().clickDeliveryEditButton()
+                .fillingFieldsAddress("Test", "Test", "Test", "Test",
+                        "Test", "2222", "Test", "1111")
+                .chooseCountryInAddressForm("Estland")
+                .clickSaveBtn()
+                .checkPresenceAndClosePopUpUpdate()
+                .getDailyDeliveryAddress();
+        Assert.assertNotEquals(deliveryAddress, newDeliveryAddress);
+        new Profile_addresses_page_Logic().deleteDeliveryAddress()
+                .clickBtnAddDeliveryAddress()
                 .fillingFieldsAddress("Autotest", "Autotest", "Autotest", "Autotest",
                         "Autotest", "1111", "Autotest", "200+002")
                 .chooseCountryInAddressForm("Deutschland")
                 .clickSaveBtn()
-                .checkPresenceAndClosePopUpUpdate()
-                .checkThatNumberOfDeliveryAddressHasIncreased(numberUserAddress)
-                .deleteDeliveryAddress();
+                .checkPresenceAndClosePopUpUpdate();
     }
 
     @AfterMethod

@@ -28,6 +28,18 @@ public class Profile_addresses_page {
         return $x("//*[@id='content']/div[2]/div[1]/div[3]/a[1]");
     }
 
+    SelenideElement unitWithoutBillingAddressData() {
+        return $x("//div[@class='adrese_fields']//ul[1]//li[@class='ng-scope']");
+    }
+
+    SelenideElement userBillingAddressData() {
+        return $x("//div[@class='adrese_fields']//ul[1]//div[@item='address']");
+    }
+
+    ElementsCollection dataUsersInBillingAddressBlock() {
+        return $$x("//div[@class='adrese_fields']//ul[1]//li");
+    }
+
     SelenideElement deliveryAddressBlock() {
         return $x("//div[@class='adrese_fields']//ul[2]");
     }
@@ -37,7 +49,11 @@ public class Profile_addresses_page {
     }
 
     SelenideElement unitWithoutDeliveryAddressData() {
-        return $x("//li[@class='ng-scope']");
+        return $x("//div[@class='adrese_fields']//ul[2]//li[@class='ng-scope']");
+    }
+
+    SelenideElement userDeliveryAddressData() {
+        return $x("//div[@class='adrese_fields']//ul[2]//div[@item='address']");
     }
 
     SelenideElement deliveryBlockName() {
