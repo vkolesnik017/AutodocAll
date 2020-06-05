@@ -62,4 +62,20 @@ class Index_accessories_page {
         return $x("//div[@class='product-list__item__title']/span[text()]");
     }
 
+    SelenideElement firstTabInBlockTopAccessories() {
+        return $x("//div[@class='accessories-top']//li[1]");
+
+    }
+    SelenideElement secondTabInBlockTopAccessories() {
+        return $x("//div[@class='accessories-top']//li[2]");
+    }
+
+    SelenideElement thirdTabInBlockTopAccessories() {
+        return $x("//div[@class='accessories-top']//li[3]");
+    }
+
+    ElementsCollection categoriesInTabBlockTopAccessories() {
+        return $$x("//div[@class='accessories-tabs__item active']//span[@data-gac='TOP_catalog_accessories']");
+    }
+
 }

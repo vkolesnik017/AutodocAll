@@ -17,6 +17,10 @@ public class Index_chemicals_page {
         return $x("//div[@class='special-catalog__categories' and @style='display: block;']");
     }
 
+    SelenideElement nameFirstCategoryInLogicalUnion() {
+        return $x("//div[@class='special-catalog__categories' and @style='display: block;']//span[text()]");
+    }
+
     SelenideElement blockTopBrands() {
         return $x("//div[@class='top-brands']/ul/img");
     }

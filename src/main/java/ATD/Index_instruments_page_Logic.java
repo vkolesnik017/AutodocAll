@@ -5,6 +5,7 @@ import org.testng.Assert;
 import java.sql.SQLException;
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selenide.sleep;
 import static com.codeborne.selenide.WebDriverRunner.url;
 import static com.codeborne.selenide.Selenide.page;
 
@@ -91,6 +92,7 @@ public class Index_instruments_page_Logic extends Index_instruments_page {
     @Step("Hover and Click on first button Add to basket in top-10 products block. Index_instruments_page")
     public Index_instruments_page_Logic hoverAndClickOnFirstBtnAddToBasketInTop10ProductsBlock() {
         firstBtnAddToBasketInTop10ProductsBlock().hover().click();
+        sleep(2000);
         return this;
     }
 
@@ -108,9 +110,28 @@ public class Index_instruments_page_Logic extends Index_instruments_page {
     @Step("Click on first button Add to basket in top-6 products block. Index_instruments_page")
     public Index_instruments_page_Logic clickOnFirstBtnAddToBasketInTop6ProductsBlock() {
         firstBtnAddToBasketInTop6ProductsBlock().click();
+        sleep(2000);
         return this;
     }
 
+    @Step("Get name first category in Logical Union after Hover. Index_instruments_page")
+    public String getNameFirstCategoryInLogicalUnionAfterHover() {
+        firstGroupLogicalUnion().hover();
+        return firstCategoryInLogicalUnion().getText();
+    }
+
+    @Step("Click on first category in Logical Union. Index_instruments_page")
+    public Listing_instruments_page_Logic clickOnFirstCategoryInLogicalUnion() {
+        firstCategoryInLogicalUnion().click();
+        return page(Listing_instruments_page_Logic.class);
+    }
+
+    @Step("Checking presence popup with details product in block top-6. Index_instruments_page")
+    public Index_instruments_page_Logic checkingPresencePopupWithDetailsProductInTop6Block() {
+        nameFirstProductInTop6ProductsBlock().hover();
+        btnDetailsInPopupGoodsTop6Block().shouldBe(visible);
+        return this;
+    }
 
 
 }
