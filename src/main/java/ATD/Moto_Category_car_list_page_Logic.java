@@ -283,4 +283,11 @@ public class Moto_Category_car_list_page_Logic extends Moto_Category_car_list_pa
         return expectedSortedPrices;
     }
 
+
+    @Step("appears of an analogs products message .Moto_Category_car_list_page")
+    public Moto_Category_car_list_page_Logic appearsOfAnAnalogsProductsMessage() {
+        btnShowReplacement("0076543755").shouldBe(visible).click();
+        analogBlockMessage().should(appear).shouldHave(text("Keine Äquivalente verfügbar"));
+        return this;
+    }
 }
