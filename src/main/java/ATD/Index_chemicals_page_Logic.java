@@ -3,7 +3,6 @@ package ATD;
 import static com.codeborne.selenide.Condition.*;
 import io.qameta.allure.Step;
 import org.testng.Assert;
-
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.Selenide.sleep;
 import static com.codeborne.selenide.CollectionCondition.size;
@@ -95,6 +94,19 @@ public class Index_chemicals_page_Logic extends Index_chemicals_page {
     public Cart_page_Logic clickOnBtnGoToBasket() {
         new Main_page_Logic().cartClick();
         return page(Cart_page_Logic.class);
+    }
+
+    @Step("Get name first category in Logical Union after Hover. Index_chemicals_page")
+    public String getNameFirstCategoryInLogicalUnionAfterHover() {
+        catalogFirstGroup().hover();
+        return nameFirstCategoryInLogicalUnion().getText();
+
+    }
+
+    @Step("Click on first category in Logical Union. Index_chemicals_page")
+    public Listing_chemicals_Page_Logic clickOnFirstCategoryInLogicalUnion() {
+        nameFirstCategoryInLogicalUnion().click();
+        return page(Listing_chemicals_Page_Logic.class);
     }
 
 
