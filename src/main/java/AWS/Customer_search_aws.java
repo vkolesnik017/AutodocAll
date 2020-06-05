@@ -1,10 +1,10 @@
 package AWS;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Customer_search_aws {
 
@@ -37,6 +37,12 @@ public class Customer_search_aws {
 
     public String getClientId(){
         return idClientField().getText();
+    }
+
+    @Step("Transition on customer view page. Customer_search_aws")
+    public Customer_view_aws transitionOnCustomerViewPage() {
+        idClientField().click();
+        return page(Customer_view_aws.class);
     }
 
 }
