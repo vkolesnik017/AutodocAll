@@ -111,6 +111,35 @@ public class Customer_view_aws {
         return $x("//input[@id='form_lTelefon']");
     }
 
+    private SelenideElement fieldNameReceiver() {
+        return $x("//input[@id='form_BankData[AccOwner]']");
+    }
+
+    private SelenideElement fieldIbanNum() {
+        return $x("//input[@id='form_BankData[AccIBAN]']");
+    }
+
+    private SelenideElement bankData() {
+        return $x("//div[@id='bankData']");
+    }
+
+    @Step("Checks presence bank data block. Customer_view_aws")
+    public Customer_view_aws checkPresenceBankDataBlock() {
+        bankData().scrollTo();
+        bankData().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Get name receiver in bank, customer data block. Customer_view_aws")
+    public String getNameInReceiverInCurrentBankBlock() {
+        return String.valueOf(fieldNameReceiver().getAttribute("value"));
+    }
+
+    @Step("Get IBAN num in bank, customer data block. Customer_view_aws")
+    public String getIbanNumInCurrentBankBlock() {
+        return String.valueOf(fieldIbanNum().getAttribute("value"));
+    }
+
 
     @Step("Open customer personal area {customerID}. Customer_view_aws")
     public Customer_view_aws openCustomerPersonalArea(String customerID) {

@@ -20,4 +20,10 @@
         </classes>
     </test>
 
+    <test name="QC_600_FunctionalTabBankPR">
+        <classes>
+            <class name="ATD.PrivateRoom.QC_600_FunctionalTabBankPR.QC_601_FillingOutFormInBankTab"/>
+        </classes>
+    </test>
+
 </suite>
