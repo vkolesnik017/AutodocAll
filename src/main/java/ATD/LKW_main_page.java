@@ -307,6 +307,8 @@ public class LKW_main_page {
     }
 
     SelenideElement dropDownCountry() {return $x("//div[@class='footer-language__country-list mCustomScrollbar _mCS_1']");}
+
+    SelenideElement languageListBlock() {return $x("//div[@class='footer-language__country-list mCustomScrollbar _mCS_1']");}
 }
 
 
