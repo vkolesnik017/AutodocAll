@@ -58,7 +58,7 @@ public class LKW_Categories_page {
 
     ElementsCollection additionInfoBlockOfTopProduct() {return $$x("//div[@class='product-list__item__popup']");}
 
-    ElementsCollection imageOfTopProduct() {return $$x("//a[@class='ga-click']/img");}
+    ElementsCollection imageOfTopProduct() {return $$x("//*[self::span[contains(@class,'ga-click')] or self::a[contains(@class,'ga-click')]]/img");}
 
     SelenideElement closeCookiesPopUp() {return $x("//div[@class='block-cookies__close']");}
 
