@@ -120,4 +120,6 @@ class TyresListing_page {
 
     SelenideElement brandFilterBlockOnTyresListing() { return $("#selected-instalation__slider"); }
 
+    SelenideElement ratingFilterBlock() { return $(".sort-rating"); }
+
 }

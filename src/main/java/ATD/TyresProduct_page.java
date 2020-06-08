@@ -12,4 +12,10 @@ public class TyresProduct_page {
     SelenideElement productPrice() { return $(".product-new-price"); }
 
     SelenideElement faqBlock() { return $(".product-leave-feedback"); }
+
+    SelenideElement ratingBlock() { return $(".product-block__price-block__rating"); }
+
+    SelenideElement paymentMethodsBlock() { return $(".pay-method"); }
+
+    SelenideElement deliveryMethodsBlock() { return $(".delivery-method"); }
 }

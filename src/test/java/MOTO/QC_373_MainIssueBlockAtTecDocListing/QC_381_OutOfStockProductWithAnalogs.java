@@ -1,6 +1,6 @@
-package ATD.ACC.QC_1276_BlockTop6ProductsOnMainTools;
+package MOTO.QC_373_MainIssueBlockAtTecDocListing;
 
-import ATD.Index_instruments_page_Logic;
+import ATD.Moto_Category_car_list_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -9,35 +9,36 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
 import java.sql.SQLException;
+
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_1281_HoverMiniCardsBlockTop6OnMainTools {
-
+public class QC_381_OutOfStockProductWithAnalogs {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "route", parallel = true)
+    @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main","index_instruments");
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list2");
     }
 
-    @Test(dataProvider = "route")
+    @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "Sergey-QA")
-    @Description(value = "Test checks presence popup with characteristics product after hover in block top-6")
-    public void testCheckPresencePopupWithCharacteristicsProductInTop6Block(String route) {
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test checks out of stock product with  products analog")
+    public void testChecksOutOfStockProductWithAnalogs(String route) {
         openPage(route);
-        new Index_instruments_page_Logic().checkingHoverPopupInTop6ProductBlock();
+
+        new Moto_Category_car_list_page_Logic().appearsOfAnAnalogsProductsBlock();
     }
 
     @AfterMethod
     private void tearDown() {
         close();
     }
-
 }

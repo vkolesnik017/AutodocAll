@@ -87,6 +87,7 @@ public class Index_chemicals_page_Logic extends Index_chemicals_page {
     @Step("Click on first button Add to basket in top products block. Index_chemicals_page")
     public Index_chemicals_page_Logic clickOnFirstBtnAddToBasketInTopProductsBlock() {
         firstBtnAddToBasketInTopProductsBlock().click();
+        sleep(2000);
         return this;
     }
 
@@ -109,6 +110,12 @@ public class Index_chemicals_page_Logic extends Index_chemicals_page {
         return page(Listing_chemicals_Page_Logic.class);
     }
 
+    @Step("Checking hover popup in top 6 product block. Index_chemicals_page")
+    public Index_chemicals_page_Logic checkingHoverPopupInTop6ProductBlock() {
+        nameFirstProductInBlockTopProducts().hover();
+        detailsBtnInPopupInTopProductBlock().shouldBe(visible);
+        return this;
+    }
 
 
 }

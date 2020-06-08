@@ -78,4 +78,8 @@ class Index_accessories_page {
         return $$x("//div[@class='accessories-tabs__item active']//span[@data-gac='TOP_catalog_accessories']");
     }
 
+    SelenideElement btnDetailsInPopupTop6Block() {
+        return $x("//div[@class='product-list__item__popup']//span[@class='link ga-click']");
+    }
+
 }

@@ -309,12 +309,12 @@ public class TyresListing_page_Logic extends TyresListing_page {
         String height = dimension.substring(3, 5);
         String diameter = dimension.substring(5, 7);
         dimensionLinkButton.hover().click();
-        widthValueInSelector().waitUntil(visible, 5000).shouldHave(text(width));
-        heightValueInSelector().shouldHave(text(height));
-        diameterValueInSelector().shouldHave(text(diameter));
         checkCharacteristicOnListing(width, widthCharacteristic());
         checkCharacteristicOnListing(height, heightCharacteristic());
         checkCharacteristicOnListing(diameter, radiusCharacteristic());
+        widthValueInSelector().waitUntil(visible, 5000).shouldHave(text(width));
+        heightValueInSelector().shouldHave(text(height));
+        diameterValueInSelector().shouldHave(text(diameter));
         if (routeName.equals("tyres_dimension") | routeName.equals("tyres_size")) {
             String baseUrlWithDimension = baseUrl.replaceAll("\\d", "").replaceAll("\\/--r", "").replaceAll("\\/-zoll", "");
             String urlWithDimension = (baseUrlWithDimension + "/" + width + "-" + height + "-r" + diameter);
@@ -505,6 +505,12 @@ public class TyresListing_page_Logic extends TyresListing_page {
     @Step("Check brand filter visibility. TyresListing_page")
     public TyresListing_page_Logic checkBrandFilterVisibility() {
         brandFilterBlockOnTyresListing().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Check rating filter visibility. TyresListing_page")
+    public TyresListing_page_Logic checkRatingFilterVisibility() {
+        ratingFilterBlock().shouldBe(visible);
         return this;
     }
 }

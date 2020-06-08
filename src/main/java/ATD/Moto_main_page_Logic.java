@@ -265,7 +265,7 @@ public class Moto_main_page_Logic extends Moto_main_page {
 
     @Step(" visibility of login/registration block .Moto_main_page")
     public Moto_main_page_Logic visibilityOfLoginRegistrationBlock() {
-         registrationBlock().shouldBe(visible);
+        registrationBlock().shouldBe(visible);
         return this;
     }
 
@@ -278,5 +278,35 @@ public class Moto_main_page_Logic extends Moto_main_page {
         passwordFieldAtLoginPopUp().setValue(password);
         btnRegistrationAtLoginPopUp().click();
         return page(Profile_plus_page_Logic.class);
+    }
+
+    @Step("check of main elements at TOP brands block .Moto_main_page")
+    public Moto_main_page_Logic checkOfMainElementsAtTopBrandsBlock() {
+        topBrandsBlock().shouldBe(visible);
+        titleOfTopBrandsBlock().shouldBe(visible);
+        listOfTopBrands().shouldHaveSize(8);
+        linkMoreAtTopBrandsBlock().shouldBe(visible);
+        return this;
+    }
+
+
+    @Step("select TOP motorcycle brand from block .Moto_main_page")
+    public Moto_Categories_maker_page_Logic selectTopMotoBrandFromBlock() {
+        topBrandsBlock().shouldBe(visible);
+        clickOnTopMotoBrand(0);
+        return page(Moto_Categories_maker_page_Logic.class);
+    }
+
+    @Step("click on TOP motorcycle brand .Moto_main_page")
+    public Moto_main_page_Logic clickOnTopMotoBrand(int position) {
+        listOfTopBrands().get(position).click();
+        return this;
+    }
+
+
+    @Step("click on link More at TOP brands block .Moto_main_page")
+    public Moto_makers_page_Logic clickOnLinkMoreAtTopBrandsBlock() {
+        linkMoreAtTopBrandsBlock().shouldBe(visible).click();
+        return page(Moto_makers_page_Logic.class);
     }
 }
