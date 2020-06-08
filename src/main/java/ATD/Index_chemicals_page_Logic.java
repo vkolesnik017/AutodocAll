@@ -117,5 +117,16 @@ public class Index_chemicals_page_Logic extends Index_chemicals_page {
         return this;
     }
 
+    @Step("Get name first separate category on main catalog. Index_chemicals_page")
+    public String getNameFirstSeparateCategoryMainCatalog() {
+        return firstSeparateCategoryInMainCatalog().getText();
+    }
+
+    @Step("Click first separate category on main catalog. Index_chemicals_page")
+    public Listing_chemicals_Page_Logic clickFirstSeparateCategoryMainCatalog() {
+        firstSeparateCategoryInMainCatalog().shouldBe(visible).click();
+        return page(Listing_chemicals_Page_Logic.class);
+    }
+
 
 }
