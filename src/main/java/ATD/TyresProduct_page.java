@@ -4,6 +4,7 @@ package ATD;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$x;
 
 public class TyresProduct_page {
 
@@ -18,4 +19,10 @@ public class TyresProduct_page {
     SelenideElement paymentMethodsBlock() { return $(".pay-method"); }
 
     SelenideElement deliveryMethodsBlock() { return $(".delivery-method"); }
+
+    SelenideElement topsellerBlock() { return $x("(//div[@class='top-product-block'])[1]"); }
+
+    SelenideElement addToBasketTopsellerBlockButton() { return $(".top-product-block .product-list__item--reifen .still_add_to_basket"); }
+
+    SelenideElement productFronTopsellerBlock() { return $(".top-product-block .product-list__item--reifen .product-list__item__image > a"); }
 }
