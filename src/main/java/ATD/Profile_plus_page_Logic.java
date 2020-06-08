@@ -24,4 +24,10 @@ public class Profile_plus_page_Logic extends Profile_plus_page {
         profileBankBtn().click();
         return page(Profile_bank_page_Logic.class);
     }
+
+    @Step("Transition to setting page. Profile_plus_page")
+    public Profile_setting_page_Logic goToSettingPage() {
+        profileSettingBtn().click();
+        return page(Profile_setting_page_Logic.class);
+    }
 }

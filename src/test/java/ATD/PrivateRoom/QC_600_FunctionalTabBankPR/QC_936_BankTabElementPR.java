@@ -1,4 +1,4 @@
-package ATD.PrivateRoom.QC_683_FunctionalTabOfAddressPR;
+package ATD.PrivateRoom.QC_600_FunctionalTabBankPR;
 
 import ATD.Main_page_Logic;
 import ATD.SetUp;
@@ -10,13 +10,15 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.sql.SQLException;
+
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_928_AddressTabElementsInPR {
+public class QC_936_BankTabElementPR {
 
-    private String mail = "QC_928_autotest@mailinator.com";
+    private String mail = "QC_936_autotest@mailinator.com";
 
     @BeforeClass
     void setUp() {
@@ -31,17 +33,18 @@ public class QC_928_AddressTabElementsInPR {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks address tab elements in Private Room")
-    public void testCheckAddressTabElementsInPR(String route) {
+    @Description(value = "Test checks for elements of the Bank tab")
+    public void testBankTabElementPR(String route) throws SQLException {
         openPage(route);
         new Main_page_Logic().loginAndTransitionToProfilePlusPage(mail)
-                .goToProfileAddressesPage()
+                .goToProfileBankPage()
                 .checkForTextInBlockTopTitle("Mein AUTODOC")
                 .checkPresenceClientID()
                 .checkPresenceHeaderBlockAndElementInside()
-                .checkNamePageAndPresenceIcon("Mein Adressbuch")
-                .checkBillingAddressBlockAndItsElement()
-                .checkDeliveryAddressBlockAndItsElement();
+                .checkNamePageAndPresenceIcon("Bankverbindung")
+                .checkPresenceBankInfoForm()
+                .checkPresenceFieldsIbBankInfoForm()
+                .checkPresenceBtnSaveAndCancelChange();
     }
 
     @AfterMethod

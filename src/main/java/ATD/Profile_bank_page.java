@@ -15,6 +15,22 @@ public class Profile_bank_page {
         return $x("//input[@id='form_AccIBAN']");
     }
 
+    SelenideElement fieldKTO() {
+        return $x("//input[@id='form_AccKTO']");
+    }
+
+    SelenideElement fieldBLZ() {
+        return $x("//input[@id='form_AccBLZ']");
+    }
+
+    SelenideElement fieldSwift() {
+        return $x("//input[@id='form_AccBIC']");
+    }
+
+    SelenideElement fieldBank() {
+        return $x("//input[@id='form_AccBank']");
+    }
+
     SelenideElement btnAddNewBankInfo() {
         return $x("//a[@class='btn addNewBankInfo']");
     }
@@ -37,5 +53,13 @@ public class Profile_bank_page {
 
     SelenideElement deleteBankDataBtn() {
         return $(".remove_bank_data");
+    }
+
+    SelenideElement bankInfoForm() {
+        return $x("//form[@id='bank_info']");
+    }
+
+    SelenideElement cancelChangeBtn() {
+        return $x("//a[@class='btn edit']//span");
     }
 }

@@ -113,4 +113,8 @@ public class Moto_Category_car_list_page {
     }
 
     SelenideElement analogBlockMessage() {return $x("//div[@class='top-small-products__title']");}
+
+    SelenideElement analogBlockOfProduct() {return $x("//div[@class='top-small-products__items']");}
+
+    ElementsCollection btnAddToBasketAtAnAnalogProduct() {return $$x("//div[@class='small-product-button price_box']//a");}
 }

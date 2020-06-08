@@ -66,7 +66,7 @@ public class Profile_addresses_page_Logic extends Profile_addresses_page {
     }
 
     @Step("Checks presence heder private room block and the elements inside. Profile_addresses_page")
-    public Profile_addresses_page_Logic checkPresenceHeaderPrivateRoomBlockAndElementInside() {
+    public Profile_addresses_page_Logic checkPresenceHeaderBlockAndElementInside() {
         headerPrivateRoomBlock().shouldBe(visible);
         nameOfClient().shouldBe(visible);
         depositResultLabel().shouldBe(visible);
@@ -191,7 +191,7 @@ public class Profile_addresses_page_Logic extends Profile_addresses_page {
         return dataUsersInBillingAddressBlock().size();
     }
 
-    @Step("Checks that the number of billing addresses has increased. Profile_addresses_page")
+    @Step("Checks that the number of billing addresses {oldCountAddressUser} has increased. Profile_addresses_page")
     public Profile_addresses_page_Logic checkThatNumberOfBillingAddressHasIncreased(int oldCountAddressUser) {
         dataUsersInBillingAddressBlock().shouldHave(CollectionCondition.sizeGreaterThan(oldCountAddressUser));
         return this;
