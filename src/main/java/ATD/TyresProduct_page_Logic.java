@@ -37,4 +37,21 @@ public class TyresProduct_page_Logic extends TyresProduct_page {
         return this;
     }
 
+    @Step("Check rating block visibility. TyresProduct_page")
+    public TyresProduct_page_Logic checkRatingBlockVisibility() {
+        ratingBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Check payment methods block visibility. TyresProduct_page")
+    public TyresProduct_page_Logic checkPaymentMethodsBlockVisibility() {
+        paymentMethodsBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Check delivery methods block visibility. TyresProduct_page")
+    public TyresProduct_page_Logic checkDeliveryMethodsBlockVisibility() {
+        deliveryMethodsBlock().shouldBe(visible);
+        return this;
+    }
 }

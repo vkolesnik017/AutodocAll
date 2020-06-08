@@ -1,4 +1,4 @@
-package ATD.PrivateRoom.QC_683_FunctionalTabOfAddressPR;
+package ATD.PrivateRoom.QC_600_FunctionalTabBankPR;
 
 import ATD.Main_page_Logic;
 import ATD.SetUp;
@@ -10,13 +10,15 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.sql.SQLException;
+
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_928_AddressTabElementsInPR {
+public class QC_608_SavingBankDataFormWithIncorrectIBAN {
 
-    private String mail = "QC_928_autotest@mailinator.com";
+    private String mail = "QC_608_autotest@mailinator.com";
 
     @BeforeClass
     void setUp() {
@@ -31,17 +33,15 @@ public class QC_928_AddressTabElementsInPR {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks address tab elements in Private Room")
-    public void testCheckAddressTabElementsInPR(String route) {
+    @Description(value = "Test checks the saving of the bank data form with an incorrect IBAN")
+    public void testSavingBankDataFormWithIncorrectIBAN(String route) throws SQLException {
         openPage(route);
         new Main_page_Logic().loginAndTransitionToProfilePlusPage(mail)
-                .goToProfileAddressesPage()
-                .checkForTextInBlockTopTitle("Mein AUTODOC")
-                .checkPresenceClientID()
-                .checkPresenceHeaderBlockAndElementInside()
-                .checkNamePageAndPresenceIcon("Mein Adressbuch")
-                .checkBillingAddressBlockAndItsElement()
-                .checkDeliveryAddressBlockAndItsElement();
+                .goToProfileBankPage()
+                .clickBtnAddNewBankInfo()
+                .fillingFieldIBAN("RO18 BACX 0000 0015 3328 2005")
+                .clickSaveFormBtn()
+                .checkPresenceAndClosePopUpUpdate();
     }
 
     @AfterMethod

@@ -23,6 +23,16 @@
     <test name="QC_600_FunctionalTabBankPR">
         <classes>
             <class name="ATD.PrivateRoom.QC_600_FunctionalTabBankPR.QC_601_FillingOutFormInBankTab"/>
+            <class name="ATD.PrivateRoom.QC_600_FunctionalTabBankPR.QC_603_EditingTheBankTab"/>
+            <class name="ATD.PrivateRoom.QC_600_FunctionalTabBankPR.QC_606_DeletingBankDataInPR"/>
+            <class name="ATD.PrivateRoom.QC_600_FunctionalTabBankPR.QC_608_SavingBankDataFormWithIncorrectIBAN"/>
+            <class name="ATD.PrivateRoom.QC_600_FunctionalTabBankPR.QC_936_BankTabElementPR"/>
+        </classes>
+    </test>
+
+    <test name="QC_635_FunctionalOfTheSettingsTabInPR">
+        <classes>
+            <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_636_PasswordChangeSuccessful"/>
         </classes>
     </test>
 
