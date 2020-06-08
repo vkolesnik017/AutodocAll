@@ -118,6 +118,13 @@ public class CommonMethods {
         return "autotest" + random + "@mailinator.com";
     }
 
+    @Step("Generates random password")
+    public static String passRandom() {
+        Random randomGenerator = new Random();
+        int random = randomGenerator.nextInt();
+        return String.valueOf(random);
+    }
+
     @Step("Checking datenschutzerklarung link behavior")
     public void checkingDatenschutzerklarungLinkBehavior(SelenideElement datenschutzerklarungLink, String cssValue) {
         datenschutzerklarungLink.shouldHave(attribute("title", "Datenschutzerklärung"));

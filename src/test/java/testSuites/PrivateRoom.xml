@@ -30,4 +30,10 @@
         </classes>
     </test>
 
+    <test name="QC_635_FunctionalOfTheSettingsTabInPR">
+        <classes>
+            <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_636_PasswordChangeSuccessful"/>
+        </classes>
+    </test>
+
 </suite>
