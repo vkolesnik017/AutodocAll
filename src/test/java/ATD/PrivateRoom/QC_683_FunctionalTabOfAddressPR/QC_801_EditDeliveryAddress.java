@@ -40,6 +40,12 @@ public class QC_801_EditDeliveryAddress {
                 .goToProfileAddressesPage()
                 .checkPresenceBillingAddressBlock()
                 .checkPresenceDeliveryAddressBlock()
+                .clickBtnAddDeliveryAddress()
+                .fillingFieldsAddress("Autotest", "Autotest", "Autotest", "Autotest",
+                        "Autotest", "1111", "Autotest", "200+002")
+                .chooseCountryInAddressForm("Deutschland")
+                .clickSaveBtn()
+                .checkPresenceAndClosePopUpUpdate()
                 .getDailyDeliveryAddress();
         newDeliveryAddress = new Profile_addresses_page_Logic().clickDeliveryEditButton()
                 .fillingFieldsAddress("Test", "Test", "Test", "Test",
@@ -49,13 +55,7 @@ public class QC_801_EditDeliveryAddress {
                 .checkPresenceAndClosePopUpUpdate()
                 .getDailyDeliveryAddress();
         Assert.assertNotEquals(deliveryAddress, newDeliveryAddress);
-        new Profile_addresses_page_Logic().deleteDeliveryAddress()
-                .clickBtnAddDeliveryAddress()
-                .fillingFieldsAddress("Autotest", "Autotest", "Autotest", "Autotest",
-                        "Autotest", "1111", "Autotest", "200+002")
-                .chooseCountryInAddressForm("Deutschland")
-                .clickSaveBtn()
-                .checkPresenceAndClosePopUpUpdate();
+        new Profile_addresses_page_Logic().deleteDeliveryAddress();
     }
 
     @AfterMethod
