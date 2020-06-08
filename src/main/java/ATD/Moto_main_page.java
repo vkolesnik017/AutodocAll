@@ -91,4 +91,14 @@ class Moto_main_page {
     SelenideElement passwordFieldAtLoginPopUp() {return $(byName("Password"));}
 
     SelenideElement btnRegistrationAtLoginPopUp() {return $x("//a[@class='enter submit']");}
+
+    SelenideElement  topBrandsBlock() {return $x("//div[@class='moto-manufactures']");}
+
+    SelenideElement  titleOfTopBrandsBlock()  {return $x("//strong[@class='moto-manufactures__title']");}
+
+    SelenideElement  linkMoreAtTopBrandsBlock()  {return $x("//a[@class='moto-manufactures__show-all']");}
+
+    ElementsCollection listOfTopBrands()    {return $$x("//ul[@class='moto-manufactures__list']//a");}
+
+
 }

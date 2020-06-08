@@ -2,7 +2,6 @@ package ATD;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-
 import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;
 
@@ -15,6 +14,10 @@ public class Index_chemicals_page {
 
     SelenideElement catalogCategories() {
         return $x("//div[@class='special-catalog__categories' and @style='display: block;']");
+    }
+
+    SelenideElement nameFirstCategoryInLogicalUnion() {
+        return $x("//div[@class='special-catalog__categories' and @style='display: block;']//span[text()]");
     }
 
     SelenideElement blockTopBrands() {

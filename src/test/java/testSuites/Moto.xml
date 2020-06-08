@@ -76,15 +76,27 @@
         </classes>
     </test>
 
-    <test name="QC_373_MainIssueBlockAtTecDocListing">
+       <test name="QC_373_MainIssueBlockAtTecDocListing">
         <classes>
             <class name="MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_374_PresenceOfMainIssueBlock"/>
             <class name="MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_375_ApplicabilityOfProductsInTecDocListing"/>
             <class name="MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_376_AddProductToBasketFromTecDocListing"/>
+            <class name="MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_377_SortingOfProductsInTecDocListing"/>
             <class name="MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_378_DynamicCharacteristicsOfProductsInTecDocListing"/>
             <class name="MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_379_GoToProductPageFromTecDocListing"/>
+            <class name="MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_380_OutOfStockProductWithOutAnalogs"/>
+            <class name="MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_381_OutOfStockProductWithAnalogs"/>
+            <class name="MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_382_AddToBasketAnalogProduct"/>
             <class name="MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_383_PopUpOfSubscriptionForOutOfStockProducts"/>
             <class name="MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_384_PaginationOfTecDocListing"/>
+        </classes>
+    </test>
+
+    <test name="QC_852_TopBrandsBlock">
+        <classes>
+            <class name="MOTO.QC_852_TopBrandsBlock.QC_853_PresenceOfTopBrandsBlock"/>
+            <class name="MOTO.QC_852_TopBrandsBlock.QC_854_TransitionByClickOnTopBrand"/>
+            <class name="MOTO.QC_852_TopBrandsBlock.QC_855_TransitionByClickOnCatalogOfBrandLink"/>
         </classes>
     </test>
 </suite>

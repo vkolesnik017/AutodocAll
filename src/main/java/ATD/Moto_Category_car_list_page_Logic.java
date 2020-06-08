@@ -1,10 +1,12 @@
 package ATD;
 
+import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static ATD.CommonMethods.checkingContainsUrl;
@@ -255,4 +257,68 @@ public class Moto_Category_car_list_page_Logic extends Moto_Category_car_list_pa
 
         return this;
     }
+
+    @Step("check sorting of product .Moto_Category_car_list_page")
+    public Moto_Category_car_list_page_Logic checkSortingPrice() {
+        List<Double> activeProductsFromTecDocListing = new ArrayList<>(getProductPrice(activePriceOfProduct()));
+        List<Double> notActiveProductsFromTecDocListing = new ArrayList<>(getProductPrice(notActivePriceOfProduct()));
+        Assert.assertEquals(activeProductsFromTecDocListing, getExpectedSortedPrices(activeProductsFromTecDocListing));
+        Assert.assertEquals(notActiveProductsFromTecDocListing, getExpectedSortedPrices(notActiveProductsFromTecDocListing));
+        return this;
+    }
+
+    @Step("get product price .Moto_Category_car_list_page")
+    public List<Double> getProductPrice(ElementsCollection listOfPrice) {
+        List<Double> productsPrise = new ArrayList<>();
+        for (int i = 0; i < listOfPrice.size(); i++) {
+            productsPrise.add(Double.parseDouble(listOfPrice.get(i).getText().replaceAll("[^0-9,]", "").replace(",", ".")));
+        }
+        return productsPrise;
+    }
+
+    @Step("get  expected sorted price .Moto_Category_car_list_page")
+    private List<Double> getExpectedSortedPrices(List<Double> pricesList) {
+        List<Double> expectedSortedPrices = new ArrayList<>(pricesList);
+        Collections.sort(expectedSortedPrices);
+        return expectedSortedPrices;
+    }
+
+    @Step("appears of an analogs products message .Moto_Category_car_list_page")
+    public Moto_Category_car_list_page_Logic appearsOfAnAnalogsProductsMessage() {
+        clickOnReplacementBtnOfProduct("0076543755");
+        analogBlockMessage().should(appear).shouldHave(text("Keine Äquivalente verfügbar"));
+        return this;
+    }
+
+    @Step("click on replacement button of product .Moto_Category_car_list_page")
+    public Moto_Category_car_list_page_Logic clickOnReplacementBtnOfProduct(String artNumber) {
+        btnShowReplacement(artNumber).shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("appears of an analogs products block .Moto_Category_car_list_page")
+    public Moto_Category_car_list_page_Logic appearsOfAnAnalogsProductsBlock() {
+        clickOnReplacementBtnOfProduct("26-8031");
+        analogBlockOfProduct().should(appear);
+        btnAddToBasketAtAnAnalogProduct().shouldHave(sizeGreaterThan(0));
+        return this;
+    }
+
+    @Step(" get id of an analog product .Moto_Category_car_list_page")
+    public String getIdOfAnalogProduct() {
+        clickOnReplacementBtnOfProduct("26-8031");
+        analogBlockOfProduct().should(appear);
+        String idOfBtn = btnAddToBasketAtAnAnalogProduct().get(0).getAttribute("data-ga-label");
+        return idOfBtn;
+    }
+
+    @Step("add product to basket from an analog block() .Moto_Category_car_list_page")
+    public Cart_page_Logic addProductToBasketFromAnalogBlock() {
+        btnAddToBasketAtAnAnalogProduct().get(0).scrollIntoView("{block: \"center\"}").click();
+        basketDropMenu().should(appear);
+        basketDropMenu().should(disappear);
+        basket().click();
+        return page(Cart_page_Logic.class);
+    }
+
 }

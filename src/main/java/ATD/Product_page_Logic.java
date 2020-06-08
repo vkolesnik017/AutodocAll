@@ -642,6 +642,12 @@ public class Product_page_Logic extends Product_page {
         return titleNameProductPageChemicals().getText();
     }
 
+    //Method for accessories product page
+    @Step("Get title name product page accessories. Product_page")
+    public String getTitleNameForProductPageAccessories() {
+        return titleNameProductPageAccessories().getText();
+    }
+
 
     @Step("Get product quanity from counter. Product_page")
     public String getProductQuanity() {

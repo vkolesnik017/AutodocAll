@@ -88,11 +88,33 @@ public class Moto_Category_car_list_page {
         return $x("//a[@class='header-cart__link']");
     }
 
-    SelenideElement dynamicCharacteristicBlock(String artNumOfProduct) {return $x("//span[contains(text(),'"+artNumOfProduct+"')]/ancestor::div[@class='description']//li[@class='important desc_group']");}
+    SelenideElement dynamicCharacteristicBlock(String artNumOfProduct) {
+        return $x("//span[contains(text(),'" + artNumOfProduct + "')]/ancestor::div[@class='description']//li[@class='important desc_group']");
+    }
 
-   ElementsCollection titleOfDynamicCharacteristic(String artNumOfProduct) {
-        return $$x("//span[contains(text(),'"+artNumOfProduct+"')]/ancestor::div[@class='description']//li[@class='important desc_group']/ul/li/span[1]"); }
+    ElementsCollection titleOfDynamicCharacteristic(String artNumOfProduct) {
+        return $$x("//span[contains(text(),'" + artNumOfProduct + "')]/ancestor::div[@class='description']//li[@class='important desc_group']/ul/li/span[1]");
+    }
 
     ElementsCollection valueOfDynamicCharacteristic(String artNumOfProduct) {
-        return $$x("//span[contains(text(),'"+artNumOfProduct+"')]/ancestor::div[@class='description']//li[@class='important desc_group']/ul/li/span[2]"); }
+        return $$x("//span[contains(text(),'" + artNumOfProduct + "')]/ancestor::div[@class='description']//li[@class='important desc_group']/ul/li/span[2]");
+    }
+
+    ElementsCollection activePriceOfProduct() {
+        return $$x("//span[contains(text(),'Kaufen')]/ancestor::div[@class='price_box']//p[@class='actual_price']");
+    }
+
+    ElementsCollection notActivePriceOfProduct() {
+        return $$x("//span[contains(text(),'Verfügbarkeit')]/ancestor::div[@class='price_box']//p[@class='actual_price']");
+    }
+
+    SelenideElement btnShowReplacement(String artOfProduct) {
+        return $x("//span[contains(text(),'" + artOfProduct + "')]/ancestor::li[@class='ovVisLi item_not_available']//div[contains(@class,'show_alternative__btn')]");
+    }
+
+    SelenideElement analogBlockMessage() {return $x("//div[@class='top-small-products__title']");}
+
+    SelenideElement analogBlockOfProduct() {return $x("//div[@class='top-small-products__items']");}
+
+    ElementsCollection btnAddToBasketAtAnAnalogProduct() {return $$x("//div[@class='small-product-button price_box']//a");}
 }

@@ -21,9 +21,15 @@ public class Profile_addresses_page_Logic extends Profile_addresses_page {
         return this;
     }
 
-    @Step("Click shipping edit button. Profile_addresses_page")
+    @Step("Click delivery edit button. Profile_addresses_page")
     public Profile_addresses_page_Logic clickDeliveryEditButton() {
         deliveryEditButton().click();
+        return this;
+    }
+
+    @Step("Click billing edit button. Profile_addresses_page")
+    public Profile_addresses_page_Logic clickBillingEditButton() {
+        billingEditButton().click();
         return this;
     }
 
@@ -60,7 +66,7 @@ public class Profile_addresses_page_Logic extends Profile_addresses_page {
     }
 
     @Step("Checks presence heder private room block and the elements inside. Profile_addresses_page")
-    public Profile_addresses_page_Logic checkPresenceHeaderPrivateRoomBlockAndElementInside() {
+    public Profile_addresses_page_Logic checkPresenceHeaderBlockAndElementInside() {
         headerPrivateRoomBlock().shouldBe(visible);
         nameOfClient().shouldBe(visible);
         depositResultLabel().shouldBe(visible);
@@ -129,23 +135,36 @@ public class Profile_addresses_page_Logic extends Profile_addresses_page {
         return this;
     }
 
+    @Step("Delete billing address. Profile_addresses_page")
+    public Profile_addresses_page_Logic deleteBillingAddress() {
+        deleteBillingAddressBtn().click();
+        return this;
+    }
+
     @Step("Click add delivery address button. Profile_addresses_page")
-    public Profile_addresses_page_Logic clickBtnAddDeliveryAddress()  {
+    public Profile_addresses_page_Logic clickBtnAddDeliveryAddress() {
         addDeliveryAddressBtn().click();
         return this;
     }
 
+    @Step("Click add billing address button. Profile_addresses_page")
+    public Profile_addresses_page_Logic clickBtnAddBillingAddress() {
+        addBillingAddressBtn().click();
+        return this;
+    }
+
     @Step("Filling fields address. Profile_addresses_page")
-    public Profile_addresses_page_Logic fillingFieldsAddress() {
+    public Profile_addresses_page_Logic fillingFieldsAddress(String name, String surname, String street, String house,
+                                                             String comment, String postalCode, String city, String phone) {
         addressForm().shouldBe(visible);
-        fieldName().setValue("autotest");
-        fieldSurname().setValue("autotest");
-        fieldAddressStreet().setValue("autotest");
-        fieldAddressHouse().setValue("autotest");
-        fieldAddressComment().setValue("autotest");
-        fieldPostalCode().setValue("1111");
-        fieldCity().setValue("autotest");
-        fieldPhone().setValue("200+002");
+        fieldName().setValue(name);
+        fieldSurname().setValue(surname);
+        fieldAddressStreet().setValue(street);
+        fieldAddressHouse().setValue(house);
+        fieldAddressComment().setValue(comment);
+        fieldPostalCode().setValue(postalCode);
+        fieldCity().setValue(city);
+        fieldPhone().setValue(phone);
         return this;
     }
 
@@ -162,14 +181,26 @@ public class Profile_addresses_page_Logic extends Profile_addresses_page {
     }
 
     @Step("Choosing delivery country {country} in address form. Profile_addresses_page")
-    public Profile_addresses_page_Logic chooseDeliveryCountry(String country) {
+    public Profile_addresses_page_Logic chooseCountryInAddressForm(String country) {
         countryFromSelector(country).shouldBe(visible).click();
         return this;
     }
 
+    @Step("Get the number of user billing addresses. Profile_addresses_page")
+    public int getNumberOfUserBillingAddress() {
+        return dataUsersInBillingAddressBlock().size();
+    }
+
+    @Step("Checks that the number of billing addresses {oldCountAddressUser} has increased. Profile_addresses_page")
+    public Profile_addresses_page_Logic checkThatNumberOfBillingAddressHasIncreased(int oldCountAddressUser) {
+        dataUsersInBillingAddressBlock().shouldHave(CollectionCondition.sizeGreaterThan(oldCountAddressUser));
+        return this;
+    }
+
+
     @Step("Get the number of user delivery addresses. Profile_addresses_page")
     public int getNumberOfUserDeliveryAddress() {
-       return dataUsersInDeliveryAddressBlock().size();
+        return dataUsersInDeliveryAddressBlock().size();
     }
 
     @Step("Checks that the number of delivery addresses has increased. Profile_addresses_page")
@@ -181,5 +212,22 @@ public class Profile_addresses_page_Logic extends Profile_addresses_page {
     @Step("Checks absence address delivery. Profile_addresses_page")
     public Profile_addresses_page_Logic checkAbsenceAddressDelivery() {
         unitWithoutDeliveryAddressData().shouldBe(visible);
-        return this;    }
+        return this;
+    }
+
+    @Step("Checks absence billing address. Profile_addresses_page")
+    public Profile_addresses_page_Logic checkAbsenceBillingAddress() {
+        unitWithoutBillingAddressData().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Get daily delivery addresses. Profile_addresses_page")
+    public String getDailyDeliveryAddress() {
+        return String.valueOf(userDeliveryAddressData().getText());
+    }
+
+    @Step("Get daily billing addresses. Profile_addresses_page")
+    public String getDailyBillingAddress() {
+        return String.valueOf(userBillingAddressData().getText());
+    }
 }

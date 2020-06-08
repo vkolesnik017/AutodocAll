@@ -35,8 +35,8 @@ public class QC_891_SearchByAnyCriteria {
         openPage(route);
 
         new Moto_main_page_Logic()
-                .inputOfBrandInMainSearchField("BOSCH")
-                .checkOfCurrentUrl("search23");
+                .inputOfBrandInMainSearchField("Bosch")
+                .checkOfCurrentUrl("search24");
     }
 
     @AfterMethod

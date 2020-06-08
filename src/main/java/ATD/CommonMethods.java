@@ -118,6 +118,13 @@ public class CommonMethods {
         return "autotest" + random + "@mailinator.com";
     }
 
+    @Step("Generates random password")
+    public static String passRandom() {
+        Random randomGenerator = new Random();
+        int random = randomGenerator.nextInt();
+        return String.valueOf(random);
+    }
+
     @Step("Checking datenschutzerklarung link behavior")
     public void checkingDatenschutzerklarungLinkBehavior(SelenideElement datenschutzerklarungLink, String cssValue) {
         datenschutzerklarungLink.shouldHave(attribute("title", "Datenschutzerklärung"));
@@ -140,7 +147,7 @@ public class CommonMethods {
         if (shop.equals("EN")) {
             actualCurrency = currencyLocator.getText().split("\\s")[0];
         } else {
-            actualCurrency = currencyLocator.getText().split("\\s")[1];
+            actualCurrency = currencyLocator.getText().split("\\s")[1].replaceAll("[*]", "");
         }
         assertEquals(actualCurrency, expectedCurrency, "Currency in " + nameLocator);
     }

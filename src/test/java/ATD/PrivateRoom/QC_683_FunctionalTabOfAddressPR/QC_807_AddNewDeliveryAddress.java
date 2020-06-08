@@ -41,8 +41,9 @@ public class QC_807_AddNewDeliveryAddress {
                 .getNumberOfUserDeliveryAddress();
         new Profile_addresses_page_Logic().clickBtnAddDeliveryAddress()
                 .checkThatRadioBtnHerrIsActive()
-                .fillingFieldsAddress()
-                .chooseDeliveryCountry("Deutschland")
+                .fillingFieldsAddress("Autotest", "Autotest", "Autotest", "Autotest",
+                        "Autotest", "1111", "Autotest", "200+002")
+                .chooseCountryInAddressForm("Deutschland")
                 .clickSaveBtn()
                 .checkPresenceAndClosePopUpUpdate()
                 .checkThatNumberOfDeliveryAddressHasIncreased(numberUserAddress)

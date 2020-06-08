@@ -3,7 +3,6 @@ package ATD;
 import static com.codeborne.selenide.Condition.*;
 import io.qameta.allure.Step;
 import org.testng.Assert;
-
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.Selenide.sleep;
 import static com.codeborne.selenide.CollectionCondition.size;
@@ -88,6 +87,7 @@ public class Index_chemicals_page_Logic extends Index_chemicals_page {
     @Step("Click on first button Add to basket in top products block. Index_chemicals_page")
     public Index_chemicals_page_Logic clickOnFirstBtnAddToBasketInTopProductsBlock() {
         firstBtnAddToBasketInTopProductsBlock().click();
+        sleep(2000);
         return this;
     }
 
@@ -97,6 +97,25 @@ public class Index_chemicals_page_Logic extends Index_chemicals_page {
         return page(Cart_page_Logic.class);
     }
 
+    @Step("Get name first category in Logical Union after Hover. Index_chemicals_page")
+    public String getNameFirstCategoryInLogicalUnionAfterHover() {
+        catalogFirstGroup().hover();
+        return nameFirstCategoryInLogicalUnion().getText();
+
+    }
+
+    @Step("Click on first category in Logical Union. Index_chemicals_page")
+    public Listing_chemicals_Page_Logic clickOnFirstCategoryInLogicalUnion() {
+        nameFirstCategoryInLogicalUnion().click();
+        return page(Listing_chemicals_Page_Logic.class);
+    }
+
+    @Step("Checking hover popup in top 6 product block. Index_chemicals_page")
+    public Index_chemicals_page_Logic checkingHoverPopupInTop6ProductBlock() {
+        nameFirstProductInBlockTopProducts().hover();
+        detailsBtnInPopupInTopProductBlock().shouldBe(visible);
+        return this;
+    }
 
 
 }
