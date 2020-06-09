@@ -83,4 +83,8 @@ public class Moto_Product_page {
 
     SelenideElement  compatibilityModelBlock() {return $x("//div[@class='accordion-button active']/following-sibling::div/ul");}
 
+    ElementsCollection breadCrumbsLinks() {return $$x("//div[@class='steps breadcrumbs']/ul/li//a");}
+
+    SelenideElement iconOfCatalogBrandInBreadCrumbs() {return $x("//li[@class='step_1 active parts_step_1']//img");}
+
 }

@@ -96,4 +96,47 @@ public class Moto_Catalog_model_page_Logic extends Moto_Catalog_model_page {
         return page(Moto_Categories_page_Logic.class);
     }
 
+
+    @Step(" check Bread Crumbs Block .Moto_Catalog_model_page")
+    public Moto_Catalog_model_page_Logic checkBreadCrumbsBlock() {
+        firstLinkOfBreadCrumbsBlock("SUZUKI MOTORCYCLES");
+        secondLinkOfBreadCrumbsBlock("ACCESS");
+        thirdLinkOfBreadCrumbsBlock("Motorrad Wählen");
+        fourthLinkOfBreadCrumbsBlock("Teil Wählen");
+        clickOnFirstLinkOfBreadCrumbs();
+        return this;
+    }
+
+    @Step(" first link of bread crumbs block .Moto_Catalog_model_page")
+    public Moto_Catalog_model_page_Logic firstLinkOfBreadCrumbsBlock(String titleOfMoto) {
+        breadCrumbsLinks().shouldHaveSize(4);
+        iconOfMotoBrandInBreadCrumbs().shouldBe(visible);
+        titleOfMotoBrandInBreadCrumbs().shouldHave(text(titleOfMoto));
+        return this;
+    }
+
+    @Step(" second link of bread crumbs block .Moto_Catalog_model_page")
+    public Moto_Catalog_model_page_Logic secondLinkOfBreadCrumbsBlock(String titleOfMotoModel) {
+        breadCrumbsLinks().get(1).shouldHave(text(titleOfMotoModel));
+        return this;
+    }
+
+    @Step(" third link of bread crumbs block .Moto_Catalog_model_page")
+    public Moto_Catalog_model_page_Logic thirdLinkOfBreadCrumbsBlock(String title) {
+        breadCrumbsLinks().get(2).shouldHave(text(title)).shouldNotHave(attribute("href"));
+        return this;
+    }
+
+    @Step(" fourth link of bread crumbs block .Moto_Catalog_model_page")
+    public Moto_Catalog_model_page_Logic fourthLinkOfBreadCrumbsBlock(String title) {
+        breadCrumbsLinks().get(3).shouldHave(text(title)).shouldNotHave(attribute("href"));
+        return this;
+    }
+
+    @Step("click on first link of bread crumbs .Moto_Catalog_model_page")
+    public Moto_Categories_maker_page_Logic clickOnFirstLinkOfBreadCrumbs() {
+        titleOfMotoBrandInBreadCrumbs().click();
+        return page(Moto_Categories_maker_page_Logic.class);
+    }
+
 }

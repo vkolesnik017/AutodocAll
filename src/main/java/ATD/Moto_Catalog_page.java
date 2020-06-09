@@ -1,5 +1,6 @@
 package ATD;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selectors.byId;
@@ -66,5 +67,11 @@ public class Moto_Catalog_page {
     SelenideElement selectorInCloseCondition() {return $x("//div[@class='catalog-title__change-car ']");}
 
     SelenideElement mainLogoInHeader() {return $x("//a[@class='header__logo-main']/img");}
+
+    ElementsCollection breadCrumbsLinks() {return $$x("//div[@class='steps breadcrumbs']/ul/li");}
+
+    SelenideElement iconOfMotoBrandInBreadCrumbs() {return $x("//li[@class='step_1 active parts_step_1']//img");}
+
+    SelenideElement titleOfMotoBrandInBreadCrumbs() {return $x("//li[@class='step_1 active parts_step_1']//a");}
 
 }
