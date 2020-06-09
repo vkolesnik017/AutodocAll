@@ -14,9 +14,9 @@ import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_636_PasswordChangeSuccessful {
+public class QC_660_ChangePassword_NewPassNotEqualConfirmPass {
 
-    private String mail = "QC_636_autotest@mailinator.com";
+    private String mail = "QC_660_autotest@mailinator.com";
 
     @BeforeClass
     void setUp() {
@@ -31,8 +31,8 @@ public class QC_636_PasswordChangeSuccessful {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks for a successful password change")
-    public void testPasswordChangeSuccessful(String route) {
+    @Description(value = "Test checks the password change with an empty field Old password")
+    public void testPassChangeWithAnEmptyFieldOldPass(String route) {
         String newPass = passRandom();
         openPage(route);
         new Main_page_Logic().loginAndTransitionToProfilePlusPage(mail)
@@ -41,13 +41,10 @@ public class QC_636_PasswordChangeSuccessful {
                 .checkPresenceChangeEmailBlock()
                 .fillFieldOldPass(password)
                 .fillFieldNewPass(newPass)
-                .fillFieldConfirmPass(newPass)
+                .fillFieldConfirmPass("qweQwe123")
                 .clickSvePassBtn()
-                .closePopUp()
-                .fillFieldOldPass(newPass)
-                .fillFieldNewPass(password)
-                .fillFieldConfirmPass(password)
-                .clickSvePassBtn()
+                .checkTitleInsidePopUp("Fehler")
+                .checkErrorTextInsidePopUp("muss mit dem Feld „Neues Kennwort“ übereinstimmen")
                 .closePopUp();
         checkingContainsUrl("profile/settings");
     }

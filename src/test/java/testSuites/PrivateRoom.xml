@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="PrivateRoom" parallel="methods" thread-count="4">
+<suite name="PrivateRoom" parallel="methods" thread-count="4" data-provider-thread-count="4">
 
     <listeners>
         <listener class-name="ATD.ProjectListener"/>
@@ -33,6 +33,15 @@
     <test name="QC_635_FunctionalOfTheSettingsTabInPR">
         <classes>
             <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_636_PasswordChangeSuccessful"/>
+            <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_638_PasswordChangeAllFieldsAreEmpty"/>
+            <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_644_LogInToSiteWithNewPassAfterChangingViaPR"/>
+            <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_645_LogInToSiteWithAnOldPassAfterChangingViaPR"/>
+            <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_648_ChangePass_OldPassFieldIsEmpty"/>
+            <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_651_ChangePass_FieldsNewPassAndConfirmPassIsEmpty"/>
+            <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_653_ChangePass_ConfirmPassFieldsIsEmpty"/>
+            <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_658_ChangePassword_InvalidOldPass"/>
+            <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_659_EnterPassLessThenFourCharacters"/>
+            <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_660_ChangePassword_NewPassNotEqualConfirmPass"/>
         </classes>
     </test>
 

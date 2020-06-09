@@ -35,7 +35,15 @@ public class Profile_setting_page {
         return $x("//div[@id='popup_update']");
     }
 
+    SelenideElement titleInsidePopUp() {
+        return $x("//div[@id='popup_update']//h3");
+    }
+
     SelenideElement closePopUP() {
         return $x("//div[@class='buttons-inner']");
+    }
+
+    SelenideElement errorTextInsidePopUp() {
+        return $x("//div[@class='txt ']//ul");
     }
 }
