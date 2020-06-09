@@ -146,4 +146,15 @@ public class Index_instruments_page_Logic extends Index_instruments_page {
         return this;
     }
 
+    @Step("Checking presence block Advantages and information popup after hover on tab number 2-3. Index_instruments_page")
+    public Index_instruments_page_Logic checkingPresenceAdvantagesBlockAndInformationPopup() {
+        blockAdvantages().scrollTo().shouldBe(visible);
+        firstTabAdvantages().shouldBe(visible);
+        secondTabAdvantage().hover();
+        popupSecondTabAdvantage().shouldBe(visible);
+        thirdTabAdvantage().hover();
+        popupThirdTabAdvantage().shouldBe(visible);
+        return this;
+    }
+
 }

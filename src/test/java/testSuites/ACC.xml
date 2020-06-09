@@ -98,6 +98,7 @@
     <test name="QC_1356_BlockCategoriesInSidebarOnListingAccessories">
         <classes>
             <class name="ATD.ACC.QC_1356_BlockCategoriesInSidebarOnListingAccessories.QC_1360_TitleCategoriesBlockInSidebar"/>
+            <class name="ATD.ACC.QC_1356_BlockCategoriesInSidebarOnListingAccessories.QC_1366_CategoriesSelectedLogicalUnion"/>
             <class name="ATD.ACC.QC_1356_BlockCategoriesInSidebarOnListingAccessories.QC_1368_SelectCategoryFromSidebar"/>
         </classes>
     </test>
@@ -122,6 +123,7 @@
 
     <test name="QC_1254_MainTools">
         <classes>
+            <class name="ATD.ACC.QC_1254_MainTools.QC_1321_BlockAdvantagesInternetShop"/>
             <class name="ATD.ACC.QC_1254_MainTools.QC_1333_BlockTopBrandsOnMainTools"/>
             <class name="ATD.ACC.QC_1254_MainTools.QC_1334_BlockFeaturesOnMainTools"/>
             <class name="ATD.ACC.QC_1254_MainTools.QC_1335_BlockDeliveryOnMainTools"/>
