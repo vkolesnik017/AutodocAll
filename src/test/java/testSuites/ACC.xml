@@ -27,6 +27,7 @@
 
     <test name="QC_1042_MainCategoryCatalogOnMainChemie">
         <classes>
+            <class name="ATD.ACC.QC_1042_MainCategoryCatalogOnMainChemie.QC_1056_PresenceSeparateCategoryInMainChemistry"/>
             <class name="ATD.ACC.QC_1042_MainCategoryCatalogOnMainChemie.QC_1058_PresenceLogicalAssociations"/>
             <class name="ATD.ACC.QC_1042_MainCategoryCatalogOnMainChemie.QC_1059_TransitionToListingPageWithCategoryLogicalUnion"/>
         </classes>
@@ -104,6 +105,7 @@
     <test name="QC_1340_ListingAccessories">
         <classes>
             <class name="ATD.ACC.QC_1340_ListingAccessories.QC_1378_NameCategoryOnListingAccessories"/>
+            <class name="ATD.ACC.QC_1340_ListingAccessories.QC_1382_BlockChangeViewListingAccessories"/>
             <class name="ATD.ACC.QC_1340_ListingAccessories.QC_1405_BlockWithQuantityProductsOnListingAccessories"/>
         </classes>
     </test>
