@@ -1147,11 +1147,11 @@ public class Listing_page_Logic extends Listing_page {
     @Step("Get expected characteristics of product on listing. Listing_page")
     public List<String> getExpectedCharacteristcsOfProduct() {
         ArrayList<String> expectedCharacteristics = new ArrayList<>();
-        expectedCharacteristics.add($x("//li[1][@class='important']").text());
-        expectedCharacteristics.add($x("//li[2][@class='important']").text());
-        expectedCharacteristics.add($x("//li[3][@class='important']").text());
-        expectedCharacteristics.add($x("//li[4][@class='important']").text());
-        expectedCharacteristics.add($x("//li[5][@class='important']").text());
+        expectedCharacteristics.add(firstCharacteristicInFirstProduct().text());
+        expectedCharacteristics.add(secondCharacteristicInFirstProduct().text());
+        expectedCharacteristics.add(thirdCharacteristicInFirstProduct().text());
+        expectedCharacteristics.add(fourthCharacteristicInFirstProduct().text());
+        expectedCharacteristics.add(fifthCharacteristicInFirstProduct().text());
         return expectedCharacteristics;
     }
 }
