@@ -270,12 +270,14 @@ public class Listing_page_Logic extends Listing_page {
         List<Float> price = getAllPricesOnListingPage(listingViewModeLocator);
         ElementsCollection ridexProducts = $$x("//*[@class='name']/a[contains (text(),'RIDEX')]");
         for (int i = 0; i < ridexProducts.size() - 1; i++) {
-            if (price.get(i) <= price.get(i + 1)) {
-                System.out.println(price.get(i));
-            } else {
-                Assert.fail("Products are NOT sorted by price in increasing order");
+            if (firstProductTitleOnListing().has(text("RIDEX"))) {
+                if (price.get(i) <= price.get(i + 1)) {
+                    System.out.println(price.get(i));
+                } else {
+                    Assert.fail("Products are NOT sorted by price in increasing order");
+                }
+                System.out.println("Products are sorted by price in increasing order");
             }
-            System.out.println("Products are sorted by price in increasing order");
         }
         return this;
     }
@@ -1139,6 +1141,17 @@ public class Listing_page_Logic extends Listing_page {
         expectedCharacteristics.add("Engine code:\n2AZ-FE");
         expectedCharacteristics.add("Model year from:\n...");
         expectedCharacteristics.add("Model year to:\n...");
+        return expectedCharacteristics;
+    }
+
+    @Step("Get expected characteristics of product on listing. Listing_page")
+    public List<String> getExpectedCharacteristcsOfProduct() {
+        ArrayList<String> expectedCharacteristics = new ArrayList<>();
+        expectedCharacteristics.add($x("//li[1][@class='important']").text());
+        expectedCharacteristics.add($x("//li[2][@class='important']").text());
+        expectedCharacteristics.add($x("//li[3][@class='important']").text());
+        expectedCharacteristics.add($x("//li[4][@class='important']").text());
+        expectedCharacteristics.add($x("//li[5][@class='important']").text());
         return expectedCharacteristics;
     }
 }
