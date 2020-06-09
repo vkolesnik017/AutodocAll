@@ -74,6 +74,10 @@ class TyresListing_page {
 
     ElementsCollection productsRatingOnListing() { return $$x("//div[@class='review-vote']/span/span"); }
 
+    ElementsCollection fiveRatingStarsOnTyresListing() { return $$x("//div[@class='review-vote']/span/span[@style='width:102%']"); }
+
+    ElementsCollection ratingInProductBlock() { return $$(".review-vote__price-block__rating__bg"); }
+
     SelenideElement brandInputInSelector() { return $(".multiple-select__dropdown-search > input"); }
 
     SelenideElement brandFilterTyresInSidebar() { return $x("//*[@class='tires_marks criteria-filter-block-js']//a"); }

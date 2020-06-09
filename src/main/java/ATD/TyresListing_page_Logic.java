@@ -263,6 +263,20 @@ public class TyresListing_page_Logic extends TyresListing_page {
         return this;
     }
 
+    @Step("Method checks that every product on tyres listing has five stars rating. TyresListing_page")
+    public TyresListing_page_Logic checkFiveStarsRatingInEveryProductOnListingTyres() {
+        for (int i = 1; i < productsRatingOnListing().size(); i++) {
+            productsRatingOnListing().get(i).shouldHave(attribute("style", "width: 102%;"));
+        }
+        return this;
+    }
+
+    @Step("Method checks two unique ratings on listing. Listing_page")
+    public TyresListing_page_Logic checkTwoUniqueRatingOnTyresListing() {
+        Assert.assertTrue(fiveRatingStarsOnTyresListing().size() < ratingInProductBlock().size());
+        return this;
+    }
+
     @Step("Check brand relink on tyres listing. TyresListing_page")
     public TyresListing_page_Logic checkBrandRelink() {
         String brandNameInSidebar = brandFilterTyresInSidebar().attr("data-value");
