@@ -25,4 +25,6 @@ public class TyresProduct_page {
     SelenideElement addToBasketTopsellerBlockButton() { return $(".top-product-block .product-list__item--reifen .still_add_to_basket"); }
 
     SelenideElement productFronTopsellerBlock() { return $(".top-product-block .product-list__item--reifen .product-list__item__image > a"); }
+
+    SelenideElement reifenlabelBlock() { return $(".product-reifen-label"); }
 }
