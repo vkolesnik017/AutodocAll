@@ -35,33 +35,6 @@
         </classes>
     </test>
 
-    <test name="QC_1272_TyresMainPage">
-        <classes>
-            <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_1336_GoToAllBrandsPageFromTyresMainPage"/>
-            <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_1346_GoToAllSizesPageFromTyresMainPage"/>
-        </classes>
-    </test>
-
-    <test name="QC_1294_AdvantagesBlockOnCatalogSizeTyresRoute">
-        <classes>
-            <class name="ATD.Tyres.QC_1294_AdvantagesBlockOnCatalogSizeTyresRoute.QC_1296_TestPresenceAdvantagesBlockOnCatalogTyreRoute"/>
-            <class name="ATD.Tyres.QC_1294_AdvantagesBlockOnCatalogSizeTyresRoute.QC_1300_TransitionToClubPageFromAdvantagesBlock"/>
-            <class name="ATD.Tyres.QC_1294_AdvantagesBlockOnCatalogSizeTyresRoute.QC_1302_TransitionToMobileAPPpageFromAdvantagesBlock"/>
-        </classes>
-    </test>
-
-    <test name="QC_1367_TyresProductPage">
-        <classes>
-            <class name="ATD.Tyres.QC_1367_TyresProductPage.QC_1374_TestRatingBlockPresenceOnTyresProductPage"/>
-            <class name="ATD.Tyres.QC_1367_TyresProductPage.QC_1375_TestProductPricePresenceOnTyresProductPage"/>
-            <class name="ATD.Tyres.QC_1367_TyresProductPage.QC_1376_TestDeliveryLinkPresenceOnTyresProductPage"/>
-            <class name="ATD.Tyres.QC_1367_TyresProductPage.QC_1377_GoToDeliveryPageFromTyresProductPage"/>
-            <class name="ATD.Tyres.QC_1367_TyresProductPage.QC_1412_TestPaymentMethodsBlockPresenceOnTyresProductPage"/>
-            <class name="ATD.Tyres.QC_1367_TyresProductPage.QC_1413_TestDeliveryMethodsBlockPresenceOnTyresProductPage"/>
-            <class name="ATD.Tyres.QC_1367_TyresProductPage.QC_1414_TestFaqBlockPresenceOnTyresProductPage"/>
-        </classes>
-    </test>
-
     <test name="QC_1234_BrandRelinkBlockOnTyresListing">
         <classes>
             <class name="ATD.Tyres.QC_1234_BrandRelinkBlockOnTyresListing.QC_1235_TestPresenceBrandRelinkBlockOnTyresListing"/>
@@ -77,6 +50,28 @@
             <class name="ATD.Tyres.QC_1238_SizeRelinkBlockOnTyresListing.QC_1264_GoToDimensionRouteInteractDimensionRelinkBlock"/>
             <class name="ATD.Tyres.QC_1238_SizeRelinkBlockOnTyresListing.QC_1265_GoToAllSizesRouteInteractSizesRelinkBlock"/>
             <class name="ATD.Tyres.QC_1238_SizeRelinkBlockOnTyresListing.QC_1266_GoToAllSizesRouteInteractDiameterRelinkBlock"/>
+        </classes>
+    </test>
+
+    <test name="QC_1253_PaymentsAndDeliveryBlockOnTyresListing">
+        <classes>
+            <class name="ATD.Tyres.QC_1253_PaymentsAndDeliveryBlockOnTyresListing.QC_1271_TestPresencePaymentsTypeBlockOnTyresListing"/>
+            <class name="ATD.Tyres.QC_1253_PaymentsAndDeliveryBlockOnTyresListing.QC_1284_TestPresenceDeliveryTypeBlockOnTyresListing"/>
+        </classes>
+    </test>
+
+    <test name="QC_1272_TyresMainPage">
+        <classes>
+            <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_1336_GoToAllBrandsPageFromTyresMainPage"/>
+            <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_1346_GoToAllSizesPageFromTyresMainPage"/>
+        </classes>
+    </test>
+
+    <test name="QC_1294_AdvantagesBlockOnCatalogSizeTyresRoute">
+        <classes>
+            <class name="ATD.Tyres.QC_1294_AdvantagesBlockOnCatalogSizeTyresRoute.QC_1296_TestPresenceAdvantagesBlockOnCatalogTyreRoute"/>
+            <class name="ATD.Tyres.QC_1294_AdvantagesBlockOnCatalogSizeTyresRoute.QC_1300_TransitionToClubPageFromAdvantagesBlock"/>
+            <class name="ATD.Tyres.QC_1294_AdvantagesBlockOnCatalogSizeTyresRoute.QC_1302_TransitionToMobileAPPpageFromAdvantagesBlock"/>
         </classes>
     </test>
 
@@ -107,16 +102,24 @@
         </classes>
     </test>
 
-    <test name="QC_1253_PaymentsAndDeliveryBlockOnTyresListing">
+    <test name="QC_1367_TyresProductPage">
         <classes>
-            <class name="ATD.Tyres.QC_1253_PaymentsAndDeliveryBlockOnTyresListing.QC_1271_TestPresencePaymentsTypeBlockOnTyresListing"/>
-            <class name="ATD.Tyres.QC_1253_PaymentsAndDeliveryBlockOnTyresListing.QC_1284_TestPresenceDeliveryTypeBlockOnTyresListing"/>
+            <class name="ATD.Tyres.QC_1367_TyresProductPage.QC_1374_TestRatingBlockPresenceOnTyresProductPage"/>
+            <class name="ATD.Tyres.QC_1367_TyresProductPage.QC_1375_TestProductPricePresenceOnTyresProductPage"/>
+            <class name="ATD.Tyres.QC_1367_TyresProductPage.QC_1376_TestDeliveryLinkPresenceOnTyresProductPage"/>
+            <class name="ATD.Tyres.QC_1367_TyresProductPage.QC_1377_GoToDeliveryPageFromTyresProductPage"/>
+            <class name="ATD.Tyres.QC_1367_TyresProductPage.QC_1412_TestPaymentMethodsBlockPresenceOnTyresProductPage"/>
+            <class name="ATD.Tyres.QC_1367_TyresProductPage.QC_1413_TestDeliveryMethodsBlockPresenceOnTyresProductPage"/>
+            <class name="ATD.Tyres.QC_1367_TyresProductPage.QC_1414_TestFaqBlockPresenceOnTyresProductPage"/>
+            <class name="ATD.Tyres.QC_1367_TyresProductPage.QC_1415_TestAddToBasketFromTopsellerBlock"/>
+            <class name="ATD.Tyres.QC_1367_TyresProductPage.QC_1416_TestTransitionToProductPageFromTopsellerBlock"/>
         </classes>
     </test>
 
     <test name="QC_1427_FilterByRatingOnTyresListing">
         <classes>
             <class name="ATD.Tyres.QC_1427_FilterByRatingOnTyresListing.QC_1428_TestFilterByRatingPresenceOnTyresListing"/>
+            <class name="ATD.Tyres.QC_1427_FilterByRatingOnTyresListing.QC_1429_TestFilterByRatingApplyingOnTyresListing"/>
         </classes>
     </test>
 

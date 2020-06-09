@@ -312,13 +312,76 @@ public class Moto_Category_car_list_page_Logic extends Moto_Category_car_list_pa
         return idOfBtn;
     }
 
-    @Step("add product to basket from an analog block() .Moto_Category_car_list_page")
+    @Step("add product to basket from an analog block .Moto_Category_car_list_page")
     public Cart_page_Logic addProductToBasketFromAnalogBlock() {
-        btnAddToBasketAtAnAnalogProduct().get(0).scrollIntoView("{block: \"center\"}").click();
+        analogBlockOfProduct().shouldBe(visible);
+        btnAddToBasketAtAnAnalogProduct().get(0).hover().click();
         basketDropMenu().should(appear);
         basketDropMenu().should(disappear);
         basket().click();
         return page(Cart_page_Logic.class);
     }
 
+
+    @Step("check links of bread crumbs block .Moto_Category_car_list_page")
+    public Moto_Category_car_list_page_Logic checkLinksOfBreadCrumbsBlock() throws SQLException {
+        checkFirstLinkOfBreadCrumbsBlock();
+        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_categories"));
+        back();
+        checkSecondLinkOfBreadCrumbsBlock("Filter");
+        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_parent_category"));
+        back();
+        checkThirdLinkOfBreadCrumbsBlock("Ölfilter");
+        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_category_car_list2"));
+        checkFourthLinkOfBreadCrumbsBlock("BMW");
+        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_category_maker"));
+        back();
+        checkFifthLinkOfBreadCrumbsBlock("K");
+        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_category_car_list_model2"));
+        back();
+        checkSixthLinkOfBreadCrumbsBlock("K 1 (K589)");
+        return this;
+    }
+
+    @Step("check  of first link at bread crumbs block .Moto_Category_car_list_page")
+    public Moto_Categories_page_Logic checkFirstLinkOfBreadCrumbsBlock() {
+        breadCrumbsBlock().shouldBe(visible);
+        iconOfFirstLinkBreadCrumbsBlock().shouldBe(visible).click();
+        return page(Moto_Categories_page_Logic.class);
+    }
+
+    @Step("check  of second link at bread crumbs block .Moto_Category_car_list_page")
+    public Moto_Parent_Category_page_Logic checkSecondLinkOfBreadCrumbsBlock(String titleOfLink) {
+        breadCrumbsBlock().shouldBe(visible);
+        linksOfBreadCrumbs().get(1).shouldHave(exactText(titleOfLink)).click();
+        return page(Moto_Parent_Category_page_Logic.class);
+    }
+
+    @Step("check  of third link at bread crumbs block .Moto_Category_car_list_page")
+    public Moto_Category_car_list_page_Logic checkThirdLinkOfBreadCrumbsBlock(String titleOfLink) {
+        breadCrumbsBlock().shouldBe(visible);
+        linksOfBreadCrumbs().get(2).shouldHave(exactText(titleOfLink)).click();
+        return this;
+    }
+
+    @Step("check  of fourth link at bread crumbs block .Moto_Category_car_list_page")
+    public Moto_Category_maker_page_Logic checkFourthLinkOfBreadCrumbsBlock(String titleOfLink) {
+        breadCrumbsBlock().shouldBe(visible);
+        linksOfBreadCrumbs().get(3).shouldHave(text(titleOfLink)).click();
+        return page(Moto_Category_maker_page_Logic.class);
+    }
+
+    @Step("check  of fifth link at bread crumbs block .Moto_Category_car_list_page")
+    public Moto_Category_maker_page_Logic checkFifthLinkOfBreadCrumbsBlock(String titleOfLink) {
+        breadCrumbsBlock().shouldBe(visible);
+        linksOfBreadCrumbs().get(4).shouldHave(text(titleOfLink)).click();
+        return page(Moto_Category_maker_page_Logic.class);
+    }
+
+    @Step("check  of sixth link at bread crumbs block .Moto_Category_car_list_page")
+    public Moto_Category_car_list_page_Logic checkSixthLinkOfBreadCrumbsBlock(String titleOfLink) {
+        breadCrumbsBlock().shouldBe(visible);
+        linksOfBreadCrumbs().get(5).shouldHave(text(titleOfLink)).shouldNotHave(attribute("href"));
+        return this;
+    }
 }
