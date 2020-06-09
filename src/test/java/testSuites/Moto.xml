@@ -103,7 +103,11 @@
     <test name="QC_336_BreadCrumbsBlock">
         <classes>
             <class name="MOTO.QC_336_BreadCrumbsBlock.QC_338_StructureOfBreadCrumbsBlockAtBrands"/>
+            <class name="MOTO.QC_336_BreadCrumbsBlock.QC_339_StructureOfBreadCrumbsBlockAtCatalogModels"/>
+            <class name="MOTO.QC_336_BreadCrumbsBlock.QC_340_StructureOfBreadCrumbsBlockAtTecDocCatalog"/>
             <class name="MOTO.QC_336_BreadCrumbsBlock.QC_341_StructureOfBreadCrumbsBlock"/>
+            <class name="MOTO.QC_336_BreadCrumbsBlock.QC_342_StructureOfBreadCrumbsBlockAtModelListing"/>
+            <class name="MOTO.QC_336_BreadCrumbsBlock.QC_343_StructureOfBreadCrumbsBlockAtProductPage"/>
         </classes>
     </test>
 </suite>
