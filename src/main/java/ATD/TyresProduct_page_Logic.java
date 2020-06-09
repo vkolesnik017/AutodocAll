@@ -54,4 +54,20 @@ public class TyresProduct_page_Logic extends TyresProduct_page {
         deliveryMethodsBlock().shouldBe(visible);
         return this;
     }
+
+    @Step("Check add to basket from topseller block on tyres product page. TyresProduct_page")
+    public TyresProduct_page_Logic checkAddToBasketFromTopsellerBlock() {
+        topsellerBlock().shouldBe(visible);
+        addToBasketTopsellerBlockButton().click();
+        return this;
+    }
+
+    @Step("Check transition to product page from topseller block. TyresProduct_page")
+    public TyresProduct_page_Logic checkTransitionToProductPageFromTopsellerBlock() {
+        topsellerBlock().shouldBe(visible);
+        String urlInTopBlock = productFronTopsellerBlock().attr("href");
+        productFronTopsellerBlock().click();
+        waitingWhileLinkBecomeExpected(urlInTopBlock);
+        return this;
+    }
 }

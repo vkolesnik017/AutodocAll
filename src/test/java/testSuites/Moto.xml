@@ -76,7 +76,7 @@
         </classes>
     </test>
 
-       <test name="QC_373_MainIssueBlockAtTecDocListing">
+    <test name="QC_373_MainIssueBlockAtTecDocListing">
         <classes>
             <class name="MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_374_PresenceOfMainIssueBlock"/>
             <class name="MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_375_ApplicabilityOfProductsInTecDocListing"/>
@@ -97,6 +97,13 @@
             <class name="MOTO.QC_852_TopBrandsBlock.QC_853_PresenceOfTopBrandsBlock"/>
             <class name="MOTO.QC_852_TopBrandsBlock.QC_854_TransitionByClickOnTopBrand"/>
             <class name="MOTO.QC_852_TopBrandsBlock.QC_855_TransitionByClickOnCatalogOfBrandLink"/>
+        </classes>
+    </test>
+
+    <test name="QC_336_BreadCrumbsBlock">
+        <classes>
+            <class name="MOTO.QC_336_BreadCrumbsBlock.QC_338_StructureOfBreadCrumbsBlockAtBrands"/>
+            <class name="MOTO.QC_336_BreadCrumbsBlock.QC_341_StructureOfBreadCrumbsBlock"/>
         </classes>
     </test>
 </suite>

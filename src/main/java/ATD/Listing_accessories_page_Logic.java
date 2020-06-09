@@ -48,4 +48,13 @@ public class Listing_accessories_page_Logic extends Listing_accessories_page {
         return this;
     }
 
+    @Step("Checking change display of products on the list view and then grid. Listing_accessories_page")
+    public Listing_accessories_page_Logic checkingChangeDisplayProductsAsListAndGrid () {
+        blockChangePositionProductsOnListOrGrid().shouldBe(visible);
+        listingProductsDisplayedAsList().shouldBe(visible);
+        btnChangePositionProductsAsGrid().click();
+        listingProductsDisplayedAsGrid().shouldBe(visible);
+        return this;
+    }
+
 }

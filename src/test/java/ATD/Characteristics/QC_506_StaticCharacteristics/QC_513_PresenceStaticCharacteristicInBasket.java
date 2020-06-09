@@ -40,20 +40,23 @@ public class QC_513_PresenceStaticCharacteristicInBasket {
     clearBrowserCache();
 
     ArrayList<String> expectedCharacteristics = new ArrayList<>();
-    expectedCharacteristics.add("Durchmesser \\[mm]:\\n280");
+    expectedCharacteristics.add("Einbauseite:\\nHinterachse");
+    expectedCharacteristics.add("Durchmesser \\[mm]:\\n239");
     expectedCharacteristics.add("Bremsscheibenart:\\nVoll");
-    expectedCharacteristics.add("Zentrierungsdurchmesser \\[mm]:\\n63,5");
-    expectedCharacteristics.add("Bohrbild/Lochzahl:\\n05/05");
-    expectedCharacteristics.add("Lochkreis-Ø \\[mm]:\\n108,0");
-    expectedCharacteristics.add("Bremsscheibendicke \\[mm]:\\n11,0");
-    expectedCharacteristics.add("Mindestdicke \\[mm]:\\n9,0");
-    expectedCharacteristics.add("Höhe \\[mm]:\\n50,7");
-    expectedCharacteristics.add("Gewicht\\[kg]:\\n4,6");
-    expectedCharacteristics.add("Ergänzungsartikel/Ergänzende Info 2:\\nohne Radnabe, ohne Radbefestigungsbolzen");
-    expectedCharacteristics.add("Zustand:\\nBrandneu");
+    expectedCharacteristics.add("Zentrierungsdurchmesser \\[mm]:\\n65");
+    expectedCharacteristics.add("Lochanzahl:\\n5");
+    expectedCharacteristics.add("Felge Lochzahl:\\n5");
+    expectedCharacteristics.add("Bohrung-Ø 2 \\[mm]:\\n6,6");
+    expectedCharacteristics.add("Bohrung-Ø 1 \\[mm]:\\n15,75");
+    expectedCharacteristics.add("Lochkreis-Ø \\[mm]:\\n100");
+    expectedCharacteristics.add("Bremsscheibendicke \\[mm]:\\n8,9");
+    expectedCharacteristics.add("Mindestdicke \\[mm]:\\n7");
+    expectedCharacteristics.add("Innendurchmesser \\[mm]:\\n132,5");
+    expectedCharacteristics.add("Höhe \\[mm]:\\n33,4");
+    expectedCharacteristics.add("Bohrung-Ø \\[mm]:\\n15,8");
 
     ElementsCollection actualCharacteristics =
-            productPageLogic.openProductPageById(route, "8039059")
+            productPageLogic.openProductPageById(route, "7999323")
                     .addProductToCart()
                     .closePopupOtherCategoryIfYes()
                     .cartClick()
