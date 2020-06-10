@@ -61,7 +61,7 @@ public class QC_511_PresenceStaticCharacteristicOnSearchListing {
         expectedCharacteristics.add("Bohrung-Ø \\[mm]:\\n15,8");
 
         openPage(route + "/" + db.getRouteByRouteName(getShopFromRoute(route), "search10"));
-        String articleProductForSearchListing = "82B0691";
+        String articleProductForSearchListing = "SKBD-0022841";
         ElementsCollection actualCharacteristics = searchPageLogic.getCharacteristicsDesiredProductForSearch(articleProductForSearchListing);
         new CommonMethods().compareCharacteristics(actualCharacteristics, expectedCharacteristics);
     }
