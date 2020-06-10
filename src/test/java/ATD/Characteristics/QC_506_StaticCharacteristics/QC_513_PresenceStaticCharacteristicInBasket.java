@@ -48,7 +48,7 @@ public class QC_513_PresenceStaticCharacteristicInBasket {
             productPageLogic.closePopupOtherCategoryIfYes()
                             .cartClick()
                             .getCharacteristicsOfProduct();
-    new CommonMethods().compareCharacteristics(actualCharacteristics, expectedCharacteristics);
+    new Product_page_Logic().compareCharacteristics(actualCharacteristics, expectedCharacteristics);
   }
 
   @AfterMethod
