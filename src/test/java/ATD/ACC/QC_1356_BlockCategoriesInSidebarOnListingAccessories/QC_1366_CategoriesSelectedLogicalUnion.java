@@ -42,10 +42,8 @@ public class QC_1366_CategoriesSelectedLogicalUnion {
     public void testChecksComparisonCategoriesBetweenSidebarAndLogicalUnion(String route) {
         openPage(route);
         nameCategories = new Index_accessories_page_Logic().getNameAllCategoriesInLogicalUnionAndAddToList();
-        System.out.println(nameCategories);
         index_accessories_page_logic.clicksOnCategory();
         nameCategoriesSidebar = new Listing_accessories_page_Logic().getNameAllCategoriesInSidebarAndTitleNamePage();
-        System.out.println(nameCategoriesSidebar);
         Assert.assertEquals(nameCategories, nameCategoriesSidebar);
     }
 

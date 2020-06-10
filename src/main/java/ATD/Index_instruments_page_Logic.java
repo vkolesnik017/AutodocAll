@@ -133,8 +133,8 @@ public class Index_instruments_page_Logic extends Index_instruments_page {
         return this;
     }
 
-    @Step("Click on first goods in block top-6. Index_instruments_page")
-    public Product_page_Logic clickOnFirstGoodsInBlockTop6() {
+    @Step("Click on first Product in block top-6. Index_instruments_page")
+    public Product_page_Logic clickOnFirstProductInBlockTop6() {
         nameFirstProductInTop6ProductsBlock().click();
         return page(Product_page_Logic.class);
     }
