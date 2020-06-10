@@ -5,7 +5,8 @@ import io.qameta.allure.Step;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.*;
+import static ATD.CommonMethods.getCurrencyAndVerify;
+import static ATD.CommonMethods.getPriceFromElement;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -39,7 +40,7 @@ public class Cart_page_Logic extends Cart_page {
     @Step("Click uncover characteristics for first product and get his characteristics. Cart_page")
     public ElementsCollection getCharacteristicsOfProduct() {
         uncoverCharacteristics().click();
-        return $$(".info__description>li").shouldHave(sizeGreaterThan(10));
+        return $$(".info__description>li").shouldHave(sizeGreaterThan(4));
     }
 
     @Step("Make price for minimum order for CH. Cart_page")

@@ -70,4 +70,10 @@ public class TyresProduct_page_Logic extends TyresProduct_page {
         waitingWhileLinkBecomeExpected(urlInTopBlock);
         return this;
     }
+
+    @Step("Check reifenlabel block visibility. TyresProduct_page")
+    public TyresProduct_page_Logic checkReifenlabelBlockVisibility() {
+        reifenlabelBlock().shouldBe(visible);
+        return this;
+    }
 }
