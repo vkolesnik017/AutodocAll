@@ -1,7 +1,8 @@
-package ATD.FiltersSorting.QC_195_FiltersSorting_outputSorting;
+package ATD.Tyres.QC_1367_TyresProductPage;
 
-import ATD.Listing_page_Logic;
+
 import ATD.SetUp;
+import ATD.TyresProduct_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -16,7 +17,7 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_227_FiltersSorting_TestOutputSortingWithTwoGenerics {
+public class QC_1361_TestReifenlabelBlockPresenceOnTyresProductPage {
 
     @BeforeClass
     void setUp() {
@@ -25,20 +26,20 @@ public class QC_227_FiltersSorting_TestOutputSortingWithTwoGenerics {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list7");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "tyre_item");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Romaniuta")
-    @Description(value = "Test checks price and addToBasket buttons sorting with two generics")
-    public void testSortingTwoGeneric(String route) {
+    @Description(value = "Test Checks Reifenlabel Block Presence On Tyres Product Page")
+    public void testReifenlabelBlockPresenceOnTyresProductPage(String route) {
         openPage(route);
-        new Listing_page_Logic().checkOutptuSortingWithTwoGeneric();
+        new TyresProduct_page_Logic().checkReifenlabelBlockVisibility();
     }
 
     @AfterMethod
-    private void teatDown() {
+    public void tearDown() {
         close();
     }
 }

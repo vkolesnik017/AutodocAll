@@ -4,6 +4,7 @@ package ATD;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selenide.page;
 
 public class Profile_setting_page_Logic extends Profile_setting_page {
 
@@ -48,5 +49,24 @@ public class Profile_setting_page_Logic extends Profile_setting_page {
         popUpUpdate().shouldBe(visible);
         closePopUP().click();
         return this;
+    }
+
+    @Step("Checks title inside popup {expectedText}. Profile_setting_page_Logic")
+    public Profile_setting_page_Logic checkTitleInsidePopUp(String expectedText) {
+        titleInsidePopUp().shouldHave(text(expectedText));
+        return this;
+    }
+
+    @Step("Checks for error text {expectedText} inside popup. Profile_setting_page_Logic")
+    public Profile_setting_page_Logic checkErrorTextInsidePopUp(String expectedText) {
+        errorTextInsidePopUp().shouldHave(matchesText(expectedText));
+        return this;
+    }
+
+
+    @Step(":from Profile_setting_page_Logic")
+    public Main_page_Logic logOutClick() {
+        new Main_page_Logic().logOutClick();
+        return page(Main_page_Logic.class);
     }
 }

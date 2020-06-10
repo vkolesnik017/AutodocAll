@@ -14,9 +14,9 @@ import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_636_PasswordChangeSuccessful {
+public class QC_658_ChangePassword_InvalidOldPass {
 
-    private String mail = "QC_636_autotest@mailinator.com";
+    private String mail = "QC_658_autotest@mailinator.com";
 
     @BeforeClass
     void setUp() {
@@ -31,23 +31,20 @@ public class QC_636_PasswordChangeSuccessful {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks for a successful password change")
-    public void testPasswordChangeSuccessful(String route) {
+    @Description(value = "Test checks the password change with an empty field Old password")
+    public void testPassChangeWithAnEmptyFieldOldPass(String route) {
         String newPass = passRandom();
         openPage(route);
         new Main_page_Logic().loginAndTransitionToProfilePlusPage(mail)
                 .goToSettingPage()
                 .checkPresenceChangePassBlock()
                 .checkPresenceChangeEmailBlock()
-                .fillFieldOldPass(password)
+                .fillFieldOldPass("123456")
                 .fillFieldNewPass(newPass)
                 .fillFieldConfirmPass(newPass)
                 .clickSvePassBtn()
-                .closePopUp()
-                .fillFieldOldPass(newPass)
-                .fillFieldNewPass(password)
-                .fillFieldConfirmPass(password)
-                .clickSvePassBtn()
+                .checkTitleInsidePopUp("Fehler")
+                .checkErrorTextInsidePopUp("Login mit diesen Kennwort")
                 .closePopUp();
         checkingContainsUrl("profile/settings");
     }
