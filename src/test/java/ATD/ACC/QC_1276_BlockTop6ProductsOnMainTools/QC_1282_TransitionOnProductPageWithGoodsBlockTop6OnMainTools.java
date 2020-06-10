@@ -34,11 +34,11 @@ public class QC_1282_TransitionOnProductPageWithGoodsBlockTop6OnMainTools {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test checking transition on product page when clicking on a goods in a block top-6 ")
-    public void testCheckingTransitionWithGoodsBlockTop6(String route) {
+    @Description(value = "Test checking transition on product page when clicking on a Product in a block top-6 ")
+    public void testCheckingTransitionWithProductBlockTop6(String route) {
         openPage(route);
         nameProduct = index_instruments_page_logic.getNameFirstProductInTop6ProductBlock();
-        index_instruments_page_logic.clickOnFirstGoodsInBlockTop6();
+        index_instruments_page_logic.clickOnFirstProductInBlockTop6();
         titleNameProduct = new Product_page_Logic().getTitleNameForProductPageInstruments();
         Assert.assertEquals(nameProduct, titleNameProduct);
     }
