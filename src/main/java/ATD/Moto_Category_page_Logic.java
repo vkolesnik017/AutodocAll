@@ -6,8 +6,8 @@ import org.testng.Assert;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.checkingContainsUrl;
-import static com.codeborne.selenide.Condition.exactValue;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selenide.back;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
@@ -20,13 +20,11 @@ public class Moto_Category_page_Logic extends Moto_Category_page {
         return this;
     }
 
-
     @Step(" availability Of Moto Selector. Moto_Category_page")
     public Moto_Category_page_Logic availabilityOfMotoSelector() {
         motoSelectorBlock().shouldBe(visible);
         return this;
     }
-
 
     @Step(" appears of tooltip for marke field in selector. Moto_Category_page")
     public Moto_Category_page_Logic visibilityOfToolTipForMarkeField() {
@@ -54,7 +52,6 @@ public class Moto_Category_page_Logic extends Moto_Category_page {
         return this;
     }
 
-
     @Step(" selecting motorcycle in selector . Moto_Category_page")
     public Moto_Category_car_list_page_Logic selectMotoInSelector(String marke, String model, String motor) {
         brandOfMotoField().selectOptionByValue(marke);
@@ -73,7 +70,6 @@ public class Moto_Category_page_Logic extends Moto_Category_page {
         return this;
     }
 
-
     @Step(" Select brand of motorcycle .Moto_Category_page")
     public Moto_Category_page_Logic selectBrandOfMoto(String markeOfMoto) {
         brandOfMotoField().selectOptionByValue(markeOfMoto);
@@ -85,7 +81,6 @@ public class Moto_Category_page_Logic extends Moto_Category_page {
         btnResetOfSelector().shouldBe(visible).click();
         return this;
     }
-
 
     @Step(" reset of motorcycle selector .Moto_Category_page")
     public Moto_Category_page_Logic presenceOfEmptyValuesInSelector() {
@@ -114,13 +109,11 @@ public class Moto_Category_page_Logic extends Moto_Category_page {
         return page(Moto_Category_car_list_page_Logic.class);
     }
 
-
     @Step("presence of benefits block .Moto_Category_page")
     public Moto_Category_page_Logic presenceOfBenefitsBlock() {
         benefitsBlock().shouldBe(visible);
         return this;
     }
-
 
     @Step("presence of headline at benefits block .Moto_Category_page")
     public Moto_Category_page_Logic presenceOfHeadlineAtBenefitsBlock() {
@@ -128,13 +121,11 @@ public class Moto_Category_page_Logic extends Moto_Category_page {
         return this;
     }
 
-
     @Step("presence of benefits links .Moto_Category_page")
     public Moto_Category_page_Logic presenceOfBenefitsLinks() {
         benefitsLinks().shouldHaveSize(2);
         return this;
     }
-
 
     @Step("visibility of tooltip at benefits links .Moto_Category_page")
     public Moto_Category_page_Logic visibilityOfTooltipAtBenefitsLinks() {
@@ -146,7 +137,6 @@ public class Moto_Category_page_Logic extends Moto_Category_page {
         return this;
     }
 
-
     @Step("presence Of elements at benefit block .Moto_Category_page")
     public Moto_Category_page_Logic presenceOfElementsAtBenefitBlock() {
         benefitsBlock().shouldBe(visible);
@@ -157,7 +147,6 @@ public class Moto_Category_page_Logic extends Moto_Category_page {
         return this;
     }
 
-
     @Step("presence of main image at child category .Moto_Category_page")
     public Moto_Category_page_Logic presenceOfMainImageAtChildCategory() {
         mainImageOfChildCategory().shouldBe(visible);
@@ -165,7 +154,58 @@ public class Moto_Category_page_Logic extends Moto_Category_page {
         int heightOfMainImageAtChildCategory = mainImageOfChildCategory().getSize().getHeight();
         Assert.assertEquals(widthOfMainImageAtChildCategory, 200);
         Assert.assertEquals(heightOfMainImageAtChildCategory, 200);
+        return this;
+    }
 
+    @Step(" check bread crumbs block .Moto_Category_page")
+    public Moto_Category_page_Logic checkBreadCrumbsBlock() throws SQLException {
+        breadCrumbsLinks().shouldHaveSize(6);
+        checkFirstLinkOfBreadCrumbsLinks();
+        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_categories"));
+        back();
+        checkSecondLinkOfBreadCrumbsLinks("Filter");
+        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_parent_category"));
+        back();
+        checkThirdLinkOfBreadCrumbsLinks("Ölfilter");
+        checkFourthLinkOfBreadCrumbsLinks("Marke Wählen");
+        checkFifthLinkOfBreadCrumbsLinks("Modell Wählen");
+        checkSixthLinkOfBreadCrumbsLinks("Motorrad Wählen");
+        return this;
+    }
+
+    @Step(" check first link of bread crumbs links .Moto_Category_page")
+    public Moto_Categories_page_Logic checkFirstLinkOfBreadCrumbsLinks() {
+        iconOfCatalogBrandInBreadCrumbs().shouldBe(visible).click();
+        return page(Moto_Categories_page_Logic.class);
+    }
+
+    @Step(" check second link of bread crumbs links .Moto_Category_page")
+    public Moto_Parent_Category_page_Logic checkSecondLinkOfBreadCrumbsLinks(String title) {
+        breadCrumbsLinks().get(1).shouldBe(visible).shouldHave(text(title)).click();
+        return page(Moto_Parent_Category_page_Logic.class);
+    }
+
+    @Step(" check third link of bread crumbs links .Moto_Category_page")
+    public Moto_Category_page_Logic checkThirdLinkOfBreadCrumbsLinks(String title) {
+        breadCrumbsLinks().get(2).shouldBe(visible).shouldHave(text(title)).shouldNotHave(attribute("href"));
+        return this;
+    }
+
+    @Step(" check fourth link of bread crumbs links .Moto_Category_page")
+    public Moto_Category_page_Logic checkFourthLinkOfBreadCrumbsLinks(String title) {
+        breadCrumbsLinks().get(3).shouldBe(visible).shouldHave(text(title)).shouldNotHave(attribute("href"));
+        return this;
+    }
+
+    @Step(" check fifth link of bread crumbs links .Moto_Category_page")
+    public Moto_Category_page_Logic checkFifthLinkOfBreadCrumbsLinks(String title) {
+        breadCrumbsLinks().get(4).shouldBe(visible).shouldHave(text(title)).shouldNotHave(attribute("href"));
+        return this;
+    }
+
+    @Step(" check sixth link of bread crumbs links .Moto_Category_page")
+    public Moto_Category_page_Logic checkSixthLinkOfBreadCrumbsLinks(String title) {
+        breadCrumbsLinks().get(5).shouldBe(visible).shouldHave(text(title)).shouldNotHave(attribute("href"));
         return this;
     }
 

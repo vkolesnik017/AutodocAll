@@ -35,4 +35,8 @@ public class Moto_Parent_Category_page {
     ElementsCollection textOfChildCategoriesList() {return $$x("//ul[@class='simple_links']/li/a/span");}
 
     ElementsCollection imageOfChildCategoriesList() {return $$x("//ul[@class='simple_links']/li/a/img");}
+
+    ElementsCollection breadCrumbsLinks() {return $$x("//div[@class='steps breadcrumbs']/ul/li//span/*[self::a or self::span]");}
+
+    SelenideElement iconOfCatalogBrandInBreadCrumbs() {return $x("//li[@class='step_1 active parts_step_1']//img");}
 }
