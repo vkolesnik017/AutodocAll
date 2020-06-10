@@ -5,7 +5,9 @@ import org.testng.Assert;
 
 import java.sql.SQLException;
 
-import static com.codeborne.selenide.Condition.visible;
+import static ATD.CommonMethods.checkingContainsUrl;
+import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selenide.back;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
@@ -154,7 +156,7 @@ public class Moto_Catalog_page_Logic extends Moto_Catalog_page {
     @Step("check current url .Moto_Catalog_page")
     public Moto_Catalog_page_Logic checkCurrentUrl(String subRoute) throws SQLException {
         catalogTecDoc().shouldBe(visible);
-        Assert.assertEquals(url(),new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", subRoute));
+        Assert.assertEquals(url(), new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", subRoute));
         return this;
     }
 
@@ -169,8 +171,59 @@ public class Moto_Catalog_page_Logic extends Moto_Catalog_page {
 
     @Step("check current url .Moto_Catalog_page")
     public Moto_main_page_Logic clickOnMainLogoInHeader() {
-         mainLogoInHeader().shouldBe(visible).click();
+        mainLogoInHeader().shouldBe(visible).click();
         return page(Moto_main_page_Logic.class);
     }
 
+    @Step(" check Bread Crumbs Block .Moto_Catalog_page")
+    public Moto_Catalog_page_Logic checkBreadCrumbsBlock() throws SQLException {
+        firstLinkOfBreadCrumbsBlock("SUZUKI MOTORCYCLES");
+        secondLinkOfBreadCrumbsBlock("ACCESS");
+        thirdLinkOfBreadCrumbsBlock("Access 125");
+        fourthLinkOfBreadCrumbsBlock("Teil Wählen");
+        clickOnFirstLinkOfBreadCrumbs();
+        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_categories_maker3"));
+        back();
+        clickOnSecondLinkOfBreadCrumbs();
+        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_catalog_model2"));
+        return this;
+    }
+
+    @Step(" first link of bread crumbs block .Moto_Catalog_page")
+    public Moto_Catalog_page_Logic firstLinkOfBreadCrumbsBlock(String titleOfMoto) {
+        breadCrumbsLinks().shouldHaveSize(4);
+        iconOfMotoBrandInBreadCrumbs().shouldBe(visible);
+        titleOfMotoBrandInBreadCrumbs().shouldHave(text(titleOfMoto));
+        return this;
+    }
+
+    @Step(" second link of bread crumbs block .Moto_Catalog_page")
+    public Moto_Catalog_page_Logic secondLinkOfBreadCrumbsBlock(String titleOfMotoModel) {
+        breadCrumbsLinks().get(1).shouldHave(text(titleOfMotoModel));
+        return this;
+    }
+
+    @Step(" third link of bread crumbs block .Moto_Catalog_page")
+    public Moto_Catalog_page_Logic thirdLinkOfBreadCrumbsBlock(String title) {
+        breadCrumbsLinks().get(2).shouldHave(text(title));
+        return this;
+    }
+
+    @Step(" fourth link of bread crumbs block .Moto_Catalog_page")
+    public Moto_Catalog_page_Logic fourthLinkOfBreadCrumbsBlock(String title) {
+        breadCrumbsLinks().get(3).shouldHave(text(title)).shouldNotHave(attribute("href"));
+        return this;
+    }
+
+    @Step("click on first link of bread crumbs .Moto_Catalog_page")
+    public Moto_Categories_maker_page_Logic clickOnFirstLinkOfBreadCrumbs() {
+        titleOfMotoBrandInBreadCrumbs().click();
+        return page(Moto_Categories_maker_page_Logic.class);
+    }
+
+    @Step("click on second link of bread crumbs .Moto_Catalog_page")
+    public Moto_Catalog_model_page_Logic clickOnSecondLinkOfBreadCrumbs() {
+        breadCrumbsLinks().get(1).shouldBe(visible).click();
+        return page(Moto_Catalog_model_page_Logic.class);
+    }
 }

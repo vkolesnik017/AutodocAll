@@ -12,7 +12,6 @@ import java.util.List;
 import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.Selenide.switchTo;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class Moto_Product_page_Logic extends Moto_Product_page {
@@ -146,5 +145,72 @@ public class Moto_Product_page_Logic extends Moto_Product_page {
         return this;
     }
 
+
+    @Step("check size of links in bread crumbs .Moto_Product_page")
+    public Moto_Product_page_Logic checkSizeOfBreadCrumbsLinks(int size) {
+        breadCrumbsLinks().shouldHaveSize(size);
+        return this;
+    }
+
+    @Step("check first link of bread crumbs .Moto_Product_page ")
+    public Moto_Product_page_Logic checkFirstLinkOfBreadCrumbs() throws SQLException {
+        clickOnFirstLinkOfBreadCrumbs();
+        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_categories"));
+        back();
+        return this;
+    }
+
+    @Step("click on first link of bread crumbs .Moto_Product_page ")
+    public Moto_Categories_page_Logic clickOnFirstLinkOfBreadCrumbs() {
+        iconOfCatalogBrandInBreadCrumbs().shouldBe(visible).click();
+        return page(Moto_Categories_page_Logic.class);
+    }
+
+
+    @Step("check second link of bread crumbs .Moto_Product_page ")
+    public Moto_Product_page_Logic checkSecondLinkOfBreadCrumbs(String title) throws SQLException {
+        clickOnSecondLinkOfBreadCrumbs(title);
+        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_parent_category"));
+        back();
+        return this;
+    }
+
+    @Step("click on second link of bread crumbs .Moto_Product_page ")
+    public Moto_Parent_Category_page_Logic clickOnSecondLinkOfBreadCrumbs(String title) {
+        horizontalMotoSelector().shouldBe(visible);
+        breadCrumbsLinks().get(1).shouldBe(visible).shouldHave(text(title)).click();
+        return page(Moto_Parent_Category_page_Logic.class);
+    }
+
+
+    @Step("check third link of bread crumbs .Moto_Product_page ")
+    public Moto_Product_page_Logic checkThirdLinkOfBreadCrumbs(String title) throws SQLException {
+        clickOnThirdLinkOfBreadCrumbs(title);
+        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_category"));
+        back();
+        return this;
+    }
+
+    @Step("click on third link of bread crumbs .Moto_Product_page ")
+    public Moto_Category_page_Logic clickOnThirdLinkOfBreadCrumbs(String title) {
+        horizontalMotoSelector().shouldBe(visible);
+        breadCrumbsLinks().get(2).shouldBe(visible).shouldHave(text(title)).click();
+        return page(Moto_Category_page_Logic.class);
+    }
+
+    @Step("check fourth link of bread crumbs .Moto_Product_page ")
+    public Moto_Product_page_Logic checkFourthLinkOfBreadCrumbs(String title) {
+        horizontalMotoSelector().shouldBe(visible);
+        breadCrumbsLinks().get(3).shouldBe(visible).shouldHave(text(title));
+        return this;
+    }
+
+
+    @Step("check second link of bread crumbs with out SubRoute .Moto_Product_page ")
+    public Moto_Product_page_Logic checkSecondLinkOfBreadCrumbsWithOutSubRoute(String title) {
+        horizontalMotoSelector().shouldBe(visible);
+        breadCrumbsLinks().get(1).shouldBe(visible).shouldHave(text(title)).shouldNotHave(attribute("href"));
+        return this;
+    }
 
 }

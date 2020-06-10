@@ -173,6 +173,10 @@ public class Listing_page {
         return $x("//*[contains(@class,'filter-criteria_200')]//li[2]");
     }
 
+    public SelenideElement durchmesserSideFilterButtonThirdValue() {
+        return $x("//*[contains(@class,'filter-criteria_200')]//li[3]");
+    }
+
     public SelenideElement furprnummerSideFilterButton() {
         return $x("//*[contains(@class,'filter-criteria_1197')]//li");
     }
@@ -676,5 +680,17 @@ public class Listing_page {
     SelenideElement titleInfoPopup() { return $x("//*[@class='selected_car_info_popap']/b"); }
 
     ElementsCollection characteristicsFromPopup() { return $$x("//*[@class='selected_car_info_popap']//li"); }
+
+    SelenideElement firstProductTitleOnListing() { return $x("(//div[@class='name']/a)[1]"); }
+
+    SelenideElement firstCharacteristicInFirstProduct() { return $x("//li[1][@class='important']"); }
+
+    SelenideElement secondCharacteristicInFirstProduct() { return $x("//li[2][@class='important']"); }
+
+    SelenideElement thirdCharacteristicInFirstProduct() { return $x("//li[3][@class='important']"); }
+
+    SelenideElement fourthCharacteristicInFirstProduct() { return $x("//li[4][@class='important']"); }
+
+    SelenideElement fifthCharacteristicInFirstProduct() { return $x("//li[5][@class='important']"); }
 }
 

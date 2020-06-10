@@ -33,7 +33,7 @@ public class QC_1360_TitleCategoriesBlockInSidebar {
     @Flaky
     @Owner(value = "Sergey-QA")
     @Description(value = "Test checking presence title categories block in Sidebar.")
-    public void TestChecksPresenceTitleCategoriesBlockInSidebar(String route) {
+    public void testChecksPresenceTitleCategoriesBlockInSidebar(String route) {
         openPage(route);
         new Listing_accessories_page_Logic().checkingPresenceTitleCategoriesBlockInSidebar();
     }

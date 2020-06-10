@@ -10,6 +10,7 @@ import org.testng.Assert;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import static ATD.CommonMethods.*;
@@ -652,5 +653,12 @@ public class Product_page_Logic extends Product_page {
     @Step("Get product quanity from counter. Product_page")
     public String getProductQuanity() {
         return counterValueCommon().getValue();
+    }
+
+    @Step("Comparing actual and expected characteristics. Product_page")
+    public void compareCharacteristics(ElementsCollection actualCharacteristics, List<String> expectedCharacteristics) {
+        for (int a = 0; a < expectedCharacteristics.size(); a++) {
+            actualCharacteristics.get(a).shouldHave(text(expectedCharacteristics.get(a)));
+        }
     }
 }

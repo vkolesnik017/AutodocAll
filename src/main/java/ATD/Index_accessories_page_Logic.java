@@ -5,8 +5,11 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.Selenide.sleep;
 
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
+
+import java.util.ArrayList;
 
 
 public class Index_accessories_page_Logic extends Index_accessories_page {
@@ -132,6 +135,18 @@ public class Index_accessories_page_Logic extends Index_accessories_page {
         nameFirstProductInTop6Block().hover();
         btnDetailsInPopupTop6Block().shouldBe(visible);
         return this;
+    }
+
+    @Step("Get name all categories in logical union and add in list. Index_accessories_page")
+    public ArrayList getNameAllCategoriesInLogicalUnionAndAddToList() {
+        catalogFirstGroup().scrollTo().hover();
+        secondCategoryInLogicalUnion().shouldBe(visible);
+        ArrayList <String> nameCategories = new ArrayList<>();
+        for(SelenideElement element : categoriesInLogicalUnion()) {
+            String name = element.getText();
+            nameCategories.add(name);
+        }
+        return nameCategories;
     }
 
 

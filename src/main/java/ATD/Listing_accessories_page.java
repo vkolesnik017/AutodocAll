@@ -1,6 +1,9 @@
 package ATD;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+
+import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;
 
 
@@ -21,6 +24,10 @@ public class Listing_accessories_page {
 
     SelenideElement firstCategoryInSidebar() {
         return $x("//div[@class='sidebar']//li[1]//span[text()]");
+    }
+
+    ElementsCollection categoriesInSidebar() {
+        return $$x("//div[@class='block categories blue topSubCats']/ul[@class='filetree cat_tree treeview']/li");
     }
 
     SelenideElement blockProductQuantity () {

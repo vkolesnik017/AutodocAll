@@ -133,8 +133,8 @@ public class Index_instruments_page_Logic extends Index_instruments_page {
         return this;
     }
 
-    @Step("Click on first goods in block top-6. Index_instruments_page")
-    public Product_page_Logic clickOnFirstGoodsInBlockTop6() {
+    @Step("Click on first Product in block top-6. Index_instruments_page")
+    public Product_page_Logic clickOnFirstProductInBlockTop6() {
         nameFirstProductInTop6ProductsBlock().click();
         return page(Product_page_Logic.class);
     }
@@ -143,6 +143,17 @@ public class Index_instruments_page_Logic extends Index_instruments_page {
     public Index_instruments_page_Logic checkingHoverPopupInTop10ProductBlock() {
         productInBlockTop10().hover();
         btnDetailsInPopupGoodsTop10ProductsBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checking presence block Advantages and information popup after hover on tab number 2-3. Index_instruments_page")
+    public Index_instruments_page_Logic checkingPresenceAdvantagesBlockAndInformationPopup() {
+        blockAdvantages().scrollTo().shouldBe(visible);
+        firstTabAdvantages().shouldBe(visible);
+        secondTabAdvantage().hover();
+        popupSecondTabAdvantage().shouldBe(visible);
+        thirdTabAdvantage().hover();
+        popupThirdTabAdvantage().shouldBe(visible);
         return this;
     }
 

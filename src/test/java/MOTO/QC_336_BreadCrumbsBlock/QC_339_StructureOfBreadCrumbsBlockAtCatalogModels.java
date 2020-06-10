@@ -1,6 +1,7 @@
-package ATD.FiltersSorting.QC_195_FiltersSorting_outputSorting;
+package MOTO.QC_336_BreadCrumbsBlock;
 
-import ATD.Listing_page_Logic;
+import ATD.DataBase;
+import ATD.Moto_Catalog_model_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -12,11 +13,12 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
+import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_227_FiltersSorting_TestOutputSortingWithTwoGenerics {
+public class QC_339_StructureOfBreadCrumbsBlockAtCatalogModels {
 
     @BeforeClass
     void setUp() {
@@ -25,20 +27,22 @@ public class QC_227_FiltersSorting_TestOutputSortingWithTwoGenerics {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list7");
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog_model2");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "Romaniuta")
-    @Description(value = "Test checks price and addToBasket buttons sorting with two generics")
-    public void testSortingTwoGeneric(String route) {
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test checks structure of bread crumbs block at catalog models route")
+    public void testChecksStructureOfBreadCrumbsBlockAtCatalogModels(String route) throws SQLException {
         openPage(route);
-        new Listing_page_Logic().checkOutptuSortingWithTwoGeneric();
+
+        new Moto_Catalog_model_page_Logic().checkBreadCrumbsBlock();
+        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_categories_maker3"));
     }
 
     @AfterMethod
-    private void teatDown() {
+    private void tearDown() {
         close();
     }
 }

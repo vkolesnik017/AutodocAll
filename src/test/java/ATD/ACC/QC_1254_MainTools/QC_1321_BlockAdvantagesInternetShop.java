@@ -1,6 +1,6 @@
-package ATD.FiltersSorting.QC_195_FiltersSorting_outputSorting;
+package ATD.ACC.QC_1254_MainTools;
 
-import ATD.Listing_page_Logic;
+import ATD.Index_instruments_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -9,36 +9,34 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import java.sql.SQLException;
-
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_227_FiltersSorting_TestOutputSortingWithTwoGenerics {
+public class QC_1321_BlockAdvantagesInternetShop {
 
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "routes", parallel = true)
+    @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list7");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main","index_instruments");
     }
 
-    @Test(dataProvider = "routes")
+    @Test(dataProvider = "route")
     @Flaky
-    @Owner(value = "Romaniuta")
-    @Description(value = "Test checks price and addToBasket buttons sorting with two generics")
-    public void testSortingTwoGeneric(String route) {
+    @Owner(value = "Sergey-QA")
+    @Description(value = "Test checks presence block Advantages and information popup after hover on tab number 2-3 ")
+    public void testCheckPresenceAdvantagesBlockAndInformationPopup(String route) {
         openPage(route);
-        new Listing_page_Logic().checkOutptuSortingWithTwoGeneric();
+        new Index_instruments_page_Logic().checkingPresenceAdvantagesBlockAndInformationPopup();
     }
 
     @AfterMethod
-    private void teatDown() {
+    private void tearDown() {
         close();
     }
 }
