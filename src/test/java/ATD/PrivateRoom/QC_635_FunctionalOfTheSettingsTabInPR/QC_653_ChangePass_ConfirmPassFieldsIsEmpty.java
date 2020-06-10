@@ -14,9 +14,9 @@ import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_636_PasswordChangeSuccessful {
+public class QC_653_ChangePass_ConfirmPassFieldsIsEmpty {
 
-    private String mail = "QC_636_autotest@mailinator.com";
+    private String mail = "QC_653_autotest@mailinator.com";
 
     @BeforeClass
     void setUp() {
@@ -31,23 +31,18 @@ public class QC_636_PasswordChangeSuccessful {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks for a successful password change")
-    public void testPasswordChangeSuccessful(String route) {
-        String newPass = passRandom();
+    @Description(value = "Test checks the password change with an empty field Confirm password")
+    public void testPassChangeWithAnEmptyFieldConfirmPass(String route) {
         openPage(route);
         new Main_page_Logic().loginAndTransitionToProfilePlusPage(mail)
                 .goToSettingPage()
                 .checkPresenceChangePassBlock()
                 .checkPresenceChangeEmailBlock()
                 .fillFieldOldPass(password)
-                .fillFieldNewPass(newPass)
-                .fillFieldConfirmPass(newPass)
+                .fillFieldNewPass("123456789")
                 .clickSvePassBtn()
-                .closePopUp()
-                .fillFieldOldPass(newPass)
-                .fillFieldNewPass(password)
-                .fillFieldConfirmPass(password)
-                .clickSvePassBtn()
+                .checkTitleInsidePopUp("Fehler")
+                .checkErrorTextInsidePopUp("Das Feld „Kennwort wiederholen\"")
                 .closePopUp();
         checkingContainsUrl("profile/settings");
     }
