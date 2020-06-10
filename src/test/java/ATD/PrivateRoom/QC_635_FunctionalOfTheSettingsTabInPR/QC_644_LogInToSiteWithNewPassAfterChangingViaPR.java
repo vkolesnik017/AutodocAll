@@ -1,6 +1,7 @@
 package ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR;
 
 import ATD.Main_page_Logic;
+import ATD.Profile_plus_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -14,9 +15,9 @@ import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_636_PasswordChangeSuccessful {
+public class QC_644_LogInToSiteWithNewPassAfterChangingViaPR {
 
-    private String mail = "QC_636_autotest@mailinator.com";
+    private String mail = "QC_644_autotest@mailinator.com";
 
     @BeforeClass
     void setUp() {
@@ -31,8 +32,8 @@ public class QC_636_PasswordChangeSuccessful {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks for a successful password change")
-    public void testPasswordChangeSuccessful(String route) {
+    @Description(value = "Test check enter in to the site with a new password after changing via PR")
+    public void testLogInToSiteWithNewPassAfterChangingViaPR(String route) {
         String newPass = passRandom();
         openPage(route);
         new Main_page_Logic().loginAndTransitionToProfilePlusPage(mail)
@@ -44,6 +45,9 @@ public class QC_636_PasswordChangeSuccessful {
                 .fillFieldConfirmPass(newPass)
                 .clickSvePassBtn()
                 .closePopUp()
+                .logOutClick()
+                .loginFromHeader(mail, newPass);
+        new Profile_plus_page_Logic().goToSettingPage()
                 .fillFieldOldPass(newPass)
                 .fillFieldNewPass(password)
                 .fillFieldConfirmPass(password)

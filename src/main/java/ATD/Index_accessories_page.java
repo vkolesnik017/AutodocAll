@@ -34,6 +34,10 @@ class Index_accessories_page {
         return $x("//div[@class='accessories-catalog__categories' and @style='display: block;']//li[2]");
     }
 
+    ElementsCollection categoriesInLogicalUnion(){
+        return $$x("//div[@class='accessories-catalog__categories' and @style='display: block;']//li");
+    }
+
     SelenideElement mainTitlePage() {
         return $x("//h1[@class='page-title'][text()]");
     }
