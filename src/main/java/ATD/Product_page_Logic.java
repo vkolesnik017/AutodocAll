@@ -655,7 +655,7 @@ public class Product_page_Logic extends Product_page {
         return counterValueCommon().getValue();
     }
 
-    @Step("Comparing actual and expected characteristics")
+    @Step("Comparing actual and expected characteristics. Product_page")
     public void compareCharacteristics(ElementsCollection actualCharacteristics, List<String> expectedCharacteristics) {
         for (int a = 0; a < expectedCharacteristics.size(); a++) {
             actualCharacteristics.get(a).shouldHave(text(expectedCharacteristics.get(a)));
