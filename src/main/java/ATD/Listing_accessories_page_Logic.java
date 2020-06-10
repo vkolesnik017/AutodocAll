@@ -63,7 +63,7 @@ public class Listing_accessories_page_Logic extends Listing_accessories_page {
         return this;
     }
 
-    @Step("Get name all categories in sidebar and title name page then add in list. Listing_accessories_page")
+    @Step("Get name all categories in sidebar and title name page than add in list. Listing_accessories_page")
     public ArrayList<String> getNameAllCategoriesInSidebarAndTitleNamePage() {
         ArrayList<String> nameCategories = new ArrayList<>();
         for (SelenideElement element : categoriesInSidebar()) {
