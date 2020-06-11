@@ -1,18 +1,24 @@
 package ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR;
 
+import ATD.DataBase;
 import ATD.Main_page_Logic;
+import ATD.Profile_plus_page_Logic;
 import ATD.SetUp;
+import AWS.Customer_search_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
+import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Selenide.close;
 
 public class QC_679_NewsLetterConsentCheckbox {
 
@@ -42,6 +48,20 @@ public class QC_679_NewsLetterConsentCheckbox {
                 .checkTextInsidePopUpSubscribe("Den Newsletter wurde abonniert.")
                 .closePopUp()
                 .checkThatSubscribeCheckboxIsSelected();
+        new Customer_search_aws().openSearchInAwsWithLogin()
+                .enterMailAndClickSearch(mail)
+                .transitionOnCustomerViewPage()
+                .checkStatusOfLastLog();
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod","DE", "main","profile_plus"));
+        new Profile_plus_page_Logic().goToSettingPage()
+                .clickSubscribeCheckbox()
+                .checkTextInsidePopUpSubscribe("Den Newsletter wurde abgemeldet.")
+                .closePopUp();
+        checkingContainsUrl("profile/settings");
+    }
 
+    @AfterMethod
+    private void teatDown() {
+        close();
     }
 }

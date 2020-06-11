@@ -6,8 +6,7 @@ import io.qameta.allure.Step;
 import java.util.ArrayList;
 
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.$x;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Customer_view_aws {
 
@@ -121,6 +120,22 @@ public class Customer_view_aws {
 
     private SelenideElement bankData() {
         return $x("//div[@id='bankData']");
+    }
+
+    private SelenideElement subscriptionBlock() {
+        return $(".subscription_box");
+    }
+
+    private SelenideElement checkStatusOkayInSubscriptConsentLogs() {
+        return $x("//div[@class='col-sm-12 col-md-5']//tr[1]//td[3]//i[@class='splashy-okay']");
+    }
+
+
+    @Step("Checks that the last log has the status OK in the block subscription block. Customer_view_aws")
+    public Customer_view_aws checkStatusOfLastLog() {
+        subscriptionBlock().shouldHave(visible);
+        checkStatusOkayInSubscriptConsentLogs().shouldBe(visible);
+        return this;
     }
 
     @Step("Checks presence bank data block. Customer_view_aws")
