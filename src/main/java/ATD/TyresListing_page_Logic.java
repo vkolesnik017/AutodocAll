@@ -318,11 +318,13 @@ public class TyresListing_page_Logic extends TyresListing_page {
     public TyresListing_page_Logic clickDimensionButtonAndCheckRedirect(SelenideElement dimensionLinkButton) {
         String routeName = getNameRouteFromJSVarInHTML();
         String baseUrl = url();
+        String urlToRedirect = dimensionLinkButton.attr("href");
         String dimension = dimensionLinkButton.text().replaceAll("\\D|\\s", "");
         String width = dimension.substring(0, 3);
         String height = dimension.substring(3, 5);
         String diameter = dimension.substring(5, 7);
         dimensionLinkButton.hover().click();
+        waitingWhileLinkBecomeExpected(urlToRedirect);
         checkCharacteristicOnListing(width, widthCharacteristic());
         checkCharacteristicOnListing(height, heightCharacteristic());
         checkCharacteristicOnListing(diameter, radiusCharacteristic());
