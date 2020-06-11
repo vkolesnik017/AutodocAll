@@ -42,6 +42,16 @@
             <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_658_ChangePassword_InvalidOldPass"/>
             <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_659_EnterPassLessThenFourCharacters"/>
             <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_660_ChangePassword_NewPassNotEqualConfirmPass"/>
+            <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_661_SuccessfulChangeOfEmailInPR"/>
+            <!--<class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_665_LoginWithNewEmail"/>-->
+            <!--<class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_667_LoginUnderTheOldEmailAfterChangingIt"/>-->
+            <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_668_ChangeEmail_AllFieldsAreEmpty"/>
+            <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_671_ChangeEmail_ConfirmEmailFieldIsEmpty"/>
+            <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_676_ChangeEmail_IntroductionOfInvalidEmail"/>
+            <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_677_ChangeEmail_NewEmailFieldIsNotEqualToConfirmEmailField"/>
+            <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_678_ChangeEmail_EmailExistsInTheSystem"/>
+            <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_679_NewsLetterConsentCheckbox"/>
+            <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_933_SettingsTabElementPR"/>
         </classes>
     </test>
 

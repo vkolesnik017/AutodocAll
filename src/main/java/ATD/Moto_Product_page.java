@@ -89,4 +89,6 @@ public class Moto_Product_page {
 
     SelenideElement horizontalMotoSelector() {return $x("//div[@class='atd-carselector__content']");}
 
+    SelenideElement btnCloseTooltipOfBrandFieldAtSelector() {return $x("//div[@class='tooltiptext-close js-tooltiptext-close']");}
+
 }

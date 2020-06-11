@@ -178,6 +178,7 @@ public class Moto_Product_page_Logic extends Moto_Product_page {
     @Step("click on second link of bread crumbs .Moto_Product_page ")
     public Moto_Parent_Category_page_Logic clickOnSecondLinkOfBreadCrumbs(String title) {
         horizontalMotoSelector().shouldBe(visible);
+        closeTooltipOfBrandField();
         breadCrumbsLinks().get(1).shouldBe(visible).shouldHave(text(title)).click();
         return page(Moto_Parent_Category_page_Logic.class);
     }
@@ -194,6 +195,7 @@ public class Moto_Product_page_Logic extends Moto_Product_page {
     @Step("click on third link of bread crumbs .Moto_Product_page ")
     public Moto_Category_page_Logic clickOnThirdLinkOfBreadCrumbs(String title) {
         horizontalMotoSelector().shouldBe(visible);
+        closeTooltipOfBrandField();
         breadCrumbsLinks().get(2).shouldBe(visible).shouldHave(text(title)).click();
         return page(Moto_Category_page_Logic.class);
     }
@@ -201,6 +203,7 @@ public class Moto_Product_page_Logic extends Moto_Product_page {
     @Step("check fourth link of bread crumbs .Moto_Product_page ")
     public Moto_Product_page_Logic checkFourthLinkOfBreadCrumbs(String title) {
         horizontalMotoSelector().shouldBe(visible);
+        closeTooltipOfBrandField();
         breadCrumbsLinks().get(3).shouldBe(visible).shouldHave(text(title));
         return this;
     }
@@ -210,6 +213,14 @@ public class Moto_Product_page_Logic extends Moto_Product_page {
     public Moto_Product_page_Logic checkSecondLinkOfBreadCrumbsWithOutSubRoute(String title) {
         horizontalMotoSelector().shouldBe(visible);
         breadCrumbsLinks().get(1).shouldBe(visible).shouldHave(text(title)).shouldNotHave(attribute("href"));
+        return this;
+    }
+
+    @Step("close tooltip at brand field in horizontal motorcycle selector .Moto_Product_page ")
+    public Moto_Product_page_Logic closeTooltipOfBrandField() {
+       if (btnCloseTooltipOfBrandFieldAtSelector().isDisplayed()) {
+           btnCloseTooltipOfBrandFieldAtSelector().click();
+       }
         return this;
     }
 
