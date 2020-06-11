@@ -31,6 +31,18 @@ public class Profile_setting_page {
         return $(".password_submit");
     }
 
+    SelenideElement newEmailField() {
+        return $x("//form[@id='email_info']//input[@name='email']");
+    }
+
+    SelenideElement confirmEmailField() {
+        return $x("//form[@id='email_info']//input[@name='email_confirm']");
+    }
+
+    SelenideElement saveEmailBtn() {
+        return $(".email_submit");
+    }
+
     SelenideElement popUpUpdate() {
         return $x("//div[@id='popup_update']");
     }
@@ -45,5 +57,13 @@ public class Profile_setting_page {
 
     SelenideElement errorTextInsidePopUp() {
         return $x("//div[@class='txt ']//ul");
+    }
+
+    SelenideElement textInsidePopUpSubscribe() {
+        return $x("//div[@class='txt ']");
+    }
+
+    SelenideElement subscribeCheckbox() {
+        return $x("//input[@id='subscribeCheckbox']");
     }
 }
