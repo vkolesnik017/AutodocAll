@@ -55,4 +55,10 @@
         </classes>
     </test>
 
+    <test name="QC_683_FunctionalTabOfAddressPR">
+        <classes>
+            <class name="ATD.PrivateRoom.QC_914_BonusTabFunctionalityInPR.QC_915_BonusTabDisplay_CurrencyIsEqualToShop"/>
+        </classes>
+    </test>
+
 </suite>

@@ -19,4 +19,8 @@ public class Profile_plus_page {
     SelenideElement profileSettingBtn() {
         return $x("//a[@data-ga-action='Sidebar_Settings']");
     }
+
+    SelenideElement profileBonusSystemBtn() {
+        return $x("//li[@class='bonus_system_link ']/a");
+    }
 }
