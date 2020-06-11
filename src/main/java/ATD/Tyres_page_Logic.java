@@ -188,6 +188,12 @@ public class Tyres_page_Logic extends Tyres_page {
         public Tyres_page_Logic clickVideoLink() {
             videoLink().click();
             return this;
-    }
+        }
 
+        @Step("Check top block presence. Tyres_page")
+        public Tyres_page_Logic checkTopBlock() {
+            topBlock().shouldBe(visible);
+            productsInTopBlock().shouldHaveSize(5);
+            return this;
+        }
 }
