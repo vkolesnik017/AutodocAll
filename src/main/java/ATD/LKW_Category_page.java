@@ -154,7 +154,7 @@ class LKW_Category_page {
 
     SelenideElement blockBefore()  {return $x("//div[@class='sub_catalog_grid gfre4']/preceding-sibling::div[1]");}
 
-    ElementsCollection titleOfTopProduct() {return $$x("//span[@class='link ga-click']");}
+    ElementsCollection titleOfTopProduct() {return $$x("//div[@class='rec_prod_title ']/span");}
 
     ElementsCollection imageOfTopProduct() {return $$x("//a[@class='ga-click']/img");}
 
