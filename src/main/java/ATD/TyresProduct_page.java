@@ -27,4 +27,20 @@ public class TyresProduct_page {
     SelenideElement productFronTopsellerBlock() { return $(".top-product-block .product-list__item--reifen .product-list__item__image > a"); }
 
     SelenideElement reifenlabelBlock() { return $(".product-reifen-label"); }
+
+    SelenideElement priceInBasketPopup() { return $(".cart-items-block .row-price"); }
+
+    SelenideElement numberOfProductsInBasketPopup() { return $(".cart-items-block__title > span"); }
+
+    SelenideElement priceOnProductPage() { return $(".product-new-price"); }
+
+    SelenideElement numberOfProductsOnProductPage() { return $x("//*[@class='product-count count']/input[@type='text']"); }
+
+    SelenideElement basketBlock() { return  $(".header-cart__link"); }
+
+    SelenideElement tyresHorizontalSelector() { return $(".atd-carselector__tyres"); }
+
+    SelenideElement tyresPhotoBlock() { return $(".product-block__image"); }
+
+    SelenideElement tyresProductTitle() { return $(".product-block__description__title"); }
 }
