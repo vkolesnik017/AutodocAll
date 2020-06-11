@@ -4,6 +4,7 @@ import io.qameta.allure.Step;
 
 import java.sql.SQLException;
 
+import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.exactValue;
 import static com.codeborne.selenide.Condition.visible;
 
@@ -37,9 +38,14 @@ public class Moto_Categories_page_Logic extends Moto_Categories_page {
 
     @Step(" check current url  .Moto_Categories_page")
     public Moto_Categories_page_Logic checkCurrentUrl(String subRoute) throws SQLException {
-        CommonMethods commonMethods = new CommonMethods();
-        DataBase db = new DataBase();
-        commonMethods.checkingContainsUrl(db.getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", subRoute));
+        checkingContainsUrl(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", subRoute));
+        return this;
+    }
+
+
+    @Step("presence of main Headline block .Moto_Categories_page")
+    public Moto_Categories_page_Logic presenceOfMainHeadlineBlock() {
+        mainHeadline().shouldBe(visible);
         return this;
     }
 }

@@ -23,4 +23,6 @@ public class Moto_Categories_page {
     SelenideElement selectorInCloseCondition() {return $x("//div[@class='catalog-title__change-car ']");}
 
     SelenideElement mainFormOfSelector() {return $(byId("selector-wrapper"));}
+
+    SelenideElement mainHeadline() {return $x("//div[@class='car-parts-categories__title']/h2");}
 }

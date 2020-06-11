@@ -38,4 +38,12 @@ public class Moto_Categories_maker_page {
 
     ElementsCollection topChildLinks(int position) {return $$x("(//div[@class='moto-parts-catalog__cat-list'])["+position+"]//a/span");}
 
+    SelenideElement mainHeadline() {return $x("//div[@class='title_count_search']/h2");}
+
+    SelenideElement iconOfBrandInHeadline() {return $x("//div[@class='title_count_search']/img");}
+
+    SelenideElement headlineOfModelsBlock() {return $x("//div[@class='moto-cars-models__title']/h3");}
+
+    ElementsCollection linksOfModels() {return $$x("//ul[@class='moto-cars-models__list']/li");}
+
 }

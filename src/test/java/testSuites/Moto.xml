@@ -118,6 +118,15 @@
     <test name="QC_364_TopCategoriesByBrandBlock">
         <classes>
             <class name="MOTO.QC_364_TopCategoriesByBrandBlock.QC_366_PresenceOfTopParentCategoriesBlock"/>
+            <class name="MOTO.QC_364_TopCategoriesByBrandBlock.QC_367_TransitionByClickOnTopElements"/>
+        </classes>
+    </test>
+
+    <test name="QC_330_BlockOfMainHeadline">
+        <classes>
+            <class name="MOTO.QC_330_BlockOfMainHeadline.QC_331_PresenceOfMainHeadlineBlock"/>
+            <class name="MOTO.QC_330_BlockOfMainHeadline.QC_332_PresenceIconOfBrandInHeadline"/>
+            <class name="MOTO.QC_330_BlockOfMainHeadline.QC_333_MatchingQuantityOfBrandsAndModels"/>
         </classes>
     </test>
 </suite>

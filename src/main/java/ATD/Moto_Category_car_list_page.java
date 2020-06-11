@@ -121,7 +121,7 @@ public class Moto_Category_car_list_page {
     }
 
     ElementsCollection btnAddToBasketAtAnAnalogProduct() {
-        return $$x("//a[contains(@class,'still_add_to_basket')]");
+        return $$x("//div[@class='top-small-products__items']//a[contains(@class,'still_add_to_basket')]");
     }
 
     SelenideElement breadCrumbsBlock() {return $x("//div[@class='steps breadcrumbs']");}
