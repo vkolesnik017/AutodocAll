@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.Selenide.sleep;
 
 public class Listing_accessories_page_Logic extends Listing_accessories_page {
@@ -76,5 +77,24 @@ public class Listing_accessories_page_Logic extends Listing_accessories_page {
         Collections.sort(nameCategories);
         return nameCategories;
     }
+
+    @Step("Checking presence and is not clickable third Bread Crumb. Listing_accessories_page")
+    public Listing_accessories_page_Logic checkingPresenceAndWorkThirdBreadCrumb() {
+        thirdBreadCrumb().shouldBe(visible).click();
+        return this;
+    }
+
+    @Step(" Checking transition on main page category after Click on second Bread Crumb. Listing_accessories_page")
+    public Index_accessories_page_Logic checkingTransitionAfterClickSecondBreadCrumb() {
+        secondBreadCrumb().click();
+        return page(Index_accessories_page_Logic.class);
+    }
+
+    @Step("Checking transition on TecDoc catalog after Click on first Bread Crumb. Listing_accessories_page")
+    public Categories_page checkingTransitionAfterClickFirstBreadCrumb() {
+        firstBreadCrumb().click();
+        return page(Categories_page_Logic.class);
+    }
+
 
 }

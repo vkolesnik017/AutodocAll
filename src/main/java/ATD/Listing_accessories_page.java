@@ -49,6 +49,18 @@ public class Listing_accessories_page {
         return $x("//div[@class='listing-wrap']//div[@class='sub_catalog_grid']");
     }
 
+    SelenideElement firstBreadCrumb() {
+        return $x("//div[@class='steps breadcrumbs']//li[@class='step_1 active parts_step_1']");
+    }
+
+    SelenideElement secondBreadCrumb() {
+        return $x("//div[@class='steps breadcrumbs']//li[@class='step_2 active parts_step_2']");
+    }
+
+    SelenideElement thirdBreadCrumb() {
+        return $x("//div[@class='steps breadcrumbs']//li[@class='step_3 active parts_step_3']");
+    }
+
 
 
 

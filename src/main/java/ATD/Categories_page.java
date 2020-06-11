@@ -63,5 +63,4 @@ public class Categories_page {
     SelenideElement nextButtonTopBlock() { return $(".bx-next"); }
 
     SelenideElement listOfProducts() { return $(".list_products"); }
-
 }
