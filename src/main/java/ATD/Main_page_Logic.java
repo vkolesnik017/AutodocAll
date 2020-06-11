@@ -90,12 +90,20 @@ public class Main_page_Logic extends Main_page {
     }
 
     //to enter with a new password
-    @Step("Login with new password. Main_page")
-    public Main_page_Logic loginWithNewPassword(String newPassword) {
+    @Step("Login with new password {newPassword}. Main_page")
+    public Profile_plus_page_Logic loginWithNewPassword(String newPassword) {
         passwordInputInLoginPopup().setValue(newPassword);
         loginBtnInPopUp().click();
         new Profile_page().nameOfClient().shouldBe(visible);
-        return this;
+        return page(Profile_plus_page_Logic.class);
+    }
+
+    @Step("Login with new Email {newEmail}. Main_page")
+    public Profile_plus_page_Logic loginWithNewEmail(String newEmail) {
+        emailInputInLoginPopup().setValue(newEmail);
+        loginBtnInPopUp().click();
+        new Profile_page().nameOfClient().shouldBe(visible);
+        return page(Profile_plus_page_Logic.class);
     }
 
     @Step("Clicking log out in header. Main_page")
@@ -962,6 +970,20 @@ public class Main_page_Logic extends Main_page {
         sendBtnInPasswordRecoveryPopUp().click();
         closePopupMessageSentForChangePassword().click();
         closePopupMessageSentForChangePassword().shouldBe(not(visible));
+        return this;
+    }
+
+    @Step("Checks presence pop up invalid data for login and close it. Main_page")
+    public Main_page_Logic closePopUpInvalidData() {
+        closePopUpInvalidDataForLogin().shouldBe(visible);
+        closePopUpInvalidDataForLogin().click();
+        return this;
+    }
+
+    @Step("Checks presence pop up invalid Email for login and close it. Main_page")
+    public Main_page_Logic closeInvalidEmailPopUPForLogin() {
+        closePopUPInvalidEmailForLogin().shouldBe(visible);
+        closePopUPInvalidEmailForLogin().click();
         return this;
     }
 }

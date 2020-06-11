@@ -14,9 +14,9 @@ import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_636_PasswordChangeSuccessful {
+public class QC_667_LoginUnderTheOldEmailAfterChangingIt {
 
-    private String mail = "QC_636_autotest@mailinator.com";
+    private String mail = "QC_667_autotest@mailinator.com";
 
     @BeforeClass
     void setUp() {
@@ -31,23 +31,26 @@ public class QC_636_PasswordChangeSuccessful {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks for a successful password change")
-    public void testPasswordChangeSuccessful(String route) {
-        String newPass = passRandom();
+    @Description(value = "Test checks login with new email")
+    public void testLoginWithNewEmail(String route) {
+        String newEmail = mailRandomMailinator();
         openPage(route);
         new Main_page_Logic().loginAndTransitionToProfilePlusPage(mail)
                 .goToSettingPage()
                 .checkPresenceChangePassBlock()
                 .checkPresenceChangeEmailBlock()
-                .fillFieldOldPass(password)
-                .fillFieldNewPass(newPass)
-                .fillFieldConfirmPass(newPass)
-                .clickSvePassBtn()
+                .fillFieldNewEmail(newEmail)
+                .fillFieldConfirmEmail(newEmail)
+                .clickSaveEmailBtn()
                 .closePopUp()
-                .fillFieldOldPass(newPass)
-                .fillFieldNewPass(password)
-                .fillFieldConfirmPass(password)
-                .clickSvePassBtn()
+                .logOutClick()
+                .loginFromHeader(mail, password);
+        new Main_page_Logic().closeInvalidEmailPopUPForLogin()
+                .loginWithNewEmail(newEmail)
+                .goToSettingPage()
+                .fillFieldNewEmail(mail)
+                .fillFieldConfirmEmail(mail)
+                .clickSaveEmailBtn()
                 .closePopUp();
         checkingContainsUrl("profile/settings");
     }

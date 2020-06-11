@@ -31,11 +31,39 @@ public class Profile_setting_page {
         return $(".password_submit");
     }
 
+    SelenideElement newEmailField() {
+        return $x("//form[@id='email_info']//input[@name='email']");
+    }
+
+    SelenideElement confirmEmailField() {
+        return $x("//form[@id='email_info']//input[@name='email_confirm']");
+    }
+
+    SelenideElement saveEmailBtn() {
+        return $(".email_submit");
+    }
+
     SelenideElement popUpUpdate() {
         return $x("//div[@id='popup_update']");
     }
 
+    SelenideElement titleInsidePopUp() {
+        return $x("//div[@id='popup_update']//h3");
+    }
+
     SelenideElement closePopUP() {
         return $x("//div[@class='buttons-inner']");
+    }
+
+    SelenideElement errorTextInsidePopUp() {
+        return $x("//div[@class='txt ']//ul");
+    }
+
+    SelenideElement textInsidePopUpSubscribe() {
+        return $x("//div[@class='txt ']");
+    }
+
+    SelenideElement subscribeCheckbox() {
+        return $x("//input[@id='subscribeCheckbox']");
     }
 }

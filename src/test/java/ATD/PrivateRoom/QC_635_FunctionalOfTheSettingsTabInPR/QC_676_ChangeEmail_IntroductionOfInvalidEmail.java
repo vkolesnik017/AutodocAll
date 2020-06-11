@@ -14,9 +14,9 @@ import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_636_PasswordChangeSuccessful {
+public class QC_676_ChangeEmail_IntroductionOfInvalidEmail {
 
-    private String mail = "QC_636_autotest@mailinator.com";
+    private String mail = "QC_676_autotest@mailinator.com";
 
     @BeforeClass
     void setUp() {
@@ -31,23 +31,22 @@ public class QC_636_PasswordChangeSuccessful {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks for a successful password change")
-    public void testPasswordChangeSuccessful(String route) {
-        String newPass = passRandom();
+    @Description(value = "Test checks the change of mail with the entry of an invalid mail")
+    public void testMailWithEntryOfInvalidMail(String route) {
         openPage(route);
         new Main_page_Logic().loginAndTransitionToProfilePlusPage(mail)
                 .goToSettingPage()
                 .checkPresenceChangePassBlock()
                 .checkPresenceChangeEmailBlock()
-                .fillFieldOldPass(password)
-                .fillFieldNewPass(newPass)
-                .fillFieldConfirmPass(newPass)
-                .clickSvePassBtn()
+                .fillFieldNewEmail("QC_676_autotestmailinator.com")
+                .fillFieldConfirmEmail("QC_676_autotestmailinator.com")
+                .clickSaveEmailBtn()
+                .checkErrorTextInsidePopUp("Das Feld E-mail muss eine gültige E-Mail-Adresse enthalten")
                 .closePopUp()
-                .fillFieldOldPass(newPass)
-                .fillFieldNewPass(password)
-                .fillFieldConfirmPass(password)
-                .clickSvePassBtn()
+                .fillFieldNewEmail("QC_676_autotest@ mailinator.com")
+                .fillFieldConfirmEmail("QC_676_autotes@ tmailinator.com")
+                .clickSaveEmailBtn()
+                .checkErrorTextInsidePopUp("Das Feld E-mail muss eine gültige E-Mail-Adresse enthalten")
                 .closePopUp();
         checkingContainsUrl("profile/settings");
     }

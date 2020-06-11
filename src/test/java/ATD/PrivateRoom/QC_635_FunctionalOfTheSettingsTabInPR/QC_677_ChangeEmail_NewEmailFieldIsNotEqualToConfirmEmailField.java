@@ -14,9 +14,9 @@ import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_636_PasswordChangeSuccessful {
+public class QC_677_ChangeEmail_NewEmailFieldIsNotEqualToConfirmEmailField {
 
-    private String mail = "QC_636_autotest@mailinator.com";
+    private String mail = "QC_677_autotest@mailinator.com";
 
     @BeforeClass
     void setUp() {
@@ -31,23 +31,19 @@ public class QC_636_PasswordChangeSuccessful {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks for a successful password change")
-    public void testPasswordChangeSuccessful(String route) {
-        String newPass = passRandom();
+    @Description(value = "Test checks the email change with unequal fields the new email and confirm the email")
+    public void testNewEmailFieldIsNotEqualToConfirmEmailField(String route) {
+        String newEmail = mailRandomMailinator();
+        String confirmEmail = mailRandomMailinator();
         openPage(route);
         new Main_page_Logic().loginAndTransitionToProfilePlusPage(mail)
                 .goToSettingPage()
                 .checkPresenceChangePassBlock()
                 .checkPresenceChangeEmailBlock()
-                .fillFieldOldPass(password)
-                .fillFieldNewPass(newPass)
-                .fillFieldConfirmPass(newPass)
-                .clickSvePassBtn()
-                .closePopUp()
-                .fillFieldOldPass(newPass)
-                .fillFieldNewPass(password)
-                .fillFieldConfirmPass(password)
-                .clickSvePassBtn()
+                .fillFieldNewEmail(newEmail)
+                .fillFieldConfirmEmail(confirmEmail)
+                .clickSaveEmailBtn()
+                .checkErrorTextInsidePopUp("muss mit dem Feld „E-Mail-Adresse“ übereinstimmen")
                 .closePopUp();
         checkingContainsUrl("profile/settings");
     }

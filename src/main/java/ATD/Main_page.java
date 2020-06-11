@@ -152,6 +152,10 @@ public class Main_page {
         return $(byXpath("//*[@class='popup ']//*[contains(text(),'passen nicht zusammen!')]/..//a"));
     }
 
+    public SelenideElement closePopUPInvalidEmailForLogin() {
+        return $x("//*[contains(text(),'Ihre E-mail wurde nicht gefunden')]/../..//a[@class='close']");
+    }
+
     public SelenideElement closeBtnOfLoginPopup() {
         return $(".close_log_on");
     }

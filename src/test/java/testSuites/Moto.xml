@@ -108,6 +108,16 @@
             <class name="MOTO.QC_336_BreadCrumbsBlock.QC_341_StructureOfBreadCrumbsBlock"/>
             <class name="MOTO.QC_336_BreadCrumbsBlock.QC_342_StructureOfBreadCrumbsBlockAtModelListing"/>
             <class name="MOTO.QC_336_BreadCrumbsBlock.QC_343_StructureOfBreadCrumbsBlockAtProductPage"/>
+            <class name="MOTO.QC_336_BreadCrumbsBlock.QC_344_StructureOfBreadCrumbsBlockAtChildCategory"/>
+            <class name="MOTO.QC_336_BreadCrumbsBlock.QC_345_StructureOfBreadCrumbsBlockAtCategoryAndBrand"/>
+            <class name="MOTO.QC_336_BreadCrumbsBlock.QC_346_StructureOfBreadCrumbsBlockAtParentCategory"/>
+            <class name="MOTO.QC_336_BreadCrumbsBlock.QC_347_StructureOfBreadCrumbsBlockAtParentCategoryAndBrand"/>
+        </classes>
+    </test>
+
+    <test name="QC_364_TopCategoriesByBrandBlock">
+        <classes>
+            <class name="MOTO.QC_364_TopCategoriesByBrandBlock.QC_366_PresenceOfTopParentCategoriesBlock"/>
         </classes>
     </test>
 </suite>

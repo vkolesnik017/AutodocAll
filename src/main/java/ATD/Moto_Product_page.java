@@ -87,4 +87,8 @@ public class Moto_Product_page {
 
     SelenideElement iconOfCatalogBrandInBreadCrumbs() {return $x("//li[@class='step_1 active parts_step_1']//img");}
 
+    SelenideElement horizontalMotoSelector() {return $x("//div[@class='atd-carselector__content']");}
+
+    SelenideElement btnCloseTooltipOfBrandFieldAtSelector() {return $x("//div[@class='tooltiptext-close js-tooltiptext-close']");}
+
 }

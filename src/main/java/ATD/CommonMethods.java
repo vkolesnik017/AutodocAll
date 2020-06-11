@@ -345,7 +345,7 @@ public class CommonMethods {
     //The method gets characteristics from ElementsCollection and compare their with characteristics from ArrayList
     public void compareCharacteristics(ElementsCollection actualCharacteristics, List<String> expectedCharacteristics) {
         for (int a = 0; a < expectedCharacteristics.size(); a++) {
-            actualCharacteristics.get(a).shouldHave(text(expectedCharacteristics.get(a)));
+            actualCharacteristics.get(a).shouldHave(matchText(expectedCharacteristics.get(a)));
         }
     }
 

@@ -14,9 +14,10 @@ import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_636_PasswordChangeSuccessful {
+public class QC_645_LogInToSiteWithAnOldPassAfterChangingViaPR {
 
-    private String mail = "QC_636_autotest@mailinator.com";
+    private String mail = "QC_645_autotest@mailinator.com";
+    private Main_page_Logic main_page_logic = new Main_page_Logic();
 
     @BeforeClass
     void setUp() {
@@ -31,11 +32,11 @@ public class QC_636_PasswordChangeSuccessful {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks for a successful password change")
-    public void testPasswordChangeSuccessful(String route) {
+    @Description(value = "Test check enter in to the site with a new password after changing via PR")
+    public void testLogInToSiteWithNewPassAfterChangingViaPR(String route) {
         String newPass = passRandom();
         openPage(route);
-        new Main_page_Logic().loginAndTransitionToProfilePlusPage(mail)
+        main_page_logic.loginAndTransitionToProfilePlusPage(mail)
                 .goToSettingPage()
                 .checkPresenceChangePassBlock()
                 .checkPresenceChangeEmailBlock()
@@ -44,6 +45,11 @@ public class QC_636_PasswordChangeSuccessful {
                 .fillFieldConfirmPass(newPass)
                 .clickSvePassBtn()
                 .closePopUp()
+                .logOutClick()
+                .loginFromHeader(mail, password);
+        main_page_logic.closePopUpInvalidData()
+                .loginWithNewPassword(newPass)
+                .goToSettingPage()
                 .fillFieldOldPass(newPass)
                 .fillFieldNewPass(password)
                 .fillFieldConfirmPass(password)

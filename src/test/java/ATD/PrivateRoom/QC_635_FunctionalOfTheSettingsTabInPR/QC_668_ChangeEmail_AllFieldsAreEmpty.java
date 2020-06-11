@@ -10,13 +10,14 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import static ATD.CommonMethods.*;
+import static ATD.CommonMethods.checkingContainsUrl;
+import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_636_PasswordChangeSuccessful {
+public class QC_668_ChangeEmail_AllFieldsAreEmpty {
 
-    private String mail = "QC_636_autotest@mailinator.com";
+    private String mail = "QC_668_autotest@mailinator.com";
 
     @BeforeClass
     void setUp() {
@@ -31,23 +32,15 @@ public class QC_636_PasswordChangeSuccessful {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks for a successful password change")
-    public void testPasswordChangeSuccessful(String route) {
-        String newPass = passRandom();
+    @Description(value = "Test checks the email change with empty fields New email and Confirm email")
+    public void testAllFieldsAreEmpty(String route) {
         openPage(route);
         new Main_page_Logic().loginAndTransitionToProfilePlusPage(mail)
                 .goToSettingPage()
                 .checkPresenceChangePassBlock()
                 .checkPresenceChangeEmailBlock()
-                .fillFieldOldPass(password)
-                .fillFieldNewPass(newPass)
-                .fillFieldConfirmPass(newPass)
-                .clickSvePassBtn()
-                .closePopUp()
-                .fillFieldOldPass(newPass)
-                .fillFieldNewPass(password)
-                .fillFieldConfirmPass(password)
-                .clickSvePassBtn()
+                .clickSaveEmailBtn()
+                .checkErrorTextInsidePopUp("Das Feld E-Mail-Adresse ist erforderlich und muss einen Wert enthalten.")
                 .closePopUp();
         checkingContainsUrl("profile/settings");
     }

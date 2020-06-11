@@ -1,7 +1,10 @@
 package ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR;
 
+import ATD.DataBase;
 import ATD.Main_page_Logic;
+import ATD.Profile_plus_page_Logic;
 import ATD.SetUp;
+import AWS.Customer_search_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -10,13 +13,16 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import static ATD.CommonMethods.*;
+import java.sql.SQLException;
+
+import static ATD.CommonMethods.checkingContainsUrl;
+import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_636_PasswordChangeSuccessful {
+public class QC_679_NewsLetterConsentCheckbox {
 
-    private String mail = "QC_636_autotest@mailinator.com";
+    private String mail = "QC_679_autotest@mailinator.com";
 
     @BeforeClass
     void setUp() {
@@ -31,23 +37,25 @@ public class QC_636_PasswordChangeSuccessful {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks for a successful password change")
-    public void testPasswordChangeSuccessful(String route) {
-        String newPass = passRandom();
+    @Description(value = "Test checks news letter consent checkbox")
+    public void testNewsLetterConsentCheckbox(String route) throws SQLException {
         openPage(route);
         new Main_page_Logic().loginAndTransitionToProfilePlusPage(mail)
                 .goToSettingPage()
                 .checkPresenceChangePassBlock()
                 .checkPresenceChangeEmailBlock()
-                .fillFieldOldPass(password)
-                .fillFieldNewPass(newPass)
-                .fillFieldConfirmPass(newPass)
-                .clickSvePassBtn()
+                .clickSubscribeCheckbox()
+                .checkTextInsidePopUpSubscribe("Den Newsletter wurde abonniert.")
                 .closePopUp()
-                .fillFieldOldPass(newPass)
-                .fillFieldNewPass(password)
-                .fillFieldConfirmPass(password)
-                .clickSvePassBtn()
+                .checkThatSubscribeCheckboxIsSelected();
+        new Customer_search_aws().openSearchInAwsWithLogin()
+                .enterMailAndClickSearch(mail)
+                .transitionOnCustomerViewPage()
+                .checkStatusOfLastLog();
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod","DE", "main","profile_plus"));
+        new Profile_plus_page_Logic().goToSettingPage()
+                .clickSubscribeCheckbox()
+                .checkTextInsidePopUpSubscribe("Den Newsletter wurde abgemeldet.")
                 .closePopUp();
         checkingContainsUrl("profile/settings");
     }

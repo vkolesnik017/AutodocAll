@@ -173,6 +173,10 @@ public class Listing_page {
         return $x("//*[contains(@class,'filter-criteria_200')]//li[2]");
     }
 
+    public SelenideElement durchmesserSideFilterButtonThirdValue() {
+        return $x("//*[contains(@class,'filter-criteria_200')]//li[3]");
+    }
+
     public SelenideElement furprnummerSideFilterButton() {
         return $x("//*[contains(@class,'filter-criteria_1197')]//li");
     }
