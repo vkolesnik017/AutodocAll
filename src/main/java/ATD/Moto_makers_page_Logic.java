@@ -5,8 +5,7 @@ import io.qameta.allure.Step;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.checkingContainsUrl;
-import static com.codeborne.selenide.Condition.exactValue;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 
 public class Moto_makers_page_Logic extends Moto_makers_page {
 
@@ -53,6 +52,17 @@ public class Moto_makers_page_Logic extends Moto_makers_page {
     @Step("comparing quantity of models .Moto_makers_page")
     public Moto_makers_page_Logic comparingQuantityOfModels(int expectedCountOfModels) {
         linksOfBrands().shouldHaveSize(expectedCountOfModels);
+        return this;
+    }
+
+    @Step("check components of model block .Moto_makers_page")
+    public Moto_makers_page_Logic checkComponentsOfBrandsBlock() {
+        brandsBlock().shouldBe(visible);
+        for (int i = 0; i < linksOfBrands().size(); i++) {
+            imageOfMotoBrands().get(i).shouldBe(visible);
+            titleOfMotoBrands().get(i).shouldBe(visible);
+            countOfMotoBrands().get(i).shouldBe(visible);
+        }
         return this;
     }
 }

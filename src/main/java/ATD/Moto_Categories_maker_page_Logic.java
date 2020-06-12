@@ -115,7 +115,6 @@ public class Moto_Categories_maker_page_Logic extends Moto_Categories_maker_page
         return this;
     }
 
-
     @Step("get count of models from title of models block .Moto_Categories_maker_page")
     public int getCountOfModelsFromTitle() {
         int countOfModels = Integer.parseInt(headlineOfModelsBlock().getText().replaceAll("[^0-9]", ""));
@@ -125,6 +124,28 @@ public class Moto_Categories_maker_page_Logic extends Moto_Categories_maker_page
     @Step("comparing quantity of models .Moto_Categories_maker_page")
     public Moto_Categories_maker_page_Logic comparingQuantityOfModels(int expectedCountOfModels) {
         linksOfModels().shouldHaveSize(expectedCountOfModels);
+        return this;
+    }
+
+    @Step("presence of bread crumbs block .Moto_Categories_maker_page")
+    public Moto_Categories_maker_page_Logic presenceOfBreadCrumbsBlock() {
+        breadCrumbsBlock().shouldBe(visible);
+        linksOfBreadCrumbs().shouldHave(sizeGreaterThan(0));
+        return this;
+    }
+
+
+    @Step("check components of model block .Moto_Categories_maker_page")
+    public Moto_Categories_maker_page_Logic checkComponentsOfModelBlock() {
+        modelBlock().shouldBe(visible);
+        if (linkMoreOfModelBlock().isDisplayed()) {
+            linkMoreOfModelBlock().click();
+        }
+        for (int i=0; i<linksOfMotoModels().size(); i++) {
+            imageOfMotoModels().get(i).shouldBe(visible);
+            titleOfMotoModels() .get(i).shouldBe(visible);
+            yearOfMotoModels().get(i).shouldHave(text("ab"));
+        }
         return this;
     }
 }

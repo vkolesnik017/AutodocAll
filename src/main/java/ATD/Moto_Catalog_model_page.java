@@ -51,4 +51,6 @@ public class Moto_Catalog_model_page {
     SelenideElement iconOfMotoBrandInBreadCrumbs() {return $x("//li[@class='step_1 active parts_step_1']//img");}
 
     SelenideElement titleOfMotoBrandInBreadCrumbs() {return $x("//li[@class='step_1 active parts_step_1']//a");}
+
+    SelenideElement mainHeadline() {return $x("//div[@class='catalog-title__block']/h2");}
 }

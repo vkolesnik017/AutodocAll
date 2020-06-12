@@ -78,4 +78,8 @@ public class Moto_Catalog_page {
 
     SelenideElement iconOfBrandInHeadline() {return $x("//div[@class='catalog-title__block']/img");}
 
+    SelenideElement informationIconAtHeadline() {return  $(byId("selected_car_info"));}
+
+    SelenideElement informationPopUp() {return  $x("//div[@class='selected_car_info_popap moto-info-popup']");}
+
 }

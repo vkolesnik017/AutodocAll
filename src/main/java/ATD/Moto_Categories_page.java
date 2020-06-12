@@ -1,10 +1,11 @@
 package ATD;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selectors.byId;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$$x;
 
 public class Moto_Categories_page {
 
@@ -25,4 +26,12 @@ public class Moto_Categories_page {
     SelenideElement mainFormOfSelector() {return $(byId("selector-wrapper"));}
 
     SelenideElement mainHeadline() {return $x("//div[@class='car-parts-categories__title']/h2");}
+
+    SelenideElement brandsBlock() {return $x("//div[@class='moto-manufactures']");}
+
+    ElementsCollection imageOfMotoBrands() {return $$x("//ul[@class='moto-manufactures__list']/li//img");}
+
+    ElementsCollection titleOfMotoBrands() {return $$x("//ul[@class='moto-manufactures__list']/li//div[2]");}
+
+    ElementsCollection linksOfBrands() {return $$x("//ul[@class='moto-manufactures__list']/li//a");}
 }

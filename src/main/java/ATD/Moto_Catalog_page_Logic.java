@@ -238,4 +238,18 @@ public class Moto_Catalog_page_Logic extends Moto_Catalog_page {
         iconOfBrandInHeadline().shouldBe(visible);
         return this;
     }
+
+
+    @Step("presence of information icon .Moto_Catalog_page")
+    public Moto_Catalog_page_Logic presenceOfInformationIcon() {
+        informationIconAtHeadline().shouldBe(visible);
+        return this;
+    }
+
+    @Step("presence of information pop-Up .Moto_Catalog_page")
+    public Moto_Catalog_page_Logic presenceOfInformationPopUp() {
+        informationIconAtHeadline().click();
+        informationPopUp().shouldBe(visible);
+        return this;
+    }
 }

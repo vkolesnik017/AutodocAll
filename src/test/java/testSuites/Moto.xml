@@ -102,6 +102,7 @@
 
     <test name="QC_336_BreadCrumbsBlock">
         <classes>
+            <class name="MOTO.QC_336_BreadCrumbsBlock.QC_337_PresenceBreadCrumbsBlock"/>
             <class name="MOTO.QC_336_BreadCrumbsBlock.QC_338_StructureOfBreadCrumbsBlockAtBrands"/>
             <class name="MOTO.QC_336_BreadCrumbsBlock.QC_339_StructureOfBreadCrumbsBlockAtCatalogModels"/>
             <class name="MOTO.QC_336_BreadCrumbsBlock.QC_340_StructureOfBreadCrumbsBlockAtTecDocCatalog"/>
@@ -127,6 +128,14 @@
             <class name="MOTO.QC_330_BlockOfMainHeadline.QC_331_PresenceOfMainHeadlineBlock"/>
             <class name="MOTO.QC_330_BlockOfMainHeadline.QC_332_PresenceIconOfBrandInHeadline"/>
             <class name="MOTO.QC_330_BlockOfMainHeadline.QC_333_MatchingQuantityOfBrandsAndModels"/>
+            <class name="MOTO.QC_330_BlockOfMainHeadline.QC_334_PresenceBrandModelValuesInHeadline"/>
+            <class name="MOTO.QC_330_BlockOfMainHeadline.QC_335_PresenceOfInformationIcon"/>
+        </classes>
+    </test>
+
+    <test name="QC_385_BlockBrandsAndModelsOfAutoManufacturers">
+        <classes>
+            <class name="MOTO.QC_385_BlockBrandsAndModelsOfAutoManufacturers.QC_388_ComponentsOfBrandAndModelBlock"/>
         </classes>
     </test>
 </suite>

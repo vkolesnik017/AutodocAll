@@ -139,4 +139,11 @@ public class Moto_Catalog_model_page_Logic extends Moto_Catalog_model_page {
         return page(Moto_Categories_maker_page_Logic.class);
     }
 
+
+    @Step(" presence brand and model in headLine .Moto_Catalog_model_page")
+    public Moto_Catalog_model_page_Logic presenceBrandAndModelInHeadLine(String brandAndModel) {
+        mainHeadline().shouldBe(visible).shouldHave(text(brandAndModel));
+        return this;
+    }
+
 }
