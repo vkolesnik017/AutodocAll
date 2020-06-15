@@ -122,4 +122,29 @@ public class TyresProduct_page_Logic extends TyresProduct_page {
         productPage.minimizedCharactericticBlock().shouldBe(visible);
         return this;
     }
+
+    @Step("Check tyres delivery block. TyresProduct_page")
+    public TyresProduct_page_Logic checkDeliveryBlockVisibility() {
+        tyresDeliveryBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Check topseller block. TyresProduct_page")
+    public TyresProduct_page_Logic checkTopsellerBlockVisibility() {
+        topsellerBlock().shouldBe(visible);
+        productInTopsellerBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Check reviews block. TyresProduct_page")
+    public TyresProduct_page_Logic checkReviewsBlockVisibility() {
+        reviewsBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Check related products block. TyresProduct_page")
+    public TyresProduct_page_Logic checkRelatedProductsBlockVisibility() {
+        relatedProductsBlock().shouldBe(visible);
+        return this;
+    }
 }
