@@ -104,5 +104,9 @@ class Index_instruments_page {
         return $x("//div[@class='advantages__item'][3]//div[@class='advantages__item-popup']");
     }
 
+    SelenideElement firstSeparateCategoryInMainCatalog() {
+        return $x("//div[@class='special-catalog']//div[@class='special-catalog__row'][2]/a[1]");
+    }
+
 
 }
