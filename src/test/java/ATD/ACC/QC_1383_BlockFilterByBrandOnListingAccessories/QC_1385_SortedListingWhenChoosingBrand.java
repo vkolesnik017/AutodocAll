@@ -1,5 +1,4 @@
-package ATD.ACC.QC_1379_BredCrumbsOnListingAccessories;
-
+package ATD.ACC.QC_1383_BlockFilterByBrandOnListingAccessories;
 
 import ATD.Listing_accessories_page_Logic;
 import ATD.SetUp;
@@ -11,15 +10,11 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import java.sql.SQLException;
-import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.back;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_1381_TransitionOnBreadCrumbs {
-
-    private Listing_accessories_page_Logic listing_accessories_page_logic = new Listing_accessories_page_Logic();
+public class QC_1385_SortedListingWhenChoosingBrand {
 
     @BeforeClass
     void setUp() {
@@ -34,17 +29,12 @@ public class QC_1381_TransitionOnBreadCrumbs {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test checks transition for three breadcrumbs .")
-    public void testCheckTransitionForThreeBreadCrumbs(String route) {
-        openPage("route");
-        listing_accessories_page_logic.checkingPresenceAndNotClickableThirdBreadCrumb()
-                .clickSecondBreadCrumb();
-                checkingContainsUrl("autozubehoer");
-                back();
-        listing_accessories_page_logic.clickFirstBreadCrumb();
-                checkingContainsUrl("autoteile");
-
+    @Description(value = "Test checks the sorting of Products with one brand selected then with two")
+    public void testCheckSortingProductsByBrands(String route) {
+        openPage(route);
+        new Listing_accessories_page_Logic().checksSortingProductsWithOneBrandThenWithTwo();
     }
+
 
     @AfterMethod
     private void tearDown() {
