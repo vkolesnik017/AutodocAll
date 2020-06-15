@@ -1,8 +1,9 @@
 package ATD;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Profile_bonusSystem_page {
 
@@ -25,4 +26,30 @@ public class Profile_bonusSystem_page {
     SelenideElement bonusProgramBlock() {
         return $x("//div[@class='info']/ul");
     }
+
+    ElementsCollection listOfBonusInTable() {
+        return $$x("//div[@class='table_over']//tbody/tr");
+    }
+
+// Locators for pagination block
+    SelenideElement paginationBloc() {
+        return $x("//div[@id='light-pagination']");
+    }
+
+    SelenideElement secondPageLink() {
+       return  $x("//div[@id='light-pagination']/ul/li[3]/a");
+    }
+
+    SelenideElement firstLinkPage() {
+        return $x("//div[@id='light-pagination']/ul/li[2]/a");
+    }
+
+    SelenideElement pageLinkNext() {
+        return $x("//div[@id='light-pagination']/ul/li[4]/a");
+    }
+
+    SelenideElement pageLinkPrev() {
+        return $x("//div[@id='light-pagination']/ul/li[1]/a");
+    }
+
 }

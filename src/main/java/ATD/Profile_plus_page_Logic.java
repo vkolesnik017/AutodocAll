@@ -36,4 +36,11 @@ public class Profile_plus_page_Logic extends Profile_plus_page {
         profileBonusSystemBtn().click();
         return page(Profile_bonusSystem_page_Logic.class);
     }
+
+
+    @Step("Checks absence bonus label. Profile_plus_page")
+    public Profile_plus_page_Logic checkAbsenceBonusLabel() {
+        profileBonusSystemBtn().shouldNotBe(visible);
+        return this;
+    }
 }

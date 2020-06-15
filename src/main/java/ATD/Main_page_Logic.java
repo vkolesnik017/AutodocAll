@@ -56,6 +56,7 @@ public class Main_page_Logic extends Main_page {
         mailFieldLogin().setValue(mail);
         passFieldLogin().setValue(password);
         submitBtnLogin().click();
+        new Profile_page().nameOfClient().shouldBe(visible);
         return page(Profile_plus_page_Logic.class);
     }
 
