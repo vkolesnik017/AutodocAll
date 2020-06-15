@@ -7,7 +7,9 @@ import org.testng.Assert;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.Selenide.sleep;
 
 public class Listing_accessories_page_Logic extends Listing_accessories_page {
@@ -75,6 +77,66 @@ public class Listing_accessories_page_Logic extends Listing_accessories_page {
         nameCategories.add(nameTitle);
         Collections.sort(nameCategories);
         return nameCategories;
+    }
+
+    @Step("Checking presence and not clickable third Bread Crumb. Listing_accessories_page")
+    public Listing_accessories_page_Logic checkingPresenceAndNotClickableThirdBreadCrumb() {
+        thirdBreadCrumb().shouldBe(visible).shouldNotBe(attribute("href"));
+        return this;
+    }
+
+    @Step("Click on second Bread Crumb. Listing_accessories_page")
+    public Index_accessories_page_Logic clickSecondBreadCrumb() {
+        secondBreadCrumb().click();
+        return page(Index_accessories_page_Logic.class);
+    }
+
+    @Step("Click on first Bread Crumb. Listing_accessories_page")
+    public Categories_page clickFirstBreadCrumb() {
+        firstBreadCrumb().click();
+        return page(Categories_page_Logic.class);
+    }
+
+    @Step("Checking quantity bread crumbs. Listing_accessories_page")
+    public Listing_accessories_page_Logic checkingQuantityBreadCrumbs() {
+        breadCrumbs().shouldHaveSize(3);
+        return this;
+    }
+
+    @Step("Click on first brand in block brands. Listing_accessories_page")
+    public Listing_accessories_page_Logic clickOnFirstBrand(){
+        firstVisibleBrandForClick().click();
+        return this;
+    }
+
+    @Step("Click on second brand in block brands. Listing_accessories_page")
+    public Listing_accessories_page_Logic clickOnSecondBrand() {
+        secondVisibleBrandsForClick().click();
+        return this;
+    }
+
+    @Step("Get name first brand from brands block. Listing_accessories_page")
+    public String getNameFromFirstBrand() {
+        return firstVisibleBrand().getAttribute("alt");
+    }
+
+    @Step("Get name second brand from brands block. Listing_accessories_page")
+    public  String getNameFromSecondBrand() {
+        return secondVisibleBrands().getAttribute("alt");
+    }
+
+    @Step("Checking sorting of Products with one brand selected then with two. Listing_accessories_page")
+    public Listing_accessories_page_Logic checksSortingProductsWithOneBrandThenWithTwo() {
+        Listing_page_Logic listingPageLogic = new Listing_page_Logic();
+        String firstBrandName = getNameFromFirstBrand();
+        String secondBrandName = getNameFromSecondBrand();
+        clickOnFirstBrand();
+        listingPageLogic.waitUntilPreloaderDisappear();
+        listingPageLogic.checkProductTitleOnListing(firstBrandName, true, titleNameProductsFromListing());
+        clickOnSecondBrand();
+        listingPageLogic.waitUntilPreloaderDisappear();
+        listingPageLogic.checkProductTitleOnListingWithTwoExpectedTexts(firstBrandName, secondBrandName, true, titleNameProductsFromListing());
+        return this;
     }
 
 }

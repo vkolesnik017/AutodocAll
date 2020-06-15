@@ -25,4 +25,8 @@ public class Moto_Category_maker_page {
     ElementsCollection breadCrumbsLinks() {return $$x("//div[@class='steps breadcrumbs']/ul/li//span/*[self::a or self::span]");}
 
     SelenideElement iconOfCatalogBrandInBreadCrumbs() {return $x("//li[@class='step_1 active parts_step_1']//img");}
+
+    SelenideElement mainHeadline() {return $x("//div[@class='title_count_search ']/h2");}
+
+    SelenideElement iconOfBrandInHeadline() {return $x("//div[@class='title_count_search ']/img");}
 }

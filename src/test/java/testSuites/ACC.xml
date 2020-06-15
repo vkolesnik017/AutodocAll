@@ -11,6 +11,7 @@
             <class name="ATD.ACC.QC_1260_MainProductCatalogOnMainTools.QC_1261_TitleMainCatalog"/>
             <class name="ATD.ACC.QC_1260_MainProductCatalogOnMainTools.QC_1262_SubtitleMainCatalog"/>
             <class name="ATD.ACC.QC_1260_MainProductCatalogOnMainTools.QC_1267_LogicalUnionMainCatalogTools"/>
+            <class name="ATD.ACC.QC_1260_MainProductCatalogOnMainTools.QC_1274_SeparateCategoriesInMainCatalogTools"/>
         </classes>
     </test>
 
@@ -35,11 +36,12 @@
 
     <test name="QC_836_MainAccessories">
         <classes>
-            <class name="ATD.ACC.QC_836_MainAccessories.QC_988_FeatureBlock"/>
-            <class name="ATD.ACC.QC_836_MainAccessories.QC_991_DeliveryBlock"/>
-            <class name="ATD.ACC.QC_836_MainAccessories.QC_986_BlockTopBrands"/>
             <class name="ATD.ACC.QC_836_MainAccessories.QC_837_PresenceMainTitleOnMainPage"/>
             <class name="ATD.ACC.QC_836_MainAccessories.QC_838_SubtitleOnMainAccessories"/>
+            <class name="ATD.ACC.QC_836_MainAccessories.QC_986_BlockTopBrands"/>
+            <class name="ATD.ACC.QC_836_MainAccessories.QC_987_BlockAdvantagesInternetShopOnAcc"/>
+            <class name="ATD.ACC.QC_836_MainAccessories.QC_988_FeatureBlock"/>
+            <class name="ATD.ACC.QC_836_MainAccessories.QC_991_DeliveryBlock"/>
         </classes>
     </test>
 
@@ -83,6 +85,7 @@
 
     <test name="QC_1383_BlockFilterByBrandOnListingAccessories">
         <classes>
+            <class name="ATD.ACC.QC_1383_BlockFilterByBrandOnListingAccessories.QC_1385_SortedListingWhenChoosingBrand"/>
             <class name="ATD.ACC.QC_1383_BlockFilterByBrandOnListingAccessories.QC_1387_ResetSelectedFilterByBrand"/>
         </classes>
     </test>
@@ -127,6 +130,20 @@
             <class name="ATD.ACC.QC_1254_MainTools.QC_1333_BlockTopBrandsOnMainTools"/>
             <class name="ATD.ACC.QC_1254_MainTools.QC_1334_BlockFeaturesOnMainTools"/>
             <class name="ATD.ACC.QC_1254_MainTools.QC_1335_BlockDeliveryOnMainTools"/>
+        </classes>
+    </test>
+
+    <test name="QC_1849_ListingChemistry">
+        <classes>
+            <class name="ATD.ACC.QC_1849_ListingChemistry.QC_1850_NameTitleOnListingChemistry"/>
+            <class name="ATD.ACC.QC_1849_ListingChemistry.QC_1851_BlockBrandsOnListingPageChemistry"/>
+        </classes>
+    </test>
+
+    <test name="QC_1379_BredCrumbsOnListingAccessories">
+        <classes>
+            <class name="ATD.ACC.QC_1379_BredCrumbsOnListingAccessories.QC_1380_BreadCrumbs"/>
+            <class name="ATD.ACC.QC_1379_BredCrumbsOnListingAccessories.QC_1381_TransitionOnBreadCrumbs"/>
         </classes>
     </test>
 

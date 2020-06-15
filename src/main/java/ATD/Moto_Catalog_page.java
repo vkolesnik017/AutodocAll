@@ -74,4 +74,12 @@ public class Moto_Catalog_page {
 
     SelenideElement titleOfMotoBrandInBreadCrumbs() {return $x("//li[@class='step_1 active parts_step_1']//a");}
 
+    SelenideElement mainHeadline() {return $x("//div[@class='car-parts-categories__title']/h2");}
+
+    SelenideElement iconOfBrandInHeadline() {return $x("//div[@class='catalog-title__block']/img");}
+
+    SelenideElement informationIconAtHeadline() {return  $(byId("selected_car_info"));}
+
+    SelenideElement informationPopUp() {return  $x("//div[@class='selected_car_info_popap moto-info-popup']");}
+
 }

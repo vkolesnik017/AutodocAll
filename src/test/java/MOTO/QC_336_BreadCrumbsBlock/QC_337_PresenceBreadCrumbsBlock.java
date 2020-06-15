@@ -1,7 +1,6 @@
-package MOTO.QC_373_MainIssueBlockAtTecDocListing;
+package MOTO.QC_336_BreadCrumbsBlock;
 
-import ATD.Cart_page_Logic;
-import ATD.Moto_Category_car_list_page_Logic;
+import ATD.Moto_Categories_maker_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -17,9 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_382_AddToBasketAnalogProduct {
-    private Moto_Category_car_list_page_Logic carListPage = new Moto_Category_car_list_page_Logic();
-
+public class QC_337_PresenceBreadCrumbsBlock {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -27,19 +24,17 @@ public class QC_382_AddToBasketAnalogProduct {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list2,moto_category_car_list_model2");
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_categories_maker2,moto_catalog_model2,moto_catalog2,moto_category_car_list_model2,moto_category_car_list2,moto_product,moto_category,moto_category_maker,moto_parent_category,moto_category_maker");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks add to basket an analog product")
-    public void testChecksAddToBasketAnalogProduct(String route) {
+    @Description(value = "Test checks presence bread crumbs block")
+    public void testChecksPresenceBreadCrumbsBlock(String route) {
         openPage(route);
 
-        String idOfAddedProduct = carListPage.getIdOfAnalogProduct();
-        carListPage.addProductToBasketFromAnalogBlock();
-        new Cart_page_Logic().checkOfIdAddedProductInBasket(idOfAddedProduct);
+        new Moto_Categories_maker_page_Logic().presenceOfBreadCrumbsBlock();
     }
 
     @AfterMethod
