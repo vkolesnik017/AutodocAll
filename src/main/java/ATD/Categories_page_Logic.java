@@ -260,4 +260,4 @@ public class Categories_page_Logic extends Categories_page {
     return this;
   }
 
-  }
+}

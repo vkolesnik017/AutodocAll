@@ -86,4 +86,29 @@ class Index_accessories_page {
         return $x("//div[@class='product-list__item__popup']//span[@class='link ga-click']");
     }
 
+    SelenideElement blockAdvantages() {
+        return $x("//div[@class='advantages']");
+    }
+
+    SelenideElement firstTabAdvantages() {
+        return $x("//div[@class='advantages']//i[@class='advantages-warranty']");
+    }
+
+    SelenideElement secondTabAdvantage() {
+        return $x("//div[@class='advantages']//i[@class='advantages-back']");
+    }
+
+    SelenideElement thirdTabAdvantage() {
+        return $x("//div[@class='advantages']//i[@class='advantages-circle']");
+    }
+
+    SelenideElement popupSecondTabAdvantage() {
+        return $x("//div[@class='advantages__item'][2]//div[@class='advantages__item-popup']");
+    }
+
+    SelenideElement popupThirdTabAdvantage() {
+        return $x("//div[@class='advantages__item'][3]//div[@class='advantages__item-popup']");
+    }
+
+
 }

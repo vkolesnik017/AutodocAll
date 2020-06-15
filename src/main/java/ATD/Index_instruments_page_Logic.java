@@ -157,4 +157,16 @@ public class Index_instruments_page_Logic extends Index_instruments_page {
         return this;
     }
 
+    @Step("Get name first separate category on main catalog. Index_chemicals_page")
+    public String getNameFirstSeparateCategoryMainCatalog() {
+        return firstSeparateCategoryInMainCatalog().getText();
+    }
+
+    @Step("Click first separate category on main catalog. Index_chemicals_page")
+    public Listing_instruments_page_Logic clickFirstSeparateCategoryMainCatalog() {
+        firstSeparateCategoryInMainCatalog().shouldBe(visible).click();
+        return page(Listing_instruments_page_Logic.class);
+    }
+
+
 }
