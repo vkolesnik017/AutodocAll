@@ -30,4 +30,17 @@ public class Profile_plus_page_Logic extends Profile_plus_page {
         profileSettingBtn().click();
         return page(Profile_setting_page_Logic.class);
     }
+
+    @Step("Transition to bonus system page. Profile_plus_page")
+    public Profile_bonusSystem_page_Logic goToBonusSystemPage() {
+        profileBonusSystemBtn().click();
+        return page(Profile_bonusSystem_page_Logic.class);
+    }
+
+
+    @Step("Checks absence bonus label. Profile_plus_page")
+    public Profile_plus_page_Logic checkAbsenceBonusLabel() {
+        profileBonusSystemBtn().shouldNotBe(visible);
+        return this;
+    }
 }

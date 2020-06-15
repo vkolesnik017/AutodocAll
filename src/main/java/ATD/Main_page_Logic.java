@@ -56,6 +56,7 @@ public class Main_page_Logic extends Main_page {
         mailFieldLogin().setValue(mail);
         passFieldLogin().setValue(password);
         submitBtnLogin().click();
+        new Profile_page().nameOfClient().shouldBe(visible);
         return page(Profile_plus_page_Logic.class);
     }
 
@@ -665,11 +666,11 @@ public class Main_page_Logic extends Main_page {
         commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "service_packages"));
         //HILFE & SUPPORT
         clickAutodocClub();
-        commonMethods.checkingUrlAndCloseTab(db.getRouteByRouteName(getCurrentShopFromJSVarInHTML(), "club_main") + "/?utm_source=");
+        commonMethods.checkingUrlAndCloseTab(db.getRouteByRouteName(getCurrentShopFromJSVarInHTML(), "club_main") + "/?reg-modal=");
         clickBlog();
         commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "info_section_index"));
         clickVideoTutorials();
-        commonMethods.checkingUrlAndCloseTab(db.getRouteByRouteName(getCurrentShopFromJSVarInHTML(), "club_main") + "/manuals?utm_source=");
+        commonMethods.checkingUrlAndCloseTab(db.getRouteByRouteName(getCurrentShopFromJSVarInHTML(), "club_main") + "/manuals");
         clickAltolentsorgung();
         commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "staticAltolentsorgung"));
         clickAgb();
