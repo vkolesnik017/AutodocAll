@@ -64,5 +64,45 @@ class Index_instruments_page {
         return $x("//div[@class='product-list__item active']//div[@class='price_box product-list__item__button']");
     }
 
+    SelenideElement firstGroupLogicalUnion() {
+        return $x("//div[@class='special-catalog__row'][1]//div[@class='special-catalog__group'][1]");
+    }
+
+    SelenideElement firstCategoryInLogicalUnion() {
+        return $x("//div[@class='special-catalog__categories' and @style='display: block;']//li[1]//span");
+    }
+
+    SelenideElement btnDetailsInPopupGoodsTop6Block() {
+        return $x("//div[@class='product-list__item active']//div[@class='item-table-box__details']");
+    }
+
+    SelenideElement btnDetailsInPopupGoodsTop10ProductsBlock() {
+        return $x("//div[@class='rec_prod_info_popup']//span[@class='details link']");
+    }
+
+    SelenideElement blockAdvantages() {
+        return $x("//div[@class='advantages']");
+    }
+
+    SelenideElement firstTabAdvantages() {
+        return $x("//div[@class='advantages']//i[@class='advantages-warranty']");
+    }
+
+    SelenideElement secondTabAdvantage() {
+        return $x("//div[@class='advantages']//i[@class='advantages-back']");
+    }
+
+    SelenideElement thirdTabAdvantage() {
+        return $x("//div[@class='advantages']//i[@class='advantages-circle']");
+    }
+
+    SelenideElement popupSecondTabAdvantage() {
+        return $x("//div[@class='advantages__item'][2]//div[@class='advantages__item-popup']");
+    }
+
+    SelenideElement popupThirdTabAdvantage() {
+        return $x("//div[@class='advantages__item'][3]//div[@class='advantages__item-popup']");
+    }
+
 
 }

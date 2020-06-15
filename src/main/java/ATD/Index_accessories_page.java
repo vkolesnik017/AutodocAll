@@ -34,6 +34,10 @@ class Index_accessories_page {
         return $x("//div[@class='accessories-catalog__categories' and @style='display: block;']//li[2]");
     }
 
+    ElementsCollection categoriesInLogicalUnion(){
+        return $$x("//div[@class='accessories-catalog__categories' and @style='display: block;']//li");
+    }
+
     SelenideElement mainTitlePage() {
         return $x("//h1[@class='page-title'][text()]");
     }
@@ -60,6 +64,26 @@ class Index_accessories_page {
 
     SelenideElement nameFirstProductInTop6Block() {
         return $x("//div[@class='product-list__item__title']/span[text()]");
+    }
+
+    SelenideElement firstTabInBlockTopAccessories() {
+        return $x("//div[@class='accessories-top']//li[1]");
+
+    }
+    SelenideElement secondTabInBlockTopAccessories() {
+        return $x("//div[@class='accessories-top']//li[2]");
+    }
+
+    SelenideElement thirdTabInBlockTopAccessories() {
+        return $x("//div[@class='accessories-top']//li[3]");
+    }
+
+    ElementsCollection categoriesInTabBlockTopAccessories() {
+        return $$x("//div[@class='accessories-tabs__item active']//span[@data-gac='TOP_catalog_accessories']");
+    }
+
+    SelenideElement btnDetailsInPopupTop6Block() {
+        return $x("//div[@class='product-list__item__popup']//span[@class='link ga-click']");
     }
 
 }

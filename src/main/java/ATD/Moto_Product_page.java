@@ -3,6 +3,7 @@ package ATD;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -68,22 +69,26 @@ public class Moto_Product_page {
         return $x("//div[@class='accordion-selected']");
     }
 
-    /* SelenideElement linkOfCompatibilityMotoAndProduct() {
-         return $x("//div[contains(@class,'product-info-block__title--moto')]");
-     }
- */
-    ElementsCollection listOfMotoAtCompatibilityBlock() {
-        return $$x("//div[@class='accordion-content']/ul/li/b");
-    }
+       ElementsCollection listOfMotoAtCompatibilityBlock() {
+       return $$x("//div[@class='product-info-block-accordion js--roll-up']/div[contains(@class,'product-info-block--moto')]//div[@class='accordion-content']/ul/li/b").filter(visible);}
 
-    //   ElementsCollection listOfMotoAtCompatibilityBlock() {return $$x("//div[contains(@class,'product-info-block__title--moto')]/following-sibling::div//div[@class='accordion-content']/ul/li/b");}
 
     SelenideElement compatibilityMotoBrand() {
-        return $x("//div[@class='accordion-button']/i");
+        return $x("//div[@class='product-info-block-accordion js--roll-up']/div[contains(@class,'product-info-block--moto')]//div[@class='accordion-button']/i");
     }
 
     SelenideElement titleOfProduct() {
         return $x("//div[@class='product-block__description__title product-block__equal-height-wrap']/h2/span");
     }
+
+    SelenideElement  compatibilityModelBlock() {return $x("//div[@class='accordion-button active']/following-sibling::div/ul");}
+
+    ElementsCollection breadCrumbsLinks() {return $$x("//div[@class='steps breadcrumbs']/ul/li//a");}
+
+    SelenideElement iconOfCatalogBrandInBreadCrumbs() {return $x("//li[@class='step_1 active parts_step_1']//img");}
+
+    SelenideElement horizontalMotoSelector() {return $x("//div[@class='atd-carselector__content']");}
+
+    SelenideElement btnCloseTooltipOfBrandFieldAtSelector() {return $x("//div[@class='tooltiptext-close js-tooltiptext-close']");}
 
 }

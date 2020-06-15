@@ -619,5 +619,9 @@ public class Product_page {
         return $x("//h2/span[@class='title']");
     }
 
+// locators for accessories page
+    SelenideElement titleNameProductPageAccessories() {
+        return $x("//h2/span[@class='title']");
+    }
 
 }

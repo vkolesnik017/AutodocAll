@@ -66,7 +66,7 @@ public class LKW_Product_page_Logic extends LKW_Product_page {
             String idOfProduct = url().replaceAll("[^0-9]", "");
             executeJavaScript("window.open('about:blank','_blank')");
             switchTo().window(1);
-            new ProductCard_aws(idOfProduct).openProductCardPageAndLogin();
+            new ProductCard_aws(idOfProduct).openProductCardPageAndLogin(). checkTruckLabel();
             switchTo().window(1).close();
             switchTo().window(0);
         }

@@ -67,8 +67,8 @@ public class QC_138_FiltersSorting_TestDurchmesserAndBySideFilterInteraction {
     @Description(value = "Test checks Durchmesser and by side filters interaction LKW route")
     public void testDurchmesserAndSideFilterInteractionLKW2() throws SQLException {
         openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list2"));
-        String durchmesserValue = listingPage.getTextFromElement(listingPage.durchmesserSideFilterButton());
-        listingPage.clickFilterButton(listingPage.durchmesserSideFilterButton())
+        String durchmesserValue = listingPage.getTextFromElement(listingPage.durchmesserSideFilterButtonThirdValue());
+        listingPage.clickFilterButton(listingPage.durchmesserSideFilterButtonThirdValue())
                 .waitUntilPreloaderDisappear()
                 .clickFilterBySideFront()
                 .waitUntilPreloaderDisappear()

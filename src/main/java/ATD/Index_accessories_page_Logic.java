@@ -5,8 +5,11 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.Selenide.sleep;
 
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
+
+import java.util.ArrayList;
 
 
 public class Index_accessories_page_Logic extends Index_accessories_page {
@@ -100,6 +103,50 @@ public class Index_accessories_page_Logic extends Index_accessories_page {
     public Cart_page_Logic clickOnBtnGoToBasket() {
         new Main_page_Logic().cartClick();
         return page(Cart_page_Logic.class);
+    }
+
+    @Step("Click on first product in top-6 block. Index_accessories_page")
+    public Product_page_Logic clickOnFirstProductInTop6Block() {
+        nameFirstProductInTop6Block().click();
+        return page(Product_page_Logic.class);
+    }
+
+    @Step("Check presence categories after hover on Logical Union. Index_accessories_page")
+    public Index_accessories_page_Logic checkLogicalUnion() {
+        catalogFirstGroup().hover();
+        sleep(2000);
+        secondCategoryInLogicalUnion().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checking the number of categories in each tab of the top accessories block. Index_accessories_page")
+    public Index_accessories_page_Logic checkNumberOfCategoriesInEachTabBlockTopAcc() {
+        firstTabInBlockTopAccessories().shouldBe(visible);
+        categoriesInTabBlockTopAccessories().shouldHaveSize(4);
+        secondTabInBlockTopAccessories().click();
+        categoriesInTabBlockTopAccessories().shouldHaveSize(4);
+        thirdTabInBlockTopAccessories().click();
+        categoriesInTabBlockTopAccessories().shouldHaveSize(4);
+        return this;
+    }
+
+    @Step("Checking hover popup in top 6 product block. Index_accessories_page")
+    public Index_accessories_page_Logic checkingHoverPopupInTop6ProductBlock() {
+        nameFirstProductInTop6Block().hover();
+        btnDetailsInPopupTop6Block().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Get name all categories in logical union and add in list. Index_accessories_page")
+    public ArrayList getNameAllCategoriesInLogicalUnionAndAddToList() {
+        catalogFirstGroup().scrollTo().hover();
+        secondCategoryInLogicalUnion().shouldBe(visible);
+        ArrayList <String> nameCategories = new ArrayList<>();
+        for(SelenideElement element : categoriesInLogicalUnion()) {
+            String name = element.getText();
+            nameCategories.add(name);
+        }
+        return nameCategories;
     }
 
 

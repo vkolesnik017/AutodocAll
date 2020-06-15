@@ -60,4 +60,8 @@ public class Moto_Category_page {
     ElementsCollection textOfBenefitsLinks() {return $$x("//li[@class='has_tooltip']/span");}
 
     SelenideElement mainImageOfChildCategory() {return $x("//div[@class='autoteile-top-content__image']/img");}
+
+    ElementsCollection breadCrumbsLinks() {return $$x("//div[@class='steps breadcrumbs']/ul/li//span/*[self::a or self::span]");}
+
+    SelenideElement iconOfCatalogBrandInBreadCrumbs() {return $x("//li[@class='step_1 active parts_step_1']//img");}
 }

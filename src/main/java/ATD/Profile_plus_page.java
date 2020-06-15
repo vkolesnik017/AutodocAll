@@ -11,4 +11,12 @@ public class Profile_plus_page {
     SelenideElement profileAddressBtn() {
         return $x("//a[@data-ga-action='Sidebar_MyAddresses']");
     }
+
+    SelenideElement profileBankBtn() {
+        return $x("//a[@data-ga-action='Sidebar_BankDetails']");
+    }
+
+    SelenideElement profileSettingBtn() {
+        return $x("//a[@data-ga-action='Sidebar_Settings']");
+    }
 }

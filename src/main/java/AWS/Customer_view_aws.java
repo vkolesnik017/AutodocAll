@@ -6,8 +6,7 @@ import io.qameta.allure.Step;
 import java.util.ArrayList;
 
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.$x;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Customer_view_aws {
 
@@ -109,6 +108,51 @@ public class Customer_view_aws {
 
     private SelenideElement fieldPhoneInDeliveryAddress() {
         return $x("//input[@id='form_lTelefon']");
+    }
+
+    private SelenideElement fieldNameReceiver() {
+        return $x("//input[@id='form_BankData[AccOwner]']");
+    }
+
+    private SelenideElement fieldIbanNum() {
+        return $x("//input[@id='form_BankData[AccIBAN]']");
+    }
+
+    private SelenideElement bankData() {
+        return $x("//div[@id='bankData']");
+    }
+
+    private SelenideElement subscriptionBlock() {
+        return $(".subscription_box");
+    }
+
+    private SelenideElement checkStatusOkayInSubscriptConsentLogs() {
+        return $x("//div[@class='col-sm-12 col-md-5']//tr[1]//td[3]//i[@class='splashy-okay']");
+    }
+
+
+    @Step("Checks that the last log has the status OK in the block subscription block. Customer_view_aws")
+    public Customer_view_aws checkStatusOfLastLog() {
+        subscriptionBlock().shouldHave(visible);
+        checkStatusOkayInSubscriptConsentLogs().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checks presence bank data block. Customer_view_aws")
+    public Customer_view_aws checkPresenceBankDataBlock() {
+        bankData().scrollTo();
+        bankData().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Get name receiver in bank, customer data block. Customer_view_aws")
+    public String getNameInReceiverInCurrentBankBlock() {
+        return String.valueOf(fieldNameReceiver().getAttribute("value"));
+    }
+
+    @Step("Get IBAN num in bank, customer data block. Customer_view_aws")
+    public String getIbanNumInCurrentBankBlock() {
+        return String.valueOf(fieldIbanNum().getAttribute("value"));
     }
 
 

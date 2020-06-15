@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="PrivateRoom" parallel="methods" thread-count="1">
+<suite name="PrivateRoom" parallel="methods" thread-count="4" data-provider-thread-count="4">
 
     <listeners>
         <listener class-name="ATD.ProjectListener"/>
@@ -8,10 +8,50 @@
 
     <test name="QC_683_FunctionalTabOfAddressPR">
         <classes>
+            <class name="ATD.PrivateRoom.QC_683_FunctionalTabOfAddressPR.QC_673_AddNewBillingAddress"/>
+            <class name="ATD.PrivateRoom.QC_683_FunctionalTabOfAddressPR.QC_792_EditBillingAddress"/>
+            <class name="ATD.PrivateRoom.QC_683_FunctionalTabOfAddressPR.QC_799_DeleteBillingAddress"/>
+            <class name="ATD.PrivateRoom.QC_683_FunctionalTabOfAddressPR.QC_801_EditDeliveryAddress"/>
+            <class name="ATD.PrivateRoom.QC_683_FunctionalTabOfAddressPR.QC_805_DeleteDeliveryAddress"/>
+            <class name="ATD.PrivateRoom.QC_683_FunctionalTabOfAddressPR.QC_807_AddNewDeliveryAddress"/>
+            <class name="ATD.PrivateRoom.QC_683_FunctionalTabOfAddressPR.QC_810_SetAsPrimaryDeliveryAddress"/>
             <class name="ATD.PrivateRoom.QC_683_FunctionalTabOfAddressPR.QC_864_CheckingBtnAbbrechenInTheDeliveryAddressEditingBlock"/>
             <class name="ATD.PrivateRoom.QC_683_FunctionalTabOfAddressPR.QC_928_AddressTabElementsInPR"/>
-            <class name="ATD.PrivateRoom.QC_683_FunctionalTabOfAddressPR.QC_810_SetAsPrimaryDeliveryAddress"/>
-            <class name="ATD.PrivateRoom.QC_683_FunctionalTabOfAddressPR.QC_807_AddNewDeliveryAddress"/>
+        </classes>
+    </test>
+
+    <test name="QC_600_FunctionalTabBankPR">
+        <classes>
+            <class name="ATD.PrivateRoom.QC_600_FunctionalTabBankPR.QC_601_FillingOutFormInBankTab"/>
+            <class name="ATD.PrivateRoom.QC_600_FunctionalTabBankPR.QC_603_EditingTheBankTab"/>
+            <class name="ATD.PrivateRoom.QC_600_FunctionalTabBankPR.QC_606_DeletingBankDataInPR"/>
+            <class name="ATD.PrivateRoom.QC_600_FunctionalTabBankPR.QC_608_SavingBankDataFormWithIncorrectIBAN"/>
+            <class name="ATD.PrivateRoom.QC_600_FunctionalTabBankPR.QC_936_BankTabElementPR"/>
+        </classes>
+    </test>
+
+    <test name="QC_635_FunctionalOfTheSettingsTabInPR">
+        <classes>
+            <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_636_PasswordChangeSuccessful"/>
+            <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_638_PasswordChangeAllFieldsAreEmpty"/>
+            <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_644_LogInToSiteWithNewPassAfterChangingViaPR"/>
+            <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_645_LogInToSiteWithAnOldPassAfterChangingViaPR"/>
+            <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_648_ChangePass_OldPassFieldIsEmpty"/>
+            <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_651_ChangePass_FieldsNewPassAndConfirmPassIsEmpty"/>
+            <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_653_ChangePass_ConfirmPassFieldsIsEmpty"/>
+            <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_658_ChangePassword_InvalidOldPass"/>
+            <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_659_EnterPassLessThenFourCharacters"/>
+            <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_660_ChangePassword_NewPassNotEqualConfirmPass"/>
+            <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_661_SuccessfulChangeOfEmailInPR"/>
+            <!--<class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_665_LoginWithNewEmail"/>-->
+            <!--<class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_667_LoginUnderTheOldEmailAfterChangingIt"/>-->
+            <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_668_ChangeEmail_AllFieldsAreEmpty"/>
+            <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_671_ChangeEmail_ConfirmEmailFieldIsEmpty"/>
+            <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_676_ChangeEmail_IntroductionOfInvalidEmail"/>
+            <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_677_ChangeEmail_NewEmailFieldIsNotEqualToConfirmEmailField"/>
+            <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_678_ChangeEmail_EmailExistsInTheSystem"/>
+            <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_679_NewsLetterConsentCheckbox"/>
+            <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_933_SettingsTabElementPR"/>
         </classes>
     </test>
 

@@ -38,7 +38,7 @@ public class QC_928_AddressTabElementsInPR {
                 .goToProfileAddressesPage()
                 .checkForTextInBlockTopTitle("Mein AUTODOC")
                 .checkPresenceClientID()
-                .checkPresenceHeaderPrivateRoomBlockAndElementInside()
+                .checkPresenceHeaderBlockAndElementInside()
                 .checkNamePageAndPresenceIcon("Mein Adressbuch")
                 .checkBillingAddressBlockAndItsElement()
                 .checkDeliveryAddressBlockAndItsElement();

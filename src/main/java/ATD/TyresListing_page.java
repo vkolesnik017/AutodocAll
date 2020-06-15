@@ -32,6 +32,10 @@ class TyresListing_page {
 
     SelenideElement firstActiveBrandInBlockMoto() { return $x("//*[@class='js-filter-item ga-click-criteria-filter active']"); }
 
+    SelenideElement secondActiveBrandInBlockMoto() { return $x("//*[@class='js-filter-item ga-click-criteria-filter active'][2]"); }
+
+    SelenideElement secondActiveBrandInBlock() { return $x("//*[@class='js-filter-item ga-click-criteria-filter active slick-slide slick-active']"); }
+
     SelenideElement speedIndexOnListingValue() { return $x("(//*[@class='multiple-select__title'])[2]/span/b"); }
 
     SelenideElement widthValueInSelector() { return $x("//*[@class='main-selector Width']//*[@selected]"); }
@@ -69,6 +73,10 @@ class TyresListing_page {
     ElementsCollection productTitleOnListing() { return $$(".name > a");}
 
     ElementsCollection productsRatingOnListing() { return $$x("//div[@class='review-vote']/span/span"); }
+
+    ElementsCollection fiveRatingStarsOnTyresListing() { return $$x("//div[@class='review-vote']/span/span[@style='width:102%']"); }
+
+    ElementsCollection ratingInProductBlock() { return $$(".review-vote__price-block__rating__bg"); }
 
     SelenideElement brandInputInSelector() { return $(".multiple-select__dropdown-search > input"); }
 
@@ -115,5 +123,7 @@ class TyresListing_page {
     SelenideElement breadcrumbsLastButton() { return $(".last_active_element"); }
 
     SelenideElement brandFilterBlockOnTyresListing() { return $("#selected-instalation__slider"); }
+
+    SelenideElement ratingFilterBlock() { return $(".sort-rating"); }
 
 }

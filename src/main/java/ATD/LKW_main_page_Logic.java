@@ -6,6 +6,9 @@ import io.qameta.allure.Step;
 import org.testng.Assert;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
@@ -511,17 +514,18 @@ public class LKW_main_page_Logic extends LKW_main_page {
 
     @Step("Checking countries subscription from footer country list  .LKW_main_page")
     public LKW_main_page_Logic checkingCountriesSubscription() throws SQLException {
-        languageBlock().shouldBe(visible).click();
+        String[] arr = {"CH", "AT", "LD", "BG", "BE", "CZ", "DK", "EE", "ES", "FI", "FR", "EN", "GR", "HU", "IT", "LT", "LV", "NL", "NO", "PL", "PT", "RO", "SE", "SI", "SK"};
+        List list = Arrays.asList(arr);
+        List<String> language = new ArrayList<>(list);
+        languageBlock().click();
         for (int i = 0; i < languagesOfSubscribe().size(); i++) {
             if (closeCookiesPopUp().isDisplayed()) {
                 closeCookiesPopUp().click();
             }
-            String shopName = languagesOfSubscribe().get(i).attr("id");
-            shopName = shopName.substring(shopName.indexOf("_") + 1);
-            if (shopName.equalsIgnoreCase("lu")) shopName = "ld";
-            languageBlock().click();
-            languagesOfSubscribe().get(i).scrollIntoView("{block: \"center\"}").click();
-            Assert.assertTrue(url().contains(new DataBase().getRouteByRouteName(shopName, "lkw_main")));
+            languageBlock().shouldBe(visible).scrollTo().click();
+            languageListBlock().shouldHave(attribute("style", "visibility: visible;"));
+            languagesOfSubscribe().get(i).scrollIntoView("{block: \"end\"}").click();
+            Assert.assertTrue(url().contains(new DataBase().getRouteByRouteName(language.get(i), "lkw_main")));
         }
         return this;
     }
