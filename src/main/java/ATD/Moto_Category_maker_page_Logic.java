@@ -97,4 +97,32 @@ public class Moto_Category_maker_page_Logic extends Moto_Category_maker_page {
         return this;
     }
 
+    @Step(" click on motorcycle model .Moto_Category_maker_page")
+    public Moto_Category_car_list_model_page_Logic clickOnMotoModel(int position) {
+        modelsLinks().get(position).shouldBe(visible).click();
+        return page(Moto_Category_car_list_model_page_Logic.class);
+    }
+
+    @Step(" presence of models block .Moto_Category_maker_page")
+    public Moto_Category_maker_page_Logic presenceOfModelsBlock() {
+        modelsBlock().shouldBe(visible);
+        modelsLinks().shouldHaveSize(6);
+        return this;
+    }
+
+
+    @Step("open of models block .Moto_Category_maker_page")
+    public Moto_Category_maker_page_Logic openOfModelsBlock() {
+        linkMoreOfModelBlock().shouldBe(visible).click();
+        modelsLinks().shouldHaveSize(21);
+        return this;
+    }
+
+    @Step("minimized of model block .Moto_Category_maker_page")
+    public Moto_Category_maker_page_Logic minimizedOfModelBlock() {
+        linkLessOfModelBlock().shouldBe(visible).click();
+        modelsLinks().shouldHaveSize(6);
+        return this;
+    }
+
 }
