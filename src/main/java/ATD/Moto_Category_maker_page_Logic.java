@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.back;
 import static com.codeborne.selenide.Selenide.page;
 
-public class Moto_Category_maker_page_Logic  extends Moto_Category_maker_page{
+public class Moto_Category_maker_page_Logic extends Moto_Category_maker_page {
 
     @Step(" select motorcycle model in selector .Moto_Category_maker_page")
     public Moto_Category_maker_page_Logic selectMotoModel(String model) {
@@ -82,6 +82,18 @@ public class Moto_Category_maker_page_Logic  extends Moto_Category_maker_page{
     @Step(" check sixth link of bread crumbs links .Moto_Category_maker_page")
     public Moto_Category_maker_page_Logic checkSixthLinkOfBreadCrumbsLinks(String title) {
         breadCrumbsLinks().get(5).shouldBe(visible).shouldHave(text(title)).shouldNotHave(attribute("href"));
+        return this;
+    }
+
+    @Step("presence of main headline block .Moto_Category_maker_page")
+    public Moto_Category_maker_page_Logic presenceOfMainHeadlineBlock() {
+        mainHeadline().shouldBe(visible);
+        return this;
+    }
+
+    @Step(" presence of brand icon in Headline .Moto_Category_maker_page")
+    public Moto_Category_maker_page_Logic presenceOfBrandIconInHeadline() {
+        iconOfBrandInHeadline().shouldBe(visible);
         return this;
     }
 

@@ -226,4 +226,30 @@ public class Moto_Catalog_page_Logic extends Moto_Catalog_page {
         breadCrumbsLinks().get(1).shouldBe(visible).click();
         return page(Moto_Catalog_model_page_Logic.class);
     }
+
+    @Step("presence of main Headline block .Moto_Catalog_page")
+    public Moto_Catalog_page_Logic presenceOfMainHeadlineBlock() {
+        mainHeadline().shouldBe(visible);
+        return this;
+    }
+
+    @Step("presence of brand icon in Headline .Moto_Catalog_page")
+    public Moto_Catalog_page_Logic presenceOfBrandIconInHeadline() {
+        iconOfBrandInHeadline().shouldBe(visible);
+        return this;
+    }
+
+
+    @Step("presence of information icon .Moto_Catalog_page")
+    public Moto_Catalog_page_Logic presenceOfInformationIcon() {
+        informationIconAtHeadline().shouldBe(visible);
+        return this;
+    }
+
+    @Step("presence of information pop-Up .Moto_Catalog_page")
+    public Moto_Catalog_page_Logic presenceOfInformationPopUp() {
+        informationIconAtHeadline().click();
+        informationPopUp().shouldBe(visible);
+        return this;
+    }
 }

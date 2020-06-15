@@ -1,8 +1,10 @@
 package ATD;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -37,5 +39,29 @@ public class Moto_Categories_maker_page {
     ElementsCollection  titleOfTopParentBlock() {return $$x("//span[@class='moto-parts-catalog__item-title']");}
 
     ElementsCollection topChildLinks(int position) {return $$x("(//div[@class='moto-parts-catalog__cat-list'])["+position+"]//a/span");}
+
+    SelenideElement mainHeadline() {return $x("//div[@class='title_count_search']/h2");}
+
+    SelenideElement iconOfBrandInHeadline() {return $x("//div[@class='title_count_search']/img");}
+
+    SelenideElement headlineOfModelsBlock() {return $x("//div[@class='moto-cars-models__title']/h3");}
+
+    ElementsCollection linksOfModels() {return $$x("//ul[@class='moto-cars-models__list']/li");}
+
+    SelenideElement breadCrumbsBlock() {return $x("//div[@class='steps breadcrumbs']");}
+
+    SelenideElement linkMoreOfModelBlock() {return $x("//div[@class='moto-cars-models']//div[@class='m_text show']");}
+
+    SelenideElement modelBlock() {return $x("//div[@class='moto-cars-models']");}
+
+    ElementsCollection linksOfMotoModels() {return $$x("//ul[@class='moto-cars-models__list']/li");}
+
+    ElementsCollection imageOfMotoModels() {return $$x("//ul[@class='moto-cars-models__list']/li//img").filter(visible);}
+
+    ElementsCollection titleOfMotoModels() {return $$x("//ul[@class='moto-cars-models__list']/li//span[2]").filter(visible);}
+
+    ElementsCollection yearOfMotoModels() {return $$x("//ul[@class='moto-cars-models__list']/li//span[3]").filter(visible);}
+
+    SelenideElement titleOfModelsBlock() {return $x("//div[@class='moto-cars-models__title']");}
 
 }

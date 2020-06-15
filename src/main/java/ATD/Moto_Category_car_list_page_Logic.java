@@ -384,4 +384,10 @@ public class Moto_Category_car_list_page_Logic extends Moto_Category_car_list_pa
         linksOfBreadCrumbs().get(5).shouldHave(text(titleOfLink)).shouldNotHave(attribute("href"));
         return this;
     }
+
+    @Step(" presence brand and model in headLine .Moto_Category_car_list_page")
+    public Moto_Category_car_list_page_Logic presenceBrandAndModelInHeadLine(String brandAndModel) {
+        mainHeadline().shouldBe(visible).shouldHave(text(brandAndModel));
+        return this;
+    }
 }
