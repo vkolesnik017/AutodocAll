@@ -34,4 +34,6 @@ public class Moto_Categories_page {
     ElementsCollection titleOfMotoBrands() {return $$x("//ul[@class='moto-manufactures__list']/li//div[2]");}
 
     ElementsCollection linksOfBrands() {return $$x("//ul[@class='moto-manufactures__list']/li//a");}
+
+    SelenideElement brandsTitle() {return $x("//strong[@class='moto-manufactures__title']");}
 }

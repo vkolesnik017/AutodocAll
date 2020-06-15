@@ -58,4 +58,10 @@ public class Moto_Categories_page_Logic extends Moto_Categories_page {
         }
         return this;
     }
+
+    @Step("presence of models title .Moto_Categories_page")
+    public Moto_Categories_page_Logic presenceOfBrandsTitle(String title) {
+        brandsTitle().shouldBe(visible).shouldHave(text(title));
+        return this;
+    }
 }

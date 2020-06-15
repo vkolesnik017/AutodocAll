@@ -141,11 +141,18 @@ public class Moto_Categories_maker_page_Logic extends Moto_Categories_maker_page
         if (linkMoreOfModelBlock().isDisplayed()) {
             linkMoreOfModelBlock().click();
         }
-        for (int i=0; i<linksOfMotoModels().size(); i++) {
+        for (int i = 0; i < linksOfMotoModels().size(); i++) {
             imageOfMotoModels().get(i).shouldBe(visible);
-            titleOfMotoModels() .get(i).shouldBe(visible);
+            titleOfMotoModels().get(i).shouldBe(visible);
             yearOfMotoModels().get(i).shouldHave(text("ab"));
         }
+        return this;
+    }
+
+
+    @Step("presence title of models block .Moto_Categories_maker_page")
+    public Moto_Categories_maker_page_Logic presenceOfModelsTitle(String title) {
+        titleOfModelsBlock().shouldBe(visible).shouldHave(text(title));
         return this;
     }
 }

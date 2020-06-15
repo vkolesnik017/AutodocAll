@@ -62,4 +62,6 @@ public class Moto_Categories_maker_page {
 
     ElementsCollection yearOfMotoModels() {return $$x("//ul[@class='moto-cars-models__list']/li//span[3]").filter(visible);}
 
+    SelenideElement titleOfModelsBlock() {return $x("//div[@class='moto-cars-models__title']");}
+
 }
