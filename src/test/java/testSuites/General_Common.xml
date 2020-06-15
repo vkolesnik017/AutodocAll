@@ -10,7 +10,7 @@
         <classes>
             <class name="ATD.General_Common.QC_1554_Footer.QC_1569_TransitionTheLink_Datenschutzerklärung"/>
             <class name="ATD.General_Common.QC_1554_Footer.QC_1555_ApplicationInstallBanner"/>
-            <!--<class name="ATD.General_Common.QC_1554_Footer.QC_1556_LinksToStaticPages"/>-->
+            <class name="ATD.General_Common.QC_1554_Footer.QC_1556_LinksToStaticPages"/>
             <class name="ATD.General_Common.QC_1554_Footer.QC_1558_DroplistCountryBlock"/>
             <class name="ATD.General_Common.QC_1554_Footer.QC_1564_SuccessfulNewsletterSubscription"/>
             <class name="ATD.General_Common.QC_1554_Footer.QC_1565_DisplayingOfNon_validEmailTooltip"/>
