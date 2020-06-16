@@ -82,4 +82,10 @@ public class Moto_Catalog_page {
 
     SelenideElement informationPopUp() {return  $x("//div[@class='selected_car_info_popap moto-info-popup']");}
 
+    SelenideElement mainSearchField() {return $(byId("search"));}
+
+    SelenideElement hintBlockOfMainSearchField()  {return $x("//div[@class='autocomplete-suggestions']");}
+
+    SelenideElement productInHintBlockOfSearchField() {return $x("//div[@class='autocomplete-suggestion']");}
+
 }

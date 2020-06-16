@@ -86,10 +86,8 @@ public class Moto_main_page_Logic extends Moto_main_page {
         return this;
     }
 
-
     @Step(" check Transition By Click On Linking Banner .Moto_main_page")
     public Moto_main_page_Logic checkTransitionByClickOnLinkingBanner() throws SQLException {
-
         clickOnLeftLinkingBanner().checkCurrentUrl("index_instruments");
         back();
         clickOnRightLinkingBanner();
@@ -168,14 +166,12 @@ public class Moto_main_page_Logic extends Moto_main_page {
         return this;
     }
 
-
     @Step(" presence Of Top Parent Block .Moto_main_page")
     public Moto_main_page_Logic presenceOfTopParentBlock() {
         topParentBlock().shouldBe(visible);
         linkTopParentBlock().shouldHaveSize(12);
         return this;
     }
-
 
     @Step(" presence Of image Top Parent Block .Moto_main_page")
     public Moto_main_page_Logic presenceOfImageTopParentBlock() {
@@ -185,7 +181,6 @@ public class Moto_main_page_Logic extends Moto_main_page {
         return this;
     }
 
-
     @Step(" presence Of title Top Parent Block .Moto_main_page")
     public Moto_main_page_Logic presenceOfTitleTopParentBlock() {
         for (int i = 0; i < linkTopParentBlock().size(); i++) {
@@ -193,7 +188,6 @@ public class Moto_main_page_Logic extends Moto_main_page {
         }
         return this;
     }
-
 
     @Step(" presence Of child category block .Moto_main_page")
     public Moto_main_page_Logic presenceOfChildCategoryLinks() {
@@ -203,13 +197,11 @@ public class Moto_main_page_Logic extends Moto_main_page {
         return this;
     }
 
-
     @Step(" click on More link at Parent catalog .Moto_main_page")
     public Moto_Categories_page_Logic clickOnMoreLinkAtParentCatalog() {
         linkMoreAtParentCategoryBlock().shouldBe(visible).click();
         return page(Moto_Categories_page_Logic.class);
     }
-
 
     @Step(" presence Of Headline at Top parent block .Moto_main_page")
     public Moto_main_page_Logic presenceOfHeadlineAtTopParentBlock() {
@@ -231,7 +223,6 @@ public class Moto_main_page_Logic extends Moto_main_page {
         imageTopParentBlock().get(0).shouldBe(visible).click();
         return page(Moto_Parent_Category_page_Logic.class);
     }
-
 
     @Step("check transition by click on child category .Moto_main_page")
     public Moto_main_page_Logic checkTransitionByClickOnChildCategory(String subRoute) throws SQLException {
@@ -261,13 +252,11 @@ public class Moto_main_page_Logic extends Moto_main_page {
         return page(Moto_Category_car_list_page_Logic.class);
     }
 
-
     @Step(" visibility of login/registration block .Moto_main_page")
     public Moto_main_page_Logic visibilityOfLoginRegistrationBlock() {
         registrationBlock().shouldBe(visible);
         return this;
     }
-
 
     @Step("login of user .Moto_main_page")
     public Profile_plus_page_Logic loginOfUser(String login, String password) {
@@ -288,7 +277,6 @@ public class Moto_main_page_Logic extends Moto_main_page {
         return this;
     }
 
-
     @Step("select TOP motorcycle brand from block .Moto_main_page")
     public Moto_Categories_maker_page_Logic selectTopMotoBrandFromBlock() {
         topBrandsBlock().shouldBe(visible);
@@ -302,13 +290,11 @@ public class Moto_main_page_Logic extends Moto_main_page {
         return this;
     }
 
-
     @Step("click on link More at TOP brands block .Moto_main_page")
     public Moto_makers_page_Logic clickOnLinkMoreAtTopBrandsBlock() {
         linkMoreAtTopBrandsBlock().shouldBe(visible).click();
         return page(Moto_makers_page_Logic.class);
     }
-
 
     @Step("presence of navigation block .Moto_main_page")
     public Moto_main_page_Logic presenceOfNavigationBlock() {
@@ -423,5 +409,40 @@ public class Moto_main_page_Logic extends Moto_main_page {
         navigationBlockInHeader().shouldBe(visible);
         linksAtTopCategoriesInHeader().get(8).click();
         return page(Moto_Parent_Category_page_Logic.class);
+    }
+
+    @Step("presence Of TOP child categories block .Moto_main_page")
+    public Moto_main_page_Logic presenceOfTopChildCategoriesBlock() {
+        topChildCategoriesBlock().shouldBe(visible);
+        headlineOfTopChildCategoriesBlock().shouldBe(visible);
+        linksOfTopChildCategoriesBlock().shouldHaveSize(5);
+        return this;
+    }
+
+
+    @Step("check child categories links .Moto_main_page")
+    public Moto_main_page_Logic checkChildCategoriesLinks() throws SQLException {
+        topChildCategoriesBlock().shouldBe(visible);
+        clickOnLinkAtChildCategory(1);
+        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_category3"));
+        back();
+        selectMotoInHorizontalMotoSelector("4081", "12008", "135713");
+        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_catalog"));
+        back();
+        clickOnLinkAtChildCategoryWithMoto(1);
+        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_category_car_list7"));
+        return this;
+    }
+
+    @Step("click on link at child category .Moto_main_page")
+    public Moto_Category_page_Logic clickOnLinkAtChildCategory(int position) {
+        linksOfTopChildCategoriesBlock().get(position).shouldBe(visible).click();
+        return page(Moto_Category_page_Logic.class);
+    }
+
+    @Step("click on link at child category with selected motorcycle .Moto_main_page")
+    public Moto_Category_car_list_page_Logic clickOnLinkAtChildCategoryWithMoto(int position) {
+        linksOfTopChildCategoriesBlock().get(position).shouldBe(visible).click();
+        return page(Moto_Category_car_list_page_Logic.class);
     }
 }

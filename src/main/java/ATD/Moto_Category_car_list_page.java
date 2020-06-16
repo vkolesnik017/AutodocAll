@@ -131,4 +131,6 @@ public class Moto_Category_car_list_page {
     ElementsCollection linksOfBreadCrumbs() {return $$x("//a[@itemprop='item']");}
 
     SelenideElement  mainHeadline() {return $x("//div[@class='title_count_search ']/h2");}
+
+    SelenideElement  productWithArtNumber(String artNum) {return $x("//span[contains(text(),'"+artNum+"')]/ancestor::div[@class='name']/a");}
 }
