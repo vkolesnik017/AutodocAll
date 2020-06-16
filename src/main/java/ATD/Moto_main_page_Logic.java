@@ -318,16 +318,16 @@ public class Moto_main_page_Logic extends Moto_main_page {
     }
 
     @Step("check links of TOP categories in header .Moto_main_page")
-    public Moto_main_page_Logic checkTopCategoriesInHeader() {
-        linksAtTopCategoriesInHeader().get(0).shouldHave(attribute("href", "https://www.autodoc.de/"));
-        linksAtTopCategoriesInHeader().get(1).shouldHave(attribute("href", "https://lkwteile.autodoc.de/"));
-        linksAtTopCategoriesInHeader().get(2).shouldHave(attribute("href", "https://www.autodoc.de/reifen/motorrad"));
-        linksAtTopCategoriesInHeader().get(3).shouldHave(attribute("href", "https://www.autodoc.de/werkzeuge"));
-        linksAtTopCategoriesInHeader().get(4).shouldHave(attribute("href", "https://www.autodoc.de/autozubehoer"));
-        linksAtTopCategoriesInHeader().get(5).shouldHave(attribute("href", "https://moto.autodoc.de/ersatzteile/motorrad-motorol-43231"));
-        linksAtTopCategoriesInHeader().get(6).shouldHave(attribute("href", "https://moto.autodoc.de/ersatzteile/motorrad-filter"));
-        linksAtTopCategoriesInHeader().get(7).shouldHave(attribute("href", "https://moto.autodoc.de/ersatzteile/motorrad-bremsanlage"));
-        linksAtTopCategoriesInHeader().get(8).shouldHave(attribute("href", "https://moto.autodoc.de/ersatzteile/motorrad-motor"));
+    public Moto_main_page_Logic checkTopCategoriesInHeader() throws SQLException {
+        linksAtTopCategoriesInHeader().get(0).shouldHave(attribute("href", "https://www." + new DataBase().getRouteByRouteName("DE", "main") + "/"));  //TODO  сделать метод, который будет возвращать только главный рут. параметры: envFromTest,shop,routeName - https://www.autodoc.de
+        linksAtTopCategoriesInHeader().get(1).shouldHave(attribute("href", "https://" + new DataBase().getRouteByRouteName("DE", "lkw_main") + "/"));
+        linksAtTopCategoriesInHeader().get(2).shouldHave(attribute("href", new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "tyres4")));
+        linksAtTopCategoriesInHeader().get(3).shouldHave(attribute("href", new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "index_instruments")));
+        linksAtTopCategoriesInHeader().get(4).shouldHave(attribute("href", new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "index_accessories")));
+        linksAtTopCategoriesInHeader().get(5).shouldHave(attribute("href", new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_category4")));
+        linksAtTopCategoriesInHeader().get(6).shouldHave(attribute("href", new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_parent_category")));
+        linksAtTopCategoriesInHeader().get(7).shouldHave(attribute("href", new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_parent_category2")));
+        linksAtTopCategoriesInHeader().get(8).shouldHave(attribute("href", new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_parent_category3")));
         return this;
     }
 
