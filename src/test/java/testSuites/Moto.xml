@@ -135,7 +135,19 @@
 
     <test name="QC_385_BlockBrandsAndModelsOfAutoManufacturers">
         <classes>
+            <class name="MOTO.QC_385_BlockBrandsAndModelsOfAutoManufacturers.QC_386_PresenceOfBrandsAndModelsTitleOfAutomakers"/>
+            <class name="MOTO.QC_385_BlockBrandsAndModelsOfAutoManufacturers.QC_387_PresenceOfBrandsAndModelsBlocksOfAutomakers"/>
             <class name="MOTO.QC_385_BlockBrandsAndModelsOfAutoManufacturers.QC_388_ComponentsOfBrandAndModelBlock"/>
+            <class name="MOTO.QC_385_BlockBrandsAndModelsOfAutoManufacturers.QC_389_TransitionByClickOnBrandsModelsElements"/>
+            <class name="MOTO.QC_385_BlockBrandsAndModelsOfAutoManufacturers.QC_390_AbilityToOpenAndMinimizedOfBrandsBlock"/>
         </classes>
     </test>
+
+    <test name="QC_834_NavigationBlockAtHeaders">
+        <classes>
+            <class name="MOTO.QC_834_NavigationBlockAtHeader.QC_835_PresenceOfNavigationBlockAtTopCategories"/>
+            <class name="MOTO.QC_834_NavigationBlockAtHeader.QC_842_TransitionByClickOnTopCategoriesInHeader"/>
+        </classes>
+    </test>
+
 </suite>

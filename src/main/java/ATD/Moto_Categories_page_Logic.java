@@ -6,6 +6,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selenide.page;
 
 public class Moto_Categories_page_Logic extends Moto_Categories_page {
 
@@ -59,9 +60,23 @@ public class Moto_Categories_page_Logic extends Moto_Categories_page {
         return this;
     }
 
-    @Step("presence of models title .Moto_Categories_page")
+    @Step("presence of brands block title .Moto_Categories_page")
     public Moto_Categories_page_Logic presenceOfBrandsTitle(String title) {
         brandsTitle().shouldBe(visible).shouldHave(text(title));
         return this;
+    }
+
+
+    @Step("presence of Motomakers block .Moto_Categories_page")
+    public Moto_Categories_page_Logic presenceOfMotomakersBlock() {
+        brandsBlock().shouldBe(visible);
+        return this;
+    }
+
+
+    @Step("click om Motorcycle brand .Moto_Categories_page")
+    public Moto_Categories_maker_page_Logic clickOnMotoBrands(int position) {
+        linksOfBrands().get(position).click();
+        return page(Moto_Categories_maker_page_Logic.class);
     }
 }

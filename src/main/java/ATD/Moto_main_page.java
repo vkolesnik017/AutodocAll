@@ -100,5 +100,9 @@ class Moto_main_page {
 
     ElementsCollection listOfTopBrands()    {return $$x("//ul[@class='moto-manufactures__list']//a");}
 
+    SelenideElement navigationBlockInHeader() {return $x("//ul[@class='header__nav-list']");}
+
+    ElementsCollection  linksAtTopCategoriesInHeader()  {return $$x("//ul[@class='header__nav-list']/li/a");}
+
 
 }
