@@ -1,6 +1,7 @@
 package MOTO.QC_373_MainIssueBlockAtTecDocListing;
 
 import ATD.Cart_page_Logic;
+import ATD.Moto_Category_car_list_model_page_Logic;
 import ATD.Moto_Category_car_list_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
@@ -19,6 +20,7 @@ import static com.codeborne.selenide.Selenide.close;
 
 public class QC_382_AddToBasketAnalogProduct {
     private Moto_Category_car_list_page_Logic carListPage = new Moto_Category_car_list_page_Logic();
+    private Moto_Category_car_list_model_page_Logic carListModelPage = new Moto_Category_car_list_model_page_Logic();
 
     @BeforeClass
     void setUp() {
@@ -27,7 +29,7 @@ public class QC_382_AddToBasketAnalogProduct {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list2,moto_category_car_list_model2");
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list2");
     }
 
     @Test(dataProvider = "routes")
@@ -39,6 +41,23 @@ public class QC_382_AddToBasketAnalogProduct {
 
         String idOfAddedProduct = carListPage.getIdOfAnalogProduct();
         carListPage.addProductToBasketFromAnalogBlock();
+        new Cart_page_Logic().checkOfIdAddedProductInBasket(idOfAddedProduct);
+    }
+
+    @DataProvider(name = "routesCarListModel", parallel = true)
+    Object[] dataProviderCarListModel() throws SQLException {
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list_model2");
+    }
+
+    @Test(dataProvider = "routesCarListModel")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test checks add to basket an analog product")
+    public void testChecksAddToBasketAnalogProductCarListModel(String route) {
+        openPage(route);
+
+        String idOfAddedProduct = carListModelPage.getIdOfAnalogProduct();
+        carListModelPage.addProductToBasketFromAnalogBlock();
         new Cart_page_Logic().checkOfIdAddedProductInBasket(idOfAddedProduct);
     }
 

@@ -32,7 +32,7 @@ public class QC_835_PresenceOfNavigationBlockAtTopCategories {
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test checks presence of navigation block at TOP categories")
-    public void testChecksPresenceOfNavigationBlockAtTopCategories(String route) {
+    public void testChecksPresenceOfNavigationBlockAtTopCategories(String route) throws SQLException {
         openPage(route);
 
         new Moto_main_page_Logic()

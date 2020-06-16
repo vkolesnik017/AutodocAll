@@ -27,7 +27,7 @@ public class QC_388_ComponentsOfBrandAndModelBlock {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_categories_maker2,moto_parent_category_maker2");
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_categories_maker2,moto_category_maker3");
     }
 
     @Test(dataProvider = "routes")

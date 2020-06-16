@@ -77,4 +77,28 @@ public class Moto_Category_car_list_model_page_Logic extends Moto_Category_car_l
         breadCrumbsLinks().get(5).shouldBe(visible).shouldHave(text(title)).shouldNotHave(attribute("href"));
         return this;
     }
+
+    @Step(" get id of an analog product .Moto_Category_car_list_model_page")
+    public String getIdOfAnalogProduct() {
+        clickOnReplacementBtnOfProduct("26-8031");
+        analogBlockOfProduct().should(appear);
+        String idOfBtn = btnAddToBasketAtAnAnalogProduct().get(0).shouldBe(visible).getAttribute("data-ga-label");
+        return idOfBtn;
+    }
+
+    @Step("add product to basket from an analog block .Moto_Category_car_list_model_page")
+    public Cart_page_Logic addProductToBasketFromAnalogBlock() {
+        analogBlockOfProduct().shouldBe(visible);
+        btnAddToBasketAtAnAnalogProduct().get(0).shouldBe(visible).click();
+        basketDropMenu().shouldBe(visible);
+        basketDropMenu().shouldNotBe(visible);
+        basket().click();
+        return page(Cart_page_Logic.class);
+    }
+
+    @Step("click on replacement button of product .Moto_Category_car_list_model_page")
+    public Moto_Category_car_list_model_page_Logic clickOnReplacementBtnOfProduct(String artNumber) {
+        btnShowReplacement(artNumber).shouldBe(visible).click();
+        return this;
+    }
 }
