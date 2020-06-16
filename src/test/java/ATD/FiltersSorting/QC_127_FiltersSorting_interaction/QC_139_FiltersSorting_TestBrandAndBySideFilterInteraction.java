@@ -1,6 +1,7 @@
 package ATD.FiltersSorting.QC_127_FiltersSorting_interaction;
 
 
+import ATD.DataBase;
 import ATD.Listing_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
@@ -32,7 +33,7 @@ public class QC_139_FiltersSorting_TestBrandAndBySideFilterInteraction {
 
     @DataProvider(name = "routesLKW", parallel = true)
     Object[] dataProviderLKW() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list2,lkw_category_car_list9");
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list9");
     }
 
     @Test(dataProvider = "routes")
@@ -60,6 +61,21 @@ public class QC_139_FiltersSorting_TestBrandAndBySideFilterInteraction {
                 .waitUntilPreloaderDisappear();
         String brandName = listingPage.getAtributeFromElement(listingPage.firstBrandNameInFiler(), "alt");
         listingPage.clickFilterButton(listingPage.firstBrandInFilterButton())
+                .waitUntilPreloaderDisappear()
+                .checkProductAttributeOnListingWithCarAndFilter("Hinterachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute())
+                .checkProductTitleOnListing(brandName, true, listingPage.productTitleInListMode());
+    }
+
+    @Test
+    @Flaky
+    @Owner(value = "Romaniuta")
+    @Description(value = "Test checks side and brand filters interaction")
+    public void testSideAndBrandFilterInteractionLKWmodelRoute() throws SQLException {
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list2"));
+        listingPage.clickFilterBySideBack()
+                .waitUntilPreloaderDisappear();
+        String brandName = listingPage.getAtributeFromElement(listingPage.firstBrandNameInFilterLKWmodelRoute(), "alt");
+        listingPage.clickFilterButton(listingPage.firstBrandInFilterButtonLKWmodelRoute())
                 .waitUntilPreloaderDisappear()
                 .checkProductAttributeOnListingWithCarAndFilter("Hinterachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute())
                 .checkProductTitleOnListing(brandName, true, listingPage.productTitleInListMode());
