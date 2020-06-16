@@ -529,4 +529,17 @@ public class TyresListing_page_Logic extends TyresListing_page {
         ratingFilterBlock().shouldBe(visible);
         return this;
     }
+
+    @Step("Check brand listing transition. TyresListing_page")
+    public TyresListing_page_Logic checkBrandListingTransition(String brandName) {
+        new Listing_page_Logic().checkProductAttributeOnListing(brandName, titleOfAllProducts());
+        brandNameInSelector().shouldHave(text(brandName));
+        return this;
+    }
+
+    @Step("Check season value in selector. TyresListing_page")
+    public TyresListing_page_Logic checkSeasonValueInSelector(String expectedValue) {
+        seasonValueInSelector().shouldHave(text(expectedValue));
+        return this;
+    }
 }

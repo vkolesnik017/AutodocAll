@@ -64,6 +64,8 @@
         <classes>
             <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_1275_TestTyresTopBlockPresence"/>
             <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_1336_GoToAllBrandsPageFromTyresMainPage"/>
+            <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_1338_GoToTyresBrandListingFromTopBrandBlock"/>
+            <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_1341_GoToTyresSeasonListingFromSeasonBlock"/>
             <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_1346_GoToAllSizesPageFromTyresMainPage"/>
         </classes>
     </test>
@@ -100,6 +102,12 @@
             <class name="ATD.Tyres.QC_1347_BreadcrumbsOnTyresListing.QC_1351_TyresBreadcrumbsTransportTypeAndDimension"/>
             <class name="ATD.Tyres.QC_1347_BreadcrumbsOnTyresListing.QC_1352_TyresBreadcrumbsTransportTypeAndSeason"/>
             <class name="ATD.Tyres.QC_1347_BreadcrumbsOnTyresListing.QC_1353_TyresBreadcrumbsTransportTypeAndBrand"/>
+        </classes>
+    </test>
+
+    <test name="QC_1354_TyresBrandBlock">
+        <classes>
+            <class name="ATD.Tyres.QC_1354_TyresBrandBlock.QC_1365_GoToTyresBrandListingFromAllBrandsCatalog"/>
         </classes>
     </test>
 
