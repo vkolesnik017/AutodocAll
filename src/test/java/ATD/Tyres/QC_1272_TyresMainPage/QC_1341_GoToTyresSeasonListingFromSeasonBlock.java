@@ -39,9 +39,8 @@ public class QC_1341_GoToTyresSeasonListingFromSeasonBlock {
     public void testGoToTyresSeasonListingFromSeasonBlock(String route) {
         openPage(route);
         new Tyres_page_Logic().clickSeasonButtonAndCheckTransition()
-                              .checkCharacteristicOnListing("Sommerreifen", tyresListingPageLogic.seasonCharacteristic())
-                              .checkSeasonValueInSelector("Sommerreiden");
-
+                              .checkCharacteristicOnListing("Winterreifen", tyresListingPageLogic.seasonCharacteristic())
+                              .checkSeasonValueInSelector("Winterreifen");
     }
 
     @AfterMethod

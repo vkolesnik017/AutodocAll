@@ -74,5 +74,7 @@ public class Tyres_page {
 
   SelenideElement summerButtonInSeasonBlock() { return $(".seasons_item_summer "); }
 
+  SelenideElement winterButtonInSeasonBlock() { return $(".seasons_item_winter"); }
+
   SelenideElement priceInTopBlock() { return $(".ct_toppop_products .actual-price"); }
 }
