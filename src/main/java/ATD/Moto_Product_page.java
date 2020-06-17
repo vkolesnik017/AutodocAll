@@ -91,4 +91,8 @@ public class Moto_Product_page {
 
     SelenideElement btnCloseTooltipOfBrandFieldAtSelector() {return $x("//div[@class='tooltiptext-close js-tooltiptext-close']");}
 
+    SelenideElement motoLinkFromCompatibilityBlock() {return $x("//div[@class='accordion-selected']/p");}
+
+    SelenideElement incompatibilityMotoMessage() {return $x("//div[@class='car-match-block car-match-block--moto car-match-block--false']/p");}
+
 }

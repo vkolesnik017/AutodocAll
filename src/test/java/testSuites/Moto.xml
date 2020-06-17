@@ -18,6 +18,8 @@
             <class name="MOTO.QC_301_MotoSelector.QC_310_PresenceOfOpeningSelector"/>
             <class name="MOTO.QC_301_MotoSelector.QC_312_FillingSelectorByCompatibleMoto"/>
             <class name="MOTO.QC_301_MotoSelector.QC_313_FillingSelectorByIncompatibleMoto"/>
+            <class name="MOTO.QC_301_MotoSelector.QC_315_TransitionToProductPageWithCompatibleMoto"/>
+            <class name="MOTO.QC_301_MotoSelector.QC_317_TransitionToProductPageWithOutCompatibleMoto"/>
         </classes>
     </test>
 
@@ -147,6 +149,13 @@
         <classes>
             <class name="MOTO.QC_834_NavigationBlockAtHeader.QC_835_PresenceOfNavigationBlockAtTopCategories"/>
             <class name="MOTO.QC_834_NavigationBlockAtHeader.QC_842_TransitionByClickOnTopCategoriesInHeader"/>
+        </classes>
+    </test>
+
+    <test name="QC_856_TopChildCategoriesBlock">
+        <classes>
+            <class name="MOTO.QC_856_TopChildCategoriesBlock.QC_857_PresenceOfTopChildCategoriesBlock"/>
+            <class name="MOTO.QC_856_TopChildCategoriesBlock.QC_859_TransitionByClickOnChildCategory"/>
         </classes>
     </test>
 

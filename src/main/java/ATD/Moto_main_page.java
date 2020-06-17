@@ -104,5 +104,11 @@ class Moto_main_page {
 
     ElementsCollection  linksAtTopCategoriesInHeader()  {return $$x("//ul[@class='header__nav-list']/li/a");}
 
+    SelenideElement topChildCategoriesBlock() {return $x("//div[@class='moto-home-categories']");}
+
+    SelenideElement headlineOfTopChildCategoriesBlock() {return $x("//h2[@class='moto-home-categories__title']");}
+
+    ElementsCollection linksOfTopChildCategoriesBlock() {return $$x("//div[@class='moto-home-categories__item']");}
+
 
 }

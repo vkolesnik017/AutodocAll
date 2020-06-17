@@ -218,9 +218,23 @@ public class Moto_Product_page_Logic extends Moto_Product_page {
 
     @Step("close tooltip at brand field in horizontal motorcycle selector .Moto_Product_page ")
     public Moto_Product_page_Logic closeTooltipOfBrandField() {
-       if (btnCloseTooltipOfBrandFieldAtSelector().isDisplayed()) {
-           btnCloseTooltipOfBrandFieldAtSelector().click();
-       }
+        if (btnCloseTooltipOfBrandFieldAtSelector().isDisplayed()) {
+            btnCloseTooltipOfBrandFieldAtSelector().click();
+        }
+        return this;
+    }
+
+    @Step("presence Of motorcycle compatibility message .Moto_Product_page ")
+    public Moto_Product_page_Logic presenceOfMotoCompatibilityMessage(String motoBrand) {
+        motoBrandFromInfoMessage().shouldBe(visible).shouldHave(text(motoBrand));
+        motoLinkFromCompatibilityBlock().shouldBe(visible).shouldHave(text(motoBrand));
+        Assert.assertEquals("rgba(74, 182, 73, 1)", motoLinkFromCompatibilityBlock().getCssValue("color"));
+        return this;
+    }
+
+    @Step("presence Of motorcycle incompatibility message .Moto_Product_page ")
+    public Moto_Product_page_Logic presenceOfMotoIncompatibilityMessage(String message) {
+        incompatibilityMotoMessage().shouldBe(visible).shouldHave(text(message));
         return this;
     }
 
