@@ -657,8 +657,10 @@ public class Product_page_Logic extends Product_page {
 
     @Step("Comparing actual and expected characteristics. Product_page")
     public void compareCharacteristics(ElementsCollection actualCharacteristics, List<String> expectedCharacteristics) {
-        for (int a = 0; a < expectedCharacteristics.size(); a++) {
-            actualCharacteristics.get(a).shouldHave(text(expectedCharacteristics.get(a)));
+        for (int a = 0; a < 5; a++) {
+            String actualCharacteristicsWithoutSpaces = actualCharacteristics.get(a).text().replace(" ", "");
+            String expectedCharacteristicsWithoutSpaces = expectedCharacteristics.get(a).replace(" ", "");
+            Assert.assertEquals(actualCharacteristicsWithoutSpaces, expectedCharacteristicsWithoutSpaces);
         }
     }
 }

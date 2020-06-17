@@ -18,6 +18,8 @@
             <class name="MOTO.QC_301_MotoSelector.QC_310_PresenceOfOpeningSelector"/>
             <class name="MOTO.QC_301_MotoSelector.QC_312_FillingSelectorByCompatibleMoto"/>
             <class name="MOTO.QC_301_MotoSelector.QC_313_FillingSelectorByIncompatibleMoto"/>
+            <class name="MOTO.QC_301_MotoSelector.QC_315_TransitionToProductPageWithCompatibleMoto"/>
+            <class name="MOTO.QC_301_MotoSelector.QC_317_TransitionToProductPageWithOutCompatibleMoto"/>
         </classes>
     </test>
 
@@ -135,7 +137,26 @@
 
     <test name="QC_385_BlockBrandsAndModelsOfAutoManufacturers">
         <classes>
+            <class name="MOTO.QC_385_BlockBrandsAndModelsOfAutoManufacturers.QC_386_PresenceOfBrandsAndModelsTitleOfAutomakers"/>
+            <class name="MOTO.QC_385_BlockBrandsAndModelsOfAutoManufacturers.QC_387_PresenceOfBrandsAndModelsBlocksOfAutomakers"/>
             <class name="MOTO.QC_385_BlockBrandsAndModelsOfAutoManufacturers.QC_388_ComponentsOfBrandAndModelBlock"/>
+            <class name="MOTO.QC_385_BlockBrandsAndModelsOfAutoManufacturers.QC_389_TransitionByClickOnBrandsModelsElements"/>
+            <class name="MOTO.QC_385_BlockBrandsAndModelsOfAutoManufacturers.QC_390_AbilityToOpenAndMinimizedOfBrandsBlock"/>
         </classes>
     </test>
+
+    <test name="QC_834_NavigationBlockAtHeaders">
+        <classes>
+            <class name="MOTO.QC_834_NavigationBlockAtHeader.QC_835_PresenceOfNavigationBlockAtTopCategories"/>
+            <class name="MOTO.QC_834_NavigationBlockAtHeader.QC_842_TransitionByClickOnTopCategoriesInHeader"/>
+        </classes>
+    </test>
+
+    <test name="QC_856_TopChildCategoriesBlock">
+        <classes>
+            <class name="MOTO.QC_856_TopChildCategoriesBlock.QC_857_PresenceOfTopChildCategoriesBlock"/>
+            <class name="MOTO.QC_856_TopChildCategoriesBlock.QC_859_TransitionByClickOnChildCategory"/>
+        </classes>
+    </test>
+
 </suite>

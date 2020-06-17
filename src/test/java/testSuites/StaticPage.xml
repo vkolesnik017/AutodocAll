@@ -35,12 +35,12 @@
         </classes>
     </test>
 
-    <test name="QC_1091_StaticPage_austauschartikel">
-        <classes>
-            <class name="ATD.StaticPage.QC_1091_StaticPage_austauschartikel">
-            </class>
-        </classes>
-    </test>
+    <!--<test name="QC_1091_StaticPage_austauschartikel">-->
+        <!--<classes>-->
+            <!--<class name="ATD.StaticPage.QC_1091_StaticPage_austauschartikel">-->
+            <!--</class>-->
+        <!--</classes>-->
+    <!--</test>-->
 
     <test name="QC_1175_StaticPage_contacts" enabled="true">
         <classes>

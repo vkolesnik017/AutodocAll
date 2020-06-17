@@ -134,7 +134,6 @@ public class Moto_Categories_maker_page_Logic extends Moto_Categories_maker_page
         return this;
     }
 
-
     @Step("check components of model block .Moto_Categories_maker_page")
     public Moto_Categories_maker_page_Logic checkComponentsOfModelBlock() {
         modelBlock().shouldBe(visible);
@@ -149,10 +148,23 @@ public class Moto_Categories_maker_page_Logic extends Moto_Categories_maker_page
         return this;
     }
 
-
     @Step("presence title of models block .Moto_Categories_maker_page")
     public Moto_Categories_maker_page_Logic presenceOfModelsTitle(String title) {
         titleOfModelsBlock().shouldBe(visible).shouldHave(text(title));
         return this;
+    }
+
+    @Step("presence of models block .Moto_Categories_maker_page")
+    public Moto_Categories_maker_page_Logic presenceOfModelsBlock() {
+        modelBlock().shouldBe(visible);
+        linksOfModels().shouldHave(sizeGreaterThan(1));
+        return this;
+    }
+
+
+    @Step("click on motorcycle model  .Moto_Categories_maker_page")
+    public Moto_Catalog_model_page_Logic clickOnMotoModel(int position) {
+        linksOfModels().get(position).shouldBe(visible).click();
+        return page(Moto_Catalog_model_page_Logic.class);
     }
 }
