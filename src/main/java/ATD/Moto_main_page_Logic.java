@@ -6,8 +6,7 @@ import org.testng.Assert;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.checkingContainsUrl;
-import static com.codeborne.selenide.Condition.exactValue;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.back;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.WebDriverRunner.url;
@@ -87,10 +86,8 @@ public class Moto_main_page_Logic extends Moto_main_page {
         return this;
     }
 
-
     @Step(" check Transition By Click On Linking Banner .Moto_main_page")
     public Moto_main_page_Logic checkTransitionByClickOnLinkingBanner() throws SQLException {
-
         clickOnLeftLinkingBanner().checkCurrentUrl("index_instruments");
         back();
         clickOnRightLinkingBanner();
@@ -169,14 +166,12 @@ public class Moto_main_page_Logic extends Moto_main_page {
         return this;
     }
 
-
     @Step(" presence Of Top Parent Block .Moto_main_page")
     public Moto_main_page_Logic presenceOfTopParentBlock() {
         topParentBlock().shouldBe(visible);
         linkTopParentBlock().shouldHaveSize(12);
         return this;
     }
-
 
     @Step(" presence Of image Top Parent Block .Moto_main_page")
     public Moto_main_page_Logic presenceOfImageTopParentBlock() {
@@ -186,7 +181,6 @@ public class Moto_main_page_Logic extends Moto_main_page {
         return this;
     }
 
-
     @Step(" presence Of title Top Parent Block .Moto_main_page")
     public Moto_main_page_Logic presenceOfTitleTopParentBlock() {
         for (int i = 0; i < linkTopParentBlock().size(); i++) {
@@ -194,7 +188,6 @@ public class Moto_main_page_Logic extends Moto_main_page {
         }
         return this;
     }
-
 
     @Step(" presence Of child category block .Moto_main_page")
     public Moto_main_page_Logic presenceOfChildCategoryLinks() {
@@ -204,13 +197,11 @@ public class Moto_main_page_Logic extends Moto_main_page {
         return this;
     }
 
-
     @Step(" click on More link at Parent catalog .Moto_main_page")
     public Moto_Categories_page_Logic clickOnMoreLinkAtParentCatalog() {
         linkMoreAtParentCategoryBlock().shouldBe(visible).click();
         return page(Moto_Categories_page_Logic.class);
     }
-
 
     @Step(" presence Of Headline at Top parent block .Moto_main_page")
     public Moto_main_page_Logic presenceOfHeadlineAtTopParentBlock() {
@@ -232,7 +223,6 @@ public class Moto_main_page_Logic extends Moto_main_page {
         imageTopParentBlock().get(0).shouldBe(visible).click();
         return page(Moto_Parent_Category_page_Logic.class);
     }
-
 
     @Step("check transition by click on child category .Moto_main_page")
     public Moto_main_page_Logic checkTransitionByClickOnChildCategory(String subRoute) throws SQLException {
@@ -262,13 +252,11 @@ public class Moto_main_page_Logic extends Moto_main_page {
         return page(Moto_Category_car_list_page_Logic.class);
     }
 
-
     @Step(" visibility of login/registration block .Moto_main_page")
     public Moto_main_page_Logic visibilityOfLoginRegistrationBlock() {
         registrationBlock().shouldBe(visible);
         return this;
     }
-
 
     @Step("login of user .Moto_main_page")
     public Profile_plus_page_Logic loginOfUser(String login, String password) {
@@ -289,7 +277,6 @@ public class Moto_main_page_Logic extends Moto_main_page {
         return this;
     }
 
-
     @Step("select TOP motorcycle brand from block .Moto_main_page")
     public Moto_Categories_maker_page_Logic selectTopMotoBrandFromBlock() {
         topBrandsBlock().shouldBe(visible);
@@ -303,10 +290,159 @@ public class Moto_main_page_Logic extends Moto_main_page {
         return this;
     }
 
-
     @Step("click on link More at TOP brands block .Moto_main_page")
     public Moto_makers_page_Logic clickOnLinkMoreAtTopBrandsBlock() {
         linkMoreAtTopBrandsBlock().shouldBe(visible).click();
         return page(Moto_makers_page_Logic.class);
+    }
+
+    @Step("presence of navigation block .Moto_main_page")
+    public Moto_main_page_Logic presenceOfNavigationBlock() {
+        navigationBlockInHeader().shouldBe(visible);
+        linksAtTopCategoriesInHeader().shouldHaveSize(9);
+        return this;
+    }
+
+    @Step("check links of TOP categories in header .Moto_main_page")
+    public Moto_main_page_Logic checkTopCategoriesInHeader() throws SQLException {
+        linksAtTopCategoriesInHeader().get(0).shouldHave(attribute("href", "https://www." + new DataBase().getRouteByRouteName("DE", "main") + "/"));  //TODO  сделать метод, который будет возвращать только главный рут. параметры: envFromTest,shop,routeName - https://www.autodoc.de
+        linksAtTopCategoriesInHeader().get(1).shouldHave(attribute("href", "https://" + new DataBase().getRouteByRouteName("DE", "lkw_main") + "/"));
+        linksAtTopCategoriesInHeader().get(2).shouldHave(attribute("href", new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "tyres4")));
+        linksAtTopCategoriesInHeader().get(3).shouldHave(attribute("href", new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "index_instruments")));
+        linksAtTopCategoriesInHeader().get(4).shouldHave(attribute("href", new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "index_accessories")));
+        linksAtTopCategoriesInHeader().get(5).shouldHave(attribute("href", new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_category4")));
+        linksAtTopCategoriesInHeader().get(6).shouldHave(attribute("href", new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_parent_category")));
+        linksAtTopCategoriesInHeader().get(7).shouldHave(attribute("href", new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_parent_category2")));
+        linksAtTopCategoriesInHeader().get(8).shouldHave(attribute("href", new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_parent_category3")));
+        return this;
+    }
+
+    @Step("check navigation links in header .Moto_main_page")
+    public Moto_main_page_Logic checkNavigationLinks() throws SQLException {
+        clickOnFirstTopLinkInHeader();
+        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "main"));
+        back();
+        clickOnSecondTopLinkInHeader();
+        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "lkw_main"));
+        back();
+        clickOnThirdTopLinkInHeader();
+        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "tyres4"));
+        back();
+        clickOnFourthTopLinkInHeader();
+        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "index_instruments"));
+        back();
+        clickOnFifthTopLinkInHeader();
+        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "index_accessories"));
+        back();
+        clickOnSixthTopLinkInHeader();
+        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_category4"));
+        back();
+        clickOnSeventhTopLinkInHeader();
+        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_parent_category"));
+        back();
+        clickOnEighthTopLinkInHeader();
+        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_parent_category2"));
+        back();
+        clickOnNinthTopLinkInHeader();
+        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_parent_category3"));
+        return this;
+    }
+
+    @Step("click on first TOP link in header .Moto_main_page")
+    public Main_page_Logic clickOnFirstTopLinkInHeader() {
+        navigationBlockInHeader().shouldBe(visible);
+        linksAtTopCategoriesInHeader().get(0).click();
+        return page(Main_page_Logic.class);
+    }
+
+    @Step("click on second TOP link in header .Moto_main_page")
+    public LKW_main_page_Logic clickOnSecondTopLinkInHeader() {
+        navigationBlockInHeader().shouldBe(visible);
+        linksAtTopCategoriesInHeader().get(1).click();
+        return page(LKW_main_page_Logic.class);
+    }
+
+    @Step("click on third TOP link in header .Moto_main_page")
+    public Tyres_page_Logic clickOnThirdTopLinkInHeader() {
+        navigationBlockInHeader().shouldBe(visible);
+        linksAtTopCategoriesInHeader().get(2).click();
+        return page(Tyres_page_Logic.class);
+    }
+
+    @Step("click on fourth TOP link in header .Moto_main_page")
+    public Index_instruments_page_Logic clickOnFourthTopLinkInHeader() {
+        navigationBlockInHeader().shouldBe(visible);
+        linksAtTopCategoriesInHeader().get(3).click();
+        return page(Index_instruments_page_Logic.class);
+    }
+
+    @Step("click on fifth TOP link in header .Moto_main_page")
+    public Index_accessories_page_Logic clickOnFifthTopLinkInHeader() {
+        navigationBlockInHeader().shouldBe(visible);
+        linksAtTopCategoriesInHeader().get(4).click();
+        return page(Index_accessories_page_Logic.class);
+    }
+
+    @Step("click on sixth TOP link in header .Moto_main_page")
+    public Moto_Category_page_Logic clickOnSixthTopLinkInHeader() {
+        navigationBlockInHeader().shouldBe(visible);
+        linksAtTopCategoriesInHeader().get(5).click();
+        return page(Moto_Category_page_Logic.class);
+    }
+
+    @Step("click on seventh TOP link in header .Moto_main_page")
+    public Moto_Parent_Category_page_Logic clickOnSeventhTopLinkInHeader() {
+        navigationBlockInHeader().shouldBe(visible);
+        linksAtTopCategoriesInHeader().get(6).click();
+        return page(Moto_Parent_Category_page_Logic.class);
+    }
+
+    @Step("click on eighth TOP link in header .Moto_main_page")
+    public Moto_Parent_Category_page_Logic clickOnEighthTopLinkInHeader() {
+        navigationBlockInHeader().shouldBe(visible);
+        linksAtTopCategoriesInHeader().get(7).click();
+        return page(Moto_Parent_Category_page_Logic.class);
+    }
+
+    @Step("click on ninth TOP link in header .Moto_main_page")
+    public Moto_Parent_Category_page_Logic clickOnNinthTopLinkInHeader() {
+        navigationBlockInHeader().shouldBe(visible);
+        linksAtTopCategoriesInHeader().get(8).click();
+        return page(Moto_Parent_Category_page_Logic.class);
+    }
+
+    @Step("presence Of TOP child categories block .Moto_main_page")
+    public Moto_main_page_Logic presenceOfTopChildCategoriesBlock() {
+        topChildCategoriesBlock().shouldBe(visible);
+        headlineOfTopChildCategoriesBlock().shouldBe(visible);
+        linksOfTopChildCategoriesBlock().shouldHaveSize(5);
+        return this;
+    }
+
+
+    @Step("check child categories links .Moto_main_page")
+    public Moto_main_page_Logic checkChildCategoriesLinks() throws SQLException {
+        topChildCategoriesBlock().shouldBe(visible);
+        clickOnLinkAtChildCategory(1);
+        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_category3"));
+        back();
+        selectMotoInHorizontalMotoSelector("4081", "12008", "135713");
+        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_catalog"));
+        back();
+        clickOnLinkAtChildCategoryWithMoto(1);
+        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_category_car_list7"));
+        return this;
+    }
+
+    @Step("click on link at child category .Moto_main_page")
+    public Moto_Category_page_Logic clickOnLinkAtChildCategory(int position) {
+        linksOfTopChildCategoriesBlock().get(position).shouldBe(visible).click();
+        return page(Moto_Category_page_Logic.class);
+    }
+
+    @Step("click on link at child category with selected motorcycle .Moto_main_page")
+    public Moto_Category_car_list_page_Logic clickOnLinkAtChildCategoryWithMoto(int position) {
+        linksOfTopChildCategoriesBlock().get(position).shouldBe(visible).click();
+        return page(Moto_Category_car_list_page_Logic.class);
     }
 }

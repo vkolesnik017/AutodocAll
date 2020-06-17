@@ -43,4 +43,12 @@ public class TyresProduct_page {
     SelenideElement tyresPhotoBlock() { return $(".product-block__image"); }
 
     SelenideElement tyresProductTitle() { return $(".product-block__description__title"); }
+
+    SelenideElement tyresDeliveryBlock() { return $(".tyres-delivery"); }
+
+    SelenideElement productInTopsellerBlock() { return $x("//*[@data-attr-type='analogs']/li"); }
+
+    SelenideElement reviewsBlock() { return $(".product-feedback"); }
+
+    SelenideElement relatedProductsBlock() { return $("#related-products"); }
 }

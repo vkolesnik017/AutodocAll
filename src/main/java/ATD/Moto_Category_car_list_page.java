@@ -121,7 +121,7 @@ public class Moto_Category_car_list_page {
     }
 
     ElementsCollection btnAddToBasketAtAnAnalogProduct() {
-        return $$x("//a[contains(@class,'still_add_to_basket')]");
+        return $$x("//div[@class='top-small-products__items']//a[contains(@class,'still_add_to_basket')]");
     }
 
     SelenideElement breadCrumbsBlock() {return $x("//div[@class='steps breadcrumbs']");}
@@ -129,4 +129,8 @@ public class Moto_Category_car_list_page {
     SelenideElement iconOfFirstLinkBreadCrumbsBlock() {return $x("//a[@itemprop='item']/img");}
 
     ElementsCollection linksOfBreadCrumbs() {return $$x("//a[@itemprop='item']");}
+
+    SelenideElement  mainHeadline() {return $x("//div[@class='title_count_search ']/h2");}
+
+    SelenideElement  productWithArtNumber(String artNum) {return $x("//span[contains(text(),'"+artNum+"')]/ancestor::div[@class='name']/a");}
 }

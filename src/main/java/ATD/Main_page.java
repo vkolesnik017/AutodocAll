@@ -355,7 +355,7 @@ public class Main_page {
     }
 
     SelenideElement autodocPlusLink(){
-        return $x("//a[@data-ga-action='footer']");
+        return $x("//span[@data-ga-action='footer']");
     }
 
     //HILFE & SUPPORT
@@ -369,7 +369,7 @@ public class Main_page {
     }
 
     SelenideElement videoTutorialsLink(){
-        return $x("//*[@class='footer__links']/div[2]/ul/li[3]/a");
+        return $x("//*[@class='footer__links']/div[2]/ul/li[4]/a");
     }
 
     SelenideElement altolentsorgungLink(){

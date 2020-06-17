@@ -188,6 +188,31 @@ public class Tyres_page_Logic extends Tyres_page {
         public Tyres_page_Logic clickVideoLink() {
             videoLink().click();
             return this;
-    }
+        }
 
+        @Step("Check top block presence. Tyres_page")
+        public Tyres_page_Logic checkTopBlock() {
+            topBlock().shouldBe(visible);
+            productsInTopBlock().shouldHaveSize(5);
+            return this;
+        }
+
+        @Step("Click Michelin brand link in brand catalog. Tyres_page")
+        public TyresListing_page_Logic clickMichelinLink() {
+            michelinBrandInBrandCatalog().click();
+            return page(TyresListing_page_Logic.class);
+        }
+
+        @Step("Click brand in top block and check redirect. Tyres_page")
+        public String getBrandNameAndClickButtonInTopBlock() {
+            String brandName = brandButtonInTopBlock().attr("alt").split(" ")[0];
+            brandButtonInTopBlock().click();
+            return brandName;
+        }
+
+        @Step("Click season button and check transition. Tyres_page")
+        public TyresListing_page_Logic clickSeasonButtonAndCheckTransition() {
+            summerButtonInSeasonBlock().click();
+            return page(TyresListing_page_Logic.class);
+        }
 }

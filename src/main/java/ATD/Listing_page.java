@@ -307,6 +307,10 @@ public class Listing_page {
         return $(By.xpath("//*[@class='slick-track']/li[8]/label/img"));
     }
 
+    public SelenideElement firstBrandNameInFilterLKWmodelRoute() {
+        return $x("//*[@class='branded-slider']/li[1]/label/img");
+    }
+
     public SelenideElement secondBrandNameInFilter() {
         return $(By.xpath("//*[@class='slick-track']/li[9]/label/img"));
     }
@@ -329,6 +333,10 @@ public class Listing_page {
 
     public SelenideElement firstBrandInFilterButton() {
         return $(By.xpath("//*[@class='slick-track']/li[8]/label"));
+    }
+
+    public SelenideElement firstBrandInFilterButtonLKWmodelRoute() {
+        return $x("//*[@class='branded-slider']/li[1]/label");
     }
 
     public SelenideElement secondBrandInFilterButton() {

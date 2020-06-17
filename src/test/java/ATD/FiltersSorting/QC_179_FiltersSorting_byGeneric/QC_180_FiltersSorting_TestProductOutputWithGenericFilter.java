@@ -33,7 +33,7 @@ public class QC_180_FiltersSorting_TestProductOutputWithGenericFilter {
 
     @DataProvider(name = "routesLKW", parallel = true)
     Object[] dataProviderLKW() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list,lkw_search2,lkw_search8");
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list,lkw_search9,lkw_search8");
     }
 
     @Test(dataProvider = "routes")

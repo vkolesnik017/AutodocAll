@@ -1,9 +1,11 @@
 package ATD;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class Tyres_page {
@@ -59,4 +61,14 @@ public class Tyres_page {
   SelenideElement mobileAppLink() { return $x("//*[@class='features']/li[4]"); }
 
   SelenideElement videoLink() { return $x("//*[@class='features']/li[5]"); }
+
+  SelenideElement topBlock() { return $(".ct_toppop_products"); }
+
+  ElementsCollection productsInTopBlock() { return $$(".ct_toppop_products > li"); }
+
+  SelenideElement michelinBrandInBrandCatalog() { return $x("//a[contains (text(),'Michelin')]"); }
+
+  SelenideElement brandButtonInTopBlock() { return $(".unsere a img"); }
+
+  SelenideElement summerButtonInSeasonBlock() { return $(".seasons_item_summer "); }
 }
