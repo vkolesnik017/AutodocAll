@@ -1,26 +1,27 @@
 package Direkt;
 
 import com.codeborne.selenide.SelenideElement;
+import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selenide.$;
 
 public class Product_page {
 
-    public SelenideElement cartDropDawn() {
+    public SelenideElement cartDropDown() {
         return $(byCssSelector("//div[@class='cart_drop_down']"));
     }
 
     SelenideElement numberBasket() {
-        return $(byCssSelector(".code"));
+        return $(By.xpath("//div[@class='header-middle__cart']//span[@class='count']"));
     }
 
     SelenideElement buyButton() {
-        return $(byCssSelector(".buy_button>a"));
+        return $(byCssSelector(".buy-button"));
     }
 
     // locators in popup of cart
     public SelenideElement firstProductPriceInPopupOfCart() {
-        return $(byCssSelector(".row-price"));
+        return $(By.xpath("//div[@class='cart-tooltip']//div[@class='price']"));
     }
 }

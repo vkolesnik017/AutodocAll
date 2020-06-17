@@ -212,7 +212,15 @@ public class Tyres_page_Logic extends Tyres_page {
 
         @Step("Click season button and check transition. Tyres_page")
         public TyresListing_page_Logic clickSeasonButtonAndCheckTransition() {
-            summerButtonInSeasonBlock().click();
+            winterButtonInSeasonBlock().hover().click();
             return page(TyresListing_page_Logic.class);
+        }
+
+        @Step("Click tyre in top block and check redirect. Tyres_page")
+        public String clickTyreInTopBlockAndGetTyreId() {
+            topBlock().shouldBe(visible);
+            String tyreId = productInTopBlock().attr("data-ga-action");
+            productInTopBlock().click();
+            return tyreId;
         }
 }

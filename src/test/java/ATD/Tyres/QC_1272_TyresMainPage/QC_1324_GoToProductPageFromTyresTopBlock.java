@@ -2,7 +2,7 @@ package ATD.Tyres.QC_1272_TyresMainPage;
 
 
 import ATD.SetUp;
-import ATD.TyresListing_page_Logic;
+import ATD.TyresProduct_page_Logic;
 import ATD.Tyres_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -18,9 +18,9 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_1341_GoToTyresSeasonListingFromSeasonBlock {
+public class QC_1324_GoToProductPageFromTyresTopBlock {
 
-    private TyresListing_page_Logic tyresListingPageLogic = new TyresListing_page_Logic();
+    private String tyreId;
 
     @BeforeClass
     void setUp() {
@@ -35,12 +35,11 @@ public class QC_1341_GoToTyresSeasonListingFromSeasonBlock {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Romaniuta")
-    @Description(value = "Test Checks Transition To Tyres Season Listing From Season Block")
-    public void testGoToTyresSeasonListingFromSeasonBlock(String route) {
+    @Description(value = "Test Checks Transition To Product Page From Tyres Top Block")
+    public void tesGoToProductPageFromTyresTopBlock(String route) {
         openPage(route);
-        new Tyres_page_Logic().clickSeasonButtonAndCheckTransition()
-                              .checkCharacteristicOnListing("Winterreifen", tyresListingPageLogic.seasonCharacteristic())
-                              .checkSeasonValueInSelector("Winterreifen");
+        tyreId = new Tyres_page_Logic().clickTyreInTopBlockAndGetTyreId();
+        new TyresProduct_page_Logic().checkTyreIdOnProductPage(tyreId);
     }
 
     @AfterMethod

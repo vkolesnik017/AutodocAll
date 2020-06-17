@@ -36,7 +36,7 @@ public class QC_1381_TransitionOnBreadCrumbs {
     @Owner(value = "Sergey-QA")
     @Description(value = "Test checks transition for three breadcrumbs .")
     public void testCheckTransitionForThreeBreadCrumbs(String route) {
-        openPage("route");
+        openPage(route);
         listing_accessories_page_logic.checkingPresenceAndNotClickableThirdBreadCrumb()
                 .clickSecondBreadCrumb();
                 checkingContainsUrl("autozubehoer");

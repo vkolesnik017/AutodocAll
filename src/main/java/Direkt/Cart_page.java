@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selenide.$x;
 public class Cart_page {
 
     SelenideElement nextButton() {
-        return $x("//a[@class='green ga-click']");
+        return $x("//a[@class='cart-button']");
     }
 
     SelenideElement counterPlusBtn() {
