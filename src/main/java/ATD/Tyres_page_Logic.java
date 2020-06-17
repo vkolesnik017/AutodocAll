@@ -212,7 +212,7 @@ public class Tyres_page_Logic extends Tyres_page {
 
         @Step("Click season button and check transition. Tyres_page")
         public TyresListing_page_Logic clickSeasonButtonAndCheckTransition() {
-            summerButtonInSeasonBlock().click();
+            winterButtonInSeasonBlock().hover().click();
             return page(TyresListing_page_Logic.class);
         }
 
