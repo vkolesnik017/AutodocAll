@@ -8,8 +8,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.getPriceFromElement;
 import static ATD.CommonMethods.waitingWhileLinkBecomeExpected;
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.Selenide.switchTo;
 
@@ -145,6 +144,12 @@ public class TyresProduct_page_Logic extends TyresProduct_page {
     @Step("Check related products block. TyresProduct_page")
     public TyresProduct_page_Logic checkRelatedProductsBlockVisibility() {
         relatedProductsBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Check price on product page. TyresProduct_page")
+    public TyresProduct_page_Logic checkTyreIdOnProductPage(String expectedId) {
+        addToBasketButton().shouldHave(attribute("id", expectedId));
         return this;
     }
 }
