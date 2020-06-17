@@ -56,36 +56,72 @@ public class Moto_Catalog_page {
         return $x("//a[contains(@class,'search_button')]");
     }
 
-    SelenideElement headlineBlockInSelector() {return $x("//div[@class='block-select-car__head-car']");}
+    SelenideElement headlineBlockInSelector() {
+        return $x("//div[@class='block-select-car__head-car']");
+    }
 
-    SelenideElement imageInHeadlineInSelector() {return $x("//div[@class='block-select-car__head-car']/span[1]");}
+    SelenideElement imageInHeadlineInSelector() {
+        return $x("//div[@class='block-select-car__head-car']/span[1]");
+    }
 
-    SelenideElement textOfHeadlineInSelector() {return $x("//div[@class='block-select-car__head-car']/span[2]");}
+    SelenideElement textOfHeadlineInSelector() {
+        return $x("//div[@class='block-select-car__head-car']/span[2]");
+    }
 
-    SelenideElement btnResetOfSelector() {return $(byId("reset_selector_form"));}
+    SelenideElement btnResetOfSelector() {
+        return $(byId("reset_selector_form"));
+    }
 
-    SelenideElement selectorInCloseCondition() {return $x("//div[@class='catalog-title__change-car ']");}
+    SelenideElement selectorInCloseCondition() {
+        return $x("//div[@class='catalog-title__change-car ']");
+    }
 
-    SelenideElement mainLogoInHeader() {return $x("//a[@class='header__logo-main']/img");}
+    SelenideElement mainLogoInHeader() {
+        return $x("//a[@class='header__logo-main']/img");
+    }
 
-    ElementsCollection breadCrumbsLinks() {return $$x("//div[@class='steps breadcrumbs']/ul/li");}
+    ElementsCollection breadCrumbsLinks() {
+        return $$x("//div[@class='steps breadcrumbs']/ul/li");
+    }
 
-    SelenideElement iconOfMotoBrandInBreadCrumbs() {return $x("//li[@class='step_1 active parts_step_1']//img");}
+    SelenideElement iconOfMotoBrandInBreadCrumbs() {
+        return $x("//li[@class='step_1 active parts_step_1']//img");
+    }
 
-    SelenideElement titleOfMotoBrandInBreadCrumbs() {return $x("//li[@class='step_1 active parts_step_1']//a");}
+    SelenideElement titleOfMotoBrandInBreadCrumbs() {
+        return $x("//li[@class='step_1 active parts_step_1']//a");
+    }
 
-    SelenideElement mainHeadline() {return $x("//div[@class='car-parts-categories__title']/h2");}
+    SelenideElement mainHeadline() {
+        return $x("//div[@class='car-parts-categories__title']/h2");
+    }
 
-    SelenideElement iconOfBrandInHeadline() {return $x("//div[@class='catalog-title__block']/img");}
+    SelenideElement iconOfBrandInHeadline() {
+        return $x("//div[@class='catalog-title__block']/img");
+    }
 
-    SelenideElement informationIconAtHeadline() {return  $(byId("selected_car_info"));}
+    SelenideElement informationIconAtHeadline() {
+        return $(byId("selected_car_info"));
+    }
 
-    SelenideElement informationPopUp() {return  $x("//div[@class='selected_car_info_popap moto-info-popup']");}
+    SelenideElement informationPopUp() {
+        return $x("//div[@class='selected_car_info_popap moto-info-popup']");
+    }
 
-    SelenideElement mainSearchField() {return $(byId("search"));}
+    SelenideElement mainSearchField() {
+        return $(byId("search"));
+    }
 
-    SelenideElement hintBlockOfMainSearchField()  {return $x("//div[@class='autocomplete-suggestions']");}
+    SelenideElement hintBlockOfMainSearchField() {
+        return $x("//div[@class='autocomplete-suggestions']");
+    }
 
-    SelenideElement productInHintBlockOfSearchField() {return $x("//div[@class='autocomplete-suggestion']");}
+    SelenideElement productInHintBlockOfSearchField() {
+        return $x("//div[@class='autocomplete-suggestion']");
+    }
+
+    ElementsCollection parentsCategoriesOfTecDocCatalog() {
+        return $$x("//div[@class='car-parts-categories__item']");
+    }
 
 }
