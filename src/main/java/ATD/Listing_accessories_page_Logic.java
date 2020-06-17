@@ -104,25 +104,31 @@ public class Listing_accessories_page_Logic extends Listing_accessories_page {
     }
 
     @Step("Click on first brand in block brands. Listing_accessories_page")
-    public Listing_accessories_page_Logic clickOnFirstBrand(){
-        firstVisibleBrandForClick().click();
+    public Listing_accessories_page_Logic clickOnFirstBrand() {
+        firstVisibleBrand().click();
         return this;
     }
 
     @Step("Click on second brand in block brands. Listing_accessories_page")
     public Listing_accessories_page_Logic clickOnSecondBrand() {
-        secondVisibleBrandsForClick().click();
+        secondVisibleBrand().click();
+        return this;
+    }
+
+    @Step("Click on seven brands in block brands. Listing_accessories_page")
+    public Listing_accessories_page_Logic clickOnSevenBrand() {
+        sevenVisibleBrand().click();
         return this;
     }
 
     @Step("Get name first brand from brands block. Listing_accessories_page")
     public String getNameFromFirstBrand() {
-        return firstVisibleBrand().getAttribute("alt");
+        return firstVisibleBrandForGetName().getAttribute("alt");
     }
 
     @Step("Get name second brand from brands block. Listing_accessories_page")
-    public  String getNameFromSecondBrand() {
-        return secondVisibleBrands().getAttribute("alt");
+    public String getNameFromSecondBrand() {
+        return secondVisibleBrandsForGetName().getAttribute("alt");
     }
 
     @Step("Checking sorting of Products with one brand selected then with two. Listing_accessories_page")
@@ -136,6 +142,56 @@ public class Listing_accessories_page_Logic extends Listing_accessories_page {
         clickOnSecondBrand();
         listingPageLogic.waitUntilPreloaderDisappear();
         listingPageLogic.checkProductTitleOnListingWithTwoExpectedTexts(firstBrandName, secondBrandName, true, titleNameProductsFromListing());
+        return this;
+    }
+
+    @Step("Checking operation of the buttons Previous and Next in the brand block. Listing_accessories_page")
+    public Listing_accessories_page_Logic checksOperationButtonsPrevAndNextInBlockBrands() {
+        secondVisibleBrand().shouldBe(visible);
+        btnPrevInBlockBrands().click();
+        sleep(2000);
+        secondVisibleBrand().shouldNotBe(visible);
+        btnNextInBlockBrands().click();
+        sleep(2000);
+        secondVisibleBrand().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Get value first visible brand in block brands. Listing_accessories_page")
+    public String getValueFirstVisibleBrandInBlockBrands() {
+        return firstVisibleBrandForInput().getAttribute("value");
+    }
+
+    @Step("Get value second visible brand in block brands. Listing_accessories_page")
+    public String getValueSecondVisibleBrandInBlockBrands() {
+        return secondVisibleBrandsForInput().getAttribute("value");
+    }
+
+    @Step("Get value seven visible brand in block brands. Listing_accessories_page")
+    public String getValueSevenVisibleBrandInBlockBrands() {
+        return sevenVisibleBrandForInput().getAttribute("value");
+    }
+
+    @Step("Checking that Selected brands displayed active and entered at top of list after they selected. Listing_accessories_page")
+    public Listing_accessories_page_Logic checkingLocationAndActivityBrandsAfterTheySelected() {
+        String secondActiveBrand = getValueSecondVisibleBrandInBlockBrands();
+        String sevenActiveBrand = getValueSevenVisibleBrandInBlockBrands();
+        clickOnSecondBrand();
+        new Listing_page_Logic().waitUntilPreloaderDisappear();
+        String firstSelectedBrand = getValueFirstVisibleBrandInBlockBrands();
+        Assert.assertEquals(secondActiveBrand, firstSelectedBrand);
+        clickOnSevenBrand();
+        new Listing_page_Logic().waitUntilPreloaderDisappear();
+        ArrayList<String> twoFirstBrandsFromBegin = new ArrayList<>();
+        String brandIndexZero = getValueFirstVisibleBrandInBlockBrands();
+        String brandIndexOne = getValueSecondVisibleBrandInBlockBrands();
+        twoFirstBrandsFromBegin.add(brandIndexZero);
+        twoFirstBrandsFromBegin.add(brandIndexOne);
+        if (!twoFirstBrandsFromBegin.contains(secondActiveBrand) && twoFirstBrandsFromBegin.contains(sevenActiveBrand)) {
+            Assert.fail( " Two first brands does not match selected brands");
+        }
+        firstVisibleBrandForInput().shouldHave(attribute("data-checked", "true"));
+        secondVisibleBrandsForInput().shouldHave(attribute("data-checked", "true"));
         return this;
     }
 

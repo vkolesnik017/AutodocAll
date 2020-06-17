@@ -65,25 +65,50 @@ public class Listing_accessories_page {
         return $$x("//div[@class='steps breadcrumbs']//li");
     }
 
-    SelenideElement firstVisibleBrandForClick() {
-        return $x("//div[@id='selected-instalation__slider']//li[contains(@class, 'slick-active')][1]");
-    }
-
-    SelenideElement secondVisibleBrandsForClick() {
-        return $x("//div[@id='selected-instalation__slider']//li[contains(@class, 'slick-active')][2]");
-    }
-
     SelenideElement firstVisibleBrand() {
+        return $x("//div[@id='selected-instalation__slider']//li[@data-slick-index='0']");
+    }
+
+    SelenideElement firstVisibleBrandForInput() {
+        return $x("//div[@id='selected-instalation__slider']//li[contains(@class, 'slick-active')][1]/input");
+    }
+
+    SelenideElement secondVisibleBrand() {
+        return $x("//div[@id='selected-instalation__slider']//li[@data-slick-index='1']");
+    }
+
+    SelenideElement sevenVisibleBrand() {
+        return $x("//div[@id='selected-instalation__slider']//li[@data-slick-index='6']");
+    }
+
+    SelenideElement sevenVisibleBrandForInput() {
+        return $x("//div[@id='selected-instalation__slider']//li[contains(@class, 'slick-active')][7]/input");
+    }
+
+    SelenideElement firstVisibleBrandForGetName() {
         return $x("//div[@id='selected-instalation__slider']//li[contains(@class, 'slick-active')][1]/label/img");
     }
 
-    SelenideElement secondVisibleBrands() {
+    SelenideElement secondVisibleBrandsForGetName() {
         return $x("//div[@id='selected-instalation__slider']//li[contains(@class, 'slick-active')][2]/label/img");
+    }
+
+    SelenideElement secondVisibleBrandsForInput() {
+        return $x("//div[@id='selected-instalation__slider']//li[contains(@class, 'slick-active')][2]/input");
     }
 
     ElementsCollection titleNameProductsFromListing() {
         return $$x("//div[@class='listing-wrap']//div[@class='name']/span[@class='ga-click link']");
     }
+
+    SelenideElement btnPrevInBlockBrands() {
+        return $x("//div[@id='selected-instalation__slider']//a[@class='prev slick-arrow']");
+    }
+
+    SelenideElement btnNextInBlockBrands() {
+        return $x("//div[@id='selected-instalation__slider']//a[@class='next slick-arrow']");
+    }
+
 
 
 }
