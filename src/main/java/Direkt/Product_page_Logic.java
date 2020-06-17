@@ -9,7 +9,7 @@ public class Product_page_Logic extends Product_page {
 
     @Step("Checking present product in cart popup. Product_page")
     public Product_page_Logic checksPresentProductInCartPopup() {
-        cartDropDawn().hover();
+        cartDropDown().hover();
         firstProductPriceInPopupOfCart().shouldBe(visible);
         return this;
     }
