@@ -18,7 +18,7 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_388_ComponentsOfBrandAndModelBlock {
+public class QC_387_PresenceOfBrandsAndModelsBlocksOfAutomakers {
 
     @BeforeClass
     void setUp() {
@@ -33,11 +33,12 @@ public class QC_388_ComponentsOfBrandAndModelBlock {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks components of the brand and model block")
-    public void testChecksComponentsOfBrandAndModelBlock(String route) {
+    @Description(value = "Test checks the presence of brands and models blocks  of automakers")
+    public void testChecksPresenceOfBrandsAndModelsBlocksOfAutomakers(String route) {
         openPage(route);
 
-        new Moto_Categories_maker_page_Logic().checkComponentsOfModelBlock();
+        new Moto_Categories_maker_page_Logic()
+                .presenceOfModelsBlock();
     }
 
     @DataProvider(name = "routesMakers", parallel = true)
@@ -48,11 +49,12 @@ public class QC_388_ComponentsOfBrandAndModelBlock {
     @Test(dataProvider = "routesMakers")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks components of the brand and model block")
-    public void testChecksComponentsOfBrandAndModelBlockMakers(String route) {
+    @Description(value = "Test checks the presence of brands and models blocks  of automakers")
+    public void testChecksPresenceOfBrandsAndModelsBlocksOfAutomakersMakers(String route) {
         openPage(route);
 
-        new Moto_makers_page_Logic().checkComponentsOfBrandsBlock();
+        new Moto_makers_page_Logic()
+                .presenceOfAutomakersBlock();
     }
 
     @DataProvider(name = "routesCategories", parallel = true)
@@ -63,11 +65,12 @@ public class QC_388_ComponentsOfBrandAndModelBlock {
     @Test(dataProvider = "routesCategories")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks components of the brand and model block")
-    public void testChecksComponentsOfBrandAndModelBlockCategories(String route) {
+    @Description(value = "Test checks the presence of brands and models blocks  of automakers")
+    public void testChecksPresenceOfBrandsAndModelsBlocksOfAutomakersCategories(String route) {
         openPage(route);
 
-        new Moto_Categories_page_Logic().checkComponentsOfBrandsBlock();
+        new Moto_Categories_page_Logic()
+                .presenceOfMotomakersBlock();
     }
 
     @AfterMethod

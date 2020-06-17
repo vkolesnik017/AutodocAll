@@ -2,7 +2,6 @@ package MOTO.QC_385_BlockBrandsAndModelsOfAutoManufacturers;
 
 import ATD.Moto_Categories_maker_page_Logic;
 import ATD.Moto_Categories_page_Logic;
-import ATD.Moto_makers_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -18,7 +17,7 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_388_ComponentsOfBrandAndModelBlock {
+public class QC_386_PresenceOfBrandsAndModelsTitleOfAutomakers {
 
     @BeforeClass
     void setUp() {
@@ -33,26 +32,12 @@ public class QC_388_ComponentsOfBrandAndModelBlock {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks components of the brand and model block")
-    public void testChecksComponentsOfBrandAndModelBlock(String route) {
+    @Description(value = "Test checks the presence of the title block brands and models  of automakers")
+    public void testChecksPresenceOfBrandsAndModelsTitleOfAutomakers(String route) {
         openPage(route);
 
-        new Moto_Categories_maker_page_Logic().checkComponentsOfModelBlock();
-    }
-
-    @DataProvider(name = "routesMakers", parallel = true)
-    Object[] dataProviderMakers() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_makers");
-    }
-
-    @Test(dataProvider = "routesMakers")
-    @Flaky
-    @Owner(value = "Kolesnik")
-    @Description(value = "Test checks components of the brand and model block")
-    public void testChecksComponentsOfBrandAndModelBlockMakers(String route) {
-        openPage(route);
-
-        new Moto_makers_page_Logic().checkComponentsOfBrandsBlock();
+        new Moto_Categories_maker_page_Logic()
+                .presenceOfModelsTitle("MOTORCYCLES");
     }
 
     @DataProvider(name = "routesCategories", parallel = true)
@@ -63,11 +48,12 @@ public class QC_388_ComponentsOfBrandAndModelBlock {
     @Test(dataProvider = "routesCategories")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks components of the brand and model block")
-    public void testChecksComponentsOfBrandAndModelBlockCategories(String route) {
+    @Description(value = "Test checks the presence of the title block brands and models  of automakers")
+    public void testChecksPresenceOfBrandsAndModelsTitleOfAutomakersCategories(String route) {
         openPage(route);
 
-        new Moto_Categories_page_Logic().checkComponentsOfBrandsBlock();
+        new Moto_Categories_page_Logic()
+                .presenceOfBrandsTitle("Beliebte Motorrad und Rollermarken");
     }
 
     @AfterMethod

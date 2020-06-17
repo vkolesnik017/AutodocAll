@@ -11,12 +11,12 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
+import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
 public class QC_38_TransitionsByClickOnImageOfLogoBrand {
-    private DataBase dataBase = new DataBase();
 
     @BeforeClass
     void setUp() {
@@ -32,24 +32,25 @@ public class QC_38_TransitionsByClickOnImageOfLogoBrand {
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test checks transition by click on image of logo brand")
-    public void testChecksTransitionByClickOnImageOfLogoBrand(String route) {
+    public void testChecksTransitionByClickOnImageOfLogoBrand(String route) throws SQLException {
         openPage(route);
-        new LKW_Category_page_Logic().clickOnBrand("BOSCH").checkSuccessfullyCategoryBrandPageLoading("https://lkwteile.autodoc.de/ersatzteile/olfilter-200157/mf-bosch");
-     }
-
+        new LKW_Category_page_Logic().clickOnBrand("BOSCH");
+        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "lkw_category_brand2"));
+    }
 
     @DataProvider(name = "routesCategoryMaker", parallel = true)
     Object[] dataProviderForCategoryMaker() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_maker,lkw_category_maker_brand2");
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_maker2,lkw_category_maker_brand");
     }
 
     @Test(dataProvider = "routesCategoryMaker")
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test checks transition by click on image of logo brand at Category_Maker_route")
-    public void testChecksTransitionByClickOnImageOfLogoBrandInCategoryMaker(String categoryMakerRoute) {
+    public void testChecksTransitionByClickOnImageOfLogoBrandInCategoryMaker(String categoryMakerRoute) throws SQLException {
         openPage(categoryMakerRoute);
-        new LKW_Category_maker_Logic().clickOnBrand("KNECHT").checkSuccessfullyCategoryMakerBrandPageLoading("https://lkwteile.autodoc.de/ersatzteile/olfilter-200157/daf/mf-knecht");
+        new LKW_Category_maker_Logic().clickOnBrand("BOSCH");
+        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "lkw_category_maker_brand3"));
     }
 
     @AfterMethod
