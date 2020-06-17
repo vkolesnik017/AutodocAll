@@ -252,4 +252,12 @@ public class Moto_Catalog_page_Logic extends Moto_Catalog_page {
         informationPopUp().shouldBe(visible);
         return this;
     }
+
+    @Step("select product in search field .Moto_Catalog_page")
+    public Moto_Product_page_Logic selectProductInSearchField(String artNumOfProduct) {
+        mainSearchField().setValue(artNumOfProduct);
+        hintBlockOfMainSearchField().shouldBe(visible);
+        productInHintBlockOfSearchField().shouldHave(text(artNumOfProduct)).shouldBe(visible).click();
+        return page(Moto_Product_page_Logic.class);
+    }
 }

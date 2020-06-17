@@ -390,4 +390,10 @@ public class Moto_Category_car_list_page_Logic extends Moto_Category_car_list_pa
         mainHeadline().shouldBe(visible).shouldHave(text(brandAndModel));
         return this;
     }
+
+    @Step("click on the product through the article number.Moto_Category_car_list_page")
+    public Moto_Product_page_Logic clickOnArtNumOfProduct(String artNumber) {
+        productWithArtNumber(artNumber).shouldBe(visible).click();
+        return page(Moto_Product_page_Logic.class);
+    }
 }
