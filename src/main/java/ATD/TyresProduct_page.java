@@ -51,4 +51,6 @@ public class TyresProduct_page {
     SelenideElement reviewsBlock() { return $(".product-feedback"); }
 
     SelenideElement relatedProductsBlock() { return $("#related-products"); }
+
+    SelenideElement addToBasketButton() { return $(".product-button"); }
 }

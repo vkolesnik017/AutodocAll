@@ -66,9 +66,13 @@ public class Tyres_page {
 
   ElementsCollection productsInTopBlock() { return $$(".ct_toppop_products > li"); }
 
+  SelenideElement productInTopBlock() { return $(".ct_toppop_products > li > span"); }
+
   SelenideElement michelinBrandInBrandCatalog() { return $x("//a[contains (text(),'Michelin')]"); }
 
   SelenideElement brandButtonInTopBlock() { return $(".unsere a img"); }
 
   SelenideElement summerButtonInSeasonBlock() { return $(".seasons_item_summer "); }
+
+  SelenideElement priceInTopBlock() { return $(".ct_toppop_products .actual-price"); }
 }
