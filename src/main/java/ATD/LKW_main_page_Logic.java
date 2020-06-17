@@ -523,7 +523,7 @@ public class LKW_main_page_Logic extends LKW_main_page {
                 closeCookiesPopUp().click();
             }
             languageBlock().shouldBe(visible).scrollIntoView("{block: \"center\"}").click();
-            languageListBlock().shouldHave(attribute("style", "visibility: visible;"));
+            languageListBlock().shouldBe(visible); 
             languagesOfSubscribe().get(i).scrollIntoView("{block: \"end\"}").click();
             Assert.assertTrue(url().contains(new DataBase().getRouteByRouteName(language.get(i), "lkw_main")));
         }
