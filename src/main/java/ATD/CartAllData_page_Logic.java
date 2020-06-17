@@ -246,8 +246,6 @@ public class CartAllData_page_Logic extends CartAllData_page {
         }
         if (vat.equals("19")) {
             priseWithVat = (productPrice * 1.19f); // For shop DE
-            priseWithVat = Math.round(priseWithVat*100)/100.0f;
-            System.out.println(priseWithVat);
         }
         return priseWithVat;
     }
