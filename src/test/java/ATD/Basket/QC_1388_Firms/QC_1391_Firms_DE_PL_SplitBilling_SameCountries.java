@@ -110,7 +110,7 @@ public class QC_1391_Firms_DE_PL_SplitBilling_SameCountries {
                 .nextBtnClick()
                 .checkTextInDeliveryAddressInfoBlock("autotest autotest")
                 .checkTextInPayersAddressInfoBlock("Firma Autodoc GmbH")
-                .checkTextContainingVatPercentage("inkl. 19% MwSt.")
+                .checkTextContainingVatPercentage("inkl. 19% MwSt")
                 .getTotalPriceAllDataPage();
         orderNumberDE = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumberDE);

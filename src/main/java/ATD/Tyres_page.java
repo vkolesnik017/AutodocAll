@@ -4,9 +4,7 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selectors.byCssSelector;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Tyres_page {
 
@@ -77,4 +75,16 @@ public class Tyres_page {
   SelenideElement winterButtonInSeasonBlock() { return $(".seasons_item_winter"); }
 
   SelenideElement priceInTopBlock() { return $(".ct_toppop_products .actual-price"); }
+
+  SelenideElement allBrandsList() { return $(".table_sizes"); }
+
+  SelenideElement allBrandsListTitle() { return $(".title_tires"); }
+
+  SelenideElement seasonBlock() { return $(".tires_ban"); }
+
+  ElementsCollection seasonsInSeasonBlock() { return $$(".tires_ban > ul > li"); }
+
+  SelenideElement diameterRelinkBlock() { return $x("//div[@class='tit' and contains (text(),'Zoll')]/.."); }
+
+  ElementsCollection linksInDiameterblock() { return $$x("//div[@class='tit' and contains (text(),'Zoll')]/..//li"); }
 }

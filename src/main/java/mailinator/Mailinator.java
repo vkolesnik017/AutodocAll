@@ -47,7 +47,7 @@ public class Mailinator {
     }
 
     private SelenideElement firstFirmNameInEmail() {
-      return $x("//table[@class='to-column-table to-column-table--border']//p[@class='to-column-table__title']/following-sibling::b");
+      return $x("//table[@class='to-column-table to-column-table--border']//p[2][@class='to-column-table__text']");
     }
 
     private SelenideElement secondFirmNameInEmail() {
