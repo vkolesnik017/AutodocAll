@@ -79,7 +79,7 @@ public class LKW_Categories_page_Logic extends LKW_Categories_page {
 
     @Step("transition to product page by click on top image of product .LKW_Categories_page")
     public LKW_Categories_page_Logic transitionToProductPageByClickOnTopImage() {
-        clickOnImageOfTopProduct().checkSuccessfullyLKWProductPageLoading("autodoc.de/master-sport/");
+        clickOnImageOfTopProduct().checkSuccessfullyLKWProductPageLoading("autodoc.de/abs/");
         back();
         return this;
     }
@@ -95,7 +95,7 @@ public class LKW_Categories_page_Logic extends LKW_Categories_page {
         if (closeCookiesPopUp().isDisplayed()) {
             closeCookiesPopUp().click();
         }
-        clickOnTitleOfTopProduct().checkSuccessfullyLKWProductPageLoading("autodoc.de/master-sport/");
+        clickOnTitleOfTopProduct().checkSuccessfullyLKWProductPageLoading("autodoc.de/abs/");
         back();
         return this;
     }
@@ -111,7 +111,7 @@ public class LKW_Categories_page_Logic extends LKW_Categories_page {
         if (closeCookiesPopUp().isDisplayed()) {
             closeCookiesPopUp().click();
         }
-        clickOnLinkDetails().checkSuccessfullyLKWProductPageLoading("autodoc.de/master-sport/");
+        clickOnLinkDetails().checkSuccessfullyLKWProductPageLoading("autodoc.de/abs/");
         back();
         return this;
     }
