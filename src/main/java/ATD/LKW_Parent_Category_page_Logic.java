@@ -147,7 +147,7 @@ public class LKW_Parent_Category_page_Logic extends LKW_Parent_Category_page {
 
     @Step("transition to product page by click on top image of product .LKW_Parent_Category_page")
     public LKW_Parent_Category_page_Logic transitionToProductPageByClickOnTopImage() {
-        clickOnImageOfTopProduct().checkSuccessfullyLKWProductPageLoading("https://lkwteile.autodoc.de/mann-filter/");
+        clickOnImageOfTopProduct().checkSuccessfullyLKWProductPageLoading("autodoc.de/mann-filter/");
         back();
         return this;
     }
@@ -160,7 +160,7 @@ public class LKW_Parent_Category_page_Logic extends LKW_Parent_Category_page {
 
     @Step("transition to product page by click on title of top product .LKW_Parent_Category_page")
     public LKW_Parent_Category_page_Logic transitionToProductPageByClickOnTitleOfTopProduct() {
-        clickOnTitleOfTopProduct().checkSuccessfullyLKWProductPageLoading("https://lkwteile.autodoc.de/mann-filter/");
+        clickOnTitleOfTopProduct().checkSuccessfullyLKWProductPageLoading("autodoc.de/mann-filter/");
         back();
         return this;
     }
@@ -176,7 +176,7 @@ public class LKW_Parent_Category_page_Logic extends LKW_Parent_Category_page {
         if (closeCookiesPopUp().isDisplayed()) {
             closeCookiesPopUp().click();
         }
-        clickOnLinkDetails().checkSuccessfullyLKWProductPageLoading("https://lkwteile.autodoc.de/mann-filter/");
+        clickOnLinkDetails().checkSuccessfullyLKWProductPageLoading("autodoc.de/mann-filter/");
         back();
         return this;
     }

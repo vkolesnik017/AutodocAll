@@ -121,16 +121,26 @@ public class Moto_Category_car_list_page {
     }
 
     ElementsCollection btnAddToBasketAtAnAnalogProduct() {
-        return $$x("//a[@class='ga-click button ga-click still_add_to_basket']");
+        return $$x("//div[@class='top-small-products-items__item']/div[6]//a");
     }
 
-    SelenideElement breadCrumbsBlock() {return $x("//div[@class='steps breadcrumbs']");}
+    SelenideElement breadCrumbsBlock() {
+        return $x("//div[@class='steps breadcrumbs']");
+    }
 
-    SelenideElement iconOfFirstLinkBreadCrumbsBlock() {return $x("//a[@itemprop='item']/img");}
+    SelenideElement iconOfFirstLinkBreadCrumbsBlock() {
+        return $x("//a[@itemprop='item']/img");
+    }
 
-    ElementsCollection linksOfBreadCrumbs() {return $$x("//a[@itemprop='item']");}
+    ElementsCollection linksOfBreadCrumbs() {
+        return $$x("//a[@itemprop='item']");
+    }
 
-    SelenideElement  mainHeadline() {return $x("//div[@class='title_count_search ']/h2");}
+    SelenideElement mainHeadline() {
+        return $x("//div[@class='title_count_search ']/h2");
+    }
 
-    SelenideElement  productWithArtNumber(String artNum) {return $x("//span[contains(text(),'"+artNum+"')]/ancestor::div[@class='name']/a");}
+    SelenideElement productWithArtNumber(String artNum) {
+        return $x("//span[contains(text(),'" + artNum + "')]/ancestor::div[@class='name']/a");
+    }
 }

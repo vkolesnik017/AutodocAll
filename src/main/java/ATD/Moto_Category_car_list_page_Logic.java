@@ -319,8 +319,8 @@ public class Moto_Category_car_list_page_Logic extends Moto_Category_car_list_pa
         if (!basketDropMenu().isDisplayed()) {
             btnAddToBasketAtAnAnalogProduct().get(0).click();
         }
-        basketDropMenu().shouldBe(visible);
-        basketDropMenu().shouldNotBe(visible);
+        basketDropMenu().should(appear);
+        basketDropMenu().should(disappear);
         basket().click();
         return page(Cart_page_Logic.class);
     }
