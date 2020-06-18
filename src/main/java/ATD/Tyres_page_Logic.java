@@ -3,10 +3,12 @@ package ATD;
 
 import io.qameta.allure.Step;
 
+import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.Wait;
 import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class Tyres_page_Logic extends Tyres_page {
 
@@ -223,4 +225,49 @@ public class Tyres_page_Logic extends Tyres_page {
             productInTopBlock().click();
             return tyreId;
         }
+
+        @Step("Check all brands list presence. Tyres_page")
+        public Tyres_page_Logic checkAllBrandsListPresence() {
+            allBrandsList().shouldBe(visible);
+            return this;
+        }
+
+        @Step("Check all brands list title presence. Tyres_page")
+        public Tyres_page_Logic checkAllBrandsListTitlePresence() {
+            allBrandsListTitle().shouldBe(visible);
+            if (url().contains("/offroad-suv")) {
+                allBrandsListTitle().shouldHave(text("Alle 4x4 Reifen Hersteller"));
+            } else if (url().contains("/llkw")) {
+                allBrandsListTitle().shouldHave(text("Alle Transporterreifen Hersteller"));
+            } else if (url().contains("/motorrad")) {
+                allBrandsListTitle().shouldHave(text("Alle Reifen für Motorrad Hersteller"));
+            } else {
+                allBrandsListTitle().shouldHave(text("Alle PKW Reifen Hersteller"));
+            }
+            return this;
+        }
+
+    @Step("Check tyres size selector presence. Tyres_page")
+    public Tyres_page_Logic checkTyresSizeSelectorPresence() {
+        tyresSelectorBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Check tyres season block presence. Tyres_page")
+    public Tyres_page_Logic checkTyresSeasonBlockPresence() {
+        seasonBlock().shouldBe(visible);
+        if (url().contains("/motorrad")) {
+            seasonsInSeasonBlock().shouldHaveSize(2);
+        } else {
+            seasonsInSeasonBlock().shouldHaveSize(3);
+        }
+        return this;
+    }
+
+    @Step("Check tyres diameter relink block presence. Tyres_page")
+    public Tyres_page_Logic checkTyresDiameterRelinkBlockPresence() {
+            diameterRelinkBlock().shouldBe(visible);
+            linksInDiameterblock().shouldHave(sizeGreaterThan(5));
+            return this;
+    }
 }

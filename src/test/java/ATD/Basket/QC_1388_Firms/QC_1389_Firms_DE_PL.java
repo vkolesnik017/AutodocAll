@@ -125,7 +125,7 @@ public class QC_1389_Firms_DE_PL {
         switchTo().window(1);
         totalPriceInEmailDE = new Mailinator().openEmail("qc_1389_autotestDE@mailinator.com")
                 .openLetter(1)
-                .checkTextContainingVatPercentageInEmail("inkl. 19% MwSt.")
+                .checkTextContainingVatPercentageInEmail("inkl. 19% MwSt")
                 .checkFirstFirmNameInEmail("Autodoc GmbH")
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPriceDE, totalPriceInEmailDE);
