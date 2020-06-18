@@ -12,8 +12,7 @@ import java.util.List;
 import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.back;
-import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class Moto_Category_car_list_page_Logic extends Moto_Category_car_list_page {
@@ -315,6 +314,7 @@ public class Moto_Category_car_list_page_Logic extends Moto_Category_car_list_pa
 
     @Step("add product to basket from an analog block .Moto_Category_car_list_page")
     public Cart_page_Logic addProductToBasketFromAnalogBlock() {
+        analogProducts().get(0).hover();
         btnAddToBasketAtAnAnalogProduct().get(0).click();
         if (!basketDropMenu().isDisplayed()) {
             btnAddToBasketAtAnAnalogProduct().get(0).click();
