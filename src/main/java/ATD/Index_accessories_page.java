@@ -110,5 +110,9 @@ class Index_accessories_page {
         return $x("//div[@class='advantages__item'][3]//div[@class='advantages__item-popup']");
     }
 
+    SelenideElement blockMainCatalogCategories() {
+        return $x("//div[@class='accessories-catalog']");
+    }
+
 
 }
