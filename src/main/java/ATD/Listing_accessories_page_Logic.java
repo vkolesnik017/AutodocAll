@@ -3,14 +3,12 @@ package ATD;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
-
 import java.util.ArrayList;
 import java.util.Collections;
-
+import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.page;
-import static com.codeborne.selenide.Selenide.sleep;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Listing_accessories_page_Logic extends Listing_accessories_page {
 
@@ -123,12 +121,12 @@ public class Listing_accessories_page_Logic extends Listing_accessories_page {
 
     @Step("Get name first brand from brands block. Listing_accessories_page")
     public String getNameFromFirstBrand() {
-        return firstVisibleBrandForGetName().getAttribute("alt");
+        return firstVisibleBrandImg().getAttribute("alt");
     }
 
     @Step("Get name second brand from brands block. Listing_accessories_page")
     public String getNameFromSecondBrand() {
-        return secondVisibleBrandsForGetName().getAttribute("alt");
+        return secondVisibleBrandImg().getAttribute("alt");
     }
 
     @Step("Checking sorting of Products with one brand selected then with two. Listing_accessories_page")
@@ -145,8 +143,8 @@ public class Listing_accessories_page_Logic extends Listing_accessories_page {
         return this;
     }
 
-    @Step("Checking operation of the buttons Previous and Next in the brand block. Listing_accessories_page")
-    public Listing_accessories_page_Logic checksOperationButtonsPrevAndNextInBlockBrands() {
+    @Step("Checking work of the buttons Previous and Next in the brand block. Listing_accessories_page")
+    public Listing_accessories_page_Logic checksWorkButtonsPrevAndNextInBlockBrands() {
         secondVisibleBrand().shouldBe(visible);
         btnPrevInBlockBrands().click();
         sleep(2000);
@@ -159,17 +157,17 @@ public class Listing_accessories_page_Logic extends Listing_accessories_page {
 
     @Step("Get value first visible brand in block brands. Listing_accessories_page")
     public String getValueFirstVisibleBrandInBlockBrands() {
-        return firstVisibleBrandForInput().getAttribute("value");
+        return firstVisibleBrandToGetData().getAttribute("value");
     }
 
     @Step("Get value second visible brand in block brands. Listing_accessories_page")
     public String getValueSecondVisibleBrandInBlockBrands() {
-        return secondVisibleBrandsForInput().getAttribute("value");
+        return secondVisibleBrandToGetData().getAttribute("value");
     }
 
     @Step("Get value seven visible brand in block brands. Listing_accessories_page")
     public String getValueSevenVisibleBrandInBlockBrands() {
-        return sevenVisibleBrandForInput().getAttribute("value");
+        return sevenVisibleBrandToGetData().getAttribute("value");
     }
 
     @Step("Checking that Selected brands displayed active and entered at top of list after they selected. Listing_accessories_page")
@@ -183,15 +181,35 @@ public class Listing_accessories_page_Logic extends Listing_accessories_page {
         clickOnSevenBrand();
         new Listing_page_Logic().waitUntilPreloaderDisappear();
         ArrayList<String> twoFirstBrandsFromBegin = new ArrayList<>();
-        String brandIndexZero = getValueFirstVisibleBrandInBlockBrands();
-        String brandIndexOne = getValueSecondVisibleBrandInBlockBrands();
-        twoFirstBrandsFromBegin.add(brandIndexZero);
-        twoFirstBrandsFromBegin.add(brandIndexOne);
+        String firstCheckedBrand = getValueFirstVisibleBrandInBlockBrands();
+        String secondCheckedBrand = getValueSecondVisibleBrandInBlockBrands();
+        twoFirstBrandsFromBegin.add(firstCheckedBrand);
+        twoFirstBrandsFromBegin.add(secondCheckedBrand);
         if (!twoFirstBrandsFromBegin.contains(secondActiveBrand) && twoFirstBrandsFromBegin.contains(sevenActiveBrand)) {
             Assert.fail( " Two first brands does not match selected brands");
         }
-        firstVisibleBrandForInput().shouldHave(attribute("data-checked", "true"));
-        secondVisibleBrandsForInput().shouldHave(attribute("data-checked", "true"));
+        firstVisibleBrandToGetData().shouldHave(attribute("data-checked", "true"));
+        secondVisibleBrandToGetData().shouldHave(attribute("data-checked", "true"));
+        return this;
+    }
+
+
+    @Step(" Checking work buttons in pagination. Listing_accessories_page")
+    public Listing_accessories_page_Logic checkingWorkBtnInPagination() {
+        blockPagination().shouldBe(visible);
+        btnPreviousPageInPagination().shouldBe(visible);
+        btnNextPageInPagination().shouldBe(visible);
+        btnLastPageInPagination().shouldBe(visible);
+        btnSecondPageInPagination().click();
+        btnReturnOnFirstPageInPagination().shouldBe(visible);
+        btnPreviousPageInPagination().shouldBe(visible);
+        btnNextPageInPagination().shouldBe(visible);
+        btnLastPageInPagination().shouldBe(visible);
+        checkingContainsUrl("page=2");
+        btnNextPageInPagination().click();
+        checkingContainsUrl("page=3");
+        btnReturnOnFirstPageInPagination().click();
+        checkingContainsUrl("einparkhilfen");
         return this;
     }
 

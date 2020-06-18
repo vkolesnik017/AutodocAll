@@ -1,4 +1,4 @@
-package ATD.ACC.QC_1383_BlockFilterByBrandOnListingAccessories;
+package ATD.ACC.QC_1340_ListingAccessories;
 
 import ATD.Listing_accessories_page_Logic;
 import ATD.SetUp;
@@ -14,8 +14,7 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_1384_WorkBtnPrevAndNextInBlockBrands {
-
+public class QC_1406_BlockWithPaginationOnListingAccessories {
 
     @BeforeClass
     void setUp() {
@@ -24,16 +23,16 @@ public class QC_1384_WorkBtnPrevAndNextInBlockBrands {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "listing_accessories");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main","listing_accessories");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test checks work of the buttons Previous and Next in the brand block")
-    public void testCheckWorkButtonsPrevAndNextInBlockBrands(String route) {
+    @Description(value = "Test checking work buttons in pagination .")
+    public void testCheckingWorkBtnInPagination(String route) {
         openPage(route);
-        new Listing_accessories_page_Logic().checksWorkButtonsPrevAndNextInBlockBrands();
+        new Listing_accessories_page_Logic().checkingWorkBtnInPagination();
     }
 
 

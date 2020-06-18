@@ -2,7 +2,6 @@ package ATD;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-
 import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;
 
@@ -65,12 +64,9 @@ public class Listing_accessories_page {
         return $$x("//div[@class='steps breadcrumbs']//li");
     }
 
+
     SelenideElement firstVisibleBrand() {
         return $x("//div[@id='selected-instalation__slider']//li[@data-slick-index='0']");
-    }
-
-    SelenideElement firstVisibleBrandForInput() {
-        return $x("//div[@id='selected-instalation__slider']//li[contains(@class, 'slick-active')][1]/input");
     }
 
     SelenideElement secondVisibleBrand() {
@@ -81,20 +77,25 @@ public class Listing_accessories_page {
         return $x("//div[@id='selected-instalation__slider']//li[@data-slick-index='6']");
     }
 
-    SelenideElement sevenVisibleBrandForInput() {
+    SelenideElement firstVisibleBrandToGetData() {
+        return $x("//div[@id='selected-instalation__slider']//li[contains(@class, 'slick-active')][1]/input");
+    }
+
+    SelenideElement sevenVisibleBrandToGetData() {
         return $x("//div[@id='selected-instalation__slider']//li[contains(@class, 'slick-active')][7]/input");
     }
 
-    SelenideElement firstVisibleBrandForGetName() {
+    SelenideElement secondVisibleBrandToGetData() {
+        return $x("//div[@id='selected-instalation__slider']//li[contains(@class, 'slick-active')][2]/input");
+    }
+
+
+    SelenideElement firstVisibleBrandImg() {
         return $x("//div[@id='selected-instalation__slider']//li[contains(@class, 'slick-active')][1]/label/img");
     }
 
-    SelenideElement secondVisibleBrandsForGetName() {
+    SelenideElement secondVisibleBrandImg() {
         return $x("//div[@id='selected-instalation__slider']//li[contains(@class, 'slick-active')][2]/label/img");
-    }
-
-    SelenideElement secondVisibleBrandsForInput() {
-        return $x("//div[@id='selected-instalation__slider']//li[contains(@class, 'slick-active')][2]/input");
     }
 
     ElementsCollection titleNameProductsFromListing() {
@@ -107,6 +108,30 @@ public class Listing_accessories_page {
 
     SelenideElement btnNextInBlockBrands() {
         return $x("//div[@id='selected-instalation__slider']//a[@class='next slick-arrow']");
+    }
+
+    SelenideElement blockPagination() {
+        return $x("//div[@class='page_list'][1]/div[@class='pagination']");
+    }
+
+    SelenideElement btnReturnOnFirstPageInPagination() {
+        return $x("//div[@class='page_list'][1]//span[@class='first']");
+    }
+
+    SelenideElement btnPreviousPageInPagination() {
+        return $x("//div[@class='page_list'][1]//span[contains(@class,'previous')]");
+    }
+
+    SelenideElement btnNextPageInPagination() {
+        return $x("//div[@class='page_list'][1]//span[@class='next']");
+    }
+
+    SelenideElement btnLastPageInPagination() {
+        return $x("//div[@class='page_list'][1]//span[@class='last']");
+    }
+
+    SelenideElement btnSecondPageInPagination() {
+        return $x("//div[@class='page_list'][1]//span[3]");
     }
 
 

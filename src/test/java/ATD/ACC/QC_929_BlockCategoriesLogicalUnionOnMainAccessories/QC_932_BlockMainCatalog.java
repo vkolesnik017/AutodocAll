@@ -1,6 +1,6 @@
-package ATD.ACC.QC_1383_BlockFilterByBrandOnListingAccessories;
+package ATD.ACC.QC_929_BlockCategoriesLogicalUnionOnMainAccessories;
 
-import ATD.Listing_accessories_page_Logic;
+import ATD.Index_accessories_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -14,8 +14,7 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_1384_WorkBtnPrevAndNextInBlockBrands {
-
+public class QC_932_BlockMainCatalog {
 
     @BeforeClass
     void setUp() {
@@ -24,18 +23,17 @@ public class QC_1384_WorkBtnPrevAndNextInBlockBrands {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "listing_accessories");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main","index_accessories");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test checks work of the buttons Previous and Next in the brand block")
-    public void testCheckWorkButtonsPrevAndNextInBlockBrands(String route) {
+    @Description(value = "Test checks presence block with main catalog categories")
+    public void testCheckingPresenceBlockMainCatalogCategories(String route) {
         openPage(route);
-        new Listing_accessories_page_Logic().checksWorkButtonsPrevAndNextInBlockBrands();
+        new Index_accessories_page_Logic().checkingPresenceBlockMainCatalogCategories();
     }
-
 
     @AfterMethod
     private void tearDown() {
