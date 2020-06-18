@@ -159,4 +159,10 @@
         </classes>
     </test>
 
+    <test name="QC_625_AllParentsAndChildsCategoriesBlocks">
+        <classes>
+            <class name="MOTO.QC_625_AllParentsAndChildsCategoriesBlocks.QC_626_PresenceOfTecDocCatalog"/>
+            <class name="MOTO.QC_625_AllParentsAndChildsCategoriesBlocks.QC_627_NestingLevelsOfTecDocCatalog"/>
+        </classes>
+    </test>
 </suite>

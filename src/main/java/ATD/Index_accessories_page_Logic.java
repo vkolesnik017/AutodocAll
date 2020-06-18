@@ -149,7 +149,7 @@ public class Index_accessories_page_Logic extends Index_accessories_page {
         return nameCategories;
     }
 
-    @Step("Checking presence block Advantages and information popup after hover on tab number 2-3. Index_instruments_page")
+    @Step("Checking presence block Advantages and information popup after hover on tab number 2-3. Index_accessories_page")
     public Index_accessories_page_Logic checkingPresenceAdvantagesBlockAndInformationPopup() {
         blockAdvantages().scrollTo().shouldBe(visible);
         firstTabAdvantages().shouldBe(visible);
@@ -160,8 +160,10 @@ public class Index_accessories_page_Logic extends Index_accessories_page {
         return this;
     }
 
-
-
-
+    @Step("Checking presence block with main catalog categories. Index_accessories_page")
+    public Index_accessories_page_Logic checkingPresenceBlockMainCatalogCategories() {
+        blockMainCatalogCategories().shouldBe(visible);
+        return this;
+    }
 
 }

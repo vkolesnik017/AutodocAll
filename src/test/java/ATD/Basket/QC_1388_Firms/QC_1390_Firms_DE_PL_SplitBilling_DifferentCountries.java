@@ -112,7 +112,7 @@ public class QC_1390_Firms_DE_PL_SplitBilling_DifferentCountries {
                 .nextBtnClick()
                 .checkTextInDeliveryAddressInfoBlock("Firma Autodoc GmbH")
                 .checkTextInPayersAddressInfoBlock("Firma Gear4music Limited")
-                .checkTextContainingVatPercentage("inkl. 19% MwSt.")
+                .checkTextContainingVatPercentage("inkl. 19% MwSt")
                 .getTotalPriceAllDataPage();
         orderNumberDE = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumberDE);

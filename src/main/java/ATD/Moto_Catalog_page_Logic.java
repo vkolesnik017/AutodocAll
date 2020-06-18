@@ -6,6 +6,7 @@ import org.testng.Assert;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.checkingContainsUrl;
+import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.back;
 import static com.codeborne.selenide.Selenide.page;
@@ -259,5 +260,12 @@ public class Moto_Catalog_page_Logic extends Moto_Catalog_page {
         hintBlockOfMainSearchField().shouldBe(visible);
         productInHintBlockOfSearchField().shouldHave(text(artNumOfProduct)).shouldBe(visible).click();
         return page(Moto_Product_page_Logic.class);
+    }
+
+    @Step("presence of TecDoc catalog .Moto_Catalog_page")
+    public Moto_Catalog_page_Logic presenceOfTecDocCatalog() {
+        catalogTecDoc().shouldBe(visible);
+        parentsCategoriesOfTecDocCatalog().shouldHave(sizeGreaterThan(0));
+        return this;
     }
 }

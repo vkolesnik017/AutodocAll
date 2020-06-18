@@ -88,7 +88,6 @@ public class QC_78_TransitionFromProductBLockToProductPage {
                 .transitionToProductPageByClickOnTitleOfTopProduct()
                 .transitionToProductPageByClickOnLinkDetails();
     }
-
     @DataProvider(name = "routesParentCategory", parallel = true)
     Object[] dataProviderParentCategory() throws SQLException {
         return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_parent_category");
