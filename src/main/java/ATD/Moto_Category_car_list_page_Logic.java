@@ -307,15 +307,18 @@ public class Moto_Category_car_list_page_Logic extends Moto_Category_car_list_pa
     @Step(" get id of an analog product .Moto_Category_car_list_page")
     public String getIdOfAnalogProduct() {
         clickOnReplacementBtnOfProduct("26-8031");
-        analogBlockOfProduct().should(appear);
+        analogBlockOfProduct().shouldBe(visible);
+        btnAddToBasketAtAnAnalogProduct().get(0).scrollIntoView("{block: \"center\"}");
         String idOfBtn = btnAddToBasketAtAnAnalogProduct().get(0).shouldBe(visible).getAttribute("data-ga-label");
         return idOfBtn;
     }
 
     @Step("add product to basket from an analog block .Moto_Category_car_list_page")
     public Cart_page_Logic addProductToBasketFromAnalogBlock() {
-        analogBlockOfProduct().shouldBe(visible);
-        btnAddToBasketAtAnAnalogProduct().get(0).shouldBe(visible).click();
+        btnAddToBasketAtAnAnalogProduct().get(0).click();
+        if (!basketDropMenu().isDisplayed()) {
+            btnAddToBasketAtAnAnalogProduct().get(0).click();
+        }
         basketDropMenu().shouldBe(visible);
         basketDropMenu().shouldNotBe(visible);
         basket().click();

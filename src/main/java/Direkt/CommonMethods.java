@@ -16,6 +16,7 @@ import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class CommonMethods {
 
+    static String testTel = "200+002";
 
     public static String getCurrentShopFromJSVarInHTML() {
         String currentShop = executeJavaScript("return $siteSettings.lang");
