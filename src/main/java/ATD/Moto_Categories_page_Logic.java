@@ -121,7 +121,7 @@ public class Moto_Categories_page_Logic extends Moto_Categories_page {
     public Moto_Categories_page_Logic checkIntermediateChildCategoryFirstLevel(int position) {
         for (int j = 0; j < intermediateChildCategoriesFirstLevel(position + 1).size(); j++) {
             intermediateChildCategoriesFirstLevel(position + 1).get(j).click();
-               //  childCategoriesSecondLevelBlock().should(appear);
+            //  childCategoriesSecondLevelBlock().should(appear);
             childCategoriesSecondLevelBlockCheck(position + 1).get(j).shouldBe(visible);
             checkSecondLevelOfParentCategories(position);
         }
@@ -230,6 +230,14 @@ public class Moto_Categories_page_Logic extends Moto_Categories_page {
             childCategoriesSecondLevelBlock().should(appear);
             sortingOfChildCategories(childCategoriesSecondLevel(position + 1));
         }
+        return this;
+    }
+
+
+    @Step("click on child category .Moto_Categories_page")
+    public Moto_Categories_page_Logic clickOnChildCategory() {
+        parentsCategoriesOfTecDocCatalog().get(0).click();
+        childCategoriesFirstLevelBlock().get(0).shouldBe(visible);
         return this;
     }
 
