@@ -29,5 +29,17 @@ public class Index_accessories_page {
         return $x("//div[contains(@class,'slick-active')][1]//span[@class='link']");
     }
 
+    SelenideElement blockBreadCrumbs() {
+        return $x("//div[@class='breadcrumbs']/div[@class='crabs']");
+    }
+
+    SelenideElement firstBreadCrumb() {
+        return $x("//div[@class='breadcrumbs']/div[@class='crabs']/div[1]");
+    }
+
+    SelenideElement secondBreadCrumb() {
+        return $x("//div[@class='breadcrumbs']/div[@class='crabs']/div[2]//a[@class='defcur']");
+    }
+
 
 }

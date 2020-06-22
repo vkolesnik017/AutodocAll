@@ -3,6 +3,7 @@ package PKW;
 
 import io.qameta.allure.Step;
 import org.testng.Assert;
+import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.page;
 
@@ -41,6 +42,24 @@ public class Index_accessories_page_Logic extends Index_accessories_page {
         firstProductInBlockTopProducts().scrollTo().hover();
         btnDetailsInPopupBlockTopProducts().shouldBe(visible);
         return this;
+    }
+
+    @Step("Checking presence block with breadCrumbs. Index_accessories_page")
+    public Index_accessories_page_Logic checkingPresenceBlockBreadCrumbs(){
+        blockBreadCrumbs().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checking presence and not clickable second Bread Crumb. Index_accessories_page")
+    public Index_accessories_page_Logic checkingPresenceAndNotClickableSecondBreadCrumb() {
+        secondBreadCrumb().shouldBe(visible).shouldNotBe(attribute("href"));
+        return this;
+    }
+
+    @Step("Click on first bread crumb. Index_accessories_page")
+    public Parts_page_Logic clickOnFirstBreadCrumb() {
+        firstBreadCrumb().click();
+        return page(Parts_page_Logic.class);
     }
 
 
