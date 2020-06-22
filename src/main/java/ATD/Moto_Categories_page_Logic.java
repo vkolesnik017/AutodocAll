@@ -235,10 +235,24 @@ public class Moto_Categories_page_Logic extends Moto_Categories_page {
 
 
     @Step("click on child category .Moto_Categories_page")
-    public Moto_Categories_page_Logic clickOnChildCategory() {
-        parentsCategoriesOfTecDocCatalog().get(0).click();
+    public Moto_Category_page_Logic clickOnChildCategory() {
+        parentsCategoriesOfTecDocCatalog().get(0).shouldBe(visible).click();
         childCategoriesFirstLevelBlock().get(0).shouldBe(visible);
+        childCategoriesFirstLevel(1).get(0).shouldBe(visible).click();
+        return page(Moto_Category_page_Logic.class);
+    }
+
+    @Step("select motorcycle in vertical selector .Moto_Categories_page")
+    public Moto_Categories_page_Logic selectMotoWithOutTransition(String brand, String model, String motor) {
+        closedSelector().shouldBe(visible).click();
+        mainFormOfSelector().shouldBe(visible);
+        brandOfMotoField().selectOptionByValue(brand);
+        modelFiledInSelector().selectOptionByValue(model);
+        motorFiledInSelector().selectOptionByValue(motor);
+        searchButton().click();
         return this;
     }
+
+
 
 }
