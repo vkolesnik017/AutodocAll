@@ -1,13 +1,11 @@
 package ATD;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.Selenide.$$x;
 
 public class Moto_Categories_page {
 
@@ -47,17 +45,29 @@ public class Moto_Categories_page {
 
     ElementsCollection childCategoriesFirstLevel(int position) {return $$x("(//div[contains(@class,'car-parts-categories-modal__level1')])["+position+"]/ul[@class='car-parts-categories-modal__link-list']//a");}
 
+    ElementsCollection childCategoriesFirstLevell() {return $$x("//div[contains(@class,'car-parts-categories-modal__level1')]/ul[@class='car-parts-categories-modal__link-list']//a").filter(visible);}
+
     ElementsCollection intermediateChildCategoriesFirstLevel(int position) {return $$x("(//div[contains(@class,'car-parts-categories-modal__level1')])["+position+"]/ul[@class='car-parts-categories-modal__cat-list']/li");}
+
+    ElementsCollection intermediateChildCategoriesFirstLevell() {return $$x("//div[contains(@class,'car-parts-categories-modal__level1')]/ul[@class='car-parts-categories-modal__cat-list']/li").filter(visible);}
 
     SelenideElement childCategoriesSecondLevelBlock() {return $x("//div[@class='car-parts-categories-modal__level2 js-height-compare js-init-height']");}
 
     ElementsCollection childCategoriesSecondLevel(int position) {return $$x("(//div[contains(@class,'car-parts-categories-modal__level1')])["+position+"]//div[contains(@class,'car-parts-categories-modal__level2')]//li").filter(visible);}
 
+    ElementsCollection childCategoriesSecondLevell() {return $$x("//div[contains(@class,'car-parts-categories-modal__level1')]//div[contains(@class,'car-parts-categories-modal__level2')]//li").filter(visible);}
+
     ElementsCollection imageOfParentCategories() {return $$x("//div[@class='car-parts-categories__item-link']//img");}
 
     ElementsCollection imageOfChildCategoriesFirstLevel(int position) {return $$x("(//div[contains(@class,'car-parts-categories-modal__level1')])["+position+"]/ul[@class='car-parts-categories-modal__link-list']//img");}
 
-    ElementsCollection imageOfChildCategoriesSecondLevel(int position) {return $$x("(//div[contains(@class,'car-parts-categories-modal__level1')])[\"+position+\"]//div[contains(@class,'car-parts-categories-modal__level2')]//li//img").filter(visible);}
+    ElementsCollection imageOfChildCategoriesSecondLevel(int position) {return $$x("(//div[contains(@class,'car-parts-categories-modal__level1')])["+position+"]//div[contains(@class,'car-parts-categories-modal__level2')]//li//img").filter(visible);}
 
-    ElementsCollection titleOfChildCategoriesFirstLevel(int position) {return $$x("(//div[contains(@class,'car-parts-categories-modal__level1')])["+position+"]/ul[@class='car-parts-categories-modal__link-list']//a/span");}
+    ElementsCollection childCategoriesSecondLevelBlockCheck(int position) {return $$x("(//div[contains(@class,'car-parts-categories-modal__level1')])["+position+"]//div[@class='car-parts-categories-modal__cat-name']/following-sibling::div[contains(@class,'car-parts-categories-modal__level2')]");}
+
+    SelenideElement childCategoriesSecondLevelBlockCheckk() {return $x("//div[contains(@class,'car-parts-categories-modal__level1')]//div[@class='car-parts-categories-modal__cat-name']/following-sibling::div[contains(@class,'car-parts-categories-modal__level2')]");}
+
+    SelenideElement closedSelector() {return $x("//div[contains(@class,'catalog-title__change-car')]");}
+
+
 }
