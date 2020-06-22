@@ -51,7 +51,7 @@ public class Mailinator {
     }
 
     private SelenideElement secondFirmNameInEmail() {
-        return $x("//table[@class='to-column-table']//p[@class='to-column-table__title']/following-sibling::b");
+        return $x("//table[@class='to-column-table']//p[2][@class='to-column-table__text']");
     }
 
     private SelenideElement namePhysicalPersonInEmail() {

@@ -131,7 +131,7 @@ public class QC_1390_Firms_DE_PL_SplitBilling_DifferentCountries {
         switchTo().window(1);
         totalPriceInEmailDE = new Mailinator().openEmail("qc_1390_autotestDE@mailinator.com")
                 .openLetter(1)
-                .checkTextContainingVatPercentageInEmail("inkl. 19% MwSt.")
+                .checkTextContainingVatPercentageInEmail("inkl. 19% MwSt")
                 .checkFirstFirmNameInEmail("Gear4music Limited")
                 .checkSecondFirmNameInEmail("Autodoc GmbH")
                 .getTotalPriceInEmail();
