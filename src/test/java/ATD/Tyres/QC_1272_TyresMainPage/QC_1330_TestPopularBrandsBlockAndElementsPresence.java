@@ -35,7 +35,10 @@ public class QC_1330_TestPopularBrandsBlockAndElementsPresence {
     @Description(value = "Test Checks Popular Brands Block And Elements Presence")
     public void testPopularBrandsBlockAndElementsPresence(String route) {
         openPage(route);
-        new Tyres_page_Logic();
+        new Tyres_page_Logic().checkPopularBrandsBlockVisibility()
+                                .checkPopularBrandsSliderFirstPosition()
+                                .clickSecondPageInBrandSlider()
+                                .checkPopularBrandsSliderSecondPosition();
     }
 
     @AfterMethod

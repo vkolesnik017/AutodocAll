@@ -152,4 +152,37 @@ public class TyresProduct_page_Logic extends TyresProduct_page {
         addToBasketButton().shouldHave(attribute("id", expectedId));
         return this;
     }
+
+    @Step("Select width in selector. TyresProduct_page")
+    public TyresProduct_page_Logic selectWidthTyreOnListing(String width) {
+        new Tyres_page_Logic().selectWidth(width);
+        return this;
+    }
+
+    @Step("Select height in selector. TyresProduct_page")
+    public TyresProduct_page_Logic selectHeightTyreOnListing(String height) {
+        new Tyres_page_Logic().selectHeight(height);
+        return this;
+    }
+
+    @Step("Select diameter in selector. TyresProduct_page")
+    public TyresProduct_page_Logic selectDiameterTyreOnListing(String diameter) {
+        new Tyres_page_Logic().selectDiameter(diameter);
+        return this;
+    }
+
+    @Step("Click Submit Tyres Selector On Listing. TyresProduct_page")
+    public TyresListing_page_Logic clickSubmitTyresSelectorOnListing() {
+        new TyresListing_page_Logic().clickSubmitTyresSelectorOnListing();
+        return page(TyresListing_page_Logic.class);
+    }
+
+    @Step("Select summer season in selector if it is not selected. TyresProduct_page")
+    public TyresProduct_page_Logic selectSummerSeason() {
+        if (!summerSeasonCheckbox().isSelected()) {
+            summerSeasonCheckbox().click();
+        }
+        return this;
+    }
+
 }
