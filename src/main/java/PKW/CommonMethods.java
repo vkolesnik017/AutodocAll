@@ -1,5 +1,6 @@
 package PKW;
 
+import com.codeborne.selenide.ex.UIAssertionError;
 import io.qameta.allure.Step;
 import org.openqa.selenium.TimeoutException;
 import org.testng.Assert;
@@ -10,11 +11,27 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 
-import static com.codeborne.selenide.Selenide.Wait;
-import static com.codeborne.selenide.Selenide.executeJavaScript;
+import static com.codeborne.selenide.Selectors.byXpath;
+import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class CommonMethods {
+
+    @Step("{url} Open page with close popup")
+    public static void openPage(String url) {
+        System.out.println(url);
+        open(url);
+        closeCookiesFooterMessage();
+    }
+
+    public static void closeCookiesFooterMessage() {
+        try {
+            $(byXpath("//div[@class='block-cookies__close']")).click();
+        } catch (UIAssertionError e) {
+            System.out.println("Cookies block doesn't appear");
+        }
+    }
 
 
     public static String getCurrentShopFromJSVarInHTML() {
