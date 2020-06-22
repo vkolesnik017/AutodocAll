@@ -87,4 +87,19 @@ public class Tyres_page {
   SelenideElement diameterRelinkBlock() { return $x("//div[@class='tit' and contains (text(),'Zoll')]/.."); }
 
   ElementsCollection linksInDiameterblock() { return $$x("//div[@class='tit' and contains (text(),'Zoll')]/..//li"); }
+
+  SelenideElement dimensionRelinkBlock() { return $x("//div[@class='tit' and contains (text(),'Reifengrößen')]/.."); }
+
+  ElementsCollection linksInDimensionRelinkBlock() { return $$x("//div[@class='tit' and contains (text(),'Reifengrößen')]/..//li"); }
+
+  SelenideElement brandTopBlock() { return $(".unsere"); }
+
+  SelenideElement brandTopBlockTitle() { return $(".unsere .tit"); }
+
+  SelenideElement secondButtonInTopBrandSlider() { return $x("//a[@class='bx-pager-link'][@data-slide-index='1']"); }
+
+  ElementsCollection brandsInSlider() { return $$x("//div[@class='bx-wrapper']//img"); }
+
+
+
 }
