@@ -542,4 +542,29 @@ public class TyresListing_page_Logic extends TyresListing_page {
         seasonValueInSelector().shouldHave(text(expectedValue));
         return this;
     }
+
+    @Step("Check brand listing transition with number of products. TyresListing_page")
+    public TyresListing_page_Logic checkBrandListingTransitionWithNumberOfProducts(String brandName, int numberOfProducts) {
+        new Listing_page_Logic().checkProductAttributeOnListingWithProductsNumber(brandName, titleOfAllProducts(), numberOfProducts);
+        brandNameInSelector().shouldHave(text(brandName));
+        return this;
+    }
+
+    @Step("Check width value in selector. TyresListing_page")
+    public TyresListing_page_Logic checkWidthValueInSelector(String expectedValue) {
+        widthValueInSelector().shouldHave(exactText(expectedValue));
+        return this;
+    }
+
+    @Step("Check height value in selector. TyresListing_page")
+    public TyresListing_page_Logic checkHeightValueInSelector(String expectedValue) {
+        heightValueInSelector().shouldHave(exactText(expectedValue));
+        return this;
+    }
+
+    @Step("Check diameter value in selector. TyresListing_page")
+    public TyresListing_page_Logic checkDiameterValueInSelector(String expectedValue) {
+        diameterValueInSelector().shouldHave(exactText(expectedValue));
+        return this;
+    }
 }

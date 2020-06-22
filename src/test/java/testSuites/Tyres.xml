@@ -65,12 +65,14 @@
             <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_1273_TestTyresSizeSelectorPresence"/>
             <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_1275_TestTyresTopBlockPresence"/>
             <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_1324_GoToProductPageFromTyresTopBlock"/>
+            <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_1330_TestPopularBrandsBlockAndElementsPresence"/>
             <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_1336_GoToAllBrandsPageFromTyresMainPage"/>
             <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_1338_GoToTyresBrandListingFromTopBrandBlock"/>
             <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_1339_TestSeasonBlockPresence"/>
             <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_1341_GoToTyresSeasonListingFromSeasonBlock"/>
             <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_1342_TestPopularDiametersRelinkBlockPresence"/>
             <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_1343_GoToDiameterListingFromPopularDiametersRelinkBlock"/>
+            <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_1344_TestPopularDimensionsRelinkBlockPresence"/>
             <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_1345_GoToDimensionListingFromPopularSizesRelinkBlock"/>
             <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_1346_GoToAllSizesPageFromTyresMainPage"/>
         </classes>
@@ -128,6 +130,7 @@
             <class name="ATD.Tyres.QC_1367_TyresProductPage.QC_1361_TestReifenlabelBlockPresenceOnTyresProductPage"/>
             <class name="ATD.Tyres.QC_1367_TyresProductPage.QC_1362_AddTyresToBasketFromProductPage"/>
             <class name="ATD.Tyres.QC_1367_TyresProductPage.QC_1369_TestTyresSizeSelectorPresenceOnProductPage"/>
+            <class name="ATD.Tyres.QC_1367_TyresProductPage.QC_1370_TestTransitionToListingFromTyresProductPageBySizeSelector"/>
             <class name="ATD.Tyres.QC_1367_TyresProductPage.QC_1371_TestPhotoBlockPresenceOnTyresProductPage"/>
             <class name="ATD.Tyres.QC_1367_TyresProductPage.QC_1372_TestProductTitlePresenceOnTyresProductPage"/>
             <class name="ATD.Tyres.QC_1367_TyresProductPage.QC_1373_TestCharacteristicsBlockOnTyresProductPage"/>
