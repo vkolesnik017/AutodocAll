@@ -39,4 +39,8 @@ public class Moto_Category_maker_page {
     SelenideElement linkMoreOfModelBlock() {return $x("//div[@class='moto-cars-models']//div[@class='m_text show']");}
 
     SelenideElement linkLessOfModelBlock() {return $x("//div[@class='moto-cars-models']//div[@class='m_text hide']");}
+
+    SelenideElement headlineOfBrandsBlock() {return $x("//h3[@class='title_list no_border_top pad_size']");}
+
+    ElementsCollection brandsLinks() {return $$x("//div[@class='kategorie_top_brands']/ul/li").filter(visible);}
 }

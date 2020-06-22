@@ -43,7 +43,7 @@ public class QC_80_ApplicabilityProductToTruck {
 
     @DataProvider(name = "routesCategoriesMaker", parallel = true)
     Object[] dataProviderCategoriesMaker() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_categories_maker");
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_categories_maker3");
     }
 
     @Test(dataProvider = "routesCategoriesMaker")

@@ -146,4 +146,19 @@ public class Moto_Catalog_model_page_Logic extends Moto_Catalog_model_page {
         return this;
     }
 
+    @Step("click on child category with out all values in selector .Moto_Catalog_model_page")
+    public Moto_Catalog_model_page_Logic clickOnChildCategoryWithOutAllValuesInSelector() {
+        parentsCategoriesOfTecDocCatalog().get(0).click();
+        childCategoriesFirstLevelBlock().get(0).shouldBe(visible);
+        childCategoriesFirstLevel(1).get(0).shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("appear of selector with tooltip .Moto_Catalog_model_page")
+    public Moto_Catalog_model_page_Logic openingOfSelectorWithTooltip() {
+        mainFormOfSelector().shouldBe(visible);
+        toolTipForMotorFieldInSelector().shouldBe(visible);
+        return this;
+    }
+
 }

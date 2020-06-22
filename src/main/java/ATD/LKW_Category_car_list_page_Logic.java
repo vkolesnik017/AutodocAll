@@ -500,14 +500,13 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
 
     @Step("select brand in sidebar  .LKW_Category_car_list_page")
     public LKW_Category_car_list_page_Logic selectBrandFromFilterOfBrands(String subRoute, String idOfBrand) throws SQLException {
-        DataBase db = new DataBase();
         brandsFilterBlock().shouldBe(visible);
         while (!brandsLinkInSideBar(idOfBrand).isDisplayed()) {
             forwardLinkAtBrandsFilter().click();
         }
-        brandsLinkInSideBar(idOfBrand).click();
+        brandsLinkInSideBar(idOfBrand).shouldBe(visible).click();
         appearsOfLoader();
-        Assert.assertEquals(url(), db.getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", subRoute));
+        Assert.assertEquals(url(), new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", subRoute));
         return this;
     }
 
