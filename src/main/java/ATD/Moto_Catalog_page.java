@@ -124,4 +124,9 @@ public class Moto_Catalog_page {
         return $$x("//div[@class='car-parts-categories__item']");
     }
 
+    ElementsCollection  childCategoriesFirstLevelBlock() {return $$x("//div[@class='car-parts-categories-modal__level1 js-height-compare']");}
+
+    ElementsCollection childCategoriesFirstLevel(int position) {return $$x("(//div[contains(@class,'car-parts-categories-modal__level1')])["+position+"]/ul[@class='car-parts-categories-modal__link-list']//a");}
+
+
 }

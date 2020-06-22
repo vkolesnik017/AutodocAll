@@ -1,8 +1,13 @@
 package ATD;
 
+import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.Step;
+import org.testng.Assert;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
@@ -116,7 +121,8 @@ public class Moto_Categories_page_Logic extends Moto_Categories_page {
     public Moto_Categories_page_Logic checkIntermediateChildCategoryFirstLevel(int position) {
         for (int j = 0; j < intermediateChildCategoriesFirstLevel(position + 1).size(); j++) {
             intermediateChildCategoriesFirstLevel(position + 1).get(j).click();
-            childCategoriesSecondLevelBlock().should(appear);
+            //  childCategoriesSecondLevelBlock().should(appear);
+            childCategoriesSecondLevelBlockCheck(position + 1).get(j).shouldBe(visible);
             checkSecondLevelOfParentCategories(position);
         }
         return this;
@@ -127,4 +133,126 @@ public class Moto_Categories_page_Logic extends Moto_Categories_page {
         childCategoriesSecondLevel(position + 1).shouldHave(sizeGreaterThan(0));
         return this;
     }
+
+    @Step("check images of parents and child categories .Moto_Categories_page")
+    public Moto_Categories_page_Logic checkImagesOfParentAndChildCategories() {
+        for (int i = 0; i < parentsCategoriesOfTecDocCatalog().size(); i++) {
+            imageOfParentCategories().get(i).shouldBe(visible);
+            parentsCategoriesOfTecDocCatalog().get(i).click();
+            checkImagesOfChildCategoriesFirstLevel(i);
+        }
+        return this;
+    }
+
+
+    @Step("check images of child categories first level .Moto_Categories_page")
+    public Moto_Categories_page_Logic checkImagesOfChildCategoriesFirstLevel(int position) {
+        childCategoriesFirstLevelBlock().get(position).shouldBe(visible);
+        if (childCategoriesFirstLevel(position + 1).get(0).isDisplayed() && intermediateChildCategoriesFirstLevel(position + 1).get(0).isDisplayed()) {
+            visibilityOfChildCategoriesImages(position);
+            checkIntermediateChildCategoriesImagesFirstLevel(position);
+        } else if (childCategoriesFirstLevel(position + 1).get(0).isDisplayed()) {
+            visibilityOfChildCategoriesImages(position);
+        } else if (intermediateChildCategoriesFirstLevel(position + 1).get(0).isDisplayed()) {
+            checkIntermediateChildCategoriesImagesFirstLevel(position);
+        }
+        return this;
+    }
+
+    @Step("visibility of child categories images .Moto_Categories_page")
+    public Moto_Categories_page_Logic visibilityOfChildCategoriesImages(int position) {
+        for (int j = 0; j < childCategoriesFirstLevel(position + 1).size(); j++) {
+            imageOfChildCategoriesFirstLevel(position + 1).get(j).shouldBe(visible);
+        }
+        return this;
+    }
+
+    @Step("check intermediate child categories images first level .Moto_Categories_page")
+    public Moto_Categories_page_Logic checkIntermediateChildCategoriesImagesFirstLevel(int position) {
+        for (int j = 0; j < intermediateChildCategoriesFirstLevel(position + 1).size(); j++) {
+            intermediateChildCategoriesFirstLevel(position + 1).get(j).click();
+            childCategoriesSecondLevelBlock().should(appear);
+            checkImagesOfChildCategoriesSecondLevel(position);
+        }
+        return this;
+    }
+
+    @Step("check images of child categories second level .Moto_Categories_page")
+    public Moto_Categories_page_Logic checkImagesOfChildCategoriesSecondLevel(int position) {
+        for (int i = 0; i < childCategoriesSecondLevel(position).size(); i++) {
+            imageOfChildCategoriesSecondLevel(position).get(i).shouldBe(visible);
+        }
+        return this;
+    }
+
+    @Step("check sorting of child categories .Moto_Categories_page")
+    public Moto_Categories_page_Logic checkSortingOfChildCategories() {
+        for (int i = 0; i < parentsCategoriesOfTecDocCatalog().size(); i++) {
+            parentsCategoriesOfTecDocCatalog().get(i).click();
+            childCategoriesFirstLevelBlock().get(i).shouldBe(visible);
+            checkSortingOfChildCategoriesFirstLevel(i);
+        }
+        return this;
+    }
+
+    @Step("check sorting of child categories first level .Moto_Categories_page")
+    public Moto_Categories_page_Logic checkSortingOfChildCategoriesFirstLevel(int position) {
+        childCategoriesFirstLevelBlock().get(position).shouldBe(visible);
+        if (childCategoriesFirstLevel(position + 1).get(0).isDisplayed() && intermediateChildCategoriesFirstLevel(position + 1).get(0).isDisplayed()) {
+            sortingOfChildCategories(childCategoriesFirstLevel(position + 1));
+            checkSortingIntermediateChildCategoriesFirstLevel(position);
+        } else if (childCategoriesFirstLevel(position + 1).get(0).isDisplayed()) {
+            sortingOfChildCategories(childCategoriesFirstLevel(position + 1));
+        } else if (intermediateChildCategoriesFirstLevel(position + 1).get(0).isDisplayed()) {
+            checkSortingIntermediateChildCategoriesFirstLevel(position);
+        }
+        return this;
+    }
+
+    @Step("sorting of child categories first level .Moto_Categories_page")
+    public Moto_Categories_page_Logic sortingOfChildCategories(ElementsCollection list) {
+        List<String> titleOfChildCategories = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+            titleOfChildCategories.add(list.get(i).shouldBe(visible).getText());
+        }
+        List<String> checkingList = new ArrayList<>(titleOfChildCategories);
+        Collections.sort(checkingList);
+        Assert.assertEquals(checkingList, titleOfChildCategories);
+        titleOfChildCategories.clear();
+        checkingList.clear();
+        return this;
+    }
+
+    @Step("check sorting intermediate child categories first level .Moto_Categories_page")
+    public Moto_Categories_page_Logic checkSortingIntermediateChildCategoriesFirstLevel(int position) {
+        for (int j = 0; j < intermediateChildCategoriesFirstLevel(position + 1).size(); j++) {
+            intermediateChildCategoriesFirstLevel(position + 1).get(j).click();
+            childCategoriesSecondLevelBlock().should(appear);
+            sortingOfChildCategories(childCategoriesSecondLevel(position + 1));
+        }
+        return this;
+    }
+
+
+    @Step("click on child category .Moto_Categories_page")
+    public Moto_Category_page_Logic clickOnChildCategory() {
+        parentsCategoriesOfTecDocCatalog().get(0).shouldBe(visible).click();
+        childCategoriesFirstLevelBlock().get(0).shouldBe(visible);
+        childCategoriesFirstLevel(1).get(0).shouldBe(visible).click();
+        return page(Moto_Category_page_Logic.class);
+    }
+
+    @Step("select motorcycle in vertical selector .Moto_Categories_page")
+    public Moto_Categories_page_Logic selectMotoWithOutTransition(String brand, String model, String motor) {
+        closedSelector().shouldBe(visible).click();
+        mainFormOfSelector().shouldBe(visible);
+        brandOfMotoField().selectOptionByValue(brand);
+        modelFiledInSelector().selectOptionByValue(model);
+        motorFiledInSelector().selectOptionByValue(motor);
+        searchButton().click();
+        return this;
+    }
+
+
+
 }

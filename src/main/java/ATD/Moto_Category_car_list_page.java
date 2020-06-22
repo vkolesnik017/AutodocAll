@@ -3,6 +3,7 @@ package ATD;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -143,4 +144,6 @@ public class Moto_Category_car_list_page {
     SelenideElement productWithArtNumber(String artNum) {
         return $x("//span[contains(text(),'" + artNum + "')]/ancestor::div[@class='name']/a");
     }
+
+    ElementsCollection analogProducts() {return $$x("//div[@class='top-small-products-items__item']").filter(visible);}
 }

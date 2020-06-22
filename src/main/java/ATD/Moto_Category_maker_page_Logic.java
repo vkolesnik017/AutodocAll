@@ -125,4 +125,18 @@ public class Moto_Category_maker_page_Logic extends Moto_Category_maker_page {
         return this;
     }
 
+    @Step("presence of Headline at brands block .Moto_Category_maker_page")
+    public Moto_Category_maker_page_Logic presenceOfHeadlineAtBrandsBlock() {
+        headlineOfBrandsBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("check brands links in close condition of brands block .Moto_Category_maker_page")
+    public Moto_Category_maker_page_Logic checkBrandsLinksInCloseCondition() {
+        brandsLinks().shouldHaveSize(6);
+        for (int i = 0; i < brandsLinks().size(); i++) {
+            brandsLinks().get(i).shouldNotHave(attribute("href"));
+        }
+        return this;
+    }
 }
