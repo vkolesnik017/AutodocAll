@@ -270,4 +270,11 @@ public class Tyres_page_Logic extends Tyres_page {
             linksInDiameterblock().shouldHave(sizeGreaterThan(5));
             return this;
     }
+
+    @Step("Check tyres dimension relink block presence. Tyres_page")
+    public Tyres_page_Logic checkTyresDimensionRelinkBlockPresence() {
+            dimensionRelinkBlock().shouldBe(visible);
+            linksInDimensionRelinkBlock().shouldHave(sizeGreaterThan(5));
+            return this;
+    }
 }

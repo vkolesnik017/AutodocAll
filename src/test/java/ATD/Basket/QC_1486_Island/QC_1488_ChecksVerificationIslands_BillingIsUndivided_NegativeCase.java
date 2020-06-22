@@ -74,7 +74,7 @@ public class QC_1488_ChecksVerificationIslands_BillingIsUndivided_NegativeCase {
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
         totalPriceInEmail = new Mailinator().openEmail("qc_1488_autotestDE@mailinator.com")
                 .openLetter(1)
-                .checkTextContainingVatPercentageInEmail("Inkl. 20% MwSt.")
+                .checkTextContainingVatPercentageInEmail("Inkl. 20% MwSt")
                 .checkRegularDeliveryPriceInEmail("9,95")
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPrice, totalPriceInEmail);
