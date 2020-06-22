@@ -52,4 +52,12 @@ public class Moto_Categories_page {
     SelenideElement childCategoriesSecondLevelBlock() {return $x("//div[@class='car-parts-categories-modal__level2 js-height-compare js-init-height']");}
 
     ElementsCollection childCategoriesSecondLevel(int position) {return $$x("(//div[contains(@class,'car-parts-categories-modal__level1')])["+position+"]//div[contains(@class,'car-parts-categories-modal__level2')]//li").filter(visible);}
+
+    ElementsCollection imageOfParentCategories() {return $$x("//div[@class='car-parts-categories__item-link']//img");}
+
+    ElementsCollection imageOfChildCategoriesFirstLevel(int position) {return $$x("(//div[contains(@class,'car-parts-categories-modal__level1')])["+position+"]/ul[@class='car-parts-categories-modal__link-list']//img");}
+
+    ElementsCollection imageOfChildCategoriesSecondLevel(int position) {return $$x("(//div[contains(@class,'car-parts-categories-modal__level1')])[\"+position+\"]//div[contains(@class,'car-parts-categories-modal__level2')]//li//img").filter(visible);}
+
+    ElementsCollection titleOfChildCategoriesFirstLevel(int position) {return $$x("(//div[contains(@class,'car-parts-categories-modal__level1')])["+position+"]/ul[@class='car-parts-categories-modal__link-list']//a/span");}
 }

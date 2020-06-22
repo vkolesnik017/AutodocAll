@@ -163,6 +163,8 @@
         <classes>
             <class name="MOTO.QC_625_AllParentsAndChildsCategoriesBlocks.QC_626_PresenceOfTecDocCatalog"/>
             <class name="MOTO.QC_625_AllParentsAndChildsCategoriesBlocks.QC_627_NestingLevelsOfTecDocCatalog"/>
+            <class name="MOTO.QC_625_AllParentsAndChildsCategoriesBlocks.QC_628_ElementsOfParentAndChildCategories"/>
+            <class name="MOTO.QC_625_AllParentsAndChildsCategoriesBlocks.QC_630_SortingOfChildCategories"/>
         </classes>
     </test>
 </suite>
