@@ -25,7 +25,7 @@ public class Moto_Category_car_list_model_page {
     SelenideElement iconOfCatalogBrandInBreadCrumbs() {return $x("//li[@class='step_1 active parts_step_1']//img");}
 
     ElementsCollection btnAddToBasketAtAnAnalogProduct() {
-        return $$x("//a[@class='ga-click button ga-click still_add_to_basket']");
+        return $$x("//div[@class='top-small-products-items__item']/div[6]//a");
     }
 
     SelenideElement btnShowReplacement(String artOfProduct) {
