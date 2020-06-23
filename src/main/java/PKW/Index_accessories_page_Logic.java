@@ -6,6 +6,7 @@ import org.testng.Assert;
 import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.sleep;
 
 
 public class Index_accessories_page_Logic extends Index_accessories_page {
@@ -61,6 +62,39 @@ public class Index_accessories_page_Logic extends Index_accessories_page {
         firstBreadCrumb().click();
         return page(Parts_page_Logic.class);
     }
+
+    @Step("Checking presence block Top Products than work btn Previous and Next. Index_accessories_page")
+    public Index_accessories_page_Logic checkingPresenceBlockTopProductsThanWorkBtnPrevAndNext() {
+        blockTopProducts().scrollTo().shouldBe(visible);
+        firstProductInBlockTopProducts().shouldBe(visible);
+        btnNextInBlockTopProducts().click();
+        sleep(2000);
+        firstProductInBlockTopProducts().shouldNotBe(visible);
+        btnPreviousInBlockTopProducts().click();
+        firstProductInBlockTopProducts().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checking quantity blocks with categories in main catalog . Index_accessories_page")
+    public Index_accessories_page_Logic checkingQuantityBlocksWithCategoriesInMainCatalog() {
+        blocksCategoriesInMainCatalog().shouldHaveSize(16);
+        return this;
+    }
+
+    @Step("Get name first category from first block categories in main catalog.Index_accessories_page")
+    public String getNameFirstCategoryFromFirstBlockInMainCatalog() {
+        return firstCategoryInBlockCategoriesMainCatalog().getText();
+    }
+
+    @Step("Click on first category from first block categories in main catalog.Index_accessories_page")
+    public Listing_accessories_page_Logic clickOnFirstCategoryInBlockCategoriesMainCatalog() {
+        firstCategoryInBlockCategoriesMainCatalog().click();
+        return page(Listing_accessories_page_Logic.class);
+    }
+
+
+
+
 
 
 
