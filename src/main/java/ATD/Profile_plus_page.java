@@ -23,4 +23,8 @@ public class Profile_plus_page {
     SelenideElement profileBonusSystemBtn() {
         return $x("//li[@class='bonus_system_link ']/a");
     }
+
+    SelenideElement profileDepositBtn() {
+        return $x("//a[@data-ga-action='Sidebar_MyDepositAccount']");
+    }
 }
