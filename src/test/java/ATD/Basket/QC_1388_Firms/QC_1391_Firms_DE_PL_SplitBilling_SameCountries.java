@@ -129,7 +129,7 @@ public class QC_1391_Firms_DE_PL_SplitBilling_SameCountries {
         switchTo().window(1);
         totalPriceInEmailDE = new Mailinator().openEmail("qc_1391_autotestDE@mailinator.com")
                 .openLetter(1)
-                .checkTextContainingVatPercentageInEmail("inkl. 19% MwSt.")
+                .checkTextContainingVatPercentageInEmail("inkl. 19% MwSt")
                 .checkFirstFirmNameInEmail("Autodoc GmbH")
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPriceDE, totalPriceInEmailDE);

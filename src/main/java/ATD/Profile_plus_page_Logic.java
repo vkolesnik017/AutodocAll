@@ -43,4 +43,10 @@ public class Profile_plus_page_Logic extends Profile_plus_page {
         profileBonusSystemBtn().shouldNotBe(visible);
         return this;
     }
+
+    @Step("Transition to deposit page. Profile_plus_page")
+    public Profile_deposit_page_Logic goToDepositPage() {
+        profileDepositBtn().click();
+        return page(Profile_deposit_page_Logic.class);
+    }
 }

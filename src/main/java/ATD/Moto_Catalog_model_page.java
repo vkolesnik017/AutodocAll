@@ -65,11 +65,18 @@ public class Moto_Catalog_model_page {
 
     ElementsCollection intermediateChildCategoriesFirstLevel(int position) {return $$x("(//div[contains(@class,'car-parts-categories-modal__level1')])["+position+"]/ul[@class='car-parts-categories-modal__cat-list']/li");}
 
-
     SelenideElement childCategoriesSecondLevelBlock() {return $x("//div[@class='car-parts-categories-modal__level2 js-height-compare js-init-height']");}
+
+    ElementsCollection  childCategoriesSecondLevelBlockk() {return $$x("//div[contains(@class,'car-parts-categories-modal__level2')]").filter(visible);}
 
     ElementsCollection childCategoriesSecondLevelBlockCheck(int position) {return $$x("(//div[contains(@class,'car-parts-categories-modal__level1')])["+position+"]//div[@class='car-parts-categories-modal__cat-name']/following-sibling::div[contains(@class,'car-parts-categories-modal__level2')]");}
 
     ElementsCollection childCategoriesSecondLevel(int position) {return $$x("(//div[contains(@class,'car-parts-categories-modal__level1')])["+position+"]//div[contains(@class,'car-parts-categories-modal__level2')]//li").filter(visible);}
+
+    ElementsCollection imedCategory() {return $$x("//ul[@class='car-parts-categories-modal__cat-list']/li").filter(visible);}
+
+    ElementsCollection chCategory() {return $$x("//ul[@class='car-parts-categories-modal__link-list']/li").filter(visible);}
+
+    SelenideElement secondLevelBlock() {return $x("//li[@class='active']/div[2]");}
 
 }

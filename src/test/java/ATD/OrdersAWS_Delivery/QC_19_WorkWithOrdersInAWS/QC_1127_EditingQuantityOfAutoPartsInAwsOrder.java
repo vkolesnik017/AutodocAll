@@ -15,7 +15,6 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.cutPriceToFirstDecimalPlace;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
@@ -24,8 +23,8 @@ public class QC_1127_EditingQuantityOfAutoPartsInAwsOrder {
 
     private String userID = "15371693", articleNum, productArticleID;
     private Float totalCostInOrder, sumProductColumn, productQuantity, amountOfGoods, sellingCostInOrder,
-            totalSumIncomeWithoutVat, costFromColumnIncomeWithoutVat, prunedTotalSumIncomeWithoutVat,
-            prunedCostFromColumnIncomeWithoutVat, deliveryCost, totalSumIncludingDelivery;
+            totalSumIncomeWithoutVat, totalSumIncomeWithoutVatForTwoProduct,
+            deliveryCost, totalSumIncludingDelivery;
 
     private Product_page_Logic product_page_logic = new Product_page_Logic();
     private Order_aws order_aws = new Order_aws();
@@ -48,7 +47,7 @@ public class QC_1127_EditingQuantityOfAutoPartsInAwsOrder {
         openPage(route);
         articleNum = product_page_logic.getArticleNumber();
         productArticleID = product_page_logic.getProductId();
-        deliveryCost = new SearchOrders_page_aws().openSearchOrderPageWithLogin()
+        totalSumIncomeWithoutVat = new SearchOrders_page_aws().openSearchOrderPageWithLogin()
                 .clickAddOrderBtn()
                 .fillsInFieldCustomerID(userID)
                 .chooseSkinInSelector("autodoc.de (DE)")
@@ -59,7 +58,8 @@ public class QC_1127_EditingQuantityOfAutoPartsInAwsOrder {
                 .checkArticleOfAddedProduct(articleNum)
                 .clickSaveOrderBtn()
                 .checkOrderHasTestStatus()
-                .clickEditItemBtn(productArticleID)
+                .getTotalSumIncomeWithoutVAT();
+        deliveryCost = order_aws.clickEditItemBtn(productArticleID)
                 .editQuantityOfItemInPopUpEditItem("2")
                 .checkQuantityOfGoodsInColumnQuantity("2")
                 .checkQuantityOfGoodsInColumnExpectedQuantity("2")
@@ -69,11 +69,8 @@ public class QC_1127_EditingQuantityOfAutoPartsInAwsOrder {
         amountOfGoods = order_aws.dividingPriceByQuantity(sumProductColumn, productQuantity);
         sellingCostInOrder = order_aws.getSellingPriceOfCertainProduct(productArticleID);
         Assert.assertEquals(amountOfGoods, sellingCostInOrder);
-        totalSumIncomeWithoutVat = order_aws.getTotalSumIncomeWithoutVAT();
-        prunedTotalSumIncomeWithoutVat = cutPriceToFirstDecimalPlace(totalSumIncomeWithoutVat);
-        costFromColumnIncomeWithoutVat = order_aws.getCostFromColumnIncomeWithoutVat();
-        prunedCostFromColumnIncomeWithoutVat = cutPriceToFirstDecimalPlace(costFromColumnIncomeWithoutVat);
-        Assert.assertEquals(prunedTotalSumIncomeWithoutVat, prunedCostFromColumnIncomeWithoutVat);
+        totalSumIncomeWithoutVatForTwoProduct = order_aws.getTotalSumIncomeWithoutVAT();
+        Assert.assertNotEquals(totalSumIncomeWithoutVat, totalSumIncomeWithoutVatForTwoProduct);
         totalCostInOrder = order_aws.checkQuantityOfGoodsInColumnCountProduct("1")
                 .reSaveOrder()
                 .getTotalPriceOrderAWS();

@@ -70,4 +70,11 @@ public class Moto_Categories_page {
     SelenideElement closedSelector() {return $x("//div[contains(@class,'catalog-title__change-car')]");}
 
 
+    ElementsCollection imedCategory() {return $$x("//ul[@class='car-parts-categories-modal__cat-list']/li").filter(visible);}
+
+    ElementsCollection chCategory() {return $$x("//ul[@class='car-parts-categories-modal__link-list']/li").filter(visible);}
+
+    SelenideElement secondLevelBlock() {return $x("//li[@class='active']/div[2]");}
+
+
 }

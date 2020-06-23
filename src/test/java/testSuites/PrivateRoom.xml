@@ -43,8 +43,8 @@
             <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_659_EnterPassLessThenFourCharacters"/>
             <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_660_ChangePassword_NewPassNotEqualConfirmPass"/>
             <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_661_SuccessfulChangeOfEmailInPR"/>
-            <!--<class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_665_LoginWithNewEmail"/>-->
-            <!--<class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_667_LoginUnderTheOldEmailAfterChangingIt"/>-->
+            <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_665_LoginWithNewEmail"/>
+            <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_667_LoginUnderTheOldEmailAfterChangingIt"/>
             <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_668_ChangeEmail_AllFieldsAreEmpty"/>
             <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_671_ChangeEmail_ConfirmEmailFieldIsEmpty"/>
             <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_676_ChangeEmail_IntroductionOfInvalidEmail"/>
@@ -61,6 +61,14 @@
             <class name="ATD.PrivateRoom.QC_914_BonusTabFunctionalityInPR.QC_916_BonusTabDisplay_CurrencyIsNotEqualToShop"/>
             <class name="ATD.PrivateRoom.QC_914_BonusTabFunctionalityInPR.QC_917_CheckPaginationBlockBonusesTabPR"/>
             <class name="ATD.PrivateRoom.QC_914_BonusTabFunctionalityInPR.QC_919_BonusTabElementPR"/>
+        </classes>
+    </test>
+
+    <test name="QC_868_DepositTabFunctionalInPR">
+        <classes>
+            <class name="ATD.PrivateRoom.QC_868_DepositTabFunctionalInPR.QC_869_DepositAccrual"/>
+            <class name="ATD.PrivateRoom.QC_868_DepositTabFunctionalInPR.QC_871_PdfDepositTransactionDocument"/>
+            <class name="ATD.PrivateRoom.QC_868_DepositTabFunctionalInPR.QC_883_CheckPaginationBlockDepositTapPR"/>
         </classes>
     </test>
 
