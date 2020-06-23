@@ -40,7 +40,7 @@ public class QC_629_TransitionByClickOnChildCategories {
         checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_category5"));
     }
 
-    @DataProvider(name = "routesCatalog", parallel = true)
+   @DataProvider(name = "routesCatalog", parallel = true)
     Object[] dataProviderCatalog() throws SQLException {
         return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog2");
     }
@@ -59,7 +59,7 @@ public class QC_629_TransitionByClickOnChildCategories {
 
     @DataProvider(name = "routesSelectMoto", parallel = true)
     Object[] dataProviderSelectMoto() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_categories,moto_catalog_model2");
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_categories"); // ,moto_catalog_model2
     }
 
     @Test(dataProvider = "routesSelectMoto")
@@ -74,6 +74,7 @@ public class QC_629_TransitionByClickOnChildCategories {
                 .clickOnChildCategory();
         checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_category_car_list10"));
     }
+
     @DataProvider(name = "routesWithNotAllValuesOfMoto", parallel = true)
     Object[] dataProviderWithNotAllValuesOfMoto() throws SQLException {
         return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog_model2");
