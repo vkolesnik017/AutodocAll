@@ -151,7 +151,8 @@ public class Moto_Catalog_model_page_Logic extends Moto_Catalog_model_page {
     public Moto_Catalog_model_page_Logic clickOnChildCategoryWithOutAllValuesInSelector() {
         parentsCategoriesOfTecDocCatalog().get(0).click();
         childCategoriesFirstLevelBlock().get(0).shouldBe(visible);
-        childCategoriesFirstLevel(1).get(0).shouldBe(visible).click();
+       // childCategoriesFirstLevel(1).get(0).shouldBe(visible).click();
+        chCategory().get(0).shouldBe(visible).click();
         return this;
     }
 
