@@ -987,4 +987,12 @@ public class Main_page_Logic extends Main_page {
         closePopUPInvalidEmailForLogin().click();
         return this;
     }
+
+    @Step("Confirms the rules of privacy policy in the popup that appears. Main_page")
+    public Main_page_Logic confirmPrivacyPolicyInPopUp() {
+        popUpPrivacyPolicy().shouldBe(visible);
+        executeJavaScript("arguments[0].click();", checkBoxPopUpPrivacyPolicy());
+        successBtnInPopUpPrivacyPolicy().click();
+        return this;
+    }
 }

@@ -1,6 +1,7 @@
 package ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR;
 
 import ATD.Main_page_Logic;
+import ATD.Profile_plus_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -17,6 +18,7 @@ import static com.codeborne.selenide.Selenide.close;
 public class QC_667_LoginUnderTheOldEmailAfterChangingIt {
 
     private String mail = "QC_667_autotest@mailinator.com";
+    private Main_page_Logic main_page_logic = new Main_page_Logic();
 
     @BeforeClass
     void setUp() {
@@ -35,7 +37,7 @@ public class QC_667_LoginUnderTheOldEmailAfterChangingIt {
     public void testLoginWithNewEmail(String route) {
         String newEmail = mailRandomMailinator();
         openPage(route);
-        new Main_page_Logic().loginAndTransitionToProfilePlusPage(mail)
+        main_page_logic.loginAndTransitionToProfilePlusPage(mail)
                 .goToSettingPage()
                 .checkPresenceChangePassBlock()
                 .checkPresenceChangeEmailBlock()
@@ -45,9 +47,10 @@ public class QC_667_LoginUnderTheOldEmailAfterChangingIt {
                 .closePopUp()
                 .logOutClick()
                 .loginFromHeader(mail, password);
-        new Main_page_Logic().closeInvalidEmailPopUPForLogin()
-                .loginWithNewEmail(newEmail)
-                .goToSettingPage()
+        main_page_logic.closeInvalidEmailPopUPForLogin()
+                .loginWithNewEmail(newEmail);
+        main_page_logic.confirmPrivacyPolicyInPopUp();
+        new Profile_plus_page_Logic().goToSettingPage()
                 .fillFieldNewEmail(mail)
                 .fillFieldConfirmEmail(mail)
                 .clickSaveEmailBtn()
