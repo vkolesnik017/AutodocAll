@@ -326,7 +326,7 @@ public class Tyres_page_Logic extends Tyres_page {
         return this;
     }
 
-    @Step("Click second page in brand slider")
+    @Step("Click second page in brand slider. Tyres_page")
     public Tyres_page_Logic clickSecondPageInBrandSlider() {
             secondButtonInTopBrandSlider().click();
             return this;
