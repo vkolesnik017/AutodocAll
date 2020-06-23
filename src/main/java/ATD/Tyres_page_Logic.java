@@ -2,8 +2,13 @@ package ATD;
 
 
 import io.qameta.allure.Step;
+import org.testng.Assert;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
+import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.Wait;
@@ -268,6 +273,62 @@ public class Tyres_page_Logic extends Tyres_page {
     public Tyres_page_Logic checkTyresDiameterRelinkBlockPresence() {
             diameterRelinkBlock().shouldBe(visible);
             linksInDiameterblock().shouldHave(sizeGreaterThan(5));
+            return this;
+    }
+
+    @Step("Check tyres dimension relink block presence. Tyres_page")
+    public Tyres_page_Logic checkTyresDimensionRelinkBlockPresence() {
+            dimensionRelinkBlock().shouldBe(visible);
+            linksInDimensionRelinkBlock().shouldHave(sizeGreaterThan(5));
+            return this;
+    }
+
+    @Step("Check popular brands block visibility. Tyres_page")
+    public Tyres_page_Logic checkPopularBrandsBlockVisibility() {
+            brandTopBlock().shouldBe(visible);
+            brandTopBlockTitle().shouldHave(exactText("Hochwertige Reifenmarken zur Auswahl"));
+            return this;
+    }
+
+    @Step("Check popular brand block first position. Tyres_page")
+    public Tyres_page_Logic checkPopularBrandsSliderFirstPosition() {
+        brandsInSlider().shouldHaveSize(14);
+        List<String> brandsInFirstSliderPosition = new ArrayList<>();
+        List<String> brandsInSecondSliderPosition = new ArrayList<>();
+            for (int i = 0; i < brandsInSlider().size(); i++) {
+                if (i < 7) {
+                    brandsInSlider().get(i).shouldBe(visible);
+                    brandsInFirstSliderPosition.add(brandsInSlider().get(i).attr("alt"));
+                } else {
+                    brandsInSlider().get(i).shouldNotBe(visible);
+                    brandsInSecondSliderPosition.add(brandsInSlider().get(i).attr("alt"));
+                }
+            }
+        Assert.assertNotEquals(brandsInFirstSliderPosition, brandsInSecondSliderPosition);
+        return this;
+    }
+
+    @Step("Check popular brand block second position. Tyres_page")
+    public Tyres_page_Logic checkPopularBrandsSliderSecondPosition() {
+        brandsInSlider().shouldHaveSize(14);
+        List<String> brandsInFirstSliderPosition = new ArrayList<>();
+        List<String> brandsInSecondSliderPosition = new ArrayList<>();
+        for (int i = 0; i < brandsInSlider().size(); i++) {
+            if (i < 7) {
+                brandsInSlider().get(i).shouldNotBe(visible);
+                brandsInFirstSliderPosition.add(brandsInSlider().get(i).attr("alt"));
+            } else {
+                brandsInSlider().get(i).shouldBe(visible);
+                brandsInSecondSliderPosition.add(brandsInSlider().get(i).attr("alt"));
+            }
+        }
+        Assert.assertNotEquals(brandsInFirstSliderPosition, brandsInSecondSliderPosition);
+        return this;
+    }
+
+    @Step("Click second page in brand slider. Tyres_page")
+    public Tyres_page_Logic clickSecondPageInBrandSlider() {
+            secondButtonInTopBrandSlider().click();
             return this;
     }
 }

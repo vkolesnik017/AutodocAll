@@ -308,7 +308,7 @@ public class Listing_page {
     }
 
     public SelenideElement firstBrandNameInFilterLKWmodelRoute() {
-        return $x("//*[@class='branded-slider']/li[1]/label/img");
+        return $x("//*[@class='slick-track']/li[@class='slick-slide slick-current slick-active']//img");
     }
 
     public SelenideElement secondBrandNameInFilter() {
@@ -336,7 +336,7 @@ public class Listing_page {
     }
 
     public SelenideElement firstBrandInFilterButtonLKWmodelRoute() {
-        return $x("//*[@class='branded-slider']/li[1]/label");
+        return $x("//*[@class='slick-track']/li[@class='slick-slide slick-current slick-active']/label");
     }
 
     public SelenideElement secondBrandInFilterButton() {
