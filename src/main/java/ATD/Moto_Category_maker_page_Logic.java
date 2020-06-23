@@ -139,4 +139,21 @@ public class Moto_Category_maker_page_Logic extends Moto_Category_maker_page {
         }
         return this;
     }
+
+
+    @Step("opening brands block .Moto_Category_maker_page")
+    public Moto_Category_maker_page_Logic openBrandsBlock() {
+        brandsBlock().shouldBe(visible);
+          linkMoreOfBrandsBlock().click();
+          brandsLinks().shouldHaveSize(12);
+        return this;
+    }
+
+    @Step("minimized of brands block .Moto_Category_maker_page")
+    public Moto_Category_maker_page_Logic minimizedBrandsBlock() {
+        brandsBlock().shouldBe(visible);
+        linkMoreOfBrandsBlock().click();
+        brandsLinks().shouldHaveSize(6);
+        return this;
+    }
 }
