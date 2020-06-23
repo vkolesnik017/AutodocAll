@@ -1,7 +1,7 @@
-package ATD.ACC.QC_1042_MainCategoryCatalogOnMainChemie;
+package PKW.ACC.QC_1020_BlockTopProductsOnMainACC;
 
-import ATD.Index_chemicals_page_Logic;
-import ATD.SetUp;
+import PKW.Index_accessories_page_Logic;
+import PKW.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -10,13 +10,12 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import java.sql.SQLException;
-import static ATD.CommonMethods.openPage;
-import static ATD.SetUp.setUpBrowser;
+import static PKW.CommonMethods.openPage;
+import static PKW.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
 
-public class QC_1058_PresenceLogicalAssociations {
-
+public class QC_1024_HoverMiniCardTopProducts {
 
     @BeforeClass
     void setUp() {
@@ -24,18 +23,17 @@ public class QC_1058_PresenceLogicalAssociations {
     }
 
     @DataProvider(name = "route", parallel = true)
-    Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main","index_chemicals");
+    Object[] dataProviderProducts() throws SQLException {
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "index_accessories");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test checks for the presence of a logical union, when hover over categories, categories block should appear")
-    public void testCheckPresenceLogicalUnion(String route) {
+    @Description(value = "Test Checks open popup with details after hover on first product in block top products ")
+    public void testCheckingPopupWithDetailsInBlockTopProducts(String route) {
         openPage(route);
-        new Index_chemicals_page_Logic().checkLogicalUnion();
-
+        new Index_accessories_page_Logic().checkingPopupWithDetailsInBlockTopProducts();
     }
 
     @AfterMethod
