@@ -273,7 +273,8 @@ public class Moto_Catalog_page_Logic extends Moto_Catalog_page {
     public Moto_Category_car_list_page_Logic clickOnChildCategory() {
         parentsCategoriesOfTecDocCatalog().get(0).click();
         childCategoriesFirstLevelBlock().get(0).shouldBe(visible);
-        childCategoriesFirstLevel(1).get(0).shouldBe(visible).click();
+      //  childCategoriesFirstLevel(1).get(0).shouldBe(visible).click();
+        chCategory().get(0).shouldBe(visible).click();
         return page(Moto_Category_car_list_page_Logic.class);
     }
 
