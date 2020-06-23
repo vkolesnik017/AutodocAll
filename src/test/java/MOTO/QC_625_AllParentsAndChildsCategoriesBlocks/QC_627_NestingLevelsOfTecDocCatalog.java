@@ -20,11 +20,10 @@ import static com.codeborne.selenide.Selenide.close;
 
 public class QC_627_NestingLevelsOfTecDocCatalog {
 
-    @BeforeClass
+  @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
     }
-
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
         return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_categories");
