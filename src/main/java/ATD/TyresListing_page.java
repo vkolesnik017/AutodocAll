@@ -108,7 +108,7 @@ class TyresListing_page {
 
     SelenideElement sizesBlockOnCatalogTyresRoute() { return $(".table_sizes"); }
 
-    public SelenideElement dimensionLinkCatalogRoute() { return $x("//*[@class='table_sizes']//tr[2]//a"); }
+    public SelenideElement dimensionLinkCatalogRoute() { return $x("(//*[@class='table_sizes']//tr[2]/td[5]/a)[2]"); }
 
     SelenideElement diameterLinkCatalogRoute() { return $x("//*[@class='table_sizes']//th/a"); }
 
