@@ -173,4 +173,11 @@ public class Moto_Categories_maker_page_Logic extends Moto_Categories_maker_page
         headlineOfTopParentCategories().shouldBe(visible);
         return this;
     }
+
+
+    @Step("check count of TOP products .Moto_Categories_maker_page")
+    public Moto_Categories_maker_page_Logic checkCountOfTopProducts() {
+        topProducts().shouldHaveSize(10);
+        return this;
+    }
 }

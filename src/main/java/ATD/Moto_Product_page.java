@@ -95,4 +95,6 @@ public class Moto_Product_page {
 
     SelenideElement incompatibilityMotoMessage() {return $x("//div[@class='car-match-block car-match-block--moto car-match-block--false']/p");}
 
+    SelenideElement  breadCrumbsBlock() {return $x("//div[@class='steps breadcrumbs']");}
+
 }
