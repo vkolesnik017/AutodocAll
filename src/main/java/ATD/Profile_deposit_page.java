@@ -23,4 +23,56 @@ public class Profile_deposit_page {
     ElementsCollection listOfDepositInTable() {
         return $$x("//div[@class='table_over']//tbody//tr");
     }
+
+    SelenideElement titlePage() {
+        return $x("//div[@class='title']");
+    }
+
+    SelenideElement columnTypeOfTransaction() {
+        return $x("//table//tr/th[1]");
+    }
+
+    SelenideElement columnData() {
+        return $x("//table//tr/th[2]");
+    }
+
+    SelenideElement columnQuantity() {
+        return $x("//table//tr/th[3]");
+    }
+
+    SelenideElement columnBalance() {
+        return $x("//table//tr/th[4]");
+    }
+
+    SelenideElement columnSerialNum() {
+        return $x("//table//tr/th[5]");
+    }
+
+    SelenideElement columnPdf() {
+        return $x("//table//tr/th[6]");
+    }
+
+    SelenideElement typeOfTransactionInsideTable() {
+        return $x("//table//tr/td[1]");
+    }
+
+    SelenideElement dataInsideTable() {
+        return $x("//table//tr/td[2]");
+    }
+
+    SelenideElement quantityInsideTable() {
+        return $x("//table//tr/td[3]");
+    }
+
+    SelenideElement balanceInsideTable() {
+        return $x("//table//tr/td[4]");
+    }
+
+    SelenideElement serialNumInsideTable() {
+        return $x("//table//tr/td[5]");
+    }
+
+    SelenideElement pdfInsideTable() {
+        return $x("//table//tr/td[6]");
+    }
 }
