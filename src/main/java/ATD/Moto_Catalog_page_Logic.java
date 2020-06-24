@@ -273,7 +273,8 @@ public class Moto_Catalog_page_Logic extends Moto_Catalog_page {
     public Moto_Category_car_list_page_Logic clickOnChildCategory() {
         parentsCategoriesOfTecDocCatalog().get(0).click();
         childCategoriesFirstLevelBlock().get(0).shouldBe(visible);
-        childCategoriesFirstLevel(1).get(0).shouldBe(visible).click();
+      //  childCategoriesFirstLevel(1).get(0).shouldBe(visible).click();
+        chCategory().get(0).shouldBe(visible).click();
         return page(Moto_Category_car_list_page_Logic.class);
     }
 
@@ -291,14 +292,25 @@ public class Moto_Catalog_page_Logic extends Moto_Catalog_page {
 
     @Step("check First Level of parent categories .Moto_Catalog_page")
     public Moto_Catalog_page_Logic checkFirstLevelOfParentCategories(int position) {
-        if (childCategoriesFirstLevel(position + 1).get(0).isDisplayed() && intermediateChildCategoriesFirstLevel(position + 1).get(0).isDisplayed()) {
+      /*  if (childCategoriesFirstLevel(position + 1).get(0).isDisplayed() && intermediateChildCategoriesFirstLevel(position + 1).get(0).isDisplayed()) {
             childCategoriesFirstLevel(position + 1).shouldHave(sizeGreaterThan(0));
             checkIntermediateChildCategoryFirstLevel(position);
         } else if (childCategoriesFirstLevel(position + 1).get(0).isDisplayed()) {
             childCategoriesFirstLevel(position + 1).shouldHave(sizeGreaterThan(0));
         } else if (intermediateChildCategoriesFirstLevel(position + 1).get(0).isDisplayed()) {
             checkIntermediateChildCategoryFirstLevel(position);
+        }*/
+
+      /*----------------------------------------------------------------------------------------------------*/
+        if (chCategory().get(0).isDisplayed() && imedCategory().get(0).isDisplayed()) {
+            chCategory().shouldHave(sizeGreaterThan(0));
+            checkIntermediateChildCategoryFirstLevel(position);
+        } else if (chCategory().get(0).isDisplayed()) {
+            chCategory().shouldHave(sizeGreaterThan(0));
+        } else if (imedCategory().get(0).isDisplayed()) {
+            checkIntermediateChildCategoryFirstLevel(position);
         }
+        /*----------------------------------------------------------------------------------------------------*/
         return this;
     }
 
@@ -306,8 +318,9 @@ public class Moto_Catalog_page_Logic extends Moto_Catalog_page {
     public Moto_Catalog_page_Logic checkIntermediateChildCategoryFirstLevel(int position) {
         for (int j = 0; j < intermediateChildCategoriesFirstLevel(position + 1).size(); j++) {
             intermediateChildCategoriesFirstLevel(position + 1).get(j).click();
-            childCategoriesSecondLevelBlock().should(appear);
-            childCategoriesSecondLevelBlockCheck(position + 1).get(j).should(appear);
+           /* childCategoriesSecondLevelBlock().should(appear);
+            childCategoriesSecondLevelBlockCheck(position + 1).get(j).should(appear);*/
+            secondLevelBlock().should(appear);
             checkSecondLevelOfParentCategories(position);
         }
         return this;

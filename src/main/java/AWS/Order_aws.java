@@ -941,7 +941,7 @@ public class Order_aws {
     @Step("Calculates the amount of an item by dividing the total amount of the item {sumProduct Column} by the number of items {productQuantity}. Order_aws")
     public Float dividingPriceByQuantity(Float sumProductColumn, Float productQuantity) {
         Float cost = sumProductColumn / productQuantity;
-        String formatCost = new DecimalFormat(".##").format(cost).replaceAll(",", ".");
+        Float formatCost = Math.round(cost * 100) / 100.00f;
         return Float.valueOf(formatCost);
     }
 

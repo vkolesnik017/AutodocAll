@@ -600,4 +600,16 @@ public class Main_page {
     }
 
     SelenideElement chooseModelTooltipInCarSelector() { return $(".tooltiptext-line"); }
+
+    SelenideElement popUpPrivacyPolicy() {
+        return $x("//div[@class='popup-privacy-policy']");
+    }
+
+    SelenideElement checkBoxPopUpPrivacyPolicy() {
+        return $x("//*[@class='popup-privacy-policy__check']//a/..");
+    }
+
+    SelenideElement successBtnInPopUpPrivacyPolicy() {
+        return $x("//button[@id='privacy_policy_agree']");
+    }
 }

@@ -18,6 +18,7 @@ import static com.codeborne.selenide.Selenide.close;
 public class QC_665_LoginWithNewEmail {
 
     private String mail = "QC_665_autotest@mailinator.com";
+    private Main_page_Logic main_page_logic = new Main_page_Logic();
 
     @BeforeClass
     void setUp() {
@@ -36,7 +37,7 @@ public class QC_665_LoginWithNewEmail {
     public void testLoginWithNewEmail(String route) {
         String newEmail = mailRandomMailinator();
         openPage(route);
-        new Main_page_Logic().loginAndTransitionToProfilePlusPage(mail)
+        main_page_logic.loginAndTransitionToProfilePlusPage(mail)
                 .goToSettingPage()
                 .checkPresenceChangePassBlock()
                 .checkPresenceChangeEmailBlock()
@@ -46,6 +47,7 @@ public class QC_665_LoginWithNewEmail {
                 .closePopUp()
                 .logOutClick()
                 .loginFromHeader(newEmail, password);
+        main_page_logic.confirmPrivacyPolicyInPopUp();
         new Profile_plus_page_Logic().goToSettingPage()
                 .fillFieldNewEmail(mail)
                 .fillFieldConfirmEmail(mail)

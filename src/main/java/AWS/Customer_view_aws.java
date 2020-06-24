@@ -130,6 +130,25 @@ public class Customer_view_aws {
         return $x("//div[@class='col-sm-12 col-md-5']//tr[1]//td[3]//i[@class='splashy-okay']");
     }
 
+    private SelenideElement customerDepositTable() {
+        return $x("//div[@class='col-sm-12 col-md-7']//div[8]");
+    }
+
+    private SelenideElement depositBalanceAfterLastCrediting() {
+        return $x("//table[@class='table table-striped table-bordered table-condensed orders customer-deposit']//tr[1]//td[4]");
+    }
+
+    @Step("Get deposit balance after the last crediting . Customer_view_aws")
+    public Float getDepositBalanceAfterLastCrediting() {
+       return Float.valueOf(depositBalanceAfterLastCrediting().getText());
+    }
+
+    @Step("Checks presence customer deposit table. Customer_view_aws")
+    public Customer_view_aws checkPresenceCustomerDepositTable() {
+        customerDepositTable().shouldBe(visible);
+        return this;
+    }
+
 
     @Step("Checks that the last log has the status OK in the block subscription block. Customer_view_aws")
     public Customer_view_aws checkStatusOfLastLog() {
