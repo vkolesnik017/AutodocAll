@@ -167,4 +167,10 @@ public class Moto_Categories_maker_page_Logic extends Moto_Categories_maker_page
         linksOfModels().get(position).shouldBe(visible).click();
         return page(Moto_Catalog_model_page_Logic.class);
     }
+
+    @Step("presence of headline at TOP parent categories .Moto_Categories_maker_page")
+    public Moto_Categories_maker_page_Logic presenceOfHeadlineAtTopParentCategories() {
+        headlineOfTopParentCategories().shouldBe(visible);
+        return this;
+    }
 }
