@@ -700,5 +700,15 @@ public class Listing_page {
     SelenideElement fourthCharacteristicInFirstProduct() { return $x("//li[4][@class='important']"); }
 
     SelenideElement fifthCharacteristicInFirstProduct() { return $x("//li[5][@class='important']"); }
+
+    ElementsCollection mainCharacteristicsOnListing() { return $$x("(//div[@class='autopart_kit_table'])[1]/ancestor::div[@class='about']//li"); }
+
+    ElementsCollection additionalCharacteristicsOnListing() { return $$x("(//div[@class='autopart_kit_table'])[1]/div"); }
+
+    SelenideElement firstProductAdditionalCharacteristicsOnListing() { return $x("(//div[@class='autopart_kit_table'])[1]/ancestor::div[@class='description']/div/a"); }
+
+    SelenideElement brandButtonInFilterWithGivenName(String brandName) { return $x("//*[@id='selected-instalation__slider']/ul//img[contains (@alt,'"+ brandName +"')]/.."); }
+
+    SelenideElement nextButtonInBrandFilter() { return $(".next.slick-arrow"); }
 }
 

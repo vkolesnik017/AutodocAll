@@ -349,6 +349,10 @@ public class Product_page {
         return $(By.xpath("//div[@class='product-comments__text']"));
     }
 
+    ElementsCollection allReviewsFromDE() { return $$x("//ul[@class='product-comments__list']//*[@data-country='de']"); }
+
+    ElementsCollection allReviewsExceptDE() { return $$x("//ul[@class='product-comments__list']//*[@data-country!='de']"); }
+
 
     //locators for compatibility block
     public SelenideElement compatibleCarBrand() {

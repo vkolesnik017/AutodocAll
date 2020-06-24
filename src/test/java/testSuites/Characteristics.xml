@@ -25,6 +25,7 @@
             <class name="ATD.Characteristics.QC_506_StaticCharacteristics.QC_511_PresenceStaticCharacteristicOnSearchListing"/>
             <class name="ATD.Characteristics.QC_506_StaticCharacteristics.QC_512_PresenceStaticCharacteristicOnOenListing"/>
             <class name="ATD.Characteristics.QC_506_StaticCharacteristics.QC_513_PresenceStaticCharacteristicInBasket"/>
+            <!--<class name="ATD.Characteristics.QC_506_StaticCharacteristics.QC_1901_CharacteristicsDoNotHideAfterBrandFilterApplying"/>-->
         </classes>
     </test>
 
