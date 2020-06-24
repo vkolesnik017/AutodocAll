@@ -22,4 +22,11 @@
         </classes>
     </test>
 
+    <test name="QC_1908_ReviewsBlock">
+        <classes>
+            <class name="ATD.ProductPage.QC_1908_ReviewsBlock.QC_1909_TestIfNumberOfReviewsDEmoreThan20"/>
+            <class name="ATD.ProductPage.QC_1908_ReviewsBlock.QC_1910_TestIfNumberOfReviewsDElessThan20"/>
+        </classes>
+    </test>
+
 </suite>
