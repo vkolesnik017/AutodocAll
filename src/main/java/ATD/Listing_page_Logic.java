@@ -1154,5 +1154,29 @@ public class Listing_page_Logic extends Listing_page {
         expectedCharacteristics.add(fifthCharacteristicInFirstProduct().text());
         return expectedCharacteristics;
     }
+
+    @Step("Get expected characteristics of product on listing. Listing_page")
+    public List<String> getAllExpectedCharacteristcsOfProduct() {
+        ArrayList<String> expectedCharacteristics = new ArrayList<>();
+        expectedCharacteristics.addAll(mainCharacteristicsOnListing().texts());
+        expectedCharacteristics.addAll(additionalCharacteristicsOnListing().texts());
+        return expectedCharacteristics;
+    }
+
+    @Step("Click first product on listing. Listing_page")
+    public Product_page_Logic clickFirstProductOnListing() {
+        firstProductTitleOnListing().click();
+        return page(Product_page_Logic.class);
+    }
+
+    @Step("Get brand name from first product and click brand button in filter. Listing_page")
+    public Listing_page_Logic getBrandFronFirstProductAndClickBrandButtonInFilter() {
+        while (!brandButtonInFilterWithGivenName(firstProductAdditionalCharacteristicsOnListing().text().split(" ")[0]).is(visible)) {
+            nextButtonInBrandFilter().click();
+        }
+        brandButtonInFilterWithGivenName(firstProductAdditionalCharacteristicsOnListing().text().split(" ")[0]).click();
+        waitUntilPreloaderDisappear();
+        return this;
+    }
 }
 

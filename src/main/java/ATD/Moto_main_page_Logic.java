@@ -445,4 +445,50 @@ public class Moto_main_page_Logic extends Moto_main_page {
         linksOfTopChildCategoriesBlock().get(position).shouldBe(visible).click();
         return page(Moto_Category_car_list_page_Logic.class);
     }
+
+    @Step("presence of TOP models block .Moto_main_page")
+    public Moto_main_page_Logic presenceOfTopModelsBlock() {
+        topModelsBlock().shouldBe(visible);
+        headlineOfTopModelsBlock().shouldBe(visible);
+        topMotoModels().shouldHaveSize(20);
+        return this;
+    }
+
+    @Step("check TOP models block .Moto_main_page")
+    public Moto_main_page_Logic checkTopModelsBlock() {
+        visibleTopMotoModels().shouldHaveSize(5);
+        scrollToRightOfTopModelsBlock();
+        scrollToLeftOfTopModelsBlock();
+        return this;
+    }
+
+    @Step("scroll to right of TOP models block .Moto_main_page")
+    public Moto_main_page_Logic scrollToRightOfTopModelsBlock() {
+        int countOfClick = 0;
+        String titleOfMotoModel;
+        topModelsBlock().scrollTo();
+        while (!linkForwardOfTopModel().has(attribute("class", "bx-next disabled"))) {
+            titleOfMotoModel = titleOfVisibleTopModels().get(0).getText();
+            countOfClick++;
+            activeLinkForwardOfTopModel().click();
+            titleOfVisibleTopModels().get(0).shouldNotHave(exactText(titleOfMotoModel));
+        }
+        Assert.assertEquals(countOfClick, 3);
+        return this;
+    }
+
+    @Step("scroll to left of TOP models block .Moto_main_page")
+    public Moto_main_page_Logic scrollToLeftOfTopModelsBlock() {
+        int countOfClick = 0;
+        String titleOfMotoModel;
+
+        while (!linkBackOfTopModel().has(attribute("class", "bx-prev disabled"))) {
+            titleOfMotoModel = titleOfVisibleTopModels().get(0).getText();
+            countOfClick++;
+            activeLinkBackOfTopModel().click();
+            titleOfVisibleTopModels().get(0).shouldNotHave(exactText(titleOfMotoModel));
+        }
+        Assert.assertEquals(countOfClick, 3);
+        return this;
+    }
 }
