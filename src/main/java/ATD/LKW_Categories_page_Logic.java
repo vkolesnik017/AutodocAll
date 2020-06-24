@@ -76,10 +76,15 @@ public class LKW_Categories_page_Logic extends LKW_Categories_page {
         return this;
     }
 
+    @Step("get brand from TOP product title .LKW_Categories_page")
+    public String getBrandFromTopProductTitle() {
+        String titleOfBrand = titleOfTopProduct().get(0).getText().replace(titleOfTopProduct().get(0).getText().substring(titleOfTopProduct().get(0).getText().lastIndexOf(" ")), "").toLowerCase();
+        return titleOfBrand;
+    }
 
     @Step("transition to product page by click on top image of product .LKW_Categories_page")
-    public LKW_Categories_page_Logic transitionToProductPageByClickOnTopImage() {
-        clickOnImageOfTopProduct().checkSuccessfullyLKWProductPageLoading("autodoc.de/trw/");
+    public LKW_Categories_page_Logic transitionToProductPageByClickOnTopImage(String brand) {
+        clickOnImageOfTopProduct().checkSuccessfullyLKWProductPageLoading("autodoc.de/"+brand+"/");
         back();
         return this;
     }
@@ -91,11 +96,11 @@ public class LKW_Categories_page_Logic extends LKW_Categories_page {
     }
 
     @Step("transition to product page by click on title of top product .LKW_Categories_page")
-    public LKW_Categories_page_Logic transitionToProductPageByClickOnTitleOfTopProduct() {
+    public LKW_Categories_page_Logic transitionToProductPageByClickOnTitleOfTopProduct(String brand) {
         if (closeCookiesPopUp().isDisplayed()) {
             closeCookiesPopUp().click();
         }
-        clickOnTitleOfTopProduct().checkSuccessfullyLKWProductPageLoading("autodoc.de/trw/");
+        clickOnTitleOfTopProduct().checkSuccessfullyLKWProductPageLoading("autodoc.de/"+brand+"/");
         back();
         return this;
     }
@@ -107,11 +112,11 @@ public class LKW_Categories_page_Logic extends LKW_Categories_page {
     }
 
     @Step("transition to product page by click on link Details .LKW_Categories_page")
-    public LKW_Categories_page_Logic transitionToProductPageByClickOnLinkDetails() {
+    public LKW_Categories_page_Logic transitionToProductPageByClickOnLinkDetails(String brand) {
         if (closeCookiesPopUp().isDisplayed()) {
             closeCookiesPopUp().click();
         }
-        clickOnLinkDetails().checkSuccessfullyLKWProductPageLoading("autodoc.de/trw/");
+        clickOnLinkDetails().checkSuccessfullyLKWProductPageLoading("autodoc.de/"+brand+"/");
         back();
         return this;
     }

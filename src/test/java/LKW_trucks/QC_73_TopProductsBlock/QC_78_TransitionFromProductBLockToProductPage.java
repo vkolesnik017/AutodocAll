@@ -17,7 +17,7 @@ import static com.codeborne.selenide.Selenide.close;
 
 public class QC_78_TransitionFromProductBLockToProductPage {
 
-  @BeforeClass
+    @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
     }
@@ -67,43 +67,45 @@ public class QC_78_TransitionFromProductBLockToProductPage {
     @Description(value = "Test check transition from Top product block to product page")
     public void testChecksTransitionToProductPageCategories(String route) {
         openPage(route);
+        String titleOfBrand = new LKW_Categories_page_Logic().getBrandFromTopProductTitle();
         new LKW_Categories_page_Logic()
-                .transitionToProductPageByClickOnTopImage()
-                .transitionToProductPageByClickOnTitleOfTopProduct()
-                .transitionToProductPageByClickOnLinkDetails();
-    }
-    @DataProvider(name = "routesCategoriesMaker", parallel = true)
-    Object[] dataProviderCategoriesMaker() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_categories_maker");
+                .transitionToProductPageByClickOnTopImage(titleOfBrand)
+                .transitionToProductPageByClickOnTitleOfTopProduct(titleOfBrand)
+                .transitionToProductPageByClickOnLinkDetails(titleOfBrand);
     }
 
-    @Test(dataProvider = "routesCategoriesMaker")
-    @Flaky
-    @Owner(value = "Kolesnik")
-    @Description(value = "Test check transition from Top product block to product page")
-    public void testChecksTransitionToProductPageCategoriesMaker(String route) {
-        openPage(route);
-        new LKW_Categories_maker_page_Logic()
-                .transitionToProductPageByClickOnTopImage()
-                .transitionToProductPageByClickOnTitleOfTopProduct()
-                .transitionToProductPageByClickOnLinkDetails();
-    }
-    @DataProvider(name = "routesParentCategory", parallel = true)
-    Object[] dataProviderParentCategory() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_parent_category");
-    }
+     @DataProvider(name = "routesCategoriesMaker", parallel = true)
+     Object[] dataProviderCategoriesMaker() throws SQLException {
+         return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_categories_maker");
+     }
 
-    @Test(dataProvider = "routesParentCategory")
-    @Flaky
-    @Owner(value = "Kolesnik")
-    @Description(value = "Test check transition from Top product block to product page")
-    public void testChecksTransitionToProductPageParentCategory(String route) {
-        openPage(route);
-        new LKW_Parent_Category_page_Logic()
-                .transitionToProductPageByClickOnTopImage()
-                .transitionToProductPageByClickOnTitleOfTopProduct()
-                .transitionToProductPageByClickOnLinkDetails();
-    }
+     @Test(dataProvider = "routesCategoriesMaker")
+     @Flaky
+     @Owner(value = "Kolesnik")
+     @Description(value = "Test check transition from Top product block to product page")
+     public void testChecksTransitionToProductPageCategoriesMaker(String route) {
+         openPage(route);
+         new LKW_Categories_maker_page_Logic()
+                 .transitionToProductPageByClickOnTopImage()
+                 .transitionToProductPageByClickOnTitleOfTopProduct()
+                 .transitionToProductPageByClickOnLinkDetails();
+     }
+     @DataProvider(name = "routesParentCategory", parallel = true)
+     Object[] dataProviderParentCategory() throws SQLException {
+         return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_parent_category");
+     }
+
+     @Test(dataProvider = "routesParentCategory")
+     @Flaky
+     @Owner(value = "Kolesnik")
+     @Description(value = "Test check transition from Top product block to product page")
+     public void testChecksTransitionToProductPageParentCategory(String route) {
+         openPage(route);
+         new LKW_Parent_Category_page_Logic()
+                 .transitionToProductPageByClickOnTopImage()
+                 .transitionToProductPageByClickOnTitleOfTopProduct()
+                 .transitionToProductPageByClickOnLinkDetails();
+     }
     @AfterMethod
     private void tearDown() {
         close();
