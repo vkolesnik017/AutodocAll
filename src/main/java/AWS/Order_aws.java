@@ -9,6 +9,8 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -25,7 +27,8 @@ public class Order_aws {
         this.orderNumber = orderNumber;
     }
 
-    public Order_aws() {}
+    public Order_aws() {
+    }
 
     private String orderNumber;
     private String url = "https://aws.autodoc.de/order/view/";
@@ -395,7 +398,6 @@ public class Order_aws {
     }
 
 
-
     @Step("Checks current status {expectedStatus} in order. Order_aws")
     public Order_aws checkCurrentStatusInOrder(String expectedStatus) {
         currentStatusInOrder().shouldHave(text(expectedStatus));
@@ -422,14 +424,14 @@ public class Order_aws {
     }
 
     @Step("Checks the quantity of goods {expectedQuantity} in column Quantity product. Order_aws")
-        public Order_aws checkQuantityOfGoodsInColumnQuantity(String expectedQuantity) {
+    public Order_aws checkQuantityOfGoodsInColumnQuantity(String expectedQuantity) {
         columnProductQuantity().shouldHave(text(expectedQuantity));
         return this;
     }
 
     @Step("Checks the quantity of goods {expectedQuantity} in refund table. Order_aws")
     public Order_aws checksQuantityOfGoodsInRefundTable(String expectedQuantity) {
-        quantityProductInRefundTable().shouldHave(attribute("value",expectedQuantity));
+        quantityProductInRefundTable().shouldHave(attribute("value", expectedQuantity));
         return this;
     }
 
@@ -768,7 +770,7 @@ public class Order_aws {
     }
 
     @Step("Get total sum product from column sum of product. Order_aws")
-    public  Float getTotalSumProductFromColumnSumOfProduct() {
+    public Float getTotalSumProductFromColumnSumOfProduct() {
         return Float.valueOf(columnSumProduct().getText());
     }
 
@@ -821,7 +823,7 @@ public class Order_aws {
         String cityDeliveryAddressText = fieldCityInDeliveryAddress().getValue();
         String countryDeliveryAddressText = fieldCountryInDeliveryAddress().getText();
         String phoneDeliveryAddressText = fieldPhoneInDeliveryAddress().getValue().replaceAll("^\\d{2}", "");
-        ArrayList <String> userData = new ArrayList<>();
+        ArrayList<String> userData = new ArrayList<>();
         userData.add(nameText);
         userData.add(surnameText);
         userData.add(streetText);
@@ -902,7 +904,7 @@ public class Order_aws {
 
     @Step("Compares the prices of added products with the prices on the site {priceWithSite}. Order_aws")
     public Order_aws comparePriceOfAddedProductWithPricesOnSites(ArrayList priceWithSite) {
-        ArrayList <Float> list = new ArrayList<>();
+        ArrayList<Float> list = new ArrayList<>();
         for (int i = 0; i < sellingPriceOfAddedGoods().size(); i++) {
             list.add(Float.parseFloat(sellingPriceOfAddedGoods().get(i).getText()));
         }
@@ -959,10 +961,20 @@ public class Order_aws {
     }
 
     @Step("Calculates the amount of an item by dividing the total amount of the item {sumProduct Column} by the number of items {productQuantity}. Order_aws")
-    public Float dividingPriceByQuantity(Float sumProductColumn, Float productQuantity) {
-        Float cost = sumProductColumn / productQuantity;
-        Float formatCost = Math.round(cost * 100) / 100.00f;
-        return Float.valueOf(formatCost);
+    public Float dividingPriceByQuantity(Float sumProductColumn, Float productQuantity, Float sellingPrice) {
+        float cost = sumProductColumn / productQuantity;
+        BigDecimal result = new BigDecimal(cost);
+        BigDecimal formatCostUp = result.setScale(2, RoundingMode.UP);
+        Float roundMax = Float.parseFloat(String.valueOf(formatCostUp));
+        BigDecimal formatCostDOWN = result.setScale(2, RoundingMode.FLOOR);
+        float roundMin = Float.parseFloat(String.valueOf((formatCostDOWN)));
+        float res = 0.0f;
+        if (sellingPrice.equals(roundMax)) {
+            return res = roundMax;
+        } if (sellingPrice.equals(roundMin)) {
+            return res = roundMin;
+        }
+        return res;
     }
 
     @Step("Calculates goods amount by multiplying product price {sellingCostOneProduct} " +

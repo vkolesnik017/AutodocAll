@@ -28,4 +28,8 @@ public class Cart_page {
     SelenideElement emptyCart() {
         return $x("//div[@class='cart-page-listing__empty-cart']");
     }
+
+    SelenideElement nameProduct() {
+        return $x("//td[@class='info']/h3");
+    }
 }

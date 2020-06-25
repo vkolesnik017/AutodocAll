@@ -22,7 +22,8 @@ import static com.codeborne.selenide.Selenide.close;
 public class QC_1127_EditingQuantityOfAutoPartsInAwsOrder {
 
     private String userID = "15371693", articleNum, productArticleID;
-    private Float totalCostInOrder, sumProductColumn, productQuantity, amountOfGoods, sellingCostInOrder,
+    private Float totalCostInOrder, sumProductColumn, sumProductColumnAfterIncreasingAmount,
+            productQuantity, amountOfGoods, sellingCostInOrder,
             totalSumIncomeWithoutVat, totalSumIncomeWithoutVatForTwoProduct,
             deliveryCost, totalSumIncludingDelivery;
 
@@ -59,16 +60,18 @@ public class QC_1127_EditingQuantityOfAutoPartsInAwsOrder {
                 .clickSaveOrderBtn()
                 .checkOrderHasTestStatus()
                 .getTotalSumIncomeWithoutVAT();
+        sumProductColumn = order_aws.getTotalSumProductFromColumnSumOfProduct();
         deliveryCost = order_aws.clickEditItemBtn(productArticleID)
                 .editQuantityOfItemInPopUpEditItem("2")
                 .checkQuantityOfGoodsInColumnQuantity("2")
                 .checkQuantityOfGoodsInColumnExpectedQuantity("2")
                 .getDeliveryCostInOrder();
-        sumProductColumn = order_aws.getTotalSumProductFromColumnSumOfProduct();
+        sumProductColumnAfterIncreasingAmount = order_aws.getTotalSumProductFromColumnSumOfProduct();
         productQuantity = order_aws.getProductQuantity();
-        amountOfGoods = order_aws.dividingPriceByQuantity(sumProductColumn, productQuantity);
         sellingCostInOrder = order_aws.getSellingPriceOfCertainProduct(productArticleID);
+        amountOfGoods = order_aws.dividingPriceByQuantity(sumProductColumnAfterIncreasingAmount, productQuantity, sellingCostInOrder);
         Assert.assertEquals(amountOfGoods, sellingCostInOrder);
+        Assert.assertNotEquals(sumProductColumn, sumProductColumnAfterIncreasingAmount);
         totalSumIncomeWithoutVatForTwoProduct = order_aws.getTotalSumIncomeWithoutVAT();
         Assert.assertNotEquals(totalSumIncomeWithoutVat, totalSumIncomeWithoutVatForTwoProduct);
         totalCostInOrder = order_aws.checkQuantityOfGoodsInColumnCountProduct("1")

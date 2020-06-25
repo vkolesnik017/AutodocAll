@@ -1,6 +1,7 @@
 package ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods;
 
 import ATD.*;
+import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -12,8 +13,7 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class QC_1677_HeavyLoadsNegativeCase {
 
@@ -27,7 +27,7 @@ public class QC_1677_HeavyLoadsNegativeCase {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product19");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "HeavyLoasdProduct1");
     }
 
     @Test(dataProvider = "route")
@@ -44,23 +44,23 @@ public class QC_1677_HeavyLoadsNegativeCase {
                 .cartClick()
                 .checkPresencePopUpDeliveryLimit()
                 .closePopUpDeliveryLimitCartPage()
-                .checkAbsenceGoodInCartPage("7037462")
+                .checkAbsenceGoodInCartPage("1290766")
                 .checkPresenceGoodInCardPage("7807629");
-        openPage(route);
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "HeavyLoasdProduct1"));
         product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
                 .checkPresencePopUpDeliveryLimit()
                 .deleteGoodsInDeliveryPopupCartPage()
-                .checkAbsenceGoodInCartPage("7037462")
+                .checkAbsenceGoodInCartPage("1290766")
                 .checkPresenceGoodInCardPage("7807629");
-        openPage(route);
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "HeavyLoasdProduct1"));
         product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
                 .checkPresencePopUpDeliveryLimit()
                 .clickBtnContinueShoppingInDeliveryPopupCartPage()
-                .checkPresenceGoodInCardPage("7037462")
+                .checkPresenceGoodInCardPage("1290766")
                 .checkPresenceGoodInCardPage("7807629");
     }
 

@@ -2,7 +2,7 @@ package PKW;
 
 import io.qameta.allure.Step;
 import org.testng.Assert;
-
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.page;
 
 public class Index_chemicals_page_Logic extends Index_chemicals_page {
@@ -25,6 +25,23 @@ public class Index_chemicals_page_Logic extends Index_chemicals_page {
         return page(Listing_chemicals_page_Logic.class);
     }
 
+    @Step("Checking presence block Bread Crumbs. Index_chemicals_page")
+    public Index_chemicals_page_Logic checkingPresenceBlockBreadCrumbs() {
+        blockBreadCrumb().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Click on first bread crumb. Index_chemicals_page")
+    public Parts_page_Logic clickOnFirstBreadCrumb() {
+        firstBreadCrumb().click();
+        return page(Parts_page_Logic.class);
+    }
+
+    @Step("Checking presence and not clickable second bread crumb. Index_chemicals_page")
+    public Index_chemicals_page_Logic checkingPresenceAndNotClickableSecondCrumb() {
+        secondBreadCrumb().shouldBe(visible).shouldNotBe(attribute("href"));
+        return this;
+    }
 
 
 
