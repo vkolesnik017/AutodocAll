@@ -180,6 +180,16 @@
     <test name="QC_870_PresenceOfTopModels">
         <classes>
             <class name="MOTO.QC_870_TopModelsBlock.QC_872_PresenceOfTopModels"/>
+            <class name="MOTO.QC_870_TopModelsBlock.QC_873_ElementBlockHoverTopModels"/>
+            <class name="MOTO.QC_870_TopModelsBlock.QC_874_TransitionByClickOnTopModelElement"/>
+        </classes>
+    </test>
+
+    <test name="QC_319_TopProductsBlock">
+        <classes>
+            <class name="MOTO.QC_319_TopProductsBlock.QC_320_PresenceOfTopProductsBlock"/>
+            <class name="MOTO.QC_319_TopProductsBlock.QC_321_PresenceOfTopProductsHeadline"/>
+            <class name="MOTO.QC_319_TopProductsBlock.QC_322_TotalCountOfTopProducts"/>
         </classes>
     </test>
 </suite>

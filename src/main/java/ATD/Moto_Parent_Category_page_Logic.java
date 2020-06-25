@@ -161,4 +161,31 @@ public class Moto_Parent_Category_page_Logic extends Moto_Parent_Category_page {
         breadCrumbsLinks().get(5).shouldBe(visible).shouldHave(text(title)).shouldNotHave(attribute("href"));
         return this;
     }
+
+    @Step("presence of TOP products block .Moto_Parent_Category_page")
+    public Moto_Parent_Category_page_Logic presenceOfTopProductsBlock() {
+        topProductsBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("check count of TOP products .Moto_Parent_Category_page")
+    public Moto_Parent_Category_page_Logic checkCountOfTopProducts() {
+        topProducts().shouldHaveSize(10);
+        return this;
+    }
+
+    @Step("get id of product in TecDoc Listing .Moto_Categories_page")
+    public String getIdOfProductFromTecDocListing() {
+        String idOfProduct = btnAddToBasketTopProduct().get(0).getAttribute("id");
+        return idOfProduct;
+    }
+
+    @Step("added product to basket .Moto_Categories_page")
+    public Cart_page_Logic addProductToBasket() {
+        btnAddToBasketTopProduct().get(0).click();
+        basketDropMenu().should(appear);
+        basketDropMenu().should(disappear);
+        basket().click();
+        return page(Cart_page_Logic.class);
+    }
 }

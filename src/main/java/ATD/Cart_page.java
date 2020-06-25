@@ -137,4 +137,8 @@ public class Cart_page {
     SelenideElement titleNameProduct() {
         return  $x("//div[@class='cart-page-listing']//h3[text()]");
     }
+
+    SelenideElement bonusSticker() {
+        return $(".bonus-sticker");
+    }
 }

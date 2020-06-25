@@ -237,5 +237,10 @@ public class Moto_Product_page_Logic extends Moto_Product_page {
         incompatibilityMotoMessage().shouldBe(visible).shouldHave(text(message));
         return this;
     }
-
+    @Step("check Url of product page .Moto_Product_page")
+    public Moto_Product_page_Logic checkUrlOfProductPage(String currentUrl) {
+        breadCrumbsBlock().should(appear);
+        Assert.assertTrue(url().contains(currentUrl));
+        return this;
+    }
 }

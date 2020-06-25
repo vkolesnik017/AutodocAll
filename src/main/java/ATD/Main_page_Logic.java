@@ -119,6 +119,12 @@ public class Main_page_Logic extends Main_page {
         return page(Profile_page_Logic.class);
     }
 
+    @Step("Clicking profile plus in header. Main_page")
+    public Profile_plus_page_Logic profilePlusBtnClickInHeader() {
+        profileBtn().click();
+        return page(Profile_plus_page_Logic.class);
+    }
+
     // Search bar
     @Step("Input text in search bar. Main_page")
     public Main_page_Logic inputTextInSearchBar(String text) {

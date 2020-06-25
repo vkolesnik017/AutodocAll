@@ -76,5 +76,19 @@ public class Moto_Categories_page {
 
     SelenideElement secondLevelBlock() {return $x("//li[@class='active']/div[2]");}
 
+     SelenideElement topProductsBlock() {return $x("//div[@class='moto-top-product']");}
 
+    SelenideElement headlineOfTopProductsBlock() {return $x("//div[@class='moto-top-product__title']");}
+
+    ElementsCollection btnAddToBasketTopProduct() {
+        return $$x("//div[@class='price_box product-list__item__button']");
+    }
+
+    SelenideElement basketDropMenu() {
+        return $x("//div[@class='cart-items-block ']");
+    }
+
+    SelenideElement basket() {
+        return $x("//a[@class='header-cart__link']");
+    }
 }

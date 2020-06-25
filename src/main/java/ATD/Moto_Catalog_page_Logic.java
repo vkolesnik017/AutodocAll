@@ -331,4 +331,10 @@ public class Moto_Catalog_page_Logic extends Moto_Catalog_page {
         childCategoriesSecondLevel(position + 1).shouldHave(sizeGreaterThan(0));
         return this;
     }
+
+    @Step("check count of TOP products .Moto_Catalog_page")
+    public Moto_Catalog_page_Logic checkCountOfTopProducts() {
+             topProducts().shouldHaveSize(6);
+        return this;
+    }
 }
