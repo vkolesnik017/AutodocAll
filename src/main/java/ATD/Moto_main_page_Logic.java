@@ -463,41 +463,43 @@ public class Moto_main_page_Logic extends Moto_main_page {
 
     @Step("scroll to right of TOP models block .Moto_main_page")
     public Moto_main_page_Logic scrollToRightOfTopModelsBlock() {
-        int countOfClick = 0;
-        String titleOfMotoModel;
+        int countOfClickRight = 0;
         topModelsBlock().scrollTo();
         while (linkForwardOfTopModel().isDisplayed()) {
-            titleOfMotoModel = titleOfVisibleTopModels().get(0).getText();
-            activeLinkForwardOfTopModel().click();
-            if (!titleOfVisibleTopModels().get(0).getText().equals(titleOfMotoModel)) {
-                countOfClick++;
+            for (int i = 0; i < titleOfVisibleTopModels().size(); i++) {
+                titleOfVisibleTopModels().get(i).shouldBe(visible);
             }
+            linkForwardOfTopModel().click();
+            countOfClickRight++;
         }
-        Assert.assertEquals(countOfClick, 3);
+        Assert.assertEquals(countOfClickRight, 3);
+        linkBackOfTopModel().should(appear);
         return this;
     }
 
     @Step("scroll to left of TOP models block .Moto_main_page")
     public Moto_main_page_Logic scrollToLeftOfTopModelsBlock() {
-        int countOfClick = 0;
-        String titleOfMotoModel;
+        int countOfClickLeft = 0;
         while (linkBackOfTopModel().isDisplayed()) {
-            titleOfMotoModel = titleOfVisibleTopModels().get(0).getText();
-            activeLinkBackOfTopModel().click();
-            if (!titleOfVisibleTopModels().get(0).getText().equals(titleOfMotoModel)) {
-                countOfClick++;
+            for (int i = 0; i < titleOfVisibleTopModels().size(); i++) {
+                titleOfVisibleTopModels().get(i).shouldBe(visible);
             }
+            linkBackOfTopModel().click();
+            countOfClickLeft++;
         }
-        Assert.assertEquals(countOfClick, 3);
+        Assert.assertEquals(countOfClickLeft, 3);
         return this;
     }
 
     @Step("hover on TOP motorcycle models .Moto_main_page")
     public Moto_main_page_Logic hoverOnTopMotoModels() {
+        String titleOfMotoModel;
         topModelsBlock().scrollTo();
         checkColorOfTopModels();
         while (linkForwardOfTopModel().isDisplayed()) {
+            titleOfMotoModel = titleOfVisibleTopModels().get(0).getText();
             activeLinkForwardOfTopModel().click();
+            titleOfVisibleTopModels().get(0).shouldBe(visible).shouldNotHave(exactText(titleOfMotoModel));
             checkColorOfTopModels();
         }
         return this;
@@ -506,9 +508,9 @@ public class Moto_main_page_Logic extends Moto_main_page {
     @Step("check color of TOP models block .Moto_main_page")
     public Moto_main_page_Logic checkColorOfTopModels() {
         for (int i = 0; i < titleTopModelsBlock().size(); i++) {
-            titleTopModelsBlock().get(i).shouldHave(cssValue("color", "rgba(0, 0, 0, 1)"));
-            titleTopModelsBlock().get(i).hover();
-            titleTopModelsBlock().get(i).shouldHave(cssValue("color", "rgba(255, 255, 255, 1)"));
+            titleTopModelsBlock().get(i).shouldBe(visible).shouldHave(cssValue("color", "rgba(0, 0, 0, 1)"));
+            titleTopModelsBlock().get(i).shouldBe(visible).hover();
+            titleTopModelsBlock().get(i).shouldBe(visible).shouldHave(cssValue("color", "rgba(255, 255, 255, 1)"));
         }
         return this;
     }
