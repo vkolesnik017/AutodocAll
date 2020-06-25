@@ -193,10 +193,6 @@ class Moto_main_page {
         return $x("//div[@class='moto-top-v']//a[@class='bx-next']");
     }
 
-    SelenideElement activeLinkBackOfTopModel() {
-        return $x("//div[@class='moto-top-v']//a[@class='bx-prev']");
-    }
-
     SelenideElement linkForwardOfTopModel() {
         return $x("//div[@class='moto-top-v']//a[@class='bx-next']");
     }
