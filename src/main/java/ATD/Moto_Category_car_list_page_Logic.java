@@ -86,7 +86,7 @@ public class Moto_Category_car_list_page_Logic extends Moto_Category_car_list_pa
 
     @Step("check amount count of pages at TecDoc listing .Moto_Category_car_list_page")
     public Moto_Category_car_list_page_Logic checkCountOfPagesAtTecDocListing() {
-        String url = lastForwardOfPagination().getAttribute("href");
+        String url = lastForwardLinkOfPagination().getAttribute("href");
         String urlPart = url.replace(url.substring(url.lastIndexOf("=")), "");
         int lastPage = Integer.parseInt(url.replace(urlPart, "").replaceAll("[^0-9]", ""));
         int countOfPagesFromAmountCountOfProducts = (int) Math.ceil(getAmountCountOfProducts() / 20);
@@ -98,7 +98,7 @@ public class Moto_Category_car_list_page_Logic extends Moto_Category_car_list_pa
     @Step(" check TecDoc listing on pages .Moto_Category_car_list_page")
     public Moto_Category_car_list_page_Logic checkTecDocListingOnPages() {
         presenceOfProductsAtTecDocListing();
-        while (lastForwardOfPagination().isDisplayed()) {
+        while (lastForwardLinkOfPagination().isDisplayed()) {
             nextForwardOfPagination().click();
             presenceOfProductsAtTecDocListing();
         }

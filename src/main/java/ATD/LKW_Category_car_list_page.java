@@ -66,7 +66,7 @@ public class LKW_Category_car_list_page {
     }
 
     SelenideElement lastPagePaginator() {
-        return $x("//span[@class='last']/a");
+        return $x("//span[@class='next'][2]/a");
     }
 
     SelenideElement btnOfFirstProductInTecDocListing() {
