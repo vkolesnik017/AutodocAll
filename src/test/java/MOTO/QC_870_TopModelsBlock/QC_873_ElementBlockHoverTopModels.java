@@ -16,8 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_872_PresenceOfTopModels {
-
+public class QC_873_ElementBlockHoverTopModels {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -31,13 +30,12 @@ public class QC_872_PresenceOfTopModels {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks presence of TOP models block")
-    public void testChecksPresenceOfTopModels(String route) {
+    @Description(value = "Test checks element block hover TOP models of motorcycle")
+    public void testChecksElementBlockHoverTopModels(String route) {
         openPage(route);
 
         new Moto_main_page_Logic()
-        .presenceOfTopModelsBlock()
-        .checkTopModelsBlock();
+                .hoverOnTopMotoModels();
     }
 
     @AfterMethod

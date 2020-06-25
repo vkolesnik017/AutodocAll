@@ -234,7 +234,7 @@ public class Moto_Categories_page_Logic extends Moto_Categories_page {
         } else if (intermediateChildCategoriesFirstLevel(position + 1).get(0).isDisplayed()) {
             checkSortingIntermediateChildCategoriesFirstLevel(position);
         }
-               return this;
+        return this;
     }
 
     @Step("sorting of child categories first level .Moto_Categories_page")
@@ -254,8 +254,8 @@ public class Moto_Categories_page_Logic extends Moto_Categories_page {
     @Step("check sorting intermediate child categories first level .Moto_Categories_page")
     public Moto_Categories_page_Logic checkSortingIntermediateChildCategoriesFirstLevel(int position) {
         for (int j = 0; j < intermediateChildCategoriesFirstLevel(position + 1).size(); j++) {
-            intermediateChildCategoriesFirstLevel(position + 1).get(j).click();
-          //  childCategoriesSecondLevelBlock().should(appear);
+            intermediateChildCategoriesFirstLevel(position + 1).get(j).shouldBe(visible).click();
+            //  childCategoriesSecondLevelBlock().should(appear);
             secondLevelBlock().should(appear);
             sortingOfChildCategories(childCategoriesSecondLevel(position + 1));
         }
@@ -282,5 +282,32 @@ public class Moto_Categories_page_Logic extends Moto_Categories_page {
         return this;
     }
 
+    @Step("presence of TOP products block .Moto_Categories_page")
+    public Moto_Categories_page_Logic presenceOfTopProductsBlock() {
+        topProductsBlock().shouldBe(visible);
+        return this;
+    }
+
+
+    @Step("presence of TOP products headline .Moto_Categories_page")
+    public Moto_Categories_page_Logic presenceOfTopProductsHeadline() {
+        headlineOfTopProductsBlock().shouldBe(visible).shouldHave(text("MOTORRADTEILE"));
+        return this;
+    }
+
+    @Step("get id of product in TecDoc Listing .Moto_Categories_page")
+    public String getIdOfProductFromTecDocListing() {
+        String idOfProduct = btnAddToBasketTopProduct().get(0).getAttribute("id");
+        return idOfProduct;
+    }
+
+    @Step("added product to basket .Moto_Categories_page")
+    public Cart_page_Logic addProductToBasket() {
+        btnAddToBasketTopProduct().get(0).click();
+        basketDropMenu().should(appear);
+        basketDropMenu().should(disappear);
+        basket().click();
+        return page(Cart_page_Logic.class);
+    }
 
 }

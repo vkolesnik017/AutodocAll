@@ -26,7 +26,6 @@ public class QC_630_SortingOfChildCategories {
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
         return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_categories,moto_catalog_model2,moto_catalog2");
-
     }
 
     @Test(dataProvider = "routes")

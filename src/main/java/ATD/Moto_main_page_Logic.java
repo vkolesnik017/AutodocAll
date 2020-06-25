@@ -7,8 +7,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.back;
-import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class Moto_main_page_Logic extends Moto_main_page {
@@ -464,31 +463,99 @@ public class Moto_main_page_Logic extends Moto_main_page {
 
     @Step("scroll to right of TOP models block .Moto_main_page")
     public Moto_main_page_Logic scrollToRightOfTopModelsBlock() {
-        int countOfClick = 0;
-        String titleOfMotoModel;
+        int countOfClickRight = 0;
         topModelsBlock().scrollTo();
-        while (!linkForwardOfTopModel().has(attribute("class", "bx-next disabled"))) {
-            titleOfMotoModel = titleOfVisibleTopModels().get(0).getText();
-            countOfClick++;
-            activeLinkForwardOfTopModel().click();
-            titleOfVisibleTopModels().get(0).shouldNotHave(exactText(titleOfMotoModel));
+        while (linkForwardOfTopModel().isDisplayed()) {
+            for (int i = 0; i < titleOfVisibleTopModels().size(); i++) {
+                titleOfVisibleTopModels().get(i).shouldBe(visible);
+            }
+            linkForwardOfTopModel().click();
+            countOfClickRight++;
         }
-        Assert.assertEquals(countOfClick, 3);
+        Assert.assertEquals(countOfClickRight, 3);
+        linkBackOfTopModel().should(appear);
         return this;
     }
 
     @Step("scroll to left of TOP models block .Moto_main_page")
     public Moto_main_page_Logic scrollToLeftOfTopModelsBlock() {
-        int countOfClick = 0;
-        String titleOfMotoModel;
-
-        while (!linkBackOfTopModel().has(attribute("class", "bx-prev disabled"))) {
-            titleOfMotoModel = titleOfVisibleTopModels().get(0).getText();
-            countOfClick++;
-            activeLinkBackOfTopModel().click();
-            titleOfVisibleTopModels().get(0).shouldNotHave(exactText(titleOfMotoModel));
+        int countOfClickLeft = 0;
+        while (linkBackOfTopModel().isDisplayed()) {
+            for (int i = 0; i < titleOfVisibleTopModels().size(); i++) {
+                titleOfVisibleTopModels().get(i).shouldBe(visible);
+            }
+            linkBackOfTopModel().click();
+            countOfClickLeft++;
         }
-        Assert.assertEquals(countOfClick, 3);
+        Assert.assertEquals(countOfClickLeft, 3);
         return this;
+    }
+
+    @Step("hover on TOP motorcycle models .Moto_main_page")
+    public Moto_main_page_Logic hoverOnTopMotoModels() {
+        String titleOfMotoModel;
+        topModelsBlock().scrollTo();
+        checkColorOfTopModels();
+        while (linkForwardOfTopModel().isDisplayed()) {
+            titleOfMotoModel = titleOfVisibleTopModels().get(0).getText();
+            activeLinkForwardOfTopModel().click();
+            titleOfVisibleTopModels().get(0).shouldBe(visible).shouldNotHave(exactText(titleOfMotoModel));
+            checkColorOfTopModels();
+        }
+        return this;
+    }
+
+    @Step("check color of TOP models block .Moto_main_page")
+    public Moto_main_page_Logic checkColorOfTopModels() {
+        for (int i = 0; i < titleTopModelsBlock().size(); i++) {
+            titleTopModelsBlock().get(i).shouldBe(visible).shouldHave(cssValue("color", "rgba(0, 0, 0, 1)"));
+            titleTopModelsBlock().get(i).shouldBe(visible).hover();
+            titleTopModelsBlock().get(i).shouldBe(visible).shouldHave(cssValue("color", "rgba(255, 255, 255, 1)"));
+        }
+        return this;
+    }
+
+    @Step("select TOP motorcycle model from block .Moto_main_page")
+    public Moto_Catalog_model_page_Logic selectTopMotoModelsFromBlock(int position) {
+        topModelsBlock().shouldBe(visible);
+        titleOfVisibleTopModels().get(position).click();
+        return page(Moto_Catalog_model_page_Logic.class);
+    }
+
+    @Step("presence of TOP products block .Moto_main_page")
+    public Moto_main_page_Logic presenceOfTopProductsBlock() {
+        topProductsBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("presence of TOP products block .Moto_main_page")
+    public Moto_main_page_Logic presenceOfTopProductsHeadline() {
+        headlineOfTopProductsBlock().shouldBe(visible).shouldHave(text("Neue Motorradteile im Sortiment"));
+        return this;
+    }
+
+    @Step("check count of TOP products .Moto_main_page")
+    public Moto_main_page_Logic checkCountOfTopProducts() {
+        topProducts().shouldHaveSize(12);
+        return this;
+    }
+
+    @Step("get brand from TOP product title .Moto_main_page")
+    public String getBrandFromTopProductTitle() {
+        String titleOfBrand = titleOfTopProducts().get(0).getText().replace(titleOfTopProducts().get(0).getText().substring(titleOfTopProducts().get(0).getText().lastIndexOf(" ")), "").toLowerCase();
+        return titleOfBrand;
+    }
+
+    @Step("Go to product page from tecDoc listing through Image, icon of brand, title in tecDoc listing .Moto_main_page")
+    public Moto_main_page_Logic goToProductPageFromTopBlock(String brand) {
+        clickOnImageOfTopProduct().checkUrlOfProductPage("autodoc.de/" + brand + "/");
+        back();
+        return this;
+    }
+
+    @Step("click on image of TOP product .Moto_main_page")
+    public Moto_Product_page_Logic clickOnImageOfTopProduct() {
+        imageOfTopProducts().get(0).click();
+        return page(Moto_Product_page_Logic.class);
     }
 }
