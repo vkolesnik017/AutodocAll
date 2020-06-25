@@ -466,11 +466,12 @@ public class Moto_main_page_Logic extends Moto_main_page {
         int countOfClick = 0;
         String titleOfMotoModel;
         topModelsBlock().scrollTo();
-        while (!linkForwardOfTopModel().has(attribute("class", "bx-next disabled"))) {
+        while (linkForwardOfTopModel().isDisplayed()) {
             titleOfMotoModel = titleOfVisibleTopModels().get(0).getText();
-            countOfClick++;
             activeLinkForwardOfTopModel().click();
-            titleOfVisibleTopModels().get(0).shouldNotHave(exactText(titleOfMotoModel));
+            if (!titleOfVisibleTopModels().get(0).getText().equals(titleOfMotoModel)) {
+                countOfClick++;
+            }
         }
         Assert.assertEquals(countOfClick, 3);
         return this;
@@ -480,12 +481,12 @@ public class Moto_main_page_Logic extends Moto_main_page {
     public Moto_main_page_Logic scrollToLeftOfTopModelsBlock() {
         int countOfClick = 0;
         String titleOfMotoModel;
-
-        while (!linkBackOfTopModel().has(attribute("class", "bx-prev disabled"))) {
+        while (linkBackOfTopModel().isDisplayed()) {
             titleOfMotoModel = titleOfVisibleTopModels().get(0).getText();
-            countOfClick++;
             activeLinkBackOfTopModel().click();
-            titleOfVisibleTopModels().get(0).shouldNotHave(exactText(titleOfMotoModel));
+            if (!titleOfVisibleTopModels().get(0).getText().equals(titleOfMotoModel)) {
+                countOfClick++;
+            }
         }
         Assert.assertEquals(countOfClick, 3);
         return this;
@@ -495,7 +496,7 @@ public class Moto_main_page_Logic extends Moto_main_page {
     public Moto_main_page_Logic hoverOnTopMotoModels() {
         topModelsBlock().scrollTo();
         checkColorOfTopModels();
-        while (!linkForwardOfTopModel().has(attribute("class", "bx-next disabled"))) {
+        while (linkForwardOfTopModel().isDisplayed()) {
             activeLinkForwardOfTopModel().click();
             checkColorOfTopModels();
         }
@@ -546,6 +547,7 @@ public class Moto_main_page_Logic extends Moto_main_page {
     @Step("Go to product page from tecDoc listing through Image, icon of brand, title in tecDoc listing .Moto_main_page")
     public Moto_main_page_Logic goToProductPageFromTopBlock(String brand) {
         clickOnImageOfTopProduct().checkUrlOfProductPage("autodoc.de/" + brand + "/");
+        back();
         return this;
     }
 

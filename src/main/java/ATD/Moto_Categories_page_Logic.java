@@ -254,7 +254,7 @@ public class Moto_Categories_page_Logic extends Moto_Categories_page {
     @Step("check sorting intermediate child categories first level .Moto_Categories_page")
     public Moto_Categories_page_Logic checkSortingIntermediateChildCategoriesFirstLevel(int position) {
         for (int j = 0; j < intermediateChildCategoriesFirstLevel(position + 1).size(); j++) {
-            intermediateChildCategoriesFirstLevel(position + 1).get(j).click();
+            intermediateChildCategoriesFirstLevel(position + 1).get(j).shouldBe(visible).click();
             //  childCategoriesSecondLevelBlock().should(appear);
             secondLevelBlock().should(appear);
             sortingOfChildCategories(childCategoriesSecondLevel(position + 1));
