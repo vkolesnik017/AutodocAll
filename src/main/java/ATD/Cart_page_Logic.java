@@ -180,4 +180,10 @@ public class Cart_page_Logic extends Cart_page {
     public String getNameTitleProduct() {
       return titleNameProduct().getText();
     }
+
+    @Step("Checks presence bonus sticker. Cart_page")
+    public Cart_page_Logic checkPresenceBonusSticker() {
+        bonusSticker().shouldBe(visible);
+        return this;
+    }
 }
