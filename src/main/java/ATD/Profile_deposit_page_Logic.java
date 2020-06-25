@@ -42,4 +42,45 @@ public class Profile_deposit_page_Logic extends Profile_deposit_page{
         new Profile_bonusSystem_page_Logic().checkPaginationBlock();
         return this;
     }
+
+    @Step(":from Profile_deposit_page_Logic")
+    public Profile_deposit_page_Logic checkForTextInBlockTopTitle(String expectedText) {
+        new Profile_addresses_page_Logic().checkForTextInBlockTopTitle(expectedText);
+        return this;
+    }
+
+    @Step(":from Profile_deposit_page_Logic")
+    public Profile_deposit_page_Logic checkPresenceClientID() {
+        new Profile_addresses_page_Logic().checkPresenceClientID();
+        return this;
+    }
+
+    @Step(":from Profile_deposit_page_Logic")
+    public Profile_deposit_page_Logic checkPresenceHeaderBlockAndElementInside() {
+        new Profile_addresses_page_Logic().checkPresenceHeaderBlockAndElementInside();
+        return this;
+    }
+
+    @Step("Checks presence title page. Profile_deposit_page_Logic")
+    public Profile_deposit_page_Logic checkPresenceTitlePage() {
+        titlePage().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checks presence columns in a table with deposit transaction and data inside. Profile_deposit_page_Logic")
+    public Profile_deposit_page_Logic checkPresenceColumnAndDataInsideTableWithDepositTransaction() {
+        columnTypeOfTransaction().shouldBe(visible);
+        typeOfTransactionInsideTable().shouldBe(visible);
+        columnData().shouldBe(visible);
+        dataInsideTable().shouldBe(visible);
+        columnQuantity().shouldBe(visible);
+        quantityInsideTable().shouldBe(visible);
+        columnBalance().shouldBe(visible);
+        balanceInsideTable().shouldBe(visible);
+        columnSerialNum().shouldBe(visible);
+        serialNumInsideTable().shouldBe(visible);
+        columnPdf().shouldBe(visible);
+        pdfInsideTable().shouldBe(visible);
+        return this;
+    }
 }

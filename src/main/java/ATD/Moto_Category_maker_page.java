@@ -43,4 +43,9 @@ public class Moto_Category_maker_page {
     SelenideElement headlineOfBrandsBlock() {return $x("//h3[@class='title_list no_border_top pad_size']");}
 
     ElementsCollection brandsLinks() {return $$x("//div[@class='kategorie_top_brands']/ul/li").filter(visible);}
-}
+
+    SelenideElement brandsBlock() {return $x("//div[@class='kategorie_top_brands']");}
+
+    SelenideElement linkMoreOfBrandsBlock() {return $x("//div[@class='kategorie_top_brands']//div/div");}
+
+    }

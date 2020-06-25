@@ -69,6 +69,7 @@
             <class name="ATD.PrivateRoom.QC_868_DepositTabFunctionalInPR.QC_869_DepositAccrual"/>
             <class name="ATD.PrivateRoom.QC_868_DepositTabFunctionalInPR.QC_871_PdfDepositTransactionDocument"/>
             <class name="ATD.PrivateRoom.QC_868_DepositTabFunctionalInPR.QC_883_CheckPaginationBlockDepositTapPR"/>
+            <class name="ATD.PrivateRoom.QC_868_DepositTabFunctionalInPR.QC_925_DepositTapElementPR"/>
         </classes>
     </test>
 

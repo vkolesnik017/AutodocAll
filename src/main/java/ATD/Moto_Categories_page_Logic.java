@@ -224,6 +224,7 @@ public class Moto_Categories_page_Logic extends Moto_Categories_page {
 
     @Step("check sorting of child categories first level .Moto_Categories_page")
     public Moto_Categories_page_Logic checkSortingOfChildCategoriesFirstLevel(int position) {
+
         childCategoriesFirstLevelBlock().get(position).shouldBe(visible);
         if (childCategoriesFirstLevel(position + 1).get(0).isDisplayed() && intermediateChildCategoriesFirstLevel(position + 1).get(0).isDisplayed()) {
             sortingOfChildCategories(childCategoriesFirstLevel(position + 1));
@@ -233,7 +234,7 @@ public class Moto_Categories_page_Logic extends Moto_Categories_page {
         } else if (intermediateChildCategoriesFirstLevel(position + 1).get(0).isDisplayed()) {
             checkSortingIntermediateChildCategoriesFirstLevel(position);
         }
-        return this;
+               return this;
     }
 
     @Step("sorting of child categories first level .Moto_Categories_page")
@@ -254,7 +255,8 @@ public class Moto_Categories_page_Logic extends Moto_Categories_page {
     public Moto_Categories_page_Logic checkSortingIntermediateChildCategoriesFirstLevel(int position) {
         for (int j = 0; j < intermediateChildCategoriesFirstLevel(position + 1).size(); j++) {
             intermediateChildCategoriesFirstLevel(position + 1).get(j).click();
-            childCategoriesSecondLevelBlock().should(appear);
+          //  childCategoriesSecondLevelBlock().should(appear);
+            secondLevelBlock().should(appear);
             sortingOfChildCategories(childCategoriesSecondLevel(position + 1));
         }
         return this;

@@ -172,6 +172,14 @@
     <test name="QC_361_BrandsBlock">
         <classes>
             <class name="MOTO.QC_361_BrandsBlock.QC_362_PresenceOfBrandsBlock"/>
+            <class name="MOTO.QC_361_BrandsBlock.QC_363_AbilityToOpenedAndMinimizedBrandBlock"/>
+            <class name="MOTO.QC_361_BrandsBlock.QC_365_PresenceOfHeadlineAtTopCategories"/>
+        </classes>
+    </test>
+
+    <test name="QC_870_PresenceOfTopModels">
+        <classes>
+            <class name="MOTO.QC_870_TopModelsBlock.QC_872_PresenceOfTopModels"/>
         </classes>
     </test>
 </suite>

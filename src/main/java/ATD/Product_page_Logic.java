@@ -16,6 +16,7 @@ import java.util.Random;
 import static ATD.CommonMethods.*;
 import static ATD.CommonMethods.getCurrencyAndVerify;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
+import static com.codeborne.selenide.CollectionCondition.sizeLessThan;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -662,5 +663,19 @@ public class Product_page_Logic extends Product_page {
             String expectedCharacteristicsWithoutSpaces = expectedCharacteristics.get(a).replace(" ", "");
             Assert.assertEquals(actualCharacteristicsWithoutSpaces, expectedCharacteristicsWithoutSpaces);
         }
+    }
+
+    @Step("Check if reviews DE more than 20. Product_page")
+    public Product_page checkIfReviewsDEmoreThan20() {
+        allReviewsFromDE().shouldHave(sizeGreaterThan(19));
+        allReviewsExceptDE().shouldHaveSize(0);
+        return this;
+    }
+
+    @Step("Check if reviews DE less than 20. Product_page")
+    public Product_page checkIfReviewsDElessThan20() {
+        allReviewsFromDE().shouldHave(sizeLessThan(20));
+        allReviewsExceptDE().shouldHave(sizeGreaterThan(0));
+        return this;
     }
 }

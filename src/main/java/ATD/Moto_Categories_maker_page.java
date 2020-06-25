@@ -64,4 +64,5 @@ public class Moto_Categories_maker_page {
 
     SelenideElement titleOfModelsBlock() {return $x("//div[@class='moto-cars-models__title']");}
 
+    SelenideElement headlineOfTopParentCategories() {return $x("//div[@class='moto-parts-catalog']/strong");}
 }
