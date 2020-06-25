@@ -49,4 +49,10 @@ public class Profile_plus_page_Logic extends Profile_plus_page {
         profileDepositBtn().click();
         return page(Profile_deposit_page_Logic.class);
     }
+
+    @Step("Transition to My Order page. Profile_plus_page")
+    public Profile_orders_page_Logic goToMyOrdersPage() {
+        profileMyOrderBtn().click();
+        return page(Profile_orders_page_Logic.class);
+    }
 }

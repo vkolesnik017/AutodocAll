@@ -359,4 +359,10 @@ public class CartAllData_page_Logic extends CartAllData_page {
         idOfAddedProduct().shouldNotHave(attribute("data-article_id", idOfProduct));
         return this;
     }
+
+    @Step(":for CartAllData_page")
+    public CartAllData_page_Logic checkPresenceBonusSticker() {
+        new Cart_page_Logic().checkPresenceBonusSticker();
+        return this;
+    }
 }

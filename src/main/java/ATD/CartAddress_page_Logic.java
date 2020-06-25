@@ -56,6 +56,12 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return this;
     }
 
+    @Step("Fill field telephone number {telNum} for Shipping. CartAddress_page")
+    public CartAddress_page_Logic fillFieldTelNumForShipping(String telNum) {
+        checkCorrectTextAndFillInput(telephon(), telNum);
+        return this;
+    }
+
     @Step("Fill in all fields with default values and also fill fields Shop {shop}, Index {index}, Firm {nameFirm}, City {city} for Billing. CartAddress_page")
     public CartAddress_page_Logic fillAllFieldsAndFirmForBilling(String shopBilling, String indexBilling, String cityBilling, String nameFirmBilling) {
         if (!billingForm().isDisplayed()) {

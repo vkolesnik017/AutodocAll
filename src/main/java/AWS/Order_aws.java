@@ -30,6 +30,10 @@ public class Order_aws {
     private String orderNumber;
     private String url = "https://aws.autodoc.de/order/view/";
 
+    private SelenideElement orderID() {
+        return $x("//div[@class='col-md-6 col-sm-6']//div[1]//div[2]//div[9]");
+    }
+
     private SelenideElement filterHeader() {
         return $(".row-fluid");
     }
@@ -386,8 +390,24 @@ public class Order_aws {
         return $x("//td[21]");
     }
 
+    private SelenideElement currentStatusInOrder() {
+        return $x("//a[@class='btn btn-link btn-ajaxmode']");
+    }
 
 
+
+    @Step("Checks current status {expectedStatus} in order. Order_aws")
+    public Order_aws checkCurrentStatusInOrder(String expectedStatus) {
+        currentStatusInOrder().shouldHave(text(expectedStatus));
+        return this;
+    }
+
+
+    @Step("Get order ID of order. Order_aws")
+    public String getOrderIdOfOrder() {
+        String test = orderID().getText().substring(10);
+        return test;
+    }
 
     @Step("Checks the quantity of goods {expectedQuantity} in column count products. Order_aws")
     public Order_aws checkQuantityOfGoodsInColumnCountProduct(String expectedQuantity) {
@@ -578,9 +598,9 @@ public class Order_aws {
         return this;
     }
 
-    @Step
+    @Step("Checks presence a test phone number. Order_aes")
     public Order_aws checkOrderHasTestPhone() {
-        phoneNumberField().shouldHave(value("+002"));
+        phoneNumberField().shouldHave(or("value", value("+002"), value("+001")));
         testIcon().shouldBe(visible);
         return this;
     }
@@ -652,12 +672,12 @@ public class Order_aws {
         return page(Customer_view_aws.class);
     }
 
-    @Step("Re save order. Order_aws")
+    @Step("Re save order and change status in test. Order_aws")
     public Order_aws reSaveOrder() {
         btnChangeOrderStatusInTest().scrollTo();
         btnChangeOrderStatusInTest().click();
         saveChangesInOrderBtn().click();
-        sleep(2000);
+        sleep(5000);
         return this;
     }
 
