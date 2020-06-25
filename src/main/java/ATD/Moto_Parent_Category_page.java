@@ -39,4 +39,20 @@ public class Moto_Parent_Category_page {
     ElementsCollection breadCrumbsLinks() {return $$x("//div[@class='steps breadcrumbs']/ul/li//span/*[self::a or self::span]");}
 
     SelenideElement iconOfCatalogBrandInBreadCrumbs() {return $x("//li[@class='step_1 active parts_step_1']//img");}
+
+    SelenideElement topProductsBlock() {return $x("//ul[@class='list_products']");}
+
+    ElementsCollection topProducts() {return $$x("//ul[@class='list_products']/li");}
+
+    ElementsCollection btnAddToBasketTopProduct() {
+        return $$x("//div[@class='button ']");
+    }
+
+    SelenideElement basketDropMenu() {
+        return $x("//div[@class='cart-items-block ']");
+    }
+
+    SelenideElement basket() {
+        return $x("//a[@class='header-cart__link']");
+    }
 }
