@@ -174,18 +174,54 @@ public class Moto_Parent_Category_page_Logic extends Moto_Parent_Category_page {
         return this;
     }
 
-    @Step("get id of product in TecDoc Listing .Moto_Categories_page")
+    @Step("get id of product in TecDoc Listing .Moto_Parent_Category_page")
     public String getIdOfProductFromTecDocListing() {
         String idOfProduct = btnAddToBasketTopProduct().get(0).getAttribute("id");
         return idOfProduct;
     }
 
-    @Step("added product to basket .Moto_Categories_page")
+    @Step("added product to basket .Moto_Parent_Category_page")
     public Cart_page_Logic addProductToBasket() {
         btnAddToBasketTopProduct().get(0).click();
         basketDropMenu().should(appear);
         basketDropMenu().should(disappear);
         basket().click();
         return page(Cart_page_Logic.class);
+    }
+
+    @Step("get brand from TOP product title .Moto_Parent_Category_page")
+    public String getBrandFromTopProductTitle() {
+        String titleOfBrand = titleOfTopProducts().get(0).getText().replace(titleOfTopProducts().get(0).getText().substring(titleOfTopProducts().get(0).getText().lastIndexOf(" ")), "").toLowerCase(); //.replace(" ", "-");
+        String pathUrl = titleOfBrand.replace(titleOfBrand.substring(titleOfBrand.lastIndexOf(" ")), "");
+        return pathUrl;
+    }
+
+
+    @Step("Go to product page from TOP products block through Image, icon of brand, title in tecDoc listing .Moto_Parent_Category_page")
+    public Moto_Parent_Category_page_Logic goToProductPageFromTopBlock(String brand) {
+        clickOnImageOfTopProduct().checkUrlOfProductPage(brand);
+        back();
+        clickOnTitleOfTopProduct().checkUrlOfProductPage(brand);
+        back();
+        clickOnDetailsOfTopProduct().checkUrlOfProductPage(brand);
+        return this;
+    }
+
+    @Step("click on image of TOP product .Moto_Parent_Category_page")
+    public Moto_Product_page_Logic clickOnImageOfTopProduct() {
+        imageOfTopProducts().get(0).shouldBe(visible).click();
+        return page(Moto_Product_page_Logic.class);
+    }
+
+    @Step("click on title of TOP product .Moto_Parent_Category_page")
+    public Moto_Product_page_Logic clickOnTitleOfTopProduct() {
+        titleOfTopProducts().get(0).shouldBe(visible).click();
+        return page(Moto_Product_page_Logic.class);
+    }
+
+    @Step("click on details of TOP product .Moto_Parent_Category_page")
+    public Moto_Product_page_Logic clickOnDetailsOfTopProduct() {
+        btnDetailsOfTopProducts().get(0).shouldBe(visible).click();
+        return page(Moto_Product_page_Logic.class);
     }
 }

@@ -222,10 +222,15 @@ class Moto_main_page {
     }
 
     ElementsCollection titleOfTopProducts() {
-        return $$x("//div[@class='product-list__item__title']");
+        return $$x("//div[@class='product-list__item__title']/span");
     }
 
     ElementsCollection imageOfTopProducts() {
         return $$x("//div[@class='product-list__item__image']/*[self::a or self::span]/img");
     }
+
+    ElementsCollection detailsOfTopProductsBlock() {return $$x("//div[@class='product-list__item__popup']");}
+
+    ElementsCollection btnDetailsOfTopProducts() {return $$x("//div[@class='item-table-box__details']/span");}
+
 }
