@@ -99,7 +99,7 @@ public class Listing_accessories_page {
     }
 
     ElementsCollection titleNameProductsFromListing() {
-        return $$x("//div[@class='listing-wrap']//div[@class='name']/span[@class='ga-click link']");
+        return $$x("//div[@class='listing-wrap']//div[@class='name']/a[@class='ga-click']");
     }
 
     SelenideElement btnPrevInBlockBrands() {
@@ -123,11 +123,11 @@ public class Listing_accessories_page {
     }
 
     SelenideElement btnNextPageInPagination() {
-        return $x("//div[@class='page_list'][1]//span[@class='next']");
+        return $x("//div[@class='page_list'][1]//span[@class='next'][1]");
     }
 
     SelenideElement btnLastPageInPagination() {
-        return $x("//div[@class='page_list'][1]//span[@class='last']");
+        return $x("//div[@class='page_list'][1]//span[@class='next'][2]");
     }
 
     SelenideElement btnSecondPageInPagination() {
