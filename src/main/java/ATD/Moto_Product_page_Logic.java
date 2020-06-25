@@ -12,7 +12,6 @@ import java.util.List;
 import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.WebDriverRunner.source;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class Moto_Product_page_Logic extends Moto_Product_page {

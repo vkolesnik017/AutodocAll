@@ -191,7 +191,7 @@ public class Moto_Parent_Category_page_Logic extends Moto_Parent_Category_page {
 
     @Step("get brand from TOP product title .Moto_Parent_Category_page")
     public String getBrandFromTopProductTitle() {
-        String titleOfBrand = titleOfTopProducts().get(0).getText().replace(titleOfTopProducts().get(0).getText().substring(titleOfTopProducts().get(0).getText().lastIndexOf(" ")), "").toLowerCase(); //.replace(" ", "-");
+        String titleOfBrand = titleOfTopProducts().get(0).getText().replace(titleOfTopProducts().get(0).getText().substring(titleOfTopProducts().get(0).getText().lastIndexOf(" ")), "").toLowerCase(); 
         String pathUrl = titleOfBrand.replace(titleOfBrand.substring(titleOfBrand.lastIndexOf(" ")), "");
         return pathUrl;
     }
