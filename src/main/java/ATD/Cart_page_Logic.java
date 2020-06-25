@@ -186,4 +186,10 @@ public class Cart_page_Logic extends Cart_page {
         bonusSticker().shouldBe(visible);
         return this;
     }
+
+    @Step("Checks absence bonus sticker. Cart_page")
+    public Cart_page_Logic checkAbsenceBonusSticker() {
+        bonusSticker().shouldNotBe(visible);
+        return this;
+    }
 }

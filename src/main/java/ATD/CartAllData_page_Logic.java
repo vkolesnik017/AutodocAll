@@ -365,4 +365,10 @@ public class CartAllData_page_Logic extends CartAllData_page {
         new Cart_page_Logic().checkPresenceBonusSticker();
         return this;
     }
+
+    @Step(":for CartAllData_page")
+    public CartAllData_page_Logic checkAbsenceBonusSticker() {
+        new Cart_page_Logic().checkAbsenceBonusSticker();
+        return this;
+    }
 }

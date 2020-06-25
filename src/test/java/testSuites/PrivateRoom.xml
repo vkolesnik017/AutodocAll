@@ -76,6 +76,7 @@
     <test name="QC_1861_BonusesInOrder_PR">
     <classes>
         <class name="ATD.PrivateRoom.QC_1861_BonusesInOrder_PR.QC_1853_DisplayingOfBonusesInOrderAfterPlacingOrderWithBonuses"/>
+        <class name="ATD.PrivateRoom.QC_1861_BonusesInOrder_PR.QC_1852_DisplayingOfBonusesInOrderAfterPlacingOrderWithoutBonuses"/>
         </classes>
     </test>
 
