@@ -38,7 +38,6 @@ public class QC_872_PresenceOfTopModels {
         new Moto_main_page_Logic()
         .presenceOfTopModelsBlock()
         .checkTopModelsBlock();
-
     }
 
     @AfterMethod

@@ -44,6 +44,9 @@ public class Moto_Category_car_list_page {
     SelenideElement lastForwardOfPagination() {
         return $x("//span[@class='last']/a");
     }
+    SelenideElement lastForwardLinkOfPagination() {
+        return $x("//div[@class='pagination']//span[@class='next'][2]/a");
+    }
 
     SelenideElement nextForwardOfPagination() {
         return $x("//span[@class='next']/a");

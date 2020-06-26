@@ -28,7 +28,7 @@ public class QC_1681_HeavyLoadsFR_NegativeCaseAllData {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product19");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "HeavyLoasdProduct1");
     }
 
     @Test(dataProvider = "route")
@@ -48,15 +48,15 @@ public class QC_1681_HeavyLoadsFR_NegativeCaseAllData {
                 .checkPresencePopUpCountryDeliveryLimit()
                 .checkAbsenceBtnChangeAddressInDeliveryPopup()
                 .closePopUpDeliveryLimitCartAllDataPage()
-                .checkAbsenceGoodInCartPage("7037462")
+                .checkAbsenceGoodInCartPage("1290766")
                 .checkPresenceGoodInCardPage("7807629")
                 .checkPresenceSafeOrderBlock()
                 .checkPresenceRegularDeliveryPrice()
                 .checkAbsenceHeavyLoadsDeliveryPrice();
-        openPage(route);
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "HeavyLoasdProduct1"));
         product_page_logic.addProductToCart().closePopupOtherCategoryIfYes().cartClick();
         new CartAllData_page_Logic().deleteGoodsInDeliveryPopupCartAllDataPage()
-                .checkAbsenceGoodInCartPage("7037462")
+                .checkAbsenceGoodInCartPage("1290766")
                 .checkPresenceGoodInCardPage("7807629")
                 .checkPresenceSafeOrderBlock()
                 .checkPresenceRegularDeliveryPrice()
