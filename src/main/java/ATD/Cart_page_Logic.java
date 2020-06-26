@@ -181,6 +181,12 @@ public class Cart_page_Logic extends Cart_page {
       return titleNameProduct().getText();
     }
 
+    @Step("Checks presence bonus sticker. Cart_page")
+    public Cart_page_Logic checkPresenceBonusSticker() {
+        bonusSticker().shouldBe(visible);
+        return this;
+    }
+
     @Step("Check article number of product. Cart_page")
     public Cart_page_Logic checkArticleNumberOfProduct(String productArticle) {
         articleNumber().shouldHave(text(productArticle));

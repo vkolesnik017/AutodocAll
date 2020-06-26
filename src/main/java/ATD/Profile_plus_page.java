@@ -27,4 +27,8 @@ public class Profile_plus_page {
     SelenideElement profileDepositBtn() {
         return $x("//a[@data-ga-action='Sidebar_MyDepositAccount']");
     }
+
+    SelenideElement profileMyOrderBtn() {
+        return $x("//a[@data-ga-action='Sidebar_MyOrders']");
+    }
 }

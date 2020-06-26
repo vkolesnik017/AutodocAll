@@ -139,4 +139,8 @@ public class Cart_page {
     }
 
     SelenideElement articleNumber() { return $(".info__nr"); }
+
+    SelenideElement bonusSticker() {
+        return $(".bonus-sticker");
+    }
 }

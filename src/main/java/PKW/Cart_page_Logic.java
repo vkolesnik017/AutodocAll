@@ -1,6 +1,5 @@
 package PKW;
 
-import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.*;
@@ -37,4 +36,11 @@ public class Cart_page_Logic extends Cart_page{
         emptyCart().shouldBe(visible);
         return this;
     }
+
+    @Step("Get name added product in basket. Cart_page")
+    public String getNameAddedProductInBasket() {
+        return nameProduct().getText();
+    }
+
+
 }
