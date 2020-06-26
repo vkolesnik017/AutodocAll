@@ -61,4 +61,6 @@ public class Moto_Parent_Category_page {
     ElementsCollection  imageOfTopProducts() {return $$x("//div[@class='image']/span[2]/img");}
 
     ElementsCollection  btnDetailsOfTopProducts() {return $$x("//div[@class='about']/div/following-sibling::button");}
+
+    ElementsCollection titleOfTopProduct() {return $$x("//div[@class='name']/a");}
 }

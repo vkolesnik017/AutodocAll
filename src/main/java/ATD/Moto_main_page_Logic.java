@@ -7,7 +7,8 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.back;
+import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class Moto_main_page_Logic extends Moto_main_page {
@@ -575,4 +576,36 @@ public class Moto_main_page_Logic extends Moto_main_page {
         btnDetailsOfTopProducts().get(0).shouldBe(visible).click();
         return page(Moto_Product_page_Logic.class);
     }
+
+    @Step("visibility of PopUp with addition information .Moto_main_page")
+    public Moto_main_page_Logic visibilityOfPopUpWithAdditionInfo() {
+        hoverOnTopProduct();
+        if (linkForwardOfTopProductBlock().isDisplayed()) {
+            linkForwardOfTopProductBlock().click();
+            hoverOnTopProduct();
+        }
+        return this;
+    }
+
+    @Step("hover on TOP product .Moto_main_page")
+    public Moto_main_page_Logic hoverOnTopProduct() {
+        for (int i = 0; i < visibleTitleOfTopProducts().size(); i++) {
+            visibleTitleOfTopProducts().get(i).shouldBe(visible).hover();
+            visibleDetailsOfTopProductsBlock().get(0).shouldBe(visible);
+            headlineOfTopProductBlock().hover();
+        }
+        return this;
+    }
+
+
+    @Step("presence of navigation arrows .Moto_main_page")
+    public Moto_main_page_Logic presenceOfNavigationArrows() {
+        String currentTitleOfTopProduct = visibleTitleOfTopProducts().get(0).getText();
+        activeLinkForwardOfTopProductBlock().shouldBe(visible).click();
+        visibleTitleOfTopProducts().get(0).shouldNotHave(exactText(currentTitleOfTopProduct));
+        linkBackOfTopProductBlock().shouldBe(visible);
+        return this;
+    }
+
+
 }

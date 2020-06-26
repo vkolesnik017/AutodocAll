@@ -192,6 +192,10 @@
             <class name="MOTO.QC_319_TopProductsBlock.QC_322_TotalCountOfTopProducts"/>
             <class name="MOTO.QC_319_TopProductsBlock.QC_323_AddTopProductToBasket"/>
             <class name="MOTO.QC_319_TopProductsBlock.QC_324_TransitionToProductPageFromTopBlock"/>
+            <class name="MOTO.QC_319_TopProductsBlock.QC_325_VisibilityOfTopProductCharacteristicByHover"/>
+            <class name="MOTO.QC_319_TopProductsBlock.QC_326_PresenceOfNavigationArrowsInTopBlock"/>
+            <class name="MOTO.QC_319_TopProductsBlock.QC_327_MatchingOfGenericAndTopProduct"/>
+            <class name="MOTO.QC_319_TopProductsBlock.QC_328_ApplicabilityProductsToBrandPage"/>
         </classes>
     </test>
 </suite>

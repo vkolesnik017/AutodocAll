@@ -5,6 +5,9 @@ import io.qameta.allure.Step;
 import org.testng.Assert;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 
 import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.CollectionCondition.*;
@@ -191,7 +194,7 @@ public class Moto_Parent_Category_page_Logic extends Moto_Parent_Category_page {
 
     @Step("get brand from TOP product title .Moto_Parent_Category_page")
     public String getBrandFromTopProductTitle() {
-        String titleOfBrand = titleOfTopProducts().get(0).getText().replace(titleOfTopProducts().get(0).getText().substring(titleOfTopProducts().get(0).getText().lastIndexOf(" ")), "").toLowerCase(); 
+        String titleOfBrand = titleOfTopProducts().get(0).getText().replace(titleOfTopProducts().get(0).getText().substring(titleOfTopProducts().get(0).getText().lastIndexOf(" ")), "").toLowerCase();
         String pathUrl = titleOfBrand.replace(titleOfBrand.substring(titleOfBrand.lastIndexOf(" ")), "");
         return pathUrl;
     }
@@ -224,4 +227,28 @@ public class Moto_Parent_Category_page_Logic extends Moto_Parent_Category_page {
         btnDetailsOfTopProducts().get(0).shouldBe(visible).click();
         return page(Moto_Product_page_Logic.class);
     }
+
+
+    @Step("check generic and TOP product .Moto_Parent_Category_page")
+    public Moto_Parent_Category_page_Logic checkGenericAndTopProduct() {
+        List<String> genericFromBlock = new ArrayList<>();
+        for (int i = 0; i < textOfChildCategoriesList().size(); i++) {
+            genericFromBlock.add(textOfChildCategoriesList().get(i).getText());
+        }
+        HashSet<String> genericFromTitle = new HashSet<String>();
+        for (int i = 0; i < titleOfTopProduct().size(); i++) {
+            genericFromTitle.add(getGenericFromTitleOfTopProduct(titleOfTopProduct().get(i).getText()));
+        }
+        genericFromBlock.containsAll(genericFromTitle);
+        return this;
+    }
+
+
+    @Step("get generic from title of TOP product .Moto_Parent_Category_page")
+    public String getGenericFromTitleOfTopProduct(String titleOfProduct) {
+        String brand = titleOfProduct.replace(titleOfProduct.substring(titleOfProduct.lastIndexOf(" ")), "");
+        String generic = titleOfProduct.replace(brand, "");
+        return generic;
+    }
+
 }

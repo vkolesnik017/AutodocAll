@@ -233,4 +233,24 @@ class Moto_main_page {
 
     ElementsCollection btnDetailsOfTopProducts() {return $$x("//div[@class='item-table-box__details']/span");}
 
+    ElementsCollection visibleTitleOfTopProducts() {
+        return $$x("//div[@class='product-list__item__title']/span").filter(visible);
+    }
+
+    ElementsCollection visibleDetailsOfTopProductsBlock() {return $$x("//div[@class='product-list__item__popup']").filter(visible);}
+
+    SelenideElement headlineOfTopProductBlock() {return $x("//*[self::div[@class='moto-top-product__title'] or self::b[@class='moto-top-products__title']]");}
+
+    SelenideElement linkForwardOfTopProductBlock() {
+        return $x("//div[@class='moto-top-products']//a[@class='bx-next']");
+    }
+
+    SelenideElement linkBackOfTopProductBlock() {
+        return $x("//*[self::div[@class='moto-top-product'] or self::div[@class='moto-top-products']]//a[@class='bx-prev']");
+    }
+
+    SelenideElement activeLinkForwardOfTopProductBlock() {
+        return $x("//*[self::div[@class='moto-top-product'] or self::div[@class='moto-top-products']]//a[@class='bx-next']");
+    }
+
 }

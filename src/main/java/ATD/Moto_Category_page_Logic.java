@@ -281,4 +281,22 @@ public class Moto_Category_page_Logic extends Moto_Category_page {
         return page(Moto_Product_page_Logic.class);
     }
 
+    @Step("visibility of PopUp with addition information .Moto_Category_page")
+    public Moto_Category_page_Logic visibilityOfPopUpWithAdditionInfo() {
+        for (int i = 0; i < imageOfTopProducts().size(); i++) {
+            imageOfTopProducts().get(i).shouldBe(visible).hover();
+            detailsOfTopProductsBlock().get(i).shouldBe(visible);
+            headlineOfTopProductsBlock().hover();
+        }
+        return this;
+    }
+
+        @Step("visibility of PopUp with addition information .Moto_Category_page")
+    public Moto_Category_page_Logic checkGenericAndTopProduct() {
+        for (int i = 0; i <  titleOfTopProducts().size(); i++) {
+             titleOfTopProducts().get(i).shouldHave(text("Ölfilter"));
+        }
+        return this;
+    }
+
 }
