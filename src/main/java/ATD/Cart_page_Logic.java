@@ -180,4 +180,10 @@ public class Cart_page_Logic extends Cart_page {
     public String getNameTitleProduct() {
       return titleNameProduct().getText();
     }
+
+    @Step("Check article number of product. Cart_page")
+    public Cart_page_Logic checkArticleNumberOfProduct(String productArticle) {
+        articleNumber().shouldHave(text(productArticle));
+        return this;
+    }
 }

@@ -1178,5 +1178,22 @@ public class Listing_page_Logic extends Listing_page {
         waitUntilPreloaderDisappear();
         return this;
     }
+
+    @Step("Check generic and article number in first product. Listing_page")
+    public Listing_page_Logic checkGenericAndArticleInFirstProduct(String expectedTextInTitle, String articleNumber) {
+        firstProductTitleOnListing().shouldHave(text(expectedTextInTitle));
+        productArticleOnListing().shouldHave(text(articleNumber));
+        return this;
+    }
+
+    @Step("Check generic and OEM number. Listing_page")
+    public Listing_page_Logic checkGenericAndArticleAndOEMnumber(String genericName, String articleName, String oemHighlightNumber) {
+        listProducts().shouldBe(visible);
+        cortecoProduct().shouldHave(text(genericName));
+        cortecoArticle().shouldHave(text(articleName));
+        cortecoOEMnumber().shouldHave(text(oemHighlightNumber));
+        cortecoAddToBasketButton().click();
+        return this;
+    }
 }
 
