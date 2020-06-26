@@ -33,6 +33,10 @@ public class CartAllData_page {
         return $(byXpath("//*[@class='alldata-bottom']//*[@class='free_icon']"));
     }
 
+    SelenideElement labelVAT() {
+        return $x("//*[@class='alldata-bottom']//*[contains(@class,'total')]//i");
+    }
+
     SelenideElement fieldWithQuantityOfProducts() {
         return $(byCssSelector(".qty>input"));
     }

@@ -32,7 +32,7 @@ public class Login_page_mob_Logic extends Login_page_mob {
     @Step("Login from facebook {mail}, {password}. Login_page_mob")
     public Profile_page_mob_Logic signInFromFB(String mail, String pass) {
         loginBtnForFaceBook().click();
-        switchTo().window(1);
+        switchTo().window(2);
         emailFieldForFB().setValue(mail);
         passFieldFB().setValue(pass);
         loginBtnFB().click();

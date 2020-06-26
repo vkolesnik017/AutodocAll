@@ -56,8 +56,8 @@ public class QC_1396_SplitBilling_FirmAndPhysicalPerson_DifferentCountries_Posit
                 .cartClick()
                 .nextButtonClick()
                 .signIn(emailGB, password)
-                .fillAllFieldsAndFirmForShipping("EN", "YO10 4NT", "Gear4music Limited", "York")
-                .fillFieldIdCompanyShipping("552033282")
+                .fillAllFieldsAndFirmForShipping("BE", "1070", "SPRL Brasserie Cantillon", "Anderlecht")
+                .fillFieldIdCompanyShipping("0402065988")
                 .clickCheckboxBilling()
                 .chooseDeliveryCountryForBilling("PL")
                 .fillingPostalCodeFieldJSForBilling("11111")
@@ -65,7 +65,7 @@ public class QC_1396_SplitBilling_FirmAndPhysicalPerson_DifferentCountries_Posit
                 .chosseUnicreditBank()
                 .nextBtnClick()
                 .checkAbsenceOfVatPercentage()
-                .checkTextInDeliveryAddressInfoBlock("Company Gear4music Limited")
+                .checkTextInDeliveryAddressInfoBlock("Company SPRL Brasserie Cantillon")
                 .checkTextInPayersAddressInfoBlock("autotest autotest")
                 .getPriceIncludingVat(vatForGB);
         prunedPriceWithVatGB = cutPriceToFirstDecimalPlace(priceWithVatPerAllDataPageGB);
@@ -96,13 +96,13 @@ public class QC_1396_SplitBilling_FirmAndPhysicalPerson_DifferentCountries_Posit
         order_aws.clickCustomerId();
         switchTo().window(2);
         new Customer_view_aws().checkPresenceBlockLogsCompanyNumbers()
-                .checkIdCompanyInBlockLogsCompanyNumbers("GB552033282")
+                .checkIdCompanyInBlockLogsCompanyNumbers("BE0402065988")
                 .checkResponseInBlockLogsCompanyNumbers("success(200)")
                 .checkBillingOrShippingInBlockLogsCompanyNumbers("shipping");
         totalPriceInEmailGB = mailinator.openEmail("qc_1396_autotestGB@mailinator.com")
                 .openLetter(1)
                 .checkAbsenceVatPercentageInEmail()
-                .checkSecondFirmNameInEmail("Gear4music Limited")
+                .checkSecondFirmNameInEmail("SPRL Brasserie Cantillon")
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPriceGB, totalPriceInEmailGB);
         unitPriceGB = mailinator.getUnitPriceInEmail();
@@ -124,7 +124,7 @@ public class QC_1396_SplitBilling_FirmAndPhysicalPerson_DifferentCountries_Posit
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks the successful execution of an order with split billing, firm and physical person, " +
-                         "Different Countries, for DE shop. Positive Case. Positive Case")
+            "Different Countries, for DE shop. Positive Case. Positive Case")
     public void testSuccessfulPlacementOfOrder_NonSplitBillingAndShipping_DE(String routeDE) {
         vatForDE = new PageVAT_aws().getVatForDE();
         openPage(routeDE);
@@ -133,8 +133,8 @@ public class QC_1396_SplitBilling_FirmAndPhysicalPerson_DifferentCountries_Posit
                 .cartClick()
                 .nextButtonClick()
                 .signIn(emailDE, password)
-                .fillAllFieldsAndFirmForShipping("EN", "YO10 4NT", "Gear4music Limited", "York")
-                .fillFieldIdCompanyShipping("552033282")
+                .fillAllFieldsAndFirmForShipping("BE", "1070", "SPRL Brasserie Cantillon", "Anderlecht")
+                .fillFieldIdCompanyShipping("0402065988")
                 .clickCheckboxBilling()
                 .chooseDeliveryCountryForBilling("PL")
                 .fillingPostalCodeFieldJSForBilling("11111")
@@ -142,7 +142,7 @@ public class QC_1396_SplitBilling_FirmAndPhysicalPerson_DifferentCountries_Posit
                 .chooseVorkasse()
                 .nextBtnClick()
                 .checkAbsenceOfVatPercentage()
-                .checkTextInDeliveryAddressInfoBlock("Firma Gear4music Limited")
+                .checkTextInDeliveryAddressInfoBlock("Firma SPRL Brasserie Cantillon")
                 .checkTextInPayersAddressInfoBlock("autotest autotest")
                 .getPriceIncludingVat(vatForDE);
         prunedPriceWithVatDE = cutPriceToFirstDecimalPlace(priceWithVatPerAllDataPageDE);
@@ -173,13 +173,13 @@ public class QC_1396_SplitBilling_FirmAndPhysicalPerson_DifferentCountries_Posit
         order_aws.clickCustomerId();
         switchTo().window(2);
         new Customer_view_aws().checkPresenceBlockLogsCompanyNumbers()
-                .checkIdCompanyInBlockLogsCompanyNumbers("GB552033282")
+                .checkIdCompanyInBlockLogsCompanyNumbers("BE0402065988")
                 .checkResponseInBlockLogsCompanyNumbers("success(200)")
                 .checkBillingOrShippingInBlockLogsCompanyNumbers("shipping");
         totalPriceInEmailDE = mailinator.openEmail("qc_1396_autotestDE@mailinator.com")
                 .openLetter(1)
                 .checkAbsenceVatPercentageInEmail()
-                .checkSecondFirmNameInEmail("Gear4music Limited")
+                .checkSecondFirmNameInEmail("SPRL Brasserie Cantillon")
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPriceDE, totalPriceInEmailDE);
         unitPriceDE = mailinator.getUnitPriceInEmail();
