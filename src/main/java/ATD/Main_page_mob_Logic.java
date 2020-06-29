@@ -16,8 +16,9 @@ public class Main_page_mob_Logic extends Main_page_mob {
     @Step("Closing first appearing popup. Main_page_mob")
     public Main_page_mob_Logic closeFirstPopup() {
         firstPopup().click();
+        switchTo().window(1);
         Wait().until(WebDriver -> url().contains("apps.apple.com"));
-        back();
+        switchTo().window(0);
         return this;
     }
 

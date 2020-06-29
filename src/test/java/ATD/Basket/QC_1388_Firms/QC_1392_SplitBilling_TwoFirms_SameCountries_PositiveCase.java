@@ -55,15 +55,15 @@ public class QC_1392_SplitBilling_TwoFirms_SameCountries_PositiveCase {
                 .cartClick()
                 .nextButtonClick()
                 .signIn(emailGB, password)
-                .fillAllFieldsAndFirmForShipping(shop, "NG11GF", "North 51 Ltd", "BioCity")
+                .fillAllFieldsAndFirmForShipping("BE", "NG11GF", "North 51 Ltd", "BioCity")
                 .fillFieldIdCompanyShipping("789964142")
-                .fillAllFieldsAndFirmForBilling(shop, "YO104NT", "York", "Gear4music Limited")
-                .fillFieldIdCompanyBilling("552033282")
+                .fillAllFieldsAndFirmForBilling("BE", "1070", "Anderlecht", "SPRL Brasserie Cantillon")
+                .fillFieldIdCompanyBilling("0402065988")
                 .nextBtnClick()
                 .chosseUnicreditBank()
                 .nextBtnClick()
                 .checkTextInDeliveryAddressInfoBlock("Company North 51 Ltd")
-                .checkTextInPayersAddressInfoBlock("Company Gear4music Limited")
+                .checkTextInPayersAddressInfoBlock("Company SPRL Brasserie Cantillon")
                 .checkAbsenceOfVatPercentage()
                 .getPriceIncludingVat(vatForGB);
         prunedPriceWithVatGB = cutPriceToFirstDecimalPlace(priceWithVatPerAllDataPageGB);
@@ -89,13 +89,13 @@ public class QC_1392_SplitBilling_TwoFirms_SameCountries_PositiveCase {
         order_aws.clickCustomerId();
         switchTo().window(2);
         new Customer_view_aws().checkPresenceBlockLogsCompanyNumbers()
-                .checkIdCompanyInBlockLogsCompanyNumbers("GB552033282")
+                .checkIdCompanyInBlockLogsCompanyNumbers("BE0402065988")
                 .checkResponseInBlockLogsCompanyNumbers("success(200)")
                 .checkBillingOrShippingInBlockLogsCompanyNumbers("billing");
         totalPriceInEmailGB = new Mailinator().openEmail("qc_1392_autotestGB@mailinator.com")
                 .openLetter(1)
                 .checkAbsenceVatPercentageInEmail()
-                .checkFirstFirmNameInEmail("Gear4music Limited")
+                .checkFirstFirmNameInEmail("SPRL Brasserie Cantillon")
                 .checkSecondFirmNameInEmail("North 51 Ltd")
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPriceGB, totalPriceInEmailGB);
@@ -124,15 +124,15 @@ public class QC_1392_SplitBilling_TwoFirms_SameCountries_PositiveCase {
                 .cartClick()
                 .nextButtonClick()
                 .signIn(emailDE, password)
-                .fillAllFieldsAndFirmForShipping("EN", "NG11GF", "North 51 Ltd", "BioCity")
+                .fillAllFieldsAndFirmForShipping("BE", "NG11GF", "North 51 Ltd", "BioCity")
                 .fillFieldIdCompanyShipping("789964142")
-                .fillAllFieldsAndFirmForBilling("EN", "YO104NT", "York", "Gear4music Limited")
-                .fillFieldIdCompanyBilling("552033282")
+                .fillAllFieldsAndFirmForBilling("BE", "1070", "Anderlecht", "SPRL Brasserie Cantillon")
+                .fillFieldIdCompanyBilling("0402065988")
                 .nextBtnClick()
                 .chooseVorkasse()
                 .nextBtnClick()
                 .checkTextInDeliveryAddressInfoBlock("Firma North 51 Ltd")
-                .checkTextInPayersAddressInfoBlock("Firma Gear4music Limited")
+                .checkTextInPayersAddressInfoBlock("SPRL Brasserie Cantillon")
                 .checkAbsenceOfVatPercentage()
                 .getPriceIncludingVat(vatForDE);
         prunedPriceWithVatDE = cutPriceToFirstDecimalPlace(priceWithVatPerAllDataPageDE);
@@ -158,13 +158,13 @@ public class QC_1392_SplitBilling_TwoFirms_SameCountries_PositiveCase {
         order_aws.clickCustomerId();
         switchTo().window(2);
         new Customer_view_aws().checkPresenceBlockLogsCompanyNumbers()
-                .checkIdCompanyInBlockLogsCompanyNumbers("GB552033282")
+                .checkIdCompanyInBlockLogsCompanyNumbers("BE0402065988")
                 .checkResponseInBlockLogsCompanyNumbers("success(200)")
                 .checkBillingOrShippingInBlockLogsCompanyNumbers("billing");
         totalPriceInEmailDE = new Mailinator().openEmail("qc_1392_autotestDE@mailinator.com")
                 .openLetter(1)
                 .checkAbsenceVatPercentageInEmail()
-                .checkFirstFirmNameInEmail("Gear4music Limited")
+                .checkFirstFirmNameInEmail("SPRL Brasserie Cantillon")
                 .checkSecondFirmNameInEmail("North 51 Ltd")
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPriceDE, totalPriceInEmailDE);

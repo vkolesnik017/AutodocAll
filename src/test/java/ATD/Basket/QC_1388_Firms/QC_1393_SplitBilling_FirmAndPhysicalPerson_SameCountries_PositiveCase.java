@@ -57,14 +57,14 @@ public class QC_1393_SplitBilling_FirmAndPhysicalPerson_SameCountries_PositiveCa
                 .nextButtonClick()
                 .signIn(emailGB, password)
                 .clickCheckboxBilling()
-                .fillAllFields(shop)
-                .fillAllFieldsAndFirmForBilling(shop, "YO10 4NT", "York", "Gear4music Limited")
-                .fillFieldIdCompanyBilling("552033282")
+                .fillAllFields("BE")
+                .fillAllFieldsAndFirmForBilling("BE", "1070", "Anderlecht", "SPRL Brasserie Cantillon")
+                .fillFieldIdCompanyBilling("0402065988")
                 .nextBtnClick()
                 .chosseUnicreditBank()
                 .nextBtnClick()
                 .checkTextInDeliveryAddressInfoBlock("autotest autotest")
-                .checkTextInPayersAddressInfoBlock("Company Gear4music Limited")
+                .checkTextInPayersAddressInfoBlock("SPRL Brasserie Cantillon")
                 .checkAbsenceOfVatPercentage()
                 .getPriceIncludingVat(vatForGB);
         prunedPriceWithVatGB = cutPriceToFirstDecimalPlace(priceWithVatPerAllDataPageGB);
@@ -95,13 +95,13 @@ public class QC_1393_SplitBilling_FirmAndPhysicalPerson_SameCountries_PositiveCa
         order_aws.clickCustomerId();
         switchTo().window(2);
         new Customer_view_aws().checkPresenceBlockLogsCompanyNumbers()
-                .checkIdCompanyInBlockLogsCompanyNumbers("GB552033282")
+                .checkIdCompanyInBlockLogsCompanyNumbers("BE0402065988")
                 .checkResponseInBlockLogsCompanyNumbers("success(200)")
                 .checkBillingOrShippingInBlockLogsCompanyNumbers("billing");
         totalPriceInEmailGB = new Mailinator().openEmail("qc_1393_autotestGB@mailinator.com")
                 .openLetter(1)
                 .checkAbsenceVatPercentageInEmail()
-                .checkFirstFirmNameInEmail("Gear4music Limited")
+                .checkFirstFirmNameInEmail("SPRL Brasserie Cantillon")
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPriceGB, totalPriceInEmailGB);
     }
@@ -132,14 +132,14 @@ public class QC_1393_SplitBilling_FirmAndPhysicalPerson_SameCountries_PositiveCa
                 .nextButtonClick()
                 .signIn(emailDE, password)
                 .clickCheckboxBilling()
-                .fillAllFields("EN")
-                .fillAllFieldsAndFirmForBilling("EN", "YO10 4NT", "York", "Gear4music Limited")
-                .fillFieldIdCompanyBilling("552033282")
+                .fillAllFields("BE")
+                .fillAllFieldsAndFirmForBilling("BE", "1070", "Anderlecht", "SPRL Brasserie Cantillon")
+                .fillFieldIdCompanyBilling("0402065988")
                 .nextBtnClick()
                 .chooseVorkasse()
                 .nextBtnClick()
                 .checkTextInDeliveryAddressInfoBlock("autotest autotest")
-                .checkTextInPayersAddressInfoBlock("Firma Gear4music Limited")
+                .checkTextInPayersAddressInfoBlock("SPRL Brasserie Cantillon")
                 .checkAbsenceOfVatPercentage()
                 .getPriceIncludingVat(vatForDE);
         prunedPriceWithVatDE = cutPriceToFirstDecimalPlace(priceWithVatPerAllDataPageDE);
@@ -170,13 +170,13 @@ public class QC_1393_SplitBilling_FirmAndPhysicalPerson_SameCountries_PositiveCa
         order_aws.clickCustomerId();
         switchTo().window(2);
         new Customer_view_aws().checkPresenceBlockLogsCompanyNumbers()
-                .checkIdCompanyInBlockLogsCompanyNumbers("GB552033282")
+                .checkIdCompanyInBlockLogsCompanyNumbers("BE0402065988")
                 .checkResponseInBlockLogsCompanyNumbers("success(200)")
                 .checkBillingOrShippingInBlockLogsCompanyNumbers("billing");
         totalPriceInEmailDE = new Mailinator().openEmail("qc_1393_autotestDE@mailinator.com")
                 .openLetter(1)
                 .checkAbsenceVatPercentageInEmail()
-                .checkFirstFirmNameInEmail("Gear4music Limited")
+                .checkFirstFirmNameInEmail("SPRL Brasserie Cantillon")
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPriceDE, totalPriceInEmailDE);
     }

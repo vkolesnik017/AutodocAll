@@ -425,7 +425,7 @@ public class Listing_page_Logic extends Listing_page {
         Assert.assertTrue(uniqueRatingSet.size() >= numberOfUniqueRatings);
     }
 
-    @Step("Add procuct to basket and check related products popup on listing. Listing_page")
+    @Step("Add product to basket and check related products popup on listing. Listing_page")
     public Listing_page_Logic checkRelatedProductsPopupOnListing(int numberCategories) {
         buyButton().click();
         new Product_page_Logic().categoriesInRelatedProductsPopup().shouldHaveSize(numberCategories);
