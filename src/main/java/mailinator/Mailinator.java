@@ -106,8 +106,7 @@ public class Mailinator {
     @Step("Get unit price in email. Mailinator")
     public Float getUnitPriceInEmail() {
         String realPrice = unitPrice().getText();
-        realPrice = realPrice.replaceAll("[^0-9,]", "");
-        realPrice = realPrice.replaceAll(",", ".");
+        realPrice = realPrice.replaceAll("[^0-9.]", "").replace(",", ".");
         Float unitPrice = Float.parseFloat(realPrice);
         return unitPrice;
     }

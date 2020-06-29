@@ -55,16 +55,16 @@ public class QC_1485_FirmValidationAfterError {
                 .cartClick()
                 .nextButtonClick()
                 .signIn(email, password)
-                .fillAllFieldsAndFirmForShipping("EN", "YO10 4NT", "Gear4music Limited", "York")
-                .fillFieldIdCompanyShipping("55203")
+                .fillAllFieldsAndFirmForShipping("BE", "1070", "SPRL Brasserie Cantillon", "Anderlecht")
+                .fillFieldIdCompanyShipping("04020")
                 .nextBtnClick();
         priceWithVatPerAllDataPage = cartAddress_page_logic.checkPresencePopupErrorAboutWrongCompany()
                 .clickBtnFixInPopupAboutWrongCompany()
-                .fillFieldIdCompanyShipping("552033282")
+                .fillFieldIdCompanyShipping("0402065988")
                 .nextBtnClick()
                 .chosseUnicreditBank()
                 .nextBtnClick()
-                .checkTextInDeliveryAddressInfoBlock("Company Gear4music Limited")
+                .checkTextInDeliveryAddressInfoBlock("Company SPRL Brasserie Cantillon")
                 .checkAbsenceOfVatPercentage()
                 .getPriceIncludingVat(vatForEN);
         prunedPriceWithVat = cutPriceToFirstDecimalPlace(priceWithVatPerAllDataPage);
@@ -95,13 +95,13 @@ public class QC_1485_FirmValidationAfterError {
         order_aws.clickCustomerId();
         switchTo().window(2);
         new Customer_view_aws().checkPresenceBlockLogsCompanyNumbers()
-                .checkIdCompanyInBlockLogsCompanyNumbers("GB552033282")
+                .checkIdCompanyInBlockLogsCompanyNumbers("BE0402065988")
                 .checkResponseInBlockLogsCompanyNumbers("success(200)")
                 .checkBillingOrShippingInBlockLogsCompanyNumbers("shipping");
         totalPriceInEmail = mailinator.openEmail("qc_1485_autotestEN@mailinator.com")
                 .openLetter(1)
                 .checkAbsenceVatPercentageInEmail()
-                .checkFirstFirmNameInEmail("Gear4music Limited")
+                .checkFirstFirmNameInEmail("SPRL Brasserie Cantillon")
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPrice, totalPriceInEmail);
         unitPrice = mailinator.getUnitPriceInEmail();

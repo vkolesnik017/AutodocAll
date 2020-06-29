@@ -55,7 +55,7 @@ public class QC_1488_ChecksVerificationIslands_BillingIsUndivided_NegativeCase {
         totalPrice = new CartAllData_page_Logic().clickBtnReturnToCartAddressPage()
                 .fillingPostalCodeField("33333")
                 .nextBtnClick()
-                .checkAbsenceOfPayPalMethod()
+                .checkPresenceOfPayPalMethod()
                 .chooseVorkasse().nextBtnClick()
                 .checkPresenceSafeOrderBlock()
                 .checkTextContainingVatPercentage("inkl. 20% MwSt.")

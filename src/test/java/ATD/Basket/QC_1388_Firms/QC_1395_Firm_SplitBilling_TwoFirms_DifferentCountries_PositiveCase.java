@@ -56,15 +56,15 @@ public class QC_1395_Firm_SplitBilling_TwoFirms_DifferentCountries_PositiveCase 
                 .cartClick()
                 .nextButtonClick()
                 .signIn(emailGB, password)
-                .fillAllFieldsAndFirmForShipping("EN", "YO10 4NT", "Gear4music Limited", "York")
-                .fillFieldIdCompanyShipping("552033282")
+                .fillAllFieldsAndFirmForShipping("BE", "1070", "SPRL Brasserie Cantillon","Anderlecht")
+                .fillFieldIdCompanyShipping("0402065988")
                 .fillAllFieldsAndFirmForBilling("ES", "12311", "Kalisz", "FB-MONT A. Fułek Spółka Komandytowa")
                 .fillFieldIdCompanyBilling("6180029941")
                 .nextBtnClick()
                 .chosseUnicreditBank()
                 .nextBtnClick()
                 .checkAbsenceOfVatPercentage()
-                .checkTextInDeliveryAddressInfoBlock("Company Gear4music Limited")
+                .checkTextInDeliveryAddressInfoBlock("Company SPRL Brasserie Cantillon")
                 .checkTextInPayersAddressInfoBlock("Company FB-MONT A. Fułek Spółka Komandytowa")
                 .getPriceIncludingVat(vatForGB);
         prunedPriceWithVatGB = cutPriceToFirstDecimalPlace(priceWithVatPerAllDataPageGB);
@@ -95,14 +95,14 @@ public class QC_1395_Firm_SplitBilling_TwoFirms_DifferentCountries_PositiveCase 
         order_aws.clickCustomerId();
         switchTo().window(2);
         new Customer_view_aws().checkPresenceBlockLogsCompanyNumbers()
-                .checkIdCompanyInBlockLogsCompanyNumbers("GB552033282")
+                .checkIdCompanyInBlockLogsCompanyNumbers("BE0402065988")
                 .checkResponseInBlockLogsCompanyNumbers("success(200)")
                 .checkBillingOrShippingInBlockLogsCompanyNumbers("shipping");
         totalPriceInEmailGB = mailinator.openEmail("qc_1395_autotestGB@mailinator.com")
                 .openLetter(1)
                 .checkAbsenceVatPercentageInEmail()
                 .checkFirstFirmNameInEmail("FB-MONT A. Fułek Spółka Komandytowa")
-                .checkSecondFirmNameInEmail("Gear4music Limited")
+                .checkSecondFirmNameInEmail("SPRL Brasserie Cantillon")
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPriceGB, totalPriceInEmailGB);
         unitPriceGB = mailinator.getUnitPriceInEmail();
@@ -132,15 +132,15 @@ public class QC_1395_Firm_SplitBilling_TwoFirms_DifferentCountries_PositiveCase 
                 .cartClick()
                 .nextButtonClick()
                 .signIn(emailDE, password)
-                .fillAllFieldsAndFirmForShipping("EN", "YO10 4NT", "Gear4music Limited", "York")
-                .fillFieldIdCompanyShipping("552033282")
+                .fillAllFieldsAndFirmForShipping("BE", "1070", "SPRL Brasserie Cantillon","Anderlecht")
+                .fillFieldIdCompanyShipping("0402065988")
                 .fillAllFieldsAndFirmForBilling("ES", "12311", "Kalisz", "FB-MONT A. Fułek Spółka Komandytowa")
                 .fillFieldIdCompanyBilling("6180029941")
                 .nextBtnClick()
                 .chooseVorkasse()
                 .nextBtnClick()
                 .checkAbsenceOfVatPercentage()
-                .checkTextInDeliveryAddressInfoBlock("Firma Gear4music Limited")
+                .checkTextInDeliveryAddressInfoBlock("Firma SPRL Brasserie Cantillon")
                 .checkTextInPayersAddressInfoBlock("Firma FB-MONT A. Fułek Spółka Komandytowa")
                 .getPriceIncludingVat(vatForDE);
         prunedPriceWithVatDE = cutPriceToFirstDecimalPlace(priceWithVatPerAllDataPageDE);
@@ -171,14 +171,14 @@ public class QC_1395_Firm_SplitBilling_TwoFirms_DifferentCountries_PositiveCase 
         order_aws.clickCustomerId();
         switchTo().window(2);
         new Customer_view_aws().checkPresenceBlockLogsCompanyNumbers()
-                .checkIdCompanyInBlockLogsCompanyNumbers("GB552033282")
+                .checkIdCompanyInBlockLogsCompanyNumbers("BE0402065988")
                 .checkResponseInBlockLogsCompanyNumbers("success(200)")
                 .checkBillingOrShippingInBlockLogsCompanyNumbers("shipping");
         totalPriceInEmailDE = mailinator.openEmail("qc_1395_autotestDE@mailinator.com")
                 .openLetter(1)
                 .checkAbsenceVatPercentageInEmail()
                 .checkFirstFirmNameInEmail("FB-MONT A. Fułek Spółka Komandytowa")
-                .checkSecondFirmNameInEmail("Gear4music Limited")
+                .checkSecondFirmNameInEmail("SPRL Brasserie Cantillon")
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPriceDE, totalPriceInEmailDE);
         unitPriceDE = mailinator.getUnitPriceInEmail();
