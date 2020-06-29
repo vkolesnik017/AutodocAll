@@ -710,5 +710,15 @@ public class Listing_page {
     SelenideElement brandButtonInFilterWithGivenName(String brandName) { return $x("//*[@id='selected-instalation__slider']/ul//img[contains (@alt,'"+ brandName +"')]/.."); }
 
     SelenideElement nextButtonInBrandFilter() { return $(".next.slick-arrow"); }
+
+    SelenideElement productArticleOnListing() { return $x("//div[@class='description']//span[@class='article_number' and contains(text(),'Artikelnummer')]"); }
+
+    SelenideElement cortecoProduct() { return $x("//*[@class='name']/a[contains (text(),'CORTECO')]"); }
+
+    SelenideElement cortecoArticle() { return $x("//*[@class='name']/a[contains (text(),'CORTECO')]/../span[@class='article_number']"); }
+
+    SelenideElement cortecoOEMnumber() { return $x("//*[@class='name']/a[contains (text(),'CORTECO')]/span[@class='highlight']"); }
+
+    SelenideElement cortecoAddToBasketButton() { return $x("//*[@data-brand-name='CORTECO']//a[contains(@class,'add_')]"); }
 }
 
