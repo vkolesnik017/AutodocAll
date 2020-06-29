@@ -15,7 +15,7 @@
             <class name="ATD.ProductPage.QC_951_CompatibilityList_TestIncompatibilityMessage"/>
             <class name="ATD.ProductPage.QC_707_FAQ_TestFAQformValidationEmptyFields"/>
             <class name="ATD.ProductPage.QC_708_FAQ_TestVinPopupAfterHover"/>
-            <class name="ATD.ProductPage.QC_709_FAQ_TestFAQformWithValidData"/>
+            <!--<class name="ATD.ProductPage.QC_709_FAQ_TestFAQformWithValidData"/>-->
             <!--<class name="ATD.ProductPage.QC_918_OEN_TestOEMlistWithCar"/>-->
             <class name="ATD.ProductPage.QC_744_Reviews_TestReviewsFormValidation"/>
             <class name="ATD.ProductPage.QC_777_Reviews_TestReviewsFormWithValidData"/>
