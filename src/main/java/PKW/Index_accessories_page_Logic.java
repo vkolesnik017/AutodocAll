@@ -24,10 +24,9 @@ public class Index_accessories_page_Logic extends Index_accessories_page {
         return this;
     }
 
-    @Step("Get name first brand from URL in block Top brands. Index_accessories_page")
-    public String getNameFirstBrandFromURLInBlockTopBrands() {
-        String nameBrands = firstBrandInBlockTopBrands().getAttribute("href").replaceAll("[\\s\\S]*\\/", "");
-        return nameBrands;
+    @Step("Get name first brand in block Top brands. Index_accessories_page")
+    public String getNameFirstBrandInBlockTopBrands() {
+        return firstBrandInBlockTopBrands().getText();
     }
 
     @Step("Click on first brand in block top brands. Index_accessories_page")
@@ -62,9 +61,14 @@ public class Index_accessories_page_Logic extends Index_accessories_page {
         return page(Parts_page_Logic.class);
     }
 
-    @Step("Checking presence block Top Products than work btn Previous and Next. Index_accessories_page")
-    public Index_accessories_page_Logic checkingPresenceBlockTopProductsThanWorkBtnPrevAndNext() {
+    @Step("Checking presence block Top Products. Index_accessories_page")
+    public Index_accessories_page_Logic checkingPresenceTopProductsBlock() {
         blockTopProducts().scrollTo().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checking work btn Previous and Next in block Top Products . Index_accessories_page")
+    public Index_accessories_page_Logic checkingWorkBtnPrevAndNextInTopProductsBlock() {
         firstProductInBlockTopProducts().shouldBe(visible);
         btnNextInBlockTopProducts().click();
         sleep(2000);

@@ -89,9 +89,9 @@ public class Moto_Category_car_list_model_page_Logic extends Moto_Category_car_l
 
     @Step("add product to basket from an analog block .Moto_Category_car_list_model_page")
     public Cart_page_Logic addProductToBasketFromAnalogBlock() {
-        btnAddToBasketAtAnAnalogProduct().get(0).click();
+        visibleBtnAddToBasketAtAnAnalogProduct().get(0).click();
         if (!basketDropMenu().isDisplayed()) {
-            btnAddToBasketAtAnAnalogProduct().get(0).click();
+            visibleBtnAddToBasketAtAnAnalogProduct().get(0).click();
         }
         basketDropMenu().should(appear);
         basketDropMenu().should(disappear);

@@ -3,6 +3,7 @@ package ATD;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -27,7 +28,9 @@ public class Moto_Category_car_list_model_page {
     ElementsCollection btnAddToBasketAtAnAnalogProduct() {
         return $$x("//div[@class='top-small-products-items__item']/div[6]//a");
     }
-
+    ElementsCollection visibleBtnAddToBasketAtAnAnalogProduct() {
+        return $$x("//div[@class='count hidden']/following-sibling::a").filter(visible);
+    }
     SelenideElement btnShowReplacement(String artOfProduct) {
         return $x("//span[contains(text(),'" + artOfProduct + "')]/ancestor::li[@class='ovVisLi item_not_available']//div[contains(@class,'show_alternative__btn')]");
     }
