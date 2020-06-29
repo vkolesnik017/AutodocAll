@@ -8,8 +8,8 @@ import static com.codeborne.selenide.Selenide.$x;
 public class Supplier_page {
 
 
-    SelenideElement nameTitleOnPageBrand() {
-        return $x("//div[@class='title']/h1");
+    SelenideElement nameSecondBreadCrumb() {
+        return $x("//div[@class='crabs']//span[@class='last']");
     }
 
 

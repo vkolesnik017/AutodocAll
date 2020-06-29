@@ -32,7 +32,8 @@ public class QC_1022_BlockTopProducts {
     @Description(value = "Test Checks presence block Top Products than work btn Previous and Next")
     public void testCheckingPresenceBlockTopProductsThanWorkBtnPrevAndNext(String route) {
         openPage(route);
-        new Index_accessories_page_Logic().checkingPresenceBlockTopProductsThanWorkBtnPrevAndNext();
+        new Index_accessories_page_Logic().checkingPresenceTopProductsBlock()
+                .checkingWorkBtnPrevAndNextInTopProductsBlock();
     }
 
     @AfterMethod
