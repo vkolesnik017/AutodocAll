@@ -8,6 +8,7 @@ import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.back;
 import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class Moto_Category_maker_page_Logic extends Moto_Category_maker_page {
 
@@ -140,12 +141,11 @@ public class Moto_Category_maker_page_Logic extends Moto_Category_maker_page {
         return this;
     }
 
-
     @Step("opening brands block .Moto_Category_maker_page")
     public Moto_Category_maker_page_Logic openBrandsBlock() {
         brandsBlock().shouldBe(visible);
-          linkMoreOfBrandsBlock().click();
-          brandsLinks().shouldHaveSize(12);
+        linkMoreOfBrandsBlock().click();
+        brandsLinks().shouldHaveSize(12);
         return this;
     }
 
@@ -155,5 +155,28 @@ public class Moto_Category_maker_page_Logic extends Moto_Category_maker_page {
         linkMoreOfBrandsBlock().click();
         brandsLinks().shouldHaveSize(6);
         return this;
+    }
+
+    @Step("get motorcycle brand from Url .Moto_Category_maker_page")
+    public String getMotoBrandFromUrl() {
+        String url = url().replace(url().substring(url().lastIndexOf("/")), "");
+        String brandFromUrl = url().replace(url, "").replace("/", "").replace("-", " ").toUpperCase();
+        return brandFromUrl;
+    }
+
+
+    @Step("check applicability brand motorcycle and Product .Moto_Category_maker_page")
+    public Moto_Category_maker_page_Logic checkApplicabilityMotoAndProduct(String motoBrand) {
+        for (int i=0; i<imageOfTopProducts().size(); i++) {
+            clickOnTopProductImage(i).checkCompatibilityProductAndMoto(motoBrand);
+            back();
+        }
+        return this;
+    }
+
+    @Step("check applicability brand motorcycle and Product .Moto_Category_maker_page")
+    public Moto_Product_page_Logic clickOnTopProductImage(int position) {
+        imageOfTopProducts().get(position).click();
+        return page(Moto_Product_page_Logic.class);
     }
 }

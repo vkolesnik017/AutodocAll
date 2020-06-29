@@ -97,4 +97,6 @@ public class Moto_Product_page {
 
     SelenideElement  breadCrumbsBlock() {return $x("//div[@class='steps breadcrumbs']");}
 
+    ElementsCollection motoTitleFromCompatibilityBlock() {return $$x("//div[@class='product-info-block-accordion js--roll-up']/div[contains(@class,'product-info-block--moto')]//div[@class='accordion-button']/i/following-sibling::span");}
+
 }
