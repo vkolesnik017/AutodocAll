@@ -78,11 +78,11 @@
         </classes>
     </test>
 
-    <test name="QC_979_GdprAppPage">
+    <!--<test name="QC_979_GdprAppPage">
         <classes>
             <class name="ATD.GDRP.QC_979_GdprAppPage"/>
         </classes>
-    </test>
+    </test>-->
 
     <test name="QC_985_GdprFaqFormNameShorting" enabled="false">
         <classes>

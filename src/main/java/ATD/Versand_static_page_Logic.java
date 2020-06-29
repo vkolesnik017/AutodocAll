@@ -104,23 +104,6 @@ public class Versand_static_page_Logic extends Versand_static_page {
         return this;
     }
 
-    @Step("Checks for the presence of a Choose Delivery block and elements and options inside it. Versand_static_page")
-    public Versand_static_page_Logic checkChooseDeliveryBlock(){
-        chooseDeliveryBlock().shouldBe(visible);
-        chooseDeliveryTitle().shouldBe(visible);
-        checkUncheckCheckbox(glsCheckbox(), glsCheckboxClick());
-        checkUncheckCheckbox(dhlCheckbox(), dhlCheckboxClick());
-        checkUncheckCheckbox(noxCheckbox(), noxCheckboxClick());
-        checkUncheckCheckbox(dpdCheckbox(), dpdCheckboxClick());
-        checkUncheckCheckbox(pnordCheckbox(), pnordCheckboxClick());
-        chooseDeliveryInput().sendKeys("Test Delivery");
-        chooseDeliveryButton().click();
-        chooseDeliveryAnswerText().shouldHave(text("Danke für Ihre Antwort! Wir tun unser Bestes, um Ihnen Ersatzteile auf den bequemsten Weg zu liefern."));
-        deliveryOptionsBlock().shouldNotBe(visible);
-        chooseDeliveryInput().shouldNotBe(visible);
-        return this;
-    }
-
     @Step ("Pulling prices for free delivery from the text in the delivery block. Versand_static_page")
     public Float getDeliveryLimitFromText() {
         String deliveryLimit = limitForFreeDelivery().getText();
