@@ -7,7 +7,8 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.back;
+import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class Moto_main_page_Logic extends Moto_main_page {
@@ -546,16 +547,65 @@ public class Moto_main_page_Logic extends Moto_main_page {
         return titleOfBrand;
     }
 
-    @Step("Go to product page from tecDoc listing through Image, icon of brand, title in tecDoc listing .Moto_main_page")
+    @Step("Go to product page from TOP products block through Image, icon of brand, title in tecDoc listing .Moto_main_page")
     public Moto_main_page_Logic goToProductPageFromTopBlock(String brand) {
         clickOnImageOfTopProduct().checkUrlOfProductPage("autodoc.de/" + brand + "/");
         back();
+        clickOnTitleOfTopProduct().checkUrlOfProductPage("autodoc.de/" + brand + "/");
+        back();
+        clickOnDetailsOfTopProduct().checkUrlOfProductPage("autodoc.de/" + brand + "/");
         return this;
     }
 
     @Step("click on image of TOP product .Moto_main_page")
     public Moto_Product_page_Logic clickOnImageOfTopProduct() {
-        imageOfTopProducts().get(0).click();
+        imageOfTopProducts().get(0).shouldBe(visible).click();
         return page(Moto_Product_page_Logic.class);
     }
+
+    @Step("click on title of TOP product .Moto_main_page")
+    public Moto_Product_page_Logic clickOnTitleOfTopProduct() {
+        titleOfTopProducts().get(0).shouldBe(visible).click();
+        return page(Moto_Product_page_Logic.class);
+    }
+
+    @Step("click on details of TOP product .Moto_main_page")
+    public Moto_Product_page_Logic clickOnDetailsOfTopProduct() {
+        titleOfTopProducts().get(0).shouldBe(visible).hover();
+        detailsOfTopProductsBlock().get(0).shouldBe(visible);
+        btnDetailsOfTopProducts().get(0).shouldBe(visible).click();
+        return page(Moto_Product_page_Logic.class);
+    }
+
+    @Step("visibility of PopUp with addition information .Moto_main_page")
+    public Moto_main_page_Logic visibilityOfPopUpWithAdditionInfo() {
+        hoverOnTopProduct();
+        if (linkForwardOfTopProductBlock().isDisplayed()) {
+            linkForwardOfTopProductBlock().click();
+            hoverOnTopProduct();
+        }
+        return this;
+    }
+
+    @Step("hover on TOP product .Moto_main_page")
+    public Moto_main_page_Logic hoverOnTopProduct() {
+        for (int i = 0; i < visibleTitleOfTopProducts().size(); i++) {
+            visibleTitleOfTopProducts().get(i).shouldBe(visible).hover();
+            visibleDetailsOfTopProductsBlock().get(0).shouldBe(visible);
+            headlineOfTopProductBlock().hover();
+        }
+        return this;
+    }
+
+
+    @Step("presence of navigation arrows .Moto_main_page")
+    public Moto_main_page_Logic presenceOfNavigationArrows() {
+        String currentTitleOfTopProduct = visibleTitleOfTopProducts().get(0).getText();
+        activeLinkForwardOfTopProductBlock().shouldBe(visible).click();
+        visibleTitleOfTopProducts().get(0).shouldNotHave(exactText(currentTitleOfTopProduct));
+        linkBackOfTopProductBlock().shouldBe(visible);
+        return this;
+    }
+
+
 }

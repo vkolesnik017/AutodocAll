@@ -55,4 +55,12 @@ public class Moto_Parent_Category_page {
     SelenideElement basket() {
         return $x("//a[@class='header-cart__link']");
     }
+
+    ElementsCollection  titleOfTopProducts() {return $$x("//div[@class='name']/a");}
+
+    ElementsCollection  imageOfTopProducts() {return $$x("//div[@class='image']/span[2]/img");}
+
+    ElementsCollection  btnDetailsOfTopProducts() {return $$x("//div[@class='about']/div/following-sibling::button");}
+
+    ElementsCollection titleOfTopProduct() {return $$x("//div[@class='name']/a");}
 }
