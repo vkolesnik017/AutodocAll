@@ -54,4 +54,11 @@
         </classes>
     </test>
 
+    <test name="QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults">
+        <classes>
+            <class name="ATD.Listings.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1308_SearchByArticleBasedOnDynamicGenerics"/>
+            <class name="ATD.Listings.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1314_SearchByOEMconsideringDynamicGenerics"/>
+        </classes>
+    </test>
+
 </suite>

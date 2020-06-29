@@ -43,6 +43,77 @@ public class Index_chemicals_page_Logic extends Index_chemicals_page {
         return this;
     }
 
+    @Step("Checking presence block with oil categories. Index_chemicals_page")
+    public Index_chemicals_page_Logic checkingPresenceOilCategoriesBlock() {
+        seoBlockOilCategories().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Click on first category in oil category block. Index_chemicals_page")
+    public Motoroil_page_Logic clickFirstCategoryInOilCategoriesBlock() {
+        firstCategoryInOilCategoriesBlock().click();
+        return page(Motoroil_page_Logic.class);
+    }
+
+    @Step("Get name second category in oil categories block. Index_chemicals_page")
+    public String getNameSecondCategoryInOilCategoriesBlock() {
+        return secondCategoryInOilCategoriesBlock().getText();
+    }
+
+    @Step("Click on second category in oil category block. Index_chemicals_page")
+    public Parts_group_page_Logic  clickSecondCategoryInOilCategoriesBlock() {
+        secondCategoryInOilCategoriesBlock().click();
+        return page(Parts_group_page_Logic.class);
+    }
+
+    @Step("Checking presence top brands block. Index_chemicals_page")
+    public Index_chemicals_page_Logic checkingPresenceTopBrandsBlock() {
+        blockBrands().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Get name first brand in top brands block. Index_chemicals_page ")
+    public String getNameFirstBrandInTopBrandsBlock() {
+        return firstBrandInBlockBrands().getText();
+    }
+
+    @Step("Click first brand in block top brands. Index_chemicals_page")
+    public Supplier_page_Logic clickFirstBrandInTopBrandsBlock() {
+        firstBrandInBlockBrands().click();
+        return page(Supplier_page_Logic.class);
+    }
+
+    @Step("Checking presence seo top categories block. Index_chemicals_page")
+    public Index_chemicals_page_Logic checkingPresenceSeoTopCategoriesBlock() {
+        seoBlockTopCategories().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Get name first category in seo top categories block. Index_chemicals_page")
+    public String getNameFirstCategoryInTopCategoriesBlock() {
+        return firstCategoryInTopCategoriesBlock().getText();
+    }
+
+    @Step("Click first category in seo top category block. Index_chemicals_page")
+    public Listing_chemicals_page_Logic clickFirstCategoryInTopCategoriesBlock() {
+        firstCategoryInTopCategoriesBlock().click();
+        return page(Listing_chemicals_page_Logic.class);
+    }
+
+    @Step("Checking work btn More and Less in seo top category block. Index_chemicals_page")
+    public Index_chemicals_page_Logic checkWorkBtnMoreAndLessInTopCategoryBlock() {
+        elevenCategoryInTopCategoriesBlock().shouldNotBe(visible);
+        btnMoreInTopCategoriesBlock().click();
+        elevenCategoryInTopCategoriesBlock().shouldBe(visible);
+        btnLessInTopCategoriesBlock().click();
+        elevenCategoryInTopCategoriesBlock().shouldNotBe(visible);
+        return this;
+    }
+
+
+
+
+
 
 
 }

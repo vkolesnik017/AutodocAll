@@ -41,10 +41,10 @@ public class QC_1028_BlockTopBrands {
     public void testCheckingPresenceTopBrandsAndTransitionByFirstBrand(String route) {
         openPage(route);
         index_accessories_page_logic.checkingPresenceBlockTopBrands();
-        nameBrand = index_accessories_page_logic.getNameFirstBrandFromURLInBlockTopBrands();
+        nameBrand = index_accessories_page_logic.getNameFirstBrandInBlockTopBrands();
         index_accessories_page_logic.clickOnFirstBrandInBlockTopBrands();
-        nameTitleBrand = new Supplier_page_Logic().getAndCutNameBrandFromTitleOnPageBrand();
-        Assert.assertEquals(nameBrand.toLowerCase(), nameTitleBrand.toLowerCase());
+        nameTitleBrand = new Supplier_page_Logic().getAndCutNameFromSecondBreadCrumb();
+        Assert.assertEquals(nameBrand, nameTitleBrand);
 
     }
 

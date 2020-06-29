@@ -34,8 +34,8 @@ public class QC_993_BreadCrumbs {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test checks transition for three breadcrumbs. ")
-    public void testCheckTransitionForThreeBreadCrumbs(String route) {
+    @Description(value = "Test checks transition for two breadcrumbs. ")
+    public void testCheckTransitionForTwoBreadCrumbs(String route) {
         openPage(route);
         index_accessories_page_logic .checkingPresenceBlockBreadCrumbs()
                 .clickOnFirstBreadCrumb();

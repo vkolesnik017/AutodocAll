@@ -138,6 +138,8 @@ public class Cart_page {
         return  $x("//div[@class='cart-page-listing']//h3[text()]");
     }
 
+    SelenideElement articleNumber() { return $(".info__nr"); }
+
     SelenideElement bonusSticker() {
         return $(".bonus-sticker");
     }

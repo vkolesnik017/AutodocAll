@@ -425,7 +425,7 @@ public class Listing_page_Logic extends Listing_page {
         Assert.assertTrue(uniqueRatingSet.size() >= numberOfUniqueRatings);
     }
 
-    @Step("Add procuct to basket and check related products popup on listing. Listing_page")
+    @Step("Add product to basket and check related products popup on listing. Listing_page")
     public Listing_page_Logic checkRelatedProductsPopupOnListing(int numberCategories) {
         buyButton().click();
         new Product_page_Logic().categoriesInRelatedProductsPopup().shouldHaveSize(numberCategories);
@@ -1176,6 +1176,23 @@ public class Listing_page_Logic extends Listing_page {
         }
         brandButtonInFilterWithGivenName(firstProductAdditionalCharacteristicsOnListing().text().split(" ")[0]).click();
         waitUntilPreloaderDisappear();
+        return this;
+    }
+
+    @Step("Check generic and article number in first product. Listing_page")
+    public Listing_page_Logic checkGenericAndArticleInFirstProduct(String expectedTextInTitle, String articleNumber) {
+        firstProductTitleOnListing().shouldHave(text(expectedTextInTitle));
+        productArticleOnListing().shouldHave(text(articleNumber));
+        return this;
+    }
+
+    @Step("Check generic and OEM number. Listing_page")
+    public Listing_page_Logic checkGenericAndArticleAndOEMnumber(String genericName, String articleName, String oemHighlightNumber) {
+        listProducts().shouldBe(visible);
+        cortecoProduct().shouldHave(text(genericName));
+        cortecoArticle().shouldHave(text(articleName));
+        cortecoOEMnumber().shouldHave(text(oemHighlightNumber));
+        cortecoAddToBasketButton().click();
         return this;
     }
 }
