@@ -198,4 +198,20 @@
             <class name="MOTO.QC_319_TopProductsBlock.QC_328_ApplicabilityProductsToBrandPage"/>
         </classes>
     </test>
+
+    <test name="QC_730_ProductPage">
+        <classes>
+            <class name="MOTO.QC_730_ProductPage.QC_731_DynamicCharacteristic"/>
+            <class name="MOTO.QC_730_ProductPage.QC_732_SelectingOfMotoSelector"/>
+            <class name="MOTO.QC_730_ProductPage.QC_733_AddedProductToBasket"/>
+            <class name="MOTO.QC_730_ProductPage.QC_734_CompatibleMotoBlock"/>
+            <class name="MOTO.QC_730_ProductPage.QC_737_LackOfLinksInOenBlock"/>
+        </classes>
+    </test>
+
+    <test name="QC_757_MotoCatalogInHeader">
+        <classes>
+            <class name="MOTO.QC_757_MotoCatalogInHeader.QC_759_PresenceOfMotoCatalogInHeader"/>
+        </classes>
+    </test>
 </suite>

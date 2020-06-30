@@ -7,6 +7,7 @@ import org.testng.Assert;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static ATD.CommonMethods.checkingContainsUrl;
@@ -253,6 +254,83 @@ public class Moto_Product_page_Logic extends Moto_Product_page {
         }
         Assert.assertTrue(motoBrandFromCompatibilityBlock.contains(motoBrand));
         motoBrandFromCompatibilityBlock.clear();
+        return this;
+    }
+
+    @Step("visibility of dynamic characteristic block .Moto_Product_page")
+    public Moto_Product_page_Logic visibilityOfDynamicCharacteristicBlock() {
+        dynamicCharacteristicBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("open of characteristic block .Moto_Product_page")
+    public Moto_Product_page_Logic openCharacteristicBlock() {
+        openBlockOfCharacteristic().click();
+        listOfCharacteristics().shouldHaveSize(11);
+        return this;
+    }
+
+    @Step("visibility of selected truck selector after click by characteristic .Moto_Product_page")
+    public Moto_Product_page_Logic visibilityOfSelectedTruckSelector() {
+        activeLinksOfCharacteristic().get(0).shouldBe(visible).click();
+        selectedTruckSelector().should(appear);
+        darkBackground().should(appear);
+        return this;
+    }
+
+    @Step(" get id of an analog product .Moto_Product_page")
+    public String getIdOfBtnAddToBasket() {
+        String idOfBtn = btnAddToBasket().shouldBe(visible).getAttribute("id");
+        return idOfBtn;
+    }
+
+    @Step(" adding product to basket .Moto_Product_page")
+    public Cart_page_Logic addProductToBasket() {
+        btnAddToBasket().click();
+        basketDropMenu().should(appear);
+        basketDropMenu().should(disappear);
+        basket().click();
+        return page(Cart_page_Logic.class);
+    }
+
+    @Step("presence of compatibility block .Moto_Product_page")
+    public Moto_Product_page_Logic presenceOfCompatibilityBlock() {
+        compatibilityMotoBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("check sorting of compatibility block .Moto_Product_page")
+    public Moto_Product_page_Logic checkSortingOfCompatibilityBlock() {
+        List<String> motoFromBlock = new ArrayList<>();
+        for (int i = 0; i < motoTitleFromCompatibilityBlock().size(); i++) {
+            motoFromBlock.add(motoTitleFromCompatibilityBlock().get(i).getText());
+        }
+        List<String> checkingList = new ArrayList<>(motoFromBlock);
+        Collections.sort(checkingList);
+        Assert.assertEquals(checkingList, motoFromBlock);
+        return this;
+    }
+
+    @Step("visibility of motorcycle models in compatibility block .Moto_Product_page")
+    public Moto_Product_page_Logic visibilityOfMotoModelsInCompatibilityBlock() {
+        motoTitleFromCompatibilityBlock().get(0).shouldBe(visible).click();
+        motoModelsCompatibilityBlock().get(0).shouldBe(visible);
+        return this;
+    }
+
+    @Step("visibility of motorcycle motor values  in compatibility block .Moto_Product_page")
+    public Moto_Product_page_Logic visibilityOfMotoMotorsInCompatibilityBlock() {
+        listOfMotoAtCompatibilityBlock().get(0).shouldBe(visible).click();
+        motoMotorCompatibilityBlock().should(appear);
+        return this;
+    }
+
+    @Step("check OEN block that there is no links .Moto_Product_page")
+    public Moto_Product_page_Logic checkOenBlock() {
+        oenBlock().shouldBe(visible);
+        for (int i = 0; i < oenLinks().size(); i++) {
+            oenLinks().get(i).shouldNotHave(attribute("href"));
+        }
         return this;
     }
 }
