@@ -1,5 +1,6 @@
 package ATD;
 
+import com.codeborne.selenide.CollectionCondition;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
@@ -7,8 +8,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.back;
-import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class Moto_main_page_Logic extends Moto_main_page {
@@ -597,7 +597,6 @@ public class Moto_main_page_Logic extends Moto_main_page {
         return this;
     }
 
-
     @Step("presence of navigation arrows .Moto_main_page")
     public Moto_main_page_Logic presenceOfNavigationArrows() {
         String currentTitleOfTopProduct = visibleTitleOfTopProducts().get(0).getText();
@@ -607,5 +606,43 @@ public class Moto_main_page_Logic extends Moto_main_page {
         return this;
     }
 
+    @Step("visibility of Parent categories in vertical selector .Moto_main_page")
+    public Moto_main_page_Logic visibilityParentCategoriesInVerticalSelector() {
+        logoInHeader().shouldBe(visible);
+        btnVerticalMotoCatalog().click();
+        parentCategoriesBlockInVerticalCatalog().shouldBe(visible);
+        return this;
+    }
 
+    @Step("check vertical catalog in header .Moto_main_page")
+    public Moto_main_page_Logic checkVerticalCatalogInHeader() {
+        headlineOfParentCategoriesVerticalCatalog().shouldBe(visible);
+        imageOfParentCategoriesVerticalCatalog().shouldBe(visible);
+        listOfParentCategoriesInVerticalCatalog().shouldHaveSize(17);
+        checkSecondLevelOfVerticalCatalog();
+        return this;
+    }
+
+    @Step("check second level of vertical catalog .Moto_main_page")
+    public Moto_main_page_Logic checkSecondLevelOfVerticalCatalog() {
+        for (int i = 0; i < listOfParentCategoriesInVerticalCatalog().size(); i++) {
+            listOfParentCategoriesInVerticalCatalog().get(i).hover();
+            verticalCatalogBlockSecondLevel().shouldBe(visible);
+            titleOfVerticalCatalogBlockSecondLevel().get(0).shouldBe(visible).getText().replace(" ", "").equals(titleOfVerticalCatalogBlockSecondLevel().get(0).shouldBe(visible).getText().replace(" ", ""));
+            imageOfVerticalCatalogBlockSecondLevel().get(0).shouldBe(visible);
+            listOfCategoriesInVerticalCatalogSecondLevel().shouldHave(CollectionCondition.sizeGreaterThan(0));
+            checkThirdLevelOfVerticalCatalog();
+        }
+        return this;
+    }
+
+    @Step("check third level of vertical catalog .Moto_main_page")
+    public Moto_main_page_Logic checkThirdLevelOfVerticalCatalog() {
+         if (intermediateCategoriesSecondLevel().get(0).isDisplayed()){
+             for (int i=0;i<intermediateCategoriesSecondLevel().size();i++) {
+                 intermediateCategoriesSecondLevel().get(i).hover();
+             }
+         }
+        return this;
+    }
 }
