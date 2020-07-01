@@ -217,6 +217,20 @@
         <classes>
             <class name="MOTO.QC_757_MotoCatalogInHeader.QC_759_PresenceOfMotoCatalogInHeader"/>
             <class name="MOTO.QC_757_MotoCatalogInHeader.QC_760_StructureOfMotoCatalogInHeader"/>
+            <class name="MOTO.QC_757_MotoCatalogInHeader.QC_762_TransitionByClickOnElementsOfMotoCatalog"/>
+            <class name="MOTO.QC_757_MotoCatalogInHeader.QC_764_FormationOfMotoCatalogInHeader"/>
+        </classes>
+    </test>
+
+    <test name="QC_368_MainImageOfBrand">
+        <classes>
+            <class name="MOTO.QC_368_MainImageOfBrand.QC_369_PresenceOfMainImageOfBrand"/>
+        </classes>
+    </test>
+
+    <test name="QC_349_ParentAndChildSideBarBlock">
+        <classes>
+            <class name="MOTO.QC_349_ParentAndChildSideBarBlock.QC_350_PresenceOfParentSideBarBlock"/>
         </classes>
     </test>
 </suite>

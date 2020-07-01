@@ -124,7 +124,6 @@ public class Moto_Catalog_page {
         return $$x("//div[@class='car-parts-categories__item-link']");
     }
 
-   // ElementsCollection  childCategoriesFirstLevelBlock() {return $$x("//div[@class='car-parts-categories-modal__level1 js-height-compare']");}
 
     ElementsCollection  childCategoriesFirstLevelBlock() {return $$x("//div[contains(@class,'car-parts-categories-modal__level1')]");}
 
@@ -142,12 +141,27 @@ public class Moto_Catalog_page {
 
     ElementsCollection childCategoriesSecondLevel(int position) {return $$x("(//div[contains(@class,'car-parts-categories-modal__level1')])["+position+"]//div[contains(@class,'car-parts-categories-modal__level2')]//li").filter(visible);}
 
-    ElementsCollection imedCategory() {return $$x("//ul[@class='car-parts-categories-modal__cat-list']/li").filter(visible);}
+    ElementsCollection visibleIntermediateCategory() {return $$x("//ul[@class='car-parts-categories-modal__cat-list']/li").filter(visible);}
 
-    ElementsCollection chCategory() {return $$x("//ul[@class='car-parts-categories-modal__link-list']/li").filter(visible);}
+    ElementsCollection visibleChildCategory() {return $$x("//ul[@class='car-parts-categories-modal__link-list']/li").filter(visible);}
 
     SelenideElement secondLevelBlock() {return $x("//li[@class='active']/div[2]");}
 
     ElementsCollection topProducts() {return $$x("//div[@class='product-list__row']/ul/li");}
 
+    ElementsCollection categoriesTecDocCatalog() {
+        return $$x("//div[contains(@class,'car-parts-categories__item')]//a");
+    }
+
+    SelenideElement catalogInHeader() {return $(".menu-catalog"); }
+
+    SelenideElement parentCategoriesInVerticalCatalog() {return $(".menu-category__block");}
+
+    SelenideElement customCategory() {
+        return $x("//a[contains(text(),'Elektrik')]");
+    }
+
+    ElementsCollection categoriesInHeaderCatalogSecondBlock() {return $$x("//div[@class='menu-category__2-block']//a");}
+
+    ElementsCollection categoriesInHeaderCatalogThirdBlock() {return $$x("//div[@class='menu-category__3-block']//a");}
 }

@@ -10,7 +10,7 @@ import java.util.HashSet;
 import java.util.List;
 
 import static ATD.CommonMethods.checkingContainsUrl;
-import static com.codeborne.selenide.CollectionCondition.*;
+import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.back;
 import static com.codeborne.selenide.Selenide.page;
@@ -251,4 +251,23 @@ public class Moto_Parent_Category_page_Logic extends Moto_Parent_Category_page {
         return generic;
     }
 
+    @Step(" presence of parent category catalog in sidebar .Moto_Parent_Category_page")
+    public Moto_Parent_Category_page_Logic presenceOfParentCategoryCatalogInSidebar() {
+        parentCategoryBlockInSidebar().shouldBe(visible);
+        return this;
+    }
+
+   @Step("open parent category catalog in sidebar .Moto_Parent_Category_page")
+    public Moto_Parent_Category_page_Logic openParentCategoryCatalogInSidebar() {
+        parentCategoryBlockInSidebar().shouldBe(visible).click();
+       parentCategoriesInSideBar().shouldHaveSize(17);
+        return this;
+    }
+
+
+    @Step("select parent category in sideBar .Moto_Parent_Category_page")
+    public Moto_Parent_Category_page_Logic selectParentCategoryInSideBar(int position) {
+        parentCategoriesInSideBar().get(position).shouldBe(visible).click();
+        return page(Moto_Parent_Category_page_Logic.class);
+    }
 }
