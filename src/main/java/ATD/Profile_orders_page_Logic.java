@@ -1,9 +1,11 @@
 package ATD;
 
-import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import org.testng.Assert;
 
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Profile_orders_page_Logic extends Profile_orders_page {
 
@@ -27,6 +29,55 @@ public class Profile_orders_page_Logic extends Profile_orders_page {
     @Step("Exit order details back to order history. Profile_orders_page")
     public Profile_orders_page_Logic clickExitOrderDetailsBtn() {
         exitOrderDetailsBtn().click();
+        return this;
+    }
+
+    @Step("Checks presence delivery status block. Profile_orders_page")
+    public Profile_orders_page_Logic checkPresenceDeliveryStatusBlock() {
+        deliveryStatusBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checks the number of delivery services added. Profile_orders_page")
+    public Profile_orders_page_Logic checkNumberDeliveryServiceAdded(int expectedSize) {
+        trackingNumber().shouldHaveSize(expectedSize);
+        return this;
+    }
+
+    @Step("Checks transition to delivery page and check tracking number. Profile_orders_page")
+    public Profile_orders_page_Logic checkTransitionToDeliveryPage() {
+        SelenideElement trackingNumInDeliveryPage = $x("//span[@class='shipmentNumber']");
+        for (int i = 0; i < trackingNumber().size(); i++) {
+            String tracingNum = trackingNumber().get(i).getText();
+            trackingNumber().get(i).click();
+            switchTo().window(1);
+            String numInDeliveryPage = trackingNumInDeliveryPage.getText();
+            closeWindow();
+            switchTo().window(0);
+            Assert.assertEquals(tracingNum, numInDeliveryPage);
+        }
+        return this;
+    }
+
+    @Step("Checks the number of delivery services added from tooltip. Profile_orders_page")
+    public Profile_orders_page_Logic checkNumberDeliveryServiceAddedFromTooltip(int expectedSize) {
+        trackingTooltip().click();
+        trackingNumFromTooltip().shouldHaveSize(expectedSize);
+        return this;
+    }
+
+    @Step("Checks transition to delivery page and check tracking number from tooltip. Profile_orders_page")
+    public Profile_orders_page_Logic trackingNumInDeliveryPageFromTooltip() {
+        SelenideElement trackingNumInDeliveryPage = $x("//span[@class='shipmentNumber']");
+        for (int i = 0; i < trackingNumFromTooltip().size(); i++) {
+            String tracingNum = trackingNumFromTooltip().get(i).getText();
+            trackingNumFromTooltip().get(i).click();
+            switchTo().window(1);
+            String numInDeliveryPage = trackingNumInDeliveryPage.getText();
+            closeWindow();
+            switchTo().window(0);
+            Assert.assertEquals(tracingNum, numInDeliveryPage);
+        }
         return this;
     }
 }

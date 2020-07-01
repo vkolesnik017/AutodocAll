@@ -80,5 +80,11 @@
         </classes>
     </test>
 
+    <test name="QC_1914_DisplayTrackingNumberInPR">
+        <classes>
+            <class name="ATD.PrivateRoom.QC_1914_DisplayTrackingNumberInPR.QC_1830_DisplayTrackingNumberInPR"/>
+        </classes>
+    </test>
+
 
 </suite>
