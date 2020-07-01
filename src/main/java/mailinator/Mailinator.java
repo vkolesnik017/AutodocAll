@@ -9,6 +9,7 @@ import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class Mailinator {
 
@@ -56,6 +57,32 @@ public class Mailinator {
 
     private SelenideElement namePhysicalPersonInEmail() {
         return $x("//table[@class='to-column-table to-column-table--border']//p[@class='to-column-table__text']/following-sibling::p");
+    }
+
+    private SelenideElement linkToDeliveryPage() {
+        return $x("//td[@class='content__cell']//a");
+    }
+
+    private SelenideElement trackingNumber() {
+        return $x("//td[@class='content__cell']//div//b[2]");
+    }
+
+
+
+
+    @Step("Get tracking number. Mailinator")
+    public String getTrackingNumberFromMail() {
+        return String.valueOf(trackingNumber().getText());
+    }
+
+    @Step("Transition to delivery page ang get URL. Mailinator")
+    public String transitionToDeliveryPageAndGetUrlFromMail() {
+        linkToDeliveryPage().click();
+        switchTo().window(1);
+        String deliveryPageURL = url();
+        closeWindow();
+        switchTo().window(0);
+        return deliveryPageURL;
     }
 
     @Step("Checks text {firmName} in first company name in email. Mailinator")
