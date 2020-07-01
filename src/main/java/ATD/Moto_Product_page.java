@@ -165,4 +165,24 @@ public class Moto_Product_page {
     SelenideElement oenBlock() {return $x("//div[@class='product-info-block__oem']");}
 
     ElementsCollection oenLinks() {return $$x("//div[@class='oem-list__col']//li/span");}
+
+    SelenideElement analogProductBlock() {return $x("//div[@class='product-same-artikel']");}
+
+    ElementsCollection analogProducts() {return $$x("//div[@class='product-list__row']/ul/li");}
+
+    SelenideElement relatedProductBlock() {return $x("//div[@class='product-same-specification']");}
+
+    ElementsCollection relatedProducts() {return $$x("//div[@class='product-same-specification__wrap__col']/div");}
+
+    ElementsCollection btnAddToBasketAnalogProduct() {
+        return $$x("//div[@class='price_box product-list__item__button']");
+    }
+
+    ElementsCollection analogDetailsBlock() {return $$x("//div[@class='product-list__item__popup']");}
+
+    SelenideElement headlineOfAnalogBlock() {return $x("//div[@class='product-same-artikel__title']/span");}
+
+    ElementsCollection titleOfAnalogProduct() {return $$x("//div[@class='product-list__item__title']/a");}
+
+    SelenideElement mainProductTitle() {return $x("//div[@class='product-block__description__title product-block__equal-height-wrap']/h2/span[1]");}
 }
