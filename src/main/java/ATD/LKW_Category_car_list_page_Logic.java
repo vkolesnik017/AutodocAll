@@ -504,8 +504,7 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         while (!brandsLinkInSideBar(idOfBrand).isDisplayed()) {
             String brandBeforeScroll = visibleBrands().get(0).getAttribute("for");
             forwardLinkAtBrandsFilter().click();
-            String brandAfterScroll = visibleBrands().get(0).getAttribute("for");
-                      Assert.assertNotEquals(brandBeforeScroll,brandAfterScroll);
+            visibleBrands().get(0).shouldNotHave(attribute("for", brandBeforeScroll));
         }
         brandsLinkInSideBar(idOfBrand).shouldBe(visible).click();
         appearsOfLoader();

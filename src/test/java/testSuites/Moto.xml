@@ -209,6 +209,7 @@
             <class name="MOTO.QC_730_ProductPage.QC_738_AnalogProductBlock"/>
             <class name="MOTO.QC_730_ProductPage.QC_739_AddedAnalogProductToBasket"/>
             <class name="MOTO.QC_730_ProductPage.QC_740_PresenceOfDetailInformationPopUp"/>
+            <class name="MOTO.QC_730_ProductPage.QC_741_BehaviorByClickOnImageOfAnalogProduct"/>
         </classes>
     </test>
 

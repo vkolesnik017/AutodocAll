@@ -653,4 +653,19 @@ public class Moto_main_page_Logic extends Moto_main_page {
         }
         return this;
     }
+
+    @Step("select parent category in vertical catalog .Moto_main_page")
+    public Moto_main_page_Logic selectParentCategoryInVerticalCatalog(int position) {
+        listOfParentCategoriesInVerticalCatalog().get(position).shouldBe(visible).hover();
+        verticalCatalogBlockSecondLevel().shouldBe(visible);
+        return this;
+    }
+
+    @Step("select parent category in vertical catalog .Moto_main_page")
+    public Moto_Category_page_Logic selectChildCategoryInVerticalCatalogSecondLevel(int position) {
+        listOfParentCategoriesInVerticalCatalog().get(position).shouldBe(visible).hover();
+        verticalCatalogBlockSecondLevel().shouldBe(visible);
+        listOfCategoriesInVerticalCatalogSecondLevel().get(position).shouldBe(visible).click();
+        return page(Moto_Category_page_Logic.class);
+    }
 }

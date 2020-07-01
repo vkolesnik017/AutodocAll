@@ -354,6 +354,7 @@ public class Moto_Product_page_Logic extends Moto_Product_page {
         String idOfBtn = btnAddToBasketAnalogProduct().get(0).shouldBe(visible).getAttribute("id");
         return idOfBtn;
     }
+
     @Step(" adding analog product to basket .Moto_Product_page")
     public Cart_page_Logic addAnalogProductToBasket() {
         btnAddToBasketAnalogProduct().get(0).click();
@@ -365,11 +366,36 @@ public class Moto_Product_page_Logic extends Moto_Product_page {
 
     @Step("presence of detail information popUp when hovering by analog products.Moto_Product_page")
     public Moto_Product_page_Logic presenceOfDetailInfoPopUp() {
-           for (int i=0; i<analogProducts().size(); i++) {
-               analogProducts().get(i).hover();
-               analogDetailsBlock().get(i).shouldBe(visible);
-               headlineOfAnalogBlock().hover();
-           }
+        for (int i = 0; i < analogProducts().size(); i++) {
+            analogProducts().get(i).hover();
+            analogDetailsBlock().get(i).shouldBe(visible);
+            headlineOfAnalogBlock().hover();
+        }
         return this;
     }
+
+    @Step("click on image of analog product .Moto_Product_page")
+    public Moto_Product_page_Logic clickOnImageOfAnalogProduct() {
+        titleOfAnalogProduct().get(0).click();
+        return this;
+    }
+
+    @Step("get title of analog product .Moto_Product_page")
+    public String getTitleOfAnalogProduct() {
+        String titleOfProduct = titleOfAnalogProduct().get(0).getText();
+        return titleOfProduct;
+    }
+
+    @Step("check title of product .Moto_Product_page")
+    public Moto_Product_page_Logic checkTitleOfProduct(String title) {
+        mainProductTitle().shouldBe(visible).shouldHave(exactText(title));
+        return this;
+    }
+
+    @Step("transition to next window of browser .Moto_Product_page")
+    public Moto_Product_page_Logic gotoNextWindow() {
+        switchTo().window(1);
+        return this;
+    }
+
 }
