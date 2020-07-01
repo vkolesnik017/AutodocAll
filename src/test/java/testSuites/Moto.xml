@@ -206,12 +206,16 @@
             <class name="MOTO.QC_730_ProductPage.QC_733_AddedProductToBasket"/>
             <class name="MOTO.QC_730_ProductPage.QC_734_CompatibleMotoBlock"/>
             <class name="MOTO.QC_730_ProductPage.QC_737_LackOfLinksInOenBlock"/>
+            <class name="MOTO.QC_730_ProductPage.QC_738_AnalogProductBlock"/>
+            <class name="MOTO.QC_730_ProductPage.QC_739_AddedAnalogProductToBasket"/>
+            <class name="MOTO.QC_730_ProductPage.QC_740_PresenceOfDetailInformationPopUp"/>
         </classes>
     </test>
 
     <test name="QC_757_MotoCatalogInHeader">
         <classes>
             <class name="MOTO.QC_757_MotoCatalogInHeader.QC_759_PresenceOfMotoCatalogInHeader"/>
+            <class name="MOTO.QC_757_MotoCatalogInHeader.QC_760_StructureOfMotoCatalogInHeader"/>
         </classes>
     </test>
 </suite>

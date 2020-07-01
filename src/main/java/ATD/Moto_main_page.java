@@ -283,4 +283,18 @@ class Moto_main_page {
     ElementsCollection intermediateCategoriesSecondLevel() {
         return $$(byXpath("//div[@class='menu-category__2-block']//li[contains(@class,'menu-category__item')]/span/span")).filter(visible);
     }
+
+    SelenideElement verticalCatalogBlockThirdLevel() {
+        return $(byXpath("//div[@class='menu-category__3-block']"));
+    }
+
+    ElementsCollection titleOfVerticalCatalogBlockThirdLevel() {
+        return $$(byXpath("//div[@class='menu-category__3-block']//div[@class='menu-category__title']")).filter(visible);
+    }
+
+    ElementsCollection childCategoriesThirdLevelAtVerticalCatalog() {return $$x("//div[@class='menu-category__3-block']//li[@class='menu-category__item']/a").filter(visible);}
+
+    ElementsCollection titleOfChildCategoriesThirdLevelAtVerticalCatalog() {return $$x("//div[@class='menu-category__3-block']//li[@class='menu-category__item']/a/span").filter(visible);}
+
+    ElementsCollection imageOfChildCategoriesThirdLevelAtVerticalCatalog() {return $$x("//div[@class='menu-category__3-block']//li[@class='menu-category__item']/a/img").filter(visible);}
 }
