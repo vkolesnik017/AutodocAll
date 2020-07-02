@@ -314,12 +314,8 @@ public class Moto_Category_page_Logic extends Moto_Category_page {
         categoriesFromTable.add("Luftfilter");
         categoriesFromTable.add("Kraftstofffilter");
         List<String> categoriesFromSideBar = new ArrayList<>();
-        for (int i=0; i<childCategoriesInSideBar().size();i++){
+        for (int i = 0; i < childCategoriesInSideBar().size(); i++) {
             categoriesFromSideBar.add(childCategoriesInSideBar().get(i).getText());
-        }
-
-        for (String e: categoriesFromSideBar){
-            System.out.println(e);
         }
         Assert.assertTrue(categoriesFromTable.containsAll(categoriesFromSideBar));
         return this;
