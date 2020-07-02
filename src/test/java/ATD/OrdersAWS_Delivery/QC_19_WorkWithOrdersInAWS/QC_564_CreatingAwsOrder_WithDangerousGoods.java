@@ -70,7 +70,7 @@ public class QC_564_CreatingAwsOrder_WithDangerousGoods {
                 .checkOrderHasTestStatus()
                 .getUserDataInOrder();
         Assert.assertEquals(userData, userDataInOrder);
-        sellingCostInOrder = order_aws.checkVatStatusInOrder("Mit MwSt 19%")
+        sellingCostInOrder = order_aws.checkVatStatusInOrder("Mit MwSt 16%")
                 .checkPaymentMethodInOrder("PayPal")
                 .checkThatStatusSafeOrderIsOff()
                 .checkDeliveryPriceOrderAWS(deliveryCost)
@@ -84,7 +84,7 @@ public class QC_564_CreatingAwsOrder_WithDangerousGoods {
                 .checkOrderHasTestStatus()
                 .getUserDataInOrder();
         Assert.assertEquals(userData, userDataInOrder);
-        sellingCostInOrder = order_aws.checkVatStatusInOrder("Mit MwSt 19%")
+        sellingCostInOrder = order_aws.checkVatStatusInOrder("Mit MwSt 16%")
                 .checkPaymentMethodInOrder("PayPal")
                 .checkThatStatusSafeOrderIsOff()
                 .checkDeliveryPriceOrderAWS(deliveryCost)
