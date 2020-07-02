@@ -5,6 +5,8 @@ import AWS.Order_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import mailinator.Mailinator;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -16,28 +18,37 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_1830_DisplayTrackingNumberInPR {
+public class QC_1831_CheckingForExistingDeliveryServices {
 
-
-    private String mail = "QC_1830_autotest@mailinator.com", orderNumber;
+    private String mail = "QC_1831_autotest@mailinator.com", orderNumber, deliveryPageURL, deliveryPageUrlFromMail,
+            trackingNumFromAWS, trackingNumFromPR, trackingNumFromMail;
     private Main_page_Logic main_page_logic = new Main_page_Logic();
+    private Profile_orders_page_Logic profile_orders_page_logic = new Profile_orders_page_Logic();
+    private Mailinator mailinator = new Mailinator();
 
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "route", parallel = true)
-    Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShop("prod", "DE");
+    @DataProvider(name = "deliveryService", parallel = false)
+    Object[] dataProviderProducts() {
+        return new Object[][]{
+                {"GLS"},
+                {"DHL"},
+                {"NOX"},
+                {"PNORD"},
+                {"DPDPL"},
+                {"TNT"}
+        };
     }
 
-    @Test(dataProvider = "route")
+    @Test(dataProvider = "deliveryService")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks the display of the tracking number in PR")
-    public void testDisplayTrackingNumberInPR(String route) throws SQLException {
-        openPage(route);
+    @Description(value = "Test checks existing delivery services")
+    public void testCheckingForExistingDeliveryServices(String deliveryService) throws SQLException {
+        openPage("https://www.autodoc.de");
         main_page_logic.loginAndTransitionToProfilePlusPage(mail);
         openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "product32"));
         new Product_page_Logic().addProductToCart()
@@ -51,35 +62,26 @@ public class QC_1830_DisplayTrackingNumberInPR {
                 .nextBtnClick();
         orderNumber = new Payment_handler_page_Logic().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumber);
-        order_aws.openOrderInAwsWithLogin()
+        trackingNumFromAWS = order_aws.openOrderInAwsWithLogin()
                 .checkCurrentStatusInOrder("Neue Bestellung")
-                .selectDeliveryAndEnterTrackingNum("DHL", "0", "0", "1111111111")
-                .selectDeliveryAndEnterTrackingNum("DHL", "1", "1", "2222222222")
-                .selectDeliveryAndEnterTrackingNum("DHL", "2", "2", "3333333333")
-                .selectDeliveryAndEnterTrackingNum("DHL", "3", "3", "4444444444")
-                .selectDeliveryAndEnterTrackingNum("DHL", "4", "4", "5555555555")
+                .selectDeliveryAndEnterTrackingNum(deliveryService, "0", "0", "1111111111")
                 .selectStatusOrder("Versendet")
                 .saveOrder()
-                .checkCurrentStatusInOrder("Versendet");
-        openPage(route);
-        main_page_logic.profilePlusBtnClickInHeader()
-                .goToMyOrdersPage()
-                .checkPresenceDeliveryStatusBlock()
-                .checkNumberDeliveryServiceAdded(5)
-                .checkTransitionToDeliveryPage();
-        order_aws.openOrderInAwsWithoutLogin()
                 .checkCurrentStatusInOrder("Versendet")
-                .clickBtnAddedDeliveryInOrderBtn()
-                .selectDeliveryAndEnterTrackingNum("DHL", "6", "6", "6666666666")
-                .selectStatusOrder("Versendet")
-                .saveOrder()
-                .checkCurrentStatusInOrder("Versendet");
-        openPage(route);
-        main_page_logic.profilePlusBtnClickInHeader()
+                .getSavedTrackingNumber();
+        openPage("https://www.autodoc.de");
+        trackingNumFromPR = main_page_logic.profilePlusBtnClickInHeader()
                 .goToMyOrdersPage()
                 .checkPresenceDeliveryStatusBlock()
-                .checkNumberDeliveryServiceAddedFromTooltip(5)
-                .trackingNumInDeliveryPageFromTooltip();
+                .getTrackingNum();
+        Assert.assertEquals(trackingNumFromAWS, trackingNumFromPR);
+        deliveryPageURL = profile_orders_page_logic.checkNumberDeliveryServiceAdded(1).transitionToDeliveryPageAndGetURL();
+        trackingNumFromMail = mailinator.openEmail(mail)
+                .openLetter(1)
+                .getTrackingNumberFromMail();
+        deliveryPageUrlFromMail = mailinator.transitionToDeliveryPageAndGetUrlFromMail();
+        Assert.assertEquals(trackingNumFromAWS, trackingNumFromMail);
+        Assert.assertEquals(deliveryPageURL, deliveryPageUrlFromMail);
         order_aws.openOrderInAwsWithoutLogin()
                 .checkCurrentStatusInOrder("Versendet")
                 .reSaveOrder()

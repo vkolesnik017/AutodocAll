@@ -6,6 +6,7 @@ import org.testng.Assert;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class Profile_orders_page_Logic extends Profile_orders_page {
 
@@ -70,14 +71,29 @@ public class Profile_orders_page_Logic extends Profile_orders_page {
     public Profile_orders_page_Logic trackingNumInDeliveryPageFromTooltip() {
         SelenideElement trackingNumInDeliveryPage = $x("//span[@class='shipmentNumber']");
         for (int i = 0; i < trackingNumFromTooltip().size(); i++) {
-            String tracingNum = trackingNumFromTooltip().get(i).getText();
+            String trackingNum = trackingNumFromTooltip().get(i).getText();
             trackingNumFromTooltip().get(i).click();
             switchTo().window(1);
             String numInDeliveryPage = trackingNumInDeliveryPage.getText();
             closeWindow();
             switchTo().window(0);
-            Assert.assertEquals(tracingNum, numInDeliveryPage);
+            Assert.assertEquals(trackingNum, numInDeliveryPage);
         }
         return this;
+    }
+
+    @Step("Transition to delivery page and get URL. Profile_orders_page")
+    public String transitionToDeliveryPageAndGetURL() {
+        oneTrackingNumber().click();
+        switchTo().window(1);
+        String deliveryPageURL = url();
+        closeWindow();
+        switchTo().window(0);
+        return deliveryPageURL;
+    }
+
+    @Step("Get tracking number. Profile_orders_page")
+    public String getTrackingNum() {
+        return String.valueOf(oneTrackingNumber().getText());
     }
 }

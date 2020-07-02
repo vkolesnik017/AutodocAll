@@ -106,17 +106,17 @@ public class QC_1389_Firms_DE_PL {
                 .chooseVorkasse()
                 .nextBtnClick()
                 .checkTextInDeliveryAddressInfoBlock("Firma Autodoc GmbH")
-                .checkTextContainingVatPercentage("inkl. 19% MwSt.")
+                .checkTextContainingVatPercentage("inkl. 16% MwSt.")
                 .getTotalPriceAllDataPage();
         orderNumberDE = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumberDE);
         totalPriceAWSOrderDE = order_aws.openOrderInAwsWithLogin()
-                .checkVatStatusInOrder("Mit MwSt 19%")
+                .checkVatStatusInOrder("Mit MwSt 16%")
                 .checkFirmConfirmationStatus("Пров. вручную")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceDE, totalPriceAWSOrderDE);
         totalPriceAWSOrderDE = order_aws.reSaveOrder()
-                .checkVatStatusInOrder("Mit MwSt 19%")
+                .checkVatStatusInOrder("Mit MwSt 16%")
                 .checkFirmConfirmationStatus("Пров. вручную")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceDE, totalPriceAWSOrderDE);
@@ -125,7 +125,7 @@ public class QC_1389_Firms_DE_PL {
         switchTo().window(1);
         totalPriceInEmailDE = new Mailinator().openEmail("qc_1389_autotestDE@mailinator.com")
                 .openLetter(1)
-                .checkTextContainingVatPercentageInEmail("inkl. 19% MwSt")
+                .checkTextContainingVatPercentageInEmail("inkl. 16% MwSt")
                 .checkFirstFirmNameInEmail("Autodoc GmbH")
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPriceDE, totalPriceInEmailDE);
@@ -156,17 +156,17 @@ public class QC_1389_Firms_DE_PL {
                 .chooseVorkasse()
                 .nextBtnClick()
                 .checkTextInDeliveryAddressInfoBlock("Entidad Autodoc GmbH")
-                .checkTextContainingVatPercentage("IVA incluido 19%")
+                .checkTextContainingVatPercentage("IVA incluido 16%")
                 .getTotalPriceAllDataPage();
     orderNumberES = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
     Order_aws order_aws = new Order_aws(orderNumberES);
     totalPriceAWSOrderES = order_aws.openOrderInAwsWithLogin()
-            .checkVatStatusInOrder("Mit MwSt 19%")
+            .checkVatStatusInOrder("Mit MwSt 16%")
                 .checkFirmConfirmationStatus("Пров. вручную")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceES, totalPriceAWSOrderES);
         totalPriceAWSOrderES = order_aws.reSaveOrder()
-                .checkVatStatusInOrder("Mit MwSt 19%")
+                .checkVatStatusInOrder("Mit MwSt 16%")
                 .checkFirmConfirmationStatus("Пров. вручную")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceES, totalPriceAWSOrderES);
@@ -175,7 +175,7 @@ public class QC_1389_Firms_DE_PL {
     switchTo().window(1);
     totalPriceInEmailES = new Mailinator().openEmail("qc_1389_autotestES@mailinator.com")
                 .openLetter(1)
-                .checkTextContainingVatPercentageInEmail("IVA incluido 19%")
+                .checkTextContainingVatPercentageInEmail("IVA incluido 16%")
                 .checkFirstFirmNameInEmail("Autodoc GmbH")
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPriceES, totalPriceInEmailES);

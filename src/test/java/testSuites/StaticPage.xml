@@ -77,7 +77,7 @@
         </classes>
     </test>
 
-    <test name="QC_1547_StaticPage_mobile_app" enabled="false">
+    <test name="QC_1547_StaticPage_mobile_app" enabled="true">
         <classes>
             <class name="ATD.StaticPage.QC_1547_StaticPage_mobile_app">
             </class>
