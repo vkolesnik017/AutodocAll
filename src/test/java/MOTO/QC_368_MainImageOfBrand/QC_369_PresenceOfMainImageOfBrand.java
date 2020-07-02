@@ -1,4 +1,4 @@
-package MOTO.QC_336_BreadCrumbsBlock;
+package MOTO.QC_368_MainImageOfBrand;
 
 import ATD.Moto_Categories_maker_page_Logic;
 import ATD.SetUp;
@@ -16,7 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_338_StructureOfBreadCrumbsBlockAtBrands {
+public class QC_369_PresenceOfMainImageOfBrand {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -25,16 +25,18 @@ public class QC_338_StructureOfBreadCrumbsBlockAtBrands {
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
         return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_categories_maker2");
+
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks structure of bread crumbs block at brands route")
-    public void testChecksStructureOfBreadCrumbsBlockAtBrands(String route)  {
+    @Description(value = "Test checks presence of main image of brand")
+    public void testChecksPresenceOfMainImageOfBrand(String route) {
         openPage(route);
 
-        new Moto_Categories_maker_page_Logic().checkBreadCrumbsBlock();
+        new Moto_Categories_maker_page_Logic()
+                .presenceOfMainBrandImage();
     }
 
     @AfterMethod

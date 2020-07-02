@@ -26,7 +26,7 @@ public class Moto_Categories_maker_page {
 
     ElementsCollection linksOfBreadCrumbs() {return $$x("//div[@class='steps breadcrumbs']//li");}
 
-    SelenideElement iconOfFirstLinksAtBreadCrumbs() {return linksOfBreadCrumbs().get(0).$x("//img");}
+    SelenideElement iconOfFirstLinksAtBreadCrumbs() {return $x("//div[@class='steps breadcrumbs']//li//img");}
 
     SelenideElement titleOfFirstLinksAtBreadCrumbs() {return $x("//li[@itemprop='itemListElement']//a");}
 
@@ -67,4 +67,8 @@ public class Moto_Categories_maker_page {
     SelenideElement headlineOfTopParentCategories() {return $x("//div[@class='moto-parts-catalog']/strong");}
 
     ElementsCollection topProducts() {return $$x("//div[@class='product-list__row']/ul/li");}
+
+    SelenideElement mainImageBlock() {return $x("//div[@class='moto-top-content__model']");}
+
+    SelenideElement mainImageOfBrand() {return $x("//div[@class='moto-top-content__model']/img");}
 }
