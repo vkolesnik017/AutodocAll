@@ -63,4 +63,8 @@ public class Moto_Parent_Category_page {
     ElementsCollection  btnDetailsOfTopProducts() {return $$x("//div[@class='about']/div/following-sibling::button");}
 
     ElementsCollection titleOfTopProduct() {return $$x("//div[@class='name']/a");}
+
+    SelenideElement parentCategoryBlockInSidebar() {return $x("//div[@class='teile_catalog']/a");}
+
+    ElementsCollection parentCategoriesInSideBar() {return $$x("//div[@class='block categories blue teile_catalog_collapsed blue topSubCats']/ul/li");}
 }

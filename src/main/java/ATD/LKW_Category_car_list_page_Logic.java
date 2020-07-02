@@ -502,9 +502,7 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
     public LKW_Category_car_list_page_Logic selectBrandFromFilterOfBrands(String subRoute, String idOfBrand) throws SQLException {
         brandsFilterBlock().shouldBe(visible);
         while (!brandsLinkInSideBar(idOfBrand).isDisplayed()) {
-            String brandBeforeScroll = visibleBrands().get(0).getAttribute("for");
             forwardLinkAtBrandsFilter().click();
-            visibleBrands().get(0).shouldNotHave(attribute("for", brandBeforeScroll));
         }
         brandsLinkInSideBar(idOfBrand).shouldBe(visible).click();
         appearsOfLoader();

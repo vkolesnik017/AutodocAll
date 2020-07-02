@@ -663,9 +663,13 @@ public class Moto_main_page_Logic extends Moto_main_page {
 
     @Step("select parent category in vertical catalog .Moto_main_page")
     public Moto_Category_page_Logic selectChildCategoryInVerticalCatalogSecondLevel(int position) {
-        listOfParentCategoriesInVerticalCatalog().get(position).shouldBe(visible).hover();
-        verticalCatalogBlockSecondLevel().shouldBe(visible);
         listOfCategoriesInVerticalCatalogSecondLevel().get(position).shouldBe(visible).click();
         return page(Moto_Category_page_Logic.class);
+    }
+
+    @Step("select parent category in vertical catalog .Moto_main_page")
+    public Moto_Category_car_list_page_Logic selectChildCategoryInVerticalCatalogSecondLevelWithMoto(int position) {
+        listOfCategoriesInVerticalCatalogSecondLevel().get(position).shouldBe(visible).click();
+        return page(Moto_Category_car_list_page_Logic.class);
     }
 }
