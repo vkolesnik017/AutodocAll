@@ -4,6 +4,8 @@ import io.qameta.allure.Step;
 import org.testng.Assert;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.*;
@@ -247,7 +249,7 @@ public class Moto_Category_page_Logic extends Moto_Category_page {
     @Step("get brand from TOP product title .Moto_Category_page")
     public String getBrandFromTopProductTitle() {
         String titleOfBrand = titleOfTopProducts().get(0).getText().replace(titleOfTopProducts().get(0).getText().substring(titleOfTopProducts().get(0).getText().lastIndexOf(" ")), "").toLowerCase(); //.replace(" ", "-");
-        String pathUrl =  titleOfBrand.replace(titleOfBrand.substring(titleOfBrand.lastIndexOf(" ")),"");
+        String pathUrl = titleOfBrand.replace(titleOfBrand.substring(titleOfBrand.lastIndexOf(" ")), "");
         return pathUrl;
     }
 
@@ -291,12 +293,35 @@ public class Moto_Category_page_Logic extends Moto_Category_page {
         return this;
     }
 
-        @Step("visibility of PopUp with addition information .Moto_Category_page")
+    @Step("visibility of PopUp with addition information .Moto_Category_page")
     public Moto_Category_page_Logic checkGenericAndTopProduct() {
-        for (int i = 0; i <  titleOfTopProducts().size(); i++) {
-             titleOfTopProducts().get(i).shouldHave(text("Ölfilter"));
+        for (int i = 0; i < titleOfTopProducts().size(); i++) {
+            titleOfTopProducts().get(i).shouldHave(text("Ölfilter"));
         }
         return this;
     }
 
+    @Step("click on child category in sidebar .Moto_Category_page")
+    public Moto_Category_page_Logic clickOnChildCategoryInSidebar(int position) {
+        childCategoriesInSideBar().get(position).shouldBe(visible).click();
+        return page(Moto_Category_page_Logic.class);
+    }
+
+
+    @Step("check child categories link .Moto_Category_page")
+    public Moto_Category_page_Logic checkChildCategoriesLink() {
+        List<String> categoriesFromTable = new ArrayList<>();
+        categoriesFromTable.add("Luftfilter");
+        categoriesFromTable.add("Kraftstofffilter");
+        List<String> categoriesFromSideBar = new ArrayList<>();
+        for (int i=0; i<childCategoriesInSideBar().size();i++){
+            categoriesFromSideBar.add(childCategoriesInSideBar().get(i).getText());
+        }
+
+        for (String e: categoriesFromSideBar){
+            System.out.println(e);
+        }
+        Assert.assertTrue(categoriesFromTable.containsAll(categoriesFromSideBar));
+        return this;
+    }
 }

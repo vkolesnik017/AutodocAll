@@ -46,4 +46,6 @@ public class Moto_Category_car_list_model_page {
     SelenideElement basket() {
         return $x("//a[@class='header-cart__link']");
     }
+
+    ElementsCollection childCategoriesInSideBar() {return $$x("//div[@class='block categories blue topSubCats']//li");}
 }

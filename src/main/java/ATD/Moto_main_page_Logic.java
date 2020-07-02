@@ -672,4 +672,21 @@ public class Moto_main_page_Logic extends Moto_main_page {
         listOfCategoriesInVerticalCatalogSecondLevel().get(position).shouldBe(visible).click();
         return page(Moto_Category_car_list_page_Logic.class);
     }
+
+    @Step("presence of main banner .Moto_main_page")
+    public Moto_main_page_Logic presenceOfMainBanner() {
+        mainBanner().shouldBe(visible);
+        return this;
+    }
+
+    @Step("hover On TOP child categories .Moto_main_page")
+    public Moto_main_page_Logic hoverOnTopChildCategories() {
+        topChildCategoriesBlock().shouldBe(visible);
+        for (int i = 0; i < titleOfTopChildCategories().size(); i++) {
+            titleOfTopChildCategories().get(i).shouldBe(visible).shouldHave(cssValue("color", "rgba(0, 0, 0, 1)"));
+            titleOfTopChildCategories().get(i).shouldBe(visible).hover();
+            titleOfTopChildCategories().get(i).shouldBe(visible).shouldHave(cssValue("color", "rgba(255, 255, 255, 1)"));
+        }
+        return this;
+    }
 }
