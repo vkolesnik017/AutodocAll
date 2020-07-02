@@ -26,7 +26,7 @@ public class Moto_Categories_maker_page {
 
     ElementsCollection linksOfBreadCrumbs() {return $$x("//div[@class='steps breadcrumbs']//li");}
 
-    SelenideElement iconOfFirstLinksAtBreadCrumbs() {return linksOfBreadCrumbs().get(0).$x("//img");}
+    SelenideElement iconOfFirstLinksAtBreadCrumbs() {return $x("//div[@class='steps breadcrumbs']//li//img");}
 
     SelenideElement titleOfFirstLinksAtBreadCrumbs() {return $x("//li[@itemprop='itemListElement']//a");}
 
