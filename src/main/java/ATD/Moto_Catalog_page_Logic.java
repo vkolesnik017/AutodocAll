@@ -351,7 +351,7 @@ public class Moto_Catalog_page_Logic extends Moto_Catalog_page {
         return this;
     }
 
-    @Step("Getting category in Header Catalog. LKW_Catalog_page")
+    @Step("Getting category in Header Catalog  .Moto_Catalog_page")
     public List<Integer> getCategoryInHeaderCatalog() {
         List<Integer> catalogInHeaderList = new ArrayList<>();
         catalogInHeader().scrollTo().click();

@@ -257,10 +257,10 @@ public class Moto_Parent_Category_page_Logic extends Moto_Parent_Category_page {
         return this;
     }
 
-   @Step("open parent category catalog in sidebar .Moto_Parent_Category_page")
+    @Step("open parent category catalog in sidebar .Moto_Parent_Category_page")
     public Moto_Parent_Category_page_Logic openParentCategoryCatalogInSidebar() {
         parentCategoryBlockInSidebar().shouldBe(visible).click();
-       parentCategoriesInSideBar().shouldHaveSize(17);
+        parentCategoriesInSideBar().shouldHaveSize(17);
         return this;
     }
 
@@ -269,5 +269,10 @@ public class Moto_Parent_Category_page_Logic extends Moto_Parent_Category_page {
     public Moto_Parent_Category_page_Logic selectParentCategoryInSideBar(int position) {
         parentCategoriesInSideBar().get(position).shouldBe(visible).click();
         return page(Moto_Parent_Category_page_Logic.class);
+    }
+
+    @Step("presence of linking block .Moto_Parent_Category_page")
+    public Moto_Parent_Category_page_Logic presenceOfLinkingBlock() {
+        return this;
     }
 }
