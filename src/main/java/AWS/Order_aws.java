@@ -405,12 +405,21 @@ public class Order_aws {
         return $x("//input[@name='OrderDelivery[" + fieldTrackingNum + "][DeliveryNr]']");
     }
 
+    private SelenideElement fieldSavedTrackingNumber() {
+        return $x("//input[@class='form-control size-140 delivery-nr']");
+    }
+
     private SelenideElement addDeliveryInOrderBtn() {
         return $(".add-order-delivery");
     }
 
     private SelenideElement selectedStatus(String nameStatus) {
         return $x("//select[@class='order-new-status']//option[text()[contains(.,'" + nameStatus + "')]]");
+    }
+
+    @Step("Get saved tracking number. Order_aws")
+    public String getSavedTrackingNumber() {
+        return String.valueOf(fieldSavedTrackingNumber().getAttribute("value"));
     }
 
     @Step("Selects status {nameStatus} order. Order_aws")
@@ -421,7 +430,7 @@ public class Order_aws {
 
 
     @Step("Selects delivery service {methodDelivery}, {numberDelivery} and enters a tracking number {fieldTrackingNum}. Order_aws")
-    public Order_aws selectDeliveryAndEnterTrackingNum(String methodDelivery, String numberDelivery, String fieldTrackingNum, String trackingNum) {
+    public Order_aws selectDeliveryAndEnterTrackingNum(String methodDelivery,String numberDelivery, String fieldTrackingNum, String trackingNum) {
         deliveryMethod(methodDelivery, numberDelivery).click();
         fieldTrackingNumbers(fieldTrackingNum).sendKeys(trackingNum);
         addDeliveryInOrderBtn().click();

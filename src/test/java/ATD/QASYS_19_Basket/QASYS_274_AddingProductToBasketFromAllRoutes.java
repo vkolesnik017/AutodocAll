@@ -20,7 +20,6 @@ import static com.codeborne.selenide.Selenide.close;
 
 public class QASYS_274_AddingProductToBasketFromAllRoutes {
 
-//  private Product_page_logic product_page_logic = new Product_page_logic();
   private Product_page_Logic product_page_logic = new Product_page_Logic();
 
   @BeforeClass

@@ -38,14 +38,6 @@ public class MobileApp_static_page_Logic extends MobileApp_static_page {
         appStoreButton().shouldBe(visible).shouldBe(clickable);
         googlePlayButton().shouldBe(visible).shouldBe(clickable);
         appQR().shouldBe(visible);
-        appDiscount().shouldBe(visible);
-        subscribeBlock().shouldBe(visible);
-        mailFieldInSubscribeForm().shouldBe(visible);
-        getMailBtnInSubscribeForm().shouldBe(visible);
-        appSubscribeCheckbox().shouldBe(visible);
-        privacyPolicyLink().shouldBe(visible).shouldBe(clickable);
-        getMailBtnInSubscribeForm().click();
-        appWrongEmailError().shouldBe(visible);
         appServicesList().shouldBe(visible);
         return this;
     }

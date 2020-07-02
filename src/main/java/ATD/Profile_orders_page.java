@@ -32,6 +32,10 @@ public class Profile_orders_page {
         return $$x("//a[@data-ga-action='TrackingNumber_AllOrders']");
     }
 
+    SelenideElement oneTrackingNumber() {
+        return $x("//a[@data-ga-action='TrackingNumber_AllOrders']");
+    }
+
     SelenideElement trackingTooltip() {
         return $x("//span[@class='js-order-status__numbers']");
     }
