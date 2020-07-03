@@ -26,10 +26,10 @@ public class Moto_Category_car_list_model_page {
     SelenideElement iconOfCatalogBrandInBreadCrumbs() {return $x("//li[@class='step_1 active parts_step_1']//img");}
 
     ElementsCollection btnAddToBasketAtAnAnalogProduct() {
-        return $$x("//div[@class='top-small-products-items__item']/div[6]//a");
+        return $$x("//div[@class='small-product-button price_box']//a");
     }
     ElementsCollection visibleBtnAddToBasketAtAnAnalogProduct() {
-        return $$x("//div[@class='count hidden']/following-sibling::a").filter(visible);
+        return $$x("//div[@class='small-product-button price_box']//a").filter(visible);
     }
     SelenideElement btnShowReplacement(String artOfProduct) {
         return $x("//span[contains(text(),'" + artOfProduct + "')]/ancestor::li[@class='ovVisLi item_not_available']//div[contains(@class,'show_alternative__btn')]");
