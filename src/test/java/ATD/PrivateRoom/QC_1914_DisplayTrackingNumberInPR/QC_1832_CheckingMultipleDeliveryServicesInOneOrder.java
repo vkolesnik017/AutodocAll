@@ -13,45 +13,38 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_1831_CheckingForExistingDeliveryServices {
+public class QC_1832_CheckingMultipleDeliveryServicesInOneOrder {
 
-    private String mail = "QC_1831_autotest@mailinator.com", orderNumber, deliveryPageURL, deliveryPageUrlFromMail,
-            trackingNumFromAWS, trackingNumFromPR, trackingNumFromMail;
+    private String mail = "QC_1832_autotest@mailinator.com", orderNumber;
+    private ArrayList<String> listSavedTrackingNumberFromAWS, listTrackingNumberFromUrl, listTrackingNumberFromMail;
+
     private Main_page_Logic main_page_logic = new Main_page_Logic();
-    private Profile_orders_page_Logic profile_orders_page_logic = new Profile_orders_page_Logic();
     private Mailinator mailinator = new Mailinator();
-    private DataBase dataBase = new DataBase();
 
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "deliveryService", parallel = false)
-    Object[] dataProviderProducts() {
-        return new Object[][]{
-                {"GLS"},
-                {"DHL"},
-                {"NOX"},
-                {"PNORD"},
-                {"DPDPL"},
-                {"TNT"}
-        };
+    @DataProvider(name = "route", parallel = true)
+    Object[] dataProviderProducts() throws SQLException {
+        return new SetUp().setUpShop("prod", "DE");
     }
 
-    @Test(dataProvider = "deliveryService")
+    @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks existing delivery services")
-    public void testCheckingForExistingDeliveryServices(String deliveryService) throws SQLException {
-        openPage(dataBase.getFullRouteByRouteName("prod", "DE", "main"));
+    @Description(value = "Test checks the display of the tracking number in PR")
+    public void testDisplayTrackingNumberInPR(String route) throws SQLException {
+        openPage(route);
         main_page_logic.loginAndTransitionToProfilePlusPage(mail);
-        openPage(dataBase.getFullRouteByRouteAndSubroute("prod", "DE", "main", "product32"));
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "product32"));
         new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
@@ -63,26 +56,26 @@ public class QC_1831_CheckingForExistingDeliveryServices {
                 .nextBtnClick();
         orderNumber = new Payment_handler_page_Logic().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumber);
-        trackingNumFromAWS = order_aws.openOrderInAwsWithLogin()
+        listSavedTrackingNumberFromAWS = order_aws.openOrderInAwsWithLogin()
                 .checkCurrentStatusInOrder("Neue Bestellung")
-                .selectDeliveryAndEnterTrackingNum(deliveryService, "0", "0", "1111111111")
+                .selectDeliveryAndEnterTrackingNum("GLS", "0", "0", "1111111111")
+                .selectDeliveryAndEnterTrackingNum("DHL", "1", "1", "2222222222")
+                .selectDeliveryAndEnterTrackingNum("NOX", "2", "2", "3333333333")
                 .selectStatusOrder("Versendet")
                 .saveOrder()
                 .checkCurrentStatusInOrder("Versendet")
-                .getSavedTrackingNumber();
-        openPage(dataBase.getFullRouteByRouteName("prod", "DE", "main"));
-        trackingNumFromPR = main_page_logic.profilePlusBtnClickInHeader()
+                .getListSavedTrackingNumber();
+        openPage(route);
+        listTrackingNumberFromUrl = main_page_logic.profilePlusBtnClickInHeader()
                 .goToMyOrdersPage()
                 .checkPresenceDeliveryStatusBlock()
-                .getTrackingNum();
-        Assert.assertEquals(trackingNumFromAWS, trackingNumFromPR);
-        deliveryPageURL = profile_orders_page_logic.checkNumberDeliveryServiceAdded(1).transitionToDeliveryPageAndGetURL();
-        trackingNumFromMail = mailinator.openEmail(mail)
+                .checkNumberDeliveryServiceAdded(3)
+                .transitionToDeliveryPageAndGetTrackingNumFromURL();
+        Assert.assertEquals(listSavedTrackingNumberFromAWS, listTrackingNumberFromUrl);
+        listTrackingNumberFromMail = mailinator.openEmail(mail)
                 .openLetter(1)
-                .getTrackingNumberFromMail();
-        deliveryPageUrlFromMail = mailinator.transitionToDeliveryPageAndGetUrlFromMail();
-        Assert.assertEquals(trackingNumFromAWS, trackingNumFromMail);
-        Assert.assertEquals(deliveryPageURL, deliveryPageUrlFromMail);
+                .transitionToDeliveryPageAndGetTrackingNumFromUrlInMail();
+        Assert.assertEquals(listSavedTrackingNumberFromAWS, listTrackingNumberFromMail);
         order_aws.openOrderInAwsWithoutLogin()
                 .checkCurrentStatusInOrder("Versendet")
                 .reSaveOrder()

@@ -409,12 +409,27 @@ public class Order_aws {
         return $x("//input[@class='form-control size-140 delivery-nr']");
     }
 
+    private ElementsCollection allFieldsSavedTrackingNumber() {
+        return $$x("//input[@class='form-control size-140 delivery-nr']");
+    }
+
     private SelenideElement addDeliveryInOrderBtn() {
         return $(".add-order-delivery");
     }
 
     private SelenideElement selectedStatus(String nameStatus) {
         return $x("//select[@class='order-new-status']//option[text()[contains(.,'" + nameStatus + "')]]");
+    }
+
+
+
+    @Step("Get list saved tracking number. Order_aws")
+    public ArrayList<String> getListSavedTrackingNumber() {
+        ArrayList<String> list = new ArrayList<>();
+        for (int i = 0; i < allFieldsSavedTrackingNumber().size(); i++) {
+            list.add(allFieldsSavedTrackingNumber().get(i).getAttribute("value"));
+        }
+        return list;
     }
 
     @Step("Get saved tracking number. Order_aws")
@@ -427,7 +442,6 @@ public class Order_aws {
         selectedStatus(nameStatus).click();
         return this;
     }
-
 
     @Step("Selects delivery service {methodDelivery}, {numberDelivery} and enters a tracking number {fieldTrackingNum}. Order_aws")
     public Order_aws selectDeliveryAndEnterTrackingNum(String methodDelivery,String numberDelivery, String fieldTrackingNum, String trackingNum) {

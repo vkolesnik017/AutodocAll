@@ -1,8 +1,11 @@
 package mailinator;
 
 import ATD.PasswordRecovery_page_Logic;
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+
+import java.util.ArrayList;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byCssSelector;
@@ -63,12 +66,30 @@ public class Mailinator {
         return $x("//td[@class='content__cell']//a");
     }
 
+    private ElementsCollection allLinkToDeliveryPage() {
+        return $$x("//div[@style='background-color: white ; padding: 15px']//a");
+    }
+
     private SelenideElement trackingNumber() {
         return $x("//td[@class='content__cell']//div//b[2]");
     }
 
 
 
+
+    @Step("Transition to delivery page and get tracking number from url. Mailinator")
+    public ArrayList<String> transitionToDeliveryPageAndGetTrackingNumFromUrlInMail() {
+        ArrayList<String> list = new ArrayList<>();
+        for (int i = 0; i < allLinkToDeliveryPage().size(); i++) {
+            allLinkToDeliveryPage().get(i).click();
+            switchTo().window(1);
+            String number = url().replaceAll(".+=([0-9]{2,}).*", "$1");
+            list.add(number);
+            closeWindow();
+            switchTo().window(0);
+        }
+        return list;
+    }
 
     @Step("Get tracking number. Mailinator")
     public String getTrackingNumberFromMail() {
