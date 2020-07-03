@@ -4,6 +4,8 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
+import java.util.ArrayList;
+
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
@@ -90,6 +92,20 @@ public class Profile_orders_page_Logic extends Profile_orders_page {
         closeWindow();
         switchTo().window(0);
         return deliveryPageURL;
+    }
+
+    @Step("Transition to delivery page and get tracking number from url. Profile_orders_page")
+    public ArrayList<String> transitionToDeliveryPageAndGetTrackingNumFromURL() {
+        ArrayList<String> list = new ArrayList<>();
+        for (int i = 0; i < trackingNumber().size(); i++) {
+            trackingNumber().get(i).click();
+            switchTo().window(1);
+            String number = url().replaceAll(".+=([0-9]{2,}).*", "$1");
+            list.add(number);
+            closeWindow();
+            switchTo().window(0);
+        }
+        return list;
     }
 
     @Step("Get tracking number. Profile_orders_page")

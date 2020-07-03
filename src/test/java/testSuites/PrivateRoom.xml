@@ -83,6 +83,7 @@
     <test name="QC_1914_DisplayTrackingNumberInPR">
         <classes>
             <class name="ATD.PrivateRoom.QC_1914_DisplayTrackingNumberInPR.QC_1830_DisplayTrackingNumberInPR"/>
+            <class name="ATD.PrivateRoom.QC_1914_DisplayTrackingNumberInPR.QC_1831_CheckingForExistingDeliveryServices"/>
         </classes>
     </test>
 
