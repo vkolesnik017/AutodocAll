@@ -400,9 +400,15 @@ public class Moto_Category_car_list_page_Logic extends Moto_Category_car_list_pa
         return page(Moto_Product_page_Logic.class);
     }
 
-    @Step("click on logo of Autodoc in header.Moto_Category_car_list_page")
+    @Step("click on logo of Autodoc in header .Moto_Category_car_list_page")
     public Moto_main_page_Logic clickOnLogoInHeader() {
         logoInHeader().shouldBe(visible).click();
         return page(Moto_main_page_Logic.class);
+    }
+
+    @Step("click on child category in sidebar .Moto_Category_car_list_page")
+    public Moto_Category_car_list_page_Logic clickOnChildCategoryInSidebar(int position) {
+        childCategoriesInSideBar().get(position).shouldBe(visible).click();
+        return page(Moto_Category_car_list_page_Logic.class);
     }
 }

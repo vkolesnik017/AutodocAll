@@ -90,4 +90,6 @@ public class Moto_Category_page {
     ElementsCollection  detailsOfTopProductsBlock() {return $$x("//div[@class='rec_prod_info_popup']");}
 
     ElementsCollection  btnDetailsOfTopProducts() {return $$x("//div[@class='product_desc_table_container']/following-sibling::span");}
+
+    ElementsCollection childCategoriesInSideBar() {return $$x("//div[@class='block categories blue topSubCats']//li");}
 }

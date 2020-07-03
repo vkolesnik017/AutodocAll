@@ -37,4 +37,10 @@ public class Moto_makers_page {
     ElementsCollection titleOfMotoBrands() {return $$x("//div[@class='marke-list marke-list--grid']//li//span[1]");}
 
     ElementsCollection countOfMotoBrands() {return $$x("//div[@class='marke-list marke-list--grid']//li//span[2]");}
-}
+
+    SelenideElement headlineOfLinkingBlock() {return $x("//div[@class='links-title']");}
+
+    ElementsCollection topModelsLinkingBlock() {return $$x("//div[@class='box']");}
+
+    ElementsCollection linksOfTopModelsAtLinkingBlock(int position) {return $$x("(//div[@class='box'])["+position+"]//a");}
+   }
