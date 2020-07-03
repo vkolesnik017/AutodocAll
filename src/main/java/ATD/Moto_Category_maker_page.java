@@ -50,4 +50,6 @@ public class Moto_Category_maker_page {
 
     ElementsCollection imageOfTopProducts() {return $$x("//div[@class='rec_products_image']//img");}
 
+    ElementsCollection childCategoriesInSideBar() {return $$x("//div[@class='block categories blue topSubCats']//li");}
+
     }

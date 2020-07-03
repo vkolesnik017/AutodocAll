@@ -297,4 +297,8 @@ class Moto_main_page {
     ElementsCollection titleOfChildCategoriesThirdLevelAtVerticalCatalog() {return $$x("//div[@class='menu-category__3-block']//li[@class='menu-category__item']/a/span").filter(visible);}
 
     ElementsCollection imageOfChildCategoriesThirdLevelAtVerticalCatalog() {return $$x("//div[@class='menu-category__3-block']//li[@class='menu-category__item']/a/img").filter(visible);}
+
+    SelenideElement mainBanner() {return $x("//div[@class='moto-banner']");}
+
+    ElementsCollection titleOfTopChildCategories() {return $$x("//span[@class='moto-home-categories__name']");}
 }

@@ -167,7 +167,7 @@ public class Moto_Category_maker_page_Logic extends Moto_Category_maker_page {
 
     @Step("check applicability brand motorcycle and Product .Moto_Category_maker_page")
     public Moto_Category_maker_page_Logic checkApplicabilityMotoAndProduct(String motoBrand) {
-        for (int i=0; i<imageOfTopProducts().size(); i++) {
+        for (int i = 0; i < imageOfTopProducts().size(); i++) {
             clickOnTopProductImage(i).checkCompatibilityProductAndMoto(motoBrand);
             back();
         }
@@ -178,5 +178,24 @@ public class Moto_Category_maker_page_Logic extends Moto_Category_maker_page {
     public Moto_Product_page_Logic clickOnTopProductImage(int position) {
         imageOfTopProducts().get(position).click();
         return page(Moto_Product_page_Logic.class);
+    }
+
+
+    @Step("click on child category in sidebar .Moto_Category_maker_page")
+    public Moto_Category_maker_page_Logic clickOnChildCategoryInSidebar(int position) {
+        childCategoriesInSideBar().get(position).shouldBe(visible).click();
+        return page(Moto_Category_maker_page_Logic.class);
+    }
+
+    @Step("get title from main headline .Moto_Category_maker_page")
+    public String getTitleFromMainHeadline() {
+        String title = mainHeadline().getText();
+        return title;
+    }
+
+    @Step("get title from main headline .Moto_Category_maker_page")
+    public Moto_Category_maker_page_Logic checkOfChangeAtMainHeadline(String title) {
+        mainHeadline().shouldBe(visible).shouldNotHave(exactText(title));
+        return this;
     }
 }

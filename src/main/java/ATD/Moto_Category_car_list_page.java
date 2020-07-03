@@ -151,4 +151,6 @@ public class Moto_Category_car_list_page {
     ElementsCollection analogProducts() {return $$x("//div[@class='top-small-products-items__item']").filter(visible);}
 
     SelenideElement logoInHeader() {return $(".header__logo-main");}
+
+    ElementsCollection childCategoriesInSideBar() {return $$x("//div[@class='block categories blue topSubCats']//li");}
 }

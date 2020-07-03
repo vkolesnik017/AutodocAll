@@ -5,7 +5,8 @@ import io.qameta.allure.Step;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.checkingContainsUrl;
-import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Condition.exactValue;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.page;
 
 public class Moto_makers_page_Logic extends Moto_makers_page {
@@ -67,7 +68,6 @@ public class Moto_makers_page_Logic extends Moto_makers_page {
         return this;
     }
 
-
     @Step("presence of automakers block .Moto_makers_page")
     public Moto_makers_page_Logic presenceOfAutomakersBlock() {
         brandsBlock().shouldBe(visible);
@@ -75,10 +75,25 @@ public class Moto_makers_page_Logic extends Moto_makers_page {
         return this;
     }
 
-
     @Step("click on image of motomaker .Moto_makers_page")
     public Moto_Categories_maker_page_Logic clickOnImageOfMotomaker(int position) {
-          linksOfBrands().get(position).shouldBe(visible).click();
+        linksOfBrands().get(position).shouldBe(visible).click();
         return page(Moto_Categories_maker_page_Logic.class);
+    }
+
+    @Step("check elements of linking block .Moto_makers_page")
+    public Moto_makers_page_Logic checkElementsOfLinkingBlock() {
+        headlineOfLinkingBlock().shouldBe(visible);
+        topModelsLinkingBlock().shouldHaveSize(5);
+        for (int i = 0; i < topModelsLinkingBlock().size(); i++) {
+            linksOfTopModelsAtLinkingBlock(i + 1).shouldHaveSize(6);
+        }
+        return this;
+    }
+
+    @Step("click on TOP model in linking block .Moto_makers_page")
+    public Moto_Catalog_model_page_Logic clickOnTopModelInLinkingBlock(int block, int model) {
+        linksOfTopModelsAtLinkingBlock(block).get(model).shouldBe(visible).click();
+        return page(Moto_Catalog_model_page_Logic.class);
     }
 }

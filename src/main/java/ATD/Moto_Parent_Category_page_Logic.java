@@ -6,6 +6,7 @@ import org.testng.Assert;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
@@ -264,7 +265,6 @@ public class Moto_Parent_Category_page_Logic extends Moto_Parent_Category_page {
         return this;
     }
 
-
     @Step("select parent category in sideBar .Moto_Parent_Category_page")
     public Moto_Parent_Category_page_Logic selectParentCategoryInSideBar(int position) {
         parentCategoriesInSideBar().get(position).shouldBe(visible).click();
@@ -273,6 +273,32 @@ public class Moto_Parent_Category_page_Logic extends Moto_Parent_Category_page {
 
     @Step("presence of linking block .Moto_Parent_Category_page")
     public Moto_Parent_Category_page_Logic presenceOfLinkingBlock() {
+        linkingBlockInSidebar().shouldBe(visible);
+        return this;
+    }
+
+    @Step("presence of headline at linking block .Moto_Parent_Category_page")
+    public Moto_Parent_Category_page_Logic presenceOfHeadlineAtLinkingBlock() {
+        headlineOfLinkingBlock().shouldBe(visible).shouldNotBe(empty);
+        return this;
+    }
+
+    @Step("click on child category in sidebar .Moto_Parent_Category_page")
+    public Moto_Category_page_Logic clickOnChildCategoryInSidebar(int position) {
+        childCategoriesInSideBar().get(position).shouldBe(visible).click();
+        return page(Moto_Category_page_Logic.class);
+    }
+
+    @Step("check child categories links .Moto_Parent_Category_page")
+    public Moto_Parent_Category_page_Logic checkChildCategoriesLink() {
+        Integer[] array = {43206, 43063, 43192, 43050, 43004, 43019, 43177};
+        List list = Arrays.asList(array);
+        ArrayList<Integer> childCategoriesFromAws = new ArrayList<>(list);
+        ArrayList<Integer> childCategoriesFromSideBar = new ArrayList<>();
+        for (int i = 0; i < imageOfChildCategoriesInSideBar().size(); i++) {
+            childCategoriesFromSideBar.add(Integer.parseInt(imageOfChildCategoriesInSideBar().get(i).getAttribute("href").replaceAll("[^0-9]", "")));
+        }
+        Assert.assertTrue(childCategoriesFromAws.containsAll(childCategoriesFromSideBar));
         return this;
     }
 }
