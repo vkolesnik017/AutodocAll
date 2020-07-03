@@ -314,6 +314,10 @@ public class LKW_main_page {
 
     ElementsCollection btnDetailsOfTopBlock() {return $$x("//div[@class='item-table-box__details']/span");}
 
+    SelenideElement currentLanguage() {return $x("//div[@class='footer-language__current']/span");}
+
+
+
 
 }
 
