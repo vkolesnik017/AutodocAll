@@ -261,6 +261,8 @@ public class LKW_Category_car_list_page {
         return $$x("//label[@class='filter-generics-tecdoc__item ']");
     }
 
-    ElementsCollection visibleBrands() {return $$x("//li[contains(@class,'slick-active')]//label").filter(visible);}
+    ElementsCollection visibleBrands() {
+        return $$x("//li[contains(@class,'slick-active')]//label").filter(visible);
+    }
 
 }

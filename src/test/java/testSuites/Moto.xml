@@ -234,7 +234,7 @@
             <class name="MOTO.QC_349_ParentAndChildSideBarBlock.QC_350_PresenceOfParentSideBarBlock"/>
             <class name="MOTO.QC_349_ParentAndChildSideBarBlock.QC_351_BehaviorByClickOnParentCategoryBlock"/>
             <class name="MOTO.QC_349_ParentAndChildSideBarBlock.QC_352_PresenceOfLinkingBlockAndTitle"/>
-            <class name="MOTO.QC_349_ParentAndChildSideBarBlock.QC_353_BehaviorByClickOnElementOfTopChildCategories "/>
+            <class name="MOTO.QC_349_ParentAndChildSideBarBlock.QC_353_BehaviorByClickOnElementOfTopChildCategories"/>
             <class name="MOTO.QC_349_ParentAndChildSideBarBlock.QC_354_ListOfChildCategoriesInSidebar"/>
         </classes>
     </test>
@@ -245,9 +245,10 @@
         </classes>
     </test>
 
-    <test name=" QC_622_LinkingBlockToModelCatalog">
+    <test name="QC_622_LinkingBlockToModelCatalog">
         <classes>
             <class name="MOTO.QC_622_LinkingBlockToModelCatalog.QC_623_PresenceOfElementsAtLinkingBlock"/>
         </classes>
     </test>
+
 </suite>
