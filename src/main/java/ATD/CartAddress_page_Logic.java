@@ -348,4 +348,22 @@ public class CartAddress_page_Logic extends CartAddress_page {
         Assert.assertEquals(plzPopupText, new DataBase().getTranslate("convir_translate", shop, "addres"), "Error plz:" + plz);
         return this;
     }
+
+    @Step("Checks that the address fields are empty. CartAddress_page")
+    public CartAddress_page_Logic checkThatAddressFieldsAreEmpty() {
+        vorname().shouldHave(attribute("value", ""));
+        nameIn().shouldHave(attribute("value", ""));
+        strasse().shouldHave(attribute("value", ""));
+        deliveryHouse().shouldHave(attribute("value", ""));
+        postalCodeFieldForShipping().shouldHave(attribute("value", ""));
+        ort().shouldHave(attribute("value", ""));
+        telephon().shouldHave(attribute("value", ""));
+        return this;
+    }
+
+    @Step("Checks that country selected by default corresponds to the shop. CartAddress_page")
+    public CartAddress_page_Logic checkDefaultCountryInSelector(String shop) {
+        countryInSelectorForShipping(shop).shouldHave(attribute("selected"));
+        return this;
+    }
 }
