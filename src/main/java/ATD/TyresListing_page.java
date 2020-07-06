@@ -108,7 +108,9 @@ class TyresListing_page {
 
     SelenideElement sizesBlockOnCatalogTyresRoute() { return $(".table_sizes"); }
 
-    public SelenideElement dimensionLinkCatalogRoute() { return $x("(//*[@class='table_sizes']//tr[2]/td[5]/a)[2]"); }
+    public SelenideElement dimensionLinkCatalogRoute() { return $x("//*[@class='table_sizes']//span[contains (text(),'215/65/R16')]/.."); }
+
+    public SelenideElement dimensionLinkCatalogRouteMoto() { return $x("//*[@class='table_sizes']//span[contains (text(),'120/70/R17')]/.."); }
 
     SelenideElement diameterLinkCatalogRoute() { return $x("//*[@class='table_sizes']//th/a"); }
 

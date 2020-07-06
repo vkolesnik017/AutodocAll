@@ -38,7 +38,7 @@ public class QC_1314_SearchByOEMconsideringDynamicGenerics {
     public void testSearchByOEMconsideringDynamicGenerics(String route) {
         openPage(route);
         new Main_page_Logic().useSearch("4403530");
-        new Listing_page_Logic().checkGenericAndArticleAndOEMnumber("Wellendichtring, Zwischenwelle", "46085509B", "4403530");
+        new Listing_page_Logic().checkGenericAndArticleAndOEMnumber("CORTECO","Wellendichtring, Zwischenwelle", "46085509B", "4403530");
         new Product_page_Logic().closePopupOtherCategoryIfYes()
                 .checksPresentProductInCartPopup()
                 .cartClick()
