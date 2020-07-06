@@ -73,10 +73,10 @@
         </classes>
     </test>
 
-    <test name="QC_1861_BonusesInOrder_PR">
+    <test name="QC_1862_BonusesInOrder_PR">
     <classes>
-        <class name="ATD.PrivateRoom.QC_1861_BonusesInOrder_PR.QC_1853_DisplayingOfBonusesInOrderAfterPlacingOrderWithBonuses"/>
-        <class name="ATD.PrivateRoom.QC_1861_BonusesInOrder_PR.QC_1852_DisplayingOfBonusesInOrderAfterPlacingOrderWithoutBonuses"/>
+        <class name="ATD.PrivateRoom.QC_1862_BonusesInOrder_PR.QC_1853_DisplayingOfBonusesInOrderAfterPlacingOrderWithBonuses"/>
+        <class name="ATD.PrivateRoom.QC_1862_BonusesInOrder_PR.QC_1852_DisplayingOfBonusesInOrderAfterPlacingOrderWithoutBonuses"/>
         </classes>
     </test>
 
