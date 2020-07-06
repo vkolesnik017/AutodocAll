@@ -31,4 +31,6 @@ public class Profile_plus_page {
     SelenideElement profileMyOrderBtn() {
         return $x("//a[@data-ga-action='Sidebar_MyOrders']");
     }
+
+    SelenideElement myVehiclesBlock() {return $x("//li[@class='vehicle_link ']/a");}
 }
