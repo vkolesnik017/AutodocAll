@@ -713,12 +713,12 @@ public class Listing_page {
 
     SelenideElement productArticleOnListing() { return $x("//div[@class='description']//span[@class='article_number' and contains(text(),'Artikelnummer')]"); }
 
-    SelenideElement cortecoProduct() { return $x("//*[@class='name']/a[contains (text(),'CORTECO')]"); }
+    SelenideElement productName(String brandName) { return $x("//*[@class='name']/a[contains (text(),'"+ brandName +"')]"); }
 
-    SelenideElement cortecoArticle() { return $x("//*[@class='name']/a[contains (text(),'CORTECO')]/../span[@class='article_number']"); }
+    SelenideElement productArticle(String brandName) { return $x("//*[@class='name']/a[contains (text(),'"+ brandName +"')]/../span[@class='article_number']"); }
 
-    SelenideElement cortecoOEMnumber() { return $x("//*[@class='name']/a[contains (text(),'CORTECO')]/span[@class='highlight']"); }
+    SelenideElement productOEMnumber(String brandName) { return $x("//*[@class='name']/a[contains (text(),'"+ brandName +"')]/span[@class='highlight']"); }
 
-    SelenideElement cortecoAddToBasketButton() { return $x("//*[@data-brand-name='CORTECO']//a[contains(@class,'add_')]"); }
+    SelenideElement productAddToBasketButton(String brandName) { return $x("//*[@data-brand-name='"+ brandName +"']//a[contains(@class,'add_')]"); }
 }
 

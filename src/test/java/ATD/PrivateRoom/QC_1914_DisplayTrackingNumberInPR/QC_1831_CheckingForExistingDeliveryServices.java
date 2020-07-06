@@ -15,6 +15,7 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
+import static ATD.CommonMethods.password;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
@@ -28,7 +29,7 @@ public class QC_1831_CheckingForExistingDeliveryServices {
     private DataBase dataBase = new DataBase();
 
     @BeforeClass
-    void setUp() {
+    void setUp() throws SQLException {
         setUpBrowser(false, "chrome", "77.0");
     }
 
@@ -50,12 +51,16 @@ public class QC_1831_CheckingForExistingDeliveryServices {
     @Description(value = "Test checks existing delivery services")
     public void testCheckingForExistingDeliveryServices(String deliveryService) throws SQLException {
         openPage(dataBase.getFullRouteByRouteName("prod", "DE", "main"));
-        main_page_logic.loginAndTransitionToProfilePlusPage(mail);
+        main_page_logic.loginAndTransitionToProfilePlusPage(mail)
+                .goToMyOrdersPage()
+                .checkOrderHistoryAndClearIt("Testbestellungen");
+        close();
         openPage(dataBase.getFullRouteByRouteAndSubroute("prod", "DE", "main", "product32"));
         new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
-                .clickBtnNextAndTransitionOnAddressPage()
+                .nextButtonClick()
+                .signIn(mail, password)
                 .fillFieldTelNumForShipping("100+001")
                 .nextBtnClick()
                 .chooseVorkasse()

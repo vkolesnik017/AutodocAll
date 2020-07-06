@@ -21,11 +21,12 @@ import static com.codeborne.selenide.Selenide.close;
 
 public class QC_1832_CheckingMultipleDeliveryServicesInOneOrder {
 
-    private String mail = "QC_1832_autotest@mailinator.com", orderNumber;
+    private String mail = "QC_1832_autotest@mailinator.com", firstOrderNumber, secondOrderNumber;
     private ArrayList<String> listSavedTrackingNumberFromAWS, listTrackingNumberFromUrl, listTrackingNumberFromMail;
 
     private Main_page_Logic main_page_logic = new Main_page_Logic();
     private Mailinator mailinator = new Mailinator();
+    private DataBase dataBase = new DataBase();
 
     @BeforeClass
     void setUp() {
@@ -44,7 +45,7 @@ public class QC_1832_CheckingMultipleDeliveryServicesInOneOrder {
     public void testDisplayTrackingNumberInPR(String route) throws SQLException {
         openPage(route);
         main_page_logic.loginAndTransitionToProfilePlusPage(mail);
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "product32"));
+        openPage(dataBase.getFullRouteByRouteAndSubroute("prod", "DE", "main", "product32"));
         new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
@@ -54,9 +55,8 @@ public class QC_1832_CheckingMultipleDeliveryServicesInOneOrder {
                 .chooseVorkasse()
                 .nextBtnClick()
                 .nextBtnClick();
-        orderNumber = new Payment_handler_page_Logic().getOrderNumber();
-        Order_aws order_aws = new Order_aws(orderNumber);
-        listSavedTrackingNumberFromAWS = order_aws.openOrderInAwsWithLogin()
+        firstOrderNumber = new Payment_handler_page_Logic().getOrderNumber();
+        listSavedTrackingNumberFromAWS = new Order_aws(firstOrderNumber).openOrderInAwsWithLogin()
                 .checkCurrentStatusInOrder("Neue Bestellung")
                 .selectDeliveryAndEnterTrackingNum("GLS", "0", "0", "1111111111")
                 .selectDeliveryAndEnterTrackingNum("DHL", "1", "1", "2222222222")
@@ -76,7 +76,42 @@ public class QC_1832_CheckingMultipleDeliveryServicesInOneOrder {
                 .openLetter(1)
                 .transitionToDeliveryPageAndGetTrackingNumFromUrlInMail();
         Assert.assertEquals(listSavedTrackingNumberFromAWS, listTrackingNumberFromMail);
-        order_aws.openOrderInAwsWithoutLogin()
+        new Order_aws(firstOrderNumber).openOrderInAwsWithoutLogin()
+                .checkCurrentStatusInOrder("Versendet")
+                .reSaveOrder()
+                .checkCurrentStatusInOrder("Testbestellungen");
+        openPage(dataBase.getFullRouteByRouteAndSubroute("prod", "DE", "main", "product32"));
+        new Product_page_Logic().addProductToCart()
+                .closePopupOtherCategoryIfYes()
+                .cartClick()
+                .clickBtnNextAndTransitionOnAddressPage()
+                .fillFieldTelNumForShipping("100+001")
+                .nextBtnClick()
+                .chooseVorkasse()
+                .nextBtnClick()
+                .nextBtnClick();
+        secondOrderNumber = new Payment_handler_page_Logic().getOrderNumber();
+        listSavedTrackingNumberFromAWS = new Order_aws(secondOrderNumber).openOrderInAwsWithoutLogin()
+                .checkCurrentStatusInOrder("Neue Bestellung")
+                .selectDeliveryAndEnterTrackingNum("PNORD", "0", "0", "4444444444")
+                .selectDeliveryAndEnterTrackingNum("DPDPL", "1", "1", "5555555555")
+                .selectDeliveryAndEnterTrackingNum("TNT", "2", "2", "6666666666")
+                .selectStatusOrder("Versendet")
+                .saveOrder()
+                .checkCurrentStatusInOrder("Versendet")
+                .getListSavedTrackingNumber();
+        openPage(route);
+        listTrackingNumberFromUrl = main_page_logic.profilePlusBtnClickInHeader()
+                .goToMyOrdersPage()
+                .checkPresenceDeliveryStatusBlock()
+                .checkNumberDeliveryServiceAdded(3)
+                .transitionToDeliveryPageAndGetTrackingNumFromURL();
+        Assert.assertEquals(listSavedTrackingNumberFromAWS, listTrackingNumberFromUrl);
+        listTrackingNumberFromMail = mailinator.openEmail(mail)
+                .openLetter(1)
+                .transitionToDeliveryPageAndGetTrackingNumFromUrlInMail();
+        Assert.assertEquals(listSavedTrackingNumberFromAWS, listTrackingNumberFromMail);
+        new Order_aws(secondOrderNumber).openOrderInAwsWithoutLogin()
                 .checkCurrentStatusInOrder("Versendet")
                 .reSaveOrder()
                 .checkCurrentStatusInOrder("Testbestellungen");

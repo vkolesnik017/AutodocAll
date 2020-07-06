@@ -87,6 +87,8 @@ public class Mailinator {
             list.add(number);
             closeWindow();
             switchTo().window(0);
+            refresh();
+            openLetter(1);
         }
         return list;
     }
@@ -170,6 +172,7 @@ public class Mailinator {
         letter(numberLetter).shouldBe(appear);
         letter(numberLetter).click();
         switchTo().frame("msg_body");
+        sleep(5000);
         return this;
     }
 
