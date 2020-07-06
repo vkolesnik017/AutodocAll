@@ -50,12 +50,11 @@ public class Profile_orders_page_Logic extends Profile_orders_page {
 
     @Step("Checks transition to delivery page and check tracking number. Profile_orders_page")
     public Profile_orders_page_Logic checkTransitionToDeliveryPage() {
-        SelenideElement trackingNumInDeliveryPage = $x("//span[@class='shipmentNumber']");
         for (int i = 0; i < trackingNumber().size(); i++) {
             String tracingNum = trackingNumber().get(i).getText();
             trackingNumber().get(i).click();
             switchTo().window(1);
-            String numInDeliveryPage = trackingNumInDeliveryPage.getText();
+            String numInDeliveryPage = url().replaceAll(".+=([0-9]{2,}).*", "$1");
             closeWindow();
             switchTo().window(0);
             Assert.assertEquals(tracingNum, numInDeliveryPage);
@@ -72,12 +71,11 @@ public class Profile_orders_page_Logic extends Profile_orders_page {
 
     @Step("Checks transition to delivery page and check tracking number from tooltip. Profile_orders_page")
     public Profile_orders_page_Logic trackingNumInDeliveryPageFromTooltip() {
-        SelenideElement trackingNumInDeliveryPage = $x("//span[@class='shipmentNumber']");
         for (int i = 0; i < trackingNumFromTooltip().size(); i++) {
             String trackingNum = trackingNumFromTooltip().get(i).getText();
             trackingNumFromTooltip().get(i).click();
             switchTo().window(1);
-            String numInDeliveryPage = trackingNumInDeliveryPage.getText();
+            String numInDeliveryPage = url().replaceAll(".+=([0-9]{2,}).*", "$1");
             closeWindow();
             switchTo().window(0);
             Assert.assertEquals(trackingNum, numInDeliveryPage);
