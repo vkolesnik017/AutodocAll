@@ -1,5 +1,6 @@
 package ATD;
 
+import AWS.Order_aws;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
@@ -111,5 +112,16 @@ public class Profile_orders_page_Logic extends Profile_orders_page {
     @Step("Get tracking number. Profile_orders_page")
     public String getTrackingNum() {
         return String.valueOf(oneTrackingNumber().getText());
+    }
+
+    @Step("Checks order history and clears it in case if there is an order in order history. Profile_orders_page")
+    public Order_aws checkOrderHistoryAndClearIt(String expectedStatus) {
+        if (historyOrderBlock().isDisplayed()) {
+            String orderNumber = orderNumber().getText();
+            new Order_aws(orderNumber).openOrderInAwsWithLogin()
+                    .reSaveOrder()
+                    .checkCurrentStatusInOrder(expectedStatus);
+        }
+        return page(Order_aws.class);
     }
 }

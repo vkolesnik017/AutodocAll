@@ -28,6 +28,14 @@ public class Profile_orders_page {
         return $x("//div[@class='order-status']");
     }
 
+    SelenideElement historyOrderBlock() {
+        return $x("//li[@class='history-order']");
+    }
+
+    SelenideElement orderNumber() {
+        return $x("//td[@class='order-nr']");
+    }
+
     ElementsCollection trackingNumber() {
         return $$x("//a[@data-ga-action='TrackingNumber_AllOrders']");
     }
