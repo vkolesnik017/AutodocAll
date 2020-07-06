@@ -25,7 +25,7 @@ public class QC_630_SortingOfChildCategories {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_categories,moto_catalog_model2,moto_catalog2");
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_categories,moto_catalog_model2");
     }
 
     @Test(dataProvider = "routes")
@@ -33,6 +33,22 @@ public class QC_630_SortingOfChildCategories {
     @Owner(value = "Kolesnik")
     @Description(value = "Test checks sorting of child categories")
     public void testChecksSortingOfChildCategories(String route) {
+        openPage(route);
+
+        new Moto_Categories_page_Logic()
+                .checkSortingOfChildCategories();
+    }
+
+    @DataProvider(name = "routesCatalog", parallel = true)
+    Object[] dataProviderCatalog() throws SQLException {
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog2");
+    }
+
+    @Test(dataProvider = "routesCatalog")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test checks sorting of child categories")
+    public void testChecksSortingOfChildCategoriesCatalog(String route) {
         openPage(route);
 
         new Moto_Categories_page_Logic()

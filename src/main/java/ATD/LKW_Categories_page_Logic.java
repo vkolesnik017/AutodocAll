@@ -78,7 +78,7 @@ public class LKW_Categories_page_Logic extends LKW_Categories_page {
 
     @Step("get brand from TOP product title .LKW_Categories_page")
     public String getBrandFromTopProductTitle() {
-        String titleOfBrand = titleOfTopProduct().get(0).getText().replace(titleOfTopProduct().get(0).getText().substring(titleOfTopProduct().get(0).getText().lastIndexOf(" ")), "").toLowerCase();
+        String titleOfBrand = titleOfTopProduct().get(3).getText().replace(titleOfTopProduct().get(3).getText().substring(titleOfTopProduct().get(3).getText().lastIndexOf(" ")), "").toLowerCase();
         return titleOfBrand;
     }
 
@@ -91,7 +91,7 @@ public class LKW_Categories_page_Logic extends LKW_Categories_page {
 
     @Step("click on image of top product .LKW_Categories_page")
     public LKW_Product_page_Logic clickOnImageOfTopProduct() {
-        imageOfTopProduct().get(0).click();
+        imageOfTopProduct().get(3).click();
         return page(LKW_Product_page_Logic.class);
     }
 
@@ -107,7 +107,7 @@ public class LKW_Categories_page_Logic extends LKW_Categories_page {
 
     @Step("click on title of top product .LKW_Categories_page")
     public LKW_Product_page_Logic clickOnTitleOfTopProduct() {
-        titleOfTopProduct().get(0).click();
+        titleOfTopProduct().get(3).click();
         return page(LKW_Product_page_Logic.class);
     }
 
@@ -123,9 +123,9 @@ public class LKW_Categories_page_Logic extends LKW_Categories_page {
 
     @Step("click on Details link .LKW_Categories_page")
     public LKW_Product_page_Logic clickOnLinkDetails() {
-        imageOfTopProduct().get(0).scrollIntoView("{block: \"center\"}").hover();
-        additionInfoBlockOfTopProduct().get(0).should(appear);
-        linkDetails().get(0).click();
+        imageOfTopProduct().get(3).scrollIntoView("{block: \"center\"}").hover();
+        additionInfoBlockOfTopProduct().get(3).should(appear);
+        linkDetails().get(3).click();
         return page(LKW_Product_page_Logic.class);
     }
 }

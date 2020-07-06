@@ -69,7 +69,7 @@ public class QC_169_CreatingAwsOrder_WithHeavyLoads {
                 .checkOrderHasTestStatus()
                 .getUserDataInOrder();
         Assert.assertEquals(userData, userDataInOrder);
-        deliveryCostInOrder = order_aws.checkVatStatusInOrder("Mit MwSt 19%")
+        deliveryCostInOrder = order_aws.checkVatStatusInOrder("Mit MwSt 16%")
                 .checkPaymentMethodInOrder("PayPal")
                 .checkThatStatusSafeOrderIsOff()
                 .checkContoNR("30047")
@@ -85,7 +85,7 @@ public class QC_169_CreatingAwsOrder_WithHeavyLoads {
                 .checkOrderHasTestStatus()
                 .getUserDataInOrder();
         Assert.assertEquals(userData, userDataInOrder);
-        deliveryCostInOrder = order_aws.checkVatStatusInOrder("Mit MwSt 19%")
+        deliveryCostInOrder = order_aws.checkVatStatusInOrder("Mit MwSt 16%")
                 .checkPaymentMethodInOrder("PayPal")
                 .checkThatStatusSafeOrderIsOff()
                 .checkContoNR("30047")

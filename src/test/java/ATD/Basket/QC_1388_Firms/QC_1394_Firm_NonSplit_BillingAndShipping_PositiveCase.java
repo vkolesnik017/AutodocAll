@@ -56,13 +56,13 @@ public class QC_1394_Firm_NonSplit_BillingAndShipping_PositiveCase {
                 .cartClick()
                 .nextButtonClick()
                 .signIn(emailGB, password)
-                .fillAllFieldsAndFirmForShipping(shop, "YO10 4NT", "Gear4music Limited", "York")
-                .fillFieldIdCompanyShipping("552033282")
+                .fillAllFieldsAndFirmForShipping("BE", "1070", "SPRL Brasserie Cantillon","Anderlecht")
+                .fillFieldIdCompanyShipping("0402065988")
                 .nextBtnClick()
                 .chosseUnicreditBank()
                 .nextBtnClick()
                 .checkAbsenceOfVatPercentage()
-                .checkTextInDeliveryAddressInfoBlock("Company Gear4music Limited")
+                .checkTextInDeliveryAddressInfoBlock("SPRL Brasserie Cantillon")
                 .getPriceIncludingVat(vatForGB);
         prunedPriceWithVatGB = cutPriceToFirstDecimalPlace(priceWithVatPerAllDataPageGB);
         cartAllData_page_logic.transitionToProductPage();
@@ -92,13 +92,13 @@ public class QC_1394_Firm_NonSplit_BillingAndShipping_PositiveCase {
         order_aws.clickCustomerId();
         switchTo().window(2);
         new Customer_view_aws().checkPresenceBlockLogsCompanyNumbers()
-                .checkIdCompanyInBlockLogsCompanyNumbers("GB552033282")
+                .checkIdCompanyInBlockLogsCompanyNumbers("BE0402065988")
                 .checkResponseInBlockLogsCompanyNumbers("success(200)")
                 .checkBillingOrShippingInBlockLogsCompanyNumbers("shipping");
         totalPriceInEmailGB = mailinator.openEmail("qc_1394_autotestGB@mailinator.com")
                 .openLetter(1)
                 .checkAbsenceVatPercentageInEmail()
-                .checkFirstFirmNameInEmail("Gear4music Limited")
+                .checkFirstFirmNameInEmail("SPRL Brasserie Cantillon")
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPriceGB, totalPriceInEmailGB);
         unitPriceGB = mailinator.getUnitPriceInEmail();
@@ -128,13 +128,13 @@ public class QC_1394_Firm_NonSplit_BillingAndShipping_PositiveCase {
                 .cartClick()
                 .nextButtonClick()
                 .signIn(emailDE, password)
-                .fillAllFieldsAndFirmForShipping("EN", "YO10 4NT", "Gear4music Limited", "York")
-                .fillFieldIdCompanyShipping("552033282")
+                .fillAllFieldsAndFirmForShipping("BE", "1070", "SPRL Brasserie Cantillon","Anderlecht")
+                .fillFieldIdCompanyShipping("0402065988")
                 .nextBtnClick()
                 .chooseVorkasse()
                 .nextBtnClick()
                 .checkAbsenceOfVatPercentage()
-                .checkTextInDeliveryAddressInfoBlock("Firma Gear4music Limited")
+                .checkTextInDeliveryAddressInfoBlock("SPRL Brasserie Cantillon")
                 .getPriceIncludingVat(vatForDE);
         prunedPriceWithVatDE = cutPriceToFirstDecimalPlace(priceWithVatPerAllDataPageDE);
         cartAllData_page_logic.transitionToProductPage();
@@ -164,13 +164,13 @@ public class QC_1394_Firm_NonSplit_BillingAndShipping_PositiveCase {
         order_aws.clickCustomerId();
         switchTo().window(2);
         new Customer_view_aws().checkPresenceBlockLogsCompanyNumbers()
-                .checkIdCompanyInBlockLogsCompanyNumbers("GB552033282")
+                .checkIdCompanyInBlockLogsCompanyNumbers("BE0402065988")
                 .checkResponseInBlockLogsCompanyNumbers("success(200)")
                 .checkBillingOrShippingInBlockLogsCompanyNumbers("shipping");
         totalPriceInEmailDE = mailinator.openEmail("qc_1394_autotestDE@mailinator.com")
                 .openLetter(1)
                 .checkAbsenceVatPercentageInEmail()
-                .checkFirstFirmNameInEmail("Gear4music Limited")
+                .checkFirstFirmNameInEmail("SPRL Brasserie Cantillon")
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPriceDE, totalPriceInEmailDE);
         unitPriceDE = mailinator.getUnitPriceInEmail();

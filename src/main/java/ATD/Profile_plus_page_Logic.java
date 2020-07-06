@@ -55,4 +55,10 @@ public class Profile_plus_page_Logic extends Profile_plus_page {
         profileMyOrderBtn().click();
         return page(Profile_orders_page_Logic.class);
     }
+
+    @Step("Transition to My vehicles block. Profile_plus_page")
+    public Profile_garage_page_Logic goToMyVehiclesBlock() {
+        myVehiclesBlock().click();
+        return page(Profile_garage_page_Logic.class);
+    }
 }

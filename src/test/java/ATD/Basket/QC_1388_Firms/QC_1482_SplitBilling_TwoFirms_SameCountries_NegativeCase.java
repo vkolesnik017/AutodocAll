@@ -49,10 +49,10 @@ public class QC_1482_SplitBilling_TwoFirms_SameCountries_NegativeCase {
                 .cartClick()
                 .nextButtonClick()
                 .signIn(email, password)
-                .fillAllFieldsAndFirmForShipping("EN", "YO10 4NT", "Gear4music Limited", "York")
-                .fillFieldIdCompanyShipping("552033282")
-                .fillAllFieldsAndFirmForBilling("EN", "NG1 1GF", "BioCity", "North 51 Ltd")
-                .fillFieldIdCompanyBilling("789964142")
+                .fillAllFieldsAndFirmForShipping("BE", "1070", "SPRL Brasserie Cantillon", "Anderlecht")
+                .fillFieldIdCompanyShipping("0402065988")
+                .fillAllFieldsAndFirmForBilling("BE", "1070", "city", "SPRL")
+                .fillFieldIdCompanyBilling("0402065988")
                 .nextBtnClick();
         cartAddress_page_logic.checkPresencePopupErrorAboutWrongCompany()
                 .clickBtnFixInPopupAboutWrongCompany()
@@ -61,35 +61,35 @@ public class QC_1482_SplitBilling_TwoFirms_SameCountries_NegativeCase {
                 .clickBtnContinueInPopupAboutWrongCompany()
                 .chosseUnicreditBank()
                 .nextBtnClick()
-                .checkTextInDeliveryAddressInfoBlock("Company Gear4music Limited")
-                .checkTextInPayersAddressInfoBlock("Company North 51 Ltd")
-                .checkTextContainingVatPercentage("incl. 20% VAT")
+                .checkTextInDeliveryAddressInfoBlock("Company SPRL Brasserie Cantillon")
+                .checkTextInPayersAddressInfoBlock("SPRL")
+                .checkTextContainingVatPercentage("incl. 21% VAT")
                 .getTotalPriceAllDataPageForEnShop();
         orderNumber = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumber);
         totalPriceAWSOrder = order_aws.openOrderInAwsWithLogin()
-                .checkVatStatusInOrder("Mit MwSt 20%")
+                .checkVatStatusInOrder("Mit MwSt 21%")
                 .checkFirmConfirmationStatus("Нев. имя/город")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
         totalPriceAWSOrder = order_aws.reSaveOrder()
-                .checkVatStatusInOrder("Mit MwSt 20%")
+                .checkVatStatusInOrder("Mit MwSt 21%")
                 .checkFirmConfirmationStatus("Нев. имя/город")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
         order_aws.clickCustomerId();
         switchTo().window(1);
         new Customer_view_aws().checkPresenceBlockLogsCompanyNumbers()
-                .checkIdCompanyInBlockLogsCompanyNumbers("GB789964142")
+                .checkIdCompanyInBlockLogsCompanyNumbers("BE0402065988")
                 .checkResponseInBlockLogsCompanyNumbers("success(200)")
                 .checkBillingOrShippingInBlockLogsCompanyNumbers("billing")
                 .checkErrorStatusInNameErrorColumn("yes")
                 .checkErrorStatusInCityErrorColumn("yes");
         totalPriceInEmail = new Mailinator().openEmail("qc_1482_autotestEN@mailinator.com")
                 .openLetter(1)
-                .checkTextContainingVatPercentageInEmail("incl. 20% VAT")
-                .checkFirstFirmNameInEmail("North 51 Ltd")
-                .checkSecondFirmNameInEmail("Gear4music Limited")
+                .checkTextContainingVatPercentageInEmail("incl. 21% VAT")
+                .checkFirstFirmNameInEmail("SPRL")
+                .checkSecondFirmNameInEmail("SPRL Brasserie Cantillon")
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPrice, totalPriceInEmail);
     }

@@ -3,6 +3,7 @@ package ATD;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -25,9 +26,11 @@ public class Moto_Category_car_list_model_page {
     SelenideElement iconOfCatalogBrandInBreadCrumbs() {return $x("//li[@class='step_1 active parts_step_1']//img");}
 
     ElementsCollection btnAddToBasketAtAnAnalogProduct() {
-        return $$x("//div[@class='top-small-products-items__item']/div[6]//a");
+        return $$x("//div[@class='small-product-button price_box']//a");
     }
-
+    ElementsCollection visibleBtnAddToBasketAtAnAnalogProduct() {
+        return $$x("//div[@class='small-product-button price_box']//a").filter(visible);
+    }
     SelenideElement btnShowReplacement(String artOfProduct) {
         return $x("//span[contains(text(),'" + artOfProduct + "')]/ancestor::li[@class='ovVisLi item_not_available']//div[contains(@class,'show_alternative__btn')]");
     }
@@ -43,4 +46,6 @@ public class Moto_Category_car_list_model_page {
     SelenideElement basket() {
         return $x("//a[@class='header-cart__link']");
     }
+
+    ElementsCollection childCategoriesInSideBar() {return $$x("//div[@class='block categories blue topSubCats']//li");}
 }

@@ -17,16 +17,8 @@ class MobileApp_static_page {
         return $(By.cssSelector(".qr_code>img"));
     }
 
-    SelenideElement appDiscount() {
-        return $(By.cssSelector(".icons_discount>img"));
-    }
-
     SelenideElement appTitle() {
         return $x("//div[text()='Autodoc App']");
-    }
-
-    SelenideElement subscribeBlock() {
-        return $(By.cssSelector(".subscribe"));
     }
 
     SelenideElement mailFieldInSubscribeForm() {
@@ -35,10 +27,6 @@ class MobileApp_static_page {
 
     SelenideElement getMailBtnInSubscribeForm() {
         return $(By.id("mobile_app_page_get_email"));
-    }
-
-    SelenideElement appWrongEmailError() {
-        return $(By.cssSelector("#wrong_ma_page>span"));
     }
 
     SelenideElement appSubscribeCheckbox() {

@@ -174,10 +174,20 @@ public class Moto_Categories_maker_page_Logic extends Moto_Categories_maker_page
         return this;
     }
 
-
     @Step("check count of TOP products .Moto_Categories_maker_page")
     public Moto_Categories_maker_page_Logic checkCountOfTopProducts() {
         topProducts().shouldHaveSize(10);
+        return this;
+    }
+
+    @Step("presence of main brand image .Moto_Categories_maker_page")
+    public Moto_Categories_maker_page_Logic presenceOfMainBrandImage() {
+        mainImageBlock().shouldBe(visible);
+        mainImageOfBrand().shouldBe(visible);
+        int width = mainImageOfBrand().getSize().getWidth();
+        int height = mainImageOfBrand().getSize().getHeight();
+        Assert.assertEquals(width, 170);
+        Assert.assertEquals(height, 170);
         return this;
     }
 }

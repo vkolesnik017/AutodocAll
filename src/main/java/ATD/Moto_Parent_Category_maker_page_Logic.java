@@ -102,4 +102,11 @@ public class Moto_Parent_Category_maker_page_Logic  extends Moto_Parent_Category
         return this;
     }
 
+    @Step("click on child category in sidebar .Moto_Parent_Category_maker_page")
+    public Moto_Category_maker_page_Logic clickOnChildCategoryInSidebar(int position) {
+        childCategoriesInSideBar().get(position).shouldBe(visible).click();
+        return page(Moto_Category_maker_page_Logic.class);
+    }
+
+
 }

@@ -1,9 +1,12 @@
 package ATD;
 
+import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
@@ -273,8 +276,7 @@ public class Moto_Catalog_page_Logic extends Moto_Catalog_page {
     public Moto_Category_car_list_page_Logic clickOnChildCategory() {
         parentsCategoriesOfTecDocCatalog().get(0).click();
         childCategoriesFirstLevelBlock().get(0).shouldBe(visible);
-      //  childCategoriesFirstLevel(1).get(0).shouldBe(visible).click();
-        chCategory().get(0).shouldBe(visible).click();
+                visibleChildCategory().get(0).shouldBe(visible).click();
         return page(Moto_Category_car_list_page_Logic.class);
     }
 
@@ -292,35 +294,22 @@ public class Moto_Catalog_page_Logic extends Moto_Catalog_page {
 
     @Step("check First Level of parent categories .Moto_Catalog_page")
     public Moto_Catalog_page_Logic checkFirstLevelOfParentCategories(int position) {
-      /*  if (childCategoriesFirstLevel(position + 1).get(0).isDisplayed() && intermediateChildCategoriesFirstLevel(position + 1).get(0).isDisplayed()) {
-            childCategoriesFirstLevel(position + 1).shouldHave(sizeGreaterThan(0));
+          if (visibleChildCategory().get(0).isDisplayed() && visibleIntermediateCategory().get(0).isDisplayed()) {
+              visibleChildCategory().shouldHave(sizeGreaterThan(0));
             checkIntermediateChildCategoryFirstLevel(position);
-        } else if (childCategoriesFirstLevel(position + 1).get(0).isDisplayed()) {
-            childCategoriesFirstLevel(position + 1).shouldHave(sizeGreaterThan(0));
-        } else if (intermediateChildCategoriesFirstLevel(position + 1).get(0).isDisplayed()) {
-            checkIntermediateChildCategoryFirstLevel(position);
-        }*/
-
-      /*----------------------------------------------------------------------------------------------------*/
-        if (chCategory().get(0).isDisplayed() && imedCategory().get(0).isDisplayed()) {
-            chCategory().shouldHave(sizeGreaterThan(0));
-            checkIntermediateChildCategoryFirstLevel(position);
-        } else if (chCategory().get(0).isDisplayed()) {
-            chCategory().shouldHave(sizeGreaterThan(0));
-        } else if (imedCategory().get(0).isDisplayed()) {
+        } else if (visibleChildCategory().get(0).isDisplayed()) {
+              visibleChildCategory().shouldHave(sizeGreaterThan(0));
+        } else if (visibleIntermediateCategory().get(0).isDisplayed()) {
             checkIntermediateChildCategoryFirstLevel(position);
         }
-        /*----------------------------------------------------------------------------------------------------*/
-        return this;
+                return this;
     }
 
     @Step("check intermediate child category first level .Moto_Catalog_page")
     public Moto_Catalog_page_Logic checkIntermediateChildCategoryFirstLevel(int position) {
         for (int j = 0; j < intermediateChildCategoriesFirstLevel(position + 1).size(); j++) {
             intermediateChildCategoriesFirstLevel(position + 1).get(j).click();
-           /* childCategoriesSecondLevelBlock().should(appear);
-            childCategoriesSecondLevelBlockCheck(position + 1).get(j).should(appear);*/
-            secondLevelBlock().should(appear);
+                 secondLevelBlock().should(appear);
             checkSecondLevelOfParentCategories(position);
         }
         return this;
@@ -334,7 +323,42 @@ public class Moto_Catalog_page_Logic extends Moto_Catalog_page {
 
     @Step("check count of TOP products .Moto_Catalog_page")
     public Moto_Catalog_page_Logic checkCountOfTopProducts() {
-             topProducts().shouldHaveSize(6);
+        topProducts().shouldHaveSize(6);
         return this;
+    }
+
+    @Step("Comparison TecDoc and catalog in header .Moto_Catalog_page")
+    public Moto_Catalog_page_Logic comparisonTecDocAndCatalogInHeader() {
+        List<Integer> attributeOfTecDocCatalog = new ArrayList<>(getCategoryInTecDocCatalog());
+        List<Integer> attributeOfInHeaderCatalog = new ArrayList<>(getCategoryInHeaderCatalog());
+        Assert.assertTrue(attributeOfTecDocCatalog.containsAll(attributeOfInHeaderCatalog));
+        return this;
+    }
+
+    @Step("Getting category in TecDock catalog .Moto_Catalog_page")
+    public List<Integer> getCategoryInTecDocCatalog() {
+        List<Integer> tecDocCatalogList = new ArrayList<>();
+        catalogTecDoc().shouldBe(visible);
+        addAttributeOfProductToList(categoriesTecDocCatalog(), tecDocCatalogList);
+        return tecDocCatalogList;
+    }
+
+    @Step("add attributes to list .Moto_Catalog_page")
+    private Moto_Catalog_page_Logic addAttributeOfProductToList(ElementsCollection category, List<Integer> listWithAttribute) {
+        for (int k = 0; k < category.size(); k++) {
+            listWithAttribute.add(Integer.parseInt(category.get(k).getAttribute("data-category-id")));
+        }
+        return this;
+    }
+
+    @Step("Getting category in Header Catalog  .Moto_Catalog_page")
+    public List<Integer> getCategoryInHeaderCatalog() {
+        List<Integer> catalogInHeaderList = new ArrayList<>();
+        catalogInHeader().scrollTo().click();
+        parentCategoriesInVerticalCatalog().shouldBe(visible);
+        customCategory().hover();
+        addAttributeOfProductToList(categoriesInHeaderCatalogSecondBlock(), catalogInHeaderList);
+        addAttributeOfProductToList(categoriesInHeaderCatalogThirdBlock(), catalogInHeaderList);
+        return catalogInHeaderList;
     }
 }

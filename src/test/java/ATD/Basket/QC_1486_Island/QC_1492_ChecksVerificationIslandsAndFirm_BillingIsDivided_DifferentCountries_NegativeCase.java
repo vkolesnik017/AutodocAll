@@ -41,15 +41,15 @@ public class QC_1492_ChecksVerificationIslandsAndFirm_BillingIsDivided_Different
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks verification of islands + Firm, Different Countries, billing is divided (Negative case)")
     public void testChecksVerificationIslandsAndFirmAndDifferentCountries(String route) throws Exception {
-        String deliveryPriceToUKalldata = new Versand_static_page_Logic().getDeliveryPrice("Großbritannien");
-        Float deliveryPriceToUKaws = new Versand_static_page_Logic().getDeliveryPriceForAWS("Großbritannien");
+        String deliveryPriceToBEalldata = new Versand_static_page_Logic().getDeliveryPrice("Belgien");
+        Float deliveryPriceToBEaws = new Versand_static_page_Logic().getDeliveryPriceForAWS("Belgien");
         openPage(route);
         clickOfBuyBtnForAllPages();
         totalPrice = new Search_page_Logic().closePopupOtherCategoryIfYes()
                 .cartClick().nextButtonClick()
                 .signIn(email, password)
-                .fillAllFieldsAndFirmForShipping("EN", "12345", "Gear4music Limited", "York")
-                .fillFieldIdCompanyShipping("552033282")
+                .fillAllFieldsAndFirmForShipping("BE", "1070", "SPRL Brasserie Cantillon", "Anderlecht")
+                .fillFieldIdCompanyShipping("0402065988")
                 .clickCheckboxBilling()
                 .chooseDeliveryCountryForBilling("FR")
                 .fillingPostalCodeFieldJSForBilling("20000")
@@ -57,24 +57,24 @@ public class QC_1492_ChecksVerificationIslandsAndFirm_BillingIsDivided_Different
                 .checkPresenceOfPayPalMethod()
                 .chooseVorkasse().nextBtnClick()
                 .checkAbsenceOfVatPercentage()
-                .checkRegularDeliveryPriceAllData(deliveryPriceToUKalldata)
+                .checkRegularDeliveryPriceAllData(deliveryPriceToBEalldata)
                 .checkPresenceSafeOrderBlock()
                 .getTotalPriceAllDataPage();
         orderNumber = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumber);
         totalPriceAWSOrder = order_aws.openOrderInAwsWithLogin()
                 .checkVatStatusInOrder("Ohne Mwst")
-                .checkDeliveryPriceOrderAWS(deliveryPriceToUKaws)
+                .checkDeliveryPriceOrderAWS(deliveryPriceToBEaws)
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
         totalPriceAWSOrder = order_aws.reSaveOrder()
                 .checkVatStatusInOrder("Ohne Mwst")
-                .checkDeliveryPriceOrderAWS(deliveryPriceToUKaws)
+                .checkDeliveryPriceOrderAWS(deliveryPriceToBEaws)
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
         totalPriceInEmail = new Mailinator().openEmail("qc_1492_autotestDE@mailinator.com")
                 .openLetter(1)
-                .checkRegularDeliveryPriceInEmail(deliveryPriceToUKalldata)
+                .checkRegularDeliveryPriceInEmail(deliveryPriceToBEalldata)
                 .checkAbsenceVatPercentageInEmail()
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPrice, totalPriceInEmail);

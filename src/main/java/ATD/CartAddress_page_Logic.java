@@ -107,6 +107,7 @@ public class CartAddress_page_Logic extends CartAddress_page {
     @Step("Next button click. CartAddress_page")
     public CartPayments_page_Logic nextBtnClick() {
         nextButton().click();
+        sleep(5000);
         return page(CartPayments_page_Logic.class);
     }
 

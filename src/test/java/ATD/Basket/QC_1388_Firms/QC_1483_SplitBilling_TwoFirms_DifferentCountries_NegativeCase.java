@@ -52,10 +52,10 @@ public class QC_1483_SplitBilling_TwoFirms_DifferentCountries_NegativeCase {
                 .cartClick()
                 .nextButtonClick()
                 .signIn(email, password)
-                .fillAllFieldsAndFirmForShipping("EN", "YO10 4NT", "yyyy", "York")
-                .fillFieldIdCompanyShipping("552033282")
-                .fillAllFieldsAndFirmForBilling("FR", "77700", "CHESSY", "EURO DISNEY ASSOCIES SAS")
-                .fillFieldIdCompanyBilling("07397471822")
+                .fillAllFieldsAndFirmForShipping("NL", "1221 JS", "yyyy", "HILVERSUM")
+                .fillFieldIdCompanyShipping("855768800B01")
+                .fillAllFieldsAndFirmForBilling("BE", "1070", "Anderlecht", "SPRL Brasserie Cantillon")
+                .fillFieldIdCompanyBilling("0402065988")
                 .nextBtnClick();
         cartAddress_page_logic.checkPresencePopupErrorAboutWrongCompany()
                 .clickBtnFixInPopupAboutWrongCompany()
@@ -65,33 +65,33 @@ public class QC_1483_SplitBilling_TwoFirms_DifferentCountries_NegativeCase {
                 .chosseUnicreditBank()
                 .nextBtnClick()
                 .checkTextInDeliveryAddressInfoBlock("Company yyyy")
-                .checkTextInPayersAddressInfoBlock("Company EURO DISNEY ASSOCIES SAS")
-                .checkTextContainingVatPercentage("incl. 20% VAT")
+                .checkTextInPayersAddressInfoBlock("SPRL Brasserie Cantillon")
+                .checkTextContainingVatPercentage("incl. 21% VAT")
                 .getTotalPriceAllDataPageForEnShop();
         orderNumber = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumber);
         totalPriceAWSOrder = order_aws.openOrderInAwsWithLogin()
-                .checkVatStatusInOrder("Mit MwSt 20%")
+                .checkVatStatusInOrder("Mit MwSt 21%")
                 .checkFirmConfirmationStatus("Нев. имя/город")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
         totalPriceAWSOrder = order_aws.reSaveOrder()
-                .checkVatStatusInOrder("Mit MwSt 20%")
+                .checkVatStatusInOrder("Mit MwSt 21%")
                 .checkFirmConfirmationStatus("Нев. имя/город")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
         order_aws.clickCustomerId();
         switchTo().window(1);
         new Customer_view_aws().checkPresenceBlockLogsCompanyNumbers()
-                .checkIdCompanyInBlockLogsCompanyNumbers("GB552033282")
+                .checkIdCompanyInBlockLogsCompanyNumbers("NL855768800B01")
                 .checkResponseInBlockLogsCompanyNumbers("success(200)")
                 .checkBillingOrShippingInBlockLogsCompanyNumbers("shipping")
                 .checkErrorStatusInNameErrorColumn("yes")
                 .checkErrorStatusInCityErrorColumn("no");
         totalPriceInEmail = new Mailinator().openEmail("qc_1483_autotestEN@mailinator.com")
                 .openLetter(1)
-                .checkTextContainingVatPercentageInEmail("incl. 20% VAT")
-                .checkFirstFirmNameInEmail("EURO DISNEY ASSOCIES SAS")
+                .checkTextContainingVatPercentageInEmail("incl. 21% VAT")
+                .checkFirstFirmNameInEmail("SPRL Brasserie Cantillon")
                 .checkSecondFirmNameInEmail("yyyy")
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPrice, totalPriceInEmail);

@@ -99,6 +99,15 @@ public class DataBase {
         return route.get(0);
     }
 
+    // Return String route By Shop and route("prod", "DE", "lkw_main")
+    public String getFullRouteByRouteName(String envFromTest, String shop, String routeName) throws SQLException {
+        String result;
+        String env = new SetUp().getEnv(envFromTest);
+        String mainRoute = getRouteByRouteName(shop, routeName);
+        result = env + mainRoute;
+        return result;
+    }
+
     // Return String route By Shop and route getRouteByRouteName("AT", "lkw_main", "product1")
     public String getFullRouteByRouteAndSubroute(String envFromTest, String shop, String routeName, String subRoute) throws SQLException {
         String result;

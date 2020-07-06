@@ -7,8 +7,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.*;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.page;
-import static com.codeborne.selenide.Selenide.sleep;
+import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.source;
 
 public class CartAllData_page_Logic extends CartAllData_page {
@@ -223,10 +222,17 @@ public class CartAllData_page_Logic extends CartAllData_page {
 
     @Step("Get total price for EN shop. CartAllData_page")
     public Float getTotalPriceAllDataPageForEnShop() {
-        String realPrice = totalOrderPrice().getText().replace("£ ", "").replace("incl. 20% VAT", "");
-        realPrice = realPrice.replaceAll(",", ".");
-        Float totalPrice = Float.parseFloat(realPrice);
-        return totalPrice;
+        String realPrice;
+        if (labelVAT().isDisplayed()) {
+            String vat = labelVAT().getText();
+             realPrice = totalOrderPrice().getText().replace("£ ", "").replace(vat, "");
+        } else {
+             realPrice = totalOrderPrice().getText().replace("£ ", "");
+        }
+            realPrice = realPrice.replaceAll(",", ".");
+            Float totalPrice = Float.parseFloat(realPrice);
+            return totalPrice;
+
     }
 
 
@@ -244,8 +250,8 @@ public class CartAllData_page_Logic extends CartAllData_page {
         if (vat.equals("20")) {
             priseWithVat = (productPrice * 1.2f); // For shop EN
         }
-        if (vat.equals("19")) {
-            priseWithVat = (productPrice * 1.19f); // For shop DE
+        if (vat.equals("16")) {
+            priseWithVat = (productPrice * 1.16f); // For shop DE
         }
         return priseWithVat;
     }
@@ -363,6 +369,12 @@ public class CartAllData_page_Logic extends CartAllData_page {
     @Step(":for CartAllData_page")
     public CartAllData_page_Logic checkPresenceBonusSticker() {
         new Cart_page_Logic().checkPresenceBonusSticker();
+        return this;
+    }
+
+    @Step(":for CartAllData_page")
+    public CartAllData_page_Logic checkAbsenceBonusSticker() {
+        new Cart_page_Logic().checkAbsenceBonusSticker();
         return this;
     }
 }

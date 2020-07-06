@@ -514,6 +514,7 @@ public class LKW_main_page_Logic extends LKW_main_page {
 
     @Step("Checking countries subscription from footer country list  .LKW_main_page")
     public LKW_main_page_Logic checkingCountriesSubscription() throws SQLException {
+        String currentCountry;
         String[] arr = {"CH", "AT", "LD", "BG", "BE", "CZ", "DK", "EE", "ES", "FI", "FR", "EN", "GR", "HU", "IT", "LT", "LV", "NL", "NO", "PL", "PT", "RO", "SE", "SI", "SK"};
         List list = Arrays.asList(arr);
         List<String> language = new ArrayList<>(list);
@@ -522,9 +523,12 @@ public class LKW_main_page_Logic extends LKW_main_page {
             if (closeCookiesPopUp().isDisplayed()) {
                 closeCookiesPopUp().click();
             }
+            currentCountry = currentLanguage().shouldBe(exist).getText();
             languageBlock().shouldBe(visible).scrollIntoView("{block: \"center\"}").click();
-            languageListBlock().shouldBe(visible);
-            languagesOfSubscribe().get(i).scrollIntoView("{block: \"end\"}").click();
+            languageListBlock().shouldHave(attribute("style","visibility: visible;"));
+            languagesOfSubscribe().get(i).scrollIntoView("{block: \"end\"}");
+            languagesOfSubscribe().get(i).click();
+            currentLanguage().shouldNotHave(exactText(currentCountry));
             Assert.assertTrue(url().contains(new DataBase().getRouteByRouteName(language.get(i), "lkw_main")));
         }
         return this;
@@ -539,4 +543,5 @@ public class LKW_main_page_Logic extends LKW_main_page {
         dropDownCountry().shouldHave(attribute("style", "visibility: hidden;"));
         return this;
     }
+
 }

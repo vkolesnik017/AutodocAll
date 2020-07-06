@@ -1,4 +1,4 @@
-package ATD.PrivateRoom.QC_1861_BonusesInOrder_PR;
+package ATD.PrivateRoom.QC_1862_BonusesInOrder_PR;
 
 import ATD.*;
 import AWS.Order_aws;
@@ -17,9 +17,9 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_1853_DisplayingOfBonusesInOrderAfterPlacingOrderWithBonuses {
+public class QC_1852_DisplayingOfBonusesInOrderAfterPlacingOrderWithoutBonuses {
 
-    private String mail = "QC_1853_autotest@mailinator.com", orderNumber, orderIdOfOrder, bonusOrderSum;
+    private String mail = "QC_1852_autotest@mailinator.com", orderNumber, orderIdOfOrder, bonusOrderSum;
     private Main_page_Logic main_page_logic = new Main_page_Logic();
 
     @BeforeClass
@@ -39,17 +39,17 @@ public class QC_1853_DisplayingOfBonusesInOrderAfterPlacingOrderWithBonuses {
     public void testDisplayingOfBonusesInOrder(String route) throws SQLException {
         openPage(route);
         main_page_logic.loginAndTransitionToProfilePlusPage(mail);
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "product29"));
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "product32"));
         new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
-                .checkPresenceBonusSticker()
+                .checkAbsenceBonusSticker()
                 .clickBtnNextAndTransitionOnAddressPage()
                 .fillFieldTelNumForShipping("100+001")
                 .nextBtnClick()
                 .chooseVorkasse()
                 .nextBtnClick()
-                .checkPresenceBonusSticker()
+                .checkAbsenceBonusSticker()
                 .nextBtnClick();
         orderNumber = new Payment_handler_page_Logic().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumber);

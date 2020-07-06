@@ -31,7 +31,7 @@ public class QC_338_StructureOfBreadCrumbsBlockAtBrands {
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test checks structure of bread crumbs block at brands route")
-    public void testChecksStructureOfBreadCrumbsBlockAtBrands(String route) throws SQLException {
+    public void testChecksStructureOfBreadCrumbsBlockAtBrands(String route)  {
         openPage(route);
 
         new Moto_Categories_maker_page_Logic().checkBreadCrumbsBlock();

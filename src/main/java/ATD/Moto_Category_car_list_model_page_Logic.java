@@ -89,9 +89,9 @@ public class Moto_Category_car_list_model_page_Logic extends Moto_Category_car_l
 
     @Step("add product to basket from an analog block .Moto_Category_car_list_model_page")
     public Cart_page_Logic addProductToBasketFromAnalogBlock() {
-        btnAddToBasketAtAnAnalogProduct().get(0).click();
+        visibleBtnAddToBasketAtAnAnalogProduct().get(0).click();
         if (!basketDropMenu().isDisplayed()) {
-            btnAddToBasketAtAnAnalogProduct().get(0).click();
+            visibleBtnAddToBasketAtAnAnalogProduct().get(0).click();
         }
         basketDropMenu().should(appear);
         basketDropMenu().should(disappear);
@@ -103,5 +103,12 @@ public class Moto_Category_car_list_model_page_Logic extends Moto_Category_car_l
     public Moto_Category_car_list_model_page_Logic clickOnReplacementBtnOfProduct(String artNumber) {
         btnShowReplacement(artNumber).shouldBe(visible).click();
         return this;
+    }
+
+
+    @Step("click on child category in sidebar .Moto_Category_car_list_model_page")
+    public Moto_Category_car_list_model_page_Logic clickOnChildCategoryInSidebar(int position) {
+        childCategoriesInSideBar().get(position).shouldBe(visible).click();
+        return page(Moto_Category_car_list_model_page_Logic.class);
     }
 }

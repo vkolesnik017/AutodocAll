@@ -40,8 +40,7 @@ public class QC_243_StaticPage_versand {
                 .checkRecommendationBlock()
                 .checkSafeOrderBlock()
                 .checkTyresDeliveryBlock()
-                .checkOversizeShippingProductBlock()
-                .checkChooseDeliveryBlock();
+                .checkOversizeShippingProductBlock();
     }
 
     @AfterMethod

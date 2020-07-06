@@ -288,11 +288,11 @@ public class LKW_main_page {
 
     SelenideElement topProductWithSelectedTitle(String title) {return $x("//div[@class='product-list__item__title']/span[contains(text(),'"+title+"')]");}
 
-    SelenideElement imageOfTopProductWithSelectedTitle(String title) {return $x("//div[@class='product-list__item__title']/span[contains(text(),'"+title+"')]/parent::div/..//img");}
+    SelenideElement imageOfTopProductWithSelectedTitle(String title) {return $x("(//div[@class='product-list__item__title']/span[contains(text(),'"+title+"')]/parent::div/..//img)[1]");}
 
      SelenideElement closeCookiesPopUp() {return $x("//div[@class='block-cookies__close']");}
 
-     SelenideElement additionInfoBlockOfTopProductWithSelectedTitle(String title) {return $x("//div[@class='product-list__item__title']/span[contains(text(),'"+title+"')]/parent::div/..//div[@class='product-list__item__popup']");}
+     SelenideElement additionInfoBlockOfTopProductWithSelectedTitle(String title) {return $x("(//div[@class='product-list__item__title']/span[contains(text(),'"+title+"')]/parent::div/..//div[@class='product-list__item__popup'])[1]");}
 
      SelenideElement linkDetailsWithSelectedTitle(String title) {return $x("//div[@class='product-list__item__title']/span[contains(text(),'"+title+"')]/parent::div/..//div[@class='product-list__item__popup']/div/div[2]/span"); }
 
@@ -309,6 +309,16 @@ public class LKW_main_page {
     SelenideElement dropDownCountry() {return $x("//div[@class='footer-language__country-list mCustomScrollbar _mCS_1']");}
 
     SelenideElement languageListBlock() {return $x("//div[@class='footer-language__country-list mCustomScrollbar _mCS_1']");}
+
+    ElementsCollection detailsBlockOfTopProducts() {return $$x("//div[@class='product-list__item__popup']");}
+
+    ElementsCollection btnDetailsOfTopBlock() {return $$x("//div[@class='item-table-box__details']/span");}
+
+    SelenideElement currentLanguage() {return $x("//div[@class='footer-language__current']/span");}
+
+
+
+
 }
 
 

@@ -73,11 +73,25 @@
         </classes>
     </test>
 
-    <test name="QC_1861_BonusesInOrder_PR">
+    <test name="QC_1862_BonusesInOrder_PR">
     <classes>
-        <class name="ATD.PrivateRoom.QC_1861_BonusesInOrder_PR.QC_1853_DisplayingOfBonusesInOrderAfterPlacingOrderWithBonuses"/>
+        <class name="ATD.PrivateRoom.QC_1862_BonusesInOrder_PR.QC_1853_DisplayingOfBonusesInOrderAfterPlacingOrderWithBonuses"/>
+        <class name="ATD.PrivateRoom.QC_1862_BonusesInOrder_PR.QC_1852_DisplayingOfBonusesInOrderAfterPlacingOrderWithoutBonuses"/>
         </classes>
     </test>
 
+    <test name="QC_1914_DisplayTrackingNumberInPR">
+        <classes>
+            <class name="ATD.PrivateRoom.QC_1914_DisplayTrackingNumberInPR.QC_1830_DisplayTrackingNumberInPR"/>
+            <class name="ATD.PrivateRoom.QC_1914_DisplayTrackingNumberInPR.QC_1831_CheckingForExistingDeliveryServices"/>
+            <class name="ATD.PrivateRoom.QC_1914_DisplayTrackingNumberInPR.QC_1832_CheckingMultipleDeliveryServicesInOneOrder"/>
+        </classes>
+    </test>
+
+    <test name="QC_1016_MyGarageInUserAccount">
+        <classes>
+            <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1839_AddedTruckToMyVehiclesBlock"/>
+        </classes>
+    </test>
 
 </suite>

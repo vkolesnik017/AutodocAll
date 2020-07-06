@@ -9,6 +9,7 @@ import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
 import mailinator.Mailinator;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -18,6 +19,7 @@ import java.sql.SQLException;
 import static ATD.CommonMethods.openPage;
 import static ATD.CommonMethods.password;
 import static ATD.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.switchTo;
 
 public class QC_1481_SplitBilling_FirmAndPhysicalPerson_SameCountries_NegativeCase {
@@ -46,27 +48,27 @@ public class QC_1481_SplitBilling_FirmAndPhysicalPerson_SameCountries_NegativeCa
                 .cartClick()
                 .nextButtonClick()
                 .signIn(email, password)
-                .fillAllFieldsAndFirmForShipping("EN", "YO10 4NT", "Gear4music Limited", "York")
-                .fillFieldIdCompanyShipping("552033282")
+                .fillAllFieldsAndFirmForShipping("BE", "1070", "SPRL Brasserie Cantillon", "Anderlecht")
+                .fillFieldIdCompanyShipping("0402065988")
                 .clickCheckboxBilling()
-                .chooseDeliveryCountryForBilling("EN")
+                .chooseDeliveryCountryForBilling("BE")
                 .fillingPostalCodeFieldJSForBilling("12345")
                 .nextBtnClick()
                 .chosseUnicreditBank()
                 .nextBtnClick()
-                .checkTextContainingVatPercentage("incl. 20% VAT")
-                .checkTextInDeliveryAddressInfoBlock("Company Gear4music Limited")
+                .checkTextContainingVatPercentage("incl. 21% VAT")
+                .checkTextInDeliveryAddressInfoBlock("Company SPRL Brasserie Cantillon")
                 .checkTextInPayersAddressInfoBlock("autotest autotest")
                 .getTotalPriceAllDataPageForEnShop();
         orderNumber = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumber);
         totalPriceAWSOrder = order_aws.openOrderInAwsWithLogin()
-                .checkVatStatusInOrder("Mit MwSt 20%")
+                .checkVatStatusInOrder("Mit MwSt 21%")
                 .checkFirmConfirmationStatus("Пров. вручную")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
         totalPriceAWSOrder = order_aws.reSaveOrder()
-                .checkVatStatusInOrder("Mit MwSt 20%")
+                .checkVatStatusInOrder("Mit MwSt 21%")
                 .checkFirmConfirmationStatus("Пров. вручную")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
@@ -75,9 +77,14 @@ public class QC_1481_SplitBilling_FirmAndPhysicalPerson_SameCountries_NegativeCa
         switchTo().window(1);
         totalPriceInEmail = new Mailinator().openEmail("qc_1481_autotestEN@mailinator.com")
                 .openLetter(1)
-                .checkTextContainingVatPercentageInEmail("incl. 20% VAT")
-                .checkSecondFirmNameInEmail("Gear4music Limited")
+                .checkTextContainingVatPercentageInEmail("incl. 21% VAT")
+                .checkSecondFirmNameInEmail("SPRL Brasserie Cantillon")
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPrice, totalPriceInEmail);
+    }
+
+    @AfterMethod
+    private void tearDown() {
+        close();
     }
 }

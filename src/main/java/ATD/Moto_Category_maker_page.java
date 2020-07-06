@@ -48,4 +48,8 @@ public class Moto_Category_maker_page {
 
     SelenideElement linkMoreOfBrandsBlock() {return $x("//div[@class='kategorie_top_brands']//div/div");}
 
+    ElementsCollection imageOfTopProducts() {return $$x("//div[@class='rec_products_image']//img");}
+
+    ElementsCollection childCategoriesInSideBar() {return $$x("//div[@class='block categories blue topSubCats']//li");}
+
     }
