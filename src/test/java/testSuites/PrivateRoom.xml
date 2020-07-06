@@ -74,9 +74,9 @@
     </test>
 
     <test name="QC_1861_BonusesInOrder_PR">
-    <classes>
-        <class name="ATD.PrivateRoom.QC_1861_BonusesInOrder_PR.QC_1853_DisplayingOfBonusesInOrderAfterPlacingOrderWithBonuses"/>
-        <class name="ATD.PrivateRoom.QC_1861_BonusesInOrder_PR.QC_1852_DisplayingOfBonusesInOrderAfterPlacingOrderWithoutBonuses"/>
+        <classes>
+            <class name="ATD.PrivateRoom.QC_1861_BonusesInOrder_PR.QC_1853_DisplayingOfBonusesInOrderAfterPlacingOrderWithBonuses"/>
+            <class name="ATD.PrivateRoom.QC_1861_BonusesInOrder_PR.QC_1852_DisplayingOfBonusesInOrderAfterPlacingOrderWithoutBonuses"/>
         </classes>
     </test>
 
@@ -87,5 +87,9 @@
         </classes>
     </test>
 
-
+    <test name="QC_1016_MyGarageInUserAccount">
+        <classes>
+            <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1839_AddedTruckToMyVehiclesBlock"/>
+        </classes>
+    </test>
 </suite>
