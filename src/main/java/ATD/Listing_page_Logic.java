@@ -396,6 +396,7 @@ public class Listing_page_Logic extends Listing_page {
 
     @Step("Goes to pfand link from listing page. Listing_page")
     public Austauschartikel_static_page clickLinkPfandFromListing() {
+        pfandBlock().scrollTo();
         pfandPagelink().click();
         switchTo().window(1);
         return page(Austauschartikel_static_page.class);
@@ -1193,6 +1194,12 @@ public class Listing_page_Logic extends Listing_page {
         productArticle(brandName).shouldHave(text(articleName));
         productOEMnumber(brandName).shouldHave(text(oemHighlightNumber));
         productAddToBasketButton(brandName).click();
+        return this;
+    }
+
+    @Step("Scroll to element. Listing_page")
+    public Listing_page_Logic scrollToElement(SelenideElement element) {
+        element.scrollTo();
         return this;
     }
 }

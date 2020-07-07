@@ -5,6 +5,7 @@ import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$x;
 
 public class PasswordRecovery_page {
 
@@ -22,6 +23,10 @@ public class PasswordRecovery_page {
 
     SelenideElement closePopupOfSuccessPasswordRecovery() {
         return $(byXpath("//*[@id='popup_update']//a"));
+    }
+
+    SelenideElement contactForm() {
+        return $x("//div[@class='contact_form']");
     }
 
 }

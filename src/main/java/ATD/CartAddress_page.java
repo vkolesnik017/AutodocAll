@@ -9,6 +9,10 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class CartAddress_page {
 
+    SelenideElement shippingForm() {
+        return $x("//div[@class='shipping-form input-form']");
+    }
+
     SelenideElement vorname() {
         return $(byId("form_lVorname"));
     }

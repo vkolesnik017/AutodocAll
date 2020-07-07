@@ -35,7 +35,7 @@ public class QC_777_Reviews_TestReviewsFormWithValidData {
         openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "product14"));
         closeCookiesFooterMessage();
         String randomEmail = mailRandomMailinator();
-        String reviewMessage = ("AUTOTEST_REVIEWS" + getRandomNumber());
+        String reviewMessage = ("QC_777_AUTOTEST_REVIEWS" + getRandomNumber());
         new Product_page_Logic().enterValidReviewData(randomEmail, reviewMessage);
         new Mailinator().openEmail(randomEmail)
                 .openLetter(2)

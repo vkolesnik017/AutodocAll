@@ -39,8 +39,8 @@ public class QC_709_FAQ_TestFAQformWithValidData {
     public void testFAQformWithValidData() throws SQLException {
         openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "product14"));
         String randomEmail = mailRandomMailinator();
-        String faqMessage = ("AUTOTEST_FAQ" + getRandomNumber());
-        String faqResponse = ("FAQ_AUTOTEST_RESPONSE" + getRandomNumber());
+        String faqMessage = ("QC_709_AUTOTEST_FAQ" + getRandomNumber());
+        String faqResponse = ("QC_709_FAQ_AUTOTEST_RESPONSE" + getRandomNumber());
         product_page_logic.enterFAQValidData(randomEmail, faqMessage);
         mailinator.openEmail(randomEmail)
                 .openLetter(1)

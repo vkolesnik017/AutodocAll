@@ -45,7 +45,7 @@ public class QC_1598_Bodywork {
         product_page_logic.clickAddToCartAndCheckPopupFR();
         String shop = getShopFromRoute(route);
         openPage(route + "/" + new DataBase().getRouteByRouteName(shop, "product7"));
-        String testMail = "atdautotest_qasys_82_bodywork@mailinator.com";
+        String testMail = "atdautotest_QC_1598_bodywork@mailinator.com";
         product_page_logic.addProductToCart().closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()

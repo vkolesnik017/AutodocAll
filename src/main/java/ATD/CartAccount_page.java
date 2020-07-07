@@ -72,4 +72,24 @@ public class CartAccount_page {
     public SelenideElement closePopupMessageSentForChangePassword() {
         return $(byXpath("//*[@class='cart-popup']//*[contains(text(),'Um Ihr Passwort zu ändern')]/../..//a"));
     }
+
+    public SelenideElement errorPopUp() {
+        return $x("//div[@class='cart-popup js-error-popup ']");
+    }
+
+    public SelenideElement closeErrorPopUpBtn() {
+        return $x("//a[@class='color close_popup']");
+    }
+
+    SelenideElement passwordRecoveryLinc() {
+        return $x("//a[@class='reg versegen']");
+    }
+
+    SelenideElement passwordRecoveryPopUp() {
+        return $x("//div[@class='recovery-popup cart-popup']");
+    }
+
+    SelenideElement sendingEmailBtnForPasswordChange() {
+        return $x("//div[@class='recovery-popup cart-popup']//a[@class='submit color']");
+    }
 }
