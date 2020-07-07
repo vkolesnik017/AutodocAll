@@ -1,5 +1,6 @@
 package ATD;
 
+import AWS.ProductCard_aws;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.ex.ElementNotFound;
@@ -677,5 +678,23 @@ public class Product_page_Logic extends Product_page {
         allReviewsFromDE().shouldHave(sizeLessThan(20));
         allReviewsExceptDE().shouldHave(sizeGreaterThan(0));
         return this;
+    }
+
+    @Step("Check text in product title. Product_page")
+    public Product_page_Logic checkTextInProductTitle(String expextedText) {
+        productTitle().shouldHave(text(expextedText));
+        return this;
+    }
+
+    @Step("Check Product Fits Car Or Go To AWS And Check Universal Applicability. Product_page")
+    public ProductCard_aws checkProductFitsCarOrGoToAWS(String expectedCarInCompatibilityBlock) {
+        if(!productFitsCar().is(visible)) {
+            String productId = getProductId();
+            new ProductCard_aws(productId).openProductCardPageAndLogin()
+                                          .checkUniversalOrPKWApplicability();
+        } else {
+            productFitsCar().shouldHave(text(expectedCarInCompatibilityBlock));
+        }
+        return page(ProductCard_aws.class);
     }
 }

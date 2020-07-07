@@ -5,8 +5,7 @@ import io.qameta.allure.Step;
 
 import java.util.ArrayList;
 
-import static com.codeborne.selenide.Condition.attribute;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -30,6 +29,10 @@ public class ProductCard_aws {
     private SelenideElement motoCheckBox() {
         return $x("//td/span[contains(text(),'MOTO')]/../following-sibling::td/input");
     }
+
+    private SelenideElement universalApplicabilityCheckbox() { return $(".select-all-applicability"); }
+
+    private SelenideElement pkwApplicabilityCheckbox() { return $x("//*[@class='label label-danger' and contains (text(),'PKW')]/../..//input"); }
 
     String productId;
 
@@ -82,6 +85,25 @@ public class ProductCard_aws {
         motoLabel().shouldBe(visible);
         motoCheckBox().shouldHave(attribute("checked", "checked"));
         return this;
+    }
+
+    @Step("Check universal applicability of product. ProductCard_aws")
+    public boolean checkUniversalApplicabilityOfProduct() {
+        return universalApplicabilityCheckbox().is(selected);
+    }
+
+    @Step("Check PKW applicability of product. ProductCard_aws")
+    public ProductCard_aws checkPKWApplicabilityOfProduct() {
+        pkwApplicabilityCheckbox().shouldBe(selected);
+        return this;
+    }
+
+    @Step("Check universal or PKW applicability. ProductCard_aws")
+    public ProductCard_aws checkUniversalOrPKWApplicability() {
+        if (!checkUniversalApplicabilityOfProduct()) {
+            checkPKWApplicabilityOfProduct();
+        }
+            return this;
     }
 
 }

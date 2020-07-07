@@ -1001,4 +1001,10 @@ public class Main_page_Logic extends Main_page {
         successBtnInPopUpPrivacyPolicy().click();
         return this;
     }
+
+    @Step("Check Generic Name In Search Tooltip. Main_page")
+    public Main_page_Logic checkGenericNameInSearchTooltip(String genericName) {
+        tooltipToSearch().shouldHave(text(genericName));
+        return this;
+    }
 }

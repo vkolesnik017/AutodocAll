@@ -166,11 +166,11 @@ public class CartAllData_page {
     }
 
     SelenideElement popupOfEmptyBasket() {
-        return $(By.xpath("//div[@class='cart-popup close-redirect']"));
+        return $(By.xpath("//div[@class='cart-popup js-error-popup close-redirect']"));
     }
 
     SelenideElement closeBtnPopupOfEmptyBasket() {
-        return $(By.xpath("//div[@class='cart-popup close-redirect']//a[@class='color close_popup']"));
+        return $(By.xpath("//div[@class='cart-popup js-error-popup close-redirect']//a[@class='color close_popup']"));
     }
 
     //locators for tyres

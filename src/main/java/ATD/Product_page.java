@@ -628,4 +628,8 @@ public class Product_page {
         return $x("//h2/span[@class='title']");
     }
 
+    SelenideElement productFitsCar() { return $(".accordion-selected"); }
+
+    SelenideElement productTitle() { return $(".title"); }
+
 }
