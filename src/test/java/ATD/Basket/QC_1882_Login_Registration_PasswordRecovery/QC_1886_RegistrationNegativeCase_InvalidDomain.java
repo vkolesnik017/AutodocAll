@@ -1,6 +1,6 @@
 package ATD.Basket.QC_1882_Login_Registration_PasswordRecovery;
 
-import ATD.CartAddress_page_Logic;
+import ATD.CartAccount_page_Logic;
 import ATD.Product_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
@@ -13,11 +13,11 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.*;
+import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_1883_Registration_PositiveCase {
+public class QC_1886_RegistrationNegativeCase_InvalidDomain {
 
     @BeforeClass
     void setUp() {
@@ -32,17 +32,15 @@ public class QC_1883_Registration_PositiveCase {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks the successful registration through the basket.")
-    public void testRegistrationPositiveCase(String route) throws SQLException {
+    @Description(value = "Test checks the registration with invalid domain.")
+    public void testRegistrationNegativeCase_InvalidDomain(String route) throws SQLException {
         openPage(route);
-        String shop = getCurrentShopFromJSVarInHTML();
         new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
-                .fillingRegistrationFields("QC_1883");
-        new CartAddress_page_Logic().checkThatAddressFieldsAreEmpty()
-                .checkDefaultCountryInSelector(shop);
+                .registrationFromCart("any@test.com.");
+        new CartAccount_page_Logic().checkTextFromErrorPopUp("Das Feld E-mail muss eine gültige E-Mail-Adresse enthalten.");
     }
 
     @AfterMethod

@@ -99,9 +99,9 @@ public class CartAddress_page_Logic extends CartAddress_page {
     }
 
     @Step("Logo click. CartAddress_page")
-    public Main_page logoClick() {
+    public Main_page_Logic logoClick() {
         $(By.xpath("//div[@class='cart-page-head__logo']")).click();
-        return page(Main_page.class);
+        return page(Main_page_Logic.class);
     }
 
     @Step("Next button click. CartAddress_page")
@@ -364,6 +364,12 @@ public class CartAddress_page_Logic extends CartAddress_page {
     @Step("Checks that country selected by default corresponds to the shop. CartAddress_page")
     public CartAddress_page_Logic checkDefaultCountryInSelector(String shop) {
         countryInSelectorForShipping(shop).shouldHave(attribute("selected"));
+        return this;
+    }
+
+    @Step("Checks presence shipping form. CartAddress_page")
+    public CartAddress_page_Logic checkPresenceShippingForm() {
+        shippingForm().shouldBe(visible);
         return this;
     }
 }
