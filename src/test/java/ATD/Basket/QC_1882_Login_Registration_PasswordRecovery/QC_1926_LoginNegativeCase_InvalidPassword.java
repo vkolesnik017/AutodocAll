@@ -13,15 +13,13 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.*;
+import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_1885_Registration_NegativeCase_EmptyPasswordField {
+public class QC_1926_LoginNegativeCase_InvalidPassword {
 
-
-    private CartAccount_page_Logic cartAccount_page_logic = new CartAccount_page_Logic();
+    private String mail = "QC_1926_autotestATD@mailinator.com";
 
     @BeforeClass
     void setUp() {
@@ -36,17 +34,15 @@ public class QC_1885_Registration_NegativeCase_EmptyPasswordField {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks the registration with empty password field")
-    public void testRegistrationNegativeCaseEmptyPasswordField(String route) throws SQLException {
-    String mail = mailRandom();
+    @Description(value = "Test checks the login with invalid password")
+    public void testLoginNegativeCase_InvalidPassword(String route) throws SQLException {
         openPage(route);
         new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
-                .nextButtonClick();
-        cartAccount_page_logic.registrationFormEmailInput().setValue("QC_1885_" + mail);
-        cartAccount_page_logic.registrationFormNextBtnClick();
-        cartAccount_page_logic.errorPopUp().shouldBe(visible);
+                .nextButtonClick()
+                .signIn(mail, "1111");
+        new CartAccount_page_Logic().checkTextFromErrorPopUp("E-mail und Passwort passen nicht zusammen!");
     }
 
     @AfterMethod

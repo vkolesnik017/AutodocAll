@@ -6,8 +6,7 @@ import io.qameta.allure.Step;
 import static ATD.CommonMethods.password;
 
 import static ATD.CommonMethods.mailRandom;
-import static com.codeborne.selenide.Condition.not;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.Selenide.switchTo;
 
@@ -72,7 +71,7 @@ public class CartAccount_page_Logic extends CartAccount_page{
         return this;
     }
 
-    @Step("Login from facebook {mail}, {password}. Login_page_mob")
+    @Step("Login from facebook {mail}, {password}. CartAccount_page")
     public CartAddress_page_Logic signInFromFB(String mail, String pass) {
         facebookLoginBtn().click();
         switchTo().window(1);
@@ -81,5 +80,28 @@ public class CartAccount_page_Logic extends CartAccount_page{
         loginBtnFB().click();
         switchTo().window(0);
         return page(CartAddress_page_Logic.class);
+    }
+
+    @Step("Password recovery from popup Email already exists. CartAccount_page")
+    public CartAccount_page_Logic recoveryPassFromPopUpEmailAlreadyExists(String mail) {
+        errorPopUp().shouldBe(visible);
+        passwordRecoveryLinc().click();
+        passwordRecoveryPopUp().shouldBe(visible);
+        emailFieldInPasswordRecoveryPopUp().setValue(mail);
+        sendingEmailBtnForPasswordChange().click();
+        closePopupMessageSentForChangePassword().click();
+        return this;
+    }
+
+    @Step("Checks text {expectedText} from popup error. CartAccount_page")
+    public CartAccount_page_Logic checkTextFromErrorPopUp(String expectedText) {
+        errorPopUp().shouldHave(text(expectedText));
+        return this;
+    }
+
+    @Step("Close error popup. CartAccount_page")
+    public CartAccount_page_Logic closeErrorPopup() {
+        closeErrorPopUpBtn().click();
+        return this;
     }
 }

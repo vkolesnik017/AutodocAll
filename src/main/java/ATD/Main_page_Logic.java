@@ -108,7 +108,7 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Clicking log out in header. Main_page")
-    Main_page_Logic logOutClick() {
+    public Main_page_Logic logOutClick() {
         logoutButton().click();
         return this;
     }
