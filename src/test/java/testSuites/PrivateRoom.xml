@@ -91,6 +91,7 @@
     <test name="QC_1016_MyGarageInUserAccount">
         <classes>
             <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1839_AddedTruckToMyVehiclesBlock"/>
+            <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1840_AddedMotoToMyVehiclesBlock"/>
         </classes>
     </test>
 

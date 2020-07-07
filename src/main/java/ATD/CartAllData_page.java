@@ -170,7 +170,7 @@ public class CartAllData_page {
     }
 
     SelenideElement closeBtnPopupOfEmptyBasket() {
-        return $(By.xpath("//div[@class='cart-popup js-error-popup close-redirect']//a[@class='color close_popup']"));
+        return $(By.xpath("//a[@class='color close_popup']"));
     }
 
     //locators for tyres

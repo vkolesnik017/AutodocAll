@@ -10,6 +10,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
+import java.util.Random;
 
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
@@ -17,6 +18,17 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class CommonMethods {
+
+    public static String password = "pkwtest";
+
+
+
+    @Step("Generates random mail")
+    public static String mailRandom() {
+        Random randomGenerator = new Random();
+        int random = randomGenerator.nextInt();
+        return "autotest" + random + "@mailinator.com";
+    }
 
     @Step("{url} Open page with close popup")
     public static void openPage(String url) {

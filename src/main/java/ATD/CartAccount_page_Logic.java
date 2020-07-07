@@ -23,6 +23,14 @@ public class CartAccount_page_Logic extends CartAccount_page{
         return mail;
     }
 
+    @Step("Check registration from cart with {mail}. CartAccount_page")
+    public CartAddress_page_Logic registrationFromCart(String mail) {
+        registrationFormEmailInput().setValue(mail);
+        registrationFormPasswordInput().setValue(password);
+        registrationFormNextBtnClick();
+        return page(CartAddress_page_Logic.class);
+    }
+
     @Step("clicking Next button in registration form. CartAccount_page")
     public CartAddress_page registrationFormNextBtnClick() {
         registrationButton().click();
@@ -43,8 +51,8 @@ public class CartAccount_page_Logic extends CartAccount_page{
         return page(CartAddress_page_Logic.class);
     }
 
-    @Step("Check registration from cart. CartAccount_page")
-    public Main_page_Logic registrationFromCart(String mail){
+    @Step("Check registration from cart and back to Main page. CartAccount_page")
+    public Main_page_Logic registrationFromCartAndBackToMainPage(String mail){
         CartAddress_page_Logic cartAddress_page = new CartAddress_page_Logic();
         registrationFormEmailInput().setValue(mail);
         registrationFormPasswordInput().setValue(password);
