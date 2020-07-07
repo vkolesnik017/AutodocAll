@@ -1,6 +1,7 @@
 package ATD.Tyres.QC_1317_SizeBlockOnTyresCatalog;
 
 
+import ATD.DataBase;
 import ATD.SetUp;
 import ATD.TyresListing_page_Logic;
 import io.qameta.allure.Description;
@@ -26,7 +27,7 @@ public class QC_1320_TransitionToListingRouteInteractDimensionBlockOnCatalogRout
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "tyres_type_list,tyres_type_list2,tyres_type_list3,tyres_type_list4");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "tyres_type_list,tyres_type_list2,tyres_type_list3");
     }
 
     @Test(dataProvider = "routes")
@@ -36,6 +37,15 @@ public class QC_1320_TransitionToListingRouteInteractDimensionBlockOnCatalogRout
     public void testPresenceSizesBlockOnTyresCatalogRoute(String route) {
         openPage(route);
         new TyresListing_page_Logic().clickDimensionButtonAndCheckRedirect(new TyresListing_page_Logic().dimensionLinkCatalogRoute());
+    }
+
+    @Test
+    @Flaky
+    @Owner(value = "Romaniuta")
+    @Description(value = "Test Checks Presence Sizes Block On Tyres Catalog Route Moto")
+    public void testPresenceSizesBlockOnTyresCatalogRouteMoto() throws SQLException {
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "tyres_type_list4"));
+        new TyresListing_page_Logic().clickDimensionButtonAndCheckRedirect(new TyresListing_page_Logic().dimensionLinkCatalogRouteMoto());
     }
 
     @AfterMethod

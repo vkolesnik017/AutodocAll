@@ -7,9 +7,11 @@ import org.testng.Assert;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static ATD.CommonMethods.checkingContainsUrl;
+import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
@@ -255,4 +257,145 @@ public class Moto_Product_page_Logic extends Moto_Product_page {
         motoBrandFromCompatibilityBlock.clear();
         return this;
     }
+
+    @Step("visibility of dynamic characteristic block .Moto_Product_page")
+    public Moto_Product_page_Logic visibilityOfDynamicCharacteristicBlock() {
+        dynamicCharacteristicBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("open of characteristic block .Moto_Product_page")
+    public Moto_Product_page_Logic openCharacteristicBlock() {
+        openBlockOfCharacteristic().click();
+        listOfCharacteristics().shouldHaveSize(11);
+        return this;
+    }
+
+    @Step("visibility of selected truck selector after click by characteristic .Moto_Product_page")
+    public Moto_Product_page_Logic visibilityOfSelectedTruckSelector() {
+        activeLinksOfCharacteristic().get(0).shouldBe(visible).click();
+        selectedTruckSelector().should(appear);
+        darkBackground().should(appear);
+        return this;
+    }
+
+    @Step(" get id of an analog product .Moto_Product_page")
+    public String getIdOfBtnAddToBasket() {
+        String idOfBtn = btnAddToBasket().shouldBe(visible).getAttribute("id");
+        return idOfBtn;
+    }
+
+    @Step(" adding product to basket .Moto_Product_page")
+    public Cart_page_Logic addProductToBasket() {
+        btnAddToBasket().click();
+        basketDropMenu().should(appear);
+        basketDropMenu().should(disappear);
+        basket().click();
+        return page(Cart_page_Logic.class);
+    }
+
+    @Step("presence of compatibility block .Moto_Product_page")
+    public Moto_Product_page_Logic presenceOfCompatibilityBlock() {
+        compatibilityMotoBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("check sorting of compatibility block .Moto_Product_page")
+    public Moto_Product_page_Logic checkSortingOfCompatibilityBlock() {
+        List<String> motoFromBlock = new ArrayList<>();
+        for (int i = 0; i < motoTitleFromCompatibilityBlock().size(); i++) {
+            motoFromBlock.add(motoTitleFromCompatibilityBlock().get(i).getText());
+        }
+        List<String> checkingList = new ArrayList<>(motoFromBlock);
+        Collections.sort(checkingList);
+        Assert.assertEquals(checkingList, motoFromBlock);
+        return this;
+    }
+
+    @Step("visibility of motorcycle models in compatibility block .Moto_Product_page")
+    public Moto_Product_page_Logic visibilityOfMotoModelsInCompatibilityBlock() {
+        motoTitleFromCompatibilityBlock().get(0).shouldBe(visible).click();
+        motoModelsCompatibilityBlock().get(0).shouldBe(visible);
+        return this;
+    }
+
+    @Step("visibility of motorcycle motor values  in compatibility block .Moto_Product_page")
+    public Moto_Product_page_Logic visibilityOfMotoMotorsInCompatibilityBlock() {
+        listOfMotoAtCompatibilityBlock().get(0).shouldBe(visible).click();
+        motoMotorCompatibilityBlock().should(appear);
+        return this;
+    }
+
+    @Step("check OEN block that there is no links .Moto_Product_page")
+    public Moto_Product_page_Logic checkOenBlock() {
+        oenBlock().shouldBe(visible);
+        for (int i = 0; i < oenLinks().size(); i++) {
+            oenLinks().get(i).shouldNotHave(attribute("href"));
+        }
+        return this;
+    }
+
+    @Step("presence of analog product block .Moto_Product_page")
+    public Moto_Product_page_Logic presenceOfAnalogProductBlock() {
+        analogProductBlock().shouldBe(visible);
+        analogProducts().shouldHave(sizeGreaterThan(0));
+        return this;
+    }
+
+    @Step("presence of related product block .Moto_Product_page")
+    public Moto_Product_page_Logic presenceOfRelatedProductBlock() {
+        relatedProductBlock().shouldBe(visible);
+        relatedProducts().shouldHave(sizeGreaterThan(0));
+        return this;
+    }
+
+    @Step("get id of an analog product button added to basket .Moto_Product_page")
+    public String getIdOfAnalogProductBtnAddToBasket() {
+        String idOfBtn = btnAddToBasketAnalogProduct().get(0).shouldBe(visible).getAttribute("id");
+        return idOfBtn;
+    }
+
+    @Step(" adding analog product to basket .Moto_Product_page")
+    public Cart_page_Logic addAnalogProductToBasket() {
+        btnAddToBasketAnalogProduct().get(0).click();
+        basketDropMenu().should(appear);
+        basketDropMenu().should(disappear);
+        basket().click();
+        return page(Cart_page_Logic.class);
+    }
+
+    @Step("presence of detail information popUp when hovering by analog products.Moto_Product_page")
+    public Moto_Product_page_Logic presenceOfDetailInfoPopUp() {
+        for (int i = 0; i < analogProducts().size(); i++) {
+            analogProducts().get(i).hover();
+            analogDetailsBlock().get(i).shouldBe(visible);
+            headlineOfAnalogBlock().hover();
+        }
+        return this;
+    }
+
+    @Step("click on image of analog product .Moto_Product_page")
+    public Moto_Product_page_Logic clickOnImageOfAnalogProduct() {
+        titleOfAnalogProduct().get(0).click();
+        return this;
+    }
+
+    @Step("get title of analog product .Moto_Product_page")
+    public String getTitleOfAnalogProduct() {
+        String titleOfProduct = titleOfAnalogProduct().get(0).getText();
+        return titleOfProduct;
+    }
+
+    @Step("check title of product .Moto_Product_page")
+    public Moto_Product_page_Logic checkTitleOfProduct(String title) {
+        mainProductTitle().shouldBe(visible).shouldHave(exactText(title));
+        return this;
+    }
+
+    @Step("transition to next window of browser .Moto_Product_page")
+    public Moto_Product_page_Logic gotoNextWindow() {
+        switchTo().window(1);
+        return this;
+    }
+
 }

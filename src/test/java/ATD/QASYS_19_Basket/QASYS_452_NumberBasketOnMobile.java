@@ -12,6 +12,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static ATD.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -33,7 +34,7 @@ public class QASYS_452_NumberBasketOnMobile {
   @Description(value = "check number basket on mobile site")
   public void checkNumberBasketOnMobile(String route) {
     open(route);
-    new Main_page_mob().numberBasket().shouldBe(Condition.visible);
+    new Main_page_mob().numberBasket().shouldBe(visible);
   }
 
   @AfterMethod

@@ -397,6 +397,66 @@ public class Order_aws {
         return $x("//a[@class='btn btn-link btn-ajaxmode']");
     }
 
+    private SelenideElement deliveryMethod(String method, String numberDelivery) {
+        return $x("//label[@class='radio-inline']//input[@value='" + method + "']/..//input[@name='OrderDelivery[" + numberDelivery + "][Carrier]']");
+    }
+
+    private SelenideElement fieldTrackingNumbers(String fieldTrackingNum) {
+        return $x("//input[@name='OrderDelivery[" + fieldTrackingNum + "][DeliveryNr]']");
+    }
+
+    private SelenideElement fieldSavedTrackingNumber() {
+        return $x("//input[@class='form-control size-140 delivery-nr']");
+    }
+
+    private ElementsCollection allFieldsSavedTrackingNumber() {
+        return $$x("//input[@class='form-control size-140 delivery-nr']");
+    }
+
+    private SelenideElement addDeliveryInOrderBtn() {
+        return $(".add-order-delivery");
+    }
+
+    private SelenideElement selectedStatus(String nameStatus) {
+        return $x("//select[@class='order-new-status']//option[text()[contains(.,'" + nameStatus + "')]]");
+    }
+
+
+
+    @Step("Get list saved tracking number. Order_aws")
+    public ArrayList<String> getListSavedTrackingNumber() {
+        ArrayList<String> list = new ArrayList<>();
+        for (int i = 0; i < allFieldsSavedTrackingNumber().size(); i++) {
+            list.add(allFieldsSavedTrackingNumber().get(i).getAttribute("value"));
+        }
+        return list;
+    }
+
+    @Step("Get saved tracking number. Order_aws")
+    public String getSavedTrackingNumber() {
+        return String.valueOf(fieldSavedTrackingNumber().getAttribute("value"));
+    }
+
+    @Step("Selects status {nameStatus} order. Order_aws")
+    public Order_aws selectStatusOrder(String nameStatus) {
+        selectedStatus(nameStatus).click();
+        return this;
+    }
+
+    @Step("Selects delivery service {methodDelivery}, {numberDelivery} and enters a tracking number {fieldTrackingNum}. Order_aws")
+    public Order_aws selectDeliveryAndEnterTrackingNum(String methodDelivery,String numberDelivery, String fieldTrackingNum, String trackingNum) {
+        deliveryMethod(methodDelivery, numberDelivery).click();
+        fieldTrackingNumbers(fieldTrackingNum).sendKeys(trackingNum);
+        addDeliveryInOrderBtn().click();
+        return this;
+    }
+
+    @Step("Click button added delivery in order. Order_aws")
+    public Order_aws clickBtnAddedDeliveryInOrderBtn() {
+        addDeliveryInOrderBtn().click();
+        return this;
+    }
+
 
     @Step("Checks current status {expectedStatus} in order. Order_aws")
     public Order_aws checkCurrentStatusInOrder(String expectedStatus) {
@@ -407,8 +467,8 @@ public class Order_aws {
 
     @Step("Get order ID of order. Order_aws")
     public String getOrderIdOfOrder() {
-        String test = orderID().getText().substring(10);
-        return test;
+        String orderID = orderID().getText().substring(10);
+        return orderID;
     }
 
     @Step("Checks the quantity of goods {expectedQuantity} in column count products. Order_aws")
@@ -678,6 +738,14 @@ public class Order_aws {
     public Order_aws reSaveOrder() {
         btnChangeOrderStatusInTest().scrollTo();
         btnChangeOrderStatusInTest().click();
+        saveChangesInOrderBtn().click();
+        sleep(5000);
+        return this;
+    }
+
+    @Step("Save order. Order_aws")
+    public Order_aws saveOrder() {
+        btnChangeOrderStatusInTest().scrollTo();
         saveChangesInOrderBtn().click();
         sleep(5000);
         return this;

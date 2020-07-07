@@ -1187,12 +1187,12 @@ public class Listing_page_Logic extends Listing_page {
     }
 
     @Step("Check generic and OEM number. Listing_page")
-    public Listing_page_Logic checkGenericAndArticleAndOEMnumber(String genericName, String articleName, String oemHighlightNumber) {
+    public Listing_page_Logic checkGenericAndArticleAndOEMnumber(String brandName, String genericName, String articleName, String oemHighlightNumber) {
         listProducts().shouldBe(visible);
-        cortecoProduct().shouldHave(text(genericName));
-        cortecoArticle().shouldHave(text(articleName));
-        cortecoOEMnumber().shouldHave(text(oemHighlightNumber));
-        cortecoAddToBasketButton().click();
+        productName(brandName).shouldHave(text(genericName));
+        productArticle(brandName).shouldHave(text(articleName));
+        productOEMnumber(brandName).shouldHave(text(oemHighlightNumber));
+        productAddToBasketButton(brandName).click();
         return this;
     }
 }

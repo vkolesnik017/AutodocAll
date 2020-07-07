@@ -6,6 +6,7 @@ import org.testng.Assert;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.checkingContainsUrl;
+import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.back;
 import static com.codeborne.selenide.Selenide.page;
@@ -597,7 +598,6 @@ public class Moto_main_page_Logic extends Moto_main_page {
         return this;
     }
 
-
     @Step("presence of navigation arrows .Moto_main_page")
     public Moto_main_page_Logic presenceOfNavigationArrows() {
         String currentTitleOfTopProduct = visibleTitleOfTopProducts().get(0).getText();
@@ -607,5 +607,86 @@ public class Moto_main_page_Logic extends Moto_main_page {
         return this;
     }
 
+    @Step("visibility of Parent categories in vertical selector .Moto_main_page")
+    public Moto_main_page_Logic visibilityParentCategoriesInVerticalSelector() {
+        logoInHeader().shouldBe(visible);
+        btnVerticalMotoCatalog().click();
+        parentCategoriesBlockInVerticalCatalog().shouldBe(visible);
+        return this;
+    }
 
+    @Step("check vertical catalog in header .Moto_main_page")
+    public Moto_main_page_Logic checkVerticalCatalogInHeader() {
+        headlineOfParentCategoriesVerticalCatalog().shouldBe(visible);
+        imageOfParentCategoriesVerticalCatalog().shouldBe(visible);
+        listOfParentCategoriesInVerticalCatalog().shouldHaveSize(17);
+        checkSecondLevelOfVerticalCatalog();
+        return this;
+    }
+
+    @Step("check second level of vertical catalog .Moto_main_page")
+    public Moto_main_page_Logic checkSecondLevelOfVerticalCatalog() {
+        for (int i = 0; i < listOfParentCategoriesInVerticalCatalog().size(); i++) {
+            listOfParentCategoriesInVerticalCatalog().get(i).hover();
+            verticalCatalogBlockSecondLevel().shouldBe(visible);
+            titleOfVerticalCatalogBlockSecondLevel().get(0).shouldBe(visible).getText().replace(" ", "").equals(titleOfVerticalCatalogBlockSecondLevel().get(0).shouldBe(visible).getText().replace(" ", ""));
+            imageOfVerticalCatalogBlockSecondLevel().get(0).shouldBe(visible);
+            listOfCategoriesInVerticalCatalogSecondLevel().shouldHave(sizeGreaterThan(0));
+            checkThirdLevelOfVerticalCatalog();
+        }
+        return this;
+    }
+
+    @Step("check third level of vertical catalog .Moto_main_page")
+    public Moto_main_page_Logic checkThirdLevelOfVerticalCatalog() {
+        if (intermediateCategoriesSecondLevel().get(0).isDisplayed()) {
+            for (int i = 0; i < intermediateCategoriesSecondLevel().size(); i++) {
+                intermediateCategoriesSecondLevel().get(i).hover();
+                verticalCatalogBlockThirdLevel().shouldBe(visible);
+                titleOfVerticalCatalogBlockThirdLevel().get(0).shouldBe(visible).shouldHave(exactText(intermediateCategoriesSecondLevel().get(i).getText()));
+                childCategoriesThirdLevelAtVerticalCatalog().shouldHave(sizeGreaterThan(0));
+                for (int j = 0; j < childCategoriesThirdLevelAtVerticalCatalog().size(); j++) {
+                    titleOfChildCategoriesThirdLevelAtVerticalCatalog().get(j).shouldBe(visible);
+                    imageOfChildCategoriesThirdLevelAtVerticalCatalog().get(j).shouldBe(visible);
+                }
+            }
+        }
+        return this;
+    }
+
+    @Step("select parent category in vertical catalog .Moto_main_page")
+    public Moto_main_page_Logic selectParentCategoryInVerticalCatalog(int position) {
+        listOfParentCategoriesInVerticalCatalog().get(position).shouldBe(visible).hover();
+        verticalCatalogBlockSecondLevel().shouldBe(visible);
+        return this;
+    }
+
+    @Step("select parent category in vertical catalog .Moto_main_page")
+    public Moto_Category_page_Logic selectChildCategoryInVerticalCatalogSecondLevel(int position) {
+        listOfCategoriesInVerticalCatalogSecondLevel().get(position).shouldBe(visible).click();
+        return page(Moto_Category_page_Logic.class);
+    }
+
+    @Step("select parent category in vertical catalog .Moto_main_page")
+    public Moto_Category_car_list_page_Logic selectChildCategoryInVerticalCatalogSecondLevelWithMoto(int position) {
+        listOfCategoriesInVerticalCatalogSecondLevel().get(position).shouldBe(visible).click();
+        return page(Moto_Category_car_list_page_Logic.class);
+    }
+
+    @Step("presence of main banner .Moto_main_page")
+    public Moto_main_page_Logic presenceOfMainBanner() {
+        mainBanner().shouldBe(visible);
+        return this;
+    }
+
+    @Step("hover On TOP child categories .Moto_main_page")
+    public Moto_main_page_Logic hoverOnTopChildCategories() {
+        topChildCategoriesBlock().shouldBe(visible);
+        for (int i = 0; i < titleOfTopChildCategories().size(); i++) {
+            titleOfTopChildCategories().get(i).shouldBe(visible).shouldHave(cssValue("color", "rgba(0, 0, 0, 1)"));
+            titleOfTopChildCategories().get(i).shouldBe(visible).hover();
+            titleOfTopChildCategories().get(i).shouldBe(visible).shouldHave(cssValue("color", "rgba(255, 255, 255, 1)"));
+        }
+        return this;
+    }
 }

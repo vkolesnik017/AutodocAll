@@ -155,6 +155,7 @@
     <test name="QC_856_TopChildCategoriesBlock">
         <classes>
             <class name="MOTO.QC_856_TopChildCategoriesBlock.QC_857_PresenceOfTopChildCategoriesBlock"/>
+            <class name="MOTO.QC_856_TopChildCategoriesBlock.QC_858_HoverOnTopChildCategories"/>
             <class name="MOTO.QC_856_TopChildCategoriesBlock.QC_859_TransitionByClickOnChildCategory"/>
         </classes>
     </test>
@@ -198,4 +199,56 @@
             <class name="MOTO.QC_319_TopProductsBlock.QC_328_ApplicabilityProductsToBrandPage"/>
         </classes>
     </test>
+
+    <test name="QC_730_ProductPage">
+        <classes>
+            <class name="MOTO.QC_730_ProductPage.QC_731_DynamicCharacteristic"/>
+            <class name="MOTO.QC_730_ProductPage.QC_732_SelectingOfMotoSelector"/>
+            <class name="MOTO.QC_730_ProductPage.QC_733_AddedProductToBasket"/>
+            <class name="MOTO.QC_730_ProductPage.QC_734_CompatibleMotoBlock"/>
+            <class name="MOTO.QC_730_ProductPage.QC_737_LackOfLinksInOenBlock"/>
+            <class name="MOTO.QC_730_ProductPage.QC_738_AnalogProductBlock"/>
+            <class name="MOTO.QC_730_ProductPage.QC_739_AddedAnalogProductToBasket"/>
+            <class name="MOTO.QC_730_ProductPage.QC_740_PresenceOfDetailInformationPopUp"/>
+            <class name="MOTO.QC_730_ProductPage.QC_741_BehaviorByClickOnImageOfAnalogProduct"/>
+        </classes>
+    </test>
+
+    <test name="QC_757_MotoCatalogInHeader">
+        <classes>
+            <class name="MOTO.QC_757_MotoCatalogInHeader.QC_759_PresenceOfMotoCatalogInHeader"/>
+            <class name="MOTO.QC_757_MotoCatalogInHeader.QC_760_StructureOfMotoCatalogInHeader"/>
+            <class name="MOTO.QC_757_MotoCatalogInHeader.QC_762_TransitionByClickOnElementsOfMotoCatalog"/>
+            <class name="MOTO.QC_757_MotoCatalogInHeader.QC_764_FormationOfMotoCatalogInHeader"/>
+        </classes>
+    </test>
+
+    <test name="QC_368_MainImageOfBrand">
+        <classes>
+            <class name="MOTO.QC_368_MainImageOfBrand.QC_369_PresenceOfMainImageOfBrand"/>
+        </classes>
+    </test>
+
+    <test name="QC_349_ParentAndChildSideBarBlock">
+        <classes>
+            <class name="MOTO.QC_349_ParentAndChildSideBarBlock.QC_350_PresenceOfParentSideBarBlock"/>
+            <class name="MOTO.QC_349_ParentAndChildSideBarBlock.QC_351_BehaviorByClickOnParentCategoryBlock"/>
+            <class name="MOTO.QC_349_ParentAndChildSideBarBlock.QC_352_PresenceOfLinkingBlockAndTitle"/>
+            <class name="MOTO.QC_349_ParentAndChildSideBarBlock.QC_353_BehaviorByClickOnElementOfTopChildCategories"/>
+            <class name="MOTO.QC_349_ParentAndChildSideBarBlock.QC_354_ListOfChildCategoriesInSidebar"/>
+        </classes>
+    </test>
+
+    <test name="QC_850_MainBanner">
+        <classes>
+            <class name="MOTO.QC_850_MainBanner.QC_851_PresenceOfMainBanner"/>
+        </classes>
+    </test>
+
+    <test name="QC_622_LinkingBlockToModelCatalog">
+        <classes>
+            <class name="MOTO.QC_622_LinkingBlockToModelCatalog.QC_623_PresenceOfElementsAtLinkingBlock"/>
+        </classes>
+    </test>
+
 </suite>

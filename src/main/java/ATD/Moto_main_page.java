@@ -4,8 +4,7 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selectors.byId;
-import static com.codeborne.selenide.Selectors.byName;
+import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
 class Moto_main_page {
@@ -253,4 +252,53 @@ class Moto_main_page {
         return $x("//*[self::div[@class='moto-top-product'] or self::div[@class='moto-top-products']]//a[@class='bx-next']");
     }
 
+    SelenideElement logoInHeader() {return $(".header__logo-main");}
+
+    SelenideElement btnVerticalMotoCatalog() {return $x("//div[@class='menu-catalog']");}
+
+    SelenideElement parentCategoriesBlockInVerticalCatalog() {return $x("//div[@id='menu-category-moto']");}
+
+    SelenideElement headlineOfParentCategoriesVerticalCatalog() {return $x("//div[@class='menu-category__first-lvl']//div[@class='menu-category__title']/a");}
+
+    SelenideElement imageOfParentCategoriesVerticalCatalog() {return $x("//div[@class='menu-category__first-lvl']//div[@class='menu-category__header']/img");}
+
+    ElementsCollection listOfParentCategoriesInVerticalCatalog() {return $$x("//li[contains(@class,'menu-category__first-item')]/a");}
+
+    SelenideElement verticalCatalogBlockSecondLevel() {
+        return $(byXpath("//div[@class='menu-category__2-block']"));
+    }
+
+    ElementsCollection titleOfVerticalCatalogBlockSecondLevel() {
+        return $$(byXpath("//div[@class='menu-category__2-block']//div[@class='menu-category__title']")).filter(visible);
+    }
+
+    ElementsCollection imageOfVerticalCatalogBlockSecondLevel() {
+        return $$(byXpath("//div[@class='menu-category__2-block']//div[@class='menu-category__header']/img")).filter(visible);
+    }
+
+    ElementsCollection listOfCategoriesInVerticalCatalogSecondLevel() {
+        return $$(byXpath("//div[@class='menu-category__2-block']//li[contains(@class,'menu-category__item')]")).filter(visible);
+    }
+
+    ElementsCollection intermediateCategoriesSecondLevel() {
+        return $$(byXpath("//div[@class='menu-category__2-block']//li[contains(@class,'menu-category__item')]/span/span")).filter(visible);
+    }
+
+    SelenideElement verticalCatalogBlockThirdLevel() {
+        return $(byXpath("//div[@class='menu-category__3-block']"));
+    }
+
+    ElementsCollection titleOfVerticalCatalogBlockThirdLevel() {
+        return $$(byXpath("//div[@class='menu-category__3-block']//div[@class='menu-category__title']")).filter(visible);
+    }
+
+    ElementsCollection childCategoriesThirdLevelAtVerticalCatalog() {return $$x("//div[@class='menu-category__3-block']//li[@class='menu-category__item']/a").filter(visible);}
+
+    ElementsCollection titleOfChildCategoriesThirdLevelAtVerticalCatalog() {return $$x("//div[@class='menu-category__3-block']//li[@class='menu-category__item']/a/span").filter(visible);}
+
+    ElementsCollection imageOfChildCategoriesThirdLevelAtVerticalCatalog() {return $$x("//div[@class='menu-category__3-block']//li[@class='menu-category__item']/a/img").filter(visible);}
+
+    SelenideElement mainBanner() {return $x("//div[@class='moto-banner']");}
+
+    ElementsCollection titleOfTopChildCategories() {return $$x("//span[@class='moto-home-categories__name']");}
 }

@@ -1,14 +1,18 @@
 package mailinator;
 
 import ATD.PasswordRecovery_page_Logic;
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+
+import java.util.ArrayList;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class Mailinator {
 
@@ -56,6 +60,52 @@ public class Mailinator {
 
     private SelenideElement namePhysicalPersonInEmail() {
         return $x("//table[@class='to-column-table to-column-table--border']//p[@class='to-column-table__text']/following-sibling::p");
+    }
+
+    private SelenideElement linkToDeliveryPage() {
+        return $x("//td[@class='content__cell']//a");
+    }
+
+    private ElementsCollection allLinkToDeliveryPage() {
+        return $$x("//div[@style='background-color: white ; padding: 15px']//a");
+    }
+
+    private SelenideElement trackingNumber() {
+        return $x("//td[@class='content__cell']//div//b[2]");
+    }
+
+
+
+
+    @Step("Transition to delivery page and get tracking number from url. Mailinator")
+    public ArrayList<String> transitionToDeliveryPageAndGetTrackingNumFromUrlInMail() {
+        ArrayList<String> list = new ArrayList<>();
+        for (int i = 0; i < allLinkToDeliveryPage().size(); i++) {
+            allLinkToDeliveryPage().get(i).click();
+            switchTo().window(1);
+            String number = url().replaceAll(".+=([0-9]{2,}).*", "$1");
+            list.add(number);
+            closeWindow();
+            switchTo().window(0);
+            refresh();
+            openLetter(1);
+        }
+        return list;
+    }
+
+    @Step("Get tracking number. Mailinator")
+    public String getTrackingNumberFromMail() {
+        return String.valueOf(trackingNumber().getText());
+    }
+
+    @Step("Transition to delivery page ang get URL. Mailinator")
+    public String transitionToDeliveryPageAndGetUrlFromMail() {
+        linkToDeliveryPage().click();
+        switchTo().window(1);
+        String deliveryPageURL = url();
+        closeWindow();
+        switchTo().window(0);
+        return deliveryPageURL;
     }
 
     @Step("Checks text {firmName} in first company name in email. Mailinator")
@@ -122,6 +172,7 @@ public class Mailinator {
         letter(numberLetter).shouldBe(appear);
         letter(numberLetter).click();
         switchTo().frame("msg_body");
+        sleep(5000);
         return this;
     }
 
