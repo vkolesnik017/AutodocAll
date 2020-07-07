@@ -40,4 +40,28 @@ public class Main_page {
         return $x("//div[@id='login_complete']//a[@class='close']");
     }
 
+    SelenideElement registrationBtn() {
+        return $x("//a[@id='reg_pop']");
+    }
+
+    SelenideElement mailFieldInRegistration() {
+        return $x("//input[@id='email']");
+    }
+
+    SelenideElement passwordFieldInRegistration() {
+        return $x("//input[@id='Password']");
+    }
+
+    SelenideElement confirmPassFieldInRegistration() {
+        return $x("//input[@id='new_pass_confirm']");
+    }
+
+    SelenideElement registrationSubmitBtn() {
+        return $x("//a[@class='register_submit']");
+    }
+
+    SelenideElement popupSuccessAuthorization() {
+        return $x("//div[@id='login_complete']");
+    }
+
 }

@@ -1,7 +1,6 @@
 package ATD.Registration;
 
 import ATD.Main_page_Logic;
-import ATD.Search_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -38,7 +37,7 @@ public class QC_1637_RegistrationFromBasket {
         new Main_page_Logic().useSearch(ridex_82B0896)
                 .addFirstProductAndGoToCart()
                 .nextButtonClick()
-                .registrationFromCart(mail)
+                .registrationFromCartAndBackToMainPage(mail)
                 .logOuAndLoginWithUser(mail);
     }
 

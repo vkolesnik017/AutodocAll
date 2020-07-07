@@ -72,4 +72,8 @@ public class CartAccount_page {
     public SelenideElement closePopupMessageSentForChangePassword() {
         return $(byXpath("//*[@class='cart-popup']//*[contains(text(),'Um Ihr Passwort zu ändern')]/../..//a"));
     }
+
+    public SelenideElement errorPopUp() {
+        return $x("//div[@class='cart-popup js-error-popup ']");
+    }
 }
