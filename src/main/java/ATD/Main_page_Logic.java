@@ -1001,4 +1001,13 @@ public class Main_page_Logic extends Main_page {
         successBtnInPopUpPrivacyPolicy().click();
         return this;
     }
+
+    @Step("go to catalog .Main_page")
+    public Maker_car_list_page_Logic goToCatalog() {
+        searchBtnInVerticalSelector().click();
+        return page(Maker_car_list_page_Logic.class);
+    }
+
+
+
 }

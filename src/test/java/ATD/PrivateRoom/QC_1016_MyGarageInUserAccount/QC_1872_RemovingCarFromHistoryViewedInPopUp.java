@@ -1,6 +1,5 @@
 package ATD.PrivateRoom.QC_1016_MyGarageInUserAccount;
 
-import ATD.DataBase;
 import ATD.Main_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
@@ -12,13 +11,15 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_1839_AddedTruckToMyVehiclesBlock {
-    String email = "qc_1839myvehicles@mailinator.com";
+public class QC_1872_RemovingCarFromHistoryViewedInPopUp {
+    private List<String> urlOfAddedVehicle = new ArrayList<>();
 
     @BeforeClass
     void setUp() {
@@ -33,20 +34,17 @@ public class QC_1839_AddedTruckToMyVehiclesBlock {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks added truck to my vehicles block")
-    public void testChecksAddedTruckToMyVehiclesBlock(String route) throws SQLException {
+    @Description(value = "Test checks removing a car from history viewed in pop-up garage")
+    public void testChecksRemovingCarFromHistoryViewedInPopUp(String route) {
         openPage(route);
 
-        new Main_page_Logic()
-                .loginAndTransitionToProfilePlusPage(email)
-                .goToMyVehiclesBlock()
-                .openSelectorBlock()
-                .selectTruckInSelector("2242", "8959", "1012748")
-                .presenceAddedAuto()
-                .checkElementsOfAddedAuto("ASKAM (FARGO/DESOTO) AS 950 (09.2004 - ...)",new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_maker_car_list6"))
-                .comparisonOfAddedVehiclesFromMyGarageAndHeader()
-                .checkPopUpWithAddedAuto()
-                .deleteOfAddedAuto();
+        new Main_page_Logic().chooseBrandModelTypeInSelector("VW", "4644", "14881")
+                .goToCatalog()
+                .addedCurrentUrlToList(urlOfAddedVehicle)
+                .selectCarInSelector("84", "10731", "107074")
+                .addedCurrentUrlToList(urlOfAddedVehicle)
+                .checkSelectedVehicleInPopUpOfGarageIcon(urlOfAddedVehicle)
+                 .clearListOfVehicleInPopUpOfGarageIcon();
     }
 
     @AfterMethod

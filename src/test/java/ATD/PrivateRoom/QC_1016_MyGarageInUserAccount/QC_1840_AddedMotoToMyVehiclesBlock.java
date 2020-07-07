@@ -1,5 +1,6 @@
 package ATD.PrivateRoom.QC_1016_MyGarageInUserAccount;
 
+import ATD.DataBase;
 import ATD.Main_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
@@ -34,7 +35,7 @@ public class QC_1840_AddedMotoToMyVehiclesBlock {
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test checks added motorcycle to my vehicles block")
-    public void testChecksAddedMotoToMyVehiclesBlock(String route) {
+    public void testChecksAddedMotoToMyVehiclesBlock(String route) throws SQLException {
         openPage(route);
 
         new Main_page_Logic()
@@ -44,8 +45,8 @@ public class QC_1840_AddedMotoToMyVehiclesBlock {
                 .selectMotoBlockInSelector()
                  .selectVehicleInSelector("4081","12111","104173")
                  .presenceAddedAuto()
-                .checkElementsOfAddedAuto("BMW MOTORCYCLES K (05.1982 - ...)", "https://moto.autodoc.de/motorradteile/bmw-motorcycles/k?car_id=104173")
-                .checkCountOfAddedAutoInGarageIcon()
+                .checkElementsOfAddedAuto("BMW MOTORCYCLES K (05.1982 - ...)", new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_catalog6"))
+                .comparisonOfAddedVehiclesFromMyGarageAndHeader()
                 .checkPopUpWithAddedAuto()
                 .deleteOfAddedAuto();
     }
