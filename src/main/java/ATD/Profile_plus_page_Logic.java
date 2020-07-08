@@ -2,6 +2,7 @@ package ATD;
 
 import io.qameta.allure.Step;
 
+import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.page;
 
@@ -60,5 +61,12 @@ public class Profile_plus_page_Logic extends Profile_plus_page {
     public Profile_garage_page_Logic goToMyVehiclesBlock() {
         myVehiclesBlock().click();
         return page(Profile_garage_page_Logic.class);
+    }
+
+    @Step(":from. Profile_orders_page")
+    public Main_page_Logic logOutClick() {
+        new Main_page_Logic().logOutClick();
+        checkingContainsUrl("www.autodoc.de");
+        return page(Main_page_Logic.class);
     }
 }

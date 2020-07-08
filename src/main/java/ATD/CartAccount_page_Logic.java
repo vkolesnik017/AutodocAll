@@ -84,7 +84,7 @@ public class CartAccount_page_Logic extends CartAccount_page{
 
     @Step("Password recovery from popup Email already exists. CartAccount_page")
     public CartAccount_page_Logic recoveryPassFromPopUpEmailAlreadyExists(String mail) {
-        errorPopUp().shouldBe(visible);
+        errorPopUpWhenRegistering().shouldBe(visible);
         passwordRecoveryLinc().click();
         passwordRecoveryPopUp().shouldBe(visible);
         emailFieldInPasswordRecoveryPopUp().setValue(mail);
@@ -93,9 +93,15 @@ public class CartAccount_page_Logic extends CartAccount_page{
         return this;
     }
 
-    @Step("Checks text {expectedText} from popup error. CartAccount_page")
-    public CartAccount_page_Logic checkTextFromErrorPopUp(String expectedText) {
-        errorPopUp().shouldHave(text(expectedText));
+    @Step("Checks text {expectedText} from popup error when registration. CartAccount_page")
+    public CartAccount_page_Logic checkTextFromErrorPopUpWhenRegistering(String expectedText) {
+        errorPopUpWhenRegistering().shouldHave(text(expectedText));
+        return this;
+    }
+
+    @Step("Checks text {expectedText} from popup error when login. CartAccount_page")
+    public CartAccount_page_Logic checkTextFromErrorPopUpWhenLogin(String expectedText) {
+        errorPopUpWhenLogin().shouldHave(text(expectedText));
         return this;
     }
 

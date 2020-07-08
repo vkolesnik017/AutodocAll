@@ -50,7 +50,7 @@ public class QC_1924_LoginByUserLoginOnAnotherSkin {
                 .cartClick()
                 .nextButtonClick()
                 .signIn(mailForPKW, "pkwtest");
-        cartAccount_page_logic.checkTextFromErrorPopUp("Ihre E-mail wurde nicht gefunden. Bitte erstellen Sie einen neuen Account.")
+        cartAccount_page_logic.checkTextFromErrorPopUpWhenRegistering("Ihre E-mail wurde nicht gefunden. Bitte erstellen Sie einen neuen Account.")
                 .closeErrorPopup()
                 .registrationFromCart(mailForPKW)
                 .checkPresenceShippingForm()

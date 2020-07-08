@@ -42,7 +42,7 @@ public class QC_1926_LoginNegativeCase_InvalidPassword {
                 .cartClick()
                 .nextButtonClick()
                 .signIn(mail, "1111");
-        new CartAccount_page_Logic().checkTextFromErrorPopUp("E-mail und Passwort passen nicht zusammen!");
+        new CartAccount_page_Logic().checkTextFromErrorPopUpWhenRegistering("E-mail und Passwort passen nicht zusammen!");
     }
 
     @AfterMethod
