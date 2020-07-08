@@ -1,33 +1,85 @@
 package ATD;
 
 import io.qameta.allure.Step;
+import org.testng.Assert;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import static ATD.CommonMethods.waitWhileRouteBecomeExpected;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class Maker_car_list_page_Logic extends Maker_car_list_page {
 
-  @Step("Verify name route equals maker_car_list. Maker_car_list_page")
-  public Maker_car_list_page_Logic verifyNameRouteEqualsMakerCarList() {
-    waitWhileRouteBecomeExpected("maker_car_list");
-    return this;
-  }
+    @Step("Verify name route equals maker_car_list. Maker_car_list_page")
+    public Maker_car_list_page_Logic verifyNameRouteEqualsMakerCarList() {
+        waitWhileRouteBecomeExpected("maker_car_list");
+        return this;
+    }
 
-  @Step("Input text in search bar by catalog. Maker_car_list_page")
-  public Maker_car_list_page_Logic inputTextInSearchBarByCatalog(String text) {
-    new Categories_page_Logic().inputTextInSearchBarByCatalog(text);
-    return this;
-  }
+    @Step("Input text in search bar by catalog. Maker_car_list_page")
+    public Maker_car_list_page_Logic inputTextInSearchBarByCatalog(String text) {
+        new Categories_page_Logic().inputTextInSearchBarByCatalog(text);
+        return this;
+    }
 
-  @Step("Click tooltip in search by catalog by exact text. Maker_car_list_page")
-  public Category_car_list_page_Logic clickTooltipInSearchByCatalogByExactText(String exactTooltipText) {
-    new Categories_page_Logic().clickTooltipInSearchByCatalogByExactText(exactTooltipText);
-    return page(Category_car_list_page_Logic.class);
-  }
+    @Step("Click tooltip in search by catalog by exact text. Maker_car_list_page")
+    public Category_car_list_page_Logic clickTooltipInSearchByCatalogByExactText(String exactTooltipText) {
+        new Categories_page_Logic().clickTooltipInSearchByCatalogByExactText(exactTooltipText);
+        return page(Category_car_list_page_Logic.class);
+    }
 
-  @Step("Click oil filter category link. Maker_car_list_page")
-  public Category_car_list_page_Logic clickOilFilterCategoryLink() {
-    new Categories_page_Logic().clickOilFilterCategoryLink();
-    return page(Category_car_list_page_Logic.class);
-  }
+    @Step("Click oil filter category link. Maker_car_list_page")
+    public Category_car_list_page_Logic clickOilFilterCategoryLink() {
+        new Categories_page_Logic().clickOilFilterCategoryLink();
+        return page(Category_car_list_page_Logic.class);
+    }
+
+    @Step(" select car in selector . Maker_car_list_page")
+    public Maker_car_list_page_Logic selectCarInSelector(String marke, String model, String motor) {
+        selectorInCloseCondition().shouldBe(visible).click();
+        mainFormOfSelector().shouldBe(visible);
+        markeInSelector().selectOptionByValue(marke);
+        modelInSelector().selectOptionByValue(model);
+        motorInSelector().selectOptionByValue(motor);
+        btnSearchOfSelector().click();
+        mainFormOfSelector().shouldNotBe(visible);
+        return this;
+    }
+
+    @Step("added current url to list . Maker_car_list_page")
+    public Maker_car_list_page_Logic addedCurrentUrlToList(List<String> list) {
+        selectorInCloseCondition().shouldBe(visible);
+        list.add(url());
+        return this;
+    }
+
+    @Step("check selected vehicle in PopUp of garage icon . Maker_car_list_page")
+    public Maker_car_list_page_Logic checkSelectedVehicleInPopUpOfGarageIcon(List<String> list) {
+        List<String> listOfVehicleFromPopUp = new ArrayList<>();
+        garageIconInHeader().shouldBe(visible).click();
+        popUpOfGarageInHeader().shouldBe(visible);
+        for (int i = 0; i < urlsOfAddedVehicleInPopUpOfGarageInHeader().size(); i++) {
+            listOfVehicleFromPopUp.add(urlsOfAddedVehicleInPopUpOfGarageInHeader().get(i).getAttribute("href"));
+        }
+        Assert.assertEquals(getSortedList(listOfVehicleFromPopUp), getSortedList(list));
+        return this;
+    }
+
+    @Step("get sorted list . Maker_car_list_page")
+    public List<String> getSortedList(List<String> list) {
+        List<String> expectedSortedList = new ArrayList<>(list);
+        Collections.sort(expectedSortedList);
+        return expectedSortedList;
+    }
+
+    @Step("clear list of vehicle in pop-up of garage icon . Maker_car_list_page")
+    public Maker_car_list_page_Logic clearListOfVehicleInPopUpOfGarageIcon() {
+        btnClearVehicleListInPopUpOfGarageIcon().shouldBe(visible).click();
+        urlsOfAddedVehicleInPopUpOfGarageInHeader().shouldHaveSize(0);
+        return this;
+    }
 }

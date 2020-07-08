@@ -1,6 +1,10 @@
 package ATD;
 
 import io.qameta.allure.Step;
+import org.testng.Assert;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.visible;
@@ -62,6 +66,32 @@ public class Profile_plus_page_Logic extends Profile_plus_page {
         myVehiclesBlock().click();
         return page(Profile_garage_page_Logic.class);
     }
+
+    @Step("check count of added vehicles in garage at header  . Profile_plus_page")
+    public Profile_plus_page_Logic checkCountOfAddedVehiclesInGarageAtHeader(int countOfVehicle) {
+        int addedVehicle = Integer.parseInt(countOfAddedVehicleInGarageIcon().getText());
+        Assert.assertTrue(addedVehicle > countOfVehicle);
+        return this;
+    }
+
+
+    @Step("check visible added vehicle in popUp of garage in header  . Profile_plus_page")
+    public Profile_plus_page_Logic checkVisibleAddedVehicleInPopUpOfGarageHeader(int expectedSize) {
+        countOfAddedVehicleInGarageIcon().click();
+        visibleAddedVehicleInGarageAtHeader().shouldHaveSize(expectedSize);
+        garagePopUpInHeader().shouldBe(visible);
+        return this;
+    }
+
+
+    @Step("go to garage block through popUp in header by click on link More  . Profile_plus_page")
+    public Profile_garage_page_Logic goToGarageBlockThroughPopUpInHeader() {
+        linkMoreInPopUpOfGarageInHeader().shouldBe(visible).click();
+        return page(Profile_garage_page_Logic.class);
+    }
+
+
+
 
     @Step(":from. Profile_orders_page")
     public Main_page_Logic logOutClick() {

@@ -1001,4 +1001,19 @@ public class Main_page_Logic extends Main_page {
         successBtnInPopUpPrivacyPolicy().click();
         return this;
     }
+
+    @Step("Check Generic Name In Search Tooltip. Main_page")
+    public Main_page_Logic checkGenericNameInSearchTooltip(String genericName) {
+        tooltipToSearch().shouldHave(text(genericName));
+        return this;
+    }
+
+    @Step("go to catalog .Main_page")
+    public Maker_car_list_page_Logic goToCatalog() {
+        searchBtnInVerticalSelector().click();
+        return page(Maker_car_list_page_Logic.class);
+    }
+
+
+
 }

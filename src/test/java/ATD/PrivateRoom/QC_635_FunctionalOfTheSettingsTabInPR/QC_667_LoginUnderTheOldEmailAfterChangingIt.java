@@ -35,7 +35,7 @@ public class QC_667_LoginUnderTheOldEmailAfterChangingIt {
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks login with new email")
     public void testLoginWithNewEmail(String route) {
-        String newEmail = mailRandomMailinator();
+        String newEmail = mailRandomMailinator("667");
         openPage(route);
         main_page_logic.loginAndTransitionToProfilePlusPage(mail)
                 .goToSettingPage()

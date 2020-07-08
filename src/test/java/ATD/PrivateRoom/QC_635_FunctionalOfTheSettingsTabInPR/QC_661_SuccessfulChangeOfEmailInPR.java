@@ -33,7 +33,7 @@ public class QC_661_SuccessfulChangeOfEmailInPR {
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks the successful change of e-mail in PR")
     public void testForSuccessfulChangeOfEmailInPR(String route) {
-        String newEmail = mailRandomMailinator();
+        String newEmail = mailRandomMailinator("661");
         openPage(route);
         new Main_page_Logic().loginAndTransitionToProfilePlusPage(mail)
                 .goToSettingPage()

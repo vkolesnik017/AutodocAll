@@ -1196,5 +1196,11 @@ public class Listing_page_Logic extends Listing_page {
         productAddToBasketButton(brandName).click();
         return this;
     }
+
+    @Step("Scroll to element. Listing_page")
+    public Listing_page_Logic scrollToElement(SelenideElement element) {
+        element.scrollTo();
+        return this;
+    }
 }
 
