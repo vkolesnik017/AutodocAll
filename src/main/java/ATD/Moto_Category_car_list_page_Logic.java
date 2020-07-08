@@ -315,6 +315,7 @@ public class Moto_Category_car_list_page_Logic extends Moto_Category_car_list_pa
     @Step("add product to basket from an analog block .Moto_Category_car_list_page")
     public Cart_page_Logic addProductToBasketFromAnalogBlock() {
         analogProducts().get(0).hover();
+        detailsBlockOfAnalogProduct().get(0).shouldBe(visible);
         btnAddToBasketAtAnAnalogProduct().get(0).click();
         if (!basketDropMenu().isDisplayed()) {
             btnAddToBasketAtAnAnalogProduct().get(0).click();
