@@ -77,7 +77,7 @@ public class CartAccount_page {
         return $x("//div[@class='cart-popup  ']");
     }
 
-    public SelenideElement errorPopUpWhenRegistering() {
+    public SelenideElement errorPopUpWhenRegisteringAndRecovery() {
         return $x("//div[@class='cart-popup js-error-popup ']");
     }
 

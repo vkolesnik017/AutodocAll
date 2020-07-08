@@ -71,6 +71,16 @@ public class CartAccount_page_Logic extends CartAccount_page{
         return this;
     }
 
+    @Step("Checks the pop-up with the error 'E-mail not found' when recovering the password. CartAccount_page")
+    public CartAccount_page_Logic checkPopUpWithErrorWhenRecoveringPass(String mail, String expectedText) {
+        forgotPasswordLink().click();
+        emailFieldInPasswordRecoveryPopUp().setValue(mail);
+        sendBtnInPasswordRecoveryPopUp().click();
+        checkTextFromErrorPopUpWhenRegistering(expectedText);
+        closeErrorPopup();
+        return this;
+    }
+
     @Step("Login from facebook {mail}, {password}. CartAccount_page")
     public CartAddress_page_Logic signInFromFB(String mail, String pass) {
         facebookLoginBtn().click();
@@ -84,7 +94,7 @@ public class CartAccount_page_Logic extends CartAccount_page{
 
     @Step("Password recovery from popup Email already exists. CartAccount_page")
     public CartAccount_page_Logic recoveryPassFromPopUpEmailAlreadyExists(String mail) {
-        errorPopUpWhenRegistering().shouldBe(visible);
+        errorPopUpWhenRegisteringAndRecovery().shouldBe(visible);
         passwordRecoveryLinc().click();
         passwordRecoveryPopUp().shouldBe(visible);
         emailFieldInPasswordRecoveryPopUp().setValue(mail);
@@ -95,7 +105,7 @@ public class CartAccount_page_Logic extends CartAccount_page{
 
     @Step("Checks text {expectedText} from popup error when registration. CartAccount_page")
     public CartAccount_page_Logic checkTextFromErrorPopUpWhenRegistering(String expectedText) {
-        errorPopUpWhenRegistering().shouldHave(text(expectedText));
+        errorPopUpWhenRegisteringAndRecovery().shouldHave(text(expectedText));
         return this;
     }
 
