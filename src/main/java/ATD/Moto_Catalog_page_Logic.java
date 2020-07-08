@@ -361,4 +361,13 @@ public class Moto_Catalog_page_Logic extends Moto_Catalog_page {
         addAttributeOfProductToList(categoriesInHeaderCatalogThirdBlock(), catalogInHeaderList);
         return catalogInHeaderList;
     }
+
+    @Step("checking list of added vehicle in header after selected a new vehicle .Moto_Catalog_page")
+    public Moto_Catalog_page_Logic checkListOfAddedVehicleInHeaderAfterSelectedNewAuto() {
+        mainHeadline().shouldBe(visible);
+        garageIconInHeader().shouldBe(visible).click();
+        urlsOfAddedVehicleInPopUpOfGarageFromSelector().get(0).shouldBe(visible).shouldHave(attribute("href", url()));
+        radioBtnOfAddedVehicleInPopUpOfGarageFromSelector().get(0).shouldHave(attribute("checked", "true"));
+        return this;
+    }
 }

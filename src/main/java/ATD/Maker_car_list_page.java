@@ -49,4 +49,14 @@ public class Maker_car_list_page {
     }
 
     SelenideElement btnClearVehicleListInPopUpOfGarageIcon() {return $x("//div[@class='header-garage__logged-clear js-clear-recent-car']/span");}
+
+    ElementsCollection urlsOfAddedVehicleInPopUpOfGarageFromSelector() {return $$x("//div[@class='header-garage__logged-check']//a");}
+
+    ElementsCollection radioBtnOfAddedVehicleInPopUpOfGarageFromSelector() {return $$x("//input[@name='radio-car']");}
+
+    ElementsCollection mainCategoriesInHeader() {return $$x("//ul[@class='header__nav-list']/li/a");}
+
+    ElementsCollection urlsOfAddedVehicleInPopUpOfGarageWithOutAuthorization() {return $$x("//div[@class='history-cars-rows']//a[2]");}
+
+    SelenideElement garageIconInHeaderActive() {return $x("//div[@class='header-garage js-header-garage active']");}
 }
