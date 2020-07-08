@@ -525,7 +525,10 @@ public class LKW_main_page_Logic extends LKW_main_page {
             }
             currentCountry = currentLanguage().shouldBe(exist).getText();
             languageBlock().shouldBe(visible).scrollIntoView("{block: \"center\"}").click();
-            languageListBlock().shouldHave(attribute("style","visibility: visible;"));
+            if (!languageListBlock().isDisplayed()) {
+                languageBlock().click();
+            }
+            languageListBlock().shouldBe(visible);
             languagesOfSubscribe().get(i).scrollIntoView("{block: \"end\"}");
             languagesOfSubscribe().get(i).click();
             currentLanguage().shouldNotHave(exactText(currentCountry));

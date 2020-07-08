@@ -1,7 +1,11 @@
 package ATD;
 
+import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.Step;
 import org.testng.Assert;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.codeborne.selenide.Condition.*;
 
@@ -40,7 +44,7 @@ public class Profile_garage_page_Logic extends Profile_garage_page {
     }
 
     @Step("check count of added auto in garage icon .Profile_garage_page")
-    public Profile_garage_page_Logic checkCountOfAddedAutoInGarageIcon() {
+    public Profile_garage_page_Logic comparisonOfAddedVehiclesFromMyGarageAndHeader() {
         Assert.assertEquals(1, Integer.parseInt(countOfAddedAutoInGarageIcon().getText()));
         return this;
     }
@@ -79,6 +83,41 @@ public class Profile_garage_page_Logic extends Profile_garage_page {
         modelOfVehicleInSelector().shouldBe(visible).selectOptionByValue(model);
         motorOfVehicleInSelector().shouldBe(visible).selectOptionByValue(motor);
         btnSearchVehicleInSelector().click();
+        return this;
+    }
+
+    @Step("check list of added vehicle  .Profile_garage_page")
+    public Profile_garage_page_Logic checkListOfAddedVehicle(int sizeOfVehicleList) {
+        addedVehicleBlock().shouldBe(visible);
+        addedVehicleList().shouldHaveSize(sizeOfVehicleList);
+        return this;
+    }
+
+    @Step("check presence of vehicles in my garage block and header  .Profile_garage_page")
+    public Profile_garage_page_Logic checkPresenceOfVehiclesInMyGarageBlockAndHeader() {
+        List<String> idOfVehiclesFromBlock = new ArrayList<>();
+        List<String> idOfVehiclesFromHeader = new ArrayList<>();
+        addedIdOfVehicleToList(idOfVehiclesFromBlock,addedVehicleList(),"data-id");
+        countOfAddedAutoInGarageIcon().shouldBe(visible).click();
+        popUpOfGarageIcon().shouldBe(visible);
+        addedIdOfVehicleToList(idOfVehiclesFromHeader,addedAutoFromPopUpInHeader(),"for");
+
+        for (String e: idOfVehiclesFromBlock){
+            System.out.println(e);
+        }
+        System.out.println("-----------------------------");
+        for (String e: idOfVehiclesFromHeader){
+            System.out.println(e);
+        }
+      //  Assert.assertEquals(idOfVehiclesFromBlock,idOfVehiclesFromHeader);
+        return this;
+    }
+
+    @Step("added id of vehicle to list  .Profile_garage_page")
+    public Profile_garage_page_Logic addedIdOfVehicleToList(List<String> list, ElementsCollection idOfVehicle, String attribure) {
+        for (int i=0;i<idOfVehicle.size(); i++) {
+            list.add(addedVehicleList().get(i).getAttribute(attribure));
+        }
         return this;
     }
 }

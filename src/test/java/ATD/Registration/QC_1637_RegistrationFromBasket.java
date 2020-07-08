@@ -37,8 +37,8 @@ public class QC_1637_RegistrationFromBasket {
         new Main_page_Logic().useSearch(ridex_82B0896)
                 .addFirstProductAndGoToCart()
                 .nextButtonClick()
-                .registrationFromCartAndBackToMainPage(mail)
-                .logOuAndLoginWithUser(mail);
+                .registrationFromCartAndBackToMainPage("QC_1637_" + mail)
+                .logOuAndLoginWithUser("QC_1637_" + mail);
     }
 
     @AfterMethod

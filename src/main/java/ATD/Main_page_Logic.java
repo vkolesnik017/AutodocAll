@@ -108,7 +108,7 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Clicking log out in header. Main_page")
-    Main_page_Logic logOutClick() {
+    public Main_page_Logic logOutClick() {
         logoutButton().click();
         return this;
     }
@@ -1007,4 +1007,13 @@ public class Main_page_Logic extends Main_page {
         tooltipToSearch().shouldHave(text(genericName));
         return this;
     }
+
+    @Step("go to catalog .Main_page")
+    public Maker_car_list_page_Logic goToCatalog() {
+        searchBtnInVerticalSelector().click();
+        return page(Maker_car_list_page_Logic.class);
+    }
+
+
+
 }

@@ -1,7 +1,9 @@
 package ATD;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
+import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class Profile_plus_page {
@@ -33,4 +35,14 @@ public class Profile_plus_page {
     }
 
     SelenideElement myVehiclesBlock() {return $x("//li[@class='vehicle_link ']/a");}
+
+    SelenideElement countOfAddedVehicleInGarageIcon() {return $x("//span[@class='header-garage__count header-garage__count--added']");}
+
+    ElementsCollection visibleAddedVehicleInGarageAtHeader() {return $$x("//div[@class='header-garage__logged-check']");}
+
+    SelenideElement garagePopUpInHeader() {return $x("//div[@class='header-garage__logged-check']");}
+
+    SelenideElement linkMoreInPopUpOfGarageInHeader() {return $x("//div[@class='wrapper-helper']/a");}
+
+
 }

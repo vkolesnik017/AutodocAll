@@ -179,6 +179,7 @@ public class Mailinator {
     public PasswordRecovery_page_Logic clickLinkRecoveryPasswordInLetter() {
         linkInRestorePasswordLetter().click();
         switchTo().window("recovery");
+        new PasswordRecovery_page_Logic().checkPresenceContactForm();
         return page(PasswordRecovery_page_Logic.class);
     }
 
