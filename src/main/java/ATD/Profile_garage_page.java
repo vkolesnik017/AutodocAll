@@ -1,10 +1,10 @@
 package ATD;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selectors.byId;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Profile_garage_page {
 
@@ -67,4 +67,10 @@ public class Profile_garage_page {
     SelenideElement motorOfVehicleInSelector() {return $x("//form[@id='top-select-garage-moto']/div/div[2]/div[3]/select");}
 
     SelenideElement btnSearchVehicleInSelector() {return $x("//a[@class='submit search_button ripple-out']");}
+
+    SelenideElement addedVehicleBlock() {return $(byId("prof_cars"));}
+
+    ElementsCollection addedVehicleList() {return $$x("//ul[@class='list_vehicle list']/li");}
+
+    ElementsCollection addedAutoFromPopUpInHeader() {return $$x("//div[@class='header-garage__logged-check']//label");}
 }
