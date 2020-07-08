@@ -6,8 +6,7 @@ import io.qameta.allure.Step;
 import static ATD.CommonMethods.password;
 
 import static ATD.CommonMethods.mailRandom;
-import static com.codeborne.selenide.Condition.not;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.Selenide.switchTo;
 
@@ -21,6 +20,14 @@ public class CartAccount_page_Logic extends CartAccount_page{
         registrationFormPasswordInput().setValue(password);
         registrationFormNextBtnClick();
         return mail;
+    }
+
+    @Step("Check registration from cart with {mail}. CartAccount_page")
+    public CartAddress_page_Logic registrationFromCart(String mail) {
+        registrationFormEmailInput().setValue(mail);
+        registrationFormPasswordInput().setValue(password);
+        registrationFormNextBtnClick();
+        return page(CartAddress_page_Logic.class);
     }
 
     @Step("clicking Next button in registration form. CartAccount_page")
@@ -43,8 +50,8 @@ public class CartAccount_page_Logic extends CartAccount_page{
         return page(CartAddress_page_Logic.class);
     }
 
-    @Step("Check registration from cart. CartAccount_page")
-    public Main_page_Logic registrationFromCart(String mail){
+    @Step("Check registration from cart and back to Main page. CartAccount_page")
+    public Main_page_Logic registrationFromCartAndBackToMainPage(String mail){
         CartAddress_page_Logic cartAddress_page = new CartAddress_page_Logic();
         registrationFormEmailInput().setValue(mail);
         registrationFormPasswordInput().setValue(password);
@@ -64,7 +71,7 @@ public class CartAccount_page_Logic extends CartAccount_page{
         return this;
     }
 
-    @Step("Login from facebook {mail}, {password}. Login_page_mob")
+    @Step("Login from facebook {mail}, {password}. CartAccount_page")
     public CartAddress_page_Logic signInFromFB(String mail, String pass) {
         facebookLoginBtn().click();
         switchTo().window(1);
@@ -73,5 +80,28 @@ public class CartAccount_page_Logic extends CartAccount_page{
         loginBtnFB().click();
         switchTo().window(0);
         return page(CartAddress_page_Logic.class);
+    }
+
+    @Step("Password recovery from popup Email already exists. CartAccount_page")
+    public CartAccount_page_Logic recoveryPassFromPopUpEmailAlreadyExists(String mail) {
+        errorPopUp().shouldBe(visible);
+        passwordRecoveryLinc().click();
+        passwordRecoveryPopUp().shouldBe(visible);
+        emailFieldInPasswordRecoveryPopUp().setValue(mail);
+        sendingEmailBtnForPasswordChange().click();
+        closePopupMessageSentForChangePassword().click();
+        return this;
+    }
+
+    @Step("Checks text {expectedText} from popup error. CartAccount_page")
+    public CartAccount_page_Logic checkTextFromErrorPopUp(String expectedText) {
+        errorPopUp().shouldHave(text(expectedText));
+        return this;
+    }
+
+    @Step("Close error popup. CartAccount_page")
+    public CartAccount_page_Logic closeErrorPopup() {
+        closeErrorPopUpBtn().click();
+        return this;
     }
 }

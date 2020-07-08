@@ -43,7 +43,8 @@ public class QC_125_FiltersSorting_TestFilterPosition {
     public void testFilterPosition(String route) {
         openPage(route);
         String characteristic = listingPageLogic.getTextFromElement(listingPageLogic.langeFilterAttribute3());
-        listingPageLogic.clickFilterButton(listingPageLogic.langeFilterCheckbox3())
+        listingPageLogic.scrollToElement(listingPageLogic.langeFilterAttribute3())
+                        .clickFilterButton(listingPageLogic.langeFilterCheckbox3())
                         .waitUntilPreloaderDisappear()
                         .checkTextInElement(listingPageLogic.activeSideFilter3(), characteristic);
     }
