@@ -1202,5 +1202,25 @@ public class Listing_page_Logic extends Listing_page {
         element.scrollTo();
         return this;
     }
+
+    @Step("Click brand button in filter with given brand name. Listing_page")
+    public Listing_page_Logic clickBrandButtonInFilter(String brandName) {
+        while (!brandButtonInFilterWithGivenNameLKWRoute(brandName).is(visible)) {
+            nextButtonInBrandFilter().click();
+        }
+        brandButtonInFilterWithGivenNameLKWRoute(brandName).click();
+        waitUntilPreloaderDisappear();
+        return this;
+    }
+
+    @Step("Check generic and OEM number. Listing_page")
+    public Product_page_Logic checkGenericAndArticleAndOEMnumberAndGoToProductPage(String brandName, String genericName, String articleName, String oemHighlightNumber) {
+        listProducts().shouldBe(visible);
+        productName(brandName).shouldHave(text(genericName));
+        productArticle(brandName).shouldHave(text(articleName));
+        productOEMnumber(brandName).shouldHave(text(oemHighlightNumber));
+        productName(brandName).click();
+        return page(Product_page_Logic.class);
+    }
 }
 
