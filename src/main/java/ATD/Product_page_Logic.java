@@ -503,7 +503,7 @@ public class Product_page_Logic extends Product_page {
 
     @Step("Check Faq Validation With Mail. Product_page")
     public Product_page_Logic faqValidationWithMail() {
-        faqEmailInput().sendKeys("test@mailinator.com");
+        faqEmailInput().sendKeys("QC_707_autotestMail@mailinator.com");
         faqSubmitButton().click();
         faqPopupText().shouldHave(text("Fehler"));
         faqPopupClose().click();
