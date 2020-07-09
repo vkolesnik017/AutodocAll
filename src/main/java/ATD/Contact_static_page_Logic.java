@@ -55,7 +55,6 @@ public class Contact_static_page_Logic extends Contact_static_page {
     @Step("Checks for the presence of a Contacts block and elements inside it. Contact_static_page")
     public Contact_static_page_Logic checkContactsBlock() {
         contactBlock().shouldBe(visible);
-        logoBlock().shouldBe(visible);
         infoDescriptionBlock().shouldBe(visible);
         addressBlock().shouldBe(visible);
         addressField().shouldBe(visible);

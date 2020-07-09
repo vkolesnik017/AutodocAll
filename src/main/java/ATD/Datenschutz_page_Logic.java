@@ -10,7 +10,6 @@ public class Datenschutz_page_Logic extends Datenschutz_page {
     @Step("Checks items on a page. Datenschutz_page")
     public Datenschutz_page_Logic checkItemsOnPage() {
         titlePage().shouldBe(visible);
-        logo().shouldBe(visible);
         mainBlock().shouldBe(visible);
         return this;
     }

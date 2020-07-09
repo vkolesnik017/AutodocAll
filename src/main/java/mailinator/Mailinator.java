@@ -63,7 +63,7 @@ public class Mailinator {
     }
 
     private SelenideElement linkToDeliveryPage() {
-        return $x("//td[@class='content__cell']//a");
+        return $x("//div[@style='background-color: white ; padding: 15px']//a");
     }
 
     private ElementsCollection allLinkToDeliveryPage() {
@@ -71,7 +71,7 @@ public class Mailinator {
     }
 
     private SelenideElement trackingNumber() {
-        return $x("//td[@class='content__cell']//div//b[2]");
+        return $x("//div[@style='background-color: white ; padding: 15px']//b[2]");
     }
 
 

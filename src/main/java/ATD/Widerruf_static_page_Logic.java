@@ -10,7 +10,6 @@ public class Widerruf_static_page_Logic extends Widerruf_static_page {
     @Step("Checks items. Widerruf_static_page")
     public Widerruf_static_page_Logic checkItemsOnPage(){
         title().shouldBe(visible);
-        logo().shouldBe(visible);
         mainBlock().shouldBe(visible);
         emailLink1().shouldBe(clickable);
         emailLink2().shouldBe(clickable);
