@@ -157,6 +157,7 @@ public class CommonMethods {
 
     //Method checking follow url
     public void checkingUrl(String expectedUrl) {
+        waitingWhileLinkBecomeExpected(expectedUrl);
         String actualUrl = url();
         Assert.assertEquals(actualUrl, expectedUrl);
         back();
