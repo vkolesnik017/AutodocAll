@@ -1,0 +1,50 @@
+package ATD.Listings.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults;
+
+
+import ATD.Listing_page_Logic;
+import ATD.Main_page_Logic;
+import ATD.SetUp;
+import io.qameta.allure.Description;
+import io.qameta.allure.Flaky;
+import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import java.sql.SQLException;
+
+import static ATD.CommonMethods.openPage;
+import static ATD.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Selenide.close;
+
+public class QC_1318_TestProductAbsenceInSearchByMainGenericIfDynamicGenericFitsCar {
+
+    private Listing_page_Logic listingPageLogic = new Listing_page_Logic();
+
+    @BeforeClass
+    void setUp() {
+        setUpBrowser(false, "chrome", "77.0");
+    }
+
+    @DataProvider(name = "routes", parallel = true)
+    Object[] dataProvider() throws SQLException {
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_maker_car_list7");
+    }
+
+    @Test(dataProvider = "routes")
+    @Flaky
+    @Owner(value = "Romaniuta")
+    @Description(value = "Test Checks Product Absence In Search By Main Generic If Dynamic Generic Fits Car")
+    public void testProductAbsenceInSearchByMainGenericIfDynamicGenericFitsCar(String route) {
+        openPage(route);
+        new Main_page_Logic().useSearch("Ölfilter");
+        listingPageLogic.clickBrandButtonInFilter("UFI")
+                        .checkProductTitleOnListing("25.406.01", false, listingPageLogic.productArticlesInListing());
+    }
+
+    @AfterMethod
+    public void tearDown() {
+        close();
+    }
+}

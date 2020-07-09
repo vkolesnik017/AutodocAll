@@ -525,7 +525,10 @@ public class LKW_main_page_Logic extends LKW_main_page {
             }
             currentCountry = currentLanguage().shouldBe(exist).getText();
             languageBlock().shouldBe(visible).scrollIntoView("{block: \"center\"}").click();
-            languageListBlock().shouldHave(attribute("style","visibility: visible;"));
+            if (!languageListBlock().isDisplayed()) {
+                languageBlock().click();
+            }
+            languageListBlock().shouldBe(visible);
             languagesOfSubscribe().get(i).scrollIntoView("{block: \"end\"}");
             languagesOfSubscribe().get(i).click();
             currentLanguage().shouldNotHave(exactText(currentCountry));
@@ -544,4 +547,12 @@ public class LKW_main_page_Logic extends LKW_main_page {
         return this;
     }
 
+    @Step("Select truck in vertical selector. LKW_main_page")
+    public LKW_maker_car_list_Logic selectTruckInVerticalSelector(String markeOfTruck, String modelOfTruck, String motorOfTruck) {
+        markeOfVerticalTruckSelector().selectOptionByValue(markeOfTruck);
+        modelOfVerticalTruckSelector().selectOptionByValue(modelOfTruck);
+        motorOfVerticalTruckSelector().selectOptionByValue(motorOfTruck);
+        buttonSuchenOfVerticaltruckSelectorMainPage().click();
+        return page(LKW_maker_car_list_Logic.class);
+    }
 }

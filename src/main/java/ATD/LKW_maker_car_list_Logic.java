@@ -182,4 +182,18 @@ public class LKW_maker_car_list_Logic extends LKW_maker_car_list {
         return this;
     }
 
+    @Step("checking list of added vehicle in header after selected a new vehicle .LKW_maker_car_list")
+    public LKW_maker_car_list_Logic checkListOfAddedVehicleInHeaderAfterSelectedNewAuto() {
+        mainHeadline().shouldBe(visible);
+        garageIconInHeader().shouldBe(visible).click();
+        urlsOfAddedVehicleInPopUpOfGarageFromSelector().get(0).shouldBe(visible).shouldHave(attribute("href", url()));
+        radioBtnOfAddedVehicleInPopUpOfGarageFromSelector().get(0).shouldHave(attribute("checked", "true"));
+        return this;
+    }
+
+    @Step("select motorcycle block in header .LKW_maker_car_list")
+    public Moto_main_page_Logic selectMotoBlock() {
+        mainCategoriesInHeader().get(1).shouldBe(visible).click();
+        return page(Moto_main_page_Logic.class);
+    }
 }

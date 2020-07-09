@@ -33,7 +33,7 @@ public class QC_671_ChangeEmail_ConfirmEmailFieldIsEmpty {
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks the email change with empty field Confirm email")
     public void testFieldConfirmEmailAreEmpty(String route) {
-        String newEmail = mailRandomMailinator();
+        String newEmail = mailRandomMailinator("671");
         openPage(route);
         new Main_page_Logic().loginAndTransitionToProfilePlusPage(mail)
                 .goToSettingPage()

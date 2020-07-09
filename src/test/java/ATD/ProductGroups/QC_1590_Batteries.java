@@ -35,7 +35,7 @@ public class QC_1590_Batteries {
     @Description(value = "Test check making order with batteries product")
     @Flaky
     public void checkingOrderWithBatteries(String route) {
-        String testMail = "atdautotest_qasys_75_ridex@mailinator.com";
+        String testMail = "QC_1590_autotestATD@mailinator.com";
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
         new Search_page_Logic().addFirstProductAndGoToCart()

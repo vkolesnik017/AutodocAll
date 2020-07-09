@@ -11,7 +11,7 @@ public class ListingTecDocSoft404_page_Logic extends ListingTecDocSoft404_page {
 
   @Step("Fill in form and send request. ListingTecDocSoft404_page")
   public ListingTecDocSoft404_page sendRequestForm() {
-    emailForm().setValue("testatd@gmail.com");
+    emailForm().setValue("QC_479_autotestMail@mailinator.com");
     newsletterSubscriptionCheckbox().click();
     submitBtn().click();
     successPopupAfterSubscribeOnProductsForCar().shouldHave(text("Mit großer Freude informieren wir Sie, sobald die Produkte auf Lager sind"));

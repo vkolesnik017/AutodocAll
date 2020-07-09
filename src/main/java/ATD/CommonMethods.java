@@ -135,10 +135,10 @@ public class CommonMethods {
     }
 
     @Step("Generates random email on @mailinator.com")
-    public static String mailRandomMailinator() {
+    public static String mailRandomMailinator(String QCnumber) {
         Random randomGenerator = new Random();
         int random = randomGenerator.nextInt();
-        return "autotestMail" + random + "@mailinator.com";
+        return "QC_" + QCnumber + "_autotestMail" + random + "@mailinator.com";
     }
 
     @Step("Get currency {nameLocator} and verify")

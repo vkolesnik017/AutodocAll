@@ -6,6 +6,7 @@ import org.testng.Assert;
 import java.util.ArrayList;
 import java.util.List;
 
+import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.page;
 
@@ -91,4 +92,11 @@ public class Profile_plus_page_Logic extends Profile_plus_page {
 
 
 
+
+    @Step(":from. Profile_orders_page")
+    public Main_page_Logic logOutClick() {
+        new Main_page_Logic().logOutClick();
+        checkingContainsUrl("www.autodoc.de");
+        return page(Main_page_Logic.class);
+    }
 }

@@ -82,4 +82,14 @@ class LKW_maker_car_list {
     SelenideElement imageOfBrandInMainHeadline() {return $x("//div[@class='catalog-title__block']/img");}
 
     SelenideElement mainHeadline() {return $x("//div[@class='catalog-title__block']/h2");}
+
+    SelenideElement garageIconInHeader() {
+        return $x("//div[@class='header-garage js-header-garage']");
+    }
+
+    ElementsCollection urlsOfAddedVehicleInPopUpOfGarageFromSelector() {return $$x("//div[@class='header-garage__logged-check']//a");}
+
+    ElementsCollection radioBtnOfAddedVehicleInPopUpOfGarageFromSelector() {return $$x("//input[@name='radio-car']");}
+
+    ElementsCollection mainCategoriesInHeader() {return $$x("//ul[@class='header__nav-list']/li/a");}
 }
