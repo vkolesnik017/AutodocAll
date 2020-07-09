@@ -28,11 +28,11 @@ public class CartAccount_page {
     }
 
     // locators in login form
-    SelenideElement emailFieldInLoginForm() {
+    public SelenideElement emailFieldInLoginForm() {
         return $(byXpath("//*[@class='loginForm']//*[@id='form_Email']"));
     }
 
-    SelenideElement passwordFieldInLoginForm() {
+    public SelenideElement passwordFieldInLoginForm() {
         return $(byXpath("//*[@class='loginForm']//*[@id='form_Password']"));
     }
 
@@ -40,7 +40,7 @@ public class CartAccount_page {
         return $(byCssSelector(".signin-user-box-form__recovery>a"));
     }
 
-    SelenideElement loginButton() {
+    public SelenideElement loginButton() {
         return $(byCssSelector(".login"));
     }
 
@@ -73,7 +73,11 @@ public class CartAccount_page {
         return $(byXpath("//*[@class='cart-popup']//*[contains(text(),'Um Ihr Passwort zu ändern')]/../..//a"));
     }
 
-    public SelenideElement errorPopUp() {
+    SelenideElement errorPopUpWhenLogin() {
+        return $x("//div[@class='cart-popup  ']");
+    }
+
+    public SelenideElement errorPopUpForRegisteringAndRecovery() {
         return $x("//div[@class='cart-popup js-error-popup ']");
     }
 

@@ -25,6 +25,6 @@ class Widerruf_static_page {
     }
 
     SelenideElement emailLink2() {
-        return $(By.xpath("//*[@class='serv-attention']/p[16]/a"));
+        return $(By.xpath("//*[@class='serv-attention']/p[17]/a"));
     }
 }

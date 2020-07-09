@@ -43,7 +43,7 @@ public class QC_1596_Illiquid {
         String[] url = idAndBrand.split("#");
         String shop = getShopFromRoute(route);
         openPage(route + "/" + url[1] + "/" + url[0]);
-        String testMail = "atdautotest_qasys_81_Illiquid@mailinator.com";
+        String testMail = "QC_1596_autotest@mailinator.com";
         new Product_page_Logic().addProductToCart().closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()

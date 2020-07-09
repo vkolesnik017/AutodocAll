@@ -4,6 +4,7 @@ import io.qameta.allure.Step;
 import org.testng.Assert;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class Index_chemicals_page_Logic extends Index_chemicals_page {
 
@@ -85,6 +86,7 @@ public class Index_chemicals_page_Logic extends Index_chemicals_page {
 
     @Step("Checking presence seo top categories block. Index_chemicals_page")
     public Index_chemicals_page_Logic checkingPresenceSeoTopCategoriesBlock() {
+        lastSeparateCategoryInMainCatalogCategories().scrollTo();
         seoBlockTopCategories().shouldBe(visible);
         return this;
     }
@@ -104,15 +106,12 @@ public class Index_chemicals_page_Logic extends Index_chemicals_page {
     public Index_chemicals_page_Logic checkWorkBtnMoreAndLessInTopCategoryBlock() {
         elevenCategoryInTopCategoriesBlock().shouldNotBe(visible);
         btnMoreInTopCategoriesBlock().click();
+        sleep(2000);
         elevenCategoryInTopCategoriesBlock().shouldBe(visible);
         btnLessInTopCategoriesBlock().click();
         elevenCategoryInTopCategoriesBlock().shouldNotBe(visible);
         return this;
     }
-
-
-
-
 
 
 

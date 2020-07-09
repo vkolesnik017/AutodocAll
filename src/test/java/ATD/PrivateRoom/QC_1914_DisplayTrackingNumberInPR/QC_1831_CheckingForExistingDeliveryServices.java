@@ -21,7 +21,7 @@ import static com.codeborne.selenide.Selenide.close;
 
 public class QC_1831_CheckingForExistingDeliveryServices {
 
-    private String mail = "QC_1831_autotest@mailinator.com", orderNumber, deliveryPageURL, deliveryPageUrlFromMail,
+    private String orderNumber, deliveryPageURL, deliveryPageUrlFromMail,
             trackingNumFromAWS, trackingNumFromPR, trackingNumFromMail;
     private Main_page_Logic main_page_logic = new Main_page_Logic();
     private Profile_orders_page_Logic profile_orders_page_logic = new Profile_orders_page_Logic();
@@ -50,6 +50,7 @@ public class QC_1831_CheckingForExistingDeliveryServices {
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks existing delivery services")
     public void testCheckingForExistingDeliveryServices(String deliveryService) throws SQLException {
+        String mail = dataBase.getMail(deliveryService);
         openPage(dataBase.getFullRouteByRouteName("prod", "DE", "main"));
         main_page_logic.loginAndTransitionToProfilePlusPage(mail)
                 .goToMyOrdersPage()
@@ -81,7 +82,8 @@ public class QC_1831_CheckingForExistingDeliveryServices {
                 .checkPresenceDeliveryStatusBlock()
                 .getTrackingNum();
         Assert.assertEquals(trackingNumFromAWS, trackingNumFromPR);
-        deliveryPageURL = profile_orders_page_logic.checkNumberDeliveryServiceAdded(1).transitionToDeliveryPageAndGetURL();
+        deliveryPageURL = profile_orders_page_logic.checkNumberDeliveryServiceAdded(1)
+                .transitionToDeliveryPageAndGetURL();
         trackingNumFromMail = mailinator.openEmail(mail)
                 .openLetter(1)
                 .getTrackingNumberFromMail();

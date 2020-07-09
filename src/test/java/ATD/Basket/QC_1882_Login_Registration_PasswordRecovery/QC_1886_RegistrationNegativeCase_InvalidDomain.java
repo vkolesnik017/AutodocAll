@@ -40,7 +40,7 @@ public class QC_1886_RegistrationNegativeCase_InvalidDomain {
                 .cartClick()
                 .nextButtonClick()
                 .registrationFromCart("any@test.com.");
-        new CartAccount_page_Logic().checkTextFromErrorPopUp("Das Feld E-mail muss eine gültige E-Mail-Adresse enthalten.");
+        new CartAccount_page_Logic().checkTextFromErrorPopUpForRegisteringAndRecovery("Das Feld E-mail muss eine gültige E-Mail-Adresse enthalten.");
     }
 
     @AfterMethod

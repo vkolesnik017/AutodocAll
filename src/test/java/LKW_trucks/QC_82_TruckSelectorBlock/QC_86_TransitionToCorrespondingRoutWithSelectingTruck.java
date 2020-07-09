@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
+import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
@@ -30,11 +31,11 @@ public class QC_86_TransitionToCorrespondingRoutWithSelectingTruck {
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test checks transition to corresponding route with selecting truck")
-    public void testChecksTransitionToCorrespondingRoutWithSelectingTruckParentCategory(String route) {
+    public void testChecksTransitionToCorrespondingRoutWithSelectingTruckParentCategory(String route) throws SQLException {
         openPage(route);
         new LKW_Parent_Category_page_Logic()
-                .selectTruckInSelector("24", "714", "1004434")
-                .checkSuccessfullyMakerCarListPageLoading("https://lkwteile.autodoc.de/lastkraftwagen/daf/45?car_id=1004434");
+                .selectTruckInSelector("24", "714", "1004434");
+        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "lkw_maker_car_list4"));
     }
 
     @DataProvider(name = "routesCategory", parallel = true)
@@ -96,12 +97,11 @@ public class QC_86_TransitionToCorrespondingRoutWithSelectingTruck {
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test checks transition to corresponding route with selecting truck")
-    public void testChecksTransitionToCorrespondingRoutWithSelectingTruckCategories(String route) {
+    public void testChecksTransitionToCorrespondingRoutWithSelectingTruckCategories(String route) throws SQLException {
         openPage(route);
         new LKW_Categories_page_Logic()
-                .selectTruckInSelector("24", "714", "1004434")
-                .checkSuccessfullyMakerCarListPageLoading("https://lkwteile.autodoc.de/lastkraftwagen/daf/45?car_id=1004434");
-
+                .selectTruckInSelector("24", "714", "1004434");
+        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "lkw_maker_car_list4"));
     }
 
     @DataProvider(name = "routesMakers", parallel = true)
@@ -130,12 +130,11 @@ public class QC_86_TransitionToCorrespondingRoutWithSelectingTruck {
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test checks transition to corresponding route with selecting truck")
-    public void testChecksTransitionToCorrespondingRoutWithSelectingTruckCategoriesMaker(String route) {
+    public void testChecksTransitionToCorrespondingRoutWithSelectingTruckCategoriesMaker(String route) throws SQLException {
         openPage(route);
         new LKW_Categories_maker_page_Logic()
-                .selectTruckInSelector("74", "1587", "1000784")
-                .checkSuccessfullyMakerCarListPageLoading("https://lkwteile.autodoc.de/lastkraftwagen/mercedes-benz/actros?car_id=1000784");
-
+                .selectTruckInSelector("74", "1587", "1000784");
+        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "lkw_category_car_list11"));
     }
 
 
@@ -148,11 +147,11 @@ public class QC_86_TransitionToCorrespondingRoutWithSelectingTruck {
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test checks transition to corresponding route with selecting truck")
-    public void testChecksTransitionToCorrespondingRoutWithSelectingTruckCategoriesMain(String route) {
+    public void testChecksTransitionToCorrespondingRoutWithSelectingTruckCategoriesMain(String route) throws SQLException {
         openPage(route);
         new LKW_main_page_Logic()
-                .selectTruckInSelector("2242", "8959", "1012748")
-                .checkSuccessfullyPageLoading("https://lkwteile.autodoc.de/lastkraftwagen/askam-fargo-desoto/as-950?car_id=1012748");
+                .selectTruckInSelector("2242", "8959", "1012748");
+        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "lkw_maker_car_list6"));
 
     }
 

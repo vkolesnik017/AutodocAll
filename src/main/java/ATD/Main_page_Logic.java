@@ -1014,6 +1014,19 @@ public class Main_page_Logic extends Main_page {
         return page(Maker_car_list_page_Logic.class);
     }
 
+    @Step("click on my garage icon withOut authorization . Main_page")
+    public Main_page_Logic openSelectorFromMyGarageBlock() {
+        btnAddedAutoInPopUpOfMyGarageBlock().shouldBe(visible).click();
+        selectorFromMyGarageBlock().shouldBe(visible);
+        return this;
+    }
 
-
+    @Step("select vehicle in selector of my garage . Main_page")
+    public Maker_car_list_page_Logic selectVehicleInSelectorOfMyGarage(String marke, String model, String motor) {
+        brandSelectorInVerticalCarSelector().shouldBe(visible).selectOptionByValue(marke);
+        modelSelectorInVerticalCarSelector().selectOptionByValue(model);
+        typeSelectorInVerticalCarSelector().selectOptionByValue(motor);
+        btnSearchOfSelectorFromMyGarage().click();
+        return page(Maker_car_list_page_Logic.class);
+    }
 }

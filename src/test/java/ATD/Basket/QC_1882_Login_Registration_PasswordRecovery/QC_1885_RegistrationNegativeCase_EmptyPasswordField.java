@@ -46,7 +46,7 @@ public class QC_1885_RegistrationNegativeCase_EmptyPasswordField {
                 .nextButtonClick();
         cartAccount_page_logic.registrationFormEmailInput().setValue("QC_1885_" + mail);
         cartAccount_page_logic.registrationFormNextBtnClick();
-        cartAccount_page_logic.errorPopUp().shouldBe(visible);
+        cartAccount_page_logic.errorPopUpForRegisteringAndRecovery().shouldBe(visible);
     }
 
     @AfterMethod

@@ -164,4 +164,12 @@ public class Moto_Catalog_page {
     ElementsCollection categoriesInHeaderCatalogSecondBlock() {return $$x("//div[@class='menu-category__2-block']//a");}
 
     ElementsCollection categoriesInHeaderCatalogThirdBlock() {return $$x("//div[@class='menu-category__3-block']//a");}
+
+    SelenideElement garageIconInHeader() {
+        return $x("//div[@class='header-garage js-header-garage']");
+    }
+
+    ElementsCollection urlsOfAddedVehicleInPopUpOfGarageFromSelector() {return $$x("//div[@class='header-garage__logged-check']//a");}
+
+    ElementsCollection radioBtnOfAddedVehicleInPopUpOfGarageFromSelector() {return $$x("//input[@name='radio-car']");}
 }

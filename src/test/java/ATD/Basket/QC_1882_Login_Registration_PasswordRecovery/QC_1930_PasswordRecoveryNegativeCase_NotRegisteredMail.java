@@ -1,6 +1,5 @@
 package ATD.Basket.QC_1882_Login_Registration_PasswordRecovery;
 
-import ATD.CartAccount_page_Logic;
 import ATD.Product_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
@@ -13,13 +12,12 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
+import static ATD.CommonMethods.mailRandomMailinator;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_1926_LoginNegativeCase_InvalidPassword {
-
-    private String mail = "QC_1926_autotestATD@mailinator.com";
+public class QC_1930_PasswordRecoveryNegativeCase_NotRegisteredMail {
 
     @BeforeClass
     void setUp() {
@@ -34,15 +32,15 @@ public class QC_1926_LoginNegativeCase_InvalidPassword {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks the login with invalid password")
-    public void testLoginNegativeCase_InvalidPassword(String route) throws SQLException {
+    @Description(value = "Test checks password recovery by entering not registered in the system email.")
+    public void testPasswordRecoveryNegativeCase_NotRegisteredMail(String route) throws SQLException {
+        String mail = mailRandomMailinator("1930");
         openPage(route);
         new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
-                .signIn(mail, "1111");
-        new CartAccount_page_Logic().checkTextFromErrorPopUpForRegisteringAndRecovery("E-mail und Passwort passen nicht zusammen!");
+                .checkPopUpWithErrorWhenRecoveringPass(mail, "Ihre E-mail wurde nicht gefunden.Bitte erstellen Sie einen neuen Account");
     }
 
     @AfterMethod

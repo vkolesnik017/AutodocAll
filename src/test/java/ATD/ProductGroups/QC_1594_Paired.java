@@ -41,7 +41,7 @@ public class QC_1594_Paired {
     public void checkingOrderWithPaired(String route) throws SQLException {
         String shop = getShopFromRoute(route);
         openPage(route + "/" + new DataBase().getRouteByRouteName(shop, "search8"));
-        String testMail = "atdautotest_qasys_80_paired@mailinator.com";
+        String testMail = "QC_1594_autotestATD@mailinator.com";
         new Search_page_Logic().counterIncreaseForPaired("2").counterDecreaseForPaired("4").closeFooterMessageCookies().detailsClick()
                 .counterIncreaseForPaired("2").counterDecreaseForPaired("4").counterIncreaseForPaired("2").addProductToCart().closePopupOtherCategoryIfYes().checkingNumberOfProductInCart(4).cartClick()
                 .counterIncreaseForPaired("4").counterDecreaseForPaired("6").nextButtonClick()

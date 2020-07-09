@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selenide.page;
 
 public class Profile_garage_page_Logic extends Profile_garage_page {
 
@@ -95,29 +96,27 @@ public class Profile_garage_page_Logic extends Profile_garage_page {
 
     @Step("check presence of vehicles in my garage block and header  .Profile_garage_page")
     public Profile_garage_page_Logic checkPresenceOfVehiclesInMyGarageBlockAndHeader() {
-        List<String> idOfVehiclesFromBlock = new ArrayList<>();
-        List<String> idOfVehiclesFromHeader = new ArrayList<>();
-        addedIdOfVehicleToList(idOfVehiclesFromBlock,addedVehicleList(),"data-id");
+        List<Integer> idOfVehiclesFromBlock = new ArrayList<>();
+        List<Integer> idOfVehiclesFromHeader = new ArrayList<>();
+        addedIdOfVehicleToList(idOfVehiclesFromBlock, addedVehicleList(), "data-id");
         countOfAddedAutoInGarageIcon().shouldBe(visible).click();
         popUpOfGarageIcon().shouldBe(visible);
-        addedIdOfVehicleToList(idOfVehiclesFromHeader,addedAutoFromPopUpInHeader(),"for");
-
-        for (String e: idOfVehiclesFromBlock){
-            System.out.println(e);
-        }
-        System.out.println("-----------------------------");
-        for (String e: idOfVehiclesFromHeader){
-            System.out.println(e);
-        }
-      //  Assert.assertEquals(idOfVehiclesFromBlock,idOfVehiclesFromHeader);
+        addedIdOfVehicleToList(idOfVehiclesFromHeader, addedAutoFromPopUpInHeader(), "for");
+        Assert.assertEquals(idOfVehiclesFromBlock, idOfVehiclesFromHeader);
         return this;
     }
 
     @Step("added id of vehicle to list  .Profile_garage_page")
-    public Profile_garage_page_Logic addedIdOfVehicleToList(List<String> list, ElementsCollection idOfVehicle, String attribure) {
-        for (int i=0;i<idOfVehicle.size(); i++) {
-            list.add(addedVehicleList().get(i).getAttribute(attribure));
+    public Profile_garage_page_Logic addedIdOfVehicleToList(List<Integer> list, ElementsCollection idOfVehicle, String attribure) {
+        for (int i = 0; i < idOfVehicle.size(); i++) {
+            list.add(Integer.parseInt(idOfVehicle.get(i).shouldBe(visible).getAttribute(attribure)));
         }
         return this;
+    }
+
+     @Step("check list of added vehicle  .Profile_garage_page")
+    public Main_page_Logic transitionToMainPage() {
+         mainLogoInHeader().click();
+        return page(Main_page_Logic.class);
     }
 }

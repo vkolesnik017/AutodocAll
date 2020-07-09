@@ -72,5 +72,7 @@ public class Profile_garage_page {
 
     ElementsCollection addedVehicleList() {return $$x("//ul[@class='list_vehicle list']/li");}
 
-    ElementsCollection addedAutoFromPopUpInHeader() {return $$x("//div[@class='header-garage__logged-check']//label");}
+    ElementsCollection addedAutoFromPopUpInHeader() {return $$x("//div[@class='wrapper-radio']/label");}
+
+    SelenideElement mainLogoInHeader() {return $x("//a[@class='header__logo-main']/img");}
 }

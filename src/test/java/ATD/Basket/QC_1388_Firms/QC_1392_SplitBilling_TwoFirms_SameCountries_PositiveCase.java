@@ -49,7 +49,6 @@ public class QC_1392_SplitBilling_TwoFirms_SameCountries_PositiveCase {
     public void testSuccessfulPlacementOfOrder_SplitBilling_TwoFirm_EN(String routeEN) {
         vatForGB = new PageVAT_aws().getVatForGB();
         openPage(routeEN);
-        String shop = getCurrentShopFromJSVarInHTML();
         priceWithVatPerAllDataPageGB = product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
