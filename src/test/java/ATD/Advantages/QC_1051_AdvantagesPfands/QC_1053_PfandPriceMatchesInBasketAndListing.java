@@ -39,7 +39,7 @@ public class QC_1053_PfandPriceMatchesInBasketAndListing {
     @Owner(value = "Chelombitko")
     @Description(value = "Compare the price of pfand on listing and in basket")
     public void testPfandPriceMatchesOnListingAndBasket(String route){
-        String testMail = "atdautotest_qasys_569_advantagespfands@mailinator.com";
+        String testMail = "QC_1053_autotestATD@mailinator.com";
         openPage(route);
         listing_page.goToFirstPfandProduct()
                 .addProductToCart()

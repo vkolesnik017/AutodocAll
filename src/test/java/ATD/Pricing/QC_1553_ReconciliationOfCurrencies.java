@@ -14,8 +14,7 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.getCurrentShopFromJSVarInHTML;
-import static ATD.CommonMethods.openPage;
+import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
@@ -24,8 +23,7 @@ public class QC_1553_ReconciliationOfCurrencies {
 
     // productsId: accessory, chemistry, tool, oil, ordinary product
     private String[] productsId = {"988236", "13558633", "15735664", "13626328", "7831937" }; //TODO будем ли выносить в базу id товаров для теста ?
-    private String emailForAnotherShop = "reconciliationOfCurrencies@mailinator.com";
-    private String password = "1234";
+    private String emailForAnotherShop = "QC_1553_autotestATD@mailinator.com";
 
     private Product_page_Logic product_page_logic = new Product_page_Logic();
 
@@ -83,7 +81,7 @@ public class QC_1553_ReconciliationOfCurrencies {
                 .checkCurrencyOnAllDataPage(shop);
     }
 
-    @DataProvider(name = "routeAndProductsIdForCH", parallel = true)
+    @DataProvider(name = "routeAndProductsIdForCH", parallel = false)
     Object[] dataProviderForCH() throws SQLException {
         return new SetUp().setUpShopWithListParam("prod", "CH", productsId);
     }
@@ -95,7 +93,7 @@ public class QC_1553_ReconciliationOfCurrencies {
     public void testReconciliationOfCurrenciesForCH(String routeAndProductId) throws SQLException {
         String route = routeAndProductId.split("_")[0];
         String productId = routeAndProductId.split("_")[1];
-        String emailForCH = "reconciliationOfCurrenciesCH@mailinator.com";
+        String emailForCH = "QC_1553_autotestATD_CH@mailinator.com";
         openPage(route + "/a/" + productId);
         String shop = getCurrentShopFromJSVarInHTML();
         product_page_logic.CompareCurrencyOnProductPageAndInBasketPopup(shop).cartClick().makePriceForMinimumOrderForCH(shop);

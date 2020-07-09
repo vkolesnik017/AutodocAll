@@ -19,7 +19,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class QC_1015_GrayButtonOnSearchPage {
 
-    private String email = "CheckGrayButton@mailinator.com";
+    private String email = "QC_1015_autotestATD@mailinator.com";
 
     private Mailinator mailinator = new Mailinator();
     private WishlistReminderAvailability_aws wishlistReminderAvailability = new WishlistReminderAvailability_aws();
