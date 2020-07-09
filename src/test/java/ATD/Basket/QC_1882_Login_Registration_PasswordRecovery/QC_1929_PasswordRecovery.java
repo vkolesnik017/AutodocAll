@@ -56,13 +56,14 @@ public class QC_1929_PasswordRecovery {
                 .nameOfClient().shouldBe(visible);
         checkingContainsUrl("services/plus-service");
         new Profile_plus_page_Logic().logOutClick();
+        close();
         openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "product32"));
         product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
                 .signIn(mail, password);
-        new CartAccount_page_Logic().checkTextFromErrorPopUpWhenLogin("E-mail und Passwort passen nicht zusammen!")
+        new CartAccount_page_Logic().checkTextFromErrorPopUpForRegisteringAndRecovery("E-mail und Passwort passen nicht zusammen!")
                 .closeErrorPopup()
                 .signIn(mail, newPassword);
         checkingContainsUrl("basket/address");

@@ -27,7 +27,7 @@ public class QC_1567_TransitionFromBlockOfSocialNetworks {
     }
 
     @Flaky
-    @Owner(value = "alex_qa")
+    @Owner(value = "Chelombitko")
     @Test(dataProvider = "route", enabled = true)
     @Description(value = "Test check social network links transitions")
     public void checkingSocialNetworks(String route) {
