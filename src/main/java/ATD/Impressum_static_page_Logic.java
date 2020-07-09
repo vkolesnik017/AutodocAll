@@ -10,7 +10,6 @@ public class Impressum_static_page_Logic extends Impressum_static_page {
 
     @Step("Checks for items. Impressum_static_page")
     public Impressum_static_page_Logic checkItemsOnPage(){
-        logo().shouldBe(visible);
         title().shouldBe(visible);
         mainBlock().shouldBe(visible);
         emailLink().shouldBe(clickable);
