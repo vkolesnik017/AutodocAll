@@ -547,4 +547,12 @@ public class LKW_main_page_Logic extends LKW_main_page {
         return this;
     }
 
+    @Step("Select truck in vertical selector. LKW_main_page")
+    public LKW_maker_car_list_Logic selectTruckInVerticalSelector(String markeOfTruck, String modelOfTruck, String motorOfTruck) {
+        markeOfVerticalTruckSelector().selectOptionByValue(markeOfTruck);
+        modelOfVerticalTruckSelector().selectOptionByValue(modelOfTruck);
+        motorOfVerticalTruckSelector().selectOptionByValue(motorOfTruck);
+        buttonSuchenOfVerticaltruckSelectorMainPage().click();
+        return page(LKW_maker_car_list_Logic.class);
+    }
 }

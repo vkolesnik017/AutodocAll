@@ -8,6 +8,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static ATD.CommonMethods.waitWhileRouteBecomeExpected;
+import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.WebDriverRunner.url;
@@ -80,6 +81,28 @@ public class Maker_car_list_page_Logic extends Maker_car_list_page {
     public Maker_car_list_page_Logic clearListOfVehicleInPopUpOfGarageIcon() {
         btnClearVehicleListInPopUpOfGarageIcon().shouldBe(visible).click();
         urlsOfAddedVehicleInPopUpOfGarageInHeader().shouldHaveSize(0);
+        return this;
+    }
+
+    @Step("checking list of added vehicle in header after selected a new vehicle . Maker_car_list_page")
+    public Maker_car_list_page_Logic checkListOfAddedVehicleInHeaderAfterSelectedNewAuto() {
+        headingOfSearchByCatalog().shouldBe(visible);
+        garageIconInHeader().shouldBe(visible).click();
+        urlsOfAddedVehicleInPopUpOfGarageFromSelector().get(0).shouldBe(visible).shouldHave(attribute("href", url()));
+        radioBtnOfAddedVehicleInPopUpOfGarageFromSelector().get(0).shouldHave(attribute("checked", "true"));
+        return this;
+    }
+
+
+    @Step("select truck block in header . Maker_car_list_page")
+    public LKW_main_page_Logic selectTruckBlock() {
+        mainCategoriesInHeader().get(0).shouldBe(visible).click();
+        return page(LKW_main_page_Logic.class);
+    }
+
+    @Step("close popUp of my garage block . Maker_car_list_page")
+    public Maker_car_list_page_Logic closePopUpOfMyGarageBlock() {
+        garageIconInHeaderActive().click();
         return this;
     }
 }

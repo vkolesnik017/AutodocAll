@@ -16,6 +16,10 @@ public class Index_chemicals_page {
         return $x("//div[@class='category-block']//a[@class='category-block__item ga-click'][1]");
     }
 
+    SelenideElement lastSeparateCategoryInMainCatalogCategories() {
+        return $x("//div[@class='category-block']//a[@class='category-block__item ga-click'][11]");
+    }
+
     SelenideElement blockBreadCrumb() {
         return $x("//div[@class='crabs']");
     }

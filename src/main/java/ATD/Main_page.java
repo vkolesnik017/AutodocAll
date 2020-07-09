@@ -612,4 +612,10 @@ public class Main_page {
     SelenideElement successBtnInPopUpPrivacyPolicy() {
         return $x("//button[@id='privacy_policy_agree']");
     }
+
+    SelenideElement btnAddedAutoInPopUpOfMyGarageBlock() {return $x("//div[@class='header-garage__notlogged-button js-selector-add-car']/span");}
+
+    SelenideElement selectorFromMyGarageBlock() {return $(byId("selector-my-garage"));}
+
+    SelenideElement btnSearchOfSelectorFromMyGarage() {return $x("//a[@class='submit search_button ripple-out']/span");}
 }
