@@ -33,8 +33,8 @@ public class QC_677_ChangeEmail_NewEmailFieldIsNotEqualToConfirmEmailField {
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks the email change with unequal fields the new email and confirm the email")
     public void testNewEmailFieldIsNotEqualToConfirmEmailField(String route) {
-        String newEmail = mailRandomMailinator();
-        String confirmEmail = mailRandomMailinator();
+        String newEmail = mailRandomMailinator("677");
+        String confirmEmail = mailRandomMailinator("677");
         openPage(route);
         new Main_page_Logic().loginAndTransitionToProfilePlusPage(mail)
                 .goToSettingPage()

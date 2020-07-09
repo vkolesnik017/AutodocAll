@@ -22,10 +22,9 @@ import static org.testng.Assert.assertEquals;
 
 public class QC_1025_GrayButtonOnProductPage {
 
-    private String email = "CheckGrayButton@mailinator.com";
+    private String email = "QC_1025_autotestATD@mailinator.com";
 
     private Mailinator mailinator = new Mailinator();
-    private Search_page search_page = new Search_page();
     private Product_page_Logic product_page = new Product_page_Logic();
     private WishlistReminderAvailability_aws wishlistReminderAvailability = new WishlistReminderAvailability_aws();
 
