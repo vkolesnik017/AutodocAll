@@ -475,7 +475,7 @@ public class Listing_page {
         return $$(By.cssSelector(".name"));
     }
 
-    ElementsCollection productArticlesInListing() {
+    public ElementsCollection productArticlesInListing() {
         return $$x("//div[@class='description']//span[@class='article_number' and contains(text(),'Artikelnummer')]");
     }
 
@@ -708,6 +708,8 @@ public class Listing_page {
     SelenideElement firstProductAdditionalCharacteristicsOnListing() { return $x("(//div[@class='autopart_kit_table'])[1]/ancestor::div[@class='description']/div/a"); }
 
     SelenideElement brandButtonInFilterWithGivenName(String brandName) { return $x("//*[@id='selected-instalation__slider']/ul//img[contains (@alt,'"+ brandName +"')]/.."); }
+
+    SelenideElement brandButtonInFilterWithGivenNameLKWRoute(String brandName) { return $x("//*[@id='selected-instalation__slider']/ul//li[@class='slick-slide']//img[contains (@alt,'"+ brandName +"')]/.."); }
 
     SelenideElement nextButtonInBrandFilter() { return $(".next.slick-arrow"); }
 
