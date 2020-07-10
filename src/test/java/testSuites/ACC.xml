@@ -151,6 +151,10 @@
         <classes>
             <class name="ATD.ACC.QC_1849_ListingChemistry.QC_1850_NameTitleOnListingChemistry"/>
             <class name="ATD.ACC.QC_1849_ListingChemistry.QC_1851_BlockBrandsOnListingPageChemistry"/>
+            <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2030_WorkBreadCrumbsOnChemistryListing"/>
+            <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2036_BlockChangeViewChemistryListing"/>
+            <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2039_BlockDisplayCountProductsOnChemistryListing"/>
+            <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2040_PaginationBlockOnChemistryListing"/>
         </classes>
     </test>
 
