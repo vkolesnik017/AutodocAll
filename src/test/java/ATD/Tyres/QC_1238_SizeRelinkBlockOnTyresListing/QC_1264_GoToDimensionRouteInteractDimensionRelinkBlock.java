@@ -29,7 +29,12 @@ public class QC_1264_GoToDimensionRouteInteractDimensionRelinkBlock {
         return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "tyres_season2,tyres_season6,tyres_season7,tyres_season_size2," +
                 "tyres_dimension2,tyres_size6,tyres_brand5," +
                 "tyres_season,tyres_season8,tyres_season9,tyres_season_size3,tyres_dimension3,tyres_brand2," +
-                "tyres_season5,tyres_season10,tyres_season11,tyres_season_size4,tyres_dimension5,tyres_brand3," +
+                "tyres_season5,tyres_season10,tyres_season11,tyres_season_size4,tyres_dimension5,tyres_brand3");
+    }
+
+    @DataProvider(name = "routesMOTO", parallel = true)
+    Object[] dataProviderMOTO() throws SQLException {
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main",
                 "tyres_season12,tyres_season4,tyres_season_size5,tyres_dimension4,tyres_brand4");
     }
 
@@ -38,6 +43,15 @@ public class QC_1264_GoToDimensionRouteInteractDimensionRelinkBlock {
     @Owner(value = "Romaniuta")
     @Description(value = "Test Checks Transition To Dimension Route Interact Dimension Relink Block")
     public void testGoToDimensionRouteInteractDimensionRelinkBlock(String route) {
+        openPage(route);
+        new TyresListing_page_Logic().clickDimensionButtonAndCheckRedirect(new TyresListing_page_Logic().dimensionLinkListingRoute());
+    }
+
+    @Test(dataProvider = "routesMOTO")
+    @Flaky
+    @Owner(value = "Romaniuta")
+    @Description(value = "Test Checks Transition To Dimension Route Interact Dimension Relink Block MOTO")
+    public void testGoToDimensionRouteInteractDimensionRelinkBlockMOTO(String route) {
         openPage(route);
         new TyresListing_page_Logic().clickDimensionButtonAndCheckRedirect(new TyresListing_page_Logic().dimensionLinkListingRoute());
     }

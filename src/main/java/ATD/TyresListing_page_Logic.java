@@ -324,7 +324,9 @@ public class TyresListing_page_Logic extends TyresListing_page {
         String height = dimension.substring(3, 5);
         String diameter = dimension.substring(5, 7);
         dimensionLinkButton.hover().click();
-        waitingWhileLinkBecomeExpected(urlToRedirect);
+        if (!baseUrl.contains("motorrad")) {
+            waitingWhileLinkBecomeExpected(urlToRedirect);
+        }
         checkCharacteristicOnListing(width, widthCharacteristic());
         checkCharacteristicOnListing(height, heightCharacteristic());
         checkCharacteristicOnListing(diameter, radiusCharacteristic());
