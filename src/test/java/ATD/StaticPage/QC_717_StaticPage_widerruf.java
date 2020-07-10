@@ -1,6 +1,5 @@
 package ATD.StaticPage;
 
-import ATD.Main_page;
 import ATD.Main_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
