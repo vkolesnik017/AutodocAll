@@ -17,7 +17,7 @@ public class PasswordRecovery_page {
         return $(byId("new_pass_confirm"));
     }
 
-    SelenideElement sendButton() {
+    public SelenideElement sendButton() {
         return $(byId("recovery_btn_submit"));
     }
 
@@ -27,6 +27,14 @@ public class PasswordRecovery_page {
 
     SelenideElement contactForm() {
         return $x("//div[@class='contact_form']");
+    }
+
+    SelenideElement popupError() {
+        return $x("//div[@id='popup_update']");
+    }
+
+    SelenideElement closePopupErrorBtn() {
+        return $x("//div[@class='buttons-inner']//a[@class='close']/span[2]");
     }
 
 }

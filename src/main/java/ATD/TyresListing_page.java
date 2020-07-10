@@ -129,4 +129,6 @@ class TyresListing_page {
     SelenideElement ratingFilterBlock() { return $(".sort-rating"); }
 
     SelenideElement seasonValueInSelector() { return $x("//*[@id='form_Season']/option[@selected]"); }
+
+    SelenideElement productListingOnPage() { return $(".list_products"); }
 }

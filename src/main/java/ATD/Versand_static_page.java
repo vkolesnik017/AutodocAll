@@ -238,4 +238,17 @@ class Versand_static_page {
         return $x("//*[@class='country-prices__pop country-prices-pop-js']//span[contains (text(), '" + country + "')]/../../span");
     }
 
+    SelenideElement datenschutzerklarungLink() { return $("#Delivery_privacy_policy > a"); }
+
+    SelenideElement sendShipFormMailField() { return $x("//input[@id='form_Email']"); }
+
+    SelenideElement mailingCheckbox() { return $("#isSubscribe_delivery"); }
+
+    SelenideElement submitButton() { return $x("//*[@name='request_callback']"); }
+
+    SelenideElement sendShipFormSuccesPopup() { return $(By.id("popup_update")); }
+
+    SelenideElement sendShipFormSuccesPopupCloseBtn() { return $x("//div[@id='popup_update']//div[@class='buttons-inner']/a"); }
+
+    SelenideElement countryDropdown() { return $("#form_Land"); }
 }
