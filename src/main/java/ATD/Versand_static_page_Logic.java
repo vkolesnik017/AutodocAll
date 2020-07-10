@@ -3,11 +3,12 @@ package ATD;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
+import static ATD.CommonMethods.mailRandomMailinator;
 import static ATD.CommonMethods.openPage;
-import static com.codeborne.selenide.CollectionCondition.*;
+import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.Wait;
 
 public class Versand_static_page_Logic extends Versand_static_page {
 
@@ -124,5 +125,36 @@ public class Versand_static_page_Logic extends Versand_static_page {
         allCountriesButton().click();
         String deliveryPrice = deliveryPriceLocator(country).getText().replace(" €", "").replace(",", ".");
         return Float.valueOf(deliveryPrice);
+    }
+
+    @Step("Click all countries button. Versand_static_page")
+    public Versand_static_page_Logic clickAllCountriesButton() {
+        allCountriesButton().click();
+        return this;
+    }
+
+    @Step("Check Datenschutzerklarung Link Behavior. Versand_static_page")
+    public Versand_static_page_Logic checkingDatenschutzerklarungLinkBehavior() {
+        new CommonMethods().checkingDatenschutzerklarungLinkBehavior(datenschutzerklarungLink(), "underline solid rgb(0, 0, 0)");
+        return this;
+    }
+
+    @Step("Select country in dropdown. Versand_static_page")
+    public Versand_static_page_Logic selectCountry(String country) {
+        countryDropdown().selectOption(country);
+        Wait().until(webDriver -> countryDropdown().getSelectedText().equals(country));
+        return this;
+    }
+
+    @Step("Filling fields and checking behavior of send shipping form. Versand_static_page")
+    public String fillingFieldsAndCheckBehaviorSendShipForm(String country) {
+        String mail = mailRandomMailinator("1947");
+        sendShipFormMailField().setValue(mail);
+        selectCountry(country);
+        mailingCheckbox().click();
+        submitButton().click();
+        sendShipFormSuccesPopup().shouldBe(appear);
+        sendShipFormSuccesPopupCloseBtn().click();
+        return mail;
     }
 }
