@@ -1,6 +1,9 @@
 package ATD;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+
+import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class Listing_chemicals_Page {
@@ -12,6 +15,10 @@ public class Listing_chemicals_Page {
 
     SelenideElement blockBrands() {
         return $x("//div[@id='selected-instalation__slider']");
+    }
+
+    SelenideElement blockBreadCrumbs() {
+        return $x("//div[@class='steps breadcrumbs']");
     }
 
     SelenideElement firstBreadCrumb() {
@@ -56,6 +63,58 @@ public class Listing_chemicals_Page {
 
     SelenideElement lowerPaginationBlock() {
         return $x("//div[@class='page_list'][2]/div[@class='pagination']");
+    }
+
+    SelenideElement btnPageThirdInPagination() {
+        return $x("//div[@class='page_list'][1]//span[4]");
+    }
+
+    SelenideElement btnForReturnOnFirstPageInPagination() {
+        return $x("//div[@class='page_list'][1]//span[@class='first']");
+    }
+
+    SelenideElement btnPreviousInPagination() {
+        return $x("//div[@class='page_list'][1]//span[@class='previous']");
+    }
+
+    SelenideElement btnNextInPagination() {
+        return $x("//div[@class='page_list'][1]//span[@class='next'][1]");
+    }
+
+    SelenideElement btnLastInPagination() {
+        return $x("//div[@class='page_list'][1]//span[@class='next'][2]");
+    }
+
+    SelenideElement secondVisibleBrand() {
+        return $x("//div[@id='selected-instalation__slider']//li[@data-slick-index='1']");
+    }
+
+    SelenideElement sevenVisibleBrand() {
+        return $x("//div[@id='selected-instalation__slider']//li[@data-slick-index='6']");
+    }
+
+    SelenideElement firstVisibleBrandToGetData() {
+        return $x("//div[@id='selected-instalation__slider']//li[contains(@class, 'slick-active')][1]/input");
+    }
+
+    SelenideElement secondVisibleBrandToGetData() {
+        return $x("//div[@id='selected-instalation__slider']//li[contains(@class, 'slick-active')][2]/input");
+    }
+
+    SelenideElement sevenVisibleBrandToGetData() {
+        return $x("//div[@id='selected-instalation__slider']//li[contains(@class, 'slick-active')][7]/input");
+    }
+
+    SelenideElement secondVisibleBrandImg() {
+        return $x("//div[@id='selected-instalation__slider']//li[contains(@class, 'slick-active')][2]/label/img");
+    }
+
+    SelenideElement sevenVisibleBrandImg() {
+        return $x("//div[@id='selected-instalation__slider']//li[contains(@class, 'slick-active')][7]/label/img");
+    }
+
+    ElementsCollection titleNameProductsFromListing() {
+        return $$x("//div[@class='js-listing-wrap']//div[@class='name']//*[contains(@class,'ga-click')]");
     }
 
 

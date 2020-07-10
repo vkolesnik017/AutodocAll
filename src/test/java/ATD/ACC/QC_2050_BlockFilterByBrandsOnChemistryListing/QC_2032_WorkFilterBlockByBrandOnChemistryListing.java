@@ -1,4 +1,4 @@
-package ATD.ACC.QC_1849_ListingChemistry;
+package ATD.ACC.QC_2050_BlockFilterByBrandsOnChemistryListing;
 
 import ATD.Listing_chemicals_Page_Logic;
 import ATD.SetUp;
@@ -14,7 +14,7 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_1851_BlockBrandsOnListingPageChemistry {
+public class QC_2032_WorkFilterBlockByBrandOnChemistryListing {
 
     @BeforeClass
     void setUp() {
@@ -29,10 +29,10 @@ public class QC_1851_BlockBrandsOnListingPageChemistry {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test checks presence brands block.")
-    public void testCheckPresenceBrandsBlock(String route) {
+    @Description(value = "Test checks sorting products by brands and display selected brands at top of list .")
+    public void testCheckingWorkFilterBlockByBrands(String route) {
         openPage(route);
-        new Listing_chemicals_Page_Logic().checkingPresenceBrandsBlock();
+        new Listing_chemicals_Page_Logic().checkingSortingProductsByBrandsAndDisplayBrandsAtTopList();
     }
 
     @AfterMethod
