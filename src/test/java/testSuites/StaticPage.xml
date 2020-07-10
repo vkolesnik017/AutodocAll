@@ -35,12 +35,12 @@
         </classes>
     </test>
 
-    <!--<test name="QC_1091_StaticPage_austauschartikel">-->
-        <!--<classes>-->
-            <!--<class name="ATD.StaticPage.QC_1091_StaticPage_austauschartikel">-->
-            <!--</class>-->
-        <!--</classes>-->
-    <!--</test>-->
+    <test name="QC_1091_StaticPage_austauschartikel" enabled="false">
+        <classes>
+            <class name="ATD.StaticPage.QC_1091_StaticPage_austauschartikel">
+            </class>
+        </classes>
+    </test>
 
     <test name="QC_1175_StaticPage_contacts" enabled="true">
         <classes>
@@ -80,6 +80,13 @@
     <test name="QC_1547_StaticPage_mobile_app" enabled="true">
         <classes>
             <class name="ATD.StaticPage.QC_1547_StaticPage_mobile_app">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QC_2038_StaticPage_sponsoring" enabled="true">
+        <classes>
+            <class name="ATD.StaticPage.QC_2038_StaticPage_sponsoring">
             </class>
         </classes>
     </test>

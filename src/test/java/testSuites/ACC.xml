@@ -15,7 +15,7 @@
         </classes>
     </test>
 
-    <test name="QC_1037_MainChemie">
+    <test name="QC_1037_MainChemie_ATD">
         <classes>
             <class name="ATD.ACC.QC_1037_MainChemie.QC_1070_BlockTopBrands"/>
             <class name="ATD.ACC.QC_1037_MainChemie.QC_1072_FeatureBlock"/>
@@ -23,6 +23,16 @@
             <class name="ATD.ACC.QC_1037_MainChemie.QC_1041_SubtitleMainPageChemie"/>
             <class name="ATD.ACC.QC_1037_MainChemie.QC_1040_TitleMainPageChemie"/>
             <class name="ATD.ACC.QC_1037_MainChemie.QC_1073_BlockDeliveryOnMainChemie"/>
+        </classes>
+    </test>
+
+    <test name="QC_1417_MainChemie_PKW">
+        <classes>
+            <class name="PKW.ACC.QC_1417_MainChemistry.QC_1418_BreadCrumbsOnMainPageChemistry"/>
+            <class name="PKW.ACC.QC_1417_MainChemistry.QC_1544_SeoBlockOilCategories"/>
+            <class name="PKW.ACC.QC_1417_MainChemistry.QC_1545_SeoCategoriesBlock"/>
+            <class name="PKW.ACC.QC_1417_MainChemistry.QC_1615_BrandsBlock"/>
+            <class name="PKW.ACC.QC_1417_MainChemistry.QC_1617_BlockSeoText"/>
         </classes>
     </test>
 
@@ -141,6 +151,10 @@
         <classes>
             <class name="ATD.ACC.QC_1849_ListingChemistry.QC_1850_NameTitleOnListingChemistry"/>
             <class name="ATD.ACC.QC_1849_ListingChemistry.QC_1851_BlockBrandsOnListingPageChemistry"/>
+            <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2030_WorkBreadCrumbsOnChemistryListing"/>
+            <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2036_BlockChangeViewChemistryListing"/>
+            <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2039_BlockDisplayCountProductsOnChemistryListing"/>
+            <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2040_PaginationBlockOnChemistryListing"/>
         </classes>
     </test>
 

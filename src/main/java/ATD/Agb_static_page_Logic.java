@@ -10,7 +10,6 @@ public class Agb_static_page_Logic extends Agb_static_page {
 
     @Step("Checks element in the page Agb. Agb_static_page")
     public Agb_static_page_Logic checkElementPage(){
-        logo().shouldBe(visible);
         titlePage().shouldBe(visible);
         mainBlock().shouldBe(visible);
         return this;

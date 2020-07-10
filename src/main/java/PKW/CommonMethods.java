@@ -37,7 +37,7 @@ public class CommonMethods {
         closeCookiesFooterMessage();
     }
 
-    public static void closeCookiesFooterMessage() {
+    private static void closeCookiesFooterMessage() {
         try {
             $(byXpath("//div[@class='block-cookies__close']")).click();
         } catch (UIAssertionError e) {

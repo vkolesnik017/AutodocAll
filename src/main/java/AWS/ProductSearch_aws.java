@@ -58,7 +58,7 @@ public class ProductSearch_aws {
 //        illiquidColumn().shouldHave(text("Да"));
         illiquidColumn().shouldHave(value("yes"));
         String id = idProductsInTable().getText();
-        String brand = brandProductsInTable().getText().trim().toLowerCase();
+        String brand = brandProductsInTable().getText().trim().toLowerCase().replaceAll("[^a-z]", "");
         System.out.println(id);
         System.out.println(brand);
         return id + "#" + brand;

@@ -187,5 +187,26 @@ public class DataBase {
         return translation;
     }
 
+    public String getMail(String value) throws SQLException {
+        Statement statement = null;
+        Connection conn = coonectionDB("mail_atd");
+        String mail = null;
+        String query = "SELECT ".concat("mail") + " FROM autodoc.".concat("mail_atd") + " where value=" + "\"".concat(value) + "\"";
+        try {
+            statement = conn.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                mail = resultSet.getString(1);
+            }
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (statement != null) statement.close();
+            if (conn != null) conn.close();
+        }
+        return mail;
+    }
 
 }
