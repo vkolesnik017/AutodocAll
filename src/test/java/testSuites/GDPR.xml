@@ -132,4 +132,10 @@
         </classes>
     </test>
 
+    <test name="QC_1947_VersandPage">
+        <classes>
+            <class name="ATD.GDRP.QC_1947_VersandPage"/>
+        </classes>
+    </test>
+
 </suite>
