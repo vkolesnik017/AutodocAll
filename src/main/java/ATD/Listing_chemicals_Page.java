@@ -85,6 +85,10 @@ public class Listing_chemicals_Page {
         return $x("//div[@class='page_list'][1]//span[@class='next'][2]");
     }
 
+    SelenideElement firstVisibleBrand() {
+        return $x("//div[@id='selected-instalation__slider']//li[@data-slick-index='0']");
+    }
+
     SelenideElement secondVisibleBrand() {
         return $x("//div[@id='selected-instalation__slider']//li[@data-slick-index='1']");
     }
@@ -115,6 +119,18 @@ public class Listing_chemicals_Page {
 
     ElementsCollection titleNameProductsFromListing() {
         return $$x("//div[@class='js-listing-wrap']//div[@class='name']//*[contains(@class,'ga-click')]");
+    }
+
+    SelenideElement titleCategoriesBlockInSidebar() {
+        return $x("//div[@class='block categories blue topSubCats']/b[text()]");
+    }
+
+    SelenideElement firstCategoryInSidebar() {
+        return $x("//div[@class='block categories blue topSubCats']//li[1]");
+    }
+
+    SelenideElement blockSeoText() {
+        return $x("//div[@class='block_youtube_video']/span[@class='more_text']");
     }
 
 

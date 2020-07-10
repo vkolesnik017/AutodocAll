@@ -3,12 +3,11 @@ package ATD;
 
 import io.qameta.allure.Step;
 import org.testng.Assert;
-
 import java.util.ArrayList;
-
 import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.page;
+
 
 public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
 
@@ -161,6 +160,45 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
         return this;
     }
 
+    @Step("Checking presence title categories block in sidebar. Listing_chemicals_Page")
+    public Listing_chemicals_Page_Logic checkingPresenceTitleCategoriesBlockInSidebar() {
+        titleCategoriesBlockInSidebar().shouldHave(text(""));
+        return this;
+    }
+
+    @Step(":from Listing_chemicals_Page")
+    public ArrayList<String> getNameCategoriesFromSidebarAndTitleNamePage() {
+        return new Listing_accessories_page_Logic().getNameAllCategoriesInSidebarAndTitleNamePage();
+    }
+
+    @Step("Click on first category in sidebar. Listing_chemicals_Page")
+    public Listing_chemicals_Page_Logic clickFirstCategoryInSidebar() {
+        firstCategoryInSidebar().click();
+        return this;
+    }
+
+    @Step("Get name first category in sidebar. Listing_chemicals_Page")
+    public  String getNameFirstCategoryInSidebar() {
+        return firstCategoryInSidebar().scrollIntoView(false).getText();
+    }
+
+    @Step("Checking presence block with seo text. Listing_chemicals_Page")
+    public Listing_chemicals_Page_Logic checkingPresenceBlockWithSeoText() {
+        blockSeoText().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checking reset selected brand in brands block. Listing_chemicals_Page")
+    public Listing_chemicals_Page_Logic checkingResetSelectedBrandInBrandsBlock() {
+        firstVisibleBrandToGetData().shouldHave(attribute("data-checked","false"));
+        firstVisibleBrand().click();
+        new Listing_page_Logic().waitUntilPreloaderDisappear();
+        firstVisibleBrandToGetData().shouldHave(attribute("data-checked","true"));
+        firstVisibleBrand().click();
+        new Listing_page_Logic().waitUntilPreloaderDisappear();
+        firstVisibleBrandToGetData().shouldHave(attribute("data-checked","false"));
+        return this;
+    }
 
 
 
