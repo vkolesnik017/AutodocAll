@@ -342,6 +342,10 @@ public class Main_page {
         return $x("//a[@data-ga-action='bonus_system']");
     }
 
+    SelenideElement sponsoringLinc() {
+        return $x("//a[@data-ga-action='sponsorship']");
+    }
+
     SelenideElement partnershipLink(){
         return $x("//a[@data-ga-action='partnership']");
     }
@@ -381,7 +385,7 @@ public class Main_page {
     }
 
     SelenideElement agb_plusLink(){
-        return $x("//*[@class='link'][text()='PLUS-AGB']");
+        return $x("//span[@data-ga-action='plus_agb']");
     }
 
     SelenideElement widerrufLink(){
