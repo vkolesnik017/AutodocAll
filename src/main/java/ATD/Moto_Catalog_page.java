@@ -172,4 +172,22 @@ public class Moto_Catalog_page {
     ElementsCollection urlsOfAddedVehicleInPopUpOfGarageFromSelector() {return $$x("//div[@class='header-garage__logged-check']//a");}
 
     ElementsCollection radioBtnOfAddedVehicleInPopUpOfGarageFromSelector() {return $$x("//input[@name='radio-car']");}
+
+      ElementsCollection urlsOfAddedVehicleInPopUpOfGarageInHeader() {
+        return $$x("//div[contains(@class,'header-garage__notlogged')]//a[contains(@class,'history-cars-rows__link')]");
+    }
+
+    SelenideElement popUpOfGarageInHeader() {
+        return $x("//div[contains(@class,'header-garage__notlogged')]");
+    }
+
+    SelenideElement garageIconInHeaderActive() {return $x("//div[@class='header-garage js-header-garage active']");}
+
+    ElementsCollection visibleVehicleInPopUpOfMyGarageUrls() {
+        return $$x("//div[contains(@class,'header-garage__notlogged')]//a[contains(@class,'history-cars-rows__link')]").filter(visible);
+    }
+
+    ElementsCollection btnSaveAddedVehicle() {return $$x("//a[contains(@class,'js-add-car-to-garage')]");}
+
+    SelenideElement registrationForm() {return $x("//div[@class='autodoc_login_popup popup_login pass']");}
 }
