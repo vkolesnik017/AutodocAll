@@ -86,7 +86,7 @@ public class Categories_page_Logic extends Categories_page {
         int responseCode = http.getResponseCode();
 //        Assert.assertEquals(responseCode, 200);
         if (responseCode != 200) {
-          System.out.println("Response code of route " + tecdocCategoriesA().get(i).attr("href") + " is " + responseCode);
+          System.out.println("Response code of route " + tecdocCategoriesSpan().get(i).attr("url") + " is " + responseCode);
         }
       }
       return this;
