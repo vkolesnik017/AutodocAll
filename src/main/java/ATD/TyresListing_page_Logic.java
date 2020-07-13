@@ -327,7 +327,7 @@ public class TyresListing_page_Logic extends TyresListing_page {
         if (!baseUrl.contains("motorrad")) {
             waitingWhileLinkBecomeExpected(urlToRedirect);
         } else {
-            sleep(3000);
+            sleep(5000);
         }
         checkCharacteristicOnListing(width, widthCharacteristic());
         checkCharacteristicOnListing(height, heightCharacteristic());
