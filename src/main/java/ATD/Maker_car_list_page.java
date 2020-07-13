@@ -59,4 +59,27 @@ public class Maker_car_list_page {
     ElementsCollection urlsOfAddedVehicleInPopUpOfGarageWithOutAuthorization() {return $$x("//div[@class='history-cars-rows']//a[2]");}
 
     SelenideElement garageIconInHeaderActive() {return $x("//div[@class='header-garage js-header-garage active']");}
+
+    SelenideElement btnAddedVehicleOfMyGaragePopUp() {return $x("//div[@class='header-garage__history-button js-selector-add-car']/button");}
+
+    SelenideElement selectorFromMyGarageBlock() {return $(byId("selector-my-garage"));}
+
+
+    SelenideElement trucksTab() {
+        return $x("//li[@class='popup-selector__tabs-item select-lkw ']");
+    }
+
+    SelenideElement markeOfTruckInSelector() {
+        return $x("//div[@class='block-select-car tooltip-block tooltip-block--left']/div[2]/select");
+    }
+
+    SelenideElement modelOfTruckInSelector() {
+        return $x("//div[@class='block-select-car tooltip-block tooltip-block--left']/div[3]/select");
+    }
+
+    SelenideElement motorOfTruckInSelector() {
+        return $x("//div[@class='block-select-car tooltip-block tooltip-block--left']/div[4]/select");
+    }
+
+    SelenideElement btnSearchOfSelectorFromMyGarage() {return $x("//a[@class='truck_submit js--lkw_selector-btn-submit-garage']");}
 }

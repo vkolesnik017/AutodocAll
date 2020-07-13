@@ -22,7 +22,6 @@ public class Austauschartikel_static_page_Logic extends Austauschartikel_static_
 
     @Step("Checks items at the top of the Austauschartikel page. Austauschartikel_static_page")
     public Austauschartikel_static_page_Logic checkItemsTopPage() {
-        logo().shouldBe(visible);
         title().shouldBe(visible);
         mainTextFromPage().shouldBe(visible);
         ausLogo().shouldBe(visible);

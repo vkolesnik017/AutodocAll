@@ -64,7 +64,9 @@ class LKW_maker_car_list {
 
     SelenideElement markeInVerticalCarSelector() {return $(byName("maker_id"));}
 
-    SelenideElement motorInVerticalCarSelector() {return $(byName("model_id"));}
+    SelenideElement modelInVerticalCarSelector() {return $(byName("model_id"));}
+
+    SelenideElement motorInVerticalCarSelector() {return $(byName("car_id"));}
 
     SelenideElement btnSearchInVerticalCarSelector() {
         return $x("//a[@class='truck_submit js--lkw_selector-btn-submit']");}
@@ -92,4 +94,28 @@ class LKW_maker_car_list {
     ElementsCollection radioBtnOfAddedVehicleInPopUpOfGarageFromSelector() {return $$x("//input[@name='radio-car']");}
 
     ElementsCollection mainCategoriesInHeader() {return $$x("//ul[@class='header__nav-list']/li/a");}
+
+    SelenideElement popUpOfGarageInHeader() {
+        return $x("//div[contains(@class,'header-garage__notlogged')]");
+    }
+
+    ElementsCollection urlsOfAddedVehicleInPopUpOfGarageInHeader() {
+        return $$x("//div[contains(@class,'header-garage__notlogged')]//a[contains(@class,'history-cars-rows__link')]");
+    }
+
+    SelenideElement garageIconInHeaderActive() {return $x("//div[@class='header-garage js-header-garage active']");}
+
+    SelenideElement btnAddedVehicleOfMyGaragePopUp() {return $x("//div[@class='header-garage__history-button js-selector-add-car']/button");}
+
+    SelenideElement selectorFromMyGarageBlock() {return $(byId("selector-my-garage"));}
+
+    SelenideElement motoTab() {return $x("//li[@class='popup-selector__tabs-item select-moto ']");}
+
+    SelenideElement markeOfVehicleInSelector() {return $x("//form[@id='top-select-garage-moto']/div/div[2]/div[1]/select");}
+
+    SelenideElement modelOfVehicleInSelector() {return $x("//form[@id='top-select-garage-moto']/div/div[2]/div[2]/select");}
+
+    SelenideElement motorOfVehicleInSelector() {return $x("//form[@id='top-select-garage-moto']/div/div[2]/div[3]/select");}
+
+    SelenideElement btnSearchVehicleInSelector() {return $x("//a[@class='submit search_button ripple-out']");}
 }

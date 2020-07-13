@@ -476,6 +476,12 @@ public class Main_page_Logic extends Main_page {
         return page(Bonusprogramm_page.class);
     }
 
+    @Step("Click Sponsoring link in the footer. Main_page")
+    public Sponsoring_static_page_Logic clickSponsoringLink() {
+        sponsoringLinc().click();
+        return page(Sponsoring_static_page_Logic.class);
+    }
+
     @Step("Click Partnership link in the footer. Main_page")
     public Partnership_static_page_Logic clickPartnership() {
         partnershipLink().click();

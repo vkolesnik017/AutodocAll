@@ -14,7 +14,7 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_1851_BlockBrandsOnListingPageChemistry {
+public class QC_2036_BlockChangeViewChemistryListing {
 
     @BeforeClass
     void setUp() {
@@ -29,10 +29,10 @@ public class QC_1851_BlockBrandsOnListingPageChemistry {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test checks presence brands block.")
-    public void testCheckPresenceBrandsBlock(String route) {
+    @Description(value = "Test checks change display of products on the list view and then grid.")
+    public void testCheckingChangeDisplayProductsAsListAndGrid(String route) {
         openPage(route);
-        new Listing_chemicals_Page_Logic().checkingPresenceBrandsBlock();
+        new Listing_chemicals_Page_Logic().checkingChangeDisplayProductsAsListAndGrid();
     }
 
     @AfterMethod

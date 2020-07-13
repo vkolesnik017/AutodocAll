@@ -34,7 +34,6 @@ public class Partnership_static_page_Logic extends Partnership_static_page {
 
     @Step("Checks items at the top of the Partnership pages. Partnership_static_page")
     public Partnership_static_page_Logic checkPageElements() {
-        mainLogo().shouldBe(visible).shouldBe(clickable);
         title().shouldBe(visible);
         logoAboveText().shouldBe(visible);
         mainTextFromPage().shouldBe(visible);

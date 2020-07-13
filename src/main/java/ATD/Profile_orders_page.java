@@ -51,4 +51,16 @@ public class Profile_orders_page {
     ElementsCollection trackingNumFromTooltip() {
         return $$x("//span[@class='order-status__tracking-more']/ul/li");
     }
+
+    SelenideElement bonusLabel() {
+        return $x("//th[@class='order-bonus']");
+    }
+
+    SelenideElement titleBonusTooltip() {
+        return $x("//div[@class='tooltip-bonus__title']");
+    }
+
+    SelenideElement textBonusTooltip() {
+        return $x("//div[@class='tooltip-bonus__text']");
+    }
 }
