@@ -60,12 +60,15 @@ public class Maker_car_list_page_Logic extends Maker_car_list_page {
 
     @Step("check selected vehicle in PopUp of garage icon . Maker_car_list_page")
     public Maker_car_list_page_Logic checkSelectedVehicleInPopUpOfGarageIcon(List<String> list) {
+
         List<String> listOfVehicleFromPopUp = new ArrayList<>();
         garageIconInHeader().shouldBe(visible).click();
         popUpOfGarageInHeader().shouldBe(visible);
         for (int i = 0; i < urlsOfAddedVehicleInPopUpOfGarageInHeader().size(); i++) {
             listOfVehicleFromPopUp.add(urlsOfAddedVehicleInPopUpOfGarageInHeader().get(i).getAttribute("href"));
         }
+        Assert.assertTrue(urlsOfAddedVehicleInPopUpOfGarageInHeader().get(0).getAttribute("href").equals(list.get(list.size() - 1)));
+        urlsOfAddedVehicleInPopUpOfGarageInHeader().shouldHaveSize(list.size());
         Assert.assertEquals(getSortedList(listOfVehicleFromPopUp), getSortedList(list));
         return this;
     }
@@ -102,7 +105,25 @@ public class Maker_car_list_page_Logic extends Maker_car_list_page {
 
     @Step("close popUp of my garage block . Maker_car_list_page")
     public Maker_car_list_page_Logic closePopUpOfMyGarageBlock() {
-        garageIconInHeaderActive().click();
+        garageIconInHeaderActive().shouldBe(visible).click();
         return this;
+    }
+
+    @Step("open selector from My garage block . Maker_car_list_page")
+    public Maker_car_list_page_Logic openSelectorFromMyGarageBlock() {
+        garageIconInHeader().shouldBe(visible).click();
+        btnAddedVehicleOfMyGaragePopUp().shouldBe(visible).click();
+        selectorFromMyGarageBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("select Truck in selector  from My garage block. Maker_car_list_page")
+    public LKW_maker_car_list_Logic selectTruckInSelectorFromMyGarage(String brand, String model, String motor) {
+        trucksTab().click();
+        markeOfTruckInSelector().shouldBe(visible).selectOptionByValue(brand);
+        modelOfTruckInSelector().shouldBe(visible).selectOptionByValue(model);
+        motorOfTruckInSelector().shouldBe(visible).selectOptionByValue(motor);
+        btnSearchOfSelectorFromMyGarage().click();
+        return page(LKW_maker_car_list_Logic.class);
     }
 }

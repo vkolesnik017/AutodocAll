@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="PrivateRoom" parallel="methods" thread-count="4" data-provider-thread-count="4">
+<suite name="PrivateRoom" parallel="methods" thread-count="4" data-provider-thread-count="2">
 
     <listeners>
         <listener class-name="ATD.ProjectListener"/>
@@ -73,10 +73,12 @@
         </classes>
     </test>
 
-    <test name="QC_1862_BonusesInOrder_PR">
-    <classes>
-        <class name="ATD.PrivateRoom.QC_1862_BonusesInOrder_PR.QC_1853_DisplayingOfBonusesInOrderAfterPlacingOrderWithBonuses"/>
-        <class name="ATD.PrivateRoom.QC_1862_BonusesInOrder_PR.QC_1852_DisplayingOfBonusesInOrderAfterPlacingOrderWithoutBonuses"/>
+    <test name="QC_1861_BonusesInOrder_PR">
+        <classes>
+            <class name="ATD.PrivateRoom.QC_1861_BonusesInOrder_PR.QC_1852_DisplayingOfBonusesInOrderAfterPlacingOrderWithoutBonuses"/>
+            <class name="ATD.PrivateRoom.QC_1861_BonusesInOrder_PR.QC_1853_DisplayingOfBonusesInOrderAfterPlacingOrderWithBonuses"/>
+            <class name="ATD.PrivateRoom.QC_1861_BonusesInOrder_PR.QC_1858_TranslationBonusToTheHeaderOfOrder"/>
+            <class name="ATD.PrivateRoom.QC_1861_BonusesInOrder_PR.QC_1859_DisplayPopUpBonusInOrder"/>
         </classes>
     </test>
 
@@ -92,6 +94,7 @@
         <classes>
             <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1839_AddedTruckToMyVehiclesBlock"/>
             <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1840_AddedMotoToMyVehiclesBlock"/>
+            <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1843_AddingAutoFromHistoryViewedBlockForUnAuthorizedUser"/>
             <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1847_SortingVehiclesByDate"/>
             <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1872_RemovingCarFromHistoryViewedInPopUp"/>
             <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1973_TransitionToMyGarageFromPopUp"/>
