@@ -3,6 +3,10 @@ package ATD;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.WebDriverRunner.url;
@@ -124,7 +128,7 @@ public class LKW_maker_car_list_Logic extends LKW_maker_car_list {
 
     @Step("visibility of tooltip for motor_field in selector  .LKW_maker_car_list")
     public LKW_maker_car_list_Logic visibilityOfTooltipForMotorFieldInCloseSelector() {
-        motorInVerticalCarSelector().selectOptionByValue("714");
+        modelInVerticalCarSelector().selectOptionByValue("714");
         btnSearchInVerticalCarSelector().click();
         tooltipForFieldInVerticalCarSelector().shouldBe(visible);
         return this;
@@ -134,9 +138,9 @@ public class LKW_maker_car_list_Logic extends LKW_maker_car_list {
     @Step("visibility of truck in selector from url  .LKW_maker_car_list")
     public LKW_maker_car_list_Logic availabilityOfTruckInSelectorFromUrl() {
         markeInVerticalCarSelector().shouldNotHave(exactValue("0"));
-        motorInVerticalCarSelector().shouldNotHave(exactValue("0"));
+        modelInVerticalCarSelector().shouldNotHave(exactValue("0"));
         String brandOfCarFromSelector = markeInVerticalCarSelector().getText().toLowerCase();
-        String modelOfCarFromSelector = motorInVerticalCarSelector().getText().substring(0, 2);
+        String modelOfCarFromSelector = modelInVerticalCarSelector().getText().substring(0, 2);
         Assert.assertTrue(url().contains(brandOfCarFromSelector) && url().contains(modelOfCarFromSelector));
         return this;
     }
@@ -195,5 +199,74 @@ public class LKW_maker_car_list_Logic extends LKW_maker_car_list {
     public Moto_main_page_Logic selectMotoBlock() {
         mainCategoriesInHeader().get(1).shouldBe(visible).click();
         return page(Moto_main_page_Logic.class);
+    }
+
+    @Step("added current url to list .LKW_maker_car_list")
+    public LKW_maker_car_list_Logic addedCurrentUrlToList(List<String> list) {
+        verticalTruckSelectorInCloseStateSecond().shouldBe(visible);
+        list.add(url());
+        return this;
+    }
+
+    @Step("check selected vehicle in PopUp of garage icon .LKW_maker_car_list")
+    public LKW_maker_car_list_Logic checkSelectedVehicleInPopUpOfGarageIcon(List<String> list) {
+        List<String> listOfVehicleFromPopUp = new ArrayList<>();
+        garageIconInHeader().shouldBe(visible).click();
+        popUpOfGarageInHeader().shouldBe(visible);
+        for (int i = 0; i < urlsOfAddedVehicleInPopUpOfGarageInHeader().size(); i++) {
+            listOfVehicleFromPopUp.add(urlsOfAddedVehicleInPopUpOfGarageInHeader().get(i).getAttribute("href"));
+        }
+        Assert.assertTrue(urlsOfAddedVehicleInPopUpOfGarageInHeader().get(0).getAttribute("href").equals(list.get(list.size()-1)));
+        urlsOfAddedVehicleInPopUpOfGarageInHeader().shouldHaveSize(list.size());
+        Assert.assertEquals(getSortedList(listOfVehicleFromPopUp), getSortedList(list));
+        return this;
+    }
+
+    @Step("get sorted list .LKW_maker_car_list")
+    public List<String> getSortedList(List<String> list) {
+        List<String> expectedSortedList = new ArrayList<>(list);
+        Collections.sort(expectedSortedList);
+        return expectedSortedList;
+    }
+
+
+    @Step("added current url to list .LKW_maker_car_list")
+    public LKW_maker_car_list_Logic  selectTruckInSelector(String marke, String model, String motor) {
+        verticalTruckSelectorInCloseStateSecond().shouldBe(visible).click();
+        verticalTruckSelectorInOpenState().shouldBe(visible);
+        markeInVerticalCarSelector().selectOptionByValue(marke);
+        modelInVerticalCarSelector().selectOptionByValue(model);
+        motorInVerticalCarSelector().selectOptionByValue(motor);
+        btnSearchInVerticalCarSelector().click();
+        return this;
+    }
+
+    @Step("close popUp of my garage block .LKW_maker_car_list")
+    public LKW_maker_car_list_Logic closePopUpOfMyGarageBlock() {
+        garageIconInHeaderActive().shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("open selector from My garage block .LKW_maker_car_list")
+    public LKW_maker_car_list_Logic openSelectorFromMyGarageBlock() {
+        garageIconInHeader().shouldBe(visible).click();
+        btnAddedVehicleOfMyGaragePopUp().shouldBe(visible).click();
+        selectorFromMyGarageBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("select motorcycle block in selector() .LKW_maker_car_list")
+    public LKW_maker_car_list_Logic selectMotoBlockInSelector() {
+        motoTab().click();
+        return this;
+    }
+
+    @Step("select vehicle in selector .LKW_maker_car_list")
+    public Moto_Catalog_page_Logic selectMotoInSelectorFromMyGarage(String brand, String model, String motor) {
+        markeOfVehicleInSelector().shouldBe(visible).selectOptionByValue(brand);
+        modelOfVehicleInSelector().shouldBe(visible).selectOptionByValue(model);
+        motorOfVehicleInSelector().shouldBe(visible).selectOptionByValue(motor);
+        btnSearchVehicleInSelector().click();
+        return page(Moto_Catalog_page_Logic.class);
     }
 }

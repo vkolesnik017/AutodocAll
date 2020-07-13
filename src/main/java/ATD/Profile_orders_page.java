@@ -8,6 +8,10 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class Profile_orders_page {
 
+    SelenideElement profileMyOrderBtn() {
+        return $x("//a[@data-ga-action='Sidebar_MyOrders']");
+    }
+
     SelenideElement orderBonusSum() {
         return $x("//td[@class='order-bonus']");
     }

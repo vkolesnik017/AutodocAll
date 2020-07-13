@@ -148,4 +148,9 @@ public class Profile_setting_page_Logic extends Profile_setting_page {
         Assert.assertTrue(subscribeCheckbox().isSelected());
         return this;
     }
+
+    @Step("Get name tab settings. Profile_setting_page_Logic")
+    public String getNameTabSettings() {
+        return profileSettingBtn().getText();
+    }
 }

@@ -25,8 +25,8 @@ import static com.codeborne.selenide.Selenide.close;
 public class QC_1126_RemovingAutoPartFromAwsOrder {
 
     private String userID = "15371629", firstArticleNum, secondArticleNum, secondProductArticleID, firstProductArticleID;
-    private Float totalCostOrder, totalCostOrderAfterReSave, totalSumIncomeWithoutVat, sumIncomeWithoutVatAllGoods,
-            sellingCostInOrder, prunedTotalSumIncomeWithoutVat, prunedSumIncomeWithoutVatAllGoods, totalCostWithoutOneItem;
+    private Float totalCostOrder, totalCostOrderAfterReSave, totalSumIncomeWithoutVat, totalSumIncomeWithoutVatAfterRemove,
+            sellingCostInOrder, totalCostWithoutOneItem;
 
 
     private Product_page_Logic product_page_logic = new Product_page_Logic();
@@ -69,6 +69,7 @@ public class QC_1126_RemovingAutoPartFromAwsOrder {
                 .clickSaveOrderBtn()
                 .checkOrderHasTestStatus()
                 .getTotalPriceOrderAWS();
+        totalSumIncomeWithoutVat = order_aws.getTotalSumIncomeWithoutVAT();
         sellingCostInOrder = order_aws.getSellingPriceOfCertainProduct(firstProductArticleID);
         totalCostOrderAfterReSave = order_aws.selectCheckboxDesiredProduct(firstProductArticleID)
                 .clickRemoveProductBtn()
@@ -76,15 +77,12 @@ public class QC_1126_RemovingAutoPartFromAwsOrder {
                 .reSaveOrder()
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalCostOrderAfterReSave, totalCostOrder);
-        totalSumIncomeWithoutVat = order_aws.selectCheckboxDesiredProduct(firstProductArticleID)
+        totalSumIncomeWithoutVatAfterRemove = order_aws.selectCheckboxDesiredProduct(firstProductArticleID)
                 .clickRemoveProductBtn()
                 .clickBtnYesInRemoveProductPopUp()
                 .compareQuantityOfItemsWithQuantityInColumnQuantityOfProducts()
                 .getTotalSumIncomeWithoutVAT();
-        prunedTotalSumIncomeWithoutVat = cutPriceToFirstDecimalPlace(totalSumIncomeWithoutVat);
-        sumIncomeWithoutVatAllGoods = order_aws.plusAmountOfIncomeWithoutVatOfAllAddedGoods();
-        prunedSumIncomeWithoutVatAllGoods = cutPriceToFirstDecimalPlace(sumIncomeWithoutVatAllGoods);
-        Assert.assertEquals(prunedSumIncomeWithoutVatAllGoods, prunedTotalSumIncomeWithoutVat);
+        Assert.assertNotEquals(totalSumIncomeWithoutVat, totalSumIncomeWithoutVatAfterRemove);
         totalCostWithoutOneItem = order_aws.subtractsRemovedProductCostFromTotalOrderCost(totalCostOrder, sellingCostInOrder);
         totalCostOrder = order_aws.getTotalPriceOrderAWS();
         Assert.assertEquals(totalCostWithoutOneItem, totalCostOrder);

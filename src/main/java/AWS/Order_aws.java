@@ -568,7 +568,9 @@ public class Order_aws {
 
     @Step("Chooses the article id of the desired product {artID} in PopUp AddProduct. Order_aws")
     public Order_aws chooseArticleIDOfDesiredProduct(String artID) {
-        productArticleIDInPopUpAddProduct(artID).click();
+       if (productArticleIDInPopUpAddProduct(artID).isDisplayed()) {
+           productArticleIDInPopUpAddProduct(artID).click();
+       }
         return this;
     }
 
@@ -588,8 +590,10 @@ public class Order_aws {
 
     @Step("Click button AddedGoods in PopUp AddProduct. Order_aws")
     public Order_aws clickBtnAddedGoodsInPopUpAddProduct() {
-        btnAddedGoodsInPopUpAddProduct().click();
-        sleep(3000);
+        if (btnAddedGoodsInPopUpAddProduct().isDisplayed()) {
+            btnAddedGoodsInPopUpAddProduct().click();
+            sleep(3000);
+        }
         return this;
     }
 
@@ -990,17 +994,6 @@ public class Order_aws {
         }
         Float sum = (sumOfAllGoods + costDeliveryAndSafeOrder);
         String totalSum = new DecimalFormat(".##").format(sum).replaceAll(",", ".");
-        return Float.valueOf(totalSum);
-    }
-
-    @Step("Plus the amount of income without VAT of all added goods. Order_aws")
-    public Float plusAmountOfIncomeWithoutVatOfAllAddedGoods() {
-        Float sumOfAllVAT = 0.0f;
-        for (int i = 0; i < incomeWithoutVat().size(); i++) {
-            Float priceOfOneItem = Float.parseFloat(incomeWithoutVat().get(i).getText());
-            sumOfAllVAT = sumOfAllVAT + priceOfOneItem;
-        }
-        String totalSum = new DecimalFormat(".##").format(sumOfAllVAT).replaceAll(",", ".");
         return Float.valueOf(totalSum);
     }
 
