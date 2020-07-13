@@ -6,6 +6,7 @@ import org.testng.Assert;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static ATD.CommonMethods.checkingContainsUrl;
@@ -276,7 +277,7 @@ public class Moto_Catalog_page_Logic extends Moto_Catalog_page {
     public Moto_Category_car_list_page_Logic clickOnChildCategory() {
         parentsCategoriesOfTecDocCatalog().get(0).click();
         childCategoriesFirstLevelBlock().get(0).shouldBe(visible);
-                visibleChildCategory().get(0).shouldBe(visible).click();
+        visibleChildCategory().get(0).shouldBe(visible).click();
         return page(Moto_Category_car_list_page_Logic.class);
     }
 
@@ -294,22 +295,22 @@ public class Moto_Catalog_page_Logic extends Moto_Catalog_page {
 
     @Step("check First Level of parent categories .Moto_Catalog_page")
     public Moto_Catalog_page_Logic checkFirstLevelOfParentCategories(int position) {
-          if (visibleChildCategory().get(0).isDisplayed() && visibleIntermediateCategory().get(0).isDisplayed()) {
-              visibleChildCategory().shouldHave(sizeGreaterThan(0));
+        if (visibleChildCategory().get(0).isDisplayed() && visibleIntermediateCategory().get(0).isDisplayed()) {
+            visibleChildCategory().shouldHave(sizeGreaterThan(0));
             checkIntermediateChildCategoryFirstLevel(position);
         } else if (visibleChildCategory().get(0).isDisplayed()) {
-              visibleChildCategory().shouldHave(sizeGreaterThan(0));
+            visibleChildCategory().shouldHave(sizeGreaterThan(0));
         } else if (visibleIntermediateCategory().get(0).isDisplayed()) {
             checkIntermediateChildCategoryFirstLevel(position);
         }
-                return this;
+        return this;
     }
 
     @Step("check intermediate child category first level .Moto_Catalog_page")
     public Moto_Catalog_page_Logic checkIntermediateChildCategoryFirstLevel(int position) {
         for (int j = 0; j < intermediateChildCategoriesFirstLevel(position + 1).size(); j++) {
             intermediateChildCategoriesFirstLevel(position + 1).get(j).click();
-                 secondLevelBlock().should(appear);
+            secondLevelBlock().should(appear);
             checkSecondLevelOfParentCategories(position);
         }
         return this;
@@ -368,6 +369,62 @@ public class Moto_Catalog_page_Logic extends Moto_Catalog_page {
         garageIconInHeader().shouldBe(visible).click();
         urlsOfAddedVehicleInPopUpOfGarageFromSelector().get(0).shouldBe(visible).shouldHave(attribute("href", url()));
         radioBtnOfAddedVehicleInPopUpOfGarageFromSelector().get(0).shouldHave(attribute("checked", "true"));
+        return this;
+    }
+
+    @Step("added current url to list .Moto_Catalog_page")
+    public Moto_Catalog_page_Logic addedCurrentUrlToList(List<String> list) {
+        selectorInCloseCondition().shouldBe(visible);
+        list.add(url());
+        return this;
+    }
+
+    @Step("check selected vehicle in PopUp of garage icon .Moto_Catalog_page")
+    public Moto_Catalog_page_Logic checkSelectedVehicleInPopUpOfGarageIcon(List<String> list, int sizeOfAddedVehicle) {
+        List<String> listOfVehicleFromPopUp = new ArrayList<>();
+        garageIconInHeader().shouldBe(visible).click();
+        popUpOfGarageInHeader().shouldBe(visible);
+        for (int i = 0; i < urlsOfAddedVehicleInPopUpOfGarageInHeader().size(); i++) {
+            listOfVehicleFromPopUp.add(urlsOfAddedVehicleInPopUpOfGarageInHeader().get(i).getAttribute("href"));
+        }
+        Assert.assertTrue(urlsOfAddedVehicleInPopUpOfGarageInHeader().get(0).getAttribute("href").equals(list.get(list.size() - 1)));
+        visibleVehicleInPopUpOfMyGarageUrls().shouldHaveSize(sizeOfAddedVehicle);
+        return this;
+    }
+
+    @Step("close popUp of my garage block .Moto_Catalog_page")
+    public Moto_Catalog_page_Logic closePopUpOfMyGarageBlock() {
+        garageIconInHeaderActive().shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("close popUp of my garage block .Moto_Catalog_page")
+    public Moto_Catalog_page_Logic checkAddedVehicleInMyGaragePopUp(int size) {
+        urlsOfAddedVehicleInPopUpOfGarageInHeader().shouldHaveSize(size);
+        return this;
+    }
+
+    @Step("checking absence vehicle in My garage block .Moto_Catalog_page")
+    public Moto_Catalog_page_Logic checkingAbsenceVehicleInMyGarageBlock(String vehicle) {
+        List<String> visibleVehicle = new ArrayList<>();
+        for (int i = 0; i < visibleVehicleInPopUpOfMyGarageUrls().size(); i++) {
+            visibleVehicle.add(visibleVehicleInPopUpOfMyGarageUrls().get(i).getAttribute("href"));
+        }
+        Assert.assertTrue(!visibleVehicle.contains(vehicle));
+        return this;
+    }
+
+    @Step("visible pop-Up of My garage block .Moto_Catalog_page")
+    public Moto_Catalog_page_Logic visiblePopUpOfMyGarageBlock() {
+        garageIconInHeader().shouldBe(visible).click();
+        popUpOfGarageInHeader().shouldBe(visible);
+        return this;
+    }
+
+    @Step("visible pop-Up of My garage block .Moto_Catalog_page")
+    public Moto_Catalog_page_Logic openRegistrationFormFromMyGarage(int position) {
+        btnSaveAddedVehicle().get(position).shouldBe(visible).click();
+        registrationForm().shouldBe(visible);
         return this;
     }
 }
