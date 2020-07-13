@@ -20,6 +20,14 @@ public class Index_chemicals_page {
         return $x("//div[@class='special-catalog__categories' and @style='display: block;']//span[text()]");
     }
 
+    SelenideElement secondCategoryInLogicalUnion() {
+        return $x("//div[@class='special-catalog__categories' and @style='display: block;']//li[2]/a");
+    }
+
+    ElementsCollection categoriesInLogicalUnion() {
+        return $$x("//div[@class='special-catalog__categories' and @style='display: block;']//li/a");
+    }
+
     SelenideElement blockTopBrands() {
         return $x("//div[@class='top-brands']/ul/img");
     }
