@@ -11,7 +11,7 @@ public class Profile_bonusSystem_page {
         return $x("//span[@class='deposit']");
     }
 
-    SelenideElement headerBonusAmountCurrency() {
+    public  SelenideElement headerBonusAmountCurrency() {
         return $x("//div[@class='header__bonus-amount']//a//span[2]");
     }
 
@@ -21,6 +21,10 @@ public class Profile_bonusSystem_page {
 
     SelenideElement bonusTable() {
         return $x("//div[@class='bonus_table']");
+    }
+
+    SelenideElement accruedBonusInTable() {
+        return $x("//div[@class='table_over']//tr//td[3]");
     }
 
     SelenideElement bonusProgramBlock() {
