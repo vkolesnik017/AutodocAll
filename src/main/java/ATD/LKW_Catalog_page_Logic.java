@@ -77,4 +77,11 @@ public class LKW_Catalog_page_Logic extends LKW_Catalog_page {
         motoCategory().click();
         return page(Moto_main_page_Logic.class);
     }
+
+    @Step("added current url to list . Maker_car_list_page")
+    public LKW_Catalog_page_Logic addedCurrentUrlToList(List<String> list) {
+        catalogTecDoc().shouldBe(visible);
+        list.add(url());
+        return this;
+    }
 }
