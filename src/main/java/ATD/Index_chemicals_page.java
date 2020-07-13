@@ -85,4 +85,8 @@ public class Index_chemicals_page {
         return $x("//div[@class='special-catalog']//div[@class='special-catalog__row'][2]/a[1]");
     }
 
+    ElementsCollection separateCategoriesInMainCatalog() {
+        return $$x("//div[@class='special-catalog__wrapp']/div/a[@class='ga-click']");
+    }
+
 }
