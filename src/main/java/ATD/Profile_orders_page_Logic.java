@@ -143,4 +143,9 @@ public class Profile_orders_page_Logic extends Profile_orders_page {
         Assert.assertEquals(actualTranslationText, expectedTranslationText);
         return this;
     }
+
+    @Step("Get name tab My order. Profile_addresses_page")
+    public String getNameTabMyOrder() {
+        return profileMyOrderBtn().getText();
+    }
 }

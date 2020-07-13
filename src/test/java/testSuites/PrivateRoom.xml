@@ -6,6 +6,12 @@
         <listener class-name="ATD.ProjectListener"/>
     </listeners>
 
+    <test name="PrivateRoom">
+        <classes>
+                <class name="ATD.PrivateRoom.QC_598_CheckingDisplayOfTheBonusTab"/>
+        </classes>
+    </test>
+
     <test name="QC_683_FunctionalTabOfAddressPR">
         <classes>
             <class name="ATD.PrivateRoom.QC_683_FunctionalTabOfAddressPR.QC_673_AddNewBillingAddress"/>
@@ -57,10 +63,10 @@
 
     <test name="QC_914_BonusTabFunctionalityInPR">
         <classes>
-            <class name="ATD.PrivateRoom.QC_914_BonusTabFunctionalityInPR.QC_915_BonusTabDisplay_CurrencyIsEqualToShop"/>
+            <!--<class name="ATD.PrivateRoom.QC_914_BonusTabFunctionalityInPR.QC_915_BonusTabDisplay_CurrencyIsEqualToShop"/>-->
             <class name="ATD.PrivateRoom.QC_914_BonusTabFunctionalityInPR.QC_916_BonusTabDisplay_CurrencyIsNotEqualToShop"/>
             <class name="ATD.PrivateRoom.QC_914_BonusTabFunctionalityInPR.QC_917_CheckPaginationBlockBonusesTabPR"/>
-            <class name="ATD.PrivateRoom.QC_914_BonusTabFunctionalityInPR.QC_919_BonusTabElementPR"/>
+            <!--<class name="ATD.PrivateRoom.QC_914_BonusTabFunctionalityInPR.QC_919_BonusTabElementPR"/>-->
         </classes>
     </test>
 

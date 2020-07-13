@@ -83,4 +83,9 @@ public class Profile_deposit_page_Logic extends Profile_deposit_page{
         pdfInsideTable().shouldBe(visible);
         return this;
     }
+
+    @Step("Get name tab My deposit. Profile_deposit_page_Logic")
+    public String getNameTabMyDeposit() {
+        return profileDepositBtn().getText();
+    }
 }

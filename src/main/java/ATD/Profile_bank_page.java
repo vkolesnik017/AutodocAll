@@ -7,6 +7,10 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class Profile_bank_page {
 
+    SelenideElement profileBankBtn() {
+        return $x("//a[@data-ga-action='Sidebar_BankDetails']");
+    }
+
     SelenideElement fieldReceiver() {
         return $x("//input[@id='form_AccOwner']");
     }

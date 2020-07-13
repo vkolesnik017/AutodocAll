@@ -98,31 +98,31 @@ public class Profile_bank_page_Logic extends Profile_bank_page {
         return bankData;
     }
 
-    @Step(":from Profile_addresses_page")
+    @Step(":from Profile_bank_page")
     public Profile_bank_page_Logic checkForTextInBlockTopTitle(String expectedText) {
         new Profile_addresses_page_Logic().checkForTextInBlockTopTitle(expectedText);
         return this;
     }
 
-    @Step(":from Profile_addresses_page")
+    @Step(":from Profile_bank_page")
     public Profile_bank_page_Logic checkPresenceClientID() {
         new Profile_addresses_page_Logic().checkPresenceClientID();
         return this;
     }
 
-    @Step(":from Profile_addresses_page")
+    @Step(":from Profile_bank_page")
     public Profile_bank_page_Logic checkPresenceHeaderBlockAndElementInside() {
         new Profile_addresses_page_Logic().checkPresenceHeaderBlockAndElementInside();
         return this;
     }
 
-    @Step(":from Profile_addresses_page")
+    @Step(":from Profile_bank_page")
     public Profile_bank_page_Logic checkNamePageAndPresenceIcon(String expectedName) {
         new Profile_addresses_page_Logic().checkNamePageAndPresenceIcon(expectedName);
         return this;
     }
 
-    @Step("Checks presence fields in bank Info form. Profile_addresses_page")
+    @Step("Checks presence fields in bank Info form. Profile_bank_page")
     public Profile_bank_page_Logic checkPresenceFieldsIbBankInfoForm() {
         fieldReceiver().shouldBe(visible);
         fieldIBAN().shouldBe(visible);
@@ -133,12 +133,16 @@ public class Profile_bank_page_Logic extends Profile_bank_page {
         return this;
     }
 
-    @Step("Checks presence button save and cancel change. Profile_addresses_page")
+    @Step("Checks presence button save and cancel change. Profile_bank_page")
     public Profile_bank_page_Logic checkPresenceBtnSaveAndCancelChange() {
         saveFormBtn().shouldBe(visible);
         cancelChangeBtn().shouldBe(visible);
         return this;
     }
 
+    @Step("Get name tab bank. Profile_bank_page")
+    public String getNameTabBank() {
+        return profileBankBtn().getText();
+    }
 
 }

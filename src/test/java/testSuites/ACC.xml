@@ -6,7 +6,7 @@
         <listener class-name="ATD.ProjectListener"/>
     </listeners>
 
-    <test name="QC_1260_MainProductCatalogOnMainTools">
+    <test name="QC_1260_MainProductCatalogOnMainTools_ATD">
         <classes>
             <class name="ATD.ACC.QC_1260_MainProductCatalogOnMainTools.QC_1261_TitleMainCatalog"/>
             <class name="ATD.ACC.QC_1260_MainProductCatalogOnMainTools.QC_1262_SubtitleMainCatalog"/>
@@ -26,17 +26,7 @@
         </classes>
     </test>
 
-    <test name="QC_1417_MainChemie_PKW">
-        <classes>
-            <class name="PKW.ACC.QC_1417_MainChemistry.QC_1418_BreadCrumbsOnMainPageChemistry"/>
-            <class name="PKW.ACC.QC_1417_MainChemistry.QC_1544_SeoBlockOilCategories"/>
-            <class name="PKW.ACC.QC_1417_MainChemistry.QC_1545_SeoCategoriesBlock"/>
-            <class name="PKW.ACC.QC_1417_MainChemistry.QC_1615_BrandsBlock"/>
-            <class name="PKW.ACC.QC_1417_MainChemistry.QC_1617_BlockSeoText"/>
-        </classes>
-    </test>
-
-    <test name="QC_1042_MainCategoryCatalogOnMainChemie">
+    <test name="QC_1042_MainCategoryCatalogOnMainChemie_ATD">
         <classes>
             <class name="ATD.ACC.QC_1042_MainCategoryCatalogOnMainChemie.QC_1056_PresenceSeparateCategoryInMainChemistry"/>
             <class name="ATD.ACC.QC_1042_MainCategoryCatalogOnMainChemie.QC_1058_PresenceLogicalAssociations"/>
@@ -44,7 +34,7 @@
         </classes>
     </test>
 
-    <test name="QC_836_MainAccessories">
+    <test name="QC_836_MainAccessories_ATD">
         <classes>
             <class name="ATD.ACC.QC_836_MainAccessories.QC_837_PresenceMainTitleOnMainPage"/>
             <class name="ATD.ACC.QC_836_MainAccessories.QC_838_SubtitleOnMainAccessories"/>
@@ -55,7 +45,7 @@
         </classes>
     </test>
 
-    <test name="QC_1064_BlockTopProductsOnMainChemie">
+    <test name="QC_1064_BlockTopProductsOnMainChemie_ATD">
         <classes>
             <class name="ATD.ACC.QC_1064_BlockTopProductsOnMainChemie.QC_1065_BlockTopProducts"/>
             <class name="ATD.ACC.QC_1064_BlockTopProductsOnMainChemie.QC_1066_HoverMiniCardsTopProduct"/>
@@ -65,7 +55,7 @@
         </classes>
     </test>
 
-    <test name="QC_950_BlockTopProductsOnMainAccessories">
+    <test name="QC_950_BlockTopProductsOnMainAccessories_ATD">
         <classes>
             <class name="ATD.ACC.QC_950_BlockTopProductsOnMainAccessories.QC_953_BlockTopProducts"/>
             <class name="ATD.ACC.QC_950_BlockTopProductsOnMainAccessories.QC_956_NumberOfMiniCardsInBlockTopProducts"/>
@@ -75,7 +65,7 @@
         </classes>
     </test>
 
-    <test name="QC_929_BlockCategoriesLogicalUnionOnMainAccessories">
+    <test name="QC_929_BlockCategoriesLogicalUnionOnMainAccessories_ATD">
         <classes>
             <class name="ATD.ACC.QC_929_BlockCategoriesLogicalUnionOnMainAccessories.QC_932_BlockMainCatalog"/>
             <class name="ATD.ACC.QC_929_BlockCategoriesLogicalUnionOnMainAccessories.QC_935_HoverLogicalUnion"/>
@@ -83,7 +73,7 @@
         </classes>
     </test>
 
-    <test name="QC_1322_BlockTop10ProductsOnMainTools">
+    <test name="QC_1322_BlockTop10ProductsOnMainTools_ATD">
         <classes>
             <class name="ATD.ACC.QC_1322_BlockTop10ProductsOnMainTools.QC_1323_TitleBlockTop10Products"/>
             <class name="ATD.ACC.QC_1322_BlockTop10ProductsOnMainTools.QC_1325_SubtitleBlockTop10Products"/>
@@ -94,7 +84,7 @@
         </classes>
     </test>
 
-    <test name="QC_1383_BlockFilterByBrandOnListingAccessories">
+    <test name="QC_1383_BlockFilterByBrandOnListingAccessories_ATD">
         <classes>
             <class name="ATD.ACC.QC_1383_BlockFilterByBrandOnListingAccessories.QC_1384_WorkBtnPrevAndNextInBlockBrands"/>
             <class name="ATD.ACC.QC_1383_BlockFilterByBrandOnListingAccessories.QC_1385_SortedListingWhenChoosingBrand"/>
@@ -103,7 +93,7 @@
         </classes>
     </test>
 
-    <test name="QC_886_TopCategoriesDirectionOnMainAccessories">
+    <test name="QC_886_TopCategoriesDirectionOnMainAccessories_ATD">
         <classes>
             <class name="ATD.ACC.QC_886_TopCategoriesDirectionOnMainAccessories.QC_902_BlockTopCategoriesOnMainPage"/>
             <class name="ATD.ACC.QC_886_TopCategoriesDirectionOnMainAccessories.QC_920_TabsBlockTopCategories"/>
@@ -111,7 +101,7 @@
         </classes>
     </test>
 
-    <test name="QC_1356_BlockCategoriesInSidebarOnListingAccessories">
+    <test name="QC_1356_BlockCategoriesInSidebarOnListingAccessories_ATD">
         <classes>
             <class name="ATD.ACC.QC_1356_BlockCategoriesInSidebarOnListingAccessories.QC_1360_TitleCategoriesBlockInSidebar"/>
             <class name="ATD.ACC.QC_1356_BlockCategoriesInSidebarOnListingAccessories.QC_1366_CategoriesSelectedLogicalUnion"/>
@@ -119,7 +109,7 @@
         </classes>
     </test>
 
-    <test name="QC_1340_ListingAccessories">
+    <test name="QC_1340_ListingAccessories_ATD">
         <classes>
             <class name="ATD.ACC.QC_1340_ListingAccessories.QC_1378_NameCategoryOnListingAccessories"/>
             <class name="ATD.ACC.QC_1340_ListingAccessories.QC_1382_BlockChangeViewListingAccessories"/>
@@ -128,7 +118,7 @@
         </classes>
     </test>
 
-    <test name="QC_1276_BlockTop6ProductsOnMainTools">
+    <test name="QC_1276_BlockTop6ProductsOnMainTools_ATD">
         <classes>
             <class name="ATD.ACC.QC_1276_BlockTop6ProductsOnMainTools.QC_1278_TitleBlockTop6Products"/>
             <class name="ATD.ACC.QC_1276_BlockTop6ProductsOnMainTools.QC_1280_NumberOfMiniCardsBlockTop6Products"/>
@@ -138,7 +128,7 @@
         </classes>
     </test>
 
-    <test name="QC_1254_MainTools">
+    <test name="QC_1254_MainTools_ATD">
         <classes>
             <class name="ATD.ACC.QC_1254_MainTools.QC_1321_BlockAdvantagesInternetShop"/>
             <class name="ATD.ACC.QC_1254_MainTools.QC_1333_BlockTopBrandsOnMainTools"/>
@@ -147,27 +137,95 @@
         </classes>
     </test>
 
-    <test name="QC_1849_ListingChemistry">
+    <test name="QC_1849_ListingChemistry_ATD">
         <classes>
             <class name="ATD.ACC.QC_1849_ListingChemistry.QC_1850_NameTitleOnListingChemistry"/>
-            <class name="ATD.ACC.QC_1849_ListingChemistry.QC_1851_BlockBrandsOnListingPageChemistry"/>
+            <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2029_BreadCrumbsChemistryListing"/>
             <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2030_WorkBreadCrumbsOnChemistryListing"/>
             <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2036_BlockChangeViewChemistryListing"/>
             <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2039_BlockDisplayCountProductsOnChemistryListing"/>
             <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2040_PaginationBlockOnChemistryListing"/>
+            <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2041_WorkBtnPaginationBlockOnChemistryListing"/>
+            <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2043_BlockSeoTextOnChemistryListing"/>
         </classes>
     </test>
 
-    <test name="QC_1379_BredCrumbsOnListingAccessories">
+    <test name="QC_1379_BredCrumbsOnListingAccessories_ATD">
         <classes>
             <class name="ATD.ACC.QC_1379_BredCrumbsOnListingAccessories.QC_1380_BreadCrumbs"/>
             <class name="ATD.ACC.QC_1379_BredCrumbsOnListingAccessories.QC_1381_TransitionOnBreadCrumbs"/>
         </classes>
     </test>
 
+    <test name="QC_2044_BlockCategoriesInSidebarOnChemistryListing">
+        <classes>
+            <class name="ATD.ACC.QC_2044_BlockCategoriesInSidebarOnChemistryListing.QC_2045_TitleCategoriesBlockInSidebarOnChemistryListing"/>
+            <class name="ATD.ACC.QC_2044_BlockCategoriesInSidebarOnChemistryListing.QC_2046_CategoriesSelectedLogicalUnionInSidebarOnChemistryListing"/>
+            <class name="ATD.ACC.QC_2044_BlockCategoriesInSidebarOnChemistryListing.QC_2048_SelectCategoryFromSidebarOnChemistryListing"/>
+        </classes>
+    </test>
+
+    <test name="QC_2050_BlockFilterByBrandsOnChemistryListing">
+        <classes>
+            <class name="ATD.ACC.QC_2050_BlockFilterByBrandsOnChemistryListing.QC_1851_BlockBrandsOnListingPageChemistry"/>
+            <class name="ATD.ACC.QC_2050_BlockFilterByBrandsOnChemistryListing.QC_2032_WorkFilterBlockByBrandOnChemistryListing"/>
+            <class name="ATD.ACC.QC_2050_BlockFilterByBrandsOnChemistryListing.QC_2052_ResetSelectedFilterByBrandsOnChemistryListing"/>
+        </classes>
+    </test>
 
 
+    <test name="QC_1417_MainChemie_PKW">
+        <classes>
+            <class name="PKW.ACC.QC_1417_MainChemistry.QC_1418_BreadCrumbsOnMainPageChemistry"/>
+            <class name="PKW.ACC.QC_1417_MainChemistry.QC_1544_SeoBlockOilCategories"/>
+            <class name="PKW.ACC.QC_1417_MainChemistry.QC_1545_SeoCategoriesBlock"/>
+            <class name="PKW.ACC.QC_1417_MainChemistry.QC_1615_BrandsBlock"/>
+            <class name="PKW.ACC.QC_1417_MainChemistry.QC_1617_BlockSeoText"/>
+        </classes>
+    </test>
 
+    <test name="QC_992_MainAccessories_PKW">
+        <classes>
+            <class name="PKW.ACC.QC_992_MainAccessories.QC_993_BreadCrumbs"/>
+            <class name="PKW.ACC.QC_992_MainAccessories.QC_1028_BlockTopBrands"/>
+            <class name="PKW.ACC.QC_992_MainAccessories.QC_1029_BlockWithSeoText"/>
+        </classes>
+    </test>
+
+    <test name="QC_994_MainBlockCategoriesOnMainPageAcc_PKW">
+        <classes>
+            <class name="PKW.ACC.QC_994_MainBlockCategoriesOnMainPageAcc.QC_995_TitleMainBlockCategories"/>
+            <class name="PKW.ACC.QC_994_MainBlockCategoriesOnMainPageAcc.QC_996_BlocksWithCategoriesOnMainAccessories"/>
+            <class name="PKW.ACC.QC_994_MainBlockCategoriesOnMainPageAcc.QC_997_TransitionOnListingCategories"/>
+        </classes>
+    </test>
+
+    <test name="QC_1020_BlockTopProductsOnMainACC_PKW">
+        <classes>
+            <class name="PKW.ACC.QC_1020_BlockTopProductsOnMainACC.QC_1022_BlockTopProducts"/>
+            <class name="PKW.ACC.QC_1020_BlockTopProductsOnMainACC.QC_1024_HoverMiniCardTopProducts"/>
+            <class name="PKW.ACC.QC_1020_BlockTopProductsOnMainACC.QC_1026_AddProductFromBlockTopProductsToBasket"/>
+        </classes>
+    </test>
+
+    <test name="QC_1745_MainTools_PKW">
+        <classes>
+            <class name="PKW.ACC.QC_1745_MainTools.QC_1746_BreadCrumbsOnMainPageTools"/>
+            <class name="PKW.ACC.QC_1745_MainTools.QC_1747_TitleCatalogProductsOnMainTools"/>
+            <class name="PKW.ACC.QC_1745_MainTools.QC_1761_BlockBrandsOnMainTools"/>
+        </classes>
+    </test>
+
+    <test name="QC_1793_ChemistryListing_PKW">
+        <classes>
+            <class name="PKW.ACC.QC_1793_ChemistryListing.QC_1794_BreadCrumbsChemistryListing"/>
+            <class name="PKW.ACC.QC_1793_ChemistryListing.QC_1795_WorkBreadCrumbsOnChemistryListing"/>
+            <class name="PKW.ACC.QC_1793_ChemistryListing.QC_1796_TitlePageListingChemistry"/>
+            <class name="PKW.ACC.QC_1793_ChemistryListing.QC_1809_BlockFilterForBrandsOnChemistryListing"/>
+            <class name="PKW.ACC.QC_1793_ChemistryListing.QC_1815_SelectionPageInPaginationOnChemistryListing"/>
+            <class name="PKW.ACC.QC_1793_ChemistryListing.QC_1816_TransitionOnPageForBtnPaginationOnChemistryListing"/>
+        </classes>
+    </test>
 
 
 </suite>

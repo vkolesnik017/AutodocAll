@@ -74,7 +74,6 @@ public class Profile_plus_page_Logic extends Profile_plus_page {
         return this;
     }
 
-
     @Step("check visible added vehicle in popUp of garage in header  . Profile_plus_page")
     public Profile_plus_page_Logic checkVisibleAddedVehicleInPopUpOfGarageHeader(int expectedSize) {
         countOfAddedVehicleInGarageIcon().click();
@@ -83,20 +82,22 @@ public class Profile_plus_page_Logic extends Profile_plus_page {
         return this;
     }
 
-
     @Step("go to garage block through popUp in header by click on link More  . Profile_plus_page")
     public Profile_garage_page_Logic goToGarageBlockThroughPopUpInHeader() {
         linkMoreInPopUpOfGarageInHeader().shouldBe(visible).click();
         return page(Profile_garage_page_Logic.class);
     }
 
-
-
-
-    @Step(":from. Profile_orders_page")
+    @Step(":from. Profile_plus_page")
     public Main_page_Logic logOutClick() {
         new Main_page_Logic().logOutClick();
         checkingContainsUrl("www.autodoc.de");
         return page(Main_page_Logic.class);
+    }
+
+    @Step("Checks absence of button with transition to the bonus page. Profile_plus_page")
+    public Profile_plus_page_Logic checkAbsenceBtnWithTransitionToBonusPage() {
+        profileBonusSystemBtn().shouldNotBe(visible);
+        return this;
     }
 }
