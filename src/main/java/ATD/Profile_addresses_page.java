@@ -8,6 +8,10 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class Profile_addresses_page {
 
+    SelenideElement profileAddressBtn() {
+        return $x("//a[@data-ga-action='Sidebar_MyAddresses']");
+    }
+
     SelenideElement billingAddressBlock() {
         return $x("//div[@class='adrese_fields']//ul[1]");
     }

@@ -7,6 +7,10 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class Profile_setting_page {
 
+    SelenideElement profileSettingBtn() {
+        return $x("//a[@data-ga-action='Sidebar_Settings']");
+    }
+
     SelenideElement changePassBlock() {
         return $x("//div[@class='change_pass']");
     }
