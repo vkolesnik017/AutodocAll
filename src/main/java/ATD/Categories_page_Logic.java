@@ -74,7 +74,7 @@ public class Categories_page_Logic extends Categories_page {
         int responseCode = http.getResponseCode();
 //        Assert.assertEquals(responseCode, 200);
         if (responseCode != 200) {
-          System.out.println("Response code of route " + tecdocCategoriesA().get(i).attr("href") + " is " + responseCode);
+          System.err.println("Response code of route " + tecdocCategoriesA().get(i).attr("href") + " is " + responseCode);
         }
       }
 
@@ -86,7 +86,7 @@ public class Categories_page_Logic extends Categories_page {
         int responseCode = http.getResponseCode();
 //        Assert.assertEquals(responseCode, 200);
         if (responseCode != 200) {
-          System.out.println("Response code of route " + tecdocCategoriesSpan().get(i).attr("url") + " is " + responseCode);
+          System.err.println("Response code of route " + tecdocCategoriesSpan().get(i).attr("url") + " is " + responseCode);
         }
       }
       return this;
@@ -104,7 +104,7 @@ public class Categories_page_Logic extends Categories_page {
         int responseCode = http.getResponseCode();
 //        Assert.assertEquals(responseCode, 200);
         if (responseCode != 200) {
-          System.out.println("Response code of route " + dropdownCategories().get(i).attr("href") + " is " + responseCode);
+          System.err.println("Response code of route " + dropdownCategories().get(i).attr("href") + " is " + responseCode);
         }
       }
       return this;
@@ -265,7 +265,7 @@ public class Categories_page_Logic extends Categories_page {
      // System.out.println(listWithRoutes.get(i));
       open(listWithRoutes.get(i));
       if(!listOfProducts().is(visible)) {
-        System.out.println("There is no product output on route " + listWithRoutes.get(i));
+        System.err.println("There is no product output on route " + listWithRoutes.get(i));
       }
     }
     return this;
