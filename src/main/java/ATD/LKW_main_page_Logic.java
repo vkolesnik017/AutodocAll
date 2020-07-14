@@ -528,13 +528,16 @@ public class LKW_main_page_Logic extends LKW_main_page {
             if (!languageListBlock().isDisplayed()) {
                 languageBlock().click();
             }
-            languageListBlock().shouldBe(visible);
+            //languageListBlock().shouldBe(visible);
+            languageListBlock().waitUntil(visible,20000);
             languagesOfSubscribe().get(i).scrollIntoView("{block: \"end\"}");
             languagesOfSubscribe().get(i).click();
             languageListBlock().shouldNotBe(visible);
             closeCookiesPopUp().shouldBe(visible);
             currentLanguage().shouldNotHave(exactText(currentCountry));
-            Assert.assertTrue(url().contains(new DataBase().getRouteByRouteName(language.get(i), "lkw_main")));
+            String urlFromBD = new DataBase().getFullRouteByRouteName("subprod",language.get(i), "lkw_main")+"/";
+         // Assert.assertTrue(url().contains(new DataBase().getRouteByRouteName(language.get(i), "lkw_main")));
+            Assert.assertEquals(url(),urlFromBD);
         }
                 return this;
     }
