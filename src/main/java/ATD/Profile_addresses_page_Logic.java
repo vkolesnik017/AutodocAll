@@ -230,4 +230,9 @@ public class Profile_addresses_page_Logic extends Profile_addresses_page {
     public String getDailyBillingAddress() {
         return String.valueOf(userBillingAddressData().getText());
     }
+
+    @Step("Get name tab addresses. Profile_addresses_page")
+    public String getNameTabAddresses() {
+        return profileAddressBtn().getText();
+    }
 }

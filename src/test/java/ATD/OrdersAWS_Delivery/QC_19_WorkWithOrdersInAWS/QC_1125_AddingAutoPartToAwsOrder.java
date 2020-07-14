@@ -23,8 +23,8 @@ import static com.codeborne.selenide.Selenide.close;
 public class QC_1125_AddingAutoPartToAwsOrder {
 
     private String userID = "15371589", articleNum, productArticleID;
-    private Float productCost, sellingCostInOrder, sumIncomeWithoutVatAllGoods, prunedTotalSumIncomeWithoutVat,
-            totalSumIncomeWithoutVat, totalCostOrder, totalSellingPriceIncludingDelivery, prunedSumIncomeWithoutVatAllGoods;
+    private Float productCost, sellingCostInOrder, sumIncomeWithoutVatAllGoods,
+            totalSumIncomeWithoutVat, totalCostOrder, totalSellingPriceIncludingDelivery;
 
     private Product_page_Logic product_page_logic = new Product_page_Logic();
     private Order_aws order_aws = new Order_aws();
@@ -48,7 +48,7 @@ public class QC_1125_AddingAutoPartToAwsOrder {
         articleNum = product_page_logic.getArticleNumber();
         productArticleID = product_page_logic.getProductId();
         productCost = product_page_logic.getProductPrice();
-        sellingCostInOrder = new SearchOrders_page_aws().openSearchOrderPageWithLogin()
+        totalSumIncomeWithoutVat = new SearchOrders_page_aws().openSearchOrderPageWithLogin()
                 .clickAddOrderBtn()
                 .fillsInFieldCustomerID(userID)
                 .chooseSkinInSelector("autodoc.de (DE)")
@@ -59,7 +59,8 @@ public class QC_1125_AddingAutoPartToAwsOrder {
                 .checkArticleOfAddedProduct("CAF100729P")
                 .clickSaveOrderBtn()
                 .checkOrderHasTestStatus()
-                .clickBtnAddedGoodsINOrder()
+                .getTotalSumIncomeWithoutVAT();
+        sellingCostInOrder = order_aws.clickBtnAddedGoodsINOrder()
                 .checkPresencePopUpAddProduct()
                 .fillingFieldArticleNumInPopUpAddProduct(articleNum)
                 .clickBtnAddedGoodsInPopUpAddProduct()
@@ -69,11 +70,8 @@ public class QC_1125_AddingAutoPartToAwsOrder {
                 .checkPresenceTableOfWarehousesAndSuppliers()
                 .getSellingPriceOfCertainProduct(productArticleID);
         Assert.assertEquals(productCost, sellingCostInOrder);
-        totalSumIncomeWithoutVat = order_aws.getTotalSumIncomeWithoutVAT();
-        prunedTotalSumIncomeWithoutVat = cutPriceToFirstDecimalPlace(totalSumIncomeWithoutVat);
-        sumIncomeWithoutVatAllGoods = order_aws.plusAmountOfIncomeWithoutVatOfAllAddedGoods();
-        prunedSumIncomeWithoutVatAllGoods = cutPriceToFirstDecimalPlace(sumIncomeWithoutVatAllGoods);
-        Assert.assertEquals(prunedTotalSumIncomeWithoutVat, prunedSumIncomeWithoutVatAllGoods);
+        sumIncomeWithoutVatAllGoods = order_aws.getTotalSumIncomeWithoutVAT();
+        Assert.assertNotEquals(totalSumIncomeWithoutVat, sumIncomeWithoutVatAllGoods);
         order_aws.compareQuantityOfItemsWithQuantityInColumnQuantityOfProducts();
         totalCostOrder = order_aws.getTotalPriceOrderAWS();
         order_aws.reSaveOrder();

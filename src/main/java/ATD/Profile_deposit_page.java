@@ -8,6 +8,10 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class Profile_deposit_page {
 
+    SelenideElement profileDepositBtn() {
+        return $x("//a[@data-ga-action='Sidebar_MyDepositAccount']");
+    }
+
     SelenideElement depositBalance() {
         return $x("//span[@class='green']");
     }

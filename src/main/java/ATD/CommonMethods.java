@@ -262,7 +262,7 @@ public class CommonMethods {
     }
 
     private ElementsCollection miniCardsOfProducts() {
-        return $$(byXpath("//*[contains(@class,'product-list__item ')]"));
+        return $$(byXpath("//*[contains(@class,'active') and @aria-hidden='false']//div[5]/.."));
     }
 
     private By recoveryCharacteristicInBlockOfTopProducts = By.cssSelector(".default_ul_li_class");

@@ -1,13 +1,11 @@
 package ATD;
 
 import static com.codeborne.selenide.Condition.*;
-
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
-
 import java.util.ArrayList;
-
+import java.util.Collections;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.Selenide.sleep;
 import static com.codeborne.selenide.CollectionCondition.size;
@@ -134,7 +132,7 @@ public class Index_chemicals_page_Logic extends Index_chemicals_page {
     }
 
 
-    @Step("Get name all categories in logical union and add in list. Index_accessories_page")
+    @Step("Get name all categories in logical union and add in list. Index_chemicals_page")
     public ArrayList getNameAllCategoriesInLogicalUnionAndAddToList() {
         catalogFirstGroup().scrollTo().hover();
         secondCategoryInLogicalUnion().shouldBe(visible);
@@ -144,6 +142,17 @@ public class Index_chemicals_page_Logic extends Index_chemicals_page {
             nameCategories.add(name);
         }
         return nameCategories;
+    }
+
+    @Step("Get name all separate categories in main catalog and add in list. Index_chemicals_page")
+    public ArrayList getNameAllSeparateCategoriesInMainCatalogAndAddToList() {
+        ArrayList <String> nameSeparateCategories = new ArrayList<>();
+        for(SelenideElement element : separateCategoriesInMainCatalog()) {
+            String name = element.getText();
+            nameSeparateCategories.add(name);
+            Collections.sort(nameSeparateCategories);
+        }
+        return nameSeparateCategories;
     }
 
 
