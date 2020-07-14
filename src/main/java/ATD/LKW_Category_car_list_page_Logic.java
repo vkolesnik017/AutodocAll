@@ -255,7 +255,7 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         }
         brandsOfBrandBlock("cb-brand-4868").click();
         appearsOfLoader();
-        Assert.assertTrue(getExpectedUrl(url()).equals(getExpectedUrl(db.getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", subRoute))));
+        Assert.assertEquals(getExpectedUrl(url()), getExpectedUrl(db.getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", subRoute)));
         for (int i = 0; i < titleOfProductInTecDocListingBlock().size(); i++) {
             titleOfProductInTecDocListingBlock().get(i).shouldHave(text("DONALDSON"));
         }
