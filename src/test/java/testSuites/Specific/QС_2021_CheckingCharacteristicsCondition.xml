@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="QASYS_2021_CheckingCharacteristicsCondition" data-provider-thread-count="2">
+<suite name="QC_2021_CheckingCharacteristicsCondition" data-provider-thread-count="2">
 
     <listeners>
         <listener class-name="ATD.ProjectListener"/>
     </listeners>
 
-    <test name="QASYS_2021_CheckingCharacteristicsCondition">
+    <test name="QC_2021_CheckingCharacteristicsCondition">
         <classes>
-            <class name="specificTests.QASYS_2021_CheckingCharacteristicsCondition">
+            <class name="specificTests.QC_2021_CheckingCharacteristicsCondition">
             </class>
         </classes>
     </test>
