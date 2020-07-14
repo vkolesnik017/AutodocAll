@@ -9,6 +9,7 @@
     <test name="PrivateRoom">
         <classes>
                 <class name="ATD.PrivateRoom.QC_598_CheckingDisplayOfTheBonusTab"/>
+                <class name="ATD.PrivateRoom.QC_597_CheckingUrlForTabsInPR"/>
         </classes>
     </test>
 

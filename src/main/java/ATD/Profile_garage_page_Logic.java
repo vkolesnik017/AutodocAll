@@ -119,4 +119,9 @@ public class Profile_garage_page_Logic extends Profile_garage_page {
          mainLogoInHeader().click();
         return page(Main_page_Logic.class);
     }
+
+    @Step("Get name tab My vehicle. Profile_garage_page")
+    public String getNameTabMyVehicles() {
+        return myVehiclesBlock().getText();
+    }
 }
