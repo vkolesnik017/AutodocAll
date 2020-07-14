@@ -6,10 +6,10 @@ import org.testng.Assert;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import static ATD.CommonMethods.checkingContainsUrl;
+import static ATD.CommonMethods.password;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.back;
@@ -427,4 +427,13 @@ public class Moto_Catalog_page_Logic extends Moto_Catalog_page {
         registrationForm().shouldBe(visible);
         return this;
     }
+
+    @Step("Login from My_garage block with mail {mail} and transition to profile plus page. Moto_Catalog_page")
+    public Profile_garage_page_Logic loginFromMyGarageAndTransitionToProfilePlusPage(String mail) {
+        mailFieldLogin().shouldBe(visible).setValue(mail);
+        passFieldLogin().setValue(password);
+        submitBtnLogin().click();
+        return page(Profile_garage_page_Logic.class);
+    }
+
 }

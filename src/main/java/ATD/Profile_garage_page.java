@@ -77,4 +77,16 @@ public class Profile_garage_page {
     ElementsCollection addedAutoFromPopUpInHeader() {return $$x("//div[@class='wrapper-radio']/label");}
 
     SelenideElement mainLogoInHeader() {return $x("//a[@class='header__logo-main']/img");}
+
+    SelenideElement nameOfUser() {return $x("//span[@class='name']");}
+
+    ElementsCollection vehicleFromViewedHistoryBlockInMyGarage() {return $$x("//div[@class='history-cars-rows']/a[2]");}
+
+    ElementsCollection btnSaveVehicleFromViewedHistory() {return $$x("//a[@class='history-cars-rows__button active js-add-car-to-garage']");}
+
+    ElementsCollection titleOfVehicleFromViewedHistory() {return $$x("//div[@class='history-cars-rows__name']");}
+
+     ElementsCollection btnDeleteVehicleInMyGaragePopUp() {return $$x("//div[contains(@class,'js-remove-car')]");}
+
+    SelenideElement btnAddVehicleInMyGaragePopUp() {return $x("//div[@class='header-garage__notlogged-button js-selector-add-car']");}
 }
