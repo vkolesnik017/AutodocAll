@@ -200,6 +200,64 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
         return this;
     }
 
+    @Step("Click first generic in generics block. Listing_chemicals_Page")
+    public Listing_chemicals_Page_Logic clickFirstGenericInGenericsBlock() {
+        firstGenericInGenericsBlock().click();
+        return this;
+    }
+
+    @Step("Click second generic in generics block. Listing_chemicals_Page")
+    public Listing_chemicals_Page_Logic clickSecondGenericInGenericsBlock() {
+        secondGenericInGenericsBlock().click();
+        return this;
+    }
+
+    @Step("Get name from first generic in generics block. Listing_chemicals_Page")
+    public String  getNameFirstGenericInGenericBlock() {
+        return firstGenericInGenericsBlock().getText();
+    }
+
+    @Step("Get name from second generic in generics block. Listing_chemicals_Page")
+    public String  getNameSecondGenericInGenericBlock() {
+        return secondGenericInGenericsBlock().getText();
+    }
+
+    @Step("Checking sorting products by generic. Listing_chemicals_Page")
+    public Listing_chemicals_Page_Logic checkingSortingProductsByGeneric() {
+        Listing_page_Logic listingPageLogic = new Listing_page_Logic();
+        String firstGeneric = getNameFirstGenericInGenericBlock();
+        String secondGeneric = getNameSecondGenericInGenericBlock();
+        clickFirstGenericInGenericsBlock();
+        listingPageLogic.waitUntilPreloaderDisappear();
+        listingPageLogic.checkProductTitleOnListing(firstGeneric, true, titleNameProductsFromListing());
+        clickSecondGenericInGenericsBlock();
+        listingPageLogic.waitUntilPreloaderDisappear();
+        listingPageLogic.checkProductTitleOnListing(secondGeneric, true, titleNameProductsFromListing());
+        firstGenericInGenericsBlockToGetData().shouldHave(attribute("data-checked", "true"));
+        secondGenericInGenericsBlockToGetData().shouldHave(attribute("data-checked", "false"));
+        return this;
+
+    }
+
+    @Step("Checking presence generic block. Listing_chemicals_Page")
+    public Listing_chemicals_Page_Logic checkingPresenceGenericBlock() {
+        blockGeneric().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checking work btn Previous and Next in generic block. Listing_chemicals_Page")
+    public Listing_chemicals_Page_Logic checkingWorkBtnPrevAndNextInGenericBlock() {
+        if (allGenericsInGenericBlock().size() > 6) {
+            btnNextInGenericBlock().click();
+            firstGenericInGenericsBlock().waitUntil(attribute("aria-hidden", "true"),20000);
+            firstGenericInGenericsBlock().shouldNotBe(visible);
+            btnPreviousInGenericBlock().click();
+            firstGenericInGenericsBlock().waitUntil(attribute("aria-hidden", "false"),20000);
+            firstGenericInGenericsBlock().shouldBe(visible);
+        }
+        return this;
+    }
+
 
 
 
