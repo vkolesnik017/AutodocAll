@@ -23,7 +23,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class QC_597_CheckingUrlForTabsInPR {
 
     private String mail = "QC_597_autotestATD@mailinator.com", metaTitle, nameTabDeposit, nameTabSettings, nameTabBank,
-            nameTabAddresses, nameTabMyOrder;
+            nameTabAddresses, nameTabMyOrder, nameTabMyGarage;
     private Profile_plus_page_Logic profile_plus_page_logic = new Profile_plus_page_Logic();
 
     @BeforeClass
@@ -73,10 +73,11 @@ public class QC_597_CheckingUrlForTabsInPR {
         metaTitle = title();
         Assert.assertEquals(metaTitle, nameTabMyOrder);
         back();
-        profile_plus_page_logic.goToMyVehiclesBlock();
+        nameTabMyGarage = profile_plus_page_logic.goToMyVehiclesBlock()
+                .getNameTabMyVehicles();
         checkingContainsUrl("/profile/garage");
         metaTitle = title();
-        Assert.assertEquals(metaTitle, "Meine Garage");
+        Assert.assertEquals(metaTitle, nameTabMyGarage);
         back();
         profile_plus_page_logic.checkAbsenceBtnWithTransitionToBonusPage();
     }

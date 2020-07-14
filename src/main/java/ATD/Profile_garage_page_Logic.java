@@ -122,6 +122,11 @@ public class Profile_garage_page_Logic extends Profile_garage_page {
         return page(Main_page_Logic.class);
     }
 
+    @Step("Get name tab My vehicle. Profile_garage_page")
+    public String getNameTabMyVehicles() {
+        return myVehiclesBlock().getText();
+    }
+
     @Step("visibility of users name .Profile_garage_page")
     public Profile_garage_page_Logic visibilityOfUsersName() {
         nameOfUser().shouldBe(visible);

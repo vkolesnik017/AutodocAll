@@ -8,6 +8,8 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class Profile_garage_page {
 
+    SelenideElement myVehiclesBlock() {return $x("//a[@data-ga-action='Sidebar_MyVehicles']");}
+
     SelenideElement btnAddedAuto() {
         return $x("//a[contains(@class,'add-car-link')]");
     }
