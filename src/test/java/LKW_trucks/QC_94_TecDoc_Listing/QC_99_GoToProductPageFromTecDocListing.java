@@ -34,7 +34,8 @@ public class QC_99_GoToProductPageFromTecDocListing {
     @Description(value = "Test checks transition on Product page from TecDoc listing ")
     public void testChecksTransitionOnProductPageFromTecDocListing(String route) {
         openPage(route);
-        new LKW_Category_car_list_page_Logic().goToProductPageFromImageBrandTitle();
+        String linkOfProduct = new LKW_Category_car_list_page_Logic().getLinkOfProduct(0);
+        new LKW_Category_car_list_page_Logic().goToProductPageFromImageBrandTitle(linkOfProduct);
     }
 
     @AfterMethod
