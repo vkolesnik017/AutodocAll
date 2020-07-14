@@ -632,4 +632,8 @@ public class Product_page {
 
     SelenideElement productTitle() { return $(".title"); }
 
+    SelenideElement blockApprovalECE() {
+        return $x("//div[@class='lamp-usage-text']");
+    }
+
 }

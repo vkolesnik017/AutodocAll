@@ -144,8 +144,15 @@ public class Profile_orders_page_Logic extends Profile_orders_page {
         return this;
     }
 
-    @Step("Get name tab My order. Profile_addresses_page")
+    @Step("Get name tab My order. Profile_orders_page")
     public String getNameTabMyOrder() {
         return profileMyOrderBtn().getText();
+    }
+
+    @Step(":from. Profile_orders_page")
+    public Main_page_Logic logOutClick() {
+        new Main_page_Logic().logOutClick()
+                .loginBtnInHeader().shouldBe(visible);
+        return page(Main_page_Logic.class);
     }
 }

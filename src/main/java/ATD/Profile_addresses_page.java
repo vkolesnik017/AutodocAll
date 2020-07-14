@@ -80,30 +80,6 @@ public class Profile_addresses_page {
         return $x("//*[@id='content']/div[2]/div[1]/div[3]/a[2]");
     }
 
-    SelenideElement topTitleBlock() {
-        return $x("//div[@class='top_title']");
-    }
-
-    SelenideElement clientID() {
-        return $(byXpath("//div[@class='top_title']/span"));
-    }
-
-    SelenideElement headerPrivateRoomBlock() {
-        return $(".name_cash");
-    }
-
-    SelenideElement nameOfClient() {
-        return $(byXpath("//div[@class='name_cash']//span[@class='name']"));
-    }
-
-    SelenideElement depositResultLabel() {
-        return $x("//span[@class='memb_balance']");
-    }
-
-    SelenideElement depositAmount() {
-        return $x("//span[@class='green']");
-    }
-
     SelenideElement namePage() {
         return $x("//div[@class='title']");
     }

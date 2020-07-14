@@ -41,7 +41,7 @@ public class QC_1859_DisplayPopUpBonusInOrder {
         close();
     }
 
-    @DataProvider(name = "route", parallel = false)
+    @DataProvider(name = "route", parallel = true)
     Object[] dataProviderAllShops() {
         return new SetUp().setUpShop("prod", "AT, BG, BE, CZ, DE, DK, EE, ES, FI, FR, EN, GR, HU, IT, LD, LT, LV, NL, NO, PL, PT, RO, SE, SI, SK");
     }
@@ -55,7 +55,8 @@ public class QC_1859_DisplayPopUpBonusInOrder {
         String shop = getCurrentShopFromJSVarInHTML();
         new Main_page_Logic().loginAndTransitionToProfilePlusPage(mail)
                 .goToMyOrdersPage()
-                .checkTranslationBonusTooltip(shop);
+                .checkTranslationBonusTooltip(shop)
+                .logOutClick();
         close();
     }
 

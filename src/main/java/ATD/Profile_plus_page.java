@@ -3,10 +3,14 @@ package ATD;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Selenide.$$x;
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selectors.byXpath;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Profile_plus_page {
+
+    SelenideElement logoInSiteBar() {
+        return $x("//div[@class='logo border']/a");
+    }
 
     SelenideElement nameOfUser() {return $x("//span[@class='name']");}
 
@@ -44,5 +48,27 @@ public class Profile_plus_page {
 
     SelenideElement linkMoreInPopUpOfGarageInHeader() {return $x("//div[@class='wrapper-helper']/a");}
 
+    SelenideElement topTitleBlock() {
+        return $x("//div[@class='top_title']");
+    }
 
+    SelenideElement clientID() {
+        return $(byXpath("//div[@class='top_title']/span"));
+    }
+
+    SelenideElement headerPrivateRoomBlock() {
+        return $(".name_cash");
+    }
+
+    SelenideElement nameOfClient() {
+        return $(byXpath("//div[@class='name_cash']//span[@class='name']"));
+    }
+
+    SelenideElement depositResultLabel() {
+        return $x("//span[@class='memb_balance']");
+    }
+
+    SelenideElement depositAmount() {
+        return $x("//span[@class='green']");
+    }
 }
