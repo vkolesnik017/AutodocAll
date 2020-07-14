@@ -52,10 +52,6 @@ public class Profile_garage_page {
         return $x("//div[@class='car_info']/img");
     }
 
-    SelenideElement titleOfAddedAuto() {
-        return $x("//div[@class='leeft']/a");
-    }
-
     SelenideElement btnSearchOfAtoParts() {
         return $x("//div[@class='buttons profile_buttons']/a[1]");
     }
@@ -64,9 +60,7 @@ public class Profile_garage_page {
         return $x("//div[@class='buttons profile_buttons']/a[2]");
     }
 
-    SelenideElement countOfAddedAutoInGarageIcon() {
-        return $x("//div[@class='header-garage js-header-garage']/span");
-    }
+    SelenideElement titleOfAddedAuto() {return $x("//div[@class='leeft']/a");}
 
     SelenideElement idOfAddedAuto() {
         return $x("//ul[@class='list_vehicle list']/li");
@@ -76,9 +70,7 @@ public class Profile_garage_page {
         return $x("//div[@class='header-garage__logged-check']//label");
     }
 
-    SelenideElement popUpOfGarageIcon() {
-        return $x("//div[@class='header-garage__logged-header']");
-    }
+    SelenideElement countOfAddedAutoInGarageIcon() {return $x("//div[@class='header-garage js-header-garage']/span");}
 
     SelenideElement btnDeleteAddedAuto() {
         return $x("//div[@class='header-garage__logged-check-del js-remove-car']");
@@ -88,9 +80,7 @@ public class Profile_garage_page {
         return $x("//li[@class='popup-selector__tabs-item select-moto ']");
     }
 
-    SelenideElement markeOfVehicleInSelector() {
-        return $x("//form[@id='top-select-garage-moto']/div/div[2]/div[1]/select");
-    }
+    SelenideElement popUpOfGarageIcon() {return $x("//div[@class='header-garage__logged-header']");}
 
     SelenideElement modelOfVehicleInSelector() {
         return $x("//form[@id='top-select-garage-moto']/div/div[2]/div[2]/select");
@@ -100,9 +90,7 @@ public class Profile_garage_page {
         return $x("//form[@id='top-select-garage-moto']/div/div[2]/div[3]/select");
     }
 
-    SelenideElement btnSearchVehicleInSelector() {
-        return $x("//a[@class='submit search_button ripple-out']");
-    }
+    SelenideElement markeOfVehicleInSelector() {return $x("//form[@id='top-select-garage-moto']/div/div[2]/div[1]/select");}
 
     SelenideElement addedVehicleBlock() {
         return $(byId("prof_cars"));
@@ -112,17 +100,13 @@ public class Profile_garage_page {
         return $x("//ul[@class='list_vehicle list']");
     }
 
-    ElementsCollection addedVehicleList() {
-        return $$x("//ul[@class='list_vehicle list']/li");
-    }
+    SelenideElement btnSearchVehicleInSelector() {return $x("//a[@class='submit search_button ripple-out']");}
 
     ElementsCollection addedAutoFromPopUpInHeader() {
         return $$x("//div[@class='wrapper-radio']/label");
     }
 
-    SelenideElement mainLogoInHeader() {
-        return $x("//a[@class='header__logo-main']/img");
-    }
+    ElementsCollection addedVehicleList() {return $$x("//ul[@class='list_vehicle list']/li");}
 
     SelenideElement carInfoBlock() {
         return $x("//div[@class='car_info']");
@@ -132,6 +116,19 @@ public class Profile_garage_page {
         return $x("//div[@class='car_info']//div[@class='leeft']");
     }
 
+    SelenideElement mainLogoInHeader() {return $x("//a[@class='header__logo-main']/img");}
+
+    SelenideElement nameOfUser() {return $x("//span[@class='name']");}
+
+    ElementsCollection vehicleFromViewedHistoryBlockInMyGarage() {return $$x("//div[@class='history-cars-rows']/a[2]");}
+
+    ElementsCollection btnSaveVehicleFromViewedHistory() {return $$x("//a[@class='history-cars-rows__button active js-add-car-to-garage']");}
+
+    ElementsCollection titleOfVehicleFromViewedHistory() {return $$x("//div[@class='history-cars-rows__name']");}
+
+     ElementsCollection btnDeleteVehicleInMyGaragePopUp() {return $$x("//div[contains(@class,'js-remove-car')]");}
+
+    SelenideElement btnAddVehicleInMyGaragePopUp() {return $x("//div[@class='header-garage__notlogged-button js-selector-add-car']");}
     SelenideElement imgBlockInsideCarInfoBlock() {
         return $x("//div[@class='car_info']/img");
     }
