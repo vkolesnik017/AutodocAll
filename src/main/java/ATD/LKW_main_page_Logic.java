@@ -154,7 +154,7 @@ public class LKW_main_page_Logic extends LKW_main_page {
 
     @Step("Select truck in vertical selector. LKW_main_page")
     public LKW_Catalog_page_Logic selectTruckInSelector(String markeOfTruck, String modelOfTruck, String motorOfTruck) {
-        markeOfVerticalTruckSelector().selectOptionByValue(markeOfTruck);
+        markeOfVerticalTruckSelector().shouldBe(visible).selectOptionByValue(markeOfTruck);
         modelOfVerticalTruckSelector().selectOptionByValue(modelOfTruck);
         motorOfVerticalTruckSelector().selectOptionByValue(motorOfTruck);
         buttonSuchenOfVerticaltruckSelectorMainPage().click();
