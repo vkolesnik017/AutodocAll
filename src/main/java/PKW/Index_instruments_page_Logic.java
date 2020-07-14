@@ -45,5 +45,11 @@ public class Index_instruments_page_Logic extends Index_instruments_page {
         return page(Supplier_page_Logic.class);
     }
 
+    @Step("Checking presence main catalog categories block. Index_instruments_page")
+    public Index_instruments_page_Logic checkingPresenceMainCatalogCategoriesBlock() {
+        mainCatalogCategoriesBlock().shouldBe(visible);
+        return this;
+    }
+
 
 }

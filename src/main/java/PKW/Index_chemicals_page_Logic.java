@@ -113,6 +113,19 @@ public class Index_chemicals_page_Logic extends Index_chemicals_page {
         return this;
     }
 
+    @Step("Checking opening product characteristics after hover on mini card in top products block. Index_chemicals_page")
+    public Index_chemicals_page_Logic checkingHoverFirstProductInTopProductsBlock() {
+        firstProductInTopProductsBlock().scrollTo().hover();
+        btnDetailsFirstProductInTopProductsBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checking presence main categories catalog block. Index_chemicals_page")
+    public Index_chemicals_page_Logic checkingPresenceMainCategoriesCatalogBlock() {
+        mainCategoriesCatalogBlock().shouldBe(visible);
+        return this;
+    }
+
 
 
 }

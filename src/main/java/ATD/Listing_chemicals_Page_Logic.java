@@ -200,6 +200,12 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
         return this;
     }
 
+    @Step("Click btn reset All in generics block. Listing_chemicals_Page")
+    public Listing_chemicals_Page_Logic clickBtnResetAllInGenericsBlock() {
+        btnResetAllInGenericsBlock().click();
+        return this;
+    }
+
     @Step("Click first generic in generics block. Listing_chemicals_Page")
     public Listing_chemicals_Page_Logic clickFirstGenericInGenericsBlock() {
         firstGenericInGenericsBlock().click();
@@ -249,16 +255,32 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
     public Listing_chemicals_Page_Logic checkingWorkBtnPrevAndNextInGenericBlock() {
         if (allGenericsInGenericBlock().size() > 6) {
             btnNextInGenericBlock().click();
-            firstGenericInGenericsBlock().waitUntil(attribute("aria-hidden", "true"),20000);
+            firstGenericInGenericsBlock().waitUntil(attribute("aria-hidden", "true"), 20000);
             firstGenericInGenericsBlock().shouldNotBe(visible);
             btnPreviousInGenericBlock().click();
-            firstGenericInGenericsBlock().waitUntil(attribute("aria-hidden", "false"),20000);
+            firstGenericInGenericsBlock().waitUntil(attribute("aria-hidden", "false"), 20000);
             firstGenericInGenericsBlock().shouldBe(visible);
         }
         return this;
     }
 
-
+    @Step("Checking the generic reset by pressing again then by pressing the reset button. Listing_chemicals_Page")
+    public Listing_chemicals_Page_Logic checkingResetSelectedGeneric() {
+        Listing_page_Logic listingPageLogic = new Listing_page_Logic();
+        firstGenericInGenericsBlockToGetData().shouldHave(attribute("data-checked", "true"));
+        String firstGeneric = getNameFirstGenericInGenericBlock();
+        listingPageLogic.checkProductTitleOnListing(firstGeneric, true, titleNameProductsFromListing());
+        clickFirstGenericInGenericsBlock();
+        listingPageLogic.waitUntilPreloaderDisappear();
+        firstGenericInGenericsBlockToGetData().shouldHave(attribute("data-checked", "false"));
+        clickFirstGenericInGenericsBlock();
+        listingPageLogic.waitUntilPreloaderDisappear();
+        listingPageLogic.checkProductTitleOnListing(firstGeneric, true, titleNameProductsFromListing());
+        clickBtnResetAllInGenericsBlock();
+        listingPageLogic.waitUntilPreloaderDisappear();
+        firstGenericInGenericsBlockToGetData().shouldHave(attribute("data-checked", "false"));
+        return this;
+    }
 
 
 }

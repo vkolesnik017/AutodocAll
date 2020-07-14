@@ -51,7 +51,6 @@
             <class name="ATD.ACC.QC_1064_BlockTopProductsOnMainChemie.QC_1066_HoverMiniCardsTopProduct"/>
             <class name="ATD.ACC.QC_1064_BlockTopProductsOnMainChemie.QC_1067_AddProductWithTopProductsBlockInBasket"/>
             <class name="ATD.ACC.QC_1064_BlockTopProductsOnMainChemie.QC_1068_TransitionOnProductPageWithBlockTopProducts"/>
-
         </classes>
     </test>
 
@@ -157,7 +156,7 @@
         </classes>
     </test>
 
-    <test name="QC_2044_BlockCategoriesInSidebarOnChemistryListing">
+    <test name="QC_2044_BlockCategoriesInSidebarOnChemistryListing_ATD">
         <classes>
             <class name="ATD.ACC.QC_2044_BlockCategoriesInSidebarOnChemistryListing.QC_2045_TitleCategoriesBlockInSidebarOnChemistryListing"/>
             <class name="ATD.ACC.QC_2044_BlockCategoriesInSidebarOnChemistryListing.QC_2046_CategoriesSelectedLogicalUnionInSidebarOnChemistryListing"/>
@@ -166,7 +165,7 @@
         </classes>
     </test>
 
-    <test name="QC_2050_BlockFilterByBrandsOnChemistryListing">
+    <test name="QC_2050_BlockFilterByBrandsOnChemistryListing_ATD">
         <classes>
             <class name="ATD.ACC.QC_2050_BlockFilterByBrandsOnChemistryListing.QC_1851_BlockBrandsOnListingPageChemistry"/>
             <class name="ATD.ACC.QC_2050_BlockFilterByBrandsOnChemistryListing.QC_2032_WorkFilterBlockByBrandOnChemistryListing"/>
@@ -174,10 +173,11 @@
         </classes>
     </test>
 
-    <test name="QC_2051_FilterBlockByGenericOnChemistryListing">
+    <test name="QC_2051_FilterBlockByGenericOnChemistryListing_ATD">
         <classes>
             <class name="ATD.ACC.QC_2051_FilterBlockByGenericOnChemistryListing.QC_2058_BlockGenericsOnChemistryListingPage"/>
             <class name="ATD.ACC.QC_2051_FilterBlockByGenericOnChemistryListing.QC_2059_WorkFilterBlockByGenericOnChemistryListing"/>
+            <class name="ATD.ACC.QC_2051_FilterBlockByGenericOnChemistryListing.QC_2060_ResetSelectedFilterByGeneric"/>
         </classes>
     </test>
 
@@ -234,6 +234,32 @@
             <class name="PKW.ACC.QC_1793_ChemistryListing.QC_1816_TransitionOnPageForBtnPaginationOnChemistryListing"/>
         </classes>
     </test>
+
+    <test name="QC_1611_BlockTopProductsOnMainChemistry_PKW">
+        <classes>
+            <class name="PKW.ACC.QC_1611_BlockTopProductsOnMainChemistry.QC_1613_HoverMiniCard"/>
+        </classes>
+    </test>
+
+
+    <test name="QC_999_TopCategoriesOnMainAccessories_PKW">
+        <classes>
+            <class name="PKW.ACC.QC_999_TopCategoriesOnMainAccessories.QC_1000_TopCategoriesBlock"/>
+        </classes>
+    </test>
+
+    <test name="QC_1748_MainCatalogCategoriesOnMainInstruments_PKW">
+        <classes>
+            <class name="PKW.ACC.QC_1748_MainCatalogCategoriesOnMainInstruments.QC_1749_MainCatalogBlock"/>
+        </classes>
+    </test>
+
+    <test name="QC_1419_MainCatalogProductsOnMainChemistry_PKW">
+        <classes>
+            <class name="PKW.ACC.QC_1419_MainCatalogProductsOnMainChemistry.QC_1535_BlockWithCategories"/>
+        </classes>
+    </test>
+
 
 
 </suite>

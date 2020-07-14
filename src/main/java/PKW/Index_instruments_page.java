@@ -26,5 +26,9 @@ public class Index_instruments_page {
         return $x("//div[@class='brand-block']//a[@class='brand-block__wrap-item'][1]");
     }
 
+    SelenideElement mainCatalogCategoriesBlock() {
+        return $x("//div[@class='category-block']");
+    }
+
 
 }
