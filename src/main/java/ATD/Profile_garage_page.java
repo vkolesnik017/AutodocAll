@@ -44,6 +44,11 @@ public class Profile_garage_page {
         return $x("//a[@class='truck_submit js--lkw_selector-btn-submit-garage']");
     }
 
+    //Locator is suitable for LKW and Moto types
+    SelenideElement btnSearchInSelector() {
+        return $x("//a[contains(@class,'search_button')]");
+    }
+
     SelenideElement addedAutoBlock() {
         return $x("//div[@id='profile-cars-list']//li");
     }
