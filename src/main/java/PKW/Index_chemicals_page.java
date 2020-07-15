@@ -7,6 +7,9 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class Index_chemicals_page {
 
+    SelenideElement titleMainCatalog() {
+        return $x("//h1[@class='page-title']");
+    }
 
     SelenideElement blockSeoTextWithDescription() {
         return $x("//div[@class='text_description']");

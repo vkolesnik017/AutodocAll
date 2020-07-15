@@ -10,6 +10,10 @@ public class Index_instruments_page {
         return $x("//h1[@class='page-title']");
     }
 
+    SelenideElement titleTopCategoriesBlock() {
+        return $x("//div[@class='seo-category-blocks']//div[@class='seo-category-blocks__block-title']");
+    }
+
     SelenideElement firstBreadCrumb() {
         return $x("//div[@class='breadcrumbs']//a[@href][1]");
     }

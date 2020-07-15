@@ -6,8 +6,14 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.Selenide.sleep;
 
+
 public class Index_chemicals_page_Logic extends Index_chemicals_page {
 
+    @Step("Checking presence title main catalog. Index_chemicals_page")
+    public Index_chemicals_page_Logic checkingPresenceTitleMainCatalog() {
+        Assert.assertFalse(titleMainCatalog().text().isEmpty());
+        return this;
+    }
 
     @Step("Checking presence block with SEO text description. Index_chemicals_page")
     public Index_chemicals_page_Logic checkingPresenceBlockWithSeoText() {
@@ -125,6 +131,13 @@ public class Index_chemicals_page_Logic extends Index_chemicals_page {
         mainCategoriesCatalogBlock().shouldBe(visible);
         return this;
     }
+
+    @Step("Checking presence first separate category in main products catalog. Index_chemicals_page")
+    public Index_chemicals_page_Logic checkingPresenceSeparateCategoryInProductsCatalog() {
+        separateCategoryInMainCatalogCategories().shouldBe(visible);
+        return this;
+    }
+
 
 
 
