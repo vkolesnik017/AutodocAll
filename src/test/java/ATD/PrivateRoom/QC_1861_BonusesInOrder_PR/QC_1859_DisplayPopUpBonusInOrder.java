@@ -55,7 +55,8 @@ public class QC_1859_DisplayPopUpBonusInOrder {
         String shop = getCurrentShopFromJSVarInHTML();
         new Main_page_Logic().loginAndTransitionToProfilePlusPage(mail)
                 .goToMyOrdersPage()
-                .checkTranslationBonusTooltip(shop);
+                .checkTranslationBonusTooltip(shop)
+                .logOutClick();
         close();
     }
 

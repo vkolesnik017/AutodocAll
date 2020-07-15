@@ -2,7 +2,6 @@ package ATD;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-
 import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;
 
@@ -131,6 +130,38 @@ public class Listing_chemicals_Page {
 
     SelenideElement blockSeoText() {
         return $x("//div[@class='block_youtube_video']/span[@class='more_text']");
+    }
+
+    SelenideElement blockGeneric() {
+        return $x("//div[@class='js-filter-criteria-top']");
+    }
+
+    ElementsCollection allGenericsInGenericBlock() {
+        return $$x("//div[@class='filter-generics-tecdoc__content']//label[contains(@class,'filter-generics-tecdoc__item')]");
+    }
+
+    SelenideElement firstGenericInGenericsBlock() {
+        return $x("//div[@class='filter-generics-tecdoc__content']//label[@data-slick-index='0']");
+    }
+
+    SelenideElement secondGenericInGenericsBlock() {
+        return $x("//div[@class='filter-generics-tecdoc__content']//label[@data-slick-index='1']");
+    }
+
+    SelenideElement firstGenericInGenericsBlockToGetData() {
+        return $x("//div[@class='filter-generics-tecdoc__content']//label[@data-slick-index='0']/input");
+    }
+
+    SelenideElement secondGenericInGenericsBlockToGetData() {
+        return $x("//div[@class='filter-generics-tecdoc__content']//label[@data-slick-index='1']/input");
+    }
+
+    SelenideElement btnPreviousInGenericBlock() {
+        return $x("//div[@class='js-filter-criteria-top']//span[@class='prev slick-arrow']");
+    }
+
+    SelenideElement btnNextInGenericBlock() {
+        return $x("//div[@class='js-filter-criteria-top']//span[@class='next slick-arrow']");
     }
 
 

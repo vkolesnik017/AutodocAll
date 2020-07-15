@@ -53,24 +53,21 @@ public class Profile_addresses_page_Logic extends Profile_addresses_page {
         return this;
     }
 
-    @Step("Checks for text {expectedText} in a block Top Title. Profile_addresses_page")
+    @Step(":from Profile_addresses_page")
     public Profile_addresses_page_Logic checkForTextInBlockTopTitle(String expectedText) {
-        topTitleBlock().shouldHave(text(expectedText));
+        new Profile_plus_page_Logic().checkForTextInBlockTopTitle(expectedText);
         return this;
     }
 
-    @Step("Checks presence client ID. Profile_addresses_page")
+    @Step(":from Profile_addresses_page")
     public Profile_addresses_page_Logic checkPresenceClientID() {
-        clientID().shouldBe(visible);
+        new Profile_plus_page_Logic().checkPresenceClientID();
         return this;
     }
 
-    @Step("Checks presence heder private room block and the elements inside. Profile_addresses_page")
+    @Step(":from Profile_addresses_page")
     public Profile_addresses_page_Logic checkPresenceHeaderBlockAndElementInside() {
-        headerPrivateRoomBlock().shouldBe(visible);
-        nameOfClient().shouldBe(visible);
-        depositResultLabel().shouldBe(visible);
-        depositAmount().shouldBe(visible);
+        new Profile_plus_page_Logic().checkPresenceHeaderBlockAndElementInside();
         return this;
     }
 
@@ -229,5 +226,10 @@ public class Profile_addresses_page_Logic extends Profile_addresses_page {
     @Step("Get daily billing addresses. Profile_addresses_page")
     public String getDailyBillingAddress() {
         return String.valueOf(userBillingAddressData().getText());
+    }
+
+    @Step("Get name tab addresses. Profile_addresses_page")
+    public String getNameTabAddresses() {
+        return profileAddressBtn().getText();
     }
 }

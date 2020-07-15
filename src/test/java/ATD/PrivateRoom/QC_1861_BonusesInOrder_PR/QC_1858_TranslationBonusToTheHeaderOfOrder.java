@@ -53,7 +53,8 @@ public class QC_1858_TranslationBonusToTheHeaderOfOrder {
         String shop = getCurrentShopFromJSVarInHTML();
         new Main_page_Logic().loginAndTransitionToProfilePlusPage(mail)
                 .goToMyOrdersPage()
-                .checkTranslationBonusLabels(shop);
+                .checkTranslationBonusLabels(shop)
+                .logOutClick();
         close();
     }
 

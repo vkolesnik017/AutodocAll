@@ -4,6 +4,7 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -190,4 +191,20 @@ public class Moto_Catalog_page {
     ElementsCollection btnSaveAddedVehicle() {return $$x("//a[contains(@class,'js-add-car-to-garage')]");}
 
     SelenideElement registrationForm() {return $x("//div[@class='autodoc_login_popup popup_login pass']");}
+
+    public SelenideElement loginBtnInHeader() {
+        return $(byCssSelector(".sigin_btn>a"));
+    }
+
+    SelenideElement mailFieldLogin() {
+        return $(byId("login_top_email"));
+    }
+
+    SelenideElement passFieldLogin() {
+        return $x(("//input[@type='password']"));
+    }
+
+    SelenideElement submitBtnLogin() {
+        return $x(("//a[@class='enter submit']"));
+    }
 }

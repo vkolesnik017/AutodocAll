@@ -6,10 +6,10 @@ import org.testng.Assert;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import static ATD.CommonMethods.checkingContainsUrl;
+import static ATD.CommonMethods.password;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.back;
@@ -426,5 +426,48 @@ public class Moto_Catalog_page_Logic extends Moto_Catalog_page {
         btnSaveAddedVehicle().get(position).shouldBe(visible).click();
         registrationForm().shouldBe(visible);
         return this;
+    }
+
+    @Step("Login from My_garage block with mail {mail} and transition to profile plus page. Moto_Catalog_page")
+    public Profile_garage_page_Logic loginFromMyGarageAndTransitionToProfilePlusPage(String mail) {
+        mailFieldLogin().shouldBe(visible).setValue(mail);
+        passFieldLogin().setValue(password);
+        submitBtnLogin().click();
+        return page(Profile_garage_page_Logic.class);
+    }
+
+    @Step("check transition by click on vehicle in My garage popUp .Moto_Catalog_page")
+    public Moto_Catalog_page_Logic checkTransitionByClickOnVehicleInMyGaragePopUp() throws SQLException {
+        clickOnMotoInMyGaragePopUp();
+        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_catalog7"));
+        back();
+        clickOnTruckInMyGaragePopUp();
+        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "lkw_maker_car_list8"));
+        back();
+        clickOnVehicleInMyGaragePopUp();
+        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "maker_car_list10"));
+        return this;
+    }
+
+    @Step("click on motorcycle in Viewed history block in My garage Pop-Up .Moto_Catalog_page")
+    public Moto_Catalog_page_Logic clickOnMotoInMyGaragePopUp() {
+        urlsOfAddedVehicleInPopUpOfGarageInHeader().get(0).shouldBe(visible).click();
+        return page(Moto_Catalog_page_Logic.class);
+    }
+
+    @Step("click on truck in Viewed history block in My garage Pop-Up .Moto_Catalog_page")
+    public LKW_maker_car_list_Logic clickOnTruckInMyGaragePopUp() {
+        garageIconInHeader().shouldBe(visible).click();
+        popUpOfGarageInHeader().shouldBe(visible);
+        urlsOfAddedVehicleInPopUpOfGarageInHeader().get(1).shouldBe(visible).click();
+        return page(LKW_maker_car_list_Logic.class);
+    }
+
+    @Step("click on vehicle in Viewed history block in My garage Pop-Up .Moto_Catalog_page")
+    public LKW_maker_car_list_Logic clickOnVehicleInMyGaragePopUp() {
+        garageIconInHeader().shouldBe(visible).click();
+        popUpOfGarageInHeader().shouldBe(visible);
+        urlsOfAddedVehicleInPopUpOfGarageInHeader().get(2).shouldBe(visible).click();
+        return page(LKW_maker_car_list_Logic.class);
     }
 }

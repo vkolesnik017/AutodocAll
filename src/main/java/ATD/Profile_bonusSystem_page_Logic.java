@@ -1,6 +1,7 @@
 package ATD;
 
 import io.qameta.allure.Step;
+import org.testng.Assert;
 
 import java.sql.SQLException;
 
@@ -69,19 +70,27 @@ public class Profile_bonusSystem_page_Logic extends Profile_bonusSystem_page {
 
     @Step(":from Profile_bonusSystem_page_Logic")
     public Profile_bonusSystem_page_Logic checkForTextInBlockTopTitle(String expectedText) {
-        new Profile_addresses_page_Logic().checkForTextInBlockTopTitle(expectedText);
+        new Profile_plus_page_Logic().checkForTextInBlockTopTitle(expectedText);
         return this;
     }
 
     @Step(":from Profile_bonusSystem_page_Logic")
     public Profile_bonusSystem_page_Logic checkPresenceClientID() {
-        new Profile_addresses_page_Logic().checkPresenceClientID();
+        new Profile_plus_page_Logic().checkPresenceClientID();
         return this;
     }
 
     @Step(":from Profile_bonusSystem_page_Logic")
     public Profile_bonusSystem_page_Logic checkPresenceHeaderBlockAndElementInside() {
-        new Profile_addresses_page_Logic().checkPresenceHeaderBlockAndElementInside();
+        new Profile_plus_page_Logic().checkPresenceHeaderBlockAndElementInside();
+        return this;
+    }
+
+    @Step("Checks that the currency of the added bonus matches the shop. Profile_bonusSystem_page")
+    public Profile_bonusSystem_page_Logic checkCurrencyAccruedBonusInTable(String shop) throws SQLException {
+        String expectedCurrency = new DataBase().getCurrency(shop);
+        String actualCurrencyBonus = accruedBonusInTable().getText().replaceAll(".+[0-9].", "");
+        Assert.assertEquals(expectedCurrency, actualCurrencyBonus);
         return this;
     }
 }

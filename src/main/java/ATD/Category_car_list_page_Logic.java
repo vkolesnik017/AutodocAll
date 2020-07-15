@@ -5,6 +5,7 @@ import io.qameta.allure.Step;
 
 import static ATD.CommonMethods.waitWhileRouteBecomeExpected;
 import static ATD.CommonMethods.waitingWhileLinkBecomeExpected;
+import static com.codeborne.selenide.Selenide.page;
 
 public class Category_car_list_page_Logic extends Category_car_list_page {
 
@@ -34,5 +35,11 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
     public Category_car_list_page_Logic checkingDatenschutzerklarungLinkBehaviorSoftForm() {
         new CommonMethods().checkingDatenschutzerklarungLinkBehavior(datenschutzerklarungLinkSoftForm(), "underline solid rgb(0, 0, 0)");
         return this;
+    }
+
+    @Step(":for Category_car_list_page")
+    public Product_page_Logic clickFirstProductOnListing() {
+      new Listing_page_Logic().clickFirstProductOnListing();
+        return page(Product_page_Logic.class);
     }
 }

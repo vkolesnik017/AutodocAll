@@ -22,7 +22,7 @@ import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
 
-public class QASYS_2037_CheckingNonAvailabilityCharacteristicsQuantity {
+public class QC_2037_CheckingNonAvailabilityCharacteristicsQuantity {
 
     private final String dataFile = "C://Autotests/files/data/QC_2037_data.xls";
     private final String result = "C://Autotests/files/res/QC_2037_result.txt";

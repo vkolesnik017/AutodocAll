@@ -219,13 +219,18 @@ public class CommonMethods {
         SelenideElement avaliablePopup = $(".popup-available");
         SelenideElement thirdProductInBlockForHover = $x("//div[3][@class='rec_products_block']");
         SelenideElement thirdProductBuyButton = $x("(//a[contains(@class,'add_')])[3]");
+        SelenideElement addBasketBtnFromBlockTop = $x("//*[contains(@class,'active')]//a[contains(@class,'add_')]");
         try {
             sleep(2000); // TODO try delete this sleep if fixed SITES-2830
             if (productBlockForHover.isDisplayed()) {
                 productBlockForHover.hover();
             }
             sleep(3000); // TODO try delete this sleep if fixed SITES-2830
-            universalElementOfBuyBtnForAllPages().waitUntil(visible, 2000).click();
+            if (universalElementOfBuyBtnForAllPages().isDisplayed()) {
+                universalElementOfBuyBtnForAllPages().click();
+            } else {
+                addBasketBtnFromBlockTop.click();
+            }
             sleep(2000);
             if (avaliablePopup.is(visible)) {
                 new Listing_page_Logic().closePopupByClickOverlayOnListingSearch();
@@ -262,7 +267,7 @@ public class CommonMethods {
     }
 
     private ElementsCollection miniCardsOfProducts() {
-        return $$(byXpath("//*[contains(@class,'product-list__item ')]"));
+        return $$(byXpath("//*[contains(@class,'active') and @aria-hidden='false']//div[5]/.."));
     }
 
     private By recoveryCharacteristicInBlockOfTopProducts = By.cssSelector(".default_ul_li_class");

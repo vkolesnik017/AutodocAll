@@ -45,19 +45,19 @@ public class Profile_deposit_page_Logic extends Profile_deposit_page{
 
     @Step(":from Profile_deposit_page_Logic")
     public Profile_deposit_page_Logic checkForTextInBlockTopTitle(String expectedText) {
-        new Profile_addresses_page_Logic().checkForTextInBlockTopTitle(expectedText);
+        new Profile_plus_page_Logic().checkForTextInBlockTopTitle(expectedText);
         return this;
     }
 
     @Step(":from Profile_deposit_page_Logic")
     public Profile_deposit_page_Logic checkPresenceClientID() {
-        new Profile_addresses_page_Logic().checkPresenceClientID();
+        new Profile_plus_page_Logic().checkPresenceClientID();
         return this;
     }
 
     @Step(":from Profile_deposit_page_Logic")
     public Profile_deposit_page_Logic checkPresenceHeaderBlockAndElementInside() {
-        new Profile_addresses_page_Logic().checkPresenceHeaderBlockAndElementInside();
+        new Profile_plus_page_Logic().checkPresenceHeaderBlockAndElementInside();
         return this;
     }
 
@@ -82,5 +82,10 @@ public class Profile_deposit_page_Logic extends Profile_deposit_page{
         columnPdf().shouldBe(visible);
         pdfInsideTable().shouldBe(visible);
         return this;
+    }
+
+    @Step("Get name tab My deposit. Profile_deposit_page_Logic")
+    public String getNameTabMyDeposit() {
+        return profileDepositBtn().getText();
     }
 }

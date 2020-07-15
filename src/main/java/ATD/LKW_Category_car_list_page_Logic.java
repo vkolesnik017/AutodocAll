@@ -152,13 +152,19 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
     }
 
     @Step("Go to product page from tecDoc listing through Image, icon of brand, title in tecDoc listing .LKW_Category_car_list_page")
-    public LKW_Category_car_list_page_Logic goToProductPageFromImageBrandTitle() {
-        clickOnImageOfProduct().checkSuccessfullyLKWProductPageLoading("https://lkwteile.autodoc.de/filtron/13884155");
+    public LKW_Category_car_list_page_Logic goToProductPageFromImageBrandTitle(String linkOfProduct) {
+        clickOnImageOfProduct().checkSuccessfullyLKWProductPageLoading(linkOfProduct);
         back();
-        clickOnIconBrandOfProduct().checkSuccessfullyLKWProductPageLoading("https://lkwteile.autodoc.de/filtron/13884155");
+        clickOnIconBrandOfProduct().checkSuccessfullyLKWProductPageLoading(linkOfProduct);
         back();
-        clickOnTitleOfProduct().checkSuccessfullyLKWProductPageLoading("https://lkwteile.autodoc.de/filtron/13884155");
+        clickOnTitleOfProduct().checkSuccessfullyLKWProductPageLoading(linkOfProduct);
         return this;
+    }
+
+    @Step("get link of product .LKW_Category_car_list_page")
+    public String getLinkOfProduct(int position) {
+        String linkOfProduct = titleOfProductInTecDocListingBlock().get(position).getAttribute("href");
+        return linkOfProduct;
     }
 
     @Step("Click on image of product in tecDoc listing .LKW_Category_car_list_page")
@@ -249,7 +255,7 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         }
         brandsOfBrandBlock("cb-brand-4868").click();
         appearsOfLoader();
-        Assert.assertTrue(getExpectedUrl(url()).equals(getExpectedUrl(db.getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", subRoute))));
+        Assert.assertEquals(getExpectedUrl(url()), getExpectedUrl(db.getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", subRoute)));
         for (int i = 0; i < titleOfProductInTecDocListingBlock().size(); i++) {
             titleOfProductInTecDocListingBlock().get(i).shouldHave(text("DONALDSON"));
         }
