@@ -85,7 +85,6 @@ public class QC_322_TotalCountOfTopProducts {
         new Moto_Category_page_Logic()
                 .checkCountOfTopProducts();
     }
-
     @DataProvider(name = "routesParentCategory", parallel = true)
     Object[] dataProviderParentCategory() throws SQLException {
         return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_parent_category");

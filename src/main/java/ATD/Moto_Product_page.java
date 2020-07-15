@@ -168,7 +168,7 @@ public class Moto_Product_page {
 
     SelenideElement analogProductBlock() {return $x("//div[@class='product-same-artikel']");}
 
-    ElementsCollection analogProducts() {return $$x("//div[@class='product-list__row']/ul/li");}
+    ElementsCollection analogProducts() {return $$x("//div[contains(@class,'product-list__row')]/ul/li");}
 
     SelenideElement relatedProductBlock() {return $x("//div[@class='product-same-specification']");}
 

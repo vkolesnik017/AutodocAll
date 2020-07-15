@@ -176,10 +176,13 @@ public class LKW_Categories_maker_page_Logic extends LKW_Categories_maker_page {
 
     @Step("availability of forward and back links of TOP products block .LKW_Categories_maker_page")
     public LKW_Categories_maker_page_Logic availabilityOfForwardBackLinksOfTopBLock() {
+        String currentArtNumOfTopProduct = visibleArtNumOfTopProduct().get(0).getText();
         forwardLinkOfTopBLock().shouldBe(visible).click();
-        productsInTopBlockSecondLevel().shouldBe(visible);
+        visibleArtNumOfTopProduct().get(0).shouldNotHave(exactText(currentArtNumOfTopProduct));
+        currentArtNumOfTopProduct = visibleArtNumOfTopProduct().get(0).getText();
         backLinkOfTopBLock().shouldBe(visible).click();
-        productsInTopBlockFirstLevel().shouldBe(visible);
+        visibleArtNumOfTopProduct().get(0).shouldNotHave(exactText(currentArtNumOfTopProduct));
+
         return this;
     }
 
