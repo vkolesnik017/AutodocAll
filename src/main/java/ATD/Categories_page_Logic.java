@@ -262,7 +262,6 @@ public class Categories_page_Logic extends Categories_page {
 
     System.out.println(listWithRoutes.size());
     for (int i = 0; i < listWithRoutes.size(); i++) {
-     // System.out.println(listWithRoutes.get(i));
       open(listWithRoutes.get(i));
       if(!listOfProducts().is(visible)) {
         System.err.println("There is no product output on route " + listWithRoutes.get(i));
