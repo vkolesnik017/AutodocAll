@@ -66,7 +66,7 @@ public class Moto_Categories_maker_page {
 
     SelenideElement headlineOfTopParentCategories() {return $x("//div[@class='moto-parts-catalog']/strong");}
 
-    ElementsCollection topProducts() {return $$x("//div[@class='product-list__row']/ul/li");}
+    ElementsCollection topProducts() {return $$x("//div[contains(@class,'product-list__row')]/ul/li");}
 
     SelenideElement mainImageBlock() {return $x("//div[@class='moto-top-content__model']");}
 

@@ -67,7 +67,6 @@ public class QC_75_ProductsCountInTopBlock {
                 .availabilityOfTopProductsBlock();
     }
 
-
     @DataProvider(name = "routesCategoriesMaker", parallel = true)
     Object[] dataProviderParentCategoriesMaker() throws SQLException {
         return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_categories_maker");

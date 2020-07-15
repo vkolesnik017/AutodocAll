@@ -148,15 +148,15 @@ class LKW_Categories_maker_page {
     }
 
     ElementsCollection productsInTopBlock() {
-        return $$x("//div[@class='top-small-products__items']/div");
+        return $$x("//*[self::div[contains(@class,'slick-active')] or self::div[(@class='top-small-products__items slick-slide')]] /div[@class='top-small-products-items__item']");
     }
 
     SelenideElement forwardLinkOfTopBLock() {
-        return $x("//a[@class='bx-next']");
+        return $x("//button[@class='slick-next slick-arrow']");
     }
 
     SelenideElement backLinkOfTopBLock() {
-        return $x("//a[@class='bx-prev']");
+        return $x("//button[@class='slick-prev slick-arrow']");
     }
 
     SelenideElement productsInTopBlockFirstLevel() {
@@ -180,19 +180,19 @@ class LKW_Categories_maker_page {
     }
 
     ElementsCollection additionInfoBlockOfTopProduct() {
-        return $$x("//div[@class='top-small-products__items']/div//div[@class='rec_prod_info_popup']").filter(visible);
+        return $$x("//*[self::div[contains(@class,'slick-active')] or self::div[(@class='top-small-products__items slick-slide')]] /div[@class='top-small-products-items__item']//div[@class='rec_prod_info_popup']").filter(visible);
     }
 
     ElementsCollection imageOfTopProduct() {
-        return $$x("//div[@class='top-small-products__items']/div/div/a/img");
+        return $$x("//*[self::div[contains(@class,'slick-active')] or self::div[(@class='top-small-products__items slick-slide')]] /div[@class='top-small-products-items__item']//img");
     }
 
     ElementsCollection titleOfTopProduct() {
-        return $$x("//div[@class='top-small-products__items']/div/div[2]/span");
+        return $$x("//*[self::div[contains(@class,'slick-active')] or self::div[(@class='top-small-products__items slick-slide')]] /div[@class='top-small-products-items__item']/div[2]/span");
     }
 
     ElementsCollection linkDetails() {
-        return $$x("//div[@class='top-small-products__items']//div[@class='rec_prod_info_popup']/div/span");
+        return $$x("//*[self::div[contains(@class,'slick-active')] or self::div[(@class='top-small-products__items slick-slide')]] /div[@class='top-small-products-items__item']//div[@class='rec_prod_info_popup']/div/span");
     }
 
     SelenideElement closeCookiesPopUp() {
@@ -202,5 +202,7 @@ class LKW_Categories_maker_page {
     ElementsCollection topProductsFirstLevel() {return $$x("//div[@class='top-small-products__items'][1]/div/div/a/img");}
 
     SelenideElement mainHeadline() {return $x("//div[@class='title_count_search ']/h2");}
+
+    ElementsCollection visibleArtNumOfTopProduct() {return $$x("//*[self::div[contains(@class,'slick-active')] or self::div[(@class='top-small-products__items slick-slide')]]//div[@class='small-prod-artikul']").filter(visible);}
 
 }
