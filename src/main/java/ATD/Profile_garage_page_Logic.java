@@ -8,8 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static ATD.CommonMethods.checkingContainsUrl;
-import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
-import static com.codeborne.selenide.CollectionCondition.sizeLessThan;
+import static com.codeborne.selenide.CollectionCondition.*;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.page;
 
@@ -258,4 +257,17 @@ public class Profile_garage_page_Logic extends Profile_garage_page {
         popUpOfGarageIcon().shouldBe(visible);
         return this;
     }
+
+    @Step("check Count of added vehicle in My garage block. Profile_garage_page")
+    public Profile_garage_page_Logic checkCountOfAddedVehicleInMyGarageBlock(int expectedSizeOfAddedVehicle) {
+        availabilityOfAddedVehicleInMyGarage().shouldHaveSize(expectedSizeOfAddedVehicle);
+        return this;
+    }
+
+    @Step("check title in car info block. Profile_garage_page")
+    public Profile_garage_page_Logic checkTitleInCarInfoBlock(String titleOfVehicle) {
+        titleOfVehicleInCarInfoBlock().get(0).shouldHave(text(titleOfVehicle));
+        return this;
+    }
+
 }
