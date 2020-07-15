@@ -952,7 +952,7 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Checks registration from login button in header. Main_page")
-    public Main_page_Logic registrationFromLoginButton(String mail) {
+    public Profile_plus_page_Logic registrationFromLoginButton(String mail) {
         Profile_page profile_page = new Profile_page();
         loginBtnInHeader().click();
         registrationButtonInLoginPopup().click();
@@ -961,7 +961,7 @@ public class Main_page_Logic extends Main_page {
         fillRequiredFieldsForRegistration(firstName, secondName, mail, false);
         fillPasswordFieldsAndClickRegistration();
         profile_page.nameOfClient().shouldHave(Condition.text(firstName));
-        return this;
+        return page(Profile_plus_page_Logic.class);
     }
 
     @Step("Logs out of the account and logs in as a previously registered user. Main_page")

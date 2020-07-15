@@ -126,4 +126,10 @@ public class Maker_car_list_page_Logic extends Maker_car_list_page {
         btnSearchOfSelectorFromMyGarage().click();
         return page(LKW_maker_car_list_Logic.class);
     }
+
+    @Step(": for Maker_car_list_page")
+    public Profile_plus_page_Logic profilePlusBtnClickInHeader() {
+        new Main_page_Logic().profilePlusBtnClickInHeader();
+        return page(Profile_plus_page_Logic.class);
+    }
 }

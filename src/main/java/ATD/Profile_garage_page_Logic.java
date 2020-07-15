@@ -7,6 +7,7 @@ import org.testng.Assert;
 import java.util.ArrayList;
 import java.util.List;
 
+import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.CollectionCondition.sizeLessThan;
 import static com.codeborne.selenide.Condition.*;
@@ -28,6 +29,13 @@ public class Profile_garage_page_Logic extends Profile_garage_page {
         modelOfTruckInSelector().shouldBe(visible).selectOptionByValue(model);
         motorOfTruckInSelector().shouldBe(visible).selectOptionByValue(motor);
         btnSearchOfSelector().click();
+        return this;
+    }
+
+    @Step(": for Profile_garage_page")
+    public Profile_garage_page_Logic selectPassengerCarInSelector(String brandName, String modelNumberValue, String typeNumberValue) {
+        new Main_page_Logic().chooseBrandModelTypeInSelector(brandName, modelNumberValue, typeNumberValue);
+        btnSearchInSelector().click();
         return this;
     }
 
@@ -182,6 +190,72 @@ public class Profile_garage_page_Logic extends Profile_garage_page {
             btnDeleteVehicleInMyGaragePopUp().shouldHave(sizeLessThan(sizeOfPresenceVehicleInMyGarage));
         }
         btnAddVehicleInMyGaragePopUp().shouldBe(visible);
+        return this;
+    }
+
+    @Step(":from Profile_garage_page")
+    public Profile_garage_page_Logic checkForTextInBlockTopTitle(String expectedText) {
+        new Profile_plus_page_Logic().checkForTextInBlockTopTitle(expectedText);
+        return this;
+    }
+
+    @Step(":from Profile_garage_page")
+    public Profile_garage_page_Logic checkPresenceClientID() {
+        new Profile_plus_page_Logic().checkPresenceClientID();
+        return this;
+    }
+
+    @Step(":from Profile_garage_page")
+    public Profile_garage_page_Logic checkPresenceHeaderBlockAndElementInside() {
+        new Profile_plus_page_Logic().checkPresenceHeaderBlockAndElementInside();
+        return this;
+    }
+
+    @Step(":from Profile_garage_page")
+    public Profile_garage_page_Logic checkNamePageAndPresenceIcon(String expectedName) {
+        new Profile_addresses_page_Logic().checkNamePageAndPresenceIcon(expectedName);
+        return this;
+    }
+
+    @Step("Checks presence selector add car. Profile_garage_page")
+    public Profile_garage_page_Logic checkPresenceSelectorAddCar() {
+        btnAddedAuto().shouldBe(visible);
+        btnAddedAuto().shouldHave(attribute("href"));
+        return this;
+    }
+
+    @Step("Checks the text {expectedText} of an empty vehicle list. Profile_garage_page")
+    public Profile_garage_page_Logic checkTextOfEmptyVehicleList(String expectedText) {
+        emptyVehicleList().shouldHave(text(expectedText));
+        return this;
+    }
+
+    @Step("Checks presence info car block and elements inside it {expectedText}. Profile_garage_page")
+    public Profile_garage_page_Logic checkPresenceInfoCarBlock(String expectedText) {
+        carInfoBlock().shouldBe(visible);
+        catalogLincInsideСarInfoBlock().shouldHave(attribute("href"));
+        infoInsideTheBlock().shouldHave(text(expectedText));
+        imgBlockInsideCarInfoBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checks transition to catalog page {expectedURL} fom car info block. Profile_garage_page")
+    public Maker_car_list_page_Logic checkTransitionToCatalogFromCarInfoBlock(String expectedURL) {
+        catalogLincInsideСarInfoBlock().click();
+        checkingContainsUrl(expectedURL);
+        return page(Maker_car_list_page_Logic.class);
+    }
+
+    @Step("Click button added car from order to my garage. Profile_garage_page")
+    public Profile_garage_page_Logic clickBtnAddedCarFromOrderToGarage() {
+        btnAddedCarFromOrderToGarage().click();
+        return this;
+    }
+
+    @Step("Open popup my garage in header. Profile_garage_page")
+    public Profile_garage_page_Logic openPopUpMyGarageInHeader() {
+        countOfAddedAutoInGarageIcon().click();
+        popUpOfGarageIcon().shouldBe(visible);
         return this;
     }
 }

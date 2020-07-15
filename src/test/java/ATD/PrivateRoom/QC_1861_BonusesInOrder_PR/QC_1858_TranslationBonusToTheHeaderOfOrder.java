@@ -32,14 +32,11 @@ public class QC_1858_TranslationBonusToTheHeaderOfOrder {
                 .nextBtnClick()
                 .nextBtnClick();
         orderNumber = new Payment_handler_page_Logic().getOrderNumber();
-        Order_aws order_aws = new Order_aws(orderNumber);
-        order_aws.openOrderInAwsWithLogin()
-                .checkCurrentStatusInOrder("Neue Bestellung");
         close();
     }
 
 
-    @DataProvider(name = "route", parallel = false)
+    @DataProvider(name = "route", parallel = true)
     Object[] dataProviderAllShops() {
         return new SetUp().setUpShop("prod", "AT, BG, BE, CZ, DE, DK, EE, ES, FI, FR, EN, GR, HU, IT, LD, LT, LV, NL, NO, PL, PT, RO, SE, SI, SK");
     }
@@ -53,7 +50,8 @@ public class QC_1858_TranslationBonusToTheHeaderOfOrder {
         String shop = getCurrentShopFromJSVarInHTML();
         new Main_page_Logic().loginAndTransitionToProfilePlusPage(mail)
                 .goToMyOrdersPage()
-                .checkTranslationBonusLabels(shop);
+                .checkTranslationBonusLabels(shop)
+                .logOutClick();
         close();
     }
 
