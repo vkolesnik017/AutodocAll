@@ -96,9 +96,9 @@ public class Tyres_page {
 
   SelenideElement brandTopBlockTitle() { return $(".unsere .tit"); }
 
-  SelenideElement secondButtonInTopBrandSlider() { return $x("//a[@class='bx-pager-link'][@data-slide-index='1']"); }
+  SelenideElement secondButtonInTopBrandSlider() { return $("#slick-slide-control01"); }
 
-  ElementsCollection brandsInSlider() { return $$x("//div[@class='bx-wrapper']//img"); }
+  ElementsCollection brandsInSlider() { return $$x("//div[@class='slick-track']//img"); }
 
 
 
