@@ -45,6 +45,12 @@ public class Profile_garage_page_Logic extends Profile_garage_page {
         return this;
     }
 
+    @Step("Checks absence added auto. Profile_garage_page")
+    public Profile_garage_page_Logic checkAbsenceAddedAuto() {
+        addedAutoBlock().shouldNotBe(visible);
+        return this;
+    }
+
     @Step("check elements of added auto .Profile_garage_page")
     public Profile_garage_page_Logic checkElementsOfAddedAuto(String brandOfAuto, String link) {
         imageOfAddedAuto().shouldBe(visible);
