@@ -3,6 +3,7 @@ package ATD;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import org.openqa.selenium.Keys;
 import org.testng.Assert;
 
 import java.sql.SQLException;
@@ -520,19 +521,21 @@ public class LKW_main_page_Logic extends LKW_main_page {
         List<String> language = new ArrayList<>(list);
         languageBlock().click();
         for (int i = 0; i < languagesOfSubscribe().size(); i++) {
-            if (closeCookiesPopUp().isDisplayed()) {
-                closeCookiesPopUp().click();
-            }
             currentCountry = currentLanguage().shouldBe(exist).getText();
-            languageBlock().shouldBe(visible).scrollIntoView("{block: \"center\"}").click();
+            languageBlock().shouldBe(exist).scrollIntoView("{block: \"center\"}");
+            languageBlock().click();
             if (!languageListBlock().isDisplayed()) {
                 languageBlock().click();
             }
-            languageListBlock().shouldBe(visible);
-            languagesOfSubscribe().get(i).scrollIntoView("{block: \"end\"}");
+            //languageListBlock().shouldBe(visible);
+            languageListBlock().waitUntil(visible, 20000);
+            languagesOfSubscribe().get(i).scrollIntoView("{block: \"center\"}");
             languagesOfSubscribe().get(i).click();
+            languageListBlock().shouldNotBe(visible);
             currentLanguage().shouldNotHave(exactText(currentCountry));
-            Assert.assertTrue(url().contains(new DataBase().getRouteByRouteName(language.get(i), "lkw_main")));
+            String urlFromBD = new DataBase().getFullRouteByRouteName("subprod", language.get(i), "lkw_main") + "/";
+            // Assert.assertTrue(url().contains(new DataBase().getRouteByRouteName(language.get(i), "lkw_main")));
+            Assert.assertEquals(url(), urlFromBD);
         }
         return this;
     }

@@ -47,6 +47,7 @@
             <class name="LKW_trucks.QC_49_Bread_crumbs.QC_72_BreadCrumbsInTecDocCatalog"/>
         </classes>
     </test>
+
     <test name="LKW_trucks_route">
         <classes>
             <class name="LKW_trucks.QC_116_AllChildCategoriesBlockOfParent"/>

@@ -9,6 +9,7 @@
     <test name="PrivateRoom">
         <classes>
                 <class name="ATD.PrivateRoom.QC_598_CheckingDisplayOfTheBonusTab"/>
+                <class name="ATD.PrivateRoom.QC_597_CheckingUrlForTabsInPR"/>
         </classes>
     </test>
 
@@ -101,6 +102,7 @@
             <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1839_AddedTruckToMyVehiclesBlock"/>
             <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1840_AddedMotoToMyVehiclesBlock"/>
             <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1843_AddingAutoFromHistoryViewedBlockForUnAuthorizedUser"/>
+            <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1846_AddingAutoFromHistoryViewedBlockToMyGarage"/>
             <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1847_SortingVehiclesByDate"/>
             <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1872_RemovingCarFromHistoryViewedInPopUp"/>
             <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1973_TransitionToMyGarageFromPopUp"/>
