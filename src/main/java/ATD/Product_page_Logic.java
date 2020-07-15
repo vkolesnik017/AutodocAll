@@ -697,4 +697,18 @@ public class Product_page_Logic extends Product_page {
         }
         return page(ProductCard_aws.class);
     }
+
+    @Step("Check invisibility of characteristic. Product_page")
+    public Product_page_Logic checkInvisibilityOfCharacteristic(SelenideElement characteriticLocator) {
+        characteriticLocator.shouldNotBe(visible);
+        return this;
+    }
+
+    @Step("Click all characteristics button if it is present. Product_page")
+    public Product_page_Logic clickAllCharacteristicsButtonIfPresent() {
+        if (uncoverCharactericticBtn().is(visible)) {
+            uncoverCharactericticBtn().click();
+        }
+        return this;
+    }
 }
