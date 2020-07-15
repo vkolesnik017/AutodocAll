@@ -32,6 +32,13 @@ public class Profile_garage_page_Logic extends Profile_garage_page {
         return this;
     }
 
+    @Step(": for Profile_garage_page")
+    public Profile_garage_page_Logic selectPassengerCarInSelector(String brandName, String modelNumberValue, String typeNumberValue) {
+        new Main_page_Logic().chooseBrandModelTypeInSelector(brandName, modelNumberValue, typeNumberValue);
+        btnSearchInSelector().click();
+        return this;
+    }
+
     @Step("presence added auto .Profile_garage_page")
     public Profile_garage_page_Logic presenceAddedAuto() {
         addedAutoBlock().shouldBe(visible);
@@ -226,7 +233,7 @@ public class Profile_garage_page_Logic extends Profile_garage_page {
     @Step("Checks presence info car block and elements inside it {expectedText}. Profile_garage_page")
     public Profile_garage_page_Logic checkPresenceInfoCarBlock(String expectedText) {
         carInfoBlock().shouldBe(visible);
-        infoInsideTheBlock().shouldHave(attribute("href"));
+        catalogLincInsideСarInfoBlock().shouldHave(attribute("href"));
         infoInsideTheBlock().shouldHave(text(expectedText));
         imgBlockInsideCarInfoBlock().shouldBe(visible);
         return this;

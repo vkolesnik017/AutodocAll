@@ -129,4 +129,9 @@ public class Profile_plus_page_Logic extends Profile_plus_page {
         return page(Main_page_Logic.class);
     }
 
+    @Step("Logs out of the account and logs in as a previously registered user. Main_page")
+    public Profile_plus_page_Logic logOuAndLoginWithUser(String mail) {
+        new Main_page_Logic().logOuAndLoginWithUser(mail);
+        return this;
+    }
 }
