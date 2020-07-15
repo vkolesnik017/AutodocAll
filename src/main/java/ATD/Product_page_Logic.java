@@ -697,4 +697,16 @@ public class Product_page_Logic extends Product_page {
         }
         return page(ProductCard_aws.class);
     }
+
+    @Step("Checks presence block block approval ECE. Product_page")
+    public Product_page_Logic checkPresenceBlockApprovalECE() {
+        blockApprovalECE().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checks text inside a block approval ECE. Product_page")
+    public Product_page_Logic checkTextInsideBlockApprovalECE(String expectedText) {
+        blockApprovalECE().shouldHave(text(expectedText));
+        return this;
+    }
 }
