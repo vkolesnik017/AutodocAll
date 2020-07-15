@@ -35,9 +35,6 @@ public class QC_1859_DisplayPopUpBonusInOrder {
                 .nextBtnClick()
                 .nextBtnClick();
         orderNumber = new Payment_handler_page_Logic().getOrderNumber();
-        Order_aws order_aws = new Order_aws(orderNumber);
-        order_aws.openOrderInAwsWithLogin()
-                .checkCurrentStatusInOrder("Neue Bestellung");
         close();
     }
 
