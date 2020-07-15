@@ -148,7 +148,7 @@ public class Moto_Catalog_page {
 
     SelenideElement secondLevelBlock() {return $x("//li[@class='active']/div[2]");}
 
-    ElementsCollection topProducts() {return $$x("//div[@class='product-list__row']/ul/li");}
+    ElementsCollection topProducts() {return $$x("//div[contains(@class,'product-list__row')]/ul/li");}
 
     ElementsCollection categoriesTecDocCatalog() {
         return $$x("//div[contains(@class,'car-parts-categories__item')]//a");

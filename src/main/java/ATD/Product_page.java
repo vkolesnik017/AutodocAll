@@ -197,6 +197,8 @@ public class Product_page {
 
     SelenideElement einzustellenderElektrodenabstandCharacteristic() { return $x("//span[contains(text(),'einzustellender Elektrodenabstand [mm]:')]"); }
 
+    public SelenideElement mengeCharacteristic() { return $x("//div[@class='product-block__description__info']//span[contains(text(),'Menge:')]"); }
+
 
     //breadcrumbs locators
     public SelenideElement breadcrumbsBlock() {
@@ -631,5 +633,9 @@ public class Product_page {
     SelenideElement productFitsCar() { return $(".accordion-selected"); }
 
     SelenideElement productTitle() { return $(".title"); }
+
+    SelenideElement blockApprovalECE() {
+        return $x("//div[@class='lamp-usage-text']");
+    }
 
 }
