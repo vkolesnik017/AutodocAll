@@ -103,11 +103,15 @@
             <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1840_AddedMotoToMyVehiclesBlock"/>
             <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1843_AddingAutoFromHistoryViewedBlockForUnAuthorizedUser"/>
             <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1844_TransitionFromViewHistoryToTecDocCatalog"/>
+            <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1845_SortingOfVehicleByDateInMyGarageBlock"/>
             <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1846_AddingAutoFromHistoryViewedBlockToMyGarage"/>
             <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1847_SortingVehiclesByDate"/>
             <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1872_RemovingCarFromHistoryViewedInPopUp"/>
             <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1973_TransitionToMyGarageFromPopUp"/>
             <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1017_ElementsOfGaragePageInPR"/>
+            <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1031_RemovingCarFromMyGarageBlock"/>
+            <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1018_AddPassengerCarToMyGarageBlockInPR"/>
+            <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1032_BlockPassengerCarsFromCustomerOrdersOnGaragePageInPR"/>
         </classes>
     </test>
 

@@ -52,7 +52,6 @@ public class QC_1858_TranslationBonusToTheHeaderOfOrder {
                 .goToMyOrdersPage()
                 .checkTranslationBonusLabels(shop)
                 .logOutClick();
-        close();
     }
 
     @AfterClass
@@ -61,6 +60,11 @@ public class QC_1858_TranslationBonusToTheHeaderOfOrder {
                 .checkCurrentStatusInOrder("Neue Bestellung")
                 .reSaveOrder()
                 .checkCurrentStatusInOrder("Testbestellungen");
+        close();
+    }
+
+    @AfterMethod
+    private void tearDown() {
         close();
     }
 }

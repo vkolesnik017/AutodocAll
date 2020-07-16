@@ -50,7 +50,6 @@ public class QC_1393_SplitBilling_FirmAndPhysicalPerson_SameCountries_PositiveCa
     public void testSuccessfulPlacementOfOrder_SplitBillingAndPhysicalPerson_EN(String routeEN) {
         vatForGB = new PageVAT_aws().getVatForGB();
         openPage(routeEN);
-        String shop = getCurrentShopFromJSVarInHTML();
         priceWithVatPerAllDataPageGB = product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
@@ -125,7 +124,6 @@ public class QC_1393_SplitBilling_FirmAndPhysicalPerson_SameCountries_PositiveCa
     public void testSuccessfulPlacementOfOrder_SplitBillingAndPhysicalPerson_DE(String routeDE) {
         vatForDE = new PageVAT_aws().getVatForDE();
         openPage(routeDE);
-        String shop = getCurrentShopFromJSVarInHTML();
         priceWithVatPerAllDataPageDE = product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()

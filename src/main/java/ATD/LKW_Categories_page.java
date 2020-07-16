@@ -66,6 +66,11 @@ public class LKW_Categories_page {
 
     ElementsCollection linkDetails() {return $$x("//div[@class='item-table-box__details']/span");}
 
+    ElementsCollection parentCategories() {return $$x("//div[@class='car-parts-categories__item-link']");}
 
+    ElementsCollection childCategoriesPopUpOfParentCategory() {return $$x("//div[@class='car-parts-categories-modal__wrapper']");}
 
+    ElementsCollection titleOfParentCategories() {return $$x("//div[@class='car-parts-categories__item-name']");}
+
+    ElementsCollection imageOfParentCategories() {return $$x("//div[@class='car-parts-categories__item-link']/div/img");}
 }

@@ -1,8 +1,10 @@
 package ATD;
 
+import com.codeborne.selenide.CollectionCondition;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
+import static com.codeborne.selenide.CollectionCondition.*;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.back;
 import static com.codeborne.selenide.Selenide.page;
@@ -84,7 +86,7 @@ public class LKW_Categories_page_Logic extends LKW_Categories_page {
 
     @Step("transition to product page by click on top image of product .LKW_Categories_page")
     public LKW_Categories_page_Logic transitionToProductPageByClickOnTopImage(String brand) {
-        clickOnImageOfTopProduct().checkSuccessfullyLKWProductPageLoading("autodoc.de/"+brand+"/");
+        clickOnImageOfTopProduct().checkSuccessfullyLKWProductPageLoading("autodoc.de/" + brand + "/");
         back();
         return this;
     }
@@ -100,7 +102,7 @@ public class LKW_Categories_page_Logic extends LKW_Categories_page {
         if (closeCookiesPopUp().isDisplayed()) {
             closeCookiesPopUp().click();
         }
-        clickOnTitleOfTopProduct().checkSuccessfullyLKWProductPageLoading("autodoc.de/"+brand+"/");
+        clickOnTitleOfTopProduct().checkSuccessfullyLKWProductPageLoading("autodoc.de/" + brand + "/");
         back();
         return this;
     }
@@ -116,7 +118,7 @@ public class LKW_Categories_page_Logic extends LKW_Categories_page {
         if (closeCookiesPopUp().isDisplayed()) {
             closeCookiesPopUp().click();
         }
-        clickOnLinkDetails().checkSuccessfullyLKWProductPageLoading("autodoc.de/"+brand+"/");
+        clickOnLinkDetails().checkSuccessfullyLKWProductPageLoading("autodoc.de/" + brand + "/");
         back();
         return this;
     }
@@ -127,5 +129,25 @@ public class LKW_Categories_page_Logic extends LKW_Categories_page {
         additionInfoBlockOfTopProduct().get(3).should(appear);
         linkDetails().get(3).click();
         return page(LKW_Product_page_Logic.class);
+    }
+
+    @Step("presence of Parent categories block .LKW_Categories_page")
+    public LKW_Categories_page_Logic presenceOfParentCategoriesBlock(int countOfParentCategories) {
+        parentCategories().shouldHave(sizeGreaterThan(countOfParentCategories));
+        return this;
+    }
+
+     @Step("visibility Of Child categories popUp of Parent Category .LKW_Categories_page")
+    public LKW_Categories_page_Logic visibilityOfChildCategoriesPopUpOfParentCategory() {
+                  for (int i=0; i< parentCategories().size();i++) {
+                      if (titleOfParentCategories().get(i).getText().equals("Reifen")) {
+                          continue;
+                      }
+                      imageOfParentCategories().get(i).shouldBe(visible);
+                      titleOfParentCategories().get(i).shouldBe(visible);
+                      parentCategories().get(i).click();
+                      childCategoriesPopUpOfParentCategory().get(i).shouldBe(visible);
+                  }
+        return this;
     }
 }
