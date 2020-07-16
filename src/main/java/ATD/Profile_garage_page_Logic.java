@@ -1,6 +1,7 @@
 package ATD;
 
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
@@ -10,6 +11,7 @@ import java.util.List;
 import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.CollectionCondition.*;
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.page;
 
 public class Profile_garage_page_Logic extends Profile_garage_page {
@@ -32,7 +34,7 @@ public class Profile_garage_page_Logic extends Profile_garage_page {
     }
 
     @Step(": for Profile_garage_page")
-    public Profile_garage_page_Logic selectPassengerCarInSelector(String brandName, String modelNumberValue, String typeNumberValue) {
+    public Profile_garage_page_Logic selectVehicleCarInSelector(String brandName, String modelNumberValue, String typeNumberValue) {
         new Main_page_Logic().chooseBrandModelTypeInSelector(brandName, modelNumberValue, typeNumberValue);
         btnSearchInSelector().click();
         return this;
@@ -242,6 +244,36 @@ public class Profile_garage_page_Logic extends Profile_garage_page {
         infoInsideTheBlock().shouldHave(text(expectedText));
         imgBlockInsideCarInfoBlock().shouldBe(visible);
         return this;
+    }
+
+    @Step("Get text with information about the added vehicle. Profile_garage_page")
+    public ArrayList <String> getTextWithInformationAboutAddedVehicle() {
+        ArrayList<String> infoText = new ArrayList<>();
+        ElementsCollection infoInsideTheBlock = infoInsideTheBlockAllAddedVehicle();
+        String text = null;
+        for (SelenideElement info : infoInsideTheBlock) {
+            text = info.getText().replaceAll("\n", " ");
+            infoText.add(text);
+        }
+        return infoText;
+    }
+
+    @Step("Get text with vehicle information in the selector. Profile_garage_page")
+    public ArrayList <String> getTextWithVehicleInfoInSelector() {
+        ArrayList<String> infoText = new ArrayList<>();
+        ElementsCollection editBtn = $$x("//div[@class='buttons profile_buttons']/a[2]");
+        String brand = null;
+        String model = null;
+        String motor = null;
+        for (SelenideElement button : editBtn) {
+            button.click();
+            brand = brandInput().getText();
+            model = modelInput().getText();
+            motor = motorInput().getText();
+            infoText.add(brand + model + motor);
+            closeSelector().click();
+        }
+        return infoText;
     }
 
     @Step("Checks transition to catalog page {expectedURL} fom car info block. Profile_garage_page")
