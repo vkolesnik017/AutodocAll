@@ -414,10 +414,14 @@ public class LKW_main_page_Logic extends LKW_main_page {
 
     @Step("availability of forward and back links of TOP products block .LKW_main_page")
     public LKW_main_page_Logic availabilityOfForwardBackLinksOfTopBLock() {
+        String currentArtNumOfTopProduct = visibleArtNumOfTopProducts().get(0).getText();
+        visibleArtNumOfTopProducts().shouldHaveSize(6);
         forwardLinkOfTopBLock().shouldBe(visible).click();
-        productsInTopBlockSecondLevel().shouldBe(visible);
+        visibleArtNumOfTopProducts().get(0).shouldNotHave(exactText(currentArtNumOfTopProduct));
+        visibleArtNumOfTopProducts().shouldHaveSize(6);
+        currentArtNumOfTopProduct = visibleArtNumOfTopProducts().get(0).getText();
         backLinkOfTopBLock().shouldBe(visible).click();
-        productsInTopBlockFirstLevel().shouldBe(visible);
+        visibleArtNumOfTopProducts().get(0).shouldNotHave(exactText(currentArtNumOfTopProduct));
         return this;
     }
 
