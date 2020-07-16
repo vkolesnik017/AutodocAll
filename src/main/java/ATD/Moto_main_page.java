@@ -189,7 +189,7 @@ class Moto_main_page {
     }
 
     SelenideElement activeLinkForwardOfTopModel() {
-        return $x("//div[@class='moto-top-v']//a[@class='bx-next']");
+        return $x("//div[@class='moto-top-v']//button[@class='slick-next slick-arrow']");
     }
 
     SelenideElement linkForwardOfTopModel() {
