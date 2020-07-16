@@ -7,6 +7,9 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class Index_chemicals_page {
 
+    SelenideElement titleMainCatalog() {
+        return $x("//h1[@class='page-title']");
+    }
 
     SelenideElement blockSeoTextWithDescription() {
         return $x("//div[@class='text_description']");
@@ -70,6 +73,18 @@ public class Index_chemicals_page {
 
     SelenideElement btnLessInTopCategoriesBlock() {
        return  $x("//div[@class='seo-category-blocks__block seo-category-blocks__block-js']//a[@class='less_link']");
+    }
+
+    SelenideElement firstProductInTopProductsBlock() {
+        return $x("//div[@id='js-product-slider']//div[contains(@class,'slick-active')][1]");
+    }
+
+    SelenideElement btnDetailsFirstProductInTopProductsBlock() {
+        return $x("//div[@id='js-product-slider']//div[contains(@class,'slick-active')][1]//span[@class='link']");
+    }
+
+    SelenideElement mainCategoriesCatalogBlock() {
+        return $x("//div[@class='category-block']");
     }
 
 

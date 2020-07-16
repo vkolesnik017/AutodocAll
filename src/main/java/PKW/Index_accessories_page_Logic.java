@@ -119,11 +119,11 @@ public class Index_accessories_page_Logic extends Index_accessories_page {
         return this;
     }
 
-
-
-
-
-
+    @Step("Checking presence top categories block. Index_accessories_page")
+    public Index_accessories_page_Logic checkingPresenceTopCategoriesBlock() {
+        blockTopCategories().scrollTo().shouldBe(visible);
+        return this;
+    }
 
 
 
