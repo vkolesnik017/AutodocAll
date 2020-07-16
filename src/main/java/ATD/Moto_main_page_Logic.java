@@ -498,7 +498,7 @@ public class Moto_main_page_Logic extends Moto_main_page {
         String titleOfMotoModel;
         topModelsBlock().scrollTo();
         checkColorOfTopModels();
-        while (linkForwardOfTopModel().isDisplayed()) {
+        while (activeLinkForwardOfTopModel().isDisplayed()) {
             titleOfMotoModel = titleOfVisibleTopModels().get(0).getText();
             activeLinkForwardOfTopModel().click();
             titleOfVisibleTopModels().get(0).shouldBe(visible).shouldNotHave(exactText(titleOfMotoModel));
