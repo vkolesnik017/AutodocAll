@@ -164,6 +164,10 @@ public class Listing_chemicals_Page {
         return $x("//div[@class='js-filter-criteria-top']//span[@class='next slick-arrow']");
     }
 
+    SelenideElement btnResetAllInGenericsBlock() {
+        return $x("//div[@class='js-filter-criteria-top']//label[@class='filter-generics-tecdoc__all show_all  ']");
+    }
+
 
 
 }

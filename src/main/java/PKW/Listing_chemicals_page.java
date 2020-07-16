@@ -89,4 +89,12 @@ public class Listing_chemicals_page {
         return $x("//div[contains(@class,'listing-brand-filters_more-link')]/a[@class='more_link js-listing-brand-filters less_link']");
     }
 
+    SelenideElement blockProductsListing() {
+        return $x("//div[@class='listing_items']");
+    }
+
+    ElementsCollection productsListing() {
+        return $$x("//div[@class='listing_items']//div[@class='brand-products']");
+    }
+
 }

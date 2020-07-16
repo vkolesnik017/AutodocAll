@@ -104,5 +104,17 @@ public class Listing_chemicals_page_Logic extends Listing_chemicals_page {
         return this;
     }
 
+    @Step("Checking presence products listing block. Listing_chemicals_page")
+    public Listing_chemicals_page_Logic checkingPresenceProductsListingBlock() {
+        blockProductsListing().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checking the number of products in listing. Listing_chemicals_page")
+    public Listing_chemicals_page_Logic checkingNumberOfProductsInListing() {
+        productsListing().shouldHaveSize(20);
+        return this;
+    }
+
 
 }

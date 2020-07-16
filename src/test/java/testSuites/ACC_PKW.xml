@@ -55,4 +55,47 @@
         </classes>
     </test>
 
+    <test name="QC_1611_BlockTopProductsOnMainChemistry">
+        <classes>
+            <class name="PKW.ACC.QC_1611_BlockTopProductsOnMainChemistry.QC_1613_HoverMiniCard"/>
+        </classes>
+    </test>
+
+    <test name="QC_999_TopCategoriesOnMainAccessories">
+        <classes>
+            <class name="PKW.ACC.QC_999_TopCategoriesOnMainAccessories.QC_1000_TopCategoriesBlock"/>
+        </classes>
+    </test>
+
+    <test name="QC_1748_MainCatalogCategoriesOnMainInstruments">
+        <classes>
+            <class name="PKW.ACC.QC_1748_MainCatalogCategoriesOnMainInstruments.QC_1749_MainCatalogBlock"/>
+        </classes>
+    </test>
+
+    <test name="QC_1419_MainCatalogProductsOnMainChemistry">
+        <classes>
+            <class name="PKW.ACC.QC_1419_MainCatalogProductsOnMainChemistry.QC_1533_TitleMainCatalog"/>
+            <class name="PKW.ACC.QC_1419_MainCatalogProductsOnMainChemistry.QC_1535_BlockWithCategories"/>
+            <class name="PKW.ACC.QC_1419_MainCatalogProductsOnMainChemistry.QC_1541_SeparateCategories"/>
+        </classes>
+    </test>
+
+    <test name="QC_1810_BlockWithProductsOnChemistryListing">
+        <classes>
+            <class name="PKW.ACC.QC_1810_BlockWithProductsOnChemistryListing.QC_1811_MainProductsChemistryListing"/>
+        </classes>
+    </test>
+
+    <test name="QC_1752_BlockTopCategoriesOnMainTools">
+        <classes>
+            <class name="PKW.ACC.QC_1752_BlockTopCategoriesOnMainTools.QC_1753_TitleTopCategoriesBlock"/>
+        </classes>
+    </test>
+
+
+
+
+
+
 </suite>

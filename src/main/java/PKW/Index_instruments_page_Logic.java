@@ -16,6 +16,12 @@ public class Index_instruments_page_Logic extends Index_instruments_page {
         return this;
     }
 
+    @Step("Checking presence title top categories block. Index_instruments_page")
+    public Index_instruments_page_Logic checkingPresenceTitleTopCategoriesBlock() {
+        Assert.assertFalse(titleTopCategoriesBlock().text().isEmpty());
+         return this;
+    }
+
     @Step("Click first bread crumb. Index_instruments_page")
     public Parts_page_Logic clickFirstBreadCrumb() {
         firstBreadCrumb().click();
@@ -43,6 +49,12 @@ public class Index_instruments_page_Logic extends Index_instruments_page {
     public Supplier_page_Logic clickFirstBrandInTopBrandsBlock() {
         firstBrandInTopBrandsBlock().click();
         return page(Supplier_page_Logic.class);
+    }
+
+    @Step("Checking presence main catalog categories block. Index_instruments_page")
+    public Index_instruments_page_Logic checkingPresenceMainCatalogCategoriesBlock() {
+        mainCatalogCategoriesBlock().shouldBe(visible);
+        return this;
     }
 
 

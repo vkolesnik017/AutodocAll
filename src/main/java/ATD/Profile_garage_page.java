@@ -145,4 +145,8 @@ public class Profile_garage_page {
     SelenideElement btnAddedCarFromOrderToGarage() {
         return $x("//a[@class='searched-car se plus-img']/span");
     }
+
+    ElementsCollection availabilityOfAddedVehicleInMyGarage() {return $$x("//div[@id='profile-cars-list']//li");}
+
+    ElementsCollection titleOfVehicleInCarInfoBlock() {return $$x("//div[@class='leeft']/a");}
 }
