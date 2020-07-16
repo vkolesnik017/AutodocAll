@@ -75,6 +75,10 @@ public class Index_accessories_page {
         return $x("//div[@class='text_description']");
     }
 
+    SelenideElement blockTopCategories() {
+        return $x("//div[@class='seo-category-blocks']");
+    }
+
 
 
 }
