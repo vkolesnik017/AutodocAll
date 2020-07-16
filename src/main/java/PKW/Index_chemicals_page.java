@@ -7,6 +7,14 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class Index_chemicals_page {
 
+    SelenideElement firstGroupLogicalUnion() {
+        return $x("//div[@class='category-block__item category-block-item-js'][1]");
+    }
+
+    SelenideElement firstCategoryInLogicalUnion() {
+        return $x("//div[@class='category-block__item category-block-item-js active']//div[@class='category-block__item-list category-block__item-list-js']/ul[1]/li[1]");
+    }
+
     SelenideElement titleMainCatalog() {
         return $x("//h1[@class='page-title']");
     }

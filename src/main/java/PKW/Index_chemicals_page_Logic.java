@@ -138,6 +138,20 @@ public class Index_chemicals_page_Logic extends Index_chemicals_page {
         return this;
     }
 
+    @Step("Get text first category in logical union. Index_chemicals_page")
+    public String getTextFirstCategoryInLogicalUnion() {
+        firstGroupLogicalUnion().hover();
+        return firstCategoryInLogicalUnion().getText();
+    }
+
+    @Step("Click first category in logical union. Index_chemicals_page")
+    public Listing_chemicals_page_Logic clickFirstCategoryInLogicalUnion() {
+        firstCategoryInLogicalUnion().click();
+        return page(Listing_chemicals_page_Logic.class);
+    }
+
+
+
 
 
 

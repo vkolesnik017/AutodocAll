@@ -2,9 +2,7 @@ package PKW;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-
-import static com.codeborne.selenide.Selenide.$$x;
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.*;
 
 
 public class Listing_chemicals_page {
@@ -12,6 +10,18 @@ public class Listing_chemicals_page {
 
     SelenideElement titleNameListingPage() {
         return $x("//h1/span");
+    }
+
+    SelenideElement btnPlusInQuantityCounter() {
+        return $x("//div[@class='brand-products'][1]//a[@class='ga-click plus']");
+    }
+
+    SelenideElement btnMinusInQuantityCounter() {
+        return $x("//div[@class='brand-products'][1]//a[@class='ga-click minus']");
+    }
+
+    SelenideElement counterValueInQuantityCounter() {
+        return $x("//div[@class='brand-products'][1]//input[@class='ammount']");
     }
 
     SelenideElement blockBreadCrumbs() {return $x("//div[@class='crabs']"); }
@@ -95,6 +105,10 @@ public class Listing_chemicals_page {
 
     ElementsCollection productsListing() {
         return $$x("//div[@class='listing_items']//div[@class='brand-products']");
+    }
+
+    SelenideElement titleNameFirstProductInListing() {
+        return $x("//div[@class='brand-products'][1]//a[@class='ga-click prod_link']");
     }
 
 }
