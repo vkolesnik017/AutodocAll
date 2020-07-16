@@ -647,7 +647,7 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Click Autoteile Hersteller link in the footer. Main_page")
-    public AutoteileHersteller_page_Logic clickAutoteileHersteller(){
+    public AutoteileHersteller_page_Logic clickAutoteileHersteller() {
         autoteileHerstellerLink().click();
         return page(AutoteileHersteller_page_Logic.class);
     }
