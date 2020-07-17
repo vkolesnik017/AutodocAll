@@ -3,7 +3,6 @@ package ATD;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
-import org.openqa.selenium.Keys;
 import org.testng.Assert;
 
 import java.sql.SQLException;
@@ -519,7 +518,7 @@ public class LKW_main_page_Logic extends LKW_main_page {
 
     @Step("Checking countries subscription from footer country list  .LKW_main_page")
     public LKW_main_page_Logic checkingCountriesSubscription() throws SQLException {
-        String currentCountry;
+           String currentCountry;
         String[] arr = {"CH", "AT", "LD", "BG", "BE", "CZ", "DK", "EE", "ES", "FI", "FR", "EN", "GR", "HU", "IT", "LT", "LV", "NL", "NO", "PL", "PT", "RO", "SE", "SI", "SK"};
         List list = Arrays.asList(arr);
         List<String> language = new ArrayList<>(list);
@@ -531,14 +530,12 @@ public class LKW_main_page_Logic extends LKW_main_page {
             if (!languageListBlock().isDisplayed()) {
                 languageBlock().click();
             }
-            //languageListBlock().shouldBe(visible);
             languageListBlock().waitUntil(visible, 20000);
             languagesOfSubscribe().get(i).scrollIntoView("{block: \"center\"}");
             languagesOfSubscribe().get(i).click();
             languageListBlock().shouldNotBe(visible);
             currentLanguage().shouldNotHave(exactText(currentCountry));
             String urlFromBD = new DataBase().getFullRouteByRouteName("subprod", language.get(i), "lkw_main") + "/";
-            // Assert.assertTrue(url().contains(new DataBase().getRouteByRouteName(language.get(i), "lkw_main")));
             Assert.assertEquals(url(), urlFromBD);
         }
         return this;
