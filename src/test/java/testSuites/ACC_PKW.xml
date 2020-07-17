@@ -78,12 +78,15 @@
             <class name="PKW.ACC.QC_1419_MainCatalogProductsOnMainChemistry.QC_1533_TitleMainCatalog"/>
             <class name="PKW.ACC.QC_1419_MainCatalogProductsOnMainChemistry.QC_1535_BlockWithCategories"/>
             <class name="PKW.ACC.QC_1419_MainCatalogProductsOnMainChemistry.QC_1541_SeparateCategories"/>
+            <class name="PKW.ACC.QC_1419_MainCatalogProductsOnMainChemistry.QC_1964_TransitionOnListingFromCategoryInLogicalUnion"/>
         </classes>
     </test>
 
     <test name="QC_1810_BlockWithProductsOnChemistryListing">
         <classes>
             <class name="PKW.ACC.QC_1810_BlockWithProductsOnChemistryListing.QC_1811_MainProductsChemistryListing"/>
+            <class name="PKW.ACC.QC_1810_BlockWithProductsOnChemistryListing.QC_1812_TransitionOnProductPageFromChemistryListing"/>
+            <class name="PKW.ACC.QC_1810_BlockWithProductsOnChemistryListing.QC_1813_SelectingQuantityProductsToBuyOnChemistryListing"/>
         </classes>
     </test>
 

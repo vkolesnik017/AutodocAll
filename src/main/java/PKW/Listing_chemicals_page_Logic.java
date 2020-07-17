@@ -116,5 +116,24 @@ public class Listing_chemicals_page_Logic extends Listing_chemicals_page {
         return this;
     }
 
+    @Step("Checking work quantity counter on decrease and increase products. Listing_chemicals_page")
+    public Listing_chemicals_page_Logic checkingWorkQuantityCounterOnDecreaseAndIncrease() {
+        new CommonMethods().checkingCounterIncrease(3, counterValueInQuantityCounter(), btnPlusInQuantityCounter());
+        new CommonMethods().checkingCounterDecrease(2, counterValueInQuantityCounter(), btnMinusInQuantityCounter() );
+        counterValueInQuantityCounter().shouldHave(attribute("value", "2"));
+        return this;
+    }
+
+    @Step("Click first product in listing. Listing_chemicals_page")
+    public Product_page_Logic clickFirstProductInListing() {
+        titleNameFirstProductInListing().click();
+        return page(Product_page_Logic.class);
+    }
+
+    @Step("Get name first product in listing. Listing_chemicals_page")
+    public String getNameFirstProductInListing() {
+        return titleNameFirstProductInListing().getText();
+    }
+
 
 }
