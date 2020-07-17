@@ -44,6 +44,22 @@ public class Profile_garage_page {
         return $x("//a[@class='truck_submit js--lkw_selector-btn-submit-garage']");
     }
 
+    SelenideElement closeSelector() {
+        return $x("//div[@class='popup-selector__content active']/div[@class='popup-selector__content-close']");
+    }
+
+    SelenideElement brandInput() {
+        return $x("//div[@class='popup-selector__content active']//select[@name='maker_id']");
+    }
+
+    SelenideElement modelInput() {
+        return $x("//div[@class='popup-selector__content active']//select[@name='model_id']");
+    }
+
+    SelenideElement motorInput() {
+        return $x("//div[@class='popup-selector__content active']//select[@name='car_id']");
+    }
+
     //Locator is suitable for LKW and Moto types
     SelenideElement btnSearchInSelector() {
         return $x("//a[contains(@class,'search_button')]");
@@ -119,6 +135,10 @@ public class Profile_garage_page {
 
     SelenideElement infoInsideTheBlock() {
         return $x("//div[@class='car_info']//div[@class='leeft']");
+    }
+
+    ElementsCollection infoInsideTheBlockAllAddedVehicle() {
+        return $$x("//div[@class='car_info']//div[@class='leeft']");
     }
 
     SelenideElement mainLogoInHeader() {return $x("//a[@class='header__logo-main']/img");}
