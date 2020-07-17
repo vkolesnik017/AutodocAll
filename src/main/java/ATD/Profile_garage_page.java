@@ -24,8 +24,16 @@ public class Profile_garage_page {
         return $x("//li[@class='popup-selector__tabs-item select-lkw ']");
     }
 
+    SelenideElement activeCarTab() {
+        return $x("//li[@class='popup-selector__tabs-item select-pkw active']");
+    }
+
     SelenideElement activeTrucksTab() {
         return $x("//li[@class='popup-selector__tabs-item select-lkw active']");
+    }
+
+    SelenideElement activeMotoTab() {
+        return $x("//li[@class='popup-selector__tabs-item select-moto active']");
     }
 
     SelenideElement markeOfTruckInSelector() {
@@ -79,6 +87,10 @@ public class Profile_garage_page {
 
     SelenideElement btnEditOfAddedAuto() {
         return $x("//div[@class='buttons profile_buttons']/a[2]");
+    }
+
+    ElementsCollection btnEditOfAllAddedAuto() {
+        return $$x("//div[@class='buttons profile_buttons']/a[2]");
     }
 
     SelenideElement titleOfAddedAuto() {return $x("//div[@class='leeft']/a");}
