@@ -41,6 +41,7 @@ public class QC_1839_AddedTruckToMyVehiclesBlock {
                 .loginAndTransitionToProfilePlusPage(email)
                 .goToMyVehiclesBlock()
                 .openSelectorBlock()
+                .clickTrucksTab()
                 .selectTruckInSelector("2242", "8959", "1012748")
                 .presenceAddedAuto()
                 .checkElementsOfAddedAuto("ASKAM (FARGO/DESOTO) AS 950 (09.2004 - ...)",new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_maker_car_list6"))

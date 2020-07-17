@@ -7,6 +7,7 @@ import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -16,11 +17,13 @@ import java.util.ArrayList;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Selenide.close;
 
 public class QC_1027_EditingVehicleOnMyGaragePage {
 
     private String mail = "QC_1027_autotest@mailinator.com";
-    private ArrayList<String> infoVehicle, infoVehicleInSelector;
+    private ArrayList<String> infoVehicle, infoVehicleAfterEdit;
+
 
     @BeforeClass
     void setUp() {
@@ -38,23 +41,30 @@ public class QC_1027_EditingVehicleOnMyGaragePage {
     @Description(value = "Test checks the editing a vehicle on the My garage page in PR")
     public void testEditingVehicleOnMyGaragePage(String route) throws SQLException {
         openPage(route);
-        infoVehicle = new Main_page_Logic().loginAndTransitionToProfilePlusPage(mail)
+        new Main_page_Logic().loginAndTransitionToProfilePlusPage(mail)
                 .goToMyVehiclesBlock()
                 .openSelectorBlock()
                 .selectVehicleCarInSelector("BMW", "4343", "14801")
                 .checkCountOfAddedVehicleInMyGarageBlock(1)
                 .openSelectorBlock()
+                .clickTrucksTab()
                 .selectTruckInSelector("2242", "8959", "1012748")
                 .checkCountOfAddedVehicleInMyGarageBlock(2)
                 .openSelectorBlock()
                 .selectMotoBlockInSelector()
                 .selectVehicleInSelector("4081", "12111", "104173")
                 .checkCountOfAddedVehicleInMyGarageBlock(3)
+                .checkTextWithAddedVehicleWithTextInSelector();
+        infoVehicle = new Profile_garage_page_Logic().getTextWithInformationAboutAddedVehicle();
+        infoVehicleAfterEdit = new Profile_garage_page_Logic().editAllVehicle()
                 .getTextWithInformationAboutAddedVehicle();
-        infoVehicleInSelector = new Profile_garage_page_Logic().getTextWithVehicleInfoInSelector();
-        System.out.println(infoVehicle);
-        System.out.println(infoVehicleInSelector);
-        Assert.assertTrue(infoVehicle.contains(infoVehicleInSelector));
+        Assert.assertNotEquals(infoVehicle, infoVehicleAfterEdit);
+        new Profile_garage_page_Logic().openPopUpMyGarageInHeader()
+                .clearMyGarageListInPopUp();
     }
 
+    @AfterMethod
+    private void tearDown() {
+        close();
+    }
 }

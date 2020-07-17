@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.WebDriverRunner.url;
@@ -175,14 +176,14 @@ public class LKW_maker_car_list_Logic extends LKW_maker_car_list {
 
     @Step("availability of image of brand in main headline .LKW_maker_car_list")
     public LKW_maker_car_list_Logic availabilityOfImageOfBrand() {
-          imageOfBrandInMainHeadline().shouldBe(visible);
+        imageOfBrandInMainHeadline().shouldBe(visible);
         return this;
     }
 
 
     @Step("visibility of brand and model at main headline .LKW_maker_car_list")
     public LKW_maker_car_list_Logic visibilityOfBrandAndModelAtMainHeadline() {
-           mainHeadline().shouldBe(visible).shouldHave(text("DAF 45"));
+        mainHeadline().shouldBe(visible).shouldHave(text("DAF 45"));
         return this;
     }
 
@@ -216,10 +217,10 @@ public class LKW_maker_car_list_Logic extends LKW_maker_car_list {
         for (int i = 0; i < urlsOfAddedVehicleInPopUpOfGarageInHeader().size(); i++) {
             listOfVehicleFromPopUp.add(urlsOfAddedVehicleInPopUpOfGarageInHeader().get(i).getAttribute("href"));
         }
-        Assert.assertTrue(urlsOfAddedVehicleInPopUpOfGarageInHeader().get(0).getAttribute("href").equals(list.get(list.size()-1)));
+        Assert.assertTrue(urlsOfAddedVehicleInPopUpOfGarageInHeader().get(0).getAttribute("href").equals(list.get(list.size() - 1)));
        /* urlsOfAddedVehicleInPopUpOfGarageInHeader().shouldHaveSize(list.size());
         Assert.assertEquals(getSortedList(listOfVehicleFromPopUp), getSortedList(list));*/
-        for (int i=0; i<list.size();i++) {
+        for (int i = 0; i < list.size(); i++) {
             Assert.assertTrue(listOfVehicleFromPopUp.contains(list.get(i)));
         }
         return this;
@@ -234,7 +235,7 @@ public class LKW_maker_car_list_Logic extends LKW_maker_car_list {
 
 
     @Step("added current url to list .LKW_maker_car_list")
-    public LKW_maker_car_list_Logic  selectTruckInSelector(String marke, String model, String motor) {
+    public LKW_maker_car_list_Logic selectTruckInSelector(String marke, String model, String motor) {
         verticalTruckSelectorInCloseStateSecond().shouldBe(visible).click();
         verticalTruckSelectorInOpenState().shouldBe(visible);
         markeInVerticalCarSelector().selectOptionByValue(marke);
@@ -258,7 +259,7 @@ public class LKW_maker_car_list_Logic extends LKW_maker_car_list {
         return this;
     }
 
-    @Step("select motorcycle block in selector() .LKW_maker_car_list")
+    @Step("select motorcycle block in selector .LKW_maker_car_list")
     public LKW_maker_car_list_Logic selectMotoBlockInSelector() {
         motoTab().click();
         return this;
@@ -271,5 +272,116 @@ public class LKW_maker_car_list_Logic extends LKW_maker_car_list {
         motorOfVehicleInSelector().shouldBe(visible).selectOptionByValue(motor);
         btnSearchVehicleInSelector().click();
         return page(Moto_Catalog_page_Logic.class);
+    }
+
+    @Step("presence of Parent categories block .LKW_maker_car_list")
+    public LKW_maker_car_list_Logic presenceOfParentCategoriesBlock(int countOfParentCategories) {
+        parentCategories().shouldHave(sizeGreaterThan(countOfParentCategories));
+        return this;
+    }
+
+    @Step("visibility Of Child categories popUp of Parent Category .LKW_maker_car_list")
+    public LKW_maker_car_list_Logic checkParentCategoriesOfTecDocCatalog() {
+        for (int i = 0; i < parentCategories().size(); i++) {
+            if (titleOfParentCategories().get(i).getText().equals("Reifen")) {
+                continue;
+            }
+            imageOfParentCategories().get(i).shouldBe(visible);
+            titleOfParentCategories().get(i).shouldBe(visible);
+            parentCategories().get(i).click();
+            childCategoriesPopUpOfParentCategory().get(i).shouldBe(visible);
+            checkFirstLevelOfParentCategories(i);
+        }
+        return this;
+    }
+
+    @Step("check First Level of parent categories .LKW_maker_car_list")
+    public LKW_maker_car_list_Logic checkFirstLevelOfParentCategories(int position) {
+        if (childCategoriesFirstLevel().get(0).isDisplayed() && visibleIntermediateCategoryFirstLevel().get(0).isDisplayed()) {
+            childCategoriesFirstLevel().shouldHave(sizeGreaterThan(0));
+            checkVisibleChildCategoriesFirstLevel();
+            checkIntermediateChildCategoryFirstLevel(position);
+        } else if (childCategoriesFirstLevel().get(0).isDisplayed()) {
+            childCategoriesFirstLevel().shouldHave(sizeGreaterThan(0));
+            checkVisibleChildCategoriesFirstLevel();
+        } else if (visibleIntermediateCategoryFirstLevel().get(0).isDisplayed()) {
+            checkIntermediateChildCategoryFirstLevel(position);
+        }
+        return this;
+    }
+
+    @Step("check visible child categories .LKW_maker_car_list")
+    public LKW_maker_car_list_Logic checkVisibleChildCategoriesFirstLevel() {
+        for (int i = 0; i < childCategoriesFirstLevel().size(); i++) {
+            imageOfVisibleChildCategoriesFirstLevel().get(i).shouldBe(visible);
+            titleOfVisibleChildCategoriesFirstLevel().get(i).shouldBe(visible);
+        }
+        return this;
+    }
+
+
+    @Step("check intermediate child category first level .LKW_maker_car_list")
+    public LKW_maker_car_list_Logic checkIntermediateChildCategoryFirstLevel(int position) {
+        for (int j = 0; j < intermediateChildCategoriesFirstLevel(position + 1).size(); j++) {
+            intermediateChildCategoriesFirstLevel(position + 1).get(j).click();
+            secondLevelBlock().should(appear);
+           checkSecondLevelOfParentCategories();
+        }
+        return this;
+    }
+
+    @Step("check Second Level of parent categories .LKW_maker_car_list")
+    public LKW_maker_car_list_Logic checkSecondLevelOfParentCategories() {
+
+        if (visibleChildCategorySecondLevel().get(0).isDisplayed() && visibleIntermediateCategorySecondLevel().get(0).isDisplayed()) {
+            visibleChildCategorySecondLevel().shouldHave(sizeGreaterThan(0));
+            checkVisibleChildCategoriesSecondLevel();
+            checkIntermediateChildCategorySecondLevel();
+        } else if (visibleChildCategorySecondLevel().get(0).isDisplayed()) {
+            visibleChildCategorySecondLevel().shouldHave(sizeGreaterThan(0));
+            checkVisibleChildCategoriesSecondLevel();
+        } else if (visibleIntermediateCategorySecondLevel().get(0).isDisplayed()) {
+            checkIntermediateChildCategorySecondLevel();
+        }
+        return this;
+    }
+
+    @Step("check visible child categories .LKW_maker_car_list")
+    public LKW_maker_car_list_Logic checkVisibleChildCategoriesSecondLevel() {
+        for (int i = 0; i < visibleChildCategoriesSecondLevel().size(); i++) {
+            imageOfVisibleChildCategoriesSecondLevel().get(i).shouldBe(visible);
+            titleOfVisibleChildCategoriesSecondLevel().get(i).shouldBe(visible);
+        }
+        return this;
+    }
+
+    @Step("check intermediate child category second level .LKW_maker_car_list")
+    public LKW_maker_car_list_Logic checkIntermediateChildCategorySecondLevel() {
+        for (int j = 0; j < intermediateChildCategoriesSecondLevel().size(); j++) {
+            intermediateChildCategoriesSecondLevel().get(j).click();
+            thirdLevelBlock().should(appear);
+            checkThirdLevelOfParentCategories();
+        }
+        return this;
+    }
+
+    @Step("check Second Level of parent categories .LKW_maker_car_list")
+    public LKW_maker_car_list_Logic checkThirdLevelOfParentCategories() {
+        childCategoriesThirdLevel().shouldHave(sizeGreaterThan(0));
+        return this;
+    }
+
+    @Step("select Child Category withOut all values in selector .LKW_Categories_page")
+    public LKW_maker_car_list_Logic selectChildCategoryWithOutAllValuesInSelector(int parentCategoryPosition, int childCategoryPosition) {
+        parentCategories().get(parentCategoryPosition).click();
+        childCategoriesPopUpOfParentCategory().get(parentCategoryPosition).shouldBe(visible);
+        childCategoriesFirstLevelForCheck().get(childCategoryPosition).shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("appearance Of selector .LKW_maker_car_list")
+    public LKW_maker_car_list_Logic appearanceOfSelector() {
+        mainFormOfSelector().shouldBe(visible);
+        return this;
     }
 }
