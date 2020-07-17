@@ -42,6 +42,7 @@ public class QC_1843_AddingAutoFromHistoryViewedBlockForUnAuthorizedUser {
                 .checkAppearanceOfPopUpWhenHoverOverImageOfGarageInHeader()
                 .openSelectorFromMyGarageBlock()
                 .selectVehicleInSelectorOfMyGarage("121", "4644", "14881")
+                .checkVehicleListBeforeWrite(urlOfAddedVehicle)
                 .addedCurrentUrlToList(urlOfAddedVehicle)
                 .checkSelectedVehicleInPopUpOfGarageIcon(urlOfAddedVehicle)
                 .closePopUpOfMyGarageBlock()
