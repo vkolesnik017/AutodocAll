@@ -82,4 +82,6 @@ public class Maker_car_list_page {
     }
 
     SelenideElement btnSearchOfSelectorFromMyGarage() {return $x("//a[@class='truck_submit js--lkw_selector-btn-submit-garage']");}
+
+    SelenideElement tecDocCatalog() {return $x("//div[@class='list_ersats_n list-ersatz-n--catalog']");}
 }

@@ -136,4 +136,19 @@ public class Maker_car_list_page_Logic extends Maker_car_list_page {
         new Main_page_Logic().profilePlusBtnClickInHeader();
         return page(Profile_plus_page_Logic.class);
     }
+
+
+    @Step("presence of TecDoc catalog . Maker_car_list_page")
+    public Maker_car_list_page_Logic presenceOfTecDocCatalog() {
+        tecDocCatalog().shouldBe(visible);
+        return this;
+    }
+    @Step("check vehicle list before writing . Maker_car_list_page")
+    public Maker_car_list_page_Logic checkVehicleListBeforeWrite(List<String> list) {
+        selectorInCloseCondition().shouldBe(visible);
+       if (list.size()>0){
+           list.clear();
+       }
+        return this;
+    }
 }
