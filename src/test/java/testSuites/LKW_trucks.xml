@@ -189,4 +189,10 @@
             <class name="LKW_trucks.QC_105_FilterInteractionInTecDocListing.QC_114_InteractionOfInstallationSideAndGenericFilters"/>
         </classes>
     </test>
+
+    <test name="QC_624_ParentAndChildCategoriesBlockInTecDocCatalog">
+        <classes>
+            <class name="LKW_trucks.QC_624_ParentAndChildCategoriesBlockInTecDocCatalog.QC_117_ParentAndChildCategoriesBlockInTecDocCatalog"/>
+        </classes>
+    </test>
 </suite>

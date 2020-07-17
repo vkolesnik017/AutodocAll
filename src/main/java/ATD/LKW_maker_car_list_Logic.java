@@ -259,7 +259,7 @@ public class LKW_maker_car_list_Logic extends LKW_maker_car_list {
         return this;
     }
 
-    @Step("select motorcycle block in selector() .LKW_maker_car_list")
+    @Step("select motorcycle block in selector .LKW_maker_car_list")
     public LKW_maker_car_list_Logic selectMotoBlockInSelector() {
         motoTab().click();
         return this;
