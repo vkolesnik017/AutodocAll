@@ -12,6 +12,11 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class Product_page_Logic extends Product_page {
 
+    @Step("Get name title. Product_page")
+    public String getNameTitle() {
+        return titleProduct().getText();
+    }
+
 
     @Step("Closing other category popup after adding product in basket. Product_page")
     public Product_page_Logic closePopupOtherCategoryIfYes() {

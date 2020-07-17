@@ -8,6 +8,10 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class Product_page {
 
+    SelenideElement titleProduct() {
+        return $x("//div[@class='pkw-product__row ']//h2");
+    }
+
     public SelenideElement cartIcon() {
         return $(byCssSelector(".header__cart-count"));
     }

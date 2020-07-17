@@ -40,7 +40,7 @@ public class QC_1031_RemovingCarFromMyGarageBlock {
         new Main_page_Logic().loginAndTransitionToProfilePlusPage(mail)
                 .goToMyVehiclesBlock()
                 .openSelectorBlock()
-                .selectPassengerCarInSelector("BMW", "4343", "14801")
+                .selectVehicleCarInSelector("BMW", "4343", "14801")
                 .presenceAddedAuto()
                 .checkElementsOfAddedAuto("BMW X5 (E53) (05.2000 - 02.2007)",
                         new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "maker_car_list11"))
