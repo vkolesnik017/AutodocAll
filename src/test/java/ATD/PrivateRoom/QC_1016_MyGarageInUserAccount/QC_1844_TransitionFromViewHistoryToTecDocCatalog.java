@@ -42,6 +42,7 @@ public class QC_1844_TransitionFromViewHistoryToTecDocCatalog {
                 .chooseBrandModelTypeInSelector("BMW", "10974", "58964")
                 .goToCatalog()
                 .selectTruckBlock()
+                .availabilityOfVerticalTruckSelector()
                 .selectTruckInSelector("174", "14250", "1019356")
                 .addedCurrentUrlToList(urlOfAddedVehicle)
                 .selectMotoCategory()
