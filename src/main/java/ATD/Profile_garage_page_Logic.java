@@ -11,8 +11,7 @@ import java.util.List;
 import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.CollectionCondition.*;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.$$x;
-import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Profile_garage_page_Logic extends Profile_garage_page {
 
@@ -23,9 +22,14 @@ public class Profile_garage_page_Logic extends Profile_garage_page {
         return this;
     }
 
+    @Step("Click tracks tab in selector. Profile_garage_page")
+    public Profile_garage_page_Logic clickTrucksTab() {
+        trucksTab().click();
+        return this;
+    }
+
     @Step("select Truck in selector .Profile_garage_page")
     public Profile_garage_page_Logic selectTruckInSelector(String brand, String model, String motor) {
-        trucksTab().click();
         markeOfTruckInSelector().shouldBe(visible).selectOptionByValue(brand);
         modelOfTruckInSelector().shouldBe(visible).selectOptionByValue(model);
         motorOfTruckInSelector().shouldBe(visible).selectOptionByValue(motor);
@@ -247,33 +251,59 @@ public class Profile_garage_page_Logic extends Profile_garage_page {
     }
 
     @Step("Get text with information about the added vehicle. Profile_garage_page")
-    public ArrayList <String> getTextWithInformationAboutAddedVehicle() {
+    public ArrayList<String> getTextWithInformationAboutAddedVehicle() {
         ArrayList<String> infoText = new ArrayList<>();
         ElementsCollection infoInsideTheBlock = infoInsideTheBlockAllAddedVehicle();
         String text = null;
         for (SelenideElement info : infoInsideTheBlock) {
-            text = info.getText().replaceAll("\n", " ");
+            text = info.getText();
             infoText.add(text);
         }
         return infoText;
     }
 
-    @Step("Get text with vehicle information in the selector. Profile_garage_page")
-    public ArrayList <String> getTextWithVehicleInfoInSelector() {
-        ArrayList<String> infoText = new ArrayList<>();
-        ElementsCollection editBtn = $$x("//div[@class='buttons profile_buttons']/a[2]");
-        String brand = null;
-        String model = null;
-        String motor = null;
-        for (SelenideElement button : editBtn) {
-            button.click();
-            brand = brandInput().getText();
-            model = modelInput().getText();
-            motor = motorInput().getText();
-            infoText.add(brand + model + motor);
+    @Step("Checks text with added vehicle information with text in selector. Profile_garage_page")
+    public Profile_garage_page_Logic checkTextWithAddedVehicleWithTextInSelector() {
+        ArrayList<String> infoTextSelector = new ArrayList<>();
+        ElementsCollection infoInsideTheBlock = infoInsideTheBlockAllAddedVehicle();
+        ElementsCollection editBtn = btnEditOfAllAddedAuto();
+        String infoText, brand, model, motor;
+        for (int i = 0; i < infoInsideTheBlock.size(); i++) {
+            infoText = infoInsideTheBlock.get(i).getText().toUpperCase();
+            editBtn.get(i).click();
+            sleep(3000);
+            brand = brandInput().getText().toUpperCase();
+            model = modelInput().getText().toUpperCase();
+            motor = motorInput().getText().toUpperCase();
+            infoTextSelector.add(brand);
+            infoTextSelector.add(model);
+            infoTextSelector.add(motor);
+            for (int j = 0; j < infoTextSelector.size(); j++) {
+                Assert.assertTrue(infoText.contains(infoTextSelector.get(j)));
+            }
+            infoTextSelector.clear();
             closeSelector().click();
+            sleep(3000);
         }
-        return infoText;
+        return this;
+    }
+
+    @Step("Edit all vehicle. Profile_garage_page")
+    public Profile_garage_page_Logic editAllVehicle() {
+        ElementsCollection editBtn = btnEditOfAllAddedAuto();
+        for (int i = 0; i < editBtn.size(); i++) {
+            editBtn.get(i).click();
+            sleep(3000);
+            if (activeCarTab().isDisplayed()) {
+                selectVehicleCarInSelector("AUDI", "433", "1040");
+            } if (activeTrucksTab().isDisplayed()) {
+                selectTruckInSelector("132", "5549", "1008471");
+            } if (activeMotoTab().isDisplayed()) {
+                selectVehicleInSelector("4057", "12027", "101565");
+            }
+            sleep(3000);
+        }
+        return this;
     }
 
     @Step("Checks transition to catalog page {expectedURL} fom car info block. Profile_garage_page")
