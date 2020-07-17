@@ -87,6 +87,7 @@
             <class name="PKW.ACC.QC_1810_BlockWithProductsOnChemistryListing.QC_1811_MainProductsChemistryListing"/>
             <class name="PKW.ACC.QC_1810_BlockWithProductsOnChemistryListing.QC_1812_TransitionOnProductPageFromChemistryListing"/>
             <class name="PKW.ACC.QC_1810_BlockWithProductsOnChemistryListing.QC_1813_SelectingQuantityProductsToBuyOnChemistryListing"/>
+            <class name="PKW.ACC.QC_1810_BlockWithProductsOnChemistryListing.QC_1814_AddProductsInBasketOnChemistryListing"/>
         </classes>
     </test>
 
@@ -95,6 +96,13 @@
             <class name="PKW.ACC.QC_1752_BlockTopCategoriesOnMainTools.QC_1753_TitleTopCategoriesBlock"/>
         </classes>
     </test>
+
+    <test name="QC_1798_SideBarOnChemistryListing">
+        <classes>
+            <class name="PKW.ACC.QC_1798_SideBarOnChemistryListing.QC_1804_BlockFeaturesOnChemistryListing"/>
+        </classes>
+    </test>
+
 
 
 

@@ -6,6 +6,7 @@ import static PKW.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.sleep;
 
 
 public class Listing_chemicals_page_Logic extends Listing_chemicals_page {
@@ -134,6 +135,50 @@ public class Listing_chemicals_page_Logic extends Listing_chemicals_page {
     public String getNameFirstProductInListing() {
         return titleNameFirstProductInListing().getText();
     }
+
+    @Step("Get id product listing. Listing_chemicals_page")
+    public String getIdProductListing() {
+        return idProductInBtnAddBasket().getAttribute("id");
+    }
+
+    @Step("Click btn add to basket in first product listing. Listing_chemicals_page")
+    public Listing_chemicals_page_Logic clickBtnAddToBasketInFirstProductListing() {
+        RedBtnAddToBasket().click();
+        sleep(2000);
+        return this;
+    }
+
+    @Step("Get value quantity counter first product listing. Listing_chemicals_page")
+    public String getValueQuantityCounterFirstProductListing() {
+        return counterValueInQuantityCounter().getValue();
+    }
+
+    @Step("from. Listing_chemicals_page")
+    public Listing_chemicals_page_Logic increasesNumberProductsInQuantityCounter() {
+        new CommonMethods().checkingCounterIncrease(2, counterValueInQuantityCounter(), btnPlusInQuantityCounter());
+        return this;
+    }
+
+    @Step(":from Listing_chemicals_page")
+    public Cart_page_Logic cartClick() {
+        new Main_page_Logic().cartClick();
+        return page(Cart_page_Logic.class);
+    }
+
+    @Step("Checking presence features block. Listing_chemicals_page")
+    public Listing_chemicals_page_Logic checkingPresenceFeaturesBlock() {
+        blockFeatures().scrollIntoView(false).shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checking presence description feature after hover. Listing_chemicals_page")
+    public Listing_chemicals_page_Logic checkingDescriptionFeatureAfterHoverInFeaturesBlock() {
+        firstFeatures().hover();
+        popupFirstFeatures().shouldBe(visible);
+        return this;
+    }
+
+
 
 
 }

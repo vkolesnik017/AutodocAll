@@ -111,4 +111,24 @@ public class Listing_chemicals_page {
         return $x("//div[@class='brand-products'][1]//a[@class='ga-click prod_link']");
     }
 
+    SelenideElement RedBtnAddToBasket() {
+        return $x("//div[@class='brand-products'][1]//a[@class='indenwarenkorb']");
+    }
+
+    SelenideElement idProductInBtnAddBasket() {
+        return $x("//div[@class='basket_btn button active_red_button ']");
+    }
+
+    SelenideElement blockFeatures() {
+        return $x("//div[@class='sb_content features_wrap']");
+    }
+
+    SelenideElement firstFeatures() {
+        return $x("//div[@class='sb_content features_wrap']//li[@class='preise']");
+    }
+
+    SelenideElement popupFirstFeatures() {
+        return $x("//li[@class='preise']//span[@class='pophover-text']");
+    }
+
 }
