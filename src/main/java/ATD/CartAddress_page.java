@@ -21,7 +21,7 @@ public class CartAddress_page {
         return $(byId("form_lName"));
     }
 
-    SelenideElement strasse() {
+    public SelenideElement strasse() {
         return $(byId("form_lStrasse"));
     }
 
