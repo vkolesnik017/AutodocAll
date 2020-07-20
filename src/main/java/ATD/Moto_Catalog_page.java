@@ -207,4 +207,6 @@ public class Moto_Catalog_page {
     SelenideElement submitBtnLogin() {
         return $x(("//a[@class='enter submit']"));
     }
+
+    SelenideElement selectorFromMyGarageBlock() {return $(byId("selector-my-garage"));}
 }
