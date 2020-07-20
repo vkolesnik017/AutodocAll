@@ -43,7 +43,7 @@ public class QC_1013_GdprRegistrationWithoutSubscribeCheckbox {
                 .fillPasswordFieldsAndClickRegistration()
                 .checkingAutodocPlusActive().clickSetting().checkingUncheckedCheckbox();
         openPage("https://m.autodoc.de/?force=mobile");//TODO url from database
-        new Main_page_mob_Logic().closeFirstPopup().clickSignInInMenu()
+        new Main_page_mob_Logic().closeFirstPopupAfterTransitionOnMob("apps.apple.com", "https://m.autodoc.de/?force=mobile").clickSignInInMenu()
                 .closeFooterPopup().signIn(mail)
                 .goToProfilePage().clickAddresseBtn().clickBillingAddress()
                 .checkingUnCheckedCheckbox().clickCheckbox()

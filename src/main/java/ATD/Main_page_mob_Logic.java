@@ -34,6 +34,7 @@ public class Main_page_mob_Logic extends Main_page_mob {
     @Step("Clicking signIn in menu. Main_page_mob")
     public Login_page_mob_Logic clickSignInInMenu() {
         menuBtn().click();
+        sleep(2000);
         signInBtnInMenu().click();
         return page(Login_page_mob_Logic.class);
     }
@@ -41,6 +42,7 @@ public class Main_page_mob_Logic extends Main_page_mob {
     @Step("Clicking menu button and go to profile page. Main_page_mob")
     public Profile_page_mob_Logic goToProfilePage() {
         menuBtn().click();
+        sleep(2000);
         signInBtnInMenu().click();
         return page(Profile_page_mob_Logic.class);
     }
