@@ -80,6 +80,9 @@ public class QC_1832_CheckingMultipleDeliveryServicesInOneOrder {
                 .checkCurrentStatusInOrder("Versendet")
                 .reSaveOrder()
                 .checkCurrentStatusInOrder("Testbestellungen");
+        openPage(dataBase.getFullRouteByRouteAndSubroute("prod", "DE", "main", "profile_plus"));
+        new Profile_plus_page_Logic().goToMyOrdersPage()
+                .checkOrderHistoryAndClearIt("Testbestellungen");
         openPage(dataBase.getFullRouteByRouteAndSubroute("prod", "DE", "main", "product32"));
         new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
