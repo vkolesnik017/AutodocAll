@@ -373,7 +373,7 @@ public class LKW_maker_car_list_Logic extends LKW_maker_car_list {
 
     @Step("select Child Category withOut all values in selector .LKW_Categories_page")
     public LKW_maker_car_list_Logic selectChildCategoryWithOutAllValuesInSelector(int parentCategoryPosition, int childCategoryPosition) {
-        parentCategories().get(parentCategoryPosition).click();
+        parentCategories().get(parentCategoryPosition).scrollIntoView("{block: \"start\"}").click();
         childCategoriesPopUpOfParentCategory().get(parentCategoryPosition).shouldBe(visible);
         childCategoriesFirstLevelForCheck().get(childCategoryPosition).shouldBe(visible).click();
         return this;

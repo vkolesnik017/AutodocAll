@@ -664,7 +664,7 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
 
     @Step("transitionToChildCategory .LKW_Category_car_list_page")
     public LKW_Category_car_list_page_Logic transitionToChildCategory(int parentCategoryPosition, int childCategoryPosition) {
-        parentCategories().get(parentCategoryPosition).click();
+        parentCategories().get(parentCategoryPosition).scrollIntoView("{block: \"start\"}").click();
         childCategoriesPopUpOfParentCategory().get(parentCategoryPosition).shouldBe(visible);
         childCategoriesFirstLevelForCheck().get(childCategoryPosition).shouldBe(visible).click();
         return page(LKW_Category_car_list_page_Logic.class);
