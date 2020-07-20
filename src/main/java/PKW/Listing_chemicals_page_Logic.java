@@ -143,7 +143,7 @@ public class Listing_chemicals_page_Logic extends Listing_chemicals_page {
 
     @Step("Click btn add to basket in first product listing. Listing_chemicals_page")
     public Listing_chemicals_page_Logic clickBtnAddToBasketInFirstProductListing() {
-        RedBtnAddToBasket().click();
+        redBtnAddToBasket().click();
         sleep(2000);
         return this;
     }
@@ -178,7 +178,66 @@ public class Listing_chemicals_page_Logic extends Listing_chemicals_page {
         return this;
     }
 
+    @Step("Click first generic in generics block. Listing_chemicals_page")
+    public Listing_chemicals_page_Logic clickFirstGeneric() {
+        firstGenericInGenericsBlock().click();
+        return this;
+    }
 
+    @Step("Click second generic in generics block. Listing_chemicals_page")
+    public Listing_chemicals_page_Logic clickSecondGeneric() {
+        secondGenericInGenericsBlock().click();
+        return this;
+    }
+
+    @Step("Get name first generic in generics block. Listing_chemicals_page")
+    public String getNameFirstGeneric() {
+        return firstGenericInGenericsBlock().getText();
+    }
+
+    @Step("Get name second generic in generics block. Listing_chemicals_page")
+    public String getNameSecondGeneric() {
+        return secondGenericInGenericsBlock().getText();
+    }
+
+    @Step("Checking sorting products by two generics.Listing_chemicals_page")
+    public Listing_chemicals_page_Logic checkingSortingProductsByTwoGenerics() {
+        Listing_page_Logic listing_page_logic = new Listing_page_Logic();
+        String firstGeneric = getNameFirstGeneric();
+        String secondGeneric = getNameSecondGeneric();
+        clickFirstGeneric();
+        listing_page_logic.waitUntilPreloaderDisappear();
+        clickSecondGeneric();
+        listing_page_logic.waitUntilPreloaderDisappear();
+        listing_page_logic.checkProductTitleOnListingWithTwoExpectedTexts(firstGeneric, secondGeneric, true, titleNameProductsFromListing());
+        btnSecondPageInPagination().scrollIntoView(false);
+        btnSecondPageInPagination().click();
+        checkingContainsUrl("page=2");
+        listing_page_logic.checkProductTitleOnListingWithTwoExpectedTexts(firstGeneric, secondGeneric, true, titleNameProductsFromListing());
+        return this;
+    }
+
+    @Step("Checking presence generics block. Listing_chemicals_page")
+    public Listing_chemicals_page_Logic checkingPresenceGenericsBlock() {
+        genericsBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checking sorting products by one generic. Listing_chemicals_page")
+    public Listing_chemicals_page checkingSortingProductsByOneGeneric() {
+        Listing_page_Logic listing_page_logic = new Listing_page_Logic();
+        String firstGeneric = getNameFirstGeneric();
+        clickFirstGeneric();
+        listing_page_logic.waitUntilPreloaderDisappear();
+        listing_page_logic.checkProductTitleOnListing(firstGeneric, true, titleNameProductsFromListing());
+        return this;
+    }
+
+    @Step("Checking presence payment method block. Listing_chemicals_page")
+    public Listing_chemicals_page checkingPresencePaymentMethodBlock() {
+        blockPaymentMethod().shouldBe(visible);
+        return this;
+    }
 
 
 }
