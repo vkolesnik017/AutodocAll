@@ -470,4 +470,10 @@ public class Moto_Catalog_page_Logic extends Moto_Catalog_page {
         urlsOfAddedVehicleInPopUpOfGarageInHeader().get(2).shouldBe(visible).click();
         return page(LKW_maker_car_list_Logic.class);
     }
+
+    @Step("absence of selector from My garage block .Moto_Catalog_page")
+    public Moto_Catalog_page_Logic absenceOfSelectorFromMyGarageBlock() {
+        selectorFromMyGarageBlock().shouldNotHave(exist);
+        return this;
+    }
 }

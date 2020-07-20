@@ -63,6 +63,7 @@ public class QC_1843_AddingAutoFromHistoryViewedBlockForUnAuthorizedUser {
                 .openSelectorFromMyGarageBlock()
                 .selectMotoBlockInSelector()
                 .selectMotoInSelectorFromMyGarage("4082", "12019", "104144")
+                .absenceOfSelectorFromMyGarageBlock()
                 .visibilityOfTecDocCatalog()
                 .addedCurrentUrlToList(urlOfAddedVehicle)
                 .checkSelectedVehicleInPopUpOfGarageIcon(urlOfAddedVehicle, 5)
