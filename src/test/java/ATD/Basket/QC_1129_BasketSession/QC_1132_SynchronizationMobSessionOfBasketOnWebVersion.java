@@ -41,7 +41,7 @@ public class QC_1132_SynchronizationMobSessionOfBasketOnWebVersion {
     @Description("Test checks synchronization of the mob session of the basket on the web version")
     public void testSynchronizationMobSessionOnWebVersion(String route) throws SQLException {
         openPage("https://m.autodoc.de/?force=mobile");
-        main_page_mob_logic.closeFirstPopup()
+        main_page_mob_logic.closeFirstPopupAfterTransitionOnMob("apps.apple.com", "https://m.autodoc.de/?force=mobile")
                 .clickSignInInMenu()
                 .closeFooterPopup()
                 .signIn(mail);
@@ -66,7 +66,7 @@ public class QC_1132_SynchronizationMobSessionOfBasketOnWebVersion {
     @Description("Test checks synchronization of the mob session of the basket on the web version when login through FaceBook")
     public void testSynchronizationMobSessionOnWebVersionLoginFromFB(String route) throws SQLException {
         openPage("https://m.autodoc.de/?force=mobile");
-        main_page_mob_logic.closeFirstPopup()
+        main_page_mob_logic.closeFirstPopupAfterTransitionOnMob("apps.apple.com", "https://m.autodoc.de/?force=mobile")
                 .clickSignInInMenu()
                 .closeFooterPopup()
                 .signInFromFB(mailFB, passFB)
