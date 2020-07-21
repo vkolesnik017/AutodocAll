@@ -1,9 +1,10 @@
 package ATD;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.*;
 
 class Category_car_list_page {
     // Form soft 404
@@ -39,4 +40,17 @@ class Category_car_list_page {
         return $(By.cssSelector("#privacy_policy1>a"));
     }
 
+    SelenideElement loaderInTecDocListing() {
+        return $x("//div[@class='preloader_wrapper']");
+    }
+
+    SelenideElement  brandsFilterBlock() {return $x("//div[@data-name='brand']");}
+
+    SelenideElement brandsLinkInSideBar(String idOfBrand) {return $x("//div[@id='selected-instalation__slider']//ul//li//label[@for='cb-brand-"+idOfBrand+"']");}
+
+    SelenideElement forwardLinkAtBrandsFilter() {return $x("//a[contains(@class,'next')]");}
+
+   ElementsCollection titleOfProductInTecDocListing() {return $$x("//div[@class='name']/*[self::a or self::span][1]");}
+
+   ElementsCollection imageOfBrandInProductBlock() {return $$x("//div[@class='image']/span[1]/img");}
 }
