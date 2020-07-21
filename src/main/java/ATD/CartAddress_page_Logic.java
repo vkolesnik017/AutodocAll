@@ -372,4 +372,32 @@ public class CartAddress_page_Logic extends CartAddress_page {
         shippingForm().shouldBe(visible);
         return this;
     }
+
+    @Step("Check correct text {expectedText} in personal number tooltip. CartAddress_page")
+    public CartAddress_page_Logic checkCorrectTextInPersonalNumberTooltip(String expectedText) {
+        personalNumberBlock().shouldBe(visible);
+        infoLabelForPersonalNumber().hover();
+        textFromPersonalNumberTooltip().shouldBe(visible).shouldHave(text(expectedText));
+        return this;
+    }
+
+    @Step("Filling field personal number {expectedText}. CartAddress_page")
+    public CartAddress_page_Logic fillingFieldPersonalNumber(String expectedText) {
+        personalNumberBlock().shouldBe(visible);
+        inputPersonalNumber().setValue(expectedText);
+        return this;
+    }
+
+    @Step("Click get My Address button. CartAddress_page")
+    public CartAddress_page_Logic clickGetMyAddressBtn() {
+        getMyAddressBtn().click();
+        return this;
+    }
+
+    @Step("Check correct text {expectedText} in error message for personal number. CartAddress_page")
+    public CartAddress_page_Logic checkCorrectTextInErrorMessage(String expectedText) {
+        errorMessageForPersonalNumber().shouldBe(visible);
+        errorMessageForPersonalNumber().shouldHave(text(expectedText));
+        return this;
+    }
 }

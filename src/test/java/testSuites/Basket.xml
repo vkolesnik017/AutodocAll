@@ -77,9 +77,18 @@
             <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery.QC_1924_LoginByUserLoginOnAnotherSkin"/>
             <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery.QC_1926_LoginNegativeCase_InvalidPassword"/>
             <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery.QC_1927_LoginNegativeCase_InvalidDomain"/>
-            <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery.QC_1928_LoginNegativeCase_EmptyInputs"/>
+            <!--<class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery.QC_1928_LoginNegativeCase_EmptyInputs"/>-->
             <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery.QC_1930_PasswordRecoveryNegativeCase_NotRegisteredMail"/>
-            <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery.QC_1931_PasswordRecoveryNegativeCase_IncorrectPasswordConfirmation"/>
+           <!--<class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery.QC_1931_PasswordRecoveryNegativeCase_IncorrectPasswordConfirmation"/>-->
+        </classes>
+    </test>
+
+    <test name="RouteAddress">
+        <classes>
+            <class name="ATD.Basket.QC_1932_RouteAddress.QC_1935_InputPersonnummer_PositiveCase"/>
+            <class name="ATD.Basket.QC_1932_RouteAddress.QC_1936_EnteringIncorrectDataIntoTheInputPersonnummer"/>
+            <class name="ATD.Basket.QC_1932_RouteAddress.QC_1937_InputPersonnummer_NegativeCase"/>
+            <class name="ATD.Basket.QC_1932_RouteAddress.QC_1940_BlockingThePackstationWordInTheStrasseField"/>
         </classes>
     </test>
 
