@@ -112,7 +112,11 @@ public class Listing_chemicals_page {
     }
 
     SelenideElement redBtnAddToBasket() {
-        return $x("//div[@class='brand-products'][1]//a[@class='indenwarenkorb']");
+        return $x("//div[@class='brand-products']//a[@class='indenwarenkorb']");
+    }
+
+    SelenideElement popupBasketAddedProducts() {
+        return $x("//div[@class='cart-items-block ']");
     }
 
     SelenideElement idProductInBtnAddBasket() {
@@ -145,6 +149,14 @@ public class Listing_chemicals_page {
 
     SelenideElement blockPaymentMethod() {
         return $x("//div[@class='sb_content payment_method']");
+    }
+
+    SelenideElement firstCriteriaInConsistenceCriteriaBlock() {
+        return $x("//div[@class='criteria-filters']//label[@for='acd9cb']");
+    }
+
+    ElementsCollection characteristicConsistenceInProductsListing() {
+        return $$x("//div[@class='prod_params_container']//span[contains(text(),'Konsistenz')]/..//span[@class='rc']");
     }
 
 

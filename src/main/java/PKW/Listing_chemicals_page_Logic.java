@@ -1,12 +1,16 @@
 package PKW;
 
 
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import org.testng.Assert;
+import java.util.ArrayList;
+
+
 import static PKW.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.page;
-import static com.codeborne.selenide.Selenide.sleep;
+import static com.codeborne.selenide.Selenide.*;
 
 
 public class Listing_chemicals_page_Logic extends Listing_chemicals_page {
@@ -144,7 +148,7 @@ public class Listing_chemicals_page_Logic extends Listing_chemicals_page {
     @Step("Click btn add to basket in first product listing. Listing_chemicals_page")
     public Listing_chemicals_page_Logic clickBtnAddToBasketInFirstProductListing() {
         redBtnAddToBasket().click();
-        sleep(2000);
+        popupBasketAddedProducts().waitUntil(attribute("style","visibility: visible; opacity: 1;"), 20000);
         return this;
     }
 
@@ -237,6 +241,33 @@ public class Listing_chemicals_page_Logic extends Listing_chemicals_page {
     public Listing_chemicals_page checkingPresencePaymentMethodBlock() {
         blockPaymentMethod().shouldBe(visible);
         return this;
+    }
+
+    @Step("Get name first criteria in consistence criteria block. Listing_chemicals_page")
+    public String getNameFirstCriteriaInConsistenceCriteriaBlock() {
+       return firstCriteriaInConsistenceCriteriaBlock().getText();
+    }
+
+    @Step("Click on first criteria in consistence criteria block. Listing_chemicals_page")
+    public Listing_chemicals_page_Logic clickFirstCriteriaInConsistenceCriteriaBlock() {
+        firstCriteriaInConsistenceCriteriaBlock().click();
+        return this;
+    }
+
+    @Step("Checking sorting products by first criteria in consistence criteria block . Listing_chemicals_page")
+    public Listing_chemicals_page_Logic checkingSortingProductsByFirstCriteriaConsistence() {
+        String firstCriteria = getNameFirstCriteriaInConsistenceCriteriaBlock();
+        clickFirstCriteriaInConsistenceCriteriaBlock();
+        new Listing_page_Logic().waitUntilPreloaderDisappear();
+            ArrayList<String> nameCriteria = new ArrayList<>();
+            for (SelenideElement element : characteristicConsistenceInProductsListing()) {
+                String name = element.getText();
+                nameCriteria.add(name);
+            }
+            if (!nameCriteria.contains(firstCriteria)) {
+                Assert.fail("Listing isn't sorted selected criteria ");
+            }
+            return this;
     }
 
 
