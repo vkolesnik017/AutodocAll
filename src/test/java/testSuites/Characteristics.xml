@@ -40,6 +40,7 @@
     <test name="QC_2072_VerificationOfRemovalCharacteristicQuantityOnFrontsForFEBIandSWAG">
         <classes>
             <class name="ATD.Characteristics.QC_2072_VerificationOfRemovalCharacteristicQuantityOnFrontsForFEBIandSWAG.QC_2073_TestAbsenceCharacteristicQuantity563onProductPageForFEBIandSWAG"/>
+            <class name="ATD.Characteristics.QC_2072_VerificationOfRemovalCharacteristicQuantityOnFrontsForFEBIandSWAG.QC_2075_CheckAbsenceOfCharacteristicQuantityInTopBlock"/>
         </classes>
     </test>
 
