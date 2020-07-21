@@ -29,7 +29,7 @@ public class QC_1802_BlockFiltersInSideBarOnChemistryListing {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test Checks sorting products by first criteria in consistence criteria block.")
+    @Description(value = "Test Checks sorting products by first criteria from consistence criteria block.")
     public void testCheckingSortingProductsByFirstCriteriaConsistence(String route) {
         openPage(route);
         new Listing_chemicals_page_Logic().checkingSortingProductsByFirstCriteriaConsistence();

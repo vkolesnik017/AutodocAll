@@ -39,7 +39,7 @@ public class QC_1814_AddProductsInBasketOnChemistryListing {
         idProduct = listing_chemicals_page_logic.getIdProductListing();
         listing_chemicals_page_logic.increasesNumberProductsInQuantityCounter();
         valueCounter = listing_chemicals_page_logic.getValueQuantityCounterFirstProductListing();
-        listing_chemicals_page_logic.clickBtnAddToBasketInFirstProductListing()
+        listing_chemicals_page_logic.clickBtnAddToBasketFirstProduct()
                 .cartClick();
         idAddProduct = new Cart_page_Logic().getIdAddedProduct();
         valueCounterAddProduct = new Cart_page_Logic().getValueQuantityCounter();

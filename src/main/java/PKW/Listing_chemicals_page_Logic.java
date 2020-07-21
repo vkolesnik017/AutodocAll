@@ -145,19 +145,19 @@ public class Listing_chemicals_page_Logic extends Listing_chemicals_page {
         return idProductInBtnAddBasket().getAttribute("id");
     }
 
-    @Step("Click btn add to basket in first product listing. Listing_chemicals_page")
-    public Listing_chemicals_page_Logic clickBtnAddToBasketInFirstProductListing() {
+    @Step("Click button add to basket first product. Listing_chemicals_page")
+    public Listing_chemicals_page_Logic clickBtnAddToBasketFirstProduct() {
         redBtnAddToBasket().click();
-        popupBasketAddedProducts().waitUntil(attribute("style","visibility: visible; opacity: 1;"), 20000);
+        popupBasketAddedProducts().waitUntil(attribute("style","visibility: visible; opacity: 1;"), 10000);
         return this;
     }
 
-    @Step("Get value quantity counter first product listing. Listing_chemicals_page")
+    @Step("Get value quantity counter from first product listing. Listing_chemicals_page")
     public String getValueQuantityCounterFirstProductListing() {
         return counterValueInQuantityCounter().getValue();
     }
 
-    @Step("from. Listing_chemicals_page")
+    @Step(":from Listing_chemicals_page")
     public Listing_chemicals_page_Logic increasesNumberProductsInQuantityCounter() {
         new CommonMethods().checkingCounterIncrease(2, counterValueInQuantityCounter(), btnPlusInQuantityCounter());
         return this;
@@ -194,12 +194,12 @@ public class Listing_chemicals_page_Logic extends Listing_chemicals_page {
         return this;
     }
 
-    @Step("Get name first generic in generics block. Listing_chemicals_page")
+    @Step("Get name first generic from generics block. Listing_chemicals_page")
     public String getNameFirstGeneric() {
         return firstGenericInGenericsBlock().getText();
     }
 
-    @Step("Get name second generic in generics block. Listing_chemicals_page")
+    @Step("Get name second generic from generics block. Listing_chemicals_page")
     public String getNameSecondGeneric() {
         return secondGenericInGenericsBlock().getText();
     }
@@ -243,18 +243,18 @@ public class Listing_chemicals_page_Logic extends Listing_chemicals_page {
         return this;
     }
 
-    @Step("Get name first criteria in consistence criteria block. Listing_chemicals_page")
+    @Step("Get name first criteria from consistence criteria block. Listing_chemicals_page")
     public String getNameFirstCriteriaInConsistenceCriteriaBlock() {
        return firstCriteriaInConsistenceCriteriaBlock().getText();
     }
 
-    @Step("Click on first criteria in consistence criteria block. Listing_chemicals_page")
+    @Step("Click on first criteria from consistence criteria block. Listing_chemicals_page")
     public Listing_chemicals_page_Logic clickFirstCriteriaInConsistenceCriteriaBlock() {
         firstCriteriaInConsistenceCriteriaBlock().click();
         return this;
     }
 
-    @Step("Checking sorting products by first criteria in consistence criteria block . Listing_chemicals_page")
+    @Step("Checking sorting products by first criteria from consistence criteria block . Listing_chemicals_page")
     public Listing_chemicals_page_Logic checkingSortingProductsByFirstCriteriaConsistence() {
         String firstCriteria = getNameFirstCriteriaInConsistenceCriteriaBlock();
         clickFirstCriteriaInConsistenceCriteriaBlock();
@@ -263,9 +263,10 @@ public class Listing_chemicals_page_Logic extends Listing_chemicals_page {
             for (SelenideElement element : characteristicConsistenceInProductsListing()) {
                 String name = element.getText();
                 nameCriteria.add(name);
-            }
-            if (!nameCriteria.contains(firstCriteria)) {
-                Assert.fail("Listing isn't sorted selected criteria ");
+                if (!nameCriteria.contains(firstCriteria)) {
+                    Assert.fail("Listing isn't sorted selected criteria ");
+                }
+                nameCriteria.clear();
             }
             return this;
     }
