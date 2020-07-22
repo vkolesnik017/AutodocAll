@@ -159,5 +159,13 @@ public class Listing_chemicals_page {
         return $$x("//div[@class='prod_params_container']//span[contains(text(),'Konsistenz')]/..//span[@class='rc']");
     }
 
+    SelenideElement firstCategoryFromTopProductSidebar() {
+        return $x("//div[@class='sidebar_block'][1]//li");
+    }
+
+    SelenideElement blockTopCategoryFromSidebar() {
+        return $x("//div[@class='sidebar_block'][1]");
+    }
+
 
 }

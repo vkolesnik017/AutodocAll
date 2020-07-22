@@ -271,5 +271,22 @@ public class Listing_chemicals_page_Logic extends Listing_chemicals_page {
             return this;
     }
 
+    @Step("Get name first category from top categories sidebar. Listing_chemicals_page")
+    public String getNameFirstCategoryFromTopCategoriesSidebar() {
+        return firstCategoryFromTopProductSidebar().getText();
+    }
+
+    @Step("Click first category from top categories sidebar. Listing_chemicals_page")
+    public Listing_chemicals_page_Logic clickFirstCategoryFromTopCategoriesSidebar() {
+        firstCategoryFromTopProductSidebar().click();
+        return this;
+    }
+
+    @Step("Checking presence top categories block from sidebar. Listing_chemicals_page")
+    public Listing_chemicals_page_Logic checkingPresenceTopCategoriesBlockFromSidebar() {
+        blockTopCategoryFromSidebar().shouldBe(visible);
+        return this;
+    }
+
 
 }

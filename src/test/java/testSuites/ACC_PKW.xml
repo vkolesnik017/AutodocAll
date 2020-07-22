@@ -99,6 +99,9 @@
 
     <test name="QC_1798_SideBarOnChemistryListing">
         <classes>
+            <class name="PKW.ACC.QC_1798_SideBarOnChemistryListing.QC_1800_TopCategoriesSidebarOnChemistryListing"/>
+            <class name="PKW.ACC.QC_1798_SideBarOnChemistryListing.QC_1801_ClickableCategoriesFromTopProductsSidebarOnChemistryListing"/>
+            <class name="PKW.ACC.QC_1798_SideBarOnChemistryListing.QC_1802_BlockFiltersInSideBarOnChemistryListing"/>
             <class name="PKW.ACC.QC_1798_SideBarOnChemistryListing.QC_1803_BlockWithPaymentMethodOnChemistryListing"/>
             <class name="PKW.ACC.QC_1798_SideBarOnChemistryListing.QC_1804_BlockFeaturesOnChemistryListing"/>
         </classes>

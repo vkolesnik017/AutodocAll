@@ -1,6 +1,7 @@
 package ATD;
 
 import io.qameta.allure.Step;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
@@ -34,14 +35,14 @@ public class Main_page_mob_Logic extends Main_page_mob {
     @Step("Clicking signIn in menu. Main_page_mob")
     public Login_page_mob_Logic clickSignInInMenu() {
         menuBtn().click();
-        signInBtnInMenu().click();
+        signInBtnInMenu().shouldBe(visible).click();
         return page(Login_page_mob_Logic.class);
     }
 
     @Step("Clicking menu button and go to profile page. Main_page_mob")
     public Profile_page_mob_Logic goToProfilePage() {
         menuBtn().click();
-        signInBtnInMenu().click();
+        signInBtnInMenu().shouldBe(visible).click();
         return page(Profile_page_mob_Logic.class);
     }
 }
