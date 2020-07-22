@@ -111,4 +111,61 @@ public class Listing_chemicals_page {
         return $x("//div[@class='brand-products'][1]//a[@class='ga-click prod_link']");
     }
 
+    SelenideElement redBtnAddToBasket() {
+        return $x("//div[@class='brand-products']//a[@class='indenwarenkorb']");
+    }
+
+    SelenideElement popupBasketAddedProducts() {
+        return $x("//div[@class='cart-items-block ']");
+    }
+
+    SelenideElement idProductInBtnAddBasket() {
+        return $x("//div[@class='basket_btn button active_red_button ']");
+    }
+
+    SelenideElement blockFeatures() {
+        return $x("//div[@class='sb_content features_wrap']");
+    }
+
+    SelenideElement firstFeatures() {
+        return $x("//div[@class='sb_content features_wrap']//li[@class='preise']");
+    }
+
+    SelenideElement popupFirstFeatures() {
+        return $x("//li[@class='preise']//span[@class='pophover-text']");
+    }
+
+    SelenideElement genericsBlock() {
+        return $x("//div[@class='filter-accessories js-filter-generic js-filter-wrapper hidden']");
+    }
+
+    SelenideElement firstGenericInGenericsBlock() {
+        return $x("//label[contains(@class,'filter-accessories__items-item ')][2]");
+    }
+
+    SelenideElement secondGenericInGenericsBlock() {
+        return $x("//label[contains(@class,'filter-accessories__items-item ')][3]");
+    }
+
+    SelenideElement blockPaymentMethod() {
+        return $x("//div[@class='sb_content payment_method']");
+    }
+
+    SelenideElement firstCriteriaInConsistenceCriteriaBlock() {
+        return $x("//div[@class='criteria-filters']//label[@for='acd9cb']");
+    }
+
+    ElementsCollection characteristicConsistenceInProductsListing() {
+        return $$x("//div[@class='prod_params_container']//span[contains(text(),'Konsistenz')]/..//span[@class='rc']");
+    }
+
+    SelenideElement firstCategoryFromTopProductSidebar() {
+        return $x("//div[@class='sidebar_block'][1]//li");
+    }
+
+    SelenideElement blockTopCategoryFromSidebar() {
+        return $x("//div[@class='sidebar_block'][1]");
+    }
+
+
 }

@@ -32,4 +32,12 @@ public class Cart_page {
     SelenideElement nameProduct() {
         return $x("//td[@class='info']/h3");
     }
+
+    SelenideElement valueQuantityCounter() {
+        return $x("//div[@class='qty changable']/input");
+    }
+
+    SelenideElement idAddedProduct() {
+        return $x("//div[@class='cart-page-listing']//tr[@data-article_id]");
+    }
 }
