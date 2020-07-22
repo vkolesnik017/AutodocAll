@@ -164,4 +164,5 @@ public class CartAddress_page {
     SelenideElement errorMessageForPersonalNumber() {
         return $x("//div[@class='error-message']");
     }
+
 }
