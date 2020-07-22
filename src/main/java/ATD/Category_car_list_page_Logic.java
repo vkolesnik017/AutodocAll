@@ -1,6 +1,7 @@
 package ATD;
 
 import com.codeborne.selenide.Condition;
+import files.Product;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
@@ -89,6 +90,32 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
             for (int j = 0; j < characteristicListOfProduct(i + 1).size(); j++) {
                 characteristicListOfProduct(i + 1).get(j).shouldNotHave(exactText("Menge"));
             }
+        }
+        return this;
+    }
+
+    @Step("checking TecDoc listing .Category_car_list_page")
+    public Category_car_list_page_Logic checkTecDocListing() {
+        List<Product> productList = new ArrayList<>();
+        addedProductsToList(productList);
+        while (forwardNextPaginator().isDisplayed() && !notActiveBtnAddProductToBasket().get(0).isDisplayed()) {
+            forwardNextPaginator().click();
+            addedProductsToList(productList);
+        }
+        for (int i = 0; i < productList.size(); i++) {
+            System.out.println(productList.get(i).getBrandOfProduct() + " - " + productList.get(i).getGenericOfProduct() + " - " + productList.get(i).getPriceOfProduct());
+        }
+        return this;
+    }
+
+    @Step("added products to list .Category_car_list_page")
+    public Category_car_list_page_Logic addedProductsToList(List<Product> list) {
+        for (int i = 0; i < activeBtnAddProductToBasket().size(); i++) {
+            Product productPage = new Product();
+            productPage.setBrandOfProduct(activeBtnAddProductToBasket().get(i).getAttribute("data-brand-name"));
+            productPage.setGenericOfProduct(activeBtnAddProductToBasket().get(i).getAttribute("data-name"));
+            productPage.setPriceOfProduct(Double.parseDouble(priceOfProduct().get(i).getText().replaceAll("[^0-9,]", "").replace(",", ".")));
+            list.add(productPage);
         }
         return this;
     }

@@ -622,4 +622,10 @@ public class Main_page {
     SelenideElement selectorFromMyGarageBlock() {return $(byId("selector-my-garage"));}
 
     SelenideElement btnSearchOfSelectorFromMyGarage() {return $x("//a[@class='submit search_button ripple-out']/span");}
+
+    SelenideElement countOfVehicleInMyGarageIcon() {return $x("//span[@class='header-garage__count']");}
+
+    SelenideElement blackBackground() {return $x("//div[@class='overlay black hidden'][@style='display: block;']");}
+
+    SelenideElement btnCloseSelectorFromMyGaragePopUp() {return $x("//div[@class='popup-selector__content active']/div[1]");}
 }
