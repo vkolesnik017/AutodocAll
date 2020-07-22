@@ -167,5 +167,9 @@ public class Listing_chemicals_page {
         return $x("//div[@class='sidebar_block'][1]");
     }
 
+    SelenideElement mainImgOnListingPage() {
+        return $x("//div[@class='sidebar-part-image']/img");
+    }
+
 
 }
