@@ -50,7 +50,7 @@ public class QC_1481_SplitBilling_FirmAndPhysicalPerson_SameCountries_NegativeCa
                 .signIn(email, password)
                 .fillAllFieldsAndFirmForShipping("BE", "1070", "SPRL Brasserie Cantillon", "Anderlecht")
                 .fillFieldIdCompanyShipping("0402065988")
-                .clickCheckboxBilling()
+                .clickCheckboxForOpenBilling()
                 .chooseDeliveryCountryForBilling("BE")
                 .fillingPostalCodeFieldJSForBilling("12345")
                 .nextBtnClick()

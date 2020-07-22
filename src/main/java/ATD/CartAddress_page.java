@@ -165,4 +165,16 @@ public class CartAddress_page {
         return $x("//div[@class='error-message']");
     }
 
+    SelenideElement fiscalCodeBlockInSippingForm() {
+        return $x("//div[@class='shipping-form input-form']//div[@class='fiscal-code-block']");
+    }
+
+    SelenideElement checkboxFiscalCode() {
+        return $x("//input[@id='is-lFiscal-code']");
+    }
+
+    SelenideElement fieldFiscalCode() {
+        return $x("//input[@name='lFiscalCode']");
+    }
+
 }
