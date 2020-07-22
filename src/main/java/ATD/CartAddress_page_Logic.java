@@ -372,4 +372,47 @@ public class CartAddress_page_Logic extends CartAddress_page {
         shippingForm().shouldBe(visible);
         return this;
     }
+
+    @Step("Check correct text {expectedText} in personal number tooltip. CartAddress_page")
+    public CartAddress_page_Logic checkCorrectTextInPersonalNumberTooltip(String expectedText) {
+        personalNumberBlock().shouldBe(visible);
+        infoLabelForPersonalNumber().hover();
+        textFromPersonalNumberTooltip().shouldBe(visible).shouldHave(text(expectedText));
+        return this;
+    }
+
+    @Step("Filling field personal number {expectedText}. CartAddress_page")
+    public CartAddress_page_Logic fillingFieldPersonalNumber(String expectedText) {
+        personalNumberBlock().shouldBe(visible);
+        inputPersonalNumber().setValue(expectedText);
+        return this;
+    }
+
+    @Step("Click get My Address button. CartAddress_page")
+    public CartAddress_page_Logic clickGetMyAddressBtn() {
+        getMyAddressBtn().click();
+        return this;
+    }
+
+    @Step("Check correct text {expectedText} in error message for personal number. CartAddress_page")
+    public CartAddress_page_Logic checkCorrectTextInErrorMessage(String expectedText) {
+        errorMessageForPersonalNumber().shouldBe(visible);
+        errorMessageForPersonalNumber().shouldHave(text(expectedText));
+        return this;
+    }
+
+    @Step("Get zip mask and compares with expected {expectedMask}. CartAddress_page")
+    public CartAddress_page_Logic getZipMasksAndComparesWithExpected(String expectedMask) {
+        String zipMask = postalCodeFieldForShipping().getAttribute("placeholder");
+        Assert.assertEquals(zipMask, expectedMask);
+        return this;
+    }
+
+    @Step("Get the previously entered zip code and compares with expected {expectedZipCode}. CartAddress_page")
+    public CartAddress_page_Logic getZipCodeAndComparesWithExpected(String expectedZipCode) {
+        String zipCode = postalCodeFieldForShipping().getAttribute("value");
+        Assert.assertEquals(zipCode, expectedZipCode);
+        return this;
+    }
+
 }
