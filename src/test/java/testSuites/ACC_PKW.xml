@@ -87,6 +87,7 @@
             <class name="PKW.ACC.QC_1810_BlockWithProductsOnChemistryListing.QC_1811_MainProductsChemistryListing"/>
             <class name="PKW.ACC.QC_1810_BlockWithProductsOnChemistryListing.QC_1812_TransitionOnProductPageFromChemistryListing"/>
             <class name="PKW.ACC.QC_1810_BlockWithProductsOnChemistryListing.QC_1813_SelectingQuantityProductsToBuyOnChemistryListing"/>
+            <class name="PKW.ACC.QC_1810_BlockWithProductsOnChemistryListing.QC_1814_AddProductsInBasketOnChemistryListing"/>
         </classes>
     </test>
 
@@ -95,6 +96,25 @@
             <class name="PKW.ACC.QC_1752_BlockTopCategoriesOnMainTools.QC_1753_TitleTopCategoriesBlock"/>
         </classes>
     </test>
+
+    <test name="QC_1798_SideBarOnChemistryListing">
+        <classes>
+            <class name="PKW.ACC.QC_1798_SideBarOnChemistryListing.QC_1800_TopCategoriesSidebarOnChemistryListing"/>
+            <class name="PKW.ACC.QC_1798_SideBarOnChemistryListing.QC_1801_ClickableCategoriesFromTopProductsSidebarOnChemistryListing"/>
+            <class name="PKW.ACC.QC_1798_SideBarOnChemistryListing.QC_1802_BlockFiltersInSideBarOnChemistryListing"/>
+            <class name="PKW.ACC.QC_1798_SideBarOnChemistryListing.QC_1803_BlockWithPaymentMethodOnChemistryListing"/>
+            <class name="PKW.ACC.QC_1798_SideBarOnChemistryListing.QC_1804_BlockFeaturesOnChemistryListing"/>
+        </classes>
+    </test>
+
+    <test name="QC_1805_BlockFilterByGenericsOnChemistryListing">
+        <classes>
+            <class name="PKW.ACC.QC_1805_BlockFilterByGenericsOnChemistryListing.QC_1806_BlockWithFilterByGenericsOnChemistryListing"/>
+            <class name="PKW.ACC.QC_1805_BlockFilterByGenericsOnChemistryListing.QC_1807_FilteringByOneGenericOnChemistryListing"/>
+            <class name="PKW.ACC.QC_1805_BlockFilterByGenericsOnChemistryListing.QC_1808_FilteringBySeveralGenericsOnChemistryListing"/>
+        </classes>
+    </test>
+
 
 
 

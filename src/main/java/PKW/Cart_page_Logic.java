@@ -42,5 +42,15 @@ public class Cart_page_Logic extends Cart_page{
         return nameProduct().getText();
     }
 
+    @Step("Get value in quantity counter. Cart_page")
+    public String getValueQuantityCounter() {
+        return valueQuantityCounter().getValue();
+    }
+
+    @Step("Get id product listing. Cart_page")
+    public String getIdAddedProduct() {
+        return idAddedProduct().getAttribute("data-article_id");
+    }
+
 
 }

@@ -1,12 +1,12 @@
 package ATD;
 
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selectors.byXpath;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Cart_page {
 
@@ -143,4 +143,10 @@ public class Cart_page {
     SelenideElement bonusSticker() {
         return $(".bonus-sticker");
     }
+
+    SelenideElement btnMoreInfoOfProduct(String numOfOrder) {return $x("//tr[@data-article_id='"+numOfOrder+"']//td[3]/div[2]/a");}
+
+    ElementsCollection moreInfoBlock() {return $$x("//div[@class='info__more-info']/ul");}
+
+    ElementsCollection characteristicListOfProduct(String numOfOrder) {return $$x("//tr[@data-article_id='"+numOfOrder+"']//div[@class='info__more-info']/ul/li/span[1]");}
 }

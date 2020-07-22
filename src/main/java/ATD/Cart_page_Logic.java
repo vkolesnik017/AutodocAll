@@ -4,6 +4,7 @@ import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.Step;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import static ATD.CommonMethods.getCurrencyAndVerify;
 import static ATD.CommonMethods.getPriceFromElement;
@@ -45,7 +46,7 @@ public class Cart_page_Logic extends Cart_page {
 
     @Step("Make price for minimum order for CH. Cart_page")
     public Cart_page makePriceForMinimumOrderForCH(String shop) {
-        if(shop.equals("CH")) {
+        if (shop.equals("CH")) {
             if (!closeDeliveryLimitPopupForCH().isDisplayed()) {
                 sleep(2000);
             }
@@ -100,7 +101,7 @@ public class Cart_page_Logic extends Cart_page {
             getCurrencyAndVerify(priceWithDiscount(), "priceWithDiscount", shop, expectedCurrency);
             getCurrencyAndVerify(discount(), "discount", shop, expectedCurrency);
         }
-            return this;
+        return this;
 
     }
 
@@ -124,13 +125,13 @@ public class Cart_page_Logic extends Cart_page {
     }
 
     @Step("Deletes goods from cart when click on the (Artikel entfernen) button in the delivery pop-up. Cart_page")
-    public Cart_page_Logic deleteGoodsInDeliveryPopupCartPage(){
+    public Cart_page_Logic deleteGoodsInDeliveryPopupCartPage() {
         btnDeleteGoodsInDeliveryPopupCartPage().click();
         return this;
     }
 
     @Step("Click the button (Einkauf fortsetzen) in the delivery pop-up. Cart_page")
-    public Cart_page_Logic clickBtnContinueShoppingInDeliveryPopupCartPage(){
+    public Cart_page_Logic clickBtnContinueShoppingInDeliveryPopupCartPage() {
         btnContinueShoppingInDeliveryPopupCartPage().click();
         return this;
     }
@@ -178,7 +179,7 @@ public class Cart_page_Logic extends Cart_page {
 
     @Step("Get name title product. Cart_page")
     public String getNameTitleProduct() {
-      return titleNameProduct().getText();
+        return titleNameProduct().getText();
     }
 
     @Step("Checks presence bonus sticker. Cart_page")
@@ -196,6 +197,18 @@ public class Cart_page_Logic extends Cart_page {
     @Step("Checks absence bonus sticker. Cart_page")
     public Cart_page_Logic checkAbsenceBonusSticker() {
         bonusSticker().shouldNotBe(visible);
+        return this;
+    }
+
+    @Step("check absence of Quantity characteristic in Product description block. Cart_page")
+    public Cart_page_Logic checkAbsenceOfQuantityCharacteristicInProductDescriptionBlock(List<String> idOfOrder) {
+        for (int i = 0; i < idOfOrder.size(); i++) {
+            btnMoreInfoOfProduct(idOfOrder.get(i)).shouldBe(visible).click();
+            moreInfoBlock().get(i).shouldBe(visible);
+            for (int j = 0; j < characteristicListOfProduct(idOfOrder.get(i)).size(); j++) {
+                characteristicListOfProduct(idOfOrder.get(i)).get(j).shouldNotHave(exactText("Menge"));
+            }
+        }
         return this;
     }
 }

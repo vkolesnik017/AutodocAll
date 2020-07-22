@@ -1035,4 +1035,15 @@ public class Main_page_Logic extends Main_page {
         btnSearchOfSelectorFromMyGarage().click();
         return page(Maker_car_list_page_Logic.class);
     }
+
+    @Step("select product from hint of Search field. Main_page")
+    public Product_page_Logic selectProductFromHintOfSearchField(String artNumOfProduct) {
+        tooltipToSearch().shouldBe(visible);
+        for (int i=0; i<tooltipsToSearch().size();i++) {
+            if (tooltipsToSearch().get(i).has(text(artNumOfProduct))){
+                tooltipsToSearch().get(i).click();
+            }
+        }
+        return page(Product_page_Logic.class);
+    }
 }

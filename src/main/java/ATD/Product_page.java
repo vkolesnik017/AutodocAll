@@ -638,4 +638,20 @@ public class Product_page {
         return $x("//div[@class='lamp-usage-text']");
     }
 
+    SelenideElement idOFBtnAddToBasket() { return  $x("//div[@class='product-button button ']");}
+
+    SelenideElement searchBar() {return $(byId("search")); }
+
+    public SelenideElement tooltipToSearch() { return $(".autocomplete-suggestions>div"); }
+
+    public ElementsCollection tooltipsToSearch() { return $$(".autocomplete-suggestions>div"); }
+
+
+    SelenideElement basketDropMenu() {
+        return $x("//div[@class='cart-items-block ']");
+    }
+
+    SelenideElement basket() {
+        return $x("//a[@class='header-cart__link']");
+    }
 }
