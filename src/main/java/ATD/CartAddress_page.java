@@ -140,4 +140,29 @@ public class CartAddress_page {
     SelenideElement tooltipCOVID19() {
         return $x("//div[@class='error-message']");
     }
+
+    public SelenideElement personalNumberBlock() {
+        return $x("//div[@class='row block-personal-number']");
+    }
+
+    SelenideElement infoLabelForPersonalNumber() {
+        return $x("//div[@class='row block-personal-number']//div[@class='info']");
+    }
+
+    SelenideElement textFromPersonalNumberTooltip() {
+        return $x("//div[@class='personal_number_tooltip-text']");
+    }
+
+    SelenideElement inputPersonalNumber() {
+        return $x("//input[@data-gac='Personal_number']");
+    }
+
+    SelenideElement getMyAddressBtn() {
+        return $x("//div[@class='block-personal-number__button']");
+    }
+
+    SelenideElement errorMessageForPersonalNumber() {
+        return $x("//div[@class='error-message']");
+    }
+
 }

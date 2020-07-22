@@ -82,4 +82,14 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
         }
         return this;
     }
+
+    @Step("check absence of Quantity characteristic in Product description block .Category_car_list_page")
+    public Category_car_list_page_Logic checkAbsenceOfQuantityCharacteristicInProductDescriptionBlock() {
+        for (int i = 0; i < descriptionBlockOfProduct().size(); i++) {
+            for (int j = 0; j < characteristicListOfProduct(i + 1).size(); j++) {
+                characteristicListOfProduct(i + 1).get(j).shouldNotHave(exactText("Menge"));
+            }
+        }
+        return this;
+    }
 }

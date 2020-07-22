@@ -53,4 +53,8 @@ class Category_car_list_page {
    ElementsCollection titleOfProductInTecDocListing() {return $$x("//div[@class='name']/*[self::a or self::span][1]");}
 
    ElementsCollection imageOfBrandInProductBlock() {return $$x("//div[@class='image']/span[1]/img");}
+
+    ElementsCollection descriptionBlockOfProduct() {return $$x("//div[@class='description']");}
+
+    ElementsCollection characteristicListOfProduct(int positionOfProduct) {return $$x("(//div[@class='description'])["+positionOfProduct+"]//div[@class='about']//ul/li/span[1]");}
 }
