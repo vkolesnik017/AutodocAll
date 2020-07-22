@@ -19,6 +19,7 @@ public class Category_name_brand_page_Logic extends Category_name_brand_page {
             checkAbsenceOfQuantityCharacteristicInPopUpTopProducts(i);
             if (i == 3) {
                 activeBtnForwardOfTopProductsBlock().click();
+                visibleTitleOfTopProducts().get(4).shouldBe(visible);
             }
         }
         return this;
