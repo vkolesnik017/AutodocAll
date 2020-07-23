@@ -5,8 +5,6 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 import java.util.ArrayList;
-
-
 import static PKW.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.visible;
@@ -285,6 +283,12 @@ public class Listing_chemicals_page_Logic extends Listing_chemicals_page {
     @Step("Checking presence top categories block from sidebar. Listing_chemicals_page")
     public Listing_chemicals_page_Logic checkingPresenceTopCategoriesBlockFromSidebar() {
         blockTopCategoryFromSidebar().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checking presence main img on listing page. Listing_chemicals_page")
+    public Listing_chemicals_page_Logic checkingPresenceMainImgOnListing() {
+        mainImgOnListingPage().shouldHave(attribute("src"));
         return this;
     }
 

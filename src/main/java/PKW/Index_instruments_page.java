@@ -1,6 +1,9 @@
 package PKW;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+
+import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;
 
 
@@ -32,6 +35,30 @@ public class Index_instruments_page {
 
     SelenideElement mainCatalogCategoriesBlock() {
         return $x("//div[@class='category-block']");
+    }
+
+    SelenideElement firstProductFromTopProductsBlock() {
+        return $x("//div[contains(@class,'slick-active')]");
+    }
+
+    SelenideElement btnDetailsProductFromTopProductsBlock() {
+        return $x("//div[contains(@class,'slick-active')]//span[@class='link']");
+    }
+
+    SelenideElement btnAddProductToBasketFromTopProductsBlock() {
+        return $x("//div[contains(@class,'slick-active')]//div[@class='listing-grid__item-button']");
+    }
+
+    SelenideElement popupBasketAddedProducts() {
+        return $x("//div[@class='cart-items-block ']");
+    }
+
+    ElementsCollection productsFromTopProductsBlock() {
+        return $$x("//div[@class='slick-list draggable']//div[@data-slick-index]");
+    }
+
+    SelenideElement firstCategoryFromTopCategoriesBlock() {
+        return $x("//div[@class='seo-category-blocks']//li");
     }
 
 

@@ -94,11 +94,13 @@
     <test name="QC_1752_BlockTopCategoriesOnMainTools">
         <classes>
             <class name="PKW.ACC.QC_1752_BlockTopCategoriesOnMainTools.QC_1753_TitleTopCategoriesBlock"/>
+            <class name="PKW.ACC.QC_1752_BlockTopCategoriesOnMainTools.QC_1755_TransitionOnListingTopCategory"/>
         </classes>
     </test>
 
     <test name="QC_1798_SideBarOnChemistryListing">
         <classes>
+            <class name="PKW.ACC.QC_1798_SideBarOnChemistryListing.QC_1799_PresencePhotoCategoryOnChemistryListing"/>
             <class name="PKW.ACC.QC_1798_SideBarOnChemistryListing.QC_1800_TopCategoriesSidebarOnChemistryListing"/>
             <class name="PKW.ACC.QC_1798_SideBarOnChemistryListing.QC_1801_ClickableCategoriesFromTopProductsSidebarOnChemistryListing"/>
             <class name="PKW.ACC.QC_1798_SideBarOnChemistryListing.QC_1802_BlockFiltersInSideBarOnChemistryListing"/>
@@ -112,6 +114,14 @@
             <class name="PKW.ACC.QC_1805_BlockFilterByGenericsOnChemistryListing.QC_1806_BlockWithFilterByGenericsOnChemistryListing"/>
             <class name="PKW.ACC.QC_1805_BlockFilterByGenericsOnChemistryListing.QC_1807_FilteringByOneGenericOnChemistryListing"/>
             <class name="PKW.ACC.QC_1805_BlockFilterByGenericsOnChemistryListing.QC_1808_FilteringBySeveralGenericsOnChemistryListing"/>
+        </classes>
+    </test>
+
+    <test name="QC_1756_TopProductsBlockOnMainTools">
+        <classes>
+            <class name="PKW.ACC.QC_1756_TopProductsBlockOnMainTools.QC_1758_QuantityProductsInTopProductsBlock"/>
+            <class name="PKW.ACC.QC_1756_TopProductsBlockOnMainTools.QC_1759_HoverMiniCardTopProductsOnMainTools"/>
+            <class name="PKW.ACC.QC_1756_TopProductsBlockOnMainTools.QC_1760_AddProductFromTopProductsBlockInBasketOnMainTools"/>
         </classes>
     </test>
 
