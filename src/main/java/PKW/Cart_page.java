@@ -16,6 +16,18 @@ public class Cart_page {
         return $(byCssSelector(".plus"));
     }
 
+    SelenideElement nameProduct() {
+        return $x("//td[@class='info']/h3");
+    }
+
+    SelenideElement valueQuantityCounter() {
+        return $x("//div[@class='qty changable']/input");
+    }
+
+    SelenideElement idAddedProduct() {
+        return $x("//div[@class='cart-page-listing']//tr[@data-article_id]");
+    }
+
     // locators only for CH
     SelenideElement closeDeliveryLimitPopupForCH() {
         return $x("//a[@class='close_popup close continue_shopping']");
@@ -29,15 +41,4 @@ public class Cart_page {
         return $x("//div[@class='cart-page-listing__empty-cart']");
     }
 
-    SelenideElement nameProduct() {
-        return $x("//td[@class='info']/h3");
-    }
-
-    SelenideElement valueQuantityCounter() {
-        return $x("//div[@class='qty changable']/input");
-    }
-
-    SelenideElement idAddedProduct() {
-        return $x("//div[@class='cart-page-listing']//tr[@data-article_id]");
-    }
 }
