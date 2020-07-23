@@ -83,8 +83,10 @@
         </classes>
     </test>
 
-    <test name="RouteAddress">
+    <test name="QC_1932_RouteAddress">
         <classes>
+            <class name="ATD.Basket.QC_1932_RouteAddress.QC_1933_ZipMasks"/>
+            <class name="ATD.Basket.QC_1932_RouteAddress.QC_1934_InputTIN_FiscalCodeField"/>
             <class name="ATD.Basket.QC_1932_RouteAddress.QC_1935_InputPersonnummer_PositiveCase"/>
             <class name="ATD.Basket.QC_1932_RouteAddress.QC_1936_EnteringIncorrectDataIntoTheInputPersonnummer"/>
             <class name="ATD.Basket.QC_1932_RouteAddress.QC_1937_InputPersonnummer_NegativeCase"/>

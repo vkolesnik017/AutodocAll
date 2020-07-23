@@ -50,7 +50,7 @@ public class QC_1492_ChecksVerificationIslandsAndFirm_BillingIsDivided_Different
                 .signIn(email, password)
                 .fillAllFieldsAndFirmForShipping("BE", "1070", "SPRL Brasserie Cantillon", "Anderlecht")
                 .fillFieldIdCompanyShipping("0402065988")
-                .clickCheckboxBilling()
+                .clickCheckboxForOpenBilling()
                 .chooseDeliveryCountryForBilling("FR")
                 .fillingPostalCodeFieldJSForBilling("20000")
                 .nextBtnClick()
