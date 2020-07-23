@@ -37,6 +37,10 @@ public class Index_instruments_page {
         return $x("//div[@class='category-block']");
     }
 
+    SelenideElement titleTopProductsBlock() {
+        return $x("//h3[@class='top-product-block__title']");
+    }
+
     SelenideElement firstProductFromTopProductsBlock() {
         return $x("//div[contains(@class,'slick-active')]");
     }
@@ -59,6 +63,22 @@ public class Index_instruments_page {
 
     SelenideElement firstCategoryFromTopCategoriesBlock() {
         return $x("//div[@class='seo-category-blocks']//li");
+    }
+
+    ElementsCollection categoriesTopCategoriesBlock() {
+        return $$x("//div[@class='seo-category-blocks']//li");
+    }
+
+    SelenideElement firstLogicalUnion() {
+        return $x("//div[@class='category-block__item category-block-item-js']");
+    }
+
+    SelenideElement categoriesBlockInLogicalUnion() {
+        return $x("//div[@class='category-block__item-list category-block__item-list-js']");
+    }
+
+    SelenideElement separateCategoryInMainCatalog() {
+        return $x("//div[@class='category-block']/a");
     }
 
 

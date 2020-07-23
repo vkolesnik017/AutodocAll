@@ -101,10 +101,10 @@ public class Index_accessories_page_Logic extends Index_accessories_page {
     }
 
     @Step("Click on first btn add to basket in block top products. Index_accessories_page")
-    public Cart_page_Logic clickOnFirstBtnAddProductToBasketInBlockTopProducts() {
+    public Index_accessories_page_Logic clickOnFirstBtnAddProductToBasketInBlockTopProducts() {
         firstBtnAddProductToBasketInBlockTopProducts().click();
-        sleep(2000);
-        return page(Cart_page_Logic.class);
+        popupBasketAddedProducts().waitUntil(attribute("style","visibility: visible; opacity: 1;"), 10000);
+        return this;
     }
 
     @Step(":from Index_accessories_page" )
