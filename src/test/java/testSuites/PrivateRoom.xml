@@ -101,6 +101,7 @@
         <classes>
             <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1839_AddedTruckToMyVehiclesBlock"/>
             <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1840_AddedMotoToMyVehiclesBlock"/>
+            <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1842_MyGaragePopUpForUnAuthorizedUserWithOutViewedHistoryAuto"/>
             <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1843_AddingAutoFromHistoryViewedBlockForUnAuthorizedUser"/>
             <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1844_TransitionFromViewHistoryToTecDocCatalog"/>
             <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1845_SortingOfVehicleByDateInMyGarageBlock"/>
