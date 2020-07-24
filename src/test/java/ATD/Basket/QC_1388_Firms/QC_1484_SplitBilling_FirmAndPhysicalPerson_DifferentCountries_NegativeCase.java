@@ -60,7 +60,7 @@ public class QC_1484_SplitBilling_FirmAndPhysicalPerson_DifferentCountries_Negat
                 .nextBtnClick();
         totalPrice = cartAddress_page_logic.checkPresencePopupErrorAboutWrongCompany()
                 .clickBtnContinueInPopupAboutWrongCompany()
-                .chosseUnicreditBank()
+                .choseUnicreditBank()
                 .nextBtnClick()
                 .checkTextInDeliveryAddressInfoBlock("Company Gear4music Limited")
                 .checkTextInPayersAddressInfoBlock("autotest autotest")

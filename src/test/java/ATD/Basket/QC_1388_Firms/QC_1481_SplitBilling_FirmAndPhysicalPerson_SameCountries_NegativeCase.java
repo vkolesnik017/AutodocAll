@@ -54,7 +54,7 @@ public class QC_1481_SplitBilling_FirmAndPhysicalPerson_SameCountries_NegativeCa
                 .chooseDeliveryCountryForBilling("BE")
                 .fillingPostalCodeFieldJSForBilling("12345")
                 .nextBtnClick()
-                .chosseUnicreditBank()
+                .choseUnicreditBank()
                 .nextBtnClick()
                 .checkTextContainingVatPercentage("incl. 21% VAT")
                 .checkTextInDeliveryAddressInfoBlock("Company SPRL Brasserie Cantillon")

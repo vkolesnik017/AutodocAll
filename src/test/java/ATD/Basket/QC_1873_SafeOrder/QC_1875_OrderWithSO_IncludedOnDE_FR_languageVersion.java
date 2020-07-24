@@ -1,11 +1,13 @@
 package ATD.Basket.QC_1873_SafeOrder;
 
+import ATD.CartAllData_page_Logic;
 import ATD.Product_page_Logic;
 import ATD.SetUp;
 import AWS.Order_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -17,9 +19,9 @@ import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_1874_Unchecked_SO_CheckboxOn_FR_DE_LanguageVersions {
+public class QC_1875_OrderWithSO_IncludedOnDE_FR_languageVersion {
 
-    private String mail = "QC_1874_autotest@mailinator.com";
+    private String mail = "QC_1875_autotest@mailinator.com";
 
     @BeforeClass
     void setUp() {
@@ -34,11 +36,11 @@ public class QC_1874_Unchecked_SO_CheckboxOn_FR_DE_LanguageVersions {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks Unchecked SO checkbox on FR / DE language versions")
-    public void testUnchecked_SO_CheckboxOn_FR_DE_LanguageVersions(String route) throws SQLException {
+    @Description(value = "Test checks order with SO included on FR / DE language versions.")
+    public void testOrderWithSO_IncludedOnDE_FR_languageVersion(String route) throws SQLException {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
-        String orderNumber = new Product_page_Logic().addProductToCart()
+        float totalPriceInAllData =  new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
@@ -48,13 +50,19 @@ public class QC_1874_Unchecked_SO_CheckboxOn_FR_DE_LanguageVersions {
                 .chooseVorkasse()
                 .nextBtnClick()
                 .checkPresenceSafeOrderBlock()
-                .checkThatSafeOrderCheckboxIsNotSelected()
-                .nextBtnClick()
+                .addSafeOrderInOrderAndCheckTotalPriceIncludedSO()
+                .getTotalPriceAllDataPage();
+        String orderNumber = new CartAllData_page_Logic().nextBtnClick()
                 .getOrderNumber();
-        new Order_aws(orderNumber).openOrderInAwsWithLogin()
-                .checkThatStatusSafeOrderIsOff()
-                .reSaveOrder()
-                .checkThatStatusSafeOrderIsOff();
+        Order_aws order_aws = new Order_aws(orderNumber);
+        float totalPriceInAWS =  order_aws.openOrderInAwsWithLogin()
+                .checkThatStatusSafeOrderIsOn()
+                .getTotalPriceOrderAWS();
+        Assert.assertEquals(totalPriceInAllData, totalPriceInAWS);
+        totalPriceInAWS = order_aws.reSaveOrder()
+                .checkThatStatusSafeOrderIsOn()
+                .getTotalPriceOrderAWS();
+        Assert.assertEquals(totalPriceInAllData, totalPriceInAWS);
     }
 
     @AfterMethod
