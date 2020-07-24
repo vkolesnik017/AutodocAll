@@ -57,5 +57,46 @@ public class Index_instruments_page_Logic extends Index_instruments_page {
         return this;
     }
 
+    @Step("Get id product from top products block. Index_instruments_page")
+    public String getIdProductFromTopProducts() {
+        return btnAddProductToBasketFromTopProductsBlock().getAttribute("id");
+    }
+
+    @Step("Click btn add to basket product from top products block. Index_instruments_page")
+    public Index_instruments_page_Logic clickBtnAddToBasketProductFromTopProducts(){
+        btnAddProductToBasketFromTopProductsBlock().click();
+        popupBasketAddedProducts().waitUntil(attribute("style","visibility: visible; opacity: 1;"), 10000);
+        return this;
+    }
+
+    @Step(":from Index_instruments_page")
+    public Cart_page_Logic cartClick() {
+        new Main_page_Logic().cartClick();
+        return page(Cart_page_Logic.class);
+    }
+
+    @Step("Checking popup with product characteristic after hover from top products block. Index_instruments_page")
+    public Index_instruments_page_Logic checkingPopupProductFromTopProductsBlock() {
+        firstProductFromTopProductsBlock().scrollIntoView(false).hover();
+        btnDetailsProductFromTopProductsBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checking quantity products in top products block. Index_instruments_page")
+    public Index_instruments_page_Logic checkingQuantityProductsInTopProductsBlock() {
+        productsFromTopProductsBlock().shouldHaveSize(12);
+        return this;
+    }
+
+    @Step("Get name first category from top categories block. Index_instruments_page")
+    public String getNameFirstCategoryFromTopCategoriesBlock() {
+        return firstCategoryFromTopCategoriesBlock().getText();
+    }
+
+    @Step("Click first category from top categories block. Index_instruments_page")
+    public Listing_instruments_Page_Logic clickFirstCategoryFromTopCategoriesBlock() {
+        firstCategoryFromTopCategoriesBlock().click();
+        return page(Listing_instruments_Page_Logic.class);
+    }
 
 }

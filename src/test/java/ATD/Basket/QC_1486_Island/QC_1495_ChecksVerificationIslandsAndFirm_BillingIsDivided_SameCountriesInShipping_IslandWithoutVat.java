@@ -45,7 +45,7 @@ public class QC_1495_ChecksVerificationIslandsAndFirm_BillingIsDivided_SameCount
         totalPrice = new Search_page_Logic().closePopupOtherCategoryIfYes()
                 .cartClick().nextButtonClick()
                 .signIn(email, password)
-                .clickCheckboxBilling()
+                .clickCheckboxForOpenBilling()
                 .nextBtnClick()
                 .checkAbsenceOfPayPalMethod()
                 .chooseVorkasse()
