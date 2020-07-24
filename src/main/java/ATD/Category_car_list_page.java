@@ -52,6 +52,8 @@ class Category_car_list_page {
 
    ElementsCollection titleOfProductInTecDocListing() {return $$x("//div[@class='name']/*[self::a or self::span][1]");}
 
+    ElementsCollection subTitleOfProductInTecDocListing() {return $$x("//span[@class='subname']");}
+
    ElementsCollection imageOfBrandInProductBlock() {return $$x("//div[@class='image']/span[1]/img");}
 
     ElementsCollection descriptionBlockOfProduct() {return $$x("//div[@class='description']");}
@@ -65,4 +67,5 @@ class Category_car_list_page {
     ElementsCollection notActiveBtnAddProductToBasket() {return $$x("//div[@class='button not_active']");}
 
     SelenideElement forwardNextPaginator() {return $x("//span[@class='next'][1]/a");}
-}
+
+  }

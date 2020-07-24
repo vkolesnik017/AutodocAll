@@ -12,6 +12,7 @@
             <!--<class name="ATD.Listings.QC_423_ListingOEN.QC_425_GoingToRouteCategoryOenFromOenNumbersBlockOnProductPage"/>-->
             <class name="ATD.Listings.QC_423_ListingOEN.QC_426_PresenceElementsOnOenListing"/>
             <class name="ATD.Listings.QC_423_ListingOEN.QC_439_PresenceAdditionalListingOnSearchPage"/>
+            <!--<class name="ATD.Listings.QC_423_ListingOEN.QC_2061_RidexPrioritizationInTecDocListing"/>-->
             <class name="ATD.Listings.QC_423_ListingOEN.QC_2062_RidexPrioritizationInOENListing"/>
         </classes>
     </test>
