@@ -736,7 +736,7 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
-    @Step("select product from hint of Search field. Main_page")
+    @Step("select product from hint of Search field. Product_page")
     public Product_page_Logic selectProductFromHintOfSearchField(String artNumOfProduct) {
         tooltipToSearch().shouldBe(visible);
         for (int i = 0; i < tooltipsToSearch().size(); i++) {

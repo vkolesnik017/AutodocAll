@@ -1,12 +1,10 @@
 package ATD;
 
-import com.codeborne.selenide.Condition;
+import files.Product;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 import static ATD.CommonMethods.waitWhileRouteBecomeExpected;
 import static ATD.CommonMethods.waitingWhileLinkBecomeExpected;
@@ -27,12 +25,12 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
     public Category_car_list_page_Logic checkingBehaviorSoft404(String mail) {
         mailFieldSoftForm().setValue(mail);
         submitBtnSoftForm().click();
-        errPopupSoftForm().shouldHave(Condition.text("Um fortzufahren bestätigen Sie bitte Ihr Newsletter-Abo"));
+        errPopupSoftForm().shouldHave(text("Um fortzufahren bestätigen Sie bitte Ihr Newsletter-Abo"));
         closeErrPopupSoftForm().click();
         subscribeCheckboxSoftForm().click();
         submitBtnSoftForm().click();
         successPopupSoftForm().shouldBe(appear);
-        closeSuccessPopupSoftForm().shouldHave(Condition.text("Einkauf fortsetzen")).click();
+        closeSuccessPopupSoftForm().shouldHave(text("Einkauf fortsetzen")).click();
         waitingWhileLinkBecomeExpected("https://www.autodoc.de/ersatzteile/genesis/g90/g90/123335-3-3-t-gdi");
         return this;
     }
@@ -89,6 +87,71 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
             for (int j = 0; j < characteristicListOfProduct(i + 1).size(); j++) {
                 characteristicListOfProduct(i + 1).get(j).shouldNotHave(exactText("Menge"));
             }
+        }
+        return this;
+    }
+
+    @Step("checking TecDoc listing .Category_car_list_page")
+    public Category_car_list_page_Logic checkTecDocListing() {
+        List<Product> productList = new ArrayList<>();
+
+        List<String> expectedGenerics = Arrays.asList("Luftmassenmesser",
+                "Impulsgeber, Kurbelwelle", "Sensor, Nockenwellenposition", "Sensor, Kühlmitteltemperatur",
+                "Sensor, Ladedruck", "Sensor, Zündimpuls", "Sensor, Fahrpedalstellung",
+                "Klopfsensor", "Sensor, Ansauglufttemperatur", "Drehzahlsensor, Motormanagement",
+                "Öldruckschalter", "Steuergerät, Motormanagement", "Luftmengenmesser",
+                "Sensor, Kühlmitteltemperatur", "Sensor, Ladedruck", "Sensor, Öldruck",
+                "Sensor, Öltemperatur", "Steuergerät, Kraftstoffeinspritzung", "Sensor, Kühlmitteltemperatur",
+                "Steuergerät, Zündanlage", "Sensor, Kühlmitteltemperatur", "Steuergerät, Einspritzanlage",
+                "Schalter, Kupplungsbetätigung (Motorsteuerung)", "Sensor, Öltemperatur / -druck", "Gehäuse, Luftmengenmesser",
+                "Schalter, Bremsbetätigung (Motorsteuerung)", "Sensor, Zylinderkopftemperatur", "Lambdasondensatz",
+                "Elektromotor, Gebläse Steuergerätebox");
+
+        addedProductsToList(productList, expectedGenerics);
+
+        while (forwardNextPaginator().isDisplayed() && !notActiveBtnAddProductToBasket().get(0).isDisplayed()) {
+            forwardNextPaginator().click();
+            addedProductsToList(productList, expectedGenerics);
+        }
+        List<Product> listBeforeSorting = new ArrayList<>(productList);
+
+        Comparator<String> genericsComparator = (g1, g2) -> {
+            if (!expectedGenerics.contains(g1)) {
+                return 1;
+            }
+            if (!expectedGenerics.contains(g2)) {
+                return -1;
+            }
+            return expectedGenerics.indexOf(g1) - expectedGenerics.indexOf(g2);
+        };
+
+        Comparator<Product> productsComparator = Comparator
+                .comparing((Product p) -> "RIDEX".equals(p.getBrandOfProduct()) ? -1 : 0)
+                .thenComparing(Product::getGenericOfProduct, genericsComparator)
+                .thenComparingDouble(Product::getPriceOfProduct);
+        productList.sort(productsComparator);
+        Assert.assertEquals(listBeforeSorting,productList);
+
+        return this;
+    }
+
+    @Step("added products to list .Category_car_list_page")
+    public Category_car_list_page_Logic addedProductsToList(List<Product> list, List<String> genericList) {
+        String brand, generic, price, url, checkUrl, genericForList = null;
+        for (int i = 0; i < activeBtnAddProductToBasket().size(); i++) {
+            brand = activeBtnAddProductToBasket().get(i).getAttribute("data-brand-name");
+            generic = titleOfProductInTecDocListing().get(i).getText().replaceAll(brand + " ", " ")
+                    .replace("\n" + subTitleOfProductInTecDocListing().get(i).getText(), "");
+            for (int j = 0; j < genericList.size(); j++) {
+                if (generic.contains(genericList.get(j))) {
+                    genericForList = genericList.get(j);
+                }
+            }
+            Product productPage = new Product();
+            productPage.setGenericOfProduct(genericForList);
+            productPage.setBrandOfProduct(brand);
+            productPage.setPriceOfProduct(Double.parseDouble(priceOfProduct().get(i).getText().replaceAll("[^0-9,]", "").replace(",", ".")));
+            list.add(productPage);
         }
         return this;
     }
