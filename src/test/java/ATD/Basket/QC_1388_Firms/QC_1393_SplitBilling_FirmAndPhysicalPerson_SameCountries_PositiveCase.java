@@ -39,7 +39,7 @@ public class QC_1393_SplitBilling_FirmAndPhysicalPerson_SameCountries_PositiveCa
 
     @DataProvider(name = "routeEN", parallel = true)
     Object[] dataProviderProductsEN() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "EN", "main", "product2");
+        return new SetUp().setUpShopWithSubroutes("prod", "EN", "main", "product32");
     }
 
     @Test(dataProvider = "routeEN")
@@ -113,7 +113,7 @@ public class QC_1393_SplitBilling_FirmAndPhysicalPerson_SameCountries_PositiveCa
 
     @DataProvider(name = "routeDE", parallel = true)
     Object[] dataProviderProductsDE() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product2");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product32");
     }
 
     @Test(dataProvider = "routeDE")

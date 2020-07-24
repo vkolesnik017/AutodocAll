@@ -200,6 +200,12 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return this;
     }
 
+    @Step("Checks that the Safe Order checkbox is not selected")
+    public CartAllData_page_Logic checkThatSafeOrderCheckboxIsNotSelected() {
+        safeOrderCheckbox().shouldNotHave(attribute("checked"));
+        return this;
+    }
+
     @Step("Check presence Safe Order price from order summery block . CartAllData_page")
     public CartAllData_page_Logic checkPresenceSafeOrderPriceFromOrderSummeryBlock() {
         safeOrderCost().shouldBe(visible);
