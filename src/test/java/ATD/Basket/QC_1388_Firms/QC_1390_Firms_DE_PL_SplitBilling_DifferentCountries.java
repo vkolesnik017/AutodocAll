@@ -53,7 +53,7 @@ public class QC_1390_Firms_DE_PL_SplitBilling_DifferentCountries {
                 .fillAllFieldsAndFirmForBilling("GB","12345","York", "Gear4music Limited")
                 .fillFieldIdCompanyBilling("552033282")
                 .nextBtnClick()
-                .chosePrzelewBankowy()
+                .choosePrzelewBankowy()
                 .nextBtnClick()
                 .checkTextInDeliveryAddressInfoBlock("Firma FB-MONT A. Fułek Spółka")
                 .checkTextInPayersAddressInfoBlock("Firma Gear4music Limited")

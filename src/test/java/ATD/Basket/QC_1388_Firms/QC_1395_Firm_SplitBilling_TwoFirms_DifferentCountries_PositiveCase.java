@@ -61,7 +61,7 @@ public class QC_1395_Firm_SplitBilling_TwoFirms_DifferentCountries_PositiveCase 
                 .fillAllFieldsAndFirmForBilling("ES", "12311", "Kalisz", "FB-MONT A. Fułek Spółka Komandytowa")
                 .fillFieldIdCompanyBilling("6180029941")
                 .nextBtnClick()
-                .choseUnicreditBank()
+                .chooseUnicreditBank()
                 .nextBtnClick()
                 .checkAbsenceOfVatPercentage()
                 .checkTextInDeliveryAddressInfoBlock("Company SPRL Brasserie Cantillon")
