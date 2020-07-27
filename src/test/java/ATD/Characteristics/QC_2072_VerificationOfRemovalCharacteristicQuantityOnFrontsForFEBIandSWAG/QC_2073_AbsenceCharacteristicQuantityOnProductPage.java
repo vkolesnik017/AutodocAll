@@ -17,7 +17,7 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_2073_TestAbsenceCharacteristicQuantity563onProductPageForFEBIandSWAG {
+public class QC_2073_AbsenceCharacteristicQuantityOnProductPage {
 
     private Product_page_Logic productPageLogic = new Product_page_Logic();
 
