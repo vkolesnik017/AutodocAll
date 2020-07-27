@@ -59,7 +59,7 @@ public class QC_1394_Firm_NonSplit_BillingAndShipping_PositiveCase {
                 .fillAllFieldsAndFirmForShipping("BE", "1070", "SPRL Brasserie Cantillon","Anderlecht")
                 .fillFieldIdCompanyShipping("0402065988")
                 .nextBtnClick()
-                .choseUnicreditBank()
+                .chooseUnicreditBank()
                 .nextBtnClick()
                 .checkAbsenceOfVatPercentage()
                 .checkTextInDeliveryAddressInfoBlock("SPRL Brasserie Cantillon")

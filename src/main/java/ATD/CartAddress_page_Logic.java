@@ -414,6 +414,7 @@ public class CartAddress_page_Logic extends CartAddress_page {
     @Step("Click get My Address button. CartAddress_page")
     public CartAddress_page_Logic clickGetMyAddressBtn() {
         getMyAddressBtn().click();
+        sleep(2000);
         return this;
     }
 
