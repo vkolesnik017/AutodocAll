@@ -62,7 +62,7 @@ public class QC_1485_FirmValidationAfterError {
                 .clickBtnFixInPopupAboutWrongCompany()
                 .fillFieldIdCompanyShipping("0402065988")
                 .nextBtnClick()
-                .choseUnicreditBank()
+                .chooseUnicreditBank()
                 .nextBtnClick()
                 .checkTextInDeliveryAddressInfoBlock("Company SPRL Brasserie Cantillon")
                 .checkAbsenceOfVatPercentage()

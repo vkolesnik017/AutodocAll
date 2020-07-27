@@ -47,7 +47,7 @@ public class QC_1877_OrderWithSO_Disabled {
                 .signIn(mail, password)
                 .fillAllFieldsAndFirmForShipping(shop, "1234", "autotest", "autotest")
                 .fillInCompanyIdFieldForCountryWhereIdNeeded(shop, "AT", "autotest")
-                .choseBankAustria()
+                .chooseBankAustria()
                 .nextBtnClick()
                 .checkThatSafeOrderCheckboxIsSelected()
                 .removeSafeOrderInOrderAndCheckTotalPriceIncludedSO()
