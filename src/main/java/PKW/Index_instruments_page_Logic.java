@@ -99,4 +99,34 @@ public class Index_instruments_page_Logic extends Index_instruments_page {
         return page(Listing_instruments_Page_Logic.class);
     }
 
+    @Step("Checking presence title top products block. Index_instruments_page")
+    public Index_instruments_page_Logic checkingPresenceTitleTopProductsBlock() {
+        Assert.assertFalse(titleTopProductsBlock().text().isEmpty());
+        return this;
+    }
+
+    @Step("Checking quantity category in top categories block. Index_instruments_page")
+    public Index_instruments_page_Logic checkingQuantityCategoriesInTopCategoriesBlock() {
+        categoriesTopCategoriesBlock().shouldHaveSize(12);
+        return this;
+    }
+
+    @Step("Checking presence categories block in logical union from main catalog. Index_instruments_page")
+    public Index_instruments_page_Logic checkingPresenceCategoriesInLogicalUnion() {
+        firstLogicalUnion().hover();
+        categoriesBlockInLogicalUnion().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Click separate category from main catalog. Index_instruments_page")
+    public Listing_instruments_Page_Logic clickSeparateCategoryFromMainCatalog() {
+        separateCategoryInMainCatalog().click();
+        return page(Listing_instruments_Page_Logic.class);
+    }
+
+    @Step("Get name separate category from main catalog. Index_instruments_page")
+    public String getNameSeparateCategoryFromMainCatalog() {
+        return separateCategoryInMainCatalog().getText();
+    }
+
 }

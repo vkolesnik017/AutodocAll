@@ -1,7 +1,7 @@
-package PKW.ACC.QC_1748_MainCatalogCategoriesOnMainInstruments;
+package PKW.ACC.QC_1611_BlockTopProductsOnMainChemistry;
 
 
-import PKW.Index_instruments_page_Logic;
+import PKW.Index_chemicals_page_Logic;
 import PKW.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -15,7 +15,8 @@ import static PKW.CommonMethods.openPage;
 import static PKW.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_1749_MainCatalogBlock {
+
+public class QC_1612__QuantityProductsInTopProductsBlock {
 
     @BeforeClass
     void setUp() {
@@ -24,16 +25,16 @@ public class QC_1749_MainCatalogBlock {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "index_instruments");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "index_chemicals");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test checks presence main catalog categories block.")
-    public void testCheckingPresenceMainCatalogCategoriesBlock(String route) {
+    @Description(value = "Test checks quantity products in top products block.")
+    public void testCheckingQuantityProductsInTopProductsBlock(String route) {
         openPage(route);
-        new Index_instruments_page_Logic().checkingPresenceMainCatalogCategoriesBlock();
+        new Index_chemicals_page_Logic().checkingQuantityProductsInTopProductsBlock();
     }
 
     @AfterMethod

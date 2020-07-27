@@ -150,9 +150,29 @@ public class Index_chemicals_page_Logic extends Index_chemicals_page {
         return page(Listing_chemicals_page_Logic.class);
     }
 
+    @Step("Get id product from top products block. Index_chemicals_page")
+    public String getIdProductFromTopProducts() {
+        return btnAddProductToBasketInBlockTopProducts().getAttribute("id");
+    }
 
+    @Step("Click on first btn add to basket from block top products. Index_chemicals_page")
+    public Index_chemicals_page_Logic clickOnFirstBtnAddProductToBasketInBlockTopProducts() {
+        btnAddProductToBasketInBlockTopProducts().click();
+        popupBasketAddedProducts().waitUntil(attribute("style","visibility: visible; opacity: 1;"), 10000);
+        return this;
+    }
 
+    @Step(":from Index_chemicals_page" )
+    public Cart_page_Logic cartClick() {
+        new Main_page_Logic().cartClick();
+        return page(Cart_page_Logic.class);
+    }
 
+    @Step("Checking quantity products in top products block. Index_chemicals_page")
+    public Index_chemicals_page_Logic checkingQuantityProductsInTopProductsBlock() {
+        productsFromTopProductsBlock().shouldHaveSize(12);
+        return this;
+    }
 
 
 }
