@@ -60,7 +60,7 @@ public class QC_1393_SplitBilling_FirmAndPhysicalPerson_SameCountries_PositiveCa
                 .fillAllFieldsAndFirmForBilling("BE", "1070", "Anderlecht", "SPRL Brasserie Cantillon")
                 .fillFieldIdCompanyBilling("0402065988")
                 .nextBtnClick()
-                .chosseUnicreditBank()
+                .choseUnicreditBank()
                 .nextBtnClick()
                 .checkTextInDeliveryAddressInfoBlock("autotest autotest")
                 .checkTextInPayersAddressInfoBlock("SPRL Brasserie Cantillon")

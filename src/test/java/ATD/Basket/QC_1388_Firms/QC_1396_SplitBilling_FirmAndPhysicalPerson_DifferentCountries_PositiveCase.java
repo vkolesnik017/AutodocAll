@@ -62,7 +62,7 @@ public class QC_1396_SplitBilling_FirmAndPhysicalPerson_DifferentCountries_Posit
                 .chooseDeliveryCountryForBilling("PL")
                 .fillingPostalCodeFieldJSForBilling("11111")
                 .nextBtnClick()
-                .chosseUnicreditBank()
+                .choseUnicreditBank()
                 .nextBtnClick()
                 .checkAbsenceOfVatPercentage()
                 .checkTextInDeliveryAddressInfoBlock("Company SPRL Brasserie Cantillon")

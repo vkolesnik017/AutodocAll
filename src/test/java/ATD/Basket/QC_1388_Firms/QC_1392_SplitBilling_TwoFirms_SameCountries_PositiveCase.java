@@ -59,7 +59,7 @@ public class QC_1392_SplitBilling_TwoFirms_SameCountries_PositiveCase {
                 .fillAllFieldsAndFirmForBilling("BE", "1070", "Anderlecht", "SPRL Brasserie Cantillon")
                 .fillFieldIdCompanyBilling("0402065988")
                 .nextBtnClick()
-                .chosseUnicreditBank()
+                .choseUnicreditBank()
                 .nextBtnClick()
                 .checkTextInDeliveryAddressInfoBlock("Company North 51 Ltd")
                 .checkTextInPayersAddressInfoBlock("Company SPRL Brasserie Cantillon")

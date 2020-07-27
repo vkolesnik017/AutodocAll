@@ -56,6 +56,21 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return this;
     }
 
+    @Step("Fill in the company ID {expectedID} field for the delivery country where ID is needed {expectedShop}. CartAddress_page")
+    public CartPayments_page_Logic fillInCompanyIdFieldForCountryWhereIdNeeded(String actualShop, String expectedShop, String expectedID) {
+        if (actualShop.equals(expectedShop)) {
+            fillFieldIdCompanyShipping(expectedID)
+                    .nextBtnClick();
+            if (continueBtnInPopupAboutWrongCompany().isDisplayed()) {
+                clickBtnContinueInPopupAboutWrongCompany();
+            }
+        } else {
+            nextBtnClick();
+        }
+        return page(CartPayments_page_Logic.class);
+    }
+
+
     @Step("Fill field telephone number {telNum} for Shipping. CartAddress_page")
     public CartAddress_page_Logic fillFieldTelNumForShipping(String telNum) {
         checkCorrectTextAndFillInput(telephon(), telNum);
