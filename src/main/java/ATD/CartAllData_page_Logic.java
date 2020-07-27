@@ -72,13 +72,19 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return this;
     }
 
-    @Step(":on CartAllData_page")
+    @Step(":from CartAllData_page")
     public CartAllData_page_Logic counterIncreaseForPaired(String startValue) {
         new CommonMethods().checkingCounterIncreaseForPaired(startValue, fieldWithQuantityOfProducts(), counterPlusBtn());
         return this;
     }
 
-    @Step(":on CartAllData_page")
+    @Step(":from CartAllData_page")
+    public CartAllData_page_Logic counterIncreaseForAllProducts(int startValue) {
+        new CommonMethods().checkingCounterIncrease(startValue, fieldWithQuantityOfProducts(), counterPlusBtn());
+        return this;
+    }
+
+    @Step(":from CartAllData_page")
     public CartAllData_page_Logic counterDecreaseForPaired(String startValue) {
         new CommonMethods().checkingCounterDecreaseForPaired(startValue, fieldWithQuantityOfProducts(), counterMinusBtn());
         sleep(1000);
@@ -413,6 +419,44 @@ public class CartAllData_page_Logic extends CartAllData_page {
     @Step(":for CartAllData_page")
     public CartAllData_page_Logic checkAbsenceBonusSticker() {
         new Cart_page_Logic().checkAbsenceBonusSticker();
+        return this;
+    }
+
+    @Step("Open upper block with summary. CartAllData_page")
+    public CartAllData_page_Logic openUpperBlockWithSummary() {
+        btnOpenUpperBlockWithSummary().click();
+        btnOpenUpperBlockWithSummary().shouldNotBe(visible);
+        return this;
+    }
+
+    @Step("Click button apply bonus. CartAllData_page")
+    public CartAllData_page_Logic clickBtnApplyBonus() {
+        btnApplyBonus().click();
+        btnApplyBonus().shouldNotBe(visible);
+        return this;
+    }
+
+    @Step("Cancel bonus applying. CartAllData_page")
+    public CartAllData_page_Logic CancelBonusApplying() {
+        bonusCheckboxInOrderSummary().click();
+        btnApplyBonus().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Apply discount {expectedDiscount}. CartAllData_page")
+    public CartAllData_page_Logic applyDiscount(String expectedDiscount) {
+        openDiscountBlock().click();
+        fieldForInputDiscount().shouldBe(visible);
+        fieldForInputDiscount().setValue(expectedDiscount);
+        btnApplyDiscount().click();
+        BtnConfirmApplyDiscount().click();
+        return this;
+    }
+
+    @Step("Open info of product. CartAllData_page")
+    public CartAllData_page_Logic openInfoOfProduct() {
+        btnOpenInfoOfProduct().click();
+        infoOfProductBlock().shouldBe(visible);
         return this;
     }
 }
