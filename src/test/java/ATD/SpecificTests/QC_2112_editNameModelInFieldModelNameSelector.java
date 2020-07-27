@@ -38,7 +38,7 @@ public class QC_2112_editNameModelInFieldModelNameSelector {
         commonMethods.writerInFile(result, true, shop);
     }
 
-    @DataProvider(name = "data", parallel = false)
+    @DataProvider(name = "data", parallel = true)
     Object[] dataProvider() {
         return new Excel().setUpAllCellFromExcel(dataFile, shop);
     }
