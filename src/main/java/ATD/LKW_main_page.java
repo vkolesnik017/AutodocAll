@@ -241,15 +241,15 @@ public class LKW_main_page {
     }
 
     ElementsCollection productsInTopBlock() {
-        return $$x("//div[@class='product-list__row']/ul/li");
+        return $$x("//div[contains(@class,'product-list__row')]/ul/li");
     }
 
     SelenideElement forwardLinkOfTopBLock() {
-        return $x("//a[@class='bx-next']");
+        return $x("//button[@class='slick-next slick-arrow']");
     }
 
     SelenideElement backLinkOfTopBLock() {
-        return $x("//a[@class='bx-prev']");
+        return $x("//button[@class='slick-prev slick-arrow']");
     }
 
     SelenideElement productsInTopBlockFirstLevel() {
@@ -316,7 +316,7 @@ public class LKW_main_page {
 
     SelenideElement currentLanguage() {return $x("//div[@class='footer-language__current']/span");}
 
-
+   ElementsCollection visibleArtNumOfTopProducts() {return $$x("//div[@class='product-list__item__nummer']").filter(visible);}
 
 
 }

@@ -40,11 +40,11 @@
     <test name="QC_635_FunctionalOfTheSettingsTabInPR">
         <classes>
             <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_636_PasswordChangeSuccessful"/>
-            <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_638_PasswordChangeAllFieldsAreEmpty"/>
+            <!--<class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_638_PasswordChangeAllFieldsAreEmpty"/>-->
             <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_644_LogInToSiteWithNewPassAfterChangingViaPR"/>
             <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_645_LogInToSiteWithAnOldPassAfterChangingViaPR"/>
-            <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_648_ChangePass_OldPassFieldIsEmpty"/>
-            <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_651_ChangePass_FieldsNewPassAndConfirmPassIsEmpty"/>
+            <!--<class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_648_ChangePass_OldPassFieldIsEmpty"/>-->
+            <!--<class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_651_ChangePass_FieldsNewPassAndConfirmPassIsEmpty"/>-->
             <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_653_ChangePass_ConfirmPassFieldsIsEmpty"/>
             <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_658_ChangePassword_InvalidOldPass"/>
             <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_659_EnterPassLessThenFourCharacters"/>
@@ -52,8 +52,8 @@
             <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_661_SuccessfulChangeOfEmailInPR"/>
             <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_665_LoginWithNewEmail"/>
             <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_667_LoginUnderTheOldEmailAfterChangingIt"/>
-            <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_668_ChangeEmail_AllFieldsAreEmpty"/>
-            <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_671_ChangeEmail_ConfirmEmailFieldIsEmpty"/>
+            <!--<class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_668_ChangeEmail_AllFieldsAreEmpty"/>-->
+            <!--<class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_671_ChangeEmail_ConfirmEmailFieldIsEmpty"/>-->
             <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_676_ChangeEmail_IntroductionOfInvalidEmail"/>
             <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_677_ChangeEmail_NewEmailFieldIsNotEqualToConfirmEmailField"/>
             <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_678_ChangeEmail_EmailExistsInTheSystem"/>
@@ -101,11 +101,19 @@
         <classes>
             <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1839_AddedTruckToMyVehiclesBlock"/>
             <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1840_AddedMotoToMyVehiclesBlock"/>
+            <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1842_MyGaragePopUpForUnAuthorizedUserWithOutViewedHistoryAuto"/>
             <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1843_AddingAutoFromHistoryViewedBlockForUnAuthorizedUser"/>
+            <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1844_TransitionFromViewHistoryToTecDocCatalog"/>
+            <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1845_SortingOfVehicleByDateInMyGarageBlock"/>
             <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1846_AddingAutoFromHistoryViewedBlockToMyGarage"/>
             <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1847_SortingVehiclesByDate"/>
             <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1872_RemovingCarFromHistoryViewedInPopUp"/>
             <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1973_TransitionToMyGarageFromPopUp"/>
+            <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1017_ElementsOfGaragePageInPR"/>
+            <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1031_RemovingCarFromMyGarageBlock"/>
+            <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1018_AddPassengerCarToMyGarageBlockInPR"/>
+            <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1032_BlockPassengerCarsFromCustomerOrdersOnGaragePageInPR"/>
+            <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1027_EditingVehicleOnMyGaragePage"/>
         </classes>
     </test>
 

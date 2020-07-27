@@ -27,6 +27,11 @@ public class CartPayments_page {
         return $(byId("unicredit_bank_en"));
     }
 
+    //for AT shop
+    SelenideElement bankAustria() {
+        return $(byId("bankAustria"));
+    }
+
     SelenideElement nextBtn() {
         return $(byCssSelector("[id='apply_payment']>a"));
     }

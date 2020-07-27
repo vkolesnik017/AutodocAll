@@ -10,7 +10,6 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
@@ -42,8 +41,8 @@ public class QC_1012_GdprRegistrationWithSubscribeCheckbox {
                 .fillRequiredFieldsForRegistration(firstName, secondName, mail, true)
                 .fillPasswordFieldsAndClickRegistration()
                 .checkingAutodocPlusActive().clickSetting().checkingCheckedCheckbox();
-        openPage("https://m.autodoc.de/?force=mobile");//TODO url from database
-        new Main_page_mob_Logic().closeFirstPopup().clickSignInInMenu()
+        openPage("https://m.autodoc.de/?force=mobile");//TODO url add in database
+        new Main_page_mob_Logic().closeFirstPopupAfterTransitionOnMob("apps.apple.com", "https://m.autodoc.de/?force=mobile").clickSignInInMenu()
                 .closeFooterPopup().signIn(mail)
                 .goToProfilePage().clickAddresseBtn().clickBillingAddress()
                 .checkingCheckedCheckbox().clickCheckbox()

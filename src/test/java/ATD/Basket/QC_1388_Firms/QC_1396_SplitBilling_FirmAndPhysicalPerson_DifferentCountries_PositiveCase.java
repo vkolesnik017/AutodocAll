@@ -40,7 +40,7 @@ public class QC_1396_SplitBilling_FirmAndPhysicalPerson_DifferentCountries_Posit
 
     @DataProvider(name = "routeEN", parallel = true)
     Object[] dataProviderProductsEN() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "EN", "main", "product2");
+        return new SetUp().setUpShopWithSubroutes("prod", "EN", "main", "product32");
     }
 
     @Test(dataProvider = "routeEN")
@@ -58,11 +58,11 @@ public class QC_1396_SplitBilling_FirmAndPhysicalPerson_DifferentCountries_Posit
                 .signIn(emailGB, password)
                 .fillAllFieldsAndFirmForShipping("BE", "1070", "SPRL Brasserie Cantillon", "Anderlecht")
                 .fillFieldIdCompanyShipping("0402065988")
-                .clickCheckboxBilling()
+                .clickCheckboxForOpenBilling()
                 .chooseDeliveryCountryForBilling("PL")
                 .fillingPostalCodeFieldJSForBilling("11111")
                 .nextBtnClick()
-                .chosseUnicreditBank()
+                .chooseUnicreditBank()
                 .nextBtnClick()
                 .checkAbsenceOfVatPercentage()
                 .checkTextInDeliveryAddressInfoBlock("Company SPRL Brasserie Cantillon")
@@ -117,7 +117,7 @@ public class QC_1396_SplitBilling_FirmAndPhysicalPerson_DifferentCountries_Posit
 
     @DataProvider(name = "routeDE", parallel = true)
     Object[] dataProviderProductsDE() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product2");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product32");
     }
 
     @Test(dataProvider = "routeDE")
@@ -135,7 +135,7 @@ public class QC_1396_SplitBilling_FirmAndPhysicalPerson_DifferentCountries_Posit
                 .signIn(emailDE, password)
                 .fillAllFieldsAndFirmForShipping("BE", "1070", "SPRL Brasserie Cantillon", "Anderlecht")
                 .fillFieldIdCompanyShipping("0402065988")
-                .clickCheckboxBilling()
+                .clickCheckboxForOpenBilling()
                 .chooseDeliveryCountryForBilling("PL")
                 .fillingPostalCodeFieldJSForBilling("11111")
                 .nextBtnClick()

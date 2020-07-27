@@ -47,7 +47,7 @@ public class QC_1131_SynchronizationWebSessionOfBasketOnMobVersion {
                 .checkOfIdAddedProductInBasket(productIdOnProductPage);
         close();
         openPage("https://m.autodoc.de/?force=mobile");
-        new Main_page_mob_Logic().closeFirstPopup()
+        new Main_page_mob_Logic().closeFirstPopupAfterTransitionOnMob("apps.apple.com", "https://m.autodoc.de/?force=mobile")
                 .clickSignInInMenu()
                 .closeFooterPopup()
                 .signIn(mail)

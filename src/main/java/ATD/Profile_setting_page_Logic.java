@@ -96,19 +96,19 @@ public class Profile_setting_page_Logic extends Profile_setting_page {
 
     @Step(":from Profile_setting_page_Logic")
     public Profile_setting_page_Logic checkForTextInBlockTopTitle(String expectedText) {
-        new Profile_addresses_page_Logic().checkForTextInBlockTopTitle(expectedText);
+        new Profile_plus_page_Logic().checkForTextInBlockTopTitle(expectedText);
         return this;
     }
 
     @Step(":from Profile_setting_page_Logic")
     public Profile_setting_page_Logic checkPresenceClientID() {
-        new Profile_addresses_page_Logic().checkPresenceClientID();
+        new Profile_plus_page_Logic().checkPresenceClientID();
         return this;
     }
 
     @Step(":from Profile_setting_page_Logic")
     public Profile_setting_page_Logic checkPresenceHeaderBlockAndElementInside() {
-        new Profile_addresses_page_Logic().checkPresenceHeaderBlockAndElementInside();
+        new Profile_plus_page_Logic().checkPresenceHeaderBlockAndElementInside();
         return this;
     }
 

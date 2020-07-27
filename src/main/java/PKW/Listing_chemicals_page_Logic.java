@@ -1,11 +1,14 @@
 package PKW;
 
 
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import org.testng.Assert;
+import java.util.ArrayList;
 import static PKW.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.*;
 
 
 public class Listing_chemicals_page_Logic extends Listing_chemicals_page {
@@ -101,6 +104,191 @@ public class Listing_chemicals_page_Logic extends Listing_chemicals_page {
         btnMoreInBrandsBlock().click();
         btnLessInBrandsBlock().shouldBe(visible).click();
         btnLessInBrandsBlock().shouldNotBe(visible);
+        return this;
+    }
+
+    @Step("Checking presence products listing block. Listing_chemicals_page")
+    public Listing_chemicals_page_Logic checkingPresenceProductsListingBlock() {
+        blockProductsListing().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checking the number of products in listing. Listing_chemicals_page")
+    public Listing_chemicals_page_Logic checkingNumberOfProductsInListing() {
+        productsListing().shouldHaveSize(20);
+        return this;
+    }
+
+    @Step("Checking work quantity counter on decrease and increase products. Listing_chemicals_page")
+    public Listing_chemicals_page_Logic checkingWorkQuantityCounterOnDecreaseAndIncrease() {
+        new CommonMethods().checkingCounterIncrease(3, counterValueInQuantityCounter(), btnPlusInQuantityCounter());
+        new CommonMethods().checkingCounterDecrease(2, counterValueInQuantityCounter(), btnMinusInQuantityCounter() );
+        counterValueInQuantityCounter().shouldHave(attribute("value", "2"));
+        return this;
+    }
+
+    @Step("Click first product in listing. Listing_chemicals_page")
+    public Product_page_Logic clickFirstProductInListing() {
+        titleNameFirstProductInListing().click();
+        return page(Product_page_Logic.class);
+    }
+
+    @Step("Get name first product in listing. Listing_chemicals_page")
+    public String getNameFirstProductInListing() {
+        return titleNameFirstProductInListing().getText();
+    }
+
+    @Step("Get id product listing. Listing_chemicals_page")
+    public String getIdProductListing() {
+        return idProductInBtnAddBasket().getAttribute("id");
+    }
+
+    @Step("Click button add to basket first product. Listing_chemicals_page")
+    public Listing_chemicals_page_Logic clickBtnAddToBasketFirstProduct() {
+        redBtnAddToBasket().click();
+        popupBasketAddedProducts().waitUntil(attribute("style","visibility: visible; opacity: 1;"), 10000);
+        return this;
+    }
+
+    @Step("Get value quantity counter from first product listing. Listing_chemicals_page")
+    public String getValueQuantityCounterFirstProductListing() {
+        return counterValueInQuantityCounter().getValue();
+    }
+
+    @Step(":from Listing_chemicals_page")
+    public Listing_chemicals_page_Logic increasesNumberProductsInQuantityCounter() {
+        new CommonMethods().checkingCounterIncrease(2, counterValueInQuantityCounter(), btnPlusInQuantityCounter());
+        return this;
+    }
+
+    @Step(":from Listing_chemicals_page")
+    public Cart_page_Logic cartClick() {
+        new Main_page_Logic().cartClick();
+        return page(Cart_page_Logic.class);
+    }
+
+    @Step("Checking presence features block. Listing_chemicals_page")
+    public Listing_chemicals_page_Logic checkingPresenceFeaturesBlock() {
+        blockFeatures().scrollIntoView(false).shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checking presence description feature after hover. Listing_chemicals_page")
+    public Listing_chemicals_page_Logic checkingDescriptionFeatureAfterHoverInFeaturesBlock() {
+        firstFeatures().hover();
+        popupFirstFeatures().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Click first generic in generics block. Listing_chemicals_page")
+    public Listing_chemicals_page_Logic clickFirstGeneric() {
+        firstGenericInGenericsBlock().click();
+        return this;
+    }
+
+    @Step("Click second generic in generics block. Listing_chemicals_page")
+    public Listing_chemicals_page_Logic clickSecondGeneric() {
+        secondGenericInGenericsBlock().click();
+        return this;
+    }
+
+    @Step("Get name first generic from generics block. Listing_chemicals_page")
+    public String getNameFirstGeneric() {
+        return firstGenericInGenericsBlock().getText();
+    }
+
+    @Step("Get name second generic from generics block. Listing_chemicals_page")
+    public String getNameSecondGeneric() {
+        return secondGenericInGenericsBlock().getText();
+    }
+
+    @Step("Checking sorting products by two generics.Listing_chemicals_page")
+    public Listing_chemicals_page_Logic checkingSortingProductsByTwoGenerics() {
+        Listing_page_Logic listing_page_logic = new Listing_page_Logic();
+        String firstGeneric = getNameFirstGeneric();
+        String secondGeneric = getNameSecondGeneric();
+        clickFirstGeneric();
+        listing_page_logic.waitUntilPreloaderDisappear();
+        clickSecondGeneric();
+        listing_page_logic.waitUntilPreloaderDisappear();
+        listing_page_logic.checkProductTitleOnListingWithTwoExpectedTexts(firstGeneric, secondGeneric, true, titleNameProductsFromListing());
+        btnSecondPageInPagination().scrollIntoView(false);
+        btnSecondPageInPagination().click();
+        checkingContainsUrl("page=2");
+        listing_page_logic.checkProductTitleOnListingWithTwoExpectedTexts(firstGeneric, secondGeneric, true, titleNameProductsFromListing());
+        return this;
+    }
+
+    @Step("Checking presence generics block. Listing_chemicals_page")
+    public Listing_chemicals_page_Logic checkingPresenceGenericsBlock() {
+        genericsBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checking sorting products by one generic. Listing_chemicals_page")
+    public Listing_chemicals_page checkingSortingProductsByOneGeneric() {
+        Listing_page_Logic listing_page_logic = new Listing_page_Logic();
+        String firstGeneric = getNameFirstGeneric();
+        clickFirstGeneric();
+        listing_page_logic.waitUntilPreloaderDisappear();
+        listing_page_logic.checkProductTitleOnListing(firstGeneric, true, titleNameProductsFromListing());
+        return this;
+    }
+
+    @Step("Checking presence payment method block. Listing_chemicals_page")
+    public Listing_chemicals_page checkingPresencePaymentMethodBlock() {
+        blockPaymentMethod().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Get name first criteria from consistence criteria block. Listing_chemicals_page")
+    public String getNameFirstCriteriaInConsistenceCriteriaBlock() {
+       return firstCriteriaInConsistenceCriteriaBlock().getText();
+    }
+
+    @Step("Click on first criteria from consistence criteria block. Listing_chemicals_page")
+    public Listing_chemicals_page_Logic clickFirstCriteriaInConsistenceCriteriaBlock() {
+        firstCriteriaInConsistenceCriteriaBlock().click();
+        return this;
+    }
+
+    @Step("Checking sorting products by first criteria from consistence criteria block . Listing_chemicals_page")
+    public Listing_chemicals_page_Logic checkingSortingProductsByFirstCriteriaConsistence() {
+        String firstCriteria = getNameFirstCriteriaInConsistenceCriteriaBlock();
+        clickFirstCriteriaInConsistenceCriteriaBlock();
+        new Listing_page_Logic().waitUntilPreloaderDisappear();
+            ArrayList<String> nameCriteria = new ArrayList<>();
+            for (SelenideElement element : characteristicConsistenceInProductsListing()) {
+                String name = element.getText();
+                nameCriteria.add(name);
+                if (!nameCriteria.contains(firstCriteria)) {
+                    Assert.fail("Listing isn't sorted selected criteria ");
+                }
+                nameCriteria.clear();
+            }
+            return this;
+    }
+
+    @Step("Get name first category from top categories sidebar. Listing_chemicals_page")
+    public String getNameFirstCategoryFromTopCategoriesSidebar() {
+        return firstCategoryFromTopProductSidebar().getText();
+    }
+
+    @Step("Click first category from top categories sidebar. Listing_chemicals_page")
+    public Listing_chemicals_page_Logic clickFirstCategoryFromTopCategoriesSidebar() {
+        firstCategoryFromTopProductSidebar().click();
+        return this;
+    }
+
+    @Step("Checking presence top categories block from sidebar. Listing_chemicals_page")
+    public Listing_chemicals_page_Logic checkingPresenceTopCategoriesBlockFromSidebar() {
+        blockTopCategoryFromSidebar().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checking presence main img on listing page. Listing_chemicals_page")
+    public Listing_chemicals_page_Logic checkingPresenceMainImgOnListing() {
+        mainImgOnListingPage().shouldHave(attribute("src"));
         return this;
     }
 

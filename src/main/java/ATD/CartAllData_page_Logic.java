@@ -200,15 +200,53 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return this;
     }
 
-    @Step("Check presence Safe Order price from order summery block . CartAllData_page")
-    public CartAllData_page_Logic checkPresenceSafeOrderPriceFromOrderSummeryBlock() {
-        safeOrderCost().shouldBe(visible);
+    @Step("Checks that the Safe Order checkbox is not selected. CartAllData_page")
+    public CartAllData_page_Logic checkThatSafeOrderCheckboxIsNotSelected() {
+        safeOrderCheckbox().shouldNotHave(attribute("checked"));
         return this;
     }
 
-    @Step("Check absence Safe Order price from order summery block . CartAllData_page")
+    @Step("Checks that the Safe Order checkbox is selected. CartAllData_page")
+    public CartAllData_page_Logic checkThatSafeOrderCheckboxIsSelected() {
+        safeOrderCheckbox().shouldHave(attribute("checked"));
+        return this;
+    }
+
+    @Step("Check presence Safe Order price from order summery block. CartAllData_page")
+    public CartAllData_page_Logic checkPresenceSafeOrderPriceFromOrderSummeryBlock() {
+        safeOrderCostFromOrderSummeryBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Check absence Safe Order price from order summery block. CartAllData_page")
     public CartAllData_page_Logic checkAbsenceSafeOrderPriceFromOrderSummeryBlock() {
-        safeOrderCost().shouldNotBe(visible);
+        safeOrderCostFromOrderSummeryBlock().shouldNotBe(visible);
+        return this;
+    }
+
+    @Step("Add safe order price in order and checks what total price included SO. CartAllData_page")
+    public CartAllData_page_Logic addSafeOrderInOrderAndCheckTotalPriceIncludedSO() {
+        float price = getTotalPriceAllDataPage();
+        String priceSO = priceOfSafeOrder().getText();
+        float realPriseSO = Float.parseFloat(priceSO.substring(0, priceSO.indexOf(" ")).replaceAll(",", "."));
+        float totalPriceIncludedSO = price + realPriseSO;
+        clickSafeOrderCheckbox();
+        sleep(2000);
+        float totalPrice = getTotalPriceAllDataPage();
+        Assert.assertEquals(totalPrice, totalPriceIncludedSO);
+        return this;
+    }
+
+    @Step("Remove the safe order price in order and checks what total price included SO. CartAllData_page")
+    public CartAllData_page_Logic removeSafeOrderInOrderAndCheckTotalPriceIncludedSO() {
+        float price = getTotalPriceAllDataPage();
+        String priceSO = priceOfSafeOrder().getText();
+        float realPriseSO = Float.parseFloat(priceSO.substring(0, priceSO.indexOf(" ")).replaceAll(",", "."));
+        float totalPriceIncludedSO = price - realPriseSO;
+        clickSafeOrderCheckbox();
+        sleep(2000);
+        float totalPrice = getTotalPriceAllDataPage();
+        Assert.assertEquals(totalPrice, totalPriceIncludedSO);
         return this;
     }
 

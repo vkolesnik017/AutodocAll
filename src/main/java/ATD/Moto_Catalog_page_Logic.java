@@ -436,4 +436,44 @@ public class Moto_Catalog_page_Logic extends Moto_Catalog_page {
         return page(Profile_garage_page_Logic.class);
     }
 
+    @Step("check transition by click on vehicle in My garage popUp .Moto_Catalog_page")
+    public Moto_Catalog_page_Logic checkTransitionByClickOnVehicleInMyGaragePopUp() throws SQLException {
+        clickOnMotoInMyGaragePopUp();
+        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_catalog7"));
+        back();
+        clickOnTruckInMyGaragePopUp();
+        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "lkw_maker_car_list8"));
+        back();
+        clickOnVehicleInMyGaragePopUp();
+        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "maker_car_list10"));
+        return this;
+    }
+
+    @Step("click on motorcycle in Viewed history block in My garage Pop-Up .Moto_Catalog_page")
+    public Moto_Catalog_page_Logic clickOnMotoInMyGaragePopUp() {
+        urlsOfAddedVehicleInPopUpOfGarageInHeader().get(0).shouldBe(visible).click();
+        return page(Moto_Catalog_page_Logic.class);
+    }
+
+    @Step("click on truck in Viewed history block in My garage Pop-Up .Moto_Catalog_page")
+    public LKW_maker_car_list_Logic clickOnTruckInMyGaragePopUp() {
+        garageIconInHeader().shouldBe(visible).click();
+        popUpOfGarageInHeader().shouldBe(visible);
+        urlsOfAddedVehicleInPopUpOfGarageInHeader().get(1).shouldBe(visible).click();
+        return page(LKW_maker_car_list_Logic.class);
+    }
+
+    @Step("click on vehicle in Viewed history block in My garage Pop-Up .Moto_Catalog_page")
+    public LKW_maker_car_list_Logic clickOnVehicleInMyGaragePopUp() {
+        garageIconInHeader().shouldBe(visible).click();
+        popUpOfGarageInHeader().shouldBe(visible);
+        urlsOfAddedVehicleInPopUpOfGarageInHeader().get(2).shouldBe(visible).click();
+        return page(LKW_maker_car_list_Logic.class);
+    }
+
+    @Step("absence of selector from My garage block .Moto_Catalog_page")
+    public Moto_Catalog_page_Logic absenceOfSelectorFromMyGarageBlock() {
+        selectorFromMyGarageBlock().shouldNotHave(exist);
+        return this;
+    }
 }

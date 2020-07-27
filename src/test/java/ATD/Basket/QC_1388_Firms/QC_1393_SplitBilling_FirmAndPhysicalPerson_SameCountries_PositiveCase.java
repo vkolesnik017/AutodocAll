@@ -39,7 +39,7 @@ public class QC_1393_SplitBilling_FirmAndPhysicalPerson_SameCountries_PositiveCa
 
     @DataProvider(name = "routeEN", parallel = true)
     Object[] dataProviderProductsEN() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "EN", "main", "product2");
+        return new SetUp().setUpShopWithSubroutes("prod", "EN", "main", "product32");
     }
 
     @Test(dataProvider = "routeEN")
@@ -50,18 +50,17 @@ public class QC_1393_SplitBilling_FirmAndPhysicalPerson_SameCountries_PositiveCa
     public void testSuccessfulPlacementOfOrder_SplitBillingAndPhysicalPerson_EN(String routeEN) {
         vatForGB = new PageVAT_aws().getVatForGB();
         openPage(routeEN);
-        String shop = getCurrentShopFromJSVarInHTML();
         priceWithVatPerAllDataPageGB = product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
                 .signIn(emailGB, password)
-                .clickCheckboxBilling()
+                .clickCheckboxForOpenBilling()
                 .fillAllFields("BE")
                 .fillAllFieldsAndFirmForBilling("BE", "1070", "Anderlecht", "SPRL Brasserie Cantillon")
                 .fillFieldIdCompanyBilling("0402065988")
                 .nextBtnClick()
-                .chosseUnicreditBank()
+                .chooseUnicreditBank()
                 .nextBtnClick()
                 .checkTextInDeliveryAddressInfoBlock("autotest autotest")
                 .checkTextInPayersAddressInfoBlock("SPRL Brasserie Cantillon")
@@ -114,7 +113,7 @@ public class QC_1393_SplitBilling_FirmAndPhysicalPerson_SameCountries_PositiveCa
 
     @DataProvider(name = "routeDE", parallel = true)
     Object[] dataProviderProductsDE() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product2");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product32");
     }
 
     @Test(dataProvider = "routeDE")
@@ -125,13 +124,12 @@ public class QC_1393_SplitBilling_FirmAndPhysicalPerson_SameCountries_PositiveCa
     public void testSuccessfulPlacementOfOrder_SplitBillingAndPhysicalPerson_DE(String routeDE) {
         vatForDE = new PageVAT_aws().getVatForDE();
         openPage(routeDE);
-        String shop = getCurrentShopFromJSVarInHTML();
         priceWithVatPerAllDataPageDE = product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
                 .signIn(emailDE, password)
-                .clickCheckboxBilling()
+                .clickCheckboxForOpenBilling()
                 .fillAllFields("BE")
                 .fillAllFieldsAndFirmForBilling("BE", "1070", "Anderlecht", "SPRL Brasserie Cantillon")
                 .fillFieldIdCompanyBilling("0402065988")

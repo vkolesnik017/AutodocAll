@@ -56,6 +56,21 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return this;
     }
 
+    @Step("Fill in the company ID {expectedID} field for the delivery country where ID is needed {expectedShop}. CartAddress_page")
+    public CartPayments_page_Logic fillInCompanyIdFieldForCountryWhereIdNeeded(String actualShop, String expectedShop, String expectedID) {
+        if (actualShop.equals(expectedShop)) {
+            fillFieldIdCompanyShipping(expectedID)
+                    .nextBtnClick();
+            if (continueBtnInPopupAboutWrongCompany().isDisplayed()) {
+                clickBtnContinueInPopupAboutWrongCompany();
+            }
+        } else {
+            nextBtnClick();
+        }
+        return page(CartPayments_page_Logic.class);
+    }
+
+
     @Step("Fill field telephone number {telNum} for Shipping. CartAddress_page")
     public CartAddress_page_Logic fillFieldTelNumForShipping(String telNum) {
         checkCorrectTextAndFillInput(telephon(), telNum);
@@ -145,6 +160,7 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return this;
     }
 
+    // Enters characters one by one
     @Step("Filling postal code {sendPostalCode}. CartAddress_page")
     public CartAddress_page_Logic fillingPostalCodeField(String sendPostalCode) {
         postalCodeFieldForShipping().click();
@@ -202,14 +218,21 @@ public class CartAddress_page_Logic extends CartAddress_page {
     }
 
 
-    @Step("Click checkbox billing. CartAddress_page")
-    public CartAddress_page_Logic clickCheckboxBilling() {
+    @Step("Click checkbox for open billing form. CartAddress_page")
+    public CartAddress_page_Logic clickCheckboxForOpenBilling() {
         if (!billingForm().isDisplayed()) {
             billingCheckBox().click();
         }
         return this;
     }
 
+    @Step("Click checkbox for close billing form. CartAddress_page")
+    public CartAddress_page_Logic clickCheckboxForCloseBilling() {
+        if (billingForm().isDisplayed()) {
+            billingCheckBox().click();
+        }
+        return this;
+    }
 
     @Step("Checks presence popup with an error about the wrong company. CartAddress_page")
     public CartAddress_page_Logic checkPresencePopupErrorAboutWrongCompany() {
@@ -370,6 +393,110 @@ public class CartAddress_page_Logic extends CartAddress_page {
     @Step("Checks presence shipping form. CartAddress_page")
     public CartAddress_page_Logic checkPresenceShippingForm() {
         shippingForm().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Check correct text {expectedText} in personal number tooltip. CartAddress_page")
+    public CartAddress_page_Logic checkCorrectTextInPersonalNumberTooltip(String expectedText) {
+        personalNumberBlock().shouldBe(visible);
+        infoLabelForPersonalNumber().hover();
+        textFromPersonalNumberTooltip().shouldBe(visible).shouldHave(text(expectedText));
+        return this;
+    }
+
+    @Step("Filling field personal number {expectedText}. CartAddress_page")
+    public CartAddress_page_Logic fillingFieldPersonalNumber(String expectedText) {
+        personalNumberBlock().shouldBe(visible);
+        inputPersonalNumber().setValue(expectedText);
+        return this;
+    }
+
+    @Step("Click get My Address button. CartAddress_page")
+    public CartAddress_page_Logic clickGetMyAddressBtn() {
+        getMyAddressBtn().click();
+        sleep(2000);
+        return this;
+    }
+
+    @Step("Check correct text {expectedText} in error message for personal number. CartAddress_page")
+    public CartAddress_page_Logic checkCorrectTextInErrorMessage(String expectedText) {
+        sleep(2000);
+        errorMessage().shouldBe(visible);
+        errorMessage().shouldHave(text(expectedText));
+        return this;
+    }
+
+    @Step("Get zip mask and compares with expected {expectedMask}. CartAddress_page")
+    public CartAddress_page_Logic getZipMasksAndComparesWithExpected(String expectedMask) {
+        String zipMask = postalCodeFieldForShipping().getAttribute("placeholder");
+        Assert.assertEquals(zipMask, expectedMask);
+        return this;
+    }
+
+    @Step("Get the previously entered zip code for shipping and compares with expected {expectedZipCode}. CartAddress_page")
+    public CartAddress_page_Logic getZipCodeForShippingAndComparesWithExpected(String expectedZipCode) {
+        String zipCode = postalCodeFieldForShipping().getAttribute("value");
+        Assert.assertEquals(zipCode, expectedZipCode);
+        return this;
+    }
+
+    @Step("Get the previously entered zip code for billing and compares with expected {expectedZipCode}. CartAddress_page")
+    public CartAddress_page_Logic getZipCodeForBillingAndComparesWithExpected(String expectedZipCode) {
+        String zipCode = postalCodeFieldForBilling().getAttribute("value");
+        Assert.assertEquals(zipCode, expectedZipCode);
+        return this;
+    }
+
+    @Step("Checks validation for the number of characters being entered into postcode field" +
+            "for shipping and billing form. CartAddress_page")
+    public CartAddress_page_Logic checkValidationEnteredNumberIntoZipCodeField(String shop, String zipCode,
+                                                                               String expectedZipCodeShipping,
+                                                                               String expectedZipCodeBilling) {
+        chooseDeliveryCountryForShipping(shop);
+        fillingPostalCodeField(zipCode);
+        nextBtnClick()
+                .clickBtnReturnTheAddressPage();
+        getZipCodeForShippingAndComparesWithExpected(expectedZipCodeShipping);
+        clickCheckboxForOpenBilling();
+        getZipCodeForBillingAndComparesWithExpected(expectedZipCodeBilling);
+        clickCheckboxForCloseBilling();
+        return this;
+    }
+
+    @Step("Check presence fiscal code block in shipping form. CartAddress_page")
+    public CartAddress_page_Logic checkPresenceFiscalCodBlockInShippingForm() {
+        fiscalCodeBlockInSippingForm().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Click checkbox for open fiscal code field. CartAddress_page")
+    public CartAddress_page_Logic clickCheckboxForOpenFiscalCodeField() {
+        if (!fieldFiscalCode().isDisplayed()) {
+            checkboxFiscalCode().click();
+        }
+        fieldFiscalCode().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Click checkbox for closed fiscal code field. CartAddress_page")
+    public CartAddress_page_Logic clickCheckboxForClosedFiscalCodeField() {
+        if (fieldFiscalCode().isDisplayed()) {
+            checkboxFiscalCode().click();
+        }
+        fieldFiscalCode().shouldNotBe(visible);
+        return this;
+    }
+
+    @Step("Filling field fiscal code {expectedText}. CartAddress_page")
+    public CartAddress_page_Logic fillingFieldFiscalCode(String expectedText) {
+        fieldFiscalCode().setValue(expectedText);
+        return this;
+    }
+
+    @Step("Check presence a note with address restrictions and correct text inside block {expectedText}. CartAddress_page")
+    public CartAddress_page_Logic checkPresenceNotesAndTextInsideBlock(String expectedText) {
+        notesWithAddressRestrictions().shouldBe(visible);
+        notesWithAddressRestrictions().shouldHave(text(expectedText));
         return this;
     }
 }

@@ -1,5 +1,6 @@
 package PKW;
 
+import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.ex.UIAssertionError;
 import io.qameta.allure.Step;
 import org.openqa.selenium.TimeoutException;
@@ -12,6 +13,7 @@ import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.Random;
 
+import static com.codeborne.selenide.Condition.value;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.$;
@@ -68,6 +70,33 @@ public class CommonMethods {
             Assert.fail("Url doesn't contains: " + expectedContainsUrl);
         }
     }
+
+    @Step("Checking counter increase on {increaseCount} of product quantity")
+    void checkingCounterIncrease(int increaseCount, SelenideElement counterValue, SelenideElement counterPlus) {
+        int startValue = Integer.parseInt(counterValue.getValue());
+        for (int i = 1; i <= increaseCount; i++) {
+            counterPlus.click();
+            sleep(2000);
+            int valueAfterIncrease = startValue + i;
+            counterValue.shouldHave(value(String.valueOf(valueAfterIncrease)));
+        }
+        int valueAfterAllIncrease = startValue + increaseCount;
+        counterValue.shouldHave(value(String.valueOf(valueAfterAllIncrease)));
+    }
+
+    @Step("Checking counter decrease on {decreaseCount} of product quantity")
+    void checkingCounterDecrease(int decreaseCount, SelenideElement counterValue, SelenideElement counterMinus) {
+        int startValue = Integer.parseInt(counterValue.getValue());
+        for (int i = 1; i <= decreaseCount; i++) {
+            counterMinus.click();
+            sleep(2000);
+            int valueAfterDecrease = startValue - i;
+            counterValue.shouldHave(value(String.valueOf(valueAfterDecrease)));
+        }
+        int valueAfterAllDecrease = startValue - decreaseCount;
+        counterValue.shouldHave(value(String.valueOf(valueAfterAllDecrease)));
+    }
+
 
     public static String getNameRouteFromJSVarInHTML() {
         return executeJavaScript("return $siteSettings.route");

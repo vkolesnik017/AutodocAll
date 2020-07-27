@@ -6,8 +6,14 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.Selenide.sleep;
 
+
 public class Index_chemicals_page_Logic extends Index_chemicals_page {
 
+    @Step("Checking presence title main catalog. Index_chemicals_page")
+    public Index_chemicals_page_Logic checkingPresenceTitleMainCatalog() {
+        Assert.assertFalse(titleMainCatalog().text().isEmpty());
+        return this;
+    }
 
     @Step("Checking presence block with SEO text description. Index_chemicals_page")
     public Index_chemicals_page_Logic checkingPresenceBlockWithSeoText() {
@@ -113,6 +119,60 @@ public class Index_chemicals_page_Logic extends Index_chemicals_page {
         return this;
     }
 
+    @Step("Checking opening product characteristics after hover on mini card in top products block. Index_chemicals_page")
+    public Index_chemicals_page_Logic checkingHoverFirstProductInTopProductsBlock() {
+        firstProductInTopProductsBlock().scrollTo().hover();
+        btnDetailsFirstProductInTopProductsBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checking presence main categories catalog block. Index_chemicals_page")
+    public Index_chemicals_page_Logic checkingPresenceMainCategoriesCatalogBlock() {
+        mainCategoriesCatalogBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checking presence first separate category in main products catalog. Index_chemicals_page")
+    public Index_chemicals_page_Logic checkingPresenceSeparateCategoryInProductsCatalog() {
+        separateCategoryInMainCatalogCategories().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Get text first category in logical union. Index_chemicals_page")
+    public String getTextFirstCategoryInLogicalUnion() {
+        firstGroupLogicalUnion().hover();
+        return firstCategoryInLogicalUnion().getText();
+    }
+
+    @Step("Click first category in logical union. Index_chemicals_page")
+    public Listing_chemicals_page_Logic clickFirstCategoryInLogicalUnion() {
+        firstCategoryInLogicalUnion().click();
+        return page(Listing_chemicals_page_Logic.class);
+    }
+
+    @Step("Get id product from top products block. Index_chemicals_page")
+    public String getIdProductFromTopProducts() {
+        return btnAddProductToBasketInBlockTopProducts().getAttribute("id");
+    }
+
+    @Step("Click on first btn add to basket from block top products. Index_chemicals_page")
+    public Index_chemicals_page_Logic clickOnFirstBtnAddProductToBasketInBlockTopProducts() {
+        btnAddProductToBasketInBlockTopProducts().click();
+        popupBasketAddedProducts().waitUntil(attribute("style","visibility: visible; opacity: 1;"), 10000);
+        return this;
+    }
+
+    @Step(":from Index_chemicals_page" )
+    public Cart_page_Logic cartClick() {
+        new Main_page_Logic().cartClick();
+        return page(Cart_page_Logic.class);
+    }
+
+    @Step("Checking quantity products in top products block. Index_chemicals_page")
+    public Index_chemicals_page_Logic checkingQuantityProductsInTopProductsBlock() {
+        productsFromTopProductsBlock().shouldHaveSize(12);
+        return this;
+    }
 
 
 }

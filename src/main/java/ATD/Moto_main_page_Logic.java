@@ -467,7 +467,7 @@ public class Moto_main_page_Logic extends Moto_main_page {
     public Moto_main_page_Logic scrollToRightOfTopModelsBlock() {
         int countOfClickRight = 0;
         topModelsBlock().scrollTo();
-        while (linkForwardOfTopModel().isDisplayed()) {
+        while (!notActiveLinkForwardOfTopModel().isDisplayed()) {
             for (int i = 0; i < titleOfVisibleTopModels().size(); i++) {
                 titleOfVisibleTopModels().get(i).shouldBe(visible);
             }
@@ -482,7 +482,7 @@ public class Moto_main_page_Logic extends Moto_main_page {
     @Step("scroll to left of TOP models block .Moto_main_page")
     public Moto_main_page_Logic scrollToLeftOfTopModelsBlock() {
         int countOfClickLeft = 0;
-        while (linkBackOfTopModel().isDisplayed()) {
+        while (!notActiveLinkBackOfTopModel().isDisplayed()) {
             for (int i = 0; i < titleOfVisibleTopModels().size(); i++) {
                 titleOfVisibleTopModels().get(i).shouldBe(visible);
             }
@@ -498,7 +498,7 @@ public class Moto_main_page_Logic extends Moto_main_page {
         String titleOfMotoModel;
         topModelsBlock().scrollTo();
         checkColorOfTopModels();
-        while (linkForwardOfTopModel().isDisplayed()) {
+        while (activeLinkForwardOfTopModel().isDisplayed()) {
             titleOfMotoModel = titleOfVisibleTopModels().get(0).getText();
             activeLinkForwardOfTopModel().click();
             titleOfVisibleTopModels().get(0).shouldBe(visible).shouldNotHave(exactText(titleOfMotoModel));

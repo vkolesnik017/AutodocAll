@@ -49,7 +49,7 @@ public class QC_1397_RecoveryBasketWebSessionOnMobVersionMainPageViaFacebook {
                 .checkOfIdAddedProductInBasket(productIdOnProductPage);
         close();
         openPage("https://m.autodoc.de/?force=mobile");
-        main_page_mob_logic.closeFirstPopup()
+        main_page_mob_logic.closeFirstPopupAfterTransitionOnMob("apps.apple.com", "https://m.autodoc.de/?force=mobile")
                 .clickSignInInMenu()
                 .closeFooterPopup()
                 .signInFromFB(mailFB, passFB)

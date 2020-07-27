@@ -31,11 +31,19 @@
 
     <test name="QC_526_RecoveryCharacteristics">
         <classes>
-            <class name="ATD.Characteristics.QC_526_RecoveryCharacteristics.QC_527_PresenceRecoveryCharacteristicsOnMiniCard"/>
-            <class name="ATD.Characteristics.QC_526_RecoveryCharacteristics.QC_528_PresenceRecoveryCharacteristicsOnListingsAndProductPage"/>
+            <!--<class name="ATD.Characteristics.QC_526_RecoveryCharacteristics.QC_527_PresenceRecoveryCharacteristicsOnMiniCard"/>-->
+            <!--<class name="ATD.Characteristics.QC_526_RecoveryCharacteristics.QC_528_PresenceRecoveryCharacteristicsOnListingsAndProductPage"/>-->
             <class name="ATD.Characteristics.QC_526_RecoveryCharacteristics.QC_529_PresenceRecoveryCharacteristicsInBasket"/>
         </classes>
     </test>
 
+    <test name="QC_2072_VerificationOfRemovalCharacteristicQuantityOnFrontsForFEBIandSWAG">
+        <classes>
+            <class name="ATD.Characteristics.QC_2072_VerificationOfRemovalCharacteristicQuantityOnFrontsForFEBIandSWAG.QC_2073_TestAbsenceCharacteristicQuantity563onProductPageForFEBIandSWAG"/>
+            <class name="ATD.Characteristics.QC_2072_VerificationOfRemovalCharacteristicQuantityOnFrontsForFEBIandSWAG.QC_2074_AbsenceQuantityForFebiBilsteinAndSwagInListing"/>
+            <class name="ATD.Characteristics.QC_2072_VerificationOfRemovalCharacteristicQuantityOnFrontsForFEBIandSWAG.QC_2075_CheckAbsenceOfCharacteristicQuantityInTopBlock"/>
+            <class name="ATD.Characteristics.QC_2072_VerificationOfRemovalCharacteristicQuantityOnFrontsForFEBIandSWAG.QC_2076_AbsenceQuantityForFEBIBILSTEINAndSWAGInBasket"/>
+        </classes>
+    </test>
 
 </suite>

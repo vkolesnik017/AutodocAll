@@ -68,8 +68,12 @@ public class Maker_car_list_page_Logic extends Maker_car_list_page {
             listOfVehicleFromPopUp.add(urlsOfAddedVehicleInPopUpOfGarageInHeader().get(i).getAttribute("href"));
         }
         Assert.assertTrue(urlsOfAddedVehicleInPopUpOfGarageInHeader().get(0).getAttribute("href").equals(list.get(list.size() - 1)));
-        urlsOfAddedVehicleInPopUpOfGarageInHeader().shouldHaveSize(list.size());
-        Assert.assertEquals(getSortedList(listOfVehicleFromPopUp), getSortedList(list));
+        //    urlsOfAddedVehicleInPopUpOfGarageInHeader().shouldHaveSize(list.size());
+        //   Assert.assertEquals(getSortedList(listOfVehicleFromPopUp), getSortedList(list));
+        for (int i = 0; i < list.size(); i++) {
+            Assert.assertTrue(listOfVehicleFromPopUp.contains(list.get(i)));
+        }
+
         return this;
     }
 
@@ -125,5 +129,26 @@ public class Maker_car_list_page_Logic extends Maker_car_list_page {
         motorOfTruckInSelector().shouldBe(visible).selectOptionByValue(motor);
         btnSearchOfSelectorFromMyGarage().click();
         return page(LKW_maker_car_list_Logic.class);
+    }
+
+    @Step(": for Maker_car_list_page")
+    public Profile_plus_page_Logic profilePlusBtnClickInHeader() {
+        new Main_page_Logic().profilePlusBtnClickInHeader();
+        return page(Profile_plus_page_Logic.class);
+    }
+
+
+    @Step("presence of TecDoc catalog . Maker_car_list_page")
+    public Maker_car_list_page_Logic presenceOfTecDocCatalog() {
+        tecDocCatalog().shouldBe(visible);
+        return this;
+    }
+    @Step("check vehicle list before writing . Maker_car_list_page")
+    public Maker_car_list_page_Logic checkVehicleListBeforeWrite(List<String> list) {
+        selectorInCloseCondition().shouldBe(visible);
+       if (list.size()>0){
+           list.clear();
+       }
+        return this;
     }
 }

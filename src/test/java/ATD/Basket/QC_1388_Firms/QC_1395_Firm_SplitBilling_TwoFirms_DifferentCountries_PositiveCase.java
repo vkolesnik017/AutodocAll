@@ -41,7 +41,7 @@ public class QC_1395_Firm_SplitBilling_TwoFirms_DifferentCountries_PositiveCase 
 
     @DataProvider(name = "routeEN", parallel = true)
     Object[] dataProviderProductsEN() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "EN", "main", "product2");
+        return new SetUp().setUpShopWithSubroutes("prod", "EN", "main", "product32");
     }
 
     @Test(dataProvider = "routeEN")
@@ -61,7 +61,7 @@ public class QC_1395_Firm_SplitBilling_TwoFirms_DifferentCountries_PositiveCase 
                 .fillAllFieldsAndFirmForBilling("ES", "12311", "Kalisz", "FB-MONT A. Fułek Spółka Komandytowa")
                 .fillFieldIdCompanyBilling("6180029941")
                 .nextBtnClick()
-                .chosseUnicreditBank()
+                .chooseUnicreditBank()
                 .nextBtnClick()
                 .checkAbsenceOfVatPercentage()
                 .checkTextInDeliveryAddressInfoBlock("Company SPRL Brasserie Cantillon")
@@ -117,7 +117,7 @@ public class QC_1395_Firm_SplitBilling_TwoFirms_DifferentCountries_PositiveCase 
 
     @DataProvider(name = "routeDE", parallel = true)
     Object[] dataProviderProductsDE() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product2");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product32");
     }
 
     @Test(dataProvider = "routeDE")

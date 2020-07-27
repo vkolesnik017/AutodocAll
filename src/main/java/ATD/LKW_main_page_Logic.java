@@ -153,7 +153,7 @@ public class LKW_main_page_Logic extends LKW_main_page {
 
     @Step("Select truck in vertical selector. LKW_main_page")
     public LKW_Catalog_page_Logic selectTruckInSelector(String markeOfTruck, String modelOfTruck, String motorOfTruck) {
-        markeOfVerticalTruckSelector().selectOptionByValue(markeOfTruck);
+        markeOfVerticalTruckSelector().shouldBe(visible).selectOptionByValue(markeOfTruck);
         modelOfVerticalTruckSelector().selectOptionByValue(modelOfTruck);
         motorOfVerticalTruckSelector().selectOptionByValue(motorOfTruck);
         buttonSuchenOfVerticaltruckSelectorMainPage().click();
@@ -413,10 +413,14 @@ public class LKW_main_page_Logic extends LKW_main_page {
 
     @Step("availability of forward and back links of TOP products block .LKW_main_page")
     public LKW_main_page_Logic availabilityOfForwardBackLinksOfTopBLock() {
+        String currentArtNumOfTopProduct = visibleArtNumOfTopProducts().get(0).getText();
+        visibleArtNumOfTopProducts().shouldHaveSize(6);
         forwardLinkOfTopBLock().shouldBe(visible).click();
-        productsInTopBlockSecondLevel().shouldBe(visible);
+        visibleArtNumOfTopProducts().get(0).shouldNotHave(exactText(currentArtNumOfTopProduct));
+        visibleArtNumOfTopProducts().shouldHaveSize(6);
+        currentArtNumOfTopProduct = visibleArtNumOfTopProducts().get(0).getText();
         backLinkOfTopBLock().shouldBe(visible).click();
-        productsInTopBlockFirstLevel().shouldBe(visible);
+        visibleArtNumOfTopProducts().get(0).shouldNotHave(exactText(currentArtNumOfTopProduct));
         return this;
     }
 
@@ -514,32 +518,27 @@ public class LKW_main_page_Logic extends LKW_main_page {
 
     @Step("Checking countries subscription from footer country list  .LKW_main_page")
     public LKW_main_page_Logic checkingCountriesSubscription() throws SQLException {
-        String currentCountry;
+           String currentCountry;
         String[] arr = {"CH", "AT", "LD", "BG", "BE", "CZ", "DK", "EE", "ES", "FI", "FR", "EN", "GR", "HU", "IT", "LT", "LV", "NL", "NO", "PL", "PT", "RO", "SE", "SI", "SK"};
         List list = Arrays.asList(arr);
         List<String> language = new ArrayList<>(list);
         languageBlock().click();
         for (int i = 0; i < languagesOfSubscribe().size(); i++) {
-            if (closeCookiesPopUp().isDisplayed()) {
-                closeCookiesPopUp().click();
-            }
             currentCountry = currentLanguage().shouldBe(exist).getText();
-            languageBlock().shouldBe(visible).scrollIntoView("{block: \"center\"}").click();
+            languageBlock().shouldBe(exist).scrollIntoView("{block: \"center\"}");
+            languageBlock().click();
             if (!languageListBlock().isDisplayed()) {
                 languageBlock().click();
             }
-            //languageListBlock().shouldBe(visible);
-            languageListBlock().waitUntil(visible,20000);
-            languagesOfSubscribe().get(i).scrollIntoView("{block: \"end\"}");
+            languageListBlock().waitUntil(visible, 20000);
+            languagesOfSubscribe().get(i).scrollIntoView("{block: \"center\"}");
             languagesOfSubscribe().get(i).click();
             languageListBlock().shouldNotBe(visible);
-            closeCookiesPopUp().shouldBe(visible);
             currentLanguage().shouldNotHave(exactText(currentCountry));
-            String urlFromBD = new DataBase().getFullRouteByRouteName("subprod",language.get(i), "lkw_main")+"/";
-         // Assert.assertTrue(url().contains(new DataBase().getRouteByRouteName(language.get(i), "lkw_main")));
-            Assert.assertEquals(url(),urlFromBD);
+            String urlFromBD = new DataBase().getFullRouteByRouteName("subprod", language.get(i), "lkw_main") + "/";
+            Assert.assertEquals(url(), urlFromBD);
         }
-                return this;
+        return this;
     }
 
     @Step("Checks open and close footer droplist with countries .LKW_main_page")

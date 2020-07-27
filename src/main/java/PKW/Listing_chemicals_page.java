@@ -2,9 +2,7 @@ package PKW;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-
-import static com.codeborne.selenide.Selenide.$$x;
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.*;
 
 
 public class Listing_chemicals_page {
@@ -12,6 +10,18 @@ public class Listing_chemicals_page {
 
     SelenideElement titleNameListingPage() {
         return $x("//h1/span");
+    }
+
+    SelenideElement btnPlusInQuantityCounter() {
+        return $x("//div[@class='brand-products'][1]//a[@class='ga-click plus']");
+    }
+
+    SelenideElement btnMinusInQuantityCounter() {
+        return $x("//div[@class='brand-products'][1]//a[@class='ga-click minus']");
+    }
+
+    SelenideElement counterValueInQuantityCounter() {
+        return $x("//div[@class='brand-products'][1]//input[@class='ammount']");
     }
 
     SelenideElement blockBreadCrumbs() {return $x("//div[@class='crabs']"); }
@@ -88,5 +98,78 @@ public class Listing_chemicals_page {
     SelenideElement btnLessInBrandsBlock() {
         return $x("//div[contains(@class,'listing-brand-filters_more-link')]/a[@class='more_link js-listing-brand-filters less_link']");
     }
+
+    SelenideElement blockProductsListing() {
+        return $x("//div[@class='listing_items']");
+    }
+
+    ElementsCollection productsListing() {
+        return $$x("//div[@class='listing_items']//div[@class='brand-products']");
+    }
+
+    SelenideElement titleNameFirstProductInListing() {
+        return $x("//div[@class='brand-products'][1]//a[@class='ga-click prod_link']");
+    }
+
+    SelenideElement redBtnAddToBasket() {
+        return $x("//div[@class='brand-products']//a[@class='indenwarenkorb']");
+    }
+
+    SelenideElement popupBasketAddedProducts() {
+        return $x("//div[@class='cart-items-block ']");
+    }
+
+    SelenideElement idProductInBtnAddBasket() {
+        return $x("//div[@class='basket_btn button active_red_button ']");
+    }
+
+    SelenideElement blockFeatures() {
+        return $x("//div[@class='sb_content features_wrap']");
+    }
+
+    SelenideElement firstFeatures() {
+        return $x("//div[@class='sb_content features_wrap']//li[@class='preise']");
+    }
+
+    SelenideElement popupFirstFeatures() {
+        return $x("//li[@class='preise']//span[@class='pophover-text']");
+    }
+
+    SelenideElement genericsBlock() {
+        return $x("//div[@class='filter-accessories js-filter-generic js-filter-wrapper hidden']");
+    }
+
+    SelenideElement firstGenericInGenericsBlock() {
+        return $x("//label[contains(@class,'filter-accessories__items-item ')][2]");
+    }
+
+    SelenideElement secondGenericInGenericsBlock() {
+        return $x("//label[contains(@class,'filter-accessories__items-item ')][3]");
+    }
+
+    SelenideElement blockPaymentMethod() {
+        return $x("//div[@class='sb_content payment_method']");
+    }
+
+    SelenideElement firstCriteriaInConsistenceCriteriaBlock() {
+        return $x("//div[@class='criteria-filters']//label[@for='acd9cb']");
+    }
+
+    ElementsCollection characteristicConsistenceInProductsListing() {
+        return $$x("//div[@class='prod_params_container']//span[contains(text(),'Konsistenz')]/..//span[@class='rc']");
+    }
+
+    SelenideElement firstCategoryFromTopProductSidebar() {
+        return $x("//div[@class='sidebar_block'][1]//li");
+    }
+
+    SelenideElement blockTopCategoryFromSidebar() {
+        return $x("//div[@class='sidebar_block'][1]");
+    }
+
+    SelenideElement mainImgOnListingPage() {
+        return $x("//div[@class='sidebar-part-image']/img");
+    }
+
 
 }

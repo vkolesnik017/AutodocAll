@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.Random;
 
 import static ATD.CommonMethods.*;
-import static ATD.CommonMethods.getCurrencyAndVerify;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.CollectionCondition.sizeLessThan;
 import static com.codeborne.selenide.Condition.*;
@@ -629,7 +628,7 @@ public class Product_page_Logic extends Product_page {
     }
 
     @Step("Get product ID. Product_page")
-        public String getProductId() {
+    public String getProductId() {
         return productId().getAttribute("id");
     }
 
@@ -688,13 +687,77 @@ public class Product_page_Logic extends Product_page {
 
     @Step("Check Product Fits Car Or Go To AWS And Check Universal Applicability. Product_page")
     public ProductCard_aws checkProductFitsCarOrGoToAWS(String expectedCarInCompatibilityBlock) {
-        if(!productFitsCar().is(visible)) {
+        if (!productFitsCar().is(visible)) {
             String productId = getProductId();
             new ProductCard_aws(productId).openProductCardPageAndLogin()
-                                          .checkUniversalOrPKWApplicability();
+                    .checkUniversalOrPKWApplicability();
         } else {
             productFitsCar().shouldHave(text(expectedCarInCompatibilityBlock));
         }
         return page(ProductCard_aws.class);
+    }
+
+    @Step("Checks presence block block approval ECE. Product_page")
+    public Product_page_Logic checkPresenceBlockApprovalECE() {
+        blockApprovalECE().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checks text inside a block approval ECE. Product_page")
+    public Product_page_Logic checkTextInsideBlockApprovalECE(String expectedText) {
+        blockApprovalECE().shouldHave(text(expectedText));
+        return this;
+    }
+
+    @Step("Check invisibility of characteristic. Product_page")
+    public Product_page_Logic checkInvisibilityOfCharacteristic(SelenideElement characteriticLocator) {
+        characteriticLocator.shouldNotBe(visible);
+        return this;
+    }
+
+    @Step("Click all characteristics button if it is present. Product_page")
+    public Product_page_Logic clickAllCharacteristicsButtonIfPresent() {
+        if (uncoverCharactericticBtn().is(visible)) {
+            uncoverCharactericticBtn().click();
+        }
+        return this;
+    }
+
+    @Step("added current url to list . Product_page")
+    public Product_page_Logic addedIdOfBtnAddToBasketToList(List<String> list) {
+        idOFBtnAddToBasket().shouldBe(visible);
+        list.add(idOFBtnAddToBasket().getAttribute("id"));
+        return this;
+    }
+
+    @Step("Input text in search bar. Product_page")
+    public Product_page_Logic inputTextInSearchBar(String text) {
+        searchBar().setValue(text);
+        return this;
+    }
+
+    @Step("select product from hint of Search field. Product_page")
+    public Product_page_Logic selectProductFromHintOfSearchField(String artNumOfProduct) {
+        tooltipToSearch().shouldBe(visible);
+        for (int i = 0; i < tooltipsToSearch().size(); i++) {
+            if (tooltipsToSearch().get(i).has(text(artNumOfProduct))) {
+                tooltipsToSearch().get(i).click();
+            }
+        }
+        return this;
+    }
+
+    @Step("addedProduct to basket. Product_page")
+    public Product_page_Logic addedProductToBasket() {
+        buyButton().shouldBe(visible).click();
+        basketDropMenu().should(appear);
+        basketDropMenu().should(disappear);
+        return this;
+    }
+
+    @Step("go to basket. Product_page")
+    public Cart_page_Logic goToBasket() {
+       basket().click();
+        return page(Cart_page_Logic.class);
     }
 }

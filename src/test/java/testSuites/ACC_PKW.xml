@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="ACC_PKW">
+<suite name="ACC_PKW" parallel="methods" thread-count="2" data-provider-thread-count="3">
 
     <test name="QC_1417_MainChemie">
         <classes>
@@ -54,5 +54,87 @@
             <class name="PKW.ACC.QC_1793_ChemistryListing.QC_1816_TransitionOnPageForBtnPaginationOnChemistryListing"/>
         </classes>
     </test>
+
+    <test name="QC_1611_BlockTopProductsOnMainChemistry">
+        <classes>
+            <class name="PKW.ACC.QC_1611_BlockTopProductsOnMainChemistry.QC_1612__QuantityProductsInTopProductsBlock"/>
+            <class name="PKW.ACC.QC_1611_BlockTopProductsOnMainChemistry.QC_1613_HoverMiniCard"/>
+            <class name="PKW.ACC.QC_1611_BlockTopProductsOnMainChemistry.QC_1614_AddProductFromTopProductsBlockToBasket"/>
+        </classes>
+    </test>
+
+    <test name="QC_999_TopCategoriesOnMainAccessories">
+        <classes>
+            <class name="PKW.ACC.QC_999_TopCategoriesOnMainAccessories.QC_1000_TopCategoriesBlock"/>
+        </classes>
+    </test>
+
+    <test name="QC_1748_MainCatalogCategoriesOnMainTools">
+        <classes>
+            <class name="PKW.ACC.QC_1748_MainCatalogCategoriesOnMainTools.QC_1749_MainCatalogBlock"/>
+            <class name="PKW.ACC.QC_1748_MainCatalogCategoriesOnMainTools.QC_1750_SeparateCategoriesInMainCatalogTools"/>
+            <class name="PKW.ACC.QC_1748_MainCatalogCategoriesOnMainTools.QC_1751_LogicalUnionMainCatalogTools"/>
+        </classes>
+    </test>
+
+    <test name="QC_1419_MainCatalogProductsOnMainChemistry">
+        <classes>
+            <class name="PKW.ACC.QC_1419_MainCatalogProductsOnMainChemistry.QC_1533_TitleMainCatalog"/>
+            <class name="PKW.ACC.QC_1419_MainCatalogProductsOnMainChemistry.QC_1535_BlockWithCategories"/>
+            <class name="PKW.ACC.QC_1419_MainCatalogProductsOnMainChemistry.QC_1541_SeparateCategories"/>
+            <class name="PKW.ACC.QC_1419_MainCatalogProductsOnMainChemistry.QC_1964_TransitionOnListingFromCategoryInLogicalUnion"/>
+        </classes>
+    </test>
+
+    <test name="QC_1810_BlockWithProductsOnChemistryListing">
+        <classes>
+            <class name="PKW.ACC.QC_1810_BlockWithProductsOnChemistryListing.QC_1811_MainProductsChemistryListing"/>
+            <class name="PKW.ACC.QC_1810_BlockWithProductsOnChemistryListing.QC_1812_TransitionOnProductPageFromChemistryListing"/>
+            <class name="PKW.ACC.QC_1810_BlockWithProductsOnChemistryListing.QC_1813_SelectingQuantityProductsToBuyOnChemistryListing"/>
+            <class name="PKW.ACC.QC_1810_BlockWithProductsOnChemistryListing.QC_1814_AddProductsInBasketOnChemistryListing"/>
+        </classes>
+    </test>
+
+    <test name="QC_1752_BlockTopCategoriesOnMainTools">
+        <classes>
+            <class name="PKW.ACC.QC_1752_BlockTopCategoriesOnMainTools.QC_1753_TitleTopCategoriesBlock"/>
+            <class name="PKW.ACC.QC_1752_BlockTopCategoriesOnMainTools.QC_1754_QuantityCategoriesInTopCategoriesBlock"/>
+            <class name="PKW.ACC.QC_1752_BlockTopCategoriesOnMainTools.QC_1755_TransitionOnListingTopCategory"/>
+        </classes>
+    </test>
+
+    <test name="QC_1798_SideBarOnChemistryListing">
+        <classes>
+            <class name="PKW.ACC.QC_1798_SideBarOnChemistryListing.QC_1799_PresencePhotoCategoryOnChemistryListing"/>
+            <class name="PKW.ACC.QC_1798_SideBarOnChemistryListing.QC_1800_TopCategoriesSidebarOnChemistryListing"/>
+            <class name="PKW.ACC.QC_1798_SideBarOnChemistryListing.QC_1801_ClickableCategoriesFromTopProductsSidebarOnChemistryListing"/>
+            <class name="PKW.ACC.QC_1798_SideBarOnChemistryListing.QC_1802_BlockFiltersInSideBarOnChemistryListing"/>
+            <class name="PKW.ACC.QC_1798_SideBarOnChemistryListing.QC_1803_BlockWithPaymentMethodOnChemistryListing"/>
+            <class name="PKW.ACC.QC_1798_SideBarOnChemistryListing.QC_1804_BlockFeaturesOnChemistryListing"/>
+        </classes>
+    </test>
+
+    <test name="QC_1805_BlockFilterByGenericsOnChemistryListing">
+        <classes>
+            <class name="PKW.ACC.QC_1805_BlockFilterByGenericsOnChemistryListing.QC_1806_BlockWithFilterByGenericsOnChemistryListing"/>
+            <class name="PKW.ACC.QC_1805_BlockFilterByGenericsOnChemistryListing.QC_1807_FilteringByOneGenericOnChemistryListing"/>
+            <class name="PKW.ACC.QC_1805_BlockFilterByGenericsOnChemistryListing.QC_1808_FilteringBySeveralGenericsOnChemistryListing"/>
+        </classes>
+    </test>
+
+    <test name="QC_1756_TopProductsBlockOnMainTools">
+        <classes>
+            <class name="PKW.ACC.QC_1756_TopProductsBlockOnMainTools.QC_1757_TitleTopProductsBlock"/>
+            <class name="PKW.ACC.QC_1756_TopProductsBlockOnMainTools.QC_1758_QuantityProductsInTopProductsBlock"/>
+            <class name="PKW.ACC.QC_1756_TopProductsBlockOnMainTools.QC_1759_HoverMiniCardTopProductsOnMainTools"/>
+            <class name="PKW.ACC.QC_1756_TopProductsBlockOnMainTools.QC_1760_AddProductFromTopProductsBlockInBasketOnMainTools"/>
+        </classes>
+    </test>
+
+
+
+
+
+
 
 </suite>

@@ -9,8 +9,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static com.codeborne.selenide.CollectionCondition.size;
-import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
+import static com.codeborne.selenide.CollectionCondition.*;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
@@ -564,6 +563,111 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         appearsOfLoader();
         Assert.assertEquals(url(), db.getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", subRoute));
         return this;
+    }
+
+    @Step("presence of Parent categories block .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic presenceOfParentCategoriesBlock(int countOfParentCategories) {
+        parentCategories().shouldHave(sizeGreaterThan(countOfParentCategories));
+        return this;
+    }
+
+    @Step("visibility Of Child categories popUp of Parent Category .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic checkParentCategoriesOfTecDocCatalog() {
+        for (int i = 0; i < parentCategories().size(); i++) {
+            if (titleOfParentCategories().get(i).getText().equals("Reifen")) {
+                continue;
+            }
+            imageOfParentCategories().get(i).shouldBe(visible);
+            titleOfParentCategories().get(i).shouldBe(visible);
+            parentCategories().get(i).click();
+            childCategoriesPopUpOfParentCategory().get(i).shouldBe(visible);
+            checkFirstLevelOfParentCategories(i);
+        }
+        return this;
+    }
+
+    @Step("check First Level of parent categories .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic checkFirstLevelOfParentCategories(int position) {
+        if (childCategoriesFirstLevel().get(0).isDisplayed() && visibleIntermediateCategoryFirstLevel().get(0).isDisplayed()) {
+            childCategoriesFirstLevel().shouldHave(sizeGreaterThan(0));
+            checkVisibleChildCategoriesFirstLevel();
+            checkIntermediateChildCategoryFirstLevel(position);
+        } else if (childCategoriesFirstLevel().get(0).isDisplayed()) {
+            childCategoriesFirstLevel().shouldHave(sizeGreaterThan(0));
+            checkVisibleChildCategoriesFirstLevel();
+        } else if (visibleIntermediateCategoryFirstLevel().get(0).isDisplayed()) {
+            checkIntermediateChildCategoryFirstLevel(position);
+        }
+        return this;
+    }
+
+    @Step("check visible child categories .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic checkVisibleChildCategoriesFirstLevel() {
+        for (int i = 0; i < childCategoriesFirstLevel().size(); i++) {
+            imageOfVisibleChildCategoriesFirstLevel().get(i).shouldBe(visible);
+            titleOfVisibleChildCategoriesFirstLevel().get(i).shouldBe(visible);
+        }
+        return this;
+    }
+
+
+    @Step("check intermediate child category first level .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic checkIntermediateChildCategoryFirstLevel(int position) {
+        for (int j = 0; j < intermediateChildCategoriesFirstLevel(position + 1).size(); j++) {
+            intermediateChildCategoriesFirstLevel(position + 1).get(j).click();
+            secondLevelBlock().should(appear);
+            checkSecondLevelOfParentCategories();
+        }
+        return this;
+    }
+
+    @Step("check Second Level of parent categories .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic checkSecondLevelOfParentCategories() {
+
+        if (visibleChildCategorySecondLevel().get(0).isDisplayed() && visibleIntermediateCategorySecondLevel().get(0).isDisplayed()) {
+            visibleChildCategorySecondLevel().shouldHave(sizeGreaterThan(0));
+            checkVisibleChildCategoriesSecondLevel();
+            checkIntermediateChildCategorySecondLevel();
+        } else if (visibleChildCategorySecondLevel().get(0).isDisplayed()) {
+            visibleChildCategorySecondLevel().shouldHave(sizeGreaterThan(0));
+            checkVisibleChildCategoriesSecondLevel();
+        } else if (visibleIntermediateCategorySecondLevel().get(0).isDisplayed()) {
+            checkIntermediateChildCategorySecondLevel();
+        }
+        return this;
+    }
+
+    @Step("check visible child categories .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic checkVisibleChildCategoriesSecondLevel() {
+        for (int i = 0; i < visibleChildCategoriesSecondLevel().size(); i++) {
+            imageOfVisibleChildCategoriesSecondLevel().get(i).shouldBe(visible);
+            titleOfVisibleChildCategoriesSecondLevel().get(i).shouldBe(visible);
+        }
+        return this;
+    }
+
+    @Step("check intermediate child category second level .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic checkIntermediateChildCategorySecondLevel() {
+        for (int j = 0; j < intermediateChildCategoriesSecondLevel().size(); j++) {
+            intermediateChildCategoriesSecondLevel().get(j).click();
+            thirdLevelBlock().should(appear);
+            checkThirdLevelOfParentCategories();
+        }
+        return this;
+    }
+
+    @Step("check Second Level of parent categories .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic checkThirdLevelOfParentCategories() {
+        childCategoriesThirdLevel().shouldHave(sizeGreaterThan(0));
+        return this;
+    }
+
+    @Step("transitionToChildCategory .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic transitionToChildCategory(int parentCategoryPosition, int childCategoryPosition) {
+        parentCategories().get(parentCategoryPosition).scrollIntoView("{block: \"start\"}").click();
+        childCategoriesPopUpOfParentCategory().get(parentCategoryPosition).shouldBe(visible);
+        childCategoriesFirstLevelForCheck().get(childCategoryPosition).shouldBe(visible).click();
+        return page(LKW_Category_car_list_page_Logic.class);
     }
 }
 

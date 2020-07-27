@@ -23,7 +23,7 @@ public class Main_page_mob {
     }
 
     SelenideElement signInBtnInMenu() {
-        return $(byCssSelector(".name.signin"));
+        return $x("//div[@class='name signin']//span");
     }
 
     SelenideElement cartIcon() {

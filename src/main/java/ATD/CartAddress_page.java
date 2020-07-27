@@ -13,15 +13,15 @@ public class CartAddress_page {
         return $x("//div[@class='shipping-form input-form']");
     }
 
-    SelenideElement vorname() {
+    public SelenideElement vorname() {
         return $(byId("form_lVorname"));
     }
 
-    SelenideElement nameIn() {
+    public SelenideElement nameIn() {
         return $(byId("form_lName"));
     }
 
-    SelenideElement strasse() {
+    public SelenideElement strasse() {
         return $(byId("form_lStrasse"));
     }
 
@@ -29,7 +29,7 @@ public class CartAddress_page {
         return $(byId("form_delivery_house"));
     }
 
-    SelenideElement ort() {
+    public SelenideElement ort() {
         return $(byId("form_lOrt"));
     }
 
@@ -140,4 +140,45 @@ public class CartAddress_page {
     SelenideElement tooltipCOVID19() {
         return $x("//div[@class='error-message']");
     }
+
+    public SelenideElement personalNumberBlock() {
+        return $x("//div[@class='row block-personal-number']");
+    }
+
+    SelenideElement infoLabelForPersonalNumber() {
+        return $x("//div[@class='row block-personal-number']//div[@class='info']");
+    }
+
+    SelenideElement textFromPersonalNumberTooltip() {
+        return $x("//div[@class='personal_number_tooltip-text']");
+    }
+
+    SelenideElement inputPersonalNumber() {
+        return $x("//input[@data-gac='Personal_number']");
+    }
+
+    SelenideElement getMyAddressBtn() {
+        return $x("//div[@class='block-personal-number__button']");
+    }
+
+    SelenideElement errorMessage() {
+        return $x("//div[@class='error-message']");
+    }
+
+    SelenideElement fiscalCodeBlockInSippingForm() {
+        return $x("//div[@class='shipping-form input-form']//div[@class='fiscal-code-block']");
+    }
+
+    SelenideElement checkboxFiscalCode() {
+        return $x("//input[@id='is-lFiscal-code']");
+    }
+
+    SelenideElement fieldFiscalCode() {
+        return $x("//input[@name='lFiscalCode']");
+    }
+
+    SelenideElement notesWithAddressRestrictions() {
+        return $x("//span[@style='color: inherit;']");
+    }
+
 }

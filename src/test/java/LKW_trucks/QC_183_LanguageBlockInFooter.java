@@ -17,6 +17,7 @@ import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
 public class QC_183_LanguageBlockInFooter {
+
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -32,8 +33,8 @@ public class QC_183_LanguageBlockInFooter {
     @Owner(value = "Kolesnik")
     @Description(value = "Test checks language block in footer")
     public void testChecksLanguageBlockInFooter(String route) throws SQLException {
-        openPage(route);
 
+        openPage(route);
         new LKW_main_page_Logic()
                 .checkOpenAndCloseDropListCountries()
                 .checkingCountriesSubscription();

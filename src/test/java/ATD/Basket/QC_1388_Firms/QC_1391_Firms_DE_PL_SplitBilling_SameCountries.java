@@ -52,7 +52,7 @@ public class QC_1391_Firms_DE_PL_SplitBilling_SameCountries {
                 .fillAllFields(shop)
                 .fillAllFieldsAndFirmForBilling(shop,"12345","Kaliszc", "FB-MONT A. Fułek Spółka Komandytowa")
                 .nextBtnClick()
-                .chossePrzelewBankowy()
+                .choosePrzelewBankowy()
                 .nextBtnClick()
                 .checkTextInDeliveryAddressInfoBlock("autotest autotest")
                 .checkTextInPayersAddressInfoBlock("Firma FB-MONT A. Fułek Spółka Komandytowa")

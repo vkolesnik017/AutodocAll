@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="ACC_ATD">
+<suite name="ACC_ATD" parallel="methods" thread-count="2" data-provider-thread-count="3">
 
     <test name="QC_1260_MainProductCatalogOnMainTools">
         <classes>
@@ -157,6 +157,7 @@
         <classes>
             <class name="ATD.ACC.QC_2044_BlockCategoriesInSidebarOnChemistryListing.QC_2045_TitleCategoriesBlockInSidebarOnChemistryListing"/>
             <class name="ATD.ACC.QC_2044_BlockCategoriesInSidebarOnChemistryListing.QC_2046_CategoriesSelectedLogicalUnionInSidebarOnChemistryListing"/>
+            <class name="ATD.ACC.QC_2044_BlockCategoriesInSidebarOnChemistryListing.QC_2047_SeparateCategoriesInSidebarOnChemistryListing"/>
             <class name="ATD.ACC.QC_2044_BlockCategoriesInSidebarOnChemistryListing.QC_2048_SelectCategoryFromSidebarOnChemistryListing"/>
         </classes>
     </test>
@@ -168,5 +169,14 @@
             <class name="ATD.ACC.QC_2050_BlockFilterByBrandsOnChemistryListing.QC_2052_ResetSelectedFilterByBrandsOnChemistryListing"/>
         </classes>
     </test>
+
+    <test name="QC_2051_FilterBlockByGenericOnChemistryListing">
+        <classes>
+            <class name="ATD.ACC.QC_2051_FilterBlockByGenericOnChemistryListing.QC_2058_BlockGenericsOnChemistryListingPage"/>
+            <class name="ATD.ACC.QC_2051_FilterBlockByGenericOnChemistryListing.QC_2059_WorkFilterBlockByGenericOnChemistryListing"/>
+            <class name="ATD.ACC.QC_2051_FilterBlockByGenericOnChemistryListing.QC_2060_ResetSelectedFilterByGeneric"/>
+        </classes>
+    </test>
+
 
 </suite>

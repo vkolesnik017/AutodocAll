@@ -16,6 +16,12 @@ public class Index_instruments_page_Logic extends Index_instruments_page {
         return this;
     }
 
+    @Step("Checking presence title top categories block. Index_instruments_page")
+    public Index_instruments_page_Logic checkingPresenceTitleTopCategoriesBlock() {
+        Assert.assertFalse(titleTopCategoriesBlock().text().isEmpty());
+         return this;
+    }
+
     @Step("Click first bread crumb. Index_instruments_page")
     public Parts_page_Logic clickFirstBreadCrumb() {
         firstBreadCrumb().click();
@@ -45,5 +51,82 @@ public class Index_instruments_page_Logic extends Index_instruments_page {
         return page(Supplier_page_Logic.class);
     }
 
+    @Step("Checking presence main catalog categories block. Index_instruments_page")
+    public Index_instruments_page_Logic checkingPresenceMainCatalogCategoriesBlock() {
+        mainCatalogCategoriesBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Get id product from top products block. Index_instruments_page")
+    public String getIdProductFromTopProducts() {
+        return btnAddProductToBasketFromTopProductsBlock().getAttribute("id");
+    }
+
+    @Step("Click btn add to basket product from top products block. Index_instruments_page")
+    public Index_instruments_page_Logic clickBtnAddToBasketProductFromTopProducts(){
+        btnAddProductToBasketFromTopProductsBlock().click();
+        popupBasketAddedProducts().waitUntil(attribute("style","visibility: visible; opacity: 1;"), 10000);
+        return this;
+    }
+
+    @Step(":from Index_instruments_page")
+    public Cart_page_Logic cartClick() {
+        new Main_page_Logic().cartClick();
+        return page(Cart_page_Logic.class);
+    }
+
+    @Step("Checking popup with product characteristic after hover from top products block. Index_instruments_page")
+    public Index_instruments_page_Logic checkingPopupProductFromTopProductsBlock() {
+        firstProductFromTopProductsBlock().scrollIntoView(false).hover();
+        btnDetailsProductFromTopProductsBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checking quantity products in top products block. Index_instruments_page")
+    public Index_instruments_page_Logic checkingQuantityProductsInTopProductsBlock() {
+        productsFromTopProductsBlock().shouldHaveSize(12);
+        return this;
+    }
+
+    @Step("Get name first category from top categories block. Index_instruments_page")
+    public String getNameFirstCategoryFromTopCategoriesBlock() {
+        return firstCategoryFromTopCategoriesBlock().getText();
+    }
+
+    @Step("Click first category from top categories block. Index_instruments_page")
+    public Listing_instruments_Page_Logic clickFirstCategoryFromTopCategoriesBlock() {
+        firstCategoryFromTopCategoriesBlock().click();
+        return page(Listing_instruments_Page_Logic.class);
+    }
+
+    @Step("Checking presence title top products block. Index_instruments_page")
+    public Index_instruments_page_Logic checkingPresenceTitleTopProductsBlock() {
+        Assert.assertFalse(titleTopProductsBlock().text().isEmpty());
+        return this;
+    }
+
+    @Step("Checking quantity category in top categories block. Index_instruments_page")
+    public Index_instruments_page_Logic checkingQuantityCategoriesInTopCategoriesBlock() {
+        categoriesTopCategoriesBlock().shouldHaveSize(12);
+        return this;
+    }
+
+    @Step("Checking presence categories block in logical union from main catalog. Index_instruments_page")
+    public Index_instruments_page_Logic checkingPresenceCategoriesInLogicalUnion() {
+        firstLogicalUnion().hover();
+        categoriesBlockInLogicalUnion().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Click separate category from main catalog. Index_instruments_page")
+    public Listing_instruments_Page_Logic clickSeparateCategoryFromMainCatalog() {
+        separateCategoryInMainCatalog().click();
+        return page(Listing_instruments_Page_Logic.class);
+    }
+
+    @Step("Get name separate category from main catalog. Index_instruments_page")
+    public String getNameSeparateCategoryFromMainCatalog() {
+        return separateCategoryInMainCatalog().getText();
+    }
 
 }

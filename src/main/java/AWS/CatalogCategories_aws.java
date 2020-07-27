@@ -8,6 +8,7 @@ import java.util.*;
 
 import static ATD.CommonMethods.openPage;
 import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Selenide.$$x;
 
 public class CatalogCategories_aws {
 
@@ -34,6 +35,8 @@ public class CatalogCategories_aws {
     private ElementsCollection notInCatalogCategories() { return $$(".catalog-table-content-items-item > ul >li > div >div:nth-child(5) > input[data-entity-id^=\"3\"]"); }
 
     private ElementsCollection notInCatalogCateg2() { return $$(".catalog-table-content-items-item[data-node-id^=\"3\"] > ul >li > div >div:nth-child(5) > input"); }
+
+    public ElementsCollection crossCuttingCategoriesId() { return $$x("//*[@class='flex-box']/div[12]/input[@checked='checked']/../../div[4]"); }
 
     @Step("Get All Child Categories From Catalog AWS. CatalogCategories_aws")
     public ArrayList<String> getAllChildCategoriesFromAWS() {
@@ -198,5 +201,14 @@ public class CatalogCategories_aws {
             }
         }
         return notActiveCategories;
+    }
+
+    @Step("Get crossCutting categories from AWS. CatalogCategories_aws")
+    public ArrayList<String> getCrossCuttingCategoriesFromAWS() {
+        new Login_aws().loginInAwsWithOpen();
+        openPage(categoriesInAwsPage);
+        ArrayList<String> crossCuttingCategories = new ArrayList<>();
+        crossCuttingCategories.addAll(crossCuttingCategoriesId().texts());
+        return crossCuttingCategories;
     }
 }

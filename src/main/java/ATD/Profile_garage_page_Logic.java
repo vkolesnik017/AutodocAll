@@ -1,16 +1,17 @@
 package ATD;
 
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
-import static com.codeborne.selenide.CollectionCondition.sizeLessThan;
+import static ATD.CommonMethods.checkingContainsUrl;
+import static com.codeborne.selenide.CollectionCondition.*;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Profile_garage_page_Logic extends Profile_garage_page {
 
@@ -21,9 +22,14 @@ public class Profile_garage_page_Logic extends Profile_garage_page {
         return this;
     }
 
+    @Step("Click tracks tab in selector. Profile_garage_page")
+    public Profile_garage_page_Logic clickTrucksTab() {
+        trucksTab().click();
+        return this;
+    }
+
     @Step("select Truck in selector .Profile_garage_page")
     public Profile_garage_page_Logic selectTruckInSelector(String brand, String model, String motor) {
-        trucksTab().click();
         markeOfTruckInSelector().shouldBe(visible).selectOptionByValue(brand);
         modelOfTruckInSelector().shouldBe(visible).selectOptionByValue(model);
         motorOfTruckInSelector().shouldBe(visible).selectOptionByValue(motor);
@@ -31,9 +37,22 @@ public class Profile_garage_page_Logic extends Profile_garage_page {
         return this;
     }
 
+    @Step(": for Profile_garage_page")
+    public Profile_garage_page_Logic selectVehicleCarInSelector(String brandName, String modelNumberValue, String typeNumberValue) {
+        new Main_page_Logic().chooseBrandModelTypeInSelector(brandName, modelNumberValue, typeNumberValue);
+        btnSearchInSelector().click();
+        return this;
+    }
+
     @Step("presence added auto .Profile_garage_page")
     public Profile_garage_page_Logic presenceAddedAuto() {
         addedAutoBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checks absence added auto. Profile_garage_page")
+    public Profile_garage_page_Logic checkAbsenceAddedAuto() {
+        addedAutoBlock().shouldNotBe(visible);
         return this;
     }
 
@@ -184,4 +203,139 @@ public class Profile_garage_page_Logic extends Profile_garage_page {
         btnAddVehicleInMyGaragePopUp().shouldBe(visible);
         return this;
     }
+
+    @Step(":from Profile_garage_page")
+    public Profile_garage_page_Logic checkForTextInBlockTopTitle(String expectedText) {
+        new Profile_plus_page_Logic().checkForTextInBlockTopTitle(expectedText);
+        return this;
+    }
+
+    @Step(":from Profile_garage_page")
+    public Profile_garage_page_Logic checkPresenceClientID() {
+        new Profile_plus_page_Logic().checkPresenceClientID();
+        return this;
+    }
+
+    @Step(":from Profile_garage_page")
+    public Profile_garage_page_Logic checkPresenceHeaderBlockAndElementInside() {
+        new Profile_plus_page_Logic().checkPresenceHeaderBlockAndElementInside();
+        return this;
+    }
+
+    @Step(":from Profile_garage_page")
+    public Profile_garage_page_Logic checkNamePageAndPresenceIcon(String expectedName) {
+        new Profile_addresses_page_Logic().checkNamePageAndPresenceIcon(expectedName);
+        return this;
+    }
+
+    @Step("Checks presence selector add car. Profile_garage_page")
+    public Profile_garage_page_Logic checkPresenceSelectorAddCar() {
+        btnAddedAuto().shouldBe(visible);
+        btnAddedAuto().shouldHave(attribute("href"));
+        return this;
+    }
+
+    @Step("Checks the text {expectedText} of an empty vehicle list. Profile_garage_page")
+    public Profile_garage_page_Logic checkTextOfEmptyVehicleList(String expectedText) {
+        emptyVehicleList().shouldHave(text(expectedText));
+        return this;
+    }
+
+    @Step("Checks presence info car block and elements inside it {expectedText}. Profile_garage_page")
+    public Profile_garage_page_Logic checkPresenceInfoCarBlock(String expectedText) {
+        carInfoBlock().shouldBe(visible);
+        catalogLincInsideСarInfoBlock().shouldHave(attribute("href"));
+        infoInsideTheBlock().shouldHave(text(expectedText));
+        imgBlockInsideCarInfoBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Get text with information about the added vehicle. Profile_garage_page")
+    public ArrayList<String> getTextWithInformationAboutAddedVehicle() {
+        ArrayList<String> infoText = new ArrayList<>();
+        ElementsCollection infoInsideTheBlock = infoInsideTheBlockAllAddedVehicle();
+        String text = null;
+        for (SelenideElement info : infoInsideTheBlock) {
+            text = info.getText();
+            infoText.add(text);
+        }
+        return infoText;
+    }
+
+    @Step("Checks text with added vehicle information with text in selector. Profile_garage_page")
+    public Profile_garage_page_Logic checkTextWithAddedVehicleWithTextInSelector() {
+        ArrayList<String> infoTextSelector = new ArrayList<>();
+        ElementsCollection infoInsideTheBlock = infoInsideTheBlockAllAddedVehicle();
+        ElementsCollection editBtn = btnEditOfAllAddedAuto();
+        String infoText, brand, model, motor;
+        for (int i = 0; i < infoInsideTheBlock.size(); i++) {
+            infoText = infoInsideTheBlock.get(i).getText().toUpperCase();
+            editBtn.get(i).click();
+            sleep(3000);
+            brand = brandInput().getText().toUpperCase();
+            model = modelInput().getText().toUpperCase();
+            motor = motorInput().getText().toUpperCase();
+            infoTextSelector.add(brand);
+            infoTextSelector.add(model);
+            infoTextSelector.add(motor);
+            for (int j = 0; j < infoTextSelector.size(); j++) {
+                Assert.assertTrue(infoText.contains(infoTextSelector.get(j)));
+            }
+            infoTextSelector.clear();
+            closeSelector().click();
+            sleep(3000);
+        }
+        return this;
+    }
+
+    @Step("Edit all vehicle. Profile_garage_page")
+    public Profile_garage_page_Logic editAllVehicle() {
+        ElementsCollection editBtn = btnEditOfAllAddedAuto();
+        for (int i = 0; i < editBtn.size(); i++) {
+            editBtn.get(i).click();
+            sleep(3000);
+            if (activeCarTab().isDisplayed()) {
+                selectVehicleCarInSelector("AUDI", "433", "1040");
+            } if (activeTrucksTab().isDisplayed()) {
+                selectTruckInSelector("132", "5549", "1008471");
+            } if (activeMotoTab().isDisplayed()) {
+                selectVehicleInSelector("4057", "12027", "101565");
+            }
+            sleep(3000);
+        }
+        return this;
+    }
+
+    @Step("Checks transition to catalog page {expectedURL} fom car info block. Profile_garage_page")
+    public Maker_car_list_page_Logic checkTransitionToCatalogFromCarInfoBlock(String expectedURL) {
+        catalogLincInsideСarInfoBlock().click();
+        checkingContainsUrl(expectedURL);
+        return page(Maker_car_list_page_Logic.class);
+    }
+
+    @Step("Click button added car from order to my garage. Profile_garage_page")
+    public Profile_garage_page_Logic clickBtnAddedCarFromOrderToGarage() {
+        btnAddedCarFromOrderToGarage().click();
+        return this;
+    }
+
+    @Step("Open popup my garage in header. Profile_garage_page")
+    public Profile_garage_page_Logic openPopUpMyGarageInHeader() {
+        countOfAddedAutoInGarageIcon().click();
+        popUpOfGarageIcon().shouldBe(visible);
+        return this;
+    }
+
+    @Step("check Count of added vehicle in My garage block. Profile_garage_page")
+    public Profile_garage_page_Logic checkCountOfAddedVehicleInMyGarageBlock(int expectedSizeOfAddedVehicle) {
+        availabilityOfAddedVehicleInMyGarage().shouldHaveSize(expectedSizeOfAddedVehicle);
+        return this;
+    }
+
+    @Step("check title in car info block. Profile_garage_page")
+    public Profile_garage_page_Logic checkTitleInCarInfoBlock(String titleOfVehicle) {
+        titleOfVehicleInCarInfoBlock().get(0).shouldHave(text(titleOfVehicle));
+        return this;
+    }
+
 }

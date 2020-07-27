@@ -5,10 +5,7 @@ import AWS.Order_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.sql.SQLException;
 
@@ -35,9 +32,6 @@ public class QC_1859_DisplayPopUpBonusInOrder {
                 .nextBtnClick()
                 .nextBtnClick();
         orderNumber = new Payment_handler_page_Logic().getOrderNumber();
-        Order_aws order_aws = new Order_aws(orderNumber);
-        order_aws.openOrderInAwsWithLogin()
-                .checkCurrentStatusInOrder("Neue Bestellung");
         close();
     }
 
@@ -55,8 +49,8 @@ public class QC_1859_DisplayPopUpBonusInOrder {
         String shop = getCurrentShopFromJSVarInHTML();
         new Main_page_Logic().loginAndTransitionToProfilePlusPage(mail)
                 .goToMyOrdersPage()
-                .checkTranslationBonusTooltip(shop);
-        close();
+                .checkTranslationBonusTooltip(shop)
+                .logOutClick();
     }
 
     @AfterClass
@@ -68,4 +62,8 @@ public class QC_1859_DisplayPopUpBonusInOrder {
         close();
     }
 
+    @AfterMethod
+    private void tearDown() {
+        close();
+    }
 }
