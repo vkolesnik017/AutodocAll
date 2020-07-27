@@ -57,7 +57,9 @@
 
     <test name="QC_1611_BlockTopProductsOnMainChemistry">
         <classes>
+            <class name="PKW.ACC.QC_1611_BlockTopProductsOnMainChemistry.QC_1612__QuantityProductsInTopProductsBlock"/>
             <class name="PKW.ACC.QC_1611_BlockTopProductsOnMainChemistry.QC_1613_HoverMiniCard"/>
+            <class name="PKW.ACC.QC_1611_BlockTopProductsOnMainChemistry.QC_1614_AddProductFromTopProductsBlockToBasket"/>
         </classes>
     </test>
 
@@ -67,9 +69,11 @@
         </classes>
     </test>
 
-    <test name="QC_1748_MainCatalogCategoriesOnMainInstruments">
+    <test name="QC_1748_MainCatalogCategoriesOnMainTools">
         <classes>
-            <class name="PKW.ACC.QC_1748_MainCatalogCategoriesOnMainInstruments.QC_1749_MainCatalogBlock"/>
+            <class name="PKW.ACC.QC_1748_MainCatalogCategoriesOnMainTools.QC_1749_MainCatalogBlock"/>
+            <class name="PKW.ACC.QC_1748_MainCatalogCategoriesOnMainTools.QC_1750_SeparateCategoriesInMainCatalogTools"/>
+            <class name="PKW.ACC.QC_1748_MainCatalogCategoriesOnMainTools.QC_1751_LogicalUnionMainCatalogTools"/>
         </classes>
     </test>
 
@@ -94,6 +98,7 @@
     <test name="QC_1752_BlockTopCategoriesOnMainTools">
         <classes>
             <class name="PKW.ACC.QC_1752_BlockTopCategoriesOnMainTools.QC_1753_TitleTopCategoriesBlock"/>
+            <class name="PKW.ACC.QC_1752_BlockTopCategoriesOnMainTools.QC_1754_QuantityCategoriesInTopCategoriesBlock"/>
             <class name="PKW.ACC.QC_1752_BlockTopCategoriesOnMainTools.QC_1755_TransitionOnListingTopCategory"/>
         </classes>
     </test>
@@ -119,6 +124,7 @@
 
     <test name="QC_1756_TopProductsBlockOnMainTools">
         <classes>
+            <class name="PKW.ACC.QC_1756_TopProductsBlockOnMainTools.QC_1757_TitleTopProductsBlock"/>
             <class name="PKW.ACC.QC_1756_TopProductsBlockOnMainTools.QC_1758_QuantityProductsInTopProductsBlock"/>
             <class name="PKW.ACC.QC_1756_TopProductsBlockOnMainTools.QC_1759_HoverMiniCardTopProductsOnMainTools"/>
             <class name="PKW.ACC.QC_1756_TopProductsBlockOnMainTools.QC_1760_AddProductFromTopProductsBlockInBasketOnMainTools"/>

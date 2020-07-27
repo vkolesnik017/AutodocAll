@@ -1,7 +1,10 @@
 package PKW;
 
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+
+import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;
 
 
@@ -93,6 +96,18 @@ public class Index_chemicals_page {
 
     SelenideElement mainCategoriesCatalogBlock() {
         return $x("//div[@class='category-block']");
+    }
+
+    SelenideElement btnAddProductToBasketInBlockTopProducts() {
+        return $x("//div[@id='js-product-slider']//div[@class='listing-grid__item-button']");
+    }
+
+    SelenideElement popupBasketAddedProducts() {
+        return $x("//div[@class='cart-items-block ']");
+    }
+
+    ElementsCollection productsFromTopProductsBlock() {
+        return $$x("//div[@class='slick-list draggable']//div[@data-slick-index]");
     }
 
 
