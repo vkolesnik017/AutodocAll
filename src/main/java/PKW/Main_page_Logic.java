@@ -1,6 +1,7 @@
 package PKW;
 
 
+import ATD.Maker_car_list_page_Logic;
 import io.qameta.allure.Step;
 
 import static PKW.CommonMethods.mailRandom;
@@ -51,4 +52,13 @@ public class Main_page_Logic extends Main_page{
         return this;
     }
 
+
+    @Step("select vehicle in selector of my garage . Main_page")
+    public Maker_car_list_page_Logic selectVehicleInSelector(String marke, String model, String motor) {
+        brandSelectorInVerticalCarSelector().shouldBe(visible).selectOptionByValue(marke);
+        modelSelectorInVerticalCarSelector().selectOptionByValue(model);
+        typeSelectorInVerticalCarSelector().selectOptionByValue(motor);
+        btnSearchOfSelector().click();
+        return page(Maker_car_list_page_Logic.class);
+    }
 }

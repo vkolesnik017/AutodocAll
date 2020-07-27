@@ -68,4 +68,17 @@ public class CommonMethods {
             Assert.fail("Url doesn't contains: " + expectedContainsUrl);
         }
     }
+
+    public static String getNameRouteFromJSVarInHTML() {
+        return executeJavaScript("return $siteSettings.route");
+    }
+
+    @Step("Wait while route become expected {expected route}")
+    public static void waitWhileRouteBecomeExpected(String expectedRoute) {
+        try {
+            Wait().until(WebDriver -> getNameRouteFromJSVarInHTML().equals(expectedRoute));
+        } catch (TimeoutException e) {
+            Assert.fail("Current route: [" + getNameRouteFromJSVarInHTML() + "] don't equals expected route: " + expectedRoute);
+        }
+    }
 }

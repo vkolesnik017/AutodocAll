@@ -64,4 +64,21 @@ public class Main_page {
         return $x("//div[@id='login_complete']");
     }
 
+    SelenideElement brandSelectorInVerticalCarSelector() {
+        return $("#form_maker_id");
+    }
+
+    SelenideElement modelSelectorInVerticalCarSelector() {
+        return $("#form_model_id");
+    }
+
+    SelenideElement typeSelectorInVerticalCarSelector() {
+        return $("#form_car_id");
+    }
+
+    SelenideElement btnSearchOfSelector() {
+        return $x("//div[@id='selector-wrapper']//div[@class='mainblock-search__button']/a");
+    }
+
+
 }
