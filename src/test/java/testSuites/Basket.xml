@@ -90,7 +90,17 @@
             <class name="ATD.Basket.QC_1932_RouteAddress.QC_1935_InputPersonnummer_PositiveCase"/>
             <class name="ATD.Basket.QC_1932_RouteAddress.QC_1936_EnteringIncorrectDataIntoTheInputPersonnummer"/>
             <class name="ATD.Basket.QC_1932_RouteAddress.QC_1937_InputPersonnummer_NegativeCase"/>
+            <class name="ATD.Basket.QC_1932_RouteAddress.QC_1938_BlockingThePackstationWordInTheStrasseFieldForShopDE"/>
+            <class name="ATD.Basket.QC_1932_RouteAddress.QC_1939_CheckRouteAddressPermeabilityWenEnteringPackstationIntoOtherInputsExceptStrasse"/>
             <class name="ATD.Basket.QC_1932_RouteAddress.QC_1940_BlockingThePackstationWordInTheStrasseField"/>
+        </classes>
+    </test>
+
+    <test name="QC_1873_SafeOrder">
+        <classes>
+            <class name="ATD.Basket.QC_1873_SafeOrder.QC_1874_Unchecked_SO_CheckboxOn_FR_DE_LanguageVersions"/>
+            <class name="ATD.Basket.QC_1873_SafeOrder.QC_1875_OrderWithSO_IncludedOnDE_FR_languageVersion"/>
+            <class name="ATD.Basket.QC_1873_SafeOrder.QC_1877_OrderWithSO_Disabled"/>
         </classes>
     </test>
 

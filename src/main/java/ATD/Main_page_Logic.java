@@ -451,6 +451,12 @@ public class Main_page_Logic extends Main_page {
 
     //ÜBER AUTODOC
 
+    @Step("Click Hilfe Center link in the footer. Main_page")
+    public Hilfe_Center_page clickHilfeCenterLink() {
+        hilfeCenterLink().click();
+        return page(Hilfe_Center_page.class);
+    }
+
     @Step("Click About Us link in the footer. Main_page")
     public About_us_page clickAboutUs() {
         aboutUsLink().click();
@@ -677,6 +683,8 @@ public class Main_page_Logic extends Main_page {
         clickAutodocPlus();
         commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "service_packages"));
         //HILFE & SUPPORT
+        clickHilfeCenterLink();
+        commonMethods.checkingUrlAndCloseTab(db.getRouteByRouteName(getCurrentShopFromJSVarInHTML(),"hilfe_center_main"));
         clickAutodocClub();
         commonMethods.checkingUrlAndCloseTab(db.getRouteByRouteName(getCurrentShopFromJSVarInHTML(), "club_main") + "/?reg-modal=");
         clickBlog();
@@ -1020,9 +1028,10 @@ public class Main_page_Logic extends Main_page {
         return page(Maker_car_list_page_Logic.class);
     }
 
-    @Step("click on my garage icon withOut authorization . Main_page")
+    @Step("open Selector from My garage block . Main_page")
     public Main_page_Logic openSelectorFromMyGarageBlock() {
         btnAddedAutoInPopUpOfMyGarageBlock().shouldBe(visible).click();
+        blackBackground().shouldBe(visible);
         selectorFromMyGarageBlock().shouldBe(visible);
         return this;
     }
@@ -1039,11 +1048,32 @@ public class Main_page_Logic extends Main_page {
     @Step("select product from hint of Search field. Main_page")
     public Product_page_Logic selectProductFromHintOfSearchField(String artNumOfProduct) {
         tooltipToSearch().shouldBe(visible);
-        for (int i=0; i<tooltipsToSearch().size();i++) {
-            if (tooltipsToSearch().get(i).has(text(artNumOfProduct))){
+        for (int i = 0; i < tooltipsToSearch().size(); i++) {
+            if (tooltipsToSearch().get(i).has(text(artNumOfProduct))) {
                 tooltipsToSearch().get(i).click();
             }
         }
         return page(Product_page_Logic.class);
+    }
+
+    @Step("check Count Of vehicle in My garage icon . Main_page")
+    public Main_page_Logic checkCountOfVehicleInMygarageIcon(int sizeOfVehicle) {
+        headerGarageIcon().shouldBe(visible);
+        Assert.assertEquals(Integer.parseInt(countOfVehicleInMyGarageIcon().getText()), sizeOfVehicle);
+        return this;
+    }
+
+    @Step("open My garage pop-Up . Main_page")
+    public Main_page_Logic openMyGaragePopUp() {
+        headerGarageIcon().shouldBe(visible).click();
+        btnAddedAutoInPopUpOfMyGarageBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("close Selector from My garage block . Main_page")
+    public Main_page_Logic closeSelectorFromMyGarageBlock() {
+        btnCloseSelectorFromMyGaragePopUp().shouldBe(visible).click();
+        selectorFromMyGarageBlock().shouldNotBe(visible);
+        return this;
     }
 }

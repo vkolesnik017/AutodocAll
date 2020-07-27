@@ -40,7 +40,7 @@ public class QC_1485_FirmValidationAfterError {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "EN", "main", "product2");
+        return new SetUp().setUpShopWithSubroutes("prod", "EN", "main", "product32");
     }
 
     @Test(dataProvider = "route")
@@ -62,7 +62,7 @@ public class QC_1485_FirmValidationAfterError {
                 .clickBtnFixInPopupAboutWrongCompany()
                 .fillFieldIdCompanyShipping("0402065988")
                 .nextBtnClick()
-                .chosseUnicreditBank()
+                .choseUnicreditBank()
                 .nextBtnClick()
                 .checkTextInDeliveryAddressInfoBlock("Company SPRL Brasserie Cantillon")
                 .checkAbsenceOfVatPercentage()

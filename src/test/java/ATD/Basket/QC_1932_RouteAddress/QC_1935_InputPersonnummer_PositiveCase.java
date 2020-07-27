@@ -48,7 +48,7 @@ public class QC_1935_InputPersonnummer_PositiveCase {
                 .clickGetMyAddressBtn()
                 .fillFieldTelNumForShipping("200+002")
                 .nextBtnClick();
-        checkingContainsUrl("basket/payments");
+        checkingContainsUrl("/basket/payments");
     }
 
     @AfterMethod
