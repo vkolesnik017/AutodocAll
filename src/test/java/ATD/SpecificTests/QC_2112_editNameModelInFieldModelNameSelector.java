@@ -4,6 +4,7 @@ import ATD.CommonMethods;
 import ATD.DataBase;
 import ATD.Excel;
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.ex.ElementNotFound;
 import org.openqa.selenium.By;
@@ -35,6 +36,7 @@ public class QC_2112_editNameModelInFieldModelNameSelector {
     @BeforeClass
     void setUp() throws IOException {
         setUpBrowser(false, "chrome", "77.0");
+        Configuration.pageLoadStrategy="normal";
         commonMethods.writerInFile(result, true, shop);
     }
 
