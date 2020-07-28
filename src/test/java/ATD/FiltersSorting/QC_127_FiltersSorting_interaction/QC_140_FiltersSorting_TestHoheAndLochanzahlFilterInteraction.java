@@ -56,12 +56,12 @@ public class QC_140_FiltersSorting_TestHoheAndLochanzahlFilterInteraction {
         openPage("https://autodoc.de/" + dataBase.getRouteByRouteName("DE", "search16"));
         String hoheValue = listingPageLogic.getTextFromElement(listingPageLogic.hoheFirstSideFilterButton());
         listingPageLogic.hoverOnSideFilterAndClickSearchRouteHohe(listingPageLogic.hoheFirstSideFilterButton())
-                        .waitUntilPreloaderDisappear();
+                .waitUntilPreloaderDisappear();
         String lochanzahlValue = listingPageLogic.getTextFromElement(listingPageLogic.lochanzahlSideFilterButton());
         listingPageLogic.hoverOnSideFilterAndClickSearchRouteHohe(listingPageLogic.lochanzahlSideFilterButton())
-                           .waitUntilPreloaderDisappear()
-                           .checkProductAttributeOnListingWithCarAndFilter(hoheValue, listingPageLogic.hoheProductAttributeGenericRoute(), listingPageLogic.hoheProductAttributeTecdocRoute())
-                           .checkProductAttributeOnListingWithCarAndFilter(lochanzahlValue, listingPageLogic.lochanzahlProductAttributeGenericRoute(), listingPageLogic.lochanzahlProductAttributeTecdocRoute());
+                .waitUntilPreloaderDisappear()
+                .checkProductAttributeOnListingWithCarAndFilter(hoheValue, listingPageLogic.hoheProductAttributeGenericRoute(), listingPageLogic.hoheProductAttributeTecdocRoute())
+                .checkProductAttributeOnListingWithCarAndFilter(lochanzahlValue, listingPageLogic.lochanzahlProductAttributeGenericRoute(), listingPageLogic.lochanzahlProductAttributeTecdocRoute());
     }
 
     @AfterMethod

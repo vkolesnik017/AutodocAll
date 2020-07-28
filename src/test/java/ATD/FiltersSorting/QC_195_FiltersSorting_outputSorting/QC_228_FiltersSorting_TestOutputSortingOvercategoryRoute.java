@@ -29,7 +29,7 @@ public class QC_228_FiltersSorting_TestOutputSortingOvercategoryRoute {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks addToBasket buttons sorting overcategory route")
     public void testSortingOvercategoryRoute() throws SQLException {
-        openPage("https://autodoc.de/" +  dataBase.getRouteByRouteName("DE", "category_car_list6"));
+        openPage("https://autodoc.de/" + dataBase.getRouteByRouteName("DE", "category_car_list6"));
         new Listing_page_Logic().checkGrayButtonNotVisible();
     }
 

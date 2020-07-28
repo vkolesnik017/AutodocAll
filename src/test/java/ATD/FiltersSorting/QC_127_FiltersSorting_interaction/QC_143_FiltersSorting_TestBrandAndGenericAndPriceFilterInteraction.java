@@ -32,8 +32,8 @@ public class QC_143_FiltersSorting_TestBrandAndGenericAndPriceFilterInteraction 
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks brand, mark and price filters interaction instruments listing")
     public void testBrandAndMarkAndPriceFilterInteraction() throws SQLException {
-        openPage("https://autodoc.de/" +  dataBase.getRouteByRouteName("DE", "category_car_list"));
-        openPage("https://autodoc.de/" +  dataBase.getRouteByRouteName("DE", "listing_instruments"));
+        openPage("https://autodoc.de/" + dataBase.getRouteByRouteName("DE", "category_car_list"));
+        openPage("https://autodoc.de/" + dataBase.getRouteByRouteName("DE", "listing_instruments"));
         String brandName = listingPage.firstBrandNameInFiler().attr("alt");
         String genericName = listingPage.firstGeneric().text();
         listingPage.firstGeneric().click();
