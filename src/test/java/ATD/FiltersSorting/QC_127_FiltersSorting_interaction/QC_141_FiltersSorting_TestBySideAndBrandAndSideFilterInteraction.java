@@ -37,36 +37,36 @@ public class QC_141_FiltersSorting_TestBySideAndBrandAndSideFilterInteraction {
     @Description(value = "Test checks by side, brand and side filters interaction LKW route search")
     public void testBySideAndBrandAndSideFilterInteractionLKWsearch() throws Exception {
         openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_search6"));
-        String brandName = listingPage.getAtributeFromElementLKWsearch(listingPage.secondBrandNameInFilter(),"alt");
+        String brandName = listingPage.getAtributeFromElementLKWsearch(listingPage.secondBrandNameInFilter(), "alt");
         listingPage.clickFilterButton(listingPage.secondBrandInFilterButton())
-                    .waitUntilPreloaderDisappear()
-                    .clickFilterBySideFront()
-                    .waitUntilPreloaderDisappearAndSleep(3000);
+                .waitUntilPreloaderDisappear()
+                .clickFilterBySideFront()
+                .waitUntilPreloaderDisappearAndSleep(3000);
         String durchmesserValue = listingPage.getTextFromElement(listingPage.durchmesserSideFilterButtonSecondValue());
         listingPage.clickFilterButton(listingPage.durchmesserSideFilterButtonSecondValue())
-                    .waitUntilPreloaderDisappear()
-                    .checkProductAttributeOnListingWithCarAndFilter("Vorderachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute())
-                    .checkProductAttributeOnListingWithCarAndFilter(durchmesserValue, listingPage.durchmesserProductAttributeGenericRoute(), listingPage.durchmesserProductAttributeTecdocRoute())
-                    .checkProductTitleOnListing(brandName, true, listingPage.productTitleInListMode());
+                .waitUntilPreloaderDisappear()
+                .checkProductAttributeOnListingWithCarAndFilter("Vorderachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute())
+                .checkProductAttributeOnListingWithCarAndFilter(durchmesserValue, listingPage.durchmesserProductAttributeGenericRoute(), listingPage.durchmesserProductAttributeTecdocRoute())
+                .checkProductTitleOnListing(brandName, true, listingPage.productTitleInListMode());
     }
 
     @Test(dataProvider = "routesLKW")
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks by side, brand and side filters interaction LKW route model")
-    public void testBySideAndBrandAndSideFilterInteractionLKWmodel(String route) throws Exception{
+    public void testBySideAndBrandAndSideFilterInteractionLKWmodel(String route) throws Exception {
         openPage(route);
         String bremsscheibenartValue = listingPage.getTextFromElement(listingPage.bremsscheibenartSideFilterButton());
         listingPage.clickFilterButton(listingPage.bremsscheibenartSideFilterButton())
-                    .waitUntilPreloaderDisappear()
-                    .clickFilterBySideBack()
-                    .waitUntilPreloaderDisappear();
-        String brandName = listingPage.getAtributeFromElement(listingPage.firstBrandNameOemListing(),"alt");
+                .waitUntilPreloaderDisappear()
+                .clickFilterBySideBack()
+                .waitUntilPreloaderDisappear();
+        String brandName = listingPage.getAtributeFromElement(listingPage.firstBrandNameOemListing(), "alt");
         listingPage.clickFilterButton(listingPage.firstBrandButtonOemListing())
-                    .waitUntilPreloaderDisappear()
-                    .checkProductAttributeOnListingWithCarAndFilter("Hinterachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute())
-                    .checkProductAttributeOnListingWithCarAndFilter(bremsscheibenartValue, listingPage.bremsscheibenartProductAttributeGenericRoute(), listingPage.bremsscheibenartProductAttributeTecdocRoute())
-                    .checkProductTitleOnListing(brandName, true, listingPage.productTitleInListMode());
+                .waitUntilPreloaderDisappear()
+                .checkProductAttributeOnListingWithCarAndFilter("Hinterachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute())
+                .checkProductAttributeOnListingWithCarAndFilter(bremsscheibenartValue, listingPage.bremsscheibenartProductAttributeGenericRoute(), listingPage.bremsscheibenartProductAttributeTecdocRoute())
+                .checkProductTitleOnListing(brandName, true, listingPage.productTitleInListMode());
     }
 
     @Test(enabled = false)
@@ -77,7 +77,7 @@ public class QC_141_FiltersSorting_TestBySideAndBrandAndSideFilterInteraction {
         openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "search19"));
         listingPage.clickFilterBySideBack()
                 .waitUntilPreloaderDisappearAndSleep(3000);
-        String brandName = listingPage.getAtributeFromElement(listingPage.firstBrandNameInFiler(),"alt");
+        String brandName = listingPage.getAtributeFromElement(listingPage.firstBrandNameInFiler(), "alt");
         listingPage.clickFilterButton(listingPage.firstBrandInFilterButton())
                 .waitUntilPreloaderDisappear();
         String durchmesserValue = listingPage.getTextFromElement(listingPage.durchmesserSideFilterButtonFirstValue());

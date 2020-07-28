@@ -37,12 +37,12 @@ public class QC_129_FiltersSorting_TestOberflacheAndBySideFilterInteraction {
     public void testOberflacheAndSideFilterInteraction(String route) {
         openPage(route);
         listingPage.hoverOnSideFilterAndClick(listingPage.filterBySideBack())
-                    .waitUntilPreloaderDisappear();
+                .waitUntilPreloaderDisappear();
         String oberflacheValue = listingPage.getTextFromElement(listingPage.oberflacheSideFilterButton());
         listingPage.hoverOnSideFilterAndClick(listingPage.oberflacheSideFilterButton())
-                    .waitUntilPreloaderDisappear()
-                    .checkProductAttributeOnListingWithCarAndFilter("Hinterachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute())
-                    .checkProductAttributeOnListingWithCarAndFilter(oberflacheValue, listingPage.oberflacheProductAttributeGenericRoute(), listingPage.oberflacheProductAttributeTecdocRoute());
+                .waitUntilPreloaderDisappear()
+                .checkProductAttributeOnListingWithCarAndFilter("Hinterachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute())
+                .checkProductAttributeOnListingWithCarAndFilter(oberflacheValue, listingPage.oberflacheProductAttributeGenericRoute(), listingPage.oberflacheProductAttributeTecdocRoute());
     }
 
     @AfterMethod

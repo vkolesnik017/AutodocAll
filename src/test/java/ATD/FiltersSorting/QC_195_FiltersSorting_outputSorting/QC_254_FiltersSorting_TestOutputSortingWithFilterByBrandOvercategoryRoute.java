@@ -29,10 +29,10 @@ public class QC_254_FiltersSorting_TestOutputSortingWithFilterByBrandOvercategor
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks price and addToBasket buttons sorting with brand filter overcategory route")
     public void testSortingWithFilterByBrandOvercategoryRoute() throws SQLException {
-        openPage("https://autodoc.de/" +  dataBase.getRouteByRouteName("DE", "category_car_list"));
+        openPage("https://autodoc.de/" + dataBase.getRouteByRouteName("DE", "category_car_list"));
         new Listing_page_Logic().clickFirstBrandNameInFilter()
-                                .waitUntilPreloaderDisappear()
-                                .checkAddToBasketButtonsSorting();
+                .waitUntilPreloaderDisappear()
+                .checkAddToBasketButtonsSorting();
     }
 
     @AfterMethod

@@ -38,12 +38,12 @@ public class QC_138_FiltersSorting_TestDurchmesserAndBySideFilterInteraction {
     public void testDurchmesserAndSideFilterInteraction(String route) {
         openPage(route);
         listingPage.clickFilterBySideBack()
-                    .waitUntilPreloaderDisappear();
+                .waitUntilPreloaderDisappear();
         String durchmesserValue = listingPage.getTextFromElement(listingPage.durchmesserSideFilterButton());
         listingPage.hoverOnSideFilterAndClick(listingPage.durchmesserSideFilterButton())
-                    .waitUntilPreloaderDisappear()
-                    .checkProductAttributeOnListingWithCarAndFilter("Hinterachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute())
-                    .checkProductAttributeOnListingWithCarAndFilter(durchmesserValue, listingPage.durchmesserProductAttributeGenericRoute(), listingPage.durchmesserProductAttributeTecdocRoute());
+                .waitUntilPreloaderDisappear()
+                .checkProductAttributeOnListingWithCarAndFilter("Hinterachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute())
+                .checkProductAttributeOnListingWithCarAndFilter(durchmesserValue, listingPage.durchmesserProductAttributeGenericRoute(), listingPage.durchmesserProductAttributeTecdocRoute());
     }
 
     @Test

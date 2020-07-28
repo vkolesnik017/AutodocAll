@@ -29,10 +29,10 @@ public class QC_253_FiltersSorting_TestOutputSortingWithFilterByBrandOen {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks addToBasket buttons sorting with brand filter Oem route")
     public void testSortingWithFilterByBrandOem() throws SQLException {
-        openPage("https://autodoc.de/" +  dataBase.getRouteByRouteName("DE", "category_oen"));
+        openPage("https://autodoc.de/" + dataBase.getRouteByRouteName("DE", "category_oen"));
         new Listing_page_Logic().clickFirstBrandNameInFilter()
-                                .waitUntilPreloaderDisappear()
-                                .checkAddToBasketButtonsSorting();
+                .waitUntilPreloaderDisappear()
+                .checkAddToBasketButtonsSorting();
     }
 
     @AfterMethod
