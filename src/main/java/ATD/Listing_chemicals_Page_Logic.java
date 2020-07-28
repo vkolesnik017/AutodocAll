@@ -282,5 +282,17 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
         return this;
     }
 
+    @Step("Checking presence main products block. Listing_chemicals_Page")
+    public Listing_chemicals_Page_Logic checkingPresenceMainProductsBlock(){
+        mainProductsBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checking quantity main products. Listing_chemicals_Page")
+    public Listing_chemicals_Page_Logic checkingQuantityMainProducts() {
+        mainProductsList().shouldHaveSize(20);
+        return this;
+    }
+
 
 }

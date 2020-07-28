@@ -168,6 +168,14 @@ public class Listing_chemicals_Page {
         return $x("//div[@class='js-filter-criteria-top']//label[@class='filter-generics-tecdoc__all show_all  ']");
     }
 
+    SelenideElement mainProductsBlock() {
+        return $x("//ul[@class='list_products ']");
+    }
+
+    ElementsCollection mainProductsList() {
+        return $$x("//ul[@class='list_products ']/li");
+    }
+
 
 
 }
