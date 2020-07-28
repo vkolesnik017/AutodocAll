@@ -178,5 +178,18 @@
         </classes>
     </test>
 
+    <test name="QC_2115_BlockWithProductsOnChemistryListing">
+        <classes>
+            <class name="ATD.ACC.QC_2115_BlockWithProductsOnChemistryListing.QC_2117_MainProductsOnChemistryListing"/>
+        </classes>
+    </test>
+
+    <test name="QC_2143_ToolsListing">
+        <classes>
+            <class name="ATD.ACC.QC_2143_ToolsListing.QC_2150_WorkButtonsPaginationBlockOnToolsListing"/>
+            <class name="ATD.ACC.QC_2143_ToolsListing.QC_2151_SeoBlockTextOnToolsListing"/>
+        </classes>
+    </test>
+
 
 </suite>

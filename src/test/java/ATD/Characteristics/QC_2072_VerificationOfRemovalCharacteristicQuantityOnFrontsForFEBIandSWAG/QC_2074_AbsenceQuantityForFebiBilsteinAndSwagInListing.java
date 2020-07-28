@@ -25,7 +25,7 @@ public class QC_2074_AbsenceQuantityForFebiBilsteinAndSwagInListing {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "search28,category_oen12,category_oen13,category_car_list30");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_oen12,category_oen13,category_car_list30");
     }
 
     @Test(dataProvider = "routes")
@@ -44,7 +44,7 @@ public class QC_2074_AbsenceQuantityForFebiBilsteinAndSwagInListing {
 
     @DataProvider(name = "routesCarList", parallel = true)
     Object[] dataProviderCarList() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list28,category_car_list29");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "search28,category_car_list28,category_car_list29");
     }
 
     @Test(dataProvider = "routesCarList")
