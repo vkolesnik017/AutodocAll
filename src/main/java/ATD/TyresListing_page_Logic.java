@@ -571,4 +571,10 @@ public class TyresListing_page_Logic extends TyresListing_page {
         diameterValueInSelector().shouldHave(exactText(expectedValue));
         return this;
     }
+
+    @Step("Checks presence product listing block. TyresListing_Page")
+    public TyresListing_page_Logic checkPresenceProductListing() {
+        productListingOnPage().shouldBe(visible);
+        return this;
+    }
 }

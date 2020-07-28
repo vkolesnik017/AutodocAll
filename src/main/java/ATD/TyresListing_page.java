@@ -130,5 +130,5 @@ class TyresListing_page {
 
     SelenideElement seasonValueInSelector() { return $x("//*[@id='form_Season']/option[@selected]"); }
 
-    SelenideElement productListingOnPage() { return $(".list_products"); }
+    SelenideElement productListingOnPage() { return $x("//ul[@class='list_products']/li"); }
 }
