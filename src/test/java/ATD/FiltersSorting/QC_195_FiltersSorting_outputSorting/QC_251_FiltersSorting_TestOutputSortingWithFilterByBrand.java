@@ -30,10 +30,10 @@ public class QC_251_FiltersSorting_TestOutputSortingWithFilterByBrand {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks addToBasket buttons sorting with filter by brand")
     public void testSortingWithFilterByBrand() throws SQLException {
-        open("https://autodoc.de/" +  dataBase.getRouteByRouteName("DE", "category_car_list5"));
+        open("https://autodoc.de/" + dataBase.getRouteByRouteName("DE", "category_car_list5"));
         listingPage.clickFilterButton(listingPage.firstBrandButtonOemListing())
-                    .waitUntilPreloaderDisappear()
-                    .checkAddToBasketButtonsSorting();
+                .waitUntilPreloaderDisappear()
+                .checkAddToBasketButtonsSorting();
     }
 
     @AfterMethod

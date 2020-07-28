@@ -37,7 +37,7 @@ public class QC_132_FiltersSorting_TestFurprnummerAndBySideFilterInteraction {
     public void testFurprnummerAndSideFilterInteraction(String route) {
         openPage(route);
         listingPage.hoverOnSideFilterAndClick(listingPage.filterBySideBack())
-                    .waitUntilPreloaderDisappear();
+                .waitUntilPreloaderDisappear();
         String furprnummerValue = listingPage.getTextFromElement(listingPage.furprnummerSideFilterButton());
         listingPage.hoverOnSideFilterAndClick(listingPage.furprnummerSideFilterButton())
                 .waitUntilPreloaderDisappear()

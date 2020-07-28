@@ -613,7 +613,7 @@ public class Listing_page_Logic extends Listing_page {
     @Step("Hover on side filter and click button. Listing_page")
     public Listing_page_Logic hoverOnSideFilterAndClick(SelenideElement filterButton) {
         sideJSfilterForm().hover();
-        filterButton.hover().click();
+        filterButton.scrollTo().click();
         return this;
     }
 

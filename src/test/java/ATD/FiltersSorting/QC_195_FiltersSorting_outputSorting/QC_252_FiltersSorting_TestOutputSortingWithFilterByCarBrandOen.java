@@ -32,9 +32,9 @@ public class QC_252_FiltersSorting_TestOutputSortingWithFilterByCarBrandOen {
     public void testSortingWithFilterByCarBrandOen() throws SQLException {
         openPage("https://autodoc.de/" + dataBase.getRouteByRouteName("DE", "category_oen"));
         listingPage.clickFilterButton(listingPage.carBrandFilterOem())
-                        .waitUntilPreloaderDisappear()
-                        .checkAddToBasketButtonsSortingWithPagination();
-            }
+                .waitUntilPreloaderDisappear()
+                .checkAddToBasketButtonsSortingWithPagination();
+    }
 
     @AfterMethod
     private void teatDown() {

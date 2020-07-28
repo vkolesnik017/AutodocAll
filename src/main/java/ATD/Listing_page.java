@@ -354,11 +354,11 @@ public class Listing_page {
     }
 
     public SelenideElement filterBySideBack() {
-        return $(By.xpath("//*[@class='installation-side__filter back-side']"));
+        return $(By.xpath("//div[contains(@class,'installation-side__filter back-side')]"));
     }
 
     public SelenideElement filterBySideLKW() {
-        return $(By.xpath("//*[@class='installation-side__filter front-side']"));
+        return $(By.xpath("//div[contains(@class,'installation-side-lights-front')]"));
     }
 
     //By generic filters locators

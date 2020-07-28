@@ -30,15 +30,15 @@ public class QC_142_FiltersSorting_TestBrandAndMarkFilterInteraction {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks brand and mark filters interaction Oem listing")
     public void testBrandAndMarkFilterInteractionOem() throws SQLException {
-        openPage("https://autodoc.de/" +  dataBase.getRouteByRouteName("DE", "category_oen3"));
-        String carBrandName = listingPage.getAtributeFromElement(listingPage.carBrandFilterOem(),"data-value");
-        String brandName = listingPage.getAtributeFromElement(listingPage.firstBrandNameOemListing(),"alt");
+        openPage("https://autodoc.de/" + dataBase.getRouteByRouteName("DE", "category_oen3"));
+        String carBrandName = listingPage.getAtributeFromElement(listingPage.carBrandFilterOem(), "data-value");
+        String brandName = listingPage.getAtributeFromElement(listingPage.firstBrandNameOemListing(), "alt");
         listingPage.clickFilterButton(listingPage.carBrandFilterOem())
-                    .waitUntilPreloaderDisappear()
-                    .clickFilterButton(listingPage.firstBrandButtonOemListing())
-                    .waitUntilPreloaderDisappear()
-                    .getBrandFromTitle(brandName, 4, true, listingPage.productTitleInListMode())
-                    .checkProductCharacteristicOnListingOem(carBrandName, listingPage.carBrandApplicabilityAttribute());
+                .waitUntilPreloaderDisappear()
+                .clickFilterButton(listingPage.firstBrandButtonOemListing())
+                .waitUntilPreloaderDisappear()
+                .getBrandFromTitle(brandName, 4, true, listingPage.productTitleInListMode())
+                .checkProductCharacteristicOnListingOem(carBrandName, listingPage.carBrandApplicabilityAttribute());
     }
 
     @AfterMethod
