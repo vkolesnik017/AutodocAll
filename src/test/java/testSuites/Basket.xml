@@ -101,6 +101,8 @@
             <class name="ATD.Basket.QC_1873_SafeOrder.QC_1874_Unchecked_SO_CheckboxOn_FR_DE_LanguageVersions"/>
             <class name="ATD.Basket.QC_1873_SafeOrder.QC_1875_OrderWithSO_IncludedOnDE_FR_languageVersion"/>
             <class name="ATD.Basket.QC_1873_SafeOrder.QC_1877_OrderWithSO_Disabled"/>
+            <class name="ATD.Basket.QC_1873_SafeOrder.QC_1879_AbsenceOfSO_BlockOnLanguageVersionsWhereITIsNotIncluded"/>
+            <class name="ATD.Basket.QC_1873_SafeOrder.QC_1880_DisplayingSO_BlockAfterManipulationOnRouteAllData"/>
         </classes>
     </test>
 
