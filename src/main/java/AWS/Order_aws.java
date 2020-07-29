@@ -1026,7 +1026,7 @@ public class Order_aws {
         float cost = sumProductColumn / productQuantity;
         BigDecimal result = new BigDecimal(cost);
         BigDecimal formatCostUp = result.setScale(2, RoundingMode.UP);
-        Float roundMax = Float.parseFloat(String.valueOf(formatCostUp));
+        float roundMax = Float.parseFloat(String.valueOf(formatCostUp));
         BigDecimal formatCostDOWN = result.setScale(2, RoundingMode.FLOOR);
         float roundMin = Float.parseFloat(String.valueOf((formatCostDOWN)));
         float res = 0.0f;
