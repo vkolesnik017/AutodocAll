@@ -170,4 +170,10 @@
         </classes>
     </test>
 
+    <test name="QC_2063_MainIssueBlockOnTireListings">
+        <classes>
+            <class name="ATD.Tyres.QC_2063_MainIssueBlockOnTireListings.QC_2064_PresenceBlockOfTheMainDistributionOfTires"/>
+        </classes>
+    </test>
+
 </suite>
