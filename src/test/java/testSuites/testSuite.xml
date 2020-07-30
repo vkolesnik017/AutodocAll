@@ -13,10 +13,4 @@
         </classes>
     </test>
 
-    <test name="testSuite2">
-        <classes>
-            <class name="ATD.ACC.QC_836_MainAccessories.QC_988_FeatureBlock">
-            </class>
-        </classes>
-    </test>
 </suite>
