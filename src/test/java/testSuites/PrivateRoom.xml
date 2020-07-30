@@ -113,7 +113,7 @@
             <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1031_RemovingCarFromMyGarageBlock"/>
             <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1018_AddPassengerCarToMyGarageBlockInPR"/>
             <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1032_BlockPassengerCarsFromCustomerOrdersOnGaragePageInPR"/>
-            <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1027_EditingVehicleOnMyGaragePage"/>
+            <!--<class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1027_EditingVehicleOnMyGaragePage"/>-->
         </classes>
     </test>
 

@@ -664,7 +664,7 @@ public class Order_aws {
         return this;
     }
 
-    @Step("Checks presence a test phone number. Order_aes")
+    @Step("Checks presence a test phone number. Order_aws")
     public Order_aws checkOrderHasTestPhone() {
         phoneNumberField().shouldHave(or("value", value("+002"), value("+001")));
         testIcon().shouldBe(visible);
