@@ -77,4 +77,8 @@ public class Listing_instruments_page {
         return $x("//div[@class='steps breadcrumbs']//li[@class='step_3 active parts_step_3']//a");
     }
 
+    SelenideElement blockBreadCrumbs() {
+        return $x("//div[@class='steps breadcrumbs']");
+    }
+
 }

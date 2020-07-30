@@ -577,4 +577,15 @@ public class TyresListing_page_Logic extends TyresListing_page {
         productListingOnPage().shouldBe(visible);
         return this;
     }
+
+    @Step("Get product ID in listing and compares it to the ID on the product page. TyresListing_Page")
+    public TyresProduct_page_Logic getProductIdAndComparesItToIdOnProductPage() {
+        String productIDInListing = buyButton().getAttribute("data-id");
+        System.out.println(productIDInListing);
+        brandNameInListing().click();
+        String productIdInProductPage = new Product_page_Logic().getProductId();
+        System.out.println(productIdInProductPage);
+        Assert.assertEquals(productIDInListing, productIdInProductPage);
+        return page(TyresProduct_page_Logic.class);
+    }
 }

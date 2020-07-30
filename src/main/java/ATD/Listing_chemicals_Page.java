@@ -85,15 +85,15 @@ public class Listing_chemicals_Page {
     }
 
     SelenideElement firstVisibleBrand() {
-        return $x("//div[@id='selected-instalation__slider']//li[@data-slick-index='0']");
+        return $x("//div[@id='selected-instalation__slider']//li[contains(@class, 'slick-active')][1]");
     }
 
     SelenideElement secondVisibleBrand() {
-        return $x("//div[@id='selected-instalation__slider']//li[@data-slick-index='1']");
+        return $x("//div[@id='selected-instalation__slider']//li[contains(@class, 'slick-active')][2]");
     }
 
     SelenideElement sevenVisibleBrand() {
-        return $x("//div[@id='selected-instalation__slider']//li[@data-slick-index='6']");
+        return $x("//div[@id='selected-instalation__slider']//li[contains(@class, 'slick-active')][7]");
     }
 
     SelenideElement firstVisibleBrandToGetData() {
@@ -141,27 +141,31 @@ public class Listing_chemicals_Page {
     }
 
     SelenideElement firstGenericInGenericsBlock() {
+        return $x("//div[@class='filter-generics-tecdoc__content']//label[contains(@class,'slick-active')]");
+    }
+
+    SelenideElement firstGenericByIndexInGenericsBlock() {
         return $x("//div[@class='filter-generics-tecdoc__content']//label[@data-slick-index='0']");
     }
 
     SelenideElement secondGenericInGenericsBlock() {
-        return $x("//div[@class='filter-generics-tecdoc__content']//label[@data-slick-index='1']");
+        return $x("//div[@class='filter-generics-tecdoc__content']//label[contains(@class,'slick-active')][2]");
     }
 
     SelenideElement firstGenericInGenericsBlockToGetData() {
-        return $x("//div[@class='filter-generics-tecdoc__content']//label[@data-slick-index='0']/input");
+        return $x("//div[@class='filter-generics-tecdoc__content']//label[contains(@class,'slick-active')]/input");
     }
 
     SelenideElement secondGenericInGenericsBlockToGetData() {
-        return $x("//div[@class='filter-generics-tecdoc__content']//label[@data-slick-index='1']/input");
+        return $x("//div[@class='filter-generics-tecdoc__content']//label[contains(@class,'slick-active')][2]/input");
     }
 
     SelenideElement btnPreviousInGenericBlock() {
-        return $x("//div[@class='js-filter-criteria-top']//span[@class='prev slick-arrow']");
+        return $x("//div[@class='js-filter-criteria-top']//span[contains(@class,'prev slick-arrow')]");
     }
 
     SelenideElement btnNextInGenericBlock() {
-        return $x("//div[@class='js-filter-criteria-top']//span[@class='next slick-arrow']");
+        return $x("//div[@class='js-filter-criteria-top']//span[contains(@class,'next slick-arrow')]");
     }
 
     SelenideElement btnResetAllInGenericsBlock() {
@@ -174,6 +178,18 @@ public class Listing_chemicals_Page {
 
     ElementsCollection mainProductsList() {
         return $$x("//ul[@class='list_products ']/li");
+    }
+
+    SelenideElement btnResetAllFilterInResetBlock() {
+        return $x("//div[@class='reset-buttons']//li[contains(@class,'reset-buttons__all')]");
+    }
+
+    SelenideElement firstBtnResetFilterInResetBlock() {
+        return $x("//div[@class='reset-buttons']//li[1]//div[@class='unpick-js reset-buttons__icon']");
+    }
+
+    SelenideElement secondBtnResetFilterInResetBlock() {
+        return $x("//div[@class='reset-buttons']//li[2]//div[@class='unpick-js reset-buttons__icon']");
     }
 
 
