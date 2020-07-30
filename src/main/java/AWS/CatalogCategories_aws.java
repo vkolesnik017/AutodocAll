@@ -14,19 +14,21 @@ import static com.codeborne.selenide.Selenide.$$x;
 public class CatalogCategories_aws {
 
     private String awsEnv;
-    public CatalogCategories_aws(){
+
+    public CatalogCategories_aws() {
+        this.awsEnv = "https://aws.";
     }
 
     public CatalogCategories_aws(String envFromTest) {
         SetUp setUp = new SetUp();
-        awsEnv = setUp.getEnvForAws(envFromTest);
+        this.awsEnv = setUp.getEnvForAws(envFromTest);
         System.out.println(awsEnv);
     }
 
 
-    private String categoriesInAwsPage = "https://" + awsEnv + ".autodoc.de/custom-catalog?filter%5Blang%5D=de&filter%5Bskin%5D%5B%5D=atd&filter%5Borigin%5D=&filter%5BnodeParentID%5D=&filter%5BnodeID%5D=&filter%5Bga%5D=&filter%5Bonly%5D=0&filter%5BorderBy%5D=groupRating&submitSearch=";
+    private String categoriesInAwsPage = "" + awsEnv + "autodoc.de/custom-catalog?filter%5Blang%5D=de&filter%5Bskin%5D%5B%5D=atd&filter%5Borigin%5D=&filter%5BnodeParentID%5D=&filter%5BnodeID%5D=&filter%5Bga%5D=&filter%5Bonly%5D=0&filter%5BorderBy%5D=groupRating&submitSearch=";
 
-    private String parentCategoriesInAwsPage = "https://aws.autodoc.de/custom-catalog?filter%5Blang%5D=de&filter%5Bskin%5D%5B%5D=atd&filter%5Borigin%5D=&filter%5BnodeParentID%5D=&filter%5BnodeID%5D=&filter%5Bga%5D=&filter%5Bonly%5D=1&filter%5BorderBy%5D=groupRating&submitSearch=";
+    private String parentCategoriesInAwsPage = "" + awsEnv + "autodoc.de/custom-catalog?filter%5Blang%5D=de&filter%5Bskin%5D%5B%5D=atd&filter%5Borigin%5D=&filter%5BnodeParentID%5D=&filter%5BnodeID%5D=&filter%5Bga%5D=&filter%5Bonly%5D=1&filter%5BorderBy%5D=groupRating&submitSearch=";
 
     private ElementsCollection childIdInAWS() {
         return $$(".catalog-table-content-items-item.parent > ul >li > div > div:nth-child(4)");

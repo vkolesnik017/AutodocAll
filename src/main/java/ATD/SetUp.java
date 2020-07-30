@@ -12,11 +12,6 @@ public class SetUp {
 
     private DataBase db = new DataBase();
     private String shopFromJenkins = System.getenv("ShopFromJenkins");
-
-    public String getEnvFromJenkins() {
-        return envFromJenkins;
-    }
-
     private String envFromJenkins = System.getenv("EnvFromJenkins");
     private String devBranchFromJenkins = System.getenv("devBranchFromJenkins");
 
