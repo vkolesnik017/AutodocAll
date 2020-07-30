@@ -157,4 +157,18 @@ public class SetUp {
         return env;
     }
 
+    public String getEnvForAws(String envFromTest) {
+        if (!(envFromJenkins == null)) envFromTest = envFromJenkins;
+        String awsEnv = null;
+        switch (envFromTest) {
+            case ("test"):
+                awsEnv = "https://taws.";
+                break;
+            case ("prod"):
+                awsEnv = "https://aws.";
+                break;
+        }
+        return awsEnv;
+    }
+
 }
