@@ -28,6 +28,14 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
         return this;
     }
 
+    @Step("Click first active brand. Listing_chemicals_Page")
+    public Listing_chemicals_Page_Logic clickFirstVisibleBrand() {
+        firstVisibleBrand().click();
+        return this;
+    }
+
+
+
     @Step("Checking presence bread crumbs block. Listing_chemicals_Page")
     public Listing_chemicals_Page_Logic checkingPresenceBreadCrumbsBlock() {
         blockBreadCrumbs().shouldBe(visible);
@@ -112,6 +120,11 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
         return firstVisibleBrandToGetData().getAttribute("value");
     }
 
+    @Step("Get value first generic in generic block. Listing_chemicals_Page")
+    public String getValueFirstGenericInGenericBlock() {
+        return firstGenericInGenericsBlockToGetData().getAttribute("value");
+    }
+
     @Step("Get value second visible brand in block brands. Listing_chemicals_Page")
     public String getValueSecondVisibleBrandInBlockBrands() {
         return secondVisibleBrandToGetData().getAttribute("value");
@@ -191,10 +204,10 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
     @Step("Checking reset selected brand in brands block. Listing_chemicals_Page")
     public Listing_chemicals_Page_Logic checkingResetSelectedBrandInBrandsBlock() {
         firstVisibleBrandToGetData().shouldHave(attribute("data-checked","false"));
-        firstVisibleBrand().click();
+        clickFirstVisibleBrand();
         new Listing_page_Logic().waitUntilPreloaderDisappear();
         firstVisibleBrandToGetData().shouldHave(attribute("data-checked","true"));
-        firstVisibleBrand().click();
+        clickFirstVisibleBrand();
         new Listing_page_Logic().waitUntilPreloaderDisappear();
         firstVisibleBrandToGetData().shouldHave(attribute("data-checked","false"));
         return this;
@@ -217,6 +230,19 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
         secondGenericInGenericsBlock().click();
         return this;
     }
+
+    @Step("Click btn reset all filter from selected filter block. Listing_chemicals_Page")
+    public Listing_chemicals_Page_Logic clickBtnResetAllFilterFromFilterBlock() {
+        btnResetAllFilterInResetBlock().click();
+        return this;
+    }
+
+    @Step("Click btn reset filter from selected filter block. Listing_chemicals_Page")
+    public Listing_chemicals_Page_Logic clickBtnResetFilterFromFilterBlock() {
+        firstBtnResetFilterInResetBlock().click();
+        return this;
+    }
+
 
     @Step("Get name from first generic in generics block. Listing_chemicals_Page")
     public String  getNameFirstGenericInGenericBlock() {
@@ -294,5 +320,44 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
         return this;
     }
 
+    @Step("Checking work btn reset all filter from filter block if selected generic and brand. Listing_chemicals_Page")
+    public Listing_chemicals_Page_Logic checkingWorkBtnResetAllFilterFromFilterBlock() {
+        String valueGeneric = getValueFirstGenericInGenericBlock();
+        clickFirstGenericInGenericsBlock();
+        new Listing_page_Logic().waitUntilPreloaderDisappear();
+        String valueBrand = getValueFirstVisibleBrandInBlockBrands();
+        clickFirstVisibleBrand();
+        new Listing_page_Logic().waitUntilPreloaderDisappear();
+        ArrayList<String> twoFirstSelectedFilters = new ArrayList<>();
+        String firstBtnFilter = getIdFirstBtnResetFilterInResetBlock();
+        String secondBtnFilter = getIdSecondBtnResetFilterInResetBlock();
+        twoFirstSelectedFilters.add(firstBtnFilter);
+        twoFirstSelectedFilters.add(secondBtnFilter);
+        if (!twoFirstSelectedFilters.contains(valueGeneric) || !twoFirstSelectedFilters.contains(valueBrand)) {
+            Assert.fail( "Filters do not match the selected criteria");
+        }
+        clickBtnResetAllFilterFromFilterBlock();
+        new Listing_page_Logic().waitUntilPreloaderDisappear();
+        firstGenericInGenericsBlockToGetData().shouldHave(attribute("data-checked", "false"));
+        firstVisibleBrandToGetData().shouldHave(attribute("data-checked", "false"));
+        return this;
+
+    }
+
+    @Step("Get id first btn reset filter in reset block. Listing_chemicals_Page")
+    public String  getIdFirstBtnResetFilterInResetBlock() {
+        return firstBtnResetFilterInResetBlock().getAttribute("data-crit-id");
+    }
+
+    @Step("Get id second btn reset filter in reset block. Listing_chemicals_Page")
+    public String  getIdSecondBtnResetFilterInResetBlock() {
+        return secondBtnResetFilterInResetBlock().getAttribute("data-crit-id");
+    }
+
+    @Step("Checking what generic from generic block not selected. Listing_chemicals_Page")
+    public Listing_chemicals_Page_Logic checkingWhatGenericNotSelected() {
+        firstGenericInGenericsBlockToGetData().shouldHave(attribute("data-checked", "false"));
+        return this;
+    }
 
 }

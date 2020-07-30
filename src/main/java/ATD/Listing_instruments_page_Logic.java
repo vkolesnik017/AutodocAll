@@ -85,5 +85,11 @@ public class Listing_instruments_page_Logic extends Listing_instruments_page {
         return this;
     }
 
+    @Step("Checking presence bread crumbs block. Listing_instruments_page")
+    public Listing_instruments_page_Logic checkingPresenceBreadCrumbsBlock() {
+        blockBreadCrumbs().shouldBe(visible);
+        return this;
+    }
+
 
 }
