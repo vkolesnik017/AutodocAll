@@ -1,13 +1,16 @@
 package ATD;
 
-public class ForTest {
+import org.testng.annotations.Test;
+
+public class ForTest extends SetUp {
 
 
-    public static void main(String[] args){
-        String test = "r";
-        String test2 = "e";
-        System.out.println(test == test2);
+    @Test()
+    public void test() {
+        System.out.println(getEnvFromJenkins());
+        System.out.println("HERE");
     }
+
 }
 
 
