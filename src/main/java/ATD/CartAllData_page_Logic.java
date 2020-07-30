@@ -240,7 +240,7 @@ public class CartAllData_page_Logic extends CartAllData_page {
         float realPriseSO = Float.parseFloat(priceSO.substring(0, priceSO.indexOf(" ")).replaceAll(",", "."));
         clickSafeOrderCheckbox();
         sleep(2000);
-        float totalPrice = getTotalPriceAllDataPage();
+        Float totalPrice = getTotalPriceAllDataPage();
         float totalPriceIncludedSO = price + realPriseSO;
         BigDecimal result = new BigDecimal(totalPriceIncludedSO);
         BigDecimal formatPriceUp = result.setScale(2, RoundingMode.UP);
@@ -248,9 +248,9 @@ public class CartAllData_page_Logic extends CartAllData_page {
         BigDecimal formatPriceDOWN = result.setScale(2, RoundingMode.FLOOR);
         float roundMin = Float.parseFloat(String.valueOf((formatPriceDOWN)));
         float res = 0.0f;
-        if (Objects.equals(totalPrice, roundMax)) {
+        if (totalPrice.equals(roundMax)) {
              res = roundMax;
-        } if (Objects.equals(totalPrice, roundMin)) {
+        } if (totalPrice.equals(roundMin)) {
              res = roundMin;
         }
         Assert.assertEquals(res, totalPrice);
