@@ -144,6 +144,10 @@ public class Listing_chemicals_Page {
         return $x("//div[@class='filter-generics-tecdoc__content']//label[contains(@class,'slick-active')]");
     }
 
+    SelenideElement firstGenericByIndexInGenericsBlock() {
+        return $x("//div[@class='filter-generics-tecdoc__content']//label[@data-slick-index='0']");
+    }
+
     SelenideElement secondGenericInGenericsBlock() {
         return $x("//div[@class='filter-generics-tecdoc__content']//label[contains(@class,'slick-active')][2]");
     }
@@ -157,11 +161,11 @@ public class Listing_chemicals_Page {
     }
 
     SelenideElement btnPreviousInGenericBlock() {
-        return $x("//div[@class='js-filter-criteria-top']//span[@class='prev slick-arrow']");
+        return $x("//div[@class='js-filter-criteria-top']//span[contains(@class,'prev slick-arrow')]");
     }
 
     SelenideElement btnNextInGenericBlock() {
-        return $x("//div[@class='js-filter-criteria-top']//span[@class='next slick-arrow']");
+        return $x("//div[@class='js-filter-criteria-top']//span[contains(@class,'next slick-arrow')]");
     }
 
     SelenideElement btnResetAllInGenericsBlock() {
