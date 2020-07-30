@@ -186,6 +186,11 @@
 
     <test name="QC_2143_ToolsListing">
         <classes>
+            <class name="ATD.ACC.QC_2143_ToolsListing.QC_2144_TitleOnToolsListing"/>
+            <class name="ATD.ACC.QC_2143_ToolsListing.QC_2146_WorkBreadCrumbsOnToolsListing"/>
+            <class name="ATD.ACC.QC_2143_ToolsListing.QC_2147_BlockChangeViewToolsListing"/>
+            <class name="ATD.ACC.QC_2143_ToolsListing.QC_2148_ProductCountBlockOnToolsListing"/>
+            <class name="ATD.ACC.QC_2143_ToolsListing.QC_2149_BlockPaginationOnToolsListing"/>
             <class name="ATD.ACC.QC_2143_ToolsListing.QC_2150_WorkButtonsPaginationBlockOnToolsListing"/>
             <class name="ATD.ACC.QC_2143_ToolsListing.QC_2151_SeoBlockTextOnToolsListing"/>
         </classes>
