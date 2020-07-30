@@ -55,7 +55,7 @@ public class QC_2112_editNameModelInFieldModelNameSelector {
 
         String shop = new DataBase().getRouteByRouteName(this.shop, "main");
         System.out.println(shop + " SHOP FROM DB");
-        String startUrl = "https://test." + shop + "/search?maker_id=" + makerId + "&model_id=" + modelId;
+        String startUrl = "https://www." + shop + "/search?maker_id=" + makerId + "&model_id=" + modelId;
         openPage(startUrl);
 
         try {

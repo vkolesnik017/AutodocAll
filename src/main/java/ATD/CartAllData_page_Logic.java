@@ -3,7 +3,10 @@ package ATD;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.sql.SQLException;
+import java.util.Objects;
 
 import static ATD.CommonMethods.*;
 import static com.codeborne.selenide.Condition.*;
@@ -235,11 +238,22 @@ public class CartAllData_page_Logic extends CartAllData_page {
         float price = getTotalPriceAllDataPage();
         String priceSO = priceOfSafeOrder().getText();
         float realPriseSO = Float.parseFloat(priceSO.substring(0, priceSO.indexOf(" ")).replaceAll(",", "."));
-        float totalPriceIncludedSO = price + realPriseSO;
         clickSafeOrderCheckbox();
         sleep(2000);
         float totalPrice = getTotalPriceAllDataPage();
-        Assert.assertEquals(totalPrice, totalPriceIncludedSO);
+        float totalPriceIncludedSO = price + realPriseSO;
+        BigDecimal result = new BigDecimal(totalPriceIncludedSO);
+        BigDecimal formatPriceUp = result.setScale(2, RoundingMode.UP);
+        float roundMax = Float.parseFloat(String.valueOf(formatPriceUp));
+        BigDecimal formatPriceDOWN = result.setScale(2, RoundingMode.FLOOR);
+        float roundMin = Float.parseFloat(String.valueOf((formatPriceDOWN)));
+        float res = 0.0f;
+        if (Objects.equals(totalPrice, roundMax)) {
+             res = roundMax;
+        } if (Objects.equals(totalPrice, roundMin)) {
+             res = roundMin;
+        }
+        Assert.assertEquals(res, totalPrice);
         return this;
     }
 
