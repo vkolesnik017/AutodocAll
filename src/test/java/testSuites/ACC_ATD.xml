@@ -199,6 +199,8 @@
 
     <test name="QC_2129_ResetFiltersBlockOnPageChemistryListing">
         <classes>
+            <class name="ATD.ACC.QC_2129_ResetFiltersBlockOnPageChemistryListing.QC_2130_WorkResetFilterSelectedCriteriaOnChemistryListing"/>
+            <class name="ATD.ACC.QC_2129_ResetFiltersBlockOnPageChemistryListing.QC_2133_WorkResetFilterSelectedBrandOnChemistryListing"/>
             <class name="ATD.ACC.QC_2129_ResetFiltersBlockOnPageChemistryListing.QC_2136_WorkResetFilterSelectedGenericOnChemistryListing"/>
             <class name="ATD.ACC.QC_2129_ResetFiltersBlockOnPageChemistryListing.QC_2138_WorkResetFiltersWhenChoosingSeveralCriteriaOnChemistryListing"/>
         </classes>

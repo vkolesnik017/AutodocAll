@@ -135,6 +135,17 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
         return sevenVisibleBrandToGetData().getAttribute("value");
     }
 
+    @Step("Get id first criteria from Konsistenz block . Listing_chemicals_Page")
+    public String getValueFirstCriteriaFromKonsistenzBlock() {
+        return firstCriteriaFromKonsistenzBlockToGetData().getAttribute("id");
+    }
+
+    @Step("Click first criteria from Konsistenz block. Listing_chemicals_Page")
+    public Listing_chemicals_Page_Logic clickFirstCriteriaFromKonsistenzBlock() {
+        firstCriteriaFromKonsistenzBlock().click();
+        return this;
+    }
+
     @Step("Get name second brand from brands block. Listing_chemicals_Page")
     public String getNameFromSecondBrand() {
         return secondVisibleBrandImg().getAttribute("alt");
@@ -354,9 +365,27 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
         return secondBtnResetFilterInResetBlock().getAttribute("data-crit-id");
     }
 
+    @Step("Get id first btn reset filter for criteria from reset block . Listing_chemicals_Page")
+    public String  getIdFirstBtnResetFilterForCriteriaInResetBlock() {
+        return firstBtnResetFilterInResetBlock().getAttribute("data-param-id");
+    }
+
     @Step("Checking what generic from generic block not selected. Listing_chemicals_Page")
     public Listing_chemicals_Page_Logic checkingWhatGenericNotSelected() {
         firstGenericInGenericsBlockToGetData().shouldHave(attribute("data-checked", "false"));
+        return this;
+    }
+
+
+    @Step("Checking what brand from brands block not selected. Listing_chemicals_Page")
+    public Listing_chemicals_Page_Logic checkingWhatBrandNotSelected() {
+        firstVisibleBrandToGetData().shouldHave(attribute("data-checked", "false"));
+        return this;
+    }
+
+    @Step("Checking what first criteria from Konsistenz block not selected. Listing_chemicals_Page")
+    public Listing_chemicals_Page_Logic checkingWhatFirstCriteriaFromKonsistenzBlockNotSelected() {
+        firstCriteriaFromKonsistenzBlockToGetData().shouldHave(attribute("data-checked", "false"));
         return this;
     }
 

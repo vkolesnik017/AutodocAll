@@ -192,6 +192,13 @@ public class Listing_chemicals_Page {
         return $x("//div[@class='reset-buttons']//li[2]//div[@class='unpick-js reset-buttons__icon']");
     }
 
+    SelenideElement firstCriteriaFromKonsistenzBlockToGetData() {
+        return $x("//div[@class='mCSB_container mCS_y_hidden mCS_no_scrollbar_y']//li[1]/input");
+    }
+
+    SelenideElement firstCriteriaFromKonsistenzBlock() {
+        return $x("//div[@class='mCSB_container mCS_y_hidden mCS_no_scrollbar_y']//li[1]/label");
+    }
 
 
 }
