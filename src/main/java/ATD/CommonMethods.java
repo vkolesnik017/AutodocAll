@@ -51,6 +51,8 @@ public class CommonMethods {
     public static void openPage(String url) {
         System.out.println(url);
         open(url);
+        sleep(5000);
+        refresh();
         closeCookiesFooterMessage();
     }
 
