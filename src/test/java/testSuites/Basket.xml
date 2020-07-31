@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Basket" parallel="methods" thread-count="3" data-provider-thread-count="3">
+<suite name="Basket" parallel="methods" thread-count="2" data-provider-thread-count="2">
 
     <listeners>
         <listener class-name="ATD.ProjectListener"/>
@@ -101,8 +101,10 @@
             <class name="ATD.Basket.QC_1873_SafeOrder.QC_1874_Unchecked_SO_CheckboxOn_FR_DE_LanguageVersions"/>
             <class name="ATD.Basket.QC_1873_SafeOrder.QC_1875_OrderWithSO_IncludedOnDE_FR_languageVersion"/>
             <class name="ATD.Basket.QC_1873_SafeOrder.QC_1877_OrderWithSO_Disabled"/>
+            <class name="ATD.Basket.QC_1873_SafeOrder.QC_1878_NumberOfDaysInSO_Description"/>
             <class name="ATD.Basket.QC_1873_SafeOrder.QC_1879_AbsenceOfSO_BlockOnLanguageVersionsWhereITIsNotIncluded"/>
             <class name="ATD.Basket.QC_1873_SafeOrder.QC_1880_DisplayingSO_BlockAfterManipulationOnRouteAllData"/>
+            <class name="ATD.Basket.QC_1873_SafeOrder.QC_1881_DisablingSO_blockAfterChangingDelivery"/>
         </classes>
     </test>
 

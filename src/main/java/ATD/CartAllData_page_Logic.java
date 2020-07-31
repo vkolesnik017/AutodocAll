@@ -203,6 +203,11 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return this;
     }
 
+    @Step("Get text in Safe Order block. CartAllData_page")
+    public String getTextInSafeOrderBlock() {
+        return String.valueOf(safeOrderBlock().getText());
+    }
+
     @Step("Click Safe Order Checkbox. CartAllData_page")
     public CartAllData_page_Logic clickSafeOrderCheckbox() {
         safeOrderCheckbox().click();
@@ -265,8 +270,19 @@ public class CartAllData_page_Logic extends CartAllData_page {
         float totalPriceIncludedSO = price - realPriseSO;
         clickSafeOrderCheckbox();
         sleep(2000);
-        float totalPrice = getTotalPriceAllDataPage();
-        Assert.assertEquals(totalPrice, totalPriceIncludedSO);
+        Float totalPrice = getTotalPriceAllDataPage();
+        BigDecimal result = new BigDecimal(totalPriceIncludedSO);
+        BigDecimal formatPriceUp = result.setScale(2, RoundingMode.UP);
+        float roundMax = Float.parseFloat(String.valueOf(formatPriceUp));
+        BigDecimal formatPriceDOWN = result.setScale(2, RoundingMode.FLOOR);
+        float roundMin = Float.parseFloat(String.valueOf((formatPriceDOWN)));
+        float res = 0.0f;
+        if (totalPrice.equals(roundMax)) {
+            res = roundMax;
+        } if (totalPrice.equals(roundMin)) {
+            res = roundMin;
+        }
+        Assert.assertEquals(res, totalPrice);
         return this;
     }
 
@@ -408,6 +424,7 @@ public class CartAllData_page_Logic extends CartAllData_page {
 
     @Step("Transition to page Cart Address. CartAllData_page")
     public CartAddress_page_Logic clickBtnReturnToCartAddressPage() {
+        sleep(5000);
         returnToPageCartAddress().click();
         return page(CartAddress_page_Logic.class);
     }

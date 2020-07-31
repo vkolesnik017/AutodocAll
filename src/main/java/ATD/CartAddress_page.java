@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class CartAddress_page {
 
-    SelenideElement shippingForm() {
+    public SelenideElement shippingForm() {
         return $x("//div[@class='shipping-form input-form']");
     }
 

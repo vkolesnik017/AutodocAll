@@ -23,7 +23,6 @@ public class QC_1132_SynchronizationMobSessionOfBasketOnWebVersion {
     private Main_page_Logic main_page_logic = new Main_page_Logic();
     private Cart_page_mob_Logic cart_page_mob_logic = new Cart_page_mob_Logic();
     private Main_page_mob_Logic main_page_mob_logic = new Main_page_mob_Logic();
-    private Profile_page_Logic profile_page_logic = new Profile_page_Logic();
 
     @BeforeClass
     void setUp() {
