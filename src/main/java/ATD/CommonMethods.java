@@ -51,6 +51,8 @@ public class CommonMethods {
     public static void openPage(String url) {
         System.out.println(url);
         open(url);
+        sleep(5000);
+        refresh();
         closeCookiesFooterMessage();
     }
 
@@ -409,7 +411,7 @@ public class CommonMethods {
     }
 
     @Step("Waiting until element will be visible")
-    static void waitingElementVisibility(SelenideElement element, int minute) {
+    public static void waitingElementVisibility(SelenideElement element, int minute) {
         minute = (minute * 60 * 1000) / 5;
         for (int i = 1; i <= 5; i++) {
             try {

@@ -203,6 +203,11 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return this;
     }
 
+    @Step("Get text in Safe Order block. CartAllData_page")
+    public String getTextInSafeOrderBlock() {
+        return String.valueOf(safeOrderBlock().getText());
+    }
+
     @Step("Click Safe Order Checkbox. CartAllData_page")
     public CartAllData_page_Logic clickSafeOrderCheckbox() {
         safeOrderCheckbox().click();
@@ -408,6 +413,7 @@ public class CartAllData_page_Logic extends CartAllData_page {
 
     @Step("Transition to page Cart Address. CartAllData_page")
     public CartAddress_page_Logic clickBtnReturnToCartAddressPage() {
+        sleep(5000);
         returnToPageCartAddress().click();
         return page(CartAddress_page_Logic.class);
     }

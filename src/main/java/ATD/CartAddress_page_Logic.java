@@ -26,9 +26,9 @@ public class CartAddress_page_Logic extends CartAddress_page {
         checkCorrectTextAndFillInput(nameIn(), "autotest");
         checkCorrectTextAndFillInput(strasse(), "autotest");
         checkCorrectTextAndFillInput(deliveryHouse(), "autotest");
+        chooseDeliveryCountryForShipping(shop);
         fillInPostalCode("default");
         checkCorrectTextAndFillInput(ort(), "autotest");
-        chooseDeliveryCountryForShipping(shop);
         checkCorrectTextAndFillInput(telephon(), "200+002");
         return this;
     }
