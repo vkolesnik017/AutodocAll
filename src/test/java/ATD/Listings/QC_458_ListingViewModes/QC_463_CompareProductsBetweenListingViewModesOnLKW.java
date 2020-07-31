@@ -40,6 +40,7 @@ public class  QC_463_CompareProductsBetweenListingViewModesOnLKW {
             .compareProductsOrderBetweenListModeAndTileMode()
             .checksImportantElementsOnListing();
   }
+
   @AfterMethod
   private void tearDown() {
     close();
