@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.open;
 
 public class QC_1131_SynchronizationWebSessionOfBasketOnMobVersion {
 
@@ -46,7 +47,7 @@ public class QC_1131_SynchronizationWebSessionOfBasketOnMobVersion {
                 .cartClick()
                 .checkOfIdAddedProductInBasket(productIdOnProductPage);
         close();
-        openPage("https://m.autodoc.de/?force=mobile");
+        open("https://m.autodoc.de/?force=mobile");
         new Main_page_mob_Logic().closeFirstPopupAfterTransitionOnMob("apps.apple.com", "https://m.autodoc.de/?force=mobile")
                 .clickSignInInMenu()
                 .closeFooterPopup()
