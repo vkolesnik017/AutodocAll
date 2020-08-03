@@ -181,6 +181,7 @@
     <test name="QC_2115_BlockWithProductsOnChemistryListing">
         <classes>
             <class name="ATD.ACC.QC_2115_BlockWithProductsOnChemistryListing.QC_2117_MainProductsOnChemistryListing"/>
+            <class name="ATD.ACC.QC_2115_BlockWithProductsOnChemistryListing.QC_2118_TransitionOnProductPageWithChemistryListing"/>
             <class name="ATD.ACC.QC_2115_BlockWithProductsOnChemistryListing.QC_2119_SelectedQuantityProductsForBuyOnChemistryListing"/>
             <class name="ATD.ACC.QC_2115_BlockWithProductsOnChemistryListing.QC_2120_AddProductsInBasketOnChemistryListing"/>
         </classes>

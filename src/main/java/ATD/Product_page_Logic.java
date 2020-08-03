@@ -760,4 +760,9 @@ public class Product_page_Logic extends Product_page {
        basket().click();
         return page(Cart_page_Logic.class);
     }
+
+    @Step("Get id from btn product. Product_page")
+    public String getIdFromBtnProduct() {
+        return idOFBtnAddToBasket().getAttribute("id");
+    }
 }

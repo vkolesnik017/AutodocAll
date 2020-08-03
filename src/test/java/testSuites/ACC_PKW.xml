@@ -66,6 +66,8 @@
     <test name="QC_999_TopCategoriesOnMainAccessories">
         <classes>
             <class name="PKW.ACC.QC_999_TopCategoriesOnMainAccessories.QC_1000_TopCategoriesBlock"/>
+            <class name="PKW.ACC.QC_999_TopCategoriesOnMainAccessories.QC_1001_CategoriesInTopCategoriesBlockOnMainAcc"/>
+            <class name="PKW.ACC.QC_999_TopCategoriesOnMainAccessories.QC_1003_TransitionOnListingTopCategoryFromMainACC"/>
         </classes>
     </test>
 
@@ -81,6 +83,7 @@
         <classes>
             <class name="PKW.ACC.QC_1419_MainCatalogProductsOnMainChemistry.QC_1533_TitleMainCatalog"/>
             <class name="PKW.ACC.QC_1419_MainCatalogProductsOnMainChemistry.QC_1535_BlockWithCategories"/>
+            <class name="PKW.ACC.QC_1419_MainCatalogProductsOnMainChemistry.QC_1536_LogicalUnionInMainCategoriesBlockOnMainChemistry"/>
             <class name="PKW.ACC.QC_1419_MainCatalogProductsOnMainChemistry.QC_1541_SeparateCategories"/>
             <class name="PKW.ACC.QC_1419_MainCatalogProductsOnMainChemistry.QC_1964_TransitionOnListingFromCategoryInLogicalUnion"/>
         </classes>

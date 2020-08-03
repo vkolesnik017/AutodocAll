@@ -426,4 +426,12 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
         return this;
     }
 
+    @Step("Click on product title from main product. Listing_chemicals_Page")
+    public Product_page_Logic clickOnProductTitle() {
+        titleNameProductFromListing().click();
+        return page(Product_page_Logic.class);
+    }
+
+
+
 }
