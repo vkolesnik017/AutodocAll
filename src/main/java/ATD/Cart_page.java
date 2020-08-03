@@ -149,4 +149,11 @@ public class Cart_page {
     ElementsCollection moreInfoBlock() {return $$x("//div[@class='info__more-info']/ul");}
 
     ElementsCollection characteristicListOfProduct(String numOfOrder) {return $$x("//tr[@data-article_id='"+numOfOrder+"']//div[@class='info__more-info']/ul/li/span[1]");}
+
+    SelenideElement idAddedProduct() {
+        return $x("//div[@class='cart-page-listing']//tr[@data-article_id]");
+    }
+    SelenideElement valueQuantityCounter() {
+        return $x("//div[@class='qty changable']/input");
+    }
 }
