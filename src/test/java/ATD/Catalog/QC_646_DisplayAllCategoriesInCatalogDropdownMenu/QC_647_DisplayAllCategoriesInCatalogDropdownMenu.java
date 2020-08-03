@@ -29,6 +29,9 @@ public class QC_647_DisplayAllCategoriesInCatalogDropdownMenu {
     private ArrayList<String> childCategoriesInAWS;
     private ArrayList<String> parentCategoriesInAWS;
 
+    public QC_647_DisplayAllCategoriesInCatalogDropdownMenu() throws SQLException {
+    }
+
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -52,7 +55,7 @@ public class QC_647_DisplayAllCategoriesInCatalogDropdownMenu {
         parentCategoriesInAWS = catalogCategoriesAws.getAllParentCategoriesFromAWS();
 
         categoriesPageLogic.compareCategoriesFromCatalogAndAWS(childCategoriesInDropdownMenu, childCategoriesInAWS)
-                           .compareCategoriesFromCatalogAndAWS(parentCategoriesInDropdownMenu, parentCategoriesInAWS);
+                .compareCategoriesFromCatalogAndAWS(parentCategoriesInDropdownMenu, parentCategoriesInAWS);
     }
 
     @AfterMethod
