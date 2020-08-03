@@ -43,12 +43,12 @@ public class QC_139_FiltersSorting_TestBrandAndBySideFilterInteraction {
     public void testSideAndBrandFilterInteraction(String route) {
         openPage(route);
         listingPage.clickFilterBySideBack()
-                    .waitUntilPreloaderDisappear();
+                .waitUntilPreloaderDisappear();
         String brandName = listingPage.getAtributeFromElement(listingPage.firstBrandNameInFiler(), "alt");
         listingPage.clickFilterButton(listingPage.firstBrandInFilterButton())
-                    .waitUntilPreloaderDisappear()
-                    .checkProductAttributeOnListingWithCarAndFilter("Hinterachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute())
-                    .checkProductTitleOnListing(brandName, true, listingPage.productTitleInListMode());
+                .waitUntilPreloaderDisappear()
+                .checkProductAttributeOnListingWithCarAndFilter("Hinterachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute())
+                .checkProductTitleOnListing(brandName, true, listingPage.productTitleInListMode());
     }
 
     @Test(dataProvider = "routesLKW")

@@ -664,7 +664,7 @@ public class Order_aws {
         return this;
     }
 
-    @Step("Checks presence a test phone number. Order_aes")
+    @Step("Checks presence a test phone number. Order_aws")
     public Order_aws checkOrderHasTestPhone() {
         phoneNumberField().shouldHave(or("value", value("+002"), value("+001")));
         testIcon().shouldBe(visible);
@@ -1026,7 +1026,7 @@ public class Order_aws {
         float cost = sumProductColumn / productQuantity;
         BigDecimal result = new BigDecimal(cost);
         BigDecimal formatCostUp = result.setScale(2, RoundingMode.UP);
-        Float roundMax = Float.parseFloat(String.valueOf(formatCostUp));
+        float roundMax = Float.parseFloat(String.valueOf(formatCostUp));
         BigDecimal formatCostDOWN = result.setScale(2, RoundingMode.FLOOR);
         float roundMin = Float.parseFloat(String.valueOf((formatCostDOWN)));
         float res = 0.0f;

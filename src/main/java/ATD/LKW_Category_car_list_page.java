@@ -85,8 +85,8 @@ public class LKW_Category_car_list_page {
         return $x("//span[contains(text(),'" + titleOfArticle + "')]");
     }
 
-    SelenideElement dynamicCharacteristicInTecDocListingBlock(String titleOfArticle) {
-        return $x("//span[contains(text(),'" + titleOfArticle + "')]/ancestor::div[@class='description']//ul[@class='criteria']//li[1]/span[2]");
+     SelenideElement dynamicCharacteristicInTecDocListingBlock(String titleOfArticle) {
+        return $x("//span[contains(text(),'" + titleOfArticle + "')]/ancestor::div[@class='description']//ul[@class='criteria']//span[contains(text(),'Motorcode:')]/following-sibling::span");
     }
 
     SelenideElement totalAmountOfProductsInTecDocListing() {

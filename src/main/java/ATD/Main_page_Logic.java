@@ -451,6 +451,12 @@ public class Main_page_Logic extends Main_page {
 
     //ÜBER AUTODOC
 
+    @Step("Click Hilfe Center link in the footer. Main_page")
+    public Hilfe_Center_page clickHilfeCenterLink() {
+        hilfeCenterLink().click();
+        return page(Hilfe_Center_page.class);
+    }
+
     @Step("Click About Us link in the footer. Main_page")
     public About_us_page clickAboutUs() {
         aboutUsLink().click();
@@ -677,6 +683,8 @@ public class Main_page_Logic extends Main_page {
         clickAutodocPlus();
         commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "service_packages"));
         //HILFE & SUPPORT
+        clickHilfeCenterLink();
+        commonMethods.checkingUrlAndCloseTab(db.getRouteByRouteName(getCurrentShopFromJSVarInHTML(),"hilfe_center_main"));
         clickAutodocClub();
         commonMethods.checkingUrlAndCloseTab(db.getRouteByRouteName(getCurrentShopFromJSVarInHTML(), "club_main") + "/?reg-modal=");
         clickBlog();

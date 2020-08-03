@@ -1,6 +1,7 @@
 package AWS;
 
 
+import ATD.SetUp;
 import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.Step;
 
@@ -12,31 +13,66 @@ import static com.codeborne.selenide.Selenide.$$x;
 
 public class CatalogCategories_aws {
 
-    private String categoriesInAwsPage = "https://aws.autodoc.de/custom-catalog?filter%5Blang%5D=de&filter%5Bskin%5D%5B%5D=atd&filter%5Borigin%5D=&filter%5BnodeParentID%5D=&filter%5BnodeID%5D=&filter%5Bga%5D=&filter%5Bonly%5D=0&filter%5BorderBy%5D=groupRating&submitSearch=";
+    private String awsEnv;
 
-    private String parentCategoriesInAwsPage = "https://aws.autodoc.de/custom-catalog?filter%5Blang%5D=de&filter%5Bskin%5D%5B%5D=atd&filter%5Borigin%5D=&filter%5BnodeParentID%5D=&filter%5BnodeID%5D=&filter%5Bga%5D=&filter%5Bonly%5D=1&filter%5BorderBy%5D=groupRating&submitSearch=";
+    public CatalogCategories_aws() {
+        this.awsEnv = "https://aws.";
+    }
 
-    private ElementsCollection childIdInAWS() { return $$(".catalog-table-content-items-item.parent > ul >li > div > div:nth-child(4)"); }
+    public CatalogCategories_aws(String envFromTest) {
+        SetUp setUp = new SetUp();
+        this.awsEnv = setUp.getEnvForAws(envFromTest);
+        System.out.println(awsEnv);
+    }
 
-    private ElementsCollection parentIdInAws() { return $$(".catalog-table-content-items-item.parent > div > div:nth-child(2)"); }
 
-    private ElementsCollection notActiveChildCategoriesId() { return $$(".catalog-table-content-items-item.disabled > div > div:nth-child(4)"); }
+    private String categoriesInAwsPage = "" + awsEnv + "autodoc.de/custom-catalog?filter%5Blang%5D=de&filter%5Bskin%5D%5B%5D=atd&filter%5Borigin%5D=&filter%5BnodeParentID%5D=&filter%5BnodeID%5D=&filter%5Bga%5D=&filter%5Bonly%5D=0&filter%5BorderBy%5D=groupRating&submitSearch=";
 
-    private ElementsCollection notActiveParentCategoriesId() { return $$(".catalog-table-content-items-item.parent.disabled > div > div:nth-child(2)"); }
+    private String parentCategoriesInAwsPage = "" + awsEnv + "autodoc.de/custom-catalog?filter%5Blang%5D=de&filter%5Bskin%5D%5B%5D=atd&filter%5Borigin%5D=&filter%5BnodeParentID%5D=&filter%5BnodeID%5D=&filter%5Bga%5D=&filter%5Bonly%5D=1&filter%5BorderBy%5D=groupRating&submitSearch=";
 
-    private ElementsCollection parentNameInAWS() { return $$(".catalog-table-content-items-item.parent > div >div:nth-child(5) > input"); }
+    private ElementsCollection childIdInAWS() {
+        return $$(".catalog-table-content-items-item.parent > ul >li > div > div:nth-child(4)");
+    }
 
-    private ElementsCollection notActiveParentCategoriesName() { return $$(".catalog-table-content-items-item.parent.disabled > div > div:nth-child(5) > input"); }
+    private ElementsCollection parentIdInAws() {
+        return $$(".catalog-table-content-items-item.parent > div > div:nth-child(2)");
+    }
 
-    private ElementsCollection childNameInAWS() { return $$(".catalog-table-content-items-item.parent > ul >li > div >div:nth-child(5) > input"); }
+    private ElementsCollection notActiveChildCategoriesId() {
+        return $$(".catalog-table-content-items-item.disabled > div > div:nth-child(4)");
+    }
 
-    private ElementsCollection notActiveChildCategoriesName() { return $$(".catalog-table-content-items-item.disabled > div > div:nth-child(5) > input"); }
+    private ElementsCollection notActiveParentCategoriesId() {
+        return $$(".catalog-table-content-items-item.parent.disabled > div > div:nth-child(2)");
+    }
 
-    private ElementsCollection notInCatalogCategories() { return $$(".catalog-table-content-items-item > ul >li > div >div:nth-child(5) > input[data-entity-id^=\"3\"]"); }
+    private ElementsCollection parentNameInAWS() {
+        return $$(".catalog-table-content-items-item.parent > div >div:nth-child(5) > input");
+    }
 
-    private ElementsCollection notInCatalogCateg2() { return $$(".catalog-table-content-items-item[data-node-id^=\"3\"] > ul >li > div >div:nth-child(5) > input"); }
+    private ElementsCollection notActiveParentCategoriesName() {
+        return $$(".catalog-table-content-items-item.parent.disabled > div > div:nth-child(5) > input");
+    }
 
-    public ElementsCollection crossCuttingCategoriesId() { return $$x("//*[@class='flex-box']/div[12]/input[@checked='checked']/../../div[4]"); }
+    private ElementsCollection childNameInAWS() {
+        return $$(".catalog-table-content-items-item.parent > ul >li > div >div:nth-child(5) > input");
+    }
+
+    private ElementsCollection notActiveChildCategoriesName() {
+        return $$(".catalog-table-content-items-item.disabled > div > div:nth-child(5) > input");
+    }
+
+    private ElementsCollection notInCatalogCategories() {
+        return $$(".catalog-table-content-items-item > ul >li > div >div:nth-child(5) > input[data-entity-id^=\"3\"]");
+    }
+
+    private ElementsCollection notInCatalogCateg2() {
+        return $$(".catalog-table-content-items-item[data-node-id^=\"3\"] > ul >li > div >div:nth-child(5) > input");
+    }
+
+    public ElementsCollection crossCuttingCategoriesId() {
+        return $$x("//*[@class='flex-box']/div[12]/input[@checked='checked']/../../div[4]");
+    }
 
     @Step("Get All Child Categories From Catalog AWS. CatalogCategories_aws")
     public ArrayList<String> getAllChildCategoriesFromAWS() {
@@ -126,18 +162,18 @@ public class CatalogCategories_aws {
 
         ArrayList<String> notActiveCategories = new ArrayList<>();
         for (int i = 0; i < notActiveChildCategoriesName().size(); i++) {
-                notActiveCategories.add(notActiveChildCategoriesName().get(i).attr("value").trim());
+            notActiveCategories.add(notActiveChildCategoriesName().get(i).attr("value").trim());
         }
 
         ArrayList<String> notInCatalogCategoriesList = new ArrayList<>();
         for (int i = 0; i < notInCatalogCategories().size(); i++) {
-                notInCatalogCategoriesList.add(notInCatalogCategories().get(i).attr("value").trim());
+            notInCatalogCategoriesList.add(notInCatalogCategories().get(i).attr("value").trim());
 
         }
 
         ArrayList<String> notInCatalogCategories2 = new ArrayList<>();
         for (int i = 0; i < notInCatalogCateg2().size(); i++) {
-                notInCatalogCategories2.add(notInCatalogCateg2().get(i).attr("value").trim());
+            notInCatalogCategories2.add(notInCatalogCateg2().get(i).attr("value").trim());
         }
 
         allActiveChildCategoriesAWS.removeAll(notActiveCategories);
@@ -173,7 +209,7 @@ public class CatalogCategories_aws {
         }
 
 
-        Set<String> notInCatalogCategories2 =  new LinkedHashSet<>();
+        Set<String> notInCatalogCategories2 = new LinkedHashSet<>();
         for (int i = 0; i < notInCatalogCateg2().size(); i++) {
             System.out.println(notInCatalogCateg2().get(i).attr("value").trim());
             notInCatalogCategories2.add(notInCatalogCateg2().get(i).attr("value").trim());

@@ -31,7 +31,7 @@ public class QC_529_PresenceRecoveryCharacteristicsInBasket {
   @Owner(value = "Evlentiev")
   @Description(value = "Test-3. Checks output characteristic recovery in basket")
   public void testPresenceRecoveryCharacteristicsInBasket(String route) {
-    new Product_page_Logic().openProductPageById(route, "1080053")
+    new Product_page_Logic().openProductPageById(route, "1099441")
             .addProductToCart()
             .closePopupOtherCategoryIfYes()
             .cartClick()

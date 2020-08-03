@@ -26,9 +26,9 @@ public class CartAddress_page_Logic extends CartAddress_page {
         checkCorrectTextAndFillInput(nameIn(), "autotest");
         checkCorrectTextAndFillInput(strasse(), "autotest");
         checkCorrectTextAndFillInput(deliveryHouse(), "autotest");
+        chooseDeliveryCountryForShipping(shop);
         fillInPostalCode("default");
         checkCorrectTextAndFillInput(ort(), "autotest");
-        chooseDeliveryCountryForShipping(shop);
         checkCorrectTextAndFillInput(telephon(), "200+002");
         return this;
     }
@@ -55,6 +55,21 @@ public class CartAddress_page_Logic extends CartAddress_page {
         checkCorrectTextAndFillInput(idCompanyShipping(), taxNumber);
         return this;
     }
+
+    @Step("Fill in the company ID {expectedID} field for the delivery country where ID is needed {expectedShop}. CartAddress_page")
+    public CartPayments_page_Logic fillInCompanyIdFieldForCountryWhereIdNeeded(String actualShop, String expectedShop, String expectedID) {
+        if (actualShop.equals(expectedShop)) {
+            fillFieldIdCompanyShipping(expectedID)
+                    .nextBtnClick();
+            if (continueBtnInPopupAboutWrongCompany().isDisplayed()) {
+                clickBtnContinueInPopupAboutWrongCompany();
+            }
+        } else {
+            nextBtnClick();
+        }
+        return page(CartPayments_page_Logic.class);
+    }
+
 
     @Step("Fill field telephone number {telNum} for Shipping. CartAddress_page")
     public CartAddress_page_Logic fillFieldTelNumForShipping(String telNum) {
@@ -399,13 +414,15 @@ public class CartAddress_page_Logic extends CartAddress_page {
     @Step("Click get My Address button. CartAddress_page")
     public CartAddress_page_Logic clickGetMyAddressBtn() {
         getMyAddressBtn().click();
+        sleep(2000);
         return this;
     }
 
     @Step("Check correct text {expectedText} in error message for personal number. CartAddress_page")
     public CartAddress_page_Logic checkCorrectTextInErrorMessage(String expectedText) {
-        errorMessageForPersonalNumber().shouldBe(visible);
-        errorMessageForPersonalNumber().shouldHave(text(expectedText));
+        sleep(2000);
+        errorMessage().shouldBe(visible);
+        errorMessage().shouldHave(text(expectedText));
         return this;
     }
 
@@ -473,6 +490,13 @@ public class CartAddress_page_Logic extends CartAddress_page {
     @Step("Filling field fiscal code {expectedText}. CartAddress_page")
     public CartAddress_page_Logic fillingFieldFiscalCode(String expectedText) {
         fieldFiscalCode().setValue(expectedText);
+        return this;
+    }
+
+    @Step("Check presence a note with address restrictions and correct text inside block {expectedText}. CartAddress_page")
+    public CartAddress_page_Logic checkPresenceNotesAndTextInsideBlock(String expectedText) {
+        notesWithAddressRestrictions().shouldBe(visible);
+        notesWithAddressRestrictions().shouldHave(text(expectedText));
         return this;
     }
 }

@@ -38,12 +38,12 @@ public class QC_128_FiltersSorting_TestHoheAndBySideFilterInteraction {
     public void testHoheAndSideFilterInteraction(String route) {
         openPage(route);
         listingPage.hoverOnSideFilterAndClick(listingPage.filterBySideBack())
-                    .waitUntilPreloaderDisappear();
+                .waitUntilPreloaderDisappear();
         String hoheValue = listingPage.getTextFromElement(listingPage.hoheThirdSideFilterButton());
         listingPage.hoverOnSideFilterAndClick(listingPage.hoheThirdSideFilterButton())
-                    .waitUntilPreloaderDisappear()
-                    .checkProductAttributeOnListingWithCarAndFilter("Hinterachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute())
-                    .checkProductAttributeOnListingWithCarAndFilter(hoheValue, listingPage.hoheProductAttributeGenericRoute(), listingPage.hoheProductAttributeTecdocRoute());
+                .waitUntilPreloaderDisappear()
+                .checkProductAttributeOnListingWithCarAndFilter("Hinterachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute())
+                .checkProductAttributeOnListingWithCarAndFilter(hoheValue, listingPage.hoheProductAttributeGenericRoute(), listingPage.hoheProductAttributeTecdocRoute());
     }
 
     @Test
@@ -53,12 +53,12 @@ public class QC_128_FiltersSorting_TestHoheAndBySideFilterInteraction {
     public void testHoheAndSideFilterInteractionLKW() throws SQLException {
         openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list9"));
         listingPage.clickFilterBySideBack()
-                    .waitUntilPreloaderDisappear();
+                .waitUntilPreloaderDisappear();
         String hoheValue = listingPage.getTextFromElement(listingPage.hoheThirdSideFilterButton());
         listingPage.clickFilterButton(listingPage.hoheThirdSideFilterButton())
-                    .waitUntilPreloaderDisappear()
-                    .checkProductAttributeOnListingWithCarAndFilter("Hinterachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute())
-                    .checkProductAttributeOnListingWithCarAndFilter(hoheValue, listingPage.hoheProductAttributeGenericRoute(), listingPage.hoheProductAttributeTecdocRoute());
+                .waitUntilPreloaderDisappear()
+                .checkProductAttributeOnListingWithCarAndFilter("Hinterachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute())
+                .checkProductAttributeOnListingWithCarAndFilter(hoheValue, listingPage.hoheProductAttributeGenericRoute(), listingPage.hoheProductAttributeTecdocRoute());
     }
 
     @AfterMethod

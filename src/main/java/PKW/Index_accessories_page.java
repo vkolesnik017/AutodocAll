@@ -79,6 +79,10 @@ public class Index_accessories_page {
         return $x("//div[@class='seo-category-blocks']");
     }
 
+    SelenideElement popupBasketAddedProducts() {
+        return $x("//div[@class='cart-items-block ']");
+    }
+
 
 
 }

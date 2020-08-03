@@ -22,7 +22,7 @@ public class PageVAT_aws {
     public String getVatForGB() {
         open(pageVAT_aws);
         new Login_aws().loginInAws();
-        String vatGB = vatForGB().getText();
+        String vatGB = vatForGB().getValue();
         return vatGB;
     }
 
@@ -30,7 +30,7 @@ public class PageVAT_aws {
     public String getVatForDE() {
         open(pageVAT_aws);
         new Login_aws().loginInAws();
-        String vatDE = vatForDE().getText();
+        String vatDE = vatForDE().getValue();
         return vatDE;
     }
 }

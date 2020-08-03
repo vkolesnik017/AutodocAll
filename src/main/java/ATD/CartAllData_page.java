@@ -29,6 +29,14 @@ public class CartAllData_page {
         return $x("//*[@id='cart-page']/div[2]/div[1]/div[2]/div[2]");
     }
 
+    SelenideElement btnOpenInfoOfProduct() {
+        return $x("//div[@class='info__more-info']/a[1]");
+    }
+
+    SelenideElement infoOfProductBlock() {
+        return $x("//div[@class='info__more-info']/ul");
+    }
+
     public SelenideElement freeDeliveryIcon() {
         return $(byXpath("//*[@class='alldata-bottom']//*[@class='free_icon']"));
     }
@@ -128,7 +136,7 @@ public class CartAllData_page {
         return $x("//div[@class='order-summary ']//div[4]//span[2]");
     }
 
-    SelenideElement safeOrderCost() {
+    SelenideElement safeOrderCostFromOrderSummeryBlock() {
         return $x("//div[@class='order-summary ']//div[5]//span[2]");
     }
 
@@ -214,4 +222,33 @@ public class CartAllData_page {
     SelenideElement btnConfirmProductDelete() {
         return $x("//a[@class='submit']");
     }
+
+    SelenideElement btnOpenUpperBlockWithSummary() {
+        return $x("//div[@class='order-summary__open']/a");
+    }
+
+    SelenideElement btnApplyBonus() {
+        return $x("//div[@class='activate-bonus']/a");
+    }
+
+    SelenideElement openDiscountBlock() {
+        return $x("//div[@class='alldata-discount']/a");
+    }
+
+    SelenideElement fieldForInputDiscount() {
+        return $x("//div[@class='alldata-discount__form']/input");
+    }
+
+    SelenideElement btnApplyDiscount() {
+        return $x("//div[@class='alldata-discount__form']/a[@class='button']");
+    }
+
+    SelenideElement bonusCheckboxInOrderSummary() {
+        return $x("//div[@class='order-summary ']//input[@class='checkbox-bonus']");
+    }
+
+    SelenideElement BtnConfirmApplyDiscount() {
+        return $x("//div[@class='popup-content__buttons']/a");
+    }
+
 }

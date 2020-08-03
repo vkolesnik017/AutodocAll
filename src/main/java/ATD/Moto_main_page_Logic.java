@@ -544,7 +544,7 @@ public class Moto_main_page_Logic extends Moto_main_page {
 
     @Step("get brand from TOP product title .Moto_main_page")
     public String getBrandFromTopProductTitle() {
-        String titleOfBrand = titleOfTopProducts().get(0).getText().replace(titleOfTopProducts().get(0).getText().substring(titleOfTopProducts().get(0).getText().lastIndexOf(" ")), "").toLowerCase();
+        String titleOfBrand = titleOfTopProducts().get(0).getText().replace(titleOfTopProducts().get(0).getText().substring(titleOfTopProducts().get(0).getText().indexOf(" ")), "").toLowerCase();
         return titleOfBrand;
     }
 

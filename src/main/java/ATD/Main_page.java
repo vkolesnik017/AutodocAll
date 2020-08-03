@@ -326,6 +326,10 @@ public class Main_page {
 
     //ÜBER AUTODOC
 
+    SelenideElement hilfeCenterLink() {
+        return $x("//div[@class='footer__links-block']//span[@target='_blank']");
+    }
+
     SelenideElement aboutUsLink(){
         return $x("//a[@data-ga-action='about_us_big']");
     }

@@ -84,6 +84,10 @@ class TyresListing_page {
 
     SelenideElement brandNameInSelector() { return $x("//*[@class='main-selector Brand']//span"); }
 
+    SelenideElement brandNameInListing() {
+        return $x("//div[@class='name']/a");
+    }
+
     ElementsCollection titleOfAllProducts() { return $$(".name > a"); }
 
     SelenideElement diameter17InRelinkBlock() { return $x("//*[contains (text(),'17 Zoll')]"); }
@@ -130,5 +134,5 @@ class TyresListing_page {
 
     SelenideElement seasonValueInSelector() { return $x("//*[@id='form_Season']/option[@selected]"); }
 
-    SelenideElement productListingOnPage() { return $(".list_products"); }
+    SelenideElement productListingOnPage() { return $x("//ul[@class='list_products']/li"); }
 }

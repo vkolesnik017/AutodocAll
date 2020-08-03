@@ -178,5 +178,35 @@
         </classes>
     </test>
 
+    <test name="QC_2115_BlockWithProductsOnChemistryListing">
+        <classes>
+            <class name="ATD.ACC.QC_2115_BlockWithProductsOnChemistryListing.QC_2117_MainProductsOnChemistryListing"/>
+            <class name="ATD.ACC.QC_2115_BlockWithProductsOnChemistryListing.QC_2119_SelectedQuantityProductsForBuyOnChemistryListing"/>
+            <class name="ATD.ACC.QC_2115_BlockWithProductsOnChemistryListing.QC_2120_AddProductsInBasketOnChemistryListing"/>
+        </classes>
+    </test>
+
+    <test name="QC_2143_ToolsListing">
+        <classes>
+            <class name="ATD.ACC.QC_2143_ToolsListing.QC_2144_TitleOnToolsListing"/>
+            <class name="ATD.ACC.QC_2143_ToolsListing.QC_2145_BreadCrumbsOnToolsListing"/>
+            <class name="ATD.ACC.QC_2143_ToolsListing.QC_2146_WorkBreadCrumbsOnToolsListing"/>
+            <class name="ATD.ACC.QC_2143_ToolsListing.QC_2147_BlockChangeViewToolsListing"/>
+            <class name="ATD.ACC.QC_2143_ToolsListing.QC_2148_ProductCountBlockOnToolsListing"/>
+            <class name="ATD.ACC.QC_2143_ToolsListing.QC_2149_BlockPaginationOnToolsListing"/>
+            <class name="ATD.ACC.QC_2143_ToolsListing.QC_2150_WorkButtonsPaginationBlockOnToolsListing"/>
+            <class name="ATD.ACC.QC_2143_ToolsListing.QC_2151_SeoBlockTextOnToolsListing"/>
+        </classes>
+    </test>
+
+    <test name="QC_2129_ResetFiltersBlockOnPageChemistryListing">
+        <classes>
+            <class name="ATD.ACC.QC_2129_ResetFiltersBlockOnPageChemistryListing.QC_2130_WorkResetFilterSelectedCriteriaOnChemistryListing"/>
+            <class name="ATD.ACC.QC_2129_ResetFiltersBlockOnPageChemistryListing.QC_2133_WorkResetFilterSelectedBrandOnChemistryListing"/>
+            <class name="ATD.ACC.QC_2129_ResetFiltersBlockOnPageChemistryListing.QC_2136_WorkResetFilterSelectedGenericOnChemistryListing"/>
+            <class name="ATD.ACC.QC_2129_ResetFiltersBlockOnPageChemistryListing.QC_2138_WorkResetFiltersWhenChoosingSeveralCriteriaOnChemistryListing"/>
+        </classes>
+    </test>
+
 
 </suite>

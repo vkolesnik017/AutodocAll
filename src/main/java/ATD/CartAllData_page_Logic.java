@@ -3,7 +3,10 @@ package ATD;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.sql.SQLException;
+import java.util.Objects;
 
 import static ATD.CommonMethods.*;
 import static com.codeborne.selenide.Condition.*;
@@ -72,13 +75,19 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return this;
     }
 
-    @Step(":on CartAllData_page")
+    @Step(":from CartAllData_page")
     public CartAllData_page_Logic counterIncreaseForPaired(String startValue) {
         new CommonMethods().checkingCounterIncreaseForPaired(startValue, fieldWithQuantityOfProducts(), counterPlusBtn());
         return this;
     }
 
-    @Step(":on CartAllData_page")
+    @Step(":from CartAllData_page")
+    public CartAllData_page_Logic counterIncreaseForAllProducts(int startValue) {
+        new CommonMethods().checkingCounterIncrease(startValue, fieldWithQuantityOfProducts(), counterPlusBtn());
+        return this;
+    }
+
+    @Step(":from CartAllData_page")
     public CartAllData_page_Logic counterDecreaseForPaired(String startValue) {
         new CommonMethods().checkingCounterDecreaseForPaired(startValue, fieldWithQuantityOfProducts(), counterMinusBtn());
         sleep(1000);
@@ -194,21 +203,86 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return this;
     }
 
+    @Step("Get text in Safe Order block. CartAllData_page")
+    public String getTextInSafeOrderBlock() {
+        return String.valueOf(safeOrderBlock().getText());
+    }
+
     @Step("Click Safe Order Checkbox. CartAllData_page")
     public CartAllData_page_Logic clickSafeOrderCheckbox() {
         safeOrderCheckbox().click();
         return this;
     }
 
-    @Step("Check presence Safe Order price from order summery block . CartAllData_page")
-    public CartAllData_page_Logic checkPresenceSafeOrderPriceFromOrderSummeryBlock() {
-        safeOrderCost().shouldBe(visible);
+    @Step("Checks that the Safe Order checkbox is not selected. CartAllData_page")
+    public CartAllData_page_Logic checkThatSafeOrderCheckboxIsNotSelected() {
+        safeOrderCheckbox().shouldNotHave(attribute("checked"));
         return this;
     }
 
-    @Step("Check absence Safe Order price from order summery block . CartAllData_page")
+    @Step("Checks that the Safe Order checkbox is selected. CartAllData_page")
+    public CartAllData_page_Logic checkThatSafeOrderCheckboxIsSelected() {
+        safeOrderCheckbox().shouldHave(attribute("checked"));
+        return this;
+    }
+
+    @Step("Check presence Safe Order price from order summery block. CartAllData_page")
+    public CartAllData_page_Logic checkPresenceSafeOrderPriceFromOrderSummeryBlock() {
+        safeOrderCostFromOrderSummeryBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Check absence Safe Order price from order summery block. CartAllData_page")
     public CartAllData_page_Logic checkAbsenceSafeOrderPriceFromOrderSummeryBlock() {
-        safeOrderCost().shouldNotBe(visible);
+        safeOrderCostFromOrderSummeryBlock().shouldNotBe(visible);
+        return this;
+    }
+
+    @Step("Add safe order price in order and checks what total price included SO. CartAllData_page")
+    public CartAllData_page_Logic addSafeOrderInOrderAndCheckTotalPriceIncludedSO() {
+        float price = getTotalPriceAllDataPage();
+        String priceSO = priceOfSafeOrder().getText();
+        float realPriseSO = Float.parseFloat(priceSO.substring(0, priceSO.indexOf(" ")).replaceAll(",", "."));
+        clickSafeOrderCheckbox();
+        sleep(2000);
+        Float totalPrice = getTotalPriceAllDataPage();
+        float totalPriceIncludedSO = price + realPriseSO;
+        BigDecimal result = new BigDecimal(totalPriceIncludedSO);
+        BigDecimal formatPriceUp = result.setScale(2, RoundingMode.UP);
+        float roundMax = Float.parseFloat(String.valueOf(formatPriceUp));
+        BigDecimal formatPriceDOWN = result.setScale(2, RoundingMode.FLOOR);
+        float roundMin = Float.parseFloat(String.valueOf((formatPriceDOWN)));
+        float res = 0.0f;
+        if (totalPrice.equals(roundMax)) {
+             res = roundMax;
+        } if (totalPrice.equals(roundMin)) {
+             res = roundMin;
+        }
+        Assert.assertEquals(res, totalPrice);
+        return this;
+    }
+
+    @Step("Remove the safe order price in order and checks what total price included SO. CartAllData_page")
+    public CartAllData_page_Logic removeSafeOrderInOrderAndCheckTotalPriceIncludedSO() {
+        float price = getTotalPriceAllDataPage();
+        String priceSO = priceOfSafeOrder().getText();
+        float realPriseSO = Float.parseFloat(priceSO.substring(0, priceSO.indexOf(" ")).replaceAll(",", "."));
+        float totalPriceIncludedSO = price - realPriseSO;
+        clickSafeOrderCheckbox();
+        sleep(2000);
+        Float totalPrice = getTotalPriceAllDataPage();
+        BigDecimal result = new BigDecimal(totalPriceIncludedSO);
+        BigDecimal formatPriceUp = result.setScale(2, RoundingMode.UP);
+        float roundMax = Float.parseFloat(String.valueOf(formatPriceUp));
+        BigDecimal formatPriceDOWN = result.setScale(2, RoundingMode.FLOOR);
+        float roundMin = Float.parseFloat(String.valueOf((formatPriceDOWN)));
+        float res = 0.0f;
+        if (totalPrice.equals(roundMax)) {
+            res = roundMax;
+        } if (totalPrice.equals(roundMin)) {
+            res = roundMin;
+        }
+        Assert.assertEquals(res, totalPrice);
         return this;
     }
 
@@ -350,6 +424,7 @@ public class CartAllData_page_Logic extends CartAllData_page {
 
     @Step("Transition to page Cart Address. CartAllData_page")
     public CartAddress_page_Logic clickBtnReturnToCartAddressPage() {
+        sleep(5000);
         returnToPageCartAddress().click();
         return page(CartAddress_page_Logic.class);
     }
@@ -375,6 +450,44 @@ public class CartAllData_page_Logic extends CartAllData_page {
     @Step(":for CartAllData_page")
     public CartAllData_page_Logic checkAbsenceBonusSticker() {
         new Cart_page_Logic().checkAbsenceBonusSticker();
+        return this;
+    }
+
+    @Step("Open upper block with summary. CartAllData_page")
+    public CartAllData_page_Logic openUpperBlockWithSummary() {
+        btnOpenUpperBlockWithSummary().click();
+        btnOpenUpperBlockWithSummary().shouldNotBe(visible);
+        return this;
+    }
+
+    @Step("Click button apply bonus. CartAllData_page")
+    public CartAllData_page_Logic clickBtnApplyBonus() {
+        btnApplyBonus().click();
+        btnApplyBonus().shouldNotBe(visible);
+        return this;
+    }
+
+    @Step("Cancel bonus applying. CartAllData_page")
+    public CartAllData_page_Logic CancelBonusApplying() {
+        bonusCheckboxInOrderSummary().click();
+        btnApplyBonus().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Apply discount {expectedDiscount}. CartAllData_page")
+    public CartAllData_page_Logic applyDiscount(String expectedDiscount) {
+        openDiscountBlock().click();
+        fieldForInputDiscount().shouldBe(visible);
+        fieldForInputDiscount().setValue(expectedDiscount);
+        btnApplyDiscount().click();
+        BtnConfirmApplyDiscount().click();
+        return this;
+    }
+
+    @Step("Open info of product. CartAllData_page")
+    public CartAllData_page_Logic openInfoOfProduct() {
+        btnOpenInfoOfProduct().click();
+        infoOfProductBlock().shouldBe(visible);
         return this;
     }
 }

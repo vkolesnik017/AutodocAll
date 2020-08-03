@@ -41,12 +41,12 @@ public class QC_131_FiltersSorting_TestBremsscheibenartAndBySideFilterInteractio
     public void testBremsscheibenartAndSideFilterInteraction(String route) {
         openPage(route);
         listingPage.hoverOnSideFilterAndClick(listingPage.filterBySideBack())
-                    .waitUntilPreloaderDisappear();
+                .waitUntilPreloaderDisappear();
         String bremsscheibenartValue = listingPage.getTextFromElement(listingPage.bremsscheibenartSideFilterButton());
         listingPage.hoverOnSideFilterAndClick(listingPage.bremsscheibenartSideFilterButton())
-                    .waitUntilPreloaderDisappear()
-                    .checkProductAttributeOnListingWithCarAndFilter("Hinterachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute())
-                    .checkProductAttributeOnListingWithCarAndFilter(bremsscheibenartValue, listingPage.bremsscheibenartProductAttributeGenericRoute(), listingPage.bremsscheibenartProductAttributeTecdocRoute());
+                .waitUntilPreloaderDisappear()
+                .checkProductAttributeOnListingWithCarAndFilter("Hinterachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute())
+                .checkProductAttributeOnListingWithCarAndFilter(bremsscheibenartValue, listingPage.bremsscheibenartProductAttributeGenericRoute(), listingPage.bremsscheibenartProductAttributeTecdocRoute());
     }
 
     @Test(dataProvider = "routesLKW")
@@ -56,12 +56,12 @@ public class QC_131_FiltersSorting_TestBremsscheibenartAndBySideFilterInteractio
     public void testBremsscheibenartAndSideFilterInteractionLKW(String route) {
         openPage(route);
         listingPage.clickFilterButton(listingPage.filterBySideBack())
-                    .waitUntilPreloaderDisappear();
+                .waitUntilPreloaderDisappear();
         String bremsscheibenartValue = listingPage.getTextFromElement(listingPage.bremsscheibenartSideFilterButton());
         listingPage.clickFilterButton(listingPage.bremsscheibenartSideFilterButton())
-                    .waitUntilPreloaderDisappear()
-                    .checkProductAttributeOnListingWithCarAndFilter("Hinterachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute())
-                    .checkProductAttributeOnListingWithCarAndFilter(bremsscheibenartValue, listingPage.bremsscheibenartProductAttributeGenericRoute(), listingPage.bremsscheibenartProductAttributeTecdocRoute());
+                .waitUntilPreloaderDisappear()
+                .checkProductAttributeOnListingWithCarAndFilter("Hinterachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute())
+                .checkProductAttributeOnListingWithCarAndFilter(bremsscheibenartValue, listingPage.bremsscheibenartProductAttributeGenericRoute(), listingPage.bremsscheibenartProductAttributeTecdocRoute());
     }
 
     @AfterMethod

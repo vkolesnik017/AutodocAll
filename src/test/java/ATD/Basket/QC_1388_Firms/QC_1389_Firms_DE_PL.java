@@ -52,7 +52,7 @@ public class QC_1389_Firms_DE_PL {
                 .signIn(emailPL, password)
                 .fillAllFieldsAndFirmForShipping(shop, "12345","FB-MONT A. Fułek Spółka Komandytowa", "Kalisz")
                 .nextBtnClick()
-                .chossePrzelewBankowy()
+                .choosePrzelewBankowy()
                 .nextBtnClick()
                 .checkTextInDeliveryAddressInfoBlock("Firma FB-MONT A. Fułek Spółka Komandytowa")
                 .checkTextContainingVatPercentage("23% VAT")

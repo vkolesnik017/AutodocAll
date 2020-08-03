@@ -103,8 +103,7 @@ public class QC_1553_ReconciliationOfCurrencies {
                 .nextBtnClick()
                 .choosePayPal()
                 .nextBtnClick()
-                .checkCurrencyOnAllDataPage(shop)
-                .checkCurrencyForVatPrice(shop);
+                .checkCurrencyOnAllDataPage(shop);
     }
 
     @AfterMethod

@@ -40,7 +40,7 @@ public class QC_1394_Firm_NonSplit_BillingAndShipping_PositiveCase {
 
     @DataProvider(name = "routeEN", parallel = true)
     Object[] dataProviderProductsEN() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "EN", "main", "product2");
+        return new SetUp().setUpShopWithSubroutes("prod", "EN", "main", "product32");
     }
 
     @Test(dataProvider = "routeEN")
@@ -50,7 +50,6 @@ public class QC_1394_Firm_NonSplit_BillingAndShipping_PositiveCase {
     public void testSuccessfulPlacementOfOrder_NonSplitBillingAndShipping_EN(String routeEN) {
         vatForGB = new PageVAT_aws().getVatForGB();
         openPage(routeEN);
-        String shop = getCurrentShopFromJSVarInHTML();
         priceWithVatPerAllDataPageGB = product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
@@ -59,7 +58,7 @@ public class QC_1394_Firm_NonSplit_BillingAndShipping_PositiveCase {
                 .fillAllFieldsAndFirmForShipping("BE", "1070", "SPRL Brasserie Cantillon","Anderlecht")
                 .fillFieldIdCompanyShipping("0402065988")
                 .nextBtnClick()
-                .chosseUnicreditBank()
+                .chooseUnicreditBank()
                 .nextBtnClick()
                 .checkAbsenceOfVatPercentage()
                 .checkTextInDeliveryAddressInfoBlock("SPRL Brasserie Cantillon")
@@ -113,7 +112,7 @@ public class QC_1394_Firm_NonSplit_BillingAndShipping_PositiveCase {
 
     @DataProvider(name = "routeDE", parallel = true)
     Object[] dataProviderProductsDE() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product2");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product32");
     }
 
     @Test(dataProvider = "routeDE")

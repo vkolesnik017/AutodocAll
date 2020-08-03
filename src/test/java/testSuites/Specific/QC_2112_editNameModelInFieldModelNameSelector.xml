@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="QC_2112_editNameModelInFieldModelNameSelector" data-provider-thread-count="5">
+
+    <listeners>
+        <listener class-name="ATD.ProjectListener"/>
+    </listeners>
+
+    <test name="QC_2112_editNameModelInFieldModelNameSelector">
+        <classes>
+            <class name="ATD.SpecificTests.QC_2112_editNameModelInFieldModelNameSelector">
+            </class>
+        </classes>
+    </test>
+
+</suite>

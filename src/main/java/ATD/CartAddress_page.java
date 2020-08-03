@@ -9,15 +9,15 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class CartAddress_page {
 
-    SelenideElement shippingForm() {
+    public SelenideElement shippingForm() {
         return $x("//div[@class='shipping-form input-form']");
     }
 
-    SelenideElement vorname() {
+    public SelenideElement vorname() {
         return $(byId("form_lVorname"));
     }
 
-    SelenideElement nameIn() {
+    public SelenideElement nameIn() {
         return $(byId("form_lName"));
     }
 
@@ -29,7 +29,7 @@ public class CartAddress_page {
         return $(byId("form_delivery_house"));
     }
 
-    SelenideElement ort() {
+    public SelenideElement ort() {
         return $(byId("form_lOrt"));
     }
 
@@ -161,7 +161,7 @@ public class CartAddress_page {
         return $x("//div[@class='block-personal-number__button']");
     }
 
-    SelenideElement errorMessageForPersonalNumber() {
+    SelenideElement errorMessage() {
         return $x("//div[@class='error-message']");
     }
 
@@ -175,6 +175,10 @@ public class CartAddress_page {
 
     SelenideElement fieldFiscalCode() {
         return $x("//input[@name='lFiscalCode']");
+    }
+
+    SelenideElement notesWithAddressRestrictions() {
+        return $x("//span[@style='color: inherit;']");
     }
 
 }

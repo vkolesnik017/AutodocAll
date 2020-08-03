@@ -14,15 +14,22 @@ public class CartPayments_page_Logic extends CartPayments_page{
 
     // For PL shop
     @Step("Click przelew bankowy. CartPayments_page")
-    public CartPayments_page_Logic chossePrzelewBankowy() {
+    public CartPayments_page_Logic choosePrzelewBankowy() {
         przelewBankowyBtn().click();
         return this;
     }
 
     // For EN shop
     @Step("Click Unicredit Bank. CartPayments_page")
-    public CartPayments_page_Logic chosseUnicreditBank() {
+    public CartPayments_page_Logic chooseUnicreditBank() {
         unicreditBankBtn().click();
+        return this;
+    }
+
+    //For AT shop
+    @Step("Click Bank Austria. CartPayments_page")
+    public CartPayments_page_Logic chooseBankAustria() {
+        bankAustria().click();
         return this;
     }
 

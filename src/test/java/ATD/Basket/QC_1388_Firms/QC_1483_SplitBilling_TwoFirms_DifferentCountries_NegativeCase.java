@@ -62,7 +62,7 @@ public class QC_1483_SplitBilling_TwoFirms_DifferentCountries_NegativeCase {
                 .nextBtnClick();
         totalPrice = cartAddress_page_logic.checkPresencePopupErrorAboutWrongCompany()
                 .clickBtnContinueInPopupAboutWrongCompany()
-                .chosseUnicreditBank()
+                .chooseUnicreditBank()
                 .nextBtnClick()
                 .checkTextInDeliveryAddressInfoBlock("Company yyyy")
                 .checkTextInPayersAddressInfoBlock("SPRL Brasserie Cantillon")

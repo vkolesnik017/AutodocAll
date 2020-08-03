@@ -29,10 +29,10 @@ public class QC_229_FiltersSorting_TestOutputSortingWithFilterBySide {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks addToBasket buttons sorting with filter by side")
     public void testSortingWithFilterBySide() throws SQLException {
-        openPage("https://autodoc.de/" +  dataBase.getRouteByRouteName("DE", "category_car_list"));
+        openPage("https://autodoc.de/" + dataBase.getRouteByRouteName("DE", "category_car_list"));
         new Listing_page_Logic().clickFilterBySideBack()
-                                .waitUntilPreloaderDisappear()
-                                .checkAddToBasketButtonsSortingWithPagination();
+                .waitUntilPreloaderDisappear()
+                .checkAddToBasketButtonsSortingWithPagination();
     }
 
     @AfterMethod
