@@ -22,7 +22,7 @@ public class Listing_accessories_page {
     }
 
     SelenideElement firstCategoryInSidebar() {
-        return $x("//div[@class='sidebar']//li[1]//span[text()]");
+        return $x("//div[@class='block categories blue topSubCats']//li[1]//span[text()]");
     }
 
     ElementsCollection categoriesInSidebar() {
