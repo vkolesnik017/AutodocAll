@@ -729,7 +729,7 @@ public class Listing_page_Logic extends Listing_page {
         scrollAndCheckFixFiltersInSidebar();
         bySideFilterBlockInSidebar().shouldBe(visible);
         brandFilterBlockInSidebar().shouldBe(visible);
-        ratingFilterBlock().shouldBe(visible);
+        ratingFilterBlock().hover().shouldBe(visible);
         langeFilterBlockInSidebar().hover().shouldBe(visible);
         return this;
     }
