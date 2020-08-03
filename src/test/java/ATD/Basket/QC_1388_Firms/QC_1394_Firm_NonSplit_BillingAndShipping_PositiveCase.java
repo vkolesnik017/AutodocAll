@@ -50,7 +50,6 @@ public class QC_1394_Firm_NonSplit_BillingAndShipping_PositiveCase {
     public void testSuccessfulPlacementOfOrder_NonSplitBillingAndShipping_EN(String routeEN) {
         vatForGB = new PageVAT_aws().getVatForGB();
         openPage(routeEN);
-        String shop = getCurrentShopFromJSVarInHTML();
         priceWithVatPerAllDataPageGB = product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
