@@ -388,7 +388,9 @@ public class Listing_page_Logic extends Listing_page {
     // The method fits search and lkw listing
     @Step("Checks important elements on listing (Side filters block, Brand filter block, Pagination block). Listing_page")
     public Listing_page_Logic checksImportantElementsOnListing() {
-        blockOfBySideFilters().shouldBe(visible);
+       if (!blockOfBySideFilters().isDisplayed()) {
+            blockOfBySideFiltersInSidebar().shouldBe(visible);
+        }
         brandFilterBlock().shouldBe(visible);
         paginationFirstBlock().shouldBe(visible);
         return this;

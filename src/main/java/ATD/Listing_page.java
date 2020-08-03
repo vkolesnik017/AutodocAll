@@ -353,6 +353,10 @@ public class Listing_page {
         return $(".installation-side__content");
     }
 
+    SelenideElement blockOfBySideFiltersInSidebar() {
+        return $(".js-filter-criteria_100");
+    }
+
     public SelenideElement filterBySideBack() {
         return $(By.xpath("//div[contains(@class,'installation-side__filter back-side')]"));
     }
