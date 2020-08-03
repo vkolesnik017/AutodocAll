@@ -54,7 +54,7 @@ public class LKW_Parent_Category_page_Logic extends LKW_Parent_Category_page {
     @Step("presence of all parent categories in the sidebar .LKW_Parent_Category_page")
     public LKW_Parent_Category_page_Logic presenceOfAllParentCategoriesInSideBar() {
         catalogBlockInSideBar().shouldBe(visible).click();
-        categoriesInParentCatalogInSideBar().shouldHave(size(31));
+        categoriesInParentCatalogInSideBar().shouldHaveSize(32);
         return this;
     }
 
