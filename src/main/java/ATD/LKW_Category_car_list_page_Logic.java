@@ -273,14 +273,21 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
 
     @Step("check visibility of Installation side block .LKW_Category_car_list_page")
     public LKW_Category_car_list_page_Logic visibilityOfInstallationSideBlock() {
-        installationSideBlock().shouldBe(visible);
+        installationSideBlockInSideBar().shouldBe(visible);
+
         return this;
     }
 
     @Step("Check TecDoc listing with selecting brand .LKW_Category_car_list_page")
     public LKW_Category_car_list_page_Logic checkTecDocListingWithSelectingInstallationSide() {
-        sidesOfInstallation().get(0).click();
-        appearsOfLoader();
+        if (installationSideBlockInSideBar().isDisplayed()) {
+            sidesOfInstallationInSideBar().get(0).click();
+            appearsOfLoader();
+        } else if (installationSideBlockInHeader().isDisplayed()) {
+            sidesOfInstallation().get(0).click();
+            appearsOfLoader();
+        }
+
         Assert.assertTrue(url().equals("https://lkwteile.autodoc.de/ersatzteile/scheibenbremsbelag-200342/iveco/eurostar?car_id=1006726&criteria%5B100%5D=HA"));
         checkOfPresenceInstallationSide();
         while (nextPagePagination().isDisplayed()) {
@@ -301,9 +308,9 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
 
     @Step("select Vorderachse installation side .LKW_Category_car_list_page")
     public LKW_Category_car_list_page_Logic selectVorderachseInstallationSide() {
-        sidesOfInstallation().get(1).click();
+        sidesOfInstallationInSideBar().get(1).click();
         appearsOfLoader();
-        Assert.assertTrue(url().equals("https://lkwteile.autodoc.de/ersatzteile/scheibenbremsbelag-200342/iveco/eurostar?car_id=1006726&criteria%5B100%5D=VA"));
+        Assert.assertTrue(url().contains("https://lkwteile.autodoc.de/ersatzteile/scheibenbremsbelag-200342/iveco/eurostar?car_id=1006726&criteria%5B100%5D=VA"));
         for (int i = 1; i <= characteristicsBlock().size(); i++) {
             descriptionOfCharacteristicsFrontSide(i).shouldBe(exist);
         }
@@ -312,9 +319,9 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
 
     @Step("reset Vorderachse installation side .LKW_Category_car_list_page")
     public LKW_Category_car_list_page_Logic resetVorderachseInstallationSide() {
-        sidesOfInstallation().get(0).click();
+        sidesOfInstallationInSideBar().get(0).click();
         appearsOfLoader();
-        Assert.assertTrue(url().equals("https://lkwteile.autodoc.de/ersatzteile/scheibenbremsbelag-200342/iveco/eurostar?car_id=1006726"));
+        Assert.assertTrue(url().contains("https://lkwteile.autodoc.de/ersatzteile/scheibenbremsbelag-200342/iveco/eurostar?car_id=1006726"));
         return this;
     }
 
@@ -517,8 +524,14 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
 
     @Step("Check TecDoc listing with selecting brand  and installation side.LKW_Category_car_list_page")
     public LKW_Category_car_list_page_Logic checkTecDocListingWithSelectingBrandAndInstallationSide() {
-        sidesOfInstallation().get(0).click();
-        appearsOfLoader();
+
+        if (installationSideBlockInSideBar().isDisplayed()) {
+            sidesOfInstallationInSideBar().get(0).click();
+            appearsOfLoader();
+        } else if (installationSideBlockInHeader().isDisplayed()) {
+            sidesOfInstallation().get(0).click();
+            appearsOfLoader();
+        }
         checkOfPresenceInstallationSide();
         checkOfPresenceSelectedBrand("TEXTAR");
         return this;
@@ -535,14 +548,13 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
 
     @Step("select generic filter  .LKW_Category_car_list_page")
     public LKW_Category_car_list_page_Logic selectGenericFilter(String subRoute, String idOfGeneric) throws SQLException {
-        DataBase db = new DataBase();
         genericsBlock().shouldBe(visible);
         for (int i = 0; i < typeOfGenerics().size(); i++) {
             if (typeOfGenerics().get(i).has(attribute("for", "category_" + idOfGeneric + "")))
                 typeOfGenerics().get(i).click();
         }
         appearsOfLoader();
-        Assert.assertEquals(url(), db.getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", subRoute));
+        Assert.assertEquals(url(), new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", subRoute));
         return this;
     }
 
@@ -557,11 +569,10 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
 
     @Step("selecting of installation side  .LKW_Category_car_list_page")
     public LKW_Category_car_list_page_Logic selectInstallationSide(String subRoute) throws SQLException {
-        DataBase db = new DataBase();
         installationSideBlock().shouldBe(visible);
         sidesOfInstallation().get(0).click();
         appearsOfLoader();
-        Assert.assertEquals(url(), db.getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", subRoute));
+        Assert.assertEquals(url(), new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", subRoute));
         return this;
     }
 

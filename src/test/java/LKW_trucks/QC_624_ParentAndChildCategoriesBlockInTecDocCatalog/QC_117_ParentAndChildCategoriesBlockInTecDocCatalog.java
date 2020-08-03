@@ -37,9 +37,10 @@ public class QC_117_ParentAndChildCategoriesBlockInTecDocCatalog {
         new LKW_Categories_page_Logic()
                 .presenceOfParentCategoriesBlock(30)
                 .checkParentCategoriesOfTecDocCatalog()
-                .transitionToChildCategory(0, 0);
+                .transitionToChildCategory(1, 1);
         checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "lkw_category3"));
     }
+
 
     @DataProvider(name = "routesMakerCarList", parallel = true)
     Object[] dataProviderMakerCarList() throws SQLException {
@@ -55,7 +56,7 @@ public class QC_117_ParentAndChildCategoriesBlockInTecDocCatalog {
         new LKW_maker_car_list_Logic()
                 .presenceOfParentCategoriesBlock(0)
                 .checkParentCategoriesOfTecDocCatalog()
-                .selectChildCategoryWithOutAllValuesInSelector(0, 0)
+                .selectChildCategoryWithOutAllValuesInSelector(1, 1)
                 .appearanceOfSelector();
     }
 
@@ -73,7 +74,7 @@ public class QC_117_ParentAndChildCategoriesBlockInTecDocCatalog {
         new LKW_Category_car_list_page_Logic()
                 .presenceOfParentCategoriesBlock(0)
                 .checkParentCategoriesOfTecDocCatalog()
-                .transitionToChildCategory(0, 0);
+                .transitionToChildCategory(1, 1);
         checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "lkw_category_car_list27"));
     }
 

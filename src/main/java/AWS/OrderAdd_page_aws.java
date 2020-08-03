@@ -125,6 +125,10 @@ public class OrderAdd_page_aws {
         return $x("//input[@value='suppliers']");
     }
 
+    private SelenideElement radioBtnStorage() {
+        return $x("//input[@value='storage']");
+    }
+
     private SelenideElement tableOfStock() {
         return $x("//table[@class='table table-bordered contains-storage']");
     }
@@ -227,9 +231,11 @@ public class OrderAdd_page_aws {
     public OrderAdd_page_aws checkPresenceTableOfSuppliersAndClickBtnSelect() {
         tableOfSuppliers().waitUntil(visible, 3000);
         if (tableOfStock().isDisplayed()){
+            radioBtnStorage().click();
+        } else {
+            tableOfSuppliers().shouldBe(visible);
             radioBtnSuppliers().click();
         }
-        tableOfSuppliers().shouldBe(visible);
         btnSelect().click();
         return this;
     }
