@@ -10,7 +10,6 @@
         <classes>
             <class name="ATD.Catalog.QC_1447_AbsenceOf4xx3xxResponsesInCatalogCategories.QC_1448_AbsenceOf4xx3xxResponsesInTecdocCatalogCategories"/>
             <class name="ATD.Catalog.QC_1447_AbsenceOf4xx3xxResponsesInCatalogCategories.QC_1449_AbsenceOf4xx3xxResponsesInDropdownCatalogCategories"/>
-            <class name="ATD.Catalog.QC_646_DisplayAllCategoriesInCatalogDropdownMenu.QC_647_DisplayAllCategoriesInCatalogDropdownMenu"/>
         </classes>
     </test>
 
@@ -24,6 +23,12 @@
     <test name="QC_613_DisplayAllUndercategoriesTecdocCatalog">
         <classes>
             <class name="ATD.Catalog.QC_613_DisplayAllUndercategoriesTecdocCatalog.QC_614_DisplayUndercategoriesInCatalogRouteWithCar"/>
+        </classes>
+    </test>
+
+    <test name="QC_646_DisplayAllCategoriesInCatalogDropdownMenu">
+        <classes>
+            <class name="ATD.Catalog.QC_646_DisplayAllCategoriesInCatalogDropdownMenu.QC_647_DisplayAllCategoriesInCatalogDropdownMenu"/>
         </classes>
     </test>
 

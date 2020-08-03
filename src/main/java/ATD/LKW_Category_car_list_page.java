@@ -242,7 +242,7 @@ public class LKW_Category_car_list_page {
     }
 
     SelenideElement brandsFilterBlock() {
-        return $x("//div[@class='js-brands-filter js-filter-wrapper']");
+        return $x("//div[@class='filter-generics-tecdoc__list js-filter-generics-tecdoc']");
     }
 
     SelenideElement brandsLinkInSideBar(String idOfBrand) {
@@ -254,7 +254,7 @@ public class LKW_Category_car_list_page {
     }
 
     SelenideElement genericsBlock() {
-        return $x("//div[@class='filter-generics-tecdoc js-filter-generic js-filter-wrapper criteria-filter-block-js']");
+        return $x("//div[@class='filter-generics-tecdoc__list js-filter-generics-tecdoc']");
     }
 
     ElementsCollection typeOfGenerics() {
@@ -303,5 +303,9 @@ public class LKW_Category_car_list_page {
 
     ElementsCollection childCategoriesFirstLevelForCheck() {return $$x("//div[@class='car-parts-categories-modal__level1 js-height-compare']/ul[@class='car-parts-categories-modal__link-list']/li");}
 
+   SelenideElement installationSideBlockInHeader() {return $x("//div[@class='installation-side__content']/div");}
 
+    SelenideElement installationSideBlockInSideBar() {return $x("//div[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_100']");}
+
+    ElementsCollection sidesOfInstallationInSideBar() {return $$x("//div[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_100']/div[2]/ul//li");}
 }

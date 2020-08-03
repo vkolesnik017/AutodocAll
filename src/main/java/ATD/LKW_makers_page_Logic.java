@@ -63,7 +63,7 @@ public class LKW_makers_page_Logic extends LKW_makers_page {
 
     @Step("visibility of right count of brands and models in headline  .LKW_makers_page")
     public LKW_makers_page_Logic visibilityOfCountOfBrandsAndModels() {
-        brandsListOfTruck().shouldHaveSize(28);
+        brandsListOfTruck().shouldHaveSize(29);
         List<Integer> mainCountOfModels = new ArrayList<>();
         for (int i = 0; i < countOfModels().size(); i++) {
             mainCountOfModels.add(Integer.parseInt(countOfModels().get(i).getText().replaceAll("[^0-9]", "")));
