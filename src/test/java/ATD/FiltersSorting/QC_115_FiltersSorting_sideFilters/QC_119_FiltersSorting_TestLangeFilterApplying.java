@@ -53,7 +53,7 @@ public class QC_119_FiltersSorting_TestLangeFilterApplying {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks Lange side filter LKW")
     public void testLangeFilterLKW() throws SQLException {
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list"));
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list28"));
         String characteristic = listingPage.getTextFromElement(listingPage.langeFilterCheckboxLKW());
         listingPage.clickFilterButton(listingPage.langeFilterCheckboxLKW())
                     .waitUntilPreloaderDisappear()
