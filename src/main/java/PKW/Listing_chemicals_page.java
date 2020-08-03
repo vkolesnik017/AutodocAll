@@ -67,7 +67,7 @@ public class Listing_chemicals_page {
     }
 
     SelenideElement brandsBlock() {
-        return $x("//div[@class='listing-brand-filters__list-brands']");
+        return $x("//div[@class='listing-brand-filters__list-brands delay-overflow']");
     }
 
     SelenideElement firstBrandInBrandsBlock() {
@@ -79,12 +79,12 @@ public class Listing_chemicals_page {
     }
 
     SelenideElement firstBrandInBrandsBlockImg() {
-        return $x("//div[@class='listing-brand-filters__list-brands']//div[1]//img");
+        return $x("//div[@class='listing-brand-filters__list-brands delay-overflow']//div[1]//img");
     }
 
 
     SelenideElement thirdBrandInBrandsBlockImg() {
-        return $x("//div[@class='listing-brand-filters__list-brands']//div[3]//img");
+        return $x("//div[@class='listing-brand-filters__list-brands delay-overflow']//div[3]//img");
     }
 
     ElementsCollection titleNameProductsFromListing() {
@@ -136,7 +136,7 @@ public class Listing_chemicals_page {
     }
 
     SelenideElement genericsBlock() {
-        return $x("//div[@class='filter-accessories js-filter-generic js-filter-wrapper hidden']");
+        return $x("//div[@class='filter-accessories-slider-js slick-initialized slick-slider']");
     }
 
     SelenideElement firstGenericInGenericsBlock() {

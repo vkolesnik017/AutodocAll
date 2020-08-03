@@ -20,7 +20,7 @@ public class Listing_accessories_page_Logic extends Listing_accessories_page {
     @Step("Checking that selected brand become not active after clicking on it. Listing_accessories_page")
     public Listing_accessories_page_Logic checkResetSelectedFilterByBrand() {
         selectedBrand().shouldBe(visible).click();
-        sleep(3000);
+        new Listing_page_Logic().waitUntilPreloaderDisappear();
         selectedBrand().shouldNotBe(visible);
         return this;
     }

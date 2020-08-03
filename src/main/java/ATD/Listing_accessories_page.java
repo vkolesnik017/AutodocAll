@@ -14,7 +14,7 @@ public class Listing_accessories_page {
     }
 
     SelenideElement selectedBrand() {
-        return $x("//div[@class='js-brands-filter js-filter-wrapper']//li[@class='active']");
+        return $x("//div[@id='selected-instalation__slider']//li[@class='active']");
     }
 
     SelenideElement titleCategoriesBlockInSidebar() {
@@ -22,7 +22,7 @@ public class Listing_accessories_page {
     }
 
     SelenideElement firstCategoryInSidebar() {
-        return $x("//div[@class='sidebar']//li[1]//span[text()]");
+        return $x("//div[@class='block categories blue topSubCats']//li[1]//span[text()]");
     }
 
     ElementsCollection categoriesInSidebar() {
