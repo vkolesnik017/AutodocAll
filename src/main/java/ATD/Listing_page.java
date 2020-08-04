@@ -111,6 +111,10 @@ public class Listing_page {
         return $x("//*[@id='mCSB_2_container']/li[2]/label");
     }
 
+    public SelenideElement activeGenericsFilter() {
+        return $x("//label[@class='filter-generics-tecdoc__item active']");
+    }
+
     public SelenideElement activeSideFilter() {
         return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_203']//li[1]/label");
     }
@@ -301,6 +305,18 @@ public class Listing_page {
         return $$x("//*[@class='list_products ']/li//li[1]/a[@class='pkw-oem__link ga-click']");
     }
 
+    ElementsCollection idOfBrandFromHeader() { return $$x("//div[@data-filter-id='brand']");}
+
+    ElementsCollection imageBrandOfProduct() { return $$x("//div[@class='image']/span[1]/img");}
+
+    public SelenideElement resetBlock() {
+        return $x("//div[@class='reset-buttons']/ul");
+    }
+
+    public SelenideElement secondResetBtn() {
+        return $x("//ul[@class='reset-buttons__list']/li[2]");
+    }
+
     //Brand filters locators
 
     public SelenideElement firstBrandNameInFiler() {
@@ -367,12 +383,20 @@ public class Listing_page {
 
     //By generic filters locators
 
-    public SelenideElement firstGeneric() {
+    public SelenideElement firstGenericAboveListing() {
         return $(By.xpath("//div[contains(@class,'filter-generics-tecdoc__list js-filter-generics-tecdoc')]//label[1]/div[2]"));
     }
 
-    public SelenideElement secondGeneric() {
+    public SelenideElement firstGenericInSidebar() {
+        return $x("//div[contains(@class,'js-filter-50001')]//li[2]");
+    }
+
+    public SelenideElement secondGenericAboveListing() {
         return $(By.xpath("//div[contains(@class,'filter-generics-tecdoc__list js-filter-generics-tecdoc')]//label[2]/div[2]"));
+    }
+
+    public SelenideElement secondGenericInSidebar() {
+        return $x("//div[contains(@class,'js-filter-50001')]//li[3]");
     }
 
     SelenideElement thirdGeneric() {
