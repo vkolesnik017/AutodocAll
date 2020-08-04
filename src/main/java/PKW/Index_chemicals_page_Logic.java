@@ -174,5 +174,12 @@ public class Index_chemicals_page_Logic extends Index_chemicals_page {
         return this;
     }
 
+    @Step("Checking presence categories block in Logical union. Index_chemicals_page")
+    public Index_chemicals_page_Logic checkingPresenceCategoriesBlockInLogicalUnion() {
+        firstGroupLogicalUnion().hover();
+        firstCategoryInLogicalUnion().shouldBe(visible);
+        return this;
+    }
+
 
 }

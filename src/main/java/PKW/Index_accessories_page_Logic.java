@@ -125,6 +125,23 @@ public class Index_accessories_page_Logic extends Index_accessories_page {
         return this;
     }
 
+    @Step("Checking quantity categories from Top categories block . Index_accessories_page")
+    public Index_accessories_page_Logic checkingQuantityCategoriesFromTopCategoriesBlock() {
+        categoriesFromTopCategoriesBlock().shouldHaveSize(12);
+        return this;
+    }
+
+    @Step("Get URL product from top categories block. Index_accessories_page")
+    public String getURLProductFromTopProductsBlock() {
+       return categoryFromTopCategoriesBlock().getAttribute("href");
+    }
+
+    @Step("Click on product from top categories block. Index_accessories_page")
+    public Listing_accessories_page_Logic clickOnProductFromTopCategoriesBlock() {
+        categoryFromTopCategoriesBlock().click();
+        return page(Listing_accessories_page_Logic.class);
+    }
+
 
 
 }
