@@ -1,7 +1,7 @@
-package MOTO.QC_301_MotoSelector;
+package ATD.Tyres.QC_2066_CheckProductsOutOfStock;
 
-import ATD.Moto_Catalog_page_Logic;
 import ATD.SetUp;
+import ATD.Tyre_form_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -16,8 +16,7 @@ import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
-public class QC_317_TransitionToProductPageWithOutCompatibleMoto {
-
+public class QC_2068_AvailabilityOfPopUpOfAppearanceOfOutOfStockProduct {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -25,19 +24,18 @@ public class QC_317_TransitionToProductPageWithOutCompatibleMoto {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog5");
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "main", "tyre_form5,tyres_season13,tyres_brand8,tyres_group_season_brand2,tyres_size9,tyres_dimension9,tyres_season_size13,tyres_season_dimension6,tyres_brand_size3,tyres_brand_dimension6");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks transition to product page with out compatible motorcycle")
-    public void testChecksTransitionToProductPageWithOutCompatibleMoto(String route) {
+    @Description(value = "Test checks Availability of pop-ups for notification of the appearance of a product in stock when clicking on a link on products not in stock ")
+    public void testChecksAvailabilityOfPopUpOfAppearanceOfOutOfStockProduct(String route) {
         open(route);
 
-        new Moto_Catalog_page_Logic()
-                .selectProductInSearchField("HF163")
-                .presenceOfMotoIncompatibilityMessage("Erfahren Sie passende alternative Produkte für Ihr Motorrad.");
+        new Tyre_form_page_Logic().displayingCustomerFeedbackPopUp();
+
     }
 
     @AfterMethod

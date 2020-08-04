@@ -15,20 +15,6 @@ import static com.codeborne.selenide.Selenide.$$x;
 
 public class CatalogCategories_aws {
 
-    /*   private String awsEnv;
-       public CatalogCategories_aws() {
-           this.awsEnv = "https://aws.";
-       }
-       public CatalogCategories_aws(String envFromTest) {
-           SetUp setUp = new SetUp();
-           this.awsEnv = setUp.getEnvForAws(envFromTest);
-           System.out.println(awsEnv);
-       }
-
-        private String categoriesInAwsPage = "" + awsEnv + "autodoc.de/custom-catalog?filter%5Blang%5D=de&filter%5Bskin%5D%5B%5D=atd&filter%5Borigin%5D=&filter%5BnodeParentID%5D=&filter%5BnodeID%5D=&filter%5Bga%5D=&filter%5Bonly%5D=0&filter%5BorderBy%5D=groupRating&submitSearch=";
-       private String parentCategoriesInAwsPage = "" + awsEnv + "autodoc.de/custom-catalog?filter%5Blang%5D=de&filter%5Bskin%5D%5B%5D=atd&filter%5Borigin%5D=&filter%5BnodeParentID%5D=&filter%5BnodeID%5D=&filter%5Bga%5D=&filter%5Bonly%5D=1&filter%5BorderBy%5D=groupRating&submitSearch=";
-
-   */
     private String awsEnv;
     private String categoriesInAwsPage;
     private String parentCategoriesInAwsPage;

@@ -176,4 +176,14 @@
         </classes>
     </test>
 
+
+    <test name="QC_2066_CheckProductsOutOfStock">
+        <classes>
+            <class name="ATD.Tyres.QC_2066_CheckProductsOutOfStock.QC_2068_AvailabilityOfPopUpOfAppearanceOfOutOfStockProduct"/>
+            <class name="ATD.Tyres.QC_2066_CheckProductsOutOfStock.QC_2077_CheckingForPopUpOfSuccessInSendingMailForFeedback"/>
+            <class name="ATD.Tyres.QC_2066_CheckProductsOutOfStock.QC_2078_CheckingForErrorPopUpAboutAboutAnUnsetCheckbox"/>
+            <class name="ATD.Tyres.QC_2066_CheckProductsOutOfStock.QC_2079_CheckingForPopUpErrorAboutInvalidEmail"/>
+        </classes>
+    </test>
+
 </suite>
