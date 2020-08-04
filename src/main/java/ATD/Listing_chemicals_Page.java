@@ -120,6 +120,12 @@ public class Listing_chemicals_Page {
         return $$x("//div[@class='js-listing-wrap']//div[@class='name']//*[contains(@class,'ga-click')]");
     }
 
+    SelenideElement titleNameProductFromListing() {
+        return $x("//div[@class='js-listing-wrap']//div[@class='name']//*[contains(@class,'ga-click')]");
+    }
+
+
+
     SelenideElement titleCategoriesBlockInSidebar() {
         return $x("//div[@class='block categories blue topSubCats']/b[text()]");
     }

@@ -65,7 +65,7 @@ public class QC_122_FiltersSorting_TestSideFilterWithPagination {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks side filter with pagination")
     public void testSideFilterWithPaginationLKW() throws SQLException {
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list"));
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list28"));
         String characteristic = listingPage.getTextFromElement(listingPage.langeFilterCheckboxLKW700());
         listingPage.clickFilterButton(listingPage.langeFilterCheckboxLKW700())
                     .waitUntilPreloaderDisappear()
