@@ -4,6 +4,8 @@ import AWS.CatalogCategories_aws;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.sql.SQLException;
+
 public class ForTest extends SetUp {
 
 
@@ -13,7 +15,7 @@ public class ForTest extends SetUp {
     }
 
     @Test(dataProvider = "route")
-    public void test(String route) {
+    public void test(String route) throws SQLException {
         new CatalogCategories_aws("test").getAllParentCategoriesNameFromAWS();
     }
 
