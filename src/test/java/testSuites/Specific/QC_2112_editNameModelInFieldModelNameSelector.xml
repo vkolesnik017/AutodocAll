@@ -6,11 +6,19 @@
         <listener class-name="ATD.ProjectListener"/>
     </listeners>
 
-    <test name="QC_2112_editNameModelInFieldModelNameSelector">
+    <test name="QC_2112_editNameModelInFieldModelNameSelector_ATD">
         <classes>
             <class name="ATD.SpecificTests.QC_2112_editNameModelInFieldModelNameSelector">
             </class>
         </classes>
     </test>
+
+    <test name="QC_2112_editNameModelInFieldModelNameSelector_PKW">
+        <classes>
+            <class name="PKW.SpecificTests.QC_2112_editNameModelInFieldModelNameSelector">
+            </class>
+        </classes>
+    </test>
+
 
 </suite>
