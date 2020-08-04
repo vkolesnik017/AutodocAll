@@ -83,6 +83,14 @@ public class Index_accessories_page {
         return $x("//div[@class='cart-items-block ']");
     }
 
+    ElementsCollection categoriesFromTopCategoriesBlock() {
+        return $$x("//div[@class='seo-category-blocks']//li");
+    }
+
+    SelenideElement categoryFromTopCategoriesBlock() {
+        return $x("//div[@class='seo-category-blocks']//li/a");
+    }
+
 
 
 }

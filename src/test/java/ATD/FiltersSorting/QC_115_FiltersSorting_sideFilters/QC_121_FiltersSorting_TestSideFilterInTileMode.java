@@ -33,7 +33,7 @@ public class QC_121_FiltersSorting_TestSideFilterInTileMode {
 
     @DataProvider(name = "routesLKWsearch", parallel = true)
     Object[] dataProviderLKWsearch() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_search5");
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list28");
     }
 
     @Test(dataProvider = "routes")
@@ -56,8 +56,8 @@ public class QC_121_FiltersSorting_TestSideFilterInTileMode {
     @Description(value = "Test checks side filter in tile mode LKW")
     public void testSideFilterInTileModeLKW() throws Exception {
         openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list"));
-        String characteristic = listingPage.getTextFromElement(listingPage.langeFilterCheckboxLKW());
-        listingPage.clickFilterButton(listingPage.langeFilterCheckboxLKW())
+        String characteristic = listingPage.getTextFromElement(listingPage.langeFilterCheckboxLKW700());
+        listingPage.clickFilterButton(listingPage.langeFilterCheckboxLKW700())
                 .waitUntilPreloaderDisappearAndSleep(3000)
                 .clickShowListingInTileModeButton()
                 .waitUntilPreloaderDisappear()

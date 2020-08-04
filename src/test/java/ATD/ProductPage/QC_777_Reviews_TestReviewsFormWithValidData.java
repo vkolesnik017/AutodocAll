@@ -38,7 +38,7 @@ public class QC_777_Reviews_TestReviewsFormWithValidData {
         String reviewMessage = ("QC_777_AUTOTEST_REVIEWS" + getRandomNumber());
         new Product_page_Logic().enterValidReviewData(randomEmail, reviewMessage);
         new Mailinator().openEmail(randomEmail)
-                .openLetter(1)
+                .openLetter(2)
                 .clickFAQemailConfirm();
         switchTo().window(1);
         new Reviews_Confirmation_page_Logic().checkReviewsConfirmationMessage();

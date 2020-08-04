@@ -87,10 +87,10 @@ public class QC_126_FiltersSorting_TestTwoFilterAttributesInBlock {
     @Description(value = "Test checks two filter attributes in block on LKW model")
     public void testTwoFilterAttributesLKWmodel(String route)  {
         openPage(route);
-        listingPage.clickFilterButton(listingPage.langeFilterCheckbox3())
+        listingPage.clickFilterButton(listingPage.verschleisswarnkontaktFirstButtonInSidebar())
                 .waitUntilPreloaderDisappear();
         String characteristic = listingPage.getTextFromElement(listingPage.secondValueInActiveSideFilter());
-        listingPage.clickFilterButton(listingPage.secondValueInActiveSideFilter())
+        listingPage.clickFilterButton(listingPage.verschleisswarnkontaktSecondButtonInSidebar())
                 .waitUntilPreloaderDisappear()
                 .checkTextInElement(listingPage.activeSideFilterLkwCheckbox(), characteristic)
                 .checkProductAttributeOnListingWithCarAndFilter(characteristic, listingPage.verschleiswarnkontaktProductAttributeGenericRouteLKW(), listingPage.verschleiswarnkontaktProductAttributeTecdocRouteLKW());
