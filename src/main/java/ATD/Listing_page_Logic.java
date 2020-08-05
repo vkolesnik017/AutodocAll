@@ -88,6 +88,21 @@ public class Listing_page_Logic extends Listing_page {
         return this;
     }
 
+    @Step("Method checks that the listing displays products of the selected brands. Listing_page")
+    public Listing_page_Logic checkThatListingDisplaysProductOfSelectedBrand(String expectedTextInTitle, String secondExpText, Boolean shouldHaveTextOrNotHave, ElementsCollection titleViewMode) {
+        if (!resetBlock().isDisplayed()) {
+            checkProductTitleOnListingWithTwoExpectedTexts(expectedTextInTitle, secondExpText, shouldHaveTextOrNotHave, titleViewMode);
+        } else {
+            for (int i = 0; i < imageBrandOfProduct().size(); i++) {
+                if (!imageBrandOfProduct().get(i).getAttribute("src").contains(idOfBrandFromHeader().get(0).getAttribute("data-crit-id"))) {
+                    Assert.assertTrue(imageBrandOfProduct().get(i).getAttribute("src").contains(idOfBrandFromHeader().get(1).getAttribute("data-crit-id")));
+                }
+            }
+        }
+        return this;
+    }
+
+
     @Step("Method checks that expected text is present in title of all products on listing with six conditions. Listing_page")
     public void checkProductTitleOnListingWithSixExpectedTexts(String expectedTextInTitle, String secondExpText, String thirdExpText, String fourthExpText, String fifthExpText,
                                                                String sixthExpText, Boolean shouldHaveTextOrNotHave, ElementsCollection titleViewMode) {
@@ -588,6 +603,17 @@ public class Listing_page_Logic extends Listing_page {
         return textFromAttribute;
     }
 
+    @Step("Get text or attribute from filter. Listing_page")
+    public String getTextOrAttributeFromFilter(SelenideElement firstElement, SelenideElement secondElement, String attribute) {
+        String textFromElement = null;
+        if (resetBlock().isDisplayed()) {
+            textFromElement = firstElement.getText();
+        } else {
+            textFromElement = secondElement.attr(attribute);
+        }
+        return textFromElement;
+    }
+
     @Step("Get attribute from element with split. Listing_page")
     public String getAtributeFromElementLKWsearch(SelenideElement element, String attribute) {
         String textFromAttribute = element.attr(attribute).split(" ")[2];
@@ -602,7 +628,7 @@ public class Listing_page_Logic extends Listing_page {
 
     @Step("Get text from filter. Listing_page")
     public String getTextFromElement(SelenideElement element) {
-        String textFromElement = element.text();
+        String textFromElement = element.getText();
         return textFromElement;
     }
 
@@ -972,16 +998,31 @@ public class Listing_page_Logic extends Listing_page {
 
     @Step("Get text from generic. Listing_page")
     public String getTextFromGeneric() {
-        return secondGeneric().text();
+        String text = null;
+        if (secondGenericAboveListing().isDisplayed()) {
+           text = secondGenericAboveListing().text();
+        } else if (secondGenericInSidebar().isDisplayed()) {
+            text = secondGenericInSidebar().getText();
+        }
+        return text;
     }
 
     @Step("Check first generic filter applying on listing. Listing_page")
     public Listing_page_Logic checkFirstGenericApplying(String genericName) {
-        secondGeneric().click();
-        firstGeneric().shouldHave(text(genericName));
+        if (secondGenericAboveListing().isDisplayed()) {
+            secondGenericAboveListing().click();
+            firstGenericAboveListing().shouldHave(text(genericName));
+        } else if (secondGenericInSidebar().isDisplayed()) {
+            secondGenericInSidebar().click();
+            firstGenericInSidebar().shouldHave(text(genericName));
+        }
         checkProductTitleOnListing(genericName, true, productTitleInListMode());
         refresh();
-        firstGeneric().shouldHave(text(genericName));
+        if (firstGenericAboveListing().isDisplayed()) {
+            firstGenericAboveListing().shouldHave(text(genericName));
+        } else if (firstGenericInSidebar().isDisplayed()) {
+            firstGenericInSidebar().shouldHave(text(genericName));
+        }
         checkProductTitleOnListing(genericName, true, productTitleInListMode());
         return this;
     }
@@ -989,30 +1030,47 @@ public class Listing_page_Logic extends Listing_page {
     @Step("Check second generic filter applying on listing. Listing_page")
     public Listing_page_Logic checkSecondGenericApplying() {
         String secondGenericName = getTextFromGeneric();
-        secondGeneric().click();
+        if (secondGenericAboveListing().isDisplayed()) {
+            secondGenericAboveListing().click();
+        } else if (secondGenericInSidebar().isDisplayed()) {
+            secondGenericInSidebar().click();
+        }
         waitUntilPreloaderDisappear();
         checkProductTitleOnListing(secondGenericName, true, productTitleInListMode());
         showListingInTileModeButton().click();
         waitUntilPreloaderDisappear();
         checkProductTitleOnListing(secondGenericName, true, productTitleInTileMode());
-        firstGeneric().click();
+        if (firstGenericAboveListing().isDisplayed()) {
+            firstGenericAboveListing().click();
+        } else if (firstGenericInSidebar().isDisplayed()) {
+            firstGenericInSidebar().click();
+        }
         waitUntilPreloaderDisappear();
-        checkUniqueGenericsOnListing(2, productTitleInTileMode());
+        checkUniqueGenericsOnListing(1, productTitleInTileMode());
         return this;
     }
 
     @Step("Check second generic filter applying on listing LKW. Listing_page")
     public Listing_page_Logic checkSecondGenericApplyingLKW() {
         String secondGenericName = getTextFromGeneric();
-        secondGeneric().click();
+        if (secondGenericAboveListing().isDisplayed()) {
+            secondGenericAboveListing().click();
+        } else if (secondGenericInSidebar().isDisplayed()) {
+            secondGenericInSidebar().click();
+        }
         waitUntilPreloaderDisappear();
         checkProductTitleOnListing(secondGenericName, true, productTitleInListMode());
         showListingInTileModeButton().click();
         waitUntilPreloaderDisappear();
         checkProductTitleOnListing(secondGenericName, true, productTitleInTileMode());
-        firstGeneric().click();
+        if (firstGenericAboveListing().isDisplayed()) {
+            firstGenericAboveListing().click();
+        } else if (firstGenericInSidebar().isDisplayed()) {
+            firstGenericInSidebar().click();
+        }
         waitUntilPreloaderDisappear();
-        checkUniqueGenericsOnListing(2, productTitleInTileMode());
+        activeGenericsFilter().shouldNotBe(visible);
+        checkUniqueGenericsOnListing(1, productTitleInTileMode());
         return this;
     }
 
@@ -1021,12 +1079,12 @@ public class Listing_page_Logic extends Listing_page {
         String genericName = thirdGeneric().text();
         thirdGeneric().click();
         waitUntilPreloaderDisappear();
-        firstGeneric().shouldHave(text(genericName));
+        firstGenericAboveListing().shouldHave(text(genericName));
         checkProductTitleOnListing(genericName, true, productTitleInListMode());
         refresh();
-        firstGeneric().shouldHave(text(genericName));
+        firstGenericAboveListing().shouldHave(text(genericName));
         checkProductTitleOnListing(genericName, true, productTitleInListMode());
-        secondGeneric().click();
+        secondGenericAboveListing().click();
         waitUntilPreloaderDisappear();
         thirdGeneric().click();
         waitUntilPreloaderDisappear();
@@ -1034,7 +1092,7 @@ public class Listing_page_Logic extends Listing_page {
         showListingInTileModeButton().click();
         waitUntilPreloaderDisappear();
         checkProductTitleOnListing(genericName, true, productTitleInTileMode());
-        firstGeneric().click();
+        firstGenericAboveListing().click();
         waitUntilPreloaderDisappear();
         checkUniqueGenericsOnListing(2, productTitleInTileMode());
         return this;
