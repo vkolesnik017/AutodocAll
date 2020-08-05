@@ -3,6 +3,7 @@ package PKW;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
+import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
@@ -78,6 +79,41 @@ public class Main_page {
 
     SelenideElement btnSearchOfSelector() {
         return $x("//div[@id='selector-wrapper']//div[@class='mainblock-search__button']/a");
+    }
+
+
+    // GDPR footer
+
+    SelenideElement footerForm() {
+        return $(By.xpath("//div[@class='footer-subscr']"));
+    }
+
+    SelenideElement linkDatenschutzerklärungInFooter() {
+        return $x("//label[@id='privacy_policy_footer']/a");
+    }
+
+    SelenideElement subscriptionMailField() {
+        return $(byXpath("//input[@id='subscr_footer']"));
+    }
+
+    SelenideElement subscriptionButton() {
+        return $(byXpath("//a[@id='news_yes_footer']"));
+    }
+
+    SelenideElement subscriptionErrPopup() {
+        return $(byXpath("//div[@class='txt']"));
+    }
+
+    SelenideElement subscriptionPopupClose() {
+        return $(byXpath("//div[@class='popup ']//*[@class='close']/span[2]"));
+    }
+
+    SelenideElement subscriptionMailCheckbox() {
+        return $(byXpath("//div[@class='footer-subscr__foremail']/input[@id='subscribe_accept_footer']"));
+    }
+
+    SelenideElement subscriptionSuccessPopup() {
+        return $(byXpath("//div[@id='popup_update']//div[@class='txt']"));
     }
 
 

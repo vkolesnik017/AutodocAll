@@ -2,10 +2,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="ACC">
 
-    <listeners>
-        <listener class-name="ATD.ProjectListener"/>
-    </listeners>
-
     <suite-files>
         <suite-file path="ACC_ATD.xml"/>
         <suite-file path="ACC_PKW.xml"/>
