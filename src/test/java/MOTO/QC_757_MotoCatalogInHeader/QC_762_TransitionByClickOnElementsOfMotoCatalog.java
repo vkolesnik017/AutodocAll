@@ -38,7 +38,7 @@ public class QC_762_TransitionByClickOnElementsOfMotoCatalog {
         new Moto_main_page_Logic()
                 .visibilityParentCategoriesInVerticalSelector()
                 .selectParentCategoryInVerticalCatalog(1)
-                .selectChildCategoryInVerticalCatalogSecondLevel(5);
+                .selectChildCategoryInVerticalCatalogSecondLevel(4);
         checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_category2"));
         new Moto_Category_page_Logic().selectMotoInSelector("4081", "12008", "135713");
         checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_category_car_list11"));

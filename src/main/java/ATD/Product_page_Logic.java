@@ -757,6 +757,10 @@ public class Product_page_Logic extends Product_page {
 
     @Step("go to basket. Product_page")
     public Cart_page_Logic goToBasket() {
+        if (otherCategoriesPopUp().isDisplayed()){
+            btnCloseOtherCategoriesPopUp().click();
+            otherCategoriesPopUp().should(disappear);
+        }
        basket().click();
         return page(Cart_page_Logic.class);
     }

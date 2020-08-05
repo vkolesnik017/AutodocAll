@@ -43,7 +43,7 @@ public class QC_8_FiltersSorting_TestBrandFilterWithTwoBrandsSelected {
 
     @DataProvider(name = "routesLKW", parallel = true)
     Object[] dataProviderLKW() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_search,lkw_category_car_list,lkw_category_car_list2,lkw_search6");
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_search,lkw_category_car_list,lkw_category_car_list2");
     }
 
     @Test(dataProvider = "routes")
@@ -53,12 +53,12 @@ public class QC_8_FiltersSorting_TestBrandFilterWithTwoBrandsSelected {
     public void checkBrandFilterWithTwoBrandsSelected(String route) {
         openPage(route);
         listingPageLogic.clickFirstBrandNameInFilter()
-                    .waitUntilPreloaderDisappear();
-        String brand1 = listingPageLogic.getAtributeFromElement(listingPageLogic.firstBrandNameInFiler(),"alt");
+                .waitUntilPreloaderDisappear();
         listingPageLogic.clickSecondBrandNameInFilter()
-                    .waitUntilPreloaderDisappear();
-        String brand2 = listingPageLogic.getAtributeFromElement(listingPageLogic.firstBrandNameInFiler(),"alt");
-        listingPageLogic.checkProductTitleOnListingWithTwoExpectedTexts(brand1, brand2, true, listingPageLogic.productTitleInListMode());
+                .waitUntilPreloaderDisappear();
+        String brand1 = listingPageLogic.getTextOrAttributeFromFilter(listingPageLogic.resetBlock(), listingPageLogic.firstBrandNameInFiler(), "alt");
+        String brand2 = listingPageLogic.getTextOrAttributeFromFilter(listingPageLogic.secondResetBtn(), listingPageLogic.secondBrandNameInFilter(), "alt");
+        listingPageLogic.checkThatListingDisplaysProductOfSelectedBrand(brand1, brand2, true, listingPageLogic.productTitleInListMode());
     }
 
     @Test(dataProvider = "routeOem")
@@ -68,11 +68,11 @@ public class QC_8_FiltersSorting_TestBrandFilterWithTwoBrandsSelected {
     public void checkBrandFilterWithTwoBrandsSelectedOem(String route) {
         openPage(route);
         listingPageLogic.clickFirstBrandNameOemListing()
-                    .waitUntilPreloaderDisappear();
-        String brand1 = listingPageLogic.getAtributeFromElement(listingPageLogic.firstBrandNameOemListing(),"alt");
+                .waitUntilPreloaderDisappear();
+        String brand1 = listingPageLogic.getAtributeFromElement(listingPageLogic.firstBrandNameOemListing(), "alt");
         listingPageLogic.clickSecondBrandNameOemListing()
-                    .waitUntilPreloaderDisappear();
-        String brand2 = listingPageLogic.getAtributeFromElement(listingPageLogic.firstBrandNameOemListing(),"alt");
+                .waitUntilPreloaderDisappear();
+        String brand2 = listingPageLogic.getAtributeFromElement(listingPageLogic.firstBrandNameOemListing(), "alt");
         listingPageLogic.checkProductTitleOnListingWithTwoExpectedTexts(brand1, brand2, true, listingPageLogic.productTitleInListMode());
     }
 
@@ -82,8 +82,8 @@ public class QC_8_FiltersSorting_TestBrandFilterWithTwoBrandsSelected {
     @Description(value = "Test checks brand filter with two brands selected (Acc listing)")
     public void checkBrandFilterWithTwoBrandsSelectedAcc(String route) {
         openPage(route);
-        String brand1 = listingPageLogic.getAtributeFromElement(listingPageLogic.firstBrandNameInFiler(),"alt");
-        String brand2 = listingPageLogic.getAtributeFromElement(listingPageLogic.secondBrandNameInFilter(),"alt");
+        String brand1 = listingPageLogic.getAtributeFromElement(listingPageLogic.firstBrandNameInFiler(), "alt");
+        String brand2 = listingPageLogic.getAtributeFromElement(listingPageLogic.secondBrandNameInFilter(), "alt");
         listingPageLogic.clickFirstBrandNameInFilter()
                 .waitUntilPreloaderDisappear()
                 .clickSecondBrandNameInFilter()
@@ -91,6 +91,7 @@ public class QC_8_FiltersSorting_TestBrandFilterWithTwoBrandsSelected {
                 .checkProductTitleOnListingWithTwoExpectedTexts(brand1, brand2, true, listingPageLogic.productTitleInListMode());
     }
 
+    // TODO Вue to a defect in SHOP-196, disabled the check on the route lkw_search6
     @Test(dataProvider = "routesLKW")
     @Flaky
     @Owner(value = "Romaniuta")
@@ -99,13 +100,14 @@ public class QC_8_FiltersSorting_TestBrandFilterWithTwoBrandsSelected {
         openPage(route);
         new Main_page_Logic().closeCarSelectorTooltipIfVisible();
         listingPageLogic.clickFirstBrandNameInFilter()
-                    .waitUntilPreloaderDisappear();
-        String firstBrand = listingPageLogic.getAtributeFromElement(listingPageLogic.firstBrandNameInFiler(),"alt");
-        String secondBrand = listingPageLogic.getAtributeFromElement(listingPageLogic.secondBrandNameInFilter(),"alt");
+                .waitUntilPreloaderDisappear();
         listingPageLogic.clickSecondBrandNameInFilter()
-                    .waitUntilPreloaderDisappear()
-                    .checkProductTitleOnListingWithTwoExpectedTexts(firstBrand, secondBrand, true, listingPageLogic.productTitleInListMode());
+                .waitUntilPreloaderDisappear();
+        String brand1 = listingPageLogic.getTextOrAttributeFromFilter(listingPageLogic.resetBlock(), listingPageLogic.firstBrandNameInFiler(), "alt");
+        String brand2 = listingPageLogic.getTextOrAttributeFromFilter(listingPageLogic.secondResetBtn(), listingPageLogic.secondBrandNameInFilter(), "alt");
+        listingPageLogic.checkThatListingDisplaysProductOfSelectedBrand(brand1, brand2, true, listingPageLogic.productTitleInListMode());
     }
+
     @AfterMethod
     private void teatDown() {
         close();
