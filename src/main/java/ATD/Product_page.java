@@ -654,4 +654,8 @@ public class Product_page {
     SelenideElement basket() {
         return $x("//a[@class='header-cart__link']");
     }
+
+    SelenideElement otherCategoriesPopUp() {return $x("//div[@class='popup-other-cat']");}
+
+    SelenideElement btnCloseOtherCategoriesPopUp() {return $x("//div[@class='popup-other-cat__close']");}
 }
