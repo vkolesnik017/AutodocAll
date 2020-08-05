@@ -686,7 +686,7 @@ public class Main_page_Logic extends Main_page {
         clickHilfeCenterLink();
         commonMethods.checkingUrlAndCloseTab(db.getRouteByRouteName(getCurrentShopFromJSVarInHTML(),"hilfe_center_main"));
         clickAutodocClub();
-        commonMethods.checkingUrlAndCloseTab(db.getRouteByRouteName(getCurrentShopFromJSVarInHTML(), "club_main") + "/?reg-modal=");
+        commonMethods.checkingUrlAndCloseTab(db.getRouteByRouteName(getCurrentShopFromJSVarInHTML(), "club_main"));
         clickBlog();
         commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "info_section_index"));
         clickVideoTutorials();
