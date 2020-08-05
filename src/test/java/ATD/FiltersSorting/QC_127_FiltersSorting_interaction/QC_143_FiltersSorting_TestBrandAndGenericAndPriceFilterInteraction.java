@@ -2,7 +2,6 @@ package ATD.FiltersSorting.QC_127_FiltersSorting_interaction;
 
 
 import ATD.DataBase;
-import ATD.Listing_page;
 import ATD.Listing_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -35,8 +34,8 @@ public class QC_143_FiltersSorting_TestBrandAndGenericAndPriceFilterInteraction 
         openPage("https://autodoc.de/" + dataBase.getRouteByRouteName("DE", "category_car_list"));
         openPage("https://autodoc.de/" + dataBase.getRouteByRouteName("DE", "listing_instruments"));
         String brandName = listingPage.firstBrandNameInFiler().attr("alt");
-        String genericName = listingPage.firstGeneric().text();
-        listingPage.firstGeneric().click();
+        String genericName = listingPage.firstGenericAboveListing().text();
+        listingPage.firstGenericAboveListing().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));
         listingPage.firstBrandInFilterButton().click();
         listingPage.preloader().shouldBe(attribute("style", "display: none;"));

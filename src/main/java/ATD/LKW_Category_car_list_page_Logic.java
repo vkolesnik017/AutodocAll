@@ -248,13 +248,12 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
 
     @Step("Check TecDoc listing with selecting brand .LKW_Category_car_list_page")
     public LKW_Category_car_list_page_Logic checkTecDocListingWithSelectingFilterByBrand(String subRoute) throws SQLException {
-        DataBase db = new DataBase();
         while (!brandsOfBrandBlock("cb-brand-4868").isDisplayed()) {
             forwardLinkAtBrandsFilter().click();
         }
         brandsOfBrandBlock("cb-brand-4868").click();
         appearsOfLoader();
-        Assert.assertEquals(getExpectedUrl(url()), getExpectedUrl(db.getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", subRoute)));
+        Assert.assertEquals(getExpectedUrl(url()), getExpectedUrl(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", subRoute)));
         for (int i = 0; i < titleOfProductInTecDocListingBlock().size(); i++) {
             titleOfProductInTecDocListingBlock().get(i).shouldHave(text("DONALDSON"));
         }
@@ -513,8 +512,10 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
     @Step("select brand in sidebar  .LKW_Category_car_list_page")
     public LKW_Category_car_list_page_Logic selectBrandFromFilterOfBrands(String subRoute, String idOfBrand) throws SQLException {
         brandsFilterBlock().shouldBe(visible);
+        String articleOfFirstBrand = visibleBrands().get(0).getAttribute("for");
         while (!brandsLinkInSideBar(idOfBrand).isDisplayed()) {
             forwardLinkAtBrandsFilter().click();
+            visibleBrands().get(0).shouldNotHave(attribute("for", articleOfFirstBrand));
         }
         brandsLinkInSideBar(idOfBrand).shouldBe(visible).click();
         appearsOfLoader();
@@ -673,7 +674,7 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         return this;
     }
 
-    @Step("transitionToChildCategory .LKW_Category_car_list_page")
+    @Step("transition to Child category .LKW_Category_car_list_page")
     public LKW_Category_car_list_page_Logic transitionToChildCategory(int parentCategoryPosition, int childCategoryPosition) {
         parentCategories().get(parentCategoryPosition).scrollIntoView("{block: \"start\"}").click();
         childCategoriesPopUpOfParentCategory().get(parentCategoryPosition).shouldBe(visible);
