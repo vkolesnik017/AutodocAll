@@ -13,11 +13,14 @@ import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.Random;
 
-import static com.codeborne.selenide.Condition.value;
+import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Condition.cssValue;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static com.codeborne.selenide.WebDriverRunner.url;
+import static org.testng.Assert.assertTrue;
 
 public class CommonMethods {
 
@@ -109,5 +112,23 @@ public class CommonMethods {
         } catch (TimeoutException e) {
             Assert.fail("Current route: [" + getNameRouteFromJSVarInHTML() + "] don't equals expected route: " + expectedRoute);
         }
+    }
+
+    @Step("Checking follow url on new tab and close tab")
+    public void checkingUrlAndCloseTab(String expectedUrl) {
+        switchTo().window(1);
+        String actualUrl = url();
+        assertTrue(actualUrl.contains(expectedUrl));
+        getWebDriver().close();
+        switchTo().window(0);
+    }
+
+    @Step("Checking datenschutzerklarung link behavior")
+    public void checkingDatenschutzerklarungLinkBehavior(SelenideElement datenschutzerklarungLink, String cssValue) {
+        datenschutzerklarungLink.shouldHave(attribute("title", "Datenschutzerklärung"));
+        datenschutzerklarungLink.shouldHave(cssValue("cursor", "pointer"));
+        datenschutzerklarungLink.shouldHave(cssValue("text-decoration", cssValue));
+        datenschutzerklarungLink.click();
+        checkingUrlAndCloseTab("https://www.pkwteile.de/datenschutz");
     }
 }
