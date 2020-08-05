@@ -129,6 +129,6 @@ public class CommonMethods {
         datenschutzerklarungLink.shouldHave(cssValue("cursor", "pointer"));
         datenschutzerklarungLink.shouldHave(cssValue("text-decoration", cssValue));
         datenschutzerklarungLink.click();
-        checkingUrlAndCloseTab("https://www.pkwteile.de/datenschutz");
+        checkingUrlAndCloseTab("/datenschutz");
     }
 }
