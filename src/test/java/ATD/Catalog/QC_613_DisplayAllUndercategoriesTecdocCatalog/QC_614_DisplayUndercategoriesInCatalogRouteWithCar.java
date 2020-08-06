@@ -44,7 +44,7 @@ public class QC_614_DisplayUndercategoriesInCatalogRouteWithCar {
         categoriesPageLogic.checkProductOutputOnRoutes();
         openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "maker_car_list8"));
         categoriesPageLogic.checkProductOutputOnRoutes();
-        notActiveCategories = new CatalogCategories_aws().getNotActiveUndercategoriesFromAWS();
+        notActiveCategories = new CatalogCategories_aws("prod").getNotActiveUndercategoriesFromAWS();
 //        categoriesPageLogic.checkUrlUndercategoriesId404(notActiveCategories);
     }
 

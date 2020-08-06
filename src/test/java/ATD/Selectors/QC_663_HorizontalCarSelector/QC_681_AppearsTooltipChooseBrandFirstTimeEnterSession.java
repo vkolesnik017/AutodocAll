@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 
 import static ATD.CommonMethods.usualIdProduct;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_681_AppearsTooltipChooseBrandFirstTimeEnterSession {
 
@@ -39,7 +39,7 @@ public class QC_681_AppearsTooltipChooseBrandFirstTimeEnterSession {
     main_page_logic.closeTooltipInCarSelector();
   }
   @AfterMethod
-  private void tearDown() {
-    close();
+  public void close() {
+    closeWebDriver();
   }
 }

@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 import static ATD.CommonMethods.usualIdProduct;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_674_AppearsErrorThatKbaNumberNotFilled {
 
@@ -40,7 +40,7 @@ public class QC_674_AppearsErrorThatKbaNumberNotFilled {
             text("Geben Sie bitte eine Schlüsselnummer ein, um nach einem Wagen zu suchen"));
   }
   @AfterMethod
-  private void tearDown() {
-    close();
+  public void close() {
+    closeWebDriver();
   }
 }

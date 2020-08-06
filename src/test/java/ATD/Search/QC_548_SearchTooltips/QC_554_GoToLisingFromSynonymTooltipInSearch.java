@@ -16,8 +16,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class QC_554_GoToLisingFromSynonymTooltipInSearch {
 
@@ -47,8 +46,7 @@ public class QC_554_GoToLisingFromSynonymTooltipInSearch {
     }
 
     @AfterMethod
-    private void tearDown() {
-        close();
+    public void close() {
+        closeWebDriver();
     }
-
 }

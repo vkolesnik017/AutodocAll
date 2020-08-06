@@ -46,7 +46,7 @@ public class QC_1697_CheckOfNotBlockingOfIndexInTheBillingBlock {
     }
 
     @AfterMethod
-    private void teatDown() {
-        close();
+    public void close() {
+        closeWebDriver();
     }
 }

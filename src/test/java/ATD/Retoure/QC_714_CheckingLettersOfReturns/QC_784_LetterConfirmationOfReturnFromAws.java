@@ -16,7 +16,7 @@ import static ATD.CommonMethods.idPfandProduct;
 import static ATD.CommonMethods.password;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_784_LetterConfirmationOfReturnFromAws {
 
@@ -67,7 +67,7 @@ public class QC_784_LetterConfirmationOfReturnFromAws {
   @AfterMethod
   public void setStatusTestToOrder() {
     new Order_aws(orderNumber).setStatusOrderToTestbestellungen();
-    close();
+    closeWebDriver();
   }
 
 }

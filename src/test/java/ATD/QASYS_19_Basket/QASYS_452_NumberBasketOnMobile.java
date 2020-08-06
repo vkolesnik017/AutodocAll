@@ -2,7 +2,6 @@ package ATD.QASYS_19_Basket;
 
 import ATD.Main_page_mob;
 import ATD.SetUp;
-import com.codeborne.selenide.Condition;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -13,8 +12,7 @@ import org.testng.annotations.Test;
 
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.close;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class QASYS_452_NumberBasketOnMobile {
 
@@ -38,7 +36,7 @@ public class QASYS_452_NumberBasketOnMobile {
   }
 
   @AfterMethod
-  private void tearDown() {
-    close();
+  public void close() {
+    closeWebDriver();
   }
 }

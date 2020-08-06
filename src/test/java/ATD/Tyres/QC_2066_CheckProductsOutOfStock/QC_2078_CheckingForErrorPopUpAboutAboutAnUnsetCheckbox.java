@@ -13,8 +13,7 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class QC_2078_CheckingForErrorPopUpAboutAboutAnUnsetCheckbox {
     private String email = "QC_2078_autotest@mailinator.com";
@@ -41,7 +40,7 @@ public class QC_2078_CheckingForErrorPopUpAboutAboutAnUnsetCheckbox {
     }
 
     @AfterMethod
-    private void tearDown() {
-        close();
+    public void close() {
+        closeWebDriver();
     }
 }

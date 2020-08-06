@@ -1,7 +1,6 @@
 package LKW_trucks.QC_144_Header_trucks_routes;
 
 import ATD.LKW_Catalog_page_Logic;
-import ATD.LKW_main_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -14,7 +13,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1508_ConformityHeaderCatalogAndTecDocCatalogWithTruck_lkw {
 
@@ -38,7 +37,7 @@ public class QC_1508_ConformityHeaderCatalogAndTecDocCatalogWithTruck_lkw {
 
     }
     @AfterMethod
-    private void tearDown() {
-        close();
+    public void close() {
+        closeWebDriver();
     }
 }

@@ -15,8 +15,7 @@ import java.sql.SQLException;
 
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.close;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class QC_700_ResetCarOnRouteAcc {
 
@@ -46,7 +45,7 @@ public class QC_700_ResetCarOnRouteAcc {
             .brandSelectorInVerticalCarSelector().shouldNot(visible);
   }
   @AfterMethod
-  private void tearDown() {
-    close();
+  public void close() {
+    closeWebDriver();
   }
 }

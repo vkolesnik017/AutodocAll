@@ -15,8 +15,7 @@ import java.sql.SQLException;
 
 import static EXPERT.CommonMethods.checkingContainsUrl;
 import static EXPERT.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class QC_1697_CheckOfNotBlockingOfIndexInTheBillingBlock {
 
@@ -51,7 +50,7 @@ public class QC_1697_CheckOfNotBlockingOfIndexInTheBillingBlock {
     }
 
     @AfterMethod
-    private void teatDown() {
-        close();
+    public void close() {
+        closeWebDriver();
     }
 }

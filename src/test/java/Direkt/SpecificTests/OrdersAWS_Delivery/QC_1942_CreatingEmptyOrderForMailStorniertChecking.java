@@ -13,8 +13,7 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static Direkt.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 
 public class QC_1942_CreatingEmptyOrderForMailStorniertChecking {
@@ -47,7 +46,7 @@ public class QC_1942_CreatingEmptyOrderForMailStorniertChecking {
     }
 
     @AfterMethod
-    private void teatDown() {
-        close();
+    public void close() {
+        closeWebDriver();
     }
 }

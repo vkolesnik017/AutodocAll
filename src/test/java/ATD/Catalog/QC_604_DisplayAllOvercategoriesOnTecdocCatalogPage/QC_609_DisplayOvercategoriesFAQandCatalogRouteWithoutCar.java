@@ -49,7 +49,7 @@ public class QC_609_DisplayOvercategoriesFAQandCatalogRouteWithoutCar {
         openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "faqHash"));
         parentCategoriesCatalogFAQwithoutCar = categoriesPageLogic.getAllParentCategoriesFromTecdocCatalog();
 
-        parentCategoriesAWS = new CatalogCategories_aws(). getAllParentCategoriesNameFromAWS();
+        parentCategoriesAWS = new CatalogCategories_aws("prod"). getAllParentCategoriesNameFromAWS();
         categoriesPageLogic.compareCategoriesFromCatalogAndAWS(parentCategoriesTecdocCatalogWithoutCar, parentCategoriesAWS)
                            .compareCategoriesFromCatalogAndAWS(parentCategoriesCatalogFAQwithoutCar, parentCategoriesAWS);
     }

@@ -14,7 +14,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_134_TopParentAndChildCategoriesBlocks {
     @BeforeClass
@@ -40,7 +40,7 @@ public class QC_134_TopParentAndChildCategoriesBlocks {
                 .checkSuccessfullyCategoryMakerPageLoading("https://lkwteile.autodoc.de/ersatzteile/keilrippenriemen-satz-204335/mercedes-benz");
     }
     @AfterMethod
-    private void tearDown() {
-        close();
+    public void close() {
+        closeWebDriver();
     }
 }
