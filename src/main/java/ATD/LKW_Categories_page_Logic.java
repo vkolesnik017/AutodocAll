@@ -206,6 +206,7 @@ public class LKW_Categories_page_Logic extends LKW_Categories_page {
         for (int i = 0; i < visibleChildCategoriesSecondLevel().size(); i++) {
             imageOfVisibleChildCategoriesSecondLevel().get(i).shouldBe(visible);
             titleOfVisibleChildCategoriesSecondLevel().get(i).shouldBe(visible);
+
         }
         return this;
     }

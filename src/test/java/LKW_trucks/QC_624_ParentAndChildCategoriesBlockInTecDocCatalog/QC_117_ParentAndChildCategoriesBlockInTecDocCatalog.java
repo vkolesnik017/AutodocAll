@@ -25,7 +25,7 @@ public class QC_117_ParentAndChildCategoriesBlockInTecDocCatalog {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_categories,404");
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_categories");
     }
 
     @Test(dataProvider = "routes")
@@ -35,6 +35,24 @@ public class QC_117_ParentAndChildCategoriesBlockInTecDocCatalog {
     public void testChecksParentAndChildCategoriesBlockInTecDocCatalog(String route) throws SQLException {
         openPage(route);
         new LKW_Categories_page_Logic()
+                .presenceOfParentCategoriesBlock(30)
+                .checkParentCategoriesOfTecDocCatalog()
+                .transitionToChildCategory(1, 1);
+        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "lkw_category3"));
+    }
+
+    @DataProvider(name = "routesError", parallel = true)
+    Object[] dataProviderError() throws SQLException {
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "404");
+    }
+
+    @Test(dataProvider = "routesError")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test checks of all parent and child categories block in TecDoc and model catalogs")
+    public void testChecksParentAndChildCategoriesBlockInTecDocCatalogError(String route) throws SQLException {
+        openPage(route);
+        new LKW_Error_page_Logic()
                 .presenceOfParentCategoriesBlock(30)
                 .checkParentCategoriesOfTecDocCatalog()
                 .transitionToChildCategory(1, 1);
