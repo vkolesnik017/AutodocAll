@@ -82,7 +82,7 @@ public class Main_page_Logic extends Main_page{
 
     @Step("Checking success popup with click checkbox in footer subscribe block. Main_page")
     public String checkingSuccessPopupClickCheckbox(String qc) {
-        String mail = qc + ATD.CommonMethods.mailRandom();
+        String mail = qc + PKW.CommonMethods.mailRandom();
         subscriptionMailField().setValue(mail);
         subscriptionMailCheckbox().click();
         subscriptionButton().click();
