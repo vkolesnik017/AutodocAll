@@ -15,7 +15,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1839_AddedTruckToMyVehiclesBlock {
     String email = "qc_1839myvehicles@mailinator.com";
@@ -51,7 +51,7 @@ public class QC_1839_AddedTruckToMyVehiclesBlock {
     }
 
     @AfterMethod
-    private void tearDown() {
-        close();
+    private void close() {
+        closeWebDriver();
     }
 }

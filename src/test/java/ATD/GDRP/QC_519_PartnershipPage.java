@@ -2,7 +2,6 @@ package ATD.GDRP;
 
 import ATD.Partnership_static_page_Logic;
 import ATD.SetUp;
-import ATD.Partnership_static_page;
 import AWS.PrivacyPolicySubscription_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,7 +15,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_519_PartnershipPage {
 
@@ -42,8 +41,8 @@ public class QC_519_PartnershipPage {
         new PrivacyPolicySubscription_aws().openPolicySubscriptionWithLogin().checkingPolicyForMail(this.mail);
     }
     @AfterMethod
-    private void teatDown() {
-        close();
+    private void close() {
+        closeWebDriver();
     }
 }
 

@@ -1,6 +1,8 @@
 package ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods;
 
-import ATD.*;
+import ATD.CartAllData_page_Logic;
+import ATD.Product_page_Logic;
+import ATD.SetUp;
 import AWS.Order_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,7 +18,7 @@ import java.sql.SQLException;
 import static ATD.CommonMethods.getCurrentShopFromJSVarInHTML;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1676_HeavyLoadsPositiveCase {
 
@@ -67,7 +69,7 @@ public class QC_1676_HeavyLoadsPositiveCase {
     }
 
     @AfterMethod
-    private void tearDown() {
-        close();
+    private void close() {
+        closeWebDriver();
     }
 }

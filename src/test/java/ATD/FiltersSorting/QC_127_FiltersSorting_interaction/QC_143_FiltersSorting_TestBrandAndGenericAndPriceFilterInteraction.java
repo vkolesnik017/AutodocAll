@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.attribute;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_143_FiltersSorting_TestBrandAndGenericAndPriceFilterInteraction {
     private Listing_page_Logic listingPage = new Listing_page_Logic();
@@ -47,7 +47,7 @@ public class QC_143_FiltersSorting_TestBrandAndGenericAndPriceFilterInteraction 
     }
 
     @AfterMethod
-    private void teatDown() {
-        close();
+    private void close() {
+        closeWebDriver();
     }
 }

@@ -1,6 +1,9 @@
 package ATD.Basket.QC_1486_Island;
 
-import ATD.*;
+import ATD.CartAddress_page_Logic;
+import ATD.CartAllData_page_Logic;
+import ATD.Search_page_Logic;
+import ATD.SetUp;
 import AWS.Order_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,7 +19,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1491_ChecksVerificationIslandsAndFirm_BillingIsUndivided_IncorrectCompanyData {
 
@@ -80,7 +83,7 @@ public class QC_1491_ChecksVerificationIslandsAndFirm_BillingIsUndivided_Incorre
     }
 
     @AfterMethod
-    private void tearDown() {
-        close();
+    private void close() {
+        closeWebDriver();
     }
 }

@@ -13,8 +13,7 @@ import org.testng.annotations.Test;
 
 import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1013_GdprRegistrationWithoutSubscribeCheckbox {
 
@@ -56,7 +55,7 @@ public class QC_1013_GdprRegistrationWithoutSubscribeCheckbox {
     }
 
     @AfterMethod
-    private void teatDown() {
-        close();
+    private void close() {
+        closeWebDriver();
     }
 }

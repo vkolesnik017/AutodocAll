@@ -316,6 +316,7 @@ public class TyresListing_page_Logic extends TyresListing_page {
 
     @Step("Click dimension button and check redirect. TyresListing_page")
     public TyresListing_page_Logic clickDimensionButtonAndCheckRedirect(SelenideElement dimensionLinkButton) {
+        dimensionLinkButton.scrollIntoView(false);
         String routeName = getNameRouteFromJSVarInHTML();
         String baseUrl = url();
         String urlToRedirect = dimensionLinkButton.attr("href");

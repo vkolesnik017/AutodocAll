@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_678_ChangeEmail_EmailExistsInTheSystem {
 
@@ -48,7 +48,7 @@ public class QC_678_ChangeEmail_EmailExistsInTheSystem {
     }
 
     @AfterMethod
-    private void teatDown() {
-        close();
+    private void close() {
+        closeWebDriver();
     }
 }

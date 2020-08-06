@@ -1,6 +1,7 @@
 package ATD.General_Common.QC_1554_Footer;
 
-import ATD.*;
+import ATD.Main_page_Logic;
+import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -11,9 +12,9 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.*;
+import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1556_LinksToStaticPages {
 
@@ -36,7 +37,7 @@ public class QC_1556_LinksToStaticPages {
         new Main_page_Logic().checkTransitionToLinksOfStaticPage(route);
     }
     @AfterMethod
-    private void teatDown() {
-        close();
+    private void close() {
+        closeWebDriver();
     }
 }

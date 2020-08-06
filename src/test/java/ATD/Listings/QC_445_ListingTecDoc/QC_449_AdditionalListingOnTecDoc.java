@@ -14,7 +14,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_449_AdditionalListingOnTecDoc {
 
@@ -37,7 +37,7 @@ public class QC_449_AdditionalListingOnTecDoc {
         new Listing_page_Logic().checksThatProductsAtListingAreFitsForChosenCar("FORD C-Max II (DXA/CB7, DXA/CEU) 1.0 EcoBoost");
     }
     @AfterMethod
-    private void tearDown() {
-        close();
+    private void close() {
+        closeWebDriver();
     }
 }

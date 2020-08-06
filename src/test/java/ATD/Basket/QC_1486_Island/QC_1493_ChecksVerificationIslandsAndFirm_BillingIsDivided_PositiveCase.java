@@ -19,7 +19,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1493_ChecksVerificationIslandsAndFirm_BillingIsDivided_PositiveCase {
 
@@ -75,7 +75,7 @@ public class QC_1493_ChecksVerificationIslandsAndFirm_BillingIsDivided_PositiveC
     }
 
     @AfterMethod
-    private void tearDown() {
-        close();
+    private void close() {
+        closeWebDriver();
     }
 }

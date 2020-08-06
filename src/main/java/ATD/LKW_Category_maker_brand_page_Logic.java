@@ -123,7 +123,7 @@ public class LKW_Category_maker_brand_page_Logic extends LKW_Category_maker_bran
 
     @Step("reset of car brand field in vertical selector .LKW_Category_maker_brand_page")
     public LKW_Category_brand_page_Logic resetOfVerticalSelector() {
-        resetBtnInVerticalCarSelector().click();
+        resetBtnInVerticalCarSelector().shouldBe(visible).click();
         resetBtnInVerticalCarSelector().should(disappear);
         return page(LKW_Category_brand_page_Logic.class);
     }

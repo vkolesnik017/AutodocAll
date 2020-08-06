@@ -1,6 +1,9 @@
 package ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods;
 
-import ATD.*;
+import ATD.DataBase;
+import ATD.Main_page_Logic;
+import ATD.Product_page_Logic;
+import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -11,11 +14,9 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.clickOfBuyBtnForAllPages;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1680_HeavyLoadsFR_NegativeCaseBasket {
 
@@ -58,7 +59,7 @@ public class QC_1680_HeavyLoadsFR_NegativeCaseBasket {
     }
 
     @AfterMethod
-    private void tearDown() {
-        close();
+    private void close() {
+        closeWebDriver();
     }
 }
