@@ -2,7 +2,6 @@ package ATD.FiltersSorting.QC_404_FiltersSorting_byPrice;
 
 
 import ATD.DataBase;
-import ATD.Listing_page;
 import ATD.Listing_page_Logic;
 import ATD.Main_page;
 import io.qameta.allure.Description;
@@ -18,9 +17,7 @@ import static ATD.CommonMethods.openPage;
 import static ATD.CommonMethods.waitingWhileLinkBecomeExpected;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.close;
-import static com.codeborne.selenide.Selenide.executeJavaScript;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class QC_419_FiltersSorting_TestPriceFilterResetACC {
     private Listing_page_Logic listingPage = new Listing_page_Logic();
@@ -57,7 +54,7 @@ public class QC_419_FiltersSorting_TestPriceFilterResetACC {
     }
     
     @AfterMethod
-    private void teatDown() {
-        close();
+    private void close() {
+        closeWebDriver();
     }
 }

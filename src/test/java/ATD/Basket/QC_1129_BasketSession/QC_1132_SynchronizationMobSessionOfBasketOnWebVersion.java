@@ -13,7 +13,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1132_SynchronizationMobSessionOfBasketOnWebVersion {
 
@@ -85,7 +85,7 @@ public class QC_1132_SynchronizationMobSessionOfBasketOnWebVersion {
     }
 
     @AfterMethod
-    private void tearDown() {
-        close();
+    private void close() {
+        closeWebDriver();
     }
 }

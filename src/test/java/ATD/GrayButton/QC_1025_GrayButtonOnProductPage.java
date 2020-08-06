@@ -1,7 +1,6 @@
 package ATD.GrayButton;
 
 import ATD.Product_page_Logic;
-import ATD.Search_page;
 import ATD.SetUp;
 import AWS.Login_aws;
 import AWS.WishlistReminderAvailability_aws;
@@ -15,10 +14,8 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
-import static org.testng.Assert.assertEquals;
 
 public class QC_1025_GrayButtonOnProductPage {
 
@@ -56,7 +53,7 @@ public class QC_1025_GrayButtonOnProductPage {
     }
 
     @AfterMethod
-    private void tearDown() {
-        close();
+    private void close() {
+        closeWebDriver();
     }
 }

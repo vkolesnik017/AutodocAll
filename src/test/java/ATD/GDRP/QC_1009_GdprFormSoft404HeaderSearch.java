@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 import static ATD.CommonMethods.mailRandom;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1009_GdprFormSoft404HeaderSearch {
 
@@ -43,8 +43,8 @@ public class QC_1009_GdprFormSoft404HeaderSearch {
     }
 
     @AfterMethod
-    private void teatDown() {
-        close();
+    private void close() {
+        closeWebDriver();
     }
 }
 

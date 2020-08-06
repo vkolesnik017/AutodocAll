@@ -1,6 +1,5 @@
 package ATD.Characteristics.QC_506_StaticCharacteristics;
 
-import ATD.CommonMethods;
 import ATD.Listing_page_Logic;
 import ATD.Product_page_Logic;
 import ATD.SetUp;
@@ -19,7 +18,7 @@ import java.util.List;
 import static ATD.CommonMethods.clickOfBuyBtnForAllPages;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_513_PresenceStaticCharacteristicInBasket {
 
@@ -52,8 +51,8 @@ public class QC_513_PresenceStaticCharacteristicInBasket {
   }
 
   @AfterMethod
-  private void teatDown() {
-    close();
+  private void close() {
+    closeWebDriver();
   }
 
 }

@@ -1,6 +1,9 @@
 package ATD.Basket.QC_1129_BasketSession;
 
-import ATD.*;
+import ATD.DataBase;
+import ATD.Main_page_Logic;
+import ATD.Product_page_Logic;
+import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -13,7 +16,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1133_LoginInBasketWhenBasketSessionAbandoned {
 
@@ -95,7 +98,7 @@ public class QC_1133_LoginInBasketWhenBasketSessionAbandoned {
     }
 
     @AfterMethod
-    private void tearDown() {
-        close();
+    private void close() {
+        closeWebDriver();
     }
 }

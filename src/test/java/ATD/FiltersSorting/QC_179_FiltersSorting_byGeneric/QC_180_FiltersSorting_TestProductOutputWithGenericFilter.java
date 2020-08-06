@@ -1,7 +1,10 @@
 package ATD.FiltersSorting.QC_179_FiltersSorting_byGeneric;
 
 
-import ATD.*;
+import ATD.DataBase;
+import ATD.Listing_page_Logic;
+import ATD.Main_page_Logic;
+import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -14,7 +17,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_180_FiltersSorting_TestProductOutputWithGenericFilter {
     private Listing_page_Logic listingPage = new Listing_page_Logic();
@@ -72,7 +75,7 @@ public class QC_180_FiltersSorting_TestProductOutputWithGenericFilter {
     }
 
     @AfterMethod
-    public void tearDown() {
-        close();
+    public void close() {
+        closeWebDriver();
     }
 }

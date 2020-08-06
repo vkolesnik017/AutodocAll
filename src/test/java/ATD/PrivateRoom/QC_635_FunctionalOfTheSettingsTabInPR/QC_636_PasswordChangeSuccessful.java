@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 
 import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_636_PasswordChangeSuccessful {
 
@@ -53,7 +53,7 @@ public class QC_636_PasswordChangeSuccessful {
     }
 
     @AfterMethod
-    private void teatDown() {
-        close();
+    private void close() {
+        closeWebDriver();
     }
 }

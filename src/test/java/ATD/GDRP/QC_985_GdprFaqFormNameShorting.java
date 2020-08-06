@@ -15,7 +15,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_985_GdprFaqFormNameShorting {
 
@@ -50,8 +50,8 @@ public class QC_985_GdprFaqFormNameShorting {
     }
 
     @AfterMethod
-    void checkingUnpublished() {
-        close();
+    void close() {
+        closeWebDriver();
         if (mail != null) faq_aws.openAndLoginFaqAwsPage().searchQuestionAndUnPublished(mail);
     }
 }

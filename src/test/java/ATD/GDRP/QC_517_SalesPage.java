@@ -1,6 +1,5 @@
 package ATD.GDRP;
 
-import ATD.Sales_page;
 import ATD.Sales_page_Logic;
 import ATD.SetUp;
 import AWS.PrivacyPolicySubscription_aws;
@@ -16,7 +15,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_517_SalesPage {
 
@@ -42,8 +41,8 @@ public class QC_517_SalesPage {
         new PrivacyPolicySubscription_aws().openPolicySubscriptionWithLogin().checkingPolicyAndSubscribeForMail(this.mail);
     }
     @AfterMethod
-    private void teatDown() {
-        close();
+    private void close() {
+        closeWebDriver();
     }
 }
 

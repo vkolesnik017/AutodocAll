@@ -14,7 +14,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1569_TransitionTheLink_Datenschutzerklärung {
 
@@ -37,7 +37,7 @@ public class QC_1569_TransitionTheLink_Datenschutzerklärung {
         new Main_page_Logic().checkTransitionToLinkPrivacyPolicy(route);
     }
     @AfterMethod
-    private void teatDown() {
-        close();
+    private void close() {
+        closeWebDriver();
     }
 }

@@ -17,7 +17,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1127_EditingQuantityOfAutoPartsInAwsOrder {
 
@@ -85,7 +85,7 @@ public class QC_1127_EditingQuantityOfAutoPartsInAwsOrder {
     }
 
     @AfterMethod
-    private void tearDown() {
-        close();
+    private void close() {
+        closeWebDriver();
     }
 }

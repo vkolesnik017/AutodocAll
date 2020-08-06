@@ -1,6 +1,9 @@
 package ATD.Basket.QC_1388_Firms;
 
-import ATD.*;
+import ATD.CartAddress_page_Logic;
+import ATD.CartAllData_page_Logic;
+import ATD.Product_page_Logic;
+import ATD.SetUp;
 import AWS.Customer_view_aws;
 import AWS.Order_aws;
 import io.qameta.allure.Description;
@@ -18,7 +21,7 @@ import java.sql.SQLException;
 import static ATD.CommonMethods.openPage;
 import static ATD.CommonMethods.password;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.switchTo;
 
 public class QC_1482_SplitBilling_TwoFirms_SameCountries_NegativeCase {
@@ -95,7 +98,7 @@ public class QC_1482_SplitBilling_TwoFirms_SameCountries_NegativeCase {
     }
 
     @AfterMethod
-    private void tearDown() {
-        close();
+    private void close() {
+        closeWebDriver();
     }
 }

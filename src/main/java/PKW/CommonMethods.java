@@ -24,7 +24,6 @@ public class CommonMethods {
     public static String password = "pkwtest";
 
 
-
     @Step("Generates random mail")
     public static String mailRandom() {
         Random randomGenerator = new Random();

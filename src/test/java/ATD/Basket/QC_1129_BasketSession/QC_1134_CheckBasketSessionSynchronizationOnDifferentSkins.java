@@ -15,9 +15,8 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.*;
-import static ATD.CommonMethods.passFB;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1134_CheckBasketSessionSynchronizationOnDifferentSkins {
 
@@ -79,7 +78,7 @@ public class QC_1134_CheckBasketSessionSynchronizationOnDifferentSkins {
     }
 
     @AfterMethod
-    private void tearDown() {
-        close();
+    private void close() {
+        closeWebDriver();
     }
 }

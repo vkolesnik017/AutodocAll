@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.matchText;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_529_PresenceRecoveryCharacteristicsInBasket {
 
@@ -39,7 +39,7 @@ public class QC_529_PresenceRecoveryCharacteristicsInBasket {
   }
 
   @AfterMethod
-  private void teatDown() {
-    close();
+  private void close() {
+    closeWebDriver();
   }
 }

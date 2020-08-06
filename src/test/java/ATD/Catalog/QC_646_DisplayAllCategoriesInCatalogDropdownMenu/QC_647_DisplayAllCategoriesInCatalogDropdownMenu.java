@@ -3,7 +3,6 @@ package ATD.Catalog.QC_646_DisplayAllCategoriesInCatalogDropdownMenu;
 
 import ATD.Categories_page_Logic;
 import ATD.SetUp;
-
 import AWS.CatalogCategories_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -18,7 +17,7 @@ import java.util.ArrayList;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_647_DisplayAllCategoriesInCatalogDropdownMenu {
     private Categories_page_Logic categoriesPageLogic = new Categories_page_Logic();
@@ -59,7 +58,7 @@ public class QC_647_DisplayAllCategoriesInCatalogDropdownMenu {
     }
 
     @AfterMethod
-    public void tearDown() {
-        close();
+    public void close() {
+        closeWebDriver();
     }
 }

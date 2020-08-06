@@ -16,7 +16,7 @@ import java.util.List;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1872_RemovingCarFromHistoryViewedInPopUp {
     private List<String> urlOfAddedVehicle = new ArrayList<>();
@@ -48,7 +48,7 @@ public class QC_1872_RemovingCarFromHistoryViewedInPopUp {
     }
 
     @AfterMethod
-    private void tearDown() {
-        close();
+    private void close() {
+        closeWebDriver();
     }
 }

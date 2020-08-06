@@ -18,7 +18,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1490_ChecksVerificationIslands_BillingIsDivided_NegativeCase {
 
@@ -72,7 +72,7 @@ public class QC_1490_ChecksVerificationIslands_BillingIsDivided_NegativeCase {
     }
 
     @AfterMethod
-    private void tearDown() {
-        close();
+    private void close() {
+        closeWebDriver();
     }
 }
