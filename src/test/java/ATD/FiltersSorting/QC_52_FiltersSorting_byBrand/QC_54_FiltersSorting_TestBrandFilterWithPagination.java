@@ -43,9 +43,9 @@ public class QC_54_FiltersSorting_TestBrandFilterWithPagination {
         openPage(route);
         listingPageLogic.clickFirstBrandNameInFilter()
                     .waitUntilPreloaderDisappear();
-        String brand1 = listingPageLogic.getAtributeFromElement(listingPageLogic.firstBrandNameInFiler(),"alt");
+        String brand1 = listingPageLogic.getTextOrAttributeFromFilter(listingPageLogic.firstResetBrandBtn(), listingPageLogic.firstBrandNameInFiler(), "alt");
         listingPageLogic.clickSecondListingPageButton()
-                    .checkProductTitleOnListing(brand1, true, listingPageLogic.productTitleInListMode());
+                    .checkThatListingDisplaysProductOfOneSelectedBrand(brand1, true, listingPageLogic.productTitleInListMode());
     }
 
     @Test(dataProvider = "routesLKW")
@@ -56,9 +56,9 @@ public class QC_54_FiltersSorting_TestBrandFilterWithPagination {
         openPage(route);
         listingPageLogic.clickFirstBrandNameInFilter()
                 .waitUntilPreloaderDisappear();
-        String brand1 = listingPageLogic.getAtributeFromElement(listingPageLogic.firstBrandNameInFiler(),"alt");
+        String brand1 = listingPageLogic.getTextOrAttributeFromFilter(listingPageLogic.firstResetBrandBtn(), listingPageLogic.firstBrandNameInFiler(), "alt");
         listingPageLogic.clickSecondListingPageButton()
-                .checkProductTitleOnListing(brand1, true, listingPageLogic.productTitleInListMode());
+                .checkThatListingDisplaysProductOfOneSelectedBrand(brand1, true, listingPageLogic.productTitleInListMode());
     }
 
     @AfterMethod

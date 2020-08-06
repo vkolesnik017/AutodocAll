@@ -313,6 +313,10 @@ public class Listing_page {
         return $x("//div[@class='reset-buttons']/ul");
     }
 
+    public SelenideElement firstResetBrandBtn() {
+        return $x("//div[@class='reset-buttons']//li[1]");
+    }
+
     public SelenideElement secondResetBtn() {
         return $x("//ul[@class='reset-buttons__list']/li[2]");
     }
