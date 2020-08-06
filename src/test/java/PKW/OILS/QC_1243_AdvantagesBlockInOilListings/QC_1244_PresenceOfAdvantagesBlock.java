@@ -1,6 +1,6 @@
-package PKW.OILS.QC_1249_MainHeadlineBlockInOilListing;
+package PKW.OILS.QC_1243_AdvantagesBlockInOilListings;
 
-import PKW.Car_parts_motoroil_page_Logic;
+import PKW.Motoroil_viscosity_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -15,7 +15,8 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
 
-public class QC_1252_PresenceOfOilIconInMainHeadline {
+public class QC_1244_PresenceOfAdvantagesBlock {
+
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -23,18 +24,20 @@ public class QC_1252_PresenceOfOilIconInMainHeadline {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new PKW.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "car_parts_motoroil");
+        return new PKW.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_viscosity,motoroil_viscosity_brand,motoroil_specification,motoroil_release,motoroil_brand,motoroil_maker,motoroil_maker_group,motoroil_chemical_type,car_parts_motoroil,motoroil_search");
     }
+
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks presence of Oil icon in main headline")
-    public void testChecksPresenceOfOilIconInMainHeadline(String route) throws SQLException {
+    @Description(value = "Test checks presence of Advantages block")
+    public void testChecksPresenceOfAdvantagesBlock(String route) throws SQLException {
         openPage(route);
 
-        new Car_parts_motoroil_page_Logic()
-                .presenceOfOilLiterIconInMainHeadline();
+        new Motoroil_viscosity_page_Logic()
+                .presenceOfAdvantagesBlock()
+                .checkCountOfAdvantagesLinks(4);
     }
 
     @AfterMethod

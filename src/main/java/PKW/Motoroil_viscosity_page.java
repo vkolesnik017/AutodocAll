@@ -11,4 +11,21 @@ public class Motoroil_viscosity_page {
     SelenideElement breadCrumbsBlock() {return $x("//div[@class='crabs']");}
 
     ElementsCollection linksOfBreadCrumbsBlock() {return $$x("//div[@class='crabs']/div/a");}
+
+    SelenideElement productsListBlock() {return $x("//div[@class='listing_items']");}
+
+    SelenideElement paymentMethodsBlock() {return $x("//div[@class='sidebar']//div[contains(text(),'Zahlungsmethode')]/..");}
+
+    ElementsCollection imageOfPaymentMethods() {return $$x("//div[@class='sidebar']//div[contains(text(),'Zahlungsmethode')]/..//ul/li/img");}
+
+    SelenideElement advantagesBlock() {return $x("//div[@class='sb_content features_wrap']");}
+
+    SelenideElement headLineOfAdvantagesBlock() { return $x("//div[@class='sb_content features_wrap']/../div[1]");}
+
+    ElementsCollection advantagesLinks() {return $$x("//div[@class='sb_content features_wrap']//ul/li");}
+
+    ElementsCollection titleOfAdvantagesLinks() {return $$x("//div[@class='sb_content features_wrap']//ul/li//strong");}
+
+    ElementsCollection hoveringTextOfAdvantagesLinks() {return $$x("//span[@class='pophover-text']");}
+
 }

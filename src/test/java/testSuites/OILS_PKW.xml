@@ -13,6 +13,21 @@
         <classes>
             <class name="PKW.OILS.QC_1255_BreadCrumbsBlockInListing.QC_1256_PresenceOfBreadCrumbsBlockInListing"/>
             <class name="PKW.OILS.QC_1255_BreadCrumbsBlockInListing.QC_1257_StructureOfBreadCrumbsBlock"/>
+            <class name="PKW.OILS.QC_1255_BreadCrumbsBlockInListing.QC_1259_TransitionByClickOnBreadCrumbsLinks"/>
+        </classes>
+    </test>
+
+    <test name="QC_1241_PaymentMethodsBlockInListing">
+        <classes>
+            <class name="PKW.OILS.QC_1241_PaymentMethodsBlockInListing.QC_1242_PresenceOfPaymentMethodsBlock"/>
+        </classes>
+    </test>
+
+    <test name="QC_1243_AdvantagesBlockInOilListings">
+        <classes>
+            <class name="PKW.OILS.QC_1243_AdvantagesBlockInOilListings.QC_1244_PresenceOfAdvantagesBlock"/>
+            <class name="PKW.OILS.QC_1243_AdvantagesBlockInOilListings.QC_1246_StructureOfAdvantagesBlock"/>
+            <class name="PKW.OILS.QC_1243_AdvantagesBlockInOilListings.QC_1247_BehaviorByHoveringOnAdvantagesLinks"/>
         </classes>
     </test>
 </suite>
