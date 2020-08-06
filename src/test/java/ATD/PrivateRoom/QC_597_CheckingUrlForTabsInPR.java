@@ -3,7 +3,6 @@ package ATD.PrivateRoom;
 import ATD.Main_page_Logic;
 import ATD.Profile_plus_page_Logic;
 import ATD.SetUp;
-
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -83,7 +82,7 @@ public class QC_597_CheckingUrlForTabsInPR {
     }
 
     @AfterMethod
-    private void teatDown() {
-        close();
+    private void close() {
+        closeWebDriver();
     }
 }

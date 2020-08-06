@@ -1,7 +1,9 @@
 package ATD.FiltersSorting.QC_404_FiltersSorting_byPrice;
 
 
-import ATD.*;
+import ATD.DataBase;
+import ATD.Listing_page_Logic;
+import ATD.Main_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -14,7 +16,7 @@ import java.sql.SQLException;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class QC_414_FiltersSorting_TestPriceFilterOnLkwListingWithPagination {
@@ -45,7 +47,7 @@ public class QC_414_FiltersSorting_TestPriceFilterOnLkwListingWithPagination {
     }
 
     @AfterMethod
-    private void teatDown() {
-        close();
+    private void close() {
+        closeWebDriver();
     }
 }

@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import static ATD.CommonMethods.openPage;
 import static ATD.CommonMethods.password;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1933_ZipMasks {
 
@@ -71,7 +71,7 @@ public class QC_1933_ZipMasks {
     }
 
     @AfterMethod
-    private void tearDown() {
-        close();
+    private void close() {
+        closeWebDriver();
     }
 }

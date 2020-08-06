@@ -1,7 +1,10 @@
 package ATD.Listings.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults;
 
 
-import ATD.*;
+import ATD.Listing_page_Logic;
+import ATD.Main_page_Logic;
+import ATD.Product_page_Logic;
+import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -15,7 +18,7 @@ import java.sql.SQLException;
 import static ATD.CommonMethods.clickOfBuyBtnForAllPages;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1308_SearchByArticleBasedOnDynamicGenerics {
 
@@ -45,7 +48,7 @@ public class QC_1308_SearchByArticleBasedOnDynamicGenerics {
     }
 
     @AfterMethod
-    public void tearDown() {
-        close();
+    public void close() {
+        closeWebDriver();
     }
 }

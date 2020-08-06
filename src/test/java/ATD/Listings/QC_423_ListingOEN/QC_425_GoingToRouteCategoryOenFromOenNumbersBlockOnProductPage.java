@@ -10,11 +10,9 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import static ATD.CommonMethods.openPage;
-import static ATD.CommonMethods.usualIdProduct;
-import static ATD.CommonMethods.waitWhileRouteBecomeExpected;
+import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_425_GoingToRouteCategoryOenFromOenNumbersBlockOnProductPage {
 
@@ -42,7 +40,7 @@ public class QC_425_GoingToRouteCategoryOenFromOenNumbersBlockOnProductPage {
   }
 
   @AfterMethod
-  private void tearDown() {
-    close();
+  private void close() {
+    closeWebDriver();
   }
 }

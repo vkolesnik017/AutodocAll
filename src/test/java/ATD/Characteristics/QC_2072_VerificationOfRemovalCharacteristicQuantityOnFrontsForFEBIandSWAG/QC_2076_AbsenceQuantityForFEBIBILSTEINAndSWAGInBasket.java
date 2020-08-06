@@ -16,7 +16,7 @@ import java.util.List;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_2076_AbsenceQuantityForFEBIBILSTEINAndSWAGInBasket {
 
@@ -55,7 +55,7 @@ public class QC_2076_AbsenceQuantityForFEBIBILSTEINAndSWAGInBasket {
 
 
     @AfterMethod
-    public void tearDown() {
-        close();
+    public void close() {
+        closeWebDriver();
     }
 }

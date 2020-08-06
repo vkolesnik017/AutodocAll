@@ -1,6 +1,9 @@
 package ATD.Advantages.QC_1051_AdvantagesPfands;
 
-import ATD.*;
+import ATD.CartAllData_page;
+import ATD.Cart_page_Logic;
+import ATD.Listing_page_Logic;
+import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -15,7 +18,7 @@ import static ATD.CommonMethods.openPage;
 import static ATD.CommonMethods.password;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.exactText;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 
 public class QC_1053_PfandPriceMatchesInBasketAndListing {
@@ -59,7 +62,7 @@ public class QC_1053_PfandPriceMatchesInBasketAndListing {
     }
 
     @AfterMethod
-    private void tearDown() {
-        close();
+    private void close() {
+        closeWebDriver();
     }
 }

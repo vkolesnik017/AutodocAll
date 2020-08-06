@@ -1,7 +1,6 @@
 package ATD.Characteristics.QC_486_DynamicCharacteristics;
 
 import ATD.DataBase;
-import ATD.Listing_page;
 import ATD.Listing_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
