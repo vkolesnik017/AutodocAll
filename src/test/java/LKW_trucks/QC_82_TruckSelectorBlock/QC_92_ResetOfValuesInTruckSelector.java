@@ -118,7 +118,6 @@ public class QC_92_ResetOfValuesInTruckSelector {
                 .resetOfVerticalSelector()
                 .checkSuccessfullyCategoryBrandPageLoading("https://lkwteile.autodoc.de/ersatzteile/olfilter-200157/mf-mann-filter");
     }
-
     @DataProvider(name = "routesMakerCarList", parallel = true)
     Object[] dataProviderMakerCarList() throws SQLException {
         return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_maker_car_list2");

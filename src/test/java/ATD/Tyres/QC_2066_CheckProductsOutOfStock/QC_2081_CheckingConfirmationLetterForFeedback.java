@@ -5,7 +5,7 @@ import ATD.Tyre_form_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
-import org.testng.annotations.AfterMethod;
+import mailinator.Mailinator;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -13,12 +13,11 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
-public class QC_2077_CheckingForPopUpOfSuccessInSendingMailForFeedback {
+public class QC_2081_CheckingConfirmationLetterForFeedback {
 
-    private String email = "QC_2077_autotest@mailinator.com";
+    private String email = "QC_2081_autotest@mailinator.com";
 
     @BeforeClass
     void setUp() {
@@ -34,15 +33,13 @@ public class QC_2077_CheckingForPopUpOfSuccessInSendingMailForFeedback {
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test сhecking for a pop-up of success in sending mail for feedback ")
-    public void testCheckingForPopUpOfSuccessInSendingMailForFeedback(String route) {
+    public void testCheckingConfirmationLetterForFeedback(String route) {
         open(route);
 
         new Tyre_form_page_Logic().displayingCustomerFeedbackPopUp()
-        .displayingOfPopUPAboutSuccessfulSendingLetter(email);
+                .displayingOfPopUPAboutSuccessfulSendingLetter(email);
+        new Mailinator().openEmail(email)
+                .checkLetterInfoText(1, "moments ago", "Wir bearbeiten");
     }
 
-    @AfterMethod
-    private void tearDown() {
-        close();
-    }
 }

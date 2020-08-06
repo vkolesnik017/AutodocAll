@@ -44,7 +44,9 @@ public class QC_1832_CheckingMultipleDeliveryServicesInOneOrder {
     @Description(value = "Test checks the display of the tracking number in PR")
     public void testDisplayTrackingNumberInPR(String route) throws SQLException {
         openPage(route);
-        main_page_logic.loginAndTransitionToProfilePlusPage(mail);
+        main_page_logic.loginAndTransitionToProfilePlusPage(mail)
+                .goToMyOrdersPage()
+                .checkOrderHistoryAndClearIt("Testbestellungen");
         openPage(dataBase.getFullRouteByRouteAndSubroute("prod", "DE", "main", "product32"));
         new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
@@ -56,7 +58,7 @@ public class QC_1832_CheckingMultipleDeliveryServicesInOneOrder {
                 .nextBtnClick()
                 .nextBtnClick();
         firstOrderNumber = new Payment_handler_page_Logic().getOrderNumber();
-        listSavedTrackingNumberFromAWS = new Order_aws(firstOrderNumber).openOrderInAwsWithLogin()
+        listSavedTrackingNumberFromAWS = new Order_aws(firstOrderNumber).openOrderInAwsAndLogsInIfUserIntoLogged()
                 .checkCurrentStatusInOrder("Neue Bestellung")
                 .selectDeliveryAndEnterTrackingNum("GLS", "0", "0", "1111111111")
                 .selectDeliveryAndEnterTrackingNum("DHL", "1", "1", "2222222222")
@@ -94,7 +96,7 @@ public class QC_1832_CheckingMultipleDeliveryServicesInOneOrder {
                 .nextBtnClick()
                 .nextBtnClick();
         secondOrderNumber = new Payment_handler_page_Logic().getOrderNumber();
-        listSavedTrackingNumberFromAWS = new Order_aws(secondOrderNumber).openOrderInAwsWithoutLogin()
+        listSavedTrackingNumberFromAWS = new Order_aws(secondOrderNumber).openOrderInAwsAndLogsInIfUserIntoLogged()
                 .checkCurrentStatusInOrder("Neue Bestellung")
                 .selectDeliveryAndEnterTrackingNum("PNORD", "0", "0", "4444444444")
                 .selectDeliveryAndEnterTrackingNum("DPDPL", "1", "1", "5555555555")

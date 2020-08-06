@@ -3,7 +3,6 @@ package PKW;
 
 import ATD.Maker_car_list_page_Logic;
 import io.qameta.allure.Step;
-
 import static PKW.CommonMethods.mailRandom;
 import static PKW.CommonMethods.password;
 import static com.codeborne.selenide.Condition.*;
@@ -60,5 +59,41 @@ public class Main_page_Logic extends Main_page{
         typeSelectorInVerticalCarSelector().selectOptionByValue(motor);
         btnSearchOfSelector().click();
         return page(Maker_car_list_page_Logic.class);
+    }
+
+    // GDPR footer
+    @Step("Scrolling to footer subscribe block. Main_page")
+    public Main_page_Logic scrollToFooterSubscribeBlock() {
+        footerForm().scrollIntoView(false);
+        footerForm().shouldBe(visible);
+        return this;
+    }
+
+
+    @Step("Checking error popup with unclick checkbox in footer subscribe block. Main_page")
+    public Main_page_Logic checkingErrorPopupUnClickCheckbox(String qc) {
+        String mail = qc + mailRandom();
+        subscriptionMailField().setValue(mail);
+        subscriptionButton().click();
+        subscriptionErrPopup().shouldHave(text("Um fortzufahren bestätigen Sie bitte Ihr Newsletter-Abo"));
+        subscriptionPopupClose().click();
+        return this;
+    }
+
+    @Step("Checking success popup with click checkbox in footer subscribe block. Main_page")
+    public String checkingSuccessPopupClickCheckbox(String qc) {
+        String mail = qc + PKW.CommonMethods.mailRandom();
+        subscriptionMailField().setValue(mail);
+        subscriptionMailCheckbox().click();
+        subscriptionButton().click();
+        subscriptionSuccessPopup().shouldHave(text("Viel Spaß beim Shoppen!"));
+        subscriptionPopupClose().click();
+        return mail;
+    }
+
+    @Step(":in review form on Main_page")
+    public Main_page_Logic checkingDatenschutzerklarungLinkBehaviorInReviewsForm() {
+        new CommonMethods().checkingDatenschutzerklarungLinkBehavior(linkDatenschutzerklärungInFooter(), "underline solid rgb(0, 0, 0)");
+        return this;
     }
 }

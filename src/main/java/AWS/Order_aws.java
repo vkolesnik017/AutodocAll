@@ -640,6 +640,20 @@ public class Order_aws {
         return this;
     }
 
+    public Order_aws openOrderInAwsAndLogsInIfUserIntoLogged() {
+        Login_aws login_aws = new Login_aws();
+        open(url + orderNumber);
+        if (login_aws.loginForm().isDisplayed()) {
+            login_aws.loginInAws();
+            checkWhatOrderOpened();
+            checkOrderHasTestPhone();
+            testIcon().shouldBe(visible);
+        } else {
+            checkOrderHasTestPhone();
+        }
+        return this;
+    }
+
     public Order_aws openOrderInAwsWithoutLoginAndCheckTestIcon() {
         open(url + orderNumber);
         checkOrderHasTestPhone();

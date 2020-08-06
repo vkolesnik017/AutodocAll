@@ -44,9 +44,9 @@ public class QC_53_FiltersSorting_TestBrandFilterInTileMode {
         openPage(route);
         listingPageLogic.clickFirstBrandNameInFilter()
                     .waitUntilPreloaderDisappear();
-        String brand1 = listingPageLogic.getAtributeFromElement(listingPageLogic.firstBrandNameInFiler(),"alt");
+        String brand1 = listingPageLogic.getTextOrAttributeFromFilter(listingPageLogic.firstResetBrandBtn(), listingPageLogic.firstBrandNameInFiler(), "alt");
         listingPageLogic.clickShowListingInTileModeButton()
-                    .checkProductTitleOnListing(brand1, true, listingPageLogic.productTitleInTileMode());
+                .checkProductTitleOnListingAfterChangingView(brand1, listingPageLogic.productTitleInTileMode());
     }
 
     @Test(dataProvider = "routesLKW")
@@ -58,9 +58,9 @@ public class QC_53_FiltersSorting_TestBrandFilterInTileMode {
         new Main_page_Logic().closeCarSelectorTooltipIfVisible();
         listingPageLogic.clickFirstBrandNameInFilter()
                     .waitUntilPreloaderDisappear();
-        String brand1 = listingPageLogic.getAtributeFromElement(listingPageLogic.firstBrandNameInFiler(),"alt");
+        String brand1 = listingPageLogic.getTextOrAttributeFromFilter(listingPageLogic.firstResetBrandBtn(), listingPageLogic.firstBrandNameInFiler(), "alt");
         listingPageLogic.clickShowListingInTileModeButton()
-                    .checkProductTitleOnListing(brand1, true, listingPageLogic.productTitleInTileMode());
+                .checkProductTitleOnListingAfterChangingView(brand1, listingPageLogic.productTitleInTileMode());
     }
     @AfterMethod
     private void close() {

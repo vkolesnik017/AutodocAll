@@ -48,7 +48,6 @@ public class QC_180_FiltersSorting_TestProductOutputWithGenericFilter {
         genericName = listingPage.getTextFromGeneric();
         listingPage.checkFirstGenericApplying(genericName)
                     .checkSecondGenericApplying();
-
     }
 
     // TODO Вue to a defect in SHOP-196, disabled the check on the route lkw_search8

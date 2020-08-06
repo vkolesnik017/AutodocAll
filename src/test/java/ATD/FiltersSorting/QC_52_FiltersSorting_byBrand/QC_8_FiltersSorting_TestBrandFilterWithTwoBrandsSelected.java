@@ -56,9 +56,9 @@ public class QC_8_FiltersSorting_TestBrandFilterWithTwoBrandsSelected {
                 .waitUntilPreloaderDisappear();
         listingPageLogic.clickSecondBrandNameInFilter()
                 .waitUntilPreloaderDisappear();
-        String brand1 = listingPageLogic.getTextOrAttributeFromFilter(listingPageLogic.resetBlock(), listingPageLogic.firstBrandNameInFiler(), "alt");
+        String brand1 = listingPageLogic.getTextOrAttributeFromFilter(listingPageLogic.firstResetBrandBtn(), listingPageLogic.firstBrandNameInFiler(), "alt");
         String brand2 = listingPageLogic.getTextOrAttributeFromFilter(listingPageLogic.secondResetBtn(), listingPageLogic.secondBrandNameInFilter(), "alt");
-        listingPageLogic.checkThatListingDisplaysProductOfSelectedBrand(brand1, brand2, true, listingPageLogic.productTitleInListMode());
+        listingPageLogic.checkThatListingDisplaysProductOfTwoSelectedBrand(brand1, brand2, true, listingPageLogic.productTitleInListMode());
     }
 
     @Test(dataProvider = "routeOem")
@@ -103,9 +103,9 @@ public class QC_8_FiltersSorting_TestBrandFilterWithTwoBrandsSelected {
                 .waitUntilPreloaderDisappear();
         listingPageLogic.clickSecondBrandNameInFilter()
                 .waitUntilPreloaderDisappear();
-        String brand1 = listingPageLogic.getTextOrAttributeFromFilter(listingPageLogic.resetBlock(), listingPageLogic.firstBrandNameInFiler(), "alt");
+        String brand1 = listingPageLogic.getTextOrAttributeFromFilter(listingPageLogic.firstResetBrandBtn(), listingPageLogic.firstBrandNameInFiler(), "alt");
         String brand2 = listingPageLogic.getTextOrAttributeFromFilter(listingPageLogic.secondResetBtn(), listingPageLogic.secondBrandNameInFilter(), "alt");
-        listingPageLogic.checkThatListingDisplaysProductOfSelectedBrand(brand1, brand2, true, listingPageLogic.productTitleInListMode());
+        listingPageLogic.checkThatListingDisplaysProductOfTwoSelectedBrand(brand1, brand2, true, listingPageLogic.productTitleInListMode());
     }
 
     @AfterMethod

@@ -62,6 +62,17 @@ public class Listing_page_Logic extends Listing_page {
         }
     }
 
+    @Step("Method checks that expected text is present in title of all products on listing after changing the view. Listing_page")
+    public Listing_page_Logic checkProductTitleOnListingAfterChangingView(String expectedTextInTitle, ElementsCollection titleViewMode) {
+        String name;
+        for (int i = 0; i < titleViewMode.size(); i++) {
+            name = titleViewMode.get(i).getText().replaceAll("\\.", "");
+            String actualName = name.replace(name.substring(name.indexOf(" ")), "");
+            Assert.assertTrue(actualName.contains((expectedTextInTitle)));
+            }
+        return this;
+    }
+
     @Step("Method checks that expected text is present in title of all products on listing. Listing_page")
     public Listing_page_Logic checkProductTitleOnListing(String expectedTextInTitle, Boolean shouldHaveTextOrNotHave, ElementsCollection titleViewMode) {
         titleViewMode.shouldHave(sizeGreaterThan(0));
@@ -70,6 +81,20 @@ public class Listing_page_Logic extends Listing_page {
                 titleViewMode.get(i).shouldHave(text(expectedTextInTitle));
             } else {
                 titleViewMode.get(i).shouldNotHave(text(expectedTextInTitle));
+            }
+        }
+         return this;
+    }
+
+    @Step("Method checks that the listing displays products of the selected brands. Listing_page")
+    public Listing_page_Logic checkThatListingDisplaysProductOfOneSelectedBrand(String expectedTextInTitle, Boolean shouldHaveTextOrNotHave, ElementsCollection titleViewMode) {
+        if (!resetBlock().isDisplayed()) {
+            checkProductTitleOnListing(expectedTextInTitle, shouldHaveTextOrNotHave, titleViewMode);
+        } else {
+            for (int i = 0; i < imageBrandOfProduct().size(); i++) {
+                if (!imageBrandOfProduct().get(i).getAttribute("src").contains(idOfBrandFromHeader().get(0).getAttribute("data-crit-id"))) {
+                    Assert.assertTrue(imageBrandOfProduct().get(i).getAttribute("src").contains(idOfBrandFromHeader().get(1).getAttribute("data-crit-id")));
+                }
             }
         }
         return this;
@@ -89,7 +114,7 @@ public class Listing_page_Logic extends Listing_page {
     }
 
     @Step("Method checks that the listing displays products of the selected brands. Listing_page")
-    public Listing_page_Logic checkThatListingDisplaysProductOfSelectedBrand(String expectedTextInTitle, String secondExpText, Boolean shouldHaveTextOrNotHave, ElementsCollection titleViewMode) {
+    public Listing_page_Logic checkThatListingDisplaysProductOfTwoSelectedBrand(String expectedTextInTitle, String secondExpText, Boolean shouldHaveTextOrNotHave, ElementsCollection titleViewMode) {
         if (!resetBlock().isDisplayed()) {
             checkProductTitleOnListingWithTwoExpectedTexts(expectedTextInTitle, secondExpText, shouldHaveTextOrNotHave, titleViewMode);
         } else {
@@ -607,7 +632,7 @@ public class Listing_page_Logic extends Listing_page {
     public String getTextOrAttributeFromFilter(SelenideElement firstElement, SelenideElement secondElement, String attribute) {
         String textFromElement = null;
         if (resetBlock().isDisplayed()) {
-            textFromElement = firstElement.getText();
+            textFromElement = firstElement.getText().replaceAll("\\.", "");
         } else {
             textFromElement = secondElement.attr(attribute);
         }

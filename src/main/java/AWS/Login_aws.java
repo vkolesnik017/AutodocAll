@@ -26,6 +26,10 @@ public class Login_aws {
         return $(byXpath("//button[@class='btn btn-default btn-sm pull-right']"));
     }
 
+    public SelenideElement loginForm() {
+        return $(".login-form");
+    }
+
     @Step("Login in AWS")
     public Main_aws loginInAws() {
         loginField().setValue(email);
