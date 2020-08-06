@@ -2,7 +2,6 @@ package ATD.FiltersSorting.QC_404_FiltersSorting_byPrice;
 
 
 import ATD.DataBase;
-import ATD.Listing_page;
 import ATD.Listing_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -49,7 +48,7 @@ public class QC_411_FiltersSorting_TestPriceFilterOnAccListingInTileMode {
     }
 
     @AfterMethod
-    private void teatDown() {
-        close();
+    private void close() {
+        closeWebDriver();
     }
 }

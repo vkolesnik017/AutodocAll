@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1566_Pop_upErrorAbutNon_confirmedNewsletterSubscription {
 
@@ -35,7 +35,7 @@ public class QC_1566_Pop_upErrorAbutNon_confirmedNewsletterSubscription {
         new Main_page_Logic().checkPopUpNonConfirmedNewsletterSubscription();
     }
     @AfterMethod
-    private void teatDown() {
-        close();
+    private void close() {
+        closeWebDriver();
     }
 }

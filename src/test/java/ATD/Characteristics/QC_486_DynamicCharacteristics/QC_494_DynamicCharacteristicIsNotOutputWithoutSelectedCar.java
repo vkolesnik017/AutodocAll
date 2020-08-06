@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 import static ATD.CommonMethods.idProductWithDynamicChar;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.matchesText;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.WebDriverRunner.clearBrowserCache;
 
 public class QC_494_DynamicCharacteristicIsNotOutputWithoutSelectedCar {
@@ -43,7 +43,7 @@ public class QC_494_DynamicCharacteristicIsNotOutputWithoutSelectedCar {
   }
 
   @AfterMethod
-  private void teatDown() {
-    close();
+  private void close() {
+    closeWebDriver();
   }
 }

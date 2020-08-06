@@ -15,7 +15,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.refresh;
 
 public class QC_175_FiltersSorting_TestResetFiltersByClickResetLabel {
@@ -53,7 +53,7 @@ public class QC_175_FiltersSorting_TestResetFiltersByClickResetLabel {
     }
 
     @AfterMethod
-    private void teatDown() {
-        close();
+    private void close() {
+        closeWebDriver();
     }
 }

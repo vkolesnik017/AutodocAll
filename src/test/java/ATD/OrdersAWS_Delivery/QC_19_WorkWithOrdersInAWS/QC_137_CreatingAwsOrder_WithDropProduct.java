@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static AWS.SearchOrders_page_aws.searchOrderPageURL;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_137_CreatingAwsOrder_WithDropProduct {
 
@@ -95,7 +95,7 @@ public class QC_137_CreatingAwsOrder_WithDropProduct {
     }
 
     @AfterMethod
-    private void tearDown() {
-        close();
+    private void close() {
+        closeWebDriver();
     }
 }

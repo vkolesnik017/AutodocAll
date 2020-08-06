@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_614_DisplayUndercategoriesInCatalogRouteWithCar {
 
@@ -49,7 +49,7 @@ public class QC_614_DisplayUndercategoriesInCatalogRouteWithCar {
     }
 
     @AfterMethod
-    public void tearDown() {
-        close();
+    public void close() {
+        closeWebDriver();
     }
 }

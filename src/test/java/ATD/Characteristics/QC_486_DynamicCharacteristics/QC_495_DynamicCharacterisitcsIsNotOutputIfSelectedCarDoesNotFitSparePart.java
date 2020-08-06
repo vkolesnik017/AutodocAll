@@ -17,7 +17,7 @@ import static ATD.CommonMethods.getShopFromRoute;
 import static ATD.CommonMethods.idProductWithDynamicChar;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.matchesText;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
 
 public class QC_495_DynamicCharacterisitcsIsNotOutputIfSelectedCarDoesNotFitSparePart {
@@ -48,7 +48,7 @@ public class QC_495_DynamicCharacterisitcsIsNotOutputIfSelectedCarDoesNotFitSpar
   }
 
   @AfterMethod
-  private void teatDown() {
-    close();
+  private void close() {
+    closeWebDriver();
   }
 }

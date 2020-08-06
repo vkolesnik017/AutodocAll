@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1832_CheckingMultipleDeliveryServicesInOneOrder {
 
@@ -123,7 +123,7 @@ public class QC_1832_CheckingMultipleDeliveryServicesInOneOrder {
     }
 
     @AfterMethod
-    private void tearDown() {
-        close();
+    private void close() {
+        closeWebDriver();
     }
 }

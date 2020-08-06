@@ -13,10 +13,11 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.*;
+import static ATD.CommonMethods.clickOfBuyBtnForAllPages;
+import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.value;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1647_AddingPairedProductsToBasketFromBlockOfTopProducts {
 
@@ -45,7 +46,7 @@ public class QC_1647_AddingPairedProductsToBasketFromBlockOfTopProducts {
     }
 
     @AfterMethod
-    public void tearDown() {
-        close();
+    public void close() {
+        closeWebDriver();
     }
 }

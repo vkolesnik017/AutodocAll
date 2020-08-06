@@ -16,7 +16,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1136_RecoveryBasketWebSessionOnWebVersionMainPageViaFacebook {
 
@@ -49,7 +49,7 @@ public class QC_1136_RecoveryBasketWebSessionOnWebVersionMainPageViaFacebook {
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
                 .checkOfIdAddedProductInBasket(productIdOnProductPage);
-        close();
+        closeWebDriver();
         openPage(route);
         main_page_logic.signInFromFB(mailFB, passFB)
                 .checkingAppearingNameOfClient()
@@ -59,7 +59,7 @@ public class QC_1136_RecoveryBasketWebSessionOnWebVersionMainPageViaFacebook {
     }
 
     @AfterMethod
-    private void tearDown() {
-        close();
+    private void close() {
+        closeWebDriver();
     }
 }
