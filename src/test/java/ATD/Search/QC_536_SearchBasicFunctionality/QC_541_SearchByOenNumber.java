@@ -10,8 +10,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class QC_541_SearchByOenNumber {
 
@@ -37,7 +36,7 @@ public class QC_541_SearchByOenNumber {
     new Listing_page_Logic().checksProductTitlesContainExpectedTextGoingAllPagination(oenNumber);
   }
   @AfterMethod
-  private void tearDown() {
-    close();
+  public void close() {
+    closeWebDriver();
   }
 }

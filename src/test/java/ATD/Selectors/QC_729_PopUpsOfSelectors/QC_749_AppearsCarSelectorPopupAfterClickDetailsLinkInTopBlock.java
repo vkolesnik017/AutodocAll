@@ -16,9 +16,7 @@ import java.sql.SQLException;
 import static ATD.CommonMethods.universalElementOfBuyBtnForAllPages;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.close;
-import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.Selenide.sleep;
+import static com.codeborne.selenide.Selenide.*;
 
 public class QC_749_AppearsCarSelectorPopupAfterClickDetailsLinkInTopBlock {
 
@@ -49,7 +47,7 @@ public class QC_749_AppearsCarSelectorPopupAfterClickDetailsLinkInTopBlock {
   }
 
   @AfterMethod
-  private void tearDown() {
-    close();
+  public void close() {
+    closeWebDriver();
   }
 }

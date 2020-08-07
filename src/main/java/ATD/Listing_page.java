@@ -181,6 +181,10 @@ public class Listing_page {
         return $x("//*[contains(@class,'filter-criteria_200')]//li[3]");
     }
 
+    public SelenideElement durchmesserSideFilterButtonFourthValue() {
+        return $x("//*[contains(@class,'filter-criteria_200')]//li[4]");
+    }
+
     public SelenideElement furprnummerSideFilterButton() {
         return $x("//*[contains(@class,'filter-criteria_1197')]//li");
     }

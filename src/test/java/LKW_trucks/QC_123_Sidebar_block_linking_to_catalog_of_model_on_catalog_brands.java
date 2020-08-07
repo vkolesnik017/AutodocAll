@@ -14,7 +14,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_123_Sidebar_block_linking_to_catalog_of_model_on_catalog_brands {
     @BeforeClass
@@ -38,7 +38,7 @@ public class QC_123_Sidebar_block_linking_to_catalog_of_model_on_catalog_brands 
                  .checkSuccessfullyMakerCarListPageLoading("https://lkwteile.autodoc.de/lastkraftwagen/mercedes-benz/unimog");
     }
     @AfterMethod
-    private void tearDown() {
-        close();
+    public void close() {
+        closeWebDriver();
     }
 }

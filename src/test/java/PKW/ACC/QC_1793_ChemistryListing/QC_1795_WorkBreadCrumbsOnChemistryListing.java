@@ -14,8 +14,7 @@ import java.sql.SQLException;
 import static PKW.CommonMethods.checkingContainsUrl;
 import static PKW.CommonMethods.openPage;
 import static PKW.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.back;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.*;
 
 
 public class QC_1795_WorkBreadCrumbsOnChemistryListing {
@@ -48,7 +47,7 @@ public class QC_1795_WorkBreadCrumbsOnChemistryListing {
     }
 
     @AfterMethod
-    private void tearDown() {
-        close();
+    public void close() {
+        closeWebDriver();
     }
 }

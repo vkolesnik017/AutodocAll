@@ -41,7 +41,7 @@ public class QC_747_AppearsCarSelectorPopupOnSearchByScrollDown {
     close();
   }
   @AfterMethod
-  private void tearDown() {
-    close();
+  public void close() {
+    closeWebDriver();
   }
 }

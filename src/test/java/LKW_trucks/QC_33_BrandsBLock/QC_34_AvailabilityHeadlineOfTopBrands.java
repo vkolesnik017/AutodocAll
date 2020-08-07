@@ -2,7 +2,6 @@ package LKW_trucks.QC_33_BrandsBLock;
 
 import ATD.LKW_Category_maker_brand_page_Logic;
 import ATD.LKW_main_page_Logic;
-import ATD.LKW_maker_car_list_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,7 +15,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_34_AvailabilityHeadlineOfTopBrands {
     @BeforeClass
@@ -54,7 +53,7 @@ public class QC_34_AvailabilityHeadlineOfTopBrands {
     }
 
     @AfterMethod
-    private void tearDown() {
-        close();
+    public void close() {
+        closeWebDriver();
     }
 }

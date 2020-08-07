@@ -16,8 +16,7 @@ import java.sql.SQLException;
 import static ATD.CommonMethods.getCurrentShopFromJSVarInHTML;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
-import static com.codeborne.selenide.Selenide.refresh;
+import static com.codeborne.selenide.Selenide.*;
 
 public class QC_772_RegKbaSelector {
 
@@ -66,7 +65,7 @@ public class QC_772_RegKbaSelector {
   }
 
   @AfterMethod
-  private void tearDown() {
-    close();
+  public void close() {
+    closeWebDriver();
   }
 }

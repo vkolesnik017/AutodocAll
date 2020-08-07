@@ -3,7 +3,6 @@ package ATD.Tyres.QC_1475_TopBlockOnTyresListings;
 
 import ATD.SetUp;
 import ATD.TyresListing_page_Logic;
-import ATD.Tyres_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -16,7 +15,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1477_AddToBasketFromTyresTopBlock {
 
@@ -43,7 +42,7 @@ public class QC_1477_AddToBasketFromTyresTopBlock {
     }
 
     @AfterMethod
-    public void tearDown() {
-        close();
+    public void close() {
+        closeWebDriver();
     }
 }

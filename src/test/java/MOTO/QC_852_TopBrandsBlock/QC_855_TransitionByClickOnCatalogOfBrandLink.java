@@ -16,7 +16,7 @@ import java.sql.SQLException;
 import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_855_TransitionByClickOnCatalogOfBrandLink {
 
@@ -42,7 +42,7 @@ public class QC_855_TransitionByClickOnCatalogOfBrandLink {
     }
 
     @AfterMethod
-    private void tearDown() {
-        close();
+    public void close() {
+        closeWebDriver();
     }
 }

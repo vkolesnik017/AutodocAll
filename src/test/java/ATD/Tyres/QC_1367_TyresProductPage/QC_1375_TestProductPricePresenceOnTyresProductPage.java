@@ -1,9 +1,7 @@
 package ATD.Tyres.QC_1367_TyresProductPage;
 
 
-import ATD.DataBase;
 import ATD.SetUp;
-import ATD.TyresListing_page_Logic;
 import ATD.TyresProduct_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -17,7 +15,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1375_TestProductPricePresenceOnTyresProductPage {
 
@@ -41,7 +39,7 @@ public class QC_1375_TestProductPricePresenceOnTyresProductPage {
     }
 
     @AfterMethod
-    public void tearDown() {
-        close();
+    public void close() {
+        closeWebDriver();
     }
 }

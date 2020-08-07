@@ -29,7 +29,7 @@ public class QC_1831_CheckingForExistingDeliveryServices {
     private DataBase dataBase = new DataBase();
 
     @BeforeClass
-    void setUp() throws SQLException {
+    void setUp() {
         setUpBrowser(false, "chrome", "77.0");
     }
 

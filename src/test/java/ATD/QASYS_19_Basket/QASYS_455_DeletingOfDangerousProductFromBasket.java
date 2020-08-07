@@ -16,8 +16,7 @@ import static ATD.CommonMethods.usualIdProduct;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.not;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.close;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 import static org.testng.Assert.assertEquals;
 
 public class QASYS_455_DeletingOfDangerousProductFromBasket {
@@ -43,7 +42,7 @@ public class QASYS_455_DeletingOfDangerousProductFromBasket {
         close();
     }
 
-    @DataProvider(name = "route", parallel = true)
+    @DataProvider(name = "route", parallel = false)
     Object[] dataProvider() {
         return new SetUp().setUpShopWithListParam("prod", "DE", deliveryCountries);
     }
@@ -107,7 +106,7 @@ public class QASYS_455_DeletingOfDangerousProductFromBasket {
     }
 
     @AfterMethod
-    private void tearDown() {
-        close();
+    public void close() {
+        closeWebDriver();
     }
 }

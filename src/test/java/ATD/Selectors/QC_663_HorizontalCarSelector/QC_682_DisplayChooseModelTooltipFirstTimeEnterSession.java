@@ -14,8 +14,7 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class QC_682_DisplayChooseModelTooltipFirstTimeEnterSession {
 
@@ -39,7 +38,7 @@ public class QC_682_DisplayChooseModelTooltipFirstTimeEnterSession {
     }
 
     @AfterMethod
-    public void tearDown() {
-        close();
+    public void close() {
+        closeWebDriver();
     }
 }
