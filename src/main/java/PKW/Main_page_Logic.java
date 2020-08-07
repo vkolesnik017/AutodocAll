@@ -45,6 +45,12 @@ public class Main_page_Logic extends Main_page{
         return mail;
     }
 
+    @Step("Click btn to private room from Popup Authorization completed successfully")
+    public Profile_page_Logic clickBtnToPRFromPopupAuthorizationSuccessfully() {
+        btnToPRFromPopupAuthorizationSuccessfully().click();
+        return page(Profile_page_Logic.class);
+    }
+
     @Step("Checks presence popup success authorization. Main_page")
     public Main_page_Logic checkPresencePopupSuccessAuthorization() {
         popupSuccessAuthorization().shouldBe(visible);
@@ -91,9 +97,17 @@ public class Main_page_Logic extends Main_page{
         return mail;
     }
 
-    @Step(":in review form on Main_page")
+    @Step(":in review form. Main_page")
     public Main_page_Logic checkingDatenschutzerklarungLinkBehaviorInReviewsForm() {
         new CommonMethods().checkingDatenschutzerklarungLinkBehavior(linkDatenschutzerklärungInFooter(), "underline solid rgb(0, 0, 0)");
         return this;
     }
+
+    @Step(":registration form. Main_page")
+    public Main_page_Logic checkingDatenschutzerklarungLinkBehaviorRegistrationForm() {
+        new CommonMethods().checkingDatenschutzerklarungLinkBehavior(datenschutzerklarungLinkInRegPopup(), "underline solid rgb(17, 57, 188)");
+        return this;
+    }
+
+
 }
