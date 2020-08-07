@@ -11,4 +11,12 @@ public class Motoroil_Chemical_Type_page {
     SelenideElement breadCrumbsBlock() {return $x("//div[@class='crabs']");}
 
     ElementsCollection linksOfBreadCrumbsBlock() {return $$x("//div[@class='crabs']/div/a");}
+
+    ElementsCollection relinkingBlocks() {return $$x("//div[@class='listing_microdata']");}
+
+    SelenideElement titleOfRelinkingBLocks(int positionOfBlock) {return $x("(//div[@class='listing_microdata'])["+positionOfBlock+"]//div[@class='lm_title']");}
+
+    SelenideElement contentPartOfRelinkingBLocks(int positionOfBlock) {return $x("(//div[@class='listing_microdata'])["+positionOfBlock+"]//div[@class='lm_content']");}
+
+    ElementsCollection linksOfRelinkingBlocks(int positionOfBlock) {return $$x("(//div[@class='listing_microdata'])["+positionOfBlock+"]//p/a");}
 }

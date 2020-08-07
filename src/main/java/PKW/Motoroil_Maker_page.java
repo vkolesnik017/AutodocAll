@@ -13,4 +13,13 @@ public class Motoroil_Maker_page {
     ElementsCollection linksOfBreadCrumbsBlock() {return $$x("//div[@class='crabs']/div/a");}
 
     SelenideElement productsListBlock() {return $x("//div[@class='listing_items']");}
+
+    ElementsCollection relinkingBlocks() {return $$x("//div[@class='listing_microdata']");}
+
+    SelenideElement titleOfRelinkingBLocks(int positionOfBlock) {return $x("(//div[@class='listing_microdata'])["+positionOfBlock+"]//div[@class='lm_title']");}
+
+    SelenideElement contentPartOfRelinkingBLocks(int positionOfBlock) {return $x("(//div[@class='listing_microdata'])["+positionOfBlock+"]//div[@class='lm_content']");}
+
+    ElementsCollection linksOfRelinkingBlocks(int positionOfBlock) {return $$x("(//div[@class='listing_microdata'])["+positionOfBlock+"]//p/a");}
+
 }
