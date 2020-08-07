@@ -14,8 +14,7 @@ import java.sql.SQLException;
 
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.exactText;
-import static com.codeborne.selenide.Selenide.close;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class QC_695_AppearsErrorThatModelCarNotSelected {
 
@@ -42,7 +41,7 @@ public class QC_695_AppearsErrorThatModelCarNotSelected {
                     exactText("Wählen Sie ein Modell aus"));
   }
   @AfterMethod
-  private void tearDown() {
-    close();
+  public void close() {
+    closeWebDriver();
   }
 }

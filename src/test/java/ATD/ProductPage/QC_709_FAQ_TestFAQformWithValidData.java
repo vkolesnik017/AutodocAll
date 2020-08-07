@@ -53,7 +53,7 @@ public class QC_709_FAQ_TestFAQformWithValidData {
     }
 
     @AfterMethod
-    private void tearDown() {
-        close();
+    public void close() {
+        closeWebDriver();
     }
 }

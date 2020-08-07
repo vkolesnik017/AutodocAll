@@ -14,7 +14,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_205_Separation_of_moto_selector_session_from_car {
     @BeforeClass
@@ -43,7 +43,7 @@ public class QC_205_Separation_of_moto_selector_session_from_car {
                 .checkSuccessfullyChildCategoryLoadingFromMainPage();
     }
     @AfterMethod
-    private void tearDown() {
-        close();
+    public void close() {
+        closeWebDriver();
     }
 }

@@ -14,8 +14,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 import static org.testng.Assert.assertEquals;
 
 public class QC_898_MatchPricesInAwsOrderAndProfile {
@@ -69,7 +68,7 @@ public class QC_898_MatchPricesInAwsOrderAndProfile {
     @AfterMethod
     public void setStatusTestToOrder() {
         new Order_aws(orderNumber).setStatusOrderToTestbestellungen();
-        close();
+        closeWebDriver();
     }
 
 }

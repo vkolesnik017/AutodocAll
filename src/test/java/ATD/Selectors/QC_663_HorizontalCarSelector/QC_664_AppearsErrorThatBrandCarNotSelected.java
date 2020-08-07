@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 import static ATD.CommonMethods.usualIdProduct;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.exactText;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_664_AppearsErrorThatBrandCarNotSelected {
 
@@ -40,7 +40,7 @@ public class QC_664_AppearsErrorThatBrandCarNotSelected {
             exactText("Um Autoteile für Ihren Wagen zu suchen, geben Sie bitte Ihr genaues Automodell an"));
   }
   @AfterMethod
-  private void tearDown() {
-    close();
+  public void close() {
+    closeWebDriver();
   }
 }

@@ -78,8 +78,8 @@ public class QASYS_477_DeleteTiresFromBasket {
   }
 
   @AfterMethod
-  private void tearDown() {
-    close();
+  public void close() {
+    closeWebDriver();
   }
 
 }

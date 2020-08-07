@@ -41,7 +41,7 @@ public class QC_605_DisplayOvercategoriesOnCatalogRoutesWithCar {
     public void testDisplayOvercategoriesOnCatalogRoutesWithCar(String route) throws Exception {
         openPage(route);
         parentCategoriesTecdocCatalog = new Categories_page_Logic().getAllParentCategoriesFromTecdocCatalog();
-        parentCategoriesAWS = new CatalogCategories_aws(). getAllParentCategoriesNameFromAWS();
+        parentCategoriesAWS = new CatalogCategories_aws("prod"). getAllParentCategoriesNameFromAWS();
         new Categories_page_Logic().compareCategoriesFromCatalogAndAWS(parentCategoriesTecdocCatalog, parentCategoriesAWS);
     }
 

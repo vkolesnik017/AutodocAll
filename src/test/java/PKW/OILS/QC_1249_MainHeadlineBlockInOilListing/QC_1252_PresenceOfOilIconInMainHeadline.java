@@ -13,7 +13,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1252_PresenceOfOilIconInMainHeadline {
     @BeforeClass
@@ -26,11 +26,10 @@ public class QC_1252_PresenceOfOilIconInMainHeadline {
         return new PKW.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "car_parts_motoroil");
     }
 
-
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks presence of Oil-icon in main headline")
+    @Description(value = "Test checks presence of Oil icon in main headline")
     public void testChecksPresenceOfOilIconInMainHeadline(String route) throws SQLException {
         openPage(route);
 
@@ -39,7 +38,7 @@ public class QC_1252_PresenceOfOilIconInMainHeadline {
     }
 
     @AfterMethod
-    private void tearDown() {
-        close();
+    public void close() {
+        closeWebDriver();
     }
 }

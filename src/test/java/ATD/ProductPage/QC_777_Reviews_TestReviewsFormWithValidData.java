@@ -48,7 +48,7 @@ public class QC_777_Reviews_TestReviewsFormWithValidData {
     }
 
     @AfterMethod
-    private void tearDown() {
-        close();
+    public void close() {
+        closeWebDriver();
     }
 }

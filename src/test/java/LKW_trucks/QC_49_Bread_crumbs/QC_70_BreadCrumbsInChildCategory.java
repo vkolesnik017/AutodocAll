@@ -1,6 +1,5 @@
 package LKW_trucks.QC_49_Bread_crumbs;
 
-import ATD.LKW_Category_maker_Logic;
 import ATD.LKW_Category_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
@@ -15,7 +14,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_70_BreadCrumbsInChildCategory {
     @BeforeClass
@@ -38,7 +37,7 @@ public class QC_70_BreadCrumbsInChildCategory {
         new LKW_Category_page_Logic().checkLinksInBreadCrumbsBlock().checkLinkClickInBreadCrumbsBlock();
     }
     @AfterMethod
-    private void tearDown() {
-        close();
+    public void close() {
+        closeWebDriver();
     }
 }
