@@ -1,4 +1,4 @@
-package PKW.OILS.QC_1255_BreadCrumbsBlockInListing;
+package PKW.OILS.QC_1243_AdvantagesBlockInOilListings;
 
 import PKW.Motoroil_viscosity_page_Logic;
 import io.qameta.allure.Description;
@@ -15,7 +15,7 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1256_PresenceOfBreadCrumbsBlockInListing {
+public class QC_1247_BehaviorByHoveringOnAdvantagesLinks {
 
     @BeforeClass
     void setUp() {
@@ -24,19 +24,20 @@ public class QC_1256_PresenceOfBreadCrumbsBlockInListing {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new PKW.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_viscosity,motoroil_viscosity_brand,motoroil_specification,motoroil_release,motoroil_brand,motoroil_maker,motoroil_maker_group,motoroil_chemical_type,car_parts_motoroil");
+        return new PKW.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_viscosity,motoroil_viscosity_brand,motoroil_specification,motoroil_release,motoroil_brand,motoroil_maker,motoroil_maker_group,motoroil_chemical_type,car_parts_motoroil,motoroil_search");
     }
+
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks presence of breadcrumbs block in listing")
-    public void testChecksPresenceOfBreadCrumbsBlockInListing(String route) throws SQLException {
+    @Description(value = "Test checks behavior by hovering on Advantages links")
+    public void testChecksBehaviorByHoveringOnAdvantagesLinks(String route) throws SQLException {
         openPage(route);
 
         new Motoroil_viscosity_page_Logic()
-                .presenceOfBreadCrumbsBlock()
-                .checkToPresenceOfTextInFirstLinkOfBreadCrumbs();
+                .presenceOfAdvantagesBlock()
+                .visibilityOfHoveringTextOfAdvantagesLinks();
     }
 
     @AfterMethod

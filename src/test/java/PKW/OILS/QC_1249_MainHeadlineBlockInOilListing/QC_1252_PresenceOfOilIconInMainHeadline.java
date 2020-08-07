@@ -26,11 +26,10 @@ public class QC_1252_PresenceOfOilIconInMainHeadline {
         return new PKW.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "car_parts_motoroil");
     }
 
-
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks presence of Oil-icon in main headline")
+    @Description(value = "Test checks presence of Oil icon in main headline")
     public void testChecksPresenceOfOilIconInMainHeadline(String route) throws SQLException {
         openPage(route);
 

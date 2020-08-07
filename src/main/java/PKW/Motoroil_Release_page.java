@@ -6,7 +6,7 @@ import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;
 
-public class Motoroil_viscosity_brand_page {
+public class Motoroil_Release_page {
 
     SelenideElement breadCrumbsBlock() {return $x("//div[@class='crabs']");}
 
