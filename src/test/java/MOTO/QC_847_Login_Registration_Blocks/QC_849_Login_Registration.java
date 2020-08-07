@@ -15,7 +15,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_849_Login_Registration {
     private String email = "QC_849_autotestDE@mailinator.com";
@@ -45,7 +45,7 @@ public class QC_849_Login_Registration {
     }
 
     @AfterMethod
-    private void tearDown() {
-        close();
+    public void close() {
+        closeWebDriver();
     }
 }

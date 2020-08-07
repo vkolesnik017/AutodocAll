@@ -1,7 +1,6 @@
 package ATD.Search.QC_536_SearchBasicFunctionality;
 
 import ATD.Listing_page;
-import ATD.Main_page;
 import ATD.Main_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
@@ -16,8 +15,7 @@ import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.have;
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.close;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class QC_539_SearchByArticle {
 
@@ -43,7 +41,7 @@ public class QC_539_SearchByArticle {
     new Listing_page().productTitleInListMode().filter(have(text(articleForSearch))).shouldHave(sizeNotEqual(0));
   }
   @AfterMethod
-  private void tearDown() {
-    close();
+  public void close() {
+    closeWebDriver();
   }
 }

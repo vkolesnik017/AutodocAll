@@ -36,7 +36,7 @@ public class QC_180_FiltersSorting_TestProductOutputWithGenericFilter {
 
     @DataProvider(name = "routesLKW", parallel = true)
     Object[] dataProviderLKW() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list,lkw_search9");
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list");
     }
 
     @Test(dataProvider = "routes")
@@ -50,7 +50,7 @@ public class QC_180_FiltersSorting_TestProductOutputWithGenericFilter {
                     .checkSecondGenericApplying();
     }
 
-    // TODO Вue to a defect in SHOP-196, disabled the check on the route lkw_search8
+    // TODO Вue to a defect in SHOP-196, disabled the check on the route lkw_search8 and route lkw_search9 due to a defect in SHOP-229
     @Test(dataProvider = "routesLKW")
     @Flaky
     @Owner(value = "Romaniuta")

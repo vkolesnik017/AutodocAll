@@ -15,8 +15,7 @@ import java.sql.SQLException;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.exactText;
-import static com.codeborne.selenide.Selenide.close;
-import static com.codeborne.selenide.Selenide.refresh;
+import static com.codeborne.selenide.Selenide.*;
 
 public class QC_736_ErrorTooltipWhenUsingSelectorWithEmptyFields {
 
@@ -56,7 +55,7 @@ public class QC_736_ErrorTooltipWhenUsingSelectorWithEmptyFields {
             exactText("Wählen Sie eine Modifikation aus"));
   }
   @AfterMethod
-  private void tearDown() {
-    close();
+  public void close() {
+    closeWebDriver();
   }
 }

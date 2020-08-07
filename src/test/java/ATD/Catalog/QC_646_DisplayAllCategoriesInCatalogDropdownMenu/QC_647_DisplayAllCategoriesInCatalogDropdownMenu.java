@@ -21,7 +21,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_647_DisplayAllCategoriesInCatalogDropdownMenu {
     private Categories_page_Logic categoriesPageLogic = new Categories_page_Logic();
-    private CatalogCategories_aws catalogCategoriesAws = new CatalogCategories_aws();
+    private CatalogCategories_aws catalogCategoriesAws = new CatalogCategories_aws("prod");
 
     private ArrayList<String> childCategoriesInDropdownMenu;
     private ArrayList<String> parentCategoriesInDropdownMenu;

@@ -12,8 +12,7 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 import static PKW.CommonMethods.openPage;
 import static PKW.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
-
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 
 public class QC_995_TitleMainBlockCategories {
@@ -39,8 +38,8 @@ public class QC_995_TitleMainBlockCategories {
     }
 
     @AfterMethod
-    private void tearDown() {
-        close();
+    public void close() {
+        closeWebDriver();
     }
 
 }

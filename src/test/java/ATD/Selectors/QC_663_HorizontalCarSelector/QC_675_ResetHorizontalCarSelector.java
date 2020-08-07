@@ -15,8 +15,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.usualIdProduct;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 import static org.testng.Assert.assertEquals;
 
 public class QC_675_ResetHorizontalCarSelector {
@@ -47,7 +46,7 @@ public class QC_675_ResetHorizontalCarSelector {
     assertEquals(product_page_logic.typeSelector().getSelectedText(), "Motor (Typ) wählen");
   }
   @AfterMethod
-  private void tearDown() {
-    close();
+  public void close() {
+    closeWebDriver();
   }
 }

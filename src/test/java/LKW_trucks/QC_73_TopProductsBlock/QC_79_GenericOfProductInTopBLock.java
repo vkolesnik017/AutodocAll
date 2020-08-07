@@ -1,6 +1,5 @@
 package LKW_trucks.QC_73_TopProductsBlock;
 
-import ATD.LKW_Categories_page_Logic;
 import ATD.LKW_Category_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
@@ -15,7 +14,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_79_GenericOfProductInTopBLock {
 
@@ -40,7 +39,7 @@ public class QC_79_GenericOfProductInTopBLock {
     }
 
     @AfterMethod
-    private void tearDown() {
-        close();
+    public void close() {
+        closeWebDriver();
     }
 }

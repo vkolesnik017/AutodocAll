@@ -15,8 +15,7 @@ import java.sql.SQLException;
 
 import static TKF.CommonMethods.getCurrentShopFromJSVarInHTML;
 import static TKF.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 
 public class QC_1696_CheckErrorTranslateOnAddressPage {
@@ -53,7 +52,7 @@ public class QC_1696_CheckErrorTranslateOnAddressPage {
     }
 
     @AfterMethod
-    private void teatDown() {
-        close();
+    public void close() {
+        closeWebDriver();
     }
 }

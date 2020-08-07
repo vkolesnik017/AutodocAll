@@ -14,7 +14,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_133_MainIconOfMarkInCategoriesMaker {
     @BeforeClass
@@ -37,7 +37,7 @@ public class QC_133_MainIconOfMarkInCategoriesMaker {
         new LKW_Categories_maker_page_Logic().checkingMainIconOfCarBrand();
     }
     @AfterMethod
-    private void tearDown() {
-        close();
+    public void close() {
+        closeWebDriver();
     }
 }
