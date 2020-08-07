@@ -28,4 +28,6 @@ public class Motoroil_viscosity_page {
 
     ElementsCollection hoveringTextOfAdvantagesLinks() {return $$x("//span[@class='pophover-text']");}
 
+    SelenideElement mainHeadline() {return $x("//div[@class='listing_title listing-title--oil']/h1");}
+
 }

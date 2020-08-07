@@ -1,4 +1,4 @@
-package PKW.OILS.QC_1243_AdvantagesBlockInOilListings;
+package PKW.OILS.QC_1249_MainHeadlineBlockInListings;
 
 import PKW.Motoroil_viscosity_page_Logic;
 import io.qameta.allure.Description;
@@ -15,7 +15,7 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1246_StructureOfAdvantagesBlock {
+public class QC_1250_PresenceOfMainHeadlineInListings {
 
     @BeforeClass
     void setUp() {
@@ -27,17 +27,15 @@ public class QC_1246_StructureOfAdvantagesBlock {
         return new PKW.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_viscosity,motoroil_viscosity_brand,motoroil_specification,motoroil_release,motoroil_brand,motoroil_maker,motoroil_maker_group,motoroil_chemical_type,car_parts_motoroil,motoroil_search");
     }
 
-
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks structure of Advantages block")
-    public void testChecksStructureOfAdvantagesBlock(String route) throws SQLException {
+    @Description(value = "Test checks presence of main headline in listings")
+    public void testChecksPresenceOfMainHeadlineInListings(String route) throws SQLException {
         openPage(route);
 
         new Motoroil_viscosity_page_Logic()
-                .presenceOfAdvantagesBlock()
-                .checkStructureOfAdvantagesBlock();
+                .presenceOfMainHeadline();
     }
 
     @AfterMethod

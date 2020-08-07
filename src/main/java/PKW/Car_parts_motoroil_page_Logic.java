@@ -82,4 +82,11 @@ public class Car_parts_motoroil_page_Logic extends Car_parts_motoroil_page {
         linksOfBreadCrumbsBlock().get(4).shouldNotHave(attribute("href")).shouldHave(text(text));
         return this;
     }
+
+    @Step("presence Of characteristic in main Headline. Car_parts_motoroil_page")
+    public Car_parts_motoroil_page_Logic presenceOfCharacteristicInMainHeadline(String characteristicFromUrl) {
+        mainHeadline().shouldHave(text(characteristicFromUrl));
+        return this;
+    }
+
 }

@@ -219,7 +219,7 @@ public class LKW_Categories_maker_page_Logic extends LKW_Categories_maker_page {
 
     @Step("transition to product page by click on top image of product .LKW_Categories_maker_page")
     public LKW_Categories_maker_page_Logic transitionToProductPageByClickOnTopImage() {
-        clickOnImageOfTopProduct().checkSuccessfullyLKWProductPageLoading("autodoc.de/dt/");
+        clickOnImageOfTopProduct().checkSuccessfullyLKWProductPageLoading("autodoc.de/trucktec-automotive/");
         back();
         return this;
     }
@@ -235,7 +235,7 @@ public class LKW_Categories_maker_page_Logic extends LKW_Categories_maker_page {
         if (closeCookiesPopUp().isDisplayed()) {
             closeCookiesPopUp().click();
         }
-        clickOnTitleOfTopProduct().checkSuccessfullyLKWProductPageLoading("autodoc.de/dt/");
+        clickOnTitleOfTopProduct().checkSuccessfullyLKWProductPageLoading("autodoc.de/trucktec-automotive/");
         back();
         return this;
     }
@@ -251,7 +251,7 @@ public class LKW_Categories_maker_page_Logic extends LKW_Categories_maker_page {
         if (closeCookiesPopUp().isDisplayed()) {
             closeCookiesPopUp().click();
         }
-        clickOnLinkDetails().checkSuccessfullyLKWProductPageLoading("autodoc.de/dt/");
+        clickOnLinkDetails().checkSuccessfullyLKWProductPageLoading("autodoc.de/trucktec-automotive/");
         back();
         return this;
     }

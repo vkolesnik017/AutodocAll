@@ -107,4 +107,16 @@ public class Motoroil_viscosity_page_Logic extends Motoroil_viscosity_page {
         return this;
     }
 
+    @Step("presence of main headline. Motoroil_viscosity_page")
+    public Motoroil_viscosity_page_Logic presenceOfMainHeadline() {
+        mainHeadline().shouldBe(visible).shouldNotBe(empty);
+        return this;
+    }
+
+    @Step("presence Of characteristic in main Headline. Motoroil_viscosity_page")
+    public Motoroil_viscosity_page_Logic presenceOfCharacteristicInMainHeadline(String characteristicFromUrl) {
+        mainHeadline().shouldHave(text(characteristicFromUrl));
+        return this;
+    }
+
 }

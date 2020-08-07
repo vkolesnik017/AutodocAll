@@ -30,4 +30,11 @@
             <class name="PKW.OILS.QC_1243_AdvantagesBlockInOilListings.QC_1247_BehaviorByHoveringOnAdvantagesLinks"/>
         </classes>
     </test>
+
+    <test name="QC_1249_MainHeadlineBlockInListings">
+        <classes>
+            <class name="PKW.OILS.QC_1249_MainHeadlineBlockInListings.QC_1250_PresenceOfMainHeadlineInListings"/>
+            <class name="PKW.OILS.QC_1249_MainHeadlineBlockInListings.QC_1251_PresenceOfCharacteristicInMainHeadline"/>
+        </classes>
+    </test>
 </suite>

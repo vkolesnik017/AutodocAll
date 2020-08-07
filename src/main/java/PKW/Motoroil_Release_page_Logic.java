@@ -50,4 +50,10 @@ public class Motoroil_Release_page_Logic extends Motoroil_Release_page {
         linksOfBreadCrumbsBlock().get(2).shouldNotHave(attribute("href")).shouldHave(text(text));
         return this;
     }
+
+    @Step("presence Of characteristic in main Headline. Motoroil_Release_page")
+    public Motoroil_Release_page_Logic presenceOfCharacteristicInMainHeadline(String characteristicFromUrl) {
+        mainHeadline().shouldHave(text(characteristicFromUrl));
+        return this;
+    }
 }

@@ -8,6 +8,7 @@ import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.back;
 import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class Motoroil_Brand_page_Logic extends Motoroil_Brand_page {
 
@@ -48,5 +49,20 @@ public class Motoroil_Brand_page_Logic extends Motoroil_Brand_page {
         breadCrumbsBlock().shouldBe(visible);
         linksOfBreadCrumbsBlock().get(2).shouldNotHave(attribute("href")).shouldHave(text(text));
         return this;
+    }
+
+
+    @Step("presence Of characteristic in main Headline. Motoroil_Brand_page")
+    public Motoroil_Brand_page_Logic presenceOfCharacteristicInMainHeadline() {
+        String characteristicFromUrl=getCharacteristicFromUrl();
+        mainHeadline().shouldHave(text(characteristicFromUrl));
+        return this;
+    }
+
+    @Step("presence Of characteristic in main Headline. Motoroil_Brand_page")
+    public String getCharacteristicFromUrl() {
+        String urlPart = url().replace(url().substring(url().lastIndexOf("/")), "");
+        String characteristicFromUrl = url().replace(urlPart + "/", "").replace("-", " ").toUpperCase();
+        return characteristicFromUrl;
     }
 }

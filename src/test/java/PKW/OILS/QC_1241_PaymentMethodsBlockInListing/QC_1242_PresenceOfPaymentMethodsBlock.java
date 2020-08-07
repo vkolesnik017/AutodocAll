@@ -1,6 +1,5 @@
 package PKW.OILS.QC_1241_PaymentMethodsBlockInListing;
 
-import PKW.Car_parts_motoroil_page_Logic;
 import PKW.Motoroil_viscosity_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -14,7 +13,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1242_PresenceOfPaymentMethodsBlock {
 
@@ -41,7 +40,7 @@ public class QC_1242_PresenceOfPaymentMethodsBlock {
     }
 
     @AfterMethod
-    private void tearDown() {
-        close();
+    public void close() {
+        closeWebDriver();
     }
 }

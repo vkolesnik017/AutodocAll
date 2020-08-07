@@ -64,4 +64,10 @@ public class Motoroil_viscosity_brand_page_Logic extends Motoroil_viscosity_bran
         linksOfBreadCrumbsBlock().get(3).shouldNotHave(attribute("href")).shouldHave(text(text));
         return this;
     }
+
+    @Step("presence Of characteristic in main Headline. Motoroil_viscosity_brand_page")
+    public Motoroil_viscosity_brand_page_Logic presenceOfCharacteristicInMainHeadline(String characteristicFromUrl) {
+        mainHeadline().shouldHave(text(characteristicFromUrl));
+        return this;
+    }
 }
