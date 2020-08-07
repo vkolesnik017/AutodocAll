@@ -1,6 +1,5 @@
 package ATD.Search.QC_536_SearchBasicFunctionality;
 
-import ATD.Main_page;
 import ATD.Main_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
@@ -13,8 +12,7 @@ import org.testng.annotations.Test;
 
 import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class QC_540_SearchByValueReifen {
 
@@ -35,10 +33,10 @@ public class QC_540_SearchByValueReifen {
   public void testSearchByValueReifen(String route) {
     open(route);
     new Main_page_Logic().useSearch("Reifen");
-    checkingContainsUrl("https://www.autodoc.de/reifen");
+    checkingContainsUrl("/reifen");
   }
   @AfterMethod
-  private void tearDown() {
-    close();
+  public void close() {
+    closeWebDriver();
   }
 }

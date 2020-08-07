@@ -41,7 +41,7 @@ public class QC_149_TrucksCatalogInHeader_lkw {
     }
 
     @AfterMethod
-    private void tearDown() {
-        close();
+    public void close() {
+        closeWebDriver();
     }
 }

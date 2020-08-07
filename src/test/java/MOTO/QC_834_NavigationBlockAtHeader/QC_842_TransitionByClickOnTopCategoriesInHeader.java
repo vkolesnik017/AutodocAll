@@ -1,6 +1,5 @@
 package MOTO.QC_834_NavigationBlockAtHeader;
 
-import ATD.Moto_Parent_Category_page_Logic;
 import ATD.Moto_main_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
@@ -15,7 +14,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_842_TransitionByClickOnTopCategoriesInHeader {
     @BeforeClass
@@ -41,7 +40,7 @@ public class QC_842_TransitionByClickOnTopCategoriesInHeader {
 
     }
     @AfterMethod
-    private void tearDown() {
-        close();
+    public void close() {
+        closeWebDriver();
     }
 }

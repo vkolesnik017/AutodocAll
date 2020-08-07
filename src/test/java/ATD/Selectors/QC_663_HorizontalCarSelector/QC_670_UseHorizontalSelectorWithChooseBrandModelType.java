@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_670_UseHorizontalSelectorWithChooseBrandModelType {
 
@@ -40,7 +40,7 @@ public class QC_670_UseHorizontalSelectorWithChooseBrandModelType {
             text("Dieses Produkt passt zu Ihrem CITROЁN AX 1.4 Allure"), 20000);
   }
   @AfterMethod
-  private void tearDown() {
-    close();
+  public void close() {
+    closeWebDriver();
   }
 }

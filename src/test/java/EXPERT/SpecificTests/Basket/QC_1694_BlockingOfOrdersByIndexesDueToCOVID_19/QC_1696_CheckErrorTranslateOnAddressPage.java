@@ -14,8 +14,7 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 import static EXPERT.CommonMethods.getCurrentShopFromJSVarInHTML;
 import static EXPERT.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class QC_1696_CheckErrorTranslateOnAddressPage {
 
@@ -52,7 +51,7 @@ public class QC_1696_CheckErrorTranslateOnAddressPage {
     }
 
     @AfterMethod
-    private void teatDown() {
-        close();
+    public void close() {
+        closeWebDriver();
     }
 }

@@ -1,7 +1,6 @@
 package LKW_trucks.QC_82_TruckSelectorBlock;
 
 import ATD.LKW_Category_car_list_page_Logic;
-import ATD.LKW_main_page_Logic;
 import ATD.LKW_maker_car_list_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
@@ -16,7 +15,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_85_TitleOfTruckSelector {
     @BeforeClass
@@ -111,7 +110,7 @@ public class QC_85_TitleOfTruckSelector {
     }
 
     @AfterMethod
-    private void tearDown() {
-        close();
+    public void close() {
+        closeWebDriver();
     }
 }

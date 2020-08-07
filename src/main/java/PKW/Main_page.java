@@ -92,6 +92,10 @@ public class Main_page {
         return $x("//label[@id='privacy_policy_footer']/a");
     }
 
+    SelenideElement datenschutzerklarungLinkInRegPopup() {
+        return $(By.cssSelector("#privacy_policy_header_modal>a"));
+    }
+
     SelenideElement subscriptionMailField() {
         return $(byXpath("//input[@id='subscr_footer']"));
     }
@@ -114,6 +118,10 @@ public class Main_page {
 
     SelenideElement subscriptionSuccessPopup() {
         return $(byXpath("//div[@id='popup_update']//div[@class='txt']"));
+    }
+
+    SelenideElement btnToPRFromPopupAuthorizationSuccessfully() {
+        return $x("//div[@id='login_complete']//a[@class='acc']");
     }
 
 

@@ -15,7 +15,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1696_CheckErrorTranslateOnAddressPage {
     private SetUp setUp = new SetUp();
@@ -50,7 +50,7 @@ public class QC_1696_CheckErrorTranslateOnAddressPage {
     }
 
     @AfterMethod
-    private void teatDown() {
-        close();
+    public void close() {
+        closeWebDriver();
     }
 }

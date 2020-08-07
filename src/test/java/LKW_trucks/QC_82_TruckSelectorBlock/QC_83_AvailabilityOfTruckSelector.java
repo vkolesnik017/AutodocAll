@@ -13,8 +13,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class QC_83_AvailabilityOfTruckSelector {
     @BeforeClass
@@ -95,7 +94,7 @@ public class QC_83_AvailabilityOfTruckSelector {
     }
 
     @AfterMethod
-    private void tearDown() {
-        close();
+    public void close() {
+        closeWebDriver();
     }
 }

@@ -6,7 +6,6 @@ import ATD.TyresListing_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
-import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -16,7 +15,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1351_TyresBreadcrumbsTransportTypeAndDimension {
 
@@ -42,7 +41,7 @@ public class QC_1351_TyresBreadcrumbsTransportTypeAndDimension {
     }
 
     @AfterMethod
-    public void tearDown() {
-        close();
+    public void close() {
+        closeWebDriver();
     }
 }

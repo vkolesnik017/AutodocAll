@@ -15,12 +15,9 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
-import static ATD.CommonMethods.waitWhileRouteBecomeExpected;
 import static ATD.CommonMethods.waitingWhileLinkBecomeExpected;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
-import static com.codeborne.selenide.Selenide.sleep;
-import static com.codeborne.selenide.Selenide.switchTo;
+import static com.codeborne.selenide.Selenide.*;
 
 public class QC_1300_TransitionToClubPageFromAdvantagesBlock {
 
@@ -46,7 +43,7 @@ public class QC_1300_TransitionToClubPageFromAdvantagesBlock {
     }
 
     @AfterMethod
-    public void tearDown() {
-        close();
+    public void close() {
+        closeWebDriver();
     }
 }

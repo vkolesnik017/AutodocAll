@@ -1,7 +1,4 @@
-
 package ATD.Tyres.QC_1038_CreatingTyresOrder;
-
-
 
 import ATD.*;
 import AWS.Order_aws;
@@ -17,7 +14,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1039_CreatingTyresOrderShopMatchDeliveryCountry {
     private String emailDE = "qc_1039_autotestDE@mailinator.com";
@@ -53,7 +50,7 @@ public class QC_1039_CreatingTyresOrderShopMatchDeliveryCountry {
     }
 
     @AfterMethod
-    private void tearDown() {
-        close();
+    public void close() {
+        closeWebDriver();
     }
 }
