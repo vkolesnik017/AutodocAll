@@ -44,6 +44,7 @@ public class QC_1492_ChecksVerificationIslandsAndFirm_BillingIsDivided_Different
         String deliveryPriceToBEalldata = new Versand_static_page_Logic().getDeliveryPrice("Belgien");
         Float deliveryPriceToBEaws = new Versand_static_page_Logic().getDeliveryPriceForAWS("Belgien");
         openPage(route);
+        String shop = getCurrentShopFromJSVarInHTML();
         clickOfBuyBtnForAllPages();
         totalPrice = new Search_page_Logic().closePopupOtherCategoryIfYes()
                 .cartClick().nextButtonClick()
@@ -59,7 +60,7 @@ public class QC_1492_ChecksVerificationIslandsAndFirm_BillingIsDivided_Different
                 .checkAbsenceOfVatPercentage()
                 .checkRegularDeliveryPriceAllData(deliveryPriceToBEalldata)
                 .checkPresenceSafeOrderBlock()
-                .getTotalPriceAllDataPage();
+                .getTotalPriceAllDataPage(shop);
         orderNumber = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumber);
         totalPriceAWSOrder = order_aws.openOrderInAwsWithLogin()

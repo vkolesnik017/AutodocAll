@@ -15,8 +15,7 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.openPage;
-import static ATD.CommonMethods.password;
+import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
@@ -43,6 +42,7 @@ public class QC_1679_HeavyLoadsFR_PositiveCase {
     @Description(value = "Test checks the purchase of a heavy load in FR")
     public void testOfHeavyLoadsPurchaseInFR(String route) {
         openPage(route);
+        String shop = getCurrentShopFromJSVarInHTML();
         totalPrice = new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
@@ -52,7 +52,7 @@ public class QC_1679_HeavyLoadsFR_PositiveCase {
                 .checkRegularDeliveryPriceAllData("9,95")
                 .checkHeavyLoadsDeliveryPriceAllData("36,95")
                 .checkAbsenceSafeOrderBlock()
-                .getTotalPriceAllDataPage();
+                .getTotalPriceAllDataPage(shop);
         orderNumber = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumber);
         totalPriceAWSOrder = order_aws.openOrderInAwsWithLogin()

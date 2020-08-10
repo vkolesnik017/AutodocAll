@@ -50,6 +50,25 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return this;
     }
 
+    @Step("Fill in all fields with default values and also fill fields Name {name}, Surname {surname}, Street {street}, " +
+            "House{house}, Shop {shop}, Index {index}, Firm {name Form} and City {city} for Shipping. CartAddress_page")
+    public CartAddress_page_Logic fillAllFieldsAndDefaultPostalCode(String name, String surname, String street,
+                                                                    String house, String shop, String nameFirm, String city) {
+        checkCorrectTextAndFillInput(vorname(), name);
+        checkCorrectTextAndFillInput(nameIn(), surname);
+        checkCorrectTextAndFillInput(strasse(), street);
+        checkCorrectTextAndFillInput(deliveryHouse(), house);
+        fillingPostalCodeOrDefaultFieldJSForShipping("default");
+        checkCorrectTextAndFillInput(ort(), city);
+        chooseDeliveryCountryForShipping(shop);
+        checkCorrectTextAndFillInput(telephon(), "200+002");
+        if (!fieldFirm().isDisplayed()) {
+            checkboxFirmShipping().click();
+        }
+        checkCorrectTextAndFillInput(fieldFirm(), nameFirm);
+        return this;
+    }
+
     @Step("Fill field tax number {taxNumber} for Shipping. CartAddress_page")
     public CartAddress_page_Logic fillFieldIdCompanyShipping(String taxNumber) {
         checkCorrectTextAndFillInput(idCompanyShipping(), taxNumber);
@@ -59,10 +78,14 @@ public class CartAddress_page_Logic extends CartAddress_page {
     @Step("Fill in the company ID {expectedID} field for the delivery country where ID is needed {expectedShop}. CartAddress_page")
     public CartPayments_page_Logic fillInCompanyIdFieldForCountryWhereIdNeeded(String actualShop, String expectedShop, String expectedID) {
         if (actualShop.equals(expectedShop)) {
-            fillFieldIdCompanyShipping(expectedID)
-                    .nextBtnClick();
+            if (idCompanyShipping().isDisplayed()) {
+                fillFieldIdCompanyShipping(expectedID)
+                        .nextBtnClick();
+            }
             if (continueBtnInPopupAboutWrongCompany().isDisplayed()) {
                 clickBtnContinueInPopupAboutWrongCompany();
+            } else {
+                nextBtnClick();
             }
         } else {
             nextBtnClick();
@@ -181,6 +204,8 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return this;
     }
 
+
+
     @Step("Filling postal code {sendPostalCode} for billing. CartAddress_page")
     public CartAddress_page_Logic fillingPostalCodeFieldJSForBilling(String sendPostalCode) {
         postalCodeFieldForBilling().waitUntil(appear, 10000);
@@ -189,7 +214,32 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return this;
     }
 
-    @Step("Choosing delivery country {country} for shipping. CartAddress_page")
+    @Step("Filling postal code {postalCodeOrCodeDefault} or default for shipping. CartAddress_page")
+    public CartAddress_page_Logic fillingPostalCodeOrDefaultFieldJSForShipping(String postalCodeOrCodeDefault) {
+        if (postalCodeOrCodeDefault.equals("default")) {
+            String currentShop = getCurrentShopFromJSVarInHTML();
+            switch (currentShop) {
+                case "DK":
+                    postalCodeOrCodeDefault = "1234";
+                    break;
+                case "NL":
+                    postalCodeOrCodeDefault = "1234 AA";
+                    break;
+                case "PT":
+                    postalCodeOrCodeDefault = "1234-567";
+                    break;
+                default:
+                    postalCodeOrCodeDefault = "12345";
+                    break;
+            }
+        }
+        postalCodeFieldForShipping().waitUntil(appear, 10000);
+        JavascriptExecutor js = (JavascriptExecutor) getWebDriver();
+        js.executeScript("arguments[0].value='" + postalCodeOrCodeDefault + "';", postalCodeFieldForShipping());
+        return this;
+    }
+
+        @Step("Choosing delivery country {country} for shipping. CartAddress_page")
     public CartAddress_page_Logic chooseDeliveryCountryForShipping(String country) {
         if (country.equals("EN")) country = "GB";
         if (country.equals("LD")) country = "LU";

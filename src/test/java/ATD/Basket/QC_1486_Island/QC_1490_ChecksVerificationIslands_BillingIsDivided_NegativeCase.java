@@ -41,6 +41,7 @@ public class QC_1490_ChecksVerificationIslands_BillingIsDivided_NegativeCase {
     @Description(value = "Test checks verification of islands, billing is divided (Negative case)")
     public void testChecksVerificationIslandsBillingIsDividedNegativeCas(String route) {
         openPage(route);
+        String shop = getCurrentShopFromJSVarInHTML();
         clickOfBuyBtnForAllPages();
         totalPrice = new Search_page_Logic().closePopupOtherCategoryIfYes()
                 .cartClick().nextButtonClick()
@@ -51,7 +52,7 @@ public class QC_1490_ChecksVerificationIslands_BillingIsDivided_NegativeCase {
                 .checkTextContainingVatPercentage("inkl. 20% MwSt.")
                 .checkRegularDeliveryPriceAllData("9,95")
                 .checkPresenceSafeOrderBlock()
-                .getTotalPriceAllDataPage();
+                .getTotalPriceAllDataPage(shop);
         orderNumber = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumber);
         totalPriceAWSOrder = order_aws.openOrderInAwsWithLogin()
