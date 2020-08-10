@@ -50,8 +50,8 @@ public class QC_1877_OrderWithSO_Disabled {
                 .chooseBankAustria()
                 .nextBtnClick()
                 .checkThatSafeOrderCheckboxIsSelected()
-                .removeSafeOrderInOrderAndCheckTotalPriceIncludedSO()
-                .getTotalPriceAllDataPage();
+                .removeSafeOrderInOrderAndCheckTotalPriceIncludedSO(shop)
+                .getTotalPriceAllDataPage(shop);
         String orderNumber = new CartAllData_page_Logic().nextBtnClick()
                 .getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumber);

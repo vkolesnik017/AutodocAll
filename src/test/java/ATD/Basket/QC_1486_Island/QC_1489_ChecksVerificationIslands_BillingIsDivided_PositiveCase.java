@@ -42,6 +42,7 @@ public class QC_1489_ChecksVerificationIslands_BillingIsDivided_PositiveCase {
     @Description(value = "Test checks verification of islands, billing is divided (Positive case)")
     public void testChecksVerificationIslandsBillingIsDividedPositiveCas(String route) {
         openPage(route);
+        String shop = getCurrentShopFromJSVarInHTML();
         clickOfBuyBtnForAllPages();
         totalPrice = new Search_page_Logic().closePopupOtherCategoryIfYes()
                 .cartClick().nextButtonClick()
@@ -52,7 +53,7 @@ public class QC_1489_ChecksVerificationIslands_BillingIsDivided_PositiveCase {
                 .checkAbsenceOfVatPercentage()
                 .checkRegularDeliveryPriceAllData("165,00")
                 .checkAbsenceSafeOrderBlock()
-                .getTotalPriceAllDataPage();
+                .getTotalPriceAllDataPage(shop);
         orderNumber = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumber);
         totalPriceAWSOrder = order_aws.openOrderInAwsWithLogin()

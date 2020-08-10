@@ -122,6 +122,7 @@ public class QC_1394_Firm_NonSplit_BillingAndShipping_PositiveCase {
     public void testSuccessfulPlacementOfOrder_NonSplitBillingAndShipping_DE(String routeDE) {
         vatForDE = new PageVAT_aws().getVatForDE();
         openPage(routeDE);
+        String shop = getCurrentShopFromJSVarInHTML();
         priceWithVatPerAllDataPageDE = product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
@@ -142,7 +143,7 @@ public class QC_1394_Firm_NonSplit_BillingAndShipping_PositiveCase {
         prunedProductPriceDE = cutPriceToFirstDecimalPlace(priceProductPerProductPageDE);
         Assert.assertEquals(prunedPriceWithVatDE, prunedProductPriceDE);
         product_page_logic.cartClick();
-        totalPriceDE = cartAllData_page_logic.getTotalPriceAllDataPage();
+        totalPriceDE = cartAllData_page_logic.getTotalPriceAllDataPage(shop);
         orderNumberDE = cartAllData_page_logic.nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumberDE);
         totalPriceAWSOrderDE = order_aws.openOrderInAwsWithoutLoginAndCheckTestIcon()

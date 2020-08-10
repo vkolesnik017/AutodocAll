@@ -187,16 +187,16 @@ public class DataBase {
         return translation;
     }
 
-    public String getPaymentsLocator(String dbName, String shop, String payments) throws SQLException {
+    public String getPaymentsLocator(String dbName, String shop, String payments_name) throws SQLException {
         Statement statement = null;
         Connection conn = coonectionDB(dbName);
-        String translation = null;
-        String query = "SELECT ".concat(shop) + " FROM autodoc.".concat(dbName) + " where value=" + "\"".concat(payments) + "\"";
+        String payments = null;
+        String query = "SELECT ".concat(shop) + " FROM autodoc.".concat(dbName) + " where payments_name=" + "\"".concat(payments_name) + "\"";
         try {
             statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
-                translation = resultSet.getString(1);
+                payments = resultSet.getString(1);
             }
             statement.close();
             conn.close();
@@ -206,7 +206,7 @@ public class DataBase {
             if (statement != null) statement.close();
             if (conn != null) conn.close();
         }
-        return translation;
+        return payments;
     }
 
 

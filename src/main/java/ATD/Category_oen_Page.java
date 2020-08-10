@@ -17,6 +17,22 @@ public class Category_oen_Page {
 
     ElementsCollection  priceOfProduct() {return $$x("//p[@class='actual_price']");}
 
+    SelenideElement  brandsFilterBlock() {return $x("//div[@data-name='brand']");}
+
+    SelenideElement forwardLinkAtBrandsFilter() {return $x("//a[contains(@class,'next')]");}
+
+    SelenideElement loaderInTecDocListing() {
+        return $x("//div[@class='preloader_wrapper']");
+    }
+
+    SelenideElement brandsLinkInSideBar(String idOfBrand) {return $x("//div[@id='selected-instalation__slider']//ul//li//label[@for='cb-brand-"+idOfBrand+"']");}
+
+    ElementsCollection imageOfBrandInProductBlock() {return $$x("//div[@class='image']/span[1]/img");}
+
+    ElementsCollection descriptionBlockOfProduct() {return $$x("//div[@class='description']");}
+
+    ElementsCollection characteristicListOfProduct(int positionOfProduct) {return $$x("(//div[@class='description'])["+positionOfProduct+"]//div[@class='about']//ul/li/span[1]");}
+
 }
 
 
