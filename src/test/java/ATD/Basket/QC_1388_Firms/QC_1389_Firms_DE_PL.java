@@ -56,7 +56,7 @@ public class QC_1389_Firms_DE_PL {
                 .nextBtnClick()
                 .checkTextInDeliveryAddressInfoBlock("Firma FB-MONT A. Fułek Spółka Komandytowa")
                 .checkTextContainingVatPercentage("23% VAT")
-                .getTotalPriceAllDataPage();
+                .getTotalPriceAllDataPage(shop);
         orderNumberPL = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumberPL);
         totalPriceAWSOrderPL = order_aws.openOrderInAwsWithLogin()
@@ -107,7 +107,7 @@ public class QC_1389_Firms_DE_PL {
                 .nextBtnClick()
                 .checkTextInDeliveryAddressInfoBlock("Firma Autodoc GmbH")
                 .checkTextContainingVatPercentage("inkl. 16% MwSt.")
-                .getTotalPriceAllDataPage();
+                .getTotalPriceAllDataPage(shop);
         orderNumberDE = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumberDE);
         totalPriceAWSOrderDE = order_aws.openOrderInAwsWithLogin()
@@ -145,7 +145,8 @@ public class QC_1389_Firms_DE_PL {
     @Description(value = "Test checks the successful placement of the order indicating the company and " +
                          "delivery to another country, from the ES shop. Country of shop != country of delivery")
     public void testSuccessfulPlacementOfOrder_Firm_ES(String routeES) {
-    openPage(routeES);
+        openPage(routeES);
+        String shop = getCurrentShopFromJSVarInHTML();
     totalPriceES = new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
@@ -157,7 +158,7 @@ public class QC_1389_Firms_DE_PL {
                 .nextBtnClick()
                 .checkTextInDeliveryAddressInfoBlock("Entidad Autodoc GmbH")
                 .checkTextContainingVatPercentage("IVA incluido 16%")
-                .getTotalPriceAllDataPage();
+                .getTotalPriceAllDataPage(shop);
     orderNumberES = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
     Order_aws order_aws = new Order_aws(orderNumberES);
     totalPriceAWSOrderES = order_aws.openOrderInAwsWithLogin()

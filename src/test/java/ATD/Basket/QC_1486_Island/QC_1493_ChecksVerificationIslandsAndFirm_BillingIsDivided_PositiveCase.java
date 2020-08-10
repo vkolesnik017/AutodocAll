@@ -42,6 +42,7 @@ public class QC_1493_ChecksVerificationIslandsAndFirm_BillingIsDivided_PositiveC
     @Description(value = "Test checks verification of islands + Firm, billing is divided (Positive case)")
     public void testChecksVerificationIslandsAndFirmBillingIsDivided(String route) {
         openPage(route);
+        String shop = getCurrentShopFromJSVarInHTML();
         clickOfBuyBtnForAllPages();
         new Search_page_Logic().closePopupOtherCategoryIfYes()
                 .cartClick().nextButtonClick()
@@ -54,7 +55,7 @@ public class QC_1493_ChecksVerificationIslandsAndFirm_BillingIsDivided_PositiveC
                 .checkPresenceSafeOrderBlock()
                 .checkRegularDeliveryPriceAllData("10,95")
                 .checkTextContainingVatPercentage("inkl. 20% MwSt.")
-                .getTotalPriceAllDataPage();
+                .getTotalPriceAllDataPage(shop);
         orderNumber = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumber);
         totalPriceAWSOrder = order_aws.openOrderInAwsWithLogin()
