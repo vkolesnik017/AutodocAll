@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.back;
 import static com.codeborne.selenide.Selenide.page;
 
-public class Motoroil_Maker_Group_page_Logic  extends Motoroil_Maker_Group_page{
+public class Motoroil_Maker_Group_page_Logic extends Motoroil_Maker_Group_page {
 
     @Step("presence of bread crumbs block. Motoroil_Maker_Group_page")
     public Motoroil_Maker_Group_page_Logic presenceOfBreadCrumbsBlock() {
@@ -59,5 +59,28 @@ public class Motoroil_Maker_Group_page_Logic  extends Motoroil_Maker_Group_page{
         breadCrumbsBlock().shouldBe(visible);
         linksOfBreadCrumbsBlock().get(3).shouldNotHave(attribute("href")).shouldHave(text(text));
         return this;
+    }
+
+    @Step("check transition by click in Relinking block. Motoroil_Maker_Group_page")
+    public Motoroil_Maker_Group_page_Logic checkTransitionByClickInRelinkingBlock() throws SQLException {
+        DataBase db = new DataBase();
+        clickOnValueFromFirstRelinkingBlock(0);
+        checkingContainsUrl(db.getRouteByRouteName("DE", "motoroil_maker_group3"));
+        back();
+        clickOnValueFromSecondRelinkingBlock(0);
+        checkingContainsUrl(db.getRouteByRouteName("DE", "motoroil_viscosity2"));
+        return this;
+    }
+
+    @Step("click on value from First relinking block. Motoroil_Maker_Group_page")
+    public Motoroil_Maker_Group_page_Logic clickOnValueFromFirstRelinkingBlock(int position) {
+        linksOfRelinkingBlocks(1).get(position).shouldBe(visible).scrollIntoView("{block: \"center\"}").hover().click();
+        return page(Motoroil_Maker_Group_page_Logic.class);
+    }
+
+    @Step("click on value from Second relinking block. Motoroil_Maker_Group_page")
+    public Motoroil_viscosity_page_Logic clickOnValueFromSecondRelinkingBlock(int position) {
+        linksOfRelinkingBlocks(2).get(position).shouldBe(visible).click();
+        return page(Motoroil_viscosity_page_Logic.class);
     }
 }

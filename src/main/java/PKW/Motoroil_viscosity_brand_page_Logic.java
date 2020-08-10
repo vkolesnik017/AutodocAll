@@ -70,4 +70,62 @@ public class Motoroil_viscosity_brand_page_Logic extends Motoroil_viscosity_bran
         mainHeadline().shouldHave(text(characteristicFromUrl));
         return this;
     }
+
+    @Step("presence of Relinking blocks. Motoroil_viscosity_brand_page")
+    public Motoroil_viscosity_brand_page_Logic presenceOfRelinkingBlocks(int expectedSize) {
+        relinkingBlocks().get(0).shouldBe(visible);
+        relinkingBlocks().shouldHaveSize(expectedSize);
+        return this;
+    }
+
+    @Step("check main elements of Relinking blocks. Motoroil_viscosity_brand_page")
+    public Motoroil_viscosity_brand_page_Logic checkElementsOfRelinkingBlocks() {
+        for (int i = 0; i < relinkingBlocks().size(); i++) {
+            titleOfRelinkingBLocks(i + 1).shouldBe(visible);
+            contentPartOfRelinkingBLocks(i + 1).shouldBe(visible);
+        }
+        return this;
+    }
+
+    @Step("check transition by click in Relinking block. Motoroil_viscosity_brand_page")
+    public Motoroil_viscosity_brand_page_Logic checkTransitionByClickInRelinkingBlock() throws SQLException {
+        DataBase db = new DataBase();
+        clickOnValueFromFirstRelinkingBlock(0);
+        checkingContainsUrl(db.getRouteByRouteName("DE", "motoroil_viscosity_brand2"));
+        back();
+        clickOnValueFromSecondRelinkingBlock(2);
+        checkingContainsUrl(db.getRouteByRouteName("DE", "motoroil_viscosity_brand3"));
+        back();
+        clickOnValueFromThirdRelinkingBlock(0);
+        checkingContainsUrl(db.getRouteByRouteName("DE", "motoroil_release2"));
+        back();
+        clickOnValueFromFourthRelinkingBlock(0);
+        checkingContainsUrl(db.getRouteByRouteName("DE", "motoroil_specification"));
+        return this;
+    }
+
+    @Step("click on value from First relinking block. Motoroil_viscosity_brand_page")
+    public Motoroil_viscosity_brand_page_Logic clickOnValueFromFirstRelinkingBlock(int position) {
+        linksOfRelinkingBlocks(1).get(position).shouldBe(visible).click();
+        return page(Motoroil_viscosity_brand_page_Logic.class);
+    }
+
+    @Step("click on value from Second relinking block. Motoroil_viscosity_brand_page")
+    public Motoroil_viscosity_brand_page_Logic clickOnValueFromSecondRelinkingBlock(int position) {
+        linksOfRelinkingBlocks(2).get(position).shouldBe(visible).click();
+        return page(Motoroil_viscosity_brand_page_Logic.class);
+    }
+
+    @Step("click on value from Third relinking block. Motoroil_viscosity_brand_page")
+    public Motoroil_Release_page_Logic clickOnValueFromThirdRelinkingBlock(int position) {
+        linksOfRelinkingBlocks(3).get(position).shouldBe(visible).click();
+        return page(Motoroil_Release_page_Logic.class);
+    }
+
+    @Step("click on value from Fourth relinking block. Motoroil_viscosity_brand_page")
+    public Motoroil_specification_page_Logic clickOnValueFromFourthRelinkingBlock(int position) {
+        linksOfRelinkingBlocks(4).get(position).shouldBe(visible).click();
+        return page(Motoroil_specification_page_Logic.class);
+    }
+
 }

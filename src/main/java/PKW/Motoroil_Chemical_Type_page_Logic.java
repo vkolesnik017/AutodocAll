@@ -49,4 +49,34 @@ public class Motoroil_Chemical_Type_page_Logic extends Motoroil_Chemical_Type_pa
         linksOfBreadCrumbsBlock().get(2).shouldNotHave(attribute("href")).shouldHave(text(text));
         return this;
     }
+
+    @Step("presence of Relinking blocks. Motoroil_Chemical_Type_page")
+    public Motoroil_Chemical_Type_page_Logic presenceOfRelinkingBlocks(int expectedSize) {
+        relinkingBlocks().get(0).shouldBe(visible);
+        relinkingBlocks().shouldHaveSize(expectedSize);
+        return this;
+    }
+
+    @Step("check main elements of Relinking blocks. Motoroil_Chemical_Type_page")
+    public Motoroil_Chemical_Type_page_Logic checkElementsOfRelinkingBlocks() {
+        for (int i = 0; i < relinkingBlocks().size(); i++) {
+            titleOfRelinkingBLocks(i + 1).shouldBe(visible);
+            contentPartOfRelinkingBLocks(i + 1).shouldBe(visible);
+        }
+        return this;
+    }
+
+    @Step("check transition by click in Relinking block. Motoroil_Chemical_Type_page")
+    public Motoroil_Chemical_Type_page_Logic checkTransitionByClickInRelinkingBlock() throws SQLException {
+        DataBase db = new DataBase();
+        clickOnValueFromFirstRelinkingBlock(0);
+        checkingContainsUrl(db.getRouteByRouteName("DE", "motoroil_chemical_type2"));
+        return this;
+    }
+
+    @Step("click on value from First relinking block. Motoroil_Chemical_Type_page")
+    public Motoroil_Maker_Group_page_Logic clickOnValueFromFirstRelinkingBlock(int position) {
+        linksOfRelinkingBlocks(1).get(position).shouldBe(visible).scrollIntoView("{block: \"center\"}").hover().click();
+        return page(Motoroil_Maker_Group_page_Logic.class);
+    }
 }
