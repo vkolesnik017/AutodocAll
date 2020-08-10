@@ -5,14 +5,12 @@ import com.codeborne.selenide.ex.UIAssertionError;
 import io.qameta.allure.Step;
 import org.openqa.selenium.TimeoutException;
 import org.testng.Assert;
-
 import java.io.BufferedWriter;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.Random;
-
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Condition.cssValue;
 import static com.codeborne.selenide.Selectors.byXpath;
@@ -25,6 +23,7 @@ import static org.testng.Assert.assertTrue;
 public class CommonMethods {
 
     public static String password = "pkwtest";
+    static String testNumberThatPutOrderInTest = "200+002";
 
 
     @Step("Generates random mail")

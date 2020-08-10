@@ -1,5 +1,7 @@
 package PKW.GDRP;
 
+import AWS.PrivacyPolicySubscription_aws;
+import PKW.Contact_static_page_Logic;
 import PKW.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,6 +18,9 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1863_GdprContacts {
 
+    private Contact_static_page_Logic contactStaticPageLogic = new Contact_static_page_Logic();
+    private String mail;
+
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -29,11 +34,28 @@ public class QC_1863_GdprContacts {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test verify working GDPR on contacts page ")
-    public void testGdprContacts(String route) {
+    @Description(value = "Test verify working GDPR contacts form on Order tab ")
+    public void testGdprOrderTab(String route) {
         openPage(route);
+        mail = contactStaticPageLogic.checkingDatenschutzerklarungLinkBehavior(contactStaticPageLogic.orderDatenschutzerklarungLinkInContacts())
+                .fillRequiredFieldsOrderAndCheckBehavior("qc_1863_");
+        new PrivacyPolicySubscription_aws()
+                .openPolicySubscriptionWithLogin()
+                .checkingPolicyForMail(this.mail);
+    }
 
-
+    @Test(dataProvider = "route")
+    @Flaky
+    @Owner(value = "Sergey-QA")
+    @Description(value = "Test verify working GDPR contacts form on NoOrder tab")
+    public void testGdprNoOrderTab(String route) {
+        openPage(route);
+        mail = contactStaticPageLogic.switchToOrderTab()
+                .checkingDatenschutzerklarungLinkBehavior(contactStaticPageLogic.noOrderDatenschutzerklarungLinkInContacts())
+                .fillRequiredFieldsNoOrderAndCheckBehavior("qc_1863_");
+        new PrivacyPolicySubscription_aws()
+                .openPolicySubscriptionWithLogin()
+                .checkingPolicyForMail(this.mail);
     }
 
     @AfterMethod

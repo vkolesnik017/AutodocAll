@@ -45,7 +45,7 @@ public class Main_page_Logic extends Main_page{
         return mail;
     }
 
-    @Step("Click btn to private room from Popup Authorization completed successfully")
+    @Step("Click btn to private room from Popup Authorization completed successfully. Main_page")
     public Profile_page_Logic clickBtnToPRFromPopupAuthorizationSuccessfully() {
         btnToPRFromPopupAuthorizationSuccessfully().click();
         return page(Profile_page_Logic.class);

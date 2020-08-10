@@ -1,13 +1,14 @@
 package PKW;
 
 
+import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.ex.ElementNotFound;
 import com.codeborne.selenide.ex.ElementShould;
 import com.codeborne.selenide.ex.UIAssertionError;
 import io.qameta.allure.Step;
 
-import static com.codeborne.selenide.Condition.not;
-import static com.codeborne.selenide.Condition.visible;
+import static PKW.CommonMethods.mailRandom;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
 public class Product_page_Logic extends Product_page {
@@ -77,4 +78,33 @@ public class Product_page_Logic extends Product_page {
         new Main_page_Logic().cartClick();
         return page(PKW.Cart_page_Logic.class);
     }
+
+
+
+    @Step(":on Product_page")
+    public Product_page_Logic checkingDatenschutzerklarungLinkBehavior(SelenideElement orderDatenschutzerklarungLink) {
+        new CommonMethods().checkingDatenschutzerklarungLinkBehavior(orderDatenschutzerklarungLink, "underline solid rgb(0, 0, 0)");
+        return this;
+    }
+
+    @Step("Filling fields in review form and checking behavior. Product_page")
+    public String fillRequiredFieldsReviewFormAndCheckBehavior(String qc) {
+        String mail = qc + mailRandom();
+        nameFieldInReviewForm().setValue("AutoTest");
+        emailFieldInReviewForm().setValue(mail);
+        checkboxSubscribeAcceptInReviewForm().click();
+        massageFieldInReviewForm().setValue("AutoTest for task QC_1900");
+        btnSendInReviewForm().click();
+        successPopup().shouldHave(text("Es wird nach einer Überprüfung veröffentlicht"));
+        successPopupCloseButton().click();
+        return mail;
+    }
+
+    @Step("Scroll to reviews block. Product_page")
+    public Product_page_Logic scrollToReviewsBlock() {
+        reviewsBlock().scrollTo();
+        reviewsBlock().shouldBe(appear);
+        return this;
+    }
+
 }
