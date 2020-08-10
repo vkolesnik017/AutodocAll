@@ -13,4 +13,13 @@ public class Motoroil_viscosity_brand_page {
     ElementsCollection linksOfBreadCrumbsBlock() {return $$x("//div[@class='crabs']/div/a");}
 
     SelenideElement mainHeadline() {return $x("//div[@class='listing_title listing-title--oil']/h1");}
+
+    ElementsCollection relinkingBlocks() {return $$x("//div[@class='listing_microdata']");}
+
+    SelenideElement titleOfRelinkingBLocks(int positionOfBlock) {return $x("(//div[@class='listing_microdata'])["+positionOfBlock+"]//div[@class='lm_title']");}
+
+    SelenideElement contentPartOfRelinkingBLocks(int positionOfBlock) {return $x("(//div[@class='listing_microdata'])["+positionOfBlock+"]//div[@class='lm_content']");}
+
+    ElementsCollection linksOfRelinkingBlocks(int positionOfBlock) {return $$x("(//div[@class='listing_microdata'])["+positionOfBlock+"]//p/a");}
+
 }

@@ -1,6 +1,7 @@
 package ATD.Characteristics.QC_2072_VerificationOfRemovalCharacteristicQuantityOnFrontsForFEBIandSWAG;
 
 import ATD.Category_car_list_page_Logic;
+import ATD.Category_oen_Page_Logic;
 import ATD.Search_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
@@ -25,7 +26,7 @@ public class QC_2074_AbsenceQuantityForFebiBilsteinAndSwagInListing {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "search28,category_oen12,category_oen13,category_car_list30");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "search28,category_car_list30"); 
     }
 
     @Test(dataProvider = "routes")
@@ -36,6 +37,25 @@ public class QC_2074_AbsenceQuantityForFebiBilsteinAndSwagInListing {
         openPage(route);
 
         new Search_page_Logic()
+                .selectBrandInBlock("101")
+                .selectBrandInBlock("1156")
+                .checkListingWithSelectedBrands("101,1156")
+                .checkAbsenceOfQuantityCharacteristicInProductDescriptionBlock();
+    }
+
+    @DataProvider(name = "routesOEN", parallel = true)
+    Object[] dataProviderOEN() throws SQLException {
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_oen12,category_oen13");
+    }
+
+    @Test(dataProvider = "routesOEN")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "Checking for the absence of the characteristic 'quantity' 563 in listings for FEBI BILSTEIN and SWAG brands")
+    public void testCheckAbsenceQuantityForFEBIBILSTEINAndSWAGInListingOEN(String route) {
+        openPage(route);
+
+        new Category_oen_Page_Logic()
                 .selectBrandInBlock("101")
                 .selectBrandInBlock("1156")
                 .checkListingWithSelectedBrands("101,1156")

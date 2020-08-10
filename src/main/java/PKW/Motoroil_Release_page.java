@@ -13,4 +13,6 @@ public class Motoroil_Release_page {
     ElementsCollection linksOfBreadCrumbsBlock() {return $$x("//div[@class='crabs']/div/a");}
 
     SelenideElement mainHeadline() {return $x("//div[@class='listing_title listing-title--oil']/h1");}
+
+    ElementsCollection linksOfRelinkingBlocks(int positionOfBlock) {return $$x("(//div[@class='listing_microdata'])["+positionOfBlock+"]//p/a");}
 }
