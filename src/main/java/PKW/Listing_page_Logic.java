@@ -35,12 +35,9 @@ public class Listing_page_Logic extends Listing_page {
         return this;
     }
 
-
     @Step("Wait until preloader disappear. Listing_page")
     public Listing_page_Logic waitUntilPreloaderDisappear() {
         preloader().waitUntil(attribute("style", "display: none;"), 20000);
         return this;
     }
-
-
-}
+ }
