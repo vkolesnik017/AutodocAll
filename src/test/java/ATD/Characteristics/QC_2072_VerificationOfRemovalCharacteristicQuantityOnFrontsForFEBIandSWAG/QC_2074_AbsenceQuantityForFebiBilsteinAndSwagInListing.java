@@ -26,7 +26,7 @@ public class QC_2074_AbsenceQuantityForFebiBilsteinAndSwagInListing {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "search28,category_car_list30"); 
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "search28,category_car_list30");
     }
 
     @Test(dataProvider = "routes")
