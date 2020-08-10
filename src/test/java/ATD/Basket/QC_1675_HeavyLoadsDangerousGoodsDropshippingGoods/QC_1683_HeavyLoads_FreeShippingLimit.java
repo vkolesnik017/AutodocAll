@@ -63,7 +63,7 @@ public class QC_1683_HeavyLoads_FreeShippingLimit {
                 .checkHeavyLoadsDeliveryPriceAllData("10,00")
                 .clickSafeOrderCheckbox()
                 .checkPresenceSafeOrderPriceFromOrderSummeryBlock()
-                .getTotalPriceAllDataPage();
+                .getTotalPriceAllDataPage(shop);
         orderNumber = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumber);
         totalPriceAWSOrder = order_aws.openOrderInAwsWithLogin()
