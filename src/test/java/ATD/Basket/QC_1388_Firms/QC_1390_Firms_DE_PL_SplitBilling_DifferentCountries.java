@@ -58,7 +58,7 @@ public class QC_1390_Firms_DE_PL_SplitBilling_DifferentCountries {
                 .checkTextInDeliveryAddressInfoBlock("Firma FB-MONT A. Fułek Spółka")
                 .checkTextInPayersAddressInfoBlock("Firma Gear4music Limited")
                 .checkTextContainingVatPercentage("23% VAT")
-                .getTotalPriceAllDataPage();
+                .getTotalPriceAllDataPage(shop);
         orderNumberPL = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumberPL);
         totalPriceAWSOrderPL = order_aws.openOrderInAwsWithLogin()
@@ -113,7 +113,7 @@ public class QC_1390_Firms_DE_PL_SplitBilling_DifferentCountries {
                 .checkTextInDeliveryAddressInfoBlock("Firma Autodoc GmbH")
                 .checkTextInPayersAddressInfoBlock("Firma Gear4music Limited")
                 .checkTextContainingVatPercentage("inkl. 16% MwSt")
-                .getTotalPriceAllDataPage();
+                .getTotalPriceAllDataPage(shop);
         orderNumberDE = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumberDE);
         totalPriceAWSOrderDE = order_aws.openOrderInAwsWithLogin()
@@ -153,6 +153,7 @@ public class QC_1390_Firms_DE_PL_SplitBilling_DifferentCountries {
                          "different countries and shipping to another country for ES shop. Country of shop != country of delivery")
     public void testSuccessfulPlacementOfOrder_Firm_SplitBilling_ES(String routePL) {
         openPage(routePL);
+        String shop = getCurrentShopFromJSVarInHTML();
         totalPriceES = new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
@@ -167,7 +168,7 @@ public class QC_1390_Firms_DE_PL_SplitBilling_DifferentCountries {
                 .checkTextInDeliveryAddressInfoBlock("Entidad Autodoc GmbH")
                 .checkTextInPayersAddressInfoBlock("Entidad Gear4music Limited")
                 .checkTextContainingVatPercentage("IVA incluido 16%")
-                .getTotalPriceAllDataPage();
+                .getTotalPriceAllDataPage(shop);
         orderNumberES = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumberES);
         totalPriceAWSOrderES = order_aws.openOrderInAwsWithLogin()

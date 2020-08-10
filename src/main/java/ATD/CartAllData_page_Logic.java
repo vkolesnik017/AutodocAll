@@ -6,7 +6,6 @@ import org.testng.Assert;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.sql.SQLException;
-import java.util.Objects;
 
 import static ATD.CommonMethods.*;
 import static com.codeborne.selenide.Condition.*;
@@ -228,24 +227,26 @@ public class CartAllData_page_Logic extends CartAllData_page {
 
     @Step("Check presence Safe Order price from order summery block. CartAllData_page")
     public CartAllData_page_Logic checkPresenceSafeOrderPriceFromOrderSummeryBlock() {
-        safeOrderCostFromOrderSummeryBlock().shouldBe(visible);
+        if (!safeOrderCostFromHeavyLoadsProduct().isDisplayed()) {
+            safeOrderFromOrderSummaryBlock().shouldBe(visible);
+        }
         return this;
     }
 
     @Step("Check absence Safe Order price from order summery block. CartAllData_page")
     public CartAllData_page_Logic checkAbsenceSafeOrderPriceFromOrderSummeryBlock() {
-        safeOrderCostFromOrderSummeryBlock().shouldNotBe(visible);
+        safeOrderCostFromHeavyLoadsProduct().shouldNotBe(visible);
         return this;
     }
 
     @Step("Add safe order price in order and checks what total price included SO. CartAllData_page")
-    public CartAllData_page_Logic addSafeOrderInOrderAndCheckTotalPriceIncludedSO() {
-        float price = getTotalPriceAllDataPage();
+    public CartAllData_page_Logic addSafeOrderInOrderAndCheckTotalPriceIncludedSO(String shop) {
+        float price = getTotalPriceAllDataPage(shop);
         String priceSO = priceOfSafeOrder().getText();
         float realPriseSO = Float.parseFloat(priceSO.substring(0, priceSO.indexOf(" ")).replaceAll(",", "."));
         clickSafeOrderCheckbox();
         sleep(2000);
-        Float totalPrice = getTotalPriceAllDataPage();
+        Float totalPrice = getTotalPriceAllDataPage(shop);
         float totalPriceIncludedSO = price + realPriseSO;
         BigDecimal result = new BigDecimal(totalPriceIncludedSO);
         BigDecimal formatPriceUp = result.setScale(2, RoundingMode.UP);
@@ -263,14 +264,14 @@ public class CartAllData_page_Logic extends CartAllData_page {
     }
 
     @Step("Remove the safe order price in order and checks what total price included SO. CartAllData_page")
-    public CartAllData_page_Logic removeSafeOrderInOrderAndCheckTotalPriceIncludedSO() {
-        float price = getTotalPriceAllDataPage();
+    public CartAllData_page_Logic removeSafeOrderInOrderAndCheckTotalPriceIncludedSO(String shop) {
+        float price = getTotalPriceAllDataPage(shop);
         String priceSO = priceOfSafeOrder().getText();
         float realPriseSO = Float.parseFloat(priceSO.substring(0, priceSO.indexOf(" ")).replaceAll(",", "."));
         float totalPriceIncludedSO = price - realPriseSO;
         clickSafeOrderCheckbox();
         sleep(2000);
-        Float totalPrice = getTotalPriceAllDataPage();
+        Float totalPrice = getTotalPriceAllDataPage(shop);
         BigDecimal result = new BigDecimal(totalPriceIncludedSO);
         BigDecimal formatPriceUp = result.setScale(2, RoundingMode.UP);
         float roundMax = Float.parseFloat(String.valueOf(formatPriceUp));
@@ -287,10 +288,15 @@ public class CartAllData_page_Logic extends CartAllData_page {
     }
 
     @Step("Get total price of the CartAllData_page")
-    public Float getTotalPriceAllDataPage() {
-        String realPrice = totalOrderPrice().getText();
-        realPrice = realPrice.substring(0, realPrice.indexOf(" ")).replaceAll(",", ".");
-        Float totalPrice = Float.parseFloat(realPrice);
+    public Float getTotalPriceAllDataPage(String shop) {
+        Float totalPrice = null;
+        if (shop.equals("EN")) {
+            totalPrice = getTotalPriceAllDataPageForEnShop();
+        } else {
+            String realPrice = totalOrderPrice().getText();
+            realPrice = realPrice.substring(0, realPrice.indexOf(" ")).replaceAll(",", ".");
+            totalPrice = Float.parseFloat(realPrice);
+        }
         return totalPrice;
     }
 
@@ -306,7 +312,6 @@ public class CartAllData_page_Logic extends CartAllData_page {
             realPrice = realPrice.replaceAll(",", ".");
             Float totalPrice = Float.parseFloat(realPrice);
             return totalPrice;
-
     }
 
 

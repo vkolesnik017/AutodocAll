@@ -136,8 +136,12 @@ public class CartAllData_page {
         return $x("//div[@class='order-summary ']//div[4]//span[2]");
     }
 
-    SelenideElement safeOrderCostFromOrderSummeryBlock() {
+    SelenideElement safeOrderCostFromHeavyLoadsProduct() {
         return $x("//div[@class='order-summary ']//div[5]//span[2]");
+    }
+
+    SelenideElement safeOrderFromOrderSummaryBlock() {
+        return $x("//div[@class='order-summary ']//div[4]//span[2]");
     }
 
     public SelenideElement priceOfSafeOrder() {

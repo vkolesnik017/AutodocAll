@@ -41,6 +41,7 @@ public class QC_1495_ChecksVerificationIslandsAndFirm_BillingIsDivided_SameCount
     @Description(value = "Test checks verification of islands + Firm, billing is divided, same countries in shipping, island without VAT")
     public void testChecksVerificationIslandsSameCountriesInShipping(String route) {
         openPage(route);
+        String shop = getCurrentShopFromJSVarInHTML();
         clickOfBuyBtnForAllPages();
         totalPrice = new Search_page_Logic().closePopupOtherCategoryIfYes()
                 .cartClick().nextButtonClick()
@@ -53,7 +54,7 @@ public class QC_1495_ChecksVerificationIslandsAndFirm_BillingIsDivided_SameCount
                 .checkAbsenceSafeOrderBlock()
                 .checkAbsenceOfVatPercentage()
                 .checkRegularDeliveryPriceAllData("165,00")
-                .getTotalPriceAllDataPage();
+                .getTotalPriceAllDataPage(shop);
         orderNumber = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumber);
         totalPriceAWSOrder = order_aws.openOrderInAwsWithLogin()

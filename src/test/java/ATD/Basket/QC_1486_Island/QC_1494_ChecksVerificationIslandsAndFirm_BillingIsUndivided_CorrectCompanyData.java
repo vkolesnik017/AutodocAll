@@ -42,6 +42,7 @@ public class QC_1494_ChecksVerificationIslandsAndFirm_BillingIsUndivided_Correct
     @Description(value = "Test checks verification of islands + Firm, billing is undivided (Correct Company Data)")
     public void testChecksVerificationIslandsAndFirmCorrectCompanyData(String route) {
         openPage(route);
+        String shop = getCurrentShopFromJSVarInHTML();
         clickOfBuyBtnForAllPages();
         totalPrice = new Search_page_Logic().closePopupOtherCategoryIfYes()
                 .cartClick().nextButtonClick()
@@ -53,7 +54,7 @@ public class QC_1494_ChecksVerificationIslandsAndFirm_BillingIsUndivided_Correct
                 .checkPresenceSafeOrderBlock()
                 .checkAbsenceOfVatPercentage()
                 .checkRegularDeliveryPriceAllData("13,00")
-                .getTotalPriceAllDataPage();
+                .getTotalPriceAllDataPage(shop);
         orderNumber = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumber);
         totalPriceAWSOrder = order_aws.openOrderInAwsWithLogin()
