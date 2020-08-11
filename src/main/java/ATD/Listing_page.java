@@ -758,5 +758,18 @@ public class Listing_page {
     SelenideElement productOEMnumber(String brandName) { return $x("//*[@class='name']/a[contains (text(),'"+ brandName +"')]/span[@class='highlight']"); }
 
     SelenideElement productAddToBasketButton(String brandName) { return $x("//*[@data-brand-name='"+ brandName +"']//a[contains(@class,'add_')]"); }
+
+    SelenideElement brandsOfBrandBlock(String idOfBrand) {
+        return $x("//input[@id='cb-brand-" + idOfBrand + "']/..");
+    }
+
+    ElementsCollection titleOfProductInListing() {
+        return $$x("//div[@class='name']/*[self::a or self::span][1]");
+    }
+
+    SelenideElement characteristicZustand() {
+        return $x("//li[@class='default_ul_li_class']/span[2]");
+    }
+
 }
 
