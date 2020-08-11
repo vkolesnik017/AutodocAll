@@ -1139,7 +1139,7 @@ public class Listing_page_Logic extends Listing_page {
 
     @Step("Click four rating stars in filter. Listing_page")
     public Listing_page_Logic clickFourRatingStarsInFilter() {
-        ratingFourStarsFilterCheckbox().click();
+        ratingFourStarsFilterCheckbox().scrollTo().click();
         return this;
     }
 
@@ -1153,7 +1153,7 @@ public class Listing_page_Logic extends Listing_page {
 
     @Step("Click five rating stars in filter. Listing_page")
     public Listing_page_Logic clickFiveRatingStarsInFilter() {
-        ratingFiveStarsFilterCheckbox().click();
+        ratingFiveStarsFilterCheckbox().scrollTo().click();
         return this;
     }
 
