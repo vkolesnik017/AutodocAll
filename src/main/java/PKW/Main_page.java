@@ -124,5 +124,15 @@ public class Main_page {
         return $x("//div[@id='login_complete']//a[@class='acc']");
     }
 
+    SelenideElement footerFaqLink() {
+        return $(byXpath("//*[@class='footer_menu_list4']/a"));
+    }
 
+    SelenideElement footerUberUnsLink() {
+        return $(byXpath("//*[@class='footer_menu_list5']/a"));
+    }
+
+    SelenideElement footerWiderrufLink() {
+        return $(byXpath("//*[@class='footer_menu_list7']/a"));
+    }
 }
