@@ -1,10 +1,14 @@
 package PKW;
 
 import io.qameta.allure.Step;
+import org.testng.Assert;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collections;
 
 import static ATD.CommonMethods.checkingContainsUrl;
+import static PKW.CommonMethods.waitWhileRouteContainsExpectedCondition;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.back;
 import static com.codeborne.selenide.Selenide.page;
@@ -111,5 +115,33 @@ public class Motoroil_Release_page_Logic extends Motoroil_Release_page {
         mainHeadline().shouldBe(visible);
         String currentHeadLine = mainHeadline().getText();
         return currentHeadLine;
+    }
+
+    @Step("select filter by Tolerance. Motoroil_Release_page")
+    public Motoroil_Release_page_Logic selectFilterByTolerance(String expectedFilter) {
+        toleranceFilterBlock().shouldBe(exist);
+        visibleLinksOfToleranceBlock(expectedFilter).click();
+        waitWhileRouteContainsExpectedCondition("motoroel/allison-c4");
+        presenceAttributeOfCheckBox(expectedFilter).shouldHave(attribute("checked"));
+        return this;
+    }
+
+    @Step("check selector with selected Tolerance filter. Motoroil_Release_page")
+    public Motoroil_Release_page_Logic checkSelectorWithSelectedToleranceFilter(String expectedValue) {
+        toleranceFieldInSelector().shouldBe(visible).shouldHave(value(expectedValue));
+        return this;
+    }
+
+    @Step("check listing with selected tolerance filter. Motoroil_Release_page")
+    public Motoroil_Release_page_Logic checkListingWithSelectedToleranceFilter(String expectedToleranceField) {
+        for (int i = 0; i < toleranceCharacteristicsInProductDescription().size(); i++) {
+            String[] arrayOfCharacteristic;
+            ArrayList<String> listOfCharacteristics = new ArrayList<>();
+            arrayOfCharacteristic = toleranceCharacteristicsInProductDescription().get(i).getText().replace(" ", "").split(",");
+            Collections.addAll(listOfCharacteristics, arrayOfCharacteristic);
+            Assert.assertTrue(listOfCharacteristics.contains(expectedToleranceField.replace(" ", "")));
+            listOfCharacteristics.clear();
+        }
+        return this;
     }
 }

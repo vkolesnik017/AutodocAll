@@ -3,9 +3,7 @@ package ATD;
 
 import io.qameta.allure.Step;
 import org.testng.Assert;
-
 import java.sql.SQLException;
-
 import static ATD.CommonMethods.getPriceFromElement;
 import static ATD.CommonMethods.waitingWhileLinkBecomeExpected;
 import static com.codeborne.selenide.Condition.*;
@@ -182,6 +180,28 @@ public class TyresProduct_page_Logic extends TyresProduct_page {
         if (!summerSeasonCheckbox().isSelected()) {
             summerSeasonCheckbox().click();
         }
+        return this;
+    }
+
+    @Step("Checking presence text about period product return. TyresProduct_page")
+    public TyresProduct_page_Logic checkingPresenceTextAboutPeriodProductReturn() {
+        daysReturnPeriodProduct().shouldHave(text("14"));
+        return this;
+    }
+
+    @Step("Checking presence block with return period. TyresProduct_page")
+    public TyresProduct_page_Logic checkingForBlockWithReturnPeriod() {
+        returnPeriodProductBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checking color change on hover text from block with return period. TyresProduct_page")
+    public TyresProduct_page_Logic checkingColorChangeOnHoverTextFromBlockReturnPeriod() {
+        daysReturnPeriodProduct().shouldHave(cssValue("color", "rgba(128, 128, 128, 1)"));
+        iconDaysReturnPeriodProduct().shouldHave(cssValue("color", "rgba(128, 128, 128, 1)"));
+        daysReturnPeriodProduct().hover();
+        daysReturnPeriodProduct().shouldHave(cssValue("color", "rgba(51, 100, 219, 1)"));
+        iconDaysReturnPeriodProduct().shouldHave(cssValue("color", "rgba(51, 100, 219, 1)"));
         return this;
     }
 

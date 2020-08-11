@@ -43,27 +43,27 @@ public class Product_page {
         return $x("//div[@class='pkw-more']");
     }
 
-    SelenideElement nameFieldInReviewForm () {
+    SelenideElement nameFieldInReviewForm() {
         return $x("//input[@id='rating_name_right']");
     }
 
-    SelenideElement emailFieldInReviewForm () {
+    SelenideElement emailFieldInReviewForm() {
         return $x("//input[@id='rating_email_right']");
     }
 
-    SelenideElement checkboxSubscribeAcceptInReviewForm () {
+    SelenideElement checkboxSubscribeAcceptInReviewForm() {
         return $x("//div[@class='pkw-more__span_40']//input[@id='subscribe_accept']");
     }
 
-    SelenideElement massageFieldInReviewForm () {
+    SelenideElement massageFieldInReviewForm() {
         return $x("//div[@class='pkw-more__span_40']//textarea[@id='rating_message_right']");
     }
 
-    SelenideElement btnSendInReviewForm () {
+    SelenideElement btnSendInReviewForm() {
         return $x("//div[@class='pkw-more__span_40']//button[@class='pkw-product__green-btn rating_send']");
     }
 
-    SelenideElement reviewFormDatenschutzerklarungLink() {
+    public SelenideElement reviewFormDatenschutzerklarungLink() {
         return $x("//label[@id='privacy_policy_reviews_right']/a");
     }
 
@@ -73,6 +73,34 @@ public class Product_page {
 
     SelenideElement successPopupCloseButton() {
         return $(By.xpath("//div[@class='popup_content']//a"));
+    }
+
+    SelenideElement  btnOpenRatingForm() {
+        return $x("//div[@class='pkw-rateblock__footer']/button");
+    }
+
+    public SelenideElement ratingFormDatenschutzerklarungLink() {
+        return $x("//label[@id='privacy_policy1']/a");
+    }
+
+    SelenideElement nameFieldInRatingForm() {
+        return $x("//div[@class='pkw-popup__inset']//input[@id='form_rating_name']");
+    }
+
+    SelenideElement emailFieldInRatingForm() {
+        return $x("//div[@class='pkw-popup__inset']//input[@id='form_rating_email']");
+    }
+
+    SelenideElement checkboxSubscribeAcceptInRatingForm() {
+        return $x("//div[@class='pkw-popup__inset']//input[@id='subscribe_accept']");
+    }
+
+    SelenideElement massageFieldInRatingForm() {
+        return $x("//div[@class='pkw-popup__inset']//textarea[@id='form_rating_message']");
+    }
+
+    SelenideElement btnSendCommentFromPopupRatingForm() {
+        return $x("//div[@class='pkw-popup__inset']//button[@class='pkw-product__green-btn rating_send']");
     }
 
 

@@ -44,4 +44,11 @@
             <class name="PKW.OILS.QC_1269_RelinkingBlockInListings.QC_1279_TransitionByClickOnValueInRelinkingBlocks"/>
         </classes>
     </test>
+
+    <test name="QC_1217_BlockFilterByTolerance">
+        <classes>
+            <class name="PKW.OILS.QC_1217_BlockFilterByTolerance.QC_1220_ApplyingFilterByToleranceInOilListings"/>
+            <class name="PKW.OILS.QC_1217_BlockFilterByTolerance.QC_1221_TransitionByClickOnToleranceFilter"/>
+        </classes>
+    </test>
 </suite>
