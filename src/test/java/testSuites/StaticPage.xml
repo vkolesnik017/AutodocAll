@@ -1,94 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="StaticPage" parallel="tests" thread-count="3">
+<suite name="StaticPage">
 
-    <listeners>
-        <listener class-name="ATD.ProjectListener"/>
-    </listeners>
-
-
-    <test name="QC_216_StaticPage_zahlung" enabled="true">
-        <classes>
-            <class name="ATD.StaticPage.QC_216_StaticPage_zahlung">
-            </class>
-        </classes>
-    </test>
-
-    <test name="QC_234_StaticPage_datenschutz" enabled="true">
-        <classes>
-            <class name="ATD.StaticPage.QC_234_StaticPage_datenschutz">
-            </class>
-        </classes>
-    </test>
-
-    <test name="QC_243_StaticPage_versand" enabled="true">
-        <classes>
-            <class name="ATD.StaticPage.QC_243_StaticPage_versand">
-            </class>
-        </classes>
-    </test>
-
-    <test name="QC_717_StaticPage_widerruf" enabled="true">
-        <classes>
-            <class name="ATD.StaticPage.QC_717_StaticPage_widerruf">
-            </class>
-        </classes>
-    </test>
-
-    <test name="QC_1091_StaticPage_austauschartikel" enabled="false">
-        <classes>
-            <class name="ATD.StaticPage.QC_1091_StaticPage_austauschartikel">
-            </class>
-        </classes>
-    </test>
-
-    <test name="QC_1175_StaticPage_contacts" enabled="true">
-        <classes>
-            <class name="ATD.StaticPage.QC_1175_StaticPage_contacts">
-            </class>
-        </classes>
-    </test>
-
-    <test name="QC_1465_StaticPage_agb" enabled="true">
-        <classes>
-            <class name="ATD.StaticPage.QC_1465_StaticPage_agb">
-            </class>
-        </classes>
-    </test>
-
-    <test name="QC_1529_StaticPage_impressum" enabled="true">
-        <classes>
-            <class name="ATD.StaticPage.QC_1529_StaticPage_impressum">
-            </class>
-        </classes>
-    </test>
-
-    <test name="QC_1552_StaticPage_partnership" enabled="true">
-        <classes>
-            <class name="ATD.StaticPage.QC_1552_StaticPage_partnership">
-            </class>
-        </classes>
-    </test>
-
-    <test name="QC_1559_StaticPage_vacancies" enabled="true">
-        <classes>
-            <class name="ATD.StaticPage.QC_1559_StaticPage_vacancies">
-            </class>
-        </classes>
-    </test>
-
-    <test name="QC_1547_StaticPage_mobile_app" enabled="true">
-        <classes>
-            <class name="ATD.StaticPage.QC_1547_StaticPage_mobile_app">
-            </class>
-        </classes>
-    </test>
-
-    <test name="QC_2038_StaticPage_sponsoring" enabled="true">
-        <classes>
-            <class name="ATD.StaticPage.QC_2038_StaticPage_sponsoring">
-            </class>
-        </classes>
-    </test>
+    <suite-files>
+        <suite-file path="StaticPage_ATD.xml"/>
+        <suite-file path="StaticPage_PKW.xml"/>
+    </suite-files>
 
 </suite>

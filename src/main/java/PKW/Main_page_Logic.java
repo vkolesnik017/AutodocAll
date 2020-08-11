@@ -1,14 +1,13 @@
 package PKW;
 
 
-import ATD.Maker_car_list_page_Logic;
 import io.qameta.allure.Step;
 import static PKW.CommonMethods.mailRandom;
 import static PKW.CommonMethods.password;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.page;
 
-public class Main_page_Logic extends Main_page{
+public class Main_page_Logic extends Main_page {
 
     @Step("Cart clicking. Main_page")
     public Cart_page_Logic cartClick() {
@@ -36,7 +35,7 @@ public class Main_page_Logic extends Main_page{
     }
 
     @Step("Filling fields in registration form. Main_page")
-    public String fillingRegistrationFields(String qc){
+    public String fillingRegistrationFields(String qc) {
         String mail = qc + mailRandom();
         mailFieldInRegistration().setValue(mail);
         passwordFieldInRegistration().setValue(password);
@@ -109,5 +108,21 @@ public class Main_page_Logic extends Main_page{
         return this;
     }
 
+    @Step("Click the FAQ link. Main_page")
+    public FAQ_static_page_Logic clickFooterFaqLink() {
+        footerFaqLink().click();
+        return page(FAQ_static_page_Logic.class);
+    }
 
+    @Step("Click the Uber Uns link. Main_page")
+    public Uber_uns_static_page_Logic clickFooterUberUnsLink() {
+        footerUberUnsLink().click();
+        return page(Uber_uns_static_page_Logic.class);
+    }
+
+    @Step("Click the Widerruf. Main_page")
+    public Widerruf_static_page_Logic clickFooterWiderrufLink() {
+        footerWiderrufLink().click();
+        return page(Widerruf_static_page_Logic.class);
+    }
 }

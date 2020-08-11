@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="StaticPage_PKW" parallel="tests" thread-count="3">
+
+    <listeners>
+        <listener class-name="ATD.ProjectListener"/>
+    </listeners>
+
+
+    <test name="QC_1608_StaticPage_FAQ" enabled="true">
+        <classes>
+            <class name="PKW.StaticPage.QC_1608_StaticPage_FAQ">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QC_1609_StaticPage_Uber_uns" enabled="true">
+        <classes>
+            <class name="PKW.StaticPage.QC_1609_StaticPage_Uber_uns">
+            </class>
+        </classes>
+    </test>
+
+</suite>
