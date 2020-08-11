@@ -144,4 +144,44 @@ public class Motoroil_Release_page_Logic extends Motoroil_Release_page {
         }
         return this;
     }
+
+    @Step("click on selected Tolerance filter. Motoroil_Release_page")
+    public Motoroil_Search_page_Logic clickOnSelectedToleranceFilter(String expectedFilter) {
+        toleranceFilterBlock().shouldBe(exist);
+        visibleLinksOfToleranceBlock(expectedFilter).click();
+        return page(Motoroil_Search_page_Logic.class);
+    }
+
+    @Step("presence of selector. Motoroil_Release_page")
+    public Motoroil_Release_page_Logic presenceOfSelector() {
+        selector().shouldBe(visible);
+        return this;
+    }
+
+
+    @Step("visibility errorTooltip for Marke field of selector. Motoroil_Release_page")
+    public Motoroil_Release_page_Logic visibilityErrorToolTipForMarkeFieldOfSelector() {
+        selector().shouldBe(visible);
+        btnSearchOfSelector().click();
+        errorToolTipOfMarkeFieldInSelector().shouldBe(visible);
+        return this;
+    }
+
+    @Step("visibility errorTooltip for Model field of selector. Motoroil_Release_page")
+    public Motoroil_Release_page_Logic visibilityErrorToolTipForModelFieldOfSelector(String idOfMarke) {
+        selector().shouldBe(visible);
+        markeFieldInSelector().selectOptionByValue(idOfMarke);
+        btnSearchOfSelector().click();
+        errorToolTipOfModelFieldInSelector().shouldBe(visible);
+        return this;
+    }
+
+    @Step("visibility errorTooltip for Motor field of selector. Motoroil_Release_page")
+    public Motoroil_Release_page_Logic visibilityErrorToolTipForMotorFieldOfSelector(String idOfModel) {
+        selector().shouldBe(visible);
+        modelFieldInSelector().selectOptionByValue(idOfModel);
+        btnSearchOfSelector().click();
+        errorToolTipOfMotorFieldInSelector().shouldBe(visible);
+        return this;
+    }
 }
