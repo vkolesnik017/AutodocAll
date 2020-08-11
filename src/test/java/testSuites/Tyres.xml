@@ -188,4 +188,14 @@
         </classes>
     </test>
 
+
+    <test name="QC_2226_CheckingPeriodReturnTiresBlock">
+        <classes>
+            <class name="ATD.Tyres.QC_2226_CheckingPeriodReturnTiresBlock.QC_2227_CheckingPresenceReturnTiresBlockOnProductPage"/>
+            <class name="ATD.Tyres.QC_2226_CheckingPeriodReturnTiresBlock.QC_2230_CheckingPeriodReturnTill14DaysInReturnBlock"/>
+            <class name="ATD.Tyres.QC_2226_CheckingPeriodReturnTiresBlock.QC_2231_CheckingColorChangeReturnBlockOnHover"/>
+        </classes>
+    </test>
+
+
 </suite>

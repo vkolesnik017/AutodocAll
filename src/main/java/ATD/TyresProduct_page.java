@@ -55,4 +55,16 @@ public class TyresProduct_page {
     SelenideElement addToBasketButton() { return $(".product-button"); }
 
     SelenideElement summerSeasonCheckbox() { return $x("//input[@value='sommer']/.."); }
+
+    SelenideElement daysReturnPeriodProduct() {
+        return $x("//li[@class='features-tage-icon']//p");
+    }
+
+    SelenideElement iconDaysReturnPeriodProduct() {
+        return $x("//li[@class='features-tage-icon']//b");
+    }
+
+    SelenideElement returnPeriodProductBlock() {
+        return $x("//li[@class='features-tage-icon']");
+    }
 }
