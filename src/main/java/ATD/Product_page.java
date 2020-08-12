@@ -658,4 +658,8 @@ public class Product_page {
     SelenideElement otherCategoriesPopUp() {return $x("//div[@class='popup-other-cat']");}
 
     SelenideElement btnCloseOtherCategoriesPopUp() {return $x("//div[@class='popup-other-cat__close']");}
+
+    SelenideElement characteristicZustand() {
+        return $x("//div[@class='product-block__description__info']//li[@class='default_ul_li_class']//span[2]");
+    }
 }
