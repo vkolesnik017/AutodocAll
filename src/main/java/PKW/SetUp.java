@@ -29,6 +29,8 @@ public class SetUp {
         Configuration.startMaximized = true;
         Configuration.holdBrowserOpen = false;
         Configuration.timeout = 10000;
+
+
         if (Selenoid) {
             Configuration.remote = "http://192.168.99.100:4444/wd/hub";
 //            Configuration.driverManagerEnabled = false;
