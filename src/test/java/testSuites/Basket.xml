@@ -6,7 +6,7 @@
         <listener class-name="ATD.ProjectListener"/>
     </listeners>
 
-    <test name="QC_1129_BasketSession" thread-count="1">
+    <!--<test name="QC_1129_BasketSession" thread-count="1">
         <classes>
             <class name="ATD.Basket.QC_1129_BasketSession.QC_1130_RestorationWebBasketSessionOnWebHomepageVersion"/>
             <class name="ATD.Basket.QC_1129_BasketSession.QC_1131_SynchronizationWebSessionOfBasketOnMobVersion"/>
@@ -35,7 +35,7 @@
             <class name="ATD.Basket.QC_1388_Firms.QC_1484_SplitBilling_FirmAndPhysicalPerson_DifferentCountries_NegativeCase"/>
             <class name="ATD.Basket.QC_1388_Firms.QC_1485_FirmValidationAfterError"/>
         </classes>
-    </test>
+    </test>-->
 
     <test name="QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods">
         <classes>
@@ -48,11 +48,11 @@
             <class name="ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1682_HeavyLoads_Islands"/>
             <!--<class name="ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1684_HeavyLoadsAndOrdinaryGoods_PositiveCase"/>-->
             <!--<class name="ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1685_HeavyLoadsAndOrdinaryGoods_DeletedOFGoods"/>-->
-            <class name="ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1683_HeavyLoads_FreeShippingLimit"/>
+            <!--<class name="ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1683_HeavyLoads_FreeShippingLimit"/>-->
         </classes>
     </test>
 
-    <test name="QC_1486_Island">
+    <!--<test name="QC_1486_Island">
         <classes>
             <class name="ATD.Basket.QC_1486_Island.QC_1487_ChecksVerificationIslands_BillingIsUndivided_PositiveCase"/>
             <class name="ATD.Basket.QC_1486_Island.QC_1488_ChecksVerificationIslands_BillingIsUndivided_NegativeCase"/>
@@ -77,9 +77,9 @@
             <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery.QC_1924_LoginByUserLoginOnAnotherSkin"/>
             <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery.QC_1926_LoginNegativeCase_InvalidPassword"/>
             <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery.QC_1927_LoginNegativeCase_InvalidDomain"/>
-            <!--<class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery.QC_1928_LoginNegativeCase_EmptyInputs"/>-->
+            &lt;!&ndash;<class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery.QC_1928_LoginNegativeCase_EmptyInputs"/>&ndash;&gt;
             <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery.QC_1930_PasswordRecoveryNegativeCase_NotRegisteredMail"/>
-           <!--<class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery.QC_1931_PasswordRecoveryNegativeCase_IncorrectPasswordConfirmation"/>-->
+           &lt;!&ndash;<class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery.QC_1931_PasswordRecoveryNegativeCase_IncorrectPasswordConfirmation"/>&ndash;&gt;
         </classes>
     </test>
 
@@ -107,6 +107,6 @@
             <class name="ATD.Basket.QC_1873_SafeOrder.QC_1881_DisablingSO_blockAfterChangingDelivery"/>
             <class name="ATD.Basket.QC_1873_SafeOrder.QC_1876_DefaultCheckboxIsSafeOrder"/>
         </classes>
-    </test>
+    </test>-->
 
 </suite>
