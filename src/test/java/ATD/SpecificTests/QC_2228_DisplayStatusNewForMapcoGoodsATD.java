@@ -1,4 +1,4 @@
-package specificTests;
+package ATD.SpecificTests;
 
 import ATD.DataBase;
 import ATD.Excel;
@@ -20,7 +20,7 @@ import static ATD.CommonMethods.openPage;
 import static ATD.Excel.parseExcel;
 import static ATD.SetUp.setUpBrowser;
 
-public class QC_2228_DisplayStatusNewForMapcoGoods {
+public class QC_2228_DisplayStatusNewForMapcoGoodsATD {
 
     private final String dataFile = "D://FilesFromAutotest/data/QC_2228_data.xls";
     private final String result = "D://FilesFromAutotest/data/QC_2228_result.txt";
@@ -31,7 +31,7 @@ public class QC_2228_DisplayStatusNewForMapcoGoods {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "data", parallel = false)
+    @DataProvider(name = "data", parallel = true)
     Object[] dataProvider() {
         return new Excel().setUpAllCellFromExcel(dataFile);
     }
