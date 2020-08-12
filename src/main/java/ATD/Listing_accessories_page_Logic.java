@@ -213,4 +213,33 @@ public class Listing_accessories_page_Logic extends Listing_accessories_page {
         return this;
     }
 
+    @Step("Get id product listing. Listing_accessories_page")
+    public String getIdProductListing() {
+        return idProductInBtnAddBasket().getAttribute("id");
+    }
+
+    @Step(":from Listing_accessories_page")
+    public Listing_accessories_page_Logic increasesNumberProductsInQuantityCounter() {
+        new CommonMethods().checkingCounterIncrease(2, counterValueInQuantityCounter(), btnPlusInQuantityCounter());
+        return this;
+    }
+
+    @Step("Get value quantity counter from first product listing. Listing_accessories_page")
+    public String getValueQuantityCounterFirstProductListing() {
+        return counterValueInQuantityCounter().getValue();
+    }
+
+    @Step("Click button add to basket first product. Listing_accessories_page")
+    public Listing_accessories_page_Logic clickBtnAddToBasketFirstProduct() {
+        redBtnAddToBasket().click();
+        popupBasketAddedProducts().waitUntil(attribute("style","visibility: visible; opacity: 1;"), 10000);
+        return this;
+    }
+
+    @Step(":from Listing_accessories_page")
+    public Cart_page_Logic cartClick() {
+        new Main_page_Logic().cartClick();
+        return page(Cart_page_Logic.class);
+    }
+
 }

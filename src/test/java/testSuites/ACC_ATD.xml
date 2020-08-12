@@ -213,5 +213,18 @@
         </classes>
     </test>
 
+    <test name="QC_2260_BlockWithProductsOnToolsListing">
+        <classes>
+            <class name="ATD.ACC.QC_2260_BlockWithProductsOnToolsListing.QC_2262_MainProductsListingTools"/>
+            <class name="ATD.ACC.QC_2260_BlockWithProductsOnToolsListing.QC_2265_AddProductsInBasketOnToolsListing"/>
+        </classes>
+    </test>
+
+    <test name="QC_2261_BlockWithProductsOnAccessoriesListing">
+        <classes>
+            <class name="ATD.ACC.QC_2261_BlockWithProductsOnAccessoriesListing.QC_2269_AddProductsInBasketOnAccListing"/>
+        </classes>
+    </test>
+
 
 </suite>

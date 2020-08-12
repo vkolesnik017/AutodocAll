@@ -88,7 +88,7 @@ public class Main_page {
         return $(By.xpath("//div[@class='footer-subscr']"));
     }
 
-    SelenideElement linkDatenschutzerklärungInFooter() {
+    public SelenideElement linkDatenschutzerklärungInFooter() {
         return $x("//label[@id='privacy_policy_footer']/a");
     }
 
@@ -135,4 +135,30 @@ public class Main_page {
     SelenideElement footerWiderrufLink() {
         return $(byXpath("//*[@class='footer_menu_list7']/a"));
     }
+
+    SelenideElement btnNotFoundCarInSelector() {
+        return $x("//form[@id='top-select']/a[@class='form-not-found-car ga-click']");
+    }
+
+    SelenideElement vinFieldPopupFromSelector() {
+        return $x("//input[@id='form_vin']");
+    }
+
+    SelenideElement mailFieldPopupFromSelector() {
+        return $x("//input[@id='form_email']");
+    }
+
+    SelenideElement checkboxPopupFromSelector() {
+        return $x("//div[@class='accept_subscription_checkbox']/label");
+    }
+
+    SelenideElement btnSendPopupFromSelector() {
+        return $x("//div[@class='not-found-car-popup']//button");
+    }
+
+    public SelenideElement  privacyPolicyLinkPopupFromSelector() {
+        return $x("//label[@id='privacy_policy_not_found_car']//a");
+    }
+
+
 }

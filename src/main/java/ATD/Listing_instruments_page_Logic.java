@@ -2,8 +2,7 @@ package ATD;
 
 import io.qameta.allure.Step;
 import org.testng.Assert;
-import static com.codeborne.selenide.Condition.attribute;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.page;
 
 public class Listing_instruments_page_Logic extends Listing_instruments_page {
@@ -89,6 +88,42 @@ public class Listing_instruments_page_Logic extends Listing_instruments_page {
     public Listing_instruments_page_Logic checkingPresenceBreadCrumbsBlock() {
         blockBreadCrumbs().shouldBe(visible);
         return this;
+    }
+
+    @Step("Checking presence products block and they quantity. Listing_instruments_page")
+    public Listing_instruments_page_Logic checkingBlockAndQuantityMainProducts() {
+        blockMainProducts().shouldBe(appear);
+        mainProductsList().shouldHaveSize(20);
+        return this;
+    }
+
+    @Step("Get id product listing. Listing_instruments_page")
+    public String getIdProductListing() {
+        return idProductInBtnAddBasket().getAttribute("id");
+    }
+
+    @Step(":from Listing_instruments_page")
+    public Listing_instruments_page_Logic increasesNumberProductsInQuantityCounter() {
+        new CommonMethods().checkingCounterIncrease(2, counterValueInQuantityCounter(), btnPlusInQuantityCounter());
+        return this;
+    }
+
+    @Step("Get value quantity counter from first product listing. Listing_instruments_page")
+    public String getValueQuantityCounterFirstProductListing() {
+        return counterValueInQuantityCounter().getValue();
+    }
+
+    @Step("Click button add to basket first product. Listing_instruments_page")
+    public Listing_instruments_page_Logic clickBtnAddToBasketFirstProduct() {
+        redBtnAddToBasket().click();
+        popupBasketAddedProducts().waitUntil(attribute("style","visibility: visible; opacity: 1;"), 10000);
+        return this;
+    }
+
+    @Step(":from Listing_instruments_page")
+    public Cart_page_Logic cartClick() {
+        new Main_page_Logic().cartClick();
+        return page(Cart_page_Logic.class);
     }
 
 

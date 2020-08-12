@@ -1,6 +1,7 @@
 package PKW;
 
 
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import static PKW.CommonMethods.mailRandom;
 import static PKW.CommonMethods.password;
@@ -96,9 +97,33 @@ public class Main_page_Logic extends Main_page {
         return mail;
     }
 
-    @Step(":in review form. Main_page")
-    public Main_page_Logic checkingDatenschutzerklarungLinkBehaviorInReviewsForm() {
-        new CommonMethods().checkingDatenschutzerklarungLinkBehavior(linkDatenschutzerklärungInFooter(), "underline solid rgb(0, 0, 0)");
+    @Step("Click btn not found car in Selector. Main_page")
+    public Main_page_Logic clickBtnNotFoundCarInSelector() {
+        btnNotFoundCarInSelector().click();
+        return this;
+    }
+
+    @Step("Filling fields in popup From Selector and checking behavior. Main_page")
+    public String fillRequiredFieldsInPopupFromSelector(String qc, String vinNumber) {
+        String mail = qc + PKW.CommonMethods.mailRandom();
+        vinFieldPopupFromSelector().setValue(vinNumber);
+        mailFieldPopupFromSelector().setValue(mail);
+        checkboxPopupFromSelector().click();
+        btnSendPopupFromSelector().click();
+        subscriptionSuccessPopup().shouldHave(text("Your message has been sent"));
+        subscriptionPopupClose().click();
+        return mail;
+    }
+
+    @Step(":From Main_page")
+    public Main_page_Logic checkingDatenschutzerklarungLinkBehavior(SelenideElement orderDatenschutzerklarungLink) {
+        new CommonMethods().checkingDatenschutzerklarungLinkBehavior(orderDatenschutzerklarungLink, "underline solid rgb(0, 0, 0)");
+        return this;
+    }
+
+    @Step(":From Main_page")
+    public Main_page_Logic checkingPrivacyPolicyLinkBehavior(SelenideElement PrivacyPolicyLink) {
+        new CommonMethods().checkingPrivacyPolicyLinkBehavior(PrivacyPolicyLink, "underline solid rgb(0, 0, 0)");
         return this;
     }
 
