@@ -6,4 +6,50 @@
         <listener class-name="ATD.ProjectListener"/>
     </listeners>
 
+
+    <test name="QC_1230_GdprRegistrationOnMain">
+        <classes>
+            <class name="PKW.GDRP.QC_1230_GdprRegistrationOnMain"/>
+        </classes>
+    </test>
+
+    <test name="QC_1863_GdprContacts">
+        <classes>
+            <class name="PKW.GDRP.QC_1863_GdprContacts"/>
+        </classes>
+    </test>
+
+    <test name="QC_1895_GdprFooter">
+        <classes>
+            <class name="PKW.GDRP.QC_1895_GdprFooter"/>
+        </classes>
+    </test>
+
+    <test name="QC_1900_GdprReviewsOnProductPage">
+        <classes>
+            <class name="PKW.GDRP.QC_1900_GdprReviewsOnProductPage"/>
+        </classes>
+    </test>
+
+    <test name="QC_1907_GdprSoft404">
+        <classes>
+            <class name="PKW.GDRP.QC_1907_GdprSoft404"/>
+        </classes>
+    </test>
+
+    <test name="QC_1945_GdprReplyToReview">
+        <classes>
+            <class name="PKW.GDRP.QC_1945_GdprReplyToReview"/>
+        </classes>
+    </test>
+
+    <test name="QC_1906_GdprPageReviews">
+        <classes>
+            <class name="PKW.GDRP.QC_1906_GdprPageReviews"/>
+        </classes>
+    </test>
+
+
+
+
 </suite>
