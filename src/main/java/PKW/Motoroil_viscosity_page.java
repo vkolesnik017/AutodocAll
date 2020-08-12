@@ -65,4 +65,6 @@ public class Motoroil_viscosity_page {
 
     ElementsCollection toleranceCharacteristicsInProductDescription() {return $$x("//span[contains(text(),'Herstellerfreigabe:')]/following-sibling::span");}
 
+    ElementsCollection selectedToleranceFilter() {return $$x("//div[contains(text(),'Herstellerfreigabe')]/..//input[@class='checkbox' and @checked]/../label");}
+
 }

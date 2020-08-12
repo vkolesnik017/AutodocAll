@@ -12,6 +12,7 @@ import static PKW.CommonMethods.waitWhileRouteContainsExpectedCondition;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.back;
 import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class Motoroil_viscosity_page_Logic extends Motoroil_viscosity_page {
 
@@ -126,7 +127,7 @@ public class Motoroil_viscosity_page_Logic extends Motoroil_viscosity_page {
     @Step("select filter by Tolerance. Motoroil_viscosity_page")
     public Motoroil_viscosity_page_Logic selectFilterByTolerance(String expectedFilter, String expectedCondition) {
         toleranceFilterBlock().shouldBe(exist).scrollTo();
-        visibleLinksOfToleranceBlock(expectedFilter).click();
+        clickOnToleranceFilter(expectedFilter);
         waitWhileRouteContainsExpectedCondition(expectedCondition);
         presenceAttributeOfCheckBox(expectedFilter).shouldHave(attribute("checked"));
         return this;
@@ -150,4 +151,23 @@ public class Motoroil_viscosity_page_Logic extends Motoroil_viscosity_page {
         }
         return this;
     }
+
+    @Step("click on Tolerance filter. Motoroil_viscosity_page")
+    public Motoroil_viscosity_page_Logic clickOnToleranceFilter(String expectedValue) {
+        visibleLinksOfToleranceBlock(expectedValue).shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("get current url. Motoroil_viscosity_page")
+    public String getCurrentUrl() {
+        String currentUrl = url();
+        return currentUrl;
+    }
+
+     @Step("check count of selected Tolerance filter. Motoroil_viscosity_page")
+    public Motoroil_viscosity_page_Logic checkCountOfSelectedToleranceFilter() {
+        selectedToleranceFilter().shouldHaveSize(1);
+        return this;
+    }
+
 }

@@ -84,15 +84,49 @@ public class Motoroil_Maker_page_Logic extends Motoroil_Maker_page {
         return this;
     }
 
-    @Step("click on value from First relinking block. Motoroil_Release_page")
+    @Step("click on value from First relinking block. Motoroil_Maker_page")
     public Motoroil_Maker_Group_page_Logic clickOnValueFromFirstRelinkingBlock(int position) {
         linksOfRelinkingBlocks(1).get(position).shouldBe(visible).scrollIntoView("{block: \"center\"}").hover().click();
         return page(Motoroil_Maker_Group_page_Logic.class);
     }
 
-    @Step("click on value from Second relinking block. Motoroil_Release_page")
+    @Step("click on value from Second relinking block. Motoroil_Maker_page")
     public Motoroil_viscosity_page_Logic clickOnValueFromSecondRelinkingBlock(int position) {
         linksOfRelinkingBlocks(2).get(position).shouldBe(visible).click();
         return page(Motoroil_viscosity_page_Logic.class);
+    }
+
+
+    @Step("presence of selector. Motoroil_Maker_page")
+    public Motoroil_Maker_page_Logic presenceOfSelector() {
+        selector().shouldBe(visible);
+        return this;
+    }
+
+    @Step("visibility errorTooltip for Marke field of selector. Motoroil_Maker_page")
+    public Motoroil_Maker_page_Logic visibilityErrorToolTipForMarkeFieldOfSelector() {
+        selector().shouldBe(visible);
+        markeFieldInSelector().selectOptionByValue("0");
+        btnSearchOfSelector().click();
+        errorToolTipOfMarkeFieldInSelector().shouldBe(visible);
+        return this;
+    }
+
+    @Step("visibility errorTooltip for Model field of selector. Motoroil_Maker_page")
+    public Motoroil_Maker_page_Logic visibilityErrorToolTipForModelFieldOfSelector(String idOfMarke) {
+        selector().shouldBe(visible);
+        markeFieldInSelector().selectOptionByValue(idOfMarke);
+        btnSearchOfSelector().click();
+        errorToolTipOfModelFieldInSelector().shouldBe(visible);
+        return this;
+    }
+
+    @Step("visibility errorTooltip for Motor field of selector. Motoroil_Maker_page")
+    public Motoroil_Maker_page_Logic visibilityErrorToolTipForMotorFieldOfSelector(String idOfModel) {
+        selector().shouldBe(visible);
+        modelFieldInSelector().selectOptionByValue(idOfModel);
+        btnSearchOfSelector().click();
+        errorToolTipOfMotorFieldInSelector().shouldBe(visible);
+        return this;
     }
 }

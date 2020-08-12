@@ -333,7 +333,9 @@ public class Product_page_Logic extends Product_page {
     //compatibility block
     @Step("Clicking uncover characteristics. Product_page")
     public Product_page_Logic uncoverCharacteristics() {
-        uncoverCharactericticBtn().click();
+        if (uncoverCharactericticBtn().isDisplayed()) {
+            uncoverCharactericticBtn().click();
+        }
         return this;
     }
 

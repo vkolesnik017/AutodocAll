@@ -3,8 +3,8 @@ package PKW;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Selenide.$$x;
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selectors.byId;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Motoroil_specification_page {
 
@@ -21,4 +21,14 @@ public class Motoroil_specification_page {
     ElementsCollection linksOfRelinkingBlocks(int positionOfBlock) {return $$x("(//div[@class='listing_microdata'])["+positionOfBlock+"]//p/a");}
 
     SelenideElement mainHeadline() {return $x("//div[@class='listing_title listing-title--oil']/h1");}
+
+    SelenideElement markeFieldInSelector() {return $(byId("form_maker_id"));}
+
+    SelenideElement modelFieldInSelector() {return $(byId("form_model_id"));}
+
+    SelenideElement motorFieldInSelector() {return $(byId("form_car_id"));}
+
+    SelenideElement selector() {return $x("//div[@class='mainblock-search__car ']");}
+
+    SelenideElement btnSearchOfSelector() {return $x("//div[@id='selector-wrapper']//a[contains(@class,'submit')]");}
 }
