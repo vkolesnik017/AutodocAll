@@ -44,4 +44,6 @@ public class Motoroil_Release_page {
     SelenideElement modelFieldInSelector() {return $(byId("form_model_id"));}
 
     SelenideElement motorFieldInSelector() {return $(byId("form_car_id"));}
+
+    SelenideElement btnResetOfSelector() {return $(byId("reset_selector_form"));}
     }

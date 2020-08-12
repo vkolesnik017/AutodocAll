@@ -67,4 +67,8 @@ public class Motoroil_viscosity_page {
 
     ElementsCollection selectedToleranceFilter() {return $$x("//div[contains(text(),'Herstellerfreigabe')]/..//input[@class='checkbox' and @checked]/../label");}
 
+    SelenideElement viscosityGradeInSelector() {return $(byName("viscosity_id"));}
+
+    SelenideElement selectedViscosityLink(String viscosityLink) {return $x("//div[contains(text(),'"+viscosityLink+"')]/ancestor::span[contains(@class,'active')]"); }
+
 }
