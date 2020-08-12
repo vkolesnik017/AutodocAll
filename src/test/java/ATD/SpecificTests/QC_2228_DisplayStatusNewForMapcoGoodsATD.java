@@ -31,7 +31,7 @@ public class QC_2228_DisplayStatusNewForMapcoGoodsATD {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "data", parallel = true)
+    @DataProvider(name = "data", parallel = false)
     Object[] dataProvider() {
         return new Excel().setUpAllCellFromExcel(dataFile);
     }
@@ -39,13 +39,13 @@ public class QC_2228_DisplayStatusNewForMapcoGoodsATD {
     @Owner(value = "Chelombitko")
     @Test(dataProvider = "data")
     @Description("Checks output status 'new' for MAPCO items")
-    public void testDisplayStatusNewForMapcoGoods(String data) throws Exception {
+    public void testDisplayStatusNewForMapcoGoodsATD(String data) throws Exception {
         String articleNum = parseExcel(data)[0].trim();
         try {
             openPage(new DataBase().getFullRouteByRouteName("prod", "DE", "main"));
             new Main_page_Logic().inputTextInSearchBar(articleNum)
                     .headerSearchSubmitBtn().click();
-            new Listing_page_Logic().checkTecDocListingWithSelectingFilterByBrand("133", "MAPCO")
+            new Listing_page_Logic().checkListingWithSelectingFilterByBrand("133", "MAPCO")
                     .checkNameOfFeatureStateIfArticleNumMatchesExpectedOne(articleNum, characteristicName)
                     .goToProductPageAndCheckThatNameOfCharacteristicFeatureIsExpected(articleNum, characteristicName);
         } catch (Throwable e) {

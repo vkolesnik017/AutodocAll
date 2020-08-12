@@ -125,4 +125,11 @@ public class Main_page_Logic extends Main_page {
         footerWiderrufLink().click();
         return page(Widerruf_static_page_Logic.class);
     }
+
+    // Search bar
+    @Step("Input text in search bar. Main_page")
+    public Main_page_Logic inputTextInSearchBar(String text) {
+        searchBar().setValue(text);
+        return this;
+    }
 }

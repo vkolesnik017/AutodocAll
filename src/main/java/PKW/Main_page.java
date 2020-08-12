@@ -3,11 +3,20 @@ package PKW;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
+import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class Main_page {
+
+    public SelenideElement searchBar() {
+        return $(byId("search"));
+    }
+
+    public SelenideElement headerSearchSubmitBtn() {
+        return $x("//a[contains(@class,'search_submit')]");
+    }
 
     public SelenideElement cartIcon() {
         return $x("//a[@class='show_cart ga-click']");
