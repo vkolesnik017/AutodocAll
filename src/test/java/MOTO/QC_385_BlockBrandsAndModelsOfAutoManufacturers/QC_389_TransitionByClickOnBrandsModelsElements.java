@@ -87,7 +87,7 @@ public class QC_389_TransitionByClickOnBrandsModelsElements {
         openPage(route);
 
         new Moto_Categories_page_Logic()
-                .clickOnMotoBrands(0);
+                .clickOnMotoBrands(4);
         checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_categories_maker"));
     }
     @AfterMethod

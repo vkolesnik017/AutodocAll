@@ -37,7 +37,7 @@ public class QC_854_TransitionByClickOnTopBrand {
     public void testChecksTransitionByClickOnTopBrand(String route) throws SQLException {
         openPage(route);
 
-        new Moto_main_page_Logic().selectTopMotoBrandFromBlock();
+        new Moto_main_page_Logic().selectTopMotoBrandFromBlock(4);
         checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_categories_maker"));
     }
 
