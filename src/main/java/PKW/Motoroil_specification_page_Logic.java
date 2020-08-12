@@ -106,4 +106,21 @@ public class Motoroil_specification_page_Logic extends Motoroil_specification_pa
         return this;
     }
 
+    @Step("presence of selector. Motoroil_specification_page")
+    public Motoroil_specification_page_Logic presenceOfSelector() {
+        selector().shouldBe(visible);
+        return this;
+    }
+
+    @Step("select vehicle in selector. Motoroil_specification_page")
+    public Car_parts_motoroil_page_Logic selectVehicleInSelector(String marke, String model, String motor) {
+        presenceOfSelector();
+        markeFieldInSelector().selectOptionByValue(marke);
+        modelFieldInSelector().selectOptionByValue(model);
+        motorFieldInSelector().selectOptionByValue(motor);
+        btnSearchOfSelector().click();
+        return page(Car_parts_motoroil_page_Logic.class);
+    }
+
+
 }

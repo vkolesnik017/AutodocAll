@@ -89,4 +89,29 @@ public class Car_parts_motoroil_page_Logic extends Car_parts_motoroil_page {
         return this;
     }
 
+    @Step("presence of selector. Car_parts_motoroil_page")
+    public Car_parts_motoroil_page_Logic presenceOfSelector() {
+        selector().shouldBe(visible);
+        return this;
+    }
+
+
+    @Step("select Marke in selector. Car_parts_motoroil_page")
+    public Car_parts_motoroil_page_Logic selectMarkeInSelector(String idOfMarke) {
+        markeFieldInSelector().selectOptionByValue(idOfMarke);
+        return this;
+    }
+
+    @Step("visibility of Reset button in selector. Car_parts_motoroil_page")
+    public Car_parts_motoroil_page_Logic visibilityOfResetButtonOfSelector() {
+        btnResetOfSelector().shouldBe(visible);
+        return this;
+    }
+
+    @Step("reset of selector. Car_parts_motoroil_page")
+    public Motoroil_page_Logic resetOfSelector() {
+        btnResetOfSelector().shouldBe(visible).click();
+        return page(Motoroil_page_Logic.class);
+    }
+
 }

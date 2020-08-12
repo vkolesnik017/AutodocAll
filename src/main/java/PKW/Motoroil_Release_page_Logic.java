@@ -184,4 +184,31 @@ public class Motoroil_Release_page_Logic extends Motoroil_Release_page {
         errorToolTipOfMotorFieldInSelector().shouldBe(visible);
         return this;
     }
+
+    @Step("select Marke in selector. Motoroil_Release_page")
+    public Motoroil_Release_page_Logic selectMarkeInSelector(String idOfMarke) {
+        markeFieldInSelector().selectOptionByValue(idOfMarke);
+        return this;
+    }
+
+    @Step("visibility of Reset button in selector. Motoroil_Release_page")
+    public Motoroil_Release_page_Logic visibilityOfResetButtonOfSelector() {
+        btnResetOfSelector().shouldBe(visible);
+        return this;
+    }
+
+    @Step("reset of selector. Motoroil_Release_page")
+    public Motoroil_page_Logic resetOfSelector() {
+        btnResetOfSelector().shouldBe(visible).click();
+        return page(Motoroil_page_Logic.class);
+    }
+
+    @Step("select vehicle in selector. Motoroil_Release_page")
+    public Car_parts_motoroil_page_Logic selectVehicleInSelector(String marke, String model, String motor) {
+        selectMarkeInSelector(marke);
+        modelFieldInSelector().selectOptionByValue(model);
+        motorFieldInSelector().selectOptionByValue(motor);
+        btnSearchOfSelector().click();
+        return page(Car_parts_motoroil_page_Logic.class);
+    }
 }
