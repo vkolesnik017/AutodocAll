@@ -1,8 +1,7 @@
-package MOTO.QC_852_TopBrandsBlock;
+package ATD.Tyres.QC_2226_CheckingPeriodReturnTiresBlock;
 
-import ATD.DataBase;
-import ATD.Moto_main_page_Logic;
 import ATD.SetUp;
+import ATD.TyresProduct_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -10,15 +9,12 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import java.sql.SQLException;
-
-import static ATD.CommonMethods.checkingContainsUrl;
-import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.Selenide.open;
 
-public class QC_854_TransitionByClickOnTopBrand {
+public class QC_2231_CheckingColorChangeReturnBlockOnHover {
 
     @BeforeClass
     void setUp() {
@@ -27,22 +23,21 @@ public class QC_854_TransitionByClickOnTopBrand {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_main");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "tyre_item");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "Kolesnik")
-    @Description(value = "Test checks transition by click on TOP brand")
-    public void testChecksTransitionByClickOnTopBrand(String route) throws SQLException {
-        openPage(route);
-
-        new Moto_main_page_Logic().selectTopMotoBrandFromBlock(4);
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_categories_maker"));
+    @Owner(value = "Sergey-QA")
+    @Description(value = "Test checks color change on hover text from block with return period")
+    public void testChecksColorChangeOnHoverTextFromBlockReturnPeriod(String route) {
+        open(route);
+        new TyresProduct_page_Logic().checkingColorChangeOnHoverTextFromBlockReturnPeriod();
     }
 
     @AfterMethod
     public void close() {
         closeWebDriver();
     }
+
 }

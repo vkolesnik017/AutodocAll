@@ -1,8 +1,6 @@
-package MOTO.QC_852_TopBrandsBlock;
+package PKW.OILS.QC_1217_BlockFilterByTolerance;
 
-import ATD.DataBase;
-import ATD.Moto_main_page_Logic;
-import ATD.SetUp;
+import PKW.Motoroil_Release_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -13,12 +11,11 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_854_TransitionByClickOnTopBrand {
+public class QC_1221_TransitionByClickOnToleranceFilter {
 
     @BeforeClass
     void setUp() {
@@ -27,18 +24,20 @@ public class QC_854_TransitionByClickOnTopBrand {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_main");
+        return new PKW.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_release");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks transition by click on TOP brand")
-    public void testChecksTransitionByClickOnTopBrand(String route) throws SQLException {
+    @Description(value = "Test checks transition by click on Tolerance filter")
+    public void testChecksTransitionByClickOnToleranceFilter(String route) {
         openPage(route);
 
-        new Moto_main_page_Logic().selectTopMotoBrandFromBlock(4);
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_categories_maker"));
+        new Motoroil_Release_page_Logic()
+                .selectFilterByTolerance("ALLISON C4")
+                .checkSelectorWithSelectedToleranceFilter("allison-c4")
+                .checkListingWithSelectedToleranceFilter("ALLISON C4");
     }
 
     @AfterMethod

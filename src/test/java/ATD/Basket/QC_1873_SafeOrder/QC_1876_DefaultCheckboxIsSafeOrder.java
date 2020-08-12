@@ -22,7 +22,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 public class QC_1876_DefaultCheckboxIsSafeOrder {
 
     private String mail = "QC_1876_autotest@mailinator.com";
-    float totalPriceInAllData, totalPriceInAWS, totalPriceInAwsAfterReSave;
+
 
     @BeforeClass
     void setUp() {
@@ -41,7 +41,7 @@ public class QC_1876_DefaultCheckboxIsSafeOrder {
     public void testDefaultCheckboxIsSafeOrder(String route) throws SQLException {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
-        totalPriceInAllData = new Product_page_Logic().addProductToCart()
+        float totalPriceInAllData = new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
@@ -56,14 +56,14 @@ public class QC_1876_DefaultCheckboxIsSafeOrder {
         String orderNumber = new CartAllData_page_Logic().nextBtnClick()
                 .getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumber);
-        totalPriceInAWS =  order_aws.openOrderInAwsWithLogin()
+        float totalPriceInAWS =  order_aws.openOrderInAwsWithLogin()
                 .checkThatStatusSafeOrderIsOn()
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceInAllData, totalPriceInAWS);
-        totalPriceInAwsAfterReSave = order_aws.reSaveOrder()
+        float totalPriceInAwsAfterReSave = order_aws.reSaveOrder()
                 .checkThatStatusSafeOrderIsOn()
                 .getTotalPriceOrderAWS();
-        Assert.assertEquals(totalPriceInAllData, totalPriceInAWS);
+        Assert.assertEquals(totalPriceInAwsAfterReSave, totalPriceInAWS);
     }
 
     @AfterMethod

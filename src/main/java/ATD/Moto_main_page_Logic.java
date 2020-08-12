@@ -279,9 +279,9 @@ public class Moto_main_page_Logic extends Moto_main_page {
     }
 
     @Step("select TOP motorcycle brand from block .Moto_main_page")
-    public Moto_Categories_maker_page_Logic selectTopMotoBrandFromBlock() {
+    public Moto_Categories_maker_page_Logic selectTopMotoBrandFromBlock(int positionOfBrand) {
         topBrandsBlock().shouldBe(visible);
-        clickOnTopMotoBrand(0);
+        clickOnTopMotoBrand(positionOfBrand);
         return page(Moto_Categories_maker_page_Logic.class);
     }
 

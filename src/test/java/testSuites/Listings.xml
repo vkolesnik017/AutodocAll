@@ -63,7 +63,7 @@
             <class name="ATD.Listings.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1314_SearchByOEMconsideringDynamicGenerics"/>
             <class name="ATD.Listings.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1315_DynamicProductNameMatchNameInSearchByOEM"/>
             <class name="ATD.Listings.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1316_DynamicProductNameMatchNameInSearchByArticle"/>
-            <class name="ATD.Listings.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1318_TestProductAbsenceInSearchByMainGenericIfDynamicGenericFitsCar"/>
+            <!--<class name="ATD.Listings.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1318_TestProductAbsenceInSearchByMainGenericIfDynamicGenericFitsCar"/>-->
         </classes>
     </test>
 

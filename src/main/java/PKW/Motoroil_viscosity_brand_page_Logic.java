@@ -1,13 +1,18 @@
 package PKW;
 
 import io.qameta.allure.Step;
+import org.testng.Assert;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collections;
 
 import static ATD.CommonMethods.checkingContainsUrl;
+import static PKW.CommonMethods.waitWhileRouteContainsExpectedCondition;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.back;
 import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class Motoroil_viscosity_brand_page_Logic extends Motoroil_viscosity_brand_page {
 
@@ -126,6 +131,52 @@ public class Motoroil_viscosity_brand_page_Logic extends Motoroil_viscosity_bran
     public Motoroil_specification_page_Logic clickOnValueFromFourthRelinkingBlock(int position) {
         linksOfRelinkingBlocks(4).get(position).shouldBe(visible).click();
         return page(Motoroil_specification_page_Logic.class);
+    }
+
+    @Step("select filter by Tolerance. Motoroil_viscosity_brand_page")
+    public Motoroil_viscosity_brand_page_Logic selectFilterByTolerance(String expectedFilter, String expectedCondition) {
+        toleranceFilterBlock().shouldBe(exist);
+        visibleLinksOfToleranceBlock(expectedFilter).click();
+        waitWhileRouteContainsExpectedCondition(expectedCondition);
+        presenceAttributeOfCheckBox(expectedFilter).shouldHave(attribute("checked"));
+        return this;
+    }
+
+    @Step("check selector with selected Tolerance filter. Motoroil_viscosity_brand_page")
+    public Motoroil_viscosity_brand_page_Logic checkSelectorWithSelectedToleranceFilter(String expectedValue) {
+        toleranceFieldInSelector().shouldBe(visible).shouldHave(value(expectedValue));
+        return this;
+    }
+
+    @Step("check listing with selected tolerance filter. Motoroil_viscosity_brand_page")
+    public Motoroil_viscosity_brand_page_Logic checkListingWithSelectedToleranceFilter(String expectedToleranceField) {
+        for (int i = 0; i < toleranceCharacteristicsInProductDescription().size(); i++) {
+            String[] arrayOfCharacteristic;
+            ArrayList<String> listOfCharacteristics = new ArrayList<>();
+            arrayOfCharacteristic = toleranceCharacteristicsInProductDescription().get(i).getText().replace(" ", "").split(",");
+            Collections.addAll(listOfCharacteristics, arrayOfCharacteristic);
+            Assert.assertTrue(listOfCharacteristics.contains(expectedToleranceField.replace(" ", "")));
+            listOfCharacteristics.clear();
+        }
+        return this;
+    }
+
+    @Step("get current url. Motoroil_viscosity_brand_page")
+    public String getCurrentUrl() {
+        String currentUrl = url();
+        return currentUrl;
+    }
+
+    @Step("click on Tolerance filter. Motoroil_viscosity_brand_page")
+    public Motoroil_viscosity_brand_page_Logic clickOnToleranceFilter(String expectedValue) {
+        visibleLinksOfToleranceBlock(expectedValue).shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("check count of selected Tolerance filter. Motoroil_viscosity_brand_page")
+    public Motoroil_viscosity_brand_page_Logic checkCountOfSelectedToleranceFilter() {
+        selectedToleranceFilter().shouldHaveSize(1);
+        return this;
     }
 
 }

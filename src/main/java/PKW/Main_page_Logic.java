@@ -1,7 +1,6 @@
 package PKW;
 
 
-import ATD.Maker_car_list_page_Logic;
 import io.qameta.allure.Step;
 import static PKW.CommonMethods.mailRandom;
 import static PKW.CommonMethods.password;

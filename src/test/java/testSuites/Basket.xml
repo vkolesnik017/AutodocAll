@@ -46,9 +46,9 @@
             <class name="ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1680_HeavyLoadsFR_NegativeCaseBasket"/>
             <class name="ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1681_HeavyLoadsFR_NegativeCaseAllData"/>
             <class name="ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1682_HeavyLoads_Islands"/>
-            <class name="ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1684_HeavyLoadsAndOrdinaryGoods_PositiveCase"/>
-            <class name="ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1685_HeavyLoadsAndOrdinaryGoods_DeletedOFGoods"/>
-            <class name="ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1683_HeavyLoads_FreeShippingLimit"/>
+            <!--<class name="ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1684_HeavyLoadsAndOrdinaryGoods_PositiveCase"/>-->
+            <!--<class name="ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1685_HeavyLoadsAndOrdinaryGoods_DeletedOFGoods"/>-->
+            <!--<class name="ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1683_HeavyLoads_FreeShippingLimit"/>-->
         </classes>
     </test>
 

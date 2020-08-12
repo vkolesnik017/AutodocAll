@@ -107,4 +107,23 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
+    @Step("Click on btn open popup for sending review. Product_page")
+    public Product_page_Logic clickBtnOpenPopupForReview() {
+        btnOpenRatingForm().click();
+        return this;
+    }
+
+    @Step("Filling fields in rating form and checking behavior. Product_page")
+    public String fillRequiredFieldsRatingFormAndCheckBehavior(String qc) {
+        String mail = qc + mailRandom();
+        nameFieldInRatingForm().setValue("AutoTestRating");
+        emailFieldInRatingForm().setValue(mail);
+        checkboxSubscribeAcceptInRatingForm().click();
+        massageFieldInRatingForm().setValue("AutoTest for task");
+        btnSendCommentFromPopupRatingForm().click();
+        successPopup().shouldHave(text("Es wird nach einer Überprüfung veröffentlicht"));
+        successPopupCloseButton().click();
+        return mail;
+    }
+
 }

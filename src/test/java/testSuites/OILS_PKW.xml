@@ -44,4 +44,23 @@
             <class name="PKW.OILS.QC_1269_RelinkingBlockInListings.QC_1279_TransitionByClickOnValueInRelinkingBlocks"/>
         </classes>
     </test>
+
+    <test name="QC_1217_BlockFilterByTolerance">
+        <classes>
+            <class name="PKW.OILS.QC_1217_BlockFilterByTolerance.QC_1220_ApplyingFilterByToleranceInOilListings"/>
+            <class name="PKW.OILS.QC_1217_BlockFilterByTolerance.QC_1221_TransitionByClickOnToleranceFilter"/>
+            <class name="PKW.OILS.QC_1217_BlockFilterByTolerance.QC_1222_ResetOfToleranceFilterInOilListing"/>
+            <class name="PKW.OILS.QC_1217_BlockFilterByTolerance.QC_1223_InabilityToApplyTwoDifferentToleranceFilters"/>
+            <class name="PKW.OILS.QC_1217_BlockFilterByTolerance.QC_1224_TransitionToSearchPageOnResetToleranceFilter"/>
+        </classes>
+    </test>
+
+    <test name="QC_1225_SelectorInOilListings">
+        <classes>
+            <class name="PKW.OILS.QC_1225_SelectorInOilListings.QC_1226_PresenceOfSelectorInOilListings"/>
+            <class name="PKW.OILS.QC_1225_SelectorInOilListings.QC_1227_MandatorySelectionOfAllSelectorFields"/>
+            <class name="PKW.OILS.QC_1225_SelectorInOilListings.QC_1228_ResetOfValuesInSelector"/>
+            <class name="PKW.OILS.QC_1225_SelectorInOilListings.QC_1229_TransitionAtSearchVehicleInSelector"/>
+        </classes>
+    </test>
 </suite>

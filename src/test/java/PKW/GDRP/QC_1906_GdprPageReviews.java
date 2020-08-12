@@ -1,8 +1,8 @@
 package PKW.GDRP;
 
 import AWS.PrivacyPolicySubscription_aws;
-import PKW.Product_page_Logic;
 import PKW.SetUp;
+import PKW.Shop_reviews_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -15,10 +15,11 @@ import static PKW.CommonMethods.openPage;
 import static PKW.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1900_GdprReviewsOnProductPage {
+
+public class QC_1906_GdprPageReviews {
 
     private String mail;
-    private Product_page_Logic productPageLogic = new Product_page_Logic();
+    private Shop_reviews_page_Logic shopReviewsPageLogic = new Shop_reviews_page_Logic();
 
     @BeforeClass
     void setUp() {
@@ -27,17 +28,18 @@ public class QC_1900_GdprReviewsOnProductPage {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "shop_reviews");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test verify working of reviews form on product page")
-    public void testGdprWorkingReviewFormProductPage(String route) {
+    @Description(value = "Test Gdpr verify working of reviews form on review page")
+    public void testGdprWorkingReviewFormReviewPage(String route) {
         openPage(route);
-        mail = productPageLogic.scrollToReviewsBlock().checkingDatenschutzerklarungLinkBehavior(productPageLogic.reviewFormDatenschutzerklarungLink())
-                .fillRequiredFieldsReviewFormAndCheckBehavior("qc_1900_");
+        mail = shopReviewsPageLogic.scrollToReviewBlock()
+                .checkingDatenschutzerklarungLinkBehavior(shopReviewsPageLogic.reviewFormDatenschutzerklarungLink())
+                .fillRequiredFieldsReviewFormAndCheckBehavior("qc_1906_");
         new PrivacyPolicySubscription_aws()
                 .openPolicySubscriptionWithLogin()
                 .checkingPolicyAndSubscribeForMail(this.mail);
@@ -47,23 +49,20 @@ public class QC_1900_GdprReviewsOnProductPage {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test verify working of rating form on product page")
-    public void testGdprWorkingRatingFormProductPage(String route) {
+    @Description(value = "Test Gdpr verify working of rating form on review page")
+    public void testGdprInPopupRatingFormOnReviewPage(String route) {
         openPage(route);
-        mail = productPageLogic.scrollToReviewsBlock()
-                .clickBtnOpenPopupForReview()
-                .checkingDatenschutzerklarungLinkBehavior(productPageLogic.ratingFormDatenschutzerklarungLink())
-                .fillRequiredFieldsRatingFormAndCheckBehavior("qc_1900_");
+        mail = shopReviewsPageLogic.clickBtnRateSiteInRatingBlock()
+                .checkingDatenschutzerklarungLinkBehavior(shopReviewsPageLogic.ratingFormDatenschutzerklarungLink())
+                .fillRequiredFieldsPopupRatingFormAndCheckBehavior("qc_1906_");
         new PrivacyPolicySubscription_aws()
                 .openPolicySubscriptionWithLogin()
                 .checkingPolicyAndSubscribeForMail(this.mail);
     }
-
 
     @AfterMethod
     public void close() {
         closeWebDriver();
     }
-
 
 }

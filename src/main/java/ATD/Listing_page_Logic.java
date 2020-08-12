@@ -6,6 +6,7 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -1139,7 +1140,7 @@ public class Listing_page_Logic extends Listing_page {
 
     @Step("Click four rating stars in filter. Listing_page")
     public Listing_page_Logic clickFourRatingStarsInFilter() {
-        ratingFourStarsFilterCheckbox().click();
+        ratingFourStarsFilterCheckbox().scrollTo().click();
         return this;
     }
 
@@ -1153,7 +1154,7 @@ public class Listing_page_Logic extends Listing_page {
 
     @Step("Click five rating stars in filter. Listing_page")
     public Listing_page_Logic clickFiveRatingStarsInFilter() {
-        ratingFiveStarsFilterCheckbox().click();
+        ratingFiveStarsFilterCheckbox().scrollTo().click();
         return this;
     }
 
@@ -1306,6 +1307,49 @@ public class Listing_page_Logic extends Listing_page {
         productOEMnumber(brandName).shouldHave(text(oemHighlightNumber));
         productName(brandName).click();
         return page(Product_page_Logic.class);
+    }
+
+    @Step("Check listing with selecting brand. Listing_page")
+    public Listing_page_Logic checkTecDocListingWithSelectingFilterByBrand(String brandID, String brandName) {
+        while (!brandsOfBrandBlock(brandID).isDisplayed()) {
+            nextButtonInBrandFilter().click();
+            sleep(3000);
+        }
+        brandsOfBrandBlock(brandID).click();
+        waitUntilPreloaderDisappear();
+        for (int i = 0; i < titleOfProductInListing().size(); i++) {
+            String name = titleOfProductInListing().get(i).getText();
+            String actualName = name.replace(name.substring(name.indexOf(" ")), "");
+            Assert.assertEquals(brandName, actualName);
+        }
+        return this;
+    }
+
+    @Step("Checks the name of the feature state {expectedCharacteristicName} if the article number matches the expected one {expectedArticleNum}. Listing_page")
+    public Listing_page_Logic checkNameOfFeatureStateIfArticleNumMatchesExpectedOne(String expectedArticleNum, String expectedCharacteristicName) {
+        for (int i = 0; i < productArticlesInListing().size(); i++) {
+            String articleNum = productArticlesInListing().get(i).getText().replaceAll("Artikelnummer: ", "");
+            if (expectedArticleNum.equals(articleNum)) {
+                String characteristicName = characteristicZustand().getText();
+                Assert.assertEquals(expectedCharacteristicName, characteristicName);
+            }
+        }
+        return this;
+    }
+
+    @Step("Goes to the product page and checks that the name of the characteristic 'Zustand' feature is as expected {expectedCharacteristicName}. Listing_page")
+    public Listing_page_Logic goToProductPageAndCheckThatNameOfCharacteristicFeatureIsExpected(String expectedArticleNum,String expectedCharacteristicName) {
+        for (int i = 0; i < productArticlesInListing().size(); i++) {
+            String articleNum = productArticlesInListing().get(i).getText().replaceAll("Artikelnummer: ", "");
+            if (expectedArticleNum.equals(articleNum)) {
+                clickFirstProductOnListing()
+                        .uncoverCharacteristics();
+               String characteristicName = new Product_page().characteristicZustand().getText();
+               Assert.assertEquals(expectedCharacteristicName, characteristicName);
+               back();
+            }
+        }
+        return this;
     }
 }
 
