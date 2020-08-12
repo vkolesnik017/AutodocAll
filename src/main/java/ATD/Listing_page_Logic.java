@@ -1309,8 +1309,8 @@ public class Listing_page_Logic extends Listing_page {
         return page(Product_page_Logic.class);
     }
 
-    @Step("Check TecDoc listing with selecting brand. Listing_page")
-    public Listing_page_Logic checkTecDocListingWithSelectingFilterByBrand(String brandID, String brandName) throws SQLException {
+    @Step("Check listing with selecting brand. Listing_page")
+    public Listing_page_Logic checkTecDocListingWithSelectingFilterByBrand(String brandID, String brandName) {
         while (!brandsOfBrandBlock(brandID).isDisplayed()) {
             nextButtonInBrandFilter().click();
             sleep(3000);
