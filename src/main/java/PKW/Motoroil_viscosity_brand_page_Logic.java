@@ -12,6 +12,7 @@ import static PKW.CommonMethods.waitWhileRouteContainsExpectedCondition;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.back;
 import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class Motoroil_viscosity_brand_page_Logic extends Motoroil_viscosity_brand_page {
 
@@ -157,6 +158,24 @@ public class Motoroil_viscosity_brand_page_Logic extends Motoroil_viscosity_bran
             Assert.assertTrue(listOfCharacteristics.contains(expectedToleranceField.replace(" ", "")));
             listOfCharacteristics.clear();
         }
+        return this;
+    }
+
+    @Step("get current url. Motoroil_viscosity_brand_page")
+    public String getCurrentUrl() {
+        String currentUrl = url();
+        return currentUrl;
+    }
+
+    @Step("click on Tolerance filter. Motoroil_viscosity_brand_page")
+    public Motoroil_viscosity_brand_page_Logic clickOnToleranceFilter(String expectedValue) {
+        visibleLinksOfToleranceBlock(expectedValue).shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("check count of selected Tolerance filter. Motoroil_viscosity_brand_page")
+    public Motoroil_viscosity_brand_page_Logic checkCountOfSelectedToleranceFilter() {
+        selectedToleranceFilter().shouldHaveSize(1);
         return this;
     }
 
