@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="QC_2228_DisplayStatusNewForMapcoGoodsATD" data-provider-thread-count="6">
+
+    <listeners>
+        <listener class-name="ATD.ProjectListener"/>
+    </listeners>
+
+    <test name="QC_2228_DisplayStatusNewForMapcoGoodsATD">
+        <classes>
+            <class name="ATD.SpecificTests.QC_2228_DisplayStatusNewForMapcoGoodsATD">
+            </class>
+        </classes>
+    </test>
+
+</suite>

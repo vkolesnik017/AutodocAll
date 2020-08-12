@@ -56,6 +56,10 @@ public class Main_page {
         return $(byId("search"));
     }
 
+    public SelenideElement headerSearchSubmitBtn() {
+        return $x("//a[contains(@class,'header-search')]");
+    }
+
     private By tooltipsToSearch = byCssSelector(".autocomplete-suggestions>div");
 
     public SelenideElement tooltipToSearch() {
