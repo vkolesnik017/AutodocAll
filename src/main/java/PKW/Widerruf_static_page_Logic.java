@@ -1,6 +1,5 @@
 package PKW;
 
-public class Widerruf_static_page_Logic {
 import io.qameta.allure.Step;
 import static PKW.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.attribute;

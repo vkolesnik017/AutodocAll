@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
 public class Zahlung_static_page_Logic extends Zahlung_static_page {
-    
+
     @Step("Checks the elements. Zahlung_static_page")
     public Zahlung_static_page_Logic checkElementsOnThePage() {
         blockZahlungText().shouldBe(visible);
