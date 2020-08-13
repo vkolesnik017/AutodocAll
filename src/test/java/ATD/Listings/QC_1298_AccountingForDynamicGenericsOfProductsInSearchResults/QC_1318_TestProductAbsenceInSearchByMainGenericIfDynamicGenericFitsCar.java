@@ -39,7 +39,7 @@ public class QC_1318_TestProductAbsenceInSearchByMainGenericIfDynamicGenericFits
     public void testProductAbsenceInSearchByMainGenericIfDynamicGenericFitsCar(String route) {
         openPage(route);
         new Main_page_Logic().useSearch("Ölfilter");
-        listingPageLogic.checkTecDocListingWithSelectingFilterByBrand("665", "UFI")
+        listingPageLogic.checkListingWithSelectingFilterByBrand("665", "UFI")
                         .checkProductTitleOnListing("25.406.01", false, listingPageLogic.productArticlesInListing());
     }
 

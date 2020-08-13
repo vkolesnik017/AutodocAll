@@ -75,7 +75,7 @@ public class Product_page {
         return $(By.xpath("//div[@class='popup_content']//a"));
     }
 
-    SelenideElement  btnOpenRatingForm() {
+    SelenideElement btnOpenRatingForm() {
         return $x("//div[@class='pkw-rateblock__footer']/button");
     }
 
@@ -103,6 +103,9 @@ public class Product_page {
         return $x("//div[@class='pkw-popup__inset']//button[@class='pkw-product__green-btn rating_send']");
     }
 
+    SelenideElement nameProductCharacteristic(String nameCharacteristic) {
+        return $x("//li[@class='pkw-table__ul-item']//span[contains(text(),'" + nameCharacteristic + "')]");
+    }
     SelenideElement btnAskQuestionFaqForm() {
         return $x("//div[@class='pkw-faq']//button");
     }
