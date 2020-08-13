@@ -1,5 +1,6 @@
 package PKW;
 
+import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.Step;
 
 import java.sql.SQLException;
@@ -66,11 +67,23 @@ public class Motoroil_Chemical_Type_page_Logic extends Motoroil_Chemical_Type_pa
         return this;
     }
 
+    @Step("get attribute from link in Relinking block. Motoroil_Chemical_Type_page")
+    public String getAttributeFromLink(ElementsCollection list, int position) {
+        String urlFromLink = list.get(position).getAttribute("href");
+        String urlPart = urlFromLink.replace(urlFromLink.substring(urlFromLink.lastIndexOf("/")), "");
+        String cutUrlPart = urlPart.replace(urlPart.substring(urlPart.lastIndexOf("/")), "");
+        String expectedPart = urlFromLink.replace(cutUrlPart + "/", "");
+        return expectedPart;
+    }
+
     @Step("check transition by click in Relinking block. Motoroil_Chemical_Type_page")
     public Motoroil_Chemical_Type_page_Logic checkTransitionByClickInRelinkingBlock() throws SQLException {
-        DataBase db = new DataBase();
+        String firstBlock = getAttributeFromLink(linksOfRelinkingBlocks(1), 0);
         clickOnValueFromFirstRelinkingBlock(0);
-        checkingContainsUrl(db.getRouteByRouteName("DE", "motoroil_chemical_type2"));
+        checkingContainsUrl(firstBlock);
+        /*DataBase db = new DataBase();
+        clickOnValueFromFirstRelinkingBlock(0);
+        checkingContainsUrl(db.getRouteByRouteName("DE", "motoroil_chemical_type2"));*/
         return this;
     }
 

@@ -38,7 +38,7 @@ public class QC_1279_TransitionByClickOnValueInRelinkingBlocks {
                 .checkTransitionByClickInRelinkingBlock();
     }
 
-    @DataProvider(name = "routesSpecification", parallel = true)
+   @DataProvider(name = "routesSpecification", parallel = true)
     Object[] dataProviderSpecification() throws SQLException {
         return new PKW.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_specification");
     }
@@ -53,6 +53,7 @@ public class QC_1279_TransitionByClickOnValueInRelinkingBlocks {
         new Motoroil_specification_page_Logic()
                 .checkTransitionByClickInRelinkingBlock();
     }
+
 
     @DataProvider(name = "routesRelease", parallel = true)
     Object[] dataProviderRelease() throws SQLException {
@@ -85,6 +86,7 @@ public class QC_1279_TransitionByClickOnValueInRelinkingBlocks {
         new Motoroil_Maker_page_Logic()
                 .checkTransitionByClickInRelinkingBlock();
     }
+
 
     @DataProvider(name = "routesMakerGroup", parallel = true)
     Object[] dataProviderMakerGroup() throws SQLException {
