@@ -1,9 +1,6 @@
 package PKW.OILS.QC_1269_RelinkingBlockInListings;
 
-import PKW.Motoroil_Chemical_Type_page_Logic;
-import PKW.Motoroil_Maker_page_Logic;
-import PKW.Motoroil_specification_page_Logic;
-import PKW.Motoroil_viscosity_brand_page_Logic;
+import PKW.*;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -27,7 +24,7 @@ public class QC_1270_PresenceOfRelinkingBlocksInListings {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new PKW.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_viscosity_brand,motoroil_release");
+        return new PKW.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_viscosity_brand,motoroil_release,motoroil_maker_group");
     }
 
     @Test(dataProvider = "routes")
@@ -42,26 +39,9 @@ public class QC_1270_PresenceOfRelinkingBlocksInListings {
                 .checkElementsOfRelinkingBlocks();
     }
 
-    @DataProvider(name = "routesSpecification", parallel = true)
-    Object[] dataProviderSpecification() throws SQLException {
-        return new PKW.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_specification,motoroil_maker_group");
-    }
-
-    @Test(dataProvider = "routesSpecification")
-    @Flaky
-    @Owner(value = "Kolesnik")
-    @Description(value = "Test checks presence of Relinking blocks in listings")
-    public void testChecksPresenceOfRelinkingBlocksInListingsSpecification(String route) throws SQLException {
-        openPage(route);
-
-        new Motoroil_specification_page_Logic()
-                .presenceOfRelinkingBlocks(3)
-                .checkElementsOfRelinkingBlocks();
-    }
-
     @DataProvider(name = "routesMaker", parallel = true)
     Object[] dataProviderMaker() throws SQLException {
-        return new PKW.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_maker");
+        return new PKW.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_maker,motoroil_specification");
     }
 
     @Test(dataProvider = "routesMaker")
@@ -72,7 +52,7 @@ public class QC_1270_PresenceOfRelinkingBlocksInListings {
         openPage(route);
 
         new Motoroil_Maker_page_Logic()
-                .presenceOfRelinkingBlocks(2)
+                .presenceOfRelinkingBlocks(3)
                 .checkElementsOfRelinkingBlocks();
     }
 

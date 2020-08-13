@@ -1,5 +1,6 @@
 package PKW;
 
+import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
@@ -61,10 +62,37 @@ public class Motoroil_Release_page_Logic extends Motoroil_Release_page {
         return this;
     }
 
+    @Step("get attribute from link in Relinking block. Motoroil_Release_page")
+    public String getAttributeFromLink(ElementsCollection list, int position) {
+        String urlFromLink = list.get(position).getAttribute("href");
+        String urlPart = urlFromLink.replace(urlFromLink.substring(urlFromLink.lastIndexOf("/")), "");
+        String cutUrlPart = urlPart.replace(urlPart.substring(urlPart.lastIndexOf("/")), "");
+        String expectedPart = urlFromLink.replace(cutUrlPart + "/", "");
+        return expectedPart;
+    }
 
     @Step("check transition by click in Relinking block. Motoroil_Release_page")
     public Motoroil_Release_page_Logic checkTransitionByClickInRelinkingBlock() throws SQLException {
-        DataBase db = new DataBase();
+        String firstBlock = getAttributeFromLink(linksOfRelinkingBlocks(1), 0);
+        String secondBlock = getAttributeFromLink(linksOfRelinkingBlocks(2), 0);
+        String thirdBlock = getAttributeFromLink(linksOfRelinkingBlocks(3), 0);
+        String fourthBlock = getAttributeFromLink(linksOfRelinkingBlocks(4), 0);
+
+        String currentMainHeadline = getCurrentHeadline();
+        clickOnValueFromFirstRelinkingBlock(0);
+        checkingContainsUrl(firstBlock); //waitForChangingOfMainHeadline(currentMainHeadline);
+        back();
+        clickOnValueFromSecondRelinkingBlock(0);
+        checkingContainsUrl(secondBlock);
+        back();
+        clickOnValueFromThirdRelinkingBlock(0);
+        checkingContainsUrl(thirdBlock);
+        back();
+        clickOnValueFromFourthRelinkingBlock(0);
+        checkingContainsUrl(fourthBlock);
+        return this;
+
+     /*   DataBase db = new DataBase();
         String currentMainHeadline = getCurrentHeadline();
         clickOnValueFromFirstRelinkingBlock(0).waitForChangingOfMainHeadline(currentMainHeadline);
         checkingContainsUrl(db.getRouteByRouteName("DE", "motoroil_release3"));
@@ -77,7 +105,7 @@ public class Motoroil_Release_page_Logic extends Motoroil_Release_page {
         back();
         clickOnValueFromFourthRelinkingBlock(0);
         checkingContainsUrl(db.getRouteByRouteName("DE", "motoroil_specification3"));
-        return this;
+        return this;*/
     }
 
     @Step("click on value from First relinking block. Motoroil_Release_page")
