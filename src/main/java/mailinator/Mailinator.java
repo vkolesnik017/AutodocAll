@@ -4,6 +4,7 @@ import ATD.PasswordRecovery_page_Logic;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import org.openqa.selenium.JavascriptExecutor;
 
 import java.util.ArrayList;
 
@@ -12,6 +13,7 @@ import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class Mailinator {
@@ -24,6 +26,10 @@ public class Mailinator {
 
     public SelenideElement letter(int numberLetter) {
         return $(byXpath("//*[contains(@class,'pointer')]/../tr[" + numberLetter + "]//a"));
+    }
+
+    public ElementsCollection allLatter() {
+        return $$x("//*[contains(@class,'pointer')]/../tr//a");
     }
 
     public SelenideElement linkFAQemailConfirm() {
@@ -80,6 +86,7 @@ public class Mailinator {
     @Step("Transition to delivery page and get tracking number from url. Mailinator")
     public ArrayList<String> transitionToDeliveryPageAndGetTrackingNumFromUrlInMail() {
         ArrayList<String> list = new ArrayList<>();
+        sleep(5000);
         for (int i = 0; i < allLinkToDeliveryPage().size(); i++) {
             allLinkToDeliveryPage().get(i).click();
             switchTo().window(1);
@@ -87,15 +94,15 @@ public class Mailinator {
             list.add(number);
             closeWindow();
             switchTo().window(0);
-            refresh();
-            openLetter(1);
+            switchTo().frame("msg_body");
         }
         return list;
     }
 
     @Step("Get tracking number. Mailinator")
     public String getTrackingNumberFromMail() {
-        return String.valueOf(trackingNumber().getText());
+        String trackingNum = trackingNumber().getText();
+        return trackingNum;
     }
 
     @Step("Transition to delivery page ang get URL. Mailinator")
@@ -186,6 +193,22 @@ public class Mailinator {
     @Step("Check letter info text. Mailinator")
     public Mailinator checkLetterInfoText(int letterNumber, String expectedText1, String expectedText2) {
         letterInfo(letterNumber).shouldHave(text(expectedText1)).shouldHave(text(expectedText2));
+        return this;
+    }
+
+    @Step("Checks and opens a letter with specific specified parameters. Mailinator")
+    public Mailinator checkAndOpenLetterInfoText( String expectedTextNameLetter, String orderNumber) {
+        sleep(3000);
+        for (int i = 0; i < allLatter().size(); i++) {
+            String textNameLetter = allLatter().get(i).getText();
+            if (textNameLetter.equals(expectedTextNameLetter + " " + orderNumber)) {
+                allLatter().get(i).click();
+                switchTo().frame("msg_body");
+                break;
+            } else {
+                System.out.println("Latter not found");
+            }
+        }
         return this;
     }
 
