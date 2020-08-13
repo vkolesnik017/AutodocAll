@@ -21,6 +21,7 @@ public class QC_2265_AddProductsInBasketOnToolsListing {
 
     private String idProduct, valueCounter, idAddProduct, valueCounterAddProduct;
     private Listing_instruments_page_Logic listingInstrumentsPageLogic = new Listing_instruments_page_Logic();
+    private Cart_page_Logic cartPageLogic = new Cart_page_Logic();
 
     @BeforeClass
     void setUp() {
@@ -43,8 +44,8 @@ public class QC_2265_AddProductsInBasketOnToolsListing {
         valueCounter = listingInstrumentsPageLogic.getValueQuantityCounterFirstProductListing();
         listingInstrumentsPageLogic.clickBtnAddToBasketFirstProduct()
                 .cartClick();
-        idAddProduct = new ATD.Cart_page_Logic().getIdAddedProduct();
-        valueCounterAddProduct = new Cart_page_Logic().getValueQuantityCounter();
+        idAddProduct = cartPageLogic.getIdAddedProduct();
+        valueCounterAddProduct = cartPageLogic.getValueQuantityCounter();
         Assert.assertEquals(idProduct, idAddProduct);
         Assert.assertEquals(valueCounter,valueCounterAddProduct);
     }

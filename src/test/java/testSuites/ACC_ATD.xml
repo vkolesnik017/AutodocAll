@@ -222,6 +222,8 @@
 
     <test name="QC_2261_BlockWithProductsOnAccessoriesListing">
         <classes>
+            <class name="ATD.ACC.QC_2261_BlockWithProductsOnAccessoriesListing.QC_2266_MainProductsAccessoriesListing"/>
+            <class name="ATD.ACC.QC_2261_BlockWithProductsOnAccessoriesListing.QC_2268_SelectingQuantityProductsForBuyOnAccListing"/>
             <class name="ATD.ACC.QC_2261_BlockWithProductsOnAccessoriesListing.QC_2269_AddProductsInBasketOnAccListing"/>
         </classes>
     </test>

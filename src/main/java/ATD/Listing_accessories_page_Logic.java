@@ -6,8 +6,7 @@ import org.testng.Assert;
 import java.util.ArrayList;
 import java.util.Collections;
 import static ATD.CommonMethods.checkingContainsUrl;
-import static com.codeborne.selenide.Condition.attribute;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
 public class Listing_accessories_page_Logic extends Listing_accessories_page {
@@ -241,5 +240,21 @@ public class Listing_accessories_page_Logic extends Listing_accessories_page {
         new Main_page_Logic().cartClick();
         return page(Cart_page_Logic.class);
     }
+
+    @Step("Checking presence products block and they quantity. Listing_accessories_page")
+    public Listing_accessories_page_Logic checkingBlockAndQuantityMainProducts() {
+        listingProductsDisplayedAsList().shouldBe(appear);
+        mainProductsList().shouldHaveSize(20);
+        return this;
+    }
+
+    @Step("Checking work quantity counter on decrease and increase products. Listing_accessories_page")
+    public Listing_accessories_page_Logic checkingWorkQuantityCounterOnDecreaseAndIncrease() {
+        new CommonMethods().checkingCounterIncrease(3, counterValueInQuantityCounter(), btnPlusInQuantityCounter());
+        new CommonMethods().checkingCounterDecrease(2, counterValueInQuantityCounter(), btnMinusInQuantityCounter() );
+        counterValueInQuantityCounter().shouldHave(attribute("value", "2"));
+        return this;
+    }
+
 
 }
