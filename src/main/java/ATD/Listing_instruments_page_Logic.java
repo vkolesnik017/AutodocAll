@@ -102,6 +102,12 @@ public class Listing_instruments_page_Logic extends Listing_instruments_page {
         return idProductInBtnAddBasket().getAttribute("id");
     }
 
+    @Step("Click on product title from main product. Listing_instruments_page")
+    public Product_page_Logic clickOnProductTitle() {
+        titleNameProductFromListing().click();
+        return page(Product_page_Logic.class);
+    }
+
     @Step(":from Listing_instruments_page")
     public Listing_instruments_page_Logic increasesNumberProductsInQuantityCounter() {
         new CommonMethods().checkingCounterIncrease(2, counterValueInQuantityCounter(), btnPlusInQuantityCounter());
@@ -124,6 +130,14 @@ public class Listing_instruments_page_Logic extends Listing_instruments_page {
     public Cart_page_Logic cartClick() {
         new Main_page_Logic().cartClick();
         return page(Cart_page_Logic.class);
+    }
+
+    @Step("Checking work quantity counter on decrease and increase products. Listing_instruments_page")
+    public Listing_instruments_page_Logic checkingWorkQuantityCounterOnDecreaseAndIncrease() {
+        new CommonMethods().checkingCounterIncrease(3, counterValueInQuantityCounter(), btnPlusInQuantityCounter());
+        new CommonMethods().checkingCounterDecrease(2, counterValueInQuantityCounter(), btnMinusInQuantityCounter() );
+        counterValueInQuantityCounter().shouldHave(attribute("value", "2"));
+        return this;
     }
 
 

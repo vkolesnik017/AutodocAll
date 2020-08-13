@@ -12,6 +12,10 @@ public class Listing_instruments_page {
         return $x("//h2[@class='title_count_search']");
     }
 
+    SelenideElement titleNameProductFromListing() {
+        return $x("//div[@class='js-listing-wrap']//div[@class='name']//*[contains(@class,'ga-click')]");
+    }
+
     SelenideElement seoTextBlock() {
         return $x("//div[@class='block_youtube_video']");
     }
@@ -103,6 +107,10 @@ public class Listing_instruments_page {
 
     SelenideElement btnPlusInQuantityCounter() {
         return $x("//li[@data-id='0'][1]//a[@class='ga-click plus add']");
+    }
+
+    SelenideElement btnMinusInQuantityCounter() {
+        return $x("//li[@data-id='0'][1]//a[@class='ga-click minus remove']");
     }
 
     SelenideElement redBtnAddToBasket() {

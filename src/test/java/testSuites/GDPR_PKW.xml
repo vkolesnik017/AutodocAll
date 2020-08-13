@@ -55,6 +55,12 @@
         </classes>
     </test>
 
+    <test name="QC_1905_GdprFaqOnProductPage">
+        <classes>
+            <class name="PKW.GDRP.QC_1905_GdprFaqOnProductPage"/>
+        </classes>
+    </test>
+
 
 
 
