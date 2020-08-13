@@ -1,8 +1,11 @@
 package PKW;
 
 import io.qameta.allure.Step;
+import org.testng.Assert;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collections;
 
 import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.*;
@@ -122,5 +125,29 @@ public class Motoroil_specification_page_Logic extends Motoroil_specification_pa
         return page(Car_parts_motoroil_page_Logic.class);
     }
 
+    @Step("check listing with selected specification filter. Motoroil_specification_page")
+    public Motoroil_specification_page_Logic checkListingWithSelectedToleranceFilter(String expectedToleranceField) {
+        listingBlock().shouldBe(visible);
+        for (int i = 0; i < specificationCharacteristicsInProductDescription().size(); i++) {
+            String[] arrayOfCharacteristic;
+            ArrayList<String> listOfCharacteristics = new ArrayList<>();
+            arrayOfCharacteristic = specificationCharacteristicsInProductDescription().get(i).getText().replace(" ", "").split(",");
+            Collections.addAll(listOfCharacteristics, arrayOfCharacteristic);
+            Assert.assertTrue(listOfCharacteristics.contains(expectedToleranceField.replace(" ", "")));
+            listOfCharacteristics.clear();
+        }
+        return this;
+    }
 
+    @Step("check selector with selected specification. Motoroil_specification_page")
+    public Motoroil_specification_page_Logic checkSelectorWithSelectedSpecification(String expectedValue) {
+        specificationFieldInSelector().shouldBe(visible).shouldHave(value(expectedValue));
+        return this;
+    }
+
+    @Step("check selected Specification in sideBar. Motoroil_specification_page")
+    public Motoroil_specification_page_Logic checkSelectedSpecificationInSideBar(String expectedValue) {
+        selectedSpecificationInSideBar(expectedValue).shouldHave(attribute("checked"));
+        return this;
+    }
 }

@@ -126,7 +126,7 @@ public class Motoroil_viscosity_page_Logic extends Motoroil_viscosity_page {
 
     @Step("select filter by Tolerance. Motoroil_viscosity_page")
     public Motoroil_viscosity_page_Logic selectFilterByTolerance(String expectedFilter, String expectedCondition) {
-        toleranceFilterBlock().shouldBe(exist).scrollTo();
+        toleranceFilterBlock().shouldBe(exist);
         clickOnToleranceFilter(expectedFilter);
         waitWhileRouteContainsExpectedCondition(expectedCondition);
         presenceAttributeOfCheckBox(expectedFilter).shouldHave(attribute("checked"));
@@ -164,7 +164,7 @@ public class Motoroil_viscosity_page_Logic extends Motoroil_viscosity_page {
         return currentUrl;
     }
 
-     @Step("check count of selected Tolerance filter. Motoroil_viscosity_page")
+    @Step("check count of selected Tolerance filter. Motoroil_viscosity_page")
     public Motoroil_viscosity_page_Logic checkCountOfSelectedToleranceFilter() {
         selectedToleranceFilter().shouldHaveSize(1);
         return this;

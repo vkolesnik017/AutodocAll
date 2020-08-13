@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.*;
 
-public class QC_2078_CheckingForErrorPopUpAboutAboutAnUnsetCheckbox {
+public class QC_2078_CheckingForErrorPopUpAboutAnUnsetCheckbox {
     private String email = "QC_2078_autotest@mailinator.com";
 
     @BeforeClass
@@ -32,7 +32,7 @@ public class QC_2078_CheckingForErrorPopUpAboutAboutAnUnsetCheckbox {
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test checking for an error popup about an unset checkbox when trying to send mail for feedback")
-    public void testCheckingForErrorPopUpAboutAboutAnUnsetCheckbox(String route) {
+    public void testCheckingForErrorPopUpAboutAnUnsetCheckbox(String route) {
         open(route);
 
         new Tyre_form_page_Logic().displayingCustomerFeedbackPopUp()
