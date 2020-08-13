@@ -39,7 +39,7 @@ public class Zahlung_static_page {
     }
 
     SelenideElement zollLinkZahlung() {
-        return $(byXpath("//*[@class='agb_text']//a[5]"));
+        return $(byXpath("//*[@class='agb_text']//a[6]"));
     }
 }
 
