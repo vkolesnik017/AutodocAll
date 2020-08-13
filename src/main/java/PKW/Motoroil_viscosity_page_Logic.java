@@ -170,4 +170,15 @@ public class Motoroil_viscosity_page_Logic extends Motoroil_viscosity_page {
         return this;
     }
 
+    @Step("check Viscosity grade field in selector. Motoroil_viscosity_page")
+    public Motoroil_viscosity_page_Logic checkViscosityGradeFieldInSelector(String expectedValue) {
+        viscosityGradeInSelector().shouldBe(visible).shouldHave(value(expectedValue));
+        return this;
+    }
+
+    @Step(" visibility Of selected viscosity in block. Motoroil_viscosity_page")
+    public Motoroil_viscosity_page_Logic visibilityOfSelectedViscosityInBlock(String expectedViscosityLink) {
+        selectedViscosityLink(expectedViscosityLink).shouldBe(visible);
+        return this;
+    }
 }

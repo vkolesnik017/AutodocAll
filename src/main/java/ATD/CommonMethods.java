@@ -432,5 +432,4 @@ public class CommonMethods {
         }
         return Float.valueOf((result));
     }
-
 }

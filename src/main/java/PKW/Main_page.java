@@ -135,6 +135,9 @@ public class Main_page {
     SelenideElement footerWiderrufLink() {
         return $(byXpath("//*[@class='footer_menu_list7']/a"));
     }
+    SelenideElement footerZahlungLink() {
+        return $(byXpath("//*[@class='footer_menu_list0']/a"));
+    }
 
     SelenideElement btnNotFoundCarInSelector() {
         return $x("//form[@id='top-select']/a[@class='form-not-found-car ga-click']");

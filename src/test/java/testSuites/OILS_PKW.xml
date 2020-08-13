@@ -63,4 +63,33 @@
             <class name="PKW.OILS.QC_1225_SelectorInOilListings.QC_1229_TransitionAtSearchVehicleInSelector"/>
         </classes>
     </test>
+
+    <test name="QC_939_BlockOfPopularBrandsOnMainPage">
+        <classes>
+            <class name="PKW.OILS.QC_939_BlockOfPopularBrandsOnMainPage.QC_941_TransitionToListingWithSelectedBrand"/>
+        </classes>
+    </test>
+
+    <test name="QC_952_ToleranceBlockOfBrandsOnMainPage">
+        <classes>
+            <class name="PKW.OILS.QC_952_ToleranceBlockOfBrandsOnMainPage.QC_954_PresenceOfToleranceBlockOfBrands"/>
+            <class name="PKW.OILS.QC_952_ToleranceBlockOfBrandsOnMainPage.QC_955_TransitionToListingWithSelectedBrand"/>
+        </classes>
+    </test>
+
+    <test name="QC_943_ViscosityBlockOnOilMainPage">
+        <classes>
+            <class name="PKW.OILS.QC_943_ViscosityBlockOnOilMainPage.QC_945_PresenceOfViscosityBlock"/>
+            <class name="PKW.OILS.QC_943_ViscosityBlockOnOilMainPage.QC_946_TransitionToListingWithSelectedViscosity"/>
+        </classes>
+    </test>
+
+    <test name="QC_944_TopProductsBlockOnMainPage">
+        <classes>
+            <class name="PKW.OILS.QC_944_TopProductsBlockOnMainPage.QC_947_PresenceOfTopProductsBlock"/>
+            <class name="PKW.OILS.QC_944_TopProductsBlockOnMainPage.QC_948_TransitionToProductPageFromTopBlock"/>
+
+        </classes>
+    </test>
+
 </suite>
