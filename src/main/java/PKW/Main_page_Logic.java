@@ -125,4 +125,10 @@ public class Main_page_Logic extends Main_page {
         footerWiderrufLink().click();
         return page(Widerruf_static_page_Logic.class);
     }
+
+    @Step("Click the Zahlung. Main_page")
+    public Zahlung_static_page_Logic clickFooterZahlungLink() {
+        footerZahlungLink().click();
+        return page(Zahlung_static_page_Logic.class);
+    }
 }

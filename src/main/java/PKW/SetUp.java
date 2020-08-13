@@ -20,15 +20,13 @@ public class SetUp {
 
     private String shopsDesktop = "DE,AT,BG,CH,CZ,ES,DK,FI,FR,GR,HU,IT,NL,NO,PL,PT,RO,SE,EN";
 
-
-
-
     public static void setUpBrowser(Boolean Selenoid, String browser, String browserVersion) {
         Configuration.browser = (browser);
         Configuration.browserVersion = (browserVersion);
         Configuration.startMaximized = true;
         Configuration.holdBrowserOpen = false;
         Configuration.timeout = 10000;
+
         if (Selenoid) {
             Configuration.remote = "http://192.168.99.100:4444/wd/hub";
 //            Configuration.driverManagerEnabled = false;
