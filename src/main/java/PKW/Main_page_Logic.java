@@ -126,6 +126,13 @@ public class Main_page_Logic extends Main_page {
         return page(Widerruf_static_page_Logic.class);
     }
 
+    // Search bar
+    @Step("Input text in search bar. Main_page")
+    public Main_page_Logic inputTextInSearchBar(String text) {
+        searchBar().setValue(text);
+        return this;
+    }
+
     @Step("Click the Zahlung link in the footer. Main_page")
     public Zahlung_static_page_Logic clickFooterZahlungLink() {
         footerZahlungLink().click();
