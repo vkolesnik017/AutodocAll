@@ -132,4 +132,10 @@ public class Main_page_Logic extends Main_page {
         searchBar().setValue(text);
         return this;
     }
+
+    @Step("Click the Zahlung. Main_page")
+    public Zahlung_static_page_Logic clickFooterZahlungLink() {
+        footerZahlungLink().click();
+        return page(Zahlung_static_page_Logic.class);
+    }
 }

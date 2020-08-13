@@ -144,4 +144,7 @@ public class Main_page {
     SelenideElement footerWiderrufLink() {
         return $(byXpath("//*[@class='footer_menu_list7']/a"));
     }
+    SelenideElement footerZahlungLink() {
+        return $(byXpath("//*[@class='footer_menu_list0']/a"));
+    }
 }

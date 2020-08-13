@@ -2,7 +2,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Oils" parallel="methods" thread-count="3" data-provider-thread-count="2">
 
-
     <test name="QC_1249_MainHeadlineBlockInOilListing">
         <classes>
             <class name="PKW.OILS.QC_1249_MainHeadlineBlockInOilListing.QC_1252_PresenceOfOilIconInMainHeadline"/>
@@ -48,7 +47,7 @@
     <test name="QC_1217_BlockFilterByTolerance">
         <classes>
             <class name="PKW.OILS.QC_1217_BlockFilterByTolerance.QC_1220_ApplyingFilterByToleranceInOilListings"/>
-            <class name="PKW.OILS.QC_1217_BlockFilterByTolerance.QC_1221_TransitionByClickOnToleranceFilter"/>
+         <!--   <class name="PKW.OILS.QC_1217_BlockFilterByTolerance.QC_1221_TransitionByClickOnToleranceFilter"/>-->
             <class name="PKW.OILS.QC_1217_BlockFilterByTolerance.QC_1222_ResetOfToleranceFilterInOilListing"/>
             <class name="PKW.OILS.QC_1217_BlockFilterByTolerance.QC_1223_InabilityToApplyTwoDifferentToleranceFilters"/>
             <class name="PKW.OILS.QC_1217_BlockFilterByTolerance.QC_1224_TransitionToSearchPageOnResetToleranceFilter"/>
@@ -88,8 +87,13 @@
         <classes>
             <class name="PKW.OILS.QC_944_TopProductsBlockOnMainPage.QC_947_PresenceOfTopProductsBlock"/>
             <class name="PKW.OILS.QC_944_TopProductsBlockOnMainPage.QC_948_TransitionToProductPageFromTopBlock"/>
-
         </classes>
     </test>
 
+    <test name="QC_958_SpecificationBlockOnMainPage">
+        <classes>
+            <class name="PKW.OILS.QC_958_SpecificationBlockOnMainPage.QC_959_PresenceOfSpecificationBlockOnMainOilPage"/>
+            <class name="PKW.OILS.QC_958_SpecificationBlockOnMainPage.QC_960_TransitionToListingByClickOnSpecificationLink"/>
+        </classes>
+    </test>
 </suite>
