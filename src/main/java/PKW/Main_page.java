@@ -138,4 +138,8 @@ public class Main_page {
     SelenideElement footerZahlungLink() {
         return $(byXpath("//*[@class='footer_menu_list0']/a"));
     }
+
+    SelenideElement footerImpressumLink() {
+        return $(byXpath("//*[@class='footer_menu_list6']/a"));
+    }
 }
