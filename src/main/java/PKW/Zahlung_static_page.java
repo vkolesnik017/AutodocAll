@@ -1,6 +1,5 @@
 package PKW;
 
-import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
@@ -19,8 +18,28 @@ public class Zahlung_static_page {
         return $(byXpath("//ul[@class='link_agb']/li[3]//span[@class='link']"));
     }
 
-    ElementsCollection linksZahlungPage() {
-        return $$x("//div[@class='agb_text']//a");
+    SelenideElement payPalLinkZahlung() {
+        return $(byXpath("//*[@class='agb_text']//a"));
+    }
+
+    SelenideElement payPalLinkZahlungSecond() {
+        return $(byXpath("//*[@class='agb_text']//a[2]"));
+    }
+
+    SelenideElement sofortLinkZahlung() {
+        return $(byXpath("//*[@class='agb_text']//a[3]"));
+    }
+
+    SelenideElement klarnaLinkZahlung() {
+        return $(byXpath("//*[@class='agb_text']//a[4]"));
+    }
+
+    SelenideElement datenschultzLinkZahlung() {
+        return $(byXpath("//*[@class='agb_text']//a[5]"));
+    }
+
+    SelenideElement zollLinkZahlung() {
+        return $(byXpath("//*[@class='agb_text']//a[5]"));
     }
 }
 
