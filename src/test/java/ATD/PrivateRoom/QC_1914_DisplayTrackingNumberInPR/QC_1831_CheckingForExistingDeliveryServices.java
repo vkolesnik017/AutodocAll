@@ -21,8 +21,6 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1831_CheckingForExistingDeliveryServices {
 
-    private String orderNumber, deliveryPageURL, deliveryPageUrlFromMail,
-            trackingNumFromAWS, trackingNumFromPR, trackingNumFromMail;
     private Main_page_Logic main_page_logic = new Main_page_Logic();
     private Profile_orders_page_Logic profile_orders_page_logic = new Profile_orders_page_Logic();
     private Mailinator mailinator = new Mailinator();
@@ -33,7 +31,7 @@ public class QC_1831_CheckingForExistingDeliveryServices {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "deliveryService", parallel = false)
+    @DataProvider(name = "deliveryService", parallel = true)
     Object[] dataProviderProducts() {
         return new Object[][]{
                 {"GLS"},
@@ -67,9 +65,9 @@ public class QC_1831_CheckingForExistingDeliveryServices {
                 .chooseVorkasse()
                 .nextBtnClick()
                 .nextBtnClick();
-        orderNumber = new Payment_handler_page_Logic().getOrderNumber();
+        String orderNumber = new Payment_handler_page_Logic().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumber);
-        trackingNumFromAWS = order_aws.openOrderInAwsWithLogin()
+        String trackingNumFromAWS = order_aws.openOrderInAwsWithLogin()
                 .checkCurrentStatusInOrder("Neue Bestellung")
                 .selectDeliveryAndEnterTrackingNum(deliveryService, "0", "0", "1111111111")
                 .selectStatusOrder("Versendet")
@@ -77,17 +75,17 @@ public class QC_1831_CheckingForExistingDeliveryServices {
                 .checkCurrentStatusInOrder("Versendet")
                 .getSavedTrackingNumber();
         openPage(dataBase.getFullRouteByRouteName("prod", "DE", "main"));
-        trackingNumFromPR = main_page_logic.profilePlusBtnClickInHeader()
+        String trackingNumFromPR = main_page_logic.profilePlusBtnClickInHeader()
                 .goToMyOrdersPage()
                 .checkPresenceDeliveryStatusBlock()
                 .getTrackingNum();
         Assert.assertEquals(trackingNumFromAWS, trackingNumFromPR);
-        deliveryPageURL = profile_orders_page_logic.checkNumberDeliveryServiceAdded(1)
+        String deliveryPageURL = profile_orders_page_logic.checkNumberDeliveryServiceAdded(1)
                 .transitionToDeliveryPageAndGetURL();
-        trackingNumFromMail = mailinator.openEmail(mail)
-                .openLetter(1)
+        String trackingNumFromMail = mailinator.openEmail(mail)
+                .checkAndOpenLetterInfoText("Auftrags- / Versandbestätigung, Bestellnummer", orderNumber)
                 .getTrackingNumberFromMail();
-        deliveryPageUrlFromMail = mailinator.transitionToDeliveryPageAndGetUrlFromMail();
+        String deliveryPageUrlFromMail = mailinator.transitionToDeliveryPageAndGetUrlFromMail();
         Assert.assertEquals(trackingNumFromAWS, trackingNumFromMail);
         Assert.assertEquals(deliveryPageURL, deliveryPageUrlFromMail);
         order_aws.openOrderInAwsWithoutLogin()

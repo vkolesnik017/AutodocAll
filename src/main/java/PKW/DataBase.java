@@ -109,6 +109,15 @@ public class DataBase {
         return result;
     }
 
+    // Return String route By Shop and route("prod", "DE", "lkw_main")
+    public String getFullRouteByRouteName(String envFromTest, String shop, String routeName) throws SQLException {
+        String result;
+        String env = new SetUp().getEnv(envFromTest);
+        String mainRoute = getRouteByRouteName(shop, routeName);
+        result = env + mainRoute;
+        return result;
+    }
+
 
     // Return String Currency By Shop getCurrency("AT")
     public String getCurrency(String shop) throws SQLException {
@@ -177,6 +186,5 @@ public class DataBase {
         }
         return translation;
     }
-
 
 }
