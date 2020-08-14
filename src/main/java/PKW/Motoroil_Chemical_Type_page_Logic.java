@@ -81,10 +81,7 @@ public class Motoroil_Chemical_Type_page_Logic extends Motoroil_Chemical_Type_pa
         String firstBlock = getAttributeFromLink(linksOfRelinkingBlocks(1), 0);
         clickOnValueFromFirstRelinkingBlock(0);
         checkingContainsUrl(firstBlock);
-        /*DataBase db = new DataBase();
-        clickOnValueFromFirstRelinkingBlock(0);
-        checkingContainsUrl(db.getRouteByRouteName("DE", "motoroil_chemical_type2"));*/
-        return this;
+         return this;
     }
 
     @Step("click on value from First relinking block. Motoroil_Chemical_Type_page")
