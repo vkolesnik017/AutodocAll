@@ -134,6 +134,35 @@ public class Listing_accessories_page {
         return $x("//div[@class='page_list'][1]//span[3]");
     }
 
+    SelenideElement idProductInBtnAddBasket() {
+        return $x("//div[@class='button ']");
+    }
+
+    SelenideElement counterValueInQuantityCounter() {
+        return $x("//li[@data-id='0'][1]//div[@class='count']/input");
+    }
+
+    SelenideElement btnPlusInQuantityCounter() {
+        return $x("//li[@data-id='0'][1]//a[@class='ga-click plus add']");
+    }
+
+    SelenideElement btnMinusInQuantityCounter() {
+        return $x("//li[@data-id='0'][1]//a[@class='ga-click minus remove']");
+    }
+
+    SelenideElement redBtnAddToBasket() {
+        return $x("//div[@class='button ']//a");
+    }
+
+    SelenideElement popupBasketAddedProducts() {
+        return $x("//div[@class='cart-items-block ']");
+    }
+
+
+    ElementsCollection mainProductsList() {
+        return $$x("//ul[@class='list_products ']/li");
+    }
+
 
 
 }
