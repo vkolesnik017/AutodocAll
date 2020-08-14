@@ -385,7 +385,7 @@ public class Product_page_Logic extends Product_page {
         buyButton().click();
         closeBtnOfPopupOtherCategory().click();
         relatedProductsPopup().shouldNotBe(visible);
-        close();
+        closeWebDriver();
         return this;
     }
 
@@ -395,7 +395,7 @@ public class Product_page_Logic extends Product_page {
         buyButton().click();
         backButtonInRelatedPopup().click();
         relatedProductsPopup().shouldNotBe(visible);
-        close();
+        closeWebDriver();
         return this;
     }
 
@@ -405,7 +405,7 @@ public class Product_page_Logic extends Product_page {
         buyButton().click();
         relatedProductPopupGoToCartButton().click();
         checkingContainsUrl("basket/account");
-        close();
+        closeWebDriver();
         return this;
     }
 
@@ -419,7 +419,7 @@ public class Product_page_Logic extends Product_page {
         String categotyRef = randomCategory.attr("href");
         randomCategory.click();
         checkingContainsUrl(categotyRef);
-        close();
+        closeWebDriver();
         return this;
     }
 
@@ -429,7 +429,7 @@ public class Product_page_Logic extends Product_page {
         buyButton().click();
         closeAnyPopupByClickOverlay();
         relatedProductsPopup().shouldNotBe(visible);
-        close();
+        closeWebDriver();
         return this;
     }
 

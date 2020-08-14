@@ -113,6 +113,18 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
+    @Step("Click btn Ask Question in Faq Form. Product_page")
+    public Product_page_Logic clickBtnAskQuestionInFaqForm() {
+        btnAskQuestionFaqForm().click();
+        return this;
+    }
+
+    @Step("Click btn faq tab. Product_page")
+    public Product_page_Logic clickBtnFaqTab() {
+        btnFaqTab().scrollIntoView(false).click();
+        return this;
+    }
+
     @Step("Filling fields in rating form and checking behavior. Product_page")
     public String fillRequiredFieldsRatingFormAndCheckBehavior(String qc) {
         String mail = qc + mailRandom();
@@ -122,6 +134,18 @@ public class Product_page_Logic extends Product_page {
         massageFieldInRatingForm().setValue("AutoTest for task");
         btnSendCommentFromPopupRatingForm().click();
         successPopup().shouldHave(text("Es wird nach einer Überprüfung veröffentlicht"));
+        successPopupCloseButton().click();
+        return mail;
+    }
+
+    @Step("Filling fields in FAQ form and checking behavior. Product_page")
+    public String fillRequiredFieldsFaqFormAndCheckBehavior(String qc) {
+        String mail = qc + mailRandom();
+        nameFieldFaqForm().setValue("AutoTest");
+        mailFormFaqForm().setValue(mail);
+        massageFormFaqForm().setValue("AutoTest AutoTest");
+        btnSendFaqForm().click();
+        successPopup().shouldHave(text("Vielen Dank für Ihre Frage! Wir bearbeiten Ihre Frage so schnell es geht"));
         successPopupCloseButton().click();
         return mail;
     }
