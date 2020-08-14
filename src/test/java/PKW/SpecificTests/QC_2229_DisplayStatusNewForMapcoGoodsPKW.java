@@ -1,9 +1,9 @@
-package ATD.SpecificTests;
+package PKW.SpecificTests;
 
-import ATD.DataBase;
 import ATD.Excel;
-import ATD.Listing_page_Logic;
-import ATD.Main_page_Logic;
+import PKW.DataBase;
+import PKW.Listing_page_Logic;
+import PKW.Main_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Owner;
 import org.testng.annotations.BeforeClass;
@@ -16,11 +16,11 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 
-import static ATD.CommonMethods.openPage;
 import static ATD.Excel.parseExcel;
 import static ATD.SetUp.setUpBrowser;
+import static PKW.CommonMethods.openPage;
 
-public class QC_2228_DisplayStatusNewForMapcoGoodsATD {
+public class QC_2229_DisplayStatusNewForMapcoGoodsPKW {
 
     private final String dataFile = "D://FilesFromAutotest/data/QC_2228_data.xls";
     private final String result = "D://FilesFromAutotest/data/QC_2228_result.txt";
@@ -31,7 +31,7 @@ public class QC_2228_DisplayStatusNewForMapcoGoodsATD {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "data", parallel = false)
+    @DataProvider(name = "data", parallel = true)
     Object[] dataProvider() {
         return new Excel().setUpAllCellFromExcel(dataFile);
     }
@@ -39,15 +39,15 @@ public class QC_2228_DisplayStatusNewForMapcoGoodsATD {
     @Owner(value = "Chelombitko")
     @Test(dataProvider = "data")
     @Description("Checks output status 'new' for MAPCO items")
-    public void testDisplayStatusNewForMapcoGoodsATD(String data) throws Exception {
+    public void testDisplayStatusNewForMapcoGoodsPKW(String data) throws Exception {
         String articleNum = parseExcel(data)[0].trim();
         try {
             openPage(new DataBase().getFullRouteByRouteName("prod", "DE", "main"));
             new Main_page_Logic().inputTextInSearchBar(articleNum)
                     .headerSearchSubmitBtn().click();
             new Listing_page_Logic().checkListingWithSelectingFilterByBrand("133", "MAPCO")
-                    .checkNameOfFeatureStateIfArticleNumMatchesExpectedOne(articleNum, characteristicName)
-                    .goToProductPageAndCheckThatNameOfCharacteristicFeatureIsExpected(articleNum, characteristicName);
+                    .checkNameOfFeatureStateIfArticleNumMatchesExpectedOne(articleNum, characteristicName, characteristicName)
+                    .goToProductPageAndCheckThatNameOfCharacteristicFeatureIsExpected(articleNum, characteristicName, characteristicName);
         } catch (Throwable e) {
             writer(result, true, articleNum + "#" + "Fail");
         }
@@ -61,4 +61,3 @@ public class QC_2228_DisplayStatusNewForMapcoGoodsATD {
         bufferedWriter.close();
     }
 }
-

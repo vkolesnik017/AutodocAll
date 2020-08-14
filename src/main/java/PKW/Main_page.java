@@ -3,11 +3,20 @@ package PKW;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
+import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class Main_page {
+
+    public SelenideElement searchBar() {
+        return $(byId("search"));
+    }
+
+    public SelenideElement headerSearchSubmitBtn() {
+        return $x("//a[contains(@class,'search_submit')]");
+    }
 
     public SelenideElement cartIcon() {
         return $x("//a[@class='show_cart ga-click']");
@@ -88,7 +97,7 @@ public class Main_page {
         return $(By.xpath("//div[@class='footer-subscr']"));
     }
 
-    SelenideElement linkDatenschutzerklärungInFooter() {
+    public SelenideElement linkDatenschutzerklärungInFooter() {
         return $x("//label[@id='privacy_policy_footer']/a");
     }
 
@@ -138,4 +147,30 @@ public class Main_page {
     SelenideElement footerZahlungLink() {
         return $(byXpath("//*[@class='footer_menu_list0']/a"));
     }
+
+    SelenideElement btnNotFoundCarInSelector() {
+        return $x("//form[@id='top-select']/a[@class='form-not-found-car ga-click']");
+    }
+
+    SelenideElement vinFieldPopupFromSelector() {
+        return $x("//input[@id='form_vin']");
+    }
+
+    SelenideElement mailFieldPopupFromSelector() {
+        return $x("//input[@id='form_email']");
+    }
+
+    SelenideElement checkboxPopupFromSelector() {
+        return $x("//div[@class='accept_subscription_checkbox']/label");
+    }
+
+    SelenideElement btnSendPopupFromSelector() {
+        return $x("//div[@class='not-found-car-popup']//button");
+    }
+
+    public SelenideElement  privacyPolicyLinkPopupFromSelector() {
+        return $x("//label[@id='privacy_policy_not_found_car']//a");
+    }
+
+
 }

@@ -113,4 +113,16 @@ public class Motoroil_page_Logic extends Motoroil_page {
         imageOfTopProducts().get(positionOfProduct).shouldBe(visible).click();
         return page(Product_page_Logic.class);
     }
+
+    @Step("presence Of Specification block. Motoroil_page")
+    public Motoroil_page_Logic presenceOfSpecificationBlock() {
+        specificationBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("click on Specification link. Motoroil_page")
+    public Motoroil_specification_page_Logic clickOnSpecificationLink(int positionOfLink) {
+        specificationLinks().get(positionOfLink).click();
+        return page(Motoroil_specification_page_Logic.class);
+    }
 }

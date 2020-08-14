@@ -34,4 +34,8 @@ public class Motoroil_page {
 
    ElementsCollection imageOfTopProducts() {return $$x("//span[@class='pkw-related__img-container']/img");}
 
+   SelenideElement specificationBlock() {return $x("//h4[contains(text(),'Spezifikationen')]/..");}
+
+   ElementsCollection specificationLinks() {return $$x("//h4[contains(text(),'Spezifikationen')]/..//li/a");}
+
 }

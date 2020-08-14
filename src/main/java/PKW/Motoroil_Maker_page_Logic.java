@@ -1,5 +1,6 @@
 package PKW;
 
+import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.Step;
 
 import java.sql.SQLException;
@@ -73,14 +74,25 @@ public class Motoroil_Maker_page_Logic extends Motoroil_Maker_page {
         return this;
     }
 
+    @Step("get attribute from link in Relinking block. Motoroil_Maker_page")
+    public String getAttributeFromLink(ElementsCollection list, int position) {
+        String urlFromLink = list.get(position).getAttribute("href");
+        String urlPart = urlFromLink.replace(urlFromLink.substring(urlFromLink.lastIndexOf("/")), "");
+        String cutUrlPart = urlPart.replace(urlPart.substring(urlPart.lastIndexOf("/")), "");
+        String expectedPart = urlFromLink.replace(cutUrlPart + "/", "");
+        return expectedPart;
+    }
+
     @Step("check transition by click in Relinking block. Motoroil_Maker_page")
     public Motoroil_Maker_page_Logic checkTransitionByClickInRelinkingBlock() throws SQLException {
-        DataBase db = new DataBase();
+        String firstBlock = getAttributeFromLink(linksOfRelinkingBlocks(1), 0);
+        String secondBlock = getAttributeFromLink(linksOfRelinkingBlocks(2), 0);
+
         clickOnValueFromFirstRelinkingBlock(0);
-        checkingContainsUrl(db.getRouteByRouteName("DE", "motoroil_maker_group"));
+        checkingContainsUrl(firstBlock);
         back();
         clickOnValueFromSecondRelinkingBlock(0);
-        checkingContainsUrl(db.getRouteByRouteName("DE", "motoroil_viscosity2"));
+        checkingContainsUrl(secondBlock);
         return this;
     }
 

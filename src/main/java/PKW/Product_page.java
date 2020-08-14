@@ -75,7 +75,7 @@ public class Product_page {
         return $(By.xpath("//div[@class='popup_content']//a"));
     }
 
-    SelenideElement  btnOpenRatingForm() {
+    SelenideElement btnOpenRatingForm() {
         return $x("//div[@class='pkw-rateblock__footer']/button");
     }
 
@@ -101,6 +101,37 @@ public class Product_page {
 
     SelenideElement btnSendCommentFromPopupRatingForm() {
         return $x("//div[@class='pkw-popup__inset']//button[@class='pkw-product__green-btn rating_send']");
+    }
+
+    SelenideElement nameProductCharacteristic(String nameCharacteristic) {
+        return $x("//li[@class='pkw-table__ul-item']//span[contains(text(),'" + nameCharacteristic + "')]");
+    }
+    SelenideElement btnAskQuestionFaqForm() {
+        return $x("//div[@class='pkw-faq']//button");
+    }
+
+    SelenideElement btnFaqTab() {
+        return $x("//div[@class='pkw-tabs__header']//label[@class='pkw-tabs__label ga-click faq']");
+    }
+
+    SelenideElement nameFieldFaqForm() {
+        return $x("//form[@id='comment_reply_form2']//input[@id='form_rating_name']");
+    }
+
+    SelenideElement mailFormFaqForm() {
+        return $x("//form[@id='comment_reply_form2']//input[@id='form_rating_email']");
+    }
+
+    SelenideElement massageFormFaqForm() {
+        return $x("//form[@id='comment_reply_form2']//textarea[@id='form_rating_message']");
+    }
+
+    SelenideElement btnSendFaqForm() {
+        return $x("//form[@id='comment_reply_form2']//button[@class='pkw-product__green-btn_faq']");
+    }
+
+    public SelenideElement faqFormDatenschutzerklarungLink() {
+        return $x("//form[@id='comment_reply_form2']//a");
     }
 
 

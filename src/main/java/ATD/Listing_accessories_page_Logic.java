@@ -6,8 +6,7 @@ import org.testng.Assert;
 import java.util.ArrayList;
 import java.util.Collections;
 import static ATD.CommonMethods.checkingContainsUrl;
-import static com.codeborne.selenide.Condition.attribute;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
 public class Listing_accessories_page_Logic extends Listing_accessories_page {
@@ -212,5 +211,50 @@ public class Listing_accessories_page_Logic extends Listing_accessories_page {
         checkingContainsUrl("einparkhilfen");
         return this;
     }
+
+    @Step("Get id product listing. Listing_accessories_page")
+    public String getIdProductListing() {
+        return idProductInBtnAddBasket().getAttribute("id");
+    }
+
+    @Step(":from Listing_accessories_page")
+    public Listing_accessories_page_Logic increasesNumberProductsInQuantityCounter() {
+        new CommonMethods().checkingCounterIncrease(2, counterValueInQuantityCounter(), btnPlusInQuantityCounter());
+        return this;
+    }
+
+    @Step("Get value quantity counter from first product listing. Listing_accessories_page")
+    public String getValueQuantityCounterFirstProductListing() {
+        return counterValueInQuantityCounter().getValue();
+    }
+
+    @Step("Click button add to basket first product. Listing_accessories_page")
+    public Listing_accessories_page_Logic clickBtnAddToBasketFirstProduct() {
+        redBtnAddToBasket().click();
+        popupBasketAddedProducts().waitUntil(attribute("style","visibility: visible; opacity: 1;"), 10000);
+        return this;
+    }
+
+    @Step(":from Listing_accessories_page")
+    public Cart_page_Logic cartClick() {
+        new Main_page_Logic().cartClick();
+        return page(Cart_page_Logic.class);
+    }
+
+    @Step("Checking presence products block and they quantity. Listing_accessories_page")
+    public Listing_accessories_page_Logic checkingBlockAndQuantityMainProducts() {
+        listingProductsDisplayedAsList().shouldBe(appear);
+        mainProductsList().shouldHaveSize(20);
+        return this;
+    }
+
+    @Step("Checking work quantity counter on decrease and increase products. Listing_accessories_page")
+    public Listing_accessories_page_Logic checkingWorkQuantityCounterOnDecreaseAndIncrease() {
+        new CommonMethods().checkingCounterIncrease(3, counterValueInQuantityCounter(), btnPlusInQuantityCounter());
+        new CommonMethods().checkingCounterDecrease(2, counterValueInQuantityCounter(), btnMinusInQuantityCounter() );
+        counterValueInQuantityCounter().shouldHave(attribute("value", "2"));
+        return this;
+    }
+
 
 }
