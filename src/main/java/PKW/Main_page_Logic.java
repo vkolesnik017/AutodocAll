@@ -144,4 +144,10 @@ public class Main_page_Logic extends Main_page {
         footerImpressumLink().click();
         return page(Impressum_static_page_Logic.class);
     }
+
+    @Step("Click the Austauschartikel link in the footer. Main_page")
+    public Austauschartikel_static_page_Logic clickFooterAustauschartikelLink() {
+        footerAustauschartikelLink().click();
+        return page(Austauschartikel_static_page_Logic.class);
+    }
 }
