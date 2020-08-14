@@ -61,6 +61,12 @@
         </classes>
     </test>
 
+    <test name="QC_1918_GdprDelivery">
+        <classes>
+            <class name="PKW.GDRP.QC_1918_GdprDelivery"/>
+        </classes>
+    </test>
+
 
 
 

@@ -14,7 +14,7 @@ import static PKW.CommonMethods.openPage;
 import static PKW.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1000_TopCategoriesBlock {
+public class QC_2299_TopCategoriesBlockOnMainAcc {
 
     @BeforeClass
     void setUp() {
