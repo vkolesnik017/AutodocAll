@@ -2,13 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Oils" parallel="methods" thread-count="3" data-provider-thread-count="2">
 
-    <test name="QC_1249_MainHeadlineBlockInOilListing">
-        <classes>
-            <class name="PKW.OILS.QC_1249_MainHeadlineBlockInOilListing.QC_1252_PresenceOfOilIconInMainHeadline"/>
-        </classes>
-    </test>
-
-    <test name="QC_1255_BreadCrumbsBlockInListing">
+     <test name="QC_1255_BreadCrumbsBlockInListing">
         <classes>
             <class name="PKW.OILS.QC_1255_BreadCrumbsBlockInListing.QC_1256_PresenceOfBreadCrumbsBlockInListing"/>
             <class name="PKW.OILS.QC_1255_BreadCrumbsBlockInListing.QC_1257_StructureOfBreadCrumbsBlock"/>
@@ -34,6 +28,7 @@
         <classes>
             <class name="PKW.OILS.QC_1249_MainHeadlineBlockInListings.QC_1250_PresenceOfMainHeadlineInListings"/>
             <class name="PKW.OILS.QC_1249_MainHeadlineBlockInListings.QC_1251_PresenceOfCharacteristicInMainHeadline"/>
+            <class name="PKW.OILS.QC_1249_MainHeadlineBlockInListings.QC_1252_PresenceOfOilIconInMainHeadline"/>
         </classes>
     </test>
 

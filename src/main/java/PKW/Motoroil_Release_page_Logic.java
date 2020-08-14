@@ -80,7 +80,7 @@ public class Motoroil_Release_page_Logic extends Motoroil_Release_page {
 
         String currentMainHeadline = getCurrentHeadline();
         clickOnValueFromFirstRelinkingBlock(0);
-        checkingContainsUrl(firstBlock); //waitForChangingOfMainHeadline(currentMainHeadline);
+        checkingContainsUrl(firstBlock);
         back();
         clickOnValueFromSecondRelinkingBlock(0);
         checkingContainsUrl(secondBlock);
@@ -91,22 +91,7 @@ public class Motoroil_Release_page_Logic extends Motoroil_Release_page {
         clickOnValueFromFourthRelinkingBlock(0);
         checkingContainsUrl(fourthBlock);
         return this;
-
-     /*   DataBase db = new DataBase();
-        String currentMainHeadline = getCurrentHeadline();
-        clickOnValueFromFirstRelinkingBlock(0).waitForChangingOfMainHeadline(currentMainHeadline);
-        checkingContainsUrl(db.getRouteByRouteName("DE", "motoroil_release3"));
-        back();
-        clickOnValueFromSecondRelinkingBlock(0);
-        checkingContainsUrl(db.getRouteByRouteName("DE", "motoroil_viscosity2"));
-        back();
-        clickOnValueFromThirdRelinkingBlock(0);
-        checkingContainsUrl(db.getRouteByRouteName("DE", "motoroil_brand2"));
-        back();
-        clickOnValueFromFourthRelinkingBlock(0);
-        checkingContainsUrl(db.getRouteByRouteName("DE", "motoroil_specification3"));
-        return this;*/
-    }
+  }
 
     @Step("click on value from First relinking block. Motoroil_Release_page")
     public Motoroil_Release_page_Logic clickOnValueFromFirstRelinkingBlock(int position) {
