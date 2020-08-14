@@ -1,4 +1,4 @@
-package PKW.OILS.QC_1249_MainHeadlineBlockInOilListing;
+package PKW.OILS.QC_1249_MainHeadlineBlockInListings;
 
 import PKW.Car_parts_motoroil_page_Logic;
 import io.qameta.allure.Description;

@@ -10,9 +10,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import java.sql.SQLException;
-
 import static ATD.CommonMethods.clickOfBuyBtnForAllPages;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
@@ -23,7 +21,7 @@ public class QC_1046_CreatingTyresAndOtherProductOrderShopNotMatchDeliveryCountr
     private String passwordDE = "password";
 
     private TyresListing_page_Logic tyresListingPageLogic = new TyresListing_page_Logic();
-    private DataBase dataBase = new DataBase();
+
 
     @BeforeClass
     void setUp() {
@@ -44,7 +42,7 @@ public class QC_1046_CreatingTyresAndOtherProductOrderShopNotMatchDeliveryCountr
         String tyreId = tyresListingPageLogic.getTyreId();
         clickOfBuyBtnForAllPages();
         tyresListingPageLogic.addFirstProductToCart();
-        open("https://autodoc.de/" + dataBase.getRouteByRouteName("DE", "search3"));
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "search3"));
         clickOfBuyBtnForAllPages();
         String orderNumber = new Product_page_Logic().closePopupOtherCategoryIfYes().cartClick()
                             .nextButtonClick()

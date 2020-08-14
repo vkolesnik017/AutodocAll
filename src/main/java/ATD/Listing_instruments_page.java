@@ -1,12 +1,19 @@
 package ATD;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+
+import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class Listing_instruments_page {
 
     SelenideElement titleNameCategory() {
         return $x("//h2[@class='title_count_search']");
+    }
+
+    SelenideElement titleNameProductFromListing() {
+        return $x("//div[@class='js-listing-wrap']//div[@class='name']//*[contains(@class,'ga-click')]");
     }
 
     SelenideElement seoTextBlock() {
@@ -79,6 +86,39 @@ public class Listing_instruments_page {
 
     SelenideElement blockBreadCrumbs() {
         return $x("//div[@class='steps breadcrumbs']");
+    }
+
+    SelenideElement blockMainProducts() {
+        return $x("//ul[@class='list_products ']");
+    }
+
+    ElementsCollection mainProductsList() {
+        return $$x("//ul[@class='list_products ']/li");
+    }
+
+
+    SelenideElement idProductInBtnAddBasket() {
+        return $x("//div[@class='button ']");
+    }
+
+    SelenideElement counterValueInQuantityCounter() {
+        return $x("//li[@data-id='0'][1]//div[@class='count']/input");
+    }
+
+    SelenideElement btnPlusInQuantityCounter() {
+        return $x("//li[@data-id='0'][1]//a[@class='ga-click plus add']");
+    }
+
+    SelenideElement btnMinusInQuantityCounter() {
+        return $x("//li[@data-id='0'][1]//a[@class='ga-click minus remove']");
+    }
+
+    SelenideElement redBtnAddToBasket() {
+        return $x("//div[@class='button ']//a");
+    }
+
+    SelenideElement popupBasketAddedProducts() {
+        return $x("//div[@class='cart-items-block ']");
     }
 
 }
