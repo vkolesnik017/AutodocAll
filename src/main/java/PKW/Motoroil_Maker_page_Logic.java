@@ -93,12 +93,6 @@ public class Motoroil_Maker_page_Logic extends Motoroil_Maker_page {
         back();
         clickOnValueFromSecondRelinkingBlock(0);
         checkingContainsUrl(secondBlock);
- /*       DataBase db = new DataBase();
-        clickOnValueFromFirstRelinkingBlock(0);
-        checkingContainsUrl(db.getRouteByRouteName("DE", "motoroil_maker_group"));
-        back();
-        clickOnValueFromSecondRelinkingBlock(0);
-        checkingContainsUrl(db.getRouteByRouteName("DE", "motoroil_viscosity2"));*/
         return this;
     }
 

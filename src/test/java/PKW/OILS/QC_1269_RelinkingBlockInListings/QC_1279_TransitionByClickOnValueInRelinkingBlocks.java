@@ -54,7 +54,6 @@ public class QC_1279_TransitionByClickOnValueInRelinkingBlocks {
                 .checkTransitionByClickInRelinkingBlock();
     }
 
-
     @DataProvider(name = "routesRelease", parallel = true)
     Object[] dataProviderRelease() throws SQLException {
         return new PKW.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_release");
@@ -119,7 +118,6 @@ public class QC_1279_TransitionByClickOnValueInRelinkingBlocks {
         new Motoroil_Chemical_Type_page_Logic()
                 .checkTransitionByClickInRelinkingBlock();
     }
-
     @AfterMethod
     public void close() {
         closeWebDriver();
