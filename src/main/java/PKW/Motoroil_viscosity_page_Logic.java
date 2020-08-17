@@ -181,4 +181,10 @@ public class Motoroil_viscosity_page_Logic extends Motoroil_viscosity_page {
         selectedViscosityLink(expectedViscosityLink).shouldBe(visible);
         return this;
     }
+
+    @Step("presence of main listing of products. Motoroil_viscosity_page")
+    public Motoroil_viscosity_page_Logic presenceOfMainListingOfProducts() {
+        productsListBlock().shouldBe(visible);
+        return this;
+    }
 }

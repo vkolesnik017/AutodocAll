@@ -1,7 +1,6 @@
-package LKW_trucks.QC_105_FilterInteractionInTecDocListing;
+package PKW.OILS.QC_1162_MainIssueBlockOfListing;
 
-import ATD.LKW_Category_car_list_page_Logic;
-import ATD.SetUp;
+import PKW.Motoroil_viscosity_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -16,8 +15,7 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_113_InteractionOfBrandsAndGenericFilters {
-
+public class QC_1163_PresenceOfProductsListingBlock {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -25,21 +23,19 @@ public class QC_113_InteractionOfBrandsAndGenericFilters {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list12");
+        return new PKW.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_viscosity,motoroil_viscosity_brand,motoroil_specification,motoroil_release,motoroil_brand,motoroil_maker,motoroil_maker_group,motoroil_chemical_type,motoroil-search,car_parts_motoroil");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks interaction by brand and generic filter")
-    public void testChecksInteractionByBrandAndGenericFilters(String route) throws SQLException {
+    @Description(value = "Test checks presence of Products listing block")
+    public void testChecksPresenceOfProductsListingBlock(String route) {
         openPage(route);
 
-        new LKW_Category_car_list_page_Logic()
-                .selectBrandFromFilterOfBrands("lkw_category_car_list21", "39")
-                .selectGenericFilter("lkw_category_car_list29", "407")
-                .checkOfPresenceSelectedBrand("TEXTAR")
-                .checkOfPresenceSelectingGeneric("Warnkontakt, Bremsbelagverschleiß");
+        new Motoroil_viscosity_page_Logic()
+                .presenceOfMainListingOfProducts();
+
     }
 
     @AfterMethod

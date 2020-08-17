@@ -144,6 +144,7 @@ public class Main_page {
     SelenideElement footerWiderrufLink() {
         return $(byXpath("//*[@class='footer_menu_list7']/a"));
     }
+
     SelenideElement footerZahlungLink() {
         return $(byXpath("//*[@class='footer_menu_list0']/a"));
     }
@@ -172,5 +173,14 @@ public class Main_page {
         return $x("//label[@id='privacy_policy_not_found_car']//a");
     }
 
+
+
+    SelenideElement footerImpressumLink() {
+        return $(byXpath("//*[@class='footer_menu_list6']/a"));
+    }
+
+    SelenideElement footerAustauschartikelLink() {
+        return $(byXpath("//*[@class='footer_menu_list3']/a"));
+    }
 
 }

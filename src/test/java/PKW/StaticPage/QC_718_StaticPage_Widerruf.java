@@ -27,7 +27,7 @@ public class QC_718_StaticPage_Widerruf {
     @Test(dataProvider = "route")
     @Owner(value = "LavrynenkoOlha")
     @Description(value = "Test checks elements on the Widerruf page")
-    public void testStaticPage_FAQ(String route) {
+    public void testStaticPage_Widerruf(String route) {
         openPage(route);
         new Main_page_Logic().clickFooterWiderrufLink()
                 .checkElementsOnThePage();

@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Oils" parallel="methods" thread-count="3" data-provider-thread-count="2">
 
-     <test name="QC_1255_BreadCrumbsBlockInListing">
+    <test name="QC_1255_BreadCrumbsBlockInListing">
         <classes>
             <class name="PKW.OILS.QC_1255_BreadCrumbsBlockInListing.QC_1256_PresenceOfBreadCrumbsBlockInListing"/>
             <class name="PKW.OILS.QC_1255_BreadCrumbsBlockInListing.QC_1257_StructureOfBreadCrumbsBlock"/>
@@ -42,7 +42,7 @@
     <test name="QC_1217_BlockFilterByTolerance">
         <classes>
             <class name="PKW.OILS.QC_1217_BlockFilterByTolerance.QC_1220_ApplyingFilterByToleranceInOilListings"/>
-         <!--   <class name="PKW.OILS.QC_1217_BlockFilterByTolerance.QC_1221_TransitionByClickOnToleranceFilter"/>-->
+            <!--   <class name="PKW.OILS.QC_1217_BlockFilterByTolerance.QC_1221_TransitionByClickOnToleranceFilter"/>-->
             <class name="PKW.OILS.QC_1217_BlockFilterByTolerance.QC_1222_ResetOfToleranceFilterInOilListing"/>
             <class name="PKW.OILS.QC_1217_BlockFilterByTolerance.QC_1223_InabilityToApplyTwoDifferentToleranceFilters"/>
             <class name="PKW.OILS.QC_1217_BlockFilterByTolerance.QC_1224_TransitionToSearchPageOnResetToleranceFilter"/>
@@ -82,6 +82,7 @@
         <classes>
             <class name="PKW.OILS.QC_944_TopProductsBlockOnMainPage.QC_947_PresenceOfTopProductsBlock"/>
             <class name="PKW.OILS.QC_944_TopProductsBlockOnMainPage.QC_948_TransitionToProductPageFromTopBlock"/>
+            <class name="PKW.OILS.QC_944_TopProductsBlockOnMainPage.QC_949_AddedTopProductToBasket"/>
         </classes>
     </test>
 
@@ -89,6 +90,20 @@
         <classes>
             <class name="PKW.OILS.QC_958_SpecificationBlockOnMainPage.QC_959_PresenceOfSpecificationBlockOnMainOilPage"/>
             <class name="PKW.OILS.QC_958_SpecificationBlockOnMainPage.QC_960_TransitionToListingByClickOnSpecificationLink"/>
+        </classes>
+    </test>
+
+    <test name="QC_1162_MainIssueBlockOfListing">
+        <classes>
+            <class name="PKW.OILS.QC_1162_MainIssueBlockOfListing.QC_1163_PresenceOfProductsListingBlock"/>
+        </classes>
+    </test>
+
+       <test name="QC_926_KbaBlockOnMainOilPage">
+        <classes>
+            <class name="PKW.OILS.QC_926_KbaBlockOnMainOilPage.QC_922_PresenceOfKbaSelectorOnMainPage"/>
+            <class name="PKW.OILS.QC_926_KbaBlockOnMainOilPage.QC_930_PresenceOfErrorMessageAboutIncorrectKbaNumber"/>
+            <class name="PKW.OILS.QC_926_KbaBlockOnMainOilPage.QC_931_PresenceOfErrorMessageAboutEmptyFields"/>
         </classes>
     </test>
 </suite>

@@ -213,9 +213,9 @@ public class Listing_page {
 
     SelenideElement verschleisswarnkontaktBlockInSidebar() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_593']"); }
 
-    public SelenideElement verschleisswarnkontaktFirstButtonInSidebar() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_593']//label"); }
+    public SelenideElement verschleisswarnkontaktFirstButtonInSidebar() { return $x("//div[contains(@class,'criteria_593')]//li[1]//label"); }
 
-    public SelenideElement verschleisswarnkontaktSecondButtonInSidebar() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_593']//li[2]/label"); }
+    public SelenideElement verschleisswarnkontaktSecondButtonInSidebar() { return $x("//div[contains(@class,'criteria_593')]//li[2]//label"); }
 
     SelenideElement seventhProductOnListing() { return $(".list_products > li:nth-child(13)"); }
 
@@ -407,8 +407,12 @@ public class Listing_page {
         return $x("//div[contains(@class,'js-filter-50001')]//li[3]");
     }
 
-    SelenideElement thirdGeneric() {
+    SelenideElement thirdGenericAboveListing() {
         return $(By.xpath("//div[contains(@class,'filter-generics-tecdoc__list js-filter-generics-tecdoc')]//label[3]/div[2]"));
+    }
+
+    SelenideElement thirdGenericInSidebar() {
+        return $x("//div[contains(@class,'js-filter-50001')]//li[4]");
     }
 
     public SelenideElement fourthGeneric() {

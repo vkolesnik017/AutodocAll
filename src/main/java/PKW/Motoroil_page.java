@@ -3,8 +3,8 @@ package PKW;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Selenide.$$x;
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selectors.byId;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Motoroil_page {
 
@@ -38,4 +38,27 @@ public class Motoroil_page {
 
    ElementsCollection specificationLinks() {return $$x("//h4[contains(text(),'Spezifikationen')]/..//li/a");}
 
+   ElementsCollection btnAddToBasketTopBLock() {return $$x("//div[@class='basket_btn button active_red_button ']/a");}
+
+    ElementsCollection btnUpOfCountTopProduct() {return $$x("//div[@class='basket_btn button active_red_button ']/..//i[@class='fa fa-angle-right']");}
+
+   SelenideElement basketDropMenu() {
+      return $x("//div[@class='cart-items-block ']");
+   }
+
+   SelenideElement basket() {
+      return $(byId("cart_block_link"));
+   }
+
+   SelenideElement kbaSelector() {return $x("//div[@class='mainblock-search__kba']");}
+
+   SelenideElement firstFieldKbaSelector() {return $(byId("kba1"));}
+
+   SelenideElement secondFieldKbaSelector() {return $(byId("kba2"));}
+
+   SelenideElement btnSearchOfKbaSelector() {return $x("//div[@class='mainblock-search__kba']//a[contains(@class,'submit')]");}
+
+   SelenideElement errorToolTipFirstField() {return $(byId("kba-error-tooltip"));}
+
+   SelenideElement errorMessageAboutEmptyKbaFields() {return $x("//div[contains(text(),'Geben Sie bitte Ihre Schlüsselnummer ein')]");}
 }

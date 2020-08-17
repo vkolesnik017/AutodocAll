@@ -1,7 +1,6 @@
-package LKW_trucks.QC_105_FilterInteractionInTecDocListing;
+package PKW.OILS.QC_926_KbaBlockOnMainOilPage;
 
-import ATD.LKW_Category_car_list_page_Logic;
-import ATD.SetUp;
+import PKW.Motoroil_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -16,8 +15,7 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_113_InteractionOfBrandsAndGenericFilters {
-
+public class QC_930_PresenceOfErrorMessageAboutIncorrectKbaNumber {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -25,21 +23,21 @@ public class QC_113_InteractionOfBrandsAndGenericFilters {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list12");
+        return new PKW.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks interaction by brand and generic filter")
-    public void testChecksInteractionByBrandAndGenericFilters(String route) throws SQLException {
+    @Description(value = "Test checks presence of KBA selector on main page")
+    public void testChecksPresenceOfErrorMessageAboutIncorrectKbaNumber(String route) {
         openPage(route);
 
-        new LKW_Category_car_list_page_Logic()
-                .selectBrandFromFilterOfBrands("lkw_category_car_list21", "39")
-                .selectGenericFilter("lkw_category_car_list29", "407")
-                .checkOfPresenceSelectedBrand("TEXTAR")
-                .checkOfPresenceSelectingGeneric("Warnkontakt, Bremsbelagverschleiß");
+        new Motoroil_page_Logic()
+                .presenceOfKbaSelector()
+                .selectVehicleInKbaSelectorWithIncorrectNumber("64", "sds")
+                .visibilityKbaErrorToolTip();
+
     }
 
     @AfterMethod
