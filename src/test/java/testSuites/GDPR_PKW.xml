@@ -49,6 +49,24 @@
         </classes>
     </test>
 
+    <test name="QC_1944_GdprPopupInSelectorOnShopEN">
+        <classes>
+            <class name="PKW.GDRP.QC_1944_GdprPopupInSelectorOnShopEN"/>
+        </classes>
+    </test>
+
+    <test name="QC_1905_GdprFaqOnProductPage">
+        <classes>
+            <class name="PKW.GDRP.QC_1905_GdprFaqOnProductPage"/>
+        </classes>
+    </test>
+
+    <test name="QC_1918_GdprDelivery">
+        <classes>
+            <class name="PKW.GDRP.QC_1918_GdprDelivery"/>
+        </classes>
+    </test>
+
 
 
 

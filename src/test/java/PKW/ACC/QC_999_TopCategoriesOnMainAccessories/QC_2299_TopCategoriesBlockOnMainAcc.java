@@ -1,18 +1,20 @@
-package PKW.StaticPage;
+package PKW.ACC.QC_999_TopCategoriesOnMainAccessories;
 
-import PKW.Main_page_Logic;
+import PKW.Index_accessories_page_Logic;
 import PKW.SetUp;
 import io.qameta.allure.Description;
+import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import java.sql.SQLException;
 import static PKW.CommonMethods.openPage;
 import static PKW.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_718_StaticPage_Widerruf {
+public class QC_2299_TopCategoriesBlockOnMainAcc {
 
     @BeforeClass
     void setUp() {
@@ -20,17 +22,17 @@ public class QC_718_StaticPage_Widerruf {
     }
 
     @DataProvider(name = "route", parallel = true)
-    Object[] dataProvider() {
-        return new SetUp().setUpShop("prod", "DE");
+    Object[] dataProviderProducts() throws SQLException {
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "index_accessories");
     }
 
     @Test(dataProvider = "route")
-    @Owner(value = "LavrynenkoOlha")
-    @Description(value = "Test checks elements on the Widerruf page")
-    public void testStaticPage_Widerruf(String route) {
+    @Flaky
+    @Owner(value = "Sergey-QA")
+    @Description(value = "Test checks presence top categories block.")
+    public void testCheckingPresenceTopCategoriesBlock(String route) {
         openPage(route);
-        new Main_page_Logic().clickFooterWiderrufLink()
-                .checkElementsOnThePage();
+        new Index_accessories_page_Logic().checkingPresenceTopCategoriesBlock();
     }
 
     @AfterMethod
@@ -38,4 +40,3 @@ public class QC_718_StaticPage_Widerruf {
         closeWebDriver();
     }
 }
-

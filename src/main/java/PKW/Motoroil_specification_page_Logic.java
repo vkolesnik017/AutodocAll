@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import static ATD.CommonMethods.checkingContainsUrl;
+import static PKW.CommonMethods.waitWhileRouteContainsExpectedCondition;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.back;
 import static com.codeborne.selenide.Selenide.page;
@@ -75,27 +76,15 @@ public class Motoroil_specification_page_Logic extends Motoroil_specification_pa
         String firstBlock = getAttributeFromLink(linksOfRelinkingBlocks(1), 0);
         String secondBlock = getAttributeFromLink(linksOfRelinkingBlocks(2), 0);
         String thirdBlock = getAttributeFromLink(linksOfRelinkingBlocks(3), 0);
-
         String currentMainHeadline = mainHeadline().getText();
         clickOnValueFromFirstRelinkingBlock(0);
-        checkingContainsUrl(firstBlock);  //waitForChangingOfMainHeadline(currentMainHeadline);
+        checkingContainsUrl(firstBlock);  waitWhileRouteContainsExpectedCondition(firstBlock);
         back();
         clickOnValueFromSecondRelinkingBlock(0);
         checkingContainsUrl(secondBlock);
         back();
         clickOnValueFromThirdRelinkingBlock(0);
         checkingContainsUrl(thirdBlock);
-
-    /*    DataBase db = new DataBase();
-        String currentMainHeadline = mainHeadline().getText();
-        clickOnValueFromFirstRelinkingBlock(0).waitForChangingOfMainHeadline(currentMainHeadline);
-        checkingContainsUrl(db.getRouteByRouteName("DE", "motoroil_specification2"));
-        back();
-        clickOnValueFromSecondRelinkingBlock(0);
-        checkingContainsUrl(db.getRouteByRouteName("DE", "motoroil_viscosity2"));
-        back();
-        clickOnValueFromThirdRelinkingBlock(0);
-        checkingContainsUrl(db.getRouteByRouteName("DE", "motoroil_brand2"));*/
         return this;
     }
 

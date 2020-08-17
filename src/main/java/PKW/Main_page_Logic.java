@@ -1,6 +1,7 @@
 package PKW;
 
 
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import static PKW.CommonMethods.mailRandom;
 import static PKW.CommonMethods.password;
@@ -96,9 +97,33 @@ public class Main_page_Logic extends Main_page {
         return mail;
     }
 
-    @Step(":in review form. Main_page")
-    public Main_page_Logic checkingDatenschutzerklarungLinkBehaviorInReviewsForm() {
-        new CommonMethods().checkingDatenschutzerklarungLinkBehavior(linkDatenschutzerklärungInFooter(), "underline solid rgb(0, 0, 0)");
+    @Step("Click btn not found car in Selector. Main_page")
+    public Main_page_Logic clickBtnNotFoundCarInSelector() {
+        btnNotFoundCarInSelector().click();
+        return this;
+    }
+
+    @Step("Filling fields in popup From Selector and checking behavior. Main_page")
+    public String fillRequiredFieldsInPopupFromSelector(String qc, String vinNumber) {
+        String mail = qc + PKW.CommonMethods.mailRandom();
+        vinFieldPopupFromSelector().setValue(vinNumber);
+        mailFieldPopupFromSelector().setValue(mail);
+        checkboxPopupFromSelector().click();
+        btnSendPopupFromSelector().click();
+        subscriptionSuccessPopup().shouldHave(text("Your message has been sent"));
+        subscriptionPopupClose().click();
+        return mail;
+    }
+
+    @Step(":From Main_page")
+    public Main_page_Logic checkingDatenschutzerklarungLinkBehavior(SelenideElement orderDatenschutzerklarungLink) {
+        new CommonMethods().checkingDatenschutzerklarungLinkBehavior(orderDatenschutzerklarungLink, "underline solid rgb(0, 0, 0)");
+        return this;
+    }
+
+    @Step(":From Main_page")
+    public Main_page_Logic checkingPrivacyPolicyLinkBehavior(SelenideElement PrivacyPolicyLink) {
+        new CommonMethods().checkingPrivacyPolicyLinkBehavior(PrivacyPolicyLink, "underline solid rgb(0, 0, 0)");
         return this;
     }
 
@@ -108,19 +133,19 @@ public class Main_page_Logic extends Main_page {
         return this;
     }
 
-    @Step("Click the FAQ link. Main_page")
+    @Step("Click the FAQ link in the footer. Main_page")
     public FAQ_static_page_Logic clickFooterFaqLink() {
         footerFaqLink().click();
         return page(FAQ_static_page_Logic.class);
     }
 
-    @Step("Click the Uber Uns link. Main_page")
+    @Step("Click the Uber Uns link in the footer. Main_page")
     public Uber_uns_static_page_Logic clickFooterUberUnsLink() {
         footerUberUnsLink().click();
         return page(Uber_uns_static_page_Logic.class);
     }
 
-    @Step("Click the Widerruf. Main_page")
+    @Step("Click the Widerruf link in the footer. Main_page")
     public Widerruf_static_page_Logic clickFooterWiderrufLink() {
         footerWiderrufLink().click();
         return page(Widerruf_static_page_Logic.class);
@@ -133,9 +158,21 @@ public class Main_page_Logic extends Main_page {
         return this;
     }
 
-    @Step("Click the Zahlung. Main_page")
+    @Step("Click the Zahlung link in the footer. Main_page")
     public Zahlung_static_page_Logic clickFooterZahlungLink() {
         footerZahlungLink().click();
         return page(Zahlung_static_page_Logic.class);
+    }
+
+    @Step("Click the Impressum link in the footer. Main_page")
+    public Impressum_static_page_Logic clickFooterImpressumLink() {
+        footerImpressumLink().click();
+        return page(Impressum_static_page_Logic.class);
+    }
+
+    @Step("Click the Austauschartikel link in the footer. Main_page")
+    public Austauschartikel_static_page_Logic clickFooterAustauschartikelLink() {
+        footerAustauschartikelLink().click();
+        return page(Austauschartikel_static_page_Logic.class);
     }
 }

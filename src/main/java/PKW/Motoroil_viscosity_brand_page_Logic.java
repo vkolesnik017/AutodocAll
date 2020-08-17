@@ -120,21 +120,6 @@ public class Motoroil_viscosity_brand_page_Logic extends Motoroil_viscosity_bran
         back();
         clickOnValueFromFourthRelinkingBlock(0);
         checkingContainsUrl(fourthBlock);
-
-
-
-      /*  DataBase db = new DataBase();
-        clickOnValueFromFirstRelinkingBlock(6);
-        checkingContainsUrl(db.getRouteByRouteName("DE", "motoroil_viscosity_brand2"));
-        back();
-        clickOnValueFromSecondRelinkingBlock(0);
-        checkingContainsUrl(db.getRouteByRouteName("DE", "motoroil_viscosity_brand3"));
-        back();
-        clickOnValueFromThirdRelinkingBlock(0);
-        checkingContainsUrl(db.getRouteByRouteName("DE", "motoroil_release2"));
-        back();
-        clickOnValueFromFourthRelinkingBlock(0);
-        checkingContainsUrl(db.getRouteByRouteName("DE", "motoroil_specification"));*/
         return this;
     }
 

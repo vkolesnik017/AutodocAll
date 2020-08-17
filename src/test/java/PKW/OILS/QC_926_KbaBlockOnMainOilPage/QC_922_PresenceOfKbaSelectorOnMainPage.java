@@ -1,6 +1,6 @@
-package PKW.OILS.QC_1249_MainHeadlineBlockInOilListing;
+package PKW.OILS.QC_926_KbaBlockOnMainOilPage;
 
-import PKW.Car_parts_motoroil_page_Logic;
+import PKW.Motoroil_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -15,7 +15,7 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1252_PresenceOfOilIconInMainHeadline {
+public class QC_922_PresenceOfKbaSelectorOnMainPage {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -23,18 +23,19 @@ public class QC_1252_PresenceOfOilIconInMainHeadline {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new PKW.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "car_parts_motoroil");
+        return new PKW.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks presence of Oil icon in main headline")
-    public void testChecksPresenceOfOilIconInMainHeadline(String route) throws SQLException {
+    @Description(value = "Test checks presence of KBA selector on main page")
+    public void testChecksPresenceOfKbaSelectorOnMainPage(String route) {
         openPage(route);
 
-        new Car_parts_motoroil_page_Logic()
-                .presenceOfOilLiterIconInMainHeadline();
+        new Motoroil_page_Logic()
+                .presenceOfKbaSelector();
+
     }
 
     @AfterMethod

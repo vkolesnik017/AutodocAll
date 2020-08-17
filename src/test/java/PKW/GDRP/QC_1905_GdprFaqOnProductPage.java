@@ -1,7 +1,7 @@
 package PKW.GDRP;
 
 import AWS.PrivacyPolicySubscription_aws;
-import PKW.Main_page_Logic;
+import PKW.Product_page_Logic;
 import PKW.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -15,10 +15,10 @@ import static PKW.CommonMethods.openPage;
 import static PKW.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1895_GdprFooter {
+public class QC_1905_GdprFaqOnProductPage {
 
     private String mail;
-    private Main_page_Logic mainPageLogic = new Main_page_Logic();
+    private Product_page_Logic productPageLogic = new Product_page_Logic();
 
     @BeforeClass
     void setUp() {
@@ -27,27 +27,26 @@ public class QC_1895_GdprFooter {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShop("prod", "DE");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test verify working GDPR form in footer on Main Page ")
-    public void testGdprFooterForm(String route) {
+    @Description(value = "Test verify working of faq form on product page")
+    public void testGdprWorkingFaqFormProductPage(String route) {
         openPage(route);
-        mail = mainPageLogic
-                .scrollToFooterSubscribeBlock()
-                .checkingDatenschutzerklarungLinkBehavior(mainPageLogic.linkDatenschutzerklärungInFooter())
-                .checkingErrorPopupUnClickCheckbox("qc_1895_")
-                .checkingSuccessPopupClickCheckbox("qc_1895_");
+        mail = productPageLogic.clickBtnFaqTab().clickBtnAskQuestionInFaqForm()
+                .checkingDatenschutzerklarungLinkBehavior(productPageLogic.faqFormDatenschutzerklarungLink())
+                .fillRequiredFieldsFaqFormAndCheckBehavior("qc_1905_");
         new PrivacyPolicySubscription_aws()
                 .openPolicySubscriptionWithLogin()
-                .checkingPolicyAndSubscribeForMail(this.mail);
+                .checkingPolicyForMail(this.mail);
     }
 
     @AfterMethod
     public void close() {
         closeWebDriver();
     }
+
 }

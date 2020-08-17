@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.Random;
+
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Condition.cssValue;
 import static com.codeborne.selenide.Selectors.byXpath;
@@ -128,6 +129,15 @@ public class CommonMethods {
         datenschutzerklarungLink.shouldHave(cssValue("text-decoration", cssValue));
         datenschutzerklarungLink.click();
         checkingUrlAndCloseTab("/datenschutz");
+    }
+
+    @Step("Checking Privacy Policy link behavior for shop EN")
+    public void checkingPrivacyPolicyLinkBehavior(SelenideElement PrivacyPolicyLink, String cssValue) {
+        PrivacyPolicyLink.shouldHave(attribute("title", "Privacy Policy"));
+        PrivacyPolicyLink.shouldHave(cssValue("cursor", "pointer"));
+        PrivacyPolicyLink.shouldHave(cssValue("text-decoration", cssValue));
+        PrivacyPolicyLink.click();
+        checkingUrlAndCloseTab("/privacy-policy");
     }
 
     @Step("Wait while route contains expected condition {expected route}")

@@ -15,7 +15,7 @@ import static PKW.CommonMethods.openPage;
 import static PKW.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1895_GdprFooter {
+public class QC_1944_GdprPopupInSelectorOnShopEN {
 
     private String mail;
     private Main_page_Logic mainPageLogic = new Main_page_Logic();
@@ -27,23 +27,22 @@ public class QC_1895_GdprFooter {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShop("prod", "DE");
+        return new SetUp().setUpShop("prod", "EN");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test verify working GDPR form in footer on Main Page ")
-    public void testGdprFooterForm(String route) {
+    @Description(value = "Test verify working GDPR in popup from Selector on main page")
+    public void testGdprInPopupFromSelector(String route) {
         openPage(route);
-        mail = mainPageLogic
-                .scrollToFooterSubscribeBlock()
-                .checkingDatenschutzerklarungLinkBehavior(mainPageLogic.linkDatenschutzerklärungInFooter())
-                .checkingErrorPopupUnClickCheckbox("qc_1895_")
-                .checkingSuccessPopupClickCheckbox("qc_1895_");
+        mail = mainPageLogic.clickBtnNotFoundCarInSelector()
+                .checkingPrivacyPolicyLinkBehavior(mainPageLogic.privacyPolicyLinkPopupFromSelector())
+                .fillRequiredFieldsInPopupFromSelector("qc_1944_", "11111");
         new PrivacyPolicySubscription_aws()
                 .openPolicySubscriptionWithLogin()
                 .checkingPolicyAndSubscribeForMail(this.mail);
+
     }
 
     @AfterMethod
