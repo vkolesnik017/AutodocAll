@@ -55,8 +55,8 @@ public class QC_125_FiltersSorting_TestFilterPosition {
     @Description(value = "Test checks filter position on LKW model")
     public void testFilterPositionLKWmodel() throws SQLException{
         openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list7"));
-        String characteristic = listingPageLogic.getTextFromElement(listingPageLogic.langeFilterAttribute3());
-        listingPageLogic.clickFilterButton(listingPageLogic.langeFilterCheckbox3())
+        String characteristic = listingPageLogic.getTextFromElement(listingPageLogic.verschleisswarnkontaktFirstButtonInSidebar());
+        listingPageLogic.clickFilterButton(listingPageLogic.verschleisswarnkontaktFirstButtonInSidebar())
                 .waitUntilPreloaderDisappear()
                 .checkTextInElement(listingPageLogic.activeSideFilterLkwCheckbox(), characteristic);
     }

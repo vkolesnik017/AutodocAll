@@ -6,7 +6,6 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -1102,23 +1101,23 @@ public class Listing_page_Logic extends Listing_page {
 
     @Step("Check generic filter applying on listing LKW model. Listing_page")
     public Listing_page_Logic checkGenericFilterApplyingLKWmodelRoute() {
-        String genericName = thirdGeneric().text();
-        thirdGeneric().click();
+        String genericName = firstGenericInSidebar().text();
+        firstGenericInSidebar().click();
         waitUntilPreloaderDisappear();
-        firstGenericAboveListing().shouldHave(text(genericName));
+        firstGenericInSidebar().shouldHave(text(genericName));
         checkProductTitleOnListing(genericName, true, productTitleInListMode());
         refresh();
-        firstGenericAboveListing().shouldHave(text(genericName));
+        firstGenericInSidebar().shouldHave(text(genericName));
         checkProductTitleOnListing(genericName, true, productTitleInListMode());
-        secondGenericAboveListing().click();
+        secondGenericInSidebar().click();
         waitUntilPreloaderDisappear();
-        thirdGeneric().click();
+        secondGenericInSidebar().click();
         waitUntilPreloaderDisappear();
         checkProductTitleOnListing(genericName, true, productTitleInListMode());
         showListingInTileModeButton().click();
         waitUntilPreloaderDisappear();
         checkProductTitleOnListing(genericName, true, productTitleInTileMode());
-        firstGenericAboveListing().click();
+        firstGenericInSidebar().click();
         waitUntilPreloaderDisappear();
         checkUniqueGenericsOnListing(2, productTitleInTileMode());
         return this;
