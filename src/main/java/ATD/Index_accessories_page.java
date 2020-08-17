@@ -31,7 +31,11 @@ class Index_accessories_page {
     }
 
     ElementsCollection logicalUnionsMainBlock() {
-        return $$x("//div[@class='accessories-catalog__row']/div[@class='accessories-catalog__group']");
+        return $$x("//div[@class='accessories-catalog__row']//div[@class='accessories-catalog__group-name']");
+    }
+
+    ElementsCollection mainCategories() {
+        return $$x("//div[@class='accessories-catalog__row'][1]//div[@class='accessories-catalog__categories']//li//img");
     }
 
     SelenideElement secondCategoryInLogicalUnion(){

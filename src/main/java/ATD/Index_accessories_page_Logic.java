@@ -8,6 +8,7 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 import java.util.ArrayList;
+import java.util.Collections;
 
 
 public class Index_accessories_page_Logic extends Index_accessories_page {
@@ -162,6 +163,28 @@ public class Index_accessories_page_Logic extends Index_accessories_page {
     public Index_accessories_page_Logic checkingPresenceBlockMainCatalogCategories() {
         blockMainCatalogCategories().shouldBe(visible);
         return this;
+    }
+
+    @Step("Get name all categories main block and write to list. Index_accessories_page")
+    public ArrayList<String> getAndWriteAllCategoriesToList() {
+        ArrayList<String> allMainCategories = new ArrayList<>();
+        for (SelenideElement element: mainCategories()) {
+            String name = element.getAttribute("alt");
+            allMainCategories.add(name);
+            Collections.sort(allMainCategories);
+        }
+        return allMainCategories;
+    }
+
+    @Step("Get name Logical Unions and write to list. Index_accessories_page")
+    public ArrayList<String> getNameLogicalUnionAndWriteToList() {
+        ArrayList<String> LogicalUnionsName = new ArrayList<>();
+        for (SelenideElement element:logicalUnionsMainBlock()) {
+            String name = element.getText();
+            LogicalUnionsName.add(name);
+            Collections.sort(LogicalUnionsName);
+        }
+        return LogicalUnionsName;
     }
 
 }
