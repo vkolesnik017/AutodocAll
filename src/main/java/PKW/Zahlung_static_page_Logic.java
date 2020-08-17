@@ -2,18 +2,20 @@ package PKW;
 
 import io.qameta.allure.Step;
 import static PKW.CommonMethods.checkingContainsUrl;
+import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
 public class Zahlung_static_page_Logic extends Zahlung_static_page {
 
-    @Step("Checks the clickable link, pdf download and acrobat reader buttons, text block visibility. Zahlung_static_page")
+    @Step("Checks the clickable links, pdf download and acrobat reader buttons, text block visibility. Zahlung_static_page")
     public Zahlung_static_page_Logic checkElementsOnThePage() {
 
         CommonMethods commonMethods = new CommonMethods();
 
         blockZahlungText().shouldBe(visible);
-        pdfDownloadButton().click();
+        pdfDownloadButton().shouldHave(attribute("class","link"));
+        pdfDownloadButton().shouldHave(attribute("url", "pdf/zahlung"));
         acrobatReaderButton().click();
         switchTo().window(1);
         checkingContainsUrl("/reader/?loc=de");
