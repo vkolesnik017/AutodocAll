@@ -69,7 +69,7 @@
 
     <test name="QC_999_TopCategoriesOnMainAccessories">
         <classes>
-            <class name="PKW.ACC.QC_999_TopCategoriesOnMainAccessories.QC_1000_TopCategoriesBlock"/>
+            <class name="PKW.ACC.QC_999_TopCategoriesOnMainAccessories.QC_2299_TopCategoriesBlockOnMainAcc"/>
             <class name="PKW.ACC.QC_999_TopCategoriesOnMainAccessories.QC_1001_CategoriesInTopCategoriesBlockOnMainAcc"/>
             <class name="PKW.ACC.QC_999_TopCategoriesOnMainAccessories.QC_1003_TransitionOnListingTopCategoryFromMainACC"/>
         </classes>
