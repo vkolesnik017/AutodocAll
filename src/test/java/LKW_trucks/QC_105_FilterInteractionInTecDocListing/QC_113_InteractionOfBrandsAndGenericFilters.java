@@ -37,7 +37,7 @@ public class QC_113_InteractionOfBrandsAndGenericFilters {
 
         new LKW_Category_car_list_page_Logic()
                 .selectBrandFromFilterOfBrands("lkw_category_car_list21", "39")
-                .selectGenericFilter("lkw_category_car_list24", "407")
+                .selectGenericFilter("lkw_category_car_list29", "407")
                 .checkOfPresenceSelectedBrand("TEXTAR")
                 .checkOfPresenceSelectingGeneric("Warnkontakt, Bremsbelagverschleiß");
     }
