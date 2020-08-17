@@ -175,4 +175,10 @@ public class Main_page_Logic extends Main_page {
         footerAustauschartikelLink().click();
         return page(Austauschartikel_static_page_Logic.class);
     }
+
+    @Step("Click the Kontakt link in the footer. Main_page")
+    public Kontakt_static_page_Logic clickFooterKontaktLink() {
+        footerKontaktLink().click();
+        return page(Kontakt_static_page_Logic.class);
+    }
 }

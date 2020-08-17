@@ -19,32 +19,31 @@ public class Austauschartikel_static_page_Logic extends Austauschartikel_static_
         pfandReturnPartsText().shouldBe(visible);
         pfandReturnPartsCategories().shouldBe(visible);
         pfandReturnPartsItem().shouldBe(visible);
-        Assert.assertEquals(cards().size(), 39);
+        Assert.assertEquals(categories().size(), 39);
         pfandReturnPolicy().shouldBe(visible);
         pfandReturn().shouldBe(visible);
+        sleep(2000);
 
-        sleep(1500);
-        pfandInfoButtonTooltipPlz().scrollIntoView(false);
-        pfandInfoButtonTooltipPlz().click();
-        pfandInfoTooltipPlz().shouldBe(visible);
+        pfandInfoButtonTooltipPlz().hover().click();
         pfandInfoTooltipPlz().scrollIntoView("{block: \"center\"}");
-        closeButtonTooltipPlz().click();
+        pfandInfoTooltipPlz().shouldBe(visible);
+        closeButtonTooltipPlz().hover().click();
 
-        pfandInfoButtonTooltipOrder().click();
+        pfandInfoButtonTooltipOrder().hover().click();
         pfandInfoTooltipOrder().shouldBe(visible);
-        closeButtonTooltipOrder().click();
+        closeButtonTooltipOrder().hover().click();
 
-        checkClickableCards();
         return this;
     }
 
     public Austauschartikel_static_page_Logic checkClickableCards() {
-        for (int i = 0; i <= 11; i++) {
-            if (categories().get(i).has(attribute("data-id"))) {
-                categories().get(i).scrollIntoView("{block: \"center\"}").click();
-            }
+        sleep(2000);
+        pfandReturnPartsItem().hover();
+        for (int i = 0; i < 12; i++) {
+            categories().get(i).click();
             popUpOfCategory().get(i).shouldBe(visible);
-            sleep(1500);
+            categories().get(i).click();
+            popUpOfCategory().get(i).shouldNotBe(visible);
         }
         return this;
     }

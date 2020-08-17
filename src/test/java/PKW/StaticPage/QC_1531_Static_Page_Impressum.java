@@ -8,6 +8,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import java.sql.SQLException;
 import static PKW.CommonMethods.openPage;
 import static PKW.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
@@ -27,7 +28,7 @@ public class QC_1531_Static_Page_Impressum {
     @Test(dataProvider = "route")
     @Owner(value = "LavrynenkoOlha")
     @Description(value = "Test checks elements on the Impressum page")
-    public void testStaticPage_Impressum(String route) {
+    public void testStaticPage_Impressum(String route) throws SQLException {
         openPage(route);
         new Main_page_Logic().clickFooterImpressumLink()
                 .checkElementsOnThePage();
