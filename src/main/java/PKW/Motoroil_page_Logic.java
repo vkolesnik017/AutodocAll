@@ -1,10 +1,10 @@
 package PKW;
 
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
 import static PKW.CommonMethods.waitWhileRouteContainsExpectedCondition;
-import static com.codeborne.selenide.Condition.attribute;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.back;
 import static com.codeborne.selenide.Selenide.page;
 
@@ -124,5 +124,55 @@ public class Motoroil_page_Logic extends Motoroil_page {
     public Motoroil_specification_page_Logic clickOnSpecificationLink(int positionOfLink) {
         specificationLinks().get(positionOfLink).click();
         return page(Motoroil_specification_page_Logic.class);
+    }
+
+    @Step("added TOP product with expected count to Basket. Motoroil_page")
+    public Motoroil_page_Logic addedTopProductWithCountToBasket(int positionOfTopProduct, int expectedCountOfTopProduct) {
+        clickOnBtnCountUpTopProduct(btnUpOfCountTopProduct().get(positionOfTopProduct), expectedCountOfTopProduct);
+        btnAddToBasketTopBLock().get(positionOfTopProduct).shouldBe(visible).click();
+        basketDropMenu().should(appear);
+        basketDropMenu().should(disappear);
+        basket().click();
+        return this;
+    }
+
+    @Step("click on Added Top product to basket button. Motoroil_page")
+    public Motoroil_page_Logic clickOnBtnCountUpTopProduct(SelenideElement element, int expectedCount) {
+        for (int i = 1; i < expectedCount; i++) {
+            element.click();
+        }
+        return this;
+    }
+
+    @Step("presence Of KBA selector. Motoroil_page")
+    public Motoroil_page_Logic presenceOfKbaSelector() {
+        kbaSelector().shouldBe(visible);
+        return this;
+    }
+
+    @Step("select Vehicle in KBA selector with incorrect number. Motoroil_page")
+    public Motoroil_page_Logic selectVehicleInKbaSelectorWithIncorrectNumber(String firstValue, String secondValue) {
+        firstFieldKbaSelector().setValue(firstValue);
+        secondFieldKbaSelector().setValue(secondValue);
+        btnSearchOfKbaSelector().click();
+        return this;
+    }
+
+    @Step("visibility of KBA error toolTip. Motoroil_page")
+    public Motoroil_page_Logic visibilityKbaErrorToolTip() {
+        errorToolTipFirstField().shouldBe(visible);
+        return this;
+    }
+
+    @Step("click on Search button of KBA selector. Motoroil_page")
+    public Motoroil_page_Logic clickOnBtnSearchOfKbaSelector() {
+        btnSearchOfKbaSelector().click();
+        return this;
+    }
+
+    @Step("visibility error message about empty KBA fields. Motoroil_page")
+    public Motoroil_page_Logic visibilityErrorMessageAboutEmptyKbaFields() {
+        errorMessageAboutEmptyKbaFields().shouldBe(visible);
+        return this;
     }
 }
