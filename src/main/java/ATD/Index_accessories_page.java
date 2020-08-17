@@ -30,6 +30,10 @@ class Index_accessories_page {
         return $x("//div[@class='accessories-catalog__row'][1]/div[@class='accessories-catalog__group'][1]");
     }
 
+    ElementsCollection logicalUnionsMainBlock() {
+        return $$x("//div[@class='accessories-catalog__row']/div[@class='accessories-catalog__group']");
+    }
+
     SelenideElement secondCategoryInLogicalUnion(){
         return $x("//div[@class='accessories-catalog__categories' and @style='display: block;']//li[2]");
     }

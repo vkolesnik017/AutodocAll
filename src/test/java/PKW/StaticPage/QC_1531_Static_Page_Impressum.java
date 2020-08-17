@@ -1,20 +1,18 @@
-package PKW.ACC.QC_999_TopCategoriesOnMainAccessories;
+package PKW.StaticPage;
 
-import PKW.Index_accessories_page_Logic;
+import PKW.Main_page_Logic;
 import PKW.SetUp;
 import io.qameta.allure.Description;
-import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import java.sql.SQLException;
 import static PKW.CommonMethods.openPage;
 import static PKW.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1000_TopCategoriesBlock {
+public class QC_1531_Static_Page_Impressum {
 
     @BeforeClass
     void setUp() {
@@ -22,17 +20,17 @@ public class QC_1000_TopCategoriesBlock {
     }
 
     @DataProvider(name = "route", parallel = true)
-    Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "index_accessories");
+    Object[] dataProvider() {
+        return new SetUp().setUpShop("prod", "DE");
     }
 
     @Test(dataProvider = "route")
-    @Flaky
-    @Owner(value = "Sergey-QA")
-    @Description(value = "Test checks presence top categories block.")
-    public void testCheckingPresenceTopCategoriesBlock(String route) {
+    @Owner(value = "LavrynenkoOlha")
+    @Description(value = "Test checks elements on the Impressum page")
+    public void testStaticPage_Impressum(String route) {
         openPage(route);
-        new Index_accessories_page_Logic().checkingPresenceTopCategoriesBlock();
+        new Main_page_Logic().clickFooterImpressumLink()
+                .checkElementsOnThePage();
     }
 
     @AfterMethod

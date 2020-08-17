@@ -2,7 +2,6 @@ package PKW;
 
 import com.codeborne.selenide.Configuration;
 import org.openqa.selenium.remote.DesiredCapabilities;
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
