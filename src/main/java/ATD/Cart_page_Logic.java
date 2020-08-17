@@ -222,4 +222,10 @@ public class Cart_page_Logic extends Cart_page {
         return valueQuantityCounter().getValue();
     }
 
+    @Step("Checs presence PayPal label. Cart_page")
+    public Cart_page_Logic checkPresencePayPalLabel() {
+        payPalLabel().shouldBe(visible);
+        return this;
+    }
+
 }

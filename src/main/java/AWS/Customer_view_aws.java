@@ -3,7 +3,9 @@ package AWS;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -16,6 +18,10 @@ public class Customer_view_aws {
 
     private SelenideElement customerIdBlock() {
         return $x("//*[@class='customer-id-cell']");
+    }
+
+    private SelenideElement orderLink(String data) {
+        return $x("//td[contains(text(),'" + data + "')]/..//a[@class='order_link']");
     }
 
     private SelenideElement companyNumberLogsBlock() {
@@ -263,5 +269,12 @@ public class Customer_view_aws {
     public Customer_view_aws checkPresenceBlockLogsCompanyNumbers() {
         companyNumberLogsBlock().shouldBe(visible);
         return this;
+    }
+
+    @Step("Check and open order with expected data. Customer_view_aws")
+    public Order_aws checkAndOpenOrderWithExpectedData() {
+        String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+        orderLink(date).click();
+        return page(Order_aws.class);
     }
 }

@@ -73,6 +73,10 @@ public class CartAllData_page {
         return $(byCssSelector(".order-summary__button"));
     }
 
+    SelenideElement payPalBtn() {
+        return $x("//div[@class='order-summary__button alldata-submit']");
+    }
+
     SelenideElement returnToPageCartAddress() {
         return $x("//div[@class='cart-page-steps']//ul//li[2]//a");
     }
@@ -253,6 +257,14 @@ public class CartAllData_page {
 
     SelenideElement BtnConfirmApplyDiscount() {
         return $x("//div[@class='popup-content__buttons']/a");
+    }
+
+    SelenideElement payPalLabel() {
+        return $x("//img[contains(@src,'paypal.png')]");
+    }
+
+    public SelenideElement preloader() {
+        return $(By.cssSelector(".preloader_wrapper"));
     }
 
 }
