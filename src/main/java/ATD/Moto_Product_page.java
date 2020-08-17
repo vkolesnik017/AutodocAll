@@ -115,7 +115,7 @@ public class Moto_Product_page {
     }
 
     ElementsCollection motoTitleFromCompatibilityBlock() {
-        return $$x("//div[@class='product-info-block-accordion js--roll-up']/div[contains(@class,'product-info-block--moto')]//div[@class='accordion-button']/i/following-sibling::span");
+        return $$x("//div[@class='product-info-block-accordion js--roll-up']/div[contains(@class,'product-info-block--moto')]//div[@class='accordion-button']/i/following-sibling::*[self::span or self::a]");
     }
 
     SelenideElement dynamicCharacteristicBlock() {

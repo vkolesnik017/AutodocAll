@@ -36,8 +36,8 @@ public class QC_114_InteractionOfInstallationSideAndGenericFilters {
         openPage(route);
 
         new LKW_Category_car_list_page_Logic()
-                .selectGenericFilter("lkw_category_car_list22", "402")
-                .selectInstallationSide("lkw_category_car_list25")
+                .selectGenericFilterInSideBar("lkw_category_car_list22", "402")
+                .selectInstallationSide("lkw_category_car_list30")
                 .checkOfPresenceSelectingGeneric("Bremsbelagsatz, Scheibenbremse")
                 .checkOfPresenceInstallationSide();
     }
