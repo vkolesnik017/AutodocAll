@@ -52,7 +52,7 @@ public class LKW_main_page_Logic extends LKW_main_page {
         logoInHeader().shouldBe(visible);
         menuCatalogInHeader().click();
         dropMainMenuTrucksCatalogInHeader().shouldBe(visible);
-        listOfParentsDropMainTruckCatalog().shouldHave(sizeNotEqual(0));
+        listOfParentsDropMainTruckCatalog().shouldHaveSize(33);
         checkOfChildBlocksSecondAndThirdLevel(categoriesOfSecondBlockWitnDropMenu(), thirdLevelDropMainMenuTrucksCatalogInHeader(), titleOfThirdLevelMainDropMenuTruckCatalog(), categoriesOfThirdBlock());
         return this;
     }
@@ -518,6 +518,7 @@ public class LKW_main_page_Logic extends LKW_main_page {
 
     @Step("Checking countries subscription from footer country list  .LKW_main_page")
     public LKW_main_page_Logic checkingCountriesSubscription() throws SQLException {
+        DataBase db = new DataBase();
         String currentCountry;
         List<String> language = Arrays.asList("CH", "AT", "LD", "BG", "BE", "CZ", "DK", "EE", "ES", "FI", "FR", "EN", "GR", "HU", "IT", "LT", "LV", "NL", "NO", "PL", "PT", "RO", "SE", "SI", "SK");
         languageBlock().click();
@@ -535,9 +536,10 @@ public class LKW_main_page_Logic extends LKW_main_page {
             languagesOfSubscribe().get(i).scrollIntoView("{block: \"end\"}");
             languagesOfSubscribe().get(i).click();
             waitWhileRouteContainsExpectedCondition(currentCountry);
-            String urlFromBD = new DataBase().getFullRouteByRouteName("subprod", language.get(i), "lkw_main") + "/";
+            String urlFromBD = db.getFullRouteByRouteName("subprod", language.get(i), "lkw_main") + "/";
             Assert.assertEquals(url(), urlFromBD);
             back();
+            waitWhileRouteContainsExpectedCondition(db.getRouteByRouteName("DE","lkw_main"));
         }
      /*   for (int i = 0; i < languagesOfSubscribe().size(); i++) {
             currentCountry = currentLanguage().shouldBe(exist).getText();
