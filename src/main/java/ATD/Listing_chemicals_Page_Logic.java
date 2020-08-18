@@ -292,10 +292,11 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
     public Listing_chemicals_Page_Logic checkingWorkBtnPrevAndNextInGenericBlock() {
         if (allGenericsInGenericBlock().size() > 6) {
             btnNextInGenericBlock().click();
-            firstGenericByIndexInGenericsBlock().waitUntil(attribute("aria-hidden", "true"), 20000);
+            firstGenericByIndexInGenericsBlock().waitUntil(attribute("aria-hidden", "true"), 10000);
             firstGenericByIndexInGenericsBlock().shouldNotBe(visible);
+            btnPreviousInGenericBlock().waitUntil(attribute("aria-disabled", "false"), 10000);
             btnPreviousInGenericBlock().click();
-            firstGenericByIndexInGenericsBlock().waitUntil(attribute("aria-hidden", "false"), 20000);
+            firstGenericByIndexInGenericsBlock().waitUntil(attribute("aria-hidden", "false"), 10000);
             firstGenericByIndexInGenericsBlock().shouldBe(visible);
         }
         return this;

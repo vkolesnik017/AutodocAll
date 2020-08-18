@@ -43,7 +43,7 @@ public class QC_659_EnterPassLessThenFourCharacters {
                 .fillFieldConfirmPass("1")
                 .clickSvePassBtn()
                 .checkTitleInsidePopUp("Fehler")
-                .checkErrorTextInsidePopUp("muss mindestens 5 Zeichen beinhalten")
+                .checkErrorTextInsidePopUp("muss mindestens 4 Zeichen beinhalten")
                 .closePopUp();
         checkingContainsUrl("profile/settings");
     }

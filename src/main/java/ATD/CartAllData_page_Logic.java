@@ -20,6 +20,13 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return page(Payment_handler_page_Logic.class);
     }
 
+    @Step("Next buttin clicking. CartAllData_page")
+    public CartAllData_page_Logic payPalBtnClick() {
+        payPalBtn().shouldBe(visible);
+        payPalBtn().click();
+        return this;
+    }
+
     @Step("Check tyres are not delivered popup and clicking close popup, after that checking one more popup and after clicking close must redirect us on main page. CartAllData_page")
     public Main_page checkTyresNotDeliveredPopupAndRedirect() {
         tyresAreNotDeliveredToCountryPopup().shouldBe(visible);
@@ -493,6 +500,21 @@ public class CartAllData_page_Logic extends CartAllData_page {
     public CartAllData_page_Logic openInfoOfProduct() {
         btnOpenInfoOfProduct().click();
         infoOfProductBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checs presence PayPal label. CartAllData_page")
+    public CartAllData_page_Logic checkPresencePayPalLabel() {
+        payPalLabel().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Wait until preloader disappear. CartAllData_page")
+    public CartAllData_page_Logic waitUntilPreloaderDisappearAndSleep(int sleepTime) throws Exception {
+        if(preloader().isDisplayed()) {
+            preloader().waitUntil(attribute("style", "display: none;"), 20000);
+            Thread.sleep(sleepTime);
+        }
         return this;
     }
 }
