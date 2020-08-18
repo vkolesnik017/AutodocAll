@@ -4,14 +4,12 @@ package AWS;
 import ATD.DataBase;
 import ATD.SetUp;
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
-
 import java.sql.SQLException;
 import java.util.*;
-
 import static ATD.CommonMethods.openPage;
-import static com.codeborne.selenide.Selenide.$$;
-import static com.codeborne.selenide.Selenide.$$x;
+import static com.codeborne.selenide.Selenide.*;
 
 public class CatalogCategories_aws {
 
@@ -78,6 +76,30 @@ public class CatalogCategories_aws {
 
     public ElementsCollection crossCuttingCategoriesId() {
         return $$x("//*[@class='flex-box']/div[12]/input[@checked='checked']/../../div[4]");
+    }
+
+    public ElementsCollection categoriesNameInAWS() {
+        return $$x("//*[@class='flex-box']//input[@checked='checked']/../../div[5]/input");
+    }
+
+    public SelenideElement fieldParentId() {
+        return $x("//div[@class='w-box-content cnt_a clearfix']//input[@id='form_filter[nodeParentID]']");
+    }
+
+    public SelenideElement filterOnly() {
+        return $x("//div[@class='w-box-content cnt_a clearfix']//div[@id='form_filter_only__chzn']/a");
+    }
+
+    public SelenideElement filterOnlyGroups() {
+        return $x("//div[@class='w-box-content cnt_a clearfix']//li[@id='form_filter_only__chzn_o_3']");
+    }
+
+    public SelenideElement filterOnlyChilds() {
+        return $x("//div[@class='w-box-content cnt_a clearfix']//li[@id='form_filter_only__chzn_o_2']");
+    }
+
+    public SelenideElement btnSearch() {
+        return $x("//button[@class='btn btn-success search']");
     }
 
     @Step("Get All Child Categories From Catalog AWS. CatalogCategories_aws")
@@ -156,8 +178,6 @@ public class CatalogCategories_aws {
 
     @Step("Get All Child Categories From Catalog AWS. CatalogCategories_aws")
     public ArrayList<String> getAllChildCategoriesNameFromAWS() {
-        new Login_aws().loginInAwsWithOpen();
-        openPage(categoriesInAwsPage);
         ArrayList<String> allActiveChildCategoriesAWS = new ArrayList<>();
         for (int i = 0; i < childNameInAWS().size(); i++) {
             if (!childNameInAWS().get(i).attr("value").isEmpty()) {
@@ -189,6 +209,7 @@ public class CatalogCategories_aws {
             System.out.println(allActiveChildCategoriesAWS.get(i));
         }
 
+        Collections.sort(allActiveChildCategoriesAWS);
         return allActiveChildCategoriesAWS;
     }
 
@@ -253,4 +274,47 @@ public class CatalogCategories_aws {
         crossCuttingCategories.addAll(crossCuttingCategoriesId().texts());
         return crossCuttingCategories;
     }
+
+    @Step("Add filter paren id. CatalogCategories_aws")
+    public CatalogCategories_aws addFilterParentId(String parentId) {
+        new Login_aws().loginInAwsWithOpen();
+        openPage(categoriesInAwsPage);
+        fieldParentId().setValue(parentId);
+        return this;
+    }
+
+    @Step("Click btn search. CatalogCategories_aws")
+    public CatalogCategories_aws clickBtnSearch() {
+        btnSearch().click();
+        sleep(5000);
+        return this;
+    }
+
+    @Step("Get all active categories from AWS. CatalogCategories_aws")
+    public ArrayList<String> getAllActiveCategories() {
+        ArrayList<String> allCategories = new ArrayList<>();
+        for (SelenideElement element : categoriesNameInAWS()) {
+            String name = element.getValue();
+            allCategories.add(name);
+            System.out.println(name);
+        }
+        System.out.println(allCategories.size());
+
+
+        ArrayList<String> notActiveCategories = new ArrayList<>();
+        for (SelenideElement element : notActiveChildCategoriesName()) {
+            String name = element.getValue();
+            notActiveCategories.add(name);
+        }
+
+        allCategories.removeAll(notActiveCategories);
+        Iterator iterator = allCategories.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+        System.out.println(allCategories.size());
+        Collections.sort(allCategories);
+        return allCategories;
+    }
+
 }
