@@ -104,6 +104,8 @@
             <class name="PKW.OILS.QC_926_KbaBlockOnMainOilPage.QC_922_PresenceOfKbaSelectorOnMainPage"/>
             <class name="PKW.OILS.QC_926_KbaBlockOnMainOilPage.QC_930_PresenceOfErrorMessageAboutIncorrectKbaNumber"/>
             <class name="PKW.OILS.QC_926_KbaBlockOnMainOilPage.QC_931_PresenceOfErrorMessageAboutEmptyFields"/>
+            <class name="PKW.OILS.QC_926_KbaBlockOnMainOilPage.QC_934_PresenceOfInformationKbaPopUp"/>
+            <class name="PKW.OILS.QC_926_KbaBlockOnMainOilPage.QC_938_PresenceOfPopUpAboutDetectedVehicle"/>
         </classes>
     </test>
 </suite>

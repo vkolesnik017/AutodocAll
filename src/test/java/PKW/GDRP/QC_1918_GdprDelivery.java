@@ -38,7 +38,7 @@ public class QC_1918_GdprDelivery {
         openPage(route);
         mail = versandStaticPageLogic
                 .scrollToFooterSubscribeBlock()
-                .checkingDatenschutzerklarungLinkBehavior(versandStaticPageLogic.linkDatenschutzerklärungInFooter())
+                .checkingDatenschutzerklarungLinkBehavior(versandStaticPageLogic.linkDatenschutzerklarungInFooter())
                 .checkingGdprSuccessWithClickCheckboxInFooter("qc_1918_");
         new PrivacyPolicySubscription_aws()
                 .openPolicySubscriptionWithLogin()

@@ -508,7 +508,6 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         return this;
     }
 
-
     @Step("select brand in sidebar  .LKW_Category_car_list_page")
     public LKW_Category_car_list_page_Logic selectBrandFromFilterOfBrands(String subRoute, String idOfBrand) throws SQLException {
         brandsFilterBlock().shouldBe(visible);
@@ -519,8 +518,16 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         }
         brandsLinkInSideBar(idOfBrand).shouldBe(visible).click();
         appearsOfLoader();
-        Assert.assertEquals(url(), new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", subRoute));
+        Assert.assertEquals(getFilterNumber(url()), getFilterNumber(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", subRoute)));
         return this;
+    }
+
+    @Step("get number of brand from current url  .LKW_Category_car_list_page")
+    public String getFilterNumber(String pathUrl) {
+        String urlPart = pathUrl.replace(pathUrl.substring(pathUrl.lastIndexOf("=")), "");
+        String partOfUrl = urlPart.replace(urlPart.substring(urlPart.lastIndexOf("&")), "");
+        String expectedUrl = pathUrl.replace(urlPart.replace(partOfUrl, "").replace(" ", ""), "");
+        return expectedUrl;
     }
 
     @Step("Check TecDoc listing with selecting brand  and installation side.LKW_Category_car_list_page")
@@ -546,18 +553,39 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         return this;
     }
 
-
     @Step("select generic filter  .LKW_Category_car_list_page")
     public LKW_Category_car_list_page_Logic selectGenericFilter(String subRoute, String idOfGeneric) throws SQLException {
-        genericsBlock().shouldBe(visible);
-        for (int i = 0; i < typeOfGenerics().size(); i++) {
-            if (typeOfGenerics().get(i).has(attribute("for", "category_" + idOfGeneric + "")))
-                typeOfGenerics().get(i).click();
-        }
-        appearsOfLoader();
-        Assert.assertEquals(url(), new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", subRoute));
+        selectGenericFromBlock(subRoute, idOfGeneric);
+        Assert.assertEquals(getFilterNumber(getFilterNumber(url())), getFilterNumber(getFilterNumber(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", subRoute))));
         return this;
     }
+
+    @Step("select generic filter  .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic selectGenericFilterInSideBar(String subRoute, String idOfGeneric) throws SQLException {
+        selectGenericFromBlock(subRoute, idOfGeneric);
+        Assert.assertEquals(getFilterNumber(url()), getFilterNumber(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", subRoute)));
+        return this;
+    }
+
+    @Step("select generic filter from block .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic selectGenericFromBlock(String subRoute, String idOfGeneric) throws SQLException {
+        if (genericsBlockInSideBar().isDisplayed()) {
+            for (int i = 0; i < typeOfGenericsInSideBar().size(); i++) {
+                if (typeOfGenericsInSideBar().get(i).has(attribute("id", "checklist-category-" + idOfGeneric + ""))) {
+                    typeOfGenericsInSideBar().get(i).hover().click();
+                }
+            }
+            appearsOfLoader();
+        } else if (genericsBlock().isDisplayed()) {
+            for (int i = 0; i < typeOfGenerics().size(); i++) {
+                if (typeOfGenerics().get(i).has(attribute("for", "category_" + idOfGeneric + "")))
+                    typeOfGenerics().get(i).click();
+            }
+            appearsOfLoader();
+        }
+        return this;
+    }
+
 
     @Step("Checking the presence of products with selecting generic in TecDoc listing .LKW_Category_car_list_page")
     public LKW_Category_car_list_page_Logic checkOfPresenceSelectingGeneric(String selectingGeneric) {

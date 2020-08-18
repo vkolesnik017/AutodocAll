@@ -175,4 +175,18 @@ public class Motoroil_page_Logic extends Motoroil_page {
         errorMessageAboutEmptyKbaFields().shouldBe(visible);
         return this;
     }
+
+    @Step("presence of Information KBA pop-up. Motoroil_page")
+    public Motoroil_page_Logic presenceOfInformationKbaPopUp() {
+        informationKbaPopUp().shouldBe(visible).click();
+        informationKbaPopUp().shouldBe(visible);
+        return this;
+    }
+
+    @Step("presence of Information KBA pop-up. Motoroil_page")
+    public Motoroil_page_Logic presenceOfDetectedVehiclePopUp() {
+        detectedVehicleLink().shouldBe(visible).click();
+        detectedVehiclePopUp().shouldBe(visible);
+        return this;
+    }
 }
