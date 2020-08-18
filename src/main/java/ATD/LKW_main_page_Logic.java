@@ -6,10 +6,10 @@ import io.qameta.allure.Step;
 import org.testng.Assert;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static ATD.CommonMethods.waitWhileRouteContainsExpectedCondition;
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.*;
@@ -518,12 +518,28 @@ public class LKW_main_page_Logic extends LKW_main_page {
 
     @Step("Checking countries subscription from footer country list  .LKW_main_page")
     public LKW_main_page_Logic checkingCountriesSubscription() throws SQLException {
-           String currentCountry;
-        String[] arr = {"CH", "AT", "LD", "BG", "BE", "CZ", "DK", "EE", "ES", "FI", "FR", "EN", "GR", "HU", "IT", "LT", "LV", "NL", "NO", "PL", "PT", "RO", "SE", "SI", "SK"};
-        List list = Arrays.asList(arr);
-        List<String> language = new ArrayList<>(list);
+        String currentCountry;
+        List<String> language = Arrays.asList("CH", "AT", "LD", "BG", "BE", "CZ", "DK", "EE", "ES", "FI", "FR", "EN", "GR", "HU", "IT", "LT", "LV", "NL", "NO", "PL", "PT", "RO", "SE", "SI", "SK");
         languageBlock().click();
         for (int i = 0; i < languagesOfSubscribe().size(); i++) {
+            if (language.get(i).equals("LD")) {
+                currentCountry = "lu";
+            } else if (language.get(i).equals("EN")) {
+                currentCountry = "uk";
+            } else {
+                currentCountry = language.get(i).toLowerCase();
+            }
+            languageBlock().shouldBe(exist).scrollIntoView("{block: \"center\"}");
+            languageBlock().click();
+            languageListBlock().shouldBe(visible);
+            languagesOfSubscribe().get(i).scrollIntoView("{block: \"end\"}");
+            languagesOfSubscribe().get(i).click();
+            waitWhileRouteContainsExpectedCondition(currentCountry);
+            String urlFromBD = new DataBase().getFullRouteByRouteName("subprod", language.get(i), "lkw_main") + "/";
+            Assert.assertEquals(url(), urlFromBD);
+            back();
+        }
+     /*   for (int i = 0; i < languagesOfSubscribe().size(); i++) {
             currentCountry = currentLanguage().shouldBe(exist).getText();
             languageBlock().shouldBe(exist).scrollIntoView("{block: \"center\"}");
             languageBlock().click();
@@ -537,7 +553,7 @@ public class LKW_main_page_Logic extends LKW_main_page {
             currentLanguage().shouldNotHave(exactText(currentCountry));
             String urlFromBD = new DataBase().getFullRouteByRouteName("subprod", language.get(i), "lkw_main") + "/";
             Assert.assertEquals(url(), urlFromBD);
-        }
+        }*/
         return this;
     }
 
