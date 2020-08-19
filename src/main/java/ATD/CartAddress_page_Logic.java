@@ -228,6 +228,9 @@ public class CartAddress_page_Logic extends CartAddress_page {
                 case "PT":
                     postalCodeOrCodeDefault = "1234-567";
                     break;
+                case "GR":
+                    postalCodeOrCodeDefault = "123 45";
+                    break;
                 default:
                     postalCodeOrCodeDefault = "12345";
                     break;

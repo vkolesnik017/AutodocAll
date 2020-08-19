@@ -1,5 +1,6 @@
 package ATD;
 
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
@@ -22,7 +23,7 @@ public class CartAllData_page_Logic extends CartAllData_page {
 
     @Step("Next buttin clicking. CartAllData_page")
     public CartAllData_page_Logic payPalBtnClick() {
-        payPalBtn().shouldBe(visible);
+        sleep(5000);
         payPalBtn().click();
         return this;
     }
@@ -297,6 +298,7 @@ public class CartAllData_page_Logic extends CartAllData_page {
     @Step("Get total price of the CartAllData_page")
     public Float getTotalPriceAllDataPage(String shop) {
         Float totalPrice = null;
+        totalOrderPrice().shouldBe(visible);
         if (shop.equals("EN")) {
             totalPrice = getTotalPriceAllDataPageForEnShop();
         } else {
@@ -503,9 +505,9 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return this;
     }
 
-    @Step("Checs presence PayPal label. CartAllData_page")
-    public CartAllData_page_Logic checkPresencePayPalLabel() {
-        payPalLabel().shouldBe(visible);
+    @Step("Checks presence PayPal label. CartAllData_page")
+    public CartAllData_page_Logic checkPresencePaymentsMethodLabel(SelenideElement locator) {
+        locator.shouldBe(visible);
         return this;
     }
 

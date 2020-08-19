@@ -73,7 +73,7 @@ public class CartAllData_page {
         return $(byCssSelector(".order-summary__button"));
     }
 
-    SelenideElement payPalBtn() {
+    public SelenideElement payPalBtn() {
         return $x("//div[@class='order-summary__button alldata-submit']");
     }
 
@@ -259,12 +259,21 @@ public class CartAllData_page {
         return $x("//div[@class='popup-content__buttons']/a");
     }
 
-    SelenideElement payPalLabel() {
+    public SelenideElement payPalLabel() {
         return $x("//img[contains(@src,'paypal.png')]");
+    }
+
+    public SelenideElement epsLabel() {
+        return $x("//img[contains(@src,'epsbank.png')]");
     }
 
     public SelenideElement preloader() {
         return $(By.cssSelector(".preloader_wrapper"));
     }
 
+
+    //Button from the page merchant
+    public SelenideElement abbrechenSubmit() {
+        return $x("//button[@id='abbrechenSubmit']");
+    }
 }

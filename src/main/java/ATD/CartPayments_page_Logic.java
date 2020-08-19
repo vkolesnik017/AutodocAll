@@ -74,7 +74,7 @@ public class CartPayments_page_Logic extends CartPayments_page{
     }
 
     @Step("Checks default active payments method{paymentMethod}. CartPayments_page")
-    public CartPayments_page_Logic checkDefaultActivePaymentMethod(String paymentMethod) {
+    public CartPayments_page_Logic checkActivePaymentMethod(String paymentMethod) {
         activePayment(paymentMethod).shouldBe(visible);
         return this;
     }
