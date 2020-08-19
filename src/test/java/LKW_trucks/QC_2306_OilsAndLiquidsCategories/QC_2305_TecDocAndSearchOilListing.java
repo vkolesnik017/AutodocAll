@@ -1,7 +1,6 @@
-package LKW_trucks.QC_144_Header_trucks_routes;
+package LKW_trucks.QC_2306_OilsAndLiquidsCategories;
 
-import ATD.DataBase;
-import ATD.LKW_main_page_Logic;
+import ATD.LKW_Category_car_list_page_Logic;
 import ATD.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -13,13 +12,11 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.*;
+import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_153_NavigationBlockInHeader_lkw {
-    private LKW_main_page_Logic mainPage = new LKW_main_page_Logic();
-    private DataBase db = new DataBase();
+public class QC_2305_TecDocAndSearchOilListing {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -27,17 +24,18 @@ public class QC_153_NavigationBlockInHeader_lkw {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_main");
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list31,lkw_search10");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Checks navigate categories in header LKW")
-    public void testNavigateCategoriesInHeader(String route) throws SQLException {
+    @Description(value = "Test checks TecDoc and search Oil listing")
+    public void testChecksTecDocAndSearchOilListing(String route) {
         openPage(route);
-        new LKW_main_page_Logic().checkNavigationCategoriesInHeader();
+        new LKW_Category_car_list_page_Logic().presenceOfExpectedBrandsInBlock("100570,100290").checkingApplicabilityOfProductForSelectedTruck();
     }
+
     @AfterMethod
     public void close() {
         closeWebDriver();
