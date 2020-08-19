@@ -32,7 +32,7 @@ public class Versand_static_page {
         return $(By.xpath("//div[@class='footer-subscr']"));
     }
 
-    public SelenideElement linkDatenschutzerklärungInFooter() {
+    public SelenideElement linkDatenschutzerklarungInFooter() {
         return $x("//label[@id='privacy_policy_footer']/a");
     }
 

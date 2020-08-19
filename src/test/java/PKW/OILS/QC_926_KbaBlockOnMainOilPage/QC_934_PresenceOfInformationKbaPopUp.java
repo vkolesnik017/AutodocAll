@@ -15,7 +15,7 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_931_PresenceOfErrorMessageAboutEmptyFields {
+public class QC_934_PresenceOfInformationKbaPopUp {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -29,14 +29,13 @@ public class QC_931_PresenceOfErrorMessageAboutEmptyFields {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks presence of an error message about empty fields in selector")
-    public void testChecksPresenceOfErrorMessageAboutEmpyFields(String route) {
+    @Description(value = "Test checks presence of an information KBA pop-up")
+    public void testChecksPresenceOfInformationKbaPopUp(String route) {
         openPage(route);
 
         new Motoroil_page_Logic()
                 .presenceOfKbaSelector()
-                .clickOnBtnSearchOfKbaSelector()
-                .visibilityErrorMessageAboutEmptyKbaFields();
+                .presenceOfInformationKbaPopUp();
     }
 
     @AfterMethod

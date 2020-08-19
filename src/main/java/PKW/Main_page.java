@@ -173,8 +173,6 @@ public class Main_page {
         return $x("//label[@id='privacy_policy_not_found_car']//a");
     }
 
-
-
     SelenideElement footerImpressumLink() {
         return $(byXpath("//*[@class='footer_menu_list6']/a"));
     }
@@ -183,4 +181,7 @@ public class Main_page {
         return $(byXpath("//*[@class='footer_menu_list3']/a"));
     }
 
+    SelenideElement footerKontaktLink() {
+        return $(byXpath("//*[@class='footer_menu_list8']/a"));
+    }
 }

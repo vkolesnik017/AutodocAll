@@ -61,4 +61,12 @@ public class Motoroil_page {
    SelenideElement errorToolTipFirstField() {return $(byId("kba-error-tooltip"));}
 
    SelenideElement errorMessageAboutEmptyKbaFields() {return $x("//div[contains(text(),'Geben Sie bitte Ihre Schlüsselnummer ein')]");}
+
+   SelenideElement informationKbaPopUp() {return $(byId("show-kba-popup"));}
+
+   SelenideElement informationIconOfKbaSelector() {return $x("//div[@class='kba_popup']");}
+
+   SelenideElement detectedVehicleLink() {return $x("//a[@class='form-not-found-car ga-click']");}
+
+   SelenideElement detectedVehiclePopUp() {return $x("//div[@class='not-found-car-popup']");}
 }

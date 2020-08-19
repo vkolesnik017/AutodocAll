@@ -433,4 +433,17 @@ public class CommonMethods {
         }
         return Float.valueOf((result));
     }
+
+    @Step("Wait while route contains expected condition {expected route}")
+    public static void waitWhileRouteContainsExpectedCondition(String expectedCondition) {
+        try {
+            Wait().until(WebDriver -> getCurrentUtl().contains(expectedCondition));
+        } catch (TimeoutException e) {
+            Assert.fail("Current route: [" + getCurrentUtl() + "] don't contains expected condition: " + expectedCondition);
+        }
+    }
+
+    public static String getCurrentUtl() {
+        return url();
+    }
 }

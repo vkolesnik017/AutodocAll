@@ -35,10 +35,6 @@ public class Austauschartikel_static_page {
         return $(byXpath("//*[@class='return-parts__item']"));
     }
 
-    ElementsCollection cards() {
-        return $$x("//*[@class='return-parts__item']");
-    }
-
     SelenideElement pfandReturnPolicy() {
         return $(byXpath("//*[@class='return-policy']"));
     }
