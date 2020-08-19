@@ -108,5 +108,18 @@ class Index_instruments_page {
         return $x("//div[@class='special-catalog']//div[@class='special-catalog__row'][2]/a[1]");
     }
 
+    ElementsCollection categoriesFromLogicalUnion() {
+        return $$x("//div[@id='content']//div[@class='special-catalog__wrapp']//ul/li/a");
+    }
+
+    ElementsCollection logicalUnions() {
+        return $$x("//div[@id='content']//div[@class='special-catalog__group']");
+    }
+
+    ElementsCollection nameSeparateCategories() {
+        return $$x("//div[@id='content']//a[@class='special-catalog__group ga-click']");
+    }
+
+
 
 }

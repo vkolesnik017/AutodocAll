@@ -1,6 +1,7 @@
 package ATD.ACC.QC_2235_DisplayedAllCategoriesAndLogicalUnion;
 
-import ATD.Index_accessories_page_Logic;
+
+import ATD.Index_instruments_page_Logic;
 import ATD.SetUp;
 import AWS.CatalogCategories_aws;
 import io.qameta.allure.Description;
@@ -17,13 +18,13 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2237_DisplayedAllCategoriesAndLogicalUnionOnMainACC {
+public class QC_2249_DisplayedAllCategoriesAndLogicalUnionOnMainTools {
 
-    private ArrayList<String> categoriesName, logicalUnionName, awsCategoriesName, awsLogicalUnionName;
-    private Index_accessories_page_Logic indexAccessoriesPageLogic = new Index_accessories_page_Logic();
+    private ArrayList<String> categoriesAndSeparateCategoriesName, logicalUnionName,  awsCategoriesAndSeparateCategoriesName, awsLogicalUnionName;
+    private Index_instruments_page_Logic indexInstrumentsPageLogic = new Index_instruments_page_Logic();
     private CatalogCategories_aws catalogCategoriesAws = new CatalogCategories_aws();
 
-    public QC_2237_DisplayedAllCategoriesAndLogicalUnionOnMainACC() throws SQLException {
+    public QC_2249_DisplayedAllCategoriesAndLogicalUnionOnMainTools() throws SQLException {
     }
 
 
@@ -34,27 +35,31 @@ public class QC_2237_DisplayedAllCategoriesAndLogicalUnionOnMainACC {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main","index_accessories");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main","index_instruments");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test Checks displayed all categories and Logical Union between main accessories page and AWS")
+    @Description(value = "Test Checks comparison all categories and Logical Union between main accessories page and AWS")
     public void testCheckCorrectDisplayQuantityCategoriesAndLogicalUnion(String route) {
         openPage(route);
-        categoriesName = indexAccessoriesPageLogic.getAndWriteAllIdCategoriesToList();
-        logicalUnionName = indexAccessoriesPageLogic.getIdLogicalUnionAndWriteToList();
-        catalogCategoriesAws.addFilterParentId("33000")
+        categoriesAndSeparateCategoriesName = indexInstrumentsPageLogic.getIdCategoriesAndSeparateCategoriesThenWriteToList();
+        logicalUnionName = indexInstrumentsPageLogic.getIdLogicalUnionAndWriteToList();
+        catalogCategoriesAws.addFilterParentId("36000")
                 .clickBtnSearch();
-          awsCategoriesName = catalogCategoriesAws.getAllIdActiveCategories();
-          awsLogicalUnionName = catalogCategoriesAws.getAllIdGroupFromAWS();
-        Assert.assertEquals(categoriesName, awsCategoriesName);
+        awsCategoriesAndSeparateCategoriesName = catalogCategoriesAws.getAllIdActiveCategories();
+        awsLogicalUnionName = catalogCategoriesAws.getAllIdGroupFromAWS();
+        Assert.assertEquals(categoriesAndSeparateCategoriesName, awsCategoriesAndSeparateCategoriesName);
         Assert.assertEquals(logicalUnionName, awsLogicalUnionName);
+
+
     }
 
     @AfterMethod
     private void close() {
         closeWebDriver();
     }
+
+
 }

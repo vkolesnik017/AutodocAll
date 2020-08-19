@@ -165,26 +165,27 @@ public class Index_accessories_page_Logic extends Index_accessories_page {
         return this;
     }
 
-    @Step("Get name all categories main block and write to list. Index_accessories_page")
-    public ArrayList<String> getAndWriteAllCategoriesToList() {
+    @Step("Get id all categories main block and write to list. Index_accessories_page")
+    public ArrayList<String> getAndWriteAllIdCategoriesToList() {
+        blockMainCatalogCategories().scrollIntoView(true);
         ArrayList<String> allMainCategories = new ArrayList<>();
         for (SelenideElement element: mainCategories()) {
-            String name = element.getAttribute("alt");
-            allMainCategories.add(name);
-            Collections.sort(allMainCategories);
+            String idChild = element.getAttribute("data-ga-action");
+            allMainCategories.add(idChild);
         }
+        Collections.sort(allMainCategories);
         return allMainCategories;
     }
 
-    @Step("Get name Logical Unions and write to list. Index_accessories_page")
-    public ArrayList<String> getNameLogicalUnionAndWriteToList() {
-        ArrayList<String> LogicalUnionsName = new ArrayList<>();
+    @Step("Get id Logical Unions and write to list. Index_accessories_page")
+    public ArrayList<String> getIdLogicalUnionAndWriteToList() {
+        ArrayList<String> logicalUnionsId = new ArrayList<>();
         for (SelenideElement element:logicalUnionsMainBlock()) {
-            String name = element.getText();
-            LogicalUnionsName.add(name);
-            Collections.sort(LogicalUnionsName);
+            String idGroup = element.getAttribute("data-cat-id");
+            logicalUnionsId.add(idGroup);
         }
-        return LogicalUnionsName;
+        Collections.sort(logicalUnionsId);
+        return logicalUnionsId;
     }
 
 }
