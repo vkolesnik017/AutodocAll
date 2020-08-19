@@ -1,5 +1,6 @@
 package ATD;
 
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
@@ -504,9 +505,9 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return this;
     }
 
-    @Step("Checs presence PayPal label. CartAllData_page")
-    public CartAllData_page_Logic checkPresencePayPalLabel() {
-        payPalLabel().shouldBe(visible);
+    @Step("Checks presence PayPal label. CartAllData_page")
+    public CartAllData_page_Logic checkPresencePaymentsMethodLabel(SelenideElement locator) {
+        locator.shouldBe(visible);
         return this;
     }
 

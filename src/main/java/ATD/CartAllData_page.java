@@ -259,12 +259,21 @@ public class CartAllData_page {
         return $x("//div[@class='popup-content__buttons']/a");
     }
 
-    SelenideElement payPalLabel() {
+    public SelenideElement payPalLabel() {
         return $x("//img[contains(@src,'paypal.png')]");
+    }
+
+    public SelenideElement epsLabel() {
+        return $x("//img[contains(@src,'epsbank.png')]");
     }
 
     public SelenideElement preloader() {
         return $(By.cssSelector(".preloader_wrapper"));
     }
 
+
+    //Button from the page merchant
+    public SelenideElement abbrechenSubmit() {
+        return $x("//button[@id='abbrechenSubmit']");
+    }
 }

@@ -158,7 +158,11 @@ public class Cart_page {
         return $x("//div[@class='qty changable']/input");
     }
 
-    SelenideElement payPalLabel() {
+    public SelenideElement payPalLabel() {
         return $x("//img[contains(@src,'paypal.png')]");
+    }
+
+    public SelenideElement epsLabel() {
+        return $x("//img[contains(@src,'eps_at.png')]");
     }
 }
