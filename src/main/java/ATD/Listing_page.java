@@ -217,7 +217,7 @@ public class Listing_page {
 
     public SelenideElement verschleisswarnkontaktSecondButtonInSidebar() { return $x("//div[contains(@class,'criteria_593')]//li[2]//label"); }
 
-    SelenideElement seventhProductOnListing() { return $(".list_products > li:nth-child(13)"); }
+    SelenideElement ninthProductOnListing() { return $(".list_products > li:nth-child(15)"); }
 
     SelenideElement durchmesserBlockInSidebar() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_200']"); }
 
@@ -724,6 +724,14 @@ public class Listing_page {
     SelenideElement carInfoPopup() { return $(".selected_car_info_popap"); }
 
     SelenideElement closeCarInfoPopupButton() { return $(".selected_car_info_popap .close"); }
+
+    SelenideElement popupSelector() {
+        return $x("//div[@class='new_popup popup_content']");
+    }
+
+    SelenideElement closePopupSelectorBtn() {
+        return $x("//div[@class='new_popup popup_content']/a");
+    }
 
     SelenideElement titleInfoPopup() { return $x("//*[@class='selected_car_info_popap']/strong"); }
 
