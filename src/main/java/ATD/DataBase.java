@@ -209,6 +209,36 @@ public class DataBase {
         return payments;
     }
 
+    public static String parseUserIdFromBD(String userData) {
+        return userData.split("#") [0].trim();
+    }
+
+    public static String parseUserMailFromBD(String userData) {
+        return userData.split("#") [1].trim();
+    }
+
+    public String getUserIdForPaymentsMethod(String dbName, String shop, String paymentsMethod) throws SQLException {
+        Statement statement = null;
+        Connection conn = coonectionDB(dbName);
+        String userID = null;
+        String query = "SELECT ".concat(shop) + " FROM autodoc.".concat(dbName) + " where payments_name=" + "\"".concat(paymentsMethod) + "\"";
+        try {
+            statement = conn.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                userID = resultSet.getString(1);
+            }
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (statement != null) statement.close();
+            if (conn != null) conn.close();
+        }
+        return userID;
+    }
+
 
 
     public String getMail(String value) throws SQLException {
@@ -232,5 +262,4 @@ public class DataBase {
         }
         return mail;
     }
-
 }

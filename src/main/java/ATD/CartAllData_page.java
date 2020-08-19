@@ -73,7 +73,7 @@ public class CartAllData_page {
         return $(byCssSelector(".order-summary__button"));
     }
 
-    SelenideElement payPalBtn() {
+    public SelenideElement payPalBtn() {
         return $x("//div[@class='order-summary__button alldata-submit']");
     }
 

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Payments" parallel="tests" data-provider-thread-count="4">
+
+    <listeners>
+        <listener class-name="ATD.ProjectListener"/>
+    </listeners>
+
+    <test name="QC_2168_PayPal">
+        <classes>
+            <class name="ATD.Payments.QC_2168_PayPal">
+            </class>
+        </classes>
+    </test>
+
+</suite>
