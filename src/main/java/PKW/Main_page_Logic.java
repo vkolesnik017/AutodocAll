@@ -1,11 +1,12 @@
 package PKW;
 
-
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
-import static PKW.CommonMethods.mailRandom;
-import static PKW.CommonMethods.password;
+import org.testng.Assert;
+import java.sql.SQLException;
+import static PKW.CommonMethods.*;
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selenide.back;
 import static com.codeborne.selenide.Selenide.page;
 
 public class Main_page_Logic extends Main_page {
@@ -181,4 +182,62 @@ public class Main_page_Logic extends Main_page {
         footerKontaktLink().click();
         return page(Kontakt_static_page_Logic.class);
     }
+
+    @Step("Check elements in the promotion block in the header. Main_page")
+    public Main_page_Logic checkHeaderPromotionElements() {
+        headerPromotionContainer().shouldBe(visible);
+        headerPromotionText().shouldBe(visible);
+        Assert.assertFalse(headerPromotionText().text().isEmpty());
+        headerPromotionDiscount().shouldBe(visible);
+        Assert.assertFalse(headerPromotionDiscount().text().isEmpty());
+        headerPromotionTextEnd().shouldBe(visible);
+        Assert.assertFalse(headerPromotionTextEnd().text().isEmpty());
+        headerPromotionTime().shouldBe(visible);
+        return page(Main_page_Logic.class);
+    }
+
+    @Step("Check promotion text in the footer of the site. Main_page")
+    public Main_page_Logic checkFooterPromotionTextElements() {
+        textInTheFooterBottom().shouldBe(visible);
+        Assert.assertFalse(textInTheFooterBottom().text().isEmpty());
+        promotionTextInTheFooter().shouldBe(visible);
+        Assert.assertFalse(promotionTextInTheFooter().text().isEmpty());
+        return page(Main_page_Logic.class);
+    }
+
+    @Step("Check rating elements in the header. Main_page")
+    public Main_page_Logic checkHeaderRatingElements() throws SQLException {
+
+        ratingLineHeader().shouldBe(visible);
+        ratingStarLineHeader().shouldBe(visible);
+        progressStarHeader().shouldBe(visible);
+        ratingCountLineHeader().shouldBe(visible);
+        Assert.assertFalse(headerPromotionText().text().isEmpty());
+        ratingBewertungenHeader().shouldBe(visible);
+        Assert.assertFalse(ratingBewertungenHeader().text().isEmpty());
+        linkRatingLineHeader().click();
+        checkingContainsUrl(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "shop_reviews"));
+        back();
+
+        return page(Main_page_Logic.class);
+    }
+
+    @Step("Check agb and app links in the header. Main_page")
+    public Main_page_Logic checkHeaderAppAndAgbLinks() throws SQLException {
+
+        CommonMethods commonMethods = new CommonMethods();
+
+        appHeader().shouldBe(visible);
+        Assert.assertFalse(appHeader().text().isEmpty());
+        appLinkHeader().click();
+        commonMethods.checkingUrlAndCloseTab("autoparts.shop&referrer=af_tranid%3Dy-4ovca32uIymGsNUCSNuw%26pid%3Ddesctop");
+        agbLinkHeader().shouldBe(visible);
+        Assert.assertFalse(agbLinkHeader().text().isEmpty());
+        agbLinkHeader().click();
+        checkingContainsUrl(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "static_page_agb"));
+        back();
+
+        return page(Main_page_Logic.class);
+    }
 }
+
