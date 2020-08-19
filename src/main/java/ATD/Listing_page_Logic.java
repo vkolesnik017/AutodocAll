@@ -766,7 +766,7 @@ public class Listing_page_Logic extends Listing_page {
 
     @Step("Scroll And Check Fix Filters In Sidebar. Listing_page")
     public Listing_page_Logic scrollAndCheckFixFiltersInSidebar() {
-        seventhProductOnListing().scrollTo();
+        ninthProductOnListing().scrollTo();
         sideJSfilterForm().shouldBe(visible);
         return this;
     }
@@ -898,13 +898,13 @@ public class Listing_page_Logic extends Listing_page {
     @Step("Check Output With Filters By Brand Fix In Sidebar Route Search. Listing_page")
     public Listing_page_Logic checkOutputWithFiltersByBrandFixInSidebarRouteSearch(int brandPositionInAlt) {
         scrollAndCheckFixFiltersInSidebar();
-        closePopupByClickOverlayOnListingSearch();
+        closeSelectorPopup();
         String brand = secondBrandFilterButtonInSidebarName().attr("alt");
         secondBrandFilterButtonInSidebarButton().click();
         waitUntilPreloaderDisappear();
         getBrandFromTitle(brand, brandPositionInAlt, true, productTitleInListMode());
         scrollAndCheckFixFiltersInSidebar();
-        closePopupByClickOverlayOnListingSearch();
+        closeSelectorPopup();
         secondBrandFilterButtonInSidebarButton().click();
         waitUntilPreloaderDisappear();
         getBrandFromTitle(brand, brandPositionInAlt, false, productTitleInListMode());
@@ -916,6 +916,15 @@ public class Listing_page_Logic extends Listing_page {
         if (blackOverlay().is(visible)) {
             blackOverlay().click(1, 1);
             blackOverlay().shouldNotBe(visible);
+        }
+        return this;
+    }
+
+    @Step("Close selector popup. Listing_page")
+    public Listing_page_Logic closeSelectorPopup() {
+        if (popupSelector().isDisplayed()) {
+            closePopupSelectorBtn().click();
+            popupSelector().shouldNotBe(visible);
         }
         return this;
     }

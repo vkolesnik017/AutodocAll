@@ -1,6 +1,7 @@
 package ATD;
 
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
 import java.sql.SQLException;
@@ -220,6 +221,12 @@ public class Cart_page_Logic extends Cart_page {
     @Step("Get value in quantity counter. Cart_page")
     public String getValueQuantityCounter() {
         return valueQuantityCounter().getValue();
+    }
+
+    @Step("Checks presence PayPal label. Cart_page")
+    public Cart_page_Logic checkPresencePaymentsMethodLabel(SelenideElement locator) {
+        locator.shouldBe(visible);
+        return this;
     }
 
 }

@@ -153,7 +153,16 @@ public class Cart_page {
     SelenideElement idAddedProduct() {
         return $x("//div[@class='cart-page-listing']//tr[@data-article_id]");
     }
+
     SelenideElement valueQuantityCounter() {
         return $x("//div[@class='qty changable']/input");
+    }
+
+    public SelenideElement payPalLabel() {
+        return $x("//img[contains(@src,'paypal.png')]");
+    }
+
+    public SelenideElement epsLabel() {
+        return $x("//img[contains(@src,'eps_at.png')]");
     }
 }

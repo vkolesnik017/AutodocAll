@@ -13,8 +13,7 @@ import static PKW.CommonMethods.openPage;
 import static PKW.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1092_StaticPage_Austauschartikel {
-
+public class QC_1176_StaticPage_Kontakt {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -27,12 +26,11 @@ public class QC_1092_StaticPage_Austauschartikel {
 
     @Test(dataProvider = "route")
     @Owner(value = "LavrynenkoOlha")
-    @Description(value = "Test checks elements on the Austauschartikel page")
-    public void testStaticPage_Austauschartikel(String route) {
+    @Description(value = "Test checks elements on the Kontakt page")
+    public void testStaticPage_Kontakt(String route) {
         openPage(route);
-        new Main_page_Logic().clickFooterAustauschartikelLink()
-                .checkElementsOnThePage()
-                .checkClickableCards();
+        new Main_page_Logic().clickFooterKontaktLink()
+                .checkElementsOnThePage();
     }
 
     @AfterMethod
@@ -40,5 +38,3 @@ public class QC_1092_StaticPage_Austauschartikel {
         closeWebDriver();
     }
 }
-
-

@@ -72,4 +72,10 @@ public class CartPayments_page_Logic extends CartPayments_page{
         paymentsLocator(paymentsId).click();
         return this;
     }
+
+    @Step("Checks default active payments method{paymentMethod}. CartPayments_page")
+    public CartPayments_page_Logic checkActivePaymentMethod(String paymentMethod) {
+        activePayment(paymentMethod).shouldBe(visible);
+        return this;
+    }
 }

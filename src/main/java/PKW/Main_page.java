@@ -169,11 +169,9 @@ public class Main_page {
         return $x("//div[@class='not-found-car-popup']//button");
     }
 
-    public SelenideElement  privacyPolicyLinkPopupFromSelector() {
+    public SelenideElement privacyPolicyLinkPopupFromSelector() {
         return $x("//label[@id='privacy_policy_not_found_car']//a");
     }
-
-
 
     SelenideElement footerImpressumLink() {
         return $(byXpath("//*[@class='footer_menu_list6']/a"));
@@ -183,4 +181,71 @@ public class Main_page {
         return $(byXpath("//*[@class='footer_menu_list3']/a"));
     }
 
+    SelenideElement footerKontaktLink() {
+        return $(byXpath("//*[@class='footer_menu_list8']/a"));
+    }
+
+    SelenideElement headerPromotionText() {
+        return $x("//*[@class='promotion-header__text-big']");
+    }
+
+    SelenideElement headerPromotionDiscount() {
+        return $x("//*[@style='color: #E10913']");
+    }
+
+    SelenideElement headerPromotionTextEnd() {
+        return $x("//*[@class='promotion-header__text-end']");
+    }
+
+    SelenideElement headerPromotionTime() {
+        return $x("//*[@class='promotion-header__timer']");
+    }
+
+    SelenideElement headerPromotionContainer() {
+        return $x("//*[@class='promotion-header__container']");
+    }
+
+    SelenideElement textInTheFooterBottom() {
+        return $x("//*[@class='footer-bottom__copy']");
+    }
+
+    SelenideElement promotionTextInTheFooter() {
+        return $x("//*[@class='promotion-text']");
+    }
+
+    SelenideElement ratingLineHeader() {
+        return $x("//*[@class='header__top-line-rate']");
+    }
+
+    SelenideElement linkRatingLineHeader() {
+        return $x("//*[@class='header__top-line-rate-link']");
+    }
+
+    SelenideElement ratingStarLineHeader() {
+        return $x("//*[@class='header__top-line-rate-star']");
+    }
+
+    SelenideElement ratingCountLineHeader() {
+        return $x("//*[@class='header__top-line-rate-count']");
+    }
+
+    SelenideElement ratingBewertungenHeader() {
+        return $x("//*[@class='header__top-line-rate-text']");
+    }
+
+    SelenideElement appHeader() {
+        return $x("//*[@class='header__top-line-app']");
+    }
+
+    SelenideElement appLinkHeader() {
+        return $x("//*[@class='header__top-line-app']");
+    }
+
+    SelenideElement agbLinkHeader() {
+        return $x("//*[@class='header__top-line-link']");
+    }
+
+    SelenideElement progressStarHeader() {
+        return $x("//*[@class='progress']");
+    }
 }

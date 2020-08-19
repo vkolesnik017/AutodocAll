@@ -1,5 +1,6 @@
 package ATD;
 
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
@@ -18,6 +19,13 @@ public class CartAllData_page_Logic extends CartAllData_page {
     public Payment_handler_page_Logic nextBtnClick() {
         nextBtn().click();
         return page(Payment_handler_page_Logic.class);
+    }
+
+    @Step("Next buttin clicking. CartAllData_page")
+    public CartAllData_page_Logic payPalBtnClick() {
+        sleep(5000);
+        payPalBtn().click();
+        return this;
     }
 
     @Step("Check tyres are not delivered popup and clicking close popup, after that checking one more popup and after clicking close must redirect us on main page. CartAllData_page")
@@ -290,6 +298,7 @@ public class CartAllData_page_Logic extends CartAllData_page {
     @Step("Get total price of the CartAllData_page")
     public Float getTotalPriceAllDataPage(String shop) {
         Float totalPrice = null;
+        totalOrderPrice().shouldBe(visible);
         if (shop.equals("EN")) {
             totalPrice = getTotalPriceAllDataPageForEnShop();
         } else {
@@ -493,6 +502,21 @@ public class CartAllData_page_Logic extends CartAllData_page {
     public CartAllData_page_Logic openInfoOfProduct() {
         btnOpenInfoOfProduct().click();
         infoOfProductBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checks presence PayPal label. CartAllData_page")
+    public CartAllData_page_Logic checkPresencePaymentsMethodLabel(SelenideElement locator) {
+        locator.shouldBe(visible);
+        return this;
+    }
+
+    @Step("Wait until preloader disappear. CartAllData_page")
+    public CartAllData_page_Logic waitUntilPreloaderDisappearAndSleep(int sleepTime) throws Exception {
+        if(preloader().isDisplayed()) {
+            preloader().waitUntil(attribute("style", "display: none;"), 20000);
+            Thread.sleep(sleepTime);
+        }
         return this;
     }
 }

@@ -1,4 +1,4 @@
-package PKW.StaticPage;
+package PKW.General_Common.QC_1920_Header;
 
 import PKW.Main_page_Logic;
 import PKW.SetUp;
@@ -8,13 +8,11 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import static PKW.CommonMethods.openPage;
 import static PKW.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1092_StaticPage_Austauschartikel {
-
+public class QC_1920_PresenceOfTheBlocksInPromotionHeader {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -27,18 +25,14 @@ public class QC_1092_StaticPage_Austauschartikel {
 
     @Test(dataProvider = "route")
     @Owner(value = "LavrynenkoOlha")
-    @Description(value = "Test checks elements on the Austauschartikel page")
-    public void testStaticPage_Austauschartikel(String route) {
+    @Description(value = "Test checks the elements of the promotion block in the header")
+    public void testElementsInPromotionBlock(String route) {
         openPage(route);
-        new Main_page_Logic().clickFooterAustauschartikelLink()
-                .checkElementsOnThePage()
-                .checkClickableCards();
+        new Main_page_Logic().checkHeaderPromotionElements();
     }
 
     @AfterMethod
-    public void close() {
+    private void close() {
         closeWebDriver();
     }
 }
-
-

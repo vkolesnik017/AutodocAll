@@ -36,6 +36,7 @@ public class CommonMethods {
     public static String testMail = "test@gmail.com";
     static String testNumberThatPutOrderInTest = "200+002";
     public static String password = "atdtest";
+    public static String passwordForPayments = "atdtest1";
 
     public static String mailFB = "zhoraautomation@gmail.com";
     public static String passFB = "atdtest2020";
@@ -431,5 +432,18 @@ public class CommonMethods {
             result = matcher.group(0);
         }
         return Float.valueOf((result));
+    }
+
+    @Step("Wait while route contains expected condition {expected route}")
+    public static void waitWhileRouteContainsExpectedCondition(String expectedCondition) {
+        try {
+            Wait().until(WebDriver -> getCurrentUtl().contains(expectedCondition));
+        } catch (TimeoutException e) {
+            Assert.fail("Current route: [" + getCurrentUtl() + "] don't contains expected condition: " + expectedCondition);
+        }
+    }
+
+    public static String getCurrentUtl() {
+        return url();
     }
 }

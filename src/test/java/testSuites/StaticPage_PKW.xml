@@ -21,4 +21,38 @@
         </classes>
     </test>
 
+    <test name="QC_1092_StaticPage_Austauschartikel" enabled="true">
+        <classes>
+            <class name="PKW.StaticPage.QC_1092_StaticPage_Austauschartikel">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QC_1531_Static_Page_Impressum" enabled="true">
+        <classes>
+            <class name="PKW.StaticPage.QC_1531_Static_Page_Impressum">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QC_718_StaticPage_Widerruf" enabled="true">
+        <classes>
+            <class name="PKW.StaticPage.QC_718_StaticPage_Widerruf">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QC_221_StaticPage_Zahlung" enabled="true">
+        <classes>
+            <class name="PKW.StaticPage.QC_221_StaticPage_Zahlung">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QC_1176_StaticPage_Kontakt" enabled="true">
+        <classes>
+            <class name="PKW.StaticPage.QC_1176_StaticPage_Kontakt">
+            </class>
+        </classes>
+    </test>
 </suite>
