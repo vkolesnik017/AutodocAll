@@ -13,4 +13,11 @@
         </classes>
     </test>
 
+    <test name="QC_2157_EPS">
+        <classes>
+            <class name="ATD.Payments.QC_2157_EPS">
+            </class>
+        </classes>
+    </test>
+
 </suite>
