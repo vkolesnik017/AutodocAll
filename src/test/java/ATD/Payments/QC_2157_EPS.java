@@ -18,9 +18,9 @@ import static ATD.CommonMethods.*;
 import static ATD.DataBase.parseUserIdFromBD;
 import static ATD.DataBase.parseUserMailFromBD;
 import static ATD.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2168_PayPal {
+public class QC_2157_EPS {
 
     @BeforeClass
     void setUp() {
@@ -29,42 +29,40 @@ public class QC_2168_PayPal {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopsWithSubroute("prod", "DE,AT,BG,BE,CH,CZ,DK,EN,EE,ES,FI,FR,GR,HU,IT,LD,LT,LV,NL,NO,PL,PT,RO,SE,SI,SK", "main", "product32");
+        return new SetUp().setUpShopWithSubroutes("prod", "AT", "main", "product32");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description("Test checks method of payment by PayPal")
-    public void testPayPal(String route) throws Exception {
+    @Description("Test checks method of payment by EPS")
+    public void testEPS(String route) throws Exception {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
-        String userData = new DataBase().getUserIdForPaymentsMethod("payments_userid_atd", shop, "PayPal");
+        String userData = new DataBase().getUserIdForPaymentsMethod("payments_userid_atd", shop, "EPS");
         String userID = parseUserIdFromBD(userData);
         String mail = parseUserMailFromBD(userData);
         float totalPriceAllData = new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
-                .checkPresencePaymentsMethodLabel(new Cart_page().payPalLabel())
+                .checkPresencePaymentsMethodLabel(new Cart_page().epsLabel())
                 .nextButtonClick()
                 .signIn(mail, passwordForPayments)
                 .chooseDeliveryCountryForShipping(shop)
                 .fillFieldTelNumForShipping("100+001")
                 .nextBtnClick()
-                .checkActivePaymentMethod("paypal")
-                .clickOnTheDesiredPaymentMethod(shop, "PayPal")
+                .clickOnTheDesiredPaymentMethod(shop, "EPS")
                 .nextBtnClick()
-                .checkPresencePaymentsMethodLabel(new CartAllData_page().payPalLabel())
+                .checkPresencePaymentsMethodLabel(new CartAllData_page().epsLabel())
                 .getTotalPriceAllDataPage(shop);
-                new CartAllData_page_Logic().payPalBtnClick();
-        switchTo().window(1);
-        checkingContainsUrl("paypal.com");
-        closeWindow();
-        switchTo().window(0);
+        new CartAllData_page_Logic().nextBtnClick();
+        checkingContainsUrl("routing.eps.or.at");
+        new CartAllData_page().abbrechenSubmit().click();
+        new CartPayments_page_Logic().checkActivePaymentMethod("epsbank");
         float totalPriceOrderAws = new Customer_view_aws().openCustomerPersonalArea(userID)
                 .checkAndOpenOrderWithExpectedData()
-                .checkPaymentMethodInOrder("PayPal")
-                .checkCurrentStatusInOrder("abgebrochene PayPal-Bestellungen")
+                .checkPaymentMethodInOrder("EPS Bank")
+                .checkCurrentStatusInOrder("abgebrochene EPS")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceAllData, totalPriceOrderAws);
         float totalPriceOrderAwsAfterReSave = new Order_aws().reSaveOrder()
@@ -78,3 +76,4 @@ public class QC_2168_PayPal {
         closeWebDriver();
     }
 }
+
