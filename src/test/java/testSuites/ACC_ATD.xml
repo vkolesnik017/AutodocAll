@@ -225,8 +225,16 @@
     <test name="QC_2261_BlockWithProductsOnAccessoriesListing">
         <classes>
             <class name="ATD.ACC.QC_2261_BlockWithProductsOnAccessoriesListing.QC_2266_MainProductsAccessoriesListing"/>
+            <class name="ATD.ACC.QC_2261_BlockWithProductsOnAccessoriesListing.QC_2267_TransitionOnProductPageFromACCListing"/>
             <class name="ATD.ACC.QC_2261_BlockWithProductsOnAccessoriesListing.QC_2268_SelectingQuantityProductsForBuyOnAccListing"/>
             <class name="ATD.ACC.QC_2261_BlockWithProductsOnAccessoriesListing.QC_2269_AddProductsInBasketOnAccListing"/>
+        </classes>
+    </test>
+
+    <test name="QC_2235_DisplayedAllCategoriesAndLogicalUnion">
+        <classes>
+            <class name="ATD.ACC.QC_2235_DisplayedAllCategoriesAndLogicalUnion.QC_2237_DisplayedAllCategoriesAndLogicalUnionOnMainACC"/>
+            <class name="ATD.ACC.QC_2235_DisplayedAllCategoriesAndLogicalUnion.QC_2249_DisplayedAllCategoriesAndLogicalUnionOnMainTools"/>
         </classes>
     </test>
 

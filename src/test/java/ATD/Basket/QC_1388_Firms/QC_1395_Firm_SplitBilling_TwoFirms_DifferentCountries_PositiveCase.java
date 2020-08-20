@@ -27,7 +27,7 @@ public class QC_1395_Firm_SplitBilling_TwoFirms_DifferentCountries_PositiveCase 
 
 
     private Float regularProductPricePerAllDataPageGB, priceWithVatPerAllDataPageGB, priceProductPerProductPageGB,
-            totalPriceGB, totalPriceAWSOrderGB, totalPriceInEmailGB, sellingPriceAWSOrderGB, prunedProductPriceGB, prunedPriceWithVatGB, unitPriceGB;
+            totalPriceGB, totalPriceAWSOrderGB, totalPriceInEmailGB, sellingPriceAWSOrderGB, unitPriceGB;
     private String emailGB = "qc_1395_autotestGB@mailinator.com", vatForGB, orderNumberGB;
 
     private Product_page_Logic product_page_logic = new Product_page_Logic();
@@ -67,12 +67,10 @@ public class QC_1395_Firm_SplitBilling_TwoFirms_DifferentCountries_PositiveCase 
                 .checkTextInDeliveryAddressInfoBlock("Company SPRL Brasserie Cantillon")
                 .checkTextInPayersAddressInfoBlock("Company FB-MONT A. Fułek Spółka Komandytowa")
                 .getPriceIncludingVat(vatForGB);
-        prunedPriceWithVatGB = cutPriceToFirstDecimalPlace(priceWithVatPerAllDataPageGB);
         cartAllData_page_logic.transitionToProductPage();
         switchTo().window(1);
         priceProductPerProductPageGB = product_page_logic.getProductPrice();
-        prunedProductPriceGB = cutPriceToFirstDecimalPlace(priceProductPerProductPageGB);
-        Assert.assertEquals(prunedPriceWithVatGB, prunedProductPriceGB);
+        product_page_logic.checkProductPriceOnSitesMatchesPriceOnAllDataPageIncludingVat(priceWithVatPerAllDataPageGB, priceProductPerProductPageGB);
         product_page_logic.cartClick();
         totalPriceGB = cartAllData_page_logic.getTotalPriceAllDataPageForEnShop();
         orderNumberGB = cartAllData_page_logic.nextBtnClick().getOrderNumber();
@@ -144,12 +142,10 @@ public class QC_1395_Firm_SplitBilling_TwoFirms_DifferentCountries_PositiveCase 
                 .checkTextInDeliveryAddressInfoBlock("Firma SPRL Brasserie Cantillon")
                 .checkTextInPayersAddressInfoBlock("Firma FB-MONT A. Fułek Spółka Komandytowa")
                 .getPriceIncludingVat(vatForDE);
-        prunedPriceWithVatDE = cutPriceToFirstDecimalPlace(priceWithVatPerAllDataPageDE);
         cartAllData_page_logic.transitionToProductPage();
         switchTo().window(1);
         priceProductPerProductPageDE = product_page_logic.getProductPrice();
-        prunedProductPriceDE = cutPriceToFirstDecimalPlace(priceProductPerProductPageDE);
-        Assert.assertEquals(prunedPriceWithVatDE, prunedProductPriceDE);
+        product_page_logic.checkProductPriceOnSitesMatchesPriceOnAllDataPageIncludingVat(priceWithVatPerAllDataPageDE, priceProductPerProductPageDE);
         product_page_logic.cartClick();
         totalPriceDE = cartAllData_page_logic.getTotalPriceAllDataPage(shop);
         orderNumberDE = cartAllData_page_logic.nextBtnClick().getOrderNumber();

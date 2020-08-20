@@ -239,5 +239,62 @@ public class Main_page_Logic extends Main_page {
 
         return page(Main_page_Logic.class);
     }
+
+    @Step("Check header navigation line (navigation by the site). Main_page")
+    public Main_page_Logic checkHeaderNavigationLine() throws SQLException {
+
+        headerNavigationLine().shouldBe(visible);
+        headerModelsMenu().shouldBe(visible).hover();
+        headerModelsDropList().shouldBe(visible);
+        headerPartsMenu().shouldBe(visible).hover();
+        headerPartsDropList().shouldBe(visible);
+        headerMenuReifen().click();
+        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "main_tyres"));
+        back();
+        headerMenuAutolampen().click();
+        checkingContainsUrl(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "index_autolamp"));
+        back();
+        headerMenuMotorol().click();
+        checkingContainsUrl(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "motoroil"));
+        back();
+        headerMenuChemicals().click();
+        checkingContainsUrl(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "index_chemicals"));
+        back();
+        headerMenuAccessories().click();
+        checkingContainsUrl(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "index_accessories"));
+        back();
+        headerMenuInstruments().click();
+        checkingContainsUrl(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "index_instruments"));
+        headerMenuHome().click();
+        checkingContainsUrl(new DataBase().getFullRouteByRouteName("prod", "DE", "main"));
+        return page(Main_page_Logic.class);
+    }
+
+    @Step("Positive sending the Subscribe form in the footer. Main_page")
+    public Main_page_Logic positiveSendingSubscribeForm(String mail) {
+        emailInputForSubscribeFooter().setValue(mail);
+        checkboxForSubscribeFooter().click();
+        yesButtonForSubscribeFooter().click();
+        successPopUpForSubscribeFooter().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Error tooltip in the Subscribe form in the footer. Main_page")
+    public Main_page_Logic errorMessageInTheSubscribeForm() {
+        yesButtonForSubscribeFooter().click();
+        errorTooltipForSubscribeFooter().shouldBe(visible).shouldHave(text("E-mail Adresse"));
+        emailInputForSubscribeFooter().setValue("11111111");
+        yesButtonForSubscribeFooter().click();
+        errorTooltipForSubscribeFooter().shouldBe(visible).shouldHave(text("E-mail Adresse"));
+        return this;
+    }
+
+    @Step("Error pop-up in the Subscribe form in the footer after sending the form without checking the checkbox. Main_page")
+    public Main_page_Logic errorPopUpInTheSubscribeForm(String mail) {
+        emailInputForSubscribeFooter().setValue(mail);
+        yesButtonForSubscribeFooter().click();
+        errorPopUpInTheSubscribeFooter().shouldBe(visible).shouldHave(text("Um fortzufahren bestätigen Sie bitte Ihr Newsletter-Abo"));
+        return this;
+    }
 }
 

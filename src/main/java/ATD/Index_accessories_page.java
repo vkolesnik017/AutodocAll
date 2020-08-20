@@ -31,11 +31,11 @@ class Index_accessories_page {
     }
 
     ElementsCollection logicalUnionsMainBlock() {
-        return $$x("//div[@class='accessories-catalog__row']//div[@class='accessories-catalog__group-name']");
+        return $$x("//div[@class='accessories-catalog__row']//div[@data-cat-id and @class='accessories-catalog__group']");
     }
 
     ElementsCollection mainCategories() {
-        return $$x("//div[@class='accessories-catalog__row'][1]//div[@class='accessories-catalog__categories']//li//img");
+        return $$x("//div[@class='accessories-catalog__row'][1]//div[@class='accessories-catalog__categories']//li/a");
     }
 
     SelenideElement secondCategoryInLogicalUnion(){

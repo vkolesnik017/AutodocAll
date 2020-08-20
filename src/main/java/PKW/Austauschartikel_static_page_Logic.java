@@ -22,7 +22,7 @@ public class Austauschartikel_static_page_Logic extends Austauschartikel_static_
         Assert.assertEquals(categories().size(), 39);
         pfandReturnPolicy().shouldBe(visible);
         pfandReturn().shouldBe(visible);
-        sleep(2000);
+        sleep(5000);
 
         pfandInfoButtonTooltipPlz().hover().click();
         pfandInfoTooltipPlz().scrollIntoView("{block: \"center\"}");
@@ -37,7 +37,7 @@ public class Austauschartikel_static_page_Logic extends Austauschartikel_static_
     }
 
     public Austauschartikel_static_page_Logic checkClickableCards() {
-        sleep(2000);
+        sleep(5000);
         pfandReturnPartsItem().hover();
         for (int i = 0; i < 12; i++) {
             categories().get(i).click();

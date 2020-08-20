@@ -248,4 +248,76 @@ public class Main_page {
     SelenideElement progressStarHeader() {
         return $x("//*[@class='progress']");
     }
+
+    SelenideElement headerNavigationLine() {
+        return $x("//*[@class='header__navigation']");
+    }
+
+    SelenideElement headerModelsMenu() {
+        return $x("//*[@id='header_menu_models']//*[@class='menu-title-link ga-click']");
+    }
+
+    SelenideElement headerModelsDropList() {
+        return $x("//*[@class='menu-title-link ga-click active']");
+    }
+
+    SelenideElement headerPartsMenu() {
+        return $x("//*[@id='parts']//*[@class='menu-title-link ga-click']");
+    }
+
+    SelenideElement headerPartsDropList() {
+        return $x("//*[@class='menu-title-link ga-click active']");
+    }
+
+    SelenideElement headerMenuReifen() {
+        return $x("//*[@id='header_menu_tyres']//*[@class='menu-title-link ga-click']");
+    }
+
+    SelenideElement headerMenuAutolampen() {
+        return $x("//a[@data-ga-action='autolampen']");
+    }
+
+    SelenideElement headerMenuMotorol() {
+        return $x("//a[@data-ga-action='motoroil']");
+    }
+
+    SelenideElement headerMenuChemicals() {
+        return $x("//a[@data-ga-action='chemicals']");
+    }
+
+    SelenideElement headerMenuAccessories() {
+        return $x("//a[@data-ga-action='accessories']");
+    }
+
+    SelenideElement headerMenuInstruments() {
+        return $x("//a[@data-ga-action='instruments']");
+    }
+
+    SelenideElement headerMenuHome() {
+        return $x("//li[@class='home']");
+    }
+
+    SelenideElement emailInputForSubscribeFooter() {
+        return $x("//input[@id='subscr_footer']");
+    }
+
+    SelenideElement checkboxForSubscribeFooter() {
+        return $x("//input[@id='subscribe_accept_footer']");
+    }
+
+    SelenideElement yesButtonForSubscribeFooter() {
+        return $x("//a[@id='news_yes_footer']");
+    }
+
+    SelenideElement successPopUpForSubscribeFooter() {
+        return $x("//div[@id='popup_update']");
+    }
+
+    SelenideElement errorTooltipForSubscribeFooter() {
+        return $x("//div[@class='wrong_footer']");
+    }
+
+    SelenideElement errorPopUpInTheSubscribeFooter() {
+        return $x("//div[@class='popup_inner']");
+    }
 }
