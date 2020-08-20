@@ -20,5 +20,21 @@ public class Car_parts_motoroil_page {
 
     SelenideElement markeFieldInSelector() {return $(byId("form_maker_id"));}
 
+    SelenideElement modelFieldInSelector() {return $(byId("form_model_id"));}
+
+    SelenideElement motorFieldInSelector() {return $(byId("form_car_id"));}
+
     SelenideElement btnResetOfSelector() {return $(byId("reset_selector_form"));}
+
+    SelenideElement kbaFirstValueInSelector() {return $(byId("kba1"));}
+
+    SelenideElement kbaSecondValueInSelector() {return $(byId("kba2"));}
+
+    SelenideElement nextPagePagination() {return $x("//span[@class='next'][1]/a");}
+
+    ElementsCollection productsOnPage() {return $$x("//div[@class='listing_items']/div");}
+
+    SelenideElement imageOfProductTecDocListingBlock(int position) {
+        return $x("(//div[@class='listing-parent-pkw']/img)["+position+"]");
+    }
 }

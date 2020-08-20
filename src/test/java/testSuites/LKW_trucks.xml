@@ -195,4 +195,13 @@
             <class name="LKW_trucks.QC_624_ParentAndChildCategoriesBlockInTecDocCatalog.QC_117_ParentAndChildCategoriesBlockInTecDocCatalog"/>
         </classes>
     </test>
+
+    <test name="QC_2306_OilsAndLiquidsCategories">
+        <classes>
+            <class name="LKW_trucks.QC_2306_OilsAndLiquidsCategories.QC_2303_PresenceOfOilCategoryInHeaderCatalog"/>
+            <class name="LKW_trucks.QC_2306_OilsAndLiquidsCategories.QC_2304_PresenceOfOilAndLiquidCategories"/>
+            <class name="LKW_trucks.QC_2306_OilsAndLiquidsCategories.QC_2305_TecDocAndSearchOilListing"/>
+            <class name="LKW_trucks.QC_2306_OilsAndLiquidsCategories.QC_2307_PresenceOfOilCategoryOnMainPage"/>
+        </classes>
+    </test>
 </suite>

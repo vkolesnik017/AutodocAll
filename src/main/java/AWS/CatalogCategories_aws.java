@@ -63,7 +63,7 @@ public class CatalogCategories_aws {
     }
 
     private ElementsCollection notActiveChildCategoriesName() {
-        return $$(".catalog-table-content-items-item.disabled > div > div:nth-child(5) > input");
+        return $$(".catalog-table-content-items-item.disabled > div > div:nth-child(4)");
     }
 
     private ElementsCollection notInCatalogCategories() {
@@ -78,8 +78,12 @@ public class CatalogCategories_aws {
         return $$x("//*[@class='flex-box']/div[12]/input[@checked='checked']/../../div[4]");
     }
 
-    public ElementsCollection categoriesNameInAWS() {
-        return $$x("//*[@class='flex-box']//input[@checked='checked']/../../div[5]/input");
+    public ElementsCollection categoriesIdInAWS() {
+        return $$x("//*[@class='flex-box']//input[@checked='checked']/../../div[4]");
+    }
+
+    private ElementsCollection groupIdInAWS() {
+        return $$(".catalog-table-content-items-item.parent > ul >li > div > div:nth-child(3)");
     }
 
     public SelenideElement fieldParentId() {
@@ -176,41 +180,16 @@ public class CatalogCategories_aws {
         return allActiveParentCategoriesAWS;
     }
 
-    @Step("Get All Child Categories From Catalog AWS. CatalogCategories_aws")
-    public ArrayList<String> getAllChildCategoriesNameFromAWS() {
-        ArrayList<String> allActiveChildCategoriesAWS = new ArrayList<>();
-        for (int i = 0; i < childNameInAWS().size(); i++) {
-            if (!childNameInAWS().get(i).attr("value").isEmpty()) {
-                System.out.println(childNameInAWS().get(i).attr("value").trim());
-                allActiveChildCategoriesAWS.add(childNameInAWS().get(i).attr("value").trim());
-            }
-        }
-
-        ArrayList<String> notActiveCategories = new ArrayList<>();
-        for (int i = 0; i < notActiveChildCategoriesName().size(); i++) {
-            notActiveCategories.add(notActiveChildCategoriesName().get(i).attr("value").trim());
-        }
-
-        ArrayList<String> notInCatalogCategoriesList = new ArrayList<>();
-        for (int i = 0; i < notInCatalogCategories().size(); i++) {
-            notInCatalogCategoriesList.add(notInCatalogCategories().get(i).attr("value").trim());
-
-        }
-
-        ArrayList<String> notInCatalogCategories2 = new ArrayList<>();
-        for (int i = 0; i < notInCatalogCateg2().size(); i++) {
-            notInCatalogCategories2.add(notInCatalogCateg2().get(i).attr("value").trim());
-        }
-
-        allActiveChildCategoriesAWS.removeAll(notActiveCategories);
-        allActiveChildCategoriesAWS.removeAll(notInCatalogCategoriesList);
-        allActiveChildCategoriesAWS.removeAll(notInCatalogCategories2);
-        for (int i = 0; i < allActiveChildCategoriesAWS.size(); i++) {
-            System.out.println(allActiveChildCategoriesAWS.get(i));
-        }
-
-        Collections.sort(allActiveChildCategoriesAWS);
-        return allActiveChildCategoriesAWS;
+    @Step("Get All ID group From Catalog AWS. CatalogCategories_aws")
+    public ArrayList<String> getAllIdGroupFromAWS() {
+        ArrayList<String> allActiveGroupAWS = new ArrayList<>();
+     for(int i = 0; i < groupIdInAWS().size(); i++) {
+         if(!groupIdInAWS().get(i).getText().isEmpty()) {
+             allActiveGroupAWS.add(groupIdInAWS().get(i).text());
+         }
+     }
+        Collections.sort(allActiveGroupAWS);
+        return allActiveGroupAWS;
     }
 
     @Step("Get All Child Categories From Catalog AWS Using Set. CatalogCategories_aws")
@@ -286,33 +265,27 @@ public class CatalogCategories_aws {
     @Step("Click btn search. CatalogCategories_aws")
     public CatalogCategories_aws clickBtnSearch() {
         btnSearch().click();
-        sleep(5000);
         return this;
     }
 
-    @Step("Get all active categories from AWS. CatalogCategories_aws")
-    public ArrayList<String> getAllActiveCategories() {
+    @Step("Get all id active categories from AWS. CatalogCategories_aws")
+    public ArrayList<String> getAllIdActiveCategories() {
+        sleep(5000);    // Убрать слип или заменить на wait
         ArrayList<String> allCategories = new ArrayList<>();
-        for (SelenideElement element : categoriesNameInAWS()) {
-            String name = element.getValue();
-            allCategories.add(name);
-            System.out.println(name);
+        for(int i = 0; i < categoriesIdInAWS().size(); i++) {
+            if(!categoriesIdInAWS().get(i).getText().isEmpty()) {
+                allCategories.add(categoriesIdInAWS().get(i).text());
+            }
         }
-        System.out.println(allCategories.size());
-
 
         ArrayList<String> notActiveCategories = new ArrayList<>();
-        for (SelenideElement element : notActiveChildCategoriesName()) {
-            String name = element.getValue();
-            notActiveCategories.add(name);
+        for(int i = 0; i < notActiveChildCategoriesName().size(); i++) {
+            if(!notActiveChildCategoriesName().get(i).getText().isEmpty()) {
+                notActiveCategories.add(notActiveChildCategoriesName().get(i).text());
+            }
         }
 
         allCategories.removeAll(notActiveCategories);
-        Iterator iterator = allCategories.iterator();
-        while (iterator.hasNext()) {
-            System.out.println(iterator.next());
-        }
-        System.out.println(allCategories.size());
         Collections.sort(allCategories);
         return allCategories;
     }

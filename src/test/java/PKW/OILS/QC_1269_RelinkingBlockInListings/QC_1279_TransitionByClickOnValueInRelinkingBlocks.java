@@ -37,7 +37,6 @@ public class QC_1279_TransitionByClickOnValueInRelinkingBlocks {
         new Motoroil_viscosity_brand_page_Logic()
                 .checkTransitionByClickInRelinkingBlock();
     }
-
    @DataProvider(name = "routesSpecification", parallel = true)
     Object[] dataProviderSpecification() throws SQLException {
         return new PKW.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_specification");
@@ -53,7 +52,6 @@ public class QC_1279_TransitionByClickOnValueInRelinkingBlocks {
         new Motoroil_specification_page_Logic()
                 .checkTransitionByClickInRelinkingBlock();
     }
-
     @DataProvider(name = "routesRelease", parallel = true)
     Object[] dataProviderRelease() throws SQLException {
         return new PKW.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_release");
@@ -69,7 +67,6 @@ public class QC_1279_TransitionByClickOnValueInRelinkingBlocks {
         new Motoroil_Release_page_Logic()
                 .checkTransitionByClickInRelinkingBlock();
     }
-
     @DataProvider(name = "routesMaker", parallel = true)
     Object[] dataProviderMaker() throws SQLException {
         return new PKW.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_maker");
