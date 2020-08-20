@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="General_Common_ATD" parallel="tests" data-provider-thread-count="3">
+
+    <listeners>
+        <listener class-name="ATD.ProjectListener"/>
+    </listeners>
+
+    <test name="QC_1554_Footer">
+        <classes>
+            <class name="ATD.General_Common.QC_1554_Footer.QC_1569_TransitionTheLink_Datenschutzerklärung"/>
+            <class name="ATD.General_Common.QC_1554_Footer.QC_1555_ApplicationInstallBanner"/>
+            <class name="ATD.General_Common.QC_1554_Footer.QC_1556_LinksToStaticPages"/>
+            <class name="ATD.General_Common.QC_1554_Footer.QC_1558_DroplistCountryBlock"/>
+            <class name="ATD.General_Common.QC_1554_Footer.QC_1564_SuccessfulNewsletterSubscription"/>
+            <class name="ATD.General_Common.QC_1554_Footer.QC_1565_DisplayingOfNon_validEmailTooltip"/>
+            <class name="ATD.General_Common.QC_1554_Footer.QC_1567_TransitionFromBlockOfSocialNetworks"/>
+            <class name="ATD.General_Common.QC_1554_Footer.QC_1568_PresenceOfTextBlocks"/>
+            <class name="ATD.General_Common.QC_1554_Footer.QC_1566_Pop_upErrorAbutNon_confirmedNewsletterSubscription"/>
+        </classes>
+    </test>
+
+    <test name="QC_1571_Header">
+        <classes>
+            <class name="ATD.General_Common.QC_1571_Header.QC_1601_PresenceBlocksOfPromotionalHeader"/>
+            <class name="ATD.General_Common.QC_1571_Header.QC_1602_HeaderTopBlock"/>
+            <class name="ATD.General_Common.QC_1571_Header.QC_1603_TransitionLinksFromBlockHeaderTop"/>
+            <class name="ATD.General_Common.QC_1571_Header.QC_1604_PresenceOfCategoriesInHeaderNavBlock"/>
+            <class name="ATD.General_Common.QC_1571_Header.QC_1605_NavigateCategoriesInHeaderNavBlock"/>
+            <class name="ATD.General_Common.QC_1571_Header.QC_1606_BlockHeaderMain"/>
+        </classes>
+    </test>
+
+    <test name="QC_1645_BlockTopProducts">
+        <classes>
+            <class name="ATD.General_Common.QC_1645_BlockTopProducts.QC_1646_lackOfNotAvailableGoodsInTheTopBlocks"/>
+            <class name="ATD.General_Common.QC_1645_BlockTopProducts.QC_1647_AddingPairedProductsToBasketFromBlockOfTopProducts"/>
+            <class name="ATD.General_Common.QC_1645_BlockTopProducts.QC_1648_PresenceOfElementsInMiniCardsInBlockTopProducts"/>
+        </classes>
+    </test>
+
+</suite>

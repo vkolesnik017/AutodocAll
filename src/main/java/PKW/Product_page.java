@@ -134,7 +134,7 @@ public class Product_page {
         return $x("//form[@id='comment_reply_form2']//a");
     }
 
-
+SelenideElement phraseAboutCompatibilityProductAndVehicle() {return $x("//p[contains(text(),'Dieses Produkt passt zu Ihrem')]");}
 
 
 

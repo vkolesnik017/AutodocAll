@@ -20,7 +20,7 @@ public class Motoroil_viscosity_brand_page {
 
     SelenideElement contentPartOfRelinkingBLocks(int positionOfBlock) {return $x("(//div[@class='listing_microdata'])["+positionOfBlock+"]//div[@class='lm_content']");}
 
-    ElementsCollection linksOfRelinkingBlocks(int positionOfBlock) {return $$x("(//div[@class='listing_microdata'])["+positionOfBlock+"]//p/a");}
+    ElementsCollection linksOfRelinkingBlocks(int positionOfBlock) {return $$x("(//div[@class='listing_microdata'])["+positionOfBlock+"]//li/a");}
 
     SelenideElement toleranceFilterBlock() {
         return $x("//div[contains(text(),'Herstellerfreigabe')]/..");

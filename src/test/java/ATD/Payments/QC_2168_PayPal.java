@@ -61,7 +61,9 @@ public class QC_2168_PayPal {
         checkingContainsUrl("paypal.com");
         closeWindow();
         switchTo().window(0);
+        new CartPayments_page_Logic().checkActivePaymentMethod("paypal");
         float totalPriceOrderAws = new Customer_view_aws().openCustomerPersonalArea(userID)
+                .checkPresenceOrderHistoryBlock()
                 .checkAndOpenOrderWithExpectedData()
                 .checkPaymentMethodInOrder("PayPal")
                 .checkCurrentStatusInOrder("abgebrochene PayPal-Bestellungen")

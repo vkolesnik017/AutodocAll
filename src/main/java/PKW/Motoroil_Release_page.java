@@ -15,7 +15,7 @@ public class Motoroil_Release_page {
 
     SelenideElement mainHeadline() {return $x("//div[@class='listing_title listing-title--oil']/h1");}
 
-    ElementsCollection linksOfRelinkingBlocks(int positionOfBlock) {return $$x("(//div[@class='listing_microdata'])["+positionOfBlock+"]//p/a");}
+    ElementsCollection linksOfRelinkingBlocks(int positionOfBlock) {return $$x("(//div[@class='listing_microdata'])["+positionOfBlock+"]//*[self::p or self::li]/a");}
 
     SelenideElement toleranceFilterBlock() {
         return $x("//div[contains(text(),'Herstellerfreigabe')]/..");

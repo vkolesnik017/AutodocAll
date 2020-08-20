@@ -19,7 +19,7 @@ public class ProductCard_aws {
     }
 
     private SelenideElement truckCheckBox() {
-        return $x("//td/span[contains(text(),'LKW')]/../following-sibling::td/input");
+        return $x("//td/span[contains(text(),'LKW')]/../following-sibling::td/input[@checked='checked']");
     }
 
     private SelenideElement motoLabel() {
@@ -76,7 +76,7 @@ public class ProductCard_aws {
     @Step("check truck label")
     public ProductCard_aws checkTruckLabel() {
         truckLabel().shouldBe(visible);
-        truckCheckBox().shouldHave(attribute("checked", "checked"));
+        truckCheckBox().shouldBe(visible);
         return this;
     }
 
