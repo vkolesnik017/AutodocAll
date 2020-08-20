@@ -34,6 +34,13 @@ public class CommonMethods {
         return "autotest" + random + "@mailinator.com";
     }
 
+    @Step("Generates random email on @mailinator.com")
+    public static String mailRandomMailinator(String QCnumber) {
+        Random randomGenerator = new Random();
+        int random = randomGenerator.nextInt();
+        return "QC_" + QCnumber + "_autotestMail" + random + "@mailinator.com";
+    }
+
     @Step("{url} Open page with close popup")
     public static void openPage(String url) {
         System.out.println(url);
