@@ -27,7 +27,7 @@ public class QC_2168_PayPal {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "route", parallel = true)
+    @DataProvider(name = "route", parallel = false)
     Object[] dataProviderProducts() throws SQLException {
         return new SetUp().setUpShopsWithSubroute("prod", "DE,AT,BG,BE,CH,CZ,DK,EN,EE,ES,FI,FR,GR,HU,IT,LD,LT,LV,NL,NO,PL,PT,RO,SE,SI,SK", "main", "product32");
     }
@@ -62,6 +62,7 @@ public class QC_2168_PayPal {
         closeWindow();
         switchTo().window(0);
         float totalPriceOrderAws = new Customer_view_aws().openCustomerPersonalArea(userID)
+                .checkPresenceOrderHistoryBlock()
                 .checkAndOpenOrderWithExpectedData()
                 .checkPaymentMethodInOrder("PayPal")
                 .checkCurrentStatusInOrder("abgebrochene PayPal-Bestellungen")

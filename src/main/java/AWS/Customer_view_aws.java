@@ -144,6 +144,10 @@ public class Customer_view_aws {
         return $x("//table[@class='table table-striped table-bordered table-condensed orders customer-deposit']//tr[1]//td[4]");
     }
 
+    private SelenideElement orderHistory() {
+        return $x("//form[@id='form-order']");
+    }
+
     @Step("Get deposit balance after the last crediting . Customer_view_aws")
     public Float getDepositBalanceAfterLastCrediting() {
        return Float.valueOf(depositBalanceAfterLastCrediting().getText());
@@ -268,6 +272,12 @@ public class Customer_view_aws {
     @Step("Checks presence block logs company numbers. Customer_view_aws")
     public Customer_view_aws checkPresenceBlockLogsCompanyNumbers() {
         companyNumberLogsBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checks presence order history block. Customer_view_aws")
+    public Customer_view_aws checkPresenceOrderHistoryBlock() {
+        orderHistory().shouldBe(visible);
         return this;
     }
 

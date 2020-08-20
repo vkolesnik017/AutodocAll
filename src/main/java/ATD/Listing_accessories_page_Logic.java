@@ -256,5 +256,11 @@ public class Listing_accessories_page_Logic extends Listing_accessories_page {
         return this;
     }
 
+    @Step("Click on title name main product. Listing_accessories_page")
+    public Product_page_Logic clickOnTitleNameMainProduct() {
+        titleNameProductFromListing().click();
+        return page(Product_page_Logic.class);
+    }
+
 
 }

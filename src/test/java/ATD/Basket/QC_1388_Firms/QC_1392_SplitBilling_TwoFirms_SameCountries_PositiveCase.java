@@ -25,8 +25,8 @@ import static com.codeborne.selenide.Selenide.switchTo;
 
 public class QC_1392_SplitBilling_TwoFirms_SameCountries_PositiveCase {
 
-    private Float priceWithVatPerAllDataPageGB, priceProductPerProductPageGB, totalPriceGB, totalPriceAWSOrderGB, totalPriceInEmailGB,
-            prunedProductPriceGB, prunedPriceWithVatGB;
+    private Float priceWithVatPerAllDataPageGB, priceProductPerProductPageGB, totalPriceGB, totalPriceAWSOrderGB, totalPriceInEmailGB;
+
     private String emailGB = "qc_1392_autotestGB@mailinator.com", vatForGB, orderNumberGB;
 
     private Product_page_Logic product_page_logic = new Product_page_Logic();
@@ -65,12 +65,10 @@ public class QC_1392_SplitBilling_TwoFirms_SameCountries_PositiveCase {
                 .checkTextInPayersAddressInfoBlock("Company SPRL Brasserie Cantillon")
                 .checkAbsenceOfVatPercentage()
                 .getPriceIncludingVat(vatForGB);
-        prunedPriceWithVatGB = cutPriceToFirstDecimalPlace(priceWithVatPerAllDataPageGB);
         cartAllData_page_logic.transitionToProductPage();
         switchTo().window(1);
         priceProductPerProductPageGB = product_page_logic.getProductPrice();
-        prunedProductPriceGB = cutPriceToFirstDecimalPlace(priceProductPerProductPageGB);
-        Assert.assertEquals(prunedPriceWithVatGB, prunedProductPriceGB);
+        product_page_logic.checkProductPriceOnSitesMatchesPriceOnAllDataPageIncludingVat(priceWithVatPerAllDataPageGB, priceProductPerProductPageGB);
         product_page_logic.cartClick();
         totalPriceGB = cartAllData_page_logic.getTotalPriceAllDataPageForEnShop();
         orderNumberGB = cartAllData_page_logic.nextBtnClick().getOrderNumber();
@@ -101,8 +99,7 @@ public class QC_1392_SplitBilling_TwoFirms_SameCountries_PositiveCase {
     }
 
 
-    private Float priceWithVatPerAllDataPageDE, priceProductPerProductPageDE, totalPriceDE, totalPriceAWSOrderDE, totalPriceInEmailDE,
-            prunedProductPriceDE, prunedPriceWithVatDE;
+    private Float priceWithVatPerAllDataPageDE, priceProductPerProductPageDE, totalPriceDE, totalPriceAWSOrderDE, totalPriceInEmailDE;
     private String emailDE = "qc_1392_autotestDE@mailinator.com", vatForDE, orderNumberDE;
 
 
@@ -135,12 +132,10 @@ public class QC_1392_SplitBilling_TwoFirms_SameCountries_PositiveCase {
                 .checkTextInPayersAddressInfoBlock("SPRL Brasserie Cantillon")
                 .checkAbsenceOfVatPercentage()
                 .getPriceIncludingVat(vatForDE);
-        prunedPriceWithVatDE = cutPriceToFirstDecimalPlace(priceWithVatPerAllDataPageDE);
         cartAllData_page_logic.transitionToProductPage();
         switchTo().window(1);
         priceProductPerProductPageDE = product_page_logic.getProductPrice();
-        prunedProductPriceDE = cutPriceToFirstDecimalPlace(priceProductPerProductPageDE);
-        Assert.assertEquals(prunedPriceWithVatDE, prunedProductPriceDE);
+        product_page_logic.checkProductPriceOnSitesMatchesPriceOnAllDataPageIncludingVat(priceWithVatPerAllDataPageDE, priceProductPerProductPageDE);
         product_page_logic.cartClick();
         totalPriceDE = cartAllData_page_logic.getTotalPriceAllDataPage(shop);
         orderNumberDE = cartAllData_page_logic.nextBtnClick().getOrderNumber();

@@ -460,6 +460,7 @@ public class Order_aws {
 
     @Step("Checks current status {expectedStatus} in order. Order_aws")
     public Order_aws checkCurrentStatusInOrder(String expectedStatus) {
+        currentStatusInOrder().shouldBe(visible);
         currentStatusInOrder().shouldHave(text(expectedStatus));
         return this;
     }

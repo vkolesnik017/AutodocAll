@@ -9,6 +9,8 @@ import com.codeborne.selenide.ex.UIAssertionError;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -770,5 +772,22 @@ public class Product_page_Logic extends Product_page {
     @Step("Get id from btn product. Product_page")
     public String getIdFromBtnProduct() {
         return idOFBtnAddToBasket().getAttribute("id");
+    }
+
+    @Step("Сhecks product price on site matches price on alldata page including VAT. Product_page")
+    public Product_page_Logic checkProductPriceOnSitesMatchesPriceOnAllDataPageIncludingVat(Float priceWithVatPerAllDataPage, Float priceProductPerProductPage) {
+        BigDecimal result = new BigDecimal(priceWithVatPerAllDataPage);
+        BigDecimal formatPriceUp = result.setScale(2, RoundingMode.UP);
+        float roundMax = Float.parseFloat(String.valueOf(formatPriceUp));
+        BigDecimal formatPriceDOWN = result.setScale(2, RoundingMode.FLOOR);
+        float roundMin = Float.parseFloat(String.valueOf((formatPriceDOWN)));
+        float res = 0.0f;
+        if (priceProductPerProductPage.equals(roundMax)) {
+            res = roundMax;
+        } if (priceProductPerProductPage.equals(roundMin)) {
+            res = roundMin;
+        }
+        Assert.assertEquals(res, priceProductPerProductPage);
+        return this;
     }
 }
