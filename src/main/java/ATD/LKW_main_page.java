@@ -168,6 +168,8 @@ public class LKW_main_page {
         return $$x("//*[@class='truck-home-parts__cat-list']");
     }
 
+    ElementsCollection linksOfChildCategories(int positionOfBlock) { return $$x("(//span[@class='truck-home-parts__item-title'])["+positionOfBlock+"]/ancestor::li/div/a");}
+
     SelenideElement childCategoryInParentCategoryBLock(String titleOfChildCategory) {
         return $x("//a[@class='truck-home-parts__cat-link js--lkw-modal__cat-link']/span[contains(text(),'" + titleOfChildCategory + "')]");
     }
@@ -318,7 +320,13 @@ public class LKW_main_page {
 
    ElementsCollection visibleArtNumOfTopProducts() {return $$x("//div[@class='product-list__item__nummer']").filter(visible);}
 
+    ElementsCollection titleOfParentCategories() {return $$x("//div[@class='car-parts-categories__item-name']");}
 
+    ElementsCollection imageOfParentCategories() {return $$x("//div[@class='car-parts-categories__item-link']/div/img");}
+
+    SelenideElement childCategory(String titleOfChildCategory) {
+        return $x("//div[@class='truck-home-parts__cat-list']//span[contains(text(),'"+titleOfChildCategory+"')]");
+    }
 }
 
 

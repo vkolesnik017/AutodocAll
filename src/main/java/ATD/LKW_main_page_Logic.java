@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 
-import static ATD.CommonMethods.waitWhileRouteContainsExpectedCondition;
+import static ATD.CommonMethods.*;
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.*;
@@ -174,9 +174,9 @@ public class LKW_main_page_Logic extends LKW_main_page {
     }
 
     @Step("Click on Tires category. LKW_main_page")
-    public Tyres_page clickTiresCategory() {
+    public LKW_Tyres_page_Logic clickTiresCategory() {
         $(byCssSelector("[data-ga-action='23208']")).click();
-        return page(Tyres_page.class);
+        return page(LKW_Tyres_page_Logic.class);
     }
 
     @Step("Click on Instrument category. LKW_main_page")
@@ -192,27 +192,27 @@ public class LKW_main_page_Logic extends LKW_main_page {
     }
 
     @Step("Click on EngineOil category. LKW_main_page")
-    public CarParts_EngineOil_page clickEngineOilCategory() {
-        $("[data-ga-action='12094']").click();
-        return page(CarParts_EngineOil_page.class);
+    public LKW_Category_page_Logic clickEngineOilCategory() {
+        $("[data-ga-action='290001']").click();
+        return page(LKW_Category_page_Logic.class);
     }
 
     @Step("Click on Filters category. LKW_main_page")
-    public CarParts_Filters_page clickFiltersCategory() {
-        $("[data-ga-action='10105']").click();
-        return page(CarParts_Filters_page.class);
+    public LKW_Parent_Category_page_Logic clickFiltersCategory() {
+        $("[data-ga-action='200047']").click();
+        return page(LKW_Parent_Category_page_Logic.class);
     }
 
     @Step("Click on BrakeSystem category. LKW_main_page")
     public CarParts_BrakeSystem_page clickBrakeSystemCategory() {
-        $("[data-ga-action='10106']").click();
+        $("[data-ga-action='200058']").click();
         return page(CarParts_BrakeSystem_page.class);
     }
 
     @Step("Click on Engine category. LKW_main_page")
-    public CarParts_Engine_page clickEngineCategory() {
+    public LKW_Parent_Category_page_Logic clickEngineCategory() {
         $(".header-i.header-i--engine").click();
-        return page(CarParts_Engine_page.class);
+        return page(LKW_Parent_Category_page_Logic.class);
     }
 
     @Step("Check successfully LKW page loading. LKW_main_page")
@@ -252,6 +252,11 @@ public class LKW_main_page_Logic extends LKW_main_page {
             imageOfTopParentCategoryInParentBlock().get(i).shouldBe(visible);
             titleOfTopParentCategoryInParentBlock().get(i).shouldBe(visible);
             linksOfChildCategoriesBlock().get(i).shouldBe(visible);
+            if (i == 0) {
+                linksOfChildCategories(i + 1).shouldHaveSize(1);
+            } else {
+                linksOfChildCategories(i + 1).shouldHaveSize(3);
+            }
         }
         return this;
     }
@@ -521,7 +526,7 @@ public class LKW_main_page_Logic extends LKW_main_page {
         DataBase db = new DataBase();
         String currentCountry;
         List<String> language = Arrays.asList("CH", "AT", "LD", "BG", "BE", "CZ", "DK", "EE", "ES", "FI", "FR", "EN", "GR", "HU", "IT", "LT", "LV", "NL", "NO", "PL", "PT", "RO", "SE", "SI", "SK");
-        languageBlock().click();
+        //languageBlock().click();
         for (int i = 0; i < languagesOfSubscribe().size(); i++) {
             if (language.get(i).equals("LD")) {
                 currentCountry = "lu";
@@ -539,7 +544,7 @@ public class LKW_main_page_Logic extends LKW_main_page {
             String urlFromBD = db.getFullRouteByRouteName("subprod", language.get(i), "lkw_main") + "/";
             Assert.assertEquals(url(), urlFromBD);
             back();
-            waitWhileRouteContainsExpectedCondition(db.getRouteByRouteName("DE","lkw_main"));
+            waitWhileRouteContainsExpectedCondition(db.getRouteByRouteName("DE", "lkw_main"));
         }
      /*   for (int i = 0; i < languagesOfSubscribe().size(); i++) {
             currentCountry = currentLanguage().shouldBe(exist).getText();
@@ -576,5 +581,92 @@ public class LKW_main_page_Logic extends LKW_main_page {
         motorOfVerticalTruckSelector().selectOptionByValue(motorOfTruck);
         buttonSuchenOfVerticaltruckSelectorMainPage().click();
         return page(LKW_maker_car_list_Logic.class);
+    }
+
+
+    @Step("check Navigation categories in header .LKW_main_page")
+    public LKW_main_page_Logic checkNavigationCategoriesInHeader() throws SQLException {
+        DataBase db = new DataBase();
+        String shop = getCurrentShopFromJSVarInHTML();
+        clickPkwCategory();
+        checkingContainsUrl(db.getRouteByRouteName(shop, "main"));
+        back();
+        clickMotoCategory();
+        checkingContainsUrl(db.getRouteByRouteName(shop, "moto_main"));
+        back();
+        clickTiresCategory();
+        checkingContainsUrl(db.getRouteByRouteName(shop, "lkw_tyres"));
+        back();
+        clickInstrumentsCategory();
+        checkingContainsUrl(db.getRouteByRouteName(shop, "index_instruments"));
+        back();
+        clickAccessoriesCategory();
+        checkingContainsUrl(db.getRouteByRouteName(shop, "index_accessories"));
+        back();
+        clickEngineOilCategory();
+        checkingContainsUrl(db.getRouteByRouteName(shop, "lkw_category4"));
+        back();
+        clickFiltersCategory();
+        checkingContainsUrl(db.getRouteByRouteName(shop, "lkw_parent_category"));
+        back();
+        clickBrakeSystemCategory();
+        checkingContainsUrl(db.getRouteByRouteName(shop, "lkw_parent_category2"));
+        back();
+        clickEngineCategory();
+        checkingContainsUrl(db.getRouteByRouteName(shop, "lkw_parent_category3"));
+        return this;
+    }
+
+    @Step("presence of Oil parent category in header catalog .LKW_main_page")
+    public LKW_main_page_Logic presenceOfOilParentCategoryInHeaderCatalog(String subRoute) throws SQLException {
+        menuCatalogInHeader().click();
+        dropMainMenuTrucksCatalogInHeader().shouldBe(visible);
+        listOfParentsDropMainTruckCatalog().get(0).shouldHave(exactText("Öle & Flüssigkeiten"));
+        Assert.assertTrue(listOfParentsDropMainTruckCatalog().get(0).getAttribute("href").contains(new DataBase().getRouteByRouteName("DE", subRoute)));
+        return this;
+    }
+
+    @Step("presence of Oil child category pop-up .LKW_main_page")
+    public LKW_main_page_Logic presenceOfOilChildCategoryPopUp() {
+        listOfParentsDropMainTruckCatalog().get(0).shouldBe(visible).hover();
+        titleOfSecondLevelMainDropMenuTruckCatalog().get(0).shouldHave(exactText(listOfParentsDropMainTruckCatalog().get(0).getText()));
+        listOfCategoriesSecondLevelDropMainTruckCatalog().shouldHaveSize(1);
+        return this;
+    }
+
+    @Step("click on Oil child category .LKW_main_page")
+    public LKW_Category_page_Logic clickOnOilChildCategory() {
+        listOfCategoriesSecondLevelDropMainTruckCatalog().get(0).shouldBe(visible).click();
+        return page(LKW_Category_page_Logic.class);
+    }
+
+    @Step("presence of Oil category .LKW_main_page")
+    public LKW_main_page_Logic presenceOfOilCategory() {
+        imageOfTopParentCategoryInParentBlock().get(0).shouldBe(visible);
+        titleOfTopParentCategoryInParentBlock().get(0).shouldBe(visible).shouldHave(exactText("Öle & Flüssigkeiten"));
+        return this;
+    }
+
+    @Step("check transition by click on Oil parent elements .LKW_main_page")
+    public LKW_main_page_Logic checkTransitionByClickOnOilParentElements() throws SQLException {
+        DataBase db = new DataBase();
+        clickOnOilTitleParentCategory();
+        checkingContainsUrl(db.getRouteByRouteName("DE", "lkw_parent_category4"));
+        back();
+        clickOnOilTitleChildCategory("Motoröl");
+        checkingContainsUrl(db.getRouteByRouteName("DE", "lkw_category4"));
+        return this;
+    }
+
+    @Step("click on Oil title parent category .LKW_main_page")
+    public LKW_Parent_Category_page_Logic clickOnOilTitleParentCategory() {
+        titleOfTopParentCategoryInParentBlock().get(0).click();
+        return page(LKW_Parent_Category_page_Logic.class);
+    }
+
+    @Step("click on Oil title child category .LKW_main_page")
+    public LKW_Category_page_Logic clickOnOilTitleChildCategory(String titleOfChildCategory) {
+        childCategory(titleOfChildCategory).shouldBe(visible).click();
+        return page(LKW_Category_page_Logic.class);
     }
 }

@@ -159,4 +159,8 @@ class LKW_maker_car_list {
     ElementsCollection childCategoriesFirstLevelForCheck() {return $$x("//div[@class='car-parts-categories-modal__level1 js-height-compare']/ul[@class='car-parts-categories-modal__link-list']/li");}
 
     SelenideElement mainFormOfSelector() {return $x("//div[@class='home-select-car home-select-car--dropdown home-select-car--lkw']");}
+
+    ElementsCollection visibleChildCategoriesPopUpOfParentCategory() {return $$x("//div[@class='car-parts-categories-modal__wrapper']").filter(visible);}
+
+    ElementsCollection popUpOfParentCategories() {return $$x("//div[@class='car-parts-categories-modal__content']");}
 }
