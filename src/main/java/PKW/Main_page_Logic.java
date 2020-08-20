@@ -269,5 +269,32 @@ public class Main_page_Logic extends Main_page {
         checkingContainsUrl(new DataBase().getFullRouteByRouteName("prod", "DE", "main"));
         return page(Main_page_Logic.class);
     }
+
+    @Step("Positive sending the Subscribe form in the footer. Main_page")
+    public Main_page_Logic positiveSendingSubscribeForm(String mail) {
+        emailInputForSubscribeFooter().setValue(mail);
+        checkboxForSubscribeFooter().click();
+        yesButtonForSubscribeFooter().click();
+        successPopUpForSubscribeFooter().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Error tooltip in the Subscribe form in the footer. Main_page")
+    public Main_page_Logic errorMessageInTheSubscribeForm() {
+        yesButtonForSubscribeFooter().click();
+        errorTooltipForSubscribeFooter().shouldBe(visible).shouldHave(text("E-mail Adresse"));
+        emailInputForSubscribeFooter().setValue("11111111");
+        yesButtonForSubscribeFooter().click();
+        errorTooltipForSubscribeFooter().shouldBe(visible).shouldHave(text("E-mail Adresse"));
+        return this;
+    }
+
+    @Step("Error pop-up in the Subscribe form in the footer after sending the form without checking the checkbox. Main_page")
+    public Main_page_Logic errorPopUpInTheSubscribeForm(String mail) {
+        emailInputForSubscribeFooter().setValue(mail);
+        yesButtonForSubscribeFooter().click();
+        errorPopUpInTheSubscribeFooter().shouldBe(visible).shouldHave(text("Um fortzufahren bestätigen Sie bitte Ihr Newsletter-Abo"));
+        return this;
+    }
 }
 
