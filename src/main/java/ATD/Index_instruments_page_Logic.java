@@ -1,8 +1,11 @@
 package ATD;
 
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collections;
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.sleep;
@@ -166,6 +169,38 @@ public class Index_instruments_page_Logic extends Index_instruments_page {
     public Listing_instruments_page_Logic clickFirstSeparateCategoryMainCatalog() {
         firstSeparateCategoryInMainCatalog().shouldBe(visible).click();
         return page(Listing_instruments_page_Logic.class);
+    }
+
+    @Step("Get id all categories from logical union and separate categories then write to list. Index_instruments_page")
+    public ArrayList<String> getIdCategoriesAndSeparateCategoriesThenWriteToList() {
+        titleTop6ProductsBlock().scrollIntoView(false);
+        ArrayList<String> categoriesFromLogicalUnion = new ArrayList<>();
+        for (SelenideElement element : categoriesFromLogicalUnion()) {
+            String idCategory = element.getAttribute("data-ga-action");
+            categoriesFromLogicalUnion.add(idCategory);
+        }
+
+        ArrayList<String> separateCategoriesId = new ArrayList<>();
+        for (SelenideElement element : nameSeparateCategories()) {
+            String idSeparateCategory = element.getAttribute("data-ga-action");
+            separateCategoriesId.add(idSeparateCategory);
+        }
+
+        categoriesFromLogicalUnion.addAll(separateCategoriesId);
+        Collections.sort(categoriesFromLogicalUnion);
+        return categoriesFromLogicalUnion;
+    }
+
+
+    @Step("Get id Logical Unions and write to list. Index_instruments_page")
+    public ArrayList<String> getIdLogicalUnionAndWriteToList() {
+        ArrayList<String> logicalUnionsId = new ArrayList<>();
+        for (SelenideElement element:logicalUnions()) {
+            String idLogicalUnion = element.getAttribute("data-cat-id");
+            logicalUnionsId.add(idLogicalUnion);
+            Collections.sort(logicalUnionsId);
+        }
+        return logicalUnionsId;
     }
 
 

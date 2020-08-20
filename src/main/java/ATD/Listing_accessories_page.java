@@ -102,6 +102,10 @@ public class Listing_accessories_page {
         return $$x("//div[@class='listing-wrap']//div[@class='name']/a[@class='ga-click']");
     }
 
+    SelenideElement titleNameProductFromListing() {
+        return $x("//div[@class='listing-wrap']//div[@class='name']/a[@class='ga-click']");
+    }
+
     SelenideElement btnPrevInBlockBrands() {
         return $x("//div[@id='selected-instalation__slider']//a[@class='prev slick-arrow']");
     }
