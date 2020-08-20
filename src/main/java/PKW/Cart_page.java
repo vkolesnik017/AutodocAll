@@ -41,4 +41,8 @@ public class Cart_page {
         return $x("//div[@class='cart-page-listing__empty-cart']");
     }
 
+    SelenideElement addedProductList() {return $x("//div[@class='cart-page-listing']");}
+
+    SelenideElement volumeOfAddedProduct() {return $x("//td[@class='info']//span[@class='desc']");}
+
 }

@@ -44,4 +44,14 @@ public class Tyre_form_page {
         return $x("//div[@id='popup_update']//div[@class='txt ']");
     }
 
+    SelenideElement productListBlock() {return $x("//ul[@class='list_products']");}
+
+    ElementsCollection priceOfProduct() {return $$x("//div[@class='actual_price']");}
+
+    ElementsCollection attributeOfBtnAddedToBasket() { return $$x("//div[@class='count']/following-sibling::div");}
+
+    ElementsCollection productsFromListBlock() {return $$x("//ul[@class='list_products']/li");}
+
+    SelenideElement forwardOfListing() {return $x("//span[@class='next'][1]/a");}
+
 }

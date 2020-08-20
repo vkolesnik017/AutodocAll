@@ -180,6 +180,8 @@
     <test name="QC_2066_CheckProductsOutOfStock">
         <classes>
             <class name="ATD.Tyres.QC_2066_CheckProductsOutOfStock.QC_2068_AvailabilityOfPopUpOfAppearanceOfOutOfStockProduct"/>
+            <class name="ATD.Tyres.QC_2066_CheckProductsOutOfStock.QC_2069_PresenceOfFeedBackPopUpByClickOnGreyButton"/>
+            <!--<class name="ATD.Tyres.QC_2066_CheckProductsOutOfStock.QC_2070_SortingOfProductWithGreyButton"/>-->
             <class name="ATD.Tyres.QC_2066_CheckProductsOutOfStock.QC_2077_CheckingForPopUpOfSuccessInSendingMailForFeedback"/>
             <class name="ATD.Tyres.QC_2066_CheckProductsOutOfStock.QC_2078_CheckingForErrorPopUpAboutAnUnsetCheckbox"/>
             <class name="ATD.Tyres.QC_2066_CheckProductsOutOfStock.QC_2079_CheckingForPopUpErrorAboutInvalidEmail"/>

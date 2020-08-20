@@ -39,4 +39,16 @@ public class Motoroil_Maker_page {
 
     SelenideElement motorFieldInSelector() {return $(byId("form_car_id"));}
 
+    ElementsCollection btnAddedProductToBasket() {return $$x("//div[@class='basket_btn button active_red_button ']/a");}
+
+    ElementsCollection activeValueOfVolumeAtProduct() { return $$x("//div[contains(@class,'right_side')]/div[1]");    }
+
+    SelenideElement basketDropMenu() {
+        return $x("//div[@class='cart-items-block ']");
+    }
+
+    SelenideElement basket() {
+        return $x("//a[@class='show_cart ga-click']");
+    }
+
 }
