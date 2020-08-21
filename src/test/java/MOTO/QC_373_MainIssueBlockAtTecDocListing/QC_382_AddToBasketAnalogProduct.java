@@ -44,9 +44,8 @@ public class QC_382_AddToBasketAnalogProduct {
         new Cart_page_Logic().checkOfIdAddedProductInBasket(idOfAddedProduct);
     }
 
-                /*НУЖНО ЗАМЕНИТЬ РУТ, ТАК КАК ОН БОЛЬШЕ НЕ ОТВЕЧАЕТ УСЛОВИЯМ ТЕСТА \/   */
 
-/*    @DataProvider(name = "routesCarListModel", parallel = true)
+    @DataProvider(name = "routesCarListModel", parallel = true)
     Object[] dataProviderCarListModel() throws SQLException {
         return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list_model2");
     }
@@ -61,7 +60,7 @@ public class QC_382_AddToBasketAnalogProduct {
         String idOfAddedProduct = carListModelPage.getIdOfAnalogProduct();
         carListModelPage.addProductToBasketFromAnalogBlock();
         new Cart_page_Logic().checkOfIdAddedProductInBasket(idOfAddedProduct);
-    }*/
+    }
 
     @AfterMethod
     public void close() {

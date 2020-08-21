@@ -10,6 +10,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selenide.page;
 
 public class Tyre_form_page_Logic extends Tyre_form_page {
 
@@ -104,7 +105,25 @@ public class Tyre_form_page_Logic extends Tyre_form_page {
             product.setAttributeOfButton(attributeOfBtnAddedToBasket().get(i).getAttribute("class"));
             activeList.add(product);
         }
-
         return this;
+    }
+
+    @Step("get MPN number of product. Tyre_form_page")
+    public String getMpnNumberOfProduct(int positionOfProduct) {
+        String mpnNumber = mpnNumberOfProduct().get(positionOfProduct).getText().replace("MPN: ", "");
+        return mpnNumber;
+    }
+
+    @Step("added product to Wishlist. Tyre_form_page")
+    public Tyre_form_page_Logic addProductToWishList(int positionOfProduct) {
+        btnAddProductToWishList().get(positionOfProduct).shouldBe(visible).click();
+        addedProductToWishList().get(0).shouldBe(exist);
+        return this;
+    }
+
+    @Step("go to WishList page. Tyre_form_page")
+    public Services_wishList_page_Logic goToWishListPage() {
+        iconOfWishList().shouldBe(visible).click();
+        return page(Services_wishList_page_Logic.class);
     }
 }

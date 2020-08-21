@@ -173,6 +173,7 @@
     <test name="QC_2063_MainIssueBlockOnTireListings">
         <classes>
             <class name="ATD.Tyres.QC_2063_MainIssueBlockOnTireListings.QC_2064_PresenceBlockOfTheMainDistributionOfTires"/>
+            <class name="ATD.Tyres.QC_2063_MainIssueBlockOnTireListings.QC_2065_CheckingTransitionToProductPageOfProductFromListing"/>
         </classes>
     </test>
 
@@ -199,5 +200,10 @@
         </classes>
     </test>
 
-
+    <test name="QC_2226_CheckingPeriodReturnTiresBlock">
+        <classes>
+            <class name="ATD.Tyres.QC_2082_PresenceOfMpnNumber.QC_2083_CheckOfIdentityOfMpnProductAndMpnInAws"/>
+            <class name="ATD.Tyres.QC_2082_PresenceOfMpnNumber.QC_2096_CheckMpnNumberInWishList"/>
+        </classes>
+    </test>
 </suite>
