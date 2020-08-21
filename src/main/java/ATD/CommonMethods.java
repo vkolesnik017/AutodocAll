@@ -446,4 +446,48 @@ public class CommonMethods {
     public static String getCurrentUtl() {
         return url();
     }
+
+    //checking selector
+
+    public void checkingMakerName(SelenideElement makerNameLocator, String makerName, String fileForReport, String url) throws IOException {
+        makerNameLocator.shouldBe(Condition.visible);
+        String makerNameTextFromSelector = makerNameLocator.getAttribute("innerText");
+        if (!makerName.equals(makerNameTextFromSelector))
+            writerInFile(fileForReport, true, "Maker from data doesn't equals maker from selector: data:#" + makerName + "selector#" + makerNameTextFromSelector + "#" + url);
+    }
+
+    public void checkingGroupName(SelenideElement groupNameLocator, String groupName, String fileForReport, String url) throws IOException {
+        groupNameLocator.shouldBe(Condition.visible);
+        String groupNameTextFromSelector = groupNameLocator.getAttribute("innerText");
+        if (!groupName.equals(groupNameTextFromSelector))
+            writerInFile(fileForReport, true, "Group from data doesn't equals group from selector: data:#" + groupName + "selector#" + groupNameTextFromSelector + "#" + url);
+    }
+
+    public void checkingModelName(SelenideElement modelNameLocator, String modelName, String fileForReport, String url) throws IOException {
+        modelNameLocator.shouldBe(Condition.visible);
+        String modelNameTextFromSelector = modelNameLocator.getAttribute("innerText");
+        modelNameTextFromSelector = modelNameTextFromSelector.substring(0, modelNameTextFromSelector.lastIndexOf("(")).trim();
+        if (!modelName.equals(modelNameTextFromSelector))
+            writerInFile(fileForReport, true, "Model from data doesn't equals model from selector: data:#" + modelName + "selector#" + modelNameTextFromSelector + "#" + url);
+    }
+
+    public void checkingCarName(SelenideElement carNameLocator, String carName, String yearBegin, String yearEnd, String kw, String hp, String fileForReport, String url) throws IOException {
+        carNameLocator.shouldBe(Condition.visible);
+        String carNameTextFromSelector = carNameLocator.getAttribute("innerText");
+
+        String yearBeginMonth = yearBegin.substring(4);
+        yearBegin = yearBeginMonth.concat(".").concat(yearBegin.substring(0, 4)).trim();
+        if (!yearEnd.equals("0")) {
+            String yearEndMonth = yearEnd.substring(4);
+            yearEnd = yearEndMonth.concat(".").concat(yearEnd.substring(0, 4)).trim();
+        } else {
+            yearEnd = "...";
+        }
+        carNameTextFromSelector = carNameTextFromSelector.replace(" ", "");
+        String carNameFull = carName + "(" + kw + "KW" + "/" + hp + "PS" + ")" + "(" + yearBegin + "-" + yearEnd + ")";
+
+
+        if (!carNameFull.equals(carNameTextFromSelector))
+            writerInFile(fileForReport, true, "Car from data doesn't equals car from selector: data:#" + carName + "selector#" + carNameTextFromSelector + "#" + url);
+    }
 }

@@ -6,6 +6,7 @@ import java.sql.SQLException;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class CartPayments_page_Logic extends CartPayments_page{
 
@@ -75,6 +76,7 @@ public class CartPayments_page_Logic extends CartPayments_page{
 
     @Step("Checks default active payments method{paymentMethod}. CartPayments_page")
     public CartPayments_page_Logic checkActivePaymentMethod(String paymentMethod) {
+        sleep(3000);
         activePayment(paymentMethod).shouldBe(visible);
         return this;
     }

@@ -106,7 +106,6 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         return this;
     }
 
-
     @Step("checking the applicability of product for selected truck .LKW_Category_car_list_page")
     public LKW_Category_car_list_page_Logic checkingApplicabilityOfProductForSelectedTruck() {
         selectProductInTecDocListing();
@@ -114,7 +113,6 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
             nextPagePagination().click();
             selectProductInTecDocListing();
         }
-
         return this;
     }
 
@@ -709,6 +707,24 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         childCategoriesFirstLevelForCheck().get(childCategoryPosition).shouldBe(visible).click();
         return page(LKW_Category_car_list_page_Logic.class);
     }
+
+
+    @Step("check Second Level of parent categories .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic presenceOfExpectedBrandsInBlock(String brands) {
+        brandBlock().shouldBe(visible);
+        List<String> brandsList = new ArrayList<>();
+        List<String> brandsFromBlock = new ArrayList<>();
+        String[] brand = brands.split("\\,");
+        Collections.addAll(brandsList, brand);
+        for (int i = 0; i < linksOfBrandsFromBlock().size(); i++) {
+            brandsFromBlock.add(linksOfBrandsFromBlock().get(i).getAttribute("for").replaceAll("[^0-9]", ""));
+        }
+        for (int i = 0; i < brandsList.size(); i++) {
+            Assert.assertTrue(brandsFromBlock.contains(brandsList.get(i)));
+        }
+        return this;
+    }
+
 }
 
 

@@ -60,6 +60,7 @@ public class QC_2157_EPS {
         new CartAllData_page().abbrechenSubmit().click();
         new CartPayments_page_Logic().checkActivePaymentMethod("epsbank");
         float totalPriceOrderAws = new Customer_view_aws().openCustomerPersonalArea(userID)
+                .checkPresenceOrderHistoryBlock()
                 .checkAndOpenOrderWithExpectedData()
                 .checkPaymentMethodInOrder("EPS Bank")
                 .checkCurrentStatusInOrder("abgebrochene EPS")

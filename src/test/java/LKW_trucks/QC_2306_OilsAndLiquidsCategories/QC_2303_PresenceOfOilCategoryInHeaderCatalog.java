@@ -1,4 +1,4 @@
-package LKW_trucks.QC_144_Header_trucks_routes;
+package LKW_trucks.QC_2306_OilsAndLiquidsCategories;
 
 import ATD.DataBase;
 import ATD.LKW_main_page_Logic;
@@ -13,13 +13,13 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.*;
+import static ATD.CommonMethods.checkingContainsUrl;
+import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_153_NavigationBlockInHeader_lkw {
-    private LKW_main_page_Logic mainPage = new LKW_main_page_Logic();
-    private DataBase db = new DataBase();
+public class QC_2303_PresenceOfOilCategoryInHeaderCatalog {
+
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -27,17 +27,22 @@ public class QC_153_NavigationBlockInHeader_lkw {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_main");
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "main");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Checks navigate categories in header LKW")
-    public void testNavigateCategoriesInHeader(String route) throws SQLException {
+    @Description(value = "Test checks presence of Oil and Liquid categories in catalog, child category and transition")
+    public void testChecksPresenceOgOilAndLiquidCategories(String route) throws SQLException {
         openPage(route);
-        new LKW_main_page_Logic().checkNavigationCategoriesInHeader();
+        new LKW_main_page_Logic().
+                presenceOfOilParentCategoryInHeaderCatalog("lkw_parent_category4")
+                .presenceOfOilChildCategoryPopUp()
+                .clickOnOilChildCategory();
+        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "lkw_category4"));
     }
+
     @AfterMethod
     public void close() {
         closeWebDriver();

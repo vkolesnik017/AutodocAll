@@ -19,7 +19,7 @@ public class Motoroil_specification_page {
 
     SelenideElement contentPartOfRelinkingBLocks(int positionOfBlock) {return $x("(//div[@class='listing_microdata'])["+positionOfBlock+"]//div[@class='lm_content']");}
 
-    ElementsCollection linksOfRelinkingBlocks(int positionOfBlock) {return $$x("(//div[@class='listing_microdata'])["+positionOfBlock+"]//p/a");}
+    ElementsCollection linksOfRelinkingBlocks(int positionOfBlock) {return $$x("(//div[@class='listing_microdata'])["+positionOfBlock+"]//*[self::p or self::li]/a");}
 
     SelenideElement mainHeadline() {return $x("//div[@class='listing_title listing-title--oil']/h1");}
 

@@ -80,7 +80,6 @@ public class Product_page_Logic extends Product_page {
     }
 
 
-
     @Step(":on Product_page")
     public Product_page_Logic checkingDatenschutzerklarungLinkBehavior(SelenideElement orderDatenschutzerklarungLink) {
         new CommonMethods().checkingDatenschutzerklarungLinkBehavior(orderDatenschutzerklarungLink, "underline solid rgb(0, 0, 0)");
@@ -150,4 +149,9 @@ public class Product_page_Logic extends Product_page {
         return mail;
     }
 
+    @Step("presence of Phrase about compatibility product and vehicle .Product_page")
+    public Product_page_Logic presenceOfPhraseAboutCompatibilityProductAndVehicle() {
+        phraseAboutCompatibilityProductAndVehicle().shouldBe(visible);
+        return this;
+    }
 }
