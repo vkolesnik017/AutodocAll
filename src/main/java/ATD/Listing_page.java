@@ -59,11 +59,11 @@ public class Listing_page {
     }
 
     public SelenideElement langeFilterCheckboxLKW() {
-        return $x("//*[@id='mCSB_3_container']//label");
+        return $x("//div[contains(@class,'js-filter-criteria_203')]//label");
     }
 
     public SelenideElement langeFilterCheckboxLKW700() {
-        return $x("//*[@id='mCSB_3_container']/li[3]/label");
+        return $x("//div[contains(@class,'js-filter-criteria_203')]//li[3]/label");
     }
 
     public SelenideElement langeFilterCheckbox450() {
