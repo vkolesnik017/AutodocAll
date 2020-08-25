@@ -3,6 +3,7 @@ package ATD;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selenide.page;
 
 public class Tyres_dimension_page_Logic extends Tyres_dimension_page {
 
@@ -33,5 +34,30 @@ public class Tyres_dimension_page_Logic extends Tyres_dimension_page {
     public Tyres_dimension_page_Logic clickOnBtnSubscription() {
         btnSendOfFeedBackPopUp().click();
         return this;
+    }
+
+    @Step("presence of product listing block. Tyres_dimension_page")
+    public Tyres_dimension_page_Logic presenceOfListingBlock() {
+        productListBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("get MPN number of product. Tyres_dimension_page")
+    public String getMpnNumberOfProduct(int positionOfProduct) {
+        String mpnNumber = mpnNumberOfProduct().get(positionOfProduct).getText().replace("MPN: ", "");
+        return mpnNumber;
+    }
+
+    @Step("added product to Wishlist. Tyres_dimension_page")
+    public Tyres_dimension_page_Logic addProductToWishList(int positionOfProduct) {
+        btnAddProductToWishList().get(positionOfProduct).shouldBe(visible).click();
+        addedProductToWishList().get(0).shouldBe(exist);
+        return this;
+    }
+
+    @Step("go to WishList page. Tyres_dimension_page")
+    public Services_wishList_page_Logic goToWishListPage() {
+        iconOfWishList().shouldBe(visible).click();
+        return page(Services_wishList_page_Logic.class);
     }
 }

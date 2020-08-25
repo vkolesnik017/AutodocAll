@@ -187,4 +187,30 @@ public class Motoroil_viscosity_page_Logic extends Motoroil_viscosity_page {
         productsListBlock().shouldBe(visible);
         return this;
     }
+
+    @Step("get id of added product to basket. Motoroil_viscosity_page")
+    public String getIdOfAddedProductToBasket(int positionOfAddedProduct) {
+        String idOfProduct = btnAddedProductToBasket().get(positionOfAddedProduct).getAttribute("data-ga-entity-product-id");
+        return idOfProduct;
+    }
+
+    @Step("get Volume of added product. Motoroil_viscosity_page")
+    public String getVolumeOfAddedProduct(int positionOfAddedProduct) {
+        String volumeOfProduct;
+        if (activeValueOfVolumeAtProduct().get(positionOfAddedProduct).has(attribute("listtype", "listing"))) {
+            volumeOfProduct = activeValueOfVolumeAtProduct().get(positionOfAddedProduct).getText().replaceAll("[^0-9]", "");
+        } else {
+            volumeOfProduct = "1";
+        }
+        return volumeOfProduct;
+    }
+
+    @Step("added Product to basket. Motoroil_viscosity_page")
+    public Cart_page_Logic addProductToBasket(int positionOfAddedProduct) {
+        btnAddedProductToBasket().get(positionOfAddedProduct).click();
+        basketDropMenu().should(appear);
+        basketDropMenu().should(disappear);
+        basket().click();
+        return page(Cart_page_Logic.class);
+    }
 }

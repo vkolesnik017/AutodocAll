@@ -319,4 +319,12 @@ public class LKW_Category_page_Logic extends LKW_Category_page {
         linkDetails().get(0).shouldBe(visible).click();
         return page(LKW_Product_page_Logic.class);
     }
+
+    @Step("comparison of product and generic .LKW_Category_page")
+    public LKW_Category_page_Logic comparisonOfProductAndGeneric(String titleOfGeneric) {
+        for (int i=0;i<titleOfTopProduct().size();i++){
+            titleOfTopProduct().get(i).shouldHave(text(titleOfGeneric));
+        }
+        return this;
+    }
 }

@@ -196,4 +196,16 @@ public class Motoroil_page_Logic extends Motoroil_page {
         secondFieldKbaSelector().setValue(secondValue).pressEnter();
         return page(Car_parts_motoroil_page_Logic.class);
     }
+
+    @Step("presence of Oil types block. Motoroil_page")
+    public Motoroil_page_Logic presenceOfOilTypesBlock() {
+        oilTypesBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("select type of Oil. Motoroil_page")
+    public Motoroil_Chemical_Type_page_Logic selectTypeOfOil(int positionOfLink) {
+        linksOfOilTypes().get(positionOfLink).shouldBe(visible).click();
+        return page(Motoroil_Chemical_Type_page_Logic.class);
+    }
 }
