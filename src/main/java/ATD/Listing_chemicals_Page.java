@@ -178,6 +178,10 @@ public class Listing_chemicals_Page {
         return $x("//div[@class='js-filter-criteria-top']//label[@class='filter-generics-tecdoc__all show_all  ']");
     }
 
+    SelenideElement btnResetAllInGenericsBlockFromSidebar() {
+        return $x("//div[contains(@class,'js-filter-generic')]//li[1]//label[@class='filter-disk__with-image']");
+    }
+
     SelenideElement mainProductsBlock() {
         return $x("//ul[@class='list_products ']");
     }
@@ -199,11 +203,11 @@ public class Listing_chemicals_Page {
     }
 
     SelenideElement firstCriteriaFromKonsistenzBlockToGetData() {
-        return $x("//div[@class='mCSB_container mCS_y_hidden mCS_no_scrollbar_y']//li[1]/input");
+        return $x("//div[contains(@class,'js-filter-criteria_3402')]//li[1]/Input");
     }
 
     SelenideElement firstCriteriaFromKonsistenzBlock() {
-        return $x("//div[@class='mCSB_container mCS_y_hidden mCS_no_scrollbar_y']//li[1]/label");
+        return $x("//div[contains(@class,'js-filter-criteria_3402')]//li[1]/label");
     }
 
     SelenideElement idProductInBtnAddBasket() {
@@ -228,6 +232,26 @@ public class Listing_chemicals_Page {
 
     SelenideElement popupBasketAddedProducts() {
         return $x("//div[@class='cart-items-block ']");
+    }
+
+    SelenideElement genericBlockFromSidebar() {
+        return $x("//div[contains(@class,'js-filter-generic')]//div[@class='filter-disk__form']");
+    }
+
+    SelenideElement firstGenericFromSidebar() {
+        return $x("//div[contains(@class,'js-filter-generic')]//li[2]//label[@class='filter-disk__with-image']");
+    }
+
+    SelenideElement secondGenericFromSidebar() {
+        return $x("//div[contains(@class,'js-filter-generic')]//li[3]//label[@class='filter-disk__with-image']");
+    }
+
+    SelenideElement firstGenericFromSidebarToGetData() {
+        return $x("//div[contains(@class,'js-filter-generic')]//li[2]//input");
+    }
+
+    SelenideElement secondGenericFromSidebarToGetData() {
+        return $x("//div[contains(@class,'js-filter-generic')]//li[3]//input");
     }
 
 
