@@ -271,27 +271,12 @@ public class CartAllData_page {
         return $x("//img[contains(@src,'mistercash.png')]");
     }
 
+    public SelenideElement klarnaLabel() {
+        return $x("//img[contains(@src,'klarna')]");
+    }
+
     public SelenideElement preloader() {
         return $(By.cssSelector(".preloader_wrapper"));
     }
 
-
-    //Button from the page EPS merchant
-    public SelenideElement abbrechenSubmit() {
-        return $x("//button[@id='abbrechenSubmit']");
-    }
-
-    //Elements from the page Bancontact/Mister Cash merchant
-    SelenideElement fieldForEnteringCardNumber() {
-        return $x("//body[@id='custom-body']//input[@name='CARDCODE']");
-    }
-    SelenideElement fieldForEnteringMonthDate() {
-        return $x("//input[@name='MONTHDATE']");
-    }
-    SelenideElement fieldForEnteringYearDate() {
-        return $x("//input[@name='YEARDATE']");
-    }
-    SelenideElement annulerenSubmit() {
-        return $x("//p[@id='placeholder-cancel']");
-    }
 }

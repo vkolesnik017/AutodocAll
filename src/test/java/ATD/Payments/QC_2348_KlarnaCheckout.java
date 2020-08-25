@@ -19,8 +19,9 @@ import static ATD.DataBase.parseUserIdFromBD;
 import static ATD.DataBase.parseUserMailFromBD;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.Selenide.closeWindow;
 
-public class QC_2157_EPS {
+public class QC_2348_KlarnaCheckout {
 
     @BeforeClass
     void setUp() {
@@ -29,47 +30,48 @@ public class QC_2157_EPS {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "AT", "main", "product32");
+        return new SetUp().setUpShopsWithSubroute("prod", "FI, SE, NO", "main", "product32");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description("Test checks method of payment by EPS")
-    public void testEPS(String route) throws Exception {
+    @Description("Test checks method of payment by KlarnaCheckout")
+    public void testKlarnaCheckout(String route) throws Exception {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
-        String userData = new DataBase().getUserIdForPaymentsMethod("payments_userid_atd", shop, "EPS");
+        String userData = new DataBase().getUserIdForPaymentsMethod("payments_userid_atd", shop, "KlarnaCheckout");
         String userID = parseUserIdFromBD(userData);
         String mail = parseUserMailFromBD(userData);
         float totalPriceAllData = new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
-                .checkPresencePaymentsMethodLabel(new Cart_page().epsLabel())
+                .checkPresencePaymentsMethodLabel(new Cart_page().klarnaLabel())
                 .nextButtonClick()
                 .signIn(mail, passwordForPayments)
                 .chooseDeliveryCountryForShipping(shop)
                 .fillFieldTelNumForShipping("100+001")
                 .nextBtnClick()
-                .clickOnTheDesiredPaymentMethod(shop, "EPS")
+                .clickOnTheDesiredPaymentMethod(shop, "KlarnaCheckout")
                 .nextBtnClick()
-                .checkPresencePaymentsMethodLabel(new CartAllData_page().epsLabel())
+                .checkPresencePaymentsMethodLabel(new CartAllData_page().klarnaLabel())
                 .getTotalPriceAllDataPage(shop);
-        new CartAllData_page_Logic().nextBtnClick();
-        checkingContainsUrl("routing.eps.or.at");
-        new Merchant_page().abbrechenSubmit().click();
-        new CartPayments_page_Logic().checkActivePaymentMethod("epsbank");
+        new CartAllData_page_Logic().payPalBtnClick();
+        checkingContainsUrl("/klarna-invoice");
+        new Merchant_page().checkPresenceFormInMerchantPageFromKlarnaCheckoutMethod();
+        closeWindow();
         float totalPriceOrderAws = new Customer_view_aws().openCustomerPersonalArea(userID)
                 .checkPresenceOrderHistoryBlock()
                 .checkAndOpenOrderWithExpectedData()
-                .checkPaymentMethodInOrder("EPS Bank")
-                .checkCurrentStatusInOrder("abgebrochene EPS")
+                .checkPaymentMethodInOrder("Klarna Checkout")
+                .checkCurrentStatusInOrder("abgebrochene Klarna Checkout")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceAllData, totalPriceOrderAws);
         float totalPriceOrderAwsAfterReSave = new Order_aws().reSaveOrder()
                 .checkCurrentStatusInOrder("Testbestellungen")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceAllData, totalPriceOrderAwsAfterReSave);
+
     }
 
     @AfterMethod
@@ -77,4 +79,3 @@ public class QC_2157_EPS {
         closeWebDriver();
     }
 }
-

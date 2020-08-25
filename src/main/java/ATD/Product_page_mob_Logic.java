@@ -34,7 +34,7 @@ public class Product_page_mob_Logic extends Product_page_mob {
     @Step("Close popup save money. Product_page_Mob")
     public Product_page_mob_Logic closePopupSaveMoney() {
         try {
-            popupSaveMoney().waitUntil(visible, 5000).click();
+            popupSaveMoney().waitUntil(visible, 5000).click(1, 1);
             Wait().until(WebDriver -> url().contains("apps.apple.com"));
             back();
         } catch (NoSuchElementException e) {
