@@ -60,7 +60,7 @@ public class QC_2165_Bancontact_Mister_Cash {
                 .getTotalPriceAllDataPage(shop);
         cartAllData_page_logic.nextBtnClick();
         checkingContainsUrl("/be2bill");
-        cartAllData_page_logic.fillsInFieldsForEnteringDataAndCancelsPayment("11111111", "11", "11");
+        new Merchant_page().fillsInFieldsForEnteringDataAndCancelsPayment("11111111", "11", "11");
         checkingContainsUrl("/basket/payments.html");
         new CartPayments_page_Logic().checkActivePaymentMethod("be2bill_mistercash");
         float totalPriceOrderAws = new Customer_view_aws().openCustomerPersonalArea(userID)
