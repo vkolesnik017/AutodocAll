@@ -27,5 +27,11 @@
         </classes>
     </test>
 
+    <test name="QC_2348_KlarnaCheckout">
+        <classes>
+            <class name="ATD.Payments.QC_2348_KlarnaCheckout">
+            </class>
+        </classes>
+    </test>
 
 </suite>
