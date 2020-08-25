@@ -155,5 +155,37 @@ public class Index_chemicals_page_Logic extends Index_chemicals_page {
         return nameSeparateCategories;
     }
 
+    @Step("Get id all categories from logical union and separate categories then write to list. Index_chemicals_page")
+    public ArrayList<String> getIdCategoriesAndSeparateCategoriesThenWriteToList() {
+        blockMainProducts().scrollIntoView(false);
+        ArrayList<String> categoriesFromLogicalUnion = new ArrayList<>();
+        for (SelenideElement element : categoriesFromLogicalUnion()) {
+            String idCategory = element.getAttribute("data-ga-action");
+            categoriesFromLogicalUnion.add(idCategory);
+        }
+
+        ArrayList<String> separateCategoriesId = new ArrayList<>();
+        for (SelenideElement element : separateCategories()) {
+            String idSeparateCategory = element.getAttribute("data-ga-action");
+            separateCategoriesId.add(idSeparateCategory);
+        }
+
+        categoriesFromLogicalUnion.addAll(separateCategoriesId);
+        Collections.sort(categoriesFromLogicalUnion);
+        return categoriesFromLogicalUnion;
+    }
+
+
+    @Step("Get id Logical Unions and write to list. Index_chemicals_page")
+    public ArrayList<String> getIdLogicalUnionAndWriteToList() {
+        ArrayList<String> logicalUnionsId = new ArrayList<>();
+        for (SelenideElement element:logicalUnions()) {
+            String idLogicalUnion = element.getAttribute("data-cat-id");
+            logicalUnionsId.add(idLogicalUnion);
+            Collections.sort(logicalUnionsId);
+        }
+        return logicalUnionsId;
+    }
+
 
 }

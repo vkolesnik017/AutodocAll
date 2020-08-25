@@ -1,7 +1,6 @@
-package LKW_trucks.QC_94_TecDoc_Listing;
+package PKW.OILS.QC_964_OilTypesBlockOnMainOilPage;
 
-import ATD.LKW_Category_car_list_page_Logic;
-import ATD.SetUp;
+import PKW.Motoroil_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -16,8 +15,7 @@ import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_102_FilterByGenericInTecDocListing {
-
+public class QC_965_PresenceOfOilTypesBlock {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -25,16 +23,18 @@ public class QC_102_FilterByGenericInTecDocListing {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list10");
+        return new PKW.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks filer by Generic in TecDoc listing ")
-    public void testChecksFilterByGenericInTecDocListing(String route) {
+    @Description(value = "Test checks presence of Oil types block")
+    public void testChecksPresenceOfOilTypesBlock(String route) {
         openPage(route);
-        new LKW_Category_car_list_page_Logic().checkFilterByGeneric().checkTecDocListingWithSelectingFilterByGeneric(2);
+
+        new Motoroil_page_Logic()
+                .presenceOfOilTypesBlock();
     }
 
     @AfterMethod

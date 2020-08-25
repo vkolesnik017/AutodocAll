@@ -1,7 +1,7 @@
-package LKW_trucks.QC_94_TecDoc_Listing;
+package ATD.Tyres.QC_2066_CheckProductsOutOfStock;
 
-import ATD.LKW_Category_car_list_page_Logic;
 import ATD.SetUp;
+import ATD.Tyre_item_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -12,12 +12,11 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.Selenide.open;
 
-public class QC_102_FilterByGenericInTecDocListing {
-
+public class QC_2069_PresenceOfFeedBackPopUpByClickOnGreyButton {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -25,16 +24,18 @@ public class QC_102_FilterByGenericInTecDocListing {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list10");
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "main", "tyre_item2,tyre_item3,tyre_item5,tyre_item6,tyre_item7,tyre_item8,tyre_item9,tyre_item10,tyre_item11");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks filer by Generic in TecDoc listing ")
-    public void testChecksFilterByGenericInTecDocListing(String route) {
-        openPage(route);
-        new LKW_Category_car_list_page_Logic().checkFilterByGeneric().checkTecDocListingWithSelectingFilterByGeneric(2);
+    @Description(value = "Test checks presence of feedback pop-up by click on grey button ")
+    public void testChecksPresenceOfFeedBackPopUpByClickOnGreyButton(String route) {
+        open(route);
+
+        new Tyre_item_page_Logic().presenceOfHorizontalSelector()
+                .presenceOfFeedBackPopUpByLackOfProduct();
     }
 
     @AfterMethod

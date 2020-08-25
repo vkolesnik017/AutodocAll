@@ -52,5 +52,16 @@ public class Cart_page_Logic extends Cart_page{
         return idAddedProduct().getAttribute("data-article_id");
     }
 
+    @Step("presence of added product list. Cart_page")
+    public Cart_page_Logic presenceOfAddedProductList() {
+        addedProductList().shouldBe(visible);
+        return this;
+    }
 
+    @Step("Get volume of added product . Cart_page")
+    public String getVolumeAddedProduct() {
+        String volume = volumeOfAddedProduct().getText().replace(volumeOfAddedProduct().getText().substring(volumeOfAddedProduct().getText().lastIndexOf(":")), "");
+        String expectedVolume = volumeOfAddedProduct().getText().replace(volume,"").replaceAll("[^0-9]","");
+        return expectedVolume;
+    }
 }
