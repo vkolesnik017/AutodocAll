@@ -193,7 +193,8 @@ public class Motoroil_page_Logic extends Motoroil_page {
     @Step("select Vehicle in KBA selector with correct number. Motoroil_page")
     public Car_parts_motoroil_page_Logic selectVehicleInKbaSelectorWithCorrectNumber(String firstValue, String secondValue) {
         firstFieldKbaSelector().setValue(firstValue);
-        secondFieldKbaSelector().setValue(secondValue).pressEnter();
+        secondFieldKbaSelector().setValue(secondValue);
+        secondFieldKbaSelector().shouldHave(value(secondValue)).pressEnter();
         return page(Car_parts_motoroil_page_Logic.class);
     }
 
