@@ -2,13 +2,17 @@ package ATD;
 
 import io.qameta.allure.Step;
 
-import static com.codeborne.selenide.Selenide.page;
-import static com.codeborne.selenide.Selenide.sleep;
+import java.util.NoSuchElementException;
+
+import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class Product_page_mob_Logic extends Product_page_mob {
 
     @Step("Adding product to basket. Product_page")
     public Product_page_mob_Logic addProductToCart() {
+        closePopupSaveMoney();
         buyButton().click();
         sleep(2000);
         return this;
@@ -25,5 +29,17 @@ public class Product_page_mob_Logic extends Product_page_mob {
     public String getProductId() {
         String productId = buyButton().getAttribute("id");
         return productId;
+    }
+
+    @Step("Close popup save money. Product_page_Mob")
+    public Product_page_mob_Logic closePopupSaveMoney() {
+        try {
+            popupSaveMoney().waitUntil(visible, 5000).click();
+            Wait().until(WebDriver -> url().contains("apps.apple.com"));
+            back();
+        } catch (NoSuchElementException e) {
+            System.out.println("Footer popup doesn't appear");
+        }
+        return this;
     }
 }
