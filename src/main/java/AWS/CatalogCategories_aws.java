@@ -9,6 +9,7 @@ import io.qameta.allure.Step;
 import java.sql.SQLException;
 import java.util.*;
 import static ATD.CommonMethods.openPage;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
 public class CatalogCategories_aws {
@@ -78,7 +79,7 @@ public class CatalogCategories_aws {
         return $$x("//*[@class='flex-box']/div[12]/input[@checked='checked']/../../div[4]");
     }
 
-    public ElementsCollection categoriesIdInAWS() {
+    private ElementsCollection categoriesIdInAWS() {
         return $$x("//*[@class='flex-box']//input[@checked='checked']/../../div[4]");
     }
 
@@ -104,6 +105,10 @@ public class CatalogCategories_aws {
 
     public SelenideElement btnSearch() {
         return $x("//button[@class='btn btn-success search']");
+    }
+
+    public SelenideElement loadingText() {
+        return $x("//div[@class='center loading-text']");
     }
 
     @Step("Get All Child Categories From Catalog AWS. CatalogCategories_aws")
@@ -268,19 +273,27 @@ public class CatalogCategories_aws {
         return this;
     }
 
+    @Step("Wait until the preloader appears and disappears. CatalogCategories_aws")
+    public CatalogCategories_aws waitUntilPreloaderAppearsAndDisappears() {
+        loadingText().shouldBe(visible);
+        loadingText().shouldNotBe(visible);
+        return this;
+
+    }
+
     @Step("Get all id active categories from AWS. CatalogCategories_aws")
     public ArrayList<String> getAllIdActiveCategories() {
-        sleep(5000);    // Убрать слип или заменить на wait
+        waitUntilPreloaderAppearsAndDisappears();
         ArrayList<String> allCategories = new ArrayList<>();
-        for(int i = 0; i < categoriesIdInAWS().size(); i++) {
-            if(!categoriesIdInAWS().get(i).getText().isEmpty()) {
+        for (int i = 0; i < categoriesIdInAWS().size(); i++) {
+            if (!categoriesIdInAWS().get(i).getText().isEmpty()) {
                 allCategories.add(categoriesIdInAWS().get(i).text());
             }
         }
 
         ArrayList<String> notActiveCategories = new ArrayList<>();
-        for(int i = 0; i < notActiveChildCategoriesName().size(); i++) {
-            if(!notActiveChildCategoriesName().get(i).getText().isEmpty()) {
+        for (int i = 0; i < notActiveChildCategoriesName().size(); i++) {
+            if (!notActiveChildCategoriesName().get(i).getText().isEmpty()) {
                 notActiveCategories.add(notActiveChildCategoriesName().get(i).text());
             }
         }

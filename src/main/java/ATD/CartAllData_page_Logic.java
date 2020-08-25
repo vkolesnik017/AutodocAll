@@ -519,4 +519,15 @@ public class CartAllData_page_Logic extends CartAllData_page {
         }
         return this;
     }
+
+    //This method is used on the merchant page for payment using the Bancontact/Mister Cash
+    @Step("Fills in the fields for entering card data and cancels the payment. CartAllData_page")
+    public CartPayments_page fillsInFieldsForEnteringDataAndCancelsPayment(String cardNum, String monthDate, String yearDate) {
+        switchTo().frame("be2bill-frame");
+        fieldForEnteringCardNumber().setValue(cardNum);
+        fieldForEnteringMonthDate().setValue(monthDate);
+        fieldForEnteringYearDate().setValue(yearDate);
+        annulerenSubmit().click();
+        return page(CartPayments_page.class);
+    }
 }
