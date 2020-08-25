@@ -1,7 +1,7 @@
-package LKW_trucks.QC_94_TecDoc_Listing;
+package ATD.Tyres.QC_2066_CheckProductsOutOfStock;
 
-import ATD.LKW_Category_car_list_page_Logic;
 import ATD.SetUp;
+import ATD.Tyre_form_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -12,12 +12,11 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.Selenide.open;
 
-public class QC_102_FilterByGenericInTecDocListing {
-
+public class QC_2070_SortingOfProductWithGreyButton {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -25,16 +24,19 @@ public class QC_102_FilterByGenericInTecDocListing {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list10");
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "main", "tyre_form5"); //,tyres_season12,offroad_tyres_brand,tyres_group_season_brand3,tyres_size10,tyre_form6,tyres_season_size,tyres_season_dimension7,tyres_brand_size3,tyres_brand_dimension7
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks filer by Generic in TecDoc listing ")
-    public void testChecksFilterByGenericInTecDocListing(String route) {
-        openPage(route);
-        new LKW_Category_car_list_page_Logic().checkFilterByGeneric().checkTecDocListingWithSelectingFilterByGeneric(2);
+    @Description(value = "Test checks sorting of product with Grey button ")
+    public void testChecksSortingOfProductWithGreyButton(String route) {
+        open(route);
+
+        new Tyre_form_page_Logic()
+        .presenceOfListingBlock()
+        .checkSortingOfProductsWithGreyButton();
     }
 
     @AfterMethod

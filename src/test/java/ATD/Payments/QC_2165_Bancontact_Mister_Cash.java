@@ -15,12 +15,15 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.*;
+import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.DataBase.parseUserIdFromBD;
 import static ATD.DataBase.parseUserMailFromBD;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2157_EPS {
+public class QC_2165_Bancontact_Mister_Cash {
+
+    private CartAllData_page_Logic cartAllData_page_logic = new CartAllData_page_Logic();
 
     @BeforeClass
     void setUp() {
@@ -29,41 +32,42 @@ public class QC_2157_EPS {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "AT", "main", "product32");
+        return new SetUp().setUpShopWithSubroutes("prod", "BE", "main", "product32");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description("Test checks method of payment by EPS")
-    public void testEPS(String route) throws Exception {
+    @Description("Test checks method of payment by Bancontact Mister Cash")
+    public void testBancontactMisterCash(String route) throws Exception {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
-        String userData = new DataBase().getUserIdForPaymentsMethod("payments_userid_atd", shop, "EPS");
+        String userData = new DataBase().getUserIdForPaymentsMethod("payments_userid_atd", shop, "Bancontact/Mister Cash");
         String userID = parseUserIdFromBD(userData);
         String mail = parseUserMailFromBD(userData);
         float totalPriceAllData = new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
-                .checkPresencePaymentsMethodLabel(new Cart_page().epsLabel())
+                .checkPresencePaymentsMethodLabel(new Cart_page_Logic().masterCashLabel())
                 .nextButtonClick()
                 .signIn(mail, passwordForPayments)
                 .chooseDeliveryCountryForShipping(shop)
                 .fillFieldTelNumForShipping("100+001")
                 .nextBtnClick()
-                .clickOnTheDesiredPaymentMethod(shop, "EPS")
+                .clickOnTheDesiredPaymentMethod(shop, "Bancontact/Mister Cash")
                 .nextBtnClick()
-                .checkPresencePaymentsMethodLabel(new CartAllData_page().epsLabel())
+                .checkPresencePaymentsMethodLabel(new CartAllData_page().masterCashLabel())
                 .getTotalPriceAllDataPage(shop);
-        new CartAllData_page_Logic().nextBtnClick();
-        checkingContainsUrl("routing.eps.or.at");
-        new Merchant_page().abbrechenSubmit().click();
-        new CartPayments_page_Logic().checkActivePaymentMethod("epsbank");
+        cartAllData_page_logic.nextBtnClick();
+        checkingContainsUrl("/be2bill");
+        new Merchant_page().fillsInFieldsForEnteringDataAndCancelsPayment("11111111", "11", "11");
+        checkingContainsUrl("/basket/payments.html");
+        new CartPayments_page_Logic().checkActivePaymentMethod("be2bill_mistercash");
         float totalPriceOrderAws = new Customer_view_aws().openCustomerPersonalArea(userID)
                 .checkPresenceOrderHistoryBlock()
                 .checkAndOpenOrderWithExpectedData()
-                .checkPaymentMethodInOrder("EPS Bank")
-                .checkCurrentStatusInOrder("abgebrochene EPS")
+                .checkPaymentMethodInOrder("Mister Cash - Be2bill")
+                .checkCurrentStatusInOrder("abgebrochene Be2bill")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceAllData, totalPriceOrderAws);
         float totalPriceOrderAwsAfterReSave = new Order_aws().reSaveOrder()
@@ -77,4 +81,3 @@ public class QC_2157_EPS {
         closeWebDriver();
     }
 }
-

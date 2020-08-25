@@ -69,4 +69,9 @@ public class Motoroil_page {
    SelenideElement detectedVehicleLink() {return $x("//a[@class='form-not-found-car ga-click']");}
 
    SelenideElement detectedVehiclePopUp() {return $x("//div[@class='not-found-car-popup']");}
+
+   SelenideElement oilTypesBlock() {return $x("//h4[contains(text(),'Eigenschaften')]/..");}
+
+   ElementsCollection linksOfOilTypes() {return $$x("//h4[contains(text(),'Eigenschaften')]/..//li/a");}
+
 }

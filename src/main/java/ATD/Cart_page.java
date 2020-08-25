@@ -165,4 +165,12 @@ public class Cart_page {
     public SelenideElement epsLabel() {
         return $x("//img[contains(@src,'eps_at.png')]");
     }
+
+    public SelenideElement masterCashLabel() {
+        return $x("//img[contains(@src,'mistercash.png')]");
+    }
+
+    public SelenideElement klarnaLabel() {
+        return $x("//img[contains(@src,'klarna.png')]");
+    }
 }

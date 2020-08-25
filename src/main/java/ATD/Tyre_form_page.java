@@ -44,4 +44,22 @@ public class Tyre_form_page {
         return $x("//div[@id='popup_update']//div[@class='txt ']");
     }
 
+    SelenideElement productListBlock() {return $x("//ul[@class='list_products']");}
+
+    ElementsCollection priceOfProduct() {return $$x("//div[@class='actual_price']");}
+
+    ElementsCollection attributeOfBtnAddedToBasket() { return $$x("//div[@class='count']/following-sibling::div");}
+
+    ElementsCollection productsFromListBlock() {return $$x("//ul[@class='list_products']/li");}
+
+    SelenideElement forwardOfListing() {return $x("//span[@class='next'][1]/a");}
+
+    ElementsCollection mpnNumberOfProduct() {return $$x("//div[@class='name']/span[contains(text(),'MPN')]");}
+
+    ElementsCollection btnAddProductToWishList() { return $$x("//span[@class='add-to-wishlist title_btn add-article']");}
+
+    ElementsCollection addedProductToWishList() { return $$x("//span[@class='add-to-wishlist title_btn add-to-wishlist--added remove-article']");}
+
+    SelenideElement iconOfWishList() { return $x("//span[@class='header__wishes link']"); }
+
 }
