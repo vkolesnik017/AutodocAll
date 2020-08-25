@@ -169,4 +169,8 @@ public class Cart_page {
     public SelenideElement masterCashLabel() {
         return $x("//img[contains(@src,'mistercash.png')]");
     }
+
+    SelenideElement listOfAddedProductsBlock() {return $x("//div[@class='cart-page-listing']");}
+
+    ElementsCollection listOfAddedProducts() {return $$x("//div[@class='cart-page-listing']//tr");}
 }

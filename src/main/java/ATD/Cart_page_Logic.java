@@ -5,6 +5,7 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import static ATD.CommonMethods.getCurrencyAndVerify;
@@ -229,4 +230,14 @@ public class Cart_page_Logic extends Cart_page {
         return this;
     }
 
+    @Step("get id of added products to list. Cart_page")
+    public List<String> getIdAddedProductsToList() {
+        listOfAddedProductsBlock().shouldBe(visible);
+        List<String> idOfAddedProducts= new ArrayList<>();
+        for (int i=1;i<listOfAddedProducts().size();i++){
+            idOfAddedProducts.add(listOfAddedProducts().get(i).getAttribute("data-article_id"));
+        }
+
+        return idOfAddedProducts;
+    }
 }
