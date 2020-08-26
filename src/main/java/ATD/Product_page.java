@@ -601,9 +601,9 @@ public class Product_page {
 
     SelenideElement relatedProductPopupGoToCartButton() { return $(".go-cart"); }
 
-    SelenideElement tecdocAlternativeLink() { return $x("//*[@data-gac='Tecdoc_analog_click']/span"); }
+    SelenideElement tecdocAlternativeLink() { return $x("(//a[@data-gac='Tecdoc_analog_click'])[1]/span[2]"); }
 
-    SelenideElement tecdocAlternativePrice() { return $x("//*[@data-gac='Tecdoc_analog_click']/../../p[3]/span"); }
+    SelenideElement tecdocAlternativePrice() { return $x("(//div[@class='product-same-specification__wrap__col'])[1]//div[3]//span/span"); }
 
     SelenideElement articleNumber() { return $(".subtitle-art-nummer > span"); }
 
