@@ -21,6 +21,7 @@ import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.CollectionCondition.sizeLessThan;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class Product_page_Logic extends Product_page {
 
@@ -788,6 +789,22 @@ public class Product_page_Logic extends Product_page {
             res = roundMin;
         }
         Assert.assertEquals(res, priceProductPerProductPage);
+        return this;
+    }
+
+    @Step("checking the compatibility of goods and cars .Product_page")
+    public Product_page_Logic checkCompatibilityProductAndGeneric() {
+        breadcrumbsBlock().shouldBe(visible);
+        if (compatibilityVehicleBlock().isDisplayed()) {
+            linkOfCompatibilityVehicleAndProduct().shouldBe(visible);
+        } else {
+            String idOfProduct = url().replace(url().replace(url().substring(url().lastIndexOf("/")), ""),"").replaceAll("[^0-9]","");
+            executeJavaScript("window.open('about:blank','_blank')");
+            switchTo().window(1);
+            new ProductCard_aws(idOfProduct).openProductCardPageAndLogin().checkVehicleLabel();
+            switchTo().window(1).close();
+            switchTo().window(0);
+        }
         return this;
     }
 }

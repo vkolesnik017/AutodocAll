@@ -662,4 +662,8 @@ public class Product_page {
     SelenideElement characteristicZustand() {
         return $x("//div[@class='product-block__description__info']//li[@class='default_ul_li_class']//span[2]");
     }
+
+   SelenideElement compatibilityVehicleBlock() {return $x("//div[contains(text(),'Kompatibel mit folgenden PKWs')]/..");}
+
+   SelenideElement linkOfCompatibilityVehicleAndProduct() {return $x("//div[contains(text(),'Kompatibel mit folgenden PKWs')]/..//div[@class='accordion-selected']/p");}
 }

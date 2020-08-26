@@ -194,7 +194,7 @@ public class Motoroil_page_Logic extends Motoroil_page {
         firstFieldKbaSelector().setValue(firstValue);
         secondFieldKbaSelector().setValue(secondValue);
         firstFieldKbaSelector().shouldHave(value(firstValue));
-        secondFieldKbaSelector().shouldHave(value(secondValue)); 
+        secondFieldKbaSelector().shouldHave(value(secondValue));
         presenceOfViscosityLinks();
         btnSearchOfKbaSelector().click();
         return page(Car_parts_motoroil_page_Logic.class);
