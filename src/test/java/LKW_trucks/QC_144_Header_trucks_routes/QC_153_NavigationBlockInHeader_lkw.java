@@ -36,25 +36,7 @@ public class QC_153_NavigationBlockInHeader_lkw {
     @Description(value = "Checks navigate categories in header LKW")
     public void testNavigateCategoriesInHeader(String route) throws SQLException {
         openPage(route);
-        String shop = getCurrentShopFromJSVarInHTML();
-        mainPage.clickPkwCategory();
-        checkingContainsUrl(db.getRouteByRouteName(shop, "main"));
-        mainPage.clickMotoCategory();
-        checkingContainsUrl(db.getRouteByRouteName(shop, "moto_main"));
-        mainPage.clickTiresCategory();
-        checkingContainsUrl(db.getRouteByRouteName(shop, "tyres"));
-        mainPage.clickInstrumentsCategory();
-        checkingContainsUrl(db.getRouteByRouteName(shop, "index_instruments"));
-        mainPage.clickAccessoriesCategory();
-        checkingContainsUrl(db.getRouteByRouteName(shop, "index_accessories"));
-        mainPage.clickEngineOilCategory();
-        checkingContainsUrl(db.getRouteByRouteName(shop, "engine_oil"));
-        mainPage.clickFiltersCategory();
-        checkingContainsUrl(db.getRouteByRouteName(shop, "filters"));
-        mainPage.clickBrakeSystemCategory();
-        checkingContainsUrl(db.getRouteByRouteName(shop, "brake_system"));
-        mainPage.clickEngineCategory();
-        checkingContainsUrl(db.getRouteByRouteName(shop, "engine"));
+        new LKW_main_page_Logic().checkNavigationCategoriesInHeader();
     }
     @AfterMethod
     public void close() {

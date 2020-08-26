@@ -32,7 +32,7 @@ public class Austauschartikel_static_page {
     }
 
     SelenideElement pfandReturnPartsItem() {
-        return $(byXpath("//*[@class='return-parts__item']"));
+        return $(byXpath("//*[@class='return-parts__categories']//*[@class='return-parts__item']"));
     }
 
     SelenideElement pfandReturnPolicy() {
@@ -72,7 +72,7 @@ public class Austauschartikel_static_page {
     }
 
     ElementsCollection categories() {
-        return $$x("//div[@class='return-parts__item']");
+        return $$x("//*[@class='return-parts__categories']//*[@class='return-parts__item']");
     }
 
     ElementsCollection popUpOfCategory() {

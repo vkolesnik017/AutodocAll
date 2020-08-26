@@ -267,13 +267,16 @@ public class CartAllData_page {
         return $x("//img[contains(@src,'epsbank.png')]");
     }
 
+    public SelenideElement masterCashLabel() {
+        return $x("//img[contains(@src,'mistercash.png')]");
+    }
+
+    public SelenideElement klarnaLabel() {
+        return $x("//img[contains(@src,'klarna')]");
+    }
+
     public SelenideElement preloader() {
         return $(By.cssSelector(".preloader_wrapper"));
     }
 
-
-    //Button from the page merchant
-    public SelenideElement abbrechenSubmit() {
-        return $x("//button[@id='abbrechenSubmit']");
-    }
 }

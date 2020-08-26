@@ -234,6 +234,7 @@
     <test name="QC_2235_DisplayedAllCategoriesAndLogicalUnion">
         <classes>
             <class name="ATD.ACC.QC_2235_DisplayedAllCategoriesAndLogicalUnion.QC_2237_DisplayedAllCategoriesAndLogicalUnionOnMainACC"/>
+            <class name="ATD.ACC.QC_2235_DisplayedAllCategoriesAndLogicalUnion.QC_2248_DisplayedAllCategoriesAndLogicalUnionOnMainChemistry"/>
             <class name="ATD.ACC.QC_2235_DisplayedAllCategoriesAndLogicalUnion.QC_2249_DisplayedAllCategoriesAndLogicalUnionOnMainTools"/>
         </classes>
     </test>

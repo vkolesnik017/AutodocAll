@@ -138,4 +138,10 @@
         </classes>
     </test>
 
+    <test name="QC_2294_BlockWithProductsOnAccListing">
+        <classes>
+            <class name="PKW.ACC.QC_2294_BlockWithProductsOnAccListing.QC_2297_SelectingQuantityProductsByBuyOnACCListing"/>
+        </classes>
+    </test>
+
 </suite>

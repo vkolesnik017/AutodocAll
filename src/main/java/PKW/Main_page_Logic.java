@@ -188,8 +188,6 @@ public class Main_page_Logic extends Main_page {
         headerPromotionContainer().shouldBe(visible);
         headerPromotionText().shouldBe(visible);
         Assert.assertFalse(headerPromotionText().text().isEmpty());
-        headerPromotionDiscount().shouldBe(visible);
-        Assert.assertFalse(headerPromotionDiscount().text().isEmpty());
         headerPromotionTextEnd().shouldBe(visible);
         Assert.assertFalse(headerPromotionTextEnd().text().isEmpty());
         headerPromotionTime().shouldBe(visible);
@@ -295,6 +293,12 @@ public class Main_page_Logic extends Main_page {
         yesButtonForSubscribeFooter().click();
         errorPopUpInTheSubscribeFooter().shouldBe(visible).shouldHave(text("Um fortzufahren bestätigen Sie bitte Ihr Newsletter-Abo"));
         return this;
+    }
+
+    @Step("Click the Versand link in the footer. Main_page")
+    public Versand_static_page_Logic clickFooterVersandLink() {
+        footerVersandLink().click();
+        return page(Versand_static_page_Logic.class);
     }
 }
 

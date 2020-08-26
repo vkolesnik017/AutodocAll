@@ -106,7 +106,6 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         return this;
     }
 
-
     @Step("checking the applicability of product for selected truck .LKW_Category_car_list_page")
     public LKW_Category_car_list_page_Logic checkingApplicabilityOfProductForSelectedTruck() {
         selectProductInTecDocListing();
@@ -114,7 +113,6 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
             nextPagePagination().click();
             selectProductInTecDocListing();
         }
-
         return this;
     }
 
@@ -214,20 +212,33 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
 
     @Step("Check filter by Generic in TecDoc listing .LKW_Category_car_list_page")
     public LKW_Category_car_list_page_Logic checkFilterByGeneric() {
-        filterByGenericBlock().shouldBe(visible);
-        genericsInFilterGenericBlock().shouldHave(sizeNotEqual(0));
+
+        if (genericsBlockInSideBar().isDisplayed()) {
+            typeOfGenericsInSideBar().shouldHave(sizeGreaterThan(0));
+        } else if (filterByGenericBlock().isDisplayed()) {
+            genericsInFilterGenericBlock().shouldHave(sizeNotEqual(0));
+        }
         return this;
     }
 
     @Step("Check TecDoc listing with selecting filter .LKW_Category_car_list_page")
-    public LKW_Category_car_list_page_Logic checkTecDocListingWithSelectingFilterByGeneric() {
-        genericsInFilterGenericBlock().get(1).click();
-        appearsOfLoader();
-        Assert.assertTrue(url().contains("&categories%5B1%5D=133"));
+    public LKW_Category_car_list_page_Logic checkTecDocListingWithSelectingFilterByGeneric(int positionOfGeneric) {
+        if (genericsBlockInSideBar().isDisplayed()) {
+            typeOfGenericsInSideBar().get(positionOfGeneric).shouldBe(visible).click();
+            appearsOfLoader();
+        } else if (filterByGenericBlock().isDisplayed()) {
+            genericsInFilterGenericBlock().get(1).click();
+            appearsOfLoader();
+        }
+        Assert.assertTrue(url().contains("&categories%5B0%5D=133"));
         for (int i = 0; i < titleOfProductInTecDocListingBlock().size(); i++) {
             titleOfProductInTecDocListingBlock().get(i).shouldHave(text("Dichtung, Ölfilter"));
         }
-        allFiltersGeneric().click();
+
+        if (genericsBlockInSideBar().isDisplayed()) {
+            typeOfGenericsInSideBar().get(0).click();
+        } else {
+        allFiltersGeneric().click();}
         appearsOfLoader();
         titleOfProductInTecDocListingBlock().shouldHave(sizeNotEqual(0));
         return this;
@@ -709,6 +720,24 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         childCategoriesFirstLevelForCheck().get(childCategoryPosition).shouldBe(visible).click();
         return page(LKW_Category_car_list_page_Logic.class);
     }
+
+
+    @Step("check Second Level of parent categories .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic presenceOfExpectedBrandsInBlock(String brands) {
+        brandBlock().shouldBe(visible);
+        List<String> brandsList = new ArrayList<>();
+        List<String> brandsFromBlock = new ArrayList<>();
+        String[] brand = brands.split("\\,");
+        Collections.addAll(brandsList, brand);
+        for (int i = 0; i < linksOfBrandsFromBlock().size(); i++) {
+            brandsFromBlock.add(linksOfBrandsFromBlock().get(i).getAttribute("for").replaceAll("[^0-9]", ""));
+        }
+        for (int i = 0; i < brandsList.size(); i++) {
+            Assert.assertTrue(brandsFromBlock.contains(brandsList.get(i)));
+        }
+        return this;
+    }
+
 }
 
 

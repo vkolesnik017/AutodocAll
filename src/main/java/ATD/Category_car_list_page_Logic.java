@@ -47,7 +47,6 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
         return page(Product_page_Logic.class);
     }
 
-
     @Step("select brand in brands block. Category_car_list_page")
     public Category_car_list_page_Logic selectBrandInBlock(String idOfBrand) {
         brandsFilterBlock().shouldBe(visible);
@@ -130,7 +129,7 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
                 .thenComparing(Product::getGenericOfProduct, genericsComparator)
                 .thenComparingDouble(Product::getPriceOfProduct);
         productList.sort(productsComparator);
-        Assert.assertEquals(listBeforeSorting,productList);
+        Assert.assertEquals(listBeforeSorting, productList);
 
         return this;
     }
@@ -154,5 +153,12 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
             list.add(productPage);
         }
         return this;
+    }
+
+    @Step("input generic in Search field. Category_car_list_page")
+    public Search_page_Logic inputGenericInSearchField(String generic) {
+        mainSearchField().shouldBe(visible).setValue(generic);
+        btnSearchOfSearchField().click();
+        return page(Search_page_Logic.class);
     }
 }

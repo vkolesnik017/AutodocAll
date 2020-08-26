@@ -63,7 +63,7 @@ public class LKW_Product_page_Logic extends LKW_Product_page {
         if (compatibilityTruckBlock().isDisplayed()) {
             linkOfCompatibilityTruckAndProduct().shouldBe(visible);
         } else {
-            String idOfProduct = url().replaceAll("[^0-9]", "");
+            String idOfProduct = url().replace(url().replace(url().substring(url().lastIndexOf("/")), ""),"").replaceAll("[^0-9]","");
             executeJavaScript("window.open('about:blank','_blank')");
             switchTo().window(1);
             new ProductCard_aws(idOfProduct).openProductCardPageAndLogin().checkTruckLabel();

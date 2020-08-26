@@ -60,6 +60,7 @@
 
     <test name="QC_939_BlockOfPopularBrandsOnMainPage">
         <classes>
+            <class name="PKW.OILS.QC_939_BlockOfPopularBrandsOnMainPage.QC_940_PresenceOfPopularBrandsOnMainPage"/>
             <class name="PKW.OILS.QC_939_BlockOfPopularBrandsOnMainPage.QC_941_TransitionToListingWithSelectedBrand"/>
         </classes>
     </test>
@@ -96,16 +97,25 @@
     <test name="QC_1162_MainIssueBlockOfListing">
         <classes>
             <class name="PKW.OILS.QC_1162_MainIssueBlockOfListing.QC_1163_PresenceOfProductsListingBlock"/>
+            <class name="PKW.OILS.QC_1162_MainIssueBlockOfListing.QC_1164_AddedProductToBasket"/>
         </classes>
     </test>
 
-       <test name="QC_926_KbaBlockOnMainOilPage">
+    <test name="QC_926_KbaBlockOnMainOilPage">
         <classes>
             <class name="PKW.OILS.QC_926_KbaBlockOnMainOilPage.QC_922_PresenceOfKbaSelectorOnMainPage"/>
+            <class name="PKW.OILS.QC_926_KbaBlockOnMainOilPage.QC_927_TransitionToListingWithCorrectKbaNumber"/>
             <class name="PKW.OILS.QC_926_KbaBlockOnMainOilPage.QC_930_PresenceOfErrorMessageAboutIncorrectKbaNumber"/>
             <class name="PKW.OILS.QC_926_KbaBlockOnMainOilPage.QC_931_PresenceOfErrorMessageAboutEmptyFields"/>
             <class name="PKW.OILS.QC_926_KbaBlockOnMainOilPage.QC_934_PresenceOfInformationKbaPopUp"/>
             <class name="PKW.OILS.QC_926_KbaBlockOnMainOilPage.QC_938_PresenceOfPopUpAboutDetectedVehicle"/>
+        </classes>
+    </test>
+
+    <test name="QC_964_OilTypesBlockOnMainOilPage">
+        <classes>
+            <class name="PKW.OILS.QC_964_OilTypesBlockOnMainOilPage.QC_965_PresenceOfOilTypesBlock"/>
+            <class name="PKW.OILS.QC_964_OilTypesBlockOnMainOilPage.QC_966_TransitionToListingBySelectedTypeOfOil"/>
         </classes>
     </test>
 </suite>

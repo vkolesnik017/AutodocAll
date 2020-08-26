@@ -384,4 +384,32 @@ public class LKW_maker_car_list_Logic extends LKW_maker_car_list {
         mainFormOfSelector().shouldBe(visible);
         return this;
     }
+
+    @Step("presence of Oil category .LKW_maker_car_list")
+    public LKW_maker_car_list_Logic presenceOfOilCategory() {
+        imageOfParentCategories().get(0).shouldBe(visible);
+        titleOfParentCategories().get(0).shouldBe(visible).shouldHave(exactText("Öle & Flüssigkeiten"));
+        return this;
+    }
+
+    @Step("click on Oil parent category .LKW_maker_car_list")
+    public LKW_maker_car_list_Logic clickOnOilParentCategory() {
+        imageOfParentCategories().get(0).shouldBe(visible).click();
+        popUpOfParentCategories().get(0).shouldBe(visible);
+        visibleChildCategoriesPopUpOfParentCategory().shouldHaveSize(1);
+        return this;
+    }
+
+    @Step("click on Oil child category .LKW_maker_car_list")
+    public LKW_Category_car_list_page_Logic clickOnOilChildCategory() {
+        visibleChildCategoriesPopUpOfParentCategory().get(0).shouldBe(visible).click();
+        return page(LKW_Category_car_list_page_Logic.class);
+    }
+
+    @Step("click on Oil child category with out of motor value in from selector.LKW_maker_car_list")
+    public LKW_maker_car_list_Logic clickOnOilChildCategoryWithOutMotor() {
+        visibleChildCategoriesPopUpOfParentCategory().get(0).shouldBe(visible).click();
+        verticalTruckSelectorInOpenState().shouldBe(visible);
+        return this;
+    }
 }

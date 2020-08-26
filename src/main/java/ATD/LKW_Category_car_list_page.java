@@ -266,7 +266,7 @@ public class LKW_Category_car_list_page {
     }
 
     ElementsCollection typeOfGenericsInSideBar() {
-        return $$x("//div[@class='filter-disk__form']/ul//li");
+        return $$x("//div[contains(text(),'Wählen Sie die gewünschte Teile-Kategorie')]/following-sibling::div/ul//li");
     }
 
     ElementsCollection visibleBrands() {
@@ -316,4 +316,6 @@ public class LKW_Category_car_list_page {
     SelenideElement installationSideBlockInSideBar() {return $x("//div[@class='installation-side__content']");}
 
     ElementsCollection sidesOfInstallationInSideBar() {return $$x("//div[@class='installation-side__content']/div");}
+
+    ElementsCollection linksOfBrandsFromBlock() {return $$x("//div[@id='selected-instalation__slider']//li/label");}
 }

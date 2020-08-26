@@ -134,5 +134,23 @@ public class Search_page {
     ElementsCollection descriptionBlockOfProduct() {return $$x("//div[@class='description']");}
 
     ElementsCollection characteristicListOfProduct(int positionOfProduct) {return $$x("(//div[@class='description'])["+positionOfProduct+"]//div[@class='about']//ul/li/span[1]");}
+
+    SelenideElement mainListingBlock() {return $x("//ul[@class='list_products']");}
+
+    ElementsCollection titleOfProductsInListing() {return $$x("//div[@class='name']/a");}
+
+    SelenideElement forwardLinkOfPaginator() { return $x("//span[@class='next'][1]/a");}
+
+    ElementsCollection activeBtnAddProductToBasket() {return $$x("//div[@class='button ']");}
+
+    SelenideElement closeAnotherPartsOfCarPopUp() {return $x("//div[@class='popup-other-cat__close']");}
+
+    SelenideElement basketDropMenu() {
+        return $x("//div[@class='cart-items-block ']");
+    }
+
+    SelenideElement basket() {
+        return $x("//a[@class='header-cart__link']");
+    }
 }
 
