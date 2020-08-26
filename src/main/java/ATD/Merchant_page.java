@@ -3,6 +3,7 @@ package ATD;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
+import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -32,6 +33,29 @@ public class Merchant_page {
         return $x("//div[@data-cid='addmo']");
     }
 
+    //Elements from the Klarna merchant
+    SelenideElement closeErrorPopupBtn() {
+        return $x("//div[@class='popup-content__buttons']/a");
+    }
+    SelenideElement klarnaSubmitBtn() {
+        return $x("//a[@class='yellow klarna-submit']");
+    }
+    SelenideElement klarnaCancelBtn() {
+        return $x("//a[@class='gray']");
+    }
+
+
+
+    @Step("Checks presence element in merchant page for payment klarna. Merchant_page")
+    public CartPayments_page_Logic checkPresenceElementFromMerchantPageForPaymentKlarna() {
+        checkingContainsUrl("/klarna");
+        klarnaSubmitBtn().click();
+        closeErrorPopupBtn().shouldBe(visible).click();
+        checkingContainsUrl("/klarna");
+        klarnaCancelBtn().click();
+        checkingContainsUrl("/basket/payments");
+        return page(CartPayments_page_Logic.class);
+    }
 
     //This method is used on the merchant page for payment using the Bancontact/Mister Cash
     @Step("Fills in the fields for entering card data and cancels the payment. Merchant_page")
