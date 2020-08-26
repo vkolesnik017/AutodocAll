@@ -6,4 +6,20 @@
         <listener class-name="ATD.ProjectListener"/>
     </listeners>
 
+    <test name="QC_1912_Footer" enabled="true">
+        <classes>
+            <class name="PKW.General_Common.QC_1912_Footer.QC_1913_PositiveSendingTheSubscribeFormFooter"/>
+            <class name="PKW.General_Common.QC_1912_Footer.QC_1915_SendingSubscribeFormWithoutOrErrorEmail"/>
+            <class name="PKW.General_Common.QC_1912_Footer.QC_1916_SendingFormWithoutCheckingTheCheckbox"/>
+            <class name="PKW.General_Common.QC_1912_Footer.QC_1917_PresenceOfTheTextBlockInTheFooter"/>
+        </classes>
+    </test>
+
+    <test name="QC_1920_Header" enabled="true">
+        <classes>
+            <class name="PKW.General_Common.QC_1920_Header.QC_1920_PresenceOfTheBlocksInPromotionHeader"/>
+            <class name="PKW.General_Common.QC_1920_Header.QC_1922_PresenceOfTheRatingBlockInTheHeader"/>
+            <class name="PKW.General_Common.QC_1920_Header.QC_1943_PresenceAndFunctionalityOfTheHeaderNavigationLine"/>
+        </classes>
+    </test>
 </suite>

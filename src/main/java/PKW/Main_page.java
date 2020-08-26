@@ -189,10 +189,6 @@ public class Main_page {
         return $x("//*[@class='promotion-header__text-big']");
     }
 
-    SelenideElement headerPromotionDiscount() {
-        return $x("//*[@style='color: #E10913']");
-    }
-
     SelenideElement headerPromotionTextEnd() {
         return $x("//*[@class='promotion-header__text-end']");
     }
@@ -319,5 +315,9 @@ public class Main_page {
 
     SelenideElement errorPopUpInTheSubscribeFooter() {
         return $x("//div[@class='popup_inner']");
+    }
+
+    SelenideElement footerVersandLink() {
+        return $(byXpath("//*[@class='footer_menu_list1']/a"));
     }
 }
