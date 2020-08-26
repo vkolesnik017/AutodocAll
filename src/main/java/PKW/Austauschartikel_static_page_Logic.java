@@ -37,8 +37,8 @@ public class Austauschartikel_static_page_Logic extends Austauschartikel_static_
     }
 
     public Austauschartikel_static_page_Logic checkClickableCards() {
-        sleep(2000);
-        pfandReturnPartsItem().hover();
+        sleep(5000);
+        pfandReturnPartsItem().hover().scrollIntoView(false);
         for (int i = 0; i < 12; i++) {
             categories().get(i).click();
             popUpOfCategory().get(i).shouldBe(visible);

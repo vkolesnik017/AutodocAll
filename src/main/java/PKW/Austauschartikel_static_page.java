@@ -72,7 +72,7 @@ public class Austauschartikel_static_page {
     }
 
     ElementsCollection categories() {
-        return $$x("//div[@class='return-parts__item']");
+        return $$x("//*[@class='return-parts__categories']//*[@class='return-parts__item']");
     }
 
     ElementsCollection popUpOfCategory() {
