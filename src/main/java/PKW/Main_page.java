@@ -90,6 +90,23 @@ public class Main_page {
         return $x("//div[@id='selector-wrapper']//div[@class='mainblock-search__button']/a");
     }
 
+    //Selector
+    protected SelenideElement makerNameSelected() {
+        return $x("//select[@id='form_maker_id']//option[@selected]");
+    }
+
+    protected SelenideElement groupNameSelected() {
+        return $x("//select[@id='form_model_id']//option[@selected]/..");
+    }
+
+    protected SelenideElement modelNameSelected() {
+        return $x("//select[@id='form_model_id']//option[@selected]");
+    }
+
+    protected SelenideElement carNameSelected() {
+        return $x("//select[@id='form_car_id']//option[@selected]");
+    }
+
 
     // GDPR footer
 

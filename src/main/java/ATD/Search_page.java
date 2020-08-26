@@ -9,15 +9,15 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class Search_page {
 
-    public SelenideElement titleOnSearchPage() {
+    SelenideElement titleOnSearchPage() {
         return $(".title_count_search");
     }
 
-    public SelenideElement blockOfHelpSearchProducts() {
+    SelenideElement blockOfHelpSearchProducts() {
         return $(".filter-not-found__title");
     }
 
-    public SelenideElement blockOfLinkingCategory() {
+    SelenideElement blockOfLinkingCategory() {
         return $(".sidebar-category");
     }
 
@@ -29,7 +29,7 @@ public class Search_page {
         return $x("//div[@class='about']/button");
     }
 
-    public SelenideElement dividingLineForProductsOtherCategories() {
+    SelenideElement dividingLineForProductsOtherCategories() {
         return $x("//*[@class='w_search no_margin']");
     }
 
