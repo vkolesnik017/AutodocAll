@@ -49,7 +49,7 @@ public class QC_1680_HeavyLoadsFR_NegativeCaseBasket {
                 .closePopUpDeliveryLimitCartPage()
                 .checkAbsenceGoodInCartPage("1290766")
                 .checkPresenceGoodInCardPage("7807629");
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "HeavyLoasdProduct1"));
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "HeavyLoadProduct1"));
         product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()

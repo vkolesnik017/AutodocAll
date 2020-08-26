@@ -56,7 +56,7 @@ public class QC_1681_HeavyLoadsFR_NegativeCaseAllData {
                 .checkPresenceSafeOrderBlock()
                 .checkPresenceRegularDeliveryPrice()
                 .checkAbsenceHeavyLoadsDeliveryPrice();
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "HeavyLoasdProduct1"));
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "HeavyLoadProduct1"));
         product_page_logic.addProductToCart().closePopupOtherCategoryIfYes().cartClick();
         new CartAllData_page_Logic().deleteGoodsInDeliveryPopupCartAllDataPage()
                 .checkAbsenceGoodInCartPage("1290766")
