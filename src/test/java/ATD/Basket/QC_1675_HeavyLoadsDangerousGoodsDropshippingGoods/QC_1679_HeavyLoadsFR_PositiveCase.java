@@ -33,7 +33,7 @@ public class QC_1679_HeavyLoadsFR_PositiveCase {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product20");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "HeavyLoadProduct2");
     }
 
     @Test(dataProvider = "route")
@@ -47,13 +47,16 @@ public class QC_1679_HeavyLoadsFR_PositiveCase {
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
-                .signIn(email, password).nextBtnClick()
-                .chooseVorkasse().nextBtnClick()
+                .signIn(email, password)
+                .nextBtnClick()
+                .chooseVorkasse()
+                .nextBtnClick()
                 .checkRegularDeliveryPriceAllData("9,95")
                 .checkHeavyLoadsDeliveryPriceAllData("36,95")
                 .checkAbsenceSafeOrderBlock()
                 .getTotalPriceAllDataPage(shop);
-        orderNumber = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
+        orderNumber = new CartAllData_page_Logic().nextBtnClick()
+                .getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumber);
         totalPriceAWSOrder = order_aws.openOrderInAwsWithLogin()
                 .checkDeliveryPriceOrderAWS("9.95")

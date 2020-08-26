@@ -90,6 +90,23 @@ public class Main_page {
         return $x("//div[@id='selector-wrapper']//div[@class='mainblock-search__button']/a");
     }
 
+    //Selector
+    protected SelenideElement makerNameSelected() {
+        return $x("//select[@id='form_maker_id']//option[@selected]");
+    }
+
+    protected SelenideElement groupNameSelected() {
+        return $x("//select[@id='form_model_id']//option[@selected]/..");
+    }
+
+    protected SelenideElement modelNameSelected() {
+        return $x("//select[@id='form_model_id']//option[@selected]");
+    }
+
+    protected SelenideElement carNameSelected() {
+        return $x("//select[@id='form_car_id']//option[@selected]");
+    }
+
 
     // GDPR footer
 
@@ -187,10 +204,6 @@ public class Main_page {
 
     SelenideElement headerPromotionText() {
         return $x("//*[@class='promotion-header__text-big']");
-    }
-
-    SelenideElement headerPromotionDiscount() {
-        return $x("//*[@style='color: #E10913']");
     }
 
     SelenideElement headerPromotionTextEnd() {
@@ -319,5 +332,9 @@ public class Main_page {
 
     SelenideElement errorPopUpInTheSubscribeFooter() {
         return $x("//div[@class='popup_inner']");
+    }
+
+    SelenideElement footerVersandLink() {
+        return $(byXpath("//*[@class='footer_menu_list1']/a"));
     }
 }

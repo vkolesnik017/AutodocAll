@@ -13,7 +13,6 @@ import java.util.List;
 import static ATD.CommonMethods.*;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Condition.disappear;
 import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.WebDriverRunner.url;
@@ -216,6 +215,55 @@ public class Search_page_Logic extends Search_page {
             }
         }
         return this;
+    }
+
+    @Step("check listing with selected generic .Search_page")
+    public Search_page_Logic checkListingWithSelectedGeneric(String generic) {
+        mainListingBlock().shouldBe(visible);
+        checkTitleOfProductsWithGeneric(generic);
+        while (forwardLinkOfPaginator().isDisplayed()) {
+            forwardLinkOfPaginator().click();
+            checkTitleOfProductsWithGeneric(generic);
+        }
+        return this;
+    }
+
+    @Step("check listing with selected generic .Search_page")
+    public Search_page_Logic checkTitleOfProductsWithGeneric(String expectedGeneric) {
+        for (int i = 0; i < titleOfProductsInListing().size(); i++) {
+            titleOfProductsInListing().get(i).shouldHave(text(expectedGeneric));
+        }
+        return this;
+    }
+
+    @Step("get id of added products to basket .Search_page")
+    public List<String> getIdOfAddedProductsToBasket(int countOfAddedProducts) {
+        List<String> idOfAddedProducts = new ArrayList<>();
+        for (int i = 0; i < countOfAddedProducts; i++) {
+            idOfAddedProducts.add(activeBtnAddProductToBasket().get(i).getAttribute("id"));
+        }
+        return idOfAddedProducts;
+    }
+
+    @Step("added products to basket .Search_page")
+    public Search_page_Logic addedProductsToBasket(int countOfAddedProducts) {
+        for (int i = 0; i < countOfAddedProducts; i++) {
+            activeBtnAddProductToBasket().get(i).click();
+            basketDropMenu().shouldBe(visible);
+            basketDropMenu().should(disappear);
+            if (closeAnotherPartsOfCarPopUp().isDisplayed()) {
+                closeAnotherPartsOfCarPopUp().click();
+                closeAnotherPartsOfCarPopUp().shouldNotBe(visible);
+            }
+        }
+        return this;
+    }
+
+    @Step("added products to basket .Search_page")
+    public Cart_page_Logic goToBasket() {
+        basketDropMenu().shouldNotBe(visible);
+        basket().click();
+        return page(Cart_page_Logic.class);
     }
 }
 
