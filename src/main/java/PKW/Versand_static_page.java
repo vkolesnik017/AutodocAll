@@ -1,10 +1,10 @@
 package PKW;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 import static com.codeborne.selenide.Selectors.byXpath;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Versand_static_page {
 
@@ -36,4 +36,276 @@ public class Versand_static_page {
         return $x("//label[@id='privacy_policy_footer']/a");
     }
 
+    SelenideElement deliveryPageContent() {
+        return $x("//main[@id='content']");
+    }
+
+    SelenideElement deliveryPageBox() {
+        return $x("//*[@class='delivery-page__box']");
+    }
+
+    SelenideElement deliveryPageDeliveryIcons() {
+        return $x("//div[@class='box-delivery-icons']");
+    }
+
+    SelenideElement deliveryPageBoxCountryText() {
+        return $x("//div[@class='box-delivery-country-text']");
+    }
+
+    SelenideElement deliveryPageBoxCountryFlag() {
+        return $x("//div[@class='box-delivery-country-text']//span//img");
+    }
+
+    SelenideElement deliveryPageBoxFeatureOne() {
+        return $x("//div[@class='box-delivery-features__col']");
+    }
+
+    SelenideElement deliveryPageBoxFeatureTwo() {
+        return $x("//div[@class='box-delivery-features__col multiple']");
+    }
+
+    SelenideElement deliveryPageBoxFeatureThree() {
+        return $x("//div[@class='box-delivery-features__col box-tyre']");
+    }
+
+    SelenideElement deliveryPageBoxFeatureText() {
+        return $x("//div[@class='box-delivery-features__note']");
+    }
+
+    SelenideElement deliveryPageBoxFeatureTextBottom() {
+        return $x("//div[@class='box-delivery-bottom-text']");
+    }
+
+    SelenideElement countryBlockTitle() {
+        return $x("//div[@class='country-block__title']");
+    }
+
+    ElementsCollection countryItemForCount() {
+        return $$x("//div[@class='country-block__list__col']//li");
+    }
+
+    SelenideElement countryBlockItem() {
+        return $x("//div[@class='country-block__items__item']//p");
+    }
+
+    ElementsCollection countryBlockItems() {
+        return $$x("//div[@class='country-block__items__item']//p");
+    }
+
+    ElementsCollection countryBlockFlagsForFirstThree() {
+        return $$x("//div[@class='country-block__items__item']//span//img");
+    }
+
+    SelenideElement countryBlockItemsButton() {
+        return $x("//div[@class='country-block__items__button']");
+    }
+
+    SelenideElement countryBlockOtherCountry() {
+        return $x("//div[@class='country-block__other-country']");
+    }
+
+    ElementsCollection countryListWithFlagAndPriceForFiftyFive() {
+        return $$x("//div[@class='country-block__other-country']//li//img");
+    }
+
+    SelenideElement oneCountryWithPriceFromFiftyFive() {
+        return $x("//div[@class='country-block__other-country']//li[1]");
+    }
+
+    SelenideElement iconCar() {
+        return $x("//span[@class='icon icon-car']");
+    }
+
+    SelenideElement iconLock() {
+        return $x("//span[@class='icon icon-lock']");
+    }
+
+    SelenideElement iconTime() {
+        return $x("//span[@class='icon icon-hours']");
+    }
+
+    ElementsCollection featureBlockTextForIcon() {
+        return $$x("//div[@class='delivery-page__features__item']");
+    }
+
+    SelenideElement featureBlockTextForOneIcon() {
+        return $x("//div[@class='delivery-page__features__item']");
+    }
+
+    SelenideElement deliveryTextBlock() {
+        return $x("//div[@class='delivery-page__simple-text']");
+    }
+
+    SelenideElement lieferzeitTextBlock() {
+        return $x("//div[@class='delivery-page__time__title']");
+    }
+
+    SelenideElement lieferzeitBlockLink() {
+        return $x("//div[@class='delivery-page__time__title']//a");
+    }
+
+    SelenideElement aufLagerImage() {
+        return $x("//div[@class='delivery-page__time__item delivery-page__time__lager']//span[@class='icon']");
+    }
+
+    SelenideElement nichtAufLagerImage() {
+        return $x("//div[@class='delivery-page__time__item delivery-page__time__envelope']//span[@class='icon']");
+    }
+
+    SelenideElement nichtAufLagerTextBlock() {
+        return $x("//div[@class='delivery-page__time__item delivery-page__time__envelope']");
+    }
+
+    SelenideElement aufLagerTextBlock() {
+        return $x("//div[@class='delivery-page__time__item delivery-page__time__lager']");
+    }
+
+    SelenideElement faqTitleOne() {
+        return $x("//div[@class='delivery-page__faq']//div[@class='delivery-page__faq__title']");
+    }
+
+    ElementsCollection faqQuestions() {
+        return $$x("//p[@class='item-title']");
+    }
+
+    SelenideElement faqQuestionsActive() {
+        return $x("//p[@class='item-title active']");
+    }
+
+    SelenideElement faqAnswersOne() {
+        return $x("//div[@class='item-content open']");
+    }
+
+    ElementsCollection faqAnswers() {
+        return $$x("//div[@class='item-content open']");
+    }
+
+    SelenideElement deliveryFaqText() {
+        return $x("//div[@class='delivery-page__faq__text']");
+    }
+
+    SelenideElement carImage() {
+        return $x("//span[@class='car-image']");
+    }
+
+    SelenideElement returnTextTitle() {
+        return $x("//div[@class='delivery-page__easy-return__title']");
+    }
+
+    SelenideElement returnTextSubTitle() {
+        return $x("//div[@class='delivery-page__easy-return__subtitle']");
+    }
+
+    SelenideElement returnCircle1() {
+        return $x("//div[@class='delivery-page__easy-return__circle1']");
+    }
+
+    SelenideElement returnCircle2() {
+        return $x("//div[@class='delivery-page__easy-return__circle2']");
+    }
+
+    SelenideElement returnCircle3() {
+        return $x("//div[@class='delivery-page__easy-return__circle3']");
+    }
+
+    ElementsCollection questionsBlockItem() {
+        return $$x("//div[@class='delivery-page__question-block__item']");
+    }
+
+    SelenideElement questionsBlockItemOne() {
+        return $x("//div[@class='delivery-page__question-block__item']");
+    }
+
+    SelenideElement questionBlockList() {
+        return $x("//div[@class='delivery-page__question-block__list']");
+    }
+
+    SelenideElement heavyGoodsTextBlock() {
+        return $x("//div[@class='delivery-page__heavy-goods']");
+    }
+
+    SelenideElement blockSpergutOne() {
+        return $x("//div[@class='delivery-page__heavy-goods__col'][1]//span");
+    }
+
+    SelenideElement blockSpergutTwo() {
+        return $x("//div[@class='delivery-page__heavy-goods__col'][2]//span");
+    }
+
+    SelenideElement blockSpergutOneCheckingText() {
+        return $x("//div[@class='delivery-page__heavy-goods__col'][1]//p");
+    }
+
+    SelenideElement blockSpergutTwoCheckingText() {
+        return $x("//div[@class='delivery-page__heavy-goods__col'][2]//p");
+    }
+
+    SelenideElement firstTab() {
+        return $x("//li[@data-tab='tab-1']");
+    }
+
+    SelenideElement secondTab() {
+        return $x("//li[@data-tab='tab-2']");
+    }
+
+    SelenideElement blocksCountryPriceTextOne() {
+        return $x("//div[@class='delivery-page__heavy-price__list__col']//li//span");
+    }
+
+    ElementsCollection secondTabContentImageFlag() {
+        return $$x("//div[@class='delivery-page__heavy-price__list__col']//li//p//img");
+    }
+
+    ElementsCollection blocksCountryPriceCount() {
+        return $$x("//div[@class='delivery-page__heavy-price__list__col']//li");
+    }
+
+    ElementsCollection blocksCountryPriceText() {
+        return $$x("//div[@class='delivery-page__heavy-price__list__col']//li//span");
+    }
+
+
+    ElementsCollection blocksTextWithPrice() {
+        return $$x("//div[@class='delivery-page__heavy-price__col']");
+    }
+
+    SelenideElement blocksTextWithPriceOne() {
+        return $x("//div[@class='delivery-page__heavy-price__col']");
+    }
+
+    SelenideElement listWithTheCountriesAndPriceTabTwo() {
+        return $x("//div[@class='delivery-page__heavy-price__list__col']");
+    }
+
+    SelenideElement mehrButton() {
+        return $x("//div[@class='delivery-page__heavy-price__title']//a");
+    }
+
+    SelenideElement expandTextAfterMehr() {
+        return $x("//div[@class='delivery-page__heavy-price__list__col delivery-page__heavy-price__list__heavy']");
+    }
+
+    ElementsCollection deliveryPriceWithCountryMehr() {
+        return $$x("//li[@class='inverse-text']");
+    }
+
+    SelenideElement deliveryPriceWithCountryMehrOne() {
+        return $x("//li[@class='inverse-text']//span");
+    }
+
+    SelenideElement faqTitleSecond() {
+        return $x("//*[@class='delivery-page__faq delivery-page__faq--freq']//div[@class='delivery-page__faq__title']");
+    }
+
+    SelenideElement backButton() {
+        return $x("//*[@class='delivery-page__button']");
+    }
+
+    SelenideElement downloadPdfButton() {
+        return $x("//*[@class='delivery-page__links']//a[2]");
+    }
+
+    SelenideElement downloadAcrobatButton() {
+        return $x("//*[@class='delivery-page__links']//a[3]");
+    }
 }

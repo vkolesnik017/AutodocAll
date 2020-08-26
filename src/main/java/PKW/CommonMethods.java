@@ -1,10 +1,12 @@
 package PKW;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.ex.UIAssertionError;
 import io.qameta.allure.Step;
 import org.openqa.selenium.TimeoutException;
 import org.testng.Assert;
+
 import java.io.BufferedWriter;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -13,10 +15,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.Random;
 
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Condition.cssValue;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static com.codeborne.selenide.WebDriverRunner.url;
 import static org.testng.Assert.assertTrue;
@@ -158,5 +158,50 @@ public class CommonMethods {
 
     public static String getCurrentUtl() {
         return url();
+    }
+
+    //checking selector
+
+    public void checkingMakerName(SelenideElement makerNameLocator, String makerName, String fileForReport, String url) throws IOException {
+        makerNameLocator.shouldBe(Condition.visible);
+        String makerNameTextFromSelector = makerNameLocator.getAttribute("innerText");
+        if (!makerName.equals(makerNameTextFromSelector))
+            writerInFile(fileForReport, true, "Maker from data doesn't equals maker from selector:" + "#" + makerName + "#" + makerNameTextFromSelector + "#" + url);
+    }
+
+    public void checkingGroupName(SelenideElement groupNameLocator, String groupName, String fileForReport, String url) throws IOException {
+        groupNameLocator.shouldBe(Condition.visible);
+        String groupNameTextFromSelector = groupNameLocator.getAttribute("label");
+        if (!groupName.equals(groupNameTextFromSelector))
+            writerInFile(fileForReport, true, "Group from data doesn't equals group from selector:" + "#" + groupName + "#" + groupNameTextFromSelector + "#" + url);
+    }
+
+    public void checkingModelName(SelenideElement modelNameLocator, String modelName, String fileForReport, String url) throws IOException {
+        modelNameLocator.shouldBe(Condition.visible);
+        String modelNameTextFromSelector = modelNameLocator.getAttribute("innerText");
+        modelNameTextFromSelector = modelNameTextFromSelector.substring(0, modelNameTextFromSelector.lastIndexOf("(")).trim();
+        if (!modelName.equals(modelNameTextFromSelector))
+            writerInFile(fileForReport, true, "Model from data doesn't equals model from selector:" + "#" + modelName + "#" + modelNameTextFromSelector + "#" + url);
+    }
+
+    public void checkingCarName(SelenideElement carNameLocator, String carName, String yearBegin, String yearEnd, String kw, String hp, String fileForReport, String url) throws IOException {
+        carNameLocator.shouldBe(Condition.visible);
+        String carNameTextFromSelector = carNameLocator.getText();
+
+        String yearBeginMonth = yearBegin.substring(4);
+        yearBegin = yearBeginMonth.concat("/").concat(yearBegin.substring(0, 4)).trim();
+        if (!yearEnd.equals("0")) {
+            String yearEndMonth = yearEnd.substring(4);
+            yearEnd = yearEndMonth.concat("/").concat(yearEnd.substring(0, 4)).trim();
+        } else {
+            yearEnd = "...";
+        }
+        carNameTextFromSelector = carNameTextFromSelector.replace(" ", "").trim();
+        String carNameFull = carName + "(" + kw + "KW" + "/" + hp + "HP" + ")" + "(" + yearBegin + "-" + yearEnd + ")";
+        carNameFull = carNameFull.replace(" ", "").trim();
+
+
+        if (!carNameFull.equals(carNameTextFromSelector))
+            writerInFile(fileForReport, true, "Car from data doesn't equals car from selector:" + "#" + carNameFull + "#" + carNameTextFromSelector + "#" + url);
     }
 }
