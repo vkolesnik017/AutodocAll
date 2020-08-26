@@ -68,4 +68,8 @@ class Category_car_list_page {
 
     SelenideElement forwardNextPaginator() {return $x("//span[@class='next'][1]/a");}
 
+    SelenideElement mainSearchField() {return $x("//input[@class='header-search__input']");}
+
+    SelenideElement btnSearchOfSearchField() {return $x("//a[@class='header-search__submit search_submit form-submitter']");}
+
   }

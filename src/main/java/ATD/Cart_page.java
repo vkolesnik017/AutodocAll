@@ -173,4 +173,8 @@ public class Cart_page {
     public SelenideElement klarnaLabel() {
         return $x("//img[contains(@src,'klarna.png')]");
     }
+
+    SelenideElement listOfAddedProductsBlock() {return $x("//div[@class='cart-page-listing']");}
+
+    ElementsCollection listOfAddedProducts() {return $$x("//div[@class='cart-page-listing']//tr");}
 }
