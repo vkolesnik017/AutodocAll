@@ -165,4 +165,16 @@ public class Cart_page {
     public SelenideElement epsLabel() {
         return $x("//img[contains(@src,'eps_at.png')]");
     }
+
+    public SelenideElement masterCashLabel() {
+        return $x("//img[contains(@src,'mistercash.png')]");
+    }
+
+    public SelenideElement klarnaLabel() {
+        return $x("//img[contains(@src,'klarna.png')]");
+    }
+
+    SelenideElement listOfAddedProductsBlock() {return $x("//div[@class='cart-page-listing']");}
+
+    ElementsCollection listOfAddedProducts() {return $$x("//div[@class='cart-page-listing']//tr");}
 }

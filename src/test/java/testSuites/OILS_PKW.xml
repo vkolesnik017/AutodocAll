@@ -97,6 +97,7 @@
     <test name="QC_1162_MainIssueBlockOfListing">
         <classes>
             <class name="PKW.OILS.QC_1162_MainIssueBlockOfListing.QC_1163_PresenceOfProductsListingBlock"/>
+            <class name="PKW.OILS.QC_1162_MainIssueBlockOfListing.QC_1164_AddedProductToBasket"/>
         </classes>
     </test>
 
@@ -111,4 +112,10 @@
         </classes>
     </test>
 
+    <test name="QC_964_OilTypesBlockOnMainOilPage">
+        <classes>
+            <class name="PKW.OILS.QC_964_OilTypesBlockOnMainOilPage.QC_965_PresenceOfOilTypesBlock"/>
+            <class name="PKW.OILS.QC_964_OilTypesBlockOnMainOilPage.QC_966_TransitionToListingBySelectedTypeOfOil"/>
+        </classes>
+    </test>
 </suite>

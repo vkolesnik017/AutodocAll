@@ -71,4 +71,16 @@ public class Motoroil_viscosity_page {
 
     SelenideElement selectedViscosityLink(String viscosityLink) {return $x("//div[contains(text(),'"+viscosityLink+"')]/ancestor::span[contains(@class,'active')]"); }
 
+    ElementsCollection btnAddedProductToBasket() {return $$x("//div[@class='basket_btn button active_red_button ']/a");}
+
+    ElementsCollection activeValueOfVolumeAtProduct() { return $$x("//div[contains(@class,'right_side')]/div[1]");    }
+
+    SelenideElement basketDropMenu() {
+        return $x("//div[@class='cart-items-block ']");
+    }
+
+    SelenideElement basket() {
+        return $x("//a[@class='show_cart ga-click']");
+    }
+
 }

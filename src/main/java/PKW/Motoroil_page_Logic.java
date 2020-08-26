@@ -5,8 +5,7 @@ import io.qameta.allure.Step;
 
 import static PKW.CommonMethods.waitWhileRouteContainsExpectedCondition;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.back;
-import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Motoroil_page_Logic extends Motoroil_page {
 
@@ -193,7 +192,31 @@ public class Motoroil_page_Logic extends Motoroil_page {
     @Step("select Vehicle in KBA selector with correct number. Motoroil_page")
     public Car_parts_motoroil_page_Logic selectVehicleInKbaSelectorWithCorrectNumber(String firstValue, String secondValue) {
         firstFieldKbaSelector().setValue(firstValue);
-        secondFieldKbaSelector().setValue(secondValue).pressEnter();
+        secondFieldKbaSelector().setValue(secondValue);
+        firstFieldKbaSelector().shouldHave(value(firstValue));
+        secondFieldKbaSelector().shouldHave(value(secondValue)); 
+        presenceOfViscosityLinks();
+        btnSearchOfKbaSelector().click();
         return page(Car_parts_motoroil_page_Logic.class);
+    }
+
+    @Step("presence of Oil types block. Motoroil_page")
+    public Motoroil_page_Logic presenceOfOilTypesBlock() {
+        oilTypesBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("select type of Oil. Motoroil_page")
+    public Motoroil_Chemical_Type_page_Logic selectTypeOfOil(int positionOfLink) {
+        linksOfOilTypes().get(positionOfLink).shouldBe(visible).click();
+        return page(Motoroil_Chemical_Type_page_Logic.class);
+    }
+
+    @Step("presence of viscosity links. Motoroil_page")
+    public Motoroil_page_Logic presenceOfViscosityLinks() {
+        for (int i = 0; i < visibleLinksOfViscosityBlock().size(); i++) {
+            visibleLinksOfViscosityBlock().get(i).shouldBe(visible);
+        }
+        return this;
     }
 }

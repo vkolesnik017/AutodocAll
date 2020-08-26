@@ -80,17 +80,15 @@ public class Motoroil_specification_page_Logic extends Motoroil_specification_pa
         clickOnValueFromFirstRelinkingBlock(0);
         checkingContainsUrl(firstBlock);  waitWhileRouteContainsExpectedCondition(firstBlock);
         back();
-        clickOnValueFromSecondRelinkingBlock(0);
-        checkingContainsUrl(secondBlock);
+        clickOnValueFromSecondRelinkingBlock(0); checkingContainsUrl(secondBlock);
         back();
-        clickOnValueFromThirdRelinkingBlock(0);
-        checkingContainsUrl(thirdBlock);
+        clickOnValueFromThirdRelinkingBlock(0); checkingContainsUrl(thirdBlock);
         return this;
     }
 
     @Step("click on value from First relinking block. Motoroil_specification_page")
     public Motoroil_specification_page_Logic clickOnValueFromFirstRelinkingBlock(int position) {
-        linksOfRelinkingBlocks(1).get(position).shouldBe(visible).click();
+        linksOfRelinkingBlocks(1).get(position).shouldBe(visible).scrollIntoView("{block: \"center\"}").click();
         return page(Motoroil_specification_page_Logic.class);
     }
 

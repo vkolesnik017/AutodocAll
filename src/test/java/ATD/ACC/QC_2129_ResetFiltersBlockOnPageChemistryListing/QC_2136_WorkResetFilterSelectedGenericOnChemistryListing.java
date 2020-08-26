@@ -40,8 +40,8 @@ public class QC_2136_WorkResetFilterSelectedGenericOnChemistryListing {
     @Description(value = "Test Checking work btn reset filter selected generic from reset filter block")
     public void testCheckingWorkBtnResetFilterSelectedGeneric(String route) {
         openPage(route);
-        idGeneric = listingChemicalsPageLogic.getValueFirstGenericInGenericBlock();
-        listingChemicalsPageLogic.clickFirstGenericInGenericsBlock();
+        idGeneric = listingChemicalsPageLogic.getValueFirstGenericInGenericBlockOrSidebar();
+        listingChemicalsPageLogic.clickFirstGenericInGenericsBlockOrSidebar();
         new Listing_page_Logic().waitUntilPreloaderDisappear();
         idBtnResetFilter = listingChemicalsPageLogic.getIdFirstBtnResetFilterInResetBlock();
         Assert.assertEquals(idGeneric, idBtnResetFilter);

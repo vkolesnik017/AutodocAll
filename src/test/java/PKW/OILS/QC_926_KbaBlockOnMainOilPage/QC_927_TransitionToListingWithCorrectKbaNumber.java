@@ -45,7 +45,7 @@ public class QC_927_TransitionToListingWithCorrectKbaNumber {
         checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "car_parts_motoroil4"));
         new Car_parts_motoroil_page_Logic().presenceVehicleInSelector("121", "8607", "107860")
                 .presenceVehicleInKbaSelector(firstValueOfKbaNumber, secondValueOfKbaNumber);
-         //       .checkingApplicabilityOfProductForSelectedVehicle();   ОТКЛЮЧЕНА ПРОВЕРКА, ТАК КАК, СКОРЕЕ ВСЕГО, ТУТ БАГА. ЭТОТ МОМЕНТ ОБСУЖДАЕТСЯ
+        //       .checkingApplicabilityOfProductForSelectedVehicle();  /* -- ОТКЛЮЧЕНА ПРОВЕРКА, ТАК КАК, СКОРЕЕ ВСЕГО, ТУТ БАГА. ЭТОТ МОМЕНТ ОБСУЖДАЕТСЯ --*/
     }
 
     @AfterMethod

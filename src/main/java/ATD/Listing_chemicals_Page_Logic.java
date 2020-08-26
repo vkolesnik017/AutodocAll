@@ -120,9 +120,16 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
         return firstVisibleBrandToGetData().getAttribute("value");
     }
 
-    @Step("Get value first generic in generic block. Listing_chemicals_Page")
-    public String getValueFirstGenericInGenericBlock() {
-        return firstGenericInGenericsBlockToGetData().getAttribute("value");
+    @Step("Get value first generic in generic block or sidebar. Listing_chemicals_Page")
+    public String getValueFirstGenericInGenericBlockOrSidebar() {
+        String firstGenericValue = null;
+        if (firstGenericInGenericsBlockToGetData().isDisplayed()) {
+            firstGenericValue = firstGenericInGenericsBlockToGetData().getAttribute("value");
+        } else {
+            firstGenericValue = firstGenericFromSidebarToGetData().getAttribute("value");
+        }
+        return firstGenericValue;
+
     }
 
     @Step("Get value second visible brand in block brands. Listing_chemicals_Page")
@@ -137,7 +144,7 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
 
     @Step("Get id first criteria from Konsistenz block . Listing_chemicals_Page")
     public String getValueFirstCriteriaFromKonsistenzBlock() {
-        return firstCriteriaFromKonsistenzBlockToGetData().getAttribute("id");
+        return firstCriteriaFromKonsistenzBlockToGetData().scrollIntoView(false).getAttribute("id");
     }
 
     @Step("Click first criteria from Konsistenz block. Listing_chemicals_Page")
@@ -226,19 +233,31 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
 
     @Step("Click btn reset All in generics block. Listing_chemicals_Page")
     public Listing_chemicals_Page_Logic clickBtnResetAllInGenericsBlock() {
-        btnResetAllInGenericsBlock().click();
+        if (btnResetAllInGenericsBlock().isDisplayed()){
+            btnResetAllInGenericsBlock().click();
+        }else {
+            btnResetAllInGenericsBlockFromSidebar().click();
+        }
         return this;
     }
 
-    @Step("Click first generic in generics block. Listing_chemicals_Page")
-    public Listing_chemicals_Page_Logic clickFirstGenericInGenericsBlock() {
-        firstGenericInGenericsBlock().click();
+    @Step("Click first generic in generics block or sidebar. Listing_chemicals_Page")
+    public Listing_chemicals_Page_Logic clickFirstGenericInGenericsBlockOrSidebar() {
+        if (firstGenericInGenericsBlock().isDisplayed()){
+            firstGenericInGenericsBlock().click();
+        }else {
+            firstGenericFromSidebar().click();
+        }
         return this;
     }
 
-    @Step("Click second generic in generics block. Listing_chemicals_Page")
-    public Listing_chemicals_Page_Logic clickSecondGenericInGenericsBlock() {
-        secondGenericInGenericsBlock().click();
+    @Step("Click second generic in generics block or sidebar. Listing_chemicals_Page")
+    public Listing_chemicals_Page_Logic clickSecondGenericInGenericsBlockOrSidebar() {
+        if (secondGenericInGenericsBlock().isDisplayed()) {
+            secondGenericInGenericsBlock().click();
+        }else {
+            secondGenericFromSidebar().click();
+        }
         return this;
     }
 
@@ -254,32 +273,47 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
         return this;
     }
 
-
-    @Step("Get name from first generic in generics block. Listing_chemicals_Page")
-    public String  getNameFirstGenericInGenericBlock() {
-        return firstGenericInGenericsBlock().getText();
+    @Step("Get name from first generic in generics block or sidebar. Listing_chemicals_Page")
+    public String  getNameFirstGenericInGenericBlockOrSidebar() {
+        String firstGeneric = null;
+        if (firstGenericInGenericsBlock().isDisplayed()) {
+            firstGeneric = firstGenericInGenericsBlock().getText();
+        } else {
+            firstGeneric = firstGenericFromSidebar().getText();
+        }
+        return firstGeneric;
     }
 
-    @Step("Get name from second generic in generics block. Listing_chemicals_Page")
-    public String  getNameSecondGenericInGenericBlock() {
-        return secondGenericInGenericsBlock().getText();
+    @Step("Get name from second generic in generics block or sidebar. Listing_chemicals_Page")
+    public String  getNameSecondGenericInGenericBlockOrSidebar() {
+        String secondGeneric = null;
+        if (secondGenericInGenericsBlock().isDisplayed()) {
+            secondGeneric = secondGenericInGenericsBlock().getText();
+        } else {
+            secondGeneric = secondGenericFromSidebar().getText();
+        }
+        return secondGeneric;
     }
 
     @Step("Checking sorting products by generic. Listing_chemicals_Page")
     public Listing_chemicals_Page_Logic checkingSortingProductsByGeneric() {
         Listing_page_Logic listingPageLogic = new Listing_page_Logic();
-        String firstGeneric = getNameFirstGenericInGenericBlock();
-        String secondGeneric = getNameSecondGenericInGenericBlock();
-        clickFirstGenericInGenericsBlock();
+        String firstGeneric = getNameFirstGenericInGenericBlockOrSidebar();
+        String secondGeneric = getNameSecondGenericInGenericBlockOrSidebar();
+        clickFirstGenericInGenericsBlockOrSidebar();
         listingPageLogic.waitUntilPreloaderDisappear();
         listingPageLogic.checkProductTitleOnListing(firstGeneric, true, titleNameProductsFromListing());
-        clickSecondGenericInGenericsBlock();
+        clickSecondGenericInGenericsBlockOrSidebar();
         listingPageLogic.waitUntilPreloaderDisappear();
         listingPageLogic.checkProductTitleOnListing(secondGeneric, true, titleNameProductsFromListing());
-        firstGenericInGenericsBlockToGetData().shouldHave(attribute("data-checked", "true"));
-        secondGenericInGenericsBlockToGetData().shouldHave(attribute("data-checked", "false"));
+        if (firstGenericInGenericsBlockToGetData().isDisplayed()) {
+            firstGenericInGenericsBlockToGetData().shouldHave(attribute("data-checked", "true"));
+            secondGenericInGenericsBlockToGetData().shouldHave(attribute("data-checked", "false"));
+        }else {
+            firstGenericFromSidebarToGetData().shouldHave(attribute("data-checked", "true"));
+            secondGenericFromSidebarToGetData().shouldHave(attribute("data-checked", "false"));
+        }
         return this;
-
     }
 
     @Step("Checking presence generic block. Listing_chemicals_Page")
@@ -305,18 +339,30 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
     @Step("Checking the generic reset by pressing again then by pressing the reset button. Listing_chemicals_Page")
     public Listing_chemicals_Page_Logic checkingResetSelectedGeneric() {
         Listing_page_Logic listingPageLogic = new Listing_page_Logic();
-        firstGenericInGenericsBlockToGetData().shouldHave(attribute("data-checked", "true"));
-        String firstGeneric = getNameFirstGenericInGenericBlock();
+        if ( firstGenericInGenericsBlockToGetData().isDisplayed()){
+            firstGenericInGenericsBlockToGetData().shouldHave(attribute("data-checked", "true"));
+        }else {
+            firstGenericFromSidebarToGetData().shouldHave(attribute("data-checked", "true"));
+        }
+        String firstGeneric = getNameFirstGenericInGenericBlockOrSidebar();
         listingPageLogic.checkProductTitleOnListing(firstGeneric, true, titleNameProductsFromListing());
-        clickFirstGenericInGenericsBlock();
+        clickFirstGenericInGenericsBlockOrSidebar();
         listingPageLogic.waitUntilPreloaderDisappear();
-        firstGenericInGenericsBlockToGetData().shouldHave(attribute("data-checked", "false"));
-        clickFirstGenericInGenericsBlock();
+        if (firstGenericInGenericsBlockToGetData().isDisplayed()){
+            firstGenericInGenericsBlockToGetData().shouldHave(attribute("data-checked", "false"));
+        }else {
+            firstGenericFromSidebarToGetData().shouldHave(attribute("data-checked", "false"));
+        }
+        clickFirstGenericInGenericsBlockOrSidebar();
         listingPageLogic.waitUntilPreloaderDisappear();
         listingPageLogic.checkProductTitleOnListing(firstGeneric, true, titleNameProductsFromListing());
         clickBtnResetAllInGenericsBlock();
         listingPageLogic.waitUntilPreloaderDisappear();
-        firstGenericInGenericsBlockToGetData().shouldHave(attribute("data-checked", "false"));
+        if (firstGenericInGenericsBlockToGetData().isDisplayed()){
+            firstGenericInGenericsBlockToGetData().shouldHave(attribute("data-checked", "false"));
+        }else {
+            firstGenericFromSidebarToGetData().shouldHave(attribute("data-checked", "false"));
+        }
         return this;
     }
 
@@ -334,8 +380,8 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
 
     @Step("Checking work btn reset all filter from filter block if selected generic and brand. Listing_chemicals_Page")
     public Listing_chemicals_Page_Logic checkingWorkBtnResetAllFilterFromFilterBlock() {
-        String valueGeneric = getValueFirstGenericInGenericBlock();
-        clickFirstGenericInGenericsBlock();
+        String valueGeneric = getValueFirstGenericInGenericBlockOrSidebar();
+        clickFirstGenericInGenericsBlockOrSidebar();
         new Listing_page_Logic().waitUntilPreloaderDisappear();
         String valueBrand = getValueFirstVisibleBrandInBlockBrands();
         clickFirstVisibleBrand();
@@ -350,7 +396,11 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
         }
         clickBtnResetAllFilterFromFilterBlock();
         new Listing_page_Logic().waitUntilPreloaderDisappear();
-        firstGenericInGenericsBlockToGetData().shouldHave(attribute("data-checked", "false"));
+        if (firstGenericInGenericsBlockToGetData().isDisplayed()) {
+            firstGenericInGenericsBlockToGetData().shouldHave(attribute("data-checked", "false"));
+        }else {
+            firstGenericFromSidebarToGetData().shouldHave(attribute("data-checked", "false"));
+        }
         firstVisibleBrandToGetData().shouldHave(attribute("data-checked", "false"));
         return this;
 
@@ -371,9 +421,13 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
         return firstBtnResetFilterInResetBlock().getAttribute("data-param-id");
     }
 
-    @Step("Checking what generic from generic block not selected. Listing_chemicals_Page")
+    @Step("Checking what generic from generic block or sidebar not selected. Listing_chemicals_Page")
     public Listing_chemicals_Page_Logic checkingWhatGenericNotSelected() {
-        firstGenericInGenericsBlockToGetData().shouldHave(attribute("data-checked", "false"));
+        if (firstGenericInGenericsBlockToGetData().isDisplayed()) {
+            firstGenericInGenericsBlockToGetData().shouldHave(attribute("data-checked", "false"));
+        } else {
+            firstGenericFromSidebarToGetData().shouldHave(attribute("data-checked", "false"));
+        }
         return this;
     }
 

@@ -505,7 +505,7 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return this;
     }
 
-    @Step("Checks presence PayPal label. CartAllData_page")
+    @Step("Checks presence payments method label. CartAllData_page")
     public CartAllData_page_Logic checkPresencePaymentsMethodLabel(SelenideElement locator) {
         locator.shouldBe(visible);
         return this;

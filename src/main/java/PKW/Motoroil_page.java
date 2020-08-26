@@ -3,6 +3,7 @@ package PKW;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -69,4 +70,11 @@ public class Motoroil_page {
    SelenideElement detectedVehicleLink() {return $x("//a[@class='form-not-found-car ga-click']");}
 
    SelenideElement detectedVehiclePopUp() {return $x("//div[@class='not-found-car-popup']");}
+
+   SelenideElement oilTypesBlock() {return $x("//h4[contains(text(),'Eigenschaften')]/..");}
+
+   ElementsCollection linksOfOilTypes() {return $$x("//h4[contains(text(),'Eigenschaften')]/..//li/a");}
+
+   ElementsCollection visibleLinksOfViscosityBlock() {return $$x("//div[@class='select_oil_block--oil']//a").filter(visible);}
+
 }

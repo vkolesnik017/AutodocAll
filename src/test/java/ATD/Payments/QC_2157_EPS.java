@@ -57,7 +57,7 @@ public class QC_2157_EPS {
                 .getTotalPriceAllDataPage(shop);
         new CartAllData_page_Logic().nextBtnClick();
         checkingContainsUrl("routing.eps.or.at");
-        new CartAllData_page().abbrechenSubmit().click();
+        new Merchant_page().abbrechenSubmit().click();
         new CartPayments_page_Logic().checkActivePaymentMethod("epsbank");
         float totalPriceOrderAws = new Customer_view_aws().openCustomerPersonalArea(userID)
                 .checkPresenceOrderHistoryBlock()

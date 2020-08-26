@@ -34,7 +34,7 @@ public class QC_102_FilterByGenericInTecDocListing {
     @Description(value = "Test checks filer by Generic in TecDoc listing ")
     public void testChecksFilterByGenericInTecDocListing(String route) {
         openPage(route);
-        new LKW_Category_car_list_page_Logic().checkFilterByGeneric().checkTecDocListingWithSelectingFilterByGeneric();
+        new LKW_Category_car_list_page_Logic().checkFilterByGeneric().checkTecDocListingWithSelectingFilterByGeneric(2);
     }
 
     @AfterMethod

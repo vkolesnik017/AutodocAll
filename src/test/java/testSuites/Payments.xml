@@ -20,4 +20,25 @@
         </classes>
     </test>
 
+    <test name="QC_2165_Bancontact_Mister_Cash">
+        <classes>
+            <class name="ATD.Payments.QC_2165_Bancontact_Mister_Cash">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QC_2348_KlarnaCheckout">
+        <classes>
+            <class name="ATD.Payments.QC_2348_KlarnaCheckout">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QC_2158_Klarna">
+        <classes>
+            <class name="ATD.Payments.QC_2158_Klarna">
+            </class>
+        </classes>
+    </test>
+
 </suite>
