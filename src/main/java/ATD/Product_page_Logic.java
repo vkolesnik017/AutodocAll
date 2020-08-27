@@ -21,6 +21,7 @@ import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.CollectionCondition.sizeLessThan;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class Product_page_Logic extends Product_page {
 
@@ -447,8 +448,7 @@ public class Product_page_Logic extends Product_page {
 
     @Step("Get article number. Product_page")
     public String getArticleNumber() {
-        String articleNumber = articleNumber().getText();
-        return articleNumber;
+         return articleNumber().getText();
     }
 
     @Step("Check product in stock alternative block. Product_page")
@@ -459,14 +459,14 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
-    @Step("Add artikel number to collection. Product_page")
-    public ArrayList addArtikelNumberToCollection() {
-        ArrayList<String> listOfArtikel = new ArrayList<>();
+    @Step("Add article number to collection. Product_page")
+    public ArrayList <String> addArtikelNumberToCollection() {
+        ArrayList<String> listOfArticle = new ArrayList<>();
         for (int i = 0; i < 6; i++) {
-            String cutArtikel = analogArtikelNumbers().get(i).text().replace("Artikelnummer: ", "");
-            listOfArtikel.add(cutArtikel);
+            String cutArticle = analogArtikelNumbers().get(i).text().replace("Artikelnummer: ", "");
+            listOfArticle.add(cutArticle);
         }
-        return listOfArtikel;
+        return listOfArticle;
     }
 
     @Step("Check Analog Product Match Car. Product_page")
@@ -613,7 +613,7 @@ public class Product_page_Logic extends Product_page {
     public Product_page_Logic checkIncompatibilityMessage() {
         new Main_page_Logic().searchBar().sendKeys("Bremsscheiben");
         new Main_page_Logic().searchButton().click();
-        productOnListing().click();
+        nameProductOnListing().click();
         incompatibilityMessage().shouldBe(visible);
         return this;
     }
@@ -788,6 +788,22 @@ public class Product_page_Logic extends Product_page {
             res = roundMin;
         }
         Assert.assertEquals(res, priceProductPerProductPage);
+        return this;
+    }
+
+    @Step("checking the compatibility of goods and cars .Product_page")
+    public Product_page_Logic checkCompatibilityProductAndGeneric() {
+        breadcrumbsBlock().shouldBe(visible);
+        if (compatibilityVehicleBlock().isDisplayed()) {
+            linkOfCompatibilityVehicleAndProduct().shouldBe(visible);
+        } else {
+            String idOfProduct = url().replace(url().replace(url().substring(url().lastIndexOf("/")), ""),"").replaceAll("[^0-9]","");
+            executeJavaScript("window.open('about:blank','_blank')");
+            switchTo().window(1);
+            new ProductCard_aws(idOfProduct).openProductCardPageAndLogin().checkVehicleLabel();
+            switchTo().window(1).close();
+            switchTo().window(0);
+        }
         return this;
     }
 }

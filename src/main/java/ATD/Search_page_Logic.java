@@ -12,9 +12,9 @@ import java.util.List;
 
 import static ATD.CommonMethods.*;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
+import static com.codeborne.selenide.CollectionCondition.texts;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.$$x;
-import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class Search_page_Logic extends Search_page {
@@ -264,6 +264,38 @@ public class Search_page_Logic extends Search_page {
         basketDropMenu().shouldNotBe(visible);
         basket().click();
         return page(Cart_page_Logic.class);
+    }
+
+    @Step("presence of TecDoc listing. Search_page")
+    public Search_page_Logic presenceOfTecDocListing() {
+        mainListingBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("checking applicability of product for selected generic. Search_page")
+    public Search_page_Logic checkingApplicabilityOfProductForSelectedGeneric(String generic) {
+        selectProductInTecDocListing(generic);
+        while (forwardLinkOfPaginator().isDisplayed()) {
+            forwardLinkOfPaginator().click();
+            selectProductInTecDocListing(generic);
+        }
+        return this;
+    }
+
+    @Step("click on product in TecDoc Listing .Search_page")
+    public Search_page_Logic selectProductInTecDocListing(String generic) {
+        for (int i = 0; i <titleOfProductsInListing().size(); i++) {
+            titleOfProductsInListing().get(i).shouldHave(text(generic));
+            clickOnProductInTecDocListing(i).checkCompatibilityProductAndGeneric();
+            back();
+        }
+        return this;
+    }
+
+    @Step("click on Product in TecDoc listing .Search_page")
+    public Product_page_Logic clickOnProductInTecDocListing(int point) {
+        titleOfProductsInListing().get(point).scrollIntoView("{block: \"center\"}").click();
+        return page(Product_page_Logic.class);
     }
 }
 

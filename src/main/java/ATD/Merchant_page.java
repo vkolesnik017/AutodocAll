@@ -2,6 +2,7 @@ package ATD;
 
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import org.openqa.selenium.NoAlertPresentException;
 
 import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.*;
@@ -44,6 +45,63 @@ public class Merchant_page {
         return $x("//a[@class='gray']");
     }
 
+    //Elements from the Sofort merchant
+    SelenideElement cancelTransaction() {
+        return $x("//div[@class='left hidden-small']//a[@id='AbortLink']");
+    }
+    SelenideElement submitCancelTransactionBtn() {
+        return $x("//button[@id='CancelTransaction']");
+    }
+
+    //Elements from the Ideal merchant
+    SelenideElement validateSubmit() {
+        return $x("//input[@id='b2b-submit']");
+    }
+    SelenideElement validateError() {
+        return $x("//div[@id='b2b-errors']");
+    }
+    SelenideElement cancelTransactionBtn() {
+        return $x("//input[@id='b2b-cancel']");
+    }
+
+    //Elements from the Trustly merchant
+    SelenideElement allBank() {
+        return $x("//div[@class='bank_img_container']");
+    }
+    SelenideElement formForDataInMerchant() {
+        return $x("//form[@id='core_order_holder']");
+    }
+    SelenideElement headerBackBtn() {
+        return $x("//a[@id='header_back_button']");
+    }
+    SelenideElement cancelTransactionBtnTrustly() {
+        return $x("//div[@id='core_order_cancel']/img");
+    }
+
+
+    @Step("Checks presence element in merchant page for payment Ideal and cancels order. Merchant_page")
+    public CartPayments_page_Logic checkPresenceElementFromMerchantPageIdealAndCancelOrder() {
+        checkingContainsUrl("secure-magenta1.be2bill.com");
+        validateSubmit().click();
+        validateError().shouldBe(visible);
+        cancelTransactionBtn().click();
+        checkingContainsUrl("/basket/payments");
+        return page(CartPayments_page_Logic.class);
+    }
+
+    @Step("Cancels order for Sofort method. Merchant_page")
+    public CartPayments_page_Logic cancelOrderForSofortMethod() {
+        checkingContainsUrl("sofort.com");
+        cancelTransaction().click();
+        try {
+            switchTo().alert().accept();
+        }catch (NoAlertPresentException e) {
+            System.out.println("No dialog found");
+        }
+        submitCancelTransactionBtn().click();
+        checkingContainsUrl("/basket/payments");
+        return page(CartPayments_page_Logic.class);
+    }
 
 
     @Step("Checks presence element in merchant page for payment klarna. Merchant_page")

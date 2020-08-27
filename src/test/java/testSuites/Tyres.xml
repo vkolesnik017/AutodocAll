@@ -200,7 +200,7 @@
         </classes>
     </test>
 
-    <test name="QC_2226_CheckingPeriodReturnTiresBlock">
+    <test name="QC_2082_PresenceOfMpnNumber">
         <classes>
             <class name="ATD.Tyres.QC_2082_PresenceOfMpnNumber.QC_2083_CheckOfIdentityOfMpnProductAndMpnInAws"/>
             <class name="ATD.Tyres.QC_2082_PresenceOfMpnNumber.QC_2096_CheckMpnNumberInWishList"/>

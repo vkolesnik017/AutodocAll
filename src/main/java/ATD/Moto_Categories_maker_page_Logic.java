@@ -3,14 +3,15 @@ package ATD;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
+import static ATD.CommonMethods.*;
+
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.CollectionCondition.sizeLessThan;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.back;
-import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class Moto_Categories_maker_page_Logic extends Moto_Categories_maker_page {
@@ -189,5 +190,47 @@ public class Moto_Categories_maker_page_Logic extends Moto_Categories_maker_page
         Assert.assertEquals(width, 170);
         Assert.assertEquals(height, 170);
         return this;
+    }
+
+    @Step("Login in header with mail {mail} and transition to profile plus page and go back. Moto_Categories_maker_page")
+    public Moto_Categories_maker_page_Logic loginToProfilePlusPageAndBack(String email) {
+        loginAndTransitionToProfilePlusPage(email).visibilityOfUsersName();
+        back();
+        return this;
+    }
+
+    @Step("update of page. Moto_Categories_maker_page")
+    public Moto_Categories_maker_page_Logic updateOfPage() {
+        refresh();
+        return this;
+    }
+
+    @Step("Login in header with mail {mail} and transition to profile plus page. Moto_Categories_maker_page")
+    public Profile_plus_page_Logic loginAndTransitionToProfilePlusPage(String mail) {
+        loginBtnInHeader().click();
+        mailFieldLogin().setValue(mail);
+        passFieldLogin().setValue(password);
+        submitBtnLogin().click();
+        new Profile_page().nameOfClient().shouldBe(visible);
+        return page(Profile_plus_page_Logic.class);
+    }
+
+    @Step("update of page. Moto_Categories_maker_page")
+    public Moto_Categories_maker_page_Logic checkCountOfVehicleInIconOfGarage(String expectedCountOfVehicle) {
+        countOfVehicleInIconOfGarageInHeader().shouldBe(visible).shouldHave(exactText(expectedCountOfVehicle));
+        return this;
+    }
+
+    @Step("click on Garage icon in header. Moto_Categories_maker_page")
+    public Moto_Categories_maker_page_Logic clickOnGarageIconInHeader() {
+        garageIconInHeader().shouldBe(visible).click();
+        popUpOfGarageInHeader().shouldBe(visible);
+        return this;
+    }
+
+    @Step("click on Garage icon in header. Moto_Categories_maker_page")
+    public Moto_Catalog_page_Logic selectMotoInGaragePopUp(String idOfVehicle) {
+        idOfVehicleInGaragePopUp(idOfVehicle).shouldBe(visible).click();
+        return page(Moto_Catalog_page_Logic.class);
     }
 }

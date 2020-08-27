@@ -22,6 +22,14 @@ public class ProductCard_aws {
         return $x("//td/span[contains(text(),'LKW')]/../following-sibling::td/input[@checked='checked']");
     }
 
+    private SelenideElement vehicleLabel() {
+        return $x("//td/span[contains(text(),'PKW')]");
+    }
+
+    private SelenideElement vehicleCheckBox() {
+        return $x("//td/span[contains(text(),'PKW')]/../following-sibling::td/input[@checked='checked']");
+    }
+
     private SelenideElement motoLabel() {
         return $x("//td/span[contains(text(),'MOTO')]");
     }
@@ -77,6 +85,13 @@ public class ProductCard_aws {
     public ProductCard_aws checkTruckLabel() {
         truckLabel().shouldBe(visible);
         truckCheckBox().shouldBe(visible);
+        return this;
+    }
+
+    @Step("check vehicle label")
+    public ProductCard_aws checkVehicleLabel() {
+        vehicleLabel().shouldBe(visible);
+        vehicleCheckBox().shouldBe(visible);
         return this;
     }
 

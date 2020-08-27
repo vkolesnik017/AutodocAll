@@ -140,7 +140,17 @@
 
     <test name="QC_2294_BlockWithProductsOnAccListing">
         <classes>
+            <class name="PKW.ACC.QC_2294_BlockWithProductsOnAccListing.QC_2295_MainProductsOnACCListing"/>
+            <class name="PKW.ACC.QC_2294_BlockWithProductsOnAccListing.QC_2296_TransitionOnProductPageFromACCListing"/>
             <class name="PKW.ACC.QC_2294_BlockWithProductsOnAccListing.QC_2297_SelectingQuantityProductsByBuyOnACCListing"/>
+            <class name="PKW.ACC.QC_2294_BlockWithProductsOnAccListing.QC_2298_AddProductsToBasketOnACCListing"/>
+        </classes>
+    </test>
+
+    <test name="QC_2279_ToolsListing">
+        <classes>
+            <class name="PKW.ACC.QC_2279_ToolsListing.QC_2232_TitleOnToolsListing"/>
+            <class name="PKW.ACC.QC_2279_ToolsListing.QC_2234_FilterBlockByBrandsOnToolsListing"/>
         </classes>
     </test>
 
