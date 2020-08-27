@@ -55,4 +55,11 @@
         </classes>
     </test>
 
+    <test name="QC_2349_Trustly">
+        <classes>
+            <class name="ATD.Payments.QC_2349_Trustly">
+            </class>
+        </classes>
+    </test>
+
 </suite>
