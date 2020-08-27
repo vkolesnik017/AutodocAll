@@ -5,6 +5,7 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -204,5 +205,21 @@ class LKW_Categories_maker_page {
     SelenideElement mainHeadline() {return $x("//div[@class='title_count_search ']/h2");}
 
     ElementsCollection visibleArtNumOfTopProduct() {return $$x("//*[self::div[contains(@class,'slick-active')] or self::div[(@class='top-small-products__items slick-slide')]]//div[@class='small-prod-artikul']").filter(visible);}
+
+    public SelenideElement loginBtnInHeader() {  return $(".sigin_btn>a");  }
+
+    SelenideElement mailFieldLogin() {  return $(byId("login_top_email"));   }
+
+    SelenideElement passFieldLogin() {  return $x("//input[@type='password']"); }
+
+    SelenideElement submitBtnLogin() {   return $x("//a[@class='enter submit']");  }
+
+    SelenideElement  countOfVehicleInIconOfGarageInHeader() {return $x("//span[@class='header-garage__count header-garage__count--added']");}
+
+    SelenideElement garageIconInHeader() {return $x("//div[@class='header-garage js-header-garage']");}
+
+    SelenideElement popUpOfGarageInHeader() {return $x("//div[@class='header-garage__logged-header']");}
+
+    SelenideElement idOfVehicleInGaragePopUp(String idOfVehicle) {return $x("//div[@class='wrapper-radio']/label[@for='"+idOfVehicle+"']");}
 
 }

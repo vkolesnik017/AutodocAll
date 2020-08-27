@@ -63,4 +63,28 @@ public class Categories_page {
     SelenideElement nextButtonTopBlock() { return $(".bx-next"); }
 
     SelenideElement listOfProducts() { return $(".list_products"); }
+
+    SelenideElement tecDocCatalogBlock() {return $x("//div[@class='list_ersats_n list-ersatz-n--catalog']");}
+
+  SelenideElement headerGarageIcon(){
+    return $x("//div[@class='header-garage js-header-garage']");
+  }
+
+  SelenideElement popUpOfGarageInHeader() {return $x("//div[@class='header-garage__logged-header']");}
+
+  SelenideElement idOfVehicleInGaragePopUp(String idOfVehicle) {return $x("//div[@class='wrapper-radio']/label[@for='"+idOfVehicle+"']");}
+
+  SelenideElement selectorInCloseCondition() {return $x("//div[@class='catalog-title__change-car']");}
+
+  SelenideElement mainFormOfSelector() {return $(byId("selector-wrapper"));}
+
+  SelenideElement markeFieldInSelector() {return $(byId("form_maker_id"));}
+
+  SelenideElement modelFieldInSelector() {return $(byId("form_model_id"));}
+
+  SelenideElement motorFieldInSelector() {return $(byId("form_car_id"));}
+
+  SelenideElement btnResetVerticalSelector() {return $(byId("reset_selector_form"));}
+
+  SelenideElement mainLogoInHeader() {return $x("//a[@class='header__logo-main']/img");}
 }
