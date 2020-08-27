@@ -74,16 +74,11 @@ public class Austauschartikel_static_page {
     }
 
     ElementsCollection categories() {
-        return $$x("//*[@class='return-parts__categories']//a[@class='return-parts__link']");
+        return $$x("//*[@class='return-parts__item']");
     }
 
     ElementsCollection popUpOfCategory() {
         return $$x("//div[@class='return-subcategory']");
-    }
-
-
-    SelenideElement popUpOfCategoryOne() {
-        return $x("//div[@class='return-subcategory']");
     }
 }
 
