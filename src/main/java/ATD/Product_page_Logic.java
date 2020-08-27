@@ -447,8 +447,7 @@ public class Product_page_Logic extends Product_page {
 
     @Step("Get article number. Product_page")
     public String getArticleNumber() {
-        String articleNumber = articleNumber().getText();
-        return articleNumber;
+         return articleNumber().getText();
     }
 
     @Step("Check product in stock alternative block. Product_page")
@@ -459,14 +458,14 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
-    @Step("Add artikel number to collection. Product_page")
-    public ArrayList addArtikelNumberToCollection() {
-        ArrayList<String> listOfArtikel = new ArrayList<>();
+    @Step("Add article number to collection. Product_page")
+    public ArrayList <String> addArtikelNumberToCollection() {
+        ArrayList<String> listOfArticle = new ArrayList<>();
         for (int i = 0; i < 6; i++) {
-            String cutArtikel = analogArtikelNumbers().get(i).text().replace("Artikelnummer: ", "");
-            listOfArtikel.add(cutArtikel);
+            String cutArticle = analogArtikelNumbers().get(i).text().replace("Artikelnummer: ", "");
+            listOfArticle.add(cutArticle);
         }
-        return listOfArtikel;
+        return listOfArticle;
     }
 
     @Step("Check Analog Product Match Car. Product_page")
@@ -613,7 +612,7 @@ public class Product_page_Logic extends Product_page {
     public Product_page_Logic checkIncompatibilityMessage() {
         new Main_page_Logic().searchBar().sendKeys("Bremsscheiben");
         new Main_page_Logic().searchButton().click();
-        productOnListing().click();
+        nameProductOnListing().click();
         incompatibilityMessage().shouldBe(visible);
         return this;
     }
