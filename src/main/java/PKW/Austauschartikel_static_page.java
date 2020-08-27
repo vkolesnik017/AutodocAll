@@ -80,11 +80,6 @@ public class Austauschartikel_static_page {
     ElementsCollection popUpOfCategory() {
         return $$x("//div[@class='return-subcategory']");
     }
-
-
-    SelenideElement popUpOfCategoryOne() {
-        return $x("//div[@class='return-subcategory']");
-    }
 }
 
 
