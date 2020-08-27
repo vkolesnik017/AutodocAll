@@ -2,6 +2,7 @@ package PKW;
 
 import io.qameta.allure.Step;
 import org.testng.Assert;
+
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.sleep;
 
@@ -35,23 +36,18 @@ public class Austauschartikel_static_page_Logic extends Austauschartikel_static_
 
         return this;
     }
-
+    @Step("Checking the pop up with info about parts after click. Austauschartikel_static_page")
     public Austauschartikel_static_page_Logic checkClickableCards() {
-        sleep(5000);
         pfandReturnPartsItem().hover().scrollIntoView(false);
         for (int i = 0; i < 12; i++) {
-            categories().get(i).click();
-            popUpOfCategory().get(i).shouldBe(visible);
+            categories().get(i).scrollIntoView(false).click();
+            popUpOfCategory().get(i).waitUntil(appear, 10).scrollIntoView(false);
             categories().get(i).click();
             popUpOfCategory().get(i).shouldNotBe(visible);
         }
         return this;
     }
 }
-
-
-
-
 
 
 

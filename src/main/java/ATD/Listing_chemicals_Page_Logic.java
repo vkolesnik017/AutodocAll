@@ -123,7 +123,7 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
     @Step("Get value first generic in generic block or sidebar. Listing_chemicals_Page")
     public String getValueFirstGenericInGenericBlockOrSidebar() {
         String firstGenericValue = null;
-        if (firstGenericInGenericsBlockToGetData().isDisplayed()) {
+        if (blockGeneric().isDisplayed()) {
             firstGenericValue = firstGenericInGenericsBlockToGetData().getAttribute("value");
         } else {
             firstGenericValue = firstGenericFromSidebarToGetData().getAttribute("value");
@@ -306,7 +306,7 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
         clickSecondGenericInGenericsBlockOrSidebar();
         listingPageLogic.waitUntilPreloaderDisappear();
         listingPageLogic.checkProductTitleOnListing(secondGeneric, true, titleNameProductsFromListing());
-        if (firstGenericInGenericsBlockToGetData().isDisplayed()) {
+        if (blockGeneric().isDisplayed()) {
             firstGenericInGenericsBlockToGetData().shouldHave(attribute("data-checked", "true"));
             secondGenericInGenericsBlockToGetData().shouldHave(attribute("data-checked", "false"));
         }else {
@@ -339,7 +339,7 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
     @Step("Checking the generic reset by pressing again then by pressing the reset button. Listing_chemicals_Page")
     public Listing_chemicals_Page_Logic checkingResetSelectedGeneric() {
         Listing_page_Logic listingPageLogic = new Listing_page_Logic();
-        if ( firstGenericInGenericsBlockToGetData().isDisplayed()){
+        if ( blockGeneric().isDisplayed()){
             firstGenericInGenericsBlockToGetData().shouldHave(attribute("data-checked", "true"));
         }else {
             firstGenericFromSidebarToGetData().shouldHave(attribute("data-checked", "true"));
@@ -348,7 +348,7 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
         listingPageLogic.checkProductTitleOnListing(firstGeneric, true, titleNameProductsFromListing());
         clickFirstGenericInGenericsBlockOrSidebar();
         listingPageLogic.waitUntilPreloaderDisappear();
-        if (firstGenericInGenericsBlockToGetData().isDisplayed()){
+        if (blockGeneric().isDisplayed()){
             firstGenericInGenericsBlockToGetData().shouldHave(attribute("data-checked", "false"));
         }else {
             firstGenericFromSidebarToGetData().shouldHave(attribute("data-checked", "false"));
@@ -358,7 +358,7 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
         listingPageLogic.checkProductTitleOnListing(firstGeneric, true, titleNameProductsFromListing());
         clickBtnResetAllInGenericsBlock();
         listingPageLogic.waitUntilPreloaderDisappear();
-        if (firstGenericInGenericsBlockToGetData().isDisplayed()){
+        if (blockGeneric().isDisplayed()){
             firstGenericInGenericsBlockToGetData().shouldHave(attribute("data-checked", "false"));
         }else {
             firstGenericFromSidebarToGetData().shouldHave(attribute("data-checked", "false"));
@@ -396,7 +396,7 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
         }
         clickBtnResetAllFilterFromFilterBlock();
         new Listing_page_Logic().waitUntilPreloaderDisappear();
-        if (firstGenericInGenericsBlockToGetData().isDisplayed()) {
+        if (blockGeneric().isDisplayed()) {
             firstGenericInGenericsBlockToGetData().shouldHave(attribute("data-checked", "false"));
         }else {
             firstGenericFromSidebarToGetData().shouldHave(attribute("data-checked", "false"));
@@ -423,7 +423,7 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
 
     @Step("Checking what generic from generic block or sidebar not selected. Listing_chemicals_Page")
     public Listing_chemicals_Page_Logic checkingWhatGenericNotSelected() {
-        if (firstGenericInGenericsBlockToGetData().isDisplayed()) {
+        if (blockGeneric().isDisplayed()) {
             firstGenericInGenericsBlockToGetData().shouldHave(attribute("data-checked", "false"));
         } else {
             firstGenericFromSidebarToGetData().shouldHave(attribute("data-checked", "false"));
