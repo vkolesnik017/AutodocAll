@@ -2,6 +2,8 @@ package PKW;
 
 import io.qameta.allure.Step;
 import static com.codeborne.selenide.Condition.attribute;
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.page;
 
 public class Listing_accessories_page_Logic extends Listing_accessories_page {
 
@@ -16,5 +18,57 @@ public class Listing_accessories_page_Logic extends Listing_accessories_page {
         new CommonMethods().checkingCounterDecrease(2, counterValueInQuantityCounter(), btnMinusInQuantityCounter() );
         counterValueInQuantityCounter().shouldHave(attribute("value", "2"));
         return this;
+    }
+
+    @Step(":from Listing_accessories_page")
+    public Listing_accessories_page_Logic increasesNumberProductsInQuantityCounter() {
+        new CommonMethods().checkingCounterIncrease(2, counterValueInQuantityCounter(), btnPlusInQuantityCounter());
+        return this;
+    }
+
+    @Step("Get name product in listing. Listing_accessories_page")
+    public String getNameProductInListing() {
+        return titleNameProductInListing().getText();
+    }
+
+    @Step("Click first product in listing. Listing_accessories_page")
+    public Product_page_Logic clickFirstProductInListing() {
+        titleNameProductInListing().click();
+        return page(Product_page_Logic.class);
+    }
+
+    @Step("Checking presence products listing block. Listing_accessories_page")
+    public Listing_accessories_page_Logic checkingPresenceProductsListingBlock() {
+        blockProductsListing().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checking the number of products in listing. Listing_accessories_page")
+    public Listing_accessories_page_Logic checkingNumberOfProductsInListing() {
+        productsListing().shouldHaveSize(20);
+        return this;
+    }
+
+    @Step("Get id product listing. Listing_accessories_page")
+    public String getIdProductListing() {
+        return idProductInBtnAddBasket().getAttribute("id");
+    }
+
+    @Step("Get value quantity counter from first product listing. Listing_accessories_page")
+    public String getValueQuantityCounterFirstProductListing() {
+        return counterValueInQuantityCounter().getValue();
+    }
+
+    @Step("Click button add to basket first product. Listing_accessories_page")
+    public Listing_accessories_page_Logic clickBtnAddToBasketFirstProduct() {
+        redBtnAddToBasket().click();
+        popupBasketAddedProducts().waitUntil(attribute("style","visibility: visible; opacity: 1;"), 10000);
+        return this;
+    }
+
+    @Step(":from Listing_accessories_page")
+    public Cart_page_Logic cartClick() {
+        new Main_page_Logic().cartClick();
+        return page(Cart_page_Logic.class);
     }
 }

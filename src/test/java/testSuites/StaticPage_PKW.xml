@@ -55,4 +55,11 @@
             </class>
         </classes>
     </test>
+
+    <test name="QC_1092_StaticPage_Austauschartikel" enabled="true">
+        <classes>
+            <class name="PKW.StaticPage.QC_1092_StaticPage_Austauschartikel">
+            </class>
+        </classes>
+    </test>
 </suite>

@@ -139,7 +139,7 @@ public class Listing_chemicals_Page {
     }
 
     SelenideElement blockGeneric() {
-        return $x("//div[@class='js-filter-criteria-top']");
+        return $x("//div[contains(@class,'filter-generics-tecdoc js-filter-generic')]");
     }
 
     ElementsCollection allGenericsInGenericBlock() {

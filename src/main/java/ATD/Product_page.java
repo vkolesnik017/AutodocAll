@@ -393,6 +393,10 @@ public class Product_page {
         return $x("//*[@class='name']");
     }
 
+    public SelenideElement nameProductOnListing() {
+        return $x("//div[@class='name']/a");
+    }
+
     public SelenideElement incompatibilityMessage() {
         return $(".car-match-block--false");
     }
