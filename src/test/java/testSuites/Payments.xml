@@ -41,4 +41,18 @@
         </classes>
     </test>
 
+    <test name="QC_2156_Sofort">
+        <classes>
+            <class name="ATD.Payments.QC_2156_Sofort">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QC_2350_Ideal">
+        <classes>
+            <class name="ATD.Payments.QC_2350_Ideal">
+            </class>
+        </classes>
+    </test>
+
 </suite>
