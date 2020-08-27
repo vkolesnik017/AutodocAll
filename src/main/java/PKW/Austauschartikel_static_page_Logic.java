@@ -36,18 +36,19 @@ public class Austauschartikel_static_page_Logic extends Austauschartikel_static_
         return this;
     }
 
-    public Austauschartikel_static_page_Logic checkClickableCards() {
-        sleep(5000);
-        pfandReturnPartsItem().hover().scrollIntoView(false);
-        for (int i = 0; i < 12; i++) {
-            categories().get(i).click();
-            popUpOfCategory().get(i).shouldBe(visible);
-            categories().get(i).click();
-            popUpOfCategory().get(i).shouldNotBe(visible);
-        }
-        return this;
+//    public Austauschartikel_static_page_Logic checkClickableCards() {
+//        sleep(5000);
+//        pfandReturnPartsItem().hover().scrollIntoView(false);
+//        for (int i = 0; i < 12; i++) {
+//            categories().get(i).click();
+//            popUpOfCategoryOne().scrollIntoView(false);
+//            popUpOfCategory().get(i).shouldBe(visible);
+//            categories().get(i).click();
+//            popUpOfCategory().get(i).shouldNotBe(visible);
+//        }
+//        return this;
     }
-}
+
 
 
 

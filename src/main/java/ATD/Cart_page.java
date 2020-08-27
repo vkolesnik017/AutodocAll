@@ -174,6 +174,14 @@ public class Cart_page {
         return $x("//img[contains(@src,'klarna.png')]");
     }
 
+    public SelenideElement idealLabel() {
+        return $x("//img[contains(@src,'idl')]");
+    }
+
+    public SelenideElement sofortLabel() {
+        return $x("//img[contains(@src,'sofort')]");
+    }
+
     SelenideElement listOfAddedProductsBlock() {return $x("//div[@class='cart-page-listing']");}
 
     ElementsCollection listOfAddedProducts() {return $$x("//div[@class='cart-page-listing']//tr");}

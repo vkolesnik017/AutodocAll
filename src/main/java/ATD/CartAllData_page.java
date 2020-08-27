@@ -275,6 +275,18 @@ public class CartAllData_page {
         return $x("//img[contains(@src,'klarna')]");
     }
 
+    public SelenideElement idealLabel() {
+        return $x("//img[contains(@src,'be2bill_ideal')]");
+    }
+
+    public SelenideElement sofortLabel() {
+        return $x("//img[contains(@src,'directbank.png')]");
+    }
+
+    public SelenideElement trustlyLabel() {
+        return $x("//img[contains(@src,'trustly')]");
+    }
+
     public SelenideElement preloader() {
         return $(By.cssSelector(".preloader_wrapper"));
     }
