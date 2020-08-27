@@ -300,5 +300,11 @@ public class Main_page_Logic extends Main_page {
         footerVersandLink().click();
         return page(Versand_static_page_Logic.class);
     }
+
+    @Step("Click the AGB link in the header. Main_page")
+    public AGB_static_page_Logic clickHeaderAgbLink() {
+        agbLinkHeader().click();
+        return page(AGB_static_page_Logic.class);
+    }
 }
 
