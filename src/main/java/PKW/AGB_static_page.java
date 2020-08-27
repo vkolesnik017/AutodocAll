@@ -33,16 +33,21 @@ public class AGB_static_page {
         return $$x("//*[@class='price']");
     }
 
-    SelenideElement autodocEmail() {
-        return $(byXpath("//*[@class='flag']"));
-    }
-
     SelenideElement countryPriceOne() {
         return $(byXpath("//*[@class='flag']"));
     }
 
+    SelenideElement deliveryTimeBlockAgb() {
+        return $(byXpath("//*[@class='delivery_time']"));
+    }
+
+    SelenideElement autodocEmail() {
+        return $(byXpath("//*[@class='text']//p[2]//a[1]"));
+    }
+
     SelenideElement autodocLinkAgbText() {
-        return $(byXpath("//*[@class='text']//a[2]")); }
+        return $(byXpath("(//a[@target='_blank'])[1]"));
+    }
 
     SelenideElement zollLinkAgb() {
         return $(byXpath("//a[contains(@href,'zollkosten')]"));
@@ -59,22 +64,5 @@ public class AGB_static_page {
     SelenideElement europaLinkAgbSecond() {
         return $(byXpath("//a[contains(@href,'europa')]"));
     }
-
-//    ElementsCollection countryText() {
-//        return $$x("//tr[@class='color']");
-//    }
-//
-//    SelenideElement countryTextOne() {
-//        return $(byXpath("//tr[@class='color']//td"));
-//    }
-
-    SelenideElement deliveryTimeBlockAgb() {
-        return $(byXpath("//*[@class='delivery_time']"));
-    }
-//
-//    SelenideElement autodocLinkAgbText() {
-//        return $(byXpath("//*[@class='text']//a[2]"));
 }
-
-    //*[@class='text']//a[2]
 
