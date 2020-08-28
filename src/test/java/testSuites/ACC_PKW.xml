@@ -154,4 +154,12 @@
         </classes>
     </test>
 
+    <test name="QC_2236_DisplayingAllCategoriesAndLogicalUnionACC">
+        <classes>
+            <class name="PKW.ACC.QC_2236_DisplayingAllCategoriesAndLogicalUnionACC.QC_2238_DisplayedAllCategoriesAndLogicalUnionOnMainAccessories"/>
+            <class name="PKW.ACC.QC_2236_DisplayingAllCategoriesAndLogicalUnionACC.QC_2250_DisplayedAllCategoriesAndLogicalUnionOnMainChemistry"/>
+            <class name="PKW.ACC.QC_2236_DisplayingAllCategoriesAndLogicalUnionACC.QC_2251_DisplayedAllCategoriesAndLogicalUnionOnMainTools"/>
+        </classes>
+    </test>
+
 </suite>
