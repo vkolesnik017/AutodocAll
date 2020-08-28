@@ -43,7 +43,7 @@ public class Austauschartikel_static_page_Logic extends Austauschartikel_static_
             categories().get(i).scrollIntoView(false).click();
             popUpOfCategory().get(i).waitUntil(appear, 10).scrollIntoView(false);
             categories().get(i).click();
-            popUpOfCategory().get(i).shouldNotBe(visible);
+            popUpOfCategory().get(i).waitUntil(hidden, 10).shouldNotBe(visible);
         }
         return this;
     }
