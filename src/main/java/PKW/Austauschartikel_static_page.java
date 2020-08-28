@@ -2,6 +2,8 @@ package PKW;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import org.openqa.selenium.By;
+
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -32,7 +34,7 @@ public class Austauschartikel_static_page {
     }
 
     SelenideElement pfandReturnPartsItem() {
-        return $(byXpath("//*[@class='return-parts__categories']//*[@class='return-parts__item']"));
+        return $(By.id("pfand_categories"));
     }
 
     SelenideElement pfandReturnPolicy() {
@@ -72,16 +74,11 @@ public class Austauschartikel_static_page {
     }
 
     ElementsCollection categories() {
-        return $$x("//*[@class='return-parts__categories']//*[@class='return-parts__item']");
+        return $$x("//*[@class='return-parts__item']");
     }
 
     ElementsCollection popUpOfCategory() {
         return $$x("//div[@class='return-subcategory']");
-    }
-
-
-    SelenideElement popUpOfCategoryOne() {
-        return $x("//div[@class='return-subcategory']");
     }
 }
 
