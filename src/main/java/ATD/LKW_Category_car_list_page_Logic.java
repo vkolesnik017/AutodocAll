@@ -230,7 +230,7 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
             genericsInFilterGenericBlock().get(1).click();
             appearsOfLoader();
         }
-        Assert.assertTrue(url().contains("&categories%5B0%5D=133"));
+        Assert.assertTrue(url().contains("%5D=133"));
         for (int i = 0; i < titleOfProductInTecDocListingBlock().size(); i++) {
             titleOfProductInTecDocListingBlock().get(i).shouldHave(text("Dichtung, Ölfilter"));
         }
