@@ -150,9 +150,5 @@ public class Moto_Categories_maker_page {
 
     SelenideElement popUpOfGarageInHeader() {return $x("//div[@class='header-garage__logged-header']");}
 
-    ElementsCollection titleOfVehicleInGaragePopUp() {return $$x("//div[@class='wrapper-radio']/label");}
-
-    ElementsCollection linksOfVehicleInGaragePopUp() {return $$x("//a[@class='header-garage__logged-check-link js-link-to-car-save']");}
-
     SelenideElement idOfVehicleInGaragePopUp(String idOfVehicle) {return $x("//div[@class='wrapper-radio']/label[@for='"+idOfVehicle+"']");}
 }

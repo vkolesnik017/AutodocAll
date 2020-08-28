@@ -259,13 +259,6 @@ public class Search_page_Logic extends Search_page {
         return this;
     }
 
-    @Step("added products to basket .Search_page")
-    public Cart_page_Logic goToBasket() {
-        basketDropMenu().shouldNotBe(visible);
-        basket().click();
-        return page(Cart_page_Logic.class);
-    }
-
     @Step("presence of TecDoc listing. Search_page")
     public Search_page_Logic presenceOfTecDocListing() {
         mainListingBlock().shouldBe(visible);
