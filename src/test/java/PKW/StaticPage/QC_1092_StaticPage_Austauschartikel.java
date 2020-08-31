@@ -31,8 +31,9 @@ public class QC_1092_StaticPage_Austauschartikel {
     public void testStaticPage_Austauschartikel(String route) {
         openPage(route);
         new Main_page_Logic().clickFooterAustauschartikelLink()
-                .checkElementsOnThePage()
-                .checkClickableCards();
+                .checkClickableCards()
+                .checkElementsOnThePage();
+
     }
 
     @AfterMethod
