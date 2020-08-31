@@ -36,6 +36,7 @@ public class QC_70_BreadCrumbsInChildCategory {
 
         new LKW_Category_page_Logic().checkLinksInBreadCrumbsBlock().checkLinkClickInBreadCrumbsBlock();
     }
+
     @AfterMethod
     public void close() {
         closeWebDriver();

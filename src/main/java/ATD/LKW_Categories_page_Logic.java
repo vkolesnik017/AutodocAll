@@ -256,14 +256,14 @@ public class LKW_Categories_page_Logic extends LKW_Categories_page {
         return page(LKW_Category_page_Logic.class);
     }
 
-    @Step("click on Garage icon in header. LKW_main_page")
+    @Step("click on Garage icon in header. LKW_Categories_page")
     public LKW_Categories_page_Logic clickOnGarageIconInHeader() {
         headerGarageIcon().shouldBe(visible).click();
         popUpOfGarageInHeader().shouldBe(visible);
         return this;
     }
 
-    @Step("click on Garage icon in header. LKW_main_page")
+    @Step("click on Garage icon in header. LKW_Categories_page")
     public LKW_Categories_page_Logic selectVehicleInGaragePopUp(String idOfVehicle) {
         idOfVehicleInGaragePopUp(idOfVehicle).shouldBe(visible).click();
         return this;

@@ -3,7 +3,8 @@ package ATD;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
-import static com.codeborne.selenide.CollectionCondition.*;
+import static com.codeborne.selenide.CollectionCondition.size;
+import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.back;
 import static com.codeborne.selenide.Selenide.page;
@@ -26,7 +27,7 @@ public class LKW_Category_maker_brand_page_Logic extends LKW_Category_maker_bran
 
 
     @Step("Check  link click in bread crumbs block .LKW_Category_maker_brand_page")
-    public LKW_Category_maker_brand_page_Logic checkLinkClickInBreadCrumbsBlock() {
+    public LKW_Category_maker_brand_page_Logic checkLinkClickInBreadCrumbsBlock()  {
         firstLinkClick().checkSuccessfullyLKWCategoriesPageLoading();
         back();
         secondLinkClick().checkSuccessfullyLKWParentCategoryPageLoading("https://lkwteile.autodoc.de/ersatzteile/filter");

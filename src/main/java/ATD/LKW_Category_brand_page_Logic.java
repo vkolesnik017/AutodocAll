@@ -26,7 +26,7 @@ public class LKW_Category_brand_page_Logic extends LKW_Category_brand_page {
 
 
     @Step("Check  link click in bread crumbs block .LKW_Category_brand_page")
-    public LKW_Category_brand_page_Logic checkLinkClickInBreadCrumbsBlock() {
+    public LKW_Category_brand_page_Logic checkLinkClickInBreadCrumbsBlock()  {
         firstLinkClick().checkSuccessfullyLKWCategoriesPageLoading();
         back();
         secondLinkClick().checkSuccessfullyLKWParentCategoryPageLoading("https://lkwteile.autodoc.de/ersatzteile/filter");
