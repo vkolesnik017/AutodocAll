@@ -15,11 +15,11 @@
         </classes>
     </test>
 
-    <test name="QC_1920_Header" enabled="true">
+    <test name="QC_1921_Header" enabled="true">
         <classes>
-            <class name="PKW.General_Common.QC_1920_Header.QC_1920_PresenceOfTheBlocksInPromotionHeader"/>
-            <class name="PKW.General_Common.QC_1920_Header.QC_1922_PresenceOfTheRatingBlockInTheHeader"/>
-            <class name="PKW.General_Common.QC_1920_Header.QC_1943_PresenceAndFunctionalityOfTheHeaderNavigationLine"/>
+            <class name="PKW.General_Common.QC_1921_Header.QC_1920_PresenceOfTheBlocksInPromotionHeader"/>
+            <class name="PKW.General_Common.QC_1921_Header.QC_1922_PresenceOfTheRatingBlockInTheHeader"/>
+            <class name="PKW.General_Common.QC_1921_Header.QC_1943_PresenceAndFunctionalityOfTheHeaderNavigationLine"/>
         </classes>
     </test>
 </suite>

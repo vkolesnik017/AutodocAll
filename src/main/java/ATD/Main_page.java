@@ -636,4 +636,20 @@ public class Main_page {
     SelenideElement blackBackground() {return $x("//div[@class='overlay black hidden'][@style='display: block;']");}
 
     SelenideElement btnCloseSelectorFromMyGaragePopUp() {return $x("//div[@class='popup-selector__content active']/div[1]");}
+
+    SelenideElement  countOfVehicleInIconOfGarageInHeader() {return $x("//span[@class='header-garage__count header-garage__count--added']");}
+
+    SelenideElement popUpOfGarageInHeader() {return $x("//div[@class='header-garage__logged-header']");}
+
+    SelenideElement idOfVehicleInGaragePopUp(String idOfVehicle) {return $x("//div[@class='wrapper-radio']/label[@for='"+idOfVehicle+"']");}
+
+    SelenideElement btnMoreSpareParts() {return $x("//span[@class='all link']");}
+
+    ElementsCollection linksInTopsBlock() {return $$x("//ul[@class='tabs']//li");}
+
+    SelenideElement blockOfBrandsOfTopBlock() {return $x("//a[contains(text(),'Beliebteste Automarken')]/ancestor::div[@class='top_all']//ul[@class='cars_list']");}
+
+    SelenideElement btnMoreSparePartsOfTopBrands() {return $x("//a[contains(text(),'Beliebteste Automarken')]/ancestor::div[@class='top_all']//a[@class='all']");}
+
+    SelenideElement allSparePartsLink() {return $x("//span[@class='truck-home-parts__show-all link']");}
 }

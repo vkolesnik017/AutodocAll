@@ -21,6 +21,8 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 public class QC_2345_UpdatingOfPageWithSelectedMotoInGaragePopUp {
 
     String email = "QC_2345TransitionToMyGarage@mailinator.com";
+    DataBase db = new DataBase();
+
 
     @BeforeClass
     void setUp() {
@@ -43,8 +45,9 @@ public class QC_2345_UpdatingOfPageWithSelectedMotoInGaragePopUp {
                 .loginToProfilePlusPageAndBack(email).updateOfPage().checkCountOfVehicleInIconOfGarage("3")
                 .clickOnGarageIconInHeader()
                 .selectMotoInGaragePopUp("101396");
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_catalog8"));
+        checkingContainsUrl(db.getRouteByRouteName("DE", "moto_catalog8"));
     }
+
     @DataProvider(name = "routesCatalog", parallel = true)
     Object[] dataProviderCatalog() throws SQLException {
         return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog_model6,moto_category_car_list_model2");
@@ -61,7 +64,7 @@ public class QC_2345_UpdatingOfPageWithSelectedMotoInGaragePopUp {
                 .loginToProfilePlusPageAndBack(email).updateOfPage().checkCountOfVehicleInIconOfGarage("3")
                 .clickOnGarageIconInHeader()
                 .selectMotoInGaragePopUp("101396");
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_catalog8"));
+        checkingContainsUrl(db.getRouteByRouteName("DE", "moto_catalog8"));
     }
 
     @DataProvider(name = "routesListOfModel", parallel = true)
@@ -80,7 +83,7 @@ public class QC_2345_UpdatingOfPageWithSelectedMotoInGaragePopUp {
                 .loginToProfilePlusPageAndBack(email).updateOfPage().checkCountOfVehicleInIconOfGarage("3")
                 .clickOnGarageIconInHeader()
                 .selectMotoInGaragePopUp("101396");
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_catalog8"));
+        checkingContainsUrl(db.getRouteByRouteName("DE", "moto_catalog8"));
     }
 
     @DataProvider(name = "routesCarList", parallel = true)
@@ -99,7 +102,7 @@ public class QC_2345_UpdatingOfPageWithSelectedMotoInGaragePopUp {
                 .loginToProfilePlusPageAndBack(email).updateOfPage().checkCountOfVehicleInIconOfGarage("3")
                 .clickOnGarageIconInHeader()
                 .selectMotoInGaragePopUp("101396");
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_category_car_list13"));
+        checkingContainsUrl(db.getRouteByRouteName("DE", "moto_category_car_list13"));
     }
 
     @AfterMethod

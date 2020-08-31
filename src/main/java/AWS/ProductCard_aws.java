@@ -88,14 +88,14 @@ public class ProductCard_aws {
         return this;
     }
 
-    @Step("check vehicle label")
+    @Step("check vehicle label. ProductCard_aws")
     public ProductCard_aws checkVehicleLabel() {
         vehicleLabel().shouldBe(visible);
         vehicleCheckBox().shouldBe(visible);
         return this;
     }
 
-    @Step("check motorcycle label")
+    @Step("check motorcycle label. ProductCard_aws")
     public ProductCard_aws checkMotoLabel() {
         motoLabel().shouldBe(visible);
         motoCheckBox().shouldHave(attribute("checked", "checked"));

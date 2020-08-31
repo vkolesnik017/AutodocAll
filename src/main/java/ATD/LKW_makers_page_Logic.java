@@ -81,4 +81,48 @@ public class LKW_makers_page_Logic extends LKW_makers_page {
         }
         return amount;
     }
+
+    @Step("click on Garage icon in header. LKW_makers_page")
+    public LKW_makers_page_Logic clickOnGarageIconInHeader() {
+        headerGarageIcon().shouldBe(visible).click();
+        popUpOfGarageInHeader().shouldBe(visible);
+        return this;
+    }
+
+    @Step("click on Garage icon in header. LKW_makers_page")
+    public LKW_makers_page_Logic selectVehicleInGaragePopUp(String idOfVehicle) {
+        idOfVehicleInGaragePopUp(idOfVehicle).shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("check expected values in selector. LKW_makers_page")
+    public LKW_makers_page_Logic checkValuesInSelector(String marke, String model, String motor) {
+        markeOfVerticalTruckSelector().shouldHave(value(marke));
+        modelOfVerticalTruckSelector().shouldHave(value(model));
+        motorOfVerticalTruckSelector().shouldHave(value(motor));
+        return this;
+    }
+
+    @Step("reset of car brand field in vertical selector. LKW_makers_page")
+    public LKW_makers_page_Logic resetOfCarBrandFieldInVerticalSelector() {
+        String currentUrl = url();
+        resetBtnInVerticalCarSelector().shouldBe(visible).click();
+        Assert.assertTrue(currentUrl.equals(url()));
+        arrowForMarkeFiled().shouldBe(visible);
+        checkDefaultValuesInVerticalSelector();
+        return this;
+    }
+
+    @Step("checking default values in vertical selector. LKW_makers_page")
+    public LKW_makers_page_Logic checkDefaultValuesInVerticalSelector() {
+        markeOfVerticalTruckSelector().shouldHave(exactValue("0"));
+        modelOfVerticalTruckSelector().shouldHave(exactValue("0"));
+        return this;
+    }
+
+    @Step("transition to main page. LKW_makers_page")
+    public Main_page_Logic goToMainPage() {
+        mainLogoInHeader().shouldBe(visible).click();
+        return page(Main_page_Logic.class);
+    }
 }
