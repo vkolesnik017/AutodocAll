@@ -164,7 +164,8 @@ public class CommonMethods {
 
     public void checkingMakerName(SelenideElement makerNameLocator, String makerName, String fileForReport, String url) throws IOException {
         makerNameLocator.shouldBe(Condition.visible);
-        String makerNameTextFromSelector = makerNameLocator.getAttribute("innerText");
+        String makerNameTextFromSelector = makerNameLocator.getAttribute("innerText").replace('Ë','E');
+        makerName = makerName.replace('Ë','E');
         if (!makerName.equals(makerNameTextFromSelector))
             writerInFile(fileForReport, true, "Maker from data doesn't equals maker from selector:" + "#" + makerName + "#" + makerNameTextFromSelector + "#" + url);
     }
