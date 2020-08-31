@@ -68,6 +68,7 @@ public class QC_1279_TransitionByClickOnValueInRelinkingBlocks {
         new Motoroil_Release_page_Logic()
                 .checkTransitionByClickInRelinkingBlock();
     }
+
     @DataProvider(name = "routesMaker", parallel = true)
     Object[] dataProviderMaker() throws SQLException {
         return new PKW.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_maker");

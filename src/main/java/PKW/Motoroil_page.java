@@ -77,4 +77,12 @@ public class Motoroil_page {
 
    ElementsCollection visibleLinksOfViscosityBlock() {return $$x("//div[@class='select_oil_block--oil']//a").filter(visible);}
 
+   SelenideElement errorPopUpOfSelector() {return $x("//div[@class='popup-box-selector']");}
+
+   SelenideElement firstFieldKbaSelectorInErrorPopUp() {return $x("//div[@class='popup-box-selector']//input[@id='kba1']");}
+
+   SelenideElement secondFieldKbaSelectorInErrorPopUp() {return $x("//div[@class='popup-box-selector']//input[@id='kba2']");}
+
+   SelenideElement btnSearchOfKbaSelectorInErrorPopUp() {return $x("//div[@class='popup-box-selector']//a[@class='submit kba_submit ripple-out']");}
+
 }

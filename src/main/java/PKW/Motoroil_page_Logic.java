@@ -197,6 +197,11 @@ public class Motoroil_page_Logic extends Motoroil_page {
         secondFieldKbaSelector().shouldHave(value(secondValue));
         presenceOfViscosityLinks();
         btnSearchOfKbaSelector().click();
+        if (errorPopUpOfSelector().isDisplayed()){
+            firstFieldKbaSelectorInErrorPopUp().shouldBe(visible).setValue(firstValue);
+            secondFieldKbaSelectorInErrorPopUp().setValue(secondValue);
+            btnSearchOfKbaSelectorInErrorPopUp().click();
+        }
         return page(Car_parts_motoroil_page_Logic.class);
     }
 
