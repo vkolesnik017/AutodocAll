@@ -1,4 +1,4 @@
-package PKW.General_Common.QC_1920_Header;
+package PKW.General_Common.QC_1921_Header;
 
 import PKW.Main_page_Logic;
 import PKW.SetUp;
@@ -13,7 +13,7 @@ import static PKW.CommonMethods.openPage;
 import static PKW.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1922_PresenceOfTheRatingBlockInTheHeader {
+public class QC_1943_PresenceAndFunctionalityOfTheHeaderNavigationLine {
 
     @BeforeClass
     void setUp() {
@@ -27,11 +27,10 @@ public class QC_1922_PresenceOfTheRatingBlockInTheHeader {
 
     @Test(dataProvider = "route")
     @Owner(value = "LavrynenkoOlha")
-    @Description(value = "Test checks the elements in the rating block in the header")
-    public void testRatingBlockInTheHeader(String route) throws SQLException {
+    @Description(value = "Test checks the navigation line in the header")
+    public void testNavigationLineInTheHeader(String route) throws SQLException {
         openPage(route);
-        new Main_page_Logic().checkHeaderRatingElements()
-                .checkHeaderAppAndAgbLinks();
+        new Main_page_Logic().checkHeaderNavigationLine();
     }
 
     @AfterMethod

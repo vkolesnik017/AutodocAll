@@ -4,11 +4,8 @@ import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$x;
 
-public class Category_name_page {
+public class Category_name_parent_page {
 
-    protected SelenideElement imageOfChildCategory() {
-        return $x("//div[@class='autoteile-top-content__image']");
-    }
 
     SelenideElement  countOfVehicleInIconOfGarageInHeader() {return $x("//span[@class='header-garage__count header-garage__count--added']");}
 

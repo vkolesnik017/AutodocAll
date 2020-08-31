@@ -134,9 +134,93 @@ public class Product_page {
         return $x("//form[@id='comment_reply_form2']//a");
     }
 
-SelenideElement phraseAboutCompatibilityProductAndVehicle() {return $x("//p[contains(text(),'Dieses Produkt passt zu Ihrem')]");}
+    SelenideElement phraseAboutCompatibilityProductAndVehicle() {
+        return $x("//p[contains(text(),'Dieses Produkt passt zu Ihrem')]");
+    }
 
+    SelenideElement formFaq() {
+        return $x("//form[@id='comment_reply_form2']");
+    }
 
+    SelenideElement validationNameMessage() {
+        return $x("//div[@class='rating_name_error error'][contains(text(),'Bitte alle Felder ausfüllen')]");
+    }
 
+    SelenideElement validationEmailMessage() {
+        return $x("//form[@id='comment_reply_form2']//*[@class='rating_email_error error'][contains(text(),'Bitte eine gültige E-Mail verwenden')]");
+    }
 
+    SelenideElement validationTextMessage() {
+        return $x("//div[@class='rating_email_error error'][contains(text(),'Bitte alle Felder ausfüllen')]");
+    }
 }
+
+//TO DO
+
+//    SelenideElement carSelectorAll() {
+//        return $x("//div[@class='pkw-carselector']");
+//    }
+//
+//    SelenideElement productName() {
+//        return $x("//*[@class='pkw-product__name']");
+//    }
+//
+//    SelenideElement productBrandIcon() {
+//        return $x("//*[@class='pkw-product__rowspan']");
+//    }
+//
+//    SelenideElement productArticleNumber() {
+//        return $x("//*[@class='pkw-product__artikel']");
+//    }
+//    SelenideElement productTextUnderArticleNumber() {
+//        return $x("//*[@class='pkw-product__stext']");
+//    }
+//
+//    SelenideElement productDiscount() {
+//        return $x("//*[@class='pkw-product__sales']");
+//    }
+//
+//    SelenideElement productTextDiscount() {
+//        return $x("//*[@class='pkw-product__sales-additional']");
+//    }
+//
+//    SelenideElement productRatingStars() {
+//        return $x("//*[@class='pkw-product__rowspan js-product-click-stars']//*[@class='pkw-product__rating']");
+//    }
+//
+//    SelenideElement productRatingText() {
+//        return $x("//*[@class='pkw-product__rowspan js-product-click-stars']//*[@class='pkw-product__rating']");
+//    }
+//
+//    SelenideElement productTextUnderPrice() {
+//        return $x("//*[@class='pkw-product__price-after']");
+//    }
+//
+//    SelenideElement productVersandLinkUnderPrice() {
+//        return $x("//*[@class='pkw-product__price-after']//*[@title='Versandkosten']");
+//    }
+//
+//    SelenideElement productButtonBuyWithCount() {
+//        return $x("//*[@class='pkw-product__control button product']");
+//    }
+//
+//    SelenideElement productButtonBuy() {
+//        return $x("//*[@class='pkw-product__buy-btn basket_btn ']");
+//    }
+//    SelenideElement productCountButton() {
+//        return $x("//*[@class='pkw-product__input-wrapper qty']");
+//    }
+//
+//    SelenideElement productActualLagerInfo() {
+//        return $x("//*[@class='pkw-product__alternative-button']");
+//    }
+//
+//    SelenideElement productInfoAboutDoubleParts() {
+//        return $x("//*[@class='pkw-product__double']");
+//    }
+//
+//    SelenideElement productInfoBlock() {
+//        return $x("//*[@class='pkw-plus']");
+//    }
+//
+//}

@@ -113,4 +113,10 @@ public class LKW_Categories_page {
 
     ElementsCollection popUpOfParentCategories() {return $$x("//div[@class='car-parts-categories-modal__content']");}
 
+    SelenideElement popUpOfGarageInHeader() {return $x("//div[@class='header-garage__logged-header']");}
+
+    SelenideElement idOfVehicleInGaragePopUp(String idOfVehicle) {return $x("//div[@class='wrapper-radio']/label[@for='"+idOfVehicle+"']");}
+
+    SelenideElement headerGarageIcon(){ return $x("//div[@class='header-garage js-header-garage']"); }
+
 }

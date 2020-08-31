@@ -312,21 +312,18 @@ public class LKW_main_page {
 
     SelenideElement languageListBlock() {return $x("//div[@class='footer-language__country-list mCustomScrollbar _mCS_1']");}
 
-    ElementsCollection detailsBlockOfTopProducts() {return $$x("//div[@class='product-list__item__popup']");}
-
-    ElementsCollection btnDetailsOfTopBlock() {return $$x("//div[@class='item-table-box__details']/span");}
-
-    SelenideElement currentLanguage() {return $x("//div[@class='footer-language__current']/span");}
-
    ElementsCollection visibleArtNumOfTopProducts() {return $$x("//div[@class='product-list__item__nummer']").filter(visible);}
 
-    ElementsCollection titleOfParentCategories() {return $$x("//div[@class='car-parts-categories__item-name']");}
-
-    ElementsCollection imageOfParentCategories() {return $$x("//div[@class='car-parts-categories__item-link']/div/img");}
-
     SelenideElement childCategory(String titleOfChildCategory) {
-        return $x("//div[@class='truck-home-parts__cat-list']//span[contains(text(),'"+titleOfChildCategory+"')]");
-    }
+        return $x("//div[@class='truck-home-parts__cat-list']//span[contains(text(),'"+titleOfChildCategory+"')]"); }
+
+    SelenideElement popUpOfGarageInHeader() {return $x("//div[@class='header-garage__logged-header']");}
+
+    SelenideElement idOfVehicleInGaragePopUp(String idOfVehicle) {return $x("//div[@class='wrapper-radio']/label[@for='"+idOfVehicle+"']");}
+
+    SelenideElement headerGarageIcon(){ return $x("//div[@class='header-garage js-header-garage']"); }
+
+    SelenideElement  countOfVehicleInIconOfGarageInHeader() {return $x("//span[@class='header-garage__count header-garage__count--added']");}
 }
 
 

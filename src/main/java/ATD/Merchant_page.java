@@ -69,7 +69,7 @@ public class Merchant_page {
         return $x("//div[@class='bank_img_container']");
     }
     SelenideElement formForDataInMerchant() {
-        return $x("//form[@id='core_order_holder']");
+        return $x("//div[@class='order_holder core_loader_holder']");
     }
     SelenideElement headerBackBtn() {
         return $x("//a[@id='header_back_button']");
@@ -77,8 +77,31 @@ public class Merchant_page {
     SelenideElement cancelTransactionBtnTrustly() {
         return $x("//div[@id='core_order_cancel']/img");
     }
+    SelenideElement btnExit() {
+        return $x("//a[@class='prompt-yes']");
+    }
+    SelenideElement frame() {
+        return $x(" //div[@class='cont_concardis']//iframe");
+    }
 
 
+    //This method is used on the merchant page for payment using the Trustly
+    @Step("Checks presence element in merchant page for payment Trustly and cancels order. Merchant_page")
+    public CartPayments_page_Logic checkPresenceElementFromMerchantPageTrustlyAndCancelOrder() {
+        checkingContainsUrl("/trustly");
+        switchTo().frame(frame());
+        allBank().click();
+        formForDataInMerchant().shouldBe(visible);
+        headerBackBtn().click();
+        allBank().shouldBe(visible);
+        cancelTransactionBtnTrustly().click();
+        btnExit().waitUntil(visible, 5000).click();
+        checkingContainsUrl("/basket/payments");
+        return page(CartPayments_page_Logic.class);
+    }
+
+
+    //This method is used on the merchant page for payment using the Ideal
     @Step("Checks presence element in merchant page for payment Ideal and cancels order. Merchant_page")
     public CartPayments_page_Logic checkPresenceElementFromMerchantPageIdealAndCancelOrder() {
         checkingContainsUrl("secure-magenta1.be2bill.com");
@@ -89,6 +112,7 @@ public class Merchant_page {
         return page(CartPayments_page_Logic.class);
     }
 
+    //This method is used on the merchant page for payment using the Sofort
     @Step("Cancels order for Sofort method. Merchant_page")
     public CartPayments_page_Logic cancelOrderForSofortMethod() {
         checkingContainsUrl("sofort.com");
@@ -103,7 +127,7 @@ public class Merchant_page {
         return page(CartPayments_page_Logic.class);
     }
 
-
+    //This method is used on the merchant page for payment using the klarna
     @Step("Checks presence element in merchant page for payment klarna. Merchant_page")
     public CartPayments_page_Logic checkPresenceElementFromMerchantPageForPaymentKlarna() {
         checkingContainsUrl("/klarna");

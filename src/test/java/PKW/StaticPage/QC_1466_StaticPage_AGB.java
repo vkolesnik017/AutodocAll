@@ -9,11 +9,13 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.sql.SQLException;
+
 import static PKW.CommonMethods.openPage;
 import static PKW.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1092_StaticPage_Austauschartikel {
+public class QC_1466_StaticPage_AGB {
 
     @BeforeClass
     void setUp() {
@@ -27,13 +29,15 @@ public class QC_1092_StaticPage_Austauschartikel {
 
     @Test(dataProvider = "route")
     @Owner(value = "LavrynenkoOlha")
-    @Description(value = "Test checks elements on the Austauschartikel page")
-    public void testStaticPage_Austauschartikel(String route) {
+    @Description(value = "Test checks elements on the AGB page")
+    public void testStaticPage_AGB (String route) throws SQLException {
         openPage(route);
-        new Main_page_Logic().clickFooterAustauschartikelLink()
-                .checkClickableCards()
-                .checkElementsOnThePage();
-
+        new Main_page_Logic().clickHeaderAgbLink()
+                .checkDownloadButtons()
+                .checkElementsOnThePage()
+                .checkingPriceInTheCountryList ()
+                .checkingFlagsInTheCountryList()
+                .checkingLinksInTheText();
     }
 
     @AfterMethod

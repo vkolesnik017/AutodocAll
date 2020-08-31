@@ -167,9 +167,9 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Clicking moto category. Main_page")
-    public Moto_main_page clickMotoCategory() {
+    public Moto_main_page_Logic clickMotoCategory() {
         motoCategory().click();
-        return page(Moto_main_page.class);
+        return page(Moto_main_page_Logic.class);
     }
 
     @Step("Clicking tyres category. Main_page")
@@ -684,7 +684,7 @@ public class Main_page_Logic extends Main_page {
         commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "service_packages"));
         //HILFE & SUPPORT
         clickHilfeCenterLink();
-        commonMethods.checkingUrlAndCloseTab(db.getRouteByRouteName(getCurrentShopFromJSVarInHTML(),"hilfe_center_main"));
+        commonMethods.checkingUrlAndCloseTab(db.getRouteByRouteName(getCurrentShopFromJSVarInHTML(), "hilfe_center_main"));
         clickAutodocClub();
         commonMethods.checkingUrlAndCloseTab(db.getRouteByRouteName(getCurrentShopFromJSVarInHTML(), "club_main"));
         clickBlog();
@@ -1075,5 +1075,70 @@ public class Main_page_Logic extends Main_page {
         btnCloseSelectorFromMyGaragePopUp().shouldBe(visible).click();
         selectorFromMyGarageBlock().shouldNotBe(visible);
         return this;
+    }
+
+    @Step("Login in header with mail {mail} and transition to profile plus page and go back. Main_page")
+    public Main_page_Logic loginToProfilePlusPageAndBack(String email) {
+        loginAndTransitionToProfilePlusPage(email).visibilityOfUsersName();
+        back();
+        return this;
+    }
+
+    @Step("update of page. Main_page")
+    public Main_page_Logic updateOfPage() {
+        refresh();
+        return this;
+    }
+
+    @Step("update of page. Main_page")
+    public Main_page_Logic checkCountOfVehicleInIconOfGarage(String expectedCountOfVehicle) {
+        countOfVehicleInIconOfGarageInHeader().shouldBe(visible).shouldHave(exactText(expectedCountOfVehicle));
+        return this;
+    }
+
+    @Step("click on Garage icon in header. Main_page")
+    public Main_page_Logic clickOnGarageIconInHeader() {
+        headerGarageIcon().shouldBe(visible).click();
+        popUpOfGarageInHeader().shouldBe(visible);
+        return this;
+    }
+
+    @Step("click on Garage icon in header. Main_page")
+    public Main_page_Logic selectVehicleInGaragePopUp(String idOfVehicle) {
+        idOfVehicleInGaragePopUp(idOfVehicle).shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("check expected values in selector. Main_page")
+    public Main_page_Logic checkValuesInSelector(String marke, String model, String motor) {
+        brandSelectorInVerticalCarSelector().shouldHave(value(marke));
+        modelSelectorInVerticalCarSelector().shouldHave(value(model));
+        typeSelectorInVerticalCarSelector().shouldHave(value(motor));
+        return this;
+    }
+
+    @Step("click on More spare parts link of catalog. Main_page")
+    public Categories_page_Logic clickOnMoreSparePartsLink() {
+        btnMoreSpareParts().shouldBe(visible).click();
+        return page(Categories_page_Logic.class);
+    }
+
+    @Step("select TOP brands block. Main_page")
+    public Main_page_Logic selectTopBrandsBlock() {
+        linksInTopsBlock().get(0).shouldBe(visible).click();
+        blockOfBrandsOfTopBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("click on More spare parts link of TOP brands block. Main_page")
+    public Makers_page_Logic clickOnMoreSparePartsLinkOfTopBrandsBlock() {
+        btnMoreSparePartsOfTopBrands().shouldBe(visible).click();
+        return page(Makers_page_Logic.class);
+    }
+
+     @Step("click on All spare parts link in TOP Parent and Child block. Main_page")
+    public LKW_Categories_page_Logic clickOnAllSparePartsLinkInTopParentsBlock() {
+         allSparePartsLink().shouldBe(visible).click();
+        return page(LKW_Categories_page_Logic.class);
     }
 }

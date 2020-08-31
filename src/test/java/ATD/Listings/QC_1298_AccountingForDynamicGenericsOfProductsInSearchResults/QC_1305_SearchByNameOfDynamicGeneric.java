@@ -46,7 +46,7 @@ public class QC_1305_SearchByNameOfDynamicGeneric {
         new Category_car_list_page_Logic()
                 .inputGenericInSearchField(generic).checkListingWithSelectedGeneric(generic);
         List<String> idOfAddedProducts = new ArrayList<>(searchPage.getIdOfAddedProductsToBasket(3));
-        searchPage.addedProductsToBasket(3).goToBasket();
+        searchPage.addedProductsToBasket(3).cartClick();
         List<String> idOfAddedProductsFromBasket = new ArrayList<>(cartPage.getIdAddedProductsToList());
         Assert.assertEquals(idOfAddedProducts, idOfAddedProductsFromBasket);
     }
