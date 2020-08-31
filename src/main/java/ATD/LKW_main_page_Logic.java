@@ -362,7 +362,6 @@ public class LKW_main_page_Logic extends LKW_main_page {
         return this;
     }
 
-
     @Step("reset of car brand field in vertical selector .LKW_main_page")
     public LKW_main_page_Logic resetOfCarBrandFieldInVerticalSelector() {
         String currentUrl = url();
@@ -380,7 +379,6 @@ public class LKW_main_page_Logic extends LKW_main_page {
         return this;
     }
 
-
     @Step("availability of headline of brands model block .LKW_main_page")
     public LKW_main_page_Logic availabilityOfHeadlineOfBrandsModelBlock() {
         truckBrandsBlock().shouldBe(visible);
@@ -388,14 +386,12 @@ public class LKW_main_page_Logic extends LKW_main_page {
         return this;
     }
 
-
     @Step("availability of headline of brands model block .LKW_main_page")
     public LKW_main_page_Logic availabilityOfAutoPartsTopBrandsBlock() {
         truckBrandsBlock().shouldBe(visible);
         brandsOfTruckInTopBrandsBlock().shouldHaveSize(8);
         return this;
     }
-
 
     @Step("check transition at icon of truck brands in TOP brands block .LKW_main_page")
     public LKW_Categories_maker_page_Logic checkTransitionAtIconOfTruckBrand() {
@@ -526,7 +522,6 @@ public class LKW_main_page_Logic extends LKW_main_page {
         DataBase db = new DataBase();
         String currentCountry;
         List<String> language = Arrays.asList("CH", "AT", "LD", "BG", "BE", "CZ", "DK", "EE", "ES", "FI", "FR", "EN", "GR", "HU", "IT", "LT", "LV", "NL", "NO", "PL", "PT", "RO", "SE", "SI", "SK");
-        //languageBlock().click();
         for (int i = 0; i < languagesOfSubscribe().size(); i++) {
             if (language.get(i).equals("LD")) {
                 currentCountry = "lu";
@@ -546,21 +541,6 @@ public class LKW_main_page_Logic extends LKW_main_page {
             back();
             waitWhileRouteContainsExpectedCondition(db.getRouteByRouteName("DE", "lkw_main"));
         }
-     /*   for (int i = 0; i < languagesOfSubscribe().size(); i++) {
-            currentCountry = currentLanguage().shouldBe(exist).getText();
-            languageBlock().shouldBe(exist).scrollIntoView("{block: \"center\"}");
-            languageBlock().click();
-            if (!languageListBlock().isDisplayed()) {
-                languageBlock().click();
-            }
-            languageListBlock().waitUntil(visible, 20000);
-            languagesOfSubscribe().get(i).scrollIntoView("{block: \"center\"}");
-            languagesOfSubscribe().get(i).click();
-            languageListBlock().shouldNotBe(visible);
-            currentLanguage().shouldNotHave(exactText(currentCountry));
-            String urlFromBD = new DataBase().getFullRouteByRouteName("subprod", language.get(i), "lkw_main") + "/";
-            Assert.assertEquals(url(), urlFromBD);
-        }*/
         return this;
     }
 
@@ -668,5 +648,45 @@ public class LKW_main_page_Logic extends LKW_main_page {
     public LKW_Category_page_Logic clickOnOilTitleChildCategory(String titleOfChildCategory) {
         childCategory(titleOfChildCategory).shouldBe(visible).click();
         return page(LKW_Category_page_Logic.class);
+    }
+
+    @Step("click on Garage icon in header. LKW_main_page")
+    public LKW_main_page_Logic clickOnGarageIconInHeader() {
+        headerGarageIcon().shouldBe(visible).click();
+        popUpOfGarageInHeader().shouldBe(visible);
+        return this;
+    }
+
+    @Step("click on Garage icon in header. LKW_main_page")
+    public LKW_main_page_Logic selectVehicleInGaragePopUp(String idOfVehicle) {
+        idOfVehicleInGaragePopUp(idOfVehicle).shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("check expected values in selector. LKW_main_page")
+    public LKW_main_page_Logic checkValuesInSelector(String marke, String model, String motor) {
+        markeOfVerticalTruckSelector().shouldHave(value(marke));
+        modelOfVerticalTruckSelector().shouldHave(value(model));
+        motorOfVerticalTruckSelector().shouldHave(value(motor));
+        return this;
+    }
+
+    @Step("Login in header with mail {mail} and transition to profile plus page and go back. LKW_main_page")
+    public LKW_main_page_Logic loginToProfilePlusPageAndBack(String email) {
+      new Main_page_Logic().loginAndTransitionToProfilePlusPage(email).visibilityOfUsersName();
+        back();
+        return this;
+    }
+
+    @Step("update of page. LKW_main_page")
+    public LKW_main_page_Logic updateOfPage() {
+        refresh();
+        return this;
+    }
+
+    @Step("update of page. LKW_main_page")
+    public LKW_main_page_Logic checkCountOfVehicleInIconOfGarage(String expectedCountOfVehicle) {
+        countOfVehicleInIconOfGarageInHeader().shouldBe(visible).shouldHave(exactText(expectedCountOfVehicle));
+        return this;
     }
 }

@@ -252,7 +252,31 @@ public class LKW_Categories_page_Logic extends LKW_Categories_page {
 
     @Step("click on Oil child category .LKW_Categories_page")
     public LKW_Category_page_Logic clickOnOilChildCategory() {
-       visibleChildCategoriesPopUpOfParentCategory().get(0).shouldBe(visible).click();
+        visibleChildCategoriesPopUpOfParentCategory().get(0).shouldBe(visible).click();
         return page(LKW_Category_page_Logic.class);
     }
+
+    @Step("click on Garage icon in header. LKW_main_page")
+    public LKW_Categories_page_Logic clickOnGarageIconInHeader() {
+        headerGarageIcon().shouldBe(visible).click();
+        popUpOfGarageInHeader().shouldBe(visible);
+        return this;
+    }
+
+    @Step("click on Garage icon in header. LKW_main_page")
+    public LKW_Categories_page_Logic selectVehicleInGaragePopUp(String idOfVehicle) {
+        idOfVehicleInGaragePopUp(idOfVehicle).shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("check values in selector .LKW_Categories_page")
+    public LKW_Categories_page_Logic checkValuesInSelector(String markeOfTruck, String modelOfTruck, String motorOfTruck) {
+        verticalTruckSelectorInCloseCondition().click();
+        verticalTruckSelectorInOpenCondition().shouldBe(visible);
+        markeOfVerticalTruckSelector().shouldHave(value(markeOfTruck));
+        modelOfVerticalTruckSelector().shouldHave(value(modelOfTruck));
+        motorOfVerticalTruckSelector().shouldHave(value(motorOfTruck));
+        return this;
+    }
+
 }

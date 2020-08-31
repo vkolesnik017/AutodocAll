@@ -290,5 +290,37 @@ public class Search_page_Logic extends Search_page {
         titleOfProductsInListing().get(point).scrollIntoView("{block: \"center\"}").click();
         return page(Product_page_Logic.class);
     }
+
+    @Step("Login in header with mail {mail} and transition to profile plus page and go back. Search_page")
+    public Search_page_Logic loginToProfilePlusPageAndBack(String email) {
+        new Main_page_Logic().loginAndTransitionToProfilePlusPage(email).visibilityOfUsersName();
+        back();
+        return this;
+    }
+
+    @Step("update of page. Search_page")
+    public Search_page_Logic updateOfPage() {
+        refresh();
+        return this;
+    }
+
+    @Step("update of page. Search_page")
+    public Search_page_Logic checkCountOfVehicleInIconOfGarage(String expectedCountOfVehicle) {
+        countOfVehicleInIconOfGarageInHeader().shouldBe(visible).shouldHave(exactText(expectedCountOfVehicle));
+        return this;
+    }
+
+    @Step("click on Garage icon in header. Search_page")
+    public Search_page_Logic clickOnGarageIconInHeader() {
+        headerGarageIcon().shouldBe(visible).click();
+        popUpOfGarageInHeader().shouldBe(visible);
+        return this;
+    }
+
+    @Step("click on Garage icon in header. Search_page")
+    public Search_page_Logic selectVehicleInGaragePopUp(String idOfVehicle) {
+        idOfVehicleInGaragePopUp(idOfVehicle).shouldBe(visible).click();
+        return this;
+    }
 }
 
