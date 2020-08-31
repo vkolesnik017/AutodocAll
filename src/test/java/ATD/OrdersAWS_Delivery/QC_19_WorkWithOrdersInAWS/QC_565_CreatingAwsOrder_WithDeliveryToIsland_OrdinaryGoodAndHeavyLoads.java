@@ -49,7 +49,7 @@ public class QC_565_CreatingAwsOrder_WithDeliveryToIsland_OrdinaryGoodAndHeavyLo
         openPage(route);
         articleNum = product_page_logic.getArticleNumber();
         productArticleID = product_page_logic.getProductId();
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "HeavyLoasdProduct1"));
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "HeavyLoadProduct1"));
         heavyLoadsArticleNun = product_page_logic.getArticleNumber();
         userData = new Customer_view_aws().openCustomerPersonalArea(userID)
                 .getUserData();
