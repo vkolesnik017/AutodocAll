@@ -12,7 +12,7 @@ public class Product_page_mob_Logic extends Product_page_mob {
 
     @Step("Adding product to basket. Product_page")
     public Product_page_mob_Logic addProductToCart() {
-        closePopupUnbelievableDeals();
+        closePopupSaveMoney();
         buyButton().click();
         sleep(2000);
         return this;
@@ -32,7 +32,7 @@ public class Product_page_mob_Logic extends Product_page_mob {
     }
 
     @Step("Close popup Unbelievable Deals. Product_page_Mob")
-    public Product_page_mob_Logic closePopupUnbelievableDeals() {
+    public Product_page_mob_Logic closePopupSaveMoney() {
         try {
             popupUnbelievableDeals().waitUntil(visible, 5000).click(1, 1);
             Wait().until(WebDriver -> url().contains("apps.apple.com"));
