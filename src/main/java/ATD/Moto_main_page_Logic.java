@@ -8,8 +8,7 @@ import java.sql.SQLException;
 import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.back;
-import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class Moto_main_page_Logic extends Moto_main_page {
@@ -687,6 +686,46 @@ public class Moto_main_page_Logic extends Moto_main_page {
             titleOfTopChildCategories().get(i).shouldBe(visible).hover();
             titleOfTopChildCategories().get(i).shouldBe(visible).shouldHave(cssValue("color", "rgba(255, 255, 255, 1)"));
         }
+        return this;
+    }
+
+    @Step("click on Garage icon in header. Moto_main_page")
+    public Moto_main_page_Logic clickOnGarageIconInHeader() {
+        headerGarageIcon().shouldBe(visible).click();
+        popUpOfGarageInHeader().shouldBe(visible);
+        return this;
+    }
+
+    @Step("click on Garage icon in header. Moto_main_page")
+    public Moto_main_page_Logic selectVehicleInGaragePopUp(String idOfVehicle) {
+        idOfVehicleInGaragePopUp(idOfVehicle).shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("check expected values in selector. Moto_main_page")
+    public Moto_main_page_Logic checkValuesInSelector(String marke, String model, String motor) {
+        markeOfHorizontalMotoSelector().shouldHave(value(marke));
+        modelOfHorizontalMotoSelector().shouldHave(value(model));
+        motorOfHorizontalMotoSelector().shouldHave(value(motor));
+        return this;
+    }
+
+    @Step("Login in header with mail {mail} and transition to profile plus page and go back. Moto_main_page")
+    public Moto_main_page_Logic loginToProfilePlusPageAndBack(String email) {
+        new Main_page_Logic().loginAndTransitionToProfilePlusPage(email).visibilityOfUsersName();
+        back();
+        return this;
+    }
+
+    @Step("update of page. Moto_main_page")
+    public Moto_main_page_Logic updateOfPage() {
+        refresh();
+        return this;
+    }
+
+    @Step("update of page. Moto_main_page")
+    public Moto_main_page_Logic checkCountOfVehicleInIconOfGarage(String expectedCountOfVehicle) {
+        countOfVehicleInIconOfGarageInHeader().shouldBe(visible).shouldHave(exactText(expectedCountOfVehicle));
         return this;
     }
 }
