@@ -46,7 +46,7 @@ public class QC_92_ResetOfValuesInTruckSelector {
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test checks reset of values in truck selector")
-    public void testChecksResetOfValuesInTruckSelectorCategories(String route) {
+    public void testChecksResetOfValuesInTruckSelectorCategories(String route) throws SQLException {
         openPage(route);
         new LKW_Categories_page_Logic()
                 .selectBrandOfCarInVerticalSelector("131")
@@ -126,7 +126,7 @@ public class QC_92_ResetOfValuesInTruckSelector {
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test checks reset of values in truck selector")
-    public void testChecksResetOfValuesInTruckSelectorMakerCarList(String route) {
+    public void testChecksResetOfValuesInTruckSelectorMakerCarList(String route) throws SQLException {
         open(route);
         new LKW_maker_car_list_Logic()
                 .selectBrandOfCarInVerticalSelector("131")
@@ -143,7 +143,7 @@ public class QC_92_ResetOfValuesInTruckSelector {
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test checks reset of values in truck selector")
-    public void testChecksResetOfValuesInTruckSelectorCategoriesMaker(String route) {
+    public void testChecksResetOfValuesInTruckSelectorCategoriesMaker(String route) throws SQLException {
         openPage(route);
         new LKW_Categories_maker_page_Logic()
                 .selectBrandOfCarInVerticalSelector("131")
@@ -160,7 +160,7 @@ public class QC_92_ResetOfValuesInTruckSelector {
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test checks reset of values in truck selector")
-    public void testChecksResetOfValuesInTruckSelectorCategoryCarList(String route) {
+    public void testChecksResetOfValuesInTruckSelectorCategoryCarList(String route) throws SQLException {
         openPage(route);
         new LKW_Category_car_list_page_Logic()
                 .openVerticalSelector()

@@ -31,7 +31,7 @@ public class QC_65_BreadCrumbsInCategory {
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test checks bread crumbs block in Category route")
-    public void testChecksBreadCrumbsInCategory(String route) {
+    public void testChecksBreadCrumbsInCategory(String route) throws SQLException {
         openPage(route);
         new LKW_Category_brand_page_Logic().checkLinksInBreadCrumbsBlock().checkLinkClickInBreadCrumbsBlock();
     }

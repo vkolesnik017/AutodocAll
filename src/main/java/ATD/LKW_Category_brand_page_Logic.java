@@ -3,6 +3,9 @@ package ATD;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
+import java.sql.SQLException;
+
+import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.CollectionCondition.*;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.back;
@@ -26,12 +29,12 @@ public class LKW_Category_brand_page_Logic extends LKW_Category_brand_page {
 
 
     @Step("Check  link click in bread crumbs block .LKW_Category_brand_page")
-    public LKW_Category_brand_page_Logic checkLinkClickInBreadCrumbsBlock()  {
+    public LKW_Category_brand_page_Logic checkLinkClickInBreadCrumbsBlock() throws SQLException {
         firstLinkClick().checkSuccessfullyLKWCategoriesPageLoading();
         back();
-        secondLinkClick().checkSuccessfullyLKWParentCategoryPageLoading("https://lkwteile.autodoc.de/ersatzteile/filter");
+        secondLinkClick();  checkingContainsUrl(new DataBase().getRouteByRouteName("DE","lkw_parent_category"));
         back();
-        thirdLinkClick().checkSuccessfullyChildCategoryPageLoading();
+        thirdLinkClick();  checkingContainsUrl(new DataBase().getRouteByRouteName("DE","lkw_category2"));
         return this;
     }
 

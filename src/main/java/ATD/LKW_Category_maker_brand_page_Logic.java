@@ -3,6 +3,9 @@ package ATD;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
+import java.sql.SQLException;
+
+import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
@@ -27,14 +30,14 @@ public class LKW_Category_maker_brand_page_Logic extends LKW_Category_maker_bran
 
 
     @Step("Check  link click in bread crumbs block .LKW_Category_maker_brand_page")
-    public LKW_Category_maker_brand_page_Logic checkLinkClickInBreadCrumbsBlock()  {
+    public LKW_Category_maker_brand_page_Logic checkLinkClickInBreadCrumbsBlock() throws SQLException {
         firstLinkClick().checkSuccessfullyLKWCategoriesPageLoading();
         back();
-        secondLinkClick().checkSuccessfullyLKWParentCategoryPageLoading("https://lkwteile.autodoc.de/ersatzteile/filter");
+        secondLinkClick();  checkingContainsUrl(new DataBase().getRouteByRouteName("DE","lkw_parent_category"));
         back();
         thirdLinkClick().checkSuccessfullyChildCategoryPageLoading();
         back();
-        fourthLinkClick().checkSuccessfullyCategoryBrandPageLoading("https://lkwteile.autodoc.de/ersatzteile/olfilter-200157/mf-mann-filter");
+        fourthLinkClick(); checkingContainsUrl(new DataBase().getRouteByRouteName("DE","lkw_category_brand"));
         return this;
     }
 

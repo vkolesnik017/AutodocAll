@@ -32,7 +32,7 @@ public class QC_178_TopParentAndChildCategoriesBlocks {
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test checks Top parent and child categories blocks")
-    public void testChecksTopParentAndChildCategoriesBlocks(String route) {
+    public void testChecksTopParentAndChildCategoriesBlocks(String route) throws SQLException {
         openPage(route);
         new LKW_main_page_Logic().visibilityOfTopParentBlock()
                 .checkMainElementsOfParentCategoryBlock()

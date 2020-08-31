@@ -31,7 +31,7 @@ public class QC_70_BreadCrumbsInChildCategory {
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test checks bread crumbs block in Child category route")
-    public void testChecksBreadCrumbsInChildCategory(String route) {
+    public void testChecksBreadCrumbsInChildCategory(String route) throws SQLException {
         openPage(route);
 
         new LKW_Category_page_Logic().checkLinksInBreadCrumbsBlock().checkLinkClickInBreadCrumbsBlock();

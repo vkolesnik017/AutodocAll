@@ -3,6 +3,8 @@ package ATD;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
+import java.sql.SQLException;
+
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.*;
@@ -20,7 +22,7 @@ public class LKW_Parent_Category_page_Logic extends LKW_Parent_Category_page {
     }
 
     @Step("Check links in bread crumbs block .LKW_Parent_Category_page")
-    public LKW_Parent_Category_page_Logic checkLinksInBreadCrumbsBlock() {
+    public LKW_Parent_Category_page_Logic checkLinksInBreadCrumbsBlock() throws SQLException {
         breadCrumbsLinks().shouldHave(size(4));
         firstLinkOfBreadCrumbsBlock().shouldBe(visible);
         secondLinkOfBreadCrumbsBlock().shouldHave(exactText("Filter")).shouldNotHave(attribute("href"));

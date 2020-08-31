@@ -3,6 +3,9 @@ package ATD;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
+import java.sql.SQLException;
+
+import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.back;
@@ -12,10 +15,10 @@ import static com.codeborne.selenide.WebDriverRunner.url;
 public class LKW_Categories_page_Logic extends LKW_Categories_page {
 
     @Step("Check successfully LKW_Categories page loading .LKW_Categories_page")
-    public LKW_Categories_page_Logic checkSuccessfullyLKWCategoriesPageLoading() {
+    public LKW_Categories_page_Logic checkSuccessfullyLKWCategoriesPageLoading() throws SQLException {
         verticalTruckSelectorInCloseCondition().shouldBe(visible);
         headlineInHeader().shouldBe(visible).shouldHave(exactText("LKW Ersatzteilkatalog"));
-        Assert.assertTrue(url().contains("https://lkwteile.autodoc.de/ersatzteile"));
+        checkingContainsUrl(new DataBase().getRouteByRouteName("DE","lkw_categories"));
         return this;
     }
 
