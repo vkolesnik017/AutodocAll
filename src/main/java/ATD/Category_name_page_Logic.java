@@ -3,6 +3,9 @@ package ATD;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
+import java.sql.SQLException;
+
+import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.CommonMethods.waitWhileRouteBecomeExpected;
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.visible;
@@ -20,9 +23,9 @@ public class Category_name_page_Logic extends Category_name_page {
     }
 
     @Step("check successfully child category page loading. Category_name_page")
-    public Category_name_page_Logic checkSuccessfullyChildCategoryLoadingFromMainPage() {
+    public Category_name_page_Logic checkSuccessfullyChildCategoryLoadingFromMainPage() throws SQLException {
         imageOfChildCategory().shouldBe(visible);
-        Assert.assertEquals(url(), "https://www.autodoc.de/autoteile/olfilter-10359");
+        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "category_name8"));
         return this;
     }
 

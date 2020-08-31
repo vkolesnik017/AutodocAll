@@ -31,11 +31,12 @@ public class QC_69_BreadCrumbsInCategoryMaker {
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test checks bread crumbs block in Category maker route")
-    public void testChecksBreadCrumbsInCategoryMaker(String route) {
+    public void testChecksBreadCrumbsInCategoryMaker(String route) throws SQLException {
         openPage(route);
 
         new LKW_Category_maker_Logic().checkLinksInBreadCrumbsBlock().checkLinkClickInBreadCrumbsBlock();
     }
+
     @AfterMethod
     public void close() {
         closeWebDriver();

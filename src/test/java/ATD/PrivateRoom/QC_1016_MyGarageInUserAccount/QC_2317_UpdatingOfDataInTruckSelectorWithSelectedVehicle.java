@@ -33,7 +33,7 @@ public class QC_2317_UpdatingOfDataInTruckSelectorWithSelectedVehicle {
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test checks updating of data in Truck selector with selected vehicle")
-    public void testChecksUpdatingOfDataInTruckSelectorWithSelectedVehicle(String route) {
+    public void testChecksUpdatingOfDataInTruckSelectorWithSelectedVehicle(String route) throws SQLException {
         openPage(route);
 
         new Main_page_Logic()

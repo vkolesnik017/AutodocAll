@@ -31,7 +31,7 @@ public class QC_68_BreadCrumbsInProductPage_NotActiveProduct {
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test checks bread crumbs block in Product page route with not active product")
-    public void testChecksBreadCrumbsInProductPageNotActive(String route) {
+    public void testChecksBreadCrumbsInProductPageNotActive(String route) throws SQLException {
         openPage(route);
 
         new LKW_Product_page_Logic().checkLinksInBreadCrumbsBlockWithNotActiveProduct()
