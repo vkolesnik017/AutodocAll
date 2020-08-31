@@ -12,7 +12,7 @@ public class Product_page_mob {
         return $(byCssSelector(".product-wrap__btns>a"));
     }
 
-    SelenideElement popupSaveMoney() {
-        return $x("//img[contains(@src,'SavemoreMoney')]");
+    SelenideElement popupUnbelievableDeals() {
+        return $x("//img[contains(@src,'UnbelievableDeals')]");
     }
 }
