@@ -154,4 +154,16 @@ public class Product_page_Logic extends Product_page {
         phraseAboutCompatibilityProductAndVehicle().shouldBe(visible);
         return this;
     }
+
+    @Step("Sending the empty form, checking the validation messages .Product_page")
+    public Product_page_Logic checkingTheValidationMessageSendingEmptyForm() {
+        btnFaqTab().click();
+        btnAskQuestionFaqForm().click();
+        formFaq().shouldBe(visible);
+        btnSendFaqForm().click();
+        validationNameMessage().shouldBe(visible);
+        validationEmailMessage().shouldBe(visible);
+        validationTextMessage().shouldBe(visible);
+        return this;
+    }
 }

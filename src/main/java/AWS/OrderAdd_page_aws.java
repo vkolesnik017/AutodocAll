@@ -82,7 +82,7 @@ public class OrderAdd_page_aws {
     }
 
     private SelenideElement fieldPostcodeInDeliveryAddress() {
-        return $x("//input[@id='Order[lPlz]']");
+        return $x("//input[@id='form_Order[lPlz]']");
     }
 
     private SelenideElement fieldCityInDeliveryAddress() {
@@ -174,7 +174,7 @@ public class OrderAdd_page_aws {
     }
 
     private SelenideElement preLoader() {
-        return $x("//div[@class='block-msg order-view']");
+        return $x("//div[@class='block-msg order-view order-processing']");
     }
 
     @Step("Checking correct text in input field. OrderAdd_page_aws")
@@ -201,9 +201,12 @@ public class OrderAdd_page_aws {
     @Step("Click save order button. OrderAdd_page_aws")
     public Order_aws clickSaveOrderBtn() {
         if (preLoader().isDisplayed()) {
-            preLoader().waitUntil(attribute("style", "display: none;"), 30000);
+            preLoader().waitUntil(attribute("style", "display: none;"), 50000);
         }
         saveOrderBtn().click();
+        if (preLoader().isDisplayed()) {
+            preLoader().waitUntil(attribute("style", "display: none;"), 50000);
+        }
         return page(Order_aws.class);
     }
 
@@ -229,6 +232,9 @@ public class OrderAdd_page_aws {
 
     @Step("Checks presence table of suppliers and click button Select. OrderAdd_page_aws")
     public OrderAdd_page_aws checkPresenceTableOfSuppliersAndClickBtnSelect() {
+        if (preLoader().isDisplayed()) {
+            preLoader().waitUntil(attribute("style", "display: none;"), 30000);
+        }
         tableOfSuppliers().waitUntil(visible, 3000);
         if (tableOfStock().isDisplayed()){
             radioBtnStorage().click();
@@ -252,6 +258,9 @@ public class OrderAdd_page_aws {
 
     @Step("Checks article number of added product {articleNum}. OrderAdd_page_aws")
     public OrderAdd_page_aws checkArticleOfAddedProduct(String articleNum) {
+        if (preLoader().isDisplayed()) {
+            preLoader().waitUntil(attribute("style", "display: none;"), 50000);
+        }
         tableWithAddedProducts().shouldBe(visible);
         sleep(2000);
         ArrayList <String> list = new ArrayList<>();

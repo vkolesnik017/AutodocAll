@@ -5,8 +5,8 @@ import io.qameta.allure.Step;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.checkingContainsUrl;
-import static com.codeborne.selenide.Condition.exactValue;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Condition.value;
 import static com.codeborne.selenide.Selenide.page;
 
 public class Moto_makers_page_Logic extends Moto_makers_page {
@@ -23,7 +23,6 @@ public class Moto_makers_page_Logic extends Moto_makers_page {
         return this;
     }
 
-
     @Step(" reset of motorcycle selector .Moto_makers_page")
     public Moto_makers_page_Logic presenceOfEmptyValuesInSelector() {
         brandOfMotoField().shouldHave(exactValue("0"));
@@ -37,7 +36,6 @@ public class Moto_makers_page_Logic extends Moto_makers_page {
         checkingContainsUrl(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", subRoute));
         return this;
     }
-
 
     @Step(" presence of main headline block  .Moto_makers_page")
     public Moto_makers_page_Logic presenceOfMainHeadlineBlock() {
@@ -95,5 +93,26 @@ public class Moto_makers_page_Logic extends Moto_makers_page {
     public Moto_Catalog_model_page_Logic clickOnTopModelInLinkingBlock(int block, int model) {
         linksOfTopModelsAtLinkingBlock(block).get(model).shouldBe(visible).click();
         return page(Moto_Catalog_model_page_Logic.class);
+    }
+
+    @Step("click on Garage icon in header. Moto_makers_page")
+    public Moto_makers_page_Logic clickOnGarageIconInHeader() {
+        headerGarageIcon().shouldBe(visible).click();
+        popUpOfGarageInHeader().shouldBe(visible);
+        return this;
+    }
+
+    @Step("click on Garage icon in header. Moto_makers_page")
+    public Moto_makers_page_Logic selectVehicleInGaragePopUp(String idOfVehicle) {
+        idOfVehicleInGaragePopUp(idOfVehicle).shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("check expected values in selector. Moto_makers_page")
+    public Moto_makers_page_Logic checkValuesInSelector(String marke, String model, String motor) {
+        brandOfMotoField().shouldHave(value(marke));
+        modelFiledInSelector().shouldHave(value(model));
+        motorFiledInSelector().shouldHave(value(motor));
+        return this;
     }
 }

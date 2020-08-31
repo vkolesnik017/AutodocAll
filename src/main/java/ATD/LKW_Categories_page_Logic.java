@@ -3,6 +3,9 @@ package ATD;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
+import java.sql.SQLException;
+
+import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.back;
@@ -12,10 +15,10 @@ import static com.codeborne.selenide.WebDriverRunner.url;
 public class LKW_Categories_page_Logic extends LKW_Categories_page {
 
     @Step("Check successfully LKW_Categories page loading .LKW_Categories_page")
-    public LKW_Categories_page_Logic checkSuccessfullyLKWCategoriesPageLoading() {
+    public LKW_Categories_page_Logic checkSuccessfullyLKWCategoriesPageLoading() throws SQLException {
         verticalTruckSelectorInCloseCondition().shouldBe(visible);
         headlineInHeader().shouldBe(visible).shouldHave(exactText("LKW Ersatzteilkatalog"));
-        Assert.assertTrue(url().contains("https://lkwteile.autodoc.de/ersatzteile"));
+        checkingContainsUrl(new DataBase().getRouteByRouteName("DE","lkw_categories"));
         return this;
     }
 
@@ -252,7 +255,31 @@ public class LKW_Categories_page_Logic extends LKW_Categories_page {
 
     @Step("click on Oil child category .LKW_Categories_page")
     public LKW_Category_page_Logic clickOnOilChildCategory() {
-       visibleChildCategoriesPopUpOfParentCategory().get(0).shouldBe(visible).click();
+        visibleChildCategoriesPopUpOfParentCategory().get(0).shouldBe(visible).click();
         return page(LKW_Category_page_Logic.class);
     }
+
+    @Step("click on Garage icon in header. LKW_Categories_page")
+    public LKW_Categories_page_Logic clickOnGarageIconInHeader() {
+        headerGarageIcon().shouldBe(visible).click();
+        popUpOfGarageInHeader().shouldBe(visible);
+        return this;
+    }
+
+    @Step("click on Garage icon in header. LKW_Categories_page")
+    public LKW_Categories_page_Logic selectVehicleInGaragePopUp(String idOfVehicle) {
+        idOfVehicleInGaragePopUp(idOfVehicle).shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("check values in selector .LKW_Categories_page")
+    public LKW_Categories_page_Logic checkValuesInSelector(String markeOfTruck, String modelOfTruck, String motorOfTruck) {
+        verticalTruckSelectorInCloseCondition().click();
+        verticalTruckSelectorInOpenCondition().shouldBe(visible);
+        markeOfVerticalTruckSelector().shouldHave(value(markeOfTruck));
+        modelOfVerticalTruckSelector().shouldHave(value(modelOfTruck));
+        motorOfVerticalTruckSelector().shouldHave(value(motorOfTruck));
+        return this;
+    }
+
 }

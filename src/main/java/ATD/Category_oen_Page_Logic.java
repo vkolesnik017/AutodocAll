@@ -9,6 +9,7 @@ import java.util.List;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Condition.disappear;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Category_oen_Page_Logic extends Category_oen_Page {
 
@@ -83,6 +84,38 @@ public class Category_oen_Page_Logic extends Category_oen_Page {
                 characteristicListOfProduct(i + 1).get(j).shouldNotHave(exactText("Menge"));
             }
         }
+        return this;
+    }
+
+    @Step("Login in header with mail {mail} and transition to profile plus page and go back. Category_oen_Page")
+    public Category_oen_Page_Logic loginToProfilePlusPageAndBack(String email) {
+        new Main_page_Logic().loginAndTransitionToProfilePlusPage(email).visibilityOfUsersName();
+        back();
+        return this;
+    }
+
+    @Step("update of page. Category_oen_Page")
+    public Category_oen_Page_Logic updateOfPage() {
+        refresh();
+        return this;
+    }
+
+    @Step("update of page. Category_oen_Page")
+    public Category_oen_Page_Logic checkCountOfVehicleInIconOfGarage(String expectedCountOfVehicle) {
+        countOfVehicleInIconOfGarageInHeader().shouldBe(visible).shouldHave(exactText(expectedCountOfVehicle));
+        return this;
+    }
+
+    @Step("click on Garage icon in header. Category_oen_Page")
+    public Category_oen_Page_Logic clickOnGarageIconInHeader() {
+        headerGarageIcon().shouldBe(visible).click();
+        popUpOfGarageInHeader().shouldBe(visible);
+        return this;
+    }
+
+    @Step("click on Garage icon in header. Category_oen_Page")
+    public Category_oen_Page_Logic selectVehicleInGaragePopUp(String idOfVehicle) {
+        idOfVehicleInGaragePopUp(idOfVehicle).shouldBe(visible).click();
         return this;
     }
 }

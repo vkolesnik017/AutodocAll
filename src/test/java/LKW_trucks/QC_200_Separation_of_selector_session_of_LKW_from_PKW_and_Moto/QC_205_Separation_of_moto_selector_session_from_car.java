@@ -31,7 +31,7 @@ public class QC_205_Separation_of_moto_selector_session_from_car {
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test checks separation of Moto selector session from car")
-    public void testChecksSeparationOfMotoSelectorSessionFromCar(String route) {
+    public void testChecksSeparationOfMotoSelectorSessionFromCar(String route) throws SQLException {
         openPage(route);
 
         new Moto_main_page_Logic().selectMotoInHorizontalMotoSelector("4081", "12008", "115569")

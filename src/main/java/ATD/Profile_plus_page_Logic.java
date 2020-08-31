@@ -3,13 +3,9 @@ package ATD;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static ATD.CommonMethods.checkingContainsUrl;
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Profile_plus_page_Logic extends Profile_plus_page {
 
@@ -129,9 +125,41 @@ public class Profile_plus_page_Logic extends Profile_plus_page {
         return page(Main_page_Logic.class);
     }
 
-    @Step("Logs out of the account and logs in as a previously registered user. Main_page")
+    @Step("Logs out of the account and logs in as a previously registered user. Profile_plus_page")
     public Profile_plus_page_Logic logOuAndLoginWithUser(String mail) {
         new Main_page_Logic().logOuAndLoginWithUser(mail);
+        return this;
+    }
+
+
+    @Step("Login in header with mail {mail} and transition to profile plus page and go back. Profile_plus_page")
+    public Profile_plus_page_Logic loginToProfilePlusPageAndBack(String email) {
+      new Main_page_Logic().loginAndTransitionToProfilePlusPage(email).visibilityOfUsersName();
+     return this;
+    }
+
+    @Step("update of page. Profile_plus_page")
+    public Profile_plus_page_Logic updateOfPage() {
+        refresh();
+        return this;
+    }
+
+    @Step("update of page. Profile_plus_page")
+    public Profile_plus_page_Logic checkCountOfVehicleInIconOfGarage(String expectedCountOfVehicle) {
+        countOfVehicleInIconOfGarageInHeader().shouldBe(visible).shouldHave(exactText(expectedCountOfVehicle));
+        return this;
+    }
+
+    @Step("click on Garage icon in header. Profile_plus_page")
+    public Profile_plus_page_Logic clickOnGarageIconInHeader() {
+        headerGarageIcon().shouldBe(visible).click();
+        popUpOfGarageInHeader().shouldBe(visible);
+        return this;
+    }
+
+    @Step("click on Garage icon in header. Profile_plus_page")
+    public Profile_plus_page_Logic selectVehicleInGaragePopUp(String idOfVehicle) {
+        idOfVehicleInGaragePopUp(idOfVehicle).shouldBe(visible).click();
         return this;
     }
 }

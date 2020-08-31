@@ -43,4 +43,10 @@ public class Moto_makers_page {
     ElementsCollection topModelsLinkingBlock() {return $$x("//div[@class='box']");}
 
     ElementsCollection linksOfTopModelsAtLinkingBlock(int position) {return $$x("(//div[@class='box'])["+position+"]//a");}
+
+    SelenideElement popUpOfGarageInHeader() {return $x("//div[@class='header-garage__logged-header']");}
+
+    SelenideElement idOfVehicleInGaragePopUp(String idOfVehicle) {return $x("//div[@class='wrapper-radio']/label[@for='"+idOfVehicle+"']");}
+
+    SelenideElement headerGarageIcon(){ return $x("//div[@class='header-garage js-header-garage']"); }
    }
