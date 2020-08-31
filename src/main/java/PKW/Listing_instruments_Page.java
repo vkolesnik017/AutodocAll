@@ -45,4 +45,31 @@ public class Listing_instruments_Page {
         return $x("//div[contains(@class,'listing-brand-filters_more-link')]/a[@class='more_link js-listing-brand-filters less_link']");
     }
 
+    SelenideElement titleNameProductInListing() {
+        return $x("//div[@class='brand-products'][1]//a[@class='ga-click prod_link']");
+    }
+
+    SelenideElement idProductInBtnAddBasket() {
+        return $x("//div[@class='basket_btn button active_red_button ']");
+    }
+
+    SelenideElement counterValueInQuantityCounter() {
+        return $x("//div[@class='brand-products'][1]//input[@class='ammount']");
+    }
+
+    SelenideElement btnPlusInQuantityCounter() {
+        return $x("//div[@class='brand-products'][1]//a[@class='ga-click plus']");
+    }
+
+    SelenideElement redBtnAddToBasket() {
+        return $x("//div[@class='brand-products']//a[@class='indenwarenkorb']");
+    }
+
+    SelenideElement popupBasketAddedProducts() {
+        return $x("//div[@class='cart-items-block ']");
+    }
+
+
+
+
 }

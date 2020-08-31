@@ -162,4 +162,19 @@
         </classes>
     </test>
 
+    <test name="QC_2288_ListingAccessories">
+        <classes>
+            <class name="PKW.ACC.QC_2288_ListingAccessories.QC_2289_BreadCrumbsOnAccessoriesListing"/>
+            <class name="PKW.ACC.QC_2288_ListingAccessories.QC_2290_WorkBreadCrumbsOnAccessoriesListing"/>
+            <class name="PKW.ACC.QC_2288_ListingAccessories.QC_2291_TitleOnAccessoriesListing"/>
+        </classes>
+    </test>
+
+    <test name="QC_2283_BlockWithProductsOnToolsListing">
+        <classes>
+            <class name="PKW.ACC.QC_2283_BlockWithProductsOnToolsListing.QC_2285_TransitionOnProductPageFromToolsListing"/>
+            <class name="PKW.ACC.QC_2283_BlockWithProductsOnToolsListing.QC_2287_AddProductsInBasketOnToolsListing"/>
+        </classes>
+    </test>
+
 </suite>
