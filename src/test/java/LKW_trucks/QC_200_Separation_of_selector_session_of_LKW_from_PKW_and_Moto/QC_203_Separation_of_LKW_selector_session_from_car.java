@@ -31,7 +31,7 @@ public class QC_203_Separation_of_LKW_selector_session_from_car {
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test checks separation of LKW selector session from car")
-    public void testChecksSeparationOfLKWSelectorSessionFromCar(String route) {
+    public void testChecksSeparationOfLKWSelectorSessionFromCar(String route) throws SQLException {
         openPage(route);
         new LKW_main_page_Logic().selectTruckInSelector("24", "714", "1004434")
                 .checkSuccessfullyPageLoading("https://lkwteile.autodoc.de/lastkraftwagen/daf/45?car_id=1004434")
