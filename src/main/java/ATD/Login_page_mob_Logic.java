@@ -1,12 +1,11 @@
 package ATD;
 
 import io.qameta.allure.Step;
-
 import java.util.NoSuchElementException;
-
 import static ATD.CommonMethods.getNameRouteFromJSVarInHTML;
 import static ATD.CommonMethods.password;
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class Login_page_mob_Logic extends Login_page_mob {
 
@@ -38,6 +37,20 @@ public class Login_page_mob_Logic extends Login_page_mob {
         loginBtnFB().click();
         switchTo().window(0);
         return page(Profile_page_mob_Logic.class);
+    }
+
+    @Step("Closing popup after transition on Login page. Login_page_mob")
+    public Login_page_mob_Logic closePopupAfterTransitionOnLoginPageMob(String Url1, String Url2) {
+        sleep(3000);
+        if (popupOnLoginPage().isDisplayed()) {
+            popupOnLoginPage().click();
+            Wait().until(WebDriver -> url().contains(Url1));
+            back();
+            Wait().until(WebDriver -> url().contains(Url2));
+        } else {
+            System.out.println("Popup is not displayed");
+        }
+        return this;
     }
 
 }
