@@ -62,4 +62,11 @@
         </classes>
     </test>
 
+    <test name="QC_2160_BraintreeCreditCard">
+        <classes>
+            <class name="ATD.Payments.QC_2160_BraintreeCreditCard">
+            </class>
+        </classes>
+    </test>
+
 </suite>
