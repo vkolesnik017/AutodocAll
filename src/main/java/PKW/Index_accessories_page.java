@@ -91,6 +91,18 @@ public class Index_accessories_page {
         return $x("//div[@class='seo-category-blocks']//li/a");
     }
 
+    SelenideElement blockMainProducts() {
+        return $x("//div[@class='category-block']");
+    }
+
+    ElementsCollection categoriesFromLogicalUnion() {
+        return $$x("//div[@class='category-block']//ul/li/a");
+    }
+
+    ElementsCollection logicalUnions() {
+        return $$x("//div[@class='category-block__item']/img");
+    }
+
 
 
 }

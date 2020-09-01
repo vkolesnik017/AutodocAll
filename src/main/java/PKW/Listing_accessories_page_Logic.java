@@ -1,6 +1,7 @@
 package PKW;
 
 import io.qameta.allure.Step;
+import org.testng.Assert;
 import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.page;
@@ -10,6 +11,12 @@ public class Listing_accessories_page_Logic extends Listing_accessories_page {
     @Step("Get name main title on Listing Page. Listing_accessories_page")
     public String getNameMainTitleOnListingPage(){
         return mainTitleListingPage().getText();
+    }
+
+    @Step("Checking presence main title on Listing Page. Listing_accessories_page")
+    public Listing_accessories_page_Logic checkingPresenceMainTitle() {
+        Assert.assertFalse(mainTitleListingPage().text().isEmpty());
+        return this;
     }
 
     @Step("Checking work quantity counter on decrease and increase products. Listing_accessories_page")
@@ -71,4 +78,29 @@ public class Listing_accessories_page_Logic extends Listing_accessories_page {
         new Main_page_Logic().cartClick();
         return page(Cart_page_Logic.class);
     }
+
+    @Step("Checking presence bread crumbs. Listing_accessories_page")
+    public Listing_accessories_page_Logic checkingPresenceBreadCrumbs() {
+        Assert.assertFalse(blockBreadCrumbs().text().isEmpty());
+        return this;
+    }
+
+    @Step("Click first bread crumb. Listing_accessories_page")
+    public Parts_page_Logic clickFirstBreadCrumb() {
+        firstBreadCrumb().click();
+        return page(Parts_page_Logic.class);
+    }
+
+    @Step("Click second bread crumb. Listing_accessories_page")
+    public Index_accessories_page_Logic clickSecondBreadCrumb() {
+        secondBreadCrumb().click();
+        return page(Index_accessories_page_Logic.class);
+    }
+
+    @Step("Checking not clickable third bread crumb. Listing_accessories_page")
+    public Listing_accessories_page_Logic checkingNotClickableThirdBreadCrumb() {
+        thirdBreadCrumb().shouldNotBe(attribute("href"));
+        return this;
+    }
+
 }
