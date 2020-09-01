@@ -448,7 +448,7 @@ public class Product_page_Logic extends Product_page {
 
     @Step("Get article number. Product_page")
     public String getArticleNumber() {
-         return articleNumber().getText();
+        return articleNumber().getText();
     }
 
     @Step("Check product in stock alternative block. Product_page")
@@ -460,7 +460,7 @@ public class Product_page_Logic extends Product_page {
     }
 
     @Step("Add article number to collection. Product_page")
-    public ArrayList <String> addArtikelNumberToCollection() {
+    public ArrayList<String> addArtikelNumberToCollection() {
         ArrayList<String> listOfArticle = new ArrayList<>();
         for (int i = 0; i < 6; i++) {
             String cutArticle = analogArtikelNumbers().get(i).text().replace("Artikelnummer: ", "");
@@ -761,11 +761,11 @@ public class Product_page_Logic extends Product_page {
 
     @Step("go to basket. Product_page")
     public Cart_page_Logic goToBasket() {
-        if (otherCategoriesPopUp().isDisplayed()){
+        if (otherCategoriesPopUp().isDisplayed()) {
             btnCloseOtherCategoriesPopUp().click();
             otherCategoriesPopUp().should(disappear);
         }
-       basket().click();
+        basket().click();
         return page(Cart_page_Logic.class);
     }
 
@@ -784,7 +784,8 @@ public class Product_page_Logic extends Product_page {
         float res = 0.0f;
         if (priceProductPerProductPage.equals(roundMax)) {
             res = roundMax;
-        } if (priceProductPerProductPage.equals(roundMin)) {
+        }
+        if (priceProductPerProductPage.equals(roundMin)) {
             res = roundMin;
         }
         Assert.assertEquals(res, priceProductPerProductPage);
@@ -797,12 +798,31 @@ public class Product_page_Logic extends Product_page {
         if (compatibilityVehicleBlock().isDisplayed()) {
             linkOfCompatibilityVehicleAndProduct().shouldBe(visible);
         } else {
-            String idOfProduct = url().replace(url().replace(url().substring(url().lastIndexOf("/")), ""),"").replaceAll("[^0-9]","");
+            String idOfProduct = url().replace(url().replace(url().substring(url().lastIndexOf("/")), ""), "").replaceAll("[^0-9]", "");
             executeJavaScript("window.open('about:blank','_blank')");
             switchTo().window(1);
             new ProductCard_aws(idOfProduct).openProductCardPageAndLogin().checkVehicleLabel();
             switchTo().window(1).close();
             switchTo().window(0);
+        }
+        return this;
+    }
+
+    @Step("Gets all characteristics product. Product_page")
+    public List<String> getCharacteristics() {
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i < valueOfCharacteristic().size(); i++) {
+            list.add(titleOfCharacteristic().get(i).getText() + " " + valueOfCharacteristic().get(i).getText());
+        }
+        return list;
+    }
+
+    @Step("compare Actual and expected characteristic of product. Product_page")
+    public Product_page_Logic compareActualAndExpectedCharacteristic(List<String> expectedCharacteristics, List<String> characteristicsFromProduct) {
+        for (int i = 0; i < expectedCharacteristics.size(); i++) {
+            for (int j = 0; j < characteristicsFromProduct.size(); j++) {
+                Assert.assertTrue(expectedCharacteristics.contains(characteristicsFromProduct.get(j)));
+            }
         }
         return this;
     }

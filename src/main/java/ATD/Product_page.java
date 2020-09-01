@@ -1,5 +1,6 @@
 package ATD;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
@@ -670,4 +671,7 @@ public class Product_page {
    SelenideElement compatibilityVehicleBlock() {return $x("//div[contains(text(),'Kompatibel mit folgenden PKWs')]/..");}
 
    SelenideElement linkOfCompatibilityVehicleAndProduct() {return $x("//div[contains(text(),'Kompatibel mit folgenden PKWs')]/..//div[@class='accordion-selected']/p");}
+
+    ElementsCollection titleOfCharacteristic(){return  $$x("//li[@class='important']/span[1]").filter(Condition.visible);}
+    ElementsCollection valueOfCharacteristic() {return $$x("//li[@class='important']/span[2]").filter(Condition.visible);}
 }
