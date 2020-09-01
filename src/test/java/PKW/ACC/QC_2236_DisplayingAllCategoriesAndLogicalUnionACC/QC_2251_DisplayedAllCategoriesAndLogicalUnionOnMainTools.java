@@ -1,9 +1,8 @@
-package ATD.ACC.QC_2235_DisplayedAllCategoriesAndLogicalUnion;
+package PKW.ACC.QC_2236_DisplayingAllCategoriesAndLogicalUnionACC;
 
-
-import ATD.Index_instruments_page_Logic;
-import ATD.SetUp;
 import AWS.CatalogCategories_aws;
+import PKW.Index_instruments_page_Logic;
+import PKW.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -14,17 +13,17 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import static ATD.CommonMethods.openPage;
-import static ATD.SetUp.setUpBrowser;
+import static PKW.CommonMethods.openPage;
+import static PKW.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2249_DisplayedAllCategoriesAndLogicalUnionOnMainTools {
+public class QC_2251_DisplayedAllCategoriesAndLogicalUnionOnMainTools {
 
     private ArrayList<String> categoriesAndSeparateCategoriesName, logicalUnionName,  awsCategoriesAndSeparateCategoriesName, awsLogicalUnionName;
     private Index_instruments_page_Logic indexInstrumentsPageLogic = new Index_instruments_page_Logic();
     private CatalogCategories_aws catalogCategoriesAws = new CatalogCategories_aws();
 
-    public QC_2249_DisplayedAllCategoriesAndLogicalUnionOnMainTools() throws SQLException {
+    public QC_2251_DisplayedAllCategoriesAndLogicalUnionOnMainTools() throws SQLException {
     }
 
 
@@ -34,8 +33,8 @@ public class QC_2249_DisplayedAllCategoriesAndLogicalUnionOnMainTools {
     }
 
     @DataProvider(name = "route", parallel = true)
-    Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main","index_instruments");
+    Object[] dataProviderProducts() throws SQLException {
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "index_instruments");
     }
 
     @Test(dataProvider = "route")
@@ -48,17 +47,16 @@ public class QC_2249_DisplayedAllCategoriesAndLogicalUnionOnMainTools {
         logicalUnionName = indexInstrumentsPageLogic.getIdLogicalUnionAndWriteToList();
         catalogCategoriesAws.openAwsLoginInAndTransitionCustomCatalog()
                 .addFilterParentId("36000")
+                .cleansAndAddSkinInFieldSelectSkin("pkw")
                 .clickBtnSearch();
         awsCategoriesAndSeparateCategoriesName = catalogCategoriesAws.getAllIdActiveCategories();
         awsLogicalUnionName = catalogCategoriesAws.getAllIdGroupFromAWS();
         Assert.assertEquals(categoriesAndSeparateCategoriesName, awsCategoriesAndSeparateCategoriesName);
         Assert.assertEquals(logicalUnionName, awsLogicalUnionName);
-
-
     }
 
     @AfterMethod
-    private void close() {
+    public void close() {
         closeWebDriver();
     }
 

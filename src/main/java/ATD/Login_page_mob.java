@@ -40,5 +40,9 @@ class Login_page_mob {
         return $x("//input[@name='login']");
     }
 
+    SelenideElement popupOnLoginPage() {
+        return $x("//div[@class='cps_app hidden ']/a/img");
+    }
+
 
 }

@@ -110,6 +110,22 @@ public class Index_chemicals_page {
         return $$x("//div[@class='slick-list draggable']//div[@data-slick-index]");
     }
 
+    SelenideElement blockMainProducts() {
+        return $x("//div[@class='category-block']");
+    }
+
+    ElementsCollection separateCategories() {
+        return $$x("//div[@class='category-block']/a[@class='category-block__item ga-click']");
+    }
+
+    ElementsCollection categoriesFromLogicalUnion() {
+        return $$x("//div[@class='category-block']//ul/li/a");
+    }
+
+    ElementsCollection logicalUnions() {
+        return $$x("//div[@class='category-block__item category-block-item-js']/img");
+    }
+
 
 
 

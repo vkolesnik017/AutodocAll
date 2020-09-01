@@ -6,6 +6,7 @@ import ATD.SetUp;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import org.openqa.selenium.Keys;
 import java.sql.SQLException;
 import java.util.*;
 import static ATD.CommonMethods.openPage;
@@ -91,17 +92,10 @@ public class CatalogCategories_aws {
         return $x("//div[@class='w-box-content cnt_a clearfix']//input[@id='form_filter[nodeParentID]']");
     }
 
-    public SelenideElement filterOnly() {
-        return $x("//div[@class='w-box-content cnt_a clearfix']//div[@id='form_filter_only__chzn']/a");
+    public SelenideElement fieldSelectSkins() {
+        return $x("//div[@id='filter_skin_chzn']//input[@type='text']");
     }
 
-    public SelenideElement filterOnlyGroups() {
-        return $x("//div[@class='w-box-content cnt_a clearfix']//li[@id='form_filter_only__chzn_o_3']");
-    }
-
-    public SelenideElement filterOnlyChilds() {
-        return $x("//div[@class='w-box-content cnt_a clearfix']//li[@id='form_filter_only__chzn_o_2']");
-    }
 
     public SelenideElement btnSearch() {
         return $x("//button[@class='btn btn-success search']");
@@ -109,6 +103,14 @@ public class CatalogCategories_aws {
 
     public SelenideElement loadingText() {
         return $x("//div[@class='center loading-text']");
+    }
+
+
+    @Step("Open AWS , Login in and open page custom-catalog. CatalogCategories_aws")
+    public CatalogCategories_aws openAwsLoginInAndTransitionCustomCatalog() {
+        new Login_aws().loginInAwsWithOpen();
+        openPage(categoriesInAwsPage);
+        return this;
     }
 
     @Step("Get All Child Categories From Catalog AWS. CatalogCategories_aws")
@@ -259,10 +261,15 @@ public class CatalogCategories_aws {
         return crossCuttingCategories;
     }
 
+    @Step("Cleans then Add skins in field Select Skin. CatalogCategories_aws")
+    public CatalogCategories_aws cleansAndAddSkinInFieldSelectSkin(String skins) {
+        fieldSelectSkins().doubleClick().sendKeys(Keys.BACK_SPACE, Keys.BACK_SPACE);
+        fieldSelectSkins().setValue(skins).pressEnter();
+        return this;
+    }
+
     @Step("Add filter paren id. CatalogCategories_aws")
     public CatalogCategories_aws addFilterParentId(String parentId) {
-        new Login_aws().loginInAwsWithOpen();
-        openPage(categoriesInAwsPage);
         fieldParentId().setValue(parentId);
         return this;
     }

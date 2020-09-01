@@ -40,12 +40,13 @@ public class QC_2248_DisplayedAllCategoriesAndLogicalUnionOnMainChemistry {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test Checks comparison all categories and Logical Union between main accessories page and AWS")
+    @Description(value = "Test Checks comparison all categories and Logical Union between main chemicals page and AWS")
     public void testCheckCorrectDisplayQuantityCategoriesAndLogicalUnion(String route) {
         openPage(route);
         categoriesAndSeparateCategoriesName = indexChemicalsPageLogic.getIdCategoriesAndSeparateCategoriesThenWriteToList();
         logicalUnionName = indexChemicalsPageLogic.getIdLogicalUnionAndWriteToList();
-        catalogCategoriesAws.addFilterParentId("30000")
+        catalogCategoriesAws.openAwsLoginInAndTransitionCustomCatalog()
+                .addFilterParentId("30000")
                 .clickBtnSearch();
         awsCategoriesAndSeparateCategoriesName = catalogCategoriesAws.getAllIdActiveCategories();
         awsLogicalUnionName = catalogCategoriesAws.getAllIdGroupFromAWS();
