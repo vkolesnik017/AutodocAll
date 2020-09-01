@@ -61,6 +61,10 @@ public class Listing_instruments_Page {
         return $x("//div[@class='brand-products'][1]//a[@class='ga-click plus']");
     }
 
+    SelenideElement btnMinusInQuantityCounter() {
+        return $x("//div[@class='brand-products'][1]//a[@class='ga-click minus']");
+    }
+
     SelenideElement redBtnAddToBasket() {
         return $x("//div[@class='brand-products']//a[@class='indenwarenkorb']");
     }
