@@ -84,6 +84,63 @@ public class Merchant_page {
         return $x(" //div[@class='cont_concardis']//iframe");
     }
 
+    //Elements from the BraintreeCreditCard merchant
+    SelenideElement creditCardSubmitBtn() {
+        return $x("//div[@class='creditcard-form__button']//input");
+    }
+    SelenideElement infoPopUp() {
+        return $x("//div[@class='info-popup']");
+    }
+    SelenideElement infoBtn() {
+        return $x("//a[@class='creditcard-form__info']");
+    }
+    SelenideElement fieldCreditCardNum() {
+        return $x("//input[@id='credit-card-number']");
+    }
+    SelenideElement fieldExpiration() {
+        return $x("//input[@id='expiration']");
+    }
+    SelenideElement fieldCVV() {
+        return $x("//input[@id='cvv']");
+    }
+    SelenideElement resSetBtn() {
+        return $x("//div[@class='creditcard-form__resset']/a");
+    }
+    SelenideElement iFrameFieldCreditCardNum() {
+        return $x("//div[@id='card-number']//iframe");
+    }
+    SelenideElement iFrameFieldExpiration() {
+        return $x("//div[@id='expiration-date']//iframe");
+    }
+    SelenideElement iFrameFieldCVV() {
+        return $x("//div[@id='cvv']//iframe");
+    }
+
+
+
+    //This method is used on the merchant page for payment using the BraintreeCreditCard
+    @Step("Checks presence element in merchant page for payment BraintreeCreditCard and cancels order. Merchant_page")
+    public CartPayments_page_Logic checkPresenceElementFromMerchantPageBraintreeCreditCardAndCancelOrder(String cardNum, String expiration, String cvv) {
+        checkingContainsUrl("/bcreditcards");
+        creditCardSubmitBtn().shouldHave(attribute("disabled"));
+        switchTo().frame(iFrameFieldCreditCardNum());
+        fieldCreditCardNum().setValue(cardNum);
+        switchTo().window(0);
+        switchTo().frame(iFrameFieldExpiration());
+        fieldExpiration().setValue(expiration);
+        switchTo().window(0);
+        switchTo().frame(iFrameFieldCVV());
+        fieldCVV().setValue(cvv);
+        switchTo().window(0);
+        creditCardSubmitBtn().shouldNotHave(attribute("disabled"));
+        infoBtn().click();
+        infoPopUp().shouldBe(visible).shouldHave(attribute("style","display: block;"));
+        infoBtn().click();
+        infoPopUp().shouldNotBe(visible).shouldHave(attribute("style", "display: none;"));
+        resSetBtn().click();
+        checkingContainsUrl("/basket/payments");
+        return page(CartPayments_page_Logic.class);
+    }
 
     //This method is used on the merchant page for payment using the Trustly
     @Step("Checks presence element in merchant page for payment Trustly and cancels order. Merchant_page")

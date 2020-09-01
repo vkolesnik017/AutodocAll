@@ -40,7 +40,7 @@ public class LKW_Category_page_Logic extends LKW_Category_page {
     public LKW_Category_page_Logic checkLinkClickInBreadCrumbsBlock() throws SQLException {
         firstLinkClick().checkSuccessfullyLKWCategoriesPageLoading();
         back();
-        secondLinkClick(); checkingContainsUrl(new DataBase().getRouteByRouteName("DE","lkw_parent_category")); 
+        secondLinkClick(); checkingContainsUrl(new DataBase().getRouteByRouteName("DE","lkw_parent_category"));
 
         return this;
     }

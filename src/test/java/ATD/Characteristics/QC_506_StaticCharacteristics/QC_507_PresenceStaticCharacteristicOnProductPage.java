@@ -1,9 +1,7 @@
 package ATD.Characteristics.QC_506_StaticCharacteristics;
 
-import ATD.CommonMethods;
 import ATD.Product_page_Logic;
 import ATD.SetUp;
-import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -12,47 +10,40 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_507_PresenceStaticCharacteristicOnProductPage {
 
-  private Product_page_Logic productPageLogic = new Product_page_Logic();
-  private CommonMethods commonMethods = new CommonMethods();
+    private Product_page_Logic productPageLogic = new Product_page_Logic();
 
-  @BeforeClass
-  void setUp() {
-    setUpBrowser(false, "chrome", "77.0");
-  }
+    @BeforeClass
+    void setUp() {
+        setUpBrowser(false, "chrome", "77.0");
+    }
 
-  @DataProvider(name = "route")
-  Object[] dataProvider() {
-    return new SetUp().setUpShop("prod", "DE");
-  }
+    @DataProvider(name = "route")
+    Object[] dataProvider() {
+        return new SetUp().setUpShop("prod", "DE");
+    }
 
-  @Test(dataProvider = "route")
-  @Flaky
-  @Owner(value = "Evlentiev")
-  @Description(value = "Checks presence static characteristics on product page")
-  public void testPresenceStaticCharacteristicOnProductPage(String route) {
-    ArrayList<String> expectedCharacteristics = new ArrayList<>();
-    expectedCharacteristics.add("Einbauseite:\\nHinterachse");
-    expectedCharacteristics.add("Durchmesser \\[mm]:\\n230");
-    expectedCharacteristics.add("Bremsscheibenart:\\nVoll");
-    expectedCharacteristics.add("Zentrierungsdurchmesser \\[mm]:\\n65,0");
-    expectedCharacteristics.add("Bohrbild/Lochzahl:\\n05/06");
-    expectedCharacteristics.add("Lochkreis-Ø \\[mm]:\\n100,0");
-    expectedCharacteristics.add("Bremsscheibendicke \\[mm]:\\n9,0");
+    @Test(dataProvider = "route")
+    @Flaky
+    @Owner(value = "Evlentiev")
+    @Description(value = "Checks presence static characteristics on product page")
+    public void testPresenceStaticCharacteristicOnProductPage(String route) {
+        List<String> expectedCharacteristics = Arrays.asList("Einbauseite: Hinterachse", "Durchmesser [mm]: 230,0", "Bremsscheibenart: Voll",
+                "Zentrierungsdurchmesser [mm]: 65,0", "Lochanzahl: 5", "Lochkreis-Ø [mm]: 100,0", "Bremsscheibendicke [mm]: 9,0");
+        List<String> actualCharacteristics = productPageLogic.openProductPageById(route, "7998901")
+                .getCharacteristics();
+        productPageLogic.compareActualAndExpectedCharacteristic(expectedCharacteristics, actualCharacteristics);
+    }
 
-    ElementsCollection actualCharacteristics = productPageLogic.openProductPageById(route, "7998901")
-            .getCharacteristicsOfProduct();
-    commonMethods.compareCharacteristics(actualCharacteristics, expectedCharacteristics);
-  }
-
-  @AfterMethod
-  private void close() {
-    closeWebDriver();
-  }
+    @AfterMethod
+    private void close() {
+        closeWebDriver();
+    }
 }
