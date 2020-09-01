@@ -43,7 +43,7 @@ public class Login_page_mob_Logic extends Login_page_mob {
     public Login_page_mob_Logic closePopupAfterTransitionOnLoginPageMob(String Url1, String Url2) {
         sleep(3000);
         if (popupOnLoginPage().isDisplayed()) {
-            popupOnLoginPage().click();
+            popupOnLoginPage().click(1,1);
             Wait().until(WebDriver -> url().contains(Url1));
             back();
             Wait().until(WebDriver -> url().contains(Url2));
