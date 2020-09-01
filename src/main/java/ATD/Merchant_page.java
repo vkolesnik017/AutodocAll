@@ -2,13 +2,11 @@ package ATD;
 
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoAlertPresentException;
 
 import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class Merchant_page {
 
@@ -97,16 +95,25 @@ public class Merchant_page {
         return $x("//a[@class='creditcard-form__info']");
     }
     SelenideElement fieldCreditCardNum() {
-        return $x("//div[@id='card-number']");
+        return $x("//input[@id='credit-card-number']");
     }
     SelenideElement fieldExpiration() {
-        return $x("//div[@id='expiration-date']//iframe");
+        return $x("//input[@id='expiration']");
     }
     SelenideElement fieldCVV() {
-        return $x("//div[@id='cvv']//iframe");
+        return $x("//input[@id='cvv']");
     }
     SelenideElement resSetBtn() {
         return $x("//div[@class='creditcard-form__resset']/a");
+    }
+    SelenideElement iFrameFieldCreditCardNum() {
+        return $x("//div[@id='card-number']//iframe");
+    }
+    SelenideElement iFrameFieldExpiration() {
+        return $x("//div[@id='expiration-date']//iframe");
+    }
+    SelenideElement iFrameFieldCVV() {
+        return $x("//div[@id='cvv']//iframe");
     }
 
 
@@ -116,14 +123,20 @@ public class Merchant_page {
     public CartPayments_page_Logic checkPresenceElementFromMerchantPageBraintreeCreditCardAndCancelOrder(String cardNum, String expiration, String cvv) {
         checkingContainsUrl("/bcreditcards");
         creditCardSubmitBtn().shouldHave(attribute("disabled"));
-        fieldCreditCardNum().waitUntil(appear, 10000);
-        JavascriptExecutor js = (JavascriptExecutor) getWebDriver();
-        js.executeScript("arguments[0].value='" + cardNum + "';", fieldCreditCardNum());
+        switchTo().frame(iFrameFieldCreditCardNum());
+        fieldCreditCardNum().setValue(cardNum);
+        switchTo().window(0);
+        switchTo().frame(iFrameFieldExpiration());
+        fieldExpiration().setValue(expiration);
+        switchTo().window(0);
+        switchTo().frame(iFrameFieldCVV());
+        fieldCVV().setValue(cvv);
+        switchTo().window(0);
         creditCardSubmitBtn().shouldNotHave(attribute("disabled"));
         infoBtn().click();
         infoPopUp().shouldBe(visible).shouldHave(attribute("style","display: block;"));
         infoBtn().click();
-        infoPopUp().shouldBe(visible).shouldHave(attribute("style", "display: none;"));
+        infoPopUp().shouldNotBe(visible).shouldHave(attribute("style", "display: none;"));
         resSetBtn().click();
         checkingContainsUrl("/basket/payments");
         return page(CartPayments_page_Logic.class);

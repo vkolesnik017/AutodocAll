@@ -7,6 +7,7 @@ import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -17,6 +18,7 @@ import static ATD.CommonMethods.*;
 import static ATD.DataBase.parseUserIdFromBD;
 import static ATD.DataBase.parseUserMailFromBD;
 import static ATD.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_2160_BraintreeCreditCard {
 
@@ -27,7 +29,7 @@ public class QC_2160_BraintreeCreditCard {
 
     @DataProvider(name = "route", parallel = false)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopsWithSubroute("prod", "BG,CH,CZ,DK,EE,EN,GR,HU,LD,LT,LV,NO,PL,RO,SE,SI,SK ", "main", "product32");
+        return new SetUp().setUpShopsWithSubroute("prod", "DE,BG,CH,CZ,DK,EE,EN,GR,LD,LT,LV,NO,PL,RO,SI,SK", "main", "product32");
     }
 
     @Test(dataProvider = "route")
@@ -70,5 +72,10 @@ public class QC_2160_BraintreeCreditCard {
                 .checkCurrentStatusInOrder("Testbestellungen")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceAllData, totalPriceOrderAwsAfterReSave);
+    }
+
+    @AfterMethod
+    private void close() {
+        closeWebDriver();
     }
 }

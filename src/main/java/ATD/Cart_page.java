@@ -167,7 +167,7 @@ public class Cart_page {
     }
 
     public SelenideElement masterCardLabel() {
-        return $x("//img[contains(@src,'mc.png')]");
+        return $x("//img[contains(@src,'new_cart_payments/mc')]");
     }
 
     public SelenideElement epsLabel() {

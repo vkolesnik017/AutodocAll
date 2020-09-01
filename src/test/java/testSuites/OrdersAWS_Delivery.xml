@@ -36,7 +36,7 @@
         </classes>
     </test>
 
-    <test name="QC_563_CreatingAwsOrder_WithDeliveryToIsland" enabled="false">
+    <test name="QC_563_CreatingAwsOrder_WithDeliveryToIsland">
         <classes>
             <class name="ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_563_CreatingAwsOrder_WithDeliveryToIsland"/>
         </classes>
@@ -48,7 +48,7 @@
         </classes>
     </test>
 
-    <test name="QC_565_CreatingAwsOrder_WithDeliveryToIsland_OrdinaryGoodAndHeavyLoads" enabled="false">
+    <test name="QC_565_CreatingAwsOrder_WithDeliveryToIsland_OrdinaryGoodAndHeavyLoads">
         <classes>
             <class name="ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_565_CreatingAwsOrder_WithDeliveryToIsland_OrdinaryGoodAndHeavyLoads"/>
         </classes>
