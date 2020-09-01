@@ -49,6 +49,24 @@ public class Listing_accessories_page {
         return $x("//div[@class='cart-items-block ']");
     }
 
+    SelenideElement blockBreadCrumbs() {
+        return $x("//div[@class='crabs']");
+    }
+
+    SelenideElement firstBreadCrumb() {
+        return $x("//div[@class='crabs']//div[1]/a");
+    }
+
+    SelenideElement secondBreadCrumb() {
+        return $x("//div[@class='crabs']//div[2]/a");
+    }
+
+    SelenideElement thirdBreadCrumb() {
+        return $x("//div[@class='crabs']//div[3]/a");
+    }
+
+
+
 
 
 }

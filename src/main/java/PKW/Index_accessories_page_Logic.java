@@ -1,8 +1,13 @@
 package PKW;
 
 
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
+
+import java.util.ArrayList;
+import java.util.Collections;
+
 import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
@@ -140,6 +145,29 @@ public class Index_accessories_page_Logic extends Index_accessories_page {
     public Listing_accessories_page_Logic clickOnProductFromTopCategoriesBlock() {
         categoryFromTopCategoriesBlock().click();
         return page(Listing_accessories_page_Logic.class);
+    }
+
+    @Step("Get id all categories from logical union then write to list. Index_accessories_page")
+    public ArrayList<String> getIdCategoriesAndThenWriteToList() {
+        blockMainProducts().scrollIntoView(false);
+        ArrayList<String> categoriesFromLogicalUnion = new ArrayList<>();
+        for (SelenideElement element : categoriesFromLogicalUnion()) {
+            String idCategory = element.getAttribute("data-ga-action");
+            categoriesFromLogicalUnion.add(idCategory);
+        }
+        Collections.sort(categoriesFromLogicalUnion);
+        return categoriesFromLogicalUnion;
+    }
+
+    @Step("Get id Logical Unions and write to list. Index_accessories_page")
+    public ArrayList<String> getIdLogicalUnionAndWriteToList() {
+        ArrayList<String> logicalUnionsId = new ArrayList<>();
+        for (SelenideElement element:logicalUnions()) {
+            String idLogicalUnion = element.getAttribute("data-srcset").replaceAll("[\\s\\S]*\\/", "").replaceAll("\\D+", "");
+            logicalUnionsId.add(idLogicalUnion);
+        }
+        Collections.sort(logicalUnionsId);
+        return logicalUnionsId;
     }
 
 
