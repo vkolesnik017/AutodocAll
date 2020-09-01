@@ -41,12 +41,13 @@ public class QC_2249_DisplayedAllCategoriesAndLogicalUnionOnMainTools {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test Checks comparison all categories and Logical Union between main accessories page and AWS")
+    @Description(value = "Test Checks comparison all categories and Logical Union between main instruments page and AWS")
     public void testCheckCorrectDisplayQuantityCategoriesAndLogicalUnion(String route) {
         openPage(route);
         categoriesAndSeparateCategoriesName = indexInstrumentsPageLogic.getIdCategoriesAndSeparateCategoriesThenWriteToList();
         logicalUnionName = indexInstrumentsPageLogic.getIdLogicalUnionAndWriteToList();
-        catalogCategoriesAws.addFilterParentId("36000")
+        catalogCategoriesAws.openAwsLoginInAndTransitionCustomCatalog()
+                .addFilterParentId("36000")
                 .clickBtnSearch();
         awsCategoriesAndSeparateCategoriesName = catalogCategoriesAws.getAllIdActiveCategories();
         awsLogicalUnionName = catalogCategoriesAws.getAllIdGroupFromAWS();

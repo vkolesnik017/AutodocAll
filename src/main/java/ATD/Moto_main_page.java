@@ -309,4 +309,12 @@ class Moto_main_page {
     SelenideElement mainBanner() {return $x("//div[@class='moto-banner']");}
 
     ElementsCollection titleOfTopChildCategories() {return $$x("//span[@class='moto-home-categories__name']");}
+
+    SelenideElement popUpOfGarageInHeader() {return $x("//div[@class='header-garage__logged-header']");}
+
+    SelenideElement idOfVehicleInGaragePopUp(String idOfVehicle) {return $x("//div[@class='wrapper-radio']/label[@for='"+idOfVehicle+"']");}
+
+    SelenideElement headerGarageIcon(){ return $x("//div[@class='header-garage js-header-garage']"); }
+
+    SelenideElement  countOfVehicleInIconOfGarageInHeader() {return $x("//span[@class='header-garage__count header-garage__count--added']");}
 }

@@ -263,6 +263,18 @@ public class CartAllData_page {
         return $x("//img[contains(@src,'paypal.png')]");
     }
 
+    public SelenideElement visaLabel() {
+        return $x("//img[contains(@src,'visa.png')]");
+    }
+
+    public SelenideElement masterCardLabel() {
+        return $x("//img[contains(@src,'mc.png')]");
+    }
+
+    public SelenideElement americanExpressLabel() {
+        return $x("//img[contains(@src,'ae.png')]");
+    }
+
     public SelenideElement epsLabel() {
         return $x("//img[contains(@src,'epsbank.png')]");
     }

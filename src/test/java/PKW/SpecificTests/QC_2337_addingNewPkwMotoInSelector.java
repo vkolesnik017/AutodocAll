@@ -9,8 +9,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
-
 import static ATD.Excel.parseExcel;
 import static PKW.CommonMethods.openPage;
 import static PKW.SetUp.setUpBrowser;
@@ -25,7 +23,7 @@ public class QC_2337_addingNewPkwMotoInSelector extends Main_page {
 //    private String shop = System.getenv("ShopFromJenkins").toLowerCase();
 
     @BeforeClass
-    void setUp() throws IOException {
+    void setUp() {
         setUpBrowser(false, "chrome", "77.0");
         Configuration.pageLoadStrategy = "normal";
     }
@@ -54,7 +52,7 @@ public class QC_2337_addingNewPkwMotoInSelector extends Main_page {
         String hp = parseExcel(data)[12].trim();
 
 
-        String startUrl = "https://test.buycarparts.co.uk/search?&maker_id=" + maker_id + "&model_id=" + model_id + "&group_id=" + group_id + "&car_id=" + car_id;
+        String startUrl = "https://www.buycarparts.co.uk/search?&maker_id=" + maker_id + "&model_id=" + model_id + "&group_id=" + group_id + "&car_id=" + car_id;
         openPage(startUrl);
 
         try {

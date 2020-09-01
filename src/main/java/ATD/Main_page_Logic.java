@@ -167,9 +167,9 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Clicking moto category. Main_page")
-    public Moto_main_page clickMotoCategory() {
+    public Moto_main_page_Logic clickMotoCategory() {
         motoCategory().click();
-        return page(Moto_main_page.class);
+        return page(Moto_main_page_Logic.class);
     }
 
     @Step("Clicking tyres category. Main_page")
@@ -1134,5 +1134,11 @@ public class Main_page_Logic extends Main_page {
     public Makers_page_Logic clickOnMoreSparePartsLinkOfTopBrandsBlock() {
         btnMoreSparePartsOfTopBrands().shouldBe(visible).click();
         return page(Makers_page_Logic.class);
+    }
+
+     @Step("click on All spare parts link in TOP Parent and Child block. Main_page")
+    public LKW_Categories_page_Logic clickOnAllSparePartsLinkInTopParentsBlock() {
+         allSparePartsLink().shouldBe(visible).click();
+        return page(LKW_Categories_page_Logic.class);
     }
 }

@@ -71,4 +71,12 @@ public class Profile_plus_page {
     SelenideElement depositAmount() {
         return $x("//span[@class='green']");
     }
+
+    SelenideElement  countOfVehicleInIconOfGarageInHeader() {return $x("//span[@class='header-garage__count header-garage__count--added']");}
+
+    SelenideElement idOfVehicleInGaragePopUp(String idOfVehicle) {return $x("//div[@class='wrapper-radio']/label[@for='"+idOfVehicle+"']");}
+
+    SelenideElement headerGarageIcon(){ return $x("//div[@class='header-garage js-header-garage']"); }
+
+    SelenideElement popUpOfGarageInHeader() {return $x("//div[@class='header-garage__logged-header']");}
 }

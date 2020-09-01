@@ -45,7 +45,8 @@ public class QC_2237_DisplayedAllCategoriesAndLogicalUnionOnMainACC {
         openPage(route);
         categoriesName = indexAccessoriesPageLogic.getAndWriteAllIdCategoriesToList();
         logicalUnionName = indexAccessoriesPageLogic.getIdLogicalUnionAndWriteToList();
-        catalogCategoriesAws.addFilterParentId("33000")
+        catalogCategoriesAws.openAwsLoginInAndTransitionCustomCatalog()
+                .addFilterParentId("33000")
                 .clickBtnSearch();
           awsCategoriesName = catalogCategoriesAws.getAllIdActiveCategories();
           awsLogicalUnionName = catalogCategoriesAws.getAllIdGroupFromAWS();

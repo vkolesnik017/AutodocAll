@@ -162,6 +162,14 @@ public class Cart_page {
         return $x("//img[contains(@src,'paypal.png')]");
     }
 
+    public SelenideElement visaLabel() {
+        return $x("//img[contains(@src,'visa.png')]");
+    }
+
+    public SelenideElement masterCardLabel() {
+        return $x("//img[contains(@src,'new_cart_payments/mc')]");
+    }
+
     public SelenideElement epsLabel() {
         return $x("//img[contains(@src,'eps_at.png')]");
     }
