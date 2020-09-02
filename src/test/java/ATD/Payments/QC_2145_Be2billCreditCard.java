@@ -26,7 +26,7 @@ public class QC_2145_Be2billCreditCard extends ProjectListener {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "route", parallel = false)
+    @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
         return new SetUp().setUpShopsWithSubroute("prod", /*"ES,FI,FR,IT,NL,PT,SE,BE,AT,HU"*/"FI", "main", "product32");
     }
@@ -62,7 +62,7 @@ public class QC_2145_Be2billCreditCard extends ProjectListener {
         float totalPriceOrderAws = new Customer_view_aws().openCustomerPersonalArea(userID)
                 .checkPresenceOrderHistoryBlock()
                 .checkAndOpenOrderWithExpectedData()
-                .checkPaymentMethodInOrder("658")//Be2bill
+                .checkPaymentMethodInOrder("Be2bill")
                 .checkCurrentStatusInOrder("abgebrochene Be2bill")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceAllData, totalPriceOrderAws);
