@@ -32,7 +32,7 @@ public class QC_509_PresenceStaticCharacteristicsOnTecDocListing {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list7");
     }
 
     @Test
@@ -51,14 +51,11 @@ public class QC_509_PresenceStaticCharacteristicsOnTecDocListing {
         expectedCharacteristics.add("Zentrierungsdurchmesser \\[mm]:\\n65");
         expectedCharacteristics.add("Lochanzahl:\\n5");
         expectedCharacteristics.add("Felge Lochzahl:\\n5");
-        expectedCharacteristics.add("Bohrung-Ø 2 \\[mm]:\\n6,6");
-        expectedCharacteristics.add("Bohrung-Ø 1 \\[mm]:\\n15,75");
-        expectedCharacteristics.add("Lochkreis-Ø \\[mm]:\\n100");
+          expectedCharacteristics.add("Lochkreis-Ø \\[mm]:\\n100");
         expectedCharacteristics.add("Bremsscheibendicke \\[mm]:\\n8,9");
         expectedCharacteristics.add("Mindestdicke \\[mm]:\\n7");
-        expectedCharacteristics.add("Innendurchmesser \\[mm]:\\n132,5");
         expectedCharacteristics.add("Höhe \\[mm]:\\n33,4");
-        expectedCharacteristics.add("Bohrung-Ø \\[mm]:\\n15,8");
+
 
         openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "category_car_list"));
         String articleProduct = "Artikelnummer: 82B0691";

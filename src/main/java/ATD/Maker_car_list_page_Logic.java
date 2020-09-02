@@ -6,6 +6,7 @@ import org.testng.Assert;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static ATD.CommonMethods.waitWhileRouteBecomeExpected;
 import static com.codeborne.selenide.Condition.attribute;
@@ -137,18 +138,27 @@ public class Maker_car_list_page_Logic extends Maker_car_list_page {
         return page(Profile_plus_page_Logic.class);
     }
 
-
     @Step("presence of TecDoc catalog . Maker_car_list_page")
     public Maker_car_list_page_Logic presenceOfTecDocCatalog() {
         tecDocCatalog().shouldBe(visible);
         return this;
     }
+
     @Step("check vehicle list before writing . Maker_car_list_page")
     public Maker_car_list_page_Logic checkVehicleListBeforeWrite(List<String> list) {
         selectorInCloseCondition().shouldBe(visible);
-       if (list.size()>0){
-           list.clear();
-       }
+        if (list.size() > 0) {
+            list.clear();
+        }
         return this;
+    }
+
+    @Step("get Parent categories from TecDoc catalog . Maker_car_list_page")
+    public List<String> getParentCategoriesFromCatalog() {
+        List<String> parentCategories = titleOfParentCategories().stream()
+                .filter(title -> !title.getText().equals("Reifen"))
+                .map(title -> title.getText())
+                .collect(Collectors.toList());
+        return parentCategories;
     }
 }

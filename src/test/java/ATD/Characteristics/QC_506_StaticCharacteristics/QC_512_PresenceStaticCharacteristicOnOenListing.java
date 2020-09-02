@@ -46,14 +46,11 @@ public class QC_512_PresenceStaticCharacteristicOnOenListing {
         expectedCharacteristics.add("Zentrierungsdurchmesser \\[mm]:\\n65");
         expectedCharacteristics.add("Lochanzahl:\\n5");
         expectedCharacteristics.add("Felge Lochzahl:\\n5");
-        expectedCharacteristics.add("Bohrung-Ø 2 \\[mm]:\\n6,6");
-        expectedCharacteristics.add("Bohrung-Ø 1 \\[mm]:\\n15,75");
         expectedCharacteristics.add("Lochkreis-Ø \\[mm]:\\n100");
         expectedCharacteristics.add("Bremsscheibendicke \\[mm]:\\n8,9");
         expectedCharacteristics.add("Mindestdicke \\[mm]:\\n7");
-        expectedCharacteristics.add("Innendurchmesser \\[mm]:\\n132,5");
         expectedCharacteristics.add("Höhe \\[mm]:\\n33,4");
-        expectedCharacteristics.add("Bohrung-Ø \\[mm]:\\n15,8");
+
 
         openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "category_oen4"));
         String articleProduct = "Artikelnummer: 82B0691";

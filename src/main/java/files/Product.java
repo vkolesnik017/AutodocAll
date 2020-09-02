@@ -5,6 +5,10 @@ public class Product {
     private String genericOfProduct;
     private double priceOfProduct;
     private String attributeOfButton;
+    private String parentCategory;
+
+    public void setParentCategory(String parentCategory) {this.parentCategory=parentCategory; }
+    public String getParentCategory() {return parentCategory;  }
 
     public void setBrandOfProduct(String brand) {
         brandOfProduct = brand;
@@ -39,6 +43,7 @@ public class Product {
                 "brandOfProduct='" + brandOfProduct + '\'' +
                 ", genericOfProduct='" + genericOfProduct + '\'' +
                 ", priceOfProduct=" + priceOfProduct +
+                ", parentCategory=" + parentCategory +
                 '}' + "\n";
     }
 
