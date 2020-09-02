@@ -174,6 +174,10 @@ public class Cart_page {
         return $x("//img[contains(@src,'eps_at.png')]");
     }
 
+    public SelenideElement przelewy24abel() {
+        return $x("//img[contains(@src,'przelewy24')]");
+    }
+
     public SelenideElement masterCashLabel() {
         return $x("//img[contains(@src,'mistercash.png')]");
     }
