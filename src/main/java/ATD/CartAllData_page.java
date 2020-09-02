@@ -302,5 +302,4 @@ public class CartAllData_page {
     public SelenideElement preloader() {
         return $(By.cssSelector(".preloader_wrapper"));
     }
-
 }
