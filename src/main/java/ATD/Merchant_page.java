@@ -176,7 +176,7 @@ public class Merchant_page {
         creditCardFormInfo().waitUntil(visible, 5000).shouldHave(attribute("style","display: block;"));
         js.executeScript("arguments[0].click();", creditCardFormInfoBtn());
         creditCardFormInfo().shouldNotBe(visible).shouldHave(attribute("style", "display: none;"));
-        creditCardFormReset().click();
+        js.executeScript("arguments[0].click();",creditCardFormReset());
         checkingContainsUrl("/basket/payments");
         return page(CartPayments_page_Logic.class);
     }
