@@ -51,6 +51,7 @@ public class QC_1397_RecoveryBasketWebSessionOnMobVersionMainPageViaFacebook {
         openPage("https://m.autodoc.de/?force=mobile");
         main_page_mob_logic.closeFirstPopupAfterTransitionOnMob("apps.apple.com", "https://m.autodoc.de/?force=mobile")
                 .clickSignInInMenu()
+                .closePopupAfterTransitionOnLoginPageMob("apps.apple.com", "https://m.autodoc.de/login")
                 .closeFooterPopup()
                 .signInFromFB(mailFB, passFB)
                 .checkPresenceIconUserId()

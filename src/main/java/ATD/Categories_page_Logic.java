@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.*;
@@ -308,5 +309,14 @@ public class Categories_page_Logic extends Categories_page {
     public Main_page_Logic goToMainPage() {
         mainLogoInHeader().shouldBe(visible).click();
         return page(Main_page_Logic.class);
+    }
+
+    @Step("get Parent categories. Categories_page")
+    public List<String> getParentCategories() {
+        List<String> parentCategories = titleOfParentCategories().stream()
+                .filter(title -> !title.getText().equals("Reifen"))
+                .map(title -> title.getText())
+                .collect(Collectors.toList());
+        return parentCategories;
     }
 }

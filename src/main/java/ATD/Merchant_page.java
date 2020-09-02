@@ -2,11 +2,13 @@ package ATD;
 
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoAlertPresentException;
 
 import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class Merchant_page {
 
@@ -85,7 +87,7 @@ public class Merchant_page {
     }
 
     //Elements from the BraintreeCreditCard merchant
-    SelenideElement creditCardSubmitBtn() {
+    SelenideElement braintreeCardSubmitBtn() {
         return $x("//div[@class='creditcard-form__button']//input");
     }
     SelenideElement infoPopUp() {
@@ -116,13 +118,74 @@ public class Merchant_page {
         return $x("//div[@id='cvv']//iframe");
     }
 
+    //Elements from the B2billCreditCard merchant
+    SelenideElement b2billSubmitCreditCard() {
+        return $x("//input[@type='submit']");
+    }
+    SelenideElement creditCardFormErrors() {
+        return $x("//ul[@class='creditcard-form__errors']");
+    }
+    SelenideElement fieldCardNum() {
+        return $x("//input[@name='hosted-fields-card']");
+    }
+    SelenideElement fieldExpiry() {
+        return $x("//input[@name='hosted-fields-expiry']");
+    }
+    SelenideElement fieldCryptogram() {
+        return $x("//input[@name='hosted-fields-cryptogram']");
+    }
+    SelenideElement creditCardFormInfoBtn() {
+        return $x("//a[@class='creditcard-form__info']");
+    }
+    SelenideElement creditCardFormInfo() {
+        return $x("//div[@class='info-popup']");
+    }
+    SelenideElement creditCardFormReset() {
+        return $x("//div[@class='creditcard-form__resset']/a");
+    }
+    SelenideElement iFrameFieldCardNum() {
+        return $x("//span[@id='card-number']//iframe");
+    }
+    SelenideElement iFrameFieldExpiry() {
+        return $x("//span[@id='expiration-date']//iframe");
+    }
+    SelenideElement iFrameFieldCryptogram() {
+        return $x("//div[@id='cvv']//iframe");
+    }
 
+
+
+    //This method is used on the merchant page for payment using the B2billCreditCard
+    @Step("Checks presence element in merchant page for payment B2billCreditCard and cancels order. Merchant_page")
+    public CartPayments_page_Logic checkPresenceElementFromMerchantPageB2billCreditCardAndCancelOrder(String cardNum, String expiration, String cvv) {
+        checkingContainsUrl("/be2bill");
+        b2billSubmitCreditCard().click();
+        creditCardFormErrors().shouldBe(visible);
+        switchTo().frame(iFrameFieldCardNum());
+        fieldCardNum().setValue(cardNum);
+        switchTo().window(0);
+        switchTo().frame(iFrameFieldExpiry());
+        fieldExpiry().setValue(expiration);
+        switchTo().window(0);
+        switchTo().frame(iFrameFieldCryptogram());
+        fieldCryptogram().setValue(cvv);
+        switchTo().window(0);
+        creditCardFormInfoBtn().waitUntil(appear, 10000);
+        JavascriptExecutor js = (JavascriptExecutor) getWebDriver();
+        js.executeScript("arguments[0].click();", creditCardFormInfoBtn());
+        creditCardFormInfo().waitUntil(visible, 5000).shouldHave(attribute("style","display: block;"));
+        js.executeScript("arguments[0].click();", creditCardFormInfoBtn());
+        creditCardFormInfo().shouldNotBe(visible).shouldHave(attribute("style", "display: none;"));
+        js.executeScript("arguments[0].click();",creditCardFormReset());
+        checkingContainsUrl("/basket/payments");
+        return page(CartPayments_page_Logic.class);
+    }
 
     //This method is used on the merchant page for payment using the BraintreeCreditCard
     @Step("Checks presence element in merchant page for payment BraintreeCreditCard and cancels order. Merchant_page")
     public CartPayments_page_Logic checkPresenceElementFromMerchantPageBraintreeCreditCardAndCancelOrder(String cardNum, String expiration, String cvv) {
         checkingContainsUrl("/bcreditcards");
-        creditCardSubmitBtn().shouldHave(attribute("disabled"));
+        braintreeCardSubmitBtn().shouldHave(attribute("disabled"));
         switchTo().frame(iFrameFieldCreditCardNum());
         fieldCreditCardNum().setValue(cardNum);
         switchTo().window(0);
@@ -132,7 +195,7 @@ public class Merchant_page {
         switchTo().frame(iFrameFieldCVV());
         fieldCVV().setValue(cvv);
         switchTo().window(0);
-        creditCardSubmitBtn().shouldNotHave(attribute("disabled"));
+        braintreeCardSubmitBtn().shouldNotHave(attribute("disabled"));
         infoBtn().click();
         infoPopUp().shouldBe(visible).shouldHave(attribute("style","display: block;"));
         infoBtn().click();
