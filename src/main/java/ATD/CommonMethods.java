@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byCssSelector;
@@ -490,4 +491,15 @@ public class CommonMethods {
         if (!carNameFull.equals(carNameTextFromSelector))
             writerInFile(fileForReport, true, "Car from data doesn't equals car from selector: data:#" + carName + "selector#" + carNameTextFromSelector + "#" + url);
     }
+
+    //  проверка происходит только по первым 26 парент категориям, так как дальше у категорий, в админке, одинаковый рейтинг, из-за этого они могут выводится рандомно,
+    // не соответствуя AWS
+    @Step("comparing parent categories from routs with AWS")
+    public static void comparingParentCategoriesWithAws(List<String> categoriesFromAWS, List<String> categoriesFromRouts) {
+
+        List<String> uiList = categoriesFromRouts.stream().map(title -> title.replaceAll(" ", "")).limit(26).collect(Collectors.toList());
+        List<String> awsList = categoriesFromAWS.stream().map(title -> title.replaceAll(" ", "")).limit(26).collect(Collectors.toList());
+        Assert.assertEquals(awsList, uiList);
+    }
+
 }

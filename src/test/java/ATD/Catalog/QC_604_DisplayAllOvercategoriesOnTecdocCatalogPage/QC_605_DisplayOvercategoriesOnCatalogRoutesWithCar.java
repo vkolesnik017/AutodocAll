@@ -1,9 +1,9 @@
 package ATD.Catalog.QC_604_DisplayAllOvercategoriesOnTecdocCatalogPage;
 
 
-import ATD.Categories_page_Logic;
-import ATD.SetUp;
+import ATD.*;
 import AWS.CatalogCategories_aws;
+import files.Product;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -14,15 +14,19 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
-import static ATD.CommonMethods.openPage;
+import static ATD.CommonMethods.*;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_605_DisplayOvercategoriesOnCatalogRoutesWithCar {
 
-    private ArrayList<String> parentCategoriesTecdocCatalog;
-    private ArrayList<String> parentCategoriesAWS;
+    private List<String> parentCategoriesCarList;
+    private List<String> parentCategoriesFaq;
+    private List<String> parentCategoriesTecDoc;
+    private List<String> parentCategoriesAWS;
+    DataBase db = new DataBase();
 
     @BeforeClass
     void setUp() {
@@ -31,18 +35,30 @@ public class QC_605_DisplayOvercategoriesOnCatalogRoutesWithCar {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "maker_car_list3");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "maker_car_list15");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "Romaniuta")
+    @Owner(value = "Kolesnik")
     @Description(value = "Test Display Overcategories On Catalog Routes With Car")
     public void testDisplayOvercategoriesOnCatalogRoutesWithCar(String route) throws Exception {
         openPage(route);
-        parentCategoriesTecdocCatalog = new Categories_page_Logic().getAllParentCategoriesFromTecdocCatalog();
-        parentCategoriesAWS = new CatalogCategories_aws("prod").getAllParentCategoriesNameFromAWS();
-        new Categories_page_Logic().compareCategoriesFromCatalogAndAWS(parentCategoriesTecdocCatalog, parentCategoriesAWS);
+        parentCategoriesCarList = new Maker_car_list_page_Logic().presenceOfTecDocCatalog().getParentCategoriesFromCatalog();
+
+        openPage(db.getFullRouteByRouteAndSubroute("subprod", "DE", "main", "categories"));
+        checkingContainsUrl(db.getRouteByRouteName("DE", "categories"));
+        parentCategoriesTecDoc = new Categories_page_Logic().presenceOfTecDocCatalog().getParentCategories();
+
+        openPage(db.getFullRouteByRouteAndSubroute("subprod", "DE", "main", "faqHash"));
+        checkingContainsUrl(db.getRouteByRouteName("DE", "faqHash"));
+        parentCategoriesFaq = new FaqHash_page_Logic().presenceOfTecDocCatalog().getParentCategories();
+
+        parentCategoriesAWS = new CatalogCategories_aws("prod").getParentCategories();
+
+        comparingParentCategoriesWithAws(parentCategoriesAWS, parentCategoriesCarList);
+        comparingParentCategoriesWithAws(parentCategoriesAWS, parentCategoriesFaq);
+        comparingParentCategoriesWithAws(parentCategoriesAWS, parentCategoriesTecDoc);
     }
 
     @AfterMethod
