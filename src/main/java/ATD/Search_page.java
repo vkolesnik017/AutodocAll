@@ -161,5 +161,10 @@ public class Search_page {
 
     SelenideElement popUpOfGarageInHeader() {return $x("//div[@class='header-garage__logged-header']");}
 
+    ElementsCollection btnAddedProductToWishList() {return $$x("//span[@class='add-to-wishlist title_btn add-article']");}
+
+    ElementsCollection addedProductToWishList() { return $$x("//span[@class='add-to-wishlist title_btn add-to-wishlist--added remove-article']");}
+
+    SelenideElement iconOfWishList() { return $x("//span[@class='header__wishes link']"); }
 }
 

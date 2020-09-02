@@ -64,6 +64,12 @@ public class Profile_plus_page_Logic extends Profile_plus_page {
         return page(Profile_garage_page_Logic.class);
     }
 
+    @Step("Transition to wishList block. Profile_plus_page")
+    public Profile_wishlist_page_Logic goToWishListBlock() {
+        wishListBlock().shouldBe(visible).click();
+        return page(Profile_wishlist_page_Logic.class);
+    }
+
     @Step("check count of added vehicles in garage at header  . Profile_plus_page")
     public Profile_plus_page_Logic checkCountOfAddedVehiclesInGarageAtHeader(int countOfVehicle) {
         int addedVehicle = Integer.parseInt(countOfAddedVehicleInGarageIcon().getText());
@@ -134,8 +140,8 @@ public class Profile_plus_page_Logic extends Profile_plus_page {
 
     @Step("Login in header with mail {mail} and transition to profile plus page and go back. Profile_plus_page")
     public Profile_plus_page_Logic loginToProfilePlusPageAndBack(String email) {
-      new Main_page_Logic().loginAndTransitionToProfilePlusPage(email).visibilityOfUsersName();
-     return this;
+        new Main_page_Logic().loginAndTransitionToProfilePlusPage(email).visibilityOfUsersName();
+        return this;
     }
 
     @Step("update of page. Profile_plus_page")

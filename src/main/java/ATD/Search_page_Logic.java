@@ -277,7 +277,7 @@ public class Search_page_Logic extends Search_page {
 
     @Step("click on product in TecDoc Listing .Search_page")
     public Search_page_Logic selectProductInTecDocListing(String generic) {
-        for (int i = 0; i <titleOfProductsInListing().size(); i++) {
+        for (int i = 0; i < titleOfProductsInListing().size(); i++) {
             titleOfProductsInListing().get(i).shouldHave(text(generic));
             clickOnProductInTecDocListing(i).checkCompatibilityProductAndGeneric();
             back();
@@ -322,5 +322,19 @@ public class Search_page_Logic extends Search_page {
         idOfVehicleInGaragePopUp(idOfVehicle).shouldBe(visible).click();
         return this;
     }
+
+    @Step("added Product to WishList. Search_page")
+    public Search_page_Logic addedProductToWishList(int positionOfProduct) {
+        btnAddedProductToWishList().get(positionOfProduct).click();
+        addedProductToWishList().get(positionOfProduct).shouldBe(exist);
+        return this;
+    }
+
+    @Step("go to WishList page. Search_page")
+    public Profile_wishlist_page_Logic goToWishListPage() {
+        iconOfWishList().shouldBe(visible).click();
+        return page(Profile_wishlist_page_Logic.class);
+    }
+
 }
 
