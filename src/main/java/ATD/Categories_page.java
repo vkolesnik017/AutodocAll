@@ -87,4 +87,6 @@ public class Categories_page {
   SelenideElement btnResetVerticalSelector() {return $(byId("reset_selector_form"));}
 
   SelenideElement mainLogoInHeader() {return $x("//a[@class='header__logo-main']/img");}
+
+  ElementsCollection titleOfParentCategories() { return $$x("//span[@class='name']");    }
 }
