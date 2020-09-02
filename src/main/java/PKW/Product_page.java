@@ -106,6 +106,7 @@ public class Product_page {
     SelenideElement nameProductCharacteristic(String nameCharacteristic) {
         return $x("//li[@class='pkw-table__ul-item']//span[contains(text(),'" + nameCharacteristic + "')]");
     }
+
     SelenideElement btnAskQuestionFaqForm() {
         return $x("//div[@class='pkw-faq']//button");
     }
@@ -206,10 +207,6 @@ public class Product_page {
         return $x("//*[@class='pkw-product__control button product']");
     }
 
-    SelenideElement productButtonBuy() {
-        return $x("//*[@class='pkw-product__buy-btn basket_btn ']");
-    }
-
     SelenideElement productCountButton() {
         return $x("//*[@class='pkw-product__input-wrapper qty']");
     }
@@ -268,5 +265,21 @@ public class Product_page {
 
     SelenideElement pkwPaymentsItem() {
         return $x("//*[@class='pkw-payment']");
+    }
+
+    SelenideElement oenNummerTab() {
+        return $x("//*[@class='pkw-tabs__label ga-click'][1]");
+    }
+
+    SelenideElement firstLinkOenNummer() {
+        return $x("//*[@class='pkw-oem__ul'][1]//li[1]//a");
+    }
+
+    SelenideElement firstProductOnTheListing() {
+        return $x("//*[@class='prod_link'][1]//a");
+    }
+
+    SelenideElement firstLinkOenNummerForCarSelector() {
+        return $x("//*[@class='pkw-oem__ul']//a[contains(text(),'AUDI')]");
     }
 }

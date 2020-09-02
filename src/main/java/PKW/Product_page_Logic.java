@@ -159,7 +159,7 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
-    @Step("Sending the empty form, checking the validation messages .Product_page")
+    @Step("Sending the empty form, checking the validation messages in the FAQ form .Product_page")
     public Product_page_Logic checkingTheValidationMessageSendingEmptyForm() {
         btnFaqTab().click();
         btnAskQuestionFaqForm().click();
@@ -243,6 +243,22 @@ public class Product_page_Logic extends Product_page {
         productBrandIconLink().scrollIntoView(false).click();
         checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "supplier"));
         back();
+        return this;
+    }
+
+    @Step("Checking the redirection to the OEN listing after clicking the OEN tab .Product_page")
+    public Product_page_Logic checkingTheTransitionToTheOENListingPageAfterClickingTheOenTab() {
+        oenNummerTab().click();
+        firstLinkOenNummer().scrollIntoView(false).click();
+        waitWhileRouteBecomeExpected("oe_number");
+        return this;
+    }
+
+    @Step("Checking the displaying to the OEN numbers with the selected car in the selector .Product_page")
+    public Product_page_Logic checkingTheDisplayingTheOENNumbers() {
+        firstProductOnTheListing().click();
+        oenNummerTab().click();
+        firstLinkOenNummerForCarSelector().shouldHave(text("AUDI"));
         return this;
     }
 }
