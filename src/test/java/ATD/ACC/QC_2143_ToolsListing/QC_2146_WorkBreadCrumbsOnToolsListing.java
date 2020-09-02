@@ -9,9 +9,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import java.sql.SQLException;
-
 import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
@@ -29,7 +27,7 @@ public class QC_2146_WorkBreadCrumbsOnToolsListing {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main","listing_instruments");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main","listing_instruments,listing_instruments5");
     }
 
     @Test(dataProvider = "route")

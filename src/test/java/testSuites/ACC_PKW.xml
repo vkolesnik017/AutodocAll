@@ -167,6 +167,8 @@
             <class name="PKW.ACC.QC_2288_ListingAccessories.QC_2289_BreadCrumbsOnAccessoriesListing"/>
             <class name="PKW.ACC.QC_2288_ListingAccessories.QC_2290_WorkBreadCrumbsOnAccessoriesListing"/>
             <class name="PKW.ACC.QC_2288_ListingAccessories.QC_2291_TitleOnAccessoriesListing"/>
+            <class name="PKW.ACC.QC_2288_ListingAccessories.QC_2292_BlockFilterByBrandsOnAccessoriesListing"/>
+            <class name="PKW.ACC.QC_2288_ListingAccessories.QC_2293_PaginationBlockOnAccessoriesListing"/>
         </classes>
     </test>
 
