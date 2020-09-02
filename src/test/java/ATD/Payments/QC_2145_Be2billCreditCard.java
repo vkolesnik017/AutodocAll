@@ -7,6 +7,7 @@ import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -17,18 +18,19 @@ import static ATD.CommonMethods.*;
 import static ATD.DataBase.parseUserIdFromBD;
 import static ATD.DataBase.parseUserMailFromBD;
 import static ATD.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 
-public class QC_2145_Be2billCreditCard extends ProjectListener {
+public class QC_2145_Be2billCreditCard {
 
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "route", parallel = false)
+    @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopsWithSubroute("prod", /*"ES,FI,FR,IT,NL,PT,SE,BE,AT,HU"*/"FI", "main", "product32");
+        return new SetUp().setUpShopsWithSubroute("prod", "ES,FI,FR,IT,NL,PT,SE,BE,AT,HU", "main", "product32");
     }
 
     @Test(dataProvider = "route")
@@ -62,7 +64,7 @@ public class QC_2145_Be2billCreditCard extends ProjectListener {
         float totalPriceOrderAws = new Customer_view_aws().openCustomerPersonalArea(userID)
                 .checkPresenceOrderHistoryBlock()
                 .checkAndOpenOrderWithExpectedData()
-                .checkPaymentMethodInOrder("658")//Be2bill
+                .checkPaymentMethodInOrder("Be2bill")
                 .checkCurrentStatusInOrder("abgebrochene Be2bill")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceAllData, totalPriceOrderAws);
@@ -72,8 +74,8 @@ public class QC_2145_Be2billCreditCard extends ProjectListener {
         Assert.assertEquals(totalPriceAllData, totalPriceOrderAwsAfterReSave);
     }
 
-    /*@AfterMethod
+    @AfterMethod
     private void close() {
         closeWebDriver();
-    }*/
+    }
 }
