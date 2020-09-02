@@ -76,4 +76,12 @@
         </classes>
     </test>
 
+    <test name="QC_2351_Przelewy24 ">
+        <classes>
+            <class name="ATD.Payments.QC_2351_Przelewy24">
+            </class>
+        </classes>
+    </test>
+
+
 </suite>
