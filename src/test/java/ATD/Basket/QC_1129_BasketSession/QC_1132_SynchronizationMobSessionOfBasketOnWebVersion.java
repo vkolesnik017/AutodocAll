@@ -42,6 +42,7 @@ public class QC_1132_SynchronizationMobSessionOfBasketOnWebVersion {
         openPage("https://m.autodoc.de/?force=mobile");
         main_page_mob_logic.closeFirstPopupAfterTransitionOnMob("apps.apple.com", "https://m.autodoc.de/?force=mobile")
                 .clickSignInInMenu()
+                .closePopupAfterTransitionOnLoginPageMob("apps.apple.com", "https://m.autodoc.de/login")
                 .closeFooterPopup()
                 .signIn(mail);
         openPage("https://m.autodoc.de/vemo/2295352?force=mobile");
@@ -67,6 +68,7 @@ public class QC_1132_SynchronizationMobSessionOfBasketOnWebVersion {
         openPage("https://m.autodoc.de/?force=mobile");
         main_page_mob_logic.closeFirstPopupAfterTransitionOnMob("apps.apple.com", "https://m.autodoc.de/?force=mobile")
                 .clickSignInInMenu()
+                .closePopupAfterTransitionOnLoginPageMob("apps.apple.com", "https://m.autodoc.de/login")
                 .closeFooterPopup()
                 .signInFromFB(mailFB, passFB)
                 .checkPresenceIconUserId();

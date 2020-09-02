@@ -42,7 +42,7 @@ public class Main_page_mob_Logic extends Main_page_mob {
     @Step("Clicking menu button and go to profile page. Main_page_mob")
     public Profile_page_mob_Logic goToProfilePage() {
         menuBtn().click();
-        signInBtnInMenu().shouldBe(visible).click();
+        btnGoToProfileFromMenu().shouldBe(visible).click();
         return page(Profile_page_mob_Logic.class);
     }
 }
