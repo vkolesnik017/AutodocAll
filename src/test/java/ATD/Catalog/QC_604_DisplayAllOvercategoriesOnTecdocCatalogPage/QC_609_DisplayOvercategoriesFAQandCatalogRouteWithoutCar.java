@@ -16,6 +16,7 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import static ATD.CommonMethods.comparingParentCategoriesWithAws;
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
@@ -49,9 +50,9 @@ public class QC_609_DisplayOvercategoriesFAQandCatalogRouteWithoutCar {
         openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "faqHash"));
         parentCategoriesCatalogFAQwithoutCar = categoriesPageLogic.getAllParentCategoriesFromTecdocCatalog();
 
-        parentCategoriesAWS = new CatalogCategories_aws("prod"). getAllParentCategoriesNameFromAWS();
-        categoriesPageLogic.compareCategoriesFromCatalogAndAWS(parentCategoriesTecdocCatalogWithoutCar, parentCategoriesAWS)
-                           .compareCategoriesFromCatalogAndAWS(parentCategoriesCatalogFAQwithoutCar, parentCategoriesAWS);
+        parentCategoriesAWS = new CatalogCategories_aws("prod").getAllParentCategoriesNameFromAWS();
+        comparingParentCategoriesWithAws(parentCategoriesAWS, parentCategoriesTecdocCatalogWithoutCar);
+        comparingParentCategoriesWithAws(parentCategoriesAWS, parentCategoriesCatalogFAQwithoutCar);
     }
 
     @AfterMethod

@@ -163,7 +163,7 @@ public class Cart_page {
     }
 
     public SelenideElement visaLabel() {
-        return $x("//img[contains(@src,'visa.png')]");
+        return $x("//img[contains(@src,'visa')]");
     }
 
     public SelenideElement masterCardLabel() {

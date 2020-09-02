@@ -7,10 +7,13 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.Keys;
+
 import java.sql.SQLException;
 import java.util.*;
+import java.util.stream.Collectors;
+
 import static ATD.CommonMethods.openPage;
-import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
 public class CatalogCategories_aws {
@@ -32,7 +35,7 @@ public class CatalogCategories_aws {
 
     private void init(String awsEnv) throws SQLException {
         this.categoriesInAwsPage = awsEnv + new DataBase().getRouteByRouteName("DE", "categoriesAws");
-        this.parentCategoriesInAwsPage = awsEnv +  new DataBase().getRouteByRouteName("DE", "parentCategoriesAws");
+        this.parentCategoriesInAwsPage = awsEnv + new DataBase().getRouteByRouteName("DE", "parentCategoriesAws");
     }
 
 
@@ -103,6 +106,10 @@ public class CatalogCategories_aws {
 
     public SelenideElement loadingText() {
         return $x("//div[@class='center loading-text']");
+    }
+
+    ElementsCollection parentCategoriesFromAws() {
+        return $$x("//div[@class='size-300 flex-box']/input");
     }
 
 
@@ -190,11 +197,11 @@ public class CatalogCategories_aws {
     @Step("Get All ID group From Catalog AWS. CatalogCategories_aws")
     public ArrayList<String> getAllIdGroupFromAWS() {
         ArrayList<String> allActiveGroupAWS = new ArrayList<>();
-     for(int i = 0; i < groupIdInAWS().size(); i++) {
-         if(!groupIdInAWS().get(i).getText().isEmpty()) {
-             allActiveGroupAWS.add(groupIdInAWS().get(i).text());
-         }
-     }
+        for (int i = 0; i < groupIdInAWS().size(); i++) {
+            if (!groupIdInAWS().get(i).getText().isEmpty()) {
+                allActiveGroupAWS.add(groupIdInAWS().get(i).text());
+            }
+        }
         Collections.sort(allActiveGroupAWS);
         return allActiveGroupAWS;
     }
@@ -308,6 +315,14 @@ public class CatalogCategories_aws {
         allCategories.removeAll(notActiveCategories);
         Collections.sort(allCategories);
         return allCategories;
+    }
+
+    @Step("Get All Parent Categories from AWS. CatalogCategories_aws")
+    public List<String> getParentCategories() {
+        new Login_aws().loginInAwsWithOpen();
+        openPage(parentCategoriesInAwsPage);
+        List<String> allActiveParentCategoriesAWS = parentCategoriesFromAws().stream().map(n -> n.getAttribute("data-old-value")).collect(Collectors.toList());
+        return allActiveParentCategoriesAWS;
     }
 
 }

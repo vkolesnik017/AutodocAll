@@ -69,4 +69,11 @@
         </classes>
     </test>
 
+    <test name="QC_2145_Be2billCreditCard">
+        <classes>
+            <class name="ATD.Payments.QC_2145_Be2billCreditCard">
+            </class>
+        </classes>
+    </test>
+
 </suite>

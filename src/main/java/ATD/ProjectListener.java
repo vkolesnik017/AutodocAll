@@ -63,7 +63,6 @@ public class ProjectListener implements ITestListener, IAnnotationTransformer {
 
     @Override
     public void onFinish(ITestContext iTestContext) {
-
     }
 
     @Attachment
