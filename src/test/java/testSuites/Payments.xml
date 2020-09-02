@@ -6,7 +6,7 @@
         <listener class-name="ATD.ProjectListener"/>
     </listeners>
 
-    <test name="QC_2168_PayPal">
+<!--    <test name="QC_2168_PayPal">
         <classes>
             <class name="ATD.Payments.QC_2168_PayPal">
             </class>
@@ -67,7 +67,7 @@
             <class name="ATD.Payments.QC_2160_BraintreeCreditCard">
             </class>
         </classes>
-    </test>
+    </test>-->
 
     <test name="QC_2145_Be2billCreditCard">
         <classes>
