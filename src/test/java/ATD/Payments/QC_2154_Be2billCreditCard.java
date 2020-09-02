@@ -21,7 +21,7 @@ import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 
-public class QC_2145_Be2billCreditCard {
+public class QC_2154_Be2billCreditCard {
 
     @BeforeClass
     void setUp() {
