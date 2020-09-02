@@ -1,6 +1,5 @@
 package ATD;
 
-import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
@@ -9,8 +8,6 @@ import org.testng.IAnnotationTransformer;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.ITestAnnotation;
 
 import java.io.File;
@@ -65,9 +62,7 @@ public class ProjectListener implements ITestListener, IAnnotationTransformer {
     }
 
     @Override
-    @AfterMethod
     public void onFinish(ITestContext iTestContext) {
-        WebDriverRunner.getWebDriver().close();
     }
 
     @Attachment

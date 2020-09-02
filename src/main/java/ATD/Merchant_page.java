@@ -2,12 +2,13 @@ package ATD;
 
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
-import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoAlertPresentException;
 
 import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class Merchant_page {
 
@@ -169,10 +170,11 @@ public class Merchant_page {
         switchTo().frame(iFrameFieldCryptogram());
         fieldCryptogram().setValue(cvv);
         switchTo().window(0);
-        sleep(5000);
-        creditCardFormInfoBtn().waitUntil(visible, 5000).click(1,1);
+        creditCardFormInfoBtn().waitUntil(appear, 10000);
+        JavascriptExecutor js = (JavascriptExecutor) getWebDriver();
+        js.executeScript("arguments[0].click();", creditCardFormInfoBtn());
         creditCardFormInfo().waitUntil(visible, 5000).shouldHave(attribute("style","display: block;"));
-        creditCardFormInfoBtn().click();
+        js.executeScript("arguments[0].click();", creditCardFormInfoBtn());
         creditCardFormInfo().shouldNotBe(visible).shouldHave(attribute("style", "display: none;"));
         creditCardFormReset().click();
         checkingContainsUrl("/basket/payments");
