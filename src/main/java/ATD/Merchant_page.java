@@ -11,10 +11,6 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class Merchant_page {
 
-    SelenideElement preloader() {
-        return $(By.cssSelector(".preloader_wrapper"));
-    }
-
     //Button from the EPS merchant
     public SelenideElement abbrechenSubmit() {
         return $x("//button[@id='abbrechenSubmit']");
@@ -158,12 +154,6 @@ public class Merchant_page {
 
 
 
-    @Step("Wait until preloader disappear. Merchant_page")
-    public Merchant_page waitUntilPreloaderDisappear() {
-        preloader().waitUntil(attribute("style", "display: none;"), 20000);
-        return this;
-    }
-
     //This method is used on the merchant page for payment using the B2billCreditCard
     @Step("Checks presence element in merchant page for payment B2billCreditCard and cancels order. Merchant_page")
     public CartPayments_page_Logic checkPresenceElementFromMerchantPageB2billCreditCardAndCancelOrder(String cardNum, String expiration, String cvv) {
@@ -180,7 +170,7 @@ public class Merchant_page {
         fieldCryptogram().setValue(cvv);
         switchTo().window(0);
         sleep(5000);
-        creditCardFormInfoBtn().click();
+        creditCardFormInfoBtn().shouldBe(visible).click();
         creditCardFormInfo().waitUntil(visible, 5000).shouldHave(attribute("style","display: block;"));
         creditCardFormInfoBtn().click();
         creditCardFormInfo().shouldNotBe(visible).shouldHave(attribute("style", "display: none;"));
