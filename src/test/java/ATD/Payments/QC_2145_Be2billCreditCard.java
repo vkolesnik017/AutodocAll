@@ -62,7 +62,7 @@ public class QC_2145_Be2billCreditCard extends ProjectListener {
         float totalPriceOrderAws = new Customer_view_aws().openCustomerPersonalArea(userID)
                 .checkPresenceOrderHistoryBlock()
                 .checkAndOpenOrderWithExpectedData()
-                .checkPaymentMethodInOrder("Be2bill")
+                .checkPaymentMethodInOrder("658")//Be2bill
                 .checkCurrentStatusInOrder("abgebrochene Be2bill")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceAllData, totalPriceOrderAws);
