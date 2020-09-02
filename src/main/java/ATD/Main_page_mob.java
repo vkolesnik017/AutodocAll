@@ -26,6 +26,10 @@ public class Main_page_mob {
         return $x("//div[@class='name signin']//span");
     }
 
+    SelenideElement btnGoToProfileFromMenu() {
+        return $x("//div[@class='name signin']//a[1]");
+    }
+
     SelenideElement cartIcon() {
         return $x("//a[@data-gac='Go_to_basket']");
     }

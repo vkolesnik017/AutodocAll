@@ -1,8 +1,13 @@
 package PKW;
 
 
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
+
+import java.util.ArrayList;
+import java.util.Collections;
+
 import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.page;
@@ -127,6 +132,38 @@ public class Index_instruments_page_Logic extends Index_instruments_page {
     @Step("Get name separate category from main catalog. Index_instruments_page")
     public String getNameSeparateCategoryFromMainCatalog() {
         return separateCategoryInMainCatalog().getText();
+    }
+
+    @Step("Get id all categories from logical union and separate categories then write to list. Index_instruments_page")
+    public ArrayList<String> getIdCategoriesAndSeparateCategoriesThenWriteToList() {
+        blockMainProducts().scrollIntoView(false);
+        ArrayList<String> categoriesFromLogicalUnion = new ArrayList<>();
+        for (SelenideElement element : categoriesFromLogicalUnion()) {
+            String idCategory = element.getAttribute("data-ga-action");
+            categoriesFromLogicalUnion.add(idCategory);
+        }
+
+        ArrayList<String> separateCategoriesId = new ArrayList<>();
+        for (SelenideElement element : separateCategories()) {
+            String idSeparateCategory = element.getAttribute("data-ga-action");
+            separateCategoriesId.add(idSeparateCategory);
+        }
+
+        categoriesFromLogicalUnion.addAll(separateCategoriesId);
+        Collections.sort(categoriesFromLogicalUnion);
+        return categoriesFromLogicalUnion;
+    }
+
+
+    @Step("Get id Logical Unions and write to list. Index_instruments_page")
+    public ArrayList<String> getIdLogicalUnionAndWriteToList() {
+        ArrayList<String> logicalUnionsId = new ArrayList<>();
+        for (SelenideElement element : logicalUnions()) {
+            String idLogicalUnion = element.getAttribute("data-srcset").replaceAll("[\\s\\S]*\\/", "").replaceAll("\\D+", "");
+            logicalUnionsId.add(idLogicalUnion);
+        }
+        Collections.sort(logicalUnionsId);
+        return logicalUnionsId;
     }
 
 }

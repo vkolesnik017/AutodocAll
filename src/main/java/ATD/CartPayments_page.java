@@ -45,7 +45,7 @@ public class CartPayments_page {
     }
 
     SelenideElement activePayment(String paymentMethod) {
-        return $x("//input[@id='" + paymentMethod + "']/../../..//div[contains(@class,'row--active')]");
+        return $x("//input[contains(@id,'"+ paymentMethod +"')]/../../..//div[contains(@class,'row--active')]");
     }
 }
 
