@@ -26,7 +26,7 @@ public class QC_2145_Be2billCreditCard extends ProjectListener {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "route", parallel = false)
+    @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
         return new SetUp().setUpShopsWithSubroute("prod", /*"ES,FI,FR,IT,NL,PT,SE,BE,AT,HU"*/"FI", "main", "product32");
     }

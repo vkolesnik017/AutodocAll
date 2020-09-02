@@ -170,7 +170,7 @@ public class Merchant_page {
         fieldCryptogram().setValue(cvv);
         switchTo().window(0);
         sleep(5000);
-        creditCardFormInfoBtn().shouldBe(visible).click();
+        creditCardFormInfoBtn().waitUntil(visible, 5000).click(1,1);
         creditCardFormInfo().waitUntil(visible, 5000).shouldHave(attribute("style","display: block;"));
         creditCardFormInfoBtn().click();
         creditCardFormInfo().shouldNotBe(visible).shouldHave(attribute("style", "display: none;"));
