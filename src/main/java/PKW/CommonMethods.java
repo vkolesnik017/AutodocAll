@@ -205,4 +205,7 @@ public class CommonMethods {
         if (!carNameFull.equals(carNameTextFromSelector))
             writerInFile(fileForReport, true, "Car from data doesn't equals car from selector:" + "#" + carNameFull + "#" + carNameTextFromSelector + "#" + url);
     }
+
+    //Checks element clickability
+    public static Condition clickable = and("can be clicked", visible, enabled);
 }

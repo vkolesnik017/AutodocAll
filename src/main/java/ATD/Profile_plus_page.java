@@ -40,6 +40,8 @@ public class Profile_plus_page {
 
     SelenideElement myVehiclesBlock() {return $x("//li[@class='vehicle_link ']/a");}
 
+    SelenideElement wishListBlock() {return $x("//li[@class='wishlist_link ']/a");}
+
     SelenideElement countOfAddedVehicleInGarageIcon() {return $x("//span[@class='header-garage__count header-garage__count--added']");}
 
     ElementsCollection visibleAddedVehicleInGarageAtHeader() {return $$x("//div[@class='header-garage__logged-check']");}
