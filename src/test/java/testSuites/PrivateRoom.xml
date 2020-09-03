@@ -8,8 +8,8 @@
 
     <test name="PrivateRoom">
         <classes>
-                <class name="ATD.PrivateRoom.QC_598_CheckingDisplayOfTheBonusTab"/>
-                <class name="ATD.PrivateRoom.QC_597_CheckingUrlForTabsInPR"/>
+            <class name="ATD.PrivateRoom.QC_598_CheckingDisplayOfTheBonusTab"/>
+            <class name="ATD.PrivateRoom.QC_597_CheckingUrlForTabsInPR"/>
         </classes>
     </test>
 
@@ -120,6 +120,13 @@
             <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_2344_UpdatingOfPageWithSelectedTruckInGaragePopUp"/>
             <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_2345_UpdatingOfPageWithSelectedMotoInGaragePopUp"/>
             <!--<class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1027_EditingVehicleOnMyGaragePage"/>-->
+        </classes>
+    </test>
+
+    <test name="QC_2356_WishListBlock">
+        <classes>
+            <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2373_LogicOfPairedProductsInWishlist"/>
+            <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2398_TransitionToWishListWithLoggedUser"/>
         </classes>
     </test>
 
