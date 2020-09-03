@@ -45,7 +45,7 @@ public class QC_2351_Przelewy24 {
         float totalPriceAllData = new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
-                .checkPresencePaymentsMethodLabel(new Cart_page().przelewy24abel())
+                .checkPresencePaymentsMethodLabel(new Cart_page().przelewy24Label())
                 .nextButtonClick()
                 .signIn(mail, passwordForPayments)
                 .chooseDeliveryCountryForShipping(shop)

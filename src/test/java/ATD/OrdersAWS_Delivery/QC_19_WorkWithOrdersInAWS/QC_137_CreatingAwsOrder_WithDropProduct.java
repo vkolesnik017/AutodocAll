@@ -72,7 +72,7 @@ public class QC_137_CreatingAwsOrder_WithDropProduct {
         sellingProductCostInOrder = order_aws.checkVatStatusInOrder("Mit MwSt 16%")
                 .checkPaymentMethodInOrder("PayPal")
                 .checkThatStatusSafeOrderIsOff()
-                .checkDeliveryCost("0")
+                .checkDeliveryCost("6.95")
                 .checkContoNR("30047")
                 .getSellingProductPriceOrderAWS();
         Assert.assertEquals(productCost , sellingProductCostInOrder);
@@ -86,12 +86,12 @@ public class QC_137_CreatingAwsOrder_WithDropProduct {
         sellingProductCostInOrder = order_aws.checkVatStatusInOrder("Mit MwSt 16%")
                 .checkPaymentMethodInOrder("PayPal")
                 .checkThatStatusSafeOrderIsOff()
-                .checkDeliveryCost("0")
+                .checkDeliveryCost("6.95")
                 .checkContoNR("30047")
                 .getSellingProductPriceOrderAWS();
         Assert.assertEquals(productCost , sellingProductCostInOrder);
         totalProductCostInOrder = order_aws.getTotalPriceOrderAWS();
-        Assert.assertEquals(sellingProductCostInOrder, totalProductCostInOrder);
+        Assert.assertNotEquals(sellingProductCostInOrder, totalProductCostInOrder);
     }
 
     @AfterMethod

@@ -174,8 +174,12 @@ public class Cart_page {
         return $x("//img[contains(@src,'eps_at.png')]");
     }
 
-    public SelenideElement przelewy24abel() {
+    public SelenideElement przelewy24Label() {
         return $x("//img[contains(@src,'przelewy24')]");
+    }
+
+    public SelenideElement multibancoLabel() {
+        return $x("//img[contains(@src,'multibanco')]");
     }
 
     public SelenideElement masterCashLabel() {

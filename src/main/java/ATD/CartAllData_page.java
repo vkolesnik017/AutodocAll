@@ -283,6 +283,10 @@ public class CartAllData_page {
         return $x("//img[contains(@src,'przelewy24')]");
     }
 
+    public SelenideElement multibancoLabel() {
+        return $x("//img[contains(@src,'multibanco')]");
+    }
+
     public SelenideElement masterCashLabel() {
         return $x("//img[contains(@src,'mistercash.png')]");
     }
