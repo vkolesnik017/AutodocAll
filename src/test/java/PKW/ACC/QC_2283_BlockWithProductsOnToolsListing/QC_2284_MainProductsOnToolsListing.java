@@ -1,6 +1,6 @@
-package PKW.ACC.QC_2288_ListingAccessories;
+package PKW.ACC.QC_2283_BlockWithProductsOnToolsListing;
 
-import PKW.Listing_accessories_page_Logic;
+import PKW.Listing_instruments_Page_Logic;
 import PKW.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -14,8 +14,7 @@ import static PKW.CommonMethods.openPage;
 import static PKW.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2289_BreadCrumbsOnAccessoriesListing {
-
+public class QC_2284_MainProductsOnToolsListing {
 
     @BeforeClass
     void setUp() {
@@ -24,16 +23,17 @@ public class QC_2289_BreadCrumbsOnAccessoriesListing {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "listing_accessories");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "listing_instruments,listing_instruments2");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test Checking presence bread crumbs.")
-    public void testCheckingPresenceBreadCrumbs(String route) {
+    @Description(value = "Test Checks presence products listing block and number of products in listing.")
+    public void testCheckingPresenceProductsListingBlockAndNumberOfProducts(String route) {
         openPage(route);
-        new Listing_accessories_page_Logic().checkingPresenceBreadCrumbs();
+        new Listing_instruments_Page_Logic().checkingPresenceProductsListingBlock()
+                .checkingNumberOfProductsInListing();
     }
 
     @AfterMethod
