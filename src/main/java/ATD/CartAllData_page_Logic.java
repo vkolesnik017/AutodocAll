@@ -21,7 +21,7 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return page(Payment_handler_page_Logic.class);
     }
 
-    @Step("Next buttin clicking and Wait until preloader disappea. CartAllData_page")
+    @Step("Next buttin clicking and Wait until preloader disappear. CartAllData_page")
     public Payment_handler_page_Logic nextBtnClick(int sleepTime) throws Exception {
         nextBtn().click();
         waitUntilPreloaderDisappearAndSleep(sleepTime);
