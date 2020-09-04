@@ -4,7 +4,7 @@ import ATD.PasswordRecovery_page_Logic;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
-import org.openqa.selenium.JavascriptExecutor;
+import org.testng.Assert;
 
 import java.util.ArrayList;
 
@@ -80,8 +80,18 @@ public class Mailinator {
         return $x("//div[@style='background-color: white ; padding: 15px']//b[2]");
     }
 
+    private SelenideElement blockOfRequisites() {
+        return $x("//table[@class='info-inline green-border']//tbody//tr//td");
+    }
 
 
+    @Step("Compares the text of the requisites in the email with expected requisites. Mailinator")
+    public Mailinator comparesTextOfRequisitesInMailWithExpectedRequisites(String expectedRequisites) {
+        String requisitesInMail = blockOfRequisites().getText().replaceAll(" ", "").replaceAll("\n","").toLowerCase();
+        String requisitesInSuccessPage = expectedRequisites.replaceAll(" ","").replaceAll("\n","").toLowerCase();
+        Assert.assertEquals(requisitesInMail, requisitesInSuccessPage);
+        return this;
+    }
 
     @Step("Transition to delivery page and get tracking number from url. Mailinator")
     public ArrayList<String> transitionToDeliveryPageAndGetTrackingNumFromUrlInMail() {
@@ -176,6 +186,7 @@ public class Mailinator {
     }
 
     public Mailinator openLetter(int numberLetter) {
+        sleep(5000);
         letter(numberLetter).shouldBe(appear);
         letter(numberLetter).click();
         switchTo().frame("msg_body");
