@@ -1,10 +1,10 @@
 package PKW;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selectors.byCssSelector;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Cart_page {
 
@@ -45,4 +45,9 @@ public class Cart_page {
 
     SelenideElement volumeOfAddedProduct() {return $x("//td[@class='info']//span[@class='desc']");}
 
+    SelenideElement btnMoreInfoOfProduct() {return $x("//a[@class='open']");}
+
+    ElementsCollection titleOfCharacteristicInInfoBlockOfProduct() {return $$x("//ul[@class='info__description']/li/span[1]"); }
+
+    ElementsCollection valueOfCharacteristicInInfoBlockOfProduct() {return $$x("//ul[@class='info__description']/li/span[2]"); }
 }

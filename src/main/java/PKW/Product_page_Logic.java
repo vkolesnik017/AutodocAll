@@ -11,7 +11,6 @@ import org.testng.Assert;
 import java.sql.SQLException;
 
 import static PKW.CommonMethods.*;
-import static PKW.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
