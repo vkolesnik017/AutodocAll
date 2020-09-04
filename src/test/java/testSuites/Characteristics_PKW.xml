@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Characteristics_PKW" parallel="methods" thread-count="3" data-provider-thread-count="4">
+
+
+    <test name="QC_531_RefurbishedCharacteristic">
+        <classes>
+            <class name="PKW.Characteristics.QC_531_RefurbishedCharacteristic.QC_532_PresenceOfRefurbishedCharacteristicInTopProduct"/>
+            <class name="PKW.Characteristics.QC_531_RefurbishedCharacteristic.QC_534_PresenceOfRefurbishedCharacteristicInBasket"/>
+        </classes>
+    </test>
+
+</suite>

@@ -11,7 +11,6 @@ import org.testng.Assert;
 import java.sql.SQLException;
 
 import static PKW.CommonMethods.*;
-import static PKW.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -259,6 +258,14 @@ public class Product_page_Logic extends Product_page {
         firstProductOnTheListing().click();
         oenNummerTab().click();
         firstLinkOenNummerForCarSelector().shouldHave(text("AUDI"));
+        return this;
+    }
+
+    @Step("add product to basket. Product_page")
+    public Product_page_Logic addProductToBasket() {
+        btnAddProductToBasket().shouldBe(visible).click();
+        dropDownPopUpOfBasket().should(appear);
+        dropDownPopUpOfBasket().should(disappear);
         return this;
     }
 }

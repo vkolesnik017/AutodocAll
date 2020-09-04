@@ -11,6 +11,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static ATD.CommonMethods.*;
+import static PKW.CommonMethods.getTextFromUnVisibleElement;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.CollectionCondition.texts;
 import static com.codeborne.selenide.Condition.*;
@@ -334,6 +335,30 @@ public class Search_page_Logic extends Search_page {
     public Profile_wishlist_page_Logic goToWishListPage() {
         iconOfWishList().shouldBe(visible).click();
         return page(Profile_wishlist_page_Logic.class);
+    }
+
+    @Step("presence Refurbished Characteristic in listing. Search_page")
+    public Search_page_Logic presenceRefurbishedCharacteristic(String expectedCharacteristic) {
+        productListBlock().shouldBe(visible);
+        List<String> listOfCharacteristic = new ArrayList<>();
+        addedAllCharacteristicsOfProductToList(listOfCharacteristic);
+        while (forwardLinkOfPaginator().isDisplayed()){
+            forwardLinkOfPaginator().click();
+            addedAllCharacteristicsOfProductToList(listOfCharacteristic);
+        }
+       /* for (int i = 0; i < allCharacteristicsOfProducts().size(); i++) {
+            listOfCharacteristic.add(getTextFromUnVisibleElement(allCharacteristicsOfProducts().get(i)));
+        }*/
+        Assert.assertTrue(listOfCharacteristic.contains(expectedCharacteristic));
+        return this;
+    }
+
+    @Step("added all characteristics of product to list. Search_page")
+    public Search_page_Logic addedAllCharacteristicsOfProductToList(List<String> list) {
+        for (int i = 0; i < allCharacteristicsOfProducts().size(); i++) {
+            list.add(getTextFromUnVisibleElement(allCharacteristicsOfProducts().get(i)));
+        }
+        return this;
     }
 
 }
