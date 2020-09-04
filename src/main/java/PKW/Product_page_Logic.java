@@ -10,15 +10,7 @@ import org.testng.Assert;
 
 import java.sql.SQLException;
 
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static PKW.CommonMethods.mailRandom;
-
 import static PKW.CommonMethods.*;
-import static PKW.CommonMethods.checkingContainsUrl;
-
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -178,29 +170,6 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
-
-    @Step("presence of basket pop-Up .Product_page")
-    public Product_page_Logic presenceOfBasketPopUp() {
-        basketPopUp().shouldBe(visible);
-        basketPopUp().shouldNotBe(visible);
-        return this;
-    }
-
-    @Step("Adding product to basket. Product_page")
-    public Product_page_Logic addProductToBasket() {
-         buyButton().shouldBe(visible).click();
-        presenceOfBasketPopUp();
-        return this;
-    }
-
-
-
-    @Step("check presence of Refurbished characteristic in TOP product. Product_page")
-    public Product_page_Logic checkOfRefValueInTopCharacteristicBlock() {
-                for (int i=0; i<visibleTopProducts().size();i++){
-                    visibleArtNumOfTopProducts().get(i).hover();
-                }
-
     @Step("Checking for the presence of elements in the top block on the product page .Product_page")
     public Product_page_Logic presenceOfTheElementsInTheTopBlockOnTheProductPage() throws SQLException {
 
@@ -289,7 +258,6 @@ public class Product_page_Logic extends Product_page {
         firstProductOnTheListing().click();
         oenNummerTab().click();
         firstLinkOenNummerForCarSelector().shouldHave(text("AUDI"));
-
         return this;
     }
 }

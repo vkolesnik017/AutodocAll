@@ -1,11 +1,10 @@
 package PKW;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -158,16 +157,25 @@ public class Product_page {
     }
 
 
-    SelenideElement basketPopUp() {return $x("//div[@class='cart-items-block ']");}
+    SelenideElement basketPopUp() {
+        return $x("//div[@class='cart-items-block ']");
+    }
 
-    ElementsCollection visibleTopProducts() {return $$x("//ul[@class='pkw-related']/li").filter(visible);}
+    ElementsCollection visibleTopProducts() {
+        return $$x("//ul[@class='pkw-related']/li").filter(visible);
+    }
 
-    ElementsCollection visibleArtNumOfTopProducts() {return $$x("//span[@class='pkw-related__item-art']").filter(visible);}
+    ElementsCollection visibleArtNumOfTopProducts() {
+        return $$x("//span[@class='pkw-related__item-art']").filter(visible);
+    }
 
-    ElementsCollection titleOfCharacteristicOfTopProduct() {return $$x("//div[@class='pkw-related__additional-header']//ul/li/span[1]");}
+    ElementsCollection titleOfCharacteristicOfTopProduct() {
+        return $$x("//div[@class='pkw-related__additional-header']//ul/li/span[1]");
+    }
 
-    ElementsCollection valueOfCharacteristicOfTopProduct() {return $$x("//div[@class='pkw-related__additional-header']//ul/li/span[2]");}
-
+    ElementsCollection valueOfCharacteristicOfTopProduct() {
+        return $$x("//div[@class='pkw-related__additional-header']//ul/li/span[2]");
+    }
 
 
     SelenideElement carSelectorAll() {
