@@ -260,4 +260,12 @@ public class Product_page_Logic extends Product_page {
         firstLinkOenNummerForCarSelector().shouldHave(text("AUDI"));
         return this;
     }
+
+    @Step("add product to basket. Product_page")
+    public Product_page_Logic addProductToBasket() {
+        btnAddProductToBasket().shouldBe(visible).click();
+        dropDownPopUpOfBasket().should(appear);
+        dropDownPopUpOfBasket().should(disappear);
+        return this;
+    }
 }

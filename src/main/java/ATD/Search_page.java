@@ -166,5 +166,9 @@ public class Search_page {
     ElementsCollection addedProductToWishList() { return $$x("//span[@class='add-to-wishlist title_btn add-to-wishlist--added remove-article']");}
 
     SelenideElement iconOfWishList() { return $x("//span[@class='header__wishes link']"); }
+
+    SelenideElement productListBlock() {return $x("//div[@class='listing_items']");}
+
+    ElementsCollection allCharacteristicsOfProducts() {return $$x("//div[@class='prod_params_container']//li");}
 }
 
