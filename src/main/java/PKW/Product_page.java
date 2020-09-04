@@ -305,4 +305,8 @@ public class Product_page {
     SelenideElement firstLinkOenNummerForCarSelector() {
         return $x("//*[@class='pkw-oem__ul']//a[contains(text(),'AUDI')]");
     }
+
+    SelenideElement btnAddProductToBasket() {return $x("//button[@class='pkw-product__buy-btn basket_btn ']");}
+
+    SelenideElement dropDownPopUpOfBasket() {return $x("//div[@class='cart-items-block ']");}
 }
