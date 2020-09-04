@@ -38,7 +38,7 @@ public class QC_2298_AddProductsToBasketOnACCListing {
     public void testCheckingAddProductsInBasket(String route) {
         openPage(route);
         idProduct = listingAccessoriesPageLogic.getIdProductListing();
-        listingAccessoriesPageLogic.increasesNumberProductsInQuantityCounter();
+        listingAccessoriesPageLogic.checkingWorkQuantityCounterOnDecreaseAndIncrease();
         valueCounter = listingAccessoriesPageLogic.getValueQuantityCounterFirstProductListing();
         listingAccessoriesPageLogic.clickBtnAddToBasketFirstProduct()
                 .cartClick();

@@ -56,6 +56,10 @@ public class Tyre_form_page {
 
     ElementsCollection mpnNumberOfProduct() {return $$x("//div[@class='name']/span[contains(text(),'MPN')]");}
 
+    SelenideElement nameBrandProduct() {
+        return $x("//div[@class='description']//div[@class='name']/a");
+    }
+
     ElementsCollection btnAddProductToWishList() { return $$x("//span[@class='add-to-wishlist title_btn add-article']");}
 
     ElementsCollection addedProductToWishList() { return $$x("//span[@class='add-to-wishlist title_btn add-to-wishlist--added remove-article']");}

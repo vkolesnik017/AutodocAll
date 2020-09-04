@@ -52,6 +52,10 @@ public class ProductSearch_aws {
         return $(byId("form_filterSearch[search]"));
     }
 
+    private SelenideElement fieldSelectBrand() {
+        return $x(" //li[@class='search-field']/input[@value='Select Brand']");
+    }
+
     @Step
     public ProductSearch_aws openProductSearchPageAndLogin() {
         open(urlPage);
@@ -90,10 +94,11 @@ public class ProductSearch_aws {
         return artNumOfProduct;
     }
 
-    @Step("input MPN number in search field")
-    public ProductSearch_aws inputMpnNumberOfProduct(String mpnNumber) {
+    @Step("input MPN number and name brand in search field")
+    public ProductSearch_aws inputMpnNumberAndBrandNameOfProduct(String mpnNumber, String nameBrand) {
         dangerousCargoSelector().shouldBe(visible);
         searchField().shouldBe(visible).setValue(mpnNumber);
+        fieldSelectBrand().shouldBe(visible).setValue(nameBrand).pressEnter();
         searchBtn().click();
         articleProductsInTable().get(0).shouldHave(exactText(mpnNumber));
         return this;
