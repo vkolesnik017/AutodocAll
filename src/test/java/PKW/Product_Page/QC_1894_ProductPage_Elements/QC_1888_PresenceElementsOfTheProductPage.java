@@ -1,0 +1,45 @@
+package PKW.Product_Page.QC_1894_ProductPage_Elements;
+
+import PKW.Product_page_Logic;
+import io.qameta.allure.Description;
+import io.qameta.allure.Owner;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import java.sql.SQLException;
+
+import static PKW.CommonMethods.openPage;
+import static PKW.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
+
+public class QC_1888_PresenceElementsOfTheProductPage {
+
+    @BeforeClass
+    void setUp() {
+        setUpBrowser(false, "chrome", "77.0");
+    }
+
+    @DataProvider(name = "routes", parallel = true)
+    Object[] dataProvider() throws SQLException {
+        return new PKW.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product4");
+    }
+
+    @Test(dataProvider = "routes")
+    @Owner(value = "LavrynenkoOlha")
+    @Description(value = "Checking the presence of the elements, checking the transition after clicking the links ang brand logo")
+    public void testCheckingThePresenceOfTheElements(String route) throws SQLException {
+        openPage(route);
+        new Product_page_Logic().presenceOfTheElementsInTheTopBlockOnTheProductPage()
+                .checkingTheTransitionToTheBrandProductPageAfterClickingTheBrandLogo()
+                .addProductToCart()
+                .presenceOfTheElementsInTheCharacteristicBlockOnTheProductPage()
+                .presenceOfTheElementsInTheBottomBlockOnTheProductPage();
+    }
+
+    @AfterMethod
+    public void close() {
+        closeWebDriver();
+    }
+}

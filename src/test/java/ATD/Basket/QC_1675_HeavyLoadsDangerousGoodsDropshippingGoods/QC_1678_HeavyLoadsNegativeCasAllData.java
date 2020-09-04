@@ -29,7 +29,7 @@ public class QC_1678_HeavyLoadsNegativeCasAllData {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "HeavyLoadProduct1");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "HeavyLoadProduct2");
     }
 
     @Test(dataProvider = "route")
@@ -47,11 +47,11 @@ public class QC_1678_HeavyLoadsNegativeCasAllData {
                 .chooseVorkasse().nextBtnClick()
                 .checkPresencePopUpDeliveryLimitAllDataPage()
                 .closePopUpDeliveryLimitCartAllDataPage()
-                .checkAbsenceGoodInCartPage("1290766")
+                .checkAbsenceGoodInCartPage("7057305")
                 .checkPresenceGoodInCardPage("7807629")
                 .checkPresenceSafeOrderBlock()
                 .checkPresenceRegularDeliveryPrice();
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "HeavyLoadProduct1"));
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "HeavyLoadProduct2"));
         product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
@@ -60,11 +60,11 @@ public class QC_1678_HeavyLoadsNegativeCasAllData {
                 .chooseVorkasse().nextBtnClick()
                 .checkPresencePopUpDeliveryLimitAllDataPage()
                 .deleteGoodsInDeliveryPopupCartAllDataPage()
-                .checkAbsenceGoodInCartPage("1290766")
+                .checkAbsenceGoodInCartPage("7057305")
                 .checkPresenceGoodInCardPage("7807629")
                 .checkPresenceSafeOrderBlock()
                 .checkPresenceRegularDeliveryPrice();
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "HeavyLoadProduct1"));
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "HeavyLoadProduct2"));
         product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
