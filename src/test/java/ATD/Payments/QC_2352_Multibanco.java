@@ -1,11 +1,11 @@
 package ATD.Payments;
 
 import ATD.*;
-import AWS.Customer_view_aws;
 import AWS.Order_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import mailinator.Mailinator;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -15,12 +15,11 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.*;
-import static ATD.DataBase.parseUserIdFromBD;
 import static ATD.DataBase.parseUserMailFromBD;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2351_Przelewy24 {
+public class QC_2352_Multibanco {
 
     @BeforeClass
     void setUp() {
@@ -29,39 +28,44 @@ public class QC_2351_Przelewy24 {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "PL", "main", "product32");
+        return new SetUp().setUpShopWithSubroutes("prod", "PT", "main", "product32");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description("Test checks method of payment by Przelewy24")
-    public void testPrzelewy24(String route) throws Exception {
+    @Description("Test checks method of payment by Multibanco")
+    public void testMultibanco(String route) throws Exception {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
-        String userData = new DataBase().getUserIdForPaymentsMethod("payments_userid_atd", shop, "Przelewy24");
-        String userID = parseUserIdFromBD(userData);
+        String userData = new DataBase().getUserIdForPaymentsMethod("payments_userid_atd", shop, "Multibanco");
         String mail = parseUserMailFromBD(userData);
         float totalPriceAllData = new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
-                .checkPresencePaymentsMethodLabel(new Cart_page().przelewy24Label())
+                .checkPresencePaymentsMethodLabel(new Cart_page().multibancoLabel())
                 .nextButtonClick()
                 .signIn(mail, passwordForPayments)
                 .chooseDeliveryCountryForShipping(shop)
-                .fillFieldTelNumForShipping("100+001")
+                .fillFieldTelNumForShipping("200+002")
                 .nextBtnClick()
-                .clickOnTheDesiredPaymentMethod(shop, "Przelewy24")
+                .clickOnTheDesiredPaymentMethod(shop, "Multibanco")
                 .nextBtnClick()
-                .checkPresencePaymentsMethodLabel(new CartAllData_page().przelewy24abel())
+                .checkPresencePaymentsMethodLabel(new CartAllData_page().multibancoLabel())
                 .getTotalPriceAllDataPage(shop);
-        new CartAllData_page_Logic().nextBtnClick();
-        checkingContainsUrl("secure.przelewy24.pl");
-        float totalPriceOrderAws = new Customer_view_aws().openCustomerPersonalArea(userID)
-                .checkPresenceOrderHistoryBlock()
-                .checkAndOpenOrderWithExpectedData()
-                .checkPaymentMethodInOrder("Przelewy24")
-                .checkCurrentStatusInOrder("abgebrochene Przelewy24")
+        String requisitesText = new CartAllData_page_Logic().nextBtnClick()
+                .clickOnLinkForPDF()
+                .checkOrganizationName("12057")
+                .comparesPriceOfOrderDetailsWithPriceOnAllDataPage(totalPriceAllData)
+                .getTextRequisites();
+        System.out.println(requisitesText);
+        canAssertThatPdfContainsText("C:/Users/User/Downloads/bank_info.pdf", requisitesText);
+        String orderNum = new Payment_handler_page_Logic().getOrderNumber();
+        new Mailinator().openEmail(mail)
+                .openLetter(1)
+                .comparesTextOfRequisitesInMailWithExpectedRequisites(requisitesText);
+        float totalPriceOrderAws = new Order_aws(orderNum).openOrderInAwsWithLogin()
+                .checkPaymentMethodInOrder("B2B - Multibanco")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceAllData, totalPriceOrderAws);
         float totalPriceOrderAwsAfterReSave = new Order_aws().reSaveOrder()

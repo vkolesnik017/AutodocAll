@@ -30,7 +30,7 @@ public class QC_1677_HeavyLoadsNegativeCase {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "HeavyLoadProduct1");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "HeavyLoadProduct2");
     }
 
     @Test(dataProvider = "route")
@@ -47,23 +47,23 @@ public class QC_1677_HeavyLoadsNegativeCase {
                 .cartClick()
                 .checkPresencePopUpDeliveryLimit()
                 .closePopUpDeliveryLimitCartPage()
-                .checkAbsenceGoodInCartPage("1290766")
+                .checkAbsenceGoodInCartPage("7057305")
                 .checkPresenceGoodInCardPage("7807629");
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "HeavyLoadProduct1"));
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "HeavyLoadProduct2"));
         product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
                 .checkPresencePopUpDeliveryLimit()
                 .deleteGoodsInDeliveryPopupCartPage()
-                .checkAbsenceGoodInCartPage("1290766")
+                .checkAbsenceGoodInCartPage("7057305")
                 .checkPresenceGoodInCardPage("7807629");
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "HeavyLoadProduct1"));
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "HeavyLoadProduct2"));
         product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
                 .checkPresencePopUpDeliveryLimit()
                 .clickBtnContinueShoppingInDeliveryPopupCartPage()
-                .checkPresenceGoodInCardPage("1290766")
+                .checkPresenceGoodInCardPage("7057305")
                 .checkPresenceGoodInCardPage("7807629");
     }
 

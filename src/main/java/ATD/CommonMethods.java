@@ -1,5 +1,6 @@
 package ATD;
 
+import com.codeborne.pdftest.PDF;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
@@ -11,10 +12,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.testng.Assert;
 
-import java.io.BufferedWriter;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,12 +21,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+import static com.codeborne.pdftest.PDF.containsText;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static com.codeborne.selenide.WebDriverRunner.url;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
@@ -502,4 +502,13 @@ public class CommonMethods {
         Assert.assertEquals(awsList, uiList);
     }
 
+    @Step("Checks the text in the downloaded PDF file and deleted file")
+    public static void canAssertThatPdfContainsText(String path, String expectedText) throws IOException {
+        File file = new File(path);
+        PDF pdf = new PDF(new File(path));
+        assertThat(pdf, containsText(expectedText));
+        if (file.delete()) {
+            System.out.println(path + " File deleted");
+        } else System.out.println(path + " File not found");
+    }
 }

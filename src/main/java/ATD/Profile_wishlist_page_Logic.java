@@ -4,7 +4,6 @@ import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.Selenide.refresh;
 
 public class Profile_wishlist_page_Logic extends Profile_wishlist {
