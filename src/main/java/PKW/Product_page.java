@@ -1,11 +1,13 @@
 package PKW;
 
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byCssSelector;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Product_page {
 
@@ -153,6 +155,16 @@ public class Product_page {
     SelenideElement validationTextMessage() {
         return $x("//div[@class='rating_email_error error'][contains(text(),'Bitte alle Felder ausfüllen')]");
     }
+
+    SelenideElement basketPopUp() {return $x("//div[@class='cart-items-block ']");}
+
+    ElementsCollection visibleTopProducts() {return $$x("//ul[@class='pkw-related']/li").filter(visible);}
+
+    ElementsCollection visibleArtNumOfTopProducts() {return $$x("//span[@class='pkw-related__item-art']").filter(visible);}
+
+    ElementsCollection titleOfCharacteristicOfTopProduct() {return $$x("//div[@class='pkw-related__additional-header']//ul/li/span[1]");}
+
+    ElementsCollection valueOfCharacteristicOfTopProduct() {return $$x("//div[@class='pkw-related__additional-header']//ul/li/span[2]");}
 }
 
 //TO DO

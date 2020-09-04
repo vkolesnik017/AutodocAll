@@ -155,6 +155,11 @@ public class CommonMethods {
             Assert.fail("Current route: [" + getCurrentUtl() + "] don't contains expected condition: " + expectedCondition);
         }
     }
+    @Step("get text from not visible element {expected element}")
+    public static String getTextFromUnVisibleElement(SelenideElement element){
+        return (String) (executeJavaScript(
+                "return jQuery(arguments[0]).text();", element));
+    }
 
     public static String getCurrentUtl() {
         return url();

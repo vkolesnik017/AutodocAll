@@ -7,6 +7,9 @@ import com.codeborne.selenide.ex.ElementShould;
 import com.codeborne.selenide.ex.UIAssertionError;
 import io.qameta.allure.Step;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static PKW.CommonMethods.mailRandom;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -164,6 +167,30 @@ public class Product_page_Logic extends Product_page {
         validationNameMessage().shouldBe(visible);
         validationEmailMessage().shouldBe(visible);
         validationTextMessage().shouldBe(visible);
+        return this;
+    }
+
+    @Step("presence of basket pop-Up .Product_page")
+    public Product_page_Logic presenceOfBasketPopUp() {
+        basketPopUp().shouldBe(visible);
+        basketPopUp().shouldNotBe(visible);
+        return this;
+    }
+
+    @Step("Adding product to basket. Product_page")
+    public Product_page_Logic addProductToBasket() {
+         buyButton().shouldBe(visible).click();
+        presenceOfBasketPopUp();
+        return this;
+    }
+
+
+
+    @Step("check presence of Refurbished characteristic in TOP product. Product_page")
+    public Product_page_Logic checkOfRefValueInTopCharacteristicBlock() {
+                for (int i=0; i<visibleTopProducts().size();i++){
+                    visibleArtNumOfTopProducts().get(i).hover();
+                }
         return this;
     }
 }
