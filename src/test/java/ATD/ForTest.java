@@ -3,9 +3,7 @@ package ATD;
 import AWS.CatalogCategories_aws;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import java.sql.SQLException;
-
 public class ForTest extends SetUp {
 
 

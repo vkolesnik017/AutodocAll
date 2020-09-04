@@ -7,6 +7,7 @@ import org.testng.Assert;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class Payment_handler_page_Logic extends Payment_handler_page {
 
@@ -49,6 +50,19 @@ public class Payment_handler_page_Logic extends Payment_handler_page {
         price = price.substring(0, price.indexOf(" ")).replaceAll(",", ".");
         Float priceInOrderDetails = Float.parseFloat(price);
         Assert.assertEquals(priceOnAllDataPage, priceInOrderDetails);
+        return this;
+    }
+
+    @Step("Get text requisites. Payment_handler_page")
+    public String getTextRequisites() {
+        return requisites().getText();
+    }
+
+    @Step("Click on the link for PDF. Payment_handler_page")
+    public Payment_handler_page_Logic clickOnLinkForPDF() {
+        lincForPDF().shouldBe(visible);
+        lincForPDF().click();
+        sleep(3000);
         return this;
     }
 }

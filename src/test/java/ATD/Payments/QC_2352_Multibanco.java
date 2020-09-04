@@ -1,9 +1,13 @@
 package ATD.Payments;
 
 import ATD.*;
+import AWS.Order_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import mailinator.Mailinator;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -11,9 +15,9 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.*;
-import static ATD.DataBase.parseUserIdFromBD;
 import static ATD.DataBase.parseUserMailFromBD;
 import static ATD.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_2352_Multibanco {
 
@@ -35,7 +39,6 @@ public class QC_2352_Multibanco {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
         String userData = new DataBase().getUserIdForPaymentsMethod("payments_userid_atd", shop, "Multibanco");
-        String userID = parseUserIdFromBD(userData);
         String mail = parseUserMailFromBD(userData);
         float totalPriceAllData = new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
@@ -50,9 +53,29 @@ public class QC_2352_Multibanco {
                 .nextBtnClick()
                 .checkPresencePaymentsMethodLabel(new CartAllData_page().multibancoLabel())
                 .getTotalPriceAllDataPage(shop);
-        new CartAllData_page_Logic().nextBtnClick()
+        String requisitesText = new CartAllData_page_Logic().nextBtnClick()
+                .clickOnLinkForPDF()
                 .checkOrganizationName("12057")
-                .comparesPriceOfOrderDetailsWithPriceOnAllDataPage(totalPriceAllData);
+                .comparesPriceOfOrderDetailsWithPriceOnAllDataPage(totalPriceAllData)
+                .getTextRequisites();
+        System.out.println(requisitesText);
+        canAssertThatPdfContainsText("C:/Users/User/Downloads/bank_info.pdf", requisitesText);
         String orderNum = new Payment_handler_page_Logic().getOrderNumber();
+        new Mailinator().openEmail(mail)
+                .openLetter(1)
+                .comparesTextOfRequisitesInMailWithExpectedRequisites(requisitesText);
+        float totalPriceOrderAws = new Order_aws(orderNum).openOrderInAwsWithLogin()
+                .checkPaymentMethodInOrder("B2B - Multibanco")
+                .getTotalPriceOrderAWS();
+        Assert.assertEquals(totalPriceAllData, totalPriceOrderAws);
+        float totalPriceOrderAwsAfterReSave = new Order_aws().reSaveOrder()
+                .checkCurrentStatusInOrder("Testbestellungen")
+                .getTotalPriceOrderAWS();
+        Assert.assertEquals(totalPriceAllData, totalPriceOrderAwsAfterReSave);
+    }
+
+    @AfterMethod
+    private void close() {
+        closeWebDriver();
     }
 }
