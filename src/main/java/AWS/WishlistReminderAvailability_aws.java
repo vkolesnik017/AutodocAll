@@ -1,6 +1,5 @@
 package AWS;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
@@ -22,8 +21,8 @@ public class WishlistReminderAvailability_aws {
           + "&submit=%D0%9F%D0%BE%D0%B8%D1%81%D0%BA"; // TODO будем ли выносить в базу ?
 
 
-  public SelenideElement availabilityReminderTable() {
-    return $x(".//*[@id='availability_reminder_table']//tbody");
+  public SelenideElement firstRowInTable() {
+    return $x(".//*[@id='availability_reminder_table']//tbody/tr[1]");
   }
 
   public SelenideElement articleOfFirstProduct() {
@@ -34,8 +33,8 @@ public class WishlistReminderAvailability_aws {
     return $(byXpath(".//*[@id='availability_reminder_table']//tr[2]/td[3]"));
   }
 
-  public SelenideElement tyresCategoryInTableInFirstRow() {
-    return $x(".//*[@id='availability_reminder_table']//tbody/tr[1]/td[2]/a");
+  public SelenideElement nameCategoryInTableInFirstRow(String nameFirstCategories) {
+    return $x(".//*[@id='availability_reminder_table']//tbody/tr[1]/td[2]/a[text()='" + nameFirstCategories + "']");
   }
 
   public SelenideElement numberOfRequestsInFirstProduct() {
@@ -66,10 +65,10 @@ public class WishlistReminderAvailability_aws {
   }
 
   @Step("Get text from article. WishlistReminderAvailability_aws")
-  public String getTextFromArticle() {
+  public String getTextFromArticle(String exclusionCategoryName) {
     String textFromElement = null;
-    availabilityReminderTable().shouldBe(visible);
-    if (tyresCategoryInTableInFirstRow().isDisplayed()) {
+    firstRowInTable().waitUntil(visible, 5000);
+    if (nameCategoryInTableInFirstRow(exclusionCategoryName).isDisplayed()) {
       textFromElement = articleOfSecondProduct().text();
     } else {
       textFromElement = articleOfFirstProduct().text();
@@ -78,10 +77,10 @@ public class WishlistReminderAvailability_aws {
   }
 
   @Step("Get text from id. WishlistReminderAvailability_aws")
-  public String getTextFromId() {
+  public String getTextFromId(String exclusionCategoryName) {
     String textFromElement = null;
-    availabilityReminderTable().shouldBe(visible);
-    if (tyresCategoryInTableInFirstRow().isDisplayed()) {
+    firstRowInTable().waitUntil(visible, 5000);;
+    if (nameCategoryInTableInFirstRow(exclusionCategoryName).isDisplayed()) {
       textFromElement = idOfSecondProduct().text();
     } else {
       textFromElement = idOfFirstProduct().text();
@@ -90,10 +89,10 @@ public class WishlistReminderAvailability_aws {
   }
 
   @Step("Get Before Count Requests. WishlistReminderAvailability_aws")
-  public int getBeforeCountRequests() {
+  public int getBeforeCountRequests(String exclusionCategoryName) {
     String numberOfRequests = null;
-    availabilityReminderTable().shouldBe(visible);
-    if (tyresCategoryInTableInFirstRow().isDisplayed()) {
+    firstRowInTable().waitUntil(visible, 5000);;
+    if (nameCategoryInTableInFirstRow(exclusionCategoryName).isDisplayed()) {
       numberOfRequests = numberOfRequestsInSecondProduct().text();
     } else {
       numberOfRequests = numberOfRequestsInFirstProduct().text();

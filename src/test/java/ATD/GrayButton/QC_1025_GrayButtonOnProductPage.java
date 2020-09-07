@@ -42,8 +42,8 @@ public class QC_1025_GrayButtonOnProductPage {
     public void testGrayButton(String route) {
         new Login_aws().loginInAwsWithOpen();
         open(wishlistReminderAvailability.urlWithCurrentDate);
-        String idProduct = wishlistReminderAvailability.getTextFromId();
-        int beforeCountRequests = wishlistReminderAvailability.getBeforeCountRequests();
+        String idProduct = wishlistReminderAvailability.getTextFromId("Tyres");
+        int beforeCountRequests = wishlistReminderAvailability.getBeforeCountRequests("Tyres");
         product_page.openProductPageById(route, idProduct)
                 .sendRequestByGrayButtonFromProductPage(email);
         mailinator.openEmail(email)
