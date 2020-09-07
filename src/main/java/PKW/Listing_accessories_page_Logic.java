@@ -28,12 +28,6 @@ public class Listing_accessories_page_Logic extends Listing_accessories_page {
         return this;
     }
 
-    @Step(":from Listing_accessories_page")
-    public Listing_accessories_page_Logic increasesNumberProductsInQuantityCounter() {
-        new CommonMethods().checkingCounterIncrease(2, counterValueInQuantityCounter(), btnPlusInQuantityCounter());
-        return this;
-    }
-
     @Step("Get name product in listing. Listing_accessories_page")
     public String getNameProductInListing() {
         return titleNameProductInListing().getText();

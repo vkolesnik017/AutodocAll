@@ -41,7 +41,8 @@ public class QC_2083_CheckOfIdentityOfMpnProductAndMpnInAws {
     public void testCheckOfIdentityOfMpnProductAndMpnInAws(String route) {
         openPage(route);
         String mpnOfProduct = tyreFormPage.presenceOfListingBlock().getMpnNumberOfProduct(0);
-        List<String> mpnNumberOfProductFromAws = new ProductSearch_aws().openProductSearchPageAndLogin().inputMpnNumberOfProduct(mpnOfProduct).getArtNumberOfProduct();
+        String brandOfProduct = tyreFormPage.getNameBrandOfProduct();
+        List<String> mpnNumberOfProductFromAws = new ProductSearch_aws().openProductSearchPageAndLogin().inputMpnNumberAndBrandNameOfProduct(mpnOfProduct, brandOfProduct).getArtNumberOfProduct();
         Assert.assertTrue(mpnNumberOfProductFromAws.contains(mpnOfProduct));
     }
 
@@ -57,7 +58,8 @@ public class QC_2083_CheckOfIdentityOfMpnProductAndMpnInAws {
     public void testCheckOfIdentityOfMpnProductAndMpnInAwsDimension(String route) {
         openPage(route);
         String mpnOfProduct = dimensionPage.presenceOfListingBlock().getMpnNumberOfProduct(0);
-        List<String> mpnNumberOfProductFromAws = new ProductSearch_aws().openProductSearchPageAndLogin().inputMpnNumberOfProduct(mpnOfProduct).getArtNumberOfProduct();
+        String brandOfProduct = tyreFormPage.getNameBrandOfProduct();
+        List<String> mpnNumberOfProductFromAws = new ProductSearch_aws().openProductSearchPageAndLogin().inputMpnNumberAndBrandNameOfProduct(mpnOfProduct, brandOfProduct).getArtNumberOfProduct();
         Assert.assertTrue(mpnNumberOfProductFromAws.contains(mpnOfProduct));
     }
 

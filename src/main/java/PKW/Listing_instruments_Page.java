@@ -73,6 +73,14 @@ public class Listing_instruments_Page {
         return $x("//div[@class='cart-items-block ']");
     }
 
+    SelenideElement blockProductsListing() {
+        return $x("//div[@class='listing_items']");
+    }
+
+    ElementsCollection productsListing() {
+        return $$x("//div[@class='listing_items']//div[@class='brand-products']");
+    }
+
 
 
 
