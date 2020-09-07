@@ -62,10 +62,21 @@ public class Versand_static_page_Logic extends Versand_static_page {
         Assert.assertFalse(countryBlockTitle().text().isEmpty());
         countryBlockItemsButton().click();
         countryBlockOtherCountry().shouldBe(visible);
-        Assert.assertEquals(countryItemForCount().size(), 55);
+        Assert.assertEquals(countryItemForCount().size(), 57); //change on 57
+        checkingMainElementsOfCountries();
         countryBlockItemsButton().click();
         countryBlockOtherCountry().shouldNotBe(visible);
-        countryBlockItemsButton().click();
+       // countryBlockItemsButton().click();
+        return this;
+    }
+
+    @Step("Checking main elements of countries. Versand_static_page")
+    public Versand_static_page_Logic checkingMainElementsOfCountries() {  //good
+     for (int i=0;i<countryItemForCount().size();i++){
+         flagsOfCountries().get(i).shouldBe(visible);
+         titleOfCountries().get(i).shouldBe(visible);
+         pricesOfCountries().get(i).shouldBe(visible);
+     }
         return this;
     }
 
@@ -91,6 +102,15 @@ public class Versand_static_page_Logic extends Versand_static_page {
         Assert.assertFalse(nichtAufLagerTextBlock().text().isEmpty());
         return this;
     }
+
+
+
+
+
+
+
+
+
 
     @Step("Checking the visibility of the elements in the FAQ block. Versand_static_page")
     public Versand_static_page_Logic checkingFaqBlock() { //good

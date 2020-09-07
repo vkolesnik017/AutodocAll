@@ -308,4 +308,11 @@ public class Versand_static_page {
     SelenideElement downloadAcrobatButton() {
         return $x("//*[@class='delivery-page__links']//a[3]");
     }
+
+    ElementsCollection flagsOfCountries() {return $$x("//div[@class='country-block__list__col']/ul/li//img");}
+
+    ElementsCollection titleOfCountries() {return $$x("//div[@class='country-block__list__col']/ul/li/p/span[1]");}
+
+    ElementsCollection pricesOfCountries() {return $$x("//div[@class='country-block__list__col']/ul/li/span");}
+
 }
