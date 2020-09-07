@@ -102,4 +102,16 @@ public class Listing_instruments_Page_Logic extends Listing_instruments_Page {
         return this;
     }
 
+    @Step("Checking presence products listing block. Listing_instruments_Page")
+    public Listing_instruments_Page_Logic checkingPresenceProductsListingBlock() {
+        blockProductsListing().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checking the number of products in listing. Listing_instruments_Page")
+    public Listing_instruments_Page_Logic checkingNumberOfProductsInListing() {
+        productsListing().shouldHaveSize(20);
+        return this;
+    }
+
 }

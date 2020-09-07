@@ -32,6 +32,25 @@ public class QC_249_StaticPage_Versand {
     @Description(value = "Test checks elements on the Versand page")
     public void testStaticPage_Versand(String route) throws SQLException {
         openPage(route);
+
+        new Main_page_Logic().clickFooterVersandLink()
+                .checkingBoxBlock()
+                .checkingDeliveryCountryBlock()
+                .checkingBlockWithTermsOfTheDelivery() //4
+                .checkingFaqBlock() //8
+                .questionsAndAnswersFaq()
+                .checkingTextInTheQuestionsBlock()
+                .spergutVersandBlock()
+                .spergutVersandTableFirstTab()
+                .tableCountryPriceWithPriceTabOne()
+                .spergutVersandTableSecondTab()
+                .checkingFlagTabTwo()
+                .checkingTextAndPriceTabTwo()
+                .checkingDownloadButtons()
+                .checkingBackButton();
+
+
+       /*
         new Main_page_Logic().clickFooterVersandLink()
                 .checkingBoxBlock()
                 .checkingDeliveryCountryBlock()
@@ -51,7 +70,7 @@ public class QC_249_StaticPage_Versand {
                 .checkingFlagTabTwo()
                 .checkingTextAndPriceTabTwo()
                 .checkingDownloadButtons()
-                .checkingBackButton();
+                .checkingBackButton();*/
     }
     @AfterMethod
     public void close() {
