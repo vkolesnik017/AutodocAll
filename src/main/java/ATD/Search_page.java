@@ -170,5 +170,7 @@ public class Search_page {
     SelenideElement productListBlock() {return $x("//div[@class='listing_items']");}
 
     ElementsCollection allCharacteristicsOfProducts() {return $$x("//div[@class='prod_params_container']//li");}
+
+    ElementsCollection visibleTitleOfProducts() {return $$x("//div[@class='prod_link']/a");}
 }
 

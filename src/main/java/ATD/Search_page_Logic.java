@@ -341,9 +341,12 @@ public class Search_page_Logic extends Search_page {
     public Search_page_Logic presenceRefurbishedCharacteristic(String expectedCharacteristic) {
         productListBlock().shouldBe(visible);
         List<String> listOfCharacteristic = new ArrayList<>();
+        String currentTitleOfProduct;
         addedAllCharacteristicsOfProductToList(listOfCharacteristic);
         while (forwardLinkOfPaginator().isDisplayed()){
-            forwardLinkOfPaginator().click();
+            currentTitleOfProduct = visibleTitleOfProducts().get(0).getText();
+            forwardLinkOfPaginator().scrollIntoView("{block: \"end\"}").click();
+            visibleTitleOfProducts().get(0).shouldNotHave(exactText(currentTitleOfProduct));
             addedAllCharacteristicsOfProductToList(listOfCharacteristic);
         }
        /* for (int i = 0; i < allCharacteristicsOfProducts().size(); i++) {
