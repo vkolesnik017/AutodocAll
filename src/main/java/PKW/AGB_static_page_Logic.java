@@ -40,15 +40,16 @@ public class AGB_static_page_Logic extends AGB_static_page {
         CommonMethods commonMethods = new CommonMethods();
 
         autodocEmail().shouldHave(attribute("href", "mailto:info@autodoc.de"));
-        zollLinkAgb().click();
+        zollLinkAgb().shouldBe(visible).click();
         commonMethods.checkingUrlAndCloseTab("Fachthemen/Zollkosten/zollkosten_node.html");
-        klarnaLinkAgbFirst().click();
+        klarnaLinkAgbFirst().shouldBe(visible).click();
         commonMethods.checkingUrlAndCloseTab("1.0/shared/content/legal/terms/27506/de_de/invoice?fee=0");
-        klarnaLinkAgbSecond().click();
+        klarnaLinkAgbSecond().shouldBe(visible).click();
         commonMethods.checkingUrlAndCloseTab("1.0/shared/content/legal/terms/27506/de_de/consent");
-        europaLinkAgbSecond().click();
+        europaLinkAgbSecond().shouldBe(visible).click();
         commonMethods.checkingUrlAndCloseTab("/consumers/odr/main/index.cfm?event=main.home.chooseLanguage");
-        autodocLinkAgbText().hover().click();
+        autodocLinkAgbText().scrollIntoView(false);
+        autodocLinkAgbText().shouldBe(visible).click();
         commonMethods.checkingUrlAndCloseTab(new ATD.DataBase().getFullRouteByRouteName("prod", "DE", "main"));
         back();
         return this;
