@@ -9,6 +9,9 @@ import io.qameta.allure.Step;
 import org.testng.Assert;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static PKW.CommonMethods.*;
 import static com.codeborne.selenide.Condition.*;
@@ -266,6 +269,27 @@ public class Product_page_Logic extends Product_page {
         btnAddProductToBasket().shouldBe(visible).click();
         dropDownPopUpOfBasket().should(appear);
         dropDownPopUpOfBasket().should(disappear);
+        return this;
+    }
+
+    @Step("presence Refurbished Characteristic on product page. Product_page")
+    public Product_page_Logic presenceRefurbishedCharacteristic(String expectedCharacteristic) {
+        characteristicBlock().shouldBe(visible);
+        List<String> listOfCharacteristic = allCharacteristics().stream().map(list -> list.getText().replaceAll("\n", "")).collect(Collectors.toList());
+
+        listOfCharacteristic.forEach(System.out::println);
+        Assert.assertTrue(listOfCharacteristic.contains(expectedCharacteristic));
+        return this;
+    }
+
+    @Step("presence Refurbished Characteristic in characteristics block. Product_page")
+    public Product_page_Logic presenceRefurbishedCharacteristicWithArticle(String titleOfBrand, String expectedCharacteristic, String symbol) {
+        characteristicBlock().shouldBe(visible);
+        productName().shouldBe(visible).shouldHave(text(titleOfBrand));
+        String artNumOfProduct = productArticleNumber().getText().replace("Art. Nr. : ", "");
+        Assert.assertTrue(artNumOfProduct.contains(symbol));
+        List<String> listOfCharacteristic = allCharacteristics().stream().map(list -> list.getText().replaceAll("\n", "")).collect(Collectors.toList());
+        Assert.assertTrue(listOfCharacteristic.contains(expectedCharacteristic));
         return this;
     }
 }

@@ -44,7 +44,7 @@ public class Parts_group_page_Logic extends Parts_group_page {
         return this;
     }
 
-    @Step("presence Refurbished Characteristic In TOP product if art number contains expected symbol . Parts_group_page")
+    @Step("checking characteristic of TOP product. Parts_group_page")
     public Parts_group_page_Logic checkCharacteristicOfTopProduct(String expectedCharacteristic, String symbol) {
         for (int i = 0; i < visibleArtNumOfTopProducts().size(); i++) {
             List<String> characteristics = new ArrayList<>();

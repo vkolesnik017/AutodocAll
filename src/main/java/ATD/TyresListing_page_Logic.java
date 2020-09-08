@@ -36,7 +36,6 @@ public class TyresListing_page_Logic extends TyresListing_page {
     }
 
 
-
     @Step("Check Characteristic On Listing")
     public TyresListing_page_Logic checkCharacteristicOnListing(String characteristicValue, ElementsCollection characteristicLocator) {
         characteristicLocator.shouldHave(sizeGreaterThan(0));
@@ -153,22 +152,30 @@ public class TyresListing_page_Logic extends TyresListing_page {
         String width = widthValueInSelector().text();
         String height = heightValueInSelector().text();
         String diameter = diameterValueInSelector().text();
-        for (int n = 0; n < 3; n++) {
-            for (int i = 0; i < productsInTopBlock().size(); i++) {
-                if (n == 1) {
-                    nextButtonInTopBlock().click();
-                } else if (n == 2) {
-                    previousButtonInTopBlock().click();
-                }
-                productsInTopBlock().get(i).click();
-                productWidthCharacteristic().shouldHave(text(width));
-                productHeightCharacteristic().shouldHave(text(height));
-                productDiameterCharacteristic().shouldHave(text(diameter));
-                back();
+        if (nextButtonInTopBlock().isDisplayed()) {
+            checkSizeOfTopTyres(width, height, diameter);
+            for (int i = 0; i < 2; i++) {
+                nextButtonInTopBlock().click();
+                checkSizeOfTopTyres(width, height, diameter);
             }
+        } else {
+            checkSizeOfTopTyres(width, height, diameter);
         }
         return this;
     }
+
+    @Step("check expected size of TOP tyres. TyresListing_page")
+    public TyresListing_page_Logic checkSizeOfTopTyres(String width, String height, String diameter) {
+        for (int i = 0; i < productsInTopBlock().size(); i++) {
+            productsInTopBlock().get(i).click();
+            productWidthCharacteristic().shouldHave(text(width));
+            productHeightCharacteristic().shouldHave(text(height));
+            productDiameterCharacteristic().shouldHave(text(diameter));
+            back();
+        }
+        return this;
+    }
+
 
     @Step("Add to basket from top block for all products. TyresListing_page")
     public TyresListing_page_Logic addToBasketFromTopBlock() {
