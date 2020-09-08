@@ -13,7 +13,6 @@ import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class Mailinator {
@@ -207,7 +206,7 @@ public class Mailinator {
         return this;
     }
 
-    @Step("Checks and opens a letter with specific specified parameters. Mailinator")
+    @Step("Checks and opens a letter with specific specified parameters{expectedTextNameLetter}, {orderNumber}. Mailinator")
     public Mailinator checkAndOpenLetterInfoText( String expectedTextNameLetter, String orderNumber) {
         sleep(3000);
         for (int i = 0; i < allLatter().size(); i++) {
@@ -218,6 +217,22 @@ public class Mailinator {
                 break;
             } else {
                 System.out.println("Latter not found");
+            }
+        }
+        return this;
+    }
+
+    @Step("Checks and opens a letter with the order number{orderNumber}. Mailinator")
+    public Mailinator checkAndOpenLetterWithOrderNumber(String orderNumber) {
+        sleep(3000);
+        for (int i = 0; i < allLatter().size(); i++) {
+            String textNameLetter = allLatter().get(i).getText();
+            if (textNameLetter.contains(orderNumber)) {
+                allLatter().get(i).click();
+                switchTo().frame("msg_body");
+                break;
+            } else {
+                System.out.println("Latter order " + orderNumber + " not found");
             }
         }
         return this;

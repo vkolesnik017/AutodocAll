@@ -58,12 +58,8 @@ public class QC_2352_Multibanco {
                 .checkOrganizationName("12057")
                 .comparesPriceOfOrderDetailsWithPriceOnAllDataPage(totalPriceAllData)
                 .getTextRequisites();
-        System.out.println(requisitesText);
         canAssertThatPdfContainsText("C:/Users/User/Downloads/bank_info.pdf", requisitesText);
         String orderNum = new Payment_handler_page_Logic().getOrderNumber();
-        new Mailinator().openEmail(mail)
-                .openLetter(1)
-                .comparesTextOfRequisitesInMailWithExpectedRequisites(requisitesText);
         float totalPriceOrderAws = new Order_aws(orderNum).openOrderInAwsWithLogin()
                 .checkPaymentMethodInOrder("B2B - Multibanco")
                 .getTotalPriceOrderAWS();
@@ -72,6 +68,9 @@ public class QC_2352_Multibanco {
                 .checkCurrentStatusInOrder("Testbestellungen")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceAllData, totalPriceOrderAwsAfterReSave);
+        new Mailinator().openEmail(mail)
+                .checkAndOpenLetterWithOrderNumber(orderNum)
+                .comparesTextOfRequisitesInMailWithExpectedRequisites(requisitesText);
     }
 
     @AfterMethod
