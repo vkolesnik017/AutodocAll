@@ -35,7 +35,7 @@ public class QC_1466_StaticPage_AGB {
         new Main_page_Logic().clickHeaderAgbLink()
                 .checkDownloadButtons()
                 .checkElementsOnThePage()
-                .checkingPriceInTheCountryList ()
+                .checkingPriceInTheCountryList()
                 .checkingFlagsInTheCountryList()
                 .checkingLinksInTheText();
     }
