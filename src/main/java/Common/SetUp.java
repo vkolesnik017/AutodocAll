@@ -1,4 +1,4 @@
-package TKF;
+package Common;
 
 import com.codeborne.selenide.Configuration;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -13,12 +13,13 @@ public class SetUp {
     private DataBase db = new DataBase();
     private String shopFromJenkins = System.getenv("ShopFromJenkins");
     private String envFromJenkins = System.getenv("EnvFromJenkins");
-    private String shopsDesktop = "DE,AT,CH,DK,ES,FI,FR,IT,NO,PT,SE";
+    private String devBranchFromJenkins = System.getenv("devBranchFromJenkins");
+
     public String getShopsDesktop() {
         return shopsDesktop;
     }
 
-
+    private String shopsDesktop = "";
 
 
     public static void setUpBrowser(Boolean Selenoid, String browser, String browserVersion) {
@@ -41,7 +42,7 @@ public class SetUp {
         String shop;
         if (!(shopFromJenkins == null)) shop = shopFromJenkins;
         else shop = shopFromTest;
-        if (!(envFromJenkins == null)) envFromTest = envFromJenkins;
+//        if (!(envFromJenkins == null)) envFromTest = envFromJenkins;
         String env = getEnv(envFromTest);
         List<String> finalRouteList = new ArrayList<>();
         try {
@@ -60,7 +61,7 @@ public class SetUp {
         String shop;
         if (!(shopFromJenkins == null)) shop = shopFromJenkins;
         else shop = shopFromTest;
-        if (!(envFromJenkins == null)) envFromTest = envFromJenkins;
+//        if (!(envFromJenkins == null)) envFromTest = envFromJenkins;
         String env = getEnv(envFromTest);
         List<String> finalRouteList = new ArrayList<>();
         try {
@@ -98,7 +99,7 @@ public class SetUp {
         return finalList.toArray();
     }
 
-    // Return list Shops + subroute By Shops, main route and subroute ("prod", "DE", "lkw_main", "lkw_category_car_list,lkw_category_car_list2")
+    // Return list Shops + subroute By Shops, main route and subroute ("prod", "AT,DE", "lkw_main", "lkw_category_car_list")
     public Object[] setUpShopsWithSubroute(String envFromTest, String shopFromTest, String routeName, String subRoutes) throws SQLException {
         String env = getEnv(envFromTest);
         List<String> mainRouteList = new ArrayList<>(db.getRouteListByRouteName(shopFromTest, routeName));
@@ -129,6 +130,7 @@ public class SetUp {
 
 
     String getEnv(String envFromTest) {
+        if (!(envFromJenkins == null)) envFromTest = envFromJenkins;
         String env = null;
         switch (envFromTest) {
             case ("test"):
@@ -143,7 +145,25 @@ public class SetUp {
             case ("mob"):
                 env = "https://m.";
                 break;
+            case ("dev"):
+                env = devBranchFromJenkins + ".";
+                break;
         }
         return env;
     }
+
+    public String getEnvForAws(String envFromTest) {
+        if (!(envFromJenkins == null)) envFromTest = envFromJenkins;
+        String awsEnv = null;
+        switch (envFromTest) {
+            case ("test"):
+                awsEnv = "https://taws.";
+                break;
+            case ("prod"):
+                awsEnv = "https://aws.";
+                break;
+        }
+        return awsEnv;
+    }
+
 }

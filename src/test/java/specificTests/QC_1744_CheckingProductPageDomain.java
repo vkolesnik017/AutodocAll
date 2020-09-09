@@ -1,7 +1,7 @@
 package specificTests;
 
 import ATD.CommonMethods;
-import ATD.Excel;
+import Common.Excel;
 import io.qameta.allure.Description;
 import io.qameta.allure.Owner;
 import org.testng.Assert;
@@ -14,8 +14,9 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
@@ -84,7 +85,7 @@ public class QC_1744_CheckingProductPageDomain {
 
     @AfterMethod
     private void tearDown() {
-        close();
+        closeWebDriver();
     }
 
     private void checkingDomainName(String domain, String route) throws IOException {

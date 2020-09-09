@@ -1,9 +1,9 @@
 package ATD.Characteristics.QC_506_StaticCharacteristics;
 
 import ATD.CommonMethods;
-import ATD.DataBase;
+import Common.DataBase;
 import ATD.Listing_page_Logic;
-import ATD.SetUp;
+import Common.SetUp;
 import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -17,7 +17,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import static ATD.CommonMethods.openPage;
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_509_PresenceStaticCharacteristicsOnTecDocListing {

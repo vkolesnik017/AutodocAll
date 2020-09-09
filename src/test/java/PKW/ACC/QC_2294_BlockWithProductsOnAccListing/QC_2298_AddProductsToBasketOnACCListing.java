@@ -1,8 +1,8 @@
 package PKW.ACC.QC_2294_BlockWithProductsOnAccListing;
 
+import Common.SetUp;
 import PKW.Cart_page_Logic;
 import PKW.Listing_accessories_page_Logic;
-import PKW.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -11,9 +11,11 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
 import java.sql.SQLException;
+
+import static Common.SetUp.setUpBrowser;
 import static PKW.CommonMethods.openPage;
-import static PKW.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_2298_AddProductsToBasketOnACCListing {
@@ -45,7 +47,7 @@ public class QC_2298_AddProductsToBasketOnACCListing {
         idAddProduct = new Cart_page_Logic().getIdAddedProduct();
         valueCounterAddProduct = new Cart_page_Logic().getValueQuantityCounter();
         Assert.assertEquals(idProduct, idAddProduct);
-        Assert.assertEquals(valueCounter,valueCounterAddProduct);
+        Assert.assertEquals(valueCounter, valueCounterAddProduct);
     }
 
     @AfterMethod

@@ -1,6 +1,6 @@
 package specificTests;
 
-import ATD.Excel;
+import Common.Excel;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.ex.ElementNotFound;
@@ -17,10 +17,11 @@ import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 
 import static ATD.CommonMethods.openPage;
-import static ATD.Excel.parseExcel;
-import static ATD.SetUp.setUpBrowser;
+import static Common.Excel.parseExcel;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1563_CheckingSelector_Mark_Model_Type {
     private final String dataFile = "C://Autotests/files/data/QC_1563_data.xls";
@@ -89,7 +90,7 @@ public class QC_1563_CheckingSelector_Mark_Model_Type {
         } catch (ElementNotFound element) {
             writer(result, true, "Trouble with element in selector" + "#" + startUrl);
         }
-        close();
+        closeWebDriver();
 
     }
 

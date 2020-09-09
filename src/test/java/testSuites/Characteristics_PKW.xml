@@ -2,6 +2,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Characteristics_PKW" parallel="methods" thread-count="3" data-provider-thread-count="4">
 
+    <listeners>
+        <listener class-name="Common.ProjectListener"/>
+    </listeners>
 
     <test name="QC_531_RefurbishedCharacteristic">
         <classes>

@@ -1,7 +1,7 @@
 package BVS.SpecificTests.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
 
 import BVS.Product_page_Logic;
-import BVS.SetUp;
+import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static BVS.CommonMethods.checkingContainsUrl;
-import static BVS.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.open;
 
 public class QC_1697_CheckOfNotBlockingOfIndexInTheBillingBlock {

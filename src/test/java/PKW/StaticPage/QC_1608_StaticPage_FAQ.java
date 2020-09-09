@@ -1,6 +1,6 @@
 package PKW.StaticPage;
 
-import PKW.SetUp;
+import Common.SetUp;
 import PKW.Main_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Owner;
@@ -9,8 +9,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import static Common.SetUp.setUpBrowser;
 import static PKW.CommonMethods.openPage;
-import static PKW.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1608_StaticPage_FAQ {
@@ -27,7 +27,7 @@ public class QC_1608_StaticPage_FAQ {
     @Test(dataProvider = "route")
     @Owner(value = "LavrynenkoOlha")
     @Description(value = "Test checks elements on the FAQ page")
-    public void testStaticPage_FAQ (String route) {
+    public void testStaticPage_FAQ(String route) {
         openPage(route);
         new Main_page_Logic().clickFooterFaqLink()
                 .checkElementsOnThePage();

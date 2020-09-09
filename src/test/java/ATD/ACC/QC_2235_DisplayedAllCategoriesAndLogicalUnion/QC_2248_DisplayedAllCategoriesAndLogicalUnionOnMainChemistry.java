@@ -1,7 +1,7 @@
 package ATD.ACC.QC_2235_DisplayedAllCategoriesAndLogicalUnion;
 
 import ATD.Index_chemicals_page_Logic;
-import ATD.SetUp;
+import Common.SetUp;
 import AWS.CatalogCategories_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import static ATD.CommonMethods.openPage;
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_2248_DisplayedAllCategoriesAndLogicalUnionOnMainChemistry {

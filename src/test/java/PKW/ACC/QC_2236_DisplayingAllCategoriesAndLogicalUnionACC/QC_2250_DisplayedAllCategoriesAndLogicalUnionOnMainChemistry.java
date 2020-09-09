@@ -1,8 +1,8 @@
 package PKW.ACC.QC_2236_DisplayingAllCategoriesAndLogicalUnionACC;
 
 import AWS.CatalogCategories_aws;
+import Common.SetUp;
 import PKW.Index_chemicals_page_Logic;
-import PKW.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -11,15 +11,17 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import static Common.SetUp.setUpBrowser;
 import static PKW.CommonMethods.openPage;
-import static PKW.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_2250_DisplayedAllCategoriesAndLogicalUnionOnMainChemistry {
 
-    private ArrayList<String> categoriesAndSeparateCategoriesName, logicalUnionName,  awsCategoriesAndSeparateCategoriesName, awsLogicalUnionName;
+    private ArrayList<String> categoriesAndSeparateCategoriesName, logicalUnionName, awsCategoriesAndSeparateCategoriesName, awsLogicalUnionName;
     private Index_chemicals_page_Logic indexChemicalsPageLogic = new Index_chemicals_page_Logic();
     private CatalogCategories_aws catalogCategoriesAws = new CatalogCategories_aws();
 

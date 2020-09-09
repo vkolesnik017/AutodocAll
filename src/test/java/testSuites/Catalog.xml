@@ -3,7 +3,7 @@
 <suite name="Catalog" parallel="methods" thread-count="2">
 
     <listeners>
-        <listener class-name="ATD.ProjectListener"/>
+        <listener class-name="Common.ProjectListener"/>
     </listeners>
 
     <test name="QC_1447_AbsenceOf4xx3xxResponsesInCatalogCategories">

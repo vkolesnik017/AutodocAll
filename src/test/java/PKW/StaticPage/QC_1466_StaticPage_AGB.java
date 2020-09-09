@@ -1,7 +1,7 @@
 package PKW.StaticPage;
 
+import Common.SetUp;
 import PKW.Main_page_Logic;
-import PKW.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Owner;
 import org.testng.annotations.AfterMethod;
@@ -11,8 +11,8 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
+import static Common.SetUp.setUpBrowser;
 import static PKW.CommonMethods.openPage;
-import static PKW.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1466_StaticPage_AGB {
@@ -30,12 +30,12 @@ public class QC_1466_StaticPage_AGB {
     @Test(dataProvider = "route")
     @Owner(value = "LavrynenkoOlha")
     @Description(value = "Test checks elements on the AGB page")
-    public void testStaticPage_AGB (String route) throws SQLException {
+    public void testStaticPage_AGB(String route) throws SQLException {
         openPage(route);
         new Main_page_Logic().clickHeaderAgbLink()
                 .checkDownloadButtons()
                 .checkElementsOnThePage()
-                .checkingPriceInTheCountryList ()
+                .checkingPriceInTheCountryList()
                 .checkingFlagsInTheCountryList()
                 .checkingLinksInTheText();
     }

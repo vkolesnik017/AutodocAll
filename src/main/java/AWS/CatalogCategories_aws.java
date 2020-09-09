@@ -1,8 +1,8 @@
 package AWS;
 
 
-import ATD.DataBase;
-import ATD.SetUp;
+import Common.DataBase;
+import Common.SetUp;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;

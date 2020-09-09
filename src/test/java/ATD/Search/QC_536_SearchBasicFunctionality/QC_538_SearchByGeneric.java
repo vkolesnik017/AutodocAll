@@ -1,6 +1,7 @@
 package ATD.Search.QC_536_SearchBasicFunctionality;
 
 import ATD.*;
+import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -11,7 +12,7 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.*;
 
 public class QC_538_SearchByGeneric {

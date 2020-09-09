@@ -3,7 +3,7 @@ package ATD.Advantages.QC_1051_AdvantagesPfands;
 import ATD.CartAllData_page;
 import ATD.Cart_page_Logic;
 import ATD.Listing_page_Logic;
-import ATD.SetUp;
+import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -16,7 +16,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.CommonMethods.password;
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 

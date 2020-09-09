@@ -1,7 +1,7 @@
 package ATD.SpecificTests;
 
-import ATD.DataBase;
-import ATD.Excel;
+import Common.DataBase;
+import Common.Excel;
 import ATD.Listing_page_Logic;
 import ATD.Main_page_Logic;
 import io.qameta.allure.Description;
@@ -17,8 +17,8 @@ import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 
 import static ATD.CommonMethods.openPage;
-import static ATD.Excel.parseExcel;
-import static ATD.SetUp.setUpBrowser;
+import static Common.Excel.parseExcel;
+import static Common.SetUp.setUpBrowser;
 
 public class QC_2228_DisplayStatusNewForMapcoGoodsATD {
 

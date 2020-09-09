@@ -1,16 +1,15 @@
 package specificTests;
 
 import ATD.CommonMethods;
-import ATD.Excel;
+import Common.Excel;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 
 public class QASYS_515_CheckingCodeResponseAnswer {
 

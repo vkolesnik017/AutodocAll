@@ -2,7 +2,7 @@ package ATD.Catalog.QC_646_DisplayAllCategoriesInCatalogDropdownMenu;
 
 
 import ATD.Categories_page_Logic;
-import ATD.SetUp;
+import Common.SetUp;
 import AWS.CatalogCategories_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,7 +16,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import static ATD.CommonMethods.openPage;
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_647_DisplayAllCategoriesInCatalogDropdownMenu {

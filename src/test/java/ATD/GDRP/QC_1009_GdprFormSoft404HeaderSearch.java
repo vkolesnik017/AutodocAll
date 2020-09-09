@@ -1,7 +1,7 @@
 package ATD.GDRP;
 
 import ATD.Main_page_Logic;
-import ATD.SetUp;
+import Common.SetUp;
 import AWS.PrivacyPolicySubscription_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 
 import static ATD.CommonMethods.mailRandom;
 import static ATD.CommonMethods.openPage;
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1009_GdprFormSoft404HeaderSearch {

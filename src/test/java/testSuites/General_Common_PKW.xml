@@ -3,7 +3,7 @@
 <suite name="General_Common_PKW" parallel="tests" data-provider-thread-count="3">
 
     <listeners>
-        <listener class-name="ATD.ProjectListener"/>
+        <listener class-name="Common.ProjectListener"/>
     </listeners>
 
     <test name="QC_1912_Footer" enabled="true">

@@ -3,7 +3,7 @@
 <suite name="Selectors" parallel="methods" thread-count="1" data-provider-thread-count="5">
 
     <listeners>
-        <listener class-name="ATD.ProjectListener"/>
+        <listener class-name="Common.ProjectListener"/>
     </listeners>
 
     <test name="QC_771_RegKbaSelector">

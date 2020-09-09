@@ -9,7 +9,7 @@ import org.testng.annotations.*;
 
 import java.sql.SQLException;
 
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.*;
 
 public class QC_710_TranslationOfCausesInAws {

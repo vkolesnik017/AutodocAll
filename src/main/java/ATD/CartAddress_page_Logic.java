@@ -1,5 +1,6 @@
 package ATD;
 
+import Common.DataBase;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.ex.ElementNotFound;

@@ -1,8 +1,8 @@
 package MOTO.QC_622_LinkingBlockToModelCatalog;
 
-import ATD.DataBase;
+import Common.DataBase;
 import ATD.Moto_makers_page_Logic;
-import ATD.SetUp;
+import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -14,7 +14,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.CommonMethods.openPage;
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 
 public class QC_623_PresenceOfElementsAtLinkingBlock {
 

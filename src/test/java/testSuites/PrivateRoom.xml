@@ -3,7 +3,7 @@
 <suite name="PrivateRoom" parallel="methods" thread-count="4" data-provider-thread-count="2">
 
     <listeners>
-        <listener class-name="ATD.ProjectListener"/>
+        <listener class-name="Common.ProjectListener"/>
     </listeners>
 
     <test name="PrivateRoom">

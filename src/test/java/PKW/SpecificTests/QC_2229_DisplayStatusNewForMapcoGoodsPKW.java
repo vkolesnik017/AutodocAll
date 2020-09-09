@@ -1,7 +1,7 @@
 package PKW.SpecificTests;
 
-import ATD.Excel;
-import PKW.DataBase;
+import Common.DataBase;
+import Common.Excel;
 import PKW.Listing_page_Logic;
 import PKW.Main_page_Logic;
 import io.qameta.allure.Description;
@@ -16,8 +16,8 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 
-import static ATD.Excel.parseExcel;
-import static ATD.SetUp.setUpBrowser;
+import static Common.Excel.parseExcel;
+import static Common.SetUp.setUpBrowser;
 import static PKW.CommonMethods.openPage;
 
 public class QC_2229_DisplayStatusNewForMapcoGoodsPKW {

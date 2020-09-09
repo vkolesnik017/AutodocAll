@@ -3,7 +3,7 @@ package ATD.Listings.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResul
 import ATD.Cart_page_Logic;
 import ATD.Category_car_list_page_Logic;
 import ATD.Search_page_Logic;
-import ATD.SetUp;
+import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static ATD.CommonMethods.openPage;
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1305_SearchByNameOfDynamicGeneric {

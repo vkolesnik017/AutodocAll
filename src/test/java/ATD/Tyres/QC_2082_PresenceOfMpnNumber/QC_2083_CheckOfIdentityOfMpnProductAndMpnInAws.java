@@ -1,6 +1,6 @@
 package ATD.Tyres.QC_2082_PresenceOfMpnNumber;
 
-import ATD.SetUp;
+import Common.SetUp;
 import ATD.Tyre_form_page_Logic;
 import ATD.Tyres_dimension_page_Logic;
 import AWS.ProductSearch_aws;
@@ -17,7 +17,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import static ATD.CommonMethods.openPage;
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_2083_CheckOfIdentityOfMpnProductAndMpnInAws {
