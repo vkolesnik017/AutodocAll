@@ -42,9 +42,9 @@ public class QC_1015_GrayButtonOnSearchPage {
     public void testGrayButton(String route) {
         new Login_aws().loginInAwsWithOpen();
         open(wishlistReminderAvailability.urlWithCurrentDate);
-        String articleProduct = wishlistReminderAvailability.getTextFromArticle();
-        String idProduct = wishlistReminderAvailability.getTextFromId();
-        int beforeCountRequests = wishlistReminderAvailability.getBeforeCountRequests();
+        String articleProduct = wishlistReminderAvailability.getTextFromArticle("Tyres");
+        String idProduct = wishlistReminderAvailability.getTextFromId("Tyres");
+        int beforeCountRequests = wishlistReminderAvailability.getBeforeCountRequests("Tyres");
         openPage(route);
         new Main_page_Logic().useSearch(articleProduct)
                          .clickButtonProductById(idProduct)
