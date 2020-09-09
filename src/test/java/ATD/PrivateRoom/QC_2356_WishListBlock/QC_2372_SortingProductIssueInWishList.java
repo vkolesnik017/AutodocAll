@@ -11,12 +11,15 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2373_LogicOfPairedProductsInWishlist {
+public class QC_2372_SortingProductIssueInWishList {
+    private Search_page_Logic searchPage = new Search_page_Logic();
+
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -24,18 +27,18 @@ public class QC_2373_LogicOfPairedProductsInWishlist {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "main", "search19");
+        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "main", "search30");
 
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks transition to WishList with logged user")
-    public void testChecksTransitionToWishListWithLoggedUser(String route) {
+    @Description(value = "Test checks sorting product issue in WishList")
+    public void testChecksSortingProductIssueInWishList(String route) {
         openPage(route);
-
-        new Search_page_Logic().presenceOfTecDocListing().addedProductToWishList(1).goToWishListPage().increaseQuantityOfProduct(1);
+        List<String> artNumOfProduct = searchPage.presenceOfTecDocListing().addArtNumOfProductToList(5);
+        searchPage.addedProductToWishList(5).goToWishListPage().presenceOfProductList().checkChronologicalOrderOfProducts(artNumOfProduct).removeProductFromWishList(1);
     }
 
     @AfterMethod

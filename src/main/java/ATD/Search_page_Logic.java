@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static ATD.CommonMethods.*;
 import static PKW.CommonMethods.getTextFromUnVisibleElement;
@@ -325,15 +326,33 @@ public class Search_page_Logic extends Search_page {
 
     @Step("added Product to WishList. Search_page")
     public Search_page_Logic addedProductToWishList(int positionOfProduct) {
-        btnAddedProductToWishList().get(positionOfProduct).click();
-        addedProductToWishList().get(positionOfProduct).shouldBe(exist);
+        for (int i = 0; i < positionOfProduct; i++) {
+            btnAddedProductToWishList().get(i).scrollIntoView("{block: \"center\"}");
+            checkVisibleBrands();
+            if (popUpSelector().isDisplayed()) {
+             //   tooltipOfMarkeFieldInPopUpSelector().shouldBe(visible).click();
+                closePopUpSelector().shouldBe(visible).click();
+                popUpSelector().shouldNotBe(visible);
+            }
+            btnAddedProductToWishList().get(i).shouldBe(visible).click();
+            addedProductToWishList().get(i).shouldBe(exist);
+        }
         return this;
     }
 
+    @Step("check visible brands. Search_page")
+    public Search_page_Logic checkVisibleBrands() {
+        for (int i = 0; i < 2; i++) {
+            visibleBrands().get(i).shouldBe(exist);
+        }
+        return this;
+    }
+
+
     @Step("go to WishList page. Search_page")
-    public Profile_wishlist_page_Logic goToWishListPage() {
+    public Services_wishList_page_Logic goToWishListPage() {
         iconOfWishList().shouldBe(visible).click();
-        return page(Profile_wishlist_page_Logic.class);
+        return page(Services_wishList_page_Logic.class);
     }
 
     @Step("presence Refurbished Characteristic in listing. Search_page")
@@ -360,7 +379,7 @@ public class Search_page_Logic extends Search_page {
         return this;
     }
 
-    @Step("presence Refurbished Characteristic In TOP product if art number contains expected symbol . Search_page")
+    @Step("presence Refurbished Characteristic In Listing if art number contains expected symbol . Search_page")
     public Search_page_Logic presenceRefurbishedCharacteristicInListingWithArticle(String expectedCharacteristic, String symbol) {
         productListBlock().shouldBe(visible);
         checkCharacteristicOfTopProduct(expectedCharacteristic, symbol);
@@ -382,6 +401,12 @@ public class Search_page_Logic extends Search_page {
             }
         }
         return this;
+    }
+
+    @Step(" added article number Of product to list. Search_page")
+    public List<String> addArtNumOfProductToList(int countOfArtNum) {
+        List<String> artNumOfProduct = artNumOfProduct().stream().limit(countOfArtNum).map(n -> n.getText().replaceAll("Artikelnummer: ", "")).collect(Collectors.toList());
+        return artNumOfProduct;
     }
 
 }
