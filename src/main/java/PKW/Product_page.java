@@ -309,4 +309,7 @@ public class Product_page {
     SelenideElement btnAddProductToBasket() {return $x("//button[@class='pkw-product__buy-btn basket_btn ']");}
 
     SelenideElement dropDownPopUpOfBasket() {return $x("//div[@class='cart-items-block ']");}
-}
+
+    ElementsCollection allCharacteristics() {return $$x("//div[@class='pkw-table']/ul/li");}
+
+    }

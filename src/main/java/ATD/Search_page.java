@@ -171,6 +171,11 @@ public class Search_page {
 
     ElementsCollection allCharacteristicsOfProducts() {return $$x("//div[@class='prod_params_container']//li");}
 
-    ElementsCollection visibleTitleOfProducts() {return $$x("//div[@class='prod_link']/a");}
+    ElementsCollection visibleTitleOfProducts() {return $$x("//*[self::a[@class='ga-click prod_link'] or self::span[@class='ga-click prod_link link']]");}
+
+    ElementsCollection visibleArtNumOfProduct() {return $$x("//div[@class='nr']/span");}
+
+    ElementsCollection visibleCharacteristicsOfProducts(int position) {return $$x("(//div[@class='prod_params_container'])["+position+"]/ul/li");}
+
 }
 
