@@ -30,4 +30,9 @@ public class Services_wishList_page {
     ElementsCollection btnRemoveProduct() {return $$x("//span[@class='wishlist__remove remove-article-wishlist']");}
 
     SelenideElement dialogPopUp() {return $(byId("popup_update"));}
+
+    SelenideElement btnRemoveInDialogPopUp() {return $x("//a[@class='submit']");}
+
+    SelenideElement currentCountOfProductInWishList() {return $x("//span[@class='wishlist-articles-count']");}
+
 }

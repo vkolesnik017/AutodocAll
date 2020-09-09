@@ -1,7 +1,7 @@
 package ATD.PrivateRoom.QC_2356_WishListBlock;
 
 import ATD.Search_page_Logic;
-import ATD.SetUp;
+import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import static ATD.CommonMethods.openPage;
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_2372_SortingProductIssueInWishList {
@@ -38,7 +38,9 @@ public class QC_2372_SortingProductIssueInWishList {
     public void testChecksSortingProductIssueInWishList(String route) {
         openPage(route);
         List<String> artNumOfProduct = searchPage.presenceOfTecDocListing().addArtNumOfProductToList(5);
-        searchPage.addedProductToWishList(5).goToWishListPage().presenceOfProductList().checkChronologicalOrderOfProducts(artNumOfProduct).removeProductFromWishList(1);
+        searchPage.addedProductToWishList(5).goToWishListPage().presenceOfProductList().
+                checkChronologicalOrderOfProducts(artNumOfProduct).removeProductFromWishList(1)
+                .checkCOrderOfProductsAfterRemove(artNumOfProduct, 1);
     }
 
     @AfterMethod
