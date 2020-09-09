@@ -1,6 +1,6 @@
 package ATD.Tyres.QC_2066_CheckProductsOutOfStock;
 
-import ATD.SetUp;
+import Common.SetUp;
 import ATD.Tyre_item_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
 

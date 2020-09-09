@@ -1,7 +1,7 @@
 package ATD.PrivateRoom.QC_683_FunctionalTabOfAddressPR;
 
 import ATD.Main_page_Logic;
-import ATD.SetUp;
+import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -11,7 +11,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static ATD.CommonMethods.openPage;
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_928_AddressTabElementsInPR {

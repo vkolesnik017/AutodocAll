@@ -1,9 +1,9 @@
 package ATD.Basket.QC_1129_BasketSession;
 
-import ATD.DataBase;
+import Common.DataBase;
 import ATD.Main_page_Logic;
 import ATD.Product_page_Logic;
-import ATD.SetUp;
+import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -15,7 +15,7 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1130_RestorationWebBasketSessionOnWebHomepageVersion {

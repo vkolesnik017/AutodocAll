@@ -1,7 +1,7 @@
 package ATD.QASYS_19_Basket;
 
 import ATD.Product_page_Logic;
-import ATD.SetUp;
+import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -14,7 +14,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.clickOfBuyBtnForAllPages;
 import static ATD.CommonMethods.openPage;
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 

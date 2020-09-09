@@ -1,4 +1,4 @@
-package ATD;
+package Common;
 
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;

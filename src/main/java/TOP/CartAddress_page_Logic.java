@@ -1,6 +1,6 @@
 package TOP;
 
-import ATD.DataBase;
+import Common.DataBase;
 import PKW.CommonMethods;
 import com.codeborne.selenide.ex.ElementNotFound;
 import io.qameta.allure.Step;

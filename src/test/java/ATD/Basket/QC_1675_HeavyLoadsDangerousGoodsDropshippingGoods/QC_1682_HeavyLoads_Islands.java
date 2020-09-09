@@ -1,9 +1,9 @@
 package ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods;
 
 import ATD.CartAllData_page_Logic;
-import ATD.DataBase;
+import Common.DataBase;
 import ATD.Product_page_Logic;
-import ATD.SetUp;
+import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -16,7 +16,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.CommonMethods.password;
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1682_HeavyLoads_Islands {

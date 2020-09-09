@@ -1,5 +1,6 @@
 package PKW;
 
+import Common.DataBase;
 import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.Step;
 import org.testng.Assert;

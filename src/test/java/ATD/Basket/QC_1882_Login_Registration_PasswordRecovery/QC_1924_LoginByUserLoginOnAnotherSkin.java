@@ -2,8 +2,9 @@ package ATD.Basket.QC_1882_Login_Registration_PasswordRecovery;
 
 import ATD.CartAccount_page_Logic;
 import ATD.CartAddress_page_Logic;
-import ATD.DataBase;
+import Common.DataBase;
 import ATD.Product_page_Logic;
+import Common.SetUp;
 import PKW.Main_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,7 +17,7 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.*;
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1924_LoginByUserLoginOnAnotherSkin {
@@ -32,7 +33,7 @@ public class QC_1924_LoginByUserLoginOnAnotherSkin {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new PKW.SetUp().setUpShopsWithMainRoute("prod", "DE", "main");
+        return new SetUp().setUpShopsWithMainRoute("prod", "DE", "main");
     }
 
     @Test(dataProvider = "route")

@@ -3,7 +3,8 @@ package ATD.Catalog.QC_604_DisplayAllOvercategoriesOnTecdocCatalogPage;
 
 import ATD.*;
 import AWS.CatalogCategories_aws;
-import files.Product;
+import Common.DataBase;
+import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -13,11 +14,10 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import static ATD.CommonMethods.*;
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_605_DisplayOvercategoriesOnCatalogRoutesWithCar {

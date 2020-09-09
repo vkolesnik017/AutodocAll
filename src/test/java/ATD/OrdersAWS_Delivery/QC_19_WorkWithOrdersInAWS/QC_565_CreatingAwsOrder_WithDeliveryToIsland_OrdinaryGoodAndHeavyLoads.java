@@ -1,8 +1,8 @@
 package ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS;
 
-import ATD.DataBase;
+import Common.DataBase;
 import ATD.Product_page_Logic;
-import ATD.SetUp;
+import Common.SetUp;
 import AWS.Customer_view_aws;
 import AWS.OrderAdd_page_aws;
 import AWS.SearchOrders_page_aws;
@@ -19,7 +19,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import static ATD.CommonMethods.openPage;
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static AWS.SearchOrders_page_aws.searchOrderPageURL;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 

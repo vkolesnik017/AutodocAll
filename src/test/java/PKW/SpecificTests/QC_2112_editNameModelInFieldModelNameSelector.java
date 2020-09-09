@@ -1,8 +1,8 @@
 package PKW.SpecificTests;
 
+import Common.DataBase;
+import Common.Excel;
 import PKW.CommonMethods;
-import PKW.DataBase;
-import ATD.Excel;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
@@ -14,11 +14,11 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
+import static Common.Excel.parseExcel;
+import static Common.SetUp.setUpBrowser;
 import static PKW.CommonMethods.openPage;
-import static ATD.Excel.parseExcel;
-import static PKW.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_2112_editNameModelInFieldModelNameSelector {
     private CommonMethods commonMethods = new CommonMethods();
@@ -26,13 +26,13 @@ public class QC_2112_editNameModelInFieldModelNameSelector {
     private final String dataFile = "C://Autotests/files/data/QC_2112_data.xls";
     private final String result = "C://Autotests/files/res/QC_2112_data.txt";
 
-        private String shop = System.getenv("ShopFromJenkins").toLowerCase();
+    private String shop = System.getenv("ShopFromJenkins").toLowerCase();
 //    private String shop = "de";
 
     @BeforeClass
     void setUp() throws IOException {
         setUpBrowser(false, "chrome", "77.0");
-        Configuration.pageLoadStrategy="normal";
+        Configuration.pageLoadStrategy = "normal";
         commonMethods.writerInFile(result, true, shop);
     }
 
@@ -73,7 +73,7 @@ public class QC_2112_editNameModelInFieldModelNameSelector {
         } catch (ElementNotFound element) {
             commonMethods.writerInFile(result, true, "Trouble with element in selector" + "#" + startUrl);
         }
-        close();
+        closeWebDriver();
 
     }
 

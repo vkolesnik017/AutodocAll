@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_532_PresenceOfRefurbishedCharacteristicInTopProduct {
@@ -24,7 +24,7 @@ public class QC_532_PresenceOfRefurbishedCharacteristicInTopProduct {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new PKW.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "parts_group,supplier_brand_parts");
+        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "parts_group,supplier_brand_parts");
     }
 
     @Test(dataProvider = "routes")
@@ -38,7 +38,7 @@ public class QC_532_PresenceOfRefurbishedCharacteristicInTopProduct {
 
     @DataProvider(name = "routesArticle", parallel = true)
     Object[] dataProviderArticle() throws SQLException {
-        return new PKW.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "parts_group2");
+        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "parts_group2");
     }
 
     @Test(dataProvider = "routesArticle")
@@ -53,7 +53,7 @@ public class QC_532_PresenceOfRefurbishedCharacteristicInTopProduct {
 
     @DataProvider(name = "routesArticleBrand", parallel = true)
     Object[] dataProviderArticleBrand() throws SQLException {
-        return new PKW.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "supplier_brand_parts2");
+        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "supplier_brand_parts2");
     }
 
     @Test(dataProvider = "routesArticleBrand")

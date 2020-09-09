@@ -1,7 +1,7 @@
 package PKW.SpecificTests.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
 
+import Common.SetUp;
 import PKW.Product_page_Logic;
-import PKW.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -12,9 +12,10 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
+import static Common.SetUp.setUpBrowser;
 import static PKW.CommonMethods.checkingContainsUrl;
-import static PKW.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.Selenide.open;
 
 public class QC_1697_CheckOfNotBlockingOfIndexInTheBillingBlock {
 

@@ -10,8 +10,8 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
+import static Common.SetUp.setUpBrowser;
 import static PKW.CommonMethods.openPage;
-import static PKW.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1868_DisplayingOENNumberWithTheSelectedCar {
@@ -23,7 +23,7 @@ public class QC_1868_DisplayingOENNumberWithTheSelectedCar {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new PKW.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "car_parts2");
+        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "car_parts2");
     }
 
     @Test(dataProvider = "routes")

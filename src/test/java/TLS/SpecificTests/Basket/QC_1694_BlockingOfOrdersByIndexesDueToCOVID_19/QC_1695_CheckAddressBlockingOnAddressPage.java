@@ -1,7 +1,7 @@
 package TLS.SpecificTests.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
 
+import Common.SetUp;
 import TLS.Product_page_Logic;
-import TLS.SetUp;
 import files.ForAllSkins;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import static TLS.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.open;
 
 public class QC_1695_CheckAddressBlockingOnAddressPage {

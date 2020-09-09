@@ -1,6 +1,6 @@
 package PKW.OILS.QC_952_ToleranceBlockOfBrandsOnMainPage;
 
-import PKW.DataBase;
+import Common.DataBase;
 import PKW.Motoroil_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static PKW.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
@@ -26,7 +26,7 @@ public class QC_955_TransitionToListingWithSelectedBrand {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new PKW.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil");
+        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil");
     }
 
     @Test(dataProvider = "routes")

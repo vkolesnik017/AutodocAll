@@ -1,6 +1,6 @@
 package PKW.OILS.QC_1225_SelectorInOilListings;
 
-import PKW.DataBase;
+import Common.DataBase;
 import PKW.Motoroil_Release_page_Logic;
 import PKW.Motoroil_specification_page_Logic;
 import io.qameta.allure.Description;
@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static PKW.CommonMethods.checkingContainsUrl;
 
 public class QC_1229_TransitionAtSearchVehicleInSelector {
@@ -24,7 +24,7 @@ public class QC_1229_TransitionAtSearchVehicleInSelector {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new PKW.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_search,motoroil_release,motoroil_viscosity,motoroil_viscosity_brand,motoroil_chemical_type,car_parts_motoroil");
+        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_search,motoroil_release,motoroil_viscosity,motoroil_viscosity_brand,motoroil_chemical_type,car_parts_motoroil");
     }
 
     @Test(dataProvider = "routes")
@@ -41,7 +41,7 @@ public class QC_1229_TransitionAtSearchVehicleInSelector {
 
     @DataProvider(name = "routesSpecification", parallel = true)
     Object[] dataProviderSpecification() throws SQLException {
-        return new PKW.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil,motoroil_specification,motoroil_brand,motoroil_maker,motoroil_maker_group");
+        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil,motoroil_specification,motoroil_brand,motoroil_maker,motoroil_maker_group");
     }
 
     @Test(dataProvider = "routesSpecification")

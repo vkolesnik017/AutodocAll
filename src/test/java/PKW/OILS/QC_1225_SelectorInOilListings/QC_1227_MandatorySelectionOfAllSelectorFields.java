@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1227_MandatorySelectionOfAllSelectorFields {
@@ -24,7 +24,7 @@ public class QC_1227_MandatorySelectionOfAllSelectorFields {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new PKW.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_release,motoroil_viscosity,motoroil_viscosity_brand,motoroil_specification,motoroil_chemical_type,motoroel-search,motoroil,motoroil_brand");
+        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_release,motoroil_viscosity,motoroil_viscosity_brand,motoroil_specification,motoroil_chemical_type,motoroel-search,motoroil,motoroil_brand");
     }
 
     @Test(dataProvider = "routes")
@@ -43,7 +43,7 @@ public class QC_1227_MandatorySelectionOfAllSelectorFields {
 
     @DataProvider(name = "routesMaker", parallel = true)
     Object[] dataProviderMaker() throws SQLException {
-        return new PKW.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_maker,motoroil_maker_group,car_parts_motoroil");
+        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_maker,motoroil_maker_group,car_parts_motoroil");
     }
 
     @Test(dataProvider = "routesMaker")

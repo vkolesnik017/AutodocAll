@@ -1,5 +1,6 @@
 package Ersatz;
 
+import Common.DataBase;
 import com.codeborne.selenide.ex.ElementNotFound;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;

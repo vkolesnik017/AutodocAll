@@ -2,6 +2,8 @@ package ATD.Payments;
 
 import ATD.*;
 import AWS.Order_aws;
+import Common.DataBase;
+import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -15,8 +17,8 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.*;
-import static ATD.DataBase.parseUserMailFromBD;
-import static ATD.SetUp.setUpBrowser;
+import static Common.DataBase.parseUserMailFromBD;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_2352_Multibanco {

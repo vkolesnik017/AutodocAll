@@ -1,5 +1,6 @@
 package PKW;
 
+import Common.DataBase;
 import io.qameta.allure.Step;
 import java.sql.SQLException;
 import static PKW.CommonMethods.checkingContainsUrl;
@@ -20,7 +21,7 @@ public class Impressum_static_page_Logic extends Impressum_static_page {
         checkingContainsUrl(new DataBase().getFullRouteByRouteName("prod", "DE", "main"));
         back();
         atdSiteLink().click();
-        checkingContainsUrl(new ATD.DataBase().getFullRouteByRouteName("prod", "DE", "main"));
+        checkingContainsUrl(new Common.DataBase().getFullRouteByRouteName("prod", "DE", "main"));
         back();
         osTextLink().click();
         checkingContainsUrl("odr/main/index.cfm?event=main.home.chooseLanguage");

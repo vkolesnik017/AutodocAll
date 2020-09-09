@@ -1,7 +1,7 @@
 package ATD.ProductPage;
 
 
-import ATD.DataBase;
+import Common.DataBase;
 import ATD.FAQ_Confirmation_page_Logic;
 import ATD.Product_page_Logic;
 import AWS.FAQ_aws;
@@ -17,7 +17,7 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.*;
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.*;
 
 public class QC_709_FAQ_TestFAQformWithValidData {

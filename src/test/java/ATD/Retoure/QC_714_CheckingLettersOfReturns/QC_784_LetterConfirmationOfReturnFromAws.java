@@ -1,7 +1,7 @@
 package ATD.Retoure.QC_714_CheckingLettersOfReturns;
 
 import ATD.Product_page_Logic;
-import ATD.SetUp;
+import Common.SetUp;
 import AWS.Order_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 
 import static ATD.CommonMethods.idPfandProduct;
 import static ATD.CommonMethods.password;
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 

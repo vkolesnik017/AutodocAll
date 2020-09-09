@@ -1,6 +1,7 @@
 package ATD;
 
 import AWS.ProductCard_aws;
+import Common.DataBase;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.ex.ElementNotFound;

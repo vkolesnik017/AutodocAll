@@ -1,5 +1,6 @@
 package ATD;
 
+import Common.DataBase;
 import io.qameta.allure.Step;
 
 import java.sql.SQLException;

@@ -1,7 +1,7 @@
 package ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS;
 
 import ATD.Product_page_Logic;
-import ATD.SetUp;
+import Common.SetUp;
 import ATD.Versand_static_page_Logic;
 import AWS.Order_aws;
 import AWS.SearchOrders_page_aws;
@@ -17,7 +17,7 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1128_ChangingCountryOfDeliveryInAwsOrder {

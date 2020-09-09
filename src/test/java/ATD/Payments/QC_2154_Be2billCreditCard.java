@@ -3,6 +3,8 @@ package ATD.Payments;
 import ATD.*;
 import AWS.Customer_view_aws;
 import AWS.Order_aws;
+import Common.DataBase;
+import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -15,9 +17,9 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.*;
-import static ATD.DataBase.parseUserIdFromBD;
-import static ATD.DataBase.parseUserMailFromBD;
-import static ATD.SetUp.setUpBrowser;
+import static Common.DataBase.parseUserIdFromBD;
+import static Common.DataBase.parseUserMailFromBD;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 

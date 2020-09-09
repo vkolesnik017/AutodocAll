@@ -1,4 +1,4 @@
-package ATD;
+package Common;
 
 import io.qameta.allure.Allure;
 import io.qameta.allure.Attachment;
@@ -43,7 +43,6 @@ public class ProjectListener implements ITestListener, IAnnotationTransformer {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     @Override

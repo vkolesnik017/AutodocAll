@@ -1,8 +1,8 @@
 package TSP.SpecificTests.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
 
+import Common.SetUp;
 import TSP.Cart_page_Logic;
 import TSP.Product_page_Logic;
-import TSP.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -13,9 +13,10 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
+import static Common.SetUp.setUpBrowser;
 import static TSP.CommonMethods.getCurrentShopFromJSVarInHTML;
-import static TSP.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.Selenide.open;
 
 public class QC_1696_CheckErrorTranslateOnAddressPage {
 

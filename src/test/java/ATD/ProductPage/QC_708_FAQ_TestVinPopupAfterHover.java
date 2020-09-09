@@ -1,7 +1,7 @@
 package ATD.ProductPage;
 
 
-import ATD.DataBase;
+import Common.DataBase;
 import ATD.Product_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -12,7 +12,6 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
-import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_708_FAQ_TestVinPopupAfterHover {

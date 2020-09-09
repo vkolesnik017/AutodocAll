@@ -1,5 +1,6 @@
 package PKW;
 
+import Common.DataBase;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 import java.sql.SQLException;
@@ -49,7 +50,7 @@ public class AGB_static_page_Logic extends AGB_static_page {
         europaLinkAgbSecond().click();
         commonMethods.checkingUrlAndCloseTab("/consumers/odr/main/index.cfm?event=main.home.chooseLanguage");
         autodocLinkAgbText().hover().click();
-        commonMethods.checkingUrlAndCloseTab(new ATD.DataBase().getFullRouteByRouteName("prod", "DE", "main"));
+        commonMethods.checkingUrlAndCloseTab(new DataBase().getFullRouteByRouteName("prod", "DE", "main"));
         back();
         return this;
     }

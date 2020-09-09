@@ -1,5 +1,6 @@
 package PKW;
 
+import Common.DataBase;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 

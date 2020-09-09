@@ -3,7 +3,7 @@
 <suite name="Associated" parallel="methods" thread-count="4">
 
     <listeners>
-        <listener class-name="ATD.ProjectListener"/>
+        <listener class-name="Common.ProjectListener"/>
     </listeners>
 
     <test name="QC_776_RelatedProductsLogic">

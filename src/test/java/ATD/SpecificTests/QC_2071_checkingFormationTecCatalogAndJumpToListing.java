@@ -1,6 +1,6 @@
 package ATD.SpecificTests;
 
-import ATD.Excel;
+import Common.Excel;
 import ATD.Main_page_Logic;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Description;
@@ -17,8 +17,8 @@ import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 
 import static ATD.CommonMethods.waitWhileRouteBecomeExpected;
-import static ATD.Excel.parseExcel;
-import static ATD.SetUp.setUpBrowser;
+import static Common.Excel.parseExcel;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 

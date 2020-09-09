@@ -2,7 +2,7 @@ package LKW_trucks.QC_94_TecDoc_Listing;
 
 import ATD.Cart_page_Logic;
 import ATD.LKW_Category_car_list_page_Logic;
-import ATD.SetUp;
+import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_100_AnalogBlockInTecDocListing {

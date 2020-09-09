@@ -3,7 +3,7 @@
 <suite name="StaticPage_ATD" parallel="tests" thread-count="3">
 
     <listeners>
-        <listener class-name="ATD.ProjectListener"/>
+        <listener class-name="Common.ProjectListener"/>
     </listeners>
 
 
