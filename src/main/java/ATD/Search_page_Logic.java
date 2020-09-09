@@ -331,7 +331,6 @@ public class Search_page_Logic extends Search_page {
             btnAddedProductToWishList().get(i).scrollIntoView("{block: \"center\"}");
             checkVisibleBrands();
             if (popUpSelector().isDisplayed()) {
-             //   tooltipOfMarkeFieldInPopUpSelector().shouldBe(visible).click();
                 closePopUpSelector().shouldBe(visible).click();
                 popUpSelector().shouldNotBe(visible);
             }
