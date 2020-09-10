@@ -1,6 +1,8 @@
 package MOTO.QC_385_BlockBrandsAndModelsOfAutoManufacturers;
 
 import ATD.*;
+import Common.DataBase;
+import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -13,7 +15,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.CommonMethods.openPage;
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_389_TransitionByClickOnBrandsModelsElements {

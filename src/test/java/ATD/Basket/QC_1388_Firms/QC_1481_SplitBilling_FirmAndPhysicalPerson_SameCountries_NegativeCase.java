@@ -2,7 +2,7 @@ package ATD.Basket.QC_1388_Firms;
 
 import ATD.CartAllData_page_Logic;
 import ATD.Product_page_Logic;
-import ATD.SetUp;
+import Common.SetUp;
 import AWS.Order_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -18,7 +18,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.CommonMethods.password;
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.switchTo;
 

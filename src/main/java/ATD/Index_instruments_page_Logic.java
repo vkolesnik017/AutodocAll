@@ -1,5 +1,6 @@
 package ATD;
 
+import Common.DataBase;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;

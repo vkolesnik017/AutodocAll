@@ -1,7 +1,7 @@
 package ATD;
 
+import Common.DataBase;
 import io.qameta.allure.Step;
-import org.testng.Assert;
 
 import java.sql.SQLException;
 
@@ -10,7 +10,6 @@ import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.back;
 import static com.codeborne.selenide.Selenide.page;
-import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class LKW_Categories_page_Logic extends LKW_Categories_page {
 

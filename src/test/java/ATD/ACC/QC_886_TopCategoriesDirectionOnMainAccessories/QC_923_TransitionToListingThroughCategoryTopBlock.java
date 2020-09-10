@@ -3,7 +3,7 @@ package ATD.ACC.QC_886_TopCategoriesDirectionOnMainAccessories;
 
 import ATD.Index_accessories_page_Logic;
 import ATD.Listing_accessories_page_Logic;
-import ATD.SetUp;
+import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -16,7 +16,7 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 

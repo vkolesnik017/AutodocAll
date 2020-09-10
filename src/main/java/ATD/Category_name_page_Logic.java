@@ -1,7 +1,7 @@
 package ATD;
 
+import Common.DataBase;
 import io.qameta.allure.Step;
-import org.testng.Assert;
 
 import java.sql.SQLException;
 
@@ -10,7 +10,6 @@ import static ATD.CommonMethods.waitWhileRouteBecomeExpected;
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.WebDriverRunner.url;
 
 // Не создавался класс Category_name_page, так как в нём пока нет надобности
 

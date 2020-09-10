@@ -1,7 +1,7 @@
 package PKW.OILS.QC_1225_SelectorInOilListings;
 
+import Common.DataBase;
 import PKW.Car_parts_motoroil_page_Logic;
-import PKW.DataBase;
 import PKW.Motoroil_Release_page_Logic;
 import PKW.Motoroil_Search_page_Logic;
 import io.qameta.allure.Description;
@@ -15,7 +15,7 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static PKW.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
@@ -27,7 +27,7 @@ public class QC_1228_ResetOfValuesInSelector {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new PKW.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_release,motoroil,motoroil_viscosity,motoroil_viscosity_brand,motoroil_specification,motoroil_brand,motoroil_maker,motoroil_maker_group,motoroil_chemical_type");
+        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_release,motoroil,motoroil_viscosity,motoroil_viscosity_brand,motoroil_specification,motoroil_brand,motoroil_maker,motoroil_maker_group,motoroil_chemical_type");
     }
 
     @Test(dataProvider = "routes")
@@ -48,7 +48,7 @@ public class QC_1228_ResetOfValuesInSelector {
 
     @DataProvider(name = "routesSearch", parallel = true)
     Object[] dataProviderSearch() throws SQLException {
-        return new PKW.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_search");
+        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_search");
     }
 
     @Test(dataProvider = "routesSearch")
@@ -67,7 +67,7 @@ public class QC_1228_ResetOfValuesInSelector {
 
     @DataProvider(name = "routesCarParts", parallel = true)
     Object[] dataProviderCarParts() throws SQLException {
-        return new PKW.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "car_parts_motoroil");
+        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "car_parts_motoroil");
     }
 
     @Test(dataProvider = "routesCarParts")

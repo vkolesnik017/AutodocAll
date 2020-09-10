@@ -1,9 +1,9 @@
 package ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods;
 
-import ATD.DataBase;
+import Common.DataBase;
 import ATD.Main_page_Logic;
 import ATD.Product_page_Logic;
-import ATD.SetUp;
+import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -15,7 +15,7 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1680_HeavyLoadsFR_NegativeCaseBasket {
@@ -30,7 +30,7 @@ public class QC_1680_HeavyLoadsFR_NegativeCaseBasket {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "HeavyLoadProduct1");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "HeavyLoadProduct3");
     }
 
     @Test(dataProvider = "route")
@@ -47,14 +47,14 @@ public class QC_1680_HeavyLoadsFR_NegativeCaseBasket {
                 .cartClick()
                 .checkAbsenceBtnContinueShoppingInDeliveryPopupCartPage()
                 .closePopUpDeliveryLimitCartPage()
-                .checkAbsenceGoodInCartPage("1290766")
+                .checkAbsenceGoodInCartPage("7037462")
                 .checkPresenceGoodInCardPage("7807629");
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "HeavyLoadProduct1"));
+        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "HeavyLoadProduct3"));
         product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
                 .deleteGoodsInDeliveryPopupCartPage()
-                .checkAbsenceGoodInCartPage("1290766")
+                .checkAbsenceGoodInCartPage("7037462")
                 .checkPresenceGoodInCardPage("7807629");
     }
 

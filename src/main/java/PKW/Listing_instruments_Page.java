@@ -61,12 +61,24 @@ public class Listing_instruments_Page {
         return $x("//div[@class='brand-products'][1]//a[@class='ga-click plus']");
     }
 
+    SelenideElement btnMinusInQuantityCounter() {
+        return $x("//div[@class='brand-products'][1]//a[@class='ga-click minus']");
+    }
+
     SelenideElement redBtnAddToBasket() {
         return $x("//div[@class='brand-products']//a[@class='indenwarenkorb']");
     }
 
     SelenideElement popupBasketAddedProducts() {
         return $x("//div[@class='cart-items-block ']");
+    }
+
+    SelenideElement blockProductsListing() {
+        return $x("//div[@class='listing_items']");
+    }
+
+    ElementsCollection productsListing() {
+        return $$x("//div[@class='listing_items']//div[@class='brand-products']");
     }
 
 

@@ -1,6 +1,6 @@
 package ATD.SpecificTests.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
 
-import ATD.Excel;
+import Common.Excel;
 import ATD.Product_page_Logic;
 import com.codeborne.selenide.Configuration;
 import org.testng.annotations.BeforeClass;
@@ -13,8 +13,8 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 
-import static ATD.Excel.parseExcel;
-import static ATD.SetUp.setUpBrowser;
+import static Common.Excel.parseExcel;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.open;
 
 public class QC_1829_CheckingQuanityInProductCounter {

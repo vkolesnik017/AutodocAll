@@ -1,15 +1,16 @@
 package PKW.General_Common.QC_1912_Footer;
 
+import Common.SetUp;
 import PKW.Main_page_Logic;
-import PKW.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Owner;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+import static Common.SetUp.setUpBrowser;
 import static PKW.CommonMethods.openPage;
-import static PKW.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1917_PresenceOfTheTextBlockInTheFooter {

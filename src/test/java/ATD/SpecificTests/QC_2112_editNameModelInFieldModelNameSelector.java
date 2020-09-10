@@ -1,8 +1,8 @@
 package ATD.SpecificTests;
 
 import ATD.CommonMethods;
-import ATD.DataBase;
-import ATD.Excel;
+import Common.DataBase;
+import Common.Excel;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
@@ -12,17 +12,14 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.io.BufferedWriter;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.nio.charset.StandardCharsets;
 
 import static ATD.CommonMethods.openPage;
-import static ATD.Excel.parseExcel;
-import static ATD.SetUp.setUpBrowser;
+import static Common.Excel.parseExcel;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.close;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_2112_editNameModelInFieldModelNameSelector {
     private CommonMethods commonMethods = new CommonMethods();
@@ -77,7 +74,7 @@ public class QC_2112_editNameModelInFieldModelNameSelector {
         } catch (ElementNotFound element) {
             commonMethods.writerInFile(result, true, "Trouble with element in selector" + "#" + startUrl);
         }
-        close();
+        closeWebDriver();
 
     }
 

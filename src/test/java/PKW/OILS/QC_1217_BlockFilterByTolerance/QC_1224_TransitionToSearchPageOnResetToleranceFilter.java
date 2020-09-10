@@ -1,6 +1,6 @@
 package PKW.OILS.QC_1217_BlockFilterByTolerance;
 
-import PKW.DataBase;
+import Common.DataBase;
 import PKW.Motoroil_Release_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static PKW.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
@@ -25,7 +25,7 @@ public class QC_1224_TransitionToSearchPageOnResetToleranceFilter {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new PKW.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_release");
+        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_release");
     }
 
     @Test(dataProvider = "routes")

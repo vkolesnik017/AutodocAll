@@ -1,7 +1,7 @@
 package ATD.Tyres.QC_1272_TyresMainPage;
 
 
-import ATD.SetUp;
+import Common.SetUp;
 import ATD.Tyres_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -15,7 +15,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.CommonMethods.waitWhileRouteBecomeExpected;
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1346_GoToAllSizesPageFromTyresMainPage {

@@ -2,6 +2,8 @@ package ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods;
 
 import ATD.*;
 import AWS.Order_aws;
+import Common.DataBase;
+import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -14,7 +16,7 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.*;
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class  QC_1684_HeavyLoadsAndOrdinaryGoods_PositiveCase {
@@ -30,7 +32,7 @@ public class  QC_1684_HeavyLoadsAndOrdinaryGoods_PositiveCase {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "HeavyLoadProduct1");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "HeavyLoadProduct2");
     }
 
     @Test(dataProvider = "route")

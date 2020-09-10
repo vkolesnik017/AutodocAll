@@ -2,8 +2,8 @@ package ATD.Catalog.QC_604_DisplayAllOvercategoriesOnTecdocCatalogPage;
 
 
 import ATD.Categories_page_Logic;
-import ATD.DataBase;
-import ATD.SetUp;
+import Common.DataBase;
+import Common.SetUp;
 import AWS.CatalogCategories_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 import static ATD.CommonMethods.comparingParentCategoriesWithAws;
 import static ATD.CommonMethods.openPage;
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_609_DisplayOvercategoriesFAQandCatalogRouteWithoutCar {

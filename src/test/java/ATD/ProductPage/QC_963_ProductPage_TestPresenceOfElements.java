@@ -2,7 +2,7 @@ package ATD.ProductPage;
 
 
 import ATD.CommonMethods;
-import ATD.DataBase;
+import Common.DataBase;
 import ATD.Product_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -17,7 +17,7 @@ import java.sql.SQLException;
 import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.CommonMethods.openPage;
 import static ATD.CommonMethods.waitingWhileLinkBecomeExpected;
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 

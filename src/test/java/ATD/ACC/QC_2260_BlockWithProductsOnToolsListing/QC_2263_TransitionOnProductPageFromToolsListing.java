@@ -2,7 +2,7 @@ package ATD.ACC.QC_2260_BlockWithProductsOnToolsListing;
 
 import ATD.Listing_instruments_page_Logic;
 import ATD.Product_page_Logic;
-import ATD.SetUp;
+import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -13,12 +13,11 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import java.sql.SQLException;
 import static ATD.CommonMethods.openPage;
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_2263_TransitionOnProductPageFromToolsListing {
 
-    private String idProductFromListing, idProduct;
     private Listing_instruments_page_Logic listingInstrumentsPageLogic = new Listing_instruments_page_Logic();
 
     @BeforeClass
@@ -28,7 +27,7 @@ public class QC_2263_TransitionOnProductPageFromToolsListing {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "listing_instruments");
+        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "listing_instruments,listing_instruments5");
     }
 
     @Test(dataProvider = "route")
@@ -37,11 +36,10 @@ public class QC_2263_TransitionOnProductPageFromToolsListing {
     @Description(value = "Test Checks transition with main product.")
     public void testCheckingTransitionWithMainProduct(String route) {
         openPage(route);
-        idProductFromListing = listingInstrumentsPageLogic.getIdProductListing();
+        String idProductFromListing = listingInstrumentsPageLogic.getIdProductListing();
         listingInstrumentsPageLogic.clickOnProductTitle();
-        idProduct = new Product_page_Logic().getIdFromBtnProduct();
+        String idProduct = new Product_page_Logic().getIdFromBtnProduct();
         Assert.assertEquals(idProductFromListing, idProduct);
-
     }
 
     @AfterMethod

@@ -1,7 +1,7 @@
 package ATD.FiltersSorting.QC_404_FiltersSorting_byPrice;
 
 
-import ATD.DataBase;
+import Common.DataBase;
 import ATD.Listing_page_Logic;
 import ATD.Main_page_Logic;
 import io.qameta.allure.Description;
@@ -15,7 +15,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.CommonMethods.waitingWhileLinkBecomeExpected;
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.executeJavaScript;

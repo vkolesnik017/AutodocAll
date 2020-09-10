@@ -1,6 +1,8 @@
 package ATD.Basket.QC_1129_BasketSession;
 
 import ATD.*;
+import Common.DataBase;
+import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -12,7 +14,7 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.*;
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1397_RecoveryBasketWebSessionOnMobVersionMainPageViaFacebook {

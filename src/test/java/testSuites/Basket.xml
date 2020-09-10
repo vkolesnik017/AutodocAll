@@ -3,7 +3,7 @@
 <suite name="Basket" parallel="methods" thread-count="2" data-provider-thread-count="2">
 
     <listeners>
-        <listener class-name="ATD.ProjectListener"/>
+        <listener class-name="Common.ProjectListener"/>
     </listeners>
 
     <test name="QC_1129_BasketSession" thread-count="1">

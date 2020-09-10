@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1221_TransitionByClickOnToleranceFilter {
@@ -24,7 +24,7 @@ public class QC_1221_TransitionByClickOnToleranceFilter {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new PKW.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_release");
+        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_release");
     }
 
     @Test(dataProvider = "routes")

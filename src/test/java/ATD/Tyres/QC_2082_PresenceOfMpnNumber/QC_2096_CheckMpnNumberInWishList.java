@@ -1,7 +1,7 @@
 package ATD.Tyres.QC_2082_PresenceOfMpnNumber;
 
 import ATD.Services_wishList_page_Logic;
-import ATD.SetUp;
+import Common.SetUp;
 import ATD.Tyre_form_page_Logic;
 import ATD.Tyres_dimension_page_Logic;
 import io.qameta.allure.Description;
@@ -16,7 +16,7 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_2096_CheckMpnNumberInWishList {

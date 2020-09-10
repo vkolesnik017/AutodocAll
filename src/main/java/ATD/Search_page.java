@@ -161,5 +161,21 @@ public class Search_page {
 
     SelenideElement popUpOfGarageInHeader() {return $x("//div[@class='header-garage__logged-header']");}
 
+    ElementsCollection btnAddedProductToWishList() {return $$x("//span[@class='add-to-wishlist title_btn add-article']");}
+
+    ElementsCollection addedProductToWishList() { return $$x("//span[@class='add-to-wishlist title_btn add-to-wishlist--added remove-article']");}
+
+    SelenideElement iconOfWishList() { return $x("//span[@class='header__wishes link']"); }
+
+    SelenideElement productListBlock() {return $x("//div[@class='listing_items']");}
+
+    ElementsCollection allCharacteristicsOfProducts() {return $$x("//div[@class='prod_params_container']//li");}
+
+    ElementsCollection visibleTitleOfProducts() {return $$x("//*[self::a[@class='ga-click prod_link'] or self::span[@class='ga-click prod_link link']]");}
+
+    ElementsCollection visibleArtNumOfProduct() {return $$x("//div[@class='nr']/span");}
+
+    ElementsCollection visibleCharacteristicsOfProducts(int position) {return $$x("(//div[@class='prod_params_container'])["+position+"]/ul/li");}
+
 }
 

@@ -1,7 +1,7 @@
 package ATD.GrayButton;
 
 import ATD.Main_page_Logic;
-import ATD.SetUp;
+import Common.SetUp;
 import AWS.Login_aws;
 import AWS.WishlistReminderAvailability_aws;
 import io.qameta.allure.Description;
@@ -14,7 +14,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static ATD.CommonMethods.openPage;
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -42,9 +42,9 @@ public class QC_1015_GrayButtonOnSearchPage {
     public void testGrayButton(String route) {
         new Login_aws().loginInAwsWithOpen();
         open(wishlistReminderAvailability.urlWithCurrentDate);
-        String articleProduct = wishlistReminderAvailability.getTextFromArticle();
-        String idProduct = wishlistReminderAvailability.getTextFromId();
-        int beforeCountRequests = wishlistReminderAvailability.getBeforeCountRequests();
+        String articleProduct = wishlistReminderAvailability.getTextFromArticle("Tyres");
+        String idProduct = wishlistReminderAvailability.getTextFromId("Tyres");
+        int beforeCountRequests = wishlistReminderAvailability.getBeforeCountRequests("Tyres");
         openPage(route);
         new Main_page_Logic().useSearch(articleProduct)
                          .clickButtonProductById(idProduct)

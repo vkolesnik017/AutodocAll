@@ -10,8 +10,8 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
+import static Common.SetUp.setUpBrowser;
 import static PKW.CommonMethods.openPage;
-import static PKW.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1888_PresenceElementsOfTheProductPage {
@@ -23,7 +23,7 @@ public class QC_1888_PresenceElementsOfTheProductPage {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new PKW.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product4");
+        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product4");
     }
 
     @Test(dataProvider = "routes")

@@ -1,7 +1,7 @@
 package PKW.OILS.QC_926_KbaBlockOnMainOilPage;
 
+import Common.DataBase;
 import PKW.Car_parts_motoroil_page_Logic;
-import PKW.DataBase;
 import PKW.Motoroil_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -15,7 +15,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.CommonMethods.openPage;
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_927_TransitionToListingWithCorrectKbaNumber {
@@ -29,7 +29,7 @@ public class QC_927_TransitionToListingWithCorrectKbaNumber {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new PKW.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil");
+        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil");
     }
 
     @Test(dataProvider = "routes")

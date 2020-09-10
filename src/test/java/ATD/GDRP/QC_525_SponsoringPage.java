@@ -1,6 +1,6 @@
 package ATD.GDRP;
 
-import ATD.SetUp;
+import Common.SetUp;
 import ATD.Sponsorship_static_page_Logic;
 import AWS.PrivacyPolicySubscription_aws;
 import io.qameta.allure.Description;
@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_525_SponsoringPage {

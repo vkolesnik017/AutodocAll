@@ -1,7 +1,7 @@
 package Direkt.SpecificTests.OrdersAWS_Delivery;
 
+import Common.SetUp;
 import Direkt.Product_page_Logic;
-import Direkt.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -12,8 +12,9 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static Direkt.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.*;
+import static Common.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.Selenide.open;
 
 
 public class QC_1942_CreatingEmptyOrderForMailStorniertChecking {
@@ -37,12 +38,12 @@ public class QC_1942_CreatingEmptyOrderForMailStorniertChecking {
         System.out.println(route);
         open(route);
         new Product_page_Logic().addProductToCart().cartClick()
-        .nextButtonClick()
-        .signIn("k.maierska@autodoc.eu", "123456")
-        .fillingShippingReqField("DE", "12345", "12345", false).checkingSameAddressCheckbox().nextBtnClick()
-        .clickVorkasse().nextBtnClick()
-        .nextBtnClick()
-        .checkLabelConfirm();
+                .nextButtonClick()
+                .signIn("k.maierska@autodoc.eu", "123456")
+                .fillingShippingReqField("DE", "12345", "12345", false).checkingSameAddressCheckbox().nextBtnClick()
+                .clickVorkasse().nextBtnClick()
+                .nextBtnClick()
+                .checkLabelConfirm();
     }
 
     @AfterMethod

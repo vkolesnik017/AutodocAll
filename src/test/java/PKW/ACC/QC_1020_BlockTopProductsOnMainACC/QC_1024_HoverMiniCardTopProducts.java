@@ -1,7 +1,7 @@
 package PKW.ACC.QC_1020_BlockTopProductsOnMainACC;
 
+import Common.SetUp;
 import PKW.Index_accessories_page_Logic;
-import PKW.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -9,9 +9,11 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
 import java.sql.SQLException;
+
+import static Common.SetUp.setUpBrowser;
 import static PKW.CommonMethods.openPage;
-import static PKW.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 

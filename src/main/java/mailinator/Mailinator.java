@@ -4,7 +4,7 @@ import ATD.PasswordRecovery_page_Logic;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
-import org.openqa.selenium.JavascriptExecutor;
+import org.testng.Assert;
 
 import java.util.ArrayList;
 
@@ -13,7 +13,6 @@ import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class Mailinator {
@@ -80,8 +79,18 @@ public class Mailinator {
         return $x("//div[@style='background-color: white ; padding: 15px']//b[2]");
     }
 
+    private SelenideElement blockOfRequisites() {
+        return $x("//table[@class='info-inline green-border']//tbody//tr//td");
+    }
 
 
+    @Step("Compares the text of the requisites in the email with expected requisites. Mailinator")
+    public Mailinator comparesTextOfRequisitesInMailWithExpectedRequisites(String expectedRequisites) {
+        String requisitesInMail = blockOfRequisites().getText().replaceAll(" ", "").replaceAll("\n","").toLowerCase();
+        String requisitesInSuccessPage = expectedRequisites.replaceAll(" ","").replaceAll("\n","").toLowerCase();
+        Assert.assertEquals(requisitesInMail, requisitesInSuccessPage);
+        return this;
+    }
 
     @Step("Transition to delivery page and get tracking number from url. Mailinator")
     public ArrayList<String> transitionToDeliveryPageAndGetTrackingNumFromUrlInMail() {
@@ -176,6 +185,7 @@ public class Mailinator {
     }
 
     public Mailinator openLetter(int numberLetter) {
+        sleep(5000);
         letter(numberLetter).shouldBe(appear);
         letter(numberLetter).click();
         switchTo().frame("msg_body");
@@ -196,7 +206,7 @@ public class Mailinator {
         return this;
     }
 
-    @Step("Checks and opens a letter with specific specified parameters. Mailinator")
+    @Step("Checks and opens a letter with specific specified parameters{expectedTextNameLetter}, {orderNumber}. Mailinator")
     public Mailinator checkAndOpenLetterInfoText( String expectedTextNameLetter, String orderNumber) {
         sleep(3000);
         for (int i = 0; i < allLatter().size(); i++) {
@@ -207,6 +217,22 @@ public class Mailinator {
                 break;
             } else {
                 System.out.println("Latter not found");
+            }
+        }
+        return this;
+    }
+
+    @Step("Checks and opens a letter with the order number{orderNumber}. Mailinator")
+    public Mailinator checkAndOpenLetterWithOrderNumber(String orderNumber) {
+        sleep(3000);
+        for (int i = 0; i < allLatter().size(); i++) {
+            String textNameLetter = allLatter().get(i).getText();
+            if (textNameLetter.contains(orderNumber)) {
+                allLatter().get(i).click();
+                switchTo().frame("msg_body");
+                break;
+            } else {
+                System.out.println("Latter order " + orderNumber + " not found");
             }
         }
         return this;

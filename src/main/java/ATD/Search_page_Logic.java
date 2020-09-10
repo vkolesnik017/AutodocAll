@@ -1,5 +1,6 @@
 package ATD;
 
+import Common.DataBase;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.Step;
@@ -11,8 +12,8 @@ import java.util.Collections;
 import java.util.List;
 
 import static ATD.CommonMethods.*;
+import static PKW.CommonMethods.getTextFromUnVisibleElement;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
-import static com.codeborne.selenide.CollectionCondition.texts;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
@@ -277,7 +278,7 @@ public class Search_page_Logic extends Search_page {
 
     @Step("click on product in TecDoc Listing .Search_page")
     public Search_page_Logic selectProductInTecDocListing(String generic) {
-        for (int i = 0; i <titleOfProductsInListing().size(); i++) {
+        for (int i = 0; i < titleOfProductsInListing().size(); i++) {
             titleOfProductsInListing().get(i).shouldHave(text(generic));
             clickOnProductInTecDocListing(i).checkCompatibilityProductAndGeneric();
             back();
@@ -322,5 +323,67 @@ public class Search_page_Logic extends Search_page {
         idOfVehicleInGaragePopUp(idOfVehicle).shouldBe(visible).click();
         return this;
     }
+
+    @Step("added Product to WishList. Search_page")
+    public Search_page_Logic addedProductToWishList(int positionOfProduct) {
+        btnAddedProductToWishList().get(positionOfProduct).click();
+        addedProductToWishList().get(positionOfProduct).shouldBe(exist);
+        return this;
+    }
+
+    @Step("go to WishList page. Search_page")
+    public Profile_wishlist_page_Logic goToWishListPage() {
+        iconOfWishList().shouldBe(visible).click();
+        return page(Profile_wishlist_page_Logic.class);
+    }
+
+    @Step("presence Refurbished Characteristic in listing. Search_page")
+    public Search_page_Logic presenceRefurbishedCharacteristic(String expectedCharacteristic) {
+        productListBlock().shouldBe(visible);
+        List<String> listOfCharacteristic = new ArrayList<>();
+        String currentTitleOfProduct;
+        addedAllCharacteristicsOfProductToList(listOfCharacteristic);
+        while (forwardLinkOfPaginator().isDisplayed()) {
+            currentTitleOfProduct = visibleTitleOfProducts().get(0).getText();
+            forwardLinkOfPaginator().scrollIntoView("{block: \"end\"}").click();
+            visibleTitleOfProducts().get(0).shouldNotHave(exactText(currentTitleOfProduct));
+            addedAllCharacteristicsOfProductToList(listOfCharacteristic);
+        }
+        Assert.assertTrue(listOfCharacteristic.contains(expectedCharacteristic));
+        return this;
+    }
+
+    @Step("added all characteristics of product to list. Search_page")
+    public Search_page_Logic addedAllCharacteristicsOfProductToList(List<String> list) {
+        for (int i = 0; i < allCharacteristicsOfProducts().size(); i++) {
+            list.add(getTextFromUnVisibleElement(allCharacteristicsOfProducts().get(i)));
+        }
+        return this;
+    }
+
+    @Step("presence Refurbished Characteristic In TOP product if art number contains expected symbol . Search_page")
+    public Search_page_Logic presenceRefurbishedCharacteristicInListingWithArticle(String expectedCharacteristic, String symbol) {
+        productListBlock().shouldBe(visible);
+        checkCharacteristicOfTopProduct(expectedCharacteristic, symbol);
+        return this;
+    }
+
+    @Step("checking characteristic of TOP product . Search_page")
+    public Search_page_Logic checkCharacteristicOfTopProduct(String expectedCharacteristic, String symbol) {
+        for (int i = 0; i < visibleArtNumOfProduct().size(); i++) {
+            List<String> characteristics = new ArrayList<>();
+            String titleOfBrandImage = visibleTitleOfProducts().get(i).getText();
+            String artNumOfProduct = visibleArtNumOfProduct().get(i).getText().replace("Art. Nr. : ", "");
+            if (titleOfBrandImage.contains("Henkel Parts") && artNumOfProduct.contains(symbol)) {
+                for (int j = 0; j < visibleCharacteristicsOfProducts(i + 1).size(); j++) {
+                    characteristics.add(getTextFromUnVisibleElement(visibleCharacteristicsOfProducts(i + 1).get(j)));
+                }
+                Assert.assertTrue(characteristics.contains(expectedCharacteristic));
+                characteristics.clear();
+            }
+        }
+        return this;
+    }
+
 }
 

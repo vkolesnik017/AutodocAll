@@ -94,4 +94,24 @@ public class Listing_instruments_Page_Logic extends Listing_instruments_Page {
         return page(Cart_page_Logic.class);
     }
 
+    @Step("Checking work quantity counter on decrease and increase products. Listing_instruments_Page")
+    public Listing_instruments_Page_Logic checkingWorkQuantityCounterOnDecreaseAndIncrease() {
+        new CommonMethods().checkingCounterIncrease(3, counterValueInQuantityCounter(), btnPlusInQuantityCounter());
+        new CommonMethods().checkingCounterDecrease(2, counterValueInQuantityCounter(), btnMinusInQuantityCounter() );
+        counterValueInQuantityCounter().shouldHave(attribute("value", "2"));
+        return this;
+    }
+
+    @Step("Checking presence products listing block. Listing_instruments_Page")
+    public Listing_instruments_Page_Logic checkingPresenceProductsListingBlock() {
+        blockProductsListing().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checking the number of products in listing. Listing_instruments_Page")
+    public Listing_instruments_Page_Logic checkingNumberOfProductsInListing() {
+        productsListing().shouldHaveSize(20);
+        return this;
+    }
+
 }

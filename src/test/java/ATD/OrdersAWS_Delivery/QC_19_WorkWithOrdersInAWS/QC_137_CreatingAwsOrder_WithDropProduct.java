@@ -1,7 +1,7 @@
 package ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS;
 
 import ATD.Product_page_Logic;
-import ATD.SetUp;
+import Common.SetUp;
 import AWS.Customer_view_aws;
 import AWS.OrderAdd_page_aws;
 import AWS.Order_aws;
@@ -19,7 +19,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import static ATD.CommonMethods.openPage;
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static AWS.SearchOrders_page_aws.searchOrderPageURL;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
@@ -72,7 +72,7 @@ public class QC_137_CreatingAwsOrder_WithDropProduct {
         sellingProductCostInOrder = order_aws.checkVatStatusInOrder("Mit MwSt 16%")
                 .checkPaymentMethodInOrder("PayPal")
                 .checkThatStatusSafeOrderIsOff()
-                .checkDeliveryCost("0")
+                .checkDeliveryCost("6.95")
                 .checkContoNR("30047")
                 .getSellingProductPriceOrderAWS();
         Assert.assertEquals(productCost , sellingProductCostInOrder);
@@ -86,12 +86,12 @@ public class QC_137_CreatingAwsOrder_WithDropProduct {
         sellingProductCostInOrder = order_aws.checkVatStatusInOrder("Mit MwSt 16%")
                 .checkPaymentMethodInOrder("PayPal")
                 .checkThatStatusSafeOrderIsOff()
-                .checkDeliveryCost("0")
+                .checkDeliveryCost("6.95")
                 .checkContoNR("30047")
                 .getSellingProductPriceOrderAWS();
         Assert.assertEquals(productCost , sellingProductCostInOrder);
         totalProductCostInOrder = order_aws.getTotalPriceOrderAWS();
-        Assert.assertEquals(sellingProductCostInOrder, totalProductCostInOrder);
+        Assert.assertNotEquals(sellingProductCostInOrder, totalProductCostInOrder);
     }
 
     @AfterMethod

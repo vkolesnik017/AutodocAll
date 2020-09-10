@@ -1,5 +1,6 @@
 package ATD;
 
+import Common.DataBase;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
@@ -54,9 +55,8 @@ public class Moto_Parent_Category_page_Logic extends Moto_Parent_Category_page {
 
     @Step(" check current url  .Moto_Parent_Category_page")
     public Moto_Parent_Category_page_Logic checkCurrentUrl(String subRoute) throws SQLException {
-        CommonMethods commonMethods = new CommonMethods();
         DataBase db = new DataBase();
-        commonMethods.checkingContainsUrl(db.getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", subRoute));
+        checkingContainsUrl(db.getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", subRoute));
         return this;
     }
 

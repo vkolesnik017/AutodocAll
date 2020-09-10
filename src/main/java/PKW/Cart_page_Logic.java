@@ -2,6 +2,9 @@ package PKW;
 
 import io.qameta.allure.Step;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.Selenide.sleep;
@@ -64,4 +67,16 @@ public class Cart_page_Logic extends Cart_page{
         String expectedVolume = volumeOfAddedProduct().getText().replace(volume,"").replaceAll("[^0-9]","");
         return expectedVolume;
     }
+
+    @Step("presence of expected characteristic. Cart_page")
+    public Cart_page_Logic presenceOfExpectedCharacteristic(String expectedCharacteristic) {
+        btnMoreInfoOfProduct().shouldBe(visible).click();
+          List<String> valuesOfCharacteristic = new ArrayList<>();
+        for (int i=0;i<titleOfCharacteristicInInfoBlockOfProduct().size();i++){
+            valuesOfCharacteristic.add(titleOfCharacteristicInInfoBlockOfProduct().get(i).getText()+" "+valueOfCharacteristicInInfoBlockOfProduct().get(i).getText());
+        }
+        valuesOfCharacteristic.contains(expectedCharacteristic);
+        return this;
+    }
+
 }

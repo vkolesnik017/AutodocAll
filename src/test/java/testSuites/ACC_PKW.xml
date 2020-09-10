@@ -3,7 +3,7 @@
 <suite name="ACC_PKW" parallel="methods" thread-count="2" data-provider-thread-count="3">
 
     <listeners>
-        <listener class-name="ATD.ProjectListener"/>
+        <listener class-name="Common.ProjectListener"/>
     </listeners>
 
     <test name="QC_1417_MainChemie">
@@ -28,7 +28,6 @@
         <classes>
             <class name="PKW.ACC.QC_994_MainBlockCategoriesOnMainPageAcc.QC_995_TitleMainBlockCategories"/>
             <class name="PKW.ACC.QC_994_MainBlockCategoriesOnMainPageAcc.QC_996_BlocksWithCategoriesOnMainAccessories"/>
-            <class name="PKW.ACC.QC_994_MainBlockCategoriesOnMainPageAcc.QC_997_TransitionOnListingCategories"/>
         </classes>
     </test>
 
@@ -69,8 +68,7 @@
 
     <test name="QC_999_TopCategoriesOnMainAccessories">
         <classes>
-            <class name="PKW.ACC.QC_999_TopCategoriesOnMainAccessories.QC_2299_TopCategoriesBlockOnMainAcc"/>
-            <class name="PKW.ACC.QC_999_TopCategoriesOnMainAccessories.QC_1001_CategoriesInTopCategoriesBlockOnMainAcc"/>
+            <class name="PKW.ACC.QC_999_TopCategoriesOnMainAccessories.QC_1001_TopCategoriesBlockOnMainAcc"/>
             <class name="PKW.ACC.QC_999_TopCategoriesOnMainAccessories.QC_1003_TransitionOnListingTopCategoryFromMainACC"/>
         </classes>
     </test>
@@ -87,9 +85,7 @@
         <classes>
             <class name="PKW.ACC.QC_1419_MainCatalogProductsOnMainChemistry.QC_1533_TitleMainCatalog"/>
             <class name="PKW.ACC.QC_1419_MainCatalogProductsOnMainChemistry.QC_1535_BlockWithCategories"/>
-            <class name="PKW.ACC.QC_1419_MainCatalogProductsOnMainChemistry.QC_1536_LogicalUnionInMainCategoriesBlockOnMainChemistry"/>
             <class name="PKW.ACC.QC_1419_MainCatalogProductsOnMainChemistry.QC_1541_SeparateCategories"/>
-            <class name="PKW.ACC.QC_1419_MainCatalogProductsOnMainChemistry.QC_1964_TransitionOnListingFromCategoryInLogicalUnion"/>
         </classes>
     </test>
 
@@ -142,7 +138,6 @@
         <classes>
             <class name="PKW.ACC.QC_2294_BlockWithProductsOnAccListing.QC_2295_MainProductsOnACCListing"/>
             <class name="PKW.ACC.QC_2294_BlockWithProductsOnAccListing.QC_2296_TransitionOnProductPageFromACCListing"/>
-            <class name="PKW.ACC.QC_2294_BlockWithProductsOnAccListing.QC_2297_SelectingQuantityProductsByBuyOnACCListing"/>
             <class name="PKW.ACC.QC_2294_BlockWithProductsOnAccListing.QC_2298_AddProductsToBasketOnACCListing"/>
         </classes>
     </test>
@@ -164,15 +159,18 @@
 
     <test name="QC_2288_ListingAccessories">
         <classes>
-            <class name="PKW.ACC.QC_2288_ListingAccessories.QC_2289_BreadCrumbsOnAccessoriesListing"/>
-            <class name="PKW.ACC.QC_2288_ListingAccessories.QC_2290_WorkBreadCrumbsOnAccessoriesListing"/>
+            <class name="PKW.ACC.QC_2288_ListingAccessories.QC_2289_AvailabilityAndWorkBreadCrumbsOnAccessoriesListing"/>
             <class name="PKW.ACC.QC_2288_ListingAccessories.QC_2291_TitleOnAccessoriesListing"/>
+            <class name="PKW.ACC.QC_2288_ListingAccessories.QC_2292_BlockFilterByBrandsOnAccessoriesListing"/>
+            <class name="PKW.ACC.QC_2288_ListingAccessories.QC_2293_PaginationBlockOnAccessoriesListing"/>
         </classes>
     </test>
 
     <test name="QC_2283_BlockWithProductsOnToolsListing">
         <classes>
+            <class name="PKW.ACC.QC_2283_BlockWithProductsOnToolsListing.QC_2284_MainProductsOnToolsListing"/>
             <class name="PKW.ACC.QC_2283_BlockWithProductsOnToolsListing.QC_2285_TransitionOnProductPageFromToolsListing"/>
+            <class name="PKW.ACC.QC_2283_BlockWithProductsOnToolsListing.QC_2286_SelectingQuantityProductsToBuyOnToolsListing"/>
             <class name="PKW.ACC.QC_2283_BlockWithProductsOnToolsListing.QC_2287_AddProductsInBasketOnToolsListing"/>
         </classes>
     </test>

@@ -1,8 +1,8 @@
 package PKW.ACC.QC_2294_BlockWithProductsOnAccListing;
 
+import Common.SetUp;
 import PKW.Listing_accessories_page_Logic;
 import PKW.Product_page_Logic;
-import PKW.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -11,9 +11,11 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
 import java.sql.SQLException;
+
+import static Common.SetUp.setUpBrowser;
 import static PKW.CommonMethods.openPage;
-import static PKW.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_2296_TransitionOnProductPageFromACCListing {
@@ -37,10 +39,10 @@ public class QC_2296_TransitionOnProductPageFromACCListing {
     @Description(value = "Test Checks transition on product page from first product in listing.")
     public void testCheckingTransitionFromFirstProductInListing(String route) {
         openPage(route);
-      nameProduct = listingAccessoriesPageLogic.getNameProductInListing();
-      listingAccessoriesPageLogic.clickFirstProductInListing();
-      titleNameProduct = new Product_page_Logic().getNameTitle();
-      Assert.assertEquals(nameProduct, titleNameProduct);
+        nameProduct = listingAccessoriesPageLogic.getNameProductInListing();
+        listingAccessoriesPageLogic.clickFirstProductInListing();
+        titleNameProduct = new Product_page_Logic().getNameTitle();
+        Assert.assertEquals(nameProduct, titleNameProduct);
     }
 
     @AfterMethod

@@ -114,6 +114,15 @@ public class Tyre_form_page_Logic extends Tyre_form_page {
         return mpnNumber;
     }
 
+    @Step("get name brand of product. Tyre_form_page")
+    public String getNameBrandOfProduct() {
+        String fullNameBrand = nameBrandProduct().getText();
+        String cutNameBrand = fullNameBrand.replace(fullNameBrand.substring(fullNameBrand.indexOf(" ")),"");
+        return cutNameBrand;
+    }
+
+
+
     @Step("added product to Wishlist. Tyre_form_page")
     public Tyre_form_page_Logic addProductToWishList(int positionOfProduct) {
         btnAddProductToWishList().get(positionOfProduct).shouldBe(visible).click();

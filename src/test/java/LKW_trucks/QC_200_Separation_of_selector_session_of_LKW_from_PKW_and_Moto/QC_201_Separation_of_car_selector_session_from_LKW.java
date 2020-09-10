@@ -1,6 +1,7 @@
 package LKW_trucks.QC_200_Separation_of_selector_session_of_LKW_from_PKW_and_Moto;
 
 import ATD.*;
+import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -12,7 +13,7 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.*;
 
 public class QC_201_Separation_of_car_selector_session_from_LKW {

@@ -3,7 +3,7 @@
 <suite name="ACC_ATD" parallel="methods" thread-count="2" data-provider-thread-count="3">
 
     <listeners>
-        <listener class-name="ATD.ProjectListener"/>
+        <listener class-name="Common.ProjectListener"/>
     </listeners>
 
     <test name="QC_1260_MainProductCatalogOnMainTools">

@@ -1,8 +1,8 @@
 package ATD.ProductGroups;
 
-import ATD.DataBase;
+import Common.DataBase;
 import ATD.Product_page_Logic;
-import ATD.SetUp;
+import Common.SetUp;
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -15,7 +15,7 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.*;
-import static ATD.SetUp.setUpBrowser;
+import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1584_Regular {

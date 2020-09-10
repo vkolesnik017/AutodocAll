@@ -1,6 +1,6 @@
 package PKW.SpecificTests;
 
-import ATD.Excel;
+import Common.Excel;
 import PKW.CommonMethods;
 import PKW.Main_page;
 import com.codeborne.selenide.Configuration;
@@ -9,9 +9,9 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import static ATD.Excel.parseExcel;
+import static Common.Excel.parseExcel;
+import static Common.SetUp.setUpBrowser;
 import static PKW.CommonMethods.openPage;
-import static PKW.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_2337_addingNewPkwMotoInSelector extends Main_page {
