@@ -25,7 +25,7 @@ public class QC_32_AvailabilityOfTopModelsList {
 
     @DataProvider(name = "routesCategory", parallel = true)
     Object[] dataProviderCategory() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category2");
     }
 
     @Test(dataProvider = "routesCategory")
@@ -45,7 +45,7 @@ public class QC_32_AvailabilityOfTopModelsList {
 
     @DataProvider(name = "routesCategoryBrand", parallel = true)
     Object[] dataProviderCategoryBrand() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_brand");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_brand");
     }
 
     @Test(dataProvider = "routesCategoryBrand")

@@ -25,7 +25,7 @@ public class QC_161_BrandCatalogLinkInModelBlock {
 
     @DataProvider(name = "routesCategory", parallel = true)
     Object[] dataProviderCategory() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_main");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_main");
     }
 
     @Test(dataProvider = "routesCategory")

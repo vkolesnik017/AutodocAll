@@ -28,7 +28,7 @@ public class QC_80_ApplicabilityProductToTruck {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_maker2,lkw_category_maker_brand");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_maker2,lkw_category_maker_brand");
     }
 
     @Test(dataProvider = "routes")
@@ -43,7 +43,7 @@ public class QC_80_ApplicabilityProductToTruck {
 
     @DataProvider(name = "routesCategoriesMaker", parallel = true)
     Object[] dataProviderCategoriesMaker() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_categories_maker3");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_categories_maker3");
     }
 
     @Test(dataProvider = "routesCategoriesMaker")

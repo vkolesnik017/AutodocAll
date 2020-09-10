@@ -26,7 +26,7 @@ public class QC_332_PresenceIconOfBrandInHeadline {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_categories_maker2,moto_parent_category_maker2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_categories_maker2,moto_parent_category_maker2");
     }
 
     @Test(dataProvider = "routes")
@@ -42,7 +42,7 @@ public class QC_332_PresenceIconOfBrandInHeadline {
 
     @DataProvider(name = "routesCategoryMaker", parallel = true)
     Object[] dataProviderCategoryMaker() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_maker");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_maker");
     }
 
     @Test(dataProvider = "routesCategoryMaker")
@@ -58,7 +58,7 @@ public class QC_332_PresenceIconOfBrandInHeadline {
 
     @DataProvider(name = "routesCatalog", parallel = true)
     Object[] dataProviderCatalog() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog2,moto_catalog_model2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog2,moto_catalog_model2");
     }
 
     @Test(dataProvider = "routesCatalog")

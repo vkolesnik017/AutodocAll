@@ -25,7 +25,7 @@ public class QC_623_PresenceOfElementsAtLinkingBlock {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_makers");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_makers");
     }
 
     @Test(dataProvider = "routes")
@@ -38,7 +38,7 @@ public class QC_623_PresenceOfElementsAtLinkingBlock {
         new Moto_makers_page_Logic()
                 .checkElementsOfLinkingBlock()
                 .clickOnTopModelInLinkingBlock(1, 4);
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_catalog_model4"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_catalog_model4"));
     }
 
 }

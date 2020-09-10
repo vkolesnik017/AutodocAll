@@ -87,7 +87,7 @@ public class Cart_page_Logic extends Cart_page {
     @Step("Checks currency on cart page. Cart_page")
     public Cart_page_Logic checkCurrencyOnCartPage(String shop) throws SQLException {
         makePriceForMinimumOrderForCH(shop);
-        String expectedCurrency = new DataBase().getCurrency(shop);
+        String expectedCurrency = new DataBase("ATD").getCurrency(shop);
         getCurrencyAndVerify(totalOrderPriceInHead(), "orderPriceInHead", shop, expectedCurrency);
         getCurrencyAndVerify(priceOfAllProducts(), "priceOfAllProducts", shop, expectedCurrency);
         getCurrencyAndVerify(totalOrderPrice(), "totalOrderPrice", shop, expectedCurrency);
@@ -99,7 +99,7 @@ public class Cart_page_Logic extends Cart_page {
     @Step("Checks currency on cart page from discount block. Cart_page")
     public Cart_page_Logic checkCurrencyOnCartPageFromDiscountBlock(String shop) throws SQLException {
         if (discountBlock().isDisplayed()) {
-            String expectedCurrency = new DataBase().getCurrency(shop);
+            String expectedCurrency = new DataBase("ATD").getCurrency(shop);
             getCurrencyAndVerify(priceWithoutDiscount(), "priceWithoutDiscount", shop, expectedCurrency);
             getCurrencyAndVerify(priceWithDiscount(), "priceWithDiscount", shop, expectedCurrency);
             getCurrencyAndVerify(discount(), "discount", shop, expectedCurrency);

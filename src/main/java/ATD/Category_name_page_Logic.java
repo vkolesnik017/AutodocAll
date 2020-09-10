@@ -24,7 +24,7 @@ public class Category_name_page_Logic extends Category_name_page {
     @Step("check successfully child category page loading. Category_name_page")
     public Category_name_page_Logic checkSuccessfullyChildCategoryLoadingFromMainPage() throws SQLException {
         imageOfChildCategory().shouldBe(visible);
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "category_name8"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "category_name8"));
         return this;
     }
 

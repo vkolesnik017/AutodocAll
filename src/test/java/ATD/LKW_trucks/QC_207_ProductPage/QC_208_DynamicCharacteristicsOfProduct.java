@@ -25,7 +25,7 @@ public class QC_208_DynamicCharacteristicsOfProduct {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_product4");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_product4");
     }
 
     @Test(dataProvider = "routes")

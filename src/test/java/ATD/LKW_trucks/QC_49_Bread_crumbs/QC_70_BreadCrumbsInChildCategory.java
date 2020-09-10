@@ -24,7 +24,7 @@ public class QC_70_BreadCrumbsInChildCategory {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category");
     }
 
     @Test(dataProvider = "routes")

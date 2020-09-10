@@ -25,7 +25,7 @@ public class QC_114_InteractionOfInstallationSideAndGenericFilters {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list12");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list12");
     }
 
     @Test(dataProvider = "routes")

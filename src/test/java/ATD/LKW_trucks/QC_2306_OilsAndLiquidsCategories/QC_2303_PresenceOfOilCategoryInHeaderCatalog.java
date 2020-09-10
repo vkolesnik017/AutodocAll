@@ -27,7 +27,7 @@ public class QC_2303_PresenceOfOilCategoryInHeaderCatalog {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "main");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "main");
     }
 
     @Test(dataProvider = "routes")
@@ -40,7 +40,7 @@ public class QC_2303_PresenceOfOilCategoryInHeaderCatalog {
                 presenceOfOilParentCategoryInHeaderCatalog("lkw_parent_category4")
                 .presenceOfOilChildCategoryPopUp()
                 .clickOnOilChildCategory();
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "lkw_category4"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "lkw_category4"));
     }
 
     @AfterMethod

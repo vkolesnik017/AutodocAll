@@ -18,16 +18,14 @@ import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_153_NavigationBlockInHeader_lkw {
-    private LKW_main_page_Logic mainPage = new LKW_main_page_Logic();
-    private DataBase db = new DataBase();
-    @BeforeClass
+     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
     }
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_main");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_main");
     }
 
     @Test(dataProvider = "routes")

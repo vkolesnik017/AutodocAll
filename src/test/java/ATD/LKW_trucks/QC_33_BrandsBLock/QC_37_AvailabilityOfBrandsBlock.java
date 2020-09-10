@@ -25,7 +25,7 @@ public class QC_37_AvailabilityOfBrandsBlock {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category2,lkw_category_maker,lkw_category_brand,lkw_category_maker_brand");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category2,lkw_category_maker,lkw_category_brand,lkw_category_maker_brand");
     }
 
     @Test(dataProvider = "routes")
@@ -39,7 +39,7 @@ public class QC_37_AvailabilityOfBrandsBlock {
 
     @DataProvider(name = "routesMakerCarList", parallel = true)
     Object[] dataProviderForMainPage() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_main");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_main");
     }
 
     @Test(dataProvider = "routesMakerCarList")

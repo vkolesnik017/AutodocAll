@@ -26,7 +26,7 @@ public class QC_627_NestingLevelsOfTecDocCatalog {
     }
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_categories");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_categories");
     }
 
     @Test(dataProvider = "routes")
@@ -42,7 +42,7 @@ public class QC_627_NestingLevelsOfTecDocCatalog {
 
     @DataProvider(name = "routesCatalogModel", parallel = true)
     Object[] dataProviderCatalogModel() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog_model2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog_model2");
 
     }
 
@@ -59,7 +59,7 @@ public class QC_627_NestingLevelsOfTecDocCatalog {
 
     @DataProvider(name = "routesCatalogMoto", parallel = true)
     Object[] dataProviderCatalogMoto() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog2");
     }
 
     @Test(dataProvider = "routesCatalogMoto")

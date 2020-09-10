@@ -24,7 +24,7 @@ public class QC_69_BreadCrumbsInCategoryMaker {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_maker");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_maker");
     }
 
     @Test(dataProvider = "routes")

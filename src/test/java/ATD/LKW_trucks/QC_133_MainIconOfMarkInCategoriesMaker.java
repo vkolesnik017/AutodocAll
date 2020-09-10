@@ -24,7 +24,7 @@ public class QC_133_MainIconOfMarkInCategoriesMaker {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_categories_maker");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_categories_maker");
     }
 
     @Test(dataProvider = "routes")

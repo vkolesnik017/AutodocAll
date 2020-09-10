@@ -25,7 +25,7 @@ public class QC_222_MainImageOnErrorPage {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "404");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "404");
     }
 
     @Test(dataProvider = "routes")

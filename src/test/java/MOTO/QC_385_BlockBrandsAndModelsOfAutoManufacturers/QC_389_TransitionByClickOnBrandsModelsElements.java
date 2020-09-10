@@ -27,7 +27,7 @@ public class QC_389_TransitionByClickOnBrandsModelsElements {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_categories_maker2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_categories_maker2");
     }
 
     @Test(dataProvider = "routes")
@@ -39,12 +39,12 @@ public class QC_389_TransitionByClickOnBrandsModelsElements {
 
         new Moto_Categories_maker_page_Logic()
                 .clickOnMotoModel(0);
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_catalog_model3"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_catalog_model3"));
     }
 
     @DataProvider(name = "routesCategoryMaker", parallel = true)
     Object[] dataProviderCategoryMaker() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_maker3");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_maker3");
     }
 
     @Test(dataProvider = "routesCategoryMaker")
@@ -56,12 +56,12 @@ public class QC_389_TransitionByClickOnBrandsModelsElements {
 
         new Moto_Category_maker_page_Logic()
                 .clickOnMotoModel(5);
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_category_car_list_model4"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_category_car_list_model4"));
     }
 
     @DataProvider(name = "routesMakers", parallel = true)
     Object[] dataProviderMakers() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_makers");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_makers");
     }
 
     @Test(dataProvider = "routesMakers")
@@ -73,12 +73,12 @@ public class QC_389_TransitionByClickOnBrandsModelsElements {
 
         new Moto_makers_page_Logic()
                 .clickOnImageOfMotomaker(0);
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_categories_maker4"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_categories_maker4"));
     }
 
     @DataProvider(name = "routesCategories", parallel = true)
     Object[] dataProviderCategories() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_categories");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_categories");
     }
 
     @Test(dataProvider = "routesCategories")
@@ -90,7 +90,7 @@ public class QC_389_TransitionByClickOnBrandsModelsElements {
 
         new Moto_Categories_page_Logic()
                 .clickOnMotoBrands(4);
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_categories_maker"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_categories_maker"));
     }
     @AfterMethod
     public void close() {

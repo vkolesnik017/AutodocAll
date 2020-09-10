@@ -24,7 +24,7 @@ public class QC_84_RequiredFieldsForSelectionInSelector {
 
     @DataProvider(name = "routesWithVerticalSelector", parallel = true)
     Object[] dataProviderVerticalSelector() throws SQLException {
-       return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_main,lkw_parent_category,lkw_category2,lkw_category_maker,lkw_category_brand,lkw_category_maker_brand,lkw_category_car_list10,lkw_makers,lkw_categories_maker,404");
+       return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_main,lkw_parent_category,lkw_category2,lkw_category_maker,lkw_category_brand,lkw_category_maker_brand,lkw_category_car_list10,lkw_makers,lkw_categories_maker,404");
 
     }
 
@@ -43,7 +43,7 @@ public class QC_84_RequiredFieldsForSelectionInSelector {
 
     @DataProvider(name = "routesWithCloseVerticalSelector", parallel = true)
     Object[] dataProviderCloseVerticalSelector() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_categories,lkw_category_car_list11,lkw_maker_car_list2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_categories,lkw_category_car_list11,lkw_maker_car_list2");
 
     }
 
@@ -63,7 +63,7 @@ public class QC_84_RequiredFieldsForSelectionInSelector {
 
     @DataProvider(name = "routesWithHorizontalSelector", parallel = true)
     Object[] dataProviderHorizontalSelector() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_product3");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_product3");
 
     }
 

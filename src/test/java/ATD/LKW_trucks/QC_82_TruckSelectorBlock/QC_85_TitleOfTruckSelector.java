@@ -25,7 +25,7 @@ public class QC_85_TitleOfTruckSelector {
 
     @DataProvider(name = "routesMakerCarList", parallel = true)
     Object[] dataProviderMakerCarList() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_maker_car_list4");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_maker_car_list4");
     }
 
     @Test(dataProvider = "routesMakerCarList")
@@ -45,7 +45,7 @@ public class QC_85_TitleOfTruckSelector {
 
     @DataProvider(name = "routesCategoryCarList", parallel = true)
     Object[] dataProviderCategoryCarList() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list10");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list10");
     }
 
     @Test(dataProvider = "routesCategoryCarList")
@@ -61,7 +61,7 @@ public class QC_85_TitleOfTruckSelector {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list11");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list11");
     }
 
     @Test(dataProvider = "routes")
@@ -77,7 +77,7 @@ public class QC_85_TitleOfTruckSelector {
 
     @DataProvider(name = "routesCarList", parallel = true)
     Object[] dataProviderCarList() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_maker_car_list5");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_maker_car_list5");
     }
 
     @Test(dataProvider = "routesCarList")
@@ -95,7 +95,7 @@ public class QC_85_TitleOfTruckSelector {
 
     @DataProvider(name = "routesMakerCarListAndMainPage", parallel = true)
     Object[] dataProviderMakerCarListAndMainPage() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_maker_car_list3");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_maker_car_list3");
     }
 
     @Test(dataProvider = "routesMakerCarListAndMainPage")

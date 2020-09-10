@@ -69,7 +69,7 @@ public class Moto_Category_page_Logic extends Moto_Category_page {
 
     @Step(" check current url. Moto_Category_page")
     public Moto_Category_page_Logic checkCurrentUrl(String subRoute) throws SQLException {
-        checkingContainsUrl(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", subRoute));
+        checkingContainsUrl(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", subRoute));
         return this;
     }
 
@@ -164,10 +164,10 @@ public class Moto_Category_page_Logic extends Moto_Category_page {
     public Moto_Category_page_Logic checkBreadCrumbsBlock() throws SQLException {
         breadCrumbsLinks().shouldHaveSize(6);
         checkFirstLinkOfBreadCrumbsLinks();
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_categories"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_categories"));
         back();
         checkSecondLinkOfBreadCrumbsLinks("Filter");
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_parent_category"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_parent_category"));
         back();
         checkThirdLinkOfBreadCrumbsLinks("Ölfilter");
         checkFourthLinkOfBreadCrumbsLinks("Marke Wählen");

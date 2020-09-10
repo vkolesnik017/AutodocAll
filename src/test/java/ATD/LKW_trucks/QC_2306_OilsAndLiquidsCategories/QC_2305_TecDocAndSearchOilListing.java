@@ -24,7 +24,7 @@ public class QC_2305_TecDocAndSearchOilListing {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list31,lkw_search10");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list31,lkw_search10");
     }
 
     @Test(dataProvider = "routes")

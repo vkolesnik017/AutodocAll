@@ -14,7 +14,7 @@ public class Profile_bonusSystem_page_Logic extends Profile_bonusSystem_page {
 
     @Step("Checks currency on header bonus label. Profile_bonusSystem_page")
     public Profile_bonusSystem_page_Logic checkCurrencyOnHeaderBonusLabel(String shop) throws SQLException {
-        String expectedCurrency = new DataBase().getCurrency(shop);
+        String expectedCurrency = new DataBase("ATD").getCurrency(shop);
         getCurrencyAndVerify(headerBonusAmountCurrency(), "headerBonusAmountCurrency()", shop, expectedCurrency);
         return this;
     }
@@ -89,7 +89,7 @@ public class Profile_bonusSystem_page_Logic extends Profile_bonusSystem_page {
 
     @Step("Checks that the currency of the added bonus matches the shop. Profile_bonusSystem_page")
     public Profile_bonusSystem_page_Logic checkCurrencyAccruedBonusInTable(String shop) throws SQLException {
-        String expectedCurrency = new DataBase().getCurrency(shop);
+        String expectedCurrency = new DataBase("ATD").getCurrency(shop);
         String actualCurrencyBonus = accruedBonusInTable().getText().replaceAll(".+[0-9].", "");
         Assert.assertEquals(expectedCurrency, actualCurrencyBonus);
         return this;

@@ -24,7 +24,7 @@ public class QC_29_AvailabilityOfBrandAndModelBlocks {
 
     @DataProvider(name = "routesCategory", parallel = true)
     Object[] dataProviderCategory() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category2,lkw_category_brand");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category2,lkw_category_brand");
     }
 
     @Test(dataProvider = "routesCategory")
@@ -40,7 +40,7 @@ public class QC_29_AvailabilityOfBrandAndModelBlocks {
 
     @DataProvider(name = "routesCategoryMaker", parallel = true)
     Object[] dataProviderCategoryMaker() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_maker,lkw_category_maker_brand");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_maker,lkw_category_maker_brand");
     }
 
     @Test(dataProvider = "routesCategoryMaker")
@@ -55,7 +55,7 @@ public class QC_29_AvailabilityOfBrandAndModelBlocks {
     }
     @DataProvider(name = "routesMakers", parallel = true)
     Object[] dataProviderMakers() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_makers");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_makers");
     }
 
     @Test(dataProvider = "routesMakers")
@@ -71,7 +71,7 @@ public class QC_29_AvailabilityOfBrandAndModelBlocks {
 
     @DataProvider(name = "routesCategoriesMaker", parallel = true)
     Object[] dataProviderCategoriesMaker() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_categories_maker");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_categories_maker");
     }
 
     @Test(dataProvider = "routesCategoriesMaker")
@@ -87,7 +87,7 @@ public class QC_29_AvailabilityOfBrandAndModelBlocks {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_main");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_main");
     }
 
     @Test(dataProvider = "routes")

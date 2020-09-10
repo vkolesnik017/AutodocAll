@@ -26,7 +26,7 @@ public class QC_93_VisibilityOfCarInInputFieldOfSelectorFromUrl {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_maker_brand,lkw_categories_maker2,lkw_category_maker2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_maker_brand,lkw_categories_maker2,lkw_category_maker2");
     }
 
     @Test(dataProvider = "routes")
@@ -41,7 +41,7 @@ public class QC_93_VisibilityOfCarInInputFieldOfSelectorFromUrl {
 
     @DataProvider(name = "routesCategoryCarList", parallel = true)
     Object[] dataProviderCategoryCarList() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list10,lkw_category_car_list11");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list10,lkw_category_car_list11");
     }
 
     @Test(dataProvider = "routesCategoryCarList")
@@ -58,7 +58,7 @@ public class QC_93_VisibilityOfCarInInputFieldOfSelectorFromUrl {
 
     @DataProvider(name = "routesMakerCarList", parallel = true)
     Object[] dataProviderMakerCarList() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_maker_car_list2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_maker_car_list2");
     }
 
     @Test(dataProvider = "routesMakerCarList")

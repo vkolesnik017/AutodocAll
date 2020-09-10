@@ -24,7 +24,7 @@ public class QC_2307_PresenceOfOilCategoryOnMainPage {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "main");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "main");
     }
 
     @Test(dataProvider = "routes")

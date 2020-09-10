@@ -25,7 +25,7 @@ public class QC_30_TransitionByClickAtBrandAndModel {
 
     @DataProvider(name = "routesMain", parallel = true)
     Object[] dataProviderMain() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_main");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_main");
     }
 
     @Test(dataProvider = "routesMain")
@@ -40,7 +40,7 @@ public class QC_30_TransitionByClickAtBrandAndModel {
 
     @DataProvider(name = "routesMakers", parallel = true)
     Object[] dataProviderMakers() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_makers");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_makers");
     }
 
     @Test(dataProvider = "routesMakers")
@@ -56,7 +56,7 @@ public class QC_30_TransitionByClickAtBrandAndModel {
 
     @DataProvider(name = "routesCategory", parallel = true)
     Object[] dataProviderCategory() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category2");
     }
     @Test(dataProvider = "routesCategory")
     @Flaky
@@ -72,7 +72,7 @@ public class QC_30_TransitionByClickAtBrandAndModel {
 
     @DataProvider(name = "routesCategoryBrand", parallel = true)
     Object[] dataProviderCategoryBrand() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_brand");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_brand");
     }
     @Test(dataProvider = "routesCategoryBrand")
     @Flaky
@@ -87,7 +87,7 @@ public class QC_30_TransitionByClickAtBrandAndModel {
 
     @DataProvider(name = "routesCategoryMaker", parallel = true)
     Object[] dataProviderCategoryMaker() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_maker2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_maker2");
     }
     @Test(dataProvider = "routesCategoryMaker")
     @Flaky
@@ -102,7 +102,7 @@ public class QC_30_TransitionByClickAtBrandAndModel {
 
     @DataProvider(name = "routesCategoryMakerBrand", parallel = true)
     Object[] dataProviderCategoryMakerBrand() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_maker_brand");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_maker_brand");
     }
     @Test(dataProvider = "routesCategoryMakerBrand")
     @Flaky
@@ -118,7 +118,7 @@ public class QC_30_TransitionByClickAtBrandAndModel {
 
     @DataProvider(name = "routesCategoriesMaker", parallel = true)
     Object[] dataProviderCategoriesMaker() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_categories_maker");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_categories_maker");
     }
     @Test(dataProvider = "routesCategoriesMaker")
     @Flaky

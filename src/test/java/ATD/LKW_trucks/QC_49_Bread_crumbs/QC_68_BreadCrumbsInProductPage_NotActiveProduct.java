@@ -24,7 +24,7 @@ public class QC_68_BreadCrumbsInProductPage_NotActiveProduct {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_product2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_product2");
     }
 
     @Test(dataProvider = "routes")

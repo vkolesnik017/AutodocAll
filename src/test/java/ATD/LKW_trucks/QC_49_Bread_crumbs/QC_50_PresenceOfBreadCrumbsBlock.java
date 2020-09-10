@@ -24,7 +24,7 @@ public class QC_50_PresenceOfBreadCrumbsBlock {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_product,lkw_parent_category,lkw_category,lkw_category_maker,lkw_category_brand,lkw_category_maker_brand,lkw_category_car_list,lkw_maker_car_list,lkw_maker_car_list2,lkw_categories_maker");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_product,lkw_parent_category,lkw_category,lkw_category_maker,lkw_category_brand,lkw_category_maker_brand,lkw_category_car_list,lkw_maker_car_list,lkw_maker_car_list2,lkw_categories_maker");
     }
 
     @Test(dataProvider = "routes")

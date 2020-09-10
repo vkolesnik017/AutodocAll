@@ -24,7 +24,7 @@ public class QC_201_Separation_of_car_selector_session_from_LKW {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "main", "main");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "main", "main");
     }
 
     @Test(dataProvider = "routes")

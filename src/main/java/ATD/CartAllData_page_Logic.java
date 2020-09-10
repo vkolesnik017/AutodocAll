@@ -184,7 +184,7 @@ public class CartAllData_page_Logic extends CartAllData_page {
 
     @Step("Checks currency on all data page. CartAllData_page")
     public CartAllData_page_Logic checkCurrencyOnAllDataPage(String shop) throws SQLException {
-        String expectedCurrency = new DataBase().getCurrency(shop);
+        String expectedCurrency = new DataBase("ATD").getCurrency(shop);
         getCurrencyAndVerify(totalOrderPriceInHead(), "totalOrderPriceInHead", shop, expectedCurrency);
         getCurrencyAndVerify(productPrice(), "productPrice", shop, expectedCurrency);
         getCurrencyAndVerify(totalProductPrice(), "totalProductPrice", shop, expectedCurrency);
@@ -200,7 +200,7 @@ public class CartAllData_page_Logic extends CartAllData_page {
 
     @Step("Check currency for VAT price only for CH. CartAllData_page")
     public CartAllData_page_Logic checkCurrencyForVatPrice(String shop) throws SQLException {
-        String expectedCurrency = new DataBase().getCurrency(shop);
+        String expectedCurrency = new DataBase("ATD").getCurrency(shop);
         getCurrencyAndVerify(vatPriceInHead(), "vatPriceInHead", shop, expectedCurrency);
         getCurrencyAndVerify(vatPriceInTotalOrder(), "vatPriceInTotalOrder", shop, expectedCurrency);
         return this;

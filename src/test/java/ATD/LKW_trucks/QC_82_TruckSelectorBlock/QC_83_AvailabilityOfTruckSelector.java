@@ -24,7 +24,7 @@ public class QC_83_AvailabilityOfTruckSelector {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_product3,lkw_parent_category,lkw_category2,lkw_category_maker,lkw_category_brand,lkw_category_maker_brand,lkw_makers,lkw_categories_maker,lkw_main,404");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_product3,lkw_parent_category,lkw_category2,lkw_category_maker,lkw_category_brand,lkw_category_maker_brand,lkw_makers,lkw_categories_maker,lkw_main,404");
     }
 
     @Test(dataProvider = "routes")
@@ -39,7 +39,7 @@ public class QC_83_AvailabilityOfTruckSelector {
 
     @DataProvider(name = "LKWCategoryCarList", parallel = true)
     Object[] dataProviderCarList() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list10");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list10");
     }
 
     @Test(dataProvider = "LKWCategoryCarList")
@@ -53,7 +53,7 @@ public class QC_83_AvailabilityOfTruckSelector {
 
     @DataProvider(name = "LKWMakerCarList", parallel = true)
     Object[] dataProviderMakerCarList() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_maker_car_list2,lkw_categories");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_maker_car_list2,lkw_categories");
     }
 
     @Test(dataProvider = "LKWMakerCarList")
@@ -68,7 +68,7 @@ public class QC_83_AvailabilityOfTruckSelector {
 
     @DataProvider(name = "LKWMakerCarListSecond", parallel = true)
     Object[] dataProviderMakerCarListSecond() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list11");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list11");
     }
 
     @Test(dataProvider = "LKWMakerCarListSecond")
@@ -82,7 +82,7 @@ public class QC_83_AvailabilityOfTruckSelector {
 
     @DataProvider(name = "LKWMakerCarListThird", parallel = true)
     Object[] dataProviderMakerCarListThird() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_maker_car_list2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_maker_car_list2");
     }
 
     @Test(dataProvider = "LKWMakerCarListThird")

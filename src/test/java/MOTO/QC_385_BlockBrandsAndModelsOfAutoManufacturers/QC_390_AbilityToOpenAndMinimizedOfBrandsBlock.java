@@ -25,7 +25,7 @@ public class QC_390_AbilityToOpenAndMinimizedOfBrandsBlock {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_maker3");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_maker3");
     }
 
     @Test(dataProvider = "routes")

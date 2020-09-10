@@ -24,7 +24,7 @@ public class QC_77_VisibilityOfAdditionInfoInTopBlock {
 
     @DataProvider(name = "routesMain", parallel = true)
     Object[] dataProviderMain() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_main");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_main");
     }
 
     @Test(dataProvider = "routesMain")
@@ -39,7 +39,7 @@ public class QC_77_VisibilityOfAdditionInfoInTopBlock {
 
     @DataProvider(name = "routesCategory", parallel = true)
     Object[] dataProviderCategory() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category2,lkw_category_maker2,lkw_category_brand,lkw_category_maker_brand");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category2,lkw_category_maker2,lkw_category_brand,lkw_category_maker_brand");
     }
 
     @Test(dataProvider = "routesCategory")
@@ -54,7 +54,7 @@ public class QC_77_VisibilityOfAdditionInfoInTopBlock {
 
     @DataProvider(name = "routesCategoriesMaker", parallel = true)
     Object[] dataProviderCategoriesMaker() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_categories_maker");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_categories_maker");
     }
 
     @Test(dataProvider = "routesCategoriesMaker")
@@ -69,7 +69,7 @@ public class QC_77_VisibilityOfAdditionInfoInTopBlock {
 
     @DataProvider(name = "routesCategories", parallel = true)
     Object[] dataProviderCategories() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_categories,lkw_maker_car_list2,lkw_category_car_list11");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_categories,lkw_maker_car_list2,lkw_category_car_list11");
     }
 
     @Test(dataProvider = "routesCategories")

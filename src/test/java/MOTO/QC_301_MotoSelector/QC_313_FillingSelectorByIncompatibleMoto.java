@@ -25,7 +25,7 @@ public class QC_313_FillingSelectorByIncompatibleMoto {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_product");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_product");
 
     }
 
@@ -39,7 +39,7 @@ public class QC_313_FillingSelectorByIncompatibleMoto {
         new Moto_Product_page_Logic()
                 .selectMotoInHorizontalSelector("4057", "13475", "109218")
                 .visibilityOfErrorMessage();
-        checkingContainsUrl(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_catalog3"));
+        checkingContainsUrl(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_catalog3"));
 
     }
 

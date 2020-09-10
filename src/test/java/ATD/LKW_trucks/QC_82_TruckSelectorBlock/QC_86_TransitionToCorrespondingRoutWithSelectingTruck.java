@@ -26,7 +26,7 @@ public class QC_86_TransitionToCorrespondingRoutWithSelectingTruck {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_parent_category");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_parent_category");
     }
 
     @Test(dataProvider = "routes")
@@ -37,12 +37,12 @@ public class QC_86_TransitionToCorrespondingRoutWithSelectingTruck {
         openPage(route);
         new LKW_Parent_Category_page_Logic()
                 .selectTruckInSelector("24", "714", "1004434");
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "lkw_maker_car_list4"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "lkw_maker_car_list4"));
     }
 
     @DataProvider(name = "routesCategory", parallel = true)
     Object[] dataProviderCategory() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category2,lkw_category_maker2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category2,lkw_category_maker2");
     }
 
     @Test(dataProvider = "routesCategory")
@@ -58,7 +58,7 @@ public class QC_86_TransitionToCorrespondingRoutWithSelectingTruck {
 
     @DataProvider(name = "routesCategoryCarList", parallel = true)
     Object[] dataProviderCategoryCarList() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list10");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list10");
     }
 
     @Test(dataProvider = "routesCategoryCarList")
@@ -74,7 +74,7 @@ public class QC_86_TransitionToCorrespondingRoutWithSelectingTruck {
 
     @DataProvider(name = "routesCategoryBrand", parallel = true)
     Object[] dataProviderCategoryBrand() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_brand,lkw_category_maker_brand");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_brand,lkw_category_maker_brand");
     }
 
     @Test(dataProvider = "routesCategoryBrand")
@@ -92,7 +92,7 @@ public class QC_86_TransitionToCorrespondingRoutWithSelectingTruck {
 
     @DataProvider(name = "routesCategories", parallel = true)
     Object[] dataProviderCategories() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_categories,lkw_maker_car_list2,lkw_category_car_list11");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_categories,lkw_maker_car_list2,lkw_category_car_list11");
     }
 
     @Test(dataProvider = "routesCategories")
@@ -103,12 +103,12 @@ public class QC_86_TransitionToCorrespondingRoutWithSelectingTruck {
         openPage(route);
         new LKW_Categories_page_Logic()
                 .selectTruckInSelector("24", "714", "1004434");
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "lkw_maker_car_list4"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "lkw_maker_car_list4"));
     }
 
     @DataProvider(name = "routesMakers", parallel = true)
     Object[] dataProviderMakers() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_makers,404");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_makers,404");
     }
 
     @Test(dataProvider = "routesMakers")
@@ -125,7 +125,7 @@ public class QC_86_TransitionToCorrespondingRoutWithSelectingTruck {
 
     @DataProvider(name = "routesCategoriesMaker", parallel = true)
     Object[] dataProviderCategoriesMaker() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_categories_maker");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_categories_maker");
     }
 
     @Test(dataProvider = "routesCategoriesMaker")
@@ -136,13 +136,13 @@ public class QC_86_TransitionToCorrespondingRoutWithSelectingTruck {
         openPage(route);
         new LKW_Categories_maker_page_Logic()
                 .selectTruckInSelector("74", "1587", "1000784");
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "lkw_category_car_list11"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "lkw_category_car_list11"));
     }
 
 
     @DataProvider(name = "routesMain", parallel = true)
     Object[] dataProviderMain() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_main");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_main");
     }
 
     @Test(dataProvider = "routesMain")
@@ -153,7 +153,7 @@ public class QC_86_TransitionToCorrespondingRoutWithSelectingTruck {
         openPage(route);
         new LKW_main_page_Logic()
                 .selectTruckInSelector("2242", "8959", "1012748");
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "lkw_maker_car_list6"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "lkw_maker_car_list6"));
 
     }
 

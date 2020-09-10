@@ -24,7 +24,7 @@ public class QC_123_Sidebar_block_linking_to_catalog_of_model_on_catalog_brands 
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_makers");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_makers");
     }
 
     @Test(dataProvider = "routes")

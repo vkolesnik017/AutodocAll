@@ -24,7 +24,7 @@ public class QC_352_PresenceOfLinkingBlockAndTitle {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_parent_category,moto_category,moto_parent_category_maker2,moto_category_car_list_model2,moto_category_car_list2,moto_category_maker");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_parent_category,moto_category,moto_parent_category_maker2,moto_category_car_list_model2,moto_category_car_list2,moto_category_maker");
 
     }
 

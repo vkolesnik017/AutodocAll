@@ -24,7 +24,7 @@ public class QC_90_GoToProductPageWithSelectedSuitableCar {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list13");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list13");
     }
 
     @Test(dataProvider = "routes")

@@ -24,7 +24,7 @@ public class QC_92_ResetOfValuesInTruckSelector {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_main,lkw_parent_category,lkw_category2,lkw_category_brand,lkw_makers");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_main,lkw_parent_category,lkw_category2,lkw_category_brand,lkw_makers");
     }
 
     @Test(dataProvider = "routes")
@@ -40,7 +40,7 @@ public class QC_92_ResetOfValuesInTruckSelector {
 
     @DataProvider(name = "routesCategories", parallel = true)
     Object[] dataProviderCategories() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_categories");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_categories");
     }
 
     @Test(dataProvider = "routesCategories")
@@ -56,7 +56,7 @@ public class QC_92_ResetOfValuesInTruckSelector {
     }
     @DataProvider(name = "routesProduct", parallel = true)
     Object[] dataProviderProduct() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_product3");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_product3");
     }
 
     @Test(dataProvider = "routesProduct")
@@ -71,7 +71,7 @@ public class QC_92_ResetOfValuesInTruckSelector {
     }
     @DataProvider(name = "routesCategoryMaker", parallel = true)
     Object[] dataProviderCategoryMaker() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_maker2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_maker2");
     }
 
     @Test(dataProvider = "routesCategoryMaker")
@@ -88,7 +88,7 @@ public class QC_92_ResetOfValuesInTruckSelector {
 
     @DataProvider(name = "routesCategoryCarListSecond", parallel = true)
     Object[] dataProviderCategoryCarListSecond() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list10");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list10");
     }
 
     @Test(dataProvider = "routesCategoryCarListSecond")
@@ -104,7 +104,7 @@ public class QC_92_ResetOfValuesInTruckSelector {
     }
     @DataProvider(name = "routesCategoryMakerBrand", parallel = true)
     Object[] dataProviderCategoryMakerBrand() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_maker_brand");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_maker_brand");
     }
 
     @Test(dataProvider = "routesCategoryMakerBrand")
@@ -120,7 +120,7 @@ public class QC_92_ResetOfValuesInTruckSelector {
     }
     @DataProvider(name = "routesMakerCarList", parallel = true)
     Object[] dataProviderMakerCarList() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_maker_car_list2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_maker_car_list2");
     }
 
     @Test(dataProvider = "routesMakerCarList")
@@ -137,7 +137,7 @@ public class QC_92_ResetOfValuesInTruckSelector {
 
     @DataProvider(name = "routesCategoriesMaker", parallel = true)
     Object[] dataProviderCategoriesMaker() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_categories_maker2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_categories_maker2");
     }
 
     @Test(dataProvider = "routesCategoriesMaker")
@@ -154,7 +154,7 @@ public class QC_92_ResetOfValuesInTruckSelector {
 
     @DataProvider(name = "routesCategoryCarList", parallel = true)
     Object[] dataProviderCategoryCarList() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list11");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list11");
     }
 
     @Test(dataProvider = "routesCategoryCarList")

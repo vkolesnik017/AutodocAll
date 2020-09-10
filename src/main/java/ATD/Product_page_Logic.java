@@ -358,7 +358,7 @@ public class Product_page_Logic extends Product_page {
 
     @Step("Compares the currency on the product page and in the cart popup. Product_page")
     public Product_page_Logic CompareCurrencyOnProductPageAndInBasketPopup(String shop) throws SQLException {
-        String expectedCurrency = new DataBase().getCurrency(shop);
+        String expectedCurrency = new DataBase("ATD").getCurrency(shop);
         if (priceWithoutDiscount().isDisplayed()) {
             getCurrencyAndVerify(priceWithoutDiscount(), "priceWithoutDiscount", shop, expectedCurrency);
         }

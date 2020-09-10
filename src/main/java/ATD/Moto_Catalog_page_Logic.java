@@ -162,7 +162,7 @@ public class Moto_Catalog_page_Logic extends Moto_Catalog_page {
     @Step("check current url .Moto_Catalog_page")
     public Moto_Catalog_page_Logic checkCurrentUrl(String subRoute) throws SQLException {
         catalogTecDoc().shouldBe(visible);
-        Assert.assertEquals(url(), new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", subRoute));
+        Assert.assertEquals(url(), new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", subRoute));
         return this;
     }
 
@@ -188,10 +188,10 @@ public class Moto_Catalog_page_Logic extends Moto_Catalog_page {
         thirdLinkOfBreadCrumbsBlock("Access 125");
         fourthLinkOfBreadCrumbsBlock("Teil Wählen");
         clickOnFirstLinkOfBreadCrumbs();
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_categories_maker3"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_categories_maker3"));
         back();
         clickOnSecondLinkOfBreadCrumbs();
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_catalog_model2"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_catalog_model2"));
         return this;
     }
 
@@ -440,13 +440,13 @@ public class Moto_Catalog_page_Logic extends Moto_Catalog_page {
     @Step("check transition by click on vehicle in My garage popUp .Moto_Catalog_page")
     public Moto_Catalog_page_Logic checkTransitionByClickOnVehicleInMyGaragePopUp() throws SQLException {
         clickOnMotoInMyGaragePopUp();
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_catalog7"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_catalog7"));
         back();
         clickOnTruckInMyGaragePopUp();
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "lkw_maker_car_list8"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "lkw_maker_car_list8"));
         back();
         clickOnVehicleInMyGaragePopUp();
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "maker_car_list10"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "maker_car_list10"));
         return this;
     }
 

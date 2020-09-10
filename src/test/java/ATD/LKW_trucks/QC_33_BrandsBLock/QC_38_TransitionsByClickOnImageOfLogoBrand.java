@@ -27,7 +27,7 @@ public class QC_38_TransitionsByClickOnImageOfLogoBrand {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category2,lkw_category_brand");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category2,lkw_category_brand");
     }
 
     @Test(dataProvider = "routes")
@@ -37,12 +37,12 @@ public class QC_38_TransitionsByClickOnImageOfLogoBrand {
     public void testChecksTransitionByClickOnImageOfLogoBrand(String route) throws SQLException {
         openPage(route);
         new LKW_Category_page_Logic().clickOnBrand("BOSCH");
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "lkw_category_brand2"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "lkw_category_brand2"));
     }
 
     @DataProvider(name = "routesCategoryMaker", parallel = true)
     Object[] dataProviderForCategoryMaker() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_maker2,lkw_category_maker_brand");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_maker2,lkw_category_maker_brand");
     }
 
     @Test(dataProvider = "routesCategoryMaker")
@@ -52,7 +52,7 @@ public class QC_38_TransitionsByClickOnImageOfLogoBrand {
     public void testChecksTransitionByClickOnImageOfLogoBrandInCategoryMaker(String categoryMakerRoute) throws SQLException {
         openPage(categoryMakerRoute);
         new LKW_Category_maker_Logic().clickOnBrand("BOSCH");
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "lkw_category_maker_brand3"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "lkw_category_maker_brand3"));
     }
 
     @AfterMethod

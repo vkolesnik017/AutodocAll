@@ -34,7 +34,7 @@ public class Moto_makers_page_Logic extends Moto_makers_page {
 
     @Step(" check current url  .Moto_makers_page")
     public Moto_makers_page_Logic checkCurrentUrl(String subRoute) throws SQLException {
-        checkingContainsUrl(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", subRoute));
+        checkingContainsUrl(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", subRoute));
         return this;
     }
 

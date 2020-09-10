@@ -29,7 +29,7 @@ public class QC_382_AddToBasketAnalogProduct {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list2");
     }
 
     @Test(dataProvider = "routes")
@@ -47,7 +47,7 @@ public class QC_382_AddToBasketAnalogProduct {
 
     @DataProvider(name = "routesCarListModel", parallel = true)
     Object[] dataProviderCarListModel() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list_model2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list_model2");
     }
 
     @Test(dataProvider = "routesCarListModel")

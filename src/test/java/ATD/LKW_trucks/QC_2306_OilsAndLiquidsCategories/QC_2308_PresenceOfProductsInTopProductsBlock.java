@@ -25,7 +25,7 @@ public class QC_2308_PresenceOfProductsInTopProductsBlock {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_parent_category4");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_parent_category4");
     }
 
     @Test(dataProvider = "routes")
@@ -39,7 +39,7 @@ public class QC_2308_PresenceOfProductsInTopProductsBlock {
 
     @DataProvider(name = "routesCategory", parallel = true)
     Object[] dataProviderCategory() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category4,lkw_category_maker3,lkw_category_brand3,lkw_category_maker_brand4");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category4,lkw_category_maker3,lkw_category_brand3,lkw_category_maker_brand4");
     }
 
     @Test(dataProvider = "routesCategory")

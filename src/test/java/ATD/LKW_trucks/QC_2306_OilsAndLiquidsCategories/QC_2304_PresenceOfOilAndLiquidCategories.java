@@ -19,7 +19,7 @@ import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_2304_PresenceOfOilAndLiquidCategories {
-    private DataBase db = new DataBase();
+    private DataBase db = new DataBase("ATD");
 
     @BeforeClass
     void setUp() {
@@ -28,7 +28,7 @@ public class QC_2304_PresenceOfOilAndLiquidCategories {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_categories");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_categories");
     }
 
     @Test(dataProvider = "routes")
@@ -45,7 +45,7 @@ public class QC_2304_PresenceOfOilAndLiquidCategories {
 
     @DataProvider(name = "routesMakerList", parallel = true)
     Object[] dataProviderMakerList() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_maker_car_list10");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_maker_car_list10");
     }
 
     @Test(dataProvider = "routesMakerList")
@@ -62,7 +62,7 @@ public class QC_2304_PresenceOfOilAndLiquidCategories {
 
     @DataProvider(name = "routesCarList", parallel = true)
     Object[] dataProviderCarList() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_maker_car_list9");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_maker_car_list9");
     }
 
     @Test(dataProvider = "routesCarList")
@@ -77,7 +77,7 @@ public class QC_2304_PresenceOfOilAndLiquidCategories {
     }
     @DataProvider(name = "routesErrorPage", parallel = true)
     Object[] dataProviderErrorPage() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "404");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "404");
     }
 
     @Test(dataProvider = "routesErrorPage")
@@ -94,7 +94,7 @@ public class QC_2304_PresenceOfOilAndLiquidCategories {
 
     @DataProvider(name = "routesFaq", parallel = true)
     Object[] dataProviderFaq() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_faqHash");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_faqHash");
     }
 
     @Test(dataProvider = "routesFaq")
