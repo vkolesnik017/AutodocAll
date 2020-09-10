@@ -28,12 +28,12 @@ public class QC_139_FiltersSorting_TestBrandAndBySideFilterInteraction {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list");
     }
 
     @DataProvider(name = "routesLKW", parallel = true)
     Object[] dataProviderLKW() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list9");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list9");
     }
 
     @Test(dataProvider = "routes")
@@ -71,7 +71,7 @@ public class QC_139_FiltersSorting_TestBrandAndBySideFilterInteraction {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks side and brand filters interaction")
     public void testSideAndBrandFilterInteractionLKWmodelRoute() throws SQLException {
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list2"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list2"));
         listingPage.clickFilterBySideBack()
                 .waitUntilPreloaderDisappear();
         String brandName = listingPage.getAtributeFromElement(listingPage.firstBrandNameInFilterLKWmodelRoute(), "alt");

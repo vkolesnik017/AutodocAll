@@ -34,7 +34,7 @@ public class QC_1053_PfandPriceMatchesInBasketAndListing {
 
     @DataProvider(name = "product")
     Object[] dataProviderProduct() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list18");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list18");
     }
 
     @Test(dataProvider = "product")

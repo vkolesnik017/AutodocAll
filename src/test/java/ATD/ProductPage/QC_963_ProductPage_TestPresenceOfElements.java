@@ -25,7 +25,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class QC_963_ProductPage_TestPresenceOfElements {
     private Product_page_Logic product_page_logic = new Product_page_Logic();
     private CommonMethods commonMethods = new CommonMethods();
-    private DataBase dataBase = new DataBase();
+    private DataBase dataBase = new DataBase("ATD");
 
     @BeforeClass
     void setUp() {

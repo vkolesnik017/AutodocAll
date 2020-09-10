@@ -33,7 +33,7 @@ public class QC_1685_HeavyLoadsAndOrdinaryGoods_DeletedOFGoods {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "HeavyLoadProduct2");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "HeavyLoadProduct2");
     }
 
     @Test(dataProvider = "route")
@@ -44,7 +44,7 @@ public class QC_1685_HeavyLoadsAndOrdinaryGoods_DeletedOFGoods {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
         product_page_logic.addProductToCart();
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "product2"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "product2"));
         totalPrice = product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick().nextButtonClick()

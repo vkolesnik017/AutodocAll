@@ -26,7 +26,7 @@ public class QC_1237_TestValidationPopupWithClearHeightDiameter {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "tyres,tyres2,tyres3");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres,tyres2,tyres3");
     }
 
     @Test(dataProvider = "routes")

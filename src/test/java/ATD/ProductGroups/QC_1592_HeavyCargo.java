@@ -26,7 +26,7 @@ public class QC_1592_HeavyCargo {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product6");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product6");
     }
 
 

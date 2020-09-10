@@ -25,7 +25,7 @@ public class QC_527_PresenceRecoveryCharacteristicsOnMiniCard {
 
   @DataProvider(name = "test1", parallel = true)
   Object[] test1() throws SQLException {
-    return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_name6,category_name_brand2");
+    return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_name6,category_name_brand2");
   }
 
   @Test(dataProvider = "test1")

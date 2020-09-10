@@ -28,7 +28,7 @@ public class QC_1647_AddingPairedProductsToBasketFromBlockOfTopProducts {
 
     @DataProvider(name = "routesWithBlocksOfTopPairedProducts", parallel = true)
     Object[] routesWithBlocksOfTopPairedProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_name,category_maker,category_maker_body," +
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_name,category_maker,category_maker_body," +
                 "category_maker_drive,category_group,category_group_body,category_group_drive,category_group_fuel,category_group_year,category_model");
     }
 

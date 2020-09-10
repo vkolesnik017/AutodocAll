@@ -31,7 +31,7 @@ public class QC_2350_Ideal {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "NL", "main", "product32");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "NL", "main", "product32");
     }
 
     @Test(dataProvider = "route")
@@ -41,7 +41,7 @@ public class QC_2350_Ideal {
     public void testIdeal(String route) throws Exception {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
-        String userData = new DataBase().getUserIdForPaymentsMethod("payments_userid_atd", shop, "Ideal");
+        String userData = new DataBase("ATD").getUserIdForPaymentsMethod("payments_userid_atd", shop, "Ideal");
         String userID = parseUserIdFromBD(userData);
         String mail = parseUserMailFromBD(userData);
         float totalPriceAllData = new Product_page_Logic().addProductToCart()

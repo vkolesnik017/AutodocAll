@@ -29,7 +29,7 @@ public class QASYS_274_AddingProductToBasketFromAllRoutes {
 
   @DataProvider(name = "routesMain", parallel = true)
   Object[] routesMain() throws SQLException {
-    return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "categories,categories_maker,category_car_list,category_group,category_group_body," +
+    return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "categories,categories_maker,category_car_list,category_group,category_group_body," +
             "category_group_brand,category_group_drive,category_group_fuel,category_group_year,category_maker,category_maker_body,category_maker_brand,category_maker_drive," +
             "category_model,category_model_brand,category_name,category_name_parent,category_oen,group_list,group_list_body,group_list_drive,group_list_fuel,group_list_hp," +
             "group_list_year,index_accessories,index_instruments,listing_accessories,listing_instruments,maker_car_list,model_maker_list,model_maker_list_hp,model_maker_list_year," +
@@ -54,7 +54,7 @@ public class QASYS_274_AddingProductToBasketFromAllRoutes {
 
   @DataProvider(name = "routesLKW", parallel = true)
   Object[] routesLKW() throws SQLException {
-    return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_categories,lkw_categories_maker,lkw_category," +
+    return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_categories,lkw_categories_maker,lkw_category," +
             "lkw_category_brand,lkw_category_car_list,lkw_category_maker,lkw_category_maker_brand,lkw_category_model_brand,lkw_main,lkw_maker_car_list,lkw_parent_category," +
             "lkw_product,lkw_search");
   }
@@ -76,7 +76,7 @@ public class QASYS_274_AddingProductToBasketFromAllRoutes {
 
   @DataProvider(name = "routesMoto", parallel = true)
   Object[] routesMoto() throws SQLException {
-    return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog,moto_catalog_model,moto_categories_maker," +
+    return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog,moto_catalog_model,moto_categories_maker," +
             "moto_categories,moto_category,moto_category_car_list,moto_category_car_list_model,moto_category_maker,moto_main,moto_parent_category,moto_parent_category_maker," +
             "moto_product");
   }

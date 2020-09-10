@@ -30,7 +30,7 @@ public class QC_2118_TransitionOnProductPageWithChemistryListing {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "listing_chemicals");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "listing_chemicals");
     }
 
     @Test(dataProvider = "route")

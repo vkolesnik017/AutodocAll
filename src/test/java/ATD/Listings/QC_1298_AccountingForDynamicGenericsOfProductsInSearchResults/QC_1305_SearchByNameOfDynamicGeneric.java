@@ -33,7 +33,7 @@ public class QC_1305_SearchByNameOfDynamicGeneric {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "AT", "main", "category_car_list33");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "AT", "main", "category_car_list33");
     }
 
     @Test(dataProvider = "routes")

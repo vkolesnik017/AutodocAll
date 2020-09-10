@@ -25,7 +25,7 @@ public class QC_553_GenericUnderTooltipsSynonymsInSearch {
 
     @DataProvider(name = "route")
     Object[] dataProvider() {
-        return new SetUp().setUpShop("prod", "DE");
+        return new SetUp("ATD").setUpShop("prod", "DE");
     }
 
     @Test(dataProvider = "route")

@@ -26,7 +26,7 @@ public class QC_1478_ProductsInTopBlockNotAdjustToBrandFilter {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "tyre_form,tyres_dimension6,tyres_size6," +
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyre_form,tyres_dimension6,tyres_size6," +
                 "tyres_season_dimension2,tyres_dimension7,tyres_size7,tyres_season_dimension3,tyres_dimension8,tyres_size8,tyres_season_dimension4,tyres_size5");
     }
 

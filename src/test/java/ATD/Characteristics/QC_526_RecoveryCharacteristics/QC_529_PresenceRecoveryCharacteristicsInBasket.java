@@ -23,7 +23,7 @@ public class QC_529_PresenceRecoveryCharacteristicsInBasket {
 
   @DataProvider(name = "route")
   Object[] dataProvider() {
-    return new SetUp().setUpShop("prod", "DE");
+    return new SetUp("ATD").setUpShop("prod", "DE");
   }
 
   @Test(dataProvider = "route")

@@ -26,7 +26,7 @@ public class QC_1936_EnteringIncorrectDataIntoTheInputPersonnummer {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "SE", "main", "product32");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "SE", "main", "product32");
     }
 
     @Test(dataProvider = "route")

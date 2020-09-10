@@ -22,7 +22,7 @@ import static org.testng.Assert.assertEquals;
 public class QC_899_MatchPricesInAwsOrderAndRetourPage {
 
   private Product_page_Logic product_page_logic = new Product_page_Logic();
-  private DataBase db = new DataBase();
+  private DataBase db = new DataBase("ATD");
 
   private String idUserAws = "13784381";
   private String orderNumber;
@@ -35,7 +35,7 @@ public class QC_899_MatchPricesInAwsOrderAndRetourPage {
 
   @DataProvider(name = "route")
   Object[] dataProvider() {
-    return new SetUp().setUpShop("prod", "DE");
+    return new SetUp("ATD").setUpShop("prod", "DE");
   }
 
   @Test(dataProvider = "route")

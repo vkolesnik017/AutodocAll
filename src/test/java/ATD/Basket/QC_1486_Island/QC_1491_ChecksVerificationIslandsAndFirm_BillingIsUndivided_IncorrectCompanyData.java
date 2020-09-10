@@ -33,7 +33,7 @@ public class QC_1491_ChecksVerificationIslandsAndFirm_BillingIsUndivided_Incorre
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "search9");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "search9");
     }
 
     @Test(dataProvider = "route")

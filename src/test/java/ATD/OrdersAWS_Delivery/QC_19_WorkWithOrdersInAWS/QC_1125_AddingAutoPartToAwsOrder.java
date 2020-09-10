@@ -35,7 +35,7 @@ public class QC_1125_AddingAutoPartToAwsOrder {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product28");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product28");
     }
 
     @Test(dataProvider = "route")

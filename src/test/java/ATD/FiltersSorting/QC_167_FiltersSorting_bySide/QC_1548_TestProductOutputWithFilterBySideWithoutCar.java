@@ -27,12 +27,12 @@ public class QC_1548_TestProductOutputWithFilterBySideWithoutCar {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "search21,search22");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "search21,search22");
     }
 
     @DataProvider(name = "routesLKW", parallel = true)
     Object[] dataProviderLKW() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_search7");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_search7");
     }
 
     @Test(dataProvider = "routes")

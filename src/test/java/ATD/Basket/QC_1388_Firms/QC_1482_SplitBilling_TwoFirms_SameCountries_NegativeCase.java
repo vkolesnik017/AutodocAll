@@ -38,7 +38,7 @@ public class QC_1482_SplitBilling_TwoFirms_SameCountries_NegativeCase {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProduct() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "EN", "main", "product2");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "EN", "main", "product2");
     }
 
     @Test(dataProvider = "route")

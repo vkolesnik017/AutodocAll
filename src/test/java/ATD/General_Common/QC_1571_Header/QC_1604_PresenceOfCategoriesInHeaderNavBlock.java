@@ -24,7 +24,7 @@ public class QC_1604_PresenceOfCategoriesInHeaderNavBlock {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() {
-        return new SetUp().setUpShop("prod", "DE");
+        return new SetUp("ATD").setUpShop("prod", "DE");
     }
 
 

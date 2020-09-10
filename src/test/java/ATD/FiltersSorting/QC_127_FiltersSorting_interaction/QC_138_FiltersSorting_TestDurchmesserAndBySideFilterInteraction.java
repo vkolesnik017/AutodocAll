@@ -28,7 +28,7 @@ public class QC_138_FiltersSorting_TestDurchmesserAndBySideFilterInteraction {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list");
     }
 
     @Test(dataProvider = "routes")
@@ -51,7 +51,7 @@ public class QC_138_FiltersSorting_TestDurchmesserAndBySideFilterInteraction {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks Durchmesser and by side filters interaction LKW route")
     public void testDurchmesserAndSideFilterInteractionLKW() throws SQLException {
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list9"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list9"));
         String durchmesserValue = listingPage.getTextFromElement(listingPage.durchmesserSideFilterButtonSecondValue());
         listingPage.clickFilterButton(listingPage.durchmesserSideFilterButtonSecondValue())
                 .waitUntilPreloaderDisappear()
@@ -66,7 +66,7 @@ public class QC_138_FiltersSorting_TestDurchmesserAndBySideFilterInteraction {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks Durchmesser and by side filters interaction LKW route")
     public void testDurchmesserAndSideFilterInteractionLKW2() throws SQLException {
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list2"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list2"));
         String durchmesserValue = listingPage.getTextFromElement(listingPage.durchmesserSideFilterButtonFourthValue());
         listingPage.clickFilterButton(listingPage.durchmesserSideFilterButtonFourthValue())
                 .waitUntilPreloaderDisappear()

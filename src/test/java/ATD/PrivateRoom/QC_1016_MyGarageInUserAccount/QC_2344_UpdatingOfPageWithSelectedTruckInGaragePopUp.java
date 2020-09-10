@@ -21,7 +21,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 public class QC_2344_UpdatingOfPageWithSelectedTruckInGaragePopUp {
 
     private String email = "QC_2344_TransitionToMyGarage@mailinator.com";
-    private DataBase db = new DataBase();
+    private DataBase db = new DataBase("ATD");
 
     @BeforeClass
     void setUp() {
@@ -30,7 +30,7 @@ public class QC_2344_UpdatingOfPageWithSelectedTruckInGaragePopUp {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_categories_maker,lkw_maker_car_list11,lkw_maker_car_list12");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_categories_maker,lkw_maker_car_list11,lkw_maker_car_list12");
     }
 
     @Test(dataProvider = "routes")
@@ -49,7 +49,7 @@ public class QC_2344_UpdatingOfPageWithSelectedTruckInGaragePopUp {
 
     @DataProvider(name = "routesCategory", parallel = true)
     Object[] dataProviderCategory() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category2,lkw_category_brand");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category2,lkw_category_brand");
     }
 
     @Test(dataProvider = "routesCategory")
@@ -68,7 +68,7 @@ public class QC_2344_UpdatingOfPageWithSelectedTruckInGaragePopUp {
 
     @DataProvider(name = "routesCategoryMaker", parallel = true)
     Object[] dataProviderCategoryMaker() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_maker_brand2,lkw_category_model_brand,lkw_category_maker");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_maker_brand2,lkw_category_model_brand,lkw_category_maker");
     }
 
     @Test(dataProvider = "routesCategoryMaker")
@@ -86,7 +86,7 @@ public class QC_2344_UpdatingOfPageWithSelectedTruckInGaragePopUp {
     }
     @DataProvider(name = "routesCarList", parallel = true)
     Object[] dataProviderCarList() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list33,lkw_category_car_list34,404");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list33,lkw_category_car_list34,404");
     }
 
     @Test(dataProvider = "routesCarList")
@@ -105,7 +105,7 @@ public class QC_2344_UpdatingOfPageWithSelectedTruckInGaragePopUp {
 
     @DataProvider(name = "routesParentCategory", parallel = true)
     Object[] dataProviderParentCategory() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_parent_category");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_parent_category");
     }
 
     @Test(dataProvider = "routesParentCategory")
@@ -119,12 +119,12 @@ public class QC_2344_UpdatingOfPageWithSelectedTruckInGaragePopUp {
                 .loginToProfilePlusPageAndBack(email).updateOfPage().checkCountOfVehicleInIconOfGarage("3")
                 .clickOnGarageIconInHeader()
                 .selectMotoInGaragePopUp("1009583");
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE","lkw_parent_category"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE","lkw_parent_category"));
     }
 
     @DataProvider(name = "routesSearch", parallel = true)
     Object[] dataProviderSearch() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_search11");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_search11");
     }
 
     @Test(dataProvider = "routesSearch")
@@ -143,7 +143,7 @@ public class QC_2344_UpdatingOfPageWithSelectedTruckInGaragePopUp {
 
     @DataProvider(name = "routesMain", parallel = true)
     Object[] dataProviderMain() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "main", "main");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "main", "main");
     }
 
     @Test(dataProvider = "routesMain")
@@ -162,7 +162,7 @@ public class QC_2344_UpdatingOfPageWithSelectedTruckInGaragePopUp {
 
     @DataProvider(name = "routesMoto", parallel = true)
     Object[] dataProviderMoto() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "main");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "main");
     }
 
     @Test(dataProvider = "routesMoto")

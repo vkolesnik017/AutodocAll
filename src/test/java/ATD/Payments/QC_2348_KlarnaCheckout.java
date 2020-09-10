@@ -32,7 +32,7 @@ public class QC_2348_KlarnaCheckout {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopsWithSubroute("prod", "FI,SE,NO", "main", "product32");
+        return new SetUp("ATD").setUpShopsWithSubroute("prod", "FI,SE,NO", "main", "product32");
     }
 
     @Test(dataProvider = "route")
@@ -42,7 +42,7 @@ public class QC_2348_KlarnaCheckout {
     public void testKlarnaCheckout(String route) throws Exception {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
-        String userData = new DataBase().getUserIdForPaymentsMethod("payments_userid_atd", shop, "KlarnaCheckout");
+        String userData = new DataBase("ATD").getUserIdForPaymentsMethod("payments_userid_atd", shop, "KlarnaCheckout");
         String userID = parseUserIdFromBD(userData);
         String mail = parseUserMailFromBD(userData);
         float totalPriceAllData = new Product_page_Logic().addProductToCart()

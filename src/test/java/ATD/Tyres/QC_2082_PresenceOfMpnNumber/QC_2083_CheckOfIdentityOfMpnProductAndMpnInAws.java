@@ -31,7 +31,7 @@ public class QC_2083_CheckOfIdentityOfMpnProductAndMpnInAws {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "tyre_form5,tyres_season,offroad_tyres_brand,tyres_group_season_brand3,tyres_size10");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyre_form5,tyres_season,offroad_tyres_brand,tyres_group_season_brand3,tyres_size10");
     }
 
     @Test(dataProvider = "routes")
@@ -48,7 +48,7 @@ public class QC_2083_CheckOfIdentityOfMpnProductAndMpnInAws {
 
     @DataProvider(name = "routesDimension", parallel = true)
     Object[] dataProviderDimension() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "tyres_dimension9,tyres_season_size,tyres_season_dimension6,tyres_brand_size3,tyres_brand_dimension6");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_dimension9,tyres_season_size,tyres_season_dimension6,tyres_brand_size3,tyres_brand_dimension6");
     }
 
     @Test(dataProvider = "routesDimension")

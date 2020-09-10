@@ -25,7 +25,7 @@ public class QC_781_TestRelatedProductsPopupOnListing {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list20");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list20");
     }
 
     @Test(dataProvider = "routes")

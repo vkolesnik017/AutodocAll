@@ -33,7 +33,7 @@ public class QC_1924_LoginByUserLoginOnAnotherSkin {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopsWithMainRoute("prod", "DE", "main");
+        return new SetUp("ATD").setUpShopsWithMainRoute("prod", "DE", "main");
     }
 
     @Test(dataProvider = "route")
@@ -45,7 +45,7 @@ public class QC_1924_LoginByUserLoginOnAnotherSkin {
         mailForPKW = main_page_logic.openRegistrationFormInHeader()
                 .fillingRegistrationFields("QC_1924_");
         main_page_logic.checkPresencePopupSuccessAuthorization();
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "product32"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "product32"));
         new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
@@ -58,7 +58,7 @@ public class QC_1924_LoginByUserLoginOnAnotherSkin {
                 .logoClick()
                 .logOutClick();
         close();
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "product32"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "product32"));
         new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
@@ -69,7 +69,7 @@ public class QC_1924_LoginByUserLoginOnAnotherSkin {
                 .logoClick()
                 .logOutClick();
         close();
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "product32"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "product32"));
         new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()

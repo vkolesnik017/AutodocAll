@@ -32,7 +32,7 @@ public class QC_1901_CharacteristicsDoNotHideAfterBrandFilterApplying {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list24,search25,category_oen11");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list24,search25,category_oen11");
     }
 
     @Test(dataProvider = "routes")

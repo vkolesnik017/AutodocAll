@@ -24,7 +24,7 @@ public class QC_2061_RidexPrioritizationInTecDocListing {
 
     @DataProvider(name = "route")
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list31");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list31");
     }
 
     @Test(dataProvider = "route")

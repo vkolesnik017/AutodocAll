@@ -27,7 +27,7 @@ public class QC_132_FiltersSorting_TestFurprnummerAndBySideFilterInteraction {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list");
     }
 
     @Test(dataProvider = "routes")

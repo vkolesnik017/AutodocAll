@@ -26,7 +26,7 @@ public class QC_1910_TestIfNumberOfReviewsDElessThan20 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product31");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product31");
     }
 
     @Test(dataProvider = "routes")

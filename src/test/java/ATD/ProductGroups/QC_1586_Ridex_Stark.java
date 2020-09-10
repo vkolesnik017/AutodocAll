@@ -26,7 +26,7 @@ public class QC_1586_Ridex_Stark {
 
     @DataProvider(name = "route")
     Object[] dataProviderProduct() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "searchRidex,searchStark");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "searchRidex,searchStark");
     }
 
     @Owner(value = "Chelombitko")

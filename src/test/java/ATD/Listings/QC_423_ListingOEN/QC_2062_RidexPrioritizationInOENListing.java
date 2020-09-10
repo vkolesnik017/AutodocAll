@@ -26,7 +26,7 @@ public class QC_2062_RidexPrioritizationInOENListing {
 
     @DataProvider(name = "route")
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_oen14");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_oen14");
     }
 
     @Test(dataProvider = "route")

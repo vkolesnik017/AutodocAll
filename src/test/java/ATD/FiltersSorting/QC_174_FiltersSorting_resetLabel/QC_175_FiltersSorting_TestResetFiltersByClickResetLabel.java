@@ -28,7 +28,7 @@ public class QC_175_FiltersSorting_TestResetFiltersByClickResetLabel {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list,category_oen10,search2,listing_accessories3,listing_instruments3,listing_chemicals");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list,category_oen10,search2,listing_accessories3,listing_instruments3,listing_chemicals");
     }
 
     @Test(dataProvider = "routes")

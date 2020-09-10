@@ -27,7 +27,7 @@ public class QC_1118_TestTyresSearchBySelectorOnListingLLKW {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "tyre_form3,tyres_season5,tyres_brand3,tyres_size4,tyres_dimension5");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyre_form3,tyres_season5,tyres_brand3,tyres_size4,tyres_dimension5");
     }
 
     @Test(dataProvider = "routes")

@@ -25,7 +25,7 @@ public class QC_1881_DisablingSO_blockAfterChangingDelivery {
     @BeforeClass
     void setUp() throws SQLException {
         setUpBrowser(false, "chrome", "77.0");
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "BE", "main", "product32"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "BE", "main", "product32"));
         new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()

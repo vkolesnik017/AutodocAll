@@ -29,7 +29,7 @@ public class QC_1349_TyresBreadcrumbsTransportTypeAndSeasonAndSize {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "tyres_season_dimension5");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_season_dimension5");
     }
 
     @Test(dataProvider = "routes")
@@ -39,9 +39,9 @@ public class QC_1349_TyresBreadcrumbsTransportTypeAndSeasonAndSize {
     public void testTyresBreadcrumbsTransportTypeAndSeasonAndSize(String route) throws  SQLException {
         openPage(route);
         tyresListingPageLogic.checkBreadcrumbsFirstButtonTransiton();
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "tyres_season_size6"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "tyres_season_size6"));
         tyresListingPageLogic.checkBreadcrumbsSecondButtonTransiton("motorrad");
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "tyres_season_dimension4"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "tyres_season_dimension4"));
         tyresListingPageLogic.checkBreadcrumbsThirdButtonTransiton("llkw/195-60-r16")
                             .checkBreadcrumbsLastButton("Ganzjahresreifen");
     }

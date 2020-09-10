@@ -41,7 +41,7 @@ public class QC_1395_Firm_SplitBilling_TwoFirms_DifferentCountries_PositiveCase 
 
     @DataProvider(name = "routeEN", parallel = true)
     Object[] dataProviderProductsEN() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "EN", "main", "product32");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "EN", "main", "product32");
     }
 
     @Test(dataProvider = "routeEN")
@@ -115,7 +115,7 @@ public class QC_1395_Firm_SplitBilling_TwoFirms_DifferentCountries_PositiveCase 
 
     @DataProvider(name = "routeDE", parallel = true)
     Object[] dataProviderProductsDE() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product32");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product32");
     }
 
     @Test(dataProvider = "routeDE")

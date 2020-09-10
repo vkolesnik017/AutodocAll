@@ -29,7 +29,7 @@ public class QC_1429_TestFilterByRatingApplyingOnTyresListing {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "tyres_season2,tyres_season6,tyres_season7,tyres_dimension6," +
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_season2,tyres_season6,tyres_season7,tyres_dimension6," +
                 "tyres_season,tyres_season8,tyres_season9,tyres_dimension7,tyres_season5,tyres_season10,tyres_season11,tyres_dimension8,tyres_season12,tyres_season4,tyres_dimension4" +
                 "tyres_brand_dimension2,tyres_brand_dimension3,tyres_brand_dimension4,tyres_brand_dimension5");
     }

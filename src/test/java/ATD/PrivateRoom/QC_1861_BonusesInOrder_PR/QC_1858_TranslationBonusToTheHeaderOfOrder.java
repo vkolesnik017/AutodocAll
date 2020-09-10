@@ -22,7 +22,7 @@ public class QC_1858_TranslationBonusToTheHeaderOfOrder {
     @BeforeClass
     void setUp() throws SQLException {
         setUpBrowser(false, "chrome", "77.0");
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "product32"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "product32"));
         new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
@@ -40,7 +40,7 @@ public class QC_1858_TranslationBonusToTheHeaderOfOrder {
 
     @DataProvider(name = "route", parallel = false)
     Object[] dataProviderAllShops() {
-        return new SetUp().setUpShop("prod", "AT, BG, BE, CZ, DE, DK, EE, ES, FI, FR, EN, GR, HU, IT, LD, LT, LV, NL, NO, PL, PT, RO, SE, SI, SK");
+        return new SetUp("ATD").setUpShop("prod", "AT, BG, BE, CZ, DE, DK, EE, ES, FI, FR, EN, GR, HU, IT, LD, LT, LV, NL, NO, PL, PT, RO, SE, SI, SK");
     }
 
     @Owner("Chelombitko")

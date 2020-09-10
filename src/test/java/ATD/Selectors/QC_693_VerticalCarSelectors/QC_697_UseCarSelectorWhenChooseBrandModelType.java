@@ -27,7 +27,7 @@ public class QC_697_UseCarSelectorWhenChooseBrandModelType {
 
   @DataProvider(name = "routes", parallel = true)
   Object[] dataProvider() throws SQLException {
-    return new SetUp().setUpShopWithSubroutes("prod", "DE", "main","main,categories");
+    return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main","main,categories");
   }
 
   @Test(dataProvider = "routes")
@@ -43,7 +43,7 @@ public class QC_697_UseCarSelectorWhenChooseBrandModelType {
 
     @DataProvider(name = "routes2", parallel = true)
   Object[] dataProvider3() throws SQLException {
-    return new SetUp().setUpShopWithSubroutes("prod", "DE", "main","category_name,category_name_brand");
+    return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main","category_name,category_name_brand");
   }
 
   @Test(dataProvider = "routes2")

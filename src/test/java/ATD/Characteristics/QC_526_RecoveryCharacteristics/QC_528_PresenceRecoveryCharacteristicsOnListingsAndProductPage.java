@@ -30,7 +30,7 @@ public class QC_528_PresenceRecoveryCharacteristicsOnListingsAndProductPage {
 
   @DataProvider(name = "test2", parallel = true)
   Object[] test2() throws SQLException {
-    return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "search11,category_oen5,category_car_list13");
+    return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "search11,category_oen5,category_car_list13");
   }
 
   @Test(dataProvider = "test2")
@@ -44,7 +44,7 @@ public class QC_528_PresenceRecoveryCharacteristicsOnListingsAndProductPage {
 
   @DataProvider(name = "route")
   Object[] dataProvider() {
-    return new SetUp().setUpShop("prod", "DE");
+    return new SetUp("ATD").setUpShop("prod", "DE");
   }
 
   @Test(dataProvider = "route")

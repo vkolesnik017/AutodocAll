@@ -32,7 +32,7 @@ public class QC_1046_CreatingTyresAndOtherProductOrderShopNotMatchDeliveryCountr
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "tyre_form,tyre_form2,tyre_form3,tyre_form4");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyre_form,tyre_form2,tyre_form3,tyre_form4");
     }
 
     @Test(dataProvider = "routes")
@@ -44,7 +44,7 @@ public class QC_1046_CreatingTyresAndOtherProductOrderShopNotMatchDeliveryCountr
         String tyreId = tyresListingPageLogic.getTyreId();
         clickOfBuyBtnForAllPages();
         tyresListingPageLogic.addFirstProductToCart();
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "search3"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "search3"));
         clickOfBuyBtnForAllPages();
         String orderNumber = new Product_page_Logic().closePopupOtherCategoryIfYes().cartClick()
                             .nextButtonClick()

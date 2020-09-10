@@ -31,7 +31,7 @@ public class QC_2160_BraintreeCreditCard {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopsWithSubroute("prod", "DE,BG,CH,CZ,DK,EE,EN,GR,LD,LT,LV,NO,PL,RO,SI,SK", "main", "product32");
+        return new SetUp("ATD").setUpShopsWithSubroute("prod", "DE,BG,CH,CZ,DK,EE,EN,GR,LD,LT,LV,NO,PL,RO,SI,SK", "main", "product32");
     }
 
     @Test(dataProvider = "route")
@@ -41,7 +41,7 @@ public class QC_2160_BraintreeCreditCard {
     public void testBraintreeCreditCard(String route) throws Exception {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
-        String userData = new DataBase().getUserIdForPaymentsMethod("payments_userid_atd", shop, "CreditCard_braintree");
+        String userData = new DataBase("ATD").getUserIdForPaymentsMethod("payments_userid_atd", shop, "CreditCard_braintree");
         String userID = parseUserIdFromBD(userData);
         String mail = parseUserMailFromBD(userData);
         float totalPriceAllData = new Product_page_Logic().addProductToCart()

@@ -1,8 +1,8 @@
 package ATD.ProductPage;
 
 
-import Common.DataBase;
 import ATD.Product_page_Logic;
+import Common.DataBase;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -21,7 +21,7 @@ public class QC_708_FAQ_TestVinPopupAfterHover {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks vin popup after hover")
     public void testVinPopupAfterHover() throws SQLException {
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "product14"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "product14"));
         new Product_page_Logic().checkVinPopup();
     }
 

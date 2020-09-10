@@ -32,7 +32,7 @@ public class QC_1015_GrayButtonOnSearchPage {
 
     @DataProvider(name = "route")
     Object[] dataProvider() {
-        return new SetUp().setUpShop("prod", "DE");
+        return new SetUp("ATD").setUpShop("prod", "DE");
     }
 
     @Owner(value = "Chelombitko")

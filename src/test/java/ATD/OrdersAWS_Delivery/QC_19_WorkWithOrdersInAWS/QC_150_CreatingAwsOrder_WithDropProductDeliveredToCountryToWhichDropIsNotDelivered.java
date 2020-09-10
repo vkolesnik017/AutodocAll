@@ -38,7 +38,7 @@ public class QC_150_CreatingAwsOrder_WithDropProductDeliveredToCountryToWhichDro
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "productDrop1");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "productDrop1");
     }
 
     @Test(dataProvider = "route")

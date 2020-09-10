@@ -27,7 +27,7 @@ public class QC_574_NoPresenceTiresInTooltipToSearchByCatalog {
 
   @DataProvider(name = "route")
   Object[] test1() throws SQLException {
-    return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "maker_car_list6");
+    return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "maker_car_list6");
   }
   @Test(dataProvider = "route")
   @Flaky

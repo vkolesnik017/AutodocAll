@@ -27,7 +27,7 @@ public class QC_479_AvailabilityRequestForm {
 
   @DataProvider(name = "route")
   Object[] dataProvider() throws SQLException {
-    return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list11");
+    return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list11");
   }
 
   @Test(dataProvider = "route")

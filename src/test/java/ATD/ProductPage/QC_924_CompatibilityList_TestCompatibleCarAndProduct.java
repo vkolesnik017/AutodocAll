@@ -28,7 +28,7 @@ public class QC_924_CompatibilityList_TestCompatibleCarAndProduct {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks product compatibility with car")
     public void testCompatibleCarAndProduct() throws SQLException {
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "product16"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "product16"));
         new Product_page_Logic().checkCompatibilityCarAndProduct();
     }
 

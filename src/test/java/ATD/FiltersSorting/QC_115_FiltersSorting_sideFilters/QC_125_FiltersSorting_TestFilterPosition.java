@@ -28,12 +28,12 @@ public class QC_125_FiltersSorting_TestFilterPosition {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2");
     }
 
     @DataProvider(name = "routesLKW", parallel = true)
     Object[] dataProviderLKW() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_search5");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_search5");
     }
 
     @Test(dataProvider = "routes")
@@ -54,7 +54,7 @@ public class QC_125_FiltersSorting_TestFilterPosition {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks filter position on LKW model")
     public void testFilterPositionLKWmodel() throws SQLException{
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list7"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list7"));
         String characteristic = listingPageLogic.getTextFromElement(listingPageLogic.verschleisswarnkontaktFirstButtonInSidebar());
         listingPageLogic.clickFilterButton(listingPageLogic.verschleisswarnkontaktFirstButtonInSidebar())
                 .waitUntilPreloaderDisappear()
@@ -66,7 +66,7 @@ public class QC_125_FiltersSorting_TestFilterPosition {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks filter position on LKW car")
     public void testFilterPositionLKWcar() throws SQLException{
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list6"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list6"));
         String characteristic = listingPageLogic.getTextFromElement(listingPageLogic.verschleisswarnkontaktSecondButtonInSidebar());
         listingPageLogic.clickFilterButton(listingPageLogic. verschleisswarnkontaktSecondButtonInSidebar())
                 .waitUntilPreloaderDisappear()
@@ -78,7 +78,7 @@ public class QC_125_FiltersSorting_TestFilterPosition {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks filter position on LKW search")
     public void testFilterPositionLKWsearch() throws SQLException{
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_search"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_search"));
         String characteristic = listingPageLogic.getTextFromElement(listingPageLogic.langeFilterAttribute3());
         listingPageLogic.clickFilterButton(listingPageLogic.langeFilterCheckbox3())
                 .waitUntilPreloaderDisappear()
@@ -90,7 +90,7 @@ public class QC_125_FiltersSorting_TestFilterPosition {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks filter position on Oem route")
     public void testFilterPositionOem() throws SQLException {
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "category_oen2"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "category_oen2"));
         String characteristic = listingPageLogic.getTextFromElement(listingPageLogic.sideFilterOenAttribute());
         listingPageLogic.clickFilterButton(listingPageLogic.sideFilterOenCheckbox())
                 .waitUntilPreloaderDisappear()

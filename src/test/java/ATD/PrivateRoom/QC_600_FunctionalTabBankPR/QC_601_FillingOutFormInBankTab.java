@@ -35,7 +35,7 @@ public class QC_601_FillingOutFormInBankTab {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() {
-        return new SetUp().setUpShop("prod", "DE");
+        return new SetUp("ATD").setUpShop("prod", "DE");
     }
 
     @Test(dataProvider = "route")
@@ -62,7 +62,7 @@ public class QC_601_FillingOutFormInBankTab {
         ibanNumAWS = customer_view_aws.getIbanNumInCurrentBankBlock();
         Assert.assertEquals(nameReceiver, nameReceiverAWS);
         Assert.assertEquals(ibanNum, ibanNumAWS);
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod","DE", "main","profile_plus"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod","DE", "main","profile_plus"));
         new Profile_plus_page_Logic().goToProfileBankPage();
         closeCookiesFooterMessage(); //TODO temporarily until the defect is fixed SITES-8560
         profile_bank_page_logic.clickDeleteBankDataBtn()

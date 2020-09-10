@@ -26,7 +26,7 @@ public class QC_1266_GoToAllSizesRouteInteractDiameterRelinkBlock {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "tyres_size2,tyres_season_size11,tyres_season_size2,tyres_season_size12," +
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_size2,tyres_season_size11,tyres_season_size2,tyres_season_size12," +
                 "tyres_size3,tyres_season_size3,tyres_season_size9,tyres_season_size10" +
                 "tyres_size4,tyres_season_size7,tyres_season_size8,tyres_season_size4," +
                 "tyres_size5,tyres_season_size6,tyres_season_size5");

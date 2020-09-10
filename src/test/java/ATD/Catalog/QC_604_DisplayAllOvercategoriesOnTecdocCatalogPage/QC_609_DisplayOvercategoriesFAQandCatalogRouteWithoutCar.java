@@ -36,7 +36,7 @@ public class QC_609_DisplayOvercategoriesFAQandCatalogRouteWithoutCar {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "categories");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "categories");
     }
 
     @Test(dataProvider = "routes")
@@ -47,7 +47,7 @@ public class QC_609_DisplayOvercategoriesFAQandCatalogRouteWithoutCar {
         openPage(route);
         parentCategoriesTecdocCatalogWithoutCar = categoriesPageLogic.getAllParentCategoriesFromTecdocCatalog();
 
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "faqHash"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "faqHash"));
         parentCategoriesCatalogFAQwithoutCar = categoriesPageLogic.getAllParentCategoriesFromTecdocCatalog();
 
         parentCategoriesAWS = new CatalogCategories_aws("prod").getAllParentCategoriesNameFromAWS();

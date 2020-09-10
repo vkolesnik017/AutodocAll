@@ -27,7 +27,7 @@ public class QC_1320_TransitionToListingRouteInteractDimensionBlockOnCatalogRout
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "tyres_type_list,tyres_type_list2,tyres_type_list3");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_type_list,tyres_type_list2,tyres_type_list3");
     }
 
     @Test(dataProvider = "routes")
@@ -44,7 +44,7 @@ public class QC_1320_TransitionToListingRouteInteractDimensionBlockOnCatalogRout
     @Owner(value = "Romaniuta")
     @Description(value = "Test Checks Presence Sizes Block On Tyres Catalog Route Moto")
     public void testPresenceSizesBlockOnTyresCatalogRouteMoto() throws SQLException {
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "tyres_type_list4"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "tyres_type_list4"));
         new TyresListing_page_Logic().clickDimensionButtonAndCheckRedirect(new TyresListing_page_Logic().dimensionLinkCatalogRouteMoto());
     }
 

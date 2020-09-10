@@ -31,7 +31,7 @@ public class QC_2156_Sofort {
 
     @DataProvider(name = "route", parallel = false)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopsWithSubroute("prod", "AT,DE,CH", "main", "product32");
+        return new SetUp("ATD").setUpShopsWithSubroute("prod", "AT,DE,CH", "main", "product32");
     }
 
     @Test(dataProvider = "route")
@@ -41,7 +41,7 @@ public class QC_2156_Sofort {
     public void testSofort(String route) throws Exception {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
-        String userData = new DataBase().getUserIdForPaymentsMethod("payments_userid_atd", shop, "Sofort");
+        String userData = new DataBase("ATD").getUserIdForPaymentsMethod("payments_userid_atd", shop, "Sofort");
         String userID = parseUserIdFromBD(userData);
         String mail = parseUserMailFromBD(userData);
         float totalPriceAllData = new Product_page_Logic().addProductToCart()

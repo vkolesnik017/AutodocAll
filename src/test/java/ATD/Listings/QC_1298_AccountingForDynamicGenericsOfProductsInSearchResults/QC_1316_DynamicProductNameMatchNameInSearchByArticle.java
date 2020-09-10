@@ -26,7 +26,7 @@ public class QC_1316_DynamicProductNameMatchNameInSearchByArticle {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "AT", "main", "search26");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "AT", "main", "search26");
     }
 
     @Test(dataProvider = "routes")

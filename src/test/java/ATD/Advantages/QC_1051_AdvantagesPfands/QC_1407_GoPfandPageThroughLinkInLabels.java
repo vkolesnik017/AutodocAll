@@ -30,7 +30,7 @@ public class QC_1407_GoPfandPageThroughLinkInLabels {
 
     @DataProvider(name = "products")
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product8");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product8");
     }
 
     @Test(dataProvider = "products")
@@ -46,7 +46,7 @@ public class QC_1407_GoPfandPageThroughLinkInLabels {
 
     @DataProvider(name = "listing", parallel = true)
     Object[] dataProviderListing() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_oen7,search14,category_car_list15");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_oen7,search14,category_car_list15");
     }
 
     @Test(dataProvider = "listing")

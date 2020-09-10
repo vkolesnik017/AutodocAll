@@ -28,7 +28,7 @@ public class QC_496_DynamicCharacteristicNotDisplayedWithCarBrand {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "categories_maker");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "categories_maker");
     }
 
     @Test(dataProvider = "routes")
@@ -37,7 +37,7 @@ public class QC_496_DynamicCharacteristicNotDisplayedWithCarBrand {
     @Description(value = "Test checks absence of dynamic characteristic with choosen car brand")
     public void testDynamicCharacteristicNotDisplayedWithCarBrand(String route) throws Exception {
         openPage(route);
-        open(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "product25"));
+        open(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "product25"));
         new Product_page_Logic().checkDynamicCharacteristic();
     }
 

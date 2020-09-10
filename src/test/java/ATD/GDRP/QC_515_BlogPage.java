@@ -28,7 +28,7 @@ public class QC_515_BlogPage {
 
     @DataProvider(name = "route")
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "info_section_index");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "info_section_index");
     }
 
     @Test(dataProvider = "route")

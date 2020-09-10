@@ -27,7 +27,7 @@ public class QC_2146_WorkBreadCrumbsOnToolsListing {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main","listing_instruments,listing_instruments5");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main","listing_instruments,listing_instruments5");
     }
 
     @Test(dataProvider = "route")

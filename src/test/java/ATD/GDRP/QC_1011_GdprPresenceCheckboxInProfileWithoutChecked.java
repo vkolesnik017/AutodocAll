@@ -25,7 +25,7 @@ public class QC_1011_GdprPresenceCheckboxInProfileWithoutChecked {
 
     @DataProvider(name = "route")
     Object[] dataProvider() {
-        return new SetUp().setUpShop("prod", "DE");
+        return new SetUp("ATD").setUpShop("prod", "DE");
     }
 
     @Test(dataProvider = "route")

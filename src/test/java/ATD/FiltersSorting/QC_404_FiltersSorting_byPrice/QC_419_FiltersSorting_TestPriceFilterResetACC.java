@@ -21,7 +21,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class QC_419_FiltersSorting_TestPriceFilterResetACC {
     private Listing_page_Logic listingPage = new Listing_page_Logic();
-    private DataBase dataBase = new DataBase();
+    private DataBase dataBase = new DataBase("ATD");
     private Main_page mainPage = new Main_page();
 
     @BeforeClass

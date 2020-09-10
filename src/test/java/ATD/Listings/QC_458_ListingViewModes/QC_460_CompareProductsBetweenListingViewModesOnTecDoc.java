@@ -26,7 +26,7 @@ public class QC_460_CompareProductsBetweenListingViewModesOnTecDoc {
 
   @DataProvider(name = "route")
   Object[] dataProvider() throws SQLException {
-    return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list");
+    return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list");
   }
 
   @Test(dataProvider = "route")

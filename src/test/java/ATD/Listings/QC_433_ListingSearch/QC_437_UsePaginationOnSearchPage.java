@@ -29,7 +29,7 @@ public class QC_437_UsePaginationOnSearchPage {
 
     @DataProvider(name = "route")
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "search6");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "search6");
     }
 
     @Test(dataProvider = "route")

@@ -23,7 +23,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class QC_888_PopupErrorsInRetourePage {
 
   private Product_page_Logic product_page_logic = new Product_page_Logic();
-  private DataBase db = new DataBase();
+  private DataBase db = new DataBase("ATD");
 
   private String idUserAws = "13782304";
   private String orderNumber;
@@ -36,7 +36,7 @@ public class QC_888_PopupErrorsInRetourePage {
 
   @DataProvider(name = "route")
   Object[] dataProvider() {
-    return new SetUp().setUpShop("prod", "DE");
+    return new SetUp("ATD").setUpShop("prod", "DE");
   }
 
   @Test(dataProvider = "route")

@@ -18,7 +18,7 @@ import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1696_CheckErrorTranslateOnAddressPage {
-    private SetUp setUp = new SetUp();
+    private SetUp setUp = new SetUp("ATD");
 
     private String email = "qc_1695_autotestCOVID19@mailinator.com";
     private String plzIT = "40059";

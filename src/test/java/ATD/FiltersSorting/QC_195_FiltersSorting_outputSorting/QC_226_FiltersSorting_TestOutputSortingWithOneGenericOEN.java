@@ -26,7 +26,7 @@ public class QC_226_FiltersSorting_TestOutputSortingWithOneGenericOEN {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_oen2");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_oen2");
     }
 
     @Test(dataProvider = "routes")

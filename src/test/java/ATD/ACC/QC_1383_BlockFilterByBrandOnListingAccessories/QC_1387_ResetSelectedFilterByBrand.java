@@ -26,7 +26,7 @@ public class QC_1387_ResetSelectedFilterByBrand {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "listing_accessories4");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "listing_accessories4");
     }
 
     @Test(dataProvider = "route")

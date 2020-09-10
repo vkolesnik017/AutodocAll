@@ -26,7 +26,7 @@ public class QC_2317_UpdatingOfDataInTruckSelectorWithSelectedVehicle {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "main", "main");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "main", "main");
     }
 
     @Test(dataProvider = "routes")

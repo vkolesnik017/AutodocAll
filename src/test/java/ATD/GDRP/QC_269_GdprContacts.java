@@ -30,7 +30,7 @@ public class QC_269_GdprContacts {
 
     @DataProvider(name = "route")
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "staticContact");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "staticContact");
     }
 
     @Test(dataProvider = "route", enabled = true)

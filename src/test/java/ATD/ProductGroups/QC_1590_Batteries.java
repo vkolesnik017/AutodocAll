@@ -27,7 +27,7 @@ public class QC_1590_Batteries {
 
     @DataProvider(name = "route")
     Object[] dataProviderProduct() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "searchStarterbatterie");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "searchStarterbatterie");
     }
 
     @Owner(value = "Chelombitko")

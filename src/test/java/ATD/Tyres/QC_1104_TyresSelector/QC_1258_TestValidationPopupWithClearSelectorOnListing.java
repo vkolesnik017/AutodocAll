@@ -26,7 +26,7 @@ public class QC_1258_TestValidationPopupWithClearSelectorOnListing {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "tyre_form,tyre_form2,tyre_form3,tyres_brand,tyres_brand2,tyres_brand3," +
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyre_form,tyre_form2,tyre_form3,tyres_brand,tyres_brand2,tyres_brand3," +
                 "tyres_season2,tyres_season3,tyres_season5,tyres_size2,tyres_size3,tyres_size4,tyres_dimension2,tyres_dimension3,tyres_dimension5");
     }
 

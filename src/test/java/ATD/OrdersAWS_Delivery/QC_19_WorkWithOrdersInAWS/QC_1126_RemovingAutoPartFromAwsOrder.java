@@ -39,7 +39,7 @@ public class QC_1126_RemovingAutoPartFromAwsOrder {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product2");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product2");
     }
 
     @Test(dataProvider = "route")
@@ -50,7 +50,7 @@ public class QC_1126_RemovingAutoPartFromAwsOrder {
         openPage(route);
         firstArticleNum = product_page_logic.getArticleNumber();
         firstProductArticleID = product_page_logic.getProductId();
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "product28"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "product28"));
         secondArticleNum = product_page_logic.getArticleNumber();
         secondProductArticleID = product_page_logic.getProductId();
         totalCostOrder = new SearchOrders_page_aws().openSearchOrderPageWithLogin()

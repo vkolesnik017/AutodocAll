@@ -24,7 +24,7 @@ public class QC_2070_SortingOfProductWithGreyButton {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "main", "tyre_form5"); //,tyres_season12,offroad_tyres_brand,tyres_group_season_brand3,tyres_size10,tyre_form6,tyres_season_size,tyres_season_dimension7,tyres_brand_size3,tyres_brand_dimension7
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "main", "tyre_form5"); //,tyres_season12,offroad_tyres_brand,tyres_group_season_brand3,tyres_size10,tyre_form6,tyres_season_size,tyres_season_dimension7,tyres_brand_size3,tyres_brand_dimension7
     }
 
     @Test(dataProvider = "routes")

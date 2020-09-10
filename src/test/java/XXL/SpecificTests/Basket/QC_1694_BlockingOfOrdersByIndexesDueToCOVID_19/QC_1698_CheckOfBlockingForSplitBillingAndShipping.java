@@ -1,6 +1,7 @@
 package XXL.SpecificTests.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
 
 
+import Common.DataBase;
 import Common.SetUp;
 import XXL.Product_page_Logic;
 import io.qameta.allure.Description;
@@ -32,7 +33,7 @@ public class QC_1698_CheckOfBlockingForSplitBillingAndShipping {
 
     @DataProvider(name = "route", parallel = false)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopsWithSubroute("prod", "DE", "main", "product");
+        return new SetUp("XXL").setUpShopsWithSubroute("prod", "DE", "main", "product");
     }
 
     @Test(dataProvider = "route")

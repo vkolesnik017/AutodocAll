@@ -31,7 +31,7 @@ public class QC_1853_DisplayingOfBonusesInOrderAfterPlacingOrderWithBonuses {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShop("prod", "DE");
+        return new SetUp("ATD").setUpShop("prod", "DE");
     }
 
     @Test(dataProvider = "route")
@@ -41,7 +41,7 @@ public class QC_1853_DisplayingOfBonusesInOrderAfterPlacingOrderWithBonuses {
     public void testDisplayingOfBonusesInOrder(String route) throws SQLException {
         openPage(route);
         main_page_logic.loginAndTransitionToProfilePlusPage(mail);
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "product29"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "product29"));
         new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()

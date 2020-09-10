@@ -25,7 +25,7 @@ public class QC_449_AdditionalListingOnTecDoc {
 
     @DataProvider(name = "route")
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list10");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list10");
     }
 
     @Test(dataProvider = "route")

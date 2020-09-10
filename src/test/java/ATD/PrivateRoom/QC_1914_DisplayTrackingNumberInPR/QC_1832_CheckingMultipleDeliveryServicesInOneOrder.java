@@ -28,7 +28,7 @@ public class QC_1832_CheckingMultipleDeliveryServicesInOneOrder {
 
     private Main_page_Logic main_page_logic = new Main_page_Logic();
     private Mailinator mailinator = new Mailinator();
-    private DataBase dataBase = new DataBase();
+    private DataBase dataBase = new DataBase("ATD");
 
     @BeforeClass
     void setUp() {
@@ -37,7 +37,7 @@ public class QC_1832_CheckingMultipleDeliveryServicesInOneOrder {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShop("prod", "DE");
+        return new SetUp("ATD").setUpShop("prod", "DE");
     }
 
     @Test(dataProvider = "route")

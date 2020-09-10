@@ -25,7 +25,7 @@ public class QC_447_PresenceElementsOnTecDocListing {
 
   @DataProvider(name = "route")
   Object[] dataProvider() throws SQLException {
-    return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list8");
+    return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list8");
   }
 
   @Test(dataProvider = "route")

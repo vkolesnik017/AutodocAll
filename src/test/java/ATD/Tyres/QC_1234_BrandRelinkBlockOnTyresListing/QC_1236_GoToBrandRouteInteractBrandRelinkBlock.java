@@ -26,7 +26,7 @@ public class QC_1236_GoToBrandRouteInteractBrandRelinkBlock {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "tyres_season2,tyres_season6,tyres_season7,tyres_brand," +
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_season2,tyres_season6,tyres_season7,tyres_brand," +
                 "tyres_season,tyres_season8,tyres_season9,tyres_brand7,tyres_season5,tyres_season10,tyres_season11,tyres_brand3,tyres_season12,tyres_season4,tyres_brand4");
     }
 

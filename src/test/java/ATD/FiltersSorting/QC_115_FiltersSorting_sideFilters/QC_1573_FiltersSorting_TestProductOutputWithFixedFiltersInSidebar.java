@@ -26,12 +26,12 @@ public class QC_1573_FiltersSorting_TestProductOutputWithFixedFiltersInSidebar {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list21");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list21");
     }
 
     @DataProvider(name = "routesLKW", parallel = true)
     Object[] dataProviderLKWsearch() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list15");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list15");
     }
 
     @Test(dataProvider = "routes", enabled = false)
@@ -51,7 +51,7 @@ public class QC_1573_FiltersSorting_TestProductOutputWithFixedFiltersInSidebar {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks All Filters Are Fixed In Sidebar After Scroll Route Search")
     public void testProductOutputWithFixedFiltersInSidebarRouteSearch() throws SQLException {
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "search21"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "search21"));
         new Listing_page_Logic().checkOutputWithFiltersByBrandFixInSidebarRouteSearch(0);
     }
 
@@ -71,7 +71,7 @@ public class QC_1573_FiltersSorting_TestProductOutputWithFixedFiltersInSidebar {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks All Filters Are Fixed In Sidebar After Scroll Route LKW Search")
     public void testProductOutputWithFixedFiltersInSidebarRouteLKWsearch() throws SQLException {
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_search"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_search"));
         new Listing_page_Logic().checkOutputWithFiltersByBrandFixInSidebar(2);
     }
 
