@@ -30,7 +30,7 @@ public class QC_1677_HeavyLoadsNegativeCase {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "HeavyLoadProduct2");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "HeavyLoadProduct2");
     }
 
     @Test(dataProvider = "route")
@@ -40,7 +40,7 @@ public class QC_1677_HeavyLoadsNegativeCase {
     public void testOfHeavyLoadsNegativePurchaseBasket(String route) throws SQLException {
         openPage(route);
         product_page_logic.addProductToCart();
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "product2"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "product2"));
         product_page_logic.addProductToCart()
                           .closePopupOtherCategoryIfYes();
         new Main_page_Logic().loginFromHeader(email)
@@ -49,7 +49,7 @@ public class QC_1677_HeavyLoadsNegativeCase {
                 .closePopUpDeliveryLimitCartPage()
                 .checkAbsenceGoodInCartPage("7057305")
                 .checkPresenceGoodInCardPage("7807629");
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "HeavyLoadProduct2"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "HeavyLoadProduct2"));
         product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
@@ -57,7 +57,7 @@ public class QC_1677_HeavyLoadsNegativeCase {
                 .deleteGoodsInDeliveryPopupCartPage()
                 .checkAbsenceGoodInCartPage("7057305")
                 .checkPresenceGoodInCardPage("7807629");
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "HeavyLoadProduct2"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "HeavyLoadProduct2"));
         product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()

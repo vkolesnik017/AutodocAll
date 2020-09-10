@@ -29,7 +29,7 @@ public class QC_675_ResetHorizontalCarSelector {
 
   @DataProvider(name = "route", parallel = true)
   Object[] dataProvider() {
-    return new SetUp().setUpShop("prod", "DE");
+    return new SetUp("ATD").setUpShop("prod", "DE");
   }
 
   @Test(dataProvider = "route")
@@ -37,7 +37,7 @@ public class QC_675_ResetHorizontalCarSelector {
   @Owner(value = "Evlentiev")
   @Description(value = "Reset horizontal car selector")
   public void testResetHorizontalCarSelected(String route) throws SQLException {
-    String urlWithSelectedCar = route + "/" + new DataBase().getRouteByRouteName("DE", "category_car_list");
+    String urlWithSelectedCar = route + "/" + new DataBase("ATD").getRouteByRouteName("DE", "category_car_list");
     open(urlWithSelectedCar);
     product_page_logic.openProductPageById(route, usualIdProduct)
             .resetHorizontalCarSelector();

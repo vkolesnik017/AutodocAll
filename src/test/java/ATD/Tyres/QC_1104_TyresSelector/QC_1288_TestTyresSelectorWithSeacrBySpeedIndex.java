@@ -26,7 +26,7 @@ public class QC_1288_TestTyresSelectorWithSeacrBySpeedIndex {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "tyres");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres");
     }
 
     @Test(dataProvider = "routes")

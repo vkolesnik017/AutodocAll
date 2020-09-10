@@ -27,7 +27,7 @@ public class QC_1433_BrandFilterApplyingOnTyresListing {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "tyres_dimension2,tyres_dimension3,tyres_dimension5,tyres_dimension4," +
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_dimension2,tyres_dimension3,tyres_dimension5,tyres_dimension4," +
                 "tyres_size6,tyres_size7,tyres_size4,tyres_size5," +
                 "tyre_form,tyre_form2,tyre_form3");
     }
@@ -46,7 +46,7 @@ public class QC_1433_BrandFilterApplyingOnTyresListing {
     @Owner(value = "Romaniuta")
     @Description(value = "Test Checks Brand Filter Applying On Tyres Listing Moto Route")
     public void testBrandFilterApplyingOnTyresListingMotoRoute() throws SQLException {
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "tyre_form4"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "tyre_form4"));
         new TyresListing_page_Logic().checkBrandFilterApplyingMotoRoute();
     }
 

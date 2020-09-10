@@ -30,14 +30,14 @@ public class QC_1880_DisplayingSO_BlockAfterManipulationOnRouteAllData {
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks displaying SO block after manipulation on route alldata")
     public void testDisplayingSO_BlockAfterManipulationOnRouteAllData() throws SQLException {
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "BE", "main", "product32"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "BE", "main", "product32"));
         String shop = getCurrentShopFromJSVarInHTML();
         prodID = product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .getProductId();
         product_page_logic.cartClick()
                 .checkOfIdAddedProductInBasket(prodID);
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "BE", "main", "product7"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "BE", "main", "product7"));
         product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()

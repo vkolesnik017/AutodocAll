@@ -30,7 +30,7 @@ public class QC_985_GdprFaqFormNameShorting {
 
     @DataProvider(name = "route")
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product18");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product18");
     }
 
     @Test(dataProvider = "route")

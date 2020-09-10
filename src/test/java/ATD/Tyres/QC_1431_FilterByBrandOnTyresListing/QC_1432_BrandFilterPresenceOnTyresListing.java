@@ -26,7 +26,7 @@ public class QC_1432_BrandFilterPresenceOnTyresListing {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "tyres_dimension2,tyres_dimension3,tyres_dimension5,tyres_dimension4," +
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_dimension2,tyres_dimension3,tyres_dimension5,tyres_dimension4," +
                 "tyres_size6,tyres_size7,tyres_size4,tyres_size5," +
                 "tyre_form,tyre_form2,tyre_form3,tyre_form4");
     }

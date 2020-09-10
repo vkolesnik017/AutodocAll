@@ -27,7 +27,7 @@ public class QC_747_AppearsCarSelectorPopupOnSearchByScrollDown {
 
   @DataProvider(name = "routes")
   Object[] dataProvider() throws SQLException {
-    return new SetUp().setUpShopWithSubroutes("prod", "DE", "main","search6");
+    return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main","search6");
   }
 
   @Test(dataProvider = "routes")

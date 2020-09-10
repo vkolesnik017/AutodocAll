@@ -26,7 +26,7 @@ public class QC_1262_SubtitleMainCatalog {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main","index_instruments");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main","index_instruments");
     }
 
     @Test(dataProvider = "route")

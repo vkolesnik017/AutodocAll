@@ -28,7 +28,7 @@ public class QC_122_FiltersSorting_TestSideFilterWithPagination {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2");
     }
 
     @Test(dataProvider = "routes")
@@ -50,7 +50,7 @@ public class QC_122_FiltersSorting_TestSideFilterWithPagination {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks side filter with pagination search")
     public void testSideFilterWithPaginationSearch() throws SQLException {
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "search17"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "search17"));
         listingPage.clickMoreCharacteristicInFilter();
         String characteristic = listingPage.getTextFromElement(listingPage.langeFilterAttribute280());
         listingPage.hoverOnSideFilterAndClick(listingPage.langeFilterCheckbox280())
@@ -65,7 +65,7 @@ public class QC_122_FiltersSorting_TestSideFilterWithPagination {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks side filter with pagination")
     public void testSideFilterWithPaginationLKW() throws SQLException {
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list28"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list28"));
         String characteristic = listingPage.getTextFromElement(listingPage.langeFilterCheckboxLKW700());
         listingPage.clickFilterButton(listingPage.langeFilterCheckboxLKW700())
                     .waitUntilPreloaderDisappear()

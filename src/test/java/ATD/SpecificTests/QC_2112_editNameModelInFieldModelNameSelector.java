@@ -50,7 +50,7 @@ public class QC_2112_editNameModelInFieldModelNameSelector {
         String modelId = parseExcel(data)[2].trim();
         String modelFromData = parseExcel(data)[3].trim();
 
-        String shop = new DataBase().getRouteByRouteName(this.shop, "main");
+        String shop = new DataBase("ATD").getRouteByRouteName(this.shop, "main");
         System.out.println(shop + " SHOP FROM DB");
         String startUrl = "https://www." + shop + "/search?maker_id=" + makerId + "&model_id=" + modelId;
         openPage(startUrl);

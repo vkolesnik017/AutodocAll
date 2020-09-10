@@ -28,7 +28,7 @@ public class QC_141_FiltersSorting_TestBySideAndBrandAndSideFilterInteraction {
 
     @DataProvider(name = "routesLKW", parallel = true)
     Object[] dataProviderLKW() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list2,lkw_category_car_list9");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list2,lkw_category_car_list9");
     }
 
     @Test(enabled = false)
@@ -36,7 +36,7 @@ public class QC_141_FiltersSorting_TestBySideAndBrandAndSideFilterInteraction {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks by side, brand and side filters interaction LKW route search")
     public void testBySideAndBrandAndSideFilterInteractionLKWsearch() throws Exception {
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_search6"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_search6"));
         String brandName = listingPage.getAtributeFromElementLKWsearch(listingPage.secondBrandNameInFilter(), "alt");
         listingPage.clickFilterButton(listingPage.secondBrandInFilterButton())
                 .waitUntilPreloaderDisappear()
@@ -74,7 +74,7 @@ public class QC_141_FiltersSorting_TestBySideAndBrandAndSideFilterInteraction {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks by side, brand and side filters interaction route without car")
     public void testBySideAndBrandAndSideFilterInteractionSearchRouteWithoutCar() throws Exception {
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "search19"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "search19"));
         listingPage.clickFilterBySideBack()
                 .waitUntilPreloaderDisappearAndSleep(3000);
         String brandName = listingPage.getAtributeFromElement(listingPage.firstBrandNameInFiler(), "alt");
@@ -93,7 +93,7 @@ public class QC_141_FiltersSorting_TestBySideAndBrandAndSideFilterInteraction {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks by side, brand and side filters interaction route brand without car")
     public void testBySideAndBrandAndSideFilterInteractionSearchRouteBrandWithoutCar() throws Exception {
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "search20"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "search20"));
         listingPage.clickFilterBySideBack()
                 .waitUntilPreloaderDisappear();
         String durchmesserValue = listingPage.getTextFromElement(listingPage.durchmesserSideFilterButtonFirstValue());

@@ -26,17 +26,17 @@ public class QC_118_FiltersSorting_TestProductreiheFilterApplying {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2,search4,search17,search18");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2,search4,search17,search18");
     }
 
     @DataProvider(name = "routesLKW", parallel = true)
     Object[] dataProviderLKW() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list6");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list6");
     }
 
     @DataProvider(name = "routesLKWsearch", parallel = true)
     Object[] dataProviderLKWsearch() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_search5");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_search5");
     }
 
     @Test(dataProvider = "routes")

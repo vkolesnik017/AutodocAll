@@ -28,7 +28,7 @@ public class QC_1947_VersandPage {
 
     @DataProvider(name = "route")
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "staticVersand");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "staticVersand");
     }
 
     @Test(dataProvider = "route")

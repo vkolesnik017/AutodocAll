@@ -40,7 +40,7 @@ public class QC_1695_CheckAddressBlockingOnAddressPage {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product2");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product2");
     }
 
     @Test(dataProvider = "route")

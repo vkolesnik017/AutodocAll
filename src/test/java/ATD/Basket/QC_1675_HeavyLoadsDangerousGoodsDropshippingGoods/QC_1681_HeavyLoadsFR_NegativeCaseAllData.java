@@ -31,7 +31,7 @@ public class QC_1681_HeavyLoadsFR_NegativeCaseAllData {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "HeavyLoadProduct3");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "HeavyLoadProduct3");
     }
 
     @Test(dataProvider = "route")
@@ -41,7 +41,7 @@ public class QC_1681_HeavyLoadsFR_NegativeCaseAllData {
     public void testOfHeavyLoadsNegativePurchaseAllDataInFR(String route) throws SQLException {
         openPage(route);
         product_page_logic.addProductToCart();
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "product2"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "product2"));
         product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick().nextButtonClick()
@@ -57,7 +57,7 @@ public class QC_1681_HeavyLoadsFR_NegativeCaseAllData {
                 .checkPresenceSafeOrderBlock()
                 .checkPresenceRegularDeliveryPrice()
                 .checkAbsenceHeavyLoadsDeliveryPrice();
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "HeavyLoadProduct3"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "HeavyLoadProduct3"));
         product_page_logic.addProductToCart().closePopupOtherCategoryIfYes().cartClick();
         new CartAllData_page_Logic().deleteGoodsInDeliveryPopupCartAllDataPage()
                 .checkAbsenceGoodInCartPage("7037462")

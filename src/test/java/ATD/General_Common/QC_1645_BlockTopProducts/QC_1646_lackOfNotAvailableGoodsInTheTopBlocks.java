@@ -28,7 +28,7 @@ public class QC_1646_lackOfNotAvailableGoodsInTheTopBlocks {
 
     @DataProvider(name = "routesWithBlocksOfTopProducts", parallel = true)
     Object[] routesWithBlocksOfTopProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "categories_maker,group_list,group_list_body,group_list_drive," +
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "categories_maker,group_list,group_list_body,group_list_drive," +
                 "group_list_fuel,group_list_year,group_list_hp,model_maker_list,model_maker_list_year,model_maker_list_hp,maker_car_list,category_name,category_maker,category_maker_body,category_maker_drive," +
                 "category_group,category_group_body,category_group_drive,category_group_fuel,category_group_year,category_model");
     }

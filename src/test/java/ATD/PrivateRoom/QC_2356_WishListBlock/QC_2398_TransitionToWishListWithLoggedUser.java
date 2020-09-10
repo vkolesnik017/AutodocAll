@@ -28,7 +28,7 @@ public class QC_2398_TransitionToWishListWithLoggedUser {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "main", "main");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "main", "main");
 
     }
 
@@ -41,7 +41,7 @@ public class QC_2398_TransitionToWishListWithLoggedUser {
 
         new Main_page_Logic()
         .loginAndTransitionToProfilePlusPage(email).goToWishListBlock();
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE","profile_wishlist"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE","profile_wishlist"));
     }
 
     @AfterMethod

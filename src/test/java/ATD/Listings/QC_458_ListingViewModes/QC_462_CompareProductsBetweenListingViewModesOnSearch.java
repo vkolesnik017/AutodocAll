@@ -27,7 +27,7 @@ public class QC_462_CompareProductsBetweenListingViewModesOnSearch {
 
   @DataProvider(name = "route")
   Object[] dataProvider() throws SQLException {
-    return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "search2");
+    return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "search2");
   }
 
   @Test(dataProvider = "route")

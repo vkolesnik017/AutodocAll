@@ -37,7 +37,7 @@ public class QC_709_FAQ_TestFAQformWithValidData {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks faq form with valid data")
     public void testFAQformWithValidData() throws SQLException {
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "product14"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "product14"));
         String randomEmail = mailRandomMailinator("709");
         String faqMessage = ("QC_709_AUTOTEST_FAQ" + getRandomNumber());
         String faqResponse = ("QC_709_FAQ_AUTOTEST_RESPONSE" + getRandomNumber());

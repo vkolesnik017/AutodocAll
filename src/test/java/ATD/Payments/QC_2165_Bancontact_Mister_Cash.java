@@ -34,7 +34,7 @@ public class QC_2165_Bancontact_Mister_Cash {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "BE", "main", "product32");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "BE", "main", "product32");
     }
 
     @Test(dataProvider = "route")
@@ -44,7 +44,7 @@ public class QC_2165_Bancontact_Mister_Cash {
     public void testBancontactMisterCash(String route) throws Exception {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
-        String userData = new DataBase().getUserIdForPaymentsMethod("payments_userid_atd", shop, "Bancontact/Mister Cash");
+        String userData = new DataBase("ATD").getUserIdForPaymentsMethod("payments_userid_atd", shop, "Bancontact/Mister Cash");
         String userID = parseUserIdFromBD(userData);
         String mail = parseUserMailFromBD(userData);
         float totalPriceAllData = new Product_page_Logic().addProductToCart()

@@ -32,7 +32,7 @@ public class QC_614_DisplayUndercategoriesInCatalogRouteWithCar {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "maker_car_list3");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "maker_car_list3");
     }
 
     @Test(dataProvider = "routes")
@@ -42,7 +42,7 @@ public class QC_614_DisplayUndercategoriesInCatalogRouteWithCar {
     public void testDisplayUndercategoriesInCatalogRouteWithCar(String route) throws Exception {
         openPage(route);
         categoriesPageLogic.checkProductOutputOnRoutes();
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "maker_car_list8"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "maker_car_list8"));
         categoriesPageLogic.checkProductOutputOnRoutes();
         notActiveCategories = new CatalogCategories_aws("prod").getNotActiveUndercategoriesFromAWS();
 //        categoriesPageLogic.checkUrlUndercategoriesId404(notActiveCategories);

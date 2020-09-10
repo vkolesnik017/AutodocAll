@@ -45,7 +45,7 @@ public class QASYS_455_DeletingOfDangerousProductFromBasket {
 
     @DataProvider(name = "route", parallel = false)
     Object[] dataProvider() {
-        return new SetUp().setUpShopWithListParam("prod", "DE", deliveryCountries);
+        return new SetUp("ATD").setUpShopWithListParam("prod", "DE", deliveryCountries);
     }
 
     @Owner(value = "Evlentiev")

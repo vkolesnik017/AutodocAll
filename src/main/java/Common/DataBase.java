@@ -10,7 +10,11 @@ public class DataBase {
     private String url = "jdbc:mysql:" + ip + "/autodoc?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     private String username = "alexeym";
     private String password = "24201901";
+    private String skin;
 
+    public DataBase(String skin) {
+        this.skin = skin;
+    }
 
     private Connection coonectionDB(String nameDB) {
         Connection conn = null;
@@ -25,12 +29,62 @@ public class DataBase {
         return conn;
     }
 
+    private String getNameRouteBySkin(String skin) {
+        String routeName = null;
+
+        switch (skin) {
+            case "ATD":
+                routeName = "routes_atd";
+                break;
+            case "PKW":
+                routeName = "routes_pkw";
+                break;
+            case "BVS":
+                routeName = "routes_bvs";
+                break;
+            case "DIR":
+                routeName = "routes_dir";
+                break;
+            case "ERZ":
+                routeName = "routes_erz";
+                break;
+            case "EU":
+                routeName = "routes_eu";
+                break;
+            case "EXPERT":
+                routeName = "routes_expert";
+                break;
+            case "KAUF":
+                routeName = "routes_kauf";
+                break;
+            case "PRF":
+                routeName = "routes_prf";
+                break;
+            case "TKF":
+                routeName = "routes_tkf";
+                break;
+            case "TLS":
+                routeName = "routes_tls";
+                break;
+            case "TOP":
+                routeName = "routes_top";
+                break;
+            case "TSP":
+                routeName = "routes_tsp";
+                break;
+            case "XXL":
+                routeName = "routes_xxl";
+                break;
+        }
+        return routeName;
+    }
+
     // Return list from route Main By Shops getRouteListForMain("AT,DE,CH")
     List<String> getRouteListForMain(String shop) throws SQLException {
         Statement statement = null;
-        Connection conn = coonectionDB("routes_atd");
+        Connection conn = coonectionDB(getNameRouteBySkin(skin));
         ArrayList<String> route = new ArrayList<>();
-        String query = "SELECT " + shop + " FROM autodoc.routes_atd where id = 1";
+        String query = "SELECT " + shop + " FROM autodoc." + getNameRouteBySkin(skin) + " where id = 1";
         try {
             statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
@@ -52,9 +106,9 @@ public class DataBase {
     // Return list routes By Shops and route getRouteListByRouteName("AT,DE,CH", "lkw_main")
     List<String> getRouteListByRouteName(String shop, String routeName) throws SQLException {
         Statement statement = null;
-        Connection conn = coonectionDB("routes_atd");
+        Connection conn = coonectionDB(getNameRouteBySkin(skin));
         ArrayList<String> route = new ArrayList<>();
-        String query = "SELECT " + shop + " FROM autodoc.routes_atd where route_name = '" + routeName + "'";
+        String query = "SELECT " + shop + " FROM autodoc." + getNameRouteBySkin(skin) + " where route_name = '" + routeName + "'";
         try {
             statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
@@ -76,9 +130,9 @@ public class DataBase {
     // Return String route By Shop and route or subroute getRouteByRouteName("AT", "lkw_main")
     public String getRouteByRouteName(String shop, String routeName) throws SQLException {
         Statement statement = null;
-        Connection conn = coonectionDB("routes_atd");
+        Connection conn = coonectionDB(getNameRouteBySkin(skin));
         ArrayList<String> route = new ArrayList<>();
-        String query = "SELECT " + shop + " FROM autodoc.routes_atd where route_name = '" + routeName + "'";
+        String query = "SELECT " + shop + " FROM autodoc." + getNameRouteBySkin(skin) + " where route_name = '" + routeName + "'";
         try {
             statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
@@ -102,7 +156,7 @@ public class DataBase {
     // Return String route By Shop and route("prod", "DE", "lkw_main")
     public String getFullRouteByRouteName(String envFromTest, String shop, String routeName) throws SQLException {
         String result;
-        String env = new SetUp().getEnv(envFromTest);
+        String env = new SetUp(skin).getEnv(envFromTest);
         String mainRoute = getRouteByRouteName(shop, routeName);
         result = env + mainRoute;
         return result;
@@ -111,7 +165,7 @@ public class DataBase {
     // Return String route By Shop and route getRouteByRouteName("AT", "lkw_main", "product1")
     public String getFullRouteByRouteAndSubroute(String envFromTest, String shop, String routeName, String subRoute) throws SQLException {
         String result;
-        String env = new SetUp().getEnv(envFromTest);
+        String env = new SetUp(skin).getEnv(envFromTest);
         String mainRoute = getRouteByRouteName(shop, routeName);
         String subroute = getRouteByRouteName(shop, subRoute);
         result = env + mainRoute + "/" + subroute;
@@ -210,11 +264,11 @@ public class DataBase {
     }
 
     public static String parseUserIdFromBD(String userData) {
-        return userData.split("#") [0].trim();
+        return userData.split("#")[0].trim();
     }
 
     public static String parseUserMailFromBD(String userData) {
-        return userData.split("#") [1].trim();
+        return userData.split("#")[1].trim();
     }
 
     public String getUserIdForPaymentsMethod(String dbName, String shop, String paymentsMethod) throws SQLException {
@@ -238,7 +292,6 @@ public class DataBase {
         }
         return userID;
     }
-
 
 
     public String getMail(String value) throws SQLException {

@@ -26,7 +26,7 @@ public class QC_1605_NavigateCategoriesInHeaderNavBlock {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() {
-        return new SetUp().setUpShop("prod", "DE");
+        return new SetUp("ATD").setUpShop("prod", "DE");
     }
 
 

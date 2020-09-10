@@ -17,7 +17,7 @@ import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_228_FiltersSorting_TestOutputSortingOvercategoryRoute {
-    private DataBase dataBase = new DataBase();
+    private DataBase dataBase = new DataBase("ATD");
 
     @BeforeClass
     void setUp() {

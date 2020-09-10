@@ -23,7 +23,7 @@ public class QC_1568_PresenceOfTextBlocks {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() {
-        return new SetUp().setUpShop("prod", "DE");
+        return new SetUp("ATD").setUpShop("prod", "DE");
     }
 
     @Flaky

@@ -21,7 +21,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class QC_772_RegKbaSelector {
 
   private Main_page_Logic mainPageLogic = new Main_page_Logic();
-  private DataBase db = new DataBase();
+  private DataBase db = new DataBase("ATD");
 
   @BeforeClass
   void setUp() {
@@ -30,7 +30,7 @@ public class QC_772_RegKbaSelector {
 
   @DataProvider(name = "routeAndKbaNumbers", parallel = true)
   Object[] dataProvider() {
-    return new SetUp().setUpShop("prod", "FI, FR, IT, DK, SE, NO, NL, PT, CH, EN");
+    return new SetUp("ATD").setUpShop("prod", "FI, FR, IT, DK, SE, NO, NL, PT, CH, EN");
   }
 
   @Test(dataProvider = "routeAndKbaNumbers")
@@ -48,7 +48,7 @@ public class QC_772_RegKbaSelector {
 
   @DataProvider(name = "routeAndKbaNumberForDE")
   Object[] dataProvider2() {
-    return new SetUp().setUpShop("prod", "DE");
+    return new SetUp("ATD").setUpShop("prod", "DE");
   }
 
   @Test(dataProvider = "routeAndKbaNumberForDE")

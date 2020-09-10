@@ -25,7 +25,7 @@ public class QC_227_FiltersSorting_TestOutputSortingWithTwoGenerics {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list7");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list7");
     }
 
     @Test(dataProvider = "routes")

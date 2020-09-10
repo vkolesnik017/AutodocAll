@@ -28,12 +28,12 @@ public class QC_119_FiltersSorting_TestLangeFilterApplying {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2");
     }
 
     @DataProvider(name = "routesLKWsearch", parallel = true)
     Object[] dataProviderLKWsearch() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_search5");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_search5");
     }
 
     @Test(dataProvider = "routes")
@@ -53,7 +53,7 @@ public class QC_119_FiltersSorting_TestLangeFilterApplying {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks Lange side filter LKW")
     public void testLangeFilterLKW() throws SQLException {
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list28"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list28"));
         String characteristic = listingPage.getTextFromElement(listingPage.langeFilterCheckboxLKW());
         listingPage.clickFilterButton(listingPage.langeFilterCheckboxLKW())
                     .waitUntilPreloaderDisappear()

@@ -32,7 +32,7 @@ public class QC_509_PresenceStaticCharacteristicsOnTecDocListing {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list7");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list7");
     }
 
     @Test
@@ -57,7 +57,7 @@ public class QC_509_PresenceStaticCharacteristicsOnTecDocListing {
         expectedCharacteristics.add("Höhe \\[mm]:\\n33,4");
 
 
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "category_car_list"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "category_car_list"));
         String articleProduct = "Artikelnummer: 82B0691";
         ElementsCollection actualCharacteristics = listingPage.getCharacteristicsDesiredProduct(articleProduct);
         commonMethods.compareCharacteristics(actualCharacteristics, expectedCharacteristics);

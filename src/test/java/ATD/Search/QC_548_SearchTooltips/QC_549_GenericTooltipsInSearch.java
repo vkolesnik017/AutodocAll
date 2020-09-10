@@ -24,7 +24,7 @@ public class QC_549_GenericTooltipsInSearch {
 
     @DataProvider(name = "route")
     Object[] dataProvider() {
-        return new SetUp().setUpShop("prod", "DE");
+        return new SetUp("ATD").setUpShop("prod", "DE");
     }
 
     @Test(dataProvider = "route")

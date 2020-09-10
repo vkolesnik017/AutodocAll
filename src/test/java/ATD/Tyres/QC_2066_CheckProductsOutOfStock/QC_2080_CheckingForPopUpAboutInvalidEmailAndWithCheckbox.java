@@ -26,7 +26,7 @@ public class QC_2080_CheckingForPopUpAboutInvalidEmailAndWithCheckbox {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "main", "tyre_form5,tyres_season13,tyres_brand8,tyres_group_season_brand2,tyres_size9"); //,
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "main", "tyre_form5,tyres_season13,tyres_brand8,tyres_group_season_brand2,tyres_size9"); //,
     }
 
     @Test(dataProvider = "routes")
@@ -43,7 +43,7 @@ public class QC_2080_CheckingForPopUpAboutInvalidEmailAndWithCheckbox {
 
     @DataProvider(name = "routesTyres", parallel = true)
     Object[] dataProviderTyres() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "main", "tyres_dimension9,tyres_season_size13,tyres_season_dimension6,tyres_brand_size3,tyres_brand_dimension6");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "main", "tyres_dimension9,tyres_season_size13,tyres_season_dimension6,tyres_brand_size3,tyres_brand_dimension6");
     }
 
     @Test(dataProvider = "routesTyres")

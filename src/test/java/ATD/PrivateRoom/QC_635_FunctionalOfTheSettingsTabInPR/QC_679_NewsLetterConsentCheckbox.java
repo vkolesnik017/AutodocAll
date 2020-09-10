@@ -31,7 +31,7 @@ public class QC_679_NewsLetterConsentCheckbox {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() {
-        return new SetUp().setUpShop("prod", "DE");
+        return new SetUp("ATD").setUpShop("prod", "DE");
     }
 
     @Test(dataProvider = "route")
@@ -52,7 +52,7 @@ public class QC_679_NewsLetterConsentCheckbox {
                 .enterMailAndClickSearch(mail)
                 .transitionOnCustomerViewPage()
                 .checkStatusOfLastLog();
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod","DE", "main","profile_plus"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod","DE", "main","profile_plus"));
         new Profile_plus_page_Logic().goToSettingPage()
                 .clickSubscribeCheckbox()
                 .checkTextInsidePopUpSubscribe("Den Newsletter wurde abgemeldet.")

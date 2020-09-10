@@ -30,7 +30,7 @@ public class QC_1594_Paired {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() {
-        return new SetUp().setUpShop("prod", "DE");
+        return new SetUp("ATD").setUpShop("prod", "DE");
     }
 
 
@@ -40,7 +40,7 @@ public class QC_1594_Paired {
     @Flaky
     public void checkingOrderWithPaired(String route) throws SQLException {
         String shop = getShopFromRoute(route);
-        openPage(route + "/" + new DataBase().getRouteByRouteName(shop, "search8"));
+        openPage(route + "/" + new DataBase("ATD").getRouteByRouteName(shop, "search8"));
         String testMail = "QC_1594_autotestATD@mailinator.com";
         new Search_page_Logic().counterIncreaseForPaired("2").counterDecreaseForPaired("4").closeFooterMessageCookies().detailsClick()
                 .counterIncreaseForPaired("2").counterDecreaseForPaired("4").counterIncreaseForPaired("2").addProductToCart().closePopupOtherCategoryIfYes().checkingNumberOfProductInCart(4).cartClick()

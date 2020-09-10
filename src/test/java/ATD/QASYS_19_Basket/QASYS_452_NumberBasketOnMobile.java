@@ -23,7 +23,7 @@ public class QASYS_452_NumberBasketOnMobile {
 
   @DataProvider(name = "route", parallel = true)
   Object[] dataProvider() {
-    return new SetUp().setUpShop("mob", "DE_m");
+    return new SetUp("ATD").setUpShop("mob", "DE_m");
   }
 
   @Owner(value = "Evlentiev")

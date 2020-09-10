@@ -28,7 +28,7 @@ public class QC_128_FiltersSorting_TestHoheAndBySideFilterInteraction {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list,search2");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list,search2");
     }
 
     @Test(dataProvider = "routes")
@@ -51,7 +51,7 @@ public class QC_128_FiltersSorting_TestHoheAndBySideFilterInteraction {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks Hohe and by side filters interaction")
     public void testHoheAndSideFilterInteractionLKW() throws SQLException {
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list9"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list9"));
         listingPage.clickFilterBySideBack()
                 .waitUntilPreloaderDisappear();
         String hoheValue = listingPage.getTextFromElement(listingPage.hoheThirdSideFilterButton());

@@ -31,7 +31,7 @@ public class QC_2168_PayPal {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopsWithSubroute("prod", "DE,AT,BG,BE,CH,CZ,DK,EN,EE,ES,FI,FR,GR,HU,IT,LD,LT,LV,NL,NO,PL,PT,RO,SE,SI,SK", "main", "product32");
+        return new SetUp("ATD").setUpShopsWithSubroute("prod", "DE,AT,BG,BE,CH,CZ,DK,EN,EE,ES,FI,FR,GR,HU,IT,LD,LT,LV,NL,NO,PL,PT,RO,SE,SI,SK", "main", "product32");
     }
 
     @Test(dataProvider = "route")
@@ -41,7 +41,7 @@ public class QC_2168_PayPal {
     public void testPayPal(String route) throws Exception {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
-        String userData = new DataBase().getUserIdForPaymentsMethod("payments_userid_atd", shop, "PayPal");
+        String userData = new DataBase("ATD").getUserIdForPaymentsMethod("payments_userid_atd", shop, "PayPal");
         String userID = parseUserIdFromBD(userData);
         String mail = parseUserMailFromBD(userData);
         float totalPriceAllData = new Product_page_Logic().addProductToCart()

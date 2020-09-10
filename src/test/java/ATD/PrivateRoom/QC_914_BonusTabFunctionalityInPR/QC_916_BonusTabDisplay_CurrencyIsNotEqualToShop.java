@@ -27,7 +27,7 @@ public class QC_916_BonusTabDisplay_CurrencyIsNotEqualToShop {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() {
-        return new SetUp().setUpShop("prod", "BG");
+        return new SetUp("ATD").setUpShop("prod", "BG");
     }
 
     @Test(dataProvider = "route")

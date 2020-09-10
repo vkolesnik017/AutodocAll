@@ -28,7 +28,7 @@ public class QC_1874_Unchecked_SO_CheckboxOn_FR_DE_LanguageVersions {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopsWithSubroute("prod", "DE, FR", "main", "product32");
+        return new SetUp("ATD").setUpShopsWithSubroute("prod", "DE, FR", "main", "product32");
     }
 
     @Test(dataProvider = "route")

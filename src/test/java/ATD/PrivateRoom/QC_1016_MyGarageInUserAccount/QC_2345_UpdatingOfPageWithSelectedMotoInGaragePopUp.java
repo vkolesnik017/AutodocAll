@@ -21,7 +21,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 public class QC_2345_UpdatingOfPageWithSelectedMotoInGaragePopUp {
 
     String email = "QC_2345TransitionToMyGarage@mailinator.com";
-    DataBase db = new DataBase();
+    DataBase db = new DataBase("ATD");
 
 
     @BeforeClass
@@ -31,7 +31,7 @@ public class QC_2345_UpdatingOfPageWithSelectedMotoInGaragePopUp {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_categories_maker,moto_catalog");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_categories_maker,moto_catalog");
     }
 
     @Test(dataProvider = "routes")
@@ -50,7 +50,7 @@ public class QC_2345_UpdatingOfPageWithSelectedMotoInGaragePopUp {
 
     @DataProvider(name = "routesCatalog", parallel = true)
     Object[] dataProviderCatalog() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog_model6,moto_category_car_list_model2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog_model6,moto_category_car_list_model2");
     }
 
     @Test(dataProvider = "routesCatalog")
@@ -69,7 +69,7 @@ public class QC_2345_UpdatingOfPageWithSelectedMotoInGaragePopUp {
 
     @DataProvider(name = "routesListOfModel", parallel = true)
     Object[] dataProviderListOfModel() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_maker,moto_parent_category_maker2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_maker,moto_parent_category_maker2");
     }
 
     @Test(dataProvider = "routesListOfModel")
@@ -88,7 +88,7 @@ public class QC_2345_UpdatingOfPageWithSelectedMotoInGaragePopUp {
 
     @DataProvider(name = "routesCarList", parallel = true)
     Object[] dataProviderCarList() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list2,moto_category");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list2,moto_category");
     }
 
     @Test(dataProvider = "routesCarList")

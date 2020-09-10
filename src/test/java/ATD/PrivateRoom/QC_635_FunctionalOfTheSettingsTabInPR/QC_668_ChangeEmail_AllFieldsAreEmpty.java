@@ -26,7 +26,7 @@ public class QC_668_ChangeEmail_AllFieldsAreEmpty {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() {
-        return new SetUp().setUpShop("prod", "DE");
+        return new SetUp("ATD").setUpShop("prod", "DE");
     }
 
     @Test(dataProvider = "route")

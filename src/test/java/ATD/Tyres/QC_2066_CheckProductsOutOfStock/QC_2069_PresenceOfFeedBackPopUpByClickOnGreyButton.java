@@ -24,7 +24,7 @@ public class QC_2069_PresenceOfFeedBackPopUpByClickOnGreyButton {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "main", "tyre_item2,tyre_item3,tyre_item5,tyre_item6,tyre_item7,tyre_item8,tyre_item9,tyre_item10,tyre_item11");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "main", "tyre_item2,tyre_item3,tyre_item5,tyre_item6,tyre_item7,tyre_item8,tyre_item9,tyre_item10,tyre_item11");
     }
 
     @Test(dataProvider = "routes")

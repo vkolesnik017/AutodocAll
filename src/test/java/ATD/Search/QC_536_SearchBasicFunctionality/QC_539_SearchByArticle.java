@@ -28,7 +28,7 @@ public class QC_539_SearchByArticle {
 
   @DataProvider(name = "route")
   Object[] dataProvider() {
-    return new SetUp().setUpShop("prod", "DE");
+    return new SetUp("ATD").setUpShop("prod", "DE");
   }
 
   @Test(dataProvider = "route")

@@ -28,7 +28,7 @@ public class QC_1926_LoginNegativeCase_InvalidPassword {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product32");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product32");
     }
 
     @Test(dataProvider = "route")

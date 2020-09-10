@@ -25,7 +25,7 @@ public class QC_1934_InputTIN_FiscalCodeField {
 
     @DataProvider(name = "routeEN", parallel = true)
     Object[] dataProviderEN() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "EN", "main", "product32");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "EN", "main", "product32");
     }
 
     @Test(dataProvider = "routeEN")
@@ -69,7 +69,7 @@ public class QC_1934_InputTIN_FiscalCodeField {
 
     @DataProvider(name = "routeES", parallel = true)
     Object[] dataProviderES() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "ES", "main", "product32");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "ES", "main", "product32");
     }
 
     @Test(dataProvider = "routeES")

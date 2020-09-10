@@ -25,7 +25,7 @@ public class QC_2075_CheckAbsenceOfCharacteristicQuantityInTopBlock {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_name_brand3,category_name_brand4,category_maker_brand2,category_maker_brand3,category_group_brand2,category_group_brand3");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_name_brand3,category_name_brand4,category_maker_brand2,category_maker_brand3,category_group_brand2,category_group_brand3");
     }
 
     @Test(dataProvider = "routes")

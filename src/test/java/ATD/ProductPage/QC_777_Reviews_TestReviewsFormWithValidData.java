@@ -32,7 +32,7 @@ public class QC_777_Reviews_TestReviewsFormWithValidData {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks reviews form validation")
     public void testReviewsFormWithValidData() throws SQLException {
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "product14"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "product14"));
         closeCookiesFooterMessage();
         String randomEmail = mailRandomMailinator("777");
         String reviewMessage = ("QC_777_AUTOTEST_REVIEWS" + getRandomNumber());

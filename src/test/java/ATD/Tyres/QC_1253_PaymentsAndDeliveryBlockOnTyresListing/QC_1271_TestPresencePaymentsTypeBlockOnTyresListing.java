@@ -26,7 +26,7 @@ public class QC_1271_TestPresencePaymentsTypeBlockOnTyresListing {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "tyres_season2,tyres_season6,tyres_season7,tyres_season_size2," +
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_season2,tyres_season6,tyres_season7,tyres_season_size2," +
                 "tyres_dimension2,tyres_size6,tyres_brand5,tyre_form," +
                 "tyres_season,tyres_season8,tyres_season9,tyres_season_size3,tyres_dimension3,tyres_brand2," +
                 "tyres_season5,tyres_season10,tyres_season11,tyres_season_size4,tyres_dimension5,tyres_brand3," +

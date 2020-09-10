@@ -28,7 +28,7 @@ public class QC_722_DisappearsTooltipAfterRefreshPage {
 
   @DataProvider(name = "routes", parallel = true)
   Object[] dataProvider() throws SQLException {
-    return new SetUp().setUpShopWithSubroutes("prod", "DE", "main","main,category_name,category_name_brand");
+    return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main","main,category_name,category_name_brand");
   }
 
   @Test(dataProvider = "routes")

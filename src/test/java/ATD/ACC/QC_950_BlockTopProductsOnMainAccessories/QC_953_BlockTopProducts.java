@@ -27,7 +27,7 @@ public class QC_953_BlockTopProducts {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main","index_accessories");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main","index_accessories");
     }
 
     @Test(dataProvider = "route")

@@ -26,7 +26,7 @@ public class QC_1741_CharacteristicPopupIsNotDisplayedIfCarRatingLess100 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list23");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list23");
     }
 
     @Test(dataProvider = "routes")

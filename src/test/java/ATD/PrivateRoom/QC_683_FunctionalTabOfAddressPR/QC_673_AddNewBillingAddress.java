@@ -27,7 +27,7 @@ public class QC_673_AddNewBillingAddress {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() {
-        return new SetUp().setUpShop("prod", "DE");
+        return new SetUp("ATD").setUpShop("prod", "DE");
     }
 
     @Test(dataProvider = "route")

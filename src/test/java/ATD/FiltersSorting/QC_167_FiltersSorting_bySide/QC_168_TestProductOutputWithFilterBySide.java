@@ -20,7 +20,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_168_TestProductOutputWithFilterBySide {
     private Listing_page_Logic listingPageLogic = new Listing_page_Logic();
-    private DataBase dataBase = new DataBase();
+    private DataBase dataBase = new DataBase("ATD");
 
     @BeforeClass
     void setUp() {
@@ -29,12 +29,12 @@ public class QC_168_TestProductOutputWithFilterBySide {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2,search4");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2,search4");
     }
 
     @DataProvider(name = "routesLKW", parallel = true)
     Object[] dataProviderLKW2routes() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list7,lkw_search,lkw_category_car_list6");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list7,lkw_search,lkw_category_car_list6");
     }
 
     @Test(dataProvider = "routes")

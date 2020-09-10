@@ -20,7 +20,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_2326_UpdatingOfPageWithSelectedVehicle {
     String email = "QC_2326TransitionToMyGarage@mailinator.com";
-    DataBase db = new DataBase();
+    DataBase db = new DataBase("ATD");
 
     @BeforeClass
     void setUp() {
@@ -29,7 +29,7 @@ public class QC_2326_UpdatingOfPageWithSelectedVehicle {
 
     @DataProvider(name = "routesCheck", parallel = true)
     Object[] dataProviderCheck() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "main", "tyres_size11,index_instruments,category_maker_brand4");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "main", "tyres_size11,index_instruments,category_maker_brand4");
     }
 
     @Test(dataProvider = "routesCheck")
@@ -48,7 +48,7 @@ public class QC_2326_UpdatingOfPageWithSelectedVehicle {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "main", "index_accessories,listing_accessories5,tyres");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "main", "index_accessories,listing_accessories5,tyres");
     }
 
     @Test(dataProvider = "routes")
@@ -67,7 +67,7 @@ public class QC_2326_UpdatingOfPageWithSelectedVehicle {
 
     @DataProvider(name = "routesInstruments", parallel = true)
     Object[] dataProviderInstruments() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "main", "listing_instruments4,staticAboutUs,staticImpressum");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "main", "listing_instruments4,staticAboutUs,staticImpressum");
     }
 
     @Test(dataProvider = "routesInstruments")
@@ -86,7 +86,7 @@ public class QC_2326_UpdatingOfPageWithSelectedVehicle {
 
     @DataProvider(name = "routesPlus", parallel = true)
     Object[] dataProviderPlus() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "main", "category_maker5,category_maker_body2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "main", "category_maker5,category_maker_body2");
     }
 
     @Test(dataProvider = "routesPlus")
@@ -105,7 +105,7 @@ public class QC_2326_UpdatingOfPageWithSelectedVehicle {
 
     @DataProvider(name = "routesProfilePlus", parallel = true)
     Object[] dataProviderProfilePlus() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "main", "profile_plus");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "main", "profile_plus");
     }
 
     @Test(dataProvider = "routesProfilePlus")
@@ -124,7 +124,7 @@ public class QC_2326_UpdatingOfPageWithSelectedVehicle {
 
     @DataProvider(name = "routesName", parallel = true)
     Object[] dataProviderName() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "main", "category_name_brand6");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "main", "category_name_brand6");
     }
 
     @Test(dataProvider = "routesName")
@@ -144,7 +144,7 @@ public class QC_2326_UpdatingOfPageWithSelectedVehicle {
 
     @DataProvider(name = "routesMaker", parallel = true)
     Object[] dataProviderMaker() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "main", "category_maker6,category_maker_body3,category_maker_drive2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "main", "category_maker6,category_maker_body3,category_maker_drive2");
     }
 
     @Test(dataProvider = "routesMaker")
@@ -163,7 +163,7 @@ public class QC_2326_UpdatingOfPageWithSelectedVehicle {
 
     @DataProvider(name = "routesGroup", parallel = true)
     Object[] dataProviderGroup() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "main", "category_group2,category_group_body2,category_group_drive2,category_group_fuel2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "main", "category_group2,category_group_body2,category_group_drive2,category_group_fuel2");
     }
 
     @Test(dataProvider = "routesGroup")
@@ -182,7 +182,7 @@ public class QC_2326_UpdatingOfPageWithSelectedVehicle {
 
     @DataProvider(name = "routesGroupYear", parallel = true)
     Object[] dataProviderGroupYear() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "main", "category_group_year2,category_group_brand4,category_model2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "main", "category_group_year2,category_group_brand4,category_model2");
     }
 
     @Test(dataProvider = "routesGroupYear")
@@ -201,7 +201,7 @@ public class QC_2326_UpdatingOfPageWithSelectedVehicle {
 
     @DataProvider(name = "routesLKW", parallel = true)
     Object[] dataProviderLKW() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "main");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "main");
     }
 
     @Test(dataProvider = "routesLKW")
@@ -220,7 +220,7 @@ public class QC_2326_UpdatingOfPageWithSelectedVehicle {
 
     @DataProvider(name = "routesMoto", parallel = true)
     Object[] dataProviderMoto() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "main");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "main");
 
     }
 
@@ -240,7 +240,7 @@ public class QC_2326_UpdatingOfPageWithSelectedVehicle {
 
     @DataProvider(name = "routesSearch", parallel = true)
     Object[] dataProviderSearch() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "main", "search19");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "main", "search19");
     }
 
     @Test(dataProvider = "routesSearch")
@@ -259,7 +259,7 @@ public class QC_2326_UpdatingOfPageWithSelectedVehicle {
 
     @DataProvider(name = "routesCategoryName", parallel = true)
     Object[] dataProviderCategoryName() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "main", "category_name7");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "main", "category_name7");
     }
 
     @Test(dataProvider = "routesCategoryName")
@@ -278,7 +278,7 @@ public class QC_2326_UpdatingOfPageWithSelectedVehicle {
 
     @DataProvider(name = "routesCategoryNameBrand", parallel = true)
     Object[] dataProviderCategoryNameBrand() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "main", "category_name_brand5");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "main", "category_name_brand5");
     }
 
     @Test(dataProvider = "routesCategoryNameBrand")
@@ -297,7 +297,7 @@ public class QC_2326_UpdatingOfPageWithSelectedVehicle {
 
     @DataProvider(name = "routesOen", parallel = true)
     Object[] dataProviderOen() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "main", "category_oen15");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "main", "category_oen15");
     }
 
     @Test(dataProvider = "routesOen")
@@ -316,7 +316,7 @@ public class QC_2326_UpdatingOfPageWithSelectedVehicle {
 
     @DataProvider(name = "routesList", parallel = true)
     Object[] dataProviderList() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "main", "category_car_list36");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "main", "category_car_list36");
     }
 
     @Test(dataProvider = "routesList")
@@ -335,7 +335,7 @@ public class QC_2326_UpdatingOfPageWithSelectedVehicle {
 
     @DataProvider(name = "routesOil", parallel = true)
     Object[] dataProviderOil() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "main", "engine_oil");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "main", "engine_oil");
     }
 
     @Test(dataProvider = "routesOil")
@@ -354,7 +354,7 @@ public class QC_2326_UpdatingOfPageWithSelectedVehicle {
 
     @DataProvider(name = "routesBrake", parallel = true)
     Object[] dataProviderBrake() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "main", "brake_system");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "main", "brake_system");
     }
 
     @Test(dataProvider = "routesBrake")

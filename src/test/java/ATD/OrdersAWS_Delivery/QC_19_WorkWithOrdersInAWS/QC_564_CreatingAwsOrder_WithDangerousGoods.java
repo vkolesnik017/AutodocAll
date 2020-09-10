@@ -41,7 +41,7 @@ public class QC_564_CreatingAwsOrder_WithDangerousGoods {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "productDangerousGoods2");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "productDangerousGoods2");
     }
 
     @Test(dataProvider = "route")

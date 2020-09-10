@@ -23,7 +23,7 @@ public class QC_2227_CheckingPresenceReturnTiresBlockOnProductPage {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "tyre_item");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyre_item");
     }
 
     @Test(dataProvider = "routes")

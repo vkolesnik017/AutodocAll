@@ -26,7 +26,7 @@ public class QC_1319_TestPresenceSizesBlockOnTyresCatalogRoute {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "tyres_type_list,tyres_type_list2,tyres_type_list3,tyres_type_list4");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_type_list,tyres_type_list2,tyres_type_list3,tyres_type_list4");
     }
 
     @Test(dataProvider = "routes")

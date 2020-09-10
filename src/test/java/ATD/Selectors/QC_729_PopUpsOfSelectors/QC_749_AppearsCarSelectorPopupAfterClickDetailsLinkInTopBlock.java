@@ -30,7 +30,7 @@ public class QC_749_AppearsCarSelectorPopupAfterClickDetailsLinkInTopBlock {
 
   @DataProvider(name = "routes", parallel = true)
   Object[] dataProvider() throws SQLException {
-    return new SetUp().setUpShopWithSubroutes("prod", "DE", "main","category_name,category_maker,category_group,category_model,category_name_brand,category_group_brand");
+    return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main","category_name,category_maker,category_group,category_model,category_name_brand,category_group_brand");
   }
 
   @Test(dataProvider = "routes")

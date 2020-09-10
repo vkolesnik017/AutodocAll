@@ -38,7 +38,7 @@ public class QC_1309_TestDisplayDynamicProductNameInSearchHints {
     @Owner(value = "Romaniuta")
     @Description(value = "Test Checks Display Dynamic Product Name In Search Hints")
     public void testDisplayDynamicProductNameInSearchHints(String searchText) throws SQLException {
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "AT", "main", "category_car_list27"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "AT", "main", "category_car_list27"));
         new Main_page_Logic().inputTextInSearchBar(searchText)
                              .checkGenericNameInSearchTooltip("Glühlampe, Abbiegescheinwerfer");
 

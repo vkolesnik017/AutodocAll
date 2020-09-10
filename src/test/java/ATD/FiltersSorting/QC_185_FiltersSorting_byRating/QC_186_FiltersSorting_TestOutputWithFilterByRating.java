@@ -27,12 +27,12 @@ public class QC_186_FiltersSorting_TestOutputWithFilterByRating {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list");
     }
 
     @DataProvider(name = "routesLKW", parallel = true)
     Object[] dataProviderLKW() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list8");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list8");
     }
 
 
@@ -79,7 +79,7 @@ public class QC_186_FiltersSorting_TestOutputWithFilterByRating {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks that rating filter is not present on search route")
     public void testRatingFilterPresenceOnSearchRoute() throws SQLException {
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "search6"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "search6"));
         new Listing_page_Logic().checkRatingfilterIsNotPresent();
     }
 

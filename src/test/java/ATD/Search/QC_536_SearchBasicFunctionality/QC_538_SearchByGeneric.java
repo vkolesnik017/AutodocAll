@@ -27,7 +27,7 @@ public class QC_538_SearchByGeneric {
 
   @DataProvider(name = "route")
   Object[] dataProvider() throws SQLException {
-    return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "maker_car_list5");
+    return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "maker_car_list5");
   }
 
   @Test(dataProvider = "route")

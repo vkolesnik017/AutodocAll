@@ -25,7 +25,7 @@ public class QC_1306_DynamicTitleOfProductMatchesTitleInSearchResults {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "search29");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "search29");
     }
 
     @Test(dataProvider = "routes")

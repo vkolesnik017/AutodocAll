@@ -38,7 +38,7 @@ public class QC_565_CreatingAwsOrder_WithDeliveryToIsland_OrdinaryGoodAndHeavyLo
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product27");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product27");
     }
 
     @Test(dataProvider = "route")
@@ -49,7 +49,7 @@ public class QC_565_CreatingAwsOrder_WithDeliveryToIsland_OrdinaryGoodAndHeavyLo
         openPage(route);
         articleNum = product_page_logic.getArticleNumber();
         productArticleID = product_page_logic.getProductId();
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "HeavyLoadProduct1"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "HeavyLoadProduct1"));
         heavyLoadsArticleNun = product_page_logic.getArticleNumber();
         userData = new Customer_view_aws().openCustomerPersonalArea(userID)
                 .getUserData();

@@ -28,7 +28,7 @@ public class QC_2073_AbsenceCharacteristicQuantityOnProductPage {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "lkw_product5,product33,product34,product35,product36");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "lkw_product5,product33,product34,product35,product36");
     }
 
     @Test(dataProvider = "routes")

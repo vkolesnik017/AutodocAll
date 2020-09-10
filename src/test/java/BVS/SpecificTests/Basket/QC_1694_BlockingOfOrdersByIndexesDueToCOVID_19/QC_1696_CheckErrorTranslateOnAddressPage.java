@@ -19,7 +19,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
 
 public class QC_1696_CheckErrorTranslateOnAddressPage {
-    private SetUp setUp = new SetUp();
+    private SetUp setUp = new SetUp("BVS");
 
     private String email = "qc_1695_autotestCOVID19@mailinator.com";
     private String password = "atdtest";

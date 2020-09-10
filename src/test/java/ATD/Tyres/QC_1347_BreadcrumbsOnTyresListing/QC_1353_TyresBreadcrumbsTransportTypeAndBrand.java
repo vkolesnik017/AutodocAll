@@ -26,7 +26,7 @@ public class QC_1353_TyresBreadcrumbsTransportTypeAndBrand {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "tyres_brand4");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_brand4");
     }
 
     @Test(dataProvider = "routes")

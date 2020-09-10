@@ -27,7 +27,7 @@ public class QC_571_GoesToSubCategoryFromCatalogWithoutCar {
 
   @DataProvider(name = "route")
   Object[] test1() throws SQLException {
-    return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "categories");
+    return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "categories");
   }
 
   @Test(dataProvider = "route")

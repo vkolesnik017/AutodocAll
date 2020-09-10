@@ -28,7 +28,7 @@ public class QC_575_PresenceTheHeadingForSearchOfCatalogWithAndWithoutCar {
 
   @DataProvider(name = "routeWithCar")
   Object[] withCar() throws SQLException {
-    return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "maker_car_list6");
+    return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "maker_car_list6");
   }
 
   @Test(dataProvider = "routeWithCar")
@@ -43,7 +43,7 @@ public class QC_575_PresenceTheHeadingForSearchOfCatalogWithAndWithoutCar {
 
   @DataProvider(name = "routeWithoutCar")
   Object[] withoutCar() throws SQLException {
-    return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "categories");
+    return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "categories");
   }
 
   @Test(dataProvider = "routeWithoutCar")

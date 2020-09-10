@@ -23,7 +23,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_511_PresenceStaticCharacteristicOnSearchListing {
 
-    private DataBase db = new DataBase();
+    private DataBase db = new DataBase("ATD");
     private Search_page_Logic searchPageLogic = new Search_page_Logic();
 
     @BeforeClass
@@ -33,7 +33,7 @@ public class QC_511_PresenceStaticCharacteristicOnSearchListing {
 
     @DataProvider(name = "route")
     Object[] dataProvider() {
-        return new SetUp().setUpShop("prod", "DE");
+        return new SetUp("ATD").setUpShop("prod", "DE");
     }
 
     @Test(dataProvider = "route")

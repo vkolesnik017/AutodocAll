@@ -28,7 +28,7 @@ public class QC_1302_TransitionToMobileAPPpageFromAdvantagesBlock {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "tyres_type_list,tyres_type_list2,tyres_type_list3,tyres_type_list4");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_type_list,tyres_type_list2,tyres_type_list3,tyres_type_list4");
     }
 
     @Test(dataProvider = "routes")
@@ -38,7 +38,7 @@ public class QC_1302_TransitionToMobileAPPpageFromAdvantagesBlock {
     public void testTransitionToMobileAPPpageFromAdvantagesBlock(String route) throws SQLException {
         openPage(route);
         new Tyres_page_Logic().clickMobileAppLink();
-        waitingWhileLinkBecomeExpected(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "staticMobileApp"));
+        waitingWhileLinkBecomeExpected(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "staticMobileApp"));
     }
 
     @AfterMethod

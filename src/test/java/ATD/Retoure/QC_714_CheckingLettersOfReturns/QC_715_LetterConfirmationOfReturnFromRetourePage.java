@@ -29,7 +29,7 @@ public class QC_715_LetterConfirmationOfReturnFromRetourePage {
   private Product_page_Logic product_page_logic = new Product_page_Logic();
   private Retouren_page retourenPage = new Retouren_page();
   private Mailinator mailinator = new Mailinator();
-  private DataBase db = new DataBase();
+  private DataBase db = new DataBase("ATD");
 
 
   @BeforeClass
@@ -39,7 +39,7 @@ public class QC_715_LetterConfirmationOfReturnFromRetourePage {
 
   @DataProvider(name = "route")
   Object[] dataProvider() {
-    return new SetUp().setUpShop("prod", "DE");
+    return new SetUp("ATD").setUpShop("prod", "DE");
   }
 
   @Test(dataProvider = "route")
