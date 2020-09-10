@@ -1,4 +1,4 @@
-package PKW.Product_Page;
+package PKW.Product_Page.QC_1870_OEN;
 
 import PKW.Product_page_Logic;
 import io.qameta.allure.Description;
