@@ -25,7 +25,7 @@ public class QC_1802_BlockFiltersInSideBarOnChemistryListing {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "listing_chemicals2");
+        return new SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "listing_chemicals2");
     }
 
     @Test(dataProvider = "route")

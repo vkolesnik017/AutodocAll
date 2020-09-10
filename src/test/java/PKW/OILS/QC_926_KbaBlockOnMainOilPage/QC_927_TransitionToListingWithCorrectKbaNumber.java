@@ -29,7 +29,7 @@ public class QC_927_TransitionToListingWithCorrectKbaNumber {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil");
     }
 
     @Test(dataProvider = "routes")
@@ -43,7 +43,7 @@ public class QC_927_TransitionToListingWithCorrectKbaNumber {
                 .presenceOfKbaSelector()
                 .presenceOfViscosityLinks()
                 .selectVehicleInKbaSelectorWithCorrectNumber(firstValueOfKbaNumber, secondValueOfKbaNumber).presenceOfBreadCrumbsBlock();
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "car_parts_motoroil4"));
+        checkingContainsUrl(new DataBase("PKW").getRouteByRouteName("DE", "car_parts_motoroil4"));
         new Car_parts_motoroil_page_Logic().presenceVehicleInSelector("121", "8607", "107860")
                 .presenceVehicleInKbaSelector(firstValueOfKbaNumber, secondValueOfKbaNumber);
         //       .checkingApplicabilityOfProductForSelectedVehicle();  /* -- ОТКЛЮЧЕНА ПРОВЕРКА, ТАК КАК, СКОРЕЕ ВСЕГО, ТУТ БАГА. ЭТОТ МОМЕНТ ОБСУЖДАЕТСЯ --*/

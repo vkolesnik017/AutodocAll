@@ -27,7 +27,7 @@ public class QC_1228_ResetOfValuesInSelector {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_release,motoroil,motoroil_viscosity,motoroil_viscosity_brand,motoroil_specification,motoroil_brand,motoroil_maker,motoroil_maker_group,motoroil_chemical_type");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil_release,motoroil,motoroil_viscosity,motoroil_viscosity_brand,motoroil_specification,motoroil_brand,motoroil_maker,motoroil_maker_group,motoroil_chemical_type");
     }
 
     @Test(dataProvider = "routes")
@@ -42,13 +42,13 @@ public class QC_1228_ResetOfValuesInSelector {
                 .selectMarkeInSelector("121")
                 .visibilityOfResetButtonOfSelector()
                 .resetOfSelector();
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "motoroil"));
+        checkingContainsUrl(new DataBase("PKW").getRouteByRouteName("DE", "motoroil"));
     }
 
 
     @DataProvider(name = "routesSearch", parallel = true)
     Object[] dataProviderSearch() throws SQLException {
-        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_search");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil_search");
     }
 
     @Test(dataProvider = "routesSearch")
@@ -62,12 +62,12 @@ public class QC_1228_ResetOfValuesInSelector {
                 .selectMarkeInSelector("121")
                 .visibilityOfResetButtonOfSelector()
                 .resetOfSelector();
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "motoroil_search"));
+        checkingContainsUrl(new DataBase("PKW").getRouteByRouteName("DE", "motoroil_search"));
     }
 
     @DataProvider(name = "routesCarParts", parallel = true)
     Object[] dataProviderCarParts() throws SQLException {
-        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "car_parts_motoroil");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "car_parts_motoroil");
     }
 
     @Test(dataProvider = "routesCarParts")
@@ -81,7 +81,7 @@ public class QC_1228_ResetOfValuesInSelector {
                 .selectMarkeInSelector("121")
                 .visibilityOfResetButtonOfSelector()
                 .resetOfSelector();
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "makers"));
+        checkingContainsUrl(new DataBase("PKW").getRouteByRouteName("DE", "makers"));
     }
 
     @AfterMethod

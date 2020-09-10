@@ -24,7 +24,7 @@ public class QC_1531_Static_Page_Impressum {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() {
-        return new SetUp().setUpShop("prod", "DE");
+        return new SetUp("PKW").setUpShop("prod", "DE");
     }
 
     @Test(dataProvider = "route")

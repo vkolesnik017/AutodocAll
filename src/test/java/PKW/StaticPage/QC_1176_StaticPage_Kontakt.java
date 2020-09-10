@@ -21,7 +21,7 @@ public class QC_1176_StaticPage_Kontakt {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() {
-        return new SetUp().setUpShop("prod", "DE");
+        return new SetUp("PKW").setUpShop("prod", "DE");
     }
 
     @Test(dataProvider = "route")

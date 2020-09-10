@@ -30,7 +30,7 @@ public class QC_1230_GdprRegistrationOnMain {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShop("prod", "DE");
+        return new SetUp("PKW").setUpShop("prod", "DE");
     }
 
     @Test(dataProvider = "route")

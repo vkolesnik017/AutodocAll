@@ -24,7 +24,7 @@ public class QC_1229_TransitionAtSearchVehicleInSelector {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_search,motoroil_release,motoroil_viscosity,motoroil_viscosity_brand,motoroil_chemical_type,car_parts_motoroil");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil_search,motoroil_release,motoroil_viscosity,motoroil_viscosity_brand,motoroil_chemical_type,car_parts_motoroil");
     }
 
     @Test(dataProvider = "routes")
@@ -36,12 +36,12 @@ public class QC_1229_TransitionAtSearchVehicleInSelector {
 
         new Motoroil_Release_page_Logic()
                 .selectVehicleInSelector("5", "36928", "121494");
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "car_parts_motoroil2"));
+        checkingContainsUrl(new DataBase("PKW").getRouteByRouteName("DE", "car_parts_motoroil2"));
     }
 
     @DataProvider(name = "routesSpecification", parallel = true)
     Object[] dataProviderSpecification() throws SQLException {
-        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil,motoroil_specification,motoroil_brand,motoroil_maker,motoroil_maker_group");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil,motoroil_specification,motoroil_brand,motoroil_maker,motoroil_maker_group");
     }
 
     @Test(dataProvider = "routesSpecification")
@@ -53,6 +53,6 @@ public class QC_1229_TransitionAtSearchVehicleInSelector {
 
         new Motoroil_specification_page_Logic()
                 .selectVehicleInSelector("5", "36928", "121494");
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "car_parts_motoroil2"));
+        checkingContainsUrl(new DataBase("PKW").getRouteByRouteName("DE", "car_parts_motoroil2"));
     }
 }

@@ -25,7 +25,7 @@ public class QC_1224_TransitionToSearchPageOnResetToleranceFilter {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_release");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil_release");
     }
 
     @Test(dataProvider = "routes")
@@ -37,7 +37,7 @@ public class QC_1224_TransitionToSearchPageOnResetToleranceFilter {
 
         new Motoroil_Release_page_Logic()
                 .clickOnSelectedToleranceFilter("BMW Longlife-01");
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "motoroil_search"));
+        checkingContainsUrl(new DataBase("PKW").getRouteByRouteName("DE", "motoroil_search"));
     }
 
     @AfterMethod

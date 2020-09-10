@@ -22,7 +22,7 @@ public class QC_718_StaticPage_Widerruf {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() {
-        return new SetUp().setUpShop("prod", "DE");
+        return new SetUp("PKW").setUpShop("prod", "DE");
     }
 
     @Test(dataProvider = "route")

@@ -25,7 +25,7 @@ public class QC_941_TransitionToListingWithSelectedBrand {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil");
     }
 
     @Test(dataProvider = "routes")
@@ -37,7 +37,7 @@ public class QC_941_TransitionToListingWithSelectedBrand {
 
         new Motoroil_page_Logic()
                 .selectBrandInBlock(24);
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "motoroil_brand3"));
+        checkingContainsUrl(new DataBase("PKW").getRouteByRouteName("DE", "motoroil_brand3"));
     }
 
     @AfterMethod
