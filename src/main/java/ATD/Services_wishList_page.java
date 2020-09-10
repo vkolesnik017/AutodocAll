@@ -35,4 +35,15 @@ public class Services_wishList_page {
 
     SelenideElement currentCountOfProductInWishList() {return $x("//span[@class='wishlist-articles-count']");}
 
+    SelenideElement btnRemoveProductsPopUp() {return $(byId("delete_wishlist"));}
+
+    SelenideElement dialogTextOfRemoveAProductsPopUp() {return $x("//div[@class='txt ']");}
+
+    SelenideElement btnCloseRemoveProductPopUp() {return $x("//div[@class='buttons']//a[1]/span[2]");}
+
+    SelenideElement btnDeleteProductPopUp() { return $x("//div[@class='buttons']//a[2]/span[2]");    }
+
+    SelenideElement btnCloseXRemoveProductPopUp() {  return $x("//div[@class='popup_top']/a"); }
+
+    SelenideElement btnBuyAllProducts() {return $(byId("add-wishlist-to-cart"));}
 }
