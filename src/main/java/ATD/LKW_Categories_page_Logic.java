@@ -17,7 +17,7 @@ public class LKW_Categories_page_Logic extends LKW_Categories_page {
     public LKW_Categories_page_Logic checkSuccessfullyLKWCategoriesPageLoading() throws SQLException {
         verticalTruckSelectorInCloseCondition().shouldBe(visible);
         headlineInHeader().shouldBe(visible).shouldHave(exactText("LKW Ersatzteilkatalog"));
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE","lkw_categories"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE","lkw_categories"));
         return this;
     }
 

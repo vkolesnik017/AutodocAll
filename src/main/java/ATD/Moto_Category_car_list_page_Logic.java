@@ -46,7 +46,7 @@ public class Moto_Category_car_list_page_Logic extends Moto_Category_car_list_pa
     @Step("check current url .Moto_Category_car_list_page")
     public Moto_Category_car_list_page_Logic checkCurrentUrl(String subRoute) throws SQLException {
         tecDocListingBlock().shouldBe(visible);
-        DataBase db = new DataBase();
+        DataBase db = new DataBase("ATD");
         Assert.assertEquals(url(), db.getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", subRoute));
         return this;
     }
@@ -331,18 +331,18 @@ public class Moto_Category_car_list_page_Logic extends Moto_Category_car_list_pa
     @Step("check links of bread crumbs block .Moto_Category_car_list_page")
     public Moto_Category_car_list_page_Logic checkLinksOfBreadCrumbsBlock() throws SQLException {
         checkFirstLinkOfBreadCrumbsBlock();
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_categories"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_categories"));
         back();
         checkSecondLinkOfBreadCrumbsBlock("Filter");
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_parent_category"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_parent_category"));
         back();
         checkThirdLinkOfBreadCrumbsBlock("Ölfilter");
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_category_car_list2"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_category_car_list2"));
         checkFourthLinkOfBreadCrumbsBlock("BMW");
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_category_maker"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_category_maker"));
         back();
         checkFifthLinkOfBreadCrumbsBlock("K");
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_category_car_list_model2"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_category_car_list_model2"));
         back();
         checkSixthLinkOfBreadCrumbsBlock("K 1 (K589)");
         return this;

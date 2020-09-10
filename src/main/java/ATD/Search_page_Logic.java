@@ -170,7 +170,7 @@ public class Search_page_Logic extends Search_page {
 
     @Step("check of current url .Search_page")
     public Search_page_Logic checkOfCurrentUrl(String subRoute) throws SQLException {
-        DataBase db = new DataBase();
+        DataBase db = new DataBase("ATD");
         Assert.assertEquals(url(), db.getFullRouteByRouteAndSubroute("prod", "DE", "main", subRoute));
         return this;
     }

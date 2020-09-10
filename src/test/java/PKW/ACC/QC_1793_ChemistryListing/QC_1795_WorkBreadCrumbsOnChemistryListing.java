@@ -31,7 +31,7 @@ public class QC_1795_WorkBreadCrumbsOnChemistryListing {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "listing_chemicals");
+        return new SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "listing_chemicals");
     }
 
     @Test(dataProvider = "route")

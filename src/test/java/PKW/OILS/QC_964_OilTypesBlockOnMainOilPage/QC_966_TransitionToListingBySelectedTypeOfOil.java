@@ -25,7 +25,7 @@ public class QC_966_TransitionToListingBySelectedTypeOfOil {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil");
     }
 
     @Test(dataProvider = "routes")
@@ -38,7 +38,7 @@ public class QC_966_TransitionToListingBySelectedTypeOfOil {
         new Motoroil_page_Logic()
                 .presenceOfOilTypesBlock()
                 .selectTypeOfOil(0);
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "motoroil_chemical_type2"));
+        checkingContainsUrl(new DataBase("PKW").getRouteByRouteName("DE", "motoroil_chemical_type2"));
     }
 
     @AfterMethod

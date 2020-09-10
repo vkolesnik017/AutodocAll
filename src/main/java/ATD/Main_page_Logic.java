@@ -664,7 +664,7 @@ public class Main_page_Logic extends Main_page {
     public Main_page_Logic checkTransitionToLinksOfStaticPage(String route) throws SQLException {
         String shop = getShopFromRoute(route);
         CommonMethods commonMethods = new CommonMethods();
-        DataBase db = new DataBase();
+        DataBase db = new DataBase("ATD");
         footerForm().scrollTo();
         //ÜBER AUTODOC
         clickAboutUs();
@@ -757,7 +757,7 @@ public class Main_page_Logic extends Main_page {
             if (shopName.equalsIgnoreCase("lu")) shopName = "ld";
             $(By.xpath("//div[@class='footer-language__select']")).click();
             element.$(By.xpath("./a")).scrollIntoView(true).click();
-            new CommonMethods().checkingUrlAndCloseTab(new DataBase().getRouteByRouteName(shopName, "main"));
+            new CommonMethods().checkingUrlAndCloseTab(new DataBase("ATD").getRouteByRouteName(shopName, "main"));
         }
         return this;
     }
@@ -823,7 +823,7 @@ public class Main_page_Logic extends Main_page {
     public Main_page_Logic checkTransitionToLinkPrivacyPolicy(String route) throws SQLException {
         footerForm().scrollTo();
         datenschutzLinkInSubscribeBlock().click();
-        new CommonMethods().checkingUrlAndCloseTab(route + "/" + new DataBase().getRouteByRouteName(getShopFromRoute(route), "staticDatenschutz"));
+        new CommonMethods().checkingUrlAndCloseTab(route + "/" + new DataBase("ATD").getRouteByRouteName(getShopFromRoute(route), "staticDatenschutz"));
         return this;
     }
 
@@ -937,7 +937,7 @@ public class Main_page_Logic extends Main_page {
 
     @Step("Checks navigate categories in Header_nav block. Main_page")
     public Main_page_Logic checkNavigateCategoriesInHeaderNavBlock() throws SQLException {
-        DataBase db = new DataBase();
+        DataBase db = new DataBase("ATD");
         String shop = getCurrentShopFromJSVarInHTML();
         clickLkwCategory();
         checkingContainsUrl(db.getRouteByRouteName(shop, "lkw_main"));

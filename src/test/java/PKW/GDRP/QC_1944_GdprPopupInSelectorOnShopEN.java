@@ -29,7 +29,7 @@ public class QC_1944_GdprPopupInSelectorOnShopEN {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShop("prod", "EN");
+        return new SetUp("PKW").setUpShop("prod", "EN");
     }
 
     @Test(dataProvider = "route")

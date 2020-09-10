@@ -33,13 +33,13 @@ public class Motoroil_viscosity_brand_page_Logic extends Motoroil_viscosity_bran
     @Step("check transition by click on links of breadcrumbs. Motoroil_viscosity_brand_page")
     public Motoroil_viscosity_brand_page_Logic checkTransitionByClickOnLinksOfBreadCrumbs() throws SQLException {
         checkFirstLinkOfBreadCrumbs().presenceOfTecDocCatalog();
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "parts"));
+        checkingContainsUrl(new DataBase("PKW").getRouteByRouteName("DE", "parts"));
         back();
         checkSecondLinkOfBreadCrumbs().presenceOfBrandsBlock();
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "motoroil"));
+        checkingContainsUrl(new DataBase("PKW").getRouteByRouteName("DE", "motoroil"));
         back();
         presenceOfBreadCrumbsBlock().checkThirdLinkOfBreadCrumbs().presenceOfProductsList();
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "motoroil_viscosity"));
+        checkingContainsUrl(new DataBase("PKW").getRouteByRouteName("DE", "motoroil_viscosity"));
         back();
         presenceOfBreadCrumbsBlock().checkFourthLinkOfBreadCrumbs("MOBIL");
         return this;

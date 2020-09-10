@@ -23,7 +23,7 @@ public class QC_534_PresenceOfRefurbishedCharacteristicInBasket {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product5");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "product5");
     }
 
     @Test(dataProvider = "routes")

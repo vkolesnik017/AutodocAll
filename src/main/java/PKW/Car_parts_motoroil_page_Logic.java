@@ -34,16 +34,16 @@ public class Car_parts_motoroil_page_Logic extends Car_parts_motoroil_page {
     @Step("check transition by click on links of breadcrumbs. Car_parts_motoroil_page")
     public Car_parts_motoroil_page_Logic checkTransitionByClickOnLinksOfBreadCrumbs() throws SQLException {
         checkFirstLinkOfBreadCrumbs().presenceOfTecDocCatalog();
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "parts"));
+        checkingContainsUrl(new DataBase("PKW").getRouteByRouteName("DE", "parts"));
         back();
         checkSecondLinkOfBreadCrumbs().presenceOfBrandsBlock();
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "motoroil"));
+        checkingContainsUrl(new DataBase("PKW").getRouteByRouteName("DE", "motoroil"));
         back();
         presenceOfBreadCrumbsBlock().checkThirdLinkOfBreadCrumbs().presenceOfProductsListBlock();
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "motoroil_maker"));
+        checkingContainsUrl(new DataBase("PKW").getRouteByRouteName("DE", "motoroil_maker"));
         back();
         presenceOfBreadCrumbsBlock().checkFourthLinkOfBreadCrumbs().presenceOfBreadCrumbsBlock();
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "motoroil_maker_group2"));
+        checkingContainsUrl(new DataBase("PKW").getRouteByRouteName("DE", "motoroil_maker_group2"));
         back();
         presenceOfBreadCrumbsBlock().checkFifthLinkOfBreadCrumbs("Motorenöl");
         return this;

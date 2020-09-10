@@ -23,7 +23,7 @@ public class QC_938_PresenceOfPopUpAboutDetectedVehicle {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil");
     }
 
     @Test(dataProvider = "routes")

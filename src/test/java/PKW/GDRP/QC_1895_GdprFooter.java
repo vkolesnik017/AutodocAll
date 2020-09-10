@@ -29,7 +29,7 @@ public class QC_1895_GdprFooter {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShop("prod", "DE");
+        return new SetUp("PKW").setUpShop("prod", "DE");
     }
 
     @Test(dataProvider = "route")

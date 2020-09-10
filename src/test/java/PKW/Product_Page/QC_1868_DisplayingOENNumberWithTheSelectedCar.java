@@ -23,7 +23,7 @@ public class QC_1868_DisplayingOENNumberWithTheSelectedCar {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "car_parts2");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "car_parts2");
     }
 
     @Test(dataProvider = "routes")

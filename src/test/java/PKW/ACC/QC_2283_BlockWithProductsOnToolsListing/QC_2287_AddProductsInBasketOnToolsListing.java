@@ -31,7 +31,7 @@ public class QC_2287_AddProductsInBasketOnToolsListing {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "listing_instruments");
+        return new SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "listing_instruments");
     }
 
     @Test(dataProvider = "route")

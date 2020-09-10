@@ -24,7 +24,7 @@ public class QC_1270_PresenceOfRelinkingBlocksInListings {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_viscosity_brand,motoroil_release,motoroil_maker_group");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil_viscosity_brand,motoroil_release,motoroil_maker_group");
     }
 
     @Test(dataProvider = "routes")
@@ -41,7 +41,7 @@ public class QC_1270_PresenceOfRelinkingBlocksInListings {
 
     @DataProvider(name = "routesMaker", parallel = true)
     Object[] dataProviderMaker() throws SQLException {
-        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_maker,motoroil_specification");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil_maker,motoroil_specification");
     }
 
     @Test(dataProvider = "routesMaker")
@@ -58,7 +58,7 @@ public class QC_1270_PresenceOfRelinkingBlocksInListings {
 
     @DataProvider(name = "routesChemical", parallel = true)
     Object[] dataProviderChemical() throws SQLException {
-        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_chemical_type");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil_chemical_type");
     }
 
     @Test(dataProvider = "routesChemical")

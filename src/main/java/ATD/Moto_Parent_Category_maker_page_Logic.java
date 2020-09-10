@@ -55,10 +55,10 @@ public class Moto_Parent_Category_maker_page_Logic  extends Moto_Parent_Category
     public Moto_Parent_Category_maker_page_Logic checkBreadCrumbsBlock() throws SQLException {
         breadCrumbsLinks().shouldHaveSize(6);
         checkFirstLinkOfBreadCrumbsLinks();
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_categories"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_categories"));
         back();
         checkSecondLinkOfBreadCrumbsLinks("Filter");
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_categories"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_categories"));
         back();
         checkThirdLinkOfBreadCrumbsLinks("BMW MOTORCYCLES");
         checkFourthLinkOfBreadCrumbsLinks("Teil Wählen");

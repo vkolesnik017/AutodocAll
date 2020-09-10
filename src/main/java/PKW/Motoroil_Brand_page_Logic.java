@@ -22,10 +22,10 @@ public class Motoroil_Brand_page_Logic extends Motoroil_Brand_page {
     @Step("check transition by click on links of breadcrumbs. Motoroil_Brand_page")
     public Motoroil_Brand_page_Logic checkTransitionByClickOnLinksOfBreadCrumbs() throws SQLException {
         checkFirstLinkOfBreadCrumbs().presenceOfTecDocCatalog();
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "parts"));
+        checkingContainsUrl(new DataBase("PKW").getRouteByRouteName("DE", "parts"));
         back();
         checkSecondLinkOfBreadCrumbs().presenceOfBrandsBlock();
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "motoroil"));
+        checkingContainsUrl(new DataBase("PKW").getRouteByRouteName("DE", "motoroil"));
         back();
         presenceOfBreadCrumbsBlock().checkThirdLinkOfBreadCrumbs("MOTUL");
         return this;

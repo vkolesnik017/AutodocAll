@@ -29,7 +29,7 @@ public class QC_1945_GdprReplyToReview {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "shop_reviews");
+        return new SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "shop_reviews");
     }
 
     @Test(dataProvider = "route")

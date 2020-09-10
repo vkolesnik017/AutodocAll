@@ -92,7 +92,7 @@ public class Moto_main_page_Logic extends Moto_main_page {
         clickOnLeftLinkingBanner().checkCurrentUrl("index_instruments");
         back();
         clickOnRightLinkingBanner();
-        checkingContainsUrl(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_category2"));
+        checkingContainsUrl(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_category2"));
         return this;
     }
 
@@ -162,7 +162,7 @@ public class Moto_main_page_Logic extends Moto_main_page {
 
     @Step(" check current url .Moto_main_page")
     public Moto_main_page_Logic checkCurrentUrl(String subRoute) throws SQLException {
-        String urlFromBD = new DataBase().getRouteByRouteName("DE", subRoute);
+        String urlFromBD = new DataBase("ATD").getRouteByRouteName("DE", subRoute);
         checkingContainsUrl(urlFromBD);
         return this;
     }
@@ -214,7 +214,7 @@ public class Moto_main_page_Logic extends Moto_main_page {
     @Step("check transition by click on image parent category .Moto_main_page")
     public Moto_main_page_Logic checkTransitionByClickOnImageParentCategory(String subRoute) throws SQLException {
         clickOnImageParentCategory();
-        checkingContainsUrl(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", subRoute));
+        checkingContainsUrl(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", subRoute));
         back();
         return this;
     }
@@ -228,7 +228,7 @@ public class Moto_main_page_Logic extends Moto_main_page {
     @Step("check transition by click on child category .Moto_main_page")
     public Moto_main_page_Logic checkTransitionByClickOnChildCategory(String subRoute) throws SQLException {
         clickOnChildCategory();
-        checkingContainsUrl(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", subRoute));
+        checkingContainsUrl(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", subRoute));
         back();
         return this;
     }
@@ -242,7 +242,7 @@ public class Moto_main_page_Logic extends Moto_main_page {
     @Step("check transition by click on child category with selected motorcycle .Moto_main_page")
     public Moto_main_page_Logic checkTransitionByClickOnChildCategoryWithMoto(String subRoute) throws SQLException {
         clickOnChildCategoryWithMoto();
-        checkingContainsUrl(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", subRoute));
+        checkingContainsUrl(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", subRoute));
         back();
         return this;
     }
@@ -306,46 +306,46 @@ public class Moto_main_page_Logic extends Moto_main_page {
 
     @Step("check links of TOP categories in header .Moto_main_page")
     public Moto_main_page_Logic checkTopCategoriesInHeader() throws SQLException {
-        linksAtTopCategoriesInHeader().get(0).shouldHave(attribute("href", "https://www." + new DataBase().getRouteByRouteName("DE", "main") + "/"));  //TODO  сделать метод, который будет возвращать только главный рут. параметры: envFromTest,shop,routeName - https://www.autodoc.de
-        linksAtTopCategoriesInHeader().get(1).shouldHave(attribute("href", "https://" + new DataBase().getRouteByRouteName("DE", "lkw_main") + "/"));
-        linksAtTopCategoriesInHeader().get(2).shouldHave(attribute("href", new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "tyres4")));
-        linksAtTopCategoriesInHeader().get(3).shouldHave(attribute("href", new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "index_instruments")));
-        linksAtTopCategoriesInHeader().get(4).shouldHave(attribute("href", new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "index_accessories")));
-        linksAtTopCategoriesInHeader().get(5).shouldHave(attribute("href", new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_category4")));
-        linksAtTopCategoriesInHeader().get(6).shouldHave(attribute("href", new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_parent_category")));
-        linksAtTopCategoriesInHeader().get(7).shouldHave(attribute("href", new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_parent_category2")));
-        linksAtTopCategoriesInHeader().get(8).shouldHave(attribute("href", new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_parent_category3")));
+        linksAtTopCategoriesInHeader().get(0).shouldHave(attribute("href", "https://www." + new DataBase("ATD").getRouteByRouteName("DE", "main") + "/"));  //TODO  сделать метод, который будет возвращать только главный рут. параметры: envFromTest,shop,routeName - https://www.autodoc.de
+        linksAtTopCategoriesInHeader().get(1).shouldHave(attribute("href", "https://" + new DataBase("ATD").getRouteByRouteName("DE", "lkw_main") + "/"));
+        linksAtTopCategoriesInHeader().get(2).shouldHave(attribute("href", new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "tyres4")));
+        linksAtTopCategoriesInHeader().get(3).shouldHave(attribute("href", new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "index_instruments")));
+        linksAtTopCategoriesInHeader().get(4).shouldHave(attribute("href", new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "index_accessories")));
+        linksAtTopCategoriesInHeader().get(5).shouldHave(attribute("href", new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_category4")));
+        linksAtTopCategoriesInHeader().get(6).shouldHave(attribute("href", new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_parent_category")));
+        linksAtTopCategoriesInHeader().get(7).shouldHave(attribute("href", new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_parent_category2")));
+        linksAtTopCategoriesInHeader().get(8).shouldHave(attribute("href", new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_parent_category3")));
         return this;
     }
 
     @Step("check navigation links in header .Moto_main_page")
     public Moto_main_page_Logic checkNavigationLinks() throws SQLException {
         clickOnFirstTopLinkInHeader();
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "main"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "main"));
         back();
         clickOnSecondTopLinkInHeader();
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "lkw_main"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "lkw_main"));
         back();
         clickOnThirdTopLinkInHeader();
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "tyres4"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "tyres4"));
         back();
         clickOnFourthTopLinkInHeader();
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "index_instruments"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "index_instruments"));
         back();
         clickOnFifthTopLinkInHeader();
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "index_accessories"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "index_accessories"));
         back();
         clickOnSixthTopLinkInHeader();
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_category4"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_category4"));
         back();
         clickOnSeventhTopLinkInHeader();
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_parent_category"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_parent_category"));
         back();
         clickOnEighthTopLinkInHeader();
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_parent_category2"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_parent_category2"));
         back();
         clickOnNinthTopLinkInHeader();
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_parent_category3"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_parent_category3"));
         return this;
     }
 
@@ -425,13 +425,13 @@ public class Moto_main_page_Logic extends Moto_main_page {
     public Moto_main_page_Logic checkChildCategoriesLinks() throws SQLException {
         topChildCategoriesBlock().shouldBe(visible);
         clickOnLinkAtChildCategory(1);
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_category3"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_category3"));
         back();
         selectMotoInHorizontalMotoSelector("4081", "12008", "135713");
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_catalog"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_catalog"));
         back();
         clickOnLinkAtChildCategoryWithMoto(1);
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_category_car_list7"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_category_car_list7"));
         return this;
     }
 

@@ -25,7 +25,7 @@ public class QC_1535_BlockWithCategories {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "index_chemicals");
+        return new SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "index_chemicals");
     }
 
     @Test(dataProvider = "route")

@@ -24,7 +24,7 @@ public class QC_1221_TransitionByClickOnToleranceFilter {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_release");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil_release");
     }
 
     @Test(dataProvider = "routes")
