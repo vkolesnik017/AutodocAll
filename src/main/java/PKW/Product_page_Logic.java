@@ -293,4 +293,49 @@ public class Product_page_Logic extends Product_page {
         Assert.assertTrue(listOfCharacteristic.contains(expectedCharacteristic));
         return this;
     }
+
+    @Step("Sending the review form with empty fields, checking the validation messages. Product_page")
+    public Product_page_Logic sendingTheReviewFormWithEmptyFields() {
+        btnSendInReviewForm().click();
+        validationNameMessageReview()
+                .shouldHave(cssValue("color", "red"))
+                .shouldBe(visible)
+                .shouldHave(text("Hinterlassen Sie Ihren Vornamen"));
+        validationEmailMessageReview()
+                .shouldHave(cssValue("color", "red"))
+                .shouldBe(visible).
+                shouldHave(text("Bitte eine gültige E-Mail verwenden"));
+        validationCheckboxMessageReview()
+                .shouldHave(cssValue("color", "red"))
+                .shouldBe(visible)
+                .shouldHave(text("Um fortzufahren bestätigen Sie bitte Ihr Newsletter-Abo"));
+        validationTextMessageReview()
+                .shouldHave(cssValue("color", "red"))
+                .shouldBe(visible)
+                .shouldHave(text("Bitte alle Felder ausfüllen"));
+        return this;
+    }
+
+    @Step("Displaying the review pop up on the product page without rating. Product_page")
+    public Product_page_Logic displayingReviewPopUpWithOutRating() {
+        productRatingStarsNotFilling().shouldBe(visible).click();
+        productRatingBlockAfterClickingOnStars().shouldBe(visible);
+        overlayBehindReviewForm().shouldBe(visible).shouldHave(attribute("style", "display: block;"));
+        return this;
+    }
+
+    @Step("Displaying the review pop up on the product page with rating. Product_page")
+    public Product_page_Logic displayingReviewPopUpWithRating() {
+        productRatingStars().shouldBe(visible).click();
+        btnOpenRatingForm().shouldBe(visible).click();
+        reviewFormArtikelBewertenButton().shouldBe(visible);
+        overlayBehindReviewForm().shouldBe(visible).shouldHave(attribute("style", "display: block;"));
+        return this;
+    }
+
+    @Step("Displaying the block with the review messages. Product_page")
+    public Product_page_Logic displayingReviewMessagesBlock() {
+        blockWithReviewsMessage().shouldBe(visible, exist);
+        return this;
+    }
 }

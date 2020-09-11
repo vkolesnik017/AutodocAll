@@ -312,4 +312,37 @@ public class Product_page {
 
     ElementsCollection allCharacteristics() {return $$x("//div[@class='pkw-table']/ul/li");}
 
+    SelenideElement validationNameMessageReview() {
+        return $x("//form[@class='pkw-messagesblock__first-message five_stars_rating_form invalid']//div[@class='rating_name_error error']");
+    }
+    SelenideElement validationEmailMessageReview() {
+        return $x("//form[@class='pkw-messagesblock__first-message five_stars_rating_form invalid']//div[@class='rating_email_error error']");
+    }
+
+    SelenideElement validationTextMessageReview() {
+        return $x("//form[@class='pkw-messagesblock__first-message five_stars_rating_form invalid']//div[@class='rating_message_error error']");
+    }
+
+    SelenideElement validationCheckboxMessageReview() {
+        return $x("//form[@class='pkw-messagesblock__first-message five_stars_rating_form invalid']//div[@class='subscribe_accept_error error']//*[@class='pkw-product__rating']");
+    }
+    SelenideElement productRatingStarsNotFilling() {
+        return $x("//*[@class='pkw-product__rating']");
+    }
+
+    SelenideElement productRatingBlockAfterClickingOnStars() {
+        return $x("//*[@class='pkw-popup__inset']");
+    }
+
+    SelenideElement overlayBehindReviewForm() {
+        return $x("//*[@class='black_overlay wl_overlay']");
+    }
+
+    SelenideElement reviewFormArtikelBewertenButton() {
+        return $x("//*[@class='pkw-popup pkw-modal__rating-window test']");
+    }
+
+    SelenideElement blockWithReviewsMessage() {
+        return $x("//*[@class='product-feedback_wrap_comments']");
+    }
     }
