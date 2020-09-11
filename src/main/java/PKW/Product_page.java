@@ -324,7 +324,7 @@ public class Product_page {
     }
 
     SelenideElement validationCheckboxMessageReview() {
-        return $x("//form[@class='pkw-messagesblock__first-message five_stars_rating_form invalid']//div[@class='subscribe_accept_error error']//*[@class='pkw-product__rating']");
+        return $x("//form[@class='pkw-messagesblock__first-message five_stars_rating_form invalid']//div[@class='subscribe_accept_error error']");
     }
     SelenideElement productRatingStarsNotFilling() {
         return $x("//*[@class='pkw-product__rating']");

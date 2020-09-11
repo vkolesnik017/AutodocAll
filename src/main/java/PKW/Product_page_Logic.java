@@ -298,19 +298,19 @@ public class Product_page_Logic extends Product_page {
     public Product_page_Logic sendingTheReviewFormWithEmptyFields() {
         btnSendInReviewForm().click();
         validationNameMessageReview()
-                .shouldHave(cssValue("color", "red"))
+                .shouldHave(cssValue("color", "rgba(255, 0, 0, 1)"))
                 .shouldBe(visible)
                 .shouldHave(text("Hinterlassen Sie Ihren Vornamen"));
         validationEmailMessageReview()
-                .shouldHave(cssValue("color", "red"))
+                .shouldHave(cssValue("color", "rgba(255, 0, 0, 1)"))
                 .shouldBe(visible).
                 shouldHave(text("Bitte eine gültige E-Mail verwenden"));
         validationCheckboxMessageReview()
-                .shouldHave(cssValue("color", "red"))
+                .shouldHave(cssValue("color", "rgba(255, 0, 0, 1)"))
                 .shouldBe(visible)
                 .shouldHave(text("Um fortzufahren bestätigen Sie bitte Ihr Newsletter-Abo"));
         validationTextMessageReview()
-                .shouldHave(cssValue("color", "red"))
+                .shouldHave(cssValue("color", "rgba(255, 0, 0, 1)"))
                 .shouldBe(visible)
                 .shouldHave(text("Bitte alle Felder ausfüllen"));
         return this;

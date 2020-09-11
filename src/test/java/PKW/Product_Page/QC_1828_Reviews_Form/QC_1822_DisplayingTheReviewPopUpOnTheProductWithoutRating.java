@@ -22,7 +22,7 @@ public class QC_1822_DisplayingTheReviewPopUpOnTheProductWithoutRating {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product8");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "product8");
     }
 
     @Test(dataProvider = "routes")
