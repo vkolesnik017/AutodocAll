@@ -409,5 +409,28 @@ public class Search_page_Logic extends Search_page {
         return artNumOfProduct;
     }
 
+    @Step("remove products from WishList by click on label. Search_page")
+    public Search_page_Logic removeProductsFromWishList(int countOfProduct) {
+        String currentCountOfProduct;
+        for (int i = 0; i < countOfProduct; i++) {
+            currentCountOfProduct = currentCountOfProductInWishList().getText();
+            addedProductToWishListLabel().get(i).click();
+            currentCountOfProductInWishList().shouldNotHave(exactText(currentCountOfProduct));
+        }
+        return this;
+    }
+
+    @Step("added article number of added product of Wishlist to collections. Search_page")
+    public List<String> addArtNumAddedProductOfWishlistToList() {
+        List<String> artNumList = artNumOfAddedProductToWishList().stream().map(n -> n.getText().replaceAll("Artikelnummer: ", "")).collect(Collectors.toList());
+        return artNumList;
+    }
+
+    @Step("added article number of added product of Wishlist to collections. Search_page")
+    public Search_page_Logic checkCountOfAddedProductToWishListInIcon(List<String> list) {
+        int countOfAddedProductInWishListIcon = Integer.parseInt(currentCountOfProductInWishList().getText());
+        Assert.assertEquals(list.size(), countOfAddedProductInWishListIcon);
+        return this;
+    }
 }
 
