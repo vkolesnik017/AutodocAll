@@ -11,15 +11,21 @@ import java.util.List;
 public class SetUp {
 
     private String skin;
-    private DataBase db = new DataBase(skin);
-    private String shopFromJenkins = System.getenv("ShopFromJenkins");
-    private String envFromJenkins = System.getenv("EnvFromJenkins");
-    private String devBranchFromJenkins = System.getenv("devBranchFromJenkins");
+    private DataBase db;
 
+    public SetUp(){
+        this.db = new DataBase();
+
+    }
 
     public SetUp(String skin){
         this.skin = skin;
+        this.db = new DataBase(this.skin);
     }
+
+    private String shopFromJenkins = System.getenv("ShopFromJenkins");
+    private String envFromJenkins = System.getenv("EnvFromJenkins");
+    private String devBranchFromJenkins = System.getenv("devBranchFromJenkins");
 
     public String getShopsDesktop() {
         return shopsDesktop;

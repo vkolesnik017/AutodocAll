@@ -12,6 +12,10 @@ public class DataBase {
     private String password = "24201901";
     private String skin;
 
+    public DataBase() {
+
+    }
+
     public DataBase(String skin) {
         this.skin = skin;
     }

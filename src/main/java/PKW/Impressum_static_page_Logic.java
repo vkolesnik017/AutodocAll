@@ -18,10 +18,10 @@ public class Impressum_static_page_Logic extends Impressum_static_page {
         pkwEmail().shouldHave(attribute("href", "mailto:info@pkwteile.de"));
         atdEmail().shouldHave(attribute("href", "mailto:info@autodoc.de"));
         pkwSiteLink().click();
-        checkingContainsUrl(new DataBase().getFullRouteByRouteName("prod", "DE", "main"));
+        checkingContainsUrl(new DataBase("PKW").getFullRouteByRouteName("prod", "DE", "main"));
         back();
         atdSiteLink().click();
-        checkingContainsUrl(new Common.DataBase().getFullRouteByRouteName("prod", "DE", "main"));
+        checkingContainsUrl(new Common.DataBase("PKW").getFullRouteByRouteName("prod", "DE", "main"));
         back();
         osTextLink().click();
         checkingContainsUrl("odr/main/index.cfm?event=main.home.chooseLanguage");
