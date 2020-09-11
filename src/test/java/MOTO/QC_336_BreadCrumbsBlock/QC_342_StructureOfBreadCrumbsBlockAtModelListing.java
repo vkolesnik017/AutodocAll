@@ -25,7 +25,7 @@ public class QC_342_StructureOfBreadCrumbsBlockAtModelListing {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list_model2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list_model2");
     }
 
     @Test(dataProvider = "routes")

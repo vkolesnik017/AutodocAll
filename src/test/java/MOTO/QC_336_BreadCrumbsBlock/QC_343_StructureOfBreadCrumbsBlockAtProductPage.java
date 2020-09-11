@@ -25,7 +25,7 @@ public class QC_343_StructureOfBreadCrumbsBlockAtProductPage {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_product");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_product");
     }
 
     @Test(dataProvider = "routes")
@@ -43,7 +43,7 @@ public class QC_343_StructureOfBreadCrumbsBlockAtProductPage {
 
     @DataProvider(name = "routesProductPage", parallel = true)
     Object[] dataProviderProductPage() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_product2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_product2");
     }
 
     @Test(dataProvider = "routesProductPage")

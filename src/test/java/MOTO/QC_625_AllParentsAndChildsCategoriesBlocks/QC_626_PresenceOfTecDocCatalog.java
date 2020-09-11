@@ -26,7 +26,7 @@ public class QC_626_PresenceOfTecDocCatalog {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_categories");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_categories");
 
     }
 
@@ -43,7 +43,7 @@ public class QC_626_PresenceOfTecDocCatalog {
 
     @DataProvider(name = "routesCatalog", parallel = true)
     Object[] dataProviderCatalog() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog2,moto_catalog_model2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog2,moto_catalog_model2");
 
     }
 

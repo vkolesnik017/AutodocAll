@@ -25,7 +25,7 @@ public class QC_302_AvailabilityOfMotoSelector {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category,moto_makers,moto_categories_maker2,moto_category_maker,moto_parent_category,moto_parent_category_maker2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category,moto_makers,moto_categories_maker2,moto_category_maker,moto_parent_category,moto_parent_category_maker2");
     }
 
     @Test(dataProvider = "routes")
@@ -41,7 +41,7 @@ public class QC_302_AvailabilityOfMotoSelector {
 
     @DataProvider(name = "routesCategories", parallel = true)
     Object[] dataProviderCategories() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_categories,moto_catalog2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_categories,moto_catalog2");
     }
 
     @Test(dataProvider = "routesCategories")
@@ -57,7 +57,7 @@ public class QC_302_AvailabilityOfMotoSelector {
 
     @DataProvider(name = "routesMain", parallel = true)
     Object[] dataProviderMain() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_main");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_main");
     }
 
     @Test(dataProvider = "routesMain")
@@ -73,7 +73,7 @@ public class QC_302_AvailabilityOfMotoSelector {
 
     @DataProvider(name = "routesCatalogModel", parallel = true)
     Object[] dataProviderCatalogModel() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog_model");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog_model");
     }
 
     @Test(dataProvider = "routesCatalogModel")
@@ -89,7 +89,7 @@ public class QC_302_AvailabilityOfMotoSelector {
 
     @DataProvider(name = "routesProduct", parallel = true)
     Object[] dataProviderProduct() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_product");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_product");
     }
 
     @Test(dataProvider = "routesProduct")

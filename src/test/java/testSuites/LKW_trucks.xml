@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="LKW_trucks" parallel="methods" thread-count="3" data-provider-thread-count="2">
+<suite name="ATD.LKW_trucks" parallel="methods" thread-count="3" data-provider-thread-count="2">
 
     <listeners>
         <listener class-name="Common.ProjectListener"/>
@@ -8,201 +8,201 @@
 
     <test name="QC_144_Header_trucks_routes">
         <classes>
-            <class name="LKW_trucks.QC_144_Header_trucks_routes.QC_145_PresenceOfBlocksInHeader_lkw"/>
-            <class name="LKW_trucks.QC_144_Header_trucks_routes.QC_149_TrucksCatalogInHeader_lkw"/>
-            <class name="LKW_trucks.QC_144_Header_trucks_routes.QC_153_NavigationBlockInHeader_lkw"/>
-            <class name="LKW_trucks.QC_144_Header_trucks_routes.QC_1508_ConformityHeaderCatalogAndTecDocCatalogWithTruck_lkw"/>
+            <class name="ATD.LKW_trucks.QC_144_Header_trucks_routes.QC_145_PresenceOfBlocksInHeader_lkw"/>
+            <class name="ATD.LKW_trucks.QC_144_Header_trucks_routes.QC_149_TrucksCatalogInHeader_lkw"/>
+            <class name="ATD.LKW_trucks.QC_144_Header_trucks_routes.QC_153_NavigationBlockInHeader_lkw"/>
+            <class name="ATD.LKW_trucks.QC_144_Header_trucks_routes.QC_1508_ConformityHeaderCatalogAndTecDocCatalogWithTruck_lkw"/>
         </classes>
     </test>
 
     <test name="QC_200_Separation_of_session_of_truck_selector_from_car_and_moto">
         <classes>
-            <class name="LKW_trucks.QC_200_Separation_of_selector_session_of_LKW_from_PKW_and_Moto.QC_201_Separation_of_car_selector_session_from_LKW"/>
-            <class name="LKW_trucks.QC_200_Separation_of_selector_session_of_LKW_from_PKW_and_Moto.QC_202_Separation_of_car_selector_from_Moto"/>
-            <class name="LKW_trucks.QC_200_Separation_of_selector_session_of_LKW_from_PKW_and_Moto.QC_203_Separation_of_LKW_selector_session_from_car"/>
-            <class name="LKW_trucks.QC_200_Separation_of_selector_session_of_LKW_from_PKW_and_Moto.QC_204_Separation_of_LKW_selector_session_from_Moto"/>
-            <class name="LKW_trucks.QC_200_Separation_of_selector_session_of_LKW_from_PKW_and_Moto.QC_205_Separation_of_moto_selector_session_from_car"/>
-            <class name="LKW_trucks.QC_200_Separation_of_selector_session_of_LKW_from_PKW_and_Moto.QC_206__Separation_of_moto_selector_session_from_LKW"/>
+            <class name="ATD.LKW_trucks.QC_200_Separation_of_selector_session_of_LKW_from_PKW_and_Moto.QC_201_Separation_of_car_selector_session_from_LKW"/>
+            <class name="ATD.LKW_trucks.QC_200_Separation_of_selector_session_of_LKW_from_PKW_and_Moto.QC_202_Separation_of_car_selector_from_Moto"/>
+            <class name="ATD.LKW_trucks.QC_200_Separation_of_selector_session_of_LKW_from_PKW_and_Moto.QC_203_Separation_of_LKW_selector_session_from_car"/>
+            <class name="ATD.LKW_trucks.QC_200_Separation_of_selector_session_of_LKW_from_PKW_and_Moto.QC_204_Separation_of_LKW_selector_session_from_Moto"/>
+            <class name="ATD.LKW_trucks.QC_200_Separation_of_selector_session_of_LKW_from_PKW_and_Moto.QC_205_Separation_of_moto_selector_session_from_car"/>
+            <class name="ATD.LKW_trucks.QC_200_Separation_of_selector_session_of_LKW_from_PKW_and_Moto.QC_206__Separation_of_moto_selector_session_from_LKW"/>
         </classes>
     </test>
 
     <test name="QC_123_Trucks_Catalog_of_brands_page">
         <classes>
-            <class name="LKW_trucks.QC_123_Sidebar_block_linking_to_catalog_of_model_on_catalog_brands"/>
+            <class name="ATD.LKW_trucks.QC_123_Sidebar_block_linking_to_catalog_of_model_on_catalog_brands"/>
         </classes>
     </test>
 
     <test name="QC_49_Bread_crumbs">
         <classes>
-            <class name="LKW_trucks.QC_49_Bread_crumbs.QC_130_BreadCrumbsInCategoriesMaker"/>
-            <class name="LKW_trucks.QC_49_Bread_crumbs.QC_50_PresenceOfBreadCrumbsBlock"/>
-            <class name="LKW_trucks.QC_49_Bread_crumbs.QC_65_BreadCrumbsInCategory"/>
-            <class name="LKW_trucks.QC_49_Bread_crumbs.QC_66_BreadCrumbsInCategoryMakerBrand"/>
-            <class name="LKW_trucks.QC_49_Bread_crumbs.QC_67_BreadCrumbsInCategoryParent"/>
-            <class name="LKW_trucks.QC_49_Bread_crumbs.QC_68_BreadCrumbsInProductPage_ActiveProduct"/>
-            <class name="LKW_trucks.QC_49_Bread_crumbs.QC_68_BreadCrumbsInProductPage_NotActiveProduct"/>
-            <class name="LKW_trucks.QC_49_Bread_crumbs.QC_69_BreadCrumbsInCategoryMaker"/>
-            <class name="LKW_trucks.QC_49_Bread_crumbs.QC_70_BreadCrumbsInChildCategory"/>
-            <class name="LKW_trucks.QC_49_Bread_crumbs.QC_71_BreadCrumbsInTecDocListing"/>
-            <class name="LKW_trucks.QC_49_Bread_crumbs.QC_72_BreadCrumbsInTecDocCatalog"/>
+            <class name="ATD.LKW_trucks.QC_49_Bread_crumbs.QC_130_BreadCrumbsInCategoriesMaker"/>
+            <class name="ATD.LKW_trucks.QC_49_Bread_crumbs.QC_50_PresenceOfBreadCrumbsBlock"/>
+            <class name="ATD.LKW_trucks.QC_49_Bread_crumbs.QC_65_BreadCrumbsInCategory"/>
+            <class name="ATD.LKW_trucks.QC_49_Bread_crumbs.QC_66_BreadCrumbsInCategoryMakerBrand"/>
+            <class name="ATD.LKW_trucks.QC_49_Bread_crumbs.QC_67_BreadCrumbsInCategoryParent"/>
+            <class name="ATD.LKW_trucks.QC_49_Bread_crumbs.QC_68_BreadCrumbsInProductPage_ActiveProduct"/>
+            <class name="ATD.LKW_trucks.QC_49_Bread_crumbs.QC_68_BreadCrumbsInProductPage_NotActiveProduct"/>
+            <class name="ATD.LKW_trucks.QC_49_Bread_crumbs.QC_69_BreadCrumbsInCategoryMaker"/>
+            <class name="ATD.LKW_trucks.QC_49_Bread_crumbs.QC_70_BreadCrumbsInChildCategory"/>
+            <class name="ATD.LKW_trucks.QC_49_Bread_crumbs.QC_71_BreadCrumbsInTecDocListing"/>
+            <class name="ATD.LKW_trucks.QC_49_Bread_crumbs.QC_72_BreadCrumbsInTecDocCatalog"/>
         </classes>
     </test>
 
     <test name="LKW_trucks_route">
         <classes>
-            <class name="LKW_trucks.QC_116_AllChildCategoriesBlockOfParent"/>
-            <class name="LKW_trucks.QC_133_MainIconOfMarkInCategoriesMaker"/>
-            <class name="LKW_trucks.QC_134_TopParentAndChildCategoriesBlocks"/>
-            <class name="LKW_trucks.QC_135_SeoDescriptionBlock"/>
-            <class name="LKW_trucks.QC_136_LinkBlockOfTopBrands"/>
-            <class name="LKW_trucks.QC_178_TopParentAndChildCategoriesBlocks"/>
-            <class name="LKW_trucks.QC_158_BannerOnMainPage"/>
-            <class name="LKW_trucks.QC_222_MainImageOnErrorPage"/>
-            <class name="LKW_trucks.QC_183_LanguageBlockInFooter"/>
+            <class name="ATD.LKW_trucks.QC_116_AllChildCategoriesBlockOfParent"/>
+            <class name="ATD.LKW_trucks.QC_133_MainIconOfMarkInCategoriesMaker"/>
+            <class name="ATD.LKW_trucks.QC_134_TopParentAndChildCategoriesBlocks"/>
+            <class name="ATD.LKW_trucks.QC_135_SeoDescriptionBlock"/>
+            <class name="ATD.LKW_trucks.QC_136_LinkBlockOfTopBrands"/>
+            <class name="ATD.LKW_trucks.QC_178_TopParentAndChildCategoriesBlocks"/>
+            <class name="ATD.LKW_trucks.QC_158_BannerOnMainPage"/>
+            <class name="ATD.LKW_trucks.QC_222_MainImageOnErrorPage"/>
+            <class name="ATD.LKW_trucks.QC_183_LanguageBlockInFooter"/>
         </classes>
     </test>
 
     <test name="QC_18_SideBarBlocksOfParentCategoriesAndLinkingChildCategory">
         <classes>
-            <class name="LKW_trucks.QC_18_SideBarBlocksOfParentCategoriesAndLinkingChildCategory.QC_20_AvailabilityParentCatalogBlock"/>
-            <class name="LKW_trucks.QC_18_SideBarBlocksOfParentCategoriesAndLinkingChildCategory.QC_22_PresenceOfParentCategoryListInSidebar"/>
-            <class name="LKW_trucks.QC_18_SideBarBlocksOfParentCategoriesAndLinkingChildCategory.QC_23_TransitionOnParentCategoryPageFromSidebar"/>
-            <class name="LKW_trucks.QC_18_SideBarBlocksOfParentCategoriesAndLinkingChildCategory.QC_24_PresenceOfChildCategoriesInSideBar"/>
-            <class name="LKW_trucks.QC_18_SideBarBlocksOfParentCategoriesAndLinkingChildCategory.QC_26_VisibilityOfChildCategoriesInTopChildBlockInSideBar"/>
+            <class name="ATD.LKW_trucks.QC_18_SideBarBlocksOfParentCategoriesAndLinkingChildCategory.QC_20_AvailabilityParentCatalogBlock"/>
+            <class name="ATD.LKW_trucks.QC_18_SideBarBlocksOfParentCategoriesAndLinkingChildCategory.QC_22_PresenceOfParentCategoryListInSidebar"/>
+            <class name="ATD.LKW_trucks.QC_18_SideBarBlocksOfParentCategoriesAndLinkingChildCategory.QC_23_TransitionOnParentCategoryPageFromSidebar"/>
+            <class name="ATD.LKW_trucks.QC_18_SideBarBlocksOfParentCategoriesAndLinkingChildCategory.QC_24_PresenceOfChildCategoriesInSideBar"/>
+            <class name="ATD.LKW_trucks.QC_18_SideBarBlocksOfParentCategoriesAndLinkingChildCategory.QC_26_VisibilityOfChildCategoriesInTopChildBlockInSideBar"/>
         </classes>
     </test>
 
     <test name="QC_94_TecDoc_Listing">
         <classes>
-            <class name="LKW_trucks.QC_94_TecDoc_Listing.QC_95_ApplicabilityOfProductsInTecDocListing"/>
-            <class name="LKW_trucks.QC_94_TecDoc_Listing.QC_96_AddProductToBasketFromTecDocListing"/>
-            <class name="LKW_trucks.QC_94_TecDoc_Listing.QC_97_SortingOfProductsInTecDocListing"/>
-            <class name="LKW_trucks.QC_94_TecDoc_Listing.QC_98_DynamicCharacteristicsOfProductsInTecDocListing"/>
-            <class name="LKW_trucks.QC_94_TecDoc_Listing.QC_99_GoToProductPageFromTecDocListing"/>
-            <class name="LKW_trucks.QC_94_TecDoc_Listing.QC_100_AnalogBlockInTecDocListing"/>
-            <class name="LKW_trucks.QC_94_TecDoc_Listing.QC_101_PaginationOnTecDocListing"/>
-            <class name="LKW_trucks.QC_94_TecDoc_Listing.QC_102_FilterByGenericInTecDocListing"/>
-            <class name="LKW_trucks.QC_94_TecDoc_Listing.QC_103_FilterByBrandsInTecDocListing"/>
-            <class name="LKW_trucks.QC_94_TecDoc_Listing.QC_104_FilterByInstallationOfSideInTecDocListing"/>
+            <class name="ATD.LKW_trucks.QC_94_TecDoc_Listing.QC_95_ApplicabilityOfProductsInTecDocListing"/>
+            <class name="ATD.LKW_trucks.QC_94_TecDoc_Listing.QC_96_AddProductToBasketFromTecDocListing"/>
+            <class name="ATD.LKW_trucks.QC_94_TecDoc_Listing.QC_97_SortingOfProductsInTecDocListing"/>
+            <class name="ATD.LKW_trucks.QC_94_TecDoc_Listing.QC_98_DynamicCharacteristicsOfProductsInTecDocListing"/>
+            <class name="ATD.LKW_trucks.QC_94_TecDoc_Listing.QC_99_GoToProductPageFromTecDocListing"/>
+            <class name="ATD.LKW_trucks.QC_94_TecDoc_Listing.QC_100_AnalogBlockInTecDocListing"/>
+            <class name="ATD.LKW_trucks.QC_94_TecDoc_Listing.QC_101_PaginationOnTecDocListing"/>
+            <class name="ATD.LKW_trucks.QC_94_TecDoc_Listing.QC_102_FilterByGenericInTecDocListing"/>
+            <class name="ATD.LKW_trucks.QC_94_TecDoc_Listing.QC_103_FilterByBrandsInTecDocListing"/>
+            <class name="ATD.LKW_trucks.QC_94_TecDoc_Listing.QC_104_FilterByInstallationOfSideInTecDocListing"/>
         </classes>
     </test>
 
     <test name="QC_87_SelectorInProductPage">
         <classes>
-            <class name="LKW_trucks.QC_87_SelectorInProductPage.QC_88_FillingTheSelectorWithSuitableCarInProductPage"/>
-            <class name="LKW_trucks.QC_87_SelectorInProductPage.QC_89_FillingTheSelectorWithNotSuitableCarInProductPage"/>
-            <class name="LKW_trucks.QC_87_SelectorInProductPage.QC_90_GoToProductPageWithSelectedSuitableCar"/>
-            <class name="LKW_trucks.QC_87_SelectorInProductPage.QC_91_GoToProductPageWithSelectedNotSuitableCar"/>
+            <class name="ATD.LKW_trucks.QC_87_SelectorInProductPage.QC_88_FillingTheSelectorWithSuitableCarInProductPage"/>
+            <class name="ATD.LKW_trucks.QC_87_SelectorInProductPage.QC_89_FillingTheSelectorWithNotSuitableCarInProductPage"/>
+            <class name="ATD.LKW_trucks.QC_87_SelectorInProductPage.QC_90_GoToProductPageWithSelectedSuitableCar"/>
+            <class name="ATD.LKW_trucks.QC_87_SelectorInProductPage.QC_91_GoToProductPageWithSelectedNotSuitableCar"/>
         </classes>
     </test>
 
     <test name="QC_10_MainHeadLines">
         <classes>
-            <class name="LKW_trucks.QC_10_MainHeadlines.QC_11_AvailabilityOfHeadLineInErrorPage"/>
-            <class name="LKW_trucks.QC_10_MainHeadlines.QC_12_VisibilityOfImageLogoBrandInHeadLine"/>
-            <class name="LKW_trucks.QC_10_MainHeadlines.QC_13_VisibilityOfImageTrackInHeadline"/>
-            <class name="LKW_trucks.QC_10_MainHeadlines.QC_16_VisibilityOfMarkModelMotorInHeadLine"/>
-            <class name="LKW_trucks.QC_10_MainHeadlines.QC_17_AvailabilityOfLinkOnPopUpWithSelectedCar"/>
-            <class name="LKW_trucks.QC_10_MainHeadlines.QC_1702_AvailabilityOfHeadLineInCatalog"/>
-            <class name="LKW_trucks.QC_10_MainHeadlines.QC_1703_AvailabilityOfHeadlineInTecDocCatalogAndModelCatalog"/>
-            <class name="LKW_trucks.QC_10_MainHeadlines.QC_1704_AvailabilityOfHeadLineInParentChildCategoryMarkCatalog"/>
-            <class name="LKW_trucks.QC_10_MainHeadlines.QC_1706_AvailabilityOfHeadLineInChildMark"/>
-            <class name="LKW_trucks.QC_10_MainHeadlines.QC_1707_AvailabilityOfHeadlineAtCategoryBrand"/>
-            <class name="LKW_trucks.QC_10_MainHeadlines.QC_1708_AvailabilityOfMainHeadlineAtCategoryMakerBrand"/>
-            <class name="LKW_trucks.QC_10_MainHeadlines.QC_1709_AvailabilityOfMainHeadlineAtTecDocListing"/>
-            <class name="LKW_trucks.QC_10_MainHeadlines.QC_1710_CountOfBrandsAndModelsInHeadline"/>
-            <class name="LKW_trucks.QC_10_MainHeadlines.QC_1711_ImageOfBrandInMainHeadline"/>
-            <class name="LKW_trucks.QC_10_MainHeadlines.QC_1712_ImageOfBrandInHeadLineAtCarList"/>
-            <class name="LKW_trucks.QC_10_MainHeadlines.QC_1713_ValueOfBrandAndModelAtMainHeadline"/>
+            <class name="ATD.LKW_trucks.QC_10_MainHeadlines.QC_11_AvailabilityOfHeadLineInErrorPage"/>
+            <class name="ATD.LKW_trucks.QC_10_MainHeadlines.QC_12_VisibilityOfImageLogoBrandInHeadLine"/>
+            <class name="ATD.LKW_trucks.QC_10_MainHeadlines.QC_13_VisibilityOfImageTrackInHeadline"/>
+            <class name="ATD.LKW_trucks.QC_10_MainHeadlines.QC_16_VisibilityOfMarkModelMotorInHeadLine"/>
+            <class name="ATD.LKW_trucks.QC_10_MainHeadlines.QC_17_AvailabilityOfLinkOnPopUpWithSelectedCar"/>
+            <class name="ATD.LKW_trucks.QC_10_MainHeadlines.QC_1702_AvailabilityOfHeadLineInCatalog"/>
+            <class name="ATD.LKW_trucks.QC_10_MainHeadlines.QC_1703_AvailabilityOfHeadlineInTecDocCatalogAndModelCatalog"/>
+            <class name="ATD.LKW_trucks.QC_10_MainHeadlines.QC_1704_AvailabilityOfHeadLineInParentChildCategoryMarkCatalog"/>
+            <class name="ATD.LKW_trucks.QC_10_MainHeadlines.QC_1706_AvailabilityOfHeadLineInChildMark"/>
+            <class name="ATD.LKW_trucks.QC_10_MainHeadlines.QC_1707_AvailabilityOfHeadlineAtCategoryBrand"/>
+            <class name="ATD.LKW_trucks.QC_10_MainHeadlines.QC_1708_AvailabilityOfMainHeadlineAtCategoryMakerBrand"/>
+            <class name="ATD.LKW_trucks.QC_10_MainHeadlines.QC_1709_AvailabilityOfMainHeadlineAtTecDocListing"/>
+            <class name="ATD.LKW_trucks.QC_10_MainHeadlines.QC_1710_CountOfBrandsAndModelsInHeadline"/>
+            <class name="ATD.LKW_trucks.QC_10_MainHeadlines.QC_1711_ImageOfBrandInMainHeadline"/>
+            <class name="ATD.LKW_trucks.QC_10_MainHeadlines.QC_1712_ImageOfBrandInHeadLineAtCarList"/>
+            <class name="ATD.LKW_trucks.QC_10_MainHeadlines.QC_1713_ValueOfBrandAndModelAtMainHeadline"/>
         </classes>
     </test>
 
     <test name="QC_27_BlockOfBrandsAndModelsOfCarManufacturers">
         <classes>
-            <class name="LKW_trucks.QC_27_BlockOfBrandsAndModelsOfCarManufacturers.QC_28_AvailabilityOfHeadlineForBrandsAndModelsBlocks"/>
-            <class name="LKW_trucks.QC_27_BlockOfBrandsAndModelsOfCarManufacturers.QC_29_AvailabilityOfBrandAndModelBlocks"/>
-            <class name="LKW_trucks.QC_27_BlockOfBrandsAndModelsOfCarManufacturers.QC_30_TransitionByClickAtBrandAndModel"/>
-            <class name="LKW_trucks.QC_27_BlockOfBrandsAndModelsOfCarManufacturers.QC_31_OpportunityToOpenAndCloseBrandBlock"/>
-            <class name="LKW_trucks.QC_27_BlockOfBrandsAndModelsOfCarManufacturers.QC_32_AvailabilityOfTopModelsList"/>
-            <class name="LKW_trucks.QC_27_BlockOfBrandsAndModelsOfCarManufacturers.QC_161_BrandCatalogLinkInModelBlock"/>
+            <class name="ATD.LKW_trucks.QC_27_BlockOfBrandsAndModelsOfCarManufacturers.QC_28_AvailabilityOfHeadlineForBrandsAndModelsBlocks"/>
+            <class name="ATD.LKW_trucks.QC_27_BlockOfBrandsAndModelsOfCarManufacturers.QC_29_AvailabilityOfBrandAndModelBlocks"/>
+            <class name="ATD.LKW_trucks.QC_27_BlockOfBrandsAndModelsOfCarManufacturers.QC_30_TransitionByClickAtBrandAndModel"/>
+            <class name="ATD.LKW_trucks.QC_27_BlockOfBrandsAndModelsOfCarManufacturers.QC_31_OpportunityToOpenAndCloseBrandBlock"/>
+            <class name="ATD.LKW_trucks.QC_27_BlockOfBrandsAndModelsOfCarManufacturers.QC_32_AvailabilityOfTopModelsList"/>
+            <class name="ATD.LKW_trucks.QC_27_BlockOfBrandsAndModelsOfCarManufacturers.QC_161_BrandCatalogLinkInModelBlock"/>
         </classes>
     </test>
 
     <test name="QC_33_BrandsBlock">
         <classes>
-            <class name="LKW_trucks.QC_33_BrandsBLock.QC_34_AvailabilityHeadlineOfTopBrands"/>
-            <class name="LKW_trucks.QC_33_BrandsBLock.QC_37_AvailabilityOfBrandsBlock"/>
-            <class name="LKW_trucks.QC_33_BrandsBLock.QC_38_TransitionsByClickOnImageOfLogoBrand"/>
-            <class name="LKW_trucks.QC_33_BrandsBLock.QC_40_OpenAndCloseOfBrandsBlock"/>
+            <class name="ATD.LKW_trucks.QC_33_BrandsBLock.QC_34_AvailabilityHeadlineOfTopBrands"/>
+            <class name="ATD.LKW_trucks.QC_33_BrandsBLock.QC_37_AvailabilityOfBrandsBlock"/>
+            <class name="ATD.LKW_trucks.QC_33_BrandsBLock.QC_38_TransitionsByClickOnImageOfLogoBrand"/>
+            <class name="ATD.LKW_trucks.QC_33_BrandsBLock.QC_40_OpenAndCloseOfBrandsBlock"/>
         </classes>
     </test>
 
     <test name="QC_41_AdvantageBlockAndMainImageOfCategory">
         <classes>
-            <class name="LKW_trucks.QC_41_AdvantageBlockAndMainImageOfCategory.QC_43_AvailabilityOfAdvantageBlock"/>
-            <class name="LKW_trucks.QC_41_AdvantageBlockAndMainImageOfCategory.QC_45_PresenceOfHeadlineAndAdvantagesInBlock"/>
-            <class name="LKW_trucks.QC_41_AdvantageBlockAndMainImageOfCategory.QC_46_PresenceOfTooltipsInAdvantageBlock"/>
-            <class name="LKW_trucks.QC_41_AdvantageBlockAndMainImageOfCategory.QC_47_ElementsOfAdvantageBlock"/>
-            <class name="LKW_trucks.QC_41_AdvantageBlockAndMainImageOfCategory.QC_48_MainImageOfAdvantageBlock"/>
+            <class name="ATD.LKW_trucks.QC_41_AdvantageBlockAndMainImageOfCategory.QC_43_AvailabilityOfAdvantageBlock"/>
+            <class name="ATD.LKW_trucks.QC_41_AdvantageBlockAndMainImageOfCategory.QC_45_PresenceOfHeadlineAndAdvantagesInBlock"/>
+            <class name="ATD.LKW_trucks.QC_41_AdvantageBlockAndMainImageOfCategory.QC_46_PresenceOfTooltipsInAdvantageBlock"/>
+            <class name="ATD.LKW_trucks.QC_41_AdvantageBlockAndMainImageOfCategory.QC_47_ElementsOfAdvantageBlock"/>
+            <class name="ATD.LKW_trucks.QC_41_AdvantageBlockAndMainImageOfCategory.QC_48_MainImageOfAdvantageBlock"/>
         </classes>
     </test>
 
     <test name="QC_73_TopProductsBlock">
         <classes>
-            <class name="LKW_trucks.QC_73_TopProductsBlock.QC_74_HeadlineOfTopProductsBlock"/>
-            <class name="LKW_trucks.QC_73_TopProductsBlock.QC_75_ProductsCountInTopBlock"/>
-            <class name="LKW_trucks.QC_73_TopProductsBlock.QC_76_AddTopProductsToBasket"/>
-            <class name="LKW_trucks.QC_73_TopProductsBlock.QC_77_VisibilityOfAdditionInfoInTopBlock"/>
-            <class name="LKW_trucks.QC_73_TopProductsBlock.QC_78_TransitionFromProductBLockToProductPage"/>
-            <class name="LKW_trucks.QC_73_TopProductsBlock.QC_79_GenericOfProductInTopBLock"/>
-            <class name="LKW_trucks.QC_73_TopProductsBlock.QC_80_ApplicabilityProductToTruck"/>
-            <class name="LKW_trucks.QC_73_TopProductsBlock.QC_81_CorrespondingOfProductBrandToSelectedBrand"/>
+            <class name="ATD.LKW_trucks.QC_73_TopProductsBlock.QC_74_HeadlineOfTopProductsBlock"/>
+            <class name="ATD.LKW_trucks.QC_73_TopProductsBlock.QC_75_ProductsCountInTopBlock"/>
+            <class name="ATD.LKW_trucks.QC_73_TopProductsBlock.QC_76_AddTopProductsToBasket"/>
+            <class name="ATD.LKW_trucks.QC_73_TopProductsBlock.QC_77_VisibilityOfAdditionInfoInTopBlock"/>
+            <class name="ATD.LKW_trucks.QC_73_TopProductsBlock.QC_78_TransitionFromProductBLockToProductPage"/>
+            <class name="ATD.LKW_trucks.QC_73_TopProductsBlock.QC_79_GenericOfProductInTopBLock"/>
+            <class name="ATD.LKW_trucks.QC_73_TopProductsBlock.QC_80_ApplicabilityProductToTruck"/>
+            <class name="ATD.LKW_trucks.QC_73_TopProductsBlock.QC_81_CorrespondingOfProductBrandToSelectedBrand"/>
         </classes>
     </test>
 
     <test name="QC_82_AvailabilityOfTruckSelector">
         <classes>
-            <class name="LKW_trucks.QC_82_TruckSelectorBlock.QC_83_AvailabilityOfTruckSelector"/>
-            <class name="LKW_trucks.QC_82_TruckSelectorBlock.QC_84_RequiredFieldsForSelectionInSelector"/>
-            <class name="LKW_trucks.QC_82_TruckSelectorBlock.QC_85_TitleOfTruckSelector"/>
-            <class name="LKW_trucks.QC_82_TruckSelectorBlock.QC_86_TransitionToCorrespondingRoutWithSelectingTruck"/>
-            <class name="LKW_trucks.QC_82_TruckSelectorBlock.QC_92_ResetOfValuesInTruckSelector"/>
-            <class name="LKW_trucks.QC_82_TruckSelectorBlock.QC_93_VisibilityOfCarInInputFieldOfSelectorFromUrl"/>
-            <class name="LKW_trucks.QC_82_TruckSelectorBlock.QC_157_PopUpOfSpecificationsInTruckSelector"/>
+            <class name="ATD.LKW_trucks.QC_82_TruckSelectorBlock.QC_83_AvailabilityOfTruckSelector"/>
+            <class name="ATD.LKW_trucks.QC_82_TruckSelectorBlock.QC_84_RequiredFieldsForSelectionInSelector"/>
+            <class name="ATD.LKW_trucks.QC_82_TruckSelectorBlock.QC_85_TitleOfTruckSelector"/>
+            <class name="ATD.LKW_trucks.QC_82_TruckSelectorBlock.QC_86_TransitionToCorrespondingRoutWithSelectingTruck"/>
+            <class name="ATD.LKW_trucks.QC_82_TruckSelectorBlock.QC_92_ResetOfValuesInTruckSelector"/>
+            <class name="ATD.LKW_trucks.QC_82_TruckSelectorBlock.QC_93_VisibilityOfCarInInputFieldOfSelectorFromUrl"/>
+            <class name="ATD.LKW_trucks.QC_82_TruckSelectorBlock.QC_157_PopUpOfSpecificationsInTruckSelector"/>
         </classes>
     </test>
 
     <test name="QC_207_ProductPage">
         <classes>
-            <class name="LKW_trucks.QC_207_ProductPage.QC_208_DynamicCharacteristicsOfProduct"/>
-            <class name="LKW_trucks.QC_207_ProductPage.QC_210_CompatibleTrucksBlock"/>
-            <class name="LKW_trucks.QC_207_ProductPage.QC_212_LackOfLinksInOenBlock"/>
-            <class name="LKW_trucks.QC_207_ProductPage.QC_209_SelectingOfTruckSelector"/>
+            <class name="ATD.LKW_trucks.QC_207_ProductPage.QC_208_DynamicCharacteristicsOfProduct"/>
+            <class name="ATD.LKW_trucks.QC_207_ProductPage.QC_210_CompatibleTrucksBlock"/>
+            <class name="ATD.LKW_trucks.QC_207_ProductPage.QC_212_LackOfLinksInOenBlock"/>
+            <class name="ATD.LKW_trucks.QC_207_ProductPage.QC_209_SelectingOfTruckSelector"/>
         </classes>
     </test>
 
     <test name="QC_105_FilterInteractionInTecDocListing">
         <classes>
-            <class name="LKW_trucks.QC_105_FilterInteractionInTecDocListing.QC_106_InteractionOfBrandAndSideFilters"/>
-            <class name="LKW_trucks.QC_105_FilterInteractionInTecDocListing.QC_112_InteractionOfBrandSideGenericFilters"/>
-            <class name="LKW_trucks.QC_105_FilterInteractionInTecDocListing.QC_113_InteractionOfBrandsAndGenericFilters"/>
-            <class name="LKW_trucks.QC_105_FilterInteractionInTecDocListing.QC_114_InteractionOfInstallationSideAndGenericFilters"/>
+            <class name="ATD.LKW_trucks.QC_105_FilterInteractionInTecDocListing.QC_106_InteractionOfBrandAndSideFilters"/>
+            <class name="ATD.LKW_trucks.QC_105_FilterInteractionInTecDocListing.QC_112_InteractionOfBrandSideGenericFilters"/>
+            <class name="ATD.LKW_trucks.QC_105_FilterInteractionInTecDocListing.QC_113_InteractionOfBrandsAndGenericFilters"/>
+            <class name="ATD.LKW_trucks.QC_105_FilterInteractionInTecDocListing.QC_114_InteractionOfInstallationSideAndGenericFilters"/>
         </classes>
     </test>
 
     <test name="QC_624_ParentAndChildCategoriesBlockInTecDocCatalog">
         <classes>
-            <class name="LKW_trucks.QC_624_ParentAndChildCategoriesBlockInTecDocCatalog.QC_117_ParentAndChildCategoriesBlockInTecDocCatalog"/>
+            <class name="ATD.LKW_trucks.QC_624_ParentAndChildCategoriesBlockInTecDocCatalog.QC_117_ParentAndChildCategoriesBlockInTecDocCatalog"/>
         </classes>
     </test>
 
     <test name="QC_2306_OilsAndLiquidsCategories">
         <classes>
-            <class name="LKW_trucks.QC_2306_OilsAndLiquidsCategories.QC_2303_PresenceOfOilCategoryInHeaderCatalog"/>
-            <class name="LKW_trucks.QC_2306_OilsAndLiquidsCategories.QC_2304_PresenceOfOilAndLiquidCategories"/>
-            <class name="LKW_trucks.QC_2306_OilsAndLiquidsCategories.QC_2305_TecDocAndSearchOilListing"/>
-            <class name="LKW_trucks.QC_2306_OilsAndLiquidsCategories.QC_2307_PresenceOfOilCategoryOnMainPage"/>
-            <class name="LKW_trucks.QC_2306_OilsAndLiquidsCategories.QC_2308_PresenceOfProductsInTopProductsBlock"/>
+            <class name="ATD.LKW_trucks.QC_2306_OilsAndLiquidsCategories.QC_2303_PresenceOfOilCategoryInHeaderCatalog"/>
+            <class name="ATD.LKW_trucks.QC_2306_OilsAndLiquidsCategories.QC_2304_PresenceOfOilAndLiquidCategories"/>
+            <class name="ATD.LKW_trucks.QC_2306_OilsAndLiquidsCategories.QC_2305_TecDocAndSearchOilListing"/>
+            <class name="ATD.LKW_trucks.QC_2306_OilsAndLiquidsCategories.QC_2307_PresenceOfOilCategoryOnMainPage"/>
+            <class name="ATD.LKW_trucks.QC_2306_OilsAndLiquidsCategories.QC_2308_PresenceOfProductsInTopProductsBlock"/>
         </classes>
     </test>
 </suite>

@@ -104,15 +104,6 @@ public class Versand_static_page_Logic extends Versand_static_page {
         return this;
     }
 
-
-
-
-
-
-
-
-
-
     @Step("Checking the visibility of the elements in the FAQ block. Versand_static_page")
     public Versand_static_page_Logic checkingFaqBlock() { //good
         faqTitleOne().shouldBe(visible);

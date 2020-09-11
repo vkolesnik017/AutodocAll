@@ -26,7 +26,7 @@ public class QC_752_TransitionByClickAtChildCategories {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_parent_category");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_parent_category");
 
     }
 
@@ -39,19 +39,19 @@ public class QC_752_TransitionByClickAtChildCategories {
 
         new Moto_Parent_Category_page_Logic()
                 .clickOnChildCategory(2);
-        checkingContainsUrl(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_category"));
+        checkingContainsUrl(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_category"));
 
-        open(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_catalog"));
+        open(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_catalog"));
         new Moto_Catalog_page_Logic()
                 .clickOnMainLogoInHeader()
                 .clickOnImageParentCategory()
                 .clickOnChildCategoryWithMoto(2);
-        checkingContainsUrl(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_category_car_list3"));
+        checkingContainsUrl(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_category_car_list3"));
     }
 
     @DataProvider(name = "routesCategoryMaker", parallel = true)
     Object[] dataProviderCategoryMaker() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_parent_category_maker2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_parent_category_maker2");
 
     }
 
@@ -64,7 +64,7 @@ public class QC_752_TransitionByClickAtChildCategories {
 
         new Moto_Parent_Category_maker_page_Logic()
                 .clickOnChildCategory(2);
-        checkingContainsUrl(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_category_maker"));
+        checkingContainsUrl(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_category_maker"));
 
     }
 

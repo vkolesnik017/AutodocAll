@@ -26,7 +26,7 @@ public class QC_327_MatchingOfGenericAndTopProduct {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category,moto_category_maker");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category,moto_category_maker");
     }
 
     @Test(dataProvider = "routes")
@@ -41,7 +41,7 @@ public class QC_327_MatchingOfGenericAndTopProduct {
 
     @DataProvider(name = "routesParentCategory", parallel = true)
     Object[] dataProviderParentCategory() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_parent_category_maker2,moto_parent_category");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_parent_category_maker2,moto_parent_category");
     }
 
     @Test(dataProvider = "routesParentCategory")

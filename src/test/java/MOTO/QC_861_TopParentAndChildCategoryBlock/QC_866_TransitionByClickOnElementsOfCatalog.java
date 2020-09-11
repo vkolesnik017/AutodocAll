@@ -27,7 +27,7 @@ public class QC_866_TransitionByClickOnElementsOfCatalog {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_main");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_main");
     }
 
     @Test(dataProvider = "routes")
@@ -40,7 +40,7 @@ public class QC_866_TransitionByClickOnElementsOfCatalog {
         new Moto_main_page_Logic()
                 .checkTransitionByClickOnImageParentCategory("moto_parent_category")
                 .checkTransitionByClickOnChildCategory("moto_category");
-        open(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_catalog"));
+        open(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_catalog"));
         new Moto_Catalog_page_Logic()
                 .clickOnMainLogoInHeader()
                 .checkSuccessfullyMotoPageLoading()

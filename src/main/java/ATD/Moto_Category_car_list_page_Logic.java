@@ -331,18 +331,19 @@ public class Moto_Category_car_list_page_Logic extends Moto_Category_car_list_pa
     @Step("check links of bread crumbs block .Moto_Category_car_list_page")
     public Moto_Category_car_list_page_Logic checkLinksOfBreadCrumbsBlock() throws SQLException {
         checkFirstLinkOfBreadCrumbsBlock();
-        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_categories"));
+        DataBase db = new DataBase("ATD");
+        checkingContainsUrl(db.getRouteByRouteName("DE", "moto_categories"));
         back();
         checkSecondLinkOfBreadCrumbsBlock("Filter");
-        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_parent_category"));
+        checkingContainsUrl(db.getRouteByRouteName("DE", "moto_parent_category"));
         back();
         checkThirdLinkOfBreadCrumbsBlock("Ölfilter");
-        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_category_car_list2"));
+        checkingContainsUrl(db.getRouteByRouteName("DE", "moto_category_car_list2"));
         checkFourthLinkOfBreadCrumbsBlock("BMW");
-        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_category_maker"));
+        checkingContainsUrl(db.getRouteByRouteName("DE", "moto_category_maker"));
         back();
         checkFifthLinkOfBreadCrumbsBlock("K");
-        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_category_car_list_model2"));
+        checkingContainsUrl(db.getRouteByRouteName("DE", "moto_category_car_list_model2"));
         back();
         checkSixthLinkOfBreadCrumbsBlock("K 1 (K589)");
         return this;

@@ -27,7 +27,7 @@ public class QC_849_Login_Registration {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_main");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_main");
 
     }
 
@@ -41,7 +41,7 @@ public class QC_849_Login_Registration {
         new Moto_main_page_Logic()
                 .loginOfUser(email, password)
                 .visibilityOfUsersName();
-        checkingContainsUrl(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "profile_plus"));
+        checkingContainsUrl(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "profile_plus"));
     }
 
     @AfterMethod

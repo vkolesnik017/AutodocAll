@@ -25,7 +25,7 @@ public class QC_380_OutOfStockProductWithOutAnalogs {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list2");
     }
 
     @Test(dataProvider = "routes")

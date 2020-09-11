@@ -27,7 +27,7 @@ public class QC_867_TransitionToCatalog {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_main");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_main");
     }
 
     @Test(dataProvider = "routes")
@@ -36,7 +36,7 @@ public class QC_867_TransitionToCatalog {
     @Description(value = "Test checks transition to Catalog by click on Expand link ")
     public void testChecksTransitionToCatalog(String route) throws SQLException {
         CommonMethods commonMethods = new CommonMethods();
-        DataBase db = new DataBase();
+        DataBase db = new DataBase("ATD");
         openPage(route);
 
         new Moto_main_page_Logic()

@@ -27,7 +27,7 @@ public class QC_762_TransitionByClickOnElementsOfMotoCatalog {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_main");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_main");
     }
 
     @Test(dataProvider = "routes")
@@ -41,14 +41,14 @@ public class QC_762_TransitionByClickOnElementsOfMotoCatalog {
                 .visibilityParentCategoriesInVerticalSelector()
                 .selectParentCategoryInVerticalCatalog(1)
                 .selectChildCategoryInVerticalCatalogSecondLevel(5);
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_category2"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_category2"));
         new Moto_Category_page_Logic().selectMotoInSelector("4081", "12008", "135713");
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_category_car_list11"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_category_car_list11"));
         new Moto_Category_car_list_page_Logic().clickOnLogoInHeader()
                 .visibilityParentCategoriesInVerticalSelector()
                 .selectParentCategoryInVerticalCatalog(1)
                 .selectChildCategoryInVerticalCatalogSecondLevelWithMoto(4);
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_category_car_list11"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_category_car_list11"));
     }
 
     @AfterMethod

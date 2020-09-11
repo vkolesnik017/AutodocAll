@@ -422,7 +422,7 @@ public class CartAddress_page_Logic extends CartAddress_page {
         nextBtnClick();
         tooltipCOVID19().waitUntil(appear, 5000);
         String plzPopupText = getTextFromTooltipCOVID19();
-        Assert.assertEquals(plzPopupText, new DataBase().getTranslate("convir_translate", shop, "addres"), "Error plz:" + plz);
+        Assert.assertEquals(plzPopupText, new DataBase("ATD").getTranslate("convir_translate", shop, "addres"), "Error plz:" + plz);
         return this;
     }
 

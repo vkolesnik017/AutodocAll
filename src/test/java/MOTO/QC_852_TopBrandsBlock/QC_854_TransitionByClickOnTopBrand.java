@@ -27,7 +27,7 @@ public class QC_854_TransitionByClickOnTopBrand {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_main");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_main");
     }
 
     @Test(dataProvider = "routes")
@@ -38,7 +38,7 @@ public class QC_854_TransitionByClickOnTopBrand {
         openPage(route);
 
         new Moto_main_page_Logic().selectTopMotoBrandFromBlock(4);
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_categories_maker"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_categories_maker"));
     }
 
     @AfterMethod

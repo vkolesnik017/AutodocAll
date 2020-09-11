@@ -58,7 +58,7 @@ public class Car_parts_Logic extends Car_parts {
         return this;
     }
 
-    @Step("presence Refurbished Characteristic In TOP product if art number contains expected symbol . Car_parts")
+    @Step("presence Refurbished Characteristic In Listing if art number contains expected symbol . Car_parts")
     public Car_parts_Logic presenceRefurbishedCharacteristicInListingProductWithArticle(String expectedCharacteristic, String symbol) {
         productListBlock().shouldBe(visible);
         checkCharacteristicOfTopProduct(expectedCharacteristic, symbol);

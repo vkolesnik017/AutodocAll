@@ -26,7 +26,7 @@ public class QC_351_BehaviorByClickOnParentCategoryBlock {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_parent_category,moto_category,moto_categories_maker2,moto_parent_category_maker2,moto_category_car_list_model2,moto_category_car_list2,moto_category_maker");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_parent_category,moto_category,moto_categories_maker2,moto_parent_category_maker2,moto_category_car_list_model2,moto_category_car_list2,moto_category_maker");
 
     }
 
@@ -40,7 +40,7 @@ public class QC_351_BehaviorByClickOnParentCategoryBlock {
         new Moto_Parent_Category_page_Logic()
                 .openParentCategoryCatalogInSidebar()
                 .selectParentCategoryInSideBar(1);
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_parent_category2"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_parent_category2"));
     }
 
     @AfterMethod

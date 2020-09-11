@@ -24,7 +24,7 @@ public class QC_738_AnalogProductBlock {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_product");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_product");
     }
 
     @Test(dataProvider = "routes", enabled = false)
@@ -42,7 +42,7 @@ public class QC_738_AnalogProductBlock {
 
     @DataProvider(name = "routesProduct", parallel = true)
     Object[] dataProviderProduct() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_product6");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_product6");
     }
 
     @Test(dataProvider = "routesProduct")

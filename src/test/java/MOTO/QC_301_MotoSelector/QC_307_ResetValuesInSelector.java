@@ -25,7 +25,7 @@ public class QC_307_ResetValuesInSelector {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list_model2,moto_category_car_list2,moto_category_maker");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list_model2,moto_category_car_list2,moto_category_maker");
     }
 
     @Test(dataProvider = "routes")
@@ -42,7 +42,7 @@ public class QC_307_ResetValuesInSelector {
 
     @DataProvider(name = "routesCategory", parallel = true)
     Object[] dataProviderCategory() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category");
     }
 
     @Test(dataProvider = "routesCategory")
@@ -61,7 +61,7 @@ public class QC_307_ResetValuesInSelector {
 
     @DataProvider(name = "routesMain", parallel = true)
     Object[] dataProviderCategoryMain() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_main");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_main");
     }
 
     @Test(dataProvider = "routesMain")
@@ -79,7 +79,7 @@ public class QC_307_ResetValuesInSelector {
 
     @DataProvider(name = "routesMakers", parallel = true)
     Object[] dataProviderMakers() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_makers");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_makers");
     }
 
     @Test(dataProvider = "routesMakers")
@@ -98,7 +98,7 @@ public class QC_307_ResetValuesInSelector {
 
      @DataProvider(name = "routesParentCategory", parallel = true)
      Object[] dataProviderParentCategory() throws SQLException {
-         return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_parent_category");
+         return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_parent_category");
      }
 
      @Test(dataProvider = "routesParentCategory")
@@ -117,7 +117,7 @@ public class QC_307_ResetValuesInSelector {
      }
     @DataProvider(name = "routesCategories", parallel = true)
     Object[] dataProviderParentCategories() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_categories");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_categories");
     }
 
     @Test(dataProvider = "routesCategories")
@@ -136,7 +136,7 @@ public class QC_307_ResetValuesInSelector {
 
     @DataProvider(name = "routesCatalog", parallel = true)
     Object[] dataProviderCatalog() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog2");
     }
 
     @Test(dataProvider = "routesCatalog")
@@ -155,7 +155,7 @@ public class QC_307_ResetValuesInSelector {
 
     @DataProvider(name = "routesCatalogModel", parallel = true)
     Object[] dataProviderCatalogModel() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog_model2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog_model2");
     }
 
     @Test(dataProvider = "routesCatalogModel")
@@ -174,7 +174,7 @@ public class QC_307_ResetValuesInSelector {
 
     @DataProvider(name = "routesCategoriesMaker", parallel = true)
     Object[] dataProviderCategoriesMaker() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_categories_maker2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_categories_maker2");
     }
 
     @Test(dataProvider = "routesCategoriesMaker")
@@ -193,7 +193,7 @@ public class QC_307_ResetValuesInSelector {
 
     @DataProvider(name = "routesProduct", parallel = true)
     Object[] dataProviderProduct() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_product");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_product");
     }
 
     @Test(dataProvider = "routesProduct")
@@ -212,7 +212,7 @@ public class QC_307_ResetValuesInSelector {
 
     @DataProvider(name = "routesParentCategoryMaker", parallel = true)
     Object[] dataProviderParentCategoryMaker() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_parent_category_maker2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_parent_category_maker2");
     }
 
     @Test(dataProvider = "routesParentCategoryMaker")

@@ -26,7 +26,7 @@ public class QC_386_PresenceOfBrandsAndModelsTitleOfAutomakers {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_categories_maker2,moto_category_maker3");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_categories_maker2,moto_category_maker3");
     }
 
     @Test(dataProvider = "routes")
@@ -42,7 +42,7 @@ public class QC_386_PresenceOfBrandsAndModelsTitleOfAutomakers {
 
     @DataProvider(name = "routesCategories", parallel = true)
     Object[] dataProviderCategories() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_categories");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_categories");
     }
 
     @Test(dataProvider = "routesCategories")

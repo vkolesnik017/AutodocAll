@@ -25,7 +25,7 @@ public class QC_305_MandatorySelectionOfAllSelectorFields {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category,moto_category_car_list2,moto_makers,moto_categories_maker2,moto_category_car_list_model2,moto_category_maker,moto_parent_category,moto_parent_category_maker2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category,moto_category_car_list2,moto_makers,moto_categories_maker2,moto_category_car_list_model2,moto_category_maker,moto_parent_category,moto_parent_category_maker2");
     }
 
     @Test(dataProvider = "routes")
@@ -44,7 +44,7 @@ public class QC_305_MandatorySelectionOfAllSelectorFields {
 
     @DataProvider(name = "routesCatalog", parallel = true)
     Object[] dataProviderCatalog() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog2,moto_categories");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog2,moto_categories");
     }
 
     @Test(dataProvider = "routesCatalog")
@@ -62,7 +62,7 @@ public class QC_305_MandatorySelectionOfAllSelectorFields {
 
     @DataProvider(name = "routesProductPage", parallel = true)
     Object[] dataProviderProductPage() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_product");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_product");
     }
 
     @Test(dataProvider = "routesProductPage")
@@ -80,7 +80,7 @@ public class QC_305_MandatorySelectionOfAllSelectorFields {
 
     @DataProvider(name = "routesCatalogModel", parallel = true)
     Object[] dataProviderCatalogModel() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog_model2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog_model2");
     }
 
     @Test(dataProvider = "routesCatalogModel")
@@ -98,7 +98,7 @@ public class QC_305_MandatorySelectionOfAllSelectorFields {
 
     @DataProvider(name = "routesMainPage", parallel = true)
     Object[] dataProviderMainPage() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_main");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_main");
     }
 
     @Test(dataProvider = "routesMainPage")

@@ -27,7 +27,7 @@ public class QC_353_BehaviorByClickOnElementOfTopChildCategories {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list_model2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list_model2");
 
     }
 
@@ -40,12 +40,12 @@ public class QC_353_BehaviorByClickOnElementOfTopChildCategories {
 
         new Moto_Category_car_list_model_page_Logic()
                 .clickOnChildCategoryInSidebar(0);
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_category_car_list_model4"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_category_car_list_model4"));
     }
 
     @DataProvider(name = "routesCarList", parallel = true)
     Object[] dataProviderCarList() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list2");
 
     }
 
@@ -58,12 +58,12 @@ public class QC_353_BehaviorByClickOnElementOfTopChildCategories {
 
         new Moto_Category_car_list_page_Logic()
                 .clickOnChildCategoryInSidebar(0);
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_category_car_list12"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_category_car_list12"));
     }
 
     @DataProvider(name = "routesCategory", parallel = true)
     Object[] dataProviderCategory() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category");
 
     }
 
@@ -76,12 +76,12 @@ public class QC_353_BehaviorByClickOnElementOfTopChildCategories {
 
         new Moto_Category_page_Logic()
                 .clickOnChildCategoryInSidebar(0);
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_category3"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_category3"));
     }
 
     @DataProvider(name = "routesCategoryMaker", parallel = true)
     Object[] dataProviderCategoryMaker() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_maker");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_maker");
 
     }
 
@@ -94,12 +94,12 @@ public class QC_353_BehaviorByClickOnElementOfTopChildCategories {
            String mainHeadline =   new Moto_Category_maker_page_Logic().getTitleFromMainHeadline();
         new Moto_Category_maker_page_Logic()
                 .clickOnChildCategoryInSidebar(0).checkOfChangeAtMainHeadline(mainHeadline);
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_category_maker3"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_category_maker3"));
     }
 
     @DataProvider(name = "routesParentCategory", parallel = true)
     Object[] dataProviderParentCategory() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_parent_category");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_parent_category");
 
     }
 
@@ -112,12 +112,12 @@ public class QC_353_BehaviorByClickOnElementOfTopChildCategories {
 
         new Moto_Parent_Category_page_Logic()
                 .clickOnChildCategoryInSidebar(0);
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_category6"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_category6"));
     }
 
     @DataProvider(name = "routesParentCategoryMaker", parallel = true)
     Object[] dataProviderParentCategoryMaker() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_parent_category_maker2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_parent_category_maker2");
 
     }
 
@@ -130,7 +130,7 @@ public class QC_353_BehaviorByClickOnElementOfTopChildCategories {
 
         new Moto_Parent_Category_maker_page_Logic()
                 .clickOnChildCategoryInSidebar(0);
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_category_maker4"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_category_maker4"));
 
     }
 

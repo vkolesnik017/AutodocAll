@@ -27,7 +27,7 @@ public class QC_339_StructureOfBreadCrumbsBlockAtCatalogModels {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog_model2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog_model2");
     }
 
     @Test(dataProvider = "routes")
@@ -38,7 +38,7 @@ public class QC_339_StructureOfBreadCrumbsBlockAtCatalogModels {
         openPage(route);
 
         new Moto_Catalog_model_page_Logic().checkBreadCrumbsBlock();
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_categories_maker3"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_categories_maker3"));
     }
 
     @AfterMethod

@@ -70,7 +70,7 @@ public class CartPayments_page_Logic extends CartPayments_page{
 
     @Step("Method clicks on the desired payment method {paymentsName}, for each shop {shop}. CartPayments_page")
     public CartPayments_page_Logic clickOnTheDesiredPaymentMethod(String shop, String paymentsName) throws SQLException {
-        String paymentsId = new DataBase().getPaymentsLocator("payments_atd", shop, paymentsName);
+        String paymentsId = new DataBase("ATD").getPaymentsLocator("payments_atd", shop, paymentsName);
         paymentsLocator(paymentsId).click();
         return this;
     }

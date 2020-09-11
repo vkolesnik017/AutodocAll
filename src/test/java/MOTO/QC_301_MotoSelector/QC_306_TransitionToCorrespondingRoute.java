@@ -29,7 +29,7 @@ public class QC_306_TransitionToCorrespondingRoute {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category");
     }
 
     @Test(dataProvider = "routes")
@@ -41,12 +41,12 @@ public class QC_306_TransitionToCorrespondingRoute {
 
         new Moto_Category_page_Logic()
                 .selectMotoInSelector("4081", "12008", "135713");
-        checkingContainsUrl(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_category_car_list3"));
+        checkingContainsUrl(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_category_car_list3"));
     }
 
     @DataProvider(name = "routesCategoryMaker", parallel = true)
     Object[] dataProviderCategoryMaker() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_maker");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_maker");
     }
 
     @Test(dataProvider = "routesCategoryMaker")
@@ -58,13 +58,13 @@ public class QC_306_TransitionToCorrespondingRoute {
 
         new Moto_Category_maker_page_Logic()
                 .selectMotoModel("12008").selectMotoMotor("135713").clickOnSearchButton();
-        checkingContainsUrl(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_category_car_list3"));
+        checkingContainsUrl(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_category_car_list3"));
     }
 
 
     @DataProvider(name = "routesCarList", parallel = true)
     Object[] dataProviderCarList() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list2,moto_category_car_list_model2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list2,moto_category_car_list_model2");
     }
 
 
@@ -84,7 +84,7 @@ public class QC_306_TransitionToCorrespondingRoute {
 
     @DataProvider(name = "routesParentCategory", parallel = true)
     Object[] dataProviderParentCategory() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_parent_category");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_parent_category");
     }
 
     @Test(dataProvider = "routesParentCategory")
@@ -101,7 +101,7 @@ public class QC_306_TransitionToCorrespondingRoute {
 
     @DataProvider(name = "routesParentCategoryMaker", parallel = true)
     Object[] dataProviderParentCategoryMaker() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_parent_category_maker2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_parent_category_maker2");
     }
 
     @Test(dataProvider = "routesParentCategoryMaker")
@@ -118,7 +118,7 @@ public class QC_306_TransitionToCorrespondingRoute {
 
     @DataProvider(name = "routesCategoriesMaker", parallel = true)
     Object[] dataProviderCategoriesMaker() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_makers,moto_categories_maker2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_makers,moto_categories_maker2");
     }
 
     @Test(dataProvider = "routesCategoriesMaker")
@@ -130,13 +130,13 @@ public class QC_306_TransitionToCorrespondingRoute {
 
         new Moto_Categories_maker_page_Logic()
                 .selectMotoInSelector("4081", "12008", "135713").visibilityOfTecDocCatalog();
-        checkingContainsUrl(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_catalog"));
+        checkingContainsUrl(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_catalog"));
     }
 
 
     @DataProvider(name = "routesCatalog", parallel = true)
     Object[] dataProviderCatalog() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog2,moto_categories");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog2,moto_categories");
     }
 
     @Test(dataProvider = "routesCatalog")
@@ -148,12 +148,12 @@ public class QC_306_TransitionToCorrespondingRoute {
 
         new Moto_Catalog_page_Logic()
                 .selectMotoInSelector("4081", "12008", "135713");
-        checkingContainsUrl(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_catalog"));
+        checkingContainsUrl(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_catalog"));
     }
 
     @DataProvider(name = "routesCatalogModel", parallel = true)
     Object[] dataProviderCatalogModel() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog_model2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog_model2");
     }
 
     @Test(dataProvider = "routesCatalogModel")
@@ -165,12 +165,12 @@ public class QC_306_TransitionToCorrespondingRoute {
 
         new Moto_Catalog_model_page_Logic()
                 .selectMotoInSelector("4081", "12008", "135713");
-        checkingContainsUrl(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_catalog"));
+        checkingContainsUrl(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_catalog"));
     }
 
     @DataProvider(name = "routesMain", parallel = true)
     Object[] dataProviderMain() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog_model2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog_model2");
     }
 
     @Test(dataProvider = "routesMain")
@@ -182,7 +182,7 @@ public class QC_306_TransitionToCorrespondingRoute {
 
         new Moto_main_page_Logic()
                 .selectMotoInHorizontalMotoSelector("4081", "12008", "135713");
-        checkingContainsUrl(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_catalog"));
+        checkingContainsUrl(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_catalog"));
     }
 
     @AfterMethod

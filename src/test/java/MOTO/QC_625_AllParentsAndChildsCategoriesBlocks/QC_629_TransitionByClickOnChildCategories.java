@@ -27,7 +27,7 @@ public class QC_629_TransitionByClickOnChildCategories {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_categories");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_categories");
     }
 
     @Test(dataProvider = "routes")
@@ -39,12 +39,12 @@ public class QC_629_TransitionByClickOnChildCategories {
 
         new Moto_Categories_page_Logic()
                 .clickOnChildCategory();
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_category5"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_category5"));
     }
 
    @DataProvider(name = "routesCatalog", parallel = true)
     Object[] dataProviderCatalog() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog2");
     }
 
     @Test(dataProvider = "routesCatalog")
@@ -56,12 +56,12 @@ public class QC_629_TransitionByClickOnChildCategories {
 
         new Moto_Catalog_page_Logic()
                 .clickOnChildCategory();
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_category_car_list8"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_category_car_list8"));
     }
 
     @DataProvider(name = "routesSelectMoto", parallel = true)
     Object[] dataProviderSelectMoto() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_categories"); // ,moto_catalog_model2
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_categories"); // ,moto_catalog_model2
     }
 
     @Test(dataProvider = "routesSelectMoto")
@@ -74,12 +74,12 @@ public class QC_629_TransitionByClickOnChildCategories {
         new Moto_Categories_page_Logic()
                 .selectMotoWithOutTransition("4081", "12008", "135713")
                 .clickOnChildCategory();
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_category_car_list10"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_category_car_list10"));
     }
 
     @DataProvider(name = "routesWithNotAllValuesOfMoto", parallel = true)
     Object[] dataProviderWithNotAllValuesOfMoto() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog_model2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog_model2");
     }
 
     @Test(dataProvider = "routesWithNotAllValuesOfMoto")

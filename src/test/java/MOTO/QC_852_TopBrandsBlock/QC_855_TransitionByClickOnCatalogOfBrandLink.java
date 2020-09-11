@@ -27,7 +27,7 @@ public class QC_855_TransitionByClickOnCatalogOfBrandLink {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_main");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_main");
     }
 
     @Test(dataProvider = "routes")
@@ -38,7 +38,7 @@ public class QC_855_TransitionByClickOnCatalogOfBrandLink {
         openPage(route);
 
         new Moto_main_page_Logic().clickOnLinkMoreAtTopBrandsBlock();
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_makers"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_makers"));
     }
 
     @AfterMethod
