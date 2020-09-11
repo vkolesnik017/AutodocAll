@@ -23,7 +23,7 @@ public class QC_1226_PresenceOfSelectorInOilListings {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_release,motoroil_viscosity,motoroil_viscosity_brand,motoroil_specification,motoroil_maker,motoroil_maker_group,motoroil_chemical_type,motoroel-search,car_parts_motoroil,motoroil,motoroil_brand");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil_release,motoroil_viscosity,motoroil_viscosity_brand,motoroil_specification,motoroil_maker,motoroil_maker_group,motoroil_chemical_type,motoroel-search,car_parts_motoroil,motoroil,motoroil_brand");
     }
 
     @Test(dataProvider = "routes")

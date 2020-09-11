@@ -37,7 +37,7 @@ public class QC_171_CreatingAwsOrder_WithHeaveLoadsDeliveryToCountryToWhichHeave
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "HeavyLoasdProduct1");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "HeavyLoasdProduct1");
     }
 
     @Test(dataProvider = "route")

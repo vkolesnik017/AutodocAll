@@ -27,7 +27,7 @@ public class QC_1058_PresenceLogicalAssociations {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main","index_chemicals");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main","index_chemicals");
     }
 
     @Test(dataProvider = "route")

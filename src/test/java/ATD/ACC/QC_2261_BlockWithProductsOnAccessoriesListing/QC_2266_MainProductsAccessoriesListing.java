@@ -24,7 +24,7 @@ public class QC_2266_MainProductsAccessoriesListing {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "listing_accessories");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "listing_accessories");
     }
 
     @Test(dataProvider = "route")

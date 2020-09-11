@@ -115,14 +115,14 @@ public class Versand_static_page_Logic extends Versand_static_page {
 
     @Step("Get delivery price. Versand_static_page")
     public String getDeliveryPrice(String country) throws Exception {
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "staticVersand"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "staticVersand"));
         allCountriesButton().click();
         return deliveryPriceLocator(country).getText().replace(" €", "");
     }
 
     @Step("Get delivery price for AWS. Versand_static_page")
     public Float getDeliveryPriceForAWS(String country) throws Exception {
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "staticVersand"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "staticVersand"));
         allCountriesButton().click();
         String deliveryPrice = deliveryPriceLocator(country).getText().replace(" €", "").replace(",", ".");
         return Float.valueOf(deliveryPrice);

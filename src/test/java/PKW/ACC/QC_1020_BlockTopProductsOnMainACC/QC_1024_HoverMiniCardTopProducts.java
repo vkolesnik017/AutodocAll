@@ -26,7 +26,7 @@ public class QC_1024_HoverMiniCardTopProducts {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "index_accessories");
+        return new SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "index_accessories");
     }
 
     @Test(dataProvider = "route")

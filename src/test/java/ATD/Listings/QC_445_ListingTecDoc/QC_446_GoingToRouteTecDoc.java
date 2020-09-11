@@ -27,7 +27,7 @@ public class QC_446_GoingToRouteTecDoc {
 
   @DataProvider(name = "route")
   Object[] dataProvider() throws SQLException {
-    return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "maker_car_list3");
+    return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "maker_car_list3");
   }
 
   @Test(dataProvider = "route")

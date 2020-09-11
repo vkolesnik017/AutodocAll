@@ -28,22 +28,22 @@ public class QC_8_FiltersSorting_TestBrandFilterWithTwoBrandsSelected {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list,search2,category_car_list6,search19");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list,search2,category_car_list6,search19");
     }
 
     @DataProvider(name = "routeOem", parallel = true)
     Object[] dataProviderOem() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_oen3");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_oen3");
     }
 
     @DataProvider(name = "routeAcc", parallel = true)
     Object[] dataProviderAcc() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "listing_instruments");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "listing_instruments");
     }
 
     @DataProvider(name = "routesLKW", parallel = true)
     Object[] dataProviderLKW() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_search,lkw_category_car_list,lkw_category_car_list2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_search,lkw_category_car_list,lkw_category_car_list2");
     }
 
     @Test(dataProvider = "routes")

@@ -26,7 +26,7 @@ public class QC_605_DisplayOvercategoriesOnCatalogRoutesWithCar {
     private List<String> parentCategoriesFaq;
     private List<String> parentCategoriesTecDoc;
     private List<String> parentCategoriesAWS;
-    DataBase db = new DataBase();
+    DataBase db = new DataBase("ATD");
 
     @BeforeClass
     void setUp() {
@@ -35,7 +35,7 @@ public class QC_605_DisplayOvercategoriesOnCatalogRoutesWithCar {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "maker_car_list15");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "maker_car_list15");
     }
 
     @Test(dataProvider = "routes")

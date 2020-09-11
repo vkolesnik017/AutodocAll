@@ -27,7 +27,7 @@ public class QC_480_ValidationRequiredEmailFieldOnSoft404 {
 
   @DataProvider(name = "route")
   Object[] dataProvider() throws SQLException {
-    return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list11");
+    return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list11");
   }
 
   @Test(dataProvider = "route")

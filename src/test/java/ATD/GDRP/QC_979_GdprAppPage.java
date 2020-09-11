@@ -28,7 +28,7 @@ public class QC_979_GdprAppPage {
 
     @DataProvider(name = "route")
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "staticMobileApp");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "staticMobileApp");
     }
 
     @Test(dataProvider = "route")

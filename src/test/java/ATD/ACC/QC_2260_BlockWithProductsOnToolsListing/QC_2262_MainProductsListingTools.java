@@ -23,7 +23,7 @@ public class QC_2262_MainProductsListingTools {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main","listing_instruments");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main","listing_instruments");
     }
 
     @Test(dataProvider = "route")

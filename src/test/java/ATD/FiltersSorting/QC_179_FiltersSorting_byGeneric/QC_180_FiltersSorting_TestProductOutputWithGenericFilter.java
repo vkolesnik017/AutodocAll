@@ -31,12 +31,12 @@ public class QC_180_FiltersSorting_TestProductOutputWithGenericFilter {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list4,search,listing_accessories,search23");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list4,search,listing_accessories,search23");
     }
 
     @DataProvider(name = "routesLKW", parallel = true)
     Object[] dataProviderLKW() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list");
     }
 
     @Test(dataProvider = "routes")
@@ -68,7 +68,7 @@ public class QC_180_FiltersSorting_TestProductOutputWithGenericFilter {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks generic position in generic block on listing LKW model")
     public void checkGenericPositionLKWmodel() throws SQLException {
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list4"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list4"));
         new Main_page_Logic().closeCarSelectorTooltipIfVisible();
         listingPage.checkGenericFilterApplyingLKWmodelRoute();
     }

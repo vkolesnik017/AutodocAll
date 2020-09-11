@@ -28,7 +28,7 @@ public class QC_806_TestEmpfohlenerProductsMatchAws {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product24");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product24");
     }
 
     @Test(dataProvider = "routes")

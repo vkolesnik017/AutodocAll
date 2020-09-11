@@ -31,7 +31,7 @@ public class QC_1135_SynchronizationOfBasketSessionAfterPlacingAnOrder {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderMain() {
-        return new SetUp().setUpShop("prod", "DE");
+        return new SetUp("ATD").setUpShop("prod", "DE");
     }
 
     @Test(dataProvider = "route")
@@ -42,7 +42,7 @@ public class QC_1135_SynchronizationOfBasketSessionAfterPlacingAnOrder {
         openPage(route);
         main_page_logic.loginFromHeader(mail)
                 .checkingAppearingNameOfClient();
-        openPage(route + "/" + new DataBase().getRouteByRouteName("DE", "product25"));
+        openPage(route + "/" + new DataBase("ATD").getRouteByRouteName("DE", "product25"));
         productIdOnProductPage = product_page_logic.getProductId();
         product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
@@ -77,7 +77,7 @@ public class QC_1135_SynchronizationOfBasketSessionAfterPlacingAnOrder {
         openPage(route);
         main_page_logic.signInFromFB(mailFB, passFB)
                 .checkingAppearingNameOfClient();
-        openPage(route + "/" + new DataBase().getRouteByRouteName("DE", "product25"));
+        openPage(route + "/" + new DataBase("ATD").getRouteByRouteName("DE", "product25"));
         productIdOnProductPage = product_page_logic.getProductId();
         product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()

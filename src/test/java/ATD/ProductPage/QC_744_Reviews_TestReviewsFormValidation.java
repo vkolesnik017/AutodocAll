@@ -28,7 +28,7 @@ public class QC_744_Reviews_TestReviewsFormValidation {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks reviews form validation")
     public void testInputValidationReviews() throws SQLException {
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "product14"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "product14"));
         new Product_page_Logic(). checkReviewForm();
     }
 

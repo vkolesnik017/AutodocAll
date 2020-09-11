@@ -28,7 +28,7 @@ public class QC_1907_GdprSoft404 {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "car_parts");
+        return new SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "car_parts");
     }
 
     @Test(dataProvider = "route")

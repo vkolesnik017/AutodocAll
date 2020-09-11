@@ -26,12 +26,12 @@ public class QC_1550_FiltersSorting_TestAllFiltersAreFixedInSidebarAfterScroll {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list21");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list21");
     }
 
     @DataProvider(name = "routesLKW", parallel = true)
     Object[] dataProviderLKWsearch() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list15");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list15");
     }
 
     @Test(dataProvider = "routes")
@@ -48,7 +48,7 @@ public class QC_1550_FiltersSorting_TestAllFiltersAreFixedInSidebarAfterScroll {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks All Filters Are Fixed In Sidebar After Scroll Search Route")
     public void testAllFiltersAreFixedInSidebarAfterScrollSeachRoute() throws SQLException {
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "search21"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "search21"));
         new Listing_page_Logic().checkFiltersFixInSidebarSearchRoute();
     }
 
@@ -66,7 +66,7 @@ public class QC_1550_FiltersSorting_TestAllFiltersAreFixedInSidebarAfterScroll {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks All Filters Are Fixed In Sidebar After Scroll LKW Search Route")
     public void testAllFiltersAreFixedInSidebarAfterScrollLKWsearchRoute() throws SQLException {
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_search"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_search"));
         new Listing_page_Logic().checkFiltersFixInSidebarLKWsearchRoute();
     }
 

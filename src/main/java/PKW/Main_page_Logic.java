@@ -215,7 +215,7 @@ public class Main_page_Logic extends Main_page {
         ratingBewertungenHeader().shouldBe(visible);
         Assert.assertFalse(ratingBewertungenHeader().text().isEmpty());
         linkRatingLineHeader().click();
-        checkingContainsUrl(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "shop_reviews"));
+        checkingContainsUrl(new DataBase("PKW").getFullRouteByRouteAndSubroute("prod", "DE", "main", "shop_reviews"));
         back();
 
         return page(Main_page_Logic.class);
@@ -233,7 +233,7 @@ public class Main_page_Logic extends Main_page {
         agbLinkHeader().shouldBe(visible);
         Assert.assertFalse(agbLinkHeader().text().isEmpty());
         agbLinkHeader().click();
-        checkingContainsUrl(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "static_page_agb"));
+        checkingContainsUrl(new DataBase("PKW").getFullRouteByRouteAndSubroute("prod", "DE", "main", "static_page_agb"));
         back();
 
         return page(Main_page_Logic.class);
@@ -248,24 +248,24 @@ public class Main_page_Logic extends Main_page {
         headerPartsMenu().shouldBe(visible).hover();
         headerPartsDropList().shouldBe(visible);
         headerMenuReifen().click();
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "main_tyres"));
+        checkingContainsUrl(new DataBase("PKW").getRouteByRouteName("DE", "main_tyres"));
         back();
         headerMenuAutolampen().click();
-        checkingContainsUrl(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "index_autolamp"));
+        checkingContainsUrl(new DataBase("PKW").getFullRouteByRouteAndSubroute("prod", "DE", "main", "index_autolamp"));
         back();
         headerMenuMotorol().click();
-        checkingContainsUrl(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "motoroil"));
+        checkingContainsUrl(new DataBase("PKW").getFullRouteByRouteAndSubroute("prod", "DE", "main", "motoroil"));
         back();
         headerMenuChemicals().click();
-        checkingContainsUrl(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "index_chemicals"));
+        checkingContainsUrl(new DataBase("PKW").getFullRouteByRouteAndSubroute("prod", "DE", "main", "index_chemicals"));
         back();
         headerMenuAccessories().click();
-        checkingContainsUrl(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "index_accessories"));
+        checkingContainsUrl(new DataBase("PKW").getFullRouteByRouteAndSubroute("prod", "DE", "main", "index_accessories"));
         back();
         headerMenuInstruments().click();
-        checkingContainsUrl(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "index_instruments"));
+        checkingContainsUrl(new DataBase("PKW").getFullRouteByRouteAndSubroute("prod", "DE", "main", "index_instruments"));
         headerMenuHome().click();
-        checkingContainsUrl(new DataBase().getFullRouteByRouteName("prod", "DE", "main"));
+        checkingContainsUrl(new DataBase("PKW").getFullRouteByRouteName("prod", "DE", "main"));
         return page(Main_page_Logic.class);
     }
 

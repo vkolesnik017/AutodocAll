@@ -22,7 +22,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class QC_735_PresenceOfElementsInCarSelectorPopup {
 
   private Main_page_Logic mainPageLogic = new Main_page_Logic();
-  private DataBase dataBase = new DataBase();
+  private DataBase dataBase = new DataBase("ATD");
 
   @BeforeClass
   void setUp() {
@@ -31,7 +31,7 @@ public class QC_735_PresenceOfElementsInCarSelectorPopup {
 
   @DataProvider(name = "routes")
   Object[] dataProvider() throws SQLException {
-    return new SetUp().setUpShopWithSubroutes("prod", "DE", "main","main,category_car_list,product");
+    return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main","main,category_car_list,product");
   }
 
   @Test(dataProvider = "routes")

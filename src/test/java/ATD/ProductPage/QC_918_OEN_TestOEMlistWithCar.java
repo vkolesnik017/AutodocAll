@@ -28,7 +28,7 @@ public class QC_918_OEN_TestOEMlistWithCar {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks oem list with car")
     public void testOEMlistWithCar() throws SQLException {
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "category_car_list17"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "category_car_list17"));
         new Product_page_Logic().checkOEMlist();
     }
 

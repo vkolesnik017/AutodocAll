@@ -23,7 +23,7 @@ public class QC_1565_DisplayingOfNon_validEmailTooltip {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() {
-        return new SetUp().setUpShop("prod", "DE");
+        return new SetUp("ATD").setUpShop("prod", "DE");
     }
 
     @Flaky

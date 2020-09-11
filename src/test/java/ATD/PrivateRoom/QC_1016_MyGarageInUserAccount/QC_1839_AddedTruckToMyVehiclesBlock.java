@@ -27,7 +27,7 @@ public class QC_1839_AddedTruckToMyVehiclesBlock {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "main");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "main");
     }
 
     @Test(dataProvider = "routes")
@@ -44,7 +44,7 @@ public class QC_1839_AddedTruckToMyVehiclesBlock {
                 .clickTrucksTab()
                 .selectTruckInSelector("2242", "8959", "1012748")
                 .presenceAddedAuto()
-                .checkElementsOfAddedAuto("ASKAM (FARGO/DESOTO) AS 950 (09.2004 - ...)",new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_maker_car_list6"))
+                .checkElementsOfAddedAuto("ASKAM (FARGO/DESOTO) AS 950 (09.2004 - ...)",new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_maker_car_list6"))
                 .comparisonOfAddedVehiclesFromMyGarageAndHeader()
                 .checkPopUpWithAddedAuto()
                 .deleteOfAddedAuto();

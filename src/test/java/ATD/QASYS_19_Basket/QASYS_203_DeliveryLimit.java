@@ -32,7 +32,7 @@ public class QASYS_203_DeliveryLimit {
 
   @DataProvider(name = "route", parallel = false)
   Object[] dataProvider() {
-    return new SetUp().setUpShop("prod", "AT, BG, BE, CH, CZ, DE, DK, EE, ES, FI, FR, EN, GR, HU, IT, LD, LT, LV, NL, NO, PL, PT, RO, SE, SI, SK");
+    return new SetUp("ATD").setUpShop("prod", "AT, BG, BE, CH, CZ, DE, DK, EE, ES, FI, FR, EN, GR, HU, IT, LD, LT, LV, NL, NO, PL, PT, RO, SE, SI, SK");
   }
 
   @Owner(value = "Evlentiev")

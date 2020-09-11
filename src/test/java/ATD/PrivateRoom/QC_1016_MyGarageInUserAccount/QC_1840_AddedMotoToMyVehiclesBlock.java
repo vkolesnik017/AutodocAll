@@ -28,7 +28,7 @@ public class QC_1840_AddedMotoToMyVehiclesBlock {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "main");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "main");
     }
 
     @Test(dataProvider = "routes")
@@ -45,7 +45,7 @@ public class QC_1840_AddedMotoToMyVehiclesBlock {
                 .selectMotoBlockInSelector()
                  .selectVehicleInSelector("4081","12111","104173")
                  .presenceAddedAuto()
-                .checkElementsOfAddedAuto("BMW MOTORCYCLES K (05.1982 - ...)", new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_catalog6"))
+                .checkElementsOfAddedAuto("BMW MOTORCYCLES K (05.1982 - ...)", new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_catalog6"))
                 .comparisonOfAddedVehiclesFromMyGarageAndHeader()
                 .checkPopUpWithAddedAuto()
                 .deleteOfAddedAuto();

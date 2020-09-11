@@ -32,7 +32,7 @@ public class QC_1490_ChecksVerificationIslands_BillingIsDivided_NegativeCase {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "search9");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "search9");
     }
 
     @Test(dataProvider = "route")

@@ -30,7 +30,7 @@ public class QC_1052_PfandsLabelDisplayed {
 
     @DataProvider(name = "products", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product8,product9,product10");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product8,product9,product10");
     }
 
     @Test(dataProvider = "products")
@@ -44,7 +44,7 @@ public class QC_1052_PfandsLabelDisplayed {
 
     @DataProvider(name = "search", parallel = true)
     Object[] dataProviderSearch() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "search12,search13,search14");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "search12,search13,search14");
     }
 
     @Test(dataProvider = "search")
@@ -58,7 +58,7 @@ public class QC_1052_PfandsLabelDisplayed {
 
     @DataProvider(name = "tecdoc", parallel = true)
     Object[] dataProviderTecdoc() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list14,category_car_list15,category_car_list16");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list14,category_car_list15,category_car_list16");
     }
 
     @Test(dataProvider = "tecdoc")

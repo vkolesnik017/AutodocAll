@@ -43,7 +43,7 @@ public class QC_562_CreatingAwsOrder_WithDropProductAndRegularProduct {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product2");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product2");
     }
 
     @Test(dataProvider = "route")
@@ -56,7 +56,7 @@ public class QC_562_CreatingAwsOrder_WithDropProductAndRegularProduct {
         articleNum = product_page_logic.getArticleNumber();
         productCost = product_page_logic.getProductPrice();
         allProductCost.add(productCost);
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "productDrop1"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "productDrop1"));
         dropArticleNun = product_page_logic.getArticleNumber();
         productDropCost = product_page_logic.getProductPrice();
         productDropArticleID = product_page_logic.getProductId();

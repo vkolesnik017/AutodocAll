@@ -27,7 +27,7 @@ public class QC_439_PresenceAdditionalListingOnSearchPage {
 
   @DataProvider(name = "route")
   Object[] dataProvider() throws SQLException {
-    return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "search7");
+    return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "search7");
   }
 
   @Test(dataProvider = "route")

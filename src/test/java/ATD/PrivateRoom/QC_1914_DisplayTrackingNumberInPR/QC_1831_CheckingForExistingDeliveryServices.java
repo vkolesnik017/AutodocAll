@@ -25,7 +25,7 @@ public class QC_1831_CheckingForExistingDeliveryServices {
     private Main_page_Logic main_page_logic = new Main_page_Logic();
     private Profile_orders_page_Logic profile_orders_page_logic = new Profile_orders_page_Logic();
     private Mailinator mailinator = new Mailinator();
-    private DataBase dataBase = new DataBase();
+    private DataBase dataBase = new DataBase("ATD");
 
     @BeforeClass
     void setUp() {

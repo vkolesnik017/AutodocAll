@@ -195,7 +195,7 @@ public class Product_page_Logic extends Product_page {
         productTextUnderPrice().shouldBe(visible);
         Assert.assertFalse(productTextUnderPrice().text().isEmpty());
         productVersandLinkUnderPrice().click();
-        commonMethods.checkingUrlAndCloseTab(new DataBase().getRouteByRouteName("DE", "static_versand"));
+        commonMethods.checkingUrlAndCloseTab(new DataBase("PKW").getRouteByRouteName("DE", "static_versand"));
 
         productButtonBuyWithCount().shouldBe(visible);
         productCountButton().shouldBe(clickable);
@@ -223,7 +223,7 @@ public class Product_page_Logic extends Product_page {
         blockWithVersandLinkTwo().shouldBe(visible);
         Assert.assertFalse(blockWithVersandLinkTwo().text().isEmpty());
         VersandLinkTwo().scrollIntoView(false).click();
-        commonMethods.checkingUrlAndCloseTab(new DataBase().getRouteByRouteName("DE", "static_versand"));
+        commonMethods.checkingUrlAndCloseTab(new DataBase("PKW").getRouteByRouteName("DE", "static_versand"));
         return this;
     }
 
@@ -234,7 +234,7 @@ public class Product_page_Logic extends Product_page {
         Assert.assertFalse(moreItemsBlock().text().isEmpty());
         pkwPaymentsItem().shouldBe(visible);
         moreItemsBlockFirstLink().click();
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "product3"));
+        checkingContainsUrl(new DataBase("PKW").getRouteByRouteName("DE", "product3"));
         back();
         return this;
     }
@@ -244,7 +244,7 @@ public class Product_page_Logic extends Product_page {
 
         productBrandIcon().shouldHave(Condition.attribute("alt"));
         productBrandIconLink().scrollIntoView(false).click();
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "supplier"));
+        checkingContainsUrl(new DataBase("PKW").getRouteByRouteName("DE", "supplier"));
         back();
         return this;
     }

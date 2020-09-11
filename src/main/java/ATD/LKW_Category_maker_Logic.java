@@ -45,7 +45,7 @@ public class LKW_Category_maker_Logic extends LKW_Category_maker {
     public LKW_Category_maker_Logic checkLinkClickInBreadCrumbsBlock() throws SQLException {
         firstLinkClick().checkSuccessfullyLKWCategoriesPageLoading();
         back();
-        secondLinkClick();  checkingContainsUrl(new DataBase().getRouteByRouteName("DE","lkw_parent_category"));
+        secondLinkClick();  checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE","lkw_parent_category"));
         back();
         thirdLinkClick().checkSuccessfullyChildCategoryPageLoading();
         return this;

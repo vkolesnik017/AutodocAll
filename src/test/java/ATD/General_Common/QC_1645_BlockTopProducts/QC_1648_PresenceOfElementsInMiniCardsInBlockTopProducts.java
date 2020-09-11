@@ -28,7 +28,7 @@ public class QC_1648_PresenceOfElementsInMiniCardsInBlockTopProducts {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] routes() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_maker,group_list,category_maker_brand");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_maker,group_list,category_maker_brand");
     }
 
     @Test(dataProvider = "routes")

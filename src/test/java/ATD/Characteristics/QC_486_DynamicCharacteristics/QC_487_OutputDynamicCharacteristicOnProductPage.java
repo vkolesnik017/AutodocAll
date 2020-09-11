@@ -19,7 +19,7 @@ import static com.codeborne.selenide.Condition.matchText;
 public class QC_487_OutputDynamicCharacteristicOnProductPage {
 
   private Product_page_Logic product_page_logic = new Product_page_Logic();
-  private DataBase db = new DataBase();
+  private DataBase db = new DataBase("ATD");
 
 
   @BeforeClass
@@ -29,7 +29,7 @@ public class QC_487_OutputDynamicCharacteristicOnProductPage {
 
   @DataProvider(name = "route")
   Object[] dataProvider() {
-    return new SetUp().setUpShop("prod", "DE");
+    return new SetUp("ATD").setUpShop("prod", "DE");
   }
 
   @Test(dataProvider = "route")

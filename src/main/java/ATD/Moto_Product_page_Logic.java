@@ -120,7 +120,7 @@ public class Moto_Product_page_Logic extends Moto_Product_page {
 
     @Step(" check current url  .Moto_Product_page")
     public Moto_Product_page_Logic checkCurrentUrl(String subRoute) throws SQLException {
-        checkingContainsUrl(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", subRoute));
+        checkingContainsUrl(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", subRoute));
         return this;
     }
 
@@ -158,7 +158,7 @@ public class Moto_Product_page_Logic extends Moto_Product_page {
     @Step("check first link of bread crumbs .Moto_Product_page ")
     public Moto_Product_page_Logic checkFirstLinkOfBreadCrumbs() throws SQLException {
         clickOnFirstLinkOfBreadCrumbs();
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_categories"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_categories"));
         back();
         return this;
     }
@@ -173,7 +173,7 @@ public class Moto_Product_page_Logic extends Moto_Product_page {
     @Step("check second link of bread crumbs .Moto_Product_page ")
     public Moto_Product_page_Logic checkSecondLinkOfBreadCrumbs(String title) throws SQLException {
         clickOnSecondLinkOfBreadCrumbs(title);
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_parent_category"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_parent_category"));
         back();
         return this;
     }
@@ -190,7 +190,7 @@ public class Moto_Product_page_Logic extends Moto_Product_page {
     @Step("check third link of bread crumbs .Moto_Product_page ")
     public Moto_Product_page_Logic checkThirdLinkOfBreadCrumbs(String title) throws SQLException {
         clickOnThirdLinkOfBreadCrumbs(title);
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_category"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_category"));
         back();
         return this;
     }

@@ -42,7 +42,7 @@ public class QASYS_477_DeleteTiresFromBasket {
   @DataProvider(name = "routeAndPostalCodes", parallel = true)
   Object[] dataProvider() {
     String[] zipCodes = listZipCodes.toArray(new String[listZipCodes.size()]);
-    return new SetUp().setUpShopWithListParam("prod", "SE", zipCodes);
+    return new SetUp(null).setUpShopWithListParam("prod", "SE", zipCodes);
   }
 
   @Owner(value = "Evlentiev")

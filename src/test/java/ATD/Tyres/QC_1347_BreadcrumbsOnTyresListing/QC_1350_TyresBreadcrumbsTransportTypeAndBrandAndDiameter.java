@@ -29,7 +29,7 @@ public class QC_1350_TyresBreadcrumbsTransportTypeAndBrandAndDiameter {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "tyres_brand_dimension3");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_brand_dimension3");
     }
 
     @Test(dataProvider = "routes")
@@ -39,7 +39,7 @@ public class QC_1350_TyresBreadcrumbsTransportTypeAndBrandAndDiameter {
     public void testTyresBreadcrumbsTransportTypeAndBrandAndDiameter(String route) throws  SQLException {
         openPage(route);
         tyresListingPageLogic.checkBreadcrumbsFirstButtonTransiton();
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "tyres_brand_size2"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "tyres_brand_size2"));
         tyresListingPageLogic.checkBreadcrumbsSecondButtonTransiton("llkw")
                             .checkBreadcrumbsThirdButtonTransiton("llkw/goodyear")
                             .checkBreadcrumbsLastButton("17 Zoll");

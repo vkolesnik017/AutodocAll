@@ -32,7 +32,7 @@ public class QC_1598_Bodywork {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() {
-        return new SetUp().setUpShop("prod", "DE");
+        return new SetUp("ATD").setUpShop("prod", "DE");
     }
 
 
@@ -44,7 +44,7 @@ public class QC_1598_Bodywork {
         openPage(urlProductForBodyFR);
         product_page_logic.clickAddToCartAndCheckPopupFR();
         String shop = getShopFromRoute(route);
-        openPage(route + "/" + new DataBase().getRouteByRouteName(shop, "product7"));
+        openPage(route + "/" + new DataBase("ATD").getRouteByRouteName(shop, "product7"));
         String testMail = "atdautotest_QC_1598_bodywork@mailinator.com";
         product_page_logic.addProductToCart().closePopupOtherCategoryIfYes()
                 .cartClick()
@@ -54,7 +54,7 @@ public class QC_1598_Bodywork {
                 .chooseVorkasse().nextBtnClick()
                 .closePopupDeliveryImpossibleAndCheckEmptyCart();
         close();
-        openPage(route + "/" + new DataBase().getRouteByRouteName(shop, "product7"));
+        openPage(route + "/" + new DataBase("ATD").getRouteByRouteName(shop, "product7"));
         product_page_logic.addProductToCart().closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()

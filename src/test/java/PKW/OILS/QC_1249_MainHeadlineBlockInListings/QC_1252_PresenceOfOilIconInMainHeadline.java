@@ -23,7 +23,7 @@ public class QC_1252_PresenceOfOilIconInMainHeadline {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "car_parts_motoroil");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "car_parts_motoroil");
     }
 
     @Test(dataProvider = "routes")

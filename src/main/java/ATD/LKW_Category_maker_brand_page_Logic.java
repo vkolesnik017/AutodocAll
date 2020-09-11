@@ -34,11 +34,11 @@ public class LKW_Category_maker_brand_page_Logic extends LKW_Category_maker_bran
     public LKW_Category_maker_brand_page_Logic checkLinkClickInBreadCrumbsBlock() throws SQLException {
         firstLinkClick().checkSuccessfullyLKWCategoriesPageLoading();
         back();
-        secondLinkClick();  checkingContainsUrl(new DataBase().getRouteByRouteName("DE","lkw_parent_category"));
+        secondLinkClick();  checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE","lkw_parent_category"));
         back();
         thirdLinkClick().checkSuccessfullyChildCategoryPageLoading();
         back();
-        fourthLinkClick(); checkingContainsUrl(new DataBase().getRouteByRouteName("DE","lkw_category_brand"));
+        fourthLinkClick(); checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE","lkw_category_brand"));
         return this;
     }
 

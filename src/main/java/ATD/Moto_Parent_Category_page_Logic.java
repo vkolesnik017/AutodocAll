@@ -55,7 +55,7 @@ public class Moto_Parent_Category_page_Logic extends Moto_Parent_Category_page {
 
     @Step(" check current url  .Moto_Parent_Category_page")
     public Moto_Parent_Category_page_Logic checkCurrentUrl(String subRoute) throws SQLException {
-        DataBase db = new DataBase();
+        DataBase db = new DataBase("ATD");
         checkingContainsUrl(db.getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", subRoute));
         return this;
     }
@@ -120,7 +120,7 @@ public class Moto_Parent_Category_page_Logic extends Moto_Parent_Category_page {
     public Moto_Parent_Category_page_Logic checkBreadCrumbsBlock() throws SQLException {
         breadCrumbsLinks().shouldHaveSize(6);
         checkFirstLinkOfBreadCrumbsLinks();
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_categories"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_categories"));
         back();
         checkSecondLinkOfBreadCrumbsLinks("Filter");
         checkThirdLinkOfBreadCrumbsLinks("Teil Wählen");

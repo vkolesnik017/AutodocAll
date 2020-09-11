@@ -42,7 +42,7 @@ public class QC_2228_DisplayStatusNewForMapcoGoodsATD {
     public void testDisplayStatusNewForMapcoGoodsATD(String data) throws Exception {
         String articleNum = parseExcel(data)[0].trim();
         try {
-            openPage(new DataBase().getFullRouteByRouteName("prod", "DE", "main"));
+            openPage(new DataBase("ATD").getFullRouteByRouteName("prod", "DE", "main"));
             new Main_page_Logic().inputTextInSearchBar(articleNum)
                     .headerSearchSubmitBtn().click();
             new Listing_page_Logic().checkListingWithSelectingFilterByBrand("133", "MAPCO")

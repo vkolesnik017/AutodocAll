@@ -28,12 +28,12 @@ public class QC_121_FiltersSorting_TestSideFilterInTileMode {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2");
     }
 
     @DataProvider(name = "routesLKWsearch", parallel = true)
     Object[] dataProviderLKWsearch() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list28");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list28");
     }
 
     @Test(dataProvider = "routes")
@@ -55,7 +55,7 @@ public class QC_121_FiltersSorting_TestSideFilterInTileMode {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks side filter in tile mode LKW")
     public void testSideFilterInTileModeLKW() throws Exception {
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list"));
         String characteristic = listingPage.getTextFromElement(listingPage.langeFilterCheckboxLKW700());
         listingPage.clickFilterButton(listingPage.langeFilterCheckboxLKW700())
                 .waitUntilPreloaderDisappearAndSleep(3000)

@@ -27,7 +27,7 @@ public class QC_1942_CreatingEmptyOrderForMailStorniertChecking {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product2,product3,product4,product5,product6");
+        return new SetUp("DIR").setUpShopWithSubroutes("prod", "DE", "main", "product2,product3,product4,product5,product6");
     }
 
     @Test(dataProvider = "route")

@@ -29,7 +29,7 @@ public class QC_554_GoToLisingFromSynonymTooltipInSearch {
 
     @DataProvider(name = "route")
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "maker_car_list6");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "maker_car_list6");
     }
 
     @Test(dataProvider = "route")

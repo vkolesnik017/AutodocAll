@@ -30,7 +30,7 @@ public class QC_2352_Multibanco {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "PT", "main", "product32");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "PT", "main", "product32");
     }
 
     @Test(dataProvider = "route")
@@ -40,7 +40,7 @@ public class QC_2352_Multibanco {
     public void testMultibanco(String route) throws Exception {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
-        String userData = new DataBase().getUserIdForPaymentsMethod("payments_userid_atd", shop, "Multibanco");
+        String userData = new DataBase("ATD").getUserIdForPaymentsMethod("payments_userid_atd", shop, "Multibanco");
         String mail = parseUserMailFromBD(userData);
         float totalPriceAllData = new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()

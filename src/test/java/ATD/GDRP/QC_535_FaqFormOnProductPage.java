@@ -28,7 +28,7 @@ public class QC_535_FaqFormOnProductPage {
 
     @DataProvider(name = "route")
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product3");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product3");
     }
 
     @Test(dataProvider = "route")

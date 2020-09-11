@@ -24,7 +24,7 @@ public class QC_1251_PresenceOfCharacteristicInMainHeadline {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_brand,motoroil_maker,motoroil_maker_group,motoroil_chemical_type,motoroil_specification");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil_brand,motoroil_maker,motoroil_maker_group,motoroil_chemical_type,motoroil_specification");
     }
 
     @Test(dataProvider = "routes")
@@ -40,7 +40,7 @@ public class QC_1251_PresenceOfCharacteristicInMainHeadline {
 
     @DataProvider(name = "routesViscosity", parallel = true)
     Object[] dataProviderViscosity() throws SQLException {
-        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_viscosity");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil_viscosity");
     }
 
     @Test(dataProvider = "routesViscosity")
@@ -56,7 +56,7 @@ public class QC_1251_PresenceOfCharacteristicInMainHeadline {
 
     @DataProvider(name = "routesViscosityBrand", parallel = true)
     Object[] dataProviderViscosityBrand() throws SQLException {
-        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_viscosity_brand");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil_viscosity_brand");
     }
 
     @Test(dataProvider = "routesViscosityBrand")
@@ -72,7 +72,7 @@ public class QC_1251_PresenceOfCharacteristicInMainHeadline {
 
     @DataProvider(name = "routesMotoroilRelease", parallel = true)
     Object[] dataProviderMotoroilRelease() throws SQLException {
-        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_release");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil_release");
     }
 
     @Test(dataProvider = "routesMotoroilRelease")
@@ -88,7 +88,7 @@ public class QC_1251_PresenceOfCharacteristicInMainHeadline {
 
     @DataProvider(name = "routesMotoroil", parallel = true)
     Object[] dataProviderMotoroil() throws SQLException {
-        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "car_parts_motoroil");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "car_parts_motoroil");
     }
 
     @Test(dataProvider = "routesMotoroil")

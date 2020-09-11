@@ -86,7 +86,7 @@ public class Moto_Categories_maker_page_Logic extends Moto_Categories_maker_page
     @Step(" check transition by click on TOP elements .Moto_Categories_maker_page")
     public Moto_Categories_maker_page_Logic checkTransitionByClickOnTopElements() throws SQLException {
         clickOnIconOfParentCategory();
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "moto_parent_category_maker3"));
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_parent_category_maker3"));
         back();
         clickOnChildCategory();
         return this;

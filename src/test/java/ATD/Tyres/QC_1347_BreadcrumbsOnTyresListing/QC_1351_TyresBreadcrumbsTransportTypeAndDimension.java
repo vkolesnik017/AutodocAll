@@ -26,7 +26,7 @@ public class QC_1351_TyresBreadcrumbsTransportTypeAndDimension {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "tyres_dimension5");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_dimension5");
     }
 
     @Test(dataProvider = "routes")

@@ -27,7 +27,7 @@ public class QC_1584_Regular {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() {
-        return new SetUp().setUpShop("prod", "DE");
+        return new SetUp("ATD").setUpShop("prod", "DE");
     }
 
 
@@ -37,7 +37,7 @@ public class QC_1584_Regular {
     @Flaky
     public void checkingOrderWithRegular(String route) throws SQLException {
         String shop = getShopFromRoute(route);
-        openPage(route + "/" + new DataBase().getRouteByRouteName(shop, "product2"));
+        openPage(route + "/" + new DataBase("ATD").getRouteByRouteName(shop, "product2"));
         String testMail = "atdautotest@mailinator.com";
         new Product_page_Logic().addProductToCart().closePopupOtherCategoryIfYes()
                 .cartClick()

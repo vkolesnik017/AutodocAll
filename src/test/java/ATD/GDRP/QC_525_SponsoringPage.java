@@ -28,7 +28,7 @@ public class QC_525_SponsoringPage {
 
     @DataProvider(name = "route")
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "staticSponsorship");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "staticSponsorship");
     }
 
     @Test(dataProvider = "route")

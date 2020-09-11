@@ -27,7 +27,7 @@ public class QC_780_TestRelatedProductsPopupOnProductPageWithCar {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "maker_car_list3");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "maker_car_list3");
     }
 
     @Test(dataProvider = "routes")
@@ -36,7 +36,7 @@ public class QC_780_TestRelatedProductsPopupOnProductPageWithCar {
     @Description(value = "Test Checks Related Products Popup On Product Page With Car")
     public void testRelatedProductsPopupOnProductPageWithCar(String route) throws SQLException {
         openPage(route);
-        open(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "product22"));
+        open(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "product22"));
         new Product_page_Logic().checkRelatedProductsPopup(6);
     }
 

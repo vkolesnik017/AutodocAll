@@ -29,7 +29,7 @@ public class QC_1409_ShowLabelsPaymentAndAdvantages {
 
     @DataProvider(name = "product")
     Object[] dataProviderProduct() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product11");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product11");
     }
 
     @Test(dataProvider = "product")

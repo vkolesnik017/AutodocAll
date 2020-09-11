@@ -41,7 +41,7 @@ public class QC_563_CreatingAwsOrder_WithDeliveryToIsland {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product27");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product27");
     }
 
     @Test(dataProvider = "route")

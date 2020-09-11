@@ -51,7 +51,7 @@ public class AGB_static_page_Logic extends AGB_static_page {
         commonMethods.checkingUrlAndCloseTab("/consumers/odr/main/index.cfm?event=main.home.chooseLanguage");
         autodocLinkAgbText().scrollIntoView(false);
         autodocLinkAgbText().shouldBe(visible).click();
-        commonMethods.checkingUrlAndCloseTab(new DataBase().getFullRouteByRouteName("prod", "DE", "main"));
+        commonMethods.checkingUrlAndCloseTab(new DataBase("PKW").getFullRouteByRouteName("prod", "DE", "main"));
         back();
         return this;
     }

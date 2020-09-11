@@ -31,7 +31,7 @@ public class QC_2130_WorkResetFilterSelectedCriteriaOnChemistryListing {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "listing_chemicals3");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "listing_chemicals3");
     }
 
     @Test(dataProvider = "route")

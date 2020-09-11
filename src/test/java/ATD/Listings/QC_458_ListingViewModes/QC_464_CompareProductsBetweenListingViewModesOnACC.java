@@ -21,7 +21,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class QC_464_CompareProductsBetweenListingViewModesOnACC {
 
-  private DataBase db = new DataBase();
+  private DataBase db = new DataBase("ATD");
   private Listing_page_Logic listingPage = new Listing_page_Logic();
 
   @BeforeClass
@@ -31,7 +31,7 @@ public class QC_464_CompareProductsBetweenListingViewModesOnACC {
 
   @DataProvider(name = "route")
   Object[] dataProvider() {
-    return new SetUp().setUpShop("prod", "DE");
+    return new SetUp("ATD").setUpShop("prod", "DE");
   }
 
   @Test(dataProvider = "route")

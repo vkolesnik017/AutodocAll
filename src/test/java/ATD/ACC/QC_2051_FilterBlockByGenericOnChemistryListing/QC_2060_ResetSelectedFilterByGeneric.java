@@ -25,7 +25,7 @@ public class QC_2060_ResetSelectedFilterByGeneric {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "listing_chemicals2");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "listing_chemicals2");
     }
 
     @Test(dataProvider = "route")

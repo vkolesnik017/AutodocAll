@@ -22,10 +22,10 @@ public class Motoroil_Chemical_Type_page_Logic extends Motoroil_Chemical_Type_pa
     @Step("check transition by click on links of breadcrumbs. Motoroil_Chemical_Type_page")
     public Motoroil_Chemical_Type_page_Logic checkTransitionByClickOnLinksOfBreadCrumbs() throws SQLException {
         checkFirstLinkOfBreadCrumbs().presenceOfTecDocCatalog();
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "parts"));
+        checkingContainsUrl(new DataBase("PKW").getRouteByRouteName("DE", "parts"));
         back();
         checkSecondLinkOfBreadCrumbs().presenceOfBrandsBlock();
-        checkingContainsUrl(new DataBase().getRouteByRouteName("DE", "motoroil"));
+        checkingContainsUrl(new DataBase("PKW").getRouteByRouteName("DE", "motoroil"));
         back();
         presenceOfBreadCrumbsBlock().checkThirdLinkOfBreadCrumbs("Synthetische");
         return this;

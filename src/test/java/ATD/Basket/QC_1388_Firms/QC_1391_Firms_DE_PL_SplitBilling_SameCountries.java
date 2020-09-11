@@ -33,7 +33,7 @@ public class QC_1391_Firms_DE_PL_SplitBilling_SameCountries {
 
     @DataProvider(name = "routePL", parallel = true)
     Object[] dataProviderProductsPL() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "PL", "main", "product2");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "PL", "main", "product2");
     }
 
     @Test(dataProvider = "routePL")
@@ -87,7 +87,7 @@ public class QC_1391_Firms_DE_PL_SplitBilling_SameCountries {
 
     @DataProvider(name = "routeDE", parallel = true)
     Object[] dataProviderProductsDE() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product2");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product2");
     }
 
     @Test(dataProvider = "routeDE")
@@ -140,7 +140,7 @@ public class QC_1391_Firms_DE_PL_SplitBilling_SameCountries {
 
     @DataProvider(name = "routeES", parallel = true)
     Object[] dataProviderProductsES() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "ES", "main", "product2");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "ES", "main", "product2");
     }
 
     @Test(dataProvider = "routeES")

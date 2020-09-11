@@ -32,7 +32,7 @@ public class QC_1136_RecoveryBasketWebSessionOnWebVersionMainPageViaFacebook {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderMain() {
-        return new SetUp().setUpShop("prod", "DE");
+        return new SetUp("ATD").setUpShop("prod", "DE");
     }
 
     @Test(dataProvider = "route")
@@ -43,7 +43,7 @@ public class QC_1136_RecoveryBasketWebSessionOnWebVersionMainPageViaFacebook {
         openPage(route);
         main_page_logic.loginFromHeader(mailFB, passFB)
                 .checkingAppearingNameOfClient();
-        openPage(route + "/" + new DataBase().getRouteByRouteName("DE", "product25"));
+        openPage(route + "/" + new DataBase("ATD").getRouteByRouteName("DE", "product25"));
         productIdOnProductPage = product_page_logic.getProductId();
         product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()

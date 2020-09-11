@@ -36,7 +36,7 @@ public class QC_1929_PasswordRecovery {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product32");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product32");
     }
 
     @Test(dataProvider = "route")
@@ -59,7 +59,7 @@ public class QC_1929_PasswordRecovery {
         checkingContainsUrl("services/plus-service");
         new Profile_plus_page_Logic().logOutClick();
         close();
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "product32"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "product32"));
         product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()

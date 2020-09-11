@@ -23,7 +23,7 @@ public class QC_1259_TransitionByClickOnBreadCrumbsLinks {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_viscosity");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil_viscosity");
     }
 
     @Test(dataProvider = "routes")
@@ -39,7 +39,7 @@ public class QC_1259_TransitionByClickOnBreadCrumbsLinks {
 
     @DataProvider(name = "routesViscosityBrand", parallel = true)
     Object[] dataProviderViscosityBrand() throws SQLException {
-        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_viscosity_brand");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil_viscosity_brand");
     }
 
     @Test(dataProvider = "routesViscosityBrand")
@@ -55,7 +55,7 @@ public class QC_1259_TransitionByClickOnBreadCrumbsLinks {
 
     @DataProvider(name = "routesSpecification", parallel = true)
     Object[] dataProviderSpecification() throws SQLException {
-        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_specification");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil_specification");
     }
 
     @Test(dataProvider = "routesSpecification")
@@ -71,7 +71,7 @@ public class QC_1259_TransitionByClickOnBreadCrumbsLinks {
 
     @DataProvider(name = "routesRelease", parallel = true)
     Object[] dataProviderRelease() throws SQLException {
-        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_release");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil_release");
     }
 
     @Test(dataProvider = "routesRelease")
@@ -87,7 +87,7 @@ public class QC_1259_TransitionByClickOnBreadCrumbsLinks {
 
     @DataProvider(name = "routesBrand", parallel = true)
     Object[] dataProviderBrand() throws SQLException {
-        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_brand");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil_brand");
     }
 
     @Test(dataProvider = "routesBrand")
@@ -103,7 +103,7 @@ public class QC_1259_TransitionByClickOnBreadCrumbsLinks {
 
     @DataProvider(name = "routesMaker", parallel = true)
     Object[] dataProviderMaker() throws SQLException {
-        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_maker");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil_maker");
     }
 
     @Test(dataProvider = "routesMaker")
@@ -119,7 +119,7 @@ public class QC_1259_TransitionByClickOnBreadCrumbsLinks {
 
     @DataProvider(name = "routesChemicalType", parallel = true)
     Object[] dataProviderChemicalType() throws SQLException {
-        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_chemical_type");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil_chemical_type");
     }
 
     @Test(dataProvider = "routesChemicalType")
@@ -135,7 +135,7 @@ public class QC_1259_TransitionByClickOnBreadCrumbsLinks {
 
     @DataProvider(name = "routesMakerGroup", parallel = true)
     Object[] dataProviderMakerGroup() throws SQLException {
-        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_maker_group");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil_maker_group");
     }
 
     @Test(dataProvider = "routesMakerGroup")
@@ -151,7 +151,7 @@ public class QC_1259_TransitionByClickOnBreadCrumbsLinks {
 
     @DataProvider(name = "routesCarParts", parallel = true)
     Object[] dataProviderCarParts() throws SQLException {
-        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "car_parts_motoroil");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "car_parts_motoroil");
     }
 
     @Test(dataProvider = "routesCarParts")

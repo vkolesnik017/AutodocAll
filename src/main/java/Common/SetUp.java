@@ -10,7 +10,19 @@ import java.util.List;
 
 public class SetUp {
 
-    private DataBase db = new DataBase();
+    private String skin;
+    private DataBase db;
+
+    public SetUp(){
+        this.db = new DataBase();
+
+    }
+
+    public SetUp(String skin){
+        this.skin = skin;
+        this.db = new DataBase(this.skin);
+    }
+
     private String shopFromJenkins = System.getenv("ShopFromJenkins");
     private String envFromJenkins = System.getenv("EnvFromJenkins");
     private String devBranchFromJenkins = System.getenv("devBranchFromJenkins");
@@ -46,7 +58,7 @@ public class SetUp {
         String env = getEnv(envFromTest);
         List<String> finalRouteList = new ArrayList<>();
         try {
-            List<String> routeFromDB = new DataBase().getRouteListForMain(shop);
+            List<String> routeFromDB = new DataBase(skin).getRouteListForMain(shop);
             for (String aRouteFromDB : routeFromDB) {
                 finalRouteList.add(env + aRouteFromDB);
             }
@@ -65,7 +77,7 @@ public class SetUp {
         String env = getEnv(envFromTest);
         List<String> finalRouteList = new ArrayList<>();
         try {
-            List<String> routeFromDB = new DataBase().getRouteListByRouteName(shop, routeName);
+            List<String> routeFromDB = new DataBase(skin).getRouteListByRouteName(shop, routeName);
             for (String aRouteFromDB : routeFromDB) {
                 finalRouteList.add(env + aRouteFromDB);
             }

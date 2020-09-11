@@ -28,7 +28,7 @@ public class QC_450_Soft404OnTecDoc {
 
   @DataProvider(name = "route")
   Object[] dataProvider() throws SQLException {
-    return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list9");
+    return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list9");
   }
 
   @Test(dataProvider = "route")

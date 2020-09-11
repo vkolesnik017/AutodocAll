@@ -25,7 +25,7 @@ public class QC_2065_CheckingTransitionToProductPageOfProductFromListing {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "tyre_form,tyres_season,offroad_tyres_brand,tyres_group_season_brand," +
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyre_form,tyres_season,offroad_tyres_brand,tyres_group_season_brand," +
                 "tyres_size3,tyres_dimension3,tyres_season_size,tyres_season_dimension,tyres_brand_size2,tyres_brand_dimension");
     }
 

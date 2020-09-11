@@ -24,7 +24,7 @@ public class QC_2373_LogicOfPairedProductsInWishlist {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "main", "search19");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "main", "search19");
 
     }
 
@@ -35,7 +35,7 @@ public class QC_2373_LogicOfPairedProductsInWishlist {
     public void testChecksTransitionToWishListWithLoggedUser(String route) {
         openPage(route);
 
-        new Search_page_Logic().presenceOfTecDocListing().addedProductToWishList(0).goToWishListPage().increaseQuantityOfProduct(1);
+        new Search_page_Logic().presenceOfTecDocListing().addedProductToWishList(1).goToWishListPage().increaseQuantityOfProduct(1);
     }
 
     @AfterMethod

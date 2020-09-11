@@ -17,7 +17,7 @@ public class TyresProduct_page_Logic extends TyresProduct_page {
     public TyresProduct_page_Logic clickDeliveryLinkAndCheckRedirect() throws SQLException {
         deliveryLink().click();
         switchTo().window(1);
-        waitingWhileLinkBecomeExpected(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "staticVersand"));
+        waitingWhileLinkBecomeExpected(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "staticVersand"));
         return this;
     }
 

@@ -18,7 +18,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_142_FiltersSorting_TestBrandAndMarkFilterInteraction {
     private Listing_page_Logic listingPage = new Listing_page_Logic();
-    private DataBase dataBase = new DataBase();
+    private DataBase dataBase = new DataBase("ATD");
 
     @BeforeClass
     void setUp() {

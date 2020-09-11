@@ -30,7 +30,7 @@ public class QC_1031_RemovingCarFromMyGarageBlock {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() {
-        return new SetUp().setUpShop("prod", "DE");
+        return new SetUp("ATD").setUpShop("prod", "DE");
     }
 
     @Test(dataProvider = "route")
@@ -45,7 +45,7 @@ public class QC_1031_RemovingCarFromMyGarageBlock {
                 .selectVehicleCarInSelector("BMW", "4343", "14801")
                 .presenceAddedAuto()
                 .checkElementsOfAddedAuto("BMW X5 (E53) (05.2000 - 02.2007)",
-                        new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "maker_car_list11"))
+                        new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "maker_car_list11"))
                 .checkPopUpWithAddedAuto()
                 .deleteOfAddedAuto();
         refresh();

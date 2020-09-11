@@ -28,12 +28,12 @@ public class QC_124_FiltersSorting_TestSideFilterCancelling {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2");
     }
 
     @DataProvider(name = "routesLKW", parallel = true)
     Object[] dataProviderLKW() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_search5");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_search5");
     }
 
     @Test(dataProvider = "routes")
@@ -58,7 +58,7 @@ public class QC_124_FiltersSorting_TestSideFilterCancelling {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks side filter cancelling on LKW routes")
     public void testSideFilterCancellingLKWcar() throws SQLException {
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list6"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list6"));
         String characteristic = listingPage.getTextFromElement(listingPage.verschleisswarnkontaktFirstButtonInSidebar());
         listingPage.clickFilterButton(listingPage.verschleisswarnkontaktFirstButtonInSidebar())
                     .waitUntilPreloaderDisappear()
@@ -75,7 +75,7 @@ public class QC_124_FiltersSorting_TestSideFilterCancelling {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks side filter cancelling on LKW routes")
     public void testSideFilterCancellingLKWmodel() throws SQLException {
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list7"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list7"));
         String characteristic = listingPage.getTextFromElement(listingPage.verschleisswarnkontaktFirstButtonInSidebar());
         listingPage.clickFilterButton(listingPage.verschleisswarnkontaktFirstButtonInSidebar())
                     .waitUntilPreloaderDisappear()
@@ -92,7 +92,7 @@ public class QC_124_FiltersSorting_TestSideFilterCancelling {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks side filter cancelling on LKW routes")
     public void testSideFilterCancellingLKWsearch() throws SQLException {
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_search"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_search"));
         String characteristic = listingPage.getTextFromElement(listingPage.durchmesserSideFilterButtonFirstValue());
         listingPage.clickFilterButton(listingPage.durchmesserSideFilterButtonFirstValue())
                     .waitUntilPreloaderDisappear()

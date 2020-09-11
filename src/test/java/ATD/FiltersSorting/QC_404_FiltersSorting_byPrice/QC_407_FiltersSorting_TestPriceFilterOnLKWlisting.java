@@ -22,7 +22,7 @@ import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class QC_407_FiltersSorting_TestPriceFilterOnLKWlisting {
     private Listing_page_Logic listingPage = new Listing_page_Logic();
-    private DataBase dataBase = new DataBase();
+    private DataBase dataBase = new DataBase("ATD");
 
     @BeforeClass
     void setUp() {

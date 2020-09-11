@@ -28,7 +28,7 @@ public class QC_1878_NumberOfDaysInSO_Description {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopsWithSubroute("prod", "EN,AT,ES,IT,NL,DK,FI,SE,PL,HU,CZ,BG,GR,RO,SK,BE,LD", "main", "product32");
+        return new SetUp("ATD").setUpShopsWithSubroute("prod", "EN,AT,ES,IT,NL,DK,FI,SE,PL,HU,CZ,BG,GR,RO,SK,BE,LD", "main", "product32");
     }
 
     @Test(dataProvider = "route")

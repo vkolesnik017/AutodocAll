@@ -30,7 +30,7 @@ public class QC_1877_OrderWithSO_Disabled {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopsWithSubroute("prod", "AT", "main", "product32");
+        return new SetUp("ATD").setUpShopsWithSubroute("prod", "AT", "main", "product32");
     }
 
     @Test(dataProvider = "route")

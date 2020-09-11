@@ -38,7 +38,7 @@ public class QC_1484_SplitBilling_FirmAndPhysicalPerson_DifferentCountries_Negat
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "EN", "main", "product2");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "EN", "main", "product2");
     }
 
     @Test(dataProvider = "route")

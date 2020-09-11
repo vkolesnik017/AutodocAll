@@ -30,7 +30,7 @@ public class QC_1698_CheckOfBlockingForSplitBillingAndShipping {
 
     @DataProvider(name = "route", parallel = false)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopsWithSubroute("prod", "DE", "main", "product");
+        return new SetUp("DIR").setUpShopsWithSubroute("prod", "DE", "main", "product");
     }
 
     @Test(dataProvider = "route")

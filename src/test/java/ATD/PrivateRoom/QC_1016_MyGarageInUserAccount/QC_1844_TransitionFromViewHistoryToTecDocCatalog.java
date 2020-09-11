@@ -28,7 +28,7 @@ public class QC_1844_TransitionFromViewHistoryToTecDocCatalog {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "main");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "main");
     }
 
     @Test(dataProvider = "routes")

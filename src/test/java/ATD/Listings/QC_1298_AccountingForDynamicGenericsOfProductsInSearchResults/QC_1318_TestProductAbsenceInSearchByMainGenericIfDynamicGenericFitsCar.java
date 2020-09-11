@@ -29,7 +29,7 @@ public class QC_1318_TestProductAbsenceInSearchByMainGenericIfDynamicGenericFits
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_maker_car_list7");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_maker_car_list7");
     }
 
     @Test(dataProvider = "routes")

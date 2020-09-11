@@ -26,7 +26,7 @@ public class QC_1742_ReopeningPopupWithCarCharacteristics {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "EN", "main", "category_car_list22");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "EN", "main", "category_car_list22");
     }
 
     @Test(dataProvider = "routes")

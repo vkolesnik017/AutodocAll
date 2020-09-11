@@ -25,7 +25,7 @@ public class QC_902_BlockTopCategoriesOnMainPage {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main","index_accessories");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main","index_accessories");
     }
 
     @Test(dataProvider = "route")

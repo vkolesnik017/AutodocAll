@@ -27,7 +27,7 @@ public class QC_426_PresenceElementsOnOenListing {
 
   @DataProvider(name = "routeOen", parallel = true)
   Object[] dataProvider2() throws SQLException {
-    return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_oen");
+    return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_oen");
   }
 
   @Test(dataProvider = "routeOen")

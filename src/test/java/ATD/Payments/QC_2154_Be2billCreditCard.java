@@ -32,7 +32,7 @@ public class QC_2154_Be2billCreditCard {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopsWithSubroute("prod", "ES,FI,FR,IT,NL,PT,SE,BE,AT,HU", "main", "product32");
+        return new SetUp("ATD").setUpShopsWithSubroute("prod", "ES,FI,FR,IT,NL,PT,SE,BE,AT,HU", "main", "product32");
     }
 
     @Test(dataProvider = "route")
@@ -42,7 +42,7 @@ public class QC_2154_Be2billCreditCard {
     public void testBe2billCreditCard(String route) throws Exception {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
-        String userData = new DataBase().getUserIdForPaymentsMethod("payments_userid_atd", shop, "CreditCard_be2bill");
+        String userData = new DataBase("ATD").getUserIdForPaymentsMethod("payments_userid_atd", shop, "CreditCard_be2bill");
         String userID = parseUserIdFromBD(userData);
         String mail = parseUserMailFromBD(userData);
         float totalPriceAllData = new Product_page_Logic().addProductToCart()

@@ -30,7 +30,7 @@ public class QC_2289_AvailabilityAndWorkBreadCrumbsOnAccessoriesListing {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "listing_accessories");
+        return new SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "listing_accessories");
     }
 
     @Test(dataProvider = "route")

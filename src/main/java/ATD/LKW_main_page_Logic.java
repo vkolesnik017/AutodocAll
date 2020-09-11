@@ -520,7 +520,7 @@ public class LKW_main_page_Logic extends LKW_main_page {
 
     @Step("Checking countries subscription from footer country list  .LKW_main_page")
     public LKW_main_page_Logic checkingCountriesSubscription() throws SQLException {
-        DataBase db = new DataBase();
+        DataBase db = new DataBase("ATD");
         String currentCountry;
         List<String> language = Arrays.asList("CH", "AT", "LD", "BG", "BE", "CZ", "DK", "EE", "ES", "FI", "FR", "EN", "GR", "HU", "IT", "LT", "LV", "NL", "NO", "PL", "PT", "RO", "SE", "SI", "SK");
         for (int i = 0; i < languagesOfSubscribe().size(); i++) {
@@ -567,7 +567,7 @@ public class LKW_main_page_Logic extends LKW_main_page {
 
     @Step("check Navigation categories in header .LKW_main_page")
     public LKW_main_page_Logic checkNavigationCategoriesInHeader() throws SQLException {
-        DataBase db = new DataBase();
+        DataBase db = new DataBase("ATD");
         String shop = getCurrentShopFromJSVarInHTML();
         clickPkwCategory();
         checkingContainsUrl(db.getRouteByRouteName(shop, "main"));
@@ -603,7 +603,7 @@ public class LKW_main_page_Logic extends LKW_main_page {
         menuCatalogInHeader().click();
         dropMainMenuTrucksCatalogInHeader().shouldBe(visible);
         listOfParentsDropMainTruckCatalog().get(0).shouldHave(exactText("Öle & Flüssigkeiten"));
-        Assert.assertTrue(listOfParentsDropMainTruckCatalog().get(0).getAttribute("href").contains(new DataBase().getRouteByRouteName("DE", subRoute)));
+        Assert.assertTrue(listOfParentsDropMainTruckCatalog().get(0).getAttribute("href").contains(new DataBase("ATD").getRouteByRouteName("DE", subRoute)));
         return this;
     }
 
@@ -630,7 +630,7 @@ public class LKW_main_page_Logic extends LKW_main_page {
 
     @Step("check transition by click on Oil parent elements .LKW_main_page")
     public LKW_main_page_Logic checkTransitionByClickOnOilParentElements() throws SQLException {
-        DataBase db = new DataBase();
+        DataBase db = new DataBase("ATD");
         clickOnOilTitleParentCategory();
         checkingContainsUrl(db.getRouteByRouteName("DE", "lkw_parent_category4"));
         back();

@@ -28,7 +28,7 @@ public class QC_736_ErrorTooltipWhenUsingSelectorWithEmptyFields {
 
   @DataProvider(name = "routes", parallel = true)
   Object[] dataProvider() throws SQLException {
-    return new SetUp().setUpShopWithSubroutes("prod", "DE", "main","main,product");
+    return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main","main,product");
   }
 
   @Test(dataProvider = "routes")

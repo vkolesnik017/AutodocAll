@@ -28,7 +28,7 @@ public class QC_1940_BlockingThePackstationWordInTheStrasseField {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopsWithSubroute("prod", "AT,BG,BE,CH,CZ,DK,EN,EE,ES,FI,FR,GR,HU,IT,LD,LT,LV,NL,NO,PL,PT,RO,SE,SI,SK", "main", "product2");
+        return new SetUp("ATD").setUpShopsWithSubroute("prod", "AT,BG,BE,CH,CZ,DK,EN,EE,ES,FI,FR,GR,HU,IT,LD,LT,LV,NL,NO,PL,PT,RO,SE,SI,SK", "main", "product2");
     }
 
     @Test(dataProvider = "route")

@@ -28,12 +28,12 @@ public class QC_126_FiltersSorting_TestTwoFilterAttributesInBlock {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list2");
     }
 
     @DataProvider(name = "routesLKW", parallel = true)
     Object[] dataProviderLKW() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list6,lkw_category_car_list7");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list6,lkw_category_car_list7");
     }
 
     @Test(dataProvider = "routes")
@@ -71,7 +71,7 @@ public class QC_126_FiltersSorting_TestTwoFilterAttributesInBlock {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks two filter attributes in block on route search with generic")
     public void testTwoFilterAttributesInBlockRouteWithGeneric() throws Exception {
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "search5"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "search5"));
         listingPage.clickFilterButton(listingPage.langeFilterCheckbox3())
                     .waitUntilPreloaderDisappearAndSleep(5000);
         String characteristic = listingPage.getTextFromElement(listingPage.activeSideFilter2());
@@ -101,7 +101,7 @@ public class QC_126_FiltersSorting_TestTwoFilterAttributesInBlock {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks two filter attributes in block on LKW search")
     public void testTwoFilterAttributesLKWsearch() throws SQLException {
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_search"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_search"));
         listingPage.clickFilterButton(listingPage.langeFilterCheckbox3())
                 .waitUntilPreloaderDisappear();
         String characteristic = listingPage.getTextFromElement(listingPage.durchmesserSideFilterButtonSecondValue());

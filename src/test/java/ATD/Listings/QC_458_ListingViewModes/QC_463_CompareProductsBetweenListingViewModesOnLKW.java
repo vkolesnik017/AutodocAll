@@ -27,7 +27,7 @@ public class  QC_463_CompareProductsBetweenListingViewModesOnLKW {
 
   @DataProvider(name = "route")
   Object[] dataProvider() throws SQLException {
-    return new SetUp().setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list6");
+    return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list6");
   }
 
   @Test(dataProvider = "route")

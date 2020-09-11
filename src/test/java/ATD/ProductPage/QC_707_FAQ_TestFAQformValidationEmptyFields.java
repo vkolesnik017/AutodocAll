@@ -28,7 +28,7 @@ public class QC_707_FAQ_TestFAQformValidationEmptyFields {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks faq form validation with empty fields")
     public void testInputValidationFAQ() throws SQLException {
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "product14"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "product14"));
         new Product_page_Logic().faqValidationEmptyFields()
                                 .faqValidationWithName()
                                 .faqValidationWithMail()

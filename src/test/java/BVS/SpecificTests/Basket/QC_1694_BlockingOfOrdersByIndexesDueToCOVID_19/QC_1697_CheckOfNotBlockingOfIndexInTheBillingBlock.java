@@ -29,7 +29,7 @@ public class QC_1697_CheckOfNotBlockingOfIndexInTheBillingBlock {
 
     @DataProvider(name = "route", parallel = false)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopsWithSubroute("prod", "DE", "main", "product");
+        return new SetUp("BVS").setUpShopsWithSubroute("prod", "DE", "main", "product");
     }
 
     @Test(dataProvider = "route")

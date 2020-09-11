@@ -27,7 +27,7 @@ public class QC_808_TestEmpfohlenerProductsMatchCar {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product24");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product24");
     }
 
     @Test(dataProvider = "routes")
@@ -35,7 +35,7 @@ public class QC_808_TestEmpfohlenerProductsMatchCar {
     @Owner(value = "Romaniuta")
     @Description(value = "Test Checks Empfohlener Products Match Car")
     public void testEmpfohlenerProductsMatchCar(String route) throws SQLException {
-        open(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "maker_car_list3"));
+        open(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "maker_car_list3"));
         open(route);
         new Product_page_Logic().checkAnalogProductMatchCar(route);
     }

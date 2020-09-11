@@ -127,7 +127,7 @@ public class Profile_orders_page_Logic extends Profile_orders_page {
     @Step("Checks the translation of Bonus Labels. Profile_orders_page")
     public Profile_orders_page_Logic checkTranslationBonusLabels(String shop) throws SQLException {
         String actualTranslation = bonusLabel().getText();
-        String expectedTranslation = new DataBase().getTranslate("bonus_translate", shop, "bonus");
+        String expectedTranslation = new DataBase("ATD").getTranslate("bonus_translate", shop, "bonus");
         Assert.assertEquals(actualTranslation, expectedTranslation);
         return this;
     }
@@ -136,10 +136,10 @@ public class Profile_orders_page_Logic extends Profile_orders_page {
     public Profile_orders_page_Logic checkTranslationBonusTooltip(String shop) throws SQLException {
         bonusLabel().hover();
         String actualTranslationTitle = titleBonusTooltip().getText();
-        String expectedTranslationTitle = new DataBase().getTranslate("bonus_translate", shop, "bonus_popup_title");
+        String expectedTranslationTitle = new DataBase("ATD").getTranslate("bonus_translate", shop, "bonus_popup_title");
         Assert.assertEquals(actualTranslationTitle, expectedTranslationTitle);
         String actualTranslationText = textBonusTooltip().getText();
-        String expectedTranslationText = new DataBase().getTranslate("bonus_translate", shop, "bonus_popup_text");
+        String expectedTranslationText = new DataBase("ATD").getTranslate("bonus_translate", shop, "bonus_popup_text");
         Assert.assertEquals(actualTranslationText, expectedTranslationText);
         return this;
     }

@@ -38,7 +38,7 @@ public class QC_647_DisplayAllCategoriesInCatalogDropdownMenu {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "categories");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "categories");
     }
 
     @Test(dataProvider = "routes")

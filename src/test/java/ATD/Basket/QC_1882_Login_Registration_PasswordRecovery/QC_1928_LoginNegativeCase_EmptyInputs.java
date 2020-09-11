@@ -30,7 +30,7 @@ public class QC_1928_LoginNegativeCase_EmptyInputs {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product32");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product32");
     }
 
     @Test(dataProvider = "route")

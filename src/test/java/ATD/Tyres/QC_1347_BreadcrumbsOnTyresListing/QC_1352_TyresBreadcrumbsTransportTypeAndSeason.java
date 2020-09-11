@@ -26,7 +26,7 @@ public class QC_1352_TyresBreadcrumbsTransportTypeAndSeason {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "tyres_season11");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_season11");
     }
 
     @Test(dataProvider = "routes")

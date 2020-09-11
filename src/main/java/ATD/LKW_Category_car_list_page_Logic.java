@@ -265,7 +265,7 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         }
         brandsOfBrandBlock("cb-brand-4868").click();
         appearsOfLoader();
-        Assert.assertEquals(getExpectedUrl(url()), getExpectedUrl(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", subRoute)));
+        Assert.assertEquals(getExpectedUrl(url()), getExpectedUrl(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", subRoute)));
         for (int i = 0; i < titleOfProductInTecDocListingBlock().size(); i++) {
             titleOfProductInTecDocListingBlock().get(i).shouldHave(text("DONALDSON"));
         }
@@ -530,7 +530,7 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         }
         brandsLinkInSideBar(idOfBrand).shouldBe(visible).click();
         appearsOfLoader();
-        Assert.assertEquals(getFilterNumber(url()), getFilterNumber(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", subRoute)));
+        Assert.assertEquals(getFilterNumber(url()), getFilterNumber(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", subRoute)));
         return this;
     }
 
@@ -568,14 +568,14 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
     @Step("select generic filter  .LKW_Category_car_list_page")
     public LKW_Category_car_list_page_Logic selectGenericFilter(String subRoute, String idOfGeneric) throws SQLException {
         selectGenericFromBlock(subRoute, idOfGeneric);
-        Assert.assertEquals(getFilterNumber(getFilterNumber(url())), getFilterNumber(getFilterNumber(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", subRoute))));
+        Assert.assertEquals(getFilterNumber(getFilterNumber(url())), getFilterNumber(getFilterNumber(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", subRoute))));
         return this;
     }
 
     @Step("select generic filter  .LKW_Category_car_list_page")
     public LKW_Category_car_list_page_Logic selectGenericFilterInSideBar(String subRoute, String idOfGeneric) throws SQLException {
         selectGenericFromBlock(subRoute, idOfGeneric);
-        Assert.assertEquals(getFilterNumber(url()), getFilterNumber(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", subRoute)));
+        Assert.assertEquals(getFilterNumber(url()), getFilterNumber(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", subRoute)));
         return this;
     }
 
@@ -613,7 +613,7 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         installationSideBlock().shouldBe(visible);
         sidesOfInstallation().get(0).click();
         appearsOfLoader();
-        Assert.assertEquals(url(), new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", subRoute));
+        Assert.assertEquals(url(), new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", subRoute));
         return this;
     }
 

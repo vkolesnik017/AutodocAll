@@ -28,7 +28,7 @@ public class QC_951_CompatibilityList_TestIncompatibilityMessage {
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks incompatibility message")
     public void testIncompatibilityMessage() throws SQLException {
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "maker_car_list7"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "maker_car_list7"));
         new Product_page_Logic().checkIncompatibilityMessage();
     }
 

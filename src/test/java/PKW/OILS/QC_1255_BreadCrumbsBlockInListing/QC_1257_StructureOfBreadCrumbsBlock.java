@@ -25,7 +25,7 @@ public class QC_1257_StructureOfBreadCrumbsBlock {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_viscosity,motoroil_specification,motoroil_release,motoroil_brand,motoroil_maker,motoroil_chemical_type");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil_viscosity,motoroil_specification,motoroil_release,motoroil_brand,motoroil_maker,motoroil_chemical_type");
     }
 
 
@@ -43,7 +43,7 @@ public class QC_1257_StructureOfBreadCrumbsBlock {
 
     @DataProvider(name = "routesBrand", parallel = true)
     Object[] dataProviderBrand() throws SQLException {
-        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "motoroil_viscosity_brand,motoroil_maker_group");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil_viscosity_brand,motoroil_maker_group");
     }
 
 
@@ -61,7 +61,7 @@ public class QC_1257_StructureOfBreadCrumbsBlock {
 
     @DataProvider(name = "routesCarPartMotoroil", parallel = true)
     Object[] dataProviderCarPartMotoroil() throws SQLException {
-        return new Common.SetUp().setUpShopWithSubroutes("prod", "DE", "main", "car_parts_motoroil");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "car_parts_motoroil");
     }
 
 

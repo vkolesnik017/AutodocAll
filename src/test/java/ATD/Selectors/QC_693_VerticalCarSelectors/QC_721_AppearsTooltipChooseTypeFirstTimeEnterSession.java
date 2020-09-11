@@ -26,7 +26,7 @@ public class QC_721_AppearsTooltipChooseTypeFirstTimeEnterSession {
 
   @DataProvider(name = "routes", parallel = true)
   Object[] dataProvider() throws SQLException {
-    return new SetUp().setUpShopWithSubroutes("prod", "DE", "main","category_model,model_maker_list");
+    return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main","category_model,model_maker_list");
   }
 
   @Test(dataProvider = "routes")

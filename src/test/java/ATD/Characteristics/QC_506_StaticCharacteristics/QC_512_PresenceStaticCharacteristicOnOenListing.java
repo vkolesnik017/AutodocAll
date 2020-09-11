@@ -31,7 +31,7 @@ public class QC_512_PresenceStaticCharacteristicOnOenListing {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "category_oen4");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_oen4");
     }
 
     @Test
@@ -52,7 +52,7 @@ public class QC_512_PresenceStaticCharacteristicOnOenListing {
         expectedCharacteristics.add("Höhe \\[mm]:\\n33,4");
 
 
-        openPage(new DataBase().getFullRouteByRouteAndSubroute("prod", "DE", "main", "category_oen4"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "category_oen4"));
         String articleProduct = "Artikelnummer: 82B0691";
         ElementsCollection actualCharacteristics = listingPage.getCharacteristicsDesiredProduct(articleProduct);
         new CommonMethods().compareCharacteristics(actualCharacteristics, expectedCharacteristics);

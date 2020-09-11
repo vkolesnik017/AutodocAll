@@ -28,7 +28,7 @@ public class QC_1314_SearchByOEMconsideringDynamicGenerics {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "maker_car_list9");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "maker_car_list9");
     }
 
     @Test(dataProvider = "routes")

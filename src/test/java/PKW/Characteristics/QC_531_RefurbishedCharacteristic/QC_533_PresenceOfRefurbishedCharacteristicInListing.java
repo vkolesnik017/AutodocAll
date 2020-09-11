@@ -27,7 +27,7 @@ public class QC_533_PresenceOfRefurbishedCharacteristicInListing {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "search");
+        return new SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "search");
     }
 
     @Test(dataProvider = "routes")
@@ -42,7 +42,7 @@ public class QC_533_PresenceOfRefurbishedCharacteristicInListing {
 
     @DataProvider(name = "routesCarParts", parallel = true)
     Object[] dataProviderCarParts() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "car_parts3,oe_number2");
+        return new SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "car_parts3,oe_number2");
     }
 
     @Test(dataProvider = "routesCarParts")
@@ -57,7 +57,7 @@ public class QC_533_PresenceOfRefurbishedCharacteristicInListing {
 
     @DataProvider(name = "routesProduct", parallel = true)
     Object[] dataProviderProduct() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product6");
+        return new SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "product6");
     }
 
     @Test(dataProvider = "routesProduct")
@@ -72,7 +72,7 @@ public class QC_533_PresenceOfRefurbishedCharacteristicInListing {
 
     @DataProvider(name = "routesWithArticle", parallel = true)
     Object[] dataProviderWithArticle() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "search2");
+        return new SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "search2");
     }
 
     @Test(dataProvider = "routesWithArticle")
@@ -87,7 +87,7 @@ public class QC_533_PresenceOfRefurbishedCharacteristicInListing {
 
     @DataProvider(name = "routesWithArticleCart", parallel = true)
     Object[] dataProviderWithArticleCart() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "car_parts4,oe_number3");
+        return new SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "car_parts4,oe_number3");
     }
 
     @Test(dataProvider = "routesWithArticleCart")
@@ -102,7 +102,7 @@ public class QC_533_PresenceOfRefurbishedCharacteristicInListing {
 
     @DataProvider(name = "routesProductArtNum", parallel = true)
     Object[] dataProviderProductArtNum() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "product7");
+        return new SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "product7");
     }
 
     @Test(dataProvider = "routesProductArtNum")

@@ -28,7 +28,7 @@ public class QC_1300_TransitionToClubPageFromAdvantagesBlock {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("prod", "DE", "main", "tyres_type_list,tyres_type_list2,tyres_type_list3,tyres_type_list4");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_type_list,tyres_type_list2,tyres_type_list3,tyres_type_list4");
     }
 
     @Test(dataProvider = "routes")
@@ -39,7 +39,7 @@ public class QC_1300_TransitionToClubPageFromAdvantagesBlock {
         openPage(route);
         new Tyres_page_Logic().clickVideoLink();
         switchTo().window(1);
-        waitingWhileLinkBecomeExpected(new DataBase().getFullRouteByRouteAndSubroute("subprod", "DE", "club_main", "club_manuals_home"));
+        waitingWhileLinkBecomeExpected(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "club_main", "club_manuals_home"));
     }
 
     @AfterMethod
