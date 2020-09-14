@@ -27,7 +27,7 @@ public class QC_2371_PresencePopUpAfterClickOnRemoveAllProducts {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp().setUpShopWithSubroutes("subprod", "DE", "main", "search30");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "main", "search30");
 
     }
 
