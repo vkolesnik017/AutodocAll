@@ -271,7 +271,7 @@ public class Search_page_Logic extends Search_page {
     public Search_page_Logic checkingApplicabilityOfProductForSelectedGeneric(String generic) {
         selectProductInTecDocListing(generic);
         while (forwardLinkOfPaginator().isDisplayed()) {
-            forwardLinkOfPaginator().click();
+            forwardLinkOfPaginator().scrollIntoView("{block: \"end\"}").click();
             selectProductInTecDocListing(generic);
         }
         return this;
@@ -279,8 +279,8 @@ public class Search_page_Logic extends Search_page {
 
     @Step("click on product in TecDoc Listing .Search_page")
     public Search_page_Logic selectProductInTecDocListing(String generic) {
-        for (int i = 0; i < titleOfProductsInListing().size(); i++) {
-            titleOfProductsInListing().get(i).shouldHave(text(generic));
+        for (int i = 0; i < titleOfMainProducts().size(); i++) {
+            titleOfMainProducts().get(i).shouldHave(text(generic));
             clickOnProductInTecDocListing(i).checkCompatibilityProductAndGeneric();
             back();
         }
@@ -289,7 +289,7 @@ public class Search_page_Logic extends Search_page {
 
     @Step("click on Product in TecDoc listing .Search_page")
     public Product_page_Logic clickOnProductInTecDocListing(int point) {
-        titleOfProductsInListing().get(point).scrollIntoView("{block: \"center\"}").click();
+        titleOfMainProducts().get(point).scrollIntoView("{block: \"center\"}").click();
         return page(Product_page_Logic.class);
     }
 
