@@ -95,12 +95,13 @@ public class QC_1393_SplitBilling_FirmAndPhysicalPerson_SameCountries_PositiveCa
                 .checkIdCompanyInBlockLogsCompanyNumbers("BE0402065988")
                 .checkResponseInBlockLogsCompanyNumbers("success(200)")
                 .checkBillingOrShippingInBlockLogsCompanyNumbers("billing");
-        totalPriceInEmailGB = new Mailinator().openEmail("qc_1393_autotestGB@mailinator.com")
+        //TODO отключен по техническим обстоятельствам
+        /*totalPriceInEmailGB = new Mailinator().openEmail("qc_1393_autotestGB@mailinator.com")
                 .openLetter(1)
                 .checkAbsenceVatPercentageInEmail()
                 .checkFirstFirmNameInEmail("SPRL Brasserie Cantillon")
                 .getTotalPriceInEmail();
-        Assert.assertEquals(totalPriceGB, totalPriceInEmailGB);
+        Assert.assertEquals(totalPriceGB, totalPriceInEmailGB);*/
     }
 
 
@@ -168,12 +169,13 @@ public class QC_1393_SplitBilling_FirmAndPhysicalPerson_SameCountries_PositiveCa
                 .checkIdCompanyInBlockLogsCompanyNumbers("BE0402065988")
                 .checkResponseInBlockLogsCompanyNumbers("success(200)")
                 .checkBillingOrShippingInBlockLogsCompanyNumbers("billing");
-        totalPriceInEmailDE = new Mailinator().openEmail("qc_1393_autotestDE@mailinator.com")
+        //TODO отключен по техническим обстоятельствам
+        /*totalPriceInEmailDE = new Mailinator().openEmail("qc_1393_autotestDE@mailinator.com")
                 .openLetter(1)
                 .checkAbsenceVatPercentageInEmail()
                 .checkFirstFirmNameInEmail("SPRL Brasserie Cantillon")
                 .getTotalPriceInEmail();
-        Assert.assertEquals(totalPriceDE, totalPriceInEmailDE);
+        Assert.assertEquals(totalPriceDE, totalPriceInEmailDE);*/
     }
 
     @AfterMethod

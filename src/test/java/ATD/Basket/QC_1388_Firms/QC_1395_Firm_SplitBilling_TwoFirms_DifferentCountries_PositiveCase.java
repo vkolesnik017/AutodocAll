@@ -96,7 +96,8 @@ public class QC_1395_Firm_SplitBilling_TwoFirms_DifferentCountries_PositiveCase 
                 .checkIdCompanyInBlockLogsCompanyNumbers("BE0402065988")
                 .checkResponseInBlockLogsCompanyNumbers("success(200)")
                 .checkBillingOrShippingInBlockLogsCompanyNumbers("shipping");
-        totalPriceInEmailGB = mailinator.openEmail("qc_1395_autotestGB@mailinator.com")
+        //TODO отключен по техническим обстоятельствам
+        /*totalPriceInEmailGB = mailinator.openEmail("qc_1395_autotestGB@mailinator.com")
                 .openLetter(1)
                 .checkAbsenceVatPercentageInEmail()
                 .checkFirstFirmNameInEmail("FB-MONT A. Fułek Spółka Komandytowa")
@@ -104,7 +105,7 @@ public class QC_1395_Firm_SplitBilling_TwoFirms_DifferentCountries_PositiveCase 
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPriceGB, totalPriceInEmailGB);
         unitPriceGB = mailinator.getUnitPriceInEmail();
-        Assert.assertEquals(regularProductPricePerAllDataPageGB, unitPriceGB);
+        Assert.assertEquals(regularProductPricePerAllDataPageGB, unitPriceGB);*/
     }
 
 
@@ -171,7 +172,8 @@ public class QC_1395_Firm_SplitBilling_TwoFirms_DifferentCountries_PositiveCase 
                 .checkIdCompanyInBlockLogsCompanyNumbers("BE0402065988")
                 .checkResponseInBlockLogsCompanyNumbers("success(200)")
                 .checkBillingOrShippingInBlockLogsCompanyNumbers("shipping");
-        totalPriceInEmailDE = mailinator.openEmail("qc_1395_autotestDE@mailinator.com")
+        //TODO отключен по техническим обстоятельствам
+        /*totalPriceInEmailDE = mailinator.openEmail("qc_1395_autotestDE@mailinator.com")
                 .openLetter(1)
                 .checkAbsenceVatPercentageInEmail()
                 .checkFirstFirmNameInEmail("FB-MONT A. Fułek Spółka Komandytowa")
@@ -179,7 +181,7 @@ public class QC_1395_Firm_SplitBilling_TwoFirms_DifferentCountries_PositiveCase 
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPriceDE, totalPriceInEmailDE);
         unitPriceDE = mailinator.getUnitPriceInEmail();
-        Assert.assertEquals(regularProductPricePerAllDataPageDE, unitPriceDE);
+        Assert.assertEquals(regularProductPricePerAllDataPageDE, unitPriceDE);*/
     }
 
     @AfterMethod

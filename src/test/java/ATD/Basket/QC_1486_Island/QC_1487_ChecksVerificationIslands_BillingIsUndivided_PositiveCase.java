@@ -66,11 +66,12 @@ public class QC_1487_ChecksVerificationIslands_BillingIsUndivided_PositiveCase {
                 .checkDeliveryPriceOrderAWS("165")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
-        totalPriceInEmail = new Mailinator().openEmail("qc_1487_autotestDE@mailinator.com")
+        //TODO отключен по техническим обстоятельствам
+        /*totalPriceInEmail = new Mailinator().openEmail("qc_1487_autotestDE@mailinator.com")
                 .openLetter(1)
                 .checkRegularDeliveryPriceInEmail("165,00")
                 .getTotalPriceInEmail();
-        Assert.assertEquals(totalPrice, totalPriceInEmail);
+        Assert.assertEquals(totalPrice, totalPriceInEmail);*/
     }
 
     @AfterMethod
