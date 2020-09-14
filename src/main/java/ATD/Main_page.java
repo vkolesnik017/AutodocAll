@@ -331,7 +331,7 @@ public class Main_page {
     //ÜBER AUTODOC
 
     SelenideElement hilfeCenterLink() {
-        return $x("//div[@class='footer__links-block']//span[@target='_blank']");
+        return $x("(//div[@class='footer__links-block']//span[@target='_blank'])[2]");
     }
 
     SelenideElement aboutUsLink(){

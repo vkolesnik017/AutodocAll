@@ -83,12 +83,13 @@
         </classes>
     </test>
 
+   <!-- TODO отключен по техническим обстоятельствам
     <test name="QC_2352_Multibanco">
         <classes>
             <class name="ATD.Payments.QC_2352_Multibanco">
             </class>
         </classes>
-    </test>
+    </test>-->
 
 
 </suite>
