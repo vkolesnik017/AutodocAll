@@ -63,11 +63,14 @@
         </classes>
     </test>
 
-    <test name="QC_249_StaticPage_Versand" enabled="true">
-        <classes>
-            <class name="PKW.StaticPage.QC_249_StaticPage_Versand">
-            </class>
-        </classes>
-    </test>
+
+<!--    temporarily disabled-->
+
+<!--    <test name="QC_249_StaticPage_Versand" enabled="true">-->
+<!--        <classes>-->
+<!--            <class name="PKW.StaticPage.QC_249_StaticPage_Versand">-->
+<!--            </class>-->
+<!--        </classes>-->
+<!--    </test>-->
 
 </suite>

@@ -6,4 +6,24 @@
         <listener class-name="Common.ProjectListener"/>
     </listeners>
 
+    <test name="QC_1838_FAQ_Form" enabled="true">
+        <classes>
+            <class name="PKW.Product_Page.QC_1838_FAQ_Form.QC_1834_ValidationOfTheFieldsFaq"/>
+        </classes>
+    </test>
+
+    <test name="QC_1870_OEN" enabled="true">
+        <classes>
+            <class name="PKW.Product_Page.QC_1870_OEN.QC_1868_DisplayingOENNumberWithTheSelectedCar"/>
+            <class name="PKW.Product_Page.QC_1870_OEN.QC_1869_TransitionToTheOENListingFromTheOENNummern"/>
+        </classes>
+    </test>
+
+<!--   To Do-->
+<!--    <test name="PKW.Product_Page.QC_1894_ProductPage_Elements" enabled="true">-->
+<!--        <classes>-->
+<!--            <class name="PKW.Product_Page.QC_1894_ProductPage_Elements.QC_1888_PresenceElementsOfTheProductPage"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+
 </suite>
