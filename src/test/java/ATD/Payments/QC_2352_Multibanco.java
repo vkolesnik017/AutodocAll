@@ -70,9 +70,10 @@ public class QC_2352_Multibanco {
                 .checkCurrentStatusInOrder("Testbestellungen")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceAllData, totalPriceOrderAwsAfterReSave);
-        new Mailinator().openEmail(mail)
+        //TODO отключен по техническим обстоятельствам
+        /*new Mailinator().openEmail(mail)
                 .checkAndOpenLetterWithOrderNumber(orderNum)
-                .comparesTextOfRequisitesInMailWithExpectedRequisites(requisitesText);
+                .comparesTextOfRequisitesInMailWithExpectedRequisites(requisitesText);*/
     }
 
     @AfterMethod

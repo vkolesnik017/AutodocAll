@@ -92,14 +92,15 @@ public class QC_1394_Firm_NonSplit_BillingAndShipping_PositiveCase {
                 .checkIdCompanyInBlockLogsCompanyNumbers("BE0402065988")
                 .checkResponseInBlockLogsCompanyNumbers("success(200)")
                 .checkBillingOrShippingInBlockLogsCompanyNumbers("shipping");
-        totalPriceInEmailGB = mailinator.openEmail("qc_1394_autotestGB@mailinator.com")
+        //TODO отключен по техническим обстоятельствам
+       /* totalPriceInEmailGB = mailinator.openEmail("qc_1394_autotestGB@mailinator.com")
                 .openLetter(1)
                 .checkAbsenceVatPercentageInEmail()
                 .checkFirstFirmNameInEmail("SPRL Brasserie Cantillon")
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPriceGB, totalPriceInEmailGB);
         unitPriceGB = mailinator.getUnitPriceInEmail();
-        Assert.assertEquals(regularProductPricePerAllDataPageGB, unitPriceGB);
+        Assert.assertEquals(regularProductPricePerAllDataPageGB, unitPriceGB);*/
     }
 
 
@@ -163,14 +164,15 @@ public class QC_1394_Firm_NonSplit_BillingAndShipping_PositiveCase {
                 .checkIdCompanyInBlockLogsCompanyNumbers("BE0402065988")
                 .checkResponseInBlockLogsCompanyNumbers("success(200)")
                 .checkBillingOrShippingInBlockLogsCompanyNumbers("shipping");
-        totalPriceInEmailDE = mailinator.openEmail("qc_1394_autotestDE@mailinator.com")
+        //TODO отключен по техническим обстоятельствам
+        /*totalPriceInEmailDE = mailinator.openEmail("qc_1394_autotestDE@mailinator.com")
                 .openLetter(1)
                 .checkAbsenceVatPercentageInEmail()
                 .checkFirstFirmNameInEmail("SPRL Brasserie Cantillon")
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPriceDE, totalPriceInEmailDE);
         unitPriceDE = mailinator.getUnitPriceInEmail();
-        Assert.assertEquals(regularProductPricePerAllDataPageDE, unitPriceDE);
+        Assert.assertEquals(regularProductPricePerAllDataPageDE, unitPriceDE);*/
     }
 
     @AfterMethod

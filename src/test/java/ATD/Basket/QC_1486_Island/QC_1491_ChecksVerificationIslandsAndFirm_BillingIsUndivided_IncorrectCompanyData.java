@@ -68,12 +68,13 @@ public class QC_1491_ChecksVerificationIslandsAndFirm_BillingIsUndivided_Incorre
                 .checkVatStatusInOrder("Mit MwSt 20%")
                 .checkDeliveryPriceOrderAWS("10.95");
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
-        totalPriceInEmail = new Mailinator().openEmail("qc_1491_autotestDE@mailinator.com")
+        //TODO отключен по техническим обстоятельствам
+       /* totalPriceInEmail = new Mailinator().openEmail("qc_1491_autotestDE@mailinator.com")
                 .openLetter(1)
                 .checkRegularDeliveryPriceInEmail("10,95")
                 .checkTextContainingVatPercentageInEmail("inkl. 20% MwSt")
                 .getTotalPriceInEmail();
-        Assert.assertEquals(totalPrice, totalPriceInEmail);
+        Assert.assertEquals(totalPrice, totalPriceInEmail);*/
         openPage(route);
         clickOfBuyBtnForAllPages();
         new Search_page_Logic().closePopupOtherCategoryIfYes()

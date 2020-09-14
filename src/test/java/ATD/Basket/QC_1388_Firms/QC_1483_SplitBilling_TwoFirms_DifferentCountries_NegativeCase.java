@@ -88,13 +88,14 @@ public class QC_1483_SplitBilling_TwoFirms_DifferentCountries_NegativeCase {
                 .checkBillingOrShippingInBlockLogsCompanyNumbers("shipping")
                 .checkErrorStatusInNameErrorColumn("yes")
                 .checkErrorStatusInCityErrorColumn("no");
-        totalPriceInEmail = new Mailinator().openEmail("qc_1483_autotestEN@mailinator.com")
+        //TODO отключен по техническим обстоятельствам
+        /*totalPriceInEmail = new Mailinator().openEmail("qc_1483_autotestEN@mailinator.com")
                 .openLetter(1)
                 .checkTextContainingVatPercentageInEmail("incl. 21% VAT")
                 .checkFirstFirmNameInEmail("SPRL Brasserie Cantillon")
                 .checkSecondFirmNameInEmail("yyyy")
                 .getTotalPriceInEmail();
-        Assert.assertEquals(totalPrice, totalPriceInEmail);
+        Assert.assertEquals(totalPrice, totalPriceInEmail);*/
     }
 
 
