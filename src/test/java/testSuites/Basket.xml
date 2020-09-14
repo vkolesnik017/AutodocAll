@@ -19,7 +19,7 @@
         </classes>
     </test>
 
-    <test name="QC_1388_Firms">
+    <!--<test name="QC_1388_Firms"> //TODO отключен по техническим обстоятельствам
         <classes>
             <class name="ATD.Basket.QC_1388_Firms.QC_1389_Firms_DE_PL"/>
             <class name="ATD.Basket.QC_1388_Firms.QC_1390_Firms_DE_PL_SplitBilling_DifferentCountries"/>
@@ -35,7 +35,7 @@
             <class name="ATD.Basket.QC_1388_Firms.QC_1484_SplitBilling_FirmAndPhysicalPerson_DifferentCountries_NegativeCase"/>
             <class name="ATD.Basket.QC_1388_Firms.QC_1485_FirmValidationAfterError"/>
         </classes>
-    </test>
+    </test>-->
 
     <test name="QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods">
         <classes>
@@ -52,7 +52,7 @@
         </classes>
     </test>
 
-    <test name="QC_1486_Island">
+    <!--<test name="QC_1486_Island"> //TODO отключен по техническим обстоятельствам
         <classes>
             <class name="ATD.Basket.QC_1486_Island.QC_1487_ChecksVerificationIslands_BillingIsUndivided_PositiveCase"/>
             <class name="ATD.Basket.QC_1486_Island.QC_1488_ChecksVerificationIslands_BillingIsUndivided_NegativeCase"/>
@@ -64,12 +64,12 @@
             <class name="ATD.Basket.QC_1486_Island.QC_1494_ChecksVerificationIslandsAndFirm_BillingIsUndivided_CorrectCompanyData"/>
             <class name="ATD.Basket.QC_1486_Island.QC_1495_ChecksVerificationIslandsAndFirm_BillingIsDivided_SameCountriesInShipping_IslandWithoutVat"/>
         </classes>
-    </test>
+    </test>-->
 
     <test name="QC_1882_Login_Registration_PasswordRecovery">
         <classes>
             <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery.QC_1883_RegistrationPositiveCase"/>
-            <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery.QC_1884_RegistrationNegativeCase_PasswordRecoveryCheck"/>
+            <!--<class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery.QC_1884_RegistrationNegativeCase_PasswordRecoveryCheck"/>--> <!--TODO отключен по техническим обстоятельствам-->
             <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery.QC_1885_RegistrationNegativeCase_EmptyPasswordField"/>
             <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery.QC_1886_RegistrationNegativeCase_InvalidDomain"/>
             <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery.QC_1887_RegistrationByUserRegisteredOnAnotherSkin"/>
