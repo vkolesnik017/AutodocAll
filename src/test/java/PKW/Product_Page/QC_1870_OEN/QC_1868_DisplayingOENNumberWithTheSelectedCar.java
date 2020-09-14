@@ -1,10 +1,7 @@
-package ATD.Tyres.QC_1367_TyresProductPage;
+package PKW.Product_Page.QC_1870_OEN;
 
-
-import Common.SetUp;
-import ATD.TyresProduct_page_Logic;
+import PKW.Product_page_Logic;
 import io.qameta.allure.Description;
-import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -13,11 +10,11 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
+import static PKW.CommonMethods.openPage;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1374_TestRatingBlockPresenceOnTyresProductPage {
+public class QC_1868_DisplayingOENNumberWithTheSelectedCar {
 
     @BeforeClass
     void setUp() {
@@ -26,16 +23,15 @@ public class QC_1374_TestRatingBlockPresenceOnTyresProductPage {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyre_item");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "car_parts2");
     }
 
     @Test(dataProvider = "routes")
-    @Flaky
-    @Owner(value = "Romaniuta")
-    @Description(value = "Test Checks Rating Block Presence On Tyres Product Page")
-    public void testRatingBlockPresenceOnTyresProductPage(String route) {
+    @Owner(value = "LavrynenkoOlha")
+    @Description(value = "Checking the displaying to the OEN numbers with the selected car in the selector")
+    public void testCheckingTheDisplayingOenNumber(String route) {
         openPage(route);
-        new TyresProduct_page_Logic().checkRatingBlockVisibility();
+        new Product_page_Logic().checkingTheDisplayingTheOENNumbers();
     }
 
     @AfterMethod
@@ -43,3 +39,4 @@ public class QC_1374_TestRatingBlockPresenceOnTyresProductPage {
         closeWebDriver();
     }
 }
+

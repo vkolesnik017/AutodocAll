@@ -1,4 +1,4 @@
-package PKW.Product_Page;
+package PKW.Product_Page.QC_1828_Reviews_Form;
 
 import PKW.Product_page_Logic;
 import io.qameta.allure.Description;
@@ -14,7 +14,7 @@ import static Common.SetUp.setUpBrowser;
 import static PKW.CommonMethods.openPage;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1868_DisplayingOENNumberWithTheSelectedCar {
+public class QC_1824_DisplayingTheReviewMessagesBlock {
 
     @BeforeClass
     void setUp() {
@@ -23,15 +23,15 @@ public class QC_1868_DisplayingOENNumberWithTheSelectedCar {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "car_parts2");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "product4");
     }
 
     @Test(dataProvider = "routes")
     @Owner(value = "LavrynenkoOlha")
-    @Description(value = "Checking the displaying to the OEN numbers with the selected car in the selector")
-    public void testCheckingTheDisplayingOenNumber(String route) {
+    @Description(value = "Displaying the Review messages block")
+    public void testDisplayingTheReviewMessagesBlock(String route) {
         openPage(route);
-        new Product_page_Logic().checkingTheDisplayingTheOENNumbers();
+        new Product_page_Logic().displayingReviewMessagesBlock();
     }
 
     @AfterMethod

@@ -11,4 +11,6 @@ public class FaqHash_page {
 
     SelenideElement tecDocCatalogBlock() {return $x("//div[@class='list_ersats_n list-ersatz-n--catalog']");}
 
+    ElementsCollection  activeSubCategories() {return $$x("//li[@class='ctg active']/div[2]//li/*[self::a or self::span]/span");}
+
 }
