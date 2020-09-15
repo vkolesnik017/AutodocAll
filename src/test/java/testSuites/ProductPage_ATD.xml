@@ -18,7 +18,7 @@
             <!--<class name="ATD.ProductPage.QC_709_FAQ_TestFAQformWithValidData"/>-->
             <!--<class name="ATD.ProductPage.QC_918_OEN_TestOEMlistWithCar"/>-->
             <class name="ATD.ProductPage.QC_744_Reviews_TestReviewsFormValidation"/>
-            <class name="ATD.ProductPage.QC_777_Reviews_TestReviewsFormWithValidData"/>
+            <!--<class name="ATD.ProductPage.QC_777_Reviews_TestReviewsFormWithValidData"/>--> <!--TODO отключен по техническим обстоятельствам-->
         </classes>
     </test>
 

@@ -83,12 +83,13 @@ public class QC_1831_CheckingForExistingDeliveryServices {
         Assert.assertEquals(trackingNumFromAWS, trackingNumFromPR);
         String deliveryPageURL = profile_orders_page_logic.checkNumberDeliveryServiceAdded(1)
                 .transitionToDeliveryPageAndGetURL();
-        String trackingNumFromMail = mailinator.openEmail(mail)
+        //TODO отключен по техническим обстоятельствам
+        /*String trackingNumFromMail = mailinator.openEmail(mail)
                 .checkAndOpenLetterInfoText("Auftrags- / Versandbestätigung, Bestellnummer", orderNumber)
                 .getTrackingNumberFromMail();
         String deliveryPageUrlFromMail = mailinator.transitionToDeliveryPageAndGetUrlFromMail();
         Assert.assertEquals(trackingNumFromAWS, trackingNumFromMail);
-        Assert.assertEquals(deliveryPageURL, deliveryPageUrlFromMail);
+        Assert.assertEquals(deliveryPageURL, deliveryPageUrlFromMail);*/
         order_aws.openOrderInAwsWithoutLogin()
                 .checkCurrentStatusInOrder("Versendet")
                 .reSaveOrder()

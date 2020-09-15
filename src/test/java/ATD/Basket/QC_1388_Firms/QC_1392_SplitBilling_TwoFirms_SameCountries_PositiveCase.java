@@ -89,13 +89,14 @@ public class QC_1392_SplitBilling_TwoFirms_SameCountries_PositiveCase {
                 .checkIdCompanyInBlockLogsCompanyNumbers("BE0402065988")
                 .checkResponseInBlockLogsCompanyNumbers("success(200)")
                 .checkBillingOrShippingInBlockLogsCompanyNumbers("billing");
-        totalPriceInEmailGB = new Mailinator().openEmail("qc_1392_autotestGB@mailinator.com")
+        //TODO отключен по техническим обстоятельствам
+        /*totalPriceInEmailGB = new Mailinator().openEmail("qc_1392_autotestGB@mailinator.com")
                 .openLetter(1)
                 .checkAbsenceVatPercentageInEmail()
                 .checkFirstFirmNameInEmail("SPRL Brasserie Cantillon")
                 .checkSecondFirmNameInEmail("North 51 Ltd")
                 .getTotalPriceInEmail();
-        Assert.assertEquals(totalPriceGB, totalPriceInEmailGB);
+        Assert.assertEquals(totalPriceGB, totalPriceInEmailGB);*/
     }
 
 
@@ -156,13 +157,14 @@ public class QC_1392_SplitBilling_TwoFirms_SameCountries_PositiveCase {
                 .checkIdCompanyInBlockLogsCompanyNumbers("BE0402065988")
                 .checkResponseInBlockLogsCompanyNumbers("success(200)")
                 .checkBillingOrShippingInBlockLogsCompanyNumbers("billing");
-        totalPriceInEmailDE = new Mailinator().openEmail("qc_1392_autotestDE@mailinator.com")
+        //TODO отключен по техническим обстоятельствам
+        /*totalPriceInEmailDE = new Mailinator().openEmail("qc_1392_autotestDE@mailinator.com")
                 .openLetter(1)
                 .checkAbsenceVatPercentageInEmail()
                 .checkFirstFirmNameInEmail("SPRL Brasserie Cantillon")
                 .checkSecondFirmNameInEmail("North 51 Ltd")
                 .getTotalPriceInEmail();
-        Assert.assertEquals(totalPriceDE, totalPriceInEmailDE);
+        Assert.assertEquals(totalPriceDE, totalPriceInEmailDE);*/
     }
 
     @AfterMethod

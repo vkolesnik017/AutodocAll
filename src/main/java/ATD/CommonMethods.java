@@ -511,4 +511,10 @@ public class CommonMethods {
             System.out.println(path + " File deleted");
         } else System.out.println(path + " File not found");
     }
+
+    @Step("get text from not visible element {expected element}")
+    public static String getTextFromUnVisibleElement(SelenideElement element){
+        return (String) (executeJavaScript(
+                "return jQuery(arguments[0]).text();", element));
+    }
 }
