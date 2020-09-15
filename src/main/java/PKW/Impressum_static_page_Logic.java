@@ -21,7 +21,7 @@ public class Impressum_static_page_Logic extends Impressum_static_page {
         checkingContainsUrl(new DataBase("PKW").getFullRouteByRouteName("prod", "DE", "main"));
         back();
         atdSiteLink().click();
-        checkingContainsUrl(new Common.DataBase("PKW").getFullRouteByRouteName("prod", "DE", "main"));
+        checkingContainsUrl(new Common.DataBase("ATD").getFullRouteByRouteName("prod", "DE", "main"));
         back();
         osTextLink().click();
         checkingContainsUrl("odr/main/index.cfm?event=main.home.chooseLanguage");

@@ -1,4 +1,5 @@
-package ATD.ACC.QC_1379_BredCrumbsOnListingAccessories;
+package ATD.ACC.QC_1340_ListingAccessories;
+
 
 import ATD.Listing_accessories_page_Logic;
 import Common.SetUp;
@@ -12,11 +13,15 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
+import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Selenide.back;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1380_BreadCrumbs {
+public class QC_1381_TransitionOnBreadCrumbs {
+
+    private Listing_accessories_page_Logic listing_accessories_page_logic = new Listing_accessories_page_Logic();
 
     @BeforeClass
     void setUp() {
@@ -31,12 +36,17 @@ public class QC_1380_BreadCrumbs {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test checks quantity bread crumbs .")
-    public void testCheckQuantityBreadCrumbs(String route) {
+    @Description(value = "Test checks transition for three breadcrumbs .")
+    public void testCheckTransitionForThreeBreadCrumbs(String route) {
         openPage(route);
-        new Listing_accessories_page_Logic().checkingQuantityBreadCrumbs();
+        listing_accessories_page_logic.checkingPresenceOfTheBreadcrumbs()
+                .checkingPresenceAndNotClickableThirdBreadCrumb()
+                .clickSecondBreadCrumb();
+        checkingContainsUrl("autozubehoer");
+        back();
+        listing_accessories_page_logic.clickFirstBreadCrumb();
+        checkingContainsUrl("autoteile");
     }
-
 
     @AfterMethod
     private void close() {

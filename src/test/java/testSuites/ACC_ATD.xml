@@ -68,8 +68,6 @@
     <test name="QC_929_BlockCategoriesLogicalUnionOnMainAccessories">
         <classes>
             <class name="ATD.ACC.QC_929_BlockCategoriesLogicalUnionOnMainAccessories.QC_932_BlockMainCatalog"/>
-            <class name="ATD.ACC.QC_929_BlockCategoriesLogicalUnionOnMainAccessories.QC_935_HoverLogicalUnion"/>
-            <class name="ATD.ACC.QC_929_BlockCategoriesLogicalUnionOnMainAccessories.QC_937_RedirectToListingFromTheCategoryLogicalUnion"/>
         </classes>
     </test>
 
@@ -95,9 +93,7 @@
 
     <test name="QC_886_TopCategoriesDirectionOnMainAccessories">
         <classes>
-            <class name="ATD.ACC.QC_886_TopCategoriesDirectionOnMainAccessories.QC_902_BlockTopCategoriesOnMainPage"/>
             <class name="ATD.ACC.QC_886_TopCategoriesDirectionOnMainAccessories.QC_920_TabsBlockTopCategories"/>
-            <class name="ATD.ACC.QC_886_TopCategoriesDirectionOnMainAccessories.QC_923_TransitionToListingThroughCategoryTopBlock"/>
         </classes>
     </test>
 
@@ -115,6 +111,7 @@
             <class name="ATD.ACC.QC_1340_ListingAccessories.QC_1382_BlockChangeViewListingAccessories"/>
             <class name="ATD.ACC.QC_1340_ListingAccessories.QC_1405_BlockWithQuantityProductsOnListingAccessories"/>
             <class name="ATD.ACC.QC_1340_ListingAccessories.QC_1406_BlockWithPaginationOnListingAccessories"/>
+            <class name="ATD.ACC.QC_1340_ListingAccessories.QC_1381_TransitionOnBreadCrumbs"/>
         </classes>
     </test>
 
@@ -147,13 +144,6 @@
             <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2040_PaginationBlockOnChemistryListing"/>
             <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2041_WorkBtnPaginationBlockOnChemistryListing"/>
             <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2043_BlockSeoTextOnChemistryListing"/>
-        </classes>
-    </test>
-
-    <test name="QC_1379_BredCrumbsOnListingAccessories">
-        <classes>
-            <class name="ATD.ACC.QC_1379_BredCrumbsOnListingAccessories.QC_1380_BreadCrumbs"/>
-            <class name="ATD.ACC.QC_1379_BredCrumbsOnListingAccessories.QC_1381_TransitionOnBreadCrumbs"/>
         </classes>
     </test>
 

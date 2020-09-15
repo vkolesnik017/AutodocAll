@@ -72,12 +72,13 @@ public class QC_1389_Firms_DE_PL {
         order_aws.clickCustomerId()
                 .checkAbsenceBlockLogsCompanyNumbers();
         switchTo().window(1);
-        totalPriceInEmailPL = new Mailinator().openEmail("qc_1389_autotestPL@mailinator.com")
+        //TODO отключен по техническим обстоятельствам
+        /*totalPriceInEmailPL = new Mailinator().openEmail("qc_1389_autotestPL@mailinator.com")
                 .openLetter(1)
                 .checkTextContainingVatPercentageInEmail("w tym 23% VAT")
                 .checkFirstFirmNameInEmail("FB-MONT A. Fułek Spółka Komandytowa")
                 .getTotalPriceInEmail();
-        Assert.assertEquals(totalPricePL, totalPriceInEmailPL);
+        Assert.assertEquals(totalPricePL, totalPriceInEmailPL);*/
     }
 
     private String emailDE = "qc_1389_autotestDE@mailinator.com", orderNumberDE;
@@ -123,12 +124,13 @@ public class QC_1389_Firms_DE_PL {
         order_aws.clickCustomerId()
                 .checkAbsenceBlockLogsCompanyNumbers();
         switchTo().window(1);
-        totalPriceInEmailDE = new Mailinator().openEmail("qc_1389_autotestDE@mailinator.com")
+        //TODO отключен по техническим обстоятельствам
+        /*totalPriceInEmailDE = new Mailinator().openEmail("qc_1389_autotestDE@mailinator.com")
                 .openLetter(1)
                 .checkTextContainingVatPercentageInEmail("inkl. 16% MwSt")
                 .checkFirstFirmNameInEmail("Autodoc GmbH")
                 .getTotalPriceInEmail();
-        Assert.assertEquals(totalPriceDE, totalPriceInEmailDE);
+        Assert.assertEquals(totalPriceDE, totalPriceInEmailDE);*/
     }
 
     private String emailES = "qc_1389_autotestES@mailinator.com", orderNumberES;
@@ -174,12 +176,13 @@ public class QC_1389_Firms_DE_PL {
         order_aws.clickCustomerId()
                 .checkAbsenceBlockLogsCompanyNumbers();
     switchTo().window(1);
-    totalPriceInEmailES = new Mailinator().openEmail("qc_1389_autotestES@mailinator.com")
+        //TODO отключен по техническим обстоятельствам
+    /*totalPriceInEmailES = new Mailinator().openEmail("qc_1389_autotestES@mailinator.com")
                 .openLetter(1)
                 .checkTextContainingVatPercentageInEmail("IVA incluido 16%")
                 .checkFirstFirmNameInEmail("Autodoc GmbH")
                 .getTotalPriceInEmail();
-        Assert.assertEquals(totalPriceES, totalPriceInEmailES);
+        Assert.assertEquals(totalPriceES, totalPriceInEmailES);*/
 }
 
     @AfterMethod
