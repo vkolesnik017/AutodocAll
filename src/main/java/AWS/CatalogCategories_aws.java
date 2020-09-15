@@ -21,6 +21,7 @@ public class CatalogCategories_aws {
     private String awsEnv;
     private String categoriesInAwsPage;
     private String parentCategoriesInAwsPage;
+    private String childCategoriesInAwsPage;
 
     public CatalogCategories_aws() throws SQLException {
         this.awsEnv = "https://aws.";
@@ -34,8 +35,9 @@ public class CatalogCategories_aws {
     }
 
     private void init(String awsEnv) throws SQLException {
-        this.categoriesInAwsPage = awsEnv + new DataBase().getRouteByRouteName("DE", "categoriesAws");
-        this.parentCategoriesInAwsPage = awsEnv + new DataBase().getRouteByRouteName("DE", "parentCategoriesAws");
+        this.categoriesInAwsPage = awsEnv + new DataBase("ATD").getRouteByRouteName("DE", "categoriesAws");
+        this.parentCategoriesInAwsPage = awsEnv + new DataBase("ATD").getRouteByRouteName("DE", "parentCategoriesAws");
+        this.childCategoriesInAwsPage = awsEnv + "autodoc.de/" + new DataBase("ATD").getRouteByRouteName("DE", "childCategoriesAws");
     }
 
 
@@ -110,6 +112,18 @@ public class CatalogCategories_aws {
 
     ElementsCollection parentCategoriesFromAws() {
         return $$x("//div[@class='size-300 flex-box']/input");
+    }
+
+    private SelenideElement parentAndChildCategoriesList() {
+        return $x("//div[@class='catalog-table']");
+    }
+
+    private ElementsCollection notActiveChildCategoriesNameAWS() {
+        return $$(".catalog-table-content-items-item.disabled > div > div:nth-child(5)>input");
+    }
+
+    private ElementsCollection limitedChildCategoriesNameAWS() {
+        return $$x("//ul[@class='catalog-table-content-items-item-child ui-sortable']/li[not(contains(@class,'disabled'))]/div/div[5]/input");
     }
 
 
@@ -206,6 +220,15 @@ public class CatalogCategories_aws {
         return allActiveGroupAWS;
     }
 
+    @Step("Get limited Child categories From Catalog AWS . CatalogCategories_aws")
+    public List<String> getLimitedChildCategoriesNameFromAWS(List<String> list) {
+        new Login_aws().loginInAwsWithOpen();
+        openPage(childCategoriesInAwsPage);
+        parentAndChildCategoriesList().shouldBe(visible);
+        List<String> childCategoriesAWS = limitedChildCategoriesNameAWS().stream().map(n -> n.getAttribute("value").replaceAll("[^a-zA-ZÖö]", "")).limit(list.size()).collect(Collectors.toList());
+        return childCategoriesAWS;
+    }
+
     @Step("Get All Child Categories From Catalog AWS Using Set. CatalogCategories_aws")
     public Set<String> getAllChildCategoriesNameFromAWSusingSet() {
         new Login_aws().loginInAwsWithOpen();
@@ -213,7 +236,7 @@ public class CatalogCategories_aws {
         Set<String> allActiveChildCategoriesAWS = new LinkedHashSet<>();
         for (int i = 0; i < childNameInAWS().size(); i++) {
             if (!childNameInAWS().get(i).attr("value").isEmpty()) {
-                allActiveChildCategoriesAWS.add(childNameInAWS().get(i).attr("value").trim());
+                allActiveChildCategoriesAWS.add(childNameInAWS().get(i).attr("value").replaceAll("[^a-zA-Z]", ""));
             }
         }
 
