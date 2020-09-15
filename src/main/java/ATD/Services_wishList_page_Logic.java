@@ -1,14 +1,17 @@
 package ATD;
 
+import Common.DataBase;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
+import java.sql.SQLException;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class Services_wishList_page_Logic extends Services_wishList_page {
 
@@ -62,6 +65,7 @@ public class Services_wishList_page_Logic extends Services_wishList_page {
         dialogPopUp().shouldBe(visible);
         btnRemoveInDialogPopUp().click();
         currentCountOfProductInWishList().shouldNotHave(exactText(currentCountOfProduct));
+        back();
         return this;
     }
 
@@ -116,4 +120,5 @@ public class Services_wishList_page_Logic extends Services_wishList_page {
         btnCloseRemoveProductPopUp().shouldBe(visible).click();
         return this;
     }
-}
+
+   }

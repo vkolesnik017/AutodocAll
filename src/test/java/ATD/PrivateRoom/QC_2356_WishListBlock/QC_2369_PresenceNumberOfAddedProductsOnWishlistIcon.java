@@ -17,7 +17,8 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2372_SortingProductIssueInWishList {
+public class QC_2369_PresenceNumberOfAddedProductsOnWishlistIcon {
+
     private Search_page_Logic searchPage = new Search_page_Logic();
 
     @BeforeClass
@@ -27,20 +28,18 @@ public class QC_2372_SortingProductIssueInWishList {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "main", "search30");
 
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "main", "search31");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks sorting product issue in WishList")
-    public void testChecksSortingProductIssueInWishList(String route) {
+    @Description(value = "Test checks presence number of added products on Wishlist icon in header")
+    public void testChecksPresenceNumberOfAddedProductsOnWishlistIcon(String route) throws SQLException {
         openPage(route);
-        List<String> artNumOfProduct = searchPage.presenceOfTecDocListing().addArtNumOfProductToList(5);
-        searchPage.addedProductToWishList(5).goToWishListPage().presenceOfProductList().
-                checkChronologicalOrderOfProducts(artNumOfProduct).removeProductFromWishList(1)
-                .checkCOrderOfProductsAfterRemove(artNumOfProduct, 1);
+        List<String> artNumOfProduct = searchPage.presenceOfTecDocListing().addArtNumOfProductToList(3);
+        searchPage.addedProductToWishList(3).checkCountOfAddedProductToWishListInIcon(artNumOfProduct);
     }
 
     @AfterMethod

@@ -243,5 +243,13 @@ public class Search_page {
        ElementsCollection visibleBrands() {
         return $$x("//ul[@class='branded-slider slick-initialized slick-slider']//li").filter(visible);
     }
+
+    ElementsCollection addedProductToWishListLabel() {return $$x("//span[@class='add-to-wishlist title_btn add-to-wishlist--added remove-article']");}
+
+    SelenideElement currentCountOfProductInWishList() {return $x("//span[@class='header__wishes-count header__wishes-count--added']");}
+
+    ElementsCollection artNumOfAddedProductToWishList() {return $$x("//span[@class='add-to-wishlist title_btn add-to-wishlist--added remove-article']/ancestor::li//span[@class='article_number']");}
+
+    ElementsCollection titleOfMainProducts() {return $$x("//*[self::li[@class='ovVisLi item_in_stock  item visible'] or self::li[@class='ovVisLi item_in_stock  item_not_available item visible']]//div[@class='name']/*[self::a or self::span][1]");}
 }
 

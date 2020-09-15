@@ -76,10 +76,11 @@ public class QC_1832_CheckingMultipleDeliveryServicesInOneOrder {
                 .checkNumberDeliveryServiceAdded(3)
                 .transitionToDeliveryPageAndGetTrackingNumFromURL();
         Assert.assertEquals(listSavedTrackingNumberFromAWS, listTrackingNumberFromUrl);
-        listTrackingNumberFromMail = mailinator.openEmail(mail)
+        //TODO отключен по техническим обстоятельствам
+        /*listTrackingNumberFromMail = mailinator.openEmail(mail)
                 .checkAndOpenLetterInfoText("Auftrags- / Versandbestätigung, Bestellnummer", firstOrderNumber)
                 .transitionToDeliveryPageAndGetTrackingNumFromUrlInMail();
-        Assert.assertEquals(listSavedTrackingNumberFromAWS, listTrackingNumberFromMail);
+        Assert.assertEquals(listSavedTrackingNumberFromAWS, listTrackingNumberFromMail);*/
         new Order_aws(firstOrderNumber).openOrderInAwsWithoutLogin()
                 .checkCurrentStatusInOrder("Versendet")
                 .reSaveOrder()
@@ -114,10 +115,11 @@ public class QC_1832_CheckingMultipleDeliveryServicesInOneOrder {
                 .checkNumberDeliveryServiceAdded(3)
                 .transitionToDeliveryPageAndGetTrackingNumFromURL();
         Assert.assertEquals(listSavedTrackingNumberFromAWS, listTrackingNumberFromUrl);
-        listTrackingNumberFromMail = mailinator.openEmail(mail)
+        //TODO отключен по техническим обстоятельствам
+        /*listTrackingNumberFromMail = mailinator.openEmail(mail)
                 .checkAndOpenLetterInfoText("Auftrags- / Versandbestätigung, Bestellnummer", secondOrderNumber)
                 .transitionToDeliveryPageAndGetTrackingNumFromUrlInMail();
-        Assert.assertEquals(listSavedTrackingNumberFromAWS, listTrackingNumberFromMail);
+        Assert.assertEquals(listSavedTrackingNumberFromAWS, listTrackingNumberFromMail);*/
         new Order_aws(secondOrderNumber).openOrderInAwsWithoutLogin()
                 .checkCurrentStatusInOrder("Versendet")
                 .reSaveOrder()

@@ -33,7 +33,7 @@ public class QC_1924_LoginByUserLoginOnAnotherSkin {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp("ATD").setUpShopsWithMainRoute("prod", "DE", "main");
+        return new SetUp("PKW").setUpShopsWithMainRoute("prod", "DE", "main");
     }
 
     @Test(dataProvider = "route")
