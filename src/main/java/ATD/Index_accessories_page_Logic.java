@@ -46,7 +46,7 @@ public class Index_accessories_page_Logic extends Index_accessories_page {
 
     @Step("Click second category in a logical union. Index_accessories_page")
     public Listing_accessories_page_Logic clicksOnCategory() {
-        secondCategoryInLogicalUnion().click();
+        secondCategoryInLogicalUnion().shouldBe(visible).click();
         return page(Listing_accessories_page_Logic.class);
     }
 
@@ -187,5 +187,4 @@ public class Index_accessories_page_Logic extends Index_accessories_page {
         Collections.sort(logicalUnionsId);
         return logicalUnionsId;
     }
-
 }
