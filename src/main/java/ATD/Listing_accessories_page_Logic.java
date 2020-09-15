@@ -76,6 +76,12 @@ public class Listing_accessories_page_Logic extends Listing_accessories_page {
         return nameCategories;
     }
 
+    @Step("Checking presence of the Breadcrumbs. Listing_accessories_page")
+    public Listing_accessories_page_Logic checkingPresenceOfTheBreadcrumbs() {
+        breadcrumbsBlock().shouldBe(visible);
+        return this;
+    }
+
     @Step("Checking presence and not clickable third Bread Crumb. Listing_accessories_page")
     public Listing_accessories_page_Logic checkingPresenceAndNotClickableThirdBreadCrumb() {
         thirdBreadCrumb().shouldBe(visible).shouldNotBe(attribute("href"));
@@ -261,6 +267,4 @@ public class Listing_accessories_page_Logic extends Listing_accessories_page {
         titleNameProductFromListing().click();
         return page(Product_page_Logic.class);
     }
-
-
 }
