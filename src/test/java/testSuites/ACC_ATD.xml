@@ -86,8 +86,6 @@
         <classes>
             <class name="ATD.ACC.QC_1383_BlockFilterByBrandOnListingAccessories.QC_1384_WorkBtnPrevAndNextInBlockBrands"/>
             <class name="ATD.ACC.QC_1383_BlockFilterByBrandOnListingAccessories.QC_1385_SortedListingWhenChoosingBrand"/>
-            <class name="ATD.ACC.QC_1383_BlockFilterByBrandOnListingAccessories.QC_1386_FunctionalitySelectedBrand"/>
-            <class name="ATD.ACC.QC_1383_BlockFilterByBrandOnListingAccessories.QC_1387_ResetSelectedFilterByBrand"/>
         </classes>
     </test>
 
@@ -101,7 +99,6 @@
         <classes>
             <class name="ATD.ACC.QC_1356_BlockCategoriesInSidebarOnListingAccessories.QC_1360_TitleCategoriesBlockInSidebar"/>
             <class name="ATD.ACC.QC_1356_BlockCategoriesInSidebarOnListingAccessories.QC_1366_CategoriesSelectedLogicalUnion"/>
-            <class name="ATD.ACC.QC_1356_BlockCategoriesInSidebarOnListingAccessories.QC_1368_SelectCategoryFromSidebar"/>
         </classes>
     </test>
 
