@@ -294,12 +294,23 @@ public class TyresListing_page_Logic extends TyresListing_page {
         return this;
     }
 
+    @Step("Get diameter in link from relink by diameter block. TyresListing_page")
+    public String getDiameterFromRelinkBlock() {
+        return diameterInRelinkBlock().getAttribute("href").replaceAll("\\D+", "");
+    }
+
+    @Step("Get value diameter from Selector.TyresListing_page")
+    public String getValueDiameterFromSelector() {
+       return diameterValueInSelector().getAttribute("value");
+    }
+
+
     @Step("Check brand relink on tyres listing. TyresListing_page")
     public TyresListing_page_Logic checkDiameterRelink() {
-        diameter17InRelinkBlock().click();
-        diameterValueInSelector().shouldHave(text("17"));
-        checkingContainsUrl("/17-zoll");
-        checkCharacteristicOnListing("17", radiusCharacteristic());
+        String diameter = diameterInRelinkBlock().getAttribute("href").replaceAll("\\D+", "");
+        diameterInRelinkBlock().scrollIntoView(false).click();
+        checkingContainsUrl("zoll");
+        checkCharacteristicOnListing(diameter, radiusCharacteristic());
         return this;
     }
 

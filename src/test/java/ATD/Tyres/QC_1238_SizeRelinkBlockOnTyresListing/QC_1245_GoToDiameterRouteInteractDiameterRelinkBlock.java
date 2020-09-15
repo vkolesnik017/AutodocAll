@@ -6,18 +6,19 @@ import ATD.TyresListing_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import java.sql.SQLException;
-
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1245_GoToDiameterRouteInteractDiameterRelinkBlock {
+
+    private TyresListing_page_Logic tyresListingPageLogic = new TyresListing_page_Logic();
 
     @BeforeClass
     void setUp() {
@@ -37,7 +38,10 @@ public class QC_1245_GoToDiameterRouteInteractDiameterRelinkBlock {
     @Description(value = "Test Checks Transition To Diameter Route Interact Diameter Relink Block")
     public void testGoToDiameterRouteInteractDiameterRelinkBlock(String route) {
         openPage(route);
-        new TyresListing_page_Logic().checkDiameterRelink();
+        String diameterFromRelinkBlock = tyresListingPageLogic.getDiameterFromRelinkBlock();
+        tyresListingPageLogic.checkDiameterRelink();
+        String diameterFromSelector = tyresListingPageLogic.getValueDiameterFromSelector();
+        Assert.assertEquals(diameterFromRelinkBlock, diameterFromSelector);
     }
 
     @AfterMethod
