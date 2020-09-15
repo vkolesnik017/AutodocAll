@@ -121,7 +121,7 @@ public class Contact_static_page {
 
     SelenideElement haveOrderBlock() { return $(By.xpath("//*[@class='contact-page__form-tab'][@data-tab='order']/div")); }
 
-    SelenideElement submitOrderButton() { return $(By.xpath("//*[@class='contact-page__form']/div[2]/div/div[6]/button")); }
+    SelenideElement submitOrderButton() { return $(By.xpath("//*[@class='dropdown-wrapper open-tab']//button")); }
 
     SelenideElement emailError() { return $(By.xpath("//*[@class='contact-page__form-error'][@data-name='error_Order[email]']")); }
 
