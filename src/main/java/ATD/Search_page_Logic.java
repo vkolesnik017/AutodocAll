@@ -340,6 +340,22 @@ public class Search_page_Logic extends Search_page {
         return this;
     }
 
+    @Step("add Product to WishList with selected car. Search_page")
+    public Search_page_Logic addedProductToWishListWithSelectedCar(int positionOfProduct) {
+        for (int i = 0; i < positionOfProduct; i++) {
+            btnAddedProductToWishList().get(i).scrollIntoView("{block: \"center\"}");
+            btnAddedProductToWishList().get(i).shouldBe(visible).click();
+            addedProductToWishList().get(i).shouldBe(exist);
+        }
+        return this;
+    }
+
+    @Step("added Product to WishList. Search_page")
+    public Search_page_Logic addNotActiveProductToWishList(int positionOfProduct) {
+        labelAddToWishListNotActiveProduct().get(positionOfProduct).click();
+        return this;
+    }
+
     @Step("check visible brands. Search_page")
     public Search_page_Logic checkVisibleBrands() {
         for (int i = 0; i < 2; i++) {
@@ -347,7 +363,6 @@ public class Search_page_Logic extends Search_page {
         }
         return this;
     }
-
 
     @Step("go to WishList page. Search_page")
     public Services_wishList_page_Logic goToWishListPage() {
@@ -408,6 +423,34 @@ public class Search_page_Logic extends Search_page {
         List<String> artNumOfProduct = artNumOfProduct().stream().limit(countOfArtNum).map(n -> n.getText().replaceAll("Artikelnummer: ", "")).collect(Collectors.toList());
         return artNumOfProduct;
     }
+
+    @Step(" added article number Of not active product to list. Search_page")
+    public List<String> addArtNumOfNotActiveProductToList(int countOfArtNum) {
+        List<String> artNumOfNotActiveProductsProduct = new ArrayList<>();
+        addNotActiveProductToList(artNumOfNotActiveProductsProduct);
+        return artNumOfNotActiveProductsProduct;
+    }
+
+    @Step(" added article number Of not active product to list. Search_page")
+    public Search_page_Logic addNotActiveProductToList(List<String> list) {
+
+       while(!labelAddToWishListNotActiveProduct().get(0).isDisplayed()){
+           checkVisibleBrands();
+           if (popUpSelector().isDisplayed()) {
+               closePopUpSelector().shouldBe(visible).click();
+               popUpSelector().shouldNotBe(visible);
+           }
+           forwardOfPaginator().click();
+       }
+       list.add(artNumOfNotActiveProduct().get(0).getText().replace("Artikelnummer: ",""));
+       return this;
+    }
+
+
+
+
+
+
 
     @Step("remove products from WishList by click on label. Search_page")
     public Search_page_Logic removeProductsFromWishList(int countOfProduct) {

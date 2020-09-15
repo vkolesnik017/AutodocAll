@@ -1,23 +1,29 @@
 package ATD;
 
-import Common.DataBase;
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
-import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class Services_wishList_page_Logic extends Services_wishList_page {
 
-    @Step("presence of product list.   Services_wishList_page")
+    @Step("presence of product list.  Services_wishList_page")
     public Services_wishList_page_Logic presenceOfProductList() {
         productList().shouldBe(visible);
+        return this;
+    }
+
+    @Step("check count of products in list.  Services_wishList_page")
+    public Services_wishList_page_Logic checkCountOfProducts(int expectedCount) {
+        listOfProducts().shouldHaveSize(expectedCount);
         return this;
     }
 
@@ -121,4 +127,19 @@ public class Services_wishList_page_Logic extends Services_wishList_page {
         return this;
     }
 
-   }
+    @Step("click on 'Add product to basket' button. Services_wishList_page")
+    public Services_wishList_page_Logic clickOnBtnAddProductToBasket() {
+        btnBuyAllProducts().shouldBe(visible).click();
+        dialogPopUp().shouldBe(visible);
+        return this;
+    }
+
+    @Step("click on random element of pop-Up. Services_wishList_page")
+    public Cart_page_Logic clickOnRandomElementOfPopUp() {
+        List<SelenideElement> list = Arrays.asList(btnCloseXRemoveProductPopUp(), btnCloseRemoveProductPopUp());
+        Random rand = new Random();
+        int randomIndex = rand.nextInt(list.size());
+        list.get(randomIndex).click();
+        return page(Cart_page_Logic.class);
+    }
+}

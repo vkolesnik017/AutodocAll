@@ -46,4 +46,6 @@ public class Services_wishList_page {
     SelenideElement btnCloseXRemoveProductPopUp() {  return $x("//div[@class='popup_top']/a"); }
 
     SelenideElement btnBuyAllProducts() {return $(byId("add-wishlist-to-cart"));}
+
+    ElementsCollection listOfProducts() {return $$x("//ul[@class='list_products']/li");}
 }
