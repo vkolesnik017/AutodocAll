@@ -81,7 +81,19 @@ public class Listing_instruments_Page {
         return $$x("//div[@class='listing_items']//div[@class='brand-products']");
     }
 
+    SelenideElement blockBreadcrumbs() {
+        return $x("//div[@class='crabs']");
+    }
 
+    SelenideElement firstBreadcrumb() {
+        return $x("//div[@class='crabs']/div[1]//a");
+    }
 
+    SelenideElement secondBreadcrumb() {
+        return $x("//div[@class='crabs']/div[2]//a");
+    }
 
+    SelenideElement thirdBreadcrumb() {
+        return $x("//*[@class='defcur']");
+    }
 }

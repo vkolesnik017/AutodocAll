@@ -328,6 +328,7 @@ public class Product_page_Logic extends Product_page {
     public Product_page_Logic displayingReviewPopUpWithRating() {
         productRatingStars().shouldBe(visible).click();
         btnOpenRatingForm().shouldBe(visible).click();
+        reviewFormArtikelBewertenButton().waitUntil(appear, 2000);
         reviewFormArtikelBewertenButton().shouldBe(visible);
         overlayBehindReviewForm().shouldBe(visible).shouldHave(attribute("style", "display: block;"));
         return this;
@@ -336,6 +337,18 @@ public class Product_page_Logic extends Product_page {
     @Step("Displaying the block with the review messages. Product_page")
     public Product_page_Logic displayingReviewMessagesBlock() {
         blockWithReviewsMessage().shouldBe(visible, exist);
+        return this;
+    }
+
+    @Step("Displaying of the KBA block. Product_page")
+    public Product_page_Logic visibilityOfTheKBABlock() {
+        blockKBANumber().shouldBe(visible, exist);
+        return this;
+    }
+
+    @Step("Displaying of the Reg Number block. Product_page")
+    public Product_page_Logic visibilityOfTheRegNumberBlock() {
+        blockRegNumber().shouldBe(visible, exist);
         return this;
     }
 }
