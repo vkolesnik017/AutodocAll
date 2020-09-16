@@ -142,4 +142,64 @@ public class Services_wishList_page_Logic extends Services_wishList_page {
         list.get(randomIndex).click();
         return page(Cart_page_Logic.class);
     }
+
+    @Step("click on 'Show alternative products' button. Services_wishList_page")
+    public Services_wishList_page_Logic clickOnShowAlternativeProducts(int positionOfProduct) {
+        btnAlternativeProducts().get(positionOfProduct).shouldBe(visible).click();
+        alternativeBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("hover on Alternative product. Services_wishList_page")
+    public Services_wishList_page_Logic hoverOnAlternativeProduct(int positionOfProducts) {
+        alternativeBlock().shouldBe(visible);
+        imageOfAlternativeProducts().get(positionOfProducts).hover();
+        descriptionPopUpOfAlternativeProduct().get(positionOfProducts).shouldBe(visible);
+        return this;
+    }
+
+    @Step("get id of alternative product. Services_wishList_page")
+    public String getIdOfAlternativeProduct(int positionOfProduct) {
+        String idOfAddedProduct = btnAddAlternativeProductToBasket().get(positionOfProduct).shouldBe(visible).getAttribute("id");
+        return idOfAddedProduct;
+    }
+
+    @Step("add Alternative product to basket. Services_wishList_page")
+    public Cart_page_Logic addAlternativeProductToBasket(int positionOfProduct) {
+        btnAddAlternativeProductToBasket().get(positionOfProduct).shouldBe(visible).click();
+        basketDropMenu().should(appear);
+        basketDropMenu().should(disappear);
+        basket().click();
+        return page(Cart_page_Logic.class);
+    }
+
+    @Step("check elements with not logged user. Services_wishList_page")
+    public Services_wishList_page_Logic checkElementsWithNotLoggedUser() {
+        infoText().shouldBe(visible);
+        btnOpenCatalog().shouldBe(visible);
+        activeWishListItemInSidebar().shouldBe(visible).shouldHave(cssValue("color", "rgba(251, 101, 29, 1)"));
+        return this;
+    }
+
+    @Step("click on WishList item in Sidebar. Services_wishList_page")
+    public Services_wishList_page_Logic clickOnWishListItemInSidebar() {
+        activeWishListItemInSidebar().shouldBe(visible).click();
+        loginPopUp().shouldBe(visible);
+        return this;
+    }
+
+    @Step("close Login pop-Up. Services_wishList_page")
+    public Services_wishList_page_Logic closeLoginPopUp() {
+        if (btnCloseLoginPopUp().isDisplayed()){
+            btnCloseLoginPopUp().click();
+        }
+        loginPopUp().shouldNotBe(visible);
+        return this;
+    }
+
+    @Step("go to Catalog. Services_wishList_page")
+    public Categories_page_Logic goToCatalog() {
+        btnOpenCatalog().shouldBe(visible).click();
+        return page(Categories_page_Logic.class);
+    }
 }

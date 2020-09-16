@@ -89,4 +89,10 @@ public class Categories_page {
   SelenideElement mainLogoInHeader() {return $x("//a[@class='header__logo-main']/img");}
 
   ElementsCollection titleOfParentCategories() { return $$x("//span[@class='name']");    }
+
+  SelenideElement firstFieldOfKba() {return $(byId("kba1"));}
+
+  SelenideElement secondFieldOfKba() {return $(byId("kba2"));}
+
+  SelenideElement btnSearchOfSelector() {return $x("//a[@class='submit search_button ripple-out']");}
 }

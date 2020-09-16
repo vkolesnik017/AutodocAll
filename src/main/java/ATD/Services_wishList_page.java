@@ -48,4 +48,32 @@ public class Services_wishList_page {
     SelenideElement btnBuyAllProducts() {return $(byId("add-wishlist-to-cart"));}
 
     ElementsCollection listOfProducts() {return $$x("//ul[@class='list_products']/li");}
+
+    ElementsCollection btnAlternativeProducts() {return $$x("//div[@class='show_alternative__btn ga-click button additional_btn']");}
+
+    SelenideElement alternativeBlock() { return $x("//div[@class='top-small-products top-small-products--alternative']");  }
+
+    ElementsCollection imageOfAlternativeProducts() {return $$x("//div[@class='top-small-products-items__item']//div[@class='small-prod-image']");}
+
+    ElementsCollection descriptionPopUpOfAlternativeProduct() {return $$x("//div[@class='rec_prod_info_popup']");}
+
+    ElementsCollection btnAddAlternativeProductToBasket() {return $$x("//div[@class='small-product-button price_box']");}
+
+    SelenideElement basketDropMenu() {
+        return $x("//div[@class='cart-items-block ']");
+    }
+
+    SelenideElement basket() {
+        return $x("//a[@class='header-cart__link']");
+    }
+
+    SelenideElement infoText() {return $x("//p[contains(text(),'Ihre Wunschliste ist leer. Gehen Sie zum Katalog, um ein Produkt auszuwählen.')]");}
+
+    SelenideElement btnOpenCatalog() {return $x("//div[@class='profile-msg']/a");}
+
+    SelenideElement activeWishListItemInSidebar() {return $x("//li[@class='wishlist_link active']/a");}
+
+    SelenideElement loginPopUp() {return $x("//div[@class='autodoc_login_popup popup_login pass']");}
+
+    SelenideElement btnCloseLoginPopUp() {return $x("//div[@class='top_info']/a");}
 }

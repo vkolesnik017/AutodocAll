@@ -10,36 +10,42 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.sql.SQLException;
+
+import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.matchText;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_529_PresenceRecoveryCharacteristicsInBasket {
 
-  @BeforeClass
-  void setUp() {
-    setUpBrowser(false, "chrome", "77.0");
-  }
+    @BeforeClass
+    void setUp() {
+        setUpBrowser(false, "chrome", "77.0");
+    }
 
-  @DataProvider(name = "route")
-  Object[] dataProvider() {
-    return new SetUp("ATD").setUpShop("prod", "DE");
-  }
+    @DataProvider(name = "route")
+    Object[] test1() throws SQLException {
+        //  return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_name6,category_name_brand2");
 
-  @Test(dataProvider = "route")
-  @Flaky
-  @Owner(value = "Evlentiev")
-  @Description(value = "Test-3. Checks output characteristic recovery in basket")
-  public void testPresenceRecoveryCharacteristicsInBasket(String route) {
-    new Product_page_Logic().openProductPageById(route, "7545902")
-            .addProductToCart()
-            .closePopupOtherCategoryIfYes()
-            .cartClick()
-            .getCharacteristicsOfProduct().filter(matchText("Zustand:\\nWiederaufbereitet")).shouldHaveSize(1);
-  }
+        return new Object[][]{{"https://www.autodoc.de/valeo/1080053"}, {"https://www.autodoc.de/henkel-parts/15045081"}};
+    }
 
-  @AfterMethod
-  private void close() {
-    closeWebDriver();
-  }
+    @Test(dataProvider = "route")
+    @Flaky
+    @Owner(value = "Evlentiev")
+    @Description(value = "Test-3. Checks output characteristic recovery in basket")
+    public void testPresenceRecoveryCharacteristicsInBasket(String route) {
+        openPage(route);
+        new Product_page_Logic().addProductToCart()
+                .closePopupOtherCategoryIfYes()
+                .cartClick()
+                .getCharacteristicsOfProduct().filter(matchText("Zustand:\nWiederaufbereitet")).shouldHaveSize(1);
+        System.out.println();
+    }
+
+    @AfterMethod
+    private void close() {
+        closeWebDriver();
+    }
 }

@@ -652,4 +652,8 @@ public class Main_page {
     SelenideElement btnMoreSparePartsOfTopBrands() {return $x("//a[contains(text(),'Beliebteste Automarken')]/ancestor::div[@class='top_all']//a[@class='all']");}
 
     SelenideElement allSparePartsLink() {return $x("//span[@class='truck-home-parts__show-all link']");}
+
+    SelenideElement iconOfWishList() {
+        return $x("//span[@class='header__wishes link']");
+    }
 }
