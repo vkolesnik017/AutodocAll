@@ -10,8 +10,8 @@
         <classes>
             <class name="ATD.Registration.QC_1635_RegistrationFromLoginButton"/>
             <class name="ATD.Registration.QC_1637_RegistrationFromBasket"/>
-            <!--<class name="ATD.Registration.QC_1639_RecoveryPasswordFromPopupInHeader"/> //TODO отключен по техническим обстоятельствам
-            <class name="ATD.Registration.QC_1642_RecoveryPasswordFromCart"/>-->
+            <class name="ATD.Registration.QC_1639_RecoveryPasswordFromPopupInHeader"/>
+            <class name="ATD.Registration.QC_1642_RecoveryPasswordFromCart"/>
         </classes>
     </test>
 </suite>

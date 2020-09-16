@@ -6,7 +6,7 @@ import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
-import mailinator.Mailinator;
+import mailinator.WebMail;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -26,7 +26,7 @@ public class QC_1929_PasswordRecovery {
     //TODO After successfully editing the QC, the test will be added to xml. file.
 
     private String mail = "QC_1929_autotestATD@mailinator.com";
-    private Mailinator mailinator = new Mailinator();
+    private WebMail webMail = new WebMail();
     private Product_page_Logic product_page_logic = new Product_page_Logic();
 
     @BeforeClass
@@ -51,8 +51,8 @@ public class QC_1929_PasswordRecovery {
                 .cartClick()
                 .nextButtonClick()
                 .passwordRecoveryRequestFromCart(mail);
-        mailinator.openEmail(mail).letterInfo(1).shouldHave(text("moments ago")).shouldHave(text("neues Passwort"));
-        mailinator.openLetter(1)
+        webMail.openMail(mail).letterInfo(1).shouldHave(text("moments ago")).shouldHave(text("neues Passwort"));
+        webMail.openLetterInOldMailServiceMailinator(1)
                 .clickLinkRecoveryPasswordInLetter()
                 .fillPasswordFieldsAndClickSubmit(newPassword)
                 .nameOfClient().shouldBe(visible);

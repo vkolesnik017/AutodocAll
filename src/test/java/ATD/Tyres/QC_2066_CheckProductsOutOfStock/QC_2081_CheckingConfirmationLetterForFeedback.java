@@ -5,7 +5,7 @@ import ATD.Tyre_form_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
-import mailinator.Mailinator;
+import mailinator.WebMail;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -38,7 +38,7 @@ public class QC_2081_CheckingConfirmationLetterForFeedback {
 
         new Tyre_form_page_Logic().displayingCustomerFeedbackPopUp()
                 .displayingOfPopUPAboutSuccessfulSendingLetter(email);
-        new Mailinator().openEmail(email)
+        new WebMail().openMail(email)
                 .checkLetterInfoText(1, "moments ago", "Wir bearbeiten");
     }
 
