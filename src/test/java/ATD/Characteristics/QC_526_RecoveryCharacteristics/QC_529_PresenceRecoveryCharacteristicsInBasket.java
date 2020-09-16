@@ -26,9 +26,7 @@ public class QC_529_PresenceRecoveryCharacteristicsInBasket {
 
     @DataProvider(name = "route")
     Object[] test1() throws SQLException {
-        //  return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_name6,category_name_brand2");
-
-        return new Object[][]{{"https://www.autodoc.de/valeo/1080053"}, {"https://www.autodoc.de/henkel-parts/15045081"}};
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product39,product40");
     }
 
     @Test(dataProvider = "route")
@@ -41,7 +39,6 @@ public class QC_529_PresenceRecoveryCharacteristicsInBasket {
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
                 .getCharacteristicsOfProduct().filter(matchText("Zustand:\nWiederaufbereitet")).shouldHaveSize(1);
-        System.out.println();
     }
 
     @AfterMethod
