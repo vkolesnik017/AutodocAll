@@ -90,11 +90,11 @@ class TyresListing_page {
 
     ElementsCollection titleOfAllProducts() { return $$(".name > a"); }
 
-    SelenideElement diameter17InRelinkBlock() { return $x("//*[contains (text(),'17 Zoll')]"); }
+    SelenideElement diameterInRelinkBlock() { return $x("//li[1]//a[contains (text(),'Zoll')]"); }
 
     SelenideElement allSizesButton() { return $(".all_sizes"); }
 
-    public SelenideElement dimensionLinkListingRoute() { return $x("(//*[contains (text(),'Die beliebtesten Reifengrößen')]/..//a)[3]"); }
+    public SelenideElement dimensionLinkListingRoute() { return $x("(//*[contains (text(),'Die beliebtesten Reifengrößen')]/..//li//a)"); }
 
     SelenideElement brandRelinkBlock() { return $(".tires_marks"); }
 
