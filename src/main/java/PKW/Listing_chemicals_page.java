@@ -156,7 +156,11 @@ public class Listing_chemicals_page {
     }
 
     ElementsCollection characteristicConsistenceInProductsListing() {
-        return $$x("//div[@class='prod_params_container']//span[contains(text(),'Konsistenz')]/..//span[@class='rc']");
+        return $$x("//div[contains(@class,'prod_params_container')]//span[contains(text(),'Konsistenz')]/..//span[@class='rc']");
+    }
+
+    SelenideElement btnMoreInCardProduct() {
+        return $x("//div[@class='prod_params_container']//span[@class='show-full-product-params-text']");
     }
 
     SelenideElement firstCategoryFromTopProductSidebar() {
