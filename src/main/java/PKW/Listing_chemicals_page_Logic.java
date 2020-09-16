@@ -258,9 +258,11 @@ public class Listing_chemicals_page_Logic extends Listing_chemicals_page {
         clickFirstCriteriaInConsistenceCriteriaBlock();
         new Listing_page_Logic().waitUntilPreloaderDisappear();
             ArrayList<String> nameCriteria = new ArrayList<>();
-            for (SelenideElement element : characteristicConsistenceInProductsListing()) {
-                String name = element.getText();
-                nameCriteria.add(name);
+            for (int i = 0; i < characteristicConsistenceInProductsListing().size(); i++) {
+                if (!characteristicConsistenceInProductsListing().get(i).isDisplayed()) {
+                    btnMoreInCardProduct().scrollIntoView(false).click();
+                }
+                nameCriteria.add(characteristicConsistenceInProductsListing().get(i).getText());
                 if (!nameCriteria.contains(firstCriteria)) {
                     Assert.fail("Listing isn't sorted selected criteria ");
                 }
