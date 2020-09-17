@@ -1,7 +1,8 @@
-package ATD.Tyres.QC_1272_TyresMainPage;
+package ATD.PrivateRoom.QC_2356_WishListBlock;
 
+import ATD.Main_page_Logic;
+import Common.DataBase;
 import Common.SetUp;
-import ATD.Tyres_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -9,13 +10,15 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
 import java.sql.SQLException;
+
+import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1330_TestPopularBrandsBlockAndElementsPresence {
-
+public class QC_2362_ElementsOfWishListWhenUserIsNotLoggedIn {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -23,23 +26,22 @@ public class QC_1330_TestPopularBrandsBlockAndElementsPresence {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres,tyres2,tyres3,tyres4");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "main", "main");
+
     }
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "Romaniuta")
-    @Description(value = "Test Checks Popular Brands Block And Elements Presence")
-    public void testPopularBrandsBlockAndElementsPresence(String route) {
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test checks elements of WishList when user is not logged in")
+    public void testChecksElementsOfWishListWhenUserIsNotLoggedIn(String route) throws SQLException {
         openPage(route);
-        new Tyres_page_Logic().checkPopularBrandsBlockVisibility()
-                                .checkPopularBrandsSliderFirstPosition()
-                                .clickSecondPageInBrandSlider()
-                                .checkPopularBrandsSliderSecondPosition();
+        new Main_page_Logic().goToWishListPage().checkElementsWithNotLoggedUser().clickOnWishListItemInSidebar().closeLoginPopUp().goToCatalog();
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "categories"));
     }
 
     @AfterMethod
-    public void close() {
+    private void close() {
         closeWebDriver();
     }
 }

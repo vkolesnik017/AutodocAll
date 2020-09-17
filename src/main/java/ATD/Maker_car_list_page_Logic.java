@@ -161,4 +161,10 @@ public class Maker_car_list_page_Logic extends Maker_car_list_page {
                 .collect(Collectors.toList());
         return parentCategories;
     }
+
+    @Step("go to WishList with logged user. Maker_car_list_page")
+    public Profile_wishlist_page_Logic goToWishListWithLoggedUser() {
+        iconOfWishList().shouldBe(visible).click();
+        return page(Profile_wishlist_page_Logic.class);
+    }
 }

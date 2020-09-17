@@ -7,7 +7,7 @@ import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
-import mailinator.Mailinator;
+import mailinator.WebMail;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -28,7 +28,7 @@ public class QC_715_LetterConfirmationOfReturnFromRetourePage {
 
   private Product_page_Logic product_page_logic = new Product_page_Logic();
   private Retouren_page retourenPage = new Retouren_page();
-  private Mailinator mailinator = new Mailinator();
+  private WebMail webMail = new WebMail();
   private DataBase db = new DataBase("ATD");
 
 
@@ -68,7 +68,7 @@ public class QC_715_LetterConfirmationOfReturnFromRetourePage {
             .fillInFormForMessage()
             .addFileIfIsDisplayedFileBlock()
             .clickSendenButtonWithCorrectData();
-    mailinator.openEmail(mail)
+    webMail.openMail(mail)
             .letterInfo(1).shouldHave(text("moments ago")).shouldHave(text("Ihre Reklamation zur Bestellnummer: ".concat(orderNumber)));
   }
 

@@ -6,7 +6,7 @@ import AWS.Order_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
-import mailinator.Mailinator;
+import mailinator.WebMail;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -21,7 +21,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 public class QC_784_LetterConfirmationOfReturnFromAws {
 
   private Product_page_Logic product_page_logic = new Product_page_Logic();
-  private Mailinator mailinator = new Mailinator();
+  private WebMail webMail = new WebMail();
 
   private String idUserAws = "13767378";
   private String orderNumber = null;
@@ -60,7 +60,7 @@ public class QC_784_LetterConfirmationOfReturnFromAws {
             .chooseRandomCauseReturnInSelect()
             .fillInFormForMessageReture()
             .clickSaveReclamationButton();
-    mailinator.openEmail(mail)
+    webMail.openMail(mail)
             .letterInfo(1).shouldHave(text("moments ago")).shouldHave(text("Ihre Reklamation zur Bestellnummer: ".concat(orderNumber)));
   }
 

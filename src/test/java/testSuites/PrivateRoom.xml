@@ -92,8 +92,8 @@
     <test name="QC_1914_DisplayTrackingNumberInPR">
         <classes>
             <class name="ATD.PrivateRoom.QC_1914_DisplayTrackingNumberInPR.QC_1830_DisplayTrackingNumberInPR"/>
-            <!--<class name="ATD.PrivateRoom.QC_1914_DisplayTrackingNumberInPR.QC_1831_CheckingForExistingDeliveryServices"/> //TODO отключен по техническим обстоятельствам
-            <class name="ATD.PrivateRoom.QC_1914_DisplayTrackingNumberInPR.QC_1832_CheckingMultipleDeliveryServicesInOneOrder"/>-->
+            <!--<class name="ATD.PrivateRoom.QC_1914_DisplayTrackingNumberInPR.QC_1831_CheckingForExistingDeliveryServices"/> //TODO отключен по техническим обстоятельствам -->
+            <class name="ATD.PrivateRoom.QC_1914_DisplayTrackingNumberInPR.QC_1832_CheckingMultipleDeliveryServicesInOneOrder"/>
         </classes>
     </test>
 
@@ -125,12 +125,16 @@
 
     <test name="QC_2356_WishListBlock">
         <classes>
+            <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2362_ElementsOfWishListWhenUserIsNotLoggedIn"/>
+            <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2365_ElementsOfWishlistWhenUserIsLoggedIn"/>
             <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2369_PresenceNumberOfAddedProductsOnWishlistIcon"/>
             <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2370_RemoveProductsFromWishList"/>
             <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2371_PresencePopUpAfterClickOnRemoveAllProducts"/>
             <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2372_SortingProductIssueInWishList"/>
             <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2373_LogicOfPairedProductsInWishlist"/>
+            <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2375_AnalogBlockForOutOfStockProducts"/>
             <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2398_TransitionToWishListWithLoggedUser"/>
+            <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2399_AddProductsFRomWishListToBasket"/>
         </classes>
     </test>
 

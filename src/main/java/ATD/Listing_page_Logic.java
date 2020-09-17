@@ -628,6 +628,13 @@ public class Listing_page_Logic extends Listing_page {
         return textFromAttribute;
     }
 
+    @Step("Gets the attribute of the element and returns the first word. Listing_page")
+    public String getAtributeFromElementAndReturnsFirstWord(SelenideElement element, String attribute) {
+        String textFromAttribute = element.attr(attribute);
+        String partText = textFromAttribute.replace(textFromAttribute.substring(textFromAttribute.indexOf(" ")), "");
+        return partText;
+    }
+
     @Step("Get text or attribute from filter. Listing_page")
     public String getTextOrAttributeFromFilter(SelenideElement firstElement, SelenideElement secondElement, String attribute) {
         String textFromElement = null;

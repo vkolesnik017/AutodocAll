@@ -7,7 +7,7 @@ import AWS.Order_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
-import mailinator.Mailinator;
+import mailinator.WebMail;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -19,10 +19,11 @@ import java.sql.SQLException;
 import static ATD.CommonMethods.*;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static mailinator.WebMail.passwordForMail;
 
 public class QC_1488_ChecksVerificationIslands_BillingIsUndivided_NegativeCase {
 
-    private String email = "qc_1488_autotestDE@mailinator.com", orderNumber;
+    private String email = "QC_1488_autotest@autodoc.si", orderNumber;
     private Float totalPrice, totalPriceAWSOrder, totalPriceInEmail;
 
     @BeforeClass
@@ -46,7 +47,7 @@ public class QC_1488_ChecksVerificationIslands_BillingIsUndivided_NegativeCase {
         new Search_page_Logic().closePopupOtherCategoryIfYes()
                 .cartClick().nextButtonClick()
                 .signIn(email, password)
-                .fillingPostalCodeField("97100")
+                .fillingPostalCodeFieldJSForShipping("97100")
                 .nextBtnClick()
                 .checkAbsenceOfPayPalMethod()
                 .chooseVorkasse().nextBtnClick()
@@ -54,7 +55,7 @@ public class QC_1488_ChecksVerificationIslands_BillingIsUndivided_NegativeCase {
                 .checkRegularDeliveryPriceAllData("165,00")
                 .checkAbsenceSafeOrderBlock();
         totalPrice = new CartAllData_page_Logic().clickBtnReturnToCartAddressPage()
-                .fillingPostalCodeField("33333")
+                .fillingPostalCodeFieldJSForShipping("33333")
                 .nextBtnClick()
                 .checkPresenceOfPayPalMethod()
                 .chooseVorkasse().nextBtnClick()
@@ -73,13 +74,13 @@ public class QC_1488_ChecksVerificationIslands_BillingIsUndivided_NegativeCase {
                 .checkVatStatusInOrder("Mit MwSt 20%")
                 .checkDeliveryPriceOrderAWS("9.95");
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
-        //TODO отключен по техническим обстоятельствам
-        /*totalPriceInEmail = new Mailinator().openEmail("qc_1488_autotestDE@mailinator.com")
-                .openLetter(1)
+
+        totalPriceInEmail = new WebMail().openMail("QC_1488_autotest@autodoc.si", passwordForMail)
+                .checkAndOpenLetterWithOrderNumber(orderNumber)
                 .checkTextContainingVatPercentageInEmail("Inkl. 20% MwSt")
                 .checkRegularDeliveryPriceInEmail("9,95")
                 .getTotalPriceInEmail();
-        Assert.assertEquals(totalPrice, totalPriceInEmail);*/
+        Assert.assertEquals(totalPrice, totalPriceInEmail);
     }
 
     @AfterMethod

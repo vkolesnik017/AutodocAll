@@ -144,8 +144,8 @@ public class Listing_accessories_page_Logic extends Listing_accessories_page {
     @Step("Checking sorting of Products with one brand selected then with two. Listing_accessories_page")
     public Listing_accessories_page_Logic checksSortingProductsWithOneBrandThenWithTwo() {
         Listing_page_Logic listingPageLogic = new Listing_page_Logic();
-        String firstBrandName = getNameFromFirstBrand();
-        String secondBrandName = getNameFromSecondBrand();
+        String firstBrandName = getNameFromFirstBrand().replace(getNameFromFirstBrand().substring(getNameFromFirstBrand().lastIndexOf(" ")),"");
+        String secondBrandName = getNameFromSecondBrand().replace(getNameFromSecondBrand().substring(getNameFromSecondBrand().lastIndexOf(" ")), "");
         clickOnFirstBrand();
         listingPageLogic.waitUntilPreloaderDisappear();
         listingPageLogic.checkProductTitleOnListing(firstBrandName, true, titleNameProductsFromListing());

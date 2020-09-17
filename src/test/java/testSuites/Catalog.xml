@@ -23,7 +23,7 @@
     <test name="QC_613_DisplayAllUndercategoriesTecdocCatalog">
         <classes>
             <class name="ATD.Catalog.QC_613_DisplayAllUndercategoriesTecdocCatalog.QC_614_DisplayUndercategoriesInCatalogRouteWithCar"/>
-            <!--<class name="ATD.Catalog.QC_613_DisplayAllUndercategoriesTecdocCatalog.QC_615_PresenceSubcategoriesOnFaqRootAndCatalogWithoutVehicle"/>-->
+            <class name="ATD.Catalog.QC_613_DisplayAllUndercategoriesTecdocCatalog.QC_615_PresenceSubcategoriesOnFaqRootAndCatalogWithoutVehicle"/>
         </classes>
     </test>
 

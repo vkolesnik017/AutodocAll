@@ -43,7 +43,7 @@ public class QC_8_FiltersSorting_TestBrandFilterWithTwoBrandsSelected {
 
     @DataProvider(name = "routesLKW", parallel = true)
     Object[] dataProviderLKW() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_search,lkw_category_car_list,lkw_category_car_list2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_search6,lkw_search,lkw_category_car_list,lkw_category_car_list2");
     }
 
     @Test(dataProvider = "routes")
@@ -82,8 +82,8 @@ public class QC_8_FiltersSorting_TestBrandFilterWithTwoBrandsSelected {
     @Description(value = "Test checks brand filter with two brands selected (Acc listing)")
     public void checkBrandFilterWithTwoBrandsSelectedAcc(String route) {
         openPage(route);
-        String brand1 = listingPageLogic.getAtributeFromElement(listingPageLogic.firstBrandNameInFiler(), "alt");
-        String brand2 = listingPageLogic.getAtributeFromElement(listingPageLogic.secondBrandNameInFilter(), "alt");
+        String brand1 = listingPageLogic.getAtributeFromElementAndReturnsFirstWord(listingPageLogic.firstBrandNameInFiler(), "alt");
+        String brand2 = listingPageLogic.getAtributeFromElementAndReturnsFirstWord(listingPageLogic.secondBrandNameInFilter(), "alt");
         listingPageLogic.clickFirstBrandNameInFilter()
                 .waitUntilPreloaderDisappear()
                 .clickSecondBrandNameInFilter()
@@ -91,7 +91,7 @@ public class QC_8_FiltersSorting_TestBrandFilterWithTwoBrandsSelected {
                 .checkProductTitleOnListingWithTwoExpectedTexts(brand1, brand2, true, listingPageLogic.productTitleInListMode());
     }
 
-    // TODO Вue to a defect in SHOP-196, disabled the check on the route lkw_search6
+
     @Test(dataProvider = "routesLKW")
     @Flaky
     @Owner(value = "Romaniuta")

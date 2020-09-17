@@ -827,4 +827,17 @@ public class Product_page_Logic extends Product_page {
         }
         return this;
     }
+
+    @Step("add product to WishList. Product_page")
+    public Product_page_Logic addProductToWishList() {
+        labelAddProductToWishList().shouldBe(visible).click();
+        labelAddProductToWishList().shouldHave(attribute("class","product-block__to-wishlist title_btn product-block__to-wishlist--added remove-article"));
+        return this;
+    }
+
+    @Step("go to WishList page. Search_page")
+    public Services_wishList_page_Logic goToWishListPage() {
+        iconOfWishList().shouldBe(visible).click();
+        return page(Services_wishList_page_Logic.class);
+    }
 }
