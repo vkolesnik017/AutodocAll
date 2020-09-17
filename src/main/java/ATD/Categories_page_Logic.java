@@ -319,4 +319,16 @@ public class Categories_page_Logic extends Categories_page {
                 .collect(Collectors.toList());
         return parentCategories;
     }
+
+    @Step("select Vehicle in KBA selector. Categories_page")
+    public Maker_car_list_page_Logic selectVehicleInSelector(String marke,String model,String motor) {
+        selectorInCloseCondition().click();
+        mainFormOfSelector().shouldBe(visible);
+        markeFieldInSelector().selectOptionByValue(marke);
+        modelFieldInSelector().selectOptionByValue(model);
+        motorFieldInSelector().selectOptionByValue(motor);
+        btnSearchOfSelector().click();
+        return page(Maker_car_list_page_Logic.class);
+    }
+
 }
