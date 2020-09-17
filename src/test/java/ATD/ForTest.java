@@ -52,7 +52,6 @@ public class ForTest extends SetUp {
         .getTotalPriceInEmail();
 
     }
-
 }
 
 
