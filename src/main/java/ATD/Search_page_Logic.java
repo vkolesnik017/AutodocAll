@@ -446,12 +446,6 @@ public class Search_page_Logic extends Search_page {
        return this;
     }
 
-
-
-
-
-
-
     @Step("remove products from WishList by click on label. Search_page")
     public Search_page_Logic removeProductsFromWishList(int countOfProduct) {
         String currentCountOfProduct;
