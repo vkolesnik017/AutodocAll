@@ -77,7 +77,7 @@ public class Product_page {
     }
 
     SelenideElement btnOpenRatingForm() {
-        return $x("//div[@class='pkw-rateblock__footer']/button");
+        return $x("//div[@class='pkw-rateblock__footer']//button");
     }
 
     public SelenideElement ratingFormDatenschutzerklarungLink() {
@@ -356,6 +356,10 @@ public class Product_page {
 
     SelenideElement blockRegNumber() {
         return $x("//*[@class='pkw-carselector__content-element'][3]//*[@class='medium-select']");
+    }
+
+    SelenideElement blockRegNumberForCH() {
+        return $x("//*[@class='pkw-carselector__content-element pkw-carselector__content-element_hoder']//*[@class='medium-select']");
     }
 
     SelenideElement blockWithReviewsMessage() {
