@@ -100,9 +100,10 @@ public class Index_chemicals_page_Logic extends Index_chemicals_page {
         return page(Cart_page_Logic.class);
     }
 
-    @Step("Get name first category in Logical Union after Hover. Index_chemicals_page")
+    @Step("Check the category block visibility and Get name first category in Logical Union after Hover. Index_chemicals_page")
     public String getNameFirstCategoryInLogicalUnionAfterHover() {
         catalogFirstGroup().hover();
+        catalogCategories().shouldBe(visible);
         return nameFirstCategoryInLogicalUnion().getText();
 
     }
@@ -186,6 +187,4 @@ public class Index_chemicals_page_Logic extends Index_chemicals_page {
         }
         return logicalUnionsId;
     }
-
-
 }
