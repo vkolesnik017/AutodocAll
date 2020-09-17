@@ -822,7 +822,7 @@ public class Main_page_Logic extends Main_page {
     @Step(": footer subscribe block on Main_page")
     public Main_page_Logic checkTransitionToLinkPrivacyPolicy(String route) throws SQLException {
         footerForm().scrollTo();
-        datenschutzLinkInSubscribeBlock().click();
+        datenschutzLinkInSubscribeBlock().shouldBe(visible).click();
         new CommonMethods().checkingUrlAndCloseTab(route + "/" + new DataBase("ATD").getRouteByRouteName(getShopFromRoute(route), "staticDatenschutz"));
         return this;
     }

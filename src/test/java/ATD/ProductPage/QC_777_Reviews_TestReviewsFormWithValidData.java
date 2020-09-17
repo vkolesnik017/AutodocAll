@@ -9,7 +9,7 @@ import AWS.Reviews_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
-import mailinator.Mailinator;
+import mailinator.WebMail;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -37,8 +37,8 @@ public class QC_777_Reviews_TestReviewsFormWithValidData {
         String randomEmail = mailRandomMailinator("777");
         String reviewMessage = ("QC_777_AUTOTEST_REVIEWS" + getRandomNumber());
         new Product_page_Logic().enterValidReviewData(randomEmail, reviewMessage);
-        new Mailinator().openEmail(randomEmail)
-                .openLetter(2)
+        new WebMail().openMail(randomEmail)
+                .openLetterInOldMailServiceMailinator(2)
                 .clickFAQemailConfirm();
         switchTo().window(1);
         new Reviews_Confirmation_page_Logic().checkReviewsConfirmationMessage();

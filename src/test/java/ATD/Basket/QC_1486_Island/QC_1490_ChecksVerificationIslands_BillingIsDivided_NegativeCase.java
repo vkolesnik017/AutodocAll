@@ -7,7 +7,7 @@ import AWS.Order_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
-import mailinator.Mailinator;
+import mailinator.WebMail;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -19,10 +19,11 @@ import java.sql.SQLException;
 import static ATD.CommonMethods.*;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static mailinator.WebMail.passwordForMail;
 
 public class QC_1490_ChecksVerificationIslands_BillingIsDivided_NegativeCase {
 
-    private String email = "qc_1490_autotestDE@mailinator.com",orderNumber;
+    private String email = "QC_1490_autotest@autodoc.si",orderNumber;
     private Float totalPrice, totalPriceAWSOrder, totalPriceInEmail;
 
     @BeforeClass
@@ -64,13 +65,13 @@ public class QC_1490_ChecksVerificationIslands_BillingIsDivided_NegativeCase {
                 .checkVatStatusInOrder("Mit MwSt 20%")
                 .checkDeliveryPriceOrderAWS("9.95");
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
-        //TODO отключен по техническим обстоятельствам
-        /*totalPriceInEmail = new Mailinator().openEmail("qc_1490_autotestDE@mailinator.com")
-                .openLetter(1)
+
+        totalPriceInEmail = new WebMail().openMail("QC_1490_autotest@autodoc.si", passwordForMail)
+                .checkAndOpenLetterWithOrderNumber(orderNumber)
                 .checkRegularDeliveryPriceInEmail("9,95")
                 .checkTextContainingVatPercentageInEmail("Inkl. 20% MwSt")
                 .getTotalPriceInEmail();
-        Assert.assertEquals(totalPrice, totalPriceInEmail);*/
+        Assert.assertEquals(totalPrice, totalPriceInEmail);
     }
 
     @AfterMethod

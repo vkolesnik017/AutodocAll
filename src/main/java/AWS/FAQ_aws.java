@@ -3,7 +3,7 @@ package AWS;
 
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
-import mailinator.Mailinator;
+import mailinator.WebMail;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.appear;
@@ -101,8 +101,8 @@ public class FAQ_aws {
         faqResponseInput().sendKeys(faqResponse);
         faqAWSsubmitButton().click();
         searchTextOnPage(faqResponse).click();
-        new Mailinator().openEmail(randomEmail)
-                .openLetter(1);
+        new WebMail().openMail(randomEmail)
+                .openLetterInOldMailServiceMailinator(1);
         searchTextOnPage(faqResponse).shouldBe(visible);
         return this;
     }

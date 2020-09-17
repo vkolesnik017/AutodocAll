@@ -6,7 +6,7 @@ import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
-import mailinator.Mailinator;
+import mailinator.WebMail;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -22,7 +22,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 public class QC_1884_RegistrationNegativeCase_PasswordRecoveryCheck {
 
     private String mail = "QC_1884_autotestATD@mailinator.com";
-    private Mailinator mailinator = new Mailinator();
+    private WebMail webMail = new WebMail();
 
     @BeforeClass
     void setUp() {
@@ -46,8 +46,8 @@ public class QC_1884_RegistrationNegativeCase_PasswordRecoveryCheck {
                 .nextButtonClick()
                 .registrationFromCart(mail);
         new CartAccount_page_Logic().recoveryPassFromPopUpEmailAlreadyExists(mail);
-        mailinator.openEmail(mail).letterInfo(1).shouldHave(text("moments ago")).shouldHave(text("neues Passwort"));
-        mailinator.openLetter(1)
+        webMail.openMail(mail).letterInfo(1).shouldHave(text("moments ago")).shouldHave(text("neues Passwort"));
+        webMail.openLetterInOldMailServiceMailinator(1)
                 .clickLinkRecoveryPasswordInLetter();
     }
 

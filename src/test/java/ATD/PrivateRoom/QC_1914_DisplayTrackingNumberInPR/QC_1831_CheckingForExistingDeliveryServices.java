@@ -6,7 +6,7 @@ import Common.DataBase;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
-import mailinator.Mailinator;
+import mailinator.WebMail;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -24,7 +24,7 @@ public class QC_1831_CheckingForExistingDeliveryServices {
 
     private Main_page_Logic main_page_logic = new Main_page_Logic();
     private Profile_orders_page_Logic profile_orders_page_logic = new Profile_orders_page_Logic();
-    private Mailinator mailinator = new Mailinator();
+    private WebMail webMail = new WebMail();
     private DataBase dataBase = new DataBase("ATD");
 
     @BeforeClass

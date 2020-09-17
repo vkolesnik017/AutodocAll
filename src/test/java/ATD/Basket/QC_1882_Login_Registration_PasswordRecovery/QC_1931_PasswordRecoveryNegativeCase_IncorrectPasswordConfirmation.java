@@ -6,7 +6,7 @@ import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
-import mailinator.Mailinator;
+import mailinator.WebMail;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -22,7 +22,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 public class QC_1931_PasswordRecoveryNegativeCase_IncorrectPasswordConfirmation {
 
     private String mail = "QC_1931_autotestATD@mailinator.com";
-    private Mailinator mailinator = new Mailinator();
+    private WebMail webMail = new WebMail();
     private PasswordRecovery_page passwordRecovery_page = new PasswordRecovery_page();
 
     @BeforeClass
@@ -46,8 +46,8 @@ public class QC_1931_PasswordRecoveryNegativeCase_IncorrectPasswordConfirmation 
                 .cartClick()
                 .nextButtonClick()
                 .passwordRecoveryRequestFromCart(mail);
-        mailinator.openEmail(mail).letterInfo(1).shouldHave(text("moments ago")).shouldHave(text("neues Passwort"));
-        mailinator.openLetter(1)
+        webMail.openMail(mail).letterInfo(1).shouldHave(text("moments ago")).shouldHave(text("neues Passwort"));
+        webMail.openLetterInOldMailServiceMailinator(1)
                 .clickLinkRecoveryPasswordInLetter()
                 .checkTextInPopupErrorWhenFieldsNotFilled("Das Feld Passwort ist erforderlich und muss einen Wert enthalten.")
                 .checkTextInPopupErrorWhenEnteringDifferentPasswords("1111", "2222",

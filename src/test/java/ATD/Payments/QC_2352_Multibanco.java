@@ -7,7 +7,7 @@ import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
-import mailinator.Mailinator;
+import mailinator.WebMail;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -20,6 +20,7 @@ import static ATD.CommonMethods.*;
 import static Common.DataBase.parseUserMailFromBD;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static mailinator.WebMail.passwordForMail;
 
 public class QC_2352_Multibanco {
 
@@ -70,10 +71,10 @@ public class QC_2352_Multibanco {
                 .checkCurrentStatusInOrder("Testbestellungen")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceAllData, totalPriceOrderAwsAfterReSave);
-        //TODO отключен по техническим обстоятельствам
-        /*new Mailinator().openEmail(mail)
+
+        new WebMail().openMail(mail, passwordForMail)
                 .checkAndOpenLetterWithOrderNumber(orderNum)
-                .comparesTextOfRequisitesInMailWithExpectedRequisites(requisitesText);*/
+                .comparesTextOfRequisitesInMailWithExpectedRequisites(requisitesText);
     }
 
     @AfterMethod
