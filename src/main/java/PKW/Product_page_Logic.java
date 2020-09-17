@@ -327,9 +327,9 @@ public class Product_page_Logic extends Product_page {
     @Step("Displaying the review pop up on the product page with rating. Product_page")
     public Product_page_Logic displayingReviewPopUpWithRating() {
         productRatingStars().shouldBe(visible).click();
-        btnOpenRatingForm().shouldBe(visible).click();
-        reviewFormArtikelBewertenButton().waitUntil(appear, 2000);
-        reviewFormArtikelBewertenButton().shouldBe(visible);
+        sleep(4000);
+        btnOpenRatingForm().scrollIntoView(false).click();
+        reviewFormArtikelBewertenButton().waitUntil(visible, 6000);
         overlayBehindReviewForm().shouldBe(visible).shouldHave(attribute("style", "display: block;"));
         return this;
     }
@@ -349,6 +349,12 @@ public class Product_page_Logic extends Product_page {
     @Step("Displaying of the Reg Number block. Product_page")
     public Product_page_Logic visibilityOfTheRegNumberBlock() {
         blockRegNumber().shouldBe(visible, exist);
+        return this;
+    }
+
+    @Step("Displaying of the Reg Number block for CH shop. Product_page")
+    public Product_page_Logic visibilityOfTheRegNumberBlockCH() {
+        blockRegNumberForCH().shouldBe(visible, exist);
         return this;
     }
 }
