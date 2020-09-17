@@ -66,4 +66,12 @@ public class Tyre_form_page {
 
     SelenideElement iconOfWishList() { return $x("//span[@class='header__wishes link']"); }
 
+    SelenideElement btnPrevInPagination() {
+        return $x("//div[@class='pagination']//span[@class='previous']/a");
+    }
+
+    SelenideElement btnLastInPagination() {
+       return  $x("//div[@class='pagination']//span[@class='last']/a");
+    }
+
 }

@@ -8,9 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
-import static com.codeborne.selenide.Condition.exactText;
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.Wait;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.WebDriverRunner.url;
@@ -200,7 +198,7 @@ public class Tyres_page_Logic extends Tyres_page {
         @Step("Check top block presence. Tyres_page")
         public Tyres_page_Logic checkTopBlock() {
             topBlock().shouldBe(visible);
-            productsInTopBlock().shouldHaveSize(5);
+            productsInTopBlock().shouldHaveSize(12);
             return this;
         }
 
