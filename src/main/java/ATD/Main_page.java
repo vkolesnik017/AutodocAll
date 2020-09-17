@@ -370,6 +370,10 @@ public class Main_page {
         return $x("//span[@data-ga-action='footer']");
     }
 
+    SelenideElement autodocPartners() {
+        return $x("//span[@data-ga-action='Partners']");
+    }
+
     //HILFE & SUPPORT
 
     SelenideElement autodocClubLink(){

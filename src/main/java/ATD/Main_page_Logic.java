@@ -513,6 +513,12 @@ public class Main_page_Logic extends Main_page {
         return page(AutodocPlus_page_Logic.class);
     }
 
+    @Step("Click AutodocPartners link in the footer. Main_page")
+    public AutodocPlus_page_Logic clickAutodocPartners() {
+        autodocPartners().click();
+        return page(AutodocPlus_page_Logic.class);
+    }
+
     //HILFE & SUPPORT
 
     @Step("Click AutodocClub link in the footer. Main_page")
@@ -683,6 +689,8 @@ public class Main_page_Logic extends Main_page {
         commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "staticMobileApp"));
         clickAutodocPlus();
         commonMethods.checkingUrl(route + "/" + db.getRouteByRouteName(shop, "service_packages"));
+        clickAutodocPartners();
+        commonMethods.checkingUrlAndCloseTab(db.getRouteByRouteName(getCurrentShopFromJSVarInHTML(), "autodocPartners"));
         //HILFE & SUPPORT
         clickHilfeCenterLink();
         commonMethods.checkingUrlAndCloseTab(db.getRouteByRouteName(getCurrentShopFromJSVarInHTML(), "hilfe_center_main"));
