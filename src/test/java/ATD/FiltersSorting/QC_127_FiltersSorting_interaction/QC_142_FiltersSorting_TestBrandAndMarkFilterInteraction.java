@@ -31,8 +31,8 @@ public class QC_142_FiltersSorting_TestBrandAndMarkFilterInteraction {
     @Description(value = "Test checks brand and mark filters interaction Oem listing")
     public void testBrandAndMarkFilterInteractionOem() throws SQLException {
         openPage("https://autodoc.de/" + dataBase.getRouteByRouteName("DE", "category_oen3"));
-        String carBrandName = listingPage.getAtributeFromElement(listingPage.carBrandFilterOem(), "data-value");
-        String brandName = listingPage.getAtributeFromElement(listingPage.firstBrandNameOemListing(), "alt");
+        String carBrandName = listingPage.getAtributeFromElementAndReturnsFirstWord(listingPage.carBrandFilterOem(), "data-value");
+        String brandName = listingPage.getAtributeFromElementAndReturnsFirstWord(listingPage.firstBrandNameOemListing(), "alt");
         listingPage.clickFilterButton(listingPage.carBrandFilterOem())
                 .waitUntilPreloaderDisappear()
                 .clickFilterButton(listingPage.firstBrandButtonOemListing())
