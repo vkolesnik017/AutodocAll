@@ -673,5 +673,12 @@ public class Product_page {
    SelenideElement linkOfCompatibilityVehicleAndProduct() {return $x("//div[contains(text(),'Kompatibel mit folgenden PKWs')]/..//div[@class='accordion-selected']/p");}
 
     ElementsCollection titleOfCharacteristic(){return  $$x("//li[@class='important']/span[1]").filter(Condition.visible);}
+
     ElementsCollection valueOfCharacteristic() {return $$x("//li[@class='important']/span[2]").filter(Condition.visible);}
+
+    SelenideElement labelAddProductToWishList() {return $x("//div[@class='product-block__top-icons']/span");}
+
+    SelenideElement iconOfWishList() {
+        return $x("//span[@class='header__wishes link']");
+    }
 }

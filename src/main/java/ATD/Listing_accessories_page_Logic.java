@@ -24,6 +24,13 @@ public class Listing_accessories_page_Logic extends Listing_accessories_page {
         return this;
     }
 
+    @Step("Checking that selected brand become not active after clicking on it for one brand. Listing_accessories_page")
+    public Listing_accessories_page_Logic clickFirstActiveBrand() {
+        selectedBrand().shouldBe(visible).click();
+        new Listing_page_Logic().waitUntilPreloaderDisappear();
+        return this;
+    }
+
     @Step("Checking presence title categories block in Sidebar. Listing_accessories_page")
     public Listing_accessories_page_Logic checkingPresenceTitleCategoriesBlockInSidebar() {
         titleCategoriesBlockInSidebar().shouldBe(visible);
@@ -137,8 +144,8 @@ public class Listing_accessories_page_Logic extends Listing_accessories_page {
     @Step("Checking sorting of Products with one brand selected then with two. Listing_accessories_page")
     public Listing_accessories_page_Logic checksSortingProductsWithOneBrandThenWithTwo() {
         Listing_page_Logic listingPageLogic = new Listing_page_Logic();
-        String firstBrandName = getNameFromFirstBrand();
-        String secondBrandName = getNameFromSecondBrand();
+        String firstBrandName = getNameFromFirstBrand().replace(getNameFromFirstBrand().substring(getNameFromFirstBrand().lastIndexOf(" ")),"");
+        String secondBrandName = getNameFromSecondBrand().replace(getNameFromSecondBrand().substring(getNameFromSecondBrand().lastIndexOf(" ")), "");
         clickOnFirstBrand();
         listingPageLogic.waitUntilPreloaderDisappear();
         listingPageLogic.checkProductTitleOnListing(firstBrandName, true, titleNameProductsFromListing());
@@ -191,7 +198,7 @@ public class Listing_accessories_page_Logic extends Listing_accessories_page {
         twoFirstBrandsFromBegin.add(firstCheckedBrand);
         twoFirstBrandsFromBegin.add(secondCheckedBrand);
         if (!twoFirstBrandsFromBegin.contains(secondActiveBrand) && twoFirstBrandsFromBegin.contains(sevenActiveBrand)) {
-            Assert.fail( " Two first brands does not match selected brands");
+            Assert.fail(" Two first brands does not match selected brands");
         }
         firstVisibleBrandToGetData().shouldHave(attribute("data-checked", "true"));
         secondVisibleBrandToGetData().shouldHave(attribute("data-checked", "true"));
@@ -237,7 +244,7 @@ public class Listing_accessories_page_Logic extends Listing_accessories_page {
     @Step("Click button add to basket first product. Listing_accessories_page")
     public Listing_accessories_page_Logic clickBtnAddToBasketFirstProduct() {
         redBtnAddToBasket().click();
-        popupBasketAddedProducts().waitUntil(attribute("style","visibility: visible; opacity: 1;"), 10000);
+        popupBasketAddedProducts().waitUntil(attribute("style", "visibility: visible; opacity: 1;"), 10000);
         return this;
     }
 
@@ -257,7 +264,7 @@ public class Listing_accessories_page_Logic extends Listing_accessories_page {
     @Step("Checking work quantity counter on decrease and increase products. Listing_accessories_page")
     public Listing_accessories_page_Logic checkingWorkQuantityCounterOnDecreaseAndIncrease() {
         new CommonMethods().checkingCounterIncrease(3, counterValueInQuantityCounter(), btnPlusInQuantityCounter());
-        new CommonMethods().checkingCounterDecrease(2, counterValueInQuantityCounter(), btnMinusInQuantityCounter() );
+        new CommonMethods().checkingCounterDecrease(2, counterValueInQuantityCounter(), btnMinusInQuantityCounter());
         counterValueInQuantityCounter().shouldHave(attribute("value", "2"));
         return this;
     }

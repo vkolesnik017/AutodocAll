@@ -24,4 +24,12 @@ public class Profile_wishlist {
     ElementsCollection blocksInSideBar() {
         return $$x("//ul[@class='menu_member']/li/a").filter(visible);
     }
+
+    SelenideElement infoText() {return $x("//p[contains(text(),'Ihre Wunschliste ist leer. Gehen Sie zum Katalog, um ein Produkt auszuwählen.')]");}
+
+    SelenideElement btnOpenCatalog() {return $x("//div[@class='profile-msg']/a");}
+
+    SelenideElement idOfClient() {return $x("//div[@class='top_title']");}
+
+    SelenideElement nameOfClient() {return $x("//span[@class='name']");}
 }

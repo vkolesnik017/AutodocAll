@@ -1150,4 +1150,10 @@ public class Main_page_Logic extends Main_page {
          allSparePartsLink().shouldBe(visible).click();
         return page(LKW_Categories_page_Logic.class);
     }
+
+    @Step("go to WishList page. Search_page")
+    public Services_wishList_page_Logic goToWishListPage() {
+        iconOfWishList().shouldBe(visible).click();
+        return page(Services_wishList_page_Logic.class);
+    }
 }

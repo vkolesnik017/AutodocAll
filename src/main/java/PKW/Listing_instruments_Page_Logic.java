@@ -84,7 +84,7 @@ public class Listing_instruments_Page_Logic extends Listing_instruments_Page {
     @Step("Click button add to basket first product. Listing_instruments_Page")
     public Listing_instruments_Page_Logic clickBtnAddToBasketFirstProduct() {
         redBtnAddToBasket().click();
-        popupBasketAddedProducts().waitUntil(attribute("style","visibility: visible; opacity: 1;"), 10000);
+        popupBasketAddedProducts().waitUntil(attribute("style", "visibility: visible; opacity: 1;"), 10000);
         return this;
     }
 
@@ -97,7 +97,7 @@ public class Listing_instruments_Page_Logic extends Listing_instruments_Page {
     @Step("Checking work quantity counter on decrease and increase products. Listing_instruments_Page")
     public Listing_instruments_Page_Logic checkingWorkQuantityCounterOnDecreaseAndIncrease() {
         new CommonMethods().checkingCounterIncrease(3, counterValueInQuantityCounter(), btnPlusInQuantityCounter());
-        new CommonMethods().checkingCounterDecrease(2, counterValueInQuantityCounter(), btnMinusInQuantityCounter() );
+        new CommonMethods().checkingCounterDecrease(2, counterValueInQuantityCounter(), btnMinusInQuantityCounter());
         counterValueInQuantityCounter().shouldHave(attribute("value", "2"));
         return this;
     }
@@ -114,4 +114,27 @@ public class Listing_instruments_Page_Logic extends Listing_instruments_Page {
         return this;
     }
 
+    @Step("Checking presence and functionality of the breadcrumbs block. Listing_instruments_page")
+    public Listing_instruments_Page_Logic checkingPresenceBreadcrumbsBlock() {
+        blockBreadcrumbs().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Click on first breadcrumb. Listing_instruments_page")
+    public Parts_page clickOnFirstBreadcrumb() {
+        firstBreadcrumb().click();
+        return page(Parts_page_Logic.class);
+    }
+
+    @Step("Click on second breadcrumb. Listing_instruments_Page")
+    public Index_instruments_page clickOnSecondBreadcrumb() {
+        secondBreadcrumb().click();
+        return page(Index_instruments_page_Logic.class);
+    }
+
+    @Step("Checking presence and not clickable third breadcrumb. Listing_instruments_Page")
+    public Listing_instruments_Page_Logic checkingPresenceAndNotClickableThirdBreadcrumb() {
+        thirdBreadcrumb().shouldBe(visible).shouldNotHave(attribute("href"));
+        return this;
+    }
 }

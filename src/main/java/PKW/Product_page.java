@@ -306,15 +306,22 @@ public class Product_page {
         return $x("//*[@class='pkw-oem__ul']//a[contains(text(),'AUDI')]");
     }
 
-    SelenideElement btnAddProductToBasket() {return $x("//button[@class='pkw-product__buy-btn basket_btn ']");}
+    SelenideElement btnAddProductToBasket() {
+        return $x("//button[@class='pkw-product__buy-btn basket_btn ']");
+    }
 
-    SelenideElement dropDownPopUpOfBasket() {return $x("//div[@class='cart-items-block ']");}
+    SelenideElement dropDownPopUpOfBasket() {
+        return $x("//div[@class='cart-items-block ']");
+    }
 
-    ElementsCollection allCharacteristics() {return $$x("//div[@class='pkw-table']/ul/li");}
+    ElementsCollection allCharacteristics() {
+        return $$x("//div[@class='pkw-table']/ul/li");
+    }
 
     SelenideElement validationNameMessageReview() {
         return $x("//form[@class='pkw-messagesblock__first-message five_stars_rating_form invalid']//div[@class='rating_name_error error']");
     }
+
     SelenideElement validationEmailMessageReview() {
         return $x("//form[@class='pkw-messagesblock__first-message five_stars_rating_form invalid']//div[@class='rating_email_error error']");
     }
@@ -326,6 +333,7 @@ public class Product_page {
     SelenideElement validationCheckboxMessageReview() {
         return $x("//form[@class='pkw-messagesblock__first-message five_stars_rating_form invalid']//div[@class='subscribe_accept_error error']");
     }
+
     SelenideElement productRatingStarsNotFilling() {
         return $x("//*[@class='pkw-product__rating']");
     }
@@ -342,7 +350,15 @@ public class Product_page {
         return $x("//*[@class='pkw-popup pkw-modal__rating-window test']");
     }
 
+    SelenideElement blockKBANumber() {
+        return $x("//*[@class='medium-select top-select']");
+    }
+
+    SelenideElement blockRegNumber() {
+        return $x("//*[@class='pkw-carselector__content-element'][3]//*[@class='medium-select']");
+    }
+
     SelenideElement blockWithReviewsMessage() {
         return $x("//*[@class='product-feedback_wrap_comments']");
     }
-    }
+}

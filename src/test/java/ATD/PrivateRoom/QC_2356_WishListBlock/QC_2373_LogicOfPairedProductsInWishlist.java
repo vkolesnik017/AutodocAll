@@ -31,8 +31,8 @@ public class QC_2373_LogicOfPairedProductsInWishlist {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks transition to WishList with logged user")
-    public void testChecksTransitionToWishListWithLoggedUser(String route) {
+    @Description(value = "Test checks logic of Paired products in Wishlist")
+    public void testChecksLogicOfPairedProductsInWishlist(String route) {
         openPage(route);
 
         new Search_page_Logic().presenceOfTecDocListing().addedProductToWishList(1).goToWishListPage().increaseQuantityOfProduct(1);
