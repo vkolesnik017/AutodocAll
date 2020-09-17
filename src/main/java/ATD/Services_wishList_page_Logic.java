@@ -1,23 +1,29 @@
 package ATD;
 
-import Common.DataBase;
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
-import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class Services_wishList_page_Logic extends Services_wishList_page {
 
-    @Step("presence of product list.   Services_wishList_page")
+    @Step("presence of product list.  Services_wishList_page")
     public Services_wishList_page_Logic presenceOfProductList() {
         productList().shouldBe(visible);
+        return this;
+    }
+
+    @Step("check count of products in list.  Services_wishList_page")
+    public Services_wishList_page_Logic checkCountOfProducts(int expectedCount) {
+        listOfProducts().shouldHaveSize(expectedCount);
         return this;
     }
 
@@ -121,4 +127,79 @@ public class Services_wishList_page_Logic extends Services_wishList_page {
         return this;
     }
 
-   }
+    @Step("click on 'Add product to basket' button. Services_wishList_page")
+    public Services_wishList_page_Logic clickOnBtnAddProductToBasket() {
+        btnBuyAllProducts().shouldBe(visible).click();
+        dialogPopUp().shouldBe(visible);
+        return this;
+    }
+
+    @Step("click on random element of pop-Up. Services_wishList_page")
+    public Cart_page_Logic clickOnRandomElementOfPopUp() {
+        List<SelenideElement> list = Arrays.asList(btnCloseXRemoveProductPopUp(), btnCloseRemoveProductPopUp());
+        Random rand = new Random();
+        int randomIndex = rand.nextInt(list.size());
+        list.get(randomIndex).click();
+        return page(Cart_page_Logic.class);
+    }
+
+    @Step("click on 'Show alternative products' button. Services_wishList_page")
+    public Services_wishList_page_Logic clickOnShowAlternativeProducts(int positionOfProduct) {
+        btnAlternativeProducts().get(positionOfProduct).shouldBe(visible).click();
+        alternativeBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("hover on Alternative product. Services_wishList_page")
+    public Services_wishList_page_Logic hoverOnAlternativeProduct(int positionOfProducts) {
+        alternativeBlock().shouldBe(visible);
+        imageOfAlternativeProducts().get(positionOfProducts).hover();
+        descriptionPopUpOfAlternativeProduct().get(positionOfProducts).shouldBe(visible);
+        return this;
+    }
+
+    @Step("get id of alternative product. Services_wishList_page")
+    public String getIdOfAlternativeProduct(int positionOfProduct) {
+        String idOfAddedProduct = btnAddAlternativeProductToBasket().get(positionOfProduct).shouldBe(visible).getAttribute("id");
+        return idOfAddedProduct;
+    }
+
+    @Step("add Alternative product to basket. Services_wishList_page")
+    public Cart_page_Logic addAlternativeProductToBasket(int positionOfProduct) {
+        btnAddAlternativeProductToBasket().get(positionOfProduct).shouldBe(visible).click();
+        basketDropMenu().should(appear);
+        basketDropMenu().should(disappear);
+        basket().click();
+        return page(Cart_page_Logic.class);
+    }
+
+    @Step("check elements with not logged user. Services_wishList_page")
+    public Services_wishList_page_Logic checkElementsWithNotLoggedUser() {
+        infoText().shouldBe(visible);
+        btnOpenCatalog().shouldBe(visible);
+        activeWishListItemInSidebar().shouldBe(visible).shouldHave(cssValue("color", "rgba(251, 101, 29, 1)"));
+        return this;
+    }
+
+    @Step("click on WishList item in Sidebar. Services_wishList_page")
+    public Services_wishList_page_Logic clickOnWishListItemInSidebar() {
+        activeWishListItemInSidebar().shouldBe(visible).click();
+        loginPopUp().shouldBe(visible);
+        return this;
+    }
+
+    @Step("close Login pop-Up. Services_wishList_page")
+    public Services_wishList_page_Logic closeLoginPopUp() {
+        if (btnCloseLoginPopUp().isDisplayed()){
+            btnCloseLoginPopUp().click();
+        }
+        loginPopUp().shouldNotBe(visible);
+        return this;
+    }
+
+    @Step("go to Catalog. Services_wishList_page")
+    public Categories_page_Logic goToCatalog() {
+        btnOpenCatalog().shouldBe(visible).click();
+        return page(Categories_page_Logic.class);
+    }
+}

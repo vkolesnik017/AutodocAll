@@ -21,6 +21,9 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1366_CategoriesSelectedLogicalUnion {
 
+    private String nameCategory, titleCategory;
+    private Listing_accessories_page_Logic listing_accessories_page_logic = new Listing_accessories_page_Logic();
+
     private ArrayList nameCategories, nameCategoriesSidebar;
     private Index_accessories_page_Logic index_accessories_page_logic = new Index_accessories_page_Logic();
 
@@ -39,15 +42,18 @@ public class QC_1366_CategoriesSelectedLogicalUnion {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test Checking category comparison between sidebar and logical union.")
+    @Description(value = "Test Checking category comparison between sidebar and logical union and transition on listing page when clicking on a category in Sidebar.")
     public void testChecksComparisonCategoriesBetweenSidebarAndLogicalUnion(String route) {
         openPage(route);
         nameCategories = new Index_accessories_page_Logic().getNameAllCategoriesInLogicalUnionAndAddToList();
         index_accessories_page_logic.clicksOnCategory();
         nameCategoriesSidebar = new Listing_accessories_page_Logic().getNameAllCategoriesInSidebarAndTitleNamePage();
         Assert.assertEquals(nameCategories, nameCategoriesSidebar);
+        nameCategory = listing_accessories_page_logic.getNameFirstCategoryInSidebar();
+        listing_accessories_page_logic.clickOnFirstCategoryInSidebar();
+        titleCategory = new Listing_accessories_page_Logic().getTitleName();
+        Assert.assertEquals(nameCategory, titleCategory);
     }
-
 
     @AfterMethod
     private void close() {

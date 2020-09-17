@@ -86,4 +86,8 @@ public class Maker_car_list_page {
     SelenideElement tecDocCatalog() {return $x("//div[@class='list_ersats_n list-ersatz-n--catalog']");}
 
     ElementsCollection titleOfParentCategories() { return $$x("//span[@class='name']");    }
+
+    SelenideElement iconOfWishList() {
+        return $x("//span[@class='header__wishes link']");
+    }
 }

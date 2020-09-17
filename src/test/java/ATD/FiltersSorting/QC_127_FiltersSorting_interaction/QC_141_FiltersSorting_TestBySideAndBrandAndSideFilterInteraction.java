@@ -61,7 +61,7 @@ public class QC_141_FiltersSorting_TestBySideAndBrandAndSideFilterInteraction {
                 .waitUntilPreloaderDisappear()
                 .clickFilterBySideBack()
                 .waitUntilPreloaderDisappear();
-        String brandName = listingPage.getAtributeFromElement(listingPage.firstBrandNameOemListing(), "alt");
+        String brandName = listingPage.getAtributeFromElementAndReturnsFirstWord(listingPage.firstBrandNameOemListing(), "alt");
         listingPage.clickFilterButton(listingPage.firstBrandButtonOemListing())
                 .waitUntilPreloaderDisappear()
                 .checkProductAttributeOnListingWithCarAndFilter("Hinterachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute())
@@ -77,7 +77,7 @@ public class QC_141_FiltersSorting_TestBySideAndBrandAndSideFilterInteraction {
         openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "search19"));
         listingPage.clickFilterBySideBack()
                 .waitUntilPreloaderDisappearAndSleep(3000);
-        String brandName = listingPage.getAtributeFromElement(listingPage.firstBrandNameInFiler(), "alt");
+        String brandName = listingPage.getAtributeFromElementAndReturnsFirstWord(listingPage.firstBrandNameInFiler(), "alt");
         listingPage.clickFilterButton(listingPage.firstBrandInFilterButton())
                 .waitUntilPreloaderDisappear();
         String durchmesserValue = listingPage.getTextFromElement(listingPage.durchmesserSideFilterButtonFirstValue());

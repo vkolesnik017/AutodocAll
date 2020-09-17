@@ -7,7 +7,7 @@ import AWS.WishlistReminderAvailability_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
-import mailinator.Mailinator;
+import mailinator.WebMail;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -21,7 +21,7 @@ public class QC_1025_GrayButtonOnProductPage {
 
     private String email = "QC_1025_autotestATD@mailinator.com";
 
-    private Mailinator mailinator = new Mailinator();
+    private WebMail webMail = new WebMail();
     private Product_page_Logic product_page = new Product_page_Logic();
     private WishlistReminderAvailability_aws wishlistReminderAvailability = new WishlistReminderAvailability_aws();
 
@@ -46,7 +46,7 @@ public class QC_1025_GrayButtonOnProductPage {
         int beforeCountRequests = wishlistReminderAvailability.getBeforeCountRequests();
         product_page.openProductPageById(route, idProduct)
                 .sendRequestByGrayButtonFromProductPage(email);
-        mailinator.openEmail(email)
+        webMail.openMail(email)
                 .checkLetterInfoText(1, "moments ago", "Wir bearbeiten");
         open(wishlistReminderAvailability.urlWithCurrentDate);
         wishlistReminderAvailability.checkAfterCountRequest(beforeCountRequests, idProduct);

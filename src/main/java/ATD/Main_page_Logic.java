@@ -822,7 +822,7 @@ public class Main_page_Logic extends Main_page {
     @Step(": footer subscribe block on Main_page")
     public Main_page_Logic checkTransitionToLinkPrivacyPolicy(String route) throws SQLException {
         footerForm().scrollTo();
-        datenschutzLinkInSubscribeBlock().click();
+        datenschutzLinkInSubscribeBlock().shouldBe(visible).click();
         new CommonMethods().checkingUrlAndCloseTab(route + "/" + new DataBase("ATD").getRouteByRouteName(getShopFromRoute(route), "staticDatenschutz"));
         return this;
     }
@@ -1141,5 +1141,11 @@ public class Main_page_Logic extends Main_page {
     public LKW_Categories_page_Logic clickOnAllSparePartsLinkInTopParentsBlock() {
          allSparePartsLink().shouldBe(visible).click();
         return page(LKW_Categories_page_Logic.class);
+    }
+
+    @Step("go to WishList page. Search_page")
+    public Services_wishList_page_Logic goToWishListPage() {
+        iconOfWishList().shouldBe(visible).click();
+        return page(Services_wishList_page_Logic.class);
     }
 }

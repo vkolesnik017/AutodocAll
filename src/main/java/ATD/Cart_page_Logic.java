@@ -44,7 +44,7 @@ public class Cart_page_Logic extends Cart_page {
     @Step("Click uncover characteristics for first product and get his characteristics. Cart_page")
     public ElementsCollection getCharacteristicsOfProduct() {
         uncoverCharacteristics().click();
-        return $$(".info__description>li").shouldHave(sizeGreaterThan(4));
+        return $$(".info__description>li").shouldHave(sizeGreaterThan(2));
     }
 
     @Step("Make price for minimum order for CH. Cart_page")
