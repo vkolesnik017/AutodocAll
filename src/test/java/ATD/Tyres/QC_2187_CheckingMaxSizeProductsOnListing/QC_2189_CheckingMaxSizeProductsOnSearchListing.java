@@ -1,6 +1,6 @@
-package ATD.ACC.QC_2143_ToolsListing;
+package ATD.Tyres.QC_2187_CheckingMaxSizeProductsOnListing;
 
-import ATD.Listing_instruments_page_Logic;
+import ATD.Tyre_form_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -10,34 +10,33 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import java.sql.SQLException;
-import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.Selenide.open;
 
-public class QC_2144_TitleOnToolsListing {
+public class QC_2189_CheckingMaxSizeProductsOnSearchListing {
 
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "route", parallel = true)
+    @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main","listing_instruments,listing_instruments5");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyre_form7");
     }
 
-    @Test(dataProvider = "route")
+    @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test checks title page.")
-    public void testCheckingPresenceTitlePage(String route) {
-        openPage(route);
-        new Listing_instruments_page_Logic().checkingPresenceTitlePage();
+    @Description(value = "Test Checking  max size products on listing")
+    public void testCheckingMaxSizeProductsOnListing(String route) {
+        open(route);
+        new Tyre_form_page_Logic().checkingMaxSizeProductsOnListing();
     }
 
-
     @AfterMethod
-    private void close() {
+    public void close() {
         closeWebDriver();
     }
 }

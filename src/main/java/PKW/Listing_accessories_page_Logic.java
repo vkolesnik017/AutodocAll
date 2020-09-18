@@ -132,8 +132,8 @@ public class Listing_accessories_page_Logic extends Listing_accessories_page {
     }
 
     @Step("Checking work buttons in pagination. Listing_accessories_page")
-    public  Listing_accessories_page_Logic checkingWorkBtnInPagination () {
-        btnSecondPageInPagination().scrollIntoView(false).click();
+    public Listing_accessories_page_Logic checkingWorkBtnInPagination() {
+        btnSecondPageInPagination().scrollIntoView(false).waitUntil(visible,3000).click();
         checkingContainsUrl("page=2");
         btnForReturnOnFirstPageInPagination().scrollIntoView(false).shouldBe(visible);
         btnPreviousInPagination().shouldBe(visible);
