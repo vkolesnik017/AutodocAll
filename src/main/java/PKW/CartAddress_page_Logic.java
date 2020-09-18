@@ -1,6 +1,8 @@
 package PKW;
 
 import Common.DataBase;
+import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.ex.ElementNotFound;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -189,6 +191,21 @@ public class CartAddress_page_Logic extends CartAddress_page {
         tooltipCOVID19().waitUntil(appear, 5000);
         String plzPopupText = getTextFromTooltipCOVID19();
         Assert.assertEquals(plzPopupText, new DataBase().getTranslate("convir_translate", shop, "addres"), "Error plz:" + plz);
+        return this;
+    }
+
+    @Step("Checking correct text in input field. CartAddress_page")
+    private void checkCorrectTextAndFillInput(SelenideElement element, String correctText) {
+        Configuration.fastSetValue = false;
+        if (!element.getValue().equals(correctText)) {
+            element.clear();
+            element.setValue(correctText);
+        }
+    }
+
+    @Step("Fill field telephone number {telNum} for Shipping. CartAddress_page")
+    public CartAddress_page_Logic fillFieldTelNumForShipping(String telNum) {
+        checkCorrectTextAndFillInput(telephon(), telNum);
         return this;
     }
 }

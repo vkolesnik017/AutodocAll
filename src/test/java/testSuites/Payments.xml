@@ -1,94 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Payments" parallel="tests" data-provider-thread-count="4">
+<suite name="Payments">
 
-    <listeners>
-        <listener class-name="Common.ProjectListener"/>
-    </listeners>
-
-    <test name="QC_2168_PayPal">
-        <classes>
-            <class name="ATD.Payments.QC_2168_PayPal">
-            </class>
-        </classes>
-    </test>
-
-    <test name="QC_2157_EPS">
-        <classes>
-            <class name="ATD.Payments.QC_2157_EPS">
-            </class>
-        </classes>
-    </test>
-
-    <test name="QC_2165_Bancontact_Mister_Cash">
-        <classes>
-            <class name="ATD.Payments.QC_2165_Bancontact_Mister_Cash">
-            </class>
-        </classes>
-    </test>
-
-    <test name="QC_2348_KlarnaCheckout">
-        <classes>
-            <class name="ATD.Payments.QC_2348_KlarnaCheckout">
-            </class>
-        </classes>
-    </test>
-
-    <test name="QC_2158_Klarna">
-        <classes>
-            <class name="ATD.Payments.QC_2158_Klarna">
-            </class>
-        </classes>
-    </test>
-
-    <test name="QC_2156_Sofort">
-        <classes>
-            <class name="ATD.Payments.QC_2156_Sofort">
-            </class>
-        </classes>
-    </test>
-
-    <test name="QC_2350_Ideal">
-        <classes>
-            <class name="ATD.Payments.QC_2350_Ideal">
-            </class>
-        </classes>
-    </test>
-
-    <test name="QC_2349_Trustly">
-        <classes>
-            <class name="ATD.Payments.QC_2349_Trustly">
-            </class>
-        </classes>
-    </test>
-
-    <test name="QC_2160_BraintreeCreditCard">
-        <classes>
-            <class name="ATD.Payments.QC_2160_BraintreeCreditCard">
-            </class>
-        </classes>
-    </test>
-
-    <test name="QC_2154_Be2billCreditCard">
-        <classes>
-            <class name="ATD.Payments.QC_2154_Be2billCreditCard">
-            </class>
-        </classes>
-    </test>
-
-    <test name="QC_2351_Przelewy24">
-        <classes>
-            <class name="ATD.Payments.QC_2351_Przelewy24">
-            </class>
-        </classes>
-    </test>
-
-    <test name="QC_2352_Multibanco">
-        <classes>
-            <class name="ATD.Payments.QC_2352_Multibanco">
-            </class>
-        </classes>
-    </test>
-
+    <suite-files>
+        <suite-file path="Payments_ATD.xml"/>
+        <suite-file path="Payments_PKW.xml"/>
+    </suite-files>
 
 </suite>

@@ -1,5 +1,6 @@
 package PKW;
 
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
 import java.util.ArrayList;
@@ -76,6 +77,12 @@ public class Cart_page_Logic extends Cart_page{
             valuesOfCharacteristic.add(titleOfCharacteristicInInfoBlockOfProduct().get(i).getText()+" "+valueOfCharacteristicInInfoBlockOfProduct().get(i).getText());
         }
         valuesOfCharacteristic.contains(expectedCharacteristic);
+        return this;
+    }
+
+    @Step("Checks presence PayPal label. Cart_page")
+    public Cart_page_Logic checkPresencePaymentsMethodLabel(SelenideElement locator) {
+        locator.shouldBe(visible);
         return this;
     }
 

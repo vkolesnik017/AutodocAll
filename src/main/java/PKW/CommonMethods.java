@@ -25,6 +25,7 @@ public class CommonMethods {
 
     public static String password = "pkwtest";
     static String testNumberThatPutOrderInTest = "200+002";
+    public static String passwordForPayments = "atdtest1";
 
 
     @Step("Generates random mail")
