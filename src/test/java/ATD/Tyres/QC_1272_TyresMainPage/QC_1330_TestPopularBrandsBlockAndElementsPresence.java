@@ -1,6 +1,5 @@
 package ATD.Tyres.QC_1272_TyresMainPage;
 
-
 import Common.SetUp;
 import ATD.Tyres_page_Logic;
 import io.qameta.allure.Description;
@@ -10,9 +9,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import java.sql.SQLException;
-
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;

@@ -14,7 +14,7 @@ public class Listing_accessories_page {
     }
 
     SelenideElement selectedBrand() {
-        return $x("//div[@id='selected-instalation__slider']//li[@class='active']");
+        return $x("//div[@id='selected-instalation__slider']//li[@class='active slick-slide slick-current slick-active']");
     }
 
     SelenideElement titleCategoriesBlockInSidebar() {

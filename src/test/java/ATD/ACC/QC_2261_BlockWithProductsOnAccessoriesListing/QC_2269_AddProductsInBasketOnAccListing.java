@@ -38,6 +38,7 @@ public class QC_2269_AddProductsInBasketOnAccListing {
     @Description(value = "Test Checks number of added products in basket")
     public void testCheckingNumberOfAddedProductsInBasket(String route) {
         openPage(route);
+        new Listing_accessories_page_Logic().checkingWorkQuantityCounterOnDecreaseAndIncrease();
         idProduct = listingAccessoriesPageLogic.getIdProductListing();
         listingAccessoriesPageLogic.increasesNumberProductsInQuantityCounter();
         valueCounter = listingAccessoriesPageLogic.getValueQuantityCounterFirstProductListing();

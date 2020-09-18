@@ -1,6 +1,7 @@
 package ATD;
 
 import Common.SetUp;
+import mailinator.WebMail;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import java.sql.SQLException;
@@ -24,23 +25,33 @@ public class ForTest extends SetUp {
 
 
         String yearBeginMonth = yearBegin.substring(4);
-        yearBegin = yearBeginMonth.concat(".").concat(yearBegin.substring(0,4)).trim();
+        yearBegin = yearBeginMonth.concat(".").concat(yearBegin.substring(0, 4)).trim();
 
-        if(!yearEnd.equals("0")){
+        if (!yearEnd.equals("0")) {
             String yearEndMonth = yearEnd.substring(4);
             yearEnd = yearEndMonth.concat(".").concat(yearEnd.substring(0, 4)).trim();
-        }else {
+        } else {
             yearEnd = "...";
         }
         selector = selector.replace(" ", "");
 
-        String carNameFull = carName + "(" + kw + "KW" + "/" + hp + "PS" + ")" + "(" + yearBegin + "-" +yearEnd + ")";
+        String carNameFull = carName + "(" + kw + "KW" + "/" + hp + "PS" + ")" + "(" + yearBegin + "-" + yearEnd + ")";
 
         System.out.println(carNameFull);
         System.out.println(selector);
         System.out.println(carNameFull.equals(selector));
     }
 
+
+
+    @Test
+    public void test1() {
+       float price = new WebMail().openMail("QC_1487_autotest@autodoc.si","chXh3fJhRWeCh7Eqwn")
+                .checkAndOpenLetterWithOrderNumber("36415808")
+                .checkRegularDeliveryPriceInEmail("165,00")
+        .getTotalPriceInEmail();
+
+    }
 }
 
 

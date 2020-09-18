@@ -4,11 +4,10 @@ import com.codeborne.selenide.ElementsCollection;
 import files.Product;
 import io.qameta.allure.Step;
 import org.testng.Assert;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-
+import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.page;
 
@@ -135,4 +134,15 @@ public class Tyre_form_page_Logic extends Tyre_form_page {
         iconOfWishList().shouldBe(visible).click();
         return page(Services_wishList_page_Logic.class);
     }
+
+    @Step("checking max size products on listing. Tyre_form_page")
+    public Tyre_form_page_Logic checkingMaxSizeProductsOnListing() {
+        btnPrevInPagination().scrollIntoView(false).click();
+        checkingContainsUrl("page=34");
+        btnLastInPagination().scrollIntoView(false).click();
+        checkingContainsUrl("page=35");
+        return this;
+    }
+
+
 }

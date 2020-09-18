@@ -206,4 +206,13 @@
             <class name="ATD.Tyres.QC_2082_PresenceOfMpnNumber.QC_2096_CheckMpnNumberInWishList"/>
         </classes>
     </test>
+
+    <test name="QC_2187_CheckingMaxSizeProductsOnListing">
+        <classes>
+            <class name="ATD.Tyres.QC_2187_CheckingMaxSizeProductsOnListing.QC_2189_CheckingMaxSizeProductsOnSearchListing"/>
+
+        </classes>
+    </test>
+
+
 </suite>

@@ -5,7 +5,7 @@ import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
-import mailinator.Mailinator;
+import mailinator.WebMail;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -16,11 +16,12 @@ import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static mailinator.WebMail.passwordForMail;
 
 
 public class QC_1642_RecoveryPasswordFromCart {
 
-    Mailinator mailinator = new Mailinator();
+    WebMail webMail = new WebMail();
     Main_page_Logic main_page_logic = new Main_page_Logic();
 
     @BeforeClass
@@ -38,15 +39,17 @@ public class QC_1642_RecoveryPasswordFromCart {
     @Flaky
     @Description(value = "Checking recovery password from cart")
     public void testPasswordRecoveryFromCart(String route) {
-        String mail = "PasswordRecoveryFromCart@mailinator.com";
+        String mail = "QC_1642_autotest@autodoc.si";
         String newPassword = getRandomNumber();
         openPage(route);
         main_page_logic.useSearch(ridex_82B0896)
                 .addFirstProductAndGoToCart()
                 .nextButtonClick()
                 .passwordRecoveryRequestFromCart(mail);
-        mailinator.openEmail(mail).letterInfo(1).shouldHave(text("moments ago")).shouldHave(text("neues Passwort"));
-        mailinator.openLetter(1)
+        webMail.openMail(mail, passwordForMail)
+                .checkPresenceUnderFirstLetter()
+                .letter(1).shouldHave(text("neues Passwort"));
+        webMail.openLetter(1)
                 .clickLinkRecoveryPasswordInLetter()
                 .fillPasswordFieldsAndClickSubmit(newPassword)
                 .nameOfClient().shouldBe(visible);

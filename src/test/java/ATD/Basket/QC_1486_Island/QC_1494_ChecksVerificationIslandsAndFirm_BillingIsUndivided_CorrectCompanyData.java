@@ -7,7 +7,7 @@ import AWS.Order_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
-import mailinator.Mailinator;
+import mailinator.WebMail;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -19,10 +19,11 @@ import java.sql.SQLException;
 import static ATD.CommonMethods.*;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static mailinator.WebMail.passwordForMail;
 
 public class QC_1494_ChecksVerificationIslandsAndFirm_BillingIsUndivided_CorrectCompanyData {
 
-    private String email = "qc_1494_autotestDE@mailinator.com", orderNumber;
+    private String email = "QC_1494_autotest@autodoc.si", orderNumber;
     private Float totalPrice, totalPriceInEmail;
     private Float totalPriceAWSOrder;
 
@@ -66,13 +67,13 @@ public class QC_1494_ChecksVerificationIslandsAndFirm_BillingIsUndivided_Correct
                 .checkVatStatusInOrder("Ohne Mwst")
                 .checkDeliveryPriceOrderAWS("13");
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
-        //TODO отключен по техническим обстоятельствам
-        /*totalPriceInEmail = new Mailinator().openEmail("qc_1494_autotestDE@mailinator.com")
-                .openLetter(1)
+
+        totalPriceInEmail = new WebMail().openMail("QC_1494_autotest@autodoc.si", passwordForMail)
+                .checkAndOpenLetterWithOrderNumber(orderNumber)
                 .checkRegularDeliveryPriceInEmail("13,00")
                 .checkAbsenceVatPercentageInEmail()
                 .getTotalPriceInEmail();
-        Assert.assertEquals(totalPrice, totalPriceInEmail);*/
+        Assert.assertEquals(totalPrice, totalPriceInEmail);
     }
 
     @AfterMethod

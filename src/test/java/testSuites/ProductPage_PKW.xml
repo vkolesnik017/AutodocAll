@@ -5,12 +5,12 @@
     <listeners>
         <listener class-name="Common.ProjectListener"/>
     </listeners>
-<!--    temporarily disabled-->
-<!--    <test name="QC_1838_FAQ_Form" enabled="true">-->
-<!--        <classes>-->
-<!--            <class name="PKW.Product_Page.QC_1838_FAQ_Form.QC_1834_ValidationOfTheFieldsFaq"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <!--    temporarily disabled-->
+    <!--    <test name="QC_1838_FAQ_Form" enabled="true">-->
+    <!--        <classes>-->
+    <!--            <class name="PKW.Product_Page.QC_1838_FAQ_Form.QC_1834_ValidationOfTheFieldsFaq"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
     <test name="QC_1870_OEN" enabled="true">
         <classes>
@@ -27,10 +27,10 @@
             <class name="PKW.Product_Page.QC_1828_Reviews_Form.QC_1825_ValidationOfTheFieldsReviews"/>
         </classes>
     </test>
-    <!--   To Do-->
-    <!--    <test name="PKW.Product_Page.QC_1894_ProductPage_Elements" enabled="true">-->
-    <!--        <classes>-->
-    <!--            <class name="PKW.Product_Page.QC_1894_ProductPage_Elements.QC_1888_PresenceElementsOfTheProductPage"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+
+    <test name="PKW.Product_Page.QC_1894_ProductPage_Elements" enabled="true">
+        <classes>
+            <class name="PKW.Product_Page.QC_1894_ProductPage_Elements.QC_1889_KBAAndRegNumberBlock"/>
+        </classes>
+    </test>
 </suite>

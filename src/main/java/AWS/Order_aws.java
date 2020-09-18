@@ -1027,7 +1027,7 @@ public class Order_aws {
 
     @Step("Get total sum of income without VAT. Order_aws")
     public Float getTotalSumIncomeWithoutVAT() {
-        sleep(2000);
+        sleep(5000);
         return Float.valueOf(totalIncomeWithoutVat().getText());
     }
 
