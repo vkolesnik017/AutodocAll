@@ -6,9 +6,16 @@
         <listener class-name="Common.ProjectListener"/>
     </listeners>
 
-    <test name="QC_2469">
+    <test name="QC_2469_PayPal">
         <classes>
             <class name="PKW.Payments.QC_2469_PayPal">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QC_2468_BraintreeCreditCard">
+        <classes>
+            <class name="PKW.Payments.QC_2468_BraintreeCreditCard">
             </class>
         </classes>
     </test>

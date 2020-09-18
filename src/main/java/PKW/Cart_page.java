@@ -54,4 +54,12 @@ public class Cart_page {
     public SelenideElement payPalLabel() {
         return $x("//img[contains(@src,'paypal.png')]");
     }
+
+    public SelenideElement visaLabel() {
+        return $x("//img[contains(@src,'visa')]");
+    }
+
+    public SelenideElement masterCardLabel() {
+        return $x("//img[contains(@src,'new_cart_payments/mc')]");
+    }
 }
