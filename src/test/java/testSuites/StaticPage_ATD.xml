@@ -91,4 +91,11 @@
         </classes>
     </test>
 
+    <test name="QC_2570_StaticPage_sponsoring" enabled="true">
+        <classes>
+            <class name="ATD.StaticPage.QC_2570_StaticPage_COVID_19">
+            </class>
+        </classes>
+    </test>
+
 </suite>
