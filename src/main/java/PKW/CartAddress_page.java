@@ -3,8 +3,7 @@ package PKW;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Selectors.byCssSelector;
-import static com.codeborne.selenide.Selectors.byXpath;
+import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
@@ -40,5 +39,9 @@ public class CartAddress_page {
 
     SelenideElement tooltipCOVID19() {
         return $x("//div[@class='error-message']");
+    }
+
+    SelenideElement telephon() {
+        return $(byId("form_lTelefon"));
     }
 }
