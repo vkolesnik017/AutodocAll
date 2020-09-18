@@ -46,7 +46,8 @@ public class QC_1642_RecoveryPasswordFromCart {
                 .addFirstProductAndGoToCart()
                 .nextButtonClick()
                 .passwordRecoveryRequestFromCart(mail);
-        webMail.openMail(mail, passwordForMail).checkPresenceUnderFirstLetter()
+        webMail.openMail(mail, passwordForMail)
+                .checkPresenceUnderFirstLetter()
                 .letter(1).shouldHave(text("neues Passwort"));
         webMail.openLetter(1)
                 .clickLinkRecoveryPasswordInLetter()
