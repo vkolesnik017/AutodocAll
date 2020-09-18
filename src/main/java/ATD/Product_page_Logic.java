@@ -16,6 +16,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 import static ATD.CommonMethods.*;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
@@ -831,7 +832,7 @@ public class Product_page_Logic extends Product_page {
     @Step("add product to WishList. Product_page")
     public Product_page_Logic addProductToWishList() {
         labelAddProductToWishList().shouldBe(visible).click();
-        labelAddProductToWishList().shouldHave(attribute("class","product-block__to-wishlist title_btn product-block__to-wishlist--added remove-article"));
+        labelAddProductToWishList().shouldHave(attribute("class", "product-block__to-wishlist title_btn product-block__to-wishlist--added remove-article"));
         return this;
     }
 
@@ -839,5 +840,24 @@ public class Product_page_Logic extends Product_page {
     public Services_wishList_page_Logic goToWishListPage() {
         iconOfWishList().shouldBe(visible).click();
         return page(Services_wishList_page_Logic.class);
+    }
+
+    @Step("presence Refurbished Characteristic on product page. Product_page")
+    public Product_page_Logic presenceRefurbishedCharacteristic(String expectedCharacteristic) {
+        characteristicBlock().shouldBe(visible);
+        List<String> listOfCharacteristic = allCharacteristics().stream().map(list -> getTextFromUnVisibleElement(list).replaceAll("\n", "").replace(" ", "")).collect(Collectors.toList());
+        Assert.assertTrue(listOfCharacteristic.contains(expectedCharacteristic.replaceAll(" ", "")));
+        return this;
+    }
+
+    @Step("presence Refurbished Characteristic in characteristics block. Product_page")
+    public Product_page_Logic presenceRefurbishedCharacteristicWithArticle(String titleOfBrand, String expectedCharacteristic, String symbol) {
+        characteristicBlock().shouldBe(visible);
+        titleOfProduct().shouldBe(visible).shouldHave(text(titleOfBrand));
+        String artNumOfProduct = artNumOfProduct().getText();
+        Assert.assertTrue(artNumOfProduct.contains(symbol));
+        List<String> listOfCharacteristic = allCharacteristics().stream().map(list -> list.getText().replaceAll("\n", "")).collect(Collectors.toList());
+        Assert.assertTrue(listOfCharacteristic.contains(expectedCharacteristic));
+        return this;
     }
 }

@@ -209,7 +209,7 @@ public class Search_page {
     }
 
     ElementsCollection allCharacteristicsOfProducts() {
-        return $$x("//div[@class='prod_params_container']//li");
+        return $$x("//div[@class='box criteria_toogle_active']//ul/li");
     }
 
     ElementsCollection visibleTitleOfProducts() {
@@ -217,11 +217,11 @@ public class Search_page {
     }
 
     ElementsCollection visibleArtNumOfProduct() {
-        return $$x("//div[@class='nr']/span");
+        return $$x("//span[@class='article_number'][1]");
     }
 
     ElementsCollection visibleCharacteristicsOfProducts(int position) {
-        return $$x("(//div[@class='prod_params_container'])[" + position + "]/ul/li");
+        return $$x("(//div[@class='about'])[" + position + "]//ul/li");
     }
 
     ElementsCollection artNumOfProduct() {
