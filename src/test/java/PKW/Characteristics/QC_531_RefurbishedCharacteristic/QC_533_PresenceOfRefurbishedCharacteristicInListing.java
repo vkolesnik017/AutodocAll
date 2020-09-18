@@ -1,9 +1,10 @@
 package PKW.Characteristics.QC_531_RefurbishedCharacteristic;
 
-import ATD.Search_page_Logic;
+
 import Common.SetUp;
 import PKW.Car_parts_Logic;
 import PKW.Product_page_Logic;
+import PKW.Search_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;

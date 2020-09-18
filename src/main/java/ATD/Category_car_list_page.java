@@ -80,4 +80,16 @@ class Category_car_list_page {
 
     SelenideElement popUpOfGarageInHeader() {return $x("//div[@class='header-garage__logged-header']");}
 
+    SelenideElement listingOfProductsBlock() {return $x("//div[@class='listing-wrap']");}
+
+    SelenideElement forwardLinkOfPaginator() {return $x("//span[@class='next'][1]"); }
+
+    ElementsCollection allCharacteristicsOfProducts() {return $$x("//div[@class='about']//ul/li");}
+
+    ElementsCollection artNumOfProduct() {return $$x("//span[@class='article_number'][1]");}
+
+    ElementsCollection visibleCharacteristicsOfProducts(int position) {
+        return $$x("(//div[@class='about'])[" + position + "]//ul/li");
+    }
+
   }
