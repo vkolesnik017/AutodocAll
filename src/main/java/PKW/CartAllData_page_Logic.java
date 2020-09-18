@@ -4,10 +4,17 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.Selenide.sleep;
 
 public class CartAllData_page_Logic extends CartAllData_page {
 
+
+    @Step("Next buttin clicking. CartAllData_page")
+    public Payment_handler_page_Logic nextBtnClick() {
+        nextBtn().click();
+        return page(Payment_handler_page_Logic.class);
+    }
 
     @Step("Checks presence payments method label. CartAllData_page")
     public CartAllData_page_Logic checkPresencePaymentsMethodLabel(SelenideElement locator) {
