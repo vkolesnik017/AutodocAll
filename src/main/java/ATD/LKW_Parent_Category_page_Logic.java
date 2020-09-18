@@ -148,8 +148,8 @@ public class LKW_Parent_Category_page_Logic extends LKW_Parent_Category_page {
     }
 
     @Step("transition to product page by click on top image of product .LKW_Parent_Category_page")
-    public LKW_Parent_Category_page_Logic transitionToProductPageByClickOnTopImage() {
-        clickOnImageOfTopProduct().checkSuccessfullyLKWProductPageLoading("autodoc.de/mann-filter/");
+    public LKW_Parent_Category_page_Logic transitionToProductPageByClickOnTopImage(String url) {
+        clickOnImageOfTopProduct().checkSuccessfullyLKWProductPageLoading(url);
         back();
         return this;
     }
@@ -161,8 +161,8 @@ public class LKW_Parent_Category_page_Logic extends LKW_Parent_Category_page {
     }
 
     @Step("transition to product page by click on title of top product .LKW_Parent_Category_page")
-    public LKW_Parent_Category_page_Logic transitionToProductPageByClickOnTitleOfTopProduct() {
-        clickOnTitleOfTopProduct().checkSuccessfullyLKWProductPageLoading("autodoc.de/mann-filter/");
+    public LKW_Parent_Category_page_Logic transitionToProductPageByClickOnTitleOfTopProduct(String url) {
+        clickOnTitleOfTopProduct().checkSuccessfullyLKWProductPageLoading(url);
         back();
         return this;
     }
@@ -174,11 +174,11 @@ public class LKW_Parent_Category_page_Logic extends LKW_Parent_Category_page {
     }
 
     @Step("transition to product page by click on link Details .LKW_Parent_Category_page")
-    public LKW_Parent_Category_page_Logic transitionToProductPageByClickOnLinkDetails() {
+    public LKW_Parent_Category_page_Logic transitionToProductPageByClickOnLinkDetails(String url) {
         if (closeCookiesPopUp().isDisplayed()) {
             closeCookiesPopUp().click();
         }
-        clickOnLinkDetails().checkSuccessfullyLKWProductPageLoading("autodoc.de/mann-filter/");
+        clickOnLinkDetails().checkSuccessfullyLKWProductPageLoading(url);
         back();
         return this;
     }
@@ -195,5 +195,11 @@ public class LKW_Parent_Category_page_Logic extends LKW_Parent_Category_page {
          titleOfTopProduct().get(i).shouldHave(text(titleOfGeneric));
      }
         return this;
+    }
+
+    @Step("get Url of TOP product from his title. LKW_Parent_Category_page")
+    public String getUrlOfTopProductFromHisTitle(int positionOfProduct) {
+        String urlOfProduct = titleOfTopProduct().get(positionOfProduct).shouldBe(visible).getAttribute("href");
+        return urlOfProduct;
     }
 }

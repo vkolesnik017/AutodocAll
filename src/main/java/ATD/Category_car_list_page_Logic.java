@@ -8,6 +8,7 @@ import java.util.*;
 
 import static ATD.CommonMethods.waitWhileRouteBecomeExpected;
 import static ATD.CommonMethods.waitingWhileLinkBecomeExpected;
+import static PKW.CommonMethods.getTextFromUnVisibleElement;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -192,6 +193,54 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
     @Step("click on Garage icon in header. Category_car_list_page")
     public Category_car_list_page_Logic selectVehicleInGaragePopUp(String idOfVehicle) {
         idOfVehicleInGaragePopUp(idOfVehicle).shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("presence Refurbished Characteristic in listing. Category_car_list_page")
+    public Category_car_list_page_Logic presenceRefurbishedCharacteristic(String expectedCharacteristic) {
+        listingOfProductsBlock().shouldBe(visible);
+        List<String> listOfCharacteristic = new ArrayList<>();
+        String currentArtNumOfProduct;
+        addedAllCharacteristicsOfProductToList(listOfCharacteristic);
+        while (!listOfCharacteristic.contains(expectedCharacteristic.replace(" ",""))) {
+            currentArtNumOfProduct = artNumOfProduct().get(0).getText();
+            forwardLinkOfPaginator().scrollIntoView("{block: \"end\"}").click();
+            titleOfProductInTecDocListing().get(0).shouldNotHave(exactText(currentArtNumOfProduct));
+            addedAllCharacteristicsOfProductToList(listOfCharacteristic);
+        }
+        Assert.assertTrue(listOfCharacteristic.contains(expectedCharacteristic.replace(" ","")));
+        return this;
+    }
+
+    @Step("added all characteristics of product to list. Category_car_list_page")
+    public Category_car_list_page_Logic addedAllCharacteristicsOfProductToList(List<String> list) {
+        for (int i = 0; i < allCharacteristicsOfProducts().size(); i++) {
+            list.add(getTextFromUnVisibleElement(allCharacteristicsOfProducts().get(i)).replaceAll("\n","").replace(" ",""));
+        }
+        return this;
+    }
+
+    @Step("presence Refurbished Characteristic In Listing if art number contains expected symbol . Category_car_list_page")
+    public Category_car_list_page_Logic presenceRefurbishedCharacteristicInListingProductWithArticle(String expectedCharacteristic, String symbol) {
+        listingOfProductsBlock().shouldBe(visible);
+        checkCharacteristicOfTopProduct(expectedCharacteristic, symbol);
+        return this;
+    }
+
+    @Step("checking characteristic of TOP product . Category_car_list_page")
+    public Category_car_list_page_Logic checkCharacteristicOfTopProduct(String expectedCharacteristic, String symbol) {
+        for (int i = 0; i < artNumOfProduct().size(); i++) {
+            List<String> characteristics = new ArrayList<>();
+            String titleOfBrandImage = titleOfProductInTecDocListing().get(i).getText();
+            String artNumOfProduct = artNumOfProduct().get(i).getText().replace("Artikelnummer: ", "");
+            if (titleOfBrandImage.contains("Henkel Parts") && artNumOfProduct.contains(symbol)) {
+                for (int j = 0; j < visibleCharacteristicsOfProducts(i + 1).size(); j++) {
+                    characteristics.add(getTextFromUnVisibleElement(visibleCharacteristicsOfProducts(i + 1).get(j)).replaceAll("\n","").replace(" ",""));
+                }
+                Assert.assertTrue(characteristics.contains(expectedCharacteristic.replaceAll(" ","")));
+                characteristics.clear();
+            }
+        }
         return this;
     }
 }

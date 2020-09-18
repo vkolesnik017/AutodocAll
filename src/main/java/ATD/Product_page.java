@@ -681,4 +681,12 @@ public class Product_page {
     SelenideElement iconOfWishList() {
         return $x("//span[@class='header__wishes link']");
     }
+
+    SelenideElement characteristicBlock() {return $x("//div[@class='product-block__description__info']");}
+
+    ElementsCollection allCharacteristics() {return $$x("//div[@class='product-block__description__info']//ul/li");}
+
+    SelenideElement titleOfProduct() {return $x("//h2/span[1]");}
+
+    SelenideElement artNumOfProduct() {return $x("//span[@class='subtitle-art-nummer']/span");}
 }

@@ -86,11 +86,13 @@ public class QC_78_TransitionFromProductBLockToProductPage {
     @Description(value = "Test check transition from Top product block to product page")
     public void testChecksTransitionToProductPageCategoriesMaker(String route) {
         openPage(route);
+        String urlOfProduct = new LKW_Categories_maker_page_Logic().getUrlOfTopProductFromHisTitle(0);
         new LKW_Categories_maker_page_Logic()
-                .transitionToProductPageByClickOnTopImage()
-                .transitionToProductPageByClickOnTitleOfTopProduct()
-                .transitionToProductPageByClickOnLinkDetails();
+                .transitionToProductPageByClickOnTopImage(urlOfProduct)
+                .transitionToProductPageByClickOnTitleOfTopProduct(urlOfProduct)
+                .transitionToProductPageByClickOnLinkDetails(urlOfProduct);
     }
+
     @DataProvider(name = "routesParentCategory", parallel = true)
     Object[] dataProviderParentCategory() throws SQLException {
         return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_parent_category");
@@ -102,12 +104,12 @@ public class QC_78_TransitionFromProductBLockToProductPage {
     @Description(value = "Test check transition from Top product block to product page")
     public void testChecksTransitionToProductPageParentCategory(String route) {
         openPage(route);
+        String urlOfProduct = new LKW_Parent_Category_page_Logic().getUrlOfTopProductFromHisTitle(0);
         new LKW_Parent_Category_page_Logic()
-                .transitionToProductPageByClickOnTopImage()
-                .transitionToProductPageByClickOnTitleOfTopProduct()
-                .transitionToProductPageByClickOnLinkDetails();
+                .transitionToProductPageByClickOnTopImage(urlOfProduct)
+                .transitionToProductPageByClickOnTitleOfTopProduct(urlOfProduct)
+                .transitionToProductPageByClickOnLinkDetails(urlOfProduct);
     }
-
     @AfterMethod
     public void close() {
         closeWebDriver();

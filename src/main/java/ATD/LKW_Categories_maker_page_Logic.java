@@ -218,8 +218,8 @@ public class LKW_Categories_maker_page_Logic extends LKW_Categories_maker_page {
 
 
     @Step("transition to product page by click on top image of product .LKW_Categories_maker_page")
-    public LKW_Categories_maker_page_Logic transitionToProductPageByClickOnTopImage() {
-        clickOnImageOfTopProduct().checkSuccessfullyLKWProductPageLoading("autodoc.de/trucktec-automotive/");
+    public LKW_Categories_maker_page_Logic transitionToProductPageByClickOnTopImage(String url) {
+        clickOnImageOfTopProduct().checkSuccessfullyLKWProductPageLoading(url);
         back();
         return this;
     }
@@ -231,11 +231,11 @@ public class LKW_Categories_maker_page_Logic extends LKW_Categories_maker_page {
     }
 
     @Step("transition to product page by click on title of top product .LKW_Categories_maker_page")
-    public LKW_Categories_maker_page_Logic transitionToProductPageByClickOnTitleOfTopProduct() {
+    public LKW_Categories_maker_page_Logic transitionToProductPageByClickOnTitleOfTopProduct(String url) {
         if (closeCookiesPopUp().isDisplayed()) {
             closeCookiesPopUp().click();
         }
-        clickOnTitleOfTopProduct().checkSuccessfullyLKWProductPageLoading("autodoc.de/trucktec-automotive/");
+        clickOnTitleOfTopProduct().checkSuccessfullyLKWProductPageLoading(url);
         back();
         return this;
     }
@@ -247,11 +247,11 @@ public class LKW_Categories_maker_page_Logic extends LKW_Categories_maker_page {
     }
 
     @Step("transition to product page by click on link Details .LKW_Categories_maker_page")
-    public LKW_Categories_maker_page_Logic transitionToProductPageByClickOnLinkDetails() {
+    public LKW_Categories_maker_page_Logic transitionToProductPageByClickOnLinkDetails(String url) {
         if (closeCookiesPopUp().isDisplayed()) {
             closeCookiesPopUp().click();
         }
-        clickOnLinkDetails().checkSuccessfullyLKWProductPageLoading("autodoc.de/trucktec-automotive/");
+        clickOnLinkDetails().checkSuccessfullyLKWProductPageLoading(url);
         back();
         return this;
     }
@@ -331,5 +331,11 @@ public class LKW_Categories_maker_page_Logic extends LKW_Categories_maker_page {
     public Moto_Catalog_page_Logic selectMotoInGaragePopUp(String idOfVehicle) {
         idOfVehicleInGaragePopUp(idOfVehicle).shouldBe(visible).click();
         return page(Moto_Catalog_page_Logic.class);
+    }
+
+    @Step("get Url of TOP product from his title. LKW_Categories_maker_page")
+    public String getUrlOfTopProductFromHisTitle(int positionOfProduct) {
+       String urlOfProduct = titleOfTopProduct().get(positionOfProduct).shouldBe(visible).getAttribute("url");
+        return urlOfProduct;
     }
 }
