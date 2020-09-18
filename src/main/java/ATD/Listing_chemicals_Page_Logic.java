@@ -330,6 +330,9 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
             firstGenericByIndexInGenericsBlock().shouldNotBe(visible);
             btnPreviousInGenericBlock().waitUntil(attribute("aria-disabled", "false"), 10000);
             btnPreviousInGenericBlock().click();
+            if ( !firstGenericByIndexInGenericsBlock().isDisplayed()) {
+                btnPreviousInGenericBlock().click();
+            }
             firstGenericByIndexInGenericsBlock().waitUntil(attribute("aria-hidden", "false"), 10000);
             firstGenericByIndexInGenericsBlock().shouldBe(visible);
         }
