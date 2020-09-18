@@ -9,9 +9,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import java.sql.SQLException;
-
 import static Common.SetUp.setUpBrowser;
 import static PKW.CommonMethods.openPage;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
