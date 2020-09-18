@@ -181,7 +181,7 @@ class LKW_Categories_maker_page {
     }
 
     ElementsCollection additionInfoBlockOfTopProduct() {
-        return $$x("//*[self::div[contains(@class,'slick-active')] or self::div[(@class='top-small-products__items slick-slide')]] /div[@class='top-small-products-items__item']//div[@class='rec_prod_info_popup']").filter(visible);
+        return $$x("//*[self::div[contains(@class,'slick-active')] or self::div[(@class='top-small-products__items slick-slide')]] /div[@class='top-small-products-items__item']//div[@class='rec_prod_info_popup']");
     }
 
     ElementsCollection imageOfTopProduct() {

@@ -1,5 +1,6 @@
 package ATD.Characteristics.QC_526_RecoveryCharacteristics;
 
+import ATD.Category_name_brand_page_Logic;
 import ATD.CommonMethods;
 import Common.SetUp;
 import io.qameta.allure.Description;
@@ -36,6 +37,22 @@ public class QC_527_PresenceRecoveryCharacteristicsOnMiniCard {
     openPage(route);
     String expecetedChar = "Zustand  Wiederaufbereitet";
     new CommonMethods().checksOutputRecoveryCharacteristicInBlocksOfTopProducts(expecetedChar);
+  }
+
+
+  @DataProvider(name = "routesWithArticle", parallel = true)
+  Object[] dataProviderWithArticle() throws SQLException {
+    return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_name_brand7,category_maker_brand5");
+  }
+
+  @Test(dataProvider = "routesWithArticle")
+  @Flaky
+  @Owner(value = "Kolesnik")
+  @Description(value = "Test checks presence Refurbished characteristic in listings and product page")
+  public void testChecksPresenceRefurbishedCharacteristicInListingsAndProductPageWithArticle(String route) {
+    openPage(route);
+
+    new Category_name_brand_page_Logic().presenceRefurbishedCharacteristicInTopProductWithArticle("Zustand Wiederaufbereitet", "R");
   }
 
   @AfterMethod

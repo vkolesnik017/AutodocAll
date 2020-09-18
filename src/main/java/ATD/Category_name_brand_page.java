@@ -28,4 +28,10 @@ public class Category_name_brand_page {
     SelenideElement headerGarageIcon(){ return $x("//div[@class='header-garage js-header-garage']"); }
 
     SelenideElement popUpOfGarageInHeader() {return $x("//div[@class='header-garage__logged-header']");}
+
+    ElementsCollection visibleImageOfTopProduct() {return $$x("//a[@class='ga-click']/img").filter(visible);}
+
+    ElementsCollection artNumOfTopProduct() {return $$x("//div[@class='product-list__item__nummer']");}
+
+    ElementsCollection allCharacteristicInPopUpOfTopProducts(int position) {return $$x("(//div[@class='product-list__item__popup'])["+position+"]//ul/li");}
 }

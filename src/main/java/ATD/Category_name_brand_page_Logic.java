@@ -6,6 +6,7 @@ import org.testng.Assert;
 import java.util.ArrayList;
 import java.util.List;
 
+import static ATD.CommonMethods.getTextFromUnVisibleElement;
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
@@ -69,4 +70,33 @@ public class Category_name_brand_page_Logic extends Category_name_brand_page {
         idOfVehicleInGaragePopUp(idOfVehicle).shouldBe(visible).click();
         return page(Category_car_list_page_Logic.class);
     }
+
+    @Step("presence Refurbished Characteristic In TOP products if art number contains expected symbol . Category_name_brand_page")
+    public Category_name_brand_page_Logic presenceRefurbishedCharacteristicInTopProductWithArticle(String expectedCharacteristic, String symbol) {
+        topProductsBlock().shouldBe(visible);
+        List<String> characteristics = new ArrayList<>();
+        addCharacteristicsOfTopProductsToList(characteristics, 0, symbol);
+        while (!characteristics.contains(expectedCharacteristic.replaceAll(" ", ""))) {
+            for (int i = 1; i < visibleImageOfTopProduct().size(); i++) {
+                addCharacteristicsOfTopProductsToList(characteristics, i + 1, symbol);
+            }
+            characteristics.clear();
+        }
+        Assert.assertTrue(characteristics.contains(expectedCharacteristic.replaceAll(" ", "")));
+        return this;
+    }
+
+    @Step("click on Garage icon in header. Category_name_brand_page")
+    public Category_name_brand_page_Logic addCharacteristicsOfTopProductsToList(List<String> list, int positionOfTopProducts, String symbol) {
+        String titleOfProduct = visibleTitleOfTopProducts().get(positionOfTopProducts).getText();
+        String artNumOfProduct = artNumOfTopProduct().get(positionOfTopProducts).getText().replaceAll("Artikelnummer: ", "");
+        if (titleOfProduct.contains("Henkel Parts") && artNumOfProduct.contains(symbol)) {
+            for (int i = 0; i < allCharacteristicInPopUpOfTopProducts(positionOfTopProducts + 1).size(); i++) {
+                list.add(getTextFromUnVisibleElement(allCharacteristicInPopUpOfTopProducts(positionOfTopProducts + 1).get(i)).replaceAll("\n", "").replace(" ", ""));
+            }
+        }
+
+        return this;
+    }
+
 }
