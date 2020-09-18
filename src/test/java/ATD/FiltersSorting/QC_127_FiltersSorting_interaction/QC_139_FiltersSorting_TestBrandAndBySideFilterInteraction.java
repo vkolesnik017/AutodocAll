@@ -44,7 +44,7 @@ public class QC_139_FiltersSorting_TestBrandAndBySideFilterInteraction {
         openPage(route);
         listingPage.clickFilterBySideBack()
                 .waitUntilPreloaderDisappear();
-        String brandName = listingPage.getAtributeFromElementAndReturnsFirstWord(listingPage.firstBrandNameInFiler(), "alt");
+        String brandName = listingPage.getAtributeFromElement(listingPage.firstBrandNameInFiler(), "alt");
         listingPage.clickFilterButton(listingPage.firstBrandInFilterButton())
                 .waitUntilPreloaderDisappear()
                 .checkProductAttributeOnListingWithCarAndFilter("Hinterachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute())
@@ -59,7 +59,7 @@ public class QC_139_FiltersSorting_TestBrandAndBySideFilterInteraction {
         openPage(route);
         listingPage.clickFilterBySideBack()
                 .waitUntilPreloaderDisappear();
-        String brandName = listingPage.getAtributeFromElementAndReturnsFirstWord(listingPage.firstBrandNameInFiler(), "alt");
+        String brandName = listingPage.getAtributeFromElement(listingPage.firstBrandNameInFiler(), "alt");
         listingPage.clickFilterButton(listingPage.firstBrandInFilterButton())
                 .waitUntilPreloaderDisappear()
                 .checkProductAttributeOnListingWithCarAndFilter("Hinterachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute())
@@ -74,7 +74,7 @@ public class QC_139_FiltersSorting_TestBrandAndBySideFilterInteraction {
         openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_category_car_list2"));
         listingPage.clickFilterBySideBack()
                 .waitUntilPreloaderDisappear();
-        String brandName = listingPage.getAtributeFromElementAndReturnsFirstWord(listingPage.firstBrandNameInFilterLKWmodelRoute(), "alt");
+        String brandName = listingPage.getAtributeFromElement(listingPage.firstBrandNameInFilterLKWmodelRoute(), "alt");
         listingPage.clickFilterButton(listingPage.firstBrandInFilterButtonLKWmodelRoute())
                 .waitUntilPreloaderDisappear()
                 .checkProductAttributeOnListingWithCarAndFilter("Hinterachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute())

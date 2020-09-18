@@ -61,7 +61,7 @@ public class QC_141_FiltersSorting_TestBySideAndBrandAndSideFilterInteraction {
                 .waitUntilPreloaderDisappear()
                 .clickFilterBySideBack()
                 .waitUntilPreloaderDisappear();
-        String brandName = listingPage.getAtributeFromElementAndReturnsFirstWord(listingPage.firstBrandNameOemListing(), "alt");
+        String brandName = listingPage.getAtributeFromElement(listingPage.firstBrandNameOemListing(), "alt");
         listingPage.clickFilterButton(listingPage.firstBrandButtonOemListing())
                 .waitUntilPreloaderDisappear()
                 .checkProductAttributeOnListingWithCarAndFilter("Hinterachse", listingPage.einbauseiteProductAttributeGenericRoute(), listingPage.einbauseiteProductAttributeTecdocRoute())
