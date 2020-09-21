@@ -172,7 +172,6 @@
             <class name="PKW.ACC.QC_2283_BlockWithProductsOnToolsListing.QC_2284_MainProductsOnToolsListing"/>
             <class name="PKW.ACC.QC_2283_BlockWithProductsOnToolsListing.QC_2285_TransitionOnProductPageFromToolsListing"/>
             <class name="PKW.ACC.QC_2283_BlockWithProductsOnToolsListing.QC_2286_SelectingQuantityProductsToBuyOnToolsListing"/>
-            <class name="PKW.ACC.QC_2283_BlockWithProductsOnToolsListing.QC_2287_AddProductsInBasketOnToolsListing"/>
         </classes>
     </test>
 
