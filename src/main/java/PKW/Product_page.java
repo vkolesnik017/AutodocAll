@@ -36,7 +36,7 @@ public class Product_page {
     }
 
     SelenideElement closeBtnOFPopupReview() {
-        return $x("//span[@class='popup-related__close']");
+        return $x("//span[@class='popup-review__close']");
     }
 
     // locators for reviews block
