@@ -260,5 +260,7 @@ public class Search_page {
 
     ElementsCollection priceBlock() {return $$x("//div[@class='price_box']");}
 
+    ElementsCollection amountQuantityOfProduct() {return $$x("//div[@class='count']/input");}
+
 }
 

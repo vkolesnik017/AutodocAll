@@ -475,9 +475,27 @@ public class Search_page_Logic extends Search_page {
     }
 
     @Step("get elements from Price block. Search_page")
-    public String getElementsFromPriceBlock() {
-        String textOfElements = priceBlock().get(0).getText();
+    public String getElementsFromPriceBlock(int positionOfProduct) {
+        String textOfElements = priceBlock().get(positionOfProduct).getText();
         return textOfElements;
+    }
+
+    @Step("get url of Product image. Search_page")
+    public String getUrlOfProductImageBrand(int positionOfProduct) {
+        String textOfElements = imageOfBrandInProductBlock().get(positionOfProduct).getAttribute("srcset");
+        return textOfElements;
+    }
+
+    @Step("get of all product characteristics. Search_page")
+    public List<String> getAllProductCharacteristics(int positionOfProduct) {
+        List<String> listOfCharacteristics = visibleCharacteristicsOfProducts(positionOfProduct + 1).stream().map(n -> n.getText()).collect(Collectors.toList());
+        return listOfCharacteristics;
+    }
+
+    @Step("get amount quantity of add Product. Search_page")
+    public String getAmountQuantityOfProduct(int positionOfProduct) {
+        String amountQuantity = amountQuantityOfProduct().get(positionOfProduct).getAttribute("value");
+        return amountQuantity;
     }
 }
 
