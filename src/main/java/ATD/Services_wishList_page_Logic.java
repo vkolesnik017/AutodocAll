@@ -202,4 +202,14 @@ public class Services_wishList_page_Logic extends Services_wishList_page {
         btnOpenCatalog().shouldBe(visible).click();
         return page(Categories_page_Logic.class);
     }
+
+    @Step("compare elements of product from Listing in WishList. Services_wishList_page")
+    public Services_wishList_page_Logic compareElementsFromListingInWishList(int positionOfProduct, String urlOfBrandImage, String dataFromPriceBlock,List<String> list,String count) {
+        imageOfBrandInListing().get(positionOfProduct).shouldBe(visible).shouldHave(attribute("data-srcset",urlOfBrandImage));
+        priceBlock().get(positionOfProduct).shouldHave(exactText(dataFromPriceBlock.replace("Meiner Wunschliste hinzufügen","")));
+        List<String> characteristicsOfProduct = visibleCharacteristicsOfProducts(positionOfProduct+1).stream().map(n->n.getText()).collect(Collectors.toList());
+        Assert.assertEquals(list,characteristicsOfProduct);
+        amountQuantityOfProduct().get(positionOfProduct).shouldHave(attribute("value",count));
+        return this;
+    }
 }

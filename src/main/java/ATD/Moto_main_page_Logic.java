@@ -293,7 +293,7 @@ public class Moto_main_page_Logic extends Moto_main_page {
 
     @Step("click on link More at TOP brands block .Moto_main_page")
     public Moto_makers_page_Logic clickOnLinkMoreAtTopBrandsBlock() {
-        linkMoreAtTopBrandsBlock().shouldBe(visible).scrollTo().click();
+        linkMoreAtTopBrandsBlock().shouldBe(visible).scrollIntoView("{block: \"center\"}").click();
         return page(Moto_makers_page_Logic.class);
     }
 
