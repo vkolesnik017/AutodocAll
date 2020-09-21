@@ -37,4 +37,12 @@ public class CartAllData_page {
     public SelenideElement masterCardLabel() {
         return $x("//img[contains(@src,'mc.png')]");
     }
+
+    public SelenideElement sofortLabel() {
+        return $x("//img[contains(@src,'directbank.png')]");
+    }
+
+    public SelenideElement przelewy24abel() {
+        return $x("//img[contains(@src,'przelewy24')]");
+    }
 }
