@@ -660,4 +660,8 @@ public class Main_page {
     SelenideElement iconOfWishList() {
         return $x("//span[@class='header__wishes link']");
     }
+
+    SelenideElement linkToTheAboutUsPage() {
+        return $x("//*[@data-ga-action='about_us_big']");
+    }
 }
