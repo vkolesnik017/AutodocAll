@@ -1,6 +1,6 @@
 package PKW.Payments;
 
-import ATD.Merchant_page;
+import Common.Merchant_page;
 import AWS.Customer_view_aws;
 import AWS.Order_aws;
 import Common.DataBase;

@@ -62,4 +62,12 @@ public class Cart_page {
     public SelenideElement masterCardLabel() {
         return $x("//img[contains(@src,'new_cart_payments/mc')]");
     }
+
+    public SelenideElement sofortLabel() {
+        return $x("//img[contains(@src,'sofort')]");
+    }
+
+    public SelenideElement przelewy24Label() {
+        return $x("//img[contains(@src,'przelewy24')]");
+    }
 }
