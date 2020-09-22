@@ -783,5 +783,11 @@ public class Listing_page {
         return $x("//li[@class='default_ul_li_class']/span[2]");
     }
 
+    ElementsCollection artNumOfProductGridType() {return $$x("//div[@class='rec_prod_article']");}
+
+    SelenideElement allCharacteristicsOfProductInPopUp(int positionOfProduct) {return $x("(//div[@class='product_desc_table_container'])["+positionOfProduct+"]");}
+
+
+
 }
 
