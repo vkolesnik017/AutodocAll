@@ -3,6 +3,7 @@ package PKW;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
+import static PKW.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.page;
@@ -137,4 +138,27 @@ public class Listing_instruments_Page_Logic extends Listing_instruments_Page {
         thirdBreadcrumb().shouldBe(visible).shouldNotHave(attribute("href"));
         return this;
     }
+
+    @Step("Checking work buttons in pagination. Listing_instruments_Page")
+    public Listing_instruments_Page_Logic checkingWorkBtnInPagination() {
+        btnSecondPageInPagination().scrollIntoView(false).waitUntil(visible,3000).click();
+        checkingContainsUrl("page=2");
+        btnForReturnOnFirstPageInPagination().scrollIntoView(false).shouldBe(visible);
+        btnPreviousInPagination().shouldBe(visible);
+        btnNextInPagination().shouldBe(visible);
+        btnLastInPagination().shouldBe(visible);
+        btnPreviousInPagination().waitUntil(visible, 5000).click();
+        blockPagination().scrollIntoView(false);
+        btnForReturnOnFirstPageInPagination().shouldNotBe(visible);
+        btnNextInPagination().waitUntil(visible, 5000).click();
+        checkingContainsUrl("page=2");
+        btnLastInPagination().scrollIntoView(false).waitUntil(visible, 5000).click();
+        blockPagination().scrollIntoView(false);
+        btnLastInPagination().shouldNotBe(visible);
+        btnForReturnOnFirstPageInPagination().waitUntil(visible, 5000).click();
+        blockPagination().scrollIntoView(false);
+        btnForReturnOnFirstPageInPagination().shouldNotBe(visible);
+        return this;
+    }
+
 }

@@ -147,6 +147,7 @@
             <class name="PKW.ACC.QC_2279_ToolsListing.QC_2232_TitleOnToolsListing"/>
             <class name="PKW.ACC.QC_2279_ToolsListing.QC_2234_FilterBlockByBrandsOnToolsListing"/>
             <class name="PKW.ACC.QC_2279_ToolsListing.QC_2281_PresenceAndWorkOfTheBreadcrumbs"/>
+            <class name="PKW.ACC.QC_2279_ToolsListing.QC_2282_PaginationBlockOnListingTools"/>
         </classes>
     </test>
 
