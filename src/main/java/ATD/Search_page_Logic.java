@@ -372,7 +372,7 @@ public class Search_page_Logic extends Search_page {
 
     @Step("presence Refurbished Characteristic in listing. Search_page")
     public Search_page_Logic presenceRefurbishedCharacteristic(String expectedCharacteristic) {
-        productListBlock().shouldBe(visible);
+        titleOnSearchPage().shouldBe(visible);
         List<String> listOfCharacteristic = new ArrayList<>();
         String currentTitleOfProduct;
         addedAllCharacteristicsOfProductToList(listOfCharacteristic);
@@ -382,36 +382,40 @@ public class Search_page_Logic extends Search_page {
             visibleTitleOfProducts().get(0).shouldNotHave(exactText(currentTitleOfProduct));
             addedAllCharacteristicsOfProductToList(listOfCharacteristic);
         }
-        Assert.assertTrue(listOfCharacteristic.contains(expectedCharacteristic));
+        Assert.assertTrue(listOfCharacteristic.contains(expectedCharacteristic.replace(" ", "")));
         return this;
     }
 
     @Step("added all characteristics of product to list. Search_page")
     public Search_page_Logic addedAllCharacteristicsOfProductToList(List<String> list) {
         for (int i = 0; i < allCharacteristicsOfProducts().size(); i++) {
-            list.add(getTextFromUnVisibleElement(allCharacteristicsOfProducts().get(i)));
+            list.add(getTextFromUnVisibleElement(allCharacteristicsOfProducts().get(i)).replaceAll("\n", "").replace(" ", ""));
         }
         return this;
     }
 
     @Step("presence Refurbished Characteristic In Listing if art number contains expected symbol . Search_page")
     public Search_page_Logic presenceRefurbishedCharacteristicInListingWithArticle(String expectedCharacteristic, String symbol) {
-        productListBlock().shouldBe(visible);
+        titleOnSearchPage().shouldBe(visible);
         checkCharacteristicOfTopProduct(expectedCharacteristic, symbol);
         return this;
     }
 
     @Step("checking characteristic of TOP product . Search_page")
     public Search_page_Logic checkCharacteristicOfTopProduct(String expectedCharacteristic, String symbol) {
+        List<String> characteristics = new ArrayList<>();
+
         for (int i = 0; i < visibleArtNumOfProduct().size(); i++) {
-            List<String> characteristics = new ArrayList<>();
-            String titleOfBrandImage = visibleTitleOfProducts().get(i).getText();
-            String artNumOfProduct = visibleArtNumOfProduct().get(i).getText().replace("Art. Nr. : ", "");
+
+            String titleOfBrandImage = titleOfMainProducts().get(i).getText();
+            String artNumOfProduct = visibleArtNumOfProduct().get(i).getText().replace("Artikelnummer: ", "");
+
+
             if (titleOfBrandImage.contains("Henkel Parts") && artNumOfProduct.contains(symbol)) {
                 for (int j = 0; j < visibleCharacteristicsOfProducts(i + 1).size(); j++) {
-                    characteristics.add(getTextFromUnVisibleElement(visibleCharacteristicsOfProducts(i + 1).get(j)));
+                    characteristics.add(getTextFromUnVisibleElement(visibleCharacteristicsOfProducts(i + 1).get(j)).replaceAll("\n ", "").replace(" ", ""));
                 }
-                Assert.assertTrue(characteristics.contains(expectedCharacteristic));
+                Assert.assertTrue(characteristics.contains(expectedCharacteristic.replaceAll(" ", "")));
                 characteristics.clear();
             }
         }
@@ -434,16 +438,16 @@ public class Search_page_Logic extends Search_page {
     @Step(" added article number Of not active product to list. Search_page")
     public Search_page_Logic addNotActiveProductToList(List<String> list) {
 
-       while(!labelAddToWishListNotActiveProduct().get(0).isDisplayed()){
-           checkVisibleBrands();
-           if (popUpSelector().isDisplayed()) {
-               closePopUpSelector().shouldBe(visible).click();
-               popUpSelector().shouldNotBe(visible);
-           }
-           forwardOfPaginator().click();
-       }
-       list.add(artNumOfNotActiveProduct().get(0).getText().replace("Artikelnummer: ",""));
-       return this;
+        while (!labelAddToWishListNotActiveProduct().get(0).isDisplayed()) {
+            checkVisibleBrands();
+            if (popUpSelector().isDisplayed()) {
+                closePopUpSelector().shouldBe(visible).click();
+                popUpSelector().shouldNotBe(visible);
+            }
+            forwardOfPaginator().click();
+        }
+        list.add(artNumOfNotActiveProduct().get(0).getText().replace("Artikelnummer: ", ""));
+        return this;
     }
 
     @Step("remove products from WishList by click on label. Search_page")
@@ -468,6 +472,30 @@ public class Search_page_Logic extends Search_page {
         int countOfAddedProductInWishListIcon = Integer.parseInt(currentCountOfProductInWishList().getText());
         Assert.assertEquals(list.size(), countOfAddedProductInWishListIcon);
         return this;
+    }
+
+    @Step("get elements from Price block. Search_page")
+    public String getElementsFromPriceBlock(int positionOfProduct) {
+        String textOfElements = priceBlock().get(positionOfProduct).getText();
+        return textOfElements;
+    }
+
+    @Step("get url of Product image. Search_page")
+    public String getUrlOfProductImageBrand(int positionOfProduct) {
+        String textOfElements = imageOfBrandInProductBlock().get(positionOfProduct).getAttribute("srcset");
+        return textOfElements;
+    }
+
+    @Step("get of all product characteristics. Search_page")
+    public List<String> getAllProductCharacteristics(int positionOfProduct) {
+        List<String> listOfCharacteristics = visibleCharacteristicsOfProducts(positionOfProduct + 1).stream().map(n -> n.getText()).collect(Collectors.toList());
+        return listOfCharacteristics;
+    }
+
+    @Step("get amount quantity of add Product. Search_page")
+    public String getAmountQuantityOfProduct(int positionOfProduct) {
+        String amountQuantity = amountQuantityOfProduct().get(positionOfProduct).getAttribute("value");
+        return amountQuantity;
     }
 }
 

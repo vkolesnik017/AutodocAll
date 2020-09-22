@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Payments_PKW" parallel="tests" data-provider-thread-count="2">
+
+    <listeners>
+        <listener class-name="Common.ProjectListener"/>
+    </listeners>
+
+    <test name="QC_2469_PayPal">
+        <classes>
+            <class name="PKW.Payments.QC_2469_PayPal">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QC_2468_BraintreeCreditCard">
+        <classes>
+            <class name="PKW.Payments.QC_2468_BraintreeCreditCard">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QC_2465_Sofort">
+        <classes>
+            <class name="PKW.Payments.QC_2465_Sofort">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QC_2473_Przelewy24">
+        <classes>
+            <class name="PKW.Payments.QC_2473_Przelewy24">
+            </class>
+        </classes>
+    </test>
+
+
+</suite>

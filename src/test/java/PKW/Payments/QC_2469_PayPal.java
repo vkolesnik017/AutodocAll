@@ -1,11 +1,10 @@
-package ATD.Payments;
+package PKW.Payments;
 
-import ATD.*;
 import AWS.Customer_view_aws;
 import AWS.Order_aws;
 import Common.DataBase;
-import Common.Merchant_page;
 import Common.SetUp;
+import PKW.*;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -16,15 +15,13 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.sql.SQLException;
-
-import static ATD.CommonMethods.*;
 import static Common.DataBase.parseUserIdFromBD;
 import static Common.DataBase.parseUserMailFromBD;
 import static Common.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static PKW.CommonMethods.*;
+import static com.codeborne.selenide.Selenide.*;
 
-
-public class QC_2154_Be2billCreditCard {
+public class QC_2469_PayPal {
 
     @BeforeClass
     void setUp() {
@@ -33,42 +30,44 @@ public class QC_2154_Be2billCreditCard {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp("ATD").setUpShopsWithSubroute("prod", "ES,FI,FR,IT,NL,PT,SE,BE,AT,HU", "main", "product32");
+        return new SetUp("PKW").setUpShopsWithSubroute("prod", "DE,AT,BG,CH,CZ,DK,ES,FI,FR,GR,HU,IT,NL,NO,PL,PT,RO,SE,EN", "main", "product9");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description("Test checks method of payment by Be2billCreditCard")
-    public void testBe2billCreditCard(String route) throws Exception {
+    @Description("Test checks method of payment by PayPal")
+    public void testPayPal(String route) throws Exception {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
-        String userData = new DataBase("ATD").getUserIdForPaymentsMethod("payments_userid_atd", shop, "CreditCard_be2bill");
+        String userData = new DataBase("PKW").getUserIdForPaymentsMethod("payments_userid_pkw", shop, "PayPal");
         String userID = parseUserIdFromBD(userData);
         String mail = parseUserMailFromBD(userData);
         float totalPriceAllData = new Product_page_Logic().addProductToCart()
-                .closePopupOtherCategoryIfYes()
+                .closeBtnOFPopupReviewIfYes()
                 .cartClick()
-                .checkPresencePaymentsMethodLabel(new Cart_page().visaLabel())
-                .checkPresencePaymentsMethodLabel(new Cart_page().masterCardLabel())
+                .checkPresencePaymentsMethodLabel(new Cart_page().payPalLabel())
                 .nextButtonClick()
                 .signIn(mail, passwordForPayments)
                 .chooseDeliveryCountryForShipping(shop)
                 .fillFieldTelNumForShipping("100+001")
                 .nextBtnClick()
-                .clickOnTheDesiredPaymentMethod(shop, "CreditCard_be2bill")
+                .checkActivePaymentMethod("paypal")
+                .clickOnTheDesiredPaymentMethod(shop, "PayPal")
                 .nextBtnClick()
-                .checkPresencePaymentsMethodLabel(new CartAllData_page().visaLabel())
-                .checkPresencePaymentsMethodLabel(new CartAllData_page().masterCardLabel())
+                .checkPresencePaymentsMethodLabel(new CartAllData_page().payPalLabel())
                 .getTotalPriceAllDataPage(shop);
-        new CartAllData_page_Logic().nextBtnClick(3000);
-        new Merchant_page().checkPresenceElementFromMerchantPageB2billCreditCardAndCancelOrder("5169307507657018", "1225", "658");
-        new CartPayments_page_Logic().checkActivePaymentMethod("be2bill");
+        new CartAllData_page_Logic().payPalBtnClick();
+        switchTo().window(1);
+        checkingContainsUrl("paypal.com");
+        closeWindow();
+        switchTo().window(0);
+        new CartPayments_page_Logic().checkActivePaymentMethod("paypal");
         float totalPriceOrderAws = new Customer_view_aws().openCustomerPersonalArea(userID)
                 .checkPresenceOrderHistoryBlock()
                 .checkAndOpenOrderWithExpectedData()
-                .checkPaymentMethodInOrder("Be2bill")
-                .checkCurrentStatusInOrder("abgebrochene Be2bill")
+                .checkPaymentMethodInOrder("PayPal")
+                .checkCurrentStatusInOrder("abgebrochene PayPal-Bestellungen")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceAllData, totalPriceOrderAws);
         float totalPriceOrderAwsAfterReSave = new Order_aws().reSaveOrder()

@@ -30,7 +30,7 @@ public class Moto_makers_page {
 
     ElementsCollection linksOfBrands() {return $$x("//div[@class='marke-list marke-list--grid']/ul/li");}
 
-    SelenideElement brandsBlock() {return $x("//div[@class='marke-list marke-list--grid']");}
+    SelenideElement brandsBlock() {return $x("//div[contains(@class,'marke-list--grid')]");}
 
     ElementsCollection imageOfMotoBrands() {return $$x("//div[@class='marke-list marke-list--grid']//li//img");}
 

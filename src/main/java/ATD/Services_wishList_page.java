@@ -76,4 +76,14 @@ public class Services_wishList_page {
     SelenideElement loginPopUp() {return $x("//div[@class='autodoc_login_popup popup_login pass']");}
 
     SelenideElement btnCloseLoginPopUp() {return $x("//div[@class='top_info']/a");}
+
+    ElementsCollection imageOfBrandInListing() {return $$x("//div[@class='image']/span[1]/img");}
+
+    ElementsCollection priceBlock() {return $$x("//div[@class='price_box']");}
+
+    ElementsCollection visibleCharacteristicsOfProducts(int position) {
+        return $$x("(//div[@class='about'])[" + position + "]//ul/li");
+    }
+
+    ElementsCollection amountQuantityOfProduct() {return $$x("//div[@class='count']/input");}
 }

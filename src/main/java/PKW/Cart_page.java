@@ -50,4 +50,24 @@ public class Cart_page {
     ElementsCollection titleOfCharacteristicInInfoBlockOfProduct() {return $$x("//ul[@class='info__description']/li/span[1]"); }
 
     ElementsCollection valueOfCharacteristicInInfoBlockOfProduct() {return $$x("//ul[@class='info__description']/li/span[2]"); }
+
+    public SelenideElement payPalLabel() {
+        return $x("//img[contains(@src,'paypal.png')]");
+    }
+
+    public SelenideElement visaLabel() {
+        return $x("//img[contains(@src,'visa')]");
+    }
+
+    public SelenideElement masterCardLabel() {
+        return $x("//img[contains(@src,'new_cart_payments/mc')]");
+    }
+
+    public SelenideElement sofortLabel() {
+        return $x("//img[contains(@src,'sofort')]");
+    }
+
+    public SelenideElement przelewy24Label() {
+        return $x("//img[contains(@src,'przelewy24')]");
+    }
 }

@@ -1,5 +1,7 @@
-package ATD;
+package Common;
 
+import ATD.CartPayments_page;
+import ATD.CartPayments_page_Logic;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.JavascriptExecutor;
