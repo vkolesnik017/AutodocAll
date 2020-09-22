@@ -1,8 +1,8 @@
 package ATD;
 
+import com.codeborne.selenide.ex.ElementNotFound;
 import io.qameta.allure.Step;
 
-import java.util.NoSuchElementException;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -12,7 +12,6 @@ public class Product_page_mob_Logic extends Product_page_mob {
 
     @Step("Adding product to basket. Product_page")
     public Product_page_mob_Logic addProductToCart() {
-        closePopupSaveMoney();
         buyButton().click();
         sleep(2000);
         return this;
@@ -37,7 +36,7 @@ public class Product_page_mob_Logic extends Product_page_mob {
             popupUnbelievableDeals().waitUntil(visible, 5000).click(1, 1);
             Wait().until(WebDriver -> url().contains("apps.apple.com"));
             back();
-        } catch (NoSuchElementException e) {
+        } catch (ElementNotFound e) {
             System.out.println("Footer popup doesn't appear");
         }
         return this;
