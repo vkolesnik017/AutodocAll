@@ -256,7 +256,11 @@ public class Search_page {
 
     ElementsCollection artNumOfNotActiveProduct() {return $$x("//div[@class='button not_active']/ancestor::div[@class='all_desc_item']//span[@class='article_number']");}
 
-    SelenideElement forwardOfPaginator() { return $x("//span[@class='next']");
-    }
+    SelenideElement forwardOfPaginator() { return $x("//span[@class='next']");}
+
+    ElementsCollection priceBlock() {return $$x("//div[@class='price_box']");}
+
+    ElementsCollection amountQuantityOfProduct() {return $$x("//div[@class='count']/input");}
+
 }
 
