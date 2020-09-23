@@ -459,9 +459,9 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Click About Us link in the footer. Main_page")
-    public About_us_page clickAboutUs() {
+    public About_us_static_page clickAboutUs() {
         aboutUsLink().click();
-        return page(About_us_page.class);
+        return page(About_us_static_page.class);
     }
 
     @Step("Click Impressum link in the footer. Main_page")
@@ -496,9 +496,9 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Click Presse link in the footer. Main_page")
-    public Presse_page clickPresse() {
+    public Presse_static_page clickPresse() {
         presseLink().click();
-        return page(Presse_page.class);
+        return page(Presse_static_page.class);
     }
 
     @Step("Click MobileApp link in the footer")
@@ -1155,5 +1155,17 @@ public class Main_page_Logic extends Main_page {
     public Services_wishList_page_Logic goToWishListPage() {
         iconOfWishList().shouldBe(visible).click();
         return page(Services_wishList_page_Logic.class);
+    }
+
+    @Step("go to the About us page. About_us_page")
+    public About_us_static_page_Logic goToAboutUsPage() {
+        aboutUsLink().shouldBe(visible).click();
+        return page(About_us_static_page_Logic.class);
+    }
+
+    @Step("go to the Presse page. Presse_page")
+    public Presse_static_page_Logic goToPressePage() {
+        presseLink().shouldBe(visible).click();
+        return page(Presse_static_page_Logic.class);
     }
 }
