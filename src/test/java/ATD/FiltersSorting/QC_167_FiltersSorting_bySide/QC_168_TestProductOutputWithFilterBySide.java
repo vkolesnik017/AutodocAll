@@ -1,7 +1,6 @@
 package ATD.FiltersSorting.QC_167_FiltersSorting_bySide;
 
 
-import Common.DataBase;
 import ATD.Listing_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
@@ -20,7 +19,6 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_168_TestProductOutputWithFilterBySide {
     private Listing_page_Logic listingPageLogic = new Listing_page_Logic();
-    private DataBase dataBase = new DataBase("ATD");
 
     @BeforeClass
     void setUp() {
@@ -70,26 +68,6 @@ public class QC_168_TestProductOutputWithFilterBySide {
                 .clickFilterBySideFront()
                 .waitUntilPreloaderDisappear()
                 .checkPresenceOfUniqueProductsBySideFilter();
-    }
-
-
-    @Test(enabled = false)
-    @Flaky
-    @Owner(value = "Romaniuta")
-    @Description(value = "Test checks filter by side in tile mode")
-    public void testProductOutputWithFilterBySideSearchRoute() throws SQLException {
-        openPage("https://autodoc.de/" + dataBase.getRouteByRouteName("DE", "search5"));
-        listingPageLogic.clickFilterBySideFront()
-                .waitUntilPreloaderDisappear()
-                .checkSideInTileMode("vorne")
-                .clickShowListingInListModeButton()
-                .waitUntilPreloaderDisappear()
-                .clickSecondListingPageButton()
-                .waitUntilPreloaderDisappear()
-                .checkProductAttributeOnListingWithCarAndFilter("vorne", listingPageLogic.einbauseiteProductAttributeGenericRoute(), listingPageLogic.einbauseiteProductAttributeTecdocRoute())
-                .clickFilterBySideBack()
-                .waitUntilPreloaderDisappear()
-                .checkUniqueBrandsOnListing(2, listingPageLogic.einbauseiteProductAttributeTecdocRoute());
     }
 
     @AfterMethod
