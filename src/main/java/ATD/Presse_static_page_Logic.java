@@ -9,11 +9,9 @@ public class Presse_static_page_Logic extends Presse_static_page {
 
     @Step("Open the Articles block. Presse_static_page")
     public Presse_static_page_Logic openTheArticleBlock() {
-        int i = 0;
         while (mehrButton().isDisplayed()){
             mehrButton().scrollIntoView(false);
             mehrButton().click();
-            i++;
         }
         return this;
     }

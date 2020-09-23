@@ -664,4 +664,21 @@ public class Main_page {
     SelenideElement linkToTheAboutUsPage() {
         return $x("//*[@data-ga-action='about_us_big']");
     }
+    SelenideElement blockSocialNetworks() {
+        return $x("//*[@class='footer__social']");
+    }
+
+    ElementsCollection imagesInTheSocialNetworksBlock() {return $$x("//*[@class='image link ga-click']//img");}
+
+    SelenideElement textBigBlockSocialNetworks() {
+        return $x("//*[@class='footer__social-text']//*[@class='text']");
+    }
+
+    SelenideElement textHeadingSocialNetworks() {
+        return $x("//*[@class='footer__social-text']");
+    }
+
+    ElementsCollection textHeadingTheSocialNetworksBlock() {return $$x("//*[@class='heading']");}
+
+    ElementsCollection linksUnderTheSocialNetworksBlock() {return $$x("//*[@class='link_arrow link ga-click']");}
 }
