@@ -8,84 +8,84 @@
 
     <test name="QC_2168_PayPal">
         <classes>
-            <class name="ATD.Payments.QC_2168_PayPal">
+            <class name="ATD.Payments.QC_2168_PayPal_ATD">
             </class>
         </classes>
     </test>
 
     <test name="QC_2157_EPS">
         <classes>
-            <class name="ATD.Payments.QC_2157_EPS">
+            <class name="ATD.Payments.QC_2157_EPS_ATD">
             </class>
         </classes>
     </test>
 
     <test name="QC_2165_Bancontact_Mister_Cash">
         <classes>
-            <class name="ATD.Payments.QC_2165_Bancontact_Mister_Cash">
+            <class name="ATD.Payments.QC_2165_Bancontact_Mister_Cash_ATD">
             </class>
         </classes>
     </test>
 
     <test name="QC_2348_KlarnaCheckout">
         <classes>
-            <class name="ATD.Payments.QC_2348_KlarnaCheckout">
+            <class name="ATD.Payments.QC_2348_KlarnaCheckout_ATD">
             </class>
         </classes>
     </test>
 
     <test name="QC_2158_Klarna">
         <classes>
-            <class name="ATD.Payments.QC_2158_Klarna">
+            <class name="ATD.Payments.QC_2158_Klarna_ATD">
             </class>
         </classes>
     </test>
 
     <test name="QC_2156_Sofort">
         <classes>
-            <class name="ATD.Payments.QC_2156_Sofort">
+            <class name="ATD.Payments.QC_2156_Sofort_ATD">
             </class>
         </classes>
     </test>
 
     <test name="QC_2350_Ideal">
         <classes>
-            <class name="ATD.Payments.QC_2350_Ideal">
+            <class name="ATD.Payments.QC_2350_Ideal_ATD">
             </class>
         </classes>
     </test>
 
     <test name="QC_2349_Trustly">
         <classes>
-            <class name="ATD.Payments.QC_2349_Trustly">
+            <class name="ATD.Payments.QC_2349_Trustly_ATD">
             </class>
         </classes>
     </test>
 
     <test name="QC_2160_BraintreeCreditCard">
         <classes>
-            <class name="ATD.Payments.QC_2160_BraintreeCreditCard">
+            <class name="ATD.Payments.QC_2160_BraintreeCreditCard_ATD">
             </class>
         </classes>
     </test>
 
     <test name="QC_2154_Be2billCreditCard">
         <classes>
-            <class name="ATD.Payments.QC_2154_Be2billCreditCard">
+            <class name="ATD.Payments.QC_2154_Be2billCreditCard_ATD">
             </class>
         </classes>
     </test>
 
     <test name="QC_2351_Przelewy24">
         <classes>
-            <class name="ATD.Payments.QC_2351_Przelewy24">
+            <class name="ATD.Payments.QC_2351_Przelewy24_ATD">
             </class>
         </classes>
     </test>
 
     <test name="QC_2352_Multibanco">
         <classes>
-            <class name="ATD.Payments.QC_2352_Multibanco">
+            <class name="ATD.Payments.QC_2352_Multibanco_ATD">
             </class>
         </classes>
     </test>

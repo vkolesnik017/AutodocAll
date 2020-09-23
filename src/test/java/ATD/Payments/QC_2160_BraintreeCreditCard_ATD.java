@@ -1,11 +1,11 @@
-package PKW.Payments;
+package ATD.Payments;
 
-import Common.Merchant_page;
+import ATD.*;
 import AWS.Customer_view_aws;
 import AWS.Order_aws;
 import Common.DataBase;
+import Common.Merchant_page;
 import Common.SetUp;
-import PKW.*;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -17,13 +17,13 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
+import static ATD.CommonMethods.*;
 import static Common.DataBase.parseUserIdFromBD;
 import static Common.DataBase.parseUserMailFromBD;
 import static Common.SetUp.setUpBrowser;
-import static PKW.CommonMethods.*;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2468_BraintreeCreditCard {
+public class QC_2160_BraintreeCreditCard_ATD {
 
     @BeforeClass
     void setUp() {
@@ -32,7 +32,7 @@ public class QC_2468_BraintreeCreditCard {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp("PKW").setUpShopsWithSubroute("prod", "BG,CH,CZ,DK,EN,GR,NO,PL,RO", "main", "product9");
+        return new SetUp("ATD").setUpShopsWithSubroute("prod", "DE,BG,CH,CZ,DK,EE,EN,GR,LD,LT,LV,NO,PL,RO,SI,SK", "main", "product32");
     }
 
     @Test(dataProvider = "route")
@@ -42,11 +42,11 @@ public class QC_2468_BraintreeCreditCard {
     public void testBraintreeCreditCard(String route) throws Exception {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
-        String userData = new DataBase("PKW").getUserIdForPaymentsMethod("payments_userid_pkw", shop, "CreditCard_braintree");
+        String userData = new DataBase("ATD").getUserIdForPaymentsMethod("payments_userid_atd", shop, "CreditCard_braintree");
         String userID = parseUserIdFromBD(userData);
         String mail = parseUserMailFromBD(userData);
         float totalPriceAllData = new Product_page_Logic().addProductToCart()
-                .closeBtnOFPopupReviewIfYes()
+                .closePopupOtherCategoryIfYes()
                 .cartClick()
                 .checkPresencePaymentsMethodLabel(new Cart_page().visaLabel())
                 .checkPresencePaymentsMethodLabel(new Cart_page().masterCardLabel())
@@ -59,6 +59,7 @@ public class QC_2468_BraintreeCreditCard {
                 .nextBtnClick()
                 .checkPresencePaymentsMethodLabel(new CartAllData_page().visaLabel())
                 .checkPresencePaymentsMethodLabel(new CartAllData_page().masterCardLabel())
+                .checkPresencePaymentsMethodLabel(new CartAllData_page().americanExpressLabel())
                 .getTotalPriceAllDataPage(shop);
         new CartAllData_page_Logic().nextBtnClick();
         new Merchant_page().checkPresenceElementFromMerchantPageBraintreeCreditCardAndCancelOrder("5169307507657018", "1225", "658");

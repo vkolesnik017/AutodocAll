@@ -78,4 +78,12 @@ public class Cart_page {
     public SelenideElement epsLabel() {
         return $x("//img[contains(@src,'eps_at.png')]");
     }
+
+    public SelenideElement idealLabel() {
+        return $x("//img[contains(@src,'idl')]");
+    }
+
+    public SelenideElement multibancoLabel() {
+        return $x("//img[contains(@src,'multibanco')]");
+    }
 }
