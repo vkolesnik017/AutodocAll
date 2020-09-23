@@ -205,10 +205,10 @@ public class LKW_Categories_maker_page_Logic extends LKW_Categories_maker_page {
     @Step("visibility of addition information when hover on the product in Top block .LKW_Categories_maker_page")
     public LKW_Categories_maker_page_Logic visibilityOfAdditionInfoInTopBlock() {
         topProductsBlock().scrollIntoView("{block: \"end\"}");
-        for (int i = 0; i < productsInTopBlock().size(); i++) {
+        for (int i = 0; i <visibleProductsInTopBlock().size(); i++) {
             headlineOfTopProductsBlock().hover();
             productsInTopBlock().get(i).hover();
-            additionInfoBlockOfTopProduct().get(0).should(appear);
+            additionInfoBlockOfTopProduct().get(i).should(appear);
             if (i == 4) {
                 forwardLinkOfTopBLock().click();
             }
