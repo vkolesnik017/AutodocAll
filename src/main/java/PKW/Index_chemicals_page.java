@@ -3,7 +3,6 @@ package PKW;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-
 import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;
 
@@ -16,6 +15,10 @@ public class Index_chemicals_page {
 
     SelenideElement firstCategoryInLogicalUnion() {
         return $x("//div[@class='category-block__item category-block-item-js active']//div[@class='category-block__item-list category-block__item-list-js']/ul[1]/li[1]");
+    }
+
+    ElementsCollection categoriesFromActiveLogicalUnion() {
+        return $$x("//div[@class='category-block__item category-block-item-js active']//div[@class='category-block__item-list category-block__item-list-js']//a");
     }
 
     SelenideElement titleMainCatalog() {
@@ -124,6 +127,14 @@ public class Index_chemicals_page {
 
     ElementsCollection logicalUnions() {
         return $$x("//div[@class='category-block__item category-block-item-js']/img");
+    }
+
+    SelenideElement logicalUnionAdditive() {
+        return $x("//div[@class='category-block__item-title']//p[text()='Additive']");
+    }
+
+    SelenideElement blockSoft404() {
+        return $x("//div[@class='notification-form-block']");
     }
 
 

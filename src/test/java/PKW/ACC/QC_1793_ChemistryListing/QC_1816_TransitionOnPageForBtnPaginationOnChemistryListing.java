@@ -32,10 +32,11 @@ public class QC_1816_TransitionOnPageForBtnPaginationOnChemistryListing {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test checking work buttons in pagination.")
+    @Description(value = "Test checking presence and work buttons in pagination.")
     public void testCheckingWorkBtnInPagination(String route) {
         openPage(route);
-        new Listing_chemicals_page_Logic().checkingWorkBtnInPagination();
+        new Listing_chemicals_page_Logic().checkingWorkBtnInPagination()
+                .checkingPresencePaginationBlockAndPageSelection();
     }
 
     @AfterMethod

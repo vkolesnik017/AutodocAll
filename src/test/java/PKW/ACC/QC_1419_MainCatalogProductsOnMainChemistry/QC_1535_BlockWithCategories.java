@@ -9,9 +9,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import java.sql.SQLException;
-
 import static Common.SetUp.setUpBrowser;
 import static PKW.CommonMethods.openPage;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
@@ -31,10 +29,10 @@ public class QC_1535_BlockWithCategories {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test checks presence main categories catalog block.")
-    public void testCheckingPresenceMainCategoriesCatalogBlock(String route) {
+    @Description(value = "Test checks categories from main products catalog.")
+    public void testCheckingCategoriesFromMainProductsCatalog(String route) {
         openPage(route);
-        new Index_chemicals_page_Logic().checkingPresenceMainCategoriesCatalogBlock();
+        new Index_chemicals_page_Logic().checkingCategoriesFromMainProductsCatalog();
     }
 
     @AfterMethod

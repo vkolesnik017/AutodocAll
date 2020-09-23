@@ -39,6 +39,7 @@ public class QC_2265_AddProductsInBasketOnToolsListing {
     @Description(value = "Test Checks number of added products in basket")
     public void testCheckingNumberOfAddedProductsInBasket(String route) {
         openPage(route);
+        new Listing_instruments_page_Logic().checkingWorkQuantityCounterOnDecreaseAndIncrease();
         idProduct = listingInstrumentsPageLogic.getIdProductListing();
         listingInstrumentsPageLogic.increasesNumberProductsInQuantityCounter();
         valueCounter = listingInstrumentsPageLogic.getValueQuantityCounterFirstProductListing();

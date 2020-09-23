@@ -8,8 +8,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.page;
-import static com.codeborne.selenide.Selenide.sleep;
+import static com.codeborne.selenide.Selenide.*;
 
 
 public class Index_chemicals_page_Logic extends Index_chemicals_page {
@@ -131,9 +130,23 @@ public class Index_chemicals_page_Logic extends Index_chemicals_page {
         return this;
     }
 
-    @Step("Checking presence main categories catalog block. Index_chemicals_page")
-    public Index_chemicals_page_Logic checkingPresenceMainCategoriesCatalogBlock() {
+    @Step("Checking categories from main products catalog. Index_chemicals_page")
+    public Index_chemicals_page_Logic checkingCategoriesFromMainProductsCatalog() {
         mainCategoriesCatalogBlock().shouldBe(visible);
+        categoriesFromLogicalUnion().shouldHaveSize(58);
+        logicalUnionAdditive().scrollIntoView(false).hover();
+        categoriesFromActiveLogicalUnion().shouldHaveSize(6);
+        int i = 0;
+        while (i < 6) {
+            logicalUnionAdditive().scrollIntoView(false).hover();
+            String nameCategory = categoriesFromActiveLogicalUnion().get(i).getText();
+            categoriesFromActiveLogicalUnion().get(i).click();
+            String nameListing = new Listing_chemicals_page_Logic().getTitleNameListingPage();
+            blockSoft404().shouldNotBe(visible);
+            back();
+            Assert.assertEquals(nameCategory, nameListing);
+            i++;
+        }
         return this;
     }
 

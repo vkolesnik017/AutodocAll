@@ -50,10 +50,8 @@
     <test name="QC_1793_ChemistryListing">
         <classes>
             <class name="PKW.ACC.QC_1793_ChemistryListing.QC_1794_BreadCrumbsChemistryListing"/>
-            <class name="PKW.ACC.QC_1793_ChemistryListing.QC_1795_WorkBreadCrumbsOnChemistryListing"/>
             <class name="PKW.ACC.QC_1793_ChemistryListing.QC_1796_TitlePageListingChemistry"/>
             <class name="PKW.ACC.QC_1793_ChemistryListing.QC_1809_BlockFilterForBrandsOnChemistryListing"/>
-            <class name="PKW.ACC.QC_1793_ChemistryListing.QC_1815_SelectionPageInPaginationOnChemistryListing"/>
             <class name="PKW.ACC.QC_1793_ChemistryListing.QC_1816_TransitionOnPageForBtnPaginationOnChemistryListing"/>
         </classes>
     </test>
@@ -75,7 +73,6 @@
 
     <test name="QC_1748_MainCatalogCategoriesOnMainTools">
         <classes>
-            <class name="PKW.ACC.QC_1748_MainCatalogCategoriesOnMainTools.QC_1749_MainCatalogBlock"/>
             <class name="PKW.ACC.QC_1748_MainCatalogCategoriesOnMainTools.QC_1750_SeparateCategoriesInMainCatalogTools"/>
             <class name="PKW.ACC.QC_1748_MainCatalogCategoriesOnMainTools.QC_1751_LogicalUnionMainCatalogTools"/>
         </classes>
@@ -94,7 +91,6 @@
             <class name="PKW.ACC.QC_1810_BlockWithProductsOnChemistryListing.QC_1811_MainProductsChemistryListing"/>
             <class name="PKW.ACC.QC_1810_BlockWithProductsOnChemistryListing.QC_1812_TransitionOnProductPageFromChemistryListing"/>
             <class name="PKW.ACC.QC_1810_BlockWithProductsOnChemistryListing.QC_1813_SelectingQuantityProductsToBuyOnChemistryListing"/>
-            <class name="PKW.ACC.QC_1810_BlockWithProductsOnChemistryListing.QC_1814_AddProductsInBasketOnChemistryListing"/>
         </classes>
     </test>
 
@@ -110,7 +106,6 @@
         <classes>
             <class name="PKW.ACC.QC_1798_SideBarOnChemistryListing.QC_1799_PresencePhotoCategoryOnChemistryListing"/>
             <class name="PKW.ACC.QC_1798_SideBarOnChemistryListing.QC_1800_TopCategoriesSidebarOnChemistryListing"/>
-            <class name="PKW.ACC.QC_1798_SideBarOnChemistryListing.QC_1801_ClickableCategoriesFromTopProductsSidebarOnChemistryListing"/>
             <class name="PKW.ACC.QC_1798_SideBarOnChemistryListing.QC_1802_BlockFiltersInSideBarOnChemistryListing"/>
             <class name="PKW.ACC.QC_1798_SideBarOnChemistryListing.QC_1803_BlockWithPaymentMethodOnChemistryListing"/>
             <class name="PKW.ACC.QC_1798_SideBarOnChemistryListing.QC_1804_BlockFeaturesOnChemistryListing"/>
@@ -147,6 +142,7 @@
             <class name="PKW.ACC.QC_2279_ToolsListing.QC_2232_TitleOnToolsListing"/>
             <class name="PKW.ACC.QC_2279_ToolsListing.QC_2234_FilterBlockByBrandsOnToolsListing"/>
             <class name="PKW.ACC.QC_2279_ToolsListing.QC_2281_PresenceAndWorkOfTheBreadcrumbs"/>
+            <class name="PKW.ACC.QC_2279_ToolsListing.QC_2282_PaginationBlockOnListingTools"/>
         </classes>
     </test>
 
