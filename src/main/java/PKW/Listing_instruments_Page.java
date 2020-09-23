@@ -96,4 +96,31 @@ public class Listing_instruments_Page {
     SelenideElement thirdBreadcrumb() {
         return $x("//*[@class='defcur']");
     }
+
+    SelenideElement btnSecondPageInPagination() {
+        return $x("//div[@class='pagination']/span[3]");
+    }
+
+    SelenideElement btnForReturnOnFirstPageInPagination() {
+        return $x("//div[@class='pagination']/span[@class='first']");
+    }
+
+    SelenideElement blockPagination() {
+        return $x("//div[@class='pagination_wrap']");
+    }
+
+
+    SelenideElement btnPreviousInPagination() {
+        return $x("//div[@class='pagination']/span[@class='previous']");
+    }
+
+    SelenideElement btnNextInPagination() {
+        return $x("//div[@class='pagination']/span[@class='next'][1]");
+    }
+
+    SelenideElement btnLastInPagination() {
+        return $x("//div[@class='pagination']/span[@class='next'][2]");
+    }
+
+
 }

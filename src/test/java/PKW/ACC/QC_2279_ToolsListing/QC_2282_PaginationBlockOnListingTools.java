@@ -1,7 +1,7 @@
-package PKW.ACC.QC_1419_MainCatalogProductsOnMainChemistry;
+package PKW.ACC.QC_2279_ToolsListing;
 
 import Common.SetUp;
-import PKW.Index_chemicals_page_Logic;
+import PKW.Listing_instruments_Page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -14,7 +14,7 @@ import static Common.SetUp.setUpBrowser;
 import static PKW.CommonMethods.openPage;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1535_BlockWithCategories {
+public class QC_2282_PaginationBlockOnListingTools {
 
     @BeforeClass
     void setUp() {
@@ -23,16 +23,16 @@ public class QC_1535_BlockWithCategories {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "index_chemicals");
+        return new SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "listing_instruments");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test checks categories from main products catalog.")
-    public void testCheckingCategoriesFromMainProductsCatalog(String route) {
+    @Description(value = "Test checking work buttons in pagination.")
+    public void testCheckingWorkBtnInPagination(String route) {
         openPage(route);
-        new Index_chemicals_page_Logic().checkingCategoriesFromMainProductsCatalog();
+        new Listing_instruments_Page_Logic().checkingWorkBtnInPagination();
     }
 
     @AfterMethod

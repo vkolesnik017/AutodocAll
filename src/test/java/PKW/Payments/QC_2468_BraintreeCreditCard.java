@@ -1,6 +1,6 @@
 package PKW.Payments;
 
-import ATD.Merchant_page;
+import Common.Merchant_page;
 import AWS.Customer_view_aws;
 import AWS.Order_aws;
 import Common.DataBase;
@@ -30,7 +30,7 @@ public class QC_2468_BraintreeCreditCard {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "route", parallel = false)
+    @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
         return new SetUp("PKW").setUpShopsWithSubroute("prod", "BG,CH,CZ,DK,EN,GR,NO,PL,RO", "main", "product9");
     }

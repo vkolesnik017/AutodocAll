@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Payments_PKW" parallel="tests" thread-count="2">
+<suite name="Payments_PKW" parallel="tests" thread-count="2" data-provider-thread-count="2">
 
     <listeners>
         <listener class-name="Common.ProjectListener"/>
@@ -16,6 +16,41 @@
     <test name="QC_2468_BraintreeCreditCard">
         <classes>
             <class name="PKW.Payments.QC_2468_BraintreeCreditCard">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QC_2465_Sofort">
+        <classes>
+            <class name="PKW.Payments.QC_2465_Sofort">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QC_2473_Przelewy24">
+        <classes>
+            <class name="PKW.Payments.QC_2473_Przelewy24">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QC_2467_Klarna">
+        <classes>
+            <class name="PKW.Payments.QC_2467_Klarna">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QC_2466_EPS">
+        <classes>
+            <class name="PKW.Payments.QC_2466_EPS">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QC_2471_Trustly">
+        <classes>
+            <class name="PKW.Payments.QC_2471_Trustly">
             </class>
         </classes>
     </test>

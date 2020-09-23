@@ -1,5 +1,7 @@
-package ATD;
+package Common;
 
+import ATD.CartPayments_page;
+import ATD.CartPayments_page_Logic;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.JavascriptExecutor;
@@ -211,6 +213,7 @@ public class Merchant_page {
         checkingContainsUrl("/trustly");
         switchTo().frame(frame());
         allBank().click();
+        sleep(5000);
         formForDataInMerchant().shouldBe(visible);
         headerBackBtn().click();
         allBank().shouldBe(visible);

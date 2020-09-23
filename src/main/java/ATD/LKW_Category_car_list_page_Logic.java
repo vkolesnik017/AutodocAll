@@ -1,6 +1,7 @@
 package ATD;
 
 import Common.DataBase;
+import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.Step;
 import org.testng.Assert;
@@ -10,8 +11,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static ATD.CommonMethods.getTextFromUnVisibleElement;
 import static com.codeborne.selenide.CollectionCondition.*;
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Condition.empty;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
@@ -239,7 +242,8 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         if (genericsBlockInSideBar().isDisplayed()) {
             typeOfGenericsInSideBar().get(0).click();
         } else {
-        allFiltersGeneric().click();}
+            allFiltersGeneric().click();
+        }
         appearsOfLoader();
         titleOfProductInTecDocListingBlock().shouldHave(sizeNotEqual(0));
         return this;
@@ -736,6 +740,31 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         for (int i = 0; i < brandsList.size(); i++) {
             Assert.assertTrue(brandsFromBlock.contains(brandsList.get(i)));
         }
+        return this;
+    }
+
+    @Step("presence of dangerous products .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic presenceOfDangerousProducts() {
+        listOfProductTableView().shouldBe(visible);
+        labelTitleDangerousProducts().shouldHave(sizeGreaterThan(0));
+        return this;
+    }
+
+    @Step("get signal word from first dangerous product. LKW_Category_car_list_page")
+    public String getSignalWordFromFirstDangerousProduct(int positionOfProduct) {
+        return getTextFromUnVisibleElement(signalWordOfDangerousProduct().get(positionOfProduct));
+    }
+
+
+    @Step("click on dangerous label of product. LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic clickOnDangerousLabel(int positionOfProduct, String signalWord) {
+        dangerousProducts().get(positionOfProduct).scrollIntoView("{block: \"center\"}").hover();
+        labelIconDangerousProducts().get(0).shouldBe(visible);
+        labelTitleDangerousProducts().get(positionOfProduct).shouldBe(visible).click();
+        blackBackground().shouldHave(attribute("style","display: block;"));
+        warningPopUp().shouldBe(visible).shouldHave(attribute("style","display: block;"));
+        titleOfDangerousPopUp().shouldBe(visible).shouldHave(exactText(signalWord));
+        infoTextOfDangerousPopUp().shouldNotBe(empty);
         return this;
     }
 

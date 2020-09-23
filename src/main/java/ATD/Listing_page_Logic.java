@@ -10,8 +10,10 @@ import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import static ATD.CommonMethods.checkingContainsUrl;
+import static ATD.CommonMethods.getTextFromUnVisibleElement;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThanOrEqual;
 import static com.codeborne.selenide.Condition.*;
@@ -69,7 +71,7 @@ public class Listing_page_Logic extends Listing_page {
             name = titleViewMode.get(i).getText().replaceAll("\\.", "");
             String actualName = name.replace(name.substring(name.indexOf(" ")), "");
             Assert.assertTrue(actualName.contains((expectedTextInTitle)));
-            }
+        }
         return this;
     }
 
@@ -83,7 +85,7 @@ public class Listing_page_Logic extends Listing_page {
                 titleViewMode.get(i).shouldNotHave(text(expectedTextInTitle));
             }
         }
-         return this;
+        return this;
     }
 
     @Step("Method checks that the listing displays products of the selected brands. Listing_page")
@@ -220,7 +222,7 @@ public class Listing_page_Logic extends Listing_page {
     private void checkProductAttributeOnListingTwoValues(String attributeSelectedInSideFilter, String secondValue, ElementsCollection productAttributeOnListing) {
         productAttributeOnListing.shouldHave(sizeGreaterThan(0));
         for (int i = 0; i < productAttributeOnListing.size(); i++) {
-            productAttributeOnListing.get(i).shouldHave(or ("values", text(attributeSelectedInSideFilter), (text(secondValue))));
+            productAttributeOnListing.get(i).shouldHave(or("values", text(attributeSelectedInSideFilter), (text(secondValue))));
         }
     }
 
@@ -428,7 +430,7 @@ public class Listing_page_Logic extends Listing_page {
     // The method fits search and lkw listing
     @Step("Checks important elements on listing (Side filters block, Brand filter block, Pagination block). Listing_page")
     public Listing_page_Logic checksImportantElementsOnListing() {
-       if (!blockOfBySideFilters().isDisplayed()) {
+        if (!blockOfBySideFilters().isDisplayed()) {
             blockOfBySideFiltersInSidebar().shouldBe(visible);
         }
         brandFilterBlock().shouldBe(visible);
@@ -759,7 +761,7 @@ public class Listing_page_Logic extends Listing_page {
     }
 
     @Step("Check Tecdoc listing elements. Listing_page")
-    public  Listing_page_Logic checkTecdocListingElements() {
+    public Listing_page_Logic checkTecdocListingElements() {
         titleOfListing().shouldHave(text("Aktuelle Angebote zu Ölfilter für VW Golf IV Schrägheck (1J1) 1.4 16V Benzin 75 PS"));
         tecDocBlockOfLinkingCategories().shouldBe(visible);
         return this;
@@ -1041,7 +1043,7 @@ public class Listing_page_Logic extends Listing_page {
     public String getTextFromGeneric() {
         String text = null;
         if (secondGenericAboveListing().isDisplayed()) {
-           text = secondGenericAboveListing().text();
+            text = secondGenericAboveListing().text();
         } else if (secondGenericInSidebar().isDisplayed()) {
             text = secondGenericInSidebar().getText();
         }
@@ -1353,18 +1355,47 @@ public class Listing_page_Logic extends Listing_page {
     }
 
     @Step("Goes to the product page and checks that the name of the characteristic 'Zustand' feature is as expected {expectedCharacteristicName}. Listing_page")
-    public Listing_page_Logic goToProductPageAndCheckThatNameOfCharacteristicFeatureIsExpected(String expectedArticleNum,String expectedCharacteristicName) {
+    public Listing_page_Logic goToProductPageAndCheckThatNameOfCharacteristicFeatureIsExpected(String expectedArticleNum, String expectedCharacteristicName) {
         for (int i = 0; i < productArticlesInListing().size(); i++) {
             String articleNum = productArticlesInListing().get(i).getText().replaceAll("Artikelnummer: ", "");
             if (expectedArticleNum.equals(articleNum)) {
                 clickFirstProductOnListing()
                         .uncoverCharacteristics();
-               String characteristicName = new Product_page().characteristicZustand().getText();
-               Assert.assertEquals(expectedCharacteristicName, characteristicName);
-               back();
+                String characteristicName = new Product_page().characteristicZustand().getText();
+                Assert.assertEquals(expectedCharacteristicName, characteristicName);
+                back();
             }
         }
         return this;
     }
+
+    @Step("check installation sidein characteristics of product {expected installation side}. Listing_page")
+    public Listing_page_Logic checkInstallationSide(String expectedInstallationSide) {
+        String artNumFirstProduct = artNumOfProductGridType().get(0).getText();
+        checkPresenceOfInstallationSide(expectedInstallationSide);
+        nextPageButton().click();
+        artNumOfProductGridType().get(0).shouldNotHave(exactText(artNumFirstProduct));
+        checkPresenceOfInstallationSide(expectedInstallationSide);
+        return this;
+    }
+
+    @Step("check presence of installation side. Listing_page")
+    public Listing_page_Logic checkPresenceOfInstallationSide(String expectedInstallationSide) {
+        for (int i = 0; i < artNumOfProductGridType().size(); i++) {
+            String allCharacteristics = getTextFromUnVisibleElement(allCharacteristicsOfProductInPopUp(i + 1));
+            if (!allCharacteristics.contains("vorne")) {
+                Assert.assertTrue(allCharacteristics.contains(expectedInstallationSide));
+            }
+        }
+        return this;
+    }
+
+    @Step("check Presence Of Unique Products B ySide Filter. Listing_page")
+    public Listing_page_Logic checkPresenceOfUniqueProductsBySideFilter() {
+        Set<String> uniqueBrandSet = einbauseiteProductAttributeTecdocRoute().stream().map(n -> getTextFromUnVisibleElement(n)).collect(Collectors.toSet());
+        Assert.assertTrue(uniqueBrandSet.size() >= 2);
+        return this;
+    }
+
 }
 
