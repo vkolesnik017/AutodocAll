@@ -1145,9 +1145,9 @@ public class Main_page_Logic extends Main_page {
         return page(Makers_page_Logic.class);
     }
 
-     @Step("click on All spare parts link in TOP Parent and Child block. Main_page")
+    @Step("click on All spare parts link in TOP Parent and Child block. Main_page")
     public LKW_Categories_page_Logic clickOnAllSparePartsLinkInTopParentsBlock() {
-         allSparePartsLink().shouldBe(visible).click();
+        allSparePartsLink().shouldBe(visible).click();
         return page(LKW_Categories_page_Logic.class);
     }
 
@@ -1167,5 +1167,21 @@ public class Main_page_Logic extends Main_page {
     public Presse_static_page_Logic goToPressePage() {
         presseLink().shouldBe(visible).click();
         return page(Presse_static_page_Logic.class);
+    }
+
+    //To do
+    @Step("Checking the Social Networks in the footer. Main_page")
+    public Main_page_Logic checkingPresenceOfTheSocialBlock() {
+        blockSocialNetworks().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checking the Social Networks in the footer. Main_page")
+    public Main_page_Logic checkingPresenceOfTheImages() {
+        for (int i = 0; i < imagesInTheSocialNetworksBlock().size(); i++) {
+            imagesInTheSocialNetworksBlock().get(i).shouldBe(exist);
+            Assert.assertEquals(imagesInTheSocialNetworksBlock().size(), 3);
+        }
+        return this;
     }
 }
