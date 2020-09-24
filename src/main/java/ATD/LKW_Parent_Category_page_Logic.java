@@ -4,6 +4,9 @@ import io.qameta.allure.Step;
 import org.testng.Assert;
 
 import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
@@ -61,8 +64,8 @@ public class LKW_Parent_Category_page_Logic extends LKW_Parent_Category_page {
     }
 
     @Step("go to child category from sidebar .LKW_Parent_Category_page")
-    public LKW_Parent_Category_page_Logic goToParentCategoryPage() {
-        parentCategoryInSideBar("Abgasanlage").scrollIntoView("{block: \"center\"}").click();
+    public LKW_Parent_Category_page_Logic goToParentCategoryPage(String parentCategory) {
+        parentCategoryInSideBar(parentCategory).scrollIntoView("{block: \"center\"}").click();
         return this;
     }
 
@@ -191,9 +194,9 @@ public class LKW_Parent_Category_page_Logic extends LKW_Parent_Category_page {
 
     @Step("comparison of product and generic .LKW_Parent_Category_page")
     public LKW_Parent_Category_page_Logic comparisonOfProductAndGeneric(String titleOfGeneric) {
-     for (int i=0;i<titleOfTopProduct().size();i++){
-         titleOfTopProduct().get(i).shouldHave(text(titleOfGeneric));
-     }
+        for (int i = 0; i < titleOfTopProduct().size(); i++) {
+            titleOfTopProduct().get(i).shouldHave(text(titleOfGeneric));
+        }
         return this;
     }
 
@@ -201,5 +204,19 @@ public class LKW_Parent_Category_page_Logic extends LKW_Parent_Category_page {
     public String getUrlOfTopProductFromHisTitle(int positionOfProduct) {
         String urlOfProduct = titleOfTopProduct().get(positionOfProduct).shouldBe(visible).getAttribute("href");
         return urlOfProduct;
+    }
+
+    @Step("click On child category .LKW_Parent_Category_page")
+    public LKW_Parent_Category_page_Logic clickOnChildCategory(int positionOfChildCategory) {
+        linksOfChildCategoriesBlockInSideBar().get(positionOfChildCategory).scrollIntoView("{block: \"center\"}").click();
+        return this;
+    }
+
+    @Step("check correctness displaying child category in sidebar.LKW_Parent_Category_page")
+    public LKW_Parent_Category_page_Logic checkCorrectnessDisplayingChildCategory() {
+        List<String> expectedChildCategories = Arrays.asList("Riementrieb / Zahnriemen", "Kraftstoffförderanlage", "Kraftstoffaufbereitung", "Abgasanlage", "Kühlung", "Kupplung");
+        List<String> titleOfChildCategoriesFromSideBar = titleOfChildCategoriesInSideBar().stream().map(n -> n.getText()).collect(Collectors.toList());
+        Assert.assertEquals(titleOfChildCategoriesFromSideBar, expectedChildCategories);
+        return this;
     }
 }

@@ -143,4 +143,6 @@ public class LKW_Parent_Category_page {
     SelenideElement closeCookiesPopUp() {
         return $x("//div[@class='block-cookies__close']");
     }
+
+    ElementsCollection titleOfChildCategoriesInSideBar() {return $$x("//div[@class='block categories blue topSubCats']//li/span");}
 }

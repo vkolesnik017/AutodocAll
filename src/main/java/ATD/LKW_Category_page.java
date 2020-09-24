@@ -162,4 +162,27 @@ class LKW_Category_page {
 
     SelenideElement closeCookiesPopUp() {return $x("//div[@class='block-cookies__close']");}
 
+    SelenideElement topProductsBlock() {return $x("//div[@class='sub_catalog_grid gfre4']");}
+
+    ElementsCollection signalWordOfDangerousProduct() {return $$x("//div[@class='dangerous-listing__title hidden']");}
+
+    ElementsCollection attributeOfWarningIcon(int positionOfProduct) {return $$x("(//div[@class='rec_prod_info_popup'])["+positionOfProduct+"]//div[@class='dangerous-listing__icon']");}
+
+    ElementsCollection dangerousProducts() {return $$x("//span[@class='dangerous-listing__show-more']/ancestor::div[@class='rec_products_block']");}
+
+    ElementsCollection labelIconDangerousProducts() {return $$x("//div[@class='rec_products_block']//div[@class='dangerous-listing__icon'][1]").filter(visible);}
+
+    SelenideElement blackBackground() {return $x("//div[@class='overlay black hidden']");}
+
+    SelenideElement warningPopUp() {return $x("//div[@class='popup-dangerous']");}
+
+    SelenideElement titleOfDangerousPopUp() {return $x("//div[@class='popup-dangerous__title']");}
+
+    SelenideElement infoTextOfDangerousPopUp() {return $x("//div[@class='popup-dangerous']//p");}
+
+    ElementsCollection labelTitleDangerousProducts() {return $$x("//div[@class='rec_products_block']//span[@class='dangerous-listing__show-more']");}
+
+    ElementsCollection dangerousIconInWarningPopUp() {return $$x("//div[@class='popup-dangerous__icon']").filter(visible);}
+
+    ElementsCollection btnAddDangerousProductToWishList() {return $$x("//span[@class='dangerous-listing__show-more']/ancestor::div[@class='rec_products_block']/div[1]");}
 }
