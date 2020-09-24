@@ -106,15 +106,15 @@ public class Main_page {
         return $(By.id("js-discount-box-timer"));
     }
 
-    SelenideElement headerTop(){
+    SelenideElement headerTop() {
         return $(By.cssSelector(".header__top"));
     }
 
-    SelenideElement headerGarageIcon(){
+    SelenideElement headerGarageIcon() {
         return $x("//div[@class='header-garage js-header-garage']");
     }
 
-    SelenideElement headerGarageTooltip(){
+    SelenideElement headerGarageTooltip() {
         return $x("//div[@class='header-garage__notlogged  header-garage-drop active']");
     }
 
@@ -221,42 +221,41 @@ public class Main_page {
 
 
     // Menu in header
-    SelenideElement LkwCategory(){
+    SelenideElement LkwCategory() {
         return $x("//a[@class='header-i header-i--truck ga-click']");
     }
 
-    SelenideElement motoCategory(){
+    SelenideElement motoCategory() {
         return $x("//a[@class='header-i header-i--moto ga-click']");
     }
 
-    SelenideElement tiresCategory(){
+    SelenideElement tiresCategory() {
         return $x("//a[@class='header-i header-i--tyre ga-click']");
     }
 
-    SelenideElement instrumentsCategory(){
+    SelenideElement instrumentsCategory() {
         return $x("//a[@class='header-i header-i--tool ga-click']");
     }
 
-    SelenideElement accessoriesCategory(){
+    SelenideElement accessoriesCategory() {
         return $x("//a[@class='header-i header-i--accessories ga-click']");
     }
 
-    SelenideElement engineOilCategory(){
+    SelenideElement engineOilCategory() {
         return $x("//a[@class='header-i header-i--oil ga-click']");
     }
 
-    SelenideElement filtersCategory(){
+    SelenideElement filtersCategory() {
         return $x("//a[@class='header-i header-i--filter ga-click']");
     }
 
-    SelenideElement brakeSystemCategory(){
+    SelenideElement brakeSystemCategory() {
         return $x("//a[@class='header-i header-i--brackes ga-click']");
     }
 
-    SelenideElement engineCategory(){
+    SelenideElement engineCategory() {
         return $x("//a[@class='header-i header-i--engine ga-click']");
     }
-
 
 
     // Footer
@@ -334,19 +333,19 @@ public class Main_page {
         return $x("(//div[@class='footer__links-block']//span[@target='_blank'])[2]");
     }
 
-    SelenideElement aboutUsLink(){
+    SelenideElement aboutUsLink() {
         return $x("//a[@data-ga-action='about_us_big']");
     }
 
-    SelenideElement impressumLink(){
+    SelenideElement impressumLink() {
         return $x("//a[@data-ga-action='imprint']");
     }
 
-    SelenideElement vacanciesLink(){
+    SelenideElement vacanciesLink() {
         return $x("//a[@data-ga-action='vacancies']");
     }
 
-    SelenideElement bonusprogrammLink(){
+    SelenideElement bonusprogrammLink() {
         return $x("//a[@data-ga-action='bonus_system']");
     }
 
@@ -354,19 +353,19 @@ public class Main_page {
         return $x("//a[@data-ga-action='sponsorship']");
     }
 
-    SelenideElement partnershipLink(){
+    SelenideElement partnershipLink() {
         return $x("//a[@data-ga-action='partnership']");
     }
 
-    SelenideElement presseLink(){
+    SelenideElement presseLink() {
         return $x("//a[@data-ga-action='presse']");
     }
 
-    SelenideElement mobileAppLink(){
+    SelenideElement mobileAppLink() {
         return $x("//a[@data-ga-action='mobile_app']");
     }
 
-    SelenideElement autodocPlusLink(){
+    SelenideElement autodocPlusLink() {
         return $x("//span[@data-ga-action='footer']");
     }
 
@@ -376,99 +375,99 @@ public class Main_page {
 
     //HILFE & SUPPORT
 
-    SelenideElement autodocClubLink(){
+    SelenideElement autodocClubLink() {
         return $x("//a[@data-ga-action='club']");
     }
 
-    SelenideElement blogLink(){
+    SelenideElement blogLink() {
         return $x("//a[@data-ga-action='blog']");
     }
 
-    SelenideElement videoTutorialsLink(){
+    SelenideElement videoTutorialsLink() {
         return $x("//*[@class='footer__links']/div[2]/ul/li[4]/a");
     }
 
-    SelenideElement altolentsorgungLink(){
+    SelenideElement altolentsorgungLink() {
         return $x("//a[@data-ga-action='waste_oil_disposal']");
     }
 
-    SelenideElement agbLink(){
+    SelenideElement agbLink() {
         return $x("//a[@data-ga-action='terms']");
     }
 
-    SelenideElement agb_plusLink(){
+    SelenideElement agb_plusLink() {
         return $x("//span[@data-ga-action='plus_agb']");
     }
 
-    SelenideElement widerrufLink(){
+    SelenideElement widerrufLink() {
         return $x("//a[@data-ga-action='revocation']");
     }
 
-    SelenideElement datenschutzLink(){
+    SelenideElement datenschutzLink() {
         return $x("//a[@data-ga-action='confidential']");
     }
 
     //KUNDENSERVICE
 
-    SelenideElement zahlungLink(){
+    SelenideElement zahlungLink() {
         return $x("//a[@data-ga-action='payment']");
     }
 
-    SelenideElement versandLink(){
+    SelenideElement versandLink() {
         return $x("//a[@data-ga-action='delivery']");
     }
 
-    SelenideElement contactLink(){
+    SelenideElement contactLink() {
         return $x("//a[@data-ga-action='contact']");
     }
 
-    SelenideElement retourenLink(){
+    SelenideElement retourenLink() {
         return $x("//a[@data-ga-action='return_return']");
     }
 
-    SelenideElement austauschartikelLink(){
+    SelenideElement austauschartikelLink() {
         return $x("//a[@data-ga-action='article_change']");
     }
 
     //TOP PRODUKTE
 
-    SelenideElement beleuchtungLink(){
+    SelenideElement beleuchtungLink() {
         return $x("//a[@data-ga-action='lighting']");
     }
 
-    SelenideElement stobdampferLink(){
+    SelenideElement stobdampferLink() {
         return $x("//a[@data-ga-action='shock-absorber']");
     }
 
-    SelenideElement kupplungssatzLink(){
+    SelenideElement kupplungssatzLink() {
         return $x("//a[@data-ga-action='clutch-kit']");
     }
 
-    SelenideElement querlenkerLink(){
+    SelenideElement querlenkerLink() {
         return $x("//a[@data-ga-action='suspension-arm']");
     }
 
-    SelenideElement radlagerLink(){
+    SelenideElement radlagerLink() {
         return $x("//a[@data-ga-action='wheel-bearing']");
     }
 
-    SelenideElement autopflegeLink(){
+    SelenideElement autopflegeLink() {
         return $x("//a[@data-ga-action='chemical']");
     }
 
-    SelenideElement nachHerstellerEinkaufenLink(){
+    SelenideElement nachHerstellerEinkaufenLink() {
         return $x("//a[@data-ga-action='spares']");
     }
 
-    SelenideElement nachModellEinkaufenLink(){
+    SelenideElement nachModellEinkaufenLink() {
         return $x("//*[@class='footer__links']/div[4]/ul/li[8]/a");
     }
 
-    SelenideElement sucheNachAutomodelleLink(){
+    SelenideElement sucheNachAutomodelleLink() {
         return $x("//*[@class='footer__links']/div[4]/ul/li[9]/a");
     }
 
-    SelenideElement autoteileHerstellerLink(){
+    SelenideElement autoteileHerstellerLink() {
         return $x("//*[@class='footer__links']/div[4]/ul/li[10]/a");
     }
 
@@ -612,10 +611,12 @@ public class Main_page {
     }
 
     public SelenideElement childCategoryOnMainPage(String category) {
-        return $x("//ul[@class='ersats_listing']//span[contains(text(),'"+category+"')]");
+        return $x("//ul[@class='ersats_listing']//span[contains(text(),'" + category + "')]");
     }
 
-    SelenideElement chooseModelTooltipInCarSelector() { return $(".tooltiptext-line"); }
+    SelenideElement chooseModelTooltipInCarSelector() {
+        return $(".tooltiptext-line");
+    }
 
     SelenideElement popUpPrivacyPolicy() {
         return $x("//div[@class='popup-privacy-policy']");
@@ -629,56 +630,83 @@ public class Main_page {
         return $x("//button[@id='privacy_policy_agree']");
     }
 
-    SelenideElement btnAddedAutoInPopUpOfMyGarageBlock() {return $x("//div[@class='header-garage__notlogged-button js-selector-add-car']/span");}
+    SelenideElement btnAddedAutoInPopUpOfMyGarageBlock() {
+        return $x("//div[@class='header-garage__notlogged-button js-selector-add-car']/span");
+    }
 
-    SelenideElement selectorFromMyGarageBlock() {return $(byId("selector-my-garage"));}
+    SelenideElement selectorFromMyGarageBlock() {
+        return $(byId("selector-my-garage"));
+    }
 
-    SelenideElement btnSearchOfSelectorFromMyGarage() {return $x("//a[@class='submit search_button ripple-out']/span");}
+    SelenideElement btnSearchOfSelectorFromMyGarage() {
+        return $x("//a[@class='submit search_button ripple-out']/span");
+    }
 
-    SelenideElement countOfVehicleInMyGarageIcon() {return $x("//span[@class='header-garage__count']");}
+    SelenideElement countOfVehicleInMyGarageIcon() {
+        return $x("//span[@class='header-garage__count']");
+    }
 
-    SelenideElement blackBackground() {return $x("//div[@class='overlay black hidden'][@style='display: block;']");}
+    SelenideElement blackBackground() {
+        return $x("//div[@class='overlay black hidden'][@style='display: block;']");
+    }
 
-    SelenideElement btnCloseSelectorFromMyGaragePopUp() {return $x("//div[@class='popup-selector__content active']/div[1]");}
+    SelenideElement btnCloseSelectorFromMyGaragePopUp() {
+        return $x("//div[@class='popup-selector__content active']/div[1]");
+    }
 
-    SelenideElement  countOfVehicleInIconOfGarageInHeader() {return $x("//span[@class='header-garage__count header-garage__count--added']");}
+    SelenideElement countOfVehicleInIconOfGarageInHeader() {
+        return $x("//span[@class='header-garage__count header-garage__count--added']");
+    }
 
-    SelenideElement popUpOfGarageInHeader() {return $x("//div[@class='header-garage__logged-header']");}
+    SelenideElement popUpOfGarageInHeader() {
+        return $x("//div[@class='header-garage__logged-header']");
+    }
 
-    SelenideElement idOfVehicleInGaragePopUp(String idOfVehicle) {return $x("//div[@class='wrapper-radio']/label[@for='"+idOfVehicle+"']");}
+    SelenideElement idOfVehicleInGaragePopUp(String idOfVehicle) {
+        return $x("//div[@class='wrapper-radio']/label[@for='" + idOfVehicle + "']");
+    }
 
-    SelenideElement btnMoreSpareParts() {return $x("//span[@class='all link']");}
+    SelenideElement btnMoreSpareParts() {
+        return $x("//span[@class='all link']");
+    }
 
-    ElementsCollection linksInTopsBlock() {return $$x("//ul[@class='tabs']//li");}
+    ElementsCollection linksInTopsBlock() {
+        return $$x("//ul[@class='tabs']//li");
+    }
 
-    SelenideElement blockOfBrandsOfTopBlock() {return $x("//a[contains(text(),'Beliebteste Automarken')]/ancestor::div[@class='top_all']//ul[@class='cars_list']");}
+    SelenideElement blockOfBrandsOfTopBlock() {
+        return $x("//a[contains(text(),'Beliebteste Automarken')]/ancestor::div[@class='top_all']//ul[@class='cars_list']");
+    }
 
-    SelenideElement btnMoreSparePartsOfTopBrands() {return $x("//a[contains(text(),'Beliebteste Automarken')]/ancestor::div[@class='top_all']//a[@class='all']");}
+    SelenideElement btnMoreSparePartsOfTopBrands() {
+        return $x("//a[contains(text(),'Beliebteste Automarken')]/ancestor::div[@class='top_all']//a[@class='all']");
+    }
 
-    SelenideElement allSparePartsLink() {return $x("//span[@class='truck-home-parts__show-all link']");}
+    SelenideElement allSparePartsLink() {
+        return $x("//span[@class='truck-home-parts__show-all link']");
+    }
 
     SelenideElement iconOfWishList() {
         return $x("//span[@class='header__wishes link']");
     }
 
-    SelenideElement linkToTheAboutUsPage() {
-        return $x("//*[@data-ga-action='about_us_big']");
-    }
     SelenideElement blockSocialNetworks() {
         return $x("//*[@class='footer__social']");
     }
 
-    ElementsCollection imagesInTheSocialNetworksBlock() {return $$x("//*[@class='image link ga-click']//img");}
+    ElementsCollection imagesInTheSocialNetworksBlock() {
+        return $$x("//*[@class='image link ga-click']//img[@alt]");
+    }
 
     SelenideElement textBigBlockSocialNetworks() {
         return $x("//*[@class='footer__social-text']//*[@class='text']");
     }
 
-    SelenideElement textHeadingSocialNetworks() {
-        return $x("//*[@class='footer__social-text']");
+    ElementsCollection textHeadingTheSocialNetworksBlock() {
+        return $$x("//*[@class='heading']");
     }
 
-    ElementsCollection textHeadingTheSocialNetworksBlock() {return $$x("//*[@class='heading']");}
-
-    ElementsCollection linksUnderTheSocialNetworksBlock() {return $$x("//*[@class='link_arrow link ga-click']");}
+    ElementsCollection linksUnderTheSocialNetworksBlock() {
+        return $$x("//*[@class='link_arrow link ga-click']");
+    }
 }
