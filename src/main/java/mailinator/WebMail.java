@@ -42,12 +42,16 @@ public class WebMail {
         return $$x("//td[@class='subject']");
     }
 
-    public ElementsCollection subjectLetter() {
+    public ElementsCollection collectionSubjectLetter() {
         return $$x("//td[@class='subject']//span[@class='subject']//a//span");
     }
 
-    public SelenideElement letter(int numberLeeter) {
-        return $x("(//td[@class='subject'])["+ numberLeeter +"]");
+    public SelenideElement subjectLetter(int numberLetter) {
+        return $x("(//td[@class='subject']/span[3]/a/span)["+ numberLetter +"]");
+    }
+
+    public SelenideElement letter(int numberLetter) {
+        return $x("(//td[@class='subject'])["+ numberLetter +"]");
     }
 
     public SelenideElement letterWithOrderNumber(String orderNumber) {
@@ -144,10 +148,10 @@ public class WebMail {
     @Step("Checks and opens a letter with the order number{orderNumber}. WebMail")
     public WebMail checkAndOpenLetterWithOrderNumber(String orderNumber) {
         sleep(3000);
-        for (int i = 0; i < subjectLetter().size(); i++) {
-            String textNameLetter = subjectLetter().get(i).getText();
+        for (int i = 0; i < collectionSubjectLetter().size(); i++) {
+            String textNameLetter = collectionSubjectLetter().get(i).getText();
             if (textNameLetter.contains(orderNumber)) {
-                subjectLetter().get(i).click();
+                collectionSubjectLetter().get(i).click();
                 switchTo().frame("messagecontframe");
                 break;
             } else {
@@ -160,10 +164,10 @@ public class WebMail {
     @Step("Checks and opens a letter with specific specified parameters{expectedTextNameLetter}, {orderNumber}. WebMail")
     public WebMail checkAndOpenLetterInfoText(String expectedTextNameLetter, String orderNumber) {
         sleep(3000);
-        for (int i = 0; i < subjectLetter().size(); i++) {
-            String textNameLetter = subjectLetter().get(i).getText();
+        for (int i = 0; i < collectionSubjectLetter().size(); i++) {
+            String textNameLetter = collectionSubjectLetter().get(i).getText();
             if (textNameLetter.equals(expectedTextNameLetter + " " + orderNumber)) {
-                subjectLetter().get(i).click();
+                collectionSubjectLetter().get(i).click();
                 switchTo().frame("messagecontframe");
                 break;
             } else {
