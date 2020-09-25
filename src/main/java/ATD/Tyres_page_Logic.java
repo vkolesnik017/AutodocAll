@@ -333,8 +333,8 @@ public class Tyres_page_Logic extends Tyres_page {
     public Tyres_page_Logic checkingNumberIdenticalBrandAndSizeInTopBlock() {
         ArrayList<String> brandAndSizeTyres = new ArrayList<>();
             for (int i = 0; i < productsInTopBlock().size(); i++) {
-                String nameBrand = productsInTopBlock().get(i).$x(".//div[@class='mark_img']/img").getAttribute("alt");
-                String size = productsInTopBlock().get(i).$x(".//span[@class='tit ga-click link']/span").getText();
+                String nameBrand = brandProductFromTopTyresBlock().get(i).getAttribute("alt");
+                String size = sizeProductFromTopTyresBlock().get(i).getText();
                 brandAndSizeTyres.add(nameBrand);
                 brandAndSizeTyres.add(size);
             }
