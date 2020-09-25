@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Basket" parallel="methods" thread-count="2" data-provider-thread-count="2">
+<suite name="Basket" parallel="methods" thread-count="2" data-provider-thread-count="3">
 
     <listeners>
         <listener class-name="Common.ProjectListener"/>
@@ -69,7 +69,7 @@
     <test name="QC_1882_Login_Registration_PasswordRecovery">
         <classes>
             <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery.QC_1883_RegistrationPositiveCase"/>
-            <!--<class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery.QC_1884_RegistrationNegativeCase_PasswordRecoveryCheck"/>--> <!--TODO отключен по техническим обстоятельствам-->
+            <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery.QC_1884_RegistrationNegativeCase_PasswordRecoveryCheck"/>
             <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery.QC_1885_RegistrationNegativeCase_EmptyPasswordField"/>
             <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery.QC_1886_RegistrationNegativeCase_InvalidDomain"/>
             <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery.QC_1887_RegistrationByUserRegisteredOnAnotherSkin"/>

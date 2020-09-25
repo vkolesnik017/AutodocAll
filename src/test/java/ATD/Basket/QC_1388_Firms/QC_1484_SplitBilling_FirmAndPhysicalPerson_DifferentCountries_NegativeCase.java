@@ -9,6 +9,7 @@ import AWS.Order_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import mailinator.WebMail;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -17,15 +18,15 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.openPage;
-import static ATD.CommonMethods.password;
+import static ATD.CommonMethods.*;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.switchTo;
+import static mailinator.WebMail.passwordForMail;
 
 public class QC_1484_SplitBilling_FirmAndPhysicalPerson_DifferentCountries_NegativeCase {
 
-    private String email = "qc_1484_autotestEN@mailinator.com", orderNumber;
+    private String email = "QC_1484_autotestEN@autodoc.si", orderNumber;
     private Float totalPrice, totalPriceAWSOrder, totalPriceInEmail;
 
     private CartAddress_page_Logic cartAddress_page_logic = new CartAddress_page_Logic();
@@ -83,14 +84,14 @@ public class QC_1484_SplitBilling_FirmAndPhysicalPerson_DifferentCountries_Negat
                 .checkIdCompanyInBlockLogsCompanyNumbers("GB5520332")
                 .checkResponseInBlockLogsCompanyNumbers("The requested VAT registration number is invalid ")
                 .checkBillingOrShippingInBlockLogsCompanyNumbers("shipping");
-        //TODO отключен по техническим обстоятельствам
-        /*totalPriceInEmail = new Mailinator().openEmail("qc_1484_autotestEN@mailinator.com")
+
+        totalPriceInEmail = new WebMail().openMail(email, passwordForMail)
                 .openLetter(1)
                 .checkTextContainingVatPercentageInEmail("incl. 20% VAT")
                 .checkNamePhysicalPersonInEmail("autotest autotest")
                 .checkSecondFirmNameInEmail("Gear4music Limited")
                 .getTotalPriceInEmail();
-        Assert.assertEquals(totalPrice, totalPriceInEmail);*/
+        Assert.assertEquals(totalPrice, totalPriceInEmail);
     }
 
     @AfterMethod
