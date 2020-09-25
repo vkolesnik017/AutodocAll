@@ -4,8 +4,7 @@ package ATD;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
@@ -329,4 +328,29 @@ public class Tyres_page_Logic extends Tyres_page {
             secondButtonInTopBrandSlider().click();
             return this;
     }
+
+    @Step("Сhecks the number of identical brands and size tyres in top block. Tyres_page")
+    public Tyres_page_Logic checkingNumberIdenticalBrandAndSizeInTopBlock() {
+        ArrayList<String> brandAndSizeTyres = new ArrayList<>();
+            for (int i = 0; i < productsInTopBlock().size(); i++) {
+                String nameBrand = productsInTopBlock().get(i).$x(".//div[@class='mark_img']/img").getAttribute("alt");
+                String size = productsInTopBlock().get(i).$x(".//span[@class='tit ga-click link']/span").getText();
+                brandAndSizeTyres.add(nameBrand);
+                brandAndSizeTyres.add(size);
+            }
+        Collections.sort(brandAndSizeTyres);
+
+            for (int i = 0; i < brandAndSizeTyres.size(); i++) {
+                String name = brandAndSizeTyres.get(i);
+                int quantity = Collections.frequency(brandAndSizeTyres,name);
+
+                if (quantity > 3) {
+                    Assert.fail("Finds more than three brands or size! " + name + " =" + quantity);
+                }
+                System.out.println(name + " (quantity =" + quantity +")");
+            }
+            return this;
+    }
+
+
 }
