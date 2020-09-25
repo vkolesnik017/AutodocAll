@@ -32,8 +32,11 @@ public class QC_2413_StaticPage_presse {
     public void checkPressePageElements(String route) {
         openPage(route);
         new Main_page_Logic().goToPressePage()
+                .checkingPresenceOfTheBlocks()
                 .openTheArticleBlock()
-                .checkingTheTitles();
+                .checkingTheTexts();
+//                .checkingTheImageInTheHilftBlock();
+//                .checkingTheTitles();
     }
 
     @AfterMethod
