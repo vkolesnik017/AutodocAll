@@ -80,9 +80,21 @@ public class Cart_page_Logic extends Cart_page{
         return this;
     }
 
-    @Step("Checks presence PayPal label. Cart_page")
-    public Cart_page_Logic checkPresencePaymentsMethodLabel(SelenideElement locator) {
-        locator.shouldBe(visible);
+    @Step("Checks presence Payments Method label. Cart_page")
+    public Cart_page_Logic checkPresencePaymentsMethodLabel(SelenideElement ... locator) {
+        for (SelenideElement expectedLocator : locator) {
+            expectedLocator.shouldBe(visible);
+        }
+        return this;
+    }
+
+    @Step("Checks presence of payment methods label for required country. Cart_page")
+    public Cart_page_Logic checksPresenceOfPaymentMethodsLabelForRequiredCountry(String actualShop, String expectedShop, SelenideElement ... locator) {
+        for (SelenideElement expectedLocator : locator) {
+            if (actualShop.equals(expectedShop)) {
+            expectedLocator.shouldBe(visible);
+            }
+        }
         return this;
     }
 
