@@ -6,49 +6,49 @@
         <listener class-name="Common.ProjectListener"/>
     </listeners>
 
-    <test name="QC_2469_PayPal">
+    <test name="QC_2469_PayPal_PKW">
         <classes>
             <class name="PKW.Payments.QC_2469_PayPal_PKW">
             </class>
         </classes>
     </test>
 
-    <test name="QC_2468_BraintreeCreditCard">
+    <test name="QC_2468_BraintreeCreditCard_PKW">
         <classes>
             <class name="PKW.Payments.QC_2468_BraintreeCreditCard_PKW">
             </class>
         </classes>
     </test>
 
-    <test name="QC_2465_Sofort">
+    <test name="QC_2465_Sofort_PKW">
         <classes>
             <class name="PKW.Payments.QC_2465_Sofort_PKW">
             </class>
         </classes>
     </test>
 
-    <test name="QC_2473_Przelewy24">
+    <test name="QC_2473_Przelewy24_PKW">
         <classes>
             <class name="PKW.Payments.QC_2473_Przelewy24_PKW">
             </class>
         </classes>
     </test>
 
-    <test name="QC_2467_Klarna">
+    <test name="QC_2467_Klarna_PKW">
         <classes>
             <class name="PKW.Payments.QC_2467_Klarna_PKW">
             </class>
         </classes>
     </test>
 
-    <test name="QC_2466_EPS">
+    <test name="QC_2466_EPS_PKW">
         <classes>
             <class name="PKW.Payments.QC_2466_EPS_PKW">
             </class>
         </classes>
     </test>
 
-    <test name="QC_2471_Trustly">
+    <test name="QC_2471_Trustly_PKW">
         <classes>
             <class name="PKW.Payments.QC_2471_Trustly_PKW">
             </class>
@@ -72,6 +72,13 @@
     <test name="QC_2474_Multibanco_PKW">
         <classes>
             <class name="PKW.Payments.QC_2474_Multibanco_PKW">
+            </class>
+        </classes>
+    </test>
+
+    <test name="QC_2392_CheckingSwitchingOnBraintreeOnFronts_PKW">
+        <classes>
+            <class name="PKW.Payments.QC_2392_CheckingSwitchingOnBraintreeOnFronts_PKW">
             </class>
         </classes>
     </test>

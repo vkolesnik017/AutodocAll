@@ -1,6 +1,7 @@
 package PKW;
 
 import Common.DataBase;
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
 import java.sql.SQLException;
@@ -26,7 +27,7 @@ public class CartPayments_page_Logic extends CartPayments_page {
 
     @Step("Method clicks on the desired payment method {paymentsName}, for each shop {shop}. CartPayments_page")
     public CartPayments_page_Logic clickOnTheDesiredPaymentMethod(String shop, String paymentsName) throws SQLException {
-        String paymentsId = new DataBase("ATD").getPaymentsLocator("payments_atd", shop, paymentsName);
+        String paymentsId = new DataBase("PKW").getPaymentsLocator("payments_pkw", shop, paymentsName);
         paymentsLocator(paymentsId).click();
         return this;
     }
@@ -35,5 +36,22 @@ public class CartPayments_page_Logic extends CartPayments_page {
     public CartAllData_page_Logic nextBtnClick() {
         nextBtn().click();
         return page(PKW.CartAllData_page_Logic.class);
+    }
+
+
+    @Step("Checks presence of payment methods label for required country. CartPayments_page")
+    public CartPayments_page_Logic checksPresencePaymentsMethodLabelForRequiredCountry(String actualShop) {
+            if (actualShop.equals("IT")) {
+                visaLabel().shouldBe(visible);
+                masterCardLabel().shouldBe(visible);
+                postePayLabel().shouldBe(visible);
+                cartSiLabel().shouldBe(visible);
+            } else {
+                visaLabel().shouldBe(visible);
+                masterCardLabel().shouldBe(visible);
+                discoverLabel().shouldBe(visible);
+                americanExpressLabel().shouldBe(visible);
+        }
+        return this;
     }
 }

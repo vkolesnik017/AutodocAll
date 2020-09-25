@@ -65,4 +65,20 @@ public class CartAllData_page {
     public SelenideElement multibancoLabel() {
         return $x("//img[contains(@src,'multibanco')]");
     }
+
+    public SelenideElement postPayLabel() {
+        return $x("//img[contains(@src,'postpay')]");
+    }
+
+    public SelenideElement cartaSiLabel() {
+        return $x("//img[contains(@src,'cs')]");
+    }
+
+    public SelenideElement discoverLabel() {
+        return $x("//img[contains(@src,'discover')]");
+    }
+
+    public SelenideElement americanExpressLabel() {
+        return $x("//img[contains(@src,'cards/ae')]");
+    }
 }

@@ -23,4 +23,28 @@ public class CartPayments_page {
     SelenideElement nextBtn() {
         return $(byCssSelector("[id='apply_payment']>a"));
     }
+
+    public SelenideElement visaLabel() {
+        return $x("//img[contains(@src,'cards/visa')]");
+    }
+
+    public SelenideElement masterCardLabel() {
+        return $x("//img[contains(@src,'cards/mc')]");
+    }
+
+    public SelenideElement discoverLabel() {
+        return $x("//img[contains(@src,'cards/discover')]");
+    }
+
+    public SelenideElement americanExpressLabel() {
+        return $x("//img[contains(@src,'cards/ae')]");
+    }
+
+    public SelenideElement postePayLabel() {
+        return $x("//img[contains(@src,'cards/postpay')]");
+    }
+
+    public SelenideElement cartSiLabel() {
+        return $x("//img[contains(@src,'cards/cs')]");
+    }
 }

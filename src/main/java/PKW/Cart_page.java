@@ -86,4 +86,16 @@ public class Cart_page {
     public SelenideElement multibancoLabel() {
         return $x("//img[contains(@src,'multibanco')]");
     }
+
+    public SelenideElement cartaSiLabel() {
+        return $x("//img[contains(@src,'carta_si')]");
+    }
+
+    public SelenideElement postePayLabel() {
+        return $x("//img[contains(@src,'poste_pay')]");
+    }
+
+    public SelenideElement discoverLabel() {
+        return $x("//img[contains(@src,'discover')]");
+    }
 }
