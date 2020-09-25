@@ -75,6 +75,7 @@
             <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_1344_TestPopularDimensionsRelinkBlockPresence"/>
             <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_1345_GoToDimensionListingFromPopularSizesRelinkBlock"/>
             <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_1346_GoToAllSizesPageFromTyresMainPage"/>
+            <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_2563_CheckingProductsInTopTyresBlockPKW"/>
             <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_2564_CheckingProductsInTopTyresBlockLkwMotoOff"/>
         </classes>
     </test>
