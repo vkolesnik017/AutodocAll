@@ -1,9 +1,9 @@
-package ATD.Payments;
+package PKW.Payments;
 
-import ATD.*;
 import AWS.Order_aws;
 import Common.DataBase;
 import Common.SetUp;
+import PKW.*;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -16,22 +16,23 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.*;
+import static ATD.CommonMethods.canAssertThatPdfContainsText;
 import static Common.DataBase.parseUserMailFromBD;
 import static Common.SetUp.setUpBrowser;
+import static PKW.CommonMethods.*;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static mailinator.WebMail.passwordForMail;
 
-public class QC_2352_Multibanco {
+public class QC_2474_Multibanco_PKW {
 
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "route", parallel = true)
+    @DataProvider(name = "route", parallel = false)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "PT", "main", "product32");
+        return new SetUp("PKW").setUpShopWithSubroutes("prod", "PT", "main", "product9");
     }
 
     @Test(dataProvider = "route")
@@ -41,10 +42,10 @@ public class QC_2352_Multibanco {
     public void testMultibanco(String route) throws Exception {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
-        String userData = new DataBase("ATD").getUserIdForPaymentsMethod("payments_userid_atd", shop, "Multibanco");
+        String userData = new DataBase("PKW").getUserIdForPaymentsMethod("payments_userid_pkw", shop, "Multibanco");
         String mail = parseUserMailFromBD(userData);
         float totalPriceAllData = new Product_page_Logic().addProductToCart()
-                .closePopupOtherCategoryIfYes()
+                .closeBtnOFPopupReviewIfYes()
                 .cartClick()
                 .checkPresencePaymentsMethodLabel(new Cart_page().multibancoLabel())
                 .nextButtonClick()

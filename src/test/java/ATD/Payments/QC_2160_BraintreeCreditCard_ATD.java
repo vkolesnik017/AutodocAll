@@ -4,6 +4,7 @@ import ATD.*;
 import AWS.Customer_view_aws;
 import AWS.Order_aws;
 import Common.DataBase;
+import Common.Merchant_page;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -22,7 +23,7 @@ import static Common.DataBase.parseUserMailFromBD;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2351_Przelewy24 {
+public class QC_2160_BraintreeCreditCard_ATD {
 
     @BeforeClass
     void setUp() {
@@ -31,39 +32,43 @@ public class QC_2351_Przelewy24 {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "PL", "main", "product32");
+        return new SetUp("ATD").setUpShopsWithSubroute("prod", "DE,BG,CH,CZ,DK,EE,EN,GR,LD,LT,LV,NO,PL,RO,SI,SK", "main", "product32");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description("Test checks method of payment by Przelewy24")
-    public void testPrzelewy24(String route) throws Exception {
+    @Description("Test checks method of payment by BraintreeCreditCard")
+    public void testBraintreeCreditCard(String route) throws Exception {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
-        String userData = new DataBase("ATD").getUserIdForPaymentsMethod("payments_userid_atd", shop, "Przelewy24");
+        String userData = new DataBase("ATD").getUserIdForPaymentsMethod("payments_userid_atd", shop, "CreditCard_braintree");
         String userID = parseUserIdFromBD(userData);
         String mail = parseUserMailFromBD(userData);
         float totalPriceAllData = new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
-                .checkPresencePaymentsMethodLabel(new Cart_page().przelewy24Label())
+                .checkPresencePaymentsMethodLabel(new Cart_page().visaLabel())
+                .checkPresencePaymentsMethodLabel(new Cart_page().masterCardLabel())
                 .nextButtonClick()
                 .signIn(mail, passwordForPayments)
                 .chooseDeliveryCountryForShipping(shop)
                 .fillFieldTelNumForShipping("100+001")
                 .nextBtnClick()
-                .clickOnTheDesiredPaymentMethod(shop, "Przelewy24")
+                .clickOnTheDesiredPaymentMethod(shop, "CreditCard_braintree")
                 .nextBtnClick()
-                .checkPresencePaymentsMethodLabel(new CartAllData_page().przelewy24abel())
+                .checkPresencePaymentsMethodLabel(new CartAllData_page().visaLabel())
+                .checkPresencePaymentsMethodLabel(new CartAllData_page().masterCardLabel())
+                .checkPresencePaymentsMethodLabel(new CartAllData_page().americanExpressLabel())
                 .getTotalPriceAllDataPage(shop);
         new CartAllData_page_Logic().nextBtnClick();
-        checkingContainsUrl("secure.przelewy24.pl");
+        new Merchant_page().checkPresenceElementFromMerchantPageBraintreeCreditCardAndCancelOrder("5169307507657018", "1225", "658");
+        new CartPayments_page_Logic().checkActivePaymentMethod("braintree_creditcards");
         float totalPriceOrderAws = new Customer_view_aws().openCustomerPersonalArea(userID)
                 .checkPresenceOrderHistoryBlock()
                 .checkAndOpenOrderWithExpectedData()
-                .checkPaymentMethodInOrder("Przelewy24")
-                .checkCurrentStatusInOrder("abgebrochene Przelewy24")
+                .checkPaymentMethodInOrder("Braintree")
+                .checkCurrentStatusInOrder("abgebrochene Braintree")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceAllData, totalPriceOrderAws);
         float totalPriceOrderAwsAfterReSave = new Order_aws().reSaveOrder()

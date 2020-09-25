@@ -9,6 +9,7 @@ import AWS.PageVAT_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import mailinator.WebMail;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -21,12 +22,13 @@ import static ATD.CommonMethods.*;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.switchTo;
+import static mailinator.WebMail.passwordForMail;
 
 public class QC_1393_SplitBilling_FirmAndPhysicalPerson_SameCountries_PositiveCase {
 
     private Float regularProductPricePerAllDataPageGB, priceWithVatPerAllDataPageGB, priceProductPerProductPageGB,
                    totalPriceGB, totalPriceAWSOrderGB, totalPriceInEmailGB, sellingPriceAWSOrderGB;
-    private String emailGB = "qc_1393_autotestGB@mailinator.com", vatForGB, orderNumberGB;
+    private String emailGB = "QC_1393_autotestGB@autodoc.si", vatForGB, orderNumberGB;
 
     private Product_page_Logic product_page_logic = new Product_page_Logic();
     private CartAllData_page_Logic cartAllData_page_logic = new CartAllData_page_Logic();
@@ -94,19 +96,19 @@ public class QC_1393_SplitBilling_FirmAndPhysicalPerson_SameCountries_PositiveCa
                 .checkIdCompanyInBlockLogsCompanyNumbers("BE0402065988")
                 .checkResponseInBlockLogsCompanyNumbers("success(200)")
                 .checkBillingOrShippingInBlockLogsCompanyNumbers("billing");
-        //TODO отключен по техническим обстоятельствам
-        /*totalPriceInEmailGB = new Mailinator().openEmail("qc_1393_autotestGB@mailinator.com")
+
+        totalPriceInEmailGB = new WebMail().openMail(emailGB, passwordForMail)
                 .openLetter(1)
                 .checkAbsenceVatPercentageInEmail()
                 .checkFirstFirmNameInEmail("SPRL Brasserie Cantillon")
                 .getTotalPriceInEmail();
-        Assert.assertEquals(totalPriceGB, totalPriceInEmailGB);*/
+        Assert.assertEquals(totalPriceGB, totalPriceInEmailGB);
     }
 
 
     private Float regularProductPricePerAllDataPageDE, priceWithVatPerAllDataPageDE, priceProductPerProductPageDE,
             totalPriceDE, totalPriceAWSOrderDE, totalPriceInEmailDE, sellingPriceAWSOrderDE;
-    private String emailDE = "qc_1393_autotestDE@mailinator.com", vatForDE, orderNumberDE;
+    private String emailDE = "QC_1393_autotestDE@autodoc.si", vatForDE, orderNumberDE;
 
 
     @DataProvider(name = "routeDE", parallel = true)
@@ -168,13 +170,13 @@ public class QC_1393_SplitBilling_FirmAndPhysicalPerson_SameCountries_PositiveCa
                 .checkIdCompanyInBlockLogsCompanyNumbers("BE0402065988")
                 .checkResponseInBlockLogsCompanyNumbers("success(200)")
                 .checkBillingOrShippingInBlockLogsCompanyNumbers("billing");
-        //TODO отключен по техническим обстоятельствам
-        /*totalPriceInEmailDE = new Mailinator().openEmail("qc_1393_autotestDE@mailinator.com")
+
+        totalPriceInEmailDE = new WebMail().openMail(emailDE, passwordForMail)
                 .openLetter(1)
                 .checkAbsenceVatPercentageInEmail()
                 .checkFirstFirmNameInEmail("SPRL Brasserie Cantillon")
                 .getTotalPriceInEmail();
-        Assert.assertEquals(totalPriceDE, totalPriceInEmailDE);*/
+        Assert.assertEquals(totalPriceDE, totalPriceInEmailDE);
     }
 
     @AfterMethod

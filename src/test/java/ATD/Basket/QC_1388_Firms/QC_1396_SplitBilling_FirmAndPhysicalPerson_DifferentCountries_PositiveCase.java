@@ -22,12 +22,13 @@ import static ATD.CommonMethods.*;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.switchTo;
+import static mailinator.WebMail.passwordForMail;
 
 public class QC_1396_SplitBilling_FirmAndPhysicalPerson_DifferentCountries_PositiveCase {
 
     private Float regularProductPricePerAllDataPageGB, priceWithVatPerAllDataPageGB, priceProductPerProductPageGB,
             totalPriceGB, totalPriceAWSOrderGB, totalPriceInEmailGB, sellingPriceAWSOrderGB, unitPriceGB;
-    private String emailGB = "qc_1396_autotestGB@mailinator.com", vatForGB, orderNumberGB;
+    private String emailGB = "QC_1396_autotestGB@autodoc.si", vatForGB, orderNumberGB;
 
     private Product_page_Logic product_page_logic = new Product_page_Logic();
     private CartAllData_page_Logic cartAllData_page_logic = new CartAllData_page_Logic();
@@ -98,21 +99,21 @@ public class QC_1396_SplitBilling_FirmAndPhysicalPerson_DifferentCountries_Posit
                 .checkIdCompanyInBlockLogsCompanyNumbers("BE0402065988")
                 .checkResponseInBlockLogsCompanyNumbers("success(200)")
                 .checkBillingOrShippingInBlockLogsCompanyNumbers("shipping");
-        //TODO отключен по техническим обстоятельствам
-        /*totalPriceInEmailGB = mailinator.openEmail("qc_1396_autotestGB@mailinator.com")
+
+        totalPriceInEmailGB = webMail.openMail(emailGB, passwordForMail)
                 .openLetter(1)
                 .checkAbsenceVatPercentageInEmail()
                 .checkSecondFirmNameInEmail("SPRL Brasserie Cantillon")
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPriceGB, totalPriceInEmailGB);
-        unitPriceGB = mailinator.getUnitPriceInEmail();
-        Assert.assertEquals(regularProductPricePerAllDataPageGB, unitPriceGB);*/
+        unitPriceGB = webMail.getUnitPriceInEmail();
+        Assert.assertEquals(regularProductPricePerAllDataPageGB, unitPriceGB);
     }
 
 
     private Float regularProductPricePerAllDataPageDE, priceWithVatPerAllDataPageDE, priceProductPerProductPageDE,
             totalPriceDE, totalPriceAWSOrderDE, totalPriceInEmailDE, sellingPriceAWSOrderDE, prunedProductPriceDE, prunedPriceWithVatDE, unitPriceDE;
-    private String emailDE = "qc_1396_autotestDE@mailinator.com", vatForDE, orderNumberDE;
+    private String emailDE = "QC_1396_autotestDE@autodoc.si", vatForDE, orderNumberDE;
 
 
     @DataProvider(name = "routeDE", parallel = true)
@@ -175,15 +176,15 @@ public class QC_1396_SplitBilling_FirmAndPhysicalPerson_DifferentCountries_Posit
                 .checkIdCompanyInBlockLogsCompanyNumbers("BE0402065988")
                 .checkResponseInBlockLogsCompanyNumbers("success(200)")
                 .checkBillingOrShippingInBlockLogsCompanyNumbers("shipping");
-        //TODO отключен по техническим обстоятельствам
-        /*totalPriceInEmailDE = mailinator.openEmail("qc_1396_autotestDE@mailinator.com")
+
+        totalPriceInEmailDE = webMail.openMail(emailDE, passwordForMail)
                 .openLetter(1)
                 .checkAbsenceVatPercentageInEmail()
                 .checkSecondFirmNameInEmail("SPRL Brasserie Cantillon")
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPriceDE, totalPriceInEmailDE);
-        unitPriceDE = mailinator.getUnitPriceInEmail();
-        Assert.assertEquals(regularProductPricePerAllDataPageDE, unitPriceDE);*/
+        unitPriceDE = webMail.getUnitPriceInEmail();
+        Assert.assertEquals(regularProductPricePerAllDataPageDE, unitPriceDE);
     }
 
 

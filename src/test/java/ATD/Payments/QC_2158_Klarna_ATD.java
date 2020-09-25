@@ -18,15 +18,12 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.*;
-import static ATD.CommonMethods.checkingContainsUrl;
 import static Common.DataBase.parseUserIdFromBD;
 import static Common.DataBase.parseUserMailFromBD;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2165_Bancontact_Mister_Cash {
-
-    private CartAllData_page_Logic cartAllData_page_logic = new CartAllData_page_Logic();
+public class QC_2158_Klarna_ATD {
 
     @BeforeClass
     void setUp() {
@@ -35,42 +32,40 @@ public class QC_2165_Bancontact_Mister_Cash {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "BE", "main", "product32");
+        return new SetUp("ATD").setUpShopsWithSubroute("prod", "AT,DE,DK,NL", "main", "product32");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description("Test checks method of payment by Bancontact Mister Cash")
-    public void testBancontactMisterCash(String route) throws Exception {
+    @Description("Test checks method of payment by Klarna")
+    public void testKlarna(String route) throws Exception {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
-        String userData = new DataBase("ATD").getUserIdForPaymentsMethod("payments_userid_atd", shop, "Bancontact/Mister Cash");
+        String userData = new DataBase("ATD").getUserIdForPaymentsMethod("payments_userid_atd", shop, "Klarna");
         String userID = parseUserIdFromBD(userData);
         String mail = parseUserMailFromBD(userData);
         float totalPriceAllData = new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
-                .checkPresencePaymentsMethodLabel(new Cart_page_Logic().masterCashLabel())
+                .checkPresencePaymentsMethodLabel(new Cart_page().klarnaLabel())
                 .nextButtonClick()
                 .signIn(mail, passwordForPayments)
                 .chooseDeliveryCountryForShipping(shop)
                 .fillFieldTelNumForShipping("100+001")
                 .nextBtnClick()
-                .clickOnTheDesiredPaymentMethod(shop, "Bancontact/Mister Cash")
+                .clickOnTheDesiredPaymentMethod(shop, "Klarna")
                 .nextBtnClick()
-                .checkPresencePaymentsMethodLabel(new CartAllData_page().masterCashLabel())
+                .checkPresencePaymentsMethodLabel(new CartAllData_page().klarnaLabel())
                 .getTotalPriceAllDataPage(shop);
-        cartAllData_page_logic.nextBtnClick();
-        checkingContainsUrl("/be2bill");
-        new Merchant_page().fillsInFieldsForEnteringDataAndCancelsPayment("11111111", "11", "11");
-        checkingContainsUrl("/basket/payments.html");
-        new CartPayments_page_Logic().checkActivePaymentMethod("be2bill_mistercash");
+        new CartAllData_page_Logic().nextBtnClick();
+        new Merchant_page().checkPresenceElementFromMerchantPageForPaymentKlarna()
+                .checkActivePaymentMethod("klarna");
         float totalPriceOrderAws = new Customer_view_aws().openCustomerPersonalArea(userID)
                 .checkPresenceOrderHistoryBlock()
                 .checkAndOpenOrderWithExpectedData()
-                .checkPaymentMethodInOrder("Mister Cash - Be2bill")
-                .checkCurrentStatusInOrder("abgebrochene Be2bill")
+                .checkPaymentMethodInOrder("Klarna")
+                .checkCurrentStatusInOrder(": abgebrochen Klarna")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceAllData, totalPriceOrderAws);
         float totalPriceOrderAwsAfterReSave = new Order_aws().reSaveOrder()

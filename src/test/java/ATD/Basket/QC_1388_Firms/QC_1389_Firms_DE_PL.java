@@ -7,6 +7,7 @@ import AWS.Order_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import mailinator.WebMail;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -19,11 +20,12 @@ import static ATD.CommonMethods.*;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.switchTo;
+import static mailinator.WebMail.passwordForMail;
 
 
 public class QC_1389_Firms_DE_PL {
 
-    private String emailPL = "qc_1389_autotestPL@mailinator.com", orderNumberPL;
+    private String emailPL = "QC_1389_autotestPL@autodoc.si", orderNumberPL;
     private Float totalPricePL, totalPriceAWSOrderPL, totalPriceInEmailPL;
 
     @BeforeClass
@@ -71,16 +73,16 @@ public class QC_1389_Firms_DE_PL {
         order_aws.clickCustomerId()
                 .checkAbsenceBlockLogsCompanyNumbers();
         switchTo().window(1);
-        //TODO отключен по техническим обстоятельствам
-        /*totalPriceInEmailPL = new Mailinator().openEmail("qc_1389_autotestPL@mailinator.com")
+
+        totalPriceInEmailPL = new WebMail().openMail(emailPL, passwordForMail)
                 .openLetter(1)
                 .checkTextContainingVatPercentageInEmail("w tym 23% VAT")
                 .checkFirstFirmNameInEmail("FB-MONT A. Fułek Spółka Komandytowa")
                 .getTotalPriceInEmail();
-        Assert.assertEquals(totalPricePL, totalPriceInEmailPL);*/
+        Assert.assertEquals(totalPricePL, totalPriceInEmailPL);
     }
 
-    private String emailDE = "qc_1389_autotestDE@mailinator.com", orderNumberDE;
+    private String emailDE = "QC_1389_autotestDE@autodoc.si", orderNumberDE;
     private Float totalPriceDE, totalPriceAWSOrderDE, totalPriceInEmailDE;
 
     @DataProvider(name = "routeDE", parallel = true)
@@ -123,16 +125,16 @@ public class QC_1389_Firms_DE_PL {
         order_aws.clickCustomerId()
                 .checkAbsenceBlockLogsCompanyNumbers();
         switchTo().window(1);
-        //TODO отключен по техническим обстоятельствам
-        /*totalPriceInEmailDE = new Mailinator().openEmail("qc_1389_autotestDE@mailinator.com")
+
+        totalPriceInEmailDE = new WebMail().openMail(emailDE, passwordForMail)
                 .openLetter(1)
                 .checkTextContainingVatPercentageInEmail("inkl. 16% MwSt")
                 .checkFirstFirmNameInEmail("Autodoc GmbH")
                 .getTotalPriceInEmail();
-        Assert.assertEquals(totalPriceDE, totalPriceInEmailDE);*/
+        Assert.assertEquals(totalPriceDE, totalPriceInEmailDE);
     }
 
-    private String emailES = "qc_1389_autotestES@mailinator.com", orderNumberES;
+    private String emailES = "QC_1389_autotestES@autodoc.si", orderNumberES;
     private Float totalPriceES, totalPriceAWSOrderES, totalPriceInEmailES;
 
     @DataProvider(name = "routeES", parallel = true)
@@ -175,13 +177,13 @@ public class QC_1389_Firms_DE_PL {
         order_aws.clickCustomerId()
                 .checkAbsenceBlockLogsCompanyNumbers();
     switchTo().window(1);
-        //TODO отключен по техническим обстоятельствам
-    /*totalPriceInEmailES = new Mailinator().openEmail("qc_1389_autotestES@mailinator.com")
+
+    totalPriceInEmailES = new WebMail().openMail(emailES, passwordForMail)
                 .openLetter(1)
                 .checkTextContainingVatPercentageInEmail("IVA incluido 16%")
                 .checkFirstFirmNameInEmail("Autodoc GmbH")
                 .getTotalPriceInEmail();
-        Assert.assertEquals(totalPriceES, totalPriceInEmailES);*/
+        Assert.assertEquals(totalPriceES, totalPriceInEmailES);
 }
 
     @AfterMethod

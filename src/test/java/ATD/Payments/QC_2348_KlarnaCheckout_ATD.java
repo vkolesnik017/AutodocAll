@@ -24,7 +24,7 @@ import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.closeWindow;
 
-public class QC_2348_KlarnaCheckout {
+public class QC_2348_KlarnaCheckout_ATD {
 
     @BeforeClass
     void setUp() {
@@ -74,7 +74,6 @@ public class QC_2348_KlarnaCheckout {
                 .checkCurrentStatusInOrder("Testbestellungen")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceAllData, totalPriceOrderAwsAfterReSave);
-
     }
 
     @AfterMethod

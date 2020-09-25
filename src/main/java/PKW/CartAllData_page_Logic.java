@@ -17,8 +17,26 @@ public class CartAllData_page_Logic extends CartAllData_page {
     }
 
     @Step("Checks presence payments method label. CartAllData_page")
-    public CartAllData_page_Logic checkPresencePaymentsMethodLabel(SelenideElement locator) {
-        locator.shouldBe(visible);
+    public CartAllData_page_Logic checkPresencePaymentsMethodLabel(SelenideElement ... locator) {
+        for (SelenideElement expectedLocator : locator) {
+            expectedLocator.shouldBe(visible);
+        }
+        return this;
+    }
+
+    @Step("Checks presence of payment methods label for required country. CartAllData_page")
+    public CartAllData_page_Logic checksPresencePaymentsMethodLabelForRequiredCountry(String shop) {
+        if (shop.equals("IT")) {
+            visaLabel().shouldBe(visible);
+            masterCardLabel().shouldBe(visible);
+            postPayLabel().shouldBe(visible);
+            cartaSiLabel().shouldBe(visible);
+        } else {
+            visaLabel().shouldBe(visible);
+            masterCardLabel().shouldBe(visible);
+            discoverLabel().shouldBe(visible);
+            americanExpressLabel().shouldBe(visible);
+        }
         return this;
     }
 

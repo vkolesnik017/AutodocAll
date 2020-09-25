@@ -1,10 +1,11 @@
-package ATD.Payments;
+package PKW.Payments;
 
-import ATD.*;
+import Common.Merchant_page;
 import AWS.Customer_view_aws;
 import AWS.Order_aws;
 import Common.DataBase;
 import Common.SetUp;
+import PKW.*;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -16,13 +17,13 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.*;
 import static Common.DataBase.parseUserIdFromBD;
 import static Common.DataBase.parseUserMailFromBD;
 import static Common.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.*;
+import static PKW.CommonMethods.*;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2168_PayPal {
+public class QC_2468_BraintreeCreditCard_PKW {
 
     @BeforeClass
     void setUp() {
@@ -31,44 +32,40 @@ public class QC_2168_PayPal {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp("ATD").setUpShopsWithSubroute("prod", "DE,AT,BG,BE,CH,CZ,DK,EN,EE,ES,FI,FR,GR,HU,IT,LD,LT,LV,NL,NO,PL,PT,RO,SE,SI,SK", "main", "product32");
+        return new SetUp("PKW").setUpShopsWithSubroute("prod", "BG,CH,CZ,DK,EN,GR,NO,PL,RO", "main", "product9");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description("Test checks method of payment by PayPal")
-    public void testPayPal(String route) throws Exception {
+    @Description("Test checks method of payment by BraintreeCreditCard")
+    public void testBraintreeCreditCard(String route) throws Exception {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
-        String userData = new DataBase("ATD").getUserIdForPaymentsMethod("payments_userid_atd", shop, "PayPal");
+        String userData = new DataBase("PKW").getUserIdForPaymentsMethod("payments_userid_pkw", shop, "CreditCard_braintree");
         String userID = parseUserIdFromBD(userData);
         String mail = parseUserMailFromBD(userData);
         float totalPriceAllData = new Product_page_Logic().addProductToCart()
-                .closePopupOtherCategoryIfYes()
+                .closeBtnOFPopupReviewIfYes()
                 .cartClick()
-                .checkPresencePaymentsMethodLabel(new Cart_page().payPalLabel())
+                .checkPresencePaymentsMethodLabel(new Cart_page().visaLabel(), new Cart_page().masterCardLabel())
                 .nextButtonClick()
                 .signIn(mail, passwordForPayments)
                 .chooseDeliveryCountryForShipping(shop)
                 .fillFieldTelNumForShipping("100+001")
                 .nextBtnClick()
-                .checkActivePaymentMethod("paypal")
-                .clickOnTheDesiredPaymentMethod(shop, "PayPal")
+                .clickOnTheDesiredPaymentMethod(shop, "CreditCard_braintree")
                 .nextBtnClick()
-                .checkPresencePaymentsMethodLabel(new CartAllData_page().payPalLabel())
+                .checkPresencePaymentsMethodLabel(new CartAllData_page().visaLabel(), new CartAllData_page().masterCardLabel())
                 .getTotalPriceAllDataPage(shop);
-                new CartAllData_page_Logic().payPalBtnClick();
-        switchTo().window(1);
-        checkingContainsUrl("paypal.com");
-        closeWindow();
-        switchTo().window(0);
-        new CartPayments_page_Logic().checkActivePaymentMethod("paypal");
+        new CartAllData_page_Logic().nextBtnClick();
+        new Merchant_page().checkPresenceElementFromMerchantPageBraintreeCreditCardAndCancelOrder("5169307507657018", "1225", "658");
+        new CartPayments_page_Logic().checkActivePaymentMethod("braintree_creditcards");
         float totalPriceOrderAws = new Customer_view_aws().openCustomerPersonalArea(userID)
                 .checkPresenceOrderHistoryBlock()
                 .checkAndOpenOrderWithExpectedData()
-                .checkPaymentMethodInOrder("PayPal")
-                .checkCurrentStatusInOrder("abgebrochene PayPal-Bestellungen")
+                .checkPaymentMethodInOrder("Braintree")
+                .checkCurrentStatusInOrder("abgebrochene Braintree")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceAllData, totalPriceOrderAws);
         float totalPriceOrderAwsAfterReSave = new Order_aws().reSaveOrder()

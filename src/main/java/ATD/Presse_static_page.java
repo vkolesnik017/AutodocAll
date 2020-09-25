@@ -1,10 +1,10 @@
 package ATD;
 
-
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
@@ -14,12 +14,48 @@ class Presse_static_page {
         return $(By.xpath("//*[@class='press-release__header']"));
     }
 
+    SelenideElement presseHeaderTitle() {
+        return $(By.xpath("//*[@class='press-release__header-title']"));
+    }
+
+    SelenideElement presseHeaderFirstText() {
+        return $(By.xpath("//*[@class='press-release__header-advantage']"));
+    }
+
+    SelenideElement presseHeaderSecondText() {
+        return $(By.xpath("//*[@class='press-release__header-text']//p"));
+    }
+
     SelenideElement presseInfoBlock() {
         return $(By.xpath("//*[@class='press-inform']"));
     }
 
+    SelenideElement presseInfoTitle() {
+        return $(By.xpath("//*[@class='press-inform__title']"));
+    }
+
+    SelenideElement presseInfoText() {
+        return $(By.xpath("//*[@class='press-inform__text']//p"));
+    }
+
     SelenideElement presseContentBlock() {
         return $(By.xpath("//*[@class='press-content'][1]"));
+    }
+
+    SelenideElement presseFirstPersonBlock() {
+        return $(By.xpath("//*[@class='press-inform__persone'][1]"));
+    }
+
+    SelenideElement presseFirstPhoto() {
+        return $(By.xpath("//img[@alt='press_person_alt']"));
+    }
+
+    SelenideElement presseSecondPhoto() {
+        return $(By.xpath("//img[@alt='press_person_2_alt']"));
+    }
+
+    SelenideElement presseSecondPersonBlock() {
+        return $(By.xpath("//*[@class='press-inform__persone'][2]"));
     }
 
     SelenideElement mehrButton() {
@@ -28,6 +64,14 @@ class Presse_static_page {
 
     SelenideElement atdHilft() {
         return $(By.xpath("//*[@class='atd-hilft']"));
+    }
+
+    SelenideElement atdHilftImage() {
+        return $(By.xpath("//*[@class='atd-hilft__img']//img"));
+    }
+
+    ElementsCollection articleTexts() {
+        return $$(By.xpath("//*[@class='atd-hilft__text']//p"));
     }
 
     ElementsCollection articleTitle() {
@@ -41,4 +85,11 @@ class Presse_static_page {
     ElementsCollection downloadJPG() {
         return $$(By.xpath("//*[@class='press-article__file press-article__file--pdf']"));
     }
+
+    ElementsCollection artTitle() {
+        return $$(By.xpath("//*[@class='press-article__title']")).filter(visible);
+    }
+
+
 }
+
