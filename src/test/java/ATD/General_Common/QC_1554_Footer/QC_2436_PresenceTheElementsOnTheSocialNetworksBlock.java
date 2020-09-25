@@ -30,11 +30,14 @@ public class QC_2436_PresenceTheElementsOnTheSocialNetworksBlock {
     @Owner(value = "LavrynenkoOlha")
     @Test(dataProvider = "route")
     @Description(value = "Test check presence of the elements in the Social Network Block")
-    public void checkingSocilaNetworksBlock(String route) {
+    public void checkingSocialNetworksBlock(String route) {
         openPage(route);
         new Main_page_Logic().checkingPresenceOfTheSocialBlock()
-                .checkingPresenceOfTheImages();
+                .checkingPresenceOfTheImages()
+                .checkingPresenceOfTheText()
+                .checkingChangingTheColor();
     }
+
     @AfterMethod
     private void close() {
         closeWebDriver();

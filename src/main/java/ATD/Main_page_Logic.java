@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 import static ATD.CommonMethods.*;
-import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
+import static com.codeborne.selenide.CollectionCondition.*;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
@@ -1169,19 +1169,38 @@ public class Main_page_Logic extends Main_page {
         return page(Presse_static_page_Logic.class);
     }
 
-    //To do
     @Step("Checking the Social Networks in the footer. Main_page")
     public Main_page_Logic checkingPresenceOfTheSocialBlock() {
         blockSocialNetworks().shouldBe(visible);
         return this;
     }
 
-    @Step("Checking the Social Networks in the footer. Main_page")
+    @Step("Checking the displaying of the image in the Social Network Block. Main_page")
     public Main_page_Logic checkingPresenceOfTheImages() {
-        for (int i = 0; i < imagesInTheSocialNetworksBlock().size(); i++) {
-            imagesInTheSocialNetworksBlock().get(i).shouldBe(exist);
-            Assert.assertEquals(imagesInTheSocialNetworksBlock().size(), 3);
+        imagesInTheSocialNetworksBlock().filter(visible).shouldHave(size(3));
+        return this;
+    }
+
+    @Step("Checking the presence of the text in the Social Network Block. Main_page")
+    public Main_page_Logic checkingPresenceOfTheText() {
+        for (int i = 0; i < 4; i++) {
+            textHeadingTheSocialNetworksBlock().get(i).shouldBe(visible);
+            Assert.assertFalse(textHeadingTheSocialNetworksBlock().get(i).text().isEmpty());
         }
+        textBigBlockSocialNetworks().shouldBe(visible);
+        Assert.assertFalse(textBigBlockSocialNetworks().text().isEmpty());
+        return this;
+    }
+
+    @Step("Checking the changing the color of the text in the Social Network Block. Main_page")
+    public Main_page_Logic checkingChangingTheColor() {
+        for (int i = 0; i < 3; i++) {
+            linksUnderTheSocialNetworksBlock().get(i).scrollIntoView(false).shouldBe(visible)
+                    .hover()
+                    .shouldHave(cssValue("color", "rgba(244, 125, 47, 1)"));
+        }
+        textBigBlockSocialNetworks().shouldBe(visible);
+        Assert.assertFalse(textBigBlockSocialNetworks().text().isEmpty());
         return this;
     }
 }
