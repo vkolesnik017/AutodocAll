@@ -7,8 +7,10 @@ import org.testng.Assert;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static ATD.CommonMethods.checkingContainsUrl;
+import static ATD.CommonMethods.getTextFromUnVisibleElement;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.back;
 import static com.codeborne.selenide.Selenide.page;
@@ -319,6 +321,43 @@ public class Moto_Category_page_Logic extends Moto_Category_page {
             categoriesFromSideBar.add(childCategoriesInSideBar().get(i).getText());
         }
         Assert.assertTrue(categoriesFromTable.containsAll(categoriesFromSideBar));
+        return this;
+    }
+
+    @Step("get id of Dangerous product .Moto_Category_page")
+    public String getIdOfDangerousProduct(int positionOfProduct) {
+        return btnAddDangerousProductToWishList().get(positionOfProduct).getAttribute("data-product-id");
+    }
+
+    @Step("get signal word from first dangerous product .Moto_Category_page")
+    public String getSignalWordFromFirstDangerousProduct(int positionOfProduct) {
+        return getTextFromUnVisibleElement(signalWordOfDangerousProduct().get(positionOfProduct));
+    }
+
+    @Step("get attribute of Warning icon in pop-Up .Moto_Category_page")
+    public List<String> getAttributeOfWarningIconInPopUp(int positionOfProduct) {
+        List<String> attribute = new ArrayList<>();
+        dangerousProducts().get(positionOfProduct).scrollIntoView("{block: \"center\"}").hover();
+        for (int i = 0; i < attributeOfWarningIcon(positionOfProduct + 1).size(); i++) {
+            attribute.add(attributeOfWarningIcon(positionOfProduct + 1).get(i).shouldBe(visible).getAttribute("style").replace("background-image: url(\"", "").replace("\");", ""));
+        }
+        return attribute;
+    }
+
+    @Step("click on dangerous label of product and compare elements. Moto_Category_page")
+    public Moto_Category_page_Logic clickOnDangerousLabelAndCompareElements(int positionOfProduct, String signalWord, List<String> attributeOfWarningIcon) {
+
+        if (!labelTitleDangerousProducts().get(positionOfProduct).isDisplayed()) {
+            dangerousProducts().get(positionOfProduct).scrollIntoView("{block: \"center\"}").hover();
+        } else {
+            labelTitleDangerousProducts().get(positionOfProduct).shouldBe(visible).click();
+            blackBackground().shouldHave(attribute("style", "display: block;"));
+            warningPopUp().shouldBe(visible).shouldHave(attribute("style", "display: block;"));
+            titleOfDangerousPopUp().shouldBe(visible).shouldHave(exactText(signalWord));
+            infoTextOfDangerousPopUp().shouldNotBe(empty);
+            List<String> attributeOfDangerousIcon = dangerousIconInWarningPopUp().stream().map(n -> n.getAttribute("style").replace("background-image: url(\"", "").replace("\");", "")).collect(Collectors.toList());
+            Assert.assertEquals(attributeOfDangerousIcon, attributeOfWarningIcon);
+        }
         return this;
     }
 }
