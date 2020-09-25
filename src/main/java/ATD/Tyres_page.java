@@ -100,6 +100,14 @@ public class Tyres_page {
 
   ElementsCollection brandsInSlider() { return $$x("//div[@class='unsere']//img"); }
 
+  ElementsCollection brandProductFromTopTyresBlock() {
+    return $$x("//div[@class='mark_img']/img");
+  }
+
+  ElementsCollection sizeProductFromTopTyresBlock() {
+    return $$x("//span[@class='tit ga-click link']/span");
+  }
+
 
 
 }
