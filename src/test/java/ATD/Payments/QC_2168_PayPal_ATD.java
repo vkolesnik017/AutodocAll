@@ -4,7 +4,6 @@ import ATD.*;
 import AWS.Customer_view_aws;
 import AWS.Order_aws;
 import Common.DataBase;
-import Common.Merchant_page;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -21,9 +20,9 @@ import static ATD.CommonMethods.*;
 import static Common.DataBase.parseUserIdFromBD;
 import static Common.DataBase.parseUserMailFromBD;
 import static Common.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.Selenide.*;
 
-public class QC_2158_Klarna {
+public class QC_2168_PayPal_ATD {
 
     @BeforeClass
     void setUp() {
@@ -32,40 +31,44 @@ public class QC_2158_Klarna {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp("ATD").setUpShopsWithSubroute("prod", "AT,DE,DK,NL", "main", "product32");
+        return new SetUp("ATD").setUpShopsWithSubroute("prod", "DE,AT,BG,BE,CH,CZ,DK,EN,EE,ES,FI,FR,GR,HU,IT,LD,LT,LV,NL,NO,PL,PT,RO,SE,SI,SK", "main", "product32");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description("Test checks method of payment by Klarna")
-    public void testKlarna(String route) throws Exception {
+    @Description("Test checks method of payment by PayPal")
+    public void testPayPal(String route) throws Exception {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
-        String userData = new DataBase("ATD").getUserIdForPaymentsMethod("payments_userid_atd", shop, "Klarna");
+        String userData = new DataBase("ATD").getUserIdForPaymentsMethod("payments_userid_atd", shop, "PayPal");
         String userID = parseUserIdFromBD(userData);
         String mail = parseUserMailFromBD(userData);
         float totalPriceAllData = new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
-                .checkPresencePaymentsMethodLabel(new Cart_page().klarnaLabel())
+                .checkPresencePaymentsMethodLabel(new Cart_page().payPalLabel())
                 .nextButtonClick()
                 .signIn(mail, passwordForPayments)
                 .chooseDeliveryCountryForShipping(shop)
                 .fillFieldTelNumForShipping("100+001")
                 .nextBtnClick()
-                .clickOnTheDesiredPaymentMethod(shop, "Klarna")
+                .checkActivePaymentMethod("paypal")
+                .clickOnTheDesiredPaymentMethod(shop, "PayPal")
                 .nextBtnClick()
-                .checkPresencePaymentsMethodLabel(new CartAllData_page().klarnaLabel())
+                .checkPresencePaymentsMethodLabel(new CartAllData_page().payPalLabel())
                 .getTotalPriceAllDataPage(shop);
-        new CartAllData_page_Logic().nextBtnClick();
-        new Merchant_page().checkPresenceElementFromMerchantPageForPaymentKlarna()
-                .checkActivePaymentMethod("klarna");
+                new CartAllData_page_Logic().payPalBtnClick();
+        switchTo().window(1);
+        checkingContainsUrl("paypal.com");
+        closeWindow();
+        switchTo().window(0);
+        new CartPayments_page_Logic().checkActivePaymentMethod("paypal");
         float totalPriceOrderAws = new Customer_view_aws().openCustomerPersonalArea(userID)
                 .checkPresenceOrderHistoryBlock()
                 .checkAndOpenOrderWithExpectedData()
-                .checkPaymentMethodInOrder("Klarna")
-                .checkCurrentStatusInOrder(": abgebrochen Klarna")
+                .checkPaymentMethodInOrder("PayPal")
+                .checkCurrentStatusInOrder("abgebrochene PayPal-Bestellungen")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceAllData, totalPriceOrderAws);
         float totalPriceOrderAwsAfterReSave = new Order_aws().reSaveOrder()

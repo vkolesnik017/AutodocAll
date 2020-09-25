@@ -70,4 +70,20 @@ public class Cart_page {
     public SelenideElement przelewy24Label() {
         return $x("//img[contains(@src,'przelewy24')]");
     }
+
+    public SelenideElement klarnaLabel() {
+        return $x("//img[contains(@src,'klarna.png')]");
+    }
+
+    public SelenideElement epsLabel() {
+        return $x("//img[contains(@src,'eps_at.png')]");
+    }
+
+    public SelenideElement idealLabel() {
+        return $x("//img[contains(@src,'idl')]");
+    }
+
+    public SelenideElement multibancoLabel() {
+        return $x("//img[contains(@src,'multibanco')]");
+    }
 }

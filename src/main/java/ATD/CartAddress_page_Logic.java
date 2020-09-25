@@ -97,6 +97,7 @@ public class CartAddress_page_Logic extends CartAddress_page {
 
     @Step("Fill field telephone number {telNum} for Shipping. CartAddress_page")
     public CartAddress_page_Logic fillFieldTelNumForShipping(String telNum) {
+        telephon().shouldBe(visible);
         checkCorrectTextAndFillInput(telephon(), telNum);
         return this;
     }

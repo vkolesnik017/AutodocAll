@@ -5,6 +5,7 @@ import PKW.Listing_chemicals_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -17,6 +18,9 @@ import static PKW.CommonMethods.openPage;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1800_TopCategoriesSidebarOnChemistryListing {
+
+    private String nameCategory, titleNameCategory;
+    private Listing_chemicals_page_Logic listing_chemicals_page_logic = new Listing_chemicals_page_Logic();
 
     @BeforeClass
     void setUp() {
@@ -31,10 +35,14 @@ public class QC_1800_TopCategoriesSidebarOnChemistryListing {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test Checks presence top categories block from sidebar.")
-    public void testCheckingPresenceTopCategoriesBlockFromSidebar(String route) {
+    @Description(value = "Test Checks presence top categories block from sidebar and checks transition for first category from top products sidebar.")
+    public void testCheckingPresenceTopCategoriesBlockFromSidebarAndTransitionFromTopProducts(String route) {
         openPage(route);
         new Listing_chemicals_page_Logic().checkingPresenceTopCategoriesBlockFromSidebar();
+        nameCategory = listing_chemicals_page_logic.getNameFirstCategoryFromTopCategoriesSidebar();
+        listing_chemicals_page_logic.clickFirstCategoryFromTopCategoriesSidebar();
+        titleNameCategory = listing_chemicals_page_logic.getTitleNameListingPage();
+        Assert.assertEquals(nameCategory.toLowerCase(), titleNameCategory.toLowerCase());
     }
 
     @AfterMethod

@@ -222,4 +222,8 @@ class LKW_Categories_maker_page {
 
     SelenideElement idOfVehicleInGaragePopUp(String idOfVehicle) {return $x("//div[@class='wrapper-radio']/label[@for='"+idOfVehicle+"']");}
 
+    ElementsCollection visibleProductsInTopBlock() {
+        return $$x("//*[self::div[contains(@class,'slick-active')] or self::div[(@class='top-small-products__items slick-slide')]] /div[@class='top-small-products-items__item']").filter(visible);
+    }
+
 }

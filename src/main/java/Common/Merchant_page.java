@@ -213,6 +213,7 @@ public class Merchant_page {
         checkingContainsUrl("/trustly");
         switchTo().frame(frame());
         allBank().click();
+        sleep(5000);
         formForDataInMerchant().shouldBe(visible);
         headerBackBtn().click();
         allBank().shouldBe(visible);

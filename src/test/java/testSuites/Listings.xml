@@ -46,7 +46,7 @@
             <class name="ATD.Listings.QC_458_ListingViewModes.QC_464_CompareProductsBetweenListingViewModesOnACC"/>
         </classes>
     </test>
-    
+
     <test name="QC_477_ListingSoft404">
         <classes>
             <class name="ATD.Listings.QC_477_ListingSoft404.QC_478_NoListProductsOnSoft404"/>

@@ -23,7 +23,7 @@ import static Common.DataBase.parseUserMailFromBD;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2350_Ideal {
+public class QC_2350_Ideal_ATD {
 
     @BeforeClass
     void setUp() {

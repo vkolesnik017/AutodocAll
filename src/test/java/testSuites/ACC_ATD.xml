@@ -203,7 +203,6 @@
         <classes>
             <class name="ATD.ACC.QC_2260_BlockWithProductsOnToolsListing.QC_2262_MainProductsListingTools"/>
             <class name="ATD.ACC.QC_2260_BlockWithProductsOnToolsListing.QC_2263_TransitionOnProductPageFromToolsListing"/>
-            <class name="ATD.ACC.QC_2260_BlockWithProductsOnToolsListing.QC_2264_SelectingQuantityProductsByBuyOnToolsListing"/>
             <class name="ATD.ACC.QC_2260_BlockWithProductsOnToolsListing.QC_2265_AddProductsInBasketOnToolsListing"/>
         </classes>
     </test>

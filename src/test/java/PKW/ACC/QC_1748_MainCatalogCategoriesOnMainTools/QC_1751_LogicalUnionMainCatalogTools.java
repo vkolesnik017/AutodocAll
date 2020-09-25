@@ -34,7 +34,8 @@ public class QC_1751_LogicalUnionMainCatalogTools {
     @Description(value = "Test checks presence categories block in logical union from main catalog.")
     public void testCheckingPresenceCategoriesInLogicalUnion(String route) {
         openPage(route);
-        new Index_instruments_page_Logic().checkingPresenceCategoriesInLogicalUnion();
+        new Index_instruments_page_Logic().checkingPresenceCategoriesInLogicalUnion()
+                .checkingPresenceMainCatalogCategoriesBlock();
     }
 
     @AfterMethod

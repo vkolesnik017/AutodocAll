@@ -318,4 +318,22 @@ public class LKW_Category_car_list_page {
     ElementsCollection sidesOfInstallationInSideBar() {return $$x("//div[@class='installation-side__content']/div");}
 
     ElementsCollection linksOfBrandsFromBlock() {return $$x("//div[@id='selected-instalation__slider']//li/label");}
+
+    SelenideElement listOfProductTableView() {return $x("//div[@class='sub_catalog_grid']");}
+
+    ElementsCollection labelTitleDangerousProducts() {return $$x("//div[@class='rec_products_block']//span[@class='dangerous-listing__show-more']");}
+
+    ElementsCollection labelIconDangerousProducts() {return $$x("//div[@class='rec_products_block']//div[@class='dangerous-listing__icon'][1]").filter(visible);}
+
+    ElementsCollection dangerousProducts() {return $$x("//span[@class='dangerous-listing__show-more']/ancestor::div[@class='rec_products_block']");}
+
+    ElementsCollection signalWordOfDangerousProduct() {return $$x("//div[@class='dangerous-listing__title hidden']");}
+
+    SelenideElement blackBackground() {return $x("//div[@class='overlay black hidden']");}
+
+    SelenideElement warningPopUp() {return $x("//div[@class='popup-dangerous']");}
+
+    SelenideElement titleOfDangerousPopUp() {return $x("//div[@class='popup-dangerous__title']");}
+
+    SelenideElement infoTextOfDangerousPopUp() {return $x("//div[@class='popup-dangerous']//p");}
 }

@@ -4,6 +4,7 @@ import ATD.*;
 import AWS.Customer_view_aws;
 import AWS.Order_aws;
 import Common.DataBase;
+import Common.Merchant_page;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -17,12 +18,15 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.*;
+import static ATD.CommonMethods.checkingContainsUrl;
 import static Common.DataBase.parseUserIdFromBD;
 import static Common.DataBase.parseUserMailFromBD;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2351_Przelewy24 {
+public class QC_2165_Bancontact_Mister_Cash_ATD {
+
+    private CartAllData_page_Logic cartAllData_page_logic = new CartAllData_page_Logic();
 
     @BeforeClass
     void setUp() {
@@ -31,39 +35,42 @@ public class QC_2351_Przelewy24 {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "PL", "main", "product32");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "BE", "main", "product32");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description("Test checks method of payment by Przelewy24")
-    public void testPrzelewy24(String route) throws Exception {
+    @Description("Test checks method of payment by Bancontact Mister Cash")
+    public void testBancontactMisterCash(String route) throws Exception {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
-        String userData = new DataBase("ATD").getUserIdForPaymentsMethod("payments_userid_atd", shop, "Przelewy24");
+        String userData = new DataBase("ATD").getUserIdForPaymentsMethod("payments_userid_atd", shop, "Bancontact/Mister Cash");
         String userID = parseUserIdFromBD(userData);
         String mail = parseUserMailFromBD(userData);
         float totalPriceAllData = new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
-                .checkPresencePaymentsMethodLabel(new Cart_page().przelewy24Label())
+                .checkPresencePaymentsMethodLabel(new Cart_page_Logic().masterCashLabel())
                 .nextButtonClick()
                 .signIn(mail, passwordForPayments)
                 .chooseDeliveryCountryForShipping(shop)
                 .fillFieldTelNumForShipping("100+001")
                 .nextBtnClick()
-                .clickOnTheDesiredPaymentMethod(shop, "Przelewy24")
+                .clickOnTheDesiredPaymentMethod(shop, "Bancontact/Mister Cash")
                 .nextBtnClick()
-                .checkPresencePaymentsMethodLabel(new CartAllData_page().przelewy24abel())
+                .checkPresencePaymentsMethodLabel(new CartAllData_page().masterCashLabel())
                 .getTotalPriceAllDataPage(shop);
-        new CartAllData_page_Logic().nextBtnClick();
-        checkingContainsUrl("secure.przelewy24.pl");
+        cartAllData_page_logic.nextBtnClick();
+        checkingContainsUrl("/be2bill");
+        new Merchant_page().fillsInFieldsForEnteringDataAndCancelsPayment("11111111", "11", "11");
+        checkingContainsUrl("/basket/payments.html");
+        new CartPayments_page_Logic().checkActivePaymentMethod("be2bill_mistercash");
         float totalPriceOrderAws = new Customer_view_aws().openCustomerPersonalArea(userID)
                 .checkPresenceOrderHistoryBlock()
                 .checkAndOpenOrderWithExpectedData()
-                .checkPaymentMethodInOrder("Przelewy24")
-                .checkCurrentStatusInOrder("abgebrochene Przelewy24")
+                .checkPaymentMethodInOrder("Mister Cash - Be2bill")
+                .checkCurrentStatusInOrder("abgebrochene Be2bill")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceAllData, totalPriceOrderAws);
         float totalPriceOrderAwsAfterReSave = new Order_aws().reSaveOrder()

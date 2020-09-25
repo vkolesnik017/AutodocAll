@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 import static ATD.CommonMethods.*;
-import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
+import static com.codeborne.selenide.CollectionCondition.*;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
@@ -459,9 +459,9 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Click About Us link in the footer. Main_page")
-    public About_us_page clickAboutUs() {
+    public About_us_static_page clickAboutUs() {
         aboutUsLink().click();
-        return page(About_us_page.class);
+        return page(About_us_static_page.class);
     }
 
     @Step("Click Impressum link in the footer. Main_page")
@@ -496,9 +496,9 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Click Presse link in the footer. Main_page")
-    public Presse_page clickPresse() {
+    public Presse_static_page clickPresse() {
         presseLink().click();
-        return page(Presse_page.class);
+        return page(Presse_static_page.class);
     }
 
     @Step("Click MobileApp link in the footer")
@@ -1145,9 +1145,9 @@ public class Main_page_Logic extends Main_page {
         return page(Makers_page_Logic.class);
     }
 
-     @Step("click on All spare parts link in TOP Parent and Child block. Main_page")
+    @Step("click on All spare parts link in TOP Parent and Child block. Main_page")
     public LKW_Categories_page_Logic clickOnAllSparePartsLinkInTopParentsBlock() {
-         allSparePartsLink().shouldBe(visible).click();
+        allSparePartsLink().shouldBe(visible).click();
         return page(LKW_Categories_page_Logic.class);
     }
 
@@ -1155,5 +1155,52 @@ public class Main_page_Logic extends Main_page {
     public Services_wishList_page_Logic goToWishListPage() {
         iconOfWishList().shouldBe(visible).click();
         return page(Services_wishList_page_Logic.class);
+    }
+
+    @Step("go to the About us page. About_us_page")
+    public About_us_static_page_Logic goToAboutUsPage() {
+        aboutUsLink().shouldBe(visible).click();
+        return page(About_us_static_page_Logic.class);
+    }
+
+    @Step("go to the Presse page. Presse_page")
+    public Presse_static_page_Logic goToPressePage() {
+        presseLink().shouldBe(visible).click();
+        return page(Presse_static_page_Logic.class);
+    }
+
+    @Step("Checking the Social Networks in the footer. Main_page")
+    public Main_page_Logic checkingPresenceOfTheSocialBlock() {
+        blockSocialNetworks().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checking the displaying of the image in the Social Network Block. Main_page")
+    public Main_page_Logic checkingPresenceOfTheImages() {
+        imagesInTheSocialNetworksBlock().filter(visible).shouldHave(size(3));
+        return this;
+    }
+
+    @Step("Checking the presence of the text in the Social Network Block. Main_page")
+    public Main_page_Logic checkingPresenceOfTheText() {
+        for (int i = 0; i < 4; i++) {
+            textHeadingTheSocialNetworksBlock().get(i).shouldBe(visible);
+            Assert.assertFalse(textHeadingTheSocialNetworksBlock().get(i).text().isEmpty());
+        }
+        textBigBlockSocialNetworks().shouldBe(visible);
+        Assert.assertFalse(textBigBlockSocialNetworks().text().isEmpty());
+        return this;
+    }
+
+    @Step("Checking the changing the color of the text in the Social Network Block. Main_page")
+    public Main_page_Logic checkingChangingTheColor() {
+        for (int i = 0; i < 3; i++) {
+            linksUnderTheSocialNetworksBlock().get(i).scrollIntoView(false).shouldBe(visible)
+                    .hover()
+                    .shouldHave(cssValue("color", "rgba(244, 125, 47, 1)"));
+        }
+        textBigBlockSocialNetworks().shouldBe(visible);
+        Assert.assertFalse(textBigBlockSocialNetworks().text().isEmpty());
+        return this;
     }
 }

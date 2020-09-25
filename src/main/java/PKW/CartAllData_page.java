@@ -45,4 +45,24 @@ public class CartAllData_page {
     public SelenideElement przelewy24abel() {
         return $x("//img[contains(@src,'przelewy24')]");
     }
+
+    public SelenideElement klarnaLabel() {
+        return $x("//img[contains(@src,'klarna')]");
+    }
+
+    public SelenideElement epsLabel() {
+        return $x("//img[contains(@src,'epsbank.png')]");
+    }
+
+    public SelenideElement trustlyLabel() {
+        return $x("//img[contains(@src,'trustly')]");
+    }
+
+    public SelenideElement idealLabel() {
+        return $x("//img[contains(@src,'be2bill_ideal')]");
+    }
+
+    public SelenideElement multibancoLabel() {
+        return $x("//img[contains(@src,'multibanco')]");
+    }
 }

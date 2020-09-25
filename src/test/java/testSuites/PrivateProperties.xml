@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="PrivateProperties" parallel="methods" thread-count="4" data-provider-thread-count="2">
+
+    <listeners>
+        <listener class-name="Common.ProjectListener"/>
+    </listeners>
+
+    <test name="QC_2444_CheckingMarkingOfDangerousProductsAtFrontsInVariousFunctionalBlocks">
+        <classes>
+            <class name="ATD.PrivateProperties.QC_2444_CheckingMarkingOfDangerousProductsAtFrontsInVariousFunctionalBlocks.QC_2535_CheckDisplayAndClickOnDangerousProductsMarkingBlockInListings"/>
+        </classes>
+    </test>
+
+
+</suite>
