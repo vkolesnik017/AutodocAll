@@ -22,8 +22,9 @@ import static Common.DataBase.parseUserIdFromBD;
 import static Common.DataBase.parseUserMailFromBD;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.Selenide.closeWindow;
 
-public class QC_2158_Klarna {
+public class QC_2348_KlarnaCheckout_ATD {
 
     @BeforeClass
     void setUp() {
@@ -32,17 +33,17 @@ public class QC_2158_Klarna {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp("ATD").setUpShopsWithSubroute("prod", "AT,DE,DK,NL", "main", "product32");
+        return new SetUp("ATD").setUpShopsWithSubroute("prod", "FI,SE,NO", "main", "product32");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description("Test checks method of payment by Klarna")
-    public void testKlarna(String route) throws Exception {
+    @Description("Test checks method of payment by KlarnaCheckout")
+    public void testKlarnaCheckout(String route) throws Exception {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
-        String userData = new DataBase("ATD").getUserIdForPaymentsMethod("payments_userid_atd", shop, "Klarna");
+        String userData = new DataBase("ATD").getUserIdForPaymentsMethod("payments_userid_atd", shop, "KlarnaCheckout");
         String userID = parseUserIdFromBD(userData);
         String mail = parseUserMailFromBD(userData);
         float totalPriceAllData = new Product_page_Logic().addProductToCart()
@@ -54,18 +55,19 @@ public class QC_2158_Klarna {
                 .chooseDeliveryCountryForShipping(shop)
                 .fillFieldTelNumForShipping("100+001")
                 .nextBtnClick()
-                .clickOnTheDesiredPaymentMethod(shop, "Klarna")
+                .clickOnTheDesiredPaymentMethod(shop, "KlarnaCheckout")
                 .nextBtnClick()
                 .checkPresencePaymentsMethodLabel(new CartAllData_page().klarnaLabel())
                 .getTotalPriceAllDataPage(shop);
         new CartAllData_page_Logic().nextBtnClick();
-        new Merchant_page().checkPresenceElementFromMerchantPageForPaymentKlarna()
-                .checkActivePaymentMethod("klarna");
+        checkingContainsUrl("/klarna-invoice");
+        new Merchant_page().checkPresenceFormInMerchantPageFromKlarnaCheckoutMethod();
+        closeWindow();
         float totalPriceOrderAws = new Customer_view_aws().openCustomerPersonalArea(userID)
                 .checkPresenceOrderHistoryBlock()
                 .checkAndOpenOrderWithExpectedData()
-                .checkPaymentMethodInOrder("Klarna")
-                .checkCurrentStatusInOrder(": abgebrochen Klarna")
+                .checkPaymentMethodInOrder("Klarna Checkout")
+                .checkCurrentStatusInOrder("abgebrochene Klarna Checkout")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceAllData, totalPriceOrderAws);
         float totalPriceOrderAwsAfterReSave = new Order_aws().reSaveOrder()

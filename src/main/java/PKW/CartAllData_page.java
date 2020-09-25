@@ -57,4 +57,12 @@ public class CartAllData_page {
     public SelenideElement trustlyLabel() {
         return $x("//img[contains(@src,'trustly')]");
     }
+
+    public SelenideElement idealLabel() {
+        return $x("//img[contains(@src,'be2bill_ideal')]");
+    }
+
+    public SelenideElement multibancoLabel() {
+        return $x("//img[contains(@src,'multibanco')]");
+    }
 }

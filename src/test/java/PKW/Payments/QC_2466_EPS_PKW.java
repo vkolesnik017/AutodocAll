@@ -28,7 +28,7 @@ import static Common.SetUp.setUpBrowser;
 import static PKW.CommonMethods.*;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2466_EPS {
+public class QC_2466_EPS_PKW {
 
     @BeforeClass
     void setUp() {
@@ -43,8 +43,8 @@ public class QC_2466_EPS {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description("Test checks method of payment by BraintreeCreditCard")
-    public void testBraintreeCreditCard(String route) throws Exception {
+    @Description("Test checks method of payment by EPS")
+    public void testEPS(String route) throws Exception {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
         String userData = new DataBase("PKW").getUserIdForPaymentsMethod("payments_userid_pkw", shop, "EPS");
@@ -53,7 +53,7 @@ public class QC_2466_EPS {
         float totalPriceAllData = new Product_page_Logic().addProductToCart()
                 .closeBtnOFPopupReviewIfYes()
                 .cartClick()
-                .checkPresencePaymentsMethodLabel(new Cart_page().klarnaLabel())
+                .checkPresencePaymentsMethodLabel(new Cart_page().epsLabel())
                 .nextButtonClick()
                 .signIn(mail, passwordForPayments)
                 .chooseDeliveryCountryForShipping(shop)
