@@ -69,11 +69,4 @@
         </classes>
     </test>
 
-
-    <test name="QC_2444_CheckingMarkingOfDangerousProductsAtFrontsInVariousFunctionalBlocks">
-        <classes>
-            <class name="ATD.Listings.QC_2444_CheckingMarkingOfDangerousProductsAtFrontsInVariousFunctionalBlocks.QC_2535_CheckDisplayAndClickOnDangerousProductsMarkingBlockInListings"/>
-        </classes>
-    </test>
-
 </suite>

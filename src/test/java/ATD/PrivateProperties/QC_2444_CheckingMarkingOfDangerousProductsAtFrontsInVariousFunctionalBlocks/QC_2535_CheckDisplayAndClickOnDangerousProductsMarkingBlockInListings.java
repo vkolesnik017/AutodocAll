@@ -1,4 +1,4 @@
-package ATD.Listings.QC_2444_CheckingMarkingOfDangerousProductsAtFrontsInVariousFunctionalBlocks;
+package ATD.PrivateProperties.QC_2444_CheckingMarkingOfDangerousProductsAtFrontsInVariousFunctionalBlocks;
 
 import ATD.LKW_Category_car_list_page_Logic;
 import Common.SetUp;

@@ -755,7 +755,6 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         return getTextFromUnVisibleElement(signalWordOfDangerousProduct().get(positionOfProduct));
     }
 
-
     @Step("click on dangerous label of product. LKW_Category_car_list_page")
     public LKW_Category_car_list_page_Logic clickOnDangerousLabel(int positionOfProduct, String signalWord) {
         dangerousProducts().get(positionOfProduct).scrollIntoView("{block: \"center\"}").hover();
