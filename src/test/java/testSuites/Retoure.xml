@@ -30,8 +30,8 @@
 
     <test name="QC_897_CheckingReturnPrice">
         <classes>
-            <class name="ATD.Retoure.QC_897_CheckingReturnPrice.QC_898_MatchPricesInAwsOrderAndProfile"/>
-            <class name="ATD.Retoure.QC_897_CheckingReturnPrice.QC_899_MatchPricesInAwsOrderAndRetourPage"/>
+<!--            <class name="ATD.Retoure.QC_897_CheckingReturnPrice.QC_898_MatchPricesInAwsOrderAndProfile"/>-->
+<!--            <class name="ATD.Retoure.QC_897_CheckingReturnPrice.QC_899_MatchPricesInAwsOrderAndRetourPage"/>-->
         </classes>
     </test>
 
