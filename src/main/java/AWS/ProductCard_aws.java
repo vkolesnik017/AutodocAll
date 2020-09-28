@@ -1,9 +1,13 @@
 package AWS;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import org.testng.Assert;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byId;
@@ -38,9 +42,32 @@ public class ProductCard_aws {
         return $x("//td/span[contains(text(),'MOTO')]/../following-sibling::td/input");
     }
 
-    private SelenideElement universalApplicabilityCheckbox() { return $(".select-all-applicability"); }
+    private SelenideElement universalApplicabilityCheckbox() {
+        return $(".select-all-applicability");
+    }
 
-    private SelenideElement pkwApplicabilityCheckbox() { return $x("//*[@class='label label-danger' and contains (text(),'PKW')]/../..//input"); }
+    private SelenideElement pkwApplicabilityCheckbox() {
+        return $x("//*[@class='label label-danger' and contains (text(),'PKW')]/../..//input");
+    }
+
+    SelenideElement dangerousIconOfProductBlock() {
+        return $x("//div[@class='col-md-12 col-sm-12 clearfix']");
+    }
+
+    ElementsCollection iconIfDangerousProducts() {
+        return $$x("//div[@class='col-md-12 col-sm-12 clearfix']//input[@checked='checked']/../img");
+    }
+
+    SelenideElement signalAttentionCheckBox() {
+        return $x("//input[@value='isAttention']");
+    }
+
+    SelenideElement signalDangerousCheckBox() {
+        return $x("//input[@value='isDanger']");
+    }
+
+    SelenideElement activeSwitchOfDangerousProduct() {return $x("//div[@class='col-md-6 col-sm-6'][2]//div[@class='switch-animate switch-on']/span[1]");}
+
 
     String productId;
 
@@ -118,7 +145,26 @@ public class ProductCard_aws {
         if (!checkUniversalApplicabilityOfProduct()) {
             checkPKWApplicabilityOfProduct();
         }
-            return this;
+        return this;
+    }
+
+    @Step("presence of dangerous icon block. ProductCard_aws")
+    public ProductCard_aws presenceOfDangerousIconBlock() {
+        dangerousIconOfProductBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("compare elements of Dangerous product. ProductCard_aws")
+    public ProductCard_aws compareElementsOfDangerousProduct(List<String> listOfDangerousIconFromProduct, String signalWord) {
+        if (signalWord.toUpperCase().equals("ACHTUNG!")) {
+            signalAttentionCheckBox().shouldHave(attribute("checked", "true"));
+        } else if (signalWord.toUpperCase().equals("GEFAHR!")) {
+            signalDangerousCheckBox().shouldHave(attribute("checked", "true"));
+        }
+        List<String> dangerousIconFromAws = iconIfDangerousProducts().stream().map(n -> n.getAttribute("src").replace("pkwteile","autodoc")).collect(Collectors.toList());
+        Assert.assertEquals(dangerousIconFromAws, listOfDangerousIconFromProduct);
+        activeSwitchOfDangerousProduct().shouldBe(exist).shouldHave(text("ON"));
+        return this;
     }
 
 }
