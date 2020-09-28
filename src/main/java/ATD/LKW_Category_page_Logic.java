@@ -371,14 +371,13 @@ public class LKW_Category_page_Logic extends LKW_Category_page {
         List<String> attribute = new ArrayList<>();
         dangerousProducts().get(positionOfProduct).scrollIntoView("{block: \"center\"}").hover();
         for (int i = 0; i < attributeOfWarningIcon(positionOfProduct + 1).size(); i++) {
-            attribute.add(attributeOfWarningIcon(positionOfProduct + 1).get(i).shouldBe(visible).getAttribute("style").replace("background-image: url(\"","").replace("\");",""));
+            attribute.add(attributeOfWarningIcon(positionOfProduct + 1).get(i).shouldBe(visible).getAttribute("style").replace("background-image: url(\"", "").replace("\");", ""));
         }
         return attribute;
     }
 
     @Step("click on dangerous label of product and compare elements. LKW_Category_page")
     public LKW_Category_page_Logic clickOnDangerousLabelAndCompareElements(int positionOfProduct, String signalWord, List<String> attributeOfWarningIcon) {
-
         if (!labelTitleDangerousProducts().get(positionOfProduct).isDisplayed()) {
             dangerousProducts().get(positionOfProduct).scrollIntoView("{block: \"center\"}").hover();
         } else {
@@ -387,10 +386,9 @@ public class LKW_Category_page_Logic extends LKW_Category_page {
             warningPopUp().shouldBe(visible).shouldHave(attribute("style", "display: block;"));
             titleOfDangerousPopUp().shouldBe(visible).shouldHave(exactText(signalWord));
             infoTextOfDangerousPopUp().shouldNotBe(empty);
-            List<String> attributeOfDangerousIcon = dangerousIconInWarningPopUp().stream().map(n -> n.getAttribute("style").replace("background-image: url(\"","").replace("\");","")).collect(Collectors.toList());
+            List<String> attributeOfDangerousIcon = dangerousIconInWarningPopUp().stream().map(n -> n.getAttribute("style").replace("background-image: url(\"", "").replace("\");", "")).collect(Collectors.toList());
             Assert.assertEquals(attributeOfDangerousIcon, attributeOfWarningIcon);
         }
-
         return this;
     }
 }
