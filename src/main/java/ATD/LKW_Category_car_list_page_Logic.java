@@ -1,7 +1,6 @@
 package ATD;
 
 import Common.DataBase;
-import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.Step;
 import org.testng.Assert;
@@ -10,11 +9,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static ATD.CommonMethods.getTextFromUnVisibleElement;
 import static com.codeborne.selenide.CollectionCondition.*;
-import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Condition.empty;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
@@ -760,13 +760,43 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         dangerousProducts().get(positionOfProduct).scrollIntoView("{block: \"center\"}").hover();
         labelIconDangerousProducts().get(0).shouldBe(visible);
         labelTitleDangerousProducts().get(positionOfProduct).shouldBe(visible).click();
-        blackBackground().shouldHave(attribute("style","display: block;"));
-        warningPopUp().shouldBe(visible).shouldHave(attribute("style","display: block;"));
+        blackBackground().shouldHave(attribute("style", "display: block;"));
+        warningPopUp().shouldBe(visible).shouldHave(attribute("style", "display: block;"));
         titleOfDangerousPopUp().shouldBe(visible).shouldHave(exactText(signalWord));
         infoTextOfDangerousPopUp().shouldNotBe(empty);
         return this;
     }
 
+    @Step("get id of Dangerous product .LKW_Category_car_list_page")
+    public String getIdOfDangerousProduct(int positionOfProduct) {
+        return btnAddDangerousProductToWishList().get(positionOfProduct).getAttribute("data-product-id");
+    }
+
+    @Step("get signal word from first dangerous product Listing View. LKW_Category_car_list_page")
+    public String getSignalWordFromFirstDangerousProductListingView(int positionOfProduct) {
+        return signalWordOfDangerousProductListingView().get(positionOfProduct).getText();
+    }
+
+    @Step("get attribute of Warning icon in pop-Up .LKW_Category_car_list_page")
+    public List<String> getAttributeOfWarningIconInPopUp(int positionOfProduct) {
+        List<String> attribute = new ArrayList<>();
+        for (int i = 0; i < attributeOfWarningIcon(positionOfProduct + 1).size(); i++) {
+            attribute.add(attributeOfWarningIcon(positionOfProduct + 1).get(i).shouldBe(visible).getAttribute("style").replace("background-image: url(\"", "").replace("\");", ""));
+        }
+        return attribute;
+    }
+
+    @Step("click on dangerous label of product and compare elements. LKW_Category_page")
+    public LKW_Category_car_list_page_Logic clickOnDangerousLabelAndCompareElements(int positionOfProduct, String signalWord, List<String> attributeOfWarningIcon) {
+        btnMoreOfDangerousProducts().get(positionOfProduct).shouldBe(visible).scrollIntoView("{block: \"center\"}").hover().click();
+        blackBackground().shouldHave(attribute("style", "display: block;"));
+        warningPopUp().shouldBe(visible).shouldHave(attribute("style", "display: block;"));
+        titleOfDangerousPopUp().shouldBe(visible).shouldHave(exactText(signalWord));
+        infoTextOfDangerousPopUp().shouldNotBe(empty);
+        List<String> attributeOfDangerousIcon = dangerousIconInWarningPopUp().stream().map(n -> n.getAttribute("style").replace("background-image: url(\"", "").replace("\");", "")).collect(Collectors.toList());
+        Assert.assertEquals(attributeOfDangerousIcon, attributeOfWarningIcon);
+        return this;
+    }
 }
 
 

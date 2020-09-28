@@ -8,6 +8,7 @@
 
     <test name="QC_2444_CheckingMarkingOfDangerousProductsAtFrontsInVariousFunctionalBlocks">
         <classes>
+            <class name="ATD.PrivateProperties.QC_2444_CheckingMarkingOfDangerousProductsAtFrontsInVariousFunctionalBlocks.QC_2448_CheckDisplayAndClickOnDangerousProductsBlockOnListings"/>
             <class name="ATD.PrivateProperties.QC_2444_CheckingMarkingOfDangerousProductsAtFrontsInVariousFunctionalBlocks.QC_2450_CheckDisplayingAndClickByDangerousProductsBlock"/>
             <class name="ATD.PrivateProperties.QC_2444_CheckingMarkingOfDangerousProductsAtFrontsInVariousFunctionalBlocks.QC_2535_CheckDisplayAndClickOnDangerousProductsMarkingBlockInListings"/>
         </classes>
