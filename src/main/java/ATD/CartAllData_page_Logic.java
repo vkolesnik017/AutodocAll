@@ -349,6 +349,9 @@ public class CartAllData_page_Logic extends CartAllData_page {
         if (vat.equals("16")) {
             priseWithVat = (productPrice * 1.16f); // For shop DE
         }
+        if (vat.equals("21")) {
+            priseWithVat = (productPrice * 1.21f); // For shop BE
+        }
         return priseWithVat;
     }
 
