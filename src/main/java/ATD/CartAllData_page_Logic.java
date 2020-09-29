@@ -349,6 +349,9 @@ public class CartAllData_page_Logic extends CartAllData_page {
         if (vat.equals("16")) {
             priseWithVat = (productPrice * 1.16f); // For shop DE
         }
+        if (vat.equals("21")) {
+            priseWithVat = (productPrice * 1.21f); // For shop BE
+        }
         return priseWithVat;
     }
 
@@ -479,6 +482,19 @@ public class CartAllData_page_Logic extends CartAllData_page {
     public CartAllData_page_Logic openUpperBlockWithSummary() {
         btnOpenUpperBlockWithSummary().click();
         btnOpenUpperBlockWithSummary().shouldNotBe(visible);
+        return this;
+    }
+
+    @Step("Checks presence safe order price in upper block with summery. CartAllData_page")
+    public CartAllData_page_Logic checkPresenceSafeOrderInUpperBlockWithSummery(String shop) {
+        String priceSO = priceOfSafeOrder().getText();
+        String realPriseSO = priceSO.substring(0, priceSO.indexOf(" "));
+        if (shop.equals("DE") || shop.equals("FR")) {
+            clickSafeOrderCheckbox();
+        }
+        checkThatSafeOrderCheckboxIsSelected();
+        openUpperBlockWithSummary();
+        safeOrderInUpperBlockWithSummery(realPriseSO).shouldBe(visible);
         return this;
     }
 

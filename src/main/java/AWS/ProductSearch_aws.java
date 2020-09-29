@@ -33,7 +33,7 @@ public class ProductSearch_aws {
     }
 
     private SelenideElement dangerousProductsColumn() {
-        return $(byXpath("//*[@id='order_products_list']//tr/td[22]"));
+        return $(byXpath("//*[@id='order_products_list']//tr/td[23]"));
     }
 
     private SelenideElement illiquidColumn() {
