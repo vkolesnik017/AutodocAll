@@ -127,6 +127,54 @@ public class Main_page_Logic extends Main_page {
     }
 
     // Search bar
+
+    @Step("")
+    public Main_page_Logic xxxxxxx() {
+        ArrayList<String> completeMatch = new ArrayList<>();
+        ArrayList<String> startsWithRequest = new ArrayList<>();
+        ArrayList<String> containsRequestInMiddle = new ArrayList<>();
+        String[] valueForSearch = {"radlager", "motoröl", "spiegel", "felgen"};
+        for (int i = 0; i < valueForSearch.length; i++) {
+            inputTextInSearchBar(valueForSearch[i]);
+            sleep(3000);
+            for (int a = 0; a < tooltipsToSearch().size(); a++) {
+                int index = tooltipsToSearch().get(a).getText().toLowerCase().indexOf(valueForSearch[i]);
+                String name = tooltipsToSearch().get(a).getText().replaceAll("\n", "").replaceAll("\\d+", "").toLowerCase();
+                if (name.equals(valueForSearch[i])) {
+                    completeMatch.add(tooltipsToSearch().get(a).getText());
+                } else if (index == 0) {
+                    startsWithRequest.add(tooltipsToSearch().get(a).getText());
+                } else if (index > 0) {
+                    containsRequestInMiddle.add(tooltipsToSearch().get(a).getText());
+                } else {
+                    Assert.fail("List contains inappropriate value ");
+                }
+            }
+            for (int x = 0; x < completeMatch.size(); x++) {
+                String nameIndex1 = completeMatch.get(x).replaceAll("\n", "").replaceAll("\\d+", "").toLowerCase();
+                if (!nameIndex1.equals(valueForSearch[i])) {
+                    Assert.fail("List does not have a given value ");
+                } else if (completeMatch.size() > 1) {
+                    Assert.fail("List has more than one value");
+                }
+            }
+           for (int z = 0; z < startsWithRequest.size(); z++) {
+               String nameIndex2 = startsWithRequest.get(z).replaceAll("\n", "").replaceAll("\\d+", "").toLowerCase();
+               nameIndex2.startsWith(valueForSearch[i]);
+           }
+            for (int c = 0; c < containsRequestInMiddle.size(); c++) {
+                int index = containsRequestInMiddle.get(c).replaceAll("\n", "").replaceAll("\\d+", "").toLowerCase().indexOf(valueForSearch[i]);
+                if (index == -1 || index == 0) {
+                }
+            }
+            completeMatch.clear();
+            startsWithRequest.clear();
+            containsRequestInMiddle.clear();
+        }
+        return this;
+    }
+
+
     @Step("Input text in search bar. Main_page")
     public Main_page_Logic inputTextInSearchBar(String text) {
         searchBar().setValue(text);
