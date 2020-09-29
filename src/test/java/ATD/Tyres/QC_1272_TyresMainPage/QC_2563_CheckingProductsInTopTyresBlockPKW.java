@@ -14,7 +14,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2564_CheckingProductsInTopTyresBlockLkwMotoOff {
+public class QC_2563_CheckingProductsInTopTyresBlockPKW {
 
     @BeforeClass
     void setUp() {
@@ -23,16 +23,16 @@ public class QC_2564_CheckingProductsInTopTyresBlockLkwMotoOff {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres2,tyres3,tyres4");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = " Test Сhecking the number of identical brands and size tyres in top block (Lkw Moto Off)")
-    public void testCheckingProductsFromTopTyresBlockLkwMotoOff(String route) {
+    @Description(value = " Test Сhecking the number of identical brands and size tyres in top block (PKW)")
+    public void testCheckingProductsFromTopTyresBlockPKW(String route) {
         openPage(route);
-        new Tyres_page_Logic().checkingNumberIdenticalBrandAndSizeInTopBlock(3);
+        new Tyres_page_Logic().checkingNumberIdenticalBrandAndSizeInTopBlock(2);
 
 
     }
