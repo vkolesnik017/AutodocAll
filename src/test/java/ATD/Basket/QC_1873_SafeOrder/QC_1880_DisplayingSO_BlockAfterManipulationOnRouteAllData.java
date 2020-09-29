@@ -2,11 +2,13 @@ package ATD.Basket.QC_1873_SafeOrder;
 
 import Common.DataBase;
 import ATD.Product_page_Logic;
+import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.sql.SQLException;
@@ -25,19 +27,24 @@ public class QC_1880_DisplayingSO_BlockAfterManipulationOnRouteAllData {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @Test
+    @DataProvider(name = "route", parallel = true)
+    Object[] dataProviderProducts() throws SQLException {
+        return new SetUp("ATD").setUpShopsWithSubroute("prod", "BE,DE,FR", "main", "product32");
+    }
+
+    @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks displaying SO block after manipulation on route alldata")
-    public void testDisplayingSO_BlockAfterManipulationOnRouteAllData() throws SQLException {
-        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "BE", "main", "product32"));
+    public void testDisplayingSO_BlockAfterManipulationOnRouteAllData(String route) throws SQLException {
+        openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
         prodID = product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .getProductId();
         product_page_logic.cartClick()
                 .checkOfIdAddedProductInBasket(prodID);
-        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "BE", "main", "product7"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", shop, "main", "product2"));
         product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
@@ -48,8 +55,7 @@ public class QC_1880_DisplayingSO_BlockAfterManipulationOnRouteAllData {
                 .choosePayPal()
                 .nextBtnClick()
                 .checkPresenceSafeOrderBlock()
-                .checkThatSafeOrderCheckboxIsSelected()
-                .openUpperBlockWithSummary()
+                .checkPresenceSafeOrderInUpperBlockWithSummery(shop)
                 .checkPresenceSafeOrderBlock()
                 .checkThatSafeOrderCheckboxIsSelected()
                 .counterIncreaseForAllProducts(2)

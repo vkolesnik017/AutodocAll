@@ -485,6 +485,19 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return this;
     }
 
+    @Step("Checks presence safe order price in upper block with summery. CartAllData_page")
+    public CartAllData_page_Logic checkPresenceSafeOrderInUpperBlockWithSummery(String shop) {
+        String priceSO = priceOfSafeOrder().getText();
+        String realPriseSO = priceSO.substring(0, priceSO.indexOf(" "));
+        if (shop.equals("DE") || shop.equals("FR")) {
+            clickSafeOrderCheckbox();
+        }
+        checkThatSafeOrderCheckboxIsSelected();
+        openUpperBlockWithSummary();
+        safeOrderInUpperBlockWithSummery(realPriseSO).shouldBe(visible);
+        return this;
+    }
+
     @Step("Click button apply bonus. CartAllData_page")
     public CartAllData_page_Logic clickBtnApplyBonus() {
         btnApplyBonus().click();
