@@ -70,6 +70,7 @@ public class Category_name_page_Logic extends Category_name_page {
 
     @Step("get id of Dangerous product .Category_name_page")
     public String getIdOfDangerousProduct(int positionOfProduct) {
+        topProductsBlock().scrollIntoView("{block: \"center\"}");
         scrollToDangerousElement(positionOfProduct);
         return btnAddDangerousProductToWishList().get(positionOfProduct).getAttribute("data-product-id");
     }
@@ -81,6 +82,7 @@ public class Category_name_page_Logic extends Category_name_page {
 
     @Step("get attribute of Warning icon in pop-Up .Category_name_page")
     public List<String> getAttributeOfWarningIconInPopUp(int positionOfProduct) {
+        topProductsBlock().scrollIntoView("{block: \"center\"}");
         scrollToDangerousElement(positionOfProduct);
         List<String> attribute = new ArrayList<>();
         dangerousProducts().get(positionOfProduct).scrollIntoView("{block: \"center\"}").hover();
