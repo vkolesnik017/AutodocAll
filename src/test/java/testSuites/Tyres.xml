@@ -45,9 +45,9 @@
     <test name="QC_1238_SizeRelinkBlockOnTyresListing">
         <classes>
             <class name="ATD.Tyres.QC_1238_SizeRelinkBlockOnTyresListing.QC_1239_TestPresenceDiameterRelinkBlockOnTyresListing"/>
-<!--            <class name="ATD.Tyres.QC_1238_SizeRelinkBlockOnTyresListing.QC_1245_GoToDiameterRouteInteractDiameterRelinkBlock"/>-->
+            <!--            <class name="ATD.Tyres.QC_1238_SizeRelinkBlockOnTyresListing.QC_1245_GoToDiameterRouteInteractDiameterRelinkBlock"/>-->
             <class name="ATD.Tyres.QC_1238_SizeRelinkBlockOnTyresListing.QC_1263_TestPresenceDimensionRelinkBlockOnTyresListing"/>
-<!--            <class name="ATD.Tyres.QC_1238_SizeRelinkBlockOnTyresListing.QC_1264_GoToDimensionRouteInteractDimensionRelinkBlock"/>-->
+            <!--            <class name="ATD.Tyres.QC_1238_SizeRelinkBlockOnTyresListing.QC_1264_GoToDimensionRouteInteractDimensionRelinkBlock"/>-->
             <class name="ATD.Tyres.QC_1238_SizeRelinkBlockOnTyresListing.QC_1265_GoToAllSizesRouteInteractSizesRelinkBlock"/>
             <class name="ATD.Tyres.QC_1238_SizeRelinkBlockOnTyresListing.QC_1266_GoToAllSizesRouteInteractDiameterRelinkBlock"/>
         </classes>
@@ -180,18 +180,18 @@
     </test>
 
 
-<!--    <test name="QC_2066_CheckProductsOutOfStock">
-        <classes>
-            <class name="ATD.Tyres.QC_2066_CheckProductsOutOfStock.QC_2068_AvailabilityOfPopUpOfAppearanceOfOutOfStockProduct"/>
-            &lt;!&ndash;<class name="ATD.Tyres.QC_2066_CheckProductsOutOfStock.QC_2069_PresenceOfFeedBackPopUpByClickOnGreyButton"/>&ndash;&gt;
-            &lt;!&ndash;<class name="ATD.Tyres.QC_2066_CheckProductsOutOfStock.QC_2070_SortingOfProductWithGreyButton"/>&ndash;&gt;
-            <class name="ATD.Tyres.QC_2066_CheckProductsOutOfStock.QC_2077_CheckingForPopUpOfSuccessInSendingMailForFeedback"/>
-            <class name="ATD.Tyres.QC_2066_CheckProductsOutOfStock.QC_2078_CheckingForErrorPopUpAboutAnUnsetCheckbox"/>
-            <class name="ATD.Tyres.QC_2066_CheckProductsOutOfStock.QC_2079_CheckingForPopUpErrorAboutInvalidEmail"/>
-            <class name="ATD.Tyres.QC_2066_CheckProductsOutOfStock.QC_2080_CheckingForPopUpAboutInvalidEmailAndWithCheckbox"/>
-            <class name="ATD.Tyres.QC_2066_CheckProductsOutOfStock.QC_2081_CheckingConfirmationLetterForFeedback"/>
-        </classes>
-    </test>-->
+    <!--    <test name="QC_2066_CheckProductsOutOfStock">
+            <classes>
+                <class name="ATD.Tyres.QC_2066_CheckProductsOutOfStock.QC_2068_AvailabilityOfPopUpOfAppearanceOfOutOfStockProduct"/>
+                &lt;!&ndash;<class name="ATD.Tyres.QC_2066_CheckProductsOutOfStock.QC_2069_PresenceOfFeedBackPopUpByClickOnGreyButton"/>&ndash;&gt;
+                &lt;!&ndash;<class name="ATD.Tyres.QC_2066_CheckProductsOutOfStock.QC_2070_SortingOfProductWithGreyButton"/>&ndash;&gt;
+                <class name="ATD.Tyres.QC_2066_CheckProductsOutOfStock.QC_2077_CheckingForPopUpOfSuccessInSendingMailForFeedback"/>
+                <class name="ATD.Tyres.QC_2066_CheckProductsOutOfStock.QC_2078_CheckingForErrorPopUpAboutAnUnsetCheckbox"/>
+                <class name="ATD.Tyres.QC_2066_CheckProductsOutOfStock.QC_2079_CheckingForPopUpErrorAboutInvalidEmail"/>
+                <class name="ATD.Tyres.QC_2066_CheckProductsOutOfStock.QC_2080_CheckingForPopUpAboutInvalidEmailAndWithCheckbox"/>
+                <class name="ATD.Tyres.QC_2066_CheckProductsOutOfStock.QC_2081_CheckingConfirmationLetterForFeedback"/>
+            </classes>
+        </test>-->
 
 
     <test name="QC_2226_CheckingPeriodReturnTiresBlock">
@@ -211,7 +211,10 @@
 
     <test name="QC_2187_CheckingMaxSizeProductsOnListing">
         <classes>
+            <class name="ATD.Tyres.QC_2187_CheckingMaxSizeProductsOnListing.QC_2188_CheckMaxCountOfProductInTyresListing"/>
             <class name="ATD.Tyres.QC_2187_CheckingMaxSizeProductsOnListing.QC_2189_CheckingMaxSizeProductsOnSearchListing"/>
+            <class name="ATD.Tyres.QC_2187_CheckingMaxSizeProductsOnListing.QC_2526_CheckMaxCountOfProductWithSelectedAdditionInfoFilter"/>
+            <class name="ATD.Tyres.QC_2187_CheckingMaxSizeProductsOnListing.QC_2530_CheckMaxSizeOfProductsInListingWithSelectedBrand"/>
 
         </classes>
     </test>
