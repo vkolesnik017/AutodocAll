@@ -4,6 +4,7 @@ import ATD.LKW_Category_car_list_page_Logic;
 import ATD.LKW_Search_page_Logic;
 import ATD.Listing_chemicals_Page_Logic;
 import AWS.ProductCard_aws;
+import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -31,10 +32,7 @@ public class QC_2448_CheckDisplayAndClickOnDangerousProductsBlockOnListings {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        //   return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list40,lkw_category_car_list41");
-
-        return new Object[][]{{"https://lkwteile.autodoc.de/ersatzteile/frostschutz-202206/volvo/f-10?car_id=1004242"},
-                {"https://lkwteile.autodoc.de/ersatzteile/frostschutz-202206/volvo/f-10"}};
+         return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list40,lkw_category_car_list41");
     }
 
     @Test(dataProvider = "routes")
@@ -52,9 +50,7 @@ public class QC_2448_CheckDisplayAndClickOnDangerousProductsBlockOnListings {
 
     @DataProvider(name = "routesSearch", parallel = true)
     Object[] dataProviderSearch() throws SQLException {
-        //   return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_search13");
-
-        return new Object[][]{{"https://lkwteile.autodoc.de/search?keyword=Motor%C3%B6l&supplier%5B0%5D=1156"}};
+         return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_search13");
     }
 
     @Test(dataProvider = "routesSearch")
@@ -72,10 +68,7 @@ public class QC_2448_CheckDisplayAndClickOnDangerousProductsBlockOnListings {
 
     @DataProvider(name = "routesMoto", parallel = true)
     Object[] dataProviderMoto() throws SQLException {
-        //   return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list14,moto_category_car_list_model5");
-
-        return new Object[][]{{"https://moto.autodoc.de/ersatzteile/motorrad-bremsflussigkeit-43233/bmw-motorcycles/k?car_id=104173"},
-                {"https://moto.autodoc.de/ersatzteile/motorrad-batterie-43213/bmw-motorcycles/k\n"}};
+          return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list14,moto_category_car_list_model5");
     }
 
     @Test(dataProvider = "routesMoto")
@@ -93,10 +86,7 @@ public class QC_2448_CheckDisplayAndClickOnDangerousProductsBlockOnListings {
 
     @DataProvider(name = "routesCarList", parallel = true)
     Object[] dataProviderCarList() throws SQLException {
-        //   return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list45,category_car_list46");
-
-        return new Object[][]{{"https://www.autodoc.de/autoteile/frostschutz-12305/bmw/3er-reihe/3-e21/11-315"},
-                {"https://www.autodoc.de/autoteile/motorol-12094/vw/passat/passat-cc-357/28285-2-0-tdi?page=1&supplier%5B0%5D=4881"}};
+         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list45,category_car_list46");
     }
 
     @Test(dataProvider = "routesCarList")
@@ -114,9 +104,7 @@ public class QC_2448_CheckDisplayAndClickOnDangerousProductsBlockOnListings {
 
     @DataProvider(name = "routesSearchMain", parallel = true)
     Object[] dataProviderSearchMain() throws SQLException {
-        //   return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "search35");
-
-        return new Object[][]{{"https://www.autodoc.de/search?brandNo%5B0%5D=4881"}};
+         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "search35");
     }
 
     @Test(dataProvider = "routesSearchMain")
@@ -135,9 +123,7 @@ public class QC_2448_CheckDisplayAndClickOnDangerousProductsBlockOnListings {
 
     @DataProvider(name = "routesChemical", parallel = true)
     Object[] dataProviderChemical() throws SQLException {
-        //   return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "listing_chemicals5");
-
-        return new Object[][]{{"https://www.autodoc.de/autopflege/spritzfuller"}};
+           return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "listing_chemicals5");
     }
 
     @Test(dataProvider = "routesChemical")
@@ -155,9 +141,7 @@ public class QC_2448_CheckDisplayAndClickOnDangerousProductsBlockOnListings {
 
     @DataProvider(name = "routesOEN", parallel = true)
     Object[] dataProviderOEN() throws SQLException {
-        //   return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_oen20,category_oen21,category_oen22");
-
-        return new Object[][]{{"https://www.autodoc.de/autoteile/oem/al112402"}, {"https://www.autodoc.de/autoteile/oem/28800yzzab"}, {"https://www.autodoc.de/autoteile/oem/2880087329000"}};
+           return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_oen20,category_oen21,category_oen22");
     }
 
     @Test(dataProvider = "routesOEN")

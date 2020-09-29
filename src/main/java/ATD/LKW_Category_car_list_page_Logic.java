@@ -786,7 +786,7 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         return attribute;
     }
 
-    @Step("click on dangerous label of product and compare elements. LKW_Category_page")
+    @Step("click on dangerous label of product and compare elements. LKW_Category_car_list_page")
     public LKW_Category_car_list_page_Logic clickOnDangerousLabelAndCompareElements(int positionOfProduct, String signalWord, List<String> attributeOfWarningIcon) {
         btnMoreOfDangerousProducts().get(positionOfProduct).shouldBe(visible).scrollIntoView("{block: \"center\"}").hover().click();
         blackBackground().shouldHave(attribute("style", "display: block;"));
