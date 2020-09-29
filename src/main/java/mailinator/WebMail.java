@@ -59,7 +59,7 @@ public class WebMail {
     }
 
     public SelenideElement unreadLetter() {
-        return $x("(//span[@id='msgicnrcmrowMTE'])[1]");
+        return $x("(//span[@title='Непрочитанные '])[1]");
     }
 
     //Letter
