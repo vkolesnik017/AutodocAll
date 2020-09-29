@@ -3,7 +3,9 @@ package ATD;
 
 import io.qameta.allure.Step;
 import org.testng.Assert;
+
 import java.util.ArrayList;
+
 import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.page;
@@ -35,7 +37,6 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
     }
 
 
-
     @Step("Checking presence bread crumbs block. Listing_chemicals_Page")
     public Listing_chemicals_Page_Logic checkingPresenceBreadCrumbsBlock() {
         blockBreadCrumbs().shouldBe(visible);
@@ -61,7 +62,7 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
     }
 
     @Step("Checking change display of products on the list view and then grid. Listing_chemicals_Page")
-    public  Listing_chemicals_Page_Logic checkingChangeDisplayProductsAsListAndGrid() {
+    public Listing_chemicals_Page_Logic checkingChangeDisplayProductsAsListAndGrid() {
         blockChangePositionProductsOnListOrGrid().shouldBe(visible);
         listingProductsDisplayedAsList().shouldBe(visible);
         btnChangePositionProductsAsGrid().click();
@@ -164,7 +165,6 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
     }
 
 
-
     @Step("Checking sorting products by brands and display selected brands at top of list . Listing_chemicals_Page")
     public Listing_chemicals_Page_Logic checkingSortingProductsByBrandsAndDisplayBrandsAtTopList() {
         Listing_page_Logic listingPageLogic = new Listing_page_Logic();
@@ -185,7 +185,7 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
         twoFirstBrandsFromBegin.add(firstCheckedBrand);
         twoFirstBrandsFromBegin.add(secondCheckedBrand);
         if (!twoFirstBrandsFromBegin.contains(valueSecondActiveBrand) && twoFirstBrandsFromBegin.contains(valueSevenActiveBrand)) {
-            Assert.fail( " Two first brands does not match selected brands");
+            Assert.fail(" Two first brands does not match selected brands");
         }
         listingPageLogic.checkProductTitleOnListingWithTwoExpectedTexts(secondBrandName, sevenBrandName, true, titleNameProductsFromListing());
         return this;
@@ -209,7 +209,7 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
     }
 
     @Step("Get name first category in sidebar. Listing_chemicals_Page")
-    public  String getNameFirstCategoryInSidebar() {
+    public String getNameFirstCategoryInSidebar() {
         return firstCategoryInSidebar().scrollIntoView(false).getText();
     }
 
@@ -221,21 +221,21 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
 
     @Step("Checking reset selected brand in brands block. Listing_chemicals_Page")
     public Listing_chemicals_Page_Logic checkingResetSelectedBrandInBrandsBlock() {
-        firstVisibleBrandToGetData().shouldHave(attribute("data-checked","false"));
+        firstVisibleBrandToGetData().shouldHave(attribute("data-checked", "false"));
         clickFirstVisibleBrand();
         new Listing_page_Logic().waitUntilPreloaderDisappear();
-        firstVisibleBrandToGetData().shouldHave(attribute("data-checked","true"));
+        firstVisibleBrandToGetData().shouldHave(attribute("data-checked", "true"));
         clickFirstVisibleBrand();
         new Listing_page_Logic().waitUntilPreloaderDisappear();
-        firstVisibleBrandToGetData().shouldHave(attribute("data-checked","false"));
+        firstVisibleBrandToGetData().shouldHave(attribute("data-checked", "false"));
         return this;
     }
 
     @Step("Click btn reset All in generics block. Listing_chemicals_Page")
     public Listing_chemicals_Page_Logic clickBtnResetAllInGenericsBlock() {
-        if (btnResetAllInGenericsBlock().isDisplayed()){
+        if (btnResetAllInGenericsBlock().isDisplayed()) {
             btnResetAllInGenericsBlock().click();
-        }else {
+        } else {
             btnResetAllInGenericsBlockFromSidebar().click();
         }
         return this;
@@ -243,9 +243,9 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
 
     @Step("Click first generic in generics block or sidebar. Listing_chemicals_Page")
     public Listing_chemicals_Page_Logic clickFirstGenericInGenericsBlockOrSidebar() {
-        if (firstGenericInGenericsBlock().isDisplayed()){
+        if (firstGenericInGenericsBlock().isDisplayed()) {
             firstGenericInGenericsBlock().click();
-        }else {
+        } else {
             firstGenericFromSidebar().click();
         }
         return this;
@@ -255,7 +255,7 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
     public Listing_chemicals_Page_Logic clickSecondGenericInGenericsBlockOrSidebar() {
         if (secondGenericInGenericsBlock().isDisplayed()) {
             secondGenericInGenericsBlock().click();
-        }else {
+        } else {
             secondGenericFromSidebar().click();
         }
         return this;
@@ -274,7 +274,7 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
     }
 
     @Step("Get name from first generic in generics block or sidebar. Listing_chemicals_Page")
-    public String  getNameFirstGenericInGenericBlockOrSidebar() {
+    public String getNameFirstGenericInGenericBlockOrSidebar() {
         String firstGeneric = null;
         if (firstGenericInGenericsBlock().isDisplayed()) {
             firstGeneric = firstGenericInGenericsBlock().getText();
@@ -285,7 +285,7 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
     }
 
     @Step("Get name from second generic in generics block or sidebar. Listing_chemicals_Page")
-    public String  getNameSecondGenericInGenericBlockOrSidebar() {
+    public String getNameSecondGenericInGenericBlockOrSidebar() {
         String secondGeneric = null;
         if (secondGenericInGenericsBlock().isDisplayed()) {
             secondGeneric = secondGenericInGenericsBlock().getText();
@@ -309,7 +309,7 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
         if (blockGeneric().isDisplayed()) {
             firstGenericInGenericsBlockToGetData().shouldHave(attribute("data-checked", "true"));
             secondGenericInGenericsBlockToGetData().shouldHave(attribute("data-checked", "false"));
-        }else {
+        } else {
             firstGenericFromSidebarToGetData().shouldHave(attribute("data-checked", "true"));
             secondGenericFromSidebarToGetData().shouldHave(attribute("data-checked", "false"));
         }
@@ -330,7 +330,7 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
             firstGenericByIndexInGenericsBlock().shouldNotBe(visible);
             btnPreviousInGenericBlock().waitUntil(attribute("aria-disabled", "false"), 10000);
             btnPreviousInGenericBlock().click();
-            if ( !firstGenericByIndexInGenericsBlock().isDisplayed()) {
+            if (!firstGenericByIndexInGenericsBlock().isDisplayed()) {
                 btnPreviousInGenericBlock().click();
             }
             firstGenericByIndexInGenericsBlock().waitUntil(attribute("aria-hidden", "false"), 10000);
@@ -342,18 +342,18 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
     @Step("Checking the generic reset by pressing again then by pressing the reset button. Listing_chemicals_Page")
     public Listing_chemicals_Page_Logic checkingResetSelectedGeneric() {
         Listing_page_Logic listingPageLogic = new Listing_page_Logic();
-        if ( blockGeneric().isDisplayed()){
+        if (blockGeneric().isDisplayed()) {
             firstGenericInGenericsBlockToGetData().shouldHave(attribute("data-checked", "true"));
-        }else {
+        } else {
             firstGenericFromSidebarToGetData().shouldHave(attribute("data-checked", "true"));
         }
         String firstGeneric = getNameFirstGenericInGenericBlockOrSidebar();
         listingPageLogic.checkProductTitleOnListing(firstGeneric, true, titleNameProductsFromListing());
         clickFirstGenericInGenericsBlockOrSidebar();
         listingPageLogic.waitUntilPreloaderDisappear();
-        if (blockGeneric().isDisplayed()){
+        if (blockGeneric().isDisplayed()) {
             firstGenericInGenericsBlockToGetData().shouldHave(attribute("data-checked", "false"));
-        }else {
+        } else {
             firstGenericFromSidebarToGetData().shouldHave(attribute("data-checked", "false"));
         }
         clickFirstGenericInGenericsBlockOrSidebar();
@@ -361,16 +361,16 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
         listingPageLogic.checkProductTitleOnListing(firstGeneric, true, titleNameProductsFromListing());
         clickBtnResetAllInGenericsBlock();
         listingPageLogic.waitUntilPreloaderDisappear();
-        if (blockGeneric().isDisplayed()){
+        if (blockGeneric().isDisplayed()) {
             firstGenericInGenericsBlockToGetData().shouldHave(attribute("data-checked", "false"));
-        }else {
+        } else {
             firstGenericFromSidebarToGetData().shouldHave(attribute("data-checked", "false"));
         }
         return this;
     }
 
     @Step("Checking presence main products block. Listing_chemicals_Page")
-    public Listing_chemicals_Page_Logic checkingPresenceMainProductsBlock(){
+    public Listing_chemicals_Page_Logic checkingPresenceMainProductsBlock() {
         mainProductsBlock().shouldBe(visible);
         return this;
     }
@@ -395,13 +395,13 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
         twoFirstSelectedFilters.add(firstBtnFilter);
         twoFirstSelectedFilters.add(secondBtnFilter);
         if (!twoFirstSelectedFilters.contains(valueGeneric) || !twoFirstSelectedFilters.contains(valueBrand)) {
-            Assert.fail( "Filters do not match the selected criteria");
+            Assert.fail("Filters do not match the selected criteria");
         }
         clickBtnResetAllFilterFromFilterBlock();
         new Listing_page_Logic().waitUntilPreloaderDisappear();
         if (blockGeneric().isDisplayed()) {
             firstGenericInGenericsBlockToGetData().shouldHave(attribute("data-checked", "false"));
-        }else {
+        } else {
             firstGenericFromSidebarToGetData().shouldHave(attribute("data-checked", "false"));
         }
         firstVisibleBrandToGetData().shouldHave(attribute("data-checked", "false"));
@@ -410,17 +410,17 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
     }
 
     @Step("Get id first btn reset filter in reset block. Listing_chemicals_Page")
-    public String  getIdFirstBtnResetFilterInResetBlock() {
+    public String getIdFirstBtnResetFilterInResetBlock() {
         return firstBtnResetFilterInResetBlock().getAttribute("data-crit-id");
     }
 
     @Step("Get id second btn reset filter in reset block. Listing_chemicals_Page")
-    public String  getIdSecondBtnResetFilterInResetBlock() {
+    public String getIdSecondBtnResetFilterInResetBlock() {
         return secondBtnResetFilterInResetBlock().getAttribute("data-crit-id");
     }
 
     @Step("Get id first btn reset filter for criteria from reset block . Listing_chemicals_Page")
-    public String  getIdFirstBtnResetFilterForCriteriaInResetBlock() {
+    public String getIdFirstBtnResetFilterForCriteriaInResetBlock() {
         return firstBtnResetFilterInResetBlock().getAttribute("data-param-id");
     }
 
@@ -466,7 +466,7 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
     @Step("Click button add to basket first product. Listing_chemicals_Page")
     public Listing_chemicals_Page_Logic clickBtnAddToBasketFirstProduct() {
         redBtnAddToBasket().click();
-        popupBasketAddedProducts().waitUntil(attribute("style","visibility: visible; opacity: 1;"), 10000);
+        popupBasketAddedProducts().waitUntil(attribute("style", "visibility: visible; opacity: 1;"), 10000);
         return this;
     }
 
@@ -479,7 +479,7 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
     @Step("Checking work quantity counter on decrease and increase products. Listing_chemicals_Page")
     public Listing_chemicals_Page_Logic checkingWorkQuantityCounterOnDecreaseAndIncrease() {
         new CommonMethods().checkingCounterIncrease(3, counterValueInQuantityCounter(), btnPlusInQuantityCounter());
-        new CommonMethods().checkingCounterDecrease(2, counterValueInQuantityCounter(), btnMinusInQuantityCounter() );
+        new CommonMethods().checkingCounterDecrease(2, counterValueInQuantityCounter(), btnMinusInQuantityCounter());
         counterValueInQuantityCounter().shouldHave(attribute("value", "2"));
         return this;
     }
@@ -489,7 +489,5 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
         titleNameProductFromListing().click();
         return page(Product_page_Logic.class);
     }
-
-
 
 }

@@ -73,7 +73,7 @@ public class QASYS_455_DeletingOfDangerousProductFromBasket {
         // check clicks on out of Popup with dangerous product and check deletion product
         cartAllDataPage.searchProductByID(idDangerousProduct).shouldBe(visible);
         cartAllDataPage.popupOfDangerousProduct().shouldBe(visible);
-        cartAllDataPage.areaOutOfPopup().click(1, 1);
+        cartAllDataPage.areaOutOfPopup().click(5, 1);
         cartAllDataPage.searchProductByID(idDangerousProduct).shouldBe(not(visible));
         // check clicks on close button in Popup with dangerous product0
         product_page_logic.openProductPageById(route, idDangerousProduct)

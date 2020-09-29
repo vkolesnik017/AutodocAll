@@ -140,6 +140,10 @@ public class CartAllData_page {
         return $x("//div[@class='order-summary ']//div[4]//span[2]");
     }
 
+    SelenideElement safeOrderInUpperBlockWithSummery(String priceSO) {
+        return $x("(//div[@class='order-summary__row']/span[contains(text(),'" + priceSO + "')])[1]");
+    }
+
     SelenideElement safeOrderCostFromHeavyLoadsProduct() {
         return $x("//div[@class='order-summary ']//div[5]//span[2]");
     }
