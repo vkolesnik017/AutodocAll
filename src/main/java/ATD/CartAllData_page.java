@@ -314,4 +314,6 @@ public class CartAllData_page {
     public SelenideElement preloader() {
         return $(By.cssSelector(".preloader_wrapper"));
     }
+
+    public SelenideElement artNumOfProduct() {return $x("//div[@class='info__nr']");}
 }

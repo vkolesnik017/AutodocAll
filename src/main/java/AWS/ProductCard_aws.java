@@ -69,6 +69,13 @@ public class ProductCard_aws {
         return $x("//div[@class='col-md-6 col-sm-6'][2]//div[@class='switch-animate switch-on']/span[1]");
     }
 
+    private SelenideElement artNumOfProduct() {return $x("//td[contains(text(),'Артикль №.:')]/following-sibling::td");}
+
+    private SelenideElement statusInArtNum() {return $x("//td[contains(text(),'Артикль №.:')]/following-sibling::td/div");}
+
+    private SelenideElement productManufacturer() {return $x("//td[contains(text(),'Производитель:')]/following-sibling::td/a");}
+
+    private SelenideElement eanOfProduct() {return $x("//td[contains(text(),'EAN:')]/following-sibling::td/a");}
 
     String productId;
 
@@ -172,6 +179,24 @@ public class ProductCard_aws {
         Assert.assertEquals(dangerousIconFromAws, listOfDangerousIconFromProduct);
         activeSwitchOfDangerousProduct().shouldBe(exist).shouldHave(text("ON"));
         return this;
+    }
+
+    @Step("get article number of product. ProductCard_aws")
+    public String getArtNumOfProduct() {
+     String artNum = artNumOfProduct().shouldBe(visible).getText().replace(statusInArtNum().getText(),"").replace(" ","");
+        return artNum;
+    }
+
+    @Step("get title of product brand. ProductCard_aws")
+    public String getTitleOfBrandProduct() {
+        String titleOfBrand = productManufacturer().shouldBe(visible).getText().toLowerCase();
+        return titleOfBrand;
+    }
+
+    @Step("get EAN of product. ProductCard_aws")
+    public String getEanOfProduct() {
+        String eanOfProduct = eanOfProduct().shouldBe(visible).getText();
+        return eanOfProduct;
     }
 
 }
