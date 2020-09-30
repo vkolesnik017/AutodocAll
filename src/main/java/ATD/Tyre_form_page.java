@@ -79,4 +79,6 @@ public class Tyre_form_page {
     SelenideElement anySelectedBrand() {return $x("//li[@class='js-filter-item ga-click-criteria-filter active']");}
 
     SelenideElement countOfProductsInPage() {return $x("//div[@class='items_on_page']");}
+
+    ElementsCollection iconOfBrandsInProductList() {return $$x("//div[@class='image']/span/img");}
 }

@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Condition.empty;
 
-public class LKW_Search_page_Logic extends LKW_Search_page{
+public class LKW_Search_page_Logic extends LKW_Search_page {
 
     @Step("checking of visibility of TecDoc Listing block .LKW_Search_page")
     public LKW_Search_page_Logic visibilityOfTecDocListingBlock() {
@@ -32,7 +32,9 @@ public class LKW_Search_page_Logic extends LKW_Search_page{
     public List<String> getAttributeOfWarningIconInPopUp(int positionOfProduct) {
         List<String> attribute = new ArrayList<>();
         for (int i = 0; i < attributeOfWarningIcon(positionOfProduct + 1).size(); i++) {
-            attribute.add(attributeOfWarningIcon(positionOfProduct + 1).get(i).shouldBe(visible).getAttribute("style").replace("background-image: url(\"","").replace("\");",""));
+            String attributeFromIcon = attributeOfWarningIcon(positionOfProduct + 1).get(i).shouldBe(visible).getAttribute("style").replace("background-image: url(\"", "").replace("\");", "");
+            String partOfAttribute = attributeFromIcon.replace(attributeFromIcon.substring(attributeFromIcon.lastIndexOf(".")), "");
+            attribute.add(partOfAttribute);
         }
         return attribute;
     }
@@ -44,7 +46,12 @@ public class LKW_Search_page_Logic extends LKW_Search_page{
         warningPopUp().shouldBe(visible).shouldHave(attribute("style", "display: block;"));
         titleOfDangerousPopUp().shouldBe(visible).shouldHave(exactText(signalWord));
         infoTextOfDangerousPopUp().shouldNotBe(empty);
-        List<String> attributeOfDangerousIcon = dangerousIconInWarningPopUp().stream().map(n -> n.getAttribute("style").replace("background-image: url(\"", "").replace("\");", "")).collect(Collectors.toList());
+        List<String> attributeOfDangerousIcon = new ArrayList<>();
+        for (int i = 0; i < dangerousIconInWarningPopUp().size(); i++) {
+            String urlFromAttribute = dangerousIconInWarningPopUp().get(i).getAttribute("style").replace("background-image: url(\"", "").replace("\");", "");
+            String partOfAttribute = urlFromAttribute.replace(urlFromAttribute.substring(urlFromAttribute.lastIndexOf(".")), "");
+            attributeOfDangerousIcon.add(partOfAttribute);
+        }
         Assert.assertEquals(attributeOfDangerousIcon, attributeOfWarningIcon);
         return this;
     }

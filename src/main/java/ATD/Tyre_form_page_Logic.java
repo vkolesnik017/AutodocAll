@@ -158,4 +158,10 @@ public class Tyre_form_page_Logic extends Tyre_form_page {
         Assert.assertTrue(Integer.parseInt(list.get(0))<=maxSize);
         return this;
     }
+
+    @Step("go to product page. Tyre_form_page")
+    public Tyre_item_page_Logic goToProductpage(int positionOfProduct) {
+        iconOfBrandsInProductList().get(positionOfProduct).click();
+        return page(Tyre_item_page_Logic.class);
+    }
 }
