@@ -87,7 +87,9 @@ public class Category_name_page_Logic extends Category_name_page {
         List<String> attribute = new ArrayList<>();
         dangerousProducts().get(positionOfProduct).scrollIntoView("{block: \"center\"}").hover();
         for (int i = 0; i < attributeOfWarningIcon(positionOfProduct + 1).size(); i++) {
-            attribute.add(attributeOfWarningIcon(positionOfProduct + 1).get(i).shouldBe(visible).getAttribute("style").replace("background-image: url(\"", "").replace("\");", ""));
+            String attributeFromIcon = attributeOfWarningIcon(positionOfProduct + 1).get(i).shouldBe(visible).getAttribute("style").replace("background-image: url(\"", "").replace("\");", "");
+            String partOfAttribute = attributeFromIcon.replace(attributeFromIcon.substring(attributeFromIcon.lastIndexOf(".")), "");
+            attribute.add(partOfAttribute);
         }
         return attribute;
     }
@@ -107,13 +109,18 @@ public class Category_name_page_Logic extends Category_name_page {
     public Category_name_page_Logic clickOnDangerousLabelAndCompareElements(int positionOfProduct, String signalWord, List<String> attributeOfWarningIcon) {
         scrollToDangerousElement(positionOfProduct);
 
-            labelTitleDangerousProducts().get(positionOfProduct).shouldBe(visible).click();
-            blackBackground().shouldHave(attribute("style", "display: block;"));
-            warningPopUp().shouldBe(visible).shouldHave(attribute("style", "display: block;"));
-            titleOfDangerousPopUp().shouldBe(visible).shouldHave(exactText(signalWord));
-            infoTextOfDangerousPopUp().shouldNotBe(empty);
-            List<String> attributeOfDangerousIcon = attributeOfWarningIcon(positionOfProduct+1).stream().map(n -> n.getAttribute("style").replace("background-image: url(\"", "").replace("\");", "")).collect(Collectors.toList());
-            Assert.assertEquals(attributeOfDangerousIcon, attributeOfWarningIcon);
+        labelTitleDangerousProducts().get(positionOfProduct).shouldBe(visible).click();
+        blackBackground().shouldHave(attribute("style", "display: block;"));
+        warningPopUp().shouldBe(visible).shouldHave(attribute("style", "display: block;"));
+        titleOfDangerousPopUp().shouldBe(visible).shouldHave(exactText(signalWord));
+        infoTextOfDangerousPopUp().shouldNotBe(empty);
+        List<String> attributeOfDangerousIcon = new ArrayList<>();
+        for (int i = 0; i < attributeOfWarningIcon(positionOfProduct + 1).size(); i++) {
+            String urlFromAttribute = attributeOfWarningIcon(positionOfProduct + 1).get(i).getAttribute("style").replace("background-image: url(\"", "").replace("\");", "");
+            String partOfAttribute = urlFromAttribute.replace(urlFromAttribute.substring(urlFromAttribute.lastIndexOf(".")), "");
+            attributeOfDangerousIcon.add(partOfAttribute);
+        }
+        Assert.assertEquals(attributeOfDangerousIcon, attributeOfWarningIcon);
 
         return this;
     }

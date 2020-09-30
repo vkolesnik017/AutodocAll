@@ -1,6 +1,10 @@
 package ATD;
 
 import io.qameta.allure.Step;
+import org.testng.Assert;
+
+import java.util.Arrays;
+import java.util.List;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.page;
@@ -59,5 +63,40 @@ public class Tyres_dimension_page_Logic extends Tyres_dimension_page {
     public Services_wishList_page_Logic goToWishListPage() {
         iconOfWishList().shouldBe(visible).click();
         return page(Services_wishList_page_Logic.class);
+    }
+
+    @Step("select from any visible brands. Tyres_dimension_page")
+    public Tyres_dimension_page_Logic selectAnyBrand(int positionOfBrand) {
+        visibleBrands().get(positionOfBrand).click();
+        anySelectedBrand().shouldBe(visible);
+        return this;
+    }
+
+    @Step("check maximize count of product in listing. Tyres_dimension_page")
+    public Tyres_dimension_page_Logic checkMaxCountOfProductInListing(int maxSize) {
+        List<String> list = Arrays.asList(countOfProductsInPage().getText().replace("Aktuell ", "").split(" "));
+        Assert.assertTrue(Integer.parseInt(list.get(0)) <= maxSize);
+        return this;
+    }
+
+    @Step("check maximize count of pages in listing. Tyres_dimension_page")
+    public Tyres_dimension_page_Logic checkMaxCountOfPagesInListing() {
+        String lastPageOfListing = btnLastPaginator().getAttribute("href");
+        String urlPart = lastPageOfListing.replace(lastPageOfListing.substring(lastPageOfListing.lastIndexOf("=")), "");
+        String lastCountOfPage = lastPageOfListing.replace(urlPart + "=", "");
+        Assert.assertTrue(Integer.parseInt(lastCountOfPage) <= 35);
+        return this;
+    }
+
+    @Step("presence addition information filter block. Tyres_dimension_page")
+    public Tyres_dimension_page_Logic presenceAdditionInfoFilterBlock() {
+        additionInfoFilterBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("select addition filter. Tyres_dimension_page")
+    public Tyre_form_page_Logic selectAdditionFilter(int positionOfFilter) {
+        additionIfoFilters().get(positionOfFilter).click();
+        return page(Tyre_form_page_Logic.class);
     }
 }
