@@ -24,7 +24,6 @@ public class QC_1027_EditingVehicleOnMyGaragePage {
     private String mail = "QC_1027_autotest@mailinator.com";
     private ArrayList<String> infoVehicle, infoVehicleAfterEdit;
 
-
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
