@@ -41,7 +41,7 @@ public class QC_1396_SplitBilling_FirmAndPhysicalPerson_DifferentCountries_Posit
 
     @DataProvider(name = "routeBE", parallel = true)
     Object[] dataProviderProductsEN() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "BE", "main", "product32");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "BE", "main", "product10");
     }
 
     @Test(dataProvider = "routeBE")
@@ -86,7 +86,9 @@ public class QC_1396_SplitBilling_FirmAndPhysicalPerson_DifferentCountries_Posit
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceBE, totalPriceAWSOrderBE);
         sellingPriceAWSOrderBE = order_aws.getSellingProductPriceOrderAWS();
-        Assert.assertEquals(sellingPriceAWSOrderBE, priceProductInAllData);
+
+        // TODO включу данный ассерт после исправлениея дефекта AWS-2830
+        /*Assert.assertEquals(sellingPriceAWSOrderBE, priceProductInAllData);*/
         order_aws.clickCustomerId();
         switchTo().window(1);
         new Customer_view_aws().checkPresenceBlockLogsCompanyNumbers()

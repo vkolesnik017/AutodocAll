@@ -361,6 +361,41 @@ public class OrderAdd_page_aws {
         return this;
     }
 
+    @Step("Selects skin for a specific country{shop}. OrderAdd_page_aws")
+    public OrderAdd_page_aws selectSkinFopSpecificCountry(String shop) {
+        selectorForSkin().click();
+        sleep(2000);
+        if (!searchBoxBySkin().isDisplayed()) {
+            selectorForSkin().click();
+        }
+        switch (shop) {
+            case "AT":
+                listSkins("pkwteile.at (AT)").click();
+                break;
+            case "NL":
+                listSkins("auto-onderdelen24.nl (NL)").click();
+                break;
+            case "DE":
+                listSkins("pkwteile.de (DE)").click();
+                break;
+            case "FI":
+                listSkins("autonvaraosat24.fi (FI)").click();
+                break;
+            case "SE":
+                listSkins("bildelaronline24.se (SE)").click();
+                break;
+            case "ES":
+                listSkins("recambioscoches.es (ES)").click();
+                break;
+            case "IT":
+                listSkins("autoparti.it (IT)").click();
+                break;
+            case "PT":
+                listSkins("autopecasonline24.pt (PT)").click();
+        }
+        return this;
+    }
+
     @Step("Checks presence popup with delivery error. OrderAdd_page_aws")
     public OrderAdd_page_aws checkPresencePopupWithDeliveryError() {
         popUpWithDeliveryError().shouldBe(visible);

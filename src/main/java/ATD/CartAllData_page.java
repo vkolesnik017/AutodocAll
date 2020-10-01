@@ -38,7 +38,7 @@ public class CartAllData_page {
     }
 
     public SelenideElement freeDeliveryIcon() {
-        return $(byXpath("//*[@class='alldata-bottom']//*[@class='free_icon']"));
+        return $(byXpath("//div[@class='order-summary ']//span[@class='free_icon order-delivery']"));
     }
 
     SelenideElement labelVAT() {
