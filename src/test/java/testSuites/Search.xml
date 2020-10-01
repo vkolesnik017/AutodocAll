@@ -23,6 +23,7 @@
             <class name="ATD.Search.QC_548_SearchTooltips.QC_552_ArticleNumberTooltipsInSearch"/>
             <class name="ATD.Search.QC_548_SearchTooltips.QC_553_GenericUnderTooltipsSynonymsInSearch"/>
             <class name="ATD.Search.QC_548_SearchTooltips.QC_554_GoToLisingFromSynonymTooltipInSearch"/>
+            <class name="ATD.Search.QC_548_SearchTooltips.QC_2541_CheckingSortingOfValuesInSearchPrompt"/>
         </classes>
     </test>
 
