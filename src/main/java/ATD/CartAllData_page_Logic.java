@@ -543,4 +543,22 @@ public class CartAllData_page_Logic extends CartAllData_page {
         }
         return this;
     }
+
+    @Step("Checks product price on site matches price on alldata page including VAT. Product_page")
+    public CartAllData_page_Logic checkProductPriceOnSitesMatchesPriceOnAllDataPageIncludingVat(Float priceWithVatPerAllDataPage, Float priceProductInAlldata) {
+        BigDecimal result = new BigDecimal(priceWithVatPerAllDataPage);
+        BigDecimal formatPriceUp = result.setScale(2, RoundingMode.UP);
+        float roundMax = Float.parseFloat(String.valueOf(formatPriceUp));
+        BigDecimal formatPriceDOWN = result.setScale(2, RoundingMode.FLOOR);
+        float roundMin = Float.parseFloat(String.valueOf((formatPriceDOWN)));
+        float res = 0.0f;
+        if (priceProductInAlldata.equals(roundMax)) {
+            res = roundMax;
+        }
+        if (priceProductInAlldata.equals(roundMin)) {
+            res = roundMin;
+        }
+        Assert.assertEquals(res, priceProductInAlldata);
+        return this;
+    }
 }
