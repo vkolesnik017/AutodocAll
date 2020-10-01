@@ -38,7 +38,7 @@ public class CartAllData_page {
     }
 
     public SelenideElement freeDeliveryIcon() {
-        return $(byXpath("//*[@class='alldata-bottom']//*[@class='free_icon']"));
+        return $(byXpath("//*[@class='alldata-bottom']//*[@class='free_icon order-tyres-delivery']"));
     }
 
     SelenideElement labelVAT() {
