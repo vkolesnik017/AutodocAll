@@ -99,4 +99,26 @@ public class Tyres_dimension_page_Logic extends Tyres_dimension_page {
         additionIfoFilters().get(positionOfFilter).click();
         return page(Tyre_form_page_Logic.class);
     }
+
+    @Step("appears of Out of stock product pop-up. Tyres_dimension_page")
+    public Tyres_dimension_page_Logic appearsOfOutOfStockProductPopUp(String ean) {
+        productListBlock().shouldBe(visible);
+        clickOnGrayButtonByEab(ean);
+        String currentMpnNumber;
+        while (!grayButtonByEan(ean).isDisplayed()) {
+            currentMpnNumber = mpnNumberOfProduct().get(0).getText();
+            btnNextPaginator().click();
+            mpnNumberOfProduct().get(0).shouldNotHave(exactText(currentMpnNumber));
+            clickOnGrayButtonByEab(ean);
+        }
+        return this;
+    }
+
+    @Step("appears of Out of stock product pop-up. Tyres_dimension_page")
+    public Tyres_dimension_page_Logic clickOnGrayButtonByEab(String ean) {
+        if (grayButtonByEan(ean).isDisplayed()) {
+            grayButtonByEan(ean).click();
+        }
+        return this;
+    }
 }

@@ -57,4 +57,10 @@ public class Tyres_dimension_page {
     SelenideElement additionInfoFilterBlock() {return $x("//div[@class='additional_filter']");}
 
     ElementsCollection additionIfoFilters() {return $$x("//div[@class='additional_filter']//ul/li");}
+
+    ElementsCollection eanOfProducts() {return $$x("//span[@class='article_number']");}
+
+    SelenideElement grayButtonByEan(String ean) {return $x("//span[contains(text(),'"+ean+"')]/ancestor::li//div[@class='button not_active']/a");}
+
+    SelenideElement btnNextPaginator() {return $x("//span[@class='next']");}
 }

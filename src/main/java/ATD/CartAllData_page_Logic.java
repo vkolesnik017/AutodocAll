@@ -9,9 +9,11 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.*;
+import static ATD.CommonMethods.getCurrencyAndVerify;
+import static ATD.CommonMethods.getPriceFromElement;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.sleep;
 import static com.codeborne.selenide.WebDriverRunner.source;
 
 public class CartAllData_page_Logic extends CartAllData_page {
@@ -271,9 +273,10 @@ public class CartAllData_page_Logic extends CartAllData_page {
         float roundMin = Float.parseFloat(String.valueOf((formatPriceDOWN)));
         float res = 0.0f;
         if (totalPrice.equals(roundMax)) {
-             res = roundMax;
-        } if (totalPrice.equals(roundMin)) {
-             res = roundMin;
+            res = roundMax;
+        }
+        if (totalPrice.equals(roundMin)) {
+            res = roundMin;
         }
         Assert.assertEquals(res, totalPrice);
         return this;
@@ -296,7 +299,8 @@ public class CartAllData_page_Logic extends CartAllData_page {
         float res = 0.0f;
         if (totalPrice.equals(roundMax)) {
             res = roundMax;
-        } if (totalPrice.equals(roundMin)) {
+        }
+        if (totalPrice.equals(roundMin)) {
             res = roundMin;
         }
         Assert.assertEquals(res, totalPrice);
@@ -322,13 +326,13 @@ public class CartAllData_page_Logic extends CartAllData_page {
         String realPrice;
         if (labelVAT().isDisplayed()) {
             String vat = labelVAT().getText();
-             realPrice = totalOrderPrice().getText().replace("£ ", "").replace(vat, "");
+            realPrice = totalOrderPrice().getText().replace("£ ", "").replace(vat, "");
         } else {
-             realPrice = totalOrderPrice().getText().replace("£ ", "");
+            realPrice = totalOrderPrice().getText().replace("£ ", "");
         }
-            realPrice = realPrice.replaceAll(",", ".");
-            Float totalPrice = Float.parseFloat(realPrice);
-            return totalPrice;
+        realPrice = realPrice.replaceAll(",", ".");
+        Float totalPrice = Float.parseFloat(realPrice);
+        return totalPrice;
     }
 
 
@@ -537,10 +541,17 @@ public class CartAllData_page_Logic extends CartAllData_page {
 
     @Step("Wait until preloader disappear. CartAllData_page")
     public CartAllData_page_Logic waitUntilPreloaderDisappearAndSleep(int sleepTime) throws Exception {
-        if(preloader().isDisplayed()) {
+        if (preloader().isDisplayed()) {
             preloader().waitUntil(attribute("style", "display: none;"), 20000);
             Thread.sleep(sleepTime);
         }
+        return this;
+    }
+
+    @Step("compare art number of product. CartAllData_page")
+    public CartAllData_page_Logic compareArtNumOfProduct(String mpnNumOfProduct) {
+        String artNumOfProduct = artNumOfProduct().shouldBe(visible).getText().replace("Artikelnummer: ", "");
+        Assert.assertEquals(mpnNumOfProduct, artNumOfProduct);
         return this;
     }
 }
