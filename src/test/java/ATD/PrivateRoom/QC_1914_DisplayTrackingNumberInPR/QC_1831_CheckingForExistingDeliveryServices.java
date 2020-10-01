@@ -33,7 +33,7 @@ public class QC_1831_CheckingForExistingDeliveryServices {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "deliveryService", parallel = false)
+    @DataProvider(name = "deliveryService", parallel = true)
     Object[] dataProviderProducts() {
         return new Object[][]{
                 {"GLS"},
