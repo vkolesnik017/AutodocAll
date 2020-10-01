@@ -28,11 +28,10 @@ public class QC_2541_CheckingSortingOfValuesInSearchPrompt {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = ".......")
-    public void testXXXXXXXXXX(String route) {
+    @Description(value = "Checking the sorting of values in the search string by the entered value")
+    public void testChecksIfHintsInTheSearchFieldMatchByValue(String route) {
         open(route);
-        new Main_page_Logic().xxxxxxx();
-
+        new Main_page_Logic().checksIfHintsInTheSearchFieldMatchByValue();
     }
 
     @AfterMethod

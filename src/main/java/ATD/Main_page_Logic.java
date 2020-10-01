@@ -7,11 +7,9 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.testng.Assert;
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashSet;
-
 import static ATD.CommonMethods.*;
 import static com.codeborne.selenide.CollectionCondition.*;
 import static com.codeborne.selenide.Condition.*;
@@ -128,48 +126,50 @@ public class Main_page_Logic extends Main_page {
 
     // Search bar
 
-    @Step("")
-    public Main_page_Logic xxxxxxx() {
+    @Step("Checking the sorting of values in the search string by the entered value. Main_page")
+    public Main_page_Logic checksIfHintsInTheSearchFieldMatchByValue() {
         ArrayList<String> completeMatch = new ArrayList<>();
         ArrayList<String> startsWithRequest = new ArrayList<>();
         ArrayList<String> containsRequestInMiddle = new ArrayList<>();
         String[] valueForSearch = {"radlager", "motoröl", "spiegel", "felgen"};
         for (int i = 0; i < valueForSearch.length; i++) {
             inputTextInSearchBar(valueForSearch[i]);
-            sleep(3000);
+            counterQuantityProductsInSearch().waitUntil(visible,5000);
             for (int a = 0; a < tooltipsToSearch().size(); a++) {
                 int index = tooltipsToSearch().get(a).getText().toLowerCase().indexOf(valueForSearch[i]);
                 String name = tooltipsToSearch().get(a).getText().replaceAll("\n", "").replaceAll("\\d+", "").toLowerCase();
                 if (name.equals(valueForSearch[i])) {
-                    completeMatch.add(tooltipsToSearch().get(a).getText());
+                    completeMatch.add(name);
                 } else if (index == 0) {
-                    startsWithRequest.add(tooltipsToSearch().get(a).getText());
+                    startsWithRequest.add(name);
                 } else if (index > 0) {
-                    containsRequestInMiddle.add(tooltipsToSearch().get(a).getText());
+                    containsRequestInMiddle.add(name);
                 } else {
                     Assert.fail("List contains inappropriate value ");
                 }
             }
             for (int x = 0; x < completeMatch.size(); x++) {
-                String nameIndex1 = completeMatch.get(x).replaceAll("\n", "").replaceAll("\\d+", "").toLowerCase();
-                if (!nameIndex1.equals(valueForSearch[i])) {
+                String nameIndex = completeMatch.get(x);
+                if (!nameIndex.equals(valueForSearch[i])) {
                     Assert.fail("List does not have a given value ");
                 } else if (completeMatch.size() > 1) {
                     Assert.fail("List has more than one value");
                 }
             }
-           for (int z = 0; z < startsWithRequest.size(); z++) {
-               String nameIndex2 = startsWithRequest.get(z).replaceAll("\n", "").replaceAll("\\d+", "").toLowerCase();
-               nameIndex2.startsWith(valueForSearch[i]);
-           }
-            for (int c = 0; c < containsRequestInMiddle.size(); c++) {
-                int index = containsRequestInMiddle.get(c).replaceAll("\n", "").replaceAll("\\d+", "").toLowerCase().indexOf(valueForSearch[i]);
-                if (index == -1 || index == 0) {
+            for (int z = 0; z < startsWithRequest.size(); z++) {
+                int index = startsWithRequest.get(z).indexOf(valueForSearch[i]);
+                if (index == -1 || index > 0) {
+                    Assert.fail("the line did not start with the given value");
                 }
             }
-            completeMatch.clear();
-            startsWithRequest.clear();
-            containsRequestInMiddle.clear();
+            for (int c = 0; c < containsRequestInMiddle.size(); c++) {
+                int index = containsRequestInMiddle.get(c).indexOf(valueForSearch[i]);
+                if (index == -1 || index == 0) {
+                    Assert.fail("The value is not in the middle of the line");
+                }
+            }
+            completeMatch.clear(); startsWithRequest.clear(); containsRequestInMiddle.clear();
+            refresh();
         }
         return this;
     }
