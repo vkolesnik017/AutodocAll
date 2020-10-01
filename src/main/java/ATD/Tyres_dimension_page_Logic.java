@@ -34,12 +34,24 @@ public class Tyres_dimension_page_Logic extends Tyres_dimension_page {
         return this;
     }
 
+    @Step("click on 'Get mailing' label of pop-up Notify about availability.Tyres_dimension_page")
+    public Tyres_dimension_page_Logic clickOnGetMailingLabel() {
+        labelOfPopUpNotifyAboutAvailability().shouldBe(visible).click();
+        return this;
+    }
+
     @Step("click on Subscription button .Tyres_dimension_page")
     public Tyres_dimension_page_Logic clickOnBtnSubscription() {
         btnSendOfFeedBackPopUp().click();
         return this;
     }
 
+
+    @Step("close pop-up about sent letter .Tyres_dimension_page")
+    public Tyres_dimension_page_Logic closePopUpAboutSentLetter() {
+        btnCloseSentLetterPopUp().shouldBe(visible).click();
+        return this;
+    }
     @Step("presence of product listing block. Tyres_dimension_page")
     public Tyres_dimension_page_Logic presenceOfListingBlock() {
         productListBlock().shouldBe(visible);
@@ -117,8 +129,10 @@ public class Tyres_dimension_page_Logic extends Tyres_dimension_page {
     @Step("appears of Out of stock product pop-up. Tyres_dimension_page")
     public Tyres_dimension_page_Logic clickOnGrayButtonByEab(String ean) {
         if (grayButtonByEan(ean).isDisplayed()) {
-            grayButtonByEan(ean).click();
+            grayButtonByEan(ean).scrollIntoView("{block: \"center\"}").click();
+            popUpNotifyAboutAvailability().should(appear);
         }
         return this;
     }
+
 }
