@@ -5,6 +5,7 @@ import files.Product;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import static ATD.CommonMethods.checkingContainsUrl;
@@ -144,5 +145,23 @@ public class Tyre_form_page_Logic extends Tyre_form_page {
         return this;
     }
 
+    @Step("select from any visible brands. Tyre_form_page")
+    public Tyre_form_page_Logic selectAnyBrand(int positionOfBrand) {
+        visibleBrands().get(positionOfBrand).click();
+        anySelectedBrand().shouldBe(visible);
+        return this;
+    }
 
+    @Step("check maximaze count of product in listing. Tyre_form_page")
+    public Tyre_form_page_Logic checkMaxCountOfProductInListing(int maxSize) {
+        List<String> list = Arrays.asList(countOfProductsInPage().getText().split(" "));
+        Assert.assertTrue(Integer.parseInt(list.get(0))<=maxSize);
+        return this;
+    }
+
+    @Step("go to product page. Tyre_form_page")
+    public Tyre_item_page_Logic goToProductpage(int positionOfProduct) {
+        iconOfBrandsInProductList().get(positionOfProduct).click();
+        return page(Tyre_item_page_Logic.class);
+    }
 }

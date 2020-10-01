@@ -56,6 +56,22 @@ public class ProductSearch_aws {
         return $x(" //li[@class='search-field']/input[@value='Select Brand']");
     }
 
+    private SelenideElement categoryFiled() {
+        return $x("//div[@id='form_filterSearch_categories__chzn']//input");
+    }
+
+    private SelenideElement firstSearchFilter() {
+        return $(byId("form_filterSearch[isDisabled]"));
+    }
+
+    private SelenideElement availabilityAtSupplierFilter() {
+        return $(byId("form_filterSearch[inSuplierStocks]"));
+    }
+
+    private SelenideElement productListBlock() {return $(byId("order_products_list"));}
+
+    private ElementsCollection titleOfProductsInTable() {return $$x("//table[@id='order_products_list']//td[6]/a");}
+
     @Step
     public ProductSearch_aws openProductSearchPageAndLogin() {
         open(urlPage);
@@ -102,5 +118,36 @@ public class ProductSearch_aws {
         searchBtn().click();
         articleProductsInTable().get(0).shouldHave(exactText(mpnNumber));
         return this;
+    }
+
+    @Step("select category. ProductSearch_aws")
+    public ProductSearch_aws selectCategory(String idOfCategory) {
+        categoryFiled().setValue(idOfCategory).pressEnter();
+        return this;
+    }
+
+    @Step("select first search filter. ProductSearch_aws")
+    public ProductSearch_aws selectFirstSearchFilter(String filer) {
+        firstSearchFilter().selectOptionByValue(filer);
+        return this;
+    }
+
+    @Step("select availability at supplier filter. ProductSearch_aws")
+    public ProductSearch_aws selectAvailabilityAtSupplierFilter(String filer) {
+        availabilityAtSupplierFilter().selectOptionByValue(filer);
+        return this;
+    }
+
+    @Step("click on Search button. ProductSearch_aws")
+    public ProductSearch_aws clickOnSearchButton() {
+        searchBtn().shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("go to product cart by click on Title of product. ProductSearch_aws")
+    public ProductCard_aws goToProductCartByClickOnTitle(int positionOfProduct) {
+        productListBlock().shouldBe(visible);
+        titleOfProductsInTable().get(positionOfProduct).shouldBe(visible).click();
+        return page(ProductCard_aws.class);
     }
 }
