@@ -3,7 +3,6 @@ package ATD;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
-
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -68,6 +67,10 @@ public class Main_page {
 
     public ElementsCollection tooltipsToSearch() {
         return $$(tooltipsToSearch);
+    }
+
+    public SelenideElement  counterQuantityProductsInSearch() {
+        return $x("//div[@class='autocomplete-suggestions']//span[@class='right']");
     }
 
     public SelenideElement infoIconForSearch() {

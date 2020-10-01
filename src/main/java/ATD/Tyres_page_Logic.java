@@ -7,6 +7,7 @@ import org.testng.Assert;
 import java.util.*;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
+import static com.codeborne.selenide.CollectionCondition.sizeLessThanOrEqual;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.Wait;
 import static com.codeborne.selenide.Selenide.page;
@@ -197,7 +198,7 @@ public class Tyres_page_Logic extends Tyres_page {
         @Step("Check top block presence. Tyres_page")
         public Tyres_page_Logic checkTopBlock() {
             topBlock().shouldBe(visible);
-            productsInTopBlock().shouldHaveSize(12);
+            productsInTopBlock().shouldBe(sizeLessThanOrEqual(12));
             return this;
         }
 
