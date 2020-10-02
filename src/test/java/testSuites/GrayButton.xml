@@ -10,6 +10,7 @@
         <classes>
             <class name="ATD.GrayButton.QC_1015_GrayButtonOnSearchPage"/>
             <class name="ATD.GrayButton.QC_1025_GrayButtonOnProductPage"/>
+            <class name="ATD.GrayButton.QC_2067_CheckNotifyOfStockFormValidationForOutOfStockProducts"/>
         </classes>
     </test>
 </suite>

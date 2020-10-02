@@ -9,9 +9,7 @@ import org.testng.Assert;
 import java.util.ArrayList;
 
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selectors.byCssSelector;
-import static com.codeborne.selenide.Selectors.byId;
-import static com.codeborne.selenide.Selectors.byXpath;
+import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
@@ -47,11 +45,11 @@ public class WebMail {
     }
 
     public SelenideElement subjectLetter(int numberLetter) {
-        return $x("(//td[@class='subject']/span[3]/a/span)["+ numberLetter +"]");
+        return $x("(//td[@class='subject']/span[3]/a/span)[" + numberLetter + "]");
     }
 
     public SelenideElement letter(int numberLetter) {
-        return $x("(//td[@class='subject'])["+ numberLetter +"]");
+        return $x("(//td[@class='subject'])[" + numberLetter + "]");
     }
 
     public SelenideElement letterWithOrderNumber(String orderNumber) {
@@ -120,6 +118,13 @@ public class WebMail {
         return $(byXpath("//*[contains(@class,'pointer')]/../tr[" + numberLetter + "]"));
     }
 
+    private ElementsCollection countOfLetters() {
+        return $$x("//table[@id='messagelist']/tbody/tr");
+    }
+
+    private SelenideElement btnDeleteLetter() {
+        return $x("//a[@class='button delete']");
+    }
 
 
     @Step("Opens email service. WebMail")
@@ -185,8 +190,8 @@ public class WebMail {
 
     @Step("Compares the text of the requisites in the email with expected requisites. WebMail")
     public WebMail comparesTextOfRequisitesInMailWithExpectedRequisites(String expectedRequisites) {
-        String requisitesInMail = blockOfRequisites().getText().replaceAll(" ", "").replaceAll("\n","").toLowerCase();
-        String requisitesInSuccessPage = expectedRequisites.replaceAll(" ","").replaceAll("\n","").toLowerCase();
+        String requisitesInMail = blockOfRequisites().getText().replaceAll(" ", "").replaceAll("\n", "").toLowerCase();
+        String requisitesInSuccessPage = expectedRequisites.replaceAll(" ", "").replaceAll("\n", "").toLowerCase();
         Assert.assertEquals(requisitesInMail, requisitesInSuccessPage);
         return this;
     }
@@ -225,8 +230,8 @@ public class WebMail {
 
     @Step("Checks text {firmName} in first company name in email. WebMail")
     public WebMail checkFirstFirmNameInEmail(String firmName) {
-      firstFirmNameInEmail().shouldHave(text(firmName));
-      return this;
+        firstFirmNameInEmail().shouldHave(text(firmName));
+        return this;
     }
 
     @Step("Checks text {firmName} in second company name in email. WebMail")
@@ -263,7 +268,7 @@ public class WebMail {
     public Float getTotalPriceInEmail() {
         String realPrice = infoTotalPriceInEmail().getText();
         realPrice = realPrice.replaceAll("[^0-9,]", "");
-        realPrice = realPrice.replaceAll(",",".");
+        realPrice = realPrice.replaceAll(",", ".");
         Float totalPrice = Float.parseFloat(realPrice);
         return totalPrice;
     }
@@ -311,6 +316,20 @@ public class WebMail {
     @Step("Check letter info text in old mail service Mailinator. WebMail")
     public WebMail checkLetterInfoText(int letterNumber, String expectedText1, String expectedText2) {
         letterInfo(letterNumber).shouldHave(text(expectedText1)).shouldHave(text(expectedText2));
+        return this;
+    }
+
+    @Step("get total count of letters. WebMail")
+    public int getTotalCountOfLetters() {
+        return countOfLetters().size();
+    }
+
+    @Step("delete all letters. WebMail")
+    public WebMail deleteAllLetters() {
+        countOfLetters().get(0).click();
+        while (btnDeleteLetter().isDisplayed()) {
+            btnDeleteLetter().click();
+        }
         return this;
     }
 }

@@ -62,6 +62,13 @@ public class Tyre_item_page_Logic extends Tyre_item_page {
     }
 
 
+    @Step("go to Tyre brand-size listing by click on bread crumb link .Tyre_item_page")
+    public Tyres_brand_dimension_page_Logic goToBrandSizeListingByClickOnBreadCrumbLink(int positionOfLink) {
+        linksOfBreadCrumbs().get(positionOfLink).shouldBe(visible).click();
+        return page(Tyres_brand_dimension_page_Logic.class);
+    }
+
+
     @Step("get full EAN number of product.Tyre_item_page")
     public String getFullEanNumberOfProduct() {
         return eanNumberOfProduct().getText();
