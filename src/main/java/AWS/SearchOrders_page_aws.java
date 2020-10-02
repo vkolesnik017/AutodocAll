@@ -3,6 +3,7 @@ package AWS;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
 public class SearchOrders_page_aws {
@@ -16,6 +17,7 @@ public class SearchOrders_page_aws {
 
     @Step("Click button add order. SearchOrders_page_aws")
     public OrderAdd_page_aws clickAddOrderBtn() {
+        addOrderBtn().shouldBe(visible);
         addOrderBtn().click();
         return page(OrderAdd_page_aws.class);
     }
