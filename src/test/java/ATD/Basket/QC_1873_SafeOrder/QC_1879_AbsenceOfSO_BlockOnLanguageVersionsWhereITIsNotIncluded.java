@@ -27,7 +27,7 @@ public class QC_1879_AbsenceOfSO_BlockOnLanguageVersionsWhereITIsNotIncluded {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp("ATD").setUpShopsWithSubroute("prod", "CH, EE, LV, LT, SI, NO", "main", "product32");
+        return new SetUp("ATD").setUpShopsWithSubroute("prod", "CH,EE,LV,LT,SI,NO", "main", "product32");
     }
 
     @Test(dataProvider = "route")
@@ -40,6 +40,7 @@ public class QC_1879_AbsenceOfSO_BlockOnLanguageVersionsWhereITIsNotIncluded {
         new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
+                .checkAbsenceSafeOrderBlock()
                 .nextButtonClick()
                 .signIn(mail, password)
                 .fillAllFields(shop)

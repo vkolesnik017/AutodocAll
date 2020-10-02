@@ -41,6 +41,7 @@ public class QC_1874_Unchecked_SO_CheckboxOn_FR_DE_LanguageVersions {
         String orderNumber = new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
+                .checkThatSafeOrderCheckboxIsNotSelected()
                 .nextButtonClick()
                 .signIn(mail, password)
                 .fillAllFieldsAndFirmForShipping(shop, "12345", "autotest", "autotest")

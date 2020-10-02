@@ -4,6 +4,7 @@ import Common.DataBase;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import org.testng.Assert;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -240,5 +241,40 @@ public class Cart_page_Logic extends Cart_page {
         }
 
         return idOfAddedProducts;
+    }
+
+    @Step("Checks for presence Safe Order block for Heavy Loads. Cart_page")
+    public Cart_page_Logic checkPresenceSafeOrderBlock() {
+        safeOrderBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checks for absence Safe Order block for Heavy Loads. Cart_page")
+    public Cart_page_Logic checkAbsenceSafeOrderBlock() {
+        safeOrderBlock().shouldNotBe(visible);
+        return this;
+    }
+
+    @Step("Checks that the Safe Order checkbox is not selected. Cart_page")
+    public Cart_page_Logic checkThatSafeOrderCheckboxIsNotSelected() {
+        safeOrderCheckbox().shouldNotHave(attribute("checked"));
+        return this;
+    }
+
+    @Step("Get text in Safe Order block. Cart_page")
+    public String getTextInSafeOrderBlock() {
+        return String.valueOf(safeOrderBlock().getText());
+    }
+
+    @Step("Checks the number of days in the Safe Order block for DE and FR shops. Cart_page")
+    public Cart_page_Logic checkNumberOfDaysInSafeOrderBlockForDeAndFrShops(String shop, String numberDays) {
+        if (shop.equals("DE") || shop.equals("FR")) {
+            String safeOrderText = getTextInSafeOrderBlock();
+            Assert.assertTrue(safeOrderText.contains(numberDays));
+        }
+        else {
+            System.out.println("Shop is not equal to DE and FR");
+        }
+        return this;
     }
 }

@@ -28,7 +28,7 @@ public class QC_1878_NumberOfDaysInSO_Description {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp("ATD").setUpShopsWithSubroute("prod", "EN,AT,ES,IT,NL,DK,FI,SE,PL,HU,CZ,BG,GR,RO,SK,BE,LD", "main", "product32");
+        return new SetUp("ATD").setUpShopsWithSubroute("prod", "DE,FR,EN,AT,ES,IT,NL,DK,FI,SE,PL,HU,CZ,BG,GR,RO,SK,BE,LD", "main", "product32");
     }
 
     @Test(dataProvider = "route")
@@ -41,6 +41,7 @@ public class QC_1878_NumberOfDaysInSO_Description {
         String safeOrderText = new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
+                .checkNumberOfDaysInSafeOrderBlockForDeAndFrShops(shop, "200")
                 .nextButtonClick()
                 .signIn(mail, password)
                 .fillAllFields(shop)
