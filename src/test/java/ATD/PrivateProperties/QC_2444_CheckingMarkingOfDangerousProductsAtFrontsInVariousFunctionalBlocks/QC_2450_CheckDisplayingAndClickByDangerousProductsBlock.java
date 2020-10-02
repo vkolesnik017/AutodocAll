@@ -29,7 +29,6 @@ public class QC_2450_CheckDisplayingAndClickByDangerousProductsBlock {
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
     }
-
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
         return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category6");
@@ -86,7 +85,7 @@ public class QC_2450_CheckDisplayingAndClickByDangerousProductsBlock {
 
     @DataProvider(name = "routesListBody", parallel = true)
     Object[] dataProviderListBody() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "group_list_body2,index_chemicals");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "group_list_body2");
     }
 
     @Test(dataProvider = "routesListBody")
@@ -100,6 +99,26 @@ public class QC_2450_CheckDisplayingAndClickByDangerousProductsBlock {
         List<String> attributeOfWarningIconInPopUp =  categoryNamePage.getAttributeOfWarningIconInPopUp(0);
         categoryNamePage.clickOnDangerousLabelAndCompareElements(0, signalWord, attributeOfWarningIconInPopUp);
         new ProductCard_aws(idOfDangerousProduct).openProductCardPageAndLogin().presenceOfDangerousIconBlock().compareElementsOfDangerousProduct(attributeOfWarningIconInPopUp, signalWord);
+
+    }
+
+    @DataProvider(name = "routesChemicals", parallel = true)
+    Object[] dataProviderChemicals() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "index_chemicals");
+    }
+
+    @Test(dataProvider = "routesChemicals")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test check displaying and click by Dangerous products block")
+    public void testCheckDisplayingAndClickByDangerousProductsBlockChemicals(String route) {
+        openPage(route);
+        String idOfDangerousProduct =  categoryNamePage.presenceOfTopProductsBlock().getIdOfDangerousProduct(0);
+        String signalWord =  categoryNamePage.presenceOfTopProductsBlock().getSignalWordFromFirstDangerousProduct(0);
+        List<String> attributeOfWarningIconInPopUp =  categoryNamePage.getAttributeOfWarningIconInPopUp(0);
+        categoryNamePage.clickOnDangerousLabelAndCompareElements(0, signalWord, attributeOfWarningIconInPopUp);
+        new ProductCard_aws(idOfDangerousProduct).openProductCardPageAndLogin().presenceOfDangerousIconBlock().compareElementsOfDangerousProduct(attributeOfWarningIconInPopUp, signalWord);
+
     }
 
     @AfterMethod

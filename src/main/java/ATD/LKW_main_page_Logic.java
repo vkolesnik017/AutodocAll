@@ -495,6 +495,7 @@ public class LKW_main_page_Logic extends LKW_main_page {
         if (closeCookiesPopUp().isDisplayed()) {
             closeCookiesPopUp().click();
         }
+        topProductsBlock().scrollIntoView("{block: \"center\"}");
         clickOnLinkDetails().checkSuccessfullyLKWProductPageLoading("autodoc.de/mann-filter/");
         back();
         return this;
@@ -674,7 +675,7 @@ public class LKW_main_page_Logic extends LKW_main_page {
 
     @Step("Login in header with mail {mail} and transition to profile plus page and go back. LKW_main_page")
     public LKW_main_page_Logic loginToProfilePlusPageAndBack(String email) {
-      new Main_page_Logic().loginAndTransitionToProfilePlusPage(email).visibilityOfUsersName();
+        new Main_page_Logic().loginAndTransitionToProfilePlusPage(email).visibilityOfUsersName();
         back();
         return this;
     }
