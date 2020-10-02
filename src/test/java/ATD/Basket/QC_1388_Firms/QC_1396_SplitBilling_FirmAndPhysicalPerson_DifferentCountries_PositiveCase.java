@@ -26,7 +26,7 @@ import static mailinator.WebMail.passwordForMail;
 
 public class QC_1396_SplitBilling_FirmAndPhysicalPerson_DifferentCountries_PositiveCase {
 
-    private Float regularProductPricePerAllDataPageBE, priceWithVatPerAllDataPageBE, priceProductPerProductPageBE,
+    private Float priceWithoutVAT, priceProductInAllData,
             totalPriceBE, totalPriceAWSOrderBE, totalPriceInEmailBE, sellingPriceAWSOrderBE, unitPriceBE;
     private String emailGB = "QC_1396_autotestGB@autodoc.si", vatForBE, orderNumberBE;
 
@@ -41,7 +41,7 @@ public class QC_1396_SplitBilling_FirmAndPhysicalPerson_DifferentCountries_Posit
 
     @DataProvider(name = "routeBE", parallel = true)
     Object[] dataProviderProductsEN() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "BE", "main", "product32");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "BE", "main", "product10");
     }
 
     @Test(dataProvider = "routeBE")
@@ -53,7 +53,8 @@ public class QC_1396_SplitBilling_FirmAndPhysicalPerson_DifferentCountries_Posit
         vatForBE = new PageVAT_aws().getVatForBE();
         openPage(routeBE);
         String shop = getCurrentShopFromJSVarInHTML();
-        priceWithVatPerAllDataPageBE = product_page_logic.addProductToCart()
+        priceWithoutVAT = product_page_logic.getPriceWithoutVAT(vatForBE);
+        product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
@@ -68,13 +69,9 @@ public class QC_1396_SplitBilling_FirmAndPhysicalPerson_DifferentCountries_Posit
                 .nextBtnClick()
                 .checkAbsenceOfVatPercentage()
                 .checkTextInDeliveryAddressInfoBlock("Bedrijf SPRL Brasserie Cantillon")
-                .checkTextInPayersAddressInfoBlock("autotest autotest")
-                .getPriceIncludingVat(vatForBE);
-        cartAllData_page_logic.transitionToProductPage();
-        switchTo().window(1);
-        priceProductPerProductPageBE = product_page_logic.getProductPrice();
-        product_page_logic.checkProductPriceOnSitesMatchesPriceOnAllDataPageIncludingVat(priceWithVatPerAllDataPageBE, priceProductPerProductPageBE);
-        product_page_logic.cartClick();
+                .checkTextInPayersAddressInfoBlock("autotest autotest");
+        priceProductInAllData = cartAllData_page_logic.getRegularProductPriceFormAllDataPage();
+        cartAllData_page_logic.checkProductPriceOnSitesMatchesPriceOnAllDataPageIncludingVat(priceWithoutVAT, priceProductInAllData);
         totalPriceBE = cartAllData_page_logic.getTotalPriceAllDataPage(shop);
         orderNumberBE = cartAllData_page_logic.nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumberBE);
@@ -89,12 +86,11 @@ public class QC_1396_SplitBilling_FirmAndPhysicalPerson_DifferentCountries_Posit
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceBE, totalPriceAWSOrderBE);
         sellingPriceAWSOrderBE = order_aws.getSellingProductPriceOrderAWS();
-        switchTo().window(0);
-        regularProductPricePerAllDataPageBE = cartAllData_page_logic.getRegularProductPriceFormAllDataPage();
-        Assert.assertEquals(sellingPriceAWSOrderBE, regularProductPricePerAllDataPageBE);
-        switchTo().window(1);
+
+        // TODO включу данный ассерт после исправлениея дефекта AWS-2830
+        /*Assert.assertEquals(sellingPriceAWSOrderBE, priceProductInAllData);*/
         order_aws.clickCustomerId();
-        switchTo().window(2);
+        switchTo().window(1);
         new Customer_view_aws().checkPresenceBlockLogsCompanyNumbers()
                 .checkIdCompanyInBlockLogsCompanyNumbers("BE0402065988")
                 .checkResponseInBlockLogsCompanyNumbers("success(200)")
@@ -107,13 +103,13 @@ public class QC_1396_SplitBilling_FirmAndPhysicalPerson_DifferentCountries_Posit
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPriceBE, totalPriceInEmailBE);
         unitPriceBE = webMail.getUnitPriceInEmail();
-        Assert.assertEquals(regularProductPricePerAllDataPageBE, unitPriceBE);
+        Assert.assertEquals(priceProductInAllData, unitPriceBE);
     }
 
 
     private Float regularProductPricePerAllDataPageDE,
             totalPriceDE, totalPriceAWSOrderDE, totalPriceInEmailDE, sellingPriceAWSOrderDE, unitPriceDE;
-    private String emailDE = "QC_1396_autotestDE@autodoc.si", vatForDE, orderNumberDE;
+    private String emailDE = "QC_1396_autotestDE@autodoc.si", vatForИУ, orderNumberDE;
 
     @DataProvider(name = "routeDE", parallel = true)
     Object[] dataProviderProductsDE() throws SQLException {
@@ -126,7 +122,6 @@ public class QC_1396_SplitBilling_FirmAndPhysicalPerson_DifferentCountries_Posit
     @Description(value = "Test checks the successful execution of an order with split billing, firm and physical person, " +
             "Different Countries, for DE shop. Positive Case. Positive Case")
     public void testSuccessfulPlacementOfOrder_NonSplitBillingAndShipping_DE(String routeDE) {
-        vatForDE = new PageVAT_aws().getVatForBE();
         openPage(routeDE);
         String shop = getCurrentShopFromJSVarInHTML();
         regularProductPricePerAllDataPageDE = product_page_logic.addProductToCart()
@@ -149,7 +144,7 @@ public class QC_1396_SplitBilling_FirmAndPhysicalPerson_DifferentCountries_Posit
         totalPriceDE = cartAllData_page_logic.getTotalPriceAllDataPage(shop);
         orderNumberDE = cartAllData_page_logic.nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumberDE);
-        totalPriceAWSOrderDE = order_aws.openOrderInAwsWithoutLoginAndCheckTestIcon()
+        totalPriceAWSOrderDE = order_aws.openOrderInAwsWithLogin()
                 .checkVatStatusInOrder("Ohne Mwst")
                 .checkFirmConfirmationStatus("ДА/auto")
                 .getTotalPriceOrderAWS();

@@ -776,7 +776,7 @@ public class Product_page_Logic extends Product_page {
         return idOFBtnAddToBasket().getAttribute("id");
     }
 
-    @Step("Сhecks product price on site matches price on alldata page including VAT. Product_page")
+    @Step("Checks product price on site matches price on alldata page including VAT. Product_page")
     public Product_page_Logic checkProductPriceOnSitesMatchesPriceOnAllDataPageIncludingVat(Float priceWithVatPerAllDataPage, Float priceProductPerProductPage) {
         BigDecimal result = new BigDecimal(priceWithVatPerAllDataPage);
         BigDecimal formatPriceUp = result.setScale(2, RoundingMode.UP);
@@ -859,5 +859,21 @@ public class Product_page_Logic extends Product_page {
         List<String> listOfCharacteristic = allCharacteristics().stream().map(list -> list.getText().replaceAll("\n", "")).collect(Collectors.toList());
         Assert.assertTrue(listOfCharacteristic.contains(expectedCharacteristic));
         return this;
+    }
+
+    @Step("Get price without VAT. Product_page")
+    public Float getPriceWithoutVAT(String vat) {
+        Float productPrice = getProductPrice();
+        float priseWithVat = 0.0f;
+        if (vat.equals("20")) {
+            priseWithVat = (productPrice / 1.2f); // For shop EN
+        }
+        if (vat.equals("16")) {
+            priseWithVat = (productPrice / 1.16f); // For shop DE
+        }
+        if (vat.equals("21")) {
+            priseWithVat = (productPrice / 1.21f); // For shop BE
+        }
+        return priseWithVat;
     }
 }

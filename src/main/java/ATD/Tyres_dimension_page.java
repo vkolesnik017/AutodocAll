@@ -63,4 +63,10 @@ public class Tyres_dimension_page {
     SelenideElement grayButtonByEan(String ean) {return $x("//span[contains(text(),'"+ean+"')]/ancestor::li//div[@class='button not_active']/a");}
 
     SelenideElement btnNextPaginator() {return $x("//span[@class='next']");}
+
+    SelenideElement popUpNotifyAboutAvailability() {return $x("//div[@class='popup-available']");}
+
+    SelenideElement labelOfPopUpNotifyAboutAvailability() {return $x("//label[@class='popup-available__label']");}
+
+    SelenideElement btnCloseSentLetterPopUp() {return $x("//a[@class='close']");}
 }

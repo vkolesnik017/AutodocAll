@@ -137,7 +137,7 @@ public class OrderAdd_page_aws {
         return $(".prices-select");
     }
 
-    private SelenideElement btnChooseProduct() {
+    public SelenideElement btnChooseProduct() {
         return $(".btn-change-product");
     }
 
@@ -159,6 +159,10 @@ public class OrderAdd_page_aws {
 
     private SelenideElement productArticleID(String artID) {
         return $x("//input[@name='append_article_id'][@value='" + artID + "']");
+    }
+
+    public SelenideElement productArticleID() {
+        return $x("//input[@name='append_article_id']");
     }
 
     private SelenideElement popUpWithDeliveryError() {
@@ -256,6 +260,16 @@ public class OrderAdd_page_aws {
         return this;
     }
 
+    @Step("Chooses the any article id of the desired product and click button choose product. OrderAdd_page_aws")
+    public OrderAdd_page_aws chooseAnyArticleIDOfDesiredProductAndClickBtnChooseProduct() {
+        if (preLoader().isDisplayed()) {
+            preLoader().waitUntil(attribute("style", "display: none;"), 20000);
+        }
+        productArticleID().click();
+        btnChooseProduct().click();
+        return this;
+    }
+
     @Step("Checks article number of added product {articleNum}. OrderAdd_page_aws")
     public OrderAdd_page_aws checkArticleOfAddedProduct(String articleNum) {
         if (preLoader().isDisplayed()) {
@@ -344,6 +358,41 @@ public class OrderAdd_page_aws {
             selectorForSkin().click();
         }
         listSkins(skin).click();
+        return this;
+    }
+
+    @Step("Selects skin for a specific country{shop}. OrderAdd_page_aws")
+    public OrderAdd_page_aws selectSkinFopSpecificCountry(String shop) {
+        selectorForSkin().click();
+        sleep(2000);
+        if (!searchBoxBySkin().isDisplayed()) {
+            selectorForSkin().click();
+        }
+        switch (shop) {
+            case "AT":
+                listSkins("pkwteile.at (AT)").click();
+                break;
+            case "NL":
+                listSkins("auto-onderdelen24.nl (NL)").click();
+                break;
+            case "DE":
+                listSkins("pkwteile.de (DE)").click();
+                break;
+            case "FI":
+                listSkins("autonvaraosat24.fi (FI)").click();
+                break;
+            case "SE":
+                listSkins("bildelaronline24.se (SE)").click();
+                break;
+            case "ES":
+                listSkins("recambioscoches.es (ES)").click();
+                break;
+            case "IT":
+                listSkins("autoparti.it (IT)").click();
+                break;
+            case "PT":
+                listSkins("autopecasonline24.pt (PT)").click();
+        }
         return this;
     }
 
