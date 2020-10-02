@@ -1,18 +1,12 @@
 package ATD.Basket.QC_1873_SafeOrder;
 
-import ATD.CartAddress_page_Logic;
-import Common.DataBase;
 import ATD.Product_page_Logic;
+import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
-
+import org.testng.annotations.*;
 import java.sql.SQLException;
-
 import static ATD.CommonMethods.*;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
@@ -20,29 +14,16 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 public class QC_1881_DisablingSO_blockAfterChangingDelivery {
 
     private String mail = "QC_1881_autotest@mailinator.com";
-    private CartAddress_page_Logic cartAddress_page_logic = new CartAddress_page_Logic();
+    private String[] listOfCountry = {"CH","NO"};
 
     @BeforeClass
-    void setUp() throws SQLException {
+    void setUp() {
         setUpBrowser(false, "chrome", "77.0");
-        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "BE", "main", "product32"));
-        new Product_page_Logic().addProductToCart()
-                .closePopupOtherCategoryIfYes()
-                .cartClick()
-                .nextButtonClick()
-                .signIn(mail, password);
     }
 
-    @DataProvider(name = "shop", parallel = false)
-    Object[] dataProviderShop() {
-        return new Object[][]{
-                {"CH"},
-                {"EE"},
-                {"LV"},
-                {"LT"},
-                {"SI"},
-                {"NO"}
-        };
+    @DataProvider(name = "shop", parallel = true)
+    Object[] dataProvider() throws SQLException {
+        return new SetUp("ATD").setUpShopsWithSubroute("prod", "BE,DE,FR", "main", "product32");
     }
 
     @Test(dataProvider = "shop")
@@ -50,16 +31,16 @@ public class QC_1881_DisablingSO_blockAfterChangingDelivery {
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks disabling SO block after changing delivery")
     public void testDisablingSO_blockAfterChangingDelivery(String shop) throws SQLException {
-        cartAddress_page_logic.fillAllFields(shop)
-                .nextBtnClick()
-                .choosePayPal()
-                .nextBtnClick()
-                .checkAbsenceSafeOrderBlock()
-                .clickBtnReturnToCartAddressPage();
-        waitingElementVisibility(cartAddress_page_logic.shippingForm(), 5);
+        openPage(shop);
+        new Product_page_Logic().addProductToCart()
+                .closePopupOtherCategoryIfYes()
+                .cartClick()
+                .nextButtonClick()
+                .signIn(mail, password)
+                .checkAbsenceSafeOrderBlockAfterChangeDeliveryCountry(listOfCountry);
     }
 
-    @AfterClass
+    @AfterMethod
     private void close() {
         closeWebDriver();
     }

@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static ATD.CommonMethods.getCurrentShopFromJSVarInHTML;
+import static ATD.CommonMethods.waitingElementVisibility;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
@@ -552,6 +553,25 @@ public class CartAddress_page_Logic extends CartAddress_page {
     public CartAddress_page_Logic checkPresenceNotesAndTextInsideBlock(String expectedText) {
         notesWithAddressRestrictions().shouldBe(visible);
         notesWithAddressRestrictions().shouldHave(text(expectedText));
+        return this;
+    }
+
+    @Step("Checks absence safe order block after change delivery country. CartAddress_page")
+    public CartAddress_page_Logic checkAbsenceSafeOrderBlockAfterChangeDeliveryCountry(String[] listOfCountry) {
+        Cart_page_Logic cart_page_logic = new Cart_page_Logic();
+        checkCorrectTextAndFillInput(telephon(), "200+002");
+        for (int i = 0; i < listOfCountry.length; i++) {
+            chooseDeliveryCountryForShipping(listOfCountry[i])
+                    .nextBtnClick()
+                    .choosePayPal()
+                    .nextBtnClick()
+                    .checkAbsenceSafeOrderBlock()
+                    .clickBtnReturnToCartPage();
+            waitingElementVisibility(cart_page_logic.orderSummeryBlock(), 5);
+            cart_page_logic.checkAbsenceSafeOrderBlock()
+                           .nextButtonClick();
+            waitingElementVisibility(new CartAddress_page_Logic().shippingForm(), 5);
+        }
         return this;
     }
 }

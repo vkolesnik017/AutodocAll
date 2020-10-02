@@ -39,7 +39,7 @@ public class QC_1859_DisplayPopUpBonusInOrder {
 
     @DataProvider(name = "route", parallel = false)
     Object[] dataProviderAllShops() {
-        return new SetUp("ATD").setUpShop("prod", "AT, BG, BE, CZ, DE, DK, EE, ES, FI, FR, EN, GR, HU, IT, LD, LT, LV, NL, NO, PL, PT, RO, SE, SI, SK");
+        return new SetUp("ATD").setUpShop("prod", "AT,BG,BE,CZ,DE,DK,EE,ES,FI,FR,EN,GR,HU,IT,LD,LT,LV,NL,NO,PL,PT,RO,SE,SI,SK");
     }
 
     @Owner("Chelombitko")
@@ -56,7 +56,7 @@ public class QC_1859_DisplayPopUpBonusInOrder {
     }
 
     @AfterClass
-    private void teatDown() {
+    private void tearDown() {
         new Order_aws(orderNumber).openOrderInAwsWithLogin()
                 .checkCurrentStatusInOrder("Neue Bestellung")
                 .reSaveOrder()
