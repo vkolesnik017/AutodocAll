@@ -513,8 +513,12 @@ public class CommonMethods {
     }
 
     @Step("get text from not visible element {expected element}")
-    public static String getTextFromUnVisibleElement(SelenideElement element){
-        return (String) (executeJavaScript(
-                "return jQuery(arguments[0]).text();", element));
+    public static String getTextFromUnVisibleElement(SelenideElement element) {
+        return (String) (executeJavaScript("return jQuery(arguments[0]).text();", element));
+    }
+
+    @Step("get attribute from not visible element {expected element}")
+    public static String getAttributeFromUnVisibleElement(SelenideElement element, String attribute) {
+        return (String) (executeJavaScript("return arguments[0].getAttribute('" + attribute + "')", element));
     }
 }
