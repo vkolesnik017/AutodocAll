@@ -33,7 +33,7 @@ public class ProductSearch_aws {
     }
 
     private SelenideElement dangerousProductsColumn() {
-        return $(byXpath("//*[@id='order_products_list']//tr/td[22]"));
+        return $(byXpath("//*[@id='order_products_list']//tr/td[23]"));
     }
 
     private SelenideElement illiquidColumn() {
@@ -42,6 +42,10 @@ public class ProductSearch_aws {
 
     private ElementsCollection articleProductsInTable() {
         return $$(byXpath("//*[@id='order_products_list']//tr/td[3]"));
+    }
+
+    private SelenideElement articleProductInTable() {
+        return $(byXpath("//*[@id='order_products_list']//tr/td[3]"));
     }
 
     private SelenideElement brandProductsInTable() {
@@ -54,6 +58,26 @@ public class ProductSearch_aws {
 
     private SelenideElement fieldSelectBrand() {
         return $x(" //li[@class='search-field']/input[@value='Select Brand']");
+    }
+
+    private SelenideElement categoryFiled() {
+        return $x("//div[@id='form_filterSearch_categories__chzn']//input");
+    }
+
+    private SelenideElement firstSearchFilter() {
+        return $(byId("form_filterSearch[isDisabled]"));
+    }
+
+    private SelenideElement availabilityAtSupplierFilter() {
+        return $(byId("form_filterSearch[inSuplierStocks]"));
+    }
+
+    private SelenideElement productListBlock() {return $(byId("order_products_list"));}
+
+    private ElementsCollection titleOfProductsInTable() {return $$x("//table[@id='order_products_list']//td[6]/a");}
+
+    private SelenideElement depositProductsInTable() {
+        return $x("//*[@id='order_products_list']//tr/td[15]/span");
     }
 
     @Step
@@ -103,4 +127,54 @@ public class ProductSearch_aws {
         articleProductsInTable().get(0).shouldHave(exactText(mpnNumber));
         return this;
     }
+
+    @Step("select category. ProductSearch_aws")
+    public ProductSearch_aws selectCategory(String idOfCategory) {
+        categoryFiled().setValue(idOfCategory).pressEnter();
+        return this;
+    }
+
+    @Step("select first search filter. ProductSearch_aws")
+    public ProductSearch_aws selectFirstSearchFilter(String filer) {
+        firstSearchFilter().selectOptionByValue(filer);
+        return this;
+    }
+
+    @Step("select availability at supplier filter. ProductSearch_aws")
+    public ProductSearch_aws selectAvailabilityAtSupplierFilter(String filer) {
+        availabilityAtSupplierFilter().selectOptionByValue(filer);
+        return this;
+    }
+
+    @Step("click on Search button. ProductSearch_aws")
+    public ProductSearch_aws clickOnSearchButton() {
+        searchBtn().shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("go to product cart by click on Title of product. ProductSearch_aws")
+    public ProductCard_aws goToProductCartByClickOnTitle(int positionOfProduct) {
+        productListBlock().shouldBe(visible);
+        titleOfProductsInTable().get(positionOfProduct).shouldBe(visible).click();
+        return page(ProductCard_aws.class);
+    }
+
+    @Step("Set value in Search field. ProductSearch_aws")
+    public ProductSearch_aws setValueInSearchField(String value) {
+        searchField().setValue(value);
+        searchBtn().click();
+        return this;
+    }
+
+    @Step("Get value from deposit field. ProductSearch_aws")
+    public String getValueFromDepositField() {
+        return depositProductsInTable().getText();
+    }
+
+    @Step("Get ArtNum from Article field. ProductSearch_aws")
+    public  String getArtNumFromArticleField() {
+        return articleProductInTable().getText();
+    }
+
+
 }

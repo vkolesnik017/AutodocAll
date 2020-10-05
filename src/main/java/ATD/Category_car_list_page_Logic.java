@@ -4,7 +4,11 @@ import files.Product;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static ATD.CommonMethods.waitWhileRouteBecomeExpected;
 import static ATD.CommonMethods.waitingWhileLinkBecomeExpected;
@@ -92,23 +96,9 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
     }
 
     @Step("checking TecDoc listing .Category_car_list_page")
-    public Category_car_list_page_Logic checkTecDocListing() {
+    public Category_car_list_page_Logic checkTecDocListing(List<String> expectedGenerics) {
         List<Product> productList = new ArrayList<>();
-
-        List<String> expectedGenerics = Arrays.asList("Luftmassenmesser",
-                "Impulsgeber, Kurbelwelle", "Sensor, Nockenwellenposition", "Sensor, Kühlmitteltemperatur",
-                "Sensor, Ladedruck", "Sensor, Zündimpuls", "Sensor, Fahrpedalstellung",
-                "Klopfsensor", "Sensor, Ansauglufttemperatur", "Drehzahlsensor, Motormanagement",
-                "Öldruckschalter", "Steuergerät, Motormanagement", "Luftmengenmesser",
-                "Sensor, Kühlmitteltemperatur", "Sensor, Ladedruck", "Sensor, Öldruck",
-                "Sensor, Öltemperatur", "Steuergerät, Kraftstoffeinspritzung", "Sensor, Kühlmitteltemperatur",
-                "Steuergerät, Zündanlage", "Sensor, Kühlmitteltemperatur", "Steuergerät, Einspritzanlage",
-                "Schalter, Kupplungsbetätigung (Motorsteuerung)", "Sensor, Öltemperatur / -druck", "Gehäuse, Luftmengenmesser",
-                "Schalter, Bremsbetätigung (Motorsteuerung)", "Sensor, Zylinderkopftemperatur", "Lambdasondensatz",
-                "Elektromotor, Gebläse Steuergerätebox");
-
         addedProductsToList(productList, expectedGenerics);
-
         while (forwardNextPaginator().isDisplayed() && !notActiveBtnAddProductToBasket().get(0).isDisplayed()) {
             forwardNextPaginator().click();
             addedProductsToList(productList, expectedGenerics);
@@ -202,20 +192,20 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
         List<String> listOfCharacteristic = new ArrayList<>();
         String currentArtNumOfProduct;
         addedAllCharacteristicsOfProductToList(listOfCharacteristic);
-        while (!listOfCharacteristic.contains(expectedCharacteristic.replace(" ",""))) {
+        while (!listOfCharacteristic.contains(expectedCharacteristic.replace(" ", ""))) {
             currentArtNumOfProduct = artNumOfProduct().get(0).getText();
             forwardLinkOfPaginator().scrollIntoView("{block: \"end\"}").click();
             titleOfProductInTecDocListing().get(0).shouldNotHave(exactText(currentArtNumOfProduct));
             addedAllCharacteristicsOfProductToList(listOfCharacteristic);
         }
-        Assert.assertTrue(listOfCharacteristic.contains(expectedCharacteristic.replace(" ","")));
+        Assert.assertTrue(listOfCharacteristic.contains(expectedCharacteristic.replace(" ", "")));
         return this;
     }
 
     @Step("added all characteristics of product to list. Category_car_list_page")
     public Category_car_list_page_Logic addedAllCharacteristicsOfProductToList(List<String> list) {
         for (int i = 0; i < allCharacteristicsOfProducts().size(); i++) {
-            list.add(getTextFromUnVisibleElement(allCharacteristicsOfProducts().get(i)).replaceAll("\n","").replace(" ",""));
+            list.add(getTextFromUnVisibleElement(allCharacteristicsOfProducts().get(i)).replaceAll("\n", "").replace(" ", ""));
         }
         return this;
     }
@@ -235,12 +225,48 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
             String artNumOfProduct = artNumOfProduct().get(i).getText().replace("Artikelnummer: ", "");
             if (titleOfBrandImage.contains("Henkel Parts") && artNumOfProduct.contains(symbol)) {
                 for (int j = 0; j < visibleCharacteristicsOfProducts(i + 1).size(); j++) {
-                    characteristics.add(getTextFromUnVisibleElement(visibleCharacteristicsOfProducts(i + 1).get(j)).replaceAll("\n","").replace(" ",""));
+                    characteristics.add(getTextFromUnVisibleElement(visibleCharacteristicsOfProducts(i + 1).get(j)).replaceAll("\n", "").replace(" ", ""));
                 }
-                Assert.assertTrue(characteristics.contains(expectedCharacteristic.replaceAll(" ","")));
+                Assert.assertTrue(characteristics.contains(expectedCharacteristic.replaceAll(" ", "")));
                 characteristics.clear();
             }
         }
         return this;
     }
+
+    @Step("presence of TecDoc listing . Category_car_list_page")
+    public Category_car_list_page_Logic presenceOfTecDocListing() {
+        listingOfProductsBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step(" added article number Of product to list. Category_car_list_page")
+    public List<String> addArtNumOfProductToList(int countOfArtNum) {
+        List<String> artNumOfProduct = artNumOfProduct().stream().limit(countOfArtNum).map(n -> n.getText().replaceAll("Artikelnummer: ", "")).collect(Collectors.toList());
+        return artNumOfProduct;
+    }
+
+    @Step("added Product to WishList. Category_car_list_page")
+    public Category_car_list_page_Logic addProductToWishList(int positionOfProduct) {
+        for (int i = 0; i < positionOfProduct; i++) {
+            btnAddedProductToWishList().get(i).scrollIntoView("{block: \"center\"}");
+            checkVisibleBrands();
+            if (popUpSelector().isDisplayed()) {
+                closePopUpSelector().shouldBe(visible).click();
+                popUpSelector().shouldNotBe(visible);
+            }
+            btnAddedProductToWishList().get(i).shouldBe(visible).click();
+            addedProductToWishList().get(i).shouldBe(exist);
+        }
+        return this;
+    }
+
+    @Step("check visible brands. Category_car_list_page")
+    public Category_car_list_page_Logic checkVisibleBrands() {
+        for (int i = 0; i < 2; i++) {
+            visibleBrands().get(i).shouldBe(exist);
+        }
+        return this;
+    }
+
 }

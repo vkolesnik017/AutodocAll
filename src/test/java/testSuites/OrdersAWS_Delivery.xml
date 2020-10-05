@@ -44,7 +44,7 @@
 
     <test name="QC_564_CreatingAwsOrder_WithDangerousGoods">
         <classes>
-            <class name="ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_564_CreatingAwsOrder_WithDangerousGoods"/>
+<!--            <class name="ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_564_CreatingAwsOrder_WithDangerousGoods"/>-->
         </classes>
     </test>
 
@@ -74,7 +74,7 @@
 
     <test name="QC_1125_AddingAutoPartToAwsOrder">
         <classes>
-            <class name="ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_1125_AddingAutoPartToAwsOrder"/>
+<!--            <class name="ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_1125_AddingAutoPartToAwsOrder"/>-->
         </classes>
     </test>
 
@@ -92,7 +92,7 @@
 
     <test name="QC_1128_ChangingCountryOfDeliveryInAwsOrder">
         <classes>
-            <class name="ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_1128_ChangingCountryOfDeliveryInAwsOrder"/>
+<!--            <class name="ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_1128_ChangingCountryOfDeliveryInAwsOrder"/>-->
         </classes>
     </test>
 

@@ -336,4 +336,14 @@ public class LKW_Category_car_list_page {
     SelenideElement titleOfDangerousPopUp() {return $x("//div[@class='popup-dangerous__title']");}
 
     SelenideElement infoTextOfDangerousPopUp() {return $x("//div[@class='popup-dangerous']//p");}
+
+    ElementsCollection btnAddDangerousProductToWishList() {return $$x("//span[@class='dangerous-listing__show-more']/ancestor::li//span[@class='add-to-wishlist title_btn add-article']");}
+
+    ElementsCollection signalWordOfDangerousProductListingView() {return $$x("//div[@class='dangerous-listing__title']");}
+
+    ElementsCollection attributeOfWarningIcon(int positionOfProduct) {return $$x("(//span[@class='dangerous-listing__show-more'])["+positionOfProduct+"]/ancestor::li//div[@class='dangerous-listing__icons']/div");}
+
+    ElementsCollection btnMoreOfDangerousProducts() {return $$x("//span[@class='dangerous-listing__show-more']");}
+
+    ElementsCollection dangerousIconInWarningPopUp() {return $$x("//div[@class='popup-dangerous__icon']").filter(visible);}
 }

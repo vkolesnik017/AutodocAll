@@ -18,10 +18,11 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static mailinator.WebMail.passwordForMail;
 
 public class QC_1884_RegistrationNegativeCase_PasswordRecoveryCheck {
 
-    private String mail = "QC_1884_autotestATD@mailinator.com";
+    private String mail = "QC_1884_autotest@autodoc.si";
     private WebMail webMail = new WebMail();
 
     @BeforeClass
@@ -38,7 +39,7 @@ public class QC_1884_RegistrationNegativeCase_PasswordRecoveryCheck {
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks the registration with an existing e-mail and password recovery check.")
-    public void testRegistrationNegativeCasePasswordRecoveryCheck(String route) throws SQLException {
+    public void testRegistrationNegativeCasePasswordRecoveryCheck(String route) {
         openPage(route);
         new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
@@ -46,8 +47,8 @@ public class QC_1884_RegistrationNegativeCase_PasswordRecoveryCheck {
                 .nextButtonClick()
                 .registrationFromCart(mail);
         new CartAccount_page_Logic().recoveryPassFromPopUpEmailAlreadyExists(mail);
-        webMail.openMail(mail).letterInfo(1).shouldHave(text("moments ago")).shouldHave(text("neues Passwort"));
-        webMail.openLetterInOldMailServiceMailinator(1)
+        webMail.openMail(mail, passwordForMail).subjectLetter(1).shouldHave(text("neues Passwort"));
+        webMail.openLetter(1)
                 .clickLinkRecoveryPasswordInLetter();
     }
 

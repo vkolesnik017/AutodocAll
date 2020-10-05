@@ -9,9 +9,11 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.*;
+import static ATD.CommonMethods.getCurrencyAndVerify;
+import static ATD.CommonMethods.getPriceFromElement;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.sleep;
 import static com.codeborne.selenide.WebDriverRunner.source;
 
 public class CartAllData_page_Logic extends CartAllData_page {
@@ -208,7 +210,8 @@ public class CartAllData_page_Logic extends CartAllData_page {
 
     @Step("Checks for absence Safe Order block for Heavy Loads. CartAllData_page")
     public CartAllData_page_Logic checkAbsenceSafeOrderBlock() {
-        safeOrderBlock().shouldNot(visible);
+        sleep(3000);
+        safeOrderBlock().shouldNotBe(visible);
         return this;
     }
 
@@ -271,9 +274,10 @@ public class CartAllData_page_Logic extends CartAllData_page {
         float roundMin = Float.parseFloat(String.valueOf((formatPriceDOWN)));
         float res = 0.0f;
         if (totalPrice.equals(roundMax)) {
-             res = roundMax;
-        } if (totalPrice.equals(roundMin)) {
-             res = roundMin;
+            res = roundMax;
+        }
+        if (totalPrice.equals(roundMin)) {
+            res = roundMin;
         }
         Assert.assertEquals(res, totalPrice);
         return this;
@@ -296,7 +300,8 @@ public class CartAllData_page_Logic extends CartAllData_page {
         float res = 0.0f;
         if (totalPrice.equals(roundMax)) {
             res = roundMax;
-        } if (totalPrice.equals(roundMin)) {
+        }
+        if (totalPrice.equals(roundMin)) {
             res = roundMin;
         }
         Assert.assertEquals(res, totalPrice);
@@ -322,13 +327,13 @@ public class CartAllData_page_Logic extends CartAllData_page {
         String realPrice;
         if (labelVAT().isDisplayed()) {
             String vat = labelVAT().getText();
-             realPrice = totalOrderPrice().getText().replace("£ ", "").replace(vat, "");
+            realPrice = totalOrderPrice().getText().replace("£ ", "").replace(vat, "");
         } else {
-             realPrice = totalOrderPrice().getText().replace("£ ", "");
+            realPrice = totalOrderPrice().getText().replace("£ ", "");
         }
-            realPrice = realPrice.replaceAll(",", ".");
-            Float totalPrice = Float.parseFloat(realPrice);
-            return totalPrice;
+        realPrice = realPrice.replaceAll(",", ".");
+        Float totalPrice = Float.parseFloat(realPrice);
+        return totalPrice;
     }
 
 
@@ -348,6 +353,9 @@ public class CartAllData_page_Logic extends CartAllData_page {
         }
         if (vat.equals("16")) {
             priseWithVat = (productPrice * 1.16f); // For shop DE
+        }
+        if (vat.equals("21")) {
+            priseWithVat = (productPrice * 1.21f); // For shop BE
         }
         return priseWithVat;
     }
@@ -451,6 +459,13 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return page(CartAddress_page_Logic.class);
     }
 
+    @Step("Transition to page Cart page. CartAllData_page")
+    public Cart_page_Logic clickBtnReturnToCartPage() {
+        sleep(5000);
+        returnToCartPage().click();
+        return page(Cart_page_Logic.class);
+    }
+
     @Step("Check of id {idOfProduct} added product in AllData. CartAllData_page")
     public CartAllData_page_Logic checkOfIdAddedProductInAllData(String idOfProduct) {
         idOfAddedProduct().shouldHave(attribute("data-article_id", idOfProduct));
@@ -479,6 +494,19 @@ public class CartAllData_page_Logic extends CartAllData_page {
     public CartAllData_page_Logic openUpperBlockWithSummary() {
         btnOpenUpperBlockWithSummary().click();
         btnOpenUpperBlockWithSummary().shouldNotBe(visible);
+        return this;
+    }
+
+    @Step("Checks presence safe order price in upper block with summery. CartAllData_page")
+    public CartAllData_page_Logic checkPresenceSafeOrderInUpperBlockWithSummery(String shop) {
+        String priceSO = priceOfSafeOrder().getText();
+        String realPriseSO = priceSO.substring(0, priceSO.indexOf(" "));
+        if (shop.equals("DE") || shop.equals("FR")) {
+            clickSafeOrderCheckbox();
+        }
+        checkThatSafeOrderCheckboxIsSelected();
+        openUpperBlockWithSummary();
+        safeOrderInUpperBlockWithSummery(realPriseSO).shouldBe(visible);
         return this;
     }
 
@@ -525,6 +553,31 @@ public class CartAllData_page_Logic extends CartAllData_page {
             preloader().waitUntil(attribute("style", "display: none;"), 20000);
             Thread.sleep(sleepTime);
         }
+        return this;
+    }
+
+    @Step("compare art number of product. CartAllData_page")
+    public CartAllData_page_Logic compareArtNumOfProduct(String mpnNumOfProduct) {
+        String artNumOfProduct = artNumOfProduct().shouldBe(visible).getText().replace("Artikelnummer: ", "");
+        Assert.assertEquals(mpnNumOfProduct, artNumOfProduct);
+        return this;
+    }
+
+    @Step("Checks product price on site matches price on alldata page including VAT. Product_page")
+    public CartAllData_page_Logic checkProductPriceOnSitesMatchesPriceOnAllDataPageIncludingVat(Float priceWithVatPerAllDataPage, Float priceProductInAlldata) {
+        BigDecimal result = new BigDecimal(priceWithVatPerAllDataPage);
+        BigDecimal formatPriceUp = result.setScale(2, RoundingMode.UP);
+        float roundMax = Float.parseFloat(String.valueOf(formatPriceUp));
+        BigDecimal formatPriceDOWN = result.setScale(2, RoundingMode.FLOOR);
+        float roundMin = Float.parseFloat(String.valueOf((formatPriceDOWN)));
+        float res = 0.0f;
+        if (priceProductInAlldata.equals(roundMax)) {
+            res = roundMax;
+        }
+        if (priceProductInAlldata.equals(roundMin)) {
+            res = roundMin;
+        }
+        Assert.assertEquals(res, priceProductInAlldata);
         return this;
     }
 }

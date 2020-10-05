@@ -38,7 +38,7 @@ public class CartAllData_page {
     }
 
     public SelenideElement freeDeliveryIcon() {
-        return $(byXpath("//*[@class='alldata-bottom']//*[@class='free_icon']"));
+        return $(byXpath("//div[@class='order-summary ']//span[@class='free_icon order-tyres-delivery']"));
     }
 
     SelenideElement labelVAT() {
@@ -79,6 +79,10 @@ public class CartAllData_page {
 
     SelenideElement returnToPageCartAddress() {
         return $x("//div[@class='cart-page-steps']//ul//li[2]//a");
+    }
+
+    SelenideElement returnToCartPage() {
+        return $x("//li[@class='complete link first_step']/a");
     }
 
     // locator only for CH
@@ -138,6 +142,10 @@ public class CartAllData_page {
 
     SelenideElement heavyLoadsShippingCost(){
         return $x("//div[@class='order-summary ']//div[4]//span[2]");
+    }
+
+    SelenideElement safeOrderInUpperBlockWithSummery(String priceSO) {
+        return $x("(//div[@class='order-summary__row']/span[contains(text(),'" + priceSO + "')])[1]");
     }
 
     SelenideElement safeOrderCostFromHeavyLoadsProduct() {
@@ -310,4 +318,6 @@ public class CartAllData_page {
     public SelenideElement preloader() {
         return $(By.cssSelector(".preloader_wrapper"));
     }
+
+    public SelenideElement artNumOfProduct() {return $x("//div[@class='info__nr']");}
 }

@@ -3,6 +3,7 @@ package ATD;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -92,4 +93,24 @@ public class Moto_Category_page {
     ElementsCollection  btnDetailsOfTopProducts() {return $$x("//div[@class='product_desc_table_container']/following-sibling::span");}
 
     ElementsCollection childCategoriesInSideBar() {return $$x("//div[@class='block categories blue topSubCats']//li");}
+
+    ElementsCollection btnAddDangerousProductToWishList() {return $$x("//span[@class='dangerous-listing__show-more']/ancestor::div[@class='rec_products_block']/div[1]");}
+
+    ElementsCollection signalWordOfDangerousProduct() {return $$x("//div[@class='dangerous-listing__title hidden']");}
+
+    ElementsCollection dangerousProducts() {return $$x("//span[@class='dangerous-listing__show-more']/ancestor::div[@class='rec_products_block']");}
+
+    ElementsCollection attributeOfWarningIcon(int positionOfProduct) {return $$x("(//span[@class='dangerous-listing__show-more'])["+positionOfProduct+"]/ancestor::div[@class='rec_prod_info_popup']//div[@class='dangerous-listing__icon']");}
+
+    ElementsCollection labelTitleDangerousProducts() {return $$x("//div[@class='rec_products_block']//span[@class='dangerous-listing__show-more']");}
+
+    ElementsCollection dangerousIconInWarningPopUp() {return $$x("//div[@class='popup-dangerous__icon']").filter(visible);}
+
+    SelenideElement blackBackground() {return $x("//div[@class='overlay black hidden']");}
+
+    SelenideElement warningPopUp() {return $x("//div[@class='popup-dangerous']");}
+
+    SelenideElement titleOfDangerousPopUp() {return $x("//div[@class='popup-dangerous__title']");}
+
+    SelenideElement infoTextOfDangerousPopUp() {return $x("//div[@class='popup-dangerous']//p");}
 }

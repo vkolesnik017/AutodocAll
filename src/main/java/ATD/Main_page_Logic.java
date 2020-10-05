@@ -7,11 +7,9 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.testng.Assert;
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashSet;
-
 import static ATD.CommonMethods.*;
 import static com.codeborne.selenide.CollectionCondition.*;
 import static com.codeborne.selenide.Condition.*;
@@ -127,6 +125,44 @@ public class Main_page_Logic extends Main_page {
     }
 
     // Search bar
+
+    @Step("Checking the sorting of values in the search string by the entered value. Main_page")
+    public Main_page_Logic checksIfHintsInTheSearchFieldMatchByValue() {
+        String[] valueForSearch = {"radlager", "motoröl", "spiegel", "felgen"};
+        for (int i = 0; i < valueForSearch.length; i++) {
+            inputTextInSearchBar(valueForSearch[i]);
+            counterQuantityProductsInSearch().waitUntil(visible, 5000);
+            Boolean hasFullText = false;
+            Boolean hasFirstEnter = false;
+            Boolean hasMiddleEnter = false;
+            for (int a = 0; a < tooltipsToSearch().size(); a++) {
+                int index = tooltipsToSearch().get(a).getText().toLowerCase().indexOf(valueForSearch[i]);
+                String name = tooltipsToSearch().get(a).getText().replaceAll("\n", "").replaceAll("\\d+", "").toLowerCase();
+                if (name.equals(valueForSearch[i])) {
+                    hasFullText = true;
+                    if (hasFirstEnter || hasMiddleEnter) {
+                        Assert.fail("List does not have a given value");
+                    }
+                } else if (index == 0) {
+                    if (!hasFullText || hasMiddleEnter) {
+                        Assert.fail("The line did not start with the given value");
+                    }
+                    hasFirstEnter = true;
+                } else if (index > 0) {
+                    if (!hasFullText || !hasFirstEnter) {
+                        Assert.fail("The value is not in the middle of the line");
+                    }
+                    hasMiddleEnter = true;
+                } else {
+                    Assert.fail("List contains inappropriate value ");
+                }
+            }
+            refresh();
+        }
+        return this;
+    }
+
+
     @Step("Input text in search bar. Main_page")
     public Main_page_Logic inputTextInSearchBar(String text) {
         searchBar().setValue(text);

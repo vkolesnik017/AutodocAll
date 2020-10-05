@@ -8,10 +8,13 @@ import org.testng.Assert;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static ATD.CommonMethods.checkingContainsUrl;
+import static ATD.CommonMethods.getTextFromUnVisibleElement;
 import static com.codeborne.selenide.CollectionCondition.*;
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Condition.empty;
 import static com.codeborne.selenide.Selenide.back;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.WebDriverRunner.url;
@@ -41,7 +44,8 @@ public class LKW_Category_page_Logic extends LKW_Category_page {
     public LKW_Category_page_Logic checkLinkClickInBreadCrumbsBlock() throws SQLException {
         firstLinkClick().checkSuccessfullyLKWCategoriesPageLoading();
         back();
-        secondLinkClick(); checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE","lkw_parent_category"));
+        secondLinkClick();
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "lkw_parent_category"));
 
         return this;
     }
@@ -326,8 +330,71 @@ public class LKW_Category_page_Logic extends LKW_Category_page {
 
     @Step("comparison of product and generic .LKW_Category_page")
     public LKW_Category_page_Logic comparisonOfProductAndGeneric(String titleOfGeneric) {
-        for (int i=0;i<titleOfTopProduct().size();i++){
+        for (int i = 0; i < titleOfTopProduct().size(); i++) {
             titleOfTopProduct().get(i).shouldHave(text(titleOfGeneric));
+        }
+        return this;
+    }
+
+    @Step("presence child categories block in sidebar. LKW_Category_page")
+    public LKW_Category_page_Logic presenceChildCategoriesBlockInSidebar() {
+        topChildCategoryBlockInSidebar().shouldBe(visible);
+        return this;
+    }
+
+    @Step("click On child category .LKW_Category_page")
+    public LKW_Category_page_Logic clickOnChildCategory(int positionOfChildCategory) {
+        linksOfChildCategoriesOfTopChildBlockInSidebar().get(positionOfChildCategory).scrollIntoView("{block: \"center\"}").click();
+        return this;
+    }
+
+
+    @Step("presence of TOP products block .LKW_Category_page")
+    public LKW_Category_page_Logic presenceOfTopProductsBlock() {
+        topProductsBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("get signal word from first dangerous product .LKW_Category_page")
+    public String getSignalWordFromFirstDangerousProduct(int positionOfProduct) {
+        return getTextFromUnVisibleElement(signalWordOfDangerousProduct().get(positionOfProduct));
+    }
+
+
+    @Step("get id of Dangerous product .LKW_Category_page")
+    public String getIdOfDangerousProduct(int positionOfProduct) {
+        return btnAddDangerousProductToWishList().get(positionOfProduct).getAttribute("data-product-id");
+    }
+
+    @Step("get attribute of Warning icon in pop-Up .LKW_Category_page")
+    public List<String> getAttributeOfWarningIconInPopUp(int positionOfProduct) {
+        List<String> attribute = new ArrayList<>();
+        dangerousProducts().get(positionOfProduct).scrollIntoView("{block: \"center\"}").hover();
+        for (int i = 0; i < attributeOfWarningIcon(positionOfProduct + 1).size(); i++) {
+            String attributeFromIcon = attributeOfWarningIcon(positionOfProduct + 1).get(i).shouldBe(visible).getAttribute("style").replace("background-image: url(\"", "").replace("\");", "");
+            String partOfAttribute = attributeFromIcon.replace(attributeFromIcon.substring(attributeFromIcon.lastIndexOf(".")), "");
+            attribute.add(partOfAttribute);
+        }
+        return attribute;
+    }
+
+    @Step("click on dangerous label of product and compare elements. LKW_Category_page")
+    public LKW_Category_page_Logic clickOnDangerousLabelAndCompareElements(int positionOfProduct, String signalWord, List<String> attributeOfWarningIcon) {
+        if (!labelTitleDangerousProducts().get(positionOfProduct).isDisplayed()) {
+            dangerousProducts().get(positionOfProduct).scrollIntoView("{block: \"center\"}").hover();
+        } else {
+            labelTitleDangerousProducts().get(positionOfProduct).shouldBe(visible).click();
+            blackBackground().shouldHave(attribute("style", "display: block;"));
+            warningPopUp().shouldBe(visible).shouldHave(attribute("style", "display: block;"));
+            titleOfDangerousPopUp().shouldBe(visible).shouldHave(exactText(signalWord));
+            infoTextOfDangerousPopUp().shouldNotBe(empty);
+            List<String> attributeOfDangerousIcon = new ArrayList<>();
+            for (int i = 0; i < dangerousIconInWarningPopUp().size(); i++) {
+                String urlFromAttribute = dangerousIconInWarningPopUp().get(i).getAttribute("style").replace("background-image: url(\"", "").replace("\");", "");
+                String partOfAttribute = urlFromAttribute.replace(urlFromAttribute.substring(urlFromAttribute.lastIndexOf(".")), "");
+                attributeOfDangerousIcon.add(partOfAttribute);
+            }
+            Assert.assertEquals(attributeOfDangerousIcon, attributeOfWarningIcon);
         }
         return this;
     }

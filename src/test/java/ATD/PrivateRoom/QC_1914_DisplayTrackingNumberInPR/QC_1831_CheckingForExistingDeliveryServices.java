@@ -19,6 +19,7 @@ import static ATD.CommonMethods.openPage;
 import static ATD.CommonMethods.password;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static mailinator.WebMail.passwordForMail;
 
 public class QC_1831_CheckingForExistingDeliveryServices {
 
@@ -83,13 +84,13 @@ public class QC_1831_CheckingForExistingDeliveryServices {
         Assert.assertEquals(trackingNumFromAWS, trackingNumFromPR);
         String deliveryPageURL = profile_orders_page_logic.checkNumberDeliveryServiceAdded(1)
                 .transitionToDeliveryPageAndGetURL();
-        //TODO отключен по техническим обстоятельствам
-        /*String trackingNumFromMail = mailinator.openEmail(mail)
+
+        String trackingNumFromMail = webMail.openMail(mail, passwordForMail)
                 .checkAndOpenLetterInfoText("Auftrags- / Versandbestätigung, Bestellnummer", orderNumber)
                 .getTrackingNumberFromMail();
-        String deliveryPageUrlFromMail = mailinator.transitionToDeliveryPageAndGetUrlFromMail();
+        String deliveryPageUrlFromMail = webMail.transitionToDeliveryPageAndGetUrlFromMail();
         Assert.assertEquals(trackingNumFromAWS, trackingNumFromMail);
-        Assert.assertEquals(deliveryPageURL, deliveryPageUrlFromMail);*/
+        Assert.assertEquals(deliveryPageURL, deliveryPageUrlFromMail);
         order_aws.openOrderInAwsWithoutLogin()
                 .checkCurrentStatusInOrder("Versendet")
                 .reSaveOrder()

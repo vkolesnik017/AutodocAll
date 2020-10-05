@@ -119,6 +119,24 @@ public class Merchant_page {
     SelenideElement iFrameFieldCVV() {
         return $x("//div[@id='cvv']//iframe");
     }
+    public SelenideElement postPayLabel() {
+        return $x("//img[contains(@src,'postpay')]");
+    }
+    public SelenideElement cartaSiLabel() {
+        return $x("//img[contains(@src,'cs')]");
+    }
+    public SelenideElement discoverLabel() {
+        return $x("//img[contains(@src,'discover')]");
+    }
+    public SelenideElement americanExpressLabel() {
+        return $x("//img[contains(@src,'cards/ae')]");
+    }
+    public SelenideElement visaLabel() {
+        return $x("//img[contains(@src,'visa.png')]");
+    }
+    public SelenideElement masterCardLabel() {
+        return $x("//img[contains(@src,'mc.png')]");
+    }
 
     //Elements from the B2billCreditCard merchant
     SelenideElement b2billSubmitCreditCard() {
@@ -205,6 +223,24 @@ public class Merchant_page {
         resSetBtn().click();
         checkingContainsUrl("/basket/payments");
         return page(CartPayments_page_Logic.class);
+    }
+
+    @Step("Checks presence of payment methods label for required country. Merchant_page")
+    public Merchant_page checksPresencePaymentsMethodLabelForRequiredCountry(String shop) {
+        sleep(5000);
+        if (shop.equals("IT")) {
+            visaLabel().shouldBe(visible);
+            masterCardLabel().shouldBe(visible);
+            postPayLabel().shouldBe(visible);
+            cartaSiLabel().shouldBe(visible);
+        } else {
+            visaLabel().shouldBe(visible);
+            masterCardLabel().shouldBe(visible);
+            discoverLabel().shouldBe(visible);
+            americanExpressLabel().shouldBe(visible);
+        }
+        resSetBtn().click();
+        return this;
     }
 
     //This method is used on the merchant page for payment using the Trustly

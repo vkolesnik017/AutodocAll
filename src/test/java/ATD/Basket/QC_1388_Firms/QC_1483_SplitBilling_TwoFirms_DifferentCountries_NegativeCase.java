@@ -9,6 +9,7 @@ import AWS.Order_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import mailinator.WebMail;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -22,10 +23,11 @@ import static ATD.CommonMethods.password;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.switchTo;
+import static mailinator.WebMail.passwordForMail;
 
 public class QC_1483_SplitBilling_TwoFirms_DifferentCountries_NegativeCase {
 
-    private String email = "qc_1483_autotestEN@mailinator.com", orderNumber;
+    private String email = "QC_1483_autotestEN@autodoc.si", orderNumber;
     private Float totalPrice, totalPriceAWSOrder, totalPriceInEmail;
 
     private CartAddress_page_Logic cartAddress_page_logic = new CartAddress_page_Logic();
@@ -87,14 +89,14 @@ public class QC_1483_SplitBilling_TwoFirms_DifferentCountries_NegativeCase {
                 .checkBillingOrShippingInBlockLogsCompanyNumbers("shipping")
                 .checkErrorStatusInNameErrorColumn("yes")
                 .checkErrorStatusInCityErrorColumn("no");
-        //TODO отключен по техническим обстоятельствам
-        /*totalPriceInEmail = new Mailinator().openEmail("qc_1483_autotestEN@mailinator.com")
+
+        totalPriceInEmail = new WebMail().openMail(email, passwordForMail)
                 .openLetter(1)
                 .checkTextContainingVatPercentageInEmail("incl. 21% VAT")
                 .checkFirstFirmNameInEmail("SPRL Brasserie Cantillon")
                 .checkSecondFirmNameInEmail("yyyy")
                 .getTotalPriceInEmail();
-        Assert.assertEquals(totalPrice, totalPriceInEmail);*/
+        Assert.assertEquals(totalPrice, totalPriceInEmail);
     }
 
 

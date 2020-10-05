@@ -4,10 +4,10 @@ package ATD;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
+import static com.codeborne.selenide.CollectionCondition.sizeLessThanOrEqual;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.Wait;
 import static com.codeborne.selenide.Selenide.page;
@@ -198,7 +198,7 @@ public class Tyres_page_Logic extends Tyres_page {
         @Step("Check top block presence. Tyres_page")
         public Tyres_page_Logic checkTopBlock() {
             topBlock().shouldBe(visible);
-            productsInTopBlock().shouldHaveSize(12);
+            productsInTopBlock().shouldBe(sizeLessThanOrEqual(12));
             return this;
         }
 
@@ -329,4 +329,29 @@ public class Tyres_page_Logic extends Tyres_page {
             secondButtonInTopBrandSlider().click();
             return this;
     }
+
+    @Step("Сhecks the number of identical brands and size tyres in top block. Tyres_page")
+    public Tyres_page_Logic checkingNumberIdenticalBrandAndSizeInTopBlock(int expectedSize) {
+        ArrayList<String> brandAndSizeTyres = new ArrayList<>();
+            for (int i = 0; i < productsInTopBlock().size(); i++) {
+                String nameBrand = brandProductFromTopTyresBlock().get(i).getAttribute("alt");
+                String size = sizeProductFromTopTyresBlock().get(i).getText();
+                brandAndSizeTyres.add(nameBrand);
+                brandAndSizeTyres.add(size);
+            }
+        Collections.sort(brandAndSizeTyres);
+
+            for (int i = 0; i < brandAndSizeTyres.size(); i++) {
+                String name = brandAndSizeTyres.get(i);
+                int quantity = Collections.frequency(brandAndSizeTyres,name);
+
+                if (quantity > expectedSize) {
+                    Assert.fail("Finds more than three brands or size! " + name + " =" + quantity);
+                }
+                System.out.println(name + " (quantity =" + quantity +")");
+            }
+            return this;
+    }
+
+
 }

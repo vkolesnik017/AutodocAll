@@ -34,4 +34,13 @@ public class Category_name_brand_page {
     ElementsCollection artNumOfTopProduct() {return $$x("//div[@class='product-list__item__nummer']");}
 
     ElementsCollection allCharacteristicInPopUpOfTopProducts(int position) {return $$x("(//div[@class='product-list__item__popup'])["+position+"]//ul/li");}
+
+    SelenideElement articleNumberInPopUpOfTopProducts(int position) {
+        return $x("(//div[@class='product-list__item__popup'])["+position+"]//span[contains(text(),'Artikelnummer')]/../span[2]");
+    }
+
+    SelenideElement characteristicZustandInPopUpOfTopProducts(int position) {
+        return $x("(//div[@class='product-list__item__popup'])["+position+"]//span[contains(text(),'Zustand')]/../span[2]");
+    }
+
 }

@@ -22,6 +22,7 @@ public class CatalogCategories_aws {
     private String categoriesInAwsPage;
     private String parentCategoriesInAwsPage;
     private String childCategoriesInAwsPage;
+    private String genericsAwsPage;
 
     public CatalogCategories_aws() throws SQLException {
         this.awsEnv = "https://aws.";
@@ -38,6 +39,7 @@ public class CatalogCategories_aws {
         this.categoriesInAwsPage = awsEnv + new DataBase("ATD").getRouteByRouteName("DE", "categoriesAws");
         this.parentCategoriesInAwsPage = awsEnv + new DataBase("ATD").getRouteByRouteName("DE", "parentCategoriesAws");
         this.childCategoriesInAwsPage = awsEnv + "autodoc.de/" + new DataBase("ATD").getRouteByRouteName("DE", "childCategoriesAws");
+        this.genericsAwsPage = awsEnv +"autodoc.de/" + new DataBase("ATD").getRouteByRouteName("DE", "genericsAws");
     }
 
 
@@ -126,6 +128,11 @@ public class CatalogCategories_aws {
         return $$x("//ul[@class='catalog-table-content-items-item-child ui-sortable']/li[not(contains(@class,'disabled'))]/div/div[5]/input");
     }
 
+    private SelenideElement btnGenerics() {return $x("//button[@class='btn btn-primary btn-modal-generics']");}
+
+    private SelenideElement manageGenericTable() {return $x("//div[@class='modal-content']");}
+
+    private ElementsCollection titleOfGenerics() {return $$x("//tbody[@class='ui-sortable']/tr/td[3]");}
 
     @Step("Open AWS , Login in and open page custom-catalog. CatalogCategories_aws")
     public CatalogCategories_aws openAwsLoginInAndTransitionCustomCatalog() {
@@ -346,6 +353,17 @@ public class CatalogCategories_aws {
         openPage(parentCategoriesInAwsPage);
         List<String> allActiveParentCategoriesAWS = parentCategoriesFromAws().stream().map(n -> n.getAttribute("data-old-value")).collect(Collectors.toList());
         return allActiveParentCategoriesAWS;
+    }
+
+    @Step("Get generics from AWS. CatalogCategories_aws")
+    public List<String> getGenericsFromAws() {
+        new Login_aws().loginInAwsWithOpen();
+        openPage(genericsAwsPage);
+        btnGenerics().shouldBe(visible).click();
+        manageGenericTable().shouldBe(visible);
+      titleOfGenerics().get(0).shouldBe(visible);
+        List<String> genericsFromAws = titleOfGenerics().stream().map(n->n.getText()).collect(Collectors.toList());
+        return genericsFromAws ;
     }
 
 }

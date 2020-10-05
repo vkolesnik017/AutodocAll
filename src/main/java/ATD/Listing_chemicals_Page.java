@@ -254,7 +254,4 @@ public class Listing_chemicals_Page {
         return $x("//div[contains(@class,'js-filter-generic')]//li[3]//input");
     }
 
-
-
-
-}
+ }
