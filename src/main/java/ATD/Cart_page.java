@@ -50,6 +50,14 @@ public class Cart_page {
         return $x("//a[@class='color close_popup']");
     }
 
+    public SelenideElement safeOrderBlock() {
+        return $x("//div[@class='bestelen-block__row']");
+    }
+
+    SelenideElement safeOrderCheckbox() {
+        return $x("//input[@name='security_delivery']");
+    }
+
     // locators only for CH
     SelenideElement closeDeliveryLimitPopupForCH() {
         return $(byCssSelector(".delivery-limit-popup>a"));
@@ -82,6 +90,10 @@ public class Cart_page {
 
     public SelenideElement totalOrderPrice() {
         return $(byXpath("//*[@class='order-summary__row order-summary__row--total']/span[2]"));
+    }
+
+    public SelenideElement orderSummeryBlock() {
+        return $x("//div[@class='order-summary ']");
     }
 
     public SelenideElement pfandPriceInTotalPriceBlock() {

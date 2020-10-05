@@ -210,7 +210,8 @@ public class CartAllData_page_Logic extends CartAllData_page {
 
     @Step("Checks for absence Safe Order block for Heavy Loads. CartAllData_page")
     public CartAllData_page_Logic checkAbsenceSafeOrderBlock() {
-        safeOrderBlock().shouldNot(visible);
+        sleep(3000);
+        safeOrderBlock().shouldNotBe(visible);
         return this;
     }
 
@@ -456,6 +457,13 @@ public class CartAllData_page_Logic extends CartAllData_page {
         sleep(5000);
         returnToPageCartAddress().click();
         return page(CartAddress_page_Logic.class);
+    }
+
+    @Step("Transition to page Cart page. CartAllData_page")
+    public Cart_page_Logic clickBtnReturnToCartPage() {
+        sleep(5000);
+        returnToCartPage().click();
+        return page(Cart_page_Logic.class);
     }
 
     @Step("Check of id {idOfProduct} added product in AllData. CartAllData_page")

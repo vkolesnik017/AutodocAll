@@ -128,47 +128,35 @@ public class Main_page_Logic extends Main_page {
 
     @Step("Checking the sorting of values in the search string by the entered value. Main_page")
     public Main_page_Logic checksIfHintsInTheSearchFieldMatchByValue() {
-        ArrayList<String> completeMatch = new ArrayList<>();
-        ArrayList<String> startsWithRequest = new ArrayList<>();
-        ArrayList<String> containsRequestInMiddle = new ArrayList<>();
         String[] valueForSearch = {"radlager", "motoröl", "spiegel", "felgen"};
         for (int i = 0; i < valueForSearch.length; i++) {
             inputTextInSearchBar(valueForSearch[i]);
-            counterQuantityProductsInSearch().waitUntil(visible,5000);
+            counterQuantityProductsInSearch().waitUntil(visible, 5000);
+            Boolean hasFullText = false;
+            Boolean hasFirstEnter = false;
+            Boolean hasMiddleEnter = false;
             for (int a = 0; a < tooltipsToSearch().size(); a++) {
                 int index = tooltipsToSearch().get(a).getText().toLowerCase().indexOf(valueForSearch[i]);
                 String name = tooltipsToSearch().get(a).getText().replaceAll("\n", "").replaceAll("\\d+", "").toLowerCase();
                 if (name.equals(valueForSearch[i])) {
-                    completeMatch.add(name);
+                    hasFullText = true;
+                    if (hasFirstEnter || hasMiddleEnter) {
+                        Assert.fail("List does not have a given value");
+                    }
                 } else if (index == 0) {
-                    startsWithRequest.add(name);
+                    if (!hasFullText || hasMiddleEnter) {
+                        Assert.fail("The line did not start with the given value");
+                    }
+                    hasFirstEnter = true;
                 } else if (index > 0) {
-                    containsRequestInMiddle.add(name);
+                    if (!hasFullText || !hasFirstEnter) {
+                        Assert.fail("The value is not in the middle of the line");
+                    }
+                    hasMiddleEnter = true;
                 } else {
                     Assert.fail("List contains inappropriate value ");
                 }
             }
-            for (int x = 0; x < completeMatch.size(); x++) {
-                String nameIndex = completeMatch.get(x);
-                if (!nameIndex.equals(valueForSearch[i])) {
-                    Assert.fail("List does not have a given value ");
-                } else if (completeMatch.size() > 1) {
-                    Assert.fail("List has more than one value");
-                }
-            }
-            for (int z = 0; z < startsWithRequest.size(); z++) {
-                int index = startsWithRequest.get(z).indexOf(valueForSearch[i]);
-                if (index == -1 || index > 0) {
-                    Assert.fail("the line did not start with the given value");
-                }
-            }
-            for (int c = 0; c < containsRequestInMiddle.size(); c++) {
-                int index = containsRequestInMiddle.get(c).indexOf(valueForSearch[i]);
-                if (index == -1 || index == 0) {
-                    Assert.fail("The value is not in the middle of the line");
-                }
-            }
-            completeMatch.clear(); startsWithRequest.clear(); containsRequestInMiddle.clear();
             refresh();
         }
         return this;
