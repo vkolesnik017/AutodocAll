@@ -44,6 +44,10 @@ public class ProductSearch_aws {
         return $$(byXpath("//*[@id='order_products_list']//tr/td[3]"));
     }
 
+    private SelenideElement articleProductInTable() {
+        return $(byXpath("//*[@id='order_products_list']//tr/td[3]"));
+    }
+
     private SelenideElement brandProductsInTable() {
         return $(byXpath("//*[@id='order_products_list']//tr/td[4]"));
     }
@@ -71,6 +75,10 @@ public class ProductSearch_aws {
     private SelenideElement productListBlock() {return $(byId("order_products_list"));}
 
     private ElementsCollection titleOfProductsInTable() {return $$x("//table[@id='order_products_list']//td[6]/a");}
+
+    private SelenideElement depositProductsInTable() {
+        return $x("//*[@id='order_products_list']//tr/td[15]/span");
+    }
 
     @Step
     public ProductSearch_aws openProductSearchPageAndLogin() {
@@ -150,4 +158,23 @@ public class ProductSearch_aws {
         titleOfProductsInTable().get(positionOfProduct).shouldBe(visible).click();
         return page(ProductCard_aws.class);
     }
+
+    @Step("Set value in Search field. ProductSearch_aws")
+    public ProductSearch_aws setValueInSearchField(String value) {
+        searchField().setValue(value);
+        searchBtn().click();
+        return this;
+    }
+
+    @Step("Get value from deposit field. ProductSearch_aws")
+    public String getValueFromDepositField() {
+        return depositProductsInTable().getText();
+    }
+
+    @Step("Get ArtNum from Article field. ProductSearch_aws")
+    public  String getArtNumFromArticleField() {
+        return articleProductInTable().getText();
+    }
+
+
 }

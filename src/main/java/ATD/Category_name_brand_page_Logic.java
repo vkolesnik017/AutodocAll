@@ -1,11 +1,12 @@
 package ATD;
 
+import AWS.ProductSearch_aws;
+import Common.DataBase;
 import io.qameta.allure.Step;
 import org.testng.Assert;
-
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import static ATD.CommonMethods.getTextFromUnVisibleElement;
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.visible;
@@ -98,5 +99,34 @@ public class Category_name_brand_page_Logic extends Category_name_brand_page {
 
         return this;
     }
+
+    @Step("Checks the lack of characterization Zustand for 3K brand products with collateral in mini cards. Category_name_brand_page")
+    public Category_name_brand_page_Logic checkLackCharacterizationZustandFor3KBrandProducts() throws SQLException {
+        ProductSearch_aws productSearch_aws = new ProductSearch_aws();
+        ArrayList<String> article = new ArrayList<>();
+        ArrayList<String> deposit = new ArrayList<>();
+        for (int i = 0; i < artNumOfTopProduct().size(); i++) {
+            artNumOfTopProduct().get(i).hover();
+            String artNum =  artNumOfTopProduct().get(i).getText().replaceAll("\\D+", "");
+            article.add(artNum);
+            titleOfTopProductsBlock().hover();
+        }
+        System.out.println(article);
+
+        productSearch_aws.openProductSearchPageAndLogin();
+            for (int a = 0; a < article.size(); a++) {
+                productSearch_aws.setValueInSearchField(article.get(a));
+               String articleAws = productSearch_aws.getArtNumFromArticleField();
+               String depositAws = productSearch_aws.getValueFromDepositField();
+               deposit.add(articleAws + " " + depositAws);
+            }
+        System.out.println(deposit);
+
+            open(new DataBase().getFullRouteByRouteAndSubroute("prod","DE", "main", "category_name_brand9"));
+
+
+        return this;
+    }
+
 
 }
