@@ -44,6 +44,7 @@ public class QC_1876_DefaultCheckboxIsSafeOrder {
         float totalPriceInAllData = new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
+                .checkAbsenceSafeOrderBlock()
                 .nextButtonClick()
                 .signIn(mail, password)
                 .fillAllFieldsAndDefaultPostalCode("autotest", "autotest", "autotest", "autotest", shop,"autotest","autotest")
