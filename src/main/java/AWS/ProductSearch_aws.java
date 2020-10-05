@@ -3,10 +3,8 @@ package AWS;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byXpath;
@@ -169,11 +167,6 @@ public class ProductSearch_aws {
     @Step("Get value from deposit field. ProductSearch_aws")
     public String getValueFromDepositField() {
         return depositProductsInTable().getText();
-    }
-
-    @Step("Get ArtNum from Article field. ProductSearch_aws")
-    public  String getArtNumFromArticleField() {
-        return articleProductInTable().getText();
     }
 
 
