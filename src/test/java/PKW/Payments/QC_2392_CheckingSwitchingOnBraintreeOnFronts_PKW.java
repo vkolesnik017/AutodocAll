@@ -64,7 +64,7 @@ public class QC_2392_CheckingSwitchingOnBraintreeOnFronts_PKW {
                 .checkPresenceOrderHistoryBlock()
                 .checkAndOpenOrderWithExpectedData()
                 .checkPaymentMethodInOrder("Braintree")
-                .checkCurrentStatusInOrder("abgebrochene Braintree")
+                .checkCurrentStatusInOrder("Abgebrochene")
                 .reSaveOrder()
                 .checkCurrentStatusInOrder("Testbestellungen");
     }

@@ -65,7 +65,7 @@ public class QC_2156_Sofort_ATD {
                 .checkPresenceOrderHistoryBlock()
                 .checkAndOpenOrderWithExpectedData()
                 .checkPaymentMethodInOrder("Sofortüberweisung")
-                .checkCurrentStatusInOrder("abgebrochen Sofortüberweisung")
+                .checkCurrentStatusInOrder("Abgebrochen")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceAllData, totalPriceOrderAws);
         float totalPriceOrderAwsAfterReSave = new Order_aws().reSaveOrder()
