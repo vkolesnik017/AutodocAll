@@ -11,12 +11,25 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.List;
 
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_2061_RidexPrioritizationInTecDocListing {
+    List<String> expectedGenerics = Arrays.asList("Luftmassenmesser",
+            "Impulsgeber, Kurbelwelle", "Sensor, Nockenwellenposition", "Sensor, Kühlmitteltemperatur",
+            "Sensor, Ladedruck", "Sensor, Zündimpuls", "Sensor, Fahrpedalstellung",
+            "Klopfsensor", "Sensor, Ansauglufttemperatur", "Drehzahlsensor, Motormanagement",
+            "Öldruckschalter", "Steuergerät, Motormanagement", "Luftmengenmesser",
+            "Sensor, Kühlmitteltemperatur", "Sensor, Ladedruck", "Sensor, Öldruck",
+            "Sensor, Öltemperatur", "Steuergerät, Kraftstoffeinspritzung", "Sensor, Kühlmitteltemperatur",
+            "Steuergerät, Zündanlage", "Sensor, Kühlmitteltemperatur", "Steuergerät, Einspritzanlage",
+            "Schalter, Kupplungsbetätigung (Motorsteuerung)", "Sensor, Öltemperatur / -druck", "Gehäuse, Luftmengenmesser",
+            "Schalter, Bremsbetätigung (Motorsteuerung)", "Sensor, Zylinderkopftemperatur", "Lambdasondensatz",
+            "Elektromotor, Gebläse Steuergerätebox");
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -34,7 +47,7 @@ public class QC_2061_RidexPrioritizationInTecDocListing {
     public void testCheckRidexPrioritizationInTecDocListing(String route) {
         openPage(route);
                 new Category_car_list_page_Logic()
-                .checkTecDocListing();
+                .checkTecDocListing(expectedGenerics);
     }
 
     @AfterMethod

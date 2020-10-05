@@ -14,6 +14,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.sql.SQLException;
+
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
@@ -31,8 +33,8 @@ public class QC_2067_CheckNotifyOfStockFormValidationForOutOfStockProducts {
     }
 
     @DataProvider(name = "route")
-    Object[] dataProvider() {
-        return new SetUp("ATD").setUpShop("prod", "DE");
+    Object[] dataProvider() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres");
     }
 
     @Owner(value = "Kolesnik")
@@ -42,12 +44,14 @@ public class QC_2067_CheckNotifyOfStockFormValidationForOutOfStockProducts {
     public void testCheckNotifyOfStockFormValidationForOutOfStockProducts(String route) {
         new ProductSearch_aws().openProductSearchPageAndLogin().selectCategory("100001")
                 .selectFirstSearchFilter("no").selectAvailabilityAtSupplierFilter("no").clickOnSearchButton().goToProductCartByClickOnTitle(0);
-        String urlOfProductPage = "https://www.autodoc.de/reifen/" + productPageAws.getTitleOfBrandProduct() + "-" + productPageAws.getEanOfProduct() + "-" + productPageAws.getArtNumOfProduct();
-        openPage(urlOfProductPage);
+        String brand = productPageAws.getTitleOfBrandProduct();
+        String ean = productPageAws.getEanOfProduct();
+        String artNum = productPageAws.getArtNumOfProduct();
+        openPage(route + "/" + brand + "-" + ean + "-" + artNum);
         String fullEanNumberOfProduct = tyreItemPage.getFullEanNumberOfProduct();
         tyreItemPage.presenceOfHorizontalSelector().goToSizeListingByClickOnBreadCrumbLink(1).appearsOfOutOfStockProductPopUp(fullEanNumberOfProduct)
                 .setValueInEmailFieldOfPopUp(email).clickOnGetMailingLabel().clickOnBtnSubscription();
-        openPage(urlOfProductPage);
+        openPage(route + "/" + brand + "-" + ean + "-" + artNum);
         tyreItemPage.presenceOfHorizontalSelector().goToBrandSizeListingByClickOnBreadCrumbLink(2).appearsOfOutOfStockProductPopUp(fullEanNumberOfProduct)
                 .setValueInEmailFieldOfPopUp(email).clickOnGetMailingLabel().clickOnBtnSubscription();
         webMailPage.openMail(email, passwordForMail);

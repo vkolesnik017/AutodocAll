@@ -4,6 +4,7 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
 class Category_car_list_page {
@@ -92,4 +93,24 @@ class Category_car_list_page {
         return $$x("(//div[@class='about'])[" + position + "]//ul/li");
     }
 
-  }
+    ElementsCollection btnAddedProductToWishList() {
+        return $$x("//div[@class='price_box']/span");
+    }
+
+    SelenideElement popUpSelector() {
+        return $x("//div[@class='new_popup popup_content']");
+    }
+
+    SelenideElement closePopUpSelector() {
+        return $x("//a[@class='back']");
+    }
+
+    ElementsCollection visibleBrands() {
+        return $$x("//ul[@class='branded-slider slick-initialized slick-slider']//li").filter(visible);
+    }
+
+    ElementsCollection addedProductToWishList() {
+        return $$x("//span[@class='add-to-wishlist title_btn add-to-wishlist--added remove-article']");
+    }
+
+}
