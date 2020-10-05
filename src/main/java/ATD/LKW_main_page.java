@@ -239,7 +239,7 @@ public class LKW_main_page {
     }
 
     SelenideElement topProductsBlock() {
-        return $x("//div[@class='truck-home-top-products']");
+        return $x("//*[self::div[@class='truck-home-top-products'] or self::div[@class='truck-car-parts-top-product']]");
     }
 
     ElementsCollection productsInTopBlock() {
