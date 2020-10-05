@@ -68,7 +68,7 @@ public class QC_2168_PayPal_ATD {
                 .checkPresenceOrderHistoryBlock()
                 .checkAndOpenOrderWithExpectedData()
                 .checkPaymentMethodInOrder("PayPal")
-                .checkCurrentStatusInOrder("abgebrochene PayPal-Bestellungen")
+                .checkCurrentStatusInOrder("Abgebrochene")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceAllData, totalPriceOrderAws);
         float totalPriceOrderAwsAfterReSave = new Order_aws().reSaveOrder()

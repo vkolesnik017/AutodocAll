@@ -68,7 +68,7 @@ public class QC_2472_Ideal_PKW {
                 .checkPresenceOrderHistoryBlock()
                 .checkAndOpenOrderWithExpectedData()
                 .checkPaymentMethodInOrder("Ideal - Be2bill")
-                .checkCurrentStatusInOrder("abgebrochene Be2bill")
+                .checkCurrentStatusInOrder("Abgebrochene")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceAllData, totalPriceOrderAws);
         float totalPriceOrderAwsAfterReSave = new Order_aws().reSaveOrder()

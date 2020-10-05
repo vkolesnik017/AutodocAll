@@ -71,7 +71,7 @@ public class QC_2466_EPS_PKW {
                 .checkPresenceOrderHistoryBlock()
                 .checkAndOpenOrderWithExpectedData()
                 .checkPaymentMethodInOrder("EPS Bank")
-                .checkCurrentStatusInOrder("abgebrochene EPS")
+                .checkCurrentStatusInOrder("Abgebrochene")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceAllData, totalPriceOrderAws);
         float totalPriceOrderAwsAfterReSave = new Order_aws().reSaveOrder()

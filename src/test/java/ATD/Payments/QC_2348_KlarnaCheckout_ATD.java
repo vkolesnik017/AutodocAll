@@ -67,7 +67,7 @@ public class QC_2348_KlarnaCheckout_ATD {
                 .checkPresenceOrderHistoryBlock()
                 .checkAndOpenOrderWithExpectedData()
                 .checkPaymentMethodInOrder("Klarna Checkout")
-                .checkCurrentStatusInOrder("abgebrochene Klarna Checkout")
+                .checkCurrentStatusInOrder("Abgebrochene")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceAllData, totalPriceOrderAws);
         float totalPriceOrderAwsAfterReSave = new Order_aws().reSaveOrder()
