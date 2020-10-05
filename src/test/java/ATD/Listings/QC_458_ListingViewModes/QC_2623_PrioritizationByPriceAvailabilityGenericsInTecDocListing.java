@@ -1,5 +1,6 @@
 package ATD.Listings.QC_458_ListingViewModes;
 
+import ATD.Category_car_list_page_Logic;
 import AWS.CatalogCategories_aws;
 import Common.DataBase;
 import Common.SetUp;
@@ -39,6 +40,8 @@ public class QC_2623_PrioritizationByPriceAvailabilityGenericsInTecDocListing {
     public void testCheckPrioritizationByPriceAvailabilityGenericsInTecDocListing(String route) throws SQLException {
         genericsAws = new CatalogCategories_aws("prod").getGenericsFromAws();
         openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "category_car_list47"));
+        new Category_car_list_page_Logic()
+                .checkTecDocListing(genericsAws);
 
     }
 
