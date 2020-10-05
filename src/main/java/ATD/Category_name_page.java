@@ -45,4 +45,6 @@ public class Category_name_page {
     SelenideElement titleOfDangerousPopUp() {return $x("//div[@class='popup-dangerous__title']");}
 
     SelenideElement infoTextOfDangerousPopUp() {return $x("//div[@class='popup-dangerous']//p");}
+
+    ElementsCollection visibleTopProducts() {return $$x("//div[@class='product-list__item active']").filter(visible);}
 }

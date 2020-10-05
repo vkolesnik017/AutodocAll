@@ -128,6 +128,7 @@
             <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2362_ElementsOfWishListWhenUserIsNotLoggedIn"/>
             <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2365_ElementsOfWishlistWhenUserIsLoggedIn"/>
             <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2366_CompareElementsOfProductInListingAndWishList"/>
+            <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2368_SavingProductInWishListAfterCreatingNewUser"/>
             <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2369_PresenceNumberOfAddedProductsOnWishlistIcon"/>
             <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2370_RemoveProductsFromWishList"/>
             <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2371_PresencePopUpAfterClickOnRemoveAllProducts"/>

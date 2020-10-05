@@ -100,6 +100,15 @@ public class Category_name_page_Logic extends Category_name_page {
             artNumOfFirstTopProduct = visibleArtNumOfTopProduct().get(0).getText();
             forwardOfTopBrandsBlock().click();
             visibleArtNumOfTopProduct().get(0).shouldNotHave(exactText(artNumOfFirstTopProduct));
+            checkOfVisibleTopProducts();
+        }
+        return this;
+    }
+
+    @Step("check of visible TOP products. Category_name_page")
+    public Category_name_page_Logic checkOfVisibleTopProducts() {
+        for (int i=0; i<visibleTopProducts().size();i++){
+            visibleTopProducts().get(i).shouldBe(visible);
         }
         return this;
     }

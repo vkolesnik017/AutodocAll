@@ -42,7 +42,7 @@ public class QC_78_TransitionFromProductBLockToProductPage {
 
     @DataProvider(name = "routesMain", parallel = true)
     Object[] dataProviderMain() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_main,lkw_maker_car_list2,lkw_category_car_list11");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_main,lkw_category_car_list11,lkw_maker_car_list2");
     }
 
     @Test(dataProvider = "routesMain")
@@ -110,6 +110,7 @@ public class QC_78_TransitionFromProductBLockToProductPage {
                 .transitionToProductPageByClickOnTitleOfTopProduct(urlOfProduct)
                 .transitionToProductPageByClickOnLinkDetails(urlOfProduct);
     }
+
     @AfterMethod
     public void close() {
         closeWebDriver();

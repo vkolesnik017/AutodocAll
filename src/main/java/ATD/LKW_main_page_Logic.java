@@ -506,9 +506,9 @@ public class LKW_main_page_Logic extends LKW_main_page {
         if (!imageOfTopProductWithSelectedTitle("MANN-FILTER").isDisplayed()) {
             forwardLinkOfTopBLock().click();
         }
-        imageOfTopProductWithSelectedTitle("MANN-FILTER").shouldBe(visible).hover();
+        topProductWithSelectedTitle("MANN-FILTER").shouldBe(visible).hover();
         additionInfoBlockOfTopProductWithSelectedTitle("MANN-FILTER").shouldBe(visible);
-        linkDetailsWithSelectedTitle("MANN-FILTER").scrollIntoView("{block: \"end\"}").click();
+        linkDetailsWithSelectedTitle("MANN-FILTER").shouldBe(visible).click();
         return page(LKW_Product_page_Logic.class);
     }
 
