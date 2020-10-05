@@ -65,7 +65,7 @@ public class QC_2467_Klarna_PKW {
                 .checkPresenceOrderHistoryBlock()
                 .checkAndOpenOrderWithExpectedData()
                 .checkPaymentMethodInOrder("Klarna")
-                .checkCurrentStatusInOrder(": abgebrochen Klarna")
+                .checkCurrentStatusInOrder("Abgebrochen")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceAllData, totalPriceOrderAws);
         float totalPriceOrderAwsAfterReSave = new Order_aws().reSaveOrder()

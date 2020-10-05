@@ -29,6 +29,7 @@ public class QC_2450_CheckDisplayingAndClickByDangerousProductsBlock {
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
     }
+
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
         return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category6");
@@ -101,7 +102,6 @@ public class QC_2450_CheckDisplayingAndClickByDangerousProductsBlock {
         new ProductCard_aws(idOfDangerousProduct).openProductCardPageAndLogin().presenceOfDangerousIconBlock().compareElementsOfDangerousProduct(attributeOfWarningIconInPopUp, signalWord);
 
     }
-
     @DataProvider(name = "routesChemicals", parallel = true)
     Object[] dataProviderChemicals() throws SQLException {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "index_chemicals");

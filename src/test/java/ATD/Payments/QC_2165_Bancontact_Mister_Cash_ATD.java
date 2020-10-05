@@ -70,7 +70,7 @@ public class QC_2165_Bancontact_Mister_Cash_ATD {
                 .checkPresenceOrderHistoryBlock()
                 .checkAndOpenOrderWithExpectedData()
                 .checkPaymentMethodInOrder("Mister Cash - Be2bill")
-                .checkCurrentStatusInOrder("abgebrochene Be2bill")
+                .checkCurrentStatusInOrder("Abgebrochene")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceAllData, totalPriceOrderAws);
         float totalPriceOrderAwsAfterReSave = new Order_aws().reSaveOrder()
