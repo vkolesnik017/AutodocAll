@@ -365,4 +365,8 @@ public class Product_page {
     SelenideElement blockWithReviewsMessage() {
         return $x("//*[@class='product-feedback_wrap_comments']");
     }
+
+    SelenideElement closePopUpButton() {
+        return $x("//*[@class='popup-car-selection__close']");
+    }
 }
