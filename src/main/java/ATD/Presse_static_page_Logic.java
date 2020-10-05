@@ -1,15 +1,16 @@
 package ATD;
 
-import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Condition.visible;
+import static org.testng.Assert.assertEquals;
 
 public class Presse_static_page_Logic extends Presse_static_page {
 
@@ -55,15 +56,33 @@ public class Presse_static_page_Logic extends Presse_static_page {
         return this;
     }
 
-    @Step("checking the image on the page. Presse_static_page")
-    public Presse_static_page_Logic checkingTheImageOnThePage() {
-        List<SelenideElement> locatorsImage = new ArrayList<>();
-        locatorsImage.add(new Presse_static_page().atdHilftImage());
-        locatorsImage.add(new Presse_static_page().presseFirstPhoto());
-        locatorsImage.add(new Presse_static_page().presseSecondPhoto());
+    @Step("Gets the status of the photo code. Presse_static_page")
+    public Presse_static_page_Logic getStatusPhotoCod() throws IOException {
+        if (pressePhotos().isDisplayed()) {
+            String linkInsideImage = pressePhotos().getAttribute("src");
+            URL url = new URL(linkInsideImage);
+            HttpURLConnection http = (HttpURLConnection) url.openConnection();
+            http.setInstanceFollowRedirects(true);
+            int responseCode = http.getResponseCode();
+            assertEquals(responseCode, 200);
+        }
+        return this;
+    }
+
+    @Step("Gets the status of the image code. Presse_static_page")
+    public Presse_static_page_Logic getStatusImageCod() throws IOException {
+        if (atdHilftImage().isDisplayed()) {
+            String linkInsideImage = atdHilftImage().getAttribute("src");
+            URL url = new URL(linkInsideImage);
+            HttpURLConnection http = (HttpURLConnection) url.openConnection();
+            http.setInstanceFollowRedirects(true);
+            int responseCode = http.getResponseCode();
+            assertEquals(responseCode, 200);
+        }
         return this;
     }
 }
+
 
 
 

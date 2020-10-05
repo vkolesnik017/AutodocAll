@@ -46,12 +46,8 @@ class Presse_static_page {
         return $(By.xpath("//*[@class='press-inform__persone'][1]"));
     }
 
-    SelenideElement presseFirstPhoto() {
-        return $(By.xpath("//img[@alt='press_person_alt']"));
-    }
-
-    SelenideElement presseSecondPhoto() {
-        return $(By.xpath("//img[@alt='press_person_2_alt']"));
+    SelenideElement pressePhotos() {
+        return $(By.xpath("//*[@class='press-inform__persone']//div//img"));
     }
 
     SelenideElement presseSecondPersonBlock() {
