@@ -63,7 +63,7 @@ public class QC_2351_Przelewy24_ATD {
                 .checkPresenceOrderHistoryBlock()
                 .checkAndOpenOrderWithExpectedData()
                 .checkPaymentMethodInOrder("Przelewy24")
-                .checkCurrentStatusInOrder("abgebrochene Przelewy24")
+                .checkCurrentStatusInOrder("Abgebrochene")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceAllData, totalPriceOrderAws);
         float totalPriceOrderAwsAfterReSave = new Order_aws().reSaveOrder()

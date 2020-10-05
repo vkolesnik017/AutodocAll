@@ -68,7 +68,7 @@ public class QC_2465_Sofort_PKW {
                 .checkPresenceOrderHistoryBlock()
                 .checkAndOpenOrderWithExpectedData()
                 .checkPaymentMethodInOrder("Sofortüberweisung")
-                .checkCurrentStatusInOrder("abgebrochen Sofortüberweisung")
+                .checkCurrentStatusInOrder("Abgebrochen")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceAllData, totalPriceOrderAws);
         float totalPriceOrderAwsAfterReSave = new Order_aws().reSaveOrder()

@@ -17,6 +17,7 @@
             <class name="ATD.General_Common.QC_1554_Footer.QC_1567_TransitionFromBlockOfSocialNetworks"/>
             <class name="ATD.General_Common.QC_1554_Footer.QC_1568_PresenceOfTextBlocks"/>
             <class name="ATD.General_Common.QC_1554_Footer.QC_1566_Pop_upErrorAbutNon_confirmedNewsletterSubscription"/>
+            <class name="ATD.General_Common.QC_1554_Footer.QC_2436_PresenceTheElementsOnTheSocialNetworksBlock"/>
         </classes>
     </test>
 
