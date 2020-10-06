@@ -4,8 +4,7 @@ package ATD;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Selectors.byCssSelector;
-import static com.codeborne.selenide.Selectors.byXpath;
+import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
 public class Cart_page {
@@ -213,4 +212,15 @@ public class Cart_page {
     SelenideElement listOfAddedProductsBlock() {return $x("//div[@class='cart-page-listing']");}
 
     ElementsCollection listOfAddedProducts() {return $$x("//div[@class='cart-page-listing']//tr");}
+
+    SelenideElement btnAddProductToWishList() {return $(byId("add-all-wishlist"));}
+
+    SelenideElement successAddedProductToWishListPopUp() {return $x("//div[@class='popup--page popup-success-add-all-wishlist']");}
+
+    SelenideElement btnCloseSuccessAddedProductToWishListPopUp() {return $x("//a[@class='color close_popup']");}
+
+    ElementsCollection labelAddProductToWishList() {return $$x("//span[@class='add-to-wishlist add-article']");}
+
+    ElementsCollection btnRemoveProduct() { return $$x("//a[@class='delBtn']");
+    }
 }
