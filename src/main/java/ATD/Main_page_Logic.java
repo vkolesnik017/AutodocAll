@@ -1232,13 +1232,10 @@ public class Main_page_Logic extends Main_page {
 
     @Step("Checking the changing the color of the text in the Social Network Block. Main_page")
     public Main_page_Logic checkingChangingTheColor() {
+        actions().moveToElement(blockLinkUnderTheSocialNetworksBlock().scrollIntoView("{block: \"center\"}").waitUntil(visible, 6000));
         for (int i = 0; i < 3; i++) {
-            linksUnderTheSocialNetworksBlock().get(i).scrollIntoView(false).waitUntil(visible, 4000)
-                    .hover()
-                    .shouldHave(cssValue("color", "rgba(244, 125, 47, 1)"));
+            linksUnderTheSocialNetworksBlock().get(i).hover().shouldHave(cssValue("color", "rgba(244, 125, 47, 1)"));
         }
-        textBigBlockSocialNetworks().shouldBe(visible);
-        Assert.assertFalse(textBigBlockSocialNetworks().text().isEmpty());
         return this;
     }
 }
