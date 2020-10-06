@@ -711,7 +711,7 @@ public class Main_page {
     }
 
     ElementsCollection linksUnderTheSocialNetworksBlock() {
-        return $$x("//*[@class='link_arrow link ga-click']");
+        return $$x("//*[@class='footer__social']//*[@class='link_arrow link ga-click']");
     }
 
     SelenideElement blockLinkUnderTheSocialNetworksBlock() {
