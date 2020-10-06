@@ -862,18 +862,17 @@ public class Product_page_Logic extends Product_page {
     }
 
     @Step("Get price without VAT. Product_page")
-    public Float getPriceWithoutVAT(String vat) {
-        Float productPrice = getProductPrice();
-        float priseWithVat = 0.0f;
-        if (vat.equals("20")) {
-            priseWithVat = (productPrice / 1.2f); // For shop EN
-        }
-        if (vat.equals("16")) {
-            priseWithVat = (productPrice / 1.16f); // For shop DE
-        }
+    public Float getExactPriceWithoutVAT(String vat) {
+        float x = 1;
+        float priseWithoutVat = 0.0f;
+        float oldPrice = Float.parseFloat(priceWithoutDiscount().getText().replaceAll("[^0-9,]", "").replaceAll(",", "."));
+        float discountSum = Float.parseFloat(discountSum().getText().replaceAll("\\D", ""));
         if (vat.equals("21")) {
-            priseWithVat = (productPrice / 1.21f); // For shop BE
+            float percentDiscount = discountSum / 100f;
+            float balanceOfPercent = x - percentDiscount;
+            float productPrice = balanceOfPercent * oldPrice;
+            priseWithoutVat = productPrice / 1.21f;
         }
-        return priseWithVat;
+        return priseWithoutVat;
     }
 }
