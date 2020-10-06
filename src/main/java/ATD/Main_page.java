@@ -4,6 +4,7 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -716,5 +717,8 @@ public class Main_page {
 
     SelenideElement blockLinkUnderTheSocialNetworksBlock() {
         return $x("//*[@class='footer__social']");
+    }
+    ElementsCollection allLinksInFooter() {
+        return $$x("//*[@class='footer__links']//a").filter(visible);
     }
 }

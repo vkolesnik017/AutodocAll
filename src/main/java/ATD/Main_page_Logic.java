@@ -1235,9 +1235,16 @@ public class Main_page_Logic extends Main_page {
         actions().moveToElement(blockLinkUnderTheSocialNetworksBlock().scrollIntoView("{block: \"center\"}").waitUntil(visible, 6000));
         linksUnderTheSocialNetworksBlock().shouldHave(size(3));
         for (int i = 0; i < linksUnderTheSocialNetworksBlock().size(); i++) {
-            linksUnderTheSocialNetworksBlock().get(i).hover();
-            sleep(4000);
-            linksUnderTheSocialNetworksBlock().get(i).shouldHave(cssValue("color", "rgba(244, 125, 47, 1)"));
+            checkingPresenceAllLinksFooter();
+            linksUnderTheSocialNetworksBlock().get(i).hover().shouldHave(cssValue("color", "rgba(244, 125, 47, 1)"));
+        }
+        return this;
+    }
+
+    @Step("Checking the all links in the footer. Main_page")
+    public Main_page_Logic checkingPresenceAllLinksFooter(){
+        for (int i = 0; i < 10; i++) {
+            allLinksInFooter().get(i).shouldBe(visible);
         }
         return this;
     }
