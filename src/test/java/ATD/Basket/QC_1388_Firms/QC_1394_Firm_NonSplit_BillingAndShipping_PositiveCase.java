@@ -52,7 +52,7 @@ public class QC_1394_Firm_NonSplit_BillingAndShipping_PositiveCase {
         vatForBE = new PageVAT_aws().getVatForBE();
         openPage(routeEN);
         String shop = getCurrentShopFromJSVarInHTML();
-        priceWithoutVAT = product_page_logic.getPriceWithoutVAT(vatForBE);
+        priceWithoutVAT = product_page_logic.getExactPriceWithoutVAT(vatForBE);
         product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()

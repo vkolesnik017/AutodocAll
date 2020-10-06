@@ -26,7 +26,7 @@ import static mailinator.WebMail.passwordForMail;
 
 public class QC_1393_SplitBilling_FirmAndPhysicalPerson_SameCountries_PositiveCase {
 
-    private Float regularProductPricePerAllDataPageBE, priceWithVatPerAllDataPageBE, priceProductPerProductPageBE,
+    private Float priceWithoutVAT, priceProductInAllDat,
             totalPriceBE, totalPriceAWSOrderBE, totalPriceInEmailBE, sellingPriceAWSOrderBE;
     private String emailBE = "QC_1393_autotestGB@autodoc.si", vatForBE, orderNumberBE;
 
@@ -52,7 +52,8 @@ public class QC_1393_SplitBilling_FirmAndPhysicalPerson_SameCountries_PositiveCa
         vatForBE = new PageVAT_aws().getVatForBE();
         openPage(routeBE);
         String shop = getCurrentShopFromJSVarInHTML();
-        priceWithVatPerAllDataPageBE = product_page_logic.addProductToCart()
+        priceWithoutVAT = product_page_logic.getExactPriceWithoutVAT(vatForBE);
+        product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
@@ -66,13 +67,9 @@ public class QC_1393_SplitBilling_FirmAndPhysicalPerson_SameCountries_PositiveCa
                 .nextBtnClick()
                 .checkTextInDeliveryAddressInfoBlock("autotest autotest")
                 .checkTextInPayersAddressInfoBlock("SPRL Brasserie Cantillon")
-                .checkAbsenceOfVatPercentage()
-                .getPriceIncludingVat(vatForBE);
-        cartAllData_page_logic.transitionToProductPage();
-        switchTo().window(1);
-        priceProductPerProductPageBE = product_page_logic.getProductPrice();
-        product_page_logic.checkProductPriceOnSitesMatchesPriceOnAllDataPageIncludingVat(priceWithVatPerAllDataPageBE, priceProductPerProductPageBE);
-        product_page_logic.cartClick();
+                .checkAbsenceOfVatPercentage();
+        priceProductInAllDat = cartAllData_page_logic.getRegularProductPriceFormAllDataPage();
+        product_page_logic.checkProductPriceOnSitesMatchesPriceOnAllDataPageIncludingVat(priceWithoutVAT, priceProductInAllDat);
         totalPriceBE = cartAllData_page_logic.getTotalPriceAllDataPage(shop);
         orderNumberBE = cartAllData_page_logic.nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumberBE);
@@ -87,14 +84,11 @@ public class QC_1393_SplitBilling_FirmAndPhysicalPerson_SameCountries_PositiveCa
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceBE, totalPriceAWSOrderBE);
         sellingPriceAWSOrderBE = order_aws.getSellingProductPriceOrderAWS();
-        switchTo().window(0);
-        regularProductPricePerAllDataPageBE = cartAllData_page_logic.getRegularProductPriceFormAllDataPage();
 
         // TODO включу данный асерт после исправлениея дефекта AWS-2830
-        /*Assert.assertEquals(sellingPriceAWSOrderGB, regularProductPricePerAllDataPageGB);*/
-        switchTo().window(1);
+        /*Assert.assertEquals(sellingPriceAWSOrderGB, priceProductInAllDat);*/
         order_aws.clickCustomerId();
-        switchTo().window(2);
+        switchTo().window(1);
         new Customer_view_aws().checkPresenceBlockLogsCompanyNumbers()
                 .checkIdCompanyInBlockLogsCompanyNumbers("BE0402065988")
                 .checkResponseInBlockLogsCompanyNumbers("success(200)")
@@ -109,10 +103,9 @@ public class QC_1393_SplitBilling_FirmAndPhysicalPerson_SameCountries_PositiveCa
     }
 
 
-    private Float regularProductPricePerAllDataPageDE, priceWithVatPerAllDataPageDE, priceProductPerProductPageDE,
+    private Float regularProductPricePerAllDataPageDE,
             totalPriceDE, totalPriceAWSOrderDE, totalPriceInEmailDE, sellingPriceAWSOrderDE;
-    private String emailDE = "QC_1393_autotestDE@autodoc.si", vatForDE, orderNumberDE;
-
+    private String emailDE = "QC_1393_autotestDE@autodoc.si", orderNumberDE;
 
     @DataProvider(name = "routeDE", parallel = true)
     Object[] dataProviderProductsDE() throws SQLException {
