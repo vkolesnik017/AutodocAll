@@ -259,8 +259,9 @@ public class Product_page_Logic extends Product_page {
 
     @Step("Checking the displaying to the OEN numbers with the selected car in the selector .Product_page")
     public Product_page_Logic checkingTheDisplayingTheOENNumbers() {
+        closePopUpButton().shouldBe(visible).click();
         firstProductOnTheListing().click();
-        oenNummerTab().click();
+        oenNummerTab().scrollIntoView(false).click();
         firstLinkOenNummerForCarSelector().shouldHave(text("AUDI"));
         return this;
     }

@@ -235,8 +235,8 @@ public class Cart_page_Logic extends Cart_page {
     @Step("get id of added products to list. Cart_page")
     public List<String> getIdAddedProductsToList() {
         listOfAddedProductsBlock().shouldBe(visible);
-        List<String> idOfAddedProducts= new ArrayList<>();
-        for (int i=1;i<listOfAddedProducts().size();i++){
+        List<String> idOfAddedProducts = new ArrayList<>();
+        for (int i = 1; i < listOfAddedProducts().size(); i++) {
             idOfAddedProducts.add(listOfAddedProducts().get(i).getAttribute("data-article_id"));
         }
 
@@ -271,10 +271,38 @@ public class Cart_page_Logic extends Cart_page {
         if (shop.equals("DE") || shop.equals("FR")) {
             String safeOrderText = getTextInSafeOrderBlock();
             Assert.assertTrue(safeOrderText.contains(numberDays));
-        }
-        else {
+        } else {
             System.out.println("Shop is not equal to DE and FR");
         }
+        return this;
+    }
+
+    @Step("added all product to WishList. Cart_page")
+    public Cart_page_Logic addedAllProductToWishList() {
+        btnAddProductToWishList().shouldBe(visible).click();
+        successAddedProductToWishListPopUp().shouldBe(visible);
+        btnCloseSuccessAddedProductToWishListPopUp().shouldBe(visible).click();
+        successAddedProductToWishListPopUp().shouldNotBe(visible);
+        btnAddProductToWishList().shouldHave(text("Zur Wunschliste hinzugefügt"));
+        return this;
+    }
+
+    @Step("presence label add product to WishList. Cart_page")
+    public Cart_page_Logic presenceLabelAddProductToWishList() {
+        for (int i = 0; i < labelAddProductToWishList().size(); i++) {
+            labelAddProductToWishList().get(i).shouldBe(visible);
+        }
+        return this;
+    }
+
+    @Step("remove all products from basket. Cart_page")
+    public Cart_page_Logic removeAllProductsFromBasket() {
+        while (btnRemoveProduct().get(0).isDisplayed()) {
+            btnRemoveProduct().get(0).click();
+            confirmationDeleteGoodsBtn().click();
+        }
+        closeBtnPopupOfEmptyBasket().shouldBe(visible).click();
+
         return this;
     }
 }
