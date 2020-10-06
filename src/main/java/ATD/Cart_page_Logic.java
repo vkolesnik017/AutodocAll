@@ -71,7 +71,7 @@ public class Cart_page_Logic extends Cart_page {
         float totalPrice = getPriceFromElement(totalProductPrice());
         while (!freeDeliveryIcon().isDisplayed() && totalPrice < deliveryLimit) {
             String beforeClickPrice = totalProductPrice().text();
-            sleep(1000);
+            sleep(3000);
             counterPlusBtn().click();
             totalProductPrice().shouldHave(not(text(beforeClickPrice)));
             totalPrice = getPriceFromElement(totalProductPrice());
