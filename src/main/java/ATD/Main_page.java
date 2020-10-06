@@ -3,6 +3,7 @@ package ATD;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
+
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -69,7 +70,7 @@ public class Main_page {
         return $$(tooltipsToSearch);
     }
 
-    public SelenideElement  counterQuantityProductsInSearch() {
+    public SelenideElement counterQuantityProductsInSearch() {
         return $x("//div[@class='autocomplete-suggestions']//span[@class='right']");
     }
 
@@ -711,5 +712,9 @@ public class Main_page {
 
     ElementsCollection linksUnderTheSocialNetworksBlock() {
         return $$x("//*[@class='link_arrow link ga-click']");
+    }
+
+    SelenideElement blockLinkUnderTheSocialNetworksBlock() {
+        return $x("//*[@class='footer__social']");
     }
 }
