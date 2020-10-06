@@ -158,6 +158,10 @@ public class Cart_page {
 
     SelenideElement btnMoreInfoOfProduct(String numOfOrder) {return $x("//tr[@data-article_id='"+numOfOrder+"']//td[3]/div[2]/a");}
 
+    SelenideElement btnMoreInfoProduct() {
+        return $x("//div[@class='info__more-info']//a[1]");
+    }
+
     ElementsCollection moreInfoBlock() {return $$x("//div[@class='info__more-info']/ul");}
 
     ElementsCollection characteristicListOfProduct(String numOfOrder) {return $$x("//tr[@data-article_id='"+numOfOrder+"']//div[@class='info__more-info']/ul/li/span[1]");}
@@ -213,4 +217,8 @@ public class Cart_page {
     SelenideElement listOfAddedProductsBlock() {return $x("//div[@class='cart-page-listing']");}
 
     ElementsCollection listOfAddedProducts() {return $$x("//div[@class='cart-page-listing']//tr");}
+
+    SelenideElement characteristicZustandInProduct() {
+        return $x("//div[@class='info__more-info']//ul[@style='display: block;']//span[contains(text(),'Zustand')]");
+    }
 }

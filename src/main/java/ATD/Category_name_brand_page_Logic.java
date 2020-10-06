@@ -1,9 +1,7 @@
 package ATD;
 
-import AWS.ProductSearch_aws;
 import io.qameta.allure.Step;
 import org.testng.Assert;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import static ATD.CommonMethods.getTextFromUnVisibleElement;
@@ -98,10 +96,9 @@ public class Category_name_brand_page_Logic extends Category_name_brand_page {
         return this;
     }
 
-    @Step("Checks the lack of characterization Zustand for 3K brand products with collateral in mini cards. Category_name_brand_page")
-    public Category_name_brand_page_Logic checkLackCharacterizationZustandFor3KBrandProducts() throws SQLException {
-        ProductSearch_aws productSearch_aws = new ProductSearch_aws();
-        ArrayList<String> products = new ArrayList<>();
+    @Step("Getting the article number and checking for a deposit in mini-cards for the 3K brand. Category_name_brand_page")
+    public ArrayList<String> getArticleNumberAndCheckingDepositFor3KBrandFromMiniCard() {
+        ArrayList<String> artNumAndDeposit = new ArrayList<>();
         for (int i = 0; i < artNumOfTopProduct().size(); i++) {
             if (i == 4) {
                 activeBtnForwardOfTopProductsBlock().click();
@@ -110,26 +107,14 @@ public class Category_name_brand_page_Logic extends Category_name_brand_page {
             artNumOfTopProduct().get(i).hover();
             String artNum = articleNumberInPopUpOfTopProducts(i + 1).getText().replaceAll("\\D+", "");
             if (characteristicZustandInPopUpOfTopProducts(i + 1).isDisplayed()) {
-                products.add(artNum + " " + "- No deposit");
+                artNumAndDeposit.add(artNum + " " + "- No deposit");
             } else {
-                products.add(artNum + " " + "- Have deposit");
+                artNumAndDeposit.add(artNum + " " + "- Have deposit");
             }
             titleOfTopProductsBlock().hover();
         }
-        System.out.println(products);
-        productSearch_aws.openProductSearchPageAndLogin();       // Разделить метод !
-        for (int a = 0; a < products.size(); a++) {
-            String onlyArtNum = products.get(a).replaceAll("\\D+", "");
-            String fullText = products.get(a);
-            productSearch_aws.setValueInSearchField(onlyArtNum);
-            float deposit = Float.parseFloat(productSearch_aws.getValueFromDepositField());
-            if (deposit == 0) {
-                Assert.assertEquals(fullText, onlyArtNum + " " + "- No deposit");
-            } else if (deposit > 0) {
-                Assert.assertEquals(fullText, onlyArtNum + " " + "- Have deposit");
-            }
-        }
-        return this;
+        System.out.println(artNumAndDeposit);
+        return artNumAndDeposit;
     }
 
 
