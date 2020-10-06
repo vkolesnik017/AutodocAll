@@ -497,5 +497,11 @@ public class Search_page_Logic extends Search_page {
         String amountQuantity = amountQuantityOfProduct().get(positionOfProduct).getAttribute("value");
         return amountQuantity;
     }
+
+    @Step("get article number of product. Search_page")
+    public List<String> getArtNumOfProduct(int countOfProduct) {
+        List<String> artNum = visibleArtNumOfProduct().stream().limit(countOfProduct).map(n -> n.getText().replaceAll("Artikelnummer: ", "")).collect(Collectors.toList());
+        return artNum;
+    }
 }
 

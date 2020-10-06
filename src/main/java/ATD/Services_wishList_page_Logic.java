@@ -190,7 +190,7 @@ public class Services_wishList_page_Logic extends Services_wishList_page {
 
     @Step("close Login pop-Up. Services_wishList_page")
     public Services_wishList_page_Logic closeLoginPopUp() {
-        if (btnCloseLoginPopUp().isDisplayed()){
+        if (btnCloseLoginPopUp().isDisplayed()) {
             btnCloseLoginPopUp().click();
         }
         loginPopUp().shouldNotBe(visible);
@@ -204,12 +204,43 @@ public class Services_wishList_page_Logic extends Services_wishList_page {
     }
 
     @Step("compare elements of product from Listing in WishList. Services_wishList_page")
-    public Services_wishList_page_Logic compareElementsFromListingInWishList(int positionOfProduct, String urlOfBrandImage, String dataFromPriceBlock,List<String> list,String count) {
-        imageOfBrandInListing().get(positionOfProduct).shouldBe(visible).shouldHave(attribute("data-srcset",urlOfBrandImage));
-        priceBlock().get(positionOfProduct).shouldHave(exactText(dataFromPriceBlock.replace("Meiner Wunschliste hinzufügen","")));
-        List<String> characteristicsOfProduct = visibleCharacteristicsOfProducts(positionOfProduct+1).stream().map(n->n.getText()).collect(Collectors.toList());
-        Assert.assertEquals(list,characteristicsOfProduct);
-        amountQuantityOfProduct().get(positionOfProduct).shouldHave(attribute("value",count));
+    public Services_wishList_page_Logic compareElementsFromListingInWishList(int positionOfProduct, String urlOfBrandImage, String dataFromPriceBlock, List<String> list, String count) {
+        imageOfBrandInListing().get(positionOfProduct).shouldBe(visible).shouldHave(attribute("data-srcset", urlOfBrandImage));
+        priceBlock().get(positionOfProduct).shouldHave(exactText(dataFromPriceBlock.replace("Meiner Wunschliste hinzufügen", "")));
+        List<String> characteristicsOfProduct = visibleCharacteristicsOfProducts(positionOfProduct + 1).stream().map(n -> n.getText()).collect(Collectors.toList());
+        Assert.assertEquals(list, characteristicsOfProduct);
+        amountQuantityOfProduct().get(positionOfProduct).shouldHave(attribute("value", count));
         return this;
     }
+
+    @Step("presence of Authorization block. Services_wishList_page")
+    public Services_wishList_page_Logic presenceOfAuthorizationBlock() {
+        authorizationBlock().shouldBe(visible);
+        infoTextOfAuthorizationBlock().shouldBe(visible).shouldNotBe(empty);
+        btnCloseOfAuthorizationBlock().shouldBe(visible);
+        btnRegistrationOfAuthorizationBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("close Authorization block. Services_wishList_page")
+    public Services_wishList_page_Logic closeAuthorizationBlock() {
+        btnCloseOfAuthorizationBlock().shouldBe(visible).click();
+        btnRegistrationOfAuthorizationBlock().shouldNotBe(visible);
+        return this;
+    }
+
+    @Step("remove all products from WishList. Services_wishList_page")
+    public Services_wishList_page_Logic removeAllProductsFromWishList() {
+        int countOfProducts = 0;
+        while (btnRemoveProduct().get(0).isDisplayed()) {
+            countOfProducts = btnRemoveProduct().size();
+            btnRemoveProduct().get(0).click();
+            dialogPopUp().shouldBe(visible);
+            btnRemoveInDialogPopUp().click();
+            btnRemoveProduct().shouldHaveSize(countOfProducts - 1);
+        }
+        listOfProducts().shouldHaveSize(0);
+        return this;
+    }
+
 }
