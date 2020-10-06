@@ -25,7 +25,7 @@ public class Services_wishList_page {
 
     ElementsCollection blocksInSideBar() { return $$x("//ul[@class='menu_member']/li/a").filter(visible);}
 
-    ElementsCollection artNumOfProduct() {return $$x("//div[@class='name']/span[1]");}
+    ElementsCollection artNumOfProduct() {return $$x("//div[@class='name']/span[@class='article_number']");}
 
     ElementsCollection btnRemoveProduct() {return $$x("//span[@class='wishlist__remove remove-article-wishlist']");}
 
@@ -86,4 +86,12 @@ public class Services_wishList_page {
     }
 
     ElementsCollection amountQuantityOfProduct() {return $$x("//div[@class='count']/input");}
+
+    SelenideElement authorizationBlock() {return $(byId("login-alert-wishlist"));}
+
+    SelenideElement infoTextOfAuthorizationBlock() {return $x("//div[@class='profile-msg']/p");}
+
+    SelenideElement btnCloseOfAuthorizationBlock() {return $x("//span[@class='profile-msg__close']");}
+
+    SelenideElement btnRegistrationOfAuthorizationBlock() {return $x("//a[@class='profile-msg__action']");}
 }

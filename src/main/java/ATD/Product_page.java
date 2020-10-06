@@ -416,6 +416,10 @@ public class Product_page {
         return $(byCssSelector(".product-old-price>span"));
     }
 
+    public SelenideElement discountSum() {
+        return $x("//div[@class='product-block__price-block__price']//div[@class='discount']");
+    }
+
     public SelenideElement productPrice() {
         return $(byCssSelector(".product-new-price"));
     }

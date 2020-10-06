@@ -7,9 +7,11 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.testng.Assert;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashSet;
+
 import static ATD.CommonMethods.*;
 import static com.codeborne.selenide.CollectionCondition.*;
 import static com.codeborne.selenide.Condition.*;
@@ -1230,13 +1232,20 @@ public class Main_page_Logic extends Main_page {
 
     @Step("Checking the changing the color of the text in the Social Network Block. Main_page")
     public Main_page_Logic checkingChangingTheColor() {
-        for (int i = 0; i < 3; i++) {
-            linksUnderTheSocialNetworksBlock().get(i).scrollIntoView(false).shouldBe(visible)
-                    .hover()
-                    .shouldHave(cssValue("color", "rgba(244, 125, 47, 1)"));
+        actions().moveToElement(blockLinkUnderTheSocialNetworksBlock().scrollIntoView("{block: \"center\"}").waitUntil(visible, 6000));
+        linksUnderTheSocialNetworksBlock().shouldHave(size(3));
+        for (int i = 0; i < linksUnderTheSocialNetworksBlock().size(); i++) {
+            checkingPresenceAllLinksFooter();
+            linksUnderTheSocialNetworksBlock().get(i).hover().shouldHave(cssValue("color", "rgba(244, 125, 47, 1)"));
         }
-        textBigBlockSocialNetworks().shouldBe(visible);
-        Assert.assertFalse(textBigBlockSocialNetworks().text().isEmpty());
+        return this;
+    }
+
+    @Step("Checking the all links in the footer. Main_page")
+    public Main_page_Logic checkingPresenceAllLinksFooter(){
+        for (int i = 0; i < 10; i++) {
+            allLinksInFooter().get(i).shouldBe(visible);
+        }
         return this;
     }
 }
