@@ -14,7 +14,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2424_CheckingAbsenceCharacteristicConditionInMiniCardForProductBrand3kWithDeposit {
+public class QC_2424_CheckingAbsenceCharacteristicZustandBrand3kWithDepositInMiniCard {
 
     @BeforeClass
     void setUp() {
@@ -29,7 +29,7 @@ public class QC_2424_CheckingAbsenceCharacteristicConditionInMiniCardForProductB
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "   ")
+    @Description(value = "Checks the lack of characterization Zustand for 3K brand products with collateral in mini cards")
     public void test(String route) throws SQLException {
         openPage(route);
         new Category_name_brand_page_Logic().checkLackCharacterizationZustandFor3KBrandProducts();

@@ -26,7 +26,7 @@ import static mailinator.WebMail.passwordForMail;
 
 public class QC_1392_SplitBilling_TwoFirms_SameCountries_PositiveCase {
 
-    private Float priceWithVatPerAllDataPageBE, priceProductPerProductPageBE, totalPriceBE, totalPriceAWSOrderBE, totalPriceInEmailBE;
+    private Float priceWithoutVAT, priceProductInAllDat, totalPriceBE, totalPriceAWSOrderBE, totalPriceInEmailBE;
 
     private String emailBE = "QC_1392_autotestGB@autodoc.si", vatForBE, orderNumberBE;
 
@@ -51,7 +51,8 @@ public class QC_1392_SplitBilling_TwoFirms_SameCountries_PositiveCase {
         vatForBE = new PageVAT_aws().getVatForBE();
         openPage(routeBE);
         String shop = getCurrentShopFromJSVarInHTML();
-        priceWithVatPerAllDataPageBE = product_page_logic.addProductToCart()
+        priceWithoutVAT = product_page_logic.getExactPriceWithoutVAT(vatForBE);
+        product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
@@ -65,13 +66,9 @@ public class QC_1392_SplitBilling_TwoFirms_SameCountries_PositiveCase {
                 .nextBtnClick()
                 .checkTextInDeliveryAddressInfoBlock("North 51 Ltd")
                 .checkTextInPayersAddressInfoBlock("SPRL Brasserie Cantillon")
-                .checkAbsenceOfVatPercentage()
-                .getPriceIncludingVat(vatForBE);
-        cartAllData_page_logic.transitionToProductPage();
-        switchTo().window(1);
-        priceProductPerProductPageBE = product_page_logic.getProductPrice();
-        product_page_logic.checkProductPriceOnSitesMatchesPriceOnAllDataPageIncludingVat(priceWithVatPerAllDataPageBE, priceProductPerProductPageBE);
-        product_page_logic.cartClick();
+                .checkAbsenceOfVatPercentage();
+        priceProductInAllDat = cartAllData_page_logic.getRegularProductPriceFormAllDataPage();
+        product_page_logic.checkProductPriceOnSitesMatchesPriceOnAllDataPageIncludingVat(priceWithoutVAT, priceProductInAllDat);
         totalPriceBE = cartAllData_page_logic.getTotalPriceAllDataPage(shop);
         orderNumberBE = cartAllData_page_logic.nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumberBE);
@@ -86,7 +83,7 @@ public class QC_1392_SplitBilling_TwoFirms_SameCountries_PositiveCase {
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceBE, totalPriceAWSOrderBE);
         order_aws.clickCustomerId();
-        switchTo().window(2);
+        switchTo().window(1);
         new Customer_view_aws().checkPresenceBlockLogsCompanyNumbers()
                 .checkIdCompanyInBlockLogsCompanyNumbers("BE0402065988")
                 .checkResponseInBlockLogsCompanyNumbers("success(200)")
