@@ -1231,6 +1231,7 @@ public class Main_page_Logic extends Main_page {
     @Step("Checking the changing the color of the text in the Social Network Block. Main_page")
     public Main_page_Logic checkingChangingTheColor() {
         for (int i = 0; i < 3; i++) {
+            sleep(4000);
             linksUnderTheSocialNetworksBlock().get(i).scrollIntoView(false).shouldBe(visible)
                     .hover()
                     .shouldHave(cssValue("color", "rgba(244, 125, 47, 1)"));
