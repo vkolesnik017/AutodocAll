@@ -221,6 +221,15 @@ public class Cart_page {
 
     ElementsCollection labelAddProductToWishList() {return $$x("//span[@class='add-to-wishlist add-article']");}
 
-    ElementsCollection btnRemoveProduct() { return $$x("//a[@class='delBtn']");
-    }
+    ElementsCollection btnRemoveProduct() { return $$x("//a[@class='delBtn']"); }
+
+    ElementsCollection wishListLabelOfProduct() {return $$x("//div[@class='info__more-info']/span");}
+
+    SelenideElement removeProductFromWishListPopUp() {return $x("//div[@class='delete-popup-article-wishlist cart-popup']");}
+
+    SelenideElement btnOkOfRemoveProductFromWishListPopUp() {return $x("//div[@class='popup-content__buttons']/a[2]");}
+
+    SelenideElement btnCloseOfRemoveProductFromWishListPopUp() {return $x("//div[@class='popup-content__buttons']/a[1]");}
+
+    SelenideElement mainLogo() {return $x("//div[@class='cart-page-head__logo']/a");}
 }
