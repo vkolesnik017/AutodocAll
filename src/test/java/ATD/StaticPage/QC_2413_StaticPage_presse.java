@@ -36,6 +36,7 @@ public class QC_2413_StaticPage_presse {
         new Main_page_Logic().goToPressePage()
                 .checkingPresenceOfTheBlocks()
                 .openTheArticleBlock()
+                .checkingTheTitlesInTheCards()
                 .checkingTheTexts()
                 .getStatusImageCod()
                 .getStatusPhotoCod();
