@@ -113,7 +113,7 @@ public class CartAllData_page_Logic extends CartAllData_page {
 
     @Step("Check free delivery price. CartAllData_page")
     public CartAllData_page_Logic checkFreeDeliveryPriceAllData(String deliveryPrice) {
-        freeDeliveryIcon().shouldHave(text(deliveryPrice));
+        freeDeliveryIconForTyres().shouldHave(text(deliveryPrice));
         return this;
     }
 

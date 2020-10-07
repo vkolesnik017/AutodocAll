@@ -1,7 +1,8 @@
 package ATD.Characteristics.QC_2387_CheckingCharacteristicConditionForProducts;
 
-import ATD.Category_name_brand_page_Logic;
-import AWS.ProductSearch_aws;
+import ATD.CartAccount_page_Logic;
+import ATD.Cart_page_Logic;
+import ATD.Product_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -11,12 +12,14 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import static ATD.CommonMethods.openPage;
+import static ATD.CommonMethods.password;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2424_CheckingAbsenceCharacteristicZustandBrand3kWithDepositInMiniCard {
+public class QC_2423_CheckingAbsenceCharacteristicZustandOnRutCartForProduct3KBrandWithDeposit {
+
+    String mail = "QC-2423_autoTest@mailinator.com";
 
     @BeforeClass
     void setUp() {
@@ -25,18 +28,20 @@ public class QC_2424_CheckingAbsenceCharacteristicZustandBrand3kWithDepositInMin
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_name_brand9");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product41");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Checking the availability of a deposit for 3K brand goods with a deposit in mini-cards")
-    public void testChecksAvailabilityDepositFor3KBrand(String route) {
+    @Description(value = "Checking for the absence of the deposit characteristic on the ruts of the basket for 3k brand goods with a deposit")
+    public void checkingDepositCharacteristicInCartFor3kBrandGoodsWithDeposit(String route) {
         openPage(route);
-        ArrayList<String> artNumAndDeposit = new Category_name_brand_page_Logic().getArticleNumberAndCheckingDepositFor3KBrandFromMiniCard();
-        new ProductSearch_aws().openProductSearchPageAndLogin()
-                .checkingWhetherProductHasDepositByArtNumber(artNumAndDeposit);
+        new Product_page_Logic().checkingPresencePfandBlock().addedProductToBasket()
+                .checksPresentProductInCartPopup().clickBtnGoToCartFromCartDropMenu();
+        new CartAccount_page_Logic().clickBtnReturnToBasket();
+        new Cart_page_Logic().checkingAbsenceOfZustandCharacteristic();
+
     }
 
     @AfterMethod

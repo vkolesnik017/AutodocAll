@@ -503,5 +503,11 @@ public class Search_page_Logic extends Search_page {
         List<String> artNum = visibleArtNumOfProduct().stream().limit(countOfProduct).map(n -> n.getText().replaceAll("Artikelnummer: ", "")).collect(Collectors.toList());
         return artNum;
     }
+
+    @Step("go to basket .Search_page")
+    public Cart_page_Logic goToBasket() {
+        basket().shouldBe(visible).click();
+        return page(Cart_page_Logic.class);
+    }
 }
 
