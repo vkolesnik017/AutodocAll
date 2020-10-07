@@ -324,4 +324,8 @@ public class CartAllData_page {
     }
 
     public SelenideElement artNumOfProduct() {return $x("//div[@class='info__nr']");}
+
+    public SelenideElement characteristicZustandInProduct() {
+        return $x("//div[@class='info__more-info']//ul[@style='display: block;']//span[contains(text(),'Zustand')]");
+    }
 }

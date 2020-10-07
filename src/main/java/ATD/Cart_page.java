@@ -163,6 +163,9 @@ public class Cart_page {
 
     ElementsCollection moreInfoBlock() {return $$x("//div[@class='info__more-info']/ul");}
 
+    SelenideElement moreInfoBlockInProduct() {return $x("//div[@class='info__more-info']/ul");}
+
+
     ElementsCollection characteristicListOfProduct(String numOfOrder) {return $$x("//tr[@data-article_id='"+numOfOrder+"']//div[@class='info__more-info']/ul/li/span[1]");}
 
     SelenideElement idAddedProduct() {
