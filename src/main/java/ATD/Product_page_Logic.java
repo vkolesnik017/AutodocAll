@@ -53,6 +53,18 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
+    @Step("Checking presence pfand block. Product_page")
+    public Product_page_Logic checkingPresencePfandBlock() {
+        pfandBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Click btn go to cart from cart Drop Menu. Product_page")
+    public CartAccount_page_Logic  clickBtnGoToCartFromCartDropMenu() {
+        btnGoToCartFromBasketDropMenu().shouldBe(visible).click();
+        return page(CartAccount_page_Logic.class);
+    }
+
     // Horizontal car selector
 
     @Step("Choose brand {brandName} in horizontal car selector. Product_page")

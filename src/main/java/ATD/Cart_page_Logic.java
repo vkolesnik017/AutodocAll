@@ -322,6 +322,7 @@ public class Cart_page_Logic extends Cart_page {
         return this;
     }
 
+
     @Step("presence and remove Added product to WishList. Cart_page")
     public Cart_page_Logic presenceAndRemoveAddedProductToWishList() {
         removeProductFromWishListPopUp().shouldBe(visible);
@@ -337,4 +338,12 @@ public class Cart_page_Logic extends Cart_page {
         mainLogo().shouldBe(visible).click();
         return page(Main_page_Logic.class);
     }
+
+    @Step("Checking the absence of a Zustand characteristic in the product. Cart_page")
+    public Cart_page_Logic checkingAbsenceOfZustandCharacteristic() {
+        btnMoreInfoProduct().click();
+        characteristicZustandInProduct().shouldNotBe(visible);
+        return this;
+    }
+
 }

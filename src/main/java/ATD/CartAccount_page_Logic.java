@@ -120,4 +120,10 @@ public class CartAccount_page_Logic extends CartAccount_page{
         closeErrorPopUpBtn().click();
         return this;
     }
+
+    @Step("Click btn return to basket. CartAccount_page")
+    public Cart_page_Logic clickBtnReturnToBasket() {
+        btnReturnToCart().shouldBe(visible).click();
+        return page(Cart_page_Logic.class);
+    }
 }

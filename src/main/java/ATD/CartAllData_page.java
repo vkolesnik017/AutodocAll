@@ -41,6 +41,10 @@ public class CartAllData_page {
         return $(byXpath("//div[@class='order-summary ']//span[@class='free_icon order-delivery']"));
     }
 
+    public SelenideElement freeDeliveryIconForTyres() {
+        return $(byXpath("//div[@class='order-summary ']//span[@class='free_icon order-tyres-delivery']"));
+    }
+
     SelenideElement labelVAT() {
         return $x("//*[@class='alldata-bottom']//*[contains(@class,'total')]//i");
     }
