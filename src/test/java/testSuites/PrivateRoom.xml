@@ -139,6 +139,9 @@
             <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2396_AddProductToWishlistFromBasket"/>
             <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2398_TransitionToWishListWithLoggedUser"/>
             <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2399_AddProductsFRomWishListToBasket"/>
+            <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2402_RemoveProductsFromWishListAndBasket"/>
+            <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2569_RemoveAllProductsFromWishListAfterLogOut"/>
+            <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2571_PresenceOfPreviouslyAddedProductsWithLoggedUser"/>
         </classes>
     </test>
 
