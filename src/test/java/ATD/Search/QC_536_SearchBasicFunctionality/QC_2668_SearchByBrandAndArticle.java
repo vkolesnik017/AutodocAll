@@ -1,6 +1,5 @@
 package ATD.Search.QC_536_SearchBasicFunctionality;
 
-import ATD.Listing_page_Logic;
 import ATD.Main_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
@@ -17,9 +16,11 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_537_SearchByBrand {
+public class QC_2668_SearchByBrandAndArticle {
 
-    private String brandName = "RIDEX";
+    private String request = "2049 3M";
+    private String artNum = "2049";
+    private String brand = "3M";
 
     @BeforeClass
     void setUp() {
@@ -28,32 +29,30 @@ public class QC_537_SearchByBrand {
 
     @DataProvider(name = "route")
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "maker_car_list4");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "main");
     }
 
     @Test(dataProvider = "route")
     @Flaky
-    @Owner(value = "Evlentiev")
-    @Description(value = "The test verifies that at the listing have only products of brand ridex after search by text RIDEX")
-    public void testSearchByBrand(String route) {
+    @Owner(value = "Kolesnik")
+    @Description(value = "The test verifies that at the listing have only products of brand 3M and expected article number")
+    public void testSearchByBrandAndArticle(String route) {
         openPage(route);
-        new Main_page_Logic().useSearch(brandName);
-        new Listing_page_Logic().checksProductTitlesContainExpectedTextGoingAllPagination(brandName);
+        new Main_page_Logic().useSearch(request).checkImageOfBrandAtPresenceOfArtAndBrand(brand, artNum);
     }
 
     @DataProvider(name = "routeLKW")
     Object[] dataProviderLKW() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_maker_car_list14");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_main");
     }
 
     @Test(dataProvider = "routeLKW")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "The test verifies that at the listing have only products of brand ridex after search by text RIDEX")
-    public void testSearchByBrandLKW(String route) {
+    @Description(value = "The test verifies that at the listing have only products of brand 3M and expected article number")
+    public void testSearchByBrandAndArticleLKW(String route) {
         openPage(route);
-        new Main_page_Logic().useSearch(brandName);
-        new Listing_page_Logic().checksProductTitlesContainExpectedTextGoingAllPagination(brandName);
+        new Main_page_Logic().useSearch(request).checkImageOfBrandAtPresenceOfArtAndBrand(brand, artNum);
     }
 
     @AfterMethod

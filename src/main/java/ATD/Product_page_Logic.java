@@ -599,6 +599,12 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
+    @Step("presence expected OEN number. Product_page")
+    public Product_page_Logic presenceOenNumber(String expectedOenNumber) {
+        linkInOemBlock().shouldBe(visible).shouldHave(text(expectedOenNumber));
+        return this;
+    }
+
     @Step("Check compatible car and product. Product_page")
     public Product_page_Logic checkCompatibilityCarAndProduct() {
         firstBrandInCompabilityList().shouldHave(text("AUTOBIANCHI")).click();
