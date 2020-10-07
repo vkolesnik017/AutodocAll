@@ -297,9 +297,12 @@ public class Cart_page_Logic extends Cart_page {
 
     @Step("remove all products from basket. Cart_page")
     public Cart_page_Logic removeAllProductsFromBasket() {
+        int countOfProduct = 0;
         while (btnRemoveProduct().get(0).isDisplayed()) {
+            countOfProduct = btnRemoveProduct().size();
             btnRemoveProduct().get(0).click();
             confirmationDeleteGoodsBtn().click();
+            btnRemoveProduct().shouldHaveSize(countOfProduct - 1);
         }
         closeBtnPopupOfEmptyBasket().shouldBe(visible).click();
         return this;
