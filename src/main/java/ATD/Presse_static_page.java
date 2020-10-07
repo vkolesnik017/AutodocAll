@@ -71,7 +71,7 @@ class Presse_static_page {
     }
 
     ElementsCollection articleTitle() {
-        return $$(By.xpath("//*[@class='press-article__title']"));
+        return $$(By.xpath("//*[@class='press-article__title']//a"));
     }
 
     ElementsCollection downloadPDF() {

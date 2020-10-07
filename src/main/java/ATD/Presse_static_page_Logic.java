@@ -1,15 +1,21 @@
 package ATD;
 
 import io.qameta.allure.Step;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.text.PDFTextStripper;
 import org.testng.Assert;
 
+import java.io.BufferedInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
-import static com.codeborne.selenide.Condition.exist;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverRunner.url;
 import static org.testng.Assert.assertEquals;
 
 public class Presse_static_page_Logic extends Presse_static_page {
@@ -54,6 +60,48 @@ public class Presse_static_page_Logic extends Presse_static_page {
             Assert.assertFalse(articleTexts().get(i).text().isEmpty());
         }
         return this;
+    }
+
+    @Step("Checking the titles and compare with titles in the pdf. Presse_static_page")
+    public Presse_static_page_Logic checkingTheTitlesInTheCards() {
+        for (int i = 0; i < articleTitle().size(); i++) {
+            articleTitle().get(i).shouldBe(visible);
+            String titleOfTheArticle = articleTitle().get(i).getText();
+            articleTitle().get(i).click();
+            switchTo().window(1);
+            String url = url();
+
+            try {
+                String pdfContent = readPdfContent(url);
+                Assert.assertTrue(pdfContent.contains(titleOfTheArticle.replaceAll("\\W", "")));
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            closeWindow();
+            switchTo().window(0);
+        }
+        return this;
+    }
+
+    @Step("Checking the content in the opened pdf article . Presse_static_page")
+    public static String readPdfContent(String url) throws IOException {
+        URL pdfUrl = new URL(url);
+        InputStream in = pdfUrl.openStream();
+        BufferedInputStream bf = new BufferedInputStream(in);
+        PDDocument doc = PDDocument.load(bf);
+        int numberOfPages = getPageCount(doc);
+        System.out.println("The total number of pages " + numberOfPages);
+        String content = new PDFTextStripper().getText(doc).replaceAll(" ", "").replaceAll("\\W", "");
+        doc.close();
+        return content;
+    }
+
+    @Step("Get the total number of pages in the pdf document. Presse_static_page")
+    public static int getPageCount(PDDocument doc) {
+        int pageCount = doc.getNumberOfPages();
+        return pageCount;
     }
 
     @Step("Gets the status of the photo code. Presse_static_page")

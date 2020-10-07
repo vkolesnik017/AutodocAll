@@ -297,13 +297,46 @@ public class Cart_page_Logic extends Cart_page {
 
     @Step("remove all products from basket. Cart_page")
     public Cart_page_Logic removeAllProductsFromBasket() {
+        int countOfProduct = 0;
         while (btnRemoveProduct().get(0).isDisplayed()) {
+            countOfProduct = btnRemoveProduct().size();
             btnRemoveProduct().get(0).click();
             confirmationDeleteGoodsBtn().click();
+            btnRemoveProduct().shouldHaveSize(countOfProduct - 1);
         }
         closeBtnPopupOfEmptyBasket().shouldBe(visible).click();
-
         return this;
+    }
+
+    @Step("click on WishList label of added product. Cart_page")
+    public Cart_page_Logic clickOnWishListLabel() {
+        wishListLabelOfProduct().get(0).shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("presence and close Add product to WishList. Cart_page")
+    public Cart_page_Logic presenceAndCloseAddProductToWishList() {
+        removeProductFromWishListPopUp().shouldBe(visible);
+        btnCloseOfRemoveProductFromWishListPopUp().click();
+        removeProductFromWishListPopUp().shouldNotBe(visible);
+        return this;
+    }
+
+
+    @Step("presence and remove Added product to WishList. Cart_page")
+    public Cart_page_Logic presenceAndRemoveAddedProductToWishList() {
+        removeProductFromWishListPopUp().shouldBe(visible);
+        btnOkOfRemoveProductFromWishListPopUp().click();
+        removeProductFromWishListPopUp().shouldNotBe(visible);
+        wishListLabelOfProduct().get(0).shouldNotHave(exactText("Zur Wunschliste hinzugefügt"));
+        btnAddProductToWishList().shouldBe(visible).shouldHave(text("Alle Artikel zu meiner Wunschliste hinzufügen"));
+        return this;
+    }
+
+    @Step("go to main page. Cart_page")
+    public Main_page_Logic goToMainPage() {
+        mainLogo().shouldBe(visible).click();
+        return page(Main_page_Logic.class);
     }
 
     @Step("Checking the absence of a Zustand characteristic in the product. Cart_page")
@@ -313,4 +346,5 @@ public class Cart_page_Logic extends Cart_page {
         characteristicZustandInProduct().shouldNotBe(visible);
         return this;
     }
+
 }
