@@ -128,6 +128,10 @@ public class CartAllData_page {
         return $(byCssSelector(".total-price"));
     }
 
+    public SelenideElement unitPrice() {
+        return $x("(//td[@class='price'])[1]");
+    }
+
     public SelenideElement pfandPriceInTotalPriceBlock() {
         return $x("(//span[contains(text(),'Pfand')]/following-sibling::span)[2]");
     }

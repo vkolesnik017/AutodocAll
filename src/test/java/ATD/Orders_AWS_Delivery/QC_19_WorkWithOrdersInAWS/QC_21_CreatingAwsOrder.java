@@ -1,4 +1,4 @@
-package ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS;
+package ATD.Orders_AWS_Delivery.QC_19_WorkWithOrdersInAWS;
 
 import ATD.Product_page_Logic;
 import Common.SetUp;
@@ -23,11 +23,11 @@ import static Common.SetUp.setUpBrowser;
 import static AWS.SearchOrders_page_aws.searchOrderPageURL;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_563_CreatingAwsOrder_WithDeliveryToIsland {
+public class QC_21_CreatingAwsOrder {
 
-    private String userID = "15371488", articleNum, productArticleID;
-    private Float deliveryCost, deliveryCostInOrder, sellingPriceAWSOrder,
-            totalCostIncludingSellingAndDeliveryCost, totalCostInOrder;
+    private String userID = "15089943", articleNum;
+    private Float deliveryCost, safeOrderCost, productCostInOrder, totalProductCostIncludingDeliveryAndSafeOrder,
+            totalDeliveryAmountAndSafeOrder, productCost, totalCostInOrder;
     private ArrayList userDataInCreateOrder, userData, userDataInOrder;
 
     private Product_page_Logic product_page_logic = new Product_page_Logic();
@@ -41,17 +41,17 @@ public class QC_563_CreatingAwsOrder_WithDeliveryToIsland {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product27");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product2");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks creating order in AWS with delivery to island")
+    @Description(value = "Test checks creating order in AWS")
     public void testCreatingOrderInAWS(String route) {
         openPage(route);
         articleNum = product_page_logic.getArticleNumber();
-        productArticleID = product_page_logic.getProductId();
+        productCost = product_page_logic.getProductPrice();
         userData = new Customer_view_aws().openCustomerPersonalArea(userID)
                 .getUserData();
         openPage(searchOrderPageURL);
@@ -60,44 +60,44 @@ public class QC_563_CreatingAwsOrder_WithDeliveryToIsland {
                 .chooseSkinInSelector("autodoc.de (DE)")
                 .getUserDataInOrder();
         Assert.assertEquals(userData, userDataInCreateOrder);
-        userDataInCreateOrder = orderAdd_page_aws.choosesDeliveryCountry("Italy")
-                .fillingPostalCodeInBlockDeliveryAddress("22060")
-                .getUserDataInOrder();
-        orderAdd_page_aws.selectedPaymentMethod("Vorkasse");
+        orderAdd_page_aws.selectedPaymentMethod("PayPal");
         deliveryCost = orderAdd_page_aws.selectedDeliveryMethod("Standardversand")
                 .getDeliveryCost();
+        safeOrderCost = orderAdd_page_aws.selectedStatusInSafeOrder("Включен")
+                .getSafeOrderCost();
         userDataInOrder = orderAdd_page_aws.addProduct(articleNum)
-                .chooseArticleIDOfDesiredProductAndClickBtnChooseProduct(productArticleID)
                 .checkPresenceTableOfSuppliersAndClickBtnSelect()
                 .checkArticleOfAddedProduct(articleNum)
                 .clickSaveOrderBtn()
                 .checkOrderHasTestStatus()
                 .getUserDataInOrder();
-        Assert.assertEquals(userDataInCreateOrder, userDataInOrder);
-        deliveryCostInOrder = order_aws.checkVatStatusInOrder("Ohne Mwst")
-                .checkPaymentMethodInOrder("Vorkasse")
-                .checkThatStatusSafeOrderIsOff()
-                .checkContoNR("20039")
-                .getDeliveryCostInOrder();
-        Assert.assertEquals(deliveryCostInOrder, deliveryCost);
-        sellingPriceAWSOrder = order_aws.getSellingProductPriceOrderAWS();
-        totalCostIncludingSellingAndDeliveryCost = order_aws.getTotalCostIncludingSellingCostAndDeliveryCost(deliveryCost, sellingPriceAWSOrder);
+        Assert.assertEquals(userData, userDataInOrder);
+        order_aws.checkVatStatusInOrder("Mit MwSt 16%")
+                .checkPaymentMethodInOrder("PayPal")
+                .checkThatStatusSafeOrderIsOn();
+        totalDeliveryAmountAndSafeOrder = order_aws.getTotalCostDeliveryAmountAndSafeOrder(deliveryCost, safeOrderCost);
+        productCostInOrder = order_aws.checkDeliveryPriceOrderAWS(totalDeliveryAmountAndSafeOrder)
+                .checkContoNR("30047")
+                .getSellingProductPriceOrderAWS();
+        Assert.assertEquals(productCost, productCostInOrder);
+        totalProductCostIncludingDeliveryAndSafeOrder = order_aws.getTotalCostIncludingDeliveryAndSafeOrder(productCostInOrder, deliveryCost, safeOrderCost);
         totalCostInOrder = order_aws.getTotalPriceOrderAWS();
-        Assert.assertEquals(totalCostInOrder, totalCostIncludingSellingAndDeliveryCost);
-        order_aws.reSaveOrder()
-                .checkOrderHasTestStatus()
+        Assert.assertEquals(totalCostInOrder, totalProductCostIncludingDeliveryAndSafeOrder);
+        order_aws.reSaveOrder();
+        userDataInOrder = order_aws.checkOrderHasTestStatus()
                 .getUserDataInOrder();
-        Assert.assertEquals(userDataInCreateOrder, userDataInOrder);
-        deliveryCostInOrder = order_aws.checkVatStatusInOrder("Ohne Mwst")
-                .checkPaymentMethodInOrder("Vorkasse")
-                .checkThatStatusSafeOrderIsOff()
-                .checkContoNR("20039")
-                .getDeliveryCostInOrder();
-        Assert.assertEquals(deliveryCostInOrder, deliveryCost);
-        sellingPriceAWSOrder = order_aws.getSellingProductPriceOrderAWS();
-        totalCostIncludingSellingAndDeliveryCost = order_aws.getTotalCostIncludingSellingCostAndDeliveryCost(deliveryCost, sellingPriceAWSOrder);
+        Assert.assertEquals(userData, userDataInOrder);
+        order_aws.checkVatStatusInOrder("Mit MwSt 16%")
+                .checkPaymentMethodInOrder("PayPal")
+                .checkThatStatusSafeOrderIsOn();
+        totalDeliveryAmountAndSafeOrder = order_aws.getTotalCostDeliveryAmountAndSafeOrder(deliveryCost, safeOrderCost);
+        productCostInOrder = order_aws.checkDeliveryPriceOrderAWS(totalDeliveryAmountAndSafeOrder)
+                .checkContoNR("30047")
+                .getSellingProductPriceOrderAWS();
+        Assert.assertEquals(productCost, productCostInOrder);
+        totalProductCostIncludingDeliveryAndSafeOrder = order_aws.getTotalCostIncludingDeliveryAndSafeOrder(productCostInOrder, deliveryCost, safeOrderCost);
         totalCostInOrder = order_aws.getTotalPriceOrderAWS();
-        Assert.assertEquals(totalCostInOrder, totalCostIncludingSellingAndDeliveryCost);
+        Assert.assertEquals(totalCostInOrder, totalProductCostIncludingDeliveryAndSafeOrder);
     }
 
     @AfterMethod

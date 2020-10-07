@@ -19,6 +19,7 @@ import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static mailinator.WebMail.passwordForMail;
 
 public class QC_1929_PasswordRecovery {
 
@@ -51,8 +52,9 @@ public class QC_1929_PasswordRecovery {
                 .cartClick()
                 .nextButtonClick()
                 .passwordRecoveryRequestFromCart(mail);
-        webMail.openMail(mail).letterInfo(1).shouldHave(text("moments ago")).shouldHave(text("neues Passwort"));
-        webMail.openLetterInOldMailServiceMailinator(1)
+        webMail.openMail(mail, passwordForMail).letterInfo(1).shouldHave(text("neues Passwort"));
+        webMail.checkPresenceUnderFirstLetter()
+                .openLetter(1)
                 .clickLinkRecoveryPasswordInLetter()
                 .fillPasswordFieldsAndClickSubmit(newPassword)
                 .nameOfClient().shouldBe(visible);

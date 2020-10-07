@@ -1,6 +1,5 @@
-package ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS;
+package ATD.Orders_AWS_Delivery.QC_19_WorkWithOrdersInAWS;
 
-import Common.DataBase;
 import ATD.Product_page_Logic;
 import Common.SetUp;
 import AWS.Customer_view_aws;
@@ -23,9 +22,9 @@ import static Common.SetUp.setUpBrowser;
 import static AWS.SearchOrders_page_aws.searchOrderPageURL;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_565_CreatingAwsOrder_WithDeliveryToIsland_OrdinaryGoodAndHeavyLoads {
+public class QC_173_CreatingAwsOrder_WithDangerousGoodsToCountryToWhichItIsNotDelivered {
 
-    private String userID = "15371548", articleNum, productArticleID, heavyLoadsArticleNun;
+    private String userID = "15089943", articleNum;
     private ArrayList userDataInCreateOrder, userData;
 
     private Product_page_Logic product_page_logic = new Product_page_Logic();
@@ -38,36 +37,28 @@ public class QC_565_CreatingAwsOrder_WithDeliveryToIsland_OrdinaryGoodAndHeavyLo
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product27");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "productDangerousGoods1");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks creating order in AWS with delivery to island")
-    public void testCreatingOrderInAWS(String route) throws SQLException {
+    @Description(value = "Test checks order creation in AWS with dangerous goods to country to which it is not delivered")
+    public void testCreatingOrderInAwsWithDangerousGoodsDeliveryToWrongCountry(String route) {
         openPage(route);
         articleNum = product_page_logic.getArticleNumber();
-        productArticleID = product_page_logic.getProductId();
-        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "HeavyLoadProduct1"));
-        heavyLoadsArticleNun = product_page_logic.getArticleNumber();
         userData = new Customer_view_aws().openCustomerPersonalArea(userID)
                 .getUserData();
         openPage(searchOrderPageURL);
         userDataInCreateOrder = new SearchOrders_page_aws().clickAddOrderBtn()
                 .fillsInFieldCustomerID(userID)
                 .chooseSkinInSelector("autodoc.de (DE)")
-                 .getUserDataInOrder();
-        Assert.assertEquals(userData, userDataInCreateOrder);
-        userDataInCreateOrder = orderAdd_page_aws.choosesDeliveryCountry("Italy")
-                .fillingPostalCodeInBlockDeliveryAddress("22060")
                 .getUserDataInOrder();
-        orderAdd_page_aws.selectedPaymentMethod("Vorkasse");
-        orderAdd_page_aws.selectedDeliveryMethod("Standardversand")
+        Assert.assertEquals(userData, userDataInCreateOrder);
+        orderAdd_page_aws.choosesDeliveryCountry("Norway")
+                .selectedPaymentMethod("PayPal")
+                .selectedDeliveryMethod("Standardversand")
                 .addProduct(articleNum)
-                .chooseArticleIDOfDesiredProductAndClickBtnChooseProduct(productArticleID)
-                .checkPresenceTableOfSuppliersAndClickBtnSelect()
-                .addProduct(heavyLoadsArticleNun)
                 .checkPresenceTableOfSuppliersAndClickBtnSelect()
                 .checkPresencePopupWithDeliveryError();
     }
