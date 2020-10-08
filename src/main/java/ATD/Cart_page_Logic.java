@@ -347,6 +347,7 @@ public class Cart_page_Logic extends Cart_page {
     @Step("Checking the absence of a Zustand characteristic in the product. Cart_page")
     public Cart_page_Logic checkingAbsenceOfZustandCharacteristic() {
         btnMoreInfoProduct().click();
+        moreInfoBlockInProduct().shouldBe(visible);
         characteristicZustandInProduct().shouldNotBe(visible);
         return this;
     }

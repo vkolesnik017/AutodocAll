@@ -622,4 +622,10 @@ public class CartAllData_page_Logic extends CartAllData_page {
         Assert.assertEquals(res, priceProductInAlldata);
         return this;
     }
+
+    @Step("Checking presence characteristic Zustand from info product. CartAllData_page")
+    public CartAllData_page_Logic checkingLackCharacteristicZustandInProduct() {
+        characteristicZustandInProduct().shouldNotBe(visible);
+        return this;
+    }
 }

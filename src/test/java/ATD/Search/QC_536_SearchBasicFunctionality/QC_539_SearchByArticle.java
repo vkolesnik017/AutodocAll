@@ -1,6 +1,7 @@
 package ATD.Search.QC_536_SearchBasicFunctionality;
 
 import ATD.Listing_page;
+import ATD.Listing_page_Logic;
 import ATD.Main_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
@@ -41,7 +42,7 @@ public class QC_539_SearchByArticle {
     public void testSearchByArticle(String route) {
         open(route);
         new Main_page_Logic().useSearch(articleForSearch);
-        new Listing_page().productTitleInListMode().filter(have(text(articleForSearch))).shouldHave(sizeNotEqual(0));
+        new Listing_page_Logic().checkProductsByArticle(articleForSearch);
     }
 
     @DataProvider(name = "routeLKW")
@@ -56,7 +57,7 @@ public class QC_539_SearchByArticle {
     public void testSearchByArticleLKW(String route) {
         open(route);
         new Main_page_Logic().useSearch(articleForSearch);
-        new Listing_page().productTitleInListMode().filter(have(text(articleForSearch))).shouldHave(sizeNotEqual(0));
+        new Listing_page_Logic().checkProductsByArticle(articleForSearch);
     }
 
     @AfterMethod

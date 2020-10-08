@@ -893,4 +893,19 @@ public class Product_page_Logic extends Product_page {
         }
         return priseWithoutVat;
     }
+
+    @Step("Checking for the absence of the deposit characteristic for 3k brand goods with a deposit. Product_page")
+    public Product_page_Logic checkingAbsenceZustandCharacteristicFor3kBrandGoodsWithDeposit() {
+        if (uncoverCharactericticBtn().isDisplayed()) {
+            uncoverCharactericticBtn().click();
+        }
+        if (pfandBlock().isDisplayed()) {
+            characteristicZustand().shouldNotBe(visible);
+        }else if (!pfandBlock().isDisplayed()) {
+            characteristicZustand().shouldBe(visible);
+        }
+        return this;
+    }
+
+
 }
