@@ -358,7 +358,8 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
         }
         clickFirstGenericInGenericsBlockOrSidebar();
         listingPageLogic.waitUntilPreloaderDisappear();
-        listingPageLogic.checkProductTitleOnListing(firstGeneric, true, titleNameProductsFromListing());
+        String newFirstGeneric = getNameFirstGenericInGenericBlockOrSidebar();
+        listingPageLogic.checkProductTitleOnListing(newFirstGeneric, true, titleNameProductsFromListing());
         clickBtnResetAllInGenericsBlock();
         listingPageLogic.waitUntilPreloaderDisappear();
         if (blockGeneric().isDisplayed()) {

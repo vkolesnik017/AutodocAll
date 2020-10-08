@@ -1,8 +1,6 @@
 package ATD.Characteristics.QC_2387_CheckingCharacteristicConditionForProducts;
 
-import ATD.CartAccount_page_Logic;
-import ATD.Cart_page_Logic;
-import ATD.Product_page_Logic;
+import ATD.*;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -19,6 +17,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_2423_CheckingAbsenceCharacteristicZustandOnRutCartForProduct3KBrandWithDeposit {
 
+    private CartAccount_page_Logic cartAccountPageLogic = new CartAccount_page_Logic();
     String mail = "QC-2423_autoTest@mailinator.com";
 
     @BeforeClass
@@ -28,20 +27,23 @@ public class QC_2423_CheckingAbsenceCharacteristicZustandOnRutCartForProduct3KBr
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product41");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product42");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Sergey-QA")
     @Description(value = "Checking for the absence of the deposit characteristic on the ruts of the basket for 3k brand goods with a deposit")
-    public void checkingDepositCharacteristicInCartFor3kBrandGoodsWithDeposit(String route) {
+    public void testCheckingDepositCharacteristicInCartFor3kBrandGoodsWithDeposit(String route) {
         openPage(route);
-        new Product_page_Logic().checkingPresencePfandBlock().addedProductToBasket()
+        new Product_page_Logic().checkingPresencePfandBlock().addedProductToBasket().closePopupOtherCategoryIfYes()
                 .checksPresentProductInCartPopup().clickBtnGoToCartFromCartDropMenu();
-        new CartAccount_page_Logic().clickBtnReturnToBasket();
-        new Cart_page_Logic().checkingAbsenceOfZustandCharacteristic();
-
+        cartAccountPageLogic.clickBtnReturnToBasket();
+        new Cart_page_Logic().checkingAbsenceOfZustandCharacteristic().nextButtonClick();
+        cartAccountPageLogic.signIn(mail, password);
+        new CartAddress_page_Logic().nextBtnClick();
+        new CartPayments_page_Logic().chooseVorkasse().nextBtnClick();
+        new CartAllData_page_Logic().openInfoOfProduct().checkingLackCharacteristicZustandInProduct();
     }
 
     @AfterMethod

@@ -172,6 +172,7 @@ public class ProductSearch_aws {
 
     @Step("Checking whether a product has a deposit by its article number .ProductSearch_aws")
     public ProductSearch_aws checkingWhetherProductHasDepositByArtNumber(ArrayList artNumAndDeposit) {
+        depositProductsInTable().waitUntil(visible,10000);
         for (int a = 0; a < artNumAndDeposit.size(); a++) {
             String onlyArtNum = String.valueOf(artNumAndDeposit.get(a)).replaceAll("\\D+", "");;
             String fullText = String.valueOf(artNumAndDeposit.get(a));

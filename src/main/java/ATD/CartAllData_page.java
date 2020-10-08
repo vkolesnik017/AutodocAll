@@ -128,6 +128,10 @@ public class CartAllData_page {
         return $(byCssSelector(".total-price"));
     }
 
+    public SelenideElement unitPrice() {
+        return $x("(//td[@class='price'])[1]");
+    }
+
     public SelenideElement pfandPriceInTotalPriceBlock() {
         return $x("(//span[contains(text(),'Pfand')]/following-sibling::span)[2]");
     }
@@ -324,4 +328,8 @@ public class CartAllData_page {
     }
 
     public SelenideElement artNumOfProduct() {return $x("//div[@class='info__nr']");}
+
+    public SelenideElement characteristicZustandInProduct() {
+        return $x("//div[@class='info__more-info']//ul[@style='display: block;']//span[contains(text(),'Zustand')]");
+    }
 }

@@ -83,18 +83,17 @@ public class CartAddress_page_Logic extends CartAddress_page {
             if (idCompanyShipping().isDisplayed()) {
                 fillFieldIdCompanyShipping(expectedID)
                         .nextBtnClick();
+            } else if (!idCompanyShipping().isDisplayed()) {
+                nextBtnClick();
             }
             if (continueBtnInPopupAboutWrongCompany().isDisplayed()) {
                 clickBtnContinueInPopupAboutWrongCompany();
-            } else {
-                nextBtnClick();
             }
         } else {
             nextBtnClick();
         }
         return page(CartPayments_page_Logic.class);
     }
-
 
     @Step("Fill field telephone number {telNum} for Shipping. CartAddress_page")
     public CartAddress_page_Logic fillFieldTelNumForShipping(String telNum) {
@@ -222,6 +221,9 @@ public class CartAddress_page_Logic extends CartAddress_page {
         if (postalCodeOrCodeDefault.equals("default")) {
             String currentShop = getCurrentShopFromJSVarInHTML();
             switch (currentShop) {
+                case "AT":
+                    postalCodeOrCodeDefault = "4321";
+                    break;
                 case "DK":
                     postalCodeOrCodeDefault = "1234";
                     break;
@@ -304,7 +306,11 @@ public class CartAddress_page_Logic extends CartAddress_page {
 
     @Step("Click button Continue in popup about wrong company. CartAddress_page")
     public CartPayments_page_Logic clickBtnContinueInPopupAboutWrongCompany() {
-        continueBtnInPopupAboutWrongCompany().click();
+        if (!continueBtnInPopupAboutWrongCompany().isDisplayed()) {
+            nextBtnClick();
+        } else {
+            continueBtnInPopupAboutWrongCompany().click();
+        }
         return page(CartPayments_page_Logic.class);
     }
 
