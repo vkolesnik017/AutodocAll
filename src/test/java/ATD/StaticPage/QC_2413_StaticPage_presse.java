@@ -39,7 +39,13 @@ public class QC_2413_StaticPage_presse {
                 .checkingTheTitlesInTheCards()
                 .checkingTheTexts()
                 .getStatusImageCod()
-                .getStatusPhotoCod();
+                .getStatusPhotoCod()
+                .checkingTheDownloadsPDF()
+                .checkingTheDownloadsJPG()
+                .checkingTheDownloadsPDFHilftBlock()
+                .checkingTheTitleHilftBlockPDF()
+                .checkingTheFirstActiveArticle()
+                .checkingTheActiveArticles();
     }
 
     @AfterMethod

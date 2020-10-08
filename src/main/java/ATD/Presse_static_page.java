@@ -79,13 +79,43 @@ class Presse_static_page {
     }
 
     ElementsCollection downloadJPG() {
-        return $$(By.xpath("//*[@class='press-article__file press-article__file--pdf']"));
+        return $$(By.xpath("//*[@class='press-article__file press-article__file--jpg']"));
     }
 
     ElementsCollection artTitle() {
         return $$(By.xpath("//*[@class='press-article__title']")).filter(visible);
     }
 
+    SelenideElement hilftArticleTitle() {
+        return $(By.xpath("//*[@class='hilft-article__title']"));
+    }
 
+    SelenideElement hilftArticleDownloadPDF() {
+        return $(By.xpath("//*[@class='link hilft-article__file hilft-article__file--file']"));
+    }
+
+    SelenideElement autodocPresseBlock() {
+        return $(By.xpath("//*[@class='atd-presse']"));
+    }
+
+    SelenideElement autodocPresseBlockTitle() {
+        return $(By.xpath("//*[@class='atd-presse__header']//span"));
+    }
+
+    SelenideElement autodocPresseButtonForward() {
+        return $(By.xpath("//*[@class='presse-slides js-presse-slides slick-initialized slick-slider']//button[@class='slick-next slick-arrow']"));
+    }
+
+    SelenideElement autodocPresseButtonBack() {
+        return $(By.xpath("//*[@class='presse-slides js-presse-slides slick-initialized slick-slider']//button[@class='slick-prev slick-arrow']"));
+    }
+
+    ElementsCollection activeArticlesInSlider() {
+        return $$(By.xpath("//*[@class='presse-slides__item slick-slide slick-active']//span"));
+    }
+
+    SelenideElement firstActiveArticleInSlider() {
+        return $(By.xpath("//*[@class='presse-slides__item slick-slide slick-current slick-active']"));
+    }
 }
 

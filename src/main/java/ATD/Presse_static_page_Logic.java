@@ -6,6 +6,7 @@ import org.apache.pdfbox.text.PDFTextStripper;
 import org.testng.Assert;
 
 import java.io.BufferedInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -85,6 +86,24 @@ public class Presse_static_page_Logic extends Presse_static_page {
         return this;
     }
 
+    @Step("Checking the download pdf link pdf . Presse_static_page")
+    public Presse_static_page_Logic checkingTheDownloadsPDF() throws IOException {
+        for (int i = 0; i < downloadPDF().size(); i++) {
+            File report = downloadPDF().get(i).download();
+            report.delete();
+        }
+        return this;
+    }
+
+    @Step("Checking the download jpg link jpg . Presse_static_page")
+    public Presse_static_page_Logic checkingTheDownloadsJPG() throws IOException {
+        for (int i = 0; i < downloadJPG().size(); i++) {
+            File report = downloadJPG().get(i).download();
+            report.delete();
+        }
+        return this;
+    }
+
     @Step("Checking the content in the opened pdf article . Presse_static_page")
     public static String readPdfContent(String url) throws IOException {
         URL pdfUrl = new URL(url);
@@ -126,6 +145,55 @@ public class Presse_static_page_Logic extends Presse_static_page {
             http.setInstanceFollowRedirects(true);
             int responseCode = http.getResponseCode();
             assertEquals(responseCode, 200);
+        }
+        return this;
+    }
+
+    @Step("Checking the download pdf link pdf . Presse_static_page")
+    public Presse_static_page_Logic checkingTheDownloadsPDFHilftBlock() throws IOException {
+        File report = hilftArticleDownloadPDF().download();
+        report.delete();
+        return this;
+    }
+
+    @Step("Checking the title in the Hilft Block in the pdf. Presse_static_page")
+    public Presse_static_page_Logic checkingTheTitleHilftBlockPDF() throws IOException {
+
+        hilftArticleTitle().shouldBe(visible);
+        String titleOfTheArticleHilft = hilftArticleTitle().getText();
+        hilftArticleTitle().click();
+        switchTo().window(1);
+        String url = url();
+        String pdfContent = readPdfContent(url);
+        Assert.assertTrue(pdfContent.contains(titleOfTheArticleHilft.replaceAll("\\W", "")));
+        closeWindow();
+        switchTo().window(0);
+        return this;
+    }
+
+    @Step("Checking the first active article in the slider . Presse_static_page")
+    public Presse_static_page_Logic checkingTheFirstActiveArticle() {
+        PKW.CommonMethods commonMethods = new PKW.CommonMethods();
+        firstActiveArticleInSlider().click();
+        commonMethods.checkingUrlAndCloseTab("onlinehandel-fuer-autoersatzteile-da-geht-was-autodoc-setzt-seinen-wachstumskurs-unbeirrt-fort.4320");
+        return this;
+    }
+
+    @Step("Checking the active articles in the slider . Presse_static_page")
+    public Presse_static_page_Logic checkingTheActiveArticles() {
+
+        for (int i = 0; i < activeArticlesInSlider().size(); i++) {
+            String attributeUrl = activeArticlesInSlider().get(i).getAttribute("url");
+            activeArticlesInSlider().get(i).click();
+            switchTo().window(1);
+            String currentArticleUrl = url();
+            Assert.assertEquals(currentArticleUrl, attributeUrl);
+            closeWindow();
+            switchTo().window(0);
+//To Do
+//            String articleUrl = activeArticlesInSlider().get(3).getAttribute("url");
+//            autodocPresseButtonForward().click();
+//            Assert.assertFalse(activeArticlesInSlider().get(3).shouldHave(text(articleUrl)));
         }
         return this;
     }
