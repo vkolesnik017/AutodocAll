@@ -13,6 +13,7 @@
             <class name="ATD.Search.QC_536_SearchBasicFunctionality.QC_539_SearchByArticle"/>
             <class name="ATD.Search.QC_536_SearchBasicFunctionality.QC_540_SearchByValueReifen"/>
             <class name="ATD.Search.QC_536_SearchBasicFunctionality.QC_541_SearchByOenNumber"/>
+            <class name="ATD.Search.QC_536_SearchBasicFunctionality.QC_554_GoToLisingFromSynonymTooltipInSearch"/>
             <class name="ATD.Search.QC_536_SearchBasicFunctionality.QC_2668_SearchByBrandAndArticle"/>
             <class name="ATD.Search.QC_536_SearchBasicFunctionality.QC_2669_CorrectnessOfIssueBySearchingOenAndBrand"/>
         </classes>
@@ -24,7 +25,6 @@
             <class name="ATD.Search.QC_548_SearchTooltips.QC_550_GoToListingFromTooltipInSearch"/>
             <class name="ATD.Search.QC_548_SearchTooltips.QC_552_ArticleNumberTooltipsInSearch"/>
             <class name="ATD.Search.QC_548_SearchTooltips.QC_553_GenericUnderTooltipsSynonymsInSearch"/>
-            <class name="ATD.Search.QC_548_SearchTooltips.QC_554_GoToLisingFromSynonymTooltipInSearch"/>
             <class name="ATD.Search.QC_548_SearchTooltips.QC_2541_CheckingSortingOfValuesInSearchPrompt"/>
         </classes>
     </test>
