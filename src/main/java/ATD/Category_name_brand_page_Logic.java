@@ -99,13 +99,14 @@ public class Category_name_brand_page_Logic extends Category_name_brand_page {
     @Step("Getting the article number and checking for a deposit in mini-cards for the 3K brand. Category_name_brand_page")
     public ArrayList<String> getArticleNumberAndCheckingDepositFor3KBrandFromMiniCard() {
         ArrayList<String> artNumAndDeposit = new ArrayList<>();
+        activeBtnForwardOfTopProductsBlock().scrollIntoView(false);
         for (int i = 0; i < artNumOfTopProduct().size(); i++) {
             if (i == 4) {
                 activeBtnForwardOfTopProductsBlock().click();
                 sleep(2000);
             }
             artNumOfTopProduct().get(i).hover();
-            String artNum = articleNumberInPopUpOfTopProducts(i + 1).getText().replaceAll("\\D+", "");
+            String artNum = articleNumberInPopUpOfTopProducts(i + 1).shouldBe(visible).getText().replaceAll("\\D+", "");
             if (characteristicZustandInPopUpOfTopProducts(i + 1).isDisplayed()) {
                 artNumAndDeposit.add(artNum + " " + "- No deposit");
             } else {
