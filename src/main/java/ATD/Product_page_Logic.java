@@ -53,6 +53,18 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
+    @Step("Checking presence pfand block. Product_page")
+    public Product_page_Logic checkingPresencePfandBlock() {
+        pfandBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Click btn go to cart from cart Drop Menu. Product_page")
+    public CartAccount_page_Logic  clickBtnGoToCartFromCartDropMenu() {
+        btnGoToCartFromBasketDropMenu().shouldBe(visible).click();
+        return page(CartAccount_page_Logic.class);
+    }
+
     // Horizontal car selector
 
     @Step("Choose brand {brandName} in horizontal car selector. Product_page")
@@ -587,6 +599,12 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
+    @Step("presence expected OEN number. Product_page")
+    public Product_page_Logic presenceOenNumber(String expectedOenNumber) {
+        linkInOemBlock().shouldBe(visible).shouldHave(text(expectedOenNumber));
+        return this;
+    }
+
     @Step("Check compatible car and product. Product_page")
     public Product_page_Logic checkCompatibilityCarAndProduct() {
         firstBrandInCompabilityList().shouldHave(text("AUTOBIANCHI")).click();
@@ -875,4 +893,19 @@ public class Product_page_Logic extends Product_page {
         }
         return priseWithoutVat;
     }
+
+    @Step("Checking for the absence of the deposit characteristic for 3k brand goods with a deposit. Product_page")
+    public Product_page_Logic checkingAbsenceZustandCharacteristicFor3kBrandGoodsWithDeposit() {
+        if (uncoverCharactericticBtn().isDisplayed()) {
+            uncoverCharactericticBtn().click();
+        }
+        if (pfandBlock().isDisplayed()) {
+            characteristicZustand().shouldNotBe(visible);
+        }else if (!pfandBlock().isDisplayed()) {
+            characteristicZustand().shouldBe(visible);
+        }
+        return this;
+    }
+
+
 }

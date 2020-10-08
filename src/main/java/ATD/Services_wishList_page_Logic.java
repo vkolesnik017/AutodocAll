@@ -243,4 +243,10 @@ public class Services_wishList_page_Logic extends Services_wishList_page {
         return this;
     }
 
+    @Step("presence of Empty WishList block. Services_wishList_page")
+    public Services_wishList_page_Logic presenceOfEmptyWishListBlock() {
+        emptyWishListBlock().shouldBe(visible);
+        return this;
+    }
+
 }

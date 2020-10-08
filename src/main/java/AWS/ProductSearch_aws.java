@@ -3,6 +3,7 @@ package AWS;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import org.testng.Assert;
 import java.util.ArrayList;
 import java.util.List;
 import static com.codeborne.selenide.Condition.*;
@@ -167,6 +168,23 @@ public class ProductSearch_aws {
     @Step("Get value from deposit field. ProductSearch_aws")
     public String getValueFromDepositField() {
         return depositProductsInTable().getText();
+    }
+
+    @Step("Checking whether a product has a deposit by its article number .ProductSearch_aws")
+    public ProductSearch_aws checkingWhetherProductHasDepositByArtNumber(ArrayList artNumAndDeposit) {
+        depositProductsInTable().waitUntil(visible,10000);
+        for (int a = 0; a < artNumAndDeposit.size(); a++) {
+            String onlyArtNum = String.valueOf(artNumAndDeposit.get(a)).replaceAll("\\D+", "");;
+            String fullText = String.valueOf(artNumAndDeposit.get(a));
+            setValueInSearchField(onlyArtNum);
+            float deposit = Float.parseFloat(getValueFromDepositField());
+            if (deposit == 0) {
+                Assert.assertEquals(fullText, onlyArtNum + " " + "- No deposit");
+            } else if (deposit > 0) {
+                Assert.assertEquals(fullText, onlyArtNum + " " + "- Have deposit");
+            }
+        }
+        return this;
     }
 
 

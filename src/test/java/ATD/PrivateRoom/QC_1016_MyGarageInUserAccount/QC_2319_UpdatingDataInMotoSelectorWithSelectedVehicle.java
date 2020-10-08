@@ -26,7 +26,7 @@ public class QC_2319_UpdatingDataInMotoSelectorWithSelectedVehicle {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "main", "main");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "main");
 
     }
 

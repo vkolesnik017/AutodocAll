@@ -660,6 +660,10 @@ public class Product_page {
         return $x("//div[@class='cart-items-block ']");
     }
 
+    SelenideElement btnGoToCartFromBasketDropMenu() {
+        return $x("//div[@class='cart-items-block ']//a[@class='btn ga-click temp-ga-click']");
+    }
+
     SelenideElement basket() {
         return $x("//a[@class='header-cart__link']");
     }

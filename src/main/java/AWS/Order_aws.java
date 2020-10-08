@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Condition.value;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selenide.*;
@@ -228,8 +229,12 @@ public class Order_aws {
         return $x("//table[@id='table_order_products_list']//td[13]/a");
     }
 
-    private SelenideElement deliveryDeliveryPriceOrderAWS() {
+    private SelenideElement deliveryPriceOrderAWS() {
         return $(".inf_deliveryCost > a");
+    }
+
+    private SelenideElement deliveryPriceInPaymentAndDeliveryTermsBlock() {
+        return $x("//input[@id='Order[DeliveryCost]']");
     }
 
     private SelenideElement heavyLoadsDeliveryPriceOrderAWS() {
@@ -275,6 +280,10 @@ public class Order_aws {
 
     private SelenideElement safeOrderSelector() {
         return $(byId("form_securityDeliveryStatusChange"));
+    }
+
+    private SelenideElement safeOrderPrice() {
+        return $x("(//div[@class='form-group safe-order-block']//input)[1]");
     }
 
     private SelenideElement btnChangeOrderStatusInTest() {
@@ -825,13 +834,13 @@ public class Order_aws {
 
     @Step("Check delivery price {expectedDeliveryPriceOrderAWS} in order AWS. Order_aws")
     public Order_aws checkDeliveryPriceOrderAWS(String expectedDeliveryPriceOrderAWS) {
-        deliveryDeliveryPriceOrderAWS().shouldHave(attribute("data-sum", expectedDeliveryPriceOrderAWS));
+        deliveryPriceOrderAWS().shouldHave(attribute("data-sum", expectedDeliveryPriceOrderAWS));
         return this;
     }
 
     @Step("Check delivery price {expectedDeliveryPriceOrderAWS} in order AWS. Order_aws")
     public Order_aws checkDeliveryPriceOrderAWS(Float expectedDeliveryPriceOrderAWS) {
-        deliveryDeliveryPriceOrderAWS().shouldHave(attribute("data-sum", String.valueOf(expectedDeliveryPriceOrderAWS)));
+        deliveryPriceOrderAWS().shouldHave(attribute("data-sum", String.valueOf(expectedDeliveryPriceOrderAWS)));
         return this;
     }
 
@@ -1084,6 +1093,20 @@ public class Order_aws {
     @Step("Chooses delivery country {country}. Order_aws")
     public Order_aws choosesDeliveryCountry(String country) {
         deliveryCountrySelector(country).click();
+        return this;
+    }
+
+    @Step("Checks that order delivery is free. Order_aws")
+    public Order_aws checkThatOrderDeliveryIsFree() {
+        if (safeOrderSelector().is(text("Включен"))) {
+            String safeOrderPrice = safeOrderPrice().getValue();
+            String soPriceFormat = safeOrderPrice.replace(safeOrderPrice.substring(safeOrderPrice.indexOf(".")),"");
+            deliveryPriceOrderAWS().shouldHave(text(soPriceFormat));
+            deliveryPriceInPaymentAndDeliveryTermsBlock().shouldHave(value(soPriceFormat));
+        } else if (safeOrderSelector().is(text("Выключен"))) {
+            deliveryPriceOrderAWS().shouldHave(text("0"));
+            deliveryPriceInPaymentAndDeliveryTermsBlock().shouldHave(value("0"));
+        }
         return this;
     }
 }

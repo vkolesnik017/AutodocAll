@@ -1,6 +1,7 @@
 package ATD.Characteristics.QC_2387_CheckingCharacteristicConditionForProducts;
 
 import ATD.Category_name_brand_page_Logic;
+import AWS.ProductSearch_aws;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -10,6 +11,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
@@ -29,10 +31,12 @@ public class QC_2424_CheckingAbsenceCharacteristicZustandBrand3kWithDepositInMin
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Checks the lack of characterization Zustand for 3K brand products with collateral in mini cards")
-    public void test(String route) throws SQLException {
+    @Description(value = "Checking the availability of a deposit for 3K brand goods with a deposit in mini-cards")
+    public void testChecksAvailabilityDepositFor3KBrand(String route) {
         openPage(route);
-        new Category_name_brand_page_Logic().checkLackCharacterizationZustandFor3KBrandProducts();
+        ArrayList<String> artNumAndDeposit = new Category_name_brand_page_Logic().getArticleNumberAndCheckingDepositFor3KBrandFromMiniCard();
+        new ProductSearch_aws().openProductSearchPageAndLogin()
+                .checkingWhetherProductHasDepositByArtNumber(artNumAndDeposit);
     }
 
     @AfterMethod

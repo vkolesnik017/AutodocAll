@@ -503,5 +503,39 @@ public class Search_page_Logic extends Search_page {
         List<String> artNum = visibleArtNumOfProduct().stream().limit(countOfProduct).map(n -> n.getText().replaceAll("Artikelnummer: ", "")).collect(Collectors.toList());
         return artNum;
     }
+
+    @Step("go to basket .Search_page")
+    public Cart_page_Logic goToBasket() {
+        basket().shouldBe(visible).click();
+        return page(Cart_page_Logic.class);
+    }
+
+    @Step("check Image of brand at presence of expected article and title ofBrand. Search_page")
+    public Search_page_Logic checkImageOfBrandAtPresenceOfArtAndBrand(String brand, String artNum) {
+        mainListingBlock().shouldBe(visible);
+        for (int i = 0; i < imageOfBrandInProductBlock().size(); i++) {
+            String attributeOfBrandImage = imageOfBrandInProductBlock().get(i).getAttribute("alt");
+            Assert.assertTrue(attributeOfBrandImage.contains(brand));
+            Assert.assertTrue(attributeOfBrandImage.contains(artNum));
+        }
+        return this;
+    }
+
+    @Step("presence OEN number in product page. Search_page")
+    public Search_page_Logic presenceOenNumInProductPage(String expectedBand, String oemNum) {
+        for (int i = 0; i < titleOfProductsInListing().size(); i++) {
+            presenceOfTecDocListing();
+            titleOfProductsInListing().get(i).shouldHave(text(expectedBand));
+            clickOnTitleOfProduct(i).presenceOenNumber(oemNum);
+            back();
+        }
+        return this;
+    }
+
+    @Step("presence OEN number in product page. Search_page")
+    public Product_page_Logic clickOnTitleOfProduct(int positionOfTitle) {
+        titleOfProductsInListing().get(positionOfTitle).shouldBe(visible).click();
+        return page(Product_page_Logic.class);
+    }
 }
 

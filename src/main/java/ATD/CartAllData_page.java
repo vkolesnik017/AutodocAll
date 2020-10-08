@@ -41,6 +41,10 @@ public class CartAllData_page {
         return $(byXpath("//div[@class='order-summary ']//span[@class='free_icon order-delivery']"));
     }
 
+    public SelenideElement freeDeliveryIconForTyres() {
+        return $(byXpath("//div[@class='order-summary ']//span[@class='free_icon order-tyres-delivery']"));
+    }
+
     SelenideElement labelVAT() {
         return $x("//*[@class='alldata-bottom']//*[contains(@class,'total')]//i");
     }
@@ -122,6 +126,10 @@ public class CartAllData_page {
 
     public SelenideElement totalProductPrice() {
         return $(byCssSelector(".total-price"));
+    }
+
+    public SelenideElement unitPrice() {
+        return $x("(//td[@class='price'])[1]");
     }
 
     public SelenideElement pfandPriceInTotalPriceBlock() {
@@ -320,4 +328,8 @@ public class CartAllData_page {
     }
 
     public SelenideElement artNumOfProduct() {return $x("//div[@class='info__nr']");}
+
+    public SelenideElement characteristicZustandInProduct() {
+        return $x("//div[@class='info__more-info']//ul[@style='display: block;']//span[contains(text(),'Zustand')]");
+    }
 }

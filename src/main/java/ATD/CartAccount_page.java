@@ -96,4 +96,8 @@ public class CartAccount_page {
     SelenideElement sendingEmailBtnForPasswordChange() {
         return $x("//div[@class='recovery-popup cart-popup']//a[@class='submit color']");
     }
+
+    SelenideElement btnReturnToCart() {
+        return $x("//div[@class='cart-page-steps']//li[@class='complete link first_step']/a");
+    }
 }
