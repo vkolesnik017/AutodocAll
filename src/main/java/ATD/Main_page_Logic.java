@@ -617,6 +617,7 @@ public class Main_page_Logic extends Main_page {
 
     @Step("Click Versand link in the footer. Main_page")
     public Versand_static_page_Logic clickVersand() {
+        versandLink().scrollTo().hover();
         versandLink().click();
         return page(Versand_static_page_Logic.class);
     }

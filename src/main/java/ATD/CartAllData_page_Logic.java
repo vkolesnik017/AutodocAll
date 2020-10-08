@@ -78,8 +78,9 @@ public class CartAllData_page_Logic extends CartAllData_page {
         float totalPrice = getPriceFromElement(totalProductPrice());
         while (!freeDeliveryIcon().isDisplayed() && totalPrice < deliveryLimit) {
             String beforeClickPrice = totalProductPrice().text();
-            sleep(3000);
+            sleep(1000);
             counterPlusBtn().click();
+            sleep(3000);
             totalProductPrice().shouldHave(not(text(beforeClickPrice)));
             totalPrice = getPriceFromElement(totalProductPrice());
             if (totalPrice < deliveryLimit) {
@@ -89,6 +90,27 @@ public class CartAllData_page_Logic extends CartAllData_page {
                 break;
             }
         }
+        return this;
+    }
+
+    @Step("Checks free delivery absence in case raising the delivery limit. CartAllData_page")
+    public CartAllData_page_Logic checkNoFreeDelivery (float deliveryLimit) {
+        float totalPrice = getPriceFromElement(totalProductPrice());
+        if (totalPrice < deliveryLimit) {
+            while (totalPrice < deliveryLimit) {
+                String beforeClickPrice = totalProductPrice().text();
+                sleep(1000);
+                counterPlusBtn().click();
+                sleep(3000);
+                totalProductPrice().shouldHave(not(text(beforeClickPrice)));
+                totalPrice = getPriceFromElement(totalProductPrice());
+                if (totalPrice > deliveryLimit) {
+                    checkAbsenceFreeDeliveryPriceCartAllDataPage();
+                    break;
+                }
+            }
+        } else
+            checkAbsenceFreeDeliveryPriceCartAllDataPage();
         return this;
     }
 
@@ -157,6 +179,19 @@ public class CartAllData_page_Logic extends CartAllData_page {
     public CartAllData_page_Logic checkAbsenceHeavyLoadsDeliveryPrice() {
         heavyLoadsShippingCost().shouldNotBe(visible);
         return this;
+    }
+
+    @Step("Get regular delivery price. CartAllData_page")
+    public float getRegularDeliveryPrice() {
+        String deliveryPrice = deliveryPrice().getText();
+        float deliveryPriceFormat = Float.parseFloat(deliveryPrice.substring(0, deliveryPrice.indexOf(" ")).replaceAll(",", "."));
+        return deliveryPriceFormat;
+    }
+
+    @Step("Get total delivery price and safe order. CartAllData_page")
+    public float getTotalDeliveryPriceAndSafeOrder(float deliveryPrice, float safeOrderPrice) {
+        float totalPrice = deliveryPrice + safeOrderPrice;
+        return totalPrice;
     }
 
     @Step("Checks for the absence of VAT percentage. CartAllData_page")
@@ -247,7 +282,7 @@ public class CartAllData_page_Logic extends CartAllData_page {
     @Step("Check presence Safe Order price from order summery block. CartAllData_page")
     public CartAllData_page_Logic checkPresenceSafeOrderPriceFromOrderSummeryBlock() {
         if (!safeOrderCostFromHeavyLoadsProduct().isDisplayed()) {
-            safeOrderFromOrderSummaryBlock().shouldBe(visible);
+            safeOrderPriceFromOrderSummaryBlock().shouldBe(visible);
         }
         return this;
     }
@@ -256,6 +291,13 @@ public class CartAllData_page_Logic extends CartAllData_page {
     public CartAllData_page_Logic checkAbsenceSafeOrderPriceFromOrderSummeryBlock() {
         safeOrderCostFromHeavyLoadsProduct().shouldNotBe(visible);
         return this;
+    }
+
+    @Step("Get safe order price. CartAllData_page")
+    public float getSafeOrderPrice() {
+        String safeOrderPrice = safeOrderPriceFromOrderSummaryBlock().getText();
+        float safeOrderPriceFormat = Float.parseFloat(safeOrderPrice.substring(0, safeOrderPrice.indexOf(" ")).replaceAll(",", "."));
+        return safeOrderPriceFormat;
     }
 
     @Step("Add safe order price in order and checks what total price included SO. CartAllData_page")
@@ -462,7 +504,7 @@ public class CartAllData_page_Logic extends CartAllData_page {
     @Step("Transition to page Cart page. CartAllData_page")
     public Cart_page_Logic clickBtnReturnToCartPage() {
         sleep(5000);
-        returnToCartPage().click();
+        returnToCartPage().scrollTo().hover().click();
         return page(Cart_page_Logic.class);
     }
 

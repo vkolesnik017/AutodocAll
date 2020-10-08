@@ -10,8 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static ATD.CommonMethods.getCurrencyAndVerify;
-import static ATD.CommonMethods.getPriceFromElement;
+import static ATD.CommonMethods.*;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -82,6 +81,12 @@ public class Cart_page_Logic extends Cart_page {
                 break;
             }
         }
+        return this;
+    }
+
+    @Step("Checks presence free delivery icon. Cart_page")
+    public Cart_page_Logic checkPresenceFreeDeliveryIcon() {
+        freeDeliveryIcon().waitUntil(visible,10000);
         return this;
     }
 
