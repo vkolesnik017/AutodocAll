@@ -1,0 +1,114 @@
+package ATD;
+
+import io.qameta.allure.Step;
+import org.openqa.selenium.Keys;
+import org.testng.Assert;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static ATD.CommonMethods.checkingContainsUrl;
+import static ATD.CommonMethods.getAttributeFromUnVisibleElement;
+import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selenide.back;
+import static com.codeborne.selenide.Selenide.switchTo;
+
+public class Supplier_page_Logic extends Supplier_page {
+    @Step("check all headlines and images. Supplier_page")
+    public Supplier_page_Logic checkAllHeadlinesAndImages() {
+        iconOfBrandInMainHeadline().shouldBe(visible);
+        titleOfBrandInMainHeadline().shouldBe(visible).shouldHave(text("BOSCH Autoteile, Motoröl, Autopflege, Autozubehör, Werkzeuge"));
+        breadCrumbsBlock().shouldBe(visible);
+        selectorBlock().shouldBe(visible);
+        titleOfTopChildCategories().shouldBe(visible).shouldHave(text("FINDEN SIE DIE BESTEN ANGEBOTE FÜR BELIEBTE BOSCH PKW-TEILE"));
+        childCategories().shouldHaveSize(12);
+        titleOfAdvantagesBlock().shouldBe(visible).shouldHave(text("WARUM SOLLTEN SIE BOSCH AUTOPRODUKTE KAUFEN?"));
+        blocksOfOfAdvantagesBlock().shouldHaveSize(5);
+        titleOfParentCategoriesBlock().shouldBe(visible).shouldHave(text("BOSCH ONLINEKATALOG FÜR AUTOTEILE, MOTORÖL, AUTOPFLEGE, AUTOZUBEHÖR, WERKZEUGE"));
+        titleOfReviewBlock().shouldBe(visible).shouldHave(text("Kundenbewertungen zu BOSCH Kfz-Teilen & Produkten"));
+        titleOfBrandsBlock().shouldBe(visible).shouldHave(text("Weitere beliebte Hersteller von Aftermarket-Autoteilen"));
+        titleOfTopProductsBlock().shouldBe(visible).shouldHave(text("DIE BESTEN ANGEBOTE FÜR BOSCH PRODUKTE"));
+        topProductsBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("check elements of brands block. Supplier_page")
+    public Supplier_page_Logic checkElementsOfBrandsBlock() {
+        titleOfBrandsBlock().shouldBe(visible);
+        brandLinks().shouldHaveSize(15);
+        return this;
+    }
+
+    @Step("get attribute of brand link. Supplier_page")
+    public List<String> getAttributeOfBrandLinks() {
+        List<String> titleOfBrands = brandLinks().stream().map(n -> getAttributeFromUnVisibleElement(n, "href").replaceAll("http.+\\/", "")).collect(Collectors.toList());
+        return titleOfBrands;
+    }
+
+    @Step("check for absence of brand in brands block. Supplier_page")
+    public Supplier_page_Logic checkForAbsenceOfBrandInBrandsBlock(List<String> list, String absenceBrand) {
+        Assert.assertFalse(list.contains(absenceBrand));
+        return this;
+    }
+
+    @Step("click once to right in brands block. Supplier_page")
+    public Supplier_page_Logic clickOnceToRightInBrandsBlock() {
+        String urlFromLastBrandLink = visibleBrandsLinks().last().getAttribute("href");
+        btnNextOfBrandsBlock().shouldBe(visible).click();
+        visibleBrandsLinks().last().shouldNotHave(attribute("href", urlFromLastBrandLink));
+        return this;
+    }
+
+    @Step("click once to left in brands block. Supplier_page")
+    public Supplier_page_Logic clickOnceToLeftInBrandsBlock() {
+        String urlFromFirstBrandLink = visibleBrandsLinks().first().getAttribute("href");
+        btnBackOfBrandsBlock().shouldBe(visible).click();
+        visibleBrandsLinks().first().shouldNotHave(attribute("href", urlFromFirstBrandLink));
+        return this;
+    }
+
+    @Step("check transition to brand page by all brands. Supplier_page")
+    public Supplier_page_Logic checkTransitionToBrandPageByAllBrands() {
+        checkTransitionOfFirstVisibleBrands();
+        checkTransitionOfOthersBrands();
+        return this;
+    }
+
+    @Step("check transition of first visible brand. Supplier_page")
+    public Supplier_page_Logic checkTransitionOfFirstVisibleBrands() {
+        String urlOfBrand;
+        for (int i = 0; i < visibleBrandsLinks().size(); i++) {
+            titleOfBrandsBlock().shouldBe(visible);
+            urlOfBrand = visibleBrandsLinks().get(i).getAttribute("href");
+            clickOnVisibleBrands(i);
+            checkingContainsUrl(urlOfBrand);
+            back();
+        }
+        return this;
+    }
+
+    @Step("check transition of others brand. Supplier_page")
+    public Supplier_page_Logic checkTransitionOfOthersBrands() {
+        String urlOfBrand;
+        String expectedUrlOfBrand;
+        String select = Keys.chord(Keys.CONTROL, Keys.RETURN);
+        while (!notActiveBtnNextOfBrandsBlock().isDisplayed()) {
+            urlOfBrand = visibleBrandsLinks().last().getAttribute("href");
+            btnNextOfBrandsBlock().click();
+            visibleBrandsLinks().last().shouldNotHave(attribute("href", urlOfBrand));
+            expectedUrlOfBrand = visibleBrandsLinks().last().getAttribute("href");
+            visibleBrandsLinks().last().sendKeys(select);
+            switchTo().window(1);
+            checkingContainsUrl(expectedUrlOfBrand);
+            switchTo().window(1).close();
+            switchTo().window(0);
+        }
+        return this;
+    }
+
+    @Step("click on visible brand. Supplier_page")
+    public Supplier_page_Logic clickOnVisibleBrands(int positionOfBrand) {
+        visibleBrandsLinks().get(positionOfBrand).click();
+        return this;
+    }
+}

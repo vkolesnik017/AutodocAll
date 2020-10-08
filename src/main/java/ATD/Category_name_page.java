@@ -47,4 +47,12 @@ public class Category_name_page {
     SelenideElement infoTextOfDangerousPopUp() {return $x("//div[@class='popup-dangerous']//p");}
 
     ElementsCollection visibleTopProducts() {return $$x("//div[@class='product-list__item active']").filter(visible);}
+
+    ElementsCollection allTopBrands() {return $$x("//div[@class='kategorie_top_brands']//li/a");}
+
+    ElementsCollection visibleTopBrands() {return $$x("//div[@class='kategorie_top_brands']//li/a").filter(visible);}
+
+    SelenideElement topBrandsBlock() {return $x("//div[@class='kategorie_top_brands']");}
+
+    SelenideElement btnMoreOfBrandsBlock() {return $x("//div[@class='kategorie_top_brands']//div[@class='m_text show']");}
 }

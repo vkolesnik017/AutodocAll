@@ -718,7 +718,14 @@ public class Main_page {
     SelenideElement blockLinkUnderTheSocialNetworksBlock() {
         return $x("//*[@class='footer__social']");
     }
-    ElementsCollection allLinksInFooter() {
-        return $$x("//*[@class='footer__links']//a").filter(visible);
-    }
+
+    ElementsCollection allLinksInFooter() { return $$x("//*[@class='footer__links']//a").filter(visible); }
+
+    SelenideElement titleOfBrandsBlock() {return $x("//div[@class='title']/h3");}
+
+    ElementsCollection visibleTopImageBrands() {return $$x("//div[@class='top_brands']//li//img");}
+
+    SelenideElement topBrandsBlock() {return $x("//div[@class='top_brands']");}
+
+    ElementsCollection visibleTopBrands() {return $$x("//div[@class='top_brands']//li/a");}
 }
