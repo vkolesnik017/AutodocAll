@@ -1,4 +1,4 @@
-package ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS;
+package ATD.Orders_AWS_Delivery.QC_19_WorkWithOrdersInAWS;
 
 import ATD.Product_page_Logic;
 import Common.SetUp;
@@ -22,10 +22,9 @@ import static Common.SetUp.setUpBrowser;
 import static AWS.SearchOrders_page_aws.searchOrderPageURL;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_150_CreatingAwsOrder_WithDropProductDeliveredToCountryToWhichDropIsNotDelivered {
+public class QC_171_CreatingAwsOrder_WithHeaveLoadsDeliveryToCountryToWhichHeaveLoadsNotDelivery {
 
-
-    private String userID = "15371328", articleNum, productArticleID;
+    private String userID = "15371408", articleNum;
     private ArrayList userDataInCreateOrder, userData;
 
     private Product_page_Logic product_page_logic = new Product_page_Logic();
@@ -38,29 +37,29 @@ public class QC_150_CreatingAwsOrder_WithDropProductDeliveredToCountryToWhichDro
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "productDrop1");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "HeavyLoasdProduct1");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks creating AWS order with drop product delivered to country to which drop is not delivered")
-    public void testCreatingOrderInAwsWithDropProduct(String route) {
+    @Description(value = "Test checks creating AWS order with heave loads delivered to country to which drop is not delivered")
+    public void testCreatingOrderInAwsWithHeaveLoads(String route) {
         openPage(route);
         articleNum = product_page_logic.getArticleNumber();
-        productArticleID = product_page_logic.getProductId();
         userData = new Customer_view_aws().openCustomerPersonalArea(userID)
                 .getUserData();
         openPage(searchOrderPageURL);
         userDataInCreateOrder = new SearchOrders_page_aws().clickAddOrderBtn()
                 .fillsInFieldCustomerID(userID)
-                .chooseSkinInSelector("auto-doc.it (IT)")
+                .chooseSkinInSelector("autodoc.de (DE)")
                 .getUserDataInOrder();
         Assert.assertEquals(userData, userDataInCreateOrder);
-        orderAdd_page_aws.selectedPaymentMethod("PayPal")
+        orderAdd_page_aws.choosesDeliveryCountry("Finland")
+                .selectedPaymentMethod("PayPal")
                 .selectedDeliveryMethod("Standardversand")
                 .addProduct(articleNum)
-                .chooseArticleIDOfDesiredProductAndClickBtnChooseProduct(productArticleID)
+                .checkPresenceTableOfSuppliersAndClickBtnSelect()
                 .checkPresencePopupWithDeliveryError();
     }
 
@@ -69,4 +68,3 @@ public class QC_150_CreatingAwsOrder_WithDropProductDeliveredToCountryToWhichDro
         closeWebDriver();
     }
 }
-

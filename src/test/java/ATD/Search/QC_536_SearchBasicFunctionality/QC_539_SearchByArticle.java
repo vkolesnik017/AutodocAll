@@ -11,37 +11,56 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.sql.SQLException;
+
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.have;
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.Selenide.open;
 
 public class QC_539_SearchByArticle {
 
-  private String articleForSearch = "20049";
+    private String articleForSearch = "20049";
 
-  @BeforeClass
-  void setUp() {
-    setUpBrowser(false, "chrome", "77.0");
-  }
+    @BeforeClass
+    void setUp() {
+        setUpBrowser(false, "chrome", "77.0");
+    }
 
-  @DataProvider(name = "route")
-  Object[] dataProvider() {
-    return new SetUp("ATD").setUpShop("prod", "DE");
-  }
+    @DataProvider(name = "route")
+    Object[] dataProvider() {
+        return new SetUp("ATD").setUpShop("prod", "DE");
+    }
 
-  @Test(dataProvider = "route")
-  @Flaky
-  @Owner(value = "Evlentiev")
-  @Description(value = "The test verifies that at the listing have product with article 20046 after search")
-  public void testSearchByArticle(String route) {
-    open(route);
-    new Main_page_Logic().useSearch(articleForSearch);
-    new Listing_page().productTitleInListMode().filter(have(text(articleForSearch))).shouldHave(sizeNotEqual(0));
-  }
-  @AfterMethod
-  public void close() {
-    closeWebDriver();
-  }
+    @Test(dataProvider = "route")
+    @Flaky
+    @Owner(value = "Evlentiev")
+    @Description(value = "The test verifies that at the listing have product with article 20046 after search")
+    public void testSearchByArticle(String route) {
+        open(route);
+        new Main_page_Logic().useSearch(articleForSearch);
+        new Listing_page().productTitleInListMode().filter(have(text(articleForSearch))).shouldHave(sizeNotEqual(0));
+    }
+
+    @DataProvider(name = "routeLKW")
+    Object[] dataProviderLKW() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_main");
+    }
+
+    @Test(dataProvider = "routeLKW")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "The test verifies that at the listing have product with article 20046 after search")
+    public void testSearchByArticleLKW(String route) {
+        open(route);
+        new Main_page_Logic().useSearch(articleForSearch);
+        new Listing_page().productTitleInListMode().filter(have(text(articleForSearch))).shouldHave(sizeNotEqual(0));
+    }
+
+    @AfterMethod
+    public void close() {
+        closeWebDriver();
+    }
 }

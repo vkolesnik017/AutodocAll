@@ -1,4 +1,4 @@
-package ATD.OrdersAWS_Delivery.QC_19_WorkWithOrdersInAWS;
+package ATD.Orders_AWS_Delivery.QC_19_WorkWithOrdersInAWS;
 
 import ATD.Product_page_Logic;
 import Common.SetUp;
@@ -22,9 +22,10 @@ import static Common.SetUp.setUpBrowser;
 import static AWS.SearchOrders_page_aws.searchOrderPageURL;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_173_CreatingAwsOrder_WithDangerousGoodsToCountryToWhichItIsNotDelivered {
+public class QC_150_CreatingAwsOrder_WithDropProductDeliveredToCountryToWhichDropIsNotDelivered {
 
-    private String userID = "15089943", articleNum;
+
+    private String userID = "15371328", articleNum, productArticleID;
     private ArrayList userDataInCreateOrder, userData;
 
     private Product_page_Logic product_page_logic = new Product_page_Logic();
@@ -37,29 +38,29 @@ public class QC_173_CreatingAwsOrder_WithDangerousGoodsToCountryToWhichItIsNotDe
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "productDangerousGoods1");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "productDrop1");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks order creation in AWS with dangerous goods to country to which it is not delivered")
-    public void testCreatingOrderInAwsWithDangerousGoodsDeliveryToWrongCountry(String route) {
+    @Description(value = "Test checks creating AWS order with drop product delivered to country to which drop is not delivered")
+    public void testCreatingOrderInAwsWithDropProduct(String route) {
         openPage(route);
         articleNum = product_page_logic.getArticleNumber();
+        productArticleID = product_page_logic.getProductId();
         userData = new Customer_view_aws().openCustomerPersonalArea(userID)
                 .getUserData();
         openPage(searchOrderPageURL);
         userDataInCreateOrder = new SearchOrders_page_aws().clickAddOrderBtn()
                 .fillsInFieldCustomerID(userID)
-                .chooseSkinInSelector("autodoc.de (DE)")
+                .chooseSkinInSelector("auto-doc.it (IT)")
                 .getUserDataInOrder();
         Assert.assertEquals(userData, userDataInCreateOrder);
-        orderAdd_page_aws.choosesDeliveryCountry("Norway")
-                .selectedPaymentMethod("PayPal")
+        orderAdd_page_aws.selectedPaymentMethod("PayPal")
                 .selectedDeliveryMethod("Standardversand")
                 .addProduct(articleNum)
-                .checkPresenceTableOfSuppliersAndClickBtnSelect()
+                .chooseArticleIDOfDesiredProductAndClickBtnChooseProduct(productArticleID)
                 .checkPresencePopupWithDeliveryError();
     }
 
@@ -68,3 +69,4 @@ public class QC_173_CreatingAwsOrder_WithDangerousGoodsToCountryToWhichItIsNotDe
         closeWebDriver();
     }
 }
+
