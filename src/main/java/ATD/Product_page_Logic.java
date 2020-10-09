@@ -907,5 +907,10 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
-
+    @Step("compare article number of product. Product_page")
+    public Product_page_Logic compareArtNumOfProduct(String expectedArtNum) {
+        artNumOfProduct().shouldBe(visible);
+        Assert.assertEquals(artNumOfProduct().getText(),expectedArtNum);
+        return this;
+    }
 }
