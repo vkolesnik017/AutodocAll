@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Catalog: Brands" parallel="methods" thread-count="2">
+
+    <listeners>
+        <listener class-name="Common.ProjectListener"/>
+    </listeners>
+
+    <test name="QC_33_BrandPage">
+        <classes>
+            <class name="ATD.Catalog_Brands.QC_33_BrandPage.QC_2628_ElementsOfBrandsBlockInMainPage"/>
+            <class name="ATD.Catalog_Brands.QC_33_BrandPage.QC_2629_TransitionToBrandPage"/>
+            <class name="ATD.Catalog_Brands.QC_33_BrandPage.QC_2630_MatchAllHeadlinesAndImages"/>
+            <class name="ATD.Catalog_Brands.QC_33_BrandPage.QC_2631_BrandsBlockAtBrandMainPage"/>
+        </classes>
+    </test>
+
+
+</suite>
