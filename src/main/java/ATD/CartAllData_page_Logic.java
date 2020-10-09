@@ -508,6 +508,13 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return page(Cart_page_Logic.class);
     }
 
+    @Step("Transition to page Payments page. CartAllData_page")
+    public Cart_page_Logic clickBtnReturnToPaymentsPage() {
+        sleep(5000);
+        returnToCartPaymentsPage().scrollTo().hover().click();
+        return page(Cart_page_Logic.class);
+    }
+
     @Step("Check of id {idOfProduct} added product in AllData. CartAllData_page")
     public CartAllData_page_Logic checkOfIdAddedProductInAllData(String idOfProduct) {
         idOfAddedProduct().shouldHave(attribute("data-article_id", idOfProduct));

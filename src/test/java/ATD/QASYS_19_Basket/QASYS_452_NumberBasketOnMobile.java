@@ -16,27 +16,27 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class QASYS_452_NumberBasketOnMobile {
 
-  @BeforeClass
-  void setUp() {
-    setUpBrowser(false, "chrome", "77.0");
-  }
+    @BeforeClass
+    void setUp() {
+        setUpBrowser(false, "chrome", "77.0");
+    }
 
-  @DataProvider(name = "route", parallel = true)
-  Object[] dataProvider() {
-    return new SetUp("ATD").setUpShop("mob", "DE_m");
-  }
+    @DataProvider(name = "route", parallel = true)
+    Object[] dataProvider() {
+        return new SetUp("ATD").setUpShop("mob", "DE_m");
+    }
 
-  @Owner(value = "Evlentiev")
-  @Test(dataProvider = "route")
-  @Flaky
-  @Description(value = "check number basket on mobile site")
-  public void checkNumberBasketOnMobile(String route) {
-    open(route);
-    new Main_page_mob().numberBasket().shouldBe(visible);
-  }
+    @Owner(value = "Evlentiev")
+    @Test(dataProvider = "route")
+    @Flaky
+    @Description(value = "check number basket on mobile site")
+    public void checkNumberBasketOnMobile(String route) {
+        open(route);
+        new Main_page_mob().numberBasket().shouldBe(visible);
+    }
 
-  @AfterMethod
-  public void close() {
-    closeWebDriver();
-  }
+    @AfterMethod
+    public void close() {
+        closeWebDriver();
+    }
 }

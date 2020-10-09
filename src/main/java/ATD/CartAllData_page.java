@@ -89,6 +89,10 @@ public class CartAllData_page {
         return $x("//li[@class='complete link first_step']/a");
     }
 
+    SelenideElement returnToCartPaymentsPage() {
+       return $x("//li[@class='third_step complete link ']/a");
+    }
+
     // locator only for CH
     public SelenideElement vatPriceInHead() {
         return $(byXpath("//*[contains(@class,'top')]/div[4]/span[2]"));
