@@ -1,7 +1,7 @@
 package ATD.Catalog_Brands.QC_33_BrandPage;
 
-import Common.SetUp;
 import ATD.Supplier_page_Logic;
+import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -41,7 +41,6 @@ public class QC_2631_BrandsBlockAtBrandMainPage {
         List<String> linksOfBrands = supplierPage.getAttributeOfBrandLinks();
         supplierPage.checkForAbsenceOfBrandInBrandsBlock(linksOfBrands, "hella").clickOnceToRightInBrandsBlock()
                 .clickOnceToLeftInBrandsBlock().checkTransitionToBrandPageByAllBrands();
-
 
     }
 

@@ -546,17 +546,17 @@ public class Moto_main_page_Logic extends Moto_main_page {
 
     @Step("get brand from TOP product title .Moto_main_page")
     public String getBrandFromTopProductTitle() {
-        String titleOfBrand = titleOfTopProducts().get(0).getText().replace(titleOfTopProducts().get(0).getText().substring(titleOfTopProducts().get(0).getText().indexOf(" ")), "").toLowerCase();
+        String titleOfBrand = titleOfTopProducts().get(0).getAttribute("url");
         return titleOfBrand;
     }
 
     @Step("Go to product page from TOP products block through Image, icon of brand, title in tecDoc listing .Moto_main_page")
     public Moto_main_page_Logic goToProductPageFromTopBlock(String brand) {
-        clickOnImageOfTopProduct().checkUrlOfProductPage("autodoc.de/" + brand + "/");
+        clickOnImageOfTopProduct().checkUrlOfProductPage(brand);
         back();
-        clickOnTitleOfTopProduct().checkUrlOfProductPage("autodoc.de/" + brand + "/");
+        clickOnTitleOfTopProduct().checkUrlOfProductPage(brand);
         back();
-        clickOnDetailsOfTopProduct().checkUrlOfProductPage("autodoc.de/" + brand + "/");
+        clickOnDetailsOfTopProduct().checkUrlOfProductPage(brand);
         return this;
     }
 

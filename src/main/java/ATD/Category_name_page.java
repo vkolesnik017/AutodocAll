@@ -55,4 +55,6 @@ public class Category_name_page {
     SelenideElement topBrandsBlock() {return $x("//div[@class='kategorie_top_brands']");}
 
     SelenideElement btnMoreOfBrandsBlock() {return $x("//div[@class='kategorie_top_brands']//div[@class='m_text show']");}
+
+    SelenideElement priceInfoText() {return $x("//div[@class='summary-table']/div[1]");}
 }

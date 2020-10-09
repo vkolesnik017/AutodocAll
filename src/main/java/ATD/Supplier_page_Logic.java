@@ -41,7 +41,7 @@ public class Supplier_page_Logic extends Supplier_page {
 
     @Step("get attribute of brand link. Supplier_page")
     public List<String> getAttributeOfBrandLinks() {
-        List<String> titleOfBrands = brandLinks().stream().map(n -> getAttributeFromUnVisibleElement(n, "href").replaceAll("http.+\\/", "")).collect(Collectors.toList());
+        List<String> titleOfBrands = brandLinks().stream().map(n -> getAttributeFromUnVisibleElement(n, "href").replaceAll("^.+\\/", "")).collect(Collectors.toList());
         return titleOfBrands;
     }
 
