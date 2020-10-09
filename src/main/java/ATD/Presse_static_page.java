@@ -111,11 +111,11 @@ class Presse_static_page {
     }
 
     ElementsCollection activeArticlesInSlider() {
-        return $$(By.xpath("//*[@class='presse-slides__item slick-slide slick-active']//span"));
+        return $$(By.xpath("//div[@class='slick-track']/*[self::div[@class='presse-slides__item slick-slide slick-current slick-active'] or self::div[@class='presse-slides__item slick-slide slick-active'] or self::div[@class='presse-slides__item slick-slide']] //span"));
     }
 
     SelenideElement firstActiveArticleInSlider() {
-        return $(By.xpath("//*[@class='presse-slides__item slick-slide slick-current slick-active']"));
+        return $(By.xpath("//*[@class='presse-slides__item slick-slide slick-current slick-active']//span"));
     }
 }
 

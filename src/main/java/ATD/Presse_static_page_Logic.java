@@ -171,29 +171,16 @@ public class Presse_static_page_Logic extends Presse_static_page {
         return this;
     }
 
-    @Step("Checking the first active article in the slider . Presse_static_page")
-    public Presse_static_page_Logic checkingTheFirstActiveArticle() {
-        PKW.CommonMethods commonMethods = new PKW.CommonMethods();
-        firstActiveArticleInSlider().click();
-        commonMethods.checkingUrlAndCloseTab("onlinehandel-fuer-autoersatzteile-da-geht-was-autodoc-setzt-seinen-wachstumskurs-unbeirrt-fort.4320");
-        return this;
-    }
-
     @Step("Checking the active articles in the slider . Presse_static_page")
-    public Presse_static_page_Logic checkingTheActiveArticles() {
-
+    public Presse_static_page_Logic checkingTheActiveArticle() throws IOException {
         for (int i = 0; i < activeArticlesInSlider().size(); i++) {
-            String attributeUrl = activeArticlesInSlider().get(i).getAttribute("url");
+            String attributeUrl = activeArticlesInSlider().get(i).getAttribute("url").replaceAll("(^.+\\/\\/)(\\w{3}\\.\\w{2,10}\\W?\\w{2,}\\.\\w{2,3})(.+)", "$2");
             activeArticlesInSlider().get(i).click();
             switchTo().window(1);
             String currentArticleUrl = url();
-            Assert.assertEquals(currentArticleUrl, attributeUrl);
+            Assert.assertTrue(currentArticleUrl.contains(attributeUrl));
             closeWindow();
             switchTo().window(0);
-//To Do
-//            String articleUrl = activeArticlesInSlider().get(3).getAttribute("url");
-//            autodocPresseButtonForward().click();
-//            Assert.assertFalse(activeArticlesInSlider().get(3).shouldHave(text(articleUrl)));
         }
         return this;
     }

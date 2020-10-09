@@ -44,8 +44,7 @@ public class QC_2413_StaticPage_presse {
                 .checkingTheDownloadsJPG()
                 .checkingTheDownloadsPDFHilftBlock()
                 .checkingTheTitleHilftBlockPDF()
-                .checkingTheFirstActiveArticle()
-                .checkingTheActiveArticles();
+                .checkingTheActiveArticle();
     }
 
     @AfterMethod
