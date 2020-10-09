@@ -1109,4 +1109,11 @@ public class Order_aws {
         }
         return this;
     }
+
+    @Step("Checks sum delivery in order. Order_aws")
+    public Order_aws checkSumDeliveryInOrder(float deliveryPrice) {
+        deliveryPriceInPaymentAndDeliveryTermsBlock().shouldHave(value(String.valueOf(deliveryPrice)));
+        deliveryPriceOrderAWS().shouldHave(text(String.valueOf(deliveryPrice)));
+        return this;
+    }
 }
