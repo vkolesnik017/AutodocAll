@@ -1397,5 +1397,18 @@ public class Listing_page_Logic extends Listing_page {
         return this;
     }
 
+    @Step("Checking for the absence of the deposit characteristic for goods with a deposit. Listing_page")
+    public Listing_page_Logic checkingAbsenceZustandCharacteristicForGoodsWithDeposit() {
+        for (int i = 0; i < cardProducts().size(); i++) {
+            if (pfandBlockByIndex(i + 1).isDisplayed()) {
+                characteristicZustandByIndex(i + 1).shouldNotBe(visible);
+            }else if (!pfandBlockByIndex(i + 1).isDisplayed()) {
+                characteristicZustandByIndex(i + 1).shouldBe(visible);
+            }
+        }
+        return this;
+    }
+
+
 }
 
