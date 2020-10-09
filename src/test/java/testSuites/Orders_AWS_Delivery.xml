@@ -96,4 +96,16 @@
         </classes>
     </test>
 
+    <test name="QC_2506_FreeDeliveryLimits_PositiveCase">
+        <classes>
+            <class name="ATD.Orders_AWS_Delivery.QC_2505_Delivery.QC_2506_FreeDeliveryLimits_PositiveCase"/>
+        </classes>
+    </test>
+
+    <test name="QC_2507_FreeDeliveryLimits_NegativeCase">
+        <classes>
+            <class name="ATD.Orders_AWS_Delivery.QC_2505_Delivery.QC_2507_FreeDeliveryLimits_NegativeCase"/>
+        </classes>
+    </test>
+
 </suite>

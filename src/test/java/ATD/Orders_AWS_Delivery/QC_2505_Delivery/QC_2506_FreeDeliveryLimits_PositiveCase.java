@@ -16,20 +16,20 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.*;
 import static Common.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
 
 public class QC_2506_FreeDeliveryLimits_PositiveCase {
 
     String mail = "QC_2506_autotest@mailinator.com";
+    private Cart_page_Logic cart_page_logic = new Cart_page_Logic();
 
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "shop", parallel = false)
+    @DataProvider(name = "shop", parallel = true)
     Object[] dataProvider() {
         return new SetUp("ATD").setUpShop("prod","AT,BG,BE,CH,CZ,DE,DK,EE,ES,FI,FR,EN,GR,HU,IT,LD,LT,LV,NL,NO,PL,PT,RO,SE,SI,SK");
     }
@@ -54,9 +54,10 @@ public class QC_2506_FreeDeliveryLimits_PositiveCase {
                 .clickOnTheDesiredPaymentMethod(currentShop, "Bank")
                 .nextBtnClick()
                 .makeAndCheckLimitPriceForFreeDelivery(deliveryLimit)
-                .clickBtnReturnToCartPage()
-                .freeDeliveryIcon().shouldBe(visible);
-        new Cart_page_Logic().clickBtnNextAndTransitionOnAddressPage()
+                .clickBtnReturnToCartPage();
+        checkingContainsUrl("/basket");
+        cart_page_logic.checkPresenceFreeDeliveryIcon();
+        cart_page_logic.clickBtnNextAndTransitionOnAddressPage()
                 .fillFieldTelNumForShipping("200+002")
                 .fillInCompanyIdFieldForCountryWhereIdNeeded(currentShop, currentShop, "autotest");
         String orderNumber = new CartPayments_page_Logic().clickOnTheDesiredPaymentMethod(currentShop, "Bank")

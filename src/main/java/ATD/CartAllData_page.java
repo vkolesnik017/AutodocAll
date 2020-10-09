@@ -160,7 +160,7 @@ public class CartAllData_page {
         return $x("//div[@class='order-summary ']//div[5]//span[2]");
     }
 
-    SelenideElement safeOrderFromOrderSummaryBlock() {
+    SelenideElement safeOrderPriceFromOrderSummaryBlock() {
         return $x("//div[@class='order-summary ']//div[4]//span[2]");
     }
 

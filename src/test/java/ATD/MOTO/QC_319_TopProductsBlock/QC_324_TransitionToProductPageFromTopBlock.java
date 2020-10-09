@@ -36,9 +36,9 @@ public class QC_324_TransitionToProductPageFromTopBlock {
     @Description(value = "Test checks transition to product page from TOP block")
     public void testChecksTransitionToProductPageFromTopBlock(String route) {
         openPage(route);
-        String titleOfBrand = new Moto_main_page_Logic().getBrandFromTopProductTitle();
+        String urlOfBrand = new Moto_main_page_Logic().getBrandFromTopProductTitle();
         new Moto_main_page_Logic()
-                .goToProductPageFromTopBlock(titleOfBrand);
+                .goToProductPageFromTopBlock(urlOfBrand);
     }
 
     @DataProvider(name = "routesCategory", parallel = true)
