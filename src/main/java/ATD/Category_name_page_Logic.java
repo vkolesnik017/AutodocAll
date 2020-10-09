@@ -107,7 +107,7 @@ public class Category_name_page_Logic extends Category_name_page {
 
     @Step("check of visible TOP products. Category_name_page")
     public Category_name_page_Logic checkOfVisibleTopProducts() {
-        for (int i=0; i<visibleTopProducts().size();i++){
+        for (int i = 0; i < visibleTopProducts().size(); i++) {
             visibleTopProducts().get(i).shouldBe(visible);
         }
         return this;
@@ -133,4 +133,33 @@ public class Category_name_page_Logic extends Category_name_page {
         return this;
     }
 
+    @Step("check transition to brand page by click on all brands. Category_name_page")
+    public Category_name_page_Logic checkTransitionToBrandPageByAllBrands() {
+        String urlOfBrandPage;
+        for (int i = 0; i < allTopBrands().size(); i++) {
+            topBrandsBlock().shouldBe(visible);
+            btnMoreOfBrandsBlock().shouldBe(visible).click();
+            visibleTopBrands().shouldHaveSize(24);
+            urlOfBrandPage = visibleTopBrands().get(i).getAttribute("href");
+            clickOnTopBrands(i);
+            checkingContainsUrl(urlOfBrandPage);
+            back();
+        }
+        return this;
+    }
+
+    @Step("presence of TOP brands block. Category_name_page")
+    public Category_maker_brand_page_Logic clickOnTopBrands(int positionOfTopBrands) {
+        visibleTopBrands().get(positionOfTopBrands).click();
+        return page(Category_maker_brand_page_Logic.class);
+    }
+
+    @Step("check price range block. Category_name_page")
+    public Category_name_page_Logic checkPriceRangeBlock() {
+        priceInfoText().shouldBe(visible);
+        double minPrice = Double.parseDouble(priceInfoText().getText().replaceAll("^.+von\\s", "").replaceAll("€.+", "").replace(",", "."));
+        double maxPrice = Double.parseDouble(priceInfoText().getText().replaceAll("^.+bis\\s", "").replaceAll("[^0-9,]", "").replace(",", "."));
+        Assert.assertTrue(minPrice > 0 && maxPrice > 0);
+        return this;
+    }
 }

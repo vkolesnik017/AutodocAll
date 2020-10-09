@@ -2,6 +2,7 @@ package ATD;
 
 import Common.DataBase;
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
@@ -531,10 +532,19 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         while (!brandsLinkInSideBar(idOfBrand).isDisplayed()) {
             forwardLinkAtBrandsFilter().click();
             visibleBrands().get(0).shouldNotHave(attribute("for", articleOfFirstBrand));
+            presenceOfVisibleBrand();
         }
         brandsLinkInSideBar(idOfBrand).shouldBe(visible).click();
         appearsOfLoader();
         Assert.assertEquals(getFilterNumber(url()), getFilterNumber(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", subRoute)));
+        return this;
+    }
+
+    @Step("presence of visible brands  .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic presenceOfVisibleBrand() {
+       for (int i=0; i<visibleBrands().size();i++){
+           visibleBrands().get(i).shouldBe(visible);
+       }
         return this;
     }
 

@@ -1,4 +1,4 @@
-package ATD.Search.QC_548_SearchTooltips;
+package ATD.Search.QC_536_SearchBasicFunctionality;
 
 import ATD.Search_page_Logic;
 import Common.SetUp;

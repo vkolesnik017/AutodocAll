@@ -14,8 +14,7 @@ import java.util.stream.Collectors;
 
 import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.CommonMethods.getTextFromUnVisibleElement;
-import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
-import static com.codeborne.selenide.CollectionCondition.sizeGreaterThanOrEqual;
+import static com.codeborne.selenide.CollectionCondition.*;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static org.testng.Assert.assertEquals;
@@ -1390,10 +1389,16 @@ public class Listing_page_Logic extends Listing_page {
         return this;
     }
 
-    @Step("check Presence Of Unique Products B ySide Filter. Listing_page")
+    @Step("check Presence Of Unique Products By Side Filter. Listing_page")
     public Listing_page_Logic checkPresenceOfUniqueProductsBySideFilter() {
         Set<String> uniqueBrandSet = einbauseiteProductAttributeTecdocRoute().stream().map(n -> getTextFromUnVisibleElement(n)).collect(Collectors.toSet());
         Assert.assertTrue(uniqueBrandSet.size() >= 2);
+        return this;
+    }
+
+    @Step("check product by article. Listing_page")
+    public Listing_page_Logic checkProductsByArticle(String articleForSearch) {
+        productTitleInListMode().filter(have(text(articleForSearch))).shouldHave(sizeNotEqual(0));
         return this;
     }
 
