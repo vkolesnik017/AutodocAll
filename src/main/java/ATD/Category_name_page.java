@@ -47,4 +47,32 @@ public class Category_name_page {
     SelenideElement infoTextOfDangerousPopUp() {return $x("//div[@class='popup-dangerous']//p");}
 
     ElementsCollection visibleTopProducts() {return $$x("//div[@class='product-list__item active']").filter(visible);}
+
+    ElementsCollection allTopBrands() {return $$x("//div[@class='kategorie_top_brands']//li/a");}
+
+    ElementsCollection visibleTopBrands() {return $$x("//div[@class='kategorie_top_brands']//li/a").filter(visible);}
+
+    SelenideElement topBrandsBlock() {return $x("//div[@class='kategorie_top_brands']");}
+
+    SelenideElement btnMoreOfBrandsBlock() {return $x("//div[@class='kategorie_top_brands']//div[@class='m_text show']");}
+
+    SelenideElement priceInfoText() {return $x("//div[@class='summary-table']/div[1]");}
+
+    SelenideElement headlineOfBrandsBlock() {return $x("//div[@class='summary-table__table']//tr[5]/th");}
+
+    ElementsCollection valuesOfBrandsBlock() {return $$x("//div[@class='summary-table__table']//tr[6]/td/span");}
+
+    SelenideElement headlineOfManufacturerBlock() {return $x("//div[@class='summary-table__table']//tr[3]/th");}
+
+    ElementsCollection valuesOfManufactureBlock() {return $$x("//div[@class='summary-table__table']//tr[4]/td/span");}
+
+    SelenideElement infoBlockUnderTopProductsBlock() {return $x("//div[@class='product-list product-list--4items js-product-list-slider--4 js-product-list-animation js-car-popup slick-initialized slick-slider']/following-sibling::div[@class='summary-table']");}
+
+    SelenideElement headlineOfInfoBlock() {return $x("//div[@class='title_list'][2]");}
+
+   ElementsCollection valuesOfInfoBlock() {return $$x("//th[contains(text(),'Für beliebte Automarken:')]/../following-sibling::tr/td/span");}
+
+    SelenideElement headlineOfProductArtBlock() {return $x("//th[contains(text(),'Die meistverkauften Artikel:')]");}
+
+    ElementsCollection valuesOfProductArtBlock() {return $$x("//th[contains(text(),'Die meistverkauften Artikel:')]/../following-sibling::tr[1]/td/span");}
 }

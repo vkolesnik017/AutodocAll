@@ -1,6 +1,7 @@
 package ATD;
 
 import Common.DataBase;
+import PKW.Supplier_page_Logic;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
@@ -13,7 +14,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 import static ATD.CommonMethods.*;
-import static com.codeborne.selenide.CollectionCondition.*;
+import static com.codeborne.selenide.CollectionCondition.size;
+import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
@@ -1243,10 +1245,46 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Checking the all links in the footer. Main_page")
-    public Main_page_Logic checkingPresenceAllLinksFooter(){
+    public Main_page_Logic checkingPresenceAllLinksFooter() {
         for (int i = 0; i < 10; i++) {
             allLinksInFooter().get(i).shouldBe(visible);
         }
         return this;
+    }
+
+    @Step("check elements of TOP brands block. Main_page")
+    public Main_page_Logic checkElementsOfTopBrandsBlock() {
+        titleOfBrandsBlock().shouldBe(visible).shouldHave(text("TOP-MARKEN ERSATZTEILE VON BELIEBTEN AUTOTEILE-HERSTELLERN"));
+        visibleTopImageBrands().shouldHaveSize(8);
+        for (int i = 0; i < visibleTopImageBrands().size(); i++) {
+            visibleTopImageBrands().get(i).shouldBe(visible);
+        }
+        return this;
+    }
+
+    @Step("presence of TOP brands block. Main_page")
+    public Main_page_Logic presenceOfTopBrandsBlock() {
+        topBrandsBlock().shouldBe(visible);
+        return this;
+    }
+
+
+    @Step("check transition to brand page by click on all brands. Main_page")
+    public Main_page_Logic checkTransitionToBrandPageByAllBrands() {
+        String urlOfBrandPage;
+        for (int i = 0; i < visibleTopBrands().size(); i++) {
+            topBrandsBlock().shouldBe(visible);
+            urlOfBrandPage = visibleTopBrands().get(i).getAttribute("href");
+            clickOnTopBrands(i);
+            checkingContainsUrl(urlOfBrandPage);
+            back();
+        }
+        return this;
+    }
+
+    @Step("presence of TOP brands block. Main_page")
+    public Supplier_page_Logic clickOnTopBrands(int positionOfTopBrands) {
+        visibleTopBrands().get(positionOfTopBrands).click();
+        return page(Supplier_page_Logic.class);
     }
 }

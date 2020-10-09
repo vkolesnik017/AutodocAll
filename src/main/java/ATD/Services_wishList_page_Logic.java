@@ -17,7 +17,7 @@ public class Services_wishList_page_Logic extends Services_wishList_page {
 
     @Step("presence of product list.  Services_wishList_page")
     public Services_wishList_page_Logic presenceOfProductList() {
-        productList().shouldBe(visible);
+        productList().waitUntil(visible, 15000);
         return this;
     }
 
