@@ -1,17 +1,17 @@
 package ATD;
 
 import Common.DataBase;
+import files.Product;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static ATD.CommonMethods.*;
+import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
+import static com.codeborne.selenide.CollectionCondition.sizeLessThanOrEqual;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -174,7 +174,6 @@ public class Category_name_page_Logic extends Category_name_page {
 
     @Step("check of duplicate in values at brands Block. Category_name_page")
     public Category_name_page_Logic checkOfDuplicateInBrandsBlock(List<String> brands) {
-
         Set<String> checkingBrands = new HashSet<>(brands);
         Assert.assertEquals(brands.size(), checkingBrands.size());
         return this;
@@ -268,4 +267,65 @@ public class Category_name_page_Logic extends Category_name_page {
         valuesOfProductArtBlock().get(positionOfLink).click();
         return page(Product_page_Logic.class);
     }
+
+    @Step("check displaying of Characteristic block. Category_name_page")
+    public Category_name_page_Logic checkDisplayCharacteristicBlock() {
+        characteristicBlockUnderMainBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("check count of Characteristic bLock. Category_name_page")
+    public Category_name_page_Logic checkCountOfCharacteristicBLock() {
+        typeOfCharacteristicsBlock().shouldHave(sizeGreaterThan(2)).shouldHave(sizeLessThanOrEqual(3));
+        return this;
+    }
+
+
+    @Step("check of duplicate in Characteristic block. Category_name_page")
+    public Category_name_page_Logic checkOfDuplicateInCharacteristicBlock() {
+        List<Double> valueOfCharacteristic;
+        for (int i = 0; i < typeOfCharacteristicsBlock().size() * 2; i++) {
+            if (i <= typeOfCharacteristicsBlock().size()) {
+                valueOfCharacteristic = allValueFromCharacteristicBlock(i + 1).stream().skip(1).map(n -> Double.parseDouble(n.getText().replaceAll(",", "."))).collect(Collectors.toList());
+            } else {
+                valueOfCharacteristic = allValueFromCharacteristicBlock(i + 1).stream().map(n -> Double.parseDouble(n.getText().replaceAll(",", "."))).collect(Collectors.toList());
+            }
+            Set<Double> checkList = new HashSet<>(valueOfCharacteristic);
+            Assert.assertEquals(valueOfCharacteristic.size(), checkList.size());
+            valueOfCharacteristic.clear();
+            checkList.clear();
+        }
+        return this;
+    }
+
+    @Step("check position of empty values in characteristic block. Category_name_page")
+    public Category_name_page_Logic checkPositionOfEmptyValuesInCharacteristicBlock() {
+        List<Product> characteristicList = new ArrayList<>();
+        for (int i = 0; i < typeOfCharacteristicsBlock().size() * 2; i++) {
+            if (i <= typeOfCharacteristicsBlock().size()) {
+                for (int j = 1; j < allValueFromCharacteristicBlock(i + 1).size(); j++) {
+                    Product productPage = new Product();
+                    productPage.setValueOfCharacteristics(allValueFromCharacteristicBlock(i + 1).get(j).getText());
+                    characteristicList.add(productPage);
+                }
+            } else {
+                for (int j = 0; j < allValueFromCharacteristicBlock(i + 1).size(); j++) {
+                    Product productPage = new Product();
+                    productPage.setValueOfCharacteristics(allValueFromCharacteristicBlock(i + 1).get(j).getText());
+                    characteristicList.add(productPage);
+                }
+            }
+            Collections.reverse(characteristicList);
+            List<Product> list = new ArrayList<>(characteristicList);
+            List<Product> listAfterSorting = new ArrayList<>(list);
+            Comparator<Product> productComparator = Comparator.comparing((Product p) -> "-".equals(p.getValueOfCharacteristics()) ? -1 : 0);
+            list.sort(productComparator);
+            Assert.assertEquals(list, listAfterSorting);
+            characteristicList.clear();
+
+        }
+
+        return this;
+    }
+
 }

@@ -100,4 +100,8 @@ public class CartAccount_page {
     SelenideElement btnReturnToCart() {
         return $x("//div[@class='cart-page-steps']//li[@class='complete link first_step']/a");
     }
+
+    SelenideElement infoTextOfCheckBockAtRegForm() {return $x("//label[@for='isSubscribe']");}
+
+    SelenideElement infoTextUnderCheckBockAtRegForm() {return $x("//div[@class='subscribe-text']");}
 }
