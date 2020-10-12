@@ -96,7 +96,7 @@ public class Category_name_brand_page_Logic extends Category_name_brand_page {
         return this;
     }
 
-    @Step("Getting the article number and checking for a deposit in mini-cards for the 3K brand. Category_name_brand_page")
+    @Step("Getting the article number and checking for a deposit in mini-cards for products. Category_name_brand_page")
     public ArrayList<String> getArticleNumberAndCheckingDepositFor3KBrandFromMiniCard() {
         ArrayList<String> artNumAndDeposit = new ArrayList<>();
         activeBtnForwardOfTopProductsBlock().scrollIntoView(false);
