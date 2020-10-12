@@ -697,4 +697,14 @@ public class Product_page {
     SelenideElement titleOfProduct() {return $x("//h2/span[1]");}
 
     SelenideElement artNumOfProduct() {return $x("//span[@class='subtitle-art-nummer']/span");}
+
+    ElementsCollection attributeOfWarningIcon() {return $$x("//div[@class='product-block']//div[@class='dangerous-goods__icons']/img");}
+
+    SelenideElement signalWordOfDangerousProduct() {return $x("//div[@class='product-block']//div[@class='dangerous-goods__title']");}
+
+    SelenideElement dangerousBlock() {
+        return $x("//div[@class='dangerous-goods js-dangerous-goods hide']");
+    }
+
+
 }
