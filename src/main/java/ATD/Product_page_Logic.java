@@ -907,6 +907,12 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
+    @Step("compare article number of product. Product_page")
+    public Product_page_Logic compareArtNumOfProduct(String expectedArtNum) {
+        artNumOfProduct().shouldBe(visible);
+        Assert.assertEquals(artNumOfProduct().getText(),expectedArtNum);
+        return this;
+    }
     @Step("Get attribute of Warning icon in product block .Product_page")
     public List<String> getAttributeOfWarningIconInPopUp() {
         List<String> attribute = new ArrayList<>();

@@ -109,4 +109,10 @@
         </classes>
     </test>
 
+    <test name="QC_2672_GeneralBasketFunctionality">
+        <classes>
+            <class name="ATD.Basket.QC_2672_GeneralBasketFunctionality.QC_2673_BasketSteps"/>
+        </classes>
+    </test>
+
 </suite>
