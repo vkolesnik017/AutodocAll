@@ -26,6 +26,7 @@ public class Cart_page_Logic extends Cart_page {
     @Step("Clicking next button. Cart_page")
     public CartAddress_page_Logic clickBtnNextAndTransitionOnAddressPage() {
         nextButton().click();
+        checkingContainsUrl("/basket/address");
         return page(CartAddress_page_Logic.class);
     }
 
@@ -263,6 +264,24 @@ public class Cart_page_Logic extends Cart_page {
     @Step("Checks that the Safe Order checkbox is not selected. Cart_page")
     public Cart_page_Logic checkThatSafeOrderCheckboxIsNotSelected() {
         safeOrderCheckbox().shouldNotHave(attribute("checked"));
+        return this;
+    }
+
+    @Step("Click Safe Order Checkbox. Cart_page")
+    public Cart_page_Logic clickSafeOrderCheckbox() {
+        safeOrderCheckbox().click();
+        return this;
+    }
+
+    @Step("Checks presence safe order in summery block. Cart_page")
+    public Cart_page_Logic checkPresenceSOInSummeryBlock() {
+        safeOrderInSummeryBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checks absence safe order in summery block. Cart_page")
+    public Cart_page_Logic checkAbsenceSOInSummeryBlock() {
+        safeOrderInSummeryBlock().shouldNotBe(visible);
         return this;
     }
 
