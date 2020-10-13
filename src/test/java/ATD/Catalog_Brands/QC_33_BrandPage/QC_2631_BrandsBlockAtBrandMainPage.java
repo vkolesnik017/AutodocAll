@@ -39,8 +39,8 @@ public class QC_2631_BrandsBlockAtBrandMainPage {
         openPage(route);
         supplierPage.checkElementsOfBrandsBlock();
         List<String> linksOfBrands = supplierPage.getAttributeOfBrandLinks();
-        supplierPage.checkForAbsenceOfBrandInBrandsBlock(linksOfBrands, "hella").clickOnceToRightInBrandsBlock()
-                .clickOnceToLeftInBrandsBlock().checkTransitionToBrandPageByAllBrands();
+        supplierPage.checkCountOfBrands(linksOfBrands,15).checkForAbsenceOfBrandInBrandsBlock(linksOfBrands, "hella").clickOnceToRightInBrandsBlock()
+                .presenceOfVisibleBrandLinks().clickOnceToLeftInBrandsBlock().checkTransitionToBrandPageByAllBrands();
 
     }
 
