@@ -10,9 +10,9 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 
+import static PKW.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -54,7 +54,7 @@ public class Presse_static_page_Logic extends Presse_static_page {
         return this;
     }
 
-    @Step("Open the Articles block. Presse_static_page")
+    @Step("Checking the text in the Hilft Article. Presse_static_page")
     public Presse_static_page_Logic checkingTheTexts() {
         for (int i = 0; i < articleTexts().size(); i++) {
             articleTexts().get(i).shouldBe(visible);
@@ -64,42 +64,17 @@ public class Presse_static_page_Logic extends Presse_static_page {
     }
 
     @Step("Checking the titles and compare with titles in the pdf. Presse_static_page")
-    public Presse_static_page_Logic checkingTheTitlesInTheCards() {
+    public Presse_static_page_Logic checkingTheTitlesInTheCards() throws IOException {
         for (int i = 0; i < articleTitle().size(); i++) {
-            articleTitle().get(i).shouldBe(visible);
+            articleTitle().get(i).shouldBe(visible).scrollIntoView("{block: \"center\"}");
             String titleOfTheArticle = articleTitle().get(i).getText();
             articleTitle().get(i).click();
             switchTo().window(1);
             String url = url();
-
-            try {
-                String pdfContent = readPdfContent(url);
-                Assert.assertTrue(pdfContent.contains(titleOfTheArticle.replaceAll("\\W", "")));
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            String pdfContent = readPdfContent(url);
+            Assert.assertTrue(pdfContent.contains(titleOfTheArticle.replaceAll("\\W", "")));
             closeWindow();
             switchTo().window(0);
-        }
-        return this;
-    }
-
-    @Step("Checking the download pdf link pdf . Presse_static_page")
-    public Presse_static_page_Logic checkingTheDownloadsPDF() throws IOException {
-        for (int i = 0; i < downloadPDF().size(); i++) {
-            File report = downloadPDF().get(i).download();
-            report.delete();
-        }
-        return this;
-    }
-
-    @Step("Checking the download jpg link jpg . Presse_static_page")
-    public Presse_static_page_Logic checkingTheDownloadsJPG() throws IOException {
-        for (int i = 0; i < downloadJPG().size(); i++) {
-            File report = downloadJPG().get(i).download();
-            report.delete();
         }
         return this;
     }
@@ -110,17 +85,27 @@ public class Presse_static_page_Logic extends Presse_static_page {
         InputStream in = pdfUrl.openStream();
         BufferedInputStream bf = new BufferedInputStream(in);
         PDDocument doc = PDDocument.load(bf);
-        int numberOfPages = getPageCount(doc);
-        System.out.println("The total number of pages " + numberOfPages);
         String content = new PDFTextStripper().getText(doc).replaceAll(" ", "").replaceAll("\\W", "");
         doc.close();
         return content;
     }
 
-    @Step("Get the total number of pages in the pdf document. Presse_static_page")
-    public static int getPageCount(PDDocument doc) {
-        int pageCount = doc.getNumberOfPages();
-        return pageCount;
+    @Step("Checking the download pdf link . Presse_static_page")
+    public Presse_static_page_Logic checkingTheDownloadsPDF() throws IOException {
+        for (int i = 0; i < downloadPDF().size(); i++) {
+            File report = downloadPDF().get(i).download();
+            report.delete();
+        }
+        return this;
+    }
+
+    @Step("Checking the download jpg link  . Presse_static_page")
+    public Presse_static_page_Logic checkingTheDownloadsJPG() throws IOException {
+        for (int i = 0; i < downloadJPG().size(); i++) {
+            File report = downloadJPG().get(i).download();
+            report.delete();
+        }
+        return this;
     }
 
     @Step("Gets the status of the photo code. Presse_static_page")
@@ -158,7 +143,6 @@ public class Presse_static_page_Logic extends Presse_static_page {
 
     @Step("Checking the title in the Hilft Block in the pdf. Presse_static_page")
     public Presse_static_page_Logic checkingTheTitleHilftBlockPDF() throws IOException {
-
         hilftArticleTitle().shouldBe(visible);
         String titleOfTheArticleHilft = hilftArticleTitle().getText();
         hilftArticleTitle().click();
@@ -172,7 +156,7 @@ public class Presse_static_page_Logic extends Presse_static_page {
     }
 
     @Step("Checking the active articles in the slider . Presse_static_page")
-    public Presse_static_page_Logic checkingTheActiveArticle() throws IOException {
+    public Presse_static_page_Logic checkingTheActiveArticle() {
         for (int i = 0; i < activeArticlesInSlider().size(); i++) {
             String attributeUrl = activeArticlesInSlider().get(i).getAttribute("url").replaceAll("(^.+\\/\\/)(\\w{3}\\.\\w{2,10}\\W?\\w{2,}\\.\\w{2,3})(.+)", "$2");
             activeArticlesInSlider().get(i).click();
@@ -184,7 +168,113 @@ public class Presse_static_page_Logic extends Presse_static_page {
         }
         return this;
     }
+
+    @Step("Checking the back and forward buttons in the slider. Presse_static_page")
+    public Presse_static_page_Logic checkingTheBackForwardButtons() {
+        String firstArticle = activeArticlesInSliderFive().first().getAttribute("url");
+        autodocPresseButtonForward().click();
+        String firstArticleAfterClick = activeArticlesInSliderFive().first().getAttribute("url");
+        Assert.assertNotEquals(firstArticleAfterClick, firstArticle);
+        for (int i = 0; i < activeArticlesInSliderFive().size(); i++) {
+            activeArticlesInSlider().get(i).shouldBe(visible);
+        }
+        autodocPresseButtonBack().click();
+        String firstArticleAfterClickBack = activeArticlesInSliderFive().first().getAttribute("url");
+        Assert.assertEquals(firstArticleAfterClickBack, firstArticle);
+        return this;
+    }
+
+    @Step("Checking the images in the slider. Presse_static_page")
+    public Presse_static_page_Logic checkingTheImagesStatusCode() throws IOException {
+        for (int i = 0; i < imagesOfTheArticlesInSlider().size(); i++) {
+            String linkInsideImage = imagesOfTheArticlesInSlider().get(i).getAttribute("src");
+            URL url = new URL(linkInsideImage);
+            HttpURLConnection http = (HttpURLConnection) url.openConnection();
+            http.setInstanceFollowRedirects(true);
+            int responseCode = http.getResponseCode();
+            assertEquals(responseCode, 200);
+        }
+        autodocPresseBlock().shouldBe(visible);
+        autodocPresseBlockTitle().shouldBe(visible);
+        Assert.assertFalse(autodocPresseBlockTitle().text().isEmpty());
+        return this;
+    }
+
+    @Step("Checking the block with the presentation . Presse_static_page")
+    public Presse_static_page_Logic checkingThePresentation() {
+        autodocPresseTitlePresentation().shouldBe(visible);
+        Assert.assertFalse(autodocPresseTitlePresentation().text().isEmpty());
+        blockWithPresentation().shouldBe(exist).click();
+        switchTo().window(1);
+        checkingContainsUrl("https://www.autodoc.de/tmp/ATD2020.pdf");
+        closeWindow();
+        switchTo().window(0);
+        return this;
+    }
+
+    @Step("Checking the image in the presentation block. Presse_static_page")
+    public Presse_static_page_Logic checkingThePresentationImage() throws IOException {
+        for (int i = 0; i < activeImagesInPresentationBlock().size(); i++) {
+            activeImagesInPresentationBlock().get(i).isDisplayed();
+            String linkInsideImage = activeImagesInPresentationBlock().get(i).getAttribute("src");
+            URL url = new URL(linkInsideImage);
+            HttpURLConnection http = (HttpURLConnection) url.openConnection();
+            http.setInstanceFollowRedirects(true);
+            int responseCode = http.getResponseCode();
+            assertEquals(responseCode, 200);
+        }
+        return this;
+    }
+
+    @Step("Checking the download of the image in the presentation block. Presse_static_page")
+    public Presse_static_page_Logic checkingTheDownloadImage() {
+        for (int i = 0; i < imageElement().size(); i++) {
+            String attribute = imageElement().get(i).getAttribute("download");
+            imageElement().get(i).scrollIntoView("{block: \"center\"}");
+            imageElement().get(i).click();
+            File file = new File("C:/Users/User/Downloads/" + attribute);
+            String nameFile = file.getName();
+            file.delete();
+            Assert.assertEquals(attribute, nameFile);
+            forwardButtonPresentation().click();
+        }
+        return this;
+    }
+
+    @Step("Checking the back and forward buttons in the slider in the presentation block. Presse_static_page")
+    public Presse_static_page_Logic checkingTheBackForwardButtonsPresentation() {
+        String firstImage = imageElementActiveSix().first().getAttribute("src");
+        String mainImage = mainImageInPresentation().first().getAttribute("src");
+        Assert.assertEquals(firstImage, mainImage);
+        forwardButtonPresentation().click();
+        String firstImageAfterClick = imageElementActiveSix().first().getAttribute("src");
+        Assert.assertNotEquals(firstImage, firstImageAfterClick);
+        textBlock().shouldBe(visible);
+        Assert.assertFalse(textBlock().text().isEmpty());
+        for (int i = 0; i < imageElementActiveSix().size(); i++) {
+            imageElementActiveSix().get(i).shouldBe(visible);
+        }
+        presseButtonBackPresentation().shouldBe(visible).click();
+        String firstImageAfterClickBack = imageElementActiveSix().first().getAttribute("src");
+        Assert.assertEquals(firstImage, firstImageAfterClickBack);
+        return this;
+    }
+
+    @Step("Checking the Main images status code in the presentation. Presse_static_page")
+    public Presse_static_page_Logic checkingTheMainImagesStatusCode() throws IOException {
+        for (int i = 0; i < mainImageInPresentation().size(); i++) {
+            blockWithImagePresentation().isDisplayed();
+            String linkInsideImage = mainImageInPresentation().get(i).getAttribute("src");
+            URL url = new URL(linkInsideImage);
+            HttpURLConnection http = (HttpURLConnection) url.openConnection();
+            http.setInstanceFollowRedirects(true);
+            int responseCode = http.getResponseCode();
+            assertEquals(responseCode, 200);
+        }
+        return this;
+    }
 }
+
 
 
 
