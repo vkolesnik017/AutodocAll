@@ -133,7 +133,6 @@
     <test name="QC_1849_ListingChemistry">
         <classes>
             <class name="ATD.ACC.QC_1849_ListingChemistry.QC_1850_NameTitleOnListingChemistry"/>
-            <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2029_BreadCrumbsChemistryListing"/>
             <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2030_WorkBreadCrumbsOnChemistryListing"/>
             <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2036_BlockChangeViewChemistryListing"/>
             <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2039_BlockDisplayCountProductsOnChemistryListing"/>
