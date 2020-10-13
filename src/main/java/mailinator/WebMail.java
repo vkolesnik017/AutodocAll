@@ -126,6 +126,10 @@ public class WebMail {
         return $x("//a[@class='button delete']");
     }
 
+    private SelenideElement tableOfLetters() {
+        return $(byId("messagelistcontainer"));
+    }
+
 
     @Step("Opens email service. WebMail")
     public WebMail openMail(String email, String password) {
@@ -321,15 +325,24 @@ public class WebMail {
 
     @Step("get total count of letters. WebMail")
     public int getTotalCountOfLetters() {
+        tableOfLetters().shouldBe(visible);
         return countOfLetters().size();
     }
 
     @Step("delete all letters. WebMail")
     public WebMail deleteAllLetters() {
-        countOfLetters().get(0).click();
+        if (countOfLetters().get(0).isDisplayed()) {
+            countOfLetters().get(0).click();
+        }
         while (btnDeleteLetter().isDisplayed()) {
             btnDeleteLetter().click();
         }
+        return this;
+    }
+
+    @Step("Opens email service with logged user. WebMail")
+    public WebMail openMailWithLoggedUser() {
+        open("https://webmail.autodoc.de/");
         return this;
     }
 }

@@ -51,6 +51,12 @@ public class Supplier_page_Logic extends Supplier_page {
         return this;
     }
 
+    @Step("check count of brands. Supplier_page")
+    public Supplier_page_Logic checkCountOfBrands(List<String> list, int expectedSize) {
+        Assert.assertEquals(list.size(), expectedSize);
+        return this;
+    }
+
     @Step("click once to right in brands block. Supplier_page")
     public Supplier_page_Logic clickOnceToRightInBrandsBlock() {
         String urlFromLastBrandLink = visibleBrandsLinks().last().getAttribute("href");
@@ -109,6 +115,14 @@ public class Supplier_page_Logic extends Supplier_page {
     @Step("click on visible brand. Supplier_page")
     public Supplier_page_Logic clickOnVisibleBrands(int positionOfBrand) {
         visibleBrandsLinks().get(positionOfBrand).click();
+        return this;
+    }
+
+    @Step("presence of visible brand links. Supplier_page")
+    public Supplier_page_Logic presenceOfVisibleBrandLinks() {
+        for (int i = 0; i < visibleBrandsLinks().size(); i++) {
+            visibleBrandsLinks().get(i).shouldBe(visible);
+        }
         return this;
     }
 }

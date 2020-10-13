@@ -1,9 +1,9 @@
 package AWS;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -33,18 +33,18 @@ public class PrivacyPolicySubscription_aws {
         return $(By.xpath("//table[@class='table table-borderedd']//td[contains(text(), 'Subscription')]"));
     }
 
-    public PrivacyPolicySubscription_aws checkingPolicyForMail(String mail){
+    public PrivacyPolicySubscription_aws checkingPolicyForMail(String mail) {
         emailFiled().setValue(mail);
         searchBtn().click();
-        privacyPolicyCell().shouldHave(Condition.text("Privacy Policy"));
+        privacyPolicyCell().shouldHave(text("Privacy Policy"));
         return this;
     }
 
-    public PrivacyPolicySubscription_aws checkingPolicyAndSubscribeForMail(String mail){ //TODO добавить проверку(открыть эмэйл кнопка "SHOW")
+    public PrivacyPolicySubscription_aws checkingPolicyAndSubscribeForMail(String mail) { //TODO добавить проверку(открыть эмэйл кнопка "SHOW")
         emailFiled().setValue(mail);
         searchBtn().click();
-        privacyPolicyCell().shouldHave(Condition.text("Privacy Policy"));
-        subscriptionCell().shouldHave(Condition.text("Subscription"));
+        privacyPolicyCell().shouldHave(text("Privacy Policy"));
+        subscriptionCell().shouldHave(text("Subscription"));
         return this;
     }
 }
