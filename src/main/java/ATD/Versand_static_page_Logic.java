@@ -120,6 +120,20 @@ public class Versand_static_page_Logic extends Versand_static_page {
         return deliveryPriceLocator(country).getText().replace(" €", "");
     }
 
+    @Step("Get delivery price for a user with a subscription plus pro. Versand_static_page")
+    public String getDeliveryPriceForUserWithSubscriptionPlusPro(String country, String mail) throws Exception {
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "staticVersand"));
+        allCountriesButton().click();
+        float deliveryPrice = Float.parseFloat(deliveryPriceLocator(country).getText().replace(" €", "").replace(",", "."));
+        float exactDeliveryPrice;
+        if (mail.contains("plusPro")) {
+            exactDeliveryPrice = deliveryPrice * 0.7f;
+        } else {
+            exactDeliveryPrice = deliveryPrice;
+        }
+        return String.valueOf(exactDeliveryPrice).replaceAll("(\\d.\\d{2})(.)","$1").replaceAll("\\.", ",");
+    }
+
     @Step("Get delivery price for AWS. Versand_static_page")
     public Float getDeliveryPriceForAWS(String country) throws Exception {
         openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "staticVersand"));
