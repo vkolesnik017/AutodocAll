@@ -26,13 +26,6 @@
         </classes>
     </test>
 
-    <test name="QC_1042_MainCategoryCatalogOnMainChemie">
-        <classes>
-            <class name="ATD.ACC.QC_1042_MainCategoryCatalogOnMainChemie.QC_1056_PresenceSeparateCategoryInMainChemistry"/>
-            <class name="ATD.ACC.QC_1042_MainCategoryCatalogOnMainChemie.QC_1059_TransitionToListingPageWithCategoryLogicalUnion"/>
-        </classes>
-    </test>
-
     <test name="QC_836_MainAccessories">
         <classes>
             <class name="ATD.ACC.QC_836_MainAccessories.QC_837_PresenceMainTitleOnMainPage"/>
