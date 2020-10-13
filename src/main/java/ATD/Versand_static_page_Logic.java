@@ -131,7 +131,8 @@ public class Versand_static_page_Logic extends Versand_static_page {
         } else {
             exactDeliveryPrice = deliveryPrice;
         }
-        return String.valueOf(exactDeliveryPrice).replaceAll("(\\d.\\d{2})(.)","$1").replaceAll("\\.", ",");
+        String formatDeliveryPrice = String.valueOf(exactDeliveryPrice);
+        return formatDeliveryPrice.substring(0, formatDeliveryPrice.indexOf(".") + 3).replaceAll("\\.", ",");
     }
 
     @Step("Get delivery price for AWS. Versand_static_page")
