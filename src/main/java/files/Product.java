@@ -6,8 +6,14 @@ public class Product {
     private double priceOfProduct;
     private String attributeOfButton;
     private String parentCategory;
+    private String valueOfCharacteristics;
+
+    public void setValueOfCharacteristics(String valueOfCharacteristics){this.valueOfCharacteristics=valueOfCharacteristics;}
+
+    public String getValueOfCharacteristics() {return valueOfCharacteristics;}
 
     public void setParentCategory(String parentCategory) {this.parentCategory=parentCategory; }
+
     public String getParentCategory() {return parentCategory;  }
 
     public void setBrandOfProduct(String brand) {
@@ -44,6 +50,7 @@ public class Product {
                 ", genericOfProduct='" + genericOfProduct + '\'' +
                 ", priceOfProduct=" + priceOfProduct +
                 ", parentCategory=" + parentCategory +
+                ", valueOfCharacteristics=" + valueOfCharacteristics +
                 '}' + "\n";
     }
 

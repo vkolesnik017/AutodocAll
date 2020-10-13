@@ -38,7 +38,7 @@ public class QC_2629_TransitionToBrandPage {
         new Main_page_Logic().presenceOfTopBrandsBlock().checkTransitionToBrandPageByAllBrands();
     }
 
-    @DataProvider(name = "routesCategoryName", parallel = false)
+    @DataProvider(name = "routesCategoryName", parallel = true)
     Object[] dataProviderCategoryName() throws SQLException {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_name10,category_maker3,category_maker_body4,category_maker_drive3,category_group3,category_group_body3,category_group_drive3,category_group_fuel3,category_group_year3");
     }

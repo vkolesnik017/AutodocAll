@@ -40,4 +40,12 @@
         </classes>
     </test>
 
+
+    <test name="QC_2679_NewsletterSubscriptionBlock">
+        <classes>
+            <class name="ATD.General_Common.QC_2679_NewsletterSubscriptionBlock.QC_2680_SubscribeToNewsLetterByRegisteringInBasket"/>
+            <class name="ATD.General_Common.QC_2679_NewsletterSubscriptionBlock.QC_2681_SubscribeToNewLetterInRegFormPopUp"/>
+        </classes>
+    </test>
+
 </suite>

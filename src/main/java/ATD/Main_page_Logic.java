@@ -1287,4 +1287,11 @@ public class Main_page_Logic extends Main_page {
         visibleTopBrands().get(positionOfTopBrands).click();
         return page(Supplier_page_Logic.class);
     }
+
+    @Step("check and click text blocks in registration form.  Main_page")
+    public Main_page_Logic checkTextBlockInRegForm() {
+        infoTextUnderCheckBockAtRegForm().shouldBe(visible).shouldHave(text("Jetzt abonnieren! Sparen Sie noch mehr!"));
+        infoTextOfCheckBockAtRegForm().shouldBe(visible).shouldHave(text("Ja, ich möchte E-Mail-Newsletter mit Sonderangeboten erhalten. Ich kann den Newsletter jederzeit abbestellen."));
+        return this;
+    }
 }

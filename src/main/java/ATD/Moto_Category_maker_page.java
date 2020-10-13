@@ -52,4 +52,4 @@ public class Moto_Category_maker_page {
 
     ElementsCollection childCategoriesInSideBar() {return $$x("//div[@class='block categories blue topSubCats']//li");}
 
-    }
+ }
