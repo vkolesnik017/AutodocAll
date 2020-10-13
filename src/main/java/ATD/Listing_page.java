@@ -469,6 +469,10 @@ public class Listing_page {
         return $(".product-eco-block");
     }
 
+    public SelenideElement pfandBlockByIndex(int numIndex) {
+        return $x("//ul[contains(@class,'list_products')]/li["+ numIndex +"]//div[@class='product-eco-block']");
+    }
+
     SelenideElement pfandPagelink() {
         return $x("//p[@class='top']//a[@target='_blank']");
     }
@@ -783,10 +787,17 @@ public class Listing_page {
         return $x("//li[@class='default_ul_li_class']/span[2]");
     }
 
+    SelenideElement characteristicZustandByIndex(int numIndex) {
+        return  $x("//ul[contains(@class,'list_products')]/li["+ numIndex +"]//li[@class='default_ul_li_class']/span[2]");
+    }
+
     ElementsCollection artNumOfProductGridType() {return $$x("//div[@class='rec_prod_article']");}
 
     SelenideElement allCharacteristicsOfProductInPopUp(int positionOfProduct) {return $x("(//div[@class='product_desc_table_container'])["+positionOfProduct+"]");}
 
+    ElementsCollection cardProducts() {
+        return $$x("//ul[contains(@class,'list_products')]/li");
+    }
 
 
 }

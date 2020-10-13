@@ -3,8 +3,8 @@ package ATD;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Selenide.$$x;
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selectors.byId;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Tyre_item_page {
 
@@ -33,5 +33,15 @@ public class Tyre_item_page {
     ElementsCollection linksOfBreadCrumbs() {return $$x("//div[@class='steps breadcrumbs']//ul/li//a");}
 
     SelenideElement eanNumberOfProduct() {return $x("//div[@class='product-block__description__subtitle']/span[1]");}
+
+    SelenideElement grayButton() {return $(byId("product_page_product"));}
+
+    SelenideElement popUpNotifyAboutAvailability() {return $x("//div[@class='popup-available']");}
+
+    SelenideElement labelOfPopUpNotifyAboutAvailability() {return $x("//label[@class='popup-available__label']");}
+
+    SelenideElement emailFieldOfFeedBackPopUp() { return $(byId("form_AvailabilityReminder[email]")); }
+
+    SelenideElement btnSendOfFeedBackPopUp() { return $x("//input[@class='popup-available__button']");  }
 
 }

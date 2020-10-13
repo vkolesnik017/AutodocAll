@@ -1,14 +1,17 @@
 package ATD;
 
 import Common.DataBase;
+import files.Product;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 import static ATD.CommonMethods.*;
+import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
+import static com.codeborne.selenide.CollectionCondition.sizeLessThanOrEqual;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -162,4 +165,167 @@ public class Category_name_page_Logic extends Category_name_page {
         Assert.assertTrue(minPrice > 0 && maxPrice > 0);
         return this;
     }
+
+    @Step("presence of brand headline. Category_name_page")
+    public Category_name_page_Logic presenceOfBrandHeadline() {
+        headlineOfBrandsBlock().shouldBe(visible).shouldHave(text("Für beliebte Automarken:"));
+        return this;
+    }
+
+    @Step("check of duplicate in values at brands Block. Category_name_page")
+    public Category_name_page_Logic checkOfDuplicateInBrandsBlock(List<String> brands) {
+        Set<String> checkingBrands = new HashSet<>(brands);
+        Assert.assertEquals(brands.size(), checkingBrands.size());
+        return this;
+    }
+
+    @Step("presence of brand headline. Category_name_page")
+    public Category_name_page_Logic presenceOfManufacturerHeadline() {
+        headlineOfManufacturerBlock().shouldBe(visible).shouldHave(text("Von beliebten Herstellern:"));
+        return this;
+    }
+
+    @Step("get values from brands block. Category_name_page")
+    public List<String> getValuesFromBrandsBlock() {
+        List<String> brands = valuesOfBrandsBlock().stream().map(n -> n.getText()).collect(Collectors.toList());
+        return brands;
+    }
+
+    @Step("get values from manufacture block. Category_name_page")
+    public List<String> getValuesFromManufactureBlock() {
+        List<String> brands = valuesOfManufactureBlock().stream().map(n -> n.getText()).collect(Collectors.toList());
+        return brands;
+    }
+
+    @Step("check for empty values of manufacturer block. Category_name_page")
+    public Category_name_page_Logic checkNotEmptyValuesOfManufacturerBlock() {
+        List<String> brands = valuesOfManufactureBlock().stream().map(n -> n.getText()).collect(Collectors.toList());
+        int countOfFullValues = 0;
+        for (int i = 0; i < brands.size(); i++) {
+            if (brands.get(i).matches("\\D+") == true) {
+                countOfFullValues++;
+            }
+        }
+        Assert.assertTrue(countOfFullValues >= 2);
+        return this;
+    }
+
+    @Step("check displaying of information block. Category_name_page")
+    public Category_name_page_Logic checkDisplayInfoBlock() {
+        infoBlockUnderTopProductsBlock().shouldBe(visible);
+        headlineOfInfoBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("check of empty values in an information block. Category_name_page")
+    public Category_name_page_Logic checkOfEmptyValuesOfInfoBlock() {
+        List<String> list = valuesOfInfoBlock().stream().map(n -> n.getText()).collect(Collectors.toList());
+        int countOfEmptyValues = 0;
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).matches("\\W") == true) {
+                countOfEmptyValues++;
+            }
+        }
+        Assert.assertTrue(countOfEmptyValues > 0);
+        return this;
+    }
+
+    @Step("presence of headline at product Article block. Category_name_page")
+    public Category_name_page_Logic presenceOfHeadlineProductArtBlock() {
+        headlineOfProductArtBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("check format of links in Product article block. Category_name_page")
+    public Category_name_page_Logic checkFormatOfLinksInProductArtBlock() {
+        valuesOfProductArtBlock().shouldHaveSize(6);
+        return this;
+    }
+
+    @Step("get Values from Product art Block. Category_name_page")
+    public List<String> getValuesFromProductArtNumBlock() {
+        List<String> values = valuesOfProductArtBlock().stream().map(n -> n.getText()).collect(Collectors.toList());
+        return values;
+    }
+
+    @Step("check not empty values of product art block. Category_name_page")
+    public Category_name_page_Logic checkNotEmptyValuesOfProductArtBlock() {
+        for (int i = 0; i < valuesOfProductArtBlock().size(); i++) {
+            valuesOfProductArtBlock().get(i).shouldNotBe(empty);
+        }
+        return this;
+    }
+
+    @Step("check not empty values of product art block. Category_name_page")
+    public String getLinkFromProductArtBlock(int positionOfLink) {
+        String link = valuesOfProductArtBlock().get(positionOfLink).getText();
+        return link;
+    }
+
+    @Step("check not empty values of product art block. Category_name_page")
+    public Product_page_Logic clickOnProductArtBlockLink(int positionOfLink) {
+        valuesOfProductArtBlock().get(positionOfLink).click();
+        return page(Product_page_Logic.class);
+    }
+
+    @Step("check displaying of Characteristic block. Category_name_page")
+    public Category_name_page_Logic checkDisplayCharacteristicBlock() {
+        characteristicBlockUnderMainBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("check count of Characteristic bLock. Category_name_page")
+    public Category_name_page_Logic checkCountOfCharacteristicBLock() {
+        typeOfCharacteristicsBlock().shouldHave(sizeGreaterThan(2)).shouldHave(sizeLessThanOrEqual(3));
+        return this;
+    }
+
+
+    @Step("check of duplicate in Characteristic block. Category_name_page")
+    public Category_name_page_Logic checkOfDuplicateInCharacteristicBlock() {
+        List<Double> valueOfCharacteristic;
+        for (int i = 0; i < typeOfCharacteristicsBlock().size() * 2; i++) {
+            if (i <= typeOfCharacteristicsBlock().size()) {
+                valueOfCharacteristic = allValueFromCharacteristicBlock(i + 1).stream().skip(1).map(n -> Double.parseDouble(n.getText().replaceAll(",", "."))).collect(Collectors.toList());
+            } else {
+                valueOfCharacteristic = allValueFromCharacteristicBlock(i + 1).stream().map(n -> Double.parseDouble(n.getText().replaceAll(",", "."))).collect(Collectors.toList());
+            }
+            Set<Double> checkList = new HashSet<>(valueOfCharacteristic);
+            Assert.assertEquals(valueOfCharacteristic.size(), checkList.size());
+            valueOfCharacteristic.clear();
+            checkList.clear();
+        }
+        return this;
+    }
+
+    @Step("check position of empty values in characteristic block. Category_name_page")
+    public Category_name_page_Logic checkPositionOfEmptyValuesInCharacteristicBlock() {
+        List<Product> characteristicList = new ArrayList<>();
+        for (int i = 0; i < typeOfCharacteristicsBlock().size() * 2; i++) {
+            if (i <= typeOfCharacteristicsBlock().size()) {
+                for (int j = 1; j < allValueFromCharacteristicBlock(i + 1).size(); j++) {
+                    Product productPage = new Product();
+                    productPage.setValueOfCharacteristics(allValueFromCharacteristicBlock(i + 1).get(j).getText());
+                    characteristicList.add(productPage);
+                }
+            } else {
+                for (int j = 0; j < allValueFromCharacteristicBlock(i + 1).size(); j++) {
+                    Product productPage = new Product();
+                    productPage.setValueOfCharacteristics(allValueFromCharacteristicBlock(i + 1).get(j).getText());
+                    characteristicList.add(productPage);
+                }
+            }
+            Collections.reverse(characteristicList);
+            List<Product> list = new ArrayList<>(characteristicList);
+            List<Product> listAfterSorting = new ArrayList<>(list);
+            Comparator<Product> productComparator = Comparator.comparing((Product p) -> "-".equals(p.getValueOfCharacteristics()) ? -1 : 0);
+            list.sort(productComparator);
+            Assert.assertEquals(list, listAfterSorting);
+            characteristicList.clear();
+
+        }
+
+        return this;
+    }
+
 }

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="SEO" parallel="methods" thread-count="2">
+
+    <listeners>
+        <listener class-name="Common.ProjectListener"/>
+    </listeners>
+
+    <test name="QC_2549_InformationBlockOfCategoryNameRoute">
+        <classes>
+            <class name="ATD.SEO.QC_2549_InformationBlockOfCategoryNameRoute.QC_2550_InformationBlockDisplayConditions"/>
+            <class name="ATD.SEO.QC_2549_InformationBlockOfCategoryNameRoute.QC_2552_ProductsArticleBlock"/>
+            <class name="ATD.SEO.QC_2549_InformationBlockOfCategoryNameRoute.QC_2553_ManufacturerBlock"/>
+            <class name="ATD.SEO.QC_2549_InformationBlockOfCategoryNameRoute.QC_2561_BrandsBlock"/>
+            <class name="ATD.SEO.QC_2549_InformationBlockOfCategoryNameRoute.QC_2565_PriceRangeBlock"/>
+            <class name="ATD.SEO.QC_2549_InformationBlockOfCategoryNameRoute.QC_2664_CharacteristicBlock"/>
+        </classes>
+    </test>
+
+
+</suite>

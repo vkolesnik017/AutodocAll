@@ -1,5 +1,6 @@
 package ATD.Characteristics.QC_2387_CheckingCharacteristicConditionForProducts;
 
+import ATD.Listing_page_Logic;
 import ATD.Product_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
@@ -29,25 +30,26 @@ public class QC_2422_CheckingAbsenceCharacteristicZustandBrand3kWithDepositOnPro
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Checking for the absence of the deposit characteristic  for 3k brand goods with a deposit on product and listing page")
+    @Description(value = "Checking for the absence of the deposit characteristic for 3k brand goods with deposit on product page")
     public void testCheckingDepositCharacteristicFor3kBrandGoodsWithDeposit(String route) {
         openPage(route);
-        new Product_page_Logic().checkingAbsenceZustandCharacteristicFor3kBrandGoodsWithDeposit();
+        new Product_page_Logic().checkingAbsenceZustandCharacteristicForGoodsWithDeposit();
     }
 
 
     @DataProvider(name = "routesListing", parallel = true)
     Object[] dataProviderListing() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product42");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_oen23,category_car_list49,search38");
     }
 
     @Test(dataProvider = "routesListing")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Checking for the absence of the deposit characteristic  for 3k brand goods with a deposit on product and listing page")
-    public void test(String route) {
+    @Description(value = "Checking for the absence of the deposit characteristic for 3k brand goods with deposit on listing page")
+    public void testCheckingDepositCharacteristicFor3kBrandGoodsWithDepositOnListing(String route) {
         openPage(route);
-        new Product_page_Logic().checkingAbsenceZustandCharacteristicFor3kBrandGoodsWithDeposit();
+        new Listing_page_Logic().checkingAbsenceZustandCharacteristicForGoodsWithDeposit();
+
     }
 
     @AfterMethod

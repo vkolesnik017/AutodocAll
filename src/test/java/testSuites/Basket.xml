@@ -106,6 +106,13 @@
             <class name="ATD.Basket.QC_1873_SafeOrder.QC_1880_DisplayingSO_BlockAfterManipulationOnRouteAllData"/>
             <class name="ATD.Basket.QC_1873_SafeOrder.QC_1881_DisablingSO_blockAfterChangingDelivery"/>
             <class name="ATD.Basket.QC_1873_SafeOrder.QC_1876_DefaultCheckboxIsSafeOrder"/>
+            <class name="ATD.Basket.QC_1873_SafeOrder.QC_2346_CheckingDeliveryCostWhenTurningSO_Off_On"/>
+        </classes>
+    </test>
+
+    <test name="QC_2672_GeneralBasketFunctionality">
+        <classes>
+            <class name="ATD.Basket.QC_2672_GeneralBasketFunctionality.QC_2673_BasketSteps"/>
         </classes>
     </test>
 

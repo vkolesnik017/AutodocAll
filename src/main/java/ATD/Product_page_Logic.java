@@ -894,8 +894,8 @@ public class Product_page_Logic extends Product_page {
         return priseWithoutVat;
     }
 
-    @Step("Checking for the absence of the deposit characteristic for 3k brand goods with a deposit. Product_page")
-    public Product_page_Logic checkingAbsenceZustandCharacteristicFor3kBrandGoodsWithDeposit() {
+    @Step("Checking for the absence of the deposit characteristic for goods with a deposit. Product_page")
+    public Product_page_Logic checkingAbsenceZustandCharacteristicForGoodsWithDeposit() {
         if (uncoverCharactericticBtn().isDisplayed()) {
             uncoverCharactericticBtn().click();
         }
@@ -907,5 +907,10 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
-
+    @Step("compare article number of product. Product_page")
+    public Product_page_Logic compareArtNumOfProduct(String expectedArtNum) {
+        artNumOfProduct().shouldBe(visible);
+        Assert.assertEquals(artNumOfProduct().getText(),expectedArtNum);
+        return this;
+    }
 }

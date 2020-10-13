@@ -4,7 +4,7 @@ import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.*;
 
-public class Tyres_brand_dimension_page_Logic extends Tyres_brand_dimension_page{
+public class Tyres_brand_dimension_page_Logic extends Tyres_brand_dimension_page {
 
     @Step("appears of Out of stock product pop-up. Tyres_brand_dimension_page")
     public Tyres_brand_dimension_page_Logic appearsOfOutOfStockProductPopUp(String ean) {
@@ -44,6 +44,21 @@ public class Tyres_brand_dimension_page_Logic extends Tyres_brand_dimension_page
     @Step("click on Subscription button . Tyres_brand_dimension_page")
     public Tyres_brand_dimension_page_Logic clickOnBtnSubscription() {
         btnSendOfFeedBackPopUp().click();
+        return this;
+    }
+
+    @Step("close out of stock product pop-Up . Tyres_brand_dimension_page")
+    public Tyres_brand_dimension_page_Logic closeOutOfStockProductPopUp() {
+        btnCloseOutOfStockProductPopUp().shouldBe(visible).click();
+        btnCloseOutOfStockProductPopUp().shouldNotBe(visible);
+        return this;
+    }
+
+    @Step("presence of all TOP tire size links  . Tyres_brand_dimension_page")
+    public Tyres_brand_dimension_page_Logic presenceOfAllTopTireSizeLinks() {
+        for (int i = 0; i < visibleTopTireSizeLinks().size(); i++) {
+            visibleTopTireSizeLinks().get(i).shouldBe(visible);
+        }
         return this;
     }
 }

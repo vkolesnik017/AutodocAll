@@ -14,13 +14,6 @@
         </classes>
     </test>
 
-    <test name="QASYS_203_DeliveryLimit">
-        <classes>
-            <class name="ATD.QASYS_19_Basket.QASYS_203_DeliveryLimit">
-            </class>
-        </classes>
-    </test>
-
     <test name="QASYS_274_AddingProductToBasketFromAllRoutes">
         <classes>
             <class name="ATD.QASYS_19_Basket.QASYS_274_AddingProductToBasketFromAllRoutes">

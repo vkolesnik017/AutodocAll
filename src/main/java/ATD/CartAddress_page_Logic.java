@@ -580,4 +580,12 @@ public class CartAddress_page_Logic extends CartAddress_page {
         }
         return this;
     }
+
+    @Step("Checks steps basket on page cart addres. CartAddress_page")
+    public CartAddress_page_Logic checkStepsBasketOnPageCartAddress() {
+        secondStep().shouldBe(visible);
+        thirdStep().shouldBe(visible);
+        fourthStep().shouldBe(visible);
+        return this;
+    }
 }

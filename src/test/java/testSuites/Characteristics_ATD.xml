@@ -48,6 +48,7 @@
 
     <test name="QC_2387_CheckingCharacteristicConditionForProducts">
         <classes>
+            <class name="ATD.Characteristics.QC_2387_CheckingCharacteristicConditionForProducts.QC_2422_CheckingAbsenceCharacteristicZustandBrand3kWithDepositOnProductAndListingPage"/>
             <class name="ATD.Characteristics.QC_2387_CheckingCharacteristicConditionForProducts.QC_2423_CheckingAbsenceCharacteristicZustandOnRutCartForProduct3KBrandWithDeposit"/>
             <class name="ATD.Characteristics.QC_2387_CheckingCharacteristicConditionForProducts.QC_2424_CheckingAbsenceCharacteristicZustandBrand3kWithDepositInMiniCard"/>
         </classes>

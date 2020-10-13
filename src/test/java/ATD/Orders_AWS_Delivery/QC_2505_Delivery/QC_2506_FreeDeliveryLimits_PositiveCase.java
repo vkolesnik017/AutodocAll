@@ -55,7 +55,6 @@ public class QC_2506_FreeDeliveryLimits_PositiveCase {
                 .nextBtnClick()
                 .makeAndCheckLimitPriceForFreeDelivery(deliveryLimit)
                 .clickBtnReturnToCartPage();
-        checkingContainsUrl("/basket");
         cart_page_logic.checkPresenceFreeDeliveryIcon();
         cart_page_logic.clickBtnNextAndTransitionOnAddressPage()
                 .fillFieldTelNumForShipping("200+002")
