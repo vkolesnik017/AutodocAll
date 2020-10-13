@@ -57,6 +57,10 @@ public class Cart_page {
         return $x("//input[@name='security_delivery']");
     }
 
+    SelenideElement safeOrderInSummeryBlock() {
+        return $x("//span[@class='order-security-delivery']");
+    }
+
     // locators only for CH
     SelenideElement closeDeliveryLimitPopupForCH() {
         return $(byCssSelector(".delivery-limit-popup>a"));

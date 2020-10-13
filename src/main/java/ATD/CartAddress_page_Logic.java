@@ -583,12 +583,9 @@ public class CartAddress_page_Logic extends CartAddress_page {
 
     @Step("Checks steps basket on page cart addres. CartAddress_page")
     public CartAddress_page_Logic checkStepsBasketOnPageCartAddress() {
-        SelenideElement secondStep = $x("//li[@class='complete second_step no-active-link active']");
-        SelenideElement thirdStep = $x("//li[@class='third_step no-active-link ']");
-        SelenideElement fourthStep = $x("//li[@class='fourth_step no-active-link']");
-        secondStep.shouldBe(visible);
-        thirdStep.shouldBe(visible);
-        fourthStep.shouldBe(visible);
+        secondStep().shouldBe(visible);
+        thirdStep().shouldBe(visible);
+        fourthStep().shouldBe(visible);
         return this;
     }
 }

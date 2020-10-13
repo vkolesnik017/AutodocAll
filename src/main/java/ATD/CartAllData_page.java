@@ -152,7 +152,7 @@ public class CartAllData_page {
         return $(byXpath("//*[@class='alldata-bottom']//*[contains(@class,'total')]/span[2]"));
     }
 
-    SelenideElement heavyLoadsShippingCost(){
+    SelenideElement heavyLoadsDeliveryPrice(){
         return $x("//div[@class='order-summary ']//div[4]//span[2]");
     }
 
