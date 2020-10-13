@@ -160,11 +160,9 @@ public class Moto_Category_maker_page_Logic extends Moto_Category_maker_page {
 
     @Step("get motorcycle brand from Url .Moto_Category_maker_page")
     public String getMotoBrandFromUrl() {
-        String url = url().replace(url().substring(url().lastIndexOf("/")), "");
-        String brandFromUrl = url().replace(url, "").replace("/", "").replace("-", " ").toUpperCase();
+        String brandFromUrl = url().replaceAll("^.+\\/", "").toUpperCase();
         return brandFromUrl;
     }
-
 
     @Step("check applicability brand motorcycle and Product .Moto_Category_maker_page")
     public Moto_Category_maker_page_Logic checkApplicabilityMotoAndProduct(String motoBrand) {
@@ -177,7 +175,7 @@ public class Moto_Category_maker_page_Logic extends Moto_Category_maker_page {
 
     @Step("check applicability brand motorcycle and Product .Moto_Category_maker_page")
     public Moto_Product_page_Logic clickOnTopProductImage(int position) {
-        imageOfTopProducts().get(position).click();
+        imageOfTopProducts().get(position).shouldBe(visible).scrollIntoView("{block: \"center\"}").click();
         return page(Moto_Product_page_Logic.class);
     }
 
