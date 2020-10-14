@@ -262,5 +262,11 @@ public class Search_page {
 
     ElementsCollection amountQuantityOfProduct() {return $$x("//div[@class='count']/input");}
 
+    ElementsCollection priceOfProduct() {return $$x("//p[@class='actual_price']");}
+
+    ElementsCollection attributeOfBtnAddedToBasket() { return $$x("//div[@class='count']/following-sibling::div");}
+
+    ElementsCollection productsList() {return $$x("//ul[@class='list_products']/li");}
+
 }
 

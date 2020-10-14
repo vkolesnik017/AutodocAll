@@ -69,13 +69,25 @@ public class ProductCard_aws {
         return $x("//div[@class='col-md-6 col-sm-6'][2]//div[@class='switch-animate switch-on']/span[1]");
     }
 
-    private SelenideElement artNumOfProduct() {return $x("//td[contains(text(),'Артикль №.:')]/following-sibling::td");}
+    private SelenideElement artNumOfProduct() {
+        return $x("//td[contains(text(),'Артикль №.:')]/following-sibling::td");
+    }
 
-    private SelenideElement statusInArtNum() {return $x("//td[contains(text(),'Артикль №.:')]/following-sibling::td/div");}
+    private SelenideElement statusInArtNum() {
+        return $x("//td[contains(text(),'Артикль №.:')]/following-sibling::td/div");
+    }
 
-    private SelenideElement productManufacturer() {return $x("//td[contains(text(),'Производитель:')]/following-sibling::td/a");}
+    private SelenideElement productManufacturer() {
+        return $x("//td[contains(text(),'Производитель:')]/following-sibling::td/a");
+    }
 
-    private SelenideElement eanOfProduct() {return $x("//td[contains(text(),'EAN:')]/following-sibling::td/a");}
+    private SelenideElement eanOfProduct() {
+        return $x("//td[contains(text(),'EAN:')]/following-sibling::td/a");
+    }
+
+    private SelenideElement priceNetto() {
+        return $x("//td[contains(text(),'Цена закупки:')]/following-sibling::td");
+    }
 
     String productId;
 
@@ -183,7 +195,7 @@ public class ProductCard_aws {
 
     @Step("get article number of product. ProductCard_aws")
     public String getArtNumOfProduct() {
-     String artNum = artNumOfProduct().shouldBe(visible).getText().replace(statusInArtNum().getText(),"").replace(" ","");
+        String artNum = artNumOfProduct().shouldBe(visible).getText().replace(statusInArtNum().getText(), "").replace(" ", "");
         return artNum;
     }
 
@@ -199,4 +211,8 @@ public class ProductCard_aws {
         return eanOfProduct;
     }
 
+    @Step("get price netto. ProductCard_aws")
+    public Double getPriceNetto() {
+        return Double.parseDouble(priceNetto().shouldBe(visible).getText());
+    }
 }
