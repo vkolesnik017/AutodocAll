@@ -53,6 +53,10 @@ public class Cart_page {
         return $x("//div[@class='bestelen-block__row']");
     }
 
+    public SelenideElement priceOfSafeOrder() {
+        return $(byCssSelector(".bestelen-block__col>label"));
+    }
+
     SelenideElement safeOrderCheckbox() {
         return $x("//input[@name='security_delivery']");
     }
