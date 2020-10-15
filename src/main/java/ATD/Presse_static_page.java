@@ -79,13 +79,87 @@ class Presse_static_page {
     }
 
     ElementsCollection downloadJPG() {
-        return $$(By.xpath("//*[@class='press-article__file press-article__file--pdf']"));
+        return $$(By.xpath("//*[@class='press-article__file press-article__file--jpg']"));
     }
 
     ElementsCollection artTitle() {
         return $$(By.xpath("//*[@class='press-article__title']")).filter(visible);
     }
 
+    SelenideElement hilftArticleTitle() {
+        return $(By.xpath("//*[@class='hilft-article__title']"));
+    }
 
+    SelenideElement hilftArticleDownloadPDF() {
+        return $(By.xpath("//*[@class='link hilft-article__file hilft-article__file--file']"));
+    }
+
+    SelenideElement autodocPresseBlock() {
+        return $(By.xpath("//*[@class='atd-presse']"));
+    }
+
+    SelenideElement autodocPresseBlockTitle() {
+        return $(By.xpath("//*[@class='atd-presse__header']//span"));
+    }
+
+    SelenideElement autodocPresseButtonForward() {
+        return $(By.xpath("//*[@class='presse-slides js-presse-slides slick-initialized slick-slider']//button[@class='slick-next slick-arrow']"));
+    }
+
+    SelenideElement autodocPresseButtonBack() {
+        return $(By.xpath("//*[@class='presse-slides js-presse-slides slick-initialized slick-slider']//button[@class='slick-prev slick-arrow']"));
+    }
+
+    ElementsCollection activeArticlesInSlider() {
+        return $$(By.xpath("//div[@class='slick-track']/*[self::div[@class='presse-slides__item slick-slide slick-current slick-active'] or self::div[@class='presse-slides__item slick-slide slick-active'] or self::div[@class='presse-slides__item slick-slide']] //span"));
+    }
+
+    ElementsCollection imagesOfTheArticlesInSlider() {
+        return $$(By.xpath("//div[@class='slick-track']/*[self::div[@class='presse-slides__item slick-slide slick-current slick-active'] or self::div[@class='presse-slides__item slick-slide slick-active'] or self::div[@class='presse-slides__item slick-slide']] //img"));
+    }
+
+    ElementsCollection activeArticlesInSliderFive() {
+        return $$(By.xpath("//div[@class='slick-track']/*[self::div[@class='presse-slides__item slick-slide slick-current slick-active'] or self::div[@class='presse-slides__item slick-slide slick-active']]//span"));
+    }
+
+    SelenideElement autodocPresseTitlePresentation() {
+        return $(By.xpath("//*[@class='press-content'][2]//div[1]"));
+    }
+
+    SelenideElement blockWithPresentation() {
+        return $(By.xpath("//*[@class='press-content__presse']"));
+    }
+
+    ElementsCollection activeImagesInPresentationBlock() {
+        return $$(By.xpath("//*[@class='slick-track']//*[self::div[@class='presse-gallery__thumb slick-slide slick-current slick-active'] or self::div[@class='presse-gallery__thumb slick-slide slick-active'] or  self::div[@class='presse-gallery__thumb slick-slide']]//div//img"));
+    }
+
+    ElementsCollection imageElement() {
+        return $$(By.xpath("//*[@class='presse-gallery__slide-inside']//a"));
+    }
+
+    ElementsCollection imageElementActiveSix() {
+        return $$(By.xpath("//*[@class='slick-track']//*[self::div[@class='presse-gallery__thumb slick-slide slick-active'] or self::div[@class='presse-gallery__thumb slick-slide slick-current slick-active']]//div//img"));
+    }
+
+    SelenideElement forwardButtonPresentation() {
+        return $(By.xpath("//*[@class='presse-gallery__slider js-presse-gallery__slider-init slick-initialized slick-slider']//*[@class='slick-next slick-arrow']"));
+    }
+
+    SelenideElement presseButtonBackPresentation() {
+        return $(By.xpath("//*[@class='presse-gallery__slider js-presse-gallery__slider-init slick-initialized slick-slider']//*[@class='slick-prev slick-arrow']"));
+    }
+
+    ElementsCollection mainImageInPresentation() {
+        return $$(By.xpath("//*[@class='presse-gallery__slide-inside']//img"));
+    }
+
+    SelenideElement blockWithImagePresentation() {
+        return $(By.xpath("//*[@class='presse-gallery']"));
+    }
+
+    SelenideElement textBlock() {
+        return $(By.xpath("//*[@class='presse-gallery__content']//p"));
+    }
 }
 
