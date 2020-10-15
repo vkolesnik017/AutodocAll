@@ -41,6 +41,10 @@ public class Cart_page {
         return $x("//a[@class='delBtn']");
     }
 
+    SelenideElement deleteDefinitelyGoodsBTN(String idProduct) {
+        return $x("//tr[@data-article_id='" + idProduct + "']//a[@class='delBtn']");
+    }
+
     SelenideElement confirmationDeleteGoodsBtn() {
         return $x("//div[@class='popup-content__buttons']//a[2]");
     }
@@ -81,6 +85,10 @@ public class Cart_page {
 
     public SelenideElement productPrice() {
         return $(byCssSelector(".price"));
+    }
+
+    SelenideElement totalProductPriceInSummeryBlock() {
+        return $x("//div[@class='order-summary__row']/span[@class='order-total-price']");
     }
 
     public SelenideElement pfandPriceInProductBlock() {
