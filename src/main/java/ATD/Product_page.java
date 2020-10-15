@@ -706,5 +706,13 @@ public class Product_page {
         return $x("//div[@class='dangerous-goods js-dangerous-goods hide']");
     }
 
+    SelenideElement textFromDangerousBlock() {
+        return $x("//div[@class='dangerous-goods__text js-dangerous-goods__text']/span");
+    }
+
+    SelenideElement btnMehrFromDangerousBlock() {
+        return $x("//a[@class='dangerous-goods__show-more js-dangerous-goods__show-more']");
+    }
+
 
 }
