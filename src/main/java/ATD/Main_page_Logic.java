@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 import static ATD.CommonMethods.*;
+import static PKW.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.*;
@@ -1292,6 +1293,25 @@ public class Main_page_Logic extends Main_page {
     public Main_page_Logic checkTextBlockInRegForm() {
         infoTextUnderCheckBockAtRegForm().shouldBe(visible).shouldHave(text("Jetzt abonnieren! Sparen Sie noch mehr!"));
         infoTextOfCheckBockAtRegForm().shouldBe(visible).shouldHave(text("Ja, ich möchte E-Mail-Newsletter mit Sonderangeboten erhalten. Ich kann den Newsletter jederzeit abbestellen."));
+        return this;
+    }
+
+    @Step("Checking the transition to the youtube from  the Social Network Block. Main_page")
+    public Main_page_Logic checkingTransitionToTheYoutube() {
+        String youtubeUrl = youTubeImageTransition().getAttribute("url");
+        youTubeImageTransition().click();
+        url();
+        Assert.assertEquals(youtubeUrl, url());
+        back();
+        return this;
+    }
+
+    @Step("Checking the transition to the youtube from  the Social Network Block click on the link. Main_page")
+    public Main_page_Logic checkingTransitionToTheYoutubeClickOnTheLink() {
+        String youtubeUrl = youTubeLinkTransition().getAttribute("url");
+        youTubeLinkTransition().click();
+        url();
+        Assert.assertEquals(youtubeUrl, url());
         return this;
     }
 }
