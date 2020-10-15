@@ -34,7 +34,7 @@ public class QC_2424_CheckingAbsenceCharacteristicZustandBrand3kWithDepositInMin
     @Description(value = "Checking the availability of a deposit for 3K brand goods with a deposit in mini-cards")
     public void testChecksAvailabilityDepositFor3KBrand(String route) {
         openPage(route);
-        ArrayList<String> artNumAndDeposit = new Category_name_brand_page_Logic().getArticleNumberAndCheckingDepositFor3KBrandFromMiniCard();
+        ArrayList<String> artNumAndDeposit = new Category_name_brand_page_Logic().getArticleNumberAndCheckingDepositForProductsMiniCard();
         new ProductSearch_aws().openProductSearchPageAndLogin()
                 .checkingWhetherProductHasDepositByArtNumber(artNumAndDeposit);
     }
