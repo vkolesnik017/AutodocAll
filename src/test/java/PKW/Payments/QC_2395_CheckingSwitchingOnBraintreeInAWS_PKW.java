@@ -23,7 +23,7 @@ public class QC_2395_CheckingSwitchingOnBraintreeInAWS_PKW {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "shop", parallel = false)
+    @DataProvider(name = "shop", parallel = true)
     Object[] dataProviderProducts() {
         return new Object[][]{
                 {"AT"},
