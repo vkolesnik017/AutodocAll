@@ -38,8 +38,18 @@ public class QC_2413_StaticPage_presse {
                 .openTheArticleBlock()
                 .checkingTheTitlesInTheCards()
                 .checkingTheTexts()
-                .getStatusImageCod()
-                .getStatusPhotoCod();
+                .getStatusImageCod()  //bug
+                .getStatusPhotoCod()
+                .checkingTheDownloadsPDF()
+                .checkingTheDownloadsJPG()  //bug
+                .checkingTheDownloadsPDFHilftBlock()  //bug
+                .checkingTheTitleHilftBlockPDF()  //bug
+                .checkingTheActiveArticle()
+                .checkingTheBackForwardButtons()
+                .checkingTheImagesStatusCode()
+                .checkingThePresentationImage()
+                .checkingTheDownloadImage()
+                .checkingTheBackForwardButtonsPresentation();
     }
 
     @AfterMethod

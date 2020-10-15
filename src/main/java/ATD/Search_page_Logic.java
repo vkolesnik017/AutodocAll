@@ -3,12 +3,14 @@ package ATD;
 import Common.DataBase;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
+import files.Product;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -352,7 +354,7 @@ public class Search_page_Logic extends Search_page {
 
     @Step("added Product to WishList. Search_page")
     public Search_page_Logic addNotActiveProductToWishList(int positionOfProduct) {
-        labelAddToWishListNotActiveProduct().get(positionOfProduct).click();
+        labelAddToWishListNotActiveProduct().get(positionOfProduct).shouldBe(visible).scrollIntoView("{block: \"center\"}").click();
         return this;
     }
 
@@ -536,6 +538,42 @@ public class Search_page_Logic extends Search_page {
     public Product_page_Logic clickOnTitleOfProduct(int positionOfTitle) {
         titleOfProductsInListing().get(positionOfTitle).shouldBe(visible).click();
         return page(Product_page_Logic.class);
+    }
+
+    @Step("added product to list. Search_page")
+    public Search_page_Logic addProductToList(List<Product> activeList, ElementsCollection products) {
+        for (int i = 0; i < products.size(); i++) {
+            Product product = new Product();
+            product.setGenericOfProduct(products.get(i).getAttribute("data-name"));
+            product.setPriceOfProduct(Double.parseDouble(priceOfProduct().get(i).getText().replaceAll("[^0-9,]", "").replace(",", ".")));
+            product.setAttributeOfButton(attributeOfBtnAddedToBasket().get(i).getAttribute("class"));
+            activeList.add(product);
+        }
+        return this;
+    }
+
+    @Step("check sorting of products. Search_page")
+    public Search_page_Logic checkSortingOfProducts(List<Product> productList) {
+        List<Product> listBeforeSorting = new ArrayList<>(productList);
+        Comparator<Product> productsComparator = Comparator
+                .comparing((Product p) -> "button ".equals(p.getAttributeOfButton()) ? -1 : 0)
+                .thenComparingDouble(Product::getPriceOfProduct);
+        productList.sort(productsComparator);
+        Assert.assertEquals(listBeforeSorting, productList);
+        return this;
+    }
+
+    @Step("get id of all products from page. Search_page")
+    public List<String> getIdOfProduct() {
+        List<String> idOfProduct = attributeOfBtnAddedToBasket().stream().map(n -> n.getAttribute("id")).collect(Collectors.toList());
+        return idOfProduct;
+    }
+
+
+    @Step("go to next page. Search_page")
+    public Search_page_Logic goToNextPage() {
+        forwardOfPaginator().click();
+        return this;
     }
 }
 

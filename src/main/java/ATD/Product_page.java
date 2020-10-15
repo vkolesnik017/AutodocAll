@@ -697,4 +697,22 @@ public class Product_page {
     SelenideElement titleOfProduct() {return $x("//h2/span[1]");}
 
     SelenideElement artNumOfProduct() {return $x("//span[@class='subtitle-art-nummer']/span");}
+
+    ElementsCollection attributeOfWarningIcon() {return $$x("//div[@class='product-block']//div[@class='dangerous-goods__icons']/img");}
+
+    SelenideElement signalWordOfDangerousProduct() {return $x("//div[@class='product-block']//div[@class='dangerous-goods__title']");}
+
+    SelenideElement dangerousBlock() {
+        return $x("//div[@class='dangerous-goods js-dangerous-goods hide']");
+    }
+
+    SelenideElement textFromDangerousBlock() {
+        return $x("//div[@class='dangerous-goods__text js-dangerous-goods__text']/span");
+    }
+
+    SelenideElement btnMehrFromDangerousBlock() {
+        return $x("//a[@class='dangerous-goods__show-more js-dangerous-goods__show-more']");
+    }
+
+
 }
