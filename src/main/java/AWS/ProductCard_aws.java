@@ -76,8 +76,6 @@ public class ProductCard_aws {
         return $$x("//ul[@class='chzn-choices']/li[@class='search-choice']/span");
     }
 
-    private SelenideElement artNumOfProduct() {return $x("//td[contains(text(),'Артикль №.:')]/following-sibling::td");}
-
     private SelenideElement statusInArtNum() {
         return $x("//td[contains(text(),'Артикль №.:')]/following-sibling::td/div");
     }
