@@ -297,7 +297,7 @@ public class Moto_Product_page_Logic extends Moto_Product_page {
 
     @Step("presence of compatibility block .Moto_Product_page")
     public Moto_Product_page_Logic presenceOfCompatibilityBlock() {
-        compatibilityMotoBlock().shouldBe(visible);
+        compatibilityMotoBlock().shouldBe(visible).scrollIntoView("{block: \"center\"}");
         return this;
     }
 
@@ -316,7 +316,7 @@ public class Moto_Product_page_Logic extends Moto_Product_page {
     @Step("visibility of motorcycle models in compatibility block .Moto_Product_page")
     public Moto_Product_page_Logic visibilityOfMotoModelsInCompatibilityBlock() {
         motoTitleFromCompatibilityBlock().get(0).shouldBe(visible).click();
-        motoModelsCompatibilityBlock().get(1).shouldBe(visible);
+        motoModelsCompatibilityBlock().get(1).waitWhile(visible, 10000);
         return this;
     }
 

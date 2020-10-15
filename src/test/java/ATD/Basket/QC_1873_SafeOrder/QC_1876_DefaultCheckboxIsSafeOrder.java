@@ -52,7 +52,7 @@ public class QC_1876_DefaultCheckboxIsSafeOrder {
                 .clickOnTheDesiredPaymentMethod(shop, "Bank")
                 .nextBtnClick()
                 .checkThatSafeOrderCheckboxIsSelected()
-                .checkPresenceSafeOrderPriceFromOrderSummeryBlock()
+                .checkPresenceSOPriceFromOrderSummeryBlock()
                 .getTotalPriceAllDataPage(shop);
         String orderNumber = new CartAllData_page_Logic().nextBtnClick()
                 .getOrderNumber();

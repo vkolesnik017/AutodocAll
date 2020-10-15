@@ -279,7 +279,7 @@ public class CartAllData_page_Logic extends CartAllData_page {
     }
 
     @Step("Check presence Safe Order price from order summery block. CartAllData_page")
-    public CartAllData_page_Logic checkPresenceSafeOrderPriceFromOrderSummeryBlock() {
+    public CartAllData_page_Logic checkPresenceSOPriceFromOrderSummeryBlock() {
         if (!safeOrderCostFromHeavyLoadsProduct().isDisplayed()) {
             safeOrderPriceFromOrderSummaryBlock().shouldBe(visible);
         }

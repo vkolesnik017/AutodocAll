@@ -107,6 +107,7 @@
             <class name="ATD.Basket.QC_1873_SafeOrder.QC_1881_DisablingSO_blockAfterChangingDelivery"/>
             <class name="ATD.Basket.QC_1873_SafeOrder.QC_1876_DefaultCheckboxIsSafeOrder"/>
             <class name="ATD.Basket.QC_1873_SafeOrder.QC_2346_CheckingDeliveryCostWhenTurningSO_Off_On"/>
+            <class name="ATD.Basket.QC_1873_SafeOrder.QC_2343_OrderWithSOIncludedOnBasketPageForShop_FR_DE"/>
         </classes>
     </test>
 
