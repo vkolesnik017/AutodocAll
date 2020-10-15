@@ -124,6 +124,21 @@ public class SetUp {
         return finalList.toArray();
     }
 
+    // Return list Shops + subroutes By Shops, main route and subroutes ("prod", "AT,DE", "lkw_main", "lkw_category_car_list,lkw_category_car_list2")
+    public Object[] setUpShopsWithSubroutes(String envFromTest, String shopsFromTest, String routeName, String subRoutes) throws SQLException {
+        List<String> finalList = new ArrayList<>();
+
+        String[] subRoute = subRoutes.split("\\,");
+        String[] shops = shopsFromTest.split("\\,");
+
+        for(String fSub : subRoute){
+            for (String fShops : shops){
+                finalList.add(db.getFullRouteByRouteAndSubroute(envFromTest, fShops, routeName, fSub));
+            }
+        }
+        return finalList.toArray();
+    }
+
     // Return list Shop_param By Shops and String[] list setUpShopWithListParam("prod", "AT,DE,CH", list[])
     public Object[] setUpShopWithListParam(String envFromTest, String shopFromTest, String[] list) {
         Object[] shop = setUpShop(envFromTest, shopFromTest);
