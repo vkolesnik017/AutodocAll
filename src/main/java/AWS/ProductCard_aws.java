@@ -72,6 +72,9 @@ public class ProductCard_aws {
     private SelenideElement artNumOfProduct() {
         return $x("//td[contains(text(),'Артикль №.:')]/following-sibling::td");
     }
+    ElementsCollection activeHazardStatement() {
+        return $$x("//ul[@class='chzn-choices']/li[@class='search-choice']/span");
+    }
 
     private SelenideElement statusInArtNum() {
         return $x("//td[contains(text(),'Артикль №.:')]/following-sibling::td/div");
@@ -101,6 +104,18 @@ public class ProductCard_aws {
     public SelenideElement searchTextOnPage(String textForSearch) {
         return $x("//*[contains(text(),'" + textForSearch + "')]");
 
+    }
+
+    @Step("get all active hazard statement. ProductCard_aws")
+    public ArrayList<String> getAllActiveHazardStatement() {
+        ArrayList<String> allHazardStatement = new ArrayList<>();
+        for (int i = 0; i < activeHazardStatement().size(); i++) {
+            String hazardStatement = activeHazardStatement().get(i).shouldBe(visible).getText();
+            if (!hazardStatement.contains("disabled")) {
+                allHazardStatement.add(hazardStatement);
+            }
+        }
+        return allHazardStatement;
     }
 
     @Step("get current Url")

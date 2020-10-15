@@ -935,5 +935,13 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
+    @Step("Get text from Dangerous Block. Product_page")
+    public String getTextFromDangerousBlock() {
+        if (btnMehrFromDangerousBlock().isDisplayed()) {
+            btnMehrFromDangerousBlock().click();
+        }
+        return textFromDangerousBlock().shouldBe(visible).getText();
+    }
+
 
 }
