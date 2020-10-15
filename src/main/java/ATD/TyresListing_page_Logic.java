@@ -505,8 +505,8 @@ public class TyresListing_page_Logic extends TyresListing_page {
         new Listing_page_Logic().checkProductAttributeOnListingWithProductsNumber(brandName, productTitleOnListing(), 1);
         brandNameInSelector().shouldHave(text(brandName));
 
-        String secondBrandName = motoBrandFilterButton().attr("data-value");
-        motoBrandFilterButton().click();
+        String secondBrandName = secondMotoBrandFilterButton().attr("data-value");
+        secondMotoBrandFilterButton().click();
         waitUntilPreloaderDisappear();
         checkBrandIsSelectedInBrandBlockMotoRoute(secondBrandName);
         new Listing_page_Logic().checkProductAttributeOnListingWithProductsNumber(secondBrandName, productTitleOnListing(), 1);
