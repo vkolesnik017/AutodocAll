@@ -113,6 +113,15 @@ public class WebMail {
         return $x("//table[@class='info-inline green-border']//tbody//tr//td");
     }
 
+    private SelenideElement toolBarBlock() {
+        return $(byId("messagetoolbar"));
+    }
+
+    private ElementsCollection elementsOfToolbarBeforeLetters() {
+        return $$x("//div[@id='messagetoolbar']/*[self::a or self::span]").filter(visible);
+    }
+
+
     //Locators for old mail service Mailinator
     public SelenideElement letterInfo(int numberLetter) {
         return $(byXpath("//*[contains(@class,'pointer')]/../tr[" + numberLetter + "]"));
@@ -343,6 +352,16 @@ public class WebMail {
     @Step("Opens email service with logged user. WebMail")
     public WebMail openMailWithLoggedUser() {
         open("https://webmail.autodoc.de/");
+        return this;
+    }
+
+
+    @Step("presence of toolbar elements. WebMail")
+    public WebMail presenceOfToolbarElements() {
+        toolBarBlock().shouldBe(visible);
+        for (int i = 0; i < elementsOfToolbarBeforeLetters().size(); i++) {
+            elementsOfToolbarBeforeLetters().get(i).shouldBe(visible);
+        }
         return this;
     }
 }
