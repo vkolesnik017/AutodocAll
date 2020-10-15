@@ -354,7 +354,7 @@ public class Search_page_Logic extends Search_page {
 
     @Step("added Product to WishList. Search_page")
     public Search_page_Logic addNotActiveProductToWishList(int positionOfProduct) {
-        labelAddToWishListNotActiveProduct().get(positionOfProduct).click();
+        labelAddToWishListNotActiveProduct().get(positionOfProduct).shouldBe(visible).scrollIntoView("{block: \"center\"}").click();
         return this;
     }
 

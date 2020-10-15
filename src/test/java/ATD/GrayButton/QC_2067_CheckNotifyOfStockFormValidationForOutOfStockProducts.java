@@ -56,7 +56,7 @@ public class QC_2067_CheckNotifyOfStockFormValidationForOutOfStockProducts {
         openPage(route + "/" + brand + "-" + ean + "-" + artNum);
         tyreItemPage.presenceOfHorizontalSelector().goToBrandSizeListingByClickOnBreadCrumbLink(2).appearsOfOutOfStockProductPopUp(fullEanNumberOfProduct)
                 .setValueInEmailFieldOfPopUp(email).clickOnGetMailingLabel().clickOnBtnSubscription().closeOutOfStockProductPopUp().presenceOfAllTopTireSizeLinks();
-        webMailPage.openMailWithLoggedUser();
+        webMailPage.openMailWithLoggedUser().presenceOfToolbarElements();
         Assert.assertEquals(webMailPage.getTotalCountOfLetters(), 2);
         webMailPage.deleteAllLetters();
     }

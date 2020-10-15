@@ -38,7 +38,7 @@ public class QC_2403_CheckProductSortingByPriceNettoInSearchListing {
     @Test(dataProvider = "route")
     @Flaky
     @Description(value = "test check product sorting by price netto in search listing")
-    public void testCheckProductSortingByPriceNettoInSearchListing(String route) {
+    public void testCheckProductSortingByPriceNettoInSearchListing(String route) throws SQLException {
         openPage(route);
         mainPage.checkProductSortingByPriceNetto(searchValues);
     }

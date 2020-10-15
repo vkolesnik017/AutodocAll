@@ -225,7 +225,7 @@ public class Search_page {
     }
 
     ElementsCollection artNumOfProduct() {
-        return $$x("//div[@class='name']/span[1]");
+        return $$x("//span[contains(text(),'Artikelnummer:')]");
     }
 
     SelenideElement popUpSelector() {
