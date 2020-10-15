@@ -1,17 +1,21 @@
 package ATD;
 
+import AWS.ProductCard_aws;
 import Common.DataBase;
 import PKW.Supplier_page_Logic;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import files.Product;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 
 import static ATD.CommonMethods.*;
 import static com.codeborne.selenide.CollectionCondition.size;
@@ -1294,4 +1298,64 @@ public class Main_page_Logic extends Main_page {
         infoTextOfCheckBockAtRegForm().shouldBe(visible).shouldHave(text("Ja, ich möchte E-Mail-Newsletter mit Sonderangeboten erhalten. Ich kann den Newsletter jederzeit abbestellen."));
         return this;
     }
+
+    @Step("check product sorting by price netto. Main_page")
+    public Main_page_Logic checkProductSortingByPriceNetto(List<String> list) throws SQLException {
+        Search_page_Logic searchPage = new Search_page_Logic();
+        DataBase db = new DataBase("ATD");
+        List<String> firstPage, secondPage, thirdPage;
+        List<Double> priceNettoFirstPageAws = new ArrayList<>();
+        List<Double> priceNettoSecondPageAws = new ArrayList<>();
+        List<Double> priceNettoThirdPageAws = new ArrayList<>();
+        List<Product> firstPageProduct = new ArrayList<>();
+        List<Product> secondPageProduct = new ArrayList<>();
+        List<Product> thirdPageProduct = new ArrayList<>();
+
+        for (int i = 0; i < 1; i++) {    //  for (int i = 0; i < list.size(); i++) {
+            if (!searchBar().isDisplayed()) {
+                openPage(db.getFullRouteByRouteName("prod", "DE", "main"));
+            }
+            useSearch("5w40");     //   useSearch(list.get(i));
+
+            firstPage = searchPage.getIdOfProduct();
+            searchPage.addProductToList(firstPageProduct, productsList()).checkSortingOfProducts(firstPageProduct).goToNextPage();
+            checkingContainsUrl("page=2");
+            secondPage = searchPage.getIdOfProduct();
+            searchPage.addProductToList(secondPageProduct, productsList()).checkSortingOfProducts(secondPageProduct).goToNextPage();
+            checkingContainsUrl("page=3");
+            thirdPage = searchPage.getIdOfProduct();
+            searchPage.addProductToList(thirdPageProduct, productsList()).checkSortingOfProducts(thirdPageProduct);
+            getPriceNettoOfProduct(priceNettoFirstPageAws, firstPage);
+            getPriceNettoOfProduct(priceNettoSecondPageAws, secondPage);
+            getPriceNettoOfProduct(priceNettoThirdPageAws, thirdPage);
+            checkPriceNettoFromAWS(priceNettoFirstPageAws, priceNettoSecondPageAws, priceNettoThirdPageAws);
+            priceNettoFirstPageAws.clear();
+            priceNettoSecondPageAws.clear();
+            priceNettoThirdPageAws.clear();
+            firstPage.clear();
+            secondPage.clear();
+            thirdPage.clear();
+            firstPageProduct.clear();
+            secondPageProduct.clear();
+            thirdPageProduct.clear();
+        }
+
+        return this;
+    }
+
+    @Step("get price netto of product.  Main_page")
+    public Main_page_Logic getPriceNettoOfProduct(List<Double> priceNetto, List<String> idOfProduct) {
+        for (int i = 0; i < idOfProduct.size(); i++) {
+            priceNetto.add(new ProductCard_aws(idOfProduct.get(i)).openProductCardPageAndLogin().getPriceNetto());
+        }
+        return this;
+    }
+
+    @Step("check price Netto from aws.  Main_page")
+    public Main_page_Logic checkPriceNettoFromAWS(List<Double> firstList, List<Double> secondList, List<Double> thirdList) {
+        Assert.assertTrue(Collections.max(firstList) <= Collections.min(secondList));
+        Assert.assertTrue(Collections.max(secondList) <= Collections.min(thirdList));
+        return this;
+    }
+
 }

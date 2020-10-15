@@ -913,4 +913,35 @@ public class Product_page_Logic extends Product_page {
         Assert.assertEquals(artNumOfProduct().getText(),expectedArtNum);
         return this;
     }
+    @Step("Get attribute of Warning icon in product block .Product_page")
+    public List<String> getAttributeOfWarningIconInPopUp() {
+        List<String> attribute = new ArrayList<>();
+        for (int i = 0; i < attributeOfWarningIcon().size(); i++) {
+            String attributeFromIcon = attributeOfWarningIcon().get(i).shouldBe(visible).getAttribute("src");
+            String partOfAtt = attributeFromIcon.replace(attributeFromIcon.substring(attributeFromIcon.lastIndexOf(".")), "");
+            attribute.add(partOfAtt);
+        }
+        return attribute;
+    }
+
+    @Step("Get signal word from dangerous product. Product_page")
+    public String getSignalWordFromDangerousProduct() {
+        return signalWordOfDangerousProduct().getText();
+    }
+
+    @Step("Checking presence dangerous block. Product_page")
+    public Product_page_Logic checkingPresenceDangerousBlock() {
+        dangerousBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Get text from Dangerous Block. Product_page")
+    public String getTextFromDangerousBlock() {
+        if (btnMehrFromDangerousBlock().isDisplayed()) {
+            btnMehrFromDangerousBlock().click();
+        }
+        return textFromDangerousBlock().shouldBe(visible).getText();
+    }
+
+
 }

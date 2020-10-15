@@ -42,7 +42,7 @@ public class QC_2395_CheckingSwitchingOnBraintreeInAWS_PKW {
     @Owner(value = "Chelombitko")
     @Description("Test for checking switching on Braintree on AWS")
     public void testForCheckingSwitchingOnBraintreeOnAWS(String shop) throws SQLException {
-        String userData = new DataBase("PKW").getUserIdForPaymentsMethod("payments_userid_pkw", shop, "CreditCard_braintree");
+        String userData = new DataBase("PKW").getUserIdForPaymentsMethod("payments_userid_pkw", shop, "Braintree_AWS");
         String userID = parseUserIdFromBD(userData);
         new SearchOrders_page_aws().openSearchOrderPageWithLogin()
                 .clickAddOrderBtn()

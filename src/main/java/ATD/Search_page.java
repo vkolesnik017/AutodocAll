@@ -225,7 +225,7 @@ public class Search_page {
     }
 
     ElementsCollection artNumOfProduct() {
-        return $$x("//div[@class='name']/span[1]");
+        return $$x("//span[@class='article_number']");
     }
 
     SelenideElement popUpSelector() {
@@ -261,6 +261,12 @@ public class Search_page {
     ElementsCollection priceBlock() {return $$x("//div[@class='price_box']");}
 
     ElementsCollection amountQuantityOfProduct() {return $$x("//div[@class='count']/input");}
+
+    ElementsCollection priceOfProduct() {return $$x("//p[@class='actual_price']");}
+
+    ElementsCollection attributeOfBtnAddedToBasket() { return $$x("//div[@class='count']/following-sibling::div");}
+
+    ElementsCollection productsList() {return $$x("//ul[@class='list_products']/li");}
 
 }
 
