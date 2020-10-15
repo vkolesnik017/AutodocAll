@@ -227,6 +227,7 @@ public class TyresListing_page_Logic extends TyresListing_page {
 
     @Step("Check All Products In Top Block And Brand Filter Interaction. TyresListing_page")
     public TyresListing_page_Logic checkProductsInTopBlockAndBrandFilter() {
+        linksInTopBlock().get(0).shouldBe(visible);
         List<String> urlListTopBlock = new ArrayList<>();
         for (int i = 0; i < linksInTopBlock().size(); i++) {
             urlListTopBlock.add(linksInTopBlock().get(i).attr("url"));

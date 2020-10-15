@@ -113,6 +113,15 @@ public class WebMail {
         return $x("//table[@class='info-inline green-border']//tbody//tr//td");
     }
 
+    private SelenideElement toolBarBlock() {
+        return $(byId("messagetoolbar"));
+    }
+
+    private ElementsCollection elementsOfToolbarBeforeLetters() {
+        return $$x("//div[@id='messagetoolbar']/*[self::a or self::span]").filter(visible);
+    }
+
+
     //Locators for old mail service Mailinator
     public SelenideElement letterInfo(int numberLetter) {
         return $(byXpath("//*[contains(@class,'pointer')]/../tr[" + numberLetter + "]"));
@@ -124,6 +133,10 @@ public class WebMail {
 
     private SelenideElement btnDeleteLetter() {
         return $x("//a[@class='button delete']");
+    }
+
+    private SelenideElement tableOfLetters() {
+        return $(byId("messagelistcontainer"));
     }
 
 
@@ -321,14 +334,33 @@ public class WebMail {
 
     @Step("get total count of letters. WebMail")
     public int getTotalCountOfLetters() {
+        tableOfLetters().shouldBe(visible);
         return countOfLetters().size();
     }
 
     @Step("delete all letters. WebMail")
     public WebMail deleteAllLetters() {
-        countOfLetters().get(0).click();
+        if (countOfLetters().get(0).isDisplayed()) {
+            countOfLetters().get(0).click();
+        }
         while (btnDeleteLetter().isDisplayed()) {
             btnDeleteLetter().click();
+        }
+        return this;
+    }
+
+    @Step("Opens email service with logged user. WebMail")
+    public WebMail openMailWithLoggedUser() {
+        open("https://webmail.autodoc.de/");
+        return this;
+    }
+
+
+    @Step("presence of toolbar elements. WebMail")
+    public WebMail presenceOfToolbarElements() {
+        toolBarBlock().shouldBe(visible);
+        for (int i = 0; i < elementsOfToolbarBeforeLetters().size(); i++) {
+            elementsOfToolbarBeforeLetters().get(i).shouldBe(visible);
         }
         return this;
     }

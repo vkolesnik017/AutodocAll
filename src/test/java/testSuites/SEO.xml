@@ -13,6 +13,7 @@
             <class name="ATD.SEO.QC_2549_InformationBlockOfCategoryNameRoute.QC_2553_ManufacturerBlock"/>
             <class name="ATD.SEO.QC_2549_InformationBlockOfCategoryNameRoute.QC_2561_BrandsBlock"/>
             <class name="ATD.SEO.QC_2549_InformationBlockOfCategoryNameRoute.QC_2565_PriceRangeBlock"/>
+            <class name="ATD.SEO.QC_2549_InformationBlockOfCategoryNameRoute.QC_2664_CharacteristicBlock"/>
         </classes>
     </test>
 

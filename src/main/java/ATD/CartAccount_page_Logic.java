@@ -10,11 +10,11 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.Selenide.switchTo;
 
-public class CartAccount_page_Logic extends CartAccount_page{
+public class CartAccount_page_Logic extends CartAccount_page {
 
 
     @Step("Filling fields in registration form. CartAccount_page")
-    public String fillingRegistrationFields(String qc){
+    public String fillingRegistrationFields(String qc) {
         String mail = qc + mailRandom();
         registrationFormEmailInput().setValue(mail);
         registrationFormPasswordInput().setValue(password);
@@ -51,7 +51,7 @@ public class CartAccount_page_Logic extends CartAccount_page{
     }
 
     @Step("Check registration from cart and back to Main page. CartAccount_page")
-    public Main_page_Logic registrationFromCartAndBackToMainPage(String mail){
+    public Main_page_Logic registrationFromCartAndBackToMainPage(String mail) {
         CartAddress_page_Logic cartAddress_page = new CartAddress_page_Logic();
         registrationFormEmailInput().setValue(mail);
         registrationFormPasswordInput().setValue(password);
@@ -62,7 +62,7 @@ public class CartAccount_page_Logic extends CartAccount_page{
     }
 
     @Step("Password Recovery Request from cart account page. CartAccount_page")
-    public CartAccount_page_Logic passwordRecoveryRequestFromCart(String mail){
+    public CartAccount_page_Logic passwordRecoveryRequestFromCart(String mail) {
         forgotPasswordLink().click();
         emailFieldInPasswordRecoveryPopUp().setValue(mail);
         sendBtnInPasswordRecoveryPopUp().click();
@@ -125,5 +125,13 @@ public class CartAccount_page_Logic extends CartAccount_page{
     public Cart_page_Logic clickBtnReturnToBasket() {
         btnReturnToCart().shouldBe(visible).click();
         return page(Cart_page_Logic.class);
+    }
+
+
+    @Step("check and click text blocks in registration form. CartAccount_page")
+    public CartAccount_page_Logic checkAndClickTextBlockInRegForm() {
+        infoTextUnderCheckBockAtRegForm().shouldBe(visible).shouldHave(text("Jetzt abonnieren! Sparen Sie noch mehr!"));
+        infoTextOfCheckBockAtRegForm().shouldBe(visible).shouldHave(text("Ja, ich möchte E-Mail-Newsletter mit Sonderangeboten erhalten. Ich kann den Newsletter jederzeit abbestellen.")).click();
+        return this;
     }
 }

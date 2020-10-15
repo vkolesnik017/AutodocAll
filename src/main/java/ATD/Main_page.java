@@ -728,4 +728,10 @@ public class Main_page {
     SelenideElement topBrandsBlock() {return $x("//div[@class='top_brands']");}
 
     ElementsCollection visibleTopBrands() {return $$x("//div[@class='top_brands']//li/a");}
+
+    SelenideElement infoTextOfCheckBockAtRegForm() {return $x("//label[@for='isSubscribe_header_modal']");}
+
+    SelenideElement infoTextUnderCheckBockAtRegForm() {return $x("//div[@class='subscribe-text']");}
+
+    ElementsCollection productsList() {return $$x("//ul[@class='list_products']/li");}
 }

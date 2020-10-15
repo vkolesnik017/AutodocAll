@@ -42,7 +42,6 @@ public class QC_2673_BasketSteps {
                 .cartClick()
                 .nextButtonClick()
                 .clickBtnReturnToBasket();
-        checkingContainsUrl("/basket");
         new Cart_page_Logic().nextButtonClick()
                 .signIn(mail, password)
                 .checkStepsBasketOnPageCartAddress()
@@ -59,7 +58,6 @@ public class QC_2673_BasketSteps {
         checkingContainsUrl("/basket/payments");
         new CartPayments_page_Logic().nextBtnClick()
                 .clickBtnReturnToCartPage();
-        checkingContainsUrl("/basket");
     }
 
     @AfterMethod

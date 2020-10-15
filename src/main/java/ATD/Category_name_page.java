@@ -75,4 +75,10 @@ public class Category_name_page {
     SelenideElement headlineOfProductArtBlock() {return $x("//th[contains(text(),'Die meistverkauften Artikel:')]");}
 
     ElementsCollection valuesOfProductArtBlock() {return $$x("//th[contains(text(),'Die meistverkauften Artikel:')]/../following-sibling::tr[1]/td/span");}
+
+    SelenideElement characteristicBlockUnderMainBlock() {return $x("//th[contains(text(),'Für beliebte Automarken:')]/ancestor::div[@class='summary-table__table']//table[2]");}
+
+    ElementsCollection typeOfCharacteristicsBlock() {return $$x("//table[2]//tr[2]/td");}
+
+    ElementsCollection allValueFromCharacteristicBlock(int positionOfBlock) {return $$x("//table[2]//td["+positionOfBlock+"]");}
 }

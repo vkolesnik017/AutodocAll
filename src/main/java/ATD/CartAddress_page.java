@@ -181,4 +181,17 @@ public class CartAddress_page {
         return $x("//span[@style='color: inherit;']");
     }
 
+    // block with cart steps
+    SelenideElement secondStep() {
+       return  $x("//li[@class='complete second_step no-active-link active']");
+    }
+
+    SelenideElement thirdStep() {
+        return $x("//li[@class='third_step no-active-link ']");
+    }
+
+    SelenideElement fourthStep() {
+        return $x("//li[@class='fourth_step no-active-link']");
+    }
+
 }

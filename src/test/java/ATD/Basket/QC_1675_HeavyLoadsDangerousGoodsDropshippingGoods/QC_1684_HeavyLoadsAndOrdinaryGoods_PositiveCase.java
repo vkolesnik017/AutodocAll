@@ -54,7 +54,7 @@ public class  QC_1684_HeavyLoadsAndOrdinaryGoods_PositiveCase {
                 .checkHeavyLoadsDeliveryPriceAllData("10,00")
                 .checkPresenceSafeOrderBlock()
                 .clickSafeOrderCheckbox()
-                .checkPresenceSafeOrderPriceFromOrderSummeryBlock()
+                .checkPresenceSOPriceFromOrderSummeryBlock()
                 .getTotalPriceAllDataPage(shop);
         orderNumber = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumber);

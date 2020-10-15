@@ -62,7 +62,7 @@ public class QC_1683_HeavyLoads_FreeShippingLimit {
                 .checkPresenceFreeDeliveryPriceCartAllDataPage()
                 .checkHeavyLoadsDeliveryPriceAllData("10,00")
                 .clickSafeOrderCheckbox()
-                .checkPresenceSafeOrderPriceFromOrderSummeryBlock()
+                .checkPresenceSOPriceFromOrderSummeryBlock()
                 .getTotalPriceAllDataPage(shop);
         orderNumber = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumber);

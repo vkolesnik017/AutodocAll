@@ -2,8 +2,8 @@ package ATD.Basket.QC_1873_SafeOrder;
 
 import ATD.CartAllData_page_Logic;
 import ATD.Product_page_Logic;
-import Common.SetUp;
 import AWS.Order_aws;
+import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -19,9 +19,9 @@ import static ATD.CommonMethods.*;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1875_OrderWithSO_IncludedOnDE_FR_languageVersion {
+public class QC_2343_OrderWithSOIncludedOnBasketPageForShop_FR_DE {
 
-    private String mail = "QC_1875_autotest@mailinator.com";
+    private String mail = "QC_2343_autotest@mailinator.com";
 
     @BeforeClass
     void setUp() {
@@ -36,21 +36,25 @@ public class QC_1875_OrderWithSO_IncludedOnDE_FR_languageVersion {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks order with SO included on FR / DE language versions.")
-    public void testOrderWithSO_IncludedOnDE_FR_languageVersion(String route) throws SQLException {
+    @Description(value = "Test checks order with SO included on basket page FR / DE language versions.")
+    public void testOrderWithSO_IncludedOnBasketPage(String route) throws SQLException {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
         float totalPriceInAllData =  new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
+                .checkThatSafeOrderCheckboxIsNotSelected()
+                .clickSafeOrderCheckbox()
+                .checkPresenceSOInSummeryBlock()
+                .checkTotalPriceIncludedSO()
                 .nextButtonClick()
                 .signIn(mail, password)
                 .fillAllFieldsAndFirmForShipping(shop, "12345", "autotest","autotest")
                 .fillInCompanyIdFieldForCountryWhereIdNeeded(shop, "FR", "autotest")
                 .clickOnTheDesiredPaymentMethod(shop, "Bank")
                 .nextBtnClick()
-                .checkPresenceSafeOrderBlock()
-                .addSafeOrderInOrderAndCheckTotalPriceIncludedSO(shop)
+                .checkThatSafeOrderCheckboxIsSelected()
+                .checkPresenceSOPriceFromOrderSummeryBlock()
                 .getTotalPriceAllDataPage(shop);
         String orderNumber = new CartAllData_page_Logic().nextBtnClick()
                 .getOrderNumber();

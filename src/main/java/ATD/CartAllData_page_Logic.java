@@ -9,8 +9,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.getCurrencyAndVerify;
-import static ATD.CommonMethods.getPriceFromElement;
+import static ATD.CommonMethods.*;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.Selenide.sleep;
@@ -158,26 +157,26 @@ public class CartAllData_page_Logic extends CartAllData_page {
     }
 
     @Step("Checks regular delivery price. CartAllData_page")
-    public CartAllData_page_Logic checkRegularDeliveryPriceAllData(String regularDeliveryPrice) {
-        deliveryPrice().shouldHave(text(regularDeliveryPrice));
-        return this;
+        public CartAllData_page_Logic checkRegularDeliveryPriceAllData(String regularDeliveryPrice) {
+            deliveryPrice().shouldHave(text(regularDeliveryPrice));
+            return this;
     }
 
     @Step("Checks Heavy loads delivery price. CartAllData_page")
     public CartAllData_page_Logic checkHeavyLoadsDeliveryPriceAllData(String heavyLoadsDeliveryPrice) {
-        heavyLoadsShippingCost().shouldHave(text(heavyLoadsDeliveryPrice));
+        heavyLoadsDeliveryPrice().shouldHave(text(heavyLoadsDeliveryPrice));
         return this;
     }
 
     @Step("Check for presence Heavy loads delivery price. CartAllData_page")
     public CartAllData_page_Logic checkPresenceHeavyLoadsDeliveryPriceAllDataPage() {
-        heavyLoadsShippingCost().shouldBe(visible);
+        heavyLoadsDeliveryPrice().shouldBe(visible);
         return this;
     }
 
     @Step("Checks for absence Heavy loads delivery price. CartAllData_page")
     public CartAllData_page_Logic checkAbsenceHeavyLoadsDeliveryPrice() {
-        heavyLoadsShippingCost().shouldNotBe(visible);
+        heavyLoadsDeliveryPrice().shouldNotBe(visible);
         return this;
     }
 
@@ -280,7 +279,7 @@ public class CartAllData_page_Logic extends CartAllData_page {
     }
 
     @Step("Check presence Safe Order price from order summery block. CartAllData_page")
-    public CartAllData_page_Logic checkPresenceSafeOrderPriceFromOrderSummeryBlock() {
+    public CartAllData_page_Logic checkPresenceSOPriceFromOrderSummeryBlock() {
         if (!safeOrderCostFromHeavyLoadsProduct().isDisplayed()) {
             safeOrderPriceFromOrderSummaryBlock().shouldBe(visible);
         }
@@ -505,6 +504,7 @@ public class CartAllData_page_Logic extends CartAllData_page {
     public Cart_page_Logic clickBtnReturnToCartPage() {
         sleep(5000);
         returnToCartPage().scrollTo().hover().click();
+        checkingContainsUrl("/basket");
         return page(Cart_page_Logic.class);
     }
 

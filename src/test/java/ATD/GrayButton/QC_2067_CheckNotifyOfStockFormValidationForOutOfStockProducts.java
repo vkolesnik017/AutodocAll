@@ -42,6 +42,8 @@ public class QC_2067_CheckNotifyOfStockFormValidationForOutOfStockProducts {
     @Flaky
     @Description(value = "test checking notify of stock from validation for Out of stock products")
     public void testCheckNotifyOfStockFormValidationForOutOfStockProducts(String route) {
+        webMailPage.openMail(email, passwordForMail);
+        webMailPage.deleteAllLetters();
         new ProductSearch_aws().openProductSearchPageAndLogin().selectCategory("100001")
                 .selectFirstSearchFilter("no").selectAvailabilityAtSupplierFilter("no").clickOnSearchButton().goToProductCartByClickOnTitle(0);
         String brand = productPageAws.getTitleOfBrandProduct();
@@ -53,8 +55,8 @@ public class QC_2067_CheckNotifyOfStockFormValidationForOutOfStockProducts {
                 .setValueInEmailFieldOfPopUp(email).clickOnGetMailingLabel().clickOnBtnSubscription();
         openPage(route + "/" + brand + "-" + ean + "-" + artNum);
         tyreItemPage.presenceOfHorizontalSelector().goToBrandSizeListingByClickOnBreadCrumbLink(2).appearsOfOutOfStockProductPopUp(fullEanNumberOfProduct)
-                .setValueInEmailFieldOfPopUp(email).clickOnGetMailingLabel().clickOnBtnSubscription();
-        webMailPage.openMail(email, passwordForMail);
+                .setValueInEmailFieldOfPopUp(email).clickOnGetMailingLabel().clickOnBtnSubscription().closeOutOfStockProductPopUp().presenceOfAllTopTireSizeLinks();
+        webMailPage.openMailWithLoggedUser().presenceOfToolbarElements();
         Assert.assertEquals(webMailPage.getTotalCountOfLetters(), 2);
         webMailPage.deleteAllLetters();
     }

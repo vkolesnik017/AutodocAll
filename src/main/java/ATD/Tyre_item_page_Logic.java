@@ -73,4 +73,29 @@ public class Tyre_item_page_Logic extends Tyre_item_page {
     public String getFullEanNumberOfProduct() {
         return eanNumberOfProduct().getText();
     }
+
+    @Step("appears of out of stock product pop-Up. Tyre_item_page")
+    public Tyre_item_page_Logic appearsOfOutOfStockProductPopUp() {
+        grayButton().shouldBe(visible).click();
+        popUpNotifyAboutAvailability().should(appear);
+        return this;
+    }
+
+    @Step("set value in email field of PopUp .Tyre_item_page")
+    public Tyre_item_page_Logic setValueInEmailFieldOfPopUp(String email) {
+        emailFieldOfFeedBackPopUp().shouldBe(visible).setValue(email);
+        return this;
+    }
+
+    @Step("click on 'Get mailing' label of pop-up Notify about availability. Tyre_item_page")
+    public Tyre_item_page_Logic clickOnGetMailingLabel() {
+        labelOfPopUpNotifyAboutAvailability().shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("click on Subscription button . Tyre_item_page")
+    public Tyre_item_page_Logic clickOnBtnSubscription() {
+        btnSendOfFeedBackPopUp().click();
+        return this;
+    }
 }

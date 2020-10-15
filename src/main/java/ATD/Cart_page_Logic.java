@@ -6,6 +6,8 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +28,7 @@ public class Cart_page_Logic extends Cart_page {
     @Step("Clicking next button. Cart_page")
     public CartAddress_page_Logic clickBtnNextAndTransitionOnAddressPage() {
         nextButton().click();
+        checkingContainsUrl("/basket/address");
         return page(CartAddress_page_Logic.class);
     }
 
@@ -266,6 +269,24 @@ public class Cart_page_Logic extends Cart_page {
         return this;
     }
 
+    @Step("Click Safe Order Checkbox. Cart_page")
+    public Cart_page_Logic clickSafeOrderCheckbox() {
+        safeOrderCheckbox().click();
+        return this;
+    }
+
+    @Step("Checks presence safe order in summery block. Cart_page")
+    public Cart_page_Logic checkPresenceSOInSummeryBlock() {
+        safeOrderInSummeryBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checks absence safe order in summery block. Cart_page")
+    public Cart_page_Logic checkAbsenceSOInSummeryBlock() {
+        safeOrderInSummeryBlock().shouldNotBe(visible);
+        return this;
+    }
+
     @Step("Get text in Safe Order block. Cart_page")
     public String getTextInSafeOrderBlock() {
         return String.valueOf(safeOrderBlock().getText());
@@ -349,6 +370,47 @@ public class Cart_page_Logic extends Cart_page {
         btnMoreInfoProduct().click();
         moreInfoBlockInProduct().shouldBe(visible);
         characteristicZustandInProduct().shouldNotBe(visible);
+        return this;
+    }
+
+    @Step("Get product price of the Cart_page")
+    public Float getProductPrice() {
+        Float productPrice = null;
+            String realPrice = productPrice().getText();
+            realPrice = realPrice.replaceAll(" €", "").replaceAll(",", ".");
+            productPrice = Float.parseFloat(realPrice);
+        return productPrice;
+    }
+
+    @Step("Get total order price of the Cart_page")
+    public Float getTotalOrderPrice() {
+        Float totalOrderPrice = null;
+        String realPrice = totalOrderPrice().getText();
+        realPrice = realPrice.substring(0, realPrice.indexOf(" ")).replaceAll(",", ".");
+        totalOrderPrice = Float.parseFloat(realPrice);
+        return totalOrderPrice;
+    }
+
+    @Step("Checks total price included SO. Cart_page")
+    public Cart_page_Logic checkTotalPriceIncludedSO() {
+        float productPrice = getProductPrice();
+        String priceSO = priceOfSafeOrder().getText();
+        Float totalOrderPrice = getTotalOrderPrice();
+        float formatPriseSO = Float.parseFloat(priceSO.substring(0, priceSO.indexOf(" ")).replaceAll(",", "."));
+        float totalPriceIncludedSO = productPrice + formatPriseSO;
+        BigDecimal result = new BigDecimal(totalPriceIncludedSO);
+        BigDecimal formatPriceUp = result.setScale(2, RoundingMode.UP);
+        float roundMax = Float.parseFloat(String.valueOf(formatPriceUp));
+        BigDecimal formatPriceDOWN = result.setScale(2, RoundingMode.FLOOR);
+        float roundMin = Float.parseFloat(String.valueOf((formatPriceDOWN)));
+        float res = 0.0f;
+        if (totalOrderPrice.equals(roundMax)) {
+            res = roundMax;
+        }
+        if (totalOrderPrice.equals(roundMin)) {
+            res = roundMin;
+        }
+        Assert.assertEquals(res, totalOrderPrice);
         return this;
     }
 

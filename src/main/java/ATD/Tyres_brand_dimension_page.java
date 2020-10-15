@@ -1,8 +1,10 @@
 package ATD;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -23,6 +25,10 @@ public class Tyres_brand_dimension_page {
     SelenideElement emailFieldOfFeedBackPopUp() { return $(byId("form_AvailabilityReminder[email]")); }
 
     SelenideElement btnSendOfFeedBackPopUp() { return $x("//input[@class='popup-available__button']");  }
+
+    SelenideElement btnCloseOutOfStockProductPopUp() {return $x("//div[@class='popup_top']/a");}
+
+    ElementsCollection visibleTopTireSizeLinks() {return $$x("//div[@class='left_block two']/ul/li").filter(visible);}
 }
 
 
