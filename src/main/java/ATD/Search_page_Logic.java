@@ -426,7 +426,7 @@ public class Search_page_Logic extends Search_page {
 
     @Step(" added article number Of product to list. Search_page")
     public List<String> addArtNumOfProductToList(int countOfArtNum) {
-        List<String> artNumOfProduct = artNumOfProduct().stream().limit(countOfArtNum).map(n -> n.getText().replaceAll("Artikelnummer: ", "")).collect(Collectors.toList());
+        List<String> artNumOfProduct = artNumOfProduct().stream().limit(countOfArtNum).map(n -> n.getText().replaceAll("Artikelnummer:", "").replace(" ","")).collect(Collectors.toList());
         return artNumOfProduct;
     }
 
