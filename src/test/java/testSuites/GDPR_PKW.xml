@@ -15,7 +15,7 @@
 
     <test name="QC_1863_GdprContacts">
         <classes>
-            <class name="PKW.GDRP.QC_1863_GdprContacts"/>
+<!--            <class name="PKW.GDRP.QC_1863_GdprContacts"/>-->
         </classes>
     </test>
 
