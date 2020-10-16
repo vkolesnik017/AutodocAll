@@ -20,7 +20,7 @@
 
     <test name="QC_269_GdprContacts">
         <classes>
-            <class name="ATD.GDRP.QC_269_GdprContacts"/>
+<!--            <class name="ATD.GDRP.QC_269_GdprContacts"/>-->
         </classes>
     </test>
 

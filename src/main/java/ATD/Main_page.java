@@ -738,4 +738,8 @@ public class Main_page {
     SelenideElement youTubeImageTransition() {return $x("//*[@class='footer__social-block']//*[@data-ga-action='youtube'][1]");}
 
     SelenideElement youTubeLinkTransition() {return $x("//*[@class='footer__social-block']//span[@data-ga-action='youtube'][2]");}
+
+    SelenideElement instagramLinkTransition() {return $x("//*[@data-ga-action='instagram'][2]");}
+
+    SelenideElement instagramImageTransition() {return $x("//*[@data-ga-action='instagram'][1]");}
 }

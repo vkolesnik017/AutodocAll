@@ -5,11 +5,10 @@ import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import org.apache.commons.io.FileUtils;
+import org.testng.annotations.*;
 
+import java.io.File;
 import java.io.IOException;
 
 import static ATD.CommonMethods.openPage;
@@ -38,7 +37,7 @@ public class QC_2413_StaticPage_presse {
                 .openTheArticleBlock()
                 .checkingTheTitlesInTheCards()
                 .checkingTheTexts()
-                .getStatusImageCod()  //bug
+                .getStatusImageCod()
                 .getStatusPhotoCod()
                 .checkingTheDownloadsPDF()
                 .checkingTheDownloadsJPG()  //bug
@@ -57,5 +56,10 @@ public class QC_2413_StaticPage_presse {
     @AfterMethod
     public void close() {
         closeWebDriver();
+    }
+
+    @AfterClass
+    public void deleteDirectory() throws IOException {
+        FileUtils.deleteDirectory(new File("C:\\Users\\User\\IdeaProjects\\automation_perfection\\build\\reports\\tests"));
     }
 }
