@@ -85,6 +85,9 @@ class TyresListing_page {
 
     SelenideElement brandFilterTyresInSidebar() { return $x("//*[@class='tires_marks criteria-filter-block-js']//a"); }
 
+    SelenideElement secondBrandFilterTyresInSidebar() { return $x("//*[@class='tires_marks criteria-filter-block-js']//li[2]/a"); }
+
+
     SelenideElement brandNameInSelector() { return $x("//*[@class='main-selector Brand']//span"); }
 
     SelenideElement brandNameInListing() {

@@ -288,6 +288,7 @@ public class TyresListing_page_Logic extends TyresListing_page {
     @Step("Check brand relink on tyres listing. TyresListing_page")
     public TyresListing_page_Logic checkBrandRelink() {
         String brandNameInSidebar = brandFilterTyresInSidebar().attr("data-value");
+        secondBrandFilterTyresInSidebar().scrollIntoView(false);
         brandFilterTyresInSidebar().click();
         brandNameInSelector().shouldHave(text(brandNameInSidebar));
         new Listing_page_Logic().checkProductTitleOnListing(brandNameInSidebar, true, titleOfAllProducts());

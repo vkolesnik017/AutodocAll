@@ -260,6 +260,10 @@ public class Listing_page {
         return $x("//*[@class='sort-rating__form-list']/li/label[@for='rating_3']");
     }
 
+    public SelenideElement ratingTwoStarsFilterCheckbox() {
+        return $x("//*[@class='sort-rating__form-list']/li/label[@for='rating_2']");
+    }
+
     public SelenideElement ratingFilterBlock() {
         return $(".sort-rating__form");
     }

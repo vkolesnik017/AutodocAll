@@ -943,5 +943,14 @@ public class Product_page_Logic extends Product_page {
         return textFromDangerousBlock().shouldBe(visible).getText();
     }
 
+    @Step("Click link safety data sheet. Product_page")
+    public Product_page_Logic  clickLinkSafetyDataSheet() {
+        safetyDataSheet().shouldBe(visible).click();
+        switchTo().window(1);
+        closeWindow();
+        switchTo().window(0);
+        return this;
+    }
+
 
 }

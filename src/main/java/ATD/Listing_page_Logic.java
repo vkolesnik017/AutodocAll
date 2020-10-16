@@ -1142,6 +1142,7 @@ public class Listing_page_Logic extends Listing_page {
 
     @Step("Click three rating stars in filter. Listing_page")
     public Listing_page_Logic clickThreeRatingStarsInFilter() {
+        ratingTwoStarsFilterCheckbox().scrollIntoView(false);
         ratingThreeStarsFilterCheckbox().click();
         return this;
     }
