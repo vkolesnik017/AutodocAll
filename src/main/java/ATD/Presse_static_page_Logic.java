@@ -201,12 +201,12 @@ public class Presse_static_page_Logic extends Presse_static_page {
     }
 
     @Step("Checking the block with the presentation . Presse_static_page")
-    public Presse_static_page_Logic checkingThePresentation() {
+    public Presse_static_page_Logic checkingThePresentation(String expectedUrl) {
         autodocPresseTitlePresentation().shouldBe(visible);
         Assert.assertFalse(autodocPresseTitlePresentation().text().isEmpty());
         blockWithPresentation().shouldBe(exist).click();
         switchTo().window(1);
-        checkingContainsUrl("https://www.autodoc.de/tmp/ATD2020.pdf");
+        checkingContainsUrl(expectedUrl);
         closeWindow();
         switchTo().window(0);
         return this;
@@ -227,12 +227,12 @@ public class Presse_static_page_Logic extends Presse_static_page {
     }
 
     @Step("Checking the download of the image in the presentation block. Presse_static_page")
-    public Presse_static_page_Logic checkingTheDownloadImage() {
+    public Presse_static_page_Logic checkingTheDownloadImage(String pathname) {
         for (int i = 0; i < imageElement().size(); i++) {
             String attribute = imageElement().get(i).getAttribute("download");
             imageElement().get(i).scrollIntoView("{block: \"center\"}");
             imageElement().get(i).click();
-            File file = new File("C:/Users/User/Downloads/" + attribute);
+            File file = new File(pathname + attribute);
             String nameFile = file.getName();
             file.delete();
             Assert.assertEquals(attribute, nameFile);

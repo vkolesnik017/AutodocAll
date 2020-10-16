@@ -367,23 +367,23 @@ public class Product_page {
     }
 
     public SelenideElement firstBrandInCompabilityList() {
-        return $x("//*[@class='details_info_box']/div[1]//a");
+        return $x("//*[@class='accordion-container'][1]/div[1]//a");
     }
 
     public SelenideElement secondBrandInCompabilityList() {
-        return $x("//*[@class='details_info_box']/div[2]//a");
+        return $x("//*[@class='accordion-container'][2]/div[1]//a");
     }
 
     public SelenideElement thirdBrandInCompabilityList() {
-        return $x("//*[@class='details_info_box']/div[3]//a");
+        return $x("//*[@class='accordion-container'][3]/div[1]//a");
     }
 
     public SelenideElement fourthBrandInCompabilityList() {
-        return $x("//*[@class='details_info_box']/div[4]//a");
+        return $x("//*[@class='accordion-container'][4]/div[1]//a");
     }
 
     public SelenideElement firstModelInFirstBrandInCompatibilityList() {
-        return $x("//*[@class='details_info_box']/div[1]/div/div[2]");
+        return $x("(//*[@class='accordion-content'][1]/ul/li/b[1])[1]");
     }
 
     public SelenideElement carListInFirstModelCompabilityList() {

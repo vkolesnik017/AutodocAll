@@ -16,7 +16,7 @@ public class Widerruf_static_page_Logic extends Widerruf_static_page {
         pdfDownloadButton().click();
         acrobatReaderButton().click();
         switchTo().window(1);
-        checkingContainsUrl("/reader/?loc=de");
+        checkingContainsUrl("/reader/");
         return this;
     }
 }

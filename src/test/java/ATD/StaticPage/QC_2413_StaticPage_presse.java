@@ -47,9 +47,11 @@ public class QC_2413_StaticPage_presse {
                 .checkingTheActiveArticle()
                 .checkingTheBackForwardButtons()
                 .checkingTheImagesStatusCode()
+                .checkingThePresentation("/tmp/ATD2020.pdf")
                 .checkingThePresentationImage()
-                .checkingTheDownloadImage()
-                .checkingTheBackForwardButtonsPresentation();
+                .checkingTheDownloadImage("C:/Users/User/Downloads/")
+                .checkingTheBackForwardButtonsPresentation()
+                .checkingTheMainImagesStatusCode();
     }
 
     @AfterMethod
