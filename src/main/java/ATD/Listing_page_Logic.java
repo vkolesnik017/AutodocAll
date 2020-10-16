@@ -655,7 +655,7 @@ public class Listing_page_Logic extends Listing_page {
 
     @Step("Click filter button. Listing_page")
     public Listing_page_Logic clickFilterButton(SelenideElement filterButton) {
-        filterButton.click();
+        filterButton.scrollTo().click();
         return this;
     }
 
@@ -1142,8 +1142,7 @@ public class Listing_page_Logic extends Listing_page {
 
     @Step("Click three rating stars in filter. Listing_page")
     public Listing_page_Logic clickThreeRatingStarsInFilter() {
-        ratingTwoStarsFilterCheckbox().scrollIntoView(false);
-        ratingThreeStarsFilterCheckbox().click();
+        ratingThreeStarsFilterCheckbox().scrollTo().click();
         return this;
     }
 
