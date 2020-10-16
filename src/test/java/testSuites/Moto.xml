@@ -16,9 +16,9 @@
             <class name="ATD.MOTO.QC_301_MotoSelector.QC_308_PresenceOfFilledValuesInSelector"/>
             <class name="ATD.MOTO.QC_301_MotoSelector.QC_309_PresenceOfHeadlineInSelector"/>
             <class name="ATD.MOTO.QC_301_MotoSelector.QC_310_PresenceOfOpeningSelector"/>
-           <!-- <class name="ATD.MOTO.QC_301_MotoSelector.QC_312_FillingSelectorByCompatibleMoto"/>-->
+            <class name="ATD.MOTO.QC_301_MotoSelector.QC_312_FillingSelectorByCompatibleMoto"/>
             <class name="ATD.MOTO.QC_301_MotoSelector.QC_313_FillingSelectorByIncompatibleMoto"/>
-            <!--<class name="ATD.MOTO.QC_301_MotoSelector.QC_315_TransitionToProductPageWithCompatibleMoto"/>-->
+            <class name="ATD.MOTO.QC_301_MotoSelector.QC_315_TransitionToProductPageWithCompatibleMoto"/>
             <class name="ATD.MOTO.QC_301_MotoSelector.QC_317_TransitionToProductPageWithOutCompatibleMoto"/>
         </classes>
     </test>
@@ -202,15 +202,15 @@
 
     <test name="QC_730_ProductPage">
         <classes>
-            <!--<class name="ATD.MOTO.QC_730_ProductPage.QC_731_DynamicCharacteristic"/>-->
+            <class name="ATD.MOTO.QC_730_ProductPage.QC_731_DynamicCharacteristic"/>
             <class name="ATD.MOTO.QC_730_ProductPage.QC_732_SelectingOfMotoSelector"/>
             <class name="ATD.MOTO.QC_730_ProductPage.QC_733_AddedProductToBasket"/>
             <class name="ATD.MOTO.QC_730_ProductPage.QC_734_CompatibleMotoBlock"/>
-            <!--<class name="ATD.MOTO.QC_730_ProductPage.QC_737_LackOfLinksInOenBlock"/>-->
+            <class name="ATD.MOTO.QC_730_ProductPage.QC_737_LackOfLinksInOenBlock"/>
             <class name="ATD.MOTO.QC_730_ProductPage.QC_738_AnalogProductBlock"/>
-            <!--<class name="ATD.MOTO.QC_730_ProductPage.QC_739_AddedAnalogProductToBasket"/>
+            <class name="ATD.MOTO.QC_730_ProductPage.QC_739_AddedAnalogProductToBasket"/>
             <class name="ATD.MOTO.QC_730_ProductPage.QC_740_PresenceOfDetailInformationPopUp"/>
-            <class name="ATD.MOTO.QC_730_ProductPage.QC_741_BehaviorByClickOnImageOfAnalogProduct"/>-->
+            <class name="ATD.MOTO.QC_730_ProductPage.QC_741_BehaviorByClickOnImageOfAnalogProduct"/>
         </classes>
     </test>
 

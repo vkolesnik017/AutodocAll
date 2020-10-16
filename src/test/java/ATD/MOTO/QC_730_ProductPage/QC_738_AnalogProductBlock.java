@@ -27,7 +27,7 @@ public class QC_738_AnalogProductBlock {
         return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_product");
     }
 
-    @Test(dataProvider = "routes", enabled = false)
+    @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test checks analog product block")
