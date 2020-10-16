@@ -200,6 +200,10 @@ public class Product_page {
 
     public SelenideElement mengeCharacteristic() { return $x("//div[@class='product-block__description__info']//span[contains(text(),'Menge:')]"); }
 
+    SelenideElement safetyDataSheet() {
+        return $x("//div[@class='safety-data-sheet']/a");
+    }
+
 
     //breadcrumbs locators
     public SelenideElement breadcrumbsBlock() {

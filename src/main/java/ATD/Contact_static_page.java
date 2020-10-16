@@ -47,7 +47,7 @@ public class Contact_static_page {
     }
 
     SelenideElement addingAnotherProductBtn() {
-        return $(By.xpath("//div[@class='contact-tabs__add-field']"));
+        return $(By.xpath("//div[@class='close-input']"));
     }
 
     SelenideElement successPopupCloseButton() {
