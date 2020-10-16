@@ -92,6 +92,10 @@ public class ProductCard_aws {
         return $x("//td[contains(text(),'Цена закупки:')]/following-sibling::td");
     }
 
+    private ElementsCollection passportManagementForLanguage() {
+        return $$x("//tbody[@class='hazardPassportTable']/tr//td[2]");
+    }
+
     String productId;
 
     public ProductCard_aws() {
@@ -104,6 +108,12 @@ public class ProductCard_aws {
     public SelenideElement searchTextOnPage(String textForSearch) {
         return $x("//*[contains(text(),'" + textForSearch + "')]");
 
+    }
+
+    @Step("checking quantity Language in passport management block. ProductCard_aws")
+    public ProductCard_aws quantityLanguageInPassportManagement() {
+        passportManagementForLanguage().shouldHaveSize(16);
+        return this;
     }
 
     @Step("get all active hazard statement. ProductCard_aws")
