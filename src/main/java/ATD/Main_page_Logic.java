@@ -1378,4 +1378,16 @@ public class Main_page_Logic extends Main_page {
         Assert.assertEquals(youtubeUrl, url());
         return this;
     }
+
+    @Step("Checking the transition to the instagram from  the Social Network Block. Main_page")
+    public Main_page_Logic checkingTransitionToTheInstagram(String expectedUrl) {
+        instagramImageTransition().click();
+        url();
+        Assert.assertEquals(url(), expectedUrl);
+        back();
+        instagramLinkTransition().click();
+        url();
+        Assert.assertEquals(url(), expectedUrl);
+        return this;
+    }
 }
