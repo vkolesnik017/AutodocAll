@@ -86,13 +86,14 @@ public class Presse_static_page_Logic extends Presse_static_page {
         BufferedInputStream bf = new BufferedInputStream(in);
         PDDocument doc = PDDocument.load(bf);
         String content = new PDFTextStripper().getText(doc).replaceAll(" ", "").replaceAll("\\W", "");
-        doc.close();
+        bf.close();
         return content;
     }
 
     @Step("Checking the download pdf link . Presse_static_page")
     public Presse_static_page_Logic checkingTheDownloadsPDF() throws IOException {
         for (int i = 0; i < downloadPDF().size(); i++) {
+            downloadPDF().get(i).scrollIntoView("{block: \"center\"}");
             File report = downloadPDF().get(i).download();
             report.delete();
         }
@@ -204,7 +205,7 @@ public class Presse_static_page_Logic extends Presse_static_page {
     public Presse_static_page_Logic checkingThePresentation(String expectedUrl) {
         autodocPresseTitlePresentation().shouldBe(visible);
         Assert.assertFalse(autodocPresseTitlePresentation().text().isEmpty());
-        blockWithPresentation().shouldBe(exist).click();
+        blockWithPresentation().shouldBe(exist).scrollIntoView("{block: \"center\"}").click();
         switchTo().window(1);
         checkingContainsUrl(expectedUrl);
         closeWindow();
@@ -246,7 +247,10 @@ public class Presse_static_page_Logic extends Presse_static_page {
         String firstImage = imageElementActiveSix().first().getAttribute("src");
         String mainImage = mainImageInPresentation().first().getAttribute("src");
         Assert.assertEquals(firstImage, mainImage);
-        forwardButtonPresentation().click();
+        for (int i = 0; i < imageElementActiveSix().size(); i++) {
+            imageElementActiveSix().get(i).shouldHave(attribute("src"));
+        }
+        forwardButtonPresentation().shouldBe(visible).click();
         String firstImageAfterClick = imageElementActiveSix().first().getAttribute("src");
         Assert.assertNotEquals(firstImage, firstImageAfterClick);
         textBlock().shouldBe(visible);

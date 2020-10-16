@@ -127,7 +127,7 @@ class Presse_static_page {
     }
 
     SelenideElement blockWithPresentation() {
-        return $(By.xpath("//*[@class='press-content__presse']"));
+        return $(By.xpath("//*[@class='press-content__presse']//a"));
     }
 
     ElementsCollection activeImagesInPresentationBlock() {
