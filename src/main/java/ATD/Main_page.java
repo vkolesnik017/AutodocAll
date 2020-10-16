@@ -734,4 +734,8 @@ public class Main_page {
     SelenideElement infoTextUnderCheckBockAtRegForm() {return $x("//div[@class='subscribe-text']");}
 
     ElementsCollection productsList() {return $$x("//ul[@class='list_products']/li");}
+
+    SelenideElement youTubeImageTransition() {return $x("//*[@class='footer__social-block']//*[@data-ga-action='youtube'][1]");}
+
+    SelenideElement youTubeLinkTransition() {return $x("//*[@class='footer__social-block']//span[@data-ga-action='youtube'][2]");}
 }
