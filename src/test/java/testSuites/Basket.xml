@@ -108,6 +108,7 @@
             <class name="ATD.Basket.QC_1873_SafeOrder.QC_1876_DefaultCheckboxIsSafeOrder"/>
             <class name="ATD.Basket.QC_1873_SafeOrder.QC_2346_CheckingDeliveryCostWhenTurningSO_Off_On"/>
             <class name="ATD.Basket.QC_1873_SafeOrder.QC_2343_OrderWithSOIncludedOnBasketPageForShop_FR_DE"/>
+            <class name="ATD.Basket.QC_1873_SafeOrder.QC_2347_DisplayingSOBlockOnCatPageIfThereAre_HL_Drop_Tyres_InTheCart"/>
         </classes>
     </test>
 
