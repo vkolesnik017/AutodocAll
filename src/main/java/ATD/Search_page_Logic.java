@@ -354,7 +354,10 @@ public class Search_page_Logic extends Search_page {
 
     @Step("added Product to WishList. Search_page")
     public Search_page_Logic addNotActiveProductToWishList(int positionOfProduct) {
-        labelAddToWishListNotActiveProduct().get(positionOfProduct).shouldBe(visible).scrollIntoView("{block: \"center\"}").click();
+        labelAddToWishListNotActiveProduct().get(positionOfProduct).scrollIntoView("{block: \"center\"}") ;
+        presenceOfVisibleParentCategories();
+        labelAddToWishListNotActiveProduct().get(positionOfProduct).hover().click();
+        presenceOfVisibleParentCategories();
         return this;
     }
 
@@ -426,7 +429,7 @@ public class Search_page_Logic extends Search_page {
 
     @Step(" added article number Of product to list. Search_page")
     public List<String> addArtNumOfProductToList(int countOfArtNum) {
-        List<String> artNumOfProduct = artNumOfProduct().stream().limit(countOfArtNum).map(n -> n.getText().replaceAll("Artikelnummer:", "").replace(" ","")).collect(Collectors.toList());
+        List<String> artNumOfProduct = artNumOfProduct().stream().limit(countOfArtNum).map(n -> n.getText().replaceAll("Artikelnummer:", "").replace(" ", "")).collect(Collectors.toList());
         return artNumOfProduct;
     }
 
@@ -564,8 +567,14 @@ public class Search_page_Logic extends Search_page {
     }
 
     @Step("get id of all products from page. Search_page")
-    public List<String> getIdOfProduct() {
-        List<String> idOfProduct = attributeOfBtnAddedToBasket().stream().map(n -> n.getAttribute("id")).collect(Collectors.toList());
+    public List<String> getIdOfActiveProduct() {
+        List<String> idOfProduct = attributeOfActiveBtnAddedToBasket().stream().map(n -> n.getAttribute("id")).collect(Collectors.toList());
+        return idOfProduct;
+    }
+
+    @Step("get id of all products from page. Search_page")
+    public List<String> getIdOfNotActiveProduct() {
+        List<String> idOfProduct = attributeOfNotActiveBtnAddedToBasket().stream().map(n -> n.getAttribute("id")).collect(Collectors.toList());
         return idOfProduct;
     }
 
@@ -573,6 +582,14 @@ public class Search_page_Logic extends Search_page {
     @Step("go to next page. Search_page")
     public Search_page_Logic goToNextPage() {
         forwardOfPaginator().click();
+        return this;
+    }
+
+    @Step("presence of visible parent categories. Search_page")
+    public Search_page_Logic presenceOfVisibleParentCategories() {
+        for (int i = 0; i < 5; i++) {
+            visibleParentCategories().get(i).shouldBe(visible);
+        }
         return this;
     }
 }
