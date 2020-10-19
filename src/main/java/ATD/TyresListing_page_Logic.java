@@ -288,6 +288,7 @@ public class TyresListing_page_Logic extends TyresListing_page {
     @Step("Check brand relink on tyres listing. TyresListing_page")
     public TyresListing_page_Logic checkBrandRelink() {
         String brandNameInSidebar = brandFilterTyresInSidebar().attr("data-value");
+        secondBrandFilterTyresInSidebar().scrollIntoView(false);
         brandFilterTyresInSidebar().click();
         brandNameInSelector().shouldHave(text(brandNameInSidebar));
         new Listing_page_Logic().checkProductTitleOnListing(brandNameInSidebar, true, titleOfAllProducts());
@@ -506,8 +507,8 @@ public class TyresListing_page_Logic extends TyresListing_page {
         new Listing_page_Logic().checkProductAttributeOnListingWithProductsNumber(brandName, productTitleOnListing(), 1);
         brandNameInSelector().shouldHave(text(brandName));
 
-        String secondBrandName = motoBrandFilterButton().attr("data-value");
-        motoBrandFilterButton().click();
+        String secondBrandName = secondMotoBrandFilterButton().attr("data-value");
+        secondMotoBrandFilterButton().click();
         waitUntilPreloaderDisappear();
         checkBrandIsSelectedInBrandBlockMotoRoute(secondBrandName);
         new Listing_page_Logic().checkProductAttributeOnListingWithProductsNumber(secondBrandName, productTitleOnListing(), 1);

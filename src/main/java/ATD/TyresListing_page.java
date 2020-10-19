@@ -30,9 +30,9 @@ class TyresListing_page {
 
     SelenideElement firstActiveBrandInBlock() { return $x("//*[@class='js-filter-item ga-click-criteria-filter active slick-slide slick-current slick-active']"); }
 
-    SelenideElement firstActiveBrandInBlockMoto() { return $x("//*[@class='js-filter-item ga-click-criteria-filter active']"); }
+    SelenideElement firstActiveBrandInBlockMoto() { return $x("//*[@class='js-filter-item ga-click-criteria-filter active slick-slide slick-current slick-active']"); }
 
-    SelenideElement secondActiveBrandInBlockMoto() { return $x("//*[@class='js-filter-item ga-click-criteria-filter active'][2]"); }
+    SelenideElement secondActiveBrandInBlockMoto() { return $x("//*[@class='js-filter-item ga-click-criteria-filter active slick-slide slick-active']"); }
 
     SelenideElement secondActiveBrandInBlock() { return $x("//*[@class='js-filter-item ga-click-criteria-filter active slick-slide slick-active']"); }
 
@@ -68,7 +68,10 @@ class TyresListing_page {
 
     SelenideElement brandFilterButton() { return $x("//*[@class='js-filter-item ga-click-criteria-filter slick-slide slick-active']"); }
 
-    SelenideElement motoBrandFilterButton() { return $x("//*[@class='js-filter-item ga-click-criteria-filter']"); }
+    SelenideElement motoBrandFilterButton() { return $x("//*[contains(@class,'slick-active')][1]"); }
+
+    SelenideElement secondMotoBrandFilterButton() { return $x("//*[contains(@class,'slick-active')][2]"); }
+
 
     ElementsCollection productTitleOnListing() { return $$(".name > a");}
 
@@ -81,6 +84,9 @@ class TyresListing_page {
     SelenideElement brandInputInSelector() { return $(".multiple-select__dropdown-search > input"); }
 
     SelenideElement brandFilterTyresInSidebar() { return $x("//*[@class='tires_marks criteria-filter-block-js']//a"); }
+
+    SelenideElement secondBrandFilterTyresInSidebar() { return $x("//*[@class='tires_marks criteria-filter-block-js']//li[2]/a"); }
+
 
     SelenideElement brandNameInSelector() { return $x("//*[@class='main-selector Brand']//span"); }
 

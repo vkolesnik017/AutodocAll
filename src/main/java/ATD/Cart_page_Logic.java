@@ -183,6 +183,13 @@ public class Cart_page_Logic extends Cart_page {
         return page(Main_page_Logic.class);
     }
 
+    @Step("Delete definitely goods from cart page. Cart_page")
+    public Cart_page_Logic deleteDefinitelyGoodsFromCartPage(String idProduct) {
+        deleteDefinitelyGoodsBTN(idProduct).click();
+        confirmationDeleteGoodsBtn().click();
+        return this;
+    }
+
     @Step("Check that the basket is empty. Cart_page")
     public Cart_page_Logic checkEmptyCart() {
         emptyCart().shouldBe(visible);
@@ -287,6 +294,12 @@ public class Cart_page_Logic extends Cart_page {
         return this;
     }
 
+    @Step("Get safe order price. Cart_page")
+    public float getSafeOrderPrice() {
+        String soPrice = safeOrderInSummeryBlock().getText();
+        return Float.parseFloat(soPrice.replaceAll(",",".").replaceAll(" €",""));
+    }
+
     @Step("Get text in Safe Order block. Cart_page")
     public String getTextInSafeOrderBlock() {
         return String.valueOf(safeOrderBlock().getText());
@@ -373,16 +386,25 @@ public class Cart_page_Logic extends Cart_page {
         return this;
     }
 
-    @Step("Get product price of the Cart_page")
+    @Step("Get product price. Cart_page")
     public Float getProductPrice() {
         Float productPrice = null;
-            String realPrice = productPrice().getText();
+        String realPrice = totalProductPrice().getText();
+        realPrice = realPrice.replaceAll(" €", "").replaceAll(",", ".");
+        productPrice = Float.parseFloat(realPrice);
+        return productPrice;
+    }
+
+    @Step("Get product price in summery block. Cart_page")
+    public Float getProductPriceInSummeryBlock() {
+        Float productPrice = null;
+            String realPrice = totalProductPriceInSummeryBlock().getText();
             realPrice = realPrice.replaceAll(" €", "").replaceAll(",", ".");
             productPrice = Float.parseFloat(realPrice);
         return productPrice;
     }
 
-    @Step("Get total order price of the Cart_page")
+    @Step("Get total order price. Cart_page")
     public Float getTotalOrderPrice() {
         Float totalOrderPrice = null;
         String realPrice = totalOrderPrice().getText();
@@ -393,7 +415,7 @@ public class Cart_page_Logic extends Cart_page {
 
     @Step("Checks total price included SO. Cart_page")
     public Cart_page_Logic checkTotalPriceIncludedSO() {
-        float productPrice = getProductPrice();
+        float productPrice = getProductPriceInSummeryBlock();
         String priceSO = priceOfSafeOrder().getText();
         Float totalOrderPrice = getTotalOrderPrice();
         float formatPriseSO = Float.parseFloat(priceSO.substring(0, priceSO.indexOf(" ")).replaceAll(",", "."));
@@ -413,5 +435,4 @@ public class Cart_page_Logic extends Cart_page {
         Assert.assertEquals(res, totalOrderPrice);
         return this;
     }
-
 }

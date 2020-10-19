@@ -166,7 +166,7 @@ public class DataBase {
         return result;
     }
 
-    // Return String route By Shop and route getRouteByRouteName("AT", "lkw_main", "product1")
+    // Return String route By Shop and route getRouteByRouteName("prod", "AT", "lkw_main", "product1")
     public String getFullRouteByRouteAndSubroute(String envFromTest, String shop, String routeName, String subRoute) throws SQLException {
         String result;
         String env = new SetUp(skin).getEnv(envFromTest);

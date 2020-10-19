@@ -200,6 +200,10 @@ public class Product_page {
 
     public SelenideElement mengeCharacteristic() { return $x("//div[@class='product-block__description__info']//span[contains(text(),'Menge:')]"); }
 
+    SelenideElement safetyDataSheet() {
+        return $x("//div[@class='safety-data-sheet']/a");
+    }
+
 
     //breadcrumbs locators
     public SelenideElement breadcrumbsBlock() {
@@ -363,23 +367,23 @@ public class Product_page {
     }
 
     public SelenideElement firstBrandInCompabilityList() {
-        return $x("//*[@class='details_info_box']/div[1]//a");
+        return $x("//*[@class='accordion-container'][1]/div[1]//a");
     }
 
     public SelenideElement secondBrandInCompabilityList() {
-        return $x("//*[@class='details_info_box']/div[2]//a");
+        return $x("//*[@class='accordion-container'][2]/div[1]//a");
     }
 
     public SelenideElement thirdBrandInCompabilityList() {
-        return $x("//*[@class='details_info_box']/div[3]//a");
+        return $x("//*[@class='accordion-container'][3]/div[1]//a");
     }
 
     public SelenideElement fourthBrandInCompabilityList() {
-        return $x("//*[@class='details_info_box']/div[4]//a");
+        return $x("//*[@class='accordion-container'][4]/div[1]//a");
     }
 
     public SelenideElement firstModelInFirstBrandInCompatibilityList() {
-        return $x("//*[@class='details_info_box']/div[1]/div/div[2]");
+        return $x("(//*[@class='accordion-content'][1]/ul/li/b[1])[1]");
     }
 
     public SelenideElement carListInFirstModelCompabilityList() {
@@ -704,6 +708,14 @@ public class Product_page {
 
     SelenideElement dangerousBlock() {
         return $x("//div[@class='dangerous-goods js-dangerous-goods hide']");
+    }
+
+    SelenideElement textFromDangerousBlock() {
+        return $x("//div[@class='dangerous-goods__text js-dangerous-goods__text']/span");
+    }
+
+    SelenideElement btnMehrFromDangerousBlock() {
+        return $x("//a[@class='dangerous-goods__show-more js-dangerous-goods__show-more']");
     }
 
 

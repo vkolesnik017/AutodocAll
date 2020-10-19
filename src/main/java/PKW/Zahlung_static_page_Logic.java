@@ -18,7 +18,7 @@ public class Zahlung_static_page_Logic extends Zahlung_static_page {
         pdfDownloadButton().shouldHave(attribute("url", "pdf/zahlung"));
         acrobatReaderButton().click();
         switchTo().window(1);
-        checkingContainsUrl("/reader/?loc=de");
+        checkingContainsUrl("/reader/");
         closeWindow();
         switchTo().window(0);
 

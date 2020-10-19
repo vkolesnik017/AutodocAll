@@ -72,6 +72,9 @@ public class ProductCard_aws {
     private SelenideElement artNumOfProduct() {
         return $x("//td[contains(text(),'Артикль №.:')]/following-sibling::td");
     }
+    ElementsCollection activeHazardStatement() {
+        return $$x("//ul[@class='chzn-choices']/li[@class='search-choice']/span");
+    }
 
     private SelenideElement statusInArtNum() {
         return $x("//td[contains(text(),'Артикль №.:')]/following-sibling::td/div");
@@ -89,6 +92,10 @@ public class ProductCard_aws {
         return $x("//td[contains(text(),'Цена закупки:')]/following-sibling::td");
     }
 
+    private ElementsCollection passportManagementForLanguage() {
+        return $$x("//tbody[@class='hazardPassportTable']/tr//td[2]");
+    }
+
     String productId;
 
     public ProductCard_aws() {
@@ -101,6 +108,24 @@ public class ProductCard_aws {
     public SelenideElement searchTextOnPage(String textForSearch) {
         return $x("//*[contains(text(),'" + textForSearch + "')]");
 
+    }
+
+    @Step("checking quantity Language in passport management block. ProductCard_aws")
+    public ProductCard_aws quantityLanguageInPassportManagement() {
+        passportManagementForLanguage().shouldHaveSize(16);
+        return this;
+    }
+
+    @Step("get all active hazard statement. ProductCard_aws")
+    public ArrayList<String> getAllActiveHazardStatement() {
+        ArrayList<String> allHazardStatement = new ArrayList<>();
+        for (int i = 0; i < activeHazardStatement().size(); i++) {
+            String hazardStatement = activeHazardStatement().get(i).shouldBe(visible).getText();
+            if (!hazardStatement.contains("disabled")) {
+                allHazardStatement.add(hazardStatement);
+            }
+        }
+        return allHazardStatement;
     }
 
     @Step("get current Url")
