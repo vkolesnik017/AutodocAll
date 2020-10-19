@@ -26,7 +26,7 @@ public class QC_2403_CheckProductSortingByPriceNettoInSearchListing {
     }
 
     private Main_page_Logic mainPage = new Main_page_Logic();
-    private List<String> searchValues = Arrays.asList("BOSCH", "5w40", "Scheibenwischer", "Bremsscheiben", "Motoröl", "agr ventil");
+   private List<String> searchValues = Arrays.asList("BOSCH", "Scheibenwischer", "Bremsscheiben", "Motoröl", "agr ventil");
 
 
     @DataProvider(name = "route")
