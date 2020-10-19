@@ -4,6 +4,9 @@ import Common.DataBase;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 import static ATD.CommonMethods.mailRandomMailinator;
 import static ATD.CommonMethods.openPage;
 import static com.codeborne.selenide.CollectionCondition.size;
@@ -125,11 +128,13 @@ public class Versand_static_page_Logic extends Versand_static_page {
         openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "staticVersand"));
         allCountriesButton().click();
         float deliveryPrice = Float.parseFloat(deliveryPriceLocator(country).getText().replace(" €", "").replace(",", "."));
-        float exactDeliveryPrice;
+        BigDecimal exactDeliveryPrice;
         if (mail.contains("plusPro")) {
-            exactDeliveryPrice = deliveryPrice * 0.7f;
+            float priceDelivery = deliveryPrice * 0.7f;
+            BigDecimal result = new BigDecimal(priceDelivery);
+            exactDeliveryPrice = result.setScale(2, RoundingMode.UP);
         } else {
-            exactDeliveryPrice = deliveryPrice;
+            exactDeliveryPrice = BigDecimal.valueOf(deliveryPrice).setScale(2, RoundingMode.UP);
         }
         String formatDeliveryPrice = String.valueOf(exactDeliveryPrice);
         return formatDeliveryPrice.substring(0, formatDeliveryPrice.indexOf(".") + 3).replaceAll("\\.", ",");
