@@ -15,7 +15,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_CheckingDisplayedOnProductPageLinkOnDangerousGoodsSafetyDataSheet {
+public class QC_2446_CheckingDisplayedOnProductPageLinkOnDangerousGoodsSafetyDataSheet {
 
     @BeforeClass
     void setUp() {
