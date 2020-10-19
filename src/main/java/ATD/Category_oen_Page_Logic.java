@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static ATD.CommonMethods.getTextFromUnVisibleElement;
+import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Condition.disappear;
 import static com.codeborne.selenide.Selenide.*;
@@ -117,5 +119,17 @@ public class Category_oen_Page_Logic extends Category_oen_Page {
     public Category_oen_Page_Logic selectVehicleInGaragePopUp(String idOfVehicle) {
         idOfVehicleInGaragePopUp(idOfVehicle).shouldBe(visible).click();
         return this;
+    }
+
+    @Step("presence of dangerous products .Category_oen_Page")
+    public Category_oen_Page_Logic presenceOfDangerousProducts() {
+        listOfProductTableView().shouldBe(visible);
+        labelTitleDangerousProducts().shouldHave(sizeGreaterThan(0));
+        return this;
+    }
+
+    @Step("get signal word from first dangerous product. Category_oen_Page")
+    public String getSignalWordFromFirstDangerousProduct(int positionOfProduct) {
+        return getTextFromUnVisibleElement(signalWordOfDangerousProduct().get(positionOfProduct));
     }
 }
