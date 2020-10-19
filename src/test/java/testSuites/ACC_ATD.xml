@@ -76,7 +76,6 @@
 
     <test name="QC_1383_BlockFilterByBrandOnListingAccessories">
         <classes>
-            <class name="ATD.ACC.QC_1383_BlockFilterByBrandOnListingAccessories.QC_1384_WorkBtnPrevAndNextInBlockBrands"/>
             <class name="ATD.ACC.QC_1383_BlockFilterByBrandOnListingAccessories.QC_1385_SortedListingWhenChoosingBrand"/>
         </classes>
     </test>
@@ -132,6 +131,7 @@
             <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2040_PaginationBlockOnChemistryListing"/>
             <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2041_WorkBtnPaginationBlockOnChemistryListing"/>
             <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2043_BlockSeoTextOnChemistryListing"/>
+            <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2119_SelectedQuantityAndAddProductsToBasketOnChemistryListing"/>
         </classes>
     </test>
 
@@ -164,7 +164,6 @@
         <classes>
             <class name="ATD.ACC.QC_2115_BlockWithProductsOnChemistryListing.QC_2117_MainProductsOnChemistryListing"/>
             <class name="ATD.ACC.QC_2115_BlockWithProductsOnChemistryListing.QC_2118_TransitionOnProductPageWithChemistryListing"/>
-            <class name="ATD.ACC.QC_2115_BlockWithProductsOnChemistryListing.QC_2119_SelectedQuantityProductsForBuyOnChemistryListing"/>
             <class name="ATD.ACC.QC_2115_BlockWithProductsOnChemistryListing.QC_2120_AddProductsInBasketOnChemistryListing"/>
         </classes>
     </test>
