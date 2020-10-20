@@ -39,7 +39,7 @@ public class Excel {
         return str.split("#");
     }
 
-    private List<String> readFromExcel(String file, int cellNumber) {
+    public List<String> readFromExcel(String file, int cellNumber) {
         List<String> finalList = new ArrayList<>();
         DataFormatter formatter = new DataFormatter();
         try (FileInputStream fileInputStream = new FileInputStream(file)) {
