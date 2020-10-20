@@ -1403,4 +1403,16 @@ public class Main_page_Logic extends Main_page {
         Assert.assertEquals(url(), expectedUrl);
         return this;
     }
+
+    @Step("Checking the transition to the autodoc club from  the Social Network Block. Main_page")
+    public Main_page_Logic checkingTransitionToTheAutodocClub() {
+        autodocClubImageTransition().click();
+        return this;
+    }
+
+    @Step("Checking the transition to the autodoc club from  the Social Network Block. Main_page")
+    public Main_page_Logic checkingTransitionToTheAutodocClubLink() {
+        autodocClubTransition().click();
+        return this;
+    }
 }

@@ -20,6 +20,7 @@
             <class name="ATD.General_Common.QC_1554_Footer.QC_2436_PresenceTheElementsOnTheSocialNetworksBlock"/>
             <class name="ATD.General_Common.QC_1554_Footer.QC_2438_TransitionToTheYoutubeInTheSocialNetworksBlock"/>
             <class name="ATD.General_Common.QC_1554_Footer.QC_2439_TransitionToTheInstagramFromTheSocialNetworkBlock"/>
+            <class name="ATD.General_Common.QC_1554_Footer.QC_2437_TransitionToTheAutodocClubFromTheSocialNetworkBlock"/>
         </classes>
     </test>
 
