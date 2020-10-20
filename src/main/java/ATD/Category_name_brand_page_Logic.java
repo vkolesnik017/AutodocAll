@@ -118,5 +118,15 @@ public class Category_name_brand_page_Logic extends Category_name_brand_page {
         return artNumAndDeposit;
     }
 
+    @Step("presence of TOP products block. Category_name_brand_page")
+    public Category_name_brand_page_Logic presenceOfTopProductsBlock() {
+        topProductsBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("get signal word from first dangerous product .Category_name_brand_page")
+    public String getSignalWordFromFirstDangerousProduct(int positionOfProduct) {
+        return getTextFromUnVisibleElement(signalWordOfDangerousProduct().get(positionOfProduct));
+    }
 
 }
