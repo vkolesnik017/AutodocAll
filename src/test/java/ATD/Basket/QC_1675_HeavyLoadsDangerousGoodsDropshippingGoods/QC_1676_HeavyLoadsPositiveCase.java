@@ -49,7 +49,7 @@ public class QC_1676_HeavyLoadsPositiveCase {
                 .signIn(email, password)
                 .fillAllFields(shop).nextBtnClick()
                 .chooseVorkasse().nextBtnClick()
-                .checkRegularDeliveryPriceAllData("6,95")
+                .checkRegularDeliveryPrice("6,95")
                 .checkHeavyLoadsDeliveryPriceAllData("10,00")
                 .checkAbsenceSafeOrderBlock()
                 .getTotalPriceAllDataPage(shop);

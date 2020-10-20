@@ -56,7 +56,7 @@ public class QC_1683_HeavyLoads_FreeShippingLimit {
                 .checkPresenceSafeOrderBlock()
                 .checkingCounterDecrease(3, "13811516", "13811516")
                 .checkAbsenceFreeDeliveryPriceCartAllDataPage()
-                .checkRegularDeliveryPriceAllData("6,95")
+                .checkRegularDeliveryPrice("6,95")
                 .checkHeavyLoadsDeliveryPriceAllData("10,00")
                 .checkingCounterIncrease(3, "13811516", "13811516")
                 .checkPresenceFreeDeliveryPriceCartAllDataPage()

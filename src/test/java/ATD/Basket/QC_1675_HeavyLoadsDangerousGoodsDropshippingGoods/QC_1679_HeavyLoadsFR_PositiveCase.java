@@ -51,7 +51,7 @@ public class QC_1679_HeavyLoadsFR_PositiveCase {
                 .nextBtnClick()
                 .chooseVorkasse()
                 .nextBtnClick()
-                .checkRegularDeliveryPriceAllData("9,95")
+                .checkRegularDeliveryPrice("9,95")
                 .checkHeavyLoadsDeliveryPriceAllData("36,95")
                 .checkAbsenceSafeOrderBlock()
                 .getTotalPriceAllDataPage(shop);

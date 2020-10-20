@@ -50,7 +50,7 @@ public class  QC_1684_HeavyLoadsAndOrdinaryGoods_PositiveCase {
                 .signIn(email, password)
                 .fillAllFields(shop).nextBtnClick()
                 .chooseVorkasse().nextBtnClick()
-                .checkRegularDeliveryPriceAllData("6,95")
+                .checkRegularDeliveryPrice("6,95")
                 .checkHeavyLoadsDeliveryPriceAllData("10,00")
                 .checkPresenceSafeOrderBlock()
                 .clickSafeOrderCheckbox()
