@@ -38,7 +38,7 @@ public class QC_1676_HeavyLoadsPositiveCase {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks the purchase of a heavy load")
+    @Description(value = "Test checks the purchase of a heavy load goods")
     public void testOfHeavyLoadsPurchase(String route) {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();

@@ -4,8 +4,7 @@ import Common.DataBase;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
+import java.sql.SQLException;
 
 import static ATD.CommonMethods.mailRandomMailinator;
 import static ATD.CommonMethods.openPage;
@@ -114,6 +113,12 @@ public class Versand_static_page_Logic extends Versand_static_page {
         String deliveryLimit = limitForFreeDelivery().getText();
         deliveryLimit = deliveryLimit.replaceAll("[^0-9,]", "");
         return Float.valueOf(deliveryLimit.startsWith(",") ? deliveryLimit.substring(1) : deliveryLimit.split(",")[0]);
+    }
+
+    @Step("Get the delivery price of the current country. Versand_static_page")
+    public float getDeliveryPriceOfCurrentCountry(String shop) throws SQLException {
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", shop, "main", "staticVersand"));
+        return Float.parseFloat(deliveryPrice().getText().replace(" €", "").replaceAll(",","."));
     }
 
     @Step("Get delivery price. Versand_static_page")

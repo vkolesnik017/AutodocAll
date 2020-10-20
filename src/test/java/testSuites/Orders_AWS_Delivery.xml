@@ -120,6 +120,7 @@
             <!--<class name="ATD.Orders_AWS_Delivery.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1684_HeavyLoadsAndOrdinaryGoods_PositiveCase"/>-->
             <!--<class name="ATD.Orders_AWS_Delivery.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1685_HeavyLoadsAndOrdinaryGoods_DeletedOFGoods"/>-->
             <!--<class name="ATD.Orders_AWS_Delivery.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1683_HeavyLoads_FreeShippingLimit"/>-->
+            <class name="ATD.Orders_AWS_Delivery.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_2367_DangerousGoods_PositiveCase"/>
         </classes>
     </test>
 

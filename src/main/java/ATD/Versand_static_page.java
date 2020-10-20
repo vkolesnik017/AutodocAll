@@ -38,6 +38,10 @@ class Versand_static_page {
         return $(byXpath("(//*[@class='prices-block__items-item']/p)[2]"));
     }
 
+    SelenideElement deliveryPrice() {
+     return $x("//div[@class='prices-block__items-item']/span[@data-image='image1']");
+    }
+
     SelenideElement vatBlock() {
         return $(By.cssSelector(".prices-block__text"));
     }
