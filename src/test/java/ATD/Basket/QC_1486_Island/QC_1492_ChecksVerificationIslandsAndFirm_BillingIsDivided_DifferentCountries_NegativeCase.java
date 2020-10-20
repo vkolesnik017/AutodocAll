@@ -59,7 +59,7 @@ public class QC_1492_ChecksVerificationIslandsAndFirm_BillingIsDivided_Different
                 .checkPresenceOfPayPalMethod()
                 .chooseVorkasse().nextBtnClick()
                 .checkAbsenceOfVatPercentage()
-                .checkRegularDeliveryPriceAllData(deliveryPriceToBEalldata)
+                .checkRegularDeliveryPrice(deliveryPriceToBEalldata)
                 .checkPresenceSafeOrderBlock()
                 .getTotalPriceAllDataPage(shop);
         orderNumber = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();

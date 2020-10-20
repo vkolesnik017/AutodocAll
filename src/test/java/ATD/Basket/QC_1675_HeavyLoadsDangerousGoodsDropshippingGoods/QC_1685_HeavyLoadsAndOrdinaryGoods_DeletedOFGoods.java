@@ -51,7 +51,7 @@ public class QC_1685_HeavyLoadsAndOrdinaryGoods_DeletedOFGoods {
                 .signIn(email, password)
                 .fillAllFields(shop).nextBtnClick()
                 .chooseVorkasse().nextBtnClick()
-                .checkRegularDeliveryPriceAllData("6,95")
+                .checkRegularDeliveryPrice("6,95")
                 .checkHeavyLoadsDeliveryPriceAllData("10,00")
                 .checkPresenceSafeOrderBlock()
                 .clickSafeOrderCheckbox()
