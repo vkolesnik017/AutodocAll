@@ -10,6 +10,7 @@ import com.codeborne.selenide.ex.UIAssertionError;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.sql.SQLException;
@@ -19,6 +20,7 @@ import java.util.Random;
 import java.util.stream.Collectors;
 
 import static ATD.CommonMethods.*;
+import static ATD.Presse_static_page_Logic.readPdfContent;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.CollectionCondition.sizeLessThan;
 import static com.codeborne.selenide.Condition.*;
@@ -943,13 +945,19 @@ public class Product_page_Logic extends Product_page {
         return textFromDangerousBlock().shouldBe(visible).getText();
     }
 
-    @Step("Click link safety data sheet. Product_page")
-    public Product_page_Logic  clickLinkSafetyDataSheet() {
+    @Step("Get name link safety data sheet. Product_page")
+    public String getNameLinkSafetyDataSheet() {
+        return safetyDataSheet().getText();
+    }
+
+    @Step("Click link safety data sheet and get url pdf page after click. Product_page")
+    public String  clickLinkSafetyDataSheetAndGetUrl() throws IOException {
         safetyDataSheet().shouldBe(visible).click();
         switchTo().window(1);
+        String url = getCurrentUtl();
         closeWindow();
         switchTo().window(0);
-        return this;
+        return url;
     }
 
 
