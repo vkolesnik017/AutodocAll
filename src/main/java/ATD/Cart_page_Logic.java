@@ -148,6 +148,12 @@ public class Cart_page_Logic extends Cart_page {
         return this;
     }
 
+    @Step("Click the button (Artikel entfernen) in the delivery pop-up. Cart_page")
+    public Cart_page_Logic clickBtnDeletedGoodsViaDeliveryPopup() {
+        btnDeletedGoodsViaDeliveryPopup().click();
+        return this;
+    }
+
     @Step("Click the button (Adresse ändern) in the delivery pop-up. Cart_page")
     public CartAddress_page_Logic clickBtnChangeAddressInDeliveryPopupCartPageCartPage() {
         btnChangeAddressInDeliveryPopupCartPage().click();
