@@ -951,8 +951,6 @@ public class Product_page_Logic extends Product_page {
 
     @Step("Click link safety data sheet and get url pdf page after click. Product_page")
     public String  clickLinkSafetyDataSheetAndGetUrl() throws IOException {
-    @Step("Click link safety data sheet. Product_page")
-    public Product_page_Logic  clickLinkSafetyDataSheet() {
         safetyDataSheet().shouldBe(visible).click();
         switchTo().window(1);
         String url = getCurrentUtl();

@@ -769,9 +769,7 @@ public class Product_page {
     }
 
     ElementsCollection attributeOfWarningIcon() {return $$x("//div[@class='product-block']//div[@class='dangerous-goods__icons']/div");}
-    ElementsCollection attributeOfWarningIcon() {
-        return $$x("//div[@class='product-block']//div[@class='dangerous-goods__icons']/img");
-    }
+
 
     SelenideElement signalWordOfDangerousProduct() {
         return $x("//div[@class='product-block']//div[@class='dangerous-goods__title']");
