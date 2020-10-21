@@ -41,7 +41,7 @@ public class LKW_Search_page_Logic extends LKW_Search_page {
 
     @Step("click on dangerous label of product and compare elements. LKW_Search_page")
     public LKW_Search_page_Logic clickOnDangerousLabelAndCompareElements(int positionOfProduct, String signalWord, List<String> attributeOfWarningIcon) {
-        btnMoreOfDangerousProducts().get(positionOfProduct).shouldBe(visible).click();
+        btnMoreOfDangerousProducts().get(positionOfProduct).scrollIntoView("{block: \"center\"}").click();
         blackBackground().shouldHave(attribute("style", "display: block;"));
         warningPopUp().shouldBe(visible).shouldHave(attribute("style", "display: block;"));
         titleOfDangerousPopUp().shouldBe(visible).shouldHave(exactText(signalWord));

@@ -505,4 +505,17 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
         return getTextFromUnVisibleElement(signalWordOfDangerousProduct().get(positionOfProduct));
     }
 
+    @Step("checking of visibility of TecDoc Listing block .Listing_chemicals_Page")
+    public Listing_chemicals_Page_Logic visibilityOfTecDocListingBlock() {
+        listOfProductInTecDocListingBlock().shouldBe(visible);
+        return this;
+    }
+
+
+
+    @Step("get signal word from first dangerous product Listing View. Listing_chemicals_Page")
+    public String getSignalWordFromFirstDangerousProductListingView(int positionOfProduct) {
+        return signalWordOfDangerousProductListingView().get(positionOfProduct).getText();
+    }
+
 }
