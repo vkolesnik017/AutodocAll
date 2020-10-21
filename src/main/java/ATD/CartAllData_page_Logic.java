@@ -156,10 +156,29 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return this;
     }
 
-    @Step("Checks regular delivery price. CartAllData_page")
-        public CartAllData_page_Logic checkRegularDeliveryPriceAllData(String regularDeliveryPrice) {
+    @Step("Checks regular delivery price {regularDeliveryPrice}. CartAllData_page")
+        public CartAllData_page_Logic checkRegularDeliveryPrice(String regularDeliveryPrice) {
             deliveryPrice().shouldHave(text(regularDeliveryPrice));
             return this;
+    }
+
+    @Step("Rounds the receiving parameter {regularDeliveryPrice} up and down and checks the price of regular delivery. CartAllData_page")
+    public CartAllData_page_Logic checkRegularDeliveryPrice(float regularDeliveryPrice) {
+        Float deliveryPrice = getRegularDeliveryPrice();
+        BigDecimal result = new BigDecimal(regularDeliveryPrice);
+        BigDecimal formatPriceUp = result.setScale(2, RoundingMode.UP);
+        float roundMax = Float.parseFloat(String.valueOf(formatPriceUp));
+        BigDecimal formatPriceDOWN = result.setScale(2, RoundingMode.FLOOR);
+        float roundMin = Float.parseFloat(String.valueOf((formatPriceDOWN)));
+        float res = 0.0f;
+        if (deliveryPrice.equals(roundMax)) {
+            res = roundMax;
+        }
+        if (deliveryPrice.equals(roundMin)) {
+            res = roundMin;
+        }
+        deliveryPrice().shouldHave(text(String.valueOf(res).replaceAll("\\.", ",")));
+        return this;
     }
 
     @Step("Checks Heavy loads delivery price. CartAllData_page")
@@ -294,6 +313,7 @@ public class CartAllData_page_Logic extends CartAllData_page {
 
     @Step("Get safe order price. CartAllData_page")
     public float getSafeOrderPrice() {
+        safeOrderPriceFromOrderSummaryBlock().shouldBe(visible);
         String safeOrderPrice = safeOrderPriceFromOrderSummaryBlock().getText();
         float safeOrderPriceFormat = Float.parseFloat(safeOrderPrice.substring(0, safeOrderPrice.indexOf(" ")).replaceAll(",", "."));
         return safeOrderPriceFormat;

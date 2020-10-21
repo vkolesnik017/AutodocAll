@@ -742,4 +742,8 @@ public class Main_page {
     SelenideElement instagramLinkTransition() {return $x("//*[@data-ga-action='instagram'][2]");}
 
     SelenideElement instagramImageTransition() {return $x("//*[@data-ga-action='instagram'][1]");}
+
+    SelenideElement autodocClubTransition() {return $x("//*[@class='footer__social-block']//*[@data-ga-action='club'][2]");}
+
+    SelenideElement autodocClubImageTransition() {return $x("//*[@class='footer__social-block']//*[@data-ga-action='club'][1]");}
 }

@@ -54,7 +54,7 @@ public class QC_1493_ChecksVerificationIslandsAndFirm_BillingIsDivided_PositiveC
                 .checkAbsenceOfPayPalMethod()
                 .chooseVorkasse().nextBtnClick()
                 .checkPresenceSafeOrderBlock()
-                .checkRegularDeliveryPriceAllData("10,95")
+                .checkRegularDeliveryPrice("10,95")
                 .checkTextContainingVatPercentage("inkl. 20% MwSt.")
                 .getTotalPriceAllDataPage(shop);
         orderNumber = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();

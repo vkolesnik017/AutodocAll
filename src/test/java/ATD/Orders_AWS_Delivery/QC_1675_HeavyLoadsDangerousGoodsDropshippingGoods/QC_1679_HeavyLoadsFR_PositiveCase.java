@@ -1,4 +1,4 @@
-package ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods;
+package ATD.Orders_AWS_Delivery.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods;
 
 import ATD.CartAllData_page_Logic;
 import ATD.Product_page_Logic;
@@ -51,7 +51,7 @@ public class QC_1679_HeavyLoadsFR_PositiveCase {
                 .nextBtnClick()
                 .chooseVorkasse()
                 .nextBtnClick()
-                .checkRegularDeliveryPriceAllData("9,95")
+                .checkRegularDeliveryPrice("9,95")
                 .checkHeavyLoadsDeliveryPriceAllData("36,95")
                 .checkAbsenceSafeOrderBlock()
                 .getTotalPriceAllDataPage(shop);

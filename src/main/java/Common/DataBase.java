@@ -297,6 +297,32 @@ public class DataBase {
         return userID;
     }
 
+    public ArrayList<String> getNameRequisitesMethod(String dbName, String shop, String... requisites) throws SQLException {
+        Statement statement = null;
+        Connection conn = coonectionDB(dbName);
+        String nameRequisites = null;
+        ArrayList<String> finalList = new ArrayList<>();
+        for(String req : requisites) {
+            String query = "SELECT ".concat(shop) + " FROM autodoc.".concat(dbName) + " where Name_requisites=" + "\"".concat(req) + "\"";
+            try {
+                statement = conn.createStatement();
+                ResultSet resultSet = statement.executeQuery(query);
+                while (resultSet.next()) {
+                    nameRequisites = resultSet.getString(1);
+                }
+                statement.close();
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+                if (statement != null) statement.close();
+                if (conn != null) conn.close();
+            }
+            finalList.add(nameRequisites);
+        }
+        return finalList;
+    }
+
 
     public String getMail(String value) throws SQLException {
         Statement statement = null;

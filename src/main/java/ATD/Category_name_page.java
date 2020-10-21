@@ -30,11 +30,11 @@ public class Category_name_page {
 
     ElementsCollection visibleArtNumOfTopProduct() {return $$x("//div[@class='product-list__item__nummer']").filter(visible);}
 
-    ElementsCollection signalWordOfDangerousProduct() {return $$x("//div[@class='dangerous-listing__title hidden']");}
+    ElementsCollection signalWordOfDangerousProduct() {return $$x("//div[@class='dangerous-listing__title hidden hazard-danger-title']");}
 
     ElementsCollection dangerousProducts() {return $$x("//span[@class='dangerous-listing__show-more']/ancestor::div[contains(@class,'product-list__item')]");}
 
-    ElementsCollection attributeOfWarningIcon(int positionOfProduct) {return $$x("(//span[@class='dangerous-listing__show-more'])["+positionOfProduct+"]/ancestor::div[contains(@class,'product-list__item')]//div[@class='dangerous-listing__icon']");}
+    ElementsCollection attributeOfWarningIcon(int positionOfProduct) {return $$x("(//span[@class='dangerous-listing__show-more'])["+positionOfProduct+"]/ancestor::div[contains(@class,'product-list__item')]//div[@class='dangerous-listing__icon dangerous-listing__icon-attention']");}
 
     ElementsCollection labelTitleDangerousProducts() {return $$x("//span[@class='dangerous-listing__show-more']");}
 

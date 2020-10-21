@@ -52,7 +52,7 @@ public class QC_1488_ChecksVerificationIslands_BillingIsUndivided_NegativeCase {
                 .checkAbsenceOfPayPalMethod()
                 .chooseVorkasse().nextBtnClick()
                 .checkAbsenceOfVatPercentage()
-                .checkRegularDeliveryPriceAllData("165,00")
+                .checkRegularDeliveryPrice("165,00")
                 .checkAbsenceSafeOrderBlock();
         totalPrice = new CartAllData_page_Logic().clickBtnReturnToCartAddressPage()
                 .fillingPostalCodeFieldJSForShipping("33333")
@@ -61,7 +61,7 @@ public class QC_1488_ChecksVerificationIslands_BillingIsUndivided_NegativeCase {
                 .chooseVorkasse().nextBtnClick()
                 .checkPresenceSafeOrderBlock()
                 .checkTextContainingVatPercentage("inkl. 20% MwSt.")
-                .checkRegularDeliveryPriceAllData("9,95")
+                .checkRegularDeliveryPrice("9,95")
                 .getTotalPriceAllDataPage(shop);
         orderNumber = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumber);

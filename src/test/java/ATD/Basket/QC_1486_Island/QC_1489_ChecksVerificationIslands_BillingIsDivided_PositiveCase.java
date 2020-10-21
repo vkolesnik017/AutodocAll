@@ -52,7 +52,7 @@ public class QC_1489_ChecksVerificationIslands_BillingIsDivided_PositiveCase {
                 .checkAbsenceOfPayPalMethod()
                 .chooseVorkasse().nextBtnClick()
                 .checkAbsenceOfVatPercentage()
-                .checkRegularDeliveryPriceAllData("165,00")
+                .checkRegularDeliveryPrice("165,00")
                 .checkAbsenceSafeOrderBlock()
                 .getTotalPriceAllDataPage(shop);
         orderNumber = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
