@@ -87,7 +87,7 @@ public class QC_2448_CheckDisplayAndClickOnDangerousProductsBlockOnListings {
 
     @DataProvider(name = "routesMotoSecond", parallel = true)
     Object[] dataProviderMotoSecond() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list_model5"); //,
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list_model5"); 
     }
 
     @Test(dataProvider = "routesMotoSecond")
