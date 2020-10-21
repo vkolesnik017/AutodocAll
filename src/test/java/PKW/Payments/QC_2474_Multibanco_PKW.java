@@ -58,6 +58,7 @@ public class QC_2474_Multibanco_PKW {
                 .checkPresencePaymentsMethodLabel(new CartAllData_page().multibancoLabel())
                 .getTotalPriceAllDataPage(shop);
         String requisitesText = new CartAllData_page_Logic().nextBtnClick()
+                .closePopupAfterOrder()
                 .clickOnLinkForPDF()
                 .checkOrganizationName("12057")
                 .comparesPriceOfOrderDetailsWithPriceOnAllDataPage(totalPriceAllData)

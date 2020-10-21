@@ -12,6 +12,14 @@ public class Payment_handler_page {
         return $(By.xpath("//div[@class='success-order__info']/span"));
     }
 
+    SelenideElement popupAfterOrder() {
+        return $x("//div[@class='popup-after-order__wrap']");
+    }
+
+    SelenideElement closePopupAfterOrderBtn() {
+        return $x("//span[@class='popup-after-order__close']");
+    }
+
     SelenideElement nameOfOrganization() {
         return $x("//div[@class='success-order__order']/div/div[1]/span[2]/b");
     }

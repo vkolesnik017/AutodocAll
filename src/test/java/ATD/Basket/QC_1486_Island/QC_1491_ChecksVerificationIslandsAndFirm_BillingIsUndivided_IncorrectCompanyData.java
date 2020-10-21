@@ -54,7 +54,7 @@ public class QC_1491_ChecksVerificationIslandsAndFirm_BillingIsUndivided_Incorre
                 .clickBtnEinkaufFortsetzenFromPopupErrorAboutWrongCompany()
                 .checkAbsenceOfPayPalMethod()
                 .chooseVorkasse().nextBtnClick()
-                .checkRegularDeliveryPriceAllData("10,95")
+                .checkRegularDeliveryPrice("10,95")
                 .checkTextContainingVatPercentage("inkl. 20% MwSt.")
                 .checkPresenceSafeOrderBlock()
                 .getTotalPriceAllDataPage(shop);

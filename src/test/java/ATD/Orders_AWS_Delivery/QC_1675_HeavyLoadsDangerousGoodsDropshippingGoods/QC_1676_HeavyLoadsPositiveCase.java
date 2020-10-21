@@ -1,4 +1,4 @@
-package ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods;
+package ATD.Orders_AWS_Delivery.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods;
 
 import ATD.CartAllData_page_Logic;
 import ATD.Product_page_Logic;
@@ -38,7 +38,7 @@ public class QC_1676_HeavyLoadsPositiveCase {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks the purchase of a heavy load")
+    @Description(value = "Test checks the purchase of a heavy load goods")
     public void testOfHeavyLoadsPurchase(String route) {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
@@ -49,7 +49,7 @@ public class QC_1676_HeavyLoadsPositiveCase {
                 .signIn(email, password)
                 .fillAllFields(shop).nextBtnClick()
                 .chooseVorkasse().nextBtnClick()
-                .checkRegularDeliveryPriceAllData("6,95")
+                .checkRegularDeliveryPrice("6,95")
                 .checkHeavyLoadsDeliveryPriceAllData("10,00")
                 .checkAbsenceSafeOrderBlock()
                 .getTotalPriceAllDataPage(shop);

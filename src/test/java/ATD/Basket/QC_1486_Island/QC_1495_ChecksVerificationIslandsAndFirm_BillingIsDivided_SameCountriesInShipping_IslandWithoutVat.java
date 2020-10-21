@@ -54,7 +54,7 @@ public class QC_1495_ChecksVerificationIslandsAndFirm_BillingIsDivided_SameCount
                 .nextBtnClick()
                 .checkAbsenceSafeOrderBlock()
                 .checkAbsenceOfVatPercentage()
-                .checkRegularDeliveryPriceAllData("165,00")
+                .checkRegularDeliveryPrice("165,00")
                 .getTotalPriceAllDataPage(shop);
         orderNumber = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumber);

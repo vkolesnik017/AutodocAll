@@ -14,7 +14,7 @@ import static ATD.Presse_static_page_Logic.readPdfContent;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2446_CheckingDisplayedOnProductPageLinkOnDangerousGoodsSafetyDataSheet {
+public class QC_2446_CheckingDisplayedLinkOnDangerousGoodsSafetyDataSheet {
 
     private Product_page_Logic productPageLogic = new Product_page_Logic();
 

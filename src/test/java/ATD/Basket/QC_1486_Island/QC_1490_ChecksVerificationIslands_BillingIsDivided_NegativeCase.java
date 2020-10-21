@@ -51,7 +51,7 @@ public class QC_1490_ChecksVerificationIslands_BillingIsDivided_NegativeCase {
                 .checkPresenceOfPayPalMethod()
                 .chooseVorkasse().nextBtnClick()
                 .checkTextContainingVatPercentage("inkl. 20% MwSt.")
-                .checkRegularDeliveryPriceAllData("9,95")
+                .checkRegularDeliveryPrice("9,95")
                 .checkPresenceSafeOrderBlock()
                 .getTotalPriceAllDataPage(shop);
         orderNumber = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
