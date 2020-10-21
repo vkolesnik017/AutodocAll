@@ -4,8 +4,7 @@ import Common.DataBase;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
+import java.sql.SQLException;
 
 import static ATD.CommonMethods.mailRandomMailinator;
 import static ATD.CommonMethods.openPage;
@@ -116,6 +115,12 @@ public class Versand_static_page_Logic extends Versand_static_page {
         return Float.valueOf(deliveryLimit.startsWith(",") ? deliveryLimit.substring(1) : deliveryLimit.split(",")[0]);
     }
 
+    @Step("Get the delivery price of the current country. Versand_static_page")
+    public float getDeliveryPriceOfCurrentCountry(String shop) throws SQLException {
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", shop, "main", "staticVersand"));
+        return Float.parseFloat(deliveryPrice().getText().replace(" €", "").replaceAll(",","."));
+    }
+
     @Step("Get delivery price. Versand_static_page")
     public String getDeliveryPrice(String country) throws Exception {
         openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "staticVersand"));
@@ -124,20 +129,17 @@ public class Versand_static_page_Logic extends Versand_static_page {
     }
 
     @Step("Get delivery price for a user with a subscription plus pro. Versand_static_page")
-    public String getDeliveryPriceForUserWithSubscriptionPlusPro(String country, String mail) throws Exception {
+    public float getDeliveryPriceForUserWithSubscriptionPlusPro(String country, String mail) throws Exception {
         openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "staticVersand"));
         allCountriesButton().click();
         float deliveryPrice = Float.parseFloat(deliveryPriceLocator(country).getText().replace(" €", "").replace(",", "."));
-        BigDecimal exactDeliveryPrice;
+        float exactDeliveryPrice;
         if (mail.contains("plusPro")) {
-            float priceDelivery = deliveryPrice * 0.7f;
-            BigDecimal result = new BigDecimal(priceDelivery);
-            exactDeliveryPrice = result.setScale(2, RoundingMode.UP);
+            exactDeliveryPrice = deliveryPrice * 0.7f;
         } else {
-            exactDeliveryPrice = BigDecimal.valueOf(deliveryPrice).setScale(2, RoundingMode.UP);
+            exactDeliveryPrice = deliveryPrice;
         }
-        String formatDeliveryPrice = String.valueOf(exactDeliveryPrice);
-        return formatDeliveryPrice.substring(0, formatDeliveryPrice.indexOf(".") + 3).replaceAll("\\.", ",");
+        return exactDeliveryPrice;
     }
 
     @Step("Get delivery price for AWS. Versand_static_page")

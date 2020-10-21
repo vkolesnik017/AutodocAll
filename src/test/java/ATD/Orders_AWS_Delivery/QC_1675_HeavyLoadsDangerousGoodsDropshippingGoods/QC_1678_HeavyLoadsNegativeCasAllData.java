@@ -1,7 +1,6 @@
-package ATD.Basket.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods;
+package ATD.Orders_AWS_Delivery.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods;
 
 import Common.DataBase;
-import ATD.Main_page_Logic;
 import ATD.Product_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
@@ -14,13 +13,13 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.openPage;
+import static ATD.CommonMethods.*;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1677_HeavyLoadsNegativeCase {
+public class QC_1678_HeavyLoadsNegativeCasAllData {
 
-    private String email = "qc_1677_autotestDE@mailinator.com";
+    private String email = "qc_1678_autotestDE@mailinator.com";
     private Product_page_Logic product_page_logic = new Product_page_Logic();
 
     @BeforeClass
@@ -36,37 +35,47 @@ public class QC_1677_HeavyLoadsNegativeCase {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks negative purchase of a heavy loads / Basket")
-    public void testOfHeavyLoadsNegativePurchaseBasket(String route) throws SQLException {
+    @Description(value = "Test checks negative purchase of a heavy loads / AllData")
+    public void testOfHeavyLoadsNegativePurchaseAllDataPage(String route) throws SQLException {
         openPage(route);
         String idHeavyLoadProduct = product_page_logic.getProductId();
         product_page_logic.addProductToCart();
         openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "product2"));
         String productID = product_page_logic.getProductId();
         product_page_logic.addProductToCart()
-                          .closePopupOtherCategoryIfYes();
-        new Main_page_Logic().loginFromHeader(email)
-                .cartClick()
-                .checkPresencePopUpDeliveryLimit()
-                .closePopUpDeliveryLimitCartPage()
+                .closePopupOtherCategoryIfYes()
+                .cartClick().nextButtonClick()
+                .signIn(email, password).nextBtnClick()
+                .chooseVorkasse().nextBtnClick()
+                .checkPresencePopUpDeliveryLimitAllDataPage()
+                .closePopUpDeliveryLimitCartAllDataPage()
                 .checkAbsenceGoodInCartPage(idHeavyLoadProduct)
-                .checkPresenceGoodInCardPage(productID);
+                .checkPresenceGoodInCardPage(productID)
+                .checkPresenceSafeOrderBlock()
+                .checkPresenceRegularDeliveryPrice();
         openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "HeavyLoadProduct3"));
         product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
-                .checkPresencePopUpDeliveryLimit()
-                .deleteGoodsInDeliveryPopupCartPage()
+                .clickBtnChangeAddressInDeliveryPopupCartPageCartPage()
+                .nextBtnClick()
+                .chooseVorkasse().nextBtnClick()
+                .checkPresencePopUpDeliveryLimitAllDataPage()
+                .deleteGoodsInDeliveryPopupCartAllDataPage()
                 .checkAbsenceGoodInCartPage(idHeavyLoadProduct)
-                .checkPresenceGoodInCardPage(productID);
+                .checkPresenceGoodInCardPage(productID)
+                .checkPresenceSafeOrderBlock()
+                .checkPresenceRegularDeliveryPrice();
         openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "HeavyLoadProduct3"));
         product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
-                .checkPresencePopUpDeliveryLimit()
-                .clickBtnContinueShoppingInDeliveryPopupCartPage()
-                .checkPresenceGoodInCardPage(idHeavyLoadProduct)
-                .checkPresenceGoodInCardPage(productID);
+                .clickBtnChangeAddressInDeliveryPopupCartPageCartPage()
+                .nextBtnClick()
+                .chooseVorkasse().nextBtnClick()
+                .checkPresencePopUpDeliveryLimitAllDataPage()
+                .clickBtnChangeAddressInDeliveryPopupCartAllDataPage();
+        checkingContainsUrl("/basket/address");
     }
 
     @AfterMethod

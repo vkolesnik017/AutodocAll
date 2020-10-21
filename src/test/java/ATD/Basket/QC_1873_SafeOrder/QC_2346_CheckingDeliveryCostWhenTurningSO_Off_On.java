@@ -37,7 +37,7 @@ public class QC_2346_CheckingDeliveryCostWhenTurningSO_Off_On {
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks delivery costs when SO is turned off / on")
     public void testCheckingDeliveryCostWhenTurningSO_Off_On(String mail) throws Exception {
-        String deliveryLimit = new Versand_static_page_Logic().getDeliveryPriceForUserWithSubscriptionPlusPro("Polen", mail);
+        float deliveryLimit = new Versand_static_page_Logic().getDeliveryPriceForUserWithSubscriptionPlusPro("Polen", mail);
         openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "product43"));
         new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
@@ -51,7 +51,7 @@ public class QC_2346_CheckingDeliveryCostWhenTurningSO_Off_On {
                 .chooseVorkasse()
                 .nextBtnClick()
                 .clickSafeOrderCheckbox()
-                .checkRegularDeliveryPriceAllData(deliveryLimit)
+                .checkRegularDeliveryPrice(deliveryLimit)
                 .clickBtnReturnToCartPage()
                 .checkPresenceSOInSummeryBlock()
                 .clickSafeOrderCheckbox()
@@ -60,7 +60,7 @@ public class QC_2346_CheckingDeliveryCostWhenTurningSO_Off_On {
                 .nextBtnClick()
                 .nextBtnClick()
                 .checkThatSafeOrderCheckboxIsNotSelected()
-                .checkRegularDeliveryPriceAllData(deliveryLimit);
+                .checkRegularDeliveryPrice(deliveryLimit);
     }
 
 
@@ -84,7 +84,7 @@ public class QC_2346_CheckingDeliveryCostWhenTurningSO_Off_On {
                 .chooseVorkasse()
                 .nextBtnClick()
                 .clickSafeOrderCheckbox()
-                .checkRegularDeliveryPriceAllData("19,00")
+                .checkRegularDeliveryPrice("19,00")
                 .clickBtnReturnToCartPage()
                 .checkPresenceSOInSummeryBlock()
                 .clickSafeOrderCheckbox()
@@ -93,7 +93,7 @@ public class QC_2346_CheckingDeliveryCostWhenTurningSO_Off_On {
                 .nextBtnClick()
                 .nextBtnClick()
                 .checkThatSafeOrderCheckboxIsNotSelected()
-                .checkRegularDeliveryPriceAllData("19,00");
+                .checkRegularDeliveryPrice("19,00");
     }
 
     @AfterMethod

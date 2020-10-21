@@ -264,9 +264,16 @@ public class Search_page {
 
     ElementsCollection priceOfProduct() {return $$x("//p[@class='actual_price']");}
 
+
     ElementsCollection attributeOfBtnAddedToBasket() { return $$x("//div[@class='count']/following-sibling::div");}
 
+    ElementsCollection attributeOfActiveBtnAddedToBasket() { return $$x("//div[@class='count']/following-sibling::div[@class='button ']");}
+
+    ElementsCollection attributeOfNotActiveBtnAddedToBasket() { return $$x("//div[@class='count']/following-sibling::div[@class='button not_active']");}
+
     ElementsCollection productsList() {return $$x("//ul[@class='list_products']/li");}
+
+    ElementsCollection visibleParentCategories() {return $$x("//ul[@class='filetree cat_tree treeview']//li").filter(visible);}
 
 }
 

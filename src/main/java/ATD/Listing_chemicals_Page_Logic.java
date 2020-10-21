@@ -7,6 +7,8 @@ import org.testng.Assert;
 import java.util.ArrayList;
 
 import static ATD.CommonMethods.checkingContainsUrl;
+import static ATD.CommonMethods.getTextFromUnVisibleElement;
+import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.page;
 
@@ -489,6 +491,31 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
     public Product_page_Logic clickOnProductTitle() {
         titleNameProductFromListing().click();
         return page(Product_page_Logic.class);
+    }
+
+    @Step("presence of dangerous products .Listing_chemicals_Page")
+    public Listing_chemicals_Page_Logic presenceOfDangerousProducts() {
+        listOfProductTableView().shouldBe(visible);
+        labelTitleDangerousProducts().shouldHave(sizeGreaterThan(0));
+        return this;
+    }
+
+    @Step("get signal word from first dangerous product. Listing_chemicals_Page")
+    public String getSignalWordFromFirstDangerousProduct(int positionOfProduct) {
+        return getTextFromUnVisibleElement(signalWordOfDangerousProduct().get(positionOfProduct));
+    }
+
+    @Step("checking of visibility of TecDoc Listing block .Listing_chemicals_Page")
+    public Listing_chemicals_Page_Logic visibilityOfTecDocListingBlock() {
+        listOfProductInTecDocListingBlock().shouldBe(visible);
+        return this;
+    }
+
+
+
+    @Step("get signal word from first dangerous product Listing View. Listing_chemicals_Page")
+    public String getSignalWordFromFirstDangerousProductListingView(int positionOfProduct) {
+        return signalWordOfDangerousProductListingView().get(positionOfProduct).getText();
     }
 
 }

@@ -43,6 +43,7 @@
             <class name="ATD.FiltersSorting.QC_52_FiltersSorting_byBrand.QC_54_FiltersSorting_TestBrandFilterWithPagination"/>
             <class name="ATD.FiltersSorting.QC_52_FiltersSorting_byBrand.QC_55_FiltersSorting_TestBrandFilterWithPaginationLKW"/>
             <class name="ATD.FiltersSorting.QC_52_FiltersSorting_byBrand.QC_56_FiltersSorting_TestBrandFilterReset"/>
+            <class name="ATD.FiltersSorting.QC_52_FiltersSorting_byBrand.QC_1384_WorkBtnPrevAndNextInBlockBrands"/>
         </classes>
     </test>
 

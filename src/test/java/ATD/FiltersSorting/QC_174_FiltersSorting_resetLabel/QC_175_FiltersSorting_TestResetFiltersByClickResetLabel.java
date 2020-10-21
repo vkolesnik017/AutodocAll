@@ -19,6 +19,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.refresh;
 
 public class QC_175_FiltersSorting_TestResetFiltersByClickResetLabel {
+
     private Listing_page_Logic listingPage = new Listing_page_Logic();
 
     @BeforeClass
@@ -38,18 +39,18 @@ public class QC_175_FiltersSorting_TestResetFiltersByClickResetLabel {
     public void testResetFiltersByClickResetLabel(String route) {
         openPage(route);
         listingPage.clickFilterButton(listingPage.firstBrandInFilterButton())
-                    .checkVisibilityOfElement(listingPage.labelOfActiveFilter())
-                    .checkVisibilityOfElement(listingPage.resetAllFiltersButton());
-                    refresh();
+                .checkVisibilityOfElement(listingPage.labelOfActiveFilter())
+                .checkVisibilityOfElement(listingPage.resetAllFiltersButton());
+        refresh();
         listingPage.checkVisibilityOfElement(listingPage.labelOfActiveFilter())
-                    .checkVisibilityOfElement(listingPage.resetAllFiltersButton())
-                    .clickFilterButton(listingPage.resetAllFiltersButton())
-                    .checkElementIsNotVisible(listingPage.labelOfActiveFilter())
-                    .checkElementIsNotVisible(listingPage.resetAllFiltersButton())
-                    .clickFilterButton(listingPage.firstBrandInFilterButton())
-                    .clickFilterButton(listingPage.closeLabelOfActiveFilter())
-                    .checkElementIsNotVisible(listingPage.labelOfActiveFilter())
-                    .checkElementIsNotVisible(listingPage.resetAllFiltersButton());
+                .checkVisibilityOfElement(listingPage.resetAllFiltersButton())
+                .clickFilterButton(listingPage.resetAllFiltersButton())
+                .checkElementIsNotVisible(listingPage.labelOfActiveFilter())
+                .checkElementIsNotVisible(listingPage.resetAllFiltersButton())
+                .clickFilterButton(listingPage.firstBrandInFilterButton())
+                .clickFilterButton(listingPage.closeLabelOfActiveFilter())
+                .checkElementIsNotVisible(listingPage.labelOfActiveFilter())
+                .checkElementIsNotVisible(listingPage.resetAllFiltersButton());
     }
 
     @AfterMethod

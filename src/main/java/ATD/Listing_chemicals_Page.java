@@ -254,4 +254,15 @@ public class Listing_chemicals_Page {
         return $x("//div[contains(@class,'js-filter-generic')]//li[3]//input");
     }
 
+    SelenideElement listOfProductTableView() {return $x("//div[@class='sub_catalog_grid']");}
+
+    ElementsCollection labelTitleDangerousProducts() {return $$x("//div[@class='rec_products_block']//span[@class='dangerous-listing__show-more']");}
+
+    ElementsCollection signalWordOfDangerousProduct() {return $$x("//div[@class='dangerous-listing__title hazard-danger-title']");}
+
+    SelenideElement listOfProductInTecDocListingBlock() {
+        return $x("//ul[contains(@class,'list_products')]");
+    }
+
+    ElementsCollection signalWordOfDangerousProductListingView() {return $$x("//div[@class='dangerous-listing__title hazard-danger-title']");}
  }

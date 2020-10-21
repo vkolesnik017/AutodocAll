@@ -323,11 +323,11 @@ public class LKW_Category_car_list_page {
 
     ElementsCollection labelTitleDangerousProducts() {return $$x("//div[@class='rec_products_block']//span[@class='dangerous-listing__show-more']");}
 
-    ElementsCollection labelIconDangerousProducts() {return $$x("//div[@class='rec_products_block']//div[@class='dangerous-listing__icon'][1]").filter(visible);}
+    ElementsCollection labelIconDangerousProducts() {return $$x("//div[@class='rec_products_block']//div[@class='dangerous-listing__icon dangerous-listing__icon-attention'][1]").filter(visible);}
 
     ElementsCollection dangerousProducts() {return $$x("//span[@class='dangerous-listing__show-more']/ancestor::div[@class='rec_products_block']");}
 
-    ElementsCollection signalWordOfDangerousProduct() {return $$x("//div[@class='dangerous-listing__title hidden']");}
+    ElementsCollection signalWordOfDangerousProduct() {return $$x("//div[@class='dangerous-listing__title hazard-attention-title']");}
 
     SelenideElement blackBackground() {return $x("//div[@class='overlay black hidden']");}
 
@@ -339,7 +339,7 @@ public class LKW_Category_car_list_page {
 
     ElementsCollection btnAddDangerousProductToWishList() {return $$x("//span[@class='dangerous-listing__show-more']/ancestor::li//span[@class='add-to-wishlist title_btn add-article']");}
 
-    ElementsCollection signalWordOfDangerousProductListingView() {return $$x("//div[@class='dangerous-listing__title']");}
+    ElementsCollection signalWordOfDangerousProductListingView() {return $$x("//div[@class='dangerous-listing__title hazard-attention-title']");}
 
     ElementsCollection attributeOfWarningIcon(int positionOfProduct) {return $$x("(//span[@class='dangerous-listing__show-more'])["+positionOfProduct+"]/ancestor::li//div[@class='dangerous-listing__icons']/div");}
 

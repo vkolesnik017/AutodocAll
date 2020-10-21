@@ -96,11 +96,11 @@ public class Moto_Category_page {
 
     ElementsCollection btnAddDangerousProductToWishList() {return $$x("//span[@class='dangerous-listing__show-more']/ancestor::div[@class='rec_products_block']/div[1]");}
 
-    ElementsCollection signalWordOfDangerousProduct() {return $$x("//div[@class='dangerous-listing__title hidden']");}
+    ElementsCollection signalWordOfDangerousProduct() {return $$x("//div[@class='dangerous-listing__title hazard-attention-title']");}
 
     ElementsCollection dangerousProducts() {return $$x("//span[@class='dangerous-listing__show-more']/ancestor::div[@class='rec_products_block']");}
 
-    ElementsCollection attributeOfWarningIcon(int positionOfProduct) {return $$x("(//span[@class='dangerous-listing__show-more'])["+positionOfProduct+"]/ancestor::div[@class='rec_prod_info_popup']//div[@class='dangerous-listing__icon']");}
+    ElementsCollection attributeOfWarningIcon(int positionOfProduct) {return $$x("(//span[@class='dangerous-listing__show-more'])["+positionOfProduct+"]/ancestor::div[@class='rec_prod_info_popup']//div[@class='dangerous-listing__icon dangerous-listing__icon-attention']");}
 
     ElementsCollection labelTitleDangerousProducts() {return $$x("//div[@class='rec_products_block']//span[@class='dangerous-listing__show-more']");}
 

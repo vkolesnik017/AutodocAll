@@ -1,5 +1,6 @@
 package PKW;
 
+import com.codeborne.selenide.ex.ElementNotFound;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
@@ -13,6 +14,17 @@ public class Payment_handler_page_Logic extends Payment_handler_page {
     public String getOrderNumber() {
         return orderNumber().getText();
     }
+
+    @Step("Closing popup after making order. Payment_handler_page")
+    public Payment_handler_page_Logic closePopupAfterOrder() {
+        try {
+            popupAfterOrder().shouldBe(visible);
+            closePopupAfterOrderBtn().click();
+        } catch (ElementNotFound e) {
+        }
+        return this;
+    }
+
 
     @Step("Checks organization name {expectedName}. Payment_handler_page")
     public Payment_handler_page_Logic checkOrganizationName(String expectedName) {

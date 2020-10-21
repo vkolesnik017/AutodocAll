@@ -2,6 +2,7 @@ package ATD;
 
 import AWS.ProductCard_aws;
 import Common.DataBase;
+import Common.Excel;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.ex.ElementNotFound;
@@ -9,7 +10,7 @@ import com.codeborne.selenide.ex.ElementShould;
 import com.codeborne.selenide.ex.UIAssertionError;
 import io.qameta.allure.Step;
 import org.testng.Assert;
-
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.sql.SQLException;
@@ -17,7 +18,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
-
 import static ATD.CommonMethods.*;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.CollectionCondition.sizeLessThan;
@@ -918,7 +918,7 @@ public class Product_page_Logic extends Product_page {
     public List<String> getAttributeOfWarningIconInPopUp() {
         List<String> attribute = new ArrayList<>();
         for (int i = 0; i < attributeOfWarningIcon().size(); i++) {
-            String attributeFromIcon = attributeOfWarningIcon().get(i).shouldBe(visible).getAttribute("src");
+            String attributeFromIcon = attributeOfWarningIcon().get(i).shouldBe(visible).getAttribute("style").replaceAll("background-image: url", "").replace("(", "").replace("\"", "");
             String partOfAtt = attributeFromIcon.replace(attributeFromIcon.substring(attributeFromIcon.lastIndexOf(".")), "");
             attribute.add(partOfAtt);
         }
@@ -944,12 +944,38 @@ public class Product_page_Logic extends Product_page {
         return textFromDangerousBlock().shouldBe(visible).getText();
     }
 
+    @Step("Get name link safety data sheet. Product_page")
+    public String getNameLinkSafetyDataSheet() {
+        return safetyDataSheet().getText();
+    }
+
+    @Step("Click link safety data sheet and get url pdf page after click. Product_page")
+    public String  clickLinkSafetyDataSheetAndGetUrl() throws IOException {
     @Step("Click link safety data sheet. Product_page")
-    public Product_page_Logic clickLinkSafetyDataSheet() {
+    public Product_page_Logic  clickLinkSafetyDataSheet() {
         safetyDataSheet().shouldBe(visible).click();
         switchTo().window(1);
+        String url = getCurrentUtl();
         closeWindow();
         switchTo().window(0);
+        return url;
+    }
+
+    @Step("Get text from Excel and checking it with safety data sheet table. Product_page")
+    public Product_page_Logic getTextFromExcelAndCheckingItWithSafetyDataSheetTable(String file, List<String> hazardStatement) {
+        String allText = getTextFromDangerousBlock();
+        List<String> numHazardStatement;
+        List<String> textHazardStatement;
+        numHazardStatement = new Excel().readFromExcel(file, 0);
+        textHazardStatement = new Excel().readFromExcel(file, 1);
+        for (int h = 0; h < hazardStatement.size(); h++) {
+            String hazardIndex = hazardStatement.get(h);
+            int indexFromData = numHazardStatement.indexOf(hazardIndex);
+            String textFromData = textHazardStatement.get(indexFromData);
+            if (!allText.contains(textFromData)) {
+                Assert.fail("The text does not contain such a line");
+            }
+        }
         return this;
     }
 

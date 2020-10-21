@@ -21,4 +21,11 @@
         </classes>
     </test>
 
+    <test name="QASYS_452_NumberBasketOnMobile">
+        <classes>
+            <class name="ATD.QASYS_19_Basket.QASYS_452_NumberBasketOnMobile">
+            </class>
+        </classes>
+    </test>
+
 </suite>

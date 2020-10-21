@@ -768,6 +768,7 @@ public class Product_page {
         return $x("//span[@class='subtitle-art-nummer']/span");
     }
 
+    ElementsCollection attributeOfWarningIcon() {return $$x("//div[@class='product-block']//div[@class='dangerous-goods__icons']/div");}
     ElementsCollection attributeOfWarningIcon() {
         return $$x("//div[@class='product-block']//div[@class='dangerous-goods__icons']/img");
     }
@@ -785,7 +786,7 @@ public class Product_page {
     }
 
     SelenideElement btnMehrFromDangerousBlock() {
-        return $x("//a[@class='dangerous-goods__show-more js-dangerous-goods__show-more']");
+        return $x("//a[@class='dangerous-goods__show-more js-dangerous-goods__show-more' and text()='Mehr']");
     }
 
     SelenideElement blockWithAlternative() {
