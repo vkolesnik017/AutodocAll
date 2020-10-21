@@ -25,6 +25,7 @@ public class QC_2448_CheckDisplayAndClickOnDangerousProductsBlockOnListings {
     private LKW_Search_page_Logic lkwSearchPage = new LKW_Search_page_Logic();
     private Listing_chemicals_Page_Logic chemicalsPage = new Listing_chemicals_Page_Logic();
 
+
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -59,16 +60,16 @@ public class QC_2448_CheckDisplayAndClickOnDangerousProductsBlockOnListings {
     @Description(value = "Test check displaying and click by Dangerous products block")
     public void testCheckDisplayingAndClickByDangerousProductsBlockSearch(String route) {
         openPage(route);
-        String idOfDangerousProduct = lkwSearchPage.visibilityOfTecDocListingBlock().getIdOfDangerousProduct(0);
-        String signalWord = lkwSearchPage.visibilityOfTecDocListingBlock().getSignalWordFromFirstDangerousProductListingView(0);
-        List<String> attributeOfWarningIconInPopUp = lkwSearchPage.getAttributeOfWarningIconInPopUp(0);
-        lkwSearchPage.clickOnDangerousLabelAndCompareElements(0, signalWord, attributeOfWarningIconInPopUp);
+        String idOfDangerousProduct = lkwSearchPage.visibilityOfTecDocListingBlock().getIdOfDangerousProduct(1);
+        String signalWord = lkwSearchPage.visibilityOfTecDocListingBlock().getSignalWordFromFirstDangerousProductListingView(1);
+        List<String> attributeOfWarningIconInPopUp = lkwSearchPage.getAttributeOfWarningIconInPopUp(1);
+        lkwSearchPage.clickOnDangerousLabelAndCompareElements(1, signalWord, attributeOfWarningIconInPopUp);
         new ProductCard_aws(idOfDangerousProduct).openProductCardPageAndLogin().presenceOfDangerousIconBlock().compareElementsOfDangerousProduct(attributeOfWarningIconInPopUp, signalWord);
     }
 
     @DataProvider(name = "routesMoto", parallel = true)
     Object[] dataProviderMoto() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list14,moto_category_car_list_model5");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list14");
     }
 
     @Test(dataProvider = "routesMoto")
@@ -79,6 +80,24 @@ public class QC_2448_CheckDisplayAndClickOnDangerousProductsBlockOnListings {
         openPage(route);
         String idOfDangerousProduct = lkwSearchPage.visibilityOfTecDocListingBlock().getIdOfDangerousProduct(0);
         String signalWord = lkwSearchPage.visibilityOfTecDocListingBlock().getSignalWordFromFirstDangerousProductListingView(0);
+        List<String> attributeOfWarningIconInPopUp = lkwSearchPage.getAttributeOfWarningIconInPopUp(0);
+        lkwSearchPage.clickOnDangerousLabelAndCompareElements(0, signalWord, attributeOfWarningIconInPopUp);
+        new ProductCard_aws(idOfDangerousProduct).openProductCardPageAndLogin().presenceOfDangerousIconBlock().compareElementsOfDangerousProduct(attributeOfWarningIconInPopUp, signalWord);
+    }
+
+    @DataProvider(name = "routesMotoSecond", parallel = true)
+    Object[] dataProviderMotoSecond() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list_model5"); 
+    }
+
+    @Test(dataProvider = "routesMotoSecond")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test check displaying and click by Dangerous products block")
+    public void testCheckDisplayingAndClickByDangerousProductsBlockMotoSecond(String route) {
+        openPage(route);
+        String idOfDangerousProduct = lkwSearchPage.visibilityOfTecDocListingBlock().getIdOfDangerousProduct(0);
+        String signalWord = chemicalsPage.visibilityOfTecDocListingBlock().getSignalWordFromFirstDangerousProductListingView(0);
         List<String> attributeOfWarningIconInPopUp = lkwSearchPage.getAttributeOfWarningIconInPopUp(0);
         lkwSearchPage.clickOnDangerousLabelAndCompareElements(0, signalWord, attributeOfWarningIconInPopUp);
         new ProductCard_aws(idOfDangerousProduct).openProductCardPageAndLogin().presenceOfDangerousIconBlock().compareElementsOfDangerousProduct(attributeOfWarningIconInPopUp, signalWord);
@@ -132,7 +151,7 @@ public class QC_2448_CheckDisplayAndClickOnDangerousProductsBlockOnListings {
     public void testCheckDisplayingAndClickByDangerousProductsBlockChemical(String route) {
         openPage(route);
         String idOfDangerousProduct = carListPage.visibilityOfTecDocListingBlock().getIdOfDangerousProduct(0);
-        String signalWord = carListPage.visibilityOfTecDocListingBlock().getSignalWordFromFirstDangerousProductListingView(0);
+        String signalWord = chemicalsPage.visibilityOfTecDocListingBlock().getSignalWordFromFirstDangerousProductListingView(0);
         List<String> attributeOfWarningIconInPopUp = carListPage.getAttributeOfWarningIconInPopUp(0);
         carListPage.clickOnDangerousLabelAndCompareElements(0, signalWord, attributeOfWarningIconInPopUp);
         new ProductCard_aws(idOfDangerousProduct).openProductCardPageAndLogin().presenceOfDangerousIconBlock().compareElementsOfDangerousProduct(attributeOfWarningIconInPopUp, signalWord);
@@ -150,7 +169,7 @@ public class QC_2448_CheckDisplayAndClickOnDangerousProductsBlockOnListings {
     public void testCheckDisplayingAndClickByDangerousProductsBlockOEN(String route) {
         openPage(route);
         String idOfDangerousProduct = carListPage.visibilityOfTecDocListingBlock().getIdOfDangerousProduct(0);
-        String signalWord = carListPage.visibilityOfTecDocListingBlock().getSignalWordFromFirstDangerousProductListingView(0);
+        String signalWord = chemicalsPage.visibilityOfTecDocListingBlock().getSignalWordFromFirstDangerousProductListingView(0);
         List<String> attributeOfWarningIconInPopUp = carListPage.getAttributeOfWarningIconInPopUp(0);
         carListPage.clickOnDangerousLabelAndCompareElements(0, signalWord, attributeOfWarningIconInPopUp);
         new ProductCard_aws(idOfDangerousProduct).openProductCardPageAndLogin().presenceOfDangerousIconBlock().compareElementsOfDangerousProduct(attributeOfWarningIconInPopUp, signalWord);
