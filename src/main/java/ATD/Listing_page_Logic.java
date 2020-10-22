@@ -706,6 +706,7 @@ public class Listing_page_Logic extends Listing_page {
 
     @Step("Check element is not visibile. Listing_page")
     public Listing_page_Logic checkElementIsNotVisible(SelenideElement element) {
+        sleep(3000);
         element.shouldNotBe(visible);
         return this;
     }
