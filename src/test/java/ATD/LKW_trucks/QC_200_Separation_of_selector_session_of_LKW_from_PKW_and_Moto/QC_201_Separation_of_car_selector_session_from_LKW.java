@@ -39,7 +39,7 @@ public class QC_201_Separation_of_car_selector_session_from_LKW {
                 .clickSearchBtnInVerticalSelectorWhenSelectedAllFields();
         checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "maker_car_list17"));
         new Categories_page_Logic().selectLKWCategory().checkSuccessfullyLKWPageLoading()
-                .checkOfEmptySelector().selectChildCategory()
+                .checkOfEmptySelector(). selectChildCategory()
                 .checkSuccessfullyChildCategoryPageLoading();
     }
 
