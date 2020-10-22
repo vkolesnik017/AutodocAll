@@ -196,9 +196,13 @@ public class Product_page {
         return $$(".tutorial-text > a");
     }
 
-    SelenideElement einzustellenderElektrodenabstandCharacteristic() { return $x("//span[contains(text(),'einzustellender Elektrodenabstand [mm]:')]"); }
+    SelenideElement einzustellenderElektrodenabstandCharacteristic() {
+        return $x("//span[contains(text(),'einzustellender Elektrodenabstand [mm]:')]");
+    }
 
-    public SelenideElement mengeCharacteristic() { return $x("//div[@class='product-block__description__info']//span[contains(text(),'Menge:')]"); }
+    public SelenideElement mengeCharacteristic() {
+        return $x("//div[@class='product-block__description__info']//span[contains(text(),'Menge:')]");
+    }
 
     SelenideElement safetyDataSheet() {
         return $x("//div[@class='safety-data-sheet']/a");
@@ -356,9 +360,13 @@ public class Product_page {
         return $(By.xpath("//div[@class='product-comments__text']"));
     }
 
-    ElementsCollection allReviewsFromDE() { return $$x("//ul[@class='product-comments__list']//*[@data-country='de']"); }
+    ElementsCollection allReviewsFromDE() {
+        return $$x("//ul[@class='product-comments__list']//*[@data-country='de']");
+    }
 
-    ElementsCollection allReviewsExceptDE() { return $$x("//ul[@class='product-comments__list']//*[@data-country!='de']"); }
+    ElementsCollection allReviewsExceptDE() {
+        return $$x("//ul[@class='product-comments__list']//*[@data-country!='de']");
+    }
 
 
     //locators for compatibility block
@@ -539,7 +547,9 @@ public class Product_page {
         return $x("//*[@class='oem-list']//li/a");
     }
 
-    SelenideElement oenBlockTitle() {return $(".product-info-block__oem__title"); }
+    SelenideElement oenBlockTitle() {
+        return $(".product-info-block__oem__title");
+    }
 
     // locator for counter
     SelenideElement counterValuePairedGood() {
@@ -606,58 +616,92 @@ public class Product_page {
     }
 
     //locators for related products popup
-    ElementsCollection categoriesInRelatedProductsPopup() { return $$(".popup-other-cat__content-item"); }
+    ElementsCollection categoriesInRelatedProductsPopup() {
+        return $$(".popup-other-cat__content-item");
+    }
 
-    SelenideElement backButtonInRelatedPopup() { return $(".back"); }
+    SelenideElement backButtonInRelatedPopup() {
+        return $(".back");
+    }
 
-    SelenideElement relatedProductsPopup() { return $(".popup-other-cat"); }
+    SelenideElement relatedProductsPopup() {
+        return $(".popup-other-cat");
+    }
 
-    SelenideElement relatedProductPopupGoToCartButton() { return $(".go-cart"); }
+    SelenideElement relatedProductPopupGoToCartButton() {
+        return $(".go-cart");
+    }
 
-    SelenideElement tecdocAlternativeLink() { return $x("(//a[@data-gac='Tecdoc_analog_click'])[1]/span[2]"); }
+    SelenideElement tecdocAlternativeLink() {
+        return $x("(//a[@data-gac='Tecdoc_analog_click'])[1]/span[2]");
+    }
 
-    SelenideElement tecdocAlternativePrice() { return $x("(//div[@class='product-same-specification__wrap__col'])[1]//div[3]//span/span"); }
+    SelenideElement tecdocAlternativePrice() {
+        return $x("(//div[@class='product-same-specification__wrap__col'])[1]//div[3]//span/span");
+    }
 
-    SelenideElement articleNumber() { return $(".subtitle-art-nummer > span"); }
+    SelenideElement articleNumber() {
+        return $(".subtitle-art-nummer > span");
+    }
 
-    ElementsCollection analogAddToBasketButtons() { return $$x("//a[@data-gac='Product_analog_click']"); }
+    ElementsCollection analogAddToBasketButtons() {
+        return $$x("//a[@data-gac='Product_analog_click']");
+    }
 
-    ElementsCollection analogArtikelNumbers() { return $$(".product-list__item__nummer"); }
+    ElementsCollection analogArtikelNumbers() {
+        return $$(".product-list__item__nummer");
+    }
 
-    ElementsCollection analogProductsTitle() { return $$x("//*[@class='product-list__item active']"); }
+    ElementsCollection analogProductsTitle() {
+        return $$x("//*[@class='product-list__item active']");
+    }
 
-    SelenideElement carMatchBlock() { return $x("//*[@class='car-match-block']/p"); }
+    SelenideElement carMatchBlock() {
+        return $x("//*[@class='car-match-block']/p");
+    }
 
-// locators for instruments products page
+    // locators for instruments products page
     SelenideElement titleProductPageInstruments() {
         return $x("//h2/span[@class='title']");
     }
 
-// locators for chemicals products page
+    // locators for chemicals products page
     SelenideElement titleNameProductPageChemicals() {
         return $x("//h2/span[@class='title']");
     }
 
-// locators for accessories page
+    // locators for accessories page
     SelenideElement titleNameProductPageAccessories() {
         return $x("//h2/span[@class='title']");
     }
 
-    SelenideElement productFitsCar() { return $(".accordion-selected"); }
+    SelenideElement productFitsCar() {
+        return $(".accordion-selected");
+    }
 
-    SelenideElement productTitle() { return $(".title"); }
+    SelenideElement productTitle() {
+        return $(".title");
+    }
 
     SelenideElement blockApprovalECE() {
         return $x("//div[@class='lamp-usage-text']");
     }
 
-    SelenideElement idOFBtnAddToBasket() { return  $x("//div[@class='product-button button ']");}
+    SelenideElement idOFBtnAddToBasket() {
+        return $x("//div[@class='product-button button ']");
+    }
 
-    SelenideElement searchBar() {return $(byId("search")); }
+    SelenideElement searchBar() {
+        return $(byId("search"));
+    }
 
-    public SelenideElement tooltipToSearch() { return $(".autocomplete-suggestions>div"); }
+    public SelenideElement tooltipToSearch() {
+        return $(".autocomplete-suggestions>div");
+    }
 
-    public ElementsCollection tooltipsToSearch() { return $$(".autocomplete-suggestions>div"); }
+    public ElementsCollection tooltipsToSearch() {
+        return $$(".autocomplete-suggestions>div");
+    }
 
 
     SelenideElement basketDropMenu() {
@@ -672,39 +716,64 @@ public class Product_page {
         return $x("//a[@class='header-cart__link']");
     }
 
-    SelenideElement otherCategoriesPopUp() {return $x("//div[@class='popup-other-cat']");}
+    SelenideElement otherCategoriesPopUp() {
+        return $x("//div[@class='popup-other-cat']");
+    }
 
-    SelenideElement btnCloseOtherCategoriesPopUp() {return $x("//div[@class='popup-other-cat__close']");}
+    SelenideElement btnCloseOtherCategoriesPopUp() {
+        return $x("//div[@class='popup-other-cat__close']");
+    }
 
     SelenideElement characteristicZustand() {
         return $x("//div[@class='product-block__description__info']//li[@class='default_ul_li_class']//span[2]");
     }
 
-   SelenideElement compatibilityVehicleBlock() {return $x("//div[contains(text(),'Kompatibel mit folgenden PKWs')]/..");}
+    SelenideElement compatibilityVehicleBlock() {
+        return $x("//div[contains(text(),'Kompatibel mit folgenden PKWs')]/..");
+    }
 
-   SelenideElement linkOfCompatibilityVehicleAndProduct() {return $x("//div[contains(text(),'Kompatibel mit folgenden PKWs')]/..//div[@class='accordion-selected']/p");}
+    SelenideElement linkOfCompatibilityVehicleAndProduct() {
+        return $x("//div[contains(text(),'Kompatibel mit folgenden PKWs')]/..//div[@class='accordion-selected']/p");
+    }
 
-    ElementsCollection titleOfCharacteristic(){return  $$x("//li[@class='important']/span[1]").filter(Condition.visible);}
+    ElementsCollection titleOfCharacteristic() {
+        return $$x("//li[@class='important']/span[1]").filter(Condition.visible);
+    }
 
-    ElementsCollection valueOfCharacteristic() {return $$x("//li[@class='important']/span[2]").filter(Condition.visible);}
+    ElementsCollection valueOfCharacteristic() {
+        return $$x("//li[@class='important']/span[2]").filter(Condition.visible);
+    }
 
-    SelenideElement labelAddProductToWishList() {return $x("//div[@class='product-block__top-icons']/span");}
+    SelenideElement labelAddProductToWishList() {
+        return $x("//div[@class='product-block__top-icons']/span");
+    }
 
     SelenideElement iconOfWishList() {
         return $x("//span[@class='header__wishes link']");
     }
 
-    SelenideElement characteristicBlock() {return $x("//div[@class='product-block__description__info']");}
+    SelenideElement characteristicBlock() {
+        return $x("//div[@class='product-block__description__info']");
+    }
 
-    ElementsCollection allCharacteristics() {return $$x("//div[@class='product-block__description__info']//ul/li");}
+    ElementsCollection allCharacteristics() {
+        return $$x("//div[@class='product-block__description__info']//ul/li");
+    }
 
-    SelenideElement titleOfProduct() {return $x("//h2/span[1]");}
+    SelenideElement titleOfProduct() {
+        return $x("//h2/span[1]");
+    }
 
-    SelenideElement artNumOfProduct() {return $x("//span[@class='subtitle-art-nummer']/span");}
+    SelenideElement artNumOfProduct() {
+        return $x("//span[@class='subtitle-art-nummer']/span");
+    }
 
     ElementsCollection attributeOfWarningIcon() {return $$x("//div[@class='product-block']//div[@class='dangerous-goods__icons']/div");}
 
-    SelenideElement signalWordOfDangerousProduct() {return $x("//div[@class='product-block']//div[@class='dangerous-goods__title']");}
+
+    SelenideElement signalWordOfDangerousProduct() {
+        return $x("//div[@class='product-block']//div[@class='dangerous-goods__title']");
+    }
 
     SelenideElement dangerousBlock() {
         return $x("//div[@class='dangerous-goods js-dangerous-goods hide']");
@@ -718,5 +787,39 @@ public class Product_page {
         return $x("//a[@class='dangerous-goods__show-more js-dangerous-goods__show-more' and text()='Mehr']");
     }
 
+    SelenideElement blockWithAlternative() {
+        return $x("//*[@class='analog-block']");
+    }
 
+    SelenideElement blockWithAlternativePictograms() {
+        return $x("//*[@class='dangerous-listing__icons']");
+    }
+
+    SelenideElement blockWithAlternativeMehrButton() {
+        return $x("//*[@class='dangerous-listing__show-more']");
+    }
+
+    SelenideElement popUpDangerous() {
+        return $x("//*[@class='popup-dangerous']");
+    }
+
+    SelenideElement popUpDangerousTitle() {
+        return $x("//*[@class='popup-dangerous__title']");
+    }
+
+    SelenideElement popUpDangerousText() {
+        return $x("//*[@class='popup-dangerous__text mCustomScrollbar _mCS_4 mCS_no_scrollbar']");
+    }
+
+    ElementsCollection pictogramsInPopUp() {
+        return $$x("//*[@class='popup-dangerous__icon']");
+    }
+
+    ElementsCollection pictogramsInBlock() {
+        return $$x("//*[@class='slick-slide slick-current slick-active']//*[@class='dangerous-listing__icon dangerous-listing__icon-attention']");
+    }
+
+    SelenideElement closePopUpButton() {
+        return $x("//*[@class='popup-dangerous__close js-popup-dangerous__close']");
+    }
 }
