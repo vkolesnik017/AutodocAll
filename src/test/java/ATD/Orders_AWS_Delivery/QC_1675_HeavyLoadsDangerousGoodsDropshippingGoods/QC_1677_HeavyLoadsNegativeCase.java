@@ -20,7 +20,8 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1677_HeavyLoadsNegativeCase {
 
-    private String email = "qc_1677_autotestDE@mailinator.com";
+    private String emailForFirstCase = "qc_1677_autotestFirstCase@mailinator.com";
+    private String emailForSecondCase = "qc_1677_autotestSecondCase@mailinator.com";
     private Product_page_Logic product_page_logic = new Product_page_Logic();
 
     @BeforeClass
@@ -28,45 +29,76 @@ public class QC_1677_HeavyLoadsNegativeCase {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "route", parallel = true)
-    Object[] dataProviderProducts() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "HeavyLoadProduct3");
+    @DataProvider(name = "routeFirstCase", parallel = true)
+    Object[] dataProviderProductsFirstCase() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "HeavyLoadProduct3,productDangerousGoods1");
     }
 
-    @Test(dataProvider = "route")
+    @Test(dataProvider = "routeFirstCase", priority = 0)
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks negative purchase of a heavy loads / Basket")
-    public void testOfHeavyLoadsNegativePurchaseBasket(String route) throws SQLException {
-        openPage(route);
-        String idHeavyLoadProduct = product_page_logic.getProductId();
+    @Description(value = "Test checks negative purchase of a heavy loads and dangerous goods / Basket")
+    public void testOfHeavyLoadsAndDangerousGoodsNegativePurchaseBasket(String routeFirstCase) throws SQLException {
+        openPage(routeFirstCase);
+        String idProduct = product_page_logic.getProductId();
         product_page_logic.addProductToCart();
         openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "product2"));
-        String productID = product_page_logic.getProductId();
+        String productIDRegularGoods = product_page_logic.getProductId();
         product_page_logic.addProductToCart()
                           .closePopupOtherCategoryIfYes();
-        new Main_page_Logic().loginFromHeader(email)
+        new Main_page_Logic().loginFromHeader(emailForFirstCase)
                 .cartClick()
                 .checkPresencePopUpDeliveryLimit()
                 .closePopUpDeliveryLimitCartPage()
-                .checkAbsenceGoodInCartPage(idHeavyLoadProduct)
-                .checkPresenceGoodInCardPage(productID);
-        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "HeavyLoadProduct3"));
+                .checkAbsenceGoodInCartPage(idProduct)
+                .checkPresenceGoodInCardPage(productIDRegularGoods);
+        openPage(routeFirstCase);
         product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
                 .checkPresencePopUpDeliveryLimit()
                 .deleteGoodsInDeliveryPopupCartPage()
-                .checkAbsenceGoodInCartPage(idHeavyLoadProduct)
-                .checkPresenceGoodInCardPage(productID);
-        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "HeavyLoadProduct3"));
+                .checkAbsenceGoodInCartPage(idProduct)
+                .checkPresenceGoodInCardPage(productIDRegularGoods);
+        openPage(routeFirstCase);
         product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
                 .checkPresencePopUpDeliveryLimit()
                 .clickBtnContinueShoppingInDeliveryPopupCartPage()
-                .checkPresenceGoodInCardPage(idHeavyLoadProduct)
-                .checkPresenceGoodInCardPage(productID);
+                .checkPresenceGoodInCardPage(idProduct)
+                .checkPresenceGoodInCardPage(productIDRegularGoods);
+    }
+
+    @DataProvider(name = "routeSecondCase", parallel = true)
+    Object[] dataProviderProductsSecondCase() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main","productDrop1,product45");
+    }
+
+    @Test(dataProvider = "routeSecondCase", priority = 1)
+    @Flaky
+    @Owner(value = "Chelombitko")
+    @Description(value = "Test checks negative purchase of a drop and tyres goods / Basket")
+    public void testOfDropAndTyresGoodsNegativePurchaseBasket(String routeSecondCase) throws SQLException {
+        openPage(routeSecondCase);
+        String idProduct = product_page_logic.getProductId();
+        product_page_logic.addProductToCart();
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "product2"));
+        String productIDRegularGoods = product_page_logic.getProductId();
+        product_page_logic.addProductToCart()
+                .closePopupOtherCategoryIfYes();
+        new Main_page_Logic().loginFromHeader(emailForSecondCase)
+                .cartClick()
+                .closePopUpDeliveryLimitCartPage()
+                .checkAbsenceGoodInCartPage(idProduct)
+                .checkPresenceGoodInCardPage(productIDRegularGoods);
+        openPage(routeSecondCase);
+        product_page_logic.addProductToCart()
+                .closePopupOtherCategoryIfYes()
+                .cartClick()
+                .clickBtnDeletedGoodsViaDeliveryPopup()
+                .checkAbsenceGoodInCartPage(idProduct)
+                .checkPresenceGoodInCardPage(productIDRegularGoods);
     }
 
     @AfterMethod
