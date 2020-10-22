@@ -1,6 +1,7 @@
 package ATD.LKW_trucks.QC_200_Separation_of_selector_session_of_LKW_from_PKW_and_Moto;
 
 import ATD.*;
+import Common.DataBase;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -12,6 +13,7 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
+import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.*;
@@ -31,12 +33,12 @@ public class QC_201_Separation_of_car_selector_session_from_LKW {
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test checks separation of a car selector session from LKW")
-    public void testChecksSeparationOfCarSelectorSessionFromLKW(String route) {
+    public void testChecksSeparationOfCarSelectorSessionFromLKW(String route) throws SQLException {
         openPage(route);
         new Main_page_Logic().chooseBrandModelTypeInSelector("MERCEDES-BENZ", "38539", "130593")
-                .clickSearchBtnInVerticalSelectorWhenSelectedAllFields()
-                .checkSuccessfullyPageLoading()
-                .selectLKWCategory().checkSuccessfullyLKWPageLoading()
+                .clickSearchBtnInVerticalSelectorWhenSelectedAllFields();
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "maker_car_list17"));
+        new Categories_page_Logic().selectLKWCategory().checkSuccessfullyLKWPageLoading()
                 .checkOfEmptySelector().selectChildCategory()
                 .checkSuccessfullyChildCategoryPageLoading();
     }

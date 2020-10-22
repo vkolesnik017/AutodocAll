@@ -60,7 +60,7 @@ public class Product_page_Logic extends Product_page {
     }
 
     @Step("Click btn go to cart from cart Drop Menu. Product_page")
-    public CartAccount_page_Logic  clickBtnGoToCartFromCartDropMenu() {
+    public CartAccount_page_Logic clickBtnGoToCartFromCartDropMenu() {
         btnGoToCartFromBasketDropMenu().shouldBe(visible).click();
         return page(CartAccount_page_Logic.class);
     }
@@ -901,7 +901,7 @@ public class Product_page_Logic extends Product_page {
         }
         if (pfandBlock().isDisplayed()) {
             characteristicZustand().shouldNotBe(visible);
-        }else if (!pfandBlock().isDisplayed()) {
+        } else if (!pfandBlock().isDisplayed()) {
             characteristicZustand().shouldBe(visible);
         }
         return this;
@@ -910,9 +910,10 @@ public class Product_page_Logic extends Product_page {
     @Step("compare article number of product. Product_page")
     public Product_page_Logic compareArtNumOfProduct(String expectedArtNum) {
         artNumOfProduct().shouldBe(visible);
-        Assert.assertEquals(artNumOfProduct().getText(),expectedArtNum);
+        Assert.assertEquals(artNumOfProduct().getText(), expectedArtNum);
         return this;
     }
+
     @Step("Get attribute of Warning icon in product block .Product_page")
     public List<String> getAttributeOfWarningIconInPopUp() {
         List<String> attribute = new ArrayList<>();
@@ -976,5 +977,29 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
+    @Step("Checking the presence of the analog block , pictograms and mehr button. Product_page")
+    public Product_page_Logic presenceOfTheAnalogBlockWithPictograms() {
+        blockWithAlternativeMehrButton().scrollIntoView("{block: \"center\"}").shouldBe(visible, exist);
+        blockWithAlternative().shouldBe(visible);
+        for (int i = 0; i < pictogramsInBlock().size(); i++) {
+            String iconInBlock = pictogramsInBlock().get(i).shouldBe(visible).getAttribute("style");
+            blockWithAlternativePictograms().shouldBe(visible).shouldBe(visible, exist).click();
+            popUpDangerous().shouldBe(visible);
+            String iconInPopUp = pictogramsInPopUp().get(i).shouldBe(visible).getAttribute("style");
+            Assert.assertEquals(iconInBlock, iconInPopUp);
+            closePopUpButton().shouldBe(visible).click();
+        }
+        return this;
+    }
 
+    @Step("Checking the text and warning word in the  dangerous pop-up. Product_page")
+    public Product_page_Logic presenceOfTheTextAndWarningWordInPopUp() {
+        blockWithAlternativePictograms().click();
+        popUpDangerousTitle().shouldBe(visible);
+        Assert.assertFalse(popUpDangerousTitle().text().isEmpty());
+        popUpDangerousText().shouldBe(visible);
+        Assert.assertFalse(popUpDangerousText().text().isEmpty());
+        closePopUpButton().shouldBe(visible).click();
+        return this;
+    }
 }

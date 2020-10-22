@@ -138,7 +138,10 @@ public class Listing_page {
     public SelenideElement activeSideFilterLkwCheckbox() {
         return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_593']//li[1]");
     }
-    public SelenideElement activeSideFilterLkw() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_339']//ul//li[1]/label"); }
+
+    public SelenideElement activeSideFilterLkw() {
+        return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_339']//ul//li[1]/label");
+    }
 
 
     public SelenideElement activeSideFilterAttributeLkw2() {
@@ -197,39 +200,73 @@ public class Listing_page {
         return $(".model_list_oem > li > label > input");
     }
 
-    SelenideElement langeFilterBlockInSidebar() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_203']"); }
+    SelenideElement langeFilterBlockInSidebar() {
+        return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_203']");
+    }
 
-    SelenideElement langeSecondButtonInFixedSidebarFilter() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_203']//li[2]/label"); }
+    SelenideElement langeSecondButtonInFixedSidebarFilter() {
+        return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_203']//li[2]/label");
+    }
 
-    SelenideElement langeFirstButtonInFixedSidebarFilter() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_203']//li[1]/label"); }
+    SelenideElement langeFirstButtonInFixedSidebarFilter() {
+        return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_203']//li[1]/label");
+    }
 
-    SelenideElement bySideFilterBlockInSidebar() { return $(".installation-side--sidebar-fixed"); }
+    SelenideElement bySideFilterBlockInSidebar() {
+        return $(".installation-side--sidebar-fixed");
+    }
 
-    SelenideElement brandFilterBlockInSidebar() { return $(".branded-filter-sidebar"); }
+    SelenideElement brandFilterBlockInSidebar() {
+        return $(".branded-filter-sidebar");
+    }
 
-    SelenideElement furPrnummerBlockInSidebar() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_1197']"); }
+    SelenideElement furPrnummerBlockInSidebar() {
+        return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_1197']");
+    }
 
-    SelenideElement furPrnummerFirstButtonInSidebar() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_1197']//label"); }
+    SelenideElement furPrnummerFirstButtonInSidebar() {
+        return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_1197']//label");
+    }
 
-    SelenideElement verschleisswarnkontaktBlockInSidebar() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_593']"); }
+    SelenideElement verschleisswarnkontaktBlockInSidebar() {
+        return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_593']");
+    }
 
-    public SelenideElement verschleisswarnkontaktFirstButtonInSidebar() { return $x("//div[contains(@class,'criteria_593')]//li[1]//label"); }
+    public SelenideElement verschleisswarnkontaktFirstButtonInSidebar() {
+        return $x("//div[contains(@class,'criteria_593')]//li[1]//label");
+    }
 
-    public SelenideElement verschleisswarnkontaktSecondButtonInSidebar() { return $x("//div[contains(@class,'criteria_593')]//li[2]//label"); }
+    public SelenideElement verschleisswarnkontaktSecondButtonInSidebar() {
+        return $x("//div[contains(@class,'criteria_593')]//li[2]//label");
+    }
 
-    SelenideElement ninthProductOnListing() { return $(".list_products > li:nth-child(15)"); }
+    SelenideElement ninthProductOnListing() {
+        return $(".list_products > li:nth-child(15)");
+    }
 
-    SelenideElement durchmesserBlockInSidebar() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_200']"); }
+    SelenideElement durchmesserBlockInSidebar() {
+        return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_200']");
+    }
 
-    SelenideElement durchmesserFirstButtonInSidebar() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_200']//li[1]/label"); }
+    SelenideElement durchmesserFirstButtonInSidebar() {
+        return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_200']//li[1]/label");
+    }
 
-    SelenideElement durchmesserSecondButtonInSidebar() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_200']//li[2]/label"); }
+    SelenideElement durchmesserSecondButtonInSidebar() {
+        return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_200']//li[2]/label");
+    }
 
-    SelenideElement bremsscheibenartBlockInSidebar() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_232']"); }
+    SelenideElement bremsscheibenartBlockInSidebar() {
+        return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_232']");
+    }
 
-    SelenideElement bremsscheibenartFirstButtonInSidebar() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_232']//label"); }
+    SelenideElement bremsscheibenartFirstButtonInSidebar() {
+        return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_232']//label");
+    }
 
-    SelenideElement blackOverlay() { return $(".overlay.black"); }
+    SelenideElement blackOverlay() {
+        return $(".overlay.black");
+    }
 
     //Rating filters locators
     public ElementsCollection ratingInProductBlock() {
@@ -313,9 +350,13 @@ public class Listing_page {
         return $$x("//*[@class='list_products ']/li//li[1]/a[@class='pkw-oem__link ga-click']");
     }
 
-    ElementsCollection idOfBrandFromHeader() { return $$x("//div[@data-filter-id='brand']");}
+    ElementsCollection idOfBrandFromHeader() {
+        return $$x("//div[@data-filter-id='brand']");
+    }
 
-    ElementsCollection imageBrandOfProduct() { return $$x("//div[@class='image']/span[1]/img");}
+    ElementsCollection imageBrandOfProduct() {
+        return $$x("//div[@class='image']/span[1]/img");
+    }
 
     public SelenideElement resetBlock() {
         return $x("//div[@class='reset-buttons']/ul");
@@ -474,7 +515,7 @@ public class Listing_page {
     }
 
     public SelenideElement pfandBlockByIndex(int numIndex) {
-        return $x("//ul[contains(@class,'list_products')]/li["+ numIndex +"]//div[@class='product-eco-block']");
+        return $x("//ul[contains(@class,'list_products')]/li[" + numIndex + "]//div[@class='product-eco-block']");
     }
 
     SelenideElement pfandPagelink() {
@@ -509,7 +550,9 @@ public class Listing_page {
         return $(By.xpath("//*[@class='pagination']/span[3]/a"));
     }
 
-    public SelenideElement thirdListingPage() { return $x("//*[@class='pagination']/span[4]/a"); }
+    public SelenideElement thirdListingPage() {
+        return $x("//*[@class='pagination']/span[4]/a");
+    }
 
     ElementsCollection sideFilterAttribute() {
         return $$(By.xpath("//*[@class='subname']"));
@@ -687,51 +730,97 @@ public class Listing_page {
         return $x("//*[@class='reset-buttons__list']/li[1]/div[2]");
     }
 
-    SelenideElement buyButton() { return $x("//div[@class='button ']/a"); }
+    SelenideElement buyButton() {
+        return $x("//div[@class='button ']/a");
+    }
 
-    SelenideElement nextButtonInBySideSlider() { return $x("//*[@class='js-filter-criteria-top']//span[@class='next slick-arrow']"); }
+    SelenideElement nextButtonInBySideSlider() {
+        return $x("//*[@class='js-filter-criteria-top']//span[@class='next slick-arrow']");
+    }
 
-    SelenideElement nextButtonInBySideSliderDisabled() { return $x("//*[@class='js-filter-criteria-top']//span[@class='next slick-arrow slick-disabled']"); }
+    SelenideElement nextButtonInBySideSliderDisabled() {
+        return $x("//*[@class='js-filter-criteria-top']//span[@class='next slick-arrow slick-disabled']");
+    }
 
-    SelenideElement previousButtonInBySideSlider() { return $x("//*[@class='installation-side__filter__nav']/span[@class='prev slick-arrow']"); }
+    SelenideElement previousButtonInBySideSlider() {
+        return $x("//*[@class='installation-side__filter__nav']/span[@class='prev slick-arrow']");
+    }
 
-    SelenideElement previousButtonInBySideSliderDisabled() { return $x("//*[@class='js-filter-criteria-top']//span[@class='prev slick-arrow slick-disabled']"); }
+    SelenideElement previousButtonInBySideSliderDisabled() {
+        return $x("//*[@class='js-filter-criteria-top']//span[@class='prev slick-arrow slick-disabled']");
+    }
 
-    SelenideElement firstPageInBySideSlider() { return $x("//*[@class='slick-track']//div[@data-slick-index='0']"); }
+    SelenideElement firstPageInBySideSlider() {
+        return $x("//*[@class='slick-track']//div[@data-slick-index='0']");
+    }
 
-    SelenideElement secondPageInBySideSlider() { return $x("//*[@class='slick-track']//div[@data-slick-index='1']"); }
+    SelenideElement secondPageInBySideSlider() {
+        return $x("//*[@class='slick-track']//div[@data-slick-index='1']");
+    }
 
-    SelenideElement sideJSfilterForm() { return $(".js-filter-form-sidebar"); }
+    SelenideElement sideJSfilterForm() {
+        return $(".js-filter-form-sidebar");
+    }
 
-    SelenideElement hoheBlock() { return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_209']"); }
+    SelenideElement hoheBlock() {
+        return $x("//*[@class='filter-disk sidebar_block_radio js-criteria-filter  js-filter-wrapper js-filter-criteria_209']");
+    }
 
-    SelenideElement moreCharacteristicButtonInFilter() { return $(".filter-disk__more"); }
+    SelenideElement moreCharacteristicButtonInFilter() {
+        return $(".filter-disk__more");
+    }
 
-    SelenideElement bySideFilterInSidebarFront() { return $(".installation-side--sidebar-fixed > div > .front-side"); }
+    SelenideElement bySideFilterInSidebarFront() {
+        return $(".installation-side--sidebar-fixed > div > .front-side");
+    }
 
-    SelenideElement bySideFilterInSidebarFrontSearchRoute() { return $(".installation-side--sidebar-fixed .front-side"); }
+    SelenideElement bySideFilterInSidebarFrontSearchRoute() {
+        return $(".installation-side--sidebar-fixed .front-side");
+    }
 
-    SelenideElement bySideFilterInSidebarBack() { return $(".installation-side--sidebar-fixed > div > .back-side"); }
+    SelenideElement bySideFilterInSidebarBack() {
+        return $(".installation-side--sidebar-fixed > div > .back-side");
+    }
 
-    SelenideElement brandFilterButtonInSidebarName() { return $(".branded-filter-sidebar__list img"); }
+    SelenideElement brandFilterButtonInSidebarName() {
+        return $(".branded-filter-sidebar__list img");
+    }
 
-    SelenideElement secondBrandFilterButtonInSidebarName() { return $(".branded-filter-sidebar__list li:nth-child(2) img"); }
+    SelenideElement secondBrandFilterButtonInSidebarName() {
+        return $(".branded-filter-sidebar__list li:nth-child(2) img");
+    }
 
-    SelenideElement brandFilterButtonInSidebarButton() { return $(".branded-filter-sidebar__list label"); }
+    SelenideElement brandFilterButtonInSidebarButton() {
+        return $(".branded-filter-sidebar__list label");
+    }
 
-    SelenideElement secondBrandFilterButtonInSidebarButton() { return $(".branded-filter-sidebar__list li:nth-child(2) label"); }
+    SelenideElement secondBrandFilterButtonInSidebarButton() {
+        return $(".branded-filter-sidebar__list li:nth-child(2) label");
+    }
 
-    SelenideElement brandFilterSecondButtonInSidebarName() { return $x("//*[@class='branded-filter-sidebar']//li[2]//img"); }
+    SelenideElement brandFilterSecondButtonInSidebarName() {
+        return $x("//*[@class='branded-filter-sidebar']//li[2]//img");
+    }
 
-    SelenideElement brandFilterSecondButtonInSidebarButton() { return $x("//*[@class='branded-filter-sidebar']//li[2]//label"); }
+    SelenideElement brandFilterSecondButtonInSidebarButton() {
+        return $x("//*[@class='branded-filter-sidebar']//li[2]//label");
+    }
 
-    ElementsCollection characteristicsOfProduct(String productArticle) { return $$x("//*[text()='" + productArticle + "']/../..//*[@class='about']//li"); }
+    ElementsCollection characteristicsOfProduct(String productArticle) {
+        return $$x("//*[text()='" + productArticle + "']/../..//*[@class='about']//li");
+    }
 
-    SelenideElement infoButton() { return $("#selected_car_info"); }
+    SelenideElement infoButton() {
+        return $("#selected_car_info");
+    }
 
-    SelenideElement carInfoPopup() { return $(".selected_car_info_popap"); }
+    SelenideElement carInfoPopup() {
+        return $(".selected_car_info_popap");
+    }
 
-    SelenideElement closeCarInfoPopupButton() { return $(".selected_car_info_popap .close"); }
+    SelenideElement closeCarInfoPopupButton() {
+        return $(".selected_car_info_popap .close");
+    }
 
     SelenideElement popupSelector() {
         return $x("//div[@class='new_popup popup_content']");
@@ -741,43 +830,81 @@ public class Listing_page {
         return $x("//div[@class='new_popup popup_content']/a");
     }
 
-    SelenideElement titleInfoPopup() { return $x("//*[@class='selected_car_info_popap']/strong"); }
+    SelenideElement titleInfoPopup() {
+        return $x("//*[@class='selected_car_info_popap']/strong");
+    }
 
-    ElementsCollection characteristicsFromPopup() { return $$x("//*[@class='selected_car_info_popap']//li"); }
+    ElementsCollection characteristicsFromPopup() {
+        return $$x("//*[@class='selected_car_info_popap']//li");
+    }
 
-    SelenideElement firstProductTitleOnListing() { return $x("(//div[@class='name']/a)[1]"); }
+    SelenideElement firstProductTitleOnListing() {
+        return $x("(//div[@class='name']/a)[1]");
+    }
 
-    SelenideElement firstCharacteristicInFirstProduct() { return $x("//li[1][@class='important']"); }
+    SelenideElement firstCharacteristicInFirstProduct() {
+        return $x("//li[1][@class='important']");
+    }
 
-    SelenideElement secondCharacteristicInFirstProduct() { return $x("//li[2][@class='important']"); }
+    SelenideElement secondCharacteristicInFirstProduct() {
+        return $x("//li[2][@class='important']");
+    }
 
-    SelenideElement thirdCharacteristicInFirstProduct() { return $x("//li[3][@class='important']"); }
+    SelenideElement thirdCharacteristicInFirstProduct() {
+        return $x("//li[3][@class='important']");
+    }
 
-    SelenideElement fourthCharacteristicInFirstProduct() { return $x("//li[4][@class='important']"); }
+    SelenideElement fourthCharacteristicInFirstProduct() {
+        return $x("//li[4][@class='important']");
+    }
 
-    SelenideElement fifthCharacteristicInFirstProduct() { return $x("//li[5][@class='important']"); }
+    SelenideElement fifthCharacteristicInFirstProduct() {
+        return $x("//li[5][@class='important']");
+    }
 
-    ElementsCollection mainCharacteristicsOnListing() { return $$x("(//div[@class='autopart_kit_table'])[1]/ancestor::div[@class='about']//li"); }
+    ElementsCollection mainCharacteristicsOnListing() {
+        return $$x("(//div[@class='autopart_kit_table'])[1]/ancestor::div[@class='about']//li");
+    }
 
-    ElementsCollection additionalCharacteristicsOnListing() { return $$x("(//div[@class='autopart_kit_table'])[1]/div"); }
+    ElementsCollection additionalCharacteristicsOnListing() {
+        return $$x("(//div[@class='autopart_kit_table'])[1]/div");
+    }
 
-    SelenideElement firstProductAdditionalCharacteristicsOnListing() { return $x("(//div[@class='autopart_kit_table'])[1]/ancestor::div[@class='description']/div/a"); }
+    SelenideElement firstProductAdditionalCharacteristicsOnListing() {
+        return $x("(//div[@class='autopart_kit_table'])[1]/ancestor::div[@class='description']/div/a");
+    }
 
-    SelenideElement brandButtonInFilterWithGivenName(String brandName) { return $x("//*[@id='selected-instalation__slider']/ul//img[contains (@alt,'"+ brandName +"')]/.."); }
+    SelenideElement brandButtonInFilterWithGivenName(String brandName) {
+        return $x("//*[@id='selected-instalation__slider']/ul//img[contains (@alt,'" + brandName + "')]/..");
+    }
 
-    SelenideElement brandButtonInFilterWithGivenNameLKWRoute(String brandName) { return $x("//*[@id='selected-instalation__slider']/ul//li[@class='slick-slide']//img[contains (@alt,'"+ brandName +"')]/.."); }
+    SelenideElement brandButtonInFilterWithGivenNameLKWRoute(String brandName) {
+        return $x("//*[@id='selected-instalation__slider']/ul//li[@class='slick-slide']//img[contains (@alt,'" + brandName + "')]/..");
+    }
 
-    SelenideElement nextButtonInBrandFilter() { return $(".next.slick-arrow"); }
+    SelenideElement nextButtonInBrandFilter() {
+        return $(".next.slick-arrow");
+    }
 
-    SelenideElement productArticleOnListing() { return $x("//div[@class='description']//span[@class='article_number' and contains(text(),'Artikelnummer')]"); }
+    SelenideElement productArticleOnListing() {
+        return $x("//div[@class='description']//span[@class='article_number' and contains(text(),'Artikelnummer')]");
+    }
 
-    SelenideElement productName(String brandName) { return $x("//*[@class='name']/a[contains (text(),'"+ brandName +"')]"); }
+    SelenideElement productName(String brandName) {
+        return $x("//*[@class='name']/a[contains (text(),'" + brandName + "')]");
+    }
 
-    SelenideElement productArticle(String brandName) { return $x("//*[@class='name']/a[contains (text(),'"+ brandName +"')]/../span[@class='article_number']"); }
+    SelenideElement productArticle(String brandName) {
+        return $x("//*[@class='name']/a[contains (text(),'" + brandName + "')]/../span[@class='article_number']");
+    }
 
-    SelenideElement productOEMnumber(String brandName) { return $x("//*[@class='name']/a[contains (text(),'"+ brandName +"')]/span[@class='highlight']"); }
+    SelenideElement productOEMnumber(String brandName) {
+        return $x("//*[@class='name']/a[contains (text(),'" + brandName + "')]/span[@class='highlight']");
+    }
 
-    SelenideElement productAddToBasketButton(String brandName) { return $x("//*[@data-brand-name='"+ brandName +"']//a[contains(@class,'add_')]"); }
+    SelenideElement productAddToBasketButton(String brandName) {
+        return $x("//*[@data-brand-name='" + brandName + "']//a[contains(@class,'add_')]");
+    }
 
     SelenideElement brandsOfBrandBlock(String idOfBrand) {
         return $x("//input[@id='cb-brand-" + idOfBrand + "']/..");
@@ -792,17 +919,51 @@ public class Listing_page {
     }
 
     SelenideElement characteristicZustandByIndex(int numIndex) {
-        return  $x("//ul[contains(@class,'list_products')]/li["+ numIndex +"]//li[@class='default_ul_li_class']/span[2]");
+        return $x("//ul[contains(@class,'list_products')]/li[" + numIndex + "]//li[@class='default_ul_li_class']/span[2]");
     }
 
-    ElementsCollection artNumOfProductGridType() {return $$x("//div[@class='rec_prod_article']");}
+    ElementsCollection artNumOfProductGridType() {
+        return $$x("//div[@class='rec_prod_article']");
+    }
 
-    SelenideElement allCharacteristicsOfProductInPopUp(int positionOfProduct) {return $x("(//div[@class='product_desc_table_container'])["+positionOfProduct+"]");}
+    SelenideElement allCharacteristicsOfProductInPopUp(int positionOfProduct) {
+        return $x("(//div[@class='product_desc_table_container'])[" + positionOfProduct + "]");
+    }
 
     ElementsCollection cardProducts() {
         return $$x("//ul[contains(@class,'list_products')]/li");
     }
 
+    SelenideElement ersatzAnzeigenButton() {
+        return $x("//*[@class='show_alternative__btn ga-click button additional_btn'][@data-article-id='7799855']");
+    }
 
+    SelenideElement alternativeBlock() {
+        return $x("//*[@class='top-small-products-items__item']");
+    }
+
+    ElementsCollection pictogramsAlternativeBlock() {
+        return $$x("//*[@class='dangerous-listing__icons']//*[@class='dangerous-listing__icon dangerous-listing__icon-attention']");
+    }
+
+    SelenideElement popUpDangerousListing() {
+        return $x("//*[@class='popup-dangerous']");
+    }
+
+    SelenideElement iconInPopUpDangerousListing() {
+        return $x("//*[@class='popup-dangerous__icon']");
+    }
+
+    SelenideElement popUpDangerousTitle() {
+        return $x("//*[@class='popup-dangerous']");
+    }
+
+    SelenideElement popUpDangerousText() {
+        return $x("//*[@id='mCSB_2_container']//p");
+    }
+
+    SelenideElement closePopUpButton() {
+        return $x("//*[@class='popup-dangerous__close js-popup-dangerous__close']");
+    }
 }
 

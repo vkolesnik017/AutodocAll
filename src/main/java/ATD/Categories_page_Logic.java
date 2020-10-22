@@ -43,13 +43,6 @@ public class Categories_page_Logic extends Categories_page {
         return page(Categories_page_Logic.class);
     }
 
-    @Step("Сheck that the page loads successfully. Categories_page")
-    public Categories_page_Logic checkSuccessfullyPageLoading() {
-        searchBarByCatalog().shouldBe(visible);
-        Assert.assertEquals(url(), "https://www.autodoc.de/ersatzteile/mercedes-benz/a-klasse/a-class-w177/130593-a-180-d-177-003");
-        return this;
-    }
-
     @Step("Select LKW category. Categories_page")
     public LKW_main_page_Logic selectLKWCategory() {
         lkwCategory().click();
@@ -321,7 +314,7 @@ public class Categories_page_Logic extends Categories_page {
     }
 
     @Step("select Vehicle in KBA selector. Categories_page")
-    public Maker_car_list_page_Logic selectVehicleInSelector(String marke,String model,String motor) {
+    public Maker_car_list_page_Logic selectVehicleInSelector(String marke, String model, String motor) {
         selectorInCloseCondition().click();
         mainFormOfSelector().shouldBe(visible);
         markeFieldInSelector().selectOptionByValue(marke);
