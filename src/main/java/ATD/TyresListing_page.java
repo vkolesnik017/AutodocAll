@@ -30,9 +30,9 @@ class TyresListing_page {
 
     SelenideElement firstActiveBrandInBlock() { return $x("//*[@class='js-filter-item ga-click-criteria-filter active slick-slide slick-current slick-active']"); }
 
-    SelenideElement firstActiveBrandInBlockMoto() { return $x("//*[@class='js-filter-item ga-click-criteria-filter active slick-slide slick-current slick-active']"); }
+    SelenideElement firstActiveBrandInBlockMoto() { return $x("//*[@class='js-filter-item ga-click-criteria-filter active'][1]"); }
 
-    SelenideElement secondActiveBrandInBlockMoto() { return $x("//*[@class='js-filter-item ga-click-criteria-filter active slick-slide slick-active']"); }
+    SelenideElement secondActiveBrandInBlockMoto() { return $x("//*[@class='js-filter-item ga-click-criteria-filter active'][2]"); }
 
     SelenideElement secondActiveBrandInBlock() { return $x("//*[@class='js-filter-item ga-click-criteria-filter active slick-slide slick-active']"); }
 
@@ -68,9 +68,9 @@ class TyresListing_page {
 
     SelenideElement brandFilterButton() { return $x("//*[@class='js-filter-item ga-click-criteria-filter slick-slide slick-active']"); }
 
-    SelenideElement motoBrandFilterButton() { return $x("//*[contains(@class,'slick-active')][1]"); }
+    SelenideElement motoBrandFilterButton() { return $x("//div[@id='selected-instalation__slider']//li[1]"); }
 
-    SelenideElement secondMotoBrandFilterButton() { return $x("//*[contains(@class,'slick-active')][2]"); }
+    SelenideElement secondMotoBrandFilterButton() { return $x("//div[@id='selected-instalation__slider']//li[2]"); }
 
 
     ElementsCollection productTitleOnListing() { return $$(".name > a");}
