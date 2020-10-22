@@ -20,7 +20,7 @@ public class QC_2445_CheckDisplayDangerousProductsBetweenAwsAndProductPage {
 
     private Product_page_Logic productPageLogic = new Product_page_Logic();
     private ProductCard_aws productCardAws = new ProductCard_aws();
-    private String dataFile = "C:/Autotests/files/data";
+    private String dataFile = "C:/Autotests/files/data/QC-2445_data.xls";
 
     @BeforeClass
     void setUp() {
