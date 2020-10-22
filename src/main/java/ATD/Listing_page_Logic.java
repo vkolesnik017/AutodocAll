@@ -1408,13 +1408,41 @@ public class Listing_page_Logic extends Listing_page {
         for (int i = 0; i < cardProducts().size(); i++) {
             if (pfandBlockByIndex(i + 1).isDisplayed()) {
                 characteristicZustandByIndex(i + 1).shouldNotBe(visible);
-            }else if (!pfandBlockByIndex(i + 1).isDisplayed()) {
+            } else if (!pfandBlockByIndex(i + 1).isDisplayed()) {
                 characteristicZustandByIndex(i + 1).shouldBe(visible);
             }
         }
         return this;
     }
 
+    @Step("Click the Ersatz Anzeign Button and checking the Displaying Analog Block with pictograms. Listing_page")
+    public Listing_page_Logic checkTheButton() {
+        ersatzAnzeigenButton().click();
+        alternativeBlock().scrollIntoView("{block: \"center\"}");
+        alternativeBlock().shouldBe(visible);
+        for (int i = 0; i < pictogramsAlternativeBlock().size(); i++) {
+            String iconInAlternativeBlock = pictogramsAlternativeBlock().get(i).shouldBe(visible).getAttribute("style");
+            pictogramsAlternativeBlock().get(i).shouldBe(visible).click();
+            popUpDangerousListing().shouldBe(visible);
+            String iconInPopUp = iconInPopUpDangerousListing().shouldBe(visible).getAttribute("style");
+            Assert.assertEquals(iconInAlternativeBlock, iconInPopUp);
+            closePopUpButton().click();
+        }
+        return this;
+    }
 
+    @Step("Checking the text and warning word in the  dangerous pop-up. Listing_page")
+    public Listing_page_Logic presenceOfTheTextAndWarningWordInPopUpListing() {
+        for (int i = 0; i < pictogramsAlternativeBlock().size(); i++) {
+            pictogramsAlternativeBlock().get(i).shouldBe(visible).click();
+            iconInPopUpDangerousListing().shouldBe(visible);
+            popUpDangerousTitle().shouldBe(visible);
+            Assert.assertFalse(popUpDangerousTitle().text().isEmpty());
+            popUpDangerousText().shouldBe(visible);
+            Assert.assertFalse(popUpDangerousText().text().isEmpty());
+            closePopUpButton().click();
+        }
+        return this;
+    }
 }
 
