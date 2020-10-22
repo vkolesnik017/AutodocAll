@@ -260,4 +260,9 @@ public class Listing_chemicals_Page {
 
     ElementsCollection signalWordOfDangerousProduct() {return $$x("//div[@class='dangerous-listing__title hazard-danger-title']");}
 
+    SelenideElement listOfProductInTecDocListingBlock() {
+        return $x("//ul[contains(@class,'list_products')]");
+    }
+
+    ElementsCollection signalWordOfDangerousProductListingView() {return $$x("//div[@class='dangerous-listing__title hazard-danger-title']");}
  }
