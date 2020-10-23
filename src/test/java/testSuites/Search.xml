@@ -32,9 +32,9 @@
     <test name="QC_570_SearchByCatalog">
         <classes>
             <class name="ATD.Search.QC_570_SearchByCatalog.QC_571_GoesToSubCategoryFromCatalogWithoutCar"/>
-            <class name="ATD.Search.QC_570_SearchByCatalog.QC_572_GoesToSubCategoryFromCatalogWithCar"/>
+            <!--<class name="ATD.Search.QC_570_SearchByCatalog.QC_572_GoesToSubCategoryFromCatalogWithCar"/>-->
             <class name="ATD.Search.QC_570_SearchByCatalog.QC_573_NoDeletedCategoriesInTooltipsToSearchByCatalog"/>
-            <class name="ATD.Search.QC_570_SearchByCatalog.QC_574_NoPresenceTiresInTooltipToSearchByCatalog"/>
+            <!--<class name="ATD.Search.QC_570_SearchByCatalog.QC_574_NoPresenceTiresInTooltipToSearchByCatalog"/>-->
             <class name="ATD.Search.QC_570_SearchByCatalog.QC_575_PresenceTheHeadingForSearchOfCatalogWithAndWithoutCar"/>
         </classes>
     </test>
