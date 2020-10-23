@@ -1,5 +1,6 @@
 package ATD.Orders_AWS_Delivery.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods;
 
+import ATD.CartAllData_page_Logic;
 import Common.DataBase;
 import ATD.Product_page_Logic;
 import Common.SetUp;
@@ -19,7 +20,8 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1678_HeavyLoadsNegativeCasAllData {
 
-    private String email = "qc_1678_autotestDE@mailinator.com";
+    private String emailForFirstCase = "qc_1678_autotestFirstCase@mailinator.com";
+    private String emailForSecondCase = "qc_1678_autotestSecondCase@mailinator.com";
     private Product_page_Logic product_page_logic = new Product_page_Logic();
 
     @BeforeClass
@@ -27,33 +29,34 @@ public class QC_1678_HeavyLoadsNegativeCasAllData {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "route", parallel = true)
-    Object[] dataProviderProducts() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "HeavyLoadProduct3");
+    @DataProvider(name = "routeFirstCase", parallel = true)
+    Object[] dataProviderProductsFirstCase() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "HeavyLoadProduct3,productDangerousGoods1");
     }
 
-    @Test(dataProvider = "route")
+    @Test(dataProvider = "routeFirstCase", priority = 0)
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks negative purchase of a heavy loads / AllData")
-    public void testOfHeavyLoadsNegativePurchaseAllDataPage(String route) throws SQLException {
-        openPage(route);
-        String idHeavyLoadProduct = product_page_logic.getProductId();
+    @Description(value = "Test checks negative purchase of a heavy loads and dangerous goods / AllData")
+    public void testOfHeavyLoadsAndDangerousGoodsAllDataPage(String routeFirstCase) throws SQLException {
+        openPage(routeFirstCase);
+        String idProduct = product_page_logic.getProductId();
         product_page_logic.addProductToCart();
         openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "product2"));
-        String productID = product_page_logic.getProductId();
+        String productIDRegularGoods = product_page_logic.getProductId();
         product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick().nextButtonClick()
-                .signIn(email, password).nextBtnClick()
+                .signIn(emailForFirstCase, password)
+                .nextBtnClick()
                 .chooseVorkasse().nextBtnClick()
                 .checkPresencePopUpDeliveryLimitAllDataPage()
                 .closePopUpDeliveryLimitCartAllDataPage()
-                .checkAbsenceGoodInCartPage(idHeavyLoadProduct)
-                .checkPresenceGoodInCardPage(productID)
+                .checkAbsenceGoodInCartPage(idProduct)
+                .checkPresenceGoodInCardPage(productIDRegularGoods)
                 .checkPresenceSafeOrderBlock()
                 .checkPresenceRegularDeliveryPrice();
-        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "HeavyLoadProduct3"));
+        openPage(routeFirstCase);
         product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
@@ -62,11 +65,11 @@ public class QC_1678_HeavyLoadsNegativeCasAllData {
                 .chooseVorkasse().nextBtnClick()
                 .checkPresencePopUpDeliveryLimitAllDataPage()
                 .deleteGoodsInDeliveryPopupCartAllDataPage()
-                .checkAbsenceGoodInCartPage(idHeavyLoadProduct)
-                .checkPresenceGoodInCardPage(productID)
+                .checkAbsenceGoodInCartPage(idProduct)
+                .checkPresenceGoodInCardPage(productIDRegularGoods)
                 .checkPresenceSafeOrderBlock()
                 .checkPresenceRegularDeliveryPrice();
-        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "HeavyLoadProduct3"));
+        openPage(routeFirstCase);
         product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
@@ -76,6 +79,44 @@ public class QC_1678_HeavyLoadsNegativeCasAllData {
                 .checkPresencePopUpDeliveryLimitAllDataPage()
                 .clickBtnChangeAddressInDeliveryPopupCartAllDataPage();
         checkingContainsUrl("/basket/address");
+    }
+
+    @DataProvider(name = "routeSecondCase", parallel = true)
+    Object[] dataProviderProductsSecondCase() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "productDrop1,product45");
+    }
+
+    @Test(dataProvider = "routeSecondCase", priority = 1)
+    @Flaky
+    @Owner(value = "Chelombitko")
+    @Description(value = "Test checks negative purchase of a drop and tyres goods / AllData")
+    public void testOfDropAndTyresGoodsNegativePurchaseBasket(String routeSecondCase) throws SQLException {
+        openPage(routeSecondCase);
+        String idProduct = product_page_logic.getProductId();
+        product_page_logic.addProductToCart();
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "product2"));
+        String productIDRegularGoods = product_page_logic.getProductId();
+        product_page_logic.addProductToCart()
+                .closePopupOtherCategoryIfYes()
+                .cartClick().nextButtonClick()
+                .signIn(emailForSecondCase, password)
+                .nextBtnClick()
+                .chooseVorkasse()
+                .nextBtnClick()
+                .closePopUpDeliveryLimitCartAllDataPage()
+                .checkAbsenceGoodInCartPage(idProduct)
+                .checkPresenceGoodInCardPage(productIDRegularGoods)
+                .checkPresenceSafeOrderBlock()
+                .checkPresenceRegularDeliveryPrice();
+        openPage(routeSecondCase);
+        product_page_logic.addProductToCart()
+                .closePopupOtherCategoryIfYes()
+                .cartClick();
+        new CartAllData_page_Logic().deleteGoodsInDeliveryPopupCartAllDataPage()
+                .checkAbsenceGoodInCartPage(idProduct)
+                .checkPresenceGoodInCardPage(productIDRegularGoods)
+                .checkPresenceSafeOrderBlock()
+                .checkPresenceRegularDeliveryPrice();
     }
 
     @AfterMethod
