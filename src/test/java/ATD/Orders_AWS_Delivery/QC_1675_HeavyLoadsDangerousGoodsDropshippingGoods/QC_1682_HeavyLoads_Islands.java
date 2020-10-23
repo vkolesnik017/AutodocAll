@@ -36,7 +36,7 @@ public class QC_1682_HeavyLoads_Islands {
     }
 
 
-    @Test(dataProvider = "routeFirstCase", priority = 0)
+    @Test(dataProvider = "routeFirstCase", priority = 1)
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks purchase of a heavy loads and dangerous goods for islands")
@@ -74,7 +74,7 @@ public class QC_1682_HeavyLoads_Islands {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "productDrop1,product45");
     }
 
-    @Test(dataProvider = "routeSecondCase", priority = 1)
+    @Test(dataProvider = "routeSecondCase", priority = 2)
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks purchase of a drop and tyres goods for islands")

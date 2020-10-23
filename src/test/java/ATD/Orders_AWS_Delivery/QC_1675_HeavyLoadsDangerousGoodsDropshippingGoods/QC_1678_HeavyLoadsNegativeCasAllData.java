@@ -34,7 +34,7 @@ public class QC_1678_HeavyLoadsNegativeCasAllData {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "HeavyLoadProduct3,productDangerousGoods1");
     }
 
-    @Test(dataProvider = "routeFirstCase", priority = 0)
+    @Test(dataProvider = "routeFirstCase", priority = 1)
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks negative purchase of a heavy loads and dangerous goods / AllData")
@@ -86,7 +86,7 @@ public class QC_1678_HeavyLoadsNegativeCasAllData {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "productDrop1,product45");
     }
 
-    @Test(dataProvider = "routeSecondCase", priority = 1)
+    @Test(dataProvider = "routeSecondCase", priority = 2)
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks negative purchase of a drop and tyres goods / AllData")

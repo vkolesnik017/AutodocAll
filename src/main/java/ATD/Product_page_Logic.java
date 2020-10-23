@@ -180,6 +180,7 @@ public class Product_page_Logic extends Product_page {
     @Step("Adding product to basket. Product_page")
     public Product_page_Logic addProductToCart() {
         checkNumberBasketAndRefreshPageIfNot();
+        refresh();
         sleep(3000); // TODO для стабилизации. Без слипа иногда добавленный товар исчезает из корзины после перехода в неё, решается в SITES-2830
         closeQuestionsPopupIfYes();
         buyButton().click();
