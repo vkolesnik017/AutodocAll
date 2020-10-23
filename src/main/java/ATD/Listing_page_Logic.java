@@ -1415,7 +1415,7 @@ public class Listing_page_Logic extends Listing_page {
     }
 
     @Step("Click the Ersatz Anzeign Button and checking the Displaying Analog Block with pictograms. Listing_page")
-    public Listing_page_Logic checkTheButton() {
+    public Listing_page_Logic checkDisplayingAnalogBlock() {
         ersatzAnzeigenButton().click();
         alternativeBlock().scrollIntoView("{block: \"center\"}");
         alternativeBlock().shouldBe(visible);
