@@ -203,14 +203,6 @@
         </classes>
     </test>
 
-    <test name="QC_2082_PresenceOfMpnNumber">
-        <classes>
-            <class name="ATD.Tyres.QC_2082_PresenceOfMpnNumber.QC_2083_CheckOfIdentityOfMpnProductAndMpnInAws"/>
-            <class name="ATD.Tyres.QC_2082_PresenceOfMpnNumber.QC_2095_CheckMpnOfProductInListingBasketProductPage"/>
-            <class name="ATD.Tyres.QC_2082_PresenceOfMpnNumber.QC_2096_CheckMpnNumberInWishList"/>
-        </classes>
-    </test>
-
     <test name="QC_2187_CheckingMaxSizeProductsOnListing">
         <classes>
             <class name="ATD.Tyres.QC_2187_CheckingMaxSizeProductsOnListing.QC_2188_CheckMaxCountOfProductInTyresListing"/>

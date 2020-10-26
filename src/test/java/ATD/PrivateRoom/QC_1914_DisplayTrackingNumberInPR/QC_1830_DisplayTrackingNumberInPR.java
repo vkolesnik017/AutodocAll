@@ -55,11 +55,11 @@ public class QC_1830_DisplayTrackingNumberInPR {
         Order_aws order_aws = new Order_aws(orderNumber);
         order_aws.openOrderInAwsWithLogin()
                 .checkCurrentStatusInOrder("Neue Bestellung")
-                .selectDeliveryAndEnterTrackingNum("DHL", "0", "0", "1111111111")
-                .selectDeliveryAndEnterTrackingNum("DHL", "1", "1", "2222222222")
-                .selectDeliveryAndEnterTrackingNum("DHL", "2", "2", "3333333333")
-                .selectDeliveryAndEnterTrackingNum("DHL", "3", "3", "4444444444")
-                .selectDeliveryAndEnterTrackingNum("DHL", "4", "4", "5555555555")
+                .selectDeliveryAndEnterTrackingNum("0", "DHL", "0", "1111111111")
+                .selectDeliveryAndEnterTrackingNum("1", "DHL", "1", "2222222222")
+                .selectDeliveryAndEnterTrackingNum("2", "DHL", "2", "3333333333")
+                .selectDeliveryAndEnterTrackingNum("3", "DHL", "3", "4444444444")
+                .selectDeliveryAndEnterTrackingNum("4", "DHL", "4", "5555555555")
                 .selectStatusOrder("Versendet")
                 .saveOrder()
                 .checkCurrentStatusInOrder("Versendet");
@@ -72,7 +72,7 @@ public class QC_1830_DisplayTrackingNumberInPR {
         order_aws.openOrderInAwsWithoutLogin()
                 .checkCurrentStatusInOrder("Versendet")
                 .clickBtnAddedDeliveryInOrderBtn()
-                .selectDeliveryAndEnterTrackingNum("DHL", "6", "6", "6666666666")
+                .selectDeliveryAndEnterTrackingNum("6", "DHL", "6", "6666666666")
                 .selectStatusOrder("Versendet")
                 .saveOrder()
                 .checkCurrentStatusInOrder("Versendet");

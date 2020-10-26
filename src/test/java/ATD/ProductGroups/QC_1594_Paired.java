@@ -1,5 +1,6 @@
 package ATD.ProductGroups;
 
+import ATD.Product_page_Logic;
 import Common.DataBase;
 import ATD.Payment_handler_page_Logic;
 import ATD.Search_page_Logic;
@@ -23,6 +24,8 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1594_Paired {
 
+    private Product_page_Logic product_page_logic = new Product_page_Logic();
+
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -43,7 +46,12 @@ public class QC_1594_Paired {
         openPage(route + "/" + new DataBase("ATD").getRouteByRouteName(shop, "search8"));
         String testMail = "QC_1594_autotestATD@mailinator.com";
         new Search_page_Logic().counterIncreaseForPaired("2").counterDecreaseForPaired("4").closeFooterMessageCookies().detailsClick()
-                .counterIncreaseForPaired("2").counterDecreaseForPaired("4").counterIncreaseForPaired("2").addProductToCart().closePopupOtherCategoryIfYes().checkingNumberOfProductInCart(4).cartClick()
+                .counterIncreaseForPaired("2").counterDecreaseForPaired("4").counterIncreaseForPaired("2");
+        product_page_logic.buyButton().click();
+        product_page_logic.checksPresentProductInCartPopup()
+                .closePopupOtherCategoryIfYes()
+                .checkingNumberOfProductInCart(4)
+                .cartClick()
                 .counterIncreaseForPaired("4").counterDecreaseForPaired("6").nextButtonClick()
                 .signIn(testMail, password)
                 .fillAllFields(shop).nextBtnClick()
