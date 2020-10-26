@@ -77,6 +77,7 @@
             <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_1346_GoToAllSizesPageFromTyresMainPage"/>
             <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_2563_CheckingProductsInTopTyresBlockPKW"/>
             <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_2564_CheckingProductsInTopTyresBlockLkwMotoOff"/>
+            <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_2116_GoToTyresProductPageAndCheckGoodsInStock"/>
         </classes>
     </test>
 
@@ -199,14 +200,6 @@
             <class name="ATD.Tyres.QC_2226_CheckingPeriodReturnTiresBlock.QC_2227_CheckingPresenceReturnTiresBlockOnProductPage"/>
             <class name="ATD.Tyres.QC_2226_CheckingPeriodReturnTiresBlock.QC_2230_CheckingPeriodReturnTill14DaysInReturnBlock"/>
             <class name="ATD.Tyres.QC_2226_CheckingPeriodReturnTiresBlock.QC_2231_CheckingColorChangeReturnBlockOnHover"/>
-        </classes>
-    </test>
-
-    <test name="QC_2082_PresenceOfMpnNumber">
-        <classes>
-            <class name="ATD.Tyres.QC_2082_PresenceOfMpnNumber.QC_2083_CheckOfIdentityOfMpnProductAndMpnInAws"/>
-            <class name="ATD.Tyres.QC_2082_PresenceOfMpnNumber.QC_2095_CheckMpnOfProductInListingBasketProductPage"/>
-            <class name="ATD.Tyres.QC_2082_PresenceOfMpnNumber.QC_2096_CheckMpnNumberInWishList"/>
         </classes>
     </test>
 

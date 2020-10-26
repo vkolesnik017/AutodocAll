@@ -205,5 +205,4 @@ public class TyresProduct_page_Logic extends TyresProduct_page {
         iconDaysReturnPeriodProduct().shouldHave(cssValue("color", "rgba(51, 100, 219, 1)"));
         return this;
     }
-
 }
