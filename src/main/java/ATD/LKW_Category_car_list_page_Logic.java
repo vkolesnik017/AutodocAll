@@ -2,7 +2,6 @@ package ATD;
 
 import Common.DataBase;
 import com.codeborne.selenide.ElementsCollection;
-import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
@@ -10,7 +9,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static ATD.CommonMethods.getTextFromUnVisibleElement;
 import static com.codeborne.selenide.CollectionCondition.*;
@@ -123,16 +121,29 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
 
     @Step("click on product in TecDoc Listing .LKW_Category_car_list_page")
     public LKW_Category_car_list_page_Logic selectProductInTecDocListing() {
-        for (int i = 1; i <= productsOnPage().size(); i++) {
-            clickOnProductInTecDocListing(i).checkCompatibilityProductAndTruck();
-            back();
-        }
+        if (addOfIssueProductBlock().has(exist)) {
+            for (int i = 1; i < imageOfProductsWithOutAddIssue().size(); i++) {
+                clickOnMainProductInTecDocListing(i).checkCompatibilityProductAndTruck();
+                back();
+            }
+        } else {
+            for (int i = 1; i <= productsOnPage().size(); i++) {
+                clickOnProductInTecDocListing(i).checkCompatibilityProductAndTruck();
+                back();
+            }
+      }
         return this;
     }
 
     @Step("click on Product in TecDoc listing .LKW_Category_car_list_page")
     public LKW_Product_page_Logic clickOnProductInTecDocListing(int point) {
         imageOfProductTecDocListingBlock(point).scrollIntoView("{block: \"center\"}").click();
+        return page(LKW_Product_page_Logic.class);
+    }
+
+    @Step("click on main Product in TecDoc listing .LKW_Category_car_list_page")
+    public LKW_Product_page_Logic clickOnMainProductInTecDocListing(int point) {
+        oneImageOfProductTecDocListingBlock(point).scrollIntoView("{block: \"center\"}").click();
         return page(LKW_Product_page_Logic.class);
     }
 
@@ -542,9 +553,9 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
 
     @Step("presence of visible brands  .LKW_Category_car_list_page")
     public LKW_Category_car_list_page_Logic presenceOfVisibleBrand() {
-       for (int i=0; i<visibleBrands().size();i++){
-           visibleBrands().get(i).shouldBe(visible);
-       }
+        for (int i = 0; i < visibleBrands().size(); i++) {
+            visibleBrands().get(i).shouldBe(visible);
+        }
         return this;
     }
 
@@ -722,7 +733,7 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         return this;
     }
 
-    @Step("check Second Level of parent categories .LKW_Category_car_list_page")
+    @Step("check third Level of parent categories .LKW_Category_car_list_page")
     public LKW_Category_car_list_page_Logic checkThirdLevelOfParentCategories() {
         childCategoriesThirdLevel().shouldHave(sizeGreaterThan(0));
         return this;
@@ -737,7 +748,7 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
     }
 
 
-    @Step("check Second Level of parent categories .LKW_Category_car_list_page")
+    @Step("presence of expected brands in block .LKW_Category_car_list_page")
     public LKW_Category_car_list_page_Logic presenceOfExpectedBrandsInBlock(String brands) {
         brandBlock().shouldBe(visible);
         List<String> brandsList = new ArrayList<>();
