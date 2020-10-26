@@ -39,7 +39,7 @@ public class QC_1831_CheckingForExistingDeliveryServices {
                 {"GLS"},
                 {"DHL"},
                 {"NOX"},
-                {"PNORD"},
+                {"POSTNORD"},
                 {"DPDPL"},
                 {"TNT"}
         };
@@ -71,7 +71,7 @@ public class QC_1831_CheckingForExistingDeliveryServices {
         Order_aws order_aws = new Order_aws(orderNumber);
         String trackingNumFromAWS = order_aws.openOrderInAwsWithLogin()
                 .checkCurrentStatusInOrder("Neue Bestellung")
-                .selectDeliveryAndEnterTrackingNum(deliveryService, "0", "0", "1111111111")
+                .selectDeliveryAndEnterTrackingNum( "0", deliveryService,"0", "1111111111")
                 .selectStatusOrder("Versendet")
                 .saveOrder()
                 .checkCurrentStatusInOrder("Versendet")
