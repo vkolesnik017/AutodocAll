@@ -9,8 +9,7 @@ import java.util.*;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.CollectionCondition.sizeLessThanOrEqual;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.Wait;
-import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class Tyres_page_Logic extends Tyres_page {
@@ -352,6 +351,16 @@ public class Tyres_page_Logic extends Tyres_page {
             }
             return this;
     }
-
-
+    @Step("Click on the tyres in top block . Tyres_page")
+    public Tyres_page_Logic clickTyresInTopBlock() {
+        TyresProduct_page tyresProduct_page = new TyresProduct_page();
+        topBlock().shouldBe(visible);
+        for (int i = 0; i < productsInTopBlock().size(); i++){
+            productsInTopBlock().get(i).click();
+            tyresProduct_page.grayButton().shouldNotBe(visible);
+            tyresProduct_page.addToBasketButton().shouldBe(visible);
+            back();
+        }
+        return this;
+    }
 }

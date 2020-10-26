@@ -168,9 +168,9 @@ public class Product_page_Logic extends Product_page {
         btnAskQuestionFaqForm().click();
         formFaq().shouldBe(visible);
         btnSendFaqForm().click();
-        validationNameMessage().shouldBe(visible);
-        validationEmailMessage().shouldBe(visible);
-        validationTextMessage().shouldBe(visible);
+        validationNameMessage().shouldBe(visible).shouldHave(cssValue("color", "rgba(255, 0, 0, 1)"));
+        validationEmailMessage().shouldBe(visible).shouldHave(cssValue("color", "rgba(255, 0, 0, 1)"));
+        validationTextMessage().shouldBe(visible).shouldHave(cssValue("color", "rgba(255, 0, 0, 1)"));
         return this;
     }
 
