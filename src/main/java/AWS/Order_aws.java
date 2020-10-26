@@ -406,8 +406,8 @@ public class Order_aws {
         return $x("//a[@class='btn btn-link btn-ajaxmode']");
     }
 
-    private SelenideElement deliveryMethod(String method, String numberDelivery) {
-        return $x("//label[@class='radio-inline']//input[@value='" + method + "']/..//input[@name='OrderDelivery[" + numberDelivery + "][Carrier]']");
+    private SelenideElement deliveryMethod(String numberDelivery) {
+        return $x("//select[@name='OrderDelivery[" + numberDelivery + "][Carrier]']");
     }
 
     private SelenideElement fieldTrackingNumbers(String fieldTrackingNum) {
@@ -430,8 +430,6 @@ public class Order_aws {
         return $x("//select[@class='order-new-status']//option[text()[contains(.,'" + nameStatus + "')]]");
     }
 
-
-
     @Step("Get list saved tracking number. Order_aws")
     public ArrayList<String> getListSavedTrackingNumber() {
         ArrayList<String> list = new ArrayList<>();
@@ -453,8 +451,8 @@ public class Order_aws {
     }
 
     @Step("Selects delivery service {methodDelivery}, {numberDelivery} and enters a tracking number {fieldTrackingNum}. Order_aws")
-    public Order_aws selectDeliveryAndEnterTrackingNum(String methodDelivery,String numberDelivery, String fieldTrackingNum, String trackingNum) {
-        deliveryMethod(methodDelivery, numberDelivery).click();
+    public Order_aws selectDeliveryAndEnterTrackingNum(String numberDelivery, String expectedDelivery, String fieldTrackingNum, String trackingNum) {
+        deliveryMethod(numberDelivery).selectOptionContainingText(expectedDelivery);
         fieldTrackingNumbers(fieldTrackingNum).sendKeys(trackingNum);
         addDeliveryInOrderBtn().click();
         return this;
