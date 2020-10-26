@@ -57,7 +57,7 @@ public class QC_899_MatchPricesInAwsOrderAndRetourPage {
     Float productPriceInAwsOrder = new Order_aws(orderNumber).openOrderInAwsWithLogin()
             .checkOrderHasTestStatus()
             .setStatusOrderToVersendetVorkasse()
-            .addDeliveryConditionGLS()
+            .addDeliveryConditionGLS("0", "GLS")
             .getSellingProductPrice();
     open(route + "/" + db.getRouteByRouteName(getShopFromRoute(route), "return_return"));
     Float productPriceOnRetourenPage = new Retouren_page_Logic().findOrder("11111", orderNumber)
