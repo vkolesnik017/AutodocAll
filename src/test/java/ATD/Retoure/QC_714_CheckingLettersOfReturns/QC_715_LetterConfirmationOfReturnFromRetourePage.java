@@ -60,7 +60,7 @@ public class QC_715_LetterConfirmationOfReturnFromRetourePage {
             .getOrderNumber();
     new Order_aws(orderNumber).openOrderInAwsWithLogin()
             .setStatusOrderToVersendetVorkasse()
-            .addDeliveryConditionGLS();
+            .addDeliveryConditionGLS("0", "GLS");
     open(route + "/" + db.getRouteByRouteName(getShopFromRoute(route), "return_return"));
     new Retouren_page_Logic().findOrder("11111", orderNumber)
             .clickCheckbox()
