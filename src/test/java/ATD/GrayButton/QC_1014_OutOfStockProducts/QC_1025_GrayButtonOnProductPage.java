@@ -1,6 +1,6 @@
-package ATD.GrayButton;
+package ATD.GrayButton.QC_1014_OutOfStockProducts;
 
-import ATD.Main_page_Logic;
+import ATD.Product_page_Logic;
 import Common.SetUp;
 import AWS.Login_aws;
 import AWS.WishlistReminderAvailability_aws;
@@ -13,16 +13,16 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
 
-public class QC_1015_GrayButtonOnSearchPage {
+public class QC_1025_GrayButtonOnProductPage {
 
-    private String email = "QC_1015_autotestATD@mailinator.com";
+    private String email = "QC_1025_autotestATD@mailinator.com";
 
     private WebMail webMail = new WebMail();
+    private Product_page_Logic product_page = new Product_page_Logic();
     private WishlistReminderAvailability_aws wishlistReminderAvailability = new WishlistReminderAvailability_aws();
 
     @BeforeClass
@@ -42,15 +42,12 @@ public class QC_1015_GrayButtonOnSearchPage {
     public void testGrayButton(String route) {
         new Login_aws().loginInAwsWithOpen();
         open(wishlistReminderAvailability.urlWithCurrentDate);
-        String articleProduct = wishlistReminderAvailability.getTextFromArticle();
         String idProduct = wishlistReminderAvailability.getTextFromId();
         int beforeCountRequests = wishlistReminderAvailability.getBeforeCountRequests();
-        openPage(route);
-        new Main_page_Logic().useSearch(articleProduct)
-                         .clickButtonProductById(idProduct)
-                         .sendRequestByGrayButtonFromSearchPage(email);
+        product_page.openProductPageById(route, idProduct)
+                .sendRequestByGrayButtonFromProductPage(email);
         webMail.openMail(email)
-                        .checkLetterInfoText(1, "moments ago", "Wir bearbeiten");
+                .checkLetterInfoText(1, "moments ago", "Wir bearbeiten");
         open(wishlistReminderAvailability.urlWithCurrentDate);
         wishlistReminderAvailability.checkAfterCountRequest(beforeCountRequests, idProduct);
     }

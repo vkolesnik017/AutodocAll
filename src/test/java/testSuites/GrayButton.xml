@@ -6,11 +6,12 @@
         <listener class-name="Common.ProjectListener"/>
     </listeners>
 
-    <test name="GrayButton">
+    <test name="QC_1014_OutOfStockProducts">
         <classes>
-            <class name="ATD.GrayButton.QC_1015_GrayButtonOnSearchPage"/>
-            <class name="ATD.GrayButton.QC_1025_GrayButtonOnProductPage"/>
-            <class name="ATD.GrayButton.QC_2067_CheckNotifyOfStockFormValidationForOutOfStockProducts"/>
+            <class name="ATD.GrayButton.QC_1014_OutOfStockProducts.QC_1015_GrayButtonOnSearchPage"/>
+            <class name="ATD.GrayButton.QC_1014_OutOfStockProducts.QC_1025_GrayButtonOnProductPage"/>
+            <class name="ATD.GrayButton.QC_1014_OutOfStockProducts.QC_2067_CheckNotifyOfStockFormValidationForOutOfStockProducts"/>
+            <class name="ATD.GrayButton.QC_1014_OutOfStockProducts.QC_2069_PresenceOfFeedBackPopUpByClickOnGreyButton"/>
         </classes>
     </test>
 </suite>
