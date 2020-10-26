@@ -5,12 +5,12 @@
     <listeners>
         <listener class-name="Common.ProjectListener"/>
     </listeners>
-    <!--    temporarily disabled-->
-    <!--    <test name="QC_1838_FAQ_Form" enabled="true">-->
-    <!--        <classes>-->
-    <!--            <class name="PKW.Product_Page.QC_1838_FAQ_Form.QC_1834_ValidationOfTheFieldsFaq"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+
+        <test name="QC_1838_FAQ_Form" enabled="true">
+            <classes>
+                <class name="PKW.Product_Page.QC_1838_FAQ_Form.QC_1834_ValidationOfTheFieldsFaq"/>
+            </classes>
+        </test>
 
     <test name="QC_1870_OEN" enabled="true">
         <classes>
