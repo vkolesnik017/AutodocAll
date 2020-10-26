@@ -24,7 +24,7 @@ public class Product_page {
         return $(byCssSelector(".header-cart__count"));
     }
 
-    SelenideElement buyButton() {
+    public SelenideElement buyButton() {
         return $(byCssSelector(".product-button>a"));
     }
 
