@@ -89,13 +89,13 @@
         </classes>
     </test>
 
-    <!--<test name="QC_1914_DisplayTrackingNumberInPR">
+    <test name="QC_1914_DisplayTrackingNumberInPR">
         <classes>
             <class name="ATD.PrivateRoom.QC_1914_DisplayTrackingNumberInPR.QC_1830_DisplayTrackingNumberInPR"/>
             <class name="ATD.PrivateRoom.QC_1914_DisplayTrackingNumberInPR.QC_1831_CheckingForExistingDeliveryServices"/>
             <class name="ATD.PrivateRoom.QC_1914_DisplayTrackingNumberInPR.QC_1832_CheckingMultipleDeliveryServicesInOneOrder"/>
         </classes>
-    </test>-->
+    </test>
 
     <test name="QC_1016_MyGarageInUserAccount">
         <classes>
