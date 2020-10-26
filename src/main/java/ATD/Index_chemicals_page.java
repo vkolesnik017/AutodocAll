@@ -86,7 +86,7 @@ public class Index_chemicals_page {
     }
 
     ElementsCollection separateCategoriesInMainCatalog() {
-        return $$x("//div[@class='special-catalog__wrapp']/div/a[@class='ga-click']");
+        return $$x("//div[@class='special-catalog__wrapp']/div/a[@class='ga-click special-catalog__group']");
     }
 
     ElementsCollection categoriesFromLogicalUnion() {
@@ -98,7 +98,7 @@ public class Index_chemicals_page {
     }
 
     ElementsCollection separateCategories() {
-        return $$x("//div[@class='special-catalog__wrapp']/div/a[@class='ga-click']");
+        return $$x("//div[@class='special-catalog__wrapp']/div/a[@class='ga-click special-catalog__group']");
     }
 
     SelenideElement blockMainProducts() {

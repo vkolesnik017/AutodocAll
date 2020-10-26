@@ -1,6 +1,6 @@
-package ATD.LKW_trucks.QC_2306_OilsAndLiquidsCategories;
+package ATD.Tyres.QC_1272_TyresMainPage;
 
-import ATD.LKW_Category_car_list_page_Logic;
+import ATD.Tyres_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,24 +16,25 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2305_TecDocAndSearchOilListing {
+public class QC_2116_GoToTyresProductPageAndCheckGoodsInStock {
+
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "routes", parallel = false)
+    @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list31,lkw_search10");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres,tyres2,tyres3,tyres4");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "Kolesnik")
-    @Description(value = "Test checks TecDoc and search Oil listing")
-    public void testChecksTecDocAndSearchOilListing(String route) {
+    @Owner(value = "LavrynenkoOlha")
+    @Description(value = "Test Checks Transition To Product Page From Tyres Top Block And Checking The Product On A Stock")
+    public void testGoToProductPageFromTyresTopBlockAndCheckingProductsOnAStock(String route) {
         openPage(route);
-        new LKW_Category_car_list_page_Logic().presenceOfExpectedBrandsInBlock("100570,100290").checkingApplicabilityOfProductForSelectedTruck();
+        new Tyres_page_Logic().clickTyresInTopBlock();
     }
 
     @AfterMethod
@@ -41,3 +42,4 @@ public class QC_2305_TecDocAndSearchOilListing {
         closeWebDriver();
     }
 }
+

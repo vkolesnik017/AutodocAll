@@ -41,17 +41,6 @@ public class ForTest extends SetUp {
         System.out.println(selector);
         System.out.println(carNameFull.equals(selector));
     }
-
-
-
-    @Test
-    public void test1() {
-       float price = new WebMail().openMail("QC_1487_autotest@autodoc.si","chXh3fJhRWeCh7Eqwn")
-                .checkAndOpenLetterWithOrderNumber("36415808")
-                .checkRegularDeliveryPriceInEmail("165,00")
-        .getTotalPriceInEmail();
-
-    }
 }
 
 

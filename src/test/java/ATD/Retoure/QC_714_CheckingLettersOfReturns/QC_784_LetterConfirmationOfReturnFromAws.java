@@ -55,7 +55,7 @@ public class QC_784_LetterConfirmationOfReturnFromAws {
             .getOrderNumber();
     new Order_aws(orderNumber).openOrderInAwsWithLogin()
             .setStatusOrderToVersendetVorkasse()
-            .addDeliveryConditionGLS()
+            .addDeliveryConditionGLS("0", "GLS")
             .openPopupOfAddReclamation()
             .chooseRandomCauseReturnInSelect()
             .fillInFormForMessageReture()
