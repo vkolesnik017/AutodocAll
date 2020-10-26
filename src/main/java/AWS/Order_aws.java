@@ -207,9 +207,6 @@ public class Order_aws {
 
     // locator and methods for block of delivery info (Versandinfo)
 
-    private SelenideElement deliveryInfoRadioGLS() {
-        return $x("//input[@value='GLS' and contains(@name,'Delivery[0]')]");
-    }
 
     private SelenideElement deliveryInfoSendungsnummerField() {
         return $(byId("form_OrderDelivery[0][DeliveryNr]"));
@@ -744,8 +741,8 @@ public class Order_aws {
     }
 
     @Step
-    public Order_aws addDeliveryConditionGLS() {
-        deliveryInfoRadioGLS().click();
+    public Order_aws addDeliveryConditionGLS(String numberDelivery, String expectedDelivery) {
+        deliveryMethod(numberDelivery).selectOptionContainingText(expectedDelivery);
         deliveryInfoSendungsnummerField().setValue("test");
         saveChangesInOrderBtn().click();
         packageContentButton().shouldBe(visible);

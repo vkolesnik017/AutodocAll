@@ -105,7 +105,7 @@ public class Tyres_page {
   }
 
   ElementsCollection sizeProductFromTopTyresBlock() {
-    return $$x("//span[@class='tit ga-click link']/span");
+    return $$x("//span[@class='tit ga-click js-to-tire-product link']/span");
   }
 
 

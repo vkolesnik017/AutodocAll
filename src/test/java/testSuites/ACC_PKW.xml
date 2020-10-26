@@ -156,7 +156,7 @@
 
     <test name="QC_2288_ListingAccessories">
         <classes>
-            <class name="PKW.ACC.QC_2288_ListingAccessories.QC_2289_AvailabilityAndWorkBreadCrumbsOnAccessoriesListing"/>
+<!--            <class name="PKW.ACC.QC_2288_ListingAccessories.QC_2289_AvailabilityAndWorkBreadCrumbsOnAccessoriesListing"/>-->
             <class name="PKW.ACC.QC_2288_ListingAccessories.QC_2291_TitleOnAccessoriesListing"/>
             <class name="PKW.ACC.QC_2288_ListingAccessories.QC_2292_BlockFilterByBrandsOnAccessoriesListing"/>
             <class name="PKW.ACC.QC_2288_ListingAccessories.QC_2293_PaginationBlockOnAccessoriesListing"/>
