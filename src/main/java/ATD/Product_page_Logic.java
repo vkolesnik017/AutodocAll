@@ -180,7 +180,9 @@ public class Product_page_Logic extends Product_page {
     @Step("Adding product to basket. Product_page")
     public Product_page_Logic addProductToCart() {
         checkNumberBasketAndRefreshPageIfNot();
+        refresh();
         sleep(3000); // TODO для стабилизации. Без слипа иногда добавленный товар исчезает из корзины после перехода в неё, решается в SITES-2830
+        closeQuestionsPopupIfYes();
         buyButton().click();
         try {
             checksPresentProductInCartPopup();
@@ -1000,6 +1002,18 @@ public class Product_page_Logic extends Product_page {
         popUpDangerousText().shouldBe(visible);
         Assert.assertFalse(popUpDangerousText().text().isEmpty());
         closePopUpButton().shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("Closing the questions pop-up on the product page. Product_page")
+    public Product_page_Logic closeQuestionsPopupIfYes() {
+        try {
+            popUpQuestionsProductPage().waitUntil(visible, 2500);
+            popUpQuestionsCloseButton().click();
+            popUpQuestionsProductPage().shouldBe(not(visible));
+        } catch (ElementNotFound ignored) {
+            System.out.println("Pop-up is not found");
+        }
         return this;
     }
 }

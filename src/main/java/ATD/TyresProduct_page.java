@@ -67,4 +67,8 @@ public class TyresProduct_page {
     SelenideElement returnPeriodProductBlock() {
         return $x("//li[@class='features-tage-icon']");
     }
+
+    SelenideElement grayButton() {
+        return $x("//div[@class='product-button button not_active out-of-stock']");
+    }
 }

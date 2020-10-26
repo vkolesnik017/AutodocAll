@@ -24,7 +24,7 @@ public class Product_page {
         return $(byCssSelector(".header-cart__count"));
     }
 
-    SelenideElement buyButton() {
+    public SelenideElement buyButton() {
         return $(byCssSelector(".product-button>a"));
     }
 
@@ -821,5 +821,13 @@ public class Product_page {
 
     SelenideElement closePopUpButton() {
         return $x("//*[@class='popup-dangerous__close js-popup-dangerous__close']");
+    }
+
+    SelenideElement popUpQuestionsProductPage() {
+        return $x("//*[@class='popup-after-order']");
+    }
+
+    SelenideElement popUpQuestionsCloseButton() {
+        return $x("//*[@class='popup-after-order__close']");
     }
 }
