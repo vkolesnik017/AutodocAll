@@ -22,7 +22,7 @@ public class QC_2305_TecDocAndSearchOilListing {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "routes", parallel = true)
+    @DataProvider(name = "routes", parallel = false)
     Object[] dataProvider() throws SQLException {
         return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list31,lkw_search10");
     }
