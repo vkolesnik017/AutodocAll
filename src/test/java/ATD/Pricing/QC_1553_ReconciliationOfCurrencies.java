@@ -34,7 +34,7 @@ public class QC_1553_ReconciliationOfCurrencies {
 
     @DataProvider(name = "routeAndProductsIdAllShops", parallel = true)
     Object[] dataProviderAllShops() {
-        return new SetUp("ATD").setUpShopWithListParam("prod", "AT, BG, BE, CZ, DE, DK, EE, ES, FI, FR, EN, GR, HU, IT, LD, LT, LV, NL, NO, PL, PT, RO, SE, SI, SK", productsId);
+        return new SetUp("ATD").setUpShopWithListParam("prod", "AT,BG,BE,CZ,DE,DK,EE,ES,FI,FR,EN,GR,HU,IT,LD,LT,LV,NL,NO,PL,PT,RO,SE,SI,SK", productsId);
     }
 
     @Owner("Chelombitko")
@@ -60,7 +60,7 @@ public class QC_1553_ReconciliationOfCurrencies {
 
     @DataProvider(name = "routeForTires", parallel = true)
     Object[] dataProviderForTires() {
-        return new SetUp("ATD").setUpShop("prod", "AT, BG, BE, CZ, DE, DK, EE, ES, FI, FR, EN, HU, IT, LV, NL, PL, PT, RO, SE, SI, SK");
+        return new SetUp("ATD").setUpShop("prod", "AT,BG,BE,CZ,DE,DK,EE,ES,FI,FR,EN,HU,IT,LV,NL,PL,PT,RO,SE,SI,SK");
     }
 
     @Owner("Chelombitko")

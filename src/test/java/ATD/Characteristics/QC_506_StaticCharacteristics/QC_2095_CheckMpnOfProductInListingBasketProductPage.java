@@ -1,4 +1,4 @@
-package ATD.Tyres.QC_2082_PresenceOfMpnNumber;
+package ATD.Characteristics.QC_506_StaticCharacteristics;
 
 import ATD.Tyre_form_page_Logic;
 import ATD.Tyre_item_page_Logic;

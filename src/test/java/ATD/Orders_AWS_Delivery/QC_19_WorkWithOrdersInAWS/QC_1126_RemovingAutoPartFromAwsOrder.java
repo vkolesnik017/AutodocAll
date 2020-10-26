@@ -29,7 +29,6 @@ public class QC_1126_RemovingAutoPartFromAwsOrder {
 
 
     private Product_page_Logic product_page_logic = new Product_page_Logic();
-    private OrderAdd_page_aws orderAdd_page_aws = new OrderAdd_page_aws();
     private Order_aws order_aws = new Order_aws();
 
     @BeforeClass
