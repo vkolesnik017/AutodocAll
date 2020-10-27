@@ -1423,7 +1423,7 @@ public class Listing_page_Logic extends Listing_page {
         for (int i = 0; i < pictogramsAlternativeBlock().size(); i++) {
             String iconInAlternativeBlock = pictogramsAlternativeBlock().get(i).shouldBe(visible).getAttribute("style");
             pictogramsAlternativeBlock().get(i).waitUntil(visible,2000).shouldBe(visible).click();
-            popUpDangerousListing().shouldBe(visible);
+            popUpDangerousListing().waitUntil(visible,2000).shouldBe(visible);
             String iconInPopUp = iconInPopUpDangerousListing().shouldBe(visible).getAttribute("style");
             Assert.assertEquals(iconInAlternativeBlock, iconInPopUp);
             closePopUpButton().click();
