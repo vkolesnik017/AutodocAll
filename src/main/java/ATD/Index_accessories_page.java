@@ -27,11 +27,11 @@ class Index_accessories_page {
     }
 
     SelenideElement catalogFirstGroup() {
-        return $x("//div[@class='accessories-catalog__row'][1]/div[@class='accessories-catalog__group'][1]");
+        return $x("//div[@class='accessories-catalog__row'][1]//div[@ class='accessories-catalog__group-img'][1]");
     }
 
     ElementsCollection logicalUnionsMainBlock() {
-        return $$x("//div[@class='accessories-catalog__row']//div[@data-cat-id and @class='accessories-catalog__group']");
+        return $$x("//div[@class='accessories-catalog__row']//a[@data-cat-id and @class='accessories-catalog__group js-accessories-catalog-group']");
     }
 
     ElementsCollection mainCategories() {

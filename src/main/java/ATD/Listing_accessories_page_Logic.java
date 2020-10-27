@@ -1,5 +1,6 @@
 package ATD;
 
+import PKW.Index_accessories_group_page_Logic;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
@@ -74,6 +75,7 @@ public class Listing_accessories_page_Logic extends Listing_accessories_page {
     @Step("Get name all categories from sidebar and title name page. Listing_accessories_page")
     public ArrayList<String> getNameAllCategoriesInSidebarAndTitleNamePage() {
         ArrayList<String> nameCategories = new ArrayList<>();
+        firstCategoryInSidebar().shouldBe(visible).scrollIntoView(true);
         for (SelenideElement element : categoriesInSidebar()) {
             String name = element.getText();
             nameCategories.add(name);
@@ -91,10 +93,16 @@ public class Listing_accessories_page_Logic extends Listing_accessories_page {
         return this;
     }
 
-    @Step("Checking presence and not clickable third Bread Crumb. Listing_accessories_page")
-    public Listing_accessories_page_Logic checkingPresenceAndNotClickableThirdBreadCrumb() {
-        thirdBreadCrumb().shouldBe(visible).shouldNotBe(attribute("href"));
+    @Step("Click on fourth Bread Crumb. Listing_accessories_page")
+    public Listing_accessories_page_Logic checkingPresenceAndNotClickableFourthBreadCrumb() {
+        fourthBreadCrumb().shouldBe(visible).shouldNotBe(attribute("href"));
         return this;
+    }
+
+    @Step("Checking presence and not clickable third Bread Crumb. Listing_accessories_page")
+    public Index_accessories_group_page_Logic clickThirdBreadCrumb() {
+        thirdBreadCrumb().click();
+        return page(Index_accessories_group_page_Logic.class);
     }
 
     @Step("Click on second Bread Crumb. Listing_accessories_page")
