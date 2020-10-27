@@ -357,8 +357,8 @@ public class Tyres_page_Logic extends Tyres_page {
         topBlock().shouldBe(visible);
         for (int i = 0; i < productsInTopBlock().size(); i++){
             productsInTopBlock().get(i).click();
+            tyresProduct_page.addButtonToBasket().waitUntil(visible, 2000).shouldBe(visible);
             tyresProduct_page.grayButton().shouldNotBe(visible);
-            tyresProduct_page.addToBasketButton().shouldBe(visible);
             back();
         }
         return this;
