@@ -36,16 +36,19 @@ public class QC_1381_TransitionOnBreadCrumbs {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test checks transition for three breadcrumbs .")
-    public void testCheckTransitionForThreeBreadCrumbs(String route) {
+    @Description(value = "Test checks transition for four breadcrumbs .")
+    public void testCheckTransitionForFourBreadCrumbs(String route) {
         openPage(route);
         listing_accessories_page_logic.checkingPresenceOfTheBreadcrumbs()
-                .checkingPresenceAndNotClickableThirdBreadCrumb()
+                .checkingPresenceAndNotClickableFourthBreadCrumb()
                 .clickSecondBreadCrumb();
         checkingContainsUrl("autozubehoer");
         back();
         listing_accessories_page_logic.clickFirstBreadCrumb();
         checkingContainsUrl("autoteile");
+        back();
+        listing_accessories_page_logic.clickThirdBreadCrumb();
+        checkingContainsUrl("autoelektronik-pr");
     }
 
     @AfterMethod

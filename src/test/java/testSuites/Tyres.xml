@@ -163,15 +163,15 @@
         </classes>
     </test>
 
-<!--    <test name="QC_1475_TopBlockOnTyresListings">-->
-<!--        <classes>-->
-            <!--<class name="ATD.Tyres.QC_1475_TopBlockOnTyresListings.QC_1477_AddToBasketFromTyresTopBlock"/>-->
-<!--            <class name="ATD.Tyres.QC_1475_TopBlockOnTyresListings.QC_1478_ProductsInTopBlockNotAdjustToBrandFilter"/>-->
-<!--            <class name="ATD.Tyres.QC_1475_TopBlockOnTyresListings.QC_1500_GoToTyresProductPageFromTopBlock"/>-->
-<!--            <class name="ATD.Tyres.QC_1475_TopBlockOnTyresListings.QC_1522_ProductsInTopBlockNotAdjustToRatingFilter"/>-->
-<!--            <class name="ATD.Tyres.QC_1475_TopBlockOnTyresListings.QC_1523_ProductsInTopBlockFitSelector"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <!--    <test name="QC_1475_TopBlockOnTyresListings">-->
+    <!--        <classes>-->
+    <!--<class name="ATD.Tyres.QC_1475_TopBlockOnTyresListings.QC_1477_AddToBasketFromTyresTopBlock"/>-->
+    <!--            <class name="ATD.Tyres.QC_1475_TopBlockOnTyresListings.QC_1478_ProductsInTopBlockNotAdjustToBrandFilter"/>-->
+    <!--            <class name="ATD.Tyres.QC_1475_TopBlockOnTyresListings.QC_1500_GoToTyresProductPageFromTopBlock"/>-->
+    <!--            <class name="ATD.Tyres.QC_1475_TopBlockOnTyresListings.QC_1522_ProductsInTopBlockNotAdjustToRatingFilter"/>-->
+    <!--            <class name="ATD.Tyres.QC_1475_TopBlockOnTyresListings.QC_1523_ProductsInTopBlockFitSelector"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
     <test name="QC_2063_MainIssueBlockOnTireListings">
         <classes>
@@ -183,9 +183,7 @@
 
     <!--    <test name="QC_2066_CheckProductsOutOfStock">
             <classes>
-                <class name="ATD.Tyres.QC_2066_CheckProductsOutOfStock.QC_2068_AvailabilityOfPopUpOfAppearanceOfOutOfStockProduct"/>
-                &lt;!&ndash;<class name="ATD.Tyres.QC_2066_CheckProductsOutOfStock.QC_2069_PresenceOfFeedBackPopUpByClickOnGreyButton"/>&ndash;&gt;
-                &lt;!&ndash;<class name="ATD.Tyres.QC_2066_CheckProductsOutOfStock.QC_2070_SortingOfProductWithGreyButton"/>&ndash;&gt;
+                  <class name="ATD.Tyres.QC_2066_CheckProductsOutOfStock.QC_2070_SortingOfProductWithGreyButton"/>
                 <class name="ATD.Tyres.QC_2066_CheckProductsOutOfStock.QC_2077_CheckingForPopUpOfSuccessInSendingMailForFeedback"/>
                 <class name="ATD.Tyres.QC_2066_CheckProductsOutOfStock.QC_2078_CheckingForErrorPopUpAboutAnUnsetCheckbox"/>
                 <class name="ATD.Tyres.QC_2066_CheckProductsOutOfStock.QC_2079_CheckingForPopUpErrorAboutInvalidEmail"/>

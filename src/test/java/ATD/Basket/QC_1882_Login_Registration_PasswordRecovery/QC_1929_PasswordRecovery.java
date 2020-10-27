@@ -23,9 +23,6 @@ import static mailinator.WebMail.passwordForMail;
 
 public class QC_1929_PasswordRecovery {
 
-    //TODO This test is temporarily inactive due to incorrect description of steps.
-    //TODO After successfully editing the QC, the test will be added to xml. file.
-
     private String mail = "QC_1929_autotestATD@autodoc.si";
     private WebMail webMail = new WebMail();
     private Product_page_Logic product_page_logic = new Product_page_Logic();

@@ -58,7 +58,7 @@ public class QC_888_PopupErrorsInRetourePage {
     new Order_aws(orderNumber).openOrderInAwsWithLogin()
             .checkOrderHasTestStatus()
             .setStatusOrderToVersendetVorkasse()
-            .addDeliveryConditionGLS();
+            .addDeliveryConditionGLS("0", "GLS");
     open(route + "/" + db.getRouteByRouteName(getShopFromRoute(route), "return_return"));
     new Retouren_page_Logic().findOrder("11111", orderNumber)
             .chekingToAppearPopupErrorsOfReturn();

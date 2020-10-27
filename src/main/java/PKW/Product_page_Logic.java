@@ -196,8 +196,7 @@ public class Product_page_Logic extends Product_page {
         Assert.assertFalse(productTextUnderPrice().text().isEmpty());
         productVersandLinkUnderPrice().click();
         commonMethods.checkingUrlAndCloseTab(new DataBase("PKW").getRouteByRouteName("DE", "static_versand"));
-
-        productButtonBuyWithCount().shouldBe(visible);
+        productButtonBuyWithCount().waitUntil(visible, 2000).shouldBe(visible);
         productCountButton().shouldBe(clickable);
         productActualLagerInfo().shouldBe(visible);
         productInfoAboutDoubleParts().shouldBe(visible);

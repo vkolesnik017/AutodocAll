@@ -58,7 +58,7 @@ public class QC_716_LetterConfirmationOfReturnFromProfile {
             .getOrderNumber();
     new Order_aws(orderNumber).openOrderInAwsWithLogin()
             .setStatusOrderToVersendetVorkasse()
-            .addDeliveryConditionGLS();
+            .addDeliveryConditionGLS("0", "GLS");
     open(route + "/" + db.getRouteByRouteName(getShopFromRoute(route), "profile_orders"));
     new Profile_page_Logic().clickBestelldetailsButton(orderNumber)
             .clickReturnOrReplaceItemButton()
