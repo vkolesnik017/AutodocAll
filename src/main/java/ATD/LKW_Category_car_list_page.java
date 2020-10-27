@@ -346,4 +346,12 @@ public class LKW_Category_car_list_page {
     ElementsCollection btnMoreOfDangerousProducts() {return $$x("//span[@class='dangerous-listing__show-more']");}
 
     ElementsCollection dangerousIconInWarningPopUp() {return $$x("//div[@class='popup-dangerous__icon']").filter(visible);}
+
+    SelenideElement addOfIssueProductBlock() {return $x("//div[@class='w_search no_margin']");}
+
+    ElementsCollection imageOfProductsWithOutAddIssue() {return $$x("//div[@class='w_search no_margin']/preceding-sibling::li//div[@class='image']//span[2]/img");}
+
+    SelenideElement oneImageOfProductTecDocListingBlock(int position) {
+        return $x("(//div[@class='w_search no_margin']/preceding-sibling::li//div[@class='image']//span[2]/img)[" + position + "]");
+    }
 }
