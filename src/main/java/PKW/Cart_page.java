@@ -98,4 +98,10 @@ public class Cart_page {
     public SelenideElement discoverLabel() {
         return $x("//img[contains(@src,'discover')]");
     }
+
+    public SelenideElement[] labelBank() {
+       SelenideElement locators[] = {$x("//img[contains(@src,'wire')]"), $x("//img[contains(@src,'bank')]"),
+               $x("//img[contains(@src,'Finance')]"), $x("//img[contains(@src,'Bank')]")};
+        return locators;
+    }
 }
