@@ -60,19 +60,45 @@ public class Payment_handler_page_Logic extends Payment_handler_page {
 
     @Step("Compares expected requisites with actual. Payment_handler_page")
     public Payment_handler_page_Logic compareExpectedRequisitesWithActual(String shop) throws SQLException {
-        ArrayList<String> requisites = null;
+        String requisitesOnTheSite = getTextRequisites().replaceAll("\n", " ");
+        ArrayList<String> requisites;
+        ArrayList<String> requisitesParameter = new ArrayList<>();
+        requisitesParameter.add("Owner");
+        requisitesParameter.add("Account number");
+        requisitesParameter.add("Sort Code");
+        requisitesParameter.add("Bank");
+        requisitesParameter.add("IBAN");
+        requisitesParameter.add("BIC_SWIFT");
+        if (shop.equals("CH") || shop.equals("CZ") || shop.equals("DK") || shop.equals("EN") || shop.equals("HU") || shop.equals("NO") || shop.equals("PL") ||
+                shop.equals("RO") || shop.equals("SE")) {
+            for (int i = 0; i < requisitesParameter.size(); i++) {
+                System.out.println(requisitesParameter.get(i));
+                requisites = new DataBase("PKW").getNameRequisitesMethod("bank_requisites_pkw", shop, String.valueOf(requisitesParameter.get(i)));
+                String requisitesStringFormat = requisites.toString().replaceAll("(\\[)(.+)(\\])","$2");
+                System.out.println(requisitesStringFormat);
+                System.out.println(requisitesOnTheSite);
+                if (requisitesStringFormat != "null") {
+                    Assert.assertTrue(requisitesOnTheSite.contains(requisitesStringFormat));
+                }
+            }
+        }
+
+
+        /*ArrayList<String> requisites;
         if (shop.equals("CH") || shop.equals("CZ") || shop.equals("DK") || shop.equals("EN") || shop.equals("HU") || shop.equals("NO") || shop.equals("PL") ||
             shop.equals("RO") || shop.equals("SE")) {
+            for (int i = 0; i < new DataBase("PKW").getNameRequisitesMethod("bank_requisites_pkw", shop, "Owner").size(); i++) {}
             requisites = new DataBase("PKW").getNameRequisitesMethod("bank_requisites_pkw", shop, "Owner",
                     "Account number", "Sort Code", "Bank", "IBAN", "BIC_SWIFT");
         } else {
             requisites = new DataBase("PKW").getNameRequisitesMethod("bank_requisites_pkw", "other", "Owner",
                     "Account number", "Sort Code", "Bank", "IBAN", "BIC_SWIFT");
         }
-        System.out.println(requisites.toString());
-        String requisitesOnTheSite = getTextRequisites().replaceAll("\n", " ");
+        String requisitesFormat = requisites.toString().replaceAll(",", "").replaceAll("null", "\n").replaceAll("\n", "");
+        System.out.println(requisitesFormat);
+        String requisitesOnTheSite = getTextRequisites().replaceAll("\n", "");
         System.out.println(requisitesOnTheSite);
-        Assert.assertTrue(requisitesOnTheSite.contains(requisites.toString()));
+        Assert.assertTrue(requisitesOnTheSite.contains(requisitesFormat));*/
         return this;
     }
 }
