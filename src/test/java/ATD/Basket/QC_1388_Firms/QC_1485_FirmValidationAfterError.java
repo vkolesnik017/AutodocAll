@@ -43,7 +43,7 @@ public class QC_1485_FirmValidationAfterError {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "EN", "main", "product32");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "EN", "main", "product10");
     }
 
     @Test(dataProvider = "route")
