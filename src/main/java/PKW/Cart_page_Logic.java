@@ -2,6 +2,7 @@ package PKW;
 
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import org.testng.Assert;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,9 +73,9 @@ public class Cart_page_Logic extends Cart_page{
     @Step("presence of expected characteristic. Cart_page")
     public Cart_page_Logic presenceOfExpectedCharacteristic(String expectedCharacteristic) {
         btnMoreInfoOfProduct().shouldBe(visible).click();
-          List<String> valuesOfCharacteristic = new ArrayList<>();
-        for (int i=0;i<titleOfCharacteristicInInfoBlockOfProduct().size();i++){
-            valuesOfCharacteristic.add(titleOfCharacteristicInInfoBlockOfProduct().get(i).getText()+" "+valueOfCharacteristicInInfoBlockOfProduct().get(i).getText());
+        List<String> valuesOfCharacteristic = new ArrayList<>();
+        for (int i = 0; i < titleOfCharacteristicInInfoBlockOfProduct().size(); i++) {
+            valuesOfCharacteristic.add(titleOfCharacteristicInInfoBlockOfProduct().get(i).getText() + " " + valueOfCharacteristicInInfoBlockOfProduct().get(i).getText());
         }
         valuesOfCharacteristic.contains(expectedCharacteristic);
         return this;
@@ -95,6 +96,16 @@ public class Cart_page_Logic extends Cart_page{
             expectedLocator.shouldBe(visible);
             }
         }
+        return this;
+    }
+
+   @Step("Checks for the label of the bank payment method. Cart_page")
+    public Cart_page_Logic checksForLabelOfBankPaymentMethod() {
+        if ((firstLabelBank().isDisplayed()) || secondLabelBank().isDisplayed() || thirdLabelBank().isDisplayed() || fourthLabelBank().isDisplayed()) {
+            System.out.println("Label bank is visible");
+       } else {
+            Assert.fail("Leib bank not visible");
+       }
         return this;
     }
 }

@@ -2,6 +2,7 @@ package PKW;
 
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import org.testng.Assert;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.page;
@@ -75,4 +76,13 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return this;
     }
 
+    @Step("Checks for the label of the bank payment method. CartAllData_page")
+    public CartAllData_page_Logic checksForLabelOfBankPaymentMethod() {
+        if ((firstLabelBank().isDisplayed()) || secondLabelBank().isDisplayed() || thirdLabelBank().isDisplayed() || fourthLabelBank().isDisplayed()) {
+            System.out.println("Label bank is visible");
+        } else {
+            Assert.fail("Leib bank not visible");
+        }
+        return this;
+    }
 }
