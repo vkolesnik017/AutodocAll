@@ -1418,28 +1418,16 @@ public class Listing_page_Logic extends Listing_page {
     @Step("Click the Ersatz Anzeign Button and checking the Displaying Analog Block with pictograms. Listing_page")
     public Listing_page_Logic checkDisplayingAnalogBlock() {
         ersatzAnzeigenButton().click();
-        alternativeBlock().scrollIntoView("{block: \"center\"}");
-        alternativeBlock().shouldBe(visible);
-        for (int i = 0; i < pictogramsAlternativeBlock().size(); i++) {
+        alternativeBlock().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        for (int i = 0; i < mehrButtonListing().size(); i++) {
             String iconInAlternativeBlock = pictogramsAlternativeBlock().get(i).shouldBe(visible).getAttribute("style");
-            pictogramsAlternativeBlock().get(i).shouldBe(visible).click();
-            popUpDangerousListing().shouldBe(visible);
-            String iconInPopUp = iconInPopUpDangerousListing().shouldBe(visible).getAttribute("style");
-            Assert.assertEquals(iconInAlternativeBlock, iconInPopUp);
-            closePopUpButton().click();
-        }
-        return this;
-    }
-
-    @Step("Checking the text and warning word in the  dangerous pop-up. Listing_page")
-    public Listing_page_Logic presenceOfTheTextAndWarningWordInPopUpListing() {
-        for (int i = 0; i < pictogramsAlternativeBlock().size(); i++) {
-            pictogramsAlternativeBlock().get(i).shouldBe(visible).click();
-            iconInPopUpDangerousListing().shouldBe(visible);
-            popUpDangerousTitle().shouldBe(visible);
+            executeJavaScript("arguments[0].click();", mehrButtonListingOne());
+            popUpDangerousListing().waitUntil(visible,4000).shouldBe(visible);popUpDangerousTitle().shouldBe(visible);
             Assert.assertFalse(popUpDangerousTitle().text().isEmpty());
             popUpDangerousText().shouldBe(visible);
             Assert.assertFalse(popUpDangerousText().text().isEmpty());
+            String iconInPopUp = iconInPopUpDangerousListing().shouldBe(visible).getAttribute("style");
+            Assert.assertEquals(iconInAlternativeBlock, iconInPopUp);
             closePopUpButton().click();
         }
         return this;

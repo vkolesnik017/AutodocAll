@@ -35,8 +35,8 @@ public class QC_186_FiltersSorting_TestOutputWithFilterByRating {
         return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list8");
     }
 
-
-    @Test(dataProvider = "routes")
+    //TODO проверка на данном руте отключена, так как фильтр по рейтенгу отключен.
+    @Test(dataProvider = "routes", enabled = false)
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test checks output with filter by rating")

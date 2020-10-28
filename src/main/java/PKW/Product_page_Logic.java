@@ -196,8 +196,7 @@ public class Product_page_Logic extends Product_page {
         Assert.assertFalse(productTextUnderPrice().text().isEmpty());
         productVersandLinkUnderPrice().click();
         commonMethods.checkingUrlAndCloseTab(new DataBase("PKW").getRouteByRouteName("DE", "static_versand"));
-
-        productButtonBuyWithCount().shouldBe(visible);
+        productButtonBuyWithCount().waitUntil(visible, 2000).shouldBe(visible);
         productCountButton().shouldBe(clickable);
         productActualLagerInfo().shouldBe(visible);
         productInfoAboutDoubleParts().shouldBe(visible);
@@ -243,7 +242,7 @@ public class Product_page_Logic extends Product_page {
     public Product_page_Logic checkingTheTransitionToTheBrandProductPageAfterClickingTheBrandLogo() throws SQLException {
 
         productBrandIcon().shouldHave(Condition.attribute("alt"));
-        productBrandIconLink().scrollIntoView(false).click();
+        productBrandIconLink().scrollIntoView("{block: \"center\"}").click();
         checkingContainsUrl(new DataBase("PKW").getRouteByRouteName("DE", "supplier"));
         back();
         return this;

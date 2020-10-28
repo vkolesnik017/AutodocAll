@@ -71,4 +71,6 @@ public class TyresProduct_page {
     SelenideElement grayButton() {
         return $x("//div[@class='product-button button not_active out-of-stock']");
     }
+
+    SelenideElement addButtonToBasket() { return $x("//*[@class='product-button button ']//a[@class='btn still_add_to_basket']"); }
 }
