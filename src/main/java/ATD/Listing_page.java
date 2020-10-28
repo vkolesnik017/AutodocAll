@@ -973,5 +973,9 @@ public class Listing_page {
     SelenideElement detailsPopUp() {
         return $x("//*[@class='rec_prod_info_popup']");
     }
+
+    SelenideElement mehrButtonListingOne() {
+        return $x("//*[@class='top-small-products-items__item']//*[@class='dangerous-listing js-dangerous-listing__show-more']");
+    }
 }
 
