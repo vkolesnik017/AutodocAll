@@ -1421,10 +1421,8 @@ public class Listing_page_Logic extends Listing_page {
         alternativeBlock().scrollIntoView("{block: \"center\"}").shouldBe(visible);
         for (int i = 0; i < mehrButtonListing().size(); i++) {
             String iconInAlternativeBlock = pictogramsAlternativeBlock().get(i).shouldBe(visible).getAttribute("style");
-            ersatzAnzeigenButton().hover();
-            mehrButtonListing().get(i).waitUntil(visible,4000).scrollTo().click();
-            popUpDangerousListing().waitUntil(visible,4000).shouldBe(visible);
-            popUpDangerousTitle().shouldBe(visible);
+            executeJavaScript("arguments[0].click();", mehrButtonListingOne());
+            popUpDangerousListing().waitUntil(visible,4000).shouldBe(visible);popUpDangerousTitle().shouldBe(visible);
             Assert.assertFalse(popUpDangerousTitle().text().isEmpty());
             popUpDangerousText().shouldBe(visible);
             Assert.assertFalse(popUpDangerousText().text().isEmpty());
