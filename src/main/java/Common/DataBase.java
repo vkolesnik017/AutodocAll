@@ -310,6 +310,7 @@ public class DataBase {
                 while (resultSet.next()) {
                     nameRequisites = resultSet.getString(1);
                 }
+                if(nameRequisites != null)
                 finalList.add(nameRequisites);
                 statement.close();
             } catch (SQLException state) {
