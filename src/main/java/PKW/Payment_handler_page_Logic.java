@@ -6,7 +6,7 @@ import io.qameta.allure.Step;
 import org.testng.Assert;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.List;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
@@ -61,44 +61,26 @@ public class Payment_handler_page_Logic extends Payment_handler_page {
     @Step("Compares expected requisites with actual. Payment_handler_page")
     public Payment_handler_page_Logic compareExpectedRequisitesWithActual(String shop) throws SQLException {
         String requisitesOnTheSite = getTextRequisites().replaceAll("\n", " ");
-        ArrayList<String> requisites;
-        ArrayList<String> requisitesParameter = new ArrayList<>();
-        requisitesParameter.add("Owner");
-        requisitesParameter.add("Account number");
-        requisitesParameter.add("Sort Code");
-        requisitesParameter.add("Bank");
-        requisitesParameter.add("IBAN");
-        requisitesParameter.add("BIC_SWIFT");
-        if (shop.equals("CH") || shop.equals("CZ") || shop.equals("DK") || shop.equals("EN") || shop.equals("HU") || shop.equals("NO") || shop.equals("PL") ||
-                shop.equals("RO") || shop.equals("SE")) {
-            for (int i = 0; i < requisitesParameter.size(); i++) {
-                System.out.println(requisitesParameter.get(i));
-                requisites = new DataBase("PKW").getNameRequisitesMethod("bank_requisites_pkw", shop, String.valueOf(requisitesParameter.get(i)));
-                String requisitesStringFormat = requisites.toString().replaceAll("(\\[)(.+)(\\])","$2");
-                System.out.println(requisitesStringFormat);
+        List<String> requisitesForUniqueCountries;
+        List<String> requisitesForOther;
+        if (shop.equals("AT") || shop.equals("CH") || shop.equals("CZ") || shop.equals("DK") || shop.equals("EN") || shop.equals("HU") || shop.equals("NO") || shop.equals("PL") ||
+                shop.equals("RO") || shop.equals("SE") || shop.equals("BG")) {
+            requisitesForUniqueCountries = new DataBase("PKW").getNameRequisitesMethod("bank_requisites_pkw", shop, "Owner",
+                    "Account number", "Sort Code", "Bank", "IBAN", "BIC_SWIFT");
+            for (String a : requisitesForUniqueCountries) {
                 System.out.println(requisitesOnTheSite);
-                if (requisitesStringFormat != "null") {
-                    Assert.assertTrue(requisitesOnTheSite.contains(requisitesStringFormat));
-                }
+                System.out.println(a);
+                Assert.assertTrue(requisitesOnTheSite.contains(a));
+            }
+        } else {
+            requisitesForOther = new DataBase("PKW").getNameRequisitesMethod("bank_requisites_pkw", "other", "Owner",
+                    "Account number", "Sort Code", "Bank", "IBAN", "BIC_SWIFT");
+            for (String a : requisitesForOther) {
+                System.out.println(requisitesOnTheSite);
+                System.out.println(a);
+                Assert.assertTrue(requisitesOnTheSite.contains(a));
             }
         }
-
-
-        /*ArrayList<String> requisites;
-        if (shop.equals("CH") || shop.equals("CZ") || shop.equals("DK") || shop.equals("EN") || shop.equals("HU") || shop.equals("NO") || shop.equals("PL") ||
-            shop.equals("RO") || shop.equals("SE")) {
-            for (int i = 0; i < new DataBase("PKW").getNameRequisitesMethod("bank_requisites_pkw", shop, "Owner").size(); i++) {}
-            requisites = new DataBase("PKW").getNameRequisitesMethod("bank_requisites_pkw", shop, "Owner",
-                    "Account number", "Sort Code", "Bank", "IBAN", "BIC_SWIFT");
-        } else {
-            requisites = new DataBase("PKW").getNameRequisitesMethod("bank_requisites_pkw", "other", "Owner",
-                    "Account number", "Sort Code", "Bank", "IBAN", "BIC_SWIFT");
-        }
-        String requisitesFormat = requisites.toString().replaceAll(",", "").replaceAll("null", "\n").replaceAll("\n", "");
-        System.out.println(requisitesFormat);
-        String requisitesOnTheSite = getTextRequisites().replaceAll("\n", "");
-        System.out.println(requisitesOnTheSite);
-        Assert.assertTrue(requisitesOnTheSite.contains(requisitesFormat));*/
         return this;
     }
 }

@@ -44,4 +44,40 @@ public class CartAddress_page {
     SelenideElement telephon() {
         return $(byId("form_lTelefon"));
     }
+
+    public SelenideElement vorname() {
+        return $(byId("form_lVorname"));
+    }
+
+    public SelenideElement nameIn() {
+        return $(byId("form_lName"));
+    }
+
+    public SelenideElement strasse() {
+        return $(byId("form_lStrasse"));
+    }
+
+    SelenideElement deliveryHouse() {
+        return $(byId("form_delivery_house"));
+    }
+
+    public SelenideElement ort() {
+        return $(byId("form_lOrt"));
+    }
+
+    SelenideElement checkboxFirmShipping() {
+        return $x("//input[@id='is_company_shipping']");
+    }
+
+    SelenideElement fieldFirm() {
+        return $(byId("form_lFirma"));
+    }
+
+    SelenideElement idCompanyShipping() {
+        return $(byId("form_lUmsatzId"));
+    }
+
+    SelenideElement continueBtnInPopupAboutWrongCompany() {
+        return $x("//a[@class='color close_popup continue']");
+    }
 }
