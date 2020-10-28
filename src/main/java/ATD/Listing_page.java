@@ -967,7 +967,11 @@ public class Listing_page {
     }
 
     ElementsCollection mehrButtonListing() {
-        return $$x("//*[@class='top-small-products top-small-products--alternative']//*[@class='dangerous-listing__show-more']");
+        return $$x("//*[@class='top-small-products-items__item']//*[@class='dangerous-listing js-dangerous-listing__show-more']");
+    }
+
+    SelenideElement detailsPopUp() {
+        return $x("//*[@class='rec_prod_info_popup']");
     }
 }
 

@@ -1422,9 +1422,11 @@ public class Listing_page_Logic extends Listing_page {
         for (int i = 0; i < mehrButtonListing().size(); i++) {
             String iconInAlternativeBlock = pictogramsAlternativeBlock().get(i).shouldBe(visible).getAttribute("style");
             ersatzAnzeigenButton().hover();
-            mehrButtonListing().get(i).waitUntil(visible,4000).scrollTo().click();
-            popUpDangerousListing().waitUntil(visible,4000).shouldBe(visible);
-            popUpDangerousTitle().shouldBe(visible);
+            mehrButtonListing().get(i).scrollTo().click();
+            if(detailsPopUp().isDisplayed()){
+                mehrButtonListing().get(i).scrollTo().click();
+            }
+            popUpDangerousListing().waitUntil(visible,4000).shouldBe(visible);popUpDangerousTitle().shouldBe(visible);
             Assert.assertFalse(popUpDangerousTitle().text().isEmpty());
             popUpDangerousText().shouldBe(visible);
             Assert.assertFalse(popUpDangerousText().text().isEmpty());
