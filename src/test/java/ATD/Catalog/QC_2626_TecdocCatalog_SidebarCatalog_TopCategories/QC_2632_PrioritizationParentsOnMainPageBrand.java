@@ -1,6 +1,6 @@
 package ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories;
 
-import ATD.Category_car_list_page_Logic;
+import ATD.Supplier_page_Logic;
 import AWS.CatalogCategories_aws;
 import Common.SetUp;
 import io.qameta.allure.Description;
@@ -16,14 +16,15 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2637_OpenAllParentsSidebarCatalog {
+public class QC_2632_PrioritizationParentsOnMainPageBrand {
 
-    private ArrayList<String> parentFromSidebar, parentFromAws, groupRating;
+    private ArrayList<String> parentFromBrandPage, parentFromAws, groupRating;
+    private Supplier_page_Logic supplierPageLogic = new Supplier_page_Logic();
     private CatalogCategories_aws catalogCategoriesAws = new CatalogCategories_aws();
-    private Category_car_list_page_Logic categoryCarListPageLogic = new Category_car_list_page_Logic();
 
-    public QC_2637_OpenAllParentsSidebarCatalog() throws SQLException {
+    public QC_2632_PrioritizationParentsOnMainPageBrand() throws SQLException {
     }
+
 
     @BeforeClass
     void setUp() {
@@ -32,19 +33,19 @@ public class QC_2637_OpenAllParentsSidebarCatalog {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main",  "category_car_list,search2");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main",  "supplier");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Sergey_QA")
-    @Description(value = "Test checking display order parens between Sidebar and AWS")
-    public void testCheckingDisplayOrderParensBetweenSidebarAndAws(String route) {
+    @Description(value = "Test checking display parens between brand page and AWS")
+    public void testCheckingDisplayParensBetweenBrandPageAndAws(String route) {
         openPage(route);
-        parentFromSidebar = categoryCarListPageLogic.getIdListParentsTeilecatalogInSidebar();
+        parentFromBrandPage = supplierPageLogic.getIdListParentsFromBrandPage();
         parentFromAws = catalogCategoriesAws.getAllParentIdByGroupRating();
         groupRating = catalogCategoriesAws.getAllParentGroupRating();
-        categoryCarListPageLogic.compareTwoListsBetweenFrontAndAws(parentFromSidebar, parentFromAws, groupRating);
+        supplierPageLogic.compareTwoListsBetweenFrontAndAwsFrom(parentFromBrandPage, parentFromAws, groupRating);
     }
 
     @AfterMethod

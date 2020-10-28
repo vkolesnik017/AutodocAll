@@ -51,6 +51,10 @@ public class CatalogCategories_aws {
         return $$(".catalog-table-content-items-item.parent > div > div:nth-child(2)");
     }
 
+    private ElementsCollection groupRatingInAws() {
+        return $$(".catalog-table-content-items-item.parent > div > div:nth-child(10) > input");
+    }
+
     private ElementsCollection notActiveChildCategoriesId() {
         return $$(".catalog-table-content-items-item.disabled > div > div:nth-child(4)");
     }
@@ -364,6 +368,40 @@ public class CatalogCategories_aws {
       titleOfGenerics().get(0).shouldBe(visible);
         List<String> genericsFromAws = titleOfGenerics().stream().map(n->n.getText()).collect(Collectors.toList());
         return genericsFromAws ;
+    }
+
+    @Step("Get All Parent Categories Id From AWS by Group Rating. CatalogCategories_aws")
+    public ArrayList<String> getAllParentIdByGroupRating() {
+        new Login_aws().loginInAwsWithOpen();
+        openPage(parentCategoriesInAwsPage);
+        ArrayList<String> allParentIdByGroupRating = new ArrayList<>();
+        for (int i = 0; i < groupRatingInAws().size(); i++) {
+            if (!groupRatingInAws().get(i).getAttribute("value").isEmpty()){
+                String parentId = parentIdInAws().get(i).getText();
+                allParentIdByGroupRating.add(parentId);
+            }
+        }
+
+        ArrayList<String> notActiveParentCategories = new ArrayList<>();
+        for (int i = 0; i < notActiveParentCategoriesName().size(); i++) {
+            if (!notActiveParentCategoriesName().get(i).attr("value").isEmpty()) {
+                notActiveParentCategories.add(notActiveParentCategoriesName().get(i).attr("data-entity-id").trim());
+            }
+        }
+        allParentIdByGroupRating.removeAll(notActiveParentCategories);
+        return allParentIdByGroupRating;
+    }
+
+    @Step("Get All Group Rating. CatalogCategories_aws")
+    public ArrayList<String> getAllParentGroupRating() {
+        ArrayList<String> allGroupRating = new ArrayList<>();
+        for (int i = 0; i < groupRatingInAws().size(); i++) {
+            if (!groupRatingInAws().get(i).getAttribute("value").isEmpty()){
+                String numRating = groupRatingInAws().get(i).getAttribute("value").trim();
+                allGroupRating.add(numRating);
+            }
+        }
+        return allGroupRating;
     }
 
 }

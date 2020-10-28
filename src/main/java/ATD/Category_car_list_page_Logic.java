@@ -1,5 +1,6 @@
 package ATD;
 
+
 import files.Product;
 import io.qameta.allure.Step;
 import org.testng.Assert;
@@ -269,30 +270,34 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
         return this;
     }
 
-    @Step("Get name list all parents from Teilecatalog in sidebar. Category_car_list_page")
-    public ArrayList<String> getNameListParentsTeilecatalogInSidebar() {
-        ArrayList<String> nameListParents = new ArrayList<>();
+    @Step("Get Id list all parents from Teilecatalog in sidebar. Category_car_list_page")
+    public ArrayList<String> getIdListParentsTeilecatalogInSidebar() {
+        ArrayList<String> idListParents = new ArrayList<>();
         if (btnTeilecatalogInSidebar().isDisplayed()) {
             btnTeilecatalogInSidebar().scrollIntoView("{block: \"center\"}").click();
             parentFromTeilecatalogInSidebar().waitUntil(visible, 10000);
         }
-        for (int i = 0; i < parentsFromTeilecatalogInSidebar().size(); i++) {
-            String parentName =  parentsFromTeilecatalogInSidebar().get(i).getText();
-            nameListParents.add(parentName);
+        for (int i = 0; i < parentsIdFromTeilecatalogInSidebar().size(); i++) {
+            String parentId =  parentsIdFromTeilecatalogInSidebar().get(i).getAttribute("src").replaceAll("[\\s\\S]*\\/", "").replaceAll(".png", "").trim();
+            idListParents.add(parentId);
         }
-        return nameListParents;
+        return idListParents;
     }
 
-    @Step("Compare two list with parent between saidbar and Aws. Category_car_list_page")
-    public Category_car_list_page_Logic compareTwoListsBetweenSaidbarAndAws(ArrayList list, ArrayList list2){
-        for(int i = 0; i < list.size(); i++){
-                if(list.get(i).equals(list2.get(i)) && !list.get(i).equals(list2.get(i + 1)) == false ){
-                    Assert.assertEquals(list.get(i), list2.get( i - 1 )) ;
-                }
+    @Step("Compare two list with parent between front and Aws. Category_car_list_page")
+    public Category_car_list_page_Logic compareTwoListsBetweenFrontAndAws(ArrayList list, ArrayList list2, ArrayList groupRating) {
+        for (int i = 0; i < list.size(); i++) {
+            if (!list.get(i).equals(list2.get(i))) {
+                if (groupRating.get(i + 1).equals(groupRating.get(i))) {
+                    Assert.assertEquals(list.get(i), (list2.get(i + 1)));
+                } else if (groupRating.get(i - 1).equals(groupRating.get(i))) {
+                    Assert.assertEquals(list.get(i), (list2.get(i - 1)));
+                } else Assert.fail("Products not equals between front and aws !");
             }
-           if (list.size() != list2.size()) {
-               Assert.fail("list size: " + list.size() + " != list2: " + list2.size() );
-           }
+        }
+        if (list.size() != list2.size()) {
+            Assert.fail("list size: " + list.size() + " != list2: " + list2.size());
+        }
         return this;
     }
 

@@ -134,6 +134,10 @@ public class Listing_chemicals_Page {
         return $x("//div[@class='block categories blue topSubCats']//li[1]");
     }
 
+    ElementsCollection categoriesInSidebar() {
+        return $$x("//div[@class='block categories blue topSubCats']/ul[@class='filetree cat_tree treeview']/li");
+    }
+
     SelenideElement blockSeoText() {
         return $x("//div[@class='block_youtube_video']/span[@class='more_text']");
     }

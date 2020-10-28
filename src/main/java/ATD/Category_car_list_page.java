@@ -117,8 +117,8 @@ class Category_car_list_page {
         return $x("//a[@id='teile_catalog_toggle2']");
     }
 
-    ElementsCollection parentsFromTeilecatalogInSidebar() {
-        return $$x("//div[contains(@class,'block categories blue')][1]//span");
+    ElementsCollection parentsIdFromTeilecatalogInSidebar() {
+        return $$x("//div[contains(@class,'block categories blue')][1]//img");
     }
 
     SelenideElement parentFromTeilecatalogInSidebar() {

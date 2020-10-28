@@ -1,4 +1,4 @@
-package ATD.ACC.QC_2044_BlockCategoriesInSidebarOnChemistryListing;
+package ATD.ACC.QC_1849_ListingChemistry;
 
 import ATD.Index_chemicals_page_Logic;
 import ATD.Listing_chemicals_Page_Logic;
@@ -19,10 +19,11 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2047_SeparateCategoriesInSidebarOnChemistryListing {
+public class QC_2047_TransitionToCategoriesSidebarOnChemistryListing {
 
     private ArrayList nameCategories, nameCategoriesSidebar;
     private Index_chemicals_page_Logic index_chemicals_page_logic = new Index_chemicals_page_Logic();
+    private  Listing_chemicals_Page_Logic listingChemicalsPageLogic = new Listing_chemicals_Page_Logic();
 
     @BeforeClass
     void setUp() {
@@ -42,8 +43,9 @@ public class QC_2047_SeparateCategoriesInSidebarOnChemistryListing {
         openPage(route);
         nameCategories = index_chemicals_page_logic.getNameAllSeparateCategoriesInMainCatalogAndAddToList();
         index_chemicals_page_logic.clickFirstSeparateCategoryMainCatalog();
-        nameCategoriesSidebar = new Listing_chemicals_Page_Logic().getNameCategoriesFromSidebarAndTitleNamePage();
+        nameCategoriesSidebar = listingChemicalsPageLogic.getNameCategoriesFromSidebarAndTitleNamePage();
         Assert.assertEquals(nameCategories, nameCategoriesSidebar);
+        listingChemicalsPageLogic.transitionThroughEachCategoryInSidebar();
     }
 
     @AfterMethod

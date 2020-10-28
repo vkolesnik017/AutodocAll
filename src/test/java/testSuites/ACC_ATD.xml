@@ -131,6 +131,7 @@
             <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2040_PaginationBlockOnChemistryListing"/>
             <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2041_WorkBtnPaginationBlockOnChemistryListing"/>
             <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2043_BlockSeoTextOnChemistryListing"/>
+            <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2047_TransitionToCategoriesSidebarOnChemistryListing"/>
             <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2119_SelectedQuantityAndAddProductsToBasketOnChemistryListing"/>
         </classes>
     </test>
@@ -139,7 +140,6 @@
         <classes>
             <class name="ATD.ACC.QC_2044_BlockCategoriesInSidebarOnChemistryListing.QC_2045_TitleCategoriesBlockInSidebarOnChemistryListing"/>
             <class name="ATD.ACC.QC_2044_BlockCategoriesInSidebarOnChemistryListing.QC_2046_CategoriesSelectedLogicalUnionInSidebarOnChemistryListing"/>
-            <class name="ATD.ACC.QC_2044_BlockCategoriesInSidebarOnChemistryListing.QC_2047_SeparateCategoriesInSidebarOnChemistryListing"/>
             <class name="ATD.ACC.QC_2044_BlockCategoriesInSidebarOnChemistryListing.QC_2048_SelectCategoryFromSidebarOnChemistryListing"/>
         </classes>
     </test>

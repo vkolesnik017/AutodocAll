@@ -74,7 +74,7 @@ public class Listing_accessories_page_Logic extends Listing_accessories_page {
     @Step("Get name all categories from sidebar and title name page. Listing_accessories_page")
     public ArrayList<String> getNameAllCategoriesInSidebarAndTitleNamePage() {
         ArrayList<String> nameCategories = new ArrayList<>();
-        firstCategoryInSidebar().shouldBe(visible).scrollIntoView(true);
+        titleCategoriesBlockInSidebar().shouldBe(visible).scrollIntoView(true);
         for (SelenideElement element : categoriesInSidebar()) {
             String name = element.getText();
             nameCategories.add(name);
