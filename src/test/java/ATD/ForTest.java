@@ -14,7 +14,7 @@ public class ForTest extends SetUp {
 
     @Test()
     public void test() throws SQLException {
-        List<String> test = new DataBase().getNameRequisitesMethod("bank_requisites_atd", "BG", "Owner","Bank","IBAN");
+        List<String> test = new DataBase().getNameRequisitesMethod("bank_requisites_atd", "other", "Owner","Bank","IBAN","Sort Code");
         for (String d : test) {
             System.out.println(d);
         }
