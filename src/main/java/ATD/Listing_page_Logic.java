@@ -1418,13 +1418,12 @@ public class Listing_page_Logic extends Listing_page {
     @Step("Click the Ersatz Anzeign Button and checking the Displaying Analog Block with pictograms. Listing_page")
     public Listing_page_Logic checkDisplayingAnalogBlock() {
         ersatzAnzeigenButton().click();
-        alternativeBlock().scrollIntoView("{block: \"center\"}");
-        alternativeBlock().shouldBe(visible);
-        for (int i = 0; i < pictogramsAlternativeBlock().size(); i++) {
+        alternativeBlock().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        for (int i = 0; i < mehrButtonListing().size(); i++) {
             String iconInAlternativeBlock = pictogramsAlternativeBlock().get(i).shouldBe(visible).getAttribute("style");
-            pictogramsAlternativeBlock().get(i).waitUntil(visible,2000);
-            pictogramsAlternativeBlock().get(i).shouldBe(visible).click();
-            popUpDangerousListing().waitUntil(visible,2000).shouldBe(visible);
+            ersatzAnzeigenButton().hover();
+            mehrButtonListing().get(i).waitUntil(visible,4000).scrollTo().click();
+            popUpDangerousListing().waitUntil(visible,4000).shouldBe(visible);
             popUpDangerousTitle().shouldBe(visible);
             Assert.assertFalse(popUpDangerousTitle().text().isEmpty());
             popUpDangerousText().shouldBe(visible);
