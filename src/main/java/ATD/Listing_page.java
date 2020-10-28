@@ -955,7 +955,7 @@ public class Listing_page {
     }
 
     SelenideElement popUpDangerousTitle() {
-        return $x("//*[@class='popup-dangerous']");
+        return $x("//*[@class='popup-dangerous__title']");
     }
 
     SelenideElement popUpDangerousText() {
@@ -964,6 +964,10 @@ public class Listing_page {
 
     SelenideElement closePopUpButton() {
         return $x("//*[@class='popup-dangerous__close js-popup-dangerous__close']");
+    }
+
+    ElementsCollection mehrButtonListing() {
+        return $$x("//*[@class='top-small-products top-small-products--alternative']//*[@class='dangerous-listing__show-more']");
     }
 }
 
