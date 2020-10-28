@@ -43,8 +43,7 @@ public class QC_2451_CheckDisplayingAndClickOnTheDangerMarkAnalogBlock {
                 .presenceOfTheTextAndWarningWordInPopUp();
         main_page_logic.useSearch("03.9901-5801");
         listing_page_logic.checkProductsByArticle("03.9901-5801")
-                .checkDisplayingAnalogBlock()
-                .presenceOfTheTextAndWarningWordInPopUpListing();
+                .checkDisplayingAnalogBlock();
     }
 
     @AfterMethod
