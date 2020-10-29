@@ -242,7 +242,7 @@ public class Product_page_Logic extends Product_page {
     public Product_page_Logic checkingTheTransitionToTheBrandProductPageAfterClickingTheBrandLogo() throws SQLException {
 
         productBrandIcon().shouldHave(Condition.attribute("alt"));
-        productBrandIconLink().scrollIntoView(false).click();
+        productBrandIconLink().scrollIntoView("{block: \"center\"}").click();
         checkingContainsUrl(new DataBase("PKW").getRouteByRouteName("DE", "supplier"));
         back();
         return this;

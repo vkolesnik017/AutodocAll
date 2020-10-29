@@ -302,7 +302,7 @@ public class DataBase {
         Connection conn = coonectionDB(dbName);
         String nameRequisites = null;
         ArrayList<String> finalList = new ArrayList<>();
-        for(String req : requisites) {
+        for (String req : requisites) {
             String query = "SELECT ".concat(shop) + " FROM autodoc.".concat(dbName) + " where Name_requisites=" + "\"".concat(req) + "\"";
             try {
                 statement = conn.createStatement();
@@ -310,16 +310,16 @@ public class DataBase {
                 while (resultSet.next()) {
                     nameRequisites = resultSet.getString(1);
                 }
+                if(nameRequisites != null)
+                finalList.add(nameRequisites);
                 statement.close();
-                conn.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
+            } catch (SQLException state) {
+                state.printStackTrace();
             } finally {
                 if (statement != null) statement.close();
-                if (conn != null) conn.close();
             }
-            finalList.add(nameRequisites);
         }
+        conn.close();
         return finalList;
     }
 

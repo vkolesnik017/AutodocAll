@@ -955,7 +955,7 @@ public class Listing_page {
     }
 
     SelenideElement popUpDangerousTitle() {
-        return $x("//*[@class='popup-dangerous']");
+        return $x("//*[@class='popup-dangerous__title']");
     }
 
     SelenideElement popUpDangerousText() {
@@ -964,6 +964,18 @@ public class Listing_page {
 
     SelenideElement closePopUpButton() {
         return $x("//*[@class='popup-dangerous__close js-popup-dangerous__close']");
+    }
+
+    ElementsCollection mehrButtonListing() {
+        return $$x("//*[@class='top-small-products-items__item']//*[@class='dangerous-listing js-dangerous-listing__show-more']");
+    }
+
+    SelenideElement detailsPopUp() {
+        return $x("//*[@class='rec_prod_info_popup']");
+    }
+
+    SelenideElement mehrButtonListingOne() {
+        return $x("//*[@class='top-small-products-items__item']//*[@class='dangerous-listing js-dangerous-listing__show-more']");
     }
 }
 
