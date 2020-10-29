@@ -40,13 +40,13 @@ public class QC_2392_CheckingSwitchingOnBraintreeOnFronts_PKW {
     public void testForCheckingSwitchingOnBraintreeOnFronts(String route) throws Exception {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
-        String userData = new DataBase("PKW").getUserIdForPaymentsMethod("payments_userid_pkw", shop, "CreditCard_braintree");
+        String userData = new DataBase("PKW").getUserIdForPaymentsMethod("payments_userid_pkw", shop, "CreditCard_be2bill");
         String userID = parseUserIdFromBD(userData);
         String mail = parseUserMailFromBD(userData);
         new Product_page_Logic().addProductToCart()
                 .closeBtnOFPopupReviewIfYes()
                 .cartClick()
-                .checkPresencePaymentsMethodLabel(new Cart_page().visaLabel(), new Cart_page().masterCardLabel(), new Cart_page().discoverLabel())
+                .checkPresencePaymentsMethodLabel(new Cart_page().visaLabel(), new Cart_page().masterCardLabel())
                 .checksPresenceOfPaymentMethodsLabelForRequiredCountry(shop,"IT", new Cart_page().cartaSiLabel(), new Cart_page().postePayLabel())
                 .nextButtonClick()
                 .signIn(mail, passwordForPayments)
@@ -54,16 +54,16 @@ public class QC_2392_CheckingSwitchingOnBraintreeOnFronts_PKW {
                 .fillFieldTelNumForShipping("100+001")
                 .nextBtnClick()
                 .checksPresencePaymentsMethodLabelForRequiredCountry(shop)
-                .clickOnTheDesiredPaymentMethod(shop, "CreditCard_braintree")
+                .clickOnTheDesiredPaymentMethod(shop, "CreditCard_be2bill")
                 .nextBtnClick()
                 .checksPresencePaymentsMethodLabelForRequiredCountry(shop)
                 .nextBtnClick();
-        checkingContainsUrl("bcreditcards");
-        new Merchant_page().checksPresencePaymentsMethodLabelForRequiredCountry(shop);
+        new Merchant_page().checkPresenceElementFromMerchantPageB2billCreditCardAndCancelOrder("5169307507657018", "1225", "658");
+        new CartPayments_page_Logic().checkActivePaymentMethod("be2bill");
         new Customer_view_aws().openCustomerPersonalArea(userID)
                 .checkPresenceOrderHistoryBlock()
                 .checkAndOpenOrderWithExpectedData()
-                .checkPaymentMethodInOrder("Braintree")
+                .checkPaymentMethodInOrder("Be2bill")
                 .checkCurrentStatusInOrder("Abgebrochene")
                 .reSaveOrder()
                 .checkCurrentStatusInOrder("Testbestellungen");

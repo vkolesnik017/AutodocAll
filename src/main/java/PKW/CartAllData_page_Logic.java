@@ -34,8 +34,6 @@ public class CartAllData_page_Logic extends CartAllData_page {
         } else {
             visaLabel().shouldBe(visible);
             masterCardLabel().shouldBe(visible);
-            discoverLabel().shouldBe(visible);
-            americanExpressLabel().shouldBe(visible);
         }
         return this;
     }
