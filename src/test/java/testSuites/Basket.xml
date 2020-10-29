@@ -64,7 +64,7 @@
             <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery.QC_1927_LoginNegativeCase_InvalidDomain"/>
             <!--<class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery.QC_1928_LoginNegativeCase_EmptyInputs"/>-->
             <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery.QC_1930_PasswordRecoveryNegativeCase_NotRegisteredMail"/>
-            <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery.QC_1929_PasswordRecovery"/>
+            <!--<class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery.QC_1929_PasswordRecovery"/>-->
            <!--<class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery.QC_1931_PasswordRecoveryNegativeCase_IncorrectPasswordConfirmation"/>-->
         </classes>
     </test>
