@@ -22,11 +22,11 @@ public class CartAllData_page {
     }
 
     public SelenideElement deliveryAddressInfo() {
-        return $x(" //*[@id='cart-page']/div[2]/div[1]/div[1]/div[2]");
+        return $x("(//div[@class='info-user-cart__info'])[1]");
     }
 
     public SelenideElement payersAddressInfo() {
-        return $x("//*[@id='cart-page']/div[2]/div[1]/div[2]/div[2]");
+        return $x("(//div[@class='info-user-cart__info'])[2]");
     }
 
     SelenideElement btnOpenInfoOfProduct() {
