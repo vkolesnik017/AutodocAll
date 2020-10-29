@@ -568,6 +568,7 @@ public class Search_page_Logic extends Search_page {
 
     @Step("get id of all products from page. Search_page")
     public List<String> getIdOfActiveProduct() {
+        attributeOfActiveBtnAddedToBasket().get(0).shouldBe(visible);
         List<String> idOfProduct = attributeOfActiveBtnAddedToBasket().stream().map(n -> n.getAttribute("id")).collect(Collectors.toList());
         return idOfProduct;
     }
