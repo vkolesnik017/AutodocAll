@@ -1,6 +1,6 @@
 package ATD.Listings.QC_2412_ListingOfProductListing;
 
-import ATD.Main_page_Logic;
+import ATD.Maker_car_list_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -18,8 +18,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2403_CheckProductSortingByPriceNettoInSearchListing {
-
+public class QC_2674_CheckProductSortingByPriceNettoInSearchListingWithSelectedCar {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -30,16 +29,16 @@ public class QC_2403_CheckProductSortingByPriceNettoInSearchListing {
 
     @DataProvider(name = "route")
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "main");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "maker_car_list16");
     }
 
     @Owner(value = "Kolesnik")
     @Test(dataProvider = "route")
     @Flaky
-    @Description(value = "test check product sorting by price netto in search listing")
-    public void testCheckProductSortingByPriceNettoInSearchListing(String route) throws SQLException {
+    @Description(value = "test check product sorting by price netto in search listing with selected car")
+    public void testCheckProductSortingByPriceNettoInSearchListingWithSelectedCar(String route) throws SQLException {
         openPage(route);
-        new Main_page_Logic().checkProductSortingByPriceNetto(searchValues);
+        new Maker_car_list_page_Logic().checkProductSortingByPriceNetto(searchValues);
     }
 
     @AfterMethod

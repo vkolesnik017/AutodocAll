@@ -54,6 +54,20 @@ public class QC_527_PresenceRecoveryCharacteristicsOnMiniCard {
 
     new Category_name_brand_page_Logic().presenceRefurbishedCharacteristicInTopProductWithArticle("Zustand Wiederaufbereitet", "R");
   }
+  @DataProvider(name = "routesWithCharacteristic", parallel = true)
+  Object[] dataProviderWithCharacteristic() throws SQLException {
+    return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_name_brand10,category_maker_brand6");
+  }
+
+  @Test(dataProvider = "routesWithCharacteristic")
+  @Flaky
+  @Owner(value = "Kolesnik")
+  @Description(value = "Test checks presence Refurbished characteristic in listings and product page")
+  public void testChecksPresenceRefurbishedCharacteristicInListingsAndProductPageWithCharacteristic(String route) {
+    openPage(route);
+
+    new Category_name_brand_page_Logic().presenceRefurbishedCharacteristicInTopProductWithCharacteristic("DELCO REMY","Ergänzende Info: Remy Remanufactured","Zustand Wiederaufbereitet");
+}
 
   @AfterMethod
   private void close() {

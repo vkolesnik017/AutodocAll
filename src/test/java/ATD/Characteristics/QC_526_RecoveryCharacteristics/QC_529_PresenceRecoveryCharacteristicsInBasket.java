@@ -26,12 +26,12 @@ public class QC_529_PresenceRecoveryCharacteristicsInBasket {
 
     @DataProvider(name = "route")
     Object[] test1() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product39,product40");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product39,product40,product47");
     }
 
     @Test(dataProvider = "route")
     @Flaky
-    @Owner(value = "Evlentiev")
+    @Owner(value = "Kolesnik")
     @Description(value = "Test-3. Checks output characteristic recovery in basket")
     public void testPresenceRecoveryCharacteristicsInBasket(String route) {
         openPage(route);

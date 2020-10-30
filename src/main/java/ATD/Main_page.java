@@ -53,9 +53,7 @@ public class Main_page {
         return $(By.xpath("//a[@class='enter submit']"));
     }
 
-    public SelenideElement searchBar() {
-        return $(byId("search"));
-    }
+    public SelenideElement searchBar() { return $(byId("search"));  }
 
     public SelenideElement headerSearchSubmitBtn() {
         return $x("//a[contains(@class,'header-search')]");
