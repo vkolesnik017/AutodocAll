@@ -45,4 +45,6 @@ public class Category_name_brand_page {
 
     ElementsCollection signalWordOfDangerousProduct() {return $$x("//div[@class='dangerous-listing__title hidden hazard-danger-title']");}
 
+    ElementsCollection fullValuesOfCharacteristicTopProduct(int position) {return $$x("(//div[@class='item-table-box__container'])["+position+"]//li");}
+
 }

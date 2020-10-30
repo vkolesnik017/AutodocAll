@@ -106,7 +106,33 @@ public class QC_528_PresenceRefurbishedCharacteristicInListingsAndProductPage {
         openPage(route);
         new Product_page_Logic().presenceRefurbishedCharacteristicWithArticle("Henkel Parts", "Zustand  Wiederaufbereitet", "R");
     }
+    @DataProvider(name = "routesCarListWithCharacteristic", parallel = true)
+    Object[] dataProviderCarListWithCharacteristic() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list50,category_oen24");
+    }
 
+    @Test(dataProvider = "routesCarListWithCharacteristic")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test checks presence Refurbished characteristic in listings and product page")
+    public void testChecksPresenceRefurbishedCharacteristicInListingsAndProductPageCarListWithCharacteristic(String route) {
+        openPage(route);
+        new Category_car_list_page_Logic().presenceRefurbishedCharacteristicInListingProductWithCharacteristic("Zustand  Wiederaufbereitet", "DELCO REMY","Ergänzende Info:Remy Remanufactured");
+    }
+
+    @DataProvider(name = "routesWithCharacteristic", parallel = true)
+    Object[] dataProviderWithCharacteristic() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "search42");
+    }
+
+    @Test(dataProvider = "routesWithCharacteristic")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test checks presence Refurbished characteristic in listings and product page")
+    public void testChecksPresenceRefurbishedCharacteristicInListingsAndProductPageWithCharacteristic(String route) {
+        openPage(route);
+        new Search_page_Logic().presenceRefurbishedCharacteristicInListingWithCharacteristic("Zustand  Wiederaufbereitet", "DELCO REMY","Ergänzende Info:Remy Remanufactured");
+    }
     @AfterMethod
     public void close() {
         closeWebDriver();

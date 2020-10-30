@@ -579,7 +579,6 @@ public class Search_page_Logic extends Search_page {
         return idOfProduct;
     }
 
-
     @Step("go to next page. Search_page")
     public Search_page_Logic goToNextPage() {
         forwardOfPaginator().click();
@@ -590,6 +589,23 @@ public class Search_page_Logic extends Search_page {
     public Search_page_Logic presenceOfVisibleParentCategories() {
         for (int i = 0; i < 5; i++) {
             visibleParentCategories().get(i).shouldBe(visible);
+        }
+        return this;
+    }
+
+
+    @Step("presence Refurbished characteristic in Listing With expected Characteristic. Search_page")
+    public Search_page_Logic presenceRefurbishedCharacteristicInListingWithCharacteristic(String expectedCharacteristic, String titleOfProduct, String presentCharacteristic) {
+        titleOnSearchPage().shouldBe(visible);
+        List<String> characteristicOfProduct = new ArrayList<>();
+        for (int i = 0; i < titleOfProductsInListing().size(); i++) {
+            if (titleOfProductsInListing().get(i).getText().contains(titleOfProduct)) {
+                characteristicOfProduct = visibleCharacteristicsOfProducts(i + 1).stream().map(n -> n.getText().replaceAll("\n", "")).collect(Collectors.toList());
+                if (characteristicOfProduct.contains(presentCharacteristic)) {
+                    Assert.assertTrue(characteristicOfProduct.contains(expectedCharacteristic));
+                }
+            }
+            characteristicOfProduct.clear();
         }
         return this;
     }
