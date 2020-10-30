@@ -128,8 +128,9 @@ public class Category_name_brand_page_Logic extends Category_name_brand_page {
     }
 
     @Step("get signal word from first dangerous product .Category_name_brand_page")
-    public String getSignalWordFromFirstDangerousProduct(int positionOfProduct) {
-        return getTextFromUnVisibleElement(signalWordOfDangerousProduct().get(positionOfProduct));
+    public String getSignalWordFromFirstDangerousProduct() {
+        dangerousPopUp().shouldBe(visible);
+        return getTextFromUnVisibleElement(signalWordOfDangerousProduct().get(0));
     }
 
     @Step("presence Refurbished Characteristic in TOP product with characteristic. Category_name_brand_page")
