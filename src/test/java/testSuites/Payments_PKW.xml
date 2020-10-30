@@ -6,6 +6,13 @@
         <listener class-name="Common.ProjectListener"/>
     </listeners>
 
+    <test name="QC_2464_Bank_PKW">
+        <classes>
+            <class name="PKW.Payments.QC_2464_Bank_PKW">
+            </class>
+        </classes>
+    </test>
+
     <test name="QC_2395_CheckingSwitchingOnBraintreeInAWS_PKW">
         <classes>
             <class name="PKW.Payments.QC_2395_CheckingSwitchingOnBraintreeInAWS_PKW">

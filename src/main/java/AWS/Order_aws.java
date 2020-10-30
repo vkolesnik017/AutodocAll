@@ -895,8 +895,10 @@ public class Order_aws {
     }
 
     @Step("Checks payment method {PaymentMethod} in order. Order_aws")
-    public Order_aws checkPaymentMethodInOrder(String firstBank, String secondBank, String thirdBank, String fourthBank) {
-        paymentMethod().shouldHave(or("text", text(firstBank), text(secondBank), text(thirdBank), text(fourthBank)));
+    public Order_aws checkPaymentMethodInOrder(String firstBank, String secondBank, String thirdBank, String fourthBank, String fifthBank,
+                                               String sixthBank, String seventhBank) {
+        paymentMethod().shouldHave(or("text", text(firstBank), text(secondBank), text(thirdBank), text(fourthBank), text(fifthBank),
+                                                    text(sixthBank), text(seventhBank)));
         return this;
     }
 

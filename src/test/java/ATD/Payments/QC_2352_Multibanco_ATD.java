@@ -18,6 +18,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.*;
 import static Common.DataBase.parseUserMailFromBD;
+import static Common.File.assertThatPdfContainsText;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static mailinator.WebMail.passwordForMail;
@@ -61,7 +62,7 @@ public class QC_2352_Multibanco_ATD {
                 .checkOrganizationName("12057")
                 .comparesPriceOfOrderDetailsWithPriceOnAllDataPage(totalPriceAllData)
                 .getTextRequisites();
-        canAssertThatPdfContainsText("C:/Users/User/Downloads/bank_info.pdf", requisitesText);
+        assertThatPdfContainsText("C:/Users/User/Downloads/bank_info.pdf", requisitesText);
         String orderNum = new Payment_handler_page_Logic().getOrderNumber();
         float totalPriceOrderAws = new Order_aws(orderNum).openOrderInAwsWithLogin()
                 .checkPaymentMethodInOrder("B2B - Multibanco")

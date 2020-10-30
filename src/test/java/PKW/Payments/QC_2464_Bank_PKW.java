@@ -11,14 +11,18 @@ import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
 import mailinator.WebMail;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 import static Common.DataBase.parseUserMailFromBD;
+import static Common.File.assertThatPdfContainsText;
+import static Common.File.renameDownloadFile;
 import static Common.SetUp.setUpBrowser;
 import static PKW.CommonMethods.*;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static mailinator.WebMail.passwordForMail;
 
 public class QC_2464_Bank_PKW {
@@ -30,7 +34,7 @@ public class QC_2464_Bank_PKW {
 
     @DataProvider(name = "route", parallel = false)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp("PKW").setUpShopsWithSubroute("prod", /*"DE,AT,BG,CH,CZ,DK,ES,FI,FR,GR,HU,IT,NL,NO,PL,PT,RO,SE,EN"*/"SE", "main", "product9");
+        return new SetUp("PKW").setUpShopsWithSubroute("prod", "DE,AT,BG,CH,CZ,DK,ES,FI,FR,GR,HU,IT,NL,NO,PL,PT,RO,SE,EN", "main", "product9");
     }
 
     @Test(dataProvider = "route")
@@ -60,10 +64,12 @@ public class QC_2464_Bank_PKW {
                 .compareExpectedRequisitesWithActual(shop)
                 .checksPriceOrderInRequisites(totalPriceAllData)
                 .getTextRequisites();
-        canAssertThatPdfContainsText("C:/Users/User/Downloads/bank_info.pdf", requisitesText);
+        renameDownloadFile("C:/Users/User/Downloads/bank_info.pdf", "C:/Users/User/Downloads/bank_info_" + shop + ".pdf");
+        assertThatPdfContainsText("C:/Users/User/Downloads/bank_info_" + shop + ".pdf", requisitesText);
         String orderNum = new Payment_handler_page_Logic().getOrderNumber();
         float totalPriceOrderAws = new Order_aws(orderNum).openOrderInAwsWithLogin()
-                .checkPaymentMethodInOrder("Bank Austria","HypoVereinsbank","Vorkasse","SEB SE")
+                .checkPaymentMethodInOrder("Bank Austria","HypoVereinsbank","Vorkasse","SEB", "UniCredit Bank",
+                                           "Przelew Bankowy","PostFinance")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceAllData, totalPriceOrderAws);
         float totalPriceOrderAwsAfterReSave = new Order_aws().reSaveOrder()
@@ -71,9 +77,13 @@ public class QC_2464_Bank_PKW {
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceAllData, totalPriceOrderAwsAfterReSave);
 
-
         new WebMail().openMail(mail, passwordForMail)
                 .checkAndOpenLetterWithOrderNumber(orderNum)
-                .comparesTextOfRequisitesInMailWithExpectedRequisites(requisitesText);
+                .compareExpectedRequisitesWithActual(shop);
+    }
+
+    @AfterMethod
+    private void close() {
+        closeWebDriver();
     }
 }
