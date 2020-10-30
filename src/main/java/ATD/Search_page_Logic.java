@@ -581,7 +581,7 @@ public class Search_page_Logic extends Search_page {
 
     @Step("go to next page. Search_page")
     public Search_page_Logic goToNextPage() {
-        forwardOfPaginator().click();
+        forwardOfPaginator().scrollIntoView("{block: \"end\"}").click();
         return this;
     }
 

@@ -10,5 +10,9 @@ public class Group_list_hp_page {
 
     SelenideElement topProductsBlock() {return $x("//div[contains(@class,'js-product-list-animation')]");}
 
-    ElementsCollection signalWordOfDangerousProduct() {return $$x("//div[@class='dangerous-listing__title hidden hazard-attention-title']");}
+    ElementsCollection signalWordOfDangerousProduct() {return $$x("//div[@class='popup-dangerous__title']");}
+
+    ElementsCollection btnMoreOfDangerousProduct() {return $$x("//span[@class='dangerous-listing__show-more']");}
+
+    SelenideElement dangerousPopUp() {return $x("//div[@class='popup-dangerous']");}
 }

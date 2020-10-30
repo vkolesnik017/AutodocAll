@@ -14,7 +14,8 @@ public class Group_list_body_page_Logic  extends Group_list_body_page{
     }
 
     @Step("get signal word from first dangerous product .Group_list_body_page")
-    public String getSignalWordFromFirstDangerousProduct(int positionOfProduct) {
-        return getTextFromUnVisibleElement(signalWordOfDangerousProduct().get(positionOfProduct));
+    public String getSignalWordFromFirstDangerousProduct() {
+        dangerousPopUp().shouldBe(visible);
+        return getTextFromUnVisibleElement(signalWordOfDangerousProduct().get(0));
     }
 }
