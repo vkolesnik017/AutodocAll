@@ -49,8 +49,6 @@ public class CartPayments_page_Logic extends CartPayments_page {
             } else {
                 visaLabel().shouldBe(visible);
                 masterCardLabel().shouldBe(visible);
-                discoverLabel().shouldBe(visible);
-                americanExpressLabel().shouldBe(visible);
         }
         return this;
     }

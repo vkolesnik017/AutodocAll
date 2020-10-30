@@ -310,4 +310,20 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
         return this;
     }
 
+    @Step("presence Refurbished characteristic in listing of Product with expected Characteristic. Category_car_list_page")
+    public Category_car_list_page_Logic presenceRefurbishedCharacteristicInListingProductWithCharacteristic(String expectedCharacteristic, String titleOfProduct, String presentCharacteristic) {
+        listingOfProductsBlock().shouldBe(visible);
+        List<String> characteristicOfProduct = new ArrayList<>();
+        for (int i = 0; i < titleOfProductInTecDocListing().size(); i++) {
+            if (titleOfProductInTecDocListing().get(i).getText().contains(titleOfProduct)) {
+                characteristicOfProduct = visibleCharacteristicsOfProducts(i + 1).stream().map(n -> n.getText().replaceAll("\n", "")).collect(Collectors.toList());
+                if (characteristicOfProduct.contains(presentCharacteristic)) {
+                    Assert.assertTrue(characteristicOfProduct.contains(expectedCharacteristic));
+                }
+            }
+            characteristicOfProduct.clear();
+        }
+        return this;
+    }
+
 }

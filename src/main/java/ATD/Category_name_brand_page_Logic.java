@@ -2,8 +2,11 @@ package ATD;
 
 import io.qameta.allure.Step;
 import org.testng.Assert;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import static ATD.CommonMethods.getTextFromUnVisibleElement;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -127,6 +130,22 @@ public class Category_name_brand_page_Logic extends Category_name_brand_page {
     @Step("get signal word from first dangerous product .Category_name_brand_page")
     public String getSignalWordFromFirstDangerousProduct(int positionOfProduct) {
         return getTextFromUnVisibleElement(signalWordOfDangerousProduct().get(positionOfProduct));
+    }
+
+    @Step("presence Refurbished Characteristic in TOP product with characteristic. Category_name_brand_page")
+    public Category_name_brand_page_Logic presenceRefurbishedCharacteristicInTopProductWithCharacteristic(String expectedTitle, String presentCharacteristic, String expectedCharacteristic) {
+        topProductsBlock().shouldBe(visible);
+        List<String> characteristicOfProduct = new ArrayList<>();
+        for (int i = 0; i < visibleTitleOfTopProducts().size(); i++) {
+            if (visibleTitleOfTopProducts().get(i).getText().contains(expectedTitle)) {
+                characteristicOfProduct = fullValuesOfCharacteristicTopProduct(i + 1).stream().map(n -> getTextFromUnVisibleElement(n).replaceAll("\n", "").replaceAll("\\s", "")).collect(Collectors.toList());
+                if (characteristicOfProduct.contains(presentCharacteristic.replaceAll("\\s", ""))) {
+                    Assert.assertTrue(characteristicOfProduct.contains(expectedCharacteristic));
+                }
+            }
+            characteristicOfProduct.clear();
+        }
+        return this;
     }
 
 }

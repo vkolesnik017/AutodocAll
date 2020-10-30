@@ -1317,8 +1317,7 @@ public class Main_page_Logic extends Main_page {
             if (!searchBar().isDisplayed()) {
                 openPage(db.getFullRouteByRouteName("prod", "DE", "main"));
             }
-              useSearch(list.get(i));
-
+           useSearch(list.get(i));
             activeFirstPage = searchPage.getIdOfActiveProduct();
             notActiveFirstPage = searchPage.getIdOfNotActiveProduct();
             searchPage.addProductToList(firstPageProduct, productsList()).checkSortingOfProducts(firstPageProduct).goToNextPage();
@@ -1335,11 +1334,12 @@ public class Main_page_Logic extends Main_page {
             getPriceNettoOfProduct(priceNettoThirdPageAws, activeThirdPage);
             checkPriceNettoFromAWS(priceNettoFirstPageAws, priceNettoSecondPageAws, priceNettoThirdPageAws);
             priceNettoFirstPageAws.clear(); priceNettoSecondPageAws.clear(); priceNettoThirdPageAws.clear();
-            getPriceNettoOfProduct(priceNettoFirstPageAws, notActiveFirstPage);
+            /*ВРЕМЕННО ОТКЛЮЧЕНА ПРОВЕРКА ДЛЯ СЕРЫХ КНОПОК*/
+      /*      getPriceNettoOfProduct(priceNettoFirstPageAws, notActiveFirstPage);
             getPriceNettoOfProduct(priceNettoSecondPageAws, notActiveSecondPage);
             getPriceNettoOfProduct(priceNettoThirdPageAws, notActiveThirdPage);
             checkPriceNettoFromAWS(priceNettoFirstPageAws, priceNettoSecondPageAws, priceNettoThirdPageAws);
-            priceNettoFirstPageAws.clear(); priceNettoSecondPageAws.clear(); priceNettoThirdPageAws.clear();
+            priceNettoFirstPageAws.clear(); priceNettoSecondPageAws.clear(); priceNettoThirdPageAws.clear();*/
             activeFirstPage.clear(); activeSecondPage.clear(); activeThirdPage.clear();
             firstPageProduct.clear(); secondPageProduct.clear(); thirdPageProduct.clear();
             notActiveFirstPage.clear(); notActiveSecondPage.clear(); notActiveThirdPage.clear();

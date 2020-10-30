@@ -119,7 +119,7 @@
             <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_2326_UpdatingOfPageWithSelectedVehicle"/>
             <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_2344_UpdatingOfPageWithSelectedTruckInGaragePopUp"/>
             <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_2345_UpdatingOfPageWithSelectedMotoInGaragePopUp"/>
-            <class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1027_EditingVehicleOnMyGaragePage"/>
+            <!--<class name="ATD.PrivateRoom.QC_1016_MyGarageInUserAccount.QC_1027_EditingVehicleOnMyGaragePage"/>-->
         </classes>
     </test>
 

@@ -264,7 +264,6 @@ public class Search_page {
 
     ElementsCollection priceOfProduct() {return $$x("//p[@class='actual_price']");}
 
-
     ElementsCollection attributeOfBtnAddedToBasket() { return $$x("//div[@class='count']/following-sibling::div");}
 
     ElementsCollection attributeOfActiveBtnAddedToBasket() { return $$x("//div[@class='count']/following-sibling::div[@class='button ']");}
