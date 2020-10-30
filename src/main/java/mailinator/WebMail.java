@@ -1,12 +1,15 @@
 package mailinator;
 
 import ATD.PasswordRecovery_page_Logic;
+import Common.DataBase;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
@@ -206,6 +209,32 @@ public class WebMail {
         String requisitesInMail = blockOfRequisites().getText().replaceAll(" ", "").replaceAll("\n", "").toLowerCase();
         String requisitesInSuccessPage = expectedRequisites.replaceAll(" ", "").replaceAll("\n", "").toLowerCase();
         Assert.assertEquals(requisitesInMail, requisitesInSuccessPage);
+        return this;
+    }
+
+    @Step("Compares the text of the requisites in the email with expected requisites. WebMail")
+    public WebMail compareExpectedRequisitesWithActual(String shop) throws SQLException {
+        String requisitesInMail = blockOfRequisites().getText().replaceAll("\n", " ");
+        List<String> requisitesForUniqueCountries;
+        List<String> requisitesForOther;
+        if (shop.equals("AT") || shop.equals("CH") || shop.equals("CZ") || shop.equals("DK") || shop.equals("EN") || shop.equals("HU") || shop.equals("NO") || shop.equals("PL") ||
+                shop.equals("RO") || shop.equals("SE") || shop.equals("BG")) {
+            requisitesForUniqueCountries = new DataBase("PKW").getNameRequisitesMethod("bank_requisites_pkw", shop, "Owner",
+                    "Account number", "Sort Code", "Bank", "IBAN", "BIC_SWIFT");
+            for (String a : requisitesForUniqueCountries) {
+                System.out.println(requisitesInMail);
+                System.out.println(a);
+                Assert.assertTrue(requisitesInMail.contains(a));
+            }
+        } else {
+            requisitesForOther = new DataBase("PKW").getNameRequisitesMethod("bank_requisites_pkw", "other", "Owner",
+                    "Account number", "Sort Code", "Bank", "IBAN", "BIC_SWIFT");
+            for (String a : requisitesForOther) {
+                System.out.println(requisitesInMail);
+                System.out.println(a);
+                Assert.assertTrue(requisitesInMail.contains(a));
+            }
+        }
         return this;
     }
 

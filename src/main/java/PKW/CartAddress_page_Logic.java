@@ -23,6 +23,7 @@ public class CartAddress_page_Logic extends CartAddress_page {
     @Step("Next button click. CartAddress_page")
     public CartPayments_page_Logic nextBtnClick() {
         nextButton().click();
+        sleep(3000);
         return page(CartPayments_page_Logic.class);
     }
 
@@ -207,5 +208,53 @@ public class CartAddress_page_Logic extends CartAddress_page {
     public CartAddress_page_Logic fillFieldTelNumForShipping(String telNum) {
         checkCorrectTextAndFillInput(telephon(), telNum);
         return this;
+    }
+
+    @Step("Chooses Delivery country and filling firm input. CartAddress_page")
+    public CartAddress_page_Logic chooseDeliveryCountryAndFillingFirmInput(String shop, String nameFirm) {
+        chooseDeliveryCountryForShipping(shop);
+        if (!fieldFirm().isDisplayed()) {
+            checkboxFirmShipping().click();
+        }
+        checkCorrectTextAndFillInput(fieldFirm(), nameFirm);
+        checkCorrectTextAndFillInput(telephon(), "200+002");
+        return this;
+    }
+
+    @Step("Fill field tax number {taxNumber} for Shipping. CartAddress_page")
+    public CartAddress_page_Logic fillFieldIdCompanyShipping(String taxNumber) {
+        checkCorrectTextAndFillInput(idCompanyShipping(), taxNumber);
+        return this;
+    }
+
+    @Step("Click button Continue in popup about wrong company. CartAddress_page")
+    public CartPayments_page_Logic clickBtnContinueInPopupAboutWrongCompany() {
+        if (!continueBtnInPopupAboutWrongCompany().isDisplayed()) {
+            nextBtnClick();
+        } else {
+            continueBtnInPopupAboutWrongCompany().click();
+        }
+        return page(CartPayments_page_Logic.class);
+    }
+
+
+    @Step("Fill in the company ID {expectedID} field for the delivery country where ID is needed {expectedShop}. CartAddress_page")
+    public CartPayments_page_Logic fillInCompanyIdFieldForCountryWhereIdNeeded(String actualShop, String expectedShop, String expectedID) {
+        if (actualShop.equals(expectedShop)) {
+            if (idCompanyShipping().isDisplayed()) {
+                fillFieldIdCompanyShipping(expectedID)
+                        .nextBtnClick();
+            } else if (!idCompanyShipping().isDisplayed()) {
+                nextBtnClick();
+            }
+            sleep(3000);
+            if (continueBtnInPopupAboutWrongCompany().isDisplayed()) {
+                continueBtnInPopupAboutWrongCompany().shouldBe(visible);
+                clickBtnContinueInPopupAboutWrongCompany();
+            }
+        } else {
+            nextBtnClick();
+        }
+        return page(CartPayments_page_Logic.class);
     }
 }
