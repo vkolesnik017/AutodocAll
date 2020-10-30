@@ -78,8 +78,9 @@ public class Category_name_page_Logic extends Category_name_page {
     }
 
     @Step("get signal word from first dangerous product .Category_name_page")
-    public String getSignalWordFromFirstDangerousProduct(int positionOfProduct) {
-        return getTextFromUnVisibleElement(signalWordOfDangerousProduct().get(positionOfProduct));
+    public String getSignalWordFromFirstDangerousProduct() {
+        dangerousPopUp().shouldBe(visible);
+        return getTextFromUnVisibleElement(signalWordOfDangerousProduct().get(0));
     }
 
     @Step("get attribute of Warning icon in pop-Up .Category_name_page")
@@ -117,13 +118,13 @@ public class Category_name_page_Logic extends Category_name_page {
     }
 
     @Step("click on dangerous label of product and compare elements. Category_name_page")
-    public Category_name_page_Logic clickOnDangerousLabelAndCompareElements(int positionOfProduct, String signalWord, List<String> attributeOfWarningIcon) {
+    public Category_name_page_Logic clickOnDangerousLabelAndCompareElements(int positionOfProduct, List<String> attributeOfWarningIcon) {
         scrollToDangerousElement(positionOfProduct);
 
         labelTitleDangerousProducts().get(positionOfProduct).shouldBe(visible).click();
         blackBackground().shouldHave(attribute("style", "display: block;"));
         warningPopUp().shouldBe(visible).shouldHave(attribute("style", "display: block;"));
-        titleOfDangerousPopUp().shouldBe(visible).shouldHave(exactText(signalWord));
+       // titleOfDangerousPopUp().shouldBe(visible).shouldHave(exactText(signalWord));
         infoTextOfDangerousPopUp().shouldNotBe(empty);
         List<String> attributeOfDangerousIcon = new ArrayList<>();
         for (int i = 0; i < attributeOfWarningIcon(positionOfProduct + 1).size(); i++) {

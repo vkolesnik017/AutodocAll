@@ -67,6 +67,7 @@ public class QC_2450_CheckDisplayingAndClickByDangerousProductsBlock {
         new ProductCard_aws(idOfDangerousProduct).openProductCardPageAndLogin().presenceOfDangerousIconBlock().compareElementsOfDangerousProduct(attributeOfWarningIconInPopUp, signalWord);
     }
 
+
     @DataProvider(name = "routesCategoryName", parallel = true)
     Object[] dataProviderCategoryName() throws SQLException {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_name9,group_list_hp2");
@@ -79,9 +80,9 @@ public class QC_2450_CheckDisplayingAndClickByDangerousProductsBlock {
     public void testCheckDisplayingAndClickByDangerousProductsBlockCategoryName(String route) {
         openPage(route);
         String idOfDangerousProduct = categoryNamePage.presenceOfTopProductsBlock().getIdOfDangerousProduct(0);
-        String signalWord = groupListHpPageLogic.presenceOfTopProductsBlock().getSignalWordFromFirstDangerousProduct(0);
         List<String> attributeOfWarningIconInPopUp = categoryNamePage.getAttributeOfWarningIconInPopUp(0);
-        categoryNamePage.clickOnDangerousLabelAndCompareElements(0, signalWord, attributeOfWarningIconInPopUp);
+        categoryNamePage.clickOnDangerousLabelAndCompareElements(0, attributeOfWarningIconInPopUp);
+        String signalWord = groupListHpPageLogic.getSignalWordFromFirstDangerousProduct();
         new ProductCard_aws(idOfDangerousProduct).openProductCardPageAndLogin().presenceOfDangerousIconBlock().compareElementsOfDangerousProduct(attributeOfWarningIconInPopUp, signalWord);
     }
 
@@ -97,9 +98,10 @@ public class QC_2450_CheckDisplayingAndClickByDangerousProductsBlock {
     public void testCheckDisplayingAndClickByDangerousProductsBlockCategoryNameBrand(String route) {
         openPage(route);
         String idOfDangerousProduct = categoryNamePage.presenceOfTopProductsBlock().getIdOfDangerousProduct(0);
-        String signalWord = categoryNameBrandPage.presenceOfTopProductsBlock().getSignalWordFromFirstDangerousProduct(0);
+
         List<String> attributeOfWarningIconInPopUp = categoryNamePage.getAttributeOfWarningIconInPopUp(0);
-        categoryNamePage.clickOnDangerousLabelAndCompareElements(0, signalWord, attributeOfWarningIconInPopUp);
+        categoryNamePage.clickOnDangerousLabelAndCompareElements(0, attributeOfWarningIconInPopUp);
+        String signalWord = categoryNameBrandPage.getSignalWordFromFirstDangerousProduct();
         new ProductCard_aws(idOfDangerousProduct).openProductCardPageAndLogin().presenceOfDangerousIconBlock().compareElementsOfDangerousProduct(attributeOfWarningIconInPopUp, signalWord);
     }
 
@@ -115,9 +117,9 @@ public class QC_2450_CheckDisplayingAndClickByDangerousProductsBlock {
     public void testCheckDisplayingAndClickByDangerousProductsBlockListBody(String route) {
         openPage(route);
         String idOfDangerousProduct = categoryNamePage.presenceOfTopProductsBlock().getIdOfDangerousProduct(0);
-        String signalWord = groupListBodyPage.presenceOfTopProductsBlock().getSignalWordFromFirstDangerousProduct(0);
         List<String> attributeOfWarningIconInPopUp = categoryNamePage.getAttributeOfWarningIconInPopUp(0);
-        categoryNamePage.clickOnDangerousLabelAndCompareElements(0, signalWord, attributeOfWarningIconInPopUp);
+        categoryNamePage.clickOnDangerousLabelAndCompareElements(0, attributeOfWarningIconInPopUp);
+        String signalWord = groupListBodyPage.getSignalWordFromFirstDangerousProduct();
         new ProductCard_aws(idOfDangerousProduct).openProductCardPageAndLogin().presenceOfDangerousIconBlock().compareElementsOfDangerousProduct(attributeOfWarningIconInPopUp, signalWord);
     }
 
@@ -133,9 +135,9 @@ public class QC_2450_CheckDisplayingAndClickByDangerousProductsBlock {
     public void testCheckDisplayingAndClickByDangerousProductsBlockChemicals(String route) {
         openPage(route);
         String idOfDangerousProduct = categoryNamePage.presenceOfTopProductsBlock().getIdOfDangerousProduct(0);
-        String signalWord = categoryNamePage.presenceOfTopProductsBlock().getSignalWordFromFirstDangerousProduct(0);
         List<String> attributeOfWarningIconInPopUp = categoryNamePage.getAttributeOfWarningIconInPopUp(0);
-        categoryNamePage.clickOnDangerousLabelAndCompareElements(0, signalWord, attributeOfWarningIconInPopUp);
+        categoryNamePage.clickOnDangerousLabelAndCompareElements(0, attributeOfWarningIconInPopUp);
+        String signalWord = categoryNamePage.getSignalWordFromFirstDangerousProduct();
         new ProductCard_aws(idOfDangerousProduct).openProductCardPageAndLogin().presenceOfDangerousIconBlock().compareElementsOfDangerousProduct(attributeOfWarningIconInPopUp, signalWord);
     }
 

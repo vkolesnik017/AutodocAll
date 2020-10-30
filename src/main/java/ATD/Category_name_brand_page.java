@@ -43,8 +43,10 @@ public class Category_name_brand_page {
         return $x("(//div[@class='product-list__item__popup'])["+position+"]//span[contains(text(),'Zustand')]/../span[2]");
     }
 
-    ElementsCollection signalWordOfDangerousProduct() {return $$x("//div[@class='dangerous-listing__title hidden hazard-danger-title']");}
+    ElementsCollection signalWordOfDangerousProduct() {return $$x("//div[@class='popup-dangerous__title']");}
 
     ElementsCollection fullValuesOfCharacteristicTopProduct(int position) {return $$x("(//div[@class='item-table-box__container'])["+position+"]//li");}
+
+    SelenideElement dangerousPopUp() {return $x("//div[@class='popup-dangerous']");}
 
 }

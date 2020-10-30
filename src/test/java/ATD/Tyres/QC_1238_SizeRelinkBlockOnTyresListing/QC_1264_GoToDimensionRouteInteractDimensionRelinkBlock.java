@@ -33,7 +33,7 @@ public class QC_1264_GoToDimensionRouteInteractDimensionRelinkBlock {
     @DataProvider(name = "routesMOTO", parallel = true)
     Object[] dataProviderMOTO() throws SQLException {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main",
-                "tyres_season12,tyres_season4,tyres_season_size5,tyres_dimension4,tyres_brand4");
+                "tyres_season4,tyres_season_size5,tyres_dimension4,tyres_brand4");
     }
 
     @Test(dataProvider = "routes")
