@@ -68,16 +68,12 @@ public class Payment_handler_page_Logic extends Payment_handler_page {
             requisitesForUniqueCountries = new DataBase("PKW").getNameRequisitesMethod("bank_requisites_pkw", shop, "Owner",
                     "Account number", "Sort Code", "Bank", "IBAN", "BIC_SWIFT");
             for (String a : requisitesForUniqueCountries) {
-                System.out.println(requisitesOnTheSite);
-                System.out.println(a);
                 Assert.assertTrue(requisitesOnTheSite.contains(a));
             }
         } else {
             requisitesForOther = new DataBase("PKW").getNameRequisitesMethod("bank_requisites_pkw", "other", "Owner",
                     "Account number", "Sort Code", "Bank", "IBAN", "BIC_SWIFT");
             for (String a : requisitesForOther) {
-                System.out.println(requisitesOnTheSite);
-                System.out.println(a);
                 Assert.assertTrue(requisitesOnTheSite.contains(a));
             }
         }

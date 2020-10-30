@@ -222,16 +222,12 @@ public class WebMail {
             requisitesForUniqueCountries = new DataBase("PKW").getNameRequisitesMethod("bank_requisites_pkw", shop, "Owner",
                     "Account number", "Sort Code", "Bank", "IBAN", "BIC_SWIFT");
             for (String a : requisitesForUniqueCountries) {
-                System.out.println(requisitesInMail);
-                System.out.println(a);
                 Assert.assertTrue(requisitesInMail.contains(a));
             }
         } else {
             requisitesForOther = new DataBase("PKW").getNameRequisitesMethod("bank_requisites_pkw", "other", "Owner",
                     "Account number", "Sort Code", "Bank", "IBAN", "BIC_SWIFT");
             for (String a : requisitesForOther) {
-                System.out.println(requisitesInMail);
-                System.out.println(a);
                 Assert.assertTrue(requisitesInMail.contains(a));
             }
         }

@@ -214,25 +214,4 @@ public class CommonMethods {
 
     //Checks element clickability
     public static Condition clickable = and("can be clicked", visible, enabled);
-
-    /*@Step("Checks the text in the downloaded PDF file and deleted file")
-    public static void assertThatPdfContainsText(String path, String expectedText) throws IOException {
-        File file = new File(path);
-        PDF pdf = new PDF(new File(path));
-        assertThat(pdf, containsText(expectedText));
-        if (file.delete()) {
-            System.out.println(path + " File deleted");
-        } else System.out.println(path + " File not found");
-    }
-
-    @Step("Rename download file")
-    public static void renameDownloadFile(String oldNameFile, String newNameFile) {
-        File oldFile = new File(oldNameFile);
-        File newFile = new File(newNameFile);
-        if(oldFile.renameTo(newFile)){
-            System.out.println("Rename succesful");
-        }else{
-            System.out.println("Rename failed");
-        }
-    }*/
 }
