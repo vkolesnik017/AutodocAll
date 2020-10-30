@@ -83,4 +83,12 @@ public class Payment_handler_page_Logic extends Payment_handler_page {
         }
         return this;
     }
+
+    @Step("Checks the correctness of the order price in the requisites. Payment_handler_page")
+    public Payment_handler_page_Logic checksPriceOrderInRequisites(float orderPrice) {
+        String requisites = getTextRequisites();
+        String orderPriceFormat = String.valueOf(orderPrice).replaceAll("\\.",",");
+        Assert.assertTrue(requisites.contains(orderPriceFormat));
+        return this;
+    }
 }

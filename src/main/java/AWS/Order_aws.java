@@ -894,6 +894,12 @@ public class Order_aws {
         return this;
     }
 
+    @Step("Checks payment method {PaymentMethod} in order. Order_aws")
+    public Order_aws checkPaymentMethodInOrder(String firstBank, String secondBank, String thirdBank, String fourthBank) {
+        paymentMethod().shouldHave(or("text", text(firstBank), text(secondBank), text(thirdBank), text(fourthBank)));
+        return this;
+    }
+
     @Step("Checks firm confirmation status in order {firmConfirmationStatus}. Order_aws")
     public Order_aws checkFirmConfirmationStatus(String firmConfirmationStatus) {
         firmConfirmationSelector().shouldHave(text(firmConfirmationStatus));
