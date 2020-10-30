@@ -291,6 +291,16 @@ public class OrderAdd_page_aws {
         return this;
     }
 
+    @Step("Selected payment expected method {expectedMethod}. OrderAdd_page_aws")
+    public OrderAdd_page_aws selectedPaymentMethod(String shop, String expectedMethod) {
+        if (shop.equals("SE")) {
+            paymentMethod().selectOptionContainingText("Be2bill[SEK] (Visa/MC)");
+        } else {
+            paymentMethod().selectOptionContainingText(expectedMethod);
+        }
+        return this;
+    }
+
     @Step("Selected delivery expectedMethod {expectedMethod}. OrderAdd_page_aws")
     public OrderAdd_page_aws selectedDeliveryMethod(String expectedMethod) {
         deliveryMethod().selectOptionContainingText(expectedMethod);
