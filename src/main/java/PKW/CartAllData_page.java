@@ -81,4 +81,18 @@ public class CartAllData_page {
     public SelenideElement americanExpressLabel() {
         return $x("//img[contains(@src,'cards/ae')]");
     }
+
+    //locators for checking labels payments method bank
+    SelenideElement firstLabelBank() {
+        return $x("//img[contains(@src,'wire')]");
+    }
+    SelenideElement secondLabelBank() {
+        return $x("//img[contains(@src,'bank')]");
+    }
+    SelenideElement thirdLabelBank() {
+        return $x("//img[contains(@src,'Finance')]");
+    }
+    SelenideElement fourthLabelBank() {
+        return $x("//img[contains(@src,'Bank')]");
+    }
 }
