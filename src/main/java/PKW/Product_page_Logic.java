@@ -39,7 +39,7 @@ public class Product_page_Logic extends Product_page {
 
     public Product_page_Logic closeBtnOFPopupReviewIfYes() {
         try {
-            closeBtnOFPopupReview().waitUntil(visible, 2500);
+            closeBtnOFPopupReview().waitUntil(visible, 5000);
             closeBtnOFPopupReview().click();
             closeBtnOFPopupReview().shouldBe(not(visible));
         } catch (ElementNotFound ignored) {
@@ -67,6 +67,7 @@ public class Product_page_Logic extends Product_page {
 
     @Step("Adding product to basket. Product_page")
     public Product_page_Logic addProductToCart() {
+        closeBtnOFPopupReviewIfYes();
         checkNumberBasketAndRefreshPageIfNot();
         sleep(3000); // TODO для стабилизации. Без слипа иногда добавленный товар исчезает из корзины после перехода в неё, решается в SITES-2830
         buyButton().click();

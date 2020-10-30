@@ -30,7 +30,7 @@ public class QC_2156_Sofort_ATD {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "route", parallel = false)
+    @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
         return new SetUp("ATD").setUpShopsWithSubroute("prod", "AT,DE,CH", "main", "product32");
     }
