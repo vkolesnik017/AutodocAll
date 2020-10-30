@@ -203,7 +203,7 @@ public class Product_page {
     }
 
     SelenideElement productDiscount() {
-        return $x("//*[@class='pkw-product__sales']//img");
+        return $x("//*[@class='pkw-product__sales']");
     }
 
     SelenideElement productTextDiscount() {
