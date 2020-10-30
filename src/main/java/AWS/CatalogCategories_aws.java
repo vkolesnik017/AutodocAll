@@ -71,6 +71,10 @@ public class CatalogCategories_aws {
         return $$(".catalog-table-content-items-item.parent.disabled > div > div:nth-child(5) > input");
     }
 
+    private ElementsCollection notActiveGroupRatingInAws() {
+        return $$(".catalog-table-content-items-item.parent.disabled > div > div:nth-child(10) > input");
+    }
+
     private ElementsCollection childNameInAWS() {
         return $$(".catalog-table-content-items-item.parent > ul >li > div >div:nth-child(5) > input");
     }
@@ -396,9 +400,18 @@ public class CatalogCategories_aws {
     public ArrayList<String> getAllParentGroupRating() {
         ArrayList<String> allGroupRating = new ArrayList<>();
         for (int i = 0; i < groupRatingInAws().size(); i++) {
-            if (!groupRatingInAws().get(i).getAttribute("value").isEmpty()){
+            if (!groupRatingInAws().get(i).getAttribute("value").isEmpty()) {
                 String numRating = groupRatingInAws().get(i).getAttribute("value").trim();
                 allGroupRating.add(numRating);
+            }
+        }
+
+        ArrayList<String> notActiveGroupRatingInAws = new ArrayList<>();
+        for (int i = 0; i < notActiveGroupRatingInAws().size(); i++) {
+            if (!notActiveGroupRatingInAws().get(i).attr("value").isEmpty()) {
+                notActiveGroupRatingInAws.add(notActiveGroupRatingInAws().get(i).attr("value").trim());
+                allGroupRating.remove(notActiveGroupRatingInAws().get(i).attr("value"));
+
             }
         }
         return allGroupRating;

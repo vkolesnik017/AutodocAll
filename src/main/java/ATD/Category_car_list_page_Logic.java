@@ -5,10 +5,7 @@ import files.Product;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static ATD.CommonMethods.waitWhileRouteBecomeExpected;
@@ -286,17 +283,29 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
 
     @Step("Compare two list with parent between front and Aws. Category_car_list_page")
     public Category_car_list_page_Logic compareTwoListsBetweenFrontAndAws(ArrayList list, ArrayList list2, ArrayList groupRating) {
+
         for (int i = 0; i < list.size(); i++) {
             if (!list.get(i).equals(list2.get(i))) {
-                if (groupRating.get(i + 1).equals(groupRating.get(i))) {
-                    Assert.assertEquals(list.get(i), (list2.get(i + 1)));
-                } else if (groupRating.get(i - 1).equals(groupRating.get(i))) {
-                    Assert.assertEquals(list.get(i), (list2.get(i - 1)));
-                } else Assert.fail("Products not equals between front and aws !");
+                try {
+                    if (groupRating.get(i + 1).equals(groupRating.get(i))) {
+                        Assert.assertEquals(list.get(i), (list2.get(i + 1)));
+                    } else if (groupRating.get(i - 1).equals(groupRating.get(i))) {
+                        Assert.assertEquals(list.get(i), (list2.get(i - 1)));
+                    } else if (!list.contains(list2.get(i))) {
+                        list2.remove(list2.get(i));
+                        groupRating.remove(groupRating.get(i));
+                        i--;
+                    } else {
+                        Assert.fail("Products not equals between front and aws!");
+                    }
+                } catch (IndexOutOfBoundsException x) {
+                    if (groupRating.get(i - 1).equals(groupRating.get(i))) {
+                        Assert.assertEquals(list.get(i), (list2.get(i - 1)));
+                    } else {
+                        Assert.fail("Products not equals between front and aws!");
+                    }
+                }
             }
-        }
-        if (list.size() != list2.size()) {
-            Assert.fail("list size: " + list.size() + " != list2: " + list2.size());
         }
         return this;
     }
