@@ -87,7 +87,9 @@ public class Maker_car_list_page {
 
     ElementsCollection titleOfParentCategories() { return $$x("//span[@class='name']");    }
 
-    SelenideElement iconOfWishList() {
-        return $x("//span[@class='header__wishes link']");
-    }
+    SelenideElement iconOfWishList() { return $x("//span[@class='header__wishes link']"); }
+
+     SelenideElement searchBar() { return $(byId("search"));  }
+
+    ElementsCollection productsList() {return $$x("//ul[@class='list_products']/li");}
 }
