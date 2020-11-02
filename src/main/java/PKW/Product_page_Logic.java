@@ -188,7 +188,6 @@ public class Product_page_Logic extends Product_page {
         productTextUnderArticleNumber().shouldBe(visible);
         Assert.assertFalse(productTextUnderArticleNumber().text().isEmpty());
         productDiscount().shouldBe(visible);
-        Assert.assertFalse(productDiscount().text().isEmpty());
         productTextDiscount().shouldBe(visible);
         Assert.assertFalse(productTextDiscount().text().isEmpty());
         productRatingStars().shouldBe(visible);

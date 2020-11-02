@@ -15,9 +15,8 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.sql.SQLException;
-
-import static ATD.CommonMethods.canAssertThatPdfContainsText;
 import static Common.DataBase.parseUserMailFromBD;
+import static Common.File.assertThatPdfContainsText;
 import static Common.SetUp.setUpBrowser;
 import static PKW.CommonMethods.*;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
@@ -63,7 +62,7 @@ public class QC_2474_Multibanco_PKW {
                 .checkOrganizationName("12057")
                 .comparesPriceOfOrderDetailsWithPriceOnAllDataPage(totalPriceAllData)
                 .getTextRequisites();
-        canAssertThatPdfContainsText("C:/Users/User/Downloads/bank_info.pdf", requisitesText);
+        assertThatPdfContainsText("C:/Users/User/Downloads/bank_info.pdf", requisitesText);
         String orderNum = new Payment_handler_page_Logic().getOrderNumber();
         float totalPriceOrderAws = new Order_aws(orderNum).openOrderInAwsWithLogin()
                 .checkPaymentMethodInOrder("B2B - Multibanco")
