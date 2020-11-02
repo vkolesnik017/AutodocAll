@@ -133,7 +133,7 @@ public class QC_1259_TransitionByClickOnBreadCrumbsLinks {
                 .checkTransitionByClickOnLinksOfBreadCrumbs();
     }
 
-    @DataProvider(name = "routesMakerGroup", parallel = true)
+/*    @DataProvider(name = "routesMakerGroup", parallel = true)
     Object[] dataProviderMakerGroup() throws SQLException {
         return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil_maker_group");
     }
@@ -147,7 +147,7 @@ public class QC_1259_TransitionByClickOnBreadCrumbsLinks {
 
         new Motoroil_Maker_Group_page_Logic()
                 .checkTransitionByClickOnLinksOfBreadCrumbs();
-    }
+    }*/
 
     @DataProvider(name = "routesCarParts", parallel = true)
     Object[] dataProviderCarParts() throws SQLException {
