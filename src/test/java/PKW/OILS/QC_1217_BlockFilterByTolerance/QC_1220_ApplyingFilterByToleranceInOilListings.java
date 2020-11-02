@@ -25,7 +25,7 @@ public class QC_1220_ApplyingFilterByToleranceInOilListings {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil_maker,motoroil_maker_group,motoroil_viscosity,motoroil_brand2,motoroil_maker,motoroil_maker_group,motoroil_chemical_type,motoroel-search,car_parts_motoroil");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil_maker,motoroil_viscosity,motoroil_brand2,motoroil_chemical_type,motoroel-search,car_parts_motoroil");  //motoroil_maker_group,
     }
 
     @Test(dataProvider = "routes")
@@ -41,7 +41,7 @@ public class QC_1220_ApplyingFilterByToleranceInOilListings {
                 .checkListingWithSelectedToleranceFilter("BMW Longlife-01");
     }
 
-    @DataProvider(name = "routesBrand", parallel = true)
+/*    @DataProvider(name = "routesBrand", parallel = true)
     Object[] dataProviderBrand() throws SQLException {
         return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil_viscosity_brand,motoroil_specification");
     }
@@ -57,7 +57,7 @@ public class QC_1220_ApplyingFilterByToleranceInOilListings {
                 .selectFilterByTolerance("Ford WSS-M2C913-A", "?release%5B%5D=ford-wss-m2c913-a")
                 .checkSelectorWithSelectedToleranceFilter("ford-wss-m2c913-a")
                 .checkListingWithSelectedToleranceFilter("Ford WSS-M2C913-A");
-    }
+    }*/
 
     @AfterMethod
     public void close() {

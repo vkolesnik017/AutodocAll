@@ -1,13 +1,11 @@
 package ATD;
 
+
 import files.Product;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static ATD.CommonMethods.waitWhileRouteBecomeExpected;
@@ -265,6 +263,49 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
     public Category_car_list_page_Logic checkVisibleBrands() {
         for (int i = 0; i < 2; i++) {
             visibleBrands().get(i).shouldBe(exist);
+        }
+        return this;
+    }
+
+    @Step("Get Id list all parents from Teilecatalog in sidebar. Category_car_list_page")
+    public ArrayList<String> getIdListParentsTeilecatalogInSidebar() {
+        ArrayList<String> idListParents = new ArrayList<>();
+        if (btnTeilecatalogInSidebar().isDisplayed()) {
+            btnTeilecatalogInSidebar().scrollIntoView("{block: \"center\"}").click();
+            parentFromTeilecatalogInSidebar().waitUntil(visible, 10000);
+        }
+        for (int i = 0; i < parentsIdFromTeilecatalogInSidebar().size(); i++) {
+            String parentId =  parentsIdFromTeilecatalogInSidebar().get(i).getAttribute("src").replaceAll("[\\s\\S]*\\/", "").replaceAll(".png", "").trim();
+            idListParents.add(parentId);
+        }
+        return idListParents;
+    }
+
+    @Step("Compare two list with parent between front and Aws. Category_car_list_page")
+    public Category_car_list_page_Logic compareTwoListsBetweenFrontAndAws(ArrayList listFront, ArrayList listAws, ArrayList groupRating) {
+
+        for (int i = 0; i < listFront.size(); i++) {
+            if (!listFront.get(i).equals(listAws.get(i))) {
+                try {
+                    if (groupRating.get(i + 1).equals(groupRating.get(i))) {
+                        Assert.assertEquals(listFront.get(i), (listAws.get(i + 1)));
+                    } else if (groupRating.get(i - 1).equals(groupRating.get(i))) {
+                        Assert.assertEquals(listFront.get(i), (listAws.get(i - 1)));
+                    } else if (!listFront.contains(listAws.get(i))) {
+                        listAws.remove(listAws.get(i));
+                        groupRating.remove(groupRating.get(i));
+                        i--;
+                    } else {
+                        Assert.fail("Products not equals between front and aws!");
+                    }
+                } catch (IndexOutOfBoundsException x) {
+                    if (groupRating.get(i - 1).equals(groupRating.get(i))) {
+                        Assert.assertEquals(listFront.get(i), (listAws.get(i - 1)));
+                    } else {
+                        Assert.fail("Products not equals between front and aws!");
+                    }
+                }
+            }
         }
         return this;
     }

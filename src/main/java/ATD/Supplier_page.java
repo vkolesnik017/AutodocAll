@@ -47,4 +47,8 @@ public class Supplier_page {
     SelenideElement btnBackOfBrandsBlock() {return $x("//span[@class='prev slick-arrow']");}
 
     SelenideElement notActiveBtnNextOfBrandsBlock() {return $x("//span[@class='next slick-arrow slick-disabled']");}
+
+    ElementsCollection idNumParents() {
+        return $$x("//div[@class='catalog-block']//div[@class='catalog-block__wrap-image']/img");
+    }
 }

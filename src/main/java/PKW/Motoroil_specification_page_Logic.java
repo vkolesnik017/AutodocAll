@@ -123,7 +123,7 @@ public class Motoroil_specification_page_Logic extends Motoroil_specification_pa
         markeFieldInSelector().selectOptionByValue(marke);
         modelFieldInSelector().selectOptionByValue(model);
         motorFieldInSelector().selectOptionByValue(motor);
-        btnSearchOfSelector().click();
+        btnSearchOfSelector().scrollIntoView("{block: \"center\"}").click();
         return page(Car_parts_motoroil_page_Logic.class);
     }
 

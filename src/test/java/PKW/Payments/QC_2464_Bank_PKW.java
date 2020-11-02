@@ -1,7 +1,9 @@
-package ATD.Payments;
+package PKW.Payments;
 
-import ATD.*;
 import AWS.Order_aws;
+import PKW.CartAllData_page_Logic;
+import PKW.Payment_handler_page_Logic;
+import PKW.Product_page_Logic;
 import Common.DataBase;
 import Common.SetUp;
 import io.qameta.allure.Description;
@@ -15,57 +17,59 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.sql.SQLException;
-
-import static ATD.CommonMethods.*;
 import static Common.DataBase.parseUserMailFromBD;
 import static Common.File.assertThatPdfContainsText;
+import static Common.File.renameDownloadFile;
 import static Common.SetUp.setUpBrowser;
+import static PKW.CommonMethods.*;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static mailinator.WebMail.passwordForMail;
 
-public class QC_2352_Multibanco_ATD {
+public class QC_2464_Bank_PKW {
 
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "route", parallel = true)
+    @DataProvider(name = "route", parallel = false)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "PT", "main", "product32");
+        return new SetUp("PKW").setUpShopsWithSubroute("prod", "DE,AT,BG,CH,CZ,DK,ES,FI,FR,GR,HU,IT,NL,NO,PL,PT,RO,SE,EN", "main", "product9");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description("Test checks method of payment by Multibanco")
-    public void testMultibanco(String route) throws Exception {
+    @Description("Test checks method of payment by Bank")
+    public void testPaymentsMethodBank(String route) throws Exception {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
-        String userData = new DataBase("ATD").getUserIdForPaymentsMethod("payments_userid_atd", shop, "Multibanco");
+        String userData = new DataBase("PKW").getUserIdForPaymentsMethod("payments_userid_pkw", shop, "Bank");
         String mail = parseUserMailFromBD(userData);
         float totalPriceAllData = new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
-                .checkPresencePaymentsMethodLabel(new Cart_page().multibancoLabel())
+                .checksForLabelOfBankPaymentMethod()
                 .nextButtonClick()
                 .signIn(mail, passwordForPayments)
-                .chooseDeliveryCountryForShipping(shop)
-                .fillFieldTelNumForShipping("200+002")
+                .chooseDeliveryCountryAndFillingFirmInput( shop, "autotest")
+                .fillInCompanyIdFieldForCountryWhereIdNeeded(shop, shop, "autotest")
+                .clickOnTheDesiredPaymentMethod(shop, "Bank")
                 .nextBtnClick()
-                .clickOnTheDesiredPaymentMethod(shop, "Multibanco")
-                .nextBtnClick()
-                .checkPresencePaymentsMethodLabel(new CartAllData_page().multibancoLabel())
+                .checksForLabelOfBankPaymentMethod()
                 .getTotalPriceAllDataPage(shop);
         String requisitesText = new CartAllData_page_Logic().nextBtnClick()
+                .closePopupAfterOrder()
                 .clickOnLinkForPDF()
-                .checkOrganizationName("12057")
-                .comparesPriceOfOrderDetailsWithPriceOnAllDataPage(totalPriceAllData)
+                .compareExpectedRequisitesWithActual(shop)
+                .checksPriceOrderInRequisites(totalPriceAllData)
                 .getTextRequisites();
-        assertThatPdfContainsText("C:/Users/User/Downloads/bank_info.pdf", requisitesText);
+        renameDownloadFile("C:/Users/User/Downloads/bank_info.pdf", "C:/Users/User/Downloads/bank_info_" + shop + ".pdf");
+        assertThatPdfContainsText("C:/Users/User/Downloads/bank_info_" + shop + ".pdf", requisitesText);
         String orderNum = new Payment_handler_page_Logic().getOrderNumber();
         float totalPriceOrderAws = new Order_aws(orderNum).openOrderInAwsWithLogin()
-                .checkPaymentMethodInOrder("B2B - Multibanco")
+                .checkPaymentMethodInOrder("Bank Austria","HypoVereinsbank","Vorkasse","SEB", "UniCredit Bank",
+                                           "Przelew Bankowy","PostFinance")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceAllData, totalPriceOrderAws);
         float totalPriceOrderAwsAfterReSave = new Order_aws().reSaveOrder()
@@ -75,7 +79,7 @@ public class QC_2352_Multibanco_ATD {
 
         new WebMail().openMail(mail, passwordForMail)
                 .checkAndOpenLetterWithOrderNumber(orderNum)
-                .comparesTextOfRequisitesInMailWithExpectedRequisites(requisitesText);
+                .compareExpectedRequisitesWithActual(shop);
     }
 
     @AfterMethod

@@ -99,9 +99,17 @@ public class Cart_page {
         return $x("//img[contains(@src,'discover')]");
     }
 
-    public SelenideElement[] labelBank() {
-       SelenideElement locators[] = {$x("//img[contains(@src,'wire')]"), $x("//img[contains(@src,'bank')]"),
-               $x("//img[contains(@src,'Finance')]"), $x("//img[contains(@src,'Bank')]")};
-        return locators;
+    //locators for checking labels payments method bank
+    SelenideElement firstLabelBank() {
+        return $x("//img[contains(@src,'wire')]");
+    }
+    SelenideElement secondLabelBank() {
+        return $x("//img[contains(@src,'bank')]");
+    }
+    SelenideElement thirdLabelBank() {
+        return $x("//img[contains(@src,'Finance')]");
+    }
+    SelenideElement fourthLabelBank() {
+        return $x("//img[contains(@src,'Bank')]");
     }
 }

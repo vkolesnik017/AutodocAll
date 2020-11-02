@@ -113,4 +113,18 @@ class Category_car_list_page {
         return $$x("//span[@class='add-to-wishlist title_btn add-to-wishlist--added remove-article']");
     }
 
+    SelenideElement btnTeilecatalogInSidebar() {
+        return $x("//a[@id='teile_catalog_toggle2']");
+    }
+
+    ElementsCollection parentsIdFromTeilecatalogInSidebar() {
+        return $$x("//div[contains(@class,'block categories blue')][1]//img");
+    }
+
+    SelenideElement parentFromTeilecatalogInSidebar() {
+        return $x("//div[contains(@class,'block categories blue')][1]//span");
+    }
+
+
+
 }
