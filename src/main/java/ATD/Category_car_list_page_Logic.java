@@ -282,17 +282,17 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
     }
 
     @Step("Compare two list with parent between front and Aws. Category_car_list_page")
-    public Category_car_list_page_Logic compareTwoListsBetweenFrontAndAws(ArrayList list, ArrayList list2, ArrayList groupRating) {
+    public Category_car_list_page_Logic compareTwoListsBetweenFrontAndAws(ArrayList listFront, ArrayList listAws, ArrayList groupRating) {
 
-        for (int i = 0; i < list.size(); i++) {
-            if (!list.get(i).equals(list2.get(i))) {
+        for (int i = 0; i < listFront.size(); i++) {
+            if (!listFront.get(i).equals(listAws.get(i))) {
                 try {
                     if (groupRating.get(i + 1).equals(groupRating.get(i))) {
-                        Assert.assertEquals(list.get(i), (list2.get(i + 1)));
+                        Assert.assertEquals(listFront.get(i), (listAws.get(i + 1)));
                     } else if (groupRating.get(i - 1).equals(groupRating.get(i))) {
-                        Assert.assertEquals(list.get(i), (list2.get(i - 1)));
-                    } else if (!list.contains(list2.get(i))) {
-                        list2.remove(list2.get(i));
+                        Assert.assertEquals(listFront.get(i), (listAws.get(i - 1)));
+                    } else if (!listFront.contains(listAws.get(i))) {
+                        listAws.remove(listAws.get(i));
                         groupRating.remove(groupRating.get(i));
                         i--;
                     } else {
@@ -300,7 +300,7 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
                     }
                 } catch (IndexOutOfBoundsException x) {
                     if (groupRating.get(i - 1).equals(groupRating.get(i))) {
-                        Assert.assertEquals(list.get(i), (list2.get(i - 1)));
+                        Assert.assertEquals(listFront.get(i), (listAws.get(i - 1)));
                     } else {
                         Assert.fail("Products not equals between front and aws!");
                     }

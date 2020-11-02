@@ -77,6 +77,13 @@ public class Profile_plus_page_Logic extends Profile_plus_page {
         return this;
     }
 
+    @Step("check count of added vehicles in garage at header from icon. Profile_plus_page")
+    public Profile_plus_page_Logic checkCountOfAddedVehiclesInGarageAtHeaderFromIcon(int countOfVehicle) {
+        int addedVehicle = Integer.parseInt(countOfAddedVehicleInGarageIcon().getText());
+        Assert.assertTrue(addedVehicle == countOfVehicle);
+        return this;
+    }
+
     @Step("check visible added vehicle in popUp of garage in header  . Profile_plus_page")
     public Profile_plus_page_Logic checkVisibleAddedVehicleInPopUpOfGarageHeader(int expectedSize) {
         countOfAddedVehicleInGarageIcon().click();
@@ -168,4 +175,22 @@ public class Profile_plus_page_Logic extends Profile_plus_page {
         idOfVehicleInGaragePopUp(idOfVehicle).shouldBe(visible).click();
         return this;
     }
+
+    @Step("check work adding and removing vin num in popup of garage in header. Profile_plus_page")
+    public Profile_plus_page_Logic checkWorkAddAndRemoveVinNumInPopupOfGarage(String vinNum) {
+        for (int i = 0; i < visibleAddedVehicleInGarageAtHeader().size(); i++) {
+            String nameBtn = btnOpenInputForAddVinNumInPopUpOfGarageHeader().get(i).getText();
+            btnOpenInputForAddVinNumInPopUpOfGarageHeader().get(i).shouldHave(text(nameBtn)).click();
+            inputForAddVinNumInPopUpOfGarageHeader().get(i).shouldBe(visible).setValue(vinNum);
+            btnAddVinNumInPopUpOfGarageHeader().get(i).shouldBe(visible).click();
+            addedVinNumInPopUpOfGarageHeader().get(i).shouldHave(text(vinNum));
+            btnOpenInputForAddVinNumInPopUpOfGarageHeader().get(i).click();
+            inputForAddVinNumInPopUpOfGarageHeader().get(i).shouldBe(visible).clear();
+            btnAddVinNumInPopUpOfGarageHeader().get(i).shouldBe(visible).click();
+            addedVinNumInPopUpOfGarageHeader().get(i).shouldNotHave(text(vinNum));
+            btnOpenInputForAddVinNumInPopUpOfGarageHeader().get(i).shouldHave(text(nameBtn));
+        }
+        return this;
+    }
+
 }
