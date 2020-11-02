@@ -20,6 +20,10 @@ public class CartPayments_page {
         return $(locator);
     }
 
+    SelenideElement paymentsForm() {
+        return $x("//form[@id='payment-form']");
+    }
+
     SelenideElement nextBtn() {
         return $(byCssSelector("[id='apply_payment']>a"));
     }

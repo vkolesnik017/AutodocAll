@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Payments_PKW" parallel="tests" thread-count="2" data-provider-thread-count="2">
+<suite name="Payments_PKW" parallel="tests" thread-count="1" data-provider-thread-count="4">
 
     <listeners>
         <listener class-name="Common.ProjectListener"/>
     </listeners>
+
+    <test name="QC_2464_Bank_PKW">
+        <classes>
+            <class name="PKW.Payments.QC_2464_Bank_PKW">
+            </class>
+        </classes>
+    </test>
 
     <test name="QC_2395_CheckingSwitchingOnBraintreeInAWS_PKW">
         <classes>

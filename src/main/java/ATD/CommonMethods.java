@@ -502,16 +502,6 @@ public class CommonMethods {
         Assert.assertEquals(awsList, uiList);
     }
 
-    @Step("Checks the text in the downloaded PDF file and deleted file")
-    public static void canAssertThatPdfContainsText(String path, String expectedText) throws IOException {
-        File file = new File(path);
-        PDF pdf = new PDF(new File(path));
-        assertThat(pdf, containsText(expectedText));
-        if (file.delete()) {
-            System.out.println(path + " File deleted");
-        } else System.out.println(path + " File not found");
-    }
-
     @Step("get text from not visible element {expected element}")
     public static String getTextFromUnVisibleElement(SelenideElement element) {
         return (String) (executeJavaScript("return jQuery(arguments[0]).text();", element));

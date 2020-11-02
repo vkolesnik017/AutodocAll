@@ -30,7 +30,7 @@ public class Category_name_page {
 
     ElementsCollection visibleArtNumOfTopProduct() {return $$x("//div[@class='product-list__item__nummer']").filter(visible);}
 
-    ElementsCollection signalWordOfDangerousProduct() {return $$x("//div[@class='dangerous-listing__title hidden hazard-danger-title']");}
+    ElementsCollection signalWordOfDangerousProduct() {return $$x("//div[@class='popup-dangerous__title']");}
 
     ElementsCollection dangerousProducts() {return $$x("//span[@class='dangerous-listing__show-more']/ancestor::div[contains(@class,'product-list__item')]");}
 
@@ -81,4 +81,6 @@ public class Category_name_page {
     ElementsCollection typeOfCharacteristicsBlock() {return $$x("//table[2]//tr[2]/td");}
 
     ElementsCollection allValueFromCharacteristicBlock(int positionOfBlock) {return $$x("//table[2]//td["+positionOfBlock+"]");}
+
+    SelenideElement dangerousPopUp() {return $x("//div[@class='popup-dangerous']");}
 }
