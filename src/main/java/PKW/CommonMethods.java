@@ -12,13 +12,11 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Random;
 
-import static com.codeborne.pdftest.PDF.containsText;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static com.codeborne.selenide.WebDriverRunner.url;
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.testng.Assert.assertTrue;
 
 public class CommonMethods {

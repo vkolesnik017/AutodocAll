@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Basket" parallel="methods" thread-count="1" data-provider-thread-count="4">
+
+    <listeners>
+        <listener class-name="Common.ProjectListener"/>
+    </listeners>
+
+    <test name="QC_1873_SafeOrder_PKW">
+        <classes>
+            <class name="PKW.Basket.QC_2408_SafeOrder_PKW.QC_2410_OrderWithSO_IncludedOn_DE_FR_languageVersion_PKW"/>
+        </classes>
+    </test>
+
+</suite>
