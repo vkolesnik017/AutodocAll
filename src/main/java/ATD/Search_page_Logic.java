@@ -354,7 +354,7 @@ public class Search_page_Logic extends Search_page {
 
     @Step("added Product to WishList. Search_page")
     public Search_page_Logic addNotActiveProductToWishList(int positionOfProduct) {
-        labelAddToWishListNotActiveProduct().get(positionOfProduct).scrollIntoView("{block: \"center\"}") ;
+        labelAddToWishListNotActiveProduct().get(positionOfProduct).scrollIntoView("{block: \"center\"}");
         presenceOfVisibleParentCategories();
         labelAddToWishListNotActiveProduct().get(positionOfProduct).hover().click();
         presenceOfVisibleParentCategories();
@@ -581,7 +581,21 @@ public class Search_page_Logic extends Search_page {
 
     @Step("go to next page. Search_page")
     public Search_page_Logic goToNextPage() {
-        forwardOfPaginator().scrollIntoView("{block: \"end\"}").click();
+        forwardOfPaginator().scrollIntoView("{block: \"center\"}");
+        presenceOfPaginatorLinks();
+        if (closePopUpSelector().isDisplayed()) {
+            closePopUpSelector().click();
+            closePopUpSelector().shouldNotBe(visible);
+        }
+        forwardOfPaginator().click();
+        return this;
+    }
+
+    @Step("presence of paginator links. Search_page")
+    public Search_page_Logic presenceOfPaginatorLinks() {
+        for (int i = 0; i < paginatorLinks().size(); i++) {
+            paginatorLinks().get(i).shouldBe(exist);
+        }
         return this;
     }
 

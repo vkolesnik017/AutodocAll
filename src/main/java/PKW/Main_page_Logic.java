@@ -307,5 +307,11 @@ public class Main_page_Logic extends Main_page {
         agbLinkHeader().click();
         return page(AGB_static_page_Logic.class);
     }
+
+    @Step("Click the datenschutz link in the footer. Main_page")
+    public Datenschutz_static_page_Logic clickFooterDatenchutzLink() {
+        footerDateschutzLink().click();
+        return page(Datenschutz_static_page_Logic.class);
+    }
 }
 
