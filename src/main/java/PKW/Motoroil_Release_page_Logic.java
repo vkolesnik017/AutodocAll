@@ -222,7 +222,7 @@ public class Motoroil_Release_page_Logic extends Motoroil_Release_page {
         selectMarkeInSelector(marke);
         modelFieldInSelector().selectOptionByValue(model);
         motorFieldInSelector().selectOptionByValue(motor);
-        btnSearchOfSelector().click();
+        btnSearchOfSelector().scrollIntoView("{block: \"center\"}").click();
         return page(Car_parts_motoroil_page_Logic.class);
     }
 }
