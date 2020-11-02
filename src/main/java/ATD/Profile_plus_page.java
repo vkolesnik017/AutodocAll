@@ -81,4 +81,21 @@ public class Profile_plus_page {
     SelenideElement headerGarageIcon(){ return $x("//div[@class='header-garage js-header-garage']"); }
 
     SelenideElement popUpOfGarageInHeader() {return $x("//div[@class='header-garage__logged-header']");}
+
+    ElementsCollection btnOpenInputForAddVinNumInPopUpOfGarageHeader() {
+        return $$x("//div[@class='wrapper-vin']/p");
+    }
+
+    ElementsCollection inputForAddVinNumInPopUpOfGarageHeader() {
+        return $$x("//div[@class='vin-number-drop-input']/input");
+    }
+
+    ElementsCollection btnAddVinNumInPopUpOfGarageHeader() {
+        return $$x("//div[@class='vin-number-drop-button js-save-vin-number']");
+    }
+
+    ElementsCollection addedVinNumInPopUpOfGarageHeader() {
+        return $$x("//div[@class='wrapper-vin']//span");
+    }
+
 }
