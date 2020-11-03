@@ -18,21 +18,21 @@ import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class Tyres_page_Logic extends Tyres_page {
 
-    @Step("Select Season Tyre")
+    @Step("Select Season Tyre. Tyres_page")
     public Tyres_page_Logic selectSeasonTyre(String season) {
         seasonDropdown().selectOption(season);
         Wait().until(webDriver -> seasonDropdown().getSelectedText().equals(season));
         return this;
     }
 
-    @Step("Select Width")
+    @Step("Select Width. Tyres_page")
     public Tyres_page_Logic selectWidth(String width) {
         widthDropdown().selectOption(width);
         Wait().until(webDriver -> widthDropdown().getSelectedText().equals(width));
         return this;
     }
 
-    @Step("Select Height")
+    @Step("Select Height. Tyres_page")
     public Tyres_page_Logic selectHeight(String height) {
         heightDropdown().selectOption(height);
         Wait().until(webDriver -> heightDropdown().getSelectedText().equals(height));
@@ -40,135 +40,135 @@ public class Tyres_page_Logic extends Tyres_page {
     }
 
 
-    @Step("Select Type")
+    @Step("Select Type. Tyres_page")
     public Tyres_page_Logic selectType(String type) {
         typeDropdown().selectOption(type);
         Wait().until(webDriver -> typeDropdown().getSelectedText().equals(type));
         return this;
     }
 
-    @Step("Select Diameter")
+    @Step("Select Diameter. Tyres_page")
     public Tyres_page_Logic selectDiameter(String diameter) {
         diameterDropdown().selectOption(diameter);
         Wait().until(webDriver -> diameterDropdown().getSelectedText().equals(diameter));
         return this;
     }
 
-    @Step("Click Submit Tyres Selector")
+    @Step("Click Submit Tyres Selector. Tyres_page")
     public TyresListing_page_Logic clickSubmitTyresSelector() {
         submitTyresSelectorButton().click();
         return page(TyresListing_page_Logic.class);
     }
 
-    @Step("Click Submit Tyres Selector To Check Popup")
+    @Step("Click Submit Tyres Selector To Check Popup. Tyres_page")
     public Tyres_page_Logic clickSubmitTyresSelectorToCheckPopup() {
         submitTyresSelectorButton().click();
         return this;
     }
 
-    @Step("Check Tyres Selector Visibility")
+    @Step("Check Tyres Selector Visibility. Tyres_page")
     public Tyres_page_Logic checkTyresSelectorVisibility() {
         tyresSelectorBlock().shouldBe(visible);
         return this;
     }
 
-    @Step("Check Tyres Selector Visibility PKW")
+    @Step("Check Tyres Selector Visibility PKW. Tyres_page")
     public Tyres_page_Logic checkTyresSelectorVisibilityPKW() {
         tyresSelectorBlockPKW().shouldBe(visible);
         return this;
     }
 
-    @Step("Check Tyres Selector Visibility SUV")
+    @Step("Check Tyres Selector Visibility SUV. Tyres_page")
     public Tyres_page_Logic checkTyresSelectorVisibilitySUV() {
         tyresSelectorBlockSUV().shouldBe(visible);
         return this;
     }
 
-    @Step("Check Tyres Selector Visibility LLKW")
+    @Step("Check Tyres Selector Visibility LLKW. Tyres_page")
     public Tyres_page_Logic checkTyresSelectorVisibilityLLKW() {
         tyresSelectorBlockLLKW().shouldBe(visible);
         return this;
     }
 
-    @Step("Check Tyres Selector Visibility MOTO")
+    @Step("Check Tyres Selector Visibility MOTO. Tyres_page")
     public Tyres_page_Logic checkTyresSelectorVisibilityMOTO() {
         tyresSelectorBlockMOTO().shouldBe(visible);
         return this;
     }
 
-    @Step("Select Tab SUV")
+    @Step("Select Tab SUV. Tyres_page")
     public Tyres_page_Logic selectTabSUV() {
         tabSUVtype().click();
         return this;
     }
 
-    @Step("Select Tab LLKW")
+    @Step("Select Tab LLKW. Tyres_page")
     public Tyres_page_Logic selectTabLLKW() {
         tabLLKWtype().click();
         return this;
     }
 
-    @Step("Select Tab MOTO")
+    @Step("Select Tab MOTO. Tyres_page")
     public Tyres_page_Logic selectTabMOTO() {
         tabMOTOtype().click();
         return this;
     }
 
-    @Step("Validation Popup With Clear Height Width Diameter")
+    @Step("Validation Popup With Clear Height Width Diameter. Tyres_page")
     public Tyres_page_Logic validationPopupWithClearHeightWidthDiameter() {
         tyresValidationPopup().shouldHave(text("Das Feld Breite ist erforderlich und muss einen Wert enthalten. Das Feld Höhe ist erforderlich und muss einen Wert enthalten. Das Feld Zoll ist erforderlich und muss einen Wert enthalten."));
         return this;
     }
 
-    @Step("Validation Popup With Clear Height Diameter")
+    @Step("Validation Popup With Clear Height Diameter. Tyres_page")
     public Tyres_page_Logic validationPopupWithClearHeightDiameter() {
         tyresValidationPopup().shouldHave(text("Das Feld Höhe ist erforderlich und muss einen Wert enthalten. Das Feld Zoll ist erforderlich und muss einen Wert enthalten."));
         return this;
     }
 
-    @Step("Validation Popup With Clear Diameter")
+    @Step("Validation Popup With Clear Diameter. Tyres_page")
     public Tyres_page_Logic validationPopupWithClearDiameter() {
         tyresValidationPopup().shouldHave(text("Das Feld Zoll ist erforderlich und muss einen Wert enthalten."));
         return this;
     }
 
-    @Step("Validation Popup With Clear Height Typ Diameter")
+    @Step("Validation Popup With Clear Height Typ Diameter. Tyres_page")
     public Tyres_page_Logic validationPopupWithClearHeightTypDiameter() {
         tyresValidationPopup().shouldHave(text("Das Feld Höhe ist erforderlich und muss einen Wert enthalten. Das Feld Typ ist erforderlich und muss einen Wert enthalten. Das Feld Zoll ist erforderlich und muss einen Wert enthalten."));
         return this;
     }
 
-    @Step("Validation Popup With Clear Typ Diameter")
+    @Step("Validation Popup With Clear Typ Diameter. Tyres_page")
     public Tyres_page_Logic validationPopupWithClearTypDiameter() {
         tyresValidationPopup().shouldHave(text("Das Feld Typ ist erforderlich und muss einen Wert enthalten. Das Feld Zoll ist erforderlich und muss einen Wert enthalten."));
         return this;
     }
 
-    @Step("Close Tyres Validation Popup")
+    @Step("Close Tyres Validation Popup. Tyres_page")
     public Tyres_page_Logic closeTyresValidationPopup() {
         closeTyresValidationPopupButton().click();
         return this;
     }
 
-    @Step("Click Brand Dropdown")
+    @Step("Click Brand Dropdown. Tyres_page")
     public Tyres_page_Logic clickBrandDropdown() {
         brandDropdown().click();
         return this;
     }
 
-    @Step("Click Apollo Brand")
+    @Step("Click Apollo Brand. Tyres_page")
     public Tyres_page_Logic clickApolloBrand() {
         brandApolloInDropdown().click();
         return this;
     }
 
-    @Step("Click Speed Index Dropdown")
+    @Step("Click Speed Index Dropdown. Tyres_page")
     public Tyres_page_Logic clickSpeedIndexDropdown() {
         speedIndexDropdown().click();
         return this;
     }
 
-    @Step("Click Speed Index H")
+    @Step("Click Speed Index H. Tyres_page")
     public Tyres_page_Logic clickSpeedIndexH() {
         speedIndexHinDropdown().click();
         return this;
