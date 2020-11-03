@@ -247,12 +247,52 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return this;
     }
 
-        @Step("Choosing delivery country {country} for shipping. CartAddress_page")
+    @Step("Filling postal code {postalCodeOrCodeDefault} or default for shipping. CartAddress_page")
+    public CartAddress_page_Logic fillingPostalCodeOrDefaultFieldJSForShipping(String postalCodeOrCodeDefault, String shop) {
+        if (postalCodeOrCodeDefault.equals("default")) {
+            String currentShop = shop;
+            switch (currentShop) {
+                case "AT":
+                    postalCodeOrCodeDefault = "4321";
+                    break;
+                case "DK":
+                    postalCodeOrCodeDefault = "1234";
+                    break;
+                case "NL":
+                    postalCodeOrCodeDefault = "1234 AA";
+                    break;
+                case "PT":
+                    postalCodeOrCodeDefault = "1234-567";
+                    break;
+                case "GR":
+                    postalCodeOrCodeDefault = "123 45";
+                    break;
+                default:
+                    postalCodeOrCodeDefault = "12345";
+                    break;
+            }
+        }
+        postalCodeFieldForShipping().waitUntil(appear, 10000);
+        JavascriptExecutor js = (JavascriptExecutor) getWebDriver();
+        js.executeScript("arguments[0].value='" + postalCodeOrCodeDefault + "';", postalCodeFieldForShipping());
+        return this;
+    }
+
+    @Step("Choosing delivery country {country} for shipping. CartAddress_page")
     public CartAddress_page_Logic chooseDeliveryCountryForShipping(String country) {
         if (country.equals("EN")) country = "GB";
         if (country.equals("LD")) country = "LU";
         countryInSelectorForShipping(country).shouldBe(visible).click();
         return this;
+    }
+
+    @Step("Choosing delivery country {country} for sipping and get name country. CartAddress_page")
+    public String chooseDeliveryCountryAndGetNameCountry(String country) {
+        if (country.equals("EN")) country = "GB";
+        if (country.equals("LD")) country = "LU";
+        countryInSelectorForShipping(country).shouldBe(visible).click();
+        String nameCountry = countryInSelectorForShipping(country).getText();
+        return nameCountry;
     }
 
     @Step("Choosing delivery country {country} for billing. CartAddress_page")

@@ -108,4 +108,10 @@ public class Cart_page_Logic extends Cart_page{
        }
         return this;
     }
+
+    @Step("Checks that the Safe Order checkbox is not selected. Cart_page")
+    public Cart_page_Logic checkThatSafeOrderCheckboxIsNotSelected() {
+        safeOrderCheckbox().shouldNotHave(attribute("checked"));
+        return this;
+    }
 }
