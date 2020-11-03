@@ -4,6 +4,7 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.Keys;
 import org.testng.Assert;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -125,4 +126,21 @@ public class Supplier_page_Logic extends Supplier_page {
         }
         return this;
     }
+
+    @Step("Get name list all parents from brand page. Supplier_page")
+    public ArrayList<String> getIdListParentsFromBrandPage() {
+        ArrayList<String> idParentsList = new ArrayList<>();
+        for (int i = 0; i < idNumParents().size(); i++) {
+            String idParent =  idNumParents().get(i).getAttribute("src").replaceAll("[\\s\\S]*\\/", "").replaceAll(".png", "").trim();
+            idParentsList.add(idParent);
+        }
+        return idParentsList;
+    }
+
+    @Step(": from. Supplier_page")
+    public Supplier_page_Logic compareTwoListsBetweenFrontAndAwsFrom(ArrayList listFront, ArrayList listAws, ArrayList groupRating){
+        new Category_car_list_page_Logic().compareTwoListsBetweenFrontAndAws(listFront, listAws, groupRating);
+        return this;
+    }
+
 }

@@ -1,9 +1,11 @@
 package ATD;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -110,5 +112,7 @@ public class Tyres_page {
   }
   ElementsCollection imagesProductInTopBlock() { return $$(By.xpath("//*[@class='ct_toppop_single_product']//*[contains(@class,'image_not_moto_group prod_img ga-click js-to-tire-product ')]")); }
 
+  ElementsCollection allWidthValues() {return $$x("//select[@id='form_Width']/option");}
 
+  ElementsCollection visibleTopTyres() {return $$x("//li[@class='ct_toppop_single_product']").filter(visible);}
 }

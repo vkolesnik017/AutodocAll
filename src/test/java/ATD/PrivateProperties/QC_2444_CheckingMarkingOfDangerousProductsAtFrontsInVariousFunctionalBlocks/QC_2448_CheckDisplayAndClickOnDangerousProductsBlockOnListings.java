@@ -85,24 +85,6 @@ public class QC_2448_CheckDisplayAndClickOnDangerousProductsBlockOnListings {
         new ProductCard_aws(idOfDangerousProduct).openProductCardPageAndLogin().presenceOfDangerousIconBlock().compareElementsOfDangerousProduct(attributeOfWarningIconInPopUp, signalWord);
     }
 
-    @DataProvider(name = "routesMotoSecond", parallel = true)
-    Object[] dataProviderMotoSecond() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list_model5");
-    }
-
-    @Test(dataProvider = "routesMotoSecond")
-    @Flaky
-    @Owner(value = "Kolesnik")
-    @Description(value = "Test check displaying and click by Dangerous products block")
-    public void testCheckDisplayingAndClickByDangerousProductsBlockMotoSecond(String route) {
-        openPage(route);
-        String idOfDangerousProduct = lkwSearchPage.visibilityOfTecDocListingBlock().getIdOfDangerousProduct(0);
-        String signalWord = chemicalsPage.visibilityOfTecDocListingBlock().getSignalWordFromFirstDangerousProductListingView(0);
-        List<String> attributeOfWarningIconInPopUp = lkwSearchPage.getAttributeOfWarningIconInPopUp(0);
-        lkwSearchPage.clickOnDangerousLabelAndCompareElements(0, signalWord, attributeOfWarningIconInPopUp);
-        new ProductCard_aws(idOfDangerousProduct).openProductCardPageAndLogin().presenceOfDangerousIconBlock().compareElementsOfDangerousProduct(attributeOfWarningIconInPopUp, signalWord);
-    }
-
     @DataProvider(name = "routesCarList", parallel = true)
     Object[] dataProviderCarList() throws SQLException {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list45,category_car_list46");

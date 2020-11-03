@@ -274,5 +274,7 @@ public class Search_page {
 
     ElementsCollection visibleParentCategories() {return $$x("//ul[@class='filetree cat_tree treeview']//li").filter(visible);}
 
+    ElementsCollection paginatorLinks() {return $$x("//div[@class='pagination']/span");}
+
 }
 

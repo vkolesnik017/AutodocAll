@@ -25,7 +25,7 @@ public class QC_1223_InabilityToApplyTwoDifferentToleranceFilters {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil_maker,motoroil_maker_group,motoroil_viscosity,motoroil_brand2,motoroil_maker,motoroil_maker_group,motoroil_chemical_type,motoroel-search,car_parts_motoroil");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil_maker_group,motoroil_maker,motoroil_viscosity,motoroil_brand2,motoroil_chemical_type,motoroel-search,car_parts_motoroil");
     }
 
     @Test(dataProvider = "routes")
