@@ -35,8 +35,8 @@ public class QC_1229_TransitionAtSearchVehicleInSelector {
         openPage(route);
 
         new Motoroil_Release_page_Logic()
-                .selectVehicleInSelector("5", "36928", "121494");
-        checkingContainsUrl(new DataBase("PKW").getRouteByRouteName("DE", "car_parts_motoroil2"));
+                .selectVehicleInSelector("121", "7873", "33030");
+        checkingContainsUrl(new DataBase("PKW").getRouteByRouteName("DE", "car_parts_motoroil5"));
     }
 
     @DataProvider(name = "routesSpecification", parallel = true)
@@ -52,7 +52,7 @@ public class QC_1229_TransitionAtSearchVehicleInSelector {
         openPage(route);
 
         new Motoroil_specification_page_Logic()
-                .selectVehicleInSelector("5", "36928", "121494");
-        checkingContainsUrl(new DataBase("PKW").getRouteByRouteName("DE", "car_parts_motoroil2"));
+                .selectVehicleInSelector("121", "7873", "33030");
+        checkingContainsUrl(new DataBase("PKW").getRouteByRouteName("DE", "car_parts_motoroil5"));
     }
 }
