@@ -4,7 +4,12 @@ import Common.DataBase;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
+
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import static PKW.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -36,14 +41,14 @@ public class Versand_static_page_Logic extends Versand_static_page {
         return this;
     }
 
-    @Step("Checking the visibility of the elements in the BOX block. Versand_static_page") //good
+    @Step("Checking the visibility of the elements in the BOX block. Versand_static_page") //step 2 .
     public Versand_static_page_Logic checkingBoxBlock() {
         deliveryPageContent().shouldBe(visible);
         deliveryPageBox().shouldBe(visible);
         deliveryPageDeliveryIcons().shouldBe(visible);
         deliveryPageBoxCountryText().shouldBe(visible);
-        deliveryPageBoxCountryFlag().shouldHave(attribute("alt", "Deutschland: lieferbedingungen"));
         Assert.assertFalse(deliveryPageBoxCountryText().text().isEmpty());
+        deliveryPageBoxCountryFlag().shouldHave(attribute("alt", "Deutschland: lieferbedingungen"));
         deliveryPageBoxFeatureOne().shouldBe(visible);
         Assert.assertFalse(deliveryPageBoxFeatureOne().text().isEmpty());
         deliveryPageBoxFeatureTwo().shouldBe(visible);
@@ -57,31 +62,18 @@ public class Versand_static_page_Logic extends Versand_static_page {
         return this;
     }
 
-    @Step("Checking the visibility of the elements in the delivery country block. Versand_static_page")
-    public Versand_static_page_Logic checkingDeliveryCountryBlock() {
+    @Step("Checking the visibility of the elements in the delivery country block. Versand_static_page") //.
+    public Versand_static_page_Logic checkingDeliveryCountryBlockButton() {
         countryBlockTitle().shouldBe(visible);
         Assert.assertFalse(countryBlockTitle().text().isEmpty());
         countryBlockItemsButton().click();
         countryBlockOtherCountry().shouldBe(visible);
-        Assert.assertEquals(countryItemForCount().size(), 57); //change on 57
-        checkingMainElementsOfCountries();
         countryBlockItemsButton().click();
         countryBlockOtherCountry().shouldNotBe(visible);
-        // countryBlockItemsButton().click();
         return this;
     }
 
-    @Step("Checking main elements of countries. Versand_static_page")
-    public Versand_static_page_Logic checkingMainElementsOfCountries() {
-        for (int i = 0; i < countryItemForCount().size(); i++) {
-            flagsOfCountries().get(i).shouldBe(visible);
-            titleOfCountries().get(i).shouldBe(visible);
-            pricesOfCountries().get(i).shouldBe(visible);
-        }
-        return this;
-    }
-
-    @Step("Checking the visibility of the elements in the Delivery Terms block. Versand_static_page")
+    @Step("Checking the visibility of the elements in the Delivery Terms block. Versand_static_page") //.
     public Versand_static_page_Logic checkingBlockWithTermsOfTheDelivery() {
 
         CommonMethods commonMethods = new CommonMethods();
@@ -104,7 +96,7 @@ public class Versand_static_page_Logic extends Versand_static_page {
         return this;
     }
 
-    @Step("Checking the visibility of the elements in the FAQ block. Versand_static_page")
+    @Step("Checking the visibility of the elements in the FAQ block. Versand_static_page") //steps 4,5 .
     public Versand_static_page_Logic checkingFaqBlock() {
         faqTitleOne().shouldBe(visible);
         Assert.assertFalse(faqTitleOne().text().isEmpty());
@@ -125,7 +117,7 @@ public class Versand_static_page_Logic extends Versand_static_page {
         return this;
     }
 
-    @Step("Checking the visibility of the elements in the Spergut Versand block. Versand_static_page")
+    @Step("Checking the visibility of the elements in the Spergut Versand block. Versand_static_page") //step 6 .
     public Versand_static_page_Logic spergutVersandBlock() {
         heavyGoodsTextBlock().shouldBe(visible);
         blockSpergutOne().shouldBe(visible).shouldHave(attribute("class", "image"));
@@ -135,7 +127,7 @@ public class Versand_static_page_Logic extends Versand_static_page {
         return this;
     }
 
-    @Step("Checking the visibility of the table in the Spergut Versand block. Versand_static_page")
+    @Step("Checking the visibility of the table in the Spergut Versand block. Versand_static_page") //step 7.
     public Versand_static_page_Logic spergutVersandTableFirstTab() {
         firstTab().shouldBe(visible);
         mehrButton().click();
@@ -143,7 +135,7 @@ public class Versand_static_page_Logic extends Versand_static_page {
         return this;
     }
 
-    @Step("Checking the visibility of the table in the Spergut Versand block. Versand_static_page")
+    @Step("Checking the visibility of the table in the Spergut Versand block. Versand_static_page")  //step 7.
     public Versand_static_page_Logic spergutVersandTableSecondTab() {
         secondTab().click();
         listWithTheCountriesAndPriceTabTwo().shouldBe(visible);
@@ -151,62 +143,34 @@ public class Versand_static_page_Logic extends Versand_static_page {
     }
 
 
-    @Step("Checking the Back Button. Versand_static_page")
+    @Step("Checking the Back Button to the Main Page. Versand_static_page") //.
     public Versand_static_page_Logic checkingBackButton() throws SQLException {
         backButton().click();
         checkingContainsUrl(new DataBase("PKW").getFullRouteByRouteName("prod", "DE", "main"));
         return this;
     }
 
-    @Step("Checking the Download buttons. Versand_static_page")
+    @Step("Checking the Download pdf buttons. Versand_static_page") //.
     public Versand_static_page_Logic checkingDownloadButtons() {
         downloadPdfButton().shouldHave(attribute("href", "https://www.pkwteile.de/pdf/versand"));
         downloadAcrobatButton().click();
         switchTo().window(1);
-        checkingContainsUrl("/reader/?loc=de");
+        checkingContainsUrl("de/reader");
         closeWindow();
         switchTo().window(0);
         return this;
     }
 
-    public Versand_static_page_Logic checkingCountAndTextNearTheCountriesForTheFirstCountryBlock() { //good
-        for (int i = 0; i < 55; i++) {
-            countryListWithFlagAndPriceForFiftyFive().get(i).shouldBe(visible);
-            Assert.assertFalse(oneCountryWithPriceFromFiftyFive().text().isEmpty());
-        }
-        return this;
-    }
-
-    public Versand_static_page_Logic checkingTheFlagInTheFirstCountryBlock() {
-        for (int i = 0; i < 55; i++) {
-            countryListWithFlagAndPriceForFiftyFive().get(i).shouldBe(visible).shouldHave(attribute("src"));
-        }
-        return this;
-    }
-
-    public Versand_static_page_Logic checkingTextAndPriceForFirstThreeCountries() {
-        for (int i = 0; i < 3; i++) {
-            countryBlockItems().get(i).shouldBe(visible);
-            Assert.assertFalse(countryBlockItem().text().isEmpty());
-        }
-        return this;
-    }
-
-    public Versand_static_page_Logic checkingFlagsForFirstThreeCountry() {
-        for (int i = 0; i < 3; i++) {
-            countryBlockFlagsForFirstThree().get(i).shouldBe(visible).shouldHave(attribute("src"));
-        }
-        return this;
-    }
-
+    @Step("Check visibility for three icons about delivery. Versand_static_page") //step 4 .
     public Versand_static_page_Logic checkingTextNearTheThreeIcons() {
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < featureBlockTextForIcon().size(); i++) {
             featureBlockTextForIcon().get(i).shouldBe(visible);
             Assert.assertFalse(featureBlockTextForOneIcon().text().isEmpty());
         }
         return this;
     }
 
+    @Step("Click FAQ questions and check answers visibility. Versand_static_page")  //step 4.
     public Versand_static_page_Logic questionsAndAnswersFaq() {
         for (int i = 0; i < faqQuestions().size(); i++) {
             faqQuestions().get(i).click();
@@ -221,41 +185,73 @@ public class Versand_static_page_Logic extends Versand_static_page {
         return this;
     }
 
+    @Step("Check the three questions in the table. Versand_static_page")   //step 6.
     public Versand_static_page_Logic checkingTextInTheQuestionsBlock() {
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < questionsBlockItem().size(); i++) {
             questionsBlockItem().get(i).shouldBe(visible);
             Assert.assertFalse(questionsBlockItemOne().text().isEmpty());
         }
         return this;
     }
 
+    @Step("Check list with the parts and prices. Versand_static_page") //step 7.
     public Versand_static_page_Logic countryPriceWithParts() {
         for (int i = 0; i < 3; i++) {
-            blocksTextWithPrice().get(i).shouldBe(visible).shouldHave(attribute("span"));
+            blocksTextWithPrice().get(i).shouldBe(visible);
             Assert.assertFalse(blocksTextWithPriceOne().text().isEmpty());
         }
         return this;
     }
 
+    @Step("Check list with the parts and prices after clicking Mehr Button. Versand_static_page") //step 7.
     public Versand_static_page_Logic tableCountryPriceWithPriceTabOne() {
-        for (int i = 0; i < 87; i++) {
+        for (int i = 0; i < deliveryPriceWithCountryMehr().size(); i++) {
             deliveryPriceWithCountryMehr().get(i).shouldBe(visible);
             Assert.assertFalse(deliveryPriceWithCountryMehrOne().text().isEmpty());
         }
         return this;
     }
 
+    @Step("Check list with the flags on the second tab. Versand_static_page") //step 7.
     public Versand_static_page_Logic checkingFlagTabTwo() {
-        for (int i = 0; i < 11; i++) {  //good
+        for (int i = 0; i < secondTabContentImageFlag().size(); i++) {
             secondTabContentImageFlag().get(i).shouldBe(visible).shouldHave(attribute("alt"));
         }
         return this;
     }
 
+
+    @Step("Check list with the text and prices on the second tab. Versand_static_page") //step 7.
     public Versand_static_page_Logic checkingTextAndPriceTabTwo() {
-        for (int i = 0; i < 22; i++) {
+        for (int i = 0; i < blocksCountryPriceText().size(); i++) {
             blocksCountryPriceText().get(i).shouldBe(visible);
             Assert.assertFalse(blocksCountryPriceTextOne().text().isEmpty());
+        }
+        return this;
+    }
+
+    @Step("Checking the countries in the delivery country block and in the AWS. Versand_static_page")
+    public Versand_static_page_Logic checkingCountriesOnSiteAndOnAWS(List<String> list) {
+        ArrayList<String> siteCountry = new ArrayList<>();
+        for (int i = 0; i < countryNameOnSite().size(); i++) {
+            siteCountry.add(countryNameOnSite().get(i).getText());
+        }
+        siteCountry.add(countryInBox().getAttribute("alt").replace(": shipping", ""));
+        Assert.assertEquals(list.size(), siteCountry.size());
+        Collections.sort(siteCountry);
+        Collections.sort(list);
+        Assert.assertEquals(list, siteCountry);
+        return this;
+    }
+
+    @Step("Checking main elements of countries. Versand_static_page")
+    public Versand_static_page_Logic checkingMainElementsOfCountries() {
+        countryBlockItemsButton().click();
+        countryTable().scrollIntoView("{block: \"center\"}");
+        for (int i = 0; i < countryItemForCount().size(); i++) {
+            flagsOfCountries().get(i).shouldBe(visible);
+            titleOfCountries().get(i).shouldBe(visible);
+            pricesOfCountries().get(i).shouldBe(visible);
         }
         return this;
     }
