@@ -518,4 +518,18 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
         return signalWordOfDangerousProductListingView().get(positionOfProduct).getText();
     }
 
+    @Step("Transition through each category in sidebar. Listing_chemicals_Page")
+    public Listing_chemicals_Page_Logic transitionThroughEachCategoryInSidebar() {
+        int i = 0;
+        while (i < categoriesInSidebar().size()) {
+            String nameCategory = categoriesInSidebar().get(i).getText();
+            categoriesInSidebar().get(i).click();
+            String titleName = getNameTitleCategory();
+            titleCategoriesBlockInSidebar().scrollIntoView(true);
+            Assert.assertEquals(nameCategory, titleName);
+            i++;
+        }
+        return this;
+    }
+
 }

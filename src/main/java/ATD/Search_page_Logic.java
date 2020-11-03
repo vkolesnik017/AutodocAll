@@ -607,7 +607,6 @@ public class Search_page_Logic extends Search_page {
         return this;
     }
 
-
     @Step("presence Refurbished characteristic in Listing With expected Characteristic. Search_page")
     public Search_page_Logic presenceRefurbishedCharacteristicInListingWithCharacteristic(String expectedCharacteristic, String titleOfProduct, String presentCharacteristic) {
         titleOnSearchPage().shouldBe(visible);
