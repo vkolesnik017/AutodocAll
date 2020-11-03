@@ -33,4 +33,11 @@
         </classes>
     </test>
 
+    <test name="QC_2626_TecdocCatalog_SidebarCatalog_TopCategories">
+        <classes>
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_2632_PrioritizationParentsOnMainPageBrand"/>
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_2637_OpenAllParentsSidebarCatalog"/>
+        </classes>
+    </test>
+
 </suite>
