@@ -385,6 +385,7 @@ public class Tyres_page_Logic extends Tyres_page {
             case 1:
             case 2:
                 seasonDropdown().shouldHave(value("winter"));
+                break;
             case 3:
             case 4:
             case 5:
@@ -392,11 +393,13 @@ public class Tyres_page_Logic extends Tyres_page {
             case 7:
             case 8:
                 seasonDropdown().shouldHave(value("sommer"));
+                break;
             case 9:
             case 10:
             case 11:
             case 12:
                 seasonDropdown().shouldHave(value("winter"));
+                break;
         }
         return this;
     }
