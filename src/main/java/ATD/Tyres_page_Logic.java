@@ -1,6 +1,7 @@
 package ATD;
 
 
+import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
@@ -449,6 +450,30 @@ public class Tyres_page_Logic extends Tyres_page {
                 Assert.assertTrue(allValues.contains(allWidthValues.get(j)));
             }
         }
+        return this;
+    }
+
+    @Step("get all values from selector. Tyres_page")
+    public List<String> getAllValuesFromSelector() {
+        List<String> values = new ArrayList<>();
+        addValuesToList(allWidthValues(), values);
+        addValuesToList(allHeightValues(), values);
+        addValuesToList(allTypeValues(), values);
+        addValuesToList(allDiameterValues(), values);
+        return values;
+    }
+
+    @Step("add values to list. Tyres_page")
+    public Tyres_page_Logic addValuesToList(ElementsCollection list, List<String> arrayOfList) {
+        for (int i = 0; i < list.size(); i++) {
+            arrayOfList.add(getTextFromUnVisibleElement(list.get(i)));
+        }
+        return this;
+    }
+
+    @Step("comparison of all seasons values. Tyres_page")
+    public Tyres_page_Logic comparisonOfAllSeasonsValues(List<String> firstList, List<String> secondList) {
+        Assert.assertEquals(firstList, secondList);
         return this;
     }
 }
