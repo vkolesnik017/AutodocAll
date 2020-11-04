@@ -203,7 +203,7 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         List<String> artNumberOfProduct = new ArrayList<>();
         artNumberOfProduct.add("Artikelnummer: V31-1013");
         artNumberOfProduct.add("Artikelnummer: HU 12 140 x");
-        artNumberOfProduct.add("Artikelnummer: PFU 19 226 x");
+        artNumberOfProduct.add("Artikelnummer: 12140X-OF-PCS-MS");
 
         for (int i = 0; i < artNumberOfProduct.size(); i++) {
             articleNumberOfProduct(artNumberOfProduct.get(i)).scrollTo();
