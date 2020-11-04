@@ -152,4 +152,19 @@ public class Motoroil_specification_page_Logic extends Motoroil_specification_pa
         selectedSpecificationInSideBar(expectedValue).shouldHave(attribute("checked"));
         return this;
     }
+
+    @Step("select vehicle in selector after default values. Motoroil_Release_page")
+    public Car_parts_motoroil_page_Logic selectVehicleInSelectorAfterDefaultValues(String marke, String model, String motor) {
+        if (!markeFieldInSelector().has(value("0"))) {
+            markeFieldInSelector().selectOptionByValue("0");
+            markeFieldInSelector().shouldHave(value("0"));
+            modelFieldInSelector().shouldHave(value("0"));
+            motorFieldInSelector().shouldHave(value("0"));
+        }
+        markeFieldInSelector().selectOptionByValue(marke);
+        modelFieldInSelector().selectOptionByValue(model);
+        motorFieldInSelector().selectOptionByValue(motor);
+        btnSearchOfSelector().scrollIntoView("{block: \"center\"}").click();
+        return page(Car_parts_motoroil_page_Logic.class);
+    }
 }
