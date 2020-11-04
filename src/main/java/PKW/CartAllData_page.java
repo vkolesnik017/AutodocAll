@@ -18,6 +18,18 @@ public class CartAllData_page {
         return $(byXpath("//*[@class='alldata-bottom']//*[contains(@class,'total')]/span[2]"));
     }
 
+    SelenideElement safeOrderBlock(){
+        return $(byCssSelector(".bestelen-block__row"));
+    }
+
+    SelenideElement safeOrderCheckbox() {
+        return $x("//input[@name='security_delivery']");
+    }
+
+    public SelenideElement priceOfSafeOrder() {
+        return $(byCssSelector(".bestelen-block__col>label"));
+    }
+
     SelenideElement labelVAT() {
         return $x("//*[@class='alldata-bottom']//*[contains(@class,'total')]//i");
     }

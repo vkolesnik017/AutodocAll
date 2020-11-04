@@ -28,6 +28,10 @@ public class Cart_page {
         return $x("//div[@class='cart-page-listing']//tr[@data-article_id]");
     }
 
+    SelenideElement safeOrderCheckbox() {
+        return $x("//input[@name='security_delivery']");
+    }
+
     // locators only for CH
     SelenideElement closeDeliveryLimitPopupForCH() {
         return $x("//a[@class='close_popup close continue_shopping']");
