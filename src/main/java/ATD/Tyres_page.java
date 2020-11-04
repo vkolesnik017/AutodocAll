@@ -122,4 +122,18 @@ public class Tyres_page {
 
   ElementsCollection allDiameterValues() {return $$x("//select[@id='form_Size']/option");}
 
+  SelenideElement linkingBlock() {return $x("//div[@class='most-popular']");}
+
+  ElementsCollection btnPaginatorOfLinkingBlock() {return $$x("//div[@class='most-popular']//button");}
+
+  ElementsCollection titlesOfLinkingBlocks() {return $$x("//div[@class='most-popular']//a/div[2]");}
+
+  ElementsCollection visibleTitleOfLinkingBlocks() {return $$x("//div[@class='most-popular']//a/div[2]").filter(visible);}
+
+  SelenideElement headLineOfLinkingBlock() {return $x("//div[@class='most-popular__heading']");}
+
+  ElementsCollection btnMoreOfLinkingBlock() {return $$x("//div[@class='most-popular']//span[@class='link']");}
+
+  ElementsCollection visibleBtnMoreOfLinkingBlock() {return $$x("//div[@class='most-popular']//span[@class='link']").filter(visible);}
+
 }

@@ -27,6 +27,7 @@
             <class name="ATD.Characteristics.QC_506_StaticCharacteristics.QC_513_PresenceStaticCharacteristicInBasket"/>
             <!--<class name="ATD.Characteristics.QC_506_StaticCharacteristics.QC_1901_CharacteristicsDoNotHideAfterBrandFilterApplying"/>-->
             <class name="ATD.Characteristics.QC_506_StaticCharacteristics.QC_2083_CheckOfIdentityOfMpnProductAndMpnInAws"/>
+            <class name="ATD.Characteristics.QC_506_StaticCharacteristics.QC_2084_CheckOfIdentityOfMpnProductInAwsAndProductPage"/>
             <class name="ATD.Characteristics.QC_506_StaticCharacteristics.QC_2095_CheckMpnOfProductInListingBasketProductPage"/>
             <class name="ATD.Characteristics.QC_506_StaticCharacteristics.QC_2096_CheckMpnNumberInWishList"/>
         </classes>
