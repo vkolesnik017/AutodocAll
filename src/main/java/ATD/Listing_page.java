@@ -977,5 +977,13 @@ public class Listing_page {
     SelenideElement mehrButtonListingOne() {
         return $x("//*[@class='top-small-products-items__item']//*[@class='dangerous-listing js-dangerous-listing__show-more']");
     }
+
+    SelenideElement scrollProgressBar() {
+        return $x("//div[@class='scroll-progress-bar']");
+    }
+
+    SelenideElement timeBlockFromFooter() {
+        return $x("//div[@class='work-time']");
+    }
 }
 
