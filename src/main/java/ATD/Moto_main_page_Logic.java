@@ -148,6 +148,7 @@ public class Moto_main_page_Logic extends Moto_main_page {
     @Step(" reset of motorcycle selector .Moto_main_page")
     public Moto_main_page_Logic resetOfMotoSelector() {
         btnResetOfSelector().shouldBe(visible).click();
+        btnResetOfSelector().shouldNotBe(visible);
         return this;
     }
 
@@ -293,7 +294,7 @@ public class Moto_main_page_Logic extends Moto_main_page {
 
     @Step("click on link More at TOP brands block .Moto_main_page")
     public Moto_makers_page_Logic clickOnLinkMoreAtTopBrandsBlock() {
-        linkMoreAtTopBrandsBlock().shouldBe(visible).scrollIntoView("{block: \"center\"}").click();
+        linkMoreAtTopBrandsBlock().scrollIntoView("{block: \"center\"}").click();
         return page(Moto_makers_page_Logic.class);
     }
 
