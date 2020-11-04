@@ -92,7 +92,7 @@ public class Motoroil_Release_page_Logic extends Motoroil_Release_page {
         clickOnValueFromFourthRelinkingBlock(0);
         checkingContainsUrl(fourthBlock);
         return this;
-  }
+    }
 
     @Step("click on value from First relinking block. Motoroil_Release_page")
     public Motoroil_Release_page_Logic clickOnValueFromFirstRelinkingBlock(int position) {
@@ -219,6 +219,21 @@ public class Motoroil_Release_page_Logic extends Motoroil_Release_page {
 
     @Step("select vehicle in selector. Motoroil_Release_page")
     public Car_parts_motoroil_page_Logic selectVehicleInSelector(String marke, String model, String motor) {
+        selectMarkeInSelector(marke);
+        modelFieldInSelector().selectOptionByValue(model);
+        motorFieldInSelector().selectOptionByValue(motor);
+        btnSearchOfSelector().scrollIntoView("{block: \"center\"}").click();
+        return page(Car_parts_motoroil_page_Logic.class);
+    }
+
+    @Step("select vehicle in selector after default values. Motoroil_Release_page")
+    public Car_parts_motoroil_page_Logic selectVehicleInSelectorAfterDefaultValues(String marke, String model, String motor) {
+        if (!markeFieldInSelector().has(value("0"))) {
+            markeFieldInSelector().selectOptionByValue("0");
+            markeFieldInSelector().shouldHave(value("0"));
+            modelFieldInSelector().shouldHave(value("0"));
+            motorFieldInSelector().shouldHave(value("0"));
+        }
         selectMarkeInSelector(marke);
         modelFieldInSelector().selectOptionByValue(model);
         motorFieldInSelector().selectOptionByValue(motor);

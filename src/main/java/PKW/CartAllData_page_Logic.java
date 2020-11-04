@@ -4,6 +4,10 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
+import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.Selenide.sleep;
@@ -81,6 +85,55 @@ public class CartAllData_page_Logic extends CartAllData_page {
         } else {
             Assert.fail("Leib bank not visible");
         }
+        return this;
+    }
+
+    @Step("Checks for presence Safe Order block for Heavy Loads. CartAllData_page")
+    public CartAllData_page_Logic checkPresenceSafeOrderBlock() {
+        safeOrderBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checks that the Safe Order checkbox is selected. CartAllData_page")
+    public CartAllData_page_Logic checkThatSafeOrderCheckboxIsSelected() {
+        safeOrderCheckbox().shouldHave(attribute("checked"));
+        return this;
+    }
+
+    @Step("Checks that the Safe Order checkbox is not selected. CartAllData_page")
+    public CartAllData_page_Logic checkThatSafeOrderCheckboxIsNotSelected() {
+        safeOrderCheckbox().shouldNotHave(attribute("checked"));
+        return this;
+    }
+
+    @Step("Click Safe Order Checkbox. CartAllData_page")
+    public CartAllData_page_Logic clickSafeOrderCheckbox() {
+        safeOrderCheckbox().click();
+        return this;
+    }
+
+    @Step("Add safe order price in order and checks what total price included SO. CartAllData_page")
+    public CartAllData_page_Logic addSafeOrderInOrderAndCheckTotalPriceIncludedSO(String shop) {
+        float price = getTotalPriceAllDataPage(shop);
+        String priceSO = priceOfSafeOrder().getText();
+        float realPriseSO = Float.parseFloat(priceSO.substring(0, priceSO.indexOf(" ")).replaceAll(",", "."));
+        clickSafeOrderCheckbox();
+        sleep(2000);
+        Float totalPrice = getTotalPriceAllDataPage(shop);
+        float totalPriceIncludedSO = price + realPriseSO;
+        BigDecimal result = new BigDecimal(totalPriceIncludedSO);
+        BigDecimal formatPriceUp = result.setScale(2, RoundingMode.UP);
+        float roundMax = Float.parseFloat(String.valueOf(formatPriceUp));
+        BigDecimal formatPriceDOWN = result.setScale(2, RoundingMode.FLOOR);
+        float roundMin = Float.parseFloat(String.valueOf((formatPriceDOWN)));
+        float res = 0.0f;
+        if (totalPrice.equals(roundMax)) {
+            res = roundMax;
+        }
+        if (totalPrice.equals(roundMin)) {
+            res = roundMin;
+        }
+        Assert.assertEquals(res, totalPrice);
         return this;
     }
 }
