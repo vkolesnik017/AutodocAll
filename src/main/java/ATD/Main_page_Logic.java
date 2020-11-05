@@ -12,10 +12,7 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 import static ATD.CommonMethods.*;
 import static PKW.CommonMethods.checkingContainsUrl;
@@ -342,7 +339,7 @@ public class Main_page_Logic extends Main_page {
     // This method for all shop, except DE
     @Step("Fill in KBA field. Main_page")
     public Main_page_Logic fillNumberKba(String kbaNumber) {
-        sleep(3000); // added sleep SITES-7691
+        sleep(4000); // added sleep SITES-7691
         firstFieldKBA().setValue(kbaNumber);
         return this;
     }
