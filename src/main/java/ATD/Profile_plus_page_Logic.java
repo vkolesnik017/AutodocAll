@@ -4,6 +4,9 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
+
+import java.sql.SQLException;
+
 import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -199,6 +202,15 @@ public class Profile_plus_page_Logic extends Profile_plus_page {
         }
         return this;
     }
+    @Step("check work adding vin num in popup of garage in header. Profile_plus_page")
+    public Profile_plus_page_Logic checkWorkAddingVinNumInPopupOfGarage(String vinNum) {
+            String nameBtn = btnOpenInputForAddVinNumInPopUpOfGarage().getText();
+            btnOpenInputForAddVinNumInPopUpOfGarage().shouldHave(text(nameBtn)).click();
+            inputForAddVinNumInPopUpOfGarage().shouldBe(visible).setValue(vinNum);
+            btnAddVinNumInPopUpOfGarage().shouldBe(visible).click();
+            addedVinNumInPopUpOfGarage().shouldHave(text(vinNum));
+        return this;
+    }
 
     @Step("Check presence unsubscribe button. Profile_plus_page")
     public Profile_plus_page_Logic checkPresenceUnsubscribeButton() {
@@ -231,4 +243,20 @@ public class Profile_plus_page_Logic extends Profile_plus_page {
         return this;
     }
 
+    @Step("go to the Catalog route from the popup of garage in header. Profile_plus_page")
+    public Maker_car_list_page_Logic  checkRedirectToCatalogRoute() throws SQLException {
+        btnToCatalogRouteInPopUp().click();
+        CommonMethods.checkingContainsUrl(new Common.DataBase("ATD").getFullRouteByRouteName("prod", "DE", "maker_car_list18"));
+        return page(Maker_car_list_page_Logic.class);
+    }
+
+//    @Step("check work deleting vin num in popup of garage in header. Profile_plus_page")
+//    public Profile_plus_page_Logic checkWorkDeletingVinNumInPopupOfGarage(String vinNum) {
+//        btnOpenInputForAddVinNumInPopUpOfGarageHeader().get(i).click();
+//        inputForAddVinNumInPopUpOfGarageHeader().get(i).shouldBe(visible).clear();
+//        btnAddVinNumInPopUpOfGarageHeader().get(i).shouldBe(visible).click();
+//        addedVinNumInPopUpOfGarageHeader().get(i).shouldNotHave(text(vinNum));
+//        btnOpenInputForAddVinNumInPopUpOfGarageHeader().get(i).shouldHave(text(nameBtn));
+//        return this;
+//    }
 }

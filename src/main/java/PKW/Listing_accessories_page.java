@@ -65,6 +65,10 @@ public class Listing_accessories_page {
         return $x("//div[@class='crabs']//div[3]/a");
     }
 
+    SelenideElement fourthBreadCrumb() {
+        return $x("//div[@class='crabs']//div[4]/a");
+    }
+
     SelenideElement firstBrandInBrandsBlock() {
         return $x("//div[contains(@class,'listing-brand-filters__brand')][1]");
     }
@@ -80,6 +84,7 @@ public class Listing_accessories_page {
     SelenideElement thirdBrandInBrandsBlockImg() {
         return $x("//div[@class='listing-brand-filters__list-brands delay-overflow']//div[3]//img");
     }
+
 
     SelenideElement brandsBlock() {
         return $x("//div[@class='listing-brand-filters__list-brands delay-overflow']");
