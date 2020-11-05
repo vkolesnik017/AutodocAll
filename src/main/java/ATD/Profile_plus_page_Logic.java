@@ -249,4 +249,14 @@ public class Profile_plus_page_Logic extends Profile_plus_page {
         CommonMethods.checkingContainsUrl(new Common.DataBase("ATD").getFullRouteByRouteName("prod", "DE", "maker_car_list18"));
         return page(Maker_car_list_page_Logic.class);
     }
+
+//    @Step("check work deleting vin num in popup of garage in header. Profile_plus_page")
+//    public Profile_plus_page_Logic checkWorkDeletingVinNumInPopupOfGarage(String vinNum) {
+//        btnOpenInputForAddVinNumInPopUpOfGarageHeader().get(i).click();
+//        inputForAddVinNumInPopUpOfGarageHeader().get(i).shouldBe(visible).clear();
+//        btnAddVinNumInPopUpOfGarageHeader().get(i).shouldBe(visible).click();
+//        addedVinNumInPopUpOfGarageHeader().get(i).shouldNotHave(text(vinNum));
+//        btnOpenInputForAddVinNumInPopUpOfGarageHeader().get(i).shouldHave(text(nameBtn));
+//        return this;
+//    }
 }

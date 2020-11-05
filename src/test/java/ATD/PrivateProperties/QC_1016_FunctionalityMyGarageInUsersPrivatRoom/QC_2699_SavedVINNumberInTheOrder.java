@@ -54,10 +54,10 @@ public class QC_2699_SavedVINNumberInTheOrder {
                 .nextBtnClick()
                 .getOrderNumber();
         new Order_aws(orderNumber).openOrderInAwsWithLogin()
-
+                .clickBtnAutoBySearchFromTheSite()
+                .getVinNumInPopupFromBtnAutoBySearchFromTheSite(vinNum)
                 .reSaveOrder()
                 .checkCurrentStatusInOrder("Testbestellungen");
-
 
 
     }
