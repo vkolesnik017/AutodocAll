@@ -115,4 +115,28 @@ public class Profile_plus_page {
     SelenideElement btnToCatalogRouteInPopUp() {
         return $x("//div[@class='header-garage__logged-check']//a");
     }
+    SelenideElement unsubscribeButton() {
+        return $x("//a[@data-ga-action='unsubscribe_click']");
+    }
+
+    SelenideElement unsubscribePopUp() {
+        return $x("//div[@class='popup-cancel-status']");
+    }
+
+    SelenideElement btnNoInUnsubscribePopUp() {
+        return $x("//button[@data-ga-action='unsubscribe_popup_cancel']");
+    }
+
+    public SelenideElement firstTextInsideUnsubscribePopUp() {
+        return $x("//div[@class='popup-cancel-status__title']/span[1]");
+    }
+
+    public SelenideElement secondTextInsideUnsubscribePopUp() {
+        return $x("//div[@class='popup-cancel-status__title']/span[2]");
+    }
+
+    SelenideElement premiumAccountExpirationDate() {
+        return $x("//div[@class='member-plus-block__bottom']/p");
+    }
+
 }

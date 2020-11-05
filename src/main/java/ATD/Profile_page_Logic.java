@@ -142,4 +142,10 @@ public class Profile_page_Logic extends Profile_page {
         retourenPage.clickSendenButtonWithCorrectData();
         return this;
     }
+
+    @Step("Go to page Autodoc Plus. Profile_page")
+    public Profile_plus_page_Logic goToPageAutodocPlus() {
+        autodocPlusBtn().click();
+        return page(Profile_plus_page_Logic.class);
+    }
 }

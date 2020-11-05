@@ -21,6 +21,10 @@ public class Profile_page {
         return $(byXpath("//div[@class='top_title']/span"));
     }
 
+    SelenideElement autodocPlusBtn() {
+        return $x("//a[@data-ga-action='Sidebar_Plus']");
+    }
+
     // history orders tab (page) (Meine Bestellungen)
     SelenideElement bestelldetailsButton(String numberOrder) {
         return $x("//td[@class='order-nr' and text()='" + numberOrder + "']/../td[@class='order-data']/a");

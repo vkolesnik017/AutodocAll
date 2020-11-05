@@ -28,7 +28,7 @@ public class QC_2680_SubscribeToNewsLetterByRegisteringInBasket {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "search39");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "search23");
     }
 
     @Test(dataProvider = "routes")

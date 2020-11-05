@@ -92,4 +92,12 @@ public class Maker_car_list_page {
      SelenideElement searchBar() { return $(byId("search"));  }
 
     ElementsCollection productsList() {return $$x("//ul[@class='list_products']/li");}
+
+    SelenideElement btnAddToBasketFromTopProductsBlock() {
+        return $x("//a[@class='ga-click button add_basket']");
+    }
+
+    SelenideElement popupBasketAddedProducts() {
+        return $x("//div[@class='cart-items-block ']");
+    }
 }

@@ -148,6 +148,11 @@ public class Customer_view_aws {
         return $x("//form[@id='form-order']");
     }
 
+    private SelenideElement customerSubscriptionSelector() {
+        return $x("//select[@class='customer-subscription-update']");
+    }
+
+
     @Step("Get deposit balance after the last crediting . Customer_view_aws")
     public Float getDepositBalanceAfterLastCrediting() {
        return Float.valueOf(depositBalanceAfterLastCrediting().getText());
@@ -286,5 +291,11 @@ public class Customer_view_aws {
         String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
         orderLink(date).click();
         return page(Order_aws.class);
+    }
+
+    @Step("Check presence expected {expectedText} text in customer subscription selector")
+    public Customer_view_aws checkPresenceTextInCustomerSubscriptionSelector(String expectedText) {
+        customerSubscriptionSelector().shouldHave(text(expectedText));
+        return this;
     }
 }

@@ -3,13 +3,18 @@ package ATD;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
-import java.sql.SQLException;
 
 import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
 public class Profile_plus_page_Logic extends Profile_plus_page {
+
+    @Step("Get client ID(digit). Profile_plus_page")
+    public String getDigitClientId() {
+        String digit = new Profile_page_Logic().getDigitClientId();
+        return digit;
+    }
 
     @Step("visibility of users name .Profile_plus_page")
     public Profile_plus_page_Logic visibilityOfUsersName() {
@@ -201,6 +206,37 @@ public class Profile_plus_page_Logic extends Profile_plus_page {
             inputForAddVinNumInPopUpOfGarage().shouldBe(visible).setValue(vinNum);
             btnAddVinNumInPopUpOfGarage().shouldBe(visible).click();
             addedVinNumInPopUpOfGarage().shouldHave(text(vinNum));
+        return this;
+    }
+
+    @Step("Check presence unsubscribe button. Profile_plus_page")
+    public Profile_plus_page_Logic checkPresenceUnsubscribeButton() {
+        unsubscribeButton().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Check presence unsubscribe button and click on it. Profile_plus_page")
+    public Profile_plus_page_Logic clickBtnUnsubscribeButton() {
+        unsubscribeButton().shouldBe(visible);
+        unsubscribeButton().click();
+        unsubscribePopUp().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Get the end of the premium account. Profile_plus_page")
+    public String getEndDateOfPremiumAccount() {
+       return premiumAccountExpirationDate().getText().replaceAll("(.+\\s)(\\d.+)(\\s.+)","$2");
+    }
+
+    @Step("Checks presence expected first text {expectedText} inside unsubscribe popup. Profile_plus_page")
+    public Profile_plus_page_Logic checkPresenceExpectedFirstTextInsideUnsubscribePopUp(SelenideElement locator, String expectedText) {
+        locator.shouldHave(exactText(expectedText));
+        return this;
+    }
+
+    @Step("Click on the No button to close the popup unsubscribe. Profile_plus_page")
+    public Profile_plus_page_Logic clickBtnNoToClosePopUpUnsubscribe() {
+        btnNoInUnsubscribePopUp().click();
         return this;
     }
 

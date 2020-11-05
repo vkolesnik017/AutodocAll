@@ -47,4 +47,6 @@ public class Tyre_item_page {
     SelenideElement errorPopUp() {return $x("//div[@class='txt ']");}
 
     SelenideElement btnCloseErrorPopUp() {return $x("//div[@class='popup_inner']/div/a");}
+
+    ElementsCollection visibleTopProducts() {return $$x("//div[@class='product-list__row slick-slide slick-current slick-active']/ul/li");}
 }

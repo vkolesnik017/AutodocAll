@@ -246,7 +246,14 @@ public class Maker_car_list_page_Logic extends Maker_car_list_page {
         return this;
     }
 
-    @Step(": from Maker_car_list_page")
+    @Step("add product from top products block to basket. Maker_car_list_page")
+    public Maker_car_list_page_Logic addProductFromTopProductsToBasket() {
+        btnAddToBasketFromTopProductsBlock().scrollIntoView("{block: \"center\"}").shouldBe(visible).click();
+        popupBasketAddedProducts().waitUntil(attribute("style", "visibility: visible; opacity: 1;"), 10000);
+        return this;
+    }
+
+    @Step(":from Maker_car_list_page")
     public Cart_page_Logic cartClick() {
         new Main_page_Logic().cartClick();
         return page(Cart_page_Logic.class);

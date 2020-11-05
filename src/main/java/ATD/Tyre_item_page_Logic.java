@@ -105,7 +105,7 @@ public class Tyre_item_page_Logic extends Tyre_item_page {
         return this;
     }
 
-     @Step("an error popup about an incomplete email. Tyre_item_page")
+    @Step("an error popup about an incomplete email. Tyre_item_page")
     public Tyre_item_page_Logic appearsErrorPopUpAboutIncompleteEmail() {
         errorPopUp().shouldBe(visible).shouldHave(text("Um fortzufahren bestätigen Sie bitte Ihr Newsletter-Abo"));
         return this;
@@ -115,6 +115,15 @@ public class Tyre_item_page_Logic extends Tyre_item_page {
     public Tyre_item_page_Logic closeErrorPopUp() {
         btnCloseErrorPopUp().shouldBe(visible).click();
         btnCloseErrorPopUp().shouldNotBe(visible);
+        return this;
+    }
+
+
+    @Step("presence of TOP products . Tyre_item_page")
+    public Tyre_item_page_Logic presenceOfTopProducts() {
+        for (int i = 0; i < visibleTopProducts().size(); i++) {
+            visibleTopProducts().get(i).shouldBe(visible);
+        }
         return this;
     }
 }
