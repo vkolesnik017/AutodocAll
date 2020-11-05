@@ -34,6 +34,7 @@
             <class name="ATD.Tyres.QC_1104_TyresSelector.QC_1288_TestTyresSelectorWithSeacrBySpeedIndex"/>
             <class name="ATD.Tyres.QC_1104_TyresSelector.QC_2712_DisplayOfDefaultParametersInSelector"/>
             <class name="ATD.Tyres.QC_1104_TyresSelector.QC_2713_CheckSizeValuesDontChangeWhenSeasonChanges"/>
+            <class name="ATD.Tyres.QC_1104_TyresSelector.QC_2717_CheckDisplayTyresSizeOfAllSeasons"/>
         </classes>
     </test>
 
@@ -187,7 +188,6 @@
             <classes>
                   <class name="ATD.Tyres.QC_2066_CheckProductsOutOfStock.QC_2070_SortingOfProductWithGreyButton"/>
                 <class name="ATD.Tyres.QC_2066_CheckProductsOutOfStock.QC_2077_CheckingForPopUpOfSuccessInSendingMailForFeedback"/>
-                <class name="ATD.Tyres.QC_2066_CheckProductsOutOfStock.QC_2078_CheckingForErrorPopUpAboutAnUnsetCheckbox"/>
                 <class name="ATD.Tyres.QC_2066_CheckProductsOutOfStock.QC_2079_CheckingForPopUpErrorAboutInvalidEmail"/>
                 <class name="ATD.Tyres.QC_2066_CheckProductsOutOfStock.QC_2080_CheckingForPopUpAboutInvalidEmailAndWithCheckbox"/>
                 <class name="ATD.Tyres.QC_2066_CheckProductsOutOfStock.QC_2081_CheckingConfirmationLetterForFeedback"/>

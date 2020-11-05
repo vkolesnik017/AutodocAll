@@ -7,8 +7,6 @@ import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
-import mailinator.WebMail;
-import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -19,14 +17,12 @@ import java.sql.SQLException;
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
-import static mailinator.WebMail.passwordForMail;
 
-public class QC_2069_PresenceOfFeedBackPopUpByClickOnGreyButton {
+public class QC_2078_ValidationOfFormFieldsNotifyOnAvailability {
 
     private ProductCard_aws productPageAws = new ProductCard_aws();
     private Tyre_item_page_Logic tyreItemPage = new Tyre_item_page_Logic();
-    private String email = "QC_2069_autotest@autodoc.si";
-    private WebMail webMailPage = new WebMail();
+    private String email = "QC_2078_autotest@autodoc.si";
 
     @BeforeClass
     void setUp() {
@@ -41,10 +37,8 @@ public class QC_2069_PresenceOfFeedBackPopUpByClickOnGreyButton {
     @Owner(value = "Kolesnik")
     @Test(dataProvider = "route")
     @Flaky
-    @Description(value = "Test checks presence of feedback pop-up by click on grey button")
-    public void testChecksPresenceOfFeedBackPopUpByClickOnGreyButton(String route) {
-        webMailPage.openMail(email, passwordForMail);
-        webMailPage.deleteAllLetters();
+    @Description(value = "Test checks validation of form fields 'Notify on availability'")
+    public void testChecksValidationOfFormFieldsNotifyOnAvailability(String route) {
         new ProductSearch_aws().openProductSearchPageAndLogin().selectCategory("100001")
                 .selectFirstSearchFilter("no").selectAvailabilityAtSupplierFilter("no").clickOnSearchButton().goToProductCartByClickOnTitle(0);
         String brand = productPageAws.getTitleOfBrandProduct();
@@ -52,10 +46,9 @@ public class QC_2069_PresenceOfFeedBackPopUpByClickOnGreyButton {
         String artNum = productPageAws.getArtNumOfProduct();
         openPage(route + "/" + brand + "-" + ean + "-" + artNum);
         tyreItemPage.presenceOfHorizontalSelector().appearsOfOutOfStockProductPopUp()
-                .setValueInEmailFieldOfPopUp(email).clickOnGetMailingLabel().clickOnBtnSubscription().closeErrorPopUp().presenceOfTopProducts();
-        webMailPage.openMailWithLoggedUser().presenceOfToolbarElements();
-        Assert.assertEquals(webMailPage.getTotalCountOfLetters(), 1);
-        webMailPage.deleteAllLetters();
+                .clickOnBtnSubscription().appearsErrorPopUpAboutIncompleteEmailAndUnsetCheckBox().closeErrorPopUp()
+              .setValueInEmailFieldOfPopUp(email).clickOnBtnSubscription().appearsErrorPopUpAboutIncompleteEmail();
+
     }
 
     @AfterMethod

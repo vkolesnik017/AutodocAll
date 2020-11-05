@@ -98,4 +98,32 @@ public class Tyre_item_page_Logic extends Tyre_item_page {
         btnSendOfFeedBackPopUp().click();
         return this;
     }
+
+    @Step("an error popup about an incomplete email and an unset checkbox check. Tyre_item_page")
+    public Tyre_item_page_Logic appearsErrorPopUpAboutIncompleteEmailAndUnsetCheckBox() {
+        errorPopUp().shouldBe(visible).shouldHave(text("Dies ist ein Pflichtfeld")).shouldHave(text("Um fortzufahren bestätigen Sie bitte Ihr Newsletter-Abo"));
+        return this;
+    }
+
+    @Step("an error popup about an incomplete email. Tyre_item_page")
+    public Tyre_item_page_Logic appearsErrorPopUpAboutIncompleteEmail() {
+        errorPopUp().shouldBe(visible).shouldHave(text("Um fortzufahren bestätigen Sie bitte Ihr Newsletter-Abo"));
+        return this;
+    }
+
+    @Step("close error pop-Up . Tyre_item_page")
+    public Tyre_item_page_Logic closeErrorPopUp() {
+        btnCloseErrorPopUp().shouldBe(visible).click();
+        btnCloseErrorPopUp().shouldNotBe(visible);
+        return this;
+    }
+
+
+    @Step("presence of TOP products . Tyre_item_page")
+    public Tyre_item_page_Logic presenceOfTopProducts() {
+        for (int i = 0; i < visibleTopProducts().size(); i++) {
+            visibleTopProducts().get(i).shouldBe(visible);
+        }
+        return this;
+    }
 }

@@ -26,12 +26,12 @@ public class QC_2715_CheckingCorrectSizeInTyreSelectorForSelectedSeason {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "routesMoto", parallel = true)
-    Object[] dataProviderMoto() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres,tyres2,tyres3");
+    @DataProvider(name = "routes", parallel = true)
+    Object[] dataProvider() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres2,tyres,tyres3");
     }
 
-    @Test(dataProvider = "routesMoto")
+    @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test Checking the correct size in the tire selector for the selected season")

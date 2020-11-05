@@ -115,4 +115,11 @@ public class Tyres_page {
   ElementsCollection allWidthValues() {return $$x("//select[@id='form_Width']/option");}
 
   ElementsCollection visibleTopTyres() {return $$x("//li[@class='ct_toppop_single_product']").filter(visible);}
+
+  ElementsCollection allHeightValues() {return $$x("//select[@id='form_CrossSections']/option");}
+
+  ElementsCollection allTypeValues() {return $$x("//select[@id='form_R_ZR']/option");}
+
+  ElementsCollection allDiameterValues() {return $$x("//select[@id='form_Size']/option");}
+
 }
