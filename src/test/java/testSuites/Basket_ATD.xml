@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Basket" parallel="methods" thread-count="2" data-provider-thread-count="3">
+
+    <listeners>
+        <listener class-name="Common.ProjectListener"/>
+    </listeners>
+
+    <test name="QC_1129_BasketSession_ATD" thread-count="1">
+        <classes>
+            <class name="ATD.Basket.QC_1129_BasketSession_ATD.QC_1130_RestorationWebBasketSessionOnWebHomepageVersion_ATD"/>
+            <class name="ATD.Basket.QC_1129_BasketSession_ATD.QC_1131_SynchronizationWebSessionOfBasketOnMobVersion_ATD"/>
+            <class name="ATD.Basket.QC_1129_BasketSession_ATD.QC_1132_SynchronizationMobSessionOfBasketOnWebVersion_ATD"/>
+            <class name="ATD.Basket.QC_1129_BasketSession_ATD.QC_1133_LoginInBasketWhenBasketSessionAbandoned_ATD"/>
+            <class name="ATD.Basket.QC_1129_BasketSession_ATD.QC_1134_CheckBasketSessionSynchronizationOnDifferentSkins_ATD"/>
+            <class name="ATD.Basket.QC_1129_BasketSession_ATD.QC_1135_SynchronizationOfBasketSessionAfterPlacingAnOrder_ATD"/>
+            <class name="ATD.Basket.QC_1129_BasketSession_ATD.QC_1136_RecoveryBasketWebSessionOnWebVersionMainPageViaFacebook_ATD"/>
+            <class name="ATD.Basket.QC_1129_BasketSession_ATD.QC_1397_RecoveryBasketWebSessionOnMobVersionMainPageViaFacebook_ATD"/>
+        </classes>
+    </test>
+
+    <test name="QC_1388_Firms_ATD">
+        <classes>
+            <class name="ATD.Basket.QC_1388_Firms_ATD.QC_1389_Firms_DE_PL_ATD"/>
+            <class name="ATD.Basket.QC_1388_Firms_ATD.QC_1390_Firms_DE_PL_SplitBilling_DifferentCountries_ATD"/>
+            <class name="ATD.Basket.QC_1388_Firms_ATD.QC_1391_Firms_DE_PL_SplitBilling_SameCountries_ATD"/>
+            <class name="ATD.Basket.QC_1388_Firms_ATD.QC_1392_SplitBilling_TwoFirms_SameCountries_PositiveCase_ATD"/>
+            <class name="ATD.Basket.QC_1388_Firms_ATD.QC_1393_SplitBilling_FirmAndPhysicalPerson_SameCountries_PositiveCase_ATD"/>
+            <class name="ATD.Basket.QC_1388_Firms_ATD.QC_1394_Firm_NonSplit_BillingAndShipping_PositiveCase_ATD"/>
+            <class name="ATD.Basket.QC_1388_Firms_ATD.QC_1395_Firm_SplitBilling_TwoFirms_DifferentCountries_PositiveCase_ATD"/>
+            <class name="ATD.Basket.QC_1388_Firms_ATD.QC_1396_SplitBilling_FirmAndPhysicalPerson_DifferentCountries_PositiveCase_ATD"/>
+            <class name="ATD.Basket.QC_1388_Firms_ATD.QC_1481_SplitBilling_FirmAndPhysicalPerson_SameCountries_NegativeCase_ATD"/>
+            <class name="ATD.Basket.QC_1388_Firms_ATD.QC_1482_SplitBilling_TwoFirms_SameCountries_NegativeCase_ATD"/>
+            <class name="ATD.Basket.QC_1388_Firms_ATD.QC_1483_SplitBilling_TwoFirms_DifferentCountries_NegativeCase_ATD"/>
+            <class name="ATD.Basket.QC_1388_Firms_ATD.QC_1484_SplitBilling_FirmAndPhysicalPerson_DifferentCountries_NegativeCase_ATD"/>
+            <class name="ATD.Basket.QC_1388_Firms_ATD.QC_1485_FirmValidationAfterError_ATD"/>
+        </classes>
+    </test>
+
+    <test name="QC_1486_Island_ATD">
+        <classes>
+            <class name="ATD.Basket.QC_1486_Island_ATD.QC_1487_ChecksVerificationIslands_BillingIsUndivided_PositiveCase_ATD"/>
+            <class name="ATD.Basket.QC_1486_Island_ATD.QC_1488_ChecksVerificationIslands_BillingIsUndivided_NegativeCase_ATD"/>
+            <class name="ATD.Basket.QC_1486_Island_ATD.QC_1489_ChecksVerificationIslands_BillingIsDivided_PositiveCase_ATD"/>
+            <class name="ATD.Basket.QC_1486_Island_ATD.QC_1491_ChecksVerificationIslandsAndFirm_BillingIsUndivided_IncorrectCompanyData_ATD"/>
+            <class name="ATD.Basket.QC_1486_Island_ATD.QC_1490_ChecksVerificationIslands_BillingIsDivided_NegativeCase_ATD"/>
+            <class name="ATD.Basket.QC_1486_Island_ATD.QC_1492_ChecksVerificationIslandsAndFirm_BillingIsDivided_DifferentCountries_NegativeCase_ATD"/>
+            <class name="ATD.Basket.QC_1486_Island_ATD.QC_1493_ChecksVerificationIslandsAndFirm_BillingIsDivided_PositiveCase_ATD"/>
+            <class name="ATD.Basket.QC_1486_Island_ATD.QC_1494_ChecksVerificationIslandsAndFirm_BillingIsUndivided_CorrectCompanyData_ATD"/>
+            <class name="ATD.Basket.QC_1486_Island_ATD.QC_1495_ChecksVerificationIslandsAndFirm_BillingIsDivided_SameCountriesInShipping_IslandWithoutVat_ATD"/>
+        </classes>
+    </test>
+
+    <test name="QC_1882_Login_Registration_PasswordRecovery_ATD">
+        <classes>
+            <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1883_RegistrationPositiveCase_ATD"/>
+            <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1884_RegistrationNegativeCase_PasswordRecoveryCheck_ATD"/>
+            <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1885_RegistrationNegativeCase_EmptyPasswordField_ATD"/>
+            <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1886_RegistrationNegativeCase_InvalidDomain_ATD"/>
+            <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1887_RegistrationByUserRegisteredOnAnotherSkin_ATD"/>
+            <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1923_LoginPositiveCase_ATD"/>
+            <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1924_LoginByUserLoginOnAnotherSkin_ATD"/>
+            <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1926_LoginNegativeCase_InvalidPassword_ATD"/>
+            <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1927_LoginNegativeCase_InvalidDomain_ATD"/>
+            <!--<class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1928_LoginNegativeCase_EmptyInputs_ATD"/>-->
+            <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1930_PasswordRecoveryNegativeCase_NotRegisteredMail_ATD"/>
+            <!--<class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1929_PasswordRecovery_ATD"/>-->
+           <!--<class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1931_PasswordRecoveryNegativeCase_IncorrectPasswordConfirmation_ATD"/>-->
+        </classes>
+    </test>
+
+    <test name="QC_1932_RouteAddress_ATD">
+        <classes>
+            <class name="ATD.Basket.QC_1932_RouteAddress_ATD.QC_1933_ZipMasks_ATD"/>
+            <class name="ATD.Basket.QC_1932_RouteAddress_ATD.QC_1934_InputTIN_FiscalCodeField_ATD"/>
+            <class name="ATD.Basket.QC_1932_RouteAddress_ATD.QC_1935_InputPersonnummer_PositiveCase_ATD"/>
+            <class name="ATD.Basket.QC_1932_RouteAddress_ATD.QC_1936_EnteringIncorrectDataIntoTheInputPersonnummer_ATD"/>
+            <class name="ATD.Basket.QC_1932_RouteAddress_ATD.QC_1937_InputPersonnummer_NegativeCase_ATD"/>
+            <class name="ATD.Basket.QC_1932_RouteAddress_ATD.QC_1938_BlockingThePackstationWordInTheStrasseFieldForShopDE_ATD"/>
+            <class name="ATD.Basket.QC_1932_RouteAddress_ATD.QC_1939_CheckRouteAddressPermeabilityWenEnteringPackstationIntoOtherInputsExceptStrasse_ATD"/>
+            <class name="ATD.Basket.QC_1932_RouteAddress_ATD.QC_1940_BlockingThePackstationWordInTheStrasseField_ATD"/>
+        </classes>
+    </test>
+
+    <test name="QC_1873_SafeOrder_ATD">
+        <classes>
+            <class name="ATD.Basket.QC_1873_SafeOrder_ATD.QC_1874_Unchecked_SO_CheckboxOn_FR_DE_LanguageVersions_ATD"/>
+            <class name="ATD.Basket.QC_1873_SafeOrder_ATD.QC_1875_OrderWithSO_IncludedOnDE_FR_languageVersion_ATD"/>
+            <class name="ATD.Basket.QC_1873_SafeOrder_ATD.QC_1877_OrderWithSO_Disabled_ATD"/>
+            <class name="ATD.Basket.QC_1873_SafeOrder_ATD.QC_1878_NumberOfDaysInSO_Description_ATD"/>
+            <class name="ATD.Basket.QC_1873_SafeOrder_ATD.QC_1879_AbsenceOfSO_BlockOnLanguageVersionsWhereITIsNotIncluded_ATD"/>
+            <class name="ATD.Basket.QC_1873_SafeOrder_ATD.QC_1880_DisplayingSO_BlockAfterManipulationOnRouteAllData_ATD"/>
+            <class name="ATD.Basket.QC_1873_SafeOrder_ATD.QC_1881_DisablingSO_blockAfterChangingDelivery_ATD"/>
+            <class name="ATD.Basket.QC_1873_SafeOrder_ATD.QC_1876_DefaultCheckboxIsSafeOrder_ATD"/>
+            <class name="ATD.Basket.QC_1873_SafeOrder_ATD.QC_2346_CheckingDeliveryCostWhenTurningSO_Off_On_ATD"/>
+            <class name="ATD.Basket.QC_1873_SafeOrder_ATD.QC_2343_OrderWithSOIncludedOnBasketPageForShop_FR_DE_ATD"/>
+            <class name="ATD.Basket.QC_1873_SafeOrder_ATD.QC_2347_DisplayingSOBlockOnCatPageIfThereAre_HL_Drop_Tyres_InTheCart_ATD"/>
+        </classes>
+    </test>
+
+    <test name="QC_2672_GeneralBasketFunctionality_ATD">
+        <classes>
+            <class name="ATD.Basket.QC_2672_GeneralBasketFunctionality_ATD.QC_2673_BasketSteps_ATD"/>
+        </classes>
+    </test>
+
+</suite>
