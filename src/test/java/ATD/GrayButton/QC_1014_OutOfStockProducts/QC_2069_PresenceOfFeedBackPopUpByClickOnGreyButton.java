@@ -43,6 +43,8 @@ public class QC_2069_PresenceOfFeedBackPopUpByClickOnGreyButton {
     @Flaky
     @Description(value = "Test checks presence of feedback pop-up by click on grey button")
     public void testChecksPresenceOfFeedBackPopUpByClickOnGreyButton(String route) {
+        webMailPage.openMail(email, passwordForMail);
+        webMailPage.deleteAllLetters();
         new ProductSearch_aws().openProductSearchPageAndLogin().selectCategory("100001")
                 .selectFirstSearchFilter("no").selectAvailabilityAtSupplierFilter("no").clickOnSearchButton().goToProductCartByClickOnTitle(0);
         String brand = productPageAws.getTitleOfBrandProduct();
