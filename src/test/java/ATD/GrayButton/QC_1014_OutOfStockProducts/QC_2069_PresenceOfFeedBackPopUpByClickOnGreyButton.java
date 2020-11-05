@@ -52,8 +52,8 @@ public class QC_2069_PresenceOfFeedBackPopUpByClickOnGreyButton {
         String artNum = productPageAws.getArtNumOfProduct();
         openPage(route + "/" + brand + "-" + ean + "-" + artNum);
         tyreItemPage.presenceOfHorizontalSelector().appearsOfOutOfStockProductPopUp()
-                .setValueInEmailFieldOfPopUp(email).clickOnGetMailingLabel().clickOnBtnSubscription();
-        webMailPage.openMail(email, passwordForMail);
+                .setValueInEmailFieldOfPopUp(email).clickOnGetMailingLabel().clickOnBtnSubscription().closeErrorPopUp().presenceOfTopProducts();
+        webMailPage.openMailWithLoggedUser().presenceOfToolbarElements();
         Assert.assertEquals(webMailPage.getTotalCountOfLetters(), 1);
         webMailPage.deleteAllLetters();
     }

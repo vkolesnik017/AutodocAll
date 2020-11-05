@@ -82,6 +82,8 @@ public class Profile_plus_page {
 
     SelenideElement popUpOfGarageInHeader() {return $x("//div[@class='header-garage__logged-header']");}
 
+    SelenideElement btnOpenInputForAddVinNumInPopUpOfGarage() {return $x("//div[@class='wrapper-vin']/p");}
+
     ElementsCollection btnOpenInputForAddVinNumInPopUpOfGarageHeader() {
         return $$x("//div[@class='wrapper-vin']/p");
     }
@@ -90,12 +92,51 @@ public class Profile_plus_page {
         return $$x("//div[@class='vin-number-drop-input']/input");
     }
 
+    SelenideElement inputForAddVinNumInPopUpOfGarage() {
+        return $x("//div[@class='vin-number-drop-input']/input");
+    }
+
     ElementsCollection btnAddVinNumInPopUpOfGarageHeader() {
         return $$x("//div[@class='vin-number-drop-button js-save-vin-number']");
     }
 
+    SelenideElement btnAddVinNumInPopUpOfGarage() {
+        return $x("//div[@class='vin-number-drop-button js-save-vin-number']");
+    }
+
     ElementsCollection addedVinNumInPopUpOfGarageHeader() {
         return $$x("//div[@class='wrapper-vin']//span");
+    }
+
+    SelenideElement addedVinNumInPopUpOfGarage() {
+        return $x("//div[@class='wrapper-vin']//span");
+    }
+
+    SelenideElement btnToCatalogRouteInPopUp() {
+        return $x("//div[@class='header-garage__logged-check']//a");
+    }
+    SelenideElement unsubscribeButton() {
+        return $x("//a[@data-ga-action='unsubscribe_click']");
+    }
+
+    SelenideElement unsubscribePopUp() {
+        return $x("//div[@class='popup-cancel-status']");
+    }
+
+    SelenideElement btnNoInUnsubscribePopUp() {
+        return $x("//button[@data-ga-action='unsubscribe_popup_cancel']");
+    }
+
+    public SelenideElement firstTextInsideUnsubscribePopUp() {
+        return $x("//div[@class='popup-cancel-status__title']/span[1]");
+    }
+
+    public SelenideElement secondTextInsideUnsubscribePopUp() {
+        return $x("//div[@class='popup-cancel-status__title']/span[2]");
+    }
+
+    SelenideElement premiumAccountExpirationDate() {
+        return $x("//div[@class='member-plus-block__bottom']/p");
     }
 
 }
