@@ -33,6 +33,7 @@
             <class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_141_FiltersSorting_TestBySideAndBrandAndSideFilterInteraction"/>
             <class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_142_FiltersSorting_TestBrandAndMarkFilterInteraction"/>
             <!--<class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_143_FiltersSorting_TestBrandAndGenericAndPriceFilterInteraction"/>--> <!-- Filter by price is inactive-->
+            <class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_2663_InteractionOfGenericAndBrandFilters"/>
         </classes>
     </test>
 

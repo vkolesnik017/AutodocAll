@@ -241,7 +241,7 @@ public class Search_page {
     }
 
        ElementsCollection visibleBrands() {
-        return $$x("//ul[@class='branded-slider slick-initialized slick-slider']//li").filter(visible);
+        return $$x("//ul[@class='branded-slider slick-initialized slick-slider']//li//label").filter(visible);
     }
 
     ElementsCollection addedProductToWishListLabel() {return $$x("//span[@class='add-to-wishlist title_btn add-to-wishlist--added remove-article']");}
@@ -275,6 +275,20 @@ public class Search_page {
     ElementsCollection visibleParentCategories() {return $$x("//ul[@class='filetree cat_tree treeview']//li").filter(visible);}
 
     ElementsCollection paginatorLinks() {return $$x("//div[@class='pagination']/span");}
+
+    ElementsCollection visibleGenerics() {return $$x("//div[@class='filter-generics-tecdoc__item-image']").filter(visible);}
+
+    SelenideElement visibleExactBrand(String id) {return $x("//li[@class='slick-slide slick-active']//label[@for='cb-brand-"+id+"']");}
+
+    SelenideElement btnRestartDefaultValues() {return $x("//div[contains(text(),'Zurücksetzen')]");}
+
+    ElementsCollection attributeOfGeneric() {return $$x("//div[@class='filter-generics-tecdoc__item-image']/img");}
+
+    ElementsCollection genericFromBtnAddToBasket() {return $$x("//div[@class='add_info']/div[2]");}
+
+    SelenideElement generic(String number) {return $x("//div[@class='filter-generics-tecdoc__content']//label[@for='category"+number+"']");}
+
+    ElementsCollection visiblePaginatorLinks() {return $$x("//div[@class='pagination']/span").filter(visible);}
 
 }
 
