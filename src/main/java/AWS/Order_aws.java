@@ -427,6 +427,33 @@ public class Order_aws {
         return $x("//select[@class='order-new-status']//option[text()[contains(.,'" + nameStatus + "')]]");
     }
 
+    private SelenideElement btnAutoBySearchFromTheSite() {
+        return $x("//div[@class='dt_gal_actions']/a[@class='btn m-left10 btn-search-selection btn-default']");
+    }
+
+    private SelenideElement vinNumInPopupFromBtnAutoBySearchFromTheSite() {
+        return $x("//table[@class='table table-bordered table-striped']//tr[1]/td[8]");
+    }
+
+    private SelenideElement closePopupFromBtnAutoBySearchFromTheSite() {
+        return $x("//body/div[@id='searchSelection']/div[1]/div[1]/div[3]/a[1]");
+    }
+
+    @Step("get VIN num in popup from btn Auto By Search From The Site. Order_aws")
+    public Order_aws getVinNumInPopupFromBtnAutoBySearchFromTheSite(String vinNum) {
+        vinNumInPopupFromBtnAutoBySearchFromTheSite().shouldHave(text(vinNum));
+        closePopupFromBtnAutoBySearchFromTheSite().shouldBe(visible).click();
+        return this;
+    }
+
+
+
+    @Step("Click btn Auto By Search From The Site. Order_aws")
+    public Order_aws clickBtnAutoBySearchFromTheSite() {
+        btnAutoBySearchFromTheSite().scrollIntoView(true).shouldBe(visible).click();
+        return this;
+    }
+
     @Step("Get list saved tracking number. Order_aws")
     public ArrayList<String> getListSavedTrackingNumber() {
         ArrayList<String> list = new ArrayList<>();

@@ -282,7 +282,7 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
     }
 
     @Step("Compare two list with parent between front and Aws. Category_car_list_page")
-    public Category_car_list_page_Logic compareTwoListsBetweenFrontAndAws(ArrayList listFront, ArrayList listAws, ArrayList groupRating) {
+    public Category_car_list_page_Logic compareTwoListsBetweenFrontAndAws(List<String> listFront, List<String> listAws, List<String> groupRating) {
 
         for (int i = 0; i < listFront.size(); i++) {
             if (!listFront.get(i).equals(listAws.get(i))) {

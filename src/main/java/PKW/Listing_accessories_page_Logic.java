@@ -93,8 +93,14 @@ public class Listing_accessories_page_Logic extends Listing_accessories_page {
     }
 
     @Step("Checking not clickable third bread crumb. Listing_accessories_page")
-    public Listing_accessories_page_Logic checkingNotClickableThirdBreadCrumb() {
-        thirdBreadCrumb().shouldNotBe(attribute("href"));
+    public Index_accessories_group_page_Logic clickThirdBreadCrumb() {
+        thirdBreadCrumb().click();
+        return page(Index_accessories_group_page_Logic.class);
+    }
+
+    @Step("Checking not clickable third bread crumb. Listing_accessories_page")
+    public Listing_accessories_page_Logic checkingNotClickableFourthBreadCrumb() {
+        fourthBreadCrumb().shouldNotBe(attribute("href"));
         return this;
     }
 

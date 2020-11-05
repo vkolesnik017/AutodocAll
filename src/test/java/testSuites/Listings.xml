@@ -34,6 +34,7 @@
             <class name="ATD.Listings.QC_445_ListingTecDoc.QC_1740_DisplayCharacteristicPopupIfCarRatingMore100"/>
             <class name="ATD.Listings.QC_445_ListingTecDoc.QC_1741_CharacteristicPopupIsNotDisplayedIfCarRatingLess100"/>
             <class name="ATD.Listings.QC_445_ListingTecDoc.QC_1742_ReopeningPopupWithCarCharacteristics"/>
+            <class name="ATD.Listings.QC_445_ListingTecDoc.QC_2704_PresenceProgressBarOnAllListing"/>
         </classes>
     </test>
 

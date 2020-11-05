@@ -24,8 +24,8 @@ public class QC_249_StaticPage_Versand {
     }
 
     @DataProvider(name = "route", parallel = true)
-    Object[] dataProvider() {
-        return new SetUp("PKW").setUpShop("prod", "DE");
+    Object[] dataProvider() throws SQLException {
+        return new SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "main");
     }
 
     @Test(dataProvider = "route")
@@ -34,45 +34,23 @@ public class QC_249_StaticPage_Versand {
     @Description(value = "Test checks elements on the Versand page")
     public void testStaticPage_Versand(String route) throws SQLException {
         openPage(route);
-
         new Main_page_Logic().clickFooterVersandLink()
                 .checkingBoxBlock()
-                .checkingDeliveryCountryBlock()
-                .checkingBlockWithTermsOfTheDelivery() //4
-                .checkingFaqBlock() //8
+                .checkingDeliveryCountryBlockButton()
+                .checkingBlockWithTermsOfTheDelivery()
+                .checkingTextNearTheThreeIcons()
+                .checkingFaqBlock()
                 .questionsAndAnswersFaq()
                 .checkingTextInTheQuestionsBlock()
                 .spergutVersandBlock()
                 .spergutVersandTableFirstTab()
+                .countryPriceWithParts()
                 .tableCountryPriceWithPriceTabOne()
                 .spergutVersandTableSecondTab()
                 .checkingFlagTabTwo()
                 .checkingTextAndPriceTabTwo()
                 .checkingDownloadButtons()
                 .checkingBackButton();
-
-
-       /*
-        new Main_page_Logic().clickFooterVersandLink()
-                .checkingBoxBlock()
-                .checkingDeliveryCountryBlock()
-                .checkingCountAndTextNearTheCountriesForTheFirstCountryBlock()
-                .checkingTheFlagInTheFirstCountryBlock()
-                .checkingTextAndPriceForFirstThreeCountries()
-                .checkingFlagsForFirstThreeCountry()
-                .checkingTextNearTheThreeIcons()
-                .checkingBlockWithTermsOfTheDelivery()
-                .checkingFaqBlock()
-                .questionsAndAnswersFaq()
-                .checkingTextInTheQuestionsBlock()
-                .spergutVersandBlock()
-                .spergutVersandTableFirstTab()
-                .tableCountryPriceWithPriceTabOne()
-                .spergutVersandTableSecondTab()
-                .checkingFlagTabTwo()
-                .checkingTextAndPriceTabTwo()
-                .checkingDownloadButtons()
-                .checkingBackButton();*/
     }
 
     @AfterMethod

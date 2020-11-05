@@ -9,6 +9,7 @@
     <test name="QC_771_RegKbaSelector">
         <classes>
             <class name="ATD.Selectors.QC_771_RegKbaSelector.QC_772_RegKbaSelector"/>
+            <class name="ATD.Selectors.QC_771_RegKbaSelector.QC_2694_CheckingVinRecordsToOrderWhenSearchingByKBA"/>
         </classes>
     </test>
 
