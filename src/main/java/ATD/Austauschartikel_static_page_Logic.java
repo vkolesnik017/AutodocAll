@@ -61,7 +61,7 @@ public class Austauschartikel_static_page_Logic extends Austauschartikel_static_
     }
 
     @Step("Selects one random category. Austauschartikel_static_page")
-    public Austauschartikel_static_page_Logic SelectsRandomCategory() {
+    public Austauschartikel_static_page_Logic selectsRandomCategory() {
         ElementsCollection categoriesList = (categoriesWithDeposits());
         Random random = new Random();
         categoriesList.get(random.nextInt(categoriesList.size())).click();
