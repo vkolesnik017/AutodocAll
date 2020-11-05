@@ -82,6 +82,8 @@ public class Profile_plus_page {
 
     SelenideElement popUpOfGarageInHeader() {return $x("//div[@class='header-garage__logged-header']");}
 
+    SelenideElement btnOpenInputForAddVinNumInPopUpOfGarage() {return $x("//div[@class='wrapper-vin']/p");}
+
     ElementsCollection btnOpenInputForAddVinNumInPopUpOfGarageHeader() {
         return $$x("//div[@class='wrapper-vin']/p");
     }
@@ -90,12 +92,27 @@ public class Profile_plus_page {
         return $$x("//div[@class='vin-number-drop-input']/input");
     }
 
+    SelenideElement inputForAddVinNumInPopUpOfGarage() {
+        return $x("//div[@class='vin-number-drop-input']/input");
+    }
+
     ElementsCollection btnAddVinNumInPopUpOfGarageHeader() {
         return $$x("//div[@class='vin-number-drop-button js-save-vin-number']");
+    }
+
+    SelenideElement btnAddVinNumInPopUpOfGarage() {
+        return $x("//div[@class='vin-number-drop-button js-save-vin-number']");
     }
 
     ElementsCollection addedVinNumInPopUpOfGarageHeader() {
         return $$x("//div[@class='wrapper-vin']//span");
     }
 
+    SelenideElement addedVinNumInPopUpOfGarage() {
+        return $x("//div[@class='wrapper-vin']//span");
+    }
+
+    SelenideElement btnToCatalogRouteInPopUp() {
+        return $x("//div[@class='header-garage__logged-check']//a");
+    }
 }

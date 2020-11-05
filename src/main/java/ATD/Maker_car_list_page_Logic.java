@@ -245,4 +245,10 @@ public class Maker_car_list_page_Logic extends Maker_car_list_page {
         }
         return this;
     }
+
+    @Step(": from Maker_car_list_page")
+    public Cart_page_Logic cartClick() {
+        new Main_page_Logic().cartClick();
+        return page(Cart_page_Logic.class);
+    }
 }
