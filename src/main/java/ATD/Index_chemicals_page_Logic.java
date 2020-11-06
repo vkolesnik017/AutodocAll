@@ -1,11 +1,14 @@
 package ATD;
 
 import static com.codeborne.selenide.Condition.*;
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.Selenide.sleep;
 import static com.codeborne.selenide.CollectionCondition.size;
@@ -187,4 +190,16 @@ public class Index_chemicals_page_Logic extends Index_chemicals_page {
         }
         return logicalUnionsId;
     }
+
+    @Step(": from. Index_chemicals_page")
+    public ArrayList<String> getUrlCategoriesAndSeparateCategoriesThenWriteToList(ElementsCollection categoriesLogicalUnion, ElementsCollection separateCategories) {
+        return new Index_instruments_page_Logic().getUrlCategoriesAndSeparateCategoriesThenWriteToList( categoriesLogicalUnion,  separateCategories);
+    }
+
+    @Step(": from. Index_chemicals_page")
+    public Index_chemicals_page_Logic checkCategoriesForServerResponses200(List<String> allCategories) throws IOException {
+        new Index_instruments_page_Logic().checkCategoriesForServerResponses200(allCategories);
+        return this;
+    }
+
 }

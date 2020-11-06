@@ -66,6 +66,10 @@ class Index_accessories_page {
         return $$x("//div[@class='top-product']//div[@class='product-list__item active']");
     }
 
+    SelenideElement titleTop6ProductsBlock() {
+        return $x("//div[@class='top-product-block']//h3[text()]");
+    }
+
     SelenideElement firstBtnAddToBasketInTop6Block() {
         return $x("//div[@class='product-list__item active']//a[@onclick]");
     }
