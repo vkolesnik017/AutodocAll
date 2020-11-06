@@ -55,11 +55,9 @@ public class QC_2699_SavedVINNumberInTheOrder {
                 .getOrderNumber();
         new Order_aws(orderNumber).openOrderInAwsWithLogin()
                 .clickBtnAutoBySearchFromTheSite()
-                .getVinNumInPopupFromBtnAutoBySearchFromTheSite(vinNum)
+                .getVinNumGarageInPopupFromBtnAutoBySearchFromTheSite(vinNum)
                 .reSaveOrder()
                 .checkCurrentStatusInOrder("Testbestellungen");
-
-
     }
 
     @AfterMethod
