@@ -297,6 +297,28 @@ public class DataBase {
         return userID;
     }
 
+    public String getAWSTranslationCountries(String dbName, String shop, String paymentsMethod) throws SQLException {
+        Statement statement = null;
+        Connection conn = coonectionDB(dbName);
+        String userID = null;
+        String query = "SELECT ".concat(shop) + " FROM autodoc.".concat(dbName) + " where payments_name=" + "\"".concat(paymentsMethod) + "\"";
+        try {
+            statement = conn.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                userID = resultSet.getString(1);
+            }
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (statement != null) statement.close();
+            if (conn != null) conn.close();
+        }
+        return userID;
+    }
+
     public ArrayList<String> getNameRequisitesMethod(String dbName, String shop, String... requisites) throws SQLException {
         Statement statement = null;
         Connection conn = coonectionDB(dbName);
