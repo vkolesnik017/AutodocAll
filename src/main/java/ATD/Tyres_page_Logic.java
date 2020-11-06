@@ -504,6 +504,7 @@ public class Tyres_page_Logic extends Tyres_page {
         linkingBlock().scrollIntoView("{block: \"center\"}");
         String titleOfFirstLinkingBlock = visibleTitleOfLinkingBlocks().get(0).getText();
         actions().clickAndHold(visibleTitleOfLinkingBlocks().get(1)).moveToElement(visibleTitleOfLinkingBlocks().get(0)).release(visibleTitleOfLinkingBlocks().get(1)).build().perform();
+        presenceOfTitleLinkingBlock();
         visibleTitleOfLinkingBlocks().get(0).shouldNotHave(exactText(titleOfFirstLinkingBlock));
         return this;
     }
@@ -513,6 +514,7 @@ public class Tyres_page_Logic extends Tyres_page {
         linkingBlock().scrollIntoView("{block: \"center\"}");
         String titleOfFirstLinkingBlock = visibleTitleOfLinkingBlocks().get(0).getText();
         actions().clickAndHold(visibleTitleOfLinkingBlocks().get(0)).moveToElement(visibleTitleOfLinkingBlocks().get(1)).release(visibleTitleOfLinkingBlocks().get(0)).build().perform();
+        presenceOfTitleLinkingBlock();
         visibleTitleOfLinkingBlocks().get(0).shouldNotHave(exactText(titleOfFirstLinkingBlock));
         return this;
     }
@@ -531,6 +533,7 @@ public class Tyres_page_Logic extends Tyres_page {
             String titleOfFirstLinkingBlock = visibleTitleOfLinkingBlocks().get(0).getText();
             btnPaginatorOfLinkingBlock().get(i + 1).click();
             presenceOfTitleLinkingBlock();
+            presenceOfTitleLinkingBlock();
             visibleTitleOfLinkingBlocks().get(0).shouldNotHave(exactText(titleOfFirstLinkingBlock));
         }
         return this;
@@ -541,6 +544,7 @@ public class Tyres_page_Logic extends Tyres_page {
         for (int i = btnPaginatorOfLinkingBlock().size() - 1; i > 0; i--) {
             String titleOfFirstLinkingBlock = visibleTitleOfLinkingBlocks().get(0).getText();
             btnPaginatorOfLinkingBlock().get(i - 1).click();
+            presenceOfTitleLinkingBlock();
             presenceOfTitleLinkingBlock();
             visibleTitleOfLinkingBlocks().get(0).shouldNotHave(exactText(titleOfFirstLinkingBlock));
         }
