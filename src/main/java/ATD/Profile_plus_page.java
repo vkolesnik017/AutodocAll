@@ -139,4 +139,8 @@ public class Profile_plus_page {
         return $x("//div[@class='member-plus-block__bottom']/p");
     }
 
+    SelenideElement readyToSendSticker() {return $x("//div[@class='member-plus-block__content-row first']");}
+
+    ElementsCollection headlineOfPriorityOrderStatus() { return $$x("//div[@class='member-plus-block__content-row']/div/div[2]");}
+
 }
