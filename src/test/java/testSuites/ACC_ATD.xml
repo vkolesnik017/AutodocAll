@@ -23,6 +23,7 @@
             <class name="ATD.ACC.QC_1037_MainChemie.QC_1041_SubtitleMainPageChemie"/>
             <class name="ATD.ACC.QC_1037_MainChemie.QC_1040_TitleMainPageChemie"/>
             <class name="ATD.ACC.QC_1037_MainChemie.QC_1073_BlockDeliveryOnMainChemie"/>
+            <class name="ATD.ACC.QC_1037_MainChemie.QC_2660_Lack4xxAnd3xxServerResponsesWhenMovingToCategory"/>
         </classes>
     </test>
 
@@ -34,6 +35,7 @@
             <class name="ATD.ACC.QC_836_MainAccessories.QC_987_BlockAdvantagesInternetShopOnAcc"/>
             <class name="ATD.ACC.QC_836_MainAccessories.QC_988_FeatureBlock"/>
             <class name="ATD.ACC.QC_836_MainAccessories.QC_991_DeliveryBlock"/>
+            <class name="ATD.ACC.QC_836_MainAccessories.QC_2661_Lack4xxAnd3xxServerResponsesWhenMovingToCategory"/>
         </classes>
     </test>
 
@@ -209,6 +211,12 @@
             <class name="ATD.ACC.QC_2235_DisplayedAllCategoriesAndLogicalUnion.QC_2237_DisplayedAllCategoriesAndLogicalUnionOnMainACC"/>
             <class name="ATD.ACC.QC_2235_DisplayedAllCategoriesAndLogicalUnion.QC_2248_DisplayedAllCategoriesAndLogicalUnionOnMainChemistry"/>
             <class name="ATD.ACC.QC_2235_DisplayedAllCategoriesAndLogicalUnion.QC_2249_DisplayedAllCategoriesAndLogicalUnionOnMainTools"/>
+        </classes>
+    </test>
+
+    <test name="QC_2655_ToolsMain">
+        <classes>
+            <class name="ATD.ACC.QC_2655_ToolsMain.QC_2662_Lack4xxAnd3xxServerResponsesWhenMovingToCategory"/>
         </classes>
     </test>
 
