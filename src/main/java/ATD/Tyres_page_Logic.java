@@ -502,6 +502,7 @@ public class Tyres_page_Logic extends Tyres_page {
     @Step("swipe by moving to right in Linking Block. Tyres_page")
     public Tyres_page_Logic swipeByMovingToRight() {
         linkingBlock().scrollIntoView("{block: \"center\"}");
+        presenceOfTitleLinkingBlock();
         String titleOfFirstLinkingBlock = visibleTitleOfLinkingBlocks().get(0).getText();
         actions().clickAndHold(visibleTitleOfLinkingBlocks().get(1)).moveToElement(visibleTitleOfLinkingBlocks().get(0)).release(visibleTitleOfLinkingBlocks().get(1)).build().perform();
         presenceOfTitleLinkingBlock();
@@ -512,6 +513,7 @@ public class Tyres_page_Logic extends Tyres_page {
     @Step("swipe by moving to left in Linking Block. Tyres_page")
     public Tyres_page_Logic swipeByMovingToLeft() {
         linkingBlock().scrollIntoView("{block: \"center\"}");
+        presenceOfTitleLinkingBlock();
         String titleOfFirstLinkingBlock = visibleTitleOfLinkingBlocks().get(0).getText();
         actions().clickAndHold(visibleTitleOfLinkingBlocks().get(0)).moveToElement(visibleTitleOfLinkingBlocks().get(1)).release(visibleTitleOfLinkingBlocks().get(0)).build().perform();
         presenceOfTitleLinkingBlock();
