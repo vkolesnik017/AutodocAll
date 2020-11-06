@@ -34,7 +34,7 @@ public class QC_2624_LinkingBlockToNewSeoPages {
     @Description(value = "Test сheck linking block to new SEO pages")
     public void testCheckLinkingBlockToNewSeoPages(String route) {
         openPage(route);
-        new Tyres_page_Logic().presenceOfLinkingBlock().checkSwipeByClick().checkSwipeByMoving().totalCountOfLinkingBlock(7)
+        new Tyres_page_Logic().presenceOfLinkingBlock().checkSwipeByClick().totalCountOfLinkingBlock(7)
         .appearanceOfAnimationInLinkingBlock().checkTitlesOfLinkingBlock().presenceOfHeadlineAtLinkingBlock().checkTransitionsInLinkingBlock();
     }
 
@@ -49,7 +49,7 @@ public class QC_2624_LinkingBlockToNewSeoPages {
     @Description(value = "Test сheck linking block to new SEO pages")
     public void testCheckLinkingBlockToNewSeoPagesFeature(String route) {
         openPage(route);
-        new Tyres_feature_page_Logic().presenceOfLinkingBlock().checkSwipeByClick().checkSwipeByMoving().totalCountOfLinkingBlock(6)
+        new Tyres_feature_page_Logic().presenceOfLinkingBlock().checkSwipeByClick().totalCountOfLinkingBlock(6)
                 .appearanceOfAnimationInLinkingBlock().checkTitlesOfLinkingBlock().presenceOfHeadlineAtLinkingBlock().checkTransitionsInLinkingBlock();
     }
 
