@@ -29,4 +29,14 @@ public class LKW_Search_page {
     SelenideElement titleOfDangerousPopUp() {return $x("//div[@class='popup-dangerous__title']");}
 
     SelenideElement infoTextOfDangerousPopUp() {return $x("//div[@class='popup-dangerous']//p");}
+
+    SelenideElement loaderInTecDocListing() {
+        return $x("//div[@class='preloader_wrapper']");
+    }
+
+    SelenideElement visibleExactBrand(String id) {return $x("//div[@id='selected-instalation__slider']//label[@for='cb-brand-"+id+"']");}
+
+    SelenideElement forwardLinkAtBrandsFilter() {
+        return $x("//a[contains(@class,'next')]");
+    }
 }

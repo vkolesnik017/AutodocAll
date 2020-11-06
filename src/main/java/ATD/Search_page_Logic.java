@@ -8,10 +8,7 @@ import io.qameta.allure.Step;
 import org.testng.Assert;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static ATD.CommonMethods.*;
@@ -183,6 +180,7 @@ public class Search_page_Logic extends Search_page {
         brandsFilterBlock().shouldBe(visible);
         while (!brandsLinkInSideBar(idOfBrand).isDisplayed()) {
             forwardLinkAtBrandsFilter().click();
+            checkVisibleBrands();
         }
         brandsLinkInSideBar(idOfBrand).shouldBe(visible).click();
         appearsOfLoader();
@@ -622,5 +620,70 @@ public class Search_page_Logic extends Search_page {
         }
         return this;
     }
+
+    @Step("select generic. Search_page")
+    public Search_page_Logic selectGeneric(String position) {
+        generic(position).click();
+        loaderInTecDocListing().should(appear);
+        loaderInTecDocListing().should(disappear);
+        return this;
+    }
+
+    @Step("visible links of paginator. Search_page")
+    public Search_page_Logic visibleLinksOfPaginator() {
+        for (int i = 0; i < visiblePaginatorLinks().size(); i++) {
+            visiblePaginatorLinks().get(i).shouldBe(visible);
+        }
+        return this;
+    }
+
+
+    @Step("select brand with title in brands block. Search_page")
+    public Search_page_Logic selectBrandWithTitle(String idOfBrand) {
+        while (!visibleExactBrand(idOfBrand).isDisplayed()) {
+            forwardLinkAtBrandsFilter().click();
+            checkVisibleBrands();
+        }
+        visibleExactBrand(idOfBrand).shouldBe(visible).click();
+        appearsOfLoader();
+        return this;
+    }
+
+    @Step("click on Restoring default values. Search_page")
+    public Search_page_Logic clickRestoringDefaultValues() {
+        btnRestartDefaultValues().shouldBe(visible).click();
+        appearsOfLoader();
+        return this;
+    }
+
+    @Step("get title of all generic. Search_page")
+    public List<String> getTitleOfAllGeneric() {
+        List<String> generics = attributeOfGeneric().stream().map(n -> getAttributeFromUnVisibleElement(n, "alt")).collect(Collectors.toList());
+        return generics;
+    }
+
+    @Step("presence of all generics in listing. Search_page")
+    public Search_page_Logic presenceAllGenericsInListing(List<String> generics) {
+        Set<String> productGenerics = new HashSet<>();
+        addAttributeOfGenericToList(productGenerics);
+        while (forwardLinkOfPaginator().isDisplayed()) {
+            forwardLinkOfPaginator().click();
+            visibleLinksOfPaginator();
+            addAttributeOfGenericToList(productGenerics);
+        }
+        Assert.assertEquals(generics.size(), productGenerics.size());
+        Assert.assertEquals(generics.size(), productGenerics.size());
+        return this;
+    }
+
+    @Step("get title of all generic. Search_page")
+    public Search_page_Logic addAttributeOfGenericToList(Set<String> list) {
+        for (int i = 0; i < genericFromBtnAddToBasket().size(); i++) {
+            list.add(genericFromBtnAddToBasket().get(i).getAttribute("data-name"));
+        }
+        return this;
+    }
+
+
 }
 
