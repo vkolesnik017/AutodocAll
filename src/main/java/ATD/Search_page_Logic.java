@@ -672,7 +672,11 @@ public class Search_page_Logic extends Search_page {
             addAttributeOfGenericToList(productGenerics);
         }
         Assert.assertEquals(generics.size(), productGenerics.size());
-        Assert.assertEquals(generics.size(), productGenerics.size());
+        for (int i = 0; i < productGenerics.size(); i++) {
+            for (int j = 0; j < generics.size(); j++) {
+                Assert.assertTrue(productGenerics.contains(generics.get(j)));
+            }
+        }
         return this;
     }
 

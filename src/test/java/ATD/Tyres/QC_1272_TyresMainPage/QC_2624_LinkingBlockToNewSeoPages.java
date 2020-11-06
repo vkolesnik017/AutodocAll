@@ -23,7 +23,7 @@ public class QC_2624_LinkingBlockToNewSeoPages {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "routes", parallel = true)
+    @DataProvider(name = "routes", parallel = false)
     Object[] dataProvider() throws SQLException {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres,tyres2,tyres3,tyres4");
     }
@@ -38,7 +38,7 @@ public class QC_2624_LinkingBlockToNewSeoPages {
         .appearanceOfAnimationInLinkingBlock().checkTitlesOfLinkingBlock().presenceOfHeadlineAtLinkingBlock().checkTransitionsInLinkingBlock();
     }
 
-    @DataProvider(name = "routesFeature", parallel = true)
+    @DataProvider(name = "routesFeature", parallel = false)
     Object[] dataProviderFeature() throws SQLException {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_feature,tyres_feature2,tyres_feature3,tyres_feature4,tyres_feature5,tyres_feature6,tyres_feature7");
     }

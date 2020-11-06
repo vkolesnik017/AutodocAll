@@ -80,6 +80,7 @@ public class Tyres_feature_page_Logic extends Tyres_feature_page {
             String titleOfFirstLinkingBlock = visibleTitleOfLinkingBlocks().get(0).getText();
             btnPaginatorOfLinkingBlock().get(i + 1).click();
             presenceOfTitleLinkingBlock();
+            presenceOfTitleLinkingBlock();
             visibleTitleOfLinkingBlocks().get(0).shouldNotHave(exactText(titleOfFirstLinkingBlock));
         }
         return this;
@@ -90,6 +91,7 @@ public class Tyres_feature_page_Logic extends Tyres_feature_page {
         for (int i = btnPaginatorOfLinkingBlock().size() - 1; i > 0; i--) {
             String titleOfFirstLinkingBlock = visibleTitleOfLinkingBlocks().get(0).getText();
             btnPaginatorOfLinkingBlock().get(i - 1).click();
+            presenceOfTitleLinkingBlock();
             presenceOfTitleLinkingBlock();
             visibleTitleOfLinkingBlocks().get(0).shouldNotHave(exactText(titleOfFirstLinkingBlock));
         }
