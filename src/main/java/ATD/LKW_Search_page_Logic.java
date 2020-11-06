@@ -5,7 +5,6 @@ import org.testng.Assert;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Condition.empty;
@@ -53,6 +52,23 @@ public class LKW_Search_page_Logic extends LKW_Search_page {
             attributeOfDangerousIcon.add(partOfAttribute);
         }
         Assert.assertEquals(attributeOfDangerousIcon, attributeOfWarningIcon);
+        return this;
+    }
+
+    @Step("select brand with id in brands block. LKW_Search_page")
+    public LKW_Search_page_Logic selectBrandWithId(String idOfBrand) {
+        while (!visibleExactBrand(idOfBrand).isDisplayed()) {
+            forwardLinkAtBrandsFilter().click();
+              }
+        visibleExactBrand(idOfBrand).shouldBe(visible).click();
+        appearsOfLoader();
+        return this;
+    }
+
+    @Step("appears of Loader . LKW_Search_page")
+    public LKW_Search_page_Logic appearsOfLoader() {
+        loaderInTecDocListing().should(appear);
+        loaderInTecDocListing().should(disappear);
         return this;
     }
 }
