@@ -476,4 +476,139 @@ public class Tyres_page_Logic extends Tyres_page {
         Assert.assertEquals(firstList, secondList);
         return this;
     }
+
+    @Step("presence of linking block. Tyres_page")
+    public Tyres_page_Logic presenceOfLinkingBlock() {
+        linkingBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("check swipe by click on paginator. Tyres_page")
+    public Tyres_page_Logic checkSwipeByClick() {
+        linkingBlock().scrollIntoView("{block: \"center\"}");
+        swipeToRightInLinkingBlock();
+        swipeToLeftInLinkingBlock();
+        return this;
+    }
+
+    @Step("check swipe by moving block. Tyres_page")
+    public Tyres_page_Logic checkSwipeByMoving() {
+        linkingBlock().scrollIntoView("{block: \"center\"}");
+        swipeByMovingToRight();
+        swipeByMovingToLeft();
+        return this;
+    }
+
+    @Step("swipe by moving to right in Linking Block. Tyres_page")
+    public Tyres_page_Logic swipeByMovingToRight() {
+        linkingBlock().scrollIntoView("{block: \"center\"}");
+        String titleOfFirstLinkingBlock = visibleTitleOfLinkingBlocks().get(0).getText();
+        actions().clickAndHold(visibleTitleOfLinkingBlocks().get(1)).moveToElement(visibleTitleOfLinkingBlocks().get(0)).release(visibleTitleOfLinkingBlocks().get(1)).build().perform();
+        visibleTitleOfLinkingBlocks().get(0).shouldNotHave(exactText(titleOfFirstLinkingBlock));
+        return this;
+    }
+
+    @Step("swipe by moving to left in Linking Block. Tyres_page")
+    public Tyres_page_Logic swipeByMovingToLeft() {
+        linkingBlock().scrollIntoView("{block: \"center\"}");
+        String titleOfFirstLinkingBlock = visibleTitleOfLinkingBlocks().get(0).getText();
+        actions().clickAndHold(visibleTitleOfLinkingBlocks().get(0)).moveToElement(visibleTitleOfLinkingBlocks().get(1)).release(visibleTitleOfLinkingBlocks().get(0)).build().perform();
+        visibleTitleOfLinkingBlocks().get(0).shouldNotHave(exactText(titleOfFirstLinkingBlock));
+        return this;
+    }
+
+    @Step("presence of title  in linking block. Tyres_page")
+    public Tyres_page_Logic presenceOfTitleLinkingBlock() {
+        for (int i = 0; i < visibleTitleOfLinkingBlocks().size(); i++) {
+            visibleTitleOfLinkingBlocks().get(i).shouldBe(visible);
+        }
+        return this;
+    }
+
+    @Step("swipe to right in Linking block. Tyres_page")
+    public Tyres_page_Logic swipeToRightInLinkingBlock() {
+        for (int i = 0; i < btnPaginatorOfLinkingBlock().size() - 1; i++) {
+            String titleOfFirstLinkingBlock = visibleTitleOfLinkingBlocks().get(0).getText();
+            btnPaginatorOfLinkingBlock().get(i + 1).click();
+            presenceOfTitleLinkingBlock();
+            visibleTitleOfLinkingBlocks().get(0).shouldNotHave(exactText(titleOfFirstLinkingBlock));
+        }
+        return this;
+    }
+
+    @Step("swipe to right in Linking block. Tyres_page")
+    public Tyres_page_Logic swipeToLeftInLinkingBlock() {
+        for (int i = btnPaginatorOfLinkingBlock().size() - 1; i > 0; i--) {
+            String titleOfFirstLinkingBlock = visibleTitleOfLinkingBlocks().get(0).getText();
+            btnPaginatorOfLinkingBlock().get(i - 1).click();
+            presenceOfTitleLinkingBlock();
+            visibleTitleOfLinkingBlocks().get(0).shouldNotHave(exactText(titleOfFirstLinkingBlock));
+        }
+        return this;
+    }
+
+    @Step("total count of Linking block. Tyres_page")
+    public Tyres_page_Logic totalCountOfLinkingBlock(int size) {
+        titlesOfLinkingBlocks().shouldHaveSize(size);
+        return this;
+    }
+
+    @Step("appearance of animation in Linking block. Tyres_page")
+    public Tyres_page_Logic appearanceOfAnimationInLinkingBlock() {
+        headLineOfLinkingBlock().hover();
+        for (int i = 0; i < visibleTitleOfLinkingBlocks().size(); i++) {
+            visibleTitleOfLinkingBlocks().get(i).hover();
+            btnMoreOfLinkingBlock().get(i).shouldBe(visible).shouldNotBe(empty);
+        }
+        return this;
+    }
+
+    @Step("check titles of linking block. Tyres_page")
+    public Tyres_page_Logic checkTitlesOfLinkingBlock() {
+        List<String> titlesOfAllLinkingBlock = titlesOfLinkingBlocks().stream().map(n -> getTextFromUnVisibleElement(n)).collect(Collectors.toList());
+        for (int i = 0; i < titlesOfAllLinkingBlock.size(); i++) {
+            Assert.assertFalse(titlesOfAllLinkingBlock.get(i).equals(" "));
+        }
+        return this;
+    }
+
+    @Step("presence of Headline at Linking block. Tyres_page")
+    public Tyres_page_Logic presenceOfHeadlineAtLinkingBlock() {
+        headLineOfLinkingBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("check transitions in Linking block. Tyres_page")
+    public Tyres_page_Logic checkTransitionsInLinkingBlock() {
+        checkTransitionsOfVisibleLinkingBlock();
+        checkTransitionsOfLastLinkingBlock();
+        return this;
+    }
+
+    @Step("check transitions of visible Linking block. Tyres_page")
+    public Tyres_page_Logic checkTransitionsOfVisibleLinkingBlock() {
+        for (int i = 0; i < visibleTitleOfLinkingBlocks().size(); i++) {
+            String url = btnMoreOfLinkingBlock().get(i).getAttribute("url");
+            visibleTitleOfLinkingBlocks().get(i).shouldBe(visible).click();
+            new Tyres_feature_page_Logic().checkingAbsenceOfCurrentLinkInLinkingBlock(url);
+            back();
+        }
+        return this;
+    }
+
+    @Step("check transitions of last Linking block. Tyres_page")
+    public Tyres_page_Logic checkTransitionsOfLastLinkingBlock() {
+        for (int i = 0; i < btnPaginatorOfLinkingBlock().size() - 1; i++) {
+            String titleOfLastLinkingBlock = visibleTitleOfLinkingBlocks().get(3).getText();
+            btnPaginatorOfLinkingBlock().get(i + 1).click();
+            presenceOfTitleLinkingBlock();
+            visibleTitleOfLinkingBlocks().get(3).shouldNotHave(exactText(titleOfLastLinkingBlock));
+            visibleTitleOfLinkingBlocks().get(3).hover();
+            String currentUrl = visibleBtnMoreOfLinkingBlock().get(0).getAttribute("url");
+            visibleTitleOfLinkingBlocks().get(3).click();
+            new Tyres_feature_page_Logic().checkingAbsenceOfCurrentLinkInLinkingBlock(currentUrl);
+            back();
+        }
+        return this;
+    }
 }

@@ -80,36 +80,12 @@ public class Versand_static_page {
         return $x("//div[@class='country-block__title']");
     }
 
-    ElementsCollection countryItemForCount() {
-        return $$x("//div[@class='country-block__list__col']//li");
-    }
-
-    SelenideElement countryBlockItem() {
-        return $x("//div[@class='country-block__items__item']//p");
-    }
-
-    ElementsCollection countryBlockItems() {
-        return $$x("//div[@class='country-block__items__item']//p");
-    }
-
-    ElementsCollection countryBlockFlagsForFirstThree() {
-        return $$x("//div[@class='country-block__items__item']//span//img");
-    }
-
     SelenideElement countryBlockItemsButton() {
         return $x("//div[@class='country-block__items__button']");
     }
 
     SelenideElement countryBlockOtherCountry() {
         return $x("//div[@class='country-block__other-country']");
-    }
-
-    ElementsCollection countryListWithFlagAndPriceForFiftyFive() {
-        return $$x("//div[@class='country-block__other-country']//li//img");
-    }
-
-    SelenideElement oneCountryWithPriceFromFiftyFive() {
-        return $x("//div[@class='country-block__other-country']//li[1]");
     }
 
     SelenideElement iconCar() {
@@ -256,17 +232,12 @@ public class Versand_static_page {
         return $$x("//div[@class='delivery-page__heavy-price__list__col']//li//p//img");
     }
 
-    ElementsCollection blocksCountryPriceCount() {
-        return $$x("//div[@class='delivery-page__heavy-price__list__col']//li");
-    }
-
     ElementsCollection blocksCountryPriceText() {
         return $$x("//div[@class='delivery-page__heavy-price__list__col']//li//span");
     }
 
-
     ElementsCollection blocksTextWithPrice() {
-        return $$x("//div[@class='delivery-page__heavy-price__col']");
+        return $$x("//div[@class='delivery-page__heavy-price__col']//span");
     }
 
     SelenideElement blocksTextWithPriceOne() {
@@ -315,4 +286,19 @@ public class Versand_static_page {
 
     ElementsCollection pricesOfCountries() {return $$x("//div[@class='country-block__list__col']/ul/li/span");}
 
+    ElementsCollection countryNameOnSite() {
+        return $$x("//div[@class='country-block__other-country']//li//p[1]//span");
+    }
+
+    SelenideElement countryInBox() {
+        return $x("//*[@class='box-delivery-country-text']//img[contains(@alt,'United Kingdom')]");
+    }
+
+    SelenideElement countryTable() {
+        return $x("//div[@class='country-block__list__col']");
+    }
+
+    ElementsCollection countryItemForCount() {
+        return $$x("//div[@class='country-block__list__col']//li");
+    }
 }

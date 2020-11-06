@@ -89,7 +89,7 @@ public class Index_chemicals_page {
         return $$x("//div[@class='special-catalog__wrapp']/div/a[@class='ga-click special-catalog__group']");
     }
 
-    ElementsCollection categoriesFromLogicalUnion() {
+   public ElementsCollection categoriesFromLogicalUnion() {
         return $$x("//main[@id='content']//div[@class='special-catalog__wrapp']//ul/li/a");
     }
 
@@ -97,7 +97,7 @@ public class Index_chemicals_page {
         return $$x("//main[@id='content']//div[@class='special-catalog__group']");
     }
 
-    ElementsCollection separateCategories() {
+   public ElementsCollection separateCategories() {
         return $$x("//div[@class='special-catalog__wrapp']/div/a[@class='ga-click special-catalog__group']");
     }
 
