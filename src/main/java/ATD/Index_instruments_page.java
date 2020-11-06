@@ -108,7 +108,7 @@ class Index_instruments_page {
         return $x("//div[@class='special-catalog']//div[@class='special-catalog__row'][2]/a[1]");
     }
 
-    ElementsCollection categoriesFromLogicalUnion() {
+   public ElementsCollection categoriesFromLogicalUnion() {
         return $$x("//div[@id='content']//div[@class='special-catalog__wrapp']//ul/li/a");
     }
 
@@ -116,7 +116,7 @@ class Index_instruments_page {
         return $$x("//div[@id='content']//div[@class='special-catalog__group']");
     }
 
-    ElementsCollection nameSeparateCategories() {
+    public  ElementsCollection nameSeparateCategories() {
         return $$x("//div[@id='content']//a[@class='special-catalog__group ga-click']");
     }
 
