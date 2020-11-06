@@ -65,6 +65,16 @@ public class Main_page_Logic extends Main_page {
         return page(Profile_plus_page_Logic.class);
     }
 
+    @Step("Login in header with mail {mail} and selected checkbox remember me. Main_page")
+    public Profile_plus_page_Logic clickCheckboxRememberMeFromLoginPopup(String mail) {
+        loginBtnInHeader().click();
+        mailFieldLogin().setValue(mail);
+        passFieldLogin().setValue(password);
+        checkBoxRememberMeFromLoginPopup().shouldBe(visible).click();
+        submitBtnLogin().click();
+        return page(Profile_plus_page_Logic.class);
+    }
+
     @Step("Login in header with mail {mail} and password {pass}. Main_page")
     public Profile_page_Logic loginFromHeader(String mail, String pass) {
         loginBtnInHeader().click();
