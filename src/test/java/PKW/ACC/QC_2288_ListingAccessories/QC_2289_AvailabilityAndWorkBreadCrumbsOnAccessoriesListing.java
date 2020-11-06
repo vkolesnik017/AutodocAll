@@ -46,7 +46,10 @@ public class QC_2289_AvailabilityAndWorkBreadCrumbsOnAccessoriesListing {
         listingAccessoriesPageLogic.clickSecondBreadCrumb();
         checkingContainsUrl("autozubehoer");
         back();
-        listingAccessoriesPageLogic.checkingNotClickableThirdBreadCrumb();
+        listingAccessoriesPageLogic.clickThirdBreadCrumb();
+        checkingContainsUrl("autoelektronik-pr");
+        back();
+        listingAccessoriesPageLogic.checkingNotClickableFourthBreadCrumb();
     }
 
     @AfterMethod

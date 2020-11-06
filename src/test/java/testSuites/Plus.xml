@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Plus" parallel="tests" thread-count="1" data-provider-thread-count="2">
+
+    <listeners>
+        <listener class-name="Common.ProjectListener"/>
+    </listeners>
+
+    <test name="QC_1836_CheckingTextOnPopUpAtCheckoutAfter_14_days">
+        <classes>
+            <class name="ATD.Plus.QC_1836_CheckingTextOnPopUpAtCheckoutAfter_14_days">
+            </class>
+        </classes>
+    </test>
+
+</suite>
