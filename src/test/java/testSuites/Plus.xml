@@ -6,10 +6,10 @@
         <listener class-name="Common.ProjectListener"/>
     </listeners>
 
-    <test name="QC_1836_CheckingTextOnPopUpAtCheckoutAfter_14_days">
+    <test name="QC_2361_AtdPlus">
         <classes>
-            <class name="ATD.Plus.QC_1836_CheckingTextOnPopUpAtCheckoutAfter_14_days">
-            </class>
+            <class name="ATD.Plus.QC_2361_AtdPlus.QC_1836_CheckingTextOnPopUpAtCheckoutAfter_14_days"/>
+            <class name="ATD.Plus.QC_2361_AtdPlus.QC_2612_CheckingForAbsenceSOInAutodocPlusSection"/>
         </classes>
     </test>
 
