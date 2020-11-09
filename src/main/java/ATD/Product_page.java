@@ -808,7 +808,7 @@ public class Product_page {
     }
 
     SelenideElement popUpDangerousText() {
-        return $x("//*[@class='popup-dangerous__text mCustomScrollbar _mCS_4 mCS_no_scrollbar']");
+        return $x("//*[@class='popup-dangerous']//p");
     }
 
     ElementsCollection pictogramsInPopUp() {
