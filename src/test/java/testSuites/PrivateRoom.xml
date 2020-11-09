@@ -142,6 +142,7 @@
             <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2402_RemoveProductsFromWishListAndBasket"/>
             <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2569_RemoveAllProductsFromWishListAfterLogOut"/>
             <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2571_PresenceOfPreviouslyAddedProductsWithLoggedUser"/>
+            <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2121_CheckingOfAddingOutOfStockTyresToWishList"/>
         </classes>
     </test>
 
