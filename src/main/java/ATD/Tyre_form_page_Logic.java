@@ -4,10 +4,12 @@ import com.codeborne.selenide.ElementsCollection;
 import files.Product;
 import io.qameta.allure.Step;
 import org.testng.Assert;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+
 import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.page;
@@ -117,10 +119,9 @@ public class Tyre_form_page_Logic extends Tyre_form_page {
     @Step("get name brand of product. Tyre_form_page")
     public String getNameBrandOfProduct() {
         String fullNameBrand = nameBrandProduct().getText();
-        String cutNameBrand = fullNameBrand.replace(fullNameBrand.substring(fullNameBrand.indexOf(" ")),"");
+        String cutNameBrand = fullNameBrand.replace(fullNameBrand.substring(fullNameBrand.indexOf(" ")), "");
         return cutNameBrand;
     }
-
 
 
     @Step("added product to Wishlist. Tyre_form_page")
@@ -155,7 +156,7 @@ public class Tyre_form_page_Logic extends Tyre_form_page {
     @Step("check maximaze count of product in listing. Tyre_form_page")
     public Tyre_form_page_Logic checkMaxCountOfProductInListing(int maxSize) {
         List<String> list = Arrays.asList(countOfProductsInPage().getText().split(" "));
-        Assert.assertTrue(Integer.parseInt(list.get(0))<=maxSize);
+        Assert.assertTrue(Integer.parseInt(list.get(0)) <= maxSize);
         return this;
     }
 
@@ -164,4 +165,27 @@ public class Tyre_form_page_Logic extends Tyre_form_page {
         iconOfBrandsInProductList().get(positionOfProduct).click();
         return page(Tyre_item_page_Logic.class);
     }
+
+    @Step("added Product to WishList. Tyre_form_page")
+    public Tyre_form_page_Logic addedOutOfStockProductToWishList(int positionOfProduct) {
+        for (int i = 0; i < positionOfProduct; i++) {
+            btnAddedOutOfStockProductToWishList().get(i).scrollIntoView("{block: \"center\"}");
+            if (popUpSelector().isDisplayed()) {
+                closePopUpSelector().shouldBe(visible).click();
+                popUpSelector().shouldNotBe(visible);
+            }
+            btnAddedOutOfStockProductToWishList().get(i).shouldBe(visible).click();
+            addedProductToWishList().get(i).shouldBe(exist);
+        }
+        return this;
+    }
+
+    @Step("check visible brands. Tyre_form_page")
+    public Tyre_form_page_Logic checkVisibleBrands() {
+        for (int i = 0; i < 2; i++) {
+            visibleBrands().get(i).shouldBe(exist);
+        }
+        return this;
+    }
+
 }

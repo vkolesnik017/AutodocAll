@@ -96,4 +96,8 @@ public class Services_wishList_page {
     SelenideElement btnRegistrationOfAuthorizationBlock() {return $x("//a[@class='profile-msg__action']");}
 
     SelenideElement emptyWishListBlock() {return $x("//div[@class='cont profile_mein_a']");}
+
+    SelenideElement btnOutOfStockProduct() {return $x("//div[@class='button not_active']/a");}
+
+    SelenideElement availablePopUp() {return $x("//div[@class='popup-available']");}
 }
