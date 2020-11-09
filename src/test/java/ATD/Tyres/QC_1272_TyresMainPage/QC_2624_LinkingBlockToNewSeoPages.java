@@ -16,6 +16,7 @@ import java.sql.SQLException;
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class QC_2624_LinkingBlockToNewSeoPages {
     @BeforeClass
@@ -34,8 +35,9 @@ public class QC_2624_LinkingBlockToNewSeoPages {
     @Description(value = "Test сheck linking block to new SEO pages")
     public void testCheckLinkingBlockToNewSeoPages(String route) {
         openPage(route);
+        String currentUrl = url();
         new Tyres_page_Logic().presenceOfLinkingBlock().checkSwipeByClick().totalCountOfLinkingBlock(7)
-        .appearanceOfAnimationInLinkingBlock().checkTitlesOfLinkingBlock().presenceOfHeadlineAtLinkingBlock().checkTransitionsInLinkingBlock();
+                .appearanceOfAnimationInLinkingBlock().checkTitlesOfLinkingBlock().presenceOfHeadlineAtLinkingBlock().checkTransitionsInLinkingBlock(currentUrl);
     }
 
     @DataProvider(name = "routesFeature", parallel = false)
@@ -49,8 +51,9 @@ public class QC_2624_LinkingBlockToNewSeoPages {
     @Description(value = "Test сheck linking block to new SEO pages")
     public void testCheckLinkingBlockToNewSeoPagesFeature(String route) {
         openPage(route);
+        String currentUrl = url();
         new Tyres_feature_page_Logic().presenceOfLinkingBlock().checkSwipeByClick().totalCountOfLinkingBlock(6)
-                .appearanceOfAnimationInLinkingBlock().checkTitlesOfLinkingBlock().presenceOfHeadlineAtLinkingBlock().checkTransitionsInLinkingBlock();
+                .appearanceOfAnimationInLinkingBlock().checkTitlesOfLinkingBlock().presenceOfHeadlineAtLinkingBlock().checkTransitionsInLinkingBlock(currentUrl);
     }
 
     @AfterMethod
