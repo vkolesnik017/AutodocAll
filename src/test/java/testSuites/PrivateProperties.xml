@@ -20,7 +20,7 @@
     <test name="QC_1016_FunctionalityMyGarageInUsersPrivatRoom">
         <classes>
             <class name="ATD.PrivateProperties.QC_1016_FunctionalityMyGarageInUsersPrivatRoom.QC_2314_AddRemoveVINNumberForVehiclePopupMyGarage"/>
-
+            <class name="ATD.PrivateProperties.QC_1016_FunctionalityMyGarageInUsersPrivatRoom.QC_2699_SavedVINNumberInTheOrder"/>
         </classes>
     </test>
 

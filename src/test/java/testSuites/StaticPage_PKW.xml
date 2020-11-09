@@ -56,13 +56,12 @@
         </classes>
     </test>
 
-    <!--    temporarily disabled-->
-<!--    <test name="QC_1466_StaticPage_AGB" enabled="true">-->
-<!--        <classes>-->
-<!--            <class name="PKW.StaticPage.QC_1466_StaticPage_AGB">-->
-<!--            </class>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="QC_1466_StaticPage_AGB" enabled="true">
+        <classes>
+            <class name="PKW.StaticPage.QC_1466_StaticPage_AGB">
+            </class>
+        </classes>
+    </test>
 
     <test name="QC_249_StaticPage_Versand" enabled="true">
         <classes>

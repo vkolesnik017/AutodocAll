@@ -39,4 +39,8 @@ public class LKW_Search_page {
     SelenideElement forwardLinkAtBrandsFilter() {
         return $x("//a[contains(@class,'next')]");
     }
+
+    SelenideElement btnCloseSelectorPopUp() {return $x("//a[@class='back']");}
+
+    ElementsCollection allGenerics() {return $$x("//div[@class='slick-list draggable']//label");}
 }
