@@ -7,8 +7,10 @@ import static com.codeborne.selenide.Selenide.sleep;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 
 public class Index_accessories_page_Logic extends Index_accessories_page {
@@ -187,4 +189,22 @@ public class Index_accessories_page_Logic extends Index_accessories_page {
         Collections.sort(logicalUnionsId);
         return logicalUnionsId;
     }
+
+    @Step("Get url all categories from logical union then write to list. Index_accessories_page")
+    public ArrayList<String> getUrlMainCategoriesThenWriteToList() {
+        titleTop6ProductsBlock().scrollIntoView(false);
+        ArrayList<String> allCategoriesMainBlock = new ArrayList<>();
+        for (SelenideElement element : mainCategories()) {
+            String urlCategory = element.getAttribute("href");
+            allCategoriesMainBlock.add(urlCategory);
+        }
+        return allCategoriesMainBlock;
+    }
+
+    @Step(": from. Index_accessories_page")
+    public Index_accessories_page_Logic checkCategoriesForServerResponses200(List<String> allCategories) throws IOException {
+        new Index_instruments_page_Logic().checkCategoriesForServerResponses200(allCategories);
+        return this;
+    }
+
 }

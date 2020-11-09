@@ -1,6 +1,5 @@
 package ATD;
 
-import com.codeborne.pdftest.PDF;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
@@ -21,7 +20,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import static com.codeborne.pdftest.PDF.containsText;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selectors.byXpath;
@@ -81,7 +79,6 @@ public class CommonMethods {
         } catch (TimeoutException e) {
             Assert.fail("Current route: [" + getNameRouteFromJSVarInHTML() + "] don't equals expected route: " + expectedRoute);
         }
-
     }
 
     public static String getShopFromRoute(String route) {

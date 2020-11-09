@@ -1,17 +1,22 @@
 package ATD;
 
 import Common.DataBase;
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.sleep;
+import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
-import static com.codeborne.selenide.Selenide.page;
+import static org.testng.Assert.assertEquals;
 
 public class Index_instruments_page_Logic extends Index_instruments_page {
 
@@ -203,6 +208,38 @@ public class Index_instruments_page_Logic extends Index_instruments_page {
         }
         return logicalUnionsId;
     }
+
+    @Step("Get url all categories from logical union and separate categories then write to list. Index_instruments_page ")
+    public ArrayList<String> getUrlCategoriesAndSeparateCategoriesThenWriteToList(ElementsCollection categoriesLogicalUnion, ElementsCollection separateCategories) {
+        titleTop6ProductsBlock().scrollIntoView(false);
+        ArrayList<String> allCategoriesMainBlock = new ArrayList<>();
+        for (SelenideElement element : categoriesLogicalUnion) {
+            String urlCategory = element.getAttribute("href");
+            allCategoriesMainBlock.add(urlCategory);
+        }
+
+        ArrayList<String> separateCategoriesUrl = new ArrayList<>();
+        for (SelenideElement element : separateCategories) {
+            String urlSeparateCategory = element.getAttribute("href");
+            separateCategoriesUrl.add(urlSeparateCategory);
+        }
+
+        allCategoriesMainBlock.addAll(separateCategoriesUrl);
+        return allCategoriesMainBlock;
+    }
+
+    @Step("Check categories for server responses 200. Index_instruments_page")
+    public Index_instruments_page_Logic checkCategoriesForServerResponses200( List<String> allCategories) throws IOException {
+        for (int i = 0; i < allCategories.size(); i++) {
+            URL url = new URL(allCategories.get(i));
+            HttpURLConnection http = (HttpURLConnection) url.openConnection();
+            http.setInstanceFollowRedirects(true);
+            int responseCode = http.getResponseCode();
+            assertEquals(responseCode, 200);
+        }
+        return this;
+    }
+
 
 
 }
