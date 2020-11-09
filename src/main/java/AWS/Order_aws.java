@@ -435,6 +435,10 @@ public class Order_aws {
         return $x("//table[@class='table table-bordered table-striped']//tr[1]/td[8]");
     }
 
+    private SelenideElement vinNumGarageInPopupFromBtnAutoBySearchFromTheSite() {
+        return $x("//table[@class='table table-bordered table-striped']//tr[1]/td[9]");
+    }
+
     private SelenideElement closePopupFromBtnAutoBySearchFromTheSite() {
         return $x("//body/div[@id='searchSelection']/div[1]/div[1]/div[3]/a[1]");
     }
@@ -1144,6 +1148,13 @@ public class Order_aws {
     public Order_aws checkSumDeliveryInOrder(float deliveryPrice) {
         deliveryPriceInPaymentAndDeliveryTermsBlock().shouldHave(value(String.valueOf(deliveryPrice)));
         deliveryPriceOrderAWS().shouldHave(text(String.valueOf(deliveryPrice)));
+        return this;
+    }
+
+    @Step("get VIN num garage in popup from btn Auto By Search From The Site. Order_aws")
+    public Order_aws getVinNumGarageInPopupFromBtnAutoBySearchFromTheSite(String vinNum) {
+        vinNumGarageInPopupFromBtnAutoBySearchFromTheSite().shouldHave(text(vinNum));
+        closePopupFromBtnAutoBySearchFromTheSite().shouldBe(visible).click();
         return this;
     }
 }
