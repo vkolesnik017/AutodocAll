@@ -202,8 +202,10 @@ public class Profile_plus_page_Logic extends Profile_plus_page {
         }
         return this;
     }
+
     @Step("check work adding vin num in popup of garage in header. Profile_plus_page")
     public Profile_plus_page_Logic checkWorkAddingVinNumInPopupOfGarage(String vinNum) {
+
             String nameBtn = btnOpenInputForAddVinNumInPopUpOfGarageInHeader().getText();
         btnOpenInputForAddVinNumInPopUpOfGarageInHeader().shouldHave(text(nameBtn)).click();
         inputForAddVinNumInPopUpOfGarageInHeader().shouldBe(visible).setValue(vinNum);
@@ -228,7 +230,7 @@ public class Profile_plus_page_Logic extends Profile_plus_page {
 
     @Step("Get the end of the premium account. Profile_plus_page")
     public String getEndDateOfPremiumAccount() {
-       return premiumAccountExpirationDate().getText().replaceAll("(.+\\s)(\\d.+)(\\s.+)","$2");
+        return premiumAccountExpirationDate().getText().replaceAll("(.+\\s)(\\d.+)(\\s.+)", "$2");
     }
 
     @Step("Checks presence expected first text {expectedText} inside unsubscribe popup. Profile_plus_page")
@@ -244,11 +246,12 @@ public class Profile_plus_page_Logic extends Profile_plus_page {
     }
 
     @Step("go to the Catalog route from the popup of garage in header. Profile_plus_page")
-    public Maker_car_list_page_Logic  checkRedirectToCatalogRoute() throws SQLException {
+    public Maker_car_list_page_Logic checkRedirectToCatalogRoute() throws SQLException {
         btnToCatalogRouteInPopUp().click();
         CommonMethods.checkingContainsUrl(new Common.DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE","main", "maker_car_list18"));
         return page(Maker_car_list_page_Logic.class);
     }
+
 
     @Step("check work deleting vin num in popup of garage in header. Profile_plus_page")
     public Profile_plus_page_Logic checkWorkDeletingVinNumInPopupOfGarage(String vinNum) {
@@ -258,6 +261,27 @@ public class Profile_plus_page_Logic extends Profile_plus_page {
         btnAddVinNumInPopUpOfGarageInHeader().shouldBe(visible).click();
         addedVinNumInPopUpOfGarageInHeader().shouldNotHave(text(vinNum));
         btnOpenInputForAddVinNumInPopUpOfGarageInHeader().shouldHave(text(nameBtn));
+        return this;
+    }
+
+    @Step("presence Ready to send sticker. Profile_plus_page")
+    public Profile_plus_page_Logic presenceReadyToSendSticker() {
+        readyToSendSticker().shouldBe(visible);
+        return this;
+    }
+
+    @Step("presence Priority order status. Profile_plus_page")
+    public Profile_plus_page_Logic presencePriorityOrderStatus(int size) {
+        headlineOfPriorityOrderStatus().shouldHaveSize(size);
+        return this;
+    }
+
+    @Step("absence of Safe Order block. Profile_plus_page")
+    public Profile_plus_page_Logic absenceSOBlock() {
+        for (int i = 0; i < headlineOfPriorityOrderStatus().size(); i++) {
+            headlineOfPriorityOrderStatus().get(i).shouldNotHave(text("20 %"));
+        }
+
         return this;
     }
 }
