@@ -302,7 +302,7 @@ public class LKW_main_page {
 
     ElementsCollection languagesOfSubscribe() {return $$x("//div[@class='mCSB_container']/div");}
 
-    SelenideElement languageBlock() {return $x("//div[@class='footer-language__select']");}
+    SelenideElement languageBlock() {return $x("//div[@class='footer-language__current']");}
 
     SelenideElement footerForm() {
         return $(By.xpath("//div[@id='footer']"));
@@ -310,7 +310,7 @@ public class LKW_main_page {
 
     SelenideElement dropDownCountry() {return $x("//div[@class='footer-language__country-list mCustomScrollbar _mCS_1']");}
 
-    SelenideElement languageListBlock() {return $x("//div[@class='footer-language__country-list mCustomScrollbar _mCS_1']");}
+    SelenideElement languageListBlock() {return $x("//div[@class='footer-language']/div[2]/div[2]");}
 
    ElementsCollection visibleArtNumOfTopProducts() {return $$x("//div[@class='product-list__item__nummer']").filter(visible);}
 

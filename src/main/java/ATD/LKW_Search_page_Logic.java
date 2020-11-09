@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Condition.empty;
 
 public class LKW_Search_page_Logic extends LKW_Search_page {
 
@@ -40,7 +39,13 @@ public class LKW_Search_page_Logic extends LKW_Search_page {
 
     @Step("click on dangerous label of product and compare elements. LKW_Search_page")
     public LKW_Search_page_Logic clickOnDangerousLabelAndCompareElements(int positionOfProduct, String signalWord, List<String> attributeOfWarningIcon) {
-        btnMoreOfDangerousProducts().get(positionOfProduct).scrollIntoView("{block: \"center\"}").click();
+        btnMoreOfDangerousProducts().get(positionOfProduct).scrollIntoView("{block: \"center\"}");
+        existOfGeneric();
+        if (btnCloseSelectorPopUp().isDisplayed()) {
+            btnCloseSelectorPopUp().click();
+            btnCloseSelectorPopUp().shouldNotBe(visible);
+        }
+        btnMoreOfDangerousProducts().get(positionOfProduct).click();
         blackBackground().shouldHave(attribute("style", "display: block;"));
         warningPopUp().shouldBe(visible).shouldHave(attribute("style", "display: block;"));
         titleOfDangerousPopUp().shouldBe(visible).shouldHave(exactText(signalWord));
@@ -59,7 +64,7 @@ public class LKW_Search_page_Logic extends LKW_Search_page {
     public LKW_Search_page_Logic selectBrandWithId(String idOfBrand) {
         while (!visibleExactBrand(idOfBrand).isDisplayed()) {
             forwardLinkAtBrandsFilter().click();
-              }
+        }
         visibleExactBrand(idOfBrand).shouldBe(visible).click();
         appearsOfLoader();
         return this;
@@ -69,6 +74,14 @@ public class LKW_Search_page_Logic extends LKW_Search_page {
     public LKW_Search_page_Logic appearsOfLoader() {
         loaderInTecDocListing().should(appear);
         loaderInTecDocListing().should(disappear);
+        return this;
+    }
+
+    @Step("exist of generic. LKW_Search_page")
+    public LKW_Search_page_Logic existOfGeneric() {
+        for (int i = 0; i < allGenerics().size(); i++) {
+            allGenerics().get(i).shouldBe(exist);
+        }
         return this;
     }
 }
