@@ -12,7 +12,10 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 
 import java.sql.SQLException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
 
 import static ATD.CommonMethods.*;
 import static PKW.CommonMethods.checkingContainsUrl;
@@ -806,7 +809,7 @@ public class Main_page_Logic extends Main_page {
             String shopName = element.attr("id");
             shopName = shopName.substring(shopName.indexOf("_") + 1);
             if (shopName.equalsIgnoreCase("lu")) shopName = "ld";
-            $(By.xpath("//div[@class='footer-language__select']")).click();
+            $(By.xpath("//div[contains(@class,'footer-language__select')]")).click();
             element.$(By.xpath("./a")).scrollIntoView(true).click();
             new CommonMethods().checkingUrlAndCloseTab(new DataBase("ATD").getRouteByRouteName(shopName, "main"));
         }
@@ -1310,11 +1313,11 @@ public class Main_page_Logic extends Main_page {
         List<Product> secondPageProduct = new ArrayList<>();
         List<Product> thirdPageProduct = new ArrayList<>();
 
-          for (int i = 0; i < list.size(); i++) {
+        for (int i = 0; i < list.size(); i++) {
             if (!searchBar().isDisplayed()) {
                 openPage(db.getFullRouteByRouteName("prod", "DE", "main"));
             }
-           useSearch(list.get(i));
+            useSearch(list.get(i));
             activeFirstPage = searchPage.getIdOfActiveProduct();
             notActiveFirstPage = searchPage.getIdOfNotActiveProduct();
             searchPage.addProductToList(firstPageProduct, productsList()).checkSortingOfProducts(firstPageProduct).goToNextPage();
@@ -1330,16 +1333,24 @@ public class Main_page_Logic extends Main_page {
             getPriceNettoOfProduct(priceNettoSecondPageAws, activeSecondPage);
             getPriceNettoOfProduct(priceNettoThirdPageAws, activeThirdPage);
             checkPriceNettoFromAWS(priceNettoFirstPageAws, priceNettoSecondPageAws, priceNettoThirdPageAws);
-            priceNettoFirstPageAws.clear(); priceNettoSecondPageAws.clear(); priceNettoThirdPageAws.clear();
+            priceNettoFirstPageAws.clear();
+            priceNettoSecondPageAws.clear();
+            priceNettoThirdPageAws.clear();
             /*ВРЕМЕННО ОТКЛЮЧЕНА ПРОВЕРКА ДЛЯ СЕРЫХ КНОПОК*/
       /*      getPriceNettoOfProduct(priceNettoFirstPageAws, notActiveFirstPage);
             getPriceNettoOfProduct(priceNettoSecondPageAws, notActiveSecondPage);
             getPriceNettoOfProduct(priceNettoThirdPageAws, notActiveThirdPage);
             checkPriceNettoFromAWS(priceNettoFirstPageAws, priceNettoSecondPageAws, priceNettoThirdPageAws);
             priceNettoFirstPageAws.clear(); priceNettoSecondPageAws.clear(); priceNettoThirdPageAws.clear();*/
-            activeFirstPage.clear(); activeSecondPage.clear(); activeThirdPage.clear();
-            firstPageProduct.clear(); secondPageProduct.clear(); thirdPageProduct.clear();
-            notActiveFirstPage.clear(); notActiveSecondPage.clear(); notActiveThirdPage.clear();
+            activeFirstPage.clear();
+            activeSecondPage.clear();
+            activeThirdPage.clear();
+            firstPageProduct.clear();
+            secondPageProduct.clear();
+            thirdPageProduct.clear();
+            notActiveFirstPage.clear();
+            notActiveSecondPage.clear();
+            notActiveThirdPage.clear();
         }
         return this;
     }
@@ -1357,13 +1368,13 @@ public class Main_page_Logic extends Main_page {
     @Step("check price Netto from aws.  Main_page")
     public Main_page_Logic checkPriceNettoFromAWS(List<Double> firstList, List<Double> secondList, List<Double> thirdList) {
         if (firstList.size() > 0 && secondList.size() > 0 && thirdList.size() > 0) {
-            Assert.assertTrue(Collections.max(firstList) <= Collections.min(secondList), "error"+ Collections.max(firstList) +" - "+ Collections.min(secondList));
+            Assert.assertTrue(Collections.max(firstList) <= Collections.min(secondList), "error" + Collections.max(firstList) + " - " + Collections.min(secondList));
             Assert.assertTrue(Collections.max(secondList) <= Collections.min(thirdList));
-        } else if (firstList.size() > 0 && secondList.size() > 0 && thirdList.size()==0 ){
+        } else if (firstList.size() > 0 && secondList.size() > 0 && thirdList.size() == 0) {
             Assert.assertTrue(Collections.max(firstList) <= Collections.min(secondList));
-        } else if (firstList.size() > 0 && thirdList.size() > 0 && secondList.size()==0) {
+        } else if (firstList.size() > 0 && thirdList.size() > 0 && secondList.size() == 0) {
             Assert.assertTrue(Collections.max(firstList) <= Collections.min(thirdList));
-        } else if (secondList.size() > 0 && thirdList.size() > 0 && firstList.size()==0) {
+        } else if (secondList.size() > 0 && thirdList.size() > 0 && firstList.size() == 0) {
             Assert.assertTrue(Collections.max(secondList) <= Collections.min(thirdList));
         }
         return this;
