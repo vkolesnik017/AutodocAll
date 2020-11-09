@@ -6,8 +6,7 @@ import org.testng.Assert;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static ATD.CommonMethods.getAttributeFromUnVisibleElement;
-import static ATD.CommonMethods.getTextFromUnVisibleElement;
+import static ATD.CommonMethods.*;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.actions;
 import static com.codeborne.selenide.Selenide.back;
@@ -31,8 +30,13 @@ public class Tyres_feature_page_Logic extends Tyres_feature_page {
     @Step("check swipe by click on paginator. Tyres_feature_pagee")
     public Tyres_feature_page_Logic checkSwipeByClick() {
         linkingBlock().scrollIntoView("{block: \"center\"}");
-        swipeToRightInLinkingBlock();
-        swipeToLeftInLinkingBlock();
+        String titleOfFirstLinkingBlock = visibleTitleOfLinkingBlocks().get(0).shouldBe(visible).getText();
+        btnPaginatorOfLinkingBlock().get(1).click();
+        presenceOfTitleLinkingBlock();
+        presenceOfTitleLinkingBlock();
+        visibleTitleOfLinkingBlocks().get(0).shouldNotHave(exactText(titleOfFirstLinkingBlock));
+        btnPaginatorOfLinkingBlock().get(0).click();
+        visibleTitleOfLinkingBlocks().get(0).shouldHave(exactText(titleOfFirstLinkingBlock));
         return this;
     }
 
@@ -130,25 +134,27 @@ public class Tyres_feature_page_Logic extends Tyres_feature_page {
     }
 
     @Step("check transitions in Linking block. Tyres_feature_page")
-    public Tyres_feature_page_Logic checkTransitionsInLinkingBlock() {
-        checkTransitionsOfVisibleLinkingBlock();
-        checkTransitionsOfLastLinkingBlock();
+    public Tyres_feature_page_Logic checkTransitionsInLinkingBlock(String url) {
+        checkTransitionsOfVisibleLinkingBlock(url);
+        checkTransitionsOfLastLinkingBlock(url);
         return this;
     }
 
     @Step("check transitions of visible Linking block. Tyres_feature_page")
-    public Tyres_feature_page_Logic checkTransitionsOfVisibleLinkingBlock() {
+    public Tyres_feature_page_Logic checkTransitionsOfVisibleLinkingBlock(String currentUrl) {
         for (int i = 0; i < visibleTitleOfLinkingBlocks().size(); i++) {
+            linkingBlock().scrollIntoView("{block: \"center\"}");
             String url = btnMoreOfLinkingBlock().get(i).getAttribute("url");
             visibleTitleOfLinkingBlocks().get(i).shouldBe(visible).click();
             new Tyres_feature_page_Logic().checkingAbsenceOfCurrentLinkInLinkingBlock(url);
             back();
+            waitWhileRouteContainsExpectedCondition(currentUrl);
         }
         return this;
     }
 
     @Step("check transitions of last Linking block. Tyres_feature_page")
-    public Tyres_feature_page_Logic checkTransitionsOfLastLinkingBlock() {
+    public Tyres_feature_page_Logic checkTransitionsOfLastLinkingBlock(String currentUrlSite) {
         for (int i = 0; i < btnPaginatorOfLinkingBlock().size() - 1; i++) {
             String titleOfLastLinkingBlock = visibleTitleOfLinkingBlocks().get(3).getText();
             btnPaginatorOfLinkingBlock().get(i + 1).click();
@@ -159,6 +165,7 @@ public class Tyres_feature_page_Logic extends Tyres_feature_page {
             visibleTitleOfLinkingBlocks().get(3).click();
             new Tyres_feature_page_Logic().checkingAbsenceOfCurrentLinkInLinkingBlock(currentUrl);
             back();
+            waitWhileRouteContainsExpectedCondition(currentUrlSite);
         }
         return this;
     }
