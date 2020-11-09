@@ -22,14 +22,25 @@ public class Delivery_prices_aws {
         return $x("//*[@class='table table-hover nested-countries sticky-header-middle']");
     }
 
-    @Step("Login in AWS. PageVAT_aws")
+    private SelenideElement deliveryPrice(String country) {
+        return $x("//table[contains(@class,'sticky-header-middle')]//tr//td[text()='" + country + "']/..//td//input[contains(@name,'delivery_cost')]");
+    }
+
+
+    @Step("Get delivery price. Delivery_prices_aws")
+    public float getDeliveryPrice(String country) {
+       return Float.parseFloat(deliveryPrice(country).getValue());
+    }
+
+
+    @Step("Login in AWS. Delivery_prices_aws")
     public Delivery_prices_aws openAndLoginDeliveryPriceAwsPage() {
         open(delivery_prices_aws);
         new Login_aws().loginInAws();
         return this;
     }
 
-    @Step("Get name country from delivery price page. PageVAT_aws")
+    @Step("Get name country from delivery price page. Delivery_prices_aws")
     public ArrayList<String> countriesFromDeliveryPricesAwsPage() {
         ArrayList<String> awsCountry = new ArrayList<>();
         tableWithCountries().shouldBe(Condition.visible);
