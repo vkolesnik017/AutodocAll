@@ -1,5 +1,6 @@
 package PKW.StaticPage;
 
+import AWS.Delivery_prices_aws;
 import Common.SetUp;
 import PKW.Main_page_Logic;
 import io.qameta.allure.Description;
@@ -10,6 +11,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import static Common.SetUp.setUpBrowser;
 import static PKW.CommonMethods.openPage;
@@ -23,21 +25,26 @@ public class QC_1466_StaticPage_AGB {
     }
 
     @DataProvider(name = "route", parallel = true)
-    Object[] dataProvider() {
-        return new SetUp("PKW").setUpShop("prod", "DE");
+    Object[] dataProvider() throws SQLException {
+        return new SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "main");
     }
 
     @Test(dataProvider = "route")
     @Owner(value = "LavrynenkoOlha")
     @Description(value = "Test checks elements on the AGB page")
     public void testStaticPage_AGB(String route) throws SQLException {
+        List<String> countriesNameAws = new Delivery_prices_aws()
+                .openAndLoginDeliveryPriceAwsPage()
+                .countriesFromDeliveryPricesAwsPage();
         openPage(route);
         new Main_page_Logic().clickHeaderAgbLink()
                 .checkDownloadButtons()
                 .checkElementsOnThePage()
                 .checkingPriceInTheCountryList()
                 .checkingFlagsInTheCountryList()
+                .checkingCountriesOnSiteAndOnAWS(countriesNameAws)
                 .checkingLinksInTheText();
+
     }
 
     @AfterMethod
