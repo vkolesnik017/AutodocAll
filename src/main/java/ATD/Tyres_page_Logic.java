@@ -523,7 +523,7 @@ public class Tyres_page_Logic extends Tyres_page {
 
     @Step("presence of title  in linking block. Tyres_page")
     public Tyres_page_Logic presenceOfTitleLinkingBlock() {
-        for (int i = 0; i < visibleTitleOfLinkingBlocks().size(); i++) {
+        for (int i = 0; i < 3; i++) {
             visibleTitleOfLinkingBlocks().get(i).shouldBe(visible);
         }
         return this;
