@@ -64,5 +64,9 @@ public class AGB_static_page {
     SelenideElement europaLinkAgbSecond() {
         return $(byXpath("//a[contains(@href,'europa')]"));
     }
+
+    ElementsCollection countryNamesOnSite() {
+        return $$x("//*[@class='country_list']//td[2]");
+    }
 }
 
