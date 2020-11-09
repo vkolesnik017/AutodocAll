@@ -4,6 +4,9 @@ import Common.DataBase;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 import static PKW.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -29,7 +32,7 @@ public class AGB_static_page_Logic extends AGB_static_page {
         pdfDownloadButton().shouldHave(attribute("url", "pdf/agb"));
         acrobatReaderButton().click();
         switchTo().window(1);
-        checkingContainsUrl("/reader/?loc=de");
+        checkingContainsUrl("de/reader/");
         closeWindow();
         switchTo().window(0);
         return this;
@@ -58,7 +61,7 @@ public class AGB_static_page_Logic extends AGB_static_page {
 
     @Step("Checking flags in the Country block. AGB_static_page")
     public AGB_static_page_Logic checkingFlagsInTheCountryList() {
-        for (int i = 0; i < 55; i++) {
+        for (int i = 0; i < imagesCountryFlag().size(); i++) {
             imagesCountryFlag().get(i).shouldBe(visible);
         }
         return this;
@@ -66,9 +69,20 @@ public class AGB_static_page_Logic extends AGB_static_page {
 
     @Step("Checking price displaying in the Country block. AGB_static_page")
     public AGB_static_page_Logic checkingPriceInTheCountryList() {
-        for (int i = 0; i < 55; i++) {
+        for (int i = 0; i < countryPrice().size(); i++) {
             countryPrice().get(i).shouldBe(visible);
         }
+        return this;
+    }
+
+    @Step("Checking the countries in the delivery country block and in the AWS. AGB_static_page")
+    public AGB_static_page_Logic checkingCountriesOnSiteAndOnAWS(List<String> list) {
+        ArrayList<String> siteCountry = new ArrayList<>();
+        for (int i = 0; i < countryNamesOnSite().size(); i++) {
+            countryListBlockAgb().scrollIntoView("{block: \"center\"}");
+            siteCountry.add(countryNamesOnSite().get(i).getText());
+        }
+        Assert.assertEquals(list.size()-1, siteCountry.size());
         return this;
     }
 }

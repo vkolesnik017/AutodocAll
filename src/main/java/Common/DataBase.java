@@ -297,16 +297,16 @@ public class DataBase {
         return userID;
     }
 
-    public String getAWSTranslationCountries(String dbName, String shop, String paymentsMethod) throws SQLException {
+    public String getAWSTranslationCountries(String translate) throws SQLException {
         Statement statement = null;
+        String dbName = "aws_delivery_countries_translate";
         Connection conn = coonectionDB(dbName);
-        String userID = null;
-        String query = "SELECT ".concat(shop) + " FROM autodoc.".concat(dbName) + " where payments_name=" + "\"".concat(paymentsMethod) + "\"";
+        String query = "SELECT aws.EN FROM autodoc." + dbName + " as aws where aws.DE = '" + translate + "'";
         try {
             statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
-                userID = resultSet.getString(1);
+                translate = resultSet.getString(1);
             }
             statement.close();
             conn.close();
@@ -316,7 +316,7 @@ public class DataBase {
             if (statement != null) statement.close();
             if (conn != null) conn.close();
         }
-        return userID;
+        return translate;
     }
 
     public ArrayList<String> getNameRequisitesMethod(String dbName, String shop, String... requisites) throws SQLException {
@@ -332,8 +332,8 @@ public class DataBase {
                 while (resultSet.next()) {
                     nameRequisites = resultSet.getString(1);
                 }
-                if(nameRequisites != null)
-                finalList.add(nameRequisites);
+                if (nameRequisites != null)
+                    finalList.add(nameRequisites);
                 statement.close();
             } catch (SQLException state) {
                 state.printStackTrace();
