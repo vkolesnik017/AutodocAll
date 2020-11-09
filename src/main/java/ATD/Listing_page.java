@@ -959,7 +959,7 @@ public class Listing_page {
     }
 
     SelenideElement popUpDangerousText() {
-        return $x("//*[@id='mCSB_2_container']//p");
+        return $x("//*[@class='popup-dangerous']//p");
     }
 
     SelenideElement closePopUpButton() {
