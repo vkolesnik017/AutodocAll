@@ -1,13 +1,14 @@
 package ATD;
 
-import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
 
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.getNameRouteFromJSVarInHTML;
 import static ATD.CommonMethods.waitingElementVisibility;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selenide.Wait;
+import static com.codeborne.selenide.Selenide.page;
 import static org.testng.AssertJUnit.assertNull;
 
 public class Profile_page_Logic extends Profile_page {
@@ -35,13 +36,13 @@ public class Profile_page_Logic extends Profile_page {
 
     @Step("Checking that Autodoc Plus tab active. Profile_page")
     public Profile_page_Logic checkingAutodocPlusActive() {
-        autodocLinkActiveFirst().shouldBe(Condition.appear);
+        autodocLinkActiveFirst().shouldBe(appear);
         return this;
     }
 
     @Step("Checking appearing name of client. Profile_page")
     public Profile_page_Logic checkingAppearingNameOfClient() {
-        nameOfClient().shouldBe(Condition.visible);
+        nameOfClient().shouldBe(visible);
         return this;
     }
 
@@ -53,7 +54,7 @@ public class Profile_page_Logic extends Profile_page {
 
     @Step("Checking checked checkbox in setting tab. Profile_page")
     public Profile_page_Logic checkingCheckedCheckbox() {
-        einstellungenCheckbox().shouldHave(Condition.attribute("checked", "true"));
+        einstellungenCheckbox().shouldHave(attribute("checked", "true"));
         return this;
     }
 
@@ -72,9 +73,9 @@ public class Profile_page_Logic extends Profile_page {
 
     @Step("Checking popup after clicking checkbox in setting tab. Profile_page")
     public Profile_page_Logic checkingPopupAfterClickCheckbox() {
-        popupAfterCheckedCheckbox().shouldHave(Condition.text("Vielen Dank!"));
+        popupAfterCheckedCheckbox().shouldHave(text("Vielen Dank!"));
         closePopupAfterCheckedCheckbox().click();
-        einstellungenActive().shouldBe(Condition.appear);
+        einstellungenActive().shouldBe(appear);
         return this;
     }
 
@@ -145,7 +146,7 @@ public class Profile_page_Logic extends Profile_page {
 
     @Step("Go to page Autodoc Plus. Profile_page")
     public Profile_plus_page_Logic goToPageAutodocPlus() {
-        autodocPlusBtn().click();
+        autodocPlusBtn().shouldBe(visible).click();
         return page(Profile_plus_page_Logic.class);
     }
 }
