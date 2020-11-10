@@ -37,7 +37,7 @@
         </classes>
     </test>
 
-    <test name="FiltersSorting_byBrand">
+    <test name="QC_52_FiltersSorting_byBrand">
         <classes>
             <class name="ATD.FiltersSorting.QC_52_FiltersSorting_byBrand.QC_8_FiltersSorting_TestBrandFilterWithTwoBrandsSelected"/>
             <class name="ATD.FiltersSorting.QC_52_FiltersSorting_byBrand.QC_53_FiltersSorting_TestBrandFilterInTileMode"/>
@@ -45,6 +45,7 @@
             <class name="ATD.FiltersSorting.QC_52_FiltersSorting_byBrand.QC_55_FiltersSorting_TestBrandFilterWithPaginationLKW"/>
             <class name="ATD.FiltersSorting.QC_52_FiltersSorting_byBrand.QC_56_FiltersSorting_TestBrandFilterReset"/>
             <class name="ATD.FiltersSorting.QC_52_FiltersSorting_byBrand.QC_1384_WorkBtnPrevAndNextInBlockBrands"/>
+            <class name="ATD.FiltersSorting.QC_52_FiltersSorting_byBrand.QC_2758_CountOfProductDoNotChangeAfterSelectingOfBrand"/>
         </classes>
     </test>
 
@@ -62,9 +63,12 @@
         </classes>
     </test>
 
-    <test name="FiltersSorting_byGeneric">
+    <test name="QC_179_FiltersSorting_byGeneric">
         <classes>
             <class name="ATD.FiltersSorting.QC_179_FiltersSorting_byGeneric.QC_180_FiltersSorting_TestProductOutputWithGenericFilter"/>
+            <class name="ATD.FiltersSorting.QC_179_FiltersSorting_byGeneric.QC_2764_WorkOfSliderInGenericBlock"/>
+            <class name="ATD.FiltersSorting.QC_179_FiltersSorting_byGeneric.QC_2765_LackOf5xxAfterReselectingVehicleWithSelectedFilter"/>
+            <class name="ATD.FiltersSorting.QC_179_FiltersSorting_byGeneric.QC_2766_HeadlineOfGenericBlock"/>
         </classes>
     </test>
 

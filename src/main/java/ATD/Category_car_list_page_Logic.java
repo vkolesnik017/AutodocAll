@@ -5,6 +5,10 @@ import files.Product;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -13,6 +17,8 @@ import static ATD.CommonMethods.waitingWhileLinkBecomeExpected;
 import static PKW.CommonMethods.getTextFromUnVisibleElement;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverRunner.url;
+import static org.testng.Assert.assertEquals;
 
 public class Category_car_list_page_Logic extends Category_car_list_page {
 
@@ -275,7 +281,7 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
             parentFromTeilecatalogInSidebar().waitUntil(visible, 10000);
         }
         for (int i = 0; i < parentsIdFromTeilecatalogInSidebar().size(); i++) {
-            String parentId =  parentsIdFromTeilecatalogInSidebar().get(i).getAttribute("src").replaceAll("[\\s\\S]*\\/", "").replaceAll(".png", "").trim();
+            String parentId = parentsIdFromTeilecatalogInSidebar().get(i).getAttribute("src").replaceAll("[\\s\\S]*\\/", "").replaceAll(".png", "").trim();
             idListParents.add(parentId);
         }
         return idListParents;
@@ -323,6 +329,44 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
             }
             characteristicOfProduct.clear();
         }
+        return this;
+    }
+
+    @Step("check work of slider in generic block. Category_car_list_page")
+    public Category_car_list_page_Logic checkWorkOfSliderInGenericBlock() {
+        genericBlock().shouldBe(visible);
+        String firstGeneric = visibleTitleOfGenerics().get(0).getText();
+        rightPaginatorOfGenericBlock().shouldBe(visible).click();
+        presenceVisibleTittleOfGeneric();
+        visibleTitleOfGenerics().get(0).shouldNotHave(exactText(firstGeneric));
+        leftPaginatorOfGenericBlock().shouldBe(visible).click();
+        presenceVisibleTittleOfGeneric();
+        visibleTitleOfGenerics().get(0).shouldHave(exactText(firstGeneric));
+        return this;
+    }
+
+    @Step("presence of visible tittle Of generic. Category_car_list_page")
+    public Category_car_list_page_Logic presenceVisibleTittleOfGeneric() {
+        for (int i = 0; i < visibleTitleOfGenerics().size() - 1; i++) {
+            visibleTitleOfGenerics().get(i).shouldBe(visible);
+        }
+        return this;
+    }
+
+    @Step("select car in selector. Category_car_list_page")
+    public Category_car_list_page_Logic selectCarInSelector(String brand, String model, String motor) {
+        new Main_page_Logic().chooseBrandModelTypeInSelector(brand, model, motor);
+        btnSearchOfSelectedSelector().shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("check response of server. Category_car_list_page")
+    public Category_car_list_page_Logic checkResponseOfServer(int code) throws IOException {
+        URL url = new URL(url());
+        HttpURLConnection http = (HttpURLConnection) url.openConnection();
+        http.setInstanceFollowRedirects(true);
+        int responseCode = http.getResponseCode();
+        assertEquals(responseCode, code);
         return this;
     }
 

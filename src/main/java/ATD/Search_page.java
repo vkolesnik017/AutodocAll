@@ -290,5 +290,13 @@ public class Search_page {
 
     ElementsCollection visiblePaginatorLinks() {return $$x("//div[@class='pagination']/span").filter(visible);}
 
+    SelenideElement genericBlock() {return $x("//div[@class='filter-generics-tecdoc js-filter-generic js-filter- js-filter-wrapper criteria-filter-block-js']");}
+
+    ElementsCollection visibleTitleOfGenerics() {return $$x("//div[@class='filter-generics-tecdoc__item-title']").filter(visible);}
+
+    SelenideElement rightPaginatorOfGenericBlock() {return $x("//span[@class='next slick-arrow']");}
+
+    SelenideElement leftPaginatorOfGenericBlock() {return $x("//span[@class='prev slick-arrow']");}
+
 }
 

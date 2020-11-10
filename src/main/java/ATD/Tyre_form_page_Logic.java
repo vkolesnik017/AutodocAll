@@ -188,4 +188,11 @@ public class Tyre_form_page_Logic extends Tyre_form_page {
         return this;
     }
 
+    @Step("select  any one visible brands. Tyre_form_page")
+    public Tyre_form_page_Logic selectAnyOneBrand(int positionOfBrand) {
+        visibleAllBrands().get(positionOfBrand).click();
+        anySelectedOneBrand().shouldBe(visible);
+        return this;
+    }
+
 }
