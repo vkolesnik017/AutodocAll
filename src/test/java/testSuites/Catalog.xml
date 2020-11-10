@@ -41,4 +41,10 @@
         </classes>
     </test>
 
+    <test name="QC_2684_MainPhotoCategories">
+        <classes>
+            <class name="ATD.Catalog.QC_2684_MainPhotoCategories.QC_2685_MainPhotoChildCategoriesOnRutCategoriesBrandMark"/>
+        </classes>
+    </test>
+
 </suite>

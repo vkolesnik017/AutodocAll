@@ -27,16 +27,16 @@
                           -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/1.9.4/aspectjweaver-1.9.4.jar"
                     </argLine>
                     <suiteXmlFiles>
-<!--                        <suiteXmlFile>${basedir}${TEST_SUITE}.xml</suiteXmlFile>-->
-                        <suiteXmlFile>${basedir}/src/test/java/testSuites/testSuite.xml</suiteXmlFile>
+                        <suiteXmlFile>${basedir}${TEST_SUITE}.xml</suiteXmlFile>
+<!--                        <suiteXmlFile>${basedir}/src/test/java/testSuites/testSuite.xml</suiteXmlFile>-->
 <!--                        <suiteXmlFile>${basedir}/src/test/java/testSuites/Specific/ATD/Selector/QC_2228_DisplayStatusNewForMapcoGoodsATD.xml</suiteXmlFile>-->
                     </suiteXmlFiles>
-<!--                    <properties>-->
-<!--                        <property>-->
-<!--                            <name>${DATATYPE}</name>-->
-<!--                            <value>${TESTSET_NAME}</value>-->
-<!--                        </property>-->
-<!--                    </properties>-->
+                    <properties>
+                        <property>
+                            <name>${DATATYPE}</name>
+                            <value>${TESTSET_NAME}</value>
+                        </property>
+                    </properties>
                     <systemProperties>
                         <property>
                             <name>allure.results.directory</name>
