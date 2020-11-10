@@ -249,4 +249,16 @@ public class Services_wishList_page_Logic extends Services_wishList_page {
         return this;
     }
 
+    @Step("click on Gray  button of product. Services_wishList_page")
+    public Services_wishList_page_Logic clickOnGrayBtnOfProduct() {
+        btnOutOfStockProduct().shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("presence of available pop-Up. Services_wishList_page")
+    public Services_wishList_page_Logic presenceOfAvailablePopUp() {
+        availablePopUp().shouldBe(visible);
+        return this;
+    }
+
 }

@@ -82,25 +82,26 @@ public class Profile_plus_page {
 
     SelenideElement popUpOfGarageInHeader() {return $x("//div[@class='header-garage__logged-header']");}
 
-    SelenideElement btnOpenInputForAddVinNumInPopUpOfGarage() {return $x("//div[@class='wrapper-vin']/p");}
-
     ElementsCollection btnOpenInputForAddVinNumInPopUpOfGarageHeader() {
         return $$x("//div[@class='wrapper-vin']/p");
+    }
+
+    SelenideElement btnOpenInputForAddVinNumInPopUpOfGarageInHeader() {
+        return $x("//div[@class='wrapper-vin']/p");
     }
 
     ElementsCollection inputForAddVinNumInPopUpOfGarageHeader() {
         return $$x("//div[@class='vin-number-drop-input']/input");
     }
 
-    SelenideElement inputForAddVinNumInPopUpOfGarage() {
+    SelenideElement inputForAddVinNumInPopUpOfGarageInHeader() {
         return $x("//div[@class='vin-number-drop-input']/input");
     }
-
     ElementsCollection btnAddVinNumInPopUpOfGarageHeader() {
         return $$x("//div[@class='vin-number-drop-button js-save-vin-number']");
     }
 
-    SelenideElement btnAddVinNumInPopUpOfGarage() {
+    SelenideElement btnAddVinNumInPopUpOfGarageInHeader() {
         return $x("//div[@class='vin-number-drop-button js-save-vin-number']");
     }
 
@@ -108,7 +109,7 @@ public class Profile_plus_page {
         return $$x("//div[@class='wrapper-vin']//span");
     }
 
-    SelenideElement addedVinNumInPopUpOfGarage() {
+    SelenideElement addedVinNumInPopUpOfGarageInHeader() {
         return $x("//div[@class='wrapper-vin']//span");
     }
 
@@ -138,5 +139,9 @@ public class Profile_plus_page {
     SelenideElement premiumAccountExpirationDate() {
         return $x("//div[@class='member-plus-block__bottom']/p");
     }
+
+    SelenideElement readyToSendSticker() {return $x("//div[@class='member-plus-block__content-row first']");}
+
+    ElementsCollection headlineOfPriorityOrderStatus() { return $$x("//div[@class='member-plus-block__content-row']/div/div[2]");}
 
 }
