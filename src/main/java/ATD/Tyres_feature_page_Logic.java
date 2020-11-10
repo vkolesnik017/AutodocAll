@@ -35,7 +35,11 @@ public class Tyres_feature_page_Logic extends Tyres_feature_page {
         presenceOfTitleLinkingBlock();
         presenceOfTitleLinkingBlock();
         visibleTitleOfLinkingBlocks().get(0).shouldNotHave(exactText(titleOfFirstLinkingBlock));
+        presenceOfTitleLinkingBlock();
+        presenceOfTitleLinkingBlock();
         btnPaginatorOfLinkingBlock().get(0).click();
+        presenceOfTitleLinkingBlock();
+        presenceOfTitleLinkingBlock();
         visibleTitleOfLinkingBlocks().get(0).shouldHave(exactText(titleOfFirstLinkingBlock));
         return this;
     }
@@ -144,6 +148,8 @@ public class Tyres_feature_page_Logic extends Tyres_feature_page {
     public Tyres_feature_page_Logic checkTransitionsOfVisibleLinkingBlock(String currentUrl) {
         for (int i = 0; i < visibleTitleOfLinkingBlocks().size(); i++) {
             linkingBlock().scrollIntoView("{block: \"center\"}");
+            presenceOfTitleLinkingBlock();
+            presenceOfTitleLinkingBlock();
             String url = btnMoreOfLinkingBlock().get(i).getAttribute("url");
             visibleTitleOfLinkingBlocks().get(i).shouldBe(visible).click();
             new Tyres_feature_page_Logic().checkingAbsenceOfCurrentLinkInLinkingBlock(url);
@@ -156,6 +162,8 @@ public class Tyres_feature_page_Logic extends Tyres_feature_page {
     @Step("check transitions of last Linking block. Tyres_feature_page")
     public Tyres_feature_page_Logic checkTransitionsOfLastLinkingBlock(String currentUrlSite) {
         for (int i = 0; i < btnPaginatorOfLinkingBlock().size() - 1; i++) {
+            linkingBlock().scrollIntoView("{block: \"center\"}");
+            presenceOfTitleLinkingBlock();
             String titleOfLastLinkingBlock = visibleTitleOfLinkingBlocks().get(3).getText();
             btnPaginatorOfLinkingBlock().get(i + 1).click();
             presenceOfTitleLinkingBlock();
