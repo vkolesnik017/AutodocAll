@@ -74,11 +74,24 @@ public class Tyre_form_page {
        return  $x("//div[@class='pagination']//span[@class='last']/a");
     }
 
-    ElementsCollection visibleBrands() {return $$x("//li[@class='js-filter-item ga-click-criteria-filter']");}
+    ElementsCollection visibleBrands() {return $$x("//div[@class='slick-list draggable']//li");}
 
     SelenideElement anySelectedBrand() {return $x("//li[@class='js-filter-item ga-click-criteria-filter active']");}
 
     SelenideElement countOfProductsInPage() {return $x("//div[@class='items_on_page']");}
 
     ElementsCollection iconOfBrandsInProductList() {return $$x("//div[@class='image']/span/img");}
+
+
+    ElementsCollection btnAddedOutOfStockProductToWishList() {
+        return $$x("//div[@class='button not_active']/ancestor::div[@class='price_box']/span");
+    }
+
+    SelenideElement popUpSelector() {
+        return $x("//div[@class='new_popup popup_content']");
+    }
+
+    SelenideElement closePopUpSelector() {
+        return $x("//a[@class='back']");
+    }
 }
