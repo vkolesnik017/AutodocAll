@@ -1,13 +1,17 @@
 package AWS;
 
+import Common.DataBase;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
+import java.math.BigDecimal;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import static PKW.CommonMethods.getTextFromUnVisibleElement;
+import static PKW.CommonMethods.openPage;
 import static com.codeborne.selenide.Selenide.*;
 
 public class Delivery_prices_aws {
@@ -26,14 +30,33 @@ public class Delivery_prices_aws {
         return $x("//table[contains(@class,'sticky-header-middle')]//tr//td[text()='" + country + "']/..//td//input[contains(@name,'delivery_cost')]");
     }
 
-
-    @Step("Get delivery price. Delivery_prices_aws")
-    public float getDeliveryPrice(String country) {
-       return Float.parseFloat(deliveryPrice(country).getValue());
+    private SelenideElement deliveryCurrency(String country) {
+        return $x("//table[contains(@class,'sticky-header-middle')]//tr//td[text()='" + country + "']//..//td[4]");
     }
 
 
-    @Step("Login in AWS. Delivery_prices_aws")
+    @Step("Get delivery price. Delivery_prices_aws")
+    public float getDeliveryPrice(String country) throws SQLException {
+        CurrencyRatesPage_aws currencyRatesPage_aws = new CurrencyRatesPage_aws();
+        String actualCountry = new DataBase("ATD").getAWSTranslationCountries(country);
+        float deliveryPrice = Float.parseFloat(deliveryPrice(actualCountry).getValue());
+        String actualCurrency = deliveryCurrency(actualCountry).getText();
+        float actualPrice;
+        if (!actualCurrency.equals("EUR")) {
+            openPage(currencyRatesPage_aws.currencyRatesPageURL);
+            float price = currencyRatesPage_aws.getPriceOfCurrency(actualCurrency);
+            float result = deliveryPrice / price;
+            BigDecimal bigDecimal = new BigDecimal(result);
+            BigDecimal roundResult = bigDecimal.setScale(2, BigDecimal.ROUND_HALF_UP);
+            actualPrice = Float.valueOf(String.valueOf(roundResult));
+        } else {
+            actualPrice = deliveryPrice;
+        }
+        return actualPrice;
+    }
+
+
+    @Step("Login and open Delivery price page in AWS. Delivery_prices_aws")
     public Delivery_prices_aws openAndLoginDeliveryPriceAwsPage() {
         open(delivery_prices_aws);
         new Login_aws().loginInAws();

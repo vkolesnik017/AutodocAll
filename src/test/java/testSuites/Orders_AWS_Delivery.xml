@@ -108,6 +108,12 @@
         </classes>
     </test>
 
+    <test name="QC_2508_CheckDeliveryCost_Front">
+        <classes>
+            <class name="ATD.Orders_AWS_Delivery.QC_2505_Delivery.QC_2506_FreeDeliveryLimits_PositiveCase"/>
+        </classes>
+    </test>
+
     <test name="QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods">
         <classes>
             <class name="ATD.Orders_AWS_Delivery.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1676_HeavyLoadsPositiveCase"/>
