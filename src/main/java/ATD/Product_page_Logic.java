@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 import static ATD.CommonMethods.*;
+import static PKW.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.CollectionCondition.sizeLessThan;
 import static com.codeborne.selenide.Condition.*;
@@ -1014,6 +1015,16 @@ public class Product_page_Logic extends Product_page {
         } catch (ElementNotFound ignored) {
             System.out.println("Pop-up is not found");
         }
+        return this;
+    }
+
+    @Step("Checking the transition to the Versand page after clicking the Versandkosten link . Product_page")
+    public Product_page_Logic clickVerandkostenLink() throws SQLException {
+        versandkostenButton().click();
+        switchTo().window(1);
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "staticVersand"));
+        closeWindow();
+        switchTo().window(0);
         return this;
     }
 }
