@@ -83,4 +83,14 @@ public class Category_name_page {
     ElementsCollection allValueFromCharacteristicBlock(int positionOfBlock) {return $$x("//table[2]//td["+positionOfBlock+"]");}
 
     SelenideElement dangerousPopUp() {return $x("//div[@class='popup-dangerous']");}
+
+    SelenideElement brandImgFromBrandsBlock() {
+        return $x("//div[@class='kategorie_top_brands']//img");
+    }
+
+    SelenideElement hrefBrandFromBrandsBlock() {
+        return $x("//div[@class='kategorie_top_brands']//a");
+
+    }
+
 }

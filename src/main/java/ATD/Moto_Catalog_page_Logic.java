@@ -477,4 +477,17 @@ public class Moto_Catalog_page_Logic extends Moto_Catalog_page {
         selectorFromMyGarageBlock().shouldNotHave(exist);
         return this;
     }
+
+    @Step("Open moto Selector Block. Moto_Catalog_page")
+    public Moto_Catalog_page_Logic openMotoSelectorsBlock() {
+        motoSelectorBlock().shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("Get data from motor Of Moto Selector. Moto_Catalog_page")
+    public String getDataFromMotorOfMotoSelector() {
+        motorOfMotoSelector().shouldBe(visible);
+        return motorOfMotoSelector().getText().replaceAll(" ", "").toLowerCase();
+    }
+
 }

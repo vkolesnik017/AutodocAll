@@ -49,4 +49,7 @@ public class Category_name_brand_page {
 
     SelenideElement dangerousPopUp() {return $x("//div[@class='popup-dangerous']");}
 
+    SelenideElement mainImageCategories() {
+        return $x("//div[@class='autoteile-top-content__image']/img");
+    }
 }

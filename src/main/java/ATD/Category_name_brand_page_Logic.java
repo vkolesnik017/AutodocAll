@@ -2,14 +2,16 @@ package ATD;
 
 import io.qameta.allure.Step;
 import org.testng.Assert;
-
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import static ATD.CommonMethods.getTextFromUnVisibleElement;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
+import static org.testng.Assert.assertEquals;
 
 public class Category_name_brand_page_Logic extends Category_name_brand_page {
 
@@ -148,5 +150,33 @@ public class Category_name_brand_page_Logic extends Category_name_brand_page {
         }
         return this;
     }
+
+    @Step("Get id category and brand from main image page. Category_name_brand_page")
+    public String getIdCategoryAndBrandMainImagePage() {
+        String idMainImagePage = mainImageCategories().getAttribute("src");
+        String cutIdMainImagePage = idMainImagePage.replaceAll("[\\s\\S]*\\/", "").replace(".png", "");
+        return cutIdMainImagePage;
+    }
+
+    @Step("get size main image page. Category_name_brand_page")
+    public String getSizeMainImagePage() {
+        return mainImageCategories().getAttribute("src").replaceAll("\\/[^\\/]*$", "").replaceAll("[\\s\\S]*\\/", "");
+    }
+
+    @Step("Get url from main image page. Category_name_brand_page")
+    public String getUrlFromMainImagePage() {
+        return mainImageCategories().getAttribute("src");
+    }
+
+    @Step("Check url for server responses 200. Category_name_brand_page")
+    public Category_name_brand_page_Logic checkUrlForServerResponses200(String anyUrl) throws IOException {
+        URL url = new URL(anyUrl);
+        HttpURLConnection http = (HttpURLConnection) url.openConnection();
+        http.setInstanceFollowRedirects(true);
+        int responseCode = http.getResponseCode();
+        assertEquals(responseCode, 200);
+        return this;
+    }
+
 
 }
