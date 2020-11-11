@@ -46,6 +46,8 @@
             <class name="ATD.FiltersSorting.QC_52_FiltersSorting_byBrand.QC_56_FiltersSorting_TestBrandFilterReset"/>
             <class name="ATD.FiltersSorting.QC_52_FiltersSorting_byBrand.QC_1384_WorkBtnPrevAndNextInBlockBrands"/>
             <class name="ATD.FiltersSorting.QC_52_FiltersSorting_byBrand.QC_2758_CountOfProductDoNotChangeAfterSelectingOfBrand"/>
+            <class name="ATD.FiltersSorting.QC_52_FiltersSorting_byBrand.QC_2756_BrandFilterRemainsAppliedAfterTransitionToSecondPage"/>
+            <class name="ATD.FiltersSorting.QC_52_FiltersSorting_byBrand.QC_2757_ApplyingBrandFilterNotBeingOnFirstPageOfListing"/>
         </classes>
     </test>
 
@@ -93,21 +95,22 @@
     </test>
 
     <!--<test name="FiltersSorting_byPrice">--> <!-- Filter by price is inactive-->
-        <!--<classes>-->
-            <!--<class name="ATD.FiltersSorting.QC_404_FiltersSorting_byPrice.QC_405_FiltersSorting_TestPriceFilterOnTecdocListing"/>-->
-            <!--<class name="ATD.FiltersSorting.QC_404_FiltersSorting_byPrice.QC_407_FiltersSorting_TestPriceFilterOnLKWlisting"/>-->
-            <!--<class name="ATD.FiltersSorting.QC_404_FiltersSorting_byPrice.QC_408_FiltersSorting_TestPriceFilterOnACClisting"/>-->
-            <!--<class name="ATD.FiltersSorting.QC_404_FiltersSorting_byPrice.QC_409_FiltersSorting_TestPriceFilterOnTecdocListingInTileMode"/>-->
-            <!--<class name="ATD.FiltersSorting.QC_404_FiltersSorting_byPrice.QC_410_FiltersSorting_TestPriceFilterOnLkwListingInTileMode"/>-->
-            <!--<class name="ATD.FiltersSorting.QC_404_FiltersSorting_byPrice.QC_411_FiltersSorting_TestPriceFilterOnAccListingInTileMode"/>-->
-            <!--<class name="ATD.FiltersSorting.QC_404_FiltersSorting_byPrice.QC_412_FiltersSorting_TestPriceFilterOnTecdocListingWithPagination"/>-->
-            <!--<class name="ATD.FiltersSorting.QC_404_FiltersSorting_byPrice.QC_414_FiltersSorting_TestPriceFilterOnLkwListingWithPagination"/>-->
-            <!--<class name="ATD.FiltersSorting.QC_404_FiltersSorting_byPrice.QC_415_FiltersSorting_TestPriceFilterOnAccListingWithPagination"/>-->
-            <!--<class name="ATD.FiltersSorting.QC_404_FiltersSorting_byPrice.QC_416_FiltersSorting_TestPriceFilterReset"/>-->
-            <!--<class name="ATD.FiltersSorting.QC_404_FiltersSorting_byPrice.QC_417_FiltersSorting_TestPriceFilterResetLKW"/>-->
-            <!--<class name="ATD.FiltersSorting.QC_404_FiltersSorting_byPrice.QC_419_FiltersSorting_TestPriceFilterResetACC"/>-->
-            <!--<class name="ATD.FiltersSorting.QC_404_FiltersSorting_byPrice.QC_421_FiltersSorting_TestPriceFilterWithFewProducts"/>-->
-        <!--</classes>-->
+    <!--<classes>-->
+    <!--<class name="ATD.FiltersSorting.QC_404_FiltersSorting_byPrice.QC_405_FiltersSorting_TestPriceFilterOnTecdocListing"/>-->
+    <!--<class name="ATD.FiltersSorting.QC_404_FiltersSorting_byPrice.QC_407_FiltersSorting_TestPriceFilterOnLKWlisting"/>-->
+    <!--<class name="ATD.FiltersSorting.QC_404_FiltersSorting_byPrice.QC_408_FiltersSorting_TestPriceFilterOnACClisting"/>-->
+    <!--<class name="ATD.FiltersSorting.QC_404_FiltersSorting_byPrice.QC_409_FiltersSorting_TestPriceFilterOnTecdocListingInTileMode"/>-->
+    <!--<class name="ATD.FiltersSorting.QC_404_FiltersSorting_byPrice.QC_410_FiltersSorting_TestPriceFilterOnLkwListingInTileMode"/>-->
+    <!--<class name="ATD.FiltersSorting.QC_404_FiltersSorting_byPrice.QC_411_FiltersSorting_TestPriceFilterOnAccListingInTileMode"/>-->
+    <!--<class name="ATD.FiltersSorting.QC_404_FiltersSorting_byPrice.QC_412_FiltersSorting_TestPriceFilterOnTecdocListingWithPagination"/>-->
+    <!--<class name="ATD.FiltersSorting.QC_404_FiltersSorting_byPrice.QC_414_FiltersSorting_TestPriceFilterOnLkwListingWithPagination"/>-->
+    <!--<class name="ATD.FiltersSorting.QC_404_FiltersSorting_byPrice.QC_415_FiltersSorting_TestPriceFilterOnAccListingWithPagination"/>-->
+    <!--<class name="ATD.FiltersSorting.QC_404_FiltersSorting_byPrice.QC_416_FiltersSorting_TestPriceFilterReset"/>-->
+    <!--<class name="ATD.FiltersSorting.QC_404_FiltersSorting_byPrice.QC_417_FiltersSorting_TestPriceFilterResetLKW"/>-->
+    <!--<class name="ATD.FiltersSorting.QC_404_FiltersSorting_byPrice.QC_419_FiltersSorting_TestPriceFilterResetACC"/>-->
+    <!--<class name="ATD.FiltersSorting.QC_404_FiltersSorting_byPrice.QC_421_FiltersSorting_TestPriceFilterWithFewProducts"/>-->
+    <!--</classes>-->
     <!--</test>-->
+
 
 </suite>
