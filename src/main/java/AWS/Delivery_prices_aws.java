@@ -35,12 +35,31 @@ public class Delivery_prices_aws {
     }
 
 
-    @Step("Get delivery price. Delivery_prices_aws")
-    public float getDeliveryPrice(String country) throws SQLException {
+    @Step("Get delivery price with translation countries {country}. Delivery_prices_aws")
+    public float getDeliveryPriceWithTranslationCountries(String country) throws SQLException {
         CurrencyRatesPage_aws currencyRatesPage_aws = new CurrencyRatesPage_aws();
         String actualCountry = new DataBase("ATD").getAWSTranslationCountries(country);
         float deliveryPrice = Float.parseFloat(deliveryPrice(actualCountry).getValue());
         String actualCurrency = deliveryCurrency(actualCountry).getText();
+        float actualPrice;
+        if (!actualCurrency.equals("EUR")) {
+            openPage(currencyRatesPage_aws.currencyRatesPageURL);
+            float price = currencyRatesPage_aws.getPriceOfCurrency(actualCurrency);
+            float result = deliveryPrice / price;
+            BigDecimal bigDecimal = new BigDecimal(result);
+            BigDecimal roundResult = bigDecimal.setScale(2, BigDecimal.ROUND_HALF_UP);
+            actualPrice = Float.valueOf(String.valueOf(roundResult));
+        } else {
+            actualPrice = deliveryPrice;
+        }
+        return actualPrice;
+    }
+
+    @Step("Get delivery price without translation countries {country}. Delivery_prices_aws")
+    public float getDeliveryPriceWithoutTranslationCountries(String country) throws SQLException {
+        CurrencyRatesPage_aws currencyRatesPage_aws = new CurrencyRatesPage_aws();
+        float deliveryPrice = Float.parseFloat(deliveryPrice(country).getValue());
+        String actualCurrency = deliveryCurrency(country).getText();
         float actualPrice;
         if (!actualCurrency.equals("EUR")) {
             openPage(currencyRatesPage_aws.currencyRatesPageURL);

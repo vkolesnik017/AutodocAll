@@ -58,11 +58,13 @@ public class QC_2508_CheckDeliveryCost_Front {
         new CartAddress_page_Logic().nextBtnClick()
                 .clickOnTheDesiredPaymentMethod("DE", "Bank")
                 .nextBtnClick();
+
         executeJavaScript("window.open('about:blank', '-blank')");
         switchTo().window(1);
         float deliveryPrice = new Delivery_prices_aws().openAndLoginDeliveryPriceAwsPage()
-                .getDeliveryPrice(nameCountry);
+                .getDeliveryPriceWithTranslationCountries(nameCountry);
         switchTo().window(0);
+
         float deliveryPriceAllData = cartAllData_page_logic.getRegularDeliveryPrice();
         Assert.assertEquals(deliveryPrice, deliveryPriceAllData);
         String orderNumber = cartAllData_page_logic.nextBtnClick()
