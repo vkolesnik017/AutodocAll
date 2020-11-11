@@ -3,11 +3,10 @@ package ATD;
 import static PKW.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
-
 import Common.DataBase;
 import io.qameta.allure.Step;
 import org.testng.Assert;
-
+import java.io.IOException;
 import java.sql.SQLException;
 
 public class Group_list_page_Logic extends Group_list_page {
@@ -38,6 +37,19 @@ public class Group_list_page_Logic extends Group_list_page {
             checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "club_manuals_home"));
             closeWindow();
             switchTo().window(0);
+        }
+        return this;
+    }
+
+    @Step("Checks downloads of the manuals. Group_list_page")
+    public Group_list_page_Logic checkDownloadsOfManuals() throws IOException {
+        pdfManualBlock().shouldBe(visible);
+        for (int i = 0; i < downloadLinkOfManuals().size(); i++) {
+            downloadLinkOfManuals().get(i).click();
+            sleep(5000);
+            String titlePDF = titlesOfManuals().get(i).getAttribute("title");
+            String nameFile = downloadLinkOfManuals().get(i).getAttribute("url").replaceAll("^.+\\/", "");
+            Common.File.assertThatPdfContainsText("C:/Users/User/Downloads/" + nameFile + "", titlePDF);
         }
         return this;
     }

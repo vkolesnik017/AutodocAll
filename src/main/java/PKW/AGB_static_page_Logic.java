@@ -32,7 +32,7 @@ public class AGB_static_page_Logic extends AGB_static_page {
         pdfDownloadButton().shouldHave(attribute("url", "pdf/agb"));
         acrobatReaderButton().click();
         switchTo().window(1);
-        checkingContainsUrl("de/reader/");
+        checkingContainsUrl("reader");
         closeWindow();
         switchTo().window(0);
         return this;
