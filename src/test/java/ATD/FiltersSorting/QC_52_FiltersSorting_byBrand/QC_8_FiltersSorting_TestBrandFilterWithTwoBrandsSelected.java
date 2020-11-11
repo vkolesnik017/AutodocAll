@@ -28,7 +28,7 @@ public class QC_8_FiltersSorting_TestBrandFilterWithTwoBrandsSelected {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list,search2,category_car_list6,search19");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list,search2,category_car_list6,search19,listing_chemicals");
     }
 
     @DataProvider(name = "routeOem", parallel = true)
@@ -38,7 +38,7 @@ public class QC_8_FiltersSorting_TestBrandFilterWithTwoBrandsSelected {
 
     @DataProvider(name = "routeAcc", parallel = true)
     Object[] dataProviderAcc() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "listing_instruments");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "listing_instruments,listing_instruments7");
     }
 
     @DataProvider(name = "routesLKW", parallel = true)

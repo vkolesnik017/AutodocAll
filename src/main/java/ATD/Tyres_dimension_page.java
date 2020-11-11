@@ -69,4 +69,6 @@ public class Tyres_dimension_page {
     SelenideElement labelOfPopUpNotifyAboutAvailability() {return $x("//label[@class='popup-available__label']");}
 
     SelenideElement btnCloseSentLetterPopUp() {return $x("//a[@class='close']");}
+
+    SelenideElement countOfProductInListing() {return $x("//div[@class='items_on_page']");}
 }

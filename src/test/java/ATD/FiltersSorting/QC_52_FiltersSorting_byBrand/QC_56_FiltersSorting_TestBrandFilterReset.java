@@ -28,7 +28,7 @@ public class QC_56_FiltersSorting_TestBrandFilterReset {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list,search4,category_car_list6");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list,search4,category_car_list6,search19,listing_chemicals");
     }
 
     @DataProvider(name = "routeOem", parallel = true)
@@ -38,12 +38,12 @@ public class QC_56_FiltersSorting_TestBrandFilterReset {
 
     @DataProvider(name = "routeAcc", parallel = true)
     Object[] dataProviderAcc() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "listing_instruments");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "listing_instruments,listing_instruments7");
     }
 
     @DataProvider(name = "routesLKW", parallel = true)
     Object[] dataProviderLKW() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_search,lkw_category_car_list,lkw_category_car_list2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_search,lkw_category_car_list,lkw_category_car_list2,lkw_search6");
     }
 
     @Test(dataProvider = "routes")
@@ -53,10 +53,10 @@ public class QC_56_FiltersSorting_TestBrandFilterReset {
     public void checkBrandFilterReset(String route) {
         openPage(route);
         listingPageLogic.clickFirstBrandNameInFilter()
-                    .waitUntilPreloaderDisappear()
-                    .clickFirstBrandNameInFilter()
-                    .waitUntilPreloaderDisappear()
-                    .checkUniqueBrandsOnListing(2, listingPageLogic.productTitleInListMode());
+                .waitUntilPreloaderDisappear()
+                .clickFirstBrandNameInFilter()
+                .waitUntilPreloaderDisappear()
+                .checkUniqueBrandsOnListing(2, listingPageLogic.productTitleInListMode());
     }
 
     @Test(dataProvider = "routesLKW")
@@ -93,10 +93,10 @@ public class QC_56_FiltersSorting_TestBrandFilterReset {
     public void checkBrandFilterResetOem(String route) {
         openPage(route);
         listingPageLogic.clickFirstBrandNameOemListing()
-                    .waitUntilPreloaderDisappear()
-                    .clickFirstBrandNameOemListing()
-                    .waitUntilPreloaderDisappear()
-                    .checkUniqueBrandsOnListing(2, listingPageLogic.productTitleInListMode());
+                .waitUntilPreloaderDisappear()
+                .clickFirstBrandNameOemListing()
+                .waitUntilPreloaderDisappear()
+                .checkUniqueBrandsOnListing(2, listingPageLogic.productTitleInListMode());
     }
 
     @AfterMethod
