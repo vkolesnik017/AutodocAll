@@ -734,6 +734,7 @@ public class Order_aws {
 
     @Step
     public Order_aws checkOrderHasTestStatus() {
+        statusOrder().waitUntil(visible, 5000);
         statusOrder().shouldHave(text(": Testbestellungen"));
         return this;
     }

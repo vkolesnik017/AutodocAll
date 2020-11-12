@@ -22,4 +22,6 @@ public class Tyres_feature_page {
     SelenideElement headLineOfLinkingBlock() {return $x("//div[@class='most-popular__heading']");}
 
     ElementsCollection visibleBtnMoreOfLinkingBlock() {return $$x("//div[@class='most-popular']//span[@class='link']").filter(visible);}
+
+    SelenideElement mainHeadline() {return $x("//h1[@class='title-reifen']");}
 }

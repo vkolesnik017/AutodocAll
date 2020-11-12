@@ -15,11 +15,15 @@ public class Tyres_feature_page_Logic extends Tyres_feature_page {
 
     @Step("checkingAbsenceOfCurrentLinkInLinkungBlock. Tyres_feature_page")
     public Tyres_feature_page_Logic checkingAbsenceOfCurrentLinkInLinkingBlock(String url) {
+        mainHeadline().shouldBe(visible);
+        linkingBlock().scrollIntoView("{block: \"center\"}");
+        presenceOfTitleLinkingBlock();
+        presenceOfTitleLinkingBlock();
         List<String> urlsOfLinkingBlock = btnMoreOfLinkingBlock().stream().map(n -> getAttributeFromUnVisibleElement(n, "url")).collect(Collectors.toList());
         Assert.assertFalse(urlsOfLinkingBlock.contains(url));
+        presenceOfTitleLinkingBlock();
         return this;
     }
-
 
     @Step("presence of linking block. Tyres_feature_page")
     public Tyres_feature_page_Logic presenceOfLinkingBlock() {
@@ -164,11 +168,14 @@ public class Tyres_feature_page_Logic extends Tyres_feature_page {
         for (int i = 0; i < btnPaginatorOfLinkingBlock().size() - 1; i++) {
             linkingBlock().scrollIntoView("{block: \"center\"}");
             presenceOfTitleLinkingBlock();
+            presenceOfTitleLinkingBlock();
             String titleOfLastLinkingBlock = visibleTitleOfLinkingBlocks().get(3).getText();
             btnPaginatorOfLinkingBlock().get(i + 1).click();
             presenceOfTitleLinkingBlock();
+            presenceOfTitleLinkingBlock();
             visibleTitleOfLinkingBlocks().get(3).shouldNotHave(exactText(titleOfLastLinkingBlock));
             visibleTitleOfLinkingBlocks().get(3).hover();
+            presenceOfTitleLinkingBlock();
             String currentUrl = visibleBtnMoreOfLinkingBlock().get(0).getAttribute("url");
             visibleTitleOfLinkingBlocks().get(3).click();
             new Tyres_feature_page_Logic().checkingAbsenceOfCurrentLinkInLinkingBlock(currentUrl);

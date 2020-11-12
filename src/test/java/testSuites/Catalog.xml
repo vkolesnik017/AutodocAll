@@ -37,6 +37,13 @@
         <classes>
             <!--<class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_2632_PrioritizationParentsOnMainPageBrand"/>
             <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_2637_OpenAllParentsSidebarCatalog"/>-->
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_2580_PresenceBlockWithEngineTypesAndTransitionByThem"/>
+        </classes>
+    </test>
+
+    <test name="QC_2684_MainPhotoCategories">
+        <classes>
+            <class name="ATD.Catalog.QC_2684_MainPhotoCategories.QC_2685_MainPhotoChildCategoriesOnRutCategoriesBrandMark"/>
         </classes>
     </test>
 

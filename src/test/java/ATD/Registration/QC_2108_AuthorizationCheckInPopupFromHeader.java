@@ -1,4 +1,4 @@
-package ATD.StaticPage;
+package ATD.Registration;
 
 import ATD.Main_page_Logic;
 import Common.SetUp;
@@ -9,12 +9,13 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import static ATD.CommonMethods.openPage;
+import static ATD.CommonMethods.*;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1091_StaticPage_austauschartikel {
+public class QC_2108_AuthorizationCheckInPopupFromHeader {
+
+    private String mail = "QC_2108_autotest@mailinator.com";
 
     @BeforeClass
     void setUp() {
@@ -26,22 +27,14 @@ public class QC_1091_StaticPage_austauschartikel {
         return new SetUp("ATD").setUpShop("prod", "DE");
     }
 
+    @Owner(value = "Sergey_QA")
     @Test(dataProvider = "route")
-    @Owner(value = "Chelombitko")
     @Flaky
-    @Description(value = "Test checks elements on austauschartikel page")
-    public void checkAustauschartikelPageElements(String route) throws Exception {
+    @Description(value = "Checking Authorization (login) In Popup From Header")
+    public void testAuthorizationCheckInPopupFromHeader(String route) {
         openPage(route);
-        new Main_page_Logic().clickAustauschartikel()
-                .checkItemsTopPage()
-                .checkInstructionBlock()
-                .checkReturnPolicyBlock()
-                .checkCategoriesPfandBlock()
-                .checkRequirementForPartsBlock()
-                .selectsRandomCategory()
-                .getStatusImageCod()
-                .checkTitleAndDDescriptionOfCategory()
-                .checkDepositRefundForm();
+        new Main_page_Logic().clickCheckboxRememberMeFromLoginPopup(mail);
+        waitingWhileLinkBecomeExpected("https://www.autodoc.de/profile/services/plus-service");
     }
 
     @AfterMethod
