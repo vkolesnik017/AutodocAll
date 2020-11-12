@@ -188,4 +188,22 @@ public class Tyre_form_page_Logic extends Tyre_form_page {
         return this;
     }
 
+    @Step("select  any one visible brands. Tyre_form_page")
+    public Tyre_form_page_Logic selectAnyOneBrand(int positionOfBrand) {
+        visibleAllBrands().get(positionOfBrand).click();
+        anySelectedOneBrand().shouldBe(visible);
+        return this;
+    }
+
+    @Step("get title of selected brand. Tyre_form_page")
+    public String getTitleOfSelectedBrand() {
+        return anySelectedBrand().shouldBe(visible).getAttribute("data-value");
+    }
+
+    @Step("presence of expected selected brand. Tyre_form_page")
+    public Tyre_form_page_Logic presenceOfExpectedSelectedBrand(String titleOfBrand) {
+        anySelectedBrand().shouldBe(visible).shouldHave(attribute("data-value", titleOfBrand));
+        return this;
+    }
+
 }

@@ -52,6 +52,7 @@ public class Tyres_dimension_page_Logic extends Tyres_dimension_page {
         btnCloseSentLetterPopUp().shouldBe(visible).click();
         return this;
     }
+
     @Step("presence of product listing block. Tyres_dimension_page")
     public Tyres_dimension_page_Logic presenceOfListingBlock() {
         productListBlock().shouldBe(visible);
@@ -135,4 +136,34 @@ public class Tyres_dimension_page_Logic extends Tyres_dimension_page {
         return this;
     }
 
+    @Step("get total count of product in listing. Tyres_dimension_page")
+    public String getTotalCountOfProductInListing() {
+        return countOfProductInListing().shouldBe(visible).getText().replaceAll("(\\d)(\\s.+)", "$1");
+    }
+
+
+    @Step("compare total count of product. Tyres_dimension_page")
+    public Tyres_dimension_page_Logic compareTotalCountOfProduct(String countOfProduct) {
+        String currentTotalCountOfProduct = countOfProductInListing().shouldBe(visible).getText().replaceAll("(\\d)(\\s.+)", "$1");
+        Assert.assertEquals(currentTotalCountOfProduct, countOfProduct);
+        return this;
+    }
+
+    @Step("click on next paginator. Tyres_dimension_page")
+    public Tyres_dimension_page_Logic clickOnNextPaginator() {
+        btnNextPaginator().shouldBe(visible).click();
+        return this;
+    }
+
+
+    @Step("get title of selected brand. Tyres_dimension_page")
+    public String getTitleOfSelectedBrand() {
+        return anySelectedBrand().shouldBe(visible).getAttribute("data-value");
+    }
+
+    @Step("presence of expected selected brand. Tyres_dimension_page")
+    public Tyres_dimension_page_Logic presenceOfExpectedSelectedBrand(String titleOfBrand) {
+        anySelectedBrand().shouldBe(visible).shouldHave(attribute("data-value", titleOfBrand));
+        return this;
+    }
 }

@@ -141,4 +141,16 @@ public class Listing_instruments_page_Logic extends Listing_instruments_page {
         return this;
     }
 
+
+    @Step("check Headline of generics block in sidebar. Listing_instruments_page")
+    public Listing_instruments_page_Logic checkHeadlineOfGenericsBlockInSideBar(String headline) {
+        headlineOfGenericsBlockInSidebar().shouldBe(visible).shouldHave(text(headline));
+        return this;
+    }
+
+    @Step("check Headline of generics block . Listing_instruments_page")
+    public Listing_instruments_page_Logic checkHeadlineOfGenericsBlock(String headline) {
+        headlineOfGenericsBlock().shouldBe(visible).shouldHave(text(headline));
+        return this;
+    }
 }

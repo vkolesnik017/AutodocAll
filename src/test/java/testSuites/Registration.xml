@@ -12,6 +12,7 @@
             <class name="ATD.Registration.QC_1637_RegistrationFromBasket"/>
             <!--<class name="ATD.Registration.QC_1639_RecoveryPasswordFromPopupInHeader"/>
             <class name="ATD.Registration.QC_1642_RecoveryPasswordFromCart"/>-->
+            <class name="ATD.Registration.QC_2108_AuthorizationCheckInPopupFromHeader"/>
         </classes>
     </test>
 </suite>
