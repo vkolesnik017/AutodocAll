@@ -370,4 +370,37 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
         return this;
     }
 
+    @Step("select visible brand in brands block. Category_car_list_page")
+    public Category_car_list_page_Logic selectVisibleBrandInBlock(String idOfBrand) {
+        brandsFilterBlock().shouldBe(visible);
+        while (!visibleBrandsLinkInSideBar(idOfBrand).isDisplayed()) {
+            forwardLinkAtBrandsFilter().click();
+        }
+        visibleBrandsLinkInSideBar(idOfBrand).shouldBe(visible).click();
+        appearsOfLoader();
+        return this;
+    }
+
+    @Step("checkListingWithVisibleSelectedBrands(selectedBrands). Category_car_list_page")
+    public Category_car_list_page_Logic checkListingWithVisibleSelectedBrands(List<String> selectedBrands) {
+        Set<String> listOfBrands = new HashSet<>();
+        addProductToSetList(listOfBrands);
+        while (forwardNextPaginator().isDisplayed()) {
+            forwardNextPaginator().click();
+            addProductToSetList(listOfBrands);
+        }
+        List<String> brandsFromListing = new ArrayList<>(listOfBrands);
+        Collections.sort(brandsFromListing);
+        Collections.sort(selectedBrands);
+        Assert.assertEquals(brandsFromListing, selectedBrands);
+        return this;
+    }
+
+    @Step("select visible brand in brands block. Category_car_list_page")
+    public Category_car_list_page_Logic addProductToSetList(Set<String> list) {
+        for (int i = 0; i < allBtnAddToBasket().size(); i++) {
+            list.add(allBtnAddToBasket().get(i).attr("data-brand-name"));
+        }
+        return this;
+    }
 }
