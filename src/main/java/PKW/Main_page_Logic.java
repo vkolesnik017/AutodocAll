@@ -7,8 +7,7 @@ import org.testng.Assert;
 import java.sql.SQLException;
 import static PKW.CommonMethods.*;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.back;
-import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Main_page_Logic extends Main_page {
 
@@ -67,6 +66,37 @@ public class Main_page_Logic extends Main_page {
         typeSelectorInVerticalCarSelector().selectOptionByValue(motor);
         btnSearchOfSelector().click();
         return page(Maker_car_list_page_Logic.class);
+    }
+
+
+    @Step("Choose brand in vertical car selector. Main_page")
+    public Main_page_Logic chooseBrandInVerticalCarSelector(String brandValue) {
+        brandSelectorInVerticalCarSelector().selectOptionByValue(brandValue);
+        return this;
+    }
+
+    @Step("Choose model in vertical car selector. Main_page")
+    public Main_page_Logic chooseModelInVerticalCarSelector(String modelNumberValue) {
+        modelSelectorInVerticalCarSelector().selectOptionByValue(modelNumberValue);
+        return this;
+    }
+
+    @Step("Choose type in vertical car selector. Main_page")
+    public Main_page_Logic chooseTypeInVerticalCarSelector(String typeNumberValue) {
+        typeSelectorInVerticalCarSelector().selectOptionByValue(typeNumberValue);
+        return this;
+    }
+
+    @Step("Click search button in vertical car selector when SELECTED all fields, for redirect to catalog page. Main_page")
+    public Catalog_page_Logic clickSearchBtnInVerticalSelectorWhenSelectedAllFields() {
+        btnSearchOfSelector().click();
+        return page(Catalog_page_Logic.class);
+    }
+
+    @Step("check error tooltip for mark in selector. Main_page")
+    public Main_page_Logic checkErrorTooltipForMarkInSelector() {
+        selectorErrorTooltipForMark().shouldBe(visible).shouldHave(exactText("Bitte geben Sie den Hersteller, das Modell und den Typ Ihres Autos an"));
+        return this;
     }
 
     // GDPR footer
