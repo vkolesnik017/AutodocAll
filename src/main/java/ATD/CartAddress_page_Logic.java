@@ -292,7 +292,13 @@ public class CartAddress_page_Logic extends CartAddress_page {
         if (country.equals("LD")) country = "LU";
         countryInSelectorForShipping(country).shouldBe(visible).click();
         String nameCountry = countryInSelectorForShipping(country).getText();
-        return nameCountry;
+        String actualNameCountry;
+        if (nameCountry.equals("Portugal ")) {
+            actualNameCountry = nameCountry.replaceAll(" ", "");
+        } else {
+            actualNameCountry = nameCountry;
+        }
+        return actualNameCountry;
     }
 
     @Step("Choosing delivery country {country} for billing. CartAddress_page")

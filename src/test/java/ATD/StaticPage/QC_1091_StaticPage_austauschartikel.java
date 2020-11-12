@@ -38,7 +38,7 @@ public class QC_1091_StaticPage_austauschartikel {
                 .checkReturnPolicyBlock()
                 .checkCategoriesPfandBlock()
                 .checkRequirementForPartsBlock()
-                .SelectsRandomCategory()
+                .selectsRandomCategory()
                 .getStatusImageCod()
                 .checkTitleAndDDescriptionOfCategory()
                 .checkDepositRefundForm();

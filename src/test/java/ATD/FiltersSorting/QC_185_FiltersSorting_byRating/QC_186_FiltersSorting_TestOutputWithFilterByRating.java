@@ -27,7 +27,7 @@ public class QC_186_FiltersSorting_TestOutputWithFilterByRating {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list54");
     }
 
     @DataProvider(name = "routesLKW", parallel = true)

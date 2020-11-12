@@ -28,7 +28,7 @@ public class QC_53_FiltersSorting_TestBrandFilterInTileMode {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list,search2,search19");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list,search2,search19,listing_chemicals,listing_instruments7");
     }
 
     @DataProvider(name = "routesLKW", parallel = true)

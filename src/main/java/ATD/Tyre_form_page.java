@@ -94,4 +94,8 @@ public class Tyre_form_page {
     SelenideElement closePopUpSelector() {
         return $x("//a[@class='back']");
     }
+
+    ElementsCollection visibleAllBrands() {return $$x("//li[@class='js-filter-item ga-click-criteria-filter']");}
+
+    SelenideElement anySelectedOneBrand() {return $x("//li[@class='js-filter-item ga-click-criteria-filter active']");}
 }

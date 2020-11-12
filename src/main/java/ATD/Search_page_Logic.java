@@ -688,6 +688,25 @@ public class Search_page_Logic extends Search_page {
         return this;
     }
 
+    @Step("check work of slider in generic block. Search_page")
+    public Search_page_Logic checkWorkOfSliderInGenericBlock() {
+        genericBlock().shouldBe(visible);
+        String firstGeneric = visibleTitleOfGenerics().get(0).getText();
+        rightPaginatorOfGenericBlock().shouldBe(visible).click();
+        presenceVisibleTittleOfGeneric();
+        visibleTitleOfGenerics().get(0).shouldNotHave(exactText(firstGeneric));
+        leftPaginatorOfGenericBlock().shouldBe(visible).click();
+        presenceVisibleTittleOfGeneric();
+        visibleTitleOfGenerics().get(0).shouldHave(exactText(firstGeneric));
+        return this;
+    }
 
+    @Step("presence of visible tittle Of generic. Search_page")
+    public Search_page_Logic presenceVisibleTittleOfGeneric() {
+        for (int i = 0; i < visibleTitleOfGenerics().size() - 1; i++) {
+            visibleTitleOfGenerics().get(i).shouldBe(visible);
+        }
+        return this;
+    }
 }
 
