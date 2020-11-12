@@ -90,6 +90,10 @@ public class Main_page {
         return $x("//div[@id='selector-wrapper']//div[@class='mainblock-search__button']/a");
     }
 
+    SelenideElement selectorErrorTooltipForMark() {
+        return $x("//div[@id='selector-error-tooltip']/div");
+    }
+
     //Selector
     protected SelenideElement makerNameSelected() {
         return $x("//select[@id='form_maker_id']//option[@selected]");
