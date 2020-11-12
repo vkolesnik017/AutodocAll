@@ -10,7 +10,7 @@
         <classes>
             <class name="ATD.Catalog_Brands.QC_33_BrandPage.QC_2628_ElementsOfBrandsBlockInMainPage"/>
             <class name="ATD.Catalog_Brands.QC_33_BrandPage.QC_2629_TransitionToBrandPage"/>
-            <class name="ATD.Catalog_Brands.QC_33_BrandPage.QC_2630_MatchAllHeadlinesAndImages"/>
+           <!-- <class name="ATD.Catalog_Brands.QC_33_BrandPage.QC_2630_MatchAllHeadlinesAndImages"/>-->
             <class name="ATD.Catalog_Brands.QC_33_BrandPage.QC_2631_BrandsBlockAtBrandMainPage"/>
         </classes>
     </test>
