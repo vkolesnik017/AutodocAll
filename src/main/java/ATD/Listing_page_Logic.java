@@ -692,21 +692,21 @@ public class Listing_page_Logic extends Listing_page {
         return this;
     }
 
-    @Step("Check text in element. Listing_page")
+    @Step("Check text {expectedText} in element {element}. Listing_page")
     public Listing_page_Logic checkTextInElement(SelenideElement element, String expectedText) {
         element.shouldHave(text(expectedText));
         return this;
     }
 
-    @Step("Check visibility of element. Listing_page")
+    @Step("Check visibility of element {element}. Listing_page")
     public Listing_page_Logic checkVisibilityOfElement(SelenideElement element) {
         element.shouldBe(visible);
         return this;
     }
 
-    @Step("Check element is not visibile. Listing_page")
+    @Step("Check element is not visibile {element}. Listing_page")
     public Listing_page_Logic checkElementIsNotVisible(SelenideElement element) {
-        sleep(3000);
+        sleep(5000);
         element.shouldNotBe(visible);
         return this;
     }
