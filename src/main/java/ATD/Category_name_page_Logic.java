@@ -14,6 +14,7 @@ import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.CollectionCondition.sizeLessThanOrEqual;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverRunner.url;
 
 // Не создавался класс Category_name_page, так как в нём пока нет надобности
 
@@ -327,6 +328,35 @@ public class Category_name_page_Logic extends Category_name_page {
         }
 
         return this;
+    }
+
+    @Step("Click on brand from brands block. Category_name_page")
+    public Category_name_brand_page_Logic clickOnBrandFromBrandsBlock() {
+        brandImgFromBrandsBlock().shouldBe(visible).click();
+        return page(Category_name_brand_page_Logic.class);
+    }
+
+    @Step("Get id brand from brands block. Category_name_page")
+    public String getIdBrandsFromBrandsBlock() {
+        String idBrand =  brandImgFromBrandsBlock().getAttribute("src").replaceAll("[\\s\\S]*\\/", "");
+        String cutIdBrand = idBrand.replace(idBrand.substring(idBrand.indexOf(".png")), "");
+        return cutIdBrand;
+    }
+
+    @Step("Get url brand from brands block. Category_name_page")
+    public String getUrlBrandsFromBrandsBlock() {
+        return hrefBrandFromBrandsBlock().getAttribute("href");
+    }
+
+    @Step("Get id category from url. Category_name_page")
+    public String getIdCategoryFromUrl() {
+        return url().replaceAll("\\D+", "");
+    }
+
+    @Step("Concat id category and id brand from brands block. Category_name_page")
+    public String concatIdCategoryAndBrand() {
+        String idCategoryAndBrand = getIdCategoryFromUrl() + "_" + getIdBrandsFromBrandsBlock();
+        return idCategoryAndBrand;
     }
 
 }

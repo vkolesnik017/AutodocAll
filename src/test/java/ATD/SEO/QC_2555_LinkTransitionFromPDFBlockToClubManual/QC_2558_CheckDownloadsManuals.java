@@ -1,6 +1,6 @@
-package ATD.LKW_trucks.QC_10_MainHeadlines;
+package ATD.SEO.QC_2555_LinkTransitionFromPDFBlockToClubManual;
 
-import ATD.LKW_maker_car_list_Logic;
+import ATD.Group_list_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -10,35 +10,36 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_16_VisibilityOfMarkModelMotorInHeadLine {
+public class QC_2558_CheckDownloadsManuals {
+
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "routes", parallel = true)
+    @DataProvider(name = "routes", parallel = false)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_maker_car_list");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_maker,category_group,category_group_fuel4,category_group_year4,group_list,model_maker_list");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "Kolesnik")
-    @Description(value = "Test checks visibility of mark, model and motor in headline")
-    public void testChecksVisibilityOfMarkModelMotorInHeadLine(String route) {
+    @Owner(value = "LavrynenkoOlha")
+    @Description(value = "Test checks downloads of the manuals")
+    public void testChecksElementsInPDFManualBlock(String route) throws IOException {
         openPage(route);
-        new LKW_maker_car_list_Logic().visibilityOfMakrModelMotorInHeadLine();
-
+        new Group_list_page_Logic().checkDownloadsOfManuals();
     }
 
     @AfterMethod
-    public void close() {
+    private void close() {
         closeWebDriver();
     }
 }

@@ -155,7 +155,7 @@ public class Versand_static_page_Logic extends Versand_static_page {
         downloadPdfButton().shouldHave(attribute("href", "https://www.pkwteile.de/pdf/versand"));
         downloadAcrobatButton().click();
         switchTo().window(1);
-        checkingContainsUrl("de/reader");
+        checkingContainsUrl("reader");
         closeWindow();
         switchTo().window(0);
         return this;

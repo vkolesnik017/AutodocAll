@@ -121,4 +121,12 @@ public class Listing_instruments_page {
         return $x("//div[@class='cart-items-block ']");
     }
 
+    SelenideElement headlineOfGenericsBlockInSidebar() {return $x("//div[@class='filter-disk sidebar_block js-filter-wrapper js-filter-generic  criteria-filter-block-js  js-filter-50001']/div[1]");}
+
+    SelenideElement headlineOfGenericsBlock() {return $x("//div[@class='filter-generics-tecdoc__title']");}
+
+    ElementsCollection selectedBrands() {return $$x("//*[self::li[@class='active slick-slide slick-current slick-active'] or self::li[@class='active slick-slide slick-active']]//label/img");}
+
+    ElementsCollection allBtnAddToBasket() {return $$x("//div[@class='add_info']/div[2]");}
+
 }
