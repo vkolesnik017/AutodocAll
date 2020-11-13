@@ -103,7 +103,6 @@
             <class name="ATD.LKW_trucks.QC_10_MainHeadlines.QC_11_AvailabilityOfHeadLineInErrorPage"/>
             <class name="ATD.LKW_trucks.QC_10_MainHeadlines.QC_12_VisibilityOfImageLogoBrandInHeadLine"/>
             <class name="ATD.LKW_trucks.QC_10_MainHeadlines.QC_13_VisibilityOfImageTrackInHeadline"/>
-            <class name="ATD.LKW_trucks.QC_10_MainHeadlines.QC_16_VisibilityOfMarkModelMotorInHeadLine"/>
             <class name="ATD.LKW_trucks.QC_10_MainHeadlines.QC_17_AvailabilityOfLinkOnPopUpWithSelectedCar"/>
             <class name="ATD.LKW_trucks.QC_10_MainHeadlines.QC_1702_AvailabilityOfHeadLineInCatalog"/>
             <class name="ATD.LKW_trucks.QC_10_MainHeadlines.QC_1703_AvailabilityOfHeadlineInTecDocCatalogAndModelCatalog"/>
