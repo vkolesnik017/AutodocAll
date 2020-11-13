@@ -215,4 +215,55 @@ public class Moto_Catalog_model_page_Logic extends Moto_Catalog_model_page {
         return this;
     }
 
+    @Step("check presence model and engines type block. Moto_Catalog_model_page")
+    public Moto_Catalog_model_page_Logic checkPresenceModelAndEnginesTypeBlock() {
+        modelAndEnginesTypeBlock().scrollIntoView(false);
+        modelAndEnginesTypeBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("click on tooltip and open popup from model and engines type block. Moto_Catalog_model_page")
+    public Moto_Catalog_model_page_Logic clickOnTooltipFromModelAndEnginesTypeBlock() {
+        tooltipFromEnginesBlock().shouldBe(visible).click();
+        tooltipPopupInModelAndEnginesBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("get name model from title popup in model and engines type block. Moto_Catalog_model_page")
+    public String getTextFromTitlePopupInEnginesTypeBlock() {
+        return titleFromTooltipPopupInEnginesBlock().shouldBe(visible).getText();
+    }
+
+    @Step("click btn more or less from model and engines type block. Moto_Catalog_model_page")
+    public Moto_Catalog_model_page_Logic clickBtnPlusFromModelAndEnginesTypeBlock() {
+        if (btnMoreLessInEnginesBlock().isDisplayed()) {
+            deployedBlockInMotoModelInEnginesBlock().shouldNotBe(visible);
+            btnMoreLessInEnginesBlock().shouldBe(visible).click();
+            deployedBlockInMotoModelInEnginesBlock().shouldBe(visible);
+        }
+        return this;
+    }
+
+    @Step("checks the conformity of the vehicle in tooltip from model and engine type block. Moto_Catalog_model_page")
+    public Moto_Catalog_model_page_Logic checkConformityVehicleInTooltipFromModelAndEngineBlock() {
+        String vehicleFromUrl =  getBrandOfMotoFromUrl().replaceAll("-", " ").toLowerCase();
+        String vehicleFromTooltip =  getTextFromTitlePopupInEnginesTypeBlock().toLowerCase();
+        Assert.assertTrue(vehicleFromTooltip.contains(vehicleFromUrl));
+       return this;
+    }
+
+    @Step("click first position from model and engine type block. Moto_Catalog_model_page")
+    public Moto_Catalog_page_Logic clickFirstPositionFromModelAndEngineBlock() {
+        firstMotoModelInEnginesBlock().click();
+        return page(Moto_Catalog_page_Logic.class);
+    }
+
+    @Step("get data without vehicle brand from first position in model and engine type block. Moto_Catalog_model_page")
+    public String getDataFromFirstPositionInModelAndEngineBlock() {
+        return firstMotoModelInEnginesBlock().shouldBe(visible).getText().replaceAll("^.*?\\s", "").replaceAll(" ", "").toLowerCase();
+
+    }
+
+
+
 }

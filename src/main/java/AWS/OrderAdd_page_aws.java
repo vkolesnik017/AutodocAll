@@ -93,6 +93,10 @@ public class OrderAdd_page_aws {
         return $x("//select[@id='form_Order[delivery_country_id]']");
     }
 
+    private SelenideElement choosesCountryInDeliveryAddress(String country) {
+        return $x("//select[@id='form_Order[delivery_country_id]']/option[contains(text(),'" + country + "')]");
+    }
+
     private SelenideElement fieldPhoneInDeliveryAddress() {
         return $x("//input[@id='Order[lTelefon]']");
     }
@@ -410,5 +414,12 @@ public class OrderAdd_page_aws {
     public OrderAdd_page_aws checkPresencePopupWithDeliveryError() {
         popUpWithDeliveryError().shouldBe(visible);
         return this;
+    }
+
+    @Step("Choosing delivery country {country} for sipping and get name country. OrderAdd_page_aws")
+    public String chooseDeliveryCountryAndGetNameCountry(String country) {
+        choosesCountryInDeliveryAddress(country).shouldBe(visible).click();
+        String nameCountry = choosesCountryInDeliveryAddress(country).getText();
+        return nameCountry;
     }
 }

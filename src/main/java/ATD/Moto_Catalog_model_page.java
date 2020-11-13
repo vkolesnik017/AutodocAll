@@ -79,4 +79,36 @@ public class Moto_Catalog_model_page {
 
     SelenideElement secondLevelBlock() {return $x("//li[@class='active']/div[2]");}
 
+    SelenideElement modelAndEnginesTypeBlock() {
+        return $x("//div[@class='car_group']");
+    }
+
+    SelenideElement tooltipFromEnginesBlock() {
+        return $x("//div[@class='col_d'][1]//div[@class='expand-item']/span[@class='link']/span[@class='title-icon-popup']");
+    }
+
+    SelenideElement btnMoreLessInEnginesBlock() {
+        return $x("//main[@id='content']//div[1]/div[2]/div[1]/div[1]/span[1]");
+    }
+
+    SelenideElement titleFromTooltipPopupInEnginesBlock() {
+        return $x("//div[@class='popup_atd_car' and contains(@style,'display: block;')]/div/span");
+    }
+
+    SelenideElement firstMotoModelInEnginesBlock() {
+        return $x("//div[@class='col_d'][1]//div[@class='expand-item']/span[@class='link']");
+    }
+
+    SelenideElement deployedBlockInMotoModelInEnginesBlock() {
+        return $x("//div[@class='expand open']");
+    }
+
+
+
+    SelenideElement tooltipPopupInModelAndEnginesBlock() {
+        return $x("//div[@class='popup_atd_car' and contains(@style,'display: block;')]");
+    }
+
+
+
 }

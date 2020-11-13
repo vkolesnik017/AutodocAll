@@ -2,6 +2,10 @@ package ATD;
 
 import io.qameta.allure.Step;
 import org.testng.Assert;
+
+import java.util.*;
+import java.util.stream.Collectors;
+
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.page;
 
@@ -25,7 +29,7 @@ public class Listing_instruments_page_Logic extends Listing_instruments_page {
     }
 
     @Step("Checking work buttons in pagination. Listing_instruments_page")
-    public Listing_instruments_page_Logic checkingWorkBtnInPagination () {
+    public Listing_instruments_page_Logic checkingWorkBtnInPagination() {
         btnSecondPageInPagination().click();
         btnReturnOnFirstPageInPagination().shouldBe(visible);
         btnPreviousPageInPagination().shouldBe(visible);
@@ -56,7 +60,7 @@ public class Listing_instruments_page_Logic extends Listing_instruments_page {
     }
 
     @Step("Checking change display of products on the list view and then grid. Listing_instruments_page")
-    public  Listing_instruments_page_Logic checkingChangeDisplayProductsAsListAndGrid() {
+    public Listing_instruments_page_Logic checkingChangeDisplayProductsAsListAndGrid() {
         blockChangePositionProductsOnListOrGrid().shouldBe(visible);
         listingProductsDisplayedAsList().shouldBe(visible);
         btnChangePositionProductsAsGrid().click();
@@ -122,7 +126,7 @@ public class Listing_instruments_page_Logic extends Listing_instruments_page {
     @Step("Click button add to basket first product. Listing_instruments_page")
     public Listing_instruments_page_Logic clickBtnAddToBasketFirstProduct() {
         redBtnAddToBasket().click();
-        popupBasketAddedProducts().waitUntil(attribute("style","visibility: visible; opacity: 1;"), 10000);
+        popupBasketAddedProducts().waitUntil(attribute("style", "visibility: visible; opacity: 1;"), 10000);
         return this;
     }
 
@@ -135,10 +139,42 @@ public class Listing_instruments_page_Logic extends Listing_instruments_page {
     @Step("Checking work quantity counter on decrease and increase products. Listing_instruments_page")
     public Listing_instruments_page_Logic checkingWorkQuantityCounterOnDecreaseAndIncrease() {
         new CommonMethods().checkingCounterIncrease(3, counterValueInQuantityCounter(), btnPlusInQuantityCounter());
-        new CommonMethods().checkingCounterDecrease(3, counterValueInQuantityCounter(), btnMinusInQuantityCounter() );
+        new CommonMethods().checkingCounterDecrease(3, counterValueInQuantityCounter(), btnMinusInQuantityCounter());
         btnMinusInQuantityCounter().click();
         counterValueInQuantityCounter().shouldHave(attribute("value", "1"));
         return this;
     }
 
+
+    @Step("check Headline of generics block in sidebar. Listing_instruments_page")
+    public Listing_instruments_page_Logic checkHeadlineOfGenericsBlockInSideBar(String headline) {
+        headlineOfGenericsBlockInSidebar().shouldBe(visible).shouldHave(text(headline));
+        return this;
+    }
+
+    @Step("check Headline of generics block . Listing_instruments_page")
+    public Listing_instruments_page_Logic checkHeadlineOfGenericsBlock(String headline) {
+        headlineOfGenericsBlock().shouldBe(visible).shouldHave(text(headline));
+        return this;
+    }
+
+    @Step("get Title Of Selected Brands. Listing_instruments_page")
+    public List<String> getTitleOfSelectedBrands() {
+        List<String> titleOfBrands = selectedBrands().stream().map(n -> n.getAttribute("alt")).collect(Collectors.toList());
+        return titleOfBrands;
+    }
+
+
+    @Step("check listing with selected brands. Listing_instruments_page")
+    public Listing_instruments_page_Logic checkListingWithSelectedBrands(List<String> listOfActiveBrands) {
+        Set<String> titleOfBrandsFromBasketButton = new HashSet<>();
+        for (int i = 0; i < allBtnAddToBasket().size(); i++) {
+            titleOfBrandsFromBasketButton.add(allBtnAddToBasket().get(i).attr("data-brand-name"));
+        }
+        List<String> brandsFromListing = new ArrayList<>(titleOfBrandsFromBasketButton);
+        Collections.sort(brandsFromListing);
+        Collections.sort(listOfActiveBrands);
+        Assert.assertEquals(brandsFromListing, listOfActiveBrands);
+        return this;
+    }
 }

@@ -125,6 +125,18 @@ class Category_car_list_page {
         return $x("//div[contains(@class,'block categories blue')][1]//span");
     }
 
+    SelenideElement genericBlock() {return $x("//div[@class='filter-generics-tecdoc js-filter-generic js-filter-50001 js-filter-wrapper criteria-filter-block-js']");}
 
+    ElementsCollection visibleTitleOfGenerics() {return $$x("//div[@class='filter-generics-tecdoc__item-title']").filter(visible);}
 
-}
+    SelenideElement rightPaginatorOfGenericBlock() {return $x("//span[@class='next slick-arrow']");}
+
+    SelenideElement leftPaginatorOfGenericBlock() {return $x("//span[@class='prev slick-arrow']");}
+
+    SelenideElement btnSearchOfSelectedSelector() {return $x("//a[@class='submit search_button ripple-out']");}
+
+    SelenideElement visibleBrandsLinkInSideBar(String idOfBrand) {return $x("//li[@class='slick-slide slick-active']//label[@for='cb-brand-"+idOfBrand+"']");}
+
+    ElementsCollection allBtnAddToBasket() {return $$x("//div[@class='add_info']/div[2]");}
+
+    }
