@@ -4,6 +4,9 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import static ATD.CommonMethods.openPage;
 import static Common.CommonMethods.getExpectedCalendarData;
 import static com.codeborne.selenide.Condition.*;
@@ -35,7 +38,19 @@ public class SearchOrders_page_aws {
     }
 
     private ElementsCollection orderLine() {
-        return $$x("//td[@class='w-20 select-row']/..");
+        return $$x("//td[@class='w-20 select-row']//..//a[@class='printBillPopup']");
+    }
+
+    private SelenideElement calendarDataFromBtn() {
+        return $x("//div[@id='dp_start']//span[@class='input-group-addon']/i");
+    }
+
+    private SelenideElement prevMonthBtmInCalendarDataFrom() {
+        return $x("(//table[@class=' table-condensed']//i[@class='glyphicon glyphicon-arrow-left'])[1]");
+    }
+
+    private SelenideElement dayInCalendarDataFrom(String expectedDay) {
+        return $x("(//div[@class='datepicker-days']//tbody//tr//td[@class='day'][text()='" + expectedDay + "'])[1]");
     }
 
 
@@ -51,6 +66,15 @@ public class SearchOrders_page_aws {
         String data = getExpectedCalendarData("yyyy-MM-dd", minusMonths, minusDays);
         inputDateFrom().setValue(data);
         inputDataTo().setValue(data);
+        return this;
+    }
+
+    @Step("Select a date from, for a month and an expected day {expectedDay} earlier than the current one. SearchOrders_page_aws")
+    public SearchOrders_page_aws choosesDateFromOneMonthAndExpectedDayEarlierThenCurrentOne(int expectedDay) {
+        String day = DateTimeFormatter.ofPattern("dd").format(LocalDateTime.now().minusDays(expectedDay));
+        calendarDataFromBtn().shouldBe(visible).click();
+        prevMonthBtmInCalendarDataFrom().shouldBe(visible).click();
+        dayInCalendarDataFrom(day).shouldBe(visible).click();
         return this;
     }
 
@@ -79,11 +103,11 @@ public class SearchOrders_page_aws {
         if (orderLine().size() > 0) {
             for (int i = 0; i < orderLine().size(); i++) {
                 if (!orderLine().get(i).$x(".//div[@data-hint='Test']").isDisplayed()){
-                    int sum = Integer.parseInt(orderLine().get(i).$x("./..//a[@class='printBillPopup']/../..//a[@class='order-grandtotal']").getText());
+                    int sum = Integer.parseInt(orderLine().get(i).$x("./../..//a[@class='order-grandtotal']").getText());
                     if (sum <= 10) {
-                        String id = orderLine().get(i).$x("./..//a[@class='printBillPopup']/../..//a[@class='order_link']").getText();
+                        String id = orderLine().get(i).$x("./../..//a[@class='order_link']").getText();
                         System.out.println(id);
-                        orderLine().get(i).$x("./..//a[@class='printBillPopup']/../..//a[@class='order_link']").click();
+                        orderLine().get(i).$x("./../..//a[@class='order_link']").click();
                         break;
                     }
                 }
