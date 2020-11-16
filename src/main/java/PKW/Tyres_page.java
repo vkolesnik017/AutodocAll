@@ -22,4 +22,18 @@ public class Tyres_page {
         return $x("//select[@id='form_car_id']");
     }
 
+    SelenideElement relinkBlock() {
+        return $x("//div[@class='other_pr']");
+    }
+
+    SelenideElement sizeDiameterFromRelinkBlock() {
+        return $x("//div[@class='zoll']//li");
+    }
+
+    SelenideElement activeMotorInput() {
+        return $x("//div[@id='car-select' and @class='mainblock-search__select slt-selectbox-wrapper filled active select-full']");
+    }
+
+
+
 }
