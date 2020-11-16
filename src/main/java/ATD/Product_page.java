@@ -784,7 +784,7 @@ public class Product_page {
     }
 
     SelenideElement btnMehrFromDangerousBlock() {
-        return $x("//a[@class='dangerous-goods__show-more js-dangerous-goods__show-more' and text()='Mehr']");
+        return $x("//div[@class='dangerous-goods js-dangerous-goods hide']//a[@data-more='...Mehr']");
     }
 
     SelenideElement blockWithAlternative() {
