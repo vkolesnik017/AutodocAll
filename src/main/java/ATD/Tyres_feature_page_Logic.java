@@ -176,6 +176,7 @@ public class Tyres_feature_page_Logic extends Tyres_feature_page {
             visibleTitleOfLinkingBlocks().get(3).shouldNotHave(exactText(titleOfLastLinkingBlock));
             visibleTitleOfLinkingBlocks().get(3).hover();
             presenceOfTitleLinkingBlock();
+            presenceOfTitleLinkingBlock();
             String currentUrl = visibleBtnMoreOfLinkingBlock().get(0).getAttribute("url");
             visibleTitleOfLinkingBlocks().get(3).click();
             new Tyres_feature_page_Logic().checkingAbsenceOfCurrentLinkInLinkingBlock(currentUrl);

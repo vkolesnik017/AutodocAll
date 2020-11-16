@@ -626,8 +626,10 @@ public class Tyres_page_Logic extends Tyres_page {
             String titleOfLastLinkingBlock = visibleTitleOfLinkingBlocks().get(3).getText();
             btnPaginatorOfLinkingBlock().get(i + 1).click();
             presenceOfTitleLinkingBlock();
+            presenceOfTitleLinkingBlock();
             visibleTitleOfLinkingBlocks().get(3).shouldNotHave(exactText(titleOfLastLinkingBlock));
             visibleTitleOfLinkingBlocks().get(3).hover();
+            presenceOfTitleLinkingBlock();
             String currentUrl = visibleBtnMoreOfLinkingBlock().get(0).getAttribute("url");
             visibleTitleOfLinkingBlocks().get(3).click();
             new Tyres_feature_page_Logic().checkingAbsenceOfCurrentLinkInLinkingBlock(currentUrl);
