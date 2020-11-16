@@ -2,10 +2,12 @@ package ATD;
 
 import AWS.ProductCard_aws;
 import Common.DataBase;
+import Common.Excel;
 import PKW.Supplier_page_Logic;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import files.Car;
 import files.Product;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -1431,6 +1433,42 @@ public class Main_page_Logic extends Main_page {
     @Step("Checking the transition to the autodoc club from  the Social Network Block. Main_page")
     public Main_page_Logic checkingTransitionToTheAutodocClubLink() {
         autodocClubTransition().click();
+        return this;
+    }
+
+    @Step("get all car values from file. Main_page")
+    public List<Car> getAllCarValuesFromFile(String file) {
+        List<Car> cars = new ArrayList<>();
+        List<String> marke = new Excel().readFromExcel(file, "qc_2769", 2);
+        List<String> model = new Excel().readFromExcel(file, "qc_2769", 3);
+        List<String> motor = new Excel().readFromExcel(file, "qc_2769", 4);
+
+        for (int i = 1; i < marke.size(); i++) {
+            Car carPage = new Car();
+            carPage.setBrand(marke.get(i));
+            carPage.setModel(model.get(i));
+            carPage.setMotor(motor.get(i));
+            cars.add(carPage);
+        }
+        return cars;
+    }
+
+    @Step("get specific values from file. Main_page")
+    public List<Car> getSpecificValuesFromFile(List<Car> file, int start, int end) {
+        List<Car> list = new ArrayList<>();
+        for (int i=start; i<end;i++){
+            list.add(file.get(i));
+        }
+        return list;
+    }
+
+    @Step("select random car from file. Main_page")
+    public Main_page_Logic selectRandomCarFromFile(List<Car> file, int maxValue) {
+        int minValue = 0;
+        int random_number = minValue + (int) (Math.random() * maxValue);
+        brandSelectorInVerticalCarSelector().selectOption(file.get(random_number).getBrand());
+        modelSelectorInVerticalCarSelector().selectOption(file.get(random_number).getModel());
+        typeSelectorInVerticalCarSelector().selectOption(file.get(random_number).getMotor());
         return this;
     }
 }
