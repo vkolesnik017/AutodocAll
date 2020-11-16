@@ -53,6 +53,10 @@ public class SearchOrders_page_aws {
         return $x("(//div[@class='datepicker-days']//tbody//tr//td[@class='day'][text()='" + expectedDay + "'])[1]");
     }
 
+    private SelenideElement nexPageBtnInPaginationBlock() {
+        return $x("//ul[@class='pagination']//li//a[text()='»']");
+    }
+
 
 
     @Step("Click button search. SearchOrders_page_aws")

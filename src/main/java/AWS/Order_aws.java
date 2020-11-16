@@ -443,8 +443,12 @@ public class Order_aws {
         return $x("//body/div[@id='searchSelection']/div[1]/div[1]/div[3]/a[1]");
     }
 
-    private SelenideElement reorderNumber() {
+    public SelenideElement reorderNumber() {
         return $x("//div[@class='w-box-content cnt_a clearfix']/a[@target='_blank']");
+    }
+
+    private SelenideElement transactionCodBlock() {
+        return $x("(//div[@class='form-group order-transaction w-100-pc']/span/input)[2]");
     }
 
 
@@ -1169,6 +1173,12 @@ public class Order_aws {
     @Step("Checks presence reorder number and transition and goes to it. Order_aws")
     public Order_aws transitionToReorderNumber() {
         reorderNumber().scrollTo().shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("Checks presrnce transaction cod block. Order_aws")
+    public Order_aws checkPresenceTransactionCodBloc() {
+        transactionCodBlock().scrollTo().shouldBe(visible);
         return this;
     }
 }
