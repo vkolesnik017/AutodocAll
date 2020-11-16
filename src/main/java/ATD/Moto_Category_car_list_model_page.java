@@ -47,7 +47,7 @@ public class Moto_Category_car_list_model_page {
         return $x("//a[@class='header-cart__link']");
     }
 
-    ElementsCollection childCategoriesInSideBar() {return $$x("//div[@class='block categories blue topSubCats']//li");}
+    ElementsCollection childCategoriesInSideBar() {return $$x("//div[@class='block categories blue topSubCats']//li/a");}
 
     ElementsCollection analogProducts() {return $$x("//div[@class='top-small-products-items__item']").filter(visible);}
 
