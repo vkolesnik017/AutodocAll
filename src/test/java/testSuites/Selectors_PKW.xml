@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Selectors_PKW" parallel="methods" thread-count="1" data-provider-thread-count="4">
+
+    <listeners>
+        <listener class-name="Common.ProjectListener"/>
+    </listeners>
+
+    <test name="QC_723_SelectorsVertical">
+        <classes>
+            <class name="PKW.Selectors.QC_723_SelectorsVertical.QC_724_TooltipErrorWhenSelectorHasEmptyFieldWithMark"/>
+        </classes>
+    </test>
+
+</suite>

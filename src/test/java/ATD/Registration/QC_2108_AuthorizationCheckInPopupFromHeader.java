@@ -1,6 +1,7 @@
 package ATD.Registration;
 
 import ATD.Main_page_Logic;
+import Common.DataBase;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -9,6 +10,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import java.sql.SQLException;
 import static ATD.CommonMethods.*;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
@@ -31,10 +33,10 @@ public class QC_2108_AuthorizationCheckInPopupFromHeader {
     @Test(dataProvider = "route")
     @Flaky
     @Description(value = "Checking Authorization (login) In Popup From Header")
-    public void testAuthorizationCheckInPopupFromHeader(String route) {
+    public void testAuthorizationCheckInPopupFromHeader(String route) throws SQLException {
         openPage(route);
         new Main_page_Logic().clickCheckboxRememberMeFromLoginPopup(mail);
-        waitingWhileLinkBecomeExpected("https://www.autodoc.de/profile/services/plus-service");
+        waitingWhileLinkBecomeExpected(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod","DE","main","profile_plus"));
     }
 
     @AfterMethod

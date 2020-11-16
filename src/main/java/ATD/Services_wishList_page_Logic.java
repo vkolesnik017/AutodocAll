@@ -153,7 +153,7 @@ public class Services_wishList_page_Logic extends Services_wishList_page {
     @Step("hover on Alternative product. Services_wishList_page")
     public Services_wishList_page_Logic hoverOnAlternativeProduct(int positionOfProducts) {
         alternativeBlock().shouldBe(visible);
-        imageOfAlternativeProducts().get(positionOfProducts).hover();
+        imageOfAlternativeProducts().get(positionOfProducts).shouldBe(visible).hover();
         descriptionPopUpOfAlternativeProduct().get(positionOfProducts).shouldBe(visible);
         return this;
     }
