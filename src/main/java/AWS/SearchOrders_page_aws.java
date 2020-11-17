@@ -104,14 +104,18 @@ public class SearchOrders_page_aws {
 
     @Step("Find order with a generated invoice and with order amount equal to or less than ten. SearchOrders_page_aws")
     public Order_aws findOrderWithGeneratedInvoice() {
+        Order_aws order_aws = new Order_aws();
         if (orderLine().size() > 0) {
             for (int i = 0; i < orderLine().size(); i++) {
-                if (!orderLine().get(i).$x(".//div[@data-hint='Test']").isDisplayed()){
+                if (!orderLine().get(i).$x(".//div[@data-hint='Test']").isDisplayed()) {
                     int sum = Integer.parseInt(orderLine().get(i).$x("./../..//a[@class='order-grandtotal']").getText());
                     if (sum <= 10) {
                         String id = orderLine().get(i).$x("./../..//a[@class='order_link']").getText();
                         System.out.println(id);
                         orderLine().get(i).$x("./../..//a[@class='order_link']").click();
+                        /*if (!order_aws.reorderNumber().isDisplayed()) {
+                            back();
+                        }*/
                         break;
                     }
                 }
