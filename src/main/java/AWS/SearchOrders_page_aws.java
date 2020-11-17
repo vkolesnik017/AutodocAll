@@ -75,7 +75,7 @@ public class SearchOrders_page_aws {
 
     @Step("Select a date from, for a month and an expected day {expectedDay} earlier than the current one. SearchOrders_page_aws")
     public SearchOrders_page_aws choosesDateFromOneMonthAndExpectedDayEarlierThenCurrentOne(int expectedDay) {
-        String day = DateTimeFormatter.ofPattern("dd").format(LocalDateTime.now().minusDays(expectedDay));
+        String day = DateTimeFormatter.ofPattern("dd").format(LocalDateTime.now().minusDays(expectedDay)).replaceAll("^0(\\d*)", "$1");
         calendarDataFromBtn().shouldBe(visible).click();
         prevMonthBtmInCalendarDataFrom().shouldBe(visible).click();
         dayInCalendarDataFrom(day).shouldBe(visible).click();
@@ -113,14 +113,15 @@ public class SearchOrders_page_aws {
                         String id = orderLine().get(i).$x("./../..//a[@class='order_link']").getText();
                         System.out.println(id);
                         orderLine().get(i).$x("./../..//a[@class='order_link']").click();
-                        /*if (!order_aws.reorderNumber().isDisplayed()) {
+                        if (!order_aws.reorderNumber().isDisplayed()) {
                             back();
-                        }*/
+                            continue;
+                        }
                         break;
+                        }
                     }
                 }
             }
-        }
         return page(Order_aws.class);
     }
 }
