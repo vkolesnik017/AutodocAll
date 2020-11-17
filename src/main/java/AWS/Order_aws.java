@@ -444,13 +444,16 @@ public class Order_aws {
     }
 
     public SelenideElement reorderNumber() {
-        return $x("//div[@class='w-box-content cnt_a clearfix']/a[@target='_blank']");
+        return $x("//div[@class='w-box']//div[contains(text(),'Пере-Заказы')]/..//a");
+    }
+
+    public SelenideElement parentOrderNumber() {
+        return $x("//div[@class='w-box']//div[text()='Родительский заказ']/..//a");
     }
 
     private SelenideElement transactionCodBlock() {
         return $x("(//div[@class='form-group order-transaction w-100-pc']/span/input)[2]");
     }
-
 
 
 

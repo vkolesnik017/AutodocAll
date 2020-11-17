@@ -58,7 +58,6 @@ public class SearchOrders_page_aws {
     }
 
 
-
     @Step("Click button search. SearchOrders_page_aws")
     public SearchOrders_page_aws clickSearchBtn() {
         searchBtn().click();
@@ -102,8 +101,8 @@ public class SearchOrders_page_aws {
         return page(SearchOrders_page_aws.class);
     }
 
-    @Step("Find order with a generated invoice and with order amount equal to or less than ten. SearchOrders_page_aws")
-    public Order_aws findOrderWithGeneratedInvoice() {
+    @Step("Open order with a generated invoice and with order amount equal to or less than ten and open it. SearchOrders_page_aws")
+    public Order_aws openCorrectOperationOfFirstReOrderFromUser() {
         Order_aws order_aws = new Order_aws();
         if (orderLine().size() > 0) {
             for (int i = 0; i < orderLine().size(); i++) {
@@ -118,10 +117,37 @@ public class SearchOrders_page_aws {
                             continue;
                         }
                         break;
-                        }
                     }
                 }
             }
+        }
+        return page(Order_aws.class);
+    }
+
+    @Step("Open order with a generated invoice and with order amount equal to or less than ten and open it. SearchOrders_page_aws")
+    public Order_aws openCorrectOperationOfNotFirstReOrderFromUser() {
+        Order_aws order_aws = new Order_aws();
+        if (orderLine().size() > 0) {
+            for (int i = 0; i < orderLine().size(); i++) {
+                if (!orderLine().get(i).$x(".//div[@data-hint='Test']").isDisplayed()) {
+                    int sum = Integer.parseInt(orderLine().get(i).$x("./../..//a[@class='order-grandtotal']").getText());
+                    if (sum <= 10) {
+                        String id = orderLine().get(i).$x("./../..//a[@class='order_link']").getText();
+                        System.out.println(id);
+                        orderLine().get(i).$x("./../..//a[@class='order_link']").click();
+                        if (!order_aws.parentOrderNumber().isDisplayed()) {
+                            back();
+                            continue;
+                        }
+                        if (!order_aws.reorderNumber().isDisplayed()) {
+                            back();
+                            continue;
+                        }
+                        break;
+                    }
+                }
+            }
+        }
         return page(Order_aws.class);
     }
 }
