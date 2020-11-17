@@ -100,4 +100,12 @@ public class Maker_car_list_page {
     SelenideElement popupBasketAddedProducts() {
         return $x("//div[@class='cart-items-block ']");
     }
+
+    SelenideElement topProductsBlock() {return $x("//div[@class='top-small-products top-small-products--shortened']");}
+
+    ElementsCollection allTitlesOfTopProducts() {return $$x("//div[@class='top-small-products top-small-products--shortened']//div[@class='small-prod-title']/span");}
+
+    ElementsCollection allBtnAddToBasketOfTopProducts() {return $$x("//div[@class='top-small-products top-small-products--shortened']//div[@class='small-product-button price_box ']/a");}
+
+    ElementsCollection genericsOfTopProducts() {return $$x("//div[@class='top-small-products top-small-products--shortened']//div[@class='small-product-button price_box ']");}
 }
