@@ -32,7 +32,7 @@ public class QC_1682_HeavyLoads_Islands {
 
     @DataProvider(name = "routeFirstCase", parallel = true)
     Object[] dataProviderProductsFirstCase() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "productDangerousGoods1,HeavyLoadProduct3");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "productDangerousGoods1,HeavyLoadProduct1");
     }
 
 
