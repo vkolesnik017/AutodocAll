@@ -74,7 +74,7 @@ public class Tyre_form_page {
        return  $x("//div[@class='pagination']//span[@class='last']/a");
     }
 
-    ElementsCollection visibleBrands() {return $$x("//div[@class='slick-list draggable']//li");}
+    ElementsCollection visibleBrands() {return $$x("//li[@class='js-filter-item ga-click-criteria-filter']");}
 
     SelenideElement anySelectedBrand() {return $x("//li[@class='js-filter-item ga-click-criteria-filter active']");}
 

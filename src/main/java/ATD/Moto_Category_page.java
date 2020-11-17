@@ -113,4 +113,6 @@ public class Moto_Category_page {
     SelenideElement titleOfDangerousPopUp() {return $x("//div[@class='popup-dangerous__title']");}
 
     SelenideElement infoTextOfDangerousPopUp() {return $x("//div[@class='popup-dangerous']//p");}
+
+    ElementsCollection genericsInSideBar() {return $$x("//div[@class='block categories blue topSubCats']//li");}
 }
