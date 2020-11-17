@@ -30,7 +30,7 @@ public class QC_1680_HeavyLoadsFR_NegativeCaseBasket {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "HeavyLoadProduct3");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "HeavyLoadProduct1");
     }
 
     @Test(dataProvider = "route")
@@ -49,7 +49,7 @@ public class QC_1680_HeavyLoadsFR_NegativeCaseBasket {
                 .closePopUpDeliveryLimitCartPage()
                 .checkAbsenceGoodInCartPage("7037462")
                 .checkPresenceGoodInCardPage("7807629");
-        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "HeavyLoadProduct3"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "HeavyLoadProduct1"));
         product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()

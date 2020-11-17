@@ -31,7 +31,7 @@ public class QC_1677_HeavyLoadsNegativeCase {
 
     @DataProvider(name = "routeFirstCase", parallel = true)
     Object[] dataProviderProductsFirstCase() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "HeavyLoadProduct3,productDangerousGoods1");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "HeavyLoadProduct1,productDangerousGoods1");
     }
 
     @Test(dataProvider = "routeFirstCase", priority = 0)

@@ -32,7 +32,7 @@ public class QC_1676_HeavyLoadsPositiveCase {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "HeavyLoadProduct3");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "HeavyLoadProduct1");
     }
 
     @Test(dataProvider = "route")
