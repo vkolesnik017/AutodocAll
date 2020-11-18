@@ -9,6 +9,8 @@
     <test name="QC_723_SelectorsVertical">
         <classes>
             <class name="PKW.Selectors.QC_723_SelectorsVertical.QC_724_TooltipErrorWhenSelectorHasEmptyFieldWithMark"/>
+            <class name="PKW.Selectors.QC_723_SelectorsVertical.QC_2698_CarFromSessionDisplayedInSelectorOnTiresRuts"/>
+            <class name="PKW.Selectors.QC_723_SelectorsVertical.QC_2701_PassingCarIdToOrdersWithTires"/>
         </classes>
     </test>
 

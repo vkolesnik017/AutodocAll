@@ -461,6 +461,37 @@ public class Order_aws {
 
 
 
+
+    private ElementsCollection carId() {
+        return $$x("//table[@id='table_order_products_list']//td[29]");
+    }
+
+    private SelenideElement carIdForSuitableCar() {
+        return $x("//table[@id='table_order_products_list']//tr[1]/td[29]");
+    }
+
+    private SelenideElement carIdForNotSuitableCar() {
+        return $x("//table[@id='table_order_products_list']//tr[2]/td[29]/span");
+    }
+
+    @Step("Checking compliance the Car Id {carIdFromProduct} in the ordered goods. Order_aws")
+    public Order_aws checkingComplianceCarIdInOrderedGoods(String carIdFromProduct) {
+        columnProductQuantity().scrollIntoView(true);
+        for (int i = 0; i < carId().size(); i++) {
+            carId().get(i).shouldHave(exactText(carIdFromProduct));
+        }
+        return this;
+    }
+
+    @Step("Checks by color that the first product fits the car and the second one does not. Order_aws")
+    public Order_aws checksByCarIdThatProductsFitsCar() {
+        carIdForSuitableCar().shouldHave(cssValue("color", "rgba(34, 34, 34, 1)"));
+        carIdForNotSuitableCar().shouldHave(cssValue("color", "rgba(255, 0, 0, 1)"));
+        return this;
+    }
+
+
+
     @Step("get VIN num in popup from btn Auto By Search From The Site. Order_aws")
     public Order_aws getVinNumInPopupFromBtnAutoBySearchFromTheSite(String vinNum) {
         vinNumInPopupFromBtnAutoBySearchFromTheSite().shouldHave(text(vinNum));

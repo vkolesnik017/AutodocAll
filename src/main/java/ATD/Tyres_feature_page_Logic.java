@@ -14,8 +14,8 @@ import static com.codeborne.selenide.Selenide.back;
 public class Tyres_feature_page_Logic extends Tyres_feature_page {
 
     @Step("checkingAbsenceOfCurrentLinkInLinkungBlock. Tyres_feature_page")
-    public Tyres_feature_page_Logic checkingAbsenceOfCurrentLinkInLinkingBlock(String url) {
-        mainHeadline().shouldBe(visible);
+    public Tyres_feature_page_Logic checkingAbsenceOfCurrentLinkInLinkingBlock(String url, String titleFromMainBlock) {
+        mainHeadline().shouldBe(visible).shouldNotHave(exactText(titleFromMainBlock));
         linkingBlock().scrollIntoView("{block: \"center\"}");
         presenceOfTitleLinkingBlock();
         presenceOfTitleLinkingBlock();
@@ -143,20 +143,21 @@ public class Tyres_feature_page_Logic extends Tyres_feature_page {
 
     @Step("check transitions in Linking block. Tyres_feature_page")
     public Tyres_feature_page_Logic checkTransitionsInLinkingBlock(String url) {
-        checkTransitionsOfVisibleLinkingBlock(url);
-        checkTransitionsOfLastLinkingBlock(url);
+        String mainTitle = mainHeadline().shouldBe(visible).getText();
+        checkTransitionsOfVisibleLinkingBlock(url, mainTitle);
+        checkTransitionsOfLastLinkingBlock(url, mainTitle);
         return this;
     }
 
     @Step("check transitions of visible Linking block. Tyres_feature_page")
-    public Tyres_feature_page_Logic checkTransitionsOfVisibleLinkingBlock(String currentUrl) {
+    public Tyres_feature_page_Logic checkTransitionsOfVisibleLinkingBlock(String currentUrl, String title) {
         for (int i = 0; i < visibleTitleOfLinkingBlocks().size(); i++) {
             linkingBlock().scrollIntoView("{block: \"center\"}");
             presenceOfTitleLinkingBlock();
             presenceOfTitleLinkingBlock();
             String url = btnMoreOfLinkingBlock().get(i).getAttribute("url");
             visibleTitleOfLinkingBlocks().get(i).shouldBe(visible).click();
-            new Tyres_feature_page_Logic().checkingAbsenceOfCurrentLinkInLinkingBlock(url);
+            checkingAbsenceOfCurrentLinkInLinkingBlock(url,title);
             back();
             waitWhileRouteContainsExpectedCondition(currentUrl);
         }
@@ -164,7 +165,7 @@ public class Tyres_feature_page_Logic extends Tyres_feature_page {
     }
 
     @Step("check transitions of last Linking block. Tyres_feature_page")
-    public Tyres_feature_page_Logic checkTransitionsOfLastLinkingBlock(String currentUrlSite) {
+    public Tyres_feature_page_Logic checkTransitionsOfLastLinkingBlock(String currentUrlSite, String title) {
         for (int i = 0; i < btnPaginatorOfLinkingBlock().size() - 1; i++) {
             linkingBlock().scrollIntoView("{block: \"center\"}");
             presenceOfTitleLinkingBlock();
@@ -179,7 +180,7 @@ public class Tyres_feature_page_Logic extends Tyres_feature_page {
             presenceOfTitleLinkingBlock();
             String currentUrl = visibleBtnMoreOfLinkingBlock().get(0).getAttribute("url");
             visibleTitleOfLinkingBlocks().get(3).click();
-            new Tyres_feature_page_Logic().checkingAbsenceOfCurrentLinkInLinkingBlock(currentUrl);
+            checkingAbsenceOfCurrentLinkInLinkingBlock(currentUrl, title);
             back();
             waitWhileRouteContainsExpectedCondition(currentUrlSite);
         }

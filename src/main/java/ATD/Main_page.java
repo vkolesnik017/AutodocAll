@@ -552,6 +552,9 @@ public class Main_page {
         return $(".kba_popup_example");
     }
 
+    SelenideElement btnClosePopup() {return $x("//div[@class='kba_popup_example']/a[@class='close']");}
+
+
     //Car selector popup
     public SelenideElement headingInCarSelectorPopup() {
         return $(".popup-kba-error>p");
