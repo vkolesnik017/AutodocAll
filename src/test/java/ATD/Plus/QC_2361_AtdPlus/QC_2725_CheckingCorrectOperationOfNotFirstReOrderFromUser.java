@@ -20,7 +20,6 @@ public class QC_2725_CheckingCorrectOperationOfNotFirstReOrderFromUser {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-
     @Test()
     @Flaky
     @Owner(value = "Chelombitko")
@@ -30,13 +29,12 @@ public class QC_2725_CheckingCorrectOperationOfNotFirstReOrderFromUser {
                 .choosesDateFromOneMonthAndExpectedDayEarlierThenCurrentOne(1)
                 .selectExpectedGroupField("AUTODOC PLUS (Services)")
                 .clickSearchBtn()
-                .openCorrectOperationOfNotFirstReOrderFromUser()
+                .togglesPaginationIfThereAreNoParentAndReOrderNumberBlocksInOrder()
                 .transitionToReorderNumber();
         switchTo().window(1);
-        new Order_aws().checkPresenceTransactionCodBloc()
-                .checkCurrentStatusInOrder("Abgeschlossen");
+        new Order_aws().checkCurrentStatusInOrder("Abgeschlossen")
+                .checkPresenceTransactionCodBloc();
     }
-
 
     @AfterMethod
     private void close() {

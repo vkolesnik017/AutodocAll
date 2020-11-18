@@ -19,7 +19,6 @@ public class QC_2724_CheckingCorrectOperationOfFirstReOrderFromUser {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-
     @Test()
     @Flaky
     @Owner(value = "Chelombitko")
@@ -32,8 +31,9 @@ public class QC_2724_CheckingCorrectOperationOfFirstReOrderFromUser {
                 .openCorrectOperationOfFirstReOrderFromUser()
                 .transitionToReorderNumber();
         switchTo().window(1);
-        new Order_aws().checkPresenceTransactionCodBloc()
-                .checkCurrentStatusInOrder("Abgeschlossen");
+        new Order_aws().checkCurrentStatusInOrder("Abgeschlossen")
+                .checkPresenceTransactionCodBloc();
+
     }
 
     @AfterMethod

@@ -7,6 +7,7 @@ import io.qameta.allure.Step;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.CommonMethods.openPage;
 import static Common.CommonMethods.getExpectedCalendarData;
 import static com.codeborne.selenide.Condition.*;
@@ -107,11 +108,11 @@ public class SearchOrders_page_aws {
         if (orderLine().size() > 0) {
             for (int i = 0; i < orderLine().size(); i++) {
                 if (!orderLine().get(i).$x(".//div[@data-hint='Test']").isDisplayed()) {
-                    int sum = Integer.parseInt(orderLine().get(i).$x("./../..//a[@class='order-grandtotal']").getText());
+                    int sum = Integer.parseInt(orderLine().get(i).$x("./../..//a[@class='order-grandtotal']").shouldBe(visible).getText());
                     if (sum <= 10) {
                         String id = orderLine().get(i).$x("./../..//a[@class='order_link']").getText();
                         System.out.println(id);
-                        orderLine().get(i).$x("./../..//a[@class='order_link']").click();
+                        orderLine().get(i).$x("./../..//a[@class='order_link']").shouldBe(visible).click();
                         if (!order_aws.reorderNumber().isDisplayed()) {
                             back();
                             continue;
@@ -124,28 +125,42 @@ public class SearchOrders_page_aws {
         return page(Order_aws.class);
     }
 
-    @Step("Open order with a generated invoice and with order amount equal to or less than ten and open it. SearchOrders_page_aws")
-    public Order_aws openCorrectOperationOfNotFirstReOrderFromUser() {
+    @Step("Rebates and opens orders with generated invoice and order amount equal to or less than ten " +
+            "and checks for the 'Re-Orders / Sub-Orders' and 'Parent Order' blocks. SearchOrders_page_aws")
+    public Boolean openCorrectOperationOfNotFirstReOrderFromUser() {
+        boolean check = false;
         Order_aws order_aws = new Order_aws();
         if (orderLine().size() > 0) {
             for (int i = 0; i < orderLine().size(); i++) {
                 if (!orderLine().get(i).$x(".//div[@data-hint='Test']").isDisplayed()) {
-                    int sum = Integer.parseInt(orderLine().get(i).$x("./../..//a[@class='order-grandtotal']").getText());
+                    int sum = Integer.parseInt(orderLine().get(i).$x("./../..//a[@class='order-grandtotal']").shouldBe(visible).getText());
                     if (sum <= 10) {
                         String id = orderLine().get(i).$x("./../..//a[@class='order_link']").getText();
                         System.out.println(id);
-                        orderLine().get(i).$x("./../..//a[@class='order_link']").click();
-                        if (!order_aws.parentOrderNumber().isDisplayed()) {
+                        orderLine().get(i).$x("./../..//a[@class='order_link']").shouldBe(visible).click();
+                        if (order_aws.blocksParentAndReOrderNumber().isDisplayed()) {
+                            check = true;
+                            break;
+                        } else {
                             back();
                             continue;
                         }
-                        if (!order_aws.reorderNumber().isDisplayed()) {
-                            back();
-                            continue;
-                        }
-                        break;
                     }
                 }
+            }
+        }
+        return check;
+    }
+
+    @Step("Toggles pagination pages if there are no Parent and Re-Order number blocks in the order. SearchOrders_page_aws")
+    public Order_aws togglesPaginationIfThereAreNoParentAndReOrderNumberBlocksInOrder() {
+        while (nexPageBtnInPaginationBlock().isDisplayed()) {
+            Boolean check = openCorrectOperationOfNotFirstReOrderFromUser();
+            if (!check) {
+                nexPageBtnInPaginationBlock().click();
+                checkingContainsUrl("https://aws.autodoc.de/search-orders");
+            } else {
+                break;
             }
         }
         return page(Order_aws.class);

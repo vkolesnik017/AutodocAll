@@ -451,6 +451,10 @@ public class Order_aws {
         return $x("//div[@class='w-box']//div[text()='Родительский заказ']/..//a");
     }
 
+    public SelenideElement blocksParentAndReOrderNumber() {
+        return $x("//div[@class='w-box']//div[contains(text(),'Пере-Заказы')]/../../div[@class='w-box']//div[text()='Родительский заказ']");
+    }
+
     private SelenideElement transactionCodBlock() {
         return $x("(//div[@class='form-group order-transaction w-100-pc']/span/input)[2]");
     }
@@ -1179,7 +1183,7 @@ public class Order_aws {
         return this;
     }
 
-    @Step("Checks presrnce transaction cod block. Order_aws")
+    @Step("Checks presence transaction cod block. Order_aws")
     public Order_aws checkPresenceTransactionCodBloc() {
         transactionCodBlock().scrollTo().shouldBe(visible);
         return this;
