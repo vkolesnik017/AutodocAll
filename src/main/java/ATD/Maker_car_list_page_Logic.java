@@ -4,16 +4,17 @@ import AWS.ProductCard_aws;
 import Common.DataBase;
 import files.Product;
 import io.qameta.allure.Step;
+import org.apache.http.util.Asserts;
 import org.testng.Assert;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
-import static ATD.CommonMethods.openPage;
-import static ATD.CommonMethods.waitWhileRouteBecomeExpected;
+import static ATD.CommonMethods.*;
 import static PKW.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.visible;
@@ -191,7 +192,7 @@ public class Maker_car_list_page_Logic extends Maker_car_list_page {
             if (!searchBar().isDisplayed()) {
                 openPage(db.getFullRouteByRouteName("prod", "DE", "main"));
             }
-          new Main_page_Logic().useSearch(list.get(i));
+            new Main_page_Logic().useSearch(list.get(i));
 
             activeFirstPage = searchPage.getIdOfActiveProduct();
             notActiveFirstPage = searchPage.getIdOfNotActiveProduct();
@@ -208,15 +209,25 @@ public class Maker_car_list_page_Logic extends Maker_car_list_page {
             getPriceNettoOfProduct(priceNettoSecondPageAws, activeSecondPage);
             getPriceNettoOfProduct(priceNettoThirdPageAws, activeThirdPage);
             checkPriceNettoFromAWS(priceNettoFirstPageAws, priceNettoSecondPageAws, priceNettoThirdPageAws);
-            priceNettoFirstPageAws.clear(); priceNettoSecondPageAws.clear(); priceNettoThirdPageAws.clear();
+            priceNettoFirstPageAws.clear();
+            priceNettoSecondPageAws.clear();
+            priceNettoThirdPageAws.clear();
             getPriceNettoOfProduct(priceNettoFirstPageAws, notActiveFirstPage);
             getPriceNettoOfProduct(priceNettoSecondPageAws, notActiveSecondPage);
             getPriceNettoOfProduct(priceNettoThirdPageAws, notActiveThirdPage);
             checkPriceNettoFromAWS(priceNettoFirstPageAws, priceNettoSecondPageAws, priceNettoThirdPageAws);
-            priceNettoFirstPageAws.clear(); priceNettoSecondPageAws.clear(); priceNettoThirdPageAws.clear();
-            activeFirstPage.clear(); activeSecondPage.clear(); activeThirdPage.clear();
-            firstPageProduct.clear(); secondPageProduct.clear(); thirdPageProduct.clear();
-            notActiveFirstPage.clear(); notActiveSecondPage.clear(); notActiveThirdPage.clear();
+            priceNettoFirstPageAws.clear();
+            priceNettoSecondPageAws.clear();
+            priceNettoThirdPageAws.clear();
+            activeFirstPage.clear();
+            activeSecondPage.clear();
+            activeThirdPage.clear();
+            firstPageProduct.clear();
+            secondPageProduct.clear();
+            thirdPageProduct.clear();
+            notActiveFirstPage.clear();
+            notActiveSecondPage.clear();
+            notActiveThirdPage.clear();
         }
         return this;
     }
@@ -236,11 +247,11 @@ public class Maker_car_list_page_Logic extends Maker_car_list_page {
         if (firstList.size() > 0 && secondList.size() > 0 && thirdList.size() > 0) {
             Assert.assertTrue(Collections.max(firstList) <= Collections.min(secondList));
             Assert.assertTrue(Collections.max(secondList) <= Collections.min(thirdList));
-        } else if (firstList.size() > 0 && secondList.size() > 0 && thirdList.size()==0 ){
+        } else if (firstList.size() > 0 && secondList.size() > 0 && thirdList.size() == 0) {
             Assert.assertTrue(Collections.max(firstList) <= Collections.min(secondList));
-        } else if (firstList.size() > 0 && thirdList.size() > 0 && secondList.size()==0) {
+        } else if (firstList.size() > 0 && thirdList.size() > 0 && secondList.size() == 0) {
             Assert.assertTrue(Collections.max(firstList) <= Collections.min(thirdList));
-        } else if (secondList.size() > 0 && thirdList.size() > 0 && firstList.size()==0) {
+        } else if (secondList.size() > 0 && thirdList.size() > 0 && firstList.size() == 0) {
             Assert.assertTrue(Collections.max(secondList) <= Collections.min(thirdList));
         }
         return this;
@@ -257,5 +268,40 @@ public class Maker_car_list_page_Logic extends Maker_car_list_page {
     public Cart_page_Logic cartClick() {
         new Main_page_Logic().cartClick();
         return page(Cart_page_Logic.class);
+    }
+
+    @Step("presence of TOP products block. Maker_car_list_page")
+    public Maker_car_list_page_Logic presenceOfTopProductsBlock() {
+        topProductsBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("absence of TOP products block. Maker_car_list_page")
+    public Maker_car_list_page_Logic absenceOfTopProductsBlock() {
+        topProductsBlock().shouldNotBe();
+        return this;
+    }
+
+    @Step("check size of TOP products. Maker_car_list_page")
+    public Maker_car_list_page_Logic checkSizeOfTopProducts(int expectedSize) {
+        allTitlesOfTopProducts().shouldHaveSize(expectedSize);
+        return this;
+    }
+
+    @Step("checking the ability to add an item to the cart. Maker_car_list_page")
+    public Maker_car_list_page_Logic checkingAbilityToAddProductToBasket() {
+        List<String> attributeOfButton = allBtnAddToBasketOfTopProducts().stream().map(n -> getAttributeFromUnVisibleElement(n, "class")).collect(Collectors.toList());
+        for (int i = 0; i < attributeOfButton.size(); i++) {
+            Assert.assertEquals(attributeOfButton.get(i), "button add_basket");
+        }
+        return this;
+    }
+
+    @Step("compare TOP products. Maker_car_list_page")
+    public Maker_car_list_page_Logic compareTopProducts(int expectedSize) {
+        Set<String> generics = genericsOfTopProducts().stream().map(n -> getAttributeFromUnVisibleElement(n, "data-name")).collect(Collectors.toSet());
+        Assert.assertEquals(generics.size(), expectedSize);
+
+        return this;
     }
 }
