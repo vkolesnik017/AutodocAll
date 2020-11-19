@@ -82,6 +82,7 @@
             <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_2564_CheckingProductsInTopTyresBlockLkwMotoOff"/>
             <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_2116_GoToTyresProductPageAndCheckGoodsInStock"/>
             <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_2624_LinkingBlockToNewSeoPages"/>
+            <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_2794_PresenceOfSeoText"/>
         </classes>
     </test>
 
