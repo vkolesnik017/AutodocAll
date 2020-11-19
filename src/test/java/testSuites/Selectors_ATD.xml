@@ -10,6 +10,7 @@
         <classes>
             <class name="ATD.Selectors.QC_771_RegKbaSelector.QC_772_RegKbaSelector"/>
             <class name="ATD.Selectors.QC_771_RegKbaSelector.QC_2694_CheckingVinRecordsToOrderWhenSearchingByKBA"/>
+            <class name="ATD.Selectors.QC_771_RegKbaSelector.QC_2783_PresenceMandatoryElementsInKbaBlock"/>
         </classes>
     </test>
 
