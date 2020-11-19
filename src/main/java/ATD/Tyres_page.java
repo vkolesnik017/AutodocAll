@@ -136,4 +136,5 @@ public class Tyres_page {
 
   ElementsCollection visibleBtnMoreOfLinkingBlock() {return $$x("//div[@class='most-popular']//span[@class='link']").filter(visible);}
 
+  SelenideElement mainHeadline() {return $x("//h1[@class='title']");}
 }
