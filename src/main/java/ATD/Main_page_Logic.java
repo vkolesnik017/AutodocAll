@@ -351,6 +351,15 @@ public class Main_page_Logic extends Main_page {
         return this;
     }
 
+    @Step("Click link \"Was ist eine Schlüsselnummer?\" and check work KBA popup. Main_page")
+    public Main_page_Logic clickLinkAndCheckWorkKbaPopup() {
+        linkInfoKba().click();
+        kbaPopup().shouldBe(visible);
+        btnClosePopup().shouldBe(visible).click();
+        kbaPopup().shouldNotBe(visible);
+        return this;
+    }
+
     // This method for all shop, except DE
     @Step("Fill in KBA field. Main_page")
     public Main_page_Logic fillNumberKba(String kbaNumber) {

@@ -11,6 +11,7 @@
             <class name="ATD.Plus.QC_2361_AtdPlus.QC_1836_CheckingTextOnPopUpAtCheckoutAfter_14_days"/>
             <class name="ATD.Plus.QC_2361_AtdPlus.QC_2612_CheckingForAbsenceSOInAutodocPlusSection"/>
             <class name="ATD.Plus.QC_2361_AtdPlus.QC_2724_CheckingCorrectOperationOfFirstReOrderFromUser"/>
+            <class name="ATD.Plus.QC_2361_AtdPlus.QC_2725_CheckingCorrectOperationOfNotFirstReOrderFromUser"/>
         </classes>
     </test>
 

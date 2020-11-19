@@ -444,13 +444,51 @@ public class Order_aws {
     }
 
     public SelenideElement reorderNumber() {
-        return $x("//div[@class='w-box-content cnt_a clearfix']/a[@target='_blank']");
+        return $x("//div[@class='w-box']//div[contains(text(),'Пере-Заказы')]/..//a");
+    }
+
+    public SelenideElement parentOrderNumber() {
+        return $x("//div[@class='w-box']//div[text()='Родительский заказ']/..//a");
+    }
+
+    public SelenideElement blocksParentAndReOrderNumber() {
+        return $x("//div[@class='w-box']//div[contains(text(),'Пере-Заказы')]/../../div[@class='w-box']//div[text()='Родительский заказ']");
     }
 
     private SelenideElement transactionCodBlock() {
         return $x("(//div[@class='form-group order-transaction w-100-pc']/span/input)[2]");
     }
 
+
+
+
+    private ElementsCollection carId() {
+        return $$x("//table[@id='table_order_products_list']//td[29]");
+    }
+
+    private SelenideElement carIdForSuitableCar() {
+        return $x("//table[@id='table_order_products_list']//tr[1]/td[29]");
+    }
+
+    private SelenideElement carIdForNotSuitableCar() {
+        return $x("//table[@id='table_order_products_list']//tr[2]/td[29]/span");
+    }
+
+    @Step("Checking compliance the Car Id {carIdFromProduct} in the ordered goods. Order_aws")
+    public Order_aws checkingComplianceCarIdInOrderedGoods(String carIdFromProduct) {
+        columnProductQuantity().scrollIntoView(true);
+        for (int i = 0; i < carId().size(); i++) {
+            carId().get(i).shouldHave(exactText(carIdFromProduct));
+        }
+        return this;
+    }
+
+    @Step("Checks by color that the first product fits the car and the second one does not. Order_aws")
+    public Order_aws checksByCarIdThatProductsFitsCar() {
+        carIdForSuitableCar().shouldHave(cssValue("color", "rgba(34, 34, 34, 1)"));
+        carIdForNotSuitableCar().shouldHave(cssValue("color", "rgba(255, 0, 0, 1)"));
+        return this;
+    }
 
 
 
@@ -1176,7 +1214,7 @@ public class Order_aws {
         return this;
     }
 
-    @Step("Checks presrnce transaction cod block. Order_aws")
+    @Step("Checks presence transaction cod block. Order_aws")
     public Order_aws checkPresenceTransactionCodBloc() {
         transactionCodBlock().scrollTo().shouldBe(visible);
         return this;
