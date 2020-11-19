@@ -12,6 +12,8 @@ public class Maker_car_list_page {
         return $(".page_search_title");
     }
 
+    SelenideElement blockWithSelectedVehicle() {return $x("//div[@class='catalog-title__block']");}
+
     SelenideElement selectorInCloseCondition() {
         return $(".catalog-title__change-car");
     }
