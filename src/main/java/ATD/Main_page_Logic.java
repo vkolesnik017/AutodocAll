@@ -14,10 +14,7 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 import static ATD.CommonMethods.*;
 import static PKW.CommonMethods.checkingContainsUrl;
@@ -97,6 +94,13 @@ public class Main_page_Logic extends Main_page {
         emailFieldForFB().setValue(mail);
         passFieldFB().setValue(pass);
         loginBtnFB().click();
+        try {
+            privacyPolicyBtnFB().shouldBe(visible);
+            privacyPolicyBtnFB().click();
+        } catch (NoSuchElementException e){
+            System.out.println("Privacy policy is not visible");
+            e.printStackTrace();
+        }
         switchTo().window(0);
         return page(Profile_page_Logic.class);
     }
