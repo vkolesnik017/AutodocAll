@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Tyres_PKW" parallel="methods" thread-count="2" data-provider-thread-count="2">
+
+    <listeners>
+        <listener class-name="Common.ProjectListener"/>
+    </listeners>
+
+    <test name="QC_2900_LinkingBlockOfBrands">
+        <classes>
+            <class name="PKW.Tyres.QC_2900_LinkingBlockOfBrands.QC_2901_CheckLinkingBlockByBrands"/>
+        </classes>
+    </test>
+
+
+</suite>

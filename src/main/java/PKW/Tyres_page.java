@@ -22,4 +22,10 @@ public class Tyres_page {
         return $x("//select[@id='form_car_id']");
     }
 
+    SelenideElement linkingBlockByBrands() {return $x("//div[@class='featured_manufacturers']");}
+
+    SelenideElement brandByName(String titleOfBrand) {return $x("//div[@class='featured_manufacturers']//a/img[contains(@alt,'"+titleOfBrand+"')]");}
+
+    SelenideElement btnAllBrands() {return $x("//div[@class='type_list_all_brands']/a");}
+
 }
