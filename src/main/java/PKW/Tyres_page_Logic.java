@@ -1,9 +1,14 @@
 package PKW;
 
 import io.qameta.allure.Step;
+
+
+import static com.codeborne.selenide.Condition.visible;
+
 import org.testng.Assert;
 
 import static com.codeborne.selenide.Condition.*;
+
 import static com.codeborne.selenide.Selenide.page;
 
 
@@ -21,10 +26,29 @@ public class Tyres_page_Logic extends Tyres_page {
         String brandFromSelector = brandInput().getValue().toUpperCase();
         String modelFromSelector = modelInput().getValue().toUpperCase();
         String motorFromSelector = motorInput().getValue().toUpperCase();
-        Assert.assertEquals(brandVehicle,brandFromSelector);
-        Assert.assertEquals(modelVehicle,modelFromSelector);
-        Assert.assertEquals(motorVehicle,motorFromSelector);
+        Assert.assertEquals(brandVehicle, brandFromSelector);
+        Assert.assertEquals(modelVehicle, modelFromSelector);
+        Assert.assertEquals(motorVehicle, motorFromSelector);
         return this;
+    }
+
+
+    @Step("presence of linking block by brands. Tyres_page")
+    public Tyres_page_Logic presenceOfBrandsLinkingBlock() {
+        linkingBlockByBrands().shouldBe(visible);
+        return this;
+    }
+
+    @Step("select brandbByname. Tyres_page")
+    public Tyres_brand_page_Logic selectBrandByName(String brand) {
+        brandByName(brand).shouldBe(visible).click();
+        return page(Tyres_brand_page_Logic.class);
+    }
+
+    @Step("click on All brands button. Tyres_page")
+    public Tyres_type_list_brands_page_Logic clickOnAllBrands() {
+        btnAllBrands().shouldBe(visible).click();
+        return page(Tyres_type_list_brands_page_Logic.class);
     }
 
     @Step("Click on size diameter from relink block. Tyres_page")
@@ -32,6 +56,9 @@ public class Tyres_page_Logic extends Tyres_page {
         relinkBlock().scrollIntoView("{block: \"center\"}");
         sizeDiameterFromRelinkBlock().shouldBe(visible).click();
         return page(Tyres_size_page_Logic.class);
+
     }
 
 }
+
+
