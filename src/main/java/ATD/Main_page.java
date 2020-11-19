@@ -32,6 +32,10 @@ public class Main_page {
         return $x("//input[@id='pass']");
     }
 
+    SelenideElement privacyPolicyBtnFB() {
+        return $x("//button[@name='__CONFIRM__']");
+    }
+
     SelenideElement loginBtnFB() {
         return $x("//input[@name='login']");
     }

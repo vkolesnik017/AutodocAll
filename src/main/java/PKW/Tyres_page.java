@@ -22,6 +22,13 @@ public class Tyres_page {
         return $x("//select[@id='form_car_id']");
     }
 
+
+    SelenideElement linkingBlockByBrands() {return $x("//div[@class='featured_manufacturers']");}
+
+    SelenideElement brandByName(String titleOfBrand) {return $x("//div[@class='featured_manufacturers']//a/img[contains(@alt,'"+titleOfBrand+"')]");}
+
+    SelenideElement btnAllBrands() {return $x("//div[@class='type_list_all_brands']/a");}
+
     SelenideElement relinkBlock() {
         return $x("//div[@class='other_pr']");
     }
@@ -33,7 +40,6 @@ public class Tyres_page {
     SelenideElement activeMotorInput() {
         return $x("//div[@id='car-select' and @class='mainblock-search__select slt-selectbox-wrapper filled active select-full']");
     }
-
 
 
 }
