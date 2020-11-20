@@ -41,5 +41,16 @@ public class Tyres_page {
         return $x("//div[@id='car-select' and @class='mainblock-search__select slt-selectbox-wrapper filled active select-full']");
     }
 
+    SelenideElement relinkBlockBySeasons() {return $x("//div[contains(@class,'seasons ')]");}
+
+    SelenideElement winterSeasonsFromRelinkBlock() {return $x("//div[contains(@class,'seasons ')]//a[@data-ga-action='winter']");}
+
+    SelenideElement relinkByCarBlock() {return $x("//div[@class='listing_microdata bottom_box_mod listing_microdata--brand']");}
+
+    SelenideElement modelFromRelinkByCarBlock() {return $x("//div[@class='bx-wrapper']//ul/li/a");}
+
+    SelenideElement btnMoreFromRelinkByCarBlock() {return $x("//div[@class='listing_microdata bottom_box_mod listing_microdata--brand']//a[@class='button']");}
+
+
 
 }
