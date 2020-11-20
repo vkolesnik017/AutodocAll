@@ -474,6 +474,33 @@ public class Order_aws {
         return $x("//table[@id='table_order_products_list']//tr[2]/td[29]/span");
     }
 
+    private SelenideElement accountsBtn() {
+        return $x("//button[contains(@class,'printBillPopup')]");
+    }
+
+    private SelenideElement vatInAccountPopUp() {
+        return $x("//select[@name='Bill[tva]']");
+    }
+
+    private SelenideElement closePopUpBtnInAccountPopUp() {
+        return $x("//div[@id='printBillPopup']//a[contains(@class,'btn-close')]");
+    }
+
+
+
+    @Step("Click button accounts. Order_aws")
+    public Order_aws clickBtnAccount() {
+        accountsBtn().click();
+        return this;
+    }
+
+    @Step("Open popup accounts and check VAT {expectedText}. Order_aws")
+    public Order_aws openPopUpAccountsAndCheckVat(String expectedText) {
+        clickBtnAccount();
+        vatInAccountPopUp().shouldHave(text(expectedText));
+        return this;
+    }
+
     @Step("Checking compliance the Car Id {carIdFromProduct} in the ordered goods. Order_aws")
     public Order_aws checkingComplianceCarIdInOrderedGoods(String carIdFromProduct) {
         columnProductQuantity().scrollIntoView(true);
@@ -490,16 +517,12 @@ public class Order_aws {
         return this;
     }
 
-
-
     @Step("get VIN num in popup from btn Auto By Search From The Site. Order_aws")
     public Order_aws getVinNumInPopupFromBtnAutoBySearchFromTheSite(String vinNum) {
         vinNumInPopupFromBtnAutoBySearchFromTheSite().shouldHave(text(vinNum));
         closePopupFromBtnAutoBySearchFromTheSite().shouldBe(visible).click();
         return this;
     }
-
-
 
     @Step("Click btn Auto By Search From The Site. Order_aws")
     public Order_aws clickBtnAutoBySearchFromTheSite() {
@@ -541,7 +564,6 @@ public class Order_aws {
         return this;
     }
 
-
     @Step("Checks current status {expectedStatus} in order. Order_aws")
     public Order_aws checkCurrentStatusInOrder(String expectedStatus) {
         currentStatusInOrder().shouldBe(visible);
@@ -553,7 +575,6 @@ public class Order_aws {
         }
         return this;
     }
-
 
     @Step("Get order ID of order. Order_aws")
     public String getOrderIdOfOrder() {
