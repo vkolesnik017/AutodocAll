@@ -304,4 +304,11 @@ public class Maker_car_list_page_Logic extends Maker_car_list_page {
 
         return this;
     }
+
+    @Step("Check presence block with selected vehicle. Maker_car_list_page")
+    public Maker_car_list_page_Logic checkPresenceBlockWithSelectedVehicle() {
+        blockWithSelectedVehicle().shouldBe(visible);
+        return this;
+    }
+
 }
