@@ -563,24 +563,28 @@ public class Order_aws {
 
     @Step("Checks the quantity of goods {expectedQuantity} in column count products. Order_aws")
     public Order_aws checkQuantityOfGoodsInColumnCountProduct(String expectedQuantity) {
+        countProducts().shouldBe(visible);
         countProducts().shouldHave(text(expectedQuantity));
         return this;
     }
 
     @Step("Checks the quantity of goods {expectedQuantity} in column expected quantity column. Order_aws")
     public Order_aws checkQuantityOfGoodsInColumnExpectedQuantity(String expectedQuantity) {
+        expectedQuantityColumn().shouldBe(visible);
         expectedQuantityColumn().shouldHave(text(expectedQuantity));
         return this;
     }
 
     @Step("Checks the quantity of goods {expectedQuantity} in column Quantity product. Order_aws")
     public Order_aws checkQuantityOfGoodsInColumnQuantity(String expectedQuantity) {
+        columnProductQuantity().shouldBe(visible);
         columnProductQuantity().shouldHave(text(expectedQuantity));
         return this;
     }
 
     @Step("Checks the quantity of goods {expectedQuantity} in refund table. Order_aws")
     public Order_aws checksQuantityOfGoodsInRefundTable(String expectedQuantity) {
+        quantityProductInRefundTable().shouldBe(visible);
         quantityProductInRefundTable().shouldHave(attribute("value", expectedQuantity));
         return this;
     }
@@ -910,7 +914,7 @@ public class Order_aws {
 
     @Step("Check delivery price {expectedDeliveryPriceOrderAWS} in order AWS. Order_aws")
     public Order_aws checkDeliveryPriceOrderAWS(String expectedDeliveryPriceOrderAWS) {
-        deliveryPriceOrderAWS().shouldHave(attribute("data-sum", expectedDeliveryPriceOrderAWS));
+        deliveryPriceOrderAWS().shouldHave(attribute("data-sum", expectedDeliveryPriceOrderAWS.replaceAll(",", ".")));
         return this;
     }
 
