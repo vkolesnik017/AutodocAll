@@ -212,4 +212,9 @@ public class CommonMethods {
 
     //Checks element clickability
     public static Condition clickable = and("can be clicked", visible, enabled);
+
+    @Step("get attribute from not visible element {expected element}")
+    public static String getAttributeFromUnVisibleElement(SelenideElement element, String attribute) {
+        return (String) (executeJavaScript("return arguments[0].getAttribute('" + attribute + "')", element));
+    }
 }

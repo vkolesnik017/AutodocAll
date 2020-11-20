@@ -1,6 +1,9 @@
 package PKW;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+
+import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class Tyres_page {
@@ -41,5 +44,11 @@ public class Tyres_page {
         return $x("//div[@id='car-select' and @class='mainblock-search__select slt-selectbox-wrapper filled active select-full']");
     }
 
+  SelenideElement topProductsBlock() {return $x("//div[@class='ct_toppop_products ct_toppop_products_wrapper js-top-tires']");}
 
+  ElementsCollection imageOfBrandAtTopProducts() {return $$x("//div[@class='ct_toppop_prod_brand']//img");}
+
+  ElementsCollection allSizesOfTopProducts() {return $$x("//div[@class='options']");}
+
+  ElementsCollection btnAddTopProductToBasket() {return $$x("//div[@class='number_box']/following-sibling::div");}
 }

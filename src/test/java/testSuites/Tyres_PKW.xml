@@ -12,5 +12,14 @@
         </classes>
     </test>
 
+    <test name="QC_2496_MainTyresPage">
+        <classes>
+            <class name="PKW.Tyres.QC_2496_MainTyresPage.QC_2559_CheckMainElementsOfTopProductBlock"/>
+            <class name="PKW.Tyres.QC_2496_MainTyresPage.QC_2562_CheckingSelectionOfProductsInTopBlock"/>
+            <class name="PKW.Tyres.QC_2496_MainTyresPage.QC_2560_CheckingSelectionOfProductsInTopBlock_NotMoreTwo"/>
+        </classes>
+    </test>
+
+
 
 </suite>

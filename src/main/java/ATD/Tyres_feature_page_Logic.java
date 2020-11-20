@@ -210,4 +210,10 @@ public class Tyres_feature_page_Logic extends Tyres_feature_page {
         }
         return this;
     }
+
+    @Step("presence of Tyres size selector. Tyres_feature_page")
+    public Tyres_feature_page_Logic presenceOfTyresSizeSelector() {
+        tyresSizeSelector().shouldBe(visible);
+        return this;
+    }
 }
