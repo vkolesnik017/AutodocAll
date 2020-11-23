@@ -187,4 +187,34 @@ public class Tyres_feature_page_Logic extends Tyres_feature_page {
         }
         return this;
     }
+
+
+    @Step("check SEO block. Tyres_feature_page")
+    public Tyres_feature_page_Logic checkSeoBlock() {
+        presenceOfSeoHeadlines();
+        presenceOfSeoTexts();
+        return this;
+    }
+
+    @Step("check SEO block. Tyres_feature_page")
+    public Tyres_feature_page_Logic presenceOfSeoHeadlines() {
+        for (int i = 0; i < seoHeadlines().size(); i++) {
+            seoHeadlines().get(i).shouldBe(visible).shouldNotBe(empty);
+        }
+        return this;
+    }
+
+    @Step("check SEO block. Tyres_feature_page")
+    public Tyres_feature_page_Logic presenceOfSeoTexts() {
+        for (int i = 0; i < seoTexts().size(); i++) {
+            seoTexts().get(i).shouldBe(visible).shouldNotBe(empty);
+        }
+        return this;
+    }
+
+    @Step("presence of Tyres size selector. Tyres_feature_page")
+    public Tyres_feature_page_Logic presenceOfTyresSizeSelector() {
+        tyresSizeSelector().shouldBe(visible);
+        return this;
+    }
 }

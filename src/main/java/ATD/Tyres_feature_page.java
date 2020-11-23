@@ -4,8 +4,7 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.$$x;
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Tyres_feature_page {
 
@@ -24,4 +23,10 @@ public class Tyres_feature_page {
     ElementsCollection visibleBtnMoreOfLinkingBlock() {return $$x("//div[@class='most-popular']//span[@class='link']").filter(visible);}
 
     SelenideElement mainHeadline() {return $x("//h1[@class='title-reifen']");}
+
+    ElementsCollection seoHeadlines() {return $$x("//div[@class='reifen-text-rows']/strong");}
+
+    ElementsCollection seoTexts() {return $$x("//div[@class='reifen-text-rows']//*[self::p or self::ul/li/b]");}
+
+    SelenideElement tyresSizeSelector() {return $(".reifen-selector");}
 }

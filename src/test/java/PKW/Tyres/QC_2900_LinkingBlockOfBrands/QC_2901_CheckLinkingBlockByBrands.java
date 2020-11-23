@@ -37,7 +37,7 @@ public class QC_2901_CheckLinkingBlockByBrands {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test hecking the linking block by brands")
+    @Description(value = "Test checking the linking block by brands")
     public void testCheckLinkingBlockByBrands(String route) throws SQLException {
         openPage(route);
         tyresPage.presenceOfBrandsLinkingBlock().selectBrandByName("Michelin");
@@ -55,7 +55,7 @@ public class QC_2901_CheckLinkingBlockByBrands {
     @Test(dataProvider = "routesTyres")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test hecking the linking block by brands")
+    @Description(value = "Test checking the linking block by brands")
     public void testCheckLinkingBlockByBrandsTyres(String route) {
         openPage(route);
         String currentUrl = url();
@@ -74,7 +74,7 @@ public class QC_2901_CheckLinkingBlockByBrands {
     @Test(dataProvider = "routesTyresMaker")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test hecking the linking block by brands")
+    @Description(value = "Test checking the linking block by brands")
     public void testCheckLinkingBlockByBrandsTyresMaker(String route) throws SQLException {
         openPage(route);
         tyresMakerPage.presenceOfBrandsLinkingBlock().selectBrandByName("Michelin");
