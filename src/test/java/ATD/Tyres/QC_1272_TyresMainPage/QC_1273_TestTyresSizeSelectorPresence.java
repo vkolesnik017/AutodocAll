@@ -1,6 +1,7 @@
 package ATD.Tyres.QC_1272_TyresMainPage;
 
 
+import ATD.Tyres_feature_page_Logic;
 import Common.SetUp;
 import ATD.Tyres_page_Logic;
 import io.qameta.allure.Description;
@@ -36,6 +37,20 @@ public class QC_1273_TestTyresSizeSelectorPresence {
     public void testTyresSizeSelectorPresence(String route) {
         openPage(route);
         new Tyres_page_Logic().checkTyresSizeSelectorPresence();
+    }
+
+    @DataProvider(name = "routesFeature", parallel = true)
+    Object[] dataProviderFeature() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_feature");
+    }
+
+    @Test(dataProvider = "routesFeature")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test Checks Tyres Size Selector Presence")
+    public void testTyresSizeSelectorPresenceFeature(String route) {
+        openPage(route);
+        new Tyres_feature_page_Logic().presenceOfTyresSizeSelector();
     }
 
     @AfterMethod

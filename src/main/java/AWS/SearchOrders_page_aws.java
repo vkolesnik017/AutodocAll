@@ -12,6 +12,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.CommonMethods.getExpectedCalendarData;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class SearchOrders_page_aws {
 
@@ -102,32 +103,8 @@ public class SearchOrders_page_aws {
         return page(SearchOrders_page_aws.class);
     }
 
-    @Step("Open order with a generated invoice and with order amount equal to or less than ten and open it. SearchOrders_page_aws")
-    public Order_aws openCorrectOperationOfFirstReOrderFromUser() {
-        Order_aws order_aws = new Order_aws();
-        if (orderLine().size() > 0) {
-            for (int i = 0; i < orderLine().size(); i++) {
-                if (!orderLine().get(i).$x(".//div[@data-hint='Test']").isDisplayed()) {
-                    int sum = Integer.parseInt(orderLine().get(i).$x("./../..//a[@class='order-grandtotal']").shouldBe(visible).getText());
-                    if (sum <= 10) {
-                        String id = orderLine().get(i).$x("./../..//a[@class='order_link']").getText();
-                        System.out.println(id);
-                        orderLine().get(i).$x("./../..//a[@class='order_link']").shouldBe(visible).click();
-                        if (!order_aws.reorderNumber().isDisplayed()) {
-                            back();
-                            continue;
-                        }
-                        break;
-                    }
-                }
-            }
-        }
-        return page(Order_aws.class);
-    }
-
-    @Step("Rebates and opens orders with generated invoice and order amount equal to or less than ten " +
-            "and checks for the 'Re-Orders / Sub-Orders' and 'Parent Order' blocks. SearchOrders_page_aws")
-    public Boolean openCorrectOperationOfNotFirstReOrderFromUser() {
+    @Step("Check present transaction cod block in re-order. SearchOrders_page_aws")
+    public Boolean checkPresentTransactionCodInReOrder(SelenideElement element) {
         boolean check = false;
         Order_aws order_aws = new Order_aws();
         if (orderLine().size() > 0) {
@@ -138,9 +115,22 @@ public class SearchOrders_page_aws {
                         String id = orderLine().get(i).$x("./../..//a[@class='order_link']").getText();
                         System.out.println(id);
                         orderLine().get(i).$x("./../..//a[@class='order_link']").shouldBe(visible).click();
-                        if (order_aws.blocksParentAndReOrderNumber().isDisplayed()) {
+                        if (element.isDisplayed()) {
                             check = true;
-                            break;
+                            new Order_aws().transitionToReorderNumber();
+                            switchTo().window(1);
+                            sleep(5000);
+                            if (order_aws.transactionCodBlock().isDisplayed()) {
+                                break;
+                            } else {
+                                closeWindow();
+                                switchTo().window(0);
+                                String url = url();
+                                if (url.contains("https://aws.autodoc.de/order/view/" + id + "")) {
+                                    back();
+                                    continue;
+                                }
+                            }
                         } else {
                             back();
                             continue;
@@ -153,9 +143,9 @@ public class SearchOrders_page_aws {
     }
 
     @Step("Toggles pagination pages if there are no Parent and Re-Order number blocks in the order. SearchOrders_page_aws")
-    public Order_aws togglesPaginationIfThereAreNoParentAndReOrderNumberBlocksInOrder() {
+    public Order_aws togglesPaginationIfThereAreNoParentAndReOrderNumberBlocksInOrder(SelenideElement element) {
         while (nexPageBtnInPaginationBlock().isDisplayed()) {
-            Boolean check = openCorrectOperationOfNotFirstReOrderFromUser();
+            Boolean check = checkPresentTransactionCodInReOrder(element);
             if (!check) {
                 nexPageBtnInPaginationBlock().click();
                 checkingContainsUrl("https://aws.autodoc.de/search-orders");

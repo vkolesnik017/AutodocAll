@@ -12,5 +12,26 @@
         </classes>
     </test>
 
+    <test name="QC_2898_CheckingRelinkingBlockBySeasonsOnTireRoutes">
+        <classes>
+            <class name="PKW.Tyres.QC_2898_CheckingRelinkingBlockBySeasonsOnTireRoutes.QC_2899_CheckingLinkingBlockBySeasonsOnTireRoutes"/>
+        </classes>
+    </test>
+
+    <test name="QC_2896_CheckingLinkingBlockByCarBrandsOnTireRuts">
+        <classes>
+            <class name="PKW.Tyres.QC_2896_CheckingLinkingBlockByCarBrandsOnTireRuts.QC_2897_CheckingRelinkBlockByCarModelOnTireRuts"/>
+        </classes>
+    </test>
+
+    <test name="QC_2496_MainTyresPage">
+        <classes>
+            <class name="PKW.Tyres.QC_2496_MainTyresPage.QC_2559_CheckMainElementsOfTopProductBlock"/>
+            <class name="PKW.Tyres.QC_2496_MainTyresPage.QC_2562_CheckingSelectionOfProductsInTopBlock"/>
+            <class name="PKW.Tyres.QC_2496_MainTyresPage.QC_2560_CheckingSelectionOfProductsInTopBlock_NotMoreTwo"/>
+        </classes>
+    </test>
+
+
 
 </suite>
