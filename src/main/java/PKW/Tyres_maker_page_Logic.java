@@ -24,4 +24,34 @@ public class Tyres_maker_page_Logic extends Tyres_maker_page {
         btnAllBrands().shouldBe(visible).click();
         return page(Tyres_type_list_brands_page_Logic.class);
     }
+
+    @Step("Check presence relink by car block. Tyres_maker_page")
+    public Tyres_maker_page_Logic checkPresenceRelinkByCarBlock() {
+        relinkByCarBlock().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        return this;
+    }
+
+    @Step("Click on model in relink by car block. Tyres_maker_page")
+    public Tyres_maker_page_Logic clickOnModelInRelinkByCarBlock() {
+        modelFromRelinkByCarBlock().click();
+        return this;
+    }
+
+    @Step("Click btn more in relink by car block. Tyres_maker_page")
+    public Tyres_type_list_makers_page_Logic clickBtnMoreInRelinkByCarBlock() {
+        btnMoreFromRelinkByCarBlock().shouldBe(visible).click();
+        return page(Tyres_type_list_makers_page_Logic.class);
+    }
+
+    @Step("Get url model in relink by car block. Tyres_maker_page")
+    public String getUrlModelInRelinkByCarBlock() {
+        return modelFromRelinkByCarBlock().getAttribute("url");
+    }
+
+    @Step("Get url btn more in relink by car block. Tyres_maker_page")
+    public String getUrlBtnMorelInRelinkByCarBlock() {
+        return btnMoreFromRelinkByCarBlock().getAttribute("href");
+    }
+
+
 }
