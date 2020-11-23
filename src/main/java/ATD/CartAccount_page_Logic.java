@@ -3,6 +3,8 @@ package ATD;
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
 
+import java.util.NoSuchElementException;
+
 import static ATD.CommonMethods.password;
 
 import static ATD.CommonMethods.mailRandom;
@@ -88,6 +90,13 @@ public class CartAccount_page_Logic extends CartAccount_page {
         emailFieldForFB().setValue(mail);
         passFieldFB().setValue(pass);
         loginBtnFB().click();
+        try {
+            privacyPolicyBtnFB().shouldBe(visible);
+            privacyPolicyBtnFB().click();
+        } catch (NoSuchElementException e){
+            System.out.println("Privacy policy is not visible");
+            e.printStackTrace();
+        }
         switchTo().window(0);
         return page(CartAddress_page_Logic.class);
     }

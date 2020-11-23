@@ -14,10 +14,7 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 import static ATD.CommonMethods.*;
 import static PKW.CommonMethods.checkingContainsUrl;
@@ -97,6 +94,13 @@ public class Main_page_Logic extends Main_page {
         emailFieldForFB().setValue(mail);
         passFieldFB().setValue(pass);
         loginBtnFB().click();
+        try {
+            privacyPolicyBtnFB().shouldBe(visible);
+            privacyPolicyBtnFB().click();
+        } catch (NoSuchElementException e){
+            System.out.println("Privacy policy is not visible");
+            e.printStackTrace();
+        }
         switchTo().window(0);
         return page(Profile_page_Logic.class);
     }
@@ -350,6 +354,15 @@ public class Main_page_Logic extends Main_page {
         secondFieldKBA().setValue(numberForSecondField);
         return this;
     }
+    // This method only for DE
+    @Step("Fill in KBA fields in popup. Main_page")
+    public Main_page_Logic fillNumberKbaInPopup(String numberForFirstField, String numberForSecondField) {
+        bluePromptEmptyFieldSelector().shouldBe(visible);
+        firstFieldKBAInPopup().shouldBe(visible).setValue(numberForFirstField);
+        secondFieldKBAInPopup().shouldBe(visible).setValue(numberForSecondField);
+        sleep(4000);
+        return this;
+    }
 
     @Step("Click link \"Was ist eine Schlüsselnummer?\" and check work KBA popup. Main_page")
     public Main_page_Logic clickLinkAndCheckWorkKbaPopup() {
@@ -358,6 +371,21 @@ public class Main_page_Logic extends Main_page {
         btnClosePopup().shouldBe(visible).click();
         kbaPopup().shouldNotBe(visible);
         return this;
+    }
+
+    @Step("Checks the presence of all elements from KBA selector. Main_page")
+    public Main_page_Logic checkPresenceAllElementsInKbaSelectors() {
+        if (hiddenSelectorBlock().isDisplayed()) {
+            hiddenSelectorBlock().click();
+        }
+        titleKbaSelector().shouldHave(exactText("NACH SCHLÜSSELNUMMER"));
+        firstFieldKBA().shouldHave(attribute("placeholder", "4-stellig"));
+        secondFieldKBA().shouldHave(attribute("placeholder", "3-stellig"));
+        textUnderFirstFieldKBA().shouldHave(exactText("ZU 2. ODER ZU 2.1."));
+        textUnderSecondFieldKBA().shouldHave(exactText("ZU 3. ODER ZU 2.2."));
+        linkInfoKba().shouldHave(exactText("Was ist eine" + " Schlüsselnummer?"));
+        selectorKbaBtn().shouldHave(exactText("Suchen"));
+       return this;
     }
 
     // This method for all shop, except DE
@@ -371,6 +399,12 @@ public class Main_page_Logic extends Main_page {
     @Step("Click search KBA button. Main_page")
     public Maker_car_list_page_Logic clickKbaBtn() {
         selectorKbaBtn().click();
+        return page(Maker_car_list_page_Logic.class);
+    }
+
+    @Step("Click search KBA button in popup. Main_page")
+    public Maker_car_list_page_Logic clickKbaBtnInPopup() {
+        selectorKbaBtnInPopup().shouldBe(visible).click();
         return page(Maker_car_list_page_Logic.class);
     }
 
@@ -400,6 +434,12 @@ public class Main_page_Logic extends Main_page {
     public Main_page_Logic resetCarSelectorPopup() {
         resetCarBtnInCarSelectorPopup().click();
         resetCarBtnInCarSelectorPopup().shouldBe(not(visible));
+        return this;
+    }
+
+    @Step("checks absence selector popup. Main_page")
+    public Main_page_Logic checkAbsenceSelectorPopup() {
+        selectorPopup().shouldNotBe(visible);
         return this;
     }
 

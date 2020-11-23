@@ -444,7 +444,15 @@ public class Order_aws {
     }
 
     public SelenideElement reorderNumber() {
-        return $x("//div[@class='w-box-content cnt_a clearfix']/a[@target='_blank']");
+        return $x("//div[@class='w-box']//div[contains(text(),'Пере-Заказы')]/..//a");
+    }
+
+    public SelenideElement parentOrderNumber() {
+        return $x("//div[@class='w-box']//div[text()='Родительский заказ']/..//a");
+    }
+
+    public SelenideElement blocksParentAndReOrderNumber() {
+        return $x("//div[@class='w-box']//div[contains(text(),'Пере-Заказы')]/../../div[@class='w-box']//div[text()='Родительский заказ']");
     }
 
     private SelenideElement transactionCodBlock() {
@@ -466,6 +474,33 @@ public class Order_aws {
         return $x("//table[@id='table_order_products_list']//tr[2]/td[29]/span");
     }
 
+    private SelenideElement accountsBtn() {
+        return $x("//button[contains(@class,'printBillPopup')]");
+    }
+
+    private SelenideElement vatInAccountPopUp() {
+        return $x("//select[@name='Bill[tva]']");
+    }
+
+    private SelenideElement closePopUpBtnInAccountPopUp() {
+        return $x("//div[@id='printBillPopup']//a[contains(@class,'btn-close')]");
+    }
+
+
+
+    @Step("Click button accounts. Order_aws")
+    public Order_aws clickBtnAccount() {
+        accountsBtn().click();
+        return this;
+    }
+
+    @Step("Open popup accounts and check VAT {expectedText}. Order_aws")
+    public Order_aws openPopUpAccountsAndCheckVat(String expectedText) {
+        clickBtnAccount();
+        vatInAccountPopUp().shouldHave(text(expectedText));
+        return this;
+    }
+
     @Step("Checking compliance the Car Id {carIdFromProduct} in the ordered goods. Order_aws")
     public Order_aws checkingComplianceCarIdInOrderedGoods(String carIdFromProduct) {
         columnProductQuantity().scrollIntoView(true);
@@ -482,16 +517,12 @@ public class Order_aws {
         return this;
     }
 
-
-
     @Step("get VIN num in popup from btn Auto By Search From The Site. Order_aws")
     public Order_aws getVinNumInPopupFromBtnAutoBySearchFromTheSite(String vinNum) {
         vinNumInPopupFromBtnAutoBySearchFromTheSite().shouldHave(text(vinNum));
         closePopupFromBtnAutoBySearchFromTheSite().shouldBe(visible).click();
         return this;
     }
-
-
 
     @Step("Click btn Auto By Search From The Site. Order_aws")
     public Order_aws clickBtnAutoBySearchFromTheSite() {
@@ -533,7 +564,6 @@ public class Order_aws {
         return this;
     }
 
-
     @Step("Checks current status {expectedStatus} in order. Order_aws")
     public Order_aws checkCurrentStatusInOrder(String expectedStatus) {
         currentStatusInOrder().shouldBe(visible);
@@ -546,7 +576,6 @@ public class Order_aws {
         return this;
     }
 
-
     @Step("Get order ID of order. Order_aws")
     public String getOrderIdOfOrder() {
         String orderID = orderID().getText().substring(10);
@@ -555,24 +584,28 @@ public class Order_aws {
 
     @Step("Checks the quantity of goods {expectedQuantity} in column count products. Order_aws")
     public Order_aws checkQuantityOfGoodsInColumnCountProduct(String expectedQuantity) {
+        countProducts().shouldBe(visible);
         countProducts().shouldHave(text(expectedQuantity));
         return this;
     }
 
     @Step("Checks the quantity of goods {expectedQuantity} in column expected quantity column. Order_aws")
     public Order_aws checkQuantityOfGoodsInColumnExpectedQuantity(String expectedQuantity) {
+        expectedQuantityColumn().shouldBe(visible);
         expectedQuantityColumn().shouldHave(text(expectedQuantity));
         return this;
     }
 
     @Step("Checks the quantity of goods {expectedQuantity} in column Quantity product. Order_aws")
     public Order_aws checkQuantityOfGoodsInColumnQuantity(String expectedQuantity) {
+        columnProductQuantity().shouldBe(visible);
         columnProductQuantity().shouldHave(text(expectedQuantity));
         return this;
     }
 
     @Step("Checks the quantity of goods {expectedQuantity} in refund table. Order_aws")
     public Order_aws checksQuantityOfGoodsInRefundTable(String expectedQuantity) {
+        quantityProductInRefundTable().shouldBe(visible);
         quantityProductInRefundTable().shouldHave(attribute("value", expectedQuantity));
         return this;
     }
@@ -902,7 +935,7 @@ public class Order_aws {
 
     @Step("Check delivery price {expectedDeliveryPriceOrderAWS} in order AWS. Order_aws")
     public Order_aws checkDeliveryPriceOrderAWS(String expectedDeliveryPriceOrderAWS) {
-        deliveryPriceOrderAWS().shouldHave(attribute("data-sum", expectedDeliveryPriceOrderAWS));
+        deliveryPriceOrderAWS().shouldHave(attribute("data-sum", expectedDeliveryPriceOrderAWS.replaceAll(",", ".")));
         return this;
     }
 
@@ -1206,7 +1239,7 @@ public class Order_aws {
         return this;
     }
 
-    @Step("Checks presrnce transaction cod block. Order_aws")
+    @Step("Checks presence transaction cod block. Order_aws")
     public Order_aws checkPresenceTransactionCodBloc() {
         transactionCodBlock().scrollTo().shouldBe(visible);
         return this;
