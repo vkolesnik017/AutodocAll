@@ -114,7 +114,6 @@ public class Cart_page_Logic extends Cart_page {
             getCurrencyAndVerify(discount(), "discount", shop, expectedCurrency);
         }
         return this;
-
     }
 
     @Step("Check of id {idOfProduct} added product to basket. Cart_page")
@@ -439,6 +438,12 @@ public class Cart_page_Logic extends Cart_page {
             res = roundMin;
         }
         Assert.assertEquals(res, totalOrderPrice);
+        return this;
+    }
+
+    @Step("Checks for text containing VAT percentage. Cart_page")
+    public Cart_page_Logic checkTextContainingVatPercentage(String textWithPercentageOfVAT) {
+        percentageOfVat().shouldHave(text(textWithPercentageOfVAT));
         return this;
     }
 }

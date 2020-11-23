@@ -266,4 +266,8 @@ public class Cart_page {
         return $x("//div[@class='info__more-info']//ul[@style='display: block;']//span[contains(text(),'Zustand')]");
     }
 
+    SelenideElement percentageOfVat() {
+        return $x("//div[@class='order-summary__row order-summary__row--total']//i");
+    }
+
 }
