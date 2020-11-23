@@ -2,8 +2,13 @@ package Common;
 
 import com.codeborne.pdftest.PDF;
 import io.qameta.allure.Step;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.text.PDFTextStripper;
 
+import java.io.BufferedInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 
 import static com.codeborne.pdftest.PDF.containsText;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -29,5 +34,16 @@ public class File {
         }else{
             System.out.println("Rename failed");
         }
+    }
+
+    @Step("Checking the content in the opened browser pdf")
+    public static String readPdfContent(String url) throws IOException {
+        URL pdfUrl = new URL(url);
+        InputStream inputStream = pdfUrl.openStream();
+        BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
+        PDDocument doc = PDDocument.load(bufferedInputStream);
+        String content = new PDFTextStripper().getText(doc).replaceAll(" ", "").replaceAll("\\W", "");
+        bufferedInputStream.close();
+        return content;
     }
 }

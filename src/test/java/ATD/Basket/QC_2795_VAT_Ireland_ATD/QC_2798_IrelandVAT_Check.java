@@ -7,16 +7,20 @@ import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.CommonMethods.password;
+import static Common.File.readPdfContent;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.switchTo;
+import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class QC_2798_IrelandVAT_Check {
 
@@ -38,7 +42,7 @@ public class QC_2798_IrelandVAT_Check {
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks VAT for Ireland")
-    public void testChecksVatForIreland(String route) throws SQLException {
+    public void testChecksVatForIreland(String route) throws SQLException, IOException {
         openPage(route);
         String orderNumber = new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
@@ -70,6 +74,10 @@ public class QC_2798_IrelandVAT_Check {
                 .clickPrintBtnInPopupReturn();
         switchTo().window(1);
         switchTo().defaultContent();
+        String url = url();
+        String pdfContent = readPdfContent(url);
+        Assert.assertTrue(pdfContent.contains("MwSt. " + vatForIE + "%".replaceAll("\\W", "")));
+
     }
 
     }
