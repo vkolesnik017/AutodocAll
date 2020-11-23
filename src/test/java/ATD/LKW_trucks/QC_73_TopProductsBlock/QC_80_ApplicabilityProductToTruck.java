@@ -59,4 +59,5 @@ public class QC_80_ApplicabilityProductToTruck {
     @AfterMethod
     public void close() {
         closeWebDriver();
-    }}
+    }
+}
