@@ -69,6 +69,13 @@ public class CartPayments_page_Logic extends CartPayments_page{
         return page(CartAddress_page_Logic.class);
     }
 
+    @Step("Return to the cart page. CartPayments_page")
+    public Cart_page_Logic clickBtnReturnTheCartPage() {
+        btnReturnTheCartPage().shouldBe(visible);
+        btnReturnTheCartPage().click();
+        return page(Cart_page_Logic.class);
+    }
+
     @Step("Method clicks on the desired payment method {paymentsName}, for each shop {shop}. CartPayments_page")
     public CartPayments_page_Logic clickOnTheDesiredPaymentMethod(String shop, String paymentsName) throws SQLException {
         String paymentsId = new DataBase("ATD").getPaymentsLocator("payments_atd", shop, paymentsName);

@@ -59,6 +59,51 @@ public class Tyres_page_Logic extends Tyres_page {
 
     }
 
+    @Step("check presence relink block by seasons. Tyres_page")
+    public Tyres_page_Logic checkPresenceRelinkBlockBySeasons() {
+        relinkBlockBySeasons().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Click on winter seasons from relink block. Tyres_page")
+    public Tyres_season_page_Logic clickOnWinterBlockFromRelink() {
+        winterSeasonsFromRelinkBlock().click();
+        return page(Tyres_season_page_Logic.class);
+    }
+
+    @Step("Get url from winter seasons in relink block. Tyres_page")
+    public String getUrlFromWinterSeasonsInRelinkBlock() {
+        return winterSeasonsFromRelinkBlock().getAttribute("href");
+    }
+
+    @Step("Check presence relink by car block. Tyres_page")
+    public Tyres_page_Logic checkPresenceRelinkByCarBlock() {
+        relinkByCarBlock().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        return this;
+    }
+
+    @Step("Click on model in relink by car block. Tyres_page")
+    public Tyres_maker_page_Logic clickOnModelInRelinkByCarBlock() {
+        modelFromRelinkByCarBlock().click();
+        return page(Tyres_maker_page_Logic.class);
+    }
+
+    @Step("Click btn more in relink by car block. Tyres_page")
+    public Tyres_type_list_makers_page_Logic clickBtnMoreInRelinkByCarBlock() {
+        btnMoreFromRelinkByCarBlock().shouldBe(visible).click();
+        return page(Tyres_type_list_makers_page_Logic.class);
+    }
+
+    @Step("Get url model in relink by car block. Tyres_page")
+    public String getUrlModelInRelinkByCarBlock() {
+        return modelFromRelinkByCarBlock().getAttribute("href");
+    }
+
+    @Step("Get url btn more in relink by car block. Tyres_page")
+    public String getUrlBtnMorelInRelinkByCarBlock() {
+        return btnMoreFromRelinkByCarBlock().getAttribute("href");
+    }
+
 }
 
 

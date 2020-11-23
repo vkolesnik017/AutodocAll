@@ -40,6 +40,10 @@ public class CartPayments_page {
         return $x("//li[@class='complete second_step link ']//a");
     }
 
+    SelenideElement btnReturnTheCartPage() {
+        return $x("//li[@class='complete link first_step']/a");
+    }
+
     SelenideElement paymentsLocator(String locator) {
         return $(locator);
     }
