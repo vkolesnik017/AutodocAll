@@ -459,9 +459,6 @@ public class Order_aws {
         return $x("(//div[@class='form-group order-transaction w-100-pc']/span/input)[2]");
     }
 
-
-
-
     private ElementsCollection carId() {
         return $$x("//table[@id='table_order_products_list']//td[29]");
     }
@@ -486,11 +483,37 @@ public class Order_aws {
         return $x("//div[@id='printBillPopup']//a[contains(@class,'btn-close')]");
     }
 
+    private SelenideElement returnButton() {
+        return $x("//button[@name='printGu']");
+    }
+
+    private SelenideElement typeSelectInReturnPopup() {
+        return $x("//select[@name='Refund[type]']");
+    }
+
+    private SelenideElement checkBoxProductInPopupReturn() {
+        return $x("//input[@id='form_RefundProducts[0][show]']");
+    }
+
+    private SelenideElement checkBoxDeliveryInPopupReturn() {
+        return $x("//input[@id='form_Refund[isVersand]']");
+    }
+
+    private SelenideElement printBtnInPopupReturn() {
+        return $x("//a[@class='btn btn-primary btn-print']");
+    }
+
 
 
     @Step("Click button accounts. Order_aws")
     public Order_aws clickBtnAccount() {
         accountsBtn().click();
+        return this;
+    }
+
+    @Step("Closes popup accounts. Order_aws")
+    public Order_aws closePopupAccounts() {
+        closePopUpBtnInAccountPopUp().click();
         return this;
     }
 
@@ -1242,6 +1265,41 @@ public class Order_aws {
     @Step("Checks presence transaction cod block. Order_aws")
     public Order_aws checkPresenceTransactionCodBloc() {
         transactionCodBlock().scrollTo().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Click return button. Order_aws")
+    public Order_aws clickReturnButton() {
+        returnButton().should(visible);
+        returnButton().click();
+        return this;
+    }
+
+    @Step("Chooses return type. Order_aws")
+    public Order_aws chooseReturnType(String expectedMethod) {
+        typeSelectInReturnPopup().shouldBe(visible);
+        typeSelectInReturnPopup().selectOptionContainingText(expectedMethod);
+        return this;
+    }
+
+    @Step("Click check box product in popup return. Order_aws")
+    public Order_aws clickCheckBoxProductInPopupReturn() {
+        checkBoxProductInPopupReturn().shouldBe(visible);
+        checkBoxProductInPopupReturn().click();
+        return this;
+    }
+
+    @Step("Click check box delivery in popup return. Order_aws")
+    public Order_aws clickCheckBoxDeliveryInPopupReturn() {
+        checkBoxDeliveryInPopupReturn().shouldBe(visible);
+        checkBoxDeliveryInPopupReturn().click();
+        return this;
+    }
+
+    @Step("Click print button in popup return. Order_aws")
+    public Order_aws clickPrintBtnInPopupReturn() {
+        printBtnInPopupReturn().shouldBe(visible);
+        printBtnInPopupReturn().click();
         return this;
     }
 }

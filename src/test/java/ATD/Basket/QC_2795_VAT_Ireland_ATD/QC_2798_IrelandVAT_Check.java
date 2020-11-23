@@ -16,6 +16,7 @@ import java.sql.SQLException;
 import static ATD.CommonMethods.openPage;
 import static ATD.CommonMethods.password;
 import static Common.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Selenide.switchTo;
 
 public class QC_2798_IrelandVAT_Check {
 
@@ -60,8 +61,15 @@ public class QC_2798_IrelandVAT_Check {
                 .checkVatStatusInOrder("Mit MwSt " + vatForIE + "%")
                 .reSaveOrder()
                 .checkVatStatusInOrder("Mit MwSt " + vatForIE + "%")
-                .openPopUpAccountsAndCheckVat(vatForIE);
-
+                .openPopUpAccountsAndCheckVat(vatForIE)
+                .closePopupAccounts()
+                .clickReturnButton()
+                .chooseReturnType("Возврат")
+                .clickCheckBoxProductInPopupReturn()
+                .clickCheckBoxDeliveryInPopupReturn()
+                .clickPrintBtnInPopupReturn();
+        switchTo().window(1);
+        switchTo().defaultContent();
     }
 
     }
