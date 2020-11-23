@@ -145,7 +145,8 @@ public class Tyres_feature_page_Logic extends Tyres_feature_page {
     public Tyres_feature_page_Logic checkTransitionsInLinkingBlock(String url) {
         String mainTitle = mainHeadline().shouldBe(visible).getText();
         checkTransitionsOfVisibleLinkingBlock(url, mainTitle);
-        checkTransitionsOfLastLinkingBlock(url, mainTitle);
+        /*ВРЕМЕННО ОТКЛЮЧЕНА ПРОВЕРКА*/
+        //    checkTransitionsOfLastLinkingBlock(url, mainTitle);
         return this;
     }
 
