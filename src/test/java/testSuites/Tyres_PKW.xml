@@ -32,6 +32,15 @@
         </classes>
     </test>
 
+    <test name="QC_2223_ProductTyresPage">
+        <classes>
+            <class name="PKW.Tyres.QC_2223_ProductPageTyres.QC_2273_CheckingPresenceOfPhotoProduct"/>
+            <class name="PKW.Tyres.QC_2223_ProductPageTyres.QC_2274_CheckingPresenceOfTyresName"/>
+            <class name="PKW.Tyres.QC_2223_ProductPageTyres.QC_2275_CheckingPresenceOfCharacteristicsBlock"/>
+            <class name="PKW.Tyres.QC_2223_ProductPageTyres.QC_2276_CheckingPresenceOfRatingBlock"/>
+            <class name="PKW.Tyres.QC_2223_ProductPageTyres.QC_2224_CheckingPresenceOfAdvantageReturnBlock"/>
+        </classes>
+    </test>
 
 
 </suite>
