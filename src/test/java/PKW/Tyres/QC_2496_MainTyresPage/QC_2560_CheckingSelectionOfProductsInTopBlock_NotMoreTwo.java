@@ -1,7 +1,6 @@
-package ATD.MOTO.QC_373_MainIssueBlockAtTecDocListing;
+package PKW.Tyres.QC_2496_MainTyresPage;
 
-import ATD.Moto_Category_car_list_page_Logic;
-import Common.SetUp;
+import PKW.Tyres_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -16,7 +15,8 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_375_ApplicabilityOfProductsInTecDocListing {
+public class QC_2560_CheckingSelectionOfProductsInTopBlock_NotMoreTwo {
+
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -24,20 +24,16 @@ public class QC_375_ApplicabilityOfProductsInTecDocListing {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list2");  //,moto_category_car_list_model2
-
+        return new Common.SetUp("PKW").setUpShopsWithMainRoute("subprod", "DE", "main_tyres");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks applicability of products in TecDoc listing")
-    public void testChecksApplicabilityOfProductsInTecDocListing(String route) {
+    @Description(value = "Test checking a selection of products in the TOP tires block. Not more than 2")
+    public void testCheckLinkingBlockByBrands(String route) {
         openPage(route);
-
-        String brandOfMoto = new Moto_Category_car_list_page_Logic().getMotoFromSelector();
-        new Moto_Category_car_list_page_Logic()
-                .checkingApplicabilityOfProductForSelectedMoto(brandOfMoto);
+        new Tyres_page_Logic().presenceOfTopProductBlock().checkUniquenessOfBrandsInTopProductBlock(2).checkUniqueSizeInTopProductBlock(2);
     }
 
     @AfterMethod

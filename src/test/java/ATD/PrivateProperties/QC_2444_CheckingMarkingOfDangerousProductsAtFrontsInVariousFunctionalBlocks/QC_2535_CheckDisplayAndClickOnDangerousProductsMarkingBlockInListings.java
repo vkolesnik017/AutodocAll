@@ -55,8 +55,8 @@ public class QC_2535_CheckDisplayAndClickOnDangerousProductsMarkingBlockInListin
     @Description(value = "Test check the display and click on the dangerous products marking block on the listings")
     public void testCheckDisplayAndClickOnDangerousProductsMarkingBlockInListingsMain(String route) {
         openPage(route);
-        String signalWord = carListPage.presenceOfDangerousProducts().getSignalWordFromFirstDangerousProduct(0);
-        carListPage.clickOnDangerousLabel(0, signalWord);
+        String signalWord = carListPage.presenceOfDangerousProducts().getSignalWordFromFirstDangerousProduct(1);
+        carListPage.clickOnDangerousLabel(1, signalWord);
     }
 
     @DataProvider(name = "routesChemical", parallel = true)
