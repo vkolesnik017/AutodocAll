@@ -66,6 +66,10 @@ public class Order_aws {
         return $(By.xpath("//table[@id='table_order_products_list']/tbody/tr/td[6]/a[1]"));
     }
 
+    private SelenideElement articleID() {
+        return $x("//table[@id='table_order_products_list']/tbody/tr/td[5]/a[1]");
+    }
+
     private SelenideElement saveChangesInOrderBtn() {
         return $x("//button[contains(@class,'submit-order')]");
     }
@@ -1295,10 +1299,9 @@ public class Order_aws {
         return this;
     }
 
-    @Step("Click print button in popup return. Order_aws")
-    public Order_aws clickPrintBtnInPopupReturn() {
-        printBtnInPopupReturn().shouldBe(visible);
-        printBtnInPopupReturn().click();
-        return this;
+    @Step("Get article ID. Order_aws")
+    public String getArticleId() {
+        return articleID().getText();
     }
+
 }
