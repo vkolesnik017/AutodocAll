@@ -104,6 +104,29 @@ public class Tyres_page_Logic extends Tyres_page {
         return btnMoreFromRelinkByCarBlock().getAttribute("href");
     }
 
+    @Step("check presence relink block by size. Tyres_page")
+    public Tyres_page_Logic checkPresenceRelinkBlockBySize() {
+        relinkBlock().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        return this;
+    }
+
+    @Step("Get url from btn size in relink by size block . Tyres_page")
+    public String getUrlBtnSizeInRelinkBlockBySize() {
+        return sizeDiameterFromRelinkBlock().getAttribute("href");
+    }
+
+    @Step("Get text from btn size in relink by size block . Tyres_page ")
+    public String getTextBtnSizeInRelinkBlockBySize() {
+        return sizeDiameterFromRelinkBlock().getText();
+    }
+
+    @Step("Click btn all size in relink by size block. Tyres_page")
+    public Tyres_type_list_page_Logic clickBtnAllSizeInRelinkBySizeBlock() {
+        btnAllSizeFromRelinkBySizeBlock().shouldBe(visible).click();
+        return page(Tyres_type_list_page_Logic.class);
+    }
+
+
 }
 
 
