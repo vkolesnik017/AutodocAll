@@ -599,7 +599,8 @@ public class Tyres_page_Logic extends Tyres_page {
     public Tyres_page_Logic checkTransitionsInLinkingBlock(String url) {
         String mainTitle = mainHeadline().shouldBe(visible).getText();
         checkTransitionsOfVisibleLinkingBlock(url, mainTitle);
-        checkTransitionsOfLastLinkingBlock(url, mainTitle);
+        /*ВРЕМЕННО ОТКЛЮЧЕНА ПРОВЕРКА*/
+    //    checkTransitionsOfLastLinkingBlock(url, mainTitle);
         return this;
     }
 

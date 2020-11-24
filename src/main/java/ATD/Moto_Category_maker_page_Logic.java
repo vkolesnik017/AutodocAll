@@ -2,6 +2,7 @@ package ATD;
 
 import Common.DataBase;
 import io.qameta.allure.Step;
+import org.testng.Assert;
 
 import java.sql.SQLException;
 
@@ -146,7 +147,7 @@ public class Moto_Category_maker_page_Logic extends Moto_Category_maker_page {
     public Moto_Category_maker_page_Logic openBrandsBlock() {
         brandsBlock().shouldBe(visible);
         linkMoreOfBrandsBlock().click();
-        brandsLinks().shouldHaveSize(12);
+        Assert.assertTrue(brandsLinks().size() > 6);
         return this;
     }
 

@@ -267,7 +267,8 @@ public class Moto_Product_page_Logic extends Moto_Product_page {
 
     @Step("open of characteristic block .Moto_Product_page")
     public Moto_Product_page_Logic openCharacteristicBlock() {
-        openBlockOfCharacteristic().click();
+        if (openBlockOfCharacteristic().isDisplayed()) {
+        openBlockOfCharacteristic().click();}
         listOfCharacteristics().shouldHaveSize(11);
         return this;
     }
