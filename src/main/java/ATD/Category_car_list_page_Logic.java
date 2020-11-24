@@ -7,7 +7,6 @@ import org.testng.Assert;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -375,11 +374,14 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
         brandsFilterBlock().shouldBe(visible);
         while (!visibleBrandsLinkInSideBar(idOfBrand).isDisplayed()) {
             forwardLinkAtBrandsFilter().click();
+            checkVisibleBrands();
         }
         visibleBrandsLinkInSideBar(idOfBrand).shouldBe(visible).click();
         appearsOfLoader();
         return this;
     }
+
+
 
     @Step("checkListingWithVisibleSelectedBrands(selectedBrands). Category_car_list_page")
     public Category_car_list_page_Logic checkListingWithVisibleSelectedBrands(List<String> selectedBrands) {

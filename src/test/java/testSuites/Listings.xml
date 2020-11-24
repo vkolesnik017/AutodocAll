@@ -70,11 +70,11 @@
         </classes>
     </test>
 
-        <test name="QC_2412_ListingOfProductListing">
+   <!--     <test name="QC_2412_ListingOfProductListing">
         <classes>
             <class name="ATD.Listings.QC_2412_ListingOfProductListing.QC_2403_CheckProductSortingByPriceNettoInSearchListing"/>
             <class name="ATD.Listings.QC_2412_ListingOfProductListing.QC_2674_CheckProductSortingByPriceNettoInSearchListingWithSelectedCar"/>
         </classes>
-    </test>
+    </test>-->
 
 </suite>
