@@ -22,6 +22,7 @@
             <class name="ATD.Listings.QC_433_ListingSearch.QC_434_GoingToSearchPageFromSearchBar"/>
             <class name="ATD.Listings.QC_433_ListingSearch.QC_435_PresenceElementsOnSearchPage"/>
             <class name="ATD.Listings.QC_433_ListingSearch.QC_437_UsePaginationOnSearchPage"/>
+            <class name="ATD.Listings.QC_433_ListingSearch.QC_2950_CheckingDisplayOfGenericAlternativeNameInProductName"/>
         </classes>
     </test>
 

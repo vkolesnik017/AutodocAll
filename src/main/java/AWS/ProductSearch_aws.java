@@ -4,8 +4,10 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byXpath;
@@ -71,9 +73,13 @@ public class ProductSearch_aws {
         return $(byId("form_filterSearch[inSuplierStocks]"));
     }
 
-    private SelenideElement productListBlock() {return $(byId("order_products_list"));}
+    private SelenideElement productListBlock() {
+        return $(byId("order_products_list"));
+    }
 
-    private ElementsCollection titleOfProductsInTable() {return $$x("//table[@id='order_products_list']//td[6]/a");}
+    private ElementsCollection titleOfProductsInTable() {
+        return $$x("//table[@id='order_products_list']//td[6]/a");
+    }
 
     private SelenideElement depositProductsInTable() {
         return $x("//*[@id='order_products_list']//tr/td[15]/span");
@@ -83,6 +89,12 @@ public class ProductSearch_aws {
     public ProductSearch_aws openProductSearchPageAndLogin() {
         open(urlPage);
         new Login_aws().loginInAws();
+        return this;
+    }
+
+    @Step("open product page with logged user")
+    public ProductSearch_aws openProductSearchPage() {
+        open(urlPage);
         return this;
     }
 
@@ -172,9 +184,10 @@ public class ProductSearch_aws {
 
     @Step("Checking whether a product has a deposit by its article number .ProductSearch_aws")
     public ProductSearch_aws checkingWhetherProductHasDepositByArtNumber(ArrayList artNumAndDeposit) {
-        depositProductsInTable().waitUntil(visible,10000);
+        depositProductsInTable().waitUntil(visible, 10000);
         for (int a = 0; a < artNumAndDeposit.size(); a++) {
-            String onlyArtNum = String.valueOf(artNumAndDeposit.get(a)).replaceAll("\\D+", "");;
+            String onlyArtNum = String.valueOf(artNumAndDeposit.get(a)).replaceAll("\\D+", "");
+            ;
             String fullText = String.valueOf(artNumAndDeposit.get(a));
             setValueInSearchField(onlyArtNum);
             float deposit = Float.parseFloat(getValueFromDepositField());

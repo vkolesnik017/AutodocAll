@@ -708,5 +708,11 @@ public class Search_page_Logic extends Search_page {
         }
         return this;
     }
+
+    @Step("checking the alternative name of the product through the product article. Search_page")
+    public Search_page_Logic checkAlternativeTitleOfProductThroughArticle(String artNUm, String alternativeTitle) {
+        titleOfProductWithArtNum(artNUm).shouldBe(visible).shouldHave(text(alternativeTitle));
+        return this;
+    }
 }
 
