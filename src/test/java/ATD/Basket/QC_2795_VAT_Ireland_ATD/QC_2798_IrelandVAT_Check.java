@@ -45,7 +45,7 @@ public class QC_2798_IrelandVAT_Check {
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks VAT for Ireland")
-    public void testChecksVatForIreland(String route) throws SQLException, IOException {
+    public void testChecksVatForIreland(String route) throws SQLException {
         openPage(route);
         orderNumber = product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
