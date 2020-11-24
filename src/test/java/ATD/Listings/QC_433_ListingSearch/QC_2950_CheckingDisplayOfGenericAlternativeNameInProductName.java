@@ -51,8 +51,6 @@ public class QC_2950_CheckingDisplayOfGenericAlternativeNameInProductName {
         String id = productPageAws.getIdOfProduct();
         openPage(route + "/" + brand + "/" + id);
         new Main_page_Logic().useSearch(artNum).checkAlternativeTitleOfProductThroughArticle(artNum, alternativeTitle);
-        System.out.println();
-
     }
 
     @AfterMethod
