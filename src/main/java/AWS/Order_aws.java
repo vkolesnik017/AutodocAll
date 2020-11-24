@@ -455,12 +455,9 @@ public class Order_aws {
         return $x("//div[@class='w-box']//div[contains(text(),'Пере-Заказы')]/../../div[@class='w-box']//div[text()='Родительский заказ']");
     }
 
-    private SelenideElement transactionCodBlock() {
+    public SelenideElement transactionCodBlock() {
         return $x("(//div[@class='form-group order-transaction w-100-pc']/span/input)[2]");
     }
-
-
-
 
     private ElementsCollection carId() {
         return $$x("//table[@id='table_order_products_list']//td[29]");
@@ -609,7 +606,6 @@ public class Order_aws {
         quantityProductInRefundTable().shouldHave(attribute("value", expectedQuantity));
         return this;
     }
-
 
     @Step("Edit quantity of goods {expectedQuantity} and click save button. Order_aws")
     public Order_aws editQuantityOfItemInPopUpEditItem(String expectedQuantity) {

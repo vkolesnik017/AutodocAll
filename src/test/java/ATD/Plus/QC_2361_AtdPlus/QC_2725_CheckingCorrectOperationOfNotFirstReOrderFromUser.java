@@ -29,11 +29,8 @@ public class QC_2725_CheckingCorrectOperationOfNotFirstReOrderFromUser {
                 .choosesDateFromOneMonthAndExpectedDayEarlierThenCurrentOne(1)
                 .selectExpectedGroupField("AUTODOC PLUS (Services)")
                 .clickSearchBtn()
-                .togglesPaginationIfThereAreNoParentAndReOrderNumberBlocksInOrder()
-                .transitionToReorderNumber();
-        switchTo().window(1);
-        new Order_aws().checkCurrentStatusInOrder("Abgeschlossen")
-                .checkPresenceTransactionCodBloc();
+                .togglesPaginationIfThereAreNoParentAndReOrderNumberBlocksInOrder(new Order_aws().blocksParentAndReOrderNumber());
+        new Order_aws().checkCurrentStatusInOrder("Abgeschlossen");
     }
 
     @AfterMethod

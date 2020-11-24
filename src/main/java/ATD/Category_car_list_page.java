@@ -135,7 +135,7 @@ class Category_car_list_page {
 
     SelenideElement btnSearchOfSelectedSelector() {return $x("//a[@class='submit search_button ripple-out']");}
 
-    SelenideElement visibleBrandsLinkInSideBar(String idOfBrand) {return $x("//li[@class='slick-slide slick-active']//label[@for='cb-brand-"+idOfBrand+"']");}
+    SelenideElement visibleBrandsLinkInSideBar(String idOfBrand) {return $x("//*[self::li[@class='slick-slide slick-active'] or self::li[@class='slick-slide slick-current slick-active']]//label[@for='cb-brand-"+idOfBrand+"']");}
 
     ElementsCollection allBtnAddToBasket() {return $$x("//div[@class='add_info']/div[2]");}
 

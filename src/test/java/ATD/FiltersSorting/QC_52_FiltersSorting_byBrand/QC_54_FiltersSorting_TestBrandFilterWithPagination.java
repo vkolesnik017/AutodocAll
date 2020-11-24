@@ -110,7 +110,7 @@ public class QC_54_FiltersSorting_TestBrandFilterWithPagination {
     @Description(value = "Test checks brand filter with pagination Instruments")
     public void checkBrandFilterPaginationInstruments(String route) {
         openPage(route);
-        new Category_car_list_page_Logic().selectVisibleBrandInBlock("100333").selectVisibleBrandInBlock("4023");
+        new Category_car_list_page_Logic().selectVisibleBrandInBlock("4023").selectVisibleBrandInBlock("100333");
         List<String> selectedBrands = instrumentsPage.getTitleOfSelectedBrands();
         new Search_page_Logic().goToNextPage();
         instrumentsPage.checkListingWithSelectedBrands(selectedBrands);
@@ -131,7 +131,6 @@ public class QC_54_FiltersSorting_TestBrandFilterWithPagination {
         List<String> selectedBrands = instrumentsPage.getTitleOfSelectedBrands();
         carListPage.checkListingWithVisibleSelectedBrands(selectedBrands);
     }
-
     @AfterMethod
     private void close() {
         closeWebDriver();
