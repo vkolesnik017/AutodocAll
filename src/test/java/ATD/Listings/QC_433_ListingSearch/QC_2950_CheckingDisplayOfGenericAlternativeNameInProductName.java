@@ -38,9 +38,9 @@ public class QC_2950_CheckingDisplayOfGenericAlternativeNameInProductName {
 
     @Test(dataProvider = "route")
     @Flaky
-    @Owner(value = "Evlentiev")
+    @Owner(value = "Kolesnik")
     @Description(value = "test Checking the display of the generic alternative name in the product name")
-    public void testCheckingDisplayOfGenericAlternativeNameInProductName(String route) throws SQLException {
+    public void testCheckingDisplayOfGenericAlternativeNameInProductName(String route) {
         catAlternativePage.openAlternativeCategoriesInAwsWithLogin().presenceAlternativeTitleForGeneric("135", "atd", "de")
                 .presenceAlternativeTitleForGeneric("215", "atd", "de");
         String alternativeTitle = catAlternativePage.getAlternativeTitle("135", "atd", "de");
