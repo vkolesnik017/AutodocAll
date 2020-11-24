@@ -73,7 +73,7 @@ public class QC_2798_IrelandVAT_Check {
                 .openPopUpAccountsAndCheckVat(vatForIE)
                 .closePopupAccounts()
                 .getArticleId();
-        order_aws.reSaveOrder();
+
         openPage(profilerPage_aws);
         new ProfilerPage_aws().fillingFieldsOrderIdAndArticleId(orderNumber, articleId)
                 .checkVatInTazFormula(vatForIE);
