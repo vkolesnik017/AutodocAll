@@ -132,4 +132,10 @@ public class Category_oen_Page_Logic extends Category_oen_Page {
     public String getSignalWordFromFirstDangerousProduct(int positionOfProduct) {
         return getTextFromUnVisibleElement(signalWordOfDangerousProduct().get(positionOfProduct));
     }
+
+    @Step("checking the alternative name of the product through the product article. Category_oen_Page")
+    public Category_oen_Page_Logic checkAlternativeTitleOfProductThroughArticle(String artNUm, String alternativeTitle) {
+        titleOfProductWithArtNum(artNUm).shouldBe(visible).shouldHave(text(alternativeTitle));
+        return this;
+    }
 }
