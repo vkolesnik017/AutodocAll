@@ -37,7 +37,7 @@ public class Tyres_page {
     }
 
     SelenideElement sizeDiameterFromRelinkBlock() {
-        return $x("//div[@class='zoll']//li");
+        return $x("//div[@class='zoll']//li/a");
     }
 
     SelenideElement activeMotorInput() {
@@ -53,6 +53,8 @@ public class Tyres_page {
     SelenideElement modelFromRelinkByCarBlock() {return $x("//div[@class='bx-wrapper']//ul/li/a");}
 
     SelenideElement btnMoreFromRelinkByCarBlock() {return $x("//div[@class='listing_microdata bottom_box_mod listing_microdata--brand']//a[@class='button']");}
+
+    SelenideElement btnAllSizeFromRelinkBySizeBlock() {return $x("//div[@class='other_pr']/a[@class='button']");}
 
 
   SelenideElement topProductsBlock() {return $x("//div[@class='ct_toppop_products ct_toppop_products_wrapper js-top-tires']");}

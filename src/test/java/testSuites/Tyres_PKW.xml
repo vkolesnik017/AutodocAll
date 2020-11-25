@@ -20,7 +20,19 @@
 
     <test name="QC_2896_CheckingLinkingBlockByCarBrandsOnTireRuts">
         <classes>
-            <class name="PKW.Tyres.QC_2896_CheckingLinkingBlockByCarBrandsOnTireRuts.QC_2897_CheckingRelinkBlockByCarModelOnTireRuts"/>
+            <class name="PKW.Tyres.QC_2896_CheckingLinkingBlockByCarBrandsOnTireRuts.QC_2897_CheckingRelinkBlockByCarModelOnTireRoutes"/>
+        </classes>
+    </test>
+
+    <test name="QC_2892_CheckingLinkingBlockBySizeOnTireRoutes">
+        <classes>
+            <class name="PKW.Tyres.QC_2892_CheckingLinkingBlockBySizeOnTireRoutes.QC_2893_CheckingLinkingBlockBySizeOnTiresRoutes"/>
+        </classes>
+    </test>
+
+    <test name="QC_2894_LinkingBlockByGroupsCarsOnTiresRoutes">
+        <classes>
+            <class name="PKW.Tyres.QC_2894_LinkingBlockByGroupsCarsOnTiresRoutes.QC_2895_CheckingLinkingBlockByGroupsCarOnTiresRoutes"/>
         </classes>
     </test>
 
