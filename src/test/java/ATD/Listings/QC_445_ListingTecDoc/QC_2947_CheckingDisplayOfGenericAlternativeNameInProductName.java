@@ -53,7 +53,6 @@ public class QC_2947_CheckingDisplayOfGenericAlternativeNameInProductName {
         openPage(route + "/" + brand + "/" + id);
         productPage.selectAnyCarFromOenBlock(0).checkAlternativeTitleOfProductThroughArticle(artNum, alternativeTitle);
         openPage(route + "/" + brand + "/" + id);
-        //   openPage("https://www.autodoc.de/goetze/33055");
         productPage.presenceOfApplicabilityBlock().clickOnAnyApplicabilityVehicle(0);
         String marke = productPage.getMarkeFromApplicabilityVehicle(0);
         String model = productPage.getModelFromApplicabilityVehicle(0);
