@@ -11,6 +11,7 @@ import java.util.List;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class ProductCard_aws {
     private SelenideElement loginField() {
@@ -222,6 +223,12 @@ public class ProductCard_aws {
     public String getArtNumOfProduct() {
         String artNum = artNumOfProduct().shouldBe(visible).getText().replace(statusInArtNum().getText(), "").replace(" ", "");
         return artNum;
+    }
+
+    @Step("get id of product. ProductCard_aws")
+    public String getIdOfProduct() {
+        String id = url().replaceAll(".+\\/","");
+        return id;
     }
 
     @Step("get title of product brand. ProductCard_aws")
