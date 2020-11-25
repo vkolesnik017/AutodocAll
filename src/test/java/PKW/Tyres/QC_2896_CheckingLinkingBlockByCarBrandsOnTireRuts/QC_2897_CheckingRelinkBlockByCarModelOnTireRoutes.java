@@ -17,7 +17,7 @@ import static com.codeborne.selenide.Selenide.back;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
-public class QC_2897_CheckingRelinkBlockByCarModelOnTireRuts {
+public class QC_2897_CheckingRelinkBlockByCarModelOnTireRoutes {
 
     private Tyres_page_Logic tyresPageLogic = new Tyres_page_Logic();
     private Tyres_maker_page_Logic tyresMakerPageLogic = new Tyres_maker_page_Logic();
