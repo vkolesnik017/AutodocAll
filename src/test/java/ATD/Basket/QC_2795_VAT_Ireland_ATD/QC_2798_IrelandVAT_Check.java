@@ -3,29 +3,37 @@ package ATD.Basket.QC_2795_VAT_Ireland_ATD;
 import ATD.Product_page_Logic;
 import AWS.Order_aws;
 import AWS.PageVAT_aws;
+import AWS.ProfilerPage_aws;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import mailinator.WebMail;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.openPage;
-import static ATD.CommonMethods.password;
+import static ATD.CommonMethods.*;
+import static AWS.ProfilerPage_aws.profilerPage_aws;
 import static Common.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static mailinator.WebMail.passwordForMail;
 
 public class QC_2798_IrelandVAT_Check {
 
-    private String mail = "QC_2798_autotest@mailinator.com";
-    private String vatForIE;
+    private String mail = "QC_2798_autotest@autodoc.si";
+    private String vatForIE, articleId, orderNumber;
+    private Product_page_Logic product_page_logic = new Product_page_Logic();
 
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
         vatForIE = new PageVAT_aws().getVatForIE();
+        close();
     }
 
     @DataProvider(name = "route", parallel = true)
@@ -39,7 +47,7 @@ public class QC_2798_IrelandVAT_Check {
     @Description(value = "Test checks VAT for Ireland")
     public void testChecksVatForIreland(String route) throws SQLException {
         openPage(route);
-        String orderNumber = new Product_page_Logic().addProductToCart()
+        orderNumber = product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
@@ -56,12 +64,27 @@ public class QC_2798_IrelandVAT_Check {
                 .checkTextContainingVatPercentage(vatForIE)
                 .nextBtnClick()
                 .getOrderNumber();
-        new Order_aws(orderNumber).openOrderInAwsWithLogin()
+
+        Order_aws order_aws = new Order_aws(orderNumber);
+        articleId = order_aws.openOrderInAwsWithLogin()
                 .checkVatStatusInOrder("Mit MwSt " + vatForIE + "%")
                 .reSaveOrder()
                 .checkVatStatusInOrder("Mit MwSt " + vatForIE + "%")
-                .openPopUpAccountsAndCheckVat(vatForIE);
+                .openPopUpAccountsAndCheckVat(vatForIE)
+                .closePopupAccounts()
+                .getArticleId();
 
+        openPage(profilerPage_aws);
+        new ProfilerPage_aws().fillingFieldsOrderIdAndArticleId(orderNumber, articleId)
+                .checkVatInTazFormula(vatForIE);
+
+        new WebMail().openMail(mail, passwordForMail)
+                .checkAndOpenLetterWithOrderNumber(orderNumber)
+                .checkTextContainingVatPercentageInEmail(vatForIE);
     }
 
+    @AfterMethod
+    private void close() {
+        closeWebDriver();
     }
+}
