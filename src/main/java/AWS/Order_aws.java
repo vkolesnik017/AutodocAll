@@ -1,9 +1,7 @@
 package AWS;
 
 import Common.DataBase;
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.ElementsCollection;
-import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.*;
 import com.codeborne.selenide.ex.ElementShould;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -496,7 +494,7 @@ public class Order_aws {
     }
 
     private SelenideElement checkBoxProductInPopupReturn() {
-        return $x("//input[@id='form_RefundProducts[0][show]']");
+        return $x("//input[@class='reCalc']/..//input[contains(@id,'form_RefundProducts')]");
     }
 
     private SelenideElement checkBoxDeliveryInPopupReturn() {
