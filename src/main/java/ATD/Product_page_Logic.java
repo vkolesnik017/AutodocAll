@@ -1086,12 +1086,17 @@ public class Product_page_Logic extends Product_page {
         return page(Category_car_list_page_Logic.class);
     }
 
-
     @Step("check visible characteristic. Product page")
     public Product_page_Logic checkVisibleCharacteristic() {
-        for (int i=0; i<visibleCharacteristic().size();i++){
+        for (int i = 0; i < visibleCharacteristic().size(); i++) {
             visibleCharacteristic().get(i).shouldBe(visible);
         }
+        return this;
+    }
+
+    @Step("checking the alternative name of the product . Product page")
+    public Product_page_Logic checkAlternativeTitleOfProduct(String alternativeTitle) {
+        titleOfProduct().shouldBe(visible).shouldHave(text(alternativeTitle));
         return this;
     }
 }
