@@ -112,4 +112,11 @@
         </classes>
     </test>
 
+    <test name="QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD">
+        <classes>
+            <class name="ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD.QC_2828_CheckingDisplayOfCorrectMessageInTooltipAfterEnteringNegativeIndexForPT"/>
+            <class name="ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD.QC_2829_CheckingDisplayOfCorrectMessageInTooltipAfterEnteringNegativeIndexForLU"/>
+        </classes>
+    </test>
+
 </suite>

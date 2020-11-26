@@ -1297,6 +1297,12 @@ public class Order_aws {
         return this;
     }
 
+    @Step("Click print button in popup return. Order_aws")
+    public Order_aws clickPrintButtonInPopupReturn() {
+        printBtnInPopupReturn().click();
+        return this;
+    }
+
     @Step("Get article ID. Order_aws")
     public String getArticleId() {
         return articleID().getText();
