@@ -275,7 +275,7 @@ public class Tyres_page_Logic extends Tyres_page {
     @Step("Check tyres diameter relink block presence. Tyres_page")
     public Tyres_page_Logic checkTyresDiameterRelinkBlockPresence() {
         diameterRelinkBlock().shouldBe(visible);
-        linksInDiameterblock().shouldHave(sizeGreaterThan(5));
+        linksInDiameterblock().shouldHave(sizeGreaterThan(1));
         return this;
     }
 
