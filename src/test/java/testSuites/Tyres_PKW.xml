@@ -20,7 +20,37 @@
 
     <test name="QC_2896_CheckingLinkingBlockByCarBrandsOnTireRuts">
         <classes>
-            <class name="PKW.Tyres.QC_2896_CheckingLinkingBlockByCarBrandsOnTireRuts.QC_2897_CheckingRelinkBlockByCarModelOnTireRuts"/>
+            <class name="PKW.Tyres.QC_2896_CheckingLinkingBlockByCarBrandsOnTireRuts.QC_2897_CheckingRelinkBlockByCarModelOnTireRoutes"/>
+        </classes>
+    </test>
+
+    <test name="QC_2892_CheckingLinkingBlockBySizeOnTireRoutes">
+        <classes>
+            <class name="PKW.Tyres.QC_2892_CheckingLinkingBlockBySizeOnTireRoutes.QC_2893_CheckingLinkingBlockBySizeOnTiresRoutes"/>
+        </classes>
+    </test>
+
+    <test name="QC_2894_LinkingBlockByGroupsCarsOnTiresRoutes">
+        <classes>
+            <class name="PKW.Tyres.QC_2894_LinkingBlockByGroupsCarsOnTiresRoutes.QC_2895_CheckingLinkingBlockByGroupsCarOnTiresRoutes"/>
+        </classes>
+    </test>
+
+    <test name="QC_2496_MainTyresPage">
+        <classes>
+            <class name="PKW.Tyres.QC_2496_MainTyresPage.QC_2559_CheckMainElementsOfTopProductBlock"/>
+            <class name="PKW.Tyres.QC_2496_MainTyresPage.QC_2562_CheckingSelectionOfProductsInTopBlock"/>
+            <class name="PKW.Tyres.QC_2496_MainTyresPage.QC_2560_CheckingSelectionOfProductsInTopBlock_NotMoreTwo"/>
+        </classes>
+    </test>
+
+    <test name="QC_2223_ProductTyresPage">
+        <classes>
+            <class name="PKW.Tyres.QC_2223_ProductPageTyres.QC_2273_CheckingPresenceOfPhotoProduct"/>
+            <class name="PKW.Tyres.QC_2223_ProductPageTyres.QC_2274_CheckingPresenceOfTyresName"/>
+            <class name="PKW.Tyres.QC_2223_ProductPageTyres.QC_2275_CheckingPresenceOfCharacteristicsBlock"/>
+            <class name="PKW.Tyres.QC_2223_ProductPageTyres.QC_2276_CheckingPresenceOfRatingBlock"/>
+            <class name="PKW.Tyres.QC_2223_ProductPageTyres.QC_2224_CheckingPresenceOfAdvantageReturnBlock"/>
         </classes>
     </test>
 

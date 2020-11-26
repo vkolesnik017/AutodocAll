@@ -1221,7 +1221,7 @@ public class Listing_page_Logic extends Listing_page {
 
     @Step("Comparing actual and expected characteristics info popup. Listing_page")
     public void compareCharacteristicsPopup() {
-        titleInfoPopup().shouldHave(text("Info: TOYOTA PREVIA (MCR3_, ACR3_, CLR3_) 2.4 (ACR30)"));
+        titleInfoPopup().shouldHave(text("Info: TOYOTA Previa / Estima II (XR30) 2.4 (ACR30)"));
         for (int a = 0; a < expectedCharacteristicInfoPopup().size(); a++) {
             characteristicsFromPopup().get(a).shouldHave(text(expectedCharacteristicInfoPopup().get(a)));
         }

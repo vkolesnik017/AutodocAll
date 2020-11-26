@@ -298,5 +298,7 @@ public class Search_page {
 
     SelenideElement leftPaginatorOfGenericBlock() {return $x("//span[@class='prev slick-arrow']");}
 
+    SelenideElement titleOfProductWithArtNum(String artNum) {return $x("//span[contains(text(),'Artikelnummer')]/span/span[contains(text(),'"+artNum+"')]/ancestor::span/../a");}
+
 }
 

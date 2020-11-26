@@ -2,7 +2,6 @@ package Common;
 
 import com.codeborne.pdftest.PDF;
 import io.qameta.allure.Step;
-
 import java.io.IOException;
 
 import static com.codeborne.pdftest.PDF.containsText;
