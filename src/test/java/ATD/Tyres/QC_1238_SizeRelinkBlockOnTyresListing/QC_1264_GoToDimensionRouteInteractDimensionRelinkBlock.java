@@ -30,11 +30,11 @@ public class QC_1264_GoToDimensionRouteInteractDimensionRelinkBlock {
                 "tyres_season5,tyres_season10,tyres_season11,tyres_season_size4,tyres_dimension5,tyres_brand3");
     }
 
-    @DataProvider(name = "routesMOTO", parallel = true)
-    Object[] dataProviderMOTO() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main",
-                "tyres_season4,tyres_season_size5,tyres_dimension4,tyres_brand4");
-    }
+//    @DataProvider(name = "routesMOTO", parallel = true)    TODO // Disabled moto routes until they figure out whether they will be checked or not
+//    Object[] dataProviderMOTO() throws SQLException {
+//        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main",
+//                "tyres_season4,tyres_season_size5,tyres_dimension4,tyres_brand4");
+//    }
 
     @Test(dataProvider = "routes")
     @Flaky
@@ -45,14 +45,14 @@ public class QC_1264_GoToDimensionRouteInteractDimensionRelinkBlock {
         new TyresListing_page_Logic().clickDimensionButtonAndCheckRedirect(new TyresListing_page_Logic().dimensionLinkListingRoute());
     }
 
-    @Test(dataProvider = "routesMOTO")
+    /*@Test(dataProvider = "routesMOTO")
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test Checks Transition To Dimension Route Interact Dimension Relink Block MOTO")
     public void testGoToDimensionRouteInteractDimensionRelinkBlockMOTO(String route) {
         openPage(route);
         new TyresListing_page_Logic().clickDimensionButtonAndCheckRedirect(new TyresListing_page_Logic().dimensionLinkListingRoute());
-    }
+    }*/
 
     @AfterMethod
     public void close() {
