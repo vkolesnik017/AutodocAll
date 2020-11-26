@@ -165,7 +165,7 @@ public class ProductSearch_aws {
 
     @Step("go to product cart by click on Title of product. ProductSearch_aws")
     public ProductCard_aws goToProductCartByClickOnTitle(int positionOfProduct) {
-        productListBlock().waitWhile(visible,10000);
+        productListBlock().shouldBe(visible);
         titleOfProductsInTable().get(positionOfProduct).shouldBe(visible).click();
         return page(ProductCard_aws.class);
     }
