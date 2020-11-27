@@ -27,8 +27,12 @@ public class QC_2827_CheckingValidityIndexesIfBillingAndShippingAreSeparated_PT 
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
-                .signIn(mail, password);
-        checkingContainsUrl("basket/address");
+                .signIn(mail, password)
+                .chooseDeliveryCountryForShipping("PT")
+                .clickCheckboxForOpenBilling()
+                .chooseDeliveryCountryForBilling("PT")
+                .getZipMasksAndComparesWithExpectedForShipping("1111-111")
+                .getZipMasksAndComparesWithExpectedForBilling("1111-111");
     }
 
     @DataProvider(name = "indexes")
@@ -47,11 +51,7 @@ public class QC_2827_CheckingValidityIndexesIfBillingAndShippingAreSeparated_PT 
         @Owner(value = "Chelombitko")
         @Description(value = "Test checking the validity of indices if Billing and Shipping for Portugal are separated")
         public void testCheckingValidityIndexesIfBillingAndShippingAreSeparated_PT(String indexes) {
-            new CartAddress_page_Logic().chooseDeliveryCountryForShipping("PT")
-                    .clickCheckboxForOpenBilling()
-                    .chooseDeliveryCountryForBilling("PT")
-                    .getZipMasksAndComparesWithExpectedForShipping("1111-111")
-                    .getZipMasksAndComparesWithExpectedForBilling("1111-111")
+            new CartAddress_page_Logic()
                     .fillingPostalCodeFieldJSForShipping(indexes)
                     .fillingPostalCodeFieldJSForBilling(indexes)
                     .nextBtnClick();

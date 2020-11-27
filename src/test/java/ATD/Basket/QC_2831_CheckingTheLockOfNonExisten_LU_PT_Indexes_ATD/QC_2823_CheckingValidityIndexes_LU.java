@@ -25,13 +25,15 @@ public class QC_2823_CheckingValidityIndexes_LU {
     @BeforeClass
     void setUp() throws SQLException {
         setUpBrowser(false, "chrome", "77.0");
-        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "LD","main","product32"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "LD","main","product2"));
         new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
-                .signIn(mail, password);
-        checkingContainsUrl("basket/address");
+                .signIn(mail, password)
+                .chooseDeliveryCountryForShipping("LU")
+                .getZipMasksAndComparesWithExpectedForShipping("1111");
+
     }
 
     @DataProvider(name = "indexes")
@@ -51,8 +53,7 @@ public class QC_2823_CheckingValidityIndexes_LU {
     @Owner(value = "Chelombitko")
     @Description(value = "Test checking the validity of indices if Billing and Shipping for Portugal are separated")
     public void testCheckingValidityIndexesIfBillingAndShippingAreSeparated_PT(String indexes) {
-        new CartAddress_page_Logic().chooseDeliveryCountryForShipping("LU")
-                .getZipMasksAndComparesWithExpectedForShipping("1111")
+        new CartAddress_page_Logic()
                 .fillingPostalCodeFieldJSForShipping(indexes)
                 .nextBtnClick();
         checkingContainsUrl("basket/payments");
