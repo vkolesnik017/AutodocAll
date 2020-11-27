@@ -60,7 +60,7 @@ public class Group_list_page_Logic extends Group_list_page {
             sleep(5000);
             String titlePDF = titlesOfManuals().get(i).getAttribute("title").replaceAll("^\\s*(([^\\s]+\\s*){1,5})", "");
             String nameFile = downloadLinkOfManuals().get(i).getAttribute("url").replaceAll("^.+\\/", "");
-            Common.File.assertThatPdfContainsText("/Users/olhalavrynenko/Downloads/" + nameFile + "", titlePDF);
+           Common.File.assertThatPdfContainsText("C:/Users/User/Downloads/" + nameFile + "", titlePDF);
         }
         return this;
     }
