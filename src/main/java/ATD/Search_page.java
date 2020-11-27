@@ -274,6 +274,16 @@ public class Search_page {
 
     ElementsCollection visibleParentCategories() {return $$x("//ul[@class='filetree cat_tree treeview']//li").filter(visible);}
 
+    ElementsCollection visibleParentInSidebar() {return $$x("//ul[@class='filetree cat_tree treeview']//li[contains(@class,'expandable')]//span");}
+
+    public ElementsCollection categoriesFromSideBar() {
+        return $$x("//ul[@class='filetree cat_tree treeview']//div[@class='child-category']//li/a");
+    }
+
+    SelenideElement visibleCategoryFromSideBar() {
+        return $x("//ul[@class='filetree cat_tree treeview']//div[@class='child-category']//ul[@style='display: block;']//li[1]");
+    }
+
     ElementsCollection paginatorLinks() {return $$x("//div[@class='pagination']/span");}
 
     ElementsCollection visibleGenerics() {return $$x("//div[@class='filter-generics-tecdoc__item-image']").filter(visible);}
