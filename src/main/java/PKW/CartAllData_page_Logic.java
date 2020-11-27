@@ -4,9 +4,7 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-
+import static Common.CommonMethods.roundOfTheCost;
 import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.page;
@@ -121,18 +119,7 @@ public class CartAllData_page_Logic extends CartAllData_page {
         sleep(2000);
         Float totalPrice = getTotalPriceAllDataPage(shop);
         float totalPriceIncludedSO = price + realPriseSO;
-        BigDecimal result = new BigDecimal(totalPriceIncludedSO);
-        BigDecimal formatPriceUp = result.setScale(2, RoundingMode.UP);
-        float roundMax = Float.parseFloat(String.valueOf(formatPriceUp));
-        BigDecimal formatPriceDOWN = result.setScale(2, RoundingMode.FLOOR);
-        float roundMin = Float.parseFloat(String.valueOf((formatPriceDOWN)));
-        float res = 0.0f;
-        if (totalPrice.equals(roundMax)) {
-            res = roundMax;
-        }
-        if (totalPrice.equals(roundMin)) {
-            res = roundMin;
-        }
+        float res = roundOfTheCost(totalPriceIncludedSO, totalPrice);
         Assert.assertEquals(res, totalPrice);
         return this;
     }
