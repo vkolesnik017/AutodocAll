@@ -10,6 +10,7 @@ import com.codeborne.selenide.ex.ElementShould;
 import com.codeborne.selenide.ex.UIAssertionError;
 import io.qameta.allure.Step;
 import org.testng.Assert;
+
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
+
 import static ATD.CommonMethods.*;
 import static PKW.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
@@ -953,7 +955,7 @@ public class Product_page_Logic extends Product_page {
     }
 
     @Step("Click link safety data sheet and get url pdf page after click. Product_page")
-    public String  clickLinkSafetyDataSheetAndGetUrl() throws IOException {
+    public String clickLinkSafetyDataSheetAndGetUrl() throws IOException {
         safetyDataSheet().shouldBe(visible).click();
         switchTo().window(1);
         String url = getCurrentUtl();
@@ -1025,6 +1027,76 @@ public class Product_page_Logic extends Product_page {
         checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "staticVersand"));
         closeWindow();
         switchTo().window(0);
+        return this;
+    }
+
+    @Step("select  any car from OEN block. Product_page")
+    public Category_oen_Page_Logic selectAnyCarFromOenBlock(int position) {
+        oenBlockTitle().shouldBe(visible);
+        activeOenLinks().get(position).shouldBe(visible).click();
+        return page(Category_oen_Page_Logic.class);
+    }
+
+    @Step("presence of applicability block. Product_page")
+    public Product_page_Logic presenceOfApplicabilityBlock() {
+        applicabilityBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("click on any applicability  vehicle. Product_page")
+    public Product_page_Logic clickOnAnyApplicabilityVehicle(int position) {
+        applicabilityVehicle().get(position).click();
+        applicabilityVehicleListBlock().shouldBe(visible).shouldHave(attribute("style", "display: block;"));
+        return this;
+    }
+
+    @Step("get Marke from applicability vehicle. Product_page")
+    public String getMarkeFromApplicabilityVehicle(int position) {
+        return fullValueOfApplicabilityVehicle().get(position).attr("data-maker");
+    }
+
+    @Step("get Model from applicability vehicle. Product_page")
+    public String getModelFromApplicabilityVehicle(int position) {
+        return fullValueOfApplicabilityVehicle().get(position).attr("data-model");
+    }
+
+    @Step("get Motor from applicability vehicle. Product_page")
+    public String getMotorFromApplicabilityVehicle(int position) {
+        return fullValueOfApplicabilityVehicle().get(position).attr("data-prod");
+    }
+
+    @Step("select car in horizontal selector . Product_page")
+    public Product_page_Logic selectCarHorizontalSelector(String brandName, String modelNumberValue, String typeNumberValue) {
+        brandSelector().selectOptionByValue(brandName);
+        chooseModelInHorizontalCarSelector(modelNumberValue)
+                .chooseTypeInHorizontalCarSelector(typeNumberValue);
+        return this;
+    }
+
+    @Step("presence of car match block. Product_page")
+    public Product_page_Logic presenceOfCarMatchBlock() {
+        carMatchBlock().waitWhile(visible, 10000);
+        return this;
+    }
+
+    @Step("click on Third bread crumb link. Product_page")
+    public Category_car_list_page_Logic clickOnThirdBreadCrumbLink(int position) {
+        breadcrumbsBlock().shouldBe(visible);
+        breadCrumbLinks().get(position).shouldBe(visible).click();
+        return page(Category_car_list_page_Logic.class);
+    }
+
+    @Step("check visible characteristic. Product page")
+    public Product_page_Logic checkVisibleCharacteristic() {
+        for (int i = 0; i < visibleCharacteristic().size(); i++) {
+            visibleCharacteristic().get(i).shouldBe(visible);
+        }
+        return this;
+    }
+
+    @Step("checking the alternative name of the product . Product page")
+    public Product_page_Logic checkAlternativeTitleOfProduct(String alternativeTitle) {
+        titleOfProduct().shouldBe(visible).shouldHave(text(alternativeTitle));
         return this;
     }
 }

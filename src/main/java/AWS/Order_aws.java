@@ -1,20 +1,17 @@
 package AWS;
 
 import Common.DataBase;
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.ElementsCollection;
-import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.*;
 import com.codeborne.selenide.ex.ElementShould;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+import static Common.CommonMethods.roundOfTheCost;
 import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Condition.value;
@@ -496,7 +493,7 @@ public class Order_aws {
     }
 
     private SelenideElement checkBoxProductInPopupReturn() {
-        return $x("//input[@id='form_RefundProducts[0][show]']");
+        return $x("//input[@class='reCalc']/..//input[contains(@id,'form_RefundProducts')]");
     }
 
     private SelenideElement checkBoxDeliveryInPopupReturn() {
@@ -1111,9 +1108,10 @@ public class Order_aws {
 
     @Step("Subtracts removed product cost {sellingCostOneProduct} from the total oder cost {totalCost}. Order_aws")
     public Float subtractsRemovedProductCostFromTotalOrderCost(Float totalCost, Float sellingCostOneProduct) {
-        Float cost = totalCost - sellingCostOneProduct;
-        String formatCost = new DecimalFormat(".##").format(cost).replaceAll(",", ".");
-        return Float.valueOf(formatCost);
+        float cost = totalCost - sellingCostOneProduct;
+        float actualTotalCost = getTotalPriceOrderAWS();
+        float res = roundOfTheCost(cost, actualTotalCost);
+        return res;
     }
 
     @Step("Checks conto NR number {contoNR}. Order_aws")
@@ -1188,17 +1186,7 @@ public class Order_aws {
     @Step("Calculates the amount of an item by dividing the total amount of the item {sumProduct Column} by the number of items {productQuantity}. Order_aws")
     public Float dividingPriceByQuantity(Float sumProductColumn, Float productQuantity, Float sellingPrice) {
         float cost = sumProductColumn / productQuantity;
-        BigDecimal result = new BigDecimal(cost);
-        BigDecimal formatCostUp = result.setScale(2, RoundingMode.UP);
-        float roundMax = Float.parseFloat(String.valueOf(formatCostUp));
-        BigDecimal formatCostDOWN = result.setScale(2, RoundingMode.FLOOR);
-        float roundMin = Float.parseFloat(String.valueOf((formatCostDOWN)));
-        float res = 0.0f;
-        if (sellingPrice.equals(roundMax)) {
-            return res = roundMax;
-        } if (sellingPrice.equals(roundMin)) {
-            return res = roundMin;
-        }
+        float res = roundOfTheCost(cost, sellingPrice);
         return res;
     }
 
@@ -1206,8 +1194,9 @@ public class Order_aws {
             "by number of goods {productQuantity} and plus the delivery{costDelivery}. Order_aws")
     public Float multiplyPriceByQuantityAndPlusDeliveryCost(Float sellingCostOneProduct, Float productQuantity, Float costDelivery) {
         Float cost = sellingCostOneProduct * productQuantity + costDelivery;
-        String formatCost = new DecimalFormat(".##").format(cost).replaceAll(",", ".");
-        return Float.valueOf(formatCost);
+        float actualTotalCost = getTotalPriceOrderAWS();
+        float res = roundOfTheCost(cost, actualTotalCost);
+        return res;
     }
 
     @Step("Checking correct text in input field. Order_aws")
@@ -1296,6 +1285,12 @@ public class Order_aws {
     public Order_aws clickCheckBoxDeliveryInPopupReturn() {
         checkBoxDeliveryInPopupReturn().shouldBe(visible);
         checkBoxDeliveryInPopupReturn().click();
+        return this;
+    }
+
+    @Step("Click print button in popup return. Order_aws")
+    public Order_aws clickPrintButtonInPopupReturn() {
+        printBtnInPopupReturn().click();
         return this;
     }
 

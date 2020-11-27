@@ -47,6 +47,8 @@ public class Category_oen_Page {
 
     ElementsCollection signalWordOfDangerousProduct() {return $$x("//div[@class='dangerous-listing__title hazard-danger-title']");}
 
+    SelenideElement titleOfProductWithArtNum(String artNum) {return $x("//span[contains(text(),'Artikelnummer: "+artNum+"')]/preceding-sibling::a");}
+
 }
 
 

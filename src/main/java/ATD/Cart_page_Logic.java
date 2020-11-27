@@ -6,13 +6,12 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import static ATD.CommonMethods.*;
+import static Common.CommonMethods.roundOfTheCost;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -425,18 +424,7 @@ public class Cart_page_Logic extends Cart_page {
         Float totalOrderPrice = getTotalOrderPrice();
         float formatPriseSO = Float.parseFloat(priceSO.substring(0, priceSO.indexOf(" ")).replaceAll(",", "."));
         float totalPriceIncludedSO = productPrice + formatPriseSO;
-        BigDecimal result = new BigDecimal(totalPriceIncludedSO);
-        BigDecimal formatPriceUp = result.setScale(2, RoundingMode.UP);
-        float roundMax = Float.parseFloat(String.valueOf(formatPriceUp));
-        BigDecimal formatPriceDOWN = result.setScale(2, RoundingMode.FLOOR);
-        float roundMin = Float.parseFloat(String.valueOf((formatPriceDOWN)));
-        float res = 0.0f;
-        if (totalOrderPrice.equals(roundMax)) {
-            res = roundMax;
-        }
-        if (totalOrderPrice.equals(roundMin)) {
-            res = roundMin;
-        }
+        float res = roundOfTheCost(totalPriceIncludedSO, totalOrderPrice);
         Assert.assertEquals(res, totalOrderPrice);
         return this;
     }
