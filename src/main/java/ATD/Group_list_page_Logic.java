@@ -3,10 +3,15 @@ package ATD;
 import static PKW.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
+import static org.testng.Assert.assertEquals;
+
 import Common.DataBase;
 import io.qameta.allure.Step;
 import org.testng.Assert;
+
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.sql.SQLException;
 
 public class Group_list_page_Logic extends Group_list_page {
@@ -29,7 +34,7 @@ public class Group_list_page_Logic extends Group_list_page {
     }
 
     @Step("Checks elements in the pdf Manual block. Group_list_page")
-    public Group_list_page_Logic checkTransitionToClubPageFromPDFManualBlock() throws SQLException {
+    public Group_list_page_Logic checkTransitionToClubPageFromPDFManualBlock() throws SQLException, IOException {
         pdfManualBlock().shouldBe(visible);
         for (int i = 0; i < previewImages().size(); i++) {
             titlesOfManuals().get(i).shouldBe(visible).click();
@@ -37,6 +42,12 @@ public class Group_list_page_Logic extends Group_list_page {
             checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "club_manuals_home"));
             closeWindow();
             switchTo().window(0);
+            String linkInsideTitle = titlesOfManuals().get(i).getAttribute("href");
+            URL url = new URL(linkInsideTitle);
+            HttpURLConnection http = (HttpURLConnection) url.openConnection();
+            http.setInstanceFollowRedirects(true);
+            int responseCode = http.getResponseCode();
+            assertEquals(responseCode, 200);
         }
         return this;
     }
@@ -47,9 +58,9 @@ public class Group_list_page_Logic extends Group_list_page {
         for (int i = 0; i < downloadLinkOfManuals().size(); i++) {
             downloadLinkOfManuals().get(i).click();
             sleep(5000);
-            String titlePDF = titlesOfManuals().get(i).getAttribute("title");
+            String titlePDF = titlesOfManuals().get(i).getAttribute("title").replaceAll("^\\s*(([^\\s]+\\s*){1,5})", "");
             String nameFile = downloadLinkOfManuals().get(i).getAttribute("url").replaceAll("^.+\\/", "");
-            Common.File.assertThatPdfContainsText("C:/Users/User/Downloads/" + nameFile + "", titlePDF);
+           Common.File.assertThatPdfContainsText("C:/Users/User/Downloads/" + nameFile + "", titlePDF);
         }
         return this;
     }

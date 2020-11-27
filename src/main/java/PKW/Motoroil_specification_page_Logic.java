@@ -12,8 +12,7 @@ import java.util.Collections;
 import static ATD.CommonMethods.checkingContainsUrl;
 import static PKW.CommonMethods.waitWhileRouteContainsExpectedCondition;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.back;
-import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Motoroil_specification_page_Logic extends Motoroil_specification_page {
 
@@ -79,11 +78,14 @@ public class Motoroil_specification_page_Logic extends Motoroil_specification_pa
         String thirdBlock = getAttributeFromLink(linksOfRelinkingBlocks(3), 0);
         String currentMainHeadline = mainHeadline().getText();
         clickOnValueFromFirstRelinkingBlock(0);
-        checkingContainsUrl(firstBlock);  waitWhileRouteContainsExpectedCondition(firstBlock);
+        checkingContainsUrl(firstBlock);
+        waitWhileRouteContainsExpectedCondition(firstBlock);
         back();
-        clickOnValueFromSecondRelinkingBlock(0); checkingContainsUrl(secondBlock);
+        clickOnValueFromSecondRelinkingBlock(0);
+        checkingContainsUrl(secondBlock);
         back();
-        clickOnValueFromThirdRelinkingBlock(0); checkingContainsUrl(thirdBlock);
+        clickOnValueFromThirdRelinkingBlock(0);
+        checkingContainsUrl(thirdBlock);
         return this;
     }
 
@@ -162,8 +164,11 @@ public class Motoroil_specification_page_Logic extends Motoroil_specification_pa
             motorFieldInSelector().shouldHave(value("0"));
         }
         markeFieldInSelector().selectOptionByValue(marke);
+        Wait().until(webDriver -> markeFieldInSelector().getSelectedValue().equals(marke));
         modelFieldInSelector().selectOptionByValue(model);
+        Wait().until(webDriver -> modelFieldInSelector().getSelectedValue().equals(model));
         motorFieldInSelector().selectOptionByValue(motor);
+        Wait().until(webDriver -> motorFieldInSelector().getSelectedValue().equals(motor));
         btnSearchOfSelector().scrollIntoView("{block: \"center\"}").click();
         return page(Car_parts_motoroil_page_Logic.class);
     }

@@ -129,5 +129,43 @@ public class Tyres_maker_page_Logic extends Tyres_maker_page {
         return page(Tyres_maker_group_page_Logic.class);
     }
 
+    @Step("Check presence top tyres block. Tyres_maker_page")
+    public Tyres_maker_page_Logic checkPresenceTopTyresBlock() {
+        topTyresBlock().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        return this;
+    }
+
+    @Step("Check size products from top tyres block. Tyres_maker_page")
+    public Tyres_maker_page_Logic checkSizeProductsFromTopBlock() {
+        productsFromTopBlock().shouldHaveSize(12);
+        return this;
+    }
+
+    @Step("Click btn add to basket from top block. Tyres_maker_page")
+    public Tyres_maker_page_Logic clickBtnAddToBasketFromTopBlock() {
+        btnAddToBasketFromTopBlock().click();
+        popupBasketAddedProducts().waitUntil(attribute("style","visibility: visible; opacity: 1;"), 10000);
+        return this;
+    }
+
+    @Step("Get model product from top products block. Tyres_maker_page")
+    public String getModelFromTopProductsBlock() {
+        return modelProductFromTopBlock().getText();
+    }
+
+    @Step("Get info text from popup cart. Tyres_maker_page")
+    public String getInfoTextFromPopupCart() {
+        iconCart().hover();
+        return productFromPopupCart().getText();
+    }
+
+    @Step("Click btn details in popup from top tyres block. Tyres_maker_page")
+    public Tyres_item_page_Logic clickBtnDetailsInPopupFromTopBlock() {
+        productFromTopBlock().hover();
+        btnDetailsInPopupFromTopBlock().shouldBe(visible).click();
+        return page(Tyres_item_page_Logic.class);
+    }
+
+
 
 }
