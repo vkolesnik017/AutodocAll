@@ -20,7 +20,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_2535_CheckDisplayAndClickOnDangerousProductsMarkingBlockInListings {
     private LKW_Category_car_list_page_Logic carListPage = new LKW_Category_car_list_page_Logic();
-    private Listing_chemicals_Page_Logic  chemicalsPage = new Listing_chemicals_Page_Logic();
+    private Listing_chemicals_Page_Logic chemicalsPage = new Listing_chemicals_Page_Logic();
     private Category_oen_Page_Logic categoryOenPage = new Category_oen_Page_Logic();
 
     @BeforeClass
@@ -46,8 +46,8 @@ public class QC_2535_CheckDisplayAndClickOnDangerousProductsMarkingBlockInListin
 
     @DataProvider(name = "routesMain", parallel = true)
     Object[] dataProviderMain() throws SQLException {
-    return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list44,search34");
-}
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list44,search34");
+    }
 
     @Test(dataProvider = "routesMain")
     @Flaky
@@ -70,9 +70,10 @@ public class QC_2535_CheckDisplayAndClickOnDangerousProductsMarkingBlockInListin
     @Description(value = "Test check the display and click on the dangerous products marking block on the listings")
     public void testCheckDisplayAndClickOnDangerousProductsMarkingBlockInListingsChemical(String route) {
         openPage(route);
-        String signalWord =  chemicalsPage.presenceOfDangerousProducts().getSignalWordFromFirstDangerousProduct(0);
+        String signalWord = chemicalsPage.presenceOfDangerousProducts().getSignalWordFromFirstDangerousProduct(0);
         carListPage.clickOnDangerousLabel(0, signalWord);
     }
+
     @DataProvider(name = "routesOEN", parallel = true)
     Object[] dataProviderOEN() throws SQLException {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_oen17,category_oen18,category_oen19");
@@ -87,7 +88,7 @@ public class QC_2535_CheckDisplayAndClickOnDangerousProductsMarkingBlockInListin
         String signalWord = categoryOenPage.presenceOfDangerousProducts().getSignalWordFromFirstDangerousProduct(0);
         carListPage.clickOnDangerousLabel(0, signalWord);
 
-     }
+    }
 
     @AfterMethod
     public void close() {

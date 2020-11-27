@@ -50,7 +50,7 @@
             <class name="PKW.Tyres.QC_2223_ProductPageTyres.QC_2274_CheckingPresenceOfTyresName"/>
             <class name="PKW.Tyres.QC_2223_ProductPageTyres.QC_2275_CheckingPresenceOfCharacteristicsBlock"/>
             <class name="PKW.Tyres.QC_2223_ProductPageTyres.QC_2276_CheckingPresenceOfRatingBlock"/>
-            <class name="PKW.Tyres.QC_2223_ProductPageTyres.QC_2224_CheckingPresenceOfAdvantageReturnBlock"/>
+<!--            <class name="PKW.Tyres.QC_2223_ProductPageTyres.QC_2224_CheckingPresenceOfAdvantageReturnBlock"/>-->
         </classes>
     </test>
 

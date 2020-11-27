@@ -10,6 +10,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
@@ -32,7 +33,7 @@ public class QC_2556_TransitionToClubPageFromPDFManualBlock {
     @Flaky
     @Owner(value = "LavrynenkoOlha")
     @Description(value = "Test checks Transition To Club Page from the PDF manuals block")
-    public void testChecksTransitionToClubPageFromPDFManualBlock(String route) throws SQLException {
+    public void testChecksTransitionToClubPageFromPDFManualBlock(String route) throws SQLException, IOException {
         openPage(route);
         new Group_list_page_Logic().checkTransitionToClubPageFromPDFManualBlock();
     }
