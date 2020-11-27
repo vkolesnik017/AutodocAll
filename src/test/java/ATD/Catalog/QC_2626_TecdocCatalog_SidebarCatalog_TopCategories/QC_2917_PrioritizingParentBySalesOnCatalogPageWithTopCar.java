@@ -1,6 +1,6 @@
-package ATD.SEO.QC_2555_LinkTransitionFromPDFBlockToClubManual;
+package ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories;
 
-import ATD.Group_list_page_Logic;
+import ATD.Maker_car_list_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -9,15 +9,14 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import java.io.IOException;
 import java.sql.SQLException;
-
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2556_TransitionToClubPageFromPDFManualBlock {
+public class QC_2917_PrioritizingParentBySalesOnCatalogPageWithTopCar {
+
+    private String dataFile = "C:/Autotests/files/data/QC-2917_data.xls";
 
     @BeforeClass
     void setUp() {
@@ -26,20 +25,20 @@ public class QC_2556_TransitionToClubPageFromPDFManualBlock {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_maker,category_group,category_group_fuel4,category_group_year4,group_list,model_maker_list");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main",  "maker_car_list3");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "LavrynenkoOlha")
-    @Description(value = "Test checks Transition To Club Page from the PDF manuals block")
-    public void testChecksTransitionToClubPageFromPDFManualBlock(String route) throws SQLException, IOException {
+    @Owner(value = "Sergey_QA")
+    @Description(value = "Test checking prioritizing parent by sales on catalog page with top car")
+    public void testPrioritizingParentBySalesOnCatalogPageWithTopCar(String route) {
         openPage(route);
-        new Group_list_page_Logic().checkTransitionToClubPageFromPDFManualBlock();
+        new Maker_car_list_page_Logic().checkCorrectDisplayParentWithExcel(dataFile);
     }
 
     @AfterMethod
-    private void close() {
+    public void close() {
         closeWebDriver();
     }
 }

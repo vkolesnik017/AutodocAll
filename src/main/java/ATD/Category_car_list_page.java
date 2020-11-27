@@ -139,4 +139,6 @@ class Category_car_list_page {
 
     ElementsCollection allBtnAddToBasket() {return $$x("//div[@class='add_info']/div[2]");}
 
+    SelenideElement titleOfProductWithArtNum(String artNum) {return $x("//span[contains(text(),'Artikelnummer: "+artNum+"')]/preceding-sibling::a");}
+
     }

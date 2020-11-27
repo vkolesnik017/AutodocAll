@@ -165,6 +165,14 @@ public class CartAddress_page {
         return $x("//div[@class='error-message']");
     }
 
+    public SelenideElement errorTooltipForBilling() {
+        return $x("//form[@id='billing_form']//div[@class='error-message']");
+    }
+
+    public SelenideElement errorTooltipForShipping() {
+        return $x("//form[@id='shipping_form']//div[@class='error-message']");
+    }
+
     SelenideElement fiscalCodeBlockInSippingForm() {
         return $x("//div[@class='shipping-form input-form']//div[@class='fiscal-code-block']");
     }
