@@ -15,6 +15,8 @@ import static com.codeborne.selenide.Selenide.open;
 public class CategoriesAlternative_aws {
     private String awsEnv;
     private String alternativeCategoriesAws;
+    private String alternativeCategoriesProductAws;
+
 
     public CategoriesAlternative_aws() throws SQLException {
         this.awsEnv = "https://aws.";
@@ -29,6 +31,7 @@ public class CategoriesAlternative_aws {
 
     private void init(String awsEnv) throws SQLException {
         this.alternativeCategoriesAws = awsEnv + "autodoc.de/" + new DataBase("ATD").getRouteByRouteName("DE", "categoriesAlternativeAws");
+        this.alternativeCategoriesProductAws = awsEnv + "autodoc.de/" + new DataBase("ATD").getRouteByRouteName("DE", "categoriesAlternativeAws2");
     }
 
     private SelenideElement alternativeTitle(String id, String skin, String language) {
@@ -38,6 +41,13 @@ public class CategoriesAlternative_aws {
     @Step("open alternative categories page in aws")
     public CategoriesAlternative_aws openAlternativeCategoriesInAwsWithLogin() {
         open(alternativeCategoriesAws);
+        new Login_aws().loginInAws();
+        return this;
+    }
+
+    @Step("open alternative categories page in aws")
+    public CategoriesAlternative_aws openAlternativeCategoriesProductInAwsWithLogin() {
+        open(alternativeCategoriesProductAws);
         new Login_aws().loginInAws();
         return this;
     }

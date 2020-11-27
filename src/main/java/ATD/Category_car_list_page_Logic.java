@@ -382,7 +382,6 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
     }
 
 
-
     @Step("checkListingWithVisibleSelectedBrands(selectedBrands). Category_car_list_page")
     public Category_car_list_page_Logic checkListingWithVisibleSelectedBrands(List<String> selectedBrands) {
         Set<String> listOfBrands = new HashSet<>();
@@ -403,6 +402,22 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
         for (int i = 0; i < allBtnAddToBasket().size(); i++) {
             list.add(allBtnAddToBasket().get(i).attr("data-brand-name"));
         }
+        return this;
+    }
+
+    @Step("checking the alternative name of the product through the product article. Category_car_list_page")
+    public Category_car_list_page_Logic checkAlternativeTitleOfProductThroughArticle(String artNUm, String alternativeTitle) {
+
+        if (!titleOfProductWithArtNum(artNUm).isDisplayed()) {
+            while (!titleOfProductWithArtNum(artNUm).isDisplayed()) {
+                forwardNextPaginator().click();
+            }
+            titleOfProductWithArtNum(artNUm).shouldHave(text(alternativeTitle));
+        } else {
+            titleOfProductWithArtNum(artNUm).shouldBe(visible).shouldHave(text(alternativeTitle));
+        }
+
+
         return this;
     }
 }
