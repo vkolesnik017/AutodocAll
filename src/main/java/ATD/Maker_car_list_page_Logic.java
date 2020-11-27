@@ -2,6 +2,7 @@ package ATD;
 
 import AWS.ProductCard_aws;
 import Common.DataBase;
+import Common.Excel;
 import files.Product;
 import io.qameta.allure.Step;
 import org.apache.http.util.Asserts;
@@ -310,5 +311,19 @@ public class Maker_car_list_page_Logic extends Maker_car_list_page {
         blockWithSelectedVehicle().shouldBe(visible);
         return this;
     }
+
+    @Step("Checking the correct display of the parent with Excel. Maker_car_list_page")
+    public Maker_car_list_page_Logic checkCorrectDisplayParentWithExcel(String file) {
+        List<String> parent;
+        parent = new Excel().readFromExcel(file, 0);
+        parent.remove("Autolampen");
+        for (int i = 0; i < getParentCategoriesFromCatalog().size(); i++) {
+            String parentFromFront = getParentCategoriesFromCatalog().get(i);
+            String parentFromExcel = parent.get(i);
+            Assert.assertEquals(parentFromFront, parentFromExcel);
+        }
+        return this;
+    }
+
 
 }

@@ -1,7 +1,9 @@
 package PKW;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
+import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class Tyres_maker_page {
@@ -54,6 +56,42 @@ public class Tyres_maker_page {
 
     SelenideElement btnPrevInPremiumBlock() {
         return $x("//div[contains(@class,'prev slick-arrow')]");
+    }
+
+    SelenideElement topTyresBlock() {
+        return $x("//div[@class='pkw-more__span_100']");
+    }
+
+    SelenideElement productFromTopBlock() {
+        return $x("//div[@class='pkw-more__span_100']//li[@class='pkw-related__product']");
+    }
+
+    ElementsCollection productsFromTopBlock() {
+        return $$x("//div[@class='pkw-more__span_100']//li[@class='pkw-related__product']");
+    }
+
+    SelenideElement btnAddToBasketFromTopBlock() {
+        return $x("//li[@class='pkw-related__product']//span[@data-ga-action='Add_to_basket']");
+    }
+
+    SelenideElement btnDetailsInPopupFromTopBlock() {
+        return $x("//div[@class='pkw-related__item-header']//span[@class='ga-click']/span");
+    }
+
+    SelenideElement popupBasketAddedProducts() {
+        return $x("//div[@class='cart-items-block ']");
+    }
+
+    SelenideElement productFromPopupCart() {
+        return $x("//div[@class='cart-items-block ']//div[@class='row-text']");
+    }
+
+    SelenideElement iconCart() {
+        return $x("//div[@id='cart-container']");
+    }
+
+    SelenideElement modelProductFromTopBlock() {
+        return $x("//li[@class='pkw-related__product']//span[@class='pkw-related__title']");
     }
 
 
