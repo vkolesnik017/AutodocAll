@@ -5,11 +5,10 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.*;
+import static Common.CommonMethods.roundOfTheCost;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.Selenide.sleep;
@@ -165,18 +164,7 @@ public class CartAllData_page_Logic extends CartAllData_page {
     @Step("Rounds the receiving parameter {regularDeliveryPrice} up and down and checks the price of regular delivery. CartAllData_page")
     public CartAllData_page_Logic checkRegularDeliveryPrice(float regularDeliveryPrice) {
         Float deliveryPrice = getRegularDeliveryPrice();
-        BigDecimal result = new BigDecimal(regularDeliveryPrice);
-        BigDecimal formatPriceUp = result.setScale(2, RoundingMode.UP);
-        float roundMax = Float.parseFloat(String.valueOf(formatPriceUp));
-        BigDecimal formatPriceDOWN = result.setScale(2, RoundingMode.FLOOR);
-        float roundMin = Float.parseFloat(String.valueOf((formatPriceDOWN)));
-        float res = 0.0f;
-        if (deliveryPrice.equals(roundMax)) {
-            res = roundMax;
-        }
-        if (deliveryPrice.equals(roundMin)) {
-            res = roundMin;
-        }
+        float res = roundOfTheCost(regularDeliveryPrice, deliveryPrice);
         deliveryPrice().shouldHave(text(String.valueOf(res).replaceAll("\\.", ",")));
         return this;
     }
@@ -328,18 +316,7 @@ public class CartAllData_page_Logic extends CartAllData_page {
         sleep(2000);
         Float totalPrice = getTotalPriceAllDataPage(shop);
         float totalPriceIncludedSO = price + realPriseSO;
-        BigDecimal result = new BigDecimal(totalPriceIncludedSO);
-        BigDecimal formatPriceUp = result.setScale(2, RoundingMode.UP);
-        float roundMax = Float.parseFloat(String.valueOf(formatPriceUp));
-        BigDecimal formatPriceDOWN = result.setScale(2, RoundingMode.FLOOR);
-        float roundMin = Float.parseFloat(String.valueOf((formatPriceDOWN)));
-        float res = 0.0f;
-        if (totalPrice.equals(roundMax)) {
-            res = roundMax;
-        }
-        if (totalPrice.equals(roundMin)) {
-            res = roundMin;
-        }
+        float res = roundOfTheCost(totalPriceIncludedSO, totalPrice);
         Assert.assertEquals(res, totalPrice);
         return this;
     }
@@ -352,19 +329,8 @@ public class CartAllData_page_Logic extends CartAllData_page {
         float totalPriceIncludedSO = price - realPriseSO;
         clickSafeOrderCheckbox();
         sleep(2000);
-        Float totalPrice = getTotalPriceAllDataPage(shop);
-        BigDecimal result = new BigDecimal(totalPriceIncludedSO);
-        BigDecimal formatPriceUp = result.setScale(2, RoundingMode.UP);
-        float roundMax = Float.parseFloat(String.valueOf(formatPriceUp));
-        BigDecimal formatPriceDOWN = result.setScale(2, RoundingMode.FLOOR);
-        float roundMin = Float.parseFloat(String.valueOf((formatPriceDOWN)));
-        float res = 0.0f;
-        if (totalPrice.equals(roundMax)) {
-            res = roundMax;
-        }
-        if (totalPrice.equals(roundMin)) {
-            res = roundMin;
-        }
+        float totalPrice = getTotalPriceAllDataPage(shop);
+        float res = roundOfTheCost(totalPriceIncludedSO, totalPrice);
         Assert.assertEquals(res, totalPrice);
         return this;
     }
@@ -634,18 +600,7 @@ public class CartAllData_page_Logic extends CartAllData_page {
 
     @Step("Checks product price on site matches price on alldata page including VAT. Product_page")
     public CartAllData_page_Logic checkProductPriceOnSitesMatchesPriceOnAllDataPageIncludingVat(Float priceWithVatPerAllDataPage, Float priceProductInAlldata) {
-        BigDecimal result = new BigDecimal(priceWithVatPerAllDataPage);
-        BigDecimal formatPriceUp = result.setScale(2, RoundingMode.UP);
-        float roundMax = Float.parseFloat(String.valueOf(formatPriceUp));
-        BigDecimal formatPriceDOWN = result.setScale(2, RoundingMode.FLOOR);
-        float roundMin = Float.parseFloat(String.valueOf((formatPriceDOWN)));
-        float res = 0.0f;
-        if (priceProductInAlldata.equals(roundMax)) {
-            res = roundMax;
-        }
-        if (priceProductInAlldata.equals(roundMin)) {
-            res = roundMin;
-        }
+        float res = roundOfTheCost(priceWithVatPerAllDataPage, priceProductInAlldata);
         Assert.assertEquals(res, priceProductInAlldata);
         return this;
     }
