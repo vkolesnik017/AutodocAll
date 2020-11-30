@@ -1,6 +1,5 @@
 package ATD;
 
-import com.codeborne.selenide.ex.ElementNotFound;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
@@ -16,7 +15,7 @@ public class Payment_handler_page_Logic extends Payment_handler_page {
         try {
             popupAfterOrder().shouldBe(visible);
             closePopupAfterOrderBtn().click();
-        } catch (ElementNotFound e) {
+        } catch (Throwable e) {
             System.out.println("Popup not visible");
         }
         return this;
