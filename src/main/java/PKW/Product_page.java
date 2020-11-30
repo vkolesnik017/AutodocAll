@@ -223,7 +223,7 @@ public class Product_page {
     }
 
     SelenideElement productVersandLinkUnderPrice() {
-        return $x("//*[@class='pkw-product__price-after']//*[@title='Versandkosten']");
+        return $x("//*[@class='pkw-product__price-after']//a");
     }
 
     SelenideElement productButtonBuyWithCount() {

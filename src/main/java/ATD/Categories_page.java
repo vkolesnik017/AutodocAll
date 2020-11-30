@@ -28,7 +28,9 @@ public class Categories_page {
         return $x("//a[contains(@class,'header-i--moto')]");
     }
 
-    ElementsCollection tecdocCategoriesA() { return  $$x("//*[@class='list_ersats_n list-ersatz-n--catalog']//li//a");}
+   public ElementsCollection tecdocCategories() { return  $$x("//div[@id='content']//ul[@class='expand list_ersats_row']//ul/li/*");}
+
+   public ElementsCollection tecdocOverCategories() { return  $$x("//div[@id='content']//ul[@class='expand list_ersats_row']//div[@class='image']/a");}
 
     ElementsCollection tecdocCategoriesSpan() { return  $$x("//*[@class='list_links']/li/span");}
 
