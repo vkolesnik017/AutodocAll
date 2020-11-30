@@ -218,8 +218,7 @@ public class CommonMethods {
         return (String) (executeJavaScript("return arguments[0].getAttribute('" + attribute + "')", element));
     }
 
-    @Step
-    // Pulling prices from text of element
+    @Step("Pulling prices from text of element")
     public static Float getPriceFromElement(SelenideElement element) {
         element.shouldBe(visible);
         return Float.parseFloat(element.text().replaceAll("[^0-9,]", "").replace(",", "."));
