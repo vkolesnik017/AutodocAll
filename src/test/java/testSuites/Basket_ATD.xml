@@ -6,7 +6,7 @@
         <listener class-name="Common.ProjectListener"/>
     </listeners>
 
-<!--    <test name="QC_1129_BasketSession_ATD" thread-count="1">
+    <test name="QC_1129_BasketSession_ATD" thread-count="1">
         <classes>
             <class name="ATD.Basket.QC_1129_BasketSession_ATD.QC_1130_RestorationWebBasketSessionOnWebHomepageVersion_ATD"/>
             <class name="ATD.Basket.QC_1129_BasketSession_ATD.QC_1131_SynchronizationWebSessionOfBasketOnMobVersion_ATD"/>
@@ -62,10 +62,10 @@
             <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1924_LoginByUserLoginOnAnotherSkin_ATD"/>
             <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1926_LoginNegativeCase_InvalidPassword_ATD"/>
             <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1927_LoginNegativeCase_InvalidDomain_ATD"/>
-            &lt;!&ndash;<class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1928_LoginNegativeCase_EmptyInputs_ATD"/>&ndash;&gt;
+            <!--<class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1928_LoginNegativeCase_EmptyInputs_ATD"/>-->
             <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1930_PasswordRecoveryNegativeCase_NotRegisteredMail_ATD"/>
-            &lt;!&ndash;<class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1929_PasswordRecovery_ATD"/>&ndash;&gt;
-           &lt;!&ndash;<class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1931_PasswordRecoveryNegativeCase_IncorrectPasswordConfirmation_ATD"/>&ndash;&gt;
+            <!--<class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1929_PasswordRecovery_ATD"/>-->
+           <!--<class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1931_PasswordRecoveryNegativeCase_IncorrectPasswordConfirmation_ATD"/>-->
         </classes>
     </test>
 
@@ -110,7 +110,7 @@
             <class name="ATD.Basket.QC_2795_VAT_Ireland_ATD.QC_2849_CheckingVatForIrelandWhenCreatingOrderWithAWS"/>
             <class name="ATD.Basket.QC_2795_VAT_Ireland_ATD.QC_2859_CheckingVatWhenChangingTheCountryOfDeliveryToAWS"/>
         </classes>
-    </test>-->
+    </test>
 
     <test name="QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD">
         <classes>
