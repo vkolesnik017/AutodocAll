@@ -50,6 +50,11 @@
             <class name="PKW.Tyres.QC_2223_ProductPageTyres.QC_2274_CheckingPresenceOfTyresName"/>
             <class name="PKW.Tyres.QC_2223_ProductPageTyres.QC_2275_CheckingPresenceOfCharacteristicsBlock"/>
             <class name="PKW.Tyres.QC_2223_ProductPageTyres.QC_2276_CheckingPresenceOfRatingBlock"/>
+            <class name="PKW.Tyres.QC_2223_ProductPageTyres.QC_2277_CheckingPresenceOfPrice"/>
+            <class name="PKW.Tyres.QC_2223_ProductPageTyres.QC_2278_CheckingAddingTyresToBasket"/>
+            <class name="PKW.Tyres.QC_2223_ProductPageTyres.QC_2313_CheckingPresenceOfEuReifenlabelBlock"/>
+            <class name="PKW.Tyres.QC_2223_ProductPageTyres.QC_2315_CheckingPresenceOfAnalogsBlock"/>
+            <class name="PKW.Tyres.QC_2223_ProductPageTyres.QC_2318_CheckingPresenceOfReviewsBlock"/>
 <!--            <class name="PKW.Tyres.QC_2223_ProductPageTyres.QC_2224_CheckingPresenceOfAdvantageReturnBlock"/>-->
         </classes>
     </test>

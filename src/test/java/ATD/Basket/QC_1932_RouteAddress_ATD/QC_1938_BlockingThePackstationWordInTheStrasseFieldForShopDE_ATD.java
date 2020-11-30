@@ -35,7 +35,7 @@ public class QC_1938_BlockingThePackstationWordInTheStrasseFieldForShopDE_ATD {
                 .signIn(mail, password);
     }
 
-    @DataProvider(name = "blockingWords", parallel = false)
+    @DataProvider(name = "blockingWords")
     Object[] blockingWords() {
         return new Object[][]{
                 {"Packstation"}, {"Backstation"}, {"Bakstation"}, {"DHLPackstation"}, {"DHL-Packstation"}, {"Paackstation"}, {"Pack Station"},
@@ -51,7 +51,7 @@ public class QC_1938_BlockingThePackstationWordInTheStrasseFieldForShopDE_ATD {
     @Test(dataProvider = "blockingWords")
     @Flaky
     @Description(value = "Test checks the blocking the Packstation wordIn the Strasse Field for shop DE")
-    public void testBlockingThePackstationWordInTheStrasseFieldForShopDE(String blockingWords) throws SQLException {
+    public void testBlockingThePackstationWordInTheStrasseFieldForShopDE(String blockingWords) {
         cartAddress_page_logic.checkPresenceNotesAndTextInsideBlock("(Die Angabe einer DHL-Packstation, Postfiliale " +
                 "oder eines Paketshops u. a. m. ist nicht zulässig!)")
                 .strasse().setValue(blockingWords);
