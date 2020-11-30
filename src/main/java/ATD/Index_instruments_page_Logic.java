@@ -235,6 +235,9 @@ public class Index_instruments_page_Logic extends Index_instruments_page {
             HttpURLConnection http = (HttpURLConnection) url.openConnection();
             http.setInstanceFollowRedirects(true);
             int responseCode = http.getResponseCode();
+            if (responseCode !=200) {
+                System.out.println("ResponseCode " + allCategories.get(i) + " = " + responseCode );
+            }
             assertEquals(responseCode, 200);
         }
         return this;

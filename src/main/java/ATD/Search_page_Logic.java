@@ -6,11 +6,10 @@ import com.codeborne.selenide.ElementsCollection;
 import files.Product;
 import io.qameta.allure.Step;
 import org.testng.Assert;
-
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.*;
 import java.util.stream.Collectors;
-
 import static ATD.CommonMethods.*;
 import static PKW.CommonMethods.getTextFromUnVisibleElement;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
@@ -714,5 +713,25 @@ public class Search_page_Logic extends Search_page {
         titleOfProductWithArtNum(artNUm).shouldBe(visible).shouldHave(text(alternativeTitle));
         return this;
     }
+
+    @Step(": from. Search_page")
+    public ArrayList<String> getHrefOrUrlCategoriesThenWriteToList(ElementsCollection categories) {
+        secondListingPage().scrollTo();
+        closePopupOfChooseCar();
+        for (int i = 0; i < visibleParentInSidebar().size(); i++) {
+            visibleParentInSidebar().get(i).click();
+            visibleCategoryFromSideBar().shouldBe(visible);
+            visibleParentInSidebar().get(i).click();
+        }
+        return new Main_page_Logic().getHrefOrUrlCategoriesThenWriteToList(categories);
+    }
+
+    @Step(": from. Search_page")
+    public Search_page_Logic checkCategoriesForServerResponses200(List<String> allCategories) throws IOException {
+        new Index_instruments_page_Logic().checkCategoriesForServerResponses200(allCategories);
+        return this;
+    }
+
+
 }
 
