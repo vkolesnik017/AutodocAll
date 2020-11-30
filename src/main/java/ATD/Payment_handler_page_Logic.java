@@ -17,6 +17,7 @@ public class Payment_handler_page_Logic extends Payment_handler_page {
             popupAfterOrder().shouldBe(visible);
             closePopupAfterOrderBtn().click();
         } catch (ElementNotFound e) {
+            System.out.println("Popup not visible");
         }
         return this;
     }
