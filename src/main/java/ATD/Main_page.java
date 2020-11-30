@@ -775,4 +775,14 @@ public class Main_page {
     SelenideElement checkBoxRememberMeFromLoginPopup() {
         return $x("//div[@class='check remember']/input[@id='remember_me']");
     }
+
+    public ElementsCollection categoriesFromCatalog() {
+        return $$x("//div[@id='parts']//ul/li/div[@class='links']/*");
+    }
+
+    public ElementsCollection overCategoriesFromCatalog() {
+    return $$x("//div[@id='parts']//ul//div[@class='image']//span[@class='img']/..");
+    }
+
+
 }

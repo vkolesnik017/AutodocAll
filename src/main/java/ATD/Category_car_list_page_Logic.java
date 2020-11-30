@@ -1,6 +1,7 @@
 package ATD;
 
 
+import com.codeborne.selenide.ElementsCollection;
 import files.Product;
 import io.qameta.allure.Step;
 import org.testng.Assert;
@@ -402,6 +403,24 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
         for (int i = 0; i < allBtnAddToBasket().size(); i++) {
             list.add(allBtnAddToBasket().get(i).attr("data-brand-name"));
         }
+        return this;
+    }
+
+    @Step("Click btn Teilecatalog in sidebar. Category_car_list_page")
+    public Category_car_list_page_Logic clickBtnTeilecatalogInSidebar() {
+        btnTeilecatalogInSidebar().shouldBe(visible).click();
+        parentFromTeilecatalogInSidebar().shouldBe(visible);
+        return this;
+    }
+
+    @Step(": from. Category_car_list_page")
+    public ArrayList<String> getHrefOrUrlCategoriesThenWriteToList(ElementsCollection categories) {
+        return new Main_page_Logic().getHrefOrUrlCategoriesThenWriteToList(categories);
+    }
+
+    @Step(": from. Category_car_list_page")
+    public Category_car_list_page_Logic checkCategoriesForServerResponses200( List<String> allCategories) throws IOException {
+        new Index_instruments_page_Logic().checkCategoriesForServerResponses200(allCategories);
         return this;
     }
 
