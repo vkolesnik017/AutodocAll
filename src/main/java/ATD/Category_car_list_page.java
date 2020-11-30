@@ -125,6 +125,10 @@ class Category_car_list_page {
         return $x("//div[contains(@class,'block categories blue')][1]//span");
     }
 
+    public ElementsCollection parentFromTeilecatalogInSidebarHref() {
+        return $$x("//div[contains(@class,'block categories blue')][1]//a");
+    }
+
     SelenideElement genericBlock() {return $x("//div[@class='filter-generics-tecdoc js-filter-generic js-filter-50001 js-filter-wrapper criteria-filter-block-js']");}
 
     ElementsCollection visibleTitleOfGenerics() {return $$x("//div[@class='filter-generics-tecdoc__item-title']").filter(visible);}

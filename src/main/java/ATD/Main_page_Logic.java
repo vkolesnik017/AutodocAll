@@ -13,6 +13,7 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.*;
 
@@ -1529,4 +1530,28 @@ public class Main_page_Logic extends Main_page {
         int random_number = minValue + (int) (Math.random() * maxValue);
         return random_number;
     }
+
+    @Step("Get Href or URL categories/overCategories from catalog then write to list. Main_page")
+    public ArrayList<String> getHrefOrUrlCategoriesThenWriteToList(ElementsCollection categories) {
+        ArrayList<String> allCategoriesCatalog = new ArrayList<>();
+        for (SelenideElement element : categories) {
+           if( element.has(attribute("href"))) {
+               String hrefCategory = element.getAttribute("href");
+               allCategoriesCatalog.add(hrefCategory);
+           } else if (element.has(attribute("url"))) {
+               String urlCategory = element.getAttribute("url");
+               allCategoriesCatalog.add(urlCategory);
+           }
+        }
+        System.out.println(allCategoriesCatalog);
+        return allCategoriesCatalog;
+    }
+
+    @Step(":from Main_page")
+    public Main_page_Logic checkCategoriesForServerResponses200( List<String> allCategories) throws IOException {
+        new Index_instruments_page_Logic().checkCategoriesForServerResponses200(allCategories);
+        return this;
+    }
+
+
 }
