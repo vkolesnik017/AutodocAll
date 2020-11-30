@@ -196,8 +196,14 @@ public class Search_page {
         return $$x("//div[@class='price_box']/span");
     }
 
+    ElementsCollection btnAddedActiveProductToWishList() {return $$x("//div[@class='button ']/ancestor::div[@class='price_box']/span");}
+
     ElementsCollection addedProductToWishList() {
         return $$x("//span[@class='add-to-wishlist title_btn add-to-wishlist--added remove-article']");
+    }
+
+    ElementsCollection addedActiveProductToWishList() {
+        return $$x("//div[@class='button ']/ancestor::div[@class='price_box']/span[@class='add-to-wishlist title_btn add-to-wishlist--added remove-article']");
     }
 
     SelenideElement iconOfWishList() {
@@ -227,6 +233,8 @@ public class Search_page {
     ElementsCollection artNumOfProduct() {
         return $$x("//span[@class='article_number']");
     }
+
+    ElementsCollection artNumOfActiveProduct() {return $$x("//div[@class='button ']/ancestor::div[@class='price_box']/..//span[@class='article_number']");}
 
     SelenideElement popUpSelector() {
         return $x("//div[@class='new_popup popup_content']");

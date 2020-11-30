@@ -114,10 +114,10 @@ public class QC_2448_CheckDisplayAndClickOnDangerousProductsBlockOnListings {
     @Description(value = "Test check displaying and click by Dangerous products block")
     public void testCheckDisplayingAndClickByDangerousProductsBlockSearchMain(String route) {
         openPage(route);
-        String idOfDangerousProduct = lkwSearchPage.visibilityOfTecDocListingBlock().getIdOfDangerousProduct(1);
-        String signalWord = lkwSearchPage.visibilityOfTecDocListingBlock().getSignalWordFromFirstDangerousProductListingView(1);
-        List<String> attributeOfWarningIconInPopUp = lkwSearchPage.getAttributeOfWarningIconInPopUp(1);
-        lkwSearchPage.clickOnDangerousLabelAndCompareElements(1, signalWord, attributeOfWarningIconInPopUp);
+        String idOfDangerousProduct = lkwSearchPage.visibilityOfTecDocListingBlock().getIdOfDangerousProduct(0);
+        String signalWord = lkwSearchPage.visibilityOfTecDocListingBlock().getSignalWordFromFirstDangerousProductListingView(0);
+        List<String> attributeOfWarningIconInPopUp = lkwSearchPage.getAttributeOfWarningIconInPopUp(0);
+        lkwSearchPage.clickOnDangerousLabelAndCompareElements(0, signalWord, attributeOfWarningIconInPopUp);
         new ProductCard_aws(idOfDangerousProduct).openProductCardPageAndLogin().presenceOfDangerousIconBlock().compareElementsOfDangerousProduct(attributeOfWarningIconInPopUp, signalWord);
     }
 
