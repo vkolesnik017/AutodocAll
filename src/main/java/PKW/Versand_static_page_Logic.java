@@ -255,4 +255,38 @@ public class Versand_static_page_Logic extends Versand_static_page {
         }
         return this;
     }
+
+    @Step("Opening the form for the request for new delivery country . Versand_static_page")
+    public Versand_static_page_Logic openingTheDeliveryForm() {
+        countryBlockItemsButton().click();
+        openFormButton().click();
+        openFormButton().shouldNotBe(visible);
+        formForDeliveryToNewCountries().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Sending the empty form for the request for new delivery country . Versand_static_page")
+    public Versand_static_page_Logic sendingEmptyDeliveryForm() {
+        sendFormButton().click();
+        nameFieldVersandForm().shouldHave(attribute("style", "border-color: red;"));
+        emailFieldVersandForm().shouldHave(attribute("style", "border-color: red;"));
+        phoneFieldVersandForm().shouldHave(attribute("style", "border-color: red;"));
+        textWithErrorMessageVersandForm().shouldHave(cssValue("color", "rgba(255, 0, 0, 1)"))
+                .shouldHave(text("Um fortzufahren bestätigen Sie bitte Ihr Newsletter-Abo"));
+
+        return this;
+    }
+
+    @Step("Filling and sending the form for the request for new delivery country . Versand_static_page")
+    public Versand_static_page_Logic fillingAndSendingDeliveryForm() {
+        nameFieldVersandForm().sendKeys("test@test.com");
+        emailFieldVersandForm().sendKeys("test@test.com");
+        phoneFieldVersandForm().sendKeys("200+002");
+        checkboxVersandForm().click();
+        sendFormButton().click();
+        successPopUpVersandForm().shouldBe(visible);
+        closeButtonPopUpVersandForm().click();
+        successPopUpVersandForm().shouldNotBe(visible);
+        return this;
+    }
 }

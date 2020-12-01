@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="TopPartsBlock_PKW" parallel="methods" thread-count="2" data-provider-thread-count="2">
+
+    <listeners>
+        <listener class-name="Common.ProjectListener"/>
+    </listeners>
+
+    <test name="QC_3007_TopProductsBlock">
+        <classes>
+            <class name="PKW.TopPartsBlock.QC_3007_TopProductsBlock.QC_2559_CheckMainElementsOfTopProductBlock"/>
+        </classes>
+    </test>
+
+</suite>

@@ -115,6 +115,7 @@ public class Tyres_page_Logic extends Tyres_page {
         }
         return this;
     }
+
     @Step("check presence relink block by seasons. Tyres_page")
     public Tyres_page_Logic checkPresenceRelinkBlockBySeasons() {
         relinkBlockBySeasons().shouldBe(visible);

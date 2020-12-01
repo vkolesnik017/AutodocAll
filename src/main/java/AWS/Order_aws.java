@@ -87,8 +87,12 @@ public class Order_aws {
         return $x("//input[@id='form_Order[payment_house]']");
     }
 
-    private SelenideElement fieldPostcodeInBilling() {
+    public SelenideElement fieldPostcodeInBilling() {
         return $x("//input[@id='form_Order[rPlz]']");
+    }
+
+    public SelenideElement errorIconInFieldPostalConForBilling() {
+        return $x("//input[@id='form_Order[rPlz]']/..//i[contains(@class,'icon-error')]");
     }
 
     private SelenideElement fieldCityInBilling() {
@@ -123,8 +127,12 @@ public class Order_aws {
         return $x("//input[@id='form_Order[delivery_house]']");
     }
 
-    private SelenideElement fieldPostcodeInDeliveryAddress() {
+    public SelenideElement fieldPostcodeInDeliveryAddress() {
         return $x("//input[@id='form_Order[lPlz]']");
+    }
+
+    public SelenideElement errorIconInFieldPostalConForShipping() {
+        return $x("//input[@id='form_Order[lPlz]']/..//i[contains(@class,'icon-error')]");
     }
 
     private SelenideElement fieldCityInDeliveryAddress() {
@@ -1299,4 +1307,21 @@ public class Order_aws {
         return articleID().getText();
     }
 
+    @Step("Filling fields postal code {postalCod} in billing. Order_aws")
+    public Order_aws fillingFieldsPostalCodInBilling(String postalCod) {
+        fieldPostcodeInBilling().setValue(postalCod);
+        return this;
+    }
+
+    @Step("Filling fields postal code {postalCod} in shipping. Order_aws")
+    public Order_aws fillingFieldsPostalCodInShipping(String postalCod) {
+        fieldPostcodeInDeliveryAddress().setValue(postalCod);
+        return this;
+    }
+
+    @Step("Check presence expected element. Order_aws")
+    public Order_aws checkPresenceExpectedElement(SelenideElement element) {
+        element.shouldHave(visible);
+        return this;
+    }
 }

@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="TopPartsBlock" parallel="methods" thread-count="2" data-provider-thread-count="2">
+<suite name="TopPartsBlock" parallel="tests" data-provider-thread-count="3">
 
-    <listeners>
-        <listener class-name="Common.ProjectListener"/>
-    </listeners>
-
-    <test name="QC_2689_TopProductsBlock">
-        <classes>
-            <class name="ATD.TopPartsBlock.QC_2689_TopProductsBlock.QC_2769_CheckingAvailabilityOfTopProductsForTop250Cars"/>
-        </classes>
-    </test>
+    <suite-files>
+        <suite-file path="TopPartsBlock_ATD.xml"/>
+        <suite-file path="TopPartsBlock_PKW.xml"/>
+    </suite-files>
 
 </suite>
