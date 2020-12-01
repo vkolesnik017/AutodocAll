@@ -31,7 +31,7 @@ public class QC_2823_CheckingValidityIndexes_LU {
                 .cartClick()
                 .nextButtonClick()
                 .signIn(mail, password)
-                .chooseDeliveryCountryForShipping("LU")
+                .chooseDeliveryCountryForShipping("LD")
                 .getZipMasksAndComparesWithExpectedForShipping("1111");
 
     }
