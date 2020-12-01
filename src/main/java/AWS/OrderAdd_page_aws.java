@@ -259,8 +259,10 @@ public class OrderAdd_page_aws {
         if (preLoader().isDisplayed()) {
             preLoader().waitUntil(attribute("style", "display: none;"), 20000);
         }
-        productArticleID(artID).click();
-        btnChooseProduct().click();
+        if (productArticleID(artID).isDisplayed()) {
+            productArticleID(artID).click();
+            btnChooseProduct().click();
+        }
         return this;
     }
 

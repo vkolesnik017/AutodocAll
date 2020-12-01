@@ -26,7 +26,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_562_CreatingAwsOrder_WithDropProductAndRegularProduct {
 
-    private String userID = "15371456", articleNum, dropArticleNun, productDropArticleID;
+    private String userID = "15371456", articleNum, dropArticleNum, productDropArticleID;
     private Float deliveryCost, safeOrderCost, productPriceIncludingDeliveryAndSafeOrder,
             totalDeliveryAmountAndSafeOrder, productCost, productDropCost, totalProductCostInOrder;
     private ArrayList userDataInCreateOrder, userData, userDataInOrder;
@@ -43,7 +43,7 @@ public class QC_562_CreatingAwsOrder_WithDropProductAndRegularProduct {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product32");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product2");
     }
 
     @Test(dataProvider = "route")
@@ -57,7 +57,7 @@ public class QC_562_CreatingAwsOrder_WithDropProductAndRegularProduct {
         productCost = product_page_logic.getProductPrice();
         allProductCost.add(productCost);
         openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "productDrop1"));
-        dropArticleNun = product_page_logic.getArticleNumber();
+        dropArticleNum = product_page_logic.getArticleNumber();
         productDropCost = product_page_logic.getProductPrice();
         productDropArticleID = product_page_logic.getProductId();
         allProductCost.add(productDropCost);
@@ -77,9 +77,9 @@ public class QC_562_CreatingAwsOrder_WithDropProductAndRegularProduct {
         userDataInOrder = orderAdd_page_aws.addProduct(articleNum)
                 .checkPresenceTableOfSuppliersAndClickBtnSelect()
                 .checkArticleOfAddedProduct(articleNum)
-                .addProduct(dropArticleNun)
+                .addProduct(dropArticleNum)
                 .chooseArticleIDOfDesiredProductAndClickBtnChooseProduct(productDropArticleID)
-                .checkArticleOfAddedProduct(dropArticleNun)
+                .checkArticleOfAddedProduct(dropArticleNum)
                 .clickSaveOrderBtn()
                 .checkOrderHasTestStatus()
                 .getUserDataInOrder();
