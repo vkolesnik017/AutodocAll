@@ -248,6 +248,7 @@ public class Moto_Category_car_list_page_Logic extends Moto_Category_car_list_pa
         List<String> dynamicCharacteristic = new ArrayList<>();
         dynamicCharacteristic.add("Baumuster:<0525,0535>");
         dynamicCharacteristic.add("Lambdasonde:Regelsonde");
+        dynamicCharacteristic.add("Baujahr ab:09/1988");
         dynamicCharacteristic.add("Abgasanlage:vor Katalysator");
         List<String> artNumberOfProduct = new ArrayList<>();
         for (int i = 0; i < titleOfDynamicCharacteristic(artNumOfProduct).size(); i++) {

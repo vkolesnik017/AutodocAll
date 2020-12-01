@@ -1,9 +1,11 @@
 package ATD;
 
+import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.Step;
 import org.openqa.selenium.Keys;
 import org.testng.Assert;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -142,5 +144,17 @@ public class Supplier_page_Logic extends Supplier_page {
         new Category_car_list_page_Logic().compareTwoListsBetweenFrontAndAws(listFront, listAws, groupRating);
         return this;
     }
+
+    @Step(": from. Supplier_page")
+    public ArrayList<String> getHrefOrUrlCategoriesThenWriteToList(ElementsCollection categories) {
+        return new Main_page_Logic().getHrefOrUrlCategoriesThenWriteToList(categories);
+    }
+
+    @Step(": from. Supplier_page")
+    public Supplier_page_Logic checkCategoriesForServerResponses200( List<String> allCategories) throws IOException {
+        new Index_instruments_page_Logic().checkCategoriesForServerResponses200(allCategories);
+        return this;
+    }
+
 
 }

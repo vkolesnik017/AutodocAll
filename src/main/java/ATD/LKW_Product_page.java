@@ -79,7 +79,7 @@ public class LKW_Product_page {
     }
 
     SelenideElement truckingBlockOfMatching() {
-        return $x("//div[@class='product-info-block__auto__title product-info-block__title--lkw']");
+        return $x("//div[@class='product-info-block-accordion js--roll-up']/div[1]");
     }
 
     ElementsCollection brandsOfTruckInMatchingBLock() {

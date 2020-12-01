@@ -2,20 +2,20 @@ package ATD;
 
 import AWS.ProductCard_aws;
 import Common.DataBase;
+import Common.Excel;
 import PKW.Supplier_page_Logic;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import files.Car;
 import files.Product;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
+import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 import static ATD.CommonMethods.*;
 import static PKW.CommonMethods.checkingContainsUrl;
@@ -95,6 +95,13 @@ public class Main_page_Logic extends Main_page {
         emailFieldForFB().setValue(mail);
         passFieldFB().setValue(pass);
         loginBtnFB().click();
+        try {
+            privacyPolicyBtnFB().shouldBe(visible);
+            privacyPolicyBtnFB().click();
+        } catch (NoSuchElementException e){
+            System.out.println("Privacy policy is not visible");
+            e.printStackTrace();
+        }
         switchTo().window(0);
         return page(Profile_page_Logic.class);
     }
@@ -348,6 +355,39 @@ public class Main_page_Logic extends Main_page {
         secondFieldKBA().setValue(numberForSecondField);
         return this;
     }
+    // This method only for DE
+    @Step("Fill in KBA fields in popup. Main_page")
+    public Main_page_Logic fillNumberKbaInPopup(String numberForFirstField, String numberForSecondField) {
+        bluePromptEmptyFieldSelector().shouldBe(visible);
+        firstFieldKBAInPopup().shouldBe(visible).setValue(numberForFirstField);
+        secondFieldKBAInPopup().shouldBe(visible).setValue(numberForSecondField);
+        sleep(4000);
+        return this;
+    }
+
+    @Step("Click link \"Was ist eine Schlüsselnummer?\" and check work KBA popup. Main_page")
+    public Main_page_Logic clickLinkAndCheckWorkKbaPopup() {
+        linkInfoKba().click();
+        kbaPopup().shouldBe(visible);
+        btnClosePopup().shouldBe(visible).click();
+        kbaPopup().shouldNotBe(visible);
+        return this;
+    }
+
+    @Step("Checks the presence of all elements from KBA selector. Main_page")
+    public Main_page_Logic checkPresenceAllElementsInKbaSelectors() {
+        if (hiddenSelectorBlock().isDisplayed()) {
+            hiddenSelectorBlock().click();
+        }
+        titleKbaSelector().shouldHave(exactText("NACH SCHLÜSSELNUMMER"));
+        firstFieldKBA().shouldHave(attribute("placeholder", "4-stellig"));
+        secondFieldKBA().shouldHave(attribute("placeholder", "3-stellig"));
+        textUnderFirstFieldKBA().shouldHave(exactText("ZU 2. ODER ZU 2.1."));
+        textUnderSecondFieldKBA().shouldHave(exactText("ZU 3. ODER ZU 2.2."));
+        linkInfoKba().shouldHave(exactText("Was ist eine" + " Schlüsselnummer?"));
+        selectorKbaBtn().shouldHave(exactText("Suchen"));
+       return this;
+    }
 
     // This method for all shop, except DE
     @Step("Fill in KBA field. Main_page")
@@ -360,6 +400,12 @@ public class Main_page_Logic extends Main_page {
     @Step("Click search KBA button. Main_page")
     public Maker_car_list_page_Logic clickKbaBtn() {
         selectorKbaBtn().click();
+        return page(Maker_car_list_page_Logic.class);
+    }
+
+    @Step("Click search KBA button in popup. Main_page")
+    public Maker_car_list_page_Logic clickKbaBtnInPopup() {
+        selectorKbaBtnInPopup().shouldBe(visible).click();
         return page(Maker_car_list_page_Logic.class);
     }
 
@@ -389,6 +435,12 @@ public class Main_page_Logic extends Main_page {
     public Main_page_Logic resetCarSelectorPopup() {
         resetCarBtnInCarSelectorPopup().click();
         resetCarBtnInCarSelectorPopup().shouldBe(not(visible));
+        return this;
+    }
+
+    @Step("checks absence selector popup. Main_page")
+    public Main_page_Logic checkAbsenceSelectorPopup() {
+        selectorPopup().shouldNotBe(visible);
         return this;
     }
 
@@ -441,7 +493,7 @@ public class Main_page_Logic extends Main_page {
 
     @Step("Click reset button in vertical car selector. Main_page")
     public Main_page_Logic resetVerticalCarSelector() {
-        resetBtnInVerticalCarSelector().click();
+        resetBtnInVerticalCarSelector().shouldBe(visible).click();
         resetBtnInVerticalCarSelector().shouldBe(not(visible));
         return this;
     }
@@ -1413,11 +1465,13 @@ public class Main_page_Logic extends Main_page {
     @Step("Checking the transition to the instagram from  the Social Network Block. Main_page")
     public Main_page_Logic checkingTransitionToTheInstagram(String expectedUrl) {
         instagramImageTransition().click();
+        waitingWhileLinkBecomeExpected(expectedUrl);
         url();
         Assert.assertEquals(url(), expectedUrl);
         back();
         instagramLinkTransition().click();
         url();
+        waitingWhileLinkBecomeExpected(expectedUrl);
         Assert.assertEquals(url(), expectedUrl);
         return this;
     }
@@ -1433,4 +1487,71 @@ public class Main_page_Logic extends Main_page {
         autodocClubTransition().click();
         return this;
     }
+
+    @Step("get all car values from file. Main_page")
+    public List<Car> getAllCarValuesFromFile(String file) {
+        List<Car> cars = new ArrayList<>();
+        List<String> marke = new Excel().readFromExcel(file, "qc_2769", 2);
+        List<String> model = new Excel().readFromExcel(file, "qc_2769", 4);
+        List<String> motor = new Excel().readFromExcel(file, "qc_2769", 0);
+
+        for (int i = 1; i < marke.size(); i++) {
+            Car carPage = new Car();
+            carPage.setBrand(marke.get(i));
+            carPage.setModel(model.get(i));
+            carPage.setMotor(motor.get(i));
+            cars.add(carPage);
+        }
+        return cars;
+    }
+
+    @Step("get specific values from file. Main_page")
+    public List<Car> getSpecificValuesFromFile(List<Car> file, int start, int end) {
+        List<Car> list = new ArrayList<>();
+        for (int i = start; i < end; i++) {
+            list.add(file.get(i));
+        }
+        return list;
+    }
+
+    @Step("select random car from file. Main_page")
+    public Maker_car_list_page_Logic selectRandomCarFromFile(List<Car> file, int random_number) {
+        brandSelectorInVerticalCarSelector().selectOptionByValue(file.get(random_number).getBrand());
+        modelSelectorInVerticalCarSelector().selectOptionByValue(file.get(random_number).getModel());
+        typeSelectorInVerticalCarSelector().selectOptionByValue(file.get(random_number).getMotor());
+        searchBtnInVerticalSelector().click();
+        return page(Maker_car_list_page_Logic.class);
+    }
+
+
+    @Step("get random number. Main_page")
+    public int getRandomNumber(int maxValue) {
+        int minValue = 0;
+        int random_number = minValue + (int) (Math.random() * maxValue);
+        return random_number;
+    }
+
+    @Step("Get Href or URL categories/overCategories from catalog then write to list. Main_page")
+    public ArrayList<String> getHrefOrUrlCategoriesThenWriteToList(ElementsCollection categories) {
+        ArrayList<String> allCategoriesCatalog = new ArrayList<>();
+        for (SelenideElement element : categories) {
+           if( element.has(attribute("href"))) {
+               String hrefCategory = element.getAttribute("href");
+               allCategoriesCatalog.add(hrefCategory);
+           } else if (element.has(attribute("url"))) {
+               String urlCategory = element.getAttribute("url");
+               allCategoriesCatalog.add(urlCategory);
+           }
+        }
+        System.out.println(allCategoriesCatalog);
+        return allCategoriesCatalog;
+    }
+
+    @Step(":from Main_page")
+    public Main_page_Logic checkCategoriesForServerResponses200( List<String> allCategories) throws IOException {
+        new Index_instruments_page_Logic().checkCategoriesForServerResponses200(allCategories);
+        return this;
+    }
+
+
 }

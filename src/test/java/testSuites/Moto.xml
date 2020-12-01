@@ -196,7 +196,7 @@
             <class name="ATD.MOTO.QC_319_TopProductsBlock.QC_325_VisibilityOfTopProductCharacteristicByHover"/>
             <class name="ATD.MOTO.QC_319_TopProductsBlock.QC_326_PresenceOfNavigationArrowsInTopBlock"/>
             <class name="ATD.MOTO.QC_319_TopProductsBlock.QC_327_MatchingOfGenericAndTopProduct"/>
-            <class name="ATD.MOTO.QC_319_TopProductsBlock.QC_328_ApplicabilityProductsToBrandPage"/>
+            <!--<class name="ATD.MOTO.QC_319_TopProductsBlock.QC_328_ApplicabilityProductsToBrandPage"/>-->
         </classes>
     </test>
 
@@ -207,10 +207,10 @@
             <class name="ATD.MOTO.QC_730_ProductPage.QC_733_AddedProductToBasket"/>
             <class name="ATD.MOTO.QC_730_ProductPage.QC_734_CompatibleMotoBlock"/>
             <class name="ATD.MOTO.QC_730_ProductPage.QC_737_LackOfLinksInOenBlock"/>
-            <class name="ATD.MOTO.QC_730_ProductPage.QC_738_AnalogProductBlock"/>
+           <!-- <class name="ATD.MOTO.QC_730_ProductPage.QC_738_AnalogProductBlock"/>
             <class name="ATD.MOTO.QC_730_ProductPage.QC_739_AddedAnalogProductToBasket"/>
             <class name="ATD.MOTO.QC_730_ProductPage.QC_740_PresenceOfDetailInformationPopUp"/>
-            <class name="ATD.MOTO.QC_730_ProductPage.QC_741_BehaviorByClickOnImageOfAnalogProduct"/>
+            <class name="ATD.MOTO.QC_730_ProductPage.QC_741_BehaviorByClickOnImageOfAnalogProduct"/>-->
         </classes>
     </test>
 

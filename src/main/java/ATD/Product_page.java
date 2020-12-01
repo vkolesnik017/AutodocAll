@@ -4,6 +4,7 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.Select;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.*;
@@ -241,6 +242,8 @@ public class Product_page {
     public SelenideElement breadcrumbsCatalogButton() {
         return $(".parts_step_1");
     }
+
+    ElementsCollection breadCrumbLinks() {return $$x("//div[@class='steps breadcrumbs']/ul/li");}
 
     //locators for FAQ block
     public SelenideElement faqSubmitButton() {
@@ -551,6 +554,8 @@ public class Product_page {
         return $(".product-info-block__oem__title");
     }
 
+    ElementsCollection activeOenLinks() {return $$x("//div[@class='oem-list__col']//li/a");}
+
     // locator for counter
     SelenideElement counterValuePairedGood() {
         return $(By.xpath("//input[@class=' qty_2']"));
@@ -784,7 +789,7 @@ public class Product_page {
     }
 
     SelenideElement btnMehrFromDangerousBlock() {
-        return $x("//a[@class='dangerous-goods__show-more js-dangerous-goods__show-more' and text()='Mehr']");
+        return $x("//div[@class='dangerous-goods js-dangerous-goods hide']//a[@data-more='...Mehr']");
     }
 
     SelenideElement blockWithAlternative() {
@@ -830,4 +835,14 @@ public class Product_page {
     SelenideElement popUpQuestionsCloseButton() {
         return $x("//*[@class='popup-after-order__close']");
     }
+
+    SelenideElement applicabilityBlock() {return $x("//div[@class='product-info-block__auto product-info-block--pkw single']");}
+
+    ElementsCollection applicabilityVehicle() {return $$x("//div[@class='accordion-button']//a");}
+
+    SelenideElement applicabilityVehicleListBlock() {return $x("//div[@class='accordion-content']");}
+
+    ElementsCollection fullValueOfApplicabilityVehicle() {return $$x("//div[@class='accordion-content']//b");}
+
+    ElementsCollection visibleCharacteristic() {return $$x("//div[@class='product-block__description__info']/ul/li").filter(visible);}
 }

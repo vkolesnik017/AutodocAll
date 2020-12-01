@@ -212,4 +212,15 @@ public class CommonMethods {
 
     //Checks element clickability
     public static Condition clickable = and("can be clicked", visible, enabled);
+
+    @Step("get attribute from not visible element {expected element}")
+    public static String getAttributeFromUnVisibleElement(SelenideElement element, String attribute) {
+        return (String) (executeJavaScript("return arguments[0].getAttribute('" + attribute + "')", element));
+    }
+
+    @Step("Pulling prices from text of element")
+    public static Float getPriceFromElement(SelenideElement element) {
+        element.shouldBe(visible);
+        return Float.parseFloat(element.text().replaceAll("[^0-9,]", "").replace(",", "."));
+    }
 }

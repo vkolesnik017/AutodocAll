@@ -2,6 +2,7 @@ package ATD.Orders_AWS_Delivery.QC_1675_HeavyLoadsDangerousGoodsDropshippingGood
 
 import ATD.CartAllData_page_Logic;
 import ATD.Product_page_Logic;
+import ATD.Versand_static_page_Logic;
 import Common.SetUp;
 import AWS.Order_aws;
 import io.qameta.allure.Description;
@@ -25,10 +26,12 @@ public class QC_1679_HeavyLoadsFR_PositiveCase {
     private Float totalPrice;
     private Float totalPriceAWSOrder;
     private String orderNumber;
+    private String deliveryPrice;
 
     @BeforeClass
-    void setUp() {
+    void setUp() throws Exception {
         setUpBrowser(false, "chrome", "77.0");
+        deliveryPrice = new Versand_static_page_Logic().getDeliveryPrice("Frankreich");
     }
 
     @DataProvider(name = "route", parallel = true)
@@ -51,7 +54,7 @@ public class QC_1679_HeavyLoadsFR_PositiveCase {
                 .nextBtnClick()
                 .chooseVorkasse()
                 .nextBtnClick()
-                .checkRegularDeliveryPrice("9,95")
+                .checkRegularDeliveryPrice(deliveryPrice)
                 .checkHeavyLoadsDeliveryPriceAllData("36,95")
                 .checkAbsenceSafeOrderBlock()
                 .getTotalPriceAllDataPage(shop);
@@ -59,14 +62,14 @@ public class QC_1679_HeavyLoadsFR_PositiveCase {
                 .getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumber);
         totalPriceAWSOrder = order_aws.openOrderInAwsWithLogin()
-                .checkDeliveryPriceOrderAWS("9.95")
+                .checkDeliveryPriceOrderAWS(deliveryPrice)
                 .checkHeavyLoadsDeliveryPriceOrderAWS("36.95")
                 .checkThatStatusSafeOrderIsOff()
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
         order_aws.reSaveOrder()
                 .checkThatStatusSafeOrderIsOff()
-                .checkDeliveryPriceOrderAWS("9.95")
+                .checkDeliveryPriceOrderAWS(deliveryPrice)
                 .checkHeavyLoadsDeliveryPriceOrderAWS("36.95");
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
     }

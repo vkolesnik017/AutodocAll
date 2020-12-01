@@ -2,6 +2,7 @@ package ATD.Basket.QC_1486_Island_ATD;
 
 import ATD.CartAllData_page_Logic;
 import ATD.Search_page_Logic;
+import ATD.Versand_static_page_Logic;
 import Common.SetUp;
 import AWS.Order_aws;
 import io.qameta.allure.Description;
@@ -25,10 +26,12 @@ public class QC_1488_ChecksVerificationIslands_BillingIsUndivided_NegativeCase_A
 
     private String email = "QC_1488_autotest@autodoc.si", orderNumber;
     private Float totalPrice, totalPriceAWSOrder, totalPriceInEmail;
+    private String deliveryPrice;
 
     @BeforeClass
-    void setUp() {
+    void setUp() throws Exception {
         setUpBrowser(false, "chrome", "77.0");
+        deliveryPrice = new Versand_static_page_Logic().getDeliveryPrice("Frankreich");
     }
 
     @DataProvider(name = "route", parallel = true)
@@ -61,24 +64,24 @@ public class QC_1488_ChecksVerificationIslands_BillingIsUndivided_NegativeCase_A
                 .chooseVorkasse().nextBtnClick()
                 .checkPresenceSafeOrderBlock()
                 .checkTextContainingVatPercentage("inkl. 20% MwSt.")
-                .checkRegularDeliveryPrice("9,95")
+                .checkRegularDeliveryPrice(deliveryPrice)
                 .getTotalPriceAllDataPage(shop);
         orderNumber = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumber);
         totalPriceAWSOrder = order_aws.openOrderInAwsWithLogin()
                 .checkVatStatusInOrder("Mit MwSt 20%")
-                .checkDeliveryPriceOrderAWS("9.95")
+                .checkDeliveryPriceOrderAWS(deliveryPrice)
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
         order_aws.reSaveOrder()
                 .checkVatStatusInOrder("Mit MwSt 20%")
-                .checkDeliveryPriceOrderAWS("9.95");
+                .checkDeliveryPriceOrderAWS(deliveryPrice);
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
 
         totalPriceInEmail = new WebMail().openMail("QC_1488_autotest@autodoc.si", passwordForMail)
                 .checkAndOpenLetterWithOrderNumber(orderNumber)
                 .checkTextContainingVatPercentageInEmail("Inkl. 20% MwSt")
-                .checkRegularDeliveryPriceInEmail("9,95")
+                .checkRegularDeliveryPriceInEmail(deliveryPrice)
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPrice, totalPriceInEmail);
     }

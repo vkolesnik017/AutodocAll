@@ -1,20 +1,17 @@
 package AWS;
 
 import Common.DataBase;
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.ElementsCollection;
-import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.*;
 import com.codeborne.selenide.ex.ElementShould;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+import static Common.CommonMethods.roundOfTheCost;
 import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Condition.value;
@@ -64,6 +61,10 @@ public class Order_aws {
 
     private SelenideElement articleNumber() {
         return $(By.xpath("//table[@id='table_order_products_list']/tbody/tr/td[6]/a[1]"));
+    }
+
+    private SelenideElement articleID() {
+        return $x("//table[@id='table_order_products_list']/tbody/tr/td[5]/a[1]");
     }
 
     private SelenideElement saveChangesInOrderBtn() {
@@ -443,14 +444,109 @@ public class Order_aws {
         return $x("//body/div[@id='searchSelection']/div[1]/div[1]/div[3]/a[1]");
     }
 
+    public SelenideElement reorderNumber() {
+        return $x("//div[@class='w-box']//div[contains(text(),'Пере-Заказы')]/..//a");
+    }
+
+    public SelenideElement parentOrderNumber() {
+        return $x("//div[@class='w-box']//div[text()='Родительский заказ']/..//a");
+    }
+
+    public SelenideElement blocksParentAndReOrderNumber() {
+        return $x("//div[@class='w-box']//div[contains(text(),'Пере-Заказы')]/../../div[@class='w-box']//div[text()='Родительский заказ']");
+    }
+
+    public SelenideElement transactionCodBlock() {
+        return $x("(//div[@class='form-group order-transaction w-100-pc']/span/input)[2]");
+    }
+
+    private ElementsCollection carId() {
+        return $$x("//table[@id='table_order_products_list']//td[29]");
+    }
+
+    private SelenideElement carIdForSuitableCar() {
+        return $x("//table[@id='table_order_products_list']//tr[1]/td[29]");
+    }
+
+    private SelenideElement carIdForNotSuitableCar() {
+        return $x("//table[@id='table_order_products_list']//tr[2]/td[29]/span");
+    }
+
+    private SelenideElement accountsBtn() {
+        return $x("//button[contains(@class,'printBillPopup')]");
+    }
+
+    private SelenideElement vatInAccountPopUp() {
+        return $x("//select[@name='Bill[tva]']");
+    }
+
+    private SelenideElement closePopUpBtnInAccountPopUp() {
+        return $x("//div[@id='printBillPopup']//a[contains(@class,'btn-close')]");
+    }
+
+    private SelenideElement returnButton() {
+        return $x("//button[@name='printGu']");
+    }
+
+    private SelenideElement typeSelectInReturnPopup() {
+        return $x("//select[@name='Refund[type]']");
+    }
+
+    private SelenideElement checkBoxProductInPopupReturn() {
+        return $x("//input[@class='reCalc']/..//input[contains(@id,'form_RefundProducts')]");
+    }
+
+    private SelenideElement checkBoxDeliveryInPopupReturn() {
+        return $x("//input[@id='form_Refund[isVersand]']");
+    }
+
+    private SelenideElement printBtnInPopupReturn() {
+        return $x("//a[@class='btn btn-primary btn-print']");
+    }
+
+
+
+    @Step("Click button accounts. Order_aws")
+    public Order_aws clickBtnAccount() {
+        accountsBtn().click();
+        return this;
+    }
+
+    @Step("Closes popup accounts. Order_aws")
+    public Order_aws closePopupAccounts() {
+        closePopUpBtnInAccountPopUp().click();
+        return this;
+    }
+
+    @Step("Open popup accounts and check VAT {expectedText}. Order_aws")
+    public Order_aws openPopUpAccountsAndCheckVat(String expectedText) {
+        clickBtnAccount();
+        vatInAccountPopUp().shouldHave(text(expectedText));
+        return this;
+    }
+
+    @Step("Checking compliance the Car Id {carIdFromProduct} in the ordered goods. Order_aws")
+    public Order_aws checkingComplianceCarIdInOrderedGoods(String carIdFromProduct) {
+        columnProductQuantity().scrollIntoView(true);
+        for (int i = 0; i < carId().size(); i++) {
+            carId().get(i).shouldHave(exactText(carIdFromProduct));
+        }
+        return this;
+    }
+
+    @Step("Checks by color that the first product fits the car and the second one does not. Order_aws")
+    public Order_aws checksByCarIdThatProductsFitsCar() {
+        carIdForSuitableCar().shouldHave(cssValue("color", "rgba(34, 34, 34, 1)"));
+        carIdForNotSuitableCar().shouldHave(cssValue("color", "rgba(255, 0, 0, 1)"));
+        return this;
+    }
+
     @Step("get VIN num in popup from btn Auto By Search From The Site. Order_aws")
     public Order_aws getVinNumInPopupFromBtnAutoBySearchFromTheSite(String vinNum) {
         vinNumInPopupFromBtnAutoBySearchFromTheSite().shouldHave(text(vinNum));
         closePopupFromBtnAutoBySearchFromTheSite().shouldBe(visible).click();
         return this;
     }
-
-
 
     @Step("Click btn Auto By Search From The Site. Order_aws")
     public Order_aws clickBtnAutoBySearchFromTheSite() {
@@ -492,7 +588,6 @@ public class Order_aws {
         return this;
     }
 
-
     @Step("Checks current status {expectedStatus} in order. Order_aws")
     public Order_aws checkCurrentStatusInOrder(String expectedStatus) {
         currentStatusInOrder().shouldBe(visible);
@@ -505,7 +600,6 @@ public class Order_aws {
         return this;
     }
 
-
     @Step("Get order ID of order. Order_aws")
     public String getOrderIdOfOrder() {
         String orderID = orderID().getText().substring(10);
@@ -514,28 +608,31 @@ public class Order_aws {
 
     @Step("Checks the quantity of goods {expectedQuantity} in column count products. Order_aws")
     public Order_aws checkQuantityOfGoodsInColumnCountProduct(String expectedQuantity) {
+        countProducts().shouldBe(visible);
         countProducts().shouldHave(text(expectedQuantity));
         return this;
     }
 
     @Step("Checks the quantity of goods {expectedQuantity} in column expected quantity column. Order_aws")
     public Order_aws checkQuantityOfGoodsInColumnExpectedQuantity(String expectedQuantity) {
+        expectedQuantityColumn().shouldBe(visible);
         expectedQuantityColumn().shouldHave(text(expectedQuantity));
         return this;
     }
 
     @Step("Checks the quantity of goods {expectedQuantity} in column Quantity product. Order_aws")
     public Order_aws checkQuantityOfGoodsInColumnQuantity(String expectedQuantity) {
+        columnProductQuantity().shouldBe(visible);
         columnProductQuantity().shouldHave(text(expectedQuantity));
         return this;
     }
 
     @Step("Checks the quantity of goods {expectedQuantity} in refund table. Order_aws")
     public Order_aws checksQuantityOfGoodsInRefundTable(String expectedQuantity) {
+        quantityProductInRefundTable().shouldBe(visible);
         quantityProductInRefundTable().shouldHave(attribute("value", expectedQuantity));
         return this;
     }
-
 
     @Step("Edit quantity of goods {expectedQuantity} and click save button. Order_aws")
     public Order_aws editQuantityOfItemInPopUpEditItem(String expectedQuantity) {
@@ -861,7 +958,7 @@ public class Order_aws {
 
     @Step("Check delivery price {expectedDeliveryPriceOrderAWS} in order AWS. Order_aws")
     public Order_aws checkDeliveryPriceOrderAWS(String expectedDeliveryPriceOrderAWS) {
-        deliveryPriceOrderAWS().shouldHave(attribute("data-sum", expectedDeliveryPriceOrderAWS));
+        deliveryPriceOrderAWS().shouldHave(attribute("data-sum", expectedDeliveryPriceOrderAWS.replaceAll(",", ".")));
         return this;
     }
 
@@ -1011,9 +1108,10 @@ public class Order_aws {
 
     @Step("Subtracts removed product cost {sellingCostOneProduct} from the total oder cost {totalCost}. Order_aws")
     public Float subtractsRemovedProductCostFromTotalOrderCost(Float totalCost, Float sellingCostOneProduct) {
-        Float cost = totalCost - sellingCostOneProduct;
-        String formatCost = new DecimalFormat(".##").format(cost).replaceAll(",", ".");
-        return Float.valueOf(formatCost);
+        float cost = totalCost - sellingCostOneProduct;
+        float actualTotalCost = getTotalPriceOrderAWS();
+        float res = roundOfTheCost(cost, actualTotalCost);
+        return res;
     }
 
     @Step("Checks conto NR number {contoNR}. Order_aws")
@@ -1088,17 +1186,7 @@ public class Order_aws {
     @Step("Calculates the amount of an item by dividing the total amount of the item {sumProduct Column} by the number of items {productQuantity}. Order_aws")
     public Float dividingPriceByQuantity(Float sumProductColumn, Float productQuantity, Float sellingPrice) {
         float cost = sumProductColumn / productQuantity;
-        BigDecimal result = new BigDecimal(cost);
-        BigDecimal formatCostUp = result.setScale(2, RoundingMode.UP);
-        float roundMax = Float.parseFloat(String.valueOf(formatCostUp));
-        BigDecimal formatCostDOWN = result.setScale(2, RoundingMode.FLOOR);
-        float roundMin = Float.parseFloat(String.valueOf((formatCostDOWN)));
-        float res = 0.0f;
-        if (sellingPrice.equals(roundMax)) {
-            return res = roundMax;
-        } if (sellingPrice.equals(roundMin)) {
-            return res = roundMin;
-        }
+        float res = roundOfTheCost(cost, sellingPrice);
         return res;
     }
 
@@ -1106,8 +1194,9 @@ public class Order_aws {
             "by number of goods {productQuantity} and plus the delivery{costDelivery}. Order_aws")
     public Float multiplyPriceByQuantityAndPlusDeliveryCost(Float sellingCostOneProduct, Float productQuantity, Float costDelivery) {
         Float cost = sellingCostOneProduct * productQuantity + costDelivery;
-        String formatCost = new DecimalFormat(".##").format(cost).replaceAll(",", ".");
-        return Float.valueOf(formatCost);
+        float actualTotalCost = getTotalPriceOrderAWS();
+        float res = roundOfTheCost(cost, actualTotalCost);
+        return res;
     }
 
     @Step("Checking correct text in input field. Order_aws")
@@ -1158,4 +1247,56 @@ public class Order_aws {
         closePopupFromBtnAutoBySearchFromTheSite().shouldBe(visible).click();
         return this;
     }
+
+    @Step("Checks presence reorder number and transition and goes to it. Order_aws")
+    public Order_aws transitionToReorderNumber() {
+        reorderNumber().scrollTo().shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("Checks presence transaction cod block. Order_aws")
+    public Order_aws checkPresenceTransactionCodBloc() {
+        transactionCodBlock().scrollTo().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Click return button. Order_aws")
+    public Order_aws clickReturnButton() {
+        returnButton().should(visible);
+        returnButton().click();
+        return this;
+    }
+
+    @Step("Chooses return type. Order_aws")
+    public Order_aws chooseReturnType(String expectedMethod) {
+        typeSelectInReturnPopup().shouldBe(visible);
+        typeSelectInReturnPopup().selectOptionContainingText(expectedMethod);
+        return this;
+    }
+
+    @Step("Click check box product in popup return. Order_aws")
+    public Order_aws clickCheckBoxProductInPopupReturn() {
+        checkBoxProductInPopupReturn().shouldBe(visible);
+        checkBoxProductInPopupReturn().click();
+        return this;
+    }
+
+    @Step("Click check box delivery in popup return. Order_aws")
+    public Order_aws clickCheckBoxDeliveryInPopupReturn() {
+        checkBoxDeliveryInPopupReturn().shouldBe(visible);
+        checkBoxDeliveryInPopupReturn().click();
+        return this;
+    }
+
+    @Step("Click print button in popup return. Order_aws")
+    public Order_aws clickPrintButtonInPopupReturn() {
+        printBtnInPopupReturn().click();
+        return this;
+    }
+
+    @Step("Get article ID. Order_aws")
+    public String getArticleId() {
+        return articleID().getText();
+    }
+
 }

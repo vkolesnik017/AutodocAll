@@ -3,7 +3,6 @@ package ATD.Orders_AWS_Delivery.QC_19_WorkWithOrdersInAWS;
 import Common.DataBase;
 import ATD.Product_page_Logic;
 import Common.SetUp;
-import AWS.OrderAdd_page_aws;
 import AWS.Order_aws;
 import AWS.SearchOrders_page_aws;
 import io.qameta.allure.Description;
@@ -38,7 +37,7 @@ public class QC_1126_RemovingAutoPartFromAwsOrder {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product2");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product32");
     }
 
     @Test(dataProvider = "route")

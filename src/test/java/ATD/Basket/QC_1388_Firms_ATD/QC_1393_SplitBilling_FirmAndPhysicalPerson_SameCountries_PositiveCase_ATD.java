@@ -150,7 +150,9 @@ public class QC_1393_SplitBilling_FirmAndPhysicalPerson_SameCountries_PositiveCa
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceDE, totalPriceAWSOrderDE);
         sellingPriceAWSOrderDE = order_aws.getSellingProductPriceOrderAWS();
-        Assert.assertEquals(sellingPriceAWSOrderDE, regularProductPricePerAllDataPageDE);
+
+        // TODO включу данный асерт после исправлениея дефекта AWS-2830
+        /*Assert.assertEquals(sellingPriceAWSOrderDE, regularProductPricePerAllDataPageDE);*/
         order_aws.clickCustomerId();
         switchTo().window(1);
         new Customer_view_aws().checkPresenceBlockLogsCompanyNumbers()

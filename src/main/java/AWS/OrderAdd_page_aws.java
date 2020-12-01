@@ -422,4 +422,10 @@ public class OrderAdd_page_aws {
         String nameCountry = choosesCountryInDeliveryAddress(country).getText();
         return nameCountry;
     }
+
+    @Step("Choosing delivery country {expectedCountry}. OrderAdd_page_aws")
+    public OrderAdd_page_aws chooseDeliveryCountry(String expectedCountry) {
+        choosesCountryInDeliveryAddress(expectedCountry).shouldBe(visible).click();
+        return this;
+    }
 }

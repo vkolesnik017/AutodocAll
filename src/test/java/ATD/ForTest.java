@@ -2,13 +2,14 @@ package ATD;
 
 import Common.DataBase;
 import Common.SetUp;
-import mailinator.WebMail;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDateTime;
+import java.util.*;
+
+import static Common.CommonMethods.getExpectedCalendarData;
+
 
 public class ForTest extends SetUp {
 
@@ -21,8 +22,11 @@ public class ForTest extends SetUp {
 
     @Test()
     public void test2() throws SQLException {
-        System.out.println(new DataBase().getAWSTranslationCountries("Österreich"));
-        }
+        String data = getExpectedCalendarData("yyyy-MM-dd", 1,1);
+        String moths = String.valueOf(LocalDateTime.now().getDayOfMonth());
+        System.out.println(data);
+        System.out.println(moths);
+    }
     }
 
 

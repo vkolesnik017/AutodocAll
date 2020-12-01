@@ -92,7 +92,7 @@ public class Moto_Category_page {
 
     ElementsCollection  btnDetailsOfTopProducts() {return $$x("//div[@class='product_desc_table_container']/following-sibling::span");}
 
-    ElementsCollection childCategoriesInSideBar() {return $$x("//div[@class='block categories blue topSubCats']//li");}
+    ElementsCollection childCategoriesInSideBar() {return $$x("//div[@class='block categories blue topSubCats']//li/a");}
 
     ElementsCollection btnAddDangerousProductToWishList() {return $$x("//span[@class='dangerous-listing__show-more']/ancestor::div[@class='rec_products_block']/div[1]");}
 
@@ -113,4 +113,6 @@ public class Moto_Category_page {
     SelenideElement titleOfDangerousPopUp() {return $x("//div[@class='popup-dangerous__title']");}
 
     SelenideElement infoTextOfDangerousPopUp() {return $x("//div[@class='popup-dangerous']//p");}
+
+    ElementsCollection genericsInSideBar() {return $$x("//div[@class='block categories blue topSubCats']//li");}
 }

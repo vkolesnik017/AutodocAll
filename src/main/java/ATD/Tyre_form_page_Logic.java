@@ -139,9 +139,9 @@ public class Tyre_form_page_Logic extends Tyre_form_page {
 
     @Step("checking max size products on listing. Tyre_form_page")
     public Tyre_form_page_Logic checkingMaxSizeProductsOnListing() {
-        btnPrevInPagination().scrollIntoView(false).click();
+        btnPrevInPagination().scrollIntoView("{block: \"center\"}").click();
         checkingContainsUrl("page=34");
-        btnLastInPagination().scrollIntoView(false).click();
+        btnLastInPagination().scrollIntoView("{block: \"center\"}").click();
         checkingContainsUrl("page=35");
         return this;
     }

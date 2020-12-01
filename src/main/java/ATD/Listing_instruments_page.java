@@ -125,4 +125,8 @@ public class Listing_instruments_page {
 
     SelenideElement headlineOfGenericsBlock() {return $x("//div[@class='filter-generics-tecdoc__title']");}
 
+    ElementsCollection selectedBrands() {return $$x("//*[self::li[@class='active slick-slide slick-current slick-active'] or self::li[@class='active slick-slide slick-active']]//label/img");}
+
+    ElementsCollection allBtnAddToBasket() {return $$x("//div[@class='add_info']/div[2]");}
+
 }

@@ -4,6 +4,7 @@ import io.qameta.allure.Step;
 import java.util.NoSuchElementException;
 import static ATD.CommonMethods.getNameRouteFromJSVarInHTML;
 import static ATD.CommonMethods.password;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
@@ -35,6 +36,13 @@ public class Login_page_mob_Logic extends Login_page_mob {
         emailFieldForFB().setValue(mail);
         passFieldFB().setValue(pass);
         loginBtnFB().click();
+        try {
+            privacyPolicyBtnFB().shouldBe(visible);
+            privacyPolicyBtnFB().click();
+        } catch (NoSuchElementException e){
+            System.out.println("Privacy policy is not visible");
+            e.printStackTrace();
+        }
         switchTo().window(0);
         return page(Profile_page_mob_Logic.class);
     }

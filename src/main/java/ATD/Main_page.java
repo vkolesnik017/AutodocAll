@@ -32,6 +32,10 @@ public class Main_page {
         return $x("//input[@id='pass']");
     }
 
+    SelenideElement privacyPolicyBtnFB() {
+        return $x("//button[@name='__CONFIRM__']");
+    }
+
     SelenideElement loginBtnFB() {
         return $x("//input[@name='login']");
     }
@@ -552,7 +556,28 @@ public class Main_page {
         return $(".kba_popup_example");
     }
 
+    SelenideElement btnClosePopup() {return $x("//div[@class='kba_popup_example']/a[@class='close']");}
+
+    SelenideElement titleKbaSelector() {return $x("//div[@class='block-select-kba__title']/span");}
+
+    SelenideElement textUnderFirstFieldKBA() {return $x("//div[@class='block-select-kba__input'][1]//span");}
+
+    SelenideElement textUnderSecondFieldKBA() {return $x("//div[@class='block-select-kba__input'][2]//span");}
+
+    SelenideElement hiddenSelectorBlock() {return $x("//div[@class='catalog-title__change-car']");}
+
+
     //Car selector popup
+    SelenideElement firstFieldKBAInPopup() {return $x("//div[7]/form[1]//div[1]/input");}
+
+    SelenideElement secondFieldKBAInPopup() {return $x("//div[7]/form[1]//div[2]/input");}
+
+    SelenideElement selectorKbaBtnInPopup() {return $x("//div[7]//div[3]//div[3]//span");}
+
+    SelenideElement selectorPopup() {return $x("//body/div[7]");}
+
+    SelenideElement bluePromptEmptyFieldSelector() {return $x("//div[@class='tooltiptext blue' and @style='display: block;']");}
+
     public SelenideElement headingInCarSelectorPopup() {
         return $(".popup-kba-error>p");
     }
@@ -609,6 +634,8 @@ public class Main_page {
         return $(".popup-kba-error>a");
     }
 
+
+    // other locators
     public SelenideElement tecDocCatalogMainPage() {
         return $(byId("parts"));
     }
@@ -748,4 +775,14 @@ public class Main_page {
     SelenideElement checkBoxRememberMeFromLoginPopup() {
         return $x("//div[@class='check remember']/input[@id='remember_me']");
     }
+
+    public ElementsCollection categoriesFromCatalog() {
+        return $$x("//div[@id='parts']//ul/li/div[@class='links']/*");
+    }
+
+    public ElementsCollection overCategoriesFromCatalog() {
+    return $$x("//div[@id='parts']//ul//div[@class='image']//span[@class='img']/..");
+    }
+
+
 }

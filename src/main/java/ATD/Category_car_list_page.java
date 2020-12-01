@@ -125,6 +125,10 @@ class Category_car_list_page {
         return $x("//div[contains(@class,'block categories blue')][1]//span");
     }
 
+    public ElementsCollection parentFromTeilecatalogInSidebarHref() {
+        return $$x("//div[contains(@class,'block categories blue')][1]//a");
+    }
+
     SelenideElement genericBlock() {return $x("//div[@class='filter-generics-tecdoc js-filter-generic js-filter-50001 js-filter-wrapper criteria-filter-block-js']");}
 
     ElementsCollection visibleTitleOfGenerics() {return $$x("//div[@class='filter-generics-tecdoc__item-title']").filter(visible);}
@@ -135,4 +139,10 @@ class Category_car_list_page {
 
     SelenideElement btnSearchOfSelectedSelector() {return $x("//a[@class='submit search_button ripple-out']");}
 
-}
+    SelenideElement visibleBrandsLinkInSideBar(String idOfBrand) {return $x("//*[self::li[@class='slick-slide slick-active'] or self::li[@class='slick-slide slick-current slick-active']]//label[@for='cb-brand-"+idOfBrand+"']");}
+
+    ElementsCollection allBtnAddToBasket() {return $$x("//div[@class='add_info']/div[2]");}
+
+    SelenideElement titleOfProductWithArtNum(String artNum) {return $x("//span[contains(text(),'Artikelnummer: "+artNum+"')]/preceding-sibling::a");}
+
+    }

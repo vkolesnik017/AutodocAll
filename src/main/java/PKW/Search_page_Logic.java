@@ -18,13 +18,15 @@ public class Search_page_Logic extends Search_page {
         List<String> listOfCharacteristic = new ArrayList<>();
         String currentTitleOfProduct;
         addedAllCharacteristicsOfProductToList(listOfCharacteristic);
-        while (forwardLinkOfPaginator().isDisplayed()) {
-            currentTitleOfProduct = visibleTitleOfProducts().get(0).getText();
-            forwardLinkOfPaginator().scrollIntoView("{block: \"end\"}").click();
-            visibleTitleOfProducts().get(0).shouldNotHave(exactText(currentTitleOfProduct));
-            addedAllCharacteristicsOfProductToList(listOfCharacteristic);
+        if (!listOfCharacteristic.contains(expectedCharacteristic)) {
+            while (forwardLinkOfPaginator().isDisplayed()) {
+                currentTitleOfProduct = visibleTitleOfProducts().get(0).getText();
+                forwardLinkOfPaginator().scrollIntoView("{block: \"end\"}").click();
+                visibleTitleOfProducts().get(0).shouldNotHave(exactText(currentTitleOfProduct));
+                addedAllCharacteristicsOfProductToList(listOfCharacteristic);
+            }
+            Assert.assertTrue(listOfCharacteristic.contains(expectedCharacteristic));
         }
-        Assert.assertTrue(listOfCharacteristic.contains(expectedCharacteristic));
         return this;
     }
 

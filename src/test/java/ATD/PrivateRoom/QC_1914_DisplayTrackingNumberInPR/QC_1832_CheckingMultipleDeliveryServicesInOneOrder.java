@@ -65,7 +65,7 @@ public class QC_1832_CheckingMultipleDeliveryServicesInOneOrder {
         listSavedTrackingNumberFromAWS = new Order_aws(firstOrderNumber).openOrderInAwsAndLogsInIfUserIntoLogged()
                 .checkCurrentStatusInOrder("Neue Bestellung")
                 .selectDeliveryAndEnterTrackingNum("0", "GLS", "0", "1111111111")
-                .selectDeliveryAndEnterTrackingNum("1", "DHL", "1", "2222222222")
+                .selectDeliveryAndEnterTrackingNum("1", "TNT", "1", "2222222222")
                 .selectDeliveryAndEnterTrackingNum("2", "NOX", "2", "3333333333")
                 .selectStatusOrder("Versendet")
                 .saveOrder()

@@ -534,9 +534,23 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return this;
     }
 
-    @Step("Get zip mask and compares with expected {expectedMask}. CartAddress_page")
-    public CartAddress_page_Logic getZipMasksAndComparesWithExpected(String expectedMask) {
+    @Step("Check correct text {expectedText} in error tooltip for postal cod. CartAddress_page")
+    public CartAddress_page_Logic checkCorrectTextInErrorInErrorTooltipForPostalCod(SelenideElement element, String expectedText) {
+        element.shouldBe(visible);
+        element.shouldHave(text(expectedText));
+        return this;
+    }
+
+    @Step("Get zip mask and compares with expected {expectedMask} for Shipping. CartAddress_page")
+    public CartAddress_page_Logic getZipMasksAndComparesWithExpectedForShipping(String expectedMask) {
         String zipMask = postalCodeFieldForShipping().getAttribute("placeholder");
+        Assert.assertEquals(zipMask, expectedMask);
+        return this;
+    }
+
+    @Step("Get zip mask and compares with expected {expectedMask} for Billing. CartAddress_page")
+    public CartAddress_page_Logic getZipMasksAndComparesWithExpectedForBilling(String expectedMask) {
+        String zipMask = postalCodeFieldForBilling().getAttribute("placeholder");
         Assert.assertEquals(zipMask, expectedMask);
         return this;
     }

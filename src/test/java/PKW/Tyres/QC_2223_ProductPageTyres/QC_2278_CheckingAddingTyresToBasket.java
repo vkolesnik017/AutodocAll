@@ -1,7 +1,7 @@
-package ATD.LKW_trucks.QC_10_MainHeadlines;
+package PKW.Tyres.QC_2223_ProductPageTyres;
 
-import ATD.LKW_maker_car_list_Logic;
 import Common.SetUp;
+import PKW.Tyres_item_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -16,7 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_16_VisibilityOfMarkModelMotorInHeadLine {
+public class QC_2278_CheckingAddingTyresToBasket {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -24,17 +24,18 @@ public class QC_16_VisibilityOfMarkModelMotorInHeadLine {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_maker_car_list");
+        return new SetUp("PKW").setUpShopWithSubroutes("subprod", "DE", "main_tyres", "tyre_item2");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "Kolesnik")
-    @Description(value = "Test checks visibility of mark, model and motor in headline")
-    public void testChecksVisibilityOfMarkModelMotorInHeadLine(String route) {
+    @Owner(value = "OlhaLavrynenko")
+    @Description(value = "Test Checks Add Tyres To Basket From Product Page")
+    public void testAddTyresToBasketFromProductPage(String route) {
         openPage(route);
-        new LKW_maker_car_list_Logic().visibilityOfMakrModelMotorInHeadLine();
-
+        new Tyres_item_page_Logic().checkAddingTyresToBasket()
+                .cartClick()
+                .checkOfIdAddedProductInBasket("12736245");
     }
 
     @AfterMethod

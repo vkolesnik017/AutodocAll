@@ -22,6 +22,7 @@
             <class name="ATD.Listings.QC_433_ListingSearch.QC_434_GoingToSearchPageFromSearchBar"/>
             <class name="ATD.Listings.QC_433_ListingSearch.QC_435_PresenceElementsOnSearchPage"/>
             <class name="ATD.Listings.QC_433_ListingSearch.QC_437_UsePaginationOnSearchPage"/>
+            <class name="ATD.Listings.QC_433_ListingSearch.QC_2950_CheckingDisplayOfGenericAlternativeNameInProductName"/>
         </classes>
     </test>
 
@@ -35,6 +36,7 @@
             <class name="ATD.Listings.QC_445_ListingTecDoc.QC_1741_CharacteristicPopupIsNotDisplayedIfCarRatingLess100"/>
             <class name="ATD.Listings.QC_445_ListingTecDoc.QC_1742_ReopeningPopupWithCarCharacteristics"/>
             <class name="ATD.Listings.QC_445_ListingTecDoc.QC_2704_PresenceProgressBarOnAllListing"/>
+            <class name="ATD.Listings.QC_445_ListingTecDoc.QC_2947_CheckingDisplayOfGenericAlternativeNameInProductName"/>
         </classes>
     </test>
 
@@ -70,11 +72,11 @@
         </classes>
     </test>
 
-        <test name="QC_2412_ListingOfProductListing">
+   <!--     <test name="QC_2412_ListingOfProductListing">
         <classes>
             <class name="ATD.Listings.QC_2412_ListingOfProductListing.QC_2403_CheckProductSortingByPriceNettoInSearchListing"/>
             <class name="ATD.Listings.QC_2412_ListingOfProductListing.QC_2674_CheckProductSortingByPriceNettoInSearchListingWithSelectedCar"/>
         </classes>
-    </test>
+    </test>-->
 
 </suite>

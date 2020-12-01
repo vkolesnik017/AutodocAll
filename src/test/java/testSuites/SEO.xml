@@ -19,8 +19,9 @@
 
     <test name="QC_2555_LinkTransitionFromPDFBlockToClubManual">
         <classes>
-            <class name="ATD.SEO.QC_2555_LinkTransitionFromPDFBlockToClubManual.QC_2556_TransitionToClubPageFromPDFManualBlock"/>
+<!--            <class name="ATD.SEO.QC_2555_LinkTransitionFromPDFBlockToClubManual.QC_2556_TransitionToClubPageFromPDFManualBlock"/>-->
             <class name="ATD.SEO.QC_2555_LinkTransitionFromPDFBlockToClubManual.QC_2557_CheckElementsInPDFManualBlock"/>
+<!--            <class name="ATD.SEO.QC_2555_LinkTransitionFromPDFBlockToClubManual.QC_2558_CheckDownloadsManuals"/>-->
         </classes>
     </test>
 

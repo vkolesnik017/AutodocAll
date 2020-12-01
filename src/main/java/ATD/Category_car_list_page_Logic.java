@@ -1,13 +1,13 @@
 package ATD;
 
 
+import com.codeborne.selenide.ElementsCollection;
 import files.Product;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -370,4 +370,73 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
         return this;
     }
 
+    @Step("select visible brand in brands block. Category_car_list_page")
+    public Category_car_list_page_Logic selectVisibleBrandInBlock(String idOfBrand) {
+        brandsFilterBlock().shouldBe(visible);
+        while (!visibleBrandsLinkInSideBar(idOfBrand).isDisplayed()) {
+            forwardLinkAtBrandsFilter().click();
+            checkVisibleBrands();
+        }
+        visibleBrandsLinkInSideBar(idOfBrand).shouldBe(visible).click();
+        appearsOfLoader();
+        return this;
+    }
+
+
+    @Step("checkListingWithVisibleSelectedBrands(selectedBrands). Category_car_list_page")
+    public Category_car_list_page_Logic checkListingWithVisibleSelectedBrands(List<String> selectedBrands) {
+        Set<String> listOfBrands = new HashSet<>();
+        addProductToSetList(listOfBrands);
+        while (forwardNextPaginator().isDisplayed()) {
+            forwardNextPaginator().click();
+            addProductToSetList(listOfBrands);
+        }
+        List<String> brandsFromListing = new ArrayList<>(listOfBrands);
+        Collections.sort(brandsFromListing);
+        Collections.sort(selectedBrands);
+        Assert.assertEquals(brandsFromListing, selectedBrands);
+        return this;
+    }
+
+    @Step("select visible brand in brands block. Category_car_list_page")
+    public Category_car_list_page_Logic addProductToSetList(Set<String> list) {
+        for (int i = 0; i < allBtnAddToBasket().size(); i++) {
+            list.add(allBtnAddToBasket().get(i).attr("data-brand-name"));
+        }
+        return this;
+    }
+
+    @Step("Click btn Teilecatalog in sidebar. Category_car_list_page")
+    public Category_car_list_page_Logic clickBtnTeilecatalogInSidebar() {
+        btnTeilecatalogInSidebar().shouldBe(visible).click();
+        parentFromTeilecatalogInSidebar().shouldBe(visible);
+        return this;
+    }
+
+    @Step(": from. Category_car_list_page")
+    public ArrayList<String> getHrefOrUrlCategoriesThenWriteToList(ElementsCollection categories) {
+        return new Main_page_Logic().getHrefOrUrlCategoriesThenWriteToList(categories);
+    }
+
+    @Step(": from. Category_car_list_page")
+    public Category_car_list_page_Logic checkCategoriesForServerResponses200( List<String> allCategories) throws IOException {
+        new Index_instruments_page_Logic().checkCategoriesForServerResponses200(allCategories);
+        return this;
+    }
+
+    @Step("checking the alternative name of the product through the product article. Category_car_list_page")
+    public Category_car_list_page_Logic checkAlternativeTitleOfProductThroughArticle(String artNUm, String alternativeTitle) {
+
+        if (!titleOfProductWithArtNum(artNUm).isDisplayed()) {
+            while (!titleOfProductWithArtNum(artNUm).isDisplayed()) {
+                forwardNextPaginator().click();
+            }
+            titleOfProductWithArtNum(artNUm).shouldHave(text(alternativeTitle));
+        } else {
+            titleOfProductWithArtNum(artNUm).shouldBe(visible).shouldHave(text(alternativeTitle));
+        }
+
+
+        return this;
+    }
 }

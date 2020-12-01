@@ -251,8 +251,7 @@ public class Moto_Category_page_Logic extends Moto_Category_page {
 
     @Step("get brand from TOP product title .Moto_Category_page")
     public String getBrandFromTopProductTitle() {
-        String titleOfBrand = titleOfTopProducts().get(0).getText().replace(titleOfTopProducts().get(0).getText().substring(titleOfTopProducts().get(0).getText().lastIndexOf(" ")), "").toLowerCase(); //.replace(" ", "-");
-        String pathUrl = titleOfBrand.replace(titleOfBrand.substring(titleOfBrand.lastIndexOf(" ")), "");
+        String pathUrl = titleOfTopProducts().get(0).getText().replaceAll("(.+)(\\s.+)", "$1").toLowerCase();
         return pathUrl;
     }
 
@@ -317,8 +316,8 @@ public class Moto_Category_page_Logic extends Moto_Category_page {
         categoriesFromTable.add("Luftfilter");
         categoriesFromTable.add("Kraftstofffilter");
         List<String> categoriesFromSideBar = new ArrayList<>();
-        for (int i = 0; i < childCategoriesInSideBar().size(); i++) {
-            categoriesFromSideBar.add(childCategoriesInSideBar().get(i).getText());
+        for (int i = 0; i < genericsInSideBar().size(); i++) {
+            categoriesFromSideBar.add(genericsInSideBar().get(i).getText());
         }
         Assert.assertTrue(categoriesFromTable.containsAll(categoriesFromSideBar));
         return this;

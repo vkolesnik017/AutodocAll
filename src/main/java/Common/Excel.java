@@ -55,7 +55,7 @@ public class Excel {
         return finalList;
     }
 
-    private List<String> readFromExcel(String file, String sheetName, int cellNumber) {
+   public List<String> readFromExcel(String file, String sheetName, int cellNumber) {
         List<String> finalList = new ArrayList<>();
         DataFormatter formatter = new DataFormatter();
         try (FileInputStream fileInputStream = new FileInputStream(file)) {

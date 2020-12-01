@@ -196,8 +196,14 @@ public class Search_page {
         return $$x("//div[@class='price_box']/span");
     }
 
+    ElementsCollection btnAddedActiveProductToWishList() {return $$x("//div[@class='button ']/ancestor::div[@class='price_box']/span");}
+
     ElementsCollection addedProductToWishList() {
         return $$x("//span[@class='add-to-wishlist title_btn add-to-wishlist--added remove-article']");
+    }
+
+    ElementsCollection addedActiveProductToWishList() {
+        return $$x("//div[@class='button ']/ancestor::div[@class='price_box']/span[@class='add-to-wishlist title_btn add-to-wishlist--added remove-article']");
     }
 
     SelenideElement iconOfWishList() {
@@ -227,6 +233,8 @@ public class Search_page {
     ElementsCollection artNumOfProduct() {
         return $$x("//span[@class='article_number']");
     }
+
+    ElementsCollection artNumOfActiveProduct() {return $$x("//div[@class='button ']/ancestor::div[@class='price_box']/..//span[@class='article_number']");}
 
     SelenideElement popUpSelector() {
         return $x("//div[@class='new_popup popup_content']");
@@ -274,6 +282,16 @@ public class Search_page {
 
     ElementsCollection visibleParentCategories() {return $$x("//ul[@class='filetree cat_tree treeview']//li").filter(visible);}
 
+    ElementsCollection visibleParentInSidebar() {return $$x("//ul[@class='filetree cat_tree treeview']//li[contains(@class,'expandable')]//span");}
+
+    public ElementsCollection categoriesFromSideBar() {
+        return $$x("//ul[@class='filetree cat_tree treeview']//div[@class='child-category']//li/a");
+    }
+
+    SelenideElement visibleCategoryFromSideBar() {
+        return $x("//ul[@class='filetree cat_tree treeview']//div[@class='child-category']//ul[@style='display: block;']//li[1]");
+    }
+
     ElementsCollection paginatorLinks() {return $$x("//div[@class='pagination']/span");}
 
     ElementsCollection visibleGenerics() {return $$x("//div[@class='filter-generics-tecdoc__item-image']").filter(visible);}
@@ -297,6 +315,8 @@ public class Search_page {
     SelenideElement rightPaginatorOfGenericBlock() {return $x("//span[@class='next slick-arrow']");}
 
     SelenideElement leftPaginatorOfGenericBlock() {return $x("//span[@class='prev slick-arrow']");}
+
+    SelenideElement titleOfProductWithArtNum(String artNum) {return $x("//span[contains(text(),'Artikelnummer')]/span/span[contains(text(),'"+artNum+"')]/ancestor::span/../a");}
 
 }
 
