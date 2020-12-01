@@ -38,7 +38,6 @@
 
     <test name="QC_2496_MainTyresPage">
         <classes>
-            <class name="PKW.Tyres.QC_2496_MainTyresPage.QC_2559_CheckMainElementsOfTopProductBlock"/>
             <class name="PKW.Tyres.QC_2496_MainTyresPage.QC_2562_CheckingSelectionOfProductsInTopBlock"/>
             <class name="PKW.Tyres.QC_2496_MainTyresPage.QC_2560_CheckingSelectionOfProductsInTopBlock_NotMoreTwo"/>
         </classes>
@@ -50,6 +49,7 @@
             <class name="PKW.Tyres.QC_2223_ProductPageTyres.QC_2274_CheckingPresenceOfTyresName"/>
             <class name="PKW.Tyres.QC_2223_ProductPageTyres.QC_2275_CheckingPresenceOfCharacteristicsBlock"/>
             <class name="PKW.Tyres.QC_2223_ProductPageTyres.QC_2276_CheckingPresenceOfRatingBlock"/>
+            <!--            <class name="PKW.Tyres.QC_2223_ProductPageTyres.QC_2224_CheckingPresenceOfAdvantageReturnBlock"/>-->
             <class name="PKW.Tyres.QC_2223_ProductPageTyres.QC_2277_CheckingPresenceOfPrice"/>
             <class name="PKW.Tyres.QC_2223_ProductPageTyres.QC_2278_CheckingAddingTyresToBasket"/>
             <class name="PKW.Tyres.QC_2223_ProductPageTyres.QC_2313_CheckingPresenceOfEuReifenlabelBlock"/>
