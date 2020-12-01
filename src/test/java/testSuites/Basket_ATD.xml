@@ -114,8 +114,14 @@
 
     <test name="QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD">
         <classes>
+            <class name="ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD.QC_2823_CheckingValidityIndexes_LU"/>
             <class name="ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD.QC_2828_CheckingDisplayOfCorrectMessageInTooltipAfterEnteringNegativeIndexForPT"/>
+            <class name="ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD.QC_2825_CheckingValidityIndexesIfBillingAndShippingAreSeparated_LU"/>
             <class name="ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD.QC_2829_CheckingDisplayOfCorrectMessageInTooltipAfterEnteringNegativeIndexForLU"/>
+            <class name="ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD.QC_2827_CheckingValidityIndexesIfBillingAndShippingAreSeparated_PT"/>
+            <class name="ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD.QC_2824_CheckingValidityIndexes_PT"/>
+            <class name="ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD.QC_2848_CheckingValidationOfIndexesWhenEditingOrderInAws_LU"/>
+            <class name="ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD.QC_2851_CheckingValidationOfIndexesWhenEditingOrderInAws_PT"/>
         </classes>
     </test>
 

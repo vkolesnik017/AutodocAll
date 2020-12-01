@@ -1,5 +1,6 @@
-package PKW.Tyres.QC_2496_MainTyresPage;
+package PKW.TopPartsBlock.QC_3007_TopProductsBlock;
 
+import PKW.Tyres_maker_page_Logic;
 import PKW.Tyres_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -49,6 +50,21 @@ public class QC_2559_CheckMainElementsOfTopProductBlock {
         openPage(route);
         new Tyres_page_Logic().presenceOfTopProductBlock().checkSizeOfTopProducts(12).checkAbilityToAddTopProductToCart();
     }
+
+    @DataProvider(name = "routesTyresMaker", parallel = true)
+    Object[] dataProviderTyresMaker() throws SQLException {
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("subprod", "DE", "main_tyres", "tyres_maker,tyres_maker_group");
+    }
+
+    @Test(dataProvider = "routesTyresMaker")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test сheck main elements of TOP product block")
+    public void testCheckLinkingBlockByBrandsTyresMaker(String route) {
+        openPage(route);
+        new Tyres_maker_page_Logic().presenceOfTopProductBlock().checkSizeOfTopProducts(12).checkAbilityToAddTopProductToCart();
+    }
+
     @AfterMethod
     public void close() {
         closeWebDriver();

@@ -24,8 +24,7 @@ public class QC_2724_CheckingCorrectOperationOfFirstReOrderFromUser {
     @Owner(value = "Chelombitko")
     @Description(value = "Checking the correct operation of the first re-order from the user")
     public void testCheckingCorrectOperationOfFirstReOrderFromUser() {
-        new SearchOrders_page_aws().openSearchOrderPageWithLogin()
-                .choosesDateFromOneMonthAndExpectedDayEarlierThenCurrentOne(1)
+        new SearchOrders_page_aws().openSearchPageWithExpectedData(1, 1)
                 .selectExpectedGroupField("AUTODOC PLUS (Services)")
                 .clickSearchBtn()
                 .togglesPaginationIfThereAreNoParentAndReOrderNumberBlocksInOrder(new Order_aws().reorderNumber());

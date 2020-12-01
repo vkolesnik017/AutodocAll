@@ -280,11 +280,17 @@ public class Versand_static_page {
         return $x("//*[@class='delivery-page__links']//a[3]");
     }
 
-    ElementsCollection flagsOfCountries() {return $$x("//div[@class='country-block__list__col']/ul/li//img");}
+    ElementsCollection flagsOfCountries() {
+        return $$x("//div[@class='country-block__list__col']/ul/li//img");
+    }
 
-    ElementsCollection titleOfCountries() {return $$x("//div[@class='country-block__list__col']/ul/li/p/span[1]");}
+    ElementsCollection titleOfCountries() {
+        return $$x("//div[@class='country-block__list__col']/ul/li/p/span[1]");
+    }
 
-    ElementsCollection pricesOfCountries() {return $$x("//div[@class='country-block__list__col']/ul/li/span");}
+    ElementsCollection pricesOfCountries() {
+        return $$x("//div[@class='country-block__list__col']/ul/li/span");
+    }
 
     ElementsCollection countryNameOnSite() {
         return $$x("//div[@class='country-block__other-country']//li//p[1]//span");
@@ -300,5 +306,45 @@ public class Versand_static_page {
 
     ElementsCollection countryItemForCount() {
         return $$x("//div[@class='country-block__list__col']//li");
+    }
+
+    SelenideElement openFormButton() {
+        return $x("//div[@class='country-block__other-country__button']//a");
+    }
+
+    SelenideElement formForDeliveryToNewCountries() {
+        return $x("//div[@class='delivery-page__form-popup']");
+    }
+
+    SelenideElement sendFormButton() {
+        return $x("//div[@class='form-row__button']//a");
+    }
+
+    SelenideElement nameFieldVersandForm() {
+        return $x("//*[@name='Vorname']");
+    }
+
+    SelenideElement emailFieldVersandForm() {
+        return $x("//*[@id='delivery_page_callback_form']//*[@name='Email']");
+    }
+
+    SelenideElement phoneFieldVersandForm() {
+        return $x("//*[@id='delivery_page_callback_form']//*[@name='Phone']");
+    }
+
+    SelenideElement textWithErrorMessageVersandForm() {
+        return $x("//*[@class='delivery-tabs__error callback_error']");
+    }
+
+    SelenideElement checkboxVersandForm() {
+        return $x("//*[@name='Delivery_subscribe_accept']");
+    }
+
+    SelenideElement successPopUpVersandForm() {
+        return $x("//*[@class='popup_inner']");
+    }
+
+    SelenideElement closeButtonPopUpVersandForm() {
+        return $x("//*[@class='popup_inner']//*[@class='buttons-inner']//a");
     }
 }

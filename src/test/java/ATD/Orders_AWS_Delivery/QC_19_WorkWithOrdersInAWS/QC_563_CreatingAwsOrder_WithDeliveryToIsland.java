@@ -19,6 +19,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import static ATD.CommonMethods.openPage;
+import static Common.CommonMethods.roundOfTheCost;
 import static Common.SetUp.setUpBrowser;
 import static AWS.SearchOrders_page_aws.searchOrderPageURL;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
@@ -41,7 +42,7 @@ public class QC_563_CreatingAwsOrder_WithDeliveryToIsland {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product27");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product2");
     }
 
     @Test(dataProvider = "route")
@@ -83,7 +84,8 @@ public class QC_563_CreatingAwsOrder_WithDeliveryToIsland {
         sellingPriceAWSOrder = order_aws.getSellingProductPriceOrderAWS();
         totalCostIncludingSellingAndDeliveryCost = order_aws.getTotalCostIncludingSellingCostAndDeliveryCost(deliveryCost, sellingPriceAWSOrder);
         totalCostInOrder = order_aws.getTotalPriceOrderAWS();
-        Assert.assertEquals(totalCostInOrder, totalCostIncludingSellingAndDeliveryCost);
+        float roundTotalCostIncludingSellingAndDelivery = roundOfTheCost(totalCostIncludingSellingAndDeliveryCost, totalCostInOrder);
+        Assert.assertEquals(totalCostInOrder, roundTotalCostIncludingSellingAndDelivery);
         order_aws.reSaveOrder()
                 .checkOrderHasTestStatus()
                 .getUserDataInOrder();
@@ -95,9 +97,8 @@ public class QC_563_CreatingAwsOrder_WithDeliveryToIsland {
                 .getDeliveryCostInOrder();
         Assert.assertEquals(deliveryCostInOrder, deliveryCost);
         sellingPriceAWSOrder = order_aws.getSellingProductPriceOrderAWS();
-        totalCostIncludingSellingAndDeliveryCost = order_aws.getTotalCostIncludingSellingCostAndDeliveryCost(deliveryCost, sellingPriceAWSOrder);
         totalCostInOrder = order_aws.getTotalPriceOrderAWS();
-        Assert.assertEquals(totalCostInOrder, totalCostIncludingSellingAndDeliveryCost);
+        Assert.assertEquals(totalCostInOrder, roundTotalCostIncludingSellingAndDelivery);
     }
 
     @AfterMethod

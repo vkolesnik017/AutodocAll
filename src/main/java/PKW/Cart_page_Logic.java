@@ -114,4 +114,10 @@ public class Cart_page_Logic extends Cart_page{
         safeOrderCheckbox().shouldNotHave(attribute("checked"));
         return this;
     }
+
+    @Step("Check of id {idOfProduct} added product to basket. Cart_page")
+    public Cart_page_Logic checkOfIdAddedProductInBasket(String idOfProduct) {
+        idAddedProduct().shouldHave(attribute("data-article_id", idOfProduct));
+        return this;
+    }
 }

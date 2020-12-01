@@ -39,8 +39,8 @@ public class QC_2399_AddProductsFRomWishListToBasket {
     @Description(value = "Test checks add products from WishList to basket")
     public void testChecksAddProductsFRomWishListToBasket(String route) throws SQLException {
         openPage(route);
-        List<String> artNumOfActiveProduct = searchPage.presenceOfTecDocListing().addArtNumOfProductToList(1);
-        searchPage.addedProductToWishListWithSelectedCar(1);
+        List<String> artNumOfActiveProduct = searchPage.presenceOfTecDocListing().addArtNumOfActiveProductToList(1);
+        searchPage.addedActiveProductToWishListWithSelectedCar(1);
         List<String> artNumOfNotActiveProduct = searchPage.presenceOfTecDocListing().addArtNumOfNotActiveProductToList(1);
         searchPage.addNotActiveProductToWishList(0).goToWishListPage()
                 .presenceOfProductList().clickOnBtnAddProductToBasket().clickOnRandomElementOfPopUp();

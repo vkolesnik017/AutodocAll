@@ -349,6 +349,16 @@ public class Search_page_Logic extends Search_page {
         return this;
     }
 
+    @Step("add active Product to WishList with selected car. Search_page")
+    public Search_page_Logic addedActiveProductToWishListWithSelectedCar(int positionOfProduct) {
+        for (int i = 0; i < positionOfProduct; i++) {
+            btnAddedActiveProductToWishList().get(i).scrollIntoView("{block: \"center\"}");
+            btnAddedActiveProductToWishList().get(i).shouldBe(visible).click();
+            addedActiveProductToWishList().get(i).shouldBe(exist);
+        }
+        return this;
+    }
+
     @Step("added Product to WishList. Search_page")
     public Search_page_Logic addNotActiveProductToWishList(int positionOfProduct) {
         labelAddToWishListNotActiveProduct().get(positionOfProduct).scrollIntoView("{block: \"center\"}");
@@ -427,6 +437,12 @@ public class Search_page_Logic extends Search_page {
     @Step(" added article number Of product to list. Search_page")
     public List<String> addArtNumOfProductToList(int countOfArtNum) {
         List<String> artNumOfProduct = artNumOfProduct().stream().limit(countOfArtNum).map(n -> n.getText().replaceAll("Artikelnummer:", "").replace(" ", "")).collect(Collectors.toList());
+        return artNumOfProduct;
+    }
+
+    @Step(" added article number Of active product to list. Search_page")
+    public List<String> addArtNumOfActiveProductToList(int countOfArtNum) {
+        List<String> artNumOfProduct = artNumOfActiveProduct().stream().limit(countOfArtNum).map(n -> n.getText().replaceAll("Artikelnummer:", "").replace(" ", "")).collect(Collectors.toList());
         return artNumOfProduct;
     }
 

@@ -166,6 +166,12 @@ public class Tyres_maker_page_Logic extends Tyres_maker_page {
         return page(Tyres_item_page_Logic.class);
     }
 
+    @Step("presence of TOP product block. Tyres_maker_page")
+    public Tyres_maker_page_Logic presenceOfTopProductBlock() {
+        topProductsBlock().shouldBe(visible);
+        return this;
+    }
+
     @Step("Get url from btn wheel Dimensions in relink by size block . Tyres_maker_page")
     public String getUrlBtnWheelDimensionsInRelinkBlockBySize() {
         return wheelDimensionsFromRelinkBlock().getAttribute("href");
@@ -184,5 +190,17 @@ public class Tyres_maker_page_Logic extends Tyres_maker_page {
     }
 
 
+    @Step("check size of TOP products. Tyres_maker_page")
+    public Tyres_maker_page_Logic checkSizeOfTopProducts(int size) {
+        Assert.assertTrue(imageOfBrandAtTopProducts().size() <= size);
+        return this;
+    }
 
+    @Step("checking the ability to add an item to the cart. Tyres_maker_page")
+    public Tyres_maker_page_Logic checkAbilityToAddTopProductToCart() {
+        for (int i = 0; i < btnAddTopProductToBasket().size(); i++) {
+            btnAddTopProductToBasket().get(i).shouldHave(attribute("data-ga-action", "Add_to_basket"));
+        }
+        return this;
+    }
 }
