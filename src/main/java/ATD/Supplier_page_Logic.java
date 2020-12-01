@@ -147,12 +147,12 @@ public class Supplier_page_Logic extends Supplier_page {
 
     @Step(": from. Supplier_page")
     public ArrayList<String> getHrefOrUrlCategoriesThenWriteToList(ElementsCollection categories) {
-        return new Main_page_Logic().getHrefOrUrlCategoriesThenWriteToList(categories);
+        return CommonMethods. getHrefOrUrlCategoriesThenWriteToList(categories);
     }
 
     @Step(": from. Supplier_page")
     public Supplier_page_Logic checkCategoriesForServerResponses200( List<String> allCategories) throws IOException {
-        new Index_instruments_page_Logic().checkCategoriesForServerResponses200(allCategories);
+        CommonMethods.checkCategoriesForServerResponses200(allCategories);
         return this;
     }
 

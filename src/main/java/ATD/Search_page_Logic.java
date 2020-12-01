@@ -723,12 +723,12 @@ public class Search_page_Logic extends Search_page {
             visibleCategoryFromSideBar().shouldBe(visible);
             visibleParentInSidebar().get(i).click();
         }
-        return new Main_page_Logic().getHrefOrUrlCategoriesThenWriteToList(categories);
+        return CommonMethods.getHrefOrUrlCategoriesThenWriteToList(categories);
     }
 
     @Step(": from. Search_page")
     public Search_page_Logic checkCategoriesForServerResponses200(List<String> allCategories) throws IOException {
-        new Index_instruments_page_Logic().checkCategoriesForServerResponses200(allCategories);
+        CommonMethods.checkCategoriesForServerResponses200(allCategories);
         return this;
     }
 

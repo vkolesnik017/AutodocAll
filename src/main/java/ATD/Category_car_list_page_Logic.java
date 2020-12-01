@@ -415,12 +415,12 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
 
     @Step(": from. Category_car_list_page")
     public ArrayList<String> getHrefOrUrlCategoriesThenWriteToList(ElementsCollection categories) {
-        return new Main_page_Logic().getHrefOrUrlCategoriesThenWriteToList(categories);
+        return CommonMethods.getHrefOrUrlCategoriesThenWriteToList(categories);
     }
 
     @Step(": from. Category_car_list_page")
     public Category_car_list_page_Logic checkCategoriesForServerResponses200( List<String> allCategories) throws IOException {
-        new Index_instruments_page_Logic().checkCategoriesForServerResponses200(allCategories);
+        CommonMethods.checkCategoriesForServerResponses200(allCategories);
         return this;
     }
 

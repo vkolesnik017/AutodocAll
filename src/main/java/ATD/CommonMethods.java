@@ -12,6 +12,8 @@ import org.openqa.selenium.TimeoutException;
 import org.testng.Assert;
 
 import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
@@ -508,4 +510,37 @@ public class CommonMethods {
     public static String getAttributeFromUnVisibleElement(SelenideElement element, String attribute) {
         return (String) (executeJavaScript("return arguments[0].getAttribute('" + attribute + "')", element));
     }
+
+
+    @Step("Get Href or URL categories/overCategories from catalog then write to list.")
+    public static ArrayList<String> getHrefOrUrlCategoriesThenWriteToList(ElementsCollection categories) {
+        ArrayList<String> allCategoriesCatalog = new ArrayList<>();
+        for (SelenideElement element : categories) {
+            if( element.has(attribute("href"))) {
+                String hrefCategory = element.getAttribute("href");
+                allCategoriesCatalog.add(hrefCategory);
+            } else if (element.has(attribute("url"))) {
+                String urlCategory = element.getAttribute("url");
+                allCategoriesCatalog.add(urlCategory);
+            }
+        }
+        System.out.println(allCategoriesCatalog);
+        return allCategoriesCatalog;
+    }
+
+    @Step("Check categories for server responses 200.")
+    public static void checkCategoriesForServerResponses200( List<String> allCategories) throws IOException {
+        for (int i = 0; i < allCategories.size(); i++) {
+            URL url = new URL(allCategories.get(i));
+            HttpURLConnection http = (HttpURLConnection) url.openConnection();
+            http.setInstanceFollowRedirects(true);
+            int responseCode = http.getResponseCode();
+            if (responseCode !=200) {
+                System.out.println("ResponseCode " + allCategories.get(i) + " = " + responseCode );
+            }
+            assertEquals(responseCode, 200);
+        }
+    }
+
+
 }

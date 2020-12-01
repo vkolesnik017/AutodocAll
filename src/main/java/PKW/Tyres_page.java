@@ -44,6 +44,10 @@ public class Tyres_page {
         return $x("//div[@id='car-select' and @class='mainblock-search__select slt-selectbox-wrapper filled active select-full']");
     }
 
+    SelenideElement wheelDimensionsFromRelinkBlock() {
+        return $x("//div[@class='other_pr']//div[contains(@class,'reifen ')]//li/a");
+    }
+
     SelenideElement relinkBlockBySeasons() {return $x("//div[contains(@class,'seasons ')]");}
 
     SelenideElement winterSeasonsFromRelinkBlock() {return $x("//div[contains(@class,'seasons ')]//a[@data-ga-action='winter']");}

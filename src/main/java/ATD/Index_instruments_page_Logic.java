@@ -228,18 +228,9 @@ public class Index_instruments_page_Logic extends Index_instruments_page {
         return allCategoriesMainBlock;
     }
 
-    @Step("Check categories for server responses 200. Index_instruments_page")
+    @Step(": from. Index_instruments_page")
     public Index_instruments_page_Logic checkCategoriesForServerResponses200( List<String> allCategories) throws IOException {
-        for (int i = 0; i < allCategories.size(); i++) {
-            URL url = new URL(allCategories.get(i));
-            HttpURLConnection http = (HttpURLConnection) url.openConnection();
-            http.setInstanceFollowRedirects(true);
-            int responseCode = http.getResponseCode();
-            if (responseCode !=200) {
-                System.out.println("ResponseCode " + allCategories.get(i) + " = " + responseCode );
-            }
-            assertEquals(responseCode, 200);
-        }
+        CommonMethods.checkCategoriesForServerResponses200(allCategories);
         return this;
     }
 
