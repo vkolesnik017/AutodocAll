@@ -172,6 +172,24 @@ public class Tyres_maker_page_Logic extends Tyres_maker_page {
         return this;
     }
 
+    @Step("Get url from btn wheel Dimensions in relink by size block . Tyres_maker_page")
+    public String getUrlBtnWheelDimensionsInRelinkBlockBySize() {
+        return wheelDimensionsFromRelinkBlock().getAttribute("href");
+    }
+
+    @Step("Get text from btn wheel Dimensions in relink by size block . Tyres_maker_page ")
+    public String getTextBtnWheelDimensionsInRelinkBlockBySize() {
+        return wheelDimensionsFromRelinkBlock().getText();
+    }
+
+    @Step("Click on Wheel Dimensions from relink block. Tyres_maker_page")
+    public Tyres_dimension_maker_page_Logic clickOnWheelDimensionsFromRelinkBlock() {
+        relinkBlockBySize().scrollIntoView("{block: \"center\"}");
+        wheelDimensionsFromRelinkBlock().shouldBe(visible).click();
+        return page(Tyres_dimension_maker_page_Logic.class);
+    }
+
+
     @Step("check size of TOP products. Tyres_maker_page")
     public Tyres_maker_page_Logic checkSizeOfTopProducts(int size) {
         Assert.assertTrue(imageOfBrandAtTopProducts().size() <= size);

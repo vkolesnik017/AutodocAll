@@ -49,4 +49,39 @@ public class Car_parts {
 
     ElementsCollection visibleCharacteristicsOfProducts(int position) {return $$x("(//div[@class='prod_params_container'])["+position+"]/ul/li");}
 
+    SelenideElement criteriaFrontAxle() {
+        return $x("//div[@data-filter-id='criteria_100']//input[@id='b055d5']/..//span");
+    }
+
+    SelenideElement criteriaDiameterFromSidebar() {
+        return $x("//div[@data-filter-id='criteria_200']//label");
+    }
+
+    public SelenideElement criteriaPRNumberInSidebar() {
+        return $x("//div[@data-param-id='1197']//div[@class='name']");
+    }
+
+    SelenideElement criteriaBremsscheibenartFromSidebar() {
+        return $x("//div[@data-filter-id='criteria_232']//div[@class='name']/span");
+    }
+
+    public ElementsCollection characteristicAxleSideFomProductBlock() {
+        return $$x("//div[@class='listing_items']//span[contains(text() ,'Einbauseite')]/../span[contains(@class,'rc')]");
+    }
+
+
+    public ElementsCollection characteristicDiameterFomProductBlock() {
+        return $$x("//div[@class='listing_items']//span[contains(text() ,'Durchmesser')]/../span[contains(@class,'rc')]");
+    }
+
+    public ElementsCollection characteristicPRNumberFomProductBlock() {
+        return $$x("//div[@class='listing_items']//span[contains(text() ,'PR-Nummer')]/../span[contains(@class,'rc')]");
+    }
+
+    public ElementsCollection characteristicBremsscheibenartFomProductBlock() {
+        return $$x("//div[@class='listing_items']//span[contains(text() ,'Bremsscheibenart')]/../span[contains(@class,'rc')]");
+    }
+
+
+
 }

@@ -31,6 +31,10 @@ public class Tyres_maker_page {
         return $x("//div[@class='tyre-popular tyre-page__slider']//div[@class='block-2-columns']//li/a");
     }
 
+    SelenideElement wheelDimensionsFromRelinkBlock() {
+        return $x("//div[@class='tyre-popular tyre-page__slider']//div[@class='block-3-columns']//li/a");
+    }
+
     SelenideElement btnAllSizeFromRelinkBySizeBlock() {return $x("//div[@class='tyre-popular tyre-page__slider']//div[@class='tyre-page__btn']/a");}
 
     SelenideElement premiumCarBlock()  {
