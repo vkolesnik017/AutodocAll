@@ -198,7 +198,7 @@ public class Index_chemicals_page_Logic extends Index_chemicals_page {
 
     @Step(": from. Index_chemicals_page")
     public Index_chemicals_page_Logic checkCategoriesForServerResponses200(List<String> allCategories) throws IOException {
-        new Index_instruments_page_Logic().checkCategoriesForServerResponses200(allCategories);
+        CommonMethods.checkCategoriesForServerResponses200(allCategories);
         return this;
     }
 

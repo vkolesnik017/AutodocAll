@@ -59,6 +59,8 @@ public class Motoroil_page {
 
    SelenideElement btnSearchOfKbaSelector() {return $x("//div[@class='mainblock-search__kba']//a[contains(@class,'submit')]");}
 
+   SelenideElement titleOfKbaSelector() {return $x("//div[@class='mainblock-search__kba']//b");}
+
    SelenideElement errorToolTipFirstField() {return $(byId("kba-error-tooltip"));}
 
    SelenideElement errorMessageAboutEmptyKbaFields() {return $x("//div[contains(text(),'Geben Sie bitte Ihre Schlüsselnummer ein')]");}

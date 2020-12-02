@@ -39,7 +39,7 @@ public class CatalogCategories_aws {
         this.categoriesInAwsPage = awsEnv + new DataBase("ATD").getRouteByRouteName("DE", "categoriesAws");
         this.parentCategoriesInAwsPage = awsEnv + new DataBase("ATD").getRouteByRouteName("DE", "parentCategoriesAws");
         this.childCategoriesInAwsPage = awsEnv + "autodoc.de/" + new DataBase("ATD").getRouteByRouteName("DE", "childCategoriesAws");
-        this.genericsAwsPage = awsEnv +"autodoc.de/" + new DataBase("ATD").getRouteByRouteName("DE", "genericsAws");
+        this.genericsAwsPage = awsEnv + "autodoc.de/" + new DataBase("ATD").getRouteByRouteName("DE", "genericsAws");
     }
 
 
@@ -124,6 +124,10 @@ public class CatalogCategories_aws {
         return $$x("//div[@class='size-300 flex-box']/input");
     }
 
+    ElementsCollection ratingOfParentCategoriesFromAws() {
+        return $$x("//div[@class='size-300 flex-box']/input/ancestor::div[@class='flex-box']//div[10]//input");
+    }
+
     private SelenideElement parentAndChildCategoriesList() {
         return $x("//div[@class='catalog-table']");
     }
@@ -136,11 +140,17 @@ public class CatalogCategories_aws {
         return $$x("//ul[@class='catalog-table-content-items-item-child ui-sortable']/li[not(contains(@class,'disabled'))]/div/div[5]/input");
     }
 
-    private SelenideElement btnGenerics() {return $x("//button[@class='btn btn-primary btn-modal-generics']");}
+    private SelenideElement btnGenerics() {
+        return $x("//button[@class='btn btn-primary btn-modal-generics']");
+    }
 
-    private SelenideElement manageGenericTable() {return $x("//div[@class='modal-content']");}
+    private SelenideElement manageGenericTable() {
+        return $x("//div[@class='modal-content']");
+    }
 
-    private ElementsCollection titleOfGenerics() {return $$x("//tbody[@class='ui-sortable']/tr/td[3]");}
+    private ElementsCollection titleOfGenerics() {
+        return $$x("//tbody[@class='ui-sortable']/tr/td[3]");
+    }
 
     @Step("Open AWS , Login in and open page custom-catalog. CatalogCategories_aws")
     public CatalogCategories_aws openAwsLoginInAndTransitionCustomCatalog() {
@@ -363,15 +373,28 @@ public class CatalogCategories_aws {
         return allActiveParentCategoriesAWS;
     }
 
+    @Step("Get All active Parent Categories from AWS. CatalogCategories_aws")
+    public List<String> getActiveParentCategories() {
+        new Login_aws().loginInAwsWithOpen();
+        openPage(parentCategoriesInAwsPage);
+        List<String> allActiveParentCategoriesAWS = new ArrayList<>();
+        for (int i = 0; i < ratingOfParentCategoriesFromAws().size(); i++) {
+            if (!ratingOfParentCategoriesFromAws().get(i).attr("value").isEmpty()) {
+                allActiveParentCategoriesAWS.add(parentCategoriesFromAws().get(i).getAttribute("value"));
+            }
+        }
+        return allActiveParentCategoriesAWS;
+    }
+
     @Step("Get generics from AWS. CatalogCategories_aws")
     public List<String> getGenericsFromAws() {
         new Login_aws().loginInAwsWithOpen();
         openPage(genericsAwsPage);
         btnGenerics().shouldBe(visible).click();
         manageGenericTable().shouldBe(visible);
-      titleOfGenerics().get(0).shouldBe(visible);
-        List<String> genericsFromAws = titleOfGenerics().stream().map(n->n.getText()).collect(Collectors.toList());
-        return genericsFromAws ;
+        titleOfGenerics().get(0).shouldBe(visible);
+        List<String> genericsFromAws = titleOfGenerics().stream().map(n -> n.getText()).collect(Collectors.toList());
+        return genericsFromAws;
     }
 
     @Step("Get All Parent Categories Id From AWS by Group Rating. CatalogCategories_aws")
@@ -380,7 +403,7 @@ public class CatalogCategories_aws {
         openPage(parentCategoriesInAwsPage);
         ArrayList<String> allParentIdByGroupRating = new ArrayList<>();
         for (int i = 0; i < groupRatingInAws().size(); i++) {
-            if (!groupRatingInAws().get(i).getAttribute("value").isEmpty()){
+            if (!groupRatingInAws().get(i).getAttribute("value").isEmpty()) {
                 String parentId = parentIdInAws().get(i).getText();
                 allParentIdByGroupRating.add(parentId);
             }
@@ -415,6 +438,13 @@ public class CatalogCategories_aws {
             }
         }
         return allGroupRating;
+    }
+
+    @Step("open parent categories page")
+    public CatalogCategories_aws openParentCategoriesAws() {
+        new Login_aws().loginInAwsWithOpen();
+        openPage(parentCategoriesInAwsPage);
+        return this;
     }
 
 }

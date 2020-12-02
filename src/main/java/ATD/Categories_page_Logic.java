@@ -298,12 +298,12 @@ public class Categories_page_Logic extends Categories_page {
 
     @Step(": from. Categories_page")
     public ArrayList<String> getHrefOrUrlCategoriesThenWriteToList(ElementsCollection categories) {
-        return new Main_page_Logic().getHrefOrUrlCategoriesThenWriteToList(categories);
+        return CommonMethods.getHrefOrUrlCategoriesThenWriteToList(categories);
     }
 
     @Step(": from. Categories_page")
     public Categories_page_Logic checkCategoriesForServerResponses200( List<String> allCategories) throws IOException {
-        new Index_instruments_page_Logic().checkCategoriesForServerResponses200(allCategories);
+        CommonMethods.checkCategoriesForServerResponses200(allCategories);
         return this;
     }
 
