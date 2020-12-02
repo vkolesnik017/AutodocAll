@@ -23,6 +23,7 @@ public class QC_2947_CheckingDisplayOfGenericAlternativeNameInProductName {
     private ProductCard_aws productPageAws = new ProductCard_aws();
     private CategoriesAlternative_aws catAlternativePage = new CategoriesAlternative_aws();
     private Product_page_Logic productPage = new Product_page_Logic();
+    private ProductSearch_aws productSearchAwsPage = new ProductSearch_aws();
 
     public QC_2947_CheckingDisplayOfGenericAlternativeNameInProductName() throws SQLException {
     }
@@ -45,8 +46,9 @@ public class QC_2947_CheckingDisplayOfGenericAlternativeNameInProductName {
         catAlternativePage.openAlternativeCategoriesInAwsWithLogin().presenceAlternativeTitleForGeneric("135", "atd", "de")
                 .presenceAlternativeTitleForGeneric("215", "atd", "de");
         String alternativeTitle = catAlternativePage.getAlternativeTitle("135", "atd", "de");
-        new ProductSearch_aws().openProductSearchPage().selectCategory("135").selectFirstSearchFilter("no")
-                .clickOnSearchButton().goToProductCartByClickOnTitle(0);
+        String titleOfFirstProduct = productSearchAwsPage.openProductSearchPage().getTitleOfFirstProduct(0);
+        productSearchAwsPage.openProductSearchPage().selectCategory("135").selectFirstSearchFilter("no")
+                .clickOnSearchButton().waitOfChangeTitleOfProduct(0, titleOfFirstProduct).goToProductCartByClickOnTitle(0);
         String brand = productPageAws.getTitleOfBrandProduct();
         String artNum = productPageAws.getArtNumOfProduct();
         String id = productPageAws.getIdOfProduct();
