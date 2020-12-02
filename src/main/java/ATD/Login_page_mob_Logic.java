@@ -39,7 +39,7 @@ public class Login_page_mob_Logic extends Login_page_mob {
         try {
             privacyPolicyBtnFB().shouldBe(visible);
             privacyPolicyBtnFB().click();
-        } catch (NoSuchElementException e){
+        } catch (Throwable e){
             System.out.println("Privacy policy is not visible");
             e.printStackTrace();
         }
