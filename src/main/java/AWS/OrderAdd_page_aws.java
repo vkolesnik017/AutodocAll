@@ -165,6 +165,10 @@ public class OrderAdd_page_aws {
         return $x("//input[@name='append_article_id'][@value='" + artID + "']");
     }
 
+    private SelenideElement foundProductsBlock() {
+        return $x("//div[@class='w-box append-block']//table[@class='table table-bordered']");
+    }
+
     public SelenideElement productArticleID() {
         return $x("//input[@name='append_article_id']");
     }
@@ -233,8 +237,9 @@ public class OrderAdd_page_aws {
 
     @Step("Added product {articleNum}. OrderAdd_page_aws")
     public OrderAdd_page_aws addProduct(String articleNum) {
-        productSearchField().sendKeys(articleNum);
-        btnAddProduct().click();
+        productSearchField().clear();
+        productSearchField().shouldBe(visible).sendKeys(articleNum);
+        btnAddProduct().shouldBe(visible).click();
         return this;
     }
 
@@ -259,8 +264,11 @@ public class OrderAdd_page_aws {
         if (preLoader().isDisplayed()) {
             preLoader().waitUntil(attribute("style", "display: none;"), 20000);
         }
-        if (productArticleID(artID).isDisplayed()) {
+        foundProductsBlock().waitUntil(visible, 20000);
+        if (foundProductsBlock().isDisplayed()) {
+            productArticleID(artID).shouldBe(visible);
             productArticleID(artID).click();
+            btnChooseProduct().shouldBe(visible);
             btnChooseProduct().click();
         }
         return this;
@@ -285,6 +293,7 @@ public class OrderAdd_page_aws {
         sleep(2000);
         ArrayList <String> list = new ArrayList<>();
         for (int i = 0; i < articleOfAddedProduct().size(); i++) {
+            articleOfAddedProduct().get(i).shouldBe(visible);
             list.add(articleOfAddedProduct().get(i).getText());
         }
         Assert.assertTrue(list.contains(articleNum));
