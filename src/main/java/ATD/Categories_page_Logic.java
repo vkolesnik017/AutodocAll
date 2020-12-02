@@ -55,21 +55,10 @@ public class Categories_page_Logic extends Categories_page {
         return page(Moto_main_page_Logic.class);
     }
 
-    @Step("Check response code is 200 for all categories in dropdown catalog. Categories_page")
-    public Categories_page_Logic check200ResponseDropdown() throws Exception {
-        catalogInHeader().click();
-        Thread.sleep(5000);
-        for (int i = 0; i < dropdownCategories().size(); i++) {
-//        System.out.println(dropdownCategories().get(i).attr("href"));
-            URL url = new URL(dropdownCategories().get(i).attr("href"));
-            HttpURLConnection http = (HttpURLConnection) url.openConnection();
-            http.setInstanceFollowRedirects(true);
-            int responseCode = http.getResponseCode();
-//        Assert.assertEquals(responseCode, 200);
-            if (responseCode != 200) {
-                System.err.println("Response code of route " + dropdownCategories().get(i).attr("href") + " is " + responseCode);
-            }
-        }
+    @Step("Click catalog In Header. Categories_page")
+    public Categories_page_Logic clickCatalogInHeader() {
+        catalogInHeader().shouldBe(visible).click();
+        firstParentInDropdownCatalog().shouldBe(visible);
         return this;
     }
 

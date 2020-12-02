@@ -523,7 +523,7 @@ public class CommonMethods {
                 allCategoriesCatalog.add(urlCategory);
             }
         }
-        System.out.println(allCategoriesCatalog);
+        System.out.println(allCategoriesCatalog.size() + " url = " + allCategoriesCatalog );
         return allCategoriesCatalog;
     }
 
@@ -534,7 +534,7 @@ public class CommonMethods {
             HttpURLConnection http = (HttpURLConnection) url.openConnection();
             http.setInstanceFollowRedirects(true);
             int responseCode = http.getResponseCode();
-            if (responseCode !=200) {
+            if (responseCode != 200) {
                 System.out.println("ResponseCode " + allCategories.get(i) + " = " + responseCode );
             }
             assertEquals(responseCode, 200);
