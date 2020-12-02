@@ -15,6 +15,7 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import static ATD.CommonMethods.comparingParentCategoriesWithAws;
 import static ATD.CommonMethods.openPage;
@@ -27,7 +28,7 @@ public class QC_609_DisplayOvercategoriesFAQandCatalogRouteWithoutCar {
 
     private ArrayList<String> parentCategoriesTecdocCatalogWithoutCar;
     private ArrayList<String> parentCategoriesCatalogFAQwithoutCar;
-    private ArrayList<String> parentCategoriesAWS;
+    private List<String> parentCategoriesAWS;
 
     @BeforeClass
     void setUp() {
@@ -41,7 +42,7 @@ public class QC_609_DisplayOvercategoriesFAQandCatalogRouteWithoutCar {
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "Romaniuta")
+    @Owner(value = "Kolesnik")
     @Description(value = "Test Display Overcategories FAQ and Catalog Route Without Car")
     public void testDisplayOvercategoriesFAQandCatalogRouteWithoutCar(String route) throws Exception {
         openPage(route);
@@ -50,7 +51,7 @@ public class QC_609_DisplayOvercategoriesFAQandCatalogRouteWithoutCar {
         openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "faqHash"));
         parentCategoriesCatalogFAQwithoutCar = categoriesPageLogic.getAllParentCategoriesFromTecdocCatalog();
 
-        parentCategoriesAWS = new CatalogCategories_aws("prod").getAllParentCategoriesNameFromAWS();
+        parentCategoriesAWS = new CatalogCategories_aws("prod").getActiveParentCategories();
         comparingParentCategoriesWithAws(parentCategoriesAWS, parentCategoriesTecdocCatalogWithoutCar);
         comparingParentCategoriesWithAws(parentCategoriesAWS, parentCategoriesCatalogFAQwithoutCar);
     }

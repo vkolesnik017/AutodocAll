@@ -192,12 +192,12 @@ public class Motoroil_page_Logic extends Motoroil_page {
     @Step("select Vehicle in KBA selector with correct number. Motoroil_page")
     public Car_parts_motoroil_page_Logic selectVehicleInKbaSelectorWithCorrectNumber(String firstValue, String secondValue) {
         firstFieldKbaSelector().setValue(firstValue);
-        secondFieldKbaSelector().setValue(secondValue);
         firstFieldKbaSelector().shouldHave(value(firstValue));
+        secondFieldKbaSelector().setValue(secondValue);
         secondFieldKbaSelector().shouldHave(value(secondValue));
-        presenceOfViscosityLinks();
         btnSearchOfKbaSelector().click();
-        if (errorPopUpOfSelector().isDisplayed()){
+        presenceOfViscosityLinks();
+        if (errorPopUpOfSelector().isDisplayed()) {
             firstFieldKbaSelectorInErrorPopUp().shouldBe(visible).setValue(firstValue);
             secondFieldKbaSelectorInErrorPopUp().setValue(secondValue);
             btnSearchOfKbaSelectorInErrorPopUp().click();
@@ -221,6 +221,14 @@ public class Motoroil_page_Logic extends Motoroil_page {
     public Motoroil_page_Logic presenceOfViscosityLinks() {
         for (int i = 0; i < visibleLinksOfViscosityBlock().size(); i++) {
             visibleLinksOfViscosityBlock().get(i).shouldBe(visible);
+        }
+        return this;
+    }
+
+    @Step("visible of brands icon. Motoroil_page")
+    public Motoroil_page_Logic visibleBrandsIcon() {
+        for (int i = 0; i < brandLinks().size(); i++) {
+            brandLinks().get(i).shouldBe(visible);
         }
         return this;
     }

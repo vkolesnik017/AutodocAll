@@ -98,7 +98,7 @@ public class Main_page_Logic extends Main_page {
         try {
             privacyPolicyBtnFB().shouldBe(visible);
             privacyPolicyBtnFB().click();
-        } catch (NoSuchElementException e){
+        } catch (Throwable e){
             System.out.println("Privacy policy is not visible");
             e.printStackTrace();
         }
