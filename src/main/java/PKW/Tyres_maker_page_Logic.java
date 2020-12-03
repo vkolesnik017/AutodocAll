@@ -162,6 +162,7 @@ public class Tyres_maker_page_Logic extends Tyres_maker_page {
     @Step("Click btn details in popup from top tyres block. Tyres_maker_page")
     public Tyres_item_page_Logic clickBtnDetailsInPopupFromTopBlock() {
         productFromTopBlock().hover();
+        characteristicFromPopupTopProductsBlock().shouldBe(visible);
         btnDetailsInPopupFromTopBlock().shouldBe(visible).click();
         return page(Tyres_item_page_Logic.class);
     }

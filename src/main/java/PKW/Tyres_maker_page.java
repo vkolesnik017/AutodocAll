@@ -69,6 +69,10 @@ public class Tyres_maker_page {
         return $x("//div[@class='pkw-more__span_100']//li[@class='pkw-related__product']");
     }
 
+    SelenideElement characteristicFromPopupTopProductsBlock() {
+        return $x("//div[contains(@id,'mCSB')]//p");
+    }
+
     ElementsCollection productsFromTopBlock() {
         return $$x("//div[@class='pkw-more__span_100']//li[@class='pkw-related__product']");
     }
