@@ -28,9 +28,9 @@ public class QC_2825_CheckingValidityIndexesIfBillingAndShippingAreSeparated_LU 
                 .cartClick()
                 .nextButtonClick()
                 .signIn(mail, password)
-                .chooseDeliveryCountryForShipping("LU")
+                .chooseDeliveryCountryForShipping("LD")
                 .clickCheckboxForOpenBilling()
-                .chooseDeliveryCountryForBilling("LU")
+                .chooseDeliveryCountryForBilling("LD")
                 .getZipMasksAndComparesWithExpectedForShipping("1111")
                 .getZipMasksAndComparesWithExpectedForBilling("1111");
     }

@@ -22,6 +22,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 public class QC_2945_DisplayOfGenericAlternativeNameInProductName {
     private ProductCard_aws productPageAws = new ProductCard_aws();
     private CategoriesAlternative_aws catAlternativePage = new CategoriesAlternative_aws();
+    private ProductSearch_aws productSearchAwsPage = new ProductSearch_aws();
 
     public QC_2945_DisplayOfGenericAlternativeNameInProductName() throws SQLException {
     }
@@ -43,8 +44,9 @@ public class QC_2945_DisplayOfGenericAlternativeNameInProductName {
     public void testCheckingDisplayOfGenericAlternativeNameInProductName(String route) {
         catAlternativePage.openAlternativeCategoriesProductInAwsWithLogin();
         String alternativeTitle = catAlternativePage.getAlternativeTitle("85", "atd", "si");
-        new ProductSearch_aws().openProductSearchPage().selectCategory("85").selectFirstSearchFilter("no")
-                .clickOnSearchButton().goToProductCartByClickOnTitle(0);
+        String titleOfFirstProduct = productSearchAwsPage.openProductSearchPage().getTitleOfFirstProduct(0);
+        productSearchAwsPage.openProductSearchPage().selectCategory("85").selectFirstSearchFilter("no")
+                .clickOnSearchButton().waitOfChangeTitleOfProduct(0, titleOfFirstProduct).goToProductCartByClickOnTitle(0);
         String brand = productPageAws.getTitleOfBrandProduct();
         String id = productPageAws.getIdOfProduct();
         openPage(route + "/" + brand + "/" + id);

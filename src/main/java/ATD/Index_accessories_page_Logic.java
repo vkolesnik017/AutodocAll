@@ -203,7 +203,7 @@ public class Index_accessories_page_Logic extends Index_accessories_page {
 
     @Step(": from. Index_accessories_page")
     public Index_accessories_page_Logic checkCategoriesForServerResponses200(List<String> allCategories) throws IOException {
-        new Index_instruments_page_Logic().checkCategoriesForServerResponses200(allCategories);
+        CommonMethods.checkCategoriesForServerResponses200(allCategories);
         return this;
     }
 

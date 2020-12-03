@@ -1,5 +1,6 @@
 package PKW;
 
+import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
@@ -81,5 +82,73 @@ public class Car_parts_Logic extends Car_parts {
         }
         return this;
     }
+
+
+    @Step("get name criteria Front Axle. Car_parts")
+    public String getNameFrontAxle() {
+        return criteriaFrontAxle().getText();
+    }
+
+    @Step("Click criteria Front Axle. Car_parts")
+    public Car_parts_Logic clickFrontAxle() {
+        criteriaFrontAxle().shouldBe(visible).click();
+        new Listing_page_Logic().waitUntilPreloaderDisappear();
+        return this;
+    }
+
+    @Step("Get text criteria diameter from sidebar. Car_parts")
+    public String getTextCriteriaDiameter() {
+        return criteriaDiameterFromSidebar().getText();
+    }
+
+    @Step("Click criteria diameter from sidebar. Car_parts")
+    public Car_parts_Logic clickCriteriaDiameter() {
+        criteriaDiameterFromSidebar().shouldBe(visible).click();
+        new Listing_page_Logic().waitUntilPreloaderDisappear();
+        return this;
+    }
+
+    @Step("Get text criteria PR_Number from sidebar. Car_parts")
+    public String getTextCriteriaPRNumber() {
+        return criteriaPRNumberInSidebar().hover().getText();
+    }
+
+    @Step("Click criteria PR_Number from sidebar. Car_parts")
+    public Car_parts_Logic clickCriteriaPRNumber() {
+        criteriaPRNumberInSidebar().shouldBe(visible).click();
+        new Listing_page_Logic().waitUntilPreloaderDisappear();
+        return this;
+    }
+
+    @Step("Get text criteria Bremsscheibenart from sidebar. Car_parts")
+    public String getTextCriteriaBremsscheibenart() {
+        return criteriaBremsscheibenartFromSidebar().hover().getText();
+    }
+
+    @Step("Click criteria Bremsscheibenart from sidebar. Car_parts")
+    public Car_parts_Logic clickCriteriaBremsscheibenart() {
+        criteriaBremsscheibenartFromSidebar().shouldBe(visible).click();
+        new Listing_page_Logic().waitUntilPreloaderDisappear();
+        return this;
+    }
+
+    @Step("Check characteristic in products. Car_parts")
+    public Car_parts_Logic checkCharacteristicInProducts(ElementsCollection characteristic, String expectedText) {
+        for (int i = 0; i < characteristic.size(); i++) {
+           String characteristicProduct = characteristic.get(i).getText().replace(",0", "").toLowerCase();
+           Assert.assertEquals(expectedText, characteristicProduct);
+        }
+        return this;
+    }
+
+    @Step("Check characteristic in products if has multiple values. Car_parts")
+    public Car_parts_Logic checkCharacteristicInProductsIfHasMultipleValues(ElementsCollection characteristic, String expectedText) {
+        for (int i = 0; i < characteristic.size(); i++) {
+            String characteristicProduct = characteristic.get(i).getText().toLowerCase();
+            Assert.assertTrue(characteristicProduct.contains(expectedText));
+        }
+        return this;
+    }
+
 
 }
