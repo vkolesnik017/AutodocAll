@@ -264,7 +264,7 @@ public class OrderAdd_page_aws {
         if (preLoader().isDisplayed()) {
             preLoader().waitUntil(attribute("style", "display: none;"), 20000);
         }
-        foundProductsBlock().waitUntil(visible, 20000);
+        sleep(3000);
         if (foundProductsBlock().isDisplayed()) {
             productArticleID(artID).shouldBe(visible);
             productArticleID(artID).click();
