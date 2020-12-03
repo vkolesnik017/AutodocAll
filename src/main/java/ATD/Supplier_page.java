@@ -51,4 +51,8 @@ public class Supplier_page {
     ElementsCollection idNumParents() {
         return $$x("//div[@class='catalog-block']//div[@class='catalog-block__wrap-image']/img");
     }
+
+   public ElementsCollection categoriesCatalog() {
+        return $$x("//div[@class='catalog-block']//div[@class='catalog-block__wrap']//ul/li//*[2]");
+    }
 }

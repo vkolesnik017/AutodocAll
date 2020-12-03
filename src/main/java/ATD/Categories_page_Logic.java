@@ -55,49 +55,10 @@ public class Categories_page_Logic extends Categories_page {
         return page(Moto_main_page_Logic.class);
     }
 
-    @Step("Check response code is 200 for all categories in tecdoc catalog. Categories_page")
-    public Categories_page_Logic check200ResponseTecdoc() throws IOException {
-        for (int i = 0; i < tecdocCategoriesA().size(); i++) {
-//        System.out.println(tecdocCategoriesA().get(i).attr("href"));
-            URL url = new URL(tecdocCategoriesA().get(i).attr("href"));
-            HttpURLConnection http = (HttpURLConnection) url.openConnection();
-            http.setInstanceFollowRedirects(true);
-            int responseCode = http.getResponseCode();
-//        Assert.assertEquals(responseCode, 200);
-            if (responseCode != 200) {
-                System.err.println("Response code of route " + tecdocCategoriesA().get(i).attr("href") + " is " + responseCode);
-            }
-        }
-
-        for (int i = 0; i < tecdocCategoriesSpan().size(); i++) {
-//        System.out.println(tecdocCategoriesSpan().get(i).attr("url"));
-            URL url = new URL(tecdocCategoriesSpan().get(i).attr("url"));
-            HttpURLConnection http = (HttpURLConnection) url.openConnection();
-            http.setInstanceFollowRedirects(true);
-            int responseCode = http.getResponseCode();
-//        Assert.assertEquals(responseCode, 200);
-            if (responseCode != 200) {
-                System.err.println("Response code of route " + tecdocCategoriesSpan().get(i).attr("url") + " is " + responseCode);
-            }
-        }
-        return this;
-    }
-
-    @Step("Check response code is 200 for all categories in dropdown catalog. Categories_page")
-    public Categories_page_Logic check200ResponseDropdown() throws Exception {
-        catalogInHeader().click();
-        Thread.sleep(5000);
-        for (int i = 0; i < dropdownCategories().size(); i++) {
-//        System.out.println(dropdownCategories().get(i).attr("href"));
-            URL url = new URL(dropdownCategories().get(i).attr("href"));
-            HttpURLConnection http = (HttpURLConnection) url.openConnection();
-            http.setInstanceFollowRedirects(true);
-            int responseCode = http.getResponseCode();
-//        Assert.assertEquals(responseCode, 200);
-            if (responseCode != 200) {
-                System.err.println("Response code of route " + dropdownCategories().get(i).attr("href") + " is " + responseCode);
-            }
-        }
+    @Step("Click catalog In Header. Categories_page")
+    public Categories_page_Logic clickCatalogInHeader() {
+        catalogInHeader().shouldBe(visible).click();
+        firstParentInDropdownCatalog().shouldBe(visible);
         return this;
     }
 
@@ -323,5 +284,17 @@ public class Categories_page_Logic extends Categories_page {
         btnSearchOfSelector().click();
         return page(Maker_car_list_page_Logic.class);
     }
+
+    @Step(": from. Categories_page")
+    public ArrayList<String> getHrefOrUrlCategoriesThenWriteToList(ElementsCollection categories) {
+        return CommonMethods.getHrefOrUrlCategoriesThenWriteToList(categories);
+    }
+
+    @Step(": from. Categories_page")
+    public Categories_page_Logic checkCategoriesForServerResponses200( List<String> allCategories) throws IOException {
+        CommonMethods.checkCategoriesForServerResponses200(allCategories);
+        return this;
+    }
+
 
 }

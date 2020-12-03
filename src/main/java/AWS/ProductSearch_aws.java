@@ -85,6 +85,10 @@ public class ProductSearch_aws {
         return $x("//*[@id='order_products_list']//tr/td[15]/span");
     }
 
+    private ElementsCollection titlesOfProducts() {
+        return $$x("//table[@id='order_products_list']//tr/td[6]/a");
+    }
+
     @Step
     public ProductSearch_aws openProductSearchPageAndLogin() {
         open(urlPage);
@@ -165,8 +169,8 @@ public class ProductSearch_aws {
 
     @Step("go to product cart by click on Title of product. ProductSearch_aws")
     public ProductCard_aws goToProductCartByClickOnTitle(int positionOfProduct) {
-        productListBlock().waitWhile(not(visible),5000);
-        productListBlock().shouldBe(visible);
+        //  productListBlock().waitWhile(not(visible),5000);
+        //   productListBlock().shouldBe(visible);
         titleOfProductsInTable().get(positionOfProduct).shouldBe(visible).click();
         return page(ProductCard_aws.class);
     }
@@ -201,5 +205,15 @@ public class ProductSearch_aws {
         return this;
     }
 
+    @Step("get Title Of First Product. ProductSearch_aws")
+    public String getTitleOfFirstProduct(int positionOfProduct) {
+        return titlesOfProducts().get(positionOfProduct).shouldBe(visible).getText();
+    }
+
+    @Step("wait of change title of product. ProductSearch_aws")
+    public ProductSearch_aws waitOfChangeTitleOfProduct(int positionOfProduct, String title) {
+        titlesOfProducts().get(positionOfProduct).shouldBe(visible).shouldNotHave(text(title));
+        return this;
+    }
 
 }

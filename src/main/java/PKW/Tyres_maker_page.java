@@ -3,8 +3,7 @@ package PKW;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Selenide.$$x;
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Tyres_maker_page {
 
@@ -30,6 +29,10 @@ public class Tyres_maker_page {
 
     SelenideElement sizeDiameterFromRelinkBlock() {
         return $x("//div[@class='tyre-popular tyre-page__slider']//div[@class='block-2-columns']//li/a");
+    }
+
+    SelenideElement wheelDimensionsFromRelinkBlock() {
+        return $x("//div[@class='tyre-popular tyre-page__slider']//div[@class='block-3-columns']//li/a");
     }
 
     SelenideElement btnAllSizeFromRelinkBySizeBlock() {return $x("//div[@class='tyre-popular tyre-page__slider']//div[@class='tyre-page__btn']/a");}
@@ -66,6 +69,10 @@ public class Tyres_maker_page {
         return $x("//div[@class='pkw-more__span_100']//li[@class='pkw-related__product']");
     }
 
+    SelenideElement characteristicFromPopupTopProductsBlock() {
+        return $x("//div[contains(@id,'mCSB')]//p");
+    }
+
     ElementsCollection productsFromTopBlock() {
         return $$x("//div[@class='pkw-more__span_100']//li[@class='pkw-related__product']");
     }
@@ -94,6 +101,10 @@ public class Tyres_maker_page {
         return $x("//li[@class='pkw-related__product']//span[@class='pkw-related__title']");
     }
 
+    SelenideElement topProductsBlock() {return $("div.bx-viewport");}
 
+    ElementsCollection imageOfBrandAtTopProducts() {return $$("div.pkw-related__header-row>img");}
+
+    ElementsCollection btnAddTopProductToBasket() {return $$x("//form[@class='pkw-related__row']//span");}
 
 }

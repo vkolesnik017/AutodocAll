@@ -6,11 +6,10 @@ import com.codeborne.selenide.ElementsCollection;
 import files.Product;
 import io.qameta.allure.Step;
 import org.testng.Assert;
-
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.*;
 import java.util.stream.Collectors;
-
 import static ATD.CommonMethods.*;
 import static PKW.CommonMethods.getTextFromUnVisibleElement;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
@@ -350,6 +349,16 @@ public class Search_page_Logic extends Search_page {
         return this;
     }
 
+    @Step("add active Product to WishList with selected car. Search_page")
+    public Search_page_Logic addedActiveProductToWishListWithSelectedCar(int positionOfProduct) {
+        for (int i = 0; i < positionOfProduct; i++) {
+            btnAddedActiveProductToWishList().get(i).scrollIntoView("{block: \"center\"}");
+            btnAddedActiveProductToWishList().get(i).shouldBe(visible).click();
+            addedActiveProductToWishList().get(i).shouldBe(exist);
+        }
+        return this;
+    }
+
     @Step("added Product to WishList. Search_page")
     public Search_page_Logic addNotActiveProductToWishList(int positionOfProduct) {
         labelAddToWishListNotActiveProduct().get(positionOfProduct).scrollIntoView("{block: \"center\"}");
@@ -428,6 +437,12 @@ public class Search_page_Logic extends Search_page {
     @Step(" added article number Of product to list. Search_page")
     public List<String> addArtNumOfProductToList(int countOfArtNum) {
         List<String> artNumOfProduct = artNumOfProduct().stream().limit(countOfArtNum).map(n -> n.getText().replaceAll("Artikelnummer:", "").replace(" ", "")).collect(Collectors.toList());
+        return artNumOfProduct;
+    }
+
+    @Step(" added article number Of active product to list. Search_page")
+    public List<String> addArtNumOfActiveProductToList(int countOfArtNum) {
+        List<String> artNumOfProduct = artNumOfActiveProduct().stream().limit(countOfArtNum).map(n -> n.getText().replaceAll("Artikelnummer:", "").replace(" ", "")).collect(Collectors.toList());
         return artNumOfProduct;
     }
 
@@ -714,5 +729,25 @@ public class Search_page_Logic extends Search_page {
         titleOfProductWithArtNum(artNUm).shouldBe(visible).shouldHave(text(alternativeTitle));
         return this;
     }
+
+    @Step(": from. Search_page")
+    public ArrayList<String> getHrefOrUrlCategoriesThenWriteToList(ElementsCollection categories) {
+        secondListingPage().scrollTo();
+        closePopupOfChooseCar();
+        for (int i = 0; i < visibleParentInSidebar().size(); i++) {
+            visibleParentInSidebar().get(i).click();
+            visibleCategoryFromSideBar().shouldBe(visible);
+            visibleParentInSidebar().get(i).click();
+        }
+        return CommonMethods.getHrefOrUrlCategoriesThenWriteToList(categories);
+    }
+
+    @Step(": from. Search_page")
+    public Search_page_Logic checkCategoriesForServerResponses200(List<String> allCategories) throws IOException {
+        CommonMethods.checkCategoriesForServerResponses200(allCategories);
+        return this;
+    }
+
+
 }
 

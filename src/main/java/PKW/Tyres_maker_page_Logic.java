@@ -162,10 +162,46 @@ public class Tyres_maker_page_Logic extends Tyres_maker_page {
     @Step("Click btn details in popup from top tyres block. Tyres_maker_page")
     public Tyres_item_page_Logic clickBtnDetailsInPopupFromTopBlock() {
         productFromTopBlock().hover();
+        characteristicFromPopupTopProductsBlock().shouldBe(visible);
         btnDetailsInPopupFromTopBlock().shouldBe(visible).click();
         return page(Tyres_item_page_Logic.class);
     }
 
+    @Step("presence of TOP product block. Tyres_maker_page")
+    public Tyres_maker_page_Logic presenceOfTopProductBlock() {
+        topProductsBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Get url from btn wheel Dimensions in relink by size block . Tyres_maker_page")
+    public String getUrlBtnWheelDimensionsInRelinkBlockBySize() {
+        return wheelDimensionsFromRelinkBlock().getAttribute("href");
+    }
+
+    @Step("Get text from btn wheel Dimensions in relink by size block . Tyres_maker_page ")
+    public String getTextBtnWheelDimensionsInRelinkBlockBySize() {
+        return wheelDimensionsFromRelinkBlock().getText();
+    }
+
+    @Step("Click on Wheel Dimensions from relink block. Tyres_maker_page")
+    public Tyres_dimension_maker_page_Logic clickOnWheelDimensionsFromRelinkBlock() {
+        relinkBlockBySize().scrollIntoView("{block: \"center\"}");
+        wheelDimensionsFromRelinkBlock().shouldBe(visible).click();
+        return page(Tyres_dimension_maker_page_Logic.class);
+    }
 
 
+    @Step("check size of TOP products. Tyres_maker_page")
+    public Tyres_maker_page_Logic checkSizeOfTopProducts(int size) {
+        Assert.assertTrue(imageOfBrandAtTopProducts().size() <= size);
+        return this;
+    }
+
+    @Step("checking the ability to add an item to the cart. Tyres_maker_page")
+    public Tyres_maker_page_Logic checkAbilityToAddTopProductToCart() {
+        for (int i = 0; i < btnAddTopProductToBasket().size(); i++) {
+            btnAddTopProductToBasket().get(i).shouldHave(attribute("data-ga-action", "Add_to_basket"));
+        }
+        return this;
+    }
 }

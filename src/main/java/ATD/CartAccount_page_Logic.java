@@ -9,8 +9,7 @@ import static ATD.CommonMethods.password;
 
 import static ATD.CommonMethods.mailRandom;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.page;
-import static com.codeborne.selenide.Selenide.switchTo;
+import static com.codeborne.selenide.Selenide.*;
 
 public class CartAccount_page_Logic extends CartAccount_page {
 
@@ -93,7 +92,7 @@ public class CartAccount_page_Logic extends CartAccount_page {
         try {
             privacyPolicyBtnFB().shouldBe(visible);
             privacyPolicyBtnFB().click();
-        } catch (NoSuchElementException e){
+        } catch (Throwable e){
             System.out.println("Privacy policy is not visible");
             e.printStackTrace();
         }

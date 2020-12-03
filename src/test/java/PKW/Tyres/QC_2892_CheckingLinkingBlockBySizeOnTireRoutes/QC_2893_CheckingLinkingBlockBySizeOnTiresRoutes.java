@@ -57,6 +57,14 @@ public class QC_2893_CheckingLinkingBlockBySizeOnTiresRoutes {
         Assert.assertEquals(urlBtnSize, urlPage);
         checkingContainsUrl(textBtnSize);
         back();
+        String urlBtnWheelDimensions = tyresPageLogic.getUrlBtnWheelDimensionsInRelinkBlockBySize();
+        String textBtnWheelDimensions = tyresPageLogic.getTextBtnWheelDimensionsInRelinkBlockBySize().replace("/", "-").toLowerCase();
+        tyresPageLogic.checkPresenceRelinkBlockBySize()
+                .clickOnWheelDimensionsFromRelinkBlock();
+        String urlPageDimensions = url();
+        Assert.assertEquals(urlBtnWheelDimensions, urlPageDimensions);
+        checkingContainsUrl(textBtnWheelDimensions);
+        back();
         tyresPageLogic.clickBtnAllSizeInRelinkBySizeBlock()
                 .checkPresenceTiresSizeTable();
     }
@@ -75,6 +83,14 @@ public class QC_2893_CheckingLinkingBlockBySizeOnTiresRoutes {
         Assert.assertEquals(urlBtnSize, urlPage);
         checkingContainsUrl(textBtnSize);
         back();
+        String urlBtnWheelDimensions = tyresPageLogic.getUrlBtnWheelDimensionsInRelinkBlockBySize();
+        String textBtnWheelDimensions = tyresPageLogic.getTextBtnWheelDimensionsInRelinkBlockBySize().replace("/", "-").toLowerCase();
+        tyresPageLogic.checkPresenceRelinkBlockBySize()
+                .clickOnWheelDimensionsFromRelinkBlock();
+        String urlPageDimensions = url();
+        Assert.assertEquals(urlBtnWheelDimensions, urlPageDimensions);
+        checkingContainsUrl(textBtnWheelDimensions);
+        back();
         tyresPageLogic.clickBtnAllSizeInRelinkBySizeBlock()
                 .checkPresenceTiresSizeTable();
     }
@@ -92,6 +108,14 @@ public class QC_2893_CheckingLinkingBlockBySizeOnTiresRoutes {
         String urlPage = url();
         Assert.assertEquals(urlBtnSize, urlPage);
         checkingContainsUrl(textBtnSize);
+        back();
+        String urlBtnWheelDimensions = tyresMakerPageLogic.getUrlBtnWheelDimensionsInRelinkBlockBySize();
+        String textBtnWheelDimensions = tyresMakerPageLogic.getTextBtnWheelDimensionsInRelinkBlockBySize().replace("/", "-").replace(" ","").toLowerCase();
+        tyresMakerPageLogic.checkPresenceRelinkBlockBySize()
+                .clickOnWheelDimensionsFromRelinkBlock();
+        String urlPageDimensions = url();
+        Assert.assertEquals(urlBtnWheelDimensions, urlPageDimensions);
+        checkingContainsUrl(textBtnWheelDimensions);
         back();
         tyresMakerPageLogic.clickBtnAllSizeInRelinkBySizeBlock()
                 .checkPresenceTiresSizeTable();

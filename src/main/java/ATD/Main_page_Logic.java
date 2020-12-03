@@ -13,6 +13,7 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.*;
 
@@ -97,7 +98,7 @@ public class Main_page_Logic extends Main_page {
         try {
             privacyPolicyBtnFB().shouldBe(visible);
             privacyPolicyBtnFB().click();
-        } catch (NoSuchElementException e){
+        } catch (Throwable e){
             System.out.println("Privacy policy is not visible");
             e.printStackTrace();
         }
@@ -1464,11 +1465,13 @@ public class Main_page_Logic extends Main_page {
     @Step("Checking the transition to the instagram from  the Social Network Block. Main_page")
     public Main_page_Logic checkingTransitionToTheInstagram(String expectedUrl) {
         instagramImageTransition().click();
+        waitingWhileLinkBecomeExpected(expectedUrl);
         url();
         Assert.assertEquals(url(), expectedUrl);
         back();
         instagramLinkTransition().click();
         url();
+        waitingWhileLinkBecomeExpected(expectedUrl);
         Assert.assertEquals(url(), expectedUrl);
         return this;
     }
@@ -1527,4 +1530,17 @@ public class Main_page_Logic extends Main_page {
         int random_number = minValue + (int) (Math.random() * maxValue);
         return random_number;
     }
+
+    @Step(": from. Main_page")
+    public ArrayList<String> getHrefOrUrlCategoriesThenWriteToList(ElementsCollection categories) {
+        return CommonMethods.getHrefOrUrlCategoriesThenWriteToList(categories);
+    }
+
+    @Step(":from Main_page")
+    public Main_page_Logic checkCategoriesForServerResponses200( List<String> allCategories) throws IOException {
+        CommonMethods.checkCategoriesForServerResponses200(allCategories);
+        return this;
+    }
+
+
 }

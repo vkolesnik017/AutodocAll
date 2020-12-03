@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="FiltersSorting_PKW" parallel="methods" thread-count="3" data-provider-thread-count="3">
+
+    <listeners>
+        <listener class-name="Common.ProjectListener"/>
+    </listeners>
+
+    <test name="QC_147_FiltersSorting_interaction">
+        <classes>
+            <class name="PKW.FiltersSorting.QC_147_FiltersSorting_interaction.QC_151_TestDurchmesserAndBySideFilterInteraction"/>
+            <class name="PKW.FiltersSorting.QC_147_FiltersSorting_interaction.QC_152_TestBremsscheibenartAndBySideFilterInteraction"/>
+            <class name="PKW.FiltersSorting.QC_147_FiltersSorting_interaction.QC_154_TestFurPRNumberAndBySideFilterInteraction"/>
+        </classes>
+    </test>
+
+
+
+
+
+
+</suite>

@@ -1,7 +1,9 @@
 package ATD.Catalog.QC_604_DisplayAllOvercategoriesOnTecdocCatalogPage;
 
 
-import ATD.*;
+import ATD.Categories_page_Logic;
+import ATD.FaqHash_page_Logic;
+import ATD.Maker_car_list_page_Logic;
 import AWS.CatalogCategories_aws;
 import Common.DataBase;
 import Common.SetUp;
@@ -48,13 +50,14 @@ public class QC_605_DisplayOvercategoriesOnCatalogRoutesWithCar {
 
         openPage(db.getFullRouteByRouteAndSubroute("subprod", "DE", "main", "categories"));
         checkingContainsUrl(db.getRouteByRouteName("DE", "categories"));
+
         parentCategoriesTecDoc = new Categories_page_Logic().presenceOfTecDocCatalog().getParentCategories();
 
         openPage(db.getFullRouteByRouteAndSubroute("subprod", "DE", "main", "faqHash"));
         checkingContainsUrl(db.getRouteByRouteName("DE", "faqHash"));
-        parentCategoriesFaq = new FaqHash_page_Logic().presenceOfTecDocCatalog().getParentCategories();
 
-        parentCategoriesAWS = new CatalogCategories_aws("prod").getParentCategories();
+        parentCategoriesFaq = new FaqHash_page_Logic().presenceOfTecDocCatalog().getParentCategories();
+        parentCategoriesAWS = new CatalogCategories_aws("prod").getActiveParentCategories();
 
         comparingParentCategoriesWithAws(parentCategoriesAWS, parentCategoriesCarList);
         comparingParentCategoriesWithAws(parentCategoriesAWS, parentCategoriesFaq);
