@@ -18,6 +18,10 @@ public class SearchOrders_page_aws {
 
     public static String searchOrderPageURL = "https://aws.autodoc.de/search-orders";
 
+    private SelenideElement orderIdField() {
+        return $x("//input[@id='form_Filter[orderId]']");
+    }
+
     private SelenideElement addOrderBtn() {
         return $x("//a[@class='btn btn-primary control-add']");
     }
@@ -40,6 +44,10 @@ public class SearchOrders_page_aws {
 
     private ElementsCollection orderLine() {
         return $$x("//td[@class='w-20 select-row']//..//a[@class='printBillPopup']");
+    }
+
+    private SelenideElement orderLincInOrderLine(String orderId) {
+        return $x("//tr[@data-id='" + orderId + "']//a[@class='order_link']");
     }
 
     private SelenideElement calendarDataFromBtn() {
@@ -155,6 +163,20 @@ public class SearchOrders_page_aws {
                 break;
             }
         }
+        return page(Order_aws.class);
+    }
+
+    @Step("Filing field order id {orderId}. SearchOrders_page_aws")
+    public SearchOrders_page_aws fillingFieldOrderId(String orderId) {
+        orderIdField().shouldBe(visible);
+        orderIdField().setValue(orderId);
+        return this;
+    }
+
+    @Step("Transition in order page. SearchOrders_page_aws")
+    public Order_aws clickOnOrderLinc(String orderId) {
+        orderLincInOrderLine(orderId).shouldBe(visible);
+        orderLincInOrderLine(orderId).click();
         return page(Order_aws.class);
     }
 }
