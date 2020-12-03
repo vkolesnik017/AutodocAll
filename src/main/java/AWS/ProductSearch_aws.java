@@ -152,6 +152,7 @@ public class ProductSearch_aws {
     @Step("select first search filter. ProductSearch_aws")
     public ProductSearch_aws selectFirstSearchFilter(String filer) {
         firstSearchFilter().selectOptionByValue(filer);
+        firstSearchFilter().shouldHave(exactValue(filer));
         return this;
     }
 
