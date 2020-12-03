@@ -201,7 +201,7 @@
         <classes>
             <class name="ATD.LKW_trucks.QC_2306_OilsAndLiquidsCategories.QC_2303_PresenceOfOilCategoryInHeaderCatalog"/>
             <class name="ATD.LKW_trucks.QC_2306_OilsAndLiquidsCategories.QC_2304_PresenceOfOilAndLiquidCategories"/>
-            <!--<class name="ATD.LKW_trucks.QC_2306_OilsAndLiquidsCategories.QC_2305_TecDocAndSearchOilListing"/>-->
+            <class name="ATD.LKW_trucks.QC_2306_OilsAndLiquidsCategories.QC_2305_TecDocAndSearchOilListing"/>
             <class name="ATD.LKW_trucks.QC_2306_OilsAndLiquidsCategories.QC_2307_PresenceOfOilCategoryOnMainPage"/>
             <class name="ATD.LKW_trucks.QC_2306_OilsAndLiquidsCategories.QC_2308_PresenceOfProductsInTopProductsBlock"/>
         </classes>
