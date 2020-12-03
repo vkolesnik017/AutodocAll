@@ -122,6 +122,8 @@
             <class name="ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD.QC_2824_CheckingValidityIndexes_PT"/>
             <class name="ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD.QC_2848_CheckingValidationOfIndexesWhenEditingOrderInAws_LU"/>
             <class name="ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD.QC_2851_CheckingValidationOfIndexesWhenEditingOrderInAws_PT"/>
+            <class name="ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD.QC_2861_ChecksAnErrorDisplayingWhenEnteredIndexDoesNotCorrespondTo_LU_mask_AWS"/>
+            <class name="ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD.QC_2826_ChecksAnErrorDisplayingWhenEnteredIndexDoesNotCorrespondTo_PT_mask_AWS"/>
         </classes>
     </test>
 

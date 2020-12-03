@@ -63,6 +63,13 @@ public class Tyres_page_Logic extends Tyres_page {
 
     }
 
+    @Step("Click on Wheel Dimensions from relink block. Tyres_page")
+    public Tyres_dimension_page_Logic clickOnWheelDimensionsFromRelinkBlock() {
+        relinkBlock().scrollIntoView("{block: \"center\"}");
+        wheelDimensionsFromRelinkBlock().shouldBe(visible).click();
+        return page(Tyres_dimension_page_Logic.class);
+    }
+
     @Step("presence of TOP product block. Tyres_page")
     public Tyres_page_Logic presenceOfTopProductBlock() {
         topProductsBlock().shouldBe(visible);
@@ -176,6 +183,18 @@ public class Tyres_page_Logic extends Tyres_page {
     public String getTextBtnSizeInRelinkBlockBySize() {
         return sizeDiameterFromRelinkBlock().getText();
     }
+
+    @Step("Get url from btn wheel Dimensions in relink by size block . Tyres_page")
+    public String getUrlBtnWheelDimensionsInRelinkBlockBySize() {
+        return wheelDimensionsFromRelinkBlock().getAttribute("href");
+    }
+
+    @Step("Get text from btn wheel Dimensions in relink by size block . Tyres_page ")
+    public String getTextBtnWheelDimensionsInRelinkBlockBySize() {
+        return wheelDimensionsFromRelinkBlock().getText();
+    }
+
+
 
     @Step("Click btn all size in relink by size block. Tyres_page")
     public Tyres_type_list_page_Logic clickBtnAllSizeInRelinkBySizeBlock() {

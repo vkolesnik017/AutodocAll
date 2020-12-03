@@ -98,7 +98,7 @@ public class Main_page_Logic extends Main_page {
         try {
             privacyPolicyBtnFB().shouldBe(visible);
             privacyPolicyBtnFB().click();
-        } catch (NoSuchElementException e){
+        } catch (Throwable e){
             System.out.println("Privacy policy is not visible");
             e.printStackTrace();
         }
@@ -1531,25 +1531,14 @@ public class Main_page_Logic extends Main_page {
         return random_number;
     }
 
-    @Step("Get Href or URL categories/overCategories from catalog then write to list. Main_page")
+    @Step(": from. Main_page")
     public ArrayList<String> getHrefOrUrlCategoriesThenWriteToList(ElementsCollection categories) {
-        ArrayList<String> allCategoriesCatalog = new ArrayList<>();
-        for (SelenideElement element : categories) {
-           if( element.has(attribute("href"))) {
-               String hrefCategory = element.getAttribute("href");
-               allCategoriesCatalog.add(hrefCategory);
-           } else if (element.has(attribute("url"))) {
-               String urlCategory = element.getAttribute("url");
-               allCategoriesCatalog.add(urlCategory);
-           }
-        }
-        System.out.println(allCategoriesCatalog);
-        return allCategoriesCatalog;
+        return CommonMethods.getHrefOrUrlCategoriesThenWriteToList(categories);
     }
 
     @Step(":from Main_page")
     public Main_page_Logic checkCategoriesForServerResponses200( List<String> allCategories) throws IOException {
-        new Index_instruments_page_Logic().checkCategoriesForServerResponses200(allCategories);
+        CommonMethods.checkCategoriesForServerResponses200(allCategories);
         return this;
     }
 

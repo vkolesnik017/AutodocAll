@@ -77,6 +77,15 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return this;
     }
 
+    @Step("Fill field name firm {firmName} for Shipping. CartAddress_page")
+    public CartAddress_page_Logic fillFieldFirmNameForShipping(String firmName) {
+        if (!fieldFirm().isDisplayed()) {
+            checkboxFirmShipping().click();
+        }
+        checkCorrectTextAndFillInput(fieldFirm(), firmName);
+        return this;
+    }
+
     @Step("Fill in the company ID {expectedID} field for the delivery country where ID is needed {expectedShop}. CartAddress_page")
     public CartPayments_page_Logic fillInCompanyIdFieldForCountryWhereIdNeeded(String actualShop, String expectedShop, String expectedID) {
         if (actualShop.equals(expectedShop)) {

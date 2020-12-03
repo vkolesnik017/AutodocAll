@@ -22,14 +22,14 @@
 
     <test name="QC_613_DisplayAllUndercategoriesTecdocCatalog">
         <classes>
-            <class name="ATD.Catalog.QC_613_DisplayAllUndercategoriesTecdocCatalog.QC_614_DisplayUndercategoriesInCatalogRouteWithCar"/>
+<!--            <class name="ATD.Catalog.QC_613_DisplayAllUndercategoriesTecdocCatalog.QC_614_DisplayUndercategoriesInCatalogRouteWithCar"/>-->
             <class name="ATD.Catalog.QC_613_DisplayAllUndercategoriesTecdocCatalog.QC_615_PresenceSubcategoriesOnFaqRootAndCatalogWithoutVehicle"/>
         </classes>
     </test>
 
     <test name="QC_646_DisplayAllCategoriesInCatalogDropdownMenu">
         <classes>
-            <class name="ATD.Catalog.QC_646_DisplayAllCategoriesInCatalogDropdownMenu.QC_647_DisplayAllCategoriesInCatalogDropdownMenu"/>
+<!--            <class name="ATD.Catalog.QC_646_DisplayAllCategoriesInCatalogDropdownMenu.QC_647_DisplayAllCategoriesInCatalogDropdownMenu"/>-->
         </classes>
     </test>
 
