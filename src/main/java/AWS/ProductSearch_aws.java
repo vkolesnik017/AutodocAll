@@ -145,7 +145,7 @@ public class ProductSearch_aws {
 
     @Step("select category. ProductSearch_aws")
     public ProductSearch_aws selectCategory(String idOfCategory) {
-        categoryFiled().setValue(idOfCategory).pressEnter();
+        categoryFiled().shouldBe(visible).setValue(idOfCategory).pressEnter();
         return this;
     }
 
