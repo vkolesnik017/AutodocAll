@@ -400,4 +400,14 @@ public class Moto_Product_page_Logic extends Moto_Product_page {
         return this;
     }
 
+    @Step(": from. Moto_Product_page")
+    public AutodocClub_page clickBannerAutodocClub() {
+        return new Product_page_Logic().clickBannerAutodocClub();
+    }
+
+    @Step(": from. Moto_Product_page")
+    public String getUrlAutodocClubFromBannerAutodocClub() {
+        return new Product_page_Logic().getUrlAutodocClubFromBannerAutodocClub();
+    }
+
 }

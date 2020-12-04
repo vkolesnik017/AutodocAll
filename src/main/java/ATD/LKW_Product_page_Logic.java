@@ -312,4 +312,15 @@ public class LKW_Product_page_Logic extends LKW_Product_page {
         basket().click();
         return page(Cart_page_Logic.class);
     }
+
+    @Step(": from. LKW_Product_page")
+    public AutodocClub_page clickBannerAutodocClub() {
+       return new Product_page_Logic().clickBannerAutodocClub();
+    }
+
+    @Step(": from. LKW_Product_page")
+    public String getUrlAutodocClubFromBannerAutodocClub() {
+        return new Product_page_Logic().getUrlAutodocClubFromBannerAutodocClub();
+    }
+
 }
