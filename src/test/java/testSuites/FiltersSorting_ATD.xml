@@ -91,6 +91,7 @@
             <class name="ATD.FiltersSorting.QC_195_FiltersSorting_outputSorting.QC_252_FiltersSorting_TestOutputSortingWithFilterByCarBrandOen"/>
             <class name="ATD.FiltersSorting.QC_195_FiltersSorting_outputSorting.QC_253_FiltersSorting_TestOutputSortingWithFilterByBrandOen"/>
             <class name="ATD.FiltersSorting.QC_195_FiltersSorting_outputSorting.QC_254_FiltersSorting_TestOutputSortingWithFilterByBrandOvercategoryRoute"/>
+            <class name="ATD.FiltersSorting.QC_195_FiltersSorting_outputSorting.QC_2768_SortingOfProductsInLkwTecDocListingWithSelectedBrandsFilter"/>
             <class name="ATD.FiltersSorting.QC_195_FiltersSorting_outputSorting.QC_2770_SortingOfProductsInLkwTecDocListingWithSelectedSideFilter"/>
         </classes>
     </test>
