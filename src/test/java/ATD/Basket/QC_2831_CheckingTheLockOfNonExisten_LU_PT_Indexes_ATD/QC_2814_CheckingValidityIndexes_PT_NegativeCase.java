@@ -1,7 +1,6 @@
 package ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD;
 
 import ATD.CartAddress_page_Logic;
-import ATD.CartPayments_page_Logic;
 import ATD.Product_page_Logic;
 import Common.DataBase;
 import io.qameta.allure.Description;
@@ -15,49 +14,52 @@ import static ATD.CommonMethods.*;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2825_CheckingValidityIndexesIfBillingAndShippingAreSeparated_LU {
+public class QC_2814_CheckingValidityIndexes_PT_NegativeCase {
 
-    private String mail = "QC_2825_autotestATD@mailinator.com";
+    private String mail = "QC_2814_autotestATD@mailinator.com";
+    private CartAddress_page_Logic cartAddress_page_logic = new CartAddress_page_Logic();
 
     @BeforeClass
     void setUp() throws SQLException {
         setUpBrowser(false, "chrome", "77.0");
-        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "LD","main","product41"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "PT", "main", "product32"));
         new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
                 .signIn(mail, password)
-                .chooseDeliveryCountryForShipping("LD")
-                .clickCheckboxForOpenBilling()
-                .chooseDeliveryCountryForBilling("LD")
-                .getZipMasksAndComparesWithExpectedForShipping("1111")
-                .getZipMasksAndComparesWithExpectedForBilling("1111");
+                .chooseDeliveryCountryForShipping("PT")
+                .getZipMasksAndComparesWithExpectedForShipping("1111-111");
     }
 
     @DataProvider(name = "indexes")
     Object[] dataProviderProducts() {
         return new Object[][]{
-                {"1001"},
-                {"9999"},
-                {"5238"},
-                {"9998"},
-                {"1111"},
-                {"1000"}
+                {"0001-000"},
+                {"0111-111"},
+                {"0550-505"},
+                {"0999-999"},
+                {"0999-000"},
+                {"0998-111"},
+                {"0000-000"},
+                {"9999-001"},
+                {"9999-550"},
+                {"9999-999"},
+                {"9999-998"},
+                {"9999-000"}
         };
     }
 
     @Test(dataProvider = "indexes")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checking the validity of indexes if Billing and Shipping for Luxembourg are separated")
-    public void testCheckingValidityIndexesIfBillingAndShippingAreSeparated_LU(String indexes) {
+    @Description(value = "Test checking the validity of indexes for Portugal. Negative case")
+    public void testCheckingValidityIndexes_PT_NegativeCase(String indexes) {
         new CartAddress_page_Logic()
                 .fillingPostalCodeFieldJSForShipping(indexes)
-                .fillingPostalCodeFieldJSForBilling(indexes)
                 .nextBtnClick();
-        checkingContainsUrl("basket/payments");
-        new CartPayments_page_Logic().clickBtnReturnTheAddressPage();
+        cartAddress_page_logic.checkPresenceElement(cartAddress_page_logic.errorTooltipForShipping());
+        checkingContainsUrl("basket/address");
     }
 
     @AfterClass
