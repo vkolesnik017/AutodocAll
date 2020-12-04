@@ -46,7 +46,7 @@ public class QC_2950_CheckingDisplayOfGenericAlternativeNameInProductName {
                 .presenceAlternativeTitleForGeneric("215", "atd", "de");
         String alternativeTitle = catAlternativePage.getAlternativeTitle("135", "atd", "de");
         String titleOfFirstProduct = productSearchAwsPage.openProductSearchPage().getTitleOfFirstProduct(0);
-        productSearchAwsPage.selectCategory("135").selectFirstSearchFilter("no")
+        productSearchAwsPage.selectCategory("Dichtring, Ölablassschraube ( Seal, oil drain plug ) [135]").selectFirstSearchFilter("no")
                 .clickOnSearchButton().waitOfChangeTitleOfProduct(0, titleOfFirstProduct).goToProductCartByClickOnTitle(0);
         String brand = productPageAws.getTitleOfBrandProduct();
         String artNum = productPageAws.getArtNumOfProduct();
