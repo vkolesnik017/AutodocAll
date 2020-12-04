@@ -354,4 +354,12 @@ public class LKW_Category_car_list_page {
     SelenideElement oneImageOfProductTecDocListingBlock(int position) {
         return $x("(//div[@class='w_search no_margin']/preceding-sibling::li//div[@class='image']//span[2]/img)[" + position + "]");
     }
+
+    ElementsCollection genericsFromSideBar() {return $$x("//div[contains(text(),'Wählen Sie die gewünschte Teile-Kategorie')]/following-sibling::div/ul//li//span");}
+
+    SelenideElement forwardOfListing() {return $x("//span[@class='next'][1]/a");}
+
+    ElementsCollection attributeOfBtnAddedToBasket() { return $$x("//div[@class='count']/following-sibling::div");}
+
+    ElementsCollection productsFromListBlock() {return $$x("//ul[@class='list_products ']/li");}
 }

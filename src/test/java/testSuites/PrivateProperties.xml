@@ -10,9 +10,9 @@
         <classes>
             <class name="ATD.PrivateProperties.QC_2444_CheckingMarkingOfDangerousProductsAtFrontsInVariousFunctionalBlocks.QC_2445_CheckDisplayDangerousProductsBetweenAwsAndProductPage"/>
             <class name="ATD.PrivateProperties.QC_2444_CheckingMarkingOfDangerousProductsAtFrontsInVariousFunctionalBlocks.QC_2446_CheckingDisplayedLinkOnDangerousGoodsSafetyDataSheet"/>
-            <class name="ATD.PrivateProperties.QC_2444_CheckingMarkingOfDangerousProductsAtFrontsInVariousFunctionalBlocks.QC_2448_CheckDisplayAndClickOnDangerousProductsBlockOnListings"/>
+            <!--<class name="ATD.PrivateProperties.QC_2444_CheckingMarkingOfDangerousProductsAtFrontsInVariousFunctionalBlocks.QC_2448_CheckDisplayAndClickOnDangerousProductsBlockOnListings"/>-->
             <class name="ATD.PrivateProperties.QC_2444_CheckingMarkingOfDangerousProductsAtFrontsInVariousFunctionalBlocks.QC_2450_CheckDisplayingAndClickByDangerousProductsBlock"/>
-            <class name="ATD.PrivateProperties.QC_2444_CheckingMarkingOfDangerousProductsAtFrontsInVariousFunctionalBlocks.QC_2535_CheckDisplayAndClickOnDangerousProductsMarkingBlockInListings"/>
+            <!--<class name="ATD.PrivateProperties.QC_2444_CheckingMarkingOfDangerousProductsAtFrontsInVariousFunctionalBlocks.QC_2535_CheckDisplayAndClickOnDangerousProductsMarkingBlockInListings"/>-->
         </classes>
     </test>
 

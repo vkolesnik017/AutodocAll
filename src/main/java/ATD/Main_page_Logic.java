@@ -1447,6 +1447,7 @@ public class Main_page_Logic extends Main_page {
     public Main_page_Logic checkingTransitionToTheYoutube() {
         String youtubeUrl = youTubeImageTransition().getAttribute("url");
         youTubeImageTransition().click();
+        waitingWhileLinkBecomeExpected(youtubeUrl);
         url();
         Assert.assertEquals(youtubeUrl, url());
         back();
@@ -1457,6 +1458,7 @@ public class Main_page_Logic extends Main_page {
     public Main_page_Logic checkingTransitionToTheYoutubeClickOnTheLink() {
         String youtubeUrl = youTubeLinkTransition().getAttribute("url");
         youTubeLinkTransition().click();
+        waitingWhileLinkBecomeExpected(youtubeUrl);
         url();
         Assert.assertEquals(youtubeUrl, url());
         return this;
