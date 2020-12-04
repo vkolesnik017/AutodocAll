@@ -45,7 +45,7 @@ public class QC_2945_DisplayOfGenericAlternativeNameInProductName {
         catAlternativePage.openAlternativeCategoriesProductInAwsWithLogin();
         String alternativeTitle = catAlternativePage.getAlternativeTitle("85", "atd", "si");
         String titleOfFirstProduct = productSearchAwsPage.openProductSearchPage().getTitleOfFirstProduct(0);
-        productSearchAwsPage.openProductSearchPage().selectCategory("85").selectFirstSearchFilter("no")
+        productSearchAwsPage.openProductSearchPage().selectCategory("Streuscheibe, Nebelscheinwerfer ( Diffusing Lens, fog light ) [85]").selectFirstSearchFilter("no")
                 .clickOnSearchButton().waitOfChangeTitleOfProduct(0, titleOfFirstProduct).goToProductCartByClickOnTitle(0);
         String brand = productPageAws.getTitleOfBrandProduct();
         String id = productPageAws.getIdOfProduct();
