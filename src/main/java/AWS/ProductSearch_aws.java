@@ -145,13 +145,14 @@ public class ProductSearch_aws {
 
     @Step("select category. ProductSearch_aws")
     public ProductSearch_aws selectCategory(String idOfCategory) {
-        categoryFiled().setValue(idOfCategory).pressEnter();
+        categoryFiled().shouldBe(visible).setValue(idOfCategory).pressEnter();
         return this;
     }
 
     @Step("select first search filter. ProductSearch_aws")
     public ProductSearch_aws selectFirstSearchFilter(String filer) {
         firstSearchFilter().selectOptionByValue(filer);
+        firstSearchFilter().shouldHave(exactValue(filer));
         return this;
     }
 
