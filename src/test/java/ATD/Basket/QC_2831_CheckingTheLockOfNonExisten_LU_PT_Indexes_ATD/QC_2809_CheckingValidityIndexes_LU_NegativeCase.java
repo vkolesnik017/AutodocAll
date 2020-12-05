@@ -1,7 +1,6 @@
 package ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD;
 
 import ATD.CartAddress_page_Logic;
-import ATD.CartPayments_page_Logic;
 import ATD.Product_page_Logic;
 import Common.DataBase;
 import io.qameta.allure.Description;
@@ -15,48 +14,48 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.*;
-import static ATD.CommonMethods.checkingContainsUrl;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2824_CheckingValidityIndexes_PT {
+public class QC_2809_CheckingValidityIndexes_LU_NegativeCase {
 
-    private String mail = "QC_2824_autotestATD@mailinator.com";
+    private String mail = "QC_2809_autotestATD@mailinator.com";
+    private CartAddress_page_Logic cartAddress_page_logic = new CartAddress_page_Logic();
 
     @BeforeClass
     void setUp() throws SQLException {
         setUpBrowser(false, "chrome", "77.0");
-        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "PT","main","product32"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "LD", "main", "product32"));
         new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
                 .signIn(mail, password)
-                .chooseDeliveryCountryForShipping("PT")
-                .getZipMasksAndComparesWithExpectedForShipping("1111-111");
+                .chooseDeliveryCountryForShipping("LD")
+                .getZipMasksAndComparesWithExpectedForShipping("1111");
     }
 
     @DataProvider(name = "indexes")
     Object[] dataProviderProducts() {
         return new Object[][]{
-                {"1111-111"},
-                {"5264-345"},
-                {"9998-999"},
-                {"9989-000"},
-                {"1000-000"}
+                {"0001"},
+                {"0550"},
+                {"0999"},
+                {"0998"},
+                {"0000"}
         };
     }
 
     @Test(dataProvider = "indexes")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checking the validity of indices if Billing and Shipping for Portugal are separated")
-    public void testCheckingValidityIndexesIfBillingAndShippingAreSeparated_PT(String indexes) {
+    @Description(value = "Test checking the validity of indexes for Luxembourg. Negative case")
+    public void testCheckingValidityIndexes_LU_NegativeCase(String indexes) {
         new CartAddress_page_Logic()
                 .fillingPostalCodeFieldJSForShipping(indexes)
                 .nextBtnClick();
-        checkingContainsUrl("basket/payments");
-        new CartPayments_page_Logic().clickBtnReturnTheAddressPage();
+        cartAddress_page_logic.checkPresenceElement(cartAddress_page_logic.errorTooltipForShipping());
+        checkingContainsUrl("basket/address");
     }
 
     @AfterClass
@@ -64,4 +63,3 @@ public class QC_2824_CheckingValidityIndexes_PT {
         closeWebDriver();
     }
 }
-
