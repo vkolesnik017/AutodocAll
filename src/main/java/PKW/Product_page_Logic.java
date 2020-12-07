@@ -33,6 +33,7 @@ public class Product_page_Logic extends Product_page {
             closeBtnOfPopupOtherCategory().click();
             closeBtnOfPopupOtherCategory().shouldBe(not(visible));
         } catch (ElementNotFound ignored) {
+            System.out.println("Popup is not found");
         }
         return this;
     }
@@ -43,6 +44,7 @@ public class Product_page_Logic extends Product_page {
             closeBtnOFPopupReview().click();
             closeBtnOFPopupReview().shouldBe(not(visible));
         } catch (ElementNotFound ignored) {
+            System.out.println("Popup is not found");
         }
         return this;
     }
