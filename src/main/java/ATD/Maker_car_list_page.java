@@ -110,4 +110,26 @@ public class Maker_car_list_page {
     ElementsCollection allBtnAddToBasketOfTopProducts() {return $$x("//div[@class='top-small-products top-small-products--shortened']//div[@class='small-product-button price_box ']/a");}
 
     ElementsCollection genericsOfTopProducts() {return $$x("//div[@class='top-small-products top-small-products--shortened']//div[@class='small-product-button price_box ']");}
+
+    SelenideElement topCategoriesBlock() {
+        return $x("//div[@class='list blocks']");
+    }
+
+    SelenideElement btnNextInTopCategoriesBlock() {
+        return $x("//div[@class='list blocks']//button[@aria-label='Next']");
+    }
+
+    SelenideElement btnPreviousInTopCategoriesBlock() {
+        return $x("//div[@class='list blocks']//button[@aria-label='Previous']");
+    }
+
+    public ElementsCollection overCategoriesInTopCategoriesBlock() {
+        return $$x("//div[@class='list blocks']//div[@class='title']");
+    }
+
+    public ElementsCollection categoriesInTopCategoriesBlock() {
+        return $$x("//div[@class='slick-list draggable']//span[@class='link ga-click']");
+    }
+
+
 }

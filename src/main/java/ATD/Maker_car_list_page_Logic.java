@@ -3,23 +3,23 @@ package ATD;
 import AWS.ProductCard_aws;
 import Common.DataBase;
 import Common.Excel;
+import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.SelenideElement;
 import files.Product;
 import io.qameta.allure.Step;
-import org.apache.http.util.Asserts;
 import org.testng.Assert;
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-
 import static ATD.CommonMethods.*;
 import static PKW.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.sleep;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class Maker_car_list_page_Logic extends Maker_car_list_page {
@@ -323,6 +323,50 @@ public class Maker_car_list_page_Logic extends Maker_car_list_page {
             Assert.assertEquals(parentFromFront, parentFromExcel);
         }
         return this;
+    }
+
+    @Step("Check presence top categories block. Maker_car_list_page")
+    public Maker_car_list_page_Logic checkPresenceTopCategoriesBlock() {
+        topCategoriesBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Get name overCategories/categories  from top categories block . Maker_car_list_page")
+    public ArrayList<String> getCategoriesFromTopCategories(ElementsCollection element) {
+        btnPreviousInTopCategoriesBlock().click();
+        ArrayList<String> categories = new ArrayList<>();
+        for (SelenideElement category : element) {
+            if (!category.isDisplayed()) {
+                btnNextInTopCategoriesBlock().click();
+                sleep(1000);
+            }
+            String nameCategory = category.getText();
+            categories.add(nameCategory);
+        }
+        System.out.println(categories.size() + " = " + categories);
+        return categories;
+    }
+
+
+    @Step("Check the correct display overCategorie/categories between top categories block and excel. Maker_car_list_page")
+    public Maker_car_list_page_Logic checkDisplayCategoriesBetweenTopCategoriesAndExcel(List<String> overCategories, List<String> categories, String file) {
+        List<String> overCategoriesExcel;
+        List<String> categoriesExcel;
+        overCategoriesExcel = new Excel().readFromExcel(file, 0);
+        categoriesExcel = new Excel().readFromExcel(file, 1);
+
+        for (int i = 0; i < overCategories.size(); i++) {
+            String overCategoryFromFront = overCategories.get(i);
+            String overCategoryFromExcel = overCategoriesExcel.get(i);
+            Assert.assertEquals(overCategoryFromFront, overCategoryFromExcel);
+        }
+        for (int x = 0; x < categories.size(); x++) {
+            String categoryFromFront = categories.get(x);
+            String categoryFromExcel = categoriesExcel.get(x);
+            Assert.assertEquals(categoryFromFront, categoryFromExcel);
+        }
+        return this;
+
     }
 
 
