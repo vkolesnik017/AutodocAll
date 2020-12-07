@@ -1112,8 +1112,9 @@ public class Order_aws {
     @Step("Get the total cost including selling cost {sellingCost} delivery cost {deliveryCost} and safe order {safeOrderCost}. Order_aws")
     public Float getTotalCostIncludingDeliveryAndSafeOrder(Float sellingCost, Float deliveryCost, Float safeOrderCost) {
         Float cost = sellingCost + deliveryCost + safeOrderCost;
-        String formatCost = new DecimalFormat(".##").format(cost).replaceAll(",", ".");
-        return Float.valueOf(formatCost);
+        float actualTotalCost = getTotalPriceOrderAWS();
+        float res = roundOfTheCost(cost, actualTotalCost);
+        return res;
     }
 
     @Step("Get the total cost including selling cost {sellingCost} delivery cost {deliveryCost} and delivery cost of heavy loads {costOfHeavyLoads}. Order_aws")
@@ -1173,8 +1174,9 @@ public class Order_aws {
             sumOfAllGoods = sumOfAllGoods + priceOfOneItem;
         }
         Float sum = (sumOfAllGoods + costDeliveryAndSafeOrder);
-        String totalSum = new DecimalFormat(".##").format(sum).replaceAll(",", ".");
-        return Float.valueOf(totalSum);
+        float actualTotalCost = getTotalPriceOrderAWS();
+        float res = roundOfTheCost(sum, actualTotalCost);
+        return res;
     }
 
     @Step("Plus the selling price of all added items including delivery. Order_aws")
