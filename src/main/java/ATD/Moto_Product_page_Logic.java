@@ -401,7 +401,7 @@ public class Moto_Product_page_Logic extends Moto_Product_page {
     }
 
     @Step(": from. Moto_Product_page")
-    public AutodocClub_page clickBannerAutodocClub() {
+    public AutodocClub_page_Logic clickBannerAutodocClub() {
         return new Product_page_Logic().clickBannerAutodocClub();
     }
 

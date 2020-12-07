@@ -1101,10 +1101,10 @@ public class Product_page_Logic extends Product_page {
     }
 
     @Step("Click banner autodoc club. Product_page")
-    public AutodocClub_page clickBannerAutodocClub() {
+    public AutodocClub_page_Logic clickBannerAutodocClub() {
         bannerAutodocClub().scrollIntoView("{block: \"center\"}").shouldBe(visible);
         bannerAutodocClub().click();
-        return page(AutodocClub_page.class);
+        return page(AutodocClub_page_Logic.class);
     }
 
     @Step("get url autodoc club from banner autodoc club. Product_page")

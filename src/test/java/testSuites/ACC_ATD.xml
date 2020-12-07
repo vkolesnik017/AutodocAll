@@ -36,6 +36,7 @@
             <class name="ATD.ACC.QC_836_MainAccessories.QC_988_FeatureBlock"/>
             <class name="ATD.ACC.QC_836_MainAccessories.QC_991_DeliveryBlock"/>
             <class name="ATD.ACC.QC_836_MainAccessories.QC_2661_Lack4xxAnd3xxServerResponsesWhenMovingToCategory"/>
+            <class name="ATD.ACC.QC_836_MainAccessories.QC_2775_PresenceAndWorkBreadCrumbs"/>
         </classes>
     </test>
 
