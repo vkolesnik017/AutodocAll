@@ -155,7 +155,6 @@ public class Tyres_dimension_page_Logic extends Tyres_dimension_page {
         return this;
     }
 
-
     @Step("get title of selected brand. Tyres_dimension_page")
     public String getTitleOfSelectedBrand() {
         return anySelectedBrand().shouldBe(visible).getAttribute("data-value");
@@ -164,6 +163,35 @@ public class Tyres_dimension_page_Logic extends Tyres_dimension_page {
     @Step("presence of expected selected brand. Tyres_dimension_page")
     public Tyres_dimension_page_Logic presenceOfExpectedSelectedBrand(String titleOfBrand) {
         anySelectedBrand().shouldBe(visible).shouldHave(attribute("data-value", titleOfBrand));
+        return this;
+    }
+
+    @Step("check сounter on decrease and increase. Tyres_dimension_page")
+    public Tyres_dimension_page_Logic checkCounterOnDecreaseAndIncrease() {
+        new CommonMethods().checkingCounterIncrease(1, productQuantity().get(0), btnPlusInQuantityCounter().get(0));
+        new CommonMethods().checkingCounterDecrease(1, productQuantity().get(0), btnMinusInQuantityCounter().get(0));
+        return this;
+    }
+
+    @Step("default count of product. Tyres_dimension_page")
+    public Tyres_dimension_page_Logic defaultCountOfProduct(int expectedValue) {
+        int defaultValue = Integer.parseInt(counterOfProduct().get(0).shouldBe(visible).attr("value"));
+        Assert.assertEquals(defaultValue, expectedValue);
+        return this;
+    }
+
+
+    @Step("check min count of buy product. Tyres_dimension_page")
+    public Tyres_dimension_page_Logic minCountOfBuyProduct(int expectedValue) {
+        int startValue = Integer.parseInt(productQuantity().get(0).getValue());
+
+        while (!(startValue == expectedValue)) {
+            btnMinusInQuantityCounter().get(0).click();
+            startValue--;
+        }
+        btnMinusInQuantityCounter().get(0).click();
+        Assert.assertEquals(Integer.parseInt(productQuantity().get(0).getValue()), expectedValue);
+
         return this;
     }
 }

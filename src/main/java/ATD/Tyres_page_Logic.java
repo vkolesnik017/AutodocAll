@@ -56,6 +56,12 @@ public class Tyres_page_Logic extends Tyres_page {
         return this;
     }
 
+    @Step("Select Diameter. Tyres_page")
+    public Tyres_page_Logic selectDiameterInSelector(String diameter) {
+        diameterDropdown().selectOptionByValue(diameter);
+        return this;
+    }
+
     @Step("Click Submit Tyres Selector. Tyres_page")
     public TyresListing_page_Logic clickSubmitTyresSelector() {
         submitTyresSelectorButton().click();
@@ -600,7 +606,7 @@ public class Tyres_page_Logic extends Tyres_page {
         String mainTitle = mainHeadline().shouldBe(visible).getText();
         checkTransitionsOfVisibleLinkingBlock(url, mainTitle);
         /*ВРЕМЕННО ОТКЛЮЧЕНА ПРОВЕРКА*/
-    //    checkTransitionsOfLastLinkingBlock(url, mainTitle);
+        //    checkTransitionsOfLastLinkingBlock(url, mainTitle);
         return this;
     }
 

@@ -880,6 +880,15 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         }
         return this;
     }
+
+    @Step("select any visible brands. LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic selectAnyVisibleBrands(int countOfBrands) {
+        for (int i = 0; i < countOfBrands; i++) {
+            activeBrands().get(0).shouldBe(visible).click();
+            appearsOfLoader();
+        }
+        return this;
+    }
 }
 
 
