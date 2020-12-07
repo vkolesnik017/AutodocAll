@@ -101,6 +101,7 @@
     <test name="QC_2672_GeneralBasketFunctionality_ATD">
         <classes>
             <class name="ATD.Basket.QC_2672_GeneralBasketFunctionality_ATD.QC_2673_BasketSteps_ATD"/>
+            <class name="ATD.Basket.QC_2672_GeneralBasketFunctionality_ATD.QC_1553_ReconciliationOfCurrencies"/>
         </classes>
     </test>
 

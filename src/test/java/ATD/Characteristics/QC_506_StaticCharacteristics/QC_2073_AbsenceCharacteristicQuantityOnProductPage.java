@@ -1,4 +1,4 @@
-package ATD.Characteristics.QC_2072_VerificationOfRemovalCharacteristicQuantityOnFrontsForFEBIandSWAG;
+package ATD.Characteristics.QC_506_StaticCharacteristics;
 
 
 import ATD.Product_page_Logic;

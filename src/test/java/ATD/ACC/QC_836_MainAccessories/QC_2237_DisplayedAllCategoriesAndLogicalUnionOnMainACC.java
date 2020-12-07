@@ -1,4 +1,4 @@
-package ATD.ACC.QC_2235_DisplayedAllCategoriesAndLogicalUnion;
+package ATD.ACC.QC_836_MainAccessories;
 
 import ATD.Index_accessories_page_Logic;
 import Common.SetUp;
