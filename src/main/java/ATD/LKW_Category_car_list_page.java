@@ -362,4 +362,6 @@ public class LKW_Category_car_list_page {
     ElementsCollection attributeOfBtnAddedToBasket() { return $$x("//div[@class='count']/following-sibling::div");}
 
     ElementsCollection productsFromListBlock() {return $$x("//ul[@class='list_products ']/li");}
+
+    ElementsCollection activeBrands() {return $$x("//div[@class='slick-track']//*[self::li[@class='slick-slide slick-current slick-active'] or self::li[@class='slick-slide slick-active']]//label");}
 }
