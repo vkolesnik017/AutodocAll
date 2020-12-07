@@ -845,4 +845,10 @@ public class Product_page {
     ElementsCollection fullValueOfApplicabilityVehicle() {return $$x("//div[@class='accordion-content']//b");}
 
     ElementsCollection visibleCharacteristic() {return $$x("//div[@class='product-block__description__info']/ul/li").filter(visible);}
+
+    SelenideElement bannerAutodocClub() {
+        return $x("//span[@class='club-link utm_link link']");
+    }
+
+
 }
