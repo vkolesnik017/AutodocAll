@@ -33,7 +33,7 @@ public class QC_2472_Ideal_PKW {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "route", parallel = false)
+    @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
         return new SetUp("PKW").setUpShopWithSubroutes("prod", "NL", "main", "product9");
     }
