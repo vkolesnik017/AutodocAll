@@ -1,4 +1,4 @@
-package ATD.Pricing;
+package ATD.Basket.QC_2672_GeneralBasketFunctionality_ATD;
 
 import ATD.Cart_page_Logic;
 import ATD.Main_page_Logic;
@@ -81,8 +81,8 @@ public class QC_1553_ReconciliationOfCurrencies {
                 .checkCurrencyOnAllDataPage(shop);
     }
 
-    @DataProvider(name = "routeAndProductsIdForCH", parallel = false)
-    Object[] dataProviderForCH() throws SQLException {
+    @DataProvider(name = "routeAndProductsIdForCH")
+    Object[] dataProviderForCH() {
         return new SetUp("ATD").setUpShopWithListParam("prod", "CH", productsId);
     }
 

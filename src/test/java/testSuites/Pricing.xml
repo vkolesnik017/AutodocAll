@@ -8,8 +8,6 @@
 
     <test name="Pricing">
         <classes>
-            <class name="ATD.Pricing.QC_1553_ReconciliationOfCurrencies">
-            </class>
         </classes>
     </test>
 

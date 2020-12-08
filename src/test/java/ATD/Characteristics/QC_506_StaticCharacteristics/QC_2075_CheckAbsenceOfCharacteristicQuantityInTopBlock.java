@@ -1,4 +1,4 @@
-package ATD.Characteristics.QC_2072_VerificationOfRemovalCharacteristicQuantityOnFrontsForFEBIandSWAG;
+package ATD.Characteristics.QC_506_StaticCharacteristics;
 
 import ATD.Category_name_brand_page_Logic;
 import Common.SetUp;

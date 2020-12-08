@@ -31,6 +31,7 @@
 
     <test name="QC_2741_ProductPage_CarRoute">
         <classes>
+            <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_1969_CheckPresenceTheBlockLawECEOnLightBulbPage"/>
             <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_2945_DisplayOfGenericAlternativeNameInProductName"/>
         </classes>
     </test>

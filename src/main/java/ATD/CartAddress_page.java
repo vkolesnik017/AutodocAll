@@ -49,7 +49,7 @@ public class CartAddress_page {
         return $(byId("form_lUmsatzId"));
     }
 
-    SelenideElement postalCodeFieldForShipping() {
+    public SelenideElement postalCodeFieldForShipping() {
         return $(By.id("form_lPlz"));
     }
 
@@ -97,7 +97,7 @@ public class CartAddress_page {
         return $(byXpath("//*[@name='rLand']//*[@data-code='" + country + "']"));
     }
 
-    SelenideElement postalCodeFieldForBilling() {
+    public SelenideElement postalCodeFieldForBilling() {
         return $(By.id("form_rPlz"));
     }
 
