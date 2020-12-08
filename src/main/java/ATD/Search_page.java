@@ -318,5 +318,7 @@ public class Search_page {
 
     SelenideElement titleOfProductWithArtNum(String artNum) {return $x("//span[contains(text(),'Artikelnummer')]/span/span[contains(text(),'"+artNum+"')]/ancestor::span/../a");}
 
+    ElementsCollection importantOptionsOfProduct(int positionOfProduct) {return $$x("(//ul[@class='criteria'])["+positionOfProduct+"]/li/span[1]");}
+
 }
 

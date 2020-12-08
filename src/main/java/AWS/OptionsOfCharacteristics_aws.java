@@ -46,14 +46,14 @@ public class OptionsOfCharacteristics_aws {
 
     private ElementsCollection idFromMainOptionsColumn() {return $$x("//td[@class='w-400']//tr//td[2]/input[@data-old-value='1']/ancestor::tr/td[@class='w-40']");}
 
-    @Step("open alternative categories page in aws")
+    @Step("open alternative categories page in aws. OptionsOfCharacteristics_aws")
     public OptionsOfCharacteristics_aws openOptionsOfCharacteristicsInAwsWithLogin() {
         open(currencyOptionsPageURL);
         new Login_aws().loginInAws();
         return this;
     }
 
-    @Step("select Skin")
+    @Step("select Skin. OptionsOfCharacteristics_aws")
     public OptionsOfCharacteristics_aws setSkin() {
         skinField().shouldBe(visible).click();
         dropMenuOfSkinField().shouldBe(visible);
@@ -62,20 +62,20 @@ public class OptionsOfCharacteristics_aws {
         return this;
     }
 
-    @Step("select Skin")
+    @Step("select Skin. OptionsOfCharacteristics_aws")
     public OptionsOfCharacteristics_aws setGeneric(String generic) {
         genericField().shouldBe(visible).click();
         searchGenericField().shouldBe(visible).setValue(generic).pressEnter();
         return this;
     }
 
-    @Step("click Search")
+    @Step("click Search. OptionsOfCharacteristics_aws")
     public OptionsOfCharacteristics_aws clickSearch() {
         btnSearch().click();
         return this;
     }
 
-    @Step("get id of main parameters")
+    @Step("get id of main parameters. OptionsOfCharacteristics_aws")
     public List<String> getIdMainParameters() {
       List<String> idOfMainParameters =idFromMainOptionsColumn().stream().map(n->n.getText()).collect(Collectors.toList());
         return idOfMainParameters;
