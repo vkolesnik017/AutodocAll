@@ -142,7 +142,6 @@
             <class name="ATD.Tyres.QC_1367_TyresProductPage.QC_1370_TestTransitionToListingFromTyresProductPageBySizeSelector"/>
             <class name="ATD.Tyres.QC_1367_TyresProductPage.QC_1371_TestPhotoBlockPresenceOnTyresProductPage"/>
             <class name="ATD.Tyres.QC_1367_TyresProductPage.QC_1372_TestProductTitlePresenceOnTyresProductPage"/>
-            <class name="ATD.Tyres.QC_1367_TyresProductPage.QC_1373_TestCharacteristicsBlockOnTyresProductPage"/>
             <class name="ATD.Tyres.QC_1367_TyresProductPage.QC_1374_TestRatingBlockPresenceOnTyresProductPage"/>
             <class name="ATD.Tyres.QC_1367_TyresProductPage.QC_1375_TestProductPricePresenceOnTyresProductPage"/>
             <class name="ATD.Tyres.QC_1367_TyresProductPage.QC_1376_TestDeliveryLinkPresenceOnTyresProductPage"/>
