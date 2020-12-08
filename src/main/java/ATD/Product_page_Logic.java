@@ -12,8 +12,6 @@ import io.qameta.allure.Step;
 import org.testng.Assert;
 
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +19,7 @@ import java.util.Random;
 import java.util.stream.Collectors;
 
 import static ATD.CommonMethods.*;
+import static Common.CommonMethods.roundOfTheCost;
 import static PKW.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.CollectionCondition.sizeLessThan;
@@ -801,18 +800,7 @@ public class Product_page_Logic extends Product_page {
 
     @Step("Checks product price on site matches price on alldata page including VAT. Product_page")
     public Product_page_Logic checkProductPriceOnSitesMatchesPriceOnAllDataPageIncludingVat(Float priceWithVatPerAllDataPage, Float priceProductPerProductPage) {
-        BigDecimal result = new BigDecimal(priceWithVatPerAllDataPage);
-        BigDecimal formatPriceUp = result.setScale(2, RoundingMode.UP);
-        float roundMax = Float.parseFloat(String.valueOf(formatPriceUp));
-        BigDecimal formatPriceDOWN = result.setScale(2, RoundingMode.FLOOR);
-        float roundMin = Float.parseFloat(String.valueOf((formatPriceDOWN)));
-        float res = 0.0f;
-        if (priceProductPerProductPage.equals(roundMax)) {
-            res = roundMax;
-        }
-        if (priceProductPerProductPage.equals(roundMin)) {
-            res = roundMin;
-        }
+        float res = roundOfTheCost(priceWithVatPerAllDataPage, priceProductPerProductPage);
         Assert.assertEquals(res, priceProductPerProductPage);
         return this;
     }

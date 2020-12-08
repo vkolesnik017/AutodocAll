@@ -19,7 +19,7 @@ import static ATD.CommonMethods.password;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2855_CheckingBAnOnEnteringNonexistentIndexWhenEditingOrderInAWS_PT {
+public class QC_2855_CheckingBanOnEnteringNonexistentIndexWhenEditingOrderInAWS_PT {
 
     private String mail = "QC_2855_autotestATD@mailinator.com";
     private Order_aws order_aws = new Order_aws();

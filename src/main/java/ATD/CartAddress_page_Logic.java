@@ -556,6 +556,12 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return this;
     }
 
+    @Step("Checks absence element {expectedElement}. CartAddress_page")
+    public CartAddress_page_Logic checkAbsenceElement(SelenideElement expectedElement) {
+        expectedElement.shouldNotBe(visible);
+        return this;
+    }
+
     @Step("Get zip mask and compares with expected {expectedMask} for Shipping. CartAddress_page")
     public CartAddress_page_Logic getZipMasksAndComparesWithExpectedForShipping(String expectedMask) {
         String zipMask = postalCodeFieldForShipping().getAttribute("placeholder");
