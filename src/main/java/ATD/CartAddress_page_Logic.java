@@ -139,7 +139,7 @@ public class CartAddress_page_Logic extends CartAddress_page {
 
 
     @Step("Checking correct text in input field. CartAddress_page")
-    private void checkCorrectTextAndFillInput(SelenideElement element, String correctText) {
+    public void checkCorrectTextAndFillInput(SelenideElement element, String correctText) {
         Configuration.fastSetValue = false;
         if (!element.getValue().equals(correctText)) {
             element.clear();
@@ -550,6 +550,12 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return this;
     }
 
+    @Step("Checks presence element {expectedElement}. CartAddress_page")
+    public CartAddress_page_Logic checkPresenceElement(SelenideElement expectedElement) {
+        expectedElement.shouldBe(visible);
+        return this;
+    }
+
     @Step("Get zip mask and compares with expected {expectedMask} for Shipping. CartAddress_page")
     public CartAddress_page_Logic getZipMasksAndComparesWithExpectedForShipping(String expectedMask) {
         String zipMask = postalCodeFieldForShipping().getAttribute("placeholder");
@@ -657,4 +663,14 @@ public class CartAddress_page_Logic extends CartAddress_page {
         fourthStep().shouldBe(visible);
         return this;
     }
+
+    @Step("Clear fields postal cod for billing and sipping block. CartAddress_page")
+    public CartAddress_page_Logic clearFieldsPostalCod() {
+        postalCodeFieldForShipping().shouldBe(visible).click();
+        checkCorrectTextAndFillInput(postalCodeFieldForShipping(), "");
+        postalCodeFieldForBilling().shouldBe(visible).click();
+        checkCorrectTextAndFillInput(postalCodeFieldForBilling(), "");
+        return this;
+    }
+
 }

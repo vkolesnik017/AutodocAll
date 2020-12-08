@@ -435,8 +435,6 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
         } else {
             titleOfProductWithArtNum(artNUm).shouldBe(visible).shouldHave(text(alternativeTitle));
         }
-
-
         return this;
     }
 }

@@ -28,7 +28,7 @@ public class QC_2469_PayPal_PKW {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "route", parallel = false)
+    @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
         return new SetUp("PKW").setUpShopsWithSubroute("prod", "DE,AT,BG,CH,CZ,DK,ES,FI,FR,GR,HU,IT,NL,NO,PL,PT,RO,SE,EN", "main", "product9");
     }

@@ -30,6 +30,11 @@
             <class name="ATD.Characteristics.QC_506_StaticCharacteristics.QC_2084_CheckOfIdentityOfMpnProductInAwsAndProductPage"/>
             <class name="ATD.Characteristics.QC_506_StaticCharacteristics.QC_2095_CheckMpnOfProductInListingBasketProductPage"/>
             <class name="ATD.Characteristics.QC_506_StaticCharacteristics.QC_2096_CheckMpnNumberInWishList"/>
+            <class name="ATD.Characteristics.QC_506_StaticCharacteristics.QC_2073_AbsenceCharacteristicQuantityOnProductPage"/>
+            <class name="ATD.Characteristics.QC_506_StaticCharacteristics.QC_2074_AbsenceQuantityForFebiBilsteinAndSwagInListing"/>
+            <class name="ATD.Characteristics.QC_506_StaticCharacteristics.QC_2075_CheckAbsenceOfCharacteristicQuantityInTopBlock"/>
+            <class name="ATD.Characteristics.QC_506_StaticCharacteristics.QC_2076_AbsenceQuantityForFEBIBILSTEINAndSWAGInBasket"/>
+            <class name="ATD.Characteristics.QC_506_StaticCharacteristics.QC_1373_TestCharacteristicsBlockOnTyresProductPage"/>
         </classes>
     </test>
 
@@ -43,18 +48,15 @@
 
     <test name="QC_2072_VerificationOfRemovalCharacteristicQuantityOnFrontsForFEBIandSWAG">
         <classes>
-            <class name="ATD.Characteristics.QC_2072_VerificationOfRemovalCharacteristicQuantityOnFrontsForFEBIandSWAG.QC_2073_AbsenceCharacteristicQuantityOnProductPage"/>
-            <class name="ATD.Characteristics.QC_2072_VerificationOfRemovalCharacteristicQuantityOnFrontsForFEBIandSWAG.QC_2074_AbsenceQuantityForFebiBilsteinAndSwagInListing"/>
-            <class name="ATD.Characteristics.QC_2072_VerificationOfRemovalCharacteristicQuantityOnFrontsForFEBIandSWAG.QC_2075_CheckAbsenceOfCharacteristicQuantityInTopBlock"/>
-            <class name="ATD.Characteristics.QC_2072_VerificationOfRemovalCharacteristicQuantityOnFrontsForFEBIandSWAG.QC_2076_AbsenceQuantityForFEBIBILSTEINAndSWAGInBasket"/>
+
         </classes>
     </test>
 
     <test name="QC_2387_CheckingCharacteristicConditionForProducts">
         <classes>
-            <class name="ATD.Characteristics.QC_2387_CheckingCharacteristicConditionForProducts.QC_2422_CheckingAbsenceCharacteristicZustandBrand3kWithDepositOnProductAndListingPage"/>
-<!--            <class name="ATD.Characteristics.QC_2387_CheckingCharacteristicConditionForProducts.QC_2423_CheckingAbsenceCharacteristicZustandOnRutCartForProduct3KBrandWithDeposit"/>-->
-            <class name="ATD.Characteristics.QC_2387_CheckingCharacteristicConditionForProducts.QC_2424_CheckingAbsenceCharacteristicZustandBrand3kWithDepositInMiniCard"/>
+           <!-- <class name="ATD.Characteristics.QC_2387_CheckingCharacteristicConditionForProducts.QC_2422_CheckingAbsenceCharacteristicZustandBrand3kWithDepositOnProductAndListingPage"/>
+            <class name="ATD.Characteristics.QC_2387_CheckingCharacteristicConditionForProducts.QC_2423_CheckingAbsenceCharacteristicZustandOnRutCartForProduct3KBrandWithDeposit"/>
+            <class name="ATD.Characteristics.QC_2387_CheckingCharacteristicConditionForProducts.QC_2424_CheckingAbsenceCharacteristicZustandBrand3kWithDepositInMiniCard"/>-->
         </classes>
     </test>
 

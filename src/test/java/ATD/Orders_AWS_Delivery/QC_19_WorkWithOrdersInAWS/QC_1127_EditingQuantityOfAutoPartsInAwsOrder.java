@@ -37,7 +37,7 @@ public class QC_1127_EditingQuantityOfAutoPartsInAwsOrder {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product2");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product32");
     }
 
     @Test(dataProvider = "route")

@@ -49,7 +49,7 @@ public class QC_2827_CheckingValidityIndexesIfBillingAndShippingAreSeparated_PT 
         @Test(dataProvider = "indexes")
         @Flaky
         @Owner(value = "Chelombitko")
-        @Description(value = "Test checking the validity of indices if Billing and Shipping for Portugal are separated")
+        @Description(value = "Test checking the validity of indexes if Billing and Shipping for Portugal are separated")
         public void testCheckingValidityIndexesIfBillingAndShippingAreSeparated_PT(String indexes) {
             new CartAddress_page_Logic()
                     .fillingPostalCodeFieldJSForShipping(indexes)

@@ -156,7 +156,7 @@ public class Listing_accessories_page {
 
     SelenideElement btnPlusInQuantityCounter() {
         return $x("//li[@data-id='0'][1]//a[@class='ga-click plus add']");
-    }
+}
 
     SelenideElement btnMinusInQuantityCounter() {
         return $x("//li[@data-id='0'][1]//a[@class='ga-click minus remove']");

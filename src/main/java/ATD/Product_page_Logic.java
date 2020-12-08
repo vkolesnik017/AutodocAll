@@ -1099,4 +1099,30 @@ public class Product_page_Logic extends Product_page {
         titleOfProduct().shouldBe(visible).shouldHave(text(alternativeTitle));
         return this;
     }
+
+    @Step("popup about the incompatibility of car and product. Product page")
+    public Product_page_Logic incompatibilityOfCarAndProductPopUp(String expectedText) {
+        infoPopUp().shouldBe(visible).shouldHave(text(expectedText));
+        return this;
+    }
+
+    @Step("visibility of car match block. Product page")
+    public Product_page_Logic visibilityOfCarMatchBlock(String car) {
+        infoBlockWithSelectedCar().shouldBe(visible).shouldHave(text(car));
+        return this;
+    }
+
+    @Step("Click banner autodoc club. Product_page")
+    public AutodocClub_page clickBannerAutodocClub() {
+        bannerAutodocClub().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        bannerAutodocClub().click();
+        return page(AutodocClub_page.class);
+    }
+
+    @Step("get url autodoc club from banner autodoc club. Product_page")
+    public String getUrlAutodocClubFromBannerAutodocClub() {
+        return bannerAutodocClub().getAttribute("url");
+    }
+
+
 }

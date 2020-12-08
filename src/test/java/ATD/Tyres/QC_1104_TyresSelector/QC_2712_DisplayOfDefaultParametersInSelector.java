@@ -34,7 +34,6 @@ public class QC_2712_DisplayOfDefaultParametersInSelector {
     public void testCheckDisplayOfDefaultParametersInSelector(String route) {
         openPage(route);
         new Tyres_page_Logic().defaultValuesOfSelector("205", "55", "16").checkOfSeasonSelector();
-        System.out.println();
     }
 
     @DataProvider(name = "routesOffRoad", parallel = true)

@@ -1,8 +1,7 @@
-package ATD.Tyres.QC_1367_TyresProductPage;
+package ATD.Tyres.QC_1104_TyresSelector;
 
-
+import ATD.Tyres_page_Logic;
 import Common.SetUp;
-import ATD.TyresProduct_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -17,8 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1373_TestCharacteristicsBlockOnTyresProductPage {
-
+public class QC_3012_PresenceOfTyresSizeInSelector {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -26,16 +24,20 @@ public class QC_1373_TestCharacteristicsBlockOnTyresProductPage {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyre_item");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres3");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "Romaniuta")
-    @Description(value = "Test Checks Characteristics Block On Tyres Product Page")
-    public void testCharacteristicsBlockOnTyresProductPage(String route) {
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test checks presence of tyres size in selector")
+    public void testCheckPresenceOfTyresSizeInSelector(String route) {
         openPage(route);
-        new TyresProduct_page_Logic().checkCharacteristicsBlock();
+        new Tyres_page_Logic()
+                .selectWidth("315")
+                .selectHeight("80")
+                .selectDiameterInSelector("22_5")
+                .defaultValuesOfSelector("315", "80", "22_5");
     }
 
     @AfterMethod

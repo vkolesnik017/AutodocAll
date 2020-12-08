@@ -7,7 +7,10 @@ import Common.DataBase;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
@@ -15,24 +18,22 @@ import static ATD.CommonMethods.*;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2825_CheckingValidityIndexesIfBillingAndShippingAreSeparated_LU {
+public class QC_2823_CheckingValidityIndexes_LU_PositiveCase {
 
-    private String mail = "QC_2825_autotestATD@mailinator.com";
+    private String mail = "QC_2823_autotestATD@mailinator.com";
 
     @BeforeClass
     void setUp() throws SQLException {
         setUpBrowser(false, "chrome", "77.0");
-        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "LD","main","product41"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "LD","main","product2"));
         new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
                 .signIn(mail, password)
                 .chooseDeliveryCountryForShipping("LD")
-                .clickCheckboxForOpenBilling()
-                .chooseDeliveryCountryForBilling("LD")
-                .getZipMasksAndComparesWithExpectedForShipping("1111")
-                .getZipMasksAndComparesWithExpectedForBilling("1111");
+                .getZipMasksAndComparesWithExpectedForShipping("1111");
+
     }
 
     @DataProvider(name = "indexes")
@@ -50,11 +51,10 @@ public class QC_2825_CheckingValidityIndexesIfBillingAndShippingAreSeparated_LU 
     @Test(dataProvider = "indexes")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checking the validity of indexes if Billing and Shipping for Luxembourg are separated")
-    public void testCheckingValidityIndexesIfBillingAndShippingAreSeparated_LU(String indexes) {
+    @Description(value = "Test checking the validity of indexes for Luxembourg. Positive case")
+    public void testCheckingValidityIndexes_LU_PositiveCase(String indexes) {
         new CartAddress_page_Logic()
                 .fillingPostalCodeFieldJSForShipping(indexes)
-                .fillingPostalCodeFieldJSForBilling(indexes)
                 .nextBtnClick();
         checkingContainsUrl("basket/payments");
         new CartPayments_page_Logic().clickBtnReturnTheAddressPage();

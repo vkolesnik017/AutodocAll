@@ -8,7 +8,6 @@
 
     <test name="Lamps">
         <classes>
-            <class name="ATD.Lamps.QC_1969_CheckPresenceTheBlockLawECEOnLightBulbPage"/>
         </classes>
     </test>
 

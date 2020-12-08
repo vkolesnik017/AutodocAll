@@ -1,7 +1,8 @@
-package ATD.Characteristics.QC_2072_VerificationOfRemovalCharacteristicQuantityOnFrontsForFEBIandSWAG;
+package ATD.Characteristics.QC_506_StaticCharacteristics;
 
-import ATD.Category_name_brand_page_Logic;
+
 import Common.SetUp;
+import ATD.TyresProduct_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -16,7 +17,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2075_CheckAbsenceOfCharacteristicQuantityInTopBlock {
+public class QC_1373_TestCharacteristicsBlockOnTyresProductPage {
 
     @BeforeClass
     void setUp() {
@@ -25,18 +26,16 @@ public class QC_2075_CheckAbsenceOfCharacteristicQuantityInTopBlock {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_name_brand3,category_name_brand4,category_maker_brand2,category_maker_brand3,category_group_brand2,category_group_brand3");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyre_item");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "Kolesnik")
-    @Description(value = "Checking for the absence of the characteristic 'quantity' 563 in the TOP block for FEBI BILSTEIN and SWAG brands")
-    public void testCheckAbsenceOfCharacteristicQuantityInTopBlockForFEBIBILSTEINAndSWAG(String route) {
+    @Owner(value = "Romaniuta")
+    @Description(value = "Test Checks Characteristics Block On Tyres Product Page")
+    public void testCharacteristicsBlockOnTyresProductPage(String route) {
         openPage(route);
-
-        new Category_name_brand_page_Logic()
-                .checkAbsenceOfQuantityCharacteristicInTopProducts();
+        new TyresProduct_page_Logic().checkCharacteristicsBlock();
     }
 
     @AfterMethod
