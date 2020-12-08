@@ -133,7 +133,10 @@
             <class name="ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD.QC_2845_ChecksAnErrorDisplayingWhenEnteredIndexDoesNotCorrespondTo_PT_mask_Front"/>
             <class name="ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD.QC_2846_ChecksAnErrorDisplayingWhenEnteredIndexDoesNotCorrespondTo_LU_mask_Front"/>
             <class name="ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD.QC_2807_CheckingTheDisplayOfErrorIfIndexFieldIsEmptyInBillingAndShippingBlocks_NegativeCase"/>
-            <class name="ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD.QC_2855_CheckingBAnOnEnteringNonexistentIndexWhenEditingOrderInAWS_PT"/>
+            <class name="ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD.QC_2855_CheckingBanOnEnteringNonexistentIndexWhenEditingOrderInAWS_PT"/>
+            <class name="ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD.QC_2820_CheckingBanOnEnteringNonexistentIndexWhenEditingOrderInFront_LU"/>
+            <class name="ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD.QC_2822_CheckingBanOnEnteringNonexistentIndexWhenEditingOrderInFront_PT"/>
+            <class name="ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD.QC_2853_CheckingBanOnEnteringNonexistentIndexWhenEditingOrderInAWS_LU"/>
         </classes>
     </test>
 
