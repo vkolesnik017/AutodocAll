@@ -1,4 +1,4 @@
-package ATD.Tyres.QC_1367_TyresProductPage;
+package ATD.Characteristics.QC_506_StaticCharacteristics;
 
 
 import Common.SetUp;

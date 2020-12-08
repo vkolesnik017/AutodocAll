@@ -3,11 +3,9 @@ package ATD;
 import AWS.ProductCard_aws;
 import io.qameta.allure.Step;
 import org.testng.Assert;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -314,7 +312,7 @@ public class LKW_Product_page_Logic extends LKW_Product_page {
     }
 
     @Step(": from. LKW_Product_page")
-    public AutodocClub_page clickBannerAutodocClub() {
+    public AutodocClub_page_Logic clickBannerAutodocClub() {
        return new Product_page_Logic().clickBannerAutodocClub();
     }
 

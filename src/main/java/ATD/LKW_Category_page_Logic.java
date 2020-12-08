@@ -8,7 +8,6 @@ import org.testng.Assert;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.CommonMethods.getTextFromUnVisibleElement;
@@ -396,6 +395,45 @@ public class LKW_Category_page_Logic extends LKW_Category_page {
             }
             Assert.assertEquals(attributeOfDangerousIcon, attributeOfWarningIcon);
         }
+        return this;
+    }
+
+
+    @Step("get url of TOP product.LKW_Category_page")
+    public String getUrlOfTopProduct(int positionOfProduct) {
+        return urlOfTopProduct().get(positionOfProduct).attr("href");
+    }
+
+
+    @Step("transition to product page by click on top image of product .LKW_Category_page")
+    public LKW_Category_page_Logic transitionToProductPageByClickOnTopImage(String url) {
+        clickOnImageOfTopProduct();
+        checkingContainsUrl(url);
+        back();
+        return this;
+    }
+
+
+    @Step("transition to product page by click on title of top product .LKW_Category_page")
+    public LKW_Category_page_Logic transitionToProductPageByClickOnTitleOfTopProduct(String url) {
+        if (closeCookiesPopUp().isDisplayed()) {
+            closeCookiesPopUp().click();
+        }
+        clickOnTitleOfTopProduct();
+        checkingContainsUrl(url);
+        back();
+        return this;
+    }
+
+
+    @Step("transition to product page by click on link Details .LKW_Category_page")
+    public LKW_Category_page_Logic transitionToProductPageByClickOnLinkDetails(String url) {
+        if (closeCookiesPopUp().isDisplayed()) {
+            closeCookiesPopUp().click();
+        }
+        clickOnLinkDetails();
+        checkingContainsUrl(url);
+        back();
         return this;
     }
 }

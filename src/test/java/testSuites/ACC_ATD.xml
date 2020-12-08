@@ -36,6 +36,8 @@
             <class name="ATD.ACC.QC_836_MainAccessories.QC_988_FeatureBlock"/>
             <class name="ATD.ACC.QC_836_MainAccessories.QC_991_DeliveryBlock"/>
             <class name="ATD.ACC.QC_836_MainAccessories.QC_2661_Lack4xxAnd3xxServerResponsesWhenMovingToCategory"/>
+            <class name="ATD.ACC.QC_836_MainAccessories.QC_2237_DisplayedAllCategoriesAndLogicalUnionOnMainACC"/>
+            <class name="ATD.ACC.QC_836_MainAccessories.QC_2775_PresenceAndWorkBreadCrumbs"/>
         </classes>
     </test>
 
@@ -208,7 +210,6 @@
 
     <test name="QC_2235_DisplayedAllCategoriesAndLogicalUnion">
         <classes>
-            <class name="ATD.ACC.QC_2235_DisplayedAllCategoriesAndLogicalUnion.QC_2237_DisplayedAllCategoriesAndLogicalUnionOnMainACC"/>
             <class name="ATD.ACC.QC_2235_DisplayedAllCategoriesAndLogicalUnion.QC_2248_DisplayedAllCategoriesAndLogicalUnionOnMainChemistry"/>
             <class name="ATD.ACC.QC_2235_DisplayedAllCategoriesAndLogicalUnion.QC_2249_DisplayedAllCategoriesAndLogicalUnionOnMainTools"/>
         </classes>
