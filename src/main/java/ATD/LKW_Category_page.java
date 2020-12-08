@@ -185,4 +185,6 @@ class LKW_Category_page {
     ElementsCollection dangerousIconInWarningPopUp() {return $$x("//div[@class='popup-dangerous__icon']").filter(visible);}
 
     ElementsCollection btnAddDangerousProductToWishList() {return $$x("//span[@class='dangerous-listing__show-more']/ancestor::div[@class='rec_products_block']/div[1]");}
+
+    ElementsCollection urlOfTopProduct() {return $$x("//div[@class='rec_products_image']/a");}
 }
