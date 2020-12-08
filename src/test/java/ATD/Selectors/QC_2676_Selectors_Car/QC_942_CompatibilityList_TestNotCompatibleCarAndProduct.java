@@ -1,4 +1,4 @@
-package ATD.ProductPage;
+package ATD.Selectors.QC_2676_Selectors_Car;
 
 
 import Common.DataBase;
@@ -16,7 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_951_CompatibilityList_TestIncompatibilityMessage {
+public class QC_942_CompatibilityList_TestNotCompatibleCarAndProduct {
 
     @BeforeClass
     void setUp() {
@@ -26,10 +26,10 @@ public class QC_951_CompatibilityList_TestIncompatibilityMessage {
     @Test
     @Flaky
     @Owner(value = "Romaniuta")
-    @Description(value = "Test checks incompatibility message")
-    public void testIncompatibilityMessage() throws SQLException {
-        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "maker_car_list7"));
-        new Product_page_Logic().checkIncompatibilityMessage();
+    @Description(value = "Test checks product compatibility with car")
+    public void testNotCompatibleCarAndProduct() throws SQLException {
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "product16"));
+        new Product_page_Logic().checkNotCompatibilityCarAndProduct();
     }
 
     @AfterMethod

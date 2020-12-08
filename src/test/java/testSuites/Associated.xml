@@ -17,6 +17,7 @@
 
     <test name="QC_790_AlternativeProductsOutputTecdoc">
         <classes>
+            <class name="ATD.Associated.QC_790_AlternativeProductsOutputTecdoc.QC_738_AnalogProductBlock"/>
             <class name="ATD.Associated.QC_790_AlternativeProductsOutputTecdoc.QC_791_MatchElementsInAlternativeBlockAndInProductPage"/>
         </classes>
     </test>

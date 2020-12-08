@@ -1,4 +1,4 @@
-package ATD.ProductPage;
+package ATD.ProductPage.QC_1908_ReviewsBlock;
 
 
 import Common.DataBase;
