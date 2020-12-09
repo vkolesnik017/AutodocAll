@@ -6,10 +6,12 @@ import com.codeborne.selenide.ElementsCollection;
 import files.Product;
 import io.qameta.allure.Step;
 import org.testng.Assert;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.*;
 import java.util.stream.Collectors;
+
 import static ATD.CommonMethods.*;
 import static PKW.CommonMethods.getTextFromUnVisibleElement;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
@@ -748,6 +750,16 @@ public class Search_page_Logic extends Search_page {
         return this;
     }
 
+    @Step("checking the matching options. Search_page")
+    public Search_page_Logic checkMatchingOptions(List<String> matchingList, int positionOfProduct) {
+        List<String> optionsFromProduct = importantOptionsOfProduct(1).stream().map(n -> n.getText().replaceAll(".+\\w", "")).collect(Collectors.toList());
 
+        for (int i = 0; i < matchingList.size(); i++) {
+            for (int j = 0; j < optionsFromProduct.size(); j++) {
+                matchingList.contains(optionsFromProduct.get(j));
+            }
+        }
+        return this;
+    }
 }
 

@@ -26,7 +26,6 @@ public class QC_1229_TransitionAtSearchVehicleInSelector {
     Object[] dataProvider() throws SQLException {
         return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil_search,motoroil_release,motoroil_viscosity");
     }
-
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")

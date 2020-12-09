@@ -1,4 +1,4 @@
-package ATD.Listings.QC_477_ListingSoft404;
+package ATD.Listings.QC_445_ListingTecDoc;
 
 import ATD.ListingTecDocSoft404_page_Logic;
 import Common.SetUp;

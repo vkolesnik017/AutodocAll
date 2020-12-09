@@ -18,6 +18,8 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_78_TransitionFromProductBLockToProductPage {
 
+    private LKW_Category_page_Logic categoryPage = new LKW_Category_page_Logic();
+
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -34,13 +36,14 @@ public class QC_78_TransitionFromProductBLockToProductPage {
     @Description(value = "Test check transition from Top product block to product page")
     public void testChecksTransitionToProductPage(String route) {
         openPage(route);
-        new LKW_Category_page_Logic()
-                .transitionToProductPageByClickOnTopImage()
-                .transitionToProductPageByClickOnTitleOfTopProduct()
-                .transitionToProductPageByClickOnLinkDetails();
+
+        String urlOfProduct = categoryPage.getUrlOfTopProduct(0);
+        categoryPage.transitionToProductPageByClickOnTopImage(urlOfProduct)
+                .transitionToProductPageByClickOnTitleOfTopProduct(urlOfProduct)
+                .transitionToProductPageByClickOnLinkDetails(urlOfProduct);
     }
 
-    @DataProvider(name = "routesMain", parallel = true)
+     @DataProvider(name = "routesMain", parallel = true)
     Object[] dataProviderMain() throws SQLException {
         return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_main,lkw_category_car_list11,lkw_maker_car_list2");
     }

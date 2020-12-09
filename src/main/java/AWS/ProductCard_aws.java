@@ -73,6 +73,7 @@ public class ProductCard_aws {
     private SelenideElement artNumOfProduct() {
         return $x("//td[contains(text(),'Артикль №.:')]/following-sibling::td");
     }
+
     ElementsCollection activeHazardStatement() {
         return $$x("//ul[@class='chzn-choices']/li[@class='search-choice']/span");
     }
@@ -95,6 +96,22 @@ public class ProductCard_aws {
 
     private ElementsCollection passportManagementForLanguage() {
         return $$x("//tbody[@class='hazardPassportTable']/tr//td[2]");
+    }
+
+    private SelenideElement language(String lang) {
+        return $x("//ul[@class='nav nav-tabs']/li/a[@data-lang-code='" + lang + "']");
+    }
+
+    private ElementsCollection staticIdOfCharacteristics() {
+        return $$x("//div[@id='de']//span[@class='param']/span[2][not(contains(text(),'-'))]/../../span[1]");
+    }
+
+    private ElementsCollection staticTitleOfCharacteristics() {
+        return $$x("//div[@id='de']//span[@class='param']/span[2][not(contains(text(),'-'))]/../span[1]");
+    }
+
+    private SelenideElement languageBlock(String language) {
+        return $(byId("" + language + ""));
     }
 
     String productId;
@@ -227,7 +244,7 @@ public class ProductCard_aws {
 
     @Step("get id of product. ProductCard_aws")
     public String getIdOfProduct() {
-        String id = url().replaceAll(".+\\/","");
+        String id = url().replaceAll(".+\\/", "");
         return id;
     }
 
@@ -246,5 +263,31 @@ public class ProductCard_aws {
     @Step("get price netto. ProductCard_aws")
     public Double getPriceNetto() {
         return Double.parseDouble(priceNetto().shouldBe(visible).getText());
+    }
+
+
+    @Step("set language. ProductCard_aws")
+    public ProductCard_aws setLanguage(String expectedLanguage) {
+        language(expectedLanguage).shouldBe(exist).click();
+        return this;
+    }
+
+    @Step("presence of language block. ProductCard_aws")
+    public ProductCard_aws presenceOfLanguageBlock(String expectedLanguage) {
+        languageBlock(expectedLanguage).shouldBe(visible).scrollIntoView("{block: \"center\"}");
+        return this;
+    }
+
+    @Step("get of matching options. ProductCard_aws")
+    public List<String> getOfMatchingOptions(List<String> id) {
+        List<String> matchingOptions = new ArrayList<>();
+        for (int i = 0; i < id.size(); i++) {
+            for (int j = 0; j < staticIdOfCharacteristics().size(); j++) {
+                if (id.get(i).equals(staticIdOfCharacteristics().get(j).getText())) {
+                    matchingOptions.add(staticTitleOfCharacteristics().get(j).getText());
+                }
+            }
+        }
+        return matchingOptions;
     }
 }

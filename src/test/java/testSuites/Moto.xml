@@ -39,7 +39,6 @@
     <test name="QC_889_SearchOnMotoSubdomain">
         <classes>
             <class name="ATD.MOTO.QC_889_SearchOnMotoSubdomain.QC_890_AvailabilityOfSearchingField"/>
-            <class name="ATD.MOTO.QC_889_SearchOnMotoSubdomain.QC_891_SearchByAnyCriteria"/>
         </classes>
     </test>
 
@@ -202,15 +201,13 @@
 
     <test name="QC_730_ProductPage">
         <classes>
-            <class name="ATD.MOTO.QC_730_ProductPage.QC_731_DynamicCharacteristic"/>
             <class name="ATD.MOTO.QC_730_ProductPage.QC_732_SelectingOfMotoSelector"/>
             <class name="ATD.MOTO.QC_730_ProductPage.QC_733_AddedProductToBasket"/>
             <class name="ATD.MOTO.QC_730_ProductPage.QC_734_CompatibleMotoBlock"/>
             <class name="ATD.MOTO.QC_730_ProductPage.QC_737_LackOfLinksInOenBlock"/>
-           <!-- <class name="ATD.MOTO.QC_730_ProductPage.QC_738_AnalogProductBlock"/>
-            <class name="ATD.MOTO.QC_730_ProductPage.QC_739_AddedAnalogProductToBasket"/>
-            <class name="ATD.MOTO.QC_730_ProductPage.QC_740_PresenceOfDetailInformationPopUp"/>
-            <class name="ATD.MOTO.QC_730_ProductPage.QC_741_BehaviorByClickOnImageOfAnalogProduct"/>-->
+            <!--   <class name="ATD.MOTO.QC_730_ProductPage.QC_739_AddedAnalogProductToBasket"/>
+              <class name="ATD.MOTO.QC_730_ProductPage.QC_740_PresenceOfDetailInformationPopUp"/>
+              <class name="ATD.MOTO.QC_730_ProductPage.QC_741_BehaviorByClickOnImageOfAnalogProduct"/>-->
         </classes>
     </test>
 

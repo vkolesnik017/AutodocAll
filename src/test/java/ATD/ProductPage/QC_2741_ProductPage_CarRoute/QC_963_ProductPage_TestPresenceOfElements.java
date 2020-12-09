@@ -1,4 +1,4 @@
-package ATD.ProductPage;
+package ATD.ProductPage.QC_2741_ProductPage_CarRoute;
 
 
 import ATD.CommonMethods;
@@ -16,7 +16,6 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.CommonMethods.openPage;
-import static ATD.CommonMethods.waitingWhileLinkBecomeExpected;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
@@ -38,7 +37,7 @@ public class QC_963_ProductPage_TestPresenceOfElements {
     @Description(value = "Test checks presence of elements on product page")
     public void testPresenceOfElements() throws SQLException {
         //steps in QC: 1
-        openPage("https://autodoc.de/" + dataBase.getRouteByRouteName("DE", "product13"));
+        openPage(dataBase.getFullRouteByRouteAndSubroute("prod", "DE", "main", "product13"));
         //2
         product_page_logic.carSelectorBlock().shouldBe(visible);
         //3
@@ -51,33 +50,31 @@ public class QC_963_ProductPage_TestPresenceOfElements {
         product_page_logic.breadcrumbsBlock().shouldBe(visible);
         //6
         product_page_logic.breadcrumbsBlock().shouldBe(visible);
-        product_page_logic.breadcrumbsCategoryDropdownButton().click();
-        product_page_logic.breadcrumbsFirstCategoryFromDropdown().click();
-        waitingWhileLinkBecomeExpected("https://www.autodoc.de/autoteile/bremsbelag-10130");
-        open("https://autodoc.de/" + dataBase.getRouteByRouteName("DE", "product13"));
+        product_page_logic.breadcrumbsCategoryDropdownButton().shouldBe(visible).click();
+        product_page_logic.breadcrumbsFirstCategoryFromDropdown().shouldBe(visible).click();
+        checkingContainsUrl("autoteile/bremsbelag-10130");
+        open(dataBase.getFullRouteByRouteAndSubroute("prod", "DE", "main", "product13"));
         //7
         product_page_logic.breadcrumbsBlock().shouldBe(visible);
-        product_page_logic.breadcrumbsCategoryButton().click();
-        waitingWhileLinkBecomeExpected("https://www.autodoc.de/autoteile/bremsscheibe-10132");
-        open("https://autodoc.de/" + dataBase.getRouteByRouteName("DE", "product13"));
-
+        product_page_logic.breadcrumbsCategoryButton().shouldBe(visible).click();
+        checkingContainsUrl("autoteile/bremsscheibe-10132");
+        open(dataBase.getFullRouteByRouteAndSubroute("prod", "DE", "main", "product13"));
         //8
         product_page_logic.breadcrumbsBlock().shouldBe(visible);
-        product_page_logic.breadcrumbsParentCategoryDropdownButton().click();
-        product_page_logic.breadcrumbsFirstParentCategoryFromDropdown().click();
-        waitingWhileLinkBecomeExpected("https://www.autodoc.de/autoteile/filter");
-        open("https://autodoc.de/" + dataBase.getRouteByRouteName("DE", "product13"));
+        product_page_logic.breadcrumbsParentCategoryDropdownButton().shouldBe(visible).click();
+        product_page_logic.breadcrumbsFirstParentCategoryFromDropdown().shouldBe(visible).click();
+        checkingContainsUrl("autoteile/ole-flussigkeiten");
+        open(dataBase.getFullRouteByRouteAndSubroute("prod", "DE", "main", "product13"));
         //9
         product_page_logic.breadcrumbsBlock().shouldBe(visible);
-        product_page_logic.breadcrumbsParentCategotyButton().click();
-        waitingWhileLinkBecomeExpected("https://www.autodoc.de/autoteile/bremsanlage");
-        open("https://autodoc.de/" + dataBase.getRouteByRouteName("DE", "product13"));
-
+        product_page_logic.breadcrumbsParentCategotyButton().shouldBe(visible).click();
+        checkingContainsUrl("autoteile/bremsanlage");
+        open(dataBase.getFullRouteByRouteAndSubroute("prod", "DE", "main", "product13"));
         //10
         product_page_logic.breadcrumbsBlock().shouldBe(visible);
         product_page_logic.breadcrumbsCatalogButton().click();
-        waitingWhileLinkBecomeExpected("https://www.autodoc.de/autoteile");
-        open("https://autodoc.de/" + dataBase.getRouteByRouteName("DE", "product13"));
+        checkingContainsUrl("autoteile");
+        open(dataBase.getFullRouteByRouteAndSubroute("prod", "DE", "main", "product13"));
         //4
         product_page_logic.featuresBlock().shouldBe(visible);
         product_page_logic.jahreIcon().shouldBe(visible).hover();
@@ -89,11 +86,11 @@ public class QC_963_ProductPage_TestPresenceOfElements {
         Assert.assertEquals(product_page_logic.safeOrderIconColor().getCssValue("color"), "rgba(51, 100, 219, 1)");
         product_page_logic.safeOrderPopup().shouldBe(visible);
         //11
-        product_page_logic.productImageBlock().shouldBe(visible);
+        product_page_logic.productImageBlock().scrollTo().shouldBe(visible);
         //12
-        product_page_logic.imageInSlider().click();
-        product_page_logic.productImageBlock().click();
-        product_page_logic.fullProductImage().shouldBe(visible);
+        product_page_logic.imageInSlider().shouldBe(visible).click();
+        product_page_logic.productImageBlock().shouldBe(visible).click();
+        product_page_logic.fullProductImage().waitUntil(visible, 5000);
         product_page_logic.closeFullImagePreview().click();
         //13
         product_page_logic.productImageSlider().shouldBe(visible);
@@ -107,11 +104,14 @@ public class QC_963_ProductPage_TestPresenceOfElements {
         product_page_logic.counterDecreaseForPaired("4");
         //17
         product_page_logic.brandButtonOnImage().click();
-        commonMethods.checkingUrlAndCloseTab("https://www.autodoc.de/autoteile/bremsscheibe-10132/mf-ridex");
+        commonMethods.checkingUrlAndCloseTab(dataBase.getFullRouteByRouteAndSubroute("prod", "DE", "main", "category_name_brand11"));
         //18
         product_page_logic.versandkostenButton().click();
-        waitingWhileLinkBecomeExpected("https://www.autodoc.de/services/versand");
-        open("https://autodoc.de/" + dataBase.getRouteByRouteName("DE", "product13"));
+        switchTo().window(1);
+        checkingContainsUrl("services/versand");
+        closeWindow();
+        switchTo().window(0);
+        open(dataBase.getFullRouteByRouteAndSubroute("prod", "DE", "main", "product13"));
         //19
         product_page_logic.raitingBlock().click();
         //20
@@ -120,22 +120,17 @@ public class QC_963_ProductPage_TestPresenceOfElements {
         product_page_logic.similarPropertiesBlock().shouldBe(visible);
         product_page_logic.linkInSimilarPropertiesBlock().click();
         product_page_logic.similarPropertiesBlock().waitUntil(visible, 3000);
-        checkingContainsUrl("https://www.autodoc.de/bosch/1165812");
-        open("https://autodoc.de/" + dataBase.getRouteByRouteName("DE", "product13"));
+        checkingContainsUrl("bosch/1165812");
+        open(dataBase.getFullRouteByRouteAndSubroute("prod", "DE", "main", "product13"));
         //23
         product_page_logic.paymentMethodsBlock().shouldBe(visible);
         //24
         product_page_logic.deliveryServicesBlock().shouldBe(visible);
         //25
-        product_page_logic.videoBlock().shouldBe(visible);
+       // product_page_logic.videoBlock().scrollTo().shouldBe(visible);
         //26
-        product_page_logic.pdfTutorialsBlock().shouldBe(visible);
+        product_page_logic.pdfTutorialsBlock().scrollTo().shouldBe(visible);
         product_page_logic.checkPdfLinksForDownload();
-        //22
-        product_page_logic.minicardsBlock().shouldBe(visible);
-        product_page_logic.tetleMiniCardBlock().scrollTo();
-        product_page_logic.productInMinicard().shouldBe(visible).hover();
-        product_page_logic.characteristicsInMinicard().shouldBe(visible);
     }
     @AfterMethod
     public void close() {

@@ -56,6 +56,7 @@
 
     <test name="QC_2676_Selectors_Car">
         <classes>
+            <class name="ATD.Selectors.QC_2676_Selectors_Car.QC_942_CompatibilityList_TestNotCompatibleCarAndProduct"/>
             <class name="ATD.Selectors.QC_2676_Selectors_Car.QC_3048_CheckTransitionOnProductWithNotCompatibleCar"/>
             <class name="ATD.Selectors.QC_2676_Selectors_Car.QC_670_CheckTransitionOnProductWithCompatibleCar"/>
         </classes>

@@ -1,4 +1,4 @@
-package ATD.ProductPage;
+package ATD.ProductPage.QC_2741_ProductPage_CarRoute;
 
 
 import Common.DataBase;
@@ -16,7 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_707_FAQ_TestFAQformValidationEmptyFields {
+public class QC_951_CompatibilityList_TestIncompatibilityMessage {
 
     @BeforeClass
     void setUp() {
@@ -26,13 +26,10 @@ public class QC_707_FAQ_TestFAQformValidationEmptyFields {
     @Test
     @Flaky
     @Owner(value = "Romaniuta")
-    @Description(value = "Test checks faq form validation with empty fields")
-    public void testInputValidationFAQ() throws SQLException {
-        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "product14"));
-        new Product_page_Logic().faqValidationEmptyFields()
-                                .faqValidationWithName()
-                                .faqValidationWithMail()
-                                .faqValidationWithMessage();
+    @Description(value = "Test checks incompatibility message")
+    public void testIncompatibilityMessage() throws SQLException {
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "maker_car_list7"));
+        new Product_page_Logic().checkIncompatibilityMessage();
     }
 
     @AfterMethod

@@ -1,6 +1,6 @@
-package ATD.MOTO.QC_730_ProductPage;
+package ATD.Search.QC_536_SearchBasicFunctionality;
 
-import ATD.Moto_Product_page_Logic;
+import ATD.Moto_main_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,7 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_731_DynamicCharacteristic {
+public class QC_891_SearchByAnyCriteria {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -24,21 +24,19 @@ public class QC_731_DynamicCharacteristic {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_product3");
-
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_main");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks dynamic characteristic")
-    public void testChecksDynamicCharacteristic(String route) {
+    @Description(value = "Test checks Search by any criteria")
+    public void testChecksSearchByAnyCriteria(String route) throws SQLException {
         openPage(route);
 
-        new Moto_Product_page_Logic()
-                .selectMotoInHorizontalSelector("4081", "14014", "113799")
-                .presenceOfMotoBrandAtInfoMessage("BMW MOTORCYCLES R")
-                .visibilityOfDynamicCharacteristicBlock();
+        new Moto_main_page_Logic()
+                .inputOfBrandInMainSearchField("Bosch")
+                .checkOfCurrentUrl("search24");
     }
 
     @AfterMethod

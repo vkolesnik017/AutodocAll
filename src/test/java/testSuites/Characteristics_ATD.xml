@@ -20,6 +20,7 @@
 
     <test name="QC_506_StaticCharacteristics">
         <classes>
+            <class name="ATD.Characteristics.QC_506_StaticCharacteristics.QC_731_DynamicCharacteristic"/>
             <class name="ATD.Characteristics.QC_506_StaticCharacteristics.QC_507_PresenceStaticCharacteristicOnProductPage"/>
             <class name="ATD.Characteristics.QC_506_StaticCharacteristics.QC_509_PresenceStaticCharacteristicsOnTecDocListing"/>
             <class name="ATD.Characteristics.QC_506_StaticCharacteristics.QC_511_PresenceStaticCharacteristicOnSearchListing"/>
