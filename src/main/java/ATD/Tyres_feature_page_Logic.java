@@ -229,7 +229,7 @@ public class Tyres_feature_page_Logic extends Tyres_feature_page {
         return this;
     }
 
-    @Step("check of season selector. Tyres_page")
+    @Step("check of season selector. Tyres_feature_page")
     public Tyres_feature_page_Logic checkOfSeasonSelector() {
         DateFormat dateFormat = new SimpleDateFormat("M");
         Date date = new Date();
