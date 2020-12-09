@@ -109,7 +109,7 @@ public class QC_1396_SplitBilling_FirmAndPhysicalPerson_DifferentCountries_Posit
 
     private Float regularProductPricePerAllDataPageDE,
             totalPriceDE, totalPriceAWSOrderDE, totalPriceInEmailDE, sellingPriceAWSOrderDE, unitPriceDE;
-    private String emailDE = "QC_1396_autotestDE@autodoc.si", vatForИУ, orderNumberDE;
+    private String emailDE = "QC_1396_autotestDE@autodoc.si", vatForDE, orderNumberDE;
 
     @DataProvider(name = "routeDE", parallel = true)
     Object[] dataProviderProductsDE() throws SQLException {

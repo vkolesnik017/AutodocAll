@@ -37,7 +37,7 @@ public class QC_1831_CheckingForExistingDeliveryServices {
     Object[] dataProviderProducts() {
         return new Object[][]{
                 {"GLS"},
-                /*{"DHL"},*/ //TODO вренно отключена проверка данного сервиса из за дефекта
+                /*{"DHL"},*/ //TODO временно отключена проверка данного сервиса из за дефекта SHOP-1494
                 {"NOX"},
                 {"POSTNORD"},
                 {"DPDPL"},

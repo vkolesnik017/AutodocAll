@@ -1,4 +1,4 @@
-package ATD.MOTO.QC_730_ProductPage;
+package ATD.Associated.QC_790_AlternativeProductsOutputTecdoc;
 
 import ATD.Moto_Product_page_Logic;
 import Common.SetUp;
