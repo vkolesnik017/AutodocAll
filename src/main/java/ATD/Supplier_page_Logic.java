@@ -140,8 +140,8 @@ public class Supplier_page_Logic extends Supplier_page {
     }
 
     @Step(": from. Supplier_page")
-    public Supplier_page_Logic compareTwoListsBetweenFrontAndAwsFrom(ArrayList listFront, ArrayList listAws, ArrayList groupRating){
-        new Category_car_list_page_Logic().compareTwoListsBetweenFrontAndAws(listFront, listAws, groupRating);
+    public Supplier_page_Logic compareTwoListsBetweenFrontAndAwsFrom(List listFront, List listAws){
+        new Category_car_list_page_Logic().compareTwoListsBetweenFrontAndAws(listFront, listAws);
         return this;
     }
 

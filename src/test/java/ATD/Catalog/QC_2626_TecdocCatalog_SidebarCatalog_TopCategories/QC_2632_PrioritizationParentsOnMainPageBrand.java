@@ -12,13 +12,15 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
+
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_2632_PrioritizationParentsOnMainPageBrand {
 
-    private ArrayList<String> parentFromBrandPage, parentFromAws, groupRating;
+    private List<String> parentFromBrandPage, parentFromAws, groupRating, sortedParentIdFromAwsByRating;
     private Supplier_page_Logic supplierPageLogic = new Supplier_page_Logic();
     private CatalogCategories_aws catalogCategoriesAws = new CatalogCategories_aws();
 
@@ -45,7 +47,8 @@ public class QC_2632_PrioritizationParentsOnMainPageBrand {
         parentFromBrandPage = supplierPageLogic.getIdListParentsFromBrandPage();
         parentFromAws = catalogCategoriesAws.getAllParentIdByGroupRating();
         groupRating = catalogCategoriesAws.getAllParentGroupRating();
-        supplierPageLogic.compareTwoListsBetweenFrontAndAwsFrom(parentFromBrandPage, parentFromAws, groupRating);
+        sortedParentIdFromAwsByRating = catalogCategoriesAws.createListAnyElementsByGroupRating(parentFromAws, groupRating);
+        supplierPageLogic.compareTwoListsBetweenFrontAndAwsFrom(parentFromBrandPage, sortedParentIdFromAwsByRating);
     }
 
     @AfterMethod

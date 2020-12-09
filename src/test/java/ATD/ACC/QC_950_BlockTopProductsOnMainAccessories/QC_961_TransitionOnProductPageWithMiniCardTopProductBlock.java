@@ -20,7 +20,6 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_961_TransitionOnProductPageWithMiniCardTopProductBlock {
 
-    private String nameCategory, nameTitle;
     private Index_accessories_page_Logic index_accessories_page_logic = new Index_accessories_page_Logic();
 
     @BeforeClass
@@ -30,7 +29,7 @@ public class QC_961_TransitionOnProductPageWithMiniCardTopProductBlock {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main","index_accessories");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main","index_accessories,index_accessories_group1");
     }
 
     @Test(dataProvider = "route")
@@ -39,9 +38,9 @@ public class QC_961_TransitionOnProductPageWithMiniCardTopProductBlock {
     @Description(value = "Test checking transition on product page when clicking on a goods in a block top products")
     public void testCheckingTransitionWithGoodsBlockTopProducts(String route) {
         openPage(route);
-        nameCategory = index_accessories_page_logic.getNameFirstProductInTop6Block();
+        String nameCategory = index_accessories_page_logic.getNameFirstProductInTop6Block();
         index_accessories_page_logic.clickOnFirstProductInTop6Block();
-        nameTitle = new Product_page_Logic().getTitleNameForProductPageAccessories();
+        String nameTitle = new Product_page_Logic().getTitleNameForProductPageAccessories();
         Assert.assertEquals(nameCategory, nameTitle);
 
     }

@@ -287,30 +287,12 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
         return idListParents;
     }
 
-    @Step("Compare two list with parent between front and Aws. Category_car_list_page")
-    public Category_car_list_page_Logic compareTwoListsBetweenFrontAndAws(List<String> listFront, List<String> listAws, List<String> groupRating) {
+    @Step("Compare two list  between front and Aws. Category_car_list_page")
+    public Category_car_list_page_Logic compareTwoListsBetweenFrontAndAws(List<String> listFront, List<String> listAws) {
 
         for (int i = 0; i < listFront.size(); i++) {
             if (!listFront.get(i).equals(listAws.get(i))) {
-                try {
-                    if (groupRating.get(i + 1).equals(groupRating.get(i))) {
-                        Assert.assertEquals(listFront.get(i), (listAws.get(i + 1)));
-                    } else if (groupRating.get(i - 1).equals(groupRating.get(i))) {
-                        Assert.assertEquals(listFront.get(i), (listAws.get(i - 1)));
-                    } else if (!listFront.contains(listAws.get(i))) {
-                        listAws.remove(listAws.get(i));
-                        groupRating.remove(groupRating.get(i));
-                        i--;
-                    } else {
-                        Assert.fail("Products not equals between front and aws!");
-                    }
-                } catch (IndexOutOfBoundsException x) {
-                    if (groupRating.get(i - 1).equals(groupRating.get(i))) {
-                        Assert.assertEquals(listFront.get(i), (listAws.get(i - 1)));
-                    } else {
-                        Assert.fail("Products not equals between front and aws!");
-                    }
-                }
+
             }
         }
         return this;
