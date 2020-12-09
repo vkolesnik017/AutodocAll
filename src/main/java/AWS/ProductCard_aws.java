@@ -102,12 +102,20 @@ public class ProductCard_aws {
         return $x("//ul[@class='nav nav-tabs']/li/a[@data-lang-code='" + lang + "']");
     }
 
+    private SelenideElement activeLanguageTab(String language) {
+        return $x("//li[@class='active']/a[@data-lang-code='" + language + "']");
+    }
+
     private ElementsCollection staticIdOfCharacteristics() {
         return $$x("//div[@id='de']//span[@class='param']/span[2][not(contains(text(),'-'))]/../../span[1]");
     }
 
     private ElementsCollection staticTitleOfCharacteristics() {
         return $$x("//div[@id='de']//span[@class='param']/span[2][not(contains(text(),'-'))]/../span[1]");
+    }
+
+    private ElementsCollection staticValuesOfCharacteristics() {
+        return $$x("//div[@id='de']//span[@class='param']/span[2][not(contains(text(),'-'))]");
     }
 
     private SelenideElement languageBlock(String language) {
@@ -269,6 +277,7 @@ public class ProductCard_aws {
     @Step("set language. ProductCard_aws")
     public ProductCard_aws setLanguage(String expectedLanguage) {
         language(expectedLanguage).shouldBe(exist).click();
+        activeLanguageTab(expectedLanguage).shouldBe(visible);
         return this;
     }
 
@@ -285,6 +294,19 @@ public class ProductCard_aws {
             for (int j = 0; j < staticIdOfCharacteristics().size(); j++) {
                 if (id.get(i).equals(staticIdOfCharacteristics().get(j).getText())) {
                     matchingOptions.add(staticTitleOfCharacteristics().get(j).getText());
+                }
+            }
+        }
+        return matchingOptions;
+    }
+
+    @Step("get values of matching options. ProductCard_aws")
+    public List<String> getValuesOfMatchingOptions(List<String> id) {
+        List<String> matchingOptions = new ArrayList<>();
+        for (int i = 0; i < id.size(); i++) {
+            for (int j = 0; j < staticIdOfCharacteristics().size(); j++) {
+                if (id.get(i).equals(staticIdOfCharacteristics().get(j).getText())) {
+                    matchingOptions.add(staticValuesOfCharacteristics().get(j).getText());
                 }
             }
         }
