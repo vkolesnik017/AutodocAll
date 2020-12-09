@@ -1067,10 +1067,16 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
+    @Step("presence of compatibility car. Product_page")
+    public Product_page_Logic presenceOfCompatibilityCar() {
+        compatibilityVehicleBlock().shouldBe(visible);
+        return this;
+    }
+
     @Step("click on Third bread crumb link. Product_page")
     public Category_car_list_page_Logic clickOnThirdBreadCrumbLink(int position) {
         breadcrumbsBlock().shouldBe(visible);
-        breadCrumbLinks().get(position).shouldBe(visible).click();
+        breadCrumbLinks().get(position).shouldBe(visible).hover().click();
         return page(Category_car_list_page_Logic.class);
     }
 
