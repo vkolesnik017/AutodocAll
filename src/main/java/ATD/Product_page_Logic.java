@@ -32,7 +32,7 @@ public class Product_page_Logic extends Product_page {
     @Step("Checks that links contain pdf file")
     public void checkPdfLinksForDownload() {
         for (int i = 0; i < pdfLinksForDownload().size(); i++) {
-            Assert.assertTrue(pdfLinksForDownload().get(i).attr("href").contains(".pdf"), "Document for tutorial downloading is not in .pdf format");
+            Assert.assertTrue(pdfLinksForDownload().get(i).attr("url").contains(".pdf"), "Document for tutorial downloading is not in .pdf format");
         }
     }
 
