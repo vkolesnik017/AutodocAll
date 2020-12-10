@@ -360,7 +360,7 @@ public class TyresListing_page_Logic extends TyresListing_page {
             String baseUrlWithDimension = baseUrl.replaceAll("\\d", "").replaceAll("\\/--r", "").replaceAll("\\/-zoll", "");
             String urlWithDimension = (baseUrlWithDimension + "/" + width + "-" + height + "-r" + diameter);
             waitingWhileLinkBecomeExpected(urlWithDimension);
-        } else if (routeName.equals("tyres_season_size") | routeName.equals("tyres_type_list")) {
+        } else if (routeName.equals("tyres_season_size") | routeName.equals("tyres_type_list") | routeName.equals("tyres_feature")) {
             checkingContainsUrl(width + "-" + height + "-r" + diameter);
         } else {
             String urlWithDimension = (baseUrl + "/" + width + "-" + height + "-r" + diameter);

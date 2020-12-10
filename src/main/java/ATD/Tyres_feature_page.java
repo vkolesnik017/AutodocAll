@@ -40,4 +40,20 @@ public class Tyres_feature_page {
     SelenideElement winterSeason() {return $(byId("winter-radio"));}
 
     SelenideElement summerSeason() {return $("summer-radio");}
+
+    SelenideElement allSizesButtonInSizeBlock() {
+        return $x("//div[@class='tyre-size-block-button']/a");
+    }
+
+    SelenideElement brandButtonInTopBlock() {
+        return $x("//div[@class='top-brands-slider']//a//img");
+    }
+
+    SelenideElement diameterRelinkBlock() {
+        return $x("//ul[@class='list-zoll']");
+    }
+
+    ElementsCollection linksInDiameterblock() {
+        return $$x("//ul[@class='list-zoll']//li/a");
+    }
 }
