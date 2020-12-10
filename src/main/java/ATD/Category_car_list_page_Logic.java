@@ -397,7 +397,7 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
     }
 
     @Step(": from. Category_car_list_page")
-    public Category_car_list_page_Logic checkCategoriesForServerResponses200( List<String> allCategories) throws IOException {
+    public Category_car_list_page_Logic checkCategoriesForServerResponses200(List<String> allCategories) throws IOException {
         CommonMethods.checkCategoriesForServerResponses200(allCategories);
         return this;
     }
@@ -412,6 +412,14 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
             titleOfProductWithArtNum(artNUm).shouldHave(text(alternativeTitle));
         } else {
             titleOfProductWithArtNum(artNUm).shouldBe(visible).shouldHave(text(alternativeTitle));
+        }
+        return this;
+    }
+
+    @Step("check matching values in product title. Category_car_list_page")
+    public Category_car_list_page_Logic checkMatchingValuesInProductTitle(List<String> list, int positionOfProduct) {
+        for (int i = 0; i < list.size(); i++) {
+            subTitleOfProductInTecDocListing().get(positionOfProduct).shouldHave(text(list.get(i)));
         }
         return this;
     }

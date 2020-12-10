@@ -3,6 +3,9 @@ package ATD;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -215,6 +218,42 @@ public class Tyres_feature_page_Logic extends Tyres_feature_page {
     @Step("presence of Tyres size selector. Tyres_feature_page")
     public Tyres_feature_page_Logic presenceOfTyresSizeSelector() {
         tyresSizeSelector().shouldBe(visible);
+        return this;
+    }
+
+    @Step("default values of selector. Tyres_feature_page")
+    public Tyres_feature_page_Logic defaultValuesOfSelector(String width, String height, String diameter) {
+        widthDropdown().shouldBe(visible).shouldHave(value(width));
+        heightDropdown().shouldBe(visible).shouldHave(value(height));
+        diameterDropdown().shouldBe(visible).shouldHave(value(diameter));
+        return this;
+    }
+
+    @Step("check of season selector. Tyres_page")
+    public Tyres_feature_page_Logic checkOfSeasonSelector() {
+        DateFormat dateFormat = new SimpleDateFormat("M");
+        Date date = new Date();
+        int month = Integer.parseInt(dateFormat.format(date));
+        switch (month) {
+            case 1:
+            case 2:
+                winterSeason().shouldBe(exist).shouldHave(attribute("checked"));
+                break;
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+                summerSeason().shouldBe(exist).shouldHave(attribute("checked"));
+                break;
+            case 9:
+            case 10:
+            case 11:
+            case 12:
+                winterSeason().shouldBe(exist).shouldHave(attribute("checked"));
+                break;
+        }
         return this;
     }
 }
