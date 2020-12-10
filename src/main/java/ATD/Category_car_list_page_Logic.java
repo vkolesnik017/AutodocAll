@@ -12,8 +12,7 @@ import java.net.URL;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static ATD.CommonMethods.waitWhileRouteBecomeExpected;
-import static ATD.CommonMethods.waitingWhileLinkBecomeExpected;
+import static ATD.CommonMethods.*;
 import static PKW.CommonMethods.getTextFromUnVisibleElement;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -287,14 +286,11 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
         return idListParents;
     }
 
-    @Step("Compare two list  between front and Aws. Category_car_list_page")
-    public Category_car_list_page_Logic compareTwoListsBetweenFrontAndAws(List<String> listFront, List<String> listAws) {
 
-        for (int i = 0; i < listFront.size(); i++) {
-            if (!listFront.get(i).equals(listAws.get(i))) {
 
-            }
-        }
+    @Step(": from. Category_car_list_page")
+    public Category_car_list_page_Logic compareTwoListsBetweenFrontAndAwsFrom(List listFront, List listAws){
+        compareTwoListsBetweenFrontAndAws(listFront, listAws);
         return this;
     }
 

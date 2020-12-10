@@ -10,8 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static ATD.CommonMethods.checkingContainsUrl;
-import static ATD.CommonMethods.getAttributeFromUnVisibleElement;
+import static ATD.CommonMethods.*;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.back;
 import static com.codeborne.selenide.Selenide.switchTo;
@@ -141,7 +140,7 @@ public class Supplier_page_Logic extends Supplier_page {
 
     @Step(": from. Supplier_page")
     public Supplier_page_Logic compareTwoListsBetweenFrontAndAwsFrom(List listFront, List listAws){
-        new Category_car_list_page_Logic().compareTwoListsBetweenFrontAndAws(listFront, listAws);
+        compareTwoListsBetweenFrontAndAws(listFront, listAws);
         return this;
     }
 

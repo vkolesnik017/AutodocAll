@@ -446,12 +446,9 @@ public class CatalogCategories_aws {
             String nameKey = key.get(i);
             int nameValue = Integer.parseInt(value.get(i));
             awsMap.put(nameKey, nameValue);
-            System.out.println(nameKey + " = " + nameValue);
         }
          List<String> sortedList =  awsMap.entrySet().stream()
                  .sorted(Map.Entry.<String, Integer>comparingByValue().reversed()).map(Map.Entry::getKey).collect(Collectors.toList());
-         System.out.println(sortedList);
-
         return sortedList;
     }
 

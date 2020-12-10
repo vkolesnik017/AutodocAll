@@ -47,7 +47,7 @@ public class QC_2637_OpenAllParentsSidebarCatalog {
         parentFromAws = catalogCategoriesAws.getAllParentIdByGroupRating();
         groupRating = catalogCategoriesAws.getAllParentGroupRating();
         sortedParentIdFromAwsByRating = catalogCategoriesAws.createListAnyElementsByGroupRating(parentFromAws, groupRating);
-        categoryCarListPageLogic.compareTwoListsBetweenFrontAndAws(parentFromSidebar, parentFromAws);
+        categoryCarListPageLogic.compareTwoListsBetweenFrontAndAwsFrom(parentFromSidebar, sortedParentIdFromAwsByRating);
     }
 
     @AfterMethod

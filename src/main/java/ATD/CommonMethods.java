@@ -542,4 +542,31 @@ public class CommonMethods {
     }
 
 
+    @Step("Compare two list  between front and Aws by sorting rating group.")
+    public static void compareTwoListsBetweenFrontAndAws(List<String> listFront, List<String> listAws) {
+
+        for (int i = 0; i < listFront.size(); i++) {
+            if (!listFront.get(i).equals(listAws.get(i))) {
+                if (!listFront.contains(listAws.get(i))) {
+                    listAws.remove(listAws.get(i));
+                    i--;
+                } else if (listFront.get(i).equals(listAws.get(i - 2))) {
+
+                } else if (listFront.get(i).equals(listAws.get(i - 1))) {
+
+                } else if (listFront.get(i).equals(listAws.get(i + 1))) {
+
+                } else if (listFront.get(i).equals(listAws.get(i + 2))) {
+
+                } else {
+                    Assert.fail("Products not equals between front and aws!");
+                }
+            }
+            System.out.println(listFront.get(i) + " = " + listAws.get(i));
+        }
+    }
+
+
+
+
 }

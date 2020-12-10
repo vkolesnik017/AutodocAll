@@ -36,8 +36,8 @@
     <test name="QC_2626_TecdocCatalog_SidebarCatalog_TopCategories">
         <classes>
             <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_654_PrioritizationCategoriesInTopCategoriesBlock"/>
-            <!--<class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_2632_PrioritizationParentsOnMainPageBrand"/>
-            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_2637_OpenAllParentsSidebarCatalog"/>-->
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_2632_PrioritizationParentsOnMainPageBrand"/>
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_2637_OpenAllParentsSidebarCatalog"/>
             <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_2580_PresenceBlockWithEngineTypesAndTransitionByThem"/>
             <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_2810_CheckingAbsenceOfDuplicateCategories"/>
             <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_2917_PrioritizingParentBySalesOnCatalogPageWithTopCar"/>
