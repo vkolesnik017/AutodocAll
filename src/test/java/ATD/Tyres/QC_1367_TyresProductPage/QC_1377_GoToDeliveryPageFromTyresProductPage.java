@@ -1,8 +1,8 @@
 package ATD.Tyres.QC_1367_TyresProductPage;
 
 
+import ATD.Tyre_item_page_Logic;
 import Common.SetUp;
-import ATD.TyresProduct_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -35,7 +35,7 @@ public class QC_1377_GoToDeliveryPageFromTyresProductPage {
     @Description(value = "Test Checks Transition To Delivery Page From Tyres Main Page")
     public void testGoToDeliveryPageFromTyresProductPage(String route) throws SQLException {
         openPage(route);
-        new TyresProduct_page_Logic().clickDeliveryLinkAndCheckRedirect();
+        new Tyre_item_page_Logic().clickDeliveryLinkAndCheckRedirect();
     }
 
     @AfterMethod
