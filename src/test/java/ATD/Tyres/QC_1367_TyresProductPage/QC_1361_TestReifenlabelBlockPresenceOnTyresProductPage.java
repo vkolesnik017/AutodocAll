@@ -1,8 +1,8 @@
 package ATD.Tyres.QC_1367_TyresProductPage;
 
 
+import ATD.Tyre_item_page_Logic;
 import Common.SetUp;
-import ATD.TyresProduct_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -35,7 +35,7 @@ public class QC_1361_TestReifenlabelBlockPresenceOnTyresProductPage {
     @Description(value = "Test Checks Reifenlabel Block Presence On Tyres Product Page")
     public void testReifenlabelBlockPresenceOnTyresProductPage(String route) {
         openPage(route);
-        new TyresProduct_page_Logic().checkReifenlabelBlockVisibility();
+        new Tyre_item_page_Logic().checkReifenlabelBlockVisibility();
     }
 
     @AfterMethod
