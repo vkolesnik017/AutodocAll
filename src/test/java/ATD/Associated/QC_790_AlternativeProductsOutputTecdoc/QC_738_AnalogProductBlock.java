@@ -22,23 +22,6 @@ public class QC_738_AnalogProductBlock {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "routes", parallel = true)
-    Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_product");
-    }
-
-    @Test(dataProvider = "routes")
-    @Flaky
-    @Owner(value = "Kolesnik")
-    @Description(value = "Test checks analog product block")
-    public void testChecksAnalogProductBlock(String route) {
-        openPage(route);
-
-        new Moto_Product_page_Logic()
-                .selectMotoInHorizontalSelector("4081", "12111", "104173")
-                .presenceOfMotoBrandAtInfoMessage("BMW MOTORCYCLES K 1 (K589")
-                .presenceOfAnalogProductBlock();
-    }
 
     @DataProvider(name = "routesProduct", parallel = true)
     Object[] dataProviderProduct() throws SQLException {

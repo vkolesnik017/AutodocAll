@@ -251,7 +251,7 @@ public class Moto_Category_page_Logic extends Moto_Category_page {
 
     @Step("get brand from TOP product title .Moto_Category_page")
     public String getBrandFromTopProductTitle() {
-        String pathUrl = titleOfTopProducts().get(0).getText().replaceAll("(.+)(\\s.+)", "$1").toLowerCase();
+        String pathUrl = titleOfTopProducts().get(0).getText().replaceAll("(.+)(\\s.+)", "$1").replaceAll(" ","-").toLowerCase();
         return pathUrl;
     }
 

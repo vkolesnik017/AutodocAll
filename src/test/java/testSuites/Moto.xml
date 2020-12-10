@@ -195,7 +195,7 @@
             <class name="ATD.MOTO.QC_319_TopProductsBlock.QC_325_VisibilityOfTopProductCharacteristicByHover"/>
             <class name="ATD.MOTO.QC_319_TopProductsBlock.QC_326_PresenceOfNavigationArrowsInTopBlock"/>
             <class name="ATD.MOTO.QC_319_TopProductsBlock.QC_327_MatchingOfGenericAndTopProduct"/>
-            <!--<class name="ATD.MOTO.QC_319_TopProductsBlock.QC_328_ApplicabilityProductsToBrandPage"/>-->
+            <class name="ATD.MOTO.QC_319_TopProductsBlock.QC_328_ApplicabilityProductsToBrandPage"/>
         </classes>
     </test>
 
