@@ -154,7 +154,7 @@
             <class name="ATD.LKW_trucks.QC_73_TopProductsBlock.QC_77_VisibilityOfAdditionInfoInTopBlock"/>
             <class name="ATD.LKW_trucks.QC_73_TopProductsBlock.QC_78_TransitionFromProductBLockToProductPage"/>
             <class name="ATD.LKW_trucks.QC_73_TopProductsBlock.QC_79_GenericOfProductInTopBLock"/>
-            <!--<class name="ATD.LKW_trucks.QC_73_TopProductsBlock.QC_80_ApplicabilityProductToTruck"/>-->
+            <class name="ATD.LKW_trucks.QC_73_TopProductsBlock.QC_80_ApplicabilityProductToTruck"/>
             <class name="ATD.LKW_trucks.QC_73_TopProductsBlock.QC_81_CorrespondingOfProductBrandToSelectedBrand"/>
         </classes>
     </test>

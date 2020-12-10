@@ -24,7 +24,7 @@ public class QC_381_OutOfStockProductWithAnalogs {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list15");
     }
 
     @Test(dataProvider = "routes")
@@ -34,7 +34,7 @@ public class QC_381_OutOfStockProductWithAnalogs {
     public void testChecksOutOfStockProductWithAnalogs(String route) {
         openPage(route);
 
-        new Moto_Category_car_list_page_Logic().appearsOfAnAnalogsProductsBlock();
+        new Moto_Category_car_list_page_Logic().appearsOfAnAnalogsProductsBlock("26-8048");
     }
 
     @AfterMethod

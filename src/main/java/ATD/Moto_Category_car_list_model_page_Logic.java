@@ -80,8 +80,8 @@ public class Moto_Category_car_list_model_page_Logic extends Moto_Category_car_l
     }
 
     @Step(" get id of an analog product .Moto_Category_car_list_model_page")
-    public String getIdOfAnalogProduct() {
-        clickOnReplacementBtnOfProduct("26-8031");
+    public String getIdOfAnalogProduct(String number) {
+        clickOnReplacementBtnOfProduct(number);
         analogBlockOfProduct().should(appear);
         btnAddToBasketAtAnAnalogProduct().get(0).scrollIntoView("{block: \"center\"}");
         String idOfBtn = btnAddToBasketAtAnAnalogProduct().get(0).shouldBe(visible).getAttribute("data-ga-label");
