@@ -50,12 +50,10 @@
 
     <test name="LKW_trucks_route">
         <classes>
-            <class name="ATD.LKW_trucks.QC_116_AllChildCategoriesBlockOfParent"/>
             <class name="ATD.LKW_trucks.QC_133_MainIconOfMarkInCategoriesMaker"/>
             <class name="ATD.LKW_trucks.QC_134_TopParentAndChildCategoriesBlocks"/>
             <class name="ATD.LKW_trucks.QC_135_SeoDescriptionBlock"/>
             <class name="ATD.LKW_trucks.QC_136_LinkBlockOfTopBrands"/>
-            <class name="ATD.LKW_trucks.QC_178_TopParentAndChildCategoriesBlocks"/>
             <class name="ATD.LKW_trucks.QC_158_BannerOnMainPage"/>
             <class name="ATD.LKW_trucks.QC_222_MainImageOnErrorPage"/>
             <class name="ATD.LKW_trucks.QC_183_LanguageBlockInFooter"/>
@@ -175,7 +173,6 @@
 
     <test name="QC_207_ProductPage">
         <classes>
-            <class name="ATD.LKW_trucks.QC_207_ProductPage.QC_208_DynamicCharacteristicsOfProduct"/>
             <class name="ATD.LKW_trucks.QC_207_ProductPage.QC_210_CompatibleTrucksBlock"/>
             <class name="ATD.LKW_trucks.QC_207_ProductPage.QC_212_LackOfLinksInOenBlock"/>
             <class name="ATD.LKW_trucks.QC_207_ProductPage.QC_209_SelectingOfTruckSelector"/>

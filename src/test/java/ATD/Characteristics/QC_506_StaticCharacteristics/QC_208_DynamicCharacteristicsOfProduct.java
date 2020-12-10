@@ -1,4 +1,4 @@
-package ATD.LKW_trucks.QC_207_ProductPage;
+package ATD.Characteristics.QC_506_StaticCharacteristics;
 
 import ATD.LKW_Product_page_Logic;
 import Common.SetUp;
