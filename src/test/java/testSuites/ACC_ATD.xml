@@ -63,7 +63,7 @@
 
     <test name="QC_929_BlockCategoriesLogicalUnionOnMainAccessories">
         <classes>
-            <class name="ATD.ACC.QC_929_BlockCategoriesLogicalUnionOnMainAccessories.QC_932_BlockMainCatalog"/>
+<!--            <class name="ATD.ACC.QC_929_BlockCategoriesLogicalUnionOnMainAccessories.QC_932_BlockMainCatalog"/> inactive-->
         </classes>
     </test>
 
