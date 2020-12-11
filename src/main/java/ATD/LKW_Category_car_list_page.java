@@ -113,6 +113,10 @@ public class LKW_Category_car_list_page {
         return $x("//div[@id='selected-instalation__slider']");
     }
 
+    SelenideElement brandBlockInSideBar() {
+        return $x("//div[@class='filter-brand-top js-brands-filter js-filter-wrapper  js-filter-50002']");
+    }
+
     SelenideElement brandsOfBrandBlock(String idOfBrand) {
         return $x("//input[@id='" + idOfBrand + "']/..");
     }
