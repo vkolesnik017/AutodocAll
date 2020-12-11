@@ -360,7 +360,7 @@ public class TyresListing_page_Logic extends TyresListing_page {
             String baseUrlWithDimension = baseUrl.replaceAll("\\d", "").replaceAll("\\/--r", "").replaceAll("\\/-zoll", "");
             String urlWithDimension = (baseUrlWithDimension + "/" + width + "-" + height + "-r" + diameter);
             waitingWhileLinkBecomeExpected(urlWithDimension);
-        } else if (routeName.equals("tyres_season_size") | routeName.equals("tyres_type_list")) {
+        } else if (routeName.equals("tyres_season_size") | routeName.equals("tyres_type_list") | routeName.equals("tyres_feature")) {
             checkingContainsUrl(width + "-" + height + "-r" + diameter);
         } else {
             String urlWithDimension = (baseUrl + "/" + width + "-" + height + "-r" + diameter);
@@ -600,13 +600,18 @@ public class TyresListing_page_Logic extends TyresListing_page {
     }
 
     @Step("Get product ID in listing and compares it to the ID on the product page. TyresListing_Page")
-    public TyresProduct_page_Logic getProductIdAndComparesItToIdOnProductPage() {
+    public Tyre_item_page_Logic getProductIdAndComparesItToIdOnProductPage() {
         String productIDInListing = buyButton().getAttribute("data-id");
         System.out.println(productIDInListing);
         brandNameInListing().click();
         String productIdInProductPage = new Product_page_Logic().getProductId();
         System.out.println(productIdInProductPage);
         Assert.assertEquals(productIDInListing, productIdInProductPage);
-        return page(TyresProduct_page_Logic.class);
+        return page(Tyre_item_page_Logic.class);
+    }
+
+    @Step("Get title in listing. TyresListing_Page")
+    public String getTitleInListing() {
+        return titleTiresWinter().getText();
     }
 }

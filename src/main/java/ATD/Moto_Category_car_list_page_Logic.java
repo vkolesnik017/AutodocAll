@@ -298,16 +298,16 @@ public class Moto_Category_car_list_page_Logic extends Moto_Category_car_list_pa
     }
 
     @Step("appears of an analogs products block .Moto_Category_car_list_page")
-    public Moto_Category_car_list_page_Logic appearsOfAnAnalogsProductsBlock() {
-        clickOnReplacementBtnOfProduct("26-8031");
+    public Moto_Category_car_list_page_Logic appearsOfAnAnalogsProductsBlock(String numberOfProduct) {
+        clickOnReplacementBtnOfProduct(numberOfProduct);
         analogBlockOfProduct().should(appear);
         btnAddToBasketAtAnAnalogProduct().shouldHave(sizeGreaterThan(0));
         return this;
     }
 
     @Step(" get id of an analog product .Moto_Category_car_list_page")
-    public String getIdOfAnalogProduct() {
-        clickOnReplacementBtnOfProduct("26-8031");
+    public String getIdOfAnalogProduct(String numberOfProduct) {
+        clickOnReplacementBtnOfProduct(numberOfProduct);
         analogBlockOfProduct().shouldBe(visible);
         btnAddToBasketAtAnAnalogProduct().get(0).scrollIntoView("{block: \"center\"}");
         String idOfBtn = btnAddToBasketAtAnAnalogProduct().get(0).shouldBe(visible).getAttribute("data-ga-label");
@@ -317,6 +317,9 @@ public class Moto_Category_car_list_page_Logic extends Moto_Category_car_list_pa
     @Step("add product to basket from an analog block .Moto_Category_car_list_page")
     public Cart_page_Logic addProductToBasketFromAnalogBlock() {
         analogProducts().get(0).hover();
+        if (!detailsBlockOfAnalogProduct().get(0).isDisplayed()){
+            analogProducts().get(0).hover();
+        }
         detailsBlockOfAnalogProduct().get(0).shouldBe(visible);
         btnAddToBasketAtAnAnalogProduct().get(0).click();
         if (!basketDropMenu().isDisplayed()) {

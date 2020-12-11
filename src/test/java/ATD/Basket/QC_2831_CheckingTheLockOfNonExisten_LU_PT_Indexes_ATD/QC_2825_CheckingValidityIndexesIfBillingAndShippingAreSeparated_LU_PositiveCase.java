@@ -15,7 +15,7 @@ import static ATD.CommonMethods.*;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2825_CheckingValidityIndexesIfBillingAndShippingAreSeparated_LU {
+public class QC_2825_CheckingValidityIndexesIfBillingAndShippingAreSeparated_LU_PositiveCase {
 
     private String mail = "QC_2825_autotestATD@mailinator.com";
 
@@ -50,7 +50,7 @@ public class QC_2825_CheckingValidityIndexesIfBillingAndShippingAreSeparated_LU 
     @Test(dataProvider = "indexes")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checking the validity of indexes if Billing and Shipping for Luxembourg are separated")
+    @Description(value = "Test checking the validity of indexes if Billing and Shipping for Luxembourg are separated. PositiveCase")
     public void testCheckingValidityIndexesIfBillingAndShippingAreSeparated_LU(String indexes) {
         new CartAddress_page_Logic()
                 .fillingPostalCodeFieldJSForShipping(indexes)

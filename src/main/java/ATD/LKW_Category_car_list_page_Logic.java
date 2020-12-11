@@ -273,7 +273,9 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
 
     @Step("check visibility of Brands block .LKW_Category_car_list_page")
     public LKW_Category_car_list_page_Logic visibilityOfBrandsBlock() {
-        brandBlock().shouldBe(visible);
+        if (!brandBlock().isDisplayed()) {
+            brandBlockInSideBar().shouldBe(visible);
+        }
         return this;
     }
 

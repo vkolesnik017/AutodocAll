@@ -2,7 +2,7 @@ package ATD.Tyres.QC_1272_TyresMainPage;
 
 
 import Common.SetUp;
-import ATD.TyresProduct_page_Logic;
+import ATD.Tyre_item_page_Logic;
 import ATD.Tyres_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -39,7 +39,7 @@ public class QC_1324_GoToProductPageFromTyresTopBlock {
     public void tesGoToProductPageFromTyresTopBlock(String route) {
         openPage(route);
         tyreId = new Tyres_page_Logic().clickTyreInTopBlockAndGetTyreId();
-        new TyresProduct_page_Logic().checkTyreIdOnProductPage(tyreId);
+        new Tyre_item_page_Logic().checkTyreIdOnProductPage(tyreId);
     }
 
     @AfterMethod

@@ -1,7 +1,7 @@
 package ATD.Tyres.QC_1367_TyresProductPage;
 
+import ATD.Tyre_item_page_Logic;
 import Common.SetUp;
-import ATD.TyresProduct_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -36,7 +36,7 @@ public class QC_1362_AddTyresToBasketFromProductPage {
     public void testAddTyresToBasketFromProductPage(String route) {
         openPage(route);
         clickOfBuyBtnForAllPages();
-        new TyresProduct_page_Logic().checkAddingTyresToBasket()
+        new Tyre_item_page_Logic().checkAddingTyresToBasket()
                                      .checkOfIdAddedProductInBasket("8090426");
     }
 

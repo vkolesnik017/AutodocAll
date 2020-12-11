@@ -1,7 +1,7 @@
 package ATD.Tyres.QC_2226_CheckingPeriodReturnTiresBlock;
 
+import ATD.Tyre_item_page_Logic;
 import Common.SetUp;
-import ATD.TyresProduct_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -32,7 +32,7 @@ public class QC_2230_CheckingPeriodReturnTill14DaysInReturnBlock {
     @Description(value = "Test checks presence text about period product return")
     public void testChecksPresenceTextAboutPeriodProductReturn(String route) {
         open(route);
-        new TyresProduct_page_Logic().checkingPresenceTextAboutPeriodProductReturn();
+        new Tyre_item_page_Logic().checkingPresenceTextAboutPeriodProductReturn();
     }
 
     @AfterMethod

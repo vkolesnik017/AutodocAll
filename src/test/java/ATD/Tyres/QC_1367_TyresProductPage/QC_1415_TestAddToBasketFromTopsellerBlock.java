@@ -2,8 +2,8 @@ package ATD.Tyres.QC_1367_TyresProductPage;
 
 
 import ATD.Product_page_Logic;
+import ATD.Tyre_item_page_Logic;
 import Common.SetUp;
-import ATD.TyresProduct_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -39,7 +39,7 @@ public class QC_1415_TestAddToBasketFromTopsellerBlock {
     @Description(value = "Test Checks Add To Basket From Topseller Block")
     public void testAddToBasketFromTopsellerBlock(String route) {
         openPage(route);
-        new TyresProduct_page_Logic().checkAddToBasketFromTopsellerBlock();
+        new Tyre_item_page_Logic().checkAddToBasketFromTopsellerBlock();
         productPageLogic.checksPresentProductInCartPopup()
                 .cartClick()
                 .productPrice().shouldBe(visible);
