@@ -1,6 +1,7 @@
 package ATD.Tyres.QC_1272_TyresMainPage;
 
 
+import ATD.Tyres_feature_page_Logic;
 import Common.SetUp;
 import ATD.Tyres_page_Logic;
 import io.qameta.allure.Description;
@@ -24,18 +25,32 @@ public class QC_1344_TestPopularDimensionsRelinkBlockPresence {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "routes", parallel = true)
-    Object[] dataProvider() throws SQLException {
+    @DataProvider(name = "routesTyresPage", parallel = true)
+    Object[] dataProviderTyresPage() throws SQLException {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres,tyres2,tyres3,tyres4");
     }
 
-    @Test(dataProvider = "routes")
+    @DataProvider(name = "routesTyresFeature", parallel = true)
+    Object[] dataProviderTyresFeature() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_feature");
+    }
+
+    @Test(dataProvider = "routesTyresPage")
     @Flaky
     @Owner(value = "Romaniuta")
-    @Description(value = "Test Checks Popular Dimensions Relink Block Presence")
-    public void testPopularDimensionsRelinkBlockPresence(String route) {
+    @Description(value = "Test Checks Popular Dimensions Relink Block Presence from Tyres page")
+    public void testPopularDimensionsRelinkBlockPresenceFromTyresPage(String route) {
         openPage(route);
         new Tyres_page_Logic().checkTyresDimensionRelinkBlockPresence();
+    }
+
+    @Test(dataProvider = "routesTyresFeature")
+    @Flaky
+    @Owner(value = "Chelombitko")
+    @Description(value = "Test Checks Popular Dimensions Relink Block Presence from Tyres feature page")
+    public void testPopularDimensionsRelinkBlockPresenceFromTyresFeature(String route) {
+        openPage(route);
+        new Tyres_feature_page_Logic().checkTyresDimensionRelinkBlockPresence();
     }
 
     @AfterMethod
