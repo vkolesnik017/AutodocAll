@@ -56,4 +56,13 @@ public class Tyres_feature_page {
     ElementsCollection linksInDiameterblock() {
         return $$x("//ul[@class='list-zoll']//li/a");
     }
+
+    SelenideElement dimensionRelinkBlock() {
+        return $x("//ul[@class='list-size']");
+    }
+
+    ElementsCollection linksInDimensionRelinkBlock() {
+        return $$x("//ul[@class='list-size']//li/a");
+    }
 }
+
