@@ -327,7 +327,7 @@ public class LKW_Category_car_list_page {
 
     ElementsCollection dangerousProducts() {return $$x("//span[@class='dangerous-listing__show-more']/ancestor::div[@class='rec_products_block']");}
 
-    ElementsCollection signalWordOfDangerousProduct() {return $$x("//div[@class='dangerous-listing__title hazard-attention-title']");}
+    ElementsCollection signalWordOfDangerousProduct() {return $$x("//div[contains(@class,'dangerous-listing__title')]");}
 
     SelenideElement blackBackground() {return $x("//div[@class='overlay black hidden']");}
 

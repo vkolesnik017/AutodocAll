@@ -786,8 +786,12 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         labelTitleDangerousProducts().get(positionOfProduct).shouldBe(visible).click();
         blackBackground().shouldHave(attribute("style", "display: block;"));
         warningPopUp().shouldBe(visible).shouldHave(attribute("style", "display: block;"));
-        titleOfDangerousPopUp().shouldBe(visible).shouldHave(exactText(signalWord));
-        infoTextOfDangerousPopUp().shouldNotBe(empty);
+        if (signalWord.replaceAll("\n","").trim().equals("Beachten Sie!")) {
+            infoTextOfDangerousPopUp().shouldNotBe(empty);
+        } else {
+            titleOfDangerousPopUp().shouldBe(visible).shouldHave(exactText(signalWord));
+            infoTextOfDangerousPopUp().shouldNotBe(empty);
+        }
         return this;
     }
 
