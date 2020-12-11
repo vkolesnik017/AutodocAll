@@ -34,6 +34,7 @@ public class Main_page_mob_Logic extends Main_page_mob {
 
     @Step("Clicking signIn in menu. Main_page_mob")
     public Login_page_mob_Logic clickSignInInMenu() {
+        sleep(3000);
         menuBtn().click();
         signInBtnInMenu().shouldBe(visible).click();
         return page(Login_page_mob_Logic.class);

@@ -32,9 +32,9 @@ public class QC_1929_PasswordRecovery_ATD {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "route", parallel = true)
+    @DataProvider(name = "route")
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product32");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product32,listing_accessories");
     }
 
     @Test(dataProvider = "route")
@@ -44,8 +44,9 @@ public class QC_1929_PasswordRecovery_ATD {
     public void testPasswordRecovery(String route) throws SQLException {
         String newPassword = getRandomNumber();
         openPage(route);
-        product_page_logic.addProductToCart()
-                .closePopupOtherCategoryIfYes()
+        product_page_logic.checkNumberBasketAndRefreshPageIfNot();
+        clickOfBuyBtnForAllPages();
+        product_page_logic.closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
                 .passwordRecoveryRequestFromCart(mail);
