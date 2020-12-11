@@ -252,6 +252,10 @@ public class Search_page {
         return $$x("//ul[@class='branded-slider slick-initialized slick-slider']//li//label").filter(visible);
     }
 
+    ElementsCollection visibleBrandsInSideBar() {
+        return $$x("//div[@id='mCSB_1_container']//li//label");
+    }
+
     ElementsCollection addedProductToWishListLabel() {return $$x("//span[@class='add-to-wishlist title_btn add-to-wishlist--added remove-article']");}
 
     SelenideElement currentCountOfProductInWishList() {return $x("//span[@class='header__wishes-count header__wishes-count--added']");}
