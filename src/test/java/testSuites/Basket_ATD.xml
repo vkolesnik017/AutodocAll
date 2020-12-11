@@ -46,7 +46,7 @@
             <class name="ATD.Basket.QC_1486_Island_ATD.QC_1490_ChecksVerificationIslands_BillingIsDivided_NegativeCase_ATD"/>
             <class name="ATD.Basket.QC_1486_Island_ATD.QC_1492_ChecksVerificationIslandsAndFirm_BillingIsDivided_DifferentCountries_NegativeCase_ATD"/>
             <class name="ATD.Basket.QC_1486_Island_ATD.QC_1493_ChecksVerificationIslandsAndFirm_BillingIsDivided_PositiveCase_ATD"/>
-            <class name="ATD.Basket.QC_1486_Island_ATD.QC_1494_ChecksVerificationIslandsAndFirm_BillingIsUndivided_CorrectCompanyData_ATD"/>
+            <!--<class name="ATD.Basket.QC_1486_Island_ATD.QC_1494_ChecksVerificationIslandsAndFirm_BillingIsUndivided_CorrectCompanyData_ATD"/>-->
             <class name="ATD.Basket.QC_1486_Island_ATD.QC_1495_ChecksVerificationIslandsAndFirm_BillingIsDivided_SameCountriesInShipping_IslandWithoutVat_ATD"/>
         </classes>
     </test>

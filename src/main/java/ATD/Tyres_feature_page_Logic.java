@@ -1,5 +1,6 @@
 package ATD;
 
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
@@ -12,8 +13,7 @@ import java.util.stream.Collectors;
 import static ATD.CommonMethods.*;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.actions;
-import static com.codeborne.selenide.Selenide.back;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Tyres_feature_page_Logic extends Tyres_feature_page {
 
@@ -283,5 +283,39 @@ public class Tyres_feature_page_Logic extends Tyres_feature_page {
         dimensionRelinkBlock().shouldBe(visible);
         linksInDimensionRelinkBlock().shouldHave(sizeGreaterThan(5));
         return this;
+    }
+
+    @Step("Click on expected season radio button {seasonBtn} in selector. Tyres_feature_page")
+    public Tyres_feature_page_Logic clickExpectedSeasonBtn(SelenideElement seasonBtn) {
+        seasonBtn.shouldBe(visible);
+        seasonBtn.click();
+        return this;
+    }
+
+    @Step("Select Width. Tyres_page")
+    public Tyres_feature_page_Logic selectWidth(String width) {
+        widthDropdown().selectOption(width);
+        Wait().until(webDriver -> widthDropdown().getSelectedText().equals(width));
+        return this;
+    }
+
+    @Step("Select Height. Tyres_page")
+    public Tyres_feature_page_Logic selectHeight(String height) {
+        heightDropdown().selectOption(height);
+        Wait().until(webDriver -> heightDropdown().getSelectedText().equals(height));
+        return this;
+    }
+
+    @Step("Select Diameter. Tyres_page")
+    public Tyres_feature_page_Logic selectDiameter(String diameter) {
+        diameterDropdown().selectOption(diameter);
+        Wait().until(webDriver -> diameterDropdown().getSelectedText().equals(diameter));
+        return this;
+    }
+
+    @Step("Click Submit Tyres Selector. Tyres_page")
+    public TyresListing_page_Logic clickSubmitTyresSelector() {
+        submitBtnInSelector().click();
+        return page(TyresListing_page_Logic.class);
     }
 }
