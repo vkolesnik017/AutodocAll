@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static ATD.CommonMethods.*;
+import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.actions;
 import static com.codeborne.selenide.Selenide.back;
@@ -254,6 +255,26 @@ public class Tyres_feature_page_Logic extends Tyres_feature_page {
                 winterSeason().shouldBe(exist).shouldHave(attribute("checked"));
                 break;
         }
+        return this;
+    }
+
+    @Step("Click all tyres sizes button. Tyres_feature_page")
+    public Tyres_feature_page_Logic clickAllTyresSizesBtnInSizeBlock() {
+        allSizesButtonInSizeBlock().click();
+        return this;
+    }
+
+    @Step("Click brand in top block and check redirect. Tyres_feature_page")
+    public String getBrandNameAndClickButtonInTopBlock() {
+        String brandName = brandButtonInTopBlock().attr("alt").split(" ")[0];
+        brandButtonInTopBlock().click();
+        return brandName;
+    }
+
+    @Step("Check tyres diameter relink block presence. Tyres_feature_page")
+    public Tyres_feature_page_Logic checkTyresDiameterRelinkBlockPresence() {
+        diameterRelinkBlock().shouldBe(visible);
+        linksInDiameterblock().shouldHave(sizeGreaterThan(1));
         return this;
     }
 }

@@ -205,9 +205,6 @@
             <class name="ATD.MOTO.QC_730_ProductPage.QC_733_AddedProductToBasket"/>
             <class name="ATD.MOTO.QC_730_ProductPage.QC_734_CompatibleMotoBlock"/>
             <class name="ATD.MOTO.QC_730_ProductPage.QC_737_LackOfLinksInOenBlock"/>
-            <!--   <class name="ATD.MOTO.QC_730_ProductPage.QC_739_AddedAnalogProductToBasket"/>
-              <class name="ATD.MOTO.QC_730_ProductPage.QC_740_PresenceOfDetailInformationPopUp"/>
-              <class name="ATD.MOTO.QC_730_ProductPage.QC_741_BehaviorByClickOnImageOfAnalogProduct"/>-->
         </classes>
     </test>
 

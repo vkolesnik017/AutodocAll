@@ -1,4 +1,4 @@
-package ATD.LKW_trucks;
+package ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories;
 
 import ATD.LKW_main_page_Logic;
 import Common.SetUp;
