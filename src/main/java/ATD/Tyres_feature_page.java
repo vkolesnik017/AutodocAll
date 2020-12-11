@@ -4,6 +4,7 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selenide.*;
 
 public class Tyres_feature_page {
@@ -29,4 +30,30 @@ public class Tyres_feature_page {
     ElementsCollection seoTexts() {return $$x("//div[@class='reifen-text-rows']//*[self::p or self::ul/li/b]");}
 
     SelenideElement tyresSizeSelector() {return $(".reifen-selector");}
+
+    SelenideElement widthDropdown() { return $("select#form_Width"); }
+
+    SelenideElement heightDropdown() { return $("select#form_CrossSections"); }
+
+    SelenideElement diameterDropdown() { return $("#form_Size"); }
+
+    SelenideElement winterSeason() {return $(byId("winter-radio"));}
+
+    SelenideElement summerSeason() {return $("summer-radio");}
+
+    SelenideElement allSizesButtonInSizeBlock() {
+        return $x("//div[@class='tyre-size-block-button']/a");
+    }
+
+    SelenideElement brandButtonInTopBlock() {
+        return $x("//div[@class='top-brands-slider']//a//img");
+    }
+
+    SelenideElement diameterRelinkBlock() {
+        return $x("//ul[@class='list-zoll']");
+    }
+
+    ElementsCollection linksInDiameterblock() {
+        return $$x("//ul[@class='list-zoll']//li/a");
+    }
 }

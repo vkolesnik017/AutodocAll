@@ -3,10 +3,14 @@ package ATD;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import static ATD.CommonMethods.*;
+import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.actions;
 import static com.codeborne.selenide.Selenide.back;
@@ -215,6 +219,62 @@ public class Tyres_feature_page_Logic extends Tyres_feature_page {
     @Step("presence of Tyres size selector. Tyres_feature_page")
     public Tyres_feature_page_Logic presenceOfTyresSizeSelector() {
         tyresSizeSelector().shouldBe(visible);
+        return this;
+    }
+
+    @Step("default values of selector. Tyres_feature_page")
+    public Tyres_feature_page_Logic defaultValuesOfSelector(String width, String height, String diameter) {
+        widthDropdown().shouldBe(visible).shouldHave(value(width));
+        heightDropdown().shouldBe(visible).shouldHave(value(height));
+        diameterDropdown().shouldBe(visible).shouldHave(value(diameter));
+        return this;
+    }
+
+    @Step("check of season selector. Tyres_feature_page")
+    public Tyres_feature_page_Logic checkOfSeasonSelector() {
+        DateFormat dateFormat = new SimpleDateFormat("M");
+        Date date = new Date();
+        int month = Integer.parseInt(dateFormat.format(date));
+        switch (month) {
+            case 1:
+            case 2:
+                winterSeason().shouldBe(exist).shouldHave(attribute("checked"));
+                break;
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+                summerSeason().shouldBe(exist).shouldHave(attribute("checked"));
+                break;
+            case 9:
+            case 10:
+            case 11:
+            case 12:
+                winterSeason().shouldBe(exist).shouldHave(attribute("checked"));
+                break;
+        }
+        return this;
+    }
+
+    @Step("Click all tyres sizes button. Tyres_feature_page")
+    public Tyres_feature_page_Logic clickAllTyresSizesBtnInSizeBlock() {
+        allSizesButtonInSizeBlock().click();
+        return this;
+    }
+
+    @Step("Click brand in top block and check redirect. Tyres_feature_page")
+    public String getBrandNameAndClickButtonInTopBlock() {
+        String brandName = brandButtonInTopBlock().attr("alt").split(" ")[0];
+        brandButtonInTopBlock().click();
+        return brandName;
+    }
+
+    @Step("Check tyres diameter relink block presence. Tyres_feature_page")
+    public Tyres_feature_page_Logic checkTyresDiameterRelinkBlockPresence() {
+        diameterRelinkBlock().shouldBe(visible);
+        linksInDiameterblock().shouldHave(sizeGreaterThan(1));
         return this;
     }
 }

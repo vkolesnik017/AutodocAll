@@ -64,7 +64,7 @@
             <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1927_LoginNegativeCase_InvalidDomain_ATD"/>
             <!--<class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1928_LoginNegativeCase_EmptyInputs_ATD"/>-->
             <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1930_PasswordRecoveryNegativeCase_NotRegisteredMail_ATD"/>
-            <!--<class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1929_PasswordRecovery_ATD"/>-->
+            <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1929_PasswordRecovery_ATD"/>
            <!--<class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1931_PasswordRecoveryNegativeCase_IncorrectPasswordConfirmation_ATD"/>-->
         </classes>
     </test>
@@ -117,9 +117,9 @@
         <classes>
             <class name="ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD.QC_2823_CheckingValidityIndexes_LU_PositiveCase"/>
             <class name="ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD.QC_2828_CheckingDisplayOfCorrectMessageInTooltipAfterEnteringNegativeIndexForPT"/>
-            <class name="ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD.QC_2825_CheckingValidityIndexesIfBillingAndShippingAreSeparated_LU"/>
+            <class name="ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD.QC_2825_CheckingValidityIndexesIfBillingAndShippingAreSeparated_LU_PositiveCase"/>
             <class name="ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD.QC_2829_CheckingDisplayOfCorrectMessageInTooltipAfterEnteringNegativeIndexForLU"/>
-            <class name="ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD.QC_2827_CheckingValidityIndexesIfBillingAndShippingAreSeparated_PT"/>
+            <class name="ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD.QC_2827_CheckingValidityIndexesIfBillingAndShippingAreSeparated_PT_PositiveCase"/>
             <class name="ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD.QC_2824_CheckingValidityIndexes_PT_PositiveCase"/>
             <class name="ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD.QC_2848_CheckingValidationOfIndexesWhenEditingOrderInAws_LU"/>
             <class name="ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD.QC_2851_CheckingValidationOfIndexesWhenEditingOrderInAws_PT"/>
@@ -138,6 +138,8 @@
             <class name="ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD.QC_2820_CheckingBanOnEnteringNonexistentIndexWhenEditingOrderInFront_LU"/>
             <class name="ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD.QC_2822_CheckingBanOnEnteringNonexistentIndexWhenEditingOrderInFront_PT"/>
             <class name="ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD.QC_2853_CheckingBanOnEnteringNonexistentIndexWhenEditingOrderInAWS_LU"/>
+            <class name="ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD.QC_2817_CheckingValidityIndexesIfBillingAndShippingAreSeparated_PT_NegativeCase"/>
+            <class name="ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD.QC_2818_CheckingValidityIndexesIfBillingAndShippingAreSeparated_LU_NegativeCase"/>
         </classes>
     </test>
 

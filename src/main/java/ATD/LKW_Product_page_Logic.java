@@ -3,9 +3,12 @@ package ATD;
 import AWS.ProductCard_aws;
 import io.qameta.allure.Step;
 import org.testng.Assert;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import static ATD.CommonMethods.getTextFromUnVisibleElement;
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -61,7 +64,7 @@ public class LKW_Product_page_Logic extends LKW_Product_page {
         if (compatibilityTruckBlock().isDisplayed()) {
             linkOfCompatibilityTruckAndProduct().shouldBe(visible);
         } else {
-            String idOfProduct = url().replace(url().replace(url().substring(url().lastIndexOf("/")), ""),"").replaceAll("[^0-9]","");
+            String idOfProduct = url().replace(url().replace(url().substring(url().lastIndexOf("/")), ""), "").replaceAll("[^0-9]", "");
             executeJavaScript("window.open('about:blank','_blank')");
             switchTo().window(1);
             new ProductCard_aws(idOfProduct).openProductCardPageAndLogin().checkTruckLabel();
@@ -157,7 +160,7 @@ public class LKW_Product_page_Logic extends LKW_Product_page {
     public List<String> getTruckBrandsFromBLock() {
         List<String> brands = new ArrayList<>();
         for (int i = 0; i < brandsOfTruckInMatchingBLock().size(); i++) {
-            brands.add(brandsOfTruckInMatchingBLock().get(i).getText());
+            brands.add(getTextFromUnVisibleElement(brandsOfTruckInMatchingBLock().get(i)).replaceAll("\n", "").trim());
         }
         return brands;
     }
@@ -313,7 +316,7 @@ public class LKW_Product_page_Logic extends LKW_Product_page {
 
     @Step(": from. LKW_Product_page")
     public AutodocClub_page_Logic clickBannerAutodocClub() {
-       return new Product_page_Logic().clickBannerAutodocClub();
+        return new Product_page_Logic().clickBannerAutodocClub();
     }
 
     @Step(": from. LKW_Product_page")

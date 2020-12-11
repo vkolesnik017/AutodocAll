@@ -1,8 +1,8 @@
 package ATD.Characteristics.QC_506_StaticCharacteristics;
 
 
+import ATD.Tyre_item_page_Logic;
 import Common.SetUp;
-import ATD.TyresProduct_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -26,7 +26,8 @@ public class QC_1373_TestCharacteristicsBlockOnTyresProductPage {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyre_item");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyre_item," +
+                "tyre_item15,tyre_item16,tyre_item17");
     }
 
     @Test(dataProvider = "routes")
@@ -35,7 +36,8 @@ public class QC_1373_TestCharacteristicsBlockOnTyresProductPage {
     @Description(value = "Test Checks Characteristics Block On Tyres Product Page")
     public void testCharacteristicsBlockOnTyresProductPage(String route) {
         openPage(route);
-        new TyresProduct_page_Logic().checkCharacteristicsBlock();
+        new Tyre_item_page_Logic().checkCharacteristicsBlock()
+                .checkNavigatingSeasonLinkInCharacteristicsBlock();
     }
 
     @AfterMethod

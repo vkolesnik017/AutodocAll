@@ -227,7 +227,7 @@ public class Product_page {
         return $(".parts_step_1");
     }
 
-    ElementsCollection breadCrumbLinks() {return $$x("//div[@class='steps breadcrumbs']/ul/li");}
+    ElementsCollection breadCrumbLinks() {return $$x("//div[@class='steps breadcrumbs']/ul/li/span/a");}
 
     //locators for FAQ block
     public SelenideElement faqSubmitButton() {

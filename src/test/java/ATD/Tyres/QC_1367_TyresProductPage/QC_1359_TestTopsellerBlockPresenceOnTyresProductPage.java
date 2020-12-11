@@ -2,7 +2,7 @@ package ATD.Tyres.QC_1367_TyresProductPage;
 
 
 import Common.SetUp;
-import ATD.TyresProduct_page_Logic;
+import ATD.Tyre_item_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -35,7 +35,7 @@ public class QC_1359_TestTopsellerBlockPresenceOnTyresProductPage {
     @Description(value = "Test Checks Topseller Block Presence On Tyres Product Page")
     public void testTopsellerBlockPresenceOnTyresProductPage(String route) {
         openPage(route);
-        new TyresProduct_page_Logic().checkTopsellerBlockVisibility();
+        new Tyre_item_page_Logic().checkTopsellerBlockVisibility();
     }
 
     @AfterMethod
