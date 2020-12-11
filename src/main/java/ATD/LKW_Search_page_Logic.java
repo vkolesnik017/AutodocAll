@@ -84,4 +84,11 @@ public class LKW_Search_page_Logic extends LKW_Search_page {
         }
         return this;
     }
+
+    @Step(": from. LKW_Search_page")
+    public LKW_Search_page_Logic checkingAbsenceZustandCharacteristicForGoodsWithDeposit() {
+        new Listing_page_Logic().checkingAbsenceZustandCharacteristicForGoodsWithDeposit();
+        return this;
+    }
+
 }
