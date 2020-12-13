@@ -127,7 +127,7 @@ public class QC_963_ProductPage_TestPresenceOfElements {
         //24
         product_page_logic.deliveryServicesBlock().shouldBe(visible);
         //25
-       // product_page_logic.videoBlock().scrollTo().shouldBe(visible);
+        product_page_logic.videoBlock().scrollTo().shouldBe(visible);
         //26
         product_page_logic.pdfTutorialsBlock().scrollTo().shouldBe(visible);
         product_page_logic.checkPdfLinksForDownload();
