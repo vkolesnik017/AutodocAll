@@ -333,25 +333,6 @@ public class QC_2326_UpdatingOfPageWithSelectedVehicle {
         checkingContainsUrl(db.getRouteByRouteName("DE", "category_car_list39"));
     }
 
-    @DataProvider(name = "routesOil", parallel = true)
-    Object[] dataProviderOil() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "main", "engine_oil");
-    }
-
-    @Test(dataProvider = "routesOil")
-    @Flaky
-    @Owner(value = "Kolesnik")
-    @Description(value = "Test checks updating of page with selected vehicle in Garage pop-up")
-    public void testChecksUpdatingOfPageWithSelectedVehicleOil(String route) throws SQLException {
-        openPage(route);
-
-        new Category_name_page_Logic()
-                .loginToProfilePlusPageAndBack(email).updateOfPage().checkCountOfVehicleInIconOfGarage("3")
-                .clickOnGarageIconInHeader()
-                .selectVehicleInGaragePopUp("6926");
-        checkingContainsUrl(db.getRouteByRouteName("DE", "category_car_list40"));
-    }
-
     @DataProvider(name = "routesBrake", parallel = true)
     Object[] dataProviderBrake() throws SQLException {
         return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "main", "brake_system");

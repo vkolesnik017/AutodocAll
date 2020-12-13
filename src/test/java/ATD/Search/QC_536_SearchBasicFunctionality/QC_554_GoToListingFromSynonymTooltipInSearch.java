@@ -1,9 +1,9 @@
 package ATD.Search.QC_536_SearchBasicFunctionality;
 
 import ATD.Search_page_Logic;
-import Common.SetUp;
 import AWS.CategoriesSynonyms_aws;
 import AWS.Login_aws;
+import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -16,9 +16,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import static Common.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.Selenide.open;
 
-public class QC_554_GoToLisingFromSynonymTooltipInSearch {
+public class QC_554_GoToListingFromSynonymTooltipInSearch {
 
     private CategoriesSynonyms_aws categoriesSynonymsAws = new CategoriesSynonyms_aws();
 

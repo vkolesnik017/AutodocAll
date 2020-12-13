@@ -62,7 +62,7 @@ public class QC_563_CreatingAwsOrder_WithDeliveryToIsland {
                 .getUserDataInOrder();
         Assert.assertEquals(userData, userDataInCreateOrder);
         userDataInCreateOrder = orderAdd_page_aws.choosesDeliveryCountry("Italy")
-                .fillingPostalCodeInBlockDeliveryAddress("22060")
+                .fillingPostalCodeInBlockDeliveryAddress("22061")
                 .getUserDataInOrder();
         orderAdd_page_aws.selectedPaymentMethod("Vorkasse");
         deliveryCost = orderAdd_page_aws.selectedDeliveryMethod("Standardversand")

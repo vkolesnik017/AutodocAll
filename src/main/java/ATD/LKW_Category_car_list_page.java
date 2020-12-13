@@ -113,6 +113,10 @@ public class LKW_Category_car_list_page {
         return $x("//div[@id='selected-instalation__slider']");
     }
 
+    SelenideElement brandBlockInSideBar() {
+        return $x("//div[@class='filter-brand-top js-brands-filter js-filter-wrapper  js-filter-50002']");
+    }
+
     SelenideElement brandsOfBrandBlock(String idOfBrand) {
         return $x("//input[@id='" + idOfBrand + "']/..");
     }
@@ -327,7 +331,7 @@ public class LKW_Category_car_list_page {
 
     ElementsCollection dangerousProducts() {return $$x("//span[@class='dangerous-listing__show-more']/ancestor::div[@class='rec_products_block']");}
 
-    ElementsCollection signalWordOfDangerousProduct() {return $$x("//div[@class='dangerous-listing__title hazard-attention-title']");}
+    ElementsCollection signalWordOfDangerousProduct() {return $$x("//div[contains(@class,'dangerous-listing__title')]");}
 
     SelenideElement blackBackground() {return $x("//div[@class='overlay black hidden']");}
 
