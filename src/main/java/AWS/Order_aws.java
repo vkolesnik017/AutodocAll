@@ -71,6 +71,10 @@ public class Order_aws {
         return $x("//button[contains(@class,'submit-order')]");
     }
 
+    private SelenideElement orderSearchTad() {
+        return $x("(//ul[@id='mobile-nav']//li//a[contains(@href,'search-orders')])[3]");
+    }
+
     private SelenideElement fieldNameInBilling() {
         return $x("//input[@id='form_Order[rVorname]']");
     }
@@ -908,6 +912,12 @@ public class Order_aws {
         return this;
     }
 
+    @Step("Click order search tab button. Order_aws")
+    public SearchOrders_page_aws clickOrderSearchTad() {
+        orderSearchTad().click();
+        return page(SearchOrders_page_aws.class);
+    }
+
     @Step("Save order. Order_aws")
     public Order_aws saveOrder() {
         btnChangeOrderStatusInTest().scrollTo();
@@ -1102,8 +1112,9 @@ public class Order_aws {
     @Step("Get the total cost including selling cost {sellingCost} delivery cost {deliveryCost} and safe order {safeOrderCost}. Order_aws")
     public Float getTotalCostIncludingDeliveryAndSafeOrder(Float sellingCost, Float deliveryCost, Float safeOrderCost) {
         Float cost = sellingCost + deliveryCost + safeOrderCost;
-        String formatCost = new DecimalFormat(".##").format(cost).replaceAll(",", ".");
-        return Float.valueOf(formatCost);
+        float actualTotalCost = getTotalPriceOrderAWS();
+        float res = roundOfTheCost(cost, actualTotalCost);
+        return res;
     }
 
     @Step("Get the total cost including selling cost {sellingCost} delivery cost {deliveryCost} and delivery cost of heavy loads {costOfHeavyLoads}. Order_aws")
@@ -1163,8 +1174,9 @@ public class Order_aws {
             sumOfAllGoods = sumOfAllGoods + priceOfOneItem;
         }
         Float sum = (sumOfAllGoods + costDeliveryAndSafeOrder);
-        String totalSum = new DecimalFormat(".##").format(sum).replaceAll(",", ".");
-        return Float.valueOf(totalSum);
+        float actualTotalCost = getTotalPriceOrderAWS();
+        float res = roundOfTheCost(sum, actualTotalCost);
+        return res;
     }
 
     @Step("Plus the selling price of all added items including delivery. Order_aws")
@@ -1313,15 +1325,33 @@ public class Order_aws {
         return this;
     }
 
+    @Step("Check postal code inside field postal code {expectedCod} in billing block. Order_aws")
+    public Order_aws checkPostalCodInBillingBlock(String expectedCod) {
+        fieldPostcodeInBilling().shouldHave(value(expectedCod));
+        return this;
+    }
+
     @Step("Filling fields postal code {postalCod} in shipping. Order_aws")
     public Order_aws fillingFieldsPostalCodInShipping(String postalCod) {
         fieldPostcodeInDeliveryAddress().setValue(postalCod);
         return this;
     }
 
+    @Step("Check postal code inside field postal code {expectedCod} in shipping block. Order_aws")
+    public Order_aws checkPostalCodInShippingBlock(String expectedCod) {
+        fieldPostcodeInDeliveryAddress().shouldHave(value(expectedCod));
+        return this;
+    }
+
     @Step("Check presence expected element. Order_aws")
     public Order_aws checkPresenceExpectedElement(SelenideElement element) {
         element.shouldHave(visible);
+        return this;
+    }
+
+    @Step("Check absence expected element. Order_aws")
+    public Order_aws checkAbsenceExpectedElement(SelenideElement element) {
+        element.shouldNotBe(visible);
         return this;
     }
 }

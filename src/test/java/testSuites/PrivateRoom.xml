@@ -50,7 +50,7 @@
             <!--<class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_659_EnterPassLessThenFourCharacters"/>-->
             <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_660_ChangePassword_NewPassNotEqualConfirmPass"/>
             <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_661_SuccessfulChangeOfEmailInPR"/>
-            <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_665_LoginWithNewEmail"/>
+            <!--<class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_665_LoginWithNewEmail"/>-->
             <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_667_LoginUnderTheOldEmailAfterChangingIt"/>
             <!--<class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_668_ChangeEmail_AllFieldsAreEmpty"/>-->
             <!--<class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_671_ChangeEmail_ConfirmEmailFieldIsEmpty"/>-->

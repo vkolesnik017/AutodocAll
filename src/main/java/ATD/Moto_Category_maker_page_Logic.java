@@ -167,6 +167,7 @@ public class Moto_Category_maker_page_Logic extends Moto_Category_maker_page {
 
     @Step("check applicability brand motorcycle and Product .Moto_Category_maker_page")
     public Moto_Category_maker_page_Logic checkApplicabilityMotoAndProduct(String motoBrand) {
+
         for (int i = 0; i < imageOfTopProducts().size(); i++) {
             clickOnTopProductImage(i).checkCompatibilityProductAndMoto(motoBrand);
             back();

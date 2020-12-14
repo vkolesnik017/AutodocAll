@@ -64,4 +64,16 @@ public class Group_list_page_Logic extends Group_list_page {
         }
         return this;
     }
+
+    @Step(": from. Group_list_page")
+    public AutodocClub_page_Logic clickBannerAutodocClub() {
+        return new Product_page_Logic().clickBannerAutodocClub();
+    }
+
+    @Step(": from. Group_list_page")
+    public String getUrlAutodocClubFromBannerAutodocClub() {
+        return new Product_page_Logic().getUrlAutodocClubFromBannerAutodocClub();
+    }
+
+
 }

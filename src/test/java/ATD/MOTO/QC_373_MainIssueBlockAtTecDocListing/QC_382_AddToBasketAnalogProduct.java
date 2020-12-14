@@ -29,7 +29,7 @@ public class QC_382_AddToBasketAnalogProduct {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list15");
     }
 
     @Test(dataProvider = "routes")
@@ -39,13 +39,12 @@ public class QC_382_AddToBasketAnalogProduct {
     public void testChecksAddToBasketAnalogProduct(String route) {
         openPage(route);
 
-        String idOfAddedProduct = carListPage.getIdOfAnalogProduct();
+        String idOfAddedProduct = carListPage.getIdOfAnalogProduct("26-8048");
         carListPage.addProductToBasketFromAnalogBlock();
         new Cart_page_Logic().checkOfIdAddedProductInBasket(idOfAddedProduct);
     }
 
-                         /*ВРЕМЕННО ОТЛЮЧАЮ ЭТОТ РУТ , ТАК КАК ОН БОЛЬШЕ НЕ СООТВЕТСТВУЕТ УСЛОВИЮ ТЕСТА*/
-/*    @DataProvider(name = "routesCarListModel", parallel = true)
+    @DataProvider(name = "routesCarListModel", parallel = true)
     Object[] dataProviderCarListModel() throws SQLException {
         return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list_model2");
     }
@@ -57,10 +56,10 @@ public class QC_382_AddToBasketAnalogProduct {
     public void testChecksAddToBasketAnalogProductCarListModel(String route) {
         openPage(route);
 
-        String idOfAddedProduct = carListModelPage.getIdOfAnalogProduct();
+        String idOfAddedProduct = carListModelPage.getIdOfAnalogProduct("26-8048");
         carListModelPage.addProductToBasketFromAnalogBlock();
         new Cart_page_Logic().checkOfIdAddedProductInBasket(idOfAddedProduct);
-    }*/
+    }
 
     @AfterMethod
     public void close() {

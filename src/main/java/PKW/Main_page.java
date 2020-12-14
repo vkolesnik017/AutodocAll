@@ -227,7 +227,7 @@ public class Main_page {
     }
 
     SelenideElement promotionTextInTheFooter() {
-        return $x("//*[@class='promotion-text']");
+        return $x("//*[@class='promotion-text__text']");
     }
 
     SelenideElement ratingLineHeader() {

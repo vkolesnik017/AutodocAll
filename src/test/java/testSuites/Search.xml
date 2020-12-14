@@ -8,12 +8,13 @@
 
     <test name="QC_536_SearchBasicFunctionality">
         <classes>
-            <!--<class name="ATD.Search.QC_536_SearchBasicFunctionality.QC_537_SearchByBrand"/>-->
+            <class name="ATD.Search.QC_536_SearchBasicFunctionality.QC_891_SearchByAnyCriteria"/>
+            <class name="ATD.Search.QC_536_SearchBasicFunctionality.QC_537_SearchByBrand"/>
             <class name="ATD.Search.QC_536_SearchBasicFunctionality.QC_538_SearchByGeneric"/>
             <class name="ATD.Search.QC_536_SearchBasicFunctionality.QC_539_SearchByArticle"/>
             <class name="ATD.Search.QC_536_SearchBasicFunctionality.QC_540_SearchByValueReifen"/>
             <class name="ATD.Search.QC_536_SearchBasicFunctionality.QC_541_SearchByOenNumber"/>
-            <class name="ATD.Search.QC_536_SearchBasicFunctionality.QC_554_GoToLisingFromSynonymTooltipInSearch"/>
+            <class name="ATD.Search.QC_536_SearchBasicFunctionality.QC_554_GoToListingFromSynonymTooltipInSearch"/>
             <class name="ATD.Search.QC_536_SearchBasicFunctionality.QC_2668_SearchByBrandAndArticle"/>
             <class name="ATD.Search.QC_536_SearchBasicFunctionality.QC_2669_CorrectnessOfIssueBySearchingOenAndBrand"/>
         </classes>

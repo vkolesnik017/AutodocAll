@@ -16,6 +16,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.*;
 import static Common.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1939_CheckRouteAddressPermeabilityWenEnteringPackstationIntoOtherInputsExceptStrasse_ATD {
@@ -35,7 +36,7 @@ public class QC_1939_CheckRouteAddressPermeabilityWenEnteringPackstationIntoOthe
                 .signIn(mail, password);
     }
 
-    @DataProvider(name = "blockingWords", parallel = false)
+    @DataProvider(name = "blockingWords")
     Object[] blockingWords() {
         return new Object[][]{
                 {"Packstation"}, {"Backstation"}, {"Bakstation"}, {"DHLPackstation"}, {"DHL-Packstation"}, {"Paackstation"}, {"Pack Station"},
@@ -52,9 +53,9 @@ public class QC_1939_CheckRouteAddressPermeabilityWenEnteringPackstationIntoOthe
     @Flaky
     @Description(value = "Test checks of route Address permeability when entering Packstation into other inputs except Strasse")
     public void testCheckRouteAddressPermeabilityWenEnteringPackstationIntoOtherInputsExceptStrasse(String blockingWords) throws SQLException {
-        cartAddress_page_logic.vorname().setValue(blockingWords);
-        cartAddress_page_logic.nameIn().setValue(blockingWords);
-        cartAddress_page_logic.ort().setValue(blockingWords);
+        cartAddress_page_logic.vorname().shouldBe(visible).setValue(blockingWords);
+        cartAddress_page_logic.nameIn().shouldBe(visible).setValue(blockingWords);
+        cartAddress_page_logic.ort().shouldBe(visible).setValue(blockingWords);
         cartAddress_page_logic.nextBtnClick();
         checkingContainsUrl("/basket/payments");
         cartPayments_page_logic.clickBtnReturnTheAddressPage();

@@ -185,4 +185,6 @@ public class Moto_Product_page {
     ElementsCollection titleOfAnalogProduct() {return $$x("//div[@class='product-list__item__title']/a");}
 
     SelenideElement mainProductTitle() {return $x("//div[@class='product-block__description__title product-block__equal-height-wrap']/h2/span[1]");}
+
+    SelenideElement applicableMotoBlock() {return $x("//div[@class='product-info-block-accordion js--roll-up']/div[contains(@class,'product-info-block--moto')]");}
 }

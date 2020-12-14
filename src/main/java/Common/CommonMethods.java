@@ -24,16 +24,32 @@ public class CommonMethods {
         BigDecimal result = new BigDecimal(cost);
         BigDecimal formatCostUp = result.setScale(2, RoundingMode.UP);
         float roundMax = Float.parseFloat(String.valueOf(formatCostUp));
-        BigDecimal formatCostDOWN = result.setScale(2, RoundingMode.FLOOR);
-        float roundMin = Float.parseFloat(String.valueOf((formatCostDOWN)));
+        BigDecimal formatCostDown = result.setScale(2, RoundingMode.FLOOR);
+        float roundMin = Float.parseFloat(String.valueOf((formatCostDown)));
         float res = 0.0f;
         if (expectedCost.equals(roundMax)) {
             return res = roundMax;
+        } else {
+            BigDecimal resultAfter = new BigDecimal(roundMax);
+            BigDecimal costUP = resultAfter.setScale(2, RoundingMode.UP);
+            float formatCostUP = Float.parseFloat(String.valueOf(costUP));
+            if (expectedCost.equals(formatCostUP)) {
+                return res = formatCostUP;
+            }
+        }
+        if (expectedCost.equals(roundMin)) {
         }
         if (expectedCost.equals(roundMin)) {
             return res = roundMin;
+        } else {
+            BigDecimal resultAfter = new BigDecimal(roundMin);
+            BigDecimal costDOWN = resultAfter.setScale(2, RoundingMode.DOWN);
+            float formatCostDOWN = Float.parseFloat(String.valueOf(costDOWN));
+            if (expectedCost.equals(formatCostDOWN)) {
+                return res = formatCostDOWN;
+            }
+            return res;
         }
-        return res;
     }
 
     @Step("Sending email notification about page loading time")

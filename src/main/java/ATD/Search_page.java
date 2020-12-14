@@ -252,6 +252,10 @@ public class Search_page {
         return $$x("//ul[@class='branded-slider slick-initialized slick-slider']//li//label").filter(visible);
     }
 
+    ElementsCollection visibleBrandsInSideBar() {
+        return $$x("//div[@id='mCSB_1_container']//li//label");
+    }
+
     ElementsCollection addedProductToWishListLabel() {return $$x("//span[@class='add-to-wishlist title_btn add-to-wishlist--added remove-article']");}
 
     SelenideElement currentCountOfProductInWishList() {return $x("//span[@class='header__wishes-count header__wishes-count--added']");}
@@ -317,6 +321,8 @@ public class Search_page {
     SelenideElement leftPaginatorOfGenericBlock() {return $x("//span[@class='prev slick-arrow']");}
 
     SelenideElement titleOfProductWithArtNum(String artNum) {return $x("//span[contains(text(),'Artikelnummer')]/span/span[contains(text(),'"+artNum+"')]/ancestor::span/../a");}
+
+    ElementsCollection importantOptionsOfProduct(int positionOfProduct) {return $$x("(//ul[@class='criteria'])["+positionOfProduct+"]/li/span[1]");}
 
 }
 

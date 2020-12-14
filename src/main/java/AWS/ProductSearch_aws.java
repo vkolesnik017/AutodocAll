@@ -69,6 +69,14 @@ public class ProductSearch_aws {
         return $(byId("form_filterSearch[isDisabled]"));
     }
 
+    private SelenideElement secondSearchFilter() {
+        return $(byId("form_filterSearch[isNotAvailable]"));
+    }
+
+    private SelenideElement sortingFilter() {
+        return $(byId("form_filterSearch[sort]"));
+    }
+
     private SelenideElement availabilityAtSupplierFilter() {
         return $(byId("form_filterSearch[inSuplierStocks]"));
     }
@@ -145,13 +153,28 @@ public class ProductSearch_aws {
 
     @Step("select category. ProductSearch_aws")
     public ProductSearch_aws selectCategory(String idOfCategory) {
-        categoryFiled().setValue(idOfCategory).pressEnter();
+        categoryFiled().shouldBe(visible).setValue(idOfCategory).pressEnter();
         return this;
     }
 
     @Step("select first search filter. ProductSearch_aws")
     public ProductSearch_aws selectFirstSearchFilter(String filer) {
         firstSearchFilter().selectOptionByValue(filer);
+        firstSearchFilter().shouldHave(exactValue(filer));
+        return this;
+    }
+
+    @Step("select second search filter. ProductSearch_aws")
+    public ProductSearch_aws selectSecondSearchFilter(String filer) {
+        secondSearchFilter().selectOptionByValue(filer);
+        secondSearchFilter().shouldHave(exactValue(filer));
+        return this;
+    }
+
+   @Step("set sorting filter. ProductSearch_aws")
+    public ProductSearch_aws setSortingFilter(String filter) {
+       sortingFilter().selectOptionByValue(filter);
+       sortingFilter().shouldHave(exactValue(filter));
         return this;
     }
 

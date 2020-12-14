@@ -46,12 +46,19 @@
             <class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_664_AppearsErrorThatBrandCarNotSelected"/>
             <class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_666_AppearsErrorThatModelCarNotSelected"/>
             <class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_669_AppearsErrorThatTypeCarNotSelected"/>
-            <class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_670_UseHorizontalSelectorWithChooseBrandModelType"/>
             <class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_672_UseHorizontalSelectorWhenChosenExistingKBA"/>
             <class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_674_AppearsErrorThatKbaNumberNotFilled"/>
             <class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_675_ResetHorizontalCarSelector"/>
             <class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_681_AppearsTooltipChooseBrandFirstTimeEnterSession"/>
             <class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_682_DisplayChooseModelTooltipFirstTimeEnterSession"/>
+        </classes>
+    </test>
+
+    <test name="QC_2676_Selectors_Car">
+        <classes>
+            <class name="ATD.Selectors.QC_2676_Selectors_Car.QC_942_CompatibilityList_TestNotCompatibleCarAndProduct"/>
+            <class name="ATD.Selectors.QC_2676_Selectors_Car.QC_3048_CheckTransitionOnProductWithNotCompatibleCar"/>
+            <class name="ATD.Selectors.QC_2676_Selectors_Car.QC_670_CheckTransitionOnProductWithCompatibleCar"/>
         </classes>
     </test>
 

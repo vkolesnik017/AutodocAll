@@ -1,5 +1,6 @@
 package ATD.Tyres.QC_1104_TyresSelector;
 
+import ATD.Tyres_feature_page_Logic;
 import ATD.Tyres_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
@@ -34,7 +35,6 @@ public class QC_2712_DisplayOfDefaultParametersInSelector {
     public void testCheckDisplayOfDefaultParametersInSelector(String route) {
         openPage(route);
         new Tyres_page_Logic().defaultValuesOfSelector("205", "55", "16").checkOfSeasonSelector();
-        System.out.println();
     }
 
     @DataProvider(name = "routesOffRoad", parallel = true)
@@ -77,6 +77,20 @@ public class QC_2712_DisplayOfDefaultParametersInSelector {
     public void testCheckDisplayOfDefaultParametersInSelectorMoto(String route) {
         openPage(route);
         new Tyres_page_Logic().defaultValuesOfSelector("120", "70", "17").checkOfSeasonMotoSelector("0");
+    }
+
+    @DataProvider(name = "routesFeature", parallel = true)
+    Object[] dataProviderFeature() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_feature");
+    }
+
+    @Test(dataProvider = "routesFeature")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test checks displaying of default parameters in selector at main page")
+    public void testCheckDisplayOfDefaultParametersInSelectorFeature(String route) {
+        openPage(route);
+        new Tyres_feature_page_Logic().defaultValuesOfSelector("205", "55", "16").checkOfSeasonSelector();
     }
 
     @AfterMethod

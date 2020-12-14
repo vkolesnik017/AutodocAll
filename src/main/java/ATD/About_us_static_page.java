@@ -8,6 +8,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 class About_us_static_page {
 
+
     SelenideElement imageTwelve() {
         return $(By.xpath("//*[@class='about-10years__10']//img"));
     }

@@ -2,13 +2,16 @@ package ATD;
 
 import Common.DataBase;
 import com.codeborne.selenide.ElementsCollection;
+import files.Product;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static ATD.CommonMethods.getTextFromUnVisibleElement;
 import static com.codeborne.selenide.CollectionCondition.*;
@@ -131,7 +134,7 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
                 clickOnProductInTecDocListing(i).checkCompatibilityProductAndTruck();
                 back();
             }
-      }
+        }
         return this;
     }
 
@@ -270,7 +273,9 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
 
     @Step("check visibility of Brands block .LKW_Category_car_list_page")
     public LKW_Category_car_list_page_Logic visibilityOfBrandsBlock() {
-        brandBlock().shouldBe(visible);
+        if (!brandBlock().isDisplayed()) {
+            brandBlockInSideBar().shouldBe(visible);
+        }
         return this;
     }
 
@@ -783,8 +788,12 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         labelTitleDangerousProducts().get(positionOfProduct).shouldBe(visible).click();
         blackBackground().shouldHave(attribute("style", "display: block;"));
         warningPopUp().shouldBe(visible).shouldHave(attribute("style", "display: block;"));
-        titleOfDangerousPopUp().shouldBe(visible).shouldHave(exactText(signalWord));
-        infoTextOfDangerousPopUp().shouldNotBe(empty);
+        if (signalWord.replaceAll("\n","").trim().equals("Beachten Sie!")) {
+            infoTextOfDangerousPopUp().shouldNotBe(empty);
+        } else {
+            titleOfDangerousPopUp().shouldBe(visible).shouldHave(exactText(signalWord));
+            infoTextOfDangerousPopUp().shouldNotBe(empty);
+        }
         return this;
     }
 
@@ -823,6 +832,67 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
             attributeOfDangerousIcon.add(partOfAttribute);
         }
         Assert.assertEquals(attributeOfDangerousIcon, attributeOfWarningIcon);
+        return this;
+    }
+
+    @Step("selecting of installation side  .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic selectInstallationSide(int positionOfSide) {
+        installationSideBlock().shouldBe(visible);
+        sidesOfInstallation().get(positionOfSide).click();
+        appearsOfLoader();
+        return this;
+    }
+
+    @Step("get generics from sideBar. LKW_Category_car_list_page")
+    public List<String> getGenericsFromSideBar() {
+        List<String> generics = genericsFromSideBar().stream().map(n -> n.getText()).collect(Collectors.toList());
+        return generics;
+    }
+
+    @Step("check sorting of products with grey button. LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic checkSortingOfProductsWithGreyButton(List<String> generics) {
+        List<Product> productList = new ArrayList<>();
+        addProductToList(productList, productsFromListBlock());
+        while (forwardOfListing().isDisplayed()) {
+            forwardOfListing().click();
+            addProductToList(productList, productsFromListBlock());
+        }
+        List<Product> listBeforeSorting = new ArrayList<>(productList);
+
+        Comparator<String> genericsComparator = (g1, g2) -> {
+            if (!generics.contains(g1)) {
+                return 1;
+            }
+            if (!generics.contains(g2)) {
+                return -1;
+            }
+            return generics.indexOf(g1) - generics.indexOf(g2);
+        };
+        Comparator<Product> productsComparator = Comparator
+                .comparing((Product p) -> "button ".equals(p.getAttributeOfButton()) ? -1 : 0)
+                .thenComparing(Product::getGenericOfProduct, genericsComparator);
+        productList.sort(productsComparator);
+        Assert.assertEquals(listBeforeSorting, productList);
+        return this;
+    }
+
+    @Step("added product to list. LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic addProductToList(List<Product> activeList, ElementsCollection products) {
+        for (int i = 0; i < products.size(); i++) {
+            Product product = new Product();
+            product.setGenericOfProduct(products.get(i).getAttribute("data-name"));
+            product.setAttributeOfButton(attributeOfBtnAddedToBasket().get(i).getAttribute("class"));
+            activeList.add(product);
+        }
+        return this;
+    }
+
+    @Step("select any visible brands. LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic selectAnyVisibleBrands(int countOfBrands) {
+        for (int i = 0; i < countOfBrands; i++) {
+            activeBrands().get(0).shouldBe(visible).click();
+            appearsOfLoader();
+        }
         return this;
     }
 }

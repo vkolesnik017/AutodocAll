@@ -56,6 +56,12 @@ public class Tyres_page_Logic extends Tyres_page {
         return this;
     }
 
+    @Step("Select Diameter. Tyres_page")
+    public Tyres_page_Logic selectDiameterInSelector(String diameter) {
+        diameterDropdown().selectOptionByValue(diameter);
+        return this;
+    }
+
     @Step("Click Submit Tyres Selector. Tyres_page")
     public TyresListing_page_Logic clickSubmitTyresSelector() {
         submitTyresSelectorButton().click();
@@ -360,11 +366,11 @@ public class Tyres_page_Logic extends Tyres_page {
 
     @Step("Click on the tyres in top block . Tyres_page")
     public Tyres_page_Logic clickTyresInTopBlock() {
-        TyresProduct_page tyresProduct_page = new TyresProduct_page();
+        Tyre_item_page_Logic tyre_item_page_logic = new Tyre_item_page_Logic();
         topBlock().shouldBe(visible);
         for (int i = 0; i < imagesProductInTopBlock().size(); i++) {
             imagesProductInTopBlock().get(i).scrollIntoView("{block: \"center\"}").waitUntil(visible, 4000).click();
-            tyresProduct_page.addButtonToBasket().waitUntil(visible, 4000).shouldBe(visible);
+            tyre_item_page_logic.addButtonToBasket().waitUntil(visible, 4000).shouldBe(visible);
             back();
         }
         return this;
@@ -600,7 +606,7 @@ public class Tyres_page_Logic extends Tyres_page {
         String mainTitle = mainHeadline().shouldBe(visible).getText();
         checkTransitionsOfVisibleLinkingBlock(url, mainTitle);
         /*ВРЕМЕННО ОТКЛЮЧЕНА ПРОВЕРКА*/
-    //    checkTransitionsOfLastLinkingBlock(url, mainTitle);
+        //    checkTransitionsOfLastLinkingBlock(url, mainTitle);
         return this;
     }
 

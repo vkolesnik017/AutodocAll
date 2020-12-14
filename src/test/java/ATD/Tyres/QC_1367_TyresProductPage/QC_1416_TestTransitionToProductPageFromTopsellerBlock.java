@@ -1,8 +1,8 @@
 package ATD.Tyres.QC_1367_TyresProductPage;
 
 
+import ATD.Tyre_item_page_Logic;
 import Common.SetUp;
-import ATD.TyresProduct_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -35,7 +35,7 @@ public class QC_1416_TestTransitionToProductPageFromTopsellerBlock {
     @Description(value = "Test Checks Transition To Product Page From Topseller Block")
     public void testTransitionToProductPageFromTopsellerBlock(String route) {
         openPage(route);
-        new TyresProduct_page_Logic().checkTransitionToProductPageFromTopsellerBlock();
+        new Tyre_item_page_Logic().checkTransitionToProductPageFromTopsellerBlock();
     }
 
     @AfterMethod

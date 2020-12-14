@@ -142,5 +142,7 @@ class TyresListing_page {
 
     SelenideElement productListingOnPage() { return $x("//ul[@class='list_products']/li"); }
 
-
+    SelenideElement titleTiresWinter() {
+        return $x("//*[contains(@class,'title_tires')]");
+    }
 }

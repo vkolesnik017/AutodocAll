@@ -48,8 +48,8 @@ public class QC_1395_Firm_SplitBilling_TwoFirms_DifferentCountries_PositiveCase_
     @Test(dataProvider = "routeEN")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks the successful execution of an order with split billing, two firms, the different countries, for EN shop. Positive Case.")
-    public void testSuccessfulPlacementOfOrder_TwoFirm_DifferentCountries_EN(String routeEN) {
+    @Description(value = "Test checks the successful execution of an order with split billing, two firms, the different countries, for BE shop. Positive Case.")
+    public void testSuccessfulPlacementOfOrder_TwoFirm_DifferentCountries_BE(String routeEN) {
         vatForBE = new PageVAT_aws().getVatForBE();
         openPage(routeEN);
         String shop = getCurrentShopFromJSVarInHTML();

@@ -6,10 +6,12 @@ import com.codeborne.selenide.ElementsCollection;
 import files.Product;
 import io.qameta.allure.Step;
 import org.testng.Assert;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.*;
 import java.util.stream.Collectors;
+
 import static ATD.CommonMethods.*;
 import static PKW.CommonMethods.getTextFromUnVisibleElement;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
@@ -370,8 +372,14 @@ public class Search_page_Logic extends Search_page {
 
     @Step("check visible brands. Search_page")
     public Search_page_Logic checkVisibleBrands() {
-        for (int i = 0; i < 2; i++) {
-            visibleBrands().get(i).shouldBe(exist);
+        if (visibleBrands().get(0).has(exist)) {
+            for (int i = 0; i < 2; i++) {
+                visibleBrands().get(i).shouldBe(exist);
+            }
+        } else if (visibleBrandsInSideBar().get(0).isDisplayed()) {
+            for (int i = 0; i < 10; i++) {
+                visibleBrandsInSideBar().get(i).shouldBe(visible);
+            }
         }
         return this;
     }
@@ -748,6 +756,16 @@ public class Search_page_Logic extends Search_page {
         return this;
     }
 
+    @Step("checking the matching options. Search_page")
+    public Search_page_Logic checkMatchingOptions(List<String> matchingList, int positionOfProduct) {
+        List<String> optionsFromProduct = importantOptionsOfProduct(1).stream().map(n -> n.getText().replaceAll(".+\\w", "")).collect(Collectors.toList());
 
+        for (int i = 0; i < matchingList.size(); i++) {
+            for (int j = 0; j < optionsFromProduct.size(); j++) {
+                matchingList.contains(optionsFromProduct.get(j));
+            }
+        }
+        return this;
+    }
 }
 

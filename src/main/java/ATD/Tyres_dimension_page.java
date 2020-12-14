@@ -71,4 +71,12 @@ public class Tyres_dimension_page {
     SelenideElement btnCloseSentLetterPopUp() {return $x("//a[@class='close']");}
 
     SelenideElement countOfProductInListing() {return $x("//div[@class='items_on_page']");}
+
+    ElementsCollection productQuantity() {return $$x("//div[@class='count']/input");}
+
+    ElementsCollection btnPlusInQuantityCounter() { return $$x("//a[@class='add']"); }
+
+    ElementsCollection btnMinusInQuantityCounter() {return $$x("//a[@class='remove']");}
+
+    ElementsCollection counterOfProduct() {return $$x("//div[@class='count']/input");}
 }

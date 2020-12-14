@@ -12,8 +12,6 @@ import io.qameta.allure.Step;
 import org.testng.Assert;
 
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +19,7 @@ import java.util.Random;
 import java.util.stream.Collectors;
 
 import static ATD.CommonMethods.*;
+import static Common.CommonMethods.roundOfTheCost;
 import static PKW.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.CollectionCondition.sizeLessThan;
@@ -33,7 +32,7 @@ public class Product_page_Logic extends Product_page {
     @Step("Checks that links contain pdf file")
     public void checkPdfLinksForDownload() {
         for (int i = 0; i < pdfLinksForDownload().size(); i++) {
-            Assert.assertTrue(pdfLinksForDownload().get(i).attr("href").contains(".pdf"), "Document for tutorial downloading is not in .pdf format");
+            Assert.assertTrue(pdfLinksForDownload().get(i).attr("url").contains(".pdf"), "Document for tutorial downloading is not in .pdf format");
         }
     }
 
@@ -801,18 +800,7 @@ public class Product_page_Logic extends Product_page {
 
     @Step("Checks product price on site matches price on alldata page including VAT. Product_page")
     public Product_page_Logic checkProductPriceOnSitesMatchesPriceOnAllDataPageIncludingVat(Float priceWithVatPerAllDataPage, Float priceProductPerProductPage) {
-        BigDecimal result = new BigDecimal(priceWithVatPerAllDataPage);
-        BigDecimal formatPriceUp = result.setScale(2, RoundingMode.UP);
-        float roundMax = Float.parseFloat(String.valueOf(formatPriceUp));
-        BigDecimal formatPriceDOWN = result.setScale(2, RoundingMode.FLOOR);
-        float roundMin = Float.parseFloat(String.valueOf((formatPriceDOWN)));
-        float res = 0.0f;
-        if (priceProductPerProductPage.equals(roundMax)) {
-            res = roundMax;
-        }
-        if (priceProductPerProductPage.equals(roundMin)) {
-            res = roundMin;
-        }
+        float res = roundOfTheCost(priceWithVatPerAllDataPage, priceProductPerProductPage);
         Assert.assertEquals(res, priceProductPerProductPage);
         return this;
     }
@@ -1079,10 +1067,16 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
+    @Step("presence of compatibility car. Product_page")
+    public Product_page_Logic presenceOfCompatibilityCar() {
+        compatibilityVehicleBlock().shouldBe(visible);
+        return this;
+    }
+
     @Step("click on Third bread crumb link. Product_page")
     public Category_car_list_page_Logic clickOnThirdBreadCrumbLink(int position) {
         breadcrumbsBlock().shouldBe(visible);
-        breadCrumbLinks().get(position).shouldBe(visible).click();
+        breadCrumbLinks().get(position).shouldBe(visible).hover().click();
         return page(Category_car_list_page_Logic.class);
     }
 
@@ -1099,4 +1093,30 @@ public class Product_page_Logic extends Product_page {
         titleOfProduct().shouldBe(visible).shouldHave(text(alternativeTitle));
         return this;
     }
+
+    @Step("popup about the incompatibility of car and product. Product page")
+    public Product_page_Logic incompatibilityOfCarAndProductPopUp(String expectedText) {
+        infoPopUp().shouldBe(visible).shouldHave(text(expectedText));
+        return this;
+    }
+
+    @Step("visibility of car match block. Product page")
+    public Product_page_Logic visibilityOfCarMatchBlock(String car) {
+        infoBlockWithSelectedCar().shouldBe(visible).shouldHave(text(car));
+        return this;
+    }
+
+    @Step("Click banner autodoc club. Product_page")
+    public AutodocClub_page_Logic clickBannerAutodocClub() {
+        bannerAutodocClub().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        bannerAutodocClub().click();
+        return page(AutodocClub_page_Logic.class);
+    }
+
+    @Step("get url autodoc club from banner autodoc club. Product_page")
+    public String getUrlAutodocClubFromBannerAutodocClub() {
+        return bannerAutodocClub().getAttribute("url");
+    }
+
+
 }

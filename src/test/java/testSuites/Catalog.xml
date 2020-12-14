@@ -22,7 +22,6 @@
 
     <test name="QC_613_DisplayAllUndercategoriesTecdocCatalog">
         <classes>
-<!--            <class name="ATD.Catalog.QC_613_DisplayAllUndercategoriesTecdocCatalog.QC_614_DisplayUndercategoriesInCatalogRouteWithCar"/>-->
             <class name="ATD.Catalog.QC_613_DisplayAllUndercategoriesTecdocCatalog.QC_615_PresenceSubcategoriesOnFaqRootAndCatalogWithoutVehicle"/>
         </classes>
     </test>
@@ -35,6 +34,9 @@
 
     <test name="QC_2626_TecdocCatalog_SidebarCatalog_TopCategories">
         <classes>
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_116_AllChildCategoriesBlockOfParent"/>
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_178_TopParentAndChildCategoriesBlocks"/>
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_654_PrioritizationCategoriesInTopCategoriesBlock"/>
             <!--<class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_2632_PrioritizationParentsOnMainPageBrand"/>
             <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_2637_OpenAllParentsSidebarCatalog"/>-->
             <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_2580_PresenceBlockWithEngineTypesAndTransitionByThem"/>

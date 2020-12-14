@@ -122,11 +122,11 @@ public class Product_page {
     }
 
     public SelenideElement productImageBlock() {
-        return $(".im-prod-zoom");
+        return $x("//div[@class='product-block__main-image']");
     }
 
     public SelenideElement imageInSlider() {
-        return $x("//*[@class='product-thumbnail-slider']/li[2]");
+        return $x("//*[contains(@class,'product-thumbnail-slider')]//div//li[6 ]");
     }
 
     public SelenideElement closeFullImagePreview() {
@@ -169,24 +169,8 @@ public class Product_page {
         return $x("//div[2][@class='product-same-specification__item']//a");
     }
 
-    public SelenideElement minicardsBlock() {
-        return $(".product-same-artikel-tyres");
-    }
-
-    public SelenideElement productInMinicard() {
-        return $x("//*[contains(@class,'product-list__item active')]");
-    }
-
-    public SelenideElement tetleMiniCardBlock() {
-        return $(".top-product-block__title");
-    }
-
-    public SelenideElement characteristicsInMinicard() {
-        return $(".item-table-box");
-    }
-
     public SelenideElement videoBlock() {
-        return $(".product-video-tutorial__video");
+        return $(".slider-video-block__row");
     }
 
     public SelenideElement pdfTutorialsBlock() {
@@ -194,7 +178,7 @@ public class Product_page {
     }
 
     ElementsCollection pdfLinksForDownload() {
-        return $$(".tutorial-text > a");
+        return $$x("//div[@class='tutorial-text']//span[1]");
     }
 
     SelenideElement einzustellenderElektrodenabstandCharacteristic() {
@@ -220,7 +204,7 @@ public class Product_page {
     }
 
     public SelenideElement breadcrumbsFirstCategoryFromDropdown() {
-        return $x("//*[@id='mCSB_3_container']//li[2]");
+        return $x("//div[@id='child_categories']//li[2]");
     }
 
     public SelenideElement breadcrumbsCategoryButton() {
@@ -228,7 +212,7 @@ public class Product_page {
     }
 
     public SelenideElement breadcrumbsFirstParentCategoryFromDropdown() {
-        return $x("//*[@id='mCSB_2_container']//li[2]");
+        return $x("//div[@id='parent_categories']//li[2]");
     }
 
     public SelenideElement breadcrumbsParentCategoryDropdownButton() {
@@ -243,7 +227,7 @@ public class Product_page {
         return $(".parts_step_1");
     }
 
-    ElementsCollection breadCrumbLinks() {return $$x("//div[@class='steps breadcrumbs']/ul/li");}
+    ElementsCollection breadCrumbLinks() {return $$x("//div[@class='steps breadcrumbs']/ul/li/span/a");}
 
     //locators for FAQ block
     public SelenideElement faqSubmitButton() {
@@ -845,4 +829,12 @@ public class Product_page {
     ElementsCollection fullValueOfApplicabilityVehicle() {return $$x("//div[@class='accordion-content']//b");}
 
     ElementsCollection visibleCharacteristic() {return $$x("//div[@class='product-block__description__info']/ul/li").filter(visible);}
+
+    SelenideElement infoPopUp() {return $("div.txt ");}
+
+    SelenideElement bannerAutodocClub() {
+        return $x("//span[@class='club-link utm_link link']");
+    }
+
+
 }
