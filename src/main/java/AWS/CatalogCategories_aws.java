@@ -13,7 +13,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import static ATD.CommonMethods.openPage;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
 public class CatalogCategories_aws {
@@ -423,18 +423,9 @@ public class CatalogCategories_aws {
     public ArrayList<String> getAllParentGroupRating() {
         ArrayList<String> allGroupRating = new ArrayList<>();
         for (int i = 0; i < groupRatingInAws().size(); i++) {
-            if (!groupRatingInAws().get(i).getAttribute("value").isEmpty()) {
+            if (!groupRatingInAws().get(i).getAttribute("value").isEmpty() && !parentIdInAws().get(i).text().contains("4000")) {
                 String numRating = groupRatingInAws().get(i).getAttribute("value").trim();
                 allGroupRating.add(numRating);
-            }
-        }
-
-        ArrayList<String> notActiveGroupRatingInAws = new ArrayList<>();
-        for (int i = 0; i < notActiveGroupRatingInAws().size(); i++) {
-            if (!notActiveGroupRatingInAws().get(i).attr("value").isEmpty()) {
-                notActiveGroupRatingInAws.add(notActiveGroupRatingInAws().get(i).attr("value").trim());
-                allGroupRating.remove(notActiveGroupRatingInAws().get(i).attr("value"));
-
             }
         }
         return allGroupRating;
@@ -446,5 +437,35 @@ public class CatalogCategories_aws {
         openPage(parentCategoriesInAwsPage);
         return this;
     }
+
+
+    @Step("Creates list sorted any Elements by group rating. CatalogCategories_aws")
+    public List<String> createListAnyElementsByGroupRating(List<String> key, List<String> value) {
+        HashMap<String, Integer> awsMap = new HashMap<>();
+        for (int i = 0; i < key.size(); i++) {
+            String nameKey = key.get(i);
+            int nameValue = Integer.parseInt(value.get(i));
+            awsMap.put(nameKey, nameValue);
+        }
+        List<String> sortedList = awsMap.entrySet().stream()
+                .sorted(Map.Entry.<String, Integer>comparingByValue().reversed()).map(Map.Entry::getKey).collect(Collectors.toList());
+        return sortedList;
+    }
+
+    @Step("Creates list sorted with group rating. CatalogCategories_aws")
+    public List<Integer> createListWithGroupRating(List<String> key, List<String> value) {
+        HashMap<String, Integer> awsMap = new HashMap<>();
+        for (int i = 0; i < key.size(); i++) {
+            String nameKey = key.get(i);
+            int nameValue = Integer.parseInt(value.get(i));
+            awsMap.put(nameKey, nameValue);
+        }
+        List<Integer> sortedList = awsMap.entrySet().stream()
+                .sorted(Map.Entry.<String, Integer>comparingByValue().reversed()).map(Map.Entry::getValue).collect(Collectors.toList());
+        return sortedList;
+    }
+
+
+
 
 }

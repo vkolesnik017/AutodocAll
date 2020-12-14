@@ -27,7 +27,7 @@ public class QC_2423_CheckingAbsenceCharacteristicZustandOnRutCartForProduct3KBr
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product42");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product50");
     }
 
     @Test(dataProvider = "routes")
