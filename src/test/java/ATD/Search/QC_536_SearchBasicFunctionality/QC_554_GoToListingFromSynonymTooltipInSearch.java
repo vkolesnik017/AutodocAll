@@ -46,6 +46,23 @@ public class QC_554_GoToListingFromSynonymTooltipInSearch {
         new Search_page_Logic().checkGenericSynonyms(genericName, synonymsFromAWS);
     }
 
+    @DataProvider(name = "routeLKW")
+    Object[] dataProviderLKW() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "main");
+    }
+
+    @Test(dataProvider = "routeLKW")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "Going to listing through a generic synonym. All products have the expected generic in title")
+    public void testGoToListingFromSynonymTooltipSearchLKW(String route) {
+        new Login_aws().loginInAwsWithOpen();
+        open(categoriesSynonymsAws.urlWithSynonymTurboAndShopDE);
+        ArrayList<String> synonymsFromAWS = categoriesSynonymsAws.getGenericSynonymsAWS("2234");
+        open(route);
+        new Search_page_Logic().checkGenericSynonyms("lader", synonymsFromAWS);
+    }
+
     @AfterMethod
     public void close() {
         closeWebDriver();
