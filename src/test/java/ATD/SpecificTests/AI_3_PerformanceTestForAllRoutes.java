@@ -64,14 +64,14 @@ public class AI_3_PerformanceTestForAllRoutes {
         long percentDeviate = percentage - 100;
         if (percentDeviate > percent) {
 
-            SlackMessage slackMessage = SlackMessage.builder()
-                    .channel("Lavrynenko Olha")
-                    .username("Load bot")
-                    .text("Url: " + currentUrl + " Date: " + dateFormat.format(date) + ". Page load time: " + pageLoadTime_s + " s." + " Normal time is: 2 s.")
-                    .icon_emoji(":superman:")
-                    .as_user("false")
-                    .build();
-            SlackUtils.sendMessage(slackMessage);
+//            SlackMessage slackMessage = SlackMessage.builder()
+//                    .channel("Lavrynenko Olha")
+//                    .username("Load bot")
+//                    .text("Url: " + currentUrl + " Date: " + dateFormat.format(date) + ". Page load time: " + pageLoadTime_s + " s." + " Normal time is: 2 s.")
+//                    .icon_emoji(":superman:")
+//                    .as_user("false")
+//                    .build();
+//            SlackUtils.sendMessage(slackMessage);
 
             CommonMethods.EmailUtils("olgalavr2666@gmail.com", "Notification about page loading time!", "Url: " + currentUrl + " Date: " + dateFormat.format(date) + ". Page load time: " + pageLoadTime_s + " s." + " Normal time is: 2 s.");
 
