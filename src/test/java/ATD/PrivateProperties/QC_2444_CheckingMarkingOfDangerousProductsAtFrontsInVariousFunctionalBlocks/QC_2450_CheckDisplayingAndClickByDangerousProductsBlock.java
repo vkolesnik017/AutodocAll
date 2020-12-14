@@ -67,7 +67,6 @@ public class QC_2450_CheckDisplayingAndClickByDangerousProductsBlock {
         new ProductCard_aws(idOfDangerousProduct).openProductCardPageAndLogin().presenceOfDangerousIconBlock().compareElementsOfDangerousProduct(attributeOfWarningIconInPopUp, signalWord);
     }
 
-
     @DataProvider(name = "routesCategoryName", parallel = true)
     Object[] dataProviderCategoryName() throws SQLException {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_name9,group_list_hp2");

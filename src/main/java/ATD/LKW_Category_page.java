@@ -164,7 +164,7 @@ class LKW_Category_page {
 
     SelenideElement topProductsBlock() {return $x("//div[@class='sub_catalog_grid gfre4']");}
 
-    ElementsCollection signalWordOfDangerousProduct() {return $$x("//div[@class='dangerous-listing__title hazard-attention-title']");}
+    ElementsCollection signalWordOfDangerousProduct() {return $$x("//div[contains(@class,'dangerous-listing__title')]");}
 
     ElementsCollection attributeOfWarningIcon(int positionOfProduct) {return $$x("(//div[@class='rec_prod_info_popup'])["+positionOfProduct+"]//div[@class='dangerous-listing__icon dangerous-listing__icon-attention']");}
 

@@ -209,9 +209,9 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Click the Kontakt link in the footer. Main_page")
-    public Kontakt_static_page_Logic clickFooterKontaktLink() {
+    public Contact_static_page_Logic clickFooterKontaktLink() {
         footerKontaktLink().click();
-        return page(Kontakt_static_page_Logic.class);
+        return page(Contact_static_page_Logic.class);
     }
 
     @Step("Check elements in the promotion block in the header. Main_page")
