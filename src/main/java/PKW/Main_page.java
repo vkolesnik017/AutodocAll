@@ -155,7 +155,7 @@ public class Main_page {
     }
 
     SelenideElement footerFaqLink() {
-        return $(byXpath("//*[@class='footer_menu_list4']/a"));
+        return $(byXpath("//*[@class='footer-main__menu']//a[contains(text(),'FAQ')]"));
     }
 
     SelenideElement footerUberUnsLink() {
@@ -163,7 +163,7 @@ public class Main_page {
     }
 
     SelenideElement footerWiderrufLink() {
-        return $(byXpath("//*[@class='footer_menu_list7']/a"));
+        return $(byXpath("//*[@class='footer-main__menu']//a[contains(text(),'Widerruf')]"));
     }
 
     SelenideElement footerZahlungLink() {
@@ -195,7 +195,7 @@ public class Main_page {
     }
 
     SelenideElement footerImpressumLink() {
-        return $(byXpath("//*[@class='footer_menu_list6']/a"));
+        return $(byXpath("//*[@class='footer-main__menu']//a[contains(text(),'Impressum')]"));
     }
 
     SelenideElement footerAustauschartikelLink() {
@@ -203,7 +203,7 @@ public class Main_page {
     }
 
     SelenideElement footerKontaktLink() {
-        return $(byXpath("//*[@class='footer_menu_list8']/a"));
+        return $(byXpath("//*[@class='footer-main__menu']//a[contains(text(),'Kontakt')]"));
     }
 
     SelenideElement headerPromotionText() {
