@@ -1448,8 +1448,8 @@ public class Main_page_Logic extends Main_page {
         String youtubeUrl = youTubeImageTransition().getAttribute("url");
         youTubeImageTransition().click();
         waitingWhileLinkBecomeExpected(youtubeUrl);
-        url();
-        Assert.assertEquals(youtubeUrl, url());
+        String currentYouTubeUrl = url();
+        Assert.assertEquals(youtubeUrl, currentYouTubeUrl);
         back();
         return this;
     }
@@ -1459,8 +1459,8 @@ public class Main_page_Logic extends Main_page {
         String youtubeUrl = youTubeLinkTransition().getAttribute("url");
         youTubeLinkTransition().click();
         waitingWhileLinkBecomeExpected(youtubeUrl);
-        url();
-        Assert.assertEquals(youtubeUrl, url());
+        String currentYouTubeUrl = url();
+        Assert.assertEquals(youtubeUrl, currentYouTubeUrl);
         return this;
     }
 
