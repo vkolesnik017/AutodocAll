@@ -51,6 +51,8 @@ public class QC_1682_HeavyLoads_Islands {
                 .cartClick()
                 .nextButtonClick()
                 .signIn(emailForFirstCase, password)
+                .chooseDeliveryCountryForShipping("IT")
+                .fillingPostalCodeFieldJSForShipping("90011")
                 .nextBtnClick()
                 .chooseVorkasse()
                 .nextBtnClick()
@@ -61,7 +63,9 @@ public class QC_1682_HeavyLoads_Islands {
                 .checkPresenceSafeOrderBlock()
                 .checkPresenceRegularDeliveryPrice();
         openPage(routeFirstCase);
-        product_page_logic.addProductToCart().closePopupOtherCategoryIfYes().cartClick();
+        product_page_logic.addProductToCart()
+                .closePopupOtherCategoryIfYes()
+                .cartClick();
         new CartAllData_page_Logic().deleteGoodsInDeliveryPopupCartAllDataPage()
                 .checkAbsenceGoodInCartPage(idHeavyLoadProduct)
                 .checkPresenceGoodInCardPage(productID)

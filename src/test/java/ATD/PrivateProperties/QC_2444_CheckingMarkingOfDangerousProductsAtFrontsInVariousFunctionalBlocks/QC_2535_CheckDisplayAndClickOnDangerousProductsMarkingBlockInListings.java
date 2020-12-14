@@ -89,7 +89,6 @@ public class QC_2535_CheckDisplayAndClickOnDangerousProductsMarkingBlockInListin
         carListPage.clickOnDangerousLabel(0, signalWord);
 
     }
-
     @AfterMethod
     public void close() {
         closeWebDriver();

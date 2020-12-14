@@ -10,11 +10,14 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.sql.SQLException;
+
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThanOrEqual;
 import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.Selenide.open;
 
 public class QC_552_ArticleNumberTooltipsInSearch {
 
@@ -35,6 +38,21 @@ public class QC_552_ArticleNumberTooltipsInSearch {
     @Owner(value = "Evlentiev")
     @Description(value = "At the top of the tooltips, at least three values are displayed that contain 40594")
     public void testArticleNumberTooltipsInSearch(String route) {
+        open(route);
+        new Main_page_Logic().inputTextInSearchBar(articleNumber)
+                .tooltipsToSearch().shouldHave(sizeNotEqual(0)).filter(text(articleNumber + ")")).shouldHave(sizeGreaterThanOrEqual(3));
+    }
+
+    @DataProvider(name = "routeLKW")
+    Object[] dataProviderLKW() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "main");
+    }
+
+    @Test(dataProvider = "routeLKW")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "At the top of the tooltips, at least three values are displayed that contain 40594")
+    public void testArticleNumberTooltipsInSearchLKW(String route) {
         open(route);
         new Main_page_Logic().inputTextInSearchBar(articleNumber)
                 .tooltipsToSearch().shouldHave(sizeNotEqual(0)).filter(text(articleNumber + ")")).shouldHave(sizeGreaterThanOrEqual(3));
