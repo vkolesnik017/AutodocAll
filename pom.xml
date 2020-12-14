@@ -24,16 +24,19 @@
                 <version>2.22.1</version>
                 <configuration>
                     <argLine>
-                          -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/1.9.4/aspectjweaver-1.9.4.jar"
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/1.9.4/aspectjweaver-1.9.4.jar"
                     </argLine>
                     <suiteXmlFiles>
+                        <!--suppress UnresolvedMavenProperty -->
                         <suiteXmlFile>${basedir}${TEST_SUITE}.xml</suiteXmlFile>
-<!--                        <suiteXmlFile>${basedir}/src/test/java/testSuites/testSuite.xml</suiteXmlFile>-->
-<!--                        <suiteXmlFile>${basedir}/src/test/java/testSuites/Specific/ATD/Selector/QC_2228_DisplayStatusNewForMapcoGoodsATD.xml</suiteXmlFile>-->
+                        <!--                        <suiteXmlFile>${basedir}/src/test/java/testSuites/testSuite.xml</suiteXmlFile>-->
+                        <!--                        <suiteXmlFile>${basedir}/src/test/java/testSuites/Specific/ATD/Selector/QC_2228_DisplayStatusNewForMapcoGoodsATD.xml</suiteXmlFile>-->
                     </suiteXmlFiles>
                     <properties>
                         <property>
+                            <!--suppress UnresolvedMavenProperty -->
                             <name>${DATATYPE}</name>
+                            <!--suppress UnresolvedMavenProperty -->
                             <value>${TESTSET_NAME}</value>
                         </property>
                     </properties>
@@ -97,8 +100,32 @@
             <artifactId>poi-ooxml</artifactId>
             <version>3.17</version>
         </dependency>
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4.7</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.activation</groupId>
+            <artifactId>activation</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.10</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.6</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.9.8</version>
+        </dependency>
     </dependencies>
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
