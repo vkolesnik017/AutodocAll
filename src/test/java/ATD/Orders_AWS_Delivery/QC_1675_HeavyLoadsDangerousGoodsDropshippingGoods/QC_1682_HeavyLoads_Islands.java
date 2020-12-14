@@ -51,6 +51,8 @@ public class QC_1682_HeavyLoads_Islands {
                 .cartClick()
                 .nextButtonClick()
                 .signIn(emailForFirstCase, password)
+                .chooseDeliveryCountryForShipping("IT")
+                .fillingPostalCodeFieldJSForShipping("90011")
                 .nextBtnClick()
                 .chooseVorkasse()
                 .nextBtnClick()

@@ -41,6 +41,10 @@ public class Tyres_feature_page {
 
     SelenideElement summerSeason() {return $("summer-radio");}
 
+    public SelenideElement summerSeasonRadioBtn() {
+        return $x("//div[@class='radio-block']//input[@id='summer-radio']/../span");
+    }
+
     SelenideElement allSizesButtonInSizeBlock() {
         return $x("//div[@class='tyre-size-block-button']/a");
     }
@@ -56,4 +60,17 @@ public class Tyres_feature_page {
     ElementsCollection linksInDiameterblock() {
         return $$x("//ul[@class='list-zoll']//li/a");
     }
+
+    SelenideElement dimensionRelinkBlock() {
+        return $x("//ul[@class='list-size']");
+    }
+
+    ElementsCollection linksInDimensionRelinkBlock() {
+        return $$x("//ul[@class='list-size']//li/a");
+    }
+
+    SelenideElement submitBtnInSelector() {
+        return $x("//a[@class='button size-block__select-button']");
+    }
 }
+

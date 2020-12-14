@@ -1066,7 +1066,7 @@ public class Main_page_Logic extends Main_page {
         clickAccessoriesCategory();
         checkingContainsUrl(db.getRouteByRouteName(shop, "index_accessories"));
         clickEngineOilCategory();
-        checkingContainsUrl(db.getRouteByRouteName(shop, "engine_oil"));
+        checkingContainsUrl(db.getRouteByRouteName(shop, "motoroil"));
         clickFiltersCategory();
         checkingContainsUrl(db.getRouteByRouteName(shop, "filters"));
         clickBrakeSystemCategory();
