@@ -12,7 +12,7 @@ public class Index_accessories_page {
 
 
     SelenideElement titleNamePage() {
-        return $x("//h1[@class='page-title']");
+        return $x("//h1[contains(@class,'title')]");
     }
 
     SelenideElement blockTopBrands() {
@@ -29,10 +29,6 @@ public class Index_accessories_page {
 
     SelenideElement firstProductInBlockTopProducts() {
         return $x("//div[@class='slick-list draggable']//div[@data-slick-index='0']");
-    }
-
-    SelenideElement nameFirstProductInBlockTopProducts() {
-        return $x("//div[@data-slick-index='0']//div[@class='listing-grid__item-title']");
     }
 
     SelenideElement btnPreviousInBlockTopProducts() {
