@@ -19,6 +19,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 public class QC_2632_PrioritizationParentsOnMainPageBrand {
 
     private List<String> parentFromBrandPage, parentFromAws, groupRating, sortedParentIdFromAwsByRating;
+    private List<Integer> sortedRating;
     private Supplier_page_Logic supplierPageLogic = new Supplier_page_Logic();
     private CatalogCategories_aws catalogCategoriesAws = new CatalogCategories_aws();
 
@@ -46,7 +47,8 @@ public class QC_2632_PrioritizationParentsOnMainPageBrand {
         parentFromAws = catalogCategoriesAws.getAllParentIdByGroupRating();
         groupRating = catalogCategoriesAws.getAllParentGroupRating();
         sortedParentIdFromAwsByRating = catalogCategoriesAws.createListAnyElementsByGroupRating(parentFromAws, groupRating);
-        supplierPageLogic.compareTwoListsBetweenFrontAndAwsFrom(parentFromBrandPage, sortedParentIdFromAwsByRating);
+        sortedRating = catalogCategoriesAws.createListWithGroupRating(parentFromAws, groupRating);
+        supplierPageLogic.compareTwoListsBetweenFrontAndAwsFrom(parentFromBrandPage, sortedParentIdFromAwsByRating, sortedRating);
     }
 
     @AfterMethod

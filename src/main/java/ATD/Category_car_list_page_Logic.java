@@ -289,8 +289,8 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
 
 
     @Step(": from. Category_car_list_page")
-    public Category_car_list_page_Logic compareTwoListsBetweenFrontAndAwsFrom(List listFront, List listAws){
-        compareTwoListsBetweenFrontAndAws(listFront, listAws);
+    public Category_car_list_page_Logic compareTwoListsBetweenFrontAndAwsFrom(List<String> listFront, List<String> listAws, List<Integer> listRating){
+        compareTwoListsBetweenFrontAndAws(listFront, listAws, listRating);
         return this;
     }
 

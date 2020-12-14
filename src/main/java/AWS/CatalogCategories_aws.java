@@ -439,7 +439,7 @@ public class CatalogCategories_aws {
     }
 
 
-     @Step("Creates list any Elements by group rating. CatalogCategories_aws")
+    @Step("Creates list sorted any Elements by group rating. CatalogCategories_aws")
     public List<String> createListAnyElementsByGroupRating(List<String> key, List<String> value) {
         HashMap<String, Integer> awsMap = new HashMap<>();
         for (int i = 0; i < key.size(); i++) {
@@ -447,8 +447,21 @@ public class CatalogCategories_aws {
             int nameValue = Integer.parseInt(value.get(i));
             awsMap.put(nameKey, nameValue);
         }
-         List<String> sortedList =  awsMap.entrySet().stream()
-                 .sorted(Map.Entry.<String, Integer>comparingByValue().reversed()).map(Map.Entry::getKey).collect(Collectors.toList());
+        List<String> sortedList = awsMap.entrySet().stream()
+                .sorted(Map.Entry.<String, Integer>comparingByValue().reversed()).map(Map.Entry::getKey).collect(Collectors.toList());
+        return sortedList;
+    }
+
+    @Step("Creates list sorted with group rating. CatalogCategories_aws")
+    public List<Integer> createListWithGroupRating(List<String> key, List<String> value) {
+        HashMap<String, Integer> awsMap = new HashMap<>();
+        for (int i = 0; i < key.size(); i++) {
+            String nameKey = key.get(i);
+            int nameValue = Integer.parseInt(value.get(i));
+            awsMap.put(nameKey, nameValue);
+        }
+        List<Integer> sortedList = awsMap.entrySet().stream()
+                .sorted(Map.Entry.<String, Integer>comparingByValue().reversed()).map(Map.Entry::getValue).collect(Collectors.toList());
         return sortedList;
     }
 

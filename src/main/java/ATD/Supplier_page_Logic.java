@@ -139,8 +139,8 @@ public class Supplier_page_Logic extends Supplier_page {
     }
 
     @Step(": from. Supplier_page")
-    public Supplier_page_Logic compareTwoListsBetweenFrontAndAwsFrom(List listFront, List listAws){
-        compareTwoListsBetweenFrontAndAws(listFront, listAws);
+    public Supplier_page_Logic compareTwoListsBetweenFrontAndAwsFrom(List<String> listFront, List<String> listAws, List<Integer> listRating){
+        compareTwoListsBetweenFrontAndAws(listFront, listAws, listRating);
         return this;
     }
 

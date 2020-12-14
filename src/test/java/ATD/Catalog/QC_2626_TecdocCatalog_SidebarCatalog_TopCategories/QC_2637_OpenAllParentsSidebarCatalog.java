@@ -11,9 +11,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
-
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
@@ -21,6 +19,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 public class QC_2637_OpenAllParentsSidebarCatalog {
 
     private List<String> parentFromSidebar, parentFromAws, groupRating, sortedParentIdFromAwsByRating;
+    private List<Integer> sortedRating;
     private CatalogCategories_aws catalogCategoriesAws = new CatalogCategories_aws();
     private Category_car_list_page_Logic categoryCarListPageLogic = new Category_car_list_page_Logic();
 
@@ -47,7 +46,8 @@ public class QC_2637_OpenAllParentsSidebarCatalog {
         parentFromAws = catalogCategoriesAws.getAllParentIdByGroupRating();
         groupRating = catalogCategoriesAws.getAllParentGroupRating();
         sortedParentIdFromAwsByRating = catalogCategoriesAws.createListAnyElementsByGroupRating(parentFromAws, groupRating);
-        categoryCarListPageLogic.compareTwoListsBetweenFrontAndAwsFrom(parentFromSidebar, sortedParentIdFromAwsByRating);
+        sortedRating = catalogCategoriesAws.createListWithGroupRating(parentFromAws, groupRating);
+        categoryCarListPageLogic.compareTwoListsBetweenFrontAndAwsFrom(parentFromSidebar, sortedParentIdFromAwsByRating, sortedRating);
     }
 
     @AfterMethod
