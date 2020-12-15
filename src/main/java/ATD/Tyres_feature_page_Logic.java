@@ -1,17 +1,20 @@
 package ATD;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import static ATD.CommonMethods.*;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
+import static com.codeborne.selenide.CollectionCondition.sizeLessThanOrEqual;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -292,30 +295,114 @@ public class Tyres_feature_page_Logic extends Tyres_feature_page {
         return this;
     }
 
-    @Step("Select Width. Tyres_page")
+    @Step("Select Width. Tyres_feature_page")
     public Tyres_feature_page_Logic selectWidth(String width) {
         widthDropdown().selectOption(width);
         Wait().until(webDriver -> widthDropdown().getSelectedText().equals(width));
         return this;
     }
 
-    @Step("Select Height. Tyres_page")
+    @Step("Select Height. Tyres_feature_page")
     public Tyres_feature_page_Logic selectHeight(String height) {
         heightDropdown().selectOption(height);
         Wait().until(webDriver -> heightDropdown().getSelectedText().equals(height));
         return this;
     }
 
-    @Step("Select Diameter. Tyres_page")
+    @Step("Select Diameter. Tyres_feature_page")
     public Tyres_feature_page_Logic selectDiameter(String diameter) {
         diameterDropdown().selectOption(diameter);
         Wait().until(webDriver -> diameterDropdown().getSelectedText().equals(diameter));
         return this;
     }
 
-    @Step("Click Submit Tyres Selector. Tyres_page")
+    @Step("Click Submit Tyres Selector. Tyres_feature_page")
     public TyresListing_page_Logic clickSubmitTyresSelector() {
         submitBtnInSelector().click();
         return page(TyresListing_page_Logic.class);
+    }
+
+    @Step("Click tyre in top block and check redirect. Tyres_feature_page")
+    public Tyre_item_page_Logic clickTyreInTopBlocAndCheckRedirect(SelenideElement seasonTab, SelenideElement itemInTopBlock) {
+        topBlock().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        seasonTab.shouldBe(visible).click();
+        String idProd = itemInTopBlock.attr("data-ga-action");
+        itemInTopBlock.click();
+        new Tyre_item_page_Logic().checkTyreIdOnProductPage(idProd);
+        return page(Tyre_item_page_Logic.class);
+    }
+
+    @Step("Check popular brands block visibility. Tyres_feature_page")
+    public Tyres_feature_page_Logic checkPopularBrandsBlockVisibility() {
+        brandTopBlock().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        brandTopBlockTitle().shouldHave(exactText("Hochwertige Reifenmarken zur Auswahl"));
+        return this;
+    }
+
+    @Step("Check popular brand block first position. Tyres_feature_page")
+    public Tyres_feature_page_Logic checkPopularBrandsSliderFirstPosition() {
+        brandsInSlider().shouldHaveSize(14);
+        List<String> brandsInFirstSliderPosition = new ArrayList<>();
+        List<String> brandsInSecondSliderPosition = new ArrayList<>();
+        for (int i = 0; i < brandsInSlider().size(); i++) {
+            if (i < 6) {
+                brandsInSlider().get(i).shouldBe(visible);
+                brandsInFirstSliderPosition.add(brandsInSlider().get(i).attr("alt"));
+            } else {
+                brandsInSlider().get(i).shouldNotBe(visible);
+                brandsInSecondSliderPosition.add(brandsInSlider().get(i).attr("alt"));
+            }
+        }
+        Assert.assertNotEquals(brandsInFirstSliderPosition, brandsInSecondSliderPosition);
+        return this;
+    }
+
+    @Step("Check popular brand block second position. Tyres_feature_page")
+    public Tyres_feature_page_Logic checkPopularBrandsSliderSecondPosition() {
+        brandsInSlider().shouldHaveSize(14);
+        List<String> brandsInFirstSliderPosition = new ArrayList<>();
+        List<String> brandsInSecondSliderPosition = new ArrayList<>();
+        List<String> brandsInThirdThirdSliderPosition = new ArrayList<>();
+        for (int i = 0; i < brandsInSlider().size(); i++) {
+            if (i < 6) {
+                brandsInSlider().get(i).shouldNotBe(visible);
+                brandsInFirstSliderPosition.add(brandsInSlider().get(i).attr("alt"));
+            } else if (i < 12){
+                brandsInSlider().get(i).shouldBe(visible);
+                brandsInSecondSliderPosition.add(brandsInSlider().get(i).attr("alt"));
+            } else {
+                if (secondButtonInTopBrandSlider().isDisplayed()) {
+                    clickSecondPageInBrandSlider();
+                }
+                brandsInSlider().get(i).shouldBe(visible);
+                brandsInThirdThirdSliderPosition.add(brandsInSlider().get(i).attr("alt"));
+            }
+        }
+        Assert.assertNotEquals(brandsInFirstSliderPosition, brandsInSecondSliderPosition);
+        Assert.assertNotEquals(brandsInFirstSliderPosition, brandsInThirdThirdSliderPosition);
+        Assert.assertNotEquals(brandsInSecondSliderPosition, brandsInThirdThirdSliderPosition);
+        return this;
+    }
+
+    @Step("Click second page in brand slider. Tyres_feature_page")
+    public Tyres_feature_page_Logic clickSecondPageInBrandSlider() {
+        secondButtonInTopBrandSlider().click();
+        return this;
+    }
+
+    @Step("Check top block presence. Tyres_feature_page")
+    public Tyres_feature_page_Logic checkTopBlock(SelenideElement seasonTab, ElementsCollection topItemCollection) {
+        topBlock().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+            seasonTab.click();
+            topItemCollection.shouldBe(sizeLessThanOrEqual(12));
+        return this;
+    }
+
+    @Step("Checking the slider in the TOP block. Tyres_feature_page")
+    public Tyres_feature_page_Logic checkingSliderInTopBlock(int numberTab, SelenideElement slickSlideForSeason ) {
+        sleep(3000);
+        secondButtonInTopItemSlider(numberTab).click();
+        Wait().until(webDriver -> slickSlideForSeason.shouldHave(attribute("class", "slick-active")));
+        return this;
     }
 }

@@ -77,4 +77,10 @@
         </classes>
     </test>
 
+    <test name="QC_2353_RequestFormForNewDeliveryCountry_Versand" enabled="true">
+        <classes>
+            <class name="PKW.StaticPage.QC_2353_RequestFormForNewDeliveryCountry_Versand">
+            </class>
+        </classes>
+    </test>
 </suite>

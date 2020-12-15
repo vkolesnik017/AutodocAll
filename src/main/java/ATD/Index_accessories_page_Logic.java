@@ -55,6 +55,7 @@ public class Index_accessories_page_Logic extends Index_accessories_page {
     @Step("Checking presence main title page. Index_accessories_page")
     public Index_accessories_page_Logic checkPresenceMainTitle(){
         mainTitlePage().shouldBe(visible);
+        Assert.assertFalse(mainTitlePage().text().isEmpty());
         return this;
     }
 
