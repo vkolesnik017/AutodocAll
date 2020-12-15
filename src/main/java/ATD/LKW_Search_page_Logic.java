@@ -48,8 +48,14 @@ public class LKW_Search_page_Logic extends LKW_Search_page {
         btnMoreOfDangerousProducts().get(positionOfProduct).click();
         blackBackground().shouldHave(attribute("style", "display: block;"));
         warningPopUp().shouldBe(visible).shouldHave(attribute("style", "display: block;"));
-        titleOfDangerousPopUp().shouldBe(visible).shouldHave(exactText(signalWord));
-        infoTextOfDangerousPopUp().shouldNotBe(empty);
+
+        if (signalWord.equals("BEACHTEN SIE!")) {
+            infoTextOfDangerousPopUp().shouldNotBe(empty);
+        } else {
+            titleOfDangerousPopUp().shouldBe(visible).shouldHave(exactText(signalWord));
+            infoTextOfDangerousPopUp().shouldNotBe(empty);
+        }
+
         List<String> attributeOfDangerousIcon = new ArrayList<>();
         for (int i = 0; i < dangerousIconInWarningPopUp().size(); i++) {
             String urlFromAttribute = dangerousIconInWarningPopUp().get(i).getAttribute("style").replace("background-image: url(\"", "").replace("\");", "");
