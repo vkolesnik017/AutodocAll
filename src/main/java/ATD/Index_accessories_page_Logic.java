@@ -208,4 +208,9 @@ public class Index_accessories_page_Logic extends Index_accessories_page {
         return this;
     }
 
+    @Step("Get id product from top products block. Index_accessories_page")
+    public String getIdProductFromTopProductsBlock() {
+        return firstBtnAddToBasketInTop6Block().getAttribute("id");
+    }
+
 }
