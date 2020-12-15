@@ -6,6 +6,7 @@ import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
 
 public class Tyres_feature_page {
 
@@ -71,6 +72,73 @@ public class Tyres_feature_page {
 
     SelenideElement submitBtnInSelector() {
         return $x("//a[@class='button size-block__select-button']");
+    }
+
+    SelenideElement topBlock() {
+        return $x("//div[@class='top-products-lkw']");
+    }
+    public SelenideElement allSeasonTabInTopBlock() {
+        return $x("//div[contains(@class,'all-season tab-link current')]");
+    }
+
+    public SelenideElement sunSeasonTabInTopBlock() {
+        return $x("//div[contains(@class,'season-sun tab-link')]");
+    }
+
+    public SelenideElement winterSeasonTabInTopBlock() {
+        return $x("//div[contains(@class,'season-winter tab-link')]");
+    }
+
+    public SelenideElement topItemInAllSeason() {
+        return $x("//div[@id='tab-1']//a[contains(@class,'item-title ga-click')]");
+    }
+
+    public ElementsCollection topItemInAllSeasonCollection() {
+        return $$x("//div[@id='tab-1']//a[contains(@class,'item-title ga-click')]");
+    }
+
+    public SelenideElement topItemInSunSeason() {
+        return $x("//div[@id='tab-2']//a[contains(@class,'item-title ga-click')]");
+    }
+
+    public ElementsCollection topItemInSunSeasonCollection() {
+        return $$x("//div[@id='tab-2']//a[contains(@class,'item-title ga-click')]");
+    }
+
+    public SelenideElement topItemInWinterSeason() {
+        return $x("//div[@id='tab-3']//a[contains(@class,'item-title ga-click')]");
+    }
+
+    public ElementsCollection topItemInWinterSeasonCollection() {
+        return $$x("//div[@id='tab-3']//a[contains(@class,'item-title ga-click')]");
+    }
+
+    SelenideElement brandTopBlock() {
+        return $x("//div[@class='top-brands-slider']");
+    }
+
+    SelenideElement brandTopBlockTitle() {
+        return $x("//div[@class='top-brands-slider__title']");
+    }
+
+    ElementsCollection brandsInSlider() {
+        return $$x("//a[contains(@class,'top-brands-slider')]//img");
+    }
+
+    SelenideElement secondButtonInTopBrandSlider() {
+        return $x("//div[@class='top-brands-slider']//button[@class='slick-next slick-arrow']");
+    }
+
+    SelenideElement secondButtonInTopItemSlider(int numberTab) {
+        return $x("//div[@id='tab-" + numberTab + "']//button[@class='slick-next slick-arrow']");
+    }
+
+    public SelenideElement slickSlideInTopItemBlockForSunSeason() {
+        return $x("//div[@id='tab-2']//button[@aria-label='2 of 3']/..");
+    }
+
+    public SelenideElement slickSlideInTopItemBlockForWinterSeason() {
+        return $x("//div[@id='tab-3']//button[@aria-label='2 of 3']/..");
     }
 }
 

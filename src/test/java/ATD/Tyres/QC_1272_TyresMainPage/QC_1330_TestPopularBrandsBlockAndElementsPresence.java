@@ -1,5 +1,6 @@
 package ATD.Tyres.QC_1272_TyresMainPage;
 
+import ATD.Tyres_feature_page_Logic;
 import Common.SetUp;
 import ATD.Tyres_page_Logic;
 import io.qameta.allure.Description;
@@ -26,6 +27,11 @@ public class QC_1330_TestPopularBrandsBlockAndElementsPresence {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres,tyres2,tyres3,tyres4");
     }
 
+    @DataProvider(name = "routesTyresFeature", parallel = true)
+    Object[] dataProviderTyresFeature() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_feature");
+    }
+
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Romaniuta")
@@ -36,6 +42,18 @@ public class QC_1330_TestPopularBrandsBlockAndElementsPresence {
                                 .checkPopularBrandsSliderFirstPosition()
                                 .clickSecondPageInBrandSlider()
                                 .checkPopularBrandsSliderSecondPosition();
+    }
+
+    @Test(dataProvider = "routesTyresFeature")
+    @Flaky
+    @Owner(value = "Chelombitko")
+    @Description(value = "Test Checks Popular Brands Block And Elements Presence from Tyres feature page")
+    public void testPopularBrandsBlockAndElementsPresenceFromTyresFeature(String route) {
+        openPage(route);
+        new Tyres_feature_page_Logic().checkPopularBrandsBlockVisibility()
+                .checkPopularBrandsSliderFirstPosition()
+                .clickSecondPageInBrandSlider()
+                .checkPopularBrandsSliderSecondPosition();
     }
 
     @AfterMethod
