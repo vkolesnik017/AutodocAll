@@ -55,6 +55,7 @@ public class Index_accessories_page_Logic extends Index_accessories_page {
     @Step("Checking presence main title page. Index_accessories_page")
     public Index_accessories_page_Logic checkPresenceMainTitle(){
         mainTitlePage().shouldBe(visible);
+        Assert.assertFalse(mainTitlePage().text().isEmpty());
         return this;
     }
 
@@ -205,6 +206,11 @@ public class Index_accessories_page_Logic extends Index_accessories_page {
     public Index_accessories_page_Logic checkCategoriesForServerResponses200(List<String> allCategories) throws IOException {
         CommonMethods.checkCategoriesForServerResponses200(allCategories);
         return this;
+    }
+
+    @Step("Get id product from top products block. Index_accessories_page")
+    public String getIdProductFromTopProductsBlock() {
+        return firstBtnAddToBasketInTop6Block().getAttribute("id");
     }
 
 }

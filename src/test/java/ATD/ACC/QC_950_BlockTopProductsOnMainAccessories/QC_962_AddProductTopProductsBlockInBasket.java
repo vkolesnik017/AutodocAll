@@ -11,16 +11,13 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import java.sql.SQLException;
-
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_962_AddProductTopProductsBlockInBasket {
 
-    private String nameProduct,titleProduct;
     private Index_accessories_page_Logic index_accessories_page_logic = new Index_accessories_page_Logic();
 
     @BeforeClass
@@ -30,7 +27,7 @@ public class QC_962_AddProductTopProductsBlockInBasket {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main","index_accessories");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main","index_accessories,index_accessories_group");
     }
 
     @Test(dataProvider = "route")
@@ -39,10 +36,10 @@ public class QC_962_AddProductTopProductsBlockInBasket {
     @Description(value = "Test Checks adding a product to the cart when selecting it from top-6 block")
     public void testChecksAddingProductToCartWithTop6BlockForAccessories(String route) {
         openPage(route);
-        nameProduct = index_accessories_page_logic.getNameFirstProductInTop6Block();
+        String nameProduct = index_accessories_page_logic.getNameFirstProductInTop6Block();
         index_accessories_page_logic.clickOnFirstBtnAddToBasketInTop6Block()
                 .clickOnBtnGoToBasket();
-        titleProduct = new Cart_page_Logic().getNameTitleProduct();
+        String titleProduct = new Cart_page_Logic().getNameTitleProduct();
         Assert.assertEquals(nameProduct, titleProduct);
     }
 
