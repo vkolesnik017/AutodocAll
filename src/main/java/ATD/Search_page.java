@@ -120,9 +120,9 @@ public class Search_page {
         return $(By.cssSelector("#privacy_policy1>a"));
     }
 
-    SelenideElement brandsFilterBlock() {
-        return $x("//div[@data-name='brand']");
-    }
+    SelenideElement brandsFilterBlock() { return $x("//div[@data-name='brand']"); }
+
+    SelenideElement brandsFilterBlockInSideBar() { return $x("//div[@class='sidebar']//div[@data-name='brand']");  }
 
     SelenideElement forwardLinkAtBrandsFilter() {
         return $x("//a[contains(@class,'next')]");
@@ -131,6 +131,8 @@ public class Search_page {
     SelenideElement brandsLinkInSideBar(String idOfBrand) {
         return $x("//div[@id='selected-instalation__slider']//ul//li//label[@for='cb-brand-" + idOfBrand + "']");
     }
+
+    SelenideElement brandFromSideBar(String idOfBrand) { return $x("//label[@for='cb-brand-" + idOfBrand + "']");  }
 
     SelenideElement loaderInTecDocListing() {
         return $x("//div[@class='preloader_wrapper']");
