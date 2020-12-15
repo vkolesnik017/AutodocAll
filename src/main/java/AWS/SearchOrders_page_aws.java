@@ -4,9 +4,6 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
 import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.CommonMethods.openPage;
 import static Common.CommonMethods.getExpectedCalendarData;
@@ -65,6 +62,15 @@ public class SearchOrders_page_aws {
     private SelenideElement nexPageBtnInPaginationBlock() {
         return $x("//ul[@class='pagination']//li//a[text()='»']");
     }
+
+    private ElementsCollection orderID() {
+        return $$x("//a[@class='order_link']");
+    }
+
+    private SelenideElement customerInfoField() {
+        return $x("//input[@id='form_Filter[customerInfo]']");
+    }
+
 
 
     @Step("Click button search. SearchOrders_page_aws")
@@ -173,10 +179,29 @@ public class SearchOrders_page_aws {
         return this;
     }
 
+    @Step("iling field customer information {customerInfo}. SearchOrders_page_aws")
+    public SearchOrders_page_aws fillingFieldCustomerInfo(String customerInfo) {
+        customerInfoField().sendKeys(customerInfo);
+        return this;
+    }
+
     @Step("Transition in order page. SearchOrders_page_aws")
     public Order_aws clickOnOrderLinc(String orderId) {
         orderLincInOrderLine(orderId).shouldBe(visible);
         orderLincInOrderLine(orderId).click();
         return page(Order_aws.class);
+    }
+
+    @Step("Go to a random order and check the PauLink. SearchOrders_page_aws")
+    public  SearchOrders_page_aws clickOnRandomOrderID(int countOfClick) {
+        int minValue = 0;
+        for (int i = 0; i < countOfClick; i++){
+            int randomIndex = minValue + (int) (Math.random() * orderID().size());
+            orderID().get(randomIndex).scrollIntoView("{block: \"center\"}").shouldBe(visible);
+            orderID().get(randomIndex).click();
+            new Order_aws().checkPresencePauLinkAmount();
+            back();
+        }
+        return this;
     }
 }
