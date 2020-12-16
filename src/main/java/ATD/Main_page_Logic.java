@@ -935,6 +935,26 @@ public class Main_page_Logic extends Main_page {
         return this;
     }
 
+    @Step("Checks block promotional footnotes. Main_page")
+    public Main_page_Logic checksBlockPromotionalFootnotes() {
+        blockPromotionalFootnotes().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        firstPromotionalFootnotes().hover();
+        firstDropdownPromotionalFootnotes().shouldBe(visible);
+        firstDropdownPromotionalFootnotes().shouldHave(text("Gilt für ausgewählte Produkte. " +
+                "Dieser Prozentsatz kann nach Ablauf der rechts oben angegebenen Zeit entfallen, " +
+                "sich erhöhen oder verringern. Er bezieht sich nicht auf einen zuvor ernsthaft geforderten Preis, dazu unter"));
+        firstCloseBtnDropdownPromotionalFootnotes().click();
+        firstDropdownPromotionalFootnotes().shouldNotBe(visible);
+        secondPromotionalFootnotes().hover();
+        secondDropdownPromotionalFootnotes().shouldBe(visible);
+        secondDropdownPromotionalFootnotes().shouldHave(text("Der durchgestrichene Betrag ist kein zuvor ernsthaft geforderter Preis, " +
+                "sondern wird in Echtzeit auf der Grundlage unseres jeweils günstigsten Einkaufspreises berechnet. " +
+                "Er kann sich daher tagesaktuell erhöhen oder senken."));
+        secondCloseBtnDropdownPromotionalFootnotes().click();
+        secondDropdownPromotionalFootnotes().shouldNotBe(visible);
+        return this;
+    }
+
     @Step(": footer subscribe block on Main_page")
     public Main_page_Logic checkTransitionToLinkPrivacyPolicy(String route) throws SQLException {
         footerForm().scrollTo();
