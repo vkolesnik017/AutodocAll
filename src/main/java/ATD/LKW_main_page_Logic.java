@@ -692,4 +692,12 @@ public class LKW_main_page_Logic extends LKW_main_page {
         countOfVehicleInIconOfGarageInHeader().shouldBe(visible).shouldHave(exactText(expectedCountOfVehicle));
         return this;
     }
+
+    @Step(": from. LKW_main_page")
+    public LKW_main_page_Logic checksIfHintsInTheSearchFieldMatchByValue() {
+        new Main_page_Logic().checksIfHintsInTheSearchFieldMatchByValue();
+        return this;
+    }
+
+
 }
