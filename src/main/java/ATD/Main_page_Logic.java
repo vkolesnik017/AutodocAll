@@ -1465,28 +1465,30 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Checking the transition to the instagram from  the Social Network Block. Main_page")
-    public Main_page_Logic checkingTransitionToTheInstagram(String expectedUrl) {
+    public Main_page_Logic checkingTransitionToTheInstagramByImage() {
         instagramImageTransition().click();
-        waitingWhileLinkBecomeExpected(expectedUrl);
-        url();
-        Assert.assertEquals(url(), expectedUrl);
-        back();
+        return this;
+    }
+
+    @Step("Checking the transition to the instagram from  the Social Network Block. Main_page")
+    public Main_page_Logic checkingTransitionToTheInstagramByLink() {
         instagramLinkTransition().click();
-        url();
-        waitingWhileLinkBecomeExpected(expectedUrl);
-        Assert.assertEquals(url(), expectedUrl);
         return this;
     }
 
     @Step("Checking the transition to the autodoc club from  the Social Network Block. Main_page")
     public Main_page_Logic checkingTransitionToTheAutodocClub() {
+        String autodocClubImageTransitionURL = autodocClubImageTransition().getAttribute("url");
         autodocClubImageTransition().click();
+        waitingWhileLinkBecomeExpected(autodocClubImageTransitionURL);
         return this;
     }
 
     @Step("Checking the transition to the autodoc club from  the Social Network Block. Main_page")
     public Main_page_Logic checkingTransitionToTheAutodocClubLink() {
+        String autodocClubLinkTransitionURL = autodocClubTransition().getAttribute("url");
         autodocClubTransition().click();
+        waitingWhileLinkBecomeExpected(autodocClubLinkTransitionURL);
         return this;
     }
 
