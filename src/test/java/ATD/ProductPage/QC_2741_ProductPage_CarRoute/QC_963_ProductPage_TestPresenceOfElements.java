@@ -118,8 +118,10 @@ public class QC_963_ProductPage_TestPresenceOfElements {
         //20
         product_page_logic.feedbackBlock().shouldBe(visible);
         //21
-        product_page_logic.similarPropertiesBlock().scrollIntoView("{block: \"center\"}").shouldBe(visible);
-        product_page_logic.linkInSimilarPropertiesBlock().scrollIntoView("{block: \"center\"}").click();
+        product_page_logic.similarPropertiesBlock().scrollTo().shouldBe(visible);
+        product_page_logic.linkInSimilarPropertiesBlock().scrollIntoView(false).waitUntil(visible, 4000);
+        executeJavaScript("arguments[0].click();", product_page_logic.linkInSimilarPropertiesBlock());
+//        product_page_logic.linkInSimilarPropertiesBlock().click();
         product_page_logic.similarPropertiesBlock().waitUntil(visible, 3000);
         checkingContainsUrl("bosch/1165812");
         open(dataBase.getFullRouteByRouteAndSubroute("prod", "DE", "main", "product13"));
@@ -133,6 +135,7 @@ public class QC_963_ProductPage_TestPresenceOfElements {
         product_page_logic.pdfTutorialsBlock().scrollTo().shouldBe(visible);
         product_page_logic.checkPdfLinksForDownload();
     }
+
     @AfterMethod
     public void close() {
         closeWebDriver();

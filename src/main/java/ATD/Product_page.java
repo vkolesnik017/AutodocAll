@@ -162,11 +162,11 @@ public class Product_page {
     }
 
     public SelenideElement similarPropertiesBlock() {
-        return $(".product-same-specification");
+        return $x("//*[@class='product-same-specification__wrap']");
     }
 
     public SelenideElement linkInSimilarPropertiesBlock() {
-        return $x("//div[2][@class='product-same-specification__item']//a");
+        return $x("//a[@data-ga-action='1165812']");
     }
 
     public SelenideElement videoBlock() {
