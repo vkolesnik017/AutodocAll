@@ -90,4 +90,8 @@ public class LKW_Category_brand_page {
     ElementsCollection titleOfTopProducts() {return $$x("//div[@class='rec_prod_title ']/span");}
 
     SelenideElement mainHeadline() {return $x("//div[@class='top_title no_image image_padding']/h2");}
+
+    ElementsCollection btnAddProductToWishlist() {return $$x("//div[@class='add-to-wishlist add-article']");}
+
+    ElementsCollection priceTitle() {return $$x("//div[@class='save']/following-sibling::*[1]");}
 }
