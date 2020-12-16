@@ -26,9 +26,9 @@ public class QC_1567_TransitionFromBlockOfSocialNetworks {
         return new SetUp("ATD").setUpShop("prod", "DE");
     }
 
+    @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Test(dataProvider = "route", enabled = true)
     @Description(value = "Test check social network links transitions")
     public void checkingSocialNetworks(String route) {
         openPage(route);
