@@ -1546,5 +1546,52 @@ public class Main_page_Logic extends Main_page {
         return this;
     }
 
+    @Step("Check correct display tabs in top block. Main_page")
+    public Main_page_Logic checkPresenceAllTabInTopBlock() {
+        ArrayList<String> tabTopBlock = new ArrayList<>();
+        tabTopBlock.add("Beliebteste Automarken");
+        tabTopBlock.add("Autoersatzteile");
+        tabTopBlock.add("LKW-Ersatzteile");
+        tabTopBlock.add("Motorrad-Ersatzteile");
+        tabTopBlock.add("Autozubehör");
+        linksInTopsBlock().shouldHaveSize(5);
+        linksInTopsBlock().get(1).shouldHave(attribute("class", "active"));
+        for (int i = 0; i < linksInTopsBlock().size(); i++) {
+            String nameTab = linksInTopsBlock().get(i).getText().toLowerCase();
+            String nameTabFromList = tabTopBlock.get(i).toLowerCase();
+            Assert.assertEquals(nameTab, nameTabFromList);
+        }
+        return this;
+    }
+
+    @Step("Select tab TOP car brands block. Main_page")
+    public Main_page_Logic selectTabTopCarBrandsBlock() {
+        linksInTopsBlock().get(0).shouldBe(visible).click();
+        blockOfBrandsOfTopBlock().shouldBe(visible);
+        brandCarInTopBlock().shouldHaveSize(16);
+        return this;
+    }
+
+
+    @Step("Click tab LKW in top block. Main_page")
+    public LKW_main_page_Logic clickTabLkwIntopBlock() {
+        linksInTopsBlock().get(2).shouldBe(visible).click();
+        return page(LKW_main_page_Logic.class);
+    }
+
+    @Step("Click tab Moto in top block. Main_page")
+    public Moto_main_page_Logic clickTabMotoInTopBlock() {
+        linksInTopsBlock().get(3).shouldBe(visible).click();
+        return page(Moto_main_page_Logic.class);
+    }
+
+    @Step("Click tab Accessories in top block. Main_page")
+    public Index_accessories_page_Logic clickTabAccessoriesInTopBlock() {
+        linksInTopsBlock().get(4).shouldBe(visible).click();
+        return page(Index_accessories_page_Logic.class);
+    }
+
+
+
 
 }

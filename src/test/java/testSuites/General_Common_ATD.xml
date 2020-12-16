@@ -51,4 +51,11 @@
         </classes>
     </test>
 
+    <test name="QC_2774_CheckTopSectionsBlockOnMainPage">
+        <classes>
+            <class name="ATD.General_Common.QC_2774_CheckTopSectionsBlockOnMainPage.QC_2773_TransitionsByTabInTopSectionsBlockOnMainPage"/>
+        </classes>
+    </test>
+
+
 </suite>
