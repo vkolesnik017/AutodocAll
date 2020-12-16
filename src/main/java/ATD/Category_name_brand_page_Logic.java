@@ -2,14 +2,18 @@ package ATD;
 
 import io.qameta.allure.Step;
 import org.testng.Assert;
+
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static ATD.CommonMethods.getAttributeFromUnVisibleElement;
 import static ATD.CommonMethods.getTextFromUnVisibleElement;
-import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Condition.exactText;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 import static org.testng.Assert.assertEquals;
 
@@ -178,5 +182,16 @@ public class Category_name_brand_page_Logic extends Category_name_brand_page {
         return this;
     }
 
+    @Step("get Id of product. Category_name_brand_page")
+    public List<String> getIdOfProduct() {
+        List<String> id = btnAddProductToWishlist().stream().map(n -> getAttributeFromUnVisibleElement(n, "data-product-id")).collect(Collectors.toList());
+        return id;
+    }
+
+    @Step("get price title of product. Category_name_brand_page")
+    public List<String> getPriceTitle(){
+        List<String> priceTitle = priceTitle().stream().map(n -> getTextFromUnVisibleElement(n)).collect(Collectors.toList());
+        return priceTitle;
+    }
 
 }

@@ -947,6 +947,26 @@ public class Main_page_Logic extends Main_page {
         return this;
     }
 
+    @Step("Checks block promotional footnotes. Main_page")
+    public Main_page_Logic checksBlockPromotionalFootnotes() {
+        blockPromotionalFootnotes().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        firstPromotionalFootnotes().hover();
+        firstDropdownPromotionalFootnotes().shouldBe(visible);
+        firstDropdownPromotionalFootnotes().shouldHave(text("Gilt für ausgewählte Produkte. " +
+                "Dieser Prozentsatz kann nach Ablauf der rechts oben angegebenen Zeit entfallen, " +
+                "sich erhöhen oder verringern. Er bezieht sich nicht auf einen zuvor ernsthaft geforderten Preis, dazu unter"));
+        firstCloseBtnDropdownPromotionalFootnotes().click();
+        firstDropdownPromotionalFootnotes().shouldNotBe(visible);
+        secondPromotionalFootnotes().hover();
+        secondDropdownPromotionalFootnotes().shouldBe(visible);
+        secondDropdownPromotionalFootnotes().shouldHave(text("Der durchgestrichene Betrag ist kein zuvor ernsthaft geforderter Preis, " +
+                "sondern wird in Echtzeit auf der Grundlage unseres jeweils günstigsten Einkaufspreises berechnet. " +
+                "Er kann sich daher tagesaktuell erhöhen oder senken."));
+        secondCloseBtnDropdownPromotionalFootnotes().click();
+        secondDropdownPromotionalFootnotes().shouldNotBe(visible);
+        return this;
+    }
+
     @Step(": footer subscribe block on Main_page")
     public Main_page_Logic checkTransitionToLinkPrivacyPolicy(String route) throws SQLException {
         footerForm().scrollTo();
@@ -1477,28 +1497,30 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Checking the transition to the instagram from  the Social Network Block. Main_page")
-    public Main_page_Logic checkingTransitionToTheInstagram(String expectedUrl) {
+    public Main_page_Logic checkingTransitionToTheInstagramByImage() {
         instagramImageTransition().click();
-        waitingWhileLinkBecomeExpected(expectedUrl);
-        url();
-        Assert.assertEquals(url(), expectedUrl);
-        back();
+        return this;
+    }
+
+    @Step("Checking the transition to the instagram from  the Social Network Block. Main_page")
+    public Main_page_Logic checkingTransitionToTheInstagramByLink() {
         instagramLinkTransition().click();
-        url();
-        waitingWhileLinkBecomeExpected(expectedUrl);
-        Assert.assertEquals(url(), expectedUrl);
         return this;
     }
 
     @Step("Checking the transition to the autodoc club from  the Social Network Block. Main_page")
     public Main_page_Logic checkingTransitionToTheAutodocClub() {
+        String autodocClubImageTransitionURL = autodocClubImageTransition().getAttribute("url");
         autodocClubImageTransition().click();
+        waitingWhileLinkBecomeExpected(autodocClubImageTransitionURL);
         return this;
     }
 
     @Step("Checking the transition to the autodoc club from  the Social Network Block. Main_page")
     public Main_page_Logic checkingTransitionToTheAutodocClubLink() {
+        String autodocClubLinkTransitionURL = autodocClubTransition().getAttribute("url");
         autodocClubTransition().click();
+        waitingWhileLinkBecomeExpected(autodocClubLinkTransitionURL);
         return this;
     }
 
@@ -1555,6 +1577,53 @@ public class Main_page_Logic extends Main_page {
         CommonMethods.checkCategoriesForServerResponses200(allCategories);
         return this;
     }
+
+    @Step("Check correct display tabs in top block. Main_page")
+    public Main_page_Logic checkPresenceAllTabInTopBlock() {
+        ArrayList<String> tabTopBlock = new ArrayList<>();
+        tabTopBlock.add("Beliebteste Automarken");
+        tabTopBlock.add("Autoersatzteile");
+        tabTopBlock.add("LKW-Ersatzteile");
+        tabTopBlock.add("Motorrad-Ersatzteile");
+        tabTopBlock.add("Autozubehör");
+        linksInTopsBlock().shouldHaveSize(5);
+        linksInTopsBlock().get(1).shouldHave(attribute("class", "active"));
+        for (int i = 0; i < linksInTopsBlock().size(); i++) {
+            String nameTab = linksInTopsBlock().get(i).getText().toLowerCase();
+            String nameTabFromList = tabTopBlock.get(i).toLowerCase();
+            Assert.assertEquals(nameTab, nameTabFromList);
+        }
+        return this;
+    }
+
+    @Step("Select tab TOP car brands block. Main_page")
+    public Main_page_Logic selectTabTopCarBrandsBlock() {
+        linksInTopsBlock().get(0).shouldBe(visible).click();
+        blockOfBrandsOfTopBlock().shouldBe(visible);
+        brandCarInTopBlock().shouldHaveSize(16);
+        return this;
+    }
+
+
+    @Step("Click tab LKW in top block. Main_page")
+    public LKW_main_page_Logic clickTabLkwIntopBlock() {
+        linksInTopsBlock().get(2).shouldBe(visible).click();
+        return page(LKW_main_page_Logic.class);
+    }
+
+    @Step("Click tab Moto in top block. Main_page")
+    public Moto_main_page_Logic clickTabMotoInTopBlock() {
+        linksInTopsBlock().get(3).shouldBe(visible).click();
+        return page(Moto_main_page_Logic.class);
+    }
+
+    @Step("Click tab Accessories in top block. Main_page")
+    public Index_accessories_page_Logic clickTabAccessoriesInTopBlock() {
+        linksInTopsBlock().get(4).shouldBe(visible).click();
+        return page(Index_accessories_page_Logic.class);
+    }
+
+
 
 
 }
