@@ -13,9 +13,11 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static Common.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.Selenide.open;
 
 public class QC_315_TransitionToProductPageWithCompatibleMoto {
+
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -35,7 +37,9 @@ public class QC_315_TransitionToProductPageWithCompatibleMoto {
 
         new Moto_Category_car_list_page_Logic()
                 .clickOnArtNumOfProduct("HF163")
-                .presenceOfMotoCompatibilityMessage("BMW MOTORCYCLES K");
+                .presenceOfMotoCompatibilityMessage("BMW MOTORCYCLES K")
+                .clickOnApplicabilityMoto(0)
+                .clickOnApplicabilityMotoMarke(0);
     }
 
     @AfterMethod
