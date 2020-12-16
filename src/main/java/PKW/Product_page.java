@@ -369,4 +369,6 @@ public class Product_page {
     SelenideElement closePopUpButton() {
         return $x("//*[@class='popup-car-selection__close']");
     }
+
+    SelenideElement pricePerMeter() {return $x("//*[contains(text(),'Preis pro Meter')]");}
 }
