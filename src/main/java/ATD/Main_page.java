@@ -735,6 +735,10 @@ public class Main_page {
         return $x("//a[contains(text(),'Beliebteste Automarken')]/ancestor::div[@class='top_all']//ul[@class='cars_list']");
     }
 
+    ElementsCollection brandCarInTopBlock() {
+        return $$x("//ul[@class='cars_list']/li");
+    }
+
     SelenideElement btnMoreSparePartsOfTopBrands() {
         return $x("//a[contains(text(),'Beliebteste Automarken')]/ancestor::div[@class='top_all']//a[@class='all']");
     }

@@ -1,5 +1,6 @@
 package ATD.Search.QC_548_SearchTooltips;
 
+import ATD.LKW_main_page_Logic;
 import ATD.Main_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
@@ -32,6 +33,21 @@ public class QC_2541_CheckingSortingOfValuesInSearchPrompt {
     public void testChecksIfHintsInTheSearchFieldMatchByValue(String route) {
         open(route);
         new Main_page_Logic().checksIfHintsInTheSearchFieldMatchByValue();
+    }
+
+
+    @DataProvider(name = "routeLkw")
+    Object[] dataProviderLkw() {
+        return new SetUp("ATD").setUpShopsWithMainRoute("subprod", "DE", "lkw_main");
+    }
+
+    @Test(dataProvider = "routeLkw")
+    @Flaky
+    @Owner(value = "Sergey-QA")
+    @Description(value = "Checking the sorting of values in the search string by the entered value")
+    public void testLkw_ChecksIfHintsInTheSearchFieldMatchByValue(String route) {
+        open(route);
+        new LKW_main_page_Logic().checksIfHintsInTheSearchFieldMatchByValue();
     }
 
     @AfterMethod

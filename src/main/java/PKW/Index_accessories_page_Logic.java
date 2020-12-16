@@ -98,9 +98,9 @@ public class Index_accessories_page_Logic extends Index_accessories_page {
         return page(Listing_accessories_page_Logic.class);
     }
 
-    @Step("Get name first product in block top products. Index_accessories_page")
-    public String getNameFirstProductInBlockTopProducts() {
-        return nameFirstProductInBlockTopProducts().getText();
+    @Step("Get id first product in block top products. Index_accessories_page")
+    public String getIdFirstProductInBlockTopProducts() {
+        return firstBtnAddProductToBasketInBlockTopProducts().getAttribute("id");
     }
 
     @Step("Click on first btn add to basket in block top products. Index_accessories_page")
