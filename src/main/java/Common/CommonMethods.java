@@ -53,7 +53,7 @@ public class CommonMethods {
     }
 
     @Step("Sending email notification about page loading time")
-    public static void EmailUtils(String recipient, String textMessage, String subjectMessage) throws Exception {
+    public static void emailUtils(String recipient, String textMessage, String subjectMessage) throws Exception {
         System.out.println("Preparing to sent email");
         final Properties properties = new Properties();
         properties.put("mail.smtp.auth", "true");

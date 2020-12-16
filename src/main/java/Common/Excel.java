@@ -1,14 +1,13 @@
 package Common;
 
+import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.DataFormatter;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.*;
 
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Excel {
@@ -35,7 +34,7 @@ public class Excel {
         return readAllCellFromExcel(file, sheetName).toArray();
     }
 
-   public static String[] parseExcel(String str) {
+    public static String[] parseExcel(String str) {
         return str.split("#");
     }
 
@@ -55,7 +54,7 @@ public class Excel {
         return finalList;
     }
 
-   public List<String> readFromExcel(String file, String sheetName, int cellNumber) {
+    public List<String> readFromExcel(String file, String sheetName, int cellNumber) {
         List<String> finalList = new ArrayList<>();
         DataFormatter formatter = new DataFormatter();
         try (FileInputStream fileInputStream = new FileInputStream(file)) {
@@ -116,6 +115,8 @@ public class Excel {
         }
         return listCell;
     }
+//    private final String result = "/Users/olhalavrynenko/Desktop/Performance.xls";
+
+    }
 
 
-}
