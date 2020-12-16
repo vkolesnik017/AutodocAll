@@ -98,44 +98,13 @@ public class PriceProductDescription_aws {
                     switchTo().window(1).close();
                     switchTo().window(0);
                 }
-
                 if (label == true) {
                     break;
                 } else {
                     continue;
                 }
             }
-
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- /*       for (int i = 0; i < idOfProducts().size(); i++) {
-            while (!label == true) {
-                idOfProducts().get(i).click();
-                switchTo().window(1);
-                boolean activeLabel = new ProductCard_aws().getActiveLabelByArtNumAndBrand();
-                if (activeLabel == true) {
-                    label = true;
-                } else {
-                    switchTo().window(1).close();
-                    switchTo().window(0);
-                }
-            }
-        }*/
-
         return this;
     }
 }
