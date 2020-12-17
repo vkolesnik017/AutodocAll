@@ -567,7 +567,10 @@ public class CommonMethods {
         }
     }
 
-
+    @Step("wait while page is reload.")
+    public static void pageReload() {
+        Wait().until(webDriver -> executeJavaScript("return document.readyState").equals("complete"));
+    }
 
 
 }

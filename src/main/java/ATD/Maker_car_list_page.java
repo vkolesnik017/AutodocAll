@@ -131,5 +131,5 @@ public class Maker_car_list_page {
         return $$x("//div[@class='slick-list draggable']//span[@class='link ga-click']");
     }
 
-
+    ElementsCollection imagesOfTopProducts() {return $$x("//div[@class='small-prod-image']/a");}
 }

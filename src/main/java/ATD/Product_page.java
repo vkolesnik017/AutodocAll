@@ -836,6 +836,13 @@ public class Product_page {
         return $x("//span[@class='club-link utm_link link']");
     }
 
+    SelenideElement kitCompositionBlock() { return $x("//div[@class='product-info-block__set']");}
+
+    SelenideElement kitCompositionBlockUnderPdf() {return $x("//div[@class='product-info-block__set']/../preceding-sibling::div/div[@class='product-video-tutorial product-video-tutorial-only-pdf']");}
+
+    SelenideElement kitCompositionBlockAboveFeedbBckBlock() {return $x("//div[@class='product-info-block__set']/../following-sibling::div[@class='product-feedback']");}
+
+    ElementsCollection productsFromKitCompositionBlock() { return $$x("//div[@class='product-info-block__set__row']/div[1]/a"); }
     SelenideElement pricePerMeter() {return $x("//*[contains(text(),'Preis pro Meter')]");}
 
     SelenideElement locationOfCandlesAnalogBlock() {return $x("//div[@id='footer']/preceding-sibling::main[@class='product-page']/div/div[last()]");}
@@ -846,4 +853,25 @@ public class Product_page {
 
     ElementsCollection artListInCandlesAnalogBlock() {return $$x("//div[@class='product-info-block__nummer__wrap']//span");}
 
+    ElementsCollection artNumOfProductsFromKitCompositionBlock() { return $$x("//div[@class='product-info-block__set__row']/div[3]"); }
+
+    SelenideElement valueOfArtNumProduct() {return $x("//span[@class='subtitle-art-nummer']/span");}
+
+    SelenideElement tabBlock() {return $x("//div[@class='product-tabs']");}
+
+    ElementsCollection linksOfTabBlock() {return $$x("//div[@class='product-tabs']/a");}
+
+    SelenideElement countOfReviewsInHeadOfBlock() {return $x("//span[@class='product-revs__count']");}
+
+    ElementsCollection reviews() {return $$x("//ul[@class='product-comments__list']/li");}
+
+    SelenideElement ridexInfoBlock() {return $x("//div[@class='product-banner-ridex js-default-open-popup']");}
+
+    SelenideElement ridexLogo() {return $x("//div[@class='product-banner-ridex__img']/img");}
+
+    SelenideElement aboutRidexText() {return $x("//div[@class='product-banner-ridex js-default-open-popup']//div[@class='banner-text']");}
+
+    SelenideElement btnShowMoreInRidexBlock() {return $x("//div[@class='product-banner-ridex js-default-open-popup']//div[@class='banner-btn']");}
+
+    SelenideElement background() {return $x("//div[@class='overlay black hidden']");}
 }
