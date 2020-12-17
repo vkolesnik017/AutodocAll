@@ -1,7 +1,6 @@
 package ATD.General_Common.QC_1554_Footer;
 
 import ATD.Main_page_Logic;
-import Common.DataBase;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -10,8 +9,6 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import java.sql.SQLException;
 
 import static ATD.CommonMethods.*;
 import static Common.SetUp.setUpBrowser;
@@ -34,14 +31,11 @@ public class QC_2437_TransitionToTheAutodocClubFromTheSocialNetworkBlock {
     @Owner(value = "LavrynenkoOlha")
     @Test(dataProvider = "route")
     @Description(value = "Test check the transition to the Autodoc club in the Social Network Block")
-    public void checkingTransitionInTheSocialNetworksBlock(String route) throws SQLException {
+    public void checkingTransitionInTheSocialNetworksBlock(String route) {
         openPage(route);
-        String shop = getCurrentShopFromJSVarInHTML();
         new Main_page_Logic().checkingTransitionToTheAutodocClub();
-        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName(shop, "club_main"));
         back();
         new Main_page_Logic().checkingTransitionToTheAutodocClubLink();
-        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName(shop, "club_main"));
     }
 
     @AfterMethod

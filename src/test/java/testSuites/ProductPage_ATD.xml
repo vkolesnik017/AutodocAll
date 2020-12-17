@@ -35,6 +35,8 @@
             <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_3105_CheckDisplayKitCompositionBlock"/>
             <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_3098_PresenceOfTabBlockAnchoringByClickOnElement"/>
             <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_3101_DisplayOfRidexBlock"/>
+            <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_3106_CheckDisplayCandlesAnalogBlock"/>
+            <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_3117_CheckDisplayPriceMeterElementOnProductPage"/>
         </classes>
     </test>
 </suite>

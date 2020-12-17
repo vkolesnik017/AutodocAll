@@ -10,7 +10,6 @@ import io.qameta.allure.Step;
 import org.testng.Assert;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -359,6 +358,12 @@ public class Product_page_Logic extends Product_page {
     @Step("Displaying of the Reg Number block for CH shop. Product_page")
     public Product_page_Logic visibilityOfTheRegNumberBlockCH() {
         blockRegNumberForCH().shouldBe(visible, exist);
+        return this;
+    }
+
+    @Step("presence Price per meter title. Product page")
+    public Product_page_Logic presencePricePerMeterTitle() {
+        pricePerMeter().shouldBe(visible);
         return this;
     }
 }

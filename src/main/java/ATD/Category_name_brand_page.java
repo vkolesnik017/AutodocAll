@@ -52,4 +52,8 @@ public class Category_name_brand_page {
     SelenideElement mainImageCategories() {
         return $x("//div[@class='autoteile-top-content__image']/img");
     }
+
+    ElementsCollection btnAddProductToWishlist() {return $$x("//div[@class='add-to-wishlist add-article']");}
+
+    ElementsCollection priceTitle() {return $$x("//div[@class='product-list__item__info']/*[1]");}
 }

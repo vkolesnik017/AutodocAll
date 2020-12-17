@@ -11,9 +11,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import java.sql.SQLException;
-
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
@@ -38,11 +36,10 @@ public class QC_961_TransitionOnProductPageWithMiniCardTopProductBlock {
     @Description(value = "Test checking transition on product page when clicking on a goods in a block top products")
     public void testCheckingTransitionWithGoodsBlockTopProducts(String route) {
         openPage(route);
-        String nameCategory = index_accessories_page_logic.getNameFirstProductInTop6Block();
+        String idCategory = index_accessories_page_logic.getIdProductFromTopProductsBlock();
         index_accessories_page_logic.clickOnFirstProductInTop6Block();
-        String nameTitle = new Product_page_Logic().getTitleNameForProductPageAccessories();
-        Assert.assertEquals(nameCategory, nameTitle);
-
+        String idProduct = new Product_page_Logic().getIdFromBtnProduct();
+        Assert.assertEquals(idCategory, idProduct);
     }
 
 
