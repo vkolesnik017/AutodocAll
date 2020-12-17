@@ -13,6 +13,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.util.List;
+
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
@@ -24,6 +26,7 @@ public class QC_1015_GrayButtonOnSearchPage {
 
     private WebMail webMail = new WebMail();
     private WishlistReminderAvailability_aws wishlistReminderAvailability = new WishlistReminderAvailability_aws();
+    private List <String> parameters;
 
     @BeforeClass
     void setUp() {
@@ -42,17 +45,11 @@ public class QC_1015_GrayButtonOnSearchPage {
     public void testGrayButton(String route) {
         new Login_aws().loginInAwsWithOpen();
         open(wishlistReminderAvailability.urlWithCurrentDate);
-        String articleProduct = wishlistReminderAvailability.getTextFromArticle();
-        String idProduct = wishlistReminderAvailability.getTextFromId();
-        int beforeCountRequests = wishlistReminderAvailability.getBeforeCountRequests();
-        openPage(route);
-        new Main_page_Logic().useSearch(articleProduct)
-                         .clickButtonProductById(idProduct)
-                         .sendRequestByGrayButtonFromSearchPage(email);
+        parameters = wishlistReminderAvailability.getNumberOfRequestAndProductID(route, email, wishlistReminderAvailability.urlWithCurrentDate);
         webMail.openMail(email)
                         .checkLetterInfoText(1, "moments ago", "Wir bearbeiten");
         open(wishlistReminderAvailability.urlWithCurrentDate);
-        wishlistReminderAvailability.checkAfterCountRequest(beforeCountRequests, idProduct);
+        wishlistReminderAvailability.checkAfterCountRequest(parameters);
     }
 
     @AfterMethod

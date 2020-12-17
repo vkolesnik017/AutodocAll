@@ -19,7 +19,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import static ATD.CommonMethods.openPage;
-import static Common.CommonMethods.roundOfTheCost;
 import static Common.SetUp.setUpBrowser;
 import static AWS.SearchOrders_page_aws.searchOrderPageURL;
 import static com.codeborne.selenide.Selenide.closeWebDriver;

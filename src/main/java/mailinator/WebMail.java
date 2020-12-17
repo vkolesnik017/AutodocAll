@@ -69,7 +69,7 @@ public class WebMail {
     }
 
     private SelenideElement linkInRestorePasswordLetter() {
-        return $(byCssSelector(".forgot>a"));
+        return $x("//a[contains(@href,'recovery')]");
     }
 
     private SelenideElement infoTotalPriceInEmail() {
