@@ -4,6 +4,7 @@ import AWS.ProductCard_aws;
 import Common.DataBase;
 import Common.Excel;
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.ex.ElementNotFound;
 import com.codeborne.selenide.ex.ElementShould;
@@ -1118,5 +1119,124 @@ public class Product_page_Logic extends Product_page {
         return bannerAutodocClub().getAttribute("url");
     }
 
+    @Step("compare applicability car. Product page")
+    public Product_page_Logic compareApplicabilityCar(String marke, String model) {
+        linkOfCompatibilityVehicleAndProduct().shouldBe(visible).shouldHave(text(marke)).shouldHave(text(model.replaceAll("(.+\\))(\\s\\(.+)", "$1")));
+        return this;
+    }
+
+    @Step(" check location of kit composition block. Product page")
+    public Product_page_Logic locationOfKitCompositionBlock() {
+        kitCompositionBlock().shouldBe(visible);
+        kitCompositionBlockUnderPdf().shouldBe(visible);
+        kitCompositionBlockAboveFeedbBckBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("check products from kit composition block. Product page")
+    public Product_page_Logic checkProductsFromKitCompositionBlock() {
+        for (int i = 0; i < productsFromKitCompositionBlock().size(); i++) {
+            String artNUm = artNumOfProductsFromKitCompositionBlock().get(i).getText();
+            productsFromKitCompositionBlock().get(i).shouldBe(visible).click();
+            pageReload();
+            checkArtNumOfProduct(artNUm);
+            back();
+            pageReload();
+        }
+        return this;
+    }
+
+    @Step("check article number of product. Product page")
+    public Product_page_Logic checkArtNumOfProduct(String artNum) {
+        Assert.assertEquals(valueOfArtNumProduct().getText(), artNum);
+        return this;
+    }
+
+    @Step("presenceTAB block. Product page")
+    public Product_page_Logic presenceTabBlock(int countOfLinks) {
+        tabBlock().shouldBe(visible);
+        linksOfTabBlock().shouldHaveSize(countOfLinks);
+        return this;
+    }
+
+    @Step("check TAB links. Product page")
+    public Product_page_Logic checkTabLinks(String route) {
+
+        for (int i = 0; i < linksOfTabBlock().size(); i++) {
+            Long descriptionLin = (Long) (executeJavaScript("return window.pageYOffset;", linksOfTabBlock().get(0)));
+            Long oemBlock = (Long) (executeJavaScript("return window.pageYOffset;", linksOfTabBlock().get(1)));
+            Long videoBlock = (Long) (executeJavaScript("return window.pageYOffset;", linksOfTabBlock().get(2)));
+            Long reviewsBlock = (Long) (executeJavaScript("return window.pageYOffset;", linksOfTabBlock().get(3)));
+            Long faqBlock = (Long) (executeJavaScript("return window.pageYOffset;", linksOfTabBlock().get(4)));
+            Long usageNumberBlock = (Long) (executeJavaScript("return window.pageYOffset;", linksOfTabBlock().get(5)));
+            linksOfTabBlock().get(i).click();
+            switch (i) {
+                case 0:
+                    linksOfTabBlock().get(0).shouldHave(attribute("href", "" + route + "#section1"));
+                    Assert.assertNotEquals(descriptionLin, (Long) (executeJavaScript("return window.pageYOffset;", linksOfTabBlock().get(0))));
+                    break;
+                case 1:
+                    linksOfTabBlock().get(1).shouldHave(attribute("href", "" + route + "#section3"));
+                    Assert.assertNotEquals(oemBlock, (Long) (executeJavaScript("return window.pageYOffset;", linksOfTabBlock().get(1))));
+                    break;
+                case 2:
+                    linksOfTabBlock().get(2).shouldHave(attribute("href", "" + route + "#section6"));
+                    Assert.assertNotEquals(videoBlock, (Long) (executeJavaScript("return window.pageYOffset;", linksOfTabBlock().get(2))));
+                    break;
+                case 3:
+                    linksOfTabBlock().get(3).shouldHave(attribute("href", "" + route + "#section7"));
+                    Assert.assertNotEquals(reviewsBlock, (Long) (executeJavaScript("return window.pageYOffset;", linksOfTabBlock().get(3))));
+                    break;
+                case 4:
+                    linksOfTabBlock().get(4).shouldHave(attribute("href", "" + route + "#faq"));
+                    Assert.assertNotEquals(faqBlock, (Long) (executeJavaScript("return window.pageYOffset;", linksOfTabBlock().get(4))));
+                    break;
+                case 5:
+                    linksOfTabBlock().get(5).shouldHave(attribute("href", "" + route + "#section8"));
+                    Assert.assertNotEquals(usageNumberBlock, (Long) (executeJavaScript("return window.pageYOffset;", linksOfTabBlock().get(5))));
+                    break;
+                default:
+                    break;
+            }
+        }
+        return this;
+    }
+
+    @Step("checking the count of reviews. Product page")
+    public Product_page_Logic checkCountOfReviews() {
+        int countFromReviewsLink = Integer.parseInt(linksOfTabBlock().get(3).getText().replaceAll("[^0-9]", " ").trim());
+        int countFromReviewsBlock = Integer.parseInt(countOfReviewsInHeadOfBlock().getText().replaceAll("[^0-9]", " ").trim());
+        Assert.assertEquals(countFromReviewsBlock, countFromReviewsLink);
+        reviews().shouldHaveSize(countFromReviewsLink);
+        return this;
+    }
+
+    @Step("display of Ridex info block. Product page")
+    public Product_page_Logic displayRidexInfoBlock() {
+        ridexInfoBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("check elements of ridex info block. Product page")
+    public Product_page_Logic checkElementsOfRidexInfoBlock() {
+        ridexLogo().shouldBe(visible);
+        aboutRidexText().shouldBe(visible).shouldHave(exactText("Über RIDEX"));
+        btnShowMoreInRidexBlock().shouldBe(visible).shouldHave(exactText("Mehr anzeigen"));
+        return this;
+    }
+
+    @Step("open Pdf file. Product page")
+    public Product_page_Logic openPdfFile() {
+        btnShowMoreInRidexBlock().shouldBe(visible).click();
+        background().shouldHave(attribute("style", "display: block;"));
+        return this;
+    }
+
+
+    @Step("close Pdf file. Product page")
+    public Product_page_Logic closePdfFile() {
+        Selenide.actions().moveToElement(btnShowMoreInRidexBlock()).click().build().perform();
+        return this;
+    }
 
 }
