@@ -16,7 +16,6 @@ import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_2439_TransitionToTheInstagramFromTheSocialNetworkBlock {
-    CommonMethods commonMethods = new CommonMethods();
 
     @BeforeClass
     void setUp() {
@@ -34,10 +33,8 @@ public class QC_2439_TransitionToTheInstagramFromTheSocialNetworkBlock {
     @Description(value = "Test check the transition to the Instagram in the Social Network Block")
     public void checkingTransitionInTheSocialNetworksBlock(String route) {
         openPage(route);
-        new Main_page_Logic().checkingTransitionToTheInstagramByImage();
-        commonMethods.checkingUrl("https://www.instagram.com/autodoc_autoparts/");
-        new Main_page_Logic().checkingTransitionToTheInstagramByLink();
-        commonMethods.checkingUrl("https://www.instagram.com/autodoc_autoparts/");
+        new Main_page_Logic().checkingTransitionToTheInstagramByImage()
+                .checkingTransitionToTheInstagramByLink();
     }
 
     @AfterMethod
