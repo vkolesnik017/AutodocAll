@@ -98,7 +98,7 @@ public class Main_page_Logic extends Main_page {
         try {
             privacyPolicyBtnFB().shouldBe(visible);
             privacyPolicyBtnFB().click();
-        } catch (Throwable e){
+        } catch (Throwable e) {
             System.out.println("Privacy policy is not visible");
             e.printStackTrace();
         }
@@ -355,6 +355,7 @@ public class Main_page_Logic extends Main_page {
         secondFieldKBA().setValue(numberForSecondField);
         return this;
     }
+
     // This method only for DE
     @Step("Fill in KBA fields in popup. Main_page")
     public Main_page_Logic fillNumberKbaInPopup(String numberForFirstField, String numberForSecondField) {
@@ -386,7 +387,7 @@ public class Main_page_Logic extends Main_page {
         textUnderSecondFieldKBA().shouldHave(exactText("ZU 3. ODER ZU 2.2."));
         linkInfoKba().shouldHave(exactText("Was ist eine" + " Schlüsselnummer?"));
         selectorKbaBtn().shouldHave(exactText("Suchen"));
-       return this;
+        return this;
     }
 
     // This method for all shop, except DE
@@ -1496,15 +1497,25 @@ public class Main_page_Logic extends Main_page {
         return this;
     }
 
-    @Step("Checking the transition to the instagram from  the Social Network Block. Main_page")
+    @Step("Checking the transition to the instagram by click in image from  the Social Network Block. Main_page")
     public Main_page_Logic checkingTransitionToTheInstagramByImage() {
+        String instagramImageTransition = instagramImageTransition().getAttribute("url") + "/";
         instagramImageTransition().click();
+        waitingWhileLinkBecomeExpected(instagramImageTransition);
+        String currentUrl = url();
+        Assert.assertEquals(currentUrl, instagramImageTransition);
+        back();
         return this;
     }
 
-    @Step("Checking the transition to the instagram from  the Social Network Block. Main_page")
+    @Step("Checking the transition to the instagram by click on link from  the Social Network Block. Main_page")
     public Main_page_Logic checkingTransitionToTheInstagramByLink() {
+        String instagramLinkTransition = instagramLinkTransition().getAttribute("url") + "/";
         instagramLinkTransition().click();
+        waitingWhileLinkBecomeExpected(instagramLinkTransition);
+        String currentUrl = url();
+        Assert.assertEquals(currentUrl, instagramLinkTransition);
+        back();
         return this;
     }
 
@@ -1573,7 +1584,7 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step(":from Main_page")
-    public Main_page_Logic checkCategoriesForServerResponses200( List<String> allCategories) throws IOException {
+    public Main_page_Logic checkCategoriesForServerResponses200(List<String> allCategories) throws IOException {
         CommonMethods.checkCategoriesForServerResponses200(allCategories);
         return this;
     }
@@ -1622,8 +1633,6 @@ public class Main_page_Logic extends Main_page {
         linksInTopsBlock().get(4).shouldBe(visible).click();
         return page(Index_accessories_page_Logic.class);
     }
-
-
 
 
 }
