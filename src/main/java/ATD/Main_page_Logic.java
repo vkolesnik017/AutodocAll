@@ -50,11 +50,12 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Login in header with mail {mail}. Main_page")
-    public Profile_page_Logic loginFromHeader(String mail) {
+    public Profile_page_Logic loginFromHeader(String mail)  {
         loginBtnInHeader().click();
         mailFieldLogin().setValue(mail);
         passFieldLogin().setValue(password);
         submitBtnLogin().click();
+        checkingContainsUrl("profile");
         return page(Profile_page_Logic.class);
     }
 
