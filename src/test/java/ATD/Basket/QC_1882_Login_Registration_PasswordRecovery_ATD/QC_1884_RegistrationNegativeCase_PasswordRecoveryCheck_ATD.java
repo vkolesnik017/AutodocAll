@@ -47,7 +47,7 @@ public class QC_1884_RegistrationNegativeCase_PasswordRecoveryCheck_ATD {
                 .nextButtonClick()
                 .registrationFromCart(mail);
         new CartAccount_page_Logic().recoveryPassFromPopUpEmailAlreadyExists(mail);
-        webMail.openMail(mail, passwordForMail).subjectLetter(1).shouldHave(text("neues Passwort"));
+        webMail.openMail(mail, passwordForMail).subjectLetter(1).shouldHave(text("Setzen Sie das Passwort"));
         webMail.openLetter(1)
                 .clickLinkRecoveryPasswordInLetter();
     }
