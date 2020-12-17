@@ -34,7 +34,7 @@ public class QC_1275_TestTyresTopBlockPresence {
 
     @DataProvider(name = "routesTyresFeature", parallel = true)
     Object[] dataProviderTyresFeature() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_feature");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_feature,tyres_maker");
     }
 
 

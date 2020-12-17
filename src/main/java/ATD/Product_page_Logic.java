@@ -1118,5 +1118,25 @@ public class Product_page_Logic extends Product_page {
         return bannerAutodocClub().getAttribute("url");
     }
 
+    @Step("presence Price per meter title. Product page")
+    public Product_page_Logic presencePricePerMeterTitle() {
+        pricePerMeter().shouldBe(visible);
+        return this;
+    }
 
+    @Step("check location of candles analog block. Product page")
+    public Product_page_Logic checkLocationOfCandlesAnalogBlock() {
+        locationOfCandlesAnalogBlock().shouldBe(visible).shouldHave(attribute("class", "product-info-block"));
+        return this;
+    }
+
+    @Step("check elements of candles analog block. Product page")
+    public Product_page_Logic checkElementsOfCandlesAnalogBlock() {
+        headlineOfCandlesAnalogBlock().shouldBe(visible);
+        for (int i=0;i<brandsInCandlesAnalogBlock().size();i++){
+            brandsInCandlesAnalogBlock().get(i).shouldBe(visible).shouldNotBe(empty);
+            artListInCandlesAnalogBlock().get(i).shouldBe(visible).shouldNotBe(empty);
+        }
+        return this;
+    }
 }

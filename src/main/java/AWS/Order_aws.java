@@ -516,6 +516,10 @@ public class Order_aws {
         return $x("//a[@class='btn btn-primary btn-print']");
     }
 
+    private SelenideElement payLinkAmount() {
+        return $x("//table[contains(@class,'list-paylinks')]/tbody//td[@class='paylink-amount']");
+    }
+
 
 
     @Step("Click button accounts. Order_aws")
@@ -1352,6 +1356,12 @@ public class Order_aws {
     @Step("Check absence expected element. Order_aws")
     public Order_aws checkAbsenceExpectedElement(SelenideElement element) {
         element.shouldNotBe(visible);
+        return this;
+    }
+
+    @Step("Checks presence paylink amount. Order_aws")
+    public Order_aws checkPresencePauLinkAmount() {
+        payLinkAmount().scrollIntoView("{block: \"center\"}").shouldBe(visible);
         return this;
     }
 }

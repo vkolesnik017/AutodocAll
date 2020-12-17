@@ -403,6 +403,18 @@ public class Main_page_Logic extends Main_page {
         return page(Maker_car_list_page_Logic.class);
     }
 
+    @Step("Click search KBA button and close popup selector if it visible. Main_page")
+    public Maker_car_list_page_Logic clickKbaBtnAndClosePopupSelectorIfVisible() {
+        selectorKbaBtn().click();
+        sleep(3000);
+        if (selectorPopup().isDisplayed()) {
+            closeBtnInCarSelectorPopup().click();
+            selectorPopup().shouldNotBe(visible);
+            selectorKbaBtn().click();
+        }
+        return page(Maker_car_list_page_Logic.class);
+    }
+
     @Step("Click search KBA button in popup. Main_page")
     public Maker_car_list_page_Logic clickKbaBtnInPopup() {
         selectorKbaBtnInPopup().shouldBe(visible).click();
@@ -932,6 +944,26 @@ public class Main_page_Logic extends Main_page {
         techAllianceBlock().shouldBe(Condition.visible);
         workTimeBlock().shouldBe(Condition.visible);
         copyrightBlock().shouldBe(Condition.visible);
+        return this;
+    }
+
+    @Step("Checks block promotional footnotes. Main_page")
+    public Main_page_Logic checksBlockPromotionalFootnotes() {
+        blockPromotionalFootnotes().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        firstPromotionalFootnotes().hover();
+        firstDropdownPromotionalFootnotes().shouldBe(visible);
+        firstDropdownPromotionalFootnotes().shouldHave(text("Gilt für ausgewählte Produkte. " +
+                "Dieser Prozentsatz kann nach Ablauf der rechts oben angegebenen Zeit entfallen, " +
+                "sich erhöhen oder verringern. Er bezieht sich nicht auf einen zuvor ernsthaft geforderten Preis, dazu unter"));
+        firstCloseBtnDropdownPromotionalFootnotes().click();
+        firstDropdownPromotionalFootnotes().shouldNotBe(visible);
+        secondPromotionalFootnotes().hover();
+        secondDropdownPromotionalFootnotes().shouldBe(visible);
+        secondDropdownPromotionalFootnotes().shouldHave(text("Der durchgestrichene Betrag ist kein zuvor ernsthaft geforderter Preis, " +
+                "sondern wird in Echtzeit auf der Grundlage unseres jeweils günstigsten Einkaufspreises berechnet. " +
+                "Er kann sich daher tagesaktuell erhöhen oder senken."));
+        secondCloseBtnDropdownPromotionalFootnotes().click();
+        secondDropdownPromotionalFootnotes().shouldNotBe(visible);
         return this;
     }
 
@@ -1465,28 +1497,30 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Checking the transition to the instagram from  the Social Network Block. Main_page")
-    public Main_page_Logic checkingTransitionToTheInstagram(String expectedUrl) {
+    public Main_page_Logic checkingTransitionToTheInstagramByImage() {
         instagramImageTransition().click();
-        waitingWhileLinkBecomeExpected(expectedUrl);
-        url();
-        Assert.assertEquals(url(), expectedUrl);
-        back();
+        return this;
+    }
+
+    @Step("Checking the transition to the instagram from  the Social Network Block. Main_page")
+    public Main_page_Logic checkingTransitionToTheInstagramByLink() {
         instagramLinkTransition().click();
-        url();
-        waitingWhileLinkBecomeExpected(expectedUrl);
-        Assert.assertEquals(url(), expectedUrl);
         return this;
     }
 
     @Step("Checking the transition to the autodoc club from  the Social Network Block. Main_page")
     public Main_page_Logic checkingTransitionToTheAutodocClub() {
+        String autodocClubImageTransitionURL = autodocClubImageTransition().getAttribute("url");
         autodocClubImageTransition().click();
+        waitingWhileLinkBecomeExpected(autodocClubImageTransitionURL);
         return this;
     }
 
     @Step("Checking the transition to the autodoc club from  the Social Network Block. Main_page")
     public Main_page_Logic checkingTransitionToTheAutodocClubLink() {
+        String autodocClubLinkTransitionURL = autodocClubTransition().getAttribute("url");
         autodocClubTransition().click();
+        waitingWhileLinkBecomeExpected(autodocClubLinkTransitionURL);
         return this;
     }
 

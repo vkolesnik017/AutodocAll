@@ -334,6 +334,33 @@ public class Main_page {
         return $(By.cssSelector("#privacy_policy_footer>span"));
     }
 
+    SelenideElement blockPromotionalFootnotes() {
+        return $x("//div[@class='footer-footnotes js-footnotes']");
+    }
+
+    SelenideElement firstPromotionalFootnotes() {
+        return $x("(//div[@class='footer-footnotes__text']/div/span)[1]");
+    }
+
+    SelenideElement firstDropdownPromotionalFootnotes() {
+        return $x("(//div[@class='footer-footnotes__text-more-dropdown'])[1]");
+    }
+
+    SelenideElement firstCloseBtnDropdownPromotionalFootnotes() {
+        return $x("(//div[@class='footer-footnotes__text-more-dropdown']/div)[1]");
+    }
+
+    SelenideElement secondPromotionalFootnotes() {
+        return $x("(//div[@class='footer-footnotes__text']/div/span)[2]");
+    }
+    SelenideElement secondDropdownPromotionalFootnotes() {
+        return $x("(//div[@class='footer-footnotes__text-more-dropdown'])[2]");
+    }
+
+    SelenideElement secondCloseBtnDropdownPromotionalFootnotes() {
+        return $x("(//div[@class='footer-footnotes__text-more-dropdown']/div)[2]");
+    }
+
     //ÜBER AUTODOC
 
     SelenideElement hilfeCenterLink() {

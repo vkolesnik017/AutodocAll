@@ -268,5 +268,5 @@ public class Listing_chemicals_Page {
         return $x("//ul[contains(@class,'list_products')]");
     }
 
-    ElementsCollection signalWordOfDangerousProductListingView() {return $$x("//div[@class='dangerous-listing__title hazard-danger-title']");}
+    ElementsCollection signalWordOfDangerousProductListingView() {return $$x("//div[contains(@class,'dangerous-listing__title')]");}
  }
