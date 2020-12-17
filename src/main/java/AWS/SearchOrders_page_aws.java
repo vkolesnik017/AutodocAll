@@ -156,6 +156,17 @@ public class SearchOrders_page_aws {
         return this;
     }
 
+    @Step("Open search page with expected data")
+    public SearchOrders_page_aws openSearchPageWithExpectedData(String dataFrom, String dataBefore) {
+        openPage(searchOrderPageURL +
+                "?Filter%5BorderId%5D=&Filter%5BorderFrom%5D=our&Filter%5Bplz%5D=&Filter%5Bort%5D=&Filter%5" +
+                "Bgroup%5D=&Filter%5BgroupList%5D=&Filter%5BsortByHours%5D=&Filter%5BcorrectionPaid%5D=0&Filter%5Bpaid%5D=&Filter%" +
+                "5BcustomerInfo%5D=&Filter%5BfromDate%5D=" + dataFrom + "&Filter%5BtoDate%5D=" + dataBefore + "&Filter%5BwarehouseId%5D=&Filter%" +
+                "5BhasSingleProduct%5D=0&Filter%5BhasNoProduct%5D=0&search=");
+        new Login_aws().loginInAws();
+        return this;
+    }
+
     @Step("Check present transaction cod block in re-order. SearchOrders_page_aws")
     public Boolean checkPresentTransactionCodInReOrder(SelenideElement element) {
         boolean check = false;
@@ -229,7 +240,7 @@ public class SearchOrders_page_aws {
         return page(Order_aws.class);
     }
 
-    @Step("Go to a random order and check the PauLink. SearchOrders_page_aws")
+    @Step("Go to a random order and check the PayLink. SearchOrders_page_aws")
     public  SearchOrders_page_aws clickOnRandomOrderID(int countOfClick) {
         int minValue = 0;
         for (int i = 0; i < countOfClick; i++){
