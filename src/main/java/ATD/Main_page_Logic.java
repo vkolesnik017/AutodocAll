@@ -1570,22 +1570,36 @@ public class Main_page_Logic extends Main_page {
         return this;
     }
 
-
-    @Step("Click tab LKW in top block. Main_page")
-    public LKW_main_page_Logic clickTabLkwIntopBlock() {
+    @Step("Check transition by tab LKW in top block. Main_page")
+    public Main_page_Logic checkTransitionByTabLkwInTopBlock() throws SQLException {
         linksInTopsBlock().get(2).shouldBe(visible).click();
-        return page(LKW_main_page_Logic.class);
+        switchTo().window(1);
+        String urlLkwPage = url().replaceAll("\\/[^\\/]*$", "");
+        String expectedLkwUrl = new DataBase("ATD").getFullRouteByRouteName("subprod", "DE", "lkw_main");
+        Assert.assertEquals(urlLkwPage, expectedLkwUrl);
+        closeWindow();
+        switchTo().window(0);
+        return this;
     }
 
-    @Step("Click tab Moto in top block. Main_page")
-    public Moto_main_page_Logic clickTabMotoInTopBlock() {
+    @Step("Check transition by tab Moto in top block. Main_page")
+    public Main_page_Logic checkTransitionByTabMotoInTopBlock() throws SQLException {
         linksInTopsBlock().get(3).shouldBe(visible).click();
-        return page(Moto_main_page_Logic.class);
+        switchTo().window(1);
+        String urlMotoPage = url().replaceAll("\\/[^\\/]*$", "");
+        String expectedMotoUrl = new DataBase("ATD").getFullRouteByRouteName("subprod", "DE", "moto_main");
+        Assert.assertEquals(urlMotoPage, expectedMotoUrl);
+        closeWindow();
+        switchTo().window(0);
+        return this;
     }
 
-    @Step("Click tab Accessories in top block. Main_page")
-    public Index_accessories_page_Logic clickTabAccessoriesInTopBlock() {
+    @Step("Check transition by tab Accessories in top block. Main_page")
+    public Index_accessories_page_Logic checkTransitionByTabAccessoriesInTopBlock() throws SQLException {
         linksInTopsBlock().get(4).shouldBe(visible).click();
+        String urlAccessoriesPage = url();
+        String expectedAccessoriesUrl = new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "index_accessories");
+        Assert.assertEquals(urlAccessoriesPage, expectedAccessoriesUrl);
         return page(Index_accessories_page_Logic.class);
     }
 
