@@ -75,8 +75,8 @@ public class SearchOrders_page_aws {
         return $x("//input[@value='<Project>']");
     }
 
-    private SelenideElement listSkins(String skin) {
-        return $x("//div[@class='chzn-drop']//ul//li[text()='" + skin + "']");
+    private SelenideElement projectList(String project) {
+        return $x("//div[@class='chzn-drop']//ul//li[text()='" + project + "']");
     }
 
     private SelenideElement countrySelector() {
@@ -242,11 +242,11 @@ public class SearchOrders_page_aws {
         return this;
     }
 
-    @Step("Choosing skin in selector {skin}. SearchOrders_page_aws")
-    public SearchOrders_page_aws chooseProjectInSelector(String skin) {
+    @Step("Choosing project in selector {project}. SearchOrders_page_aws")
+    public SearchOrders_page_aws chooseProjectInSelector(String project) {
         projectSelector().click();
-        listSkins(skin).shouldBe(visible);
-        listSkins(skin).click();
+        projectList(project).shouldBe(visible);
+        projectList(project).click();
         return this;
     }
 
@@ -274,7 +274,7 @@ public class SearchOrders_page_aws {
         return this;
     }
 
-    @Step("Choosing assembly warehouse {expectedAssemblyWarehouse}")
+    @Step("Choosing assembly warehouse {expectedAssemblyWarehouse}. SearchOrders_page_aws")
     public SearchOrders_page_aws chooseAssemblyWarehouse(String expectedAssemblyWarehouse) {
         assemblyWarehouse().selectOptionContainingText(expectedAssemblyWarehouse);
         return this;
