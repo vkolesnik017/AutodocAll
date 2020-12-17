@@ -1,6 +1,6 @@
-package ATD.General_Common.QC_1554_Footer;
+package ATD.ProductPage.QC_2741_ProductPage_CarRoute;
 
-import ATD.Main_page_Logic;
+import ATD.Product_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -10,30 +10,33 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.sql.SQLException;
+
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1567_TransitionFromBlockOfSocialNetworks {
-
+public class QC_3106_CheckDisplayCandlesAnalogBlock {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "route", parallel = true)
-    Object[] dataProvider() {
-        return new SetUp("ATD").setUpShop("prod", "DE");
+    @DataProvider(name = "route")
+    Object[] dataProvider() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product51");
     }
 
     @Test(dataProvider = "route")
     @Flaky
-    @Owner(value = "Chelombitko")
-    @Description(value = "Test check social network links transitions")
-    public void checkingSocialNetworks(String route) {
+    @Owner(value = "Kolesnik")
+    @Description(value = "test Checking the display of the block analogs of candles")
+    public void testCheckDisplayCandlesAnalogBlock(String route) {
         openPage(route);
-        new Main_page_Logic().checkTransitionToSocialNetwork();
+        new Product_page_Logic().checkLocationOfCandlesAnalogBlock()
+                .checkElementsOfCandlesAnalogBlock();
     }
+
     @AfterMethod
     private void close() {
         closeWebDriver();

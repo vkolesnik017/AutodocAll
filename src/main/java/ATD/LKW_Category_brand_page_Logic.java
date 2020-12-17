@@ -5,8 +5,10 @@ import io.qameta.allure.Step;
 import org.testng.Assert;
 
 import java.sql.SQLException;
+import java.util.List;
+import java.util.stream.Collectors;
 
-import static ATD.CommonMethods.checkingContainsUrl;
+import static ATD.CommonMethods.*;
 import static com.codeborne.selenide.CollectionCondition.*;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.back;
@@ -132,10 +134,21 @@ public class LKW_Category_brand_page_Logic extends LKW_Category_brand_page {
         return this;
     }
 
-
     @Step("visibility of headline .LKW_Category_brand_page")
     public LKW_Category_brand_page_Logic visibilityOfMainHeadline() {
          mainHeadline().shouldBe(visible).shouldHave(exactText("LKW Ölfilter von MANN-FILTER"));
         return this;
+    }
+
+    @Step("get Id of product. LKW_Category_brand_page")
+    public List<String> getIdOfProduct() {
+        List<String> id = btnAddProductToWishlist().stream().map(n -> getAttributeFromUnVisibleElement(n, "data-product-id")).collect(Collectors.toList());
+        return id;
+    }
+
+    @Step("get price title of product. LKW_Category_brand_page")
+    public List<String> getPriceTitle(){
+        List<String> priceName = priceTitle().stream().map(n -> getTextFromUnVisibleElement(n)).collect(Collectors.toList());
+        return priceName;
     }
 }

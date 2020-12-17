@@ -71,6 +71,43 @@ public class SearchOrders_page_aws {
         return $x("//input[@id='form_Filter[customerInfo]']");
     }
 
+    private SelenideElement projectSelector() {
+        return $x("//input[@value='<Project>']");
+    }
+
+    private SelenideElement listSkins(String skin) {
+        return $x("//div[@class='chzn-drop']//ul//li[text()='" + skin + "']");
+    }
+
+    private SelenideElement countrySelector() {
+        return $x("//div[@id='form_Filter_countries____chzn']//input[@value='<Place field>']");
+    }
+
+    private SelenideElement countryList(String country) {
+        return $x("//div[@class='chzn-drop']//ul//li[text()='" + country + "']");
+    }
+
+    private SelenideElement paymentsMethodsSelector() {
+        return $x("//div[@id='form_Filter_paymentId____chzn']//input[@value='<Payment>']");
+    }
+
+    private SelenideElement paymentsMethodsList(String paymentsMethods) {
+        return $x("//div[@class='chzn-drop']//ul//li[text()='" + paymentsMethods + "']");
+    }
+
+    private SelenideElement currencySelector() {
+        return $x("//div[@id='form_Filter_currencyCode____chzn']//input[@value='<Currency>']");
+    }
+
+    private SelenideElement currencyList(String currency) {
+        return $x("//div[@class='chzn-drop']//ul//li[text()='" + currency + "']");
+    }
+
+    private SelenideElement assemblyWarehouse() {
+        return $x("//select[@name='Filter[warehouseId]']");
+    }
+
+
 
 
     @Step("Click button search. SearchOrders_page_aws")
@@ -202,6 +239,44 @@ public class SearchOrders_page_aws {
             new Order_aws().checkPresencePauLinkAmount();
             back();
         }
+        return this;
+    }
+
+    @Step("Choosing skin in selector {skin}. SearchOrders_page_aws")
+    public SearchOrders_page_aws chooseProjectInSelector(String skin) {
+        projectSelector().click();
+        listSkins(skin).shouldBe(visible);
+        listSkins(skin).click();
+        return this;
+    }
+
+    @Step("Choosing country {expectedCountry}. SearchOrders_page_aws")
+    public SearchOrders_page_aws chooseCountry(String expectedCountry){
+        countrySelector().click();
+        countryList(expectedCountry).shouldBe(visible);
+        countryList(expectedCountry).click();
+        return this;
+    }
+
+    @Step("Choosing Payments method {expectedPaymentsMethod}. SearchOrders_page_aws")
+    public SearchOrders_page_aws choosePaymentsMethods(String expectedPaymentsMethod){
+        paymentsMethodsSelector().click();
+        paymentsMethodsList(expectedPaymentsMethod).shouldBe(visible);
+        paymentsMethodsList(expectedPaymentsMethod).click();
+        return this;
+    }
+
+    @Step("Choosing currency method {expectedCurrency}. SearchOrders_page_aws")
+    public SearchOrders_page_aws chooseCurrency(String expectedCurrency){
+        currencySelector().click();
+        currencyList(expectedCurrency).shouldBe(visible);
+        currencyList(expectedCurrency).click();
+        return this;
+    }
+
+    @Step("Choosing assembly warehouse {expectedAssemblyWarehouse}")
+    public SearchOrders_page_aws chooseAssemblyWarehouse(String expectedAssemblyWarehouse) {
+        assemblyWarehouse().selectOptionContainingText(expectedAssemblyWarehouse);
         return this;
     }
 }

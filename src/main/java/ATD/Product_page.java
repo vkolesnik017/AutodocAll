@@ -836,5 +836,14 @@ public class Product_page {
         return $x("//span[@class='club-link utm_link link']");
     }
 
+    SelenideElement pricePerMeter() {return $x("//*[contains(text(),'Preis pro Meter')]");}
+
+    SelenideElement locationOfCandlesAnalogBlock() {return $x("//div[@id='footer']/preceding-sibling::main[@class='product-page']/div/div[last()]");}
+
+    SelenideElement headlineOfCandlesAnalogBlock() {return $(byId("section8"));}
+
+    ElementsCollection brandsInCandlesAnalogBlock() {return $$x("//div[@class='product-info-block__nummer__wrap']//p");}
+
+    ElementsCollection artListInCandlesAnalogBlock() {return $$x("//div[@class='product-info-block__nummer__wrap']//span");}
 
 }
