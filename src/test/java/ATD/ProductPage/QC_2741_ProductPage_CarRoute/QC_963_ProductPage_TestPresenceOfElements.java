@@ -22,6 +22,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 
 public class QC_963_ProductPage_TestPresenceOfElements {
+
     private Product_page_Logic product_page_logic = new Product_page_Logic();
     private CommonMethods commonMethods = new CommonMethods();
     private DataBase dataBase = new DataBase("ATD");
@@ -117,8 +118,10 @@ public class QC_963_ProductPage_TestPresenceOfElements {
         //20
         product_page_logic.feedbackBlock().shouldBe(visible);
         //21
-        product_page_logic.similarPropertiesBlock().shouldBe(visible);
-        product_page_logic.linkInSimilarPropertiesBlock().click();
+        product_page_logic.similarPropertiesBlock().scrollTo().shouldBe(visible);
+        product_page_logic.linkInSimilarPropertiesBlock().scrollIntoView(false).waitUntil(visible, 4000);
+        executeJavaScript("arguments[0].click();", product_page_logic.linkInSimilarPropertiesBlock());
+//        product_page_logic.linkInSimilarPropertiesBlock().click();
         product_page_logic.similarPropertiesBlock().waitUntil(visible, 3000);
         checkingContainsUrl("bosch/1165812");
         open(dataBase.getFullRouteByRouteAndSubroute("prod", "DE", "main", "product13"));
@@ -127,11 +130,12 @@ public class QC_963_ProductPage_TestPresenceOfElements {
         //24
         product_page_logic.deliveryServicesBlock().shouldBe(visible);
         //25
-       // product_page_logic.videoBlock().scrollTo().shouldBe(visible);
+        product_page_logic.videoBlock().scrollTo().shouldBe(visible);
         //26
         product_page_logic.pdfTutorialsBlock().scrollTo().shouldBe(visible);
         product_page_logic.checkPdfLinksForDownload();
     }
+
     @AfterMethod
     public void close() {
         closeWebDriver();

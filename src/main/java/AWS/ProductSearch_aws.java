@@ -215,7 +215,6 @@ public class ProductSearch_aws {
         depositProductsInTable().waitUntil(visible, 10000);
         for (int a = 0; a < artNumAndDeposit.size(); a++) {
             String onlyArtNum = String.valueOf(artNumAndDeposit.get(a)).replaceAll("\\D+", "");
-            ;
             String fullText = String.valueOf(artNumAndDeposit.get(a));
             setValueInSearchField(onlyArtNum);
             float deposit = Float.parseFloat(getValueFromDepositField());

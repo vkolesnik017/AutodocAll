@@ -1,9 +1,9 @@
 package ATD.Search.QC_536_SearchBasicFunctionality;
 
 import ATD.Search_page_Logic;
-import Common.SetUp;
 import AWS.CategoriesSynonyms_aws;
 import AWS.Login_aws;
+import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -16,9 +16,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import static Common.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.Selenide.open;
 
-public class QC_554_GoToLisingFromSynonymTooltipInSearch {
+public class QC_554_GoToListingFromSynonymTooltipInSearch {
 
     private CategoriesSynonyms_aws categoriesSynonymsAws = new CategoriesSynonyms_aws();
 
@@ -43,6 +44,23 @@ public class QC_554_GoToLisingFromSynonymTooltipInSearch {
         ArrayList<String> synonymsFromAWS = categoriesSynonymsAws.getGenericSynonymsAWS("2234");
         open(route);
         new Search_page_Logic().checkGenericSynonyms(genericName, synonymsFromAWS);
+    }
+
+    @DataProvider(name = "routeLKW")
+    Object[] dataProviderLKW() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "main");
+    }
+
+    @Test(dataProvider = "routeLKW")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "Going to listing through a generic synonym. All products have the expected generic in title")
+    public void testGoToListingFromSynonymTooltipSearchLKW(String route) {
+        new Login_aws().loginInAwsWithOpen();
+        open(categoriesSynonymsAws.urlWithSynonymTurboAndShopDE);
+        ArrayList<String> synonymsFromAWS = categoriesSynonymsAws.getGenericSynonymsAWS("2234");
+        open(route);
+        new Search_page_Logic().checkGenericSynonyms("lader", synonymsFromAWS);
     }
 
     @AfterMethod

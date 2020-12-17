@@ -269,7 +269,8 @@ public class Moto_Product_page_Logic extends Moto_Product_page {
     @Step("open of characteristic block .Moto_Product_page")
     public Moto_Product_page_Logic openCharacteristicBlock() {
         if (openBlockOfCharacteristic().isDisplayed()) {
-        openBlockOfCharacteristic().click();}
+            openBlockOfCharacteristic().click();
+        }
         listOfCharacteristics().shouldHaveSize(11);
         return this;
     }
@@ -411,4 +412,18 @@ public class Moto_Product_page_Logic extends Moto_Product_page {
         return new Product_page_Logic().getUrlAutodocClubFromBannerAutodocClub();
     }
 
+    @Step("click on applicability  motorcycle. Moto_Product_page")
+    public Moto_Product_page_Logic clickOnApplicabilityMoto(int position) {
+        motoApplicabilityBlock().shouldBe(exist).scrollIntoView("{block: \"center\"}");
+        applicabilityVehicle().get(position).click();
+        applicabilityVehicleListBlock().shouldBe(visible).shouldHave(attribute("style", "display: block;"));
+        return this;
+    }
+
+    @Step("click on applicability  motorcycle marke. Moto_Product_page")
+    public Moto_Product_page_Logic clickOnApplicabilityMotoMarke(int position) {
+        visibleApplicabilityMotoMarke().get(position).click();
+        applicabilityMotoModelBlock().shouldBe(visible);
+        return this;
+    }
 }

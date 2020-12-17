@@ -29,9 +29,11 @@
             <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_707_FAQ_TestFAQformValidationEmptyFields"/>
             <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_708_FAQ_TestVinPopupAfterHover"/>
             <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_951_CompatibilityList_TestIncompatibilityMessage"/>
-            <!--<class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_963_ProductPage_TestPresenceOfElements"/>-->
+            <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_963_ProductPage_TestPresenceOfElements"/>
             <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_1969_CheckPresenceTheBlockLawECEOnLightBulbPage"/>
             <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_2945_DisplayOfGenericAlternativeNameInProductName"/>
+            <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_3106_CheckDisplayCandlesAnalogBlock"/>
+            <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_3117_CheckDisplayPriceMeterElementOnProductPage"/>
         </classes>
     </test>
 </suite>

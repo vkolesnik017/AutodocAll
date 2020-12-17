@@ -178,13 +178,19 @@ public class Search_page_Logic extends Search_page {
 
     @Step("select brand in brands block. Search_page")
     public Search_page_Logic selectBrandInBlock(String idOfBrand) {
-        brandsFilterBlock().shouldBe(visible);
-        while (!brandsLinkInSideBar(idOfBrand).isDisplayed()) {
-            forwardLinkAtBrandsFilter().click();
-            checkVisibleBrands();
+
+        if (brandsFilterBlockInSideBar().isDisplayed()) {
+            brandFromSideBar(idOfBrand).click();
+            appearsOfLoader();
+        } else {
+            brandsFilterBlock().shouldBe(visible);
+            while (!brandsLinkInSideBar(idOfBrand).isDisplayed()) {
+                forwardLinkAtBrandsFilter().click();
+                checkVisibleBrands();
+            }
+            brandsLinkInSideBar(idOfBrand).shouldBe(visible).click();
+            appearsOfLoader();
         }
-        brandsLinkInSideBar(idOfBrand).shouldBe(visible).click();
-        appearsOfLoader();
         return this;
     }
 
@@ -372,8 +378,14 @@ public class Search_page_Logic extends Search_page {
 
     @Step("check visible brands. Search_page")
     public Search_page_Logic checkVisibleBrands() {
-        for (int i = 0; i < 2; i++) {
-            visibleBrands().get(i).shouldBe(exist);
+        if (visibleBrands().get(0).has(exist)) {
+            for (int i = 0; i < 2; i++) {
+                visibleBrands().get(i).shouldBe(exist);
+            }
+        } else if (visibleBrandsInSideBar().get(0).isDisplayed()) {
+            for (int i = 0; i < 10; i++) {
+                visibleBrandsInSideBar().get(i).shouldBe(visible);
+            }
         }
         return this;
     }

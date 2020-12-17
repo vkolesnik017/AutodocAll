@@ -1,6 +1,8 @@
 package ATD.Search.QC_548_SearchTooltips;
 
 import ATD.Main_page_Logic;
+import ATD.Search_page_Logic;
+import Common.DataBase;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -10,12 +12,18 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.sql.SQLException;
+
+import static ATD.CommonMethods.checkingContainsUrl;
 import static Common.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.Selenide.open;
 
 public class QC_550_GoToListingFromTooltipInSearch {
 
     private String searchText = "Lenkersatz";
+
+    private Main_page_Logic mainPage = new Main_page_Logic();
 
     @BeforeClass
     void setUp() {
@@ -37,6 +45,23 @@ public class QC_550_GoToListingFromTooltipInSearch {
                 .clickTooltipInSearchByExactText(searchText)
                 .verifyNameRouteEqualsSearch()
                 .verifyTextInSearchBar(searchText);
+    }
+
+    @DataProvider(name = "routeLKW")
+    Object[] dataProviderLKW() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "main");
+    }
+
+    @Test(dataProvider = "routeLKW")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "Go to search listing by click tooltip in search")
+    public void testGoToListingFromTooltipInSearchLKW(String route) throws SQLException {
+        open(route);
+        mainPage.inputTextInSearchBar(searchText)
+                .clickTooltipInSearchByExactText(searchText);
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "lkw_search20"));
+        new Search_page_Logic().verifyTextInSearchBar(searchText);
     }
 
     @AfterMethod

@@ -370,7 +370,7 @@ public class LKW_Category_page_Logic extends LKW_Category_page {
         List<String> attribute = new ArrayList<>();
         dangerousProducts().get(positionOfProduct).scrollIntoView("{block: \"center\"}").hover();
         for (int i = 0; i < attributeOfWarningIcon(positionOfProduct + 1).size(); i++) {
-            String attributeFromIcon = attributeOfWarningIcon(positionOfProduct + 1).get(i).shouldBe(visible).getAttribute("style").replace("background-image: url(\"", "").replace("\");", "");
+            String attributeFromIcon = attributeOfWarningIcon(positionOfProduct + 1).get(i).getAttribute("style").replace("background-image: url(\"", "").replace("\");", "");
             String partOfAttribute = attributeFromIcon.replace(attributeFromIcon.substring(attributeFromIcon.lastIndexOf(".")), "");
             attribute.add(partOfAttribute);
         }
@@ -385,8 +385,13 @@ public class LKW_Category_page_Logic extends LKW_Category_page {
             labelTitleDangerousProducts().get(positionOfProduct).shouldBe(visible).click();
             blackBackground().shouldHave(attribute("style", "display: block;"));
             warningPopUp().shouldBe(visible).shouldHave(attribute("style", "display: block;"));
-            titleOfDangerousPopUp().shouldBe(visible).shouldHave(exactText(signalWord));
-            infoTextOfDangerousPopUp().shouldNotBe(empty);
+
+            if (signalWord.replaceAll("\n", "").trim().equals("Beachten Sie!")) {
+                infoTextOfDangerousPopUp().shouldNotBe(empty);
+            } else {
+                titleOfDangerousPopUp().shouldBe(visible).shouldHave(exactText(signalWord));
+                infoTextOfDangerousPopUp().shouldNotBe(empty);
+            }
             List<String> attributeOfDangerousIcon = new ArrayList<>();
             for (int i = 0; i < dangerousIconInWarningPopUp().size(); i++) {
                 String urlFromAttribute = dangerousIconInWarningPopUp().get(i).getAttribute("style").replace("background-image: url(\"", "").replace("\");", "");
