@@ -23,9 +23,7 @@ public class SlackUtils implements Serializable {
     private String text;
     private String icon_emoji;
 
-    private static String slackWebhookUrl = "https://hooks.slack.com/services/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";
-
-    public static void sendMessage(SlackUtils message) {
+    public static void sendMessage(SlackUtils message, String slackWebhookUrl) {
         CloseableHttpClient client = HttpClients.createDefault();
         HttpPost httpPost = new HttpPost(slackWebhookUrl);
 
