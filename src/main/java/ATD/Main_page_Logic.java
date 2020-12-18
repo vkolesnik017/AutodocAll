@@ -562,9 +562,9 @@ public class Main_page_Logic extends Main_page {
     public Main_page_Logic checkApplicationLinks(String appUrl) {
         CommonMethods commonMethods = new CommonMethods();
         footerForm().scrollTo();
-        appGoogleButton().click();
+        appGoogleButton().waitUntil(visible, 6000).click();
         commonMethods.checkingUrl(appUrl);
-        appAppleButton().click();
+        appAppleButton().waitUntil(visible, 6000).click();
         commonMethods.checkingUrl(appUrl);
         return this;
     }
