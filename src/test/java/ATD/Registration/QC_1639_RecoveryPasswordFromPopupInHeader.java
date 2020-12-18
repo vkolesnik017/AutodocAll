@@ -44,7 +44,7 @@ public class QC_1639_RecoveryPasswordFromPopupInHeader {
         main_page_logic.passwordRecoveryRequest(mail);
         webMail.openMail(mail, passwordForMail)
                 .checkPresenceUnderFirstLetter()
-                .letter(1).shouldHave(text("neues Passwort"));
+                .letter(1).shouldHave(text("Setzen Sie das Passwort"));
         webMail.openLetter(1)
                 .clickLinkRecoveryPasswordInLetter()
                 .fillPasswordFieldsAndClickSubmit(newPassword)

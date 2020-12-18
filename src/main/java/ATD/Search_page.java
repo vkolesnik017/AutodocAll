@@ -70,7 +70,7 @@ public class Search_page {
     }
 
     // locator for search button by ID product in listing
-    SelenideElement buttonProductById(String id) {
+    public SelenideElement buttonProductById(String id) {
         return $(byId(id));
     }
 

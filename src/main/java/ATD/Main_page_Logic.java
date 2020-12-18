@@ -50,11 +50,12 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Login in header with mail {mail}. Main_page")
-    public Profile_page_Logic loginFromHeader(String mail) {
+    public Profile_page_Logic loginFromHeader(String mail)  {
         loginBtnInHeader().click();
         mailFieldLogin().setValue(mail);
         passFieldLogin().setValue(password);
         submitBtnLogin().click();
+        checkingContainsUrl("profile");
         return page(Profile_page_Logic.class);
     }
 
@@ -98,7 +99,7 @@ public class Main_page_Logic extends Main_page {
         try {
             privacyPolicyBtnFB().shouldBe(visible);
             privacyPolicyBtnFB().click();
-        } catch (Throwable e){
+        } catch (Throwable e) {
             System.out.println("Privacy policy is not visible");
             e.printStackTrace();
         }
@@ -355,6 +356,7 @@ public class Main_page_Logic extends Main_page {
         secondFieldKBA().setValue(numberForSecondField);
         return this;
     }
+
     // This method only for DE
     @Step("Fill in KBA fields in popup. Main_page")
     public Main_page_Logic fillNumberKbaInPopup(String numberForFirstField, String numberForSecondField) {
@@ -386,7 +388,7 @@ public class Main_page_Logic extends Main_page {
         textUnderSecondFieldKBA().shouldHave(exactText("ZU 3. ODER ZU 2.2."));
         linkInfoKba().shouldHave(exactText("Was ist eine" + " Schlüsselnummer?"));
         selectorKbaBtn().shouldHave(exactText("Suchen"));
-       return this;
+        return this;
     }
 
     // This method for all shop, except DE
@@ -404,12 +406,13 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Click search KBA button and close popup selector if it visible. Main_page")
-    public Maker_car_list_page_Logic clickKbaBtnAndClosePopupSelectorIfVisible() {
+    public Maker_car_list_page_Logic clickKbaBtnAndClosePopupSelectorIfVisible(String kbaNumber) {
         selectorKbaBtn().click();
         sleep(3000);
         if (selectorPopup().isDisplayed()) {
             closeBtnInCarSelectorPopup().click();
             selectorPopup().shouldNotBe(visible);
+            fillNumberKba(kbaNumber);
             selectorKbaBtn().click();
         }
         return page(Maker_car_list_page_Logic.class);
@@ -1496,15 +1499,25 @@ public class Main_page_Logic extends Main_page {
         return this;
     }
 
-    @Step("Checking the transition to the instagram from  the Social Network Block. Main_page")
+    @Step("Checking the transition to the instagram by click in image from  the Social Network Block. Main_page")
     public Main_page_Logic checkingTransitionToTheInstagramByImage() {
+        String instagramImageTransition = instagramImageTransition().getAttribute("url") + "/";
         instagramImageTransition().click();
+        waitingWhileLinkBecomeExpected(instagramImageTransition);
+        String currentUrl = url();
+        Assert.assertEquals(currentUrl, instagramImageTransition);
+        back();
         return this;
     }
 
-    @Step("Checking the transition to the instagram from  the Social Network Block. Main_page")
+    @Step("Checking the transition to the instagram by click on link from  the Social Network Block. Main_page")
     public Main_page_Logic checkingTransitionToTheInstagramByLink() {
+        String instagramLinkTransition = instagramLinkTransition().getAttribute("url") + "/";
         instagramLinkTransition().click();
+        waitingWhileLinkBecomeExpected(instagramLinkTransition);
+        String currentUrl = url();
+        Assert.assertEquals(currentUrl, instagramLinkTransition);
+        back();
         return this;
     }
 
@@ -1573,7 +1586,7 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step(":from Main_page")
-    public Main_page_Logic checkCategoriesForServerResponses200( List<String> allCategories) throws IOException {
+    public Main_page_Logic checkCategoriesForServerResponses200(List<String> allCategories) throws IOException {
         CommonMethods.checkCategoriesForServerResponses200(allCategories);
         return this;
     }
@@ -1604,26 +1617,38 @@ public class Main_page_Logic extends Main_page {
         return this;
     }
 
-
-    @Step("Click tab LKW in top block. Main_page")
-    public LKW_main_page_Logic clickTabLkwIntopBlock() {
+    @Step("Check transition by tab LKW in top block. Main_page")
+    public Main_page_Logic checkTransitionByTabLkwInTopBlock() throws SQLException {
         linksInTopsBlock().get(2).shouldBe(visible).click();
-        return page(LKW_main_page_Logic.class);
+        switchTo().window(1);
+        String urlLkwPage = url().replaceAll("\\/[^\\/]*$", "");
+        String expectedLkwUrl = new DataBase("ATD").getFullRouteByRouteName("subprod", "DE", "lkw_main");
+        Assert.assertEquals(urlLkwPage, expectedLkwUrl);
+        closeWindow();
+        switchTo().window(0);
+        return this;
     }
 
-    @Step("Click tab Moto in top block. Main_page")
-    public Moto_main_page_Logic clickTabMotoInTopBlock() {
+    @Step("Check transition by tab Moto in top block. Main_page")
+    public Main_page_Logic checkTransitionByTabMotoInTopBlock() throws SQLException {
         linksInTopsBlock().get(3).shouldBe(visible).click();
-        return page(Moto_main_page_Logic.class);
+        switchTo().window(1);
+        String urlMotoPage = url().replaceAll("\\/[^\\/]*$", "");
+        String expectedMotoUrl = new DataBase("ATD").getFullRouteByRouteName("subprod", "DE", "moto_main");
+        Assert.assertEquals(urlMotoPage, expectedMotoUrl);
+        closeWindow();
+        switchTo().window(0);
+        return this;
     }
 
-    @Step("Click tab Accessories in top block. Main_page")
-    public Index_accessories_page_Logic clickTabAccessoriesInTopBlock() {
+    @Step("Check transition by tab Accessories in top block. Main_page")
+    public Index_accessories_page_Logic checkTransitionByTabAccessoriesInTopBlock() throws SQLException {
         linksInTopsBlock().get(4).shouldBe(visible).click();
+        String urlAccessoriesPage = url();
+        String expectedAccessoriesUrl = new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "index_accessories");
+        Assert.assertEquals(urlAccessoriesPage, expectedAccessoriesUrl);
         return page(Index_accessories_page_Logic.class);
     }
-
-
 
 
 }
