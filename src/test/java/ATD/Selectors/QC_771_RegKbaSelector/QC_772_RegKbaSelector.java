@@ -40,7 +40,7 @@ public class QC_772_RegKbaSelector {
     refresh();
     String kba = db.getKba(getCurrentShopFromJSVarInHTML());
     mainPageLogic.fillNumberKba(kba)
-            .clickKbaBtnAndClosePopupSelectorIfVisible()
+            .clickKbaBtnAndClosePopupSelectorIfVisible(kba)
             .verifyNameRouteEqualsMakerCarList();
   }
 
@@ -58,7 +58,7 @@ public class QC_772_RegKbaSelector {
     refresh();
     String kba = db.getKba(getCurrentShopFromJSVarInHTML());
     mainPageLogic.fillNumberKba(kba.split(" ")[0], kba.split(" ")[1])
-            .clickKbaBtnAndClosePopupSelectorIfVisible()
+            .clickKbaBtn()
             .verifyNameRouteEqualsMakerCarList();
   }
 

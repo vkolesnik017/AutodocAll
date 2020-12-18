@@ -405,12 +405,13 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Click search KBA button and close popup selector if it visible. Main_page")
-    public Maker_car_list_page_Logic clickKbaBtnAndClosePopupSelectorIfVisible() {
+    public Maker_car_list_page_Logic clickKbaBtnAndClosePopupSelectorIfVisible(String kbaNumber) {
         selectorKbaBtn().click();
         sleep(3000);
         if (selectorPopup().isDisplayed()) {
             closeBtnInCarSelectorPopup().click();
             selectorPopup().shouldNotBe(visible);
+            fillNumberKba(kbaNumber);
             selectorKbaBtn().click();
         }
         return page(Maker_car_list_page_Logic.class);
