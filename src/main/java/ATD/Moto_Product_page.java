@@ -187,4 +187,14 @@ public class Moto_Product_page {
     SelenideElement mainProductTitle() {return $x("//div[@class='product-block__description__title product-block__equal-height-wrap']/h2/span[1]");}
 
     SelenideElement applicableMotoBlock() {return $x("//div[@class='product-info-block-accordion js--roll-up']/div[contains(@class,'product-info-block--moto')]");}
+
+    ElementsCollection applicabilityVehicle() {return $$x("//div[@class='accordion-button']//a");}
+
+    SelenideElement applicabilityVehicleListBlock() {return $x("//div[@class='accordion-content']");}
+
+    ElementsCollection visibleApplicabilityMotoMarke() {return $$x("//div[@class='accordion-content']//ul/li//b").filter(visible);}
+
+    SelenideElement applicabilityMotoModelBlock() {return $x("//ul[@class='dropdown_list']");}
+
+    SelenideElement motoApplicabilityBlock() {return $x("//div[@class='product-info-block__auto product-info-block--moto single']");}
 }

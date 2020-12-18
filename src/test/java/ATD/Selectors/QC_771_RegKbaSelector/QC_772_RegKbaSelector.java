@@ -10,9 +10,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import java.sql.SQLException;
-
 import static ATD.CommonMethods.getCurrentShopFromJSVarInHTML;
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
@@ -42,7 +40,7 @@ public class QC_772_RegKbaSelector {
     refresh();
     String kba = db.getKba(getCurrentShopFromJSVarInHTML());
     mainPageLogic.fillNumberKba(kba)
-            .clickKbaBtn()
+            .clickKbaBtnAndClosePopupSelectorIfVisible(kba)
             .verifyNameRouteEqualsMakerCarList();
   }
 

@@ -1,12 +1,17 @@
 package AWS;
 
+import ATD.Main_page_Logic;
+import ATD.Search_page_Logic;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import static ATD.CommonMethods.openPage;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
@@ -53,6 +58,15 @@ public class WishlistReminderAvailability_aws {
         return this;
     }
 
+    @Step("Check After Count Request. WishlistReminderAvailability_aws")
+    public WishlistReminderAvailability_aws checkAfterCountRequest(List <String> parameters) {
+        int numberOfRequests = Integer.parseInt(parameters.get(0));
+        String idProduct = parameters.get(1);
+        int afterCountRequests = Integer.parseInt(numberOfRequestsInProductByHisId(idProduct).text());
+        assertEquals(afterCountRequests, numberOfRequests + 1);
+        return this;
+    }
+
     @Step("Get text from article. WishlistReminderAvailability_aws")
     public String getTextFromArticle() {
         String textFromElement = null;
@@ -93,5 +107,35 @@ public class WishlistReminderAvailability_aws {
             }
         }
         return Integer.parseInt(numberOfRequests);
+    }
+
+    @Step("Get number of request and product ID. WishlistReminderAvailability_aws")
+    public List<String> getNumberOfRequestAndProductID(String route, String email, String urlWithCurrentDate) {
+        Search_page_Logic search_page_logic = new Search_page_Logic();
+        String article = null;
+        String productID = null;
+        String numberOfRequests = null;
+        List<String> parameters = new ArrayList<>();
+        for (int i = 0; i < columnNameCategory().size(); i++) {
+            String nameCategory = columnNameCategory().get(i).getText();
+            if (!nameCategory.contains("Tyres")) {
+                article = articleCategoryInTable(nameCategory).getText();
+                productID = idCategoryInTable(nameCategory).getText();
+                numberOfRequests = numberOfRequests(nameCategory).getText();
+            }
+            openPage(route);
+            new Main_page_Logic().useSearch(article);
+            if (search_page_logic.buttonProductById(productID).isDisplayed()) {
+                search_page_logic.clickButtonProductById(productID);
+                search_page_logic.sendRequestByGrayButtonFromSearchPage(email);
+                break;
+            } else {
+                open(urlWithCurrentDate);
+            }
+
+        }
+        parameters.add(numberOfRequests);
+        parameters.add(productID);
+        return parameters;
     }
 }

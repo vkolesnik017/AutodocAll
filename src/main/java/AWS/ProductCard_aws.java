@@ -122,6 +122,14 @@ public class ProductCard_aws {
         return $(byId("" + language + ""));
     }
 
+    private SelenideElement labelOfArtNum() {
+        return $x("//td[contains(text(),'Артикль №.:')]/following-sibling::td/div");
+    }
+
+    private SelenideElement labelOfBrand() {
+        return $x("//td[contains(text(),'Производитель:')]/following-sibling::td/div");
+    }
+
     String productId;
 
     public ProductCard_aws() {
@@ -311,5 +319,12 @@ public class ProductCard_aws {
             }
         }
         return matchingOptions;
+    }
+
+    @Step("get active label by article number and brand. ProductCard_aws")
+    public boolean getActiveLabelByArtNumAndBrand() {
+        artNumOfProduct().shouldBe(visible);
+        boolean label = labelOfArtNum().getText().equals("Включен") && labelOfBrand().getText().equals("Включен") ? true : false;
+        return label;
     }
 }

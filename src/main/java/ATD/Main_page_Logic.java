@@ -98,7 +98,7 @@ public class Main_page_Logic extends Main_page {
         try {
             privacyPolicyBtnFB().shouldBe(visible);
             privacyPolicyBtnFB().click();
-        } catch (Throwable e){
+        } catch (Throwable e) {
             System.out.println("Privacy policy is not visible");
             e.printStackTrace();
         }
@@ -355,6 +355,7 @@ public class Main_page_Logic extends Main_page {
         secondFieldKBA().setValue(numberForSecondField);
         return this;
     }
+
     // This method only for DE
     @Step("Fill in KBA fields in popup. Main_page")
     public Main_page_Logic fillNumberKbaInPopup(String numberForFirstField, String numberForSecondField) {
@@ -386,7 +387,7 @@ public class Main_page_Logic extends Main_page {
         textUnderSecondFieldKBA().shouldHave(exactText("ZU 3. ODER ZU 2.2."));
         linkInfoKba().shouldHave(exactText("Was ist eine" + " Schlüsselnummer?"));
         selectorKbaBtn().shouldHave(exactText("Suchen"));
-       return this;
+        return this;
     }
 
     // This method for all shop, except DE
@@ -400,6 +401,19 @@ public class Main_page_Logic extends Main_page {
     @Step("Click search KBA button. Main_page")
     public Maker_car_list_page_Logic clickKbaBtn() {
         selectorKbaBtn().click();
+        return page(Maker_car_list_page_Logic.class);
+    }
+
+    @Step("Click search KBA button and close popup selector if it visible. Main_page")
+    public Maker_car_list_page_Logic clickKbaBtnAndClosePopupSelectorIfVisible(String kbaNumber) {
+        selectorKbaBtn().click();
+        sleep(3000);
+        if (selectorPopup().isDisplayed()) {
+            closeBtnInCarSelectorPopup().click();
+            selectorPopup().shouldNotBe(visible);
+            fillNumberKba(kbaNumber);
+            selectorKbaBtn().click();
+        }
         return page(Maker_car_list_page_Logic.class);
     }
 
@@ -935,6 +949,26 @@ public class Main_page_Logic extends Main_page {
         return this;
     }
 
+    @Step("Checks block promotional footnotes. Main_page")
+    public Main_page_Logic checksBlockPromotionalFootnotes() {
+        blockPromotionalFootnotes().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        firstPromotionalFootnotes().hover();
+        firstDropdownPromotionalFootnotes().shouldBe(visible);
+        firstDropdownPromotionalFootnotes().shouldHave(text("Gilt für ausgewählte Produkte. " +
+                "Dieser Prozentsatz kann nach Ablauf der rechts oben angegebenen Zeit entfallen, " +
+                "sich erhöhen oder verringern. Er bezieht sich nicht auf einen zuvor ernsthaft geforderten Preis, dazu unter"));
+        firstCloseBtnDropdownPromotionalFootnotes().click();
+        firstDropdownPromotionalFootnotes().shouldNotBe(visible);
+        secondPromotionalFootnotes().hover();
+        secondDropdownPromotionalFootnotes().shouldBe(visible);
+        secondDropdownPromotionalFootnotes().shouldHave(text("Der durchgestrichene Betrag ist kein zuvor ernsthaft geforderter Preis, " +
+                "sondern wird in Echtzeit auf der Grundlage unseres jeweils günstigsten Einkaufspreises berechnet. " +
+                "Er kann sich daher tagesaktuell erhöhen oder senken."));
+        secondCloseBtnDropdownPromotionalFootnotes().click();
+        secondDropdownPromotionalFootnotes().shouldNotBe(visible);
+        return this;
+    }
+
     @Step(": footer subscribe block on Main_page")
     public Main_page_Logic checkTransitionToLinkPrivacyPolicy(String route) throws SQLException {
         footerForm().scrollTo();
@@ -1464,15 +1498,25 @@ public class Main_page_Logic extends Main_page {
         return this;
     }
 
-    @Step("Checking the transition to the instagram from  the Social Network Block. Main_page")
+    @Step("Checking the transition to the instagram by click in image from  the Social Network Block. Main_page")
     public Main_page_Logic checkingTransitionToTheInstagramByImage() {
+        String instagramImageTransition = instagramImageTransition().getAttribute("url") + "/";
         instagramImageTransition().click();
+        waitingWhileLinkBecomeExpected(instagramImageTransition);
+        String currentUrl = url();
+        Assert.assertEquals(currentUrl, instagramImageTransition);
+        back();
         return this;
     }
 
-    @Step("Checking the transition to the instagram from  the Social Network Block. Main_page")
+    @Step("Checking the transition to the instagram by click on link from  the Social Network Block. Main_page")
     public Main_page_Logic checkingTransitionToTheInstagramByLink() {
+        String instagramLinkTransition = instagramLinkTransition().getAttribute("url") + "/";
         instagramLinkTransition().click();
+        waitingWhileLinkBecomeExpected(instagramLinkTransition);
+        String currentUrl = url();
+        Assert.assertEquals(currentUrl, instagramLinkTransition);
+        back();
         return this;
     }
 
@@ -1541,9 +1585,54 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step(":from Main_page")
-    public Main_page_Logic checkCategoriesForServerResponses200( List<String> allCategories) throws IOException {
+    public Main_page_Logic checkCategoriesForServerResponses200(List<String> allCategories) throws IOException {
         CommonMethods.checkCategoriesForServerResponses200(allCategories);
         return this;
+    }
+
+    @Step("Check correct display tabs in top block. Main_page")
+    public Main_page_Logic checkPresenceAllTabInTopBlock() {
+        ArrayList<String> tabTopBlock = new ArrayList<>();
+        tabTopBlock.add("Beliebteste Automarken");
+        tabTopBlock.add("Autoersatzteile");
+        tabTopBlock.add("LKW-Ersatzteile");
+        tabTopBlock.add("Motorrad-Ersatzteile");
+        tabTopBlock.add("Autozubehör");
+        linksInTopsBlock().shouldHaveSize(5);
+        linksInTopsBlock().get(1).shouldHave(attribute("class", "active"));
+        for (int i = 0; i < linksInTopsBlock().size(); i++) {
+            String nameTab = linksInTopsBlock().get(i).getText().toLowerCase();
+            String nameTabFromList = tabTopBlock.get(i).toLowerCase();
+            Assert.assertEquals(nameTab, nameTabFromList);
+        }
+        return this;
+    }
+
+    @Step("Select tab TOP car brands block. Main_page")
+    public Main_page_Logic selectTabTopCarBrandsBlock() {
+        linksInTopsBlock().get(0).shouldBe(visible).click();
+        blockOfBrandsOfTopBlock().shouldBe(visible);
+        brandCarInTopBlock().shouldHaveSize(16);
+        return this;
+    }
+
+
+    @Step("Click tab LKW in top block. Main_page")
+    public LKW_main_page_Logic clickTabLkwIntopBlock() {
+        linksInTopsBlock().get(2).shouldBe(visible).click();
+        return page(LKW_main_page_Logic.class);
+    }
+
+    @Step("Click tab Moto in top block. Main_page")
+    public Moto_main_page_Logic clickTabMotoInTopBlock() {
+        linksInTopsBlock().get(3).shouldBe(visible).click();
+        return page(Moto_main_page_Logic.class);
+    }
+
+    @Step("Click tab Accessories in top block. Main_page")
+    public Index_accessories_page_Logic clickTabAccessoriesInTopBlock() {
+        linksInTopsBlock().get(4).shouldBe(visible).click();
+        return page(Index_accessories_page_Logic.class);
     }
 
 

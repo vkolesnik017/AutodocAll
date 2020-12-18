@@ -5,10 +5,10 @@ import Common.SetUp;
 import org.testng.annotations.Test;
 
 import java.sql.SQLException;
-import java.time.LocalDateTime;
 import java.util.*;
 
-import static Common.CommonMethods.getExpectedCalendarData;
+import static Common.CommonMethods.generationRandomDates;
+import static Common.CommonMethods.roundOfTheCost;
 
 
 public class ForTest extends SetUp {
@@ -22,10 +22,8 @@ public class ForTest extends SetUp {
 
     @Test()
     public void test2() throws SQLException {
-        String data = getExpectedCalendarData("yyyy-MM-dd", 1,1);
-        String moths = String.valueOf(LocalDateTime.now().getDayOfMonth());
-        System.out.println(data);
-        System.out.println(moths);
+        float test = roundOfTheCost(4.765f, 4.77f);
+        System.out.println(test);
     }
     }
 

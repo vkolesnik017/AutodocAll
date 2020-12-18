@@ -178,13 +178,19 @@ public class Search_page_Logic extends Search_page {
 
     @Step("select brand in brands block. Search_page")
     public Search_page_Logic selectBrandInBlock(String idOfBrand) {
-        brandsFilterBlock().shouldBe(visible);
-        while (!brandsLinkInSideBar(idOfBrand).isDisplayed()) {
-            forwardLinkAtBrandsFilter().click();
-            checkVisibleBrands();
+
+        if (brandsFilterBlockInSideBar().isDisplayed()) {
+            brandFromSideBar(idOfBrand).click();
+            appearsOfLoader();
+        } else {
+            brandsFilterBlock().shouldBe(visible);
+            while (!brandsLinkInSideBar(idOfBrand).isDisplayed()) {
+                forwardLinkAtBrandsFilter().click();
+                checkVisibleBrands();
+            }
+            brandsLinkInSideBar(idOfBrand).shouldBe(visible).click();
+            appearsOfLoader();
         }
-        brandsLinkInSideBar(idOfBrand).shouldBe(visible).click();
-        appearsOfLoader();
         return this;
     }
 

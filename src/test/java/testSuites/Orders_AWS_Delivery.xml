@@ -136,5 +136,13 @@
         </classes>
     </test>
 
+    <test name="QC_2994_FilterByOrdersWithPaylinksInOrderSearch">
+            <classes>
+                    <class name="ATD.Orders_AWS_Delivery.QC_2994_FilterByOrdersWithPaylinksInOrderSearch.QC_3001_CheckingSearchBy_GroupField_FilterLinkSurcharges_CustomerInfo"/>
+                    <class name="ATD.Orders_AWS_Delivery.QC_2994_FilterByOrdersWithPaylinksInOrderSearch.QC_2997_CheckingSearchBy_GroupField_FilterLinkSurchargesAndItsPresenceInFilteredOrders"/>
+                    <class name="ATD.Orders_AWS_Delivery.QC_2994_FilterByOrdersWithPaylinksInOrderSearch.QC_3002_CheckingSearchBy_GroupField_FilterLinkSurcharges_OtherFilters"/>
+                    <class name="ATD.Orders_AWS_Delivery.QC_2994_FilterByOrdersWithPaylinksInOrderSearch.QC_2998_CheckingSearchBy_GroupField_FilterLinkSurcharges_FillingDataPeriod"/>
+            </classes>
+    </test>
 
 </suite>

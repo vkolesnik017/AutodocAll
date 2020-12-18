@@ -4,9 +4,6 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
 import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.CommonMethods.openPage;
 import static Common.CommonMethods.getExpectedCalendarData;
@@ -66,6 +63,52 @@ public class SearchOrders_page_aws {
         return $x("//ul[@class='pagination']//li//a[text()='»']");
     }
 
+    private ElementsCollection orderID() {
+        return $$x("//a[@class='order_link']");
+    }
+
+    private SelenideElement customerInfoField() {
+        return $x("//input[@id='form_Filter[customerInfo]']");
+    }
+
+    private SelenideElement projectSelector() {
+        return $x("//input[@value='<Project>']");
+    }
+
+    private SelenideElement projectList(String project) {
+        return $x("//div[@class='chzn-drop']//ul//li[text()='" + project + "']");
+    }
+
+    private SelenideElement countrySelector() {
+        return $x("//div[@id='form_Filter_countries____chzn']//input[@value='<Place field>']");
+    }
+
+    private SelenideElement countryList(String country) {
+        return $x("//div[@class='chzn-drop']//ul//li[text()='" + country + "']");
+    }
+
+    private SelenideElement paymentsMethodsSelector() {
+        return $x("//div[@id='form_Filter_paymentId____chzn']//input[@value='<Payment>']");
+    }
+
+    private SelenideElement paymentsMethodsList(String paymentsMethods) {
+        return $x("//div[@class='chzn-drop']//ul//li[text()='" + paymentsMethods + "']");
+    }
+
+    private SelenideElement currencySelector() {
+        return $x("//div[@id='form_Filter_currencyCode____chzn']//input[@value='<Currency>']");
+    }
+
+    private SelenideElement currencyList(String currency) {
+        return $x("//div[@class='chzn-drop']//ul//li[text()='" + currency + "']");
+    }
+
+    private SelenideElement assemblyWarehouse() {
+        return $x("//select[@name='Filter[warehouseId]']");
+    }
+
+
+
 
     @Step("Click button search. SearchOrders_page_aws")
     public SearchOrders_page_aws clickSearchBtn() {
@@ -108,6 +151,17 @@ public class SearchOrders_page_aws {
                 "?Filter%5BorderId%5D=&Filter%5BorderFrom%5D=our&Filter%5Bplz%5D=&Filter%5Bort%5D=&Filter%5" +
                 "Bgroup%5D=&Filter%5BgroupList%5D=&Filter%5BsortByHours%5D=&Filter%5BcorrectionPaid%5D=0&Filter%5Bpaid%5D=&Filter%" +
                 "5BcustomerInfo%5D=&Filter%5BfromDate%5D=" + expectedData + "&Filter%5BtoDate%5D=" + expectedData + "&Filter%5BwarehouseId%5D=&Filter%" +
+                "5BhasSingleProduct%5D=0&Filter%5BhasNoProduct%5D=0&search=");
+        new Login_aws().loginInAws();
+        return this;
+    }
+
+    @Step("Open search page with expected data")
+    public SearchOrders_page_aws openSearchPageWithExpectedData(String dataFrom, String dataBefore) {
+        openPage(searchOrderPageURL +
+                "?Filter%5BorderId%5D=&Filter%5BorderFrom%5D=our&Filter%5Bplz%5D=&Filter%5Bort%5D=&Filter%5" +
+                "Bgroup%5D=&Filter%5BgroupList%5D=&Filter%5BsortByHours%5D=&Filter%5BcorrectionPaid%5D=0&Filter%5Bpaid%5D=&Filter%" +
+                "5BcustomerInfo%5D=&Filter%5BfromDate%5D=" + dataFrom + "&Filter%5BtoDate%5D=" + dataBefore + "&Filter%5BwarehouseId%5D=&Filter%" +
                 "5BhasSingleProduct%5D=0&Filter%5BhasNoProduct%5D=0&search=");
         new Login_aws().loginInAws();
         return this;
@@ -173,10 +227,67 @@ public class SearchOrders_page_aws {
         return this;
     }
 
+    @Step("iling field customer information {customerInfo}. SearchOrders_page_aws")
+    public SearchOrders_page_aws fillingFieldCustomerInfo(String customerInfo) {
+        customerInfoField().sendKeys(customerInfo);
+        return this;
+    }
+
     @Step("Transition in order page. SearchOrders_page_aws")
     public Order_aws clickOnOrderLinc(String orderId) {
         orderLincInOrderLine(orderId).shouldBe(visible);
         orderLincInOrderLine(orderId).click();
         return page(Order_aws.class);
+    }
+
+    @Step("Go to a random order and check the PayLink. SearchOrders_page_aws")
+    public  SearchOrders_page_aws clickOnRandomOrderID(int countOfClick) {
+        int minValue = 0;
+        for (int i = 0; i < countOfClick; i++){
+            int randomIndex = minValue + (int) (Math.random() * orderID().size());
+            orderID().get(randomIndex).scrollIntoView("{block: \"center\"}").shouldBe(visible);
+            orderID().get(randomIndex).click();
+            new Order_aws().checkPresencePauLinkAmount();
+            back();
+        }
+        return this;
+    }
+
+    @Step("Choosing project in selector {project}. SearchOrders_page_aws")
+    public SearchOrders_page_aws chooseProjectInSelector(String project) {
+        projectSelector().click();
+        projectList(project).shouldBe(visible);
+        projectList(project).click();
+        return this;
+    }
+
+    @Step("Choosing country {expectedCountry}. SearchOrders_page_aws")
+    public SearchOrders_page_aws chooseCountry(String expectedCountry){
+        countrySelector().click();
+        countryList(expectedCountry).shouldBe(visible);
+        countryList(expectedCountry).click();
+        return this;
+    }
+
+    @Step("Choosing Payments method {expectedPaymentsMethod}. SearchOrders_page_aws")
+    public SearchOrders_page_aws choosePaymentsMethods(String expectedPaymentsMethod){
+        paymentsMethodsSelector().click();
+        paymentsMethodsList(expectedPaymentsMethod).shouldBe(visible);
+        paymentsMethodsList(expectedPaymentsMethod).click();
+        return this;
+    }
+
+    @Step("Choosing currency method {expectedCurrency}. SearchOrders_page_aws")
+    public SearchOrders_page_aws chooseCurrency(String expectedCurrency){
+        currencySelector().click();
+        currencyList(expectedCurrency).shouldBe(visible);
+        currencyList(expectedCurrency).click();
+        return this;
+    }
+
+    @Step("Choosing assembly warehouse {expectedAssemblyWarehouse}. SearchOrders_page_aws")
+    public SearchOrders_page_aws chooseAssemblyWarehouse(String expectedAssemblyWarehouse) {
+        assemblyWarehouse().selectOptionContainingText(expectedAssemblyWarehouse);
+        return this;
     }
 }

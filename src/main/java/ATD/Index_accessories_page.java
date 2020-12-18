@@ -71,7 +71,7 @@ class Index_accessories_page {
     }
 
     SelenideElement firstBtnAddToBasketInTop6Block() {
-        return $x("//div[@class='product-list__item active']//a[@onclick]");
+        return $x("//div[@class='price_box product-list__item__button']");
     }
 
     SelenideElement nameFirstProductInTop6Block() {
