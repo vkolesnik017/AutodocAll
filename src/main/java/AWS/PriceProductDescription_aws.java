@@ -40,6 +40,8 @@ public class PriceProductDescription_aws {
         return $x("//table[@class='table table-bordered table-striped']");
     }
 
+    private ElementsCollection searchResult() { return $$x("//table[@class='table table-bordered table-striped']//td[1]"); }
+
     @Step("open price-description page. PriceProductDescription_aws")
     public PriceProductDescription_aws openPriceDescriptionPage() {
         open(urlPage);
@@ -52,7 +54,7 @@ public class PriceProductDescription_aws {
         for (int i = 0; i < id.size(); i++) {
             setId(id.get(i));
             clickSearch();
-            idOfProducts().shouldHaveSize(1);
+            searchResult().shouldHaveSize(1);
             if (noResult().isDisplayed()) {
                 Assert.assertFalse(title.get(i).equals("Preis pro Meter"));
             } else if (aliasOfProduct().get(0).isDisplayed()) {
