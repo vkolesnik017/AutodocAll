@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.*;
 
 import static Common.CommonMethods.generationRandomDates;
+import static Common.CommonMethods.roundOfTheCost;
 
 
 public class ForTest extends SetUp {
@@ -21,8 +22,8 @@ public class ForTest extends SetUp {
 
     @Test()
     public void test2() throws SQLException {
-        String date = generationRandomDates(5);
-        System.out.println(date);
+        float test = roundOfTheCost(4.765f, 4.77f);
+        System.out.println(test);
     }
     }
 

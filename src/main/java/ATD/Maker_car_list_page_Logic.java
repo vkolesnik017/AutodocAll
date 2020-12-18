@@ -8,18 +8,19 @@ import com.codeborne.selenide.SelenideElement;
 import files.Product;
 import io.qameta.allure.Step;
 import org.testng.Assert;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+
 import static ATD.CommonMethods.*;
 import static PKW.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.page;
-import static com.codeborne.selenide.Selenide.sleep;
+import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class Maker_car_list_page_Logic extends Maker_car_list_page {
@@ -369,5 +370,28 @@ public class Maker_car_list_page_Logic extends Maker_car_list_page {
 
     }
 
+    @Step("check applicability TOP products and selected car. Maker_car_list_page")
+    public Maker_car_list_page_Logic checkApplicabilityTopProductsAndSelectedCar() {
+        selectorInCloseCondition().click();
+        String marke = getSelectedMarke();
+        String model = getSelectedModel();
+        for (int i = 0; i < imagesOfTopProducts().size(); i++) {
+            imagesOfTopProducts().get(i).shouldBe(visible).click();
+            new Product_page_Logic().compareApplicabilityCar(marke,model);
+            back();
+        }
+        return this;
+    }
 
+    @Step("get selected marke of car from selector. Maker_car_list_page")
+    public String getSelectedMarke() {
+        String marke = markeInSelector().shouldBe(visible).getSelectedText();
+        return marke;
+    }
+
+    @Step("get selected model of car from selector. Maker_car_list_page")
+    public String getSelectedModel() {
+        String model = modelInSelector().shouldBe(visible).getSelectedText();
+        return model;
+    }
 }

@@ -22,7 +22,7 @@ public class QC_2439_TransitionToTheInstagramFromTheSocialNetworkBlock {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "route", parallel = true)
+    @DataProvider(name = "route", parallel = false)
     Object[] dataProvider() {
         return new SetUp("ATD").setUpShopsWithMainRoute("prod", "AT, BG, BE, CZ, DE, DK, EE, ES, FI, FR, EN, GR, HU, IT, LD, LT, LV, NL, NO, PL, PT, RO, SE, SI, SK", "main");
     }
