@@ -16,7 +16,10 @@ import org.testng.Assert;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import static ATD.CommonMethods.*;
@@ -1662,30 +1665,16 @@ public class Main_page_Logic extends Main_page {
 
     @Step("check logic of search suggestions. Main_page")
     public Main_page_Logic checkLogicOfSearchSuggestions(List<String> searchText) {
-        List<String> tipsFromDropDown = null;
-        List<String> titleOfHints = new ArrayList<>();
-        List<String> valuesOfHints = new ArrayList<>();
         List<String> genericsOfHints = new ArrayList<>();
         List<String> synonymsOfHints = new ArrayList<>();
         for (int i = 0; i < searchText.size(); i++) {
             inputTextInSearchBar(searchText.get(i));
             genericsFromTips().get(0).shouldBe(visible);
-            tipsFromDropDown = genericsFromTips().stream().map(n -> n.getText()).collect(Collectors.toList());
-            for (int j = 0; j < tipsFromDropDown.size(); j++) {
-                if (tipsFromDropDown.get(j).contains("\n")) {
-                    List<String> currentTip = Arrays.asList(tipsFromDropDown.get(j).split("\n"));
-                    titleOfHints.add(currentTip.get(0));
-                    valuesOfHints.add(currentTip.get(1));
+            for (int j = 0; j < genericsFromTips().size(); j++) {
+                if (genericsFromTips().get(j).getText().matches(".+\n.+")) {
+                    genericsOfHints.add(genericsFromTips().get(j).getText().replaceAll("(.+)(\n.+)", "$1"));
                 } else {
-                    titleOfHints.add(tipsFromDropDown.get(j));
-                    valuesOfHints.add(" ");
-                }
-            }
-            for (int j = 0; j < valuesOfHints.size(); j++) {
-                if (valuesOfHints.get(j).equals(" ")) {
-                    synonymsOfHints.add(titleOfHints.get(j));
-                } else {
-                    genericsOfHints.add(titleOfHints.get(j));
+                    synonymsOfHints.add(genericsFromTips().get(j).getText());
                 }
             }
             new CategoriesSynonyms_aws().openSynonymsPageInAws().checkGenerics(genericsOfHints, synonymsOfHints);
