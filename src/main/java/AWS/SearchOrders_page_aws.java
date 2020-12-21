@@ -301,7 +301,7 @@ public class SearchOrders_page_aws {
         return this;
     }
 
-    @Step("Choosing expected filter")
+    @Step("Choosing expected filter. SearchOrders_page_aws")
     public SearchOrders_page_aws choosingExpectedFilter(String nameFilter, String PaymentsMethod,
                                                                      String currency, String assemblyWarehouse, String customerInfo) {
         switch (nameFilter) {

@@ -434,4 +434,15 @@ public class Cart_page_Logic extends Cart_page {
         percentageOfVat().shouldHave(text(textWithPercentageOfVAT));
         return this;
     }
+
+    @Step("Get deposit price in product block {productID}. Cart_page")
+    public String getDepositPriceInProductBlock(String productID) {
+       return pfandPriceInProductBlock(productID).getText();
+    }
+
+    @Step("Checks presence deposit price {deposit} in summery block. Cart_page")
+    public Cart_page_Logic checkPresenceDepositInSummeryBlock(String deposit) {
+        pfandPriceInTotalPriceBlock().shouldHave(exactText(deposit));
+        return this;
+    }
 }
