@@ -13,6 +13,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static ATD.CommonMethods.getAttributeFromUnVisibleElement;
 import static ATD.CommonMethods.getTextFromUnVisibleElement;
 import static com.codeborne.selenide.CollectionCondition.*;
 import static com.codeborne.selenide.Condition.empty;
@@ -900,6 +901,18 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
             appearsOfLoader();
         }
         return this;
+    }
+
+    @Step("get Id of product. LKW_Category_car_list_page")
+    public List<String> getIdOfProduct() {
+        List<String> id = btnAddProductToWishlist().stream().map(n -> getAttributeFromUnVisibleElement(n, "data-product-id")).collect(Collectors.toList());
+        return id;
+    }
+
+    @Step("get price title of product. LKW_Category_car_list_page")
+    public List<String> getPriceTitle(){
+        List<String> priceTitle = priceTitle().stream().map(n -> getTextFromUnVisibleElement(n)).collect(Collectors.toList());
+        return priceTitle;
     }
 }
 

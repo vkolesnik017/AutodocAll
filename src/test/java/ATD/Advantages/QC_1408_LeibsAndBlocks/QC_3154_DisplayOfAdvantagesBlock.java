@@ -1,6 +1,6 @@
-package ATD.Tyres.QC_1272_TyresMainPage;
+package ATD.Advantages.QC_1408_LeibsAndBlocks;
 
-import ATD.Tyres_feature_page_Logic;
+import ATD.Tyres_maker_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,28 +16,32 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2794_PresenceOfSeoText {
+public class QC_3154_DisplayOfAdvantagesBlock {
+
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "routes", parallel = true)
+    @DataProvider(name = "route")
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_feature,tyres_feature2,tyres_feature3,tyres_feature4,tyres_feature5,tyres_feature6,tyres_feature7");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_maker");
     }
 
-    @Test(dataProvider = "routes")
+    @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test сheck presence of SEO text")
-    public void testCheckPresenceOfSeoText(String route) {
+    @Description(value = "test checking display of advantages block")
+    public void testCheckDisplayOfAdvantagesBlock(String route) {
         openPage(route);
-        new Tyres_feature_page_Logic().checkSeoBlock();
+        new Tyres_maker_page_Logic().displayAdvantagesBlock()
+                .checkTitlesOfAdvantagesBlock()
+                .checkElementsOfAdvantagesBlock();
+
     }
 
     @AfterMethod
-    public void close() {
+    private void close() {
         closeWebDriver();
     }
 }

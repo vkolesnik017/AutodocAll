@@ -368,4 +368,9 @@ public class LKW_Category_car_list_page {
     ElementsCollection productsFromListBlock() {return $$x("//ul[@class='list_products ']/li");}
 
     ElementsCollection activeBrands() {return $$x("//div[@class='slick-track']//*[self::li[@class='slick-slide slick-current slick-active'] or self::li[@class='slick-slide slick-active']]//label");}
-}
+
+    ElementsCollection btnAddProductToWishlist() {return $$x("//span[@class='add-to-wishlist title_btn add-article']");}
+
+    ElementsCollection priceTitle() {return $$x("//div[@class='price-block__inkl']/*[1]");}
+
+    }
