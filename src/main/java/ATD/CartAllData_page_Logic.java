@@ -610,4 +610,16 @@ public class CartAllData_page_Logic extends CartAllData_page {
         characteristicZustandInProduct().shouldNotBe(visible);
         return this;
     }
+
+    @Step("Checks presence deposit price {deposit} in summery block. CartAllData_page")
+    public CartAllData_page_Logic checkPresenceDepositInSummeryBlock(String deposit) {
+        pfandPriceInTotalPriceBlock().shouldHave(exactText(deposit));
+        return this;
+    }
+
+    @Step("Checks presence deposit in product block. CartAllData_page")
+    public CartAllData_page_Logic checkPresenceDepositInProductBlock(String productID) {
+        pfandPriceInProductBlock(productID).shouldBe(visible);
+        return this;
+    }
 }
