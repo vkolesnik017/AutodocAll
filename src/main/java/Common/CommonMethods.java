@@ -15,22 +15,22 @@ import java.util.Random;
 
 public class CommonMethods {
 
-    @Step("Get the expected date of a calendar in the format {dataFormat} you want, by entering the expected months {minusMonths}, days {minusDays}")
+    @Step("Get the expected date of a calendar in the format {dataFormat} you want, by entering the expected months {minusMonths}, days {minusDays}. CommonMethods")
     public static String getExpectedCalendarData(String dataFormat, int minusMonths, int minusDays) {
         return DateTimeFormatter.ofPattern(dataFormat).format(LocalDateTime.now().minusMonths(minusMonths).minusDays(minusDays));
     }
 
-    @Step("Generation of random dates for the last expected year")
-    public static String generationRandomDates(int expectedMonths) {
+    @Step("Generation of random dates for the last expected year. CommonMethods")
+    public static String generationRandomDates(int expectedYear) {
         LocalDate now = LocalDate.now();
-        LocalDate then = now.minusMonths(expectedMonths);
+        LocalDate then = now.minusYears(expectedYear);
         long difference = now.toEpochDay() - then.toEpochDay();
         int randomDifference = new Random().nextInt((int) difference);
         LocalDate randomDate = then.plusDays(randomDifference);
         return String.valueOf(randomDate);
     }
 
-    @Step("Rounds the current cost {cost} as closely as possible to the expected cost {expectedCost}")
+    @Step("Rounds the current cost {cost} as closely as possible to the expected cost {expectedCost}. CommonMethods")
     public static Float roundOfTheCost(Float cost, Float expectedCost) {
         BigDecimal result = new BigDecimal(cost);
         BigDecimal formatCostUp = result.setScale(2, RoundingMode.UP);
@@ -61,7 +61,7 @@ public class CommonMethods {
         }
     }
 
-    @Step("Sending email notification about page loading time")
+    @Step("Sending email notification about page loading time. CommonMethods")
     public static void EmailUtils(String recipient, String textMessage, String subjectMessage) throws Exception {
         System.out.println("Preparing to sent email");
         final Properties properties = new Properties();
