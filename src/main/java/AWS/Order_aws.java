@@ -344,6 +344,14 @@ public class Order_aws {
         return $x("//span[@class='inf_profit']");
     }
 
+    private SelenideElement discountMoney() {
+        return $x("//td[@class='inf_discountMoney']");
+    }
+
+    private SelenideElement discountInPercent() {
+        return $x("//b[@class='inf_discount']");
+    }
+
     private ElementsCollection addedGoods() {
         return $$x("//input[@name='row_sel']/../..");
     }
@@ -1200,6 +1208,16 @@ public class Order_aws {
     public Float getTotalSumIncomeWithoutVAT() {
         sleep(5000);
         return Float.valueOf(totalIncomeWithoutVat().getText());
+    }
+
+    @Step("Get sum discount money. Order_aws")
+    public String getSumDiscountMoney() {
+       return discountMoney().getText();
+    }
+
+    @Step("Get discount in percent. Order_aws")
+    public String getDiscountInPercent() {
+        return discountInPercent().getText();
     }
 
     @Step("Get cost from column income without VAT. Order_aws")
