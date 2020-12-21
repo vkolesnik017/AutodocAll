@@ -336,4 +336,10 @@ public class Tyre_item_page_Logic extends Tyre_item_page {
         return this;
     }
 
+    @Step("displaying active add product to basket button. Tyre_item_page")
+    public Tyre_item_page_Logic displayActiveBtnAddToBasket() {
+        addButtonToBasket().shouldBe(visible);
+        return this;
+    }
+
 }

@@ -55,7 +55,6 @@ public class Main_page_Logic extends Main_page {
         mailFieldLogin().setValue(mail);
         passFieldLogin().setValue(password);
         submitBtnLogin().click();
-        checkingContainsUrl("profile");
         return page(Profile_page_Logic.class);
     }
 

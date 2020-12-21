@@ -149,12 +149,12 @@ public class Versand_static_page_Logic extends Versand_static_page {
 
     @Step("Get delivery price for current country for a user with a subscription plus pro. Versand_static_page")
     public float getDeliveryPriceForCurrentCountryForUserWithSubscriptionPlusPro(String country, String mail) throws Exception {
-        float DeliveryPriceCurrentCountry = getDeliveryPriceOfCurrentCountry(country);
+        float deliveryPriceCurrentCountry = getDeliveryPriceOfCurrentCountry(country);
         float exactDeliveryPrice;
         if (mail.contains("plusPro")) {
-            exactDeliveryPrice = DeliveryPriceCurrentCountry * 0.7f;
+            exactDeliveryPrice = deliveryPriceCurrentCountry * 0.7f;
         } else {
-            exactDeliveryPrice = DeliveryPriceCurrentCountry;
+            exactDeliveryPrice = deliveryPriceCurrentCountry;
         }
         return exactDeliveryPrice;
     }

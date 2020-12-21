@@ -145,4 +145,13 @@ class Category_car_list_page {
 
     SelenideElement titleOfProductWithArtNum(String artNum) {return $x("//span[contains(text(),'Artikelnummer: "+artNum+"')]/preceding-sibling::a");}
 
+    SelenideElement recommendationText() {return $x("//p[@class='recommendation__text']");}
+
+    ElementsCollection btnAddProductToWishlist() {return $$x("//span[@class='add-to-wishlist title_btn add-article']");}
+
+    ElementsCollection priceTitle() {return $$x("//div[@class='price-block__inkl']/*[1]");}
+
+    ElementsCollection btnAddProductToWishlistTableView() {return $$x("//div[@class='add-to-wishlist add-article']");}
+
+    ElementsCollection priceTitleTableView() {return $$x("//div[@class='save']/following-sibling::*[1]");}
     }

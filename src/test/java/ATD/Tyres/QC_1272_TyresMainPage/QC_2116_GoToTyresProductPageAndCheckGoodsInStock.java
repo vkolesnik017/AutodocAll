@@ -1,5 +1,6 @@
 package ATD.Tyres.QC_1272_TyresMainPage;
 
+import ATD.Tyres_maker_page_Logic;
 import ATD.Tyres_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
@@ -37,6 +38,19 @@ public class QC_2116_GoToTyresProductPageAndCheckGoodsInStock {
         new Tyres_page_Logic().clickTyresInTopBlock();
     }
 
+    @DataProvider(name = "routesMaker", parallel = true)
+    Object[] dataProviderMaker() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_maker,tyres_feature");
+    }
+
+    @Test(dataProvider = "routesMaker")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test Checks Transition To Product Page From Tyres Top Block And Checking The Product On A Stock")
+    public void testGoToProductPageFromTyresTopBlockAndCheckingProductsOnAStockMaker(String route) {
+        openPage(route);
+        new Tyres_maker_page_Logic().checkTopTyres();
+    }
     @AfterMethod
     public void close() {
         closeWebDriver();

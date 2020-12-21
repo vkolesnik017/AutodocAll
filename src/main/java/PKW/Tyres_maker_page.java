@@ -15,13 +15,21 @@ public class Tyres_maker_page {
         return $x("//div[@class='top-tyre-brands']//a/img[contains(@alt,'" + titleOfBrand + "')]");
     }
 
-    SelenideElement btnAllBrands() {return $x("//div[@class='type_list_all_brands']/a");}
+    SelenideElement btnAllBrands() {
+        return $x("//div[@class='type_list_all_brands']/a");
+    }
 
-    SelenideElement relinkByCarBlock() {return $x("//div[@class='top-tyre-makers tyre-page__slider']");}
+    SelenideElement relinkByCarBlock() {
+        return $x("//div[@class='top-tyre-makers tyre-page__slider']");
+    }
 
-    SelenideElement modelFromRelinkByCarBlock() {return $x("//div[@class='top-tyre-makers tyre-page__slider']//ul//li//span");}
+    SelenideElement modelFromRelinkByCarBlock() {
+        return $x("//div[@class='top-tyre-makers tyre-page__slider']//ul//li//span");
+    }
 
-    SelenideElement btnMoreFromRelinkByCarBlock() {return $x("//div[@class='top-tyre-makers tyre-page__slider']//a[@class='tyre-page__btn__link ga-click']");}
+    SelenideElement btnMoreFromRelinkByCarBlock() {
+        return $x("//div[@class='top-tyre-makers tyre-page__slider']//a[@class='tyre-page__btn__link ga-click']");
+    }
 
     SelenideElement relinkBlockBySize() {
         return $x("//div[@class='tyre-popular tyre-page__slider']");
@@ -35,9 +43,11 @@ public class Tyres_maker_page {
         return $x("//div[@class='tyre-popular tyre-page__slider']//div[@class='block-3-columns']//li/a");
     }
 
-    SelenideElement btnAllSizeFromRelinkBySizeBlock() {return $x("//div[@class='tyre-popular tyre-page__slider']//div[@class='tyre-page__btn']/a");}
+    SelenideElement btnAllSizeFromRelinkBySizeBlock() {
+        return $x("//div[@class='tyre-popular tyre-page__slider']//div[@class='tyre-page__btn']/a");
+    }
 
-    SelenideElement premiumCarBlock()  {
+    SelenideElement premiumCarBlock() {
         return $x("//div[@class='tyre-for-brand tyre-page__slider']");
     }
 
@@ -101,10 +111,15 @@ public class Tyres_maker_page {
         return $x("//li[@class='pkw-related__product']//span[@class='pkw-related__title']");
     }
 
-    SelenideElement topProductsBlock() {return $("div.bx-viewport");}
+    SelenideElement topProductsBlock() {
+        return $("div.bx-viewport");
+    }
 
-    ElementsCollection imageOfBrandAtTopProducts() {return $$("div.pkw-related__header-row>img");}
+    ElementsCollection imageOfBrandAtTopProducts() {
+        return $$("div.pkw-related__header-row>img");
+    }
 
-    ElementsCollection btnAddTopProductToBasket() {return $$x("//form[@class='pkw-related__row']//span");}
-
+    ElementsCollection btnAddTopProductToBasket() {
+        return $$x("//form[@class='pkw-related__row']//span");
+    }
 }

@@ -1,6 +1,7 @@
 package ATD.Tyres.QC_1272_TyresMainPage;
 
 
+import ATD.Tyres_maker_page_Logic;
 import Common.SetUp;
 import ATD.TyresListing_page_Logic;
 import ATD.Tyres_page_Logic;
@@ -42,6 +43,23 @@ public class QC_1341_GoToTyresSeasonListingFromSeasonBlock {
                               .checkCharacteristicOnListing("Winterreifen", tyresListingPageLogic.seasonCharacteristic())
                               .checkSeasonValueInSelector("Winterreifen");
     }
+
+    @DataProvider(name = "routesMaker", parallel = true)
+    Object[] dataProviderMaker() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_maker");
+    }
+
+    @Test(dataProvider = "routesMaker")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test Checks Transition To Tyres Season Listing From Season Block")
+    public void testGoToTyresSeasonListingFromSeasonBlockMaker(String route) {
+        openPage(route);
+        new Tyres_maker_page_Logic().clickSeasonButtonAndCheckTransition(1)
+                .checkCharacteristicOnListing("Winterreifen", tyresListingPageLogic.seasonCharacteristic())
+                .checkSeasonValueInSelector("Winterreifen");
+    }
+
 
     @AfterMethod
     public void close() {
