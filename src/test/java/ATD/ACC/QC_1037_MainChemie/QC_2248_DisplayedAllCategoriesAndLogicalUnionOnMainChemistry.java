@@ -1,4 +1,4 @@
-package ATD.ACC.QC_2235_DisplayedAllCategoriesAndLogicalUnion;
+package ATD.ACC.QC_1037_MainChemie;
 
 import ATD.Index_chemicals_page_Logic;
 import Common.SetUp;

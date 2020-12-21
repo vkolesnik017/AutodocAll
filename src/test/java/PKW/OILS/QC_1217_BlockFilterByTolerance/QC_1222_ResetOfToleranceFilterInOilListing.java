@@ -49,7 +49,7 @@ public class QC_1222_ResetOfToleranceFilterInOilListing {
 
     @DataProvider(name = "routesBrand", parallel = true)
     Object[] dataProviderBrand() throws SQLException {
-        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil_viscosity_brand,motoroil_specification");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil_viscosity_brand");
     }
 
     @Test(dataProvider = "routesBrand")
@@ -63,6 +63,26 @@ public class QC_1222_ResetOfToleranceFilterInOilListing {
                 .clickOnToleranceFilter("Ford WSS-M2C913-A");
         checkingContainsUrl(currentUrl);
         viscosityBrandPage.selectFilterByTolerance("Ford WSS-M2C913-A", "?release%5B%5D=ford-wss-m2c913-a")
+                .clickOnToleranceFilter("Alle");
+        checkingContainsUrl(currentUrl);
+    }
+
+    @DataProvider(name = "routesBrandSpecific", parallel = true)
+    Object[] dataProviderBrandSpecific() throws SQLException {
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil_specification");
+    }
+
+    @Test(dataProvider = "routesBrandSpecific")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test checks reset of Tolerance filter in Oil listing")
+    public void testChecksResetOfToleranceFilterInOilListingBrandSpecific(String route) {
+        openPage(route);
+        String currentUrl = viscosityBrandPage.getCurrentUrl();
+        viscosityBrandPage.selectFilterByTolerance("BMW Longlife-14 FE+", "?release%5B%5D=bmw-longlife-14-fe")
+                .clickOnToleranceFilter("BMW Longlife-14 FE+");
+        checkingContainsUrl(currentUrl);
+        viscosityBrandPage.selectFilterByTolerance("BMW Longlife-14 FE+", "?release%5B%5D=bmw-longlife-14-fe")
                 .clickOnToleranceFilter("Alle");
         checkingContainsUrl(currentUrl);
     }

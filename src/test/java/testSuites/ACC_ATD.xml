@@ -17,6 +17,7 @@
 
     <test name="QC_1037_MainChemie">
         <classes>
+            <class name="ATD.ACC.QC_1037_MainChemie.QC_2248_DisplayedAllCategoriesAndLogicalUnionOnMainChemistry"/>
             <class name="ATD.ACC.QC_1037_MainChemie.QC_1070_BlockTopBrands"/>
             <class name="ATD.ACC.QC_1037_MainChemie.QC_1072_FeatureBlock"/>
             <class name="ATD.ACC.QC_1037_MainChemie.QC_1069_PresenceAdvantagesBlock"/>
@@ -151,7 +152,6 @@
     <test name="QC_2050_BlockFilterByBrandsOnChemistryListing">
         <classes>
             <class name="ATD.ACC.QC_2050_BlockFilterByBrandsOnChemistryListing.QC_1851_BlockBrandsOnListingPageChemistry"/>
-            <class name="ATD.ACC.QC_2050_BlockFilterByBrandsOnChemistryListing.QC_2032_WorkFilterBlockByBrandOnChemistryListing"/>
             <class name="ATD.ACC.QC_2050_BlockFilterByBrandsOnChemistryListing.QC_2052_ResetSelectedFilterByBrandsOnChemistryListing"/>
         </classes>
     </test>
@@ -210,7 +210,6 @@
 
     <test name="QC_2235_DisplayedAllCategoriesAndLogicalUnion">
         <classes>
-            <class name="ATD.ACC.QC_2235_DisplayedAllCategoriesAndLogicalUnion.QC_2248_DisplayedAllCategoriesAndLogicalUnionOnMainChemistry"/>
             <class name="ATD.ACC.QC_2235_DisplayedAllCategoriesAndLogicalUnion.QC_2249_DisplayedAllCategoriesAndLogicalUnionOnMainTools"/>
         </classes>
     </test>
