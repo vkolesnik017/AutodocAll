@@ -2,6 +2,7 @@ package Common;
 
 import ATD.CartPayments_page;
 import ATD.CartPayments_page_Logic;
+import ATD.Main_page_Logic;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.JavascriptExecutor;
@@ -13,6 +14,10 @@ import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class Merchant_page {
+
+    SelenideElement logoAutodoc() {
+        return $x("//div[@class='cart-page-head__logo']/a");
+    }
 
     //Button from the EPS merchant
     public SelenideElement abbrechenSubmit() {
@@ -316,4 +321,13 @@ public class Merchant_page {
         klarnaCheckoutFormWithDataBlock().shouldBe(visible);
         return this;
     }
+
+    @Step("Click by logo Autodoc. Merchant_page")
+    public Main_page_Logic clickByLogoAutodoc() {
+        logoAutodoc().shouldBe(visible).click();
+        return page(Main_page_Logic.class);
+    }
+
+
+
 }
