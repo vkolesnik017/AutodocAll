@@ -3,6 +3,7 @@ package ATD;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
+
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;
@@ -33,4 +34,17 @@ public class Tyres_maker_page {
     ElementsCollection typeOfSeasonsInTopBlock() {return $$x("//div[@class='tyre-season-tabs__row tabs-js']/div");}
 
     ElementsCollection tyreSeasons() {return $$x("//div[@class='tyre-seasons']//span");}
+
+    public ElementsCollection brandsInSlider() {
+        return $$x("//a[contains(@class,'top-brands-slider')]//img");
+    }
+
+    SelenideElement seasonBlock() {
+        return $x("//div[@class='tyre-seasons']");
+    }
+
+    ElementsCollection seasonsInSeasonBlock() {
+        return $$x("//div[@class='tyre-seasons__item']//img");
+    }
+
 }

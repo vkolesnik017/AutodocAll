@@ -55,7 +55,6 @@ public class Main_page_Logic extends Main_page {
         mailFieldLogin().setValue(mail);
         passFieldLogin().setValue(password);
         submitBtnLogin().click();
-        checkingContainsUrl("profile");
         return page(Profile_page_Logic.class);
     }
 
@@ -565,9 +564,9 @@ public class Main_page_Logic extends Main_page {
     public Main_page_Logic checkApplicationLinks(String appUrl) {
         CommonMethods commonMethods = new CommonMethods();
         footerForm().scrollTo();
-        appGoogleButton().click();
+        appGoogleButton().waitUntil(visible, 6000).click();
         commonMethods.checkingUrl(appUrl);
-        appAppleButton().click();
+        appAppleButton().waitUntil(visible, 6000).click();
         commonMethods.checkingUrl(appUrl);
         return this;
     }

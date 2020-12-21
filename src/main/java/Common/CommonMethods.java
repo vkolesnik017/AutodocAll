@@ -21,9 +21,9 @@ public class CommonMethods {
     }
 
     @Step("Generation of random dates for the last expected year")
-    public static String generationRandomDates(int expectedYear) {
+    public static String generationRandomDates(int expectedMonths) {
         LocalDate now = LocalDate.now();
-        LocalDate then = now.minusYears(expectedYear);
+        LocalDate then = now.minusMonths(expectedMonths);
         long difference = now.toEpochDay() - then.toEpochDay();
         int randomDifference = new Random().nextInt((int) difference);
         LocalDate randomDate = then.plusDays(randomDifference);

@@ -280,7 +280,7 @@ public class Tyres_page_Logic extends Tyres_page {
 
     @Step("Check tyres diameter relink block presence. Tyres_page")
     public Tyres_page_Logic checkTyresDiameterRelinkBlockPresence() {
-        diameterRelinkBlock().shouldBe(visible);
+        diameterRelinkBlock().scrollIntoView("{block: \"center\"}").shouldBe(visible);
         linksInDiameterblock().shouldHave(sizeGreaterThan(1));
         return this;
     }
@@ -300,17 +300,17 @@ public class Tyres_page_Logic extends Tyres_page {
     }
 
     @Step("Check popular brand block first position. Tyres_page")
-    public Tyres_page_Logic checkPopularBrandsSliderFirstPosition() {
-        brandsInSlider().shouldHaveSize(14);
+    public Tyres_page_Logic checkPopularBrandsSliderFirstPosition(int numberOfBrands, int numberOfBrandsInFirstSlide, ElementsCollection brandsInSlider, String attrName) {
+        brandsInSlider.shouldHaveSize(numberOfBrands);
         List<String> brandsInFirstSliderPosition = new ArrayList<>();
         List<String> brandsInSecondSliderPosition = new ArrayList<>();
-        for (int i = 0; i < brandsInSlider().size(); i++) {
-            if (i < 7) {
-                brandsInSlider().get(i).shouldBe(visible);
-                brandsInFirstSliderPosition.add(brandsInSlider().get(i).attr("alt"));
+        for (int i = 0; i < brandsInSlider.size(); i++) {
+            if (i < numberOfBrandsInFirstSlide) {
+                brandsInSlider.get(i).shouldBe(visible);
+                brandsInFirstSliderPosition.add(brandsInSlider.get(i).attr(attrName));
             } else {
-                brandsInSlider().get(i).shouldNotBe(visible);
-                brandsInSecondSliderPosition.add(brandsInSlider().get(i).attr("alt"));
+                brandsInSlider.get(i).shouldNotBe(visible);
+                brandsInSecondSliderPosition.add(brandsInSlider.get(i).attr(attrName));
             }
         }
         Assert.assertNotEquals(brandsInFirstSliderPosition, brandsInSecondSliderPosition);
@@ -318,17 +318,17 @@ public class Tyres_page_Logic extends Tyres_page {
     }
 
     @Step("Check popular brand block second position. Tyres_page")
-    public Tyres_page_Logic checkPopularBrandsSliderSecondPosition() {
-        brandsInSlider().shouldHaveSize(14);
+    public Tyres_page_Logic checkPopularBrandsSliderSecondPosition(int numberOfAllBrands, int numberOfBrandsInFirstSlide, ElementsCollection brandsInSlider, String attrName) {
+        brandsInSlider.shouldHaveSize(numberOfAllBrands);
         List<String> brandsInFirstSliderPosition = new ArrayList<>();
         List<String> brandsInSecondSliderPosition = new ArrayList<>();
-        for (int i = 0; i < brandsInSlider().size(); i++) {
-            if (i < 7) {
-                brandsInSlider().get(i).shouldNotBe(visible);
-                brandsInFirstSliderPosition.add(brandsInSlider().get(i).attr("alt"));
+        for (int i = 0; i < brandsInSlider.size(); i++) {
+            if (i < numberOfBrandsInFirstSlide) {
+                brandsInSlider.get(i).shouldNotBe(visible);
+                brandsInFirstSliderPosition.add(brandsInSlider.get(i).attr(attrName));
             } else {
-                brandsInSlider().get(i).shouldBe(visible);
-                brandsInSecondSliderPosition.add(brandsInSlider().get(i).attr("alt"));
+                brandsInSlider.get(i).shouldBe(visible);
+                brandsInSecondSliderPosition.add(brandsInSlider.get(i).attr(attrName));
             }
         }
         Assert.assertNotEquals(brandsInFirstSliderPosition, brandsInSecondSliderPosition);
