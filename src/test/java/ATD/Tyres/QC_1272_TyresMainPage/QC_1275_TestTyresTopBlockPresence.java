@@ -50,8 +50,8 @@ public class QC_1275_TestTyresTopBlockPresence {
     @Test(dataProvider = "routesTyresFeature")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test Checks Tyres Top Block Presence from Tyres feature page")
-    public void testTyresTopBlockPresenceTyresFeature(String route) {
+    @Description(value = "Test Checks Tyres Top Block Presence from Tyres feature and maker page")
+    public void testTyresTopBlockPresenceTyresFeatureAndMakerPage(String route) {
         openPage(route);
         tyres_feature_page_logic.checkTopBlock(tyres_feature_page_logic.allSeasonTabInTopBlock(), tyres_feature_page_logic.topItemInAllSeasonCollection());
         tyres_feature_page_logic.checkTopBlock(tyres_feature_page_logic.sunSeasonTabInTopBlock(), tyres_feature_page_logic.topItemInSunSeasonCollection())
