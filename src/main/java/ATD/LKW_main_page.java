@@ -324,6 +324,12 @@ public class LKW_main_page {
     SelenideElement headerGarageIcon(){ return $x("//div[@class='header-garage js-header-garage']"); }
 
     SelenideElement  countOfVehicleInIconOfGarageInHeader() {return $x("//span[@class='header-garage__count header-garage__count--added']");}
+
+    SelenideElement exampleIcon() {return $x("//a[@class='header-i header-i--info inf']");}
+
+    SelenideElement exampleInfoPopUp() {return $x("//div[@class='ex_popup ex_popup_shown']");}
+
+    SelenideElement btnCloseInfoExamplePopUp() {return $x("//a[@class='close']");}
 }
 
 
