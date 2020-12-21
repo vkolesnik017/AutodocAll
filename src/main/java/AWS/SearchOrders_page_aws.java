@@ -108,8 +108,6 @@ public class SearchOrders_page_aws {
     }
 
 
-
-
     @Step("Click button search. SearchOrders_page_aws")
     public SearchOrders_page_aws clickSearchBtn() {
         searchBtn().click();
@@ -144,7 +142,7 @@ public class SearchOrders_page_aws {
         return this;
     }
 
-    @Step("Open search page with expected data")
+    @Step("Open search page with expected data. SearchOrders_page_aws")
     public SearchOrders_page_aws openSearchPageWithExpectedData(int minusMonths, int minusDays) {
         String expectedData = getExpectedCalendarData("yyyy-MM-dd", minusMonths, minusDays);
         openPage(searchOrderPageURL +
@@ -156,7 +154,7 @@ public class SearchOrders_page_aws {
         return this;
     }
 
-    @Step("Open search page with expected data")
+    @Step("Open search page with expected data. SearchOrders_page_aws")
     public SearchOrders_page_aws openSearchPageWithExpectedData(String dataFrom, String dataBefore) {
         openPage(searchOrderPageURL +
                 "?Filter%5BorderId%5D=&Filter%5BorderFrom%5D=our&Filter%5Bplz%5D=&Filter%5Bort%5D=&Filter%5" +
@@ -166,6 +164,18 @@ public class SearchOrders_page_aws {
         new Login_aws().loginInAws();
         return this;
     }
+
+    @Step("Open search page with expected data from. SearchOrders_page_aws")
+    public SearchOrders_page_aws openSearchPageWithExpectedDataFrom(String dataFrom) {
+        openPage(searchOrderPageURL +
+                "?Filter%5BorderId%5D=&Filter%5BorderFrom%5D=our&Filter%5" +
+                "Bplz%5D=&Filter%5Bort%5D=&Filter%5Bgroup%5D=&Filter%5BgroupList%5D=&Filter%5BsortByHours%5D=&Filter%" +
+                "5BcorrectionPaid%5D=0&Filter%5Bpaid%5D=&Filter%5BcustomerInfo%5D=&Filter%5BfromDate%5D=" + dataFrom + "&" +
+                "Filter%5BtoDate%5D=&Filter%5BwarehouseId%5D=&Filter%5BhasSingleProduct%5D=0&Filter%5BhasNoProduct%5D=0&search=");
+        new Login_aws().loginInAws();
+        return this;
+    }
+
 
     @Step("Check present transaction cod block in re-order. SearchOrders_page_aws")
     public Boolean checkPresentTransactionCodInReOrder(SelenideElement element) {
@@ -241,9 +251,9 @@ public class SearchOrders_page_aws {
     }
 
     @Step("Go to a random order and check the PayLink. SearchOrders_page_aws")
-    public  SearchOrders_page_aws clickOnRandomOrderID(int countOfClick) {
+    public SearchOrders_page_aws clickOnRandomOrderID(int countOfClick) {
         int minValue = 0;
-        for (int i = 0; i < countOfClick; i++){
+        for (int i = 0; i < countOfClick; i++) {
             int randomIndex = minValue + (int) (Math.random() * orderID().size());
             orderID().get(randomIndex).scrollIntoView("{block: \"center\"}").shouldBe(visible);
             orderID().get(randomIndex).click();
@@ -262,7 +272,7 @@ public class SearchOrders_page_aws {
     }
 
     @Step("Choosing country {expectedCountry}. SearchOrders_page_aws")
-    public SearchOrders_page_aws chooseCountry(String expectedCountry){
+    public SearchOrders_page_aws chooseCountry(String expectedCountry) {
         countrySelector().click();
         countryList(expectedCountry).shouldBe(visible);
         countryList(expectedCountry).click();
@@ -270,7 +280,7 @@ public class SearchOrders_page_aws {
     }
 
     @Step("Choosing Payments method {expectedPaymentsMethod}. SearchOrders_page_aws")
-    public SearchOrders_page_aws choosePaymentsMethods(String expectedPaymentsMethod){
+    public SearchOrders_page_aws choosePaymentsMethods(String expectedPaymentsMethod) {
         paymentsMethodsSelector().click();
         paymentsMethodsList(expectedPaymentsMethod).shouldBe(visible);
         paymentsMethodsList(expectedPaymentsMethod).click();
@@ -278,7 +288,7 @@ public class SearchOrders_page_aws {
     }
 
     @Step("Choosing currency method {expectedCurrency}. SearchOrders_page_aws")
-    public SearchOrders_page_aws chooseCurrency(String expectedCurrency){
+    public SearchOrders_page_aws chooseCurrency(String expectedCurrency) {
         currencySelector().click();
         currencyList(expectedCurrency).shouldBe(visible);
         currencyList(expectedCurrency).click();
@@ -290,4 +300,25 @@ public class SearchOrders_page_aws {
         assemblyWarehouse().selectOptionContainingText(expectedAssemblyWarehouse);
         return this;
     }
+
+    @Step("Choosing expected filter")
+    public SearchOrders_page_aws choosingExpectedFilter(String nameFilter, String PaymentsMethod,
+                                                                     String currency, String assemblyWarehouse, String customerInfo) {
+        switch (nameFilter) {
+            case "choosePaymentsMethods":
+                choosePaymentsMethods(PaymentsMethod);
+                break;
+            case "chooseCurrency":
+                chooseCurrency(currency);
+                break;
+            case "chooseAssemblyWarehouse":
+                chooseAssemblyWarehouse(assemblyWarehouse);
+                break;
+            case "fillingFieldCustomerInfo":
+                fillingFieldCustomerInfo(customerInfo);
+                break;
+        }
+        return this;
+    }
 }
+

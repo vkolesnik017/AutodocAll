@@ -15,7 +15,6 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 public class QC_2998_CheckingSearchBy_GroupField_FilterLinkSurcharges_FillingDataPeriod {
 
 
-
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");

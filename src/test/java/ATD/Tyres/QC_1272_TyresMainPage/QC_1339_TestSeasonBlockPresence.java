@@ -1,6 +1,7 @@
 package ATD.Tyres.QC_1272_TyresMainPage;
 
 
+import ATD.Tyres_maker_page_Logic;
 import Common.SetUp;
 import ATD.Tyres_page_Logic;
 import io.qameta.allure.Description;
@@ -29,6 +30,11 @@ public class QC_1339_TestSeasonBlockPresence {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres,tyres2,tyres3,tyres4");
     }
 
+    @DataProvider(name = "routesTyresMakerPage", parallel = true)
+    Object[] dataProviderTyresMakerPage() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_maker");
+    }
+
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Romaniuta")
@@ -36,6 +42,15 @@ public class QC_1339_TestSeasonBlockPresence {
     public void testSeasonBlockPresence(String route) {
         openPage(route);
         new Tyres_page_Logic().checkTyresSeasonBlockPresence();
+    }
+
+    @Test(dataProvider = "routesTyresMakerPage")
+    @Flaky
+    @Owner(value = "Chelombitko")
+    @Description(value = "Test Checks Season Block Presence from Tyres maker page")
+    public void testSeasonBlockPresenceFromTyresMakerPage(String route) {
+        openPage(route);
+        new Tyres_maker_page_Logic().checkTyresSeasonBlockPresence();
     }
 
     @AfterMethod

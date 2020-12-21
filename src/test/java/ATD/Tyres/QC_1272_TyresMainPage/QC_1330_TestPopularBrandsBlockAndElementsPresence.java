@@ -1,6 +1,7 @@
 package ATD.Tyres.QC_1272_TyresMainPage;
 
 import ATD.Tyres_feature_page_Logic;
+import ATD.Tyres_maker_page_Logic;
 import Common.SetUp;
 import ATD.Tyres_page_Logic;
 import io.qameta.allure.Description;
@@ -17,6 +18,9 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1330_TestPopularBrandsBlockAndElementsPresence {
 
+    private Tyres_page_Logic tyres_page_logic = new Tyres_page_Logic();
+    private Tyres_maker_page_Logic tyres_maker_page_logic = new Tyres_maker_page_Logic();
+
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -32,6 +36,11 @@ public class QC_1330_TestPopularBrandsBlockAndElementsPresence {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_feature");
     }
 
+    @DataProvider(name = "routesTyresMaker", parallel = true)
+    Object[] dataProviderTyresMaker() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_maker");
+    }
+
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Romaniuta")
@@ -39,9 +48,9 @@ public class QC_1330_TestPopularBrandsBlockAndElementsPresence {
     public void testPopularBrandsBlockAndElementsPresence(String route) {
         openPage(route);
         new Tyres_page_Logic().checkPopularBrandsBlockVisibility()
-                                .checkPopularBrandsSliderFirstPosition()
+                                .checkPopularBrandsSliderFirstPosition(14, 7, tyres_page_logic.brandsInSlider(), "alt")
                                 .clickSecondPageInBrandSlider()
-                                .checkPopularBrandsSliderSecondPosition();
+                                .checkPopularBrandsSliderSecondPosition(14, 7, tyres_page_logic.brandsInSlider(), "alt");
     }
 
     @Test(dataProvider = "routesTyresFeature")
@@ -55,6 +64,19 @@ public class QC_1330_TestPopularBrandsBlockAndElementsPresence {
                 .clickSecondPageInBrandSlider()
                 .checkPopularBrandsSliderSecondPosition();
     }
+
+    @Test(dataProvider = "routesTyresMaker")
+    @Flaky
+    @Owner(value = "Chelombitko")
+    @Description(value = "Test Checks Popular Brands Block And Elements Presence from Tyres maker page")
+    public void testPopularBrandsBlockAndElementsPresenceFromTyresMaker(String route) {
+        openPage(route);
+        tyres_maker_page_logic.checkPopularBrandsBlockVisibility()
+                .checkPopularBrandsSliderFirstPosition(12, 6, tyres_maker_page_logic.brandsInSlider(), "src")
+                .clickSecondPageInBrandSlider()
+                .checkPopularBrandsSliderSecondPosition(12, 6, tyres_maker_page_logic.brandsInSlider(), "src");
+    }
+
 
     @AfterMethod
     public void close() {
