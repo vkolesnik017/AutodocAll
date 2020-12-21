@@ -1,5 +1,6 @@
 package ATD;
 
+import AWS.CategoriesSynonyms_aws;
 import AWS.ProductCard_aws;
 import Common.DataBase;
 import Common.Excel;
@@ -16,6 +17,7 @@ import org.testng.Assert;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static ATD.CommonMethods.*;
 import static PKW.CommonMethods.checkingContainsUrl;
@@ -50,7 +52,7 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Login in header with mail {mail}. Main_page")
-    public Profile_page_Logic loginFromHeader(String mail)  {
+    public Profile_page_Logic loginFromHeader(String mail) {
         loginBtnInHeader().click();
         mailFieldLogin().setValue(mail);
         passFieldLogin().setValue(password);
@@ -1650,4 +1652,44 @@ public class Main_page_Logic extends Main_page {
     }
 
 
+    @Step("get Generics from search bar. Main_page")
+    public List<String> getGenericsFromSearchBar() {
+        genericsFromTips().get(0).shouldBe(visible);
+        List<String> generics = genericsFromTips().stream().map(n -> n.getText()).collect(Collectors.toList());
+        return generics;
+    }
+
+
+    @Step("check logic of search suggestions. Main_page")
+    public Main_page_Logic checkLogicOfSearchSuggestions(List<String> searchText) {
+        List<String> tipsFromDropDown = null;
+        List<String> titleOfHints = new ArrayList<>();
+        List<String> valuesOfHints = new ArrayList<>();
+        List<String> genericsOfHints = new ArrayList<>();
+        List<String> synonymsOfHints = new ArrayList<>();
+        for (int i = 0; i < searchText.size(); i++) {
+            inputTextInSearchBar(searchText.get(i));
+            genericsFromTips().get(0).shouldBe(visible);
+            tipsFromDropDown = genericsFromTips().stream().map(n -> n.getText()).collect(Collectors.toList());
+            for (int j = 0; j < tipsFromDropDown.size(); j++) {
+                if (tipsFromDropDown.get(j).contains("\n")) {
+                    List<String> currentTip = Arrays.asList(tipsFromDropDown.get(j).split("\n"));
+                    titleOfHints.add(currentTip.get(0));
+                    valuesOfHints.add(currentTip.get(1));
+                } else {
+                    titleOfHints.add(tipsFromDropDown.get(j));
+                    valuesOfHints.add(" ");
+                }
+            }
+            for (int j = 0; j < valuesOfHints.size(); j++) {
+                if (valuesOfHints.get(j).equals(" ")) {
+                    synonymsOfHints.add(titleOfHints.get(j));
+                } else {
+                    genericsOfHints.add(titleOfHints.get(j));
+                }
+            }
+            new CategoriesSynonyms_aws().openSynonymsPageInAws().checkGenerics(genericsOfHints, synonymsOfHints);
+        }
+        return this;
+    }
 }
