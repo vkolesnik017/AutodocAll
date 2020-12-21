@@ -144,7 +144,7 @@ public class Tyres_maker_page_Logic extends Tyres_maker_page {
     @Step("Click btn add to basket from top block. Tyres_maker_page")
     public Tyres_maker_page_Logic clickBtnAddToBasketFromTopBlock() {
         btnAddToBasketFromTopBlock().click();
-        popupBasketAddedProducts().waitUntil(attribute("style","visibility: visible; opacity: 1;"), 10000);
+        popupBasketAddedProducts().waitUntil(attribute("style", "visibility: visible; opacity: 1;"), 10000);
         return this;
     }
 
@@ -189,7 +189,6 @@ public class Tyres_maker_page_Logic extends Tyres_maker_page {
         wheelDimensionsFromRelinkBlock().shouldBe(visible).click();
         return page(Tyres_dimension_maker_page_Logic.class);
     }
-
 
     @Step("check size of TOP products. Tyres_maker_page")
     public Tyres_maker_page_Logic checkSizeOfTopProducts(int size) {

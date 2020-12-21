@@ -598,7 +598,7 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return this;
     }
 
-    @Step("Checks product price on site matches price on alldata page including VAT. Product_page")
+    @Step("Checks product price on site matches price on alldata page including VAT. CartAllData_page")
     public CartAllData_page_Logic checkProductPriceOnSitesMatchesPriceOnAllDataPageIncludingVat(Float priceWithVatPerAllDataPage, Float priceProductInAlldata) {
         float res = roundOfTheCost(priceWithVatPerAllDataPage, priceProductInAlldata);
         Assert.assertEquals(res, priceProductInAlldata);

@@ -26,6 +26,14 @@ public class ProfilerPage_aws {
         return $x("(//table[@class='table table-condensed table-bordered']/tbody)[2]//tr[4]//td[2]");
     }
 
+    private SelenideElement standardMultiplier() {
+        return $x("(//table[@class='table table-condensed table-bordered']/tbody)[2]//tr[1]//td[2]");
+    }
+
+    private SelenideElement totalPrice() {
+        return $x("(//table[@class='table table-condensed table-bordered']/tbody)[2]//tr[5]//td[2]");
+    }
+
 
     @Step("Filling filds OrderId {orderId} and ArticleId {articleId}. ProfilerPage_aws")
     public ProfilerPage_aws fillingFieldsOrderIdAndArticleId(String orderId, String articleId) {
@@ -41,5 +49,22 @@ public class ProfilerPage_aws {
         taxFormula().shouldHave(text(expectedVAT));
         return this;
     }
+
+    @Step("Check standard multiplier. ProfilerPage_aws")
+    public ProfilerPage_aws checkStandardMultiplier(String expectedMultiplier) {
+        standardMultiplier().shouldBe(visible);
+        standardMultiplier().shouldHave(text(expectedMultiplier));
+        return this;
+    }
+
+    @Step("Check total price. ProfilerPage_aws")
+    public ProfilerPage_aws checkTotalPrice(float totalPrice) {
+        totalPrice().shouldBe(visible);
+        String price = Float.toString(totalPrice);
+        totalPrice().shouldHave(text(price));
+        return this;
+    }
+
+
 }
 

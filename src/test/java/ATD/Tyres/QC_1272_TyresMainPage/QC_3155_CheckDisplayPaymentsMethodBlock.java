@@ -1,8 +1,7 @@
 package ATD.Tyres.QC_1272_TyresMainPage;
 
-
+import ATD.Tyres_maker_page_Logic;
 import Common.SetUp;
-import ATD.TyresListing_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -17,25 +16,26 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1345_GoToDimensionListingFromPopularSizesRelinkBlock {
+public class QC_3155_CheckDisplayPaymentsMethodBlock {
 
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "routes", parallel = true)
+    @DataProvider(name = "routes", parallel = false)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_maker,tyres,tyres2,tyres3,tyres4,tyres_feature");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_maker");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "Romaniuta")
-    @Description(value = "Test Checks Transition To Dimension Listing From Popular Sizes Relink Block")
-    public void testGoToDimensionListingFromPopularSizesRelinkBlock(String route) {
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test checking the presence of a block of payment methods")
+    public void testCheckCheckDisplayPaymentsMethodBlock(String route) {
         openPage(route);
-        new TyresListing_page_Logic().clickDimensionButtonAndCheckRedirect(new TyresListing_page_Logic().dimensionLinkListingRoute());
+
+        new Tyres_maker_page_Logic().checkPaymentMethodsBlock();
     }
 
     @AfterMethod

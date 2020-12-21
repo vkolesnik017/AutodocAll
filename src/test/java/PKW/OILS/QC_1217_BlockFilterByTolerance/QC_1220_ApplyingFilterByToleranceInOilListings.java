@@ -43,7 +43,7 @@ public class QC_1220_ApplyingFilterByToleranceInOilListings {
 
     @DataProvider(name = "routesBrand", parallel = true)
     Object[] dataProviderBrand() throws SQLException {
-        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil_viscosity_brand,motoroil_specification");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil_viscosity_brand");
     }
 
     @Test(dataProvider = "routesBrand")
@@ -57,6 +57,25 @@ public class QC_1220_ApplyingFilterByToleranceInOilListings {
                 .selectFilterByTolerance("Ford WSS-M2C913-A", "?release%5B%5D=ford-wss-m2c913-a")
                 .checkSelectorWithSelectedToleranceFilter("ford-wss-m2c913-a")
                 .checkListingWithSelectedToleranceFilter("Ford WSS-M2C913-A");
+    }
+
+
+    @DataProvider(name = "routesBrandSpecific", parallel = true)
+    Object[] dataProviderBrandSpecific() throws SQLException {
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil_specification");
+    }
+
+    @Test(dataProvider = "routesBrandSpecific")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test checks applying filter by tolerance in Oil listings")
+    public void testChecksApplyingFilterByToleranceInOilListingsBrandSpecific(String route) {
+        openPage(route);
+
+        new Motoroil_viscosity_brand_page_Logic()
+                .selectFilterByTolerance("BMW Longlife-14 FE+", "?release%5B%5D=bmw-longlife-14-fe")
+                .checkSelectorWithSelectedToleranceFilter("bmw-longlife-14-fe")
+                .checkListingWithSelectedToleranceFilter("BMW Longlife-14 FE+");
     }
 
     @AfterMethod

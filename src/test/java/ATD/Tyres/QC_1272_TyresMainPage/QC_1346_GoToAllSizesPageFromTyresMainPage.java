@@ -32,7 +32,7 @@ public class QC_1346_GoToAllSizesPageFromTyresMainPage {
 
     @DataProvider(name = "routesTyresFeature")
     Object[] dataProviderTyresFeature() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_feature");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_maker,tyres_feature");
     }
 
     @Test(dataProvider = "routesTyresPage")
@@ -48,8 +48,8 @@ public class QC_1346_GoToAllSizesPageFromTyresMainPage {
     @Test(dataProvider = "routesTyresFeature")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test Checks Transition To All Sizes Page From Tyres Main Page")
-    public void testGoToAllSizesPageFromTyresFeature(String route) {
+    @Description(value = "Test Checks Transition To All Sizes Page From Tyres feature and maker page")
+    public void testGoToAllSizesPageFromTyresFeatureAndMakerPage(String route) {
         openPage(route);
         new Tyres_feature_page_Logic().clickAllTyresSizesBtnInSizeBlock();
         checkingContainsUrl("reifen/type_list");

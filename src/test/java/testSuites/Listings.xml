@@ -40,6 +40,8 @@
             <class name="ATD.Listings.QC_445_ListingTecDoc.QC_1742_ReopeningPopupWithCarCharacteristics"/>
             <class name="ATD.Listings.QC_445_ListingTecDoc.QC_2704_PresenceProgressBarOnAllListing"/>
             <class name="ATD.Listings.QC_445_ListingTecDoc.QC_2947_CheckingDisplayOfGenericAlternativeNameInProductName"/>
+            <class name="ATD.Listings.QC_445_ListingTecDoc.QC_3123_CheckDisplayPriceMeterElementInTecDocListing"/>
+            <class name="ATD.Listings.QC_445_ListingTecDoc.QC_3137_DisplayOfBlockWithRecommendedReplacementInterval"/>
         </classes>
     </test>
 
