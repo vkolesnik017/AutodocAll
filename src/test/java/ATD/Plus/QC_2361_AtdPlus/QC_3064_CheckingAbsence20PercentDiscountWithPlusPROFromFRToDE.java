@@ -1,6 +1,5 @@
 package ATD.Plus.QC_2361_AtdPlus;
 
-
 import ATD.CartAllData_page_Logic;
 import ATD.Cart_page_Logic;
 import ATD.Main_page_Logic;
@@ -20,19 +19,20 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import static ATD.CommonMethods.*;
+import static ATD.CommonMethods.openPage;
 import static AWS.ProfilerPage_aws.profilerPage_aws;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_3058_CheckingAbsence20PercentDiscountForUserWithPlusPRO {
+public class QC_3064_CheckingAbsence20PercentDiscountWithPlusPROFromFRToDE {
 
-    private String mail = "qc_3058_plusProAutotest@mailinator.com";
+    private String mail = "qc_3064_plusProAutotest@mailinator.com";
     private DataBase db = new DataBase("ATD");
     private Main_page_Logic mainPageLogic = new Main_page_Logic();
     private Product_page_Logic productPageLogic = new Product_page_Logic();
     private CartAllData_page_Logic cartAllDataPageLogic = new CartAllData_page_Logic();
     private Order_aws orderAws = new Order_aws();
-    private String userID = "19507754";
+    private String userID = "19548493";
 
 
     @BeforeClass
@@ -48,12 +48,11 @@ public class QC_3058_CheckingAbsence20PercentDiscountForUserWithPlusPRO {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey_QA")
-    @Description(value = "Test Checking that there is no 20% discount for a user with ATD PRO when ordering FR -> FR and there is no promotion.")
-    public void testCheckingAbsence20PercentDiscountForUserWithPlusPRO(String route) throws Exception {
+    @Description(value = "Test Checking that there is no 20% discount for a user with ATD PRO when ordering FR -> DE and there is no promotion.")
+    public void testCheckAbsence20PercentDiscountWithPlusPROFromFRToDE(String route) throws Exception {
         openPage(route);
         mainPageLogic.loginFromHeader(mail);
         openPage(db.getFullRouteByRouteAndSubroute("prod", "FR", "main", "product2"));
-        float priceProduct = productPageLogic.getProductPrice();
         productPageLogic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
@@ -63,7 +62,6 @@ public class QC_3058_CheckingAbsence20PercentDiscountForUserWithPlusPRO {
                 .clickOnTheDesiredPaymentMethod("FR", "CreditCard_be2bill")
                 .nextBtnClick();
         float priceProductAllData = getPriceFromElement(cartAllDataPageLogic.productPrice());
-        Assert.assertEquals(priceProduct, priceProductAllData);
         cartAllDataPageLogic.nextBtnClick();
         new Merchant_page().clickByLogoAutodoc();
         checkingContainsUrl("fr");
@@ -84,10 +82,9 @@ public class QC_3058_CheckingAbsence20PercentDiscountForUserWithPlusPRO {
         openPage(profilerPage_aws);
         new ProfilerPage_aws().fillingFieldsOrderIdAndArticleId(orderId, articleId)
                 .checkStandardMultiplier("1.02")
-                .checkTotalPrice(priceProduct);
+                .checkTotalPrice(priceProductAllData);
 
     }
-
 
     @AfterMethod
     private void close() {
