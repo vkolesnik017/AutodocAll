@@ -38,7 +38,7 @@ public class QC_1324_GoToProductPageFromTyresTopBlock {
 
     @DataProvider(name = "routesTyresFeature", parallel = true)
     Object[] dataProviderTyresFeature() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_feature");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_maker,tyres_feature");
     }
 
     @Test(dataProvider = "routes")
@@ -54,8 +54,8 @@ public class QC_1324_GoToProductPageFromTyresTopBlock {
     @Test(dataProvider = "routesTyresFeature")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test Checks Transition To Product Page From Tyres Top Block from Tyres Feature")
-    public void tesGoToProductPageFromTyresTopBlockFromTyresFeature(String route) {
+    @Description(value = "Test Checks Transition To Product Page From Tyres Top Block from Tyres Feature and maker page")
+    public void tesGoToProductPageFromTyresTopBlockFromTyresFeatureAndMakerPage(String route) {
         openPage(route);
         tyres_feature_page_logic.clickTyreInTopBlocAndCheckRedirect(tyres_feature_page_logic.allSeasonTabInTopBlock(), tyres_feature_page_logic.topItemInAllSeason());
         back();

@@ -1,6 +1,6 @@
-package ATD.General_Common.QC_1554_Footer;
+package ATD.Catalog_Mark.QC_2568_MarkPages;
 
-import ATD.Main_page_Logic;
+import ATD.Tyres_maker_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -10,30 +10,36 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.sql.SQLException;
+
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1555_ApplicationInstallBanner {
+public class QC_3153_CheckRelinkingBlockByCarBrands {
 
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "route", parallel = true)
-    Object[] dataProvider() {
-        return new SetUp("ATD").setUpShop("prod", "DE");
+    @DataProvider(name = "route")
+    Object[] dataProvider() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_maker");
     }
 
-    @Flaky
-    @Owner(value = "Chelombitko")
     @Test(dataProvider = "route")
-    @Description(value = "Test check App installation links")
-    public void checkingAppLinks(String route) {
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "test check relinking block by car brands")
+    public void testCheckRelinkingBlockByCarBrands(String route) {
         openPage(route);
-        new Main_page_Logic().checkApplicationLinks("https://apps.apple.com/US/app/id1014949597?mt=8");
+        new Tyres_maker_page_Logic().displayCarBrandsBlock()
+        .checkCountOfCarInCarBrandsBlock()
+        .clickOnCarBrand();
+
     }
+
     @AfterMethod
     private void close() {
         closeWebDriver();

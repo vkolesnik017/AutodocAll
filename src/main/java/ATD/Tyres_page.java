@@ -101,7 +101,7 @@ public class Tyres_page {
 
   SelenideElement secondButtonInTopBrandSlider() { return $("#slick-slide-control11"); }
 
-  ElementsCollection brandsInSlider() { return $$x("//div[@class='unsere']//img"); }
+  public ElementsCollection brandsInSlider() { return $$x("//div[@class='unsere']//img"); }
 
   ElementsCollection brandProductFromTopTyresBlock() {
     return $$x("//div[@class='mark_img']/img");

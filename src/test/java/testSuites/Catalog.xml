@@ -34,6 +34,11 @@
 
     <test name="QC_2626_TecdocCatalog_SidebarCatalog_TopCategories">
         <classes>
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_134_TopParentAndChildCategoriesBlocks"/>
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_22_PresenceOfParentCategoryListInSidebar"/>
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_24_PresenceOfChildCategoriesInSideBar"/>
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_20_AvailabilityParentCatalogBlock"/>
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_23_TransitionOnParentCategoryPageFromSidebar"/>
             <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_116_AllChildCategoriesBlockOfParent"/>
             <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_178_TopParentAndChildCategoriesBlocks"/>
             <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_654_PrioritizationCategoriesInTopCategoriesBlock"/>
