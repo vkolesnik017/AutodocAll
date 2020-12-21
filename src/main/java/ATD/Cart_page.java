@@ -95,6 +95,10 @@ public class Cart_page {
         return $x("(//td[@class='price'])[2]");
     }
 
+    public SelenideElement pfandPriceInProductBlock(String idProduct) {
+        return $x("//tr[@data-article_id='" + idProduct + "']//td[@class='price'][2]");
+    }
+
     public SelenideElement totalProductPrice() {
         return $(byCssSelector(".total-price"));
     }
