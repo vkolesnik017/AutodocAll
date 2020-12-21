@@ -28,7 +28,7 @@ public class QC_1555_ApplicationInstallBanner {
 
     @Flaky
     @Owner(value = "Chelombitko")
-    @Test(dataProvider = "route", enabled = true)
+    @Test(dataProvider = "route")
     @Description(value = "Test check App installation links")
     public void checkingAppLinks(String route) {
         openPage(route);
