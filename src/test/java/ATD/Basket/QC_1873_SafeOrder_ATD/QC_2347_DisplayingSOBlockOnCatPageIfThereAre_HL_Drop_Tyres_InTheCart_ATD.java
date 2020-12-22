@@ -34,7 +34,7 @@ public class QC_2347_DisplayingSOBlockOnCatPageIfThereAre_HL_Drop_Tyres_InTheCar
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp("ATD").setUpShopsWithSubroutes("prod", "DE,FR", "main", "HeavyLoadProduct4,productDrop1,product45");
+        return new SetUp("ATD").setUpShopsWithSubroutes("prod", "DE,FR", "main", "HeavyLoadProduct4,productDrop1,tyre_item16");
     }
 
     @Test(dataProvider = "route")
