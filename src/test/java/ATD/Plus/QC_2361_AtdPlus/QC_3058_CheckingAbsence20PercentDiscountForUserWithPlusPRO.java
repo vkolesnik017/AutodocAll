@@ -52,6 +52,7 @@ public class QC_3058_CheckingAbsence20PercentDiscountForUserWithPlusPRO {
     public void testCheckingAbsence20PercentDiscountForUserWithPlusPRO(String route) throws Exception {
         openPage(route);
         mainPageLogic.loginFromHeader(mail);
+        checkingContainsUrl("profile/orders");
         openPage(db.getFullRouteByRouteAndSubroute("prod", "FR", "main", "product2"));
         float priceProduct = productPageLogic.getProductPrice();
         productPageLogic.addProductToCart()

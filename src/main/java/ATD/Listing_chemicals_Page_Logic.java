@@ -195,7 +195,7 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
 
     @Step("Checking presence title categories block in sidebar. Listing_chemicals_Page")
     public Listing_chemicals_Page_Logic checkingPresenceTitleCategoriesBlockInSidebar() {
-        titleCategoriesBlockInSidebar().shouldHave(text(""));
+        titleCategoriesBlockInSidebar().shouldHave(text("Finden Sie die besten Angebote für:"));
         return this;
     }
 
