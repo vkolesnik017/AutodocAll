@@ -32,7 +32,7 @@ public class QC_1344_TestPopularDimensionsRelinkBlockPresence {
 
     @DataProvider(name = "routesTyresFeature", parallel = true)
     Object[] dataProviderTyresFeature() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_feature");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_maker,tyres_feature");
     }
 
     @Test(dataProvider = "routesTyresPage")
@@ -47,8 +47,8 @@ public class QC_1344_TestPopularDimensionsRelinkBlockPresence {
     @Test(dataProvider = "routesTyresFeature")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test Checks Popular Dimensions Relink Block Presence from Tyres feature page")
-    public void testPopularDimensionsRelinkBlockPresenceFromTyresFeature(String route) {
+    @Description(value = "Test Checks Popular Dimensions Relink Block Presence from Tyres feature and maker page")
+    public void testPopularDimensionsRelinkBlockPresenceFromTyresFeatureAndMakerPage(String route) {
         openPage(route);
         new Tyres_feature_page_Logic().checkTyresDimensionRelinkBlockPresence();
     }

@@ -22,8 +22,11 @@ public class ForTest extends SetUp {
 
     @Test()
     public void test2() throws SQLException {
-        float test = roundOfTheCost(4.765f, 4.77f);
-        System.out.println(test);
+        String [] payments = {"HypoVereinsbank", "PayPal", "Be2bill"};
+        int minValue = 0;
+        int randomIndex = minValue + (int) (Math.random() * payments.length);
+        String paymentName = payments[randomIndex];
+        System.out.println(paymentName);
     }
     }
 

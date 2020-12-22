@@ -598,7 +598,7 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return this;
     }
 
-    @Step("Checks product price on site matches price on alldata page including VAT. Product_page")
+    @Step("Checks product price on site matches price on alldata page including VAT. CartAllData_page")
     public CartAllData_page_Logic checkProductPriceOnSitesMatchesPriceOnAllDataPageIncludingVat(Float priceWithVatPerAllDataPage, Float priceProductInAlldata) {
         float res = roundOfTheCost(priceWithVatPerAllDataPage, priceProductInAlldata);
         Assert.assertEquals(res, priceProductInAlldata);
@@ -608,6 +608,18 @@ public class CartAllData_page_Logic extends CartAllData_page {
     @Step("Checking presence characteristic Zustand from info product. CartAllData_page")
     public CartAllData_page_Logic checkingLackCharacteristicZustandInProduct() {
         characteristicZustandInProduct().shouldNotBe(visible);
+        return this;
+    }
+
+    @Step("Checks presence deposit price {deposit} in summery block. CartAllData_page")
+    public CartAllData_page_Logic checkPresenceDepositInSummeryBlock(String deposit) {
+        pfandPriceInTotalPriceBlock().shouldHave(exactText(deposit));
+        return this;
+    }
+
+    @Step("Checks presence deposit in product block. CartAllData_page")
+    public CartAllData_page_Logic checkPresenceDepositInProductBlock(String productID) {
+        pfandPriceInProductBlock(productID).shouldBe(visible);
         return this;
     }
 }
