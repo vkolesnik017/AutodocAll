@@ -330,6 +330,14 @@ public class LKW_main_page {
     SelenideElement exampleInfoPopUp() {return $x("//div[@class='ex_popup ex_popup_shown']");}
 
     SelenideElement btnCloseInfoExamplePopUp() {return $x("//a[@class='close']");}
+
+    ElementsCollection autoPartsInInfoExamplePopUp() {return $$x("//td[contains(text(),'Kfz-Ersatzteile')]/../td[2]");}
+
+    SelenideElement headLineInfoExamplePopUp()   {return $x("//div[@class='ex_popup ex_popup_shown']/p");}
+
+    ElementsCollection artNumInfoExamplePopUp() {return $$x("//td[contains(text(),'Artikelnummer')]/../td[2]");}
+
+    ElementsCollection oenInfoExamplePopUp() {return $$x("//td[contains(text(),'OEN')]/../td[2]");}
 }
 
 

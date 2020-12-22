@@ -708,7 +708,18 @@ public class LKW_main_page_Logic extends LKW_main_page {
 
     @Step("check Values In Example Information pop-up. LKW_main_page")
     public LKW_main_page_Logic checkValuesInExampleInfoPopUp() {
-        exampleInfoPopUp().shouldBe(visible).shouldNotBe(empty);
+        headLineInfoExamplePopUp().shouldBe(visible).shouldHave(text("2 500 000 Autoteile — Finde das richtige Ersatzteil für dein Auto"));
+        checkFullnessOfElements(autoPartsInInfoExamplePopUp());
+        checkFullnessOfElements(artNumInfoExamplePopUp());
+        checkFullnessOfElements(oenInfoExamplePopUp());
+        return this;
+    }
+
+    @Step("check fullness of elements. LKW_main_page")
+    public LKW_main_page_Logic checkFullnessOfElements(ElementsCollection list) {
+        for (SelenideElement e : list) {
+            e.shouldNotBe(empty);
+        }
         return this;
     }
 
