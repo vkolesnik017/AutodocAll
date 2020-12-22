@@ -4,7 +4,9 @@ import Common.DataBase;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.Assert;
+
 import java.sql.SQLException;
+
 import static PKW.CommonMethods.*;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -229,9 +231,25 @@ public class Main_page_Logic extends Main_page {
     public Main_page_Logic checkFooterPromotionTextElements() {
         textInTheFooterBottom().shouldBe(visible);
         Assert.assertFalse(textInTheFooterBottom().text().isEmpty());
-        promotionTextInTheFooter().shouldBe(visible);
-        Assert.assertFalse(promotionTextInTheFooter().text().isEmpty());
-        return page(Main_page_Logic.class);
+        for (int i = 0; i < promotionTextInTheFooter().size(); i++) {
+            promotionTextInTheFooter().get(i).shouldBe(visible);
+            Assert.assertFalse(promotionTextInTheFooter().get(i).text().isEmpty());
+            promotionTextMehrButton().get(i).shouldBe(visible);
+        }
+        return this;
+    }
+
+    @Step("Check mehr button functionality in the promotion text. Main_page")
+    public Main_page_Logic checkMehrButtonFunctionalityInPromotionText() {
+        promotionTextMehrButtonSingle().scrollIntoView("{block: \"center\"}");
+        for (int i = 0; i < promotionTextMehrButton().size(); i++) {
+            promotionTextMehrButton().get(i).shouldBe(visible).hover();
+            popUpAfterHoverOnMehrButton().get(i).shouldBe(visible);
+            Assert.assertFalse(popUpAfterHoverOnMehrButton().get(i).text().isEmpty());
+            promotionTextInTheFooter().get(i).hover();
+            popUpAfterHoverOnMehrButton().get(i).shouldNotBe(visible);
+        }
+        return this;
     }
 
     @Step("Check rating elements in the header. Main_page")
