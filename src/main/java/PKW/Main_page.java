@@ -1,12 +1,12 @@
 package PKW;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byXpath;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Main_page {
 
@@ -226,8 +226,20 @@ public class Main_page {
         return $x("//*[@class='footer-bottom__copy']");
     }
 
-    SelenideElement promotionTextInTheFooter() {
+    ElementsCollection promotionTextInTheFooter() {
+        return $$x("//*[@class='promotion-text__text']");
+    }
+
+    ElementsCollection promotionTextMehrButton() {
+        return $$x("//*[@class='promotion-text__text-more js-promotion-text-more']");
+    }
+
+    SelenideElement promotionTextMehrButtonSingle() {
         return $x("//*[@class='promotion-text__text']");
+    }
+
+    ElementsCollection popUpAfterHoverOnMehrButton() {
+        return $$x("//*[@class='promotion-text__text-more-dropdown']");
     }
 
     SelenideElement ratingLineHeader() {

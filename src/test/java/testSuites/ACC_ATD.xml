@@ -133,7 +133,7 @@
             <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2030_WorkBreadCrumbsOnChemistryListing"/>
             <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2036_BlockChangeViewChemistryListing"/>
             <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2039_BlockDisplayCountProductsOnChemistryListing"/>
-            <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2040_PaginationBlockOnChemistryListing"/>
+<!--            <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2040_PaginationBlockOnChemistryListing"/inactive>-->
             <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2041_WorkBtnPaginationBlockOnChemistryListing"/>
             <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2043_BlockSeoTextOnChemistryListing"/>
             <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2047_TransitionToCategoriesSidebarOnChemistryListing"/>
@@ -145,21 +145,13 @@
         <classes>
             <class name="ATD.ACC.QC_2044_BlockCategoriesInSidebarOnChemistryListing.QC_2045_TitleCategoriesBlockInSidebarOnChemistryListing"/>
             <class name="ATD.ACC.QC_2044_BlockCategoriesInSidebarOnChemistryListing.QC_2046_CategoriesSelectedLogicalUnionInSidebarOnChemistryListing"/>
-            <class name="ATD.ACC.QC_2044_BlockCategoriesInSidebarOnChemistryListing.QC_2048_SelectCategoryFromSidebarOnChemistryListing"/>
-        </classes>
-    </test>
-
-    <test name="QC_2050_BlockFilterByBrandsOnChemistryListing">
-        <classes>
-            <class name="ATD.ACC.QC_2050_BlockFilterByBrandsOnChemistryListing.QC_1851_BlockBrandsOnListingPageChemistry"/>
-            <class name="ATD.ACC.QC_2050_BlockFilterByBrandsOnChemistryListing.QC_2052_ResetSelectedFilterByBrandsOnChemistryListing"/>
+<!--            <class name="ATD.ACC.QC_2044_BlockCategoriesInSidebarOnChemistryListing.QC_2048_SelectCategoryFromSidebarOnChemistryListing"/ inactive>-->
         </classes>
     </test>
 
     <test name="QC_2051_FilterBlockByGenericOnChemistryListing">
         <classes>
             <class name="ATD.ACC.QC_2051_FilterBlockByGenericOnChemistryListing.QC_2058_BlockGenericsOnChemistryListingPage"/>
-            <class name="ATD.ACC.QC_2051_FilterBlockByGenericOnChemistryListing.QC_2059_WorkFilterBlockByGenericOnChemistryListing"/>
             <class name="ATD.ACC.QC_2051_FilterBlockByGenericOnChemistryListing.QC_2060_ResetSelectedFilterByGeneric"/>
         </classes>
     </test>
@@ -168,7 +160,7 @@
         <classes>
             <class name="ATD.ACC.QC_2115_BlockWithProductsOnChemistryListing.QC_2117_MainProductsOnChemistryListing"/>
             <class name="ATD.ACC.QC_2115_BlockWithProductsOnChemistryListing.QC_2118_TransitionOnProductPageWithChemistryListing"/>
-            <class name="ATD.ACC.QC_2115_BlockWithProductsOnChemistryListing.QC_2120_AddProductsInBasketOnChemistryListing"/>
+<!--            <class name="ATD.ACC.QC_2115_BlockWithProductsOnChemistryListing.QC_2120_AddProductsInBasketOnChemistryListing"/ inactive>-->
         </classes>
     </test>
 
@@ -180,15 +172,6 @@
             <class name="ATD.ACC.QC_2143_ToolsListing.QC_2148_ProductCountBlockOnToolsListing"/>
             <class name="ATD.ACC.QC_2143_ToolsListing.QC_2150_WorkButtonsPaginationBlockOnToolsListing"/>
             <class name="ATD.ACC.QC_2143_ToolsListing.QC_2151_SeoBlockTextOnToolsListing"/>
-        </classes>
-    </test>
-
-    <test name="QC_2129_ResetFiltersBlockOnPageChemistryListing">
-        <classes>
-            <class name="ATD.ACC.QC_2129_ResetFiltersBlockOnPageChemistryListing.QC_2130_WorkResetFilterSelectedCriteriaOnChemistryListing"/>
-            <class name="ATD.ACC.QC_2129_ResetFiltersBlockOnPageChemistryListing.QC_2133_WorkResetFilterSelectedBrandOnChemistryListing"/>
-            <class name="ATD.ACC.QC_2129_ResetFiltersBlockOnPageChemistryListing.QC_2136_WorkResetFilterSelectedGenericOnChemistryListing"/>
-<!--            <class name="ATD.ACC.QC_2129_ResetFiltersBlockOnPageChemistryListing.QC_2138_WorkResetFiltersWhenChoosingSeveralCriteriaOnChemistryListing"/>-->
         </classes>
     </test>
 

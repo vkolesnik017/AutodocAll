@@ -61,7 +61,7 @@ public class ProfilerPage_aws {
     public ProfilerPage_aws checkTotalPrice(float totalPrice) {
         totalPrice().shouldBe(visible);
         String price = Float.toString(totalPrice);
-        totalPrice().shouldHave(text(price));
+        totalPrice().shouldHave(exactText(price));
         return this;
     }
 
