@@ -57,7 +57,9 @@ public class Main_page {
         return $(By.xpath("//a[@class='enter submit']"));
     }
 
-    public SelenideElement searchBar() { return $(byId("search"));  }
+    public SelenideElement searchBar() {
+        return $(byId("search"));
+    }
 
     public SelenideElement headerSearchSubmitBtn() {
         return $x("//a[contains(@class,'header-search')]");
@@ -353,6 +355,7 @@ public class Main_page {
     SelenideElement secondPromotionalFootnotes() {
         return $x("(//div[@class='footer-footnotes__text']/div/span)[2]");
     }
+
     SelenideElement secondDropdownPromotionalFootnotes() {
         return $x("(//div[@class='footer-footnotes__text-more-dropdown'])[2]");
     }
@@ -583,27 +586,47 @@ public class Main_page {
         return $(".kba_popup_example");
     }
 
-    SelenideElement btnClosePopup() {return $x("//div[@class='kba_popup_example']/a[@class='close']");}
+    SelenideElement btnClosePopup() {
+        return $x("//div[@class='kba_popup_example']/a[@class='close']");
+    }
 
-    SelenideElement titleKbaSelector() {return $x("//div[@class='block-select-kba__title']/span");}
+    SelenideElement titleKbaSelector() {
+        return $x("//div[@class='block-select-kba__title']/span");
+    }
 
-    SelenideElement textUnderFirstFieldKBA() {return $x("//div[@class='block-select-kba__input'][1]//span");}
+    SelenideElement textUnderFirstFieldKBA() {
+        return $x("//div[@class='block-select-kba__input'][1]//span");
+    }
 
-    SelenideElement textUnderSecondFieldKBA() {return $x("//div[@class='block-select-kba__input'][2]//span");}
+    SelenideElement textUnderSecondFieldKBA() {
+        return $x("//div[@class='block-select-kba__input'][2]//span");
+    }
 
-    SelenideElement hiddenSelectorBlock() {return $x("//div[@class='catalog-title__change-car']");}
+    SelenideElement hiddenSelectorBlock() {
+        return $x("//div[@class='catalog-title__change-car']");
+    }
 
 
     //Car selector popup
-    SelenideElement firstFieldKBAInPopup() {return $x("//div[7]/form[1]//div[1]/input");}
+    SelenideElement firstFieldKBAInPopup() {
+        return $x("//div[7]/form[1]//div[1]/input");
+    }
 
-    SelenideElement secondFieldKBAInPopup() {return $x("//div[7]/form[1]//div[2]/input");}
+    SelenideElement secondFieldKBAInPopup() {
+        return $x("//div[7]/form[1]//div[2]/input");
+    }
 
-    SelenideElement selectorKbaBtnInPopup() {return $x("//div[7]//div[3]//div[3]//span");}
+    SelenideElement selectorKbaBtnInPopup() {
+        return $x("//div[7]//div[3]//div[3]//span");
+    }
 
-    SelenideElement selectorPopup() {return $x("//body/div[7]");}
+    SelenideElement selectorPopup() {
+        return $x("//body/div[7]");
+    }
 
-    SelenideElement bluePromptEmptyFieldSelector() {return $x("//div[@class='tooltiptext blue' and @style='display: block;']");}
+    SelenideElement bluePromptEmptyFieldSelector() {
+        return $x("//div[@class='tooltiptext blue' and @style='display: block;']");
+    }
 
     public SelenideElement headingInCarSelectorPopup() {
         return $(".popup-kba-error>p");
@@ -775,33 +798,61 @@ public class Main_page {
         return $x("//*[@class='footer__social']");
     }
 
-    ElementsCollection allLinksInFooter() { return $$x("//*[@class='footer__links']//a").filter(visible); }
+    ElementsCollection allLinksInFooter() {
+        return $$x("//*[@class='footer__links']//a").filter(visible);
+    }
 
-    SelenideElement titleOfBrandsBlock() {return $x("//div[@class='title']/h3");}
+    SelenideElement titleOfBrandsBlock() {
+        return $x("//div[@class='title']/h3");
+    }
 
-    ElementsCollection visibleTopImageBrands() {return $$x("//div[@class='top_brands']//li//img");}
+    ElementsCollection visibleTopImageBrands() {
+        return $$x("//div[@class='top_brands']//li//img");
+    }
 
-    SelenideElement topBrandsBlock() {return $x("//div[@class='top_brands']");}
+    SelenideElement topBrandsBlock() {
+        return $x("//div[@class='top_brands']");
+    }
 
-    ElementsCollection visibleTopBrands() {return $$x("//div[@class='top_brands']//li/a");}
+    ElementsCollection visibleTopBrands() {
+        return $$x("//div[@class='top_brands']//li/a");
+    }
 
-    SelenideElement infoTextOfCheckBockAtRegForm() {return $x("//label[@for='isSubscribe_header_modal']");}
+    SelenideElement infoTextOfCheckBockAtRegForm() {
+        return $x("//label[@for='isSubscribe_header_modal']");
+    }
 
-    SelenideElement infoTextUnderCheckBockAtRegForm() {return $x("//div[@class='subscribe-text']");}
+    SelenideElement infoTextUnderCheckBockAtRegForm() {
+        return $x("//div[@class='subscribe-text']");
+    }
 
-    ElementsCollection productsList() {return $$x("//ul[@class='list_products']/li");}
+    ElementsCollection productsList() {
+        return $$x("//ul[@class='list_products']/li");
+    }
 
-    SelenideElement youTubeImageTransition() {return $x("//*[@class='footer__social-block']//*[@data-ga-action='youtube'][1]");}
+    SelenideElement youTubeImageTransition() {
+        return $x("//*[@class='footer__social-block']//*[@data-ga-action='youtube'][1]");
+    }
 
-    SelenideElement youTubeLinkTransition() {return $x("//*[@class='footer__social-block']//span[@data-ga-action='youtube'][2]");}
+    SelenideElement youTubeLinkTransition() {
+        return $x("//*[@class='footer__social-block']//span[@data-ga-action='youtube'][2]");
+    }
 
-    SelenideElement instagramLinkTransition() {return $x("//*[@data-ga-action='instagram'][2]");}
+    SelenideElement instagramLinkTransition() {
+        return $x("//*[@data-ga-action='instagram'][2]");
+    }
 
-    SelenideElement instagramImageTransition() {return $x("//*[@data-ga-action='instagram'][1]");}
+    SelenideElement instagramImageTransition() {
+        return $x("//*[@data-ga-action='instagram'][1]");
+    }
 
-    SelenideElement autodocClubTransition() {return $x("//*[@class='footer__social-block']//*[@data-ga-action='club'][2]");}
+    SelenideElement autodocClubTransition() {
+        return $x("//*[@class='footer__social-block']//*[@data-ga-action='club'][2]");
+    }
 
-    SelenideElement autodocClubImageTransition() {return $x("//*[@class='footer__social-block']//*[@data-ga-action='club'][1]");}
+    SelenideElement autodocClubImageTransition() {
+        return $x("//*[@class='footer__social-block']//*[@data-ga-action='club'][1]");
+    }
 
     SelenideElement checkBoxRememberMeFromLoginPopup() {
         return $x("//div[@class='check remember']/input[@id='remember_me']");
@@ -812,8 +863,10 @@ public class Main_page {
     }
 
     public ElementsCollection overCategoriesFromCatalog() {
-    return $$x("//div[@id='parts']//ul//div[@class='image']//span[@class='img']/..");
+        return $$x("//div[@id='parts']//ul//div[@class='image']//span[@class='img']/..");
     }
 
-
+    ElementsCollection genericsFromTips() {
+        return $$x("//div[@class='autocomplete-suggestion']");
+    }
 }
