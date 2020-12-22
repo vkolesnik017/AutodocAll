@@ -1664,10 +1664,14 @@ public class Main_page_Logic extends Main_page {
 
 
     @Step("check logic of search suggestions. Main_page")
-    public Main_page_Logic checkLogicOfSearchSuggestions(List<String> searchText) {
+    public Main_page_Logic checkLogicOfSearchSuggestions(List<String> searchText, String route) {
+
         List<String> genericsOfHints = new ArrayList<>();
         List<String> synonymsOfHints = new ArrayList<>();
         for (int i = 0; i < searchText.size(); i++) {
+            if (!url().equals(route)) {
+                openPage(route);
+            }
             inputTextInSearchBar(searchText.get(i));
             genericsFromTips().get(0).shouldBe(visible);
             for (int j = 0; j < genericsFromTips().size(); j++) {
@@ -1677,7 +1681,12 @@ public class Main_page_Logic extends Main_page {
                     synonymsOfHints.add(genericsFromTips().get(j).getText());
                 }
             }
-            new CategoriesSynonyms_aws().openSynonymsPageInAws().checkGenerics(genericsOfHints, synonymsOfHints);
+            new CategoriesSynonyms_aws().openSynonymsPageInAws()
+                    .checkGenerics(genericsOfHints, synonymsOfHints)
+                    .clearCategoriesField()
+                    .checkSynonyms(synonymsOfHints);
+            genericsOfHints.clear();
+            synonymsOfHints.clear();
         }
         return this;
     }
