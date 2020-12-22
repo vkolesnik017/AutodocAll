@@ -17,8 +17,7 @@ import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.open;
 
 public class QC_3142_CheckLogicOfSearchSuggestions {
-    //private List<String> searchText = Arrays.asList("brems","radla", "Antrieb","zünd");
-    private List<String> searchText = Arrays.asList("brems");
+    private List<String> searchText = Arrays.asList("brems", "radla", "zünd");
     Main_page_Logic mainPage = new Main_page_Logic();
 
     @BeforeClass
@@ -37,6 +36,6 @@ public class QC_3142_CheckLogicOfSearchSuggestions {
     @Description(value = "test Checking the logic of search suggestions when searching by synonym or generic")
     public void testCheckInformationPopUpWithSearchTips(String route) {
         open(route);
-        mainPage.checkLogicOfSearchSuggestions(searchText);
+        mainPage.checkLogicOfSearchSuggestions(searchText, route);
     }
 }
