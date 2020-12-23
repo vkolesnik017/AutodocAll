@@ -134,11 +134,11 @@ public class Tyres_feature_page {
     }
 
     public SelenideElement slickSlideInTopItemBlockForSunSeason() {
-        return $x("//div[@id='tab-2']//button[@aria-label='2 of 3']/..");
+        return $x("//div[@id='tab-2']//button[@aria-label='2 of 2']/..");
     }
 
     public SelenideElement slickSlideInTopItemBlockForWinterSeason() {
-        return $x("//div[@id='tab-3']//button[@aria-label='2 of 3']/..");
+        return $x("//div[@id='tab-3']//button[@aria-label='2 of 2']/..");
     }
 }
 

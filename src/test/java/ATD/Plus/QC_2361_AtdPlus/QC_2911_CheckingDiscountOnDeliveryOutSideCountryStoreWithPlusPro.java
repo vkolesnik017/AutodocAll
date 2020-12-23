@@ -12,6 +12,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.CommonMethods.openPage;
 import static Common.CommonMethods.roundOfTheCost;
 import static Common.SetUp.setUpBrowser;
@@ -24,6 +26,7 @@ public class QC_2911_CheckingDiscountOnDeliveryOutSideCountryStoreWithPlusPro {
     private DataBase db = new DataBase("ATD");
     private String mail = "qc_2911_plusProautotest@mailinator.com";
     private CartAllData_page_Logic cartAllDataPageLogic = new CartAllData_page_Logic();
+    private Main_page_Logic mainPageLogic = new Main_page_Logic();
 
 
     @BeforeClass
@@ -42,7 +45,8 @@ public class QC_2911_CheckingDiscountOnDeliveryOutSideCountryStoreWithPlusPro {
     @Description(value = "Test Checking the discount on delivery Out Side Country Store for the user with the ATD + PRO package")
     public void testCheckingDiscountOnDeliveryOutSideCountryStoreWithPlusPro(String route) throws Exception {
         openPage(route);
-        new Main_page_Logic().loginFromHeader(mail);
+        mainPageLogic.loginFromHeader(mail);
+        checkingContainsUrl("profile/orders");
         deliveryPrice = new Versand_static_page_Logic().getDeliveryPriceForUserWithSubscriptionPlusPro("Polen", mail);
         openPage(db.getFullRouteByRouteAndSubroute("prod", "DE", "main", "product"));
         new Product_page_Logic().addProductToCart()
