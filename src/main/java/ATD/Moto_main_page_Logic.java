@@ -603,9 +603,9 @@ public class Moto_main_page_Logic extends Moto_main_page {
 
     @Step("presence of navigation arrows .Moto_main_page")
     public Moto_main_page_Logic presenceOfNavigationArrows() {
-        String currentTitleOfTopProduct = visibleTitleOfTopProducts().get(0).getText();
+        String currentArtNumOfTopProduct = visibleArtNumOfTopProducts().get(0).getText();
         activeLinkForwardOfTopProductBlock().shouldBe(visible).click();
-        visibleTitleOfTopProducts().get(0).shouldNotHave(exactText(currentTitleOfTopProduct));
+        visibleArtNumOfTopProducts().get(0).shouldNotHave(exactText(currentArtNumOfTopProduct));
         linkBackOfTopProductBlock().shouldBe(visible);
         return this;
     }
