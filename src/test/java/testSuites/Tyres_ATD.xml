@@ -83,7 +83,8 @@
             <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_2564_CheckingProductsInTopTyresBlockLkwMotoOff"/>
             <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_2116_GoToTyresProductPageAndCheckGoodsInStock"/>
             <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_2624_LinkingBlockToNewSeoPages"/>
-            <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_2794_PresenceOfSeoText"/>
+            <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_2794_PresenceOfDescriptionTextInSeoBlock"/>
+            <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_3155_CheckDisplayPaymentsMethodBlock"/>
         </classes>
     </test>
 
@@ -188,7 +189,6 @@
 
     <!--    <test name="QC_2066_CheckProductsOutOfStock">
             <classes>
-                  <class name="ATD.Tyres.QC_2066_CheckProductsOutOfStock.QC_2070_SortingOfProductWithGreyButton"/>
                 <class name="ATD.Tyres.QC_2066_CheckProductsOutOfStock.QC_2077_CheckingForPopUpOfSuccessInSendingMailForFeedback"/>
                 <class name="ATD.Tyres.QC_2066_CheckProductsOutOfStock.QC_2079_CheckingForPopUpErrorAboutInvalidEmail"/>
                 <class name="ATD.Tyres.QC_2066_CheckProductsOutOfStock.QC_2080_CheckingForPopUpAboutInvalidEmailAndWithCheckbox"/>

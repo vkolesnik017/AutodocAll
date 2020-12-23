@@ -324,6 +324,20 @@ public class LKW_main_page {
     SelenideElement headerGarageIcon(){ return $x("//div[@class='header-garage js-header-garage']"); }
 
     SelenideElement  countOfVehicleInIconOfGarageInHeader() {return $x("//span[@class='header-garage__count header-garage__count--added']");}
+
+    SelenideElement exampleIcon() {return $x("//a[@class='header-i header-i--info inf']");}
+
+    SelenideElement exampleInfoPopUp() {return $x("//div[@class='ex_popup ex_popup_shown']");}
+
+    SelenideElement btnCloseInfoExamplePopUp() {return $x("//a[@class='close']");}
+
+    ElementsCollection autoPartsInInfoExamplePopUp() {return $$x("//td[contains(text(),'Kfz-Ersatzteile')]/../td[2]");}
+
+    SelenideElement headLineInfoExamplePopUp()   {return $x("//div[@class='ex_popup ex_popup_shown']/p");}
+
+    ElementsCollection artNumInfoExamplePopUp() {return $$x("//td[contains(text(),'Artikelnummer')]/../td[2]");}
+
+    ElementsCollection oenInfoExamplePopUp() {return $$x("//td[contains(text(),'OEN')]/../td[2]");}
 }
 
 

@@ -1,6 +1,6 @@
-package ATD.Tyres.QC_1272_TyresMainPage;
+package ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories;
 
-import ATD.Tyres_feature_page_Logic;
+import ATD.LKW_Categories_maker_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,7 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2794_PresenceOfSeoText {
+public class QC_134_TopParentAndChildCategoriesBlocks {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -24,18 +24,21 @@ public class QC_2794_PresenceOfSeoText {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_feature,tyres_feature2,tyres_feature3,tyres_feature4,tyres_feature5,tyres_feature6,tyres_feature7");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_categories_maker");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test сheck presence of SEO text")
-    public void testCheckPresenceOfSeoText(String route) {
+    @Description(value = "Test checks elements in Top parent and child category blocks")
+    public void testChecksTopParentAndChildCategoryBlocksElements(String route) {
         openPage(route);
-        new Tyres_feature_page_Logic().checkSeoBlock();
-    }
 
+        new LKW_Categories_maker_page_Logic()
+                .checkingOfElementsInParentAndChildBlocks()
+                .selectChildCategoryInTopCategoryBlock()
+                .checkSuccessfullyCategoryMakerPageLoading("https://lkwteile.autodoc.de/ersatzteile/keilrippenriemen-satz-204335/mercedes-benz");
+    }
     @AfterMethod
     public void close() {
         closeWebDriver();

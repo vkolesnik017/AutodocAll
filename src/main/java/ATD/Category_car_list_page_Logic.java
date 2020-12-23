@@ -287,9 +287,8 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
     }
 
 
-
     @Step(": from. Category_car_list_page")
-    public Category_car_list_page_Logic compareTwoListsBetweenFrontAndAwsFrom(List<String> listFront, List<String> listAws, List<Integer> listRating){
+    public Category_car_list_page_Logic compareTwoListsBetweenFrontAndAwsFrom(List<String> listFront, List<String> listAws, List<Integer> listRating) {
         compareTwoListsBetweenFrontAndAws(listFront, listAws, listRating);
         return this;
     }
@@ -422,5 +421,35 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
             subTitleOfProductInTecDocListing().get(positionOfProduct).shouldHave(text(list.get(i)));
         }
         return this;
+    }
+
+    @Step("check displaying of information text about recommended replacement interval . Category_car_list_page")
+    public Category_car_list_page_Logic displayRecommendedReplacementIntervalInfoText(String expectedText) {
+        recommendationText().shouldBe(visible).shouldHave(text(expectedText));
+        return this;
+    }
+
+    @Step("get Id of product. Category_car_list_page")
+    public List<String> getIdOfProduct() {
+        List<String> id = btnAddProductToWishlist().stream().map(n -> getAttributeFromUnVisibleElement(n, "data-product-id")).collect(Collectors.toList());
+        return id;
+    }
+
+    @Step("get price title of product. Category_car_list_page")
+    public List<String> getPriceTitle(){
+        List<String> priceTitle = priceTitle().stream().map(n -> CommonMethods.getTextFromUnVisibleElement(n)).collect(Collectors.toList());
+        return priceTitle;
+    }
+
+    @Step("get Id of product table view. Category_car_list_page")
+    public List<String> getIdOfProductTableView() {
+        List<String> id = btnAddProductToWishlistTableView().stream().map(n -> getAttributeFromUnVisibleElement(n, "data-product-id")).collect(Collectors.toList());
+        return id;
+    }
+
+    @Step("get price title of product table view. Category_car_list_page")
+    public List<String> getPriceTitleTableView(){
+        List<String> priceTitle = priceTitleTableView().stream().map(n -> CommonMethods.getTextFromUnVisibleElement(n)).collect(Collectors.toList());
+        return priceTitle;
     }
 }

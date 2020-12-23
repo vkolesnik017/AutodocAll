@@ -1,6 +1,6 @@
-package ATD.Listings.QC_423_ListingOEN;
+package ATD.Catalog_Mark.QC_2568_MarkPages;
 
-import ATD.Category_oen_Page_Logic;
+import ATD.Tyres_maker_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,8 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2062_RidexPrioritizationInOENListing {
-    private Category_oen_Page_Logic oenPage = new Category_oen_Page_Logic();
+public class QC_3153_CheckRelinkingBlockByCarBrands {
 
     @BeforeClass
     void setUp() {
@@ -26,17 +25,19 @@ public class QC_2062_RidexPrioritizationInOENListing {
 
     @DataProvider(name = "route")
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_oen14");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_maker");
     }
 
     @Test(dataProvider = "route")
     @Flaky
-    @Owner(value = "kolesnik")
-    @Description(value = "Checks Ridex prioritization in OEN listing")
-    public void testCheckRidexPrioritizationInOENListing(String route) {
+    @Owner(value = "Kolesnik")
+    @Description(value = "test check relinking block by car brands")
+    public void testCheckRelinkingBlockByCarBrands(String route) {
         openPage(route);
-        int activeRidexProducts = oenPage.getSIzeOfActiveProductsWithBrand("RIDEX");
-        oenPage.checkOenListing(activeRidexProducts, "RIDEX");
+        new Tyres_maker_page_Logic().displayCarBrandsBlock()
+        .checkCountOfCarInCarBrandsBlock()
+        .clickOnCarBrand();
+
     }
 
     @AfterMethod

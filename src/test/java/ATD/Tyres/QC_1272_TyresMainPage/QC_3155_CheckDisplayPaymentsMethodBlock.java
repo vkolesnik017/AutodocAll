@@ -1,6 +1,6 @@
-package ATD.ACC.QC_2051_FilterBlockByGenericOnChemistryListing;
+package ATD.Tyres.QC_1272_TyresMainPage;
 
-import ATD.Listing_chemicals_Page_Logic;
+import ATD.Tyres_maker_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,31 +16,30 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2059_WorkFilterBlockByGenericOnChemistryListing {
+public class QC_3155_CheckDisplayPaymentsMethodBlock {
 
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "route", parallel = true)
+    @DataProvider(name = "routes", parallel = false)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "listing_chemicals");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_maker");
     }
 
-    @Test(dataProvider = "route")
+    @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "Sergey-QA")
-    @Description(value = "Test checks sorting products by generic")
-    public void testCheckingSortingProductsByGeneric(String route) {
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test checking the presence of a block of payment methods")
+    public void testCheckCheckDisplayPaymentsMethodBlock(String route) {
         openPage(route);
-        new Listing_chemicals_Page_Logic().checkingSortingProductsByGeneric();
+
+        new Tyres_maker_page_Logic().checkPaymentMethodsBlock();
     }
 
     @AfterMethod
-    private void close() {
+    public void close() {
         closeWebDriver();
     }
-
-
 }

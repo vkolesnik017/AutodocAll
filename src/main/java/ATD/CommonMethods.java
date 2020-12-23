@@ -208,8 +208,8 @@ public class CommonMethods {
     @Step("Close any popup by click overlay")
     public static void closeAnyPopupByClickOverlay() {
         By overlay = (byXpath("//div[@class='overlay black']"));
-        $(overlay).click(1, 1);
-        $(overlay).shouldBe(not(visible));
+        executeJavaScript("arguments[0].click();", $(overlay));
+        $(overlay).shouldNotBe(visible);
     }
 
     @Step

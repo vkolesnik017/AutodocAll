@@ -526,7 +526,7 @@ public class LKW_main_page_Logic extends LKW_main_page {
         List<String> language = Arrays.asList("CH", "AT", "LD", "BG", "BE", "CZ", "DK", "EE", "ES", "FI", "FR", "EN", "GR", "HU", "IT", "LT", "LV", "NL", "NO", "PL", "PT", "RO", "SE", "SI", "SK");
         int sizeOfLanguage = languagesOfSubscribe().size();
         for (int i = 0; i < sizeOfLanguage; i++) {
-             if (language.get(i).equals("LD")) {
+            if (language.get(i).equals("LD")) {
                 currentCountry = "lu";
             } else if (language.get(i).equals("EN")) {
                 currentCountry = "uk";
@@ -543,7 +543,7 @@ public class LKW_main_page_Logic extends LKW_main_page {
             Assert.assertEquals(url(), urlFromBD);
             back();
             waitWhileRouteContainsExpectedCondition(db.getRouteByRouteName("DE", "lkw_main"));
-                   }
+        }
         return this;
     }
 
@@ -699,5 +699,39 @@ public class LKW_main_page_Logic extends LKW_main_page {
         return this;
     }
 
+    @Step("click on example icon in search bar. LKW_main_page")
+    public LKW_main_page_Logic clickOnExampleIconInSearchBar() {
+        exampleIcon().shouldBe(visible).click();
+        exampleInfoPopUp().shouldBe(visible);
+        return this;
+    }
 
+    @Step("check Values In Example Information pop-up. LKW_main_page")
+    public LKW_main_page_Logic checkValuesInExampleInfoPopUp() {
+        headLineInfoExamplePopUp().shouldBe(visible).shouldHave(text("2 500 000 Autoteile — Finde das richtige Ersatzteil für dein Auto"));
+        checkFullnessOfElements(autoPartsInInfoExamplePopUp());
+        checkFullnessOfElements(artNumInfoExamplePopUp());
+        checkFullnessOfElements(oenInfoExamplePopUp());
+        return this;
+    }
+
+    @Step("check fullness of elements. LKW_main_page")
+    public LKW_main_page_Logic checkFullnessOfElements(ElementsCollection list) {
+        for (SelenideElement e : list) {
+            e.shouldNotBe(empty);
+        }
+        return this;
+    }
+
+    @Step("close Example information pop-up. LKW_main_page")
+    public LKW_main_page_Logic closeExampleInfoPopUp() {
+        btnCloseInfoExamplePopUp().shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("click on invisible main logo. LKW_main_page")
+    public LKW_main_page_Logic clickOnInvisibleMainLogo() {
+        executeJavaScript("arguments[0].click();", logoInHeader());
+        return this;
+    }
 }

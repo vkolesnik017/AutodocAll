@@ -206,7 +206,7 @@ public class Tyre_item_page_Logic extends Tyre_item_page {
         Float numberOftyresInFloat = Float.parseFloat(numberOfProductsOnProductPage().attr("value").trim());
         Float resutlPrice = (priceOfOneTyre * numberOftyresInFloat);
         Assert.assertEquals(resutlPrice, priceOfTyresInBasket);
-        numberOfProductsInBasketPopup().shouldHave(text(numberOfProductsOnProductPage().text()));
+        numberOfProductsInBasketPopup().shouldHave(text(numberOfProductsOnProductPage().getValue()));
         basketBlock().click();
         return page(Cart_page_Logic.class);
     }
@@ -333,6 +333,12 @@ public class Tyre_item_page_Logic extends Tyre_item_page {
         daysReturnPeriodProduct().hover();
         daysReturnPeriodProduct().shouldHave(cssValue("color", "rgba(51, 100, 219, 1)"));
         iconDaysReturnPeriodProduct().shouldHave(cssValue("color", "rgba(51, 100, 219, 1)"));
+        return this;
+    }
+
+    @Step("displaying active add product to basket button. Tyre_item_page")
+    public Tyre_item_page_Logic displayActiveBtnAddToBasket() {
+        addButtonToBasket().shouldBe(visible);
         return this;
     }
 

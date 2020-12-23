@@ -19,12 +19,14 @@ import static Common.CommonMethods.roundOfTheCost;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2910_CheckingDiscountOnDeliveryForUserWithAtdProPackage {
+public class QC_2911_CheckingDiscountOnDeliveryOutSideCountryStoreWithPlusPro {
+
 
     private Float  deliveryPrice, allDataDeliveryPrice;
     private DataBase db = new DataBase("ATD");
-    private String mail = "qc_2910_plusProautotest@mailinator.com";
+    private String mail = "qc_2911_plusProautotest@mailinator.com";
     private CartAllData_page_Logic cartAllDataPageLogic = new CartAllData_page_Logic();
+    private Main_page_Logic mainPageLogic = new Main_page_Logic();
 
 
     @BeforeClass
@@ -40,12 +42,12 @@ public class QC_2910_CheckingDiscountOnDeliveryForUserWithAtdProPackage {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey_QA")
-    @Description(value = "Test Checking the discount on delivery to the country of the shop for the user with the ATD + PRO package")
-    public void testCheckingDiscountOnDeliveryForUserWithAtdProPackage(String route) throws Exception {
+    @Description(value = "Test Checking the discount on delivery Out Side Country Store for the user with the ATD + PRO package")
+    public void testCheckingDiscountOnDeliveryOutSideCountryStoreWithPlusPro(String route) throws Exception {
         openPage(route);
-        new Main_page_Logic().loginFromHeader(mail);
+        mainPageLogic.loginFromHeader(mail);
         checkingContainsUrl("profile/orders");
-        deliveryPrice = new Versand_static_page_Logic().getDeliveryPriceForCurrentCountryForUserWithSubscriptionPlusPro("DE", mail);
+        deliveryPrice = new Versand_static_page_Logic().getDeliveryPriceForUserWithSubscriptionPlusPro("Polen", mail);
         openPage(db.getFullRouteByRouteAndSubroute("prod", "DE", "main", "product"));
         new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
