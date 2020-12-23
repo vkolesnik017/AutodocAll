@@ -82,7 +82,6 @@
 
     <test name="FiltersSorting_outputSorting">
         <classes>
-            <class name="ATD.FiltersSorting.QC_195_FiltersSorting_outputSorting.QC_196_FiltersSorting_TestOutputSortingWithOneGeneric"/>
             <class name="ATD.FiltersSorting.QC_195_FiltersSorting_outputSorting.QC_226_FiltersSorting_TestOutputSortingWithOneGenericOEN"/>
             <class name="ATD.FiltersSorting.QC_195_FiltersSorting_outputSorting.QC_227_FiltersSorting_TestOutputSortingWithTwoGenerics"/>
             <class name="ATD.FiltersSorting.QC_195_FiltersSorting_outputSorting.QC_228_FiltersSorting_TestOutputSortingOvercategoryRoute"/>

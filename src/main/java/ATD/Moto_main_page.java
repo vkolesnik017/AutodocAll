@@ -317,4 +317,8 @@ class Moto_main_page {
     SelenideElement headerGarageIcon(){ return $x("//div[@class='header-garage js-header-garage']"); }
 
     SelenideElement  countOfVehicleInIconOfGarageInHeader() {return $x("//span[@class='header-garage__count header-garage__count--added']");}
+
+    ElementsCollection visibleArtNumOfTopProducts() {
+        return $$x("//div[@class='product-list__item__nummer']").filter(visible);
+    }
 }
