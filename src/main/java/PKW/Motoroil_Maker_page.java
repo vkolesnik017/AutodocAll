@@ -1,8 +1,10 @@
 package PKW;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.$;
@@ -50,5 +52,7 @@ public class Motoroil_Maker_page {
     SelenideElement basket() {
         return $x("//a[@class='show_cart ga-click']");
     }
+
+    ElementsCollection visibleEngineOilViscosity() {return $$x("//div[@class='listing-viscosity-filters']/div[2]/a").filter(visible);}
 
 }

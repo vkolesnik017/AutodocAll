@@ -2,6 +2,7 @@ package PKW;
 
 import Common.DataBase;
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
 import java.sql.SQLException;
@@ -173,5 +174,32 @@ public class Motoroil_Maker_page_Logic extends Motoroil_Maker_page {
         basketDropMenu().should(disappear);
         basket().click();
         return page(Cart_page_Logic.class);
+    }
+
+    @Step("click on 'Add to basket' button. Motoroil_Maker_page")
+    public Motoroil_Maker_page_Logic clickOnBtnAddToBasket(int positionOfAddedProduct) {
+        btnAddedProductToBasket().get(positionOfAddedProduct).click();
+        return this;
+    }
+
+    @Step("display of basket drop menu. Motoroil_Maker_page")
+    public Motoroil_Maker_page_Logic displayOfBasketDropMenu() {
+        basketDropMenu().should(appear);
+        basketDropMenu().should(disappear);
+        return this;
+    }
+
+    @Step("click on basket icon in header. Motoroil_Maker_page")
+    public Cart_page_Logic clickOnBasketIconInHeader() {
+        basket().click();
+        return page(Cart_page_Logic.class);
+    }
+
+    @Step("display of Engine Oil Viscosity. Motoroil_Maker_page")
+    public Motoroil_Maker_page_Logic displayEngineOilViscosity() {
+        for (SelenideElement e : visibleEngineOilViscosity()) {
+            e.shouldBe(visible);
+        }
+        return this;
     }
 }
