@@ -34,6 +34,16 @@ public class Delivery_prices_aws {
         return $x("//table[contains(@class,'sticky-header-middle')]//tr//td[text()='" + country + "']//..//td[4]");
     }
 
+    private SelenideElement deliveryPriceOnlyForIslandAndRegions(String regions) {
+        return $x("//tr//i[contains(text(),'" + regions + "')]/..//parent::tr//input[@class='form-control']");
+    }
+
+    @Step("Get delivery price for Island or region {region}. Delivery_prices_aws")
+    public float getDeliveryPriceForIslandOrRegion(String region) {
+        float deliveryPrice = Float.parseFloat(deliveryPriceOnlyForIslandAndRegions(region).getValue());
+        return deliveryPrice;
+    }
+
 
     @Step("Get delivery price with translation countries {country}. Delivery_prices_aws")
     public float getDeliveryPriceWithTranslationCountries(String country) throws SQLException {
