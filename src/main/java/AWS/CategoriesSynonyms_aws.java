@@ -51,14 +51,22 @@ public class CategoriesSynonyms_aws {
     }
 
     private SelenideElement searchTable() {
-        return $x("//h2[contains(text(),'Search')]/preceding-sibling::table[1]/following-sibling::table");
+        return $x("//h2[contains(text(),'Search')]/following-sibling::table[1]");
     }
 
     private ElementsCollection synonymsFromSearchTable(String text) {
-        return $$x("(//h2[contains(text(),'Search')]/preceding-sibling::table[1]/following-sibling::table//td[text()='" + text + "'])[1]//following-sibling::td[@class='vlock_syn']//div[@class='synon']/span");
+        return $$x("(//h2[contains(text(),'Search')]/following-sibling::table//td[text()='" + text + "'])[1]//following-sibling::td[@class='vlock_syn']//div[@class='synon']/span");
     }
 
-    @Step
+    private SelenideElement synonymsField() {
+        return $(byId("form_syn_name"));
+    }
+
+    private ElementsCollection searchGenerics(String synonym) {
+        return $$x("//h2[contains(text(),'Search')]/following-sibling::table//span[text()='" + synonym + "']/ancestor::td/../td[2]");
+    }
+
+    @Step("get Random Generic From Search Block from AWS. CategoriesSynonyms_aws")
     public String getRandomGenericFromSearchBlock() {
         $(genericsInSearchTable).shouldBe(visible);
         ElementsCollection coll = $$(genericsInSearchTable);
@@ -66,7 +74,7 @@ public class CategoriesSynonyms_aws {
         return synonym;
     }
 
-    @Step
+    @Step("get Synonym By Generic In Search Block from AWS. CategoriesSynonyms_aws")
     public String getSynonymByGenericInSearchBlock(String generic) {
         return synonymByGenericFromSearchBlock(generic).getText();
     }
@@ -120,6 +128,47 @@ public class CategoriesSynonyms_aws {
     public CategoriesSynonyms_aws setLanguage(String language) {
         languageField().shouldBe(visible).setValue(language).pressEnter();
         return this;
+    }
+
+    @Step("clear categories field. CategoriesSynonyms_aws")
+    public CategoriesSynonyms_aws clearCategoriesField() {
+        categoryField().clear();
+        return this;
+    }
+
+    @Step("clear synonyms field. CategoriesSynonyms_aws")
+    public CategoriesSynonyms_aws clearSynonymsField() {
+        synonymsField().clear();
+        return this;
+    }
+
+    @Step("check synonyms. CategoriesSynonyms_aws")
+    public CategoriesSynonyms_aws checkSynonyms(List<String> synonyms) {
+        for (int i = 0; i < synonyms.size(); i++) {
+            synonymsField().setValue(synonyms.get(i)).pressEnter();
+            searchTable().shouldBe(visible);
+            String generic = getGenericFromSearchTable(synonyms.get(i));
+            clearSynonymsField();
+            setCategoriesName(generic);
+            searchTable().shouldBe(visible);
+            List<String> checkingSynonyms = synonymsFromSearchTable(generic).stream().map(n -> n.getText()).collect(Collectors.toList());
+            for (int j = 0; j < checkingSynonyms.size(); j++) {
+                checkingSynonyms.remove(synonyms.get(i));
+            }
+            for (int j = 0; j < checkingSynonyms.size(); j++) {
+                Assert.assertFalse(synonyms.contains(checkingSynonyms.get(j)));
+            }
+            checkingSynonyms.clear();
+            clearCategoriesField();
+
+        }
+        return this;
+    }
+
+    @Step("get generic from search field. CategoriesSynonyms_aws")
+    public String getGenericFromSearchTable(String synonym) {
+        String generic = searchGenerics(synonym).get(0).shouldBe(visible).getText();
+        return generic;
     }
 }
 

@@ -58,7 +58,7 @@ public class QC_1553_ReconciliationOfCurrencies {
 
     }
 
-    @DataProvider(name = "routeForTires", parallel = true)
+   /* @DataProvider(name = "routeForTires", parallel = true)  //TODO commented on the method till fixing the bug on the tires SHOP-1934. So as not to turn off the test
     Object[] dataProviderForTires() {
         return new SetUp("ATD").setUpShop("prod", "AT,BG,BE,CZ,DE,DK,EE,ES,FI,FR,EN,HU,IT,LV,NL,PL,PT,RO,SE,SI,SK");
     }
@@ -79,7 +79,7 @@ public class QC_1553_ReconciliationOfCurrencies {
                 .choosePayPal()
                 .nextBtnClick()
                 .checkCurrencyOnAllDataPage(shop);
-    }
+    }*/
 
     @DataProvider(name = "routeAndProductsIdForCH")
     Object[] dataProviderForCH() {

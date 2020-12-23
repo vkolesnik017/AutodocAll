@@ -47,4 +47,6 @@ public class Tyres_maker_page {
         return $$x("//div[@class='tyre-seasons__item']//img");
     }
 
+    ElementsCollection visibleTopTyres() {return $$x("//div[contains(@class,'slick-active')]").filter(visible);}
+
 }
