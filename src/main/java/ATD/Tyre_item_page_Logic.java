@@ -206,7 +206,7 @@ public class Tyre_item_page_Logic extends Tyre_item_page {
         Float numberOftyresInFloat = Float.parseFloat(numberOfProductsOnProductPage().attr("value").trim());
         Float resutlPrice = (priceOfOneTyre * numberOftyresInFloat);
         Assert.assertEquals(resutlPrice, priceOfTyresInBasket);
-        numberOfProductsInBasketPopup().shouldHave(text(numberOfProductsOnProductPage().text()));
+        numberOfProductsInBasketPopup().shouldHave(text(numberOfProductsOnProductPage().getValue()));
         basketBlock().click();
         return page(Cart_page_Logic.class);
     }
