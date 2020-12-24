@@ -28,6 +28,7 @@
 <!--            <class name="ATD.Search.QC_548_SearchTooltips.QC_553_GenericUnderTooltipsSynonymsInSearch"/>inactive -->
             <class name="ATD.Search.QC_548_SearchTooltips.QC_2541_CheckingSortingOfValuesInSearchPrompt"/>
             <class name="ATD.Search.QC_548_SearchTooltips.QC_3120_InformationPopUpWithSearchTips"/>
+            <class name="ATD.Search.QC_548_SearchTooltips.QC_3142_CheckLogicOfSearchSuggestions"/>
         </classes>
     </test>
 

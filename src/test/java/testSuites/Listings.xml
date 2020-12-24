@@ -46,7 +46,7 @@
 
     <test name="QC_458_ListingViewModes">
         <classes>
-<!--            <class name="ATD.Listings.QC_458_ListingViewModes.QC_2070_SortingOfProductWithGreyButton"/>-->
+            <class name="ATD.Listings.QC_458_ListingViewModes.QC_2070_SortingOfProductWithGreyButton"/>
             <class name="ATD.Listings.QC_458_ListingViewModes.QC_196_SortingByDefaultWithOneGenericOnTecDocIssue"/>
             <class name="ATD.Listings.QC_458_ListingViewModes.QC_460_CompareProductsBetweenListingViewModesOnTecDoc"/>
             <class name="ATD.Listings.QC_458_ListingViewModes.QC_461_CompareProductsBetweenListingViewModesOnOEN"/>
