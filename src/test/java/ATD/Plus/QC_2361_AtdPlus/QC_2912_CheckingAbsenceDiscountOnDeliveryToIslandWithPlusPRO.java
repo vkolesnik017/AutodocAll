@@ -5,6 +5,7 @@ import AWS.Delivery_prices_aws;
 import AWS.Order_aws;
 import Common.DataBase;
 import Common.SetUp;
+import com.codeborne.selenide.Condition;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -16,7 +17,7 @@ import org.testng.annotations.Test;
 import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.Selenide.*;
 
 public class QC_2912_CheckingAbsenceDiscountOnDeliveryToIslandWithPlusPRO {
 
@@ -56,8 +57,10 @@ public class QC_2912_CheckingAbsenceDiscountOnDeliveryToIslandWithPlusPRO {
                 .nextBtnClick()
                 .clickOnTheDesiredPaymentMethod("DK", "Bank")
                 .nextBtnClick();
+        cartAllDataPageLogic.clickSafeOrderCheckbox()
+                .checkThatSafeOrderCheckboxIsNotSelected();
+        cartAllDataPageLogic.securityDeliveryPrice().waitUntil(Condition.not(Condition.visible), 5000);
         allDataDeliveryPrice = cartAllDataPageLogic.getRegularDeliveryPrice();
-//        float roundDeliveryPrice = roundOfTheCost(deliveryPrice,allDataDeliveryPrice );
         Assert.assertEquals(deliveryPrice, allDataDeliveryPrice);
         cartAllDataPageLogic.nextBtnClick();
         String orderNum = new Payment_handler_page_Logic().getOrderNumber();

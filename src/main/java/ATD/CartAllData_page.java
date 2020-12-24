@@ -153,6 +153,10 @@ public class CartAllData_page {
 
     }
 
+    public SelenideElement securityDeliveryPrice() {
+        return $x("(//div[@class='order-summary__row']/span[@class='order-security-delivery'])[2]");
+    }
+
     public SelenideElement totalOrderPrice() {
         return $(byXpath("//*[@class='alldata-bottom']//*[contains(@class,'total')]/span[2]"));
     }
