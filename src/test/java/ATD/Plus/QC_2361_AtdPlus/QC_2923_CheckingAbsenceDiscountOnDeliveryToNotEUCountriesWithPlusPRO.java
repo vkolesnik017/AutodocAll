@@ -1,11 +1,9 @@
 package ATD.Plus.QC_2361_AtdPlus;
 
 import ATD.*;
-import AWS.Delivery_prices_aws;
 import AWS.Order_aws;
 import Common.DataBase;
 import Common.SetUp;
-import com.codeborne.selenide.Condition;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -17,16 +15,16 @@ import org.testng.annotations.Test;
 import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2912_CheckingAbsenceDiscountOnDeliveryToIslandWithPlusPRO {
+public class QC_2923_CheckingAbsenceDiscountOnDeliveryToNotEUCountriesWithPlusPRO {
+
 
     private Float  deliveryPrice, allDataDeliveryPrice;
     private DataBase db = new DataBase("ATD");
-    private String mail = "qc_2912_plusProAutotest@mailinator.com";
+    private String mail = "qc_2923_plusProAutotest@mailinator.com";
     private CartAllData_page_Logic cartAllDataPageLogic = new CartAllData_page_Logic();
-    private Delivery_prices_aws deliveryPricesAws = new Delivery_prices_aws();
-    private Order_aws orderAws = new Order_aws();
+    private Main_page_Logic mainPageLogic = new Main_page_Logic();
 
 
     @BeforeClass
@@ -36,41 +34,34 @@ public class QC_2912_CheckingAbsenceDiscountOnDeliveryToIslandWithPlusPRO {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() {
-        return new SetUp("ATD").setUpShop("prod", "DK");
+        return new SetUp("ATD").setUpShop("prod", "DE");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey_QA")
-    @Description(value = "Test Checking the absence of a discount on delivery to the island for a user with the ATD + PRO package")
-    public void testCheckingAbsenceDiscountOnDeliveryToIslandWithPlusPRO(String route) throws Exception {
+    @Description(value = "Test Checking Absence the discount on delivery to not EU countries for the user with the ATD + PRO package")
+    public void testCheckingAbsenceDiscountOnDeliveryToNotEUCountriesWithPlusPRO(String route) throws Exception {
         openPage(route);
-        new Main_page_Logic().loginFromHeader(mail);
+        mainPageLogic.loginFromHeader(mail);
         checkingContainsUrl("profile/orders");
-        deliveryPricesAws.openAndLoginDeliveryPriceAwsPage();
-        deliveryPrice = deliveryPricesAws.getDeliveryPriceForIslandOrRegion("Bornholm");
-        openPage(db.getFullRouteByRouteAndSubroute("prod", "DK", "main", "product2"));
+        deliveryPrice = new Versand_static_page_Logic().getDeliveryPriceForAWS("Schweiz");
+        openPage(db.getFullRouteByRouteAndSubroute("prod", "DE", "main", "product"));
         new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
                 .clickBtnNextAndTransitionOnAddressPage()
                 .fillFieldTelNumForShipping("200+002")
                 .nextBtnClick()
-                .clickOnTheDesiredPaymentMethod("DK", "Bank")
+                .clickOnTheDesiredPaymentMethod("DE", "Bank")
                 .nextBtnClick();
-        cartAllDataPageLogic.clickSafeOrderCheckbox()
-                .checkThatSafeOrderCheckboxIsNotSelected();
-        cartAllDataPageLogic.securityDeliveryPrice().waitUntil(Condition.not(Condition.visible), 5000);
         allDataDeliveryPrice = cartAllDataPageLogic.getRegularDeliveryPrice();
         Assert.assertEquals(deliveryPrice, allDataDeliveryPrice);
         cartAllDataPageLogic.nextBtnClick();
         String orderNum = new Payment_handler_page_Logic().getOrderNumber();
-        new Order_aws(orderNum).openOrderInAwsWithoutLogin();
-        float deliveryCostInOrder = orderAws.getDeliveryCostInOrder();
-        float deliveryCostFromDeliveryBlock = orderAws.getDeliveryCostInOrderFromDeliveryBlock();
-        Assert.assertEquals(deliveryPrice, deliveryCostInOrder);
-        Assert.assertEquals(deliveryPrice, deliveryCostFromDeliveryBlock);
-        orderAws.reSaveOrder()
+        new Order_aws(orderNum).openOrderInAwsWithLogin()
+                .checkSumDeliveryInOrder(deliveryPrice)
+                .reSaveOrder()
                 .checkCurrentStatusInOrder("Testbestellungen");
     }
 
