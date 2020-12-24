@@ -30,7 +30,7 @@ public class QC_2410_OrderWithSO_IncludedOn_DE_FR_languageVersion_PKW {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp("PKW").setUpShopsWithSubroute("prod", "DE,FR", "main", "product9");
+        return new SetUp("PKW").setUpShopsWithSubroute("prod", "DE,FR", "main", "product4");
     }
 
     @Test(dataProvider = "route")

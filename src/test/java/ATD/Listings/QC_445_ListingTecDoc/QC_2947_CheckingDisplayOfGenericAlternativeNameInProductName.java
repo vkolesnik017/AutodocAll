@@ -16,6 +16,7 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
+import static ATD.CommonMethods.pageReload;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
@@ -43,23 +44,34 @@ public class QC_2947_CheckingDisplayOfGenericAlternativeNameInProductName {
     @Owner(value = "Kolesnik")
     @Description(value = "test Checking the display of the generic alternative name in the product name")
     public void testCheckingDisplayOfGenericAlternativeNameInProductName(String route) {
-        catAlternativePage.openAlternativeCategoriesInAwsWithLogin().presenceAlternativeTitleForGeneric("135", "atd", "de")
+        catAlternativePage.openAlternativeCategoriesInAwsWithLogin()
+                .presenceAlternativeTitleForGeneric("135", "atd", "de")
                 .presenceAlternativeTitleForGeneric("215", "atd", "de");
         String alternativeTitle = catAlternativePage.getAlternativeTitle("135", "atd", "de");
         String titleOfFirstProduct = productSearchAwsPage.openProductSearchPage().getTitleOfFirstProduct(0);
-        productSearchAwsPage.openProductSearchPage().selectCategory("Dichtring, Ölablassschraube ( Seal, oil drain plug ) [135]").selectFirstSearchFilter("no")
-                .clickOnSearchButton().waitOfChangeTitleOfProduct(0, titleOfFirstProduct).goToProductCartByClickOnTitle(0);
+        productSearchAwsPage.openProductSearchPage()
+                .selectCategory("Dichtring, Ölablassschraube ( Seal, oil drain plug ) [135]")
+                .selectFirstSearchFilter("no")
+                .clickOnSearchButton()
+                .waitOfChangeTitleOfProduct(0, titleOfFirstProduct)
+                .goToProductCartByClickOnTitle(0);
         String brand = productPageAws.getTitleOfBrandProduct();
         String artNum = productPageAws.getArtNumOfProduct();
         String id = productPageAws.getIdOfProduct();
         openPage(route + "/" + brand + "/" + id);
-        productPage.selectAnyCarFromOenBlock(0).checkAlternativeTitleOfProductThroughArticle(artNum, alternativeTitle);
+        productPage.selectAnyCarFromOenBlock(0)
+                .checkAlternativeTitleOfProductThroughArticle(artNum, alternativeTitle);
         openPage(route + "/" + brand + "/" + id);
-        productPage.presenceOfApplicabilityBlock().clickOnAnyApplicabilityVehicle(0);
+        productPage.presenceOfApplicabilityBlock()
+                .clickOnAnyApplicabilityVehicle(0);
         String marke = productPage.getMarkeFromApplicabilityVehicle(0);
         String model = productPage.getModelFromApplicabilityVehicle(0);
-        productPage.selectCarHorizontalSelector(marke, model, "15155").clickSearchBtnInHorizontalSelector().presenceOfCarMatchBlock()
-                .checkVisibleCharacteristic().clickOnThirdBreadCrumbLink(2).checkAlternativeTitleOfProductThroughArticle(artNum, alternativeTitle);
+        productPage.selectCarHorizontalSelector(marke, model, "15155")
+                .clickSearchBtnInHorizontalSelector();
+        pageReload();
+        productPage.presenceOfCarMatchBlock()
+                .clickOnThirdBreadCrumbLink(2)
+                .checkAlternativeTitleOfProductThroughArticle(artNum, alternativeTitle);
     }
 
     @AfterMethod
