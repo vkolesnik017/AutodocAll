@@ -22,9 +22,9 @@ public class QC_2070_SortingOfProductWithGreyButton {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "routes", parallel = true)
+    @DataProvider(name = "routes", parallel = false)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "main", "tyre_form5"); //,tyres_season12,offroad_tyres_brand,tyres_group_season_brand3,tyres_size10,tyre_form6,tyres_season_size,tyres_season_dimension7,tyres_brand_size3,tyres_brand_dimension7
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "main", "tyre_form5,tyres_season12,offroad_tyres_brand,tyres_group_season_brand3,tyres_size10,tyre_form6,tyres_season_size,tyres_brand_size3,tyres_brand_dimension7");
     }
 
     @Test(dataProvider = "routes")
@@ -35,8 +35,8 @@ public class QC_2070_SortingOfProductWithGreyButton {
         open(route);
 
         new Tyre_form_page_Logic()
-        .presenceOfListingBlock()
-        .checkSortingOfProductsWithGreyButton();
+                .presenceOfListingBlock()
+                .checkSortingOfProductsWithGreyButton();
     }
 
     @AfterMethod
