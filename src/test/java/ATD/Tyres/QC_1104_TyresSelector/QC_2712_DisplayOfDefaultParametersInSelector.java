@@ -25,7 +25,7 @@ public class QC_2712_DisplayOfDefaultParametersInSelector {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres,tyres_maker");
     }
 
     @Test(dataProvider = "routes")
