@@ -29,7 +29,7 @@ public class QC_2409_Unchecked_SO_CheckboxOn_FR_DE_LanguageVersions_PKW {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp("PKW").setUpShopsWithSubroute("prod", "DE,FR", "main", "product9");
+        return new SetUp("PKW").setUpShopsWithSubroute("prod", "DE,FR", "main", "product4");
     }
 
     @Test(dataProvider = "route")

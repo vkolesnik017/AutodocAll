@@ -13,7 +13,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import static ATD.CommonMethods.openPage;
-import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
 public class CatalogCategories_aws {
@@ -152,6 +152,10 @@ public class CatalogCategories_aws {
         return $$x("//tbody[@class='ui-sortable']/tr/td[3]");
     }
 
+    private ElementsCollection subCategoriesWithParentName(String parentTitle) {
+        return $$x(" //div[contains(text(),'"+parentTitle+"')]/ancestor::li//ul[@class='catalog-table-content-items-item-child ui-sortable']//li[not(contains(@class,'disabled'))]//input[@class='form-control']");
+    }
+
     @Step("Open AWS , Login in and open page custom-catalog. CatalogCategories_aws")
     public CatalogCategories_aws openAwsLoginInAndTransitionCustomCatalog() {
         new Login_aws().loginInAwsWithOpen();
@@ -245,12 +249,19 @@ public class CatalogCategories_aws {
         return allActiveGroupAWS;
     }
 
+    @Step("open Child categories page in aws . CatalogCategories_aws")
+    public CatalogCategories_aws openChildCategoriesPageInAws() {
+        new Login_aws().loginInAwsWithOpen();
+        openPage(childCategoriesInAwsPage);
+        return this;
+    }
+
     @Step("Get limited Child categories From Catalog AWS . CatalogCategories_aws")
     public List<String> getLimitedChildCategoriesNameFromAWS(List<String> list) {
         new Login_aws().loginInAwsWithOpen();
         openPage(childCategoriesInAwsPage);
         parentAndChildCategoriesList().shouldBe(visible);
-        List<String> childCategoriesAWS = limitedChildCategoriesNameAWS().stream().map(n -> n.getAttribute("value").replaceAll("[^a-zA-ZÖö]", "")).limit(list.size()).collect(Collectors.toList());
+        List<String> childCategoriesAWS = limitedChildCategoriesNameAWS().stream().map(n -> n.getAttribute("value").replaceAll("[^a-züA-ZÖö]", "")).limit(list.size()).collect(Collectors.toList());
         return childCategoriesAWS;
     }
 
@@ -431,7 +442,7 @@ public class CatalogCategories_aws {
         return allGroupRating;
     }
 
-    @Step("open parent categories page")
+    @Step("open parent categories page. CatalogCategories_aws ")
     public CatalogCategories_aws openParentCategoriesAws() {
         new Login_aws().loginInAwsWithOpen();
         openPage(parentCategoriesInAwsPage);
@@ -465,7 +476,10 @@ public class CatalogCategories_aws {
         return sortedList;
     }
 
-
-
+    @Step("get Child Categories By Parent Name. CatalogCategories_aws")
+    public List<String> getChildCategoriesByParentName(String parentTitle) {
+        List<String> subCategories = subCategoriesWithParentName(parentTitle).stream().map(n -> n.shouldBe(visible).attr("value").replaceAll("&"+"nbsp;", " ").replaceAll(String.valueOf((char) 160), " ").replaceAll("\\s+$", "").trim()).collect(Collectors.toList());
+        return subCategories;
+    }
 
 }

@@ -12,6 +12,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.CommonMethods.openPage;
 import static Common.CommonMethods.roundOfTheCost;
 import static Common.SetUp.setUpBrowser;
@@ -42,6 +44,7 @@ public class QC_2910_CheckingDiscountOnDeliveryForUserWithAtdProPackage {
     public void testCheckingDiscountOnDeliveryForUserWithAtdProPackage(String route) throws Exception {
         openPage(route);
         new Main_page_Logic().loginFromHeader(mail);
+        checkingContainsUrl("profile/orders");
         deliveryPrice = new Versand_static_page_Logic().getDeliveryPriceForCurrentCountryForUserWithSubscriptionPlusPro("DE", mail);
         openPage(db.getFullRouteByRouteAndSubroute("prod", "DE", "main", "product"));
         new Product_page_Logic().addProductToCart()

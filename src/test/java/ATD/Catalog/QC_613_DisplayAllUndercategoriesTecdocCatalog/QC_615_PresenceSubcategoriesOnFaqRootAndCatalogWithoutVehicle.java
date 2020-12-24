@@ -1,12 +1,10 @@
 package ATD.Catalog.QC_613_DisplayAllUndercategoriesTecdocCatalog;
 
 import ATD.FaqHash_page_Logic;
-import AWS.CatalogCategories_aws;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
-import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -42,12 +40,7 @@ public class QC_615_PresenceSubcategoriesOnFaqRootAndCatalogWithoutVehicle {
         openPage(route);
         List<String> notUsedCategories = Arrays.asList("Reifen", "Autozubehör", "Steuergeräte, Sensoren, Relais", "Reparatursätze", "Werkzeuge & Werkstattausrüstung", "Autopflege",
                 "Rohre und Schläuche", "Beleuchtung", "Befestigungsmaterial");
-        List<String> subCategoriesFromCatalog = faqPage.presenceOfTecDocCatalog().getExaсtSubCategories(notUsedCategories);
-        List<String> subCategoriesFromAWS = new CatalogCategories_aws().getLimitedChildCategoriesNameFromAWS(subCategoriesFromCatalog);
-
-        Assert.assertEquals(subCategoriesFromAWS, subCategoriesFromCatalog);
-
-
+        faqPage.compareSubCategoriesListWithAws(notUsedCategories);
     }
 
     @AfterMethod
