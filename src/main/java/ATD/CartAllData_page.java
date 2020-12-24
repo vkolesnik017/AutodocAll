@@ -128,6 +128,10 @@ public class CartAllData_page {
         return $x("(//td[@class='price'])[2]");
     }
 
+    public SelenideElement pfandPriceInProductBlock(String idProduct) {
+        return $x("//tr[@data-article_id='" + idProduct + "']//td[@class='price'][2]");
+    }
+
     public SelenideElement totalProductPrice() {
         return $(byCssSelector(".total-price"));
     }
@@ -137,7 +141,7 @@ public class CartAllData_page {
     }
 
     public SelenideElement pfandPriceInTotalPriceBlock() {
-        return $x("(//span[contains(text(),'Pfand')]/following-sibling::span)[2]");
+        return $x("(//div[@class='order-summary__row']/span[@class='order-money-back'])[2]");
     }
 
     public SelenideElement priceOfAllProducts() {
@@ -145,7 +149,8 @@ public class CartAllData_page {
     }
 
     public SelenideElement deliveryPrice() {
-        return $(byXpath("//*[@class='order-summary ']/div[3]/span[2]"));
+        return $(byXpath("(//div[@class='order-summary__row']/span[@class='order-delivery'])[2]"));
+
     }
 
     public SelenideElement totalOrderPrice() {
@@ -153,7 +158,7 @@ public class CartAllData_page {
     }
 
     SelenideElement heavyLoadsDeliveryPrice(){
-        return $x("//div[@class='order-summary ']//div[4]//span[2]");
+        return $x("(//div[@class='order-summary__row']/span[@class='order-surcharge'])[2]");
     }
 
     SelenideElement safeOrderInUpperBlockWithSummery(String priceSO) {

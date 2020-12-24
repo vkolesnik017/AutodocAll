@@ -1,6 +1,6 @@
-package ATD.LKW_trucks.QC_18_SideBarBlocksOfParentCategoriesAndLinkingChildCategory;
+package ATD.Tyres.QC_1272_TyresMainPage;
 
-import ATD.LKW_Parent_Category_page_Logic;
+import ATD.Tyres_maker_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,25 +16,28 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_22_PresenceOfParentCategoryListInSidebar {
+public class QC_3155_CheckDisplayPaymentsMethodBlock {
+
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "routes", parallel = true)
+    @DataProvider(name = "routes", parallel = false)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_parent_category,lkw_category,lkw_category_maker,lkw_category_brand,lkw_category_maker_brand,lkw_categories_maker");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_maker");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks presence of all parent categories in sidebar")
-    public void testChecksPresenceOfAllParentCategories(String route) {
+    @Description(value = "Test checking the presence of a block of payment methods")
+    public void testCheckCheckDisplayPaymentsMethodBlock(String route) {
         openPage(route);
-        new LKW_Parent_Category_page_Logic().presenceOfAllParentCategoriesInSideBar();
+
+        new Tyres_maker_page_Logic().checkPaymentMethodsBlock();
     }
+
     @AfterMethod
     public void close() {
         closeWebDriver();

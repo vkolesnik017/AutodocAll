@@ -27,7 +27,7 @@ public class QC_1273_TestTyresSizeSelectorPresence {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres,tyres2,tyres3,tyres4");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres,tyres2,tyres3,tyres4,tyres_maker");
     }
 
     @Test(dataProvider = "routes")

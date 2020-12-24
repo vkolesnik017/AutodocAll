@@ -1,4 +1,4 @@
-package ATD.LKW_trucks.QC_18_SideBarBlocksOfParentCategoriesAndLinkingChildCategory;
+package ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories;
 
 import ATD.LKW_Parent_Category_page_Logic;
 import Common.DataBase;

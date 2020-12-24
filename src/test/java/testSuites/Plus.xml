@@ -12,6 +12,10 @@
             <class name="ATD.Plus.QC_2361_AtdPlus.QC_2612_CheckingForAbsenceSOInAutodocPlusSection"/>
             <class name="ATD.Plus.QC_2361_AtdPlus.QC_2724_CheckingCorrectOperationOfFirstReOrderFromUser"/>
             <class name="ATD.Plus.QC_2361_AtdPlus.QC_2725_CheckingCorrectOperationOfNotFirstReOrderFromUser"/>
+            <class name="ATD.Plus.QC_2361_AtdPlus.QC_2910_CheckingDiscountOnDeliveryForUserWithAtdProPackage"/>
+            <class name="ATD.Plus.QC_2361_AtdPlus.QC_2911_CheckingDiscountOnDeliveryOutSideCountryStoreWithPlusPro"/>
+            <class name="ATD.Plus.QC_2361_AtdPlus.QC_3058_CheckingAbsence20PercentDiscountWithPlusPROForFR"/>
+            <class name="ATD.Plus.QC_2361_AtdPlus.QC_3064_CheckingAbsence20PercentDiscountWithPlusPROFromFRToDE"/>
         </classes>
     </test>
 

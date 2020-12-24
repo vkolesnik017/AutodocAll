@@ -10,8 +10,7 @@ import static ATD.CommonMethods.mailRandomMailinator;
 import static ATD.CommonMethods.openPage;
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.Wait;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Versand_static_page_Logic extends Versand_static_page {
 
@@ -118,7 +117,12 @@ public class Versand_static_page_Logic extends Versand_static_page {
     @Step("Get the delivery price of the current country. Versand_static_page")
     public float getDeliveryPriceOfCurrentCountry(String shop) throws SQLException {
         openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", shop, "main", "staticVersand"));
-        return Float.parseFloat(deliveryPrice().getText().replace(" €", "").replaceAll(",","."));
+        return Float.parseFloat(deliveryPrice().getText().replaceAll("[^0-9,]", "").replaceAll(",","."));
+    }
+
+    @Step("Get the delivery price. Versand_static_page")
+    public float getDeliveryPrice() throws SQLException {
+        return Float.parseFloat(deliveryPrice().getText().replaceAll("[^0-9,]", "").replaceAll(",","."));
     }
 
     @Step("Get delivery price. Versand_static_page")
@@ -141,6 +145,21 @@ public class Versand_static_page_Logic extends Versand_static_page {
         }
         return exactDeliveryPrice;
     }
+
+
+    @Step("Get delivery price for current country for a user with a subscription plus pro. Versand_static_page")
+    public float getDeliveryPriceForCurrentCountryForUserWithSubscriptionPlusPro(String country, String mail) throws Exception {
+        float deliveryPriceCurrentCountry = getDeliveryPriceOfCurrentCountry(country);
+        float exactDeliveryPrice;
+        if (mail.contains("plusPro")) {
+            exactDeliveryPrice = deliveryPriceCurrentCountry * 0.7f;
+        } else {
+            exactDeliveryPrice = deliveryPriceCurrentCountry;
+        }
+        return exactDeliveryPrice;
+    }
+
+
 
     @Step("Get delivery price for AWS. Versand_static_page")
     public Float getDeliveryPriceForAWS(String country) throws Exception {

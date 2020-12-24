@@ -250,7 +250,7 @@ public class CatalogCategories_aws {
         new Login_aws().loginInAwsWithOpen();
         openPage(childCategoriesInAwsPage);
         parentAndChildCategoriesList().shouldBe(visible);
-        List<String> childCategoriesAWS = limitedChildCategoriesNameAWS().stream().map(n -> n.getAttribute("value").replaceAll("[^a-zA-ZÖö]", "")).limit(list.size()).collect(Collectors.toList());
+        List<String> childCategoriesAWS = limitedChildCategoriesNameAWS().stream().map(n -> n.getAttribute("value").replaceAll("[^a-züA-ZÖö]", "")).limit(list.size()).collect(Collectors.toList());
         return childCategoriesAWS;
     }
 
