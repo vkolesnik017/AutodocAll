@@ -34,6 +34,7 @@
             <class name="ATD.Tyres.QC_1104_TyresSelector.QC_1288_TestTyresSelectorWithSeacrBySpeedIndex"/>
             <class name="ATD.Tyres.QC_1104_TyresSelector.QC_2712_DisplayOfDefaultParametersInSelector"/>
             <class name="ATD.Tyres.QC_1104_TyresSelector.QC_2713_CheckSizeValuesDontChangeWhenSeasonChanges"/>
+            <class name="ATD.Tyres.QC_1104_TyresSelector.QC_2715_CheckingCorrectSizeInTyreSelectorForSelectedSeason"/>
             <class name="ATD.Tyres.QC_1104_TyresSelector.QC_2717_CheckDisplayTyresSizeOfAllSeasons"/>
             <class name="ATD.Tyres.QC_1104_TyresSelector.QC_3012_PresenceOfTyresSizeInSelector"/>
         </classes>

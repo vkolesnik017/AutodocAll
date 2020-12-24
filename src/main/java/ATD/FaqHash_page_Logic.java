@@ -1,12 +1,17 @@
 package ATD;
 
+import AWS.CatalogCategories_aws;
 import io.qameta.allure.Step;
+import org.testng.Assert;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.executeJavaScript;
+import static com.codeborne.selenide.Selenide.switchTo;
 
 public class FaqHash_page_Logic extends FaqHash_page {
 
@@ -41,6 +46,36 @@ public class FaqHash_page_Logic extends FaqHash_page {
             }
         }
         return subCategories;
+    }
+
+    @Step("compare SubCategories list with aws. FaqHash_page")
+    public FaqHash_page_Logic compareSubCategoriesListWithAws(List<String> list) throws SQLException {
+        CatalogCategories_aws catalogPage = new CatalogCategories_aws();
+        executeJavaScript("window.open('about:blank', '-blank')");
+        switchTo().window(1);
+        catalogPage.openChildCategoriesPageInAws();
+        switchTo().window(0);
+        presenceOfTecDocCatalog();
+        for (int i = 0; i < titleOfParentCategories().size(); i++) {
+            if (list.contains(titleOfParentCategories().get(i).getText())) {
+                continue;
+            } else {
+                titleOfParentCategories().get(i).shouldBe(visible).click();
+                List<String> subCategoryFront = new ArrayList<>();
+                String currentParentCategory = activeParentCategory().attr("data-node_id");
+                for (int j = 0; j < activeSubCategories().size(); j++) {
+                    subCategoryFront = activeSubCategories().stream().map(n -> n.getText().replaceAll("\\s+$", "")).collect(Collectors.toList());
+                }
+                switchTo().window(1);
+                List<String> subCategoriesFromAws = catalogPage.getChildCategoriesByParentName(currentParentCategory);
+                Assert.assertEquals(subCategoryFront, subCategoriesFromAws, String.format("Test failed in category - %s", currentParentCategory));
+                subCategoryFront.clear();
+                subCategoriesFromAws.clear();
+                switchTo().window(0);
+                titleOfParentCategories().get(i).shouldBe(visible).click();
+            }
+        }
+        return this;
     }
 
 }
