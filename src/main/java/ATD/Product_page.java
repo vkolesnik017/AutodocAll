@@ -874,4 +874,12 @@ public class Product_page {
     SelenideElement btnShowMoreInRidexBlock() {return $x("//div[@class='product-banner-ridex js-default-open-popup']//div[@class='banner-btn']");}
 
     SelenideElement background() {return $x("//div[@class='overlay black hidden']");}
+
+    SelenideElement faqBlockWithoutAnswer() {return $x("//*[@class='product-leave-feedback']");}
+
+    SelenideElement faqBlockWithAnswer() {return $x("//*[@class='product-leave-feedback__wrap__comments']");}
+
+    SelenideElement textAboutQuantityOfAnswersInFAQ() {return $x("//*[@class='product-leave-feedback__wrap__first-title'][1]");}
+
+    SelenideElement blockVersandInFAQ() {return $x("//*[@class='product-leave-feedback']/following-sibling::div");}
 }

@@ -1238,6 +1238,7 @@ public class Product_page_Logic extends Product_page {
         Selenide.actions().moveToElement(btnShowMoreInRidexBlock()).click().build().perform();
         return this;
     }
+
     @Step("presence Price per meter title. Product page")
     public Product_page_Logic presencePricePerMeterTitle() {
         pricePerMeter().shouldBe(visible);
@@ -1253,10 +1254,19 @@ public class Product_page_Logic extends Product_page {
     @Step("check elements of candles analog block. Product page")
     public Product_page_Logic checkElementsOfCandlesAnalogBlock() {
         headlineOfCandlesAnalogBlock().shouldBe(visible);
-        for (int i=0;i<brandsInCandlesAnalogBlock().size();i++){
+        for (int i = 0; i < brandsInCandlesAnalogBlock().size(); i++) {
             brandsInCandlesAnalogBlock().get(i).shouldBe(visible).shouldNotBe(empty);
             artListInCandlesAnalogBlock().get(i).shouldBe(visible).shouldNotBe(empty);
         }
+        return this;
+    }
+
+    @Step("Check Faq block without answers. Product page")
+    public Product_page_Logic checkFAQBlockWithoutAnswers() {
+        faqBlockWithoutAnswer().shouldBe(visible);
+        textAboutQuantityOfAnswersInFAQ().shouldHave(text("0 Fragen"));
+        blockVersandInFAQ().shouldBe(visible);
+        faqBlockWithAnswer().shouldNotBe(visible);
         return this;
     }
 }
