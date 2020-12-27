@@ -82,7 +82,6 @@
             <class name="ATD.MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_374_PresenceOfMainIssueBlock"/>
             <class name="ATD.MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_375_ApplicabilityOfProductsInTecDocListing"/>
             <class name="ATD.MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_376_AddProductToBasketFromTecDocListing"/>
-            <class name="ATD.MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_377_SortingOfProductsInTecDocListing"/>
             <class name="ATD.MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_378_DynamicCharacteristicsOfProductsInTecDocListing"/>
             <class name="ATD.MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_379_GoToProductPageFromTecDocListing"/>
             <class name="ATD.MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_380_OutOfStockProductWithOutAnalogs"/>
@@ -173,7 +172,6 @@
         <classes>
             <class name="ATD.MOTO.QC_361_BrandsBlock.QC_362_PresenceOfBrandsBlock"/>
             <class name="ATD.MOTO.QC_361_BrandsBlock.QC_363_AbilityToOpenedAndMinimizedBrandBlock"/>
-            <class name="ATD.MOTO.QC_361_BrandsBlock.QC_365_PresenceOfHeadlineAtTopCategories"/>
         </classes>
     </test>
 

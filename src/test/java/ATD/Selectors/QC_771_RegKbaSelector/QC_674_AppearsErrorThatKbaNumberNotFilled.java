@@ -1,4 +1,4 @@
-package ATD.Selectors.QC_663_HorizontalCarSelector;
+package ATD.Selectors.QC_771_RegKbaSelector;
 
 import ATD.Product_page_Logic;
 import Common.SetUp;
@@ -10,11 +10,12 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import static ATD.CommonMethods.checkingContainsUrl;
+import static ATD.CommonMethods.usualIdProduct;
 import static Common.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_672_UseHorizontalSelectorWhenChosenExistingKBA {
+public class QC_674_AppearsErrorThatKbaNumberNotFilled {
 
   private Product_page_Logic product_page_logic = new Product_page_Logic();
 
@@ -31,15 +32,12 @@ public class QC_672_UseHorizontalSelectorWhenChosenExistingKBA {
   @Test(dataProvider = "route")
   @Flaky
   @Owner(value = "Evlentiev")
-  @Description(value = "Use horizontal selector when chosen existing kna number")
-  public void testUseHorizontalSelectorWhenChosenExistingKBA(String route) {
-    product_page_logic.openProductPageById(route, "0019946");
-    refresh();
-    sleep(3000);
-    product_page_logic.fillNumberKba("0603", "419")
-            .clickKbaBtn()
-            .verifyNameRouteEqualsMakerCarList();
-    checkingContainsUrl("ersatzteile/vw/golf/golf-iv-1j1/8799-1-4-16v");
+  @Description(value = "Appears error that kba number not filled")
+  public void testAppearsErrorThatKbaNumberNotFilled(String route) {
+    product_page_logic.openProductPageById(route, usualIdProduct)
+            .clickKbaBtn();
+    product_page_logic.errorToolTipOfKbaSelector().shouldHave(
+            text("Geben Sie bitte eine Schlüsselnummer ein, um nach einem Wagen zu suchen"));
   }
   @AfterMethod
   public void close() {
