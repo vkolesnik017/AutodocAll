@@ -9,9 +9,7 @@
     <test name="QC_144_Header_trucks_routes">
         <classes>
             <class name="ATD.LKW_trucks.QC_144_Header_trucks_routes.QC_145_PresenceOfBlocksInHeader_lkw"/>
-            <class name="ATD.LKW_trucks.QC_144_Header_trucks_routes.QC_149_TrucksCatalogInHeader_lkw"/>
             <class name="ATD.LKW_trucks.QC_144_Header_trucks_routes.QC_153_NavigationBlockInHeader_lkw"/>
-            <class name="ATD.LKW_trucks.QC_144_Header_trucks_routes.QC_1508_ConformityHeaderCatalogAndTecDocCatalogWithTruck_lkw"/>
         </classes>
     </test>
 
@@ -50,10 +48,7 @@
 
     <test name="LKW_trucks_route">
         <classes>
-            <class name="ATD.LKW_trucks.QC_133_MainIconOfMarkInCategoriesMaker"/>
-            <class name="ATD.LKW_trucks.QC_134_TopParentAndChildCategoriesBlocks"/>
             <class name="ATD.LKW_trucks.QC_135_SeoDescriptionBlock"/>
-            <class name="ATD.LKW_trucks.QC_136_LinkBlockOfTopBrands"/>
             <class name="ATD.LKW_trucks.QC_158_BannerOnMainPage"/>
             <class name="ATD.LKW_trucks.QC_222_MainImageOnErrorPage"/>
             <class name="ATD.LKW_trucks.QC_183_LanguageBlockInFooter"/>
@@ -62,10 +57,6 @@
 
     <test name="QC_18_SideBarBlocksOfParentCategoriesAndLinkingChildCategory">
         <classes>
-            <class name="ATD.LKW_trucks.QC_18_SideBarBlocksOfParentCategoriesAndLinkingChildCategory.QC_20_AvailabilityParentCatalogBlock"/>
-            <class name="ATD.LKW_trucks.QC_18_SideBarBlocksOfParentCategoriesAndLinkingChildCategory.QC_22_PresenceOfParentCategoryListInSidebar"/>
-            <class name="ATD.LKW_trucks.QC_18_SideBarBlocksOfParentCategoriesAndLinkingChildCategory.QC_23_TransitionOnParentCategoryPageFromSidebar"/>
-            <class name="ATD.LKW_trucks.QC_18_SideBarBlocksOfParentCategoriesAndLinkingChildCategory.QC_24_PresenceOfChildCategoriesInSideBar"/>
             <class name="ATD.LKW_trucks.QC_18_SideBarBlocksOfParentCategoriesAndLinkingChildCategory.QC_25_TransitionByClickOnTopSubCategoryElementInSideBar"/>
             <class name="ATD.LKW_trucks.QC_18_SideBarBlocksOfParentCategoriesAndLinkingChildCategory.QC_26_VisibilityOfChildCategoriesInTopChildBlockInSideBar"/>
             <class name="ATD.LKW_trucks.QC_18_SideBarBlocksOfParentCategoriesAndLinkingChildCategory.QC_1662_CheckCorrectnessDisplayedChildCategoriesInSidebar"/>
@@ -76,7 +67,6 @@
         <classes>
             <class name="ATD.LKW_trucks.QC_94_TecDoc_Listing.QC_95_ApplicabilityOfProductsInTecDocListing"/>
             <class name="ATD.LKW_trucks.QC_94_TecDoc_Listing.QC_96_AddProductToBasketFromTecDocListing"/>
-            <class name="ATD.LKW_trucks.QC_94_TecDoc_Listing.QC_97_SortingOfProductsInTecDocListing"/>
             <class name="ATD.LKW_trucks.QC_94_TecDoc_Listing.QC_98_DynamicCharacteristicsOfProductsInTecDocListing"/>
             <class name="ATD.LKW_trucks.QC_94_TecDoc_Listing.QC_99_GoToProductPageFromTecDocListing"/>
             <class name="ATD.LKW_trucks.QC_94_TecDoc_Listing.QC_100_AnalogBlockInTecDocListing"/>

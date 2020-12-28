@@ -1,5 +1,6 @@
 package ATD;
 
+import AWS.CategoriesSynonyms_aws;
 import AWS.ProductCard_aws;
 import Common.DataBase;
 import Common.Excel;
@@ -15,7 +16,11 @@ import org.testng.Assert;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static ATD.CommonMethods.*;
 import static PKW.CommonMethods.checkingContainsUrl;
@@ -50,7 +55,7 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("Login in header with mail {mail}. Main_page")
-    public Profile_page_Logic loginFromHeader(String mail)  {
+    public Profile_page_Logic loginFromHeader(String mail) {
         loginBtnInHeader().click();
         mailFieldLogin().setValue(mail);
         passFieldLogin().setValue(password);
@@ -1650,4 +1655,39 @@ public class Main_page_Logic extends Main_page {
     }
 
 
+    @Step("get Generics from search bar. Main_page")
+    public List<String> getGenericsFromSearchBar() {
+        genericsFromTips().get(0).shouldBe(visible);
+        List<String> generics = genericsFromTips().stream().map(n -> n.getText()).collect(Collectors.toList());
+        return generics;
+    }
+
+
+    @Step("check logic of search suggestions. Main_page")
+    public Main_page_Logic checkLogicOfSearchSuggestions(List<String> searchText, String route) {
+
+        List<String> genericsOfHints = new ArrayList<>();
+        List<String> synonymsOfHints = new ArrayList<>();
+        for (int i = 0; i < searchText.size(); i++) {
+            if (!url().equals(route)) {
+                openPage(route);
+            }
+            inputTextInSearchBar(searchText.get(i));
+            genericsFromTips().get(0).shouldBe(visible);
+            for (int j = 0; j < genericsFromTips().size(); j++) {
+                if (genericsFromTips().get(j).getText().matches(".+\n.+")) {
+                    genericsOfHints.add(genericsFromTips().get(j).getText().replaceAll("(.+)(\n.+)", "$1"));
+                } else {
+                    synonymsOfHints.add(genericsFromTips().get(j).getText());
+                }
+            }
+            new CategoriesSynonyms_aws().openSynonymsPageInAws()
+                    .checkGenerics(genericsOfHints, synonymsOfHints)
+                    .clearCategoriesField()
+                    .checkSynonyms(synonymsOfHints);
+            genericsOfHints.clear();
+            synonymsOfHints.clear();
+        }
+        return this;
+    }
 }

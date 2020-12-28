@@ -1,6 +1,6 @@
-package ATD.ACC.QC_2050_BlockFilterByBrandsOnChemistryListing;
+package ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories;
 
-import ATD.Listing_chemicals_Page_Logic;
+import ATD.Moto_Categories_maker_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,29 +16,31 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1851_BlockBrandsOnListingPageChemistry {
+public class QC_365_PresenceOfHeadlineAtTopCategories {
 
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "route", parallel = true)
+    @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "listing_chemicals");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_categories_maker2");
     }
 
-    @Test(dataProvider = "route")
+    @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "Sergey-QA")
-    @Description(value = "Test checks presence brands block.")
-    public void testCheckPresenceBrandsBlock(String route) {
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test checks presence of headline at TOP parent categories")
+    public void testChecksPresenceOfHeadlineAtTopCategories(String route) {
         openPage(route);
-        new Listing_chemicals_Page_Logic().checkingPresenceBrandsBlock();
+
+        new Moto_Categories_maker_page_Logic()
+                .presenceOfHeadlineAtTopParentCategories();
     }
 
     @AfterMethod
-    private void close() {
+    public void close() {
         closeWebDriver();
     }
 }

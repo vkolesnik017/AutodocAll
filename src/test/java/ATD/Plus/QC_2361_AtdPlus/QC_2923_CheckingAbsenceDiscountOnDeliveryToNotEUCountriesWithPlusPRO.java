@@ -12,19 +12,19 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.CommonMethods.openPage;
-import static Common.CommonMethods.roundOfTheCost;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2910_CheckingDiscountOnDeliveryForUserWithAtdProPackage {
+public class QC_2923_CheckingAbsenceDiscountOnDeliveryToNotEUCountriesWithPlusPRO {
+
 
     private Float  deliveryPrice, allDataDeliveryPrice;
     private DataBase db = new DataBase("ATD");
-    private String mail = "qc_2910_plusProautotest@mailinator.com";
+    private String mail = "qc_2923_plusProAutotest@mailinator.com";
     private CartAllData_page_Logic cartAllDataPageLogic = new CartAllData_page_Logic();
+    private Main_page_Logic mainPageLogic = new Main_page_Logic();
 
 
     @BeforeClass
@@ -40,12 +40,13 @@ public class QC_2910_CheckingDiscountOnDeliveryForUserWithAtdProPackage {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey_QA")
-    @Description(value = "Test Checking the discount on delivery to the country of the shop for the user with the ATD + PRO package")
-    public void testCheckingDiscountOnDeliveryForUserWithAtdProPackage(String route) throws Exception {
+    @Description(value = "Test Checking Absence the discount on delivery to not EU countries for the user with the ATD + PRO package")
+    public void testCheckingAbsenceDiscountOnDeliveryToNotEUCountriesWithPlusPRO(String route) throws Exception {
         openPage(route);
-        new Main_page_Logic().loginFromHeader(mail);
+        mainPageLogic.loginFromHeader(mail);
         checkingContainsUrl("profile/orders");
-        deliveryPrice = new Versand_static_page_Logic().getDeliveryPriceForCurrentCountryForUserWithSubscriptionPlusPro("DE", mail);
+        new Profile_plus_page_Logic().checkPresenceClientID();
+        deliveryPrice = new Versand_static_page_Logic().getDeliveryPriceForAWS("Schweiz");
         openPage(db.getFullRouteByRouteAndSubroute("prod", "DE", "main", "product"));
         new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
@@ -56,12 +57,11 @@ public class QC_2910_CheckingDiscountOnDeliveryForUserWithAtdProPackage {
                 .clickOnTheDesiredPaymentMethod("DE", "Bank")
                 .nextBtnClick();
         allDataDeliveryPrice = cartAllDataPageLogic.getRegularDeliveryPrice();
-        float roundDeliveryPrice = roundOfTheCost(deliveryPrice,allDataDeliveryPrice );
-        Assert.assertEquals(roundDeliveryPrice, allDataDeliveryPrice);
+        Assert.assertEquals(deliveryPrice, allDataDeliveryPrice);
         cartAllDataPageLogic.nextBtnClick();
         String orderNum = new Payment_handler_page_Logic().getOrderNumber();
         new Order_aws(orderNum).openOrderInAwsWithLogin()
-                .checkSumDeliveryInOrder(roundDeliveryPrice)
+                .checkSumDeliveryInOrder(deliveryPrice)
                 .reSaveOrder()
                 .checkCurrentStatusInOrder("Testbestellungen");
     }

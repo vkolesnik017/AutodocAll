@@ -141,4 +141,12 @@ public class Tyres_maker_page_Logic extends Tyres_maker_page {
         return this;
     }
 
+    @Step("check default value of width field. Tyres_maker")
+    public Tyres_maker_page_Logic checkVisibleTopTyres() {
+        for (int i = 0; i <4; i++) {
+            visibleTopTyres().get(i).shouldBe(visible);
+        }
+        return this;
+    }
+
 }

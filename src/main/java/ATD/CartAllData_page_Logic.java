@@ -241,6 +241,22 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return this;
     }
 
+    @Step("Checks currency on all data page for Tyres. CartAllData_page")
+    public CartAllData_page_Logic checkCurrencyOnAllDataPageForTyres(String shop) throws SQLException {
+        String expectedCurrency = new DataBase("ATD").getCurrency(shop);
+        getCurrencyAndVerify(totalOrderPriceInHead(), "totalOrderPriceInHead", shop, expectedCurrency);
+        getCurrencyAndVerify(productPrice(), "productPrice", shop, expectedCurrency);
+        getCurrencyAndVerify(totalProductPrice(), "totalProductPrice", shop, expectedCurrency);
+        getCurrencyAndVerify(priceOfAllProducts(), "priceOfAllProducts", shop, expectedCurrency);
+        getCurrencyAndVerify(freeDeliveryIconForTyres(), "deliveryPrice", shop, expectedCurrency);
+        getCurrencyAndVerify(totalOrderPrice(), "totalOrderPrice", shop, expectedCurrency);
+        //checks currency for safe order price
+        if (priceOfSafeOrder().isDisplayed()) {
+            getCurrencyAndVerify(priceOfSafeOrder(), "priceSafeOrder", shop, expectedCurrency);
+        }
+        return this;
+    }
+
     @Step("Check currency for VAT price only for CH. CartAllData_page")
     public CartAllData_page_Logic checkCurrencyForVatPrice(String shop) throws SQLException {
         String expectedCurrency = new DataBase("ATD").getCurrency(shop);

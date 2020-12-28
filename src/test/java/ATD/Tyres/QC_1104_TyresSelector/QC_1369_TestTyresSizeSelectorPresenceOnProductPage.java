@@ -1,6 +1,7 @@
-package ATD.LKW_trucks.QC_18_SideBarBlocksOfParentCategoriesAndLinkingChildCategory;
+package ATD.Tyres.QC_1104_TyresSelector;
 
-import ATD.LKW_Parent_Category_page_Logic;
+
+import ATD.Tyre_item_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,7 +17,8 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_20_AvailabilityParentCatalogBlock {
+public class QC_1369_TestTyresSizeSelectorPresenceOnProductPage {
+
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -24,17 +26,18 @@ public class QC_20_AvailabilityParentCatalogBlock {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_parent_category,lkw_category,lkw_category_maker,lkw_category_brand,lkw_category_maker_brand,lkw_category_car_list10,lkw_categories_maker");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyre_item");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "Kolesnik")
-    @Description(value = "Test checks presence of Catalog block is sidebar")
-    public void testChecksPresenceOfCatalogBlock(String route) {
+    @Owner(value = "Romaniuta")
+    @Description(value = "Test Checks Tyres Size Selector Presence On Product Page")
+    public void testTyresSizeSelectorPresenceOnProductPage(String route) {
         openPage(route);
-         new LKW_Parent_Category_page_Logic().presenceOfCatalogBlockInSidebar();
+        new Tyre_item_page_Logic().checkTyresHorizontalSelectorVisibility();
     }
+
     @AfterMethod
     public void close() {
         closeWebDriver();

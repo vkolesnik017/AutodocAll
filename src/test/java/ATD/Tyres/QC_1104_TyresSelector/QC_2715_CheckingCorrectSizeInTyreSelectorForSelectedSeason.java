@@ -1,5 +1,6 @@
 package ATD.Tyres.QC_1104_TyresSelector;
 
+import ATD.Tyres_maker_page_Logic;
 import ATD.Tyres_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
@@ -20,6 +21,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 public class QC_2715_CheckingCorrectSizeInTyreSelectorForSelectedSeason {
 
     private Tyres_page_Logic tyresPage = new Tyres_page_Logic();
+    private Tyres_maker_page_Logic makerPage = new Tyres_maker_page_Logic();
 
     @BeforeClass
     void setUp() {
@@ -45,6 +47,34 @@ public class QC_2715_CheckingCorrectSizeInTyreSelectorForSelectedSeason {
                 .mismatchComparisonOfSeasons(winterSeason, allSeasons).selectSeasonInSelector("0").checkVisibleTopTyres()
                 .checkOfAllWidthValues(allSeasons, summerSeason, winterSeason);
     }
+
+    @DataProvider(name = "routesMaker", parallel = true)
+    Object[] dataProviderMaker() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_maker");
+    }
+
+    @Test(dataProvider = "routesMaker")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test Checking the correct size in the tire selector for the selected season")
+    public void testCheckingCorrectSizeInTyreSelectorForSelectedSeasonMaker(String route) {
+        openPage(route);
+        tyresPage.selectSeasonInSelector("allwetter");
+        makerPage.checkVisibleTopTyres();
+        List<String> allSeasons = tyresPage.getAllWidthValuesFromSelector();
+        tyresPage.selectSeasonInSelector("sommer");
+        makerPage.checkVisibleTopTyres();
+        List<String> summerSeason = tyresPage.getAllWidthValuesFromSelector();
+        tyresPage.mismatchComparisonOfSeasons(allSeasons, summerSeason);
+        tyresPage.selectSeasonInSelector("winter");
+        makerPage.checkVisibleTopTyres();
+        List<String> winterSeason = tyresPage.getAllWidthValuesFromSelector();
+        tyresPage.mismatchComparisonOfSeasons(winterSeason, summerSeason)
+                .mismatchComparisonOfSeasons(winterSeason, allSeasons).selectSeasonInSelector("0");
+        makerPage.checkVisibleTopTyres();
+        tyresPage.checkOfAllWidthValues(allSeasons, summerSeason, winterSeason);
+    }
+
 
     @AfterMethod
     public void close() {

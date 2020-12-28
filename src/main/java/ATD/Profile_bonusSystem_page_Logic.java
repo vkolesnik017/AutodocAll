@@ -54,17 +54,17 @@ public class Profile_bonusSystem_page_Logic extends Profile_bonusSystem_page {
         paginationBloc().shouldBe(visible);
         secondPageLink().shouldHave(attribute("href")).click();
         sleep(2000);
-        secondPageLink().shouldNot(have(attribute("href")));
+        secondPageLink().shouldNotBe(visible);
         firstLinkPage().shouldHave(attribute("href")).click();
         sleep(2000);
-        firstLinkPage().shouldNot(have(attribute("href")));
+        firstLinkPage().shouldNotBe(visible);
         secondPageLink().shouldHave(attribute("href"));
         pageLinkNext().shouldHave(attribute("href")).click();
         sleep(2000);
-        pageLinkNext().shouldNot(have(attribute("href")));
+        pageLinkNext().shouldNotBe(visible);
         pageLinkPrev().shouldHave(attribute("href")).click();
         sleep(2000);
-        pageLinkPrev().shouldNot(have(attribute("href")));
+        pageLinkPrev().shouldNotBe(visible);
         pageLinkNext().shouldHave(attribute("href"));
         return this;
     }

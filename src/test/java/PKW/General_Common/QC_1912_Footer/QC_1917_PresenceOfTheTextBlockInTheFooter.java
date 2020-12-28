@@ -30,7 +30,8 @@ public class QC_1917_PresenceOfTheTextBlockInTheFooter {
     @Description(value = "Test checks the elements of the promotion text in the footer")
     public void testTextPromotionBlocksInTheFooter(String route) {
         openPage(route);
-        new Main_page_Logic().checkFooterPromotionTextElements();
+        new Main_page_Logic().checkFooterPromotionTextElements()
+                .checkMehrButtonFunctionalityInPromotionText();
     }
 
     @AfterMethod

@@ -1,6 +1,6 @@
-package ATD.ACC.QC_2129_ResetFiltersBlockOnPageChemistryListing;
+package ATD.Listings.QC_458_ListingViewModes;
 
-import ATD.Listing_chemicals_Page_Logic;
+import ATD.Category_oen_Page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,31 +16,31 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2138_WorkResetFiltersWhenChoosingSeveralCriteriaOnChemistryListing {
+public class QC_2062_RidexPrioritizationInOENListing {
+    private Category_oen_Page_Logic oenPage = new Category_oen_Page_Logic();
 
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "route", parallel = true)
+    @DataProvider(name = "route")
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "listing_chemicals3");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_oen14");
     }
 
     @Test(dataProvider = "route")
     @Flaky
-    @Owner(value = "Sergey-QA")
-    @Description(value = "Test checks work btn reset all filter from filter block if selected generic and brand")
-    public void testCheckingWorkBtnResetAllFilterFromFilterBlock(String route) {
+    @Owner(value = "kolesnik")
+    @Description(value = "Checks Ridex prioritization in OEN listing")
+    public void testCheckRidexPrioritizationInOENListing(String route) {
         openPage(route);
-        new Listing_chemicals_Page_Logic().checkingWorkBtnResetAllFilterFromFilterBlock();
+        int activeRidexProducts = oenPage.getSIzeOfActiveProductsWithBrand("RIDEX");
+        oenPage.checkOenListing(activeRidexProducts, "RIDEX");
     }
 
     @AfterMethod
     private void close() {
         closeWebDriver();
     }
-
-
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Catalog_Mark" parallel="methods" thread-count="2">
+<suite name="CatalogMark" parallel="methods" thread-count="2">
 
     <listeners>
         <listener class-name="Common.ProjectListener"/>
@@ -8,6 +8,8 @@
 
     <test name="QC_2568_MarkPages">
         <classes>
+            <class name="ATD.Catalog_Mark.QC_2568_MarkPages.QC_133_MainIconOfMarkInCategoriesMaker"/>
+            <class name="ATD.Catalog_Mark.QC_2568_MarkPages.QC_136_LinkBlockOfTopBrands"/>
             <class name="ATD.Catalog_Mark.QC_2568_MarkPages.QC_3153_CheckRelinkingBlockByCarBrands"/>
         </classes>
     </test>

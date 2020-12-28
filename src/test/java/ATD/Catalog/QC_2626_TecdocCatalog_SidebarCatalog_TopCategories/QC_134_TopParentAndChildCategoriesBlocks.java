@@ -1,6 +1,6 @@
-package ATD.LKW_trucks.QC_144_Header_trucks_routes;
+package ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories;
 
-import ATD.LKW_Catalog_page_Logic;
+import ATD.LKW_Categories_maker_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -9,14 +9,14 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1508_ConformityHeaderCatalogAndTecDocCatalogWithTruck_lkw {
-
+public class QC_134_TopParentAndChildCategoriesBlocks {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -24,17 +24,20 @@ public class QC_1508_ConformityHeaderCatalogAndTecDocCatalogWithTruck_lkw {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_main");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_categories_maker");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test check compliance Of Header_Catalog and TecDoc catalog with selecting truck")
-    public void testCheckComplianceOfHeaderCatalogAndTecDocCatalog(String route) {
+    @Description(value = "Test checks elements in Top parent and child category blocks")
+    public void testChecksTopParentAndChildCategoryBlocksElements(String route) {
         openPage(route);
-        new LKW_Catalog_page_Logic().comparisonTecDocAndInHeaderCatalogs();
 
+        new LKW_Categories_maker_page_Logic()
+                .checkingOfElementsInParentAndChildBlocks()
+                .selectChildCategoryInTopCategoryBlock()
+                .checkSuccessfullyCategoryMakerPageLoading("https://lkwteile.autodoc.de/ersatzteile/keilrippenriemen-satz-204335/mercedes-benz");
     }
     @AfterMethod
     public void close() {
