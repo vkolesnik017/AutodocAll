@@ -1,10 +1,7 @@
 package ATD.Plus.QC_2361_AtdPlus;
 
 
-import ATD.CartAllData_page_Logic;
-import ATD.Cart_page_Logic;
-import ATD.Main_page_Logic;
-import ATD.Product_page_Logic;
+import ATD.*;
 import AWS.Customer_view_aws;
 import AWS.Order_aws;
 import AWS.ProfilerPage_aws;
@@ -53,6 +50,7 @@ public class QC_3058_CheckingAbsence20PercentDiscountWithPlusPROForFR {
         openPage(route);
         mainPageLogic.loginFromHeader(mail);
         checkingContainsUrl("profile/orders");
+        new Profile_plus_page_Logic().checkPresenceClientID();
         openPage(db.getFullRouteByRouteAndSubroute("prod", "FR", "main", "product2"));
         float priceProduct = productPageLogic.getProductPrice();
         productPageLogic.addProductToCart()

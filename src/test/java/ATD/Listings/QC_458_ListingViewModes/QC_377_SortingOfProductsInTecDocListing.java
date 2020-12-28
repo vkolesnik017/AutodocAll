@@ -1,6 +1,6 @@
-package ATD.LKW_trucks.QC_144_Header_trucks_routes;
+package ATD.Listings.QC_458_ListingViewModes;
 
-import ATD.LKW_Catalog_page_Logic;
+import ATD.Moto_Category_car_list_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -9,13 +9,14 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1508_ConformityHeaderCatalogAndTecDocCatalogWithTruck_lkw {
+public class QC_377_SortingOfProductsInTecDocListing {
 
     @BeforeClass
     void setUp() {
@@ -24,18 +25,20 @@ public class QC_1508_ConformityHeaderCatalogAndTecDocCatalogWithTruck_lkw {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_main");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list2");
+
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test check compliance Of Header_Catalog and TecDoc catalog with selecting truck")
-    public void testCheckComplianceOfHeaderCatalogAndTecDocCatalog(String route) {
+    @Description(value = "Test checks sorting Of products in TecDoc listing")
+    public void testChecksSortingOfProductsInTecDocListing(String route) {
         openPage(route);
-        new LKW_Catalog_page_Logic().comparisonTecDocAndInHeaderCatalogs();
 
+        new Moto_Category_car_list_page_Logic().checkSortingPrice();
     }
+
     @AfterMethod
     public void close() {
         closeWebDriver();

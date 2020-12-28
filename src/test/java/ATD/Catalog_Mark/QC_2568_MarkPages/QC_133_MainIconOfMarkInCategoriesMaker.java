@@ -1,7 +1,6 @@
-package ATD.Tyres.QC_1367_TyresProductPage;
+package ATD.Catalog_Mark.QC_2568_MarkPages;
 
-
-import ATD.Tyre_item_page_Logic;
+import ATD.LKW_Categories_maker_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -17,8 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1369_TestTyresSizeSelectorPresenceOnProductPage {
-
+public class QC_133_MainIconOfMarkInCategoriesMaker {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
@@ -26,18 +24,18 @@ public class QC_1369_TestTyresSizeSelectorPresenceOnProductPage {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyre_item");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_categories_maker");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "Romaniuta")
-    @Description(value = "Test Checks Tyres Size Selector Presence On Product Page")
-    public void testTyresSizeSelectorPresenceOnProductPage(String route) {
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test checks main icon of auto brand")
+    public void testChecksMainIconOfAutoBrand(String route) {
         openPage(route);
-        new Tyre_item_page_Logic().checkTyresHorizontalSelectorVisibility();
-    }
 
+        new LKW_Categories_maker_page_Logic().checkingMainIconOfCarBrand();
+    }
     @AfterMethod
     public void close() {
         closeWebDriver();

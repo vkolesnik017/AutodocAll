@@ -1,6 +1,6 @@
-package ATD.LKW_trucks.QC_144_Header_trucks_routes;
+package ATD.Listings.QC_458_ListingViewModes;
 
-import ATD.LKW_main_page_Logic;
+import ATD.LKW_Category_car_list_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -14,9 +14,9 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_149_TrucksCatalogInHeader_lkw {
+public class QC_97_SortingOfProductsInTecDocListing {
 
     @BeforeClass
     void setUp() {
@@ -25,19 +25,16 @@ public class QC_149_TrucksCatalogInHeader_lkw {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_main");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list10");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks elements of trucks catalog")
-    public void testChecksCategoriesOfTrucksCatalog(String route) {
+    @Description(value = "Test checks sorting of products in TecDoc listing ")
+    public void testChecksSortingOfProductsInTecDocListing(String route) {
         openPage(route);
-        new LKW_main_page_Logic()
-                .checkPagesIsSuccessfulyLoaded()
-                .checkingOfAllCategoriesOfMainBlockTruckCatalog()
-                .checkingChildCategoryOlfilter();
+        new LKW_Category_car_list_page_Logic().checkSortingPrice();
     }
 
     @AfterMethod
