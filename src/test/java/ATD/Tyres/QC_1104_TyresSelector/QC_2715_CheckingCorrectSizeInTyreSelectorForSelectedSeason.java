@@ -26,7 +26,7 @@ public class QC_2715_CheckingCorrectSizeInTyreSelectorForSelectedSeason {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0");
-    } 
+    }
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
@@ -47,6 +47,7 @@ public class QC_2715_CheckingCorrectSizeInTyreSelectorForSelectedSeason {
                 .mismatchComparisonOfSeasons(winterSeason, allSeasons).selectSeasonInSelector("0").checkVisibleTopTyres()
                 .checkOfAllWidthValues(allSeasons, summerSeason, winterSeason);
     }
+
     @DataProvider(name = "routesMaker", parallel = true)
     Object[] dataProviderMaker() throws SQLException {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_maker");
