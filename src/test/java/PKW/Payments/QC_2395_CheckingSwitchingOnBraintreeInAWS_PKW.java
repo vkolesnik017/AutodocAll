@@ -24,7 +24,7 @@ public class QC_2395_CheckingSwitchingOnBraintreeInAWS_PKW {
     }
 
     @DataProvider(name = "shop", parallel = true)
-    Object[] dataProviderProducts() {
+    Object[] dataProviderShop() {
         return new Object[][]{
                 {"AT"},
                 {"NL"},
