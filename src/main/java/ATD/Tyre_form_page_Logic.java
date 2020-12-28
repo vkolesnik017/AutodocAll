@@ -91,8 +91,7 @@ public class Tyre_form_page_Logic extends Tyre_form_page {
         }
         List<Product> listBeforeSorting = new ArrayList<>(productList);
         Comparator<Product> productsComparator = Comparator
-                .comparing((Product p) -> "button ".equals(p.getAttributeOfButton()) ? -1 : 0)
-                .thenComparingDouble(Product::getPriceOfProduct);
+                .comparing((Product p) -> "button ".equals(p.getAttributeOfButton()) ? -1 : 0);
         productList.sort(productsComparator);
         Assert.assertEquals(listBeforeSorting, productList);
         return this;

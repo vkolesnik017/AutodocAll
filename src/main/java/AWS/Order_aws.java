@@ -1162,6 +1162,11 @@ public class Order_aws {
         return Float.valueOf(deliveryCost().getText());
     }
 
+    @Step("Get delivery cost in order from delivery block. Order_aws")
+    public Float getDeliveryCostInOrderFromDeliveryBlock() {
+        return Float.valueOf(deliveryPriceInPaymentAndDeliveryTermsBlock().getValue());
+    }
+
     @Step("Get delivery cost of heavy loads in order. Order_aws")
     public Float getDeliveryCostOfHeavyLoads() {
         return Float.valueOf(deliveryCostOfHeavyLoads().getText());

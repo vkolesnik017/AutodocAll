@@ -34,6 +34,9 @@
 
     <test name="QC_2626_TecdocCatalog_SidebarCatalog_TopCategories">
         <classes>
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_149_TrucksCatalogInHeader_lkw"/>
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_365_PresenceOfHeadlineAtTopCategories"/>
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_1508_ConformityHeaderCatalogAndTecDocCatalogWithTruck_lkw"/>
             <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_134_TopParentAndChildCategoriesBlocks"/>
             <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_22_PresenceOfParentCategoryListInSidebar"/>
             <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_24_PresenceOfChildCategoriesInSideBar"/>
