@@ -45,6 +45,7 @@ public class QC_2923_CheckingAbsenceDiscountOnDeliveryToNotEUCountriesWithPlusPR
         openPage(route);
         mainPageLogic.loginFromHeader(mail);
         checkingContainsUrl("profile/orders");
+        new Profile_plus_page_Logic().checkPresenceClientID();
         deliveryPrice = new Versand_static_page_Logic().getDeliveryPriceForAWS("Schweiz");
         openPage(db.getFullRouteByRouteAndSubroute("prod", "DE", "main", "product"));
         new Product_page_Logic().addProductToCart()
