@@ -15,7 +15,7 @@ public class Search_page {
     }
 
     SelenideElement blockOfHelpSearchProducts() {
-        return $(".filter-not-found__title");
+        return $(".filter-not-found__title strong");
     }
 
     SelenideElement blockOfLinkingCategory() {

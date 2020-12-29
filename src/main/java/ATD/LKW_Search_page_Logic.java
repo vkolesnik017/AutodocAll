@@ -97,4 +97,12 @@ public class LKW_Search_page_Logic extends LKW_Search_page {
         return this;
     }
 
+    @Step("Check elements on search page. LKW_Search_page")
+    public LKW_Search_page_Logic checkElementsOnSearchPage() {
+        Assert.assertTrue(titleOnSearchPage().shouldBe(visible).getText().matches("^\\d*\\sTreffer gefunden für Bremsscheiben"));
+        blockOfHelpSearchProducts().shouldBe(visible).shouldHave(exactText("Konnten Sie nicht finden, wonach Sie suchen? Übermitteln Sie uns eine Anfrage und wir helfen Ihnen, den gewünschten Artikel zu finden."));
+        blockOfLinkingCategory().shouldBe(visible);
+        return this;
+    }
+
 }

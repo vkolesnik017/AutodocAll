@@ -4,8 +4,8 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.$$x;
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
 
 public class LKW_Search_page {
 
@@ -43,4 +43,10 @@ public class LKW_Search_page {
     SelenideElement btnCloseSelectorPopUp() {return $x("//a[@class='back']");}
 
     ElementsCollection allGenerics() {return $$x("//div[@class='slick-list draggable']//label");}
+
+    SelenideElement titleOnSearchPage() { return $(".title_count_search"); }
+
+    SelenideElement blockOfHelpSearchProducts() { return $(".filter-not-found__title strong"); }
+
+    SelenideElement blockOfLinkingCategory() { return $(".sidebar-category"); }
 }
