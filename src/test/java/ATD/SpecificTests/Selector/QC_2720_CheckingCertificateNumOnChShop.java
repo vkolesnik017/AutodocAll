@@ -1,16 +1,11 @@
 package ATD.SpecificTests.Selector;
 
 import ATD.CommonMethods;
-import ATD.Main_page;
 import ATD.Main_page_Logic;
 import Common.Excel;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import java.net.HttpURLConnection;
-import java.net.URL;
 
 import static ATD.CommonMethods.getNameRouteFromJSVarInHTML;
 import static ATD.CommonMethods.openPage;
@@ -24,7 +19,7 @@ public class QC_2720_CheckingCertificateNumOnChShop {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "num", parallel = true)

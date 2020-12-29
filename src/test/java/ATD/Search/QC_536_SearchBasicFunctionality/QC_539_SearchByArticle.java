@@ -1,6 +1,5 @@
 package ATD.Search.QC_536_SearchBasicFunctionality;
 
-import ATD.Listing_page;
 import ATD.Listing_page_Logic;
 import ATD.Main_page_Logic;
 import Common.SetUp;
@@ -15,9 +14,6 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static Common.SetUp.setUpBrowser;
-import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
-import static com.codeborne.selenide.Condition.have;
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -27,7 +23,7 @@ public class QC_539_SearchByArticle {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "route")
