@@ -27,12 +27,12 @@
         </classes>
     </test>
 
-    <test name="QC_2348_KlarnaCheckout_ATD" thread-count="1">
+    <!--<test name="QC_2348_KlarnaCheckout_ATD" thread-count="1">
         <classes>
             <class name="ATD.Payments.QC_2348_KlarnaCheckout_ATD">
             </class>
         </classes>
-    </test>
+    </test>-->
 
     <test name="QC_2158_Klarna_ATD" thread-count="1">
         <classes>

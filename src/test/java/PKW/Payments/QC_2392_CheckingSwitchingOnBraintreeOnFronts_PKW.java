@@ -30,7 +30,7 @@ public class QC_2392_CheckingSwitchingOnBraintreeOnFronts_PKW {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp("PKW").setUpShopsWithSubroute("prod", "AT,NL,DE,FI,SE,ES,IT,PT", "main", "product9");
+        return new SetUp("PKW").setUpShopsWithSubroute("prod", "AT,NL,DE,FI,SE,ES,IT,PT", "main", "product");
     }
 
     @Test(dataProvider = "route")

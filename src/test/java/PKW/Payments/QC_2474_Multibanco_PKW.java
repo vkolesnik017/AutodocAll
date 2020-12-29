@@ -17,6 +17,7 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 import static Common.DataBase.parseUserMailFromBD;
 import static Common.File.assertThatPdfContainsText;
+
 import static Common.SetUp.setUpBrowser;
 import static PKW.CommonMethods.*;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
@@ -26,12 +27,12 @@ public class QC_2474_Multibanco_PKW {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+       setUpBrowser(false, "chrome", "77.0", true);
     }
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp("PKW").setUpShopWithSubroutes("prod", "PT", "main", "product9");
+        return new SetUp("PKW").setUpShopWithSubroutes("prod", "PT", "main", "product");
     }
 
     @Test(dataProvider = "route")

@@ -35,9 +35,9 @@ public class QC_2470_KlarnaCheckout_PKW {
         setUpBrowser(false, "chrome", "77.0");
     }
 
-    @DataProvider(name = "route", parallel = true)
+    @DataProvider(name = "route", parallel = false)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp("PKW").setUpShopsWithSubroute("prod", "FI,SE,NO", "main", "product9");
+        return new SetUp("PKW").setUpShopsWithSubroute("prod", "FI,SE,NO", "main", "product");
     }
 
     @Test(dataProvider = "route")

@@ -32,7 +32,7 @@ public class QC_2158_Klarna_ATD {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp("ATD").setUpShopsWithSubroute("prod", "AT,DE,DK,NL", "main", "product32");
+        return new SetUp("ATD").setUpShopsWithSubroute("prod", "AT,DE,DK,NL,FI,SE,NO", "main", "product32");
     }
 
     @Test(dataProvider = "route")

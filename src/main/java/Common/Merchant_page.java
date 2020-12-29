@@ -44,14 +44,11 @@ public class Merchant_page {
     }
 
     //Elements from the Klarna merchant
-    SelenideElement closeErrorPopupBtn() {
-        return $x("//div[@class='popup-content__buttons']/a");
-    }
     SelenideElement klarnaSubmitBtn() {
-        return $x("//a[@class='yellow klarna-submit']");
+        return $x("//div[@class='klarna-authorize']/a");
     }
     SelenideElement klarnaCancelBtn() {
-        return $x("//a[@class='gray']");
+        return $x("//div[@class='klarna-cancelation']/a");
     }
 
     //Elements from the Sofort merchant
@@ -295,9 +292,7 @@ public class Merchant_page {
     @Step("Checks presence element in merchant page for payment klarna. Merchant_page")
     public CartPayments_page_Logic checkPresenceElementFromMerchantPageForPaymentKlarna() {
         checkingContainsUrl("/klarna");
-        klarnaSubmitBtn().click();
-        closeErrorPopupBtn().shouldBe(visible).click();
-        checkingContainsUrl("/klarna");
+        klarnaSubmitBtn().shouldBe(visible);
         klarnaCancelBtn().click();
         checkingContainsUrl("/basket/payments");
         return page(CartPayments_page_Logic.class);

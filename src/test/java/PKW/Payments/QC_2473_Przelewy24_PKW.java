@@ -35,7 +35,7 @@ public class QC_2473_Przelewy24_PKW {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp("PKW").setUpShopWithSubroutes("prod", "PL", "main", "product9");
+        return new SetUp("PKW").setUpShopWithSubroutes("prod", "PL", "main", "product");
     }
 
     @Test(dataProvider = "route")
