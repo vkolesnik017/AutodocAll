@@ -47,9 +47,10 @@ public class SetUp {
         Configuration.holdBrowserOpen = false;
         Configuration.timeout = 10000;
         chromePrefs.put("plugins.always_open_pdf_externally", download);
+        chromePrefs.put("credentials_enable_service", false);
+        chromePrefs.put("profile.password_manager_enabled", false);
+        chromePrefs.put("password_manager_enabled", false);
         options.setExperimentalOption("prefs", chromePrefs);
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-extensions");
         options.addArguments("--dns-prefetch-disable");
         options.addArguments("--disable-gpu");
         options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
