@@ -21,7 +21,7 @@ public class QC_1858_TranslationBonusToTheHeaderOfOrder {
 
     @BeforeClass
     void setUp() throws SQLException {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
         openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "product32"));
         new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()

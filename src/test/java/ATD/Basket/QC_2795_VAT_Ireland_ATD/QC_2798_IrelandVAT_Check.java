@@ -14,10 +14,12 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.*;
 import static AWS.ProfilerPage_aws.profilerPage_aws;
+import static Common.File.assertThatPdfContainsText;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static mailinator.WebMail.passwordForMail;
@@ -30,7 +32,7 @@ public class QC_2798_IrelandVAT_Check {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", true);
         vatForIE = new PageVAT_aws().getVatForIE();
         close();
     }
@@ -44,7 +46,7 @@ public class QC_2798_IrelandVAT_Check {
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks VAT for Ireland")
-    public void testChecksVatForIreland(String route) throws SQLException {
+    public void testChecksVatForIreland(String route) throws SQLException, IOException {
         openPage(route);
         orderNumber = product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
@@ -71,7 +73,15 @@ public class QC_2798_IrelandVAT_Check {
                 .checkVatStatusInOrder("Mit MwSt " + vatForIE + "%")
                 .openPopUpAccountsAndCheckVat(vatForIE)
                 .closePopupAccounts()
+                .clickReturnButton()
+                .chooseReturnType("Возврат")
+                .clickCheckBoxProductInPopupReturn()
+                .clickCheckBoxDeliveryInPopupReturn()
+                .clickPrintButtonInPopupReturn()
+                .clickBtnClosePopUpReturn()
                 .getArticleId();
+        assertThatPdfContainsText("C:/Users/User/Downloads/_" + orderNumber + ".pdf", "MwSt. " + vatForIE + " %");
+
 
         openPage(profilerPage_aws);
         new ProfilerPage_aws().fillingFieldsOrderIdAndArticleId(orderNumber, articleId)

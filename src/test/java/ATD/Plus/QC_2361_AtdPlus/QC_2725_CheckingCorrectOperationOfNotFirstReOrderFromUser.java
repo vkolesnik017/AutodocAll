@@ -11,13 +11,12 @@ import org.testng.annotations.Test;
 
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
-import static com.codeborne.selenide.Selenide.switchTo;
 
 public class QC_2725_CheckingCorrectOperationOfNotFirstReOrderFromUser {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @Test()

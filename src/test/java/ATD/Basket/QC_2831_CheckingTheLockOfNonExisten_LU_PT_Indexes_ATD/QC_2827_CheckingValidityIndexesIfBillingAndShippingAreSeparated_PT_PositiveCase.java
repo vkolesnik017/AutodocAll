@@ -21,7 +21,7 @@ public class QC_2827_CheckingValidityIndexesIfBillingAndShippingAreSeparated_PT_
 
     @BeforeClass
     void setUp() throws SQLException {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
         openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "PT","main","product32"));
         new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()

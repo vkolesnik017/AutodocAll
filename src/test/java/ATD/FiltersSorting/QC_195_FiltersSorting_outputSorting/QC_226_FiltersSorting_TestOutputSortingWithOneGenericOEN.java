@@ -21,7 +21,7 @@ public class QC_226_FiltersSorting_TestOutputSortingWithOneGenericOEN {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "routes", parallel = true)

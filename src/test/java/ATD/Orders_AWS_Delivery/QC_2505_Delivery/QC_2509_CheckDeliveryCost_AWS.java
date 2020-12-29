@@ -22,7 +22,7 @@ public class QC_2509_CheckDeliveryCost_AWS {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "country", parallel = true)

@@ -26,7 +26,7 @@ public class QC_421_FiltersSorting_TestPriceFilterWithFewProducts {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @Test

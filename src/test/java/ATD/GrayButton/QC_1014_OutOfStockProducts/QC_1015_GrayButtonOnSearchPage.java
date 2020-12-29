@@ -1,6 +1,5 @@
 package ATD.GrayButton.QC_1014_OutOfStockProducts;
 
-import ATD.Main_page_Logic;
 import Common.SetUp;
 import AWS.Login_aws;
 import AWS.WishlistReminderAvailability_aws;
@@ -15,7 +14,6 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
@@ -30,7 +28,7 @@ public class QC_1015_GrayButtonOnSearchPage {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "route")

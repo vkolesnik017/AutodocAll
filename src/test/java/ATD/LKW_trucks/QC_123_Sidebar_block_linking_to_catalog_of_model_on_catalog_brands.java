@@ -19,7 +19,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 public class QC_123_Sidebar_block_linking_to_catalog_of_model_on_catalog_brands {
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "routes", parallel = true)

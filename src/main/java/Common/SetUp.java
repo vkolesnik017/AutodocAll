@@ -1,11 +1,15 @@
 package Common;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.FileDownloadMode;
+import org.openqa.selenium.PageLoadStrategy;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 public class SetUp {
@@ -34,12 +38,22 @@ public class SetUp {
     private String shopsDesktop = "";
 
 
-    public static void setUpBrowser(Boolean Selenoid, String browser, String browserVersion) {
+    public static void setUpBrowser(Boolean Selenoid, String browser, String browserVersion, Boolean download) {
+        HashMap<String,Object> chromePrefs = new HashMap<>();
+        ChromeOptions options = new ChromeOptions();
         Configuration.browser = (browser);
         Configuration.browserVersion = (browserVersion);
         Configuration.startMaximized = true;
         Configuration.holdBrowserOpen = false;
         Configuration.timeout = 10000;
+        chromePrefs.put("plugins.always_open_pdf_externally", download);
+        options.setExperimentalOption("prefs", chromePrefs);
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-extensions");
+        options.addArguments("--dns-prefetch-disable");
+        options.addArguments("--disable-gpu");
+        options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
+        Configuration.browserCapabilities = options;
         if (Selenoid) {
             Configuration.remote = "http://192.168.99.100:4444/wd/hub";
 //            Configuration.driverManagerEnabled = false;
@@ -48,6 +62,14 @@ public class SetUp {
             capabilities.setCapability("enableVideo", false);
             Configuration.browserCapabilities = capabilities;
         }
+    }
+
+//TODO пусть данный метод пока лежит здесь, возможно пригодится в будующем.
+    public static void setUpBrowserWithProxy(Boolean Selenoid, String browser, String browserVersion, Boolean download, String directoryPath) {
+        setUpBrowser(Selenoid, browser, browserVersion, false);
+        Configuration.downloadsFolder = directoryPath;
+        Configuration.proxyEnabled = true;
+        Configuration.fileDownload = FileDownloadMode.PROXY;
     }
 
     public Object[] setUpShop(String envFromTest, String shopFromTest) {

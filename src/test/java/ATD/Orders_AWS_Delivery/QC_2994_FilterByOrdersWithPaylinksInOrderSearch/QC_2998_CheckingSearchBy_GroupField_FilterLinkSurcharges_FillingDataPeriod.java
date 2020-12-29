@@ -17,7 +17,7 @@ public class QC_2998_CheckingSearchBy_GroupField_FilterLinkSurcharges_FillingDat
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "random", parallel = true)

@@ -30,7 +30,7 @@ public class QC_1481_SplitBilling_FirmAndPhysicalPerson_SameCountries_NegativeCa
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "route", parallel = true)

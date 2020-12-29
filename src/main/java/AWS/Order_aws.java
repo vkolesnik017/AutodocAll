@@ -524,6 +524,10 @@ public class Order_aws {
         return $x("//a[@class='btn btn-primary btn-print']");
     }
 
+    private SelenideElement closePopupReturn() {
+        return $x("//div[@id='printGu']//a[@class='btn btn-default btn-close']");
+    }
+
     private SelenideElement payLinkAmount() {
         return $x("//table[contains(@class,'list-paylinks')]/tbody//td[@class='paylink-amount']");
     }
@@ -1343,6 +1347,13 @@ public class Order_aws {
     @Step("Click print button in popup return. Order_aws")
     public Order_aws clickPrintButtonInPopupReturn() {
         printBtnInPopupReturn().click();
+        sleep(5000);
+        return this;
+    }
+
+    @Step("Close popup return. Order_aws")
+    public Order_aws clickBtnClosePopUpReturn() {
+        closePopupReturn().click();
         return this;
     }
 

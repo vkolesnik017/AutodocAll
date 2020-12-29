@@ -23,7 +23,7 @@ public class QC_493_OutputDynamicCharacterisitcOnSearchListing {
 
   @BeforeClass
   void setUp() {
-    setUpBrowser(false, "chrome", "77.0");
+    setUpBrowser(false, "chrome", "77.0", false);
   }
 
   @DataProvider(name = "route")

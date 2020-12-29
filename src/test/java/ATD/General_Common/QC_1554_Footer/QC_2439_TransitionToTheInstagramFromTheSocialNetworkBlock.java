@@ -1,6 +1,5 @@
 package ATD.General_Common.QC_1554_Footer;
 
-import ATD.CommonMethods;
 import ATD.Main_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
@@ -19,7 +18,7 @@ public class QC_2439_TransitionToTheInstagramFromTheSocialNetworkBlock {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "route", parallel = false)

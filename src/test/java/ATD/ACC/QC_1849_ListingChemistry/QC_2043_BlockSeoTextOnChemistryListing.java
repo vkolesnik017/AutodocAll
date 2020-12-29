@@ -20,7 +20,7 @@ public class QC_2043_BlockSeoTextOnChemistryListing {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "route", parallel = true)

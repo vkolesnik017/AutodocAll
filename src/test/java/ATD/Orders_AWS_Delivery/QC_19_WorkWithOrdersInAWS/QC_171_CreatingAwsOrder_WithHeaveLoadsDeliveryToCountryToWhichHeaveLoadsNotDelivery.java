@@ -32,7 +32,7 @@ public class QC_171_CreatingAwsOrder_WithHeaveLoadsDeliveryToCountryToWhichHeave
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "route", parallel = true)

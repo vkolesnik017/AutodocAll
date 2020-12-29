@@ -17,7 +17,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 public class QC_1915_SendingSubscribeFormWithoutOrErrorEmail {
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "route", parallel = true)

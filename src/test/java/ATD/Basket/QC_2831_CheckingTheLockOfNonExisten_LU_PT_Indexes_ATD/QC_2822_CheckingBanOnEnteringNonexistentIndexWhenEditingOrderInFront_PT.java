@@ -1,7 +1,6 @@
 package ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD;
 
 import ATD.CartAddress_page_Logic;
-import ATD.CartPayments_page_Logic;
 import ATD.Product_page_Logic;
 import Common.DataBase;
 import io.qameta.allure.Description;
@@ -25,7 +24,7 @@ public class QC_2822_CheckingBanOnEnteringNonexistentIndexWhenEditingOrderInFron
 
     @BeforeClass
     void setUp() throws SQLException {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
         openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "PT", "main", "product32"));
         new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()

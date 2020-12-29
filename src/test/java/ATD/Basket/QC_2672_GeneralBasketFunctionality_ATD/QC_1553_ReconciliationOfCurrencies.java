@@ -1,7 +1,6 @@
 package ATD.Basket.QC_2672_GeneralBasketFunctionality_ATD;
 
 import ATD.Cart_page_Logic;
-import ATD.Main_page_Logic;
 import ATD.Product_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
@@ -29,7 +28,7 @@ public class QC_1553_ReconciliationOfCurrencies {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "routeAndProductsIdAllShops", parallel = true)
