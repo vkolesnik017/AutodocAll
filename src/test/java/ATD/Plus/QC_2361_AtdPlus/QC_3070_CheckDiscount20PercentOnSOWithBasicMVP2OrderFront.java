@@ -29,7 +29,7 @@ public class QC_3070_CheckDiscount20PercentOnSOWithBasicMVP2OrderFront {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "route", parallel = true)
