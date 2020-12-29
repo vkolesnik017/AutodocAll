@@ -28,7 +28,7 @@ public class QC_2464_Bank_PKW {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0", true);
+        setUpBrowser(false, "chrome", "77.0", false);
 
     }
 

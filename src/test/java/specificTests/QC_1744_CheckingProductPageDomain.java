@@ -15,7 +15,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import static Common.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.url;
@@ -27,7 +26,7 @@ public class QC_1744_CheckingProductPageDomain {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "pkw", parallel = true)

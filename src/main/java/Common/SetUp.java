@@ -60,7 +60,7 @@ public class SetUp {
 
 //TODO пусть данный метод пока лежит здесь, возможно пригодится в будующем.
     public static void setUpBrowserWithProxy(Boolean Selenoid, String browser, String browserVersion, Boolean download, String directoryPath) {
-        setUpBrowser(Selenoid, browser, browserVersion, download);
+        setUpBrowser(Selenoid, browser, browserVersion, false);
         Configuration.downloadsFolder = directoryPath;
         Configuration.proxyEnabled = true;
         Configuration.fileDownload = FileDownloadMode.PROXY;
