@@ -15,6 +15,7 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
@@ -40,10 +41,9 @@ public class QC_554_GoToListingFromSynonymTooltipInSearch {
     public void testGoToListingFromSynonymTooltipSearch(String route) {
         new Login_aws().loginInAwsWithOpen();
         open(categoriesSynonymsAws.urlWithSynonymTurboAndShopDE);
-        String genericName = categoriesSynonymsAws.getGenericNameFromAWS("2234");
         ArrayList<String> synonymsFromAWS = categoriesSynonymsAws.getGenericSynonymsAWS("2234");
-        open(route);
-        new Search_page_Logic().checkGenericSynonyms(genericName, synonymsFromAWS);
+        openPage(route);
+        new Search_page_Logic().checkGenericSynonyms("lader", synonymsFromAWS);
     }
 
     @DataProvider(name = "routeLKW")
