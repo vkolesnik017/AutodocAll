@@ -23,7 +23,7 @@ public class QC_141_FiltersSorting_TestBySideAndBrandAndSideFilterInteraction {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "routesLKW", parallel = true)

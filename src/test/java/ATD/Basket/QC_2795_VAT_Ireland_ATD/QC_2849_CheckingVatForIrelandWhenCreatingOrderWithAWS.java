@@ -22,7 +22,7 @@ public class QC_2849_CheckingVatForIrelandWhenCreatingOrderWithAWS {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
         vatForIE = new PageVAT_aws().getVatForIE();
         close();
     }

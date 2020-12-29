@@ -22,7 +22,7 @@ public class QC_100_AnalogBlockInTecDocListing {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "routes", parallel = true)

@@ -12,7 +12,6 @@ import java.util.stream.Collectors;
 
 import static ATD.CommonMethods.pageReload;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
@@ -142,9 +141,9 @@ public class Tyres_maker_page_Logic extends Tyres_maker_page {
     }
 
     @Step("check default value of width field. Tyres_maker")
-    public Tyres_maker_page_Logic checkVisibleTopTyres() {
-        for (int i = 0; i <4; i++) {
-            visibleTopTyres().get(i).shouldBe(visible);
+    public Tyres_maker_page_Logic displayingVehicleLinksInSelector() {
+        for (int i = 0; i < vehicleLinksInSelector().size(); i++) {
+            vehicleLinksInSelector().get(i).shouldBe(visible);
         }
         return this;
     }

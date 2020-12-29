@@ -24,7 +24,7 @@ public class QC_412_FiltersSorting_TestPriceFilterOnTecdocListingWithPagination 
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @Test

@@ -2,6 +2,8 @@ package Common;
 
 import com.codeborne.pdftest.PDF;
 import io.qameta.allure.Step;
+import org.apache.commons.io.FileUtils;
+
 import java.io.IOException;
 
 import static com.codeborne.pdftest.PDF.containsText;
@@ -29,4 +31,11 @@ public class File {
             System.out.println("Rename failed");
         }
     }
+
+    @Step("Delete directory")
+    public static void deleteDirectory(String path) throws IOException {
+        java.io.File file = new java.io.File(path);
+        FileUtils.deleteDirectory(file);
+    }
+
 }

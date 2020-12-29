@@ -21,7 +21,7 @@ import static com.codeborne.selenide.WebDriverRunner.url;
 public class QC_2624_LinkingBlockToNewSeoPages {
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "routes", parallel = false)

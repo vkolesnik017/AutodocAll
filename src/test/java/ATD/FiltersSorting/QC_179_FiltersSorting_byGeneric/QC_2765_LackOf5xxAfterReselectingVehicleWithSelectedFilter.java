@@ -24,7 +24,7 @@ public class QC_2765_LackOf5xxAfterReselectingVehicleWithSelectedFilter {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "routesCarList", parallel = true)

@@ -30,12 +30,12 @@ public class QC_2465_Sofort_PKW {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp("PKW").setUpShopsWithSubroute("prod", "DE,AT,CH", "main", "product9");
+        return new SetUp("PKW").setUpShopsWithSubroute("prod", "DE,AT,CH", "main", "product");
     }
 
     @Test(dataProvider = "route")

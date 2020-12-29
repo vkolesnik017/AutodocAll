@@ -27,12 +27,12 @@ public class QC_2468_BraintreeCreditCard_PKW {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp("PKW").setUpShopsWithSubroute("prod", "BG,CH,CZ,DK,EN,GR,NO,PL,RO", "main", "product9");
+        return new SetUp("PKW").setUpShopsWithSubroute("prod", "BG,CH,CZ,DK,EN,GR,NO,PL,RO", "main", "product");
     }
 
     @Test(dataProvider = "route")

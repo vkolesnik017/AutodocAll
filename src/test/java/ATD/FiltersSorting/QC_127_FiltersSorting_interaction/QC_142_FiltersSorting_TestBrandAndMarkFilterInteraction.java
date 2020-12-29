@@ -22,7 +22,7 @@ public class QC_142_FiltersSorting_TestBrandAndMarkFilterInteraction {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @Test

@@ -25,7 +25,7 @@ public class QC_490_OutputDynamicCharacteristicsOnOenListing {
 
   @BeforeClass
   void setUp() {
-    setUpBrowser(false, "chrome", "77.0");
+    setUpBrowser(false, "chrome", "77.0", false);
   }
 
   @DataProvider(name = "route")

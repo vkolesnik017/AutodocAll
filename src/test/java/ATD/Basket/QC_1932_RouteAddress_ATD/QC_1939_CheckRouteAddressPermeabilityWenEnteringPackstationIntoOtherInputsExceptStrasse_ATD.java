@@ -26,7 +26,7 @@ public class QC_1939_CheckRouteAddressPermeabilityWenEnteringPackstationIntoOthe
 
     @BeforeClass
     void setUp() throws SQLException {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
         String mail = "QC_1939_autotest@mailinator.com";
         openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "product32"));
         new Product_page_Logic().addProductToCart()

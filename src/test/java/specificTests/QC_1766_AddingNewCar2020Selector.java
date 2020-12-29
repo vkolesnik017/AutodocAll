@@ -19,7 +19,6 @@ import static ATD.CommonMethods.openPage;
 import static Common.Excel.parseExcel;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_1766_AddingNewCar2020Selector {
@@ -29,7 +28,7 @@ public class QC_1766_AddingNewCar2020Selector {
 
     @BeforeClass
     void setUp() throws IOException {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "data", parallel = false)

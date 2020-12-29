@@ -20,7 +20,7 @@ public class QC_707_FAQ_TestFAQformValidationEmptyFields {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @Test

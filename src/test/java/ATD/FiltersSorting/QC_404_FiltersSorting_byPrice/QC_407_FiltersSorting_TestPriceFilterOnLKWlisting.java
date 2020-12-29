@@ -26,7 +26,7 @@ public class QC_407_FiltersSorting_TestPriceFilterOnLKWlisting {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @Test

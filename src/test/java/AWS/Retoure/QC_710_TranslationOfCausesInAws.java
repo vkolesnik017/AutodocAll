@@ -22,7 +22,7 @@ public class QC_710_TranslationOfCausesInAws {
 
   @BeforeClass
   void setUp() {
-    setUpBrowser(false, "chrome", "77.0");
+    setUpBrowser(false, "chrome", "77.0", false);
     orderAws.openOrderInAwsWithLogin()
             .setStatusOrderToVersendetVorkasse();
   }

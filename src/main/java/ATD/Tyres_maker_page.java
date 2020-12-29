@@ -49,4 +49,6 @@ public class Tyres_maker_page {
 
     ElementsCollection visibleTopTyres() {return $$x("//div[contains(@class,'slick-active')]").filter(visible);}
 
+    ElementsCollection vehicleLinksInSelector() {return $$x("//ul[@class='select_links']//li").filter(visible);}
+
 }

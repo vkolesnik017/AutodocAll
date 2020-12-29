@@ -19,7 +19,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import static ATD.CommonMethods.openPage;
-import static Common.CommonMethods.roundOfTheCost;
 import static Common.SetUp.setUpBrowser;
 import static AWS.SearchOrders_page_aws.searchOrderPageURL;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
@@ -37,7 +36,7 @@ public class QC_21_CreatingAwsOrder {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "route", parallel = true)

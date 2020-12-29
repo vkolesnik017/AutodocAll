@@ -19,7 +19,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class QC_92_ResetOfValuesInTruckSelector {
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "routes", parallel = true)
