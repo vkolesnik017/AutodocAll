@@ -26,7 +26,7 @@ public class QC_419_FiltersSorting_TestPriceFilterResetACC {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @Test

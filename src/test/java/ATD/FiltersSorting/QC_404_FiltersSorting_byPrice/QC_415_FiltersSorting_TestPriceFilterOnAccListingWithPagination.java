@@ -23,7 +23,7 @@ public class QC_415_FiltersSorting_TestPriceFilterOnAccListingWithPagination {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @Test

@@ -18,7 +18,7 @@ public class QC_1868_DisplayingOENNumberWithTheSelectedCar {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "routes", parallel = true)

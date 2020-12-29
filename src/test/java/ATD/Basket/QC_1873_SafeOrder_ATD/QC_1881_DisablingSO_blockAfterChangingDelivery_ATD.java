@@ -18,7 +18,7 @@ public class QC_1881_DisablingSO_blockAfterChangingDelivery_ATD {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "shop", parallel = true)

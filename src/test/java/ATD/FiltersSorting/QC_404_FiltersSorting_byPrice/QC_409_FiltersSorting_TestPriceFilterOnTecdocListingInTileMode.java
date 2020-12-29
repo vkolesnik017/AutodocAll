@@ -22,7 +22,7 @@ public class QC_409_FiltersSorting_TestPriceFilterOnTecdocListingInTileMode {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @Test

@@ -21,7 +21,7 @@ public class QC_2080_CheckingForPopUpAboutInvalidEmailAndWithCheckbox {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "routes", parallel = true)

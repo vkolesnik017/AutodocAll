@@ -22,7 +22,7 @@ public class QC_627_NestingLevelsOfTecDocCatalog {
 
   @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {

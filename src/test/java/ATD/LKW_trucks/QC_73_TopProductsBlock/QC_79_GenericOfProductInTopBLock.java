@@ -20,7 +20,7 @@ public class QC_79_GenericOfProductInTopBLock {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "routesCategory", parallel = true)

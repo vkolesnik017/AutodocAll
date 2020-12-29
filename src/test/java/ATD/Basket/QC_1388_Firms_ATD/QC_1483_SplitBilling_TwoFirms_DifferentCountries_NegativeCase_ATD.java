@@ -34,7 +34,7 @@ public class QC_1483_SplitBilling_TwoFirms_DifferentCountries_NegativeCase_ATD {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "route", parallel = true)

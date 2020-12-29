@@ -24,7 +24,7 @@ public class QC_2337_addingNewPkwMotoInSelector extends Main_page {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
         Configuration.pageLoadStrategy = "normal";
     }
 

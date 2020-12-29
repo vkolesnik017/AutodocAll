@@ -25,7 +25,7 @@ public class QC_1052_PfandsLabelDisplayed {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "products", parallel = true)

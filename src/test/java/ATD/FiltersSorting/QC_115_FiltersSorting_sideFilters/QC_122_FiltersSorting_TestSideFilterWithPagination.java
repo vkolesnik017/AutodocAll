@@ -23,7 +23,7 @@ public class QC_122_FiltersSorting_TestSideFilterWithPagination {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0",false);
     }
 
     @DataProvider(name = "routes", parallel = true)

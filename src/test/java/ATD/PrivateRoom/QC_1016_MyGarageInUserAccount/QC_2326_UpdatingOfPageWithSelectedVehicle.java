@@ -24,7 +24,7 @@ public class QC_2326_UpdatingOfPageWithSelectedVehicle {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "routesCheck", parallel = true)

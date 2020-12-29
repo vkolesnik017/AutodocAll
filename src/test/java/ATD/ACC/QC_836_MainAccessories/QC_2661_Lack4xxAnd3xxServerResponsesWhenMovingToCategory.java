@@ -25,7 +25,7 @@ public class QC_2661_Lack4xxAnd3xxServerResponsesWhenMovingToCategory {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "route", parallel = true)

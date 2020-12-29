@@ -26,7 +26,7 @@ public class QC_2046_CategoriesSelectedLogicalUnionInSidebarOnChemistryListing {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "route", parallel = true)

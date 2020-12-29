@@ -29,7 +29,7 @@ public class QC_1390_Firms_DE_PL_SplitBilling_DifferentCountries_ATD {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "routePL", parallel = true)

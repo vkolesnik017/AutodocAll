@@ -20,7 +20,7 @@ public class QC_2395_CheckingSwitchingOnBraintreeInAWS_PKW {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "shop", parallel = true)

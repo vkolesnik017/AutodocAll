@@ -2,6 +2,7 @@ package Common;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.FileDownloadMode;
+import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
@@ -47,6 +48,11 @@ public class SetUp {
         Configuration.timeout = 10000;
         chromePrefs.put("plugins.always_open_pdf_externally", download);
         options.setExperimentalOption("prefs", chromePrefs);
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-extensions");
+        options.addArguments("--dns-prefetch-disable");
+        options.addArguments("--disable-gpu");
+        options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
         Configuration.browserCapabilities = options;
         if (Selenoid) {
             Configuration.remote = "http://192.168.99.100:4444/wd/hub";

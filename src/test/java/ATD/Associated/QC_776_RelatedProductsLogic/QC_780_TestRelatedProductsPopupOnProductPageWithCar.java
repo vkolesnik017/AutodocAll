@@ -22,7 +22,7 @@ import static com.codeborne.selenide.Selenide.open;
 public class QC_780_TestRelatedProductsPopupOnProductPageWithCar {
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "routes", parallel = true)

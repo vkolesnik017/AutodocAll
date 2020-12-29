@@ -32,7 +32,7 @@ public class QC_173_CreatingAwsOrder_WithDangerousGoodsToCountryToWhichItIsNotDe
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "route", parallel = true)

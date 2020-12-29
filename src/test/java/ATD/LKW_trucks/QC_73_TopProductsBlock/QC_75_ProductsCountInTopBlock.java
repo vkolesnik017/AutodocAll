@@ -20,7 +20,7 @@ public class QC_75_ProductsCountInTopBlock {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "routesCategories", parallel = true)

@@ -21,7 +21,7 @@ public class QC_228_FiltersSorting_TestOutputSortingOvercategoryRoute {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @Test

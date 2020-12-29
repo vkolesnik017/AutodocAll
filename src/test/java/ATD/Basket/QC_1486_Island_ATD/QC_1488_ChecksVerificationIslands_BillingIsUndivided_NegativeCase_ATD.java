@@ -30,7 +30,7 @@ public class QC_1488_ChecksVerificationIslands_BillingIsUndivided_NegativeCase_A
 
     @BeforeClass
     void setUp() throws Exception {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
         deliveryPrice = new Versand_static_page_Logic().getDeliveryPrice("Frankreich");
     }
 
