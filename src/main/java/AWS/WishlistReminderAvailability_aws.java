@@ -122,17 +122,16 @@ public class WishlistReminderAvailability_aws {
                 article = articleCategoryInTable(nameCategory).getText();
                 productID = idCategoryInTable(nameCategory).getText();
                 numberOfRequests = numberOfRequests(nameCategory).getText();
+                openPage(route);
+                new Main_page_Logic().useSearch(article);
+                if (search_page_logic.buttonProductById(productID).isDisplayed()) {
+                    search_page_logic.clickButtonProductById(productID);
+                    search_page_logic.sendRequestByGrayButtonFromSearchPage(email);
+                    break;
+                } else {
+                    open(urlWithCurrentDate);
+                }
             }
-            openPage(route);
-            new Main_page_Logic().useSearch(article);
-            if (search_page_logic.buttonProductById(productID).isDisplayed()) {
-                search_page_logic.clickButtonProductById(productID);
-                search_page_logic.sendRequestByGrayButtonFromSearchPage(email);
-                break;
-            } else {
-                open(urlWithCurrentDate);
-            }
-
         }
         parameters.add(numberOfRequests);
         parameters.add(productID);
