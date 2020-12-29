@@ -21,7 +21,7 @@ public class QC_220_GdprRegistrationOnMain {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "route")

@@ -21,7 +21,7 @@ public class QC_1372_TestProductTitlePresenceOnTyresProductPage {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "routes", parallel = true)

@@ -23,7 +23,7 @@ public class QC_772_RegKbaSelector {
 
   @BeforeClass
   void setUp() {
-    setUpBrowser(false, "chrome", "77.0");
+    setUpBrowser(false, "chrome", "77.0", false);
   }
 
   @DataProvider(name = "routeAndKbaNumbers", parallel = true)

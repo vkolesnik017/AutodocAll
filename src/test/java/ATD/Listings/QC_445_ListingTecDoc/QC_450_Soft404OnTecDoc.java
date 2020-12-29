@@ -23,7 +23,7 @@ public class QC_450_Soft404OnTecDoc {
 
   @BeforeClass
   void setUp() {
-    setUpBrowser(false, "chrome", "77.0");
+    setUpBrowser(false, "chrome", "77.0", false);
   }
 
   @DataProvider(name = "route")

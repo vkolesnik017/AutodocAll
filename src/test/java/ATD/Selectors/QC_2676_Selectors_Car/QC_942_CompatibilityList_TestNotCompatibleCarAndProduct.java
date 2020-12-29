@@ -20,7 +20,7 @@ public class QC_942_CompatibilityList_TestNotCompatibleCarAndProduct {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @Test

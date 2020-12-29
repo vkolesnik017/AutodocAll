@@ -22,7 +22,7 @@ public class QC_2403_CheckProductSortingByPriceNettoInSearchListing {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     private List<String> searchValues = Arrays.asList("BOSCH", "Scheibenwischer", "Bremsscheiben", "Motoröl", "agr ventil");

@@ -23,7 +23,7 @@ public class QC_408_FiltersSorting_TestPriceFilterOnACClisting {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @Test

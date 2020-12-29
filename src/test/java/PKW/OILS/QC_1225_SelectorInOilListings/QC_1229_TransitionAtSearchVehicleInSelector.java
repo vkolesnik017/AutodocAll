@@ -19,7 +19,7 @@ import static PKW.CommonMethods.checkingContainsUrl;
 public class QC_1229_TransitionAtSearchVehicleInSelector {
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "routes", parallel = true)

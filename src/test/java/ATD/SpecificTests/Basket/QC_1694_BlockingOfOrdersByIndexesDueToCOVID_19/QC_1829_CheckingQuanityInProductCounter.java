@@ -26,7 +26,7 @@ public class QC_1829_CheckingQuanityInProductCounter {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
         Configuration.pageLoadStrategy = "none";
     }
 

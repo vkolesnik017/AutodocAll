@@ -21,7 +21,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class QC_201_Separation_of_car_selector_session_from_LKW {
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "routes", parallel = true)

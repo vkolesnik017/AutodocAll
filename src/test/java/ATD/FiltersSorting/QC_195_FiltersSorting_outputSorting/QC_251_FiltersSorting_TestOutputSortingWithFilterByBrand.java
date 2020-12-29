@@ -22,7 +22,7 @@ public class QC_251_FiltersSorting_TestOutputSortingWithFilterByBrand {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @Test

@@ -24,7 +24,7 @@ public class QC_2864_InvalidIndexIsNotSavedAfterExitingAnOrderInAWS_LU {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @Test()

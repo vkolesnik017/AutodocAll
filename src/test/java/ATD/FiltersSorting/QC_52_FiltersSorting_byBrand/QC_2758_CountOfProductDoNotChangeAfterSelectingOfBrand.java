@@ -23,7 +23,7 @@ public class QC_2758_CountOfProductDoNotChangeAfterSelectingOfBrand {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {

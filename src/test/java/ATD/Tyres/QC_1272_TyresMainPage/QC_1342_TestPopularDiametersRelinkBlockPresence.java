@@ -22,7 +22,7 @@ public class QC_1342_TestPopularDiametersRelinkBlockPresence {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "routesTyresPage", parallel = true)
