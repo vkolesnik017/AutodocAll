@@ -147,6 +147,20 @@ public class Versand_static_page_Logic extends Versand_static_page {
     }
 
 
+    @Step("Get delivery price for current country for a user with a subscription plus pro. Versand_static_page")
+    public float getDeliveryPriceForCurrentCountryForUserWithSubscriptionPlusPro(String country, String mail) throws Exception {
+        float deliveryPriceCurrentCountry = getDeliveryPriceOfCurrentCountry(country);
+        float exactDeliveryPrice;
+        if (mail.contains("plusPro")) {
+            exactDeliveryPrice = deliveryPriceCurrentCountry * 0.7f;
+        } else {
+            exactDeliveryPrice = deliveryPriceCurrentCountry;
+        }
+        return exactDeliveryPrice;
+    }
+
+
+
     @Step("Get Safe Order price discount with any subscription or without subscription. Versand_static_page")
     public float getSafeOrderPriceWithAnyDiscountAndSubscription(String mail) throws SQLException {
         openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "staticVersand"));
@@ -162,19 +176,6 @@ public class Versand_static_page_Logic extends Versand_static_page {
             safeOrderPriceWithDiscount = safeOrderPrice;
         }
         return safeOrderPriceWithDiscount;
-    }
-
-
-    @Step("Get delivery price for current country for a user with a subscription plus pro. Versand_static_page")
-    public float getDeliveryPriceForCurrentCountryForUserWithSubscriptionPlusPro(String country, String mail) throws Exception {
-        float deliveryPriceCurrentCountry = getDeliveryPriceOfCurrentCountry(country);
-        float exactDeliveryPrice;
-        if (mail.contains("plusPro")) {
-            exactDeliveryPrice = deliveryPriceCurrentCountry * 0.7f;
-        } else {
-            exactDeliveryPrice = deliveryPriceCurrentCountry;
-        }
-        return exactDeliveryPrice;
     }
 
 

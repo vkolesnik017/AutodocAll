@@ -18,7 +18,9 @@
             <class name="ATD.Plus.QC_2361_AtdPlus.QC_2923_CheckingAbsenceDiscountOnDeliveryToNotEUCountriesWithPlusPRO"/>
             <class name="ATD.Plus.QC_2361_AtdPlus.QC_3058_CheckingAbsence20PercentDiscountWithPlusPROForFR"/>
             <class name="ATD.Plus.QC_2361_AtdPlus.QC_3064_CheckingAbsence20PercentDiscountWithPlusPROFromFRToDE"/>
-            <class name="ATD.Plus.QC_2361_AtdPlus.QC_3070_CheckDiscount20PercentOnSOWithBasicMVP2"/>
+            <class name="ATD.Plus.QC_2361_AtdPlus.QC_3070_CheckDiscount20PercentOnSOWithBasicMVP2OrderFront"/>
+            <class name="ATD.Plus.QC_2361_AtdPlus.QC_3071_CheckDiscount35PercentOnSOWithOptimumMVP2OrderFront"/>
+            <class name="ATD.Plus.QC_2361_AtdPlus.QC_3072_CheckDiscount50PercentOnSOWithProMVP2OrderFront"/>
         </classes>
     </test>
 
