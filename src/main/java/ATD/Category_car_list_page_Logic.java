@@ -436,7 +436,7 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
     }
 
     @Step("get price title of product. Category_car_list_page")
-    public List<String> getPriceTitle(){
+    public List<String> getPriceTitle() {
         List<String> priceTitle = priceTitle().stream().map(n -> CommonMethods.getTextFromUnVisibleElement(n)).collect(Collectors.toList());
         return priceTitle;
     }
@@ -448,8 +448,28 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
     }
 
     @Step("get price title of product table view. Category_car_list_page")
-    public List<String> getPriceTitleTableView(){
+    public List<String> getPriceTitleTableView() {
         List<String> priceTitle = priceTitleTableView().stream().map(n -> CommonMethods.getTextFromUnVisibleElement(n)).collect(Collectors.toList());
         return priceTitle;
+    }
+
+    @Step("displaying of soft 404. Category_car_list_page")
+    public Category_car_list_page_Logic displaySoft404Form() {
+        soft404().shouldBe(visible);
+        return this;
+    }
+
+    @Step("display TOP linking block in SideBar. Category_car_list_page")
+    public Category_car_list_page_Logic displayTopLinkingBlockInSideBar() {
+        titleOfTopLinkingBLockInSidebar().shouldBe(visible).shouldNotBe(empty);
+        priceOfTopLinkingBLockInSidebar().shouldBe(visible).shouldNotBe(empty);
+        imageOfTopLinkingBLockInSidebar().shouldBe(visible);
+        return this;
+    }
+
+    @Step("click On 'Add to basket' button  Of Top Linking BLock In Sidebar. Category_car_list_page")
+    public Category_car_list_page_Logic clickOnBtnAddToBasketOfTopLinkingBLockInSidebar() {
+        btnAddToBasketOfTopLinkingBLockInSidebar().shouldBe(visible).click();
+        return this;
     }
 }

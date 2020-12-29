@@ -1238,6 +1238,7 @@ public class Product_page_Logic extends Product_page {
         Selenide.actions().moveToElement(btnShowMoreInRidexBlock()).click().build().perform();
         return this;
     }
+
     @Step("presence Price per meter title. Product page")
     public Product_page_Logic presencePricePerMeterTitle() {
         pricePerMeter().shouldBe(visible);
@@ -1253,9 +1254,44 @@ public class Product_page_Logic extends Product_page {
     @Step("check elements of candles analog block. Product page")
     public Product_page_Logic checkElementsOfCandlesAnalogBlock() {
         headlineOfCandlesAnalogBlock().shouldBe(visible);
-        for (int i=0;i<brandsInCandlesAnalogBlock().size();i++){
+        for (int i = 0; i < brandsInCandlesAnalogBlock().size(); i++) {
             brandsInCandlesAnalogBlock().get(i).shouldBe(visible).shouldNotBe(empty);
             artListInCandlesAnalogBlock().get(i).shouldBe(visible).shouldNotBe(empty);
+        }
+        return this;
+    }
+
+    @Step("display Of Dangerous Info Block. Product page")
+    public Product_page_Logic displayOfDangerousInfoBlock() {
+        dangerousInfoBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("display Of Dangerous signal word. Product page")
+    public Product_page_Logic displayOfDangerousSignalWord(String dangerousWord) {
+        dangerousSignalWord().shouldBe(visible).shouldHave(text(dangerousWord));
+        return this;
+    }
+
+    @Step("compare Dangerous Pictogram With Aws. Product page")
+    public Product_page_Logic compareDangerousPictogramWithAws(List<String> listFromAws) {
+        List<String> dangerousPictogram = new ArrayList<>(getAttributeOfWarningIconInPopUp());
+        Assert.assertEquals(dangerousPictogram, listFromAws);
+        return this;
+    }
+
+    @Step("compare Dangerous Info Text With Aws. Product page")
+    public Product_page_Logic compareDangerousInfoTextWithAws(List<String> dangerousLabel, String file) {
+        btnMoreOfDangerousInfoBlock().click();
+        Excel exelFile = new Excel();
+        List<String> dangerousInfoText = new ArrayList<>();
+        List<String> allDangerousLabels = exelFile.readFromExcel(file, "qc_2811", 1);
+        for (int i = 0; i < dangerousLabel.size(); i++) {
+            int labelPosition = allDangerousLabels.indexOf(dangerousLabel.get(i));
+            dangerousInfoText.add(exelFile.getCellValueFromExel(file, "qc_2811", 2, labelPosition));
+        }
+        for (String e : dangerousInfoText) {
+            Assert.assertTrue(infoTextOfDangerousInfoBlock().getText().contains(e));
         }
         return this;
     }
