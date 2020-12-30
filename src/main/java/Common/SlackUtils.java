@@ -1,6 +1,7 @@
 package Common;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.qameta.allure.Step;
 import lombok.*;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
@@ -23,6 +24,7 @@ public class SlackUtils implements Serializable {
     private String text;
     private String icon_emoji;
 
+    @Step("Sending notification to Slack. SlackUtils")
     public static void sendMessage(SlackUtils message, String slackWebhookUrl) {
         CloseableHttpClient client = HttpClients.createDefault();
         HttpPost httpPost = new HttpPost(slackWebhookUrl);

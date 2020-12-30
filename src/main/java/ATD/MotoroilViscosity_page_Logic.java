@@ -5,7 +5,7 @@ import io.qameta.allure.Step;
 
 public class MotoroilViscosity_page_Logic extends MotoroilViscosity_page{
 
-    @Step("Checks visibility of viscosity oil value in selector. MMotoroilViscosity_page")
+    @Step("Checks visibility of viscosity oil value in selector. MotoroilViscosity_page")
     public MotoroilViscosity_page_Logic checkVisibilityOfViscosityOilValueInSelector() {
         selectorViscosityBlock().scrollTo().shouldBe(visible);
         viscosityOilNameInSelector().shouldBe(visible).shouldHave(attribute("selected"));
