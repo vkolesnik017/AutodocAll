@@ -1282,12 +1282,18 @@ public class Product_page_Logic extends Product_page {
 
     @Step("compare Dangerous Info Text With Aws. Product page")
     public Product_page_Logic compareDangerousInfoTextWithAws(List<String> dangerousLabel, String file) {
-        btnMoreOfDangerousInfoBlock().click();
+        if (btnMoreOfDangerousInfoBlock().isDisplayed()) {
+            btnMoreOfDangerousInfoBlock().click();
+        }
         Excel exelFile = new Excel();
         List<String> dangerousInfoText = new ArrayList<>();
+        List<String> labels = new ArrayList<>();
         List<String> allDangerousLabels = exelFile.readFromExcel(file, "qc_2811", 1);
+        for (int i = 0; i < allDangerousLabels.size(); i++) {
+            labels.add(allDangerousLabels.get(i).replaceAll("\\s", ""));
+        }
         for (int i = 0; i < dangerousLabel.size(); i++) {
-            int labelPosition = allDangerousLabels.indexOf(dangerousLabel.get(i));
+            int labelPosition = labels.indexOf(dangerousLabel.get(i));
             dangerousInfoText.add(exelFile.getCellValueFromExel(file, "qc_2811", 2, labelPosition));
         }
         for (String e : dangerousInfoText) {

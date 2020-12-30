@@ -141,7 +141,7 @@ public class ProductCard_aws {
     }
 
     private ElementsCollection hazardStatementLabel() {
-        return $$("#form_hazardTypes_1____chzn_c_59 span");
+        return $$("#form_hazardTypes_1____chzn span");
     }
 
     String productId;
@@ -376,6 +376,18 @@ public class ProductCard_aws {
         }
         Assert.assertTrue(hazardStatement.size() > 1);
         return hazardStatement;
+    }
+
+    @Step("check count of selected dangerous pictogram. ProductCard_aws")
+    public ProductCard_aws checkCountOfSelectedPictogram(int expectedCount) {
+        iconIfDangerousProducts().shouldHaveSize(expectedCount);
+        return this;
+    }
+
+    @Step("selected signal dangerous checkbox. ProductCard_aws")
+    public ProductCard_aws selectedSignalDangerousCheckBox() {
+        signalAttentionCheckBox().shouldHave(attribute("checked", "true"));
+        return this;
     }
 
 }
