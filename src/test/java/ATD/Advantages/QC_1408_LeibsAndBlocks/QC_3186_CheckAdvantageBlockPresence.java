@@ -1,4 +1,4 @@
-package ATD.OILS;
+package ATD.Advantages.QC_1408_LeibsAndBlocks;
 
 import ATD.Motoroil_page_Logic;
 import Common.SetUp;
@@ -21,7 +21,7 @@ public class QC_3186_CheckAdvantageBlockPresence {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0",false);
     }
 
     @DataProvider(name = "routes", parallel = true)

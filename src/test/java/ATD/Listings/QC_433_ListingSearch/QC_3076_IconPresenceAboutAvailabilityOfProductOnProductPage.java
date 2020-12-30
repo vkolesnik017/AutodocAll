@@ -1,6 +1,6 @@
-package ATD.OILS;
+package ATD.Listings.QC_433_ListingSearch;
 
-import ATD.Motoroil_page_Logic;
+import ATD.Product_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,29 +16,28 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_3172_CheckKBAInfoPopUPPresence {
+public class QC_3076_IconPresenceAboutAvailabilityOfProductOnProductPage {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0",false);
     }
 
-    @DataProvider(name = "routes", parallel = true)
+    @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "motoroil");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE","main","product60");
     }
 
-    @Test(dataProvider = "routes")
+    @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "OlhaLavrynenko")
-    @Description(value = "Test checks KBA Info Pop up Presence on the Main oil page ")
-    public void testChecksKbaInfoPopUp(String route) {
+    @Description(value = "Going to search page from search bar and check of icon Availability of product on product page")
+    public void testCheckIconAvailabilityOfProductOnProductPage(String route) {
         openPage(route);
-        new Motoroil_page_Logic().infoKbaPopUpPresence();
+        new Product_page_Logic().checkQuantityBlockVisibilityOnProductPage();
     }
-
     @AfterMethod
-    public void close() {
+    private void close() {
         closeWebDriver();
     }
 }

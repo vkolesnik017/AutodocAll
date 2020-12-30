@@ -1,4 +1,4 @@
-package ATD.OILS;
+package ATD.Selectors.QC_771_RegKbaSelector;
 
 import ATD.Motoroil_page_Logic;
 import Common.SetUp;
@@ -10,18 +10,17 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_3170_CheckErrorMessageInKbaBlockInvalidData {
+public class QC_3171_CheckErrorMessageInKbaSelectorEmptyFields {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0",false);
     }
 
     @DataProvider(name = "routes", parallel = true)
@@ -32,10 +31,10 @@ public class QC_3170_CheckErrorMessageInKbaBlockInvalidData {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "OlhaLavrynenko")
-    @Description(value = "Test checks error message after sending kba block with invalid data on the Main oil page ")
-    public void testChecksErrorMessageInvalidData(String route) throws IOException {
+    @Description(value = "Test checks error message visibility after sending the kba selector with empty fields ")
+    public void testChecksErrorMessagePresenceEmptyFields(String route) {
         openPage(route);
-        new Motoroil_page_Logic().sendKbaSelectorFormInvalidData();
+        new Motoroil_page_Logic().sendKbaSelectorFormEmptyFields();
     }
 
     @AfterMethod

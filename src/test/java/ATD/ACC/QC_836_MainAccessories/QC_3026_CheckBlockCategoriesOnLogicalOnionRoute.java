@@ -24,7 +24,7 @@ public class QC_3026_CheckBlockCategoriesOnLogicalOnionRoute {
     private Index_accessories_group_page_Logic index_accessories_group_page_logic = new Index_accessories_group_page_Logic();
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "87.0");
+        setUpBrowser(false, "chrome", "87.0",false);
     }
 
     @DataProvider(name = "route", parallel = true)

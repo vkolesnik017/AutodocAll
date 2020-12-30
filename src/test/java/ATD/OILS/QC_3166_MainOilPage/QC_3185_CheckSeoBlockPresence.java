@@ -1,4 +1,4 @@
-package ATD.OILS;
+package ATD.OILS.QC_3166_MainOilPage;
 
 import ATD.Motoroil_page_Logic;
 import Common.SetUp;
@@ -16,25 +16,25 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_3171_CheckErrorMessageInKbaSelectorEmptyFields {
+public class QC_3185_CheckSeoBlockPresence {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0",false);
     }
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "motoroil");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE","main","motoroil");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "OlhaLavrynenko")
-    @Description(value = "Test checks error message visibility after sending the kba selector with empty fields ")
-    public void testChecksErrorMessagePresenceEmptyFields(String route) {
+    @Description(value = "Test checks Seo block Presence on the Main oil page ")
+    public void testChecksSeoBlockPresence(String route) {
         openPage(route);
-        new Motoroil_page_Logic().sendKbaSelectorFormEmptyFields();
+        new Motoroil_page_Logic().seoBlockPresence();
     }
 
     @AfterMethod

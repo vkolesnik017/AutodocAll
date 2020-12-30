@@ -1,4 +1,4 @@
-package ATD.OILS;
+package ATD.Selectors.QC_2676_Selectors_Car;
 
 import ATD.Motoroil_page_Logic;
 import Common.SetUp;
@@ -16,25 +16,24 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_3184_ReviewsBlockPresence {
-
+public class QC_3167_CheckCarSelectorPresence {
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0",false);
     }
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE","main","motoroil");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "motoroil");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "OlhaLavrynenko")
-    @Description(value = "Test checks Reviews block Presence on the Main oil page ")
-    public void testChecksReviewsBlockPresence(String route) {
+    @Description(value = "Test checks Oil Selector Presence on the Main oil page ")
+    public void testChecksOilSelector(String route) {
         openPage(route);
-        new Motoroil_page_Logic().reviewsBlockPresence();
+        new Motoroil_page_Logic().checkOilSelectorPresence();
     }
 
     @AfterMethod

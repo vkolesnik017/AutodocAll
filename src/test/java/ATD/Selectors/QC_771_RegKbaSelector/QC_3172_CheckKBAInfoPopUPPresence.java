@@ -1,6 +1,6 @@
-package ATD.OILS;
+package ATD.Selectors.QC_771_RegKbaSelector;
 
-import ATD.*;
+import ATD.Motoroil_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,11 +16,11 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_3173_CheckCarSelectorPresence {
+public class QC_3172_CheckKBAInfoPopUPPresence {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0",false);
     }
 
     @DataProvider(name = "routes", parallel = true)
@@ -31,10 +31,10 @@ public class QC_3173_CheckCarSelectorPresence {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "OlhaLavrynenko")
-    @Description(value = "Test checks Car Selector Presence on the Main oil page ")
-    public void testChecksCarSelector(String route) {
+    @Description(value = "Test checks KBA Info Pop up Presence on the Main oil page ")
+    public void testChecksKbaInfoPopUp(String route) {
         openPage(route);
-        new Motoroil_page_Logic().checkCarSelectorPresence();
+        new Motoroil_page_Logic().infoKbaPopUpPresence();
     }
 
     @AfterMethod

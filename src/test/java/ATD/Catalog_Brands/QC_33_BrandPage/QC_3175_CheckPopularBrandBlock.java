@@ -1,6 +1,6 @@
-package ATD.Listings.QC_433_ListingSearch;
+package ATD.Catalog_Brands.QC_33_BrandPage;
 
-import ATD.Product_page_Logic;
+import ATD.Motoroil_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,28 +16,29 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_3076_iconPresenceAboutAvailabilityOfProductOnProductPage {
-
+public class QC_3175_CheckPopularBrandBlock {
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0",false);
     }
 
-    @DataProvider(name = "route", parallel = true)
+    @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE","main","product60");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "motoroil");
     }
 
-    @Test(dataProvider = "route")
+    @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "OlhaLavrynenko")
-    @Description(value = "Going to search page from search bar and check of icon Availability of product on product page")
-    public void testCheckIconAvailabilityOfProductOnProductPage(String route) {
+    @Description(value = "Test checks popular Brand block Presence on the Main oil page ")
+    public void testChecksPopularBrandBlockPresence(String route) {
         openPage(route);
-        new Product_page_Logic().checkQuantityBlockVisibilityOnProductPage();
+        new Motoroil_page_Logic().checkPopularBrandsBlockPresence();
     }
+
     @AfterMethod
-    private void close() {
+    public void close() {
         closeWebDriver();
     }
+
 }
