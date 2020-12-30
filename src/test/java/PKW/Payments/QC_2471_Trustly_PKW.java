@@ -7,7 +7,6 @@ import Common.Merchant_page;
 import Common.SetUp;
 import PKW.CartAllData_page;
 import PKW.CartAllData_page_Logic;
-import PKW.Cart_page;
 import PKW.Product_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -30,12 +29,12 @@ public class QC_2471_Trustly_PKW {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp("PKW").setUpShopsWithSubroute("prod", "FI,SE", "main", "product9");
+        return new SetUp("PKW").setUpShopsWithSubroute("prod", "FI,SE", "main", "product");
     }
 
     @Test(dataProvider = "route")

@@ -12,10 +12,12 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static ATD.CommonMethods.password;
+import static Common.File.assertThatPdfContainsText;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
@@ -27,7 +29,7 @@ public class QC_2859_CheckingVatWhenChangingTheCountryOfDeliveryToAWS {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", true);
         vatForIE = new PageVAT_aws().getVatForIE();
         close();
     }
@@ -41,7 +43,7 @@ public class QC_2859_CheckingVatWhenChangingTheCountryOfDeliveryToAWS {
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Checking VAT when changing the country of delivery to ABC")
-    public void testCheckVatWhenChangingTheCountryOfDeliveryToAWS(String route) throws SQLException {
+    public void testCheckVatWhenChangingTheCountryOfDeliveryToAWS(String route) throws SQLException, IOException {
         openPage(route);
         orderNumber = product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
@@ -61,7 +63,15 @@ public class QC_2859_CheckingVatWhenChangingTheCountryOfDeliveryToAWS {
                 .reSaveOrder()
                 .checkVatStatusInOrder("Mit MwSt " + vatForIE + "%")
                 .openPopUpAccountsAndCheckVat(vatForIE)
-                .closePopupAccounts();
+                .closePopupAccounts()
+                .clickReturnButton()
+                .chooseReturnType("Возврат")
+                .clickCheckBoxProductInPopupReturn()
+                .clickCheckBoxDeliveryInPopupReturn()
+                .clickPrintButtonInPopupReturn()
+                .clickBtnClosePopUpReturn()
+                .getArticleId();
+        assertThatPdfContainsText("C:/Users/User/Downloads/_" + orderNumber + ".pdf", "MwSt. " + vatForIE + " %");
     }
 
     @AfterMethod

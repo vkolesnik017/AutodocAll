@@ -21,7 +21,7 @@ public class QC_2550_InformationBlockDisplayConditions {
     private Category_name_page_Logic categoryNamePage = new Category_name_page_Logic();
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "routes", parallel = true)

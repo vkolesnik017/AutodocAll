@@ -34,7 +34,7 @@ public class QC_3064_CheckingAbsence20PercentDiscountWithPlusPROFromFRToDE {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0",false);
     }
 
     @DataProvider(name = "route", parallel = true)

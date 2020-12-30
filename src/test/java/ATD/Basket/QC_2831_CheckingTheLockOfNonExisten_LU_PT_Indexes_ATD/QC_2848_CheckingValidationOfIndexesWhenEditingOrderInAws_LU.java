@@ -26,7 +26,7 @@ public class QC_2848_CheckingValidationOfIndexesWhenEditingOrderInAws_LU {
 
     @BeforeClass
     void setUp() throws SQLException {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
         openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "LD", "main", "product32"));
         new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()

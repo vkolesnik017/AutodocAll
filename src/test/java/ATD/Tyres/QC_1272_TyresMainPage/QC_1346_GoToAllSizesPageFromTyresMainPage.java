@@ -22,7 +22,7 @@ public class QC_1346_GoToAllSizesPageFromTyresMainPage {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "routesTyresPage")

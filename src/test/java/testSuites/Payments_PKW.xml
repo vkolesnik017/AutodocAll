@@ -76,12 +76,12 @@
         </classes>
     </test>
 
-    <test name="QC_2470_KlarnaCheckout_PKW" thread-count="1">
+    <!--<test name="QC_2470_KlarnaCheckout_PKW" thread-count="1">
         <classes>
             <class name="PKW.Payments.QC_2470_KlarnaCheckout_PKW">
             </class>
         </classes>
-    </test>
+    </test>-->
 
     <test name="QC_2474_Multibanco_PKW" thread-count="1">
         <classes>

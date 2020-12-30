@@ -20,7 +20,7 @@ public class QC_3155_CheckDisplayPaymentsMethodBlock {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "routes", parallel = false)

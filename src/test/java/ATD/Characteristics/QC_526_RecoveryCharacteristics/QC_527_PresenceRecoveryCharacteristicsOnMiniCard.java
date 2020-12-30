@@ -21,7 +21,7 @@ public class QC_527_PresenceRecoveryCharacteristicsOnMiniCard {
 
   @BeforeClass
   void setUp() {
-    setUpBrowser(false, "chrome", "77.0");
+    setUpBrowser(false, "chrome", "77.0", false);
   }
 
   @DataProvider(name = "test1", parallel = true)

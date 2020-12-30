@@ -38,7 +38,7 @@ public class QC_562_CreatingAwsOrder_WithDropProductAndRegularProduct {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "route", parallel = true)

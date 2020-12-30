@@ -31,7 +31,7 @@ public class QC_888_PopupErrorsInRetourePage {
 
   @BeforeClass
   void setUp() {
-    setUpBrowser(false, "chrome", "77.0");
+    setUpBrowser(false, "chrome", "77.0", false);
   }
 
   @DataProvider(name = "route")

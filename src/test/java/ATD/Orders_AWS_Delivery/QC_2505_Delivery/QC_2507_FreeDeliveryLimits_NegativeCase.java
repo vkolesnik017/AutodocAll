@@ -28,7 +28,7 @@ public class QC_2507_FreeDeliveryLimits_NegativeCase {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "shop", parallel = true)

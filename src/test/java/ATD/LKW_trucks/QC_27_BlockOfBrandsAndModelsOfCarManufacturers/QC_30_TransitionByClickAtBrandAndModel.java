@@ -20,7 +20,7 @@ public class QC_30_TransitionByClickAtBrandAndModel {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "routesMain", parallel = true)

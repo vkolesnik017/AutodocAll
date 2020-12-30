@@ -24,7 +24,7 @@ public class QC_2823_CheckingValidityIndexes_LU_PositiveCase {
 
     @BeforeClass
     void setUp() throws SQLException {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
         openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "LD","main","product2"));
         new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()

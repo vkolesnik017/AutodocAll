@@ -36,7 +36,7 @@ public class QASYS_455_DeletingOfDangerousProductFromBasket {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
         login_aws.loginInAwsWithOpen();
         open(productSearch_aws.urlPage);
         idDangerousProduct = productSearch_aws.chooseFilterForDangerousProductsAndGetId();

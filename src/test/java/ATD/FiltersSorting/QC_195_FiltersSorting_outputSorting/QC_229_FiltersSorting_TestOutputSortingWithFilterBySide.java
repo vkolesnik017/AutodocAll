@@ -21,7 +21,7 @@ public class QC_229_FiltersSorting_TestOutputSortingWithFilterBySide {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @Test

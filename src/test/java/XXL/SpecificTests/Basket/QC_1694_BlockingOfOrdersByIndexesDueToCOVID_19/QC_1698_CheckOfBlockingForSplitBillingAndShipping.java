@@ -1,7 +1,6 @@
 package XXL.SpecificTests.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
 
 
-import Common.DataBase;
 import Common.SetUp;
 import XXL.Product_page_Logic;
 import io.qameta.allure.Description;
@@ -28,7 +27,7 @@ public class QC_1698_CheckOfBlockingForSplitBillingAndShipping {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "route", parallel = false)

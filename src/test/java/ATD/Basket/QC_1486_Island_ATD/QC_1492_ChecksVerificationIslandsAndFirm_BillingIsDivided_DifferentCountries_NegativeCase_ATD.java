@@ -29,7 +29,7 @@ public class QC_1492_ChecksVerificationIslandsAndFirm_BillingIsDivided_Different
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "route", parallel = true)
