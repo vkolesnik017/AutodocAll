@@ -7,7 +7,9 @@ import org.testng.Assert;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import static com.codeborne.selenide.CollectionCondition.sizeGreaterThanOrEqual;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selenide.*;
@@ -128,6 +130,18 @@ public class ProductCard_aws {
 
     private SelenideElement labelOfBrand() {
         return $x("//td[contains(text(),'Производитель:')]/following-sibling::td/div");
+    }
+
+    private SelenideElement labelTurnOnDangerousProduct() {
+        return $x("//span[contains(text(),'Опасный товар включен')]/../../div[1]//span[@class='switch-left switch-mini switch-success']");
+    }
+
+    private ElementsCollection precautions() {
+        return $$x("//div[@id='form_hazardTypes_2____chzn']/ul/li/span[not(contains(text(),'disabled'))]");
+    }
+
+    private ElementsCollection hazardStatementLabel() {
+        return $$("#form_hazardTypes_1____chzn span");
     }
 
     String productId;
@@ -327,4 +341,53 @@ public class ProductCard_aws {
         boolean label = labelOfArtNum().getText().equals("Включен") && labelOfBrand().getText().equals("Включен") ? true : false;
         return label;
     }
+
+    @Step("displaying of Turn on of dangerous product. ProductCard_aws")
+    public ProductCard_aws displayOfTurnOnOfDangerousProduct() {
+        labelTurnOnDangerousProduct().shouldBe(exist);
+        return this;
+    }
+
+    @Step("check of not selected dangerous words. ProductCard_aws")
+    public ProductCard_aws emptyDangerousLabel() {
+        signalAttentionCheckBox().shouldNotHave(attribute("checked", "true"));
+        signalDangerousCheckBox().shouldNotHave(attribute("checked", "true"));
+        return this;
+    }
+
+    @Step("get dangerous pictogram from AWS. ProductCard_aws")
+    public List<String> getDangerousPictogram() {
+        List<String> dangerousIcon = new ArrayList<>();
+        iconIfDangerousProducts().shouldHave(sizeGreaterThanOrEqual(1));
+        for (int i = 0; i < iconIfDangerousProducts().size(); i++) {
+            String attFromImage = iconIfDangerousProducts().get(i).getAttribute("src").replace("pkwteile", "autodoc");
+            String partOfAtt = attFromImage.replace(attFromImage.substring(attFromImage.lastIndexOf(".")), "");
+            dangerousIcon.add(partOfAtt);
+        }
+        return dangerousIcon;
+    }
+
+    @Step("get hazard statement. ProductCard_aws")
+    public List<String> getStatementLabels() {
+        List<String> hazardStatement = new ArrayList<>();
+        hazardStatement = hazardStatementLabel().stream().map(n -> n.getText()).collect(Collectors.toList());
+        for (int i = 0; i < precautions().size(); i++) {
+            hazardStatement.add(precautions().get(i).getText());
+        }
+        Assert.assertTrue(hazardStatement.size() > 1);
+        return hazardStatement;
+    }
+
+    @Step("check count of selected dangerous pictogram. ProductCard_aws")
+    public ProductCard_aws checkCountOfSelectedPictogram(int expectedCount) {
+        iconIfDangerousProducts().shouldHaveSize(expectedCount);
+        return this;
+    }
+
+    @Step("selected signal dangerous checkbox. ProductCard_aws")
+    public ProductCard_aws selectedSignalDangerousCheckBox() {
+        signalAttentionCheckBox().shouldHave(attribute("checked", "true"));
+        return this;
+    }
+
 }

@@ -1261,6 +1261,47 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
+    @Step("display Of Dangerous Info Block. Product page")
+    public Product_page_Logic displayOfDangerousInfoBlock() {
+        dangerousInfoBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("display Of Dangerous signal word. Product page")
+    public Product_page_Logic displayOfDangerousSignalWord(String dangerousWord) {
+        dangerousSignalWord().shouldBe(visible).shouldHave(text(dangerousWord));
+        return this;
+    }
+
+    @Step("compare Dangerous Pictogram With Aws. Product page")
+    public Product_page_Logic compareDangerousPictogramWithAws(List<String> listFromAws) {
+        List<String> dangerousPictogram = new ArrayList<>(getAttributeOfWarningIconInPopUp());
+        Assert.assertEquals(dangerousPictogram, listFromAws);
+        return this;
+    }
+
+    @Step("compare Dangerous Info Text With Aws. Product page")
+    public Product_page_Logic compareDangerousInfoTextWithAws(List<String> dangerousLabel, String file) {
+        if (btnMoreOfDangerousInfoBlock().isDisplayed()) {
+            btnMoreOfDangerousInfoBlock().click();
+        }
+        Excel exelFile = new Excel();
+        List<String> dangerousInfoText = new ArrayList<>();
+        List<String> labels = new ArrayList<>();
+        List<String> allDangerousLabels = exelFile.readFromExcel(file, "qc_2811", 1);
+        for (int i = 0; i < allDangerousLabels.size(); i++) {
+            labels.add(allDangerousLabels.get(i).replaceAll("\\s", ""));
+        }
+        for (int i = 0; i < dangerousLabel.size(); i++) {
+            int labelPosition = labels.indexOf(dangerousLabel.get(i));
+            dangerousInfoText.add(exelFile.getCellValueFromExel(file, "qc_2811", 2, labelPosition));
+        }
+        for (String e : dangerousInfoText) {
+            Assert.assertTrue(infoTextOfDangerousInfoBlock().getText().contains(e));
+        }
+        return this;
+    }
+
     @Step("Check Faq block without answers. Product page")
     public Product_page_Logic checkFAQBlockWithoutAnswers() {
         faqBlockWithoutAnswer().shouldBe(visible);

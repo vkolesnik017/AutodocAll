@@ -885,4 +885,14 @@ public class Product_page {
     SelenideElement countInputOnProduct() {return $x("//*[@class='count product-count']//input");}
 
     SelenideElement textAboutCountOnProduct() {return $x("//*[@class='product-set-info']");}
-}
+
+
+    SelenideElement dangerousInfoBlock() {return $x("//div[contains(@class,'dangerous-goods js-dangerous-goods')]");}
+
+    SelenideElement dangerousSignalWord() {return $x("//div[@class='dangerous-goods__title']");}
+
+    SelenideElement btnMoreOfDangerousInfoBlock() {return $x("//a[@class='dangerous-goods__show-more js-dangerous-goods__show-more']");}
+
+    SelenideElement infoTextOfDangerousInfoBlock() {return $x("//div[@class='dangerous-goods__text js-dangerous-goods__text']/span");}
+
+    }

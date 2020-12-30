@@ -115,6 +115,18 @@ public class Excel {
         return listCell;
     }
 
+    public String getCellValueFromExel(String file, String sheetName, int cellNumber, int rowNumber) {
+        String value = null;
+        DataFormatter formatter = new DataFormatter();
+        try (FileInputStream fileInputStream = new FileInputStream(file)) {
+            Workbook wb = new HSSFWorkbook(fileInputStream);
+            Sheet sheet1 = wb.getSheet(sheetName);
+            value = formatter.formatCellValue(sheet1.getRow(rowNumber).getCell(cellNumber));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return value;
+    }
     //Set in the excel file data in the specific cell and row.
     public static void writeInExcelSpecific(String sheetName, String fileName, String cellValue, int col, int row) throws IOException {
         File file = new File(fileName);
@@ -197,5 +209,3 @@ public class Excel {
         }
     }
 }
-
-
