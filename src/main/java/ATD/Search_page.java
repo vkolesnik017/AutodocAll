@@ -233,7 +233,7 @@ public class Search_page {
     }
 
     ElementsCollection artNumOfProduct() {
-        return $$x("//span[@class='article_number']");
+        return $$x("//span[@class='article_number'][1]");
     }
 
     ElementsCollection artNumOfActiveProduct() {return $$x("//div[@class='button ']/ancestor::div[@class='price_box']/..//span[@class='article_number']");}
