@@ -35,7 +35,7 @@ public class Excel {
         return readAllCellFromExcel(file, sheetName).toArray();
     }
 
-   public static String[] parseExcel(String str) {
+    public static String[] parseExcel(String str) {
         return str.split("#");
     }
 
@@ -55,7 +55,7 @@ public class Excel {
         return finalList;
     }
 
-   public List<String> readFromExcel(String file, String sheetName, int cellNumber) {
+    public List<String> readFromExcel(String file, String sheetName, int cellNumber) {
         List<String> finalList = new ArrayList<>();
         DataFormatter formatter = new DataFormatter();
         try (FileInputStream fileInputStream = new FileInputStream(file)) {
@@ -117,5 +117,17 @@ public class Excel {
         return listCell;
     }
 
+    public String getCellValueFromExel(String file, String sheetName, int cellNumber, int rowNumber) {
+        String value = null;
+        DataFormatter formatter = new DataFormatter();
+        try (FileInputStream fileInputStream = new FileInputStream(file)) {
+            Workbook wb = new HSSFWorkbook(fileInputStream);
+            Sheet sheet1 = wb.getSheet(sheetName);
+            value = formatter.formatCellValue(sheet1.getRow(rowNumber).getCell(cellNumber));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return value;
+    }
 
 }

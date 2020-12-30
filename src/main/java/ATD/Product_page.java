@@ -874,4 +874,13 @@ public class Product_page {
     SelenideElement btnShowMoreInRidexBlock() {return $x("//div[@class='product-banner-ridex js-default-open-popup']//div[@class='banner-btn']");}
 
     SelenideElement background() {return $x("//div[@class='overlay black hidden']");}
-}
+
+    SelenideElement dangerousInfoBlock() {return $x("//div[contains(@class,'dangerous-goods js-dangerous-goods')]");}
+
+    SelenideElement dangerousSignalWord() {return $x("//div[@class='dangerous-goods__title']");}
+
+    SelenideElement btnMoreOfDangerousInfoBlock() {return $x("//a[@class='dangerous-goods__show-more js-dangerous-goods__show-more']");}
+
+    SelenideElement infoTextOfDangerousInfoBlock() {return $x("//div[@class='dangerous-goods__text js-dangerous-goods__text']/span");}
+
+    }
