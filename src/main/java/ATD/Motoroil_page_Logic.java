@@ -6,10 +6,11 @@ import org.testng.Assert;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Objects;
 
 import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.back;
+import static com.codeborne.selenide.Selenide.page;
 import static org.testng.Assert.assertEquals;
 
 public class Motoroil_page_Logic extends Motoroil_page {
@@ -88,33 +89,15 @@ public class Motoroil_page_Logic extends Motoroil_page {
     }
 
     @Step("Check oil viscosity block functionality. Motoroil page")
-    public Motoroil_page_Logic oilViscosityBlockFunctionality() {
+    public MotoroilViscosity_page_Logic oilViscosityBlockFunctionality() {
         oilViscosityBlock().shouldBe(visible);
         for (int i = 0; i < oilViscosityItem().size(); i++) {
-            String viscosityUrl = oilViscosityItemLink().get(i).getAttribute("href");
             String urlContains = oilViscosityItemLink().get(i).getAttribute("href").replaceAll("^.+\\/", "").replaceAll("\\W", " ");
             String textContains = oilViscosityText().get(i).getText().toLowerCase().replaceAll("\\W", " ");
             Assert.assertEquals(urlContains, textContains);
             oilViscosityItem().get(i).shouldBe(visible).click();
-            checkingContainsUrl(viscosityUrl);
-            back();
         }
-        return this;
-    }
-
-    @Step("Check error message for empty fields in kba selector. Motoroil page")
-    public Motoroil_page_Logic kbaSelectorBlockEmptyFields() {
-        oilViscosityBlock().shouldBe(visible);
-        for (int i = 0; i < oilViscosityItem().size(); i++) {
-            String viscosityUrl = oilViscosityItemLink().get(i).getAttribute("href");
-            String urlContains = oilViscosityItemLink().get(i).getAttribute("href").replaceAll("^.+\\/", "").replaceAll("\\W", " ");
-            String textContains = oilViscosityText().get(i).getText().toLowerCase().replaceAll("\\W", " ");
-            Assert.assertEquals(urlContains, textContains);
-            oilViscosityItem().get(i).shouldBe(visible).click();
-            checkingContainsUrl(viscosityUrl);
-            back();
-        }
-        return this;
+        return page(MotoroilViscosity_page_Logic.class);
     }
 
     @Step("Check sending kba selector form with empty fields. Motoroil page")
@@ -136,6 +119,25 @@ public class Motoroil_page_Logic extends Motoroil_page {
         kbaSelectorErrorMessageEmptyFields().shouldBe(visible);
         kbaSelectorErrorMessageEmptyFieldsIcon().shouldBe(visible);
         kbaSelectorErrorMessageEmptyFieldsText().shouldBe(visible).shouldHave(text("Falsche Zeichennummer eingegeben"));
+        return this;
+    }
+
+    @Step("Check presence of marks block on main oil page. Motoroil page")
+    public Motoroil_page_Logic checkPresenceOfMarksBlock() {
+        carListBlock().shouldBe(visible);
+        mehrSchliebenButtonMarksBlock().shouldHave(text("Mehr")).click();
+        schliebenButtonMarksBlock().shouldBe(visible);
+        mehrSchliebenButtonMarksBlock().shouldHave(text("Schließen")).click();
+        mehrButtonMarksBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Check transfer from marks block to catalog. Motoroil page")
+    public Motoroil_page_Logic checkTransferFromMarksBlockToCatalog() {
+        carListBlock().shouldBe(visible);
+        String titleOfMark = Objects.requireNonNull(carsMakerItem().getAttribute("title")).toLowerCase();
+        carsMakerItem().shouldBe(visible).shouldHave(attribute("title","MERCEDES-BENZ")).click();
+        checkingContainsUrl(titleOfMark);
         return this;
     }
 }

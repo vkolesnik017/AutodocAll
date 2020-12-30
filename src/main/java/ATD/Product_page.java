@@ -4,7 +4,6 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.Select;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.*;
@@ -882,4 +881,8 @@ public class Product_page {
     SelenideElement textAboutQuantityOfAnswersInFAQ() {return $x("//*[@class='product-leave-feedback__wrap__first-title'][1]");}
 
     SelenideElement blockVersandInFAQ() {return $x("//*[@class='product-leave-feedback']/following-sibling::div");}
+
+    SelenideElement countInputOnProduct() {return $x("//*[@class='count product-count']//input");}
+
+    SelenideElement textAboutCountOnProduct() {return $x("//*[@class='product-set-info']");}
 }

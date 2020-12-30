@@ -1269,4 +1269,15 @@ public class Product_page_Logic extends Product_page {
         faqBlockWithAnswer().shouldNotBe(visible);
         return this;
     }
+
+    @Step("check number in the quantity block and block with quantity of product on product page. Search_page")
+    public Product_page_Logic checkQuantityBlockVisibilityOnProductPage() {
+        countInputOnProduct().shouldBe(visible);
+        if(countInputOnProduct().has(attribute("value","1"))){
+            textAboutCountOnProduct().shouldBe(visible);
+        }else {
+            textAboutCountOnProduct().shouldNotBe(visible);
+        }
+        return this;
+    }
 }

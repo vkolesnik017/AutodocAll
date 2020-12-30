@@ -108,7 +108,28 @@ public class Motoroil_page {
         return $x("//*[@id='kba1']");
     }
 
+    SelenideElement mehrSchliebenButtonMarksBlock() {
+        return $x("//*[@class='show-all__link']");
+    }
+
+    SelenideElement carListBlock() {
+        return $x("//*[@class='cars-list']");
+    }
+
     SelenideElement kbaSelectorSecondInput() {
         return $x("//*[@id='kba2']");
     }
+
+    SelenideElement mehrButtonMarksBlock() {
+        return $x("//*[@class='cars-list__wrap js-show-all-content clearfix']");
+    }
+
+    SelenideElement schliebenButtonMarksBlock() {
+        return $x("//*[@class='cars-list__wrap js-show-all-content clearfix show']");
+    }
+
+    SelenideElement carsMakerItem() {
+        return $x("//*[@class='cars-list-item'][2]//img");
+    }
+
 }

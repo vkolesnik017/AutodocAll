@@ -773,5 +773,21 @@ public class Search_page_Logic extends Search_page {
         }
         return this;
     }
+
+    @Step("check number in the quantity block and block with quantity of product in package presence. Search_page")
+    public Search_page_Logic checkQuantityBlockVisibility() {
+        for (int i = 0; i < countInputsOne().size(); i++) {
+            countInputsOne().get(i).shouldBe(visible);
+        }
+        return this;
+    }
+
+    @Step("check number in the quantity block and block with quantity of product in package presence. Search_page")
+    public Search_page_Logic checkQuantityBlockNotVisibility() {
+        for (int i = 0; i < countInputsTwo().size(); i++) {
+            countInputsTwo().get(i).shouldNotBe(visible);
+        }
+        return this;
+    }
 }
 
