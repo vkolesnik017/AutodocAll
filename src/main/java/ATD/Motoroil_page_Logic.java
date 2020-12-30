@@ -10,6 +10,7 @@ import java.util.Objects;
 
 import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selenide.back;
 import static com.codeborne.selenide.Selenide.page;
 import static org.testng.Assert.assertEquals;
 
@@ -138,6 +139,29 @@ public class Motoroil_page_Logic extends Motoroil_page {
         String titleOfMark = Objects.requireNonNull(carsMakerItem().getAttribute("title")).toLowerCase();
         carsMakerItem().shouldBe(visible).shouldHave(attribute("title","MERCEDES-BENZ")).click();
         checkingContainsUrl(titleOfMark);
+        return this;
+    }
+
+    @Step("Check presence the TOP Block on hte Main Oil Page. Motoroil page")
+    public Motoroil_page_Logic checkPresenceOfTopBlock() {
+        topBlockOnMainOilPage().shouldBe(visible);
+        for (int i = 0; i < topBlockItems().size(); i++) {
+            topBlockItems().get(i).shouldBe(visible);
+            topBlockItemsImage().get(i).shouldHave(text("Motoröl"));
+        }
+        return this;
+    }
+
+    @Step("Check transfer from the TOP Block on the Main Oil Page to product page. Motoroil page")
+    public Motoroil_page_Logic checkTransferFromTopBlockToProductPage() {
+        topBlockOnMainOilPage().shouldBe(visible);
+        String idProduct = topBlockItem().getAttribute("data-product-id");
+        topBlockItemFirst().scrollIntoView(true).hover();
+        topBlockItemDetails().shouldBe(visible).click();
+        checkingContainsUrl(idProduct);
+        back();
+        topBlockItemOneClick().shouldBe(visible).scrollIntoView("{block: \"center\"}").click();
+        checkingContainsUrl(idProduct);
         return this;
     }
 }

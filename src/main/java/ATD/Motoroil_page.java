@@ -132,4 +132,32 @@ public class Motoroil_page {
         return $x("//*[@class='cars-list-item'][2]//img");
     }
 
+    SelenideElement topBlockOnMainOilPage() {
+        return $x("//*[@class='cars-list-item'][2]//img");
+    }
+
+    ElementsCollection topBlockItems() {
+        return $$x("//*[@class='product-list__item active']");
+    }
+
+    ElementsCollection topBlockItemsImage() {
+        return $$x("//*[@class='product-list__item__title']//span");
+    }
+
+    SelenideElement topBlockItemFirst() {
+        return $x("//*[@class='product-list__item-group slick-slide slick-current slick-active']//*[@class='product-list__item'][1]");
+    }
+
+    SelenideElement topBlockItemDetails() {
+        return $x("//*[@class='item-table-box__details']//span");
+    }
+
+    SelenideElement topBlockItem() {
+        return $x("//*[@class='product-list__item-group slick-slide slick-current slick-active']//*[@class='product-list__item'][1]//*[@class='add-to-wishlist add-article']");
+    }
+
+    SelenideElement topBlockItemOneClick() {
+        return $x("//*[@class='product-list__item__image'][1]//a");
+    }
+
 }
