@@ -27,7 +27,7 @@ public class QC_2474_Multibanco_PKW {
 
     @BeforeClass
     void setUp() {
-       setUpBrowser(false, "chrome", "77.0", false);
+       setUpBrowser(false, "chrome", "77.0", true);
     }
 
     @DataProvider(name = "route", parallel = true)
