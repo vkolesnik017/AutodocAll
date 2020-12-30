@@ -45,11 +45,12 @@ public class SetUp {
         Configuration.browserVersion = (browserVersion);
         Configuration.startMaximized = true;
         Configuration.holdBrowserOpen = false;
-        Configuration.timeout = 10000;
+        Configuration.timeout = 30000;
         chromePrefs.put("plugins.always_open_pdf_externally", download);
         chromePrefs.put("credentials_enable_service", false);
         chromePrefs.put("profile.password_manager_enabled", false);
         chromePrefs.put("password_manager_enabled", false);
+        chromePrefs.put("profile.default_content_setting_values.notifications", 2);
         options.setExperimentalOption("prefs", chromePrefs);
         options.addArguments("--dns-prefetch-disable");
         options.addArguments("--disable-gpu");
