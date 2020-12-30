@@ -31,7 +31,7 @@ public class QC_2112_editNameModelInFieldModelNameSelector {
 
     @BeforeClass
     void setUp() throws IOException {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
         Configuration.pageLoadStrategy = "normal";
         commonMethods.writerInFile(result, true, shop);
     }

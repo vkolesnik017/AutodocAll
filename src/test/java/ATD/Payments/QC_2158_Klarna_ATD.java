@@ -27,12 +27,12 @@ public class QC_2158_Klarna_ATD {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp("ATD").setUpShopsWithSubroute("prod", "AT,DE,DK,NL", "main", "product32");
+        return new SetUp("ATD").setUpShopsWithSubroute("prod", "AT,DE,DK,NL,FI,SE,NO", "main", "product32");
     }
 
     @Test(dataProvider = "route")

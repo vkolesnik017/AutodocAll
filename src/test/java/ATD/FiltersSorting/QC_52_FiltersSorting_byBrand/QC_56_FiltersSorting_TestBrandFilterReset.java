@@ -23,7 +23,7 @@ public class QC_56_FiltersSorting_TestBrandFilterReset {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "routes", parallel = true)

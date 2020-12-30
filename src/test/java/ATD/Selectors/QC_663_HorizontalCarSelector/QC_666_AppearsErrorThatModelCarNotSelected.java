@@ -21,7 +21,7 @@ public class QC_666_AppearsErrorThatModelCarNotSelected {
 
   @BeforeClass
   void setUp() {
-    setUpBrowser(false, "chrome", "77.0");
+    setUpBrowser(false, "chrome", "77.0", false);
   }
 
   @DataProvider(name = "route", parallel = true)

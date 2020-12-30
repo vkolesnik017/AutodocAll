@@ -29,7 +29,7 @@ public class QC_2347_DisplayingSOBlockOnCatPageIfThereAre_HL_Drop_Tyres_InTheCar
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "route", parallel = true)

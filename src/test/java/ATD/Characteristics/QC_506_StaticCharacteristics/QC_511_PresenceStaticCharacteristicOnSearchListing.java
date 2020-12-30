@@ -28,7 +28,7 @@ public class QC_511_PresenceStaticCharacteristicOnSearchListing {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "route")

@@ -23,7 +23,7 @@ public class QC_996_BlocksWithCategoriesOnMainAccessories {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "route", parallel = true)

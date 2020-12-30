@@ -24,7 +24,7 @@ public class QC_76_AddTopProductsToBasket {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "routesMain", parallel = true)

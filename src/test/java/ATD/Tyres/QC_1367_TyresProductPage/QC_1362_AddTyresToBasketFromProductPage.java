@@ -21,12 +21,12 @@ public class QC_1362_AddTyresToBasketFromProductPage {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyre_item12");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyre_item13");
     }
 
     @Test(dataProvider = "routes")
@@ -37,7 +37,7 @@ public class QC_1362_AddTyresToBasketFromProductPage {
         openPage(route);
         clickOfBuyBtnForAllPages();
         new Tyre_item_page_Logic().checkAddingTyresToBasket()
-                                     .checkOfIdAddedProductInBasket("8090426");
+                                     .checkOfIdAddedProductInBasket("14738438");
     }
 
     @AfterMethod

@@ -16,7 +16,7 @@ public class QC_3002_CheckingSearchBy_GroupField_FilterLinkSurcharges_OtherFilte
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0",false);
     }
 
     @Test()

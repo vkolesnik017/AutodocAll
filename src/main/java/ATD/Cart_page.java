@@ -230,7 +230,7 @@ public class Cart_page {
     }
 
     public SelenideElement klarnaLabel() {
-        return $x("//img[contains(@src,'klarna.png')]");
+        return $x("//img[contains(@src,'klarna')]");
     }
 
     public SelenideElement idealLabel() {

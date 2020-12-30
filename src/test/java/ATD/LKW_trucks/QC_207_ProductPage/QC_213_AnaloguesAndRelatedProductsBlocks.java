@@ -22,7 +22,7 @@ public class QC_213_AnaloguesAndRelatedProductsBlocks {
     private LKW_Product_page_Logic productPage = new LKW_Product_page_Logic();
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "routes", parallel = true)

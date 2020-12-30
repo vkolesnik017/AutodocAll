@@ -24,7 +24,7 @@ public class QASYS_274_AddingProductToBasketFromAllRoutes {
 
   @BeforeClass
   void setUp() {
-    setUpBrowser(false, "chrome", "77.0");
+    setUpBrowser(false, "chrome", "77.0", false);
   }
 
   @DataProvider(name = "routesMain", parallel = true)

@@ -33,7 +33,7 @@ public class QC_2071_checkingFormationTecCatalogAndJumpToListing {
 
     @BeforeClass
     void setUp() throws IOException {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "data", parallel = false)

@@ -153,8 +153,8 @@ public class Search_page_Logic extends Search_page {
 
     @Step("Check elements on search page. Search_page")
     public Search_page_Logic checkElementsOnSearchPage() {
-        titleOnSearchPage().shouldHave(text("Treffer gefunden für Bremscheiben"));
-        blockOfHelpSearchProducts().shouldBe(visible);
+        Assert.assertTrue(titleOnSearchPage().shouldBe(visible).getText().matches("^\\d*\\sTreffer gefunden für Bremscheiben"));
+        blockOfHelpSearchProducts().shouldBe(visible).shouldHave(exactText("Konnten Sie nicht finden, wonach Sie suchen? Übermitteln Sie uns eine Anfrage und wir helfen Ihnen, den gewünschten Artikel zu finden."));
         blockOfLinkingCategory().shouldBe(visible);
         return this;
     }

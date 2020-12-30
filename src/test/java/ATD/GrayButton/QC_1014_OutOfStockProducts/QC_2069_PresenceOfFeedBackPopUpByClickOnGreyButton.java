@@ -30,7 +30,7 @@ public class QC_2069_PresenceOfFeedBackPopUpByClickOnGreyButton {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "route")

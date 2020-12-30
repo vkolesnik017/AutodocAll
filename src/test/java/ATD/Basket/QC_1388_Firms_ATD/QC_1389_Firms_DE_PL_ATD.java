@@ -30,7 +30,7 @@ public class QC_1389_Firms_DE_PL_ATD {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "routePL", parallel = true)

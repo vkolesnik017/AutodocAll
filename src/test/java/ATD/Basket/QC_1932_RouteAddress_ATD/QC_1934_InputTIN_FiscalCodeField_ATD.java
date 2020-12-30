@@ -20,7 +20,7 @@ public class QC_1934_InputTIN_FiscalCodeField_ATD {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0");
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "routeEN", parallel = true)
