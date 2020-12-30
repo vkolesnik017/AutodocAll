@@ -1,13 +1,11 @@
 package Common;
 
+import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.DataFormatter;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.*;
 
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -129,5 +127,85 @@ public class Excel {
         }
         return value;
     }
+    //Set in the excel file data in the specific cell and row.
+    public static void writeInExcelSpecific(String sheetName, String fileName, String cellValue, int col, int row) throws IOException {
+        File file = new File(fileName);
+        if (file.exists()) {
+            FileInputStream inputStream = new FileInputStream(file);
+            HSSFWorkbook workbook = new HSSFWorkbook(inputStream);
+            HSSFSheet sheet = workbook.getSheet(sheetName);
+            sheet.createRow(row).createCell(col).setCellValue(cellValue);
+            FileOutputStream outFile = new FileOutputStream(new File(fileName));
+            workbook.write(outFile);
+            workbook.close();
+            outFile.close();
+        } else {
+            HSSFWorkbook workbook = new HSSFWorkbook();
+            HSSFSheet sheet = workbook.createSheet(sheetName);
+            sheet.createRow(row).createCell(col).setCellValue(cellValue);
+            FileOutputStream outFile = new FileOutputStream(new File(fileName));
+            workbook.write(outFile);
+            workbook.close();
+            outFile.close();
+            System.out.println("Created file: " + file.getAbsolutePath());
+        }
+    }
 
+    //Set the data in excel in the current file or created a new file
+    public static void writeInExcel(String fileName, String nameSheet, String textOne, String textTwo, String textThree, long textFour, String textFive) throws IOException {
+        java.io.File file = new File(fileName);
+        if (file.exists()) {
+            FileInputStream inputStream = new FileInputStream(file);
+            // Get the workbook instance for XLS file
+            HSSFWorkbook workbook = new HSSFWorkbook(inputStream);
+            // Get first sheet from the workbook
+            HSSFSheet sheet = (workbook.getSheet(nameSheet) == null)
+                    ? workbook.createSheet(nameSheet) : workbook.getSheet(nameSheet);
+            int currentRow = sheet.getPhysicalNumberOfRows() + 1;
+            Row row = sheet.createRow(currentRow);
+            Cell cell1 = row.createCell(0);
+            Cell cell2 = row.createCell(1);
+            Cell cell3 = row.createCell(2);
+            Cell cell4 = row.createCell(3);
+            Cell cell5 = row.createCell(4);
+            cell1.setCellValue(textOne);
+            cell2.setCellValue(textTwo);
+            cell3.setCellValue(textThree);
+            cell4.setCellValue(textFour);
+            cell5.setCellValue(textFive);
+            FileOutputStream outFile = new FileOutputStream(file);
+            workbook.write(outFile);
+            workbook.close();
+        } else {
+            //create form scratch document
+            HSSFWorkbook workbook = new HSSFWorkbook();
+            //create page
+            HSSFSheet sheet = workbook.createSheet(nameSheet);
+            int rowNum = 0;
+            Row row = sheet.createRow(rowNum);
+            Cell cell = row.createCell(0, CellType.STRING);
+            Cell cellUrl = row.createCell(1, CellType.STRING);
+            Cell cellTime = row.createCell(2, CellType.STRING);
+            Cell cellPercent = row.createCell(3, CellType.STRING);
+            Cell cellDate = row.createCell(4, CellType.STRING);
+            cell.setCellValue("Route");
+            cellUrl.setCellValue("Url");
+            cellTime.setCellValue("Page Loading Time");
+            cellPercent.setCellValue("Percent, %");
+            cellDate.setCellValue("Date");
+
+            int currentRow = sheet.getPhysicalNumberOfRows() + 1;
+            Row rowOne = sheet.createRow(currentRow);
+            rowOne.createCell(0).setCellValue(textOne);
+            rowOne.createCell(1).setCellValue(textTwo);
+            rowOne.createCell(2).setCellValue(textThree);
+            rowOne.createCell(3).setCellValue(textFour);
+            rowOne.createCell(4).setCellValue(textFive);
+            file.getParentFile().mkdirs();
+            FileOutputStream outFile = new FileOutputStream(file);
+            workbook.write(outFile);
+            workbook.close();
+            System.out.println("Created file: " + file.getAbsolutePath());
+        }
+    }
 }

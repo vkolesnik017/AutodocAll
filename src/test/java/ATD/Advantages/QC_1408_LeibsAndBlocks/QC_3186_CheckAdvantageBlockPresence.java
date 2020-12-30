@@ -1,6 +1,6 @@
-package ATD.SEO.QC_2555_LinkTransitionFromPDFBlockToClubManual;
+package ATD.Advantages.QC_1408_LeibsAndBlocks;
 
-import ATD.Group_list_page_Logic;
+import ATD.Motoroil_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -17,29 +17,29 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2558_CheckDownloadsManuals {
+public class QC_3186_CheckAdvantageBlockPresence {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0", true);
+        setUpBrowser(false, "chrome", "77.0",false);
     }
 
-    @DataProvider(name = "routes", parallel = false)
+    @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_maker,category_group,category_group_fuel4,category_group_year4,group_list,model_maker_list");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE","main","motoroil");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "LavrynenkoOlha")
-    @Description(value = "Test checks downloads of the manuals")
-    public void testChecksElementsInPDFManualBlock(String route) throws IOException {
+    @Owner(value = "OlhaLavrynenko")
+    @Description(value = "Test checks Advantages Presence on the Main oil page ")
+    public void testChecksAdvantagesBlockPresence(String route) throws IOException {
         openPage(route);
-        new Group_list_page_Logic().checkDownloadsOfManuals();
+        new Motoroil_page_Logic().advantagesBlockPresence();
     }
 
     @AfterMethod
-    private void close() {
+    public void close() {
         closeWebDriver();
     }
 }

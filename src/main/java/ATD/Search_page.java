@@ -326,5 +326,8 @@ public class Search_page {
 
     ElementsCollection importantOptionsOfProduct(int positionOfProduct) {return $$x("(//ul[@class='criteria'])["+positionOfProduct+"]/li/span[1]");}
 
+    ElementsCollection countInputsOne() {return $$x(" //input[@value='1']/ancestor::div[@class='add_info']/preceding-sibling::div[@class='product-quantity']/span[2]/span");}
+
+    ElementsCollection countInputsTwo() {return $$x(" //input[@value='2']/ancestor::div[@class='add_info']/preceding-sibling::div[@class='product-quantity']/span[2]/span");}
 }
 

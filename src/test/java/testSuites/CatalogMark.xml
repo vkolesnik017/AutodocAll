@@ -11,6 +11,8 @@
             <class name="ATD.Catalog_Mark.QC_2568_MarkPages.QC_133_MainIconOfMarkInCategoriesMaker"/>
             <class name="ATD.Catalog_Mark.QC_2568_MarkPages.QC_136_LinkBlockOfTopBrands"/>
             <class name="ATD.Catalog_Mark.QC_2568_MarkPages.QC_3153_CheckRelinkingBlockByCarBrands"/>
+            <class name="ATD.Catalog_Mark.QC_2568_MarkPages.QC_3182_MarksBlockPresenceOnMainOilPage"/>
+            <class name="ATD.Catalog_Mark.QC_2568_MarkPages.QC_3183_CheckTransferFromMarksBlockToCatalog"/>
         </classes>
     </test>
 

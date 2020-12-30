@@ -18,6 +18,7 @@
         <classes>
             <class name="ATD.Advantages.QC_1408_LeibsAndBlocks.QC_1409_ShowLabelsPaymentAndAdvantages"/>
             <class name="ATD.Advantages.QC_1408_LeibsAndBlocks.QC_3154_DisplayOfAdvantagesBlock"/>
+            <class name="ATD.Advantages.QC_1408_LeibsAndBlocks.QC_3186_CheckAdvantageBlockPresence"/>
         </classes>
     </test>
 </suite>
