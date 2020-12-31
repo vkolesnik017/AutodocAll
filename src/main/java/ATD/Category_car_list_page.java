@@ -166,4 +166,21 @@ class Category_car_list_page {
 
     SelenideElement btnAddToBasketOfTopLinkingBLockInSidebar() {return $(".sidebar-subcategory__left a");}
 
+    SelenideElement markeFieldInSelector() {return $(byId("form_maker_id"));}
+
+    SelenideElement modelFieldInSelector() {return $(byId("form_model_id"));}
+
+    SelenideElement motorFieldInSelector() {return $(byId("form_car_id"));}
+
+    SelenideElement kbaFirstValueInSelector() {return $(byId("kba1"));}
+
+    SelenideElement kbaSecondValueInSelector() {return $(byId("kba2"));}
+
+    ElementsCollection productsOnPage() {return $$x("//*[@class='all_desc_item']");}
+
+    SelenideElement imageOfProductTecDocListingBlock(int position) {
+        return $x("(//div[@class='image']//span[2]//img)["+position+"]");
     }
+
+    SelenideElement nextPagePagination() {return $x("//span[@class='next'][1]/a");}
+}

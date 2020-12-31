@@ -895,4 +895,7 @@ public class Product_page {
 
     SelenideElement infoTextOfDangerousInfoBlock() {return $x("//div[@class='dangerous-goods__text js-dangerous-goods__text']/span");}
 
+    SelenideElement phraseAboutCompatibilityProductAndVehicle() {
+        return $x("//*[@class='accordion-selected']");
+    }
     }
