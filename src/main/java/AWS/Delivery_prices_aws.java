@@ -16,7 +16,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class Delivery_prices_aws {
 
-    public String delivery_prices_aws = "https://aws.autodoc.de/delivery-prices";
+    public static String delivery_prices_aws = "https://aws.autodoc.de/delivery-prices";
 
     private ElementsCollection countryWithCheckbox() {
         return $$x("//tr/td[7]//input[@checked='checked']/../../td[2]");
