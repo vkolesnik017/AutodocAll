@@ -23,7 +23,7 @@ public class QC_2439_TransitionToTheInstagramFromTheSocialNetworkBlock {
 
     @DataProvider(name = "route", parallel = false)
     Object[] dataProvider() {
-        return new SetUp("ATD").setUpShopsWithMainRoute("prod", "AT, BG, BE, CZ, DE, DK, EE, ES, FI, FR, EN, GR, HU, IT, LD, LT, LV, NL, NO, PL, PT, RO, SE, SI, SK", "main");
+        return new SetUp("ATD").setUpShopsWithMainRoute("prod", "AT,BG,BE,CZ,DE,DK,EE,ES,FI,FR,EN,GR,HU,IT,LD,LT,LV,NL,NO,PL,PT,RO,SE,SI,SK", "main");
     }
 
     @Flaky
@@ -31,6 +31,7 @@ public class QC_2439_TransitionToTheInstagramFromTheSocialNetworkBlock {
     @Test(dataProvider = "route")
     @Description(value = "Test check the transition to the Instagram in the Social Network Block")
     public void checkingTransitionInTheSocialNetworksBlock(String route) {
+
         openPage(route);
         new Main_page_Logic().checkingTransitionToTheInstagramByImage()
                 .checkingTransitionToTheInstagramByLink();

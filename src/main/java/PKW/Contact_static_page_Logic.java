@@ -52,7 +52,7 @@ public class Contact_static_page_Logic extends Contact_static_page {
         noOrderOpenedTab().shouldBe(visible);
         return mail;
     }
-    @Step("Checks the title, contact form visibility, Send button functionality, error pop-up visibility, close pop-up button, info tooltip, validation message . Kontakt_static_page")
+    @Step("Checks the title, contact form visibility, Send button functionality, error pop-up visibility, close pop-up button, info tooltip, validation message . Contact_static_page")
     public Contact_static_page_Logic checkElementsOnThePage() {
 
         blockKontaktForm().shouldBe(visible);
