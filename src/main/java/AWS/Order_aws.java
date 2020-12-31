@@ -47,8 +47,8 @@ public class Order_aws {
         return $(byName("Order[rTelefon]"));
     }
 
-    private SelenideElement pfandField() {
-        return $(byId("Pfand"));
+    private SelenideElement pfandFieldInPaymentAndDeliveryTermsBlock() {
+        return $x("//input[@id='Pfand']");
     }
 
     private SelenideElement testIcon() {
@@ -167,10 +167,6 @@ public class Order_aws {
         return $(".inf_deliveryCost");
     }
 
-    private SelenideElement deliveryCostOfHeavyLoads() {
-        return $x("//td[@class='inf_surcharge']");
-    }
-
     // Adding product to order menu
     private SelenideElement addingBtn() {
         return $(By.xpath("//div[@class='dt_gal_actions']/a[@class='btn btn-success']"));
@@ -208,8 +204,11 @@ public class Order_aws {
         return $x("//a[text()='" + articleID + "']/../..//td[14]//abbr");
     }
 
-    // locators and methods for block of status order (Status ändern)
+    private SelenideElement labelDangerOfCertainProduct(String artID) {
+        return $x("//a[text()='" + artID + "']/..//span[@class='label label-danger']");
+    }
 
+    // locators and methods for block of status order (Status ändern)
     private SelenideElement selectorOfStatuses() {
         return $x("//select[@id='form_OrderStatus[newStatus]']");
     }
@@ -219,8 +218,6 @@ public class Order_aws {
     }
 
     // locator and methods for block of delivery info (Versandinfo)
-
-
     private SelenideElement deliveryInfoSendungsnummerField() {
         return $(byId("form_OrderDelivery[0][DeliveryNr]"));
     }
@@ -230,7 +227,6 @@ public class Order_aws {
     }
 
     // Block with Products
-
     private SelenideElement reclamationButton() {
         return $(".show-reclamation");
     }
@@ -245,6 +241,10 @@ public class Order_aws {
 
     private SelenideElement deliveryPriceInPaymentAndDeliveryTermsBlock() {
         return $x("//input[@id='Order[DeliveryCost]']");
+    }
+
+    private SelenideElement heavyLoadsDeliveryInPaymentAndDeliveryTermsBlock() {
+        return $x("//input[@id='surcharge']");
     }
 
     private SelenideElement heavyLoadsDeliveryPriceOrderAWS() {
@@ -852,12 +852,6 @@ public class Order_aws {
     }
 
     @Step
-    public Order_aws checkOrderHasExpectedPfandPrice(String pfandPrice) {
-        pfandField().shouldHave(exactValue(pfandPrice));
-        return this;
-    }
-
-    @Step
     public Order_aws checkOrderHasTestStatus() {
         statusOrder().waitUntil(visible, 5000);
         statusOrder().shouldHave(text(": Testbestellungen"));
@@ -1171,6 +1165,12 @@ public class Order_aws {
         return Float.valueOf(deliveryPriceInPaymentAndDeliveryTermsBlock().getValue());
     }
 
+    @Step("Compares the delivery cost in the order with the cost on the website. Order_aws")
+    public Order_aws compereDeliveryCostInOrderWithCostOnSite(Float expectedDeliveryCost) {
+        Assert.assertEquals(getDeliveryCostInOrderFromDeliveryBlock(), expectedDeliveryCost);
+        return this;
+    }
+
     @Step("Get safe order price. Order_aws")
     public Float getSafeOrderPrice() {
         return Float.valueOf(safeOrderPrice().getValue());
@@ -1178,7 +1178,21 @@ public class Order_aws {
 
     @Step("Get delivery cost of heavy loads in order. Order_aws")
     public Float getDeliveryCostOfHeavyLoads() {
-        return Float.valueOf(deliveryCostOfHeavyLoads().getText());
+        return Float.valueOf(heavyLoadsDeliveryPriceOrderAWS().getText());
+    }
+
+    @Step("Compares the delivery cost of heavy loads in the order with the cost on the website. Order_aws")
+    public Order_aws compereDeliveryCostOfHeavyLoadsWithCostOnSite(Float expectedDeliveryCost) {
+        float heavyLoadsDeliveryCost = Float.parseFloat(heavyLoadsDeliveryInPaymentAndDeliveryTermsBlock().getValue());
+        Assert.assertEquals(heavyLoadsDeliveryCost, expectedDeliveryCost);
+        return this;
+    }
+
+    @Step("Checks order has expected deposit Price {ExpectedDepositCost}")
+    public Order_aws checkOrderHasExpectedPfandPrice(Float ExpectedDepositCost) {
+        float depositCost = Float.parseFloat(pfandFieldInPaymentAndDeliveryTermsBlock().getValue());
+        Assert.assertEquals(depositCost, ExpectedDepositCost);
+        return this;
     }
 
     @Step("Compares the prices of added products with the prices on the site {priceWithSite}. Order_aws")
@@ -1291,11 +1305,12 @@ public class Order_aws {
     }
 
     @Step("Checks sum delivery in order. Order_aws")
-    public Order_aws checkSumDeliveryInOrder(float deliveryPrice) {
+    public Order_aws checkSumDeliveryInOrder(Float deliveryPrice) {
         deliveryPriceInPaymentAndDeliveryTermsBlock().shouldHave(value(String.valueOf(deliveryPrice)));
         deliveryPriceOrderAWS().shouldHave(text(String.valueOf(deliveryPrice)));
         return this;
     }
+
 
     @Step("get VIN num garage in popup from btn Auto By Search From The Site. Order_aws")
     public Order_aws getVinNumGarageInPopupFromBtnAutoBySearchFromTheSite(String vinNum) {
@@ -1401,6 +1416,12 @@ public class Order_aws {
     @Step("Checks presence paylink amount. Order_aws")
     public Order_aws checkPresencePauLinkAmount() {
         payLinkAmount().scrollIntoView("{block: \"center\"}").shouldBe(visible);
+        return this;
+    }
+
+    @Step("Checks expected text {expectedText} in label danger of certain product {artID}. Order_aws")
+    public Order_aws checkTextInLabelDanger(String artID, String expectedText) {
+        labelDangerOfCertainProduct(artID).waitUntil(visible, 10000).shouldHave(text(expectedText));
         return this;
     }
 }
