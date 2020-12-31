@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Basket_ATD" parallel="methods" thread-count="2" data-provider-thread-count="3">
+<suite name="Basket_ATD" parallel="methods" thread-count="3" data-provider-thread-count="1">
 
     <listeners>
         <listener class-name="Common.ProjectListener"/>
@@ -105,7 +105,7 @@
         </classes>
     </test>
 
-    <test name="QC_2795_VAT_Ireland_ATD">
+    <test name="QC_2795_VAT_Ireland_ATD" thread-count="1">
         <classes>
             <class name="ATD.Basket.QC_2795_VAT_Ireland_ATD.QC_2798_IrelandVAT_Check"/>
             <class name="ATD.Basket.QC_2795_VAT_Ireland_ATD.QC_2849_CheckingVatForIrelandWhenCreatingOrderWithAWS"/>

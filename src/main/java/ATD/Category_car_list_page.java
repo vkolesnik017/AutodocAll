@@ -5,6 +5,7 @@ import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selenide.*;
 
 class Category_car_list_page {
@@ -154,4 +155,15 @@ class Category_car_list_page {
     ElementsCollection btnAddProductToWishlistTableView() {return $$x("//div[@class='add-to-wishlist add-article']");}
 
     ElementsCollection priceTitleTableView() {return $$x("//div[@class='save']/following-sibling::*[1]");}
+
+    SelenideElement soft404() {return $(byId("no_product_find"));}
+
+    SelenideElement titleOfTopLinkingBLockInSidebar() {return $(".sidebar-subcategory__left p");}
+
+    SelenideElement priceOfTopLinkingBLockInSidebar() {return $(".sidebar-subcategory__left span");}
+
+    SelenideElement imageOfTopLinkingBLockInSidebar() {return $(".sidebar-subcategory__right img");}
+
+    SelenideElement btnAddToBasketOfTopLinkingBLockInSidebar() {return $(".sidebar-subcategory__left a");}
+
     }

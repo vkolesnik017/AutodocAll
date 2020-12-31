@@ -24,6 +24,7 @@
             <class name="ATD.Listings.QC_433_ListingSearch.QC_2950_CheckingDisplayOfGenericAlternativeNameInProductName"/>
             <class name="ATD.Listings.QC_433_ListingSearch.QC_3015_CheckDisplayOfProductCharacteristicValues"/>
             <class name="ATD.Listings.QC_433_ListingSearch.QC_3016_CheckDisplayOfProductCharacteristicValuesAtOemListing"/>
+            <class name="ATD.Listings.QC_433_ListingSearch.QC_3004_IconPresenceAboutQuantityOfGoods"/>
         </classes>
     </test>
 
@@ -42,6 +43,7 @@
             <class name="ATD.Listings.QC_445_ListingTecDoc.QC_2947_CheckingDisplayOfGenericAlternativeNameInProductName"/>
             <class name="ATD.Listings.QC_445_ListingTecDoc.QC_3123_CheckDisplayPriceMeterElementInTecDocListing"/>
             <class name="ATD.Listings.QC_445_ListingTecDoc.QC_3137_DisplayOfBlockWithRecommendedReplacementInterval"/>
+            <class name="ATD.Listings.QC_445_ListingTecDoc.QC_3199_DisplayOfLinkingBlockInTecDoc"/>
         </classes>
     </test>
 

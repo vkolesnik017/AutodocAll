@@ -13,6 +13,9 @@
             <class name="ATD.Selectors.QC_771_RegKbaSelector.QC_772_RegKbaSelector"/>
             <class name="ATD.Selectors.QC_771_RegKbaSelector.QC_2694_CheckingVinRecordsToOrderWhenSearchingByKBA"/>
             <class name="ATD.Selectors.QC_771_RegKbaSelector.QC_2783_PresenceMandatoryElementsInKbaBlock"/>
+            <class name="ATD.Selectors.QC_771_RegKbaSelector.QC_3170_CheckErrorMessageInKbaBlockInvalidData"/>
+            <class name="ATD.Selectors.QC_771_RegKbaSelector.QC_3171_CheckErrorMessageInKbaSelectorEmptyFields"/>
+            <class name="ATD.Selectors.QC_771_RegKbaSelector.QC_3172_CheckKBAInfoPopUPPresence"/>
         </classes>
     </test>
 
@@ -59,6 +62,13 @@
             <class name="ATD.Selectors.QC_2676_Selectors_Car.QC_942_CompatibilityList_TestNotCompatibleCarAndProduct"/>
             <class name="ATD.Selectors.QC_2676_Selectors_Car.QC_3048_CheckTransitionOnProductWithNotCompatibleCar"/>
             <class name="ATD.Selectors.QC_2676_Selectors_Car.QC_670_CheckTransitionOnProductWithCompatibleCar"/>
+            <class name="ATD.Selectors.QC_2676_Selectors_Car.QC_3167_CheckCarSelectorPresence"/>
+        </classes>
+    </test>
+
+    <test name="QC_3174_OilSelectors">
+        <classes>
+            <class name="ATD.Selectors.QC_3174_OilSelectors.QC_3173_CheckOilSelectorPresence"/>
         </classes>
     </test>
 
