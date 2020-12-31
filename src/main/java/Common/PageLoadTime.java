@@ -1,5 +1,6 @@
 package Common;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.JavascriptExecutor;
 
 import java.text.DateFormat;
@@ -15,6 +16,8 @@ import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class PageLoadTime {
 
+
+    @Step("Method get a page load time, then write results in excel.If page load time more than 30% of normal, user take a notification about loading time by email and in Slack. PageLoadTime")
     public void pageLoadingTime(int averageLoadTime, int percent, String slackWebhookUrl) throws Exception {
         JavascriptExecutor js = (JavascriptExecutor) getWebDriver();
         String currentRoute = getNameRouteFromJSVarInHTML();

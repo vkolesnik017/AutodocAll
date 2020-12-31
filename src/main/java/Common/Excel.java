@@ -1,5 +1,6 @@
 package Common;
 
+import io.qameta.allure.Step;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
@@ -127,8 +128,10 @@ public class Excel {
         }
         return value;
     }
+
     //Set in the excel file data in the specific cell and row.
-    public static void writeInExcelSpecific(String sheetName, String fileName, String cellValue, int col, int row) throws IOException {
+    @Step("Set the value in single cell using numbers of column and row. Excel")
+    public static void writeInExcelSingleCell(String sheetName, String fileName, String cellValue, int col, int row) throws IOException {
         File file = new File(fileName);
         if (file.exists()) {
             FileInputStream inputStream = new FileInputStream(file);
@@ -152,6 +155,7 @@ public class Excel {
     }
 
     //Set the data in excel in the current file or created a new file
+    @Step("Write the value in excel. Method can write in current file or, if file does not exist - create new file. Excel")
     public static void writeInExcel(String fileName, String nameSheet, String textOne, String textTwo, String textThree, long textFour, String textFive) throws IOException {
         java.io.File file = new File(fileName);
         if (file.exists()) {

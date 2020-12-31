@@ -9,7 +9,7 @@ import java.util.Properties;
 
 public class EmailNotification {
 
-    @Step("Sending email notification about page loading time")
+    @Step("Sending email notification about page loading time. EmailNotification")
     public static void emailUtils(String recipient, String textMessage, String subjectMessage, String myAccountEmail, String password) throws Exception {
         System.out.println("Preparing to sent email");
         final Properties properties = new Properties();
@@ -30,6 +30,7 @@ public class EmailNotification {
         System.out.println("Message was sent successfully");
     }
 
+    @Step("Constructor email notification about page loading time. EmailNotification")
     private static Message prepareMessage(Session session, String recipient, String myAccountEmail, String textMessage, String subjectMessage) {
         Message message = new MimeMessage(session);
         try {

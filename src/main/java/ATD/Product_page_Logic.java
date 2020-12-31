@@ -1302,7 +1302,7 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
-    @Step("Check Faq block without answers. Product page")
+    @Step("Check Faq block without answers. Product_page")
     public Product_page_Logic checkFAQBlockWithoutAnswers() {
         faqBlockWithoutAnswer().shouldBe(visible);
         textAboutQuantityOfAnswersInFAQ().shouldHave(text("0 Fragen"));
@@ -1311,7 +1311,7 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
-    @Step("check number in the quantity block and block with quantity of product on product page. Search_page")
+    @Step("check number in the quantity block and block with quantity of product on product page. Product_page")
     public Product_page_Logic checkQuantityBlockVisibilityOnProductPage() {
         countInputOnProduct().shouldBe(visible);
         if(countInputOnProduct().has(attribute("value","1"))){
