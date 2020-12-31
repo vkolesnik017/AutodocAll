@@ -159,8 +159,6 @@ public class Versand_static_page_Logic extends Versand_static_page {
         return exactDeliveryPrice;
     }
 
-
-
     @Step("Get delivery price for AWS. Versand_static_page")
     public Float getDeliveryPriceForAWS(String country) throws Exception {
         openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "staticVersand"));
