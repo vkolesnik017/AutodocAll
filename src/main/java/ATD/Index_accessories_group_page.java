@@ -27,5 +27,12 @@ public class Index_accessories_group_page {
         return $$x("//div[@class='accessories-catalog']//a[@class='accessories-catalog__item']");
     }
 
+    SelenideElement blockAccessorizeCatalog() {
+        return $x("//*[@class='accessories-catalog']");
+    }
+
+    SelenideElement firstElementInBlockAccessorizeCatalog() {
+        return $x("//*[@class='accessories-catalog__row']//a[1]");
+    }
 
 }

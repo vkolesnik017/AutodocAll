@@ -1171,6 +1171,11 @@ public class Order_aws {
         return this;
     }
 
+    @Step("Get safe order price. Order_aws")
+    public Float getSafeOrderPrice() {
+        return Float.valueOf(safeOrderPrice().getValue());
+    }
+
     @Step("Get delivery cost of heavy loads in order. Order_aws")
     public Float getDeliveryCostOfHeavyLoads() {
         return Float.valueOf(heavyLoadsDeliveryPriceOrderAWS().getText());

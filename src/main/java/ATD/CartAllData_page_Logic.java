@@ -323,6 +323,15 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return safeOrderPriceFormat;
     }
 
+    @Step("Get safe order price from SO block. CartAllData_page")
+    public float getSafeOrderPriceFromSOBlock() {
+        safeOrderBlock().shouldBe(visible);
+        String safeOrderPrice = priceOfSafeOrder().getText();
+        float safeOrderPriceFormat = Float.parseFloat(safeOrderPrice.substring(0, safeOrderPrice.indexOf(" ")).replaceAll(",", "."));
+        return safeOrderPriceFormat;
+    }
+
+
     @Step("Add safe order price in order and checks what total price included SO. CartAllData_page")
     public CartAllData_page_Logic addSafeOrderInOrderAndCheckTotalPriceIncludedSO(String shop) {
         float price = getTotalPriceAllDataPage(shop);

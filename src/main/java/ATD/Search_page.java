@@ -233,7 +233,7 @@ public class Search_page {
     }
 
     ElementsCollection artNumOfProduct() {
-        return $$x("//span[@class='article_number']");
+        return $$x("//span[@class='article_number'][1]");
     }
 
     ElementsCollection artNumOfActiveProduct() {return $$x("//div[@class='button ']/ancestor::div[@class='price_box']/..//span[@class='article_number']");}
@@ -326,5 +326,8 @@ public class Search_page {
 
     ElementsCollection importantOptionsOfProduct(int positionOfProduct) {return $$x("(//ul[@class='criteria'])["+positionOfProduct+"]/li/span[1]");}
 
+    ElementsCollection countInputsOne() {return $$x(" //input[@value='1']/ancestor::div[@class='add_info']/preceding-sibling::div[@class='product-quantity']/span[2]/span");}
+
+    ElementsCollection countInputsTwo() {return $$x(" //input[@value='2']/ancestor::div[@class='add_info']/preceding-sibling::div[@class='product-quantity']/span[2]/span");}
 }
 

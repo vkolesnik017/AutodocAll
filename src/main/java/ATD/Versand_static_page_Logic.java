@@ -159,6 +159,27 @@ public class Versand_static_page_Logic extends Versand_static_page {
         return exactDeliveryPrice;
     }
 
+
+
+    @Step("Get Safe Order price discount with any subscription or without subscription. Versand_static_page")
+    public float getSafeOrderPriceWithAnyDiscountAndSubscription(String mail) throws SQLException {
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "staticVersand"));
+        float safeOrderPrice = Float.parseFloat(soPrice2().getText().replace(" €", "").replace(",", "."));
+        float safeOrderPriceWithDiscount;
+        if (mail.contains("plusBasic")) {
+            safeOrderPriceWithDiscount = safeOrderPrice * 0.8f;
+        } else if (mail.contains("plusOptimal")) {
+            safeOrderPriceWithDiscount = safeOrderPrice * 0.65f;
+        } else if (mail.contains("plusPro")) {
+            safeOrderPriceWithDiscount = safeOrderPrice * 0.5f;
+        } else {
+            safeOrderPriceWithDiscount = safeOrderPrice;
+        }
+        return safeOrderPriceWithDiscount;
+    }
+
+
+
     @Step("Get delivery price for AWS. Versand_static_page")
     public Float getDeliveryPriceForAWS(String country) throws Exception {
         openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "staticVersand"));

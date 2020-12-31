@@ -39,6 +39,7 @@
             <class name="ATD.ACC.QC_836_MainAccessories.QC_2661_Lack4xxAnd3xxServerResponsesWhenMovingToCategory"/>
             <class name="ATD.ACC.QC_836_MainAccessories.QC_2237_DisplayedAllCategoriesAndLogicalUnionOnMainACC"/>
             <class name="ATD.ACC.QC_836_MainAccessories.QC_2775_PresenceAndWorkBreadCrumbs"/>
+            <class name="ATD.ACC.QC_836_MainAccessories.QC_3026_CheckBlockCategoriesOnLogicalOnionRoute"/>
         </classes>
     </test>
 
