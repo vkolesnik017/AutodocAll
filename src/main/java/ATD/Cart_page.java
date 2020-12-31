@@ -116,7 +116,7 @@ public class Cart_page {
     }
 
     public SelenideElement pfandPriceInTotalPriceBlock() {
-        return $x("//span[contains(text(),'Pfand')]/following-sibling::span");
+        return $x("//span[@class='order-money-back']");
     }
 
     public SelenideElement discountBlock() {
