@@ -24,7 +24,7 @@ public class QC_2562_CheckingSelectionOfProductsInTopBlock {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new Common.SetUp("PKW").setUpShopWithSubroutes("subprod", "DE", "main_tyres", "tyres,tyres2,tyres3");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("subprod", "DE", "main_tyres", "tyres,tyres2");  //,tyres3
     }
 
     @Test(dataProvider = "routes")

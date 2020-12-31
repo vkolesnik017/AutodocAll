@@ -39,7 +39,7 @@ public class QC_2559_CheckMainElementsOfTopProductBlock {
 
     @DataProvider(name = "routesTyres", parallel = true)
     Object[] dataProviderTyres() throws SQLException {
-        return new Common.SetUp("PKW").setUpShopWithSubroutes("subprod", "DE", "main_tyres", "tyres,tyres2,tyres3");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("subprod", "DE", "main_tyres", "tyres,tyres2");  //,tyres3
     }
 
     @Test(dataProvider = "routesTyres")
@@ -64,7 +64,6 @@ public class QC_2559_CheckMainElementsOfTopProductBlock {
         openPage(route);
         new Tyres_maker_page_Logic().presenceOfTopProductBlock().checkSizeOfTopProducts(12).checkAbilityToAddTopProductToCart();
     }
-
     @AfterMethod
     public void close() {
         closeWebDriver();
