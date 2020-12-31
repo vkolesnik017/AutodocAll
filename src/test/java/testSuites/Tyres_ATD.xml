@@ -159,14 +159,14 @@
     <test name="QC_1427_FilterByRatingOnTyresListing">
         <classes>
             <class name="ATD.Tyres.QC_1427_FilterByRatingOnTyresListing.QC_1428_TestFilterByRatingPresenceOnTyresListing"/>
-            <class name="ATD.Tyres.QC_1427_FilterByRatingOnTyresListing.QC_1429_TestFilterByRatingApplyingOnTyresListing"/>
+<!--            <class name="ATD.Tyres.QC_1427_FilterByRatingOnTyresListing.QC_1429_TestFilterByRatingApplyingOnTyresListing"/>-->
         </classes>
     </test>
 
     <test name="QC_1431_FilterByBrandOnTyresListing">
         <classes>
             <class name="ATD.Tyres.QC_1431_FilterByBrandOnTyresListing.QC_1432_BrandFilterPresenceOnTyresListing"/>
-            <class name="ATD.Tyres.QC_1431_FilterByBrandOnTyresListing.QC_1433_BrandFilterApplyingOnTyresListing"/>
+<!--            <class name="ATD.Tyres.QC_1431_FilterByBrandOnTyresListing.QC_1433_BrandFilterApplyingOnTyresListing"/>-->
         </classes>
     </test>
 
