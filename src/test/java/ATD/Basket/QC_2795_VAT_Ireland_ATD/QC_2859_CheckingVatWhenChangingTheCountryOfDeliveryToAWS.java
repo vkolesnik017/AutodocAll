@@ -34,7 +34,7 @@ public class QC_2859_CheckingVatWhenChangingTheCountryOfDeliveryToAWS {
         close();
     }
 
-    @DataProvider(name = "route", parallel = true)
+    @DataProvider(name = "route", parallel = false)
     Object[] dataProviderProductsPL() throws SQLException {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product2");
     }

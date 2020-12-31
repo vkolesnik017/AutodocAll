@@ -45,7 +45,8 @@ public class SetUp {
         Configuration.browserVersion = (browserVersion);
         Configuration.startMaximized = true;
         Configuration.holdBrowserOpen = false;
-        Configuration.timeout = 30000;
+        Configuration.timeout = 10000;
+        Configuration.pageLoadTimeout = 60000;
         chromePrefs.put("plugins.always_open_pdf_externally", download);
         chromePrefs.put("credentials_enable_service", false);
         chromePrefs.put("profile.password_manager_enabled", false);

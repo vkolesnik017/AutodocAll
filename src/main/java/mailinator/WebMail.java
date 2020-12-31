@@ -305,7 +305,7 @@ public class WebMail {
     @Step("Get total price in email. WebMail")
     public Float getTotalPriceInEmail() {
         String realPrice = infoTotalPriceInEmail().getText();
-        realPrice = realPrice.replaceAll("[^0-9,]", "");
+        realPrice = realPrice.replaceAll("[^0-9.]", "");
         realPrice = realPrice.replaceAll(",", ".");
         Float totalPrice = Float.parseFloat(realPrice);
         return totalPrice;

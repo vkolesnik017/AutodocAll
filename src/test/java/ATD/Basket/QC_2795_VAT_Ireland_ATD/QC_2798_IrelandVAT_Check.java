@@ -37,7 +37,7 @@ public class QC_2798_IrelandVAT_Check {
         close();
     }
 
-    @DataProvider(name = "route", parallel = true)
+    @DataProvider(name = "route", parallel = false)
     Object[] dataProviderProductsPL() throws SQLException {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product2");
     }
