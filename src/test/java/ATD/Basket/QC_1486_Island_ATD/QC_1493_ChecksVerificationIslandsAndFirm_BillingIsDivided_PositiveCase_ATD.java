@@ -71,7 +71,7 @@ public class QC_1493_ChecksVerificationIslandsAndFirm_BillingIsDivided_PositiveC
 
         totalPriceInEmail = new WebMail().openMail("QC_1493_autotest@autodoc.si", passwordForMail)
                 .checkAndOpenLetterWithOrderNumber(orderNumber)
-                .checkRegularDeliveryPriceInEmail("10,95")
+                .checkRegularDeliveryPriceInEmail("10.95")
                 .checkTextContainingVatPercentageInEmail("Inkl. 20% MwSt")
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPrice, totalPriceInEmail);

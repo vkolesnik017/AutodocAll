@@ -72,7 +72,7 @@ public class QC_1491_ChecksVerificationIslandsAndFirm_BillingIsUndivided_Incorre
 
         totalPriceInEmail = new WebMail().openMail("QC_1491_autotest@autodoc.si", passwordForMail)
                 .checkAndOpenLetterWithOrderNumber(orderNumber)
-                .checkRegularDeliveryPriceInEmail("10,95")
+                .checkRegularDeliveryPriceInEmail("10.95")
                 .checkTextContainingVatPercentageInEmail("inkl. 20% MwSt")
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPrice, totalPriceInEmail);

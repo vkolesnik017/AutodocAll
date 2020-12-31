@@ -70,7 +70,7 @@ public class QC_1495_ChecksVerificationIslandsAndFirm_BillingIsDivided_SameCount
 
         totalPriceInEmail = new WebMail().openMail("QC_1495_autotest@autodoc.si", passwordForMail)
                 .checkAndOpenLetterWithOrderNumber(orderNumber)
-                .checkRegularDeliveryPriceInEmail("165,00")
+                .checkRegularDeliveryPriceInEmail("165.00")
                 .checkAbsenceVatPercentageInEmail()
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPrice, totalPriceInEmail);
