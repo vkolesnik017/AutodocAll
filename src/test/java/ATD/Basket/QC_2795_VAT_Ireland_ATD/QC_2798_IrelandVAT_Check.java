@@ -85,7 +85,7 @@ public class QC_2798_IrelandVAT_Check {
 
         openPage(profilerPage_aws);
         new ProfilerPage_aws().fillingFieldsOrderIdAndArticleId(orderNumber, articleId)
-                .checkVatInTazFormula(vatForIE);
+                .checkVatInTazFormula(new ProfilerPage_aws().taxFormula(), vatForIE);
 
         new WebMail().openMail(mail, passwordForMail)
                 .checkAndOpenLetterWithOrderNumber(orderNumber)

@@ -70,7 +70,7 @@ public class QC_1487_ChecksVerificationIslands_BillingIsUndivided_PositiveCase_A
 
         totalPriceInEmail = new WebMail().openMail("QC_1487_autotest@autodoc.si", passwordForMail)
                 .checkAndOpenLetterWithOrderNumber(orderNumber)
-                .checkRegularDeliveryPriceInEmail("165,00")
+                .checkRegularDeliveryPriceInEmail("165.00")
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPrice, totalPriceInEmail);
     }

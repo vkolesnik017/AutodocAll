@@ -31,7 +31,7 @@ public class QC_3002_CheckingSearchBy_GroupField_FilterLinkSurcharges_OtherFilte
                 .clickOnRandomOrderID(1);
     }
 
-    @DataProvider(name = "projectName", parallel = true)
+    @DataProvider(name = "projectName")
     Object[] dataProject() {
         return new Object[][]{
                 {"pkwteile.at (AT)"},
@@ -52,7 +52,7 @@ public class QC_3002_CheckingSearchBy_GroupField_FilterLinkSurcharges_OtherFilte
 
     }
 
-    @DataProvider(name = "countryName", parallel = true)
+    @DataProvider(name = "countryName")
     Object[] dataCountry() {
         return new Object[][]{
                 {"Deutschland"},
@@ -72,7 +72,7 @@ public class QC_3002_CheckingSearchBy_GroupField_FilterLinkSurcharges_OtherFilte
                 .clickOnRandomOrderID(1);
     }
 
-    @DataProvider(name = "paymentsMethod", parallel = true)
+    @DataProvider(name = "paymentsMethod")
     Object[] dataPaymentsMethod() {
         return new Object[][]{
                 {"HypoVereinsbank"},
@@ -92,7 +92,7 @@ public class QC_3002_CheckingSearchBy_GroupField_FilterLinkSurcharges_OtherFilte
                 .clickOnRandomOrderID(1);
     }
 
-    @DataProvider(name = "currency", parallel = true)
+    @DataProvider(name = "currency")
     Object[] dataCurrency() {
         return new Object[][]{
                 {"EUR"},
@@ -112,7 +112,7 @@ public class QC_3002_CheckingSearchBy_GroupField_FilterLinkSurcharges_OtherFilte
                 .clickOnRandomOrderID(1);
     }
 
-    @DataProvider(name = "assemblyWarehouse", parallel = true)
+    @DataProvider(name = "assemblyWarehouse")
     Object[] dataAssemblyWarehouse() {
         return new Object[][]{
                 {"Основной склад"},

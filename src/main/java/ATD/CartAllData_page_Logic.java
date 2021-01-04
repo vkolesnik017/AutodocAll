@@ -647,4 +647,8 @@ public class CartAllData_page_Logic extends CartAllData_page {
         pfandPriceInProductBlock(productID).shouldBe(visible);
         return this;
     }
+
+    public float getHeavyLoadsDeliveryPrice() {
+        return Float.parseFloat(heavyLoadsDeliveryPrice().getText().replaceAll("[^0-9,]", "").replaceAll(",", "."));
+    }
 }
