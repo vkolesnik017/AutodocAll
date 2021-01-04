@@ -255,7 +255,7 @@ public class OrderAdd_page_aws {
             tableOfSuppliers().shouldBe(visible);
             radioBtnSuppliers().click();
         }
-        btnSelect().click();
+        btnSelect().scrollIntoView(true).click();
         return this;
     }
 

@@ -21,6 +21,7 @@
             <class name="ATD.Plus.QC_2361_AtdPlus.QC_3070_CheckDiscount20PercentOnSOWithBasicMVP2OrderFront"/>
             <class name="ATD.Plus.QC_2361_AtdPlus.QC_3071_CheckDiscount35PercentOnSOWithOptimumMVP2OrderFront"/>
             <class name="ATD.Plus.QC_2361_AtdPlus.QC_3072_CheckDiscount50PercentOnSOWithProMVP2OrderFront"/>
+            <class name="ATD.Plus.QC_2361_AtdPlus.QC_3073_CheckDiscount20PercentOnSOWithBasicMVP2FromAWS"/>
         </classes>
     </test>
 
