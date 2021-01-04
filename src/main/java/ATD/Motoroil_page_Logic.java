@@ -137,7 +137,7 @@ public class Motoroil_page_Logic extends Motoroil_page {
     public Motoroil_page_Logic checkTransferFromMarksBlockToCatalog() {
         carListBlock().shouldBe(visible);
         String titleOfMark = Objects.requireNonNull(carsMakerItem().getAttribute("title")).toLowerCase();
-        carsMakerItem().shouldBe(visible).shouldHave(attribute("title","MERCEDES-BENZ")).click();
+        carsMakerItem().shouldBe(visible).shouldHave(attribute("title", "MERCEDES-BENZ")).click();
         checkingContainsUrl(titleOfMark);
         return this;
     }
@@ -164,5 +164,5 @@ public class Motoroil_page_Logic extends Motoroil_page {
         checkingContainsUrl(idProduct);
         return this;
     }
-public class Motoroil_page_Logic  extends Motoroil_page{
 }
+
