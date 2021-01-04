@@ -1,7 +1,6 @@
-package ATD.Characteristics.QC_506_StaticCharacteristics;
+package ATD.Characteristics.QC_506_Characteristics;
 
-
-import ATD.Tyre_item_page_Logic;
+import ATD.Moto_Product_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -17,8 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1373_TestCharacteristicsBlockOnTyresProductPage {
-
+public class QC_731_DynamicCharacteristic {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -26,18 +24,21 @@ public class QC_1373_TestCharacteristicsBlockOnTyresProductPage {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyre_item," +
-                "tyre_item15,tyre_item16,tyre_item17");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_product3");
+
     }
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "Romaniuta")
-    @Description(value = "Test Checks Characteristics Block On Tyres Product Page")
-    public void testCharacteristicsBlockOnTyresProductPage(String route) {
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test checks dynamic characteristic")
+    public void testChecksDynamicCharacteristic(String route) {
         openPage(route);
-        new Tyre_item_page_Logic().checkCharacteristicsBlock()
-                .checkNavigatingSeasonLinkInCharacteristicsBlock();
+
+        new Moto_Product_page_Logic()
+                .selectMotoInHorizontalSelector("4081", "14014", "113799")
+                .presenceOfMotoBrandAtInfoMessage("BMW MOTORCYCLES R")
+                .visibilityOfDynamicCharacteristicBlock();
     }
 
     @AfterMethod

@@ -1,4 +1,4 @@
-package ATD.Characteristics.QC_506_StaticCharacteristics;
+package ATD.Characteristics.QC_506_Characteristics;
 
 import ATD.Tyre_form_page_Logic;
 import ATD.Tyre_item_page_Logic;

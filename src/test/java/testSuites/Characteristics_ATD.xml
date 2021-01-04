@@ -6,37 +6,32 @@
         <listener class-name="Common.ProjectListener"/>
     </listeners>
 
-    <test name="QC_486_DynamicCharacteristics">
+    <test name="QC_506_Characteristics">
         <classes>
-            <class name="ATD.Characteristics.QC_486_DynamicCharacteristics.QC_487_OutputDynamicCharacteristicOnProductPage"/>
-            <class name="ATD.Characteristics.QC_486_DynamicCharacteristics.QC_488_OutputDynamicCharacteristicOnTecDocListing"/>
-            <class name="ATD.Characteristics.QC_486_DynamicCharacteristics.QC_490_OutputDynamicCharacteristicsOnOenListing"/>
-            <class name="ATD.Characteristics.QC_486_DynamicCharacteristics.QC_493_OutputDynamicCharacterisitcOnSearchListing"/>
-            <class name="ATD.Characteristics.QC_486_DynamicCharacteristics.QC_494_DynamicCharacteristicIsNotOutputWithoutSelectedCar"/>
-            <class name="ATD.Characteristics.QC_486_DynamicCharacteristics.QC_495_DynamicCharacterisitcsIsNotOutputIfSelectedCarDoesNotFitSparePart"/>
-            <class name="ATD.Characteristics.QC_486_DynamicCharacteristics.QC_496_DynamicCharacteristicNotDisplayedWithCarBrand"/>
-        </classes>
-    </test>
-
-    <test name="QC_506_StaticCharacteristics">
-        <classes>
-            <class name="ATD.Characteristics.QC_506_StaticCharacteristics.QC_208_DynamicCharacteristicsOfProduct"/>
-            <class name="ATD.Characteristics.QC_506_StaticCharacteristics.QC_731_DynamicCharacteristic"/>
-            <class name="ATD.Characteristics.QC_506_StaticCharacteristics.QC_507_PresenceStaticCharacteristicOnProductPage"/>
-            <class name="ATD.Characteristics.QC_506_StaticCharacteristics.QC_509_PresenceStaticCharacteristicsOnTecDocListing"/>
-            <class name="ATD.Characteristics.QC_506_StaticCharacteristics.QC_511_PresenceStaticCharacteristicOnSearchListing"/>
-            <class name="ATD.Characteristics.QC_506_StaticCharacteristics.QC_512_PresenceStaticCharacteristicOnOenListing"/>
-            <class name="ATD.Characteristics.QC_506_StaticCharacteristics.QC_513_PresenceStaticCharacteristicInBasket"/>
-            <!--<class name="ATD.Characteristics.QC_506_StaticCharacteristics.QC_1901_CharacteristicsDoNotHideAfterBrandFilterApplying"/>-->
-            <class name="ATD.Characteristics.QC_506_StaticCharacteristics.QC_2083_CheckOfIdentityOfMpnProductAndMpnInAws"/>
-            <class name="ATD.Characteristics.QC_506_StaticCharacteristics.QC_2084_CheckOfIdentityOfMpnProductInAwsAndProductPage"/>
-            <class name="ATD.Characteristics.QC_506_StaticCharacteristics.QC_2095_CheckMpnOfProductInListingBasketProductPage"/>
-            <class name="ATD.Characteristics.QC_506_StaticCharacteristics.QC_2096_CheckMpnNumberInWishList"/>
-            <class name="ATD.Characteristics.QC_506_StaticCharacteristics.QC_2073_AbsenceCharacteristicQuantityOnProductPage"/>
-            <class name="ATD.Characteristics.QC_506_StaticCharacteristics.QC_2074_AbsenceQuantityForFebiBilsteinAndSwagInListing"/>
-            <class name="ATD.Characteristics.QC_506_StaticCharacteristics.QC_2075_CheckAbsenceOfCharacteristicQuantityInTopBlock"/>
-            <class name="ATD.Characteristics.QC_506_StaticCharacteristics.QC_2076_AbsenceQuantityForFEBIBILSTEINAndSWAGInBasket"/>
-            <class name="ATD.Characteristics.QC_506_StaticCharacteristics.QC_1373_TestCharacteristicsBlockOnTyresProductPage"/>
+            <class name="ATD.Characteristics.QC_506_Characteristics.QC_487_OutputDynamicCharacteristicOnProductPage"/>
+            <class name="ATD.Characteristics.QC_506_Characteristics.QC_488_OutputDynamicCharacteristicOnTecDocListing"/>
+            <class name="ATD.Characteristics.QC_506_Characteristics.QC_490_OutputDynamicCharacteristicsOnOenListing"/>
+            <class name="ATD.Characteristics.QC_506_Characteristics.QC_493_OutputDynamicCharacterisitcOnSearchListing"/>
+            <class name="ATD.Characteristics.QC_506_Characteristics.QC_494_DynamicCharacteristicIsNotOutputWithoutSelectedCar"/>
+            <class name="ATD.Characteristics.QC_506_Characteristics.QC_495_DynamicCharacterisitcsIsNotOutputIfSelectedCarDoesNotFitSparePart"/>
+            <class name="ATD.Characteristics.QC_506_Characteristics.QC_496_DynamicCharacteristicNotDisplayedWithCarBrand"/>
+            <class name="ATD.Characteristics.QC_506_Characteristics.QC_208_DynamicCharacteristicsOfProduct"/>
+            <class name="ATD.Characteristics.QC_506_Characteristics.QC_731_DynamicCharacteristic"/>
+            <class name="ATD.Characteristics.QC_506_Characteristics.QC_507_PresenceStaticCharacteristicOnProductPage"/>
+            <class name="ATD.Characteristics.QC_506_Characteristics.QC_509_PresenceStaticCharacteristicsOnTecDocListing"/>
+            <class name="ATD.Characteristics.QC_506_Characteristics.QC_511_PresenceStaticCharacteristicOnSearchListing"/>
+            <class name="ATD.Characteristics.QC_506_Characteristics.QC_512_PresenceStaticCharacteristicOnOenListing"/>
+            <class name="ATD.Characteristics.QC_506_Characteristics.QC_513_PresenceStaticCharacteristicInBasket"/>
+            <!--<class name="ATD.Characteristics.QC_506_Characteristics.QC_1901_CharacteristicsDoNotHideAfterBrandFilterApplying"/>-->
+            <class name="ATD.Characteristics.QC_506_Characteristics.QC_2083_CheckOfIdentityOfMpnProductAndMpnInAws"/>
+            <class name="ATD.Characteristics.QC_506_Characteristics.QC_2084_CheckOfIdentityOfMpnProductInAwsAndProductPage"/>
+            <class name="ATD.Characteristics.QC_506_Characteristics.QC_2095_CheckMpnOfProductInListingBasketProductPage"/>
+            <class name="ATD.Characteristics.QC_506_Characteristics.QC_2096_CheckMpnNumberInWishList"/>
+            <class name="ATD.Characteristics.QC_506_Characteristics.QC_2073_AbsenceCharacteristicQuantityOnProductPage"/>
+            <class name="ATD.Characteristics.QC_506_Characteristics.QC_2074_AbsenceQuantityForFebiBilsteinAndSwagInListing"/>
+            <class name="ATD.Characteristics.QC_506_Characteristics.QC_2075_CheckAbsenceOfCharacteristicQuantityInTopBlock"/>
+            <class name="ATD.Characteristics.QC_506_Characteristics.QC_2076_AbsenceQuantityForFEBIBILSTEINAndSWAGInBasket"/>
+            <class name="ATD.Characteristics.QC_506_Characteristics.QC_1373_TestCharacteristicsBlockOnTyresProductPage"/>
         </classes>
     </test>
 

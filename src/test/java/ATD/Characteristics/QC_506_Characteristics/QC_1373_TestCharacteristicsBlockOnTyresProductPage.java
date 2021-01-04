@@ -1,7 +1,7 @@
-package ATD.Characteristics.QC_506_StaticCharacteristics;
+package ATD.Characteristics.QC_506_Characteristics;
 
 
-import ATD.Product_page_Logic;
+import ATD.Tyre_item_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -17,9 +17,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2073_AbsenceCharacteristicQuantityOnProductPage {
-
-    private Product_page_Logic productPageLogic = new Product_page_Logic();
+public class QC_1373_TestCharacteristicsBlockOnTyresProductPage {
 
     @BeforeClass
     void setUp() {
@@ -28,17 +26,18 @@ public class QC_2073_AbsenceCharacteristicQuantityOnProductPage {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "lkw_product5,product33,product34,product35,product36");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyre_item," +
+                "tyre_item15,tyre_item16,tyre_item17");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Romaniuta")
-    @Description(value = "Test Checks Absence Characteristic Quantity 563 on Product Page For FEBI and SWAG")
-    public void testAbsenceCharacteristicQuantity563onProductPageForFEBIandSWAG(String route) {
+    @Description(value = "Test Checks Characteristics Block On Tyres Product Page")
+    public void testCharacteristicsBlockOnTyresProductPage(String route) {
         openPage(route);
-        productPageLogic.clickAllCharacteristicsButtonIfPresent()
-                        .checkInvisibilityOfCharacteristic(productPageLogic.mengeCharacteristic());
+        new Tyre_item_page_Logic().checkCharacteristicsBlock()
+                .checkNavigatingSeasonLinkInCharacteristicsBlock();
     }
 
     @AfterMethod

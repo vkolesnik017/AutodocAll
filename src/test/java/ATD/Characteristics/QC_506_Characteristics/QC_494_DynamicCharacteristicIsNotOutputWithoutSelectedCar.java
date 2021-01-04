@@ -1,4 +1,4 @@
-package ATD.Characteristics.QC_486_DynamicCharacteristics;
+package ATD.Characteristics.QC_506_Characteristics;
 
 import ATD.Product_page_Logic;
 import Common.SetUp;

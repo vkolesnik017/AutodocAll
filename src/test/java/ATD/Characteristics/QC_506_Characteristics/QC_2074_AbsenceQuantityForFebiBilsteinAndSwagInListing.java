@@ -1,4 +1,4 @@
-package ATD.Characteristics.QC_506_StaticCharacteristics;
+package ATD.Characteristics.QC_506_Characteristics;
 
 import ATD.Category_car_list_page_Logic;
 import ATD.Category_oen_Page_Logic;

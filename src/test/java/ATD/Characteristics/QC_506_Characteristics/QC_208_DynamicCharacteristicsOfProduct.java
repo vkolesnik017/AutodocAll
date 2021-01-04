@@ -1,4 +1,4 @@
-package ATD.Characteristics.QC_506_StaticCharacteristics;
+package ATD.Characteristics.QC_506_Characteristics;
 
 import ATD.LKW_Product_page_Logic;
 import Common.SetUp;

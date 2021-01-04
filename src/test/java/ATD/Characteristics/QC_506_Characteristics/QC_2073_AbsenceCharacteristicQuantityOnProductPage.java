@@ -1,6 +1,7 @@
-package ATD.Characteristics.QC_506_StaticCharacteristics;
+package ATD.Characteristics.QC_506_Characteristics;
 
-import ATD.Moto_Product_page_Logic;
+
+import ATD.Product_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,7 +17,10 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_731_DynamicCharacteristic {
+public class QC_2073_AbsenceCharacteristicQuantityOnProductPage {
+
+    private Product_page_Logic productPageLogic = new Product_page_Logic();
+
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -24,21 +28,17 @@ public class QC_731_DynamicCharacteristic {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_product3");
-
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "lkw_product5,product33,product34,product35,product36");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "Kolesnik")
-    @Description(value = "Test checks dynamic characteristic")
-    public void testChecksDynamicCharacteristic(String route) {
+    @Owner(value = "Romaniuta")
+    @Description(value = "Test Checks Absence Characteristic Quantity 563 on Product Page For FEBI and SWAG")
+    public void testAbsenceCharacteristicQuantity563onProductPageForFEBIandSWAG(String route) {
         openPage(route);
-
-        new Moto_Product_page_Logic()
-                .selectMotoInHorizontalSelector("4081", "14014", "113799")
-                .presenceOfMotoBrandAtInfoMessage("BMW MOTORCYCLES R")
-                .visibilityOfDynamicCharacteristicBlock();
+        productPageLogic.clickAllCharacteristicsButtonIfPresent()
+                        .checkInvisibilityOfCharacteristic(productPageLogic.mengeCharacteristic());
     }
 
     @AfterMethod

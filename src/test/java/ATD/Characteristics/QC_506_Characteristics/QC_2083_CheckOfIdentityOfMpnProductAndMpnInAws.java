@@ -1,9 +1,9 @@
-package ATD.Characteristics.QC_506_StaticCharacteristics;
+package ATD.Characteristics.QC_506_Characteristics;
 
-import ATD.Services_wishList_page_Logic;
 import Common.SetUp;
 import ATD.Tyre_form_page_Logic;
 import ATD.Tyres_dimension_page_Logic;
+import AWS.ProductSearch_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -14,12 +14,13 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2096_CheckMpnNumberInWishList {
+public class QC_2083_CheckOfIdentityOfMpnProductAndMpnInAws {
     private Tyre_form_page_Logic tyreFormPage = new Tyre_form_page_Logic();
     private Tyres_dimension_page_Logic dimensionPage = new Tyres_dimension_page_Logic();
 
@@ -36,13 +37,13 @@ public class QC_2096_CheckMpnNumberInWishList {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test check MPN number in Wishlist")
-    public void testCheckCheckMpnNumberInWishList(String route) {
+    @Description(value = "Test check of identity of MPN product number  and MPN in AWS")
+    public void testCheckOfIdentityOfMpnProductAndMpnInAws(String route) {
         openPage(route);
         String mpnOfProduct = tyreFormPage.presenceOfListingBlock().getMpnNumberOfProduct(0);
-        tyreFormPage.addProductToWishList(0).goToWishListPage();
-        String mpnOfProductFromWishList = new Services_wishList_page_Logic().presenceOfProductList().getMpnNumberOfProduct(0);
-        Assert.assertEquals(mpnOfProduct, mpnOfProductFromWishList);
+        String brandOfProduct = tyreFormPage.getNameBrandOfProduct();
+        List<String> mpnNumberOfProductFromAws = new ProductSearch_aws().openProductSearchPageAndLogin().inputMpnNumberAndBrandNameOfProduct(mpnOfProduct, brandOfProduct).getArtNumberOfProduct();
+        Assert.assertTrue(mpnNumberOfProductFromAws.contains(mpnOfProduct));
     }
 
     @DataProvider(name = "routesDimension", parallel = true)
@@ -53,13 +54,13 @@ public class QC_2096_CheckMpnNumberInWishList {
     @Test(dataProvider = "routesDimension")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test check MPN number in Wishlist")
-    public void testCheckCheckMpnNumberInWishListDimension(String route) {
+    @Description(value = "Test check of identity of MPN product number  and MPN in AWS")
+    public void testCheckOfIdentityOfMpnProductAndMpnInAwsDimension(String route) {
         openPage(route);
         String mpnOfProduct = dimensionPage.presenceOfListingBlock().getMpnNumberOfProduct(0);
-        dimensionPage.addProductToWishList(0).goToWishListPage();
-        String mpnOfProductFromWishList = new Services_wishList_page_Logic().presenceOfProductList().getMpnNumberOfProduct(0);
-        Assert.assertEquals(mpnOfProduct, mpnOfProductFromWishList);
+        String brandOfProduct = tyreFormPage.getNameBrandOfProduct();
+        List<String> mpnNumberOfProductFromAws = new ProductSearch_aws().openProductSearchPageAndLogin().inputMpnNumberAndBrandNameOfProduct(mpnOfProduct, brandOfProduct).getArtNumberOfProduct();
+        Assert.assertTrue(mpnNumberOfProductFromAws.contains(mpnOfProduct));
     }
 
     @AfterMethod

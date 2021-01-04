@@ -1,7 +1,6 @@
-package ATD.Characteristics.QC_486_DynamicCharacteristics;
+package ATD.Characteristics.QC_506_Characteristics;
 
-import Common.DataBase;
-import ATD.Product_page_Logic;
+import ATD.Category_name_brand_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,10 +15,8 @@ import java.sql.SQLException;
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
-import static com.codeborne.selenide.Selenide.open;
 
-
-public class QC_496_DynamicCharacteristicNotDisplayedWithCarBrand {
+public class QC_2075_CheckAbsenceOfCharacteristicQuantityInTopBlock {
 
     @BeforeClass
     void setUp() {
@@ -28,21 +25,22 @@ public class QC_496_DynamicCharacteristicNotDisplayedWithCarBrand {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "categories_maker");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_name_brand3,category_name_brand4,category_maker_brand2,category_maker_brand3,category_group_brand2,category_group_brand3");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "Romaniuta")
-    @Description(value = "Test checks absence of dynamic characteristic with choosen car brand")
-    public void testDynamicCharacteristicNotDisplayedWithCarBrand(String route) throws Exception {
+    @Owner(value = "Kolesnik")
+    @Description(value = "Checking for the absence of the characteristic 'quantity' 563 in the TOP block for FEBI BILSTEIN and SWAG brands")
+    public void testCheckAbsenceOfCharacteristicQuantityInTopBlockForFEBIBILSTEINAndSWAG(String route) {
         openPage(route);
-        open(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "product25"));
-        new Product_page_Logic().checkDynamicCharacteristic();
+
+        new Category_name_brand_page_Logic()
+                .checkAbsenceOfQuantityCharacteristicInTopProducts();
     }
 
     @AfterMethod
-    private void close() {
+    public void close() {
         closeWebDriver();
     }
 }

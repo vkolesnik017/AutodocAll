@@ -1,4 +1,4 @@
-package ATD.Characteristics.QC_506_StaticCharacteristics;
+package ATD.Characteristics.QC_506_Characteristics;
 
 import ATD.CommonMethods;
 import Common.DataBase;

@@ -1,4 +1,4 @@
-package ATD.Characteristics.QC_486_DynamicCharacteristics;
+package ATD.Characteristics.QC_506_Characteristics;
 
 import Common.DataBase;
 import ATD.Product_page_Logic;
