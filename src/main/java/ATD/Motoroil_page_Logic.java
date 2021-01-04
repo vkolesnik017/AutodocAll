@@ -164,5 +164,33 @@ public class Motoroil_page_Logic extends Motoroil_page {
         checkingContainsUrl(idProduct);
         return this;
     }
+
+    @Step("Check adding product to basket from the TOP Block on the Main Oil Page. Motoroil page")
+    public Motoroil_page_Logic checkAddingToBasketFromTopBlock() {
+        topBlockOnMainOilPage().shouldBe(visible);
+        String articleNummerTopBlock = articleNumberInTopBlock().getText();
+        buyButtonInTopBlock().click();
+        cartBlock().shouldBe(visible);
+        String articleNummerCartBlock = articleNumberInCartBlock().getText();
+        Assert.assertEquals(articleNummerTopBlock, articleNummerCartBlock);
+        return this;
+    }
+
+    @Step("Check transfer to brand listing from the brand block on the Main Oil Page. Motoroil page")
+    public MotoroilBrand_page_Logic checkTransferToBrandListingFromTheBrandBlock(String oilBrandName) {
+        brandBlock().shouldBe(visible);
+        itemInBrandBlock().click();
+        checkingContainsUrl(oilBrandName);
+        return page(MotoroilBrand_page_Logic.class);
+    }
+
+    @Step("Check sending kba selector form with valid data. Motoroil page")
+    public Category_car_list_page_Logic sendKbaSelectorFormWithValidData(String firstValueOfKbaNumber, String secondValueOfKbaNumber) {
+        kbaSelectorBlock().shouldBe(visible);
+        kbaSelectorFirstInput().sendKeys(firstValueOfKbaNumber);
+        kbaSelectorSecondInput().sendKeys(secondValueOfKbaNumber);
+        kbaSelectorSendButton().click();
+        return page(Category_car_list_page_Logic.class);
+    }
 }
 

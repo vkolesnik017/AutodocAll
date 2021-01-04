@@ -1381,4 +1381,10 @@ public class Product_page_Logic extends Product_page {
         }
         return this;
     }
+
+    @Step("presence of Phrase about compatibility product and vehicle .Product_page")
+    public Product_page_Logic presenceOfPhraseAboutCompatibilityProductAndVehicle() {
+        phraseAboutCompatibilityProductAndVehicle().shouldBe(visible);
+        return this;
+    }
 }

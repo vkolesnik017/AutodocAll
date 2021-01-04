@@ -9,7 +9,7 @@
 
     <test name="QC_2799_CheckTransitionFromBannersAutodocClub">
         <classes>
-            <class name="ATD.Banners.QC_2799_CheckTransitionFromBannersAutodocClub.QC_2804_TransitionFromBannersAutodocClub"/>
+            <class name="ATD.Banners.QC_2799_CheckTransitionFromBannersAutodocClub.QC_2804"/>
         </classes>
     </test>
 

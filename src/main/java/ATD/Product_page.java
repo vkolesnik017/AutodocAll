@@ -899,4 +899,7 @@ public class Product_page {
 
     SelenideElement tooltipOfMarkeField() {return $x("//div[@class='tooltiptext-close js-tooltiptext-close']");}
 
+    SelenideElement phraseAboutCompatibilityProductAndVehicle() {
+        return $x("//*[@class='accordion-selected']");
+    }
     }

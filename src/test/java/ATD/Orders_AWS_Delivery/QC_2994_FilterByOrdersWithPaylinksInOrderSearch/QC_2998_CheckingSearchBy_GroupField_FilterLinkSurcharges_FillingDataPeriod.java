@@ -20,7 +20,7 @@ public class QC_2998_CheckingSearchBy_GroupField_FilterLinkSurcharges_FillingDat
         setUpBrowser(false, "chrome", "77.0", false);
     }
 
-    @DataProvider(name = "random", parallel = true)
+    @DataProvider(name = "random")
     Object[] dataRandom() {
         String data1 = generationRandomDates(1);
         String data2 = generationRandomDates(1);

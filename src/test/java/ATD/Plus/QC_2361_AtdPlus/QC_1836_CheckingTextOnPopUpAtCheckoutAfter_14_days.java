@@ -29,7 +29,7 @@ public class QC_1836_CheckingTextOnPopUpAtCheckoutAfter_14_days {
         return new SetUp("ATD").setUpShop("prod", "DE");
     }
 
-    @Test(dataProvider = "route")
+    @Test(dataProvider = "route", enabled = false)
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checking the text of the pop-up at the 14 days checkout")
