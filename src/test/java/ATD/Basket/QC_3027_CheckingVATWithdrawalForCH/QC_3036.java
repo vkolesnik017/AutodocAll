@@ -125,7 +125,7 @@ public class QC_3036 {
 
 
     @AfterMethod
-    private void close() throws IOException {
+    private void close() {
         closeWebDriver();
     }
 }
