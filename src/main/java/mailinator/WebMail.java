@@ -298,7 +298,7 @@ public class WebMail {
 
     @Step("Checks regular delivery price. WebMail")
     public WebMail checkRegularDeliveryPriceInEmail(String regularDeliveryPrice) {
-        regularDeliveryPriceInEmail().shouldHave(text(regularDeliveryPrice));
+        regularDeliveryPriceInEmail().shouldHave(text(regularDeliveryPrice.replaceAll(",",".")));
         return this;
     }
 

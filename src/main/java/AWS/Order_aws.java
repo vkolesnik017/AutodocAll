@@ -532,6 +532,27 @@ public class Order_aws {
         return $x("//table[contains(@class,'list-paylinks')]/tbody//td[@class='paylink-amount']");
     }
 
+    private SelenideElement declarationBtn() {
+        return $x("//button[@name='loadDeclaration']");
+    }
+
+    private SelenideElement modalWindowDeclaration() {
+        return $x("//div[@id='declaration']");
+    }
+
+    private SelenideElement checkboxSelectAllInModalDeclaration() {
+        return $x("//table[@id='declaration-product']//input[@class='select-all']");
+    }
+
+    private SelenideElement printBtnInModalDeclaration() {
+        return $x("//a[@class='btn btn-primary btn-print']");
+    }
+
+    private SelenideElement closeBtnModalWindowDeclaration() {
+        return $x("//div[@id='declaration']//a[@class='btn btn-default btn-close']");
+    }
+
+
 
 
     @Step("Click button accounts. Order_aws")
@@ -1422,6 +1443,23 @@ public class Order_aws {
     @Step("Checks expected text {expectedText} in label danger of certain product {artID}. Order_aws")
     public Order_aws checkTextInLabelDanger(String artID, String expectedText) {
         labelDangerOfCertainProduct(artID).waitUntil(visible, 10000).shouldHave(text(expectedText));
+        return this;
+    }
+
+    @Step("Click button declaration. Order_aws")
+    public Order_aws clickBtnDeclaration() {
+        declarationBtn().click();
+        return this;
+    }
+
+    @Step("Check modal window declaration and click print button")
+    public Order_aws checkModalWindowDeclarationAndClickPrintBtn() {
+        modalWindowDeclaration().waitUntil(visible, 10000);
+        checkboxSelectAllInModalDeclaration().shouldBe(visible).click();
+        printBtnInModalDeclaration().click();
+        sleep(5000);
+        closeBtnModalWindowDeclaration().waitUntil(visible, 10000);
+        closeBtnModalWindowDeclaration().click();
         return this;
     }
 }
