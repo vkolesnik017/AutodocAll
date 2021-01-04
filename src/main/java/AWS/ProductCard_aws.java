@@ -144,6 +144,8 @@ public class ProductCard_aws {
         return $$("#form_hazardTypes_1____chzn span");
     }
 
+    private SelenideElement idCategory() {return $x("//td[contains(text(),'ID Категории:')]/following-sibling::td");}
+
     String productId;
 
     public ProductCard_aws() {
@@ -275,6 +277,12 @@ public class ProductCard_aws {
     @Step("get id of product. ProductCard_aws")
     public String getIdOfProduct() {
         String id = url().replaceAll(".+\\/", "");
+        return id;
+    }
+
+    @Step("get id of category. ProductCard_aws")
+    public String getCategoryId() {
+        String id = idCategory().getText().replaceAll("\\s.+","");
         return id;
     }
 
