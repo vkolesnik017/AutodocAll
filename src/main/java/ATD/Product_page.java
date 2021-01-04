@@ -883,4 +883,8 @@ public class Product_page {
 
     SelenideElement infoTextOfDangerousInfoBlock() {return $x("//div[@class='dangerous-goods__text js-dangerous-goods__text']/span");}
 
+    SelenideElement catalogIconInBreadcrumbLink() {return $x("//div[@class='steps breadcrumbs']/ul/li//img");}
+
+    SelenideElement tooltipOfMarkeField() {return $x("//div[@class='tooltiptext-close js-tooltiptext-close']");}
+
     }
