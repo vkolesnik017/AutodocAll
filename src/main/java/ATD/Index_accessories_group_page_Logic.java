@@ -45,10 +45,25 @@ public class Index_accessories_group_page_Logic extends Index_accessories_group_
     }
 
     @Step(": from. Index_accessories_group_page")
-    public Index_accessories_group_page_Logic checkCategoriesForServerResponses200( List<String> allCategories) throws IOException {
+    public Index_accessories_group_page_Logic checkCategoriesForServerResponses200(List<String> allCategories) throws IOException {
         CommonMethods.checkCategoriesForServerResponses200(allCategories);
         return this;
     }
 
+    @Step("Checking presence of accessorize block. Index_accessories_group_page")
+    public Index_accessories_group_page_Logic checkingPresenceAccessorizeBlock() {
+        blockAccessorizeCatalog().shouldBe(visible);
+        return this;
+    }
 
+    @Step("Get name first Category in block logic union.Index_accessories_group_page")
+    public String getNameFirstCategoryInBlockUnionLogic() {
+        return firstElementInBlockAccessorizeCatalog().getText();
+    }
+
+    @Step("Click first category in a logical union. Index_accessories_group_page")
+    public Listing_accessories_page_Logic clicksOnFirstCategory() {
+        firstElementInBlockAccessorizeCatalog().shouldBe(visible).click();
+        return page(Listing_accessories_page_Logic.class);
+    }
 }

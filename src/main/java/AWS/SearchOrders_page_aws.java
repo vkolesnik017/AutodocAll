@@ -110,6 +110,7 @@ public class SearchOrders_page_aws {
 
     @Step("Click button search. SearchOrders_page_aws")
     public SearchOrders_page_aws clickSearchBtn() {
+        searchBtn().waitUntil(visible, 10000);
         searchBtn().click();
         return this;
     }
@@ -124,6 +125,7 @@ public class SearchOrders_page_aws {
 
     @Step("Select expected Group field {expectedGroup}. SearchOrders_page_aws")
     public SearchOrders_page_aws selectExpectedGroupField(String expectedGroup) {
+        groupFieldSelector().shouldBe(visible);
         groupFieldSelector().selectOptionContainingText(expectedGroup);
         return this;
     }
@@ -265,6 +267,7 @@ public class SearchOrders_page_aws {
 
     @Step("Choosing project in selector {project}. SearchOrders_page_aws")
     public SearchOrders_page_aws chooseProjectInSelector(String project) {
+        projectSelector().shouldBe(visible);
         projectSelector().click();
         projectList(project).shouldBe(visible);
         projectList(project).click();
@@ -273,6 +276,7 @@ public class SearchOrders_page_aws {
 
     @Step("Choosing country {expectedCountry}. SearchOrders_page_aws")
     public SearchOrders_page_aws chooseCountry(String expectedCountry) {
+        countrySelector().shouldBe(visible);
         countrySelector().click();
         countryList(expectedCountry).shouldBe(visible);
         countryList(expectedCountry).click();
@@ -281,6 +285,7 @@ public class SearchOrders_page_aws {
 
     @Step("Choosing Payments method {expectedPaymentsMethod}. SearchOrders_page_aws")
     public SearchOrders_page_aws choosePaymentsMethods(String expectedPaymentsMethod) {
+        paymentsMethodsSelector().shouldBe(visible);
         paymentsMethodsSelector().click();
         paymentsMethodsList(expectedPaymentsMethod).shouldBe(visible);
         paymentsMethodsList(expectedPaymentsMethod).click();
@@ -289,6 +294,7 @@ public class SearchOrders_page_aws {
 
     @Step("Choosing currency method {expectedCurrency}. SearchOrders_page_aws")
     public SearchOrders_page_aws chooseCurrency(String expectedCurrency) {
+        currencySelector().shouldBe(visible);
         currencySelector().click();
         currencyList(expectedCurrency).shouldBe(visible);
         currencyList(expectedCurrency).click();
@@ -297,6 +303,7 @@ public class SearchOrders_page_aws {
 
     @Step("Choosing assembly warehouse {expectedAssemblyWarehouse}. SearchOrders_page_aws")
     public SearchOrders_page_aws chooseAssemblyWarehouse(String expectedAssemblyWarehouse) {
+        assemblyWarehouse().shouldBe(visible);
         assemblyWarehouse().selectOptionContainingText(expectedAssemblyWarehouse);
         return this;
     }

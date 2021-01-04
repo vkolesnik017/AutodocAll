@@ -4,7 +4,6 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.Select;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.*;
@@ -874,6 +873,19 @@ public class Product_page {
     SelenideElement btnShowMoreInRidexBlock() {return $x("//div[@class='product-banner-ridex js-default-open-popup']//div[@class='banner-btn']");}
 
     SelenideElement background() {return $x("//div[@class='overlay black hidden']");}
+
+    SelenideElement faqBlockWithoutAnswer() {return $x("//*[@class='product-leave-feedback']");}
+
+    SelenideElement faqBlockWithAnswer() {return $x("//*[@class='product-leave-feedback__wrap__comments']");}
+
+    SelenideElement textAboutQuantityOfAnswersInFAQ() {return $x("//*[@class='product-leave-feedback__wrap__first-title'][1]");}
+
+    SelenideElement blockVersandInFAQ() {return $x("//*[@class='product-leave-feedback']/following-sibling::div");}
+
+    SelenideElement countInputOnProduct() {return $x("//*[@class='count product-count']//input");}
+
+    SelenideElement textAboutCountOnProduct() {return $x("//*[@class='product-set-info']");}
+
 
     SelenideElement dangerousInfoBlock() {return $x("//div[contains(@class,'dangerous-goods js-dangerous-goods')]");}
 

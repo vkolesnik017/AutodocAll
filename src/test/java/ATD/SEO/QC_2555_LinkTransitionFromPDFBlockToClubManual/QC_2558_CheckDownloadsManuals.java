@@ -21,7 +21,7 @@ public class QC_2558_CheckDownloadsManuals {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0", false);
+        setUpBrowser(false, "chrome", "77.0", true);
     }
 
     @DataProvider(name = "routes", parallel = false)

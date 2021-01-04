@@ -1,17 +1,31 @@
 package Common;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.qameta.allure.Step;
+import lombok.*;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 
 import java.io.IOException;
+import java.io.Serializable;
 
-public class SlackUtils {
-    private static String slackWebhookUrl = "https://hooks.slack.com/services/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";
+@AllArgsConstructor
+@Builder(builderClassName = "Builder")
+@Getter
+@Setter
 
-    public static void sendMessage(SlackMessage message) {
+public class SlackUtils implements Serializable {
+
+    private String as_user;
+    private String channel;
+    private String username;
+    private String text;
+    private String icon_emoji;
+
+    @Step("Sending notification to Slack. SlackUtils")
+    public static void sendMessage(SlackUtils message, String slackWebhookUrl) {
         CloseableHttpClient client = HttpClients.createDefault();
         HttpPost httpPost = new HttpPost(slackWebhookUrl);
 
@@ -31,3 +45,4 @@ public class SlackUtils {
         }
     }
 }
+

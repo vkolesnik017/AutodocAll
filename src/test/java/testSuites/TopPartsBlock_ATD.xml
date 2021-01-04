@@ -11,6 +11,8 @@
             <class name="ATD.TopPartsBlock.QC_2689_TopProductsBlock.QC_2769_CheckingAvailabilityOfTopProductsForTop250Cars"/>
             <class name="ATD.TopPartsBlock.QC_2689_TopProductsBlock.QC_3112_ApplicabilityOfTopProductsToCarFromSelector"/>
             <class name="ATD.TopPartsBlock.QC_2689_TopProductsBlock.QC_3125_CheckDisplayPriceMeterElementInTopProductsBlock"/>
+            <class name="ATD.TopPartsBlock.QC_2689_TopProductsBlock.QC_3179_BlockTopPresenceOnMainOilPage"/>
+            <class name="ATD.TopPartsBlock.QC_2689_TopProductsBlock.QC_3180_TransferToProductPageFromTopBlockOnOilMainPage"/>
         </classes>
     </test>
 

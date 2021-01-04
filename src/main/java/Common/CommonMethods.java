@@ -98,5 +98,10 @@ public class CommonMethods {
         }
         return null;
     }
+
+    @Step("Converts the string {expectedString} to float leaving only the number. CommonMethods")
+    public static Float convertStringToFloat(String expectedString) {
+        return Float.parseFloat(expectedString.replaceAll("[^0-9,]", "").replaceAll(",","."));
+    }
 }
 

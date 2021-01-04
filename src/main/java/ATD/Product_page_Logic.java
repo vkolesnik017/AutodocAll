@@ -1361,4 +1361,24 @@ public class Product_page_Logic extends Product_page {
         breadCrumbLinks().get(3).shouldBe(visible).shouldNotHave(attribute("href"));
         return this;
     }
+
+    @Step("Check Faq block without answers. Product_page")
+    public Product_page_Logic checkFAQBlockWithoutAnswers() {
+        faqBlockWithoutAnswer().shouldBe(visible);
+        textAboutQuantityOfAnswersInFAQ().shouldHave(text("0 Fragen"));
+        blockVersandInFAQ().shouldBe(visible);
+        faqBlockWithAnswer().shouldNotBe(visible);
+        return this;
+    }
+
+    @Step("check number in the quantity block and block with quantity of product on product page. Product_page")
+    public Product_page_Logic checkQuantityBlockVisibilityOnProductPage() {
+        countInputOnProduct().shouldBe(visible);
+        if(countInputOnProduct().has(attribute("value","1"))){
+            textAboutCountOnProduct().shouldBe(visible);
+        }else {
+            textAboutCountOnProduct().shouldNotBe(visible);
+        }
+        return this;
+    }
 }
