@@ -242,6 +242,10 @@ class Versand_static_page {
         return $x("//*[@class='country-prices__pop country-prices-pop-js']//span[contains (text(), '" + country + "')]/../../span");
     }
 
+    SelenideElement deliveryPriceLocatorWithNameShop(String shop) {
+        return $x("(//img[contains(@src,'" + shop + "')]/../..//span)[2]");
+    }
+
     SelenideElement datenschutzerklarungLink() { return $("#Delivery_privacy_policy > a"); }
 
     SelenideElement sendShipFormMailField() { return $x("//input[@id='form_Email']"); }
