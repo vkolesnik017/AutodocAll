@@ -36,14 +36,10 @@
             <class name="ATD.Characteristics.QC_506_Characteristics.QC_2076_AbsenceQuantityForFEBIBILSTEINAndSWAGInBasket"/>
             <class name="ATD.Characteristics.QC_506_Characteristics.QC_1373_TestCharacteristicsBlockOnTyresProductPage"/>
             <class name="ATD.Characteristics.QC_506_Characteristics.QC_378_DynamicCharacteristicsOfProductsInTecDocListing"/>
-        </classes>
-    </test>
-
-    <test name="QC_526_RecoveryCharacteristics">
-        <classes>
-            <class name="ATD.Characteristics.QC_526_RecoveryCharacteristics.QC_527_PresenceRecoveryCharacteristicsOnMiniCard"/>
-            <class name="ATD.Characteristics.QC_526_RecoveryCharacteristics.QC_528_PresenceRefurbishedCharacteristicInListingsAndProductPage"/>
-            <class name="ATD.Characteristics.QC_526_RecoveryCharacteristics.QC_529_PresenceRecoveryCharacteristicsInBasket"/>
+            <class name="ATD.Characteristics.QC_506_Characteristics.QC_98_DynamicCharacteristicsOfProductsInTecDocListing"/>
+            <class name="ATD.Characteristics.QC_506_Characteristics.QC_527_PresenceRecoveryCharacteristicsOnMiniCard"/>
+            <class name="ATD.Characteristics.QC_506_Characteristics.QC_528_PresenceRefurbishedCharacteristicInListingsAndProductPage"/>
+            <class name="ATD.Characteristics.QC_506_Characteristics.QC_529_PresenceRecoveryCharacteristicsInBasket"/>
         </classes>
     </test>
 

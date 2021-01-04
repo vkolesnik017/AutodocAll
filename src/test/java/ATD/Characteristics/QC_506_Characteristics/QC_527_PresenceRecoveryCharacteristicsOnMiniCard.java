@@ -1,4 +1,4 @@
-package ATD.Characteristics.QC_526_RecoveryCharacteristics;
+package ATD.Characteristics.QC_506_Characteristics;
 
 import ATD.Category_name_brand_page_Logic;
 import ATD.CommonMethods;

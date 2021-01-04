@@ -1,4 +1,4 @@
-package ATD.Characteristics.QC_526_RecoveryCharacteristics;
+package ATD.Characteristics.QC_506_Characteristics;
 
 import ATD.Category_car_list_page_Logic;
 import ATD.Product_page_Logic;
