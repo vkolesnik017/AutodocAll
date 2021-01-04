@@ -1,4 +1,4 @@
-package ATD.MOTO.QC_373_MainIssueBlockAtTecDocListing;
+package ATD.Characteristics.QC_506_Characteristics;
 
 import ATD.Moto_Category_car_list_page_Logic;
 import Common.SetUp;

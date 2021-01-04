@@ -1,4 +1,4 @@
-package ATD.Characteristics.QC_2387_CheckingCharacteristicConditionForProducts;
+package ATD.Characteristics.QC_506_Characteristics;
 
 import ATD.LKW_Search_page_Logic;
 import ATD.Listing_page_Logic;

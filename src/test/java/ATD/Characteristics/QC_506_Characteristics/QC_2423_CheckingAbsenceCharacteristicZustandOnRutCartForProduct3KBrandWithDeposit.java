@@ -1,4 +1,4 @@
-package ATD.Characteristics.QC_2387_CheckingCharacteristicConditionForProducts;
+package ATD.Characteristics.QC_506_Characteristics;
 
 import ATD.*;
 import Common.SetUp;

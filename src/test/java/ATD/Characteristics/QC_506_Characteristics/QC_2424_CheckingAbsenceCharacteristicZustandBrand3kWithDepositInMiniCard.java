@@ -1,4 +1,4 @@
-package ATD.Characteristics.QC_2387_CheckingCharacteristicConditionForProducts;
+package ATD.Characteristics.QC_506_Characteristics;
 
 import ATD.Category_name_brand_page_Logic;
 import AWS.ProductSearch_aws;

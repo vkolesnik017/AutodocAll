@@ -23,6 +23,9 @@
             <class name="ATD.Characteristics.QC_506_Characteristics.QC_512_PresenceStaticCharacteristicOnOenListing"/>
             <class name="ATD.Characteristics.QC_506_Characteristics.QC_513_PresenceStaticCharacteristicInBasket"/>
             <!--<class name="ATD.Characteristics.QC_506_Characteristics.QC_1901_CharacteristicsDoNotHideAfterBrandFilterApplying"/>-->
+            <class name="ATD.Characteristics.QC_506_Characteristics.QC_2422_CheckingAbsenceCharacteristicZustandBrand3kWithDepositOnProductAndListingPage"/>
+            <class name="ATD.Characteristics.QC_506_Characteristics.QC_2423_CheckingAbsenceCharacteristicZustandOnRutCartForProduct3KBrandWithDeposit"/>
+            <class name="ATD.Characteristics.QC_506_Characteristics.QC_2424_CheckingAbsenceCharacteristicZustandBrand3kWithDepositInMiniCard"/>
             <class name="ATD.Characteristics.QC_506_Characteristics.QC_2083_CheckOfIdentityOfMpnProductAndMpnInAws"/>
             <class name="ATD.Characteristics.QC_506_Characteristics.QC_2084_CheckOfIdentityOfMpnProductInAwsAndProductPage"/>
             <class name="ATD.Characteristics.QC_506_Characteristics.QC_2095_CheckMpnOfProductInListingBasketProductPage"/>
@@ -32,6 +35,7 @@
             <class name="ATD.Characteristics.QC_506_Characteristics.QC_2075_CheckAbsenceOfCharacteristicQuantityInTopBlock"/>
             <class name="ATD.Characteristics.QC_506_Characteristics.QC_2076_AbsenceQuantityForFEBIBILSTEINAndSWAGInBasket"/>
             <class name="ATD.Characteristics.QC_506_Characteristics.QC_1373_TestCharacteristicsBlockOnTyresProductPage"/>
+            <class name="ATD.Characteristics.QC_506_Characteristics.QC_378_DynamicCharacteristicsOfProductsInTecDocListing"/>
         </classes>
     </test>
 
@@ -40,20 +44,6 @@
             <class name="ATD.Characteristics.QC_526_RecoveryCharacteristics.QC_527_PresenceRecoveryCharacteristicsOnMiniCard"/>
             <class name="ATD.Characteristics.QC_526_RecoveryCharacteristics.QC_528_PresenceRefurbishedCharacteristicInListingsAndProductPage"/>
             <class name="ATD.Characteristics.QC_526_RecoveryCharacteristics.QC_529_PresenceRecoveryCharacteristicsInBasket"/>
-        </classes>
-    </test>
-
-    <test name="QC_2072_VerificationOfRemovalCharacteristicQuantityOnFrontsForFEBIandSWAG">
-        <classes>
-
-        </classes>
-    </test>
-
-    <test name="QC_2387_CheckingCharacteristicConditionForProducts">
-        <classes>
-            <class name="ATD.Characteristics.QC_2387_CheckingCharacteristicConditionForProducts.QC_2422_CheckingAbsenceCharacteristicZustandBrand3kWithDepositOnProductAndListingPage"/>
-            <class name="ATD.Characteristics.QC_2387_CheckingCharacteristicConditionForProducts.QC_2423_CheckingAbsenceCharacteristicZustandOnRutCartForProduct3KBrandWithDeposit"/>
-            <class name="ATD.Characteristics.QC_2387_CheckingCharacteristicConditionForProducts.QC_2424_CheckingAbsenceCharacteristicZustandBrand3kWithDepositInMiniCard"/>
         </classes>
     </test>
 
