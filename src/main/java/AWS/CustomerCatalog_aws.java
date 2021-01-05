@@ -1,10 +1,15 @@
 package AWS;
 
+import ATD.Category_name_page_Logic;
+import ATD.Listing_chemicals_Page_Logic;
+import Common.DataBase;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
-import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
+import java.sql.SQLException;
+
+import static ATD.CommonMethods.waitWhileRouteBecomeExpected;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byName;
@@ -38,8 +43,20 @@ public class CustomerCatalog_aws {
         return $(byName("submitSearch"));
     }
 
-    private ElementsCollection idOfChild() {
+    private ElementsCollection idOfChildList() {
         return $$x("//ul[@class='catalog-table-content-items-item-child ui-sortable']/li/div/div[4]");
+    }
+
+    private SelenideElement idOfChild() {
+        return $x("//ul[@class='catalog-table-content-items-item-child ui-sortable']/li/div/div[4][(contains(text(),' '))]");
+    }
+
+    private SelenideElement childName() {
+        return $x("//ul[@class='catalog-table-content-items-item-child ui-sortable']/li/div/div[4][(contains(text(),' '))]/../div[5]/input");
+    }
+
+    private SelenideElement loader() {
+        return $x("//div[@class='center loading-text']");
     }
 
     @Step("open Disabled Dangerous Product In Aws. CustomerCatalog_aws")
@@ -52,19 +69,27 @@ public class CustomerCatalog_aws {
     }
 
     @Step("check Redirect For Dangerous Products. CustomerCatalog_aws")
-    public CustomerCatalog_aws checkRedirectForDangerousProducts(String idOfDangerousProduct) {
+    public CustomerCatalog_aws checkRedirectForDangerousProducts(String idOfDangerousProduct, String idOfProduct) throws SQLException {
         customCatalog().shouldBe(visible);
         setSkin("atd");
         setIdOfProduct(idOfDangerousProduct);
-        int primordialQuantityOfChild = idOfChild().size();
         clickOnSearchButton();
-        idOfChild().shouldHave(sizeNotEqual(primordialQuantityOfChild));
-        String childId=null;
-
-        for (int i = 0; i < idOfChild().size(); i++) {
-            if (!idOfChild().get(i).equals("")) {
-                childId = idOfChild().get(i).getText();
-            }
+        loader().shouldBe(visible);
+        loader().shouldNotBe(visible);
+        String childId = idOfChild().getText();
+        String firstChar = childId.substring(0, 1);
+        String title = childName().getAttribute("value");
+        if (firstChar.equals("3")) {
+            open(new DataBase("ATD").getFullRouteByRouteName("prod", "DE", "main") + "/brand/" + idOfProduct);
+            waitWhileRouteBecomeExpected("listing_chemicals");
+            new Listing_chemicals_Page_Logic().checkMainHeadline(title);
+        } else if (firstChar.equals("1")) {
+            open(new DataBase("ATD").getFullRouteByRouteName("prod", "DE", "main") + "/brand/" + idOfProduct);
+            waitWhileRouteBecomeExpected("category_name");
+            new Category_name_page_Logic().checkMainHeadline(title);
+        } else if (firstChar.equals(" ")) {
+            open(new DataBase("ATD").getFullRouteByRouteName("prod", "DE", "main") + "/brand/" + idOfProduct);
+            waitWhileRouteBecomeExpected("main");
         }
         return this;
     }

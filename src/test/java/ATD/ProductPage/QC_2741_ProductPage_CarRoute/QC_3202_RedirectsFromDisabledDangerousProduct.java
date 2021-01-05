@@ -2,6 +2,7 @@ package ATD.ProductPage.QC_2741_ProductPage_CarRoute;
 
 import AWS.CustomerCatalog_aws;
 import AWS.DisabledDangerousProducts_aws;
+import AWS.ProductCard_aws;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -10,6 +11,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+import java.sql.SQLException;
 
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
@@ -32,9 +35,10 @@ public class QC_3202_RedirectsFromDisabledDangerousProduct {
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test Checking redirects from disabled dangerous product")
-    public void testCheckRedirectsFromDisabledDangerousProduct(String route) {
-        String idOfProduct = dangerousPage.openDisabledDangerousProductInAwsWithLogin().clickOnProductCard(0).getCategoryId();
-        customerCatalogPage.openCustomerCatalog().checkRedirectForDangerousProducts(idOfProduct);
+    public void testCheckRedirectsFromDisabledDangerousProduct(String route) throws SQLException {
+        String categoryId = dangerousPage.openDisabledDangerousProductInAwsWithLogin().clickOnProductCard(0).getCategoryId();
+        String idOfProduct = new ProductCard_aws().getIdOfProduct();
+        customerCatalogPage.openCustomerCatalog().checkRedirectForDangerousProducts(categoryId, idOfProduct);
     }
 
     @AfterMethod

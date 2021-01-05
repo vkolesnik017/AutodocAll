@@ -38,6 +38,7 @@
             <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_3106_CheckDisplayCandlesAnalogBlock"/>
             <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_3117_CheckDisplayPriceMeterElementOnProductPage"/>
             <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_3104_CheckDisplayFAQWithoutAnswers"/>
+            <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_3202_RedirectsFromDisabledDangerousProduct"/>
         </classes>
     </test>
 </suite>
