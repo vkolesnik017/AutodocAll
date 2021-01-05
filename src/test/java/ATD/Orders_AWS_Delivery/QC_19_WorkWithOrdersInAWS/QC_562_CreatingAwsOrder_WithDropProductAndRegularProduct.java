@@ -1,12 +1,9 @@
 package ATD.Orders_AWS_Delivery.QC_19_WorkWithOrdersInAWS;
 
+import AWS.*;
 import Common.DataBase;
 import ATD.Product_page_Logic;
 import Common.SetUp;
-import AWS.Customer_view_aws;
-import AWS.OrderAdd_page_aws;
-import AWS.Order_aws;
-import AWS.SearchOrders_page_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -26,7 +23,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_562_CreatingAwsOrder_WithDropProductAndRegularProduct {
 
-    private String userID = "15371456", articleNum, dropArticleNum, productDropArticleID;
+    private String userID = "15371456", articleNum, dropArticleNum, productDropArticleID, vatForDE;
     private Float deliveryCost, safeOrderCost, productPriceIncludingDeliveryAndSafeOrder,
             totalDeliveryAmountAndSafeOrder, productCost, productDropCost, totalProductCostInOrder;
     private ArrayList userDataInCreateOrder, userData, userDataInOrder;
@@ -39,6 +36,8 @@ public class QC_562_CreatingAwsOrder_WithDropProductAndRegularProduct {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
+        vatForDE = new PageVAT_aws().getVatForDE();
+        close();
     }
 
     @DataProvider(name = "route", parallel = true)
@@ -84,7 +83,7 @@ public class QC_562_CreatingAwsOrder_WithDropProductAndRegularProduct {
                 .checkOrderHasTestStatus()
                 .getUserDataInOrder();
         Assert.assertEquals(userData, userDataInOrder);
-        order_aws.checkVatStatusInOrder("Mit MwSt 16%")
+        order_aws.checkVatStatusInOrder("Mit MwSt " + vatForDE + "%")
                 .checkPaymentMethodInOrder("PayPal")
                 .checkThatStatusSafeOrderIsOn();
         totalDeliveryAmountAndSafeOrder = order_aws.getTotalCostDeliveryAmountAndSafeOrder(deliveryCost, safeOrderCost);
@@ -100,7 +99,7 @@ public class QC_562_CreatingAwsOrder_WithDropProductAndRegularProduct {
                 .checkOrderHasTestStatus()
                 .getUserDataInOrder();
         Assert.assertEquals(userData, userDataInOrder);
-        order_aws.checkVatStatusInOrder("Mit MwSt 16%")
+        order_aws.checkVatStatusInOrder("Mit MwSt " + vatForDE + "%")
                 .checkPaymentMethodInOrder("PayPal")
                 .checkThatStatusSafeOrderIsOn();
         totalDeliveryAmountAndSafeOrder = order_aws.getTotalCostDeliveryAmountAndSafeOrder(deliveryCost, safeOrderCost);
