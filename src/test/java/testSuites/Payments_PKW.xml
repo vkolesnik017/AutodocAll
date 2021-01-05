@@ -8,91 +8,91 @@
 
     <test name="QC_2464_Bank_PKW" thread-count="1">
         <classes>
-            <class name="PKW.Payments.QC_2464_Bank_PKW">
+            <class name="PKW.Payments.QC_2464">
             </class>
         </classes>
     </test>
 
     <test name="QC_2395_CheckingSwitchingOnBraintreeInAWS_PKW" thread-count="1">
         <classes>
-            <class name="PKW.Payments.QC_2395_CheckingSwitchingOnBraintreeInAWS_PKW">
+            <class name="PKW.Payments.QC_2395">
             </class>
         </classes>
     </test>
 
     <test name="QC_2469_PayPal_PKW" thread-count="1">
         <classes>
-            <class name="PKW.Payments.QC_2469_PayPal_PKW">
+            <class name="PKW.Payments.QC_2469">
             </class>
         </classes>
     </test>
 
     <test name="QC_2468_BraintreeCreditCard_PKW" thread-count="1">
         <classes>
-            <class name="PKW.Payments.QC_2468_BraintreeCreditCard_PKW">
+            <class name="PKW.Payments.QC_2468">
             </class>
         </classes>
     </test>
 
     <test name="QC_2465_Sofort_PKW" thread-count="1">
         <classes>
-            <class name="PKW.Payments.QC_2465_Sofort_PKW">
+            <class name="PKW.Payments.QC_2465">
             </class>
         </classes>
     </test>
 
     <test name="QC_2473_Przelewy24_PKW" thread-count="1">
         <classes>
-            <class name="PKW.Payments.QC_2473_Przelewy24_PKW">
+            <class name="PKW.Payments.QC_2473">
             </class>
         </classes>
     </test>
 
     <test name="QC_2467_Klarna_PKW" thread-count="1">
         <classes>
-            <class name="PKW.Payments.QC_2467_Klarna_PKW">
+            <class name="PKW.Payments.QC_2467">
             </class>
         </classes>
     </test>
 
     <test name="QC_2466_EPS_PKW" thread-count="1">
         <classes>
-            <class name="PKW.Payments.QC_2466_EPS_PKW">
+            <class name="PKW.Payments.QC_2466">
             </class>
         </classes>
     </test>
 
     <test name="QC_2471_Trustly_PKW" thread-count="1">
         <classes>
-            <class name="PKW.Payments.QC_2471_Trustly_PKW">
+            <class name="PKW.Payments.QC_2471">
             </class>
         </classes>
     </test>
 
     <test name="QC_2472_Ideal_PKW" thread-count="1">
         <classes>
-            <class name="PKW.Payments.QC_2472_Ideal_PKW">
+            <class name="PKW.Payments.QC_2472">
             </class>
         </classes>
     </test>
 
-    <!--<test name="QC_2470_KlarnaCheckout_PKW" thread-count="1">
+    <test name="QC_2470_KlarnaCheckout_PKW" thread-count="1">
         <classes>
-            <class name="PKW.Payments.QC_2470_KlarnaCheckout_PKW">
+            <class name="PKW.Payments.QC_2470">
             </class>
         </classes>
-    </test>-->
+    </test>
 
     <test name="QC_2474_Multibanco_PKW" thread-count="1">
         <classes>
-            <class name="PKW.Payments.QC_2474_Multibanco_PKW">
+            <class name="PKW.Payments.QC_2474">
             </class>
         </classes>
     </test>
 
     <test name="QC_2392_CheckingSwitchingOnBraintreeOnFronts_PKW" thread-count="1">
         <classes>
-            <class name="PKW.Payments.QC_2392_CheckingSwitchingOnBraintreeOnFronts_PKW">
+            <class name="PKW.Payments.QC_2392">
             </class>
         </classes>
     </test>

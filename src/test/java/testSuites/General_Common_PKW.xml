@@ -8,18 +8,18 @@
 
     <test name="QC_1912_Footer" enabled="true">
         <classes>
-            <class name="PKW.General_Common.QC_1912_Footer.QC_1913_PositiveSendingTheSubscribeFormFooter"/>
-            <class name="PKW.General_Common.QC_1912_Footer.QC_1915_SendingSubscribeFormWithoutOrErrorEmail"/>
-            <class name="PKW.General_Common.QC_1912_Footer.QC_1916_SendingFormWithoutCheckingTheCheckbox"/>
-            <class name="PKW.General_Common.QC_1912_Footer.QC_1917_PresenceOfTheTextBlockInTheFooter"/>
+            <class name="PKW.General_Common.QC_1912_Footer.QC_1913"/>
+            <class name="PKW.General_Common.QC_1912_Footer.QC_1915"/>
+            <class name="PKW.General_Common.QC_1912_Footer.QC_1916"/>
+            <class name="PKW.General_Common.QC_1912_Footer.QC_1917"/>
         </classes>
     </test>
 
     <test name="QC_1921_Header" enabled="true">
         <classes>
-            <class name="PKW.General_Common.QC_1921_Header.QC_1920_PresenceOfTheBlocksInPromotionHeader"/>
-            <class name="PKW.General_Common.QC_1921_Header.QC_1922_PresenceOfTheRatingBlockInTheHeader"/>
-            <class name="PKW.General_Common.QC_1921_Header.QC_1943_PresenceAndFunctionalityOfTheHeaderNavigationLine"/>
+            <class name="PKW.General_Common.QC_1921_Header.QC_1920"/>
+            <class name="PKW.General_Common.QC_1921_Header.QC_1922"/>
+            <class name="PKW.General_Common.QC_1921_Header.QC_1943"/>
         </classes>
     </test>
 </suite>

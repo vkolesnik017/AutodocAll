@@ -8,56 +8,56 @@
 
     <test name="QC_1447_AbsenceOf4xx3xxResponsesInCatalogCategories">
         <classes>
-            <class name="ATD.Catalog.QC_1447_AbsenceOf4xx3xxResponsesInCatalogCategories.QC_1448_AbsenceOf4xx3xxResponsesInTecdocCatalogCategories"/>
-            <class name="ATD.Catalog.QC_1447_AbsenceOf4xx3xxResponsesInCatalogCategories.QC_1449_AbsenceOf4xx3xxResponsesInDropdownCatalogCategories"/>
+            <class name="ATD.Catalog.QC_1447_AbsenceOf4xx3xxResponsesInCatalogCategories.QC_1448"/>
+            <class name="ATD.Catalog.QC_1447_AbsenceOf4xx3xxResponsesInCatalogCategories.QC_1449"/>
         </classes>
     </test>
 
     <test name="QC_604_DisplayAllOvercategoriesOnTecdocCatalogPage">
         <classes>
-            <class name="ATD.Catalog.QC_604_DisplayAllOvercategoriesOnTecdocCatalogPage.QC_605_DisplayOvercategoriesOnCatalogRoutesWithCar"/>
-            <class name="ATD.Catalog.QC_604_DisplayAllOvercategoriesOnTecdocCatalogPage.QC_609_DisplayOvercategoriesFAQandCatalogRouteWithoutCar"/>
+            <class name="ATD.Catalog.QC_604_DisplayAllOvercategoriesOnTecdocCatalogPage.QC_605"/>
+            <class name="ATD.Catalog.QC_604_DisplayAllOvercategoriesOnTecdocCatalogPage.QC_609"/>
         </classes>
     </test>
 
     <test name="QC_613_DisplayAllUndercategoriesTecdocCatalog">
         <classes>
-            <class name="ATD.Catalog.QC_613_DisplayAllUndercategoriesTecdocCatalog.QC_615_PresenceSubcategoriesOnFaqRootAndCatalogWithoutVehicle"/>
+            <class name="ATD.Catalog.QC_613_DisplayAllUndercategoriesTecdocCatalog.QC_615"/>
         </classes>
     </test>
 
     <test name="QC_646_DisplayAllCategoriesInCatalogDropdownMenu">
         <classes>
-<!--            <class name="ATD.Catalog.QC_646_DisplayAllCategoriesInCatalogDropdownMenu.QC_647_DisplayAllCategoriesInCatalogDropdownMenu"/>-->
+<!--            <class name="ATD.Catalog.QC_646_DisplayAllCategoriesInCatalogDropdownMenu.QC_647"/>-->
         </classes>
     </test>
 
     <test name="QC_2626_TecdocCatalog_SidebarCatalog_TopCategories">
         <classes>
-            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_149_TrucksCatalogInHeader_lkw"/>
-            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_365_PresenceOfHeadlineAtTopCategories"/>
-            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_1508_ConformityHeaderCatalogAndTecDocCatalogWithTruck_lkw"/>
-            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_134_TopParentAndChildCategoriesBlocks"/>
-            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_22_PresenceOfParentCategoryListInSidebar"/>
-            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_24_PresenceOfChildCategoriesInSideBar"/>
-            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_20_AvailabilityParentCatalogBlock"/>
-            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_23_TransitionOnParentCategoryPageFromSidebar"/>
-            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_116_AllChildCategoriesBlockOfParent"/>
-            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_178_TopParentAndChildCategoriesBlocks"/>
-            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_654_PrioritizationCategoriesInTopCategoriesBlock"/>
-            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_2632_PrioritizationParentsOnMainPageBrand"/>
-            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_2637_OpenAllParentsSidebarCatalog"/>
-            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_2580_PresenceBlockWithEngineTypesAndTransitionByThem"/>
-            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_2810_CheckingAbsenceOfDuplicateCategories"/>
-            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_2917_PrioritizingParentBySalesOnCatalogPageWithTopCar"/>
-            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_3010_PrioritizationChildsInTopBlock"/>
-            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_3018_TransitionOnCatalogPageFromMainPage"/>
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_149"/>
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_365"/>
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_1508"/>
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_134"/>
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_22"/>
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_24"/>
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_20"/>
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_23"/>
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_116"/>
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_178"/>
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_654"/>
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_2632"/>
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_2637"/>
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_2580"/>
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_2810"/>
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_2917"/>
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_3010"/>
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_3018"/>
         </classes>
     </test>
 
     <test name="QC_2684_MainPhotoCategories">
         <classes>
-            <class name="ATD.Catalog.QC_2684_MainPhotoCategories.QC_2685_MainPhotoChildCategoriesOnRutCategoriesBrandMark"/>
+            <class name="ATD.Catalog.QC_2684_MainPhotoCategories.QC_2685"/>
         </classes>
     </test>
 

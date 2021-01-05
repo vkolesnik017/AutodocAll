@@ -8,52 +8,52 @@
 
     <test name="QC_1554_Footer">
         <classes>
-            <class name="ATD.General_Common.QC_1554_Footer.QC_1569_TransitionTheLink_Datenschutzerklärung"/>
-            <class name="ATD.General_Common.QC_1554_Footer.QC_1555_ApplicationInstallBanner"/>
-            <class name="ATD.General_Common.QC_1554_Footer.QC_1556_LinksToStaticPages"/>
-            <class name="ATD.General_Common.QC_1554_Footer.QC_1558_DroplistCountryBlock"/>
-            <class name="ATD.General_Common.QC_1554_Footer.QC_1564_SuccessfulNewsletterSubscription"/>
-            <class name="ATD.General_Common.QC_1554_Footer.QC_1565_DisplayingOfNon_validEmailTooltip"/>
-            <class name="ATD.General_Common.QC_1554_Footer.QC_1567_TransitionFromBlockOfSocialNetworks"/>
-            <class name="ATD.General_Common.QC_1554_Footer.QC_1568_PresenceOfTextBlocks"/>
-            <class name="ATD.General_Common.QC_1554_Footer.QC_1566_Pop_upErrorAbutNon_confirmedNewsletterSubscription"/>
-            <class name="ATD.General_Common.QC_1554_Footer.QC_2436_PresenceTheElementsOnTheSocialNetworksBlock"/>
-            <class name="ATD.General_Common.QC_1554_Footer.QC_2438_TransitionToTheYoutubeInTheSocialNetworksBlock"/>
-            <class name="ATD.General_Common.QC_1554_Footer.QC_2439_TransitionToTheInstagramFromTheSocialNetworkBlock"/>
-            <class name="ATD.General_Common.QC_1554_Footer.QC_2437_TransitionToTheAutodocClubFromTheSocialNetworkBlock"/>
+            <class name="ATD.General_Common.QC_1554_Footer.QC_1569"/>
+            <class name="ATD.General_Common.QC_1554_Footer.QC_1555"/>
+            <class name="ATD.General_Common.QC_1554_Footer.QC_1556"/>
+            <class name="ATD.General_Common.QC_1554_Footer.QC_1558"/>
+            <class name="ATD.General_Common.QC_1554_Footer.QC_1564"/>
+            <class name="ATD.General_Common.QC_1554_Footer.QC_1565"/>
+            <class name="ATD.General_Common.QC_1554_Footer.QC_1567"/>
+            <class name="ATD.General_Common.QC_1554_Footer.QC_1568"/>
+            <class name="ATD.General_Common.QC_1554_Footer.QC_1566"/>
+            <class name="ATD.General_Common.QC_1554_Footer.QC_2436"/>
+            <class name="ATD.General_Common.QC_1554_Footer.QC_2438"/>
+            <class name="ATD.General_Common.QC_1554_Footer.QC_2439"/>
+            <class name="ATD.General_Common.QC_1554_Footer.QC_2437"/>
         </classes>
     </test>
 
     <test name="QC_1571_Header">
         <classes>
-            <class name="ATD.General_Common.QC_1571_Header.QC_1601_PresenceBlocksOfPromotionalHeader"/>
-            <class name="ATD.General_Common.QC_1571_Header.QC_1602_HeaderTopBlock"/>
-            <class name="ATD.General_Common.QC_1571_Header.QC_1603_TransitionLinksFromBlockHeaderTop"/>
-            <class name="ATD.General_Common.QC_1571_Header.QC_1604_PresenceOfCategoriesInHeaderNavBlock"/>
-            <class name="ATD.General_Common.QC_1571_Header.QC_1605_NavigateCategoriesInHeaderNavBlock"/>
-            <class name="ATD.General_Common.QC_1571_Header.QC_1606_BlockHeaderMain"/>
+            <class name="ATD.General_Common.QC_1571_Header.QC_1601"/>
+            <class name="ATD.General_Common.QC_1571_Header.QC_1602"/>
+            <class name="ATD.General_Common.QC_1571_Header.QC_1603"/>
+            <class name="ATD.General_Common.QC_1571_Header.QC_1604"/>
+            <class name="ATD.General_Common.QC_1571_Header.QC_1605"/>
+            <class name="ATD.General_Common.QC_1571_Header.QC_1606"/>
         </classes>
     </test>
 
     <test name="QC_1645_BlockTopProducts">
         <classes>
-            <class name="ATD.General_Common.QC_1645_BlockTopProducts.QC_1646_lackOfNotAvailableGoodsInTheTopBlocks"/>
-            <class name="ATD.General_Common.QC_1645_BlockTopProducts.QC_1647_AddingPairedProductsToBasketFromBlockOfTopProducts"/>
-            <class name="ATD.General_Common.QC_1645_BlockTopProducts.QC_1648_PresenceOfElementsInMiniCardsInBlockTopProducts"/>
+            <class name="ATD.General_Common.QC_1645_BlockTopProducts.QC_1646"/>
+            <class name="ATD.General_Common.QC_1645_BlockTopProducts.QC_1647"/>
+            <class name="ATD.General_Common.QC_1645_BlockTopProducts.QC_1648"/>
         </classes>
     </test>
 
 
     <test name="QC_2679_NewsletterSubscriptionBlock">
         <classes>
-            <class name="ATD.General_Common.QC_2679_NewsletterSubscriptionBlock.QC_2680_SubscribeToNewsLetterByRegisteringInBasket"/>
-            <class name="ATD.General_Common.QC_2679_NewsletterSubscriptionBlock.QC_2681_SubscribeToNewLetterInRegFormPopUp"/>
+            <class name="ATD.General_Common.QC_2679_NewsletterSubscriptionBlock.QC_2680"/>
+            <class name="ATD.General_Common.QC_2679_NewsletterSubscriptionBlock.QC_2681"/>
         </classes>
     </test>
 
     <test name="QC_2774_CheckTopSectionsBlockOnMainPage">
         <classes>
-            <class name="ATD.General_Common.QC_2774_CheckTopSectionsBlockOnMainPage.QC_2773_TransitionsByTabInTopSectionsBlockOnMainPage"/>
+            <class name="ATD.General_Common.QC_2774_CheckTopSectionsBlockOnMainPage.QC_2773"/>
         </classes>
     </test>
 
