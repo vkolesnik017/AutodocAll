@@ -359,4 +359,10 @@ public class Category_name_page_Logic extends Category_name_page {
         return idCategoryAndBrand;
     }
 
+    @Step("check main headline. Category_name_page")
+    public Category_name_page_Logic checkMainHeadline(String title) {
+        mainHeadline().shouldBe(visible).shouldHave(exactText(title));
+        return this;
+    }
+
 }
