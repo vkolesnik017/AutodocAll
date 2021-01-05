@@ -1302,6 +1302,66 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
+    @Step("size Of Breadcrumb links. Product page")
+    public Product_page_Logic sizeOfBreadCrumbsLinks(int size) {
+        breadcrumbsBlock().shouldBe(visible);
+        breadCrumbLinks().shouldHaveSize(size);
+        return this;
+    }
+
+
+    @Step("close Marke field tool-tip. Product page")
+    public Product_page_Logic closeMarkeFieldToolTip() {
+        if (tooltipOfMarkeField().isDisplayed()) {
+            tooltipOfMarkeField().click();
+        }
+        return this;
+    }
+
+    @Step("check Transitions of breadcrumbs links. Product page")
+    public Product_page_Logic checkTransitionsOfBreadcrumbsLinks(String parentCategory, String mainCategory) throws SQLException {
+        DataBase db = new DataBase("ATD");
+        clickOnFirstBreadcrumbLink();
+        checkingContainsUrl(db.getRouteByRouteName("DE", "categories"));
+        back();
+        clickOnSecondBreadcrumbLink(parentCategory);
+        checkingContainsUrl(db.getRouteByRouteName("DE", "category_name_parent3"));
+        back();
+        clickOnThirdBreadcrumbLink(mainCategory);
+        checkingContainsUrl(db.getRouteByRouteName("DE", "motoroil"));
+        back();
+        checkFourthBreadcrumbLink();
+        return this;
+    }
+
+    @Step("click on First breadcrumb link. Product page")
+    public Categories_page_Logic clickOnFirstBreadcrumbLink() {
+        catalogIconInBreadcrumbLink().shouldBe(visible);
+        breadCrumbLinks().get(0).shouldBe(visible).click();
+        return page(Categories_page_Logic.class);
+    }
+
+    @Step("click on Second breadcrumb link. Product page")
+    public Category_name_parent_page_Logic clickOnSecondBreadcrumbLink(String parentCategory) {
+        catalogIconInBreadcrumbLink().shouldBe(visible);
+        breadCrumbLinks().get(1).shouldBe(visible).shouldHave(text(parentCategory)).click();
+        return page(Category_name_parent_page_Logic.class);
+    }
+
+    @Step("click on Third breadcrumb link. Product page")
+    public Motoroil_page_Logic clickOnThirdBreadcrumbLink(String mainCategory) {
+        catalogIconInBreadcrumbLink().shouldBe(visible);
+        breadCrumbLinks().get(2).shouldBe(visible).shouldHave(text(mainCategory)).click();
+        return page(Motoroil_page_Logic.class);
+    }
+
+    @Step("check Fourth breadcrumb link. Product page")
+    public Product_page_Logic checkFourthBreadcrumbLink() {
+        catalogIconInBreadcrumbLink().shouldBe(visible);
+        breadCrumbLinks().get(3).shouldBe(visible).shouldNotHave(attribute("href"));
+        return this;
+    }
+
     @Step("Check Faq block without answers. Product_page")
     public Product_page_Logic checkFAQBlockWithoutAnswers() {
         faqBlockWithoutAnswer().shouldBe(visible);
