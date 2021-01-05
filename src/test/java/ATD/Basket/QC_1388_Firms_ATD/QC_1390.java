@@ -2,6 +2,7 @@ package ATD.Basket.QC_1388_Firms_ATD;
 
 import ATD.CartAllData_page_Logic;
 import ATD.Product_page_Logic;
+import AWS.PageVAT_aws;
 import Common.SetUp;
 import AWS.Order_aws;
 import io.qameta.allure.Description;
@@ -26,6 +27,7 @@ public class QC_1390 {
 
     private String emailPL = "QC_1390_autotestPL@autodoc.si", orderNumberPL;
     private Float totalPricePL, totalPriceAWSOrderPL, totalPriceInEmailPL;
+    private PageVAT_aws pageVAT_aws = new PageVAT_aws();
 
     @BeforeClass
     void setUp() {
@@ -43,6 +45,7 @@ public class QC_1390 {
     @Description(value = "Test checks the successful placement of the order indicating the company, split billing " +
                          "and different countries for the PL shop. Country of shop == country of delivery")
     public void testSuccessfulPlacementOfOrder_Firm_SplitBilling_PL(String routePL) {
+        String vatForPL = pageVAT_aws.getVatForPL();
         openPage(routePL);
         String shop = getCurrentShopFromJSVarInHTML();
         totalPricePL = new Product_page_Logic().addProductToCart()
@@ -58,17 +61,17 @@ public class QC_1390 {
                 .nextBtnClick()
                 .checkTextInDeliveryAddressInfoBlock("Firma FB-MONT A. Fułek Spółka")
                 .checkTextInPayersAddressInfoBlock("Firma Gear4music Limited")
-                .checkTextContainingVatPercentage("23% VAT")
+                .checkTextContainingVatPercentage("" + vatForPL + "% VAT")
                 .getTotalPriceAllDataPage(shop);
         orderNumberPL = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumberPL);
-        totalPriceAWSOrderPL = order_aws.openOrderInAwsWithLogin()
-                .checkVatStatusInOrder("Mit MwSt 23%")
+        totalPriceAWSOrderPL = order_aws.openOrderInAwsWithoutLogin()
+                .checkVatStatusInOrder("Mit MwSt " + vatForPL + "%")
                 .checkFirmConfirmationStatus("Пров. вручную")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPricePL, totalPriceAWSOrderPL);
         totalPriceAWSOrderPL = order_aws.reSaveOrder()
-                .checkVatStatusInOrder("Mit MwSt 23%")
+                .checkVatStatusInOrder("Mit MwSt " + vatForPL + "%")
                 .checkFirmConfirmationStatus("Пров. вручную")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPricePL, totalPriceAWSOrderPL);
@@ -78,7 +81,7 @@ public class QC_1390 {
 
         totalPriceInEmailPL = new WebMail().openMail(emailPL, passwordForMail)
                 .openLetter(1)
-                .checkTextContainingVatPercentageInEmail("w tym 23% VAT")
+                .checkTextContainingVatPercentageInEmail("w tym " + vatForPL + "% VAT")
                 .checkFirstFirmNameInEmail("Gear4music Limited")
                 .checkSecondFirmNameInEmail("FB-MONT A. Fułek Spółka Komandytowa")
                 .getTotalPriceInEmail();
@@ -98,8 +101,9 @@ public class QC_1390 {
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks the successful placement of the order indicating the company, split billing " +
             "and different countries for the DE shop. Country of shop == country of delivery")
-    public void testSuccessfulPlacementOfOrder_Firm_SplitBilling_DE(String routePL) {
-        openPage(routePL);
+    public void testSuccessfulPlacementOfOrder_Firm_SplitBilling_DE(String routeDE) {
+        String vatForDE = pageVAT_aws.getVatForDE();
+        openPage(routeDE);
         String shop = getCurrentShopFromJSVarInHTML();
         totalPriceDE = new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
@@ -114,17 +118,17 @@ public class QC_1390 {
                 .nextBtnClick()
                 .checkTextInDeliveryAddressInfoBlock("Firma Autodoc GmbH")
                 .checkTextInPayersAddressInfoBlock("Firma Gear4music Limited")
-                .checkTextContainingVatPercentage("inkl. 16% MwSt")
+                .checkTextContainingVatPercentage("inkl. " + vatForDE + "% MwSt")
                 .getTotalPriceAllDataPage(shop);
         orderNumberDE = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumberDE);
-        totalPriceAWSOrderDE = order_aws.openOrderInAwsWithLogin()
-                .checkVatStatusInOrder("Mit MwSt 16%")
+        totalPriceAWSOrderDE = order_aws.openOrderInAwsWithoutLogin()
+                .checkVatStatusInOrder("Mit MwSt " + vatForDE + "%")
                 .checkFirmConfirmationStatus("Пров. вручную")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceDE, totalPriceAWSOrderDE);
         totalPriceAWSOrderDE = order_aws.reSaveOrder()
-                .checkVatStatusInOrder("Mit MwSt 16%")
+                .checkVatStatusInOrder("Mit MwSt " + vatForDE + "%")
                 .checkFirmConfirmationStatus("Пров. вручную")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceDE, totalPriceAWSOrderDE);
@@ -134,7 +138,7 @@ public class QC_1390 {
 
         totalPriceInEmailDE = new WebMail().openMail(emailDE, passwordForMail)
                 .openLetter(1)
-                .checkTextContainingVatPercentageInEmail("inkl. 16% MwSt")
+                .checkTextContainingVatPercentageInEmail("inkl. " + vatForDE + "% MwSt")
                 .checkFirstFirmNameInEmail("Gear4music Limited")
                 .checkSecondFirmNameInEmail("Autodoc GmbH")
                 .getTotalPriceInEmail();
@@ -154,8 +158,9 @@ public class QC_1390 {
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks successful order placement with indicating of company, split billing, " +
                          "different countries and shipping to another country for ES shop. Country of shop != country of delivery")
-    public void testSuccessfulPlacementOfOrder_Firm_SplitBilling_ES(String routePL) {
-        openPage(routePL);
+    public void testSuccessfulPlacementOfOrder_Firm_SplitBilling_ES(String routeES) {
+        String vatForDE = pageVAT_aws.getVatForDE();
+        openPage(routeES);
         String shop = getCurrentShopFromJSVarInHTML();
         totalPriceES = new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
@@ -170,17 +175,17 @@ public class QC_1390 {
                 .nextBtnClick()
                 .checkTextInDeliveryAddressInfoBlock("Entidad Autodoc GmbH")
                 .checkTextInPayersAddressInfoBlock("Entidad Gear4music Limited")
-                .checkTextContainingVatPercentage("IVA incluido 16%")
+                .checkTextContainingVatPercentage("IVA incluido " + vatForDE + "%")
                 .getTotalPriceAllDataPage(shop);
         orderNumberES = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumberES);
-        totalPriceAWSOrderES = order_aws.openOrderInAwsWithLogin()
-                .checkVatStatusInOrder("Mit MwSt 16%")
+        totalPriceAWSOrderES = order_aws.openOrderInAwsWithoutLogin()
+                .checkVatStatusInOrder("Mit MwSt " + vatForDE + "%")
                 .checkFirmConfirmationStatus("Пров. вручную")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceES, totalPriceAWSOrderES);
         totalPriceAWSOrderES = order_aws.reSaveOrder()
-                .checkVatStatusInOrder("Mit MwSt 16%")
+                .checkVatStatusInOrder("Mit MwSt " + vatForDE + "%")
                 .checkFirmConfirmationStatus("Пров. вручную")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceES, totalPriceAWSOrderES);
@@ -190,7 +195,7 @@ public class QC_1390 {
 
         totalPriceInEmailES = new WebMail().openMail(emailES, passwordForMail)
                 .openLetter(1)
-                .checkTextContainingVatPercentageInEmail("IVA incluido 16%")
+                .checkTextContainingVatPercentageInEmail("IVA incluido " + vatForDE + "%")
                 .checkFirstFirmNameInEmail("Gear4music Limited")
                 .checkSecondFirmNameInEmail("Autodoc GmbH")
                 .getTotalPriceInEmail();

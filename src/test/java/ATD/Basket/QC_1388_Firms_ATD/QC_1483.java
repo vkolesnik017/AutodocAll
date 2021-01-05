@@ -3,6 +3,7 @@ package ATD.Basket.QC_1388_Firms_ATD;
 import ATD.CartAddress_page_Logic;
 import ATD.CartAllData_page_Logic;
 import ATD.Product_page_Logic;
+import AWS.PageVAT_aws;
 import Common.SetUp;
 import AWS.Customer_view_aws;
 import AWS.Order_aws;
@@ -27,7 +28,7 @@ import static mailinator.WebMail.passwordForMail;
 
 public class QC_1483 {
 
-    private String email = "QC_1483_autotestEN@autodoc.si", orderNumber;
+    private String email = "QC_1483_autotestEN@autodoc.si", orderNumber, vatForNL;
     private Float totalPrice, totalPriceAWSOrder, totalPriceInEmail;
 
     private CartAddress_page_Logic cartAddress_page_logic = new CartAddress_page_Logic();
@@ -35,6 +36,8 @@ public class QC_1483 {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
+        vatForNL = new PageVAT_aws().getVatForNL();
+        close();
     }
 
     @DataProvider(name = "route", parallel = true)
@@ -67,17 +70,17 @@ public class QC_1483 {
                 .nextBtnClick()
                 .checkTextInDeliveryAddressInfoBlock("Company yyyy")
                 .checkTextInPayersAddressInfoBlock("SPRL Brasserie Cantillon")
-                .checkTextContainingVatPercentage("incl. 21% VAT")
+                .checkTextContainingVatPercentage("incl. " + vatForNL + "% VAT")
                 .getTotalPriceAllDataPageForEnShop();
         orderNumber = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumber);
         totalPriceAWSOrder = order_aws.openOrderInAwsWithLogin()
-                .checkVatStatusInOrder("Mit MwSt 21%")
+                .checkVatStatusInOrder("Mit MwSt " + vatForNL + "%")
                 .checkFirmConfirmationStatus("Нев. имя/город")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
         totalPriceAWSOrder = order_aws.reSaveOrder()
-                .checkVatStatusInOrder("Mit MwSt 21%")
+                .checkVatStatusInOrder("Mit MwSt " + vatForNL + "%")
                 .checkFirmConfirmationStatus("Нев. имя/город")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
@@ -92,7 +95,7 @@ public class QC_1483 {
 
         totalPriceInEmail = new WebMail().openMail(email, passwordForMail)
                 .openLetter(1)
-                .checkTextContainingVatPercentageInEmail("incl. 21% VAT")
+                .checkTextContainingVatPercentageInEmail("incl. " + vatForNL + "% VAT")
                 .checkFirstFirmNameInEmail("SPRL Brasserie Cantillon")
                 .checkSecondFirmNameInEmail("yyyy")
                 .getTotalPriceInEmail();
