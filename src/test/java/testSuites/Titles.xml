@@ -9,7 +9,7 @@
 
     <test name="QC_10_MainTitlesOnPages">
         <classes>
-            <class name="ATD.Titles.QC_10_MainTitlesOnPages.QC_16_VisibilityOfMarkModelMotorInHeadLine"/>
+            <class name="ATD.Titles.QC_10_MainTitlesOnPages.QC_16"/>
         </classes>
     </test>
 

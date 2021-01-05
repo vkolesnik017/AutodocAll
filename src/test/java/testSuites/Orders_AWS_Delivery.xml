@@ -8,140 +8,140 @@
 
     <test name="QC_21_CreatingAwsOrder">
         <classes>
-            <class name="ATD.Orders_AWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_21_CreatingAwsOrder"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_21"/>
         </classes>
     </test>
 
     <test name="QC_137_CreatingAwsOrder_WithDropProduct">
         <classes>
-            <class name="ATD.Orders_AWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_137_CreatingAwsOrder_WithDropProduct"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_137"/>
         </classes>
     </test>
 
     <test name="QC_146_CreatingAwsOrder_WithDropProductDeliveredNotToCountryOfShop">
         <classes>
-            <class name="ATD.Orders_AWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_146_CreatingAwsOrder_WithDropProductDeliveredNotToCountryOfShop"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_146"/>
         </classes>
     </test>
 
     <test name="QC_150_CreatingAwsOrder_WithDropProductDeliveredToCountryToWhichDropIsNotDelivered">
         <classes>
-            <class name="ATD.Orders_AWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_150_CreatingAwsOrder_WithDropProductDeliveredToCountryToWhichDropIsNotDelivered"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_150"/>
         </classes>
     </test>
 
     <test name="QC_562_CreatingAwsOrder_WithDropProductAndRegularProduct">
         <classes>
-            <class name="ATD.Orders_AWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_562_CreatingAwsOrder_WithDropProductAndRegularProduct"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_562"/>
         </classes>
     </test>
 
     <test name="QC_563_CreatingAwsOrder_WithDeliveryToIsland">
         <classes>
-            <class name="ATD.Orders_AWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_563_CreatingAwsOrder_WithDeliveryToIsland"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_563"/>
         </classes>
     </test>
 
     <test name="QC_564_CreatingAwsOrder_WithDangerousGoods">
         <classes>
-<!--            <class name="QC_564_CreatingAwsOrder_WithDangerousGoods"/>-->
+            <class name="ATD.Orders_AWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_564"/>
         </classes>
     </test>
 
     <test name="QC_565_CreatingAwsOrder_WithDeliveryToIsland_OrdinaryGoodAndHeavyLoads">
         <classes>
-            <class name="ATD.Orders_AWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_565_CreatingAwsOrder_WithDeliveryToIsland_OrdinaryGoodAndHeavyLoads"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_565"/>
         </classes>
     </test>
 
     <test name="QC_169_CreatingAwsOrder_WithHeavyLoads">
         <classes>
-            <class name="ATD.Orders_AWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_169_CreatingAwsOrder_WithHeavyLoads"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_169"/>
         </classes>
     </test>
 
     <test name="QC_171_CreatingAwsOrder_WithHeaveLoadsDeliveryToCountryToWhichHeaveLoadsNotDelivery">
         <classes>
-            <class name="ATD.Orders_AWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_171_CreatingAwsOrder_WithHeaveLoadsDeliveryToCountryToWhichHeaveLoadsNotDelivery"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_171"/>
         </classes>
     </test>
 
     <test name="QC_173_CreatingAwsOrder_WithDangerousGoodsToCountryToWhichItIsNotDelivered">
         <classes>
-            <class name="ATD.Orders_AWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_173_CreatingAwsOrder_WithDangerousGoodsToCountryToWhichItIsNotDelivered"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_173"/>
         </classes>
     </test>
 
     <test name="QC_1125_AddingAutoPartToAwsOrder">
         <classes>
-<!--            <class name="QC_1125_AddingAutoPartToAwsOrder"/>-->
+            <class name="ATD.Orders_AWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_1125"/>
         </classes>
     </test>
 
     <test name="QC_1126_RemovingAutoPartFromAwsOrder">
         <classes>
-            <class name="ATD.Orders_AWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_1126_RemovingAutoPartFromAwsOrder"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_1126"/>
         </classes>
     </test>
 
     <test name="QC_1127_EditingQuantityOfAutoPartsInAwsOrder">
         <classes>
-            <class name="ATD.Orders_AWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_1127_EditingQuantityOfAutoPartsInAwsOrder"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_1127"/>
         </classes>
     </test>
 
     <test name="QC_1128_ChangingCountryOfDeliveryInAwsOrder">
         <classes>
-<!--            <class name="QC_1128_ChangingCountryOfDeliveryInAwsOrder"/>-->
+            <class name="ATD.Orders_AWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_1128"/>
         </classes>
     </test>
 
     <test name="QC_2506_FreeDeliveryLimits_PositiveCase">
         <classes>
-            <class name="ATD.Orders_AWS_Delivery.QC_2505_Delivery.QC_2506_FreeDeliveryLimits_PositiveCase"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_2505_Delivery.QC_2506"/>
         </classes>
     </test>
 
     <test name="QC_2507_FreeDeliveryLimits_NegativeCase">
         <classes>
-            <class name="ATD.Orders_AWS_Delivery.QC_2505_Delivery.QC_2507_FreeDeliveryLimits_NegativeCase"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_2505_Delivery.QC_2507"/>
         </classes>
     </test>
 
     <test name="QC_2508_CheckDeliveryCost_Front">
         <classes>
-            <class name="ATD.Orders_AWS_Delivery.QC_2505_Delivery.QC_2508_CheckDeliveryCost_Front"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_2505_Delivery.QC_2508"/>
         </classes>
     </test>
 
     <test name="QC_2509_CheckDeliveryCost_AWS">
         <classes>
-            <class name="ATD.Orders_AWS_Delivery.QC_2505_Delivery.QC_2509_CheckDeliveryCost_AWS"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_2505_Delivery.QC_2509"/>
         </classes>
     </test>
 
     <test name="QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods">
         <classes>
-            <class name="ATD.Orders_AWS_Delivery.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1676_HeavyLoadsPositiveCase"/>
-            <class name="ATD.Orders_AWS_Delivery.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1677_HeavyLoadsNegativeCase"/>
-            <class name="ATD.Orders_AWS_Delivery.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1678_HeavyLoadsNegativeCasAllData"/>
-            <class name="ATD.Orders_AWS_Delivery.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1679_HeavyLoadsFR_PositiveCase"/>
-            <class name="ATD.Orders_AWS_Delivery.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1680_HeavyLoadsFR_NegativeCaseBasket"/>
-            <class name="ATD.Orders_AWS_Delivery.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1681_HeavyLoadsFR_NegativeCaseAllData"/>
-            <class name="ATD.Orders_AWS_Delivery.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1682_HeavyLoads_Islands"/>
-            <!--<class name="ATD.Orders_AWS_Delivery.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1684_HeavyLoadsAndOrdinaryGoods_PositiveCase"/>-->
-            <!--<class name="ATD.Orders_AWS_Delivery.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1685_HeavyLoadsAndOrdinaryGoods_DeletedOFGoods"/>-->
-            <!--<class name="ATD.Orders_AWS_Delivery.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1683_HeavyLoads_FreeShippingLimit"/>-->
-            <class name="ATD.Orders_AWS_Delivery.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_2367_DangerousGoods_PositiveCase"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1676"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1677"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1678"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1679"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1680"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1681"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1682"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1684"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1685"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_1683"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_1675_HeavyLoadsDangerousGoodsDropshippingGoods.QC_2367"/>
         </classes>
     </test>
 
     <test name="QC_2994_FilterByOrdersWithPaylinksInOrderSearch">
             <classes>
-                    <class name="ATD.Orders_AWS_Delivery.QC_2994_FilterByOrdersWithPaylinksInOrderSearch.QC_3001_CheckingSearchBy_GroupField_FilterLinkSurcharges_CustomerInfo"/>
-                    <class name="ATD.Orders_AWS_Delivery.QC_2994_FilterByOrdersWithPaylinksInOrderSearch.QC_2997_CheckingSearchBy_GroupField_FilterLinkSurchargesAndItsPresenceInFilteredOrders"/>
-                    <class name="ATD.Orders_AWS_Delivery.QC_2994_FilterByOrdersWithPaylinksInOrderSearch.QC_3002_CheckingSearchBy_GroupField_FilterLinkSurcharges_OtherFilters"/>
-                    <class name="ATD.Orders_AWS_Delivery.QC_2994_FilterByOrdersWithPaylinksInOrderSearch.QC_2998_CheckingSearchBy_GroupField_FilterLinkSurcharges_FillingDataPeriod"/>
+                    <class name="ATD.Orders_AWS_Delivery.QC_2994_FilterByOrdersWithPaylinksInOrderSearch.QC_3001"/>
+                    <class name="ATD.Orders_AWS_Delivery.QC_2994_FilterByOrdersWithPaylinksInOrderSearch.QC_2997"/>
+                    <class name="ATD.Orders_AWS_Delivery.QC_2994_FilterByOrdersWithPaylinksInOrderSearch.QC_3002"/>
+                    <class name="ATD.Orders_AWS_Delivery.QC_2994_FilterByOrdersWithPaylinksInOrderSearch.QC_2998"/>
             </classes>
     </test>
 

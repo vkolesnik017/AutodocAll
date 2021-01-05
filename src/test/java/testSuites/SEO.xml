@@ -8,20 +8,20 @@
 
     <test name="QC_2549_InformationBlockOfCategoryNameRoute">
         <classes>
-            <class name="ATD.SEO.QC_2549_InformationBlockOfCategoryNameRoute.QC_2550_InformationBlockDisplayConditions"/>
-            <class name="ATD.SEO.QC_2549_InformationBlockOfCategoryNameRoute.QC_2552_ProductsArticleBlock"/>
-            <class name="ATD.SEO.QC_2549_InformationBlockOfCategoryNameRoute.QC_2553_ManufacturerBlock"/>
-            <class name="ATD.SEO.QC_2549_InformationBlockOfCategoryNameRoute.QC_2561_BrandsBlock"/>
-            <class name="ATD.SEO.QC_2549_InformationBlockOfCategoryNameRoute.QC_2565_PriceRangeBlock"/>
-            <class name="ATD.SEO.QC_2549_InformationBlockOfCategoryNameRoute.QC_2664_CharacteristicBlock"/>
+            <class name="ATD.SEO.QC_2549_InformationBlockOfCategoryNameRoute.QC_2550"/>
+            <class name="ATD.SEO.QC_2549_InformationBlockOfCategoryNameRoute.QC_2552"/>
+            <class name="ATD.SEO.QC_2549_InformationBlockOfCategoryNameRoute.QC_2553"/>
+            <class name="ATD.SEO.QC_2549_InformationBlockOfCategoryNameRoute.QC_2561"/>
+            <class name="ATD.SEO.QC_2549_InformationBlockOfCategoryNameRoute.QC_2565"/>
+            <class name="ATD.SEO.QC_2549_InformationBlockOfCategoryNameRoute.QC_2664"/>
         </classes>
     </test>
 
     <test name="QC_2555_LinkTransitionFromPDFBlockToClubManual">
         <classes>
-            <class name="ATD.SEO.QC_2555_LinkTransitionFromPDFBlockToClubManual.QC_2556_TransitionToClubPageFromPDFManualBlock"/>
-            <class name="ATD.SEO.QC_2555_LinkTransitionFromPDFBlockToClubManual.QC_2557_CheckElementsInPDFManualBlock"/>
-            <class name="ATD.SEO.QC_2555_LinkTransitionFromPDFBlockToClubManual.QC_2558_CheckDownloadsManuals"/>
+            <class name="ATD.SEO.QC_2555_LinkTransitionFromPDFBlockToClubManual.QC_2556"/>
+            <class name="ATD.SEO.QC_2555_LinkTransitionFromPDFBlockToClubManual.QC_2557"/>
+            <class name="ATD.SEO.QC_2555_LinkTransitionFromPDFBlockToClubManual.QC_2558"/>
         </classes>
     </test>
 

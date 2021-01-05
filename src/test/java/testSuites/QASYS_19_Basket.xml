@@ -9,21 +9,21 @@
 
     <test name="QASYS_455_DeletingOfDangerousProductFromBasket">
         <classes>
-            <class name="ATD.QASYS_19_Basket.QASYS_455_DeletingOfDangerousProductFromBasket">
+            <class name="ATD.QASYS_19_Basket.QASYS_455">
             </class>
         </classes>
     </test>
 
     <test name="QASYS_274_AddingProductToBasketFromAllRoutes">
         <classes>
-            <class name="ATD.QASYS_19_Basket.QASYS_274_AddingProductToBasketFromAllRoutes">
+            <class name="ATD.QASYS_19_Basket.QASYS_274">
             </class>
         </classes>
     </test>
 
     <test name="QASYS_452_NumberBasketOnMobile">
         <classes>
-            <class name="ATD.QASYS_19_Basket.QASYS_452_NumberBasketOnMobile">
+            <class name="ATD.QASYS_19_Basket.QASYS_452">
             </class>
         </classes>
     </test>

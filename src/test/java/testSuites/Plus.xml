@@ -8,19 +8,19 @@
 
     <test name="QC_2361_AtdPlus">
         <classes>
-            <class name="ATD.Plus.QC_2361_AtdPlus.QC_1836_CheckingTextOnPopUpAtCheckoutAfter_14_days"/>
-            <class name="ATD.Plus.QC_2361_AtdPlus.QC_2612_CheckingForAbsenceSOInAutodocPlusSection"/>
-            <class name="ATD.Plus.QC_2361_AtdPlus.QC_2724_CheckingCorrectOperationOfFirstReOrderFromUser"/>
-            <class name="ATD.Plus.QC_2361_AtdPlus.QC_2725_CheckingCorrectOperationOfNotFirstReOrderFromUser"/>
-            <class name="ATD.Plus.QC_2361_AtdPlus.QC_2910_CheckingDiscountOnDeliveryForUserWithAtdProPackage"/>
-            <class name="ATD.Plus.QC_2361_AtdPlus.QC_2911_CheckingDiscountOnDeliveryOutSideCountryStoreWithPlusPro"/>
-            <class name="ATD.Plus.QC_2361_AtdPlus.QC_2912_CheckingAbsenceDiscountOnDeliveryToIslandWithPlusPRO"/>
-            <class name="ATD.Plus.QC_2361_AtdPlus.QC_2923_CheckingAbsenceDiscountOnDeliveryToNotEUCountriesWithPlusPRO"/>
-            <class name="ATD.Plus.QC_2361_AtdPlus.QC_3058_CheckingAbsence20PercentDiscountWithPlusPROForFR"/>
-            <class name="ATD.Plus.QC_2361_AtdPlus.QC_3064_CheckingAbsence20PercentDiscountWithPlusPROFromFRToDE"/>
-            <class name="ATD.Plus.QC_2361_AtdPlus.QC_3070_CheckDiscount20PercentOnSOWithBasicMVP2OrderFront"/>
-            <class name="ATD.Plus.QC_2361_AtdPlus.QC_3071_CheckDiscount35PercentOnSOWithOptimumMVP2OrderFront"/>
-            <class name="ATD.Plus.QC_2361_AtdPlus.QC_3072_CheckDiscount50PercentOnSOWithProMVP2OrderFront"/>
+            <class name="ATD.Plus.QC_2361_AtdPlus.QC_1836"/>
+            <class name="ATD.Plus.QC_2361_AtdPlus.QC_2612"/>
+            <class name="ATD.Plus.QC_2361_AtdPlus.QC_2724"/>
+            <class name="ATD.Plus.QC_2361_AtdPlus.QC_2725"/>
+            <class name="ATD.Plus.QC_2361_AtdPlus.QC_2910"/>
+            <class name="ATD.Plus.QC_2361_AtdPlus.QC_2911"/>
+            <class name="ATD.Plus.QC_2361_AtdPlus.QC_2912"/>
+            <class name="ATD.Plus.QC_2361_AtdPlus.QC_2923"/>
+            <class name="ATD.Plus.QC_2361_AtdPlus.QC_3058"/>
+            <class name="ATD.Plus.QC_2361_AtdPlus.QC_3064"/>
+            <class name="ATD.Plus.QC_2361_AtdPlus.QC_3070"/>
+            <class name="ATD.Plus.QC_2361_AtdPlus.QC_3071"/>
+            <class name="ATD.Plus.QC_2361_AtdPlus.QC_3072"/>
         </classes>
     </test>
 
