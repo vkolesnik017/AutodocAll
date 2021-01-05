@@ -8,11 +8,11 @@
 
     <test name="QC_1014_OutOfStockProducts">
         <classes>
-            <class name="ATD.GrayButton.QC_1014_OutOfStockProducts.QC_1015_GrayButtonOnSearchPage"/>
-            <class name="ATD.GrayButton.QC_1014_OutOfStockProducts.QC_2067_CheckNotifyOfStockFormValidationForOutOfStockProducts"/>
-            <class name="ATD.GrayButton.QC_1014_OutOfStockProducts.QC_1025_GrayButtonOnProductPage"/>
-            <class name="ATD.GrayButton.QC_1014_OutOfStockProducts.QC_2069_PresenceOfFeedBackPopUpByClickOnGreyButton"/>
-            <class name="ATD.GrayButton.QC_1014_OutOfStockProducts.QC_2078_ValidationOfFormFieldsNotifyOnAvailability"/>
+            <class name="ATD.GrayButton.QC_1014_OutOfStockProducts.QC_2067"/>
+            <class name="ATD.GrayButton.QC_1014_OutOfStockProducts.QC_1025"/>
+            <class name="ATD.GrayButton.QC_1014_OutOfStockProducts.QC_2069"/>
+            <class name="ATD.GrayButton.QC_1014_OutOfStockProducts.QC_2078"/>
+            <class name="ATD.GrayButton.QC_1014_OutOfStockProducts.QC_1015"/>
         </classes>
     </test>
 </suite>

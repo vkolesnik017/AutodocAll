@@ -8,36 +8,36 @@
 
     <test name="ProductPage_ATD">
         <classes>
-            <class name="ATD.ProductPage.QC_924_CompatibilityList_TestCompatibleCarAndProduct"/>
-            <!--<class name="ATD.ProductPage.QC_709_FAQ_TestFAQformWithValidData"/>-->
-            <!--<class name="ATD.ProductPage.QC_918_OEN_TestOEMlistWithCar"/>-->
+            <class name="ATD.ProductPage.QC_924"/>
+            <class name="ATD.ProductPage.QC_709"/>
+            <class name="ATD.ProductPage.QC_918"/>
         </classes>
     </test>
 
     <test name="QC_1908_ReviewsBlock">
         <classes>
-<!--            <class name="ATD.ProductPage.QC_1908_ReviewsBlock.QC_777_Reviews_TestReviewsFormWithValidData"/> TODO отключен по техническим обстоятельствам-->
-            <class name="ATD.ProductPage.QC_1908_ReviewsBlock.QC_1909_TestIfNumberOfReviewsDEmoreThan20"/>
-            <class name="ATD.ProductPage.QC_1908_ReviewsBlock.QC_1910_TestIfNumberOfReviewsDElessThan20"/>
+            <class name="ATD.ProductPage.QC_1908_ReviewsBlock.QC_777"/>
+            <class name="ATD.ProductPage.QC_1908_ReviewsBlock.QC_1909"/>
+            <class name="ATD.ProductPage.QC_1908_ReviewsBlock.QC_1910"/>
         </classes>
     </test>
 
     <test name="QC_2741_ProductPage_CarRoute">
         <classes>
-            <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_744_Reviews_TestReviewsFormValidation"/>
-            <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_921_OEN_TestOEMlistWithoutCar"/>
-            <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_707_FAQ_TestFAQformValidationEmptyFields"/>
-            <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_708_FAQ_TestVinPopupAfterHover"/>
-            <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_951_CompatibilityList_TestIncompatibilityMessage"/>
-            <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_963_ProductPage_TestPresenceOfElements"/>
-            <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_1969_CheckPresenceTheBlockLawECEOnLightBulbPage"/>
-            <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_2945_DisplayOfGenericAlternativeNameInProductName"/>
-            <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_3105_CheckDisplayKitCompositionBlock"/>
-            <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_3098_PresenceOfTabBlockAnchoringByClickOnElement"/>
-            <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_3101_DisplayOfRidexBlock"/>
-            <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_3106_CheckDisplayCandlesAnalogBlock"/>
-            <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_3117_CheckDisplayPriceMeterElementOnProductPage"/>
-            <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_3104_CheckDisplayFAQWithoutAnswers"/>
+            <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_744"/>
+            <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_921"/>
+            <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_707"/>
+            <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_708"/>
+            <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_951"/>
+            <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_963"/>
+            <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_1969"/>
+            <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_2945"/>
+            <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_3105"/>
+            <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_3098"/>
+            <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_3101"/>
+            <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_3106"/>
+            <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_3117"/>
+            <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_3104"/>
         </classes>
     </test>
 </suite>

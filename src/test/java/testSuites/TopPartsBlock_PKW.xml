@@ -8,8 +8,8 @@
 
     <test name="QC_3007_TopProductsBlock">
         <classes>
-            <class name="PKW.TopPartsBlock.QC_3007_TopProductsBlock.QC_2559_CheckMainElementsOfTopProductBlock"/>
-            <class name="PKW.TopPartsBlock.QC_3007_TopProductsBlock.QC_2891_HoverMiniCardInTopProductsBlock"/>
+            <class name="PKW.TopPartsBlock.QC_3007_TopProductsBlock.QC_2559"/>
+            <class name="PKW.TopPartsBlock.QC_3007_TopProductsBlock.QC_2891"/>
         </classes>
     </test>
 

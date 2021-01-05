@@ -8,11 +8,11 @@
 
     <test name="Registration">
         <classes>
-            <class name="ATD.Registration.QC_1635_RegistrationFromLoginButton"/>
-            <class name="ATD.Registration.QC_1637_RegistrationFromBasket"/>
-            <class name="ATD.Registration.QC_1639_RecoveryPasswordFromPopupInHeader"/>
-            <!--<class name="ATD.Registration.QC_1642_RecoveryPasswordFromCart"/>-->
-            <class name="ATD.Registration.QC_2108_AuthorizationCheckInPopupFromHeader"/>
+            <class name="ATD.Registration.QC_1635"/>
+            <class name="ATD.Registration.QC_1637"/>
+            <class name="ATD.Registration.QC_1639"/>
+            <class name="ATD.Registration.QC_1642"/>
+            <class name="ATD.Registration.QC_2108"/>
         </classes>
     </test>
 </suite>
