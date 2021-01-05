@@ -2,6 +2,7 @@ package ATD.Basket.QC_1388_Firms_ATD;
 
 import ATD.CartAllData_page_Logic;
 import ATD.Product_page_Logic;
+import AWS.PageVAT_aws;
 import Common.SetUp;
 import AWS.Order_aws;
 import io.qameta.allure.Description;
@@ -26,6 +27,7 @@ public class QC_1391 {
 
     private String emailPL = "QC_1391_autotestPL@autodoc.si", orderNumberPL;
     private Float totalPricePL, totalPriceAWSOrderPL, totalPriceInEmailPL;
+    private PageVAT_aws pageVAT_aws = new PageVAT_aws();
 
     @BeforeClass
     void setUp() {
@@ -43,6 +45,7 @@ public class QC_1391 {
     @Description(value = "Test checks the successful placement of the order indicating the company, split billing " +
             "and same countries for the PL shop. Country of shop == country of delivery")
     public void testSuccessfulPlacementOfOrder_Firm_SameCountries_PL(String routePL) {
+        String vatForPL = pageVAT_aws.getVatForPL();
         openPage(routePL);
         String shop = getCurrentShopFromJSVarInHTML();
         totalPricePL = new Product_page_Logic().addProductToCart()
@@ -57,17 +60,17 @@ public class QC_1391 {
                 .nextBtnClick()
                 .checkTextInDeliveryAddressInfoBlock("autotest autotest")
                 .checkTextInPayersAddressInfoBlock("Firma FB-MONT A. Fułek Spółka Komandytowa")
-                .checkTextContainingVatPercentage("23% VAT")
+                .checkTextContainingVatPercentage("" + vatForPL + "% VAT")
                 .getTotalPriceAllDataPage(shop);
         orderNumberPL = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumberPL);
-        totalPriceAWSOrderPL = order_aws.openOrderInAwsWithLogin()
-                .checkVatStatusInOrder("Mit MwSt 23%")
+        totalPriceAWSOrderPL = order_aws.openOrderInAwsWithoutLogin()
+                .checkVatStatusInOrder("Mit MwSt " + vatForPL + "%")
                 .checkFirmConfirmationStatus("Пров. вручную")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPricePL, totalPriceAWSOrderPL);
         totalPriceAWSOrderPL = order_aws.reSaveOrder()
-                .checkVatStatusInOrder("Mit MwSt 23%")
+                .checkVatStatusInOrder("Mit MwSt " + vatForPL + "%")
                 .checkFirmConfirmationStatus("Пров. вручную")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPricePL, totalPriceAWSOrderPL);
@@ -77,7 +80,7 @@ public class QC_1391 {
 
         totalPriceInEmailPL = new WebMail().openMail(emailPL, passwordForMail)
                 .openLetter(1)
-                .checkTextContainingVatPercentageInEmail("w tym 23% VAT")
+                .checkTextContainingVatPercentageInEmail("w tym " + vatForPL + "% VAT")
                 .checkFirstFirmNameInEmail("FB-MONT A. Fułek Spółka Komandytowa")
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPricePL, totalPriceInEmailPL);
@@ -97,8 +100,9 @@ public class QC_1391 {
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks the successful placement of the order indicating the company, split billing " +
             "and same countries for the DE shop. Country of shop == country of delivery")
-    public void testSuccessfulPlacementOfOrder_Firm_SameCountries_DE(String routePL) {
-        openPage(routePL);
+    public void testSuccessfulPlacementOfOrder_Firm_SameCountries_DE(String routeDE) {
+        String vatForDE = pageVAT_aws.getVatForDE();
+        openPage(routeDE);
         String shop = getCurrentShopFromJSVarInHTML();
         totalPriceDE = new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
@@ -112,17 +116,17 @@ public class QC_1391 {
                 .nextBtnClick()
                 .checkTextInDeliveryAddressInfoBlock("autotest autotest")
                 .checkTextInPayersAddressInfoBlock("Firma Autodoc GmbH")
-                .checkTextContainingVatPercentage("inkl. 16% MwSt")
+                .checkTextContainingVatPercentage("inkl. " + vatForDE + "% MwSt")
                 .getTotalPriceAllDataPage(shop);
         orderNumberDE = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumberDE);
-        totalPriceAWSOrderDE = order_aws.openOrderInAwsWithLogin()
-                .checkVatStatusInOrder("Mit MwSt 16%")
+        totalPriceAWSOrderDE = order_aws.openOrderInAwsWithoutLogin()
+                .checkVatStatusInOrder("Mit MwSt " + vatForDE + "%")
                 .checkFirmConfirmationStatus("Пров. вручную")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceDE, totalPriceAWSOrderDE);
         totalPriceAWSOrderDE = order_aws.reSaveOrder()
-                .checkVatStatusInOrder("Mit MwSt 16%")
+                .checkVatStatusInOrder("Mit MwSt " + vatForDE + "%")
                 .checkFirmConfirmationStatus("Пров. вручную")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceDE, totalPriceAWSOrderDE);
@@ -132,7 +136,7 @@ public class QC_1391 {
 
         totalPriceInEmailDE = new WebMail().openMail(emailDE, passwordForMail)
                 .openLetter(1)
-                .checkTextContainingVatPercentageInEmail("inkl. 16% MwSt")
+                .checkTextContainingVatPercentageInEmail("inkl. " + vatForDE + "% MwSt")
                 .checkFirstFirmNameInEmail("Autodoc GmbH")
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPriceDE, totalPriceInEmailDE);
@@ -151,8 +155,9 @@ public class QC_1391 {
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks successful order placement with indicating of company, split billing " +
             " and some countries and shipping to another country for ES shop. Country of shop != country of delivery")
-    public void testSuccessfulPlacementOfOrder_Firm_SameCountries_ES(String routePL) {
-        openPage(routePL);
+    public void testSuccessfulPlacementOfOrder_Firm_SameCountries_ES(String routeES) {
+        String vatForPL = pageVAT_aws.getVatForPL();
+        openPage(routeES);
         String shop = getCurrentShopFromJSVarInHTML();
         totalPriceES = new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
@@ -166,17 +171,17 @@ public class QC_1391 {
                 .nextBtnClick()
                 .checkTextInDeliveryAddressInfoBlock("autotest autotest")
                 .checkTextInPayersAddressInfoBlock("Entidad FB-MONT A. Fułek Spółka Komandytowa")
-                .checkTextContainingVatPercentage("IVA incluido 23%")
+                .checkTextContainingVatPercentage("IVA incluido " + vatForPL + "%")
                 .getTotalPriceAllDataPage(shop);
         orderNumberES = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumberES);
-        totalPriceAWSOrderES = order_aws.openOrderInAwsWithLogin()
-                .checkVatStatusInOrder("Mit MwSt 23%")
+        totalPriceAWSOrderES = order_aws.openOrderInAwsWithoutLogin()
+                .checkVatStatusInOrder("Mit MwSt " + vatForPL + "%")
                 .checkFirmConfirmationStatus("Пров. вручную")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceES, totalPriceAWSOrderES);
         totalPriceAWSOrderES = order_aws.reSaveOrder()
-                .checkVatStatusInOrder("Mit MwSt 23%")
+                .checkVatStatusInOrder("Mit MwSt " + vatForPL + "%")
                 .checkFirmConfirmationStatus("Пров. вручную")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceES, totalPriceAWSOrderES);
@@ -186,7 +191,7 @@ public class QC_1391 {
 
         totalPriceInEmailES = new WebMail().openMail(emailES, passwordForMail)
                 .openLetter(1)
-                .checkTextContainingVatPercentageInEmail("IVA incluido 23%")
+                .checkTextContainingVatPercentageInEmail("IVA incluido " + vatForPL + "%")
                 .checkFirstFirmNameInEmail("FB-MONT A. Fułek Spółka Komandytowa")
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPriceES, totalPriceInEmailES);

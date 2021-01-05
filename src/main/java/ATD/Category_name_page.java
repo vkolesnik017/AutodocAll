@@ -90,7 +90,7 @@ public class Category_name_page {
 
     SelenideElement hrefBrandFromBrandsBlock() {
         return $x("//div[@class='kategorie_top_brands']//a");
-
     }
 
+    SelenideElement mainHeadline() {return $x("//div[@class='top_title no_image']/h2");}
 }
