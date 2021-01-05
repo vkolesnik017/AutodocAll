@@ -37,8 +37,7 @@
             <class name="ATD.LKW_trucks.QC_49_Bread_crumbs.QC_65_BreadCrumbsInCategory"/>
             <class name="ATD.LKW_trucks.QC_49_Bread_crumbs.QC_66_BreadCrumbsInCategoryMakerBrand"/>
             <class name="ATD.LKW_trucks.QC_49_Bread_crumbs.QC_67_BreadCrumbsInCategoryParent"/>
-            <class name="ATD.LKW_trucks.QC_49_Bread_crumbs.QC_68_BreadCrumbsInProductPage_ActiveProduct"/>
-            <class name="ATD.LKW_trucks.QC_49_Bread_crumbs.QC_68_BreadCrumbsInProductPage_NotActiveProduct"/>
+            <class name="ATD.LKW_trucks.QC_49_Bread_crumbs.QC_68_BreadCrumbsInProductPage"/>
             <class name="ATD.LKW_trucks.QC_49_Bread_crumbs.QC_69_BreadCrumbsInCategoryMaker"/>
             <class name="ATD.LKW_trucks.QC_49_Bread_crumbs.QC_70_BreadCrumbsInChildCategory"/>
             <class name="ATD.LKW_trucks.QC_49_Bread_crumbs.QC_71_BreadCrumbsInTecDocListing"/>
