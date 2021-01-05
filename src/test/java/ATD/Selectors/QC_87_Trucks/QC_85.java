@@ -1,4 +1,4 @@
-package ATD.LKW_trucks.QC_82_TruckSelectorBlock;
+package ATD.Selectors.QC_87_Trucks;
 
 import ATD.LKW_Category_car_list_page_Logic;
 import ATD.LKW_maker_car_list_Logic;

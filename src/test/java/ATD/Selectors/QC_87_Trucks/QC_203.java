@@ -1,4 +1,4 @@
-package ATD.LKW_trucks.QC_200_Separation_of_selector_session_of_LKW_from_PKW_and_Moto;
+package ATD.Selectors.QC_87_Trucks;
 
 import ATD.LKW_main_page_Logic;
 import Common.SetUp;
@@ -16,7 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_204 {
+public class QC_203 {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -30,14 +30,16 @@ public class QC_204 {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks separation of LKW selector session from Moto")
-    public void testChecksSeparationOfLKWSelectorSessionFromMoto(String route) {
+    @Description(value = "Test checks separation of LKW selector session from car")
+    public void testChecksSeparationOfLKWSelectorSessionFromCar(String route) throws SQLException {
         openPage(route);
         new LKW_main_page_Logic().selectTruckInSelector("24", "714", "1004434")
                 .checkSuccessfullyPageLoading("https://lkwteile.autodoc.de/lastkraftwagen/daf/45?car_id=1004434")
-                .selectMotoCategory().checkSuccessfullyMotoPageLoading()
-                .checkOfEmptyMotoSelector().selectChildCategory()
-                .checkSuccessfullyChildCategoryPageLoading();
+                .selectCarCategory()
+                .checkSuccessfullyMainPageLoading()
+                .checkOfEmptyOfVerticalSelector()
+                .selectChildCategory("Ölfilter")
+                .checkSuccessfullyChildCategoryLoadingFromMainPage();
 
     }
     @AfterMethod

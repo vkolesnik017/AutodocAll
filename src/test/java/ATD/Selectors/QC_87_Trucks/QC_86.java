@@ -1,4 +1,4 @@
-package ATD.LKW_trucks.QC_82_TruckSelectorBlock;
+package ATD.Selectors.QC_87_Trucks;
 
 import ATD.*;
 import Common.DataBase;

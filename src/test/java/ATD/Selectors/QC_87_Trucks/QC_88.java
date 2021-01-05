@@ -1,6 +1,6 @@
-package ATD.LKW_trucks.QC_200_Separation_of_selector_session_of_LKW_from_PKW_and_Moto;
+package ATD.Selectors.QC_87_Trucks;
 
-import ATD.Moto_main_page_Logic;
+import ATD.LKW_Product_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,7 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_205 {
+public class QC_88 {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -24,24 +24,20 @@ public class QC_205 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_main");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_product3");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks separation of Moto selector session from car")
-    public void testChecksSeparationOfMotoSelectorSessionFromCar(String route) throws SQLException {
+    @Description(value = "Test checks filling the selector with suitable car in Product page")
+    public void testChecksFillingSelectorWithSuitableCarInProductPage(String route) {
         openPage(route);
-
-        new Moto_main_page_Logic().selectMotoInHorizontalMotoSelector("4081", "12008", "115569")
-                .checkSuccessfullyMotoCatalogPageLoading()
-                .selectCarCategory()
-                .checkSuccessfullyMainPageLoading()
-                .checkOfEmptyOfVerticalSelector()
-                .selectChildCategory("Ölfilter")
-                .checkSuccessfullyChildCategoryLoadingFromMainPage();
+        new LKW_Product_page_Logic()
+                .selectTruckInHorizontalSelector("24", "4177", "1004416")
+                .visibilityOfMessageAboutCompatibilityTruckAndProduct("Dieses Produkt passt zu Ihrem DAF 65 CF FA 65 CF 180");
     }
+
     @AfterMethod
     public void close() {
         closeWebDriver();

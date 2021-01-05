@@ -1,7 +1,6 @@
-package ATD.LKW_trucks.QC_200_Separation_of_selector_session_of_LKW_from_PKW_and_Moto;
+package ATD.Selectors.QC_87_Trucks;
 
-import ATD.*;
-import Common.DataBase;
+import ATD.Moto_main_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -13,12 +12,11 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_201 {
+public class QC_206 {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -26,23 +24,22 @@ public class QC_201 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "main", "main");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_main");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks separation of a car selector session from LKW")
-    public void testChecksSeparationOfCarSelectorSessionFromLKW(String route) throws SQLException {
+    @Description(value = "Test checks separation of Moto selector session from LKW")
+    public void testChecksSeparationOfMotoSelectorSessionFromLKW(String route) {
         openPage(route);
-        new Main_page_Logic().chooseBrandModelTypeInSelector("MERCEDES-BENZ", "38539", "130593")
-                .clickSearchBtnInVerticalSelectorWhenSelectedAllFields();
-        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "maker_car_list17"));
-        new Categories_page_Logic().selectLKWCategory().checkSuccessfullyLKWPageLoading()
+
+        new Moto_main_page_Logic().selectMotoInHorizontalMotoSelector("4081", "12008", "115569")
+                .checkSuccessfullyMotoCatalogPageLoading()
+                .selectLKWCategory().checkSuccessfullyLKWPageLoading()
                 .checkOfEmptySelector().selectChildCategory()
                 .checkSuccessfullyChildCategoryPageLoading();
     }
-
     @AfterMethod
     public void close() {
         closeWebDriver();

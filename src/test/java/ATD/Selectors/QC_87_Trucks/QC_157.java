@@ -1,6 +1,6 @@
-package ATD.LKW_trucks.QC_87_SelectorInProductPage;
+package ATD.Selectors.QC_87_Trucks;
 
-import ATD.LKW_maker_car_list_Logic;
+import ATD.LKW_main_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,7 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_91 {
+public class QC_157 {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -24,17 +24,19 @@ public class QC_91 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_maker_car_list3");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_main");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks switching with selecting not suitable truck to Product page")
-    public void testChecksSwitchingWithSelectingNotSuitableTruckToProductPage(String route) {
+    @Description(value = "Test checks pop-up of specification in truck selector")
+    public void testChecksPopUpOfSpecificationInTruckSelector(String route) {
         openPage(route);
-        new LKW_maker_car_list_Logic().inputArticleOfProductInSearchField().selectProductInSearchDropMenu()
-                .visibilityOfTitleAboutNotCompatibilityTruckAndProduct("Tut uns Leid, aber das gewünschte Ersatzteil ist mit Ihrem Fahrzeug nicht kompatibel. Erfahren Sie passende alternative Produkte für Ihr Auto.");
+        new LKW_main_page_Logic()
+                .visibilityOfPopUpSpecification()
+                .selectSpecificationInPopUp()
+                .checkSuccessfullyMakerCarListPageLoading("https://lkwteile.autodoc.de/lastkraftwagen/volvo/fh-16-ii?car_id=1021790");
     }
 
     @AfterMethod

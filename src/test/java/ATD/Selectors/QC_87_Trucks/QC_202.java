@@ -1,4 +1,4 @@
-package ATD.LKW_trucks.QC_200_Separation_of_selector_session_of_LKW_from_PKW_and_Moto;
+package ATD.Selectors.QC_87_Trucks;
 
 import ATD.Categories_page_Logic;
 import ATD.Main_page_Logic;

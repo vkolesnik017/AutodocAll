@@ -1,6 +1,6 @@
-package ATD.LKW_trucks.QC_82_TruckSelectorBlock;
+package ATD.Selectors.QC_87_Trucks;
 
-import ATD.LKW_main_page_Logic;
+import ATD.Moto_main_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,7 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_157 {
+public class QC_205 {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -24,21 +24,24 @@ public class QC_157 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_main");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_main");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks pop-up of specification in truck selector")
-    public void testChecksPopUpOfSpecificationInTruckSelector(String route) {
+    @Description(value = "Test checks separation of Moto selector session from car")
+    public void testChecksSeparationOfMotoSelectorSessionFromCar(String route) throws SQLException {
         openPage(route);
-        new LKW_main_page_Logic()
-                .visibilityOfPopUpSpecification()
-                .selectSpecificationInPopUp()
-                .checkSuccessfullyMakerCarListPageLoading("https://lkwteile.autodoc.de/lastkraftwagen/volvo/fh-16-ii?car_id=1021790");
-    }
 
+        new Moto_main_page_Logic().selectMotoInHorizontalMotoSelector("4081", "12008", "115569")
+                .checkSuccessfullyMotoCatalogPageLoading()
+                .selectCarCategory()
+                .checkSuccessfullyMainPageLoading()
+                .checkOfEmptyOfVerticalSelector()
+                .selectChildCategory("Ölfilter")
+                .checkSuccessfullyChildCategoryLoadingFromMainPage();
+    }
     @AfterMethod
     public void close() {
         closeWebDriver();
