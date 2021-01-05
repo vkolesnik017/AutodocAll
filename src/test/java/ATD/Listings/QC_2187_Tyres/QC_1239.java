@@ -1,4 +1,4 @@
-package ATD.Tyres.QC_1253_PaymentsAndDeliveryBlockOnTyresListing;
+package ATD.Listings.QC_2187_Tyres;
 
 
 import Common.SetUp;
@@ -17,7 +17,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1284 {
+public class QC_1239 {
 
     @BeforeClass
     void setUp() {
@@ -26,20 +26,18 @@ public class QC_1284 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_season2,tyres_season6,tyres_season7,tyres_season_size2," +
-                "tyres_dimension2,tyres_size6,tyres_brand5,tyre_form," +
-                "tyres_season,tyres_season8,tyres_season9,tyres_season_size3,tyres_dimension3,tyres_brand2," +
-                "tyres_season5,tyres_season10,tyres_season11,tyres_season_size4,tyres_dimension5,tyres_brand3," +
-                "tyres_season12,tyres_season4,tyres_season_size5,tyres_dimension4,tyres_brand4");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_season2,tyres_season6,tyres_season7,tyres_dimension2," +
+                "tyres_brand_dimension2,tyres_season,tyres_season8,tyres_season9,tyres_dimension3,tyres_brand_dimension3,tyres_season5,tyres_season10,tyres_season11,tyres_dimension5," +
+                "tyres_brand_dimension4,tyres_season12,tyres_season4,tyres_dimension4,tyres_brand_dimension5");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Romaniuta")
-    @Description(value = "Test Checks Presence Delivery Type Block On Tyres Listing")
-    public void testPresenceDeliveryTypeBlockOnTyresListing(String route) {
+    @Description(value = "Test Checks Presence Diameter Relink Block On Tyres Listing")
+    public void testPresenceDiameterRelinkBlockOnTyresListing(String route) {
         openPage(route);
-        new TyresListing_page_Logic().checkDeliveryBlockVisibility();
+        new TyresListing_page_Logic().checkDiameterRelinkBlockVisibility();
     }
 
     @AfterMethod

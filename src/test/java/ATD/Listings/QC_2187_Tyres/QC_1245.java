@@ -1,4 +1,4 @@
-package ATD.Tyres.QC_1238_SizeRelinkBlockOnTyresListing;
+package ATD.Listings.QC_2187_Tyres;
 
 
 import Common.SetUp;

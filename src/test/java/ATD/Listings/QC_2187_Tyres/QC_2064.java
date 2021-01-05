@@ -1,4 +1,4 @@
-package ATD.Tyres.QC_2063_MainIssueBlockOnTireListings;
+package ATD.Listings.QC_2187_Tyres;
 
 import Common.SetUp;
 import ATD.TyresListing_page_Logic;
@@ -16,7 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2065 {
+public class QC_2064 {
 
     @BeforeClass
     void setUp() {
@@ -32,10 +32,10 @@ public class QC_2065 {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test check the transition to the product page of the product from the listing")
-    public void testCheckingTransitionToProductPageOfProductFromListing(String route) {
+    @Description(value = "Test check presence of a block of the main distribution of tires")
+    public void testPresenceBlockOfTheMainDistributionOfTires(String route) {
         openPage(route);
-        new TyresListing_page_Logic().getProductIdAndComparesItToIdOnProductPage();
+        new TyresListing_page_Logic().checkPresenceProductListing();
     }
 
     @AfterMethod

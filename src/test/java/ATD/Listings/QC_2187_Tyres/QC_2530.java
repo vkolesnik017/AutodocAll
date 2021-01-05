@@ -1,4 +1,4 @@
-package ATD.Tyres.QC_2187_CheckingMaxSizeProductsOnListing;
+package ATD.Listings.QC_2187_Tyres;
 
 import ATD.Tyre_form_page_Logic;
 import ATD.Tyres_dimension_page_Logic;
