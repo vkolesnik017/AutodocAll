@@ -44,7 +44,7 @@ public class QC_1484 {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "EN", "main", "product2");
     }
 
-    @Test(dataProvider = "route")
+    @Test(dataProvider = "route", enabled = false)
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks the successful execution of an order with split billing, firm and physical person, " +
