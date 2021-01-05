@@ -869,4 +869,6 @@ public class Main_page {
     ElementsCollection genericsFromTips() {
         return $$x("//div[@class='autocomplete-suggestion']");
     }
+
+    ElementsCollection allChildCategories() {return $$x("//span[@class='word_break_all']");}
 }

@@ -511,8 +511,6 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
         return this;
     }
 
-
-
     @Step("get signal word from first dangerous product Listing View. Listing_chemicals_Page")
     public String getSignalWordFromFirstDangerousProductListingView(int positionOfProduct) {
         return signalWordOfDangerousProductListingView().get(positionOfProduct).getText();
@@ -529,6 +527,12 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
             Assert.assertEquals(nameCategory, titleName);
             i++;
         }
+        return this;
+    }
+
+    @Step("check main headline. Listing_chemicals_Page")
+    public Listing_chemicals_Page_Logic checkMainHeadline(String title) {
+        titleNameCategory().shouldBe(visible).shouldHave(exactText(title));
         return this;
     }
 
