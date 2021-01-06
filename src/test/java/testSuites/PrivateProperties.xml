@@ -8,21 +8,21 @@
 
     <test name="QC_2444_CheckingMarkingOfDangerousProductsAtFrontsInVariousFunctionalBlocks">
         <classes>
-            <class name="ATD.PrivateProperties.QC_2444_CheckingMarkingOfDangerousProductsAtFrontsInVariousFunctionalBlocks.QC_2445_CheckDisplayDangerousProductsBetweenAwsAndProductPage"/>
-            <class name="ATD.PrivateProperties.QC_2444_CheckingMarkingOfDangerousProductsAtFrontsInVariousFunctionalBlocks.QC_2446_CheckingDisplayedLinkOnDangerousGoodsSafetyDataSheet"/>
-            <class name="ATD.PrivateProperties.QC_2444_CheckingMarkingOfDangerousProductsAtFrontsInVariousFunctionalBlocks.QC_2448_CheckDisplayAndClickOnDangerousProductsBlockOnListings"/>
-            <class name="ATD.PrivateProperties.QC_2444_CheckingMarkingOfDangerousProductsAtFrontsInVariousFunctionalBlocks.QC_2450_CheckDisplayingAndClickByDangerousProductsBlock"/>
-            <class name="ATD.PrivateProperties.QC_2444_CheckingMarkingOfDangerousProductsAtFrontsInVariousFunctionalBlocks.QC_2535_CheckDisplayAndClickOnDangerousProductsMarkingBlockInListings"/>
-            <class name="ATD.PrivateProperties.QC_2444_CheckingMarkingOfDangerousProductsAtFrontsInVariousFunctionalBlocks.QC_2811_CompareOfIncompleteDangerousProductLabel"/>
-            <class name="ATD.PrivateProperties.QC_2444_CheckingMarkingOfDangerousProductsAtFrontsInVariousFunctionalBlocks.QC_2812_CompareOfIncompleteDangerousProductLabelWithOutPictogram"/>
-            <class name="ATD.PrivateProperties.QC_2444_CheckingMarkingOfDangerousProductsAtFrontsInVariousFunctionalBlocks.QC_2813_CompareOfIncompleteDangerousProductLabelWithOutPictogramAndLabels"/>
+            <class name="ATD.PrivateProperties.QC_2444_CheckingMarkingOfDangerousProductsAtFrontsInVariousFunctionalBlocks.QC_2445"/>
+            <class name="ATD.PrivateProperties.QC_2444_CheckingMarkingOfDangerousProductsAtFrontsInVariousFunctionalBlocks.QC_2446"/>
+            <class name="ATD.PrivateProperties.QC_2444_CheckingMarkingOfDangerousProductsAtFrontsInVariousFunctionalBlocks.QC_2448"/>
+            <class name="ATD.PrivateProperties.QC_2444_CheckingMarkingOfDangerousProductsAtFrontsInVariousFunctionalBlocks.QC_2450"/>
+            <class name="ATD.PrivateProperties.QC_2444_CheckingMarkingOfDangerousProductsAtFrontsInVariousFunctionalBlocks.QC_2535"/>
+            <class name="ATD.PrivateProperties.QC_2444_CheckingMarkingOfDangerousProductsAtFrontsInVariousFunctionalBlocks.QC_2811"/>
+            <class name="ATD.PrivateProperties.QC_2444_CheckingMarkingOfDangerousProductsAtFrontsInVariousFunctionalBlocks.QC_2812"/>
+            <class name="ATD.PrivateProperties.QC_2444_CheckingMarkingOfDangerousProductsAtFrontsInVariousFunctionalBlocks.QC_2813"/>
         </classes>
     </test>
 
     <test name="QC_1016_FunctionalityMyGarageInUsersPrivatRoom">
         <classes>
-            <class name="ATD.PrivateProperties.QC_1016_FunctionalityMyGarageInUsersPrivatRoom.QC_2314_AddRemoveVINNumberForVehiclePopupMyGarage"/>
-            <class name="ATD.PrivateProperties.QC_1016_FunctionalityMyGarageInUsersPrivatRoom.QC_2699_SavedVINNumberInTheOrder"/>
+            <class name="ATD.PrivateProperties.QC_1016_FunctionalityMyGarageInUsersPrivatRoom.QC_2314"/>
+            <class name="ATD.PrivateProperties.QC_1016_FunctionalityMyGarageInUsersPrivatRoom.QC_2699"/>
         </classes>
     </test>
 

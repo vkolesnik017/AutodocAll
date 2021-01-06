@@ -8,11 +8,11 @@
 
     <test name="QC_33_BrandPage">
         <classes>
-            <class name="ATD.Catalog_Brands.QC_33_BrandPage.QC_2628_ElementsOfBrandsBlockInMainPage"/>
-            <class name="ATD.Catalog_Brands.QC_33_BrandPage.QC_2629_TransitionToBrandPage"/>
-            <class name="ATD.Catalog_Brands.QC_33_BrandPage.QC_2630_MatchAllHeadlinesAndImages"/>
-            <class name="ATD.Catalog_Brands.QC_33_BrandPage.QC_2631_BrandsBlockAtBrandMainPage"/>
-            <class name="ATD.Catalog_Brands.QC_33_BrandPage.QC_3175_CheckPopularBrandBlock"/>
+            <class name="ATD.Catalog_Brands.QC_33_BrandPage.QC_2628"/>
+            <class name="ATD.Catalog_Brands.QC_33_BrandPage.QC_2629"/>
+            <class name="ATD.Catalog_Brands.QC_33_BrandPage.QC_2630"/>
+            <class name="ATD.Catalog_Brands.QC_33_BrandPage.QC_2631"/>
+            <class name="ATD.Catalog_Brands.QC_33_BrandPage.QC_3175"/>
         </classes>
     </test>
 

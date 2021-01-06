@@ -9,77 +9,77 @@
 
     <test name="QC_1608_StaticPage_FAQ" enabled="true">
         <classes>
-            <class name="PKW.StaticPage.QC_1608_StaticPage_FAQ">
+            <class name="PKW.StaticPage.QC_1608">
             </class>
         </classes>
     </test>
 
     <test name="QC_1609_StaticPage_Uber_uns" enabled="true">
         <classes>
-            <class name="PKW.StaticPage.QC_1609_StaticPage_Uber_uns">
+            <class name="PKW.StaticPage.QC_1609">
             </class>
         </classes>
     </test>
 
     <test name="QC_1092_StaticPage_Austauschartikel" enabled="true">
         <classes>
-            <class name="PKW.StaticPage.QC_1092_StaticPage_Austauschartikel">
+            <class name="PKW.StaticPage.QC_1092">
             </class>
         </classes>
     </test>
 
     <test name="QC_1531_Static_Page_Impressum" enabled="true">
         <classes>
-            <class name="PKW.StaticPage.QC_1531_Static_Page_Impressum">
+            <class name="PKW.StaticPage.QC_1531">
             </class>
         </classes>
     </test>
 
     <test name="QC_718_StaticPage_Widerruf" enabled="true">
         <classes>
-            <class name="PKW.StaticPage.QC_718_StaticPage_Widerruf">
+            <class name="PKW.StaticPage.QC_718">
             </class>
         </classes>
     </test>
 
     <test name="QC_221_StaticPage_Zahlung" enabled="true">
         <classes>
-            <class name="PKW.StaticPage.QC_221_StaticPage_Zahlung">
+            <class name="PKW.StaticPage.QC_221">
             </class>
         </classes>
     </test>
 
     <test name="QC_1176_StaticPage_Kontakt" enabled="true">
         <classes>
-            <class name="PKW.StaticPage.QC_1176_StaticPage_Kontakt">
+            <class name="PKW.StaticPage.QC_1176">
             </class>
         </classes>
     </test>
 
     <test name="QC_1466_StaticPage_AGB" enabled="true">
         <classes>
-            <class name="PKW.StaticPage.QC_1466_StaticPage_AGB">
+            <class name="PKW.StaticPage.QC_1466">
             </class>
         </classes>
     </test>
 
     <test name="QC_249_StaticPage_Versand" enabled="true">
         <classes>
-            <class name="PKW.StaticPage.QC_249_StaticPage_Versand">
+            <class name="PKW.StaticPage.QC_249">
             </class>
         </classes>
     </test>
 
     <test name="QC_2752_StaticPage_Versand_AllCountriesBlock" enabled="true">
         <classes>
-            <class name="PKW.StaticPage.QC_2752_StaticPage_Versand_AllCountriesBlock">
+            <class name="PKW.StaticPage.QC_2752">
             </class>
         </classes>
     </test>
 
     <test name="QC_2353_RequestFormForNewDeliveryCountry_Versand" enabled="true">
         <classes>
-            <class name="PKW.StaticPage.QC_2353_RequestFormForNewDeliveryCountry_Versand">
+            <class name="PKW.StaticPage.QC_2353">
             </class>
         </classes>
     </test>

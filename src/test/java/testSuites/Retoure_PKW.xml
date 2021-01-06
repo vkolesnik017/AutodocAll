@@ -9,7 +9,7 @@
 
     <test name="QC_793_CheckingLettersOfReturns_PKW">
         <classes>
-            <class name="PKW.Retoure.QC_793_CheckingLettersOfReturns_PKW.QC_798_LetterConfirmationOfReturnFromAws_PKW"/>
+            <class name="PKW.Retoure.QC_793_CheckingLettersOfReturns_PKW.QC_798"/>
         </classes>
     </test>
 

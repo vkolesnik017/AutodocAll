@@ -8,7 +8,7 @@
 
     <test name="QC_2683_BreadcrumbsBlock">
         <classes>
-            <class name="ATD.Breadcrumbs.QC_2683_BreadcrumbsBlock.QC_3217_StructureOfBreadcrumbsOnProductPage"/>
+            <class name="ATD.Breadcrumbs.QC_2683_BreadcrumbsBlock.QC_3217"/>
         </classes>
     </test>
 

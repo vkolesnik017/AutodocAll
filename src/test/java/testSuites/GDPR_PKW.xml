@@ -9,65 +9,62 @@
 
     <test name="QC_1230_GdprRegistrationOnMain">
         <classes>
-            <class name="PKW.GDRP.QC_1230_GdprRegistrationOnMain"/>
+            <class name="PKW.GDRP.QC_1230"/>
         </classes>
     </test>
 
-    <test name="QC_1863_GdprContacts">
+    <!--<test name="QC_1863_GdprContacts">
         <classes>
-<!--            <class name="PKW.GDRP.QC_1863_GdprContacts"/>-->
+            <class name="PKW.GDRP.QC_1863"/>
         </classes>
-    </test>
+    </test>-->
 
     <test name="QC_1895_GdprFooter">
         <classes>
-            <class name="PKW.GDRP.QC_1895_GdprFooter"/>
+            <class name="PKW.GDRP.QC_1895"/>
         </classes>
     </test>
 
     <test name="QC_1900_GdprReviewsOnProductPage">
         <classes>
-            <class name="PKW.GDRP.QC_1900_GdprReviewsOnProductPage"/>
+            <class name="PKW.GDRP.QC_1900"/>
         </classes>
     </test>
 
     <test name="QC_1907_GdprSoft404">
         <classes>
-            <class name="PKW.GDRP.QC_1907_GdprSoft404"/>
+            <class name="PKW.GDRP.QC_1907"/>
         </classes>
     </test>
 
     <test name="QC_1945_GdprReplyToReview">
         <classes>
-            <class name="PKW.GDRP.QC_1945_GdprReplyToReview"/>
+            <class name="PKW.GDRP.QC_1945"/>
         </classes>
     </test>
 
     <test name="QC_1906_GdprPageReviews">
         <classes>
-            <class name="PKW.GDRP.QC_1906_GdprPageReviews"/>
+            <class name="PKW.GDRP.QC_1906"/>
         </classes>
     </test>
 
     <test name="QC_1944_GdprPopupInSelectorOnShopEN">
         <classes>
-            <class name="PKW.GDRP.QC_1944_GdprPopupInSelectorOnShopEN"/>
+            <class name="PKW.GDRP.QC_1944"/>
         </classes>
     </test>
 
     <test name="QC_1905_GdprFaqOnProductPage">
         <classes>
-            <class name="PKW.GDRP.QC_1905_GdprFaqOnProductPage"/>
+            <class name="PKW.GDRP.QC_1905"/>
         </classes>
     </test>
 
     <test name="QC_1918_GdprDelivery">
         <classes>
-            <class name="PKW.GDRP.QC_1918_GdprDelivery"/>
+            <class name="PKW.GDRP.QC_1918"/>
         </classes>
     </test>
-
-
-
 
 </suite>
