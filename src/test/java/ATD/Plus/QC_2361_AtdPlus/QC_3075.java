@@ -18,11 +18,11 @@ import static Common.CommonMethods.roundOfTheCost;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_3074_CheckDiscount35PercentOnSOWithOptimumMVP2FromAWS {
+public class QC_3075 {
 
     private Float safeOrderPrice, addSafeOrderPrice, orderAwsSafeOrderPrice;
-    private String mail = "qc_3074_plusOptimalAutotest@mailinator.com";
-    private String idCustomer = "19753807";
+    private String mail = "qc_3075_plusProAutotest@mailinator.com";
+    private String idCustomer = "19771509";
 
 
     @BeforeClass
@@ -39,8 +39,8 @@ public class QC_3074_CheckDiscount35PercentOnSOWithOptimumMVP2FromAWS {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey_QA")
-    @Description(value = "Test Checking the 35% discount on SO for a user with the Optimal MVP2 package when ordering from the AWS")
-    public void testCheckDiscount35PercentOnSOWithOptimalMVP2FromAWS(String route) throws Exception {
+    @Description(value = "Test Checking the 50% discount on SO for a user with the Pro MVP2 package when ordering from the AWS")
+    public void testCheckDiscount50PercentOnSOWithProMVP2FromAWS(String route) throws Exception {
         openPage(route);
         safeOrderPrice = new Versand_static_page_Logic().getSafeOrderPriceWithAnyDiscountAndSubscription(mail);
         new SearchOrders_page_aws().openSearchOrderPageWithLogin()

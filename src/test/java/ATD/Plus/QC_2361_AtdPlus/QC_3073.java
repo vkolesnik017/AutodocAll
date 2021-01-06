@@ -18,7 +18,7 @@ import static Common.CommonMethods.roundOfTheCost;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_3073_CheckDiscount20PercentOnSOWithBasicMVP2FromAWS {
+public class QC_3073 {
 
     private Float safeOrderPrice, addSafeOrderPrice, orderAwsSafeOrderPrice;
     private String mail = "qc_3073_plusBasicAutotest@mailinator.com";
