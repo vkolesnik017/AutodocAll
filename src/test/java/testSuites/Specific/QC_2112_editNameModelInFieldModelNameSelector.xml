@@ -8,14 +8,14 @@
 
     <test name="QC_2112_editNameModelInFieldModelNameSelector_ATD">
         <classes>
-            <class name="ATD.SpecificTests.QC_2112_editNameModelInFieldModelNameSelector">
+            <class name="ATD.SpecificTests.QC_2112">
             </class>
         </classes>
     </test>
 
     <test name="QC_2112_editNameModelInFieldModelNameSelector_PKW">
         <classes>
-            <class name="PKW.SpecificTests.QC_2112_editNameModelInFieldModelNameSelector">
+            <class name="PKW.SpecificTests.QC_2112">
             </class>
         </classes>
     </test>

@@ -8,7 +8,7 @@
 
     <test name="QC_1766_AddingNewCar2020Selector">
         <classes>
-            <class name="specificTests.QC_1766_AddingNewCar2020Selector">
+            <class name="specificTests.QC_1766">
             </class>
         </classes>
     </test>
