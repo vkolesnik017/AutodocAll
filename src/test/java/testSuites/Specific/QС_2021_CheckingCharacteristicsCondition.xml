@@ -8,7 +8,7 @@
 
     <test name="QC_2021_CheckingCharacteristicsCondition">
         <classes>
-            <class name="specificTests.QC_2021_CheckingCharacteristicsCondition">
+            <class name="specificTests.QC_2021">
             </class>
         </classes>
     </test>

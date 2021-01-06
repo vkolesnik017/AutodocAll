@@ -8,7 +8,7 @@
 
     <test name="QC_2228_DisplayStatusNewForMapcoGoodsATD">
         <classes>
-            <class name="ATD.SpecificTests.QC_2228_DisplayStatusNewForMapcoGoodsATD">
+            <class name="ATD.SpecificTests.QC_2228">
             </class>
         </classes>
     </test>

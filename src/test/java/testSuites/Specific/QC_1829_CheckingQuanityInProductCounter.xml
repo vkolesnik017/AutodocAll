@@ -8,7 +8,7 @@
 
     <test name="QC_1829_CheckingQuanityInProductCounter">
         <classes>
-            <class name="ATD.SpecificTests.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1829_CheckingQuanityInProductCounter">
+            <class name="ATD.SpecificTests.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1829">
             </class>
         </classes>
     </test>

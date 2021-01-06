@@ -8,7 +8,7 @@
 
     <test name="QC_1563_CheckingSelector_Mark_Model_Type">
         <classes>
-            <class name="specificTests.QC_1563_CheckingSelector_Mark_Model_Type">
+            <class name="specificTests.QC_1563">
             </class>
         </classes>
     </test>
