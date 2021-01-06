@@ -49,24 +49,6 @@
         </classes>
     </test>
 
-    <test name="QC_1238_SizeRelinkBlockOnTyresListing">
-        <classes>
-            <class name="ATD.Tyres.QC_1238_SizeRelinkBlockOnTyresListing.QC_1239"/>
-            <!--<class name="ATD.Tyres.QC_1238_SizeRelinkBlockOnTyresListing.QC_1245"/>-->
-            <class name="ATD.Tyres.QC_1238_SizeRelinkBlockOnTyresListing.QC_1263"/>
-            <class name="ATD.Tyres.QC_1238_SizeRelinkBlockOnTyresListing.QC_1264"/>
-            <class name="ATD.Tyres.QC_1238_SizeRelinkBlockOnTyresListing.QC_1265"/>
-            <class name="ATD.Tyres.QC_1238_SizeRelinkBlockOnTyresListing.QC_1266"/>
-        </classes>
-    </test>
-
-    <test name="QC_1253_PaymentsAndDeliveryBlockOnTyresListing">
-        <classes>
-            <class name="ATD.Tyres.QC_1253_PaymentsAndDeliveryBlockOnTyresListing.QC_1271"/>
-            <class name="ATD.Tyres.QC_1253_PaymentsAndDeliveryBlockOnTyresListing.QC_1284"/>
-        </classes>
-    </test>
-
     <test name="QC_1272_TyresMainPage">
         <classes>
             <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_1273"/>
@@ -180,13 +162,6 @@
         </classes>
     </test>-->
 
-    <test name="QC_2063_MainIssueBlockOnTireListings">
-        <classes>
-            <class name="ATD.Tyres.QC_2063_MainIssueBlockOnTireListings.QC_2064"/>
-            <class name="ATD.Tyres.QC_2063_MainIssueBlockOnTireListings.QC_2065"/>
-        </classes>
-    </test>
-
 
         <!--<test name="QC_2066_CheckProductsOutOfStock">
             <classes>
@@ -203,15 +178,6 @@
             <class name="ATD.Tyres.QC_2226_CheckingPeriodReturnTiresBlock.QC_2227"/>
             <class name="ATD.Tyres.QC_2226_CheckingPeriodReturnTiresBlock.QC_2230"/>
             <class name="ATD.Tyres.QC_2226_CheckingPeriodReturnTiresBlock.QC_2231"/>
-        </classes>
-    </test>
-
-    <test name="QC_2187_CheckingMaxSizeProductsOnListing">
-        <classes>
-            <class name="ATD.Tyres.QC_2187_CheckingMaxSizeProductsOnListing.QC_2188"/>
-            <class name="ATD.Tyres.QC_2187_CheckingMaxSizeProductsOnListing.QC_2189"/>
-            <class name="ATD.Tyres.QC_2187_CheckingMaxSizeProductsOnListing.QC_2526"/>
-            <class name="ATD.Tyres.QC_2187_CheckingMaxSizeProductsOnListing.QC_2530"/>
         </classes>
     </test>
 

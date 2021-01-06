@@ -40,7 +40,7 @@ public class QC_1389 {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "PL", "main", "product2");
     }
 
-    @Test(dataProvider = "routePL")
+    @Test(dataProvider = "routePL", enabled = false)
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks the successful placement of the order indicating the company for the PL shop. " +
@@ -93,7 +93,7 @@ public class QC_1389 {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product2");
     }
 
-    @Test(dataProvider = "routeDE")
+    @Test(dataProvider = "routeDE", enabled = false)
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks the successful placement of the order indicating the company for the DE shop. " +
@@ -146,7 +146,7 @@ public class QC_1389 {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "ES", "main", "product2");
     }
 
-    @Test(dataProvider = "routeES")
+    @Test(dataProvider = "routeES", enabled = false)
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks the successful placement of the order indicating the company and " +

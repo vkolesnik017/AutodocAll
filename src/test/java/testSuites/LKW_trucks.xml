@@ -13,17 +13,6 @@
         </classes>
     </test>
 
-    <test name="QC_200_Separation_of_session_of_truck_selector_from_car_and_moto">
-        <classes>
-            <class name="ATD.LKW_trucks.QC_200_Separation_of_selector_session_of_LKW_from_PKW_and_Moto.QC_201"/>
-            <class name="ATD.LKW_trucks.QC_200_Separation_of_selector_session_of_LKW_from_PKW_and_Moto.QC_202"/>
-            <class name="ATD.LKW_trucks.QC_200_Separation_of_selector_session_of_LKW_from_PKW_and_Moto.QC_203"/>
-            <class name="ATD.LKW_trucks.QC_200_Separation_of_selector_session_of_LKW_from_PKW_and_Moto.QC_204"/>
-            <class name="ATD.LKW_trucks.QC_200_Separation_of_selector_session_of_LKW_from_PKW_and_Moto.QC_205"/>
-            <class name="ATD.LKW_trucks.QC_200_Separation_of_selector_session_of_LKW_from_PKW_and_Moto.QC_206"/>
-        </classes>
-    </test>
-
     <test name="QC_123_Trucks_Catalog_of_brands_page">
         <classes>
             <class name="ATD.LKW_trucks.QC_123"/>
@@ -73,15 +62,6 @@
             <class name="ATD.LKW_trucks.QC_94_TecDoc_Listing.QC_102"/>
             <class name="ATD.LKW_trucks.QC_94_TecDoc_Listing.QC_103"/>
             <class name="ATD.LKW_trucks.QC_94_TecDoc_Listing.QC_104"/>
-        </classes>
-    </test>
-
-    <test name="QC_87_SelectorInProductPage">
-        <classes>
-            <class name="ATD.LKW_trucks.QC_87_SelectorInProductPage.QC_88"/>
-            <class name="ATD.LKW_trucks.QC_87_SelectorInProductPage.QC_89"/>
-            <class name="ATD.LKW_trucks.QC_87_SelectorInProductPage.QC_90"/>
-            <class name="ATD.LKW_trucks.QC_87_SelectorInProductPage.QC_91"/>
         </classes>
     </test>
 
@@ -145,18 +125,6 @@
             <class name="ATD.LKW_trucks.QC_73_TopProductsBlock.QC_79"/>
             <class name="ATD.LKW_trucks.QC_73_TopProductsBlock.QC_80"/>
             <class name="ATD.LKW_trucks.QC_73_TopProductsBlock.QC_81"/>
-        </classes>
-    </test>
-
-    <test name="QC_82_AvailabilityOfTruckSelector">
-        <classes>
-            <class name="ATD.LKW_trucks.QC_82_TruckSelectorBlock.QC_83"/>
-            <class name="ATD.LKW_trucks.QC_82_TruckSelectorBlock.QC_84"/>
-            <class name="ATD.LKW_trucks.QC_82_TruckSelectorBlock.QC_85"/>
-            <class name="ATD.LKW_trucks.QC_82_TruckSelectorBlock.QC_86"/>
-            <class name="ATD.LKW_trucks.QC_82_TruckSelectorBlock.QC_92"/>
-            <class name="ATD.LKW_trucks.QC_82_TruckSelectorBlock.QC_93"/>
-            <class name="ATD.LKW_trucks.QC_82_TruckSelectorBlock.QC_157"/>
         </classes>
     </test>
 

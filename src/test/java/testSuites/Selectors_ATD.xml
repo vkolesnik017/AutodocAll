@@ -72,4 +72,26 @@
         </classes>
     </test>
 
+    <test name="QC_87_Trucks">
+        <classes>
+            <class name="ATD.Selectors.QC_87_Trucks.QC_88"/>
+            <class name="ATD.Selectors.QC_87_Trucks.QC_89"/>
+            <class name="ATD.Selectors.QC_87_Trucks.QC_90"/>
+            <class name="ATD.Selectors.QC_87_Trucks.QC_91"/>
+            <class name="ATD.Selectors.QC_87_Trucks.QC_83"/>
+            <class name="ATD.Selectors.QC_87_Trucks.QC_84"/>
+            <class name="ATD.Selectors.QC_87_Trucks.QC_85"/>
+            <class name="ATD.Selectors.QC_87_Trucks.QC_86"/>
+            <class name="ATD.Selectors.QC_87_Trucks.QC_92"/>
+            <class name="ATD.Selectors.QC_87_Trucks.QC_93"/>
+            <class name="ATD.Selectors.QC_87_Trucks.QC_157"/>
+            <class name="ATD.Selectors.QC_87_Trucks.QC_201"/>
+            <class name="ATD.Selectors.QC_87_Trucks.QC_202"/>
+            <class name="ATD.Selectors.QC_87_Trucks.QC_203"/>
+            <class name="ATD.Selectors.QC_87_Trucks.QC_204"/>
+            <class name="ATD.Selectors.QC_87_Trucks.QC_205"/>
+            <class name="ATD.Selectors.QC_87_Trucks.QC_206"/>
+        </classes>
+    </test>
+
 </suite>
