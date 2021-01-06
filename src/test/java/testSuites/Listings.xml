@@ -24,7 +24,7 @@
             <class name="ATD.Listings.QC_433_ListingSearch.QC_2950"/>
             <class name="ATD.Listings.QC_433_ListingSearch.QC_3015"/>
             <class name="ATD.Listings.QC_433_ListingSearch.QC_3016"/>
-            <class name="ATD.Listings.QC_433_ListingSearch.QC_3004"/>
+<!--            <class name="ATD.Listings.QC_433_ListingSearch.QC_3004"/>-->
         </classes>
     </test>
 
@@ -78,7 +78,7 @@
             <class name="ATD.Listings.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1314"/>
             <class name="ATD.Listings.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1315"/>
             <class name="ATD.Listings.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1316"/>
-            <class name="ATD.Listings.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1318"/>
+<!--            <class name="ATD.Listings.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1318"/>-->
         </classes>
     </test>
 
