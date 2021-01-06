@@ -9,7 +9,7 @@
     <test name="QC_2361_AtdPlus">
         <classes>
             <class name="ATD.Plus.QC_2361_AtdPlus.QC_1836"/>
-            <class name="ATD.Plus.QC_2361_AtdPlus.QC_2612"/>
+          <!--  <class name="ATD.Plus.QC_2361_AtdPlus.QC_2612"/>-->
             <class name="ATD.Plus.QC_2361_AtdPlus.QC_2724"/>
             <class name="ATD.Plus.QC_2361_AtdPlus.QC_2725"/>
             <class name="ATD.Plus.QC_2361_AtdPlus.QC_2910"/>

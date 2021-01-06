@@ -1,6 +1,7 @@
 package ATD.LKW_trucks.QC_49_Bread_crumbs;
 
 import ATD.LKW_Product_page_Logic;
+import Common.DataBase;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -12,6 +13,7 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
+import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
@@ -31,12 +33,12 @@ public class QC_68 {
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test checks bread crumbs block in Product page route with active product")
-    public void testChecksBreadCrumbsInProductPageActive(String route) {
+    public void testChecksBreadCrumbsInProductPageActive(String route) throws SQLException {
         openPage(route);
 
         new LKW_Product_page_Logic().checkLinksInBreadCrumbsBlock()
-                .checkLinksInBreadCrumbsWithTruck()
-                .checkSuccessfullyLKWCategoryCarListPageLoading("https://lkwteile.autodoc.de/ersatzteile/innenraumluftfilter-200166/daf/95-xf?car_id=1003688");
+                .checkLinksInBreadCrumbsWithTruck();
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "lkw_category_car_list48"));
     }
 
     @DataProvider(name = "routesNotActive", parallel = true)
