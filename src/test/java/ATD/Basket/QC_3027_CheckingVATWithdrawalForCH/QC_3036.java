@@ -1,9 +1,7 @@
 package ATD.Basket.QC_3027_CheckingVATWithdrawalForCH;
 
 import ATD.*;
-import AWS.Order_aws;
-import AWS.PageVAT_aws;
-import AWS.ProfilerPage_aws;
+import AWS.*;
 import Common.DataBase;
 import Common.SetUp;
 import io.qameta.allure.Description;
@@ -15,6 +13,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.*;
+import static AWS.CurrencyRatesPage_aws.currencyRatesPageURL;
+import static AWS.Delivery_prices_aws.delivery_prices_aws;
 import static AWS.ProfilerPage_aws.profilerPage_aws;
 import static Common.CommonMethods.convertStringToFloat;
 import static Common.File.assertThatPdfContainsText;
@@ -25,6 +25,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 public class QC_3036 {
 
     private String mail = "QC_3036_autotest@mailinator.com";
+    private String mailDE = "QC_3036_autotestDE@mailinator.com";
     private Product_page_Logic product_page_logic = new Product_page_Logic();
     private CartAllData_page_Logic cartAllData_page_logic = new CartAllData_page_Logic();
     private Cart_page_Logic cart_page_logic = new Cart_page_Logic();
@@ -121,6 +122,56 @@ public class QC_3036 {
         openPage(profilerPage_aws);
         new ProfilerPage_aws().fillingFieldsOrderIdAndArticleId(orderNumber, artID)
                 .checkVatInTazFormula(new ProfilerPage_aws().taxFormulaForIlliquidProduct(), "1.077");
+    }
+
+
+    @Test
+    @Flaky
+    @Owner(value = "Chelombitko")
+    @Description(value = "Test checks VAT percentage for CH for delivery in DE with index 78266")
+    public void testCheckVATPercentageForCH_ForDeliveryInShopDE() throws SQLException, IOException {
+        String vatForCH = new PageVAT_aws().getVatForCH();
+        openPage(delivery_prices_aws);
+        float deliveryCost = new Delivery_prices_aws().getDeliveryPriceForIslandOrRegion("Büsingen am Hochrhein");
+        openPage(currencyRatesPageURL);
+        float actualDeliveryCost = new CurrencyRatesPage_aws().exchangeAmountAtDesiredRate(deliveryCost, "CHF");
+        openPage(dB.getFullRouteByRouteAndSubroute("prod", "CH", "main", "product54"));
+        String artIdOFNotLiquid = product_page_logic.addProductToCart()
+                .closePopupOtherCategoryIfYes()
+                .getArticleNumber();
+
+        openPage(dB.getFullRouteByRouteAndSubroute("prod", "CH", "main", "product55"));
+        String idOfCollateral = product_page_logic.addProductToCart()
+                .closePopupOtherCategoryIfYes()
+                .getProductId();
+
+        openPage(dB.getFullRouteByRouteAndSubroute("prod", "CH", "main", "product56"));
+        product_page_logic.addProductToCart()
+                .closePopupOtherCategoryIfYes();
+
+        String deposit = product_page_logic.cartClick()
+                .nextButtonClick()
+                .signIn(mailDE, password)
+                .fillingPostalCodeFieldJSForShipping("78266")
+                .chooseDeliveryCountryForShipping("DE")
+                .fillFieldTelNumForShipping("200+002")
+                .nextBtnClick()
+                .clickBtnReturnTheCartPage()
+                .getDepositPriceInProductBlock(idOfCollateral);
+        cart_page_logic.checkPresenceDepositInSummeryBlock(deposit)
+                .checkTextContainingVatPercentage(vatForCH)
+                .clickBtnNextAndTransitionOnAddressPage()
+                .nextBtnClick()
+                .clickOnTheDesiredPaymentMethod("CH", "Bank")
+                .nextBtnClick()
+                .checkPresencePopUpCountryDeliveryLimit()
+                .closePopUpDeliveryLimitCartAllDataPage()
+                .checkPresenceDepositInProductBlock(idOfCollateral)
+                .checkTextContainingVatPercentage(vatForCH)
+                .checkRegularDeliveryPrice(actualDeliveryCost);
+
+
+
     }
 
 
