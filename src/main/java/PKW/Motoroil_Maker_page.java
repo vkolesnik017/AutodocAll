@@ -53,6 +53,6 @@ public class Motoroil_Maker_page {
         return $x("//a[@class='show_cart ga-click']");
     }
 
-    ElementsCollection visibleEngineOilViscosity() {return $$x("//div[@class='listing-viscosity-filters']/div[2]/a").filter(visible);}
+    ElementsCollection visibleEngineOilViscosity() {return $$x("//div[@class='listing-viscosity-filters']/div[2]/span").filter(visible);}
 
 }
