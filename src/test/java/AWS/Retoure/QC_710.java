@@ -6,9 +6,7 @@ import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
 import org.testng.annotations.*;
-
 import java.sql.SQLException;
-
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -23,8 +21,12 @@ public class QC_710 {
   @BeforeClass
   void setUp() {
     setUpBrowser(false, "chrome", "77.0", false);
+  }
+
+  @BeforeMethod
+  void  setStatusVersendetToOrder() {
     orderAws.openOrderInAwsWithLogin()
-            .setStatusOrderToVersendetVorkasse();
+            .setStatusOrderToVersendetVorkasse(); sleep(2000);
   }
 
   @DataProvider(name = "languages")
@@ -56,6 +58,7 @@ public class QC_710 {
 
   @AfterClass
   public void setStatusTestToOrder() {
-    orderAws.setStatusOrderToTestbestellungen();
+    orderAws.openOrderInAwsWithLogin()
+            .setStatusOrderToTestbestellungen();
   }
 }
