@@ -1374,9 +1374,9 @@ public class Product_page_Logic extends Product_page {
     @Step("check number in the quantity block and block with quantity of product on product page. Product_page")
     public Product_page_Logic checkQuantityBlockVisibilityOnProductPage() {
         countInputOnProduct().shouldBe(visible);
-        if(countInputOnProduct().has(attribute("value","1"))){
+        if (countInputOnProduct().has(attribute("value", "1"))) {
             textAboutCountOnProduct().shouldBe(visible);
-        }else {
+        } else {
             textAboutCountOnProduct().shouldNotBe(visible);
         }
         return this;
@@ -1385,6 +1385,67 @@ public class Product_page_Logic extends Product_page {
     @Step("presence of Phrase about compatibility product and vehicle .Product_page")
     public Product_page_Logic presenceOfPhraseAboutCompatibilityProductAndVehicle() {
         phraseAboutCompatibilityProductAndVehicle().shouldBe(visible);
+        return this;
+    }
+
+    @Step("presence of gluing block .Product_page")
+    public Product_page_Logic presenceOfGluingBlock() {
+        gluingBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("get Current Volume .Product_page")
+    public String getCurrentVolume() {
+        return currentVolume().getText();
+    }
+
+    @Step("select Volume .Product_page")
+    public Product_page_Logic selectVolume(int position) {
+        allowableVolumes().get(position).click();
+        return this;
+    }
+
+    @Step("check Allowable Volume .Product_page")
+    public Product_page_Logic checkAllowableVolume(int position, String volume) {
+        allowableVolumes().get(position).shouldHave(exactText(volume));
+        return this;
+    }
+
+    @Step("presence Of Recommended Change Liter Icon .Product_page")
+    public Product_page_Logic presenceOfRecommendedChangeLiterIcon(String expectedText) {
+        recommendedChangeLiterIcon().shouldBe(visible).shouldHave(text(expectedText));
+        return this;
+    }
+
+    @Step("get Id Of Gluing Product .Product_page")
+    public String getIdOfGluingProduct(int position) {
+        return gluingProducts().get(position).attr("id");
+    }
+
+    @Step("click On Btn Add Gluing Product To Basket.Product_page")
+    public Product_page_Logic clickOnBtnAddGluingProductToBasket(int position) {
+        btnAddGluingProductToBasket().get(position).click();
+        return this;
+    }
+
+    @Step("display Basket Drop Menu. Product_page")
+    public Product_page_Logic displayBasketDropMenu() {
+        basketDropMenu().should(appear);
+        basketDropMenu().should(disappear);
+        return this;
+    }
+
+    @Step("click on basket in header. Product_page")
+    public Cart_page_Logic clickOnBasketInHeader() {
+        basket().click();
+        return page(Cart_page_Logic.class);
+    }
+
+    @Step("close basket pop-up.Product_page")
+    public Product_page_Logic closeBasketPopUp() {
+       if (btnCloseBasketPopUp().isDisplayed()){
+           btnCloseBasketPopUp().click();
+       }
         return this;
     }
 }

@@ -17,6 +17,8 @@
             <class name="ATD.Search.QC_536_SearchBasicFunctionality.QC_554"/>
             <class name="ATD.Search.QC_536_SearchBasicFunctionality.QC_2668"/>
             <class name="ATD.Search.QC_536_SearchBasicFunctionality.QC_2669"/>
+            <class name="ATD.Search.QC_536_SearchBasicFunctionality.QC_3203"/>
+            <class name="ATD.Search.QC_536_SearchBasicFunctionality.QC_3204"/>
         </classes>
     </test>
 
