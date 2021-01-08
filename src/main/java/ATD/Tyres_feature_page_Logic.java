@@ -394,7 +394,7 @@ public class Tyres_feature_page_Logic extends Tyres_feature_page {
     public Tyres_feature_page_Logic checkTopBlock(SelenideElement seasonTab, ElementsCollection topItemCollection) {
         topBlock().scrollIntoView("{block: \"center\"}").shouldBe(visible);
             seasonTab.click();
-            topItemCollection.shouldBe(sizeLessThanOrEqual(12));
+            topItemCollection.shouldBe(sizeLessThanOrEqual(6));
         return this;
     }
 

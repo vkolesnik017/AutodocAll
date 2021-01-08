@@ -121,20 +121,30 @@ public class QC_3036 {
 
         openPage(profilerPage_aws);
         new ProfilerPage_aws().fillingFieldsOrderIdAndArticleId(orderNumber, artID)
-                .checkVatInTazFormula(new ProfilerPage_aws().taxFormulaForIlliquidProduct(), "1.077");
+                .checkVatInTazFormula(new ProfilerPage_aws().taxFormula(), "1.077");
     }
 
 
-    @Test
+    @DataProvider(name = "deliveryShop", parallel = false)
+    Object[] blockingWords() {
+        return new Object[][]{
+                {"DE"},
+                {"LI"}
+        };
+    }
+
+    @Test(dataProvider = "deliveryShop")
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks VAT percentage for CH for delivery in DE with index 78266")
-    public void testCheckVATPercentageForCH_ForDeliveryInShopDE() throws SQLException, IOException {
+    public void testCheckVATPercentageForCH_ForDeliveryInShopDE(String deliveryShop) throws SQLException, IOException {
         String vatForCH = new PageVAT_aws().getVatForCH();
         openPage(delivery_prices_aws);
-        float deliveryCost = new Delivery_prices_aws().getDeliveryPriceForIslandOrRegion("Büsingen am Hochrhein");
+        float deliveryCostForRegion = new Delivery_prices_aws().getDeliveryPriceForIslandOrRegion("Büsingen am Hochrhein");
+        float deliveryCostForCountry = new Delivery_prices_aws().getDeliveryPriceForCountry("Liechtenstein");
         openPage(currencyRatesPageURL);
-        float actualDeliveryCost = new CurrencyRatesPage_aws().exchangeAmountAtDesiredRate(deliveryCost, "CHF");
+        float actualDeliveryCostForRegion = new CurrencyRatesPage_aws().exchangeAmountAtDesiredRate(deliveryCostForRegion, "CHF");
+        float actualDeliveryCostForCountry = new CurrencyRatesPage_aws().exchangeAmountAtDesiredRate(deliveryCostForCountry, "CHF");
         openPage(dB.getFullRouteByRouteAndSubroute("prod", "CH", "main", "product54"));
         String artIdOFNotLiquid = product_page_logic.addProductToCart()
                 .closePopupOtherCategoryIfYes()
@@ -153,27 +163,60 @@ public class QC_3036 {
                 .nextButtonClick()
                 .signIn(mailDE, password)
                 .fillingPostalCodeFieldJSForShipping("78266")
-                .chooseDeliveryCountryForShipping("DE")
+                .chooseDeliveryCountryForShipping(deliveryShop)
                 .fillFieldTelNumForShipping("200+002")
                 .nextBtnClick()
                 .clickBtnReturnTheCartPage()
+                .checkPresencePopUpDeliveryLimit()
+                .closePopUpDeliveryLimitCartPage()
                 .getDepositPriceInProductBlock(idOfCollateral);
-        cart_page_logic.checkPresenceDepositInSummeryBlock(deposit)
+        String orderNumber = cart_page_logic.checkPresenceDepositInSummeryBlock(deposit)
                 .checkTextContainingVatPercentage(vatForCH)
                 .clickBtnNextAndTransitionOnAddressPage()
                 .nextBtnClick()
                 .clickOnTheDesiredPaymentMethod("CH", "Bank")
                 .nextBtnClick()
-                .checkPresencePopUpCountryDeliveryLimit()
-                .closePopUpDeliveryLimitCartAllDataPage()
                 .checkPresenceDepositInProductBlock(idOfCollateral)
                 .checkTextContainingVatPercentage(vatForCH)
-                .checkRegularDeliveryPrice(actualDeliveryCost);
+                .checkDeliveryCostForCountryOrRegion(actualDeliveryCostForRegion, actualDeliveryCostForCountry, deliveryShop)
+                .checkAbsenceHeavyLoadsDeliveryPrice()
+                .nextBtnClick()
+                .getOrderNumber();
 
+        Order_aws order_aws = new Order_aws(orderNumber);
+        String artID = order_aws.openOrderInAwsWithoutLogin()
+                .checkVatStatusInOrder("Mit MwSt " + vatForCH + "%")
+                .checkDeliveryCostForCountryOrRegion(actualDeliveryCostForRegion, actualDeliveryCostForCountry, deliveryShop)
+                .checkHeavyLoadsDeliveryPriceOrderAWS("0")
+                .checkOrderHasExpectedPfandPrice(convertStringToFloat(deposit))
+                .checkTextInLabelDanger(artIdOFNotLiquid, "Неликвид")
+                .getArticleId();
 
+        order_aws.reSaveOrder()
 
+                .checkVatStatusInOrder("Mit MwSt " + vatForCH + "%")
+                .checkDeliveryCostForCountryOrRegion(actualDeliveryCostForRegion, actualDeliveryCostForCountry, deliveryShop)
+                .checkHeavyLoadsDeliveryPriceOrderAWS("0")
+                .checkOrderHasExpectedPfandPrice(convertStringToFloat(deposit))
+                .checkTextInLabelDanger(artIdOFNotLiquid, "Неликвид")
+
+                .openPopUpAccountsAndCheckVat(vatForCH)
+                .closePopupAccounts()
+                .clickReturnButton()
+                .chooseReturnType("Возврат")
+                .clickCheckBoxProductInPopupReturn()
+                .clickCheckBoxDeliveryInPopupReturn()
+                .clickPrintButtonInPopupReturn();
+        assertThatPdfContainsText("C:/Users/User/Downloads/_" + orderNumber + ".pdf", "MwSt. " + vatForCH + " %");
+        order_aws.clickBtnClosePopUpReturn()
+                .clickBtnDeclaration()
+                .checkModalWindowDeclarationAndClickPrintBtn();
+        assertThatPdfContainsText("C:/Users/User/Downloads/doc.pdf", "MWST. " + vatForCH + " %");
+
+        openPage(profilerPage_aws);
+        new ProfilerPage_aws().fillingFieldsOrderIdAndArticleId(orderNumber, artID)
+                .checkVatInTazFormula(new ProfilerPage_aws().taxFormula(), "1.077");
     }
-
 
     @AfterMethod
     private void close() {
