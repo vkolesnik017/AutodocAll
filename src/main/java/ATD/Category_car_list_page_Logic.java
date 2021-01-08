@@ -512,4 +512,22 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
         imageOfProductTecDocListingBlock(point).scrollIntoView("{block: \"center\"}").click();
         return page(Product_page_Logic.class);
     }
+
+    @Step("display of brands block. Category_car_list_page")
+    public Category_car_list_page_Logic displayOfBrandsBlock() {
+        brandsFilterBlock().shouldBe(visible);
+        return this;
+    }
+
+    @Step("check position of brand in block. Category_car_list_page")
+    public Category_car_list_page_Logic checkPositionOfBrandInBlockById(int position, String idOfBrand) {
+            activeVisibleBrands().get(position).shouldHave(attribute("value", idOfBrand));
+        return this;
+    }
+
+    @Step("get Product Brands From List. Category_car_list_page")
+    public List<String> getProductBrandsFromList() {
+       List<String> productBrands = activeBtnAddProductToBasket().stream().map(n->n.attr("data-brand-name")).collect(Collectors.toList());
+        return productBrands;
+    }
 }

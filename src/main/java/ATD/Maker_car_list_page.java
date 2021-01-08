@@ -132,4 +132,6 @@ public class Maker_car_list_page {
     }
 
     ElementsCollection imagesOfTopProducts() {return $$x("//div[@class='small-prod-image']/a");}
+
+    ElementsCollection genericOfTopProducts() {return $$x("//div[@class='small-prod-title']/span");}
 }
