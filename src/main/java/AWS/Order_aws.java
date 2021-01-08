@@ -1192,6 +1192,17 @@ public class Order_aws {
         return this;
     }
 
+    @Step("Checks delivery costs for a costForCountry {deliveryCostForCountry} or costForRegion {deliveryCostForRegion}. Order_aws")
+    public Order_aws checkDeliveryCostForCountryOrRegion(float deliveryCostForRegion, float deliveryCostForCountry, String shop) {
+        if (shop.equals("DE")) {
+            compereDeliveryCostInOrderWithCostOnSite(deliveryCostForRegion);
+        }
+        if (shop.equals("LI")) {
+            compereDeliveryCostInOrderWithCostOnSite(deliveryCostForCountry);
+        }
+        return this;
+    }
+
     @Step("Get safe order price. Order_aws")
     public Float getSafeOrderPrice() {
         return Float.valueOf(safeOrderPrice().getValue());

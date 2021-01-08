@@ -30,7 +30,7 @@ public class QC_665 {
         return new SetUp("ATD").setUpShop("prod", "DE");
     }
 
-    @Test(dataProvider = "route", enabled = false)
+    @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks login with new email")

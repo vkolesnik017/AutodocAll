@@ -2,7 +2,6 @@ package PKW;
 
 import Common.DataBase;
 import com.codeborne.selenide.ElementsCollection;
-import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
 import java.sql.SQLException;
@@ -197,8 +196,8 @@ public class Motoroil_Maker_page_Logic extends Motoroil_Maker_page {
 
     @Step("display of Engine Oil Viscosity. Motoroil_Maker_page")
     public Motoroil_Maker_page_Logic displayEngineOilViscosity() {
-        for (SelenideElement e : visibleEngineOilViscosity()) {
-            e.shouldBe(visible);
+        for (int i = 0; i < visibleEngineOilViscosity().size(); i++) {
+            visibleEngineOilViscosity().get(i).shouldBe(visible);
         }
         return this;
     }

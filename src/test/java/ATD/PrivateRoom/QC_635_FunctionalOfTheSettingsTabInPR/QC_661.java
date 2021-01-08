@@ -16,7 +16,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_661 {
 
-    private String mail = "QC_661_autotest@mailinator.com";
+    private String mail = "QC_661_Autotest@mailinator.com";
 
     @BeforeClass
     void setUp() {
