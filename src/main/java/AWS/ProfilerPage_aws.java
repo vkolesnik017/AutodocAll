@@ -22,8 +22,12 @@ public class ProfilerPage_aws {
         return $x("//button[@class='btn btn-primary']");
     }
 
-    private SelenideElement taxFormula() {
+    public SelenideElement taxFormula() {
         return $x("(//table[@class='table table-condensed table-bordered']/tbody)[2]//tr[4]//td[2]");
+    }
+
+    public SelenideElement taxFormulaForIlliquidProduct() {
+        return $x("(//table[@class='table table-condensed table-bordered']/tbody)[2]//tr[3]//td[2]");
     }
 
     private SelenideElement standardMultiplier() {
@@ -44,9 +48,9 @@ public class ProfilerPage_aws {
     }
 
     @Step("Checks VAT {expectedVAT} in tax formula")
-    public ProfilerPage_aws checkVatInTazFormula(String expectedVAT) {
-        taxFormula().shouldBe(visible);
-        taxFormula().shouldHave(text(expectedVAT));
+    public ProfilerPage_aws checkVatInTazFormula(SelenideElement element, String expectedVAT) {
+        element.shouldBe(visible);
+        element.shouldHave(text(expectedVAT));
         return this;
     }
 
@@ -64,7 +68,5 @@ public class ProfilerPage_aws {
         totalPrice().shouldHave(exactText(price));
         return this;
     }
-
-
 }
 

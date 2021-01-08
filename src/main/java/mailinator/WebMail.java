@@ -207,7 +207,8 @@ public class WebMail {
     @Step("Compares the text of the requisites in the email with expected requisites. WebMail")
     public WebMail comparesTextOfRequisitesInMailWithExpectedRequisites(String expectedRequisites) {
         String requisitesInMail = blockOfRequisites().getText().replaceAll(" ", "").replaceAll("\n", "").toLowerCase();
-        String requisitesInSuccessPage = expectedRequisites.replaceAll(" ", "").replaceAll("\n", "").toLowerCase();
+        String requisitesInSuccessPage = expectedRequisites.replaceAll(",", ".").replaceAll(" €", "")
+                .replaceAll(" ", "").replaceAll("\n", "").toLowerCase();
         Assert.assertEquals(requisitesInMail, requisitesInSuccessPage);
         return this;
     }
@@ -298,7 +299,7 @@ public class WebMail {
 
     @Step("Checks regular delivery price. WebMail")
     public WebMail checkRegularDeliveryPriceInEmail(String regularDeliveryPrice) {
-        regularDeliveryPriceInEmail().shouldHave(text(regularDeliveryPrice));
+        regularDeliveryPriceInEmail().shouldHave(text(regularDeliveryPrice.replaceAll(",",".")));
         return this;
     }
 

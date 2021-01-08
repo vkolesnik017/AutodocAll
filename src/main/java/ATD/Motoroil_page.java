@@ -160,4 +160,27 @@ public class Motoroil_page {
         return $x("//*[@class='product-list__item__image'][1]//a");
     }
 
+    SelenideElement buyButtonInTopBlock() {
+        return $x("//*[@class='price_box product-list__item__button']//a");
+    }
+
+    SelenideElement cartBlock() {
+        return $x("//*[@class='price_box product-list__item__button']//a");
+    }
+
+    SelenideElement articleNumberInTopBlock() {
+        return $x("//*[@class='product-list__item__nummer']");
+    }
+
+    SelenideElement articleNumberInCartBlock() {
+        return $x("//*[@class='row-text']//span");
+    }
+
+    SelenideElement brandBlock() {
+        return $x("//*[@class='oil-brands']");
+    }
+
+    SelenideElement itemInBrandBlock() {
+        return $x("//*[@class='oil-brands__list__item'][1]//*[@class='oil-brands__list__link']");
+    }
 }

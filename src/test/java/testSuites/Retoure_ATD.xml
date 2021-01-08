@@ -8,36 +8,36 @@
 
     <test name="QC_594_CheckingTranslationOfCausesForReturn">
         <classes>
-            <class name="ATD.Retoure.QC_594_CheckingTranslationOfCausesForReturn.QC_595_TranslationOfCausesInProfile"/>
-            <class name="ATD.Retoure.QC_594_CheckingTranslationOfCausesForReturn.QC_596_TranslationOfCausesOnRetourePage"/>
+            <class name="ATD.Retoure.QC_594_CheckingTranslationOfCausesForReturn.QC_595"/>
+            <class name="ATD.Retoure.QC_594_CheckingTranslationOfCausesForReturn.QC_596"/>
         </classes>
     </test>
 
     <test name="QC_714_CheckingLettersOfReturns">
         <classes>
-            <class name="ATD.Retoure.QC_714_CheckingLettersOfReturns.QC_715_LetterConfirmationOfReturnFromRetourePage"/>
-            <class name="ATD.Retoure.QC_714_CheckingLettersOfReturns.QC_716_LetterConfirmationOfReturnFromProfile"/>
-            <class name="ATD.Retoure.QC_714_CheckingLettersOfReturns.QC_784_LetterConfirmationOfReturnFromAws"/>
+            <class name="ATD.Retoure.QC_714_CheckingLettersOfReturns.QC_715"/>
+            <class name="ATD.Retoure.QC_714_CheckingLettersOfReturns.QC_716"/>
+            <class name="ATD.Retoure.QC_714_CheckingLettersOfReturns.QC_784"/>
         </classes>
     </test>
 
     <test name="QC_884_CheckingPopupErrorsForReturns">
         <classes>
-            <class name="ATD.Retoure.QC_884_CheckingPopupErrorsForReturns.QC_888_PopupErrorsInRetourePage"/>
-            <class name="ATD.Retoure.QC_884_CheckingPopupErrorsForReturns.QC_885_PopupErrorsInProfileForReturns"/>
+            <class name="ATD.Retoure.QC_884_CheckingPopupErrorsForReturns.QC_888"/>
+            <class name="ATD.Retoure.QC_884_CheckingPopupErrorsForReturns.QC_885"/>
         </classes>
     </test>
 
     <test name="QC_897_CheckingReturnPrice">
         <classes>
-<!--            <class name="ATD.Retoure.QC_897_CheckingReturnPrice.QC_898_MatchPricesInAwsOrderAndProfile"/>-->
-<!--            <class name="ATD.Retoure.QC_897_CheckingReturnPrice.QC_899_MatchPricesInAwsOrderAndRetourPage"/>-->
+            <!--<class name="ATD.Retoure.QC_897_CheckingReturnPrice.QC_898"/>-->
+            <!--<class name="ATD.Retoure.QC_897_CheckingReturnPrice.QC_899"/>-->
         </classes>
     </test>
 
-    <test name="QC_710_TranslationOfCausesInAws" enabled="false">
+    <test name="QC_710_TranslationOfCausesInAws">
         <classes>
-            <class name="AWS.Retoure.QC_710_TranslationOfCausesInAws"/>
+            <class name="AWS.Retoure.QC_710"/>
         </classes>
     </test>
 

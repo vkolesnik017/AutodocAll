@@ -1690,4 +1690,16 @@ public class Main_page_Logic extends Main_page {
         }
         return this;
     }
+
+    @Step("get all child categories. Main_page")
+    public List<String> getAllChildCategories() {
+        List<String> generics = allChildCategories().stream().map(n -> n.getText()).collect(Collectors.toList());
+        return generics;
+    }
+
+    @Step("click on main logo. Main_page")
+    public Main_page_Logic clickOnMainLogo() {
+        logoInHeader().click();
+        return this;
+    }
 }

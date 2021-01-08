@@ -8,238 +8,237 @@
 
     <test name="QC_301_MotoSelector">
         <classes>
-            <class name="ATD.MOTO.QC_301_MotoSelector.QC_302_AvailabilityOfMotoSelector"/>
-            <class name="ATD.MOTO.QC_301_MotoSelector.QC_304_OpeningOfMinimizedSelector"/>
-            <class name="ATD.MOTO.QC_301_MotoSelector.QC_305_MandatorySelectionOfAllSelectorFields"/>
-            <class name="ATD.MOTO.QC_301_MotoSelector.QC_306_TransitionToCorrespondingRoute"/>
-            <class name="ATD.MOTO.QC_301_MotoSelector.QC_307_ResetValuesInSelector"/>
-            <class name="ATD.MOTO.QC_301_MotoSelector.QC_308_PresenceOfFilledValuesInSelector"/>
-            <class name="ATD.MOTO.QC_301_MotoSelector.QC_309_PresenceOfHeadlineInSelector"/>
-            <class name="ATD.MOTO.QC_301_MotoSelector.QC_310_PresenceOfOpeningSelector"/>
-            <class name="ATD.MOTO.QC_301_MotoSelector.QC_312_FillingSelectorByCompatibleMoto"/>
-            <class name="ATD.MOTO.QC_301_MotoSelector.QC_313_FillingSelectorByIncompatibleMoto"/>
-            <class name="ATD.MOTO.QC_301_MotoSelector.QC_315_TransitionToProductPageWithCompatibleMoto"/>
-            <class name="ATD.MOTO.QC_301_MotoSelector.QC_317_TransitionToProductPageWithOutCompatibleMoto"/>
+            <class name="ATD.MOTO.QC_301_MotoSelector.QC_302"/>
+            <class name="ATD.MOTO.QC_301_MotoSelector.QC_304"/>
+            <class name="ATD.MOTO.QC_301_MotoSelector.QC_305"/>
+            <class name="ATD.MOTO.QC_301_MotoSelector.QC_306"/>
+            <class name="ATD.MOTO.QC_301_MotoSelector.QC_307"/>
+            <class name="ATD.MOTO.QC_301_MotoSelector.QC_308"/>
+            <class name="ATD.MOTO.QC_301_MotoSelector.QC_309"/>
+            <class name="ATD.MOTO.QC_301_MotoSelector.QC_310"/>
+            <class name="ATD.MOTO.QC_301_MotoSelector.QC_312"/>
+            <class name="ATD.MOTO.QC_301_MotoSelector.QC_313"/>
+            <class name="ATD.MOTO.QC_301_MotoSelector.QC_315"/>
+            <class name="ATD.MOTO.QC_301_MotoSelector.QC_317"/>
         </classes>
     </test>
 
     <test name="QC_875_LinkingBannerBlockToTopOnMainPage">
         <classes>
-            <class name="ATD.MOTO.QC_875_LinkingBannerBlockToTopOnMainPage.QC_877_AvailabilityOfLinkingBannerBlock"/>
-            <class name="ATD.MOTO.QC_875_LinkingBannerBlockToTopOnMainPage.QC_878_TransitionByClickOnLinkingBanner"/>
+            <class name="ATD.MOTO.QC_875_LinkingBannerBlockToTopOnMainPage.QC_877"/>
+            <class name="ATD.MOTO.QC_875_LinkingBannerBlockToTopOnMainPage.QC_878"/>
         </classes>
     </test>
 
     <test name="QC_880_BlockOfDeliveryAndPaymentMethods">
         <classes>
-            <class name="ATD.MOTO.QC_880_BlockOfDeliveryAndPaymentMethods.QC_887_AvailabilityOfDeliveryAndPaymentsMethodsBlocks"/>
+            <class name="ATD.MOTO.QC_880_BlockOfDeliveryAndPaymentMethods.QC_887"/>
         </classes>
     </test>
 
     <test name="QC_889_SearchOnMotoSubdomain">
         <classes>
-            <class name="ATD.MOTO.QC_889_SearchOnMotoSubdomain.QC_890_AvailabilityOfSearchingField"/>
+            <class name="ATD.MOTO.QC_889_SearchOnMotoSubdomain.QC_890"/>
         </classes>
     </test>
 
     <test name="QC_861_TopParentAndChildCategoryBlock">
         <classes>
-            <class name="ATD.MOTO.QC_861_TopParentAndChildCategoryBlock.QC_865_ParentCategoryBlockComponents"/>
-            <class name="ATD.MOTO.QC_861_TopParentAndChildCategoryBlock.QC_866_TransitionByClickOnElementsOfCatalog"/>
-            <class name="ATD.MOTO.QC_861_TopParentAndChildCategoryBlock.QC_867_TransitionToCatalog"/>
+            <class name="ATD.MOTO.QC_861_TopParentAndChildCategoryBlock.QC_865"/>
+            <class name="ATD.MOTO.QC_861_TopParentAndChildCategoryBlock.QC_866"/>
+            <class name="ATD.MOTO.QC_861_TopParentAndChildCategoryBlock.QC_867"/>
         </classes>
     </test>
 
     <test name="QC_847_Login_Registration_Blocks">
         <classes>
-            <class name="ATD.MOTO.QC_847_Login_Registration_Blocks.QC_849_Login_Registration"/>
-            <class name="ATD.MOTO.QC_847_Login_Registration_Blocks.QC_848_PresenceOfLoginRegistrationBlocks"/>
+            <class name="ATD.MOTO.QC_847_Login_Registration_Blocks.QC_849"/>
+            <class name="ATD.MOTO.QC_847_Login_Registration_Blocks.QC_848"/>
         </classes>
     </test>
 
     <test name="QC_355_BenefitsBlock">
         <classes>
-            <class name="ATD.MOTO.QC_355_BenefitsBlock.QC_356_PresenceOfBenefitsBlock"/>
-            <class name="ATD.MOTO.QC_355_BenefitsBlock.QC_357_BenefitBlockStructure"/>
-            <class name="ATD.MOTO.QC_355_BenefitsBlock.QC_358_BehaviorOfBenefitBlock"/>
-            <class name="ATD.MOTO.QC_355_BenefitsBlock.QC_359_ElementsOfBenefitsBlock"/>
-            <class name="ATD.MOTO.QC_355_BenefitsBlock.QC_360_MainImageOfChildCategory"/>
+            <class name="ATD.MOTO.QC_355_BenefitsBlock.QC_356"/>
+            <class name="ATD.MOTO.QC_355_BenefitsBlock.QC_357"/>
+            <class name="ATD.MOTO.QC_355_BenefitsBlock.QC_358"/>
+            <class name="ATD.MOTO.QC_355_BenefitsBlock.QC_359"/>
+            <class name="ATD.MOTO.QC_355_BenefitsBlock.QC_360"/>
         </classes>
     </test>
 
     <test name="QC_745_ChildCategoriesBlock">
         <classes>
-            <class name="ATD.MOTO.QC_745_ChildCategoriesBlock.QC_746_HeadlineOfChildCategoriesBlock"/>
-            <class name="ATD.MOTO.QC_745_ChildCategoriesBlock.QC_748_MainImageOfParentCategory"/>
-            <class name="ATD.MOTO.QC_745_ChildCategoriesBlock.QC_750_ListOfAllChildCategories"/>
-            <class name="ATD.MOTO.QC_745_ChildCategoriesBlock.QC_751_ElementsOfChildCategoriesBlock"/>
-            <class name="ATD.MOTO.QC_745_ChildCategoriesBlock.QC_752_TransitionByClickAtChildCategories"/>
+            <class name="ATD.MOTO.QC_745_ChildCategoriesBlock.QC_746"/>
+            <class name="ATD.MOTO.QC_745_ChildCategoriesBlock.QC_748"/>
+            <class name="ATD.MOTO.QC_745_ChildCategoriesBlock.QC_750"/>
+            <class name="ATD.MOTO.QC_745_ChildCategoriesBlock.QC_751"/>
+            <class name="ATD.MOTO.QC_745_ChildCategoriesBlock.QC_752"/>
         </classes>
     </test>
 
     <test name="QC_373_MainIssueBlockAtTecDocListing">
         <classes>
-            <class name="ATD.MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_374_PresenceOfMainIssueBlock"/>
-            <class name="ATD.MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_375_ApplicabilityOfProductsInTecDocListing"/>
-            <class name="ATD.MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_376_AddProductToBasketFromTecDocListing"/>
-            <class name="ATD.MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_378_DynamicCharacteristicsOfProductsInTecDocListing"/>
-            <class name="ATD.MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_379_GoToProductPageFromTecDocListing"/>
-            <class name="ATD.MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_380_OutOfStockProductWithOutAnalogs"/>
-            <class name="ATD.MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_381_OutOfStockProductWithAnalogs"/>
-            <class name="ATD.MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_382_AddToBasketAnalogProduct"/>
-            <class name="ATD.MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_383_PopUpOfSubscriptionForOutOfStockProducts"/>
-            <class name="ATD.MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_384_PaginationOfTecDocListing"/>
+            <class name="ATD.MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_374"/>
+            <class name="ATD.MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_375"/>
+            <class name="ATD.MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_376"/>
+            <class name="ATD.MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_379"/>
+            <class name="ATD.MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_380"/>
+            <class name="ATD.MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_381"/>
+            <class name="ATD.MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_382"/>
+            <class name="ATD.MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_383"/>
+            <class name="ATD.MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_384"/>
         </classes>
     </test>
 
     <test name="QC_852_TopBrandsBlock">
         <classes>
-            <class name="ATD.MOTO.QC_852_TopBrandsBlock.QC_853_PresenceOfTopBrandsBlock"/>
-            <class name="ATD.MOTO.QC_852_TopBrandsBlock.QC_854_TransitionByClickOnTopBrand"/>
-            <class name="ATD.MOTO.QC_852_TopBrandsBlock.QC_855_TransitionByClickOnCatalogOfBrandLink"/>
+            <class name="ATD.MOTO.QC_852_TopBrandsBlock.QC_853"/>
+            <class name="ATD.MOTO.QC_852_TopBrandsBlock.QC_854"/>
+            <class name="ATD.MOTO.QC_852_TopBrandsBlock.QC_855"/>
         </classes>
     </test>
 
     <test name="QC_336_BreadCrumbsBlock">
         <classes>
-            <class name="ATD.MOTO.QC_336_BreadCrumbsBlock.QC_337_PresenceBreadCrumbsBlock"/>
-            <class name="ATD.MOTO.QC_336_BreadCrumbsBlock.QC_338_StructureOfBreadCrumbsBlockAtBrands"/>
-            <class name="ATD.MOTO.QC_336_BreadCrumbsBlock.QC_339_StructureOfBreadCrumbsBlockAtCatalogModels"/>
-            <class name="ATD.MOTO.QC_336_BreadCrumbsBlock.QC_340_StructureOfBreadCrumbsBlockAtTecDocCatalog"/>
-            <class name="ATD.MOTO.QC_336_BreadCrumbsBlock.QC_341_StructureOfBreadCrumbsBlock"/>
-            <class name="ATD.MOTO.QC_336_BreadCrumbsBlock.QC_342_StructureOfBreadCrumbsBlockAtModelListing"/>
-            <class name="ATD.MOTO.QC_336_BreadCrumbsBlock.QC_343_StructureOfBreadCrumbsBlockAtProductPage"/>
-            <class name="ATD.MOTO.QC_336_BreadCrumbsBlock.QC_344_StructureOfBreadCrumbsBlockAtChildCategory"/>
-            <class name="ATD.MOTO.QC_336_BreadCrumbsBlock.QC_345_StructureOfBreadCrumbsBlockAtCategoryAndBrand"/>
-            <class name="ATD.MOTO.QC_336_BreadCrumbsBlock.QC_346_StructureOfBreadCrumbsBlockAtParentCategory"/>
-            <class name="ATD.MOTO.QC_336_BreadCrumbsBlock.QC_347_StructureOfBreadCrumbsBlockAtParentCategoryAndBrand"/>
+            <class name="ATD.MOTO.QC_336_BreadCrumbsBlock.QC_337"/>
+            <class name="ATD.MOTO.QC_336_BreadCrumbsBlock.QC_338"/>
+            <class name="ATD.MOTO.QC_336_BreadCrumbsBlock.QC_339"/>
+            <class name="ATD.MOTO.QC_336_BreadCrumbsBlock.QC_340"/>
+            <class name="ATD.MOTO.QC_336_BreadCrumbsBlock.QC_341"/>
+            <class name="ATD.MOTO.QC_336_BreadCrumbsBlock.QC_342"/>
+            <class name="ATD.MOTO.QC_336_BreadCrumbsBlock.QC_343"/>
+            <class name="ATD.MOTO.QC_336_BreadCrumbsBlock.QC_344"/>
+            <class name="ATD.MOTO.QC_336_BreadCrumbsBlock.QC_345"/>
+            <class name="ATD.MOTO.QC_336_BreadCrumbsBlock.QC_346"/>
+            <class name="ATD.MOTO.QC_336_BreadCrumbsBlock.QC_347"/>
         </classes>
     </test>
 
     <test name="QC_364_TopCategoriesByBrandBlock">
         <classes>
-            <class name="ATD.MOTO.QC_364_TopCategoriesByBrandBlock.QC_366_PresenceOfTopParentCategoriesBlock"/>
-            <class name="ATD.MOTO.QC_364_TopCategoriesByBrandBlock.QC_367_TransitionByClickOnTopElements"/>
+            <class name="ATD.MOTO.QC_364_TopCategoriesByBrandBlock.QC_366"/>
+            <class name="ATD.MOTO.QC_364_TopCategoriesByBrandBlock.QC_367"/>
         </classes>
     </test>
 
     <test name="QC_330_BlockOfMainHeadline">
         <classes>
-            <class name="ATD.MOTO.QC_330_BlockOfMainHeadline.QC_331_PresenceOfMainHeadlineBlock"/>
-            <class name="ATD.MOTO.QC_330_BlockOfMainHeadline.QC_332_PresenceIconOfBrandInHeadline"/>
-            <class name="ATD.MOTO.QC_330_BlockOfMainHeadline.QC_333_MatchingQuantityOfBrandsAndModels"/>
-            <class name="ATD.MOTO.QC_330_BlockOfMainHeadline.QC_334_PresenceBrandModelValuesInHeadline"/>
-            <class name="ATD.MOTO.QC_330_BlockOfMainHeadline.QC_335_PresenceOfInformationIcon"/>
+            <class name="ATD.MOTO.QC_330_BlockOfMainHeadline.QC_331"/>
+            <class name="ATD.MOTO.QC_330_BlockOfMainHeadline.QC_332"/>
+            <class name="ATD.MOTO.QC_330_BlockOfMainHeadline.QC_333"/>
+            <class name="ATD.MOTO.QC_330_BlockOfMainHeadline.QC_334"/>
+            <class name="ATD.MOTO.QC_330_BlockOfMainHeadline.QC_335"/>
         </classes>
     </test>
 
     <test name="QC_385_BlockBrandsAndModelsOfAutoManufacturers">
         <classes>
-            <class name="ATD.MOTO.QC_385_BlockBrandsAndModelsOfAutoManufacturers.QC_386_PresenceOfBrandsAndModelsTitleOfAutomakers"/>
-            <class name="ATD.MOTO.QC_385_BlockBrandsAndModelsOfAutoManufacturers.QC_387_PresenceOfBrandsAndModelsBlocksOfAutomakers"/>
-            <class name="ATD.MOTO.QC_385_BlockBrandsAndModelsOfAutoManufacturers.QC_388_ComponentsOfBrandAndModelBlock"/>
-            <class name="ATD.MOTO.QC_385_BlockBrandsAndModelsOfAutoManufacturers.QC_389_TransitionByClickOnBrandsModelsElements"/>
-            <class name="ATD.MOTO.QC_385_BlockBrandsAndModelsOfAutoManufacturers.QC_390_AbilityToOpenAndMinimizedOfBrandsBlock"/>
+            <class name="ATD.MOTO.QC_385_BlockBrandsAndModelsOfAutoManufacturers.QC_386"/>
+            <class name="ATD.MOTO.QC_385_BlockBrandsAndModelsOfAutoManufacturers.QC_387"/>
+            <class name="ATD.MOTO.QC_385_BlockBrandsAndModelsOfAutoManufacturers.QC_388"/>
+            <class name="ATD.MOTO.QC_385_BlockBrandsAndModelsOfAutoManufacturers.QC_389"/>
+            <class name="ATD.MOTO.QC_385_BlockBrandsAndModelsOfAutoManufacturers.QC_390"/>
         </classes>
     </test>
 
     <test name="QC_834_NavigationBlockAtHeaders">
         <classes>
-            <class name="ATD.MOTO.QC_834_NavigationBlockAtHeader.QC_835_PresenceOfNavigationBlockAtTopCategories"/>
-            <class name="ATD.MOTO.QC_834_NavigationBlockAtHeader.QC_842_TransitionByClickOnTopCategoriesInHeader"/>
+            <class name="ATD.MOTO.QC_834_NavigationBlockAtHeader.QC_835"/>
+            <class name="ATD.MOTO.QC_834_NavigationBlockAtHeader.QC_842"/>
         </classes>
     </test>
 
     <test name="QC_856_TopChildCategoriesBlock">
         <classes>
-            <class name="ATD.MOTO.QC_856_TopChildCategoriesBlock.QC_857_PresenceOfTopChildCategoriesBlock"/>
-            <class name="ATD.MOTO.QC_856_TopChildCategoriesBlock.QC_858_HoverOnTopChildCategories"/>
-            <class name="ATD.MOTO.QC_856_TopChildCategoriesBlock.QC_859_TransitionByClickOnChildCategory"/>
+            <class name="ATD.MOTO.QC_856_TopChildCategoriesBlock.QC_857"/>
+            <class name="ATD.MOTO.QC_856_TopChildCategoriesBlock.QC_858"/>
+            <class name="ATD.MOTO.QC_856_TopChildCategoriesBlock.QC_859"/>
         </classes>
     </test>
 
     <test name="QC_625_AllParentsAndChildsCategoriesBlocks">
         <classes>
-            <class name="ATD.MOTO.QC_625_AllParentsAndChildsCategoriesBlocks.QC_626_PresenceOfTecDocCatalog"/>
-            <class name="ATD.MOTO.QC_625_AllParentsAndChildsCategoriesBlocks.QC_627_NestingLevelsOfTecDocCatalog"/>
-            <class name="ATD.MOTO.QC_625_AllParentsAndChildsCategoriesBlocks.QC_628_ElementsOfParentAndChildCategories"/>
-            <class name="ATD.MOTO.QC_625_AllParentsAndChildsCategoriesBlocks.QC_629_TransitionByClickOnChildCategories"/>
-            <class name="ATD.MOTO.QC_625_AllParentsAndChildsCategoriesBlocks.QC_630_SortingOfChildCategories"/>
+            <class name="ATD.MOTO.QC_625_AllParentsAndChildsCategoriesBlocks.QC_626"/>
+            <class name="ATD.MOTO.QC_625_AllParentsAndChildsCategoriesBlocks.QC_627"/>
+            <class name="ATD.MOTO.QC_625_AllParentsAndChildsCategoriesBlocks.QC_628"/>
+            <class name="ATD.MOTO.QC_625_AllParentsAndChildsCategoriesBlocks.QC_629"/>
+            <class name="ATD.MOTO.QC_625_AllParentsAndChildsCategoriesBlocks.QC_630"/>
         </classes>
     </test>
 
     <test name="QC_361_BrandsBlock">
         <classes>
-            <class name="ATD.MOTO.QC_361_BrandsBlock.QC_362_PresenceOfBrandsBlock"/>
-            <class name="ATD.MOTO.QC_361_BrandsBlock.QC_363_AbilityToOpenedAndMinimizedBrandBlock"/>
+            <class name="ATD.MOTO.QC_361_BrandsBlock.QC_362"/>
+            <class name="ATD.MOTO.QC_361_BrandsBlock.QC_363"/>
         </classes>
     </test>
 
     <test name="QC_870_PresenceOfTopModels">
         <classes>
-            <class name="ATD.MOTO.QC_870_TopModelsBlock.QC_872_PresenceOfTopModels"/>
-            <class name="ATD.MOTO.QC_870_TopModelsBlock.QC_873_ElementBlockHoverTopModels"/>
-            <class name="ATD.MOTO.QC_870_TopModelsBlock.QC_874_TransitionByClickOnTopModelElement"/>
+            <class name="ATD.MOTO.QC_870_TopModelsBlock.QC_872"/>
+            <class name="ATD.MOTO.QC_870_TopModelsBlock.QC_873"/>
+            <class name="ATD.MOTO.QC_870_TopModelsBlock.QC_874"/>
         </classes>
     </test>
 
     <test name="QC_319_TopProductsBlock">
         <classes>
-            <class name="ATD.MOTO.QC_319_TopProductsBlock.QC_320_PresenceOfTopProductsBlock"/>
-            <class name="ATD.MOTO.QC_319_TopProductsBlock.QC_321_PresenceOfTopProductsHeadline"/>
-            <class name="ATD.MOTO.QC_319_TopProductsBlock.QC_322_TotalCountOfTopProducts"/>
-            <class name="ATD.MOTO.QC_319_TopProductsBlock.QC_323_AddTopProductToBasket"/>
-            <class name="ATD.MOTO.QC_319_TopProductsBlock.QC_324_TransitionToProductPageFromTopBlock"/>
-            <class name="ATD.MOTO.QC_319_TopProductsBlock.QC_325_VisibilityOfTopProductCharacteristicByHover"/>
-            <class name="ATD.MOTO.QC_319_TopProductsBlock.QC_326_PresenceOfNavigationArrowsInTopBlock"/>
-            <class name="ATD.MOTO.QC_319_TopProductsBlock.QC_327_MatchingOfGenericAndTopProduct"/>
-            <class name="ATD.MOTO.QC_319_TopProductsBlock.QC_328_ApplicabilityProductsToBrandPage"/>
+            <class name="ATD.MOTO.QC_319_TopProductsBlock.QC_320"/>
+            <class name="ATD.MOTO.QC_319_TopProductsBlock.QC_321"/>
+            <class name="ATD.MOTO.QC_319_TopProductsBlock.QC_322"/>
+            <class name="ATD.MOTO.QC_319_TopProductsBlock.QC_323"/>
+            <class name="ATD.MOTO.QC_319_TopProductsBlock.QC_324"/>
+            <class name="ATD.MOTO.QC_319_TopProductsBlock.QC_325"/>
+            <class name="ATD.MOTO.QC_319_TopProductsBlock.QC_326"/>
+            <class name="ATD.MOTO.QC_319_TopProductsBlock.QC_327"/>
+            <class name="ATD.MOTO.QC_319_TopProductsBlock.QC_328"/>
         </classes>
     </test>
 
     <test name="QC_730_ProductPage">
         <classes>
-            <class name="ATD.MOTO.QC_730_ProductPage.QC_732_SelectingOfMotoSelector"/>
-            <class name="ATD.MOTO.QC_730_ProductPage.QC_733_AddedProductToBasket"/>
-            <class name="ATD.MOTO.QC_730_ProductPage.QC_734_CompatibleMotoBlock"/>
-            <class name="ATD.MOTO.QC_730_ProductPage.QC_737_LackOfLinksInOenBlock"/>
+            <class name="ATD.MOTO.QC_730_ProductPage.QC_732"/>
+            <class name="ATD.MOTO.QC_730_ProductPage.QC_733"/>
+            <class name="ATD.MOTO.QC_730_ProductPage.QC_734"/>
+            <class name="ATD.MOTO.QC_730_ProductPage.QC_737"/>
         </classes>
     </test>
 
     <test name="QC_757_MotoCatalogInHeader">
         <classes>
-            <class name="ATD.MOTO.QC_757_MotoCatalogInHeader.QC_759_PresenceOfMotoCatalogInHeader"/>
-            <class name="ATD.MOTO.QC_757_MotoCatalogInHeader.QC_760_StructureOfMotoCatalogInHeader"/>
-            <class name="ATD.MOTO.QC_757_MotoCatalogInHeader.QC_762_TransitionByClickOnElementsOfMotoCatalog"/>
-            <class name="ATD.MOTO.QC_757_MotoCatalogInHeader.QC_764_FormationOfMotoCatalogInHeader"/>
+            <class name="ATD.MOTO.QC_757_MotoCatalogInHeader.QC_759"/>
+            <class name="ATD.MOTO.QC_757_MotoCatalogInHeader.QC_760"/>
+            <class name="ATD.MOTO.QC_757_MotoCatalogInHeader.QC_762"/>
+            <class name="ATD.MOTO.QC_757_MotoCatalogInHeader.QC_764"/>
         </classes>
     </test>
 
     <test name="QC_368_MainImageOfBrand">
         <classes>
-            <class name="ATD.MOTO.QC_368_MainImageOfBrand.QC_369_PresenceOfMainImageOfBrand"/>
+            <class name="ATD.MOTO.QC_368_MainImageOfBrand.QC_369"/>
         </classes>
     </test>
 
     <test name="QC_349_ParentAndChildSideBarBlock">
         <classes>
-            <class name="ATD.MOTO.QC_349_ParentAndChildSideBarBlock.QC_350_PresenceOfParentSideBarBlock"/>
-            <class name="ATD.MOTO.QC_349_ParentAndChildSideBarBlock.QC_351_BehaviorByClickOnParentCategoryBlock"/>
-            <class name="ATD.MOTO.QC_349_ParentAndChildSideBarBlock.QC_352_PresenceOfLinkingBlockAndTitle"/>
-            <class name="ATD.MOTO.QC_349_ParentAndChildSideBarBlock.QC_353_BehaviorByClickOnElementOfTopChildCategories"/>
-            <class name="ATD.MOTO.QC_349_ParentAndChildSideBarBlock.QC_354_ListOfChildCategoriesInSidebar"/>
+            <class name="ATD.MOTO.QC_349_ParentAndChildSideBarBlock.QC_350"/>
+            <class name="ATD.MOTO.QC_349_ParentAndChildSideBarBlock.QC_351"/>
+            <class name="ATD.MOTO.QC_349_ParentAndChildSideBarBlock.QC_352"/>
+            <class name="ATD.MOTO.QC_349_ParentAndChildSideBarBlock.QC_353"/>
+            <class name="ATD.MOTO.QC_349_ParentAndChildSideBarBlock.QC_354"/>
         </classes>
     </test>
 
     <test name="QC_850_MainBanner">
         <classes>
-            <class name="ATD.MOTO.QC_850_MainBanner.QC_851_PresenceOfMainBanner"/>
+            <class name="ATD.MOTO.QC_850_MainBanner.QC_851"/>
         </classes>
     </test>
 
     <test name="QC_622_LinkingBlockToModelCatalog">
         <classes>
-            <class name="ATD.MOTO.QC_622_LinkingBlockToModelCatalog.QC_623_PresenceOfElementsAtLinkingBlock"/>
+            <class name="ATD.MOTO.QC_622_LinkingBlockToModelCatalog.QC_623"/>
         </classes>
     </test>
 

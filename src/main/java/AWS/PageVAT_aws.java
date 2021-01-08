@@ -30,6 +30,14 @@ public class PageVAT_aws {
         return $x("//*[@data-letter='S']//td//*[@data-country='3']");
     }
 
+    private SelenideElement vatForNL() {
+        return $x("//*[@data-letter='H']//td//*[@data-country='4']");
+    }
+
+    private SelenideElement vatForPL() {
+        return $x("//*[@data-letter='P']//td//*[@data-country='15']");
+    }
+
     @Step("Get VAT for United Kingdom. PageVAT_aws")
     public String getVatForGB() {
         open(pageVAT_aws);
@@ -68,5 +76,21 @@ public class PageVAT_aws {
         new Login_aws().loginInAws();
         String vatCH = vatForCH().getValue();
         return vatCH;
+    }
+
+    @Step("Get VAT for Poland. PageVAT_aws")
+    public String getVatForPL() {
+        open(pageVAT_aws);
+        new Login_aws().loginInAws();
+        String vatPL = vatForPL().getValue();
+        return vatPL;
+    }
+
+    @Step("Get VAT for Holland. PageVAT_aws")
+    public String getVatForNL() {
+        open(pageVAT_aws);
+        new Login_aws().loginInAws();
+        String vatNL = vatForNL().getValue();
+        return vatNL;
     }
 }

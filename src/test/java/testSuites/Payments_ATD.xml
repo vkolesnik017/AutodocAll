@@ -8,84 +8,84 @@
 
     <test name="QC_2168_PayPal_ATD" thread-count="1">
         <classes>
-            <class name="ATD.Payments.QC_2168_PayPal_ATD">
+            <class name="ATD.Payments.QC_2168">
             </class>
         </classes>
     </test>
 
     <test name="QC_2157_EPS_ATD" thread-count="1">
         <classes>
-            <class name="ATD.Payments.QC_2157_EPS_ATD">
+            <class name="ATD.Payments.QC_2157">
             </class>
         </classes>
     </test>
 
     <test name="QC_2165_Bancontact_Mister_Cash_ATD" thread-count="1">
         <classes>
-            <class name="ATD.Payments.QC_2165_Bancontact_Mister_Cash_ATD">
+            <class name="ATD.Payments.QC_2165">
             </class>
         </classes>
     </test>
 
-    <!--<test name="QC_2348_KlarnaCheckout_ATD" thread-count="1">
+    <test name="QC_2348_KlarnaCheckout_ATD" thread-count="1">
         <classes>
-            <class name="ATD.Payments.QC_2348_KlarnaCheckout_ATD">
+            <class name="ATD.Payments.QC_2348">
             </class>
         </classes>
-    </test>-->
+    </test>
 
     <test name="QC_2158_Klarna_ATD" thread-count="1">
         <classes>
-            <class name="ATD.Payments.QC_2158_Klarna_ATD">
+            <class name="ATD.Payments.QC_2158">
             </class>
         </classes>
     </test>
 
     <test name="QC_2156_Sofort_ATD" thread-count="1">
         <classes>
-            <class name="ATD.Payments.QC_2156_Sofort_ATD">
+            <class name="ATD.Payments.QC_2156">
             </class>
         </classes>
     </test>
 
     <test name="QC_2350_Ideal_ATD" thread-count="1">
         <classes>
-            <class name="ATD.Payments.QC_2350_Ideal_ATD">
+            <class name="ATD.Payments.QC_2350">
             </class>
         </classes>
     </test>
 
     <test name="QC_2349_Trustly_ATD" thread-count="1">
         <classes>
-            <class name="ATD.Payments.QC_2349_Trustly_ATD">
+            <class name="ATD.Payments.QC_2349">
             </class>
         </classes>
     </test>
 
     <test name="QC_2160_BraintreeCreditCard_ATD" thread-count="1">
         <classes>
-            <class name="ATD.Payments.QC_2160_BraintreeCreditCard_ATD">
+            <class name="ATD.Payments.QC_2160">
             </class>
         </classes>
     </test>
 
     <test name="QC_2154_Be2billCreditCard_ATD" thread-count="1">
         <classes>
-            <class name="ATD.Payments.QC_2154_Be2billCreditCard_ATD">
+            <class name="ATD.Payments.QC_2154">
             </class>
         </classes>
     </test>
 
     <test name="QC_2351_Przelewy24_ATD" thread-count="1">
         <classes>
-            <class name="ATD.Payments.QC_2351_Przelewy24_ATD">
+            <class name="ATD.Payments.QC_2351">
             </class>
         </classes>
     </test>
 
     <test name="QC_2352_Multibanco_ATD" thread-count="1">
         <classes>
-            <class name="ATD.Payments.QC_2352_Multibanco_ATD">
+            <class name="ATD.Payments.QC_2352">
             </class>
         </classes>
     </test>

@@ -6,38 +6,38 @@
         <listener class-name="Common.ProjectListener"/>
     </listeners>
 
-    <test name="QC_1838_FAQ_Form" enabled="true">
+    <test name="QC_1838_FAQ_Form">
         <classes>
-            <class name="PKW.Product_Page.QC_1838_FAQ_Form.QC_1834_ValidationOfTheFieldsFaq"/>
+            <class name="PKW.Product_Page.QC_1838_FAQ_Form.QC_1834"/>
         </classes>
     </test>
 
-    <test name="QC_1870_OEN" enabled="true">
+    <test name="QC_1870_OEN">
         <classes>
-            <class name="PKW.Product_Page.QC_1870_OEN.QC_1868_DisplayingOENNumberWithTheSelectedCar"/>
-            <class name="PKW.Product_Page.QC_1870_OEN.QC_1869_TransitionToTheOENListingFromTheOENNummern"/>
+            <class name="PKW.Product_Page.QC_1870_OEN.QC_1868"/>
+            <class name="PKW.Product_Page.QC_1870_OEN.QC_1869"/>
         </classes>
     </test>
 
-    <test name="QC_1828_Reviews_Form" enabled="true">
+    <test name="QC_1828_Reviews_Form">
         <classes>
-            <class name="PKW.Product_Page.QC_1828_Reviews_Form.QC_1822_DisplayingTheReviewPopUpOnTheProductWithoutRating"/>
-            <class name="PKW.Product_Page.QC_1828_Reviews_Form.QC_1823_DisplayingTheReviewPopUpOnTheProductWithRating"/>
-            <class name="PKW.Product_Page.QC_1828_Reviews_Form.QC_1824_DisplayingTheReviewMessagesBlock"/>
-            <class name="PKW.Product_Page.QC_1828_Reviews_Form.QC_1825_ValidationOfTheFieldsReviews"/>
+            <class name="PKW.Product_Page.QC_1828_Reviews_Form.QC_1822"/>
+            <class name="PKW.Product_Page.QC_1828_Reviews_Form.QC_1823"/>
+            <class name="PKW.Product_Page.QC_1828_Reviews_Form.QC_1824"/>
+            <class name="PKW.Product_Page.QC_1828_Reviews_Form.QC_1825"/>
         </classes>
     </test>
 
-    <test name="PKW.Product_Page.QC_1894_ProductPage_Elements" enabled="true">
+    <test name="PKW.Product_Page.QC_1894_ProductPage_Elements">
         <classes>
-            <class name="PKW.Product_Page.QC_1894_ProductPage_Elements.QC_1889_KBAAndRegNumberBlock"/>
-            <class name="PKW.Product_Page.QC_1894_ProductPage_Elements.QC_1888_PresenceElementsOfTheProductPage"/>
+            <class name="PKW.Product_Page.QC_1894_ProductPage_Elements.QC_1889"/>
+            <class name="PKW.Product_Page.QC_1894_ProductPage_Elements.QC_1888"/>
         </classes>
     </test>
 
     <test name="QC_3031_ProductPage_Car">
         <classes>
-            <class name="PKW.Product_Page.QC_3031_ProductPage_Car.QC_3119_CheckDisplayPriceMeterElementInTopProductsBlock"/>
+            <class name="PKW.Product_Page.QC_3031_ProductPage_Car.QC_3119"/>
         </classes>
     </test>
 </suite>

@@ -895,4 +895,25 @@ public class Product_page {
 
     SelenideElement infoTextOfDangerousInfoBlock() {return $x("//div[@class='dangerous-goods__text js-dangerous-goods__text']/span");}
 
+    SelenideElement catalogIconInBreadcrumbLink() {return $x("//div[@class='steps breadcrumbs']/ul/li//img");}
+
+    SelenideElement tooltipOfMarkeField() {return $x("//div[@class='tooltiptext-close js-tooltiptext-close']");}
+
+    SelenideElement phraseAboutCompatibilityProductAndVehicle() {
+        return $x("//*[@class='accordion-selected']");
+    }
+
+    SelenideElement gluingBlock() {return $x("//div[@class='add_info price_box']");}
+
+    SelenideElement currentVolume() {return $x("//div[@class='select-displacement select-displacement--selected']//label");}
+
+    ElementsCollection allowableVolumes() {return $$x("//div[@class='add_info price_box']//label/span");}
+
+    SelenideElement recommendedChangeLiterIcon() {return $x("//div[@class='recommended-oil']");}
+
+    ElementsCollection gluingProducts() {return $$x("//div[@class='select-displacement ']");}
+
+    ElementsCollection btnAddGluingProductToBasket() {return $$x("//div[@class='select-displacement ']/a");}
+
+    SelenideElement btnCloseBasketPopUp() {return $x("//div[@class='popup-other-cat__close']");}
     }

@@ -129,14 +129,14 @@ public class Versand_static_page_Logic extends Versand_static_page {
     public String getDeliveryPrice(String country) throws Exception {
         openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "staticVersand"));
         allCountriesButton().click();
-        return deliveryPriceLocator(country).getText().replace(" €", "");
+        return deliveryPriceLocator(country).getText().replaceAll("[^0-9,]", "");
     }
 
     @Step("Get delivery price for a user with a subscription plus pro. Versand_static_page")
     public float getDeliveryPriceForUserWithSubscriptionPlusPro(String country, String mail) throws Exception {
         openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "staticVersand"));
         allCountriesButton().click();
-        float deliveryPrice = Float.parseFloat(deliveryPriceLocator(country).getText().replace(" €", "").replace(",", "."));
+        float deliveryPrice = Float.parseFloat(deliveryPriceLocator(country).getText().replaceAll("[^0-9,]", "").replace(",", "."));
         float exactDeliveryPrice;
         if (mail.contains("plusPro")) {
             exactDeliveryPrice = deliveryPrice * 0.7f;
@@ -164,7 +164,7 @@ public class Versand_static_page_Logic extends Versand_static_page {
     @Step("Get Safe Order price discount with any subscription or without subscription. Versand_static_page")
     public float getSafeOrderPriceWithAnyDiscountAndSubscription(String mail) throws SQLException {
         openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "staticVersand"));
-        float safeOrderPrice = Float.parseFloat(soPrice2().getText().replace(" €", "").replace(",", "."));
+        float safeOrderPrice = Float.parseFloat(soPrice2().getText().replaceAll("[^0-9,]", "").replace(",", "."));
         float safeOrderPriceWithDiscount;
         if (mail.contains("plusBasic")) {
             safeOrderPriceWithDiscount = safeOrderPrice * 0.8f;
@@ -184,7 +184,7 @@ public class Versand_static_page_Logic extends Versand_static_page {
     public Float getDeliveryPriceForAWS(String country) throws Exception {
         openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "staticVersand"));
         allCountriesButton().click();
-        String deliveryPrice = deliveryPriceLocator(country).getText().replace(" €", "").replace(",", ".");
+        String deliveryPrice = deliveryPriceLocator(country).getText().replaceAll("[^0-9,]", "").replace(",", ".");
         return Float.valueOf(deliveryPrice);
     }
 
@@ -217,5 +217,17 @@ public class Versand_static_page_Logic extends Versand_static_page {
         sendShipFormSuccesPopup().shouldBe(appear);
         sendShipFormSuccesPopupCloseBtn().click();
         return mail;
+    }
+
+    @Step("Get the delivery price for the expected country {expectedShop}. Versand_static_page")
+    public float getDeliveryPrice(String actualShop, String expectedShop, String shop) throws SQLException {
+        float deliveryPrice = 0.0f;
+        if (actualShop.equals(expectedShop)) {
+            deliveryPrice = Float.parseFloat(deliveryPrice().getText().replaceAll("[^0-9,]", "").replaceAll(",", "."));
+        } else {
+            allCountriesButton().click();
+            deliveryPrice = Float.parseFloat(deliveryPriceLocatorWithNameShop(shop).getText().replaceAll("[^0-9,]", "").replace(",", "."));
+        }
+        return deliveryPrice;
     }
 }

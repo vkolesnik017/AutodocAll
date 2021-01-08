@@ -472,4 +472,44 @@ public class Category_car_list_page_Logic extends Category_car_list_page {
         btnAddToBasketOfTopLinkingBLockInSidebar().shouldBe(visible).click();
         return this;
     }
+
+    @Step("presence Vehicle in selector. Category_car_list_page")
+    public Category_car_list_page_Logic presenceVehicleInSelector(String marke, String model, String motor) {
+        markeFieldInSelector().shouldBe(visible).shouldHave(value(marke));
+        modelFieldInSelector().shouldHave(value(model));
+        motorFieldInSelector().shouldHave(value(motor));
+        return this;
+    }
+
+    @Step("presence Vehicle in KBA Selector. Category_car_list_page")
+    public Category_car_list_page_Logic presenceVehicleInKbaSelector(String kbaFirstValue, String kbaSecondValue) {
+        kbaFirstValueInSelector().shouldHave(value(kbaFirstValue));
+        kbaSecondValueInSelector().shouldHave(value(kbaSecondValue));
+        return this;
+    }
+
+    @Step("checking the applicability of product for selected vehicle .Car_parts_motoroil_page")
+    public Category_car_list_page_Logic checkingApplicabilityOfProductForSelectedVehicle() {
+        selectProductInTecDocListing();
+        while (nextPagePagination().isDisplayed()) {
+            nextPagePagination().click();
+            selectProductInTecDocListing();
+        }
+        return this;
+    }
+
+    @Step("click on product in TecDoc Listing .Category_car_list_page")
+    public Category_car_list_page_Logic selectProductInTecDocListing() {
+        for (int i = 1; i <= productsOnPage().size(); i++) {
+            clickOnProductInTecDocListing(i).presenceOfPhraseAboutCompatibilityProductAndVehicle();
+            back();
+        }
+        return this;
+    }
+
+    @Step("click on Product in TecDoc listing .Category_car_list_page")
+    public Product_page_Logic clickOnProductInTecDocListing(int point) {
+        imageOfProductTecDocListingBlock(point).scrollIntoView("{block: \"center\"}").click();
+        return page(Product_page_Logic.class);
+    }
 }

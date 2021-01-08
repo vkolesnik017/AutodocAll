@@ -8,9 +8,9 @@
 
     <test name="QC_147_FiltersSorting_interaction">
         <classes>
-            <class name="PKW.FiltersSorting.QC_147_FiltersSorting_interaction.QC_151_TestDurchmesserAndBySideFilterInteraction"/>
-            <class name="PKW.FiltersSorting.QC_147_FiltersSorting_interaction.QC_152_TestBremsscheibenartAndBySideFilterInteraction"/>
-            <class name="PKW.FiltersSorting.QC_147_FiltersSorting_interaction.QC_154_TestFurPRNumberAndBySideFilterInteraction"/>
+            <class name="PKW.FiltersSorting.QC_147_FiltersSorting_interaction.QC_151"/>
+            <class name="PKW.FiltersSorting.QC_147_FiltersSorting_interaction.QC_152"/>
+            <class name="PKW.FiltersSorting.QC_147_FiltersSorting_interaction.QC_154"/>
         </classes>
     </test>
 

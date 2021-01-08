@@ -8,67 +8,89 @@
 
     <test name="QC_771_RegKbaSelector">
         <classes>
-            <class name="ATD.Selectors.QC_771_RegKbaSelector.QC_672_UseHorizontalSelectorWhenChosenExistingKBA"/>
-            <class name="ATD.Selectors.QC_771_RegKbaSelector.QC_674_AppearsErrorThatKbaNumberNotFilled"/>
-            <class name="ATD.Selectors.QC_771_RegKbaSelector.QC_772_RegKbaSelector"/>
-            <class name="ATD.Selectors.QC_771_RegKbaSelector.QC_2694_CheckingVinRecordsToOrderWhenSearchingByKBA"/>
-            <class name="ATD.Selectors.QC_771_RegKbaSelector.QC_2783_PresenceMandatoryElementsInKbaBlock"/>
-            <class name="ATD.Selectors.QC_771_RegKbaSelector.QC_3170_CheckErrorMessageInKbaBlockInvalidData"/>
-            <class name="ATD.Selectors.QC_771_RegKbaSelector.QC_3171_CheckErrorMessageInKbaSelectorEmptyFields"/>
-            <class name="ATD.Selectors.QC_771_RegKbaSelector.QC_3172_CheckKBAInfoPopUPPresence"/>
+            <class name="ATD.Selectors.QC_771_RegKbaSelector.QC_672"/>
+            <class name="ATD.Selectors.QC_771_RegKbaSelector.QC_674"/>
+            <class name="ATD.Selectors.QC_771_RegKbaSelector.QC_772"/>
+            <class name="ATD.Selectors.QC_771_RegKbaSelector.QC_2694"/>
+            <class name="ATD.Selectors.QC_771_RegKbaSelector.QC_2783"/>
+            <class name="ATD.Selectors.QC_771_RegKbaSelector.QC_3170"/>
+            <class name="ATD.Selectors.QC_771_RegKbaSelector.QC_3171"/>
+            <class name="ATD.Selectors.QC_771_RegKbaSelector.QC_3172"/>
         </classes>
     </test>
 
     <test name="QC_729_PopUpsOfSelectors">
         <classes>
-            <class name="ATD.Selectors.QC_729_PopUpsOfSelectors.QC_747_AppearsCarSelectorPopupOnSearchByScrollDown"/>
-            <class name="ATD.Selectors.QC_729_PopUpsOfSelectors.QC_735_PresenceOfElementsInCarSelectorPopup"/>
-            <class name="ATD.Selectors.QC_729_PopUpsOfSelectors.QC_736_ErrorTooltipWhenUsingSelectorWithEmptyFields"/>
-            <class name="ATD.Selectors.QC_729_PopUpsOfSelectors.QC_742_CarSelectorPopupNotCloseAfterResetCar"/>
-            <class name="ATD.Selectors.QC_729_PopUpsOfSelectors.QC_743_CloseCarSelectorPopup"/>
-            <class name="ATD.Selectors.QC_729_PopUpsOfSelectors.QC_749_AppearsCarSelectorPopupAfterClickDetailsLinkInTopBlock"/>
+            <class name="ATD.Selectors.QC_729_PopUpsOfSelectors.QC_747"/>
+            <class name="ATD.Selectors.QC_729_PopUpsOfSelectors.QC_735"/>
+            <class name="ATD.Selectors.QC_729_PopUpsOfSelectors.QC_736"/>
+            <class name="ATD.Selectors.QC_729_PopUpsOfSelectors.QC_742"/>
+            <class name="ATD.Selectors.QC_729_PopUpsOfSelectors.QC_743"/>
+            <class name="ATD.Selectors.QC_729_PopUpsOfSelectors.QC_749"/>
         </classes>
     </test>
 
     <test name="QC_693_VerticalCarSelectors">
         <classes>
-            <class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_694_AppearsErrorThatBrandCarNotSelected"/>
-            <class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_695_AppearsErrorThatModelCarNotSelected"/>
-            <class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_696_AppearsErrorThatTypeCarNotSelected"/>
-            <class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_697_UseCarSelectorWhenChooseBrandModelType"/>
-            <class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_698_ResetCarSelector"/>
-            <class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_699_AppearsKbaPopupAfterClickLink"/>
-            <class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_700_ResetCarOnRouteAcc"/>
-            <class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_719_AppearsTooltipChooseBrandFirstTimeEnterSession"/>
-            <class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_720_AppearsTooltipChooseModelFirstTimeEnterSession"/>
-            <class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_721_AppearsTooltipChooseTypeFirstTimeEnterSession"/>
-            <class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_722_DisappearsTooltipAfterRefreshPage"/>
+            <class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_694"/>
+            <class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_695"/>
+            <class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_696"/>
+            <class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_697"/>
+            <class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_698"/>
+            <class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_699"/>
+            <class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_700"/>
+            <class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_719"/>
+            <class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_720"/>
+            <class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_721"/>
+            <class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_722"/>
         </classes>
     </test>
 
     <test name="QC_663_HorizontalCarSelector">
         <classes>
-            <class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_664_AppearsErrorThatBrandCarNotSelected"/>
-            <class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_666_AppearsErrorThatModelCarNotSelected"/>
-            <class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_669_AppearsErrorThatTypeCarNotSelected"/>
-            <class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_675_ResetHorizontalCarSelector"/>
-            <class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_681_AppearsTooltipChooseBrandFirstTimeEnterSession"/>
-            <class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_682_DisplayChooseModelTooltipFirstTimeEnterSession"/>
+            <class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_664"/>
+            <class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_666"/>
+            <class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_669"/>
+            <class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_675"/>
+            <class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_681"/>
+            <class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_682"/>
         </classes>
     </test>
 
     <test name="QC_2676_Selectors_Car">
         <classes>
-            <class name="ATD.Selectors.QC_2676_Selectors_Car.QC_942_CompatibilityList_TestNotCompatibleCarAndProduct"/>
-            <class name="ATD.Selectors.QC_2676_Selectors_Car.QC_3048_CheckTransitionOnProductWithNotCompatibleCar"/>
-            <class name="ATD.Selectors.QC_2676_Selectors_Car.QC_670_CheckTransitionOnProductWithCompatibleCar"/>
-            <class name="ATD.Selectors.QC_2676_Selectors_Car.QC_3167_CheckCarSelectorPresence"/>
+            <class name="ATD.Selectors.QC_2676_Selectors_Car.QC_942"/>
+            <class name="ATD.Selectors.QC_2676_Selectors_Car.QC_3048"/>
+            <class name="ATD.Selectors.QC_2676_Selectors_Car.QC_670"/>
+            <class name="ATD.Selectors.QC_2676_Selectors_Car.QC_3167"/>
         </classes>
     </test>
 
     <test name="QC_3174_OilSelectors">
         <classes>
-            <class name="ATD.Selectors.QC_3174_OilSelectors.QC_3173_CheckOilSelectorPresence"/>
+            <class name="ATD.Selectors.QC_3174_OilSelectors.QC_3173"/>
+        </classes>
+    </test>
+
+    <test name="QC_87_Trucks">
+        <classes>
+            <class name="ATD.Selectors.QC_87_Trucks.QC_88"/>
+            <class name="ATD.Selectors.QC_87_Trucks.QC_89"/>
+            <class name="ATD.Selectors.QC_87_Trucks.QC_90"/>
+            <class name="ATD.Selectors.QC_87_Trucks.QC_91"/>
+            <class name="ATD.Selectors.QC_87_Trucks.QC_83"/>
+            <class name="ATD.Selectors.QC_87_Trucks.QC_84"/>
+            <class name="ATD.Selectors.QC_87_Trucks.QC_85"/>
+            <class name="ATD.Selectors.QC_87_Trucks.QC_86"/>
+            <class name="ATD.Selectors.QC_87_Trucks.QC_92"/>
+            <class name="ATD.Selectors.QC_87_Trucks.QC_93"/>
+            <class name="ATD.Selectors.QC_87_Trucks.QC_157"/>
+            <class name="ATD.Selectors.QC_87_Trucks.QC_201"/>
+            <class name="ATD.Selectors.QC_87_Trucks.QC_202"/>
+            <class name="ATD.Selectors.QC_87_Trucks.QC_203"/>
+            <class name="ATD.Selectors.QC_87_Trucks.QC_204"/>
+            <class name="ATD.Selectors.QC_87_Trucks.QC_205"/>
+            <class name="ATD.Selectors.QC_87_Trucks.QC_206"/>
         </classes>
     </test>
 

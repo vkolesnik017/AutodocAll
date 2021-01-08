@@ -8,90 +8,104 @@
 
     <test name="QC_423_ListingOEN">
         <classes>
-            <class name="ATD.Listings.QC_423_ListingOEN.QC_424_GoingToRouteCategoryOenFromSearch"/>
-            <!--<class name="ATD.Listings.QC_423_ListingOEN.QC_425_GoingToRouteCategoryOenFromOenNumbersBlockOnProductPage"/>-->
-            <class name="ATD.Listings.QC_423_ListingOEN.QC_426_PresenceElementsOnOenListing"/>
-            <class name="ATD.Listings.QC_423_ListingOEN.QC_439_PresenceAdditionalListingOnSearchPage"/>
-            <!--<class name="ATD.Listings.QC_423_ListingOEN.QC_2061_RidexPrioritizationInTecDocListing"/inactive>-->
+            <class name="ATD.Listings.QC_423_ListingOEN.QC_424"/>
+            <!--<class name="ATD.Listings.QC_423_ListingOEN.QC_425"/>-->
+            <class name="ATD.Listings.QC_423_ListingOEN.QC_426"/>
+            <class name="ATD.Listings.QC_423_ListingOEN.QC_439"/>
+            <!--<class name="ATD.Listings.QC_423_ListingOEN.QC_2061"/inactive>-->
         </classes>
     </test>
 
     <test name="QC_433_ListingSearch">
         <classes>
-            <class name="ATD.Listings.QC_433_ListingSearch.QC_434_GoingToSearchPageFromSearchBar"/>
-            <class name="ATD.Listings.QC_433_ListingSearch.QC_435_PresenceElementsOnSearchPage"/>
-            <class name="ATD.Listings.QC_433_ListingSearch.QC_437_UsePaginationOnSearchPage"/>
-            <class name="ATD.Listings.QC_433_ListingSearch.QC_2950_CheckingDisplayOfGenericAlternativeNameInProductName"/>
-            <class name="ATD.Listings.QC_433_ListingSearch.QC_3015_CheckDisplayOfProductCharacteristicValues"/>
-            <class name="ATD.Listings.QC_433_ListingSearch.QC_3016_CheckDisplayOfProductCharacteristicValuesAtOemListing"/>
-            <class name="ATD.Listings.QC_433_ListingSearch.QC_3004_IconPresenceAboutQuantityOfGoods"/>
+            <class name="ATD.Listings.QC_433_ListingSearch.QC_434"/>
+            <class name="ATD.Listings.QC_433_ListingSearch.QC_435"/>
+            <class name="ATD.Listings.QC_433_ListingSearch.QC_437"/>
+            <class name="ATD.Listings.QC_433_ListingSearch.QC_2950"/>
+            <class name="ATD.Listings.QC_433_ListingSearch.QC_3015"/>
+            <class name="ATD.Listings.QC_433_ListingSearch.QC_3016"/>
+<!--            <class name="ATD.Listings.QC_433_ListingSearch.QC_3004"/>-->
         </classes>
     </test>
 
     <test name="QC_445_ListingTecDoc">
         <classes>
-            <class name="ATD.Listings.QC_445_ListingTecDoc.QC_478_NoListProductsOnSoft404"/>
-            <class name="ATD.Listings.QC_445_ListingTecDoc.QC_479_AvailabilityRequestForm"/>
-            <class name="ATD.Listings.QC_445_ListingTecDoc.QC_446_GoingToRouteTecDoc"/>
-            <class name="ATD.Listings.QC_445_ListingTecDoc.QC_447_PresenceElementsOnTecDocListing"/>
-            <class name="ATD.Listings.QC_445_ListingTecDoc.QC_449_AdditionalListingOnTecDoc"/>
-            <class name="ATD.Listings.QC_445_ListingTecDoc.QC_450_Soft404OnTecDoc"/>
-            <class name="ATD.Listings.QC_445_ListingTecDoc.QC_1740_DisplayCharacteristicPopupIfCarRatingMore100"/>
-            <class name="ATD.Listings.QC_445_ListingTecDoc.QC_1741_CharacteristicPopupIsNotDisplayedIfCarRatingLess100"/>
-            <class name="ATD.Listings.QC_445_ListingTecDoc.QC_1742_ReopeningPopupWithCarCharacteristics"/>
-            <class name="ATD.Listings.QC_445_ListingTecDoc.QC_2704_PresenceProgressBarOnAllListing"/>
-            <class name="ATD.Listings.QC_445_ListingTecDoc.QC_2947_CheckingDisplayOfGenericAlternativeNameInProductName"/>
-            <class name="ATD.Listings.QC_445_ListingTecDoc.QC_3123_CheckDisplayPriceMeterElementInTecDocListing"/>
-            <class name="ATD.Listings.QC_445_ListingTecDoc.QC_3137_DisplayOfBlockWithRecommendedReplacementInterval"/>
-            <class name="ATD.Listings.QC_445_ListingTecDoc.QC_3199_DisplayOfLinkingBlockInTecDoc"/>
+            <class name="ATD.Listings.QC_445_ListingTecDoc.QC_478"/>
+            <class name="ATD.Listings.QC_445_ListingTecDoc.QC_479"/>
+            <class name="ATD.Listings.QC_445_ListingTecDoc.QC_446"/>
+            <class name="ATD.Listings.QC_445_ListingTecDoc.QC_447"/>
+            <class name="ATD.Listings.QC_445_ListingTecDoc.QC_449"/>
+            <class name="ATD.Listings.QC_445_ListingTecDoc.QC_450"/>
+            <class name="ATD.Listings.QC_445_ListingTecDoc.QC_1740"/>
+            <class name="ATD.Listings.QC_445_ListingTecDoc.QC_1741"/>
+            <class name="ATD.Listings.QC_445_ListingTecDoc.QC_1742"/>
+            <class name="ATD.Listings.QC_445_ListingTecDoc.QC_2704"/>
+            <class name="ATD.Listings.QC_445_ListingTecDoc.QC_2947"/>
+            <class name="ATD.Listings.QC_445_ListingTecDoc.QC_3123"/>
+            <class name="ATD.Listings.QC_445_ListingTecDoc.QC_3137"/>
+            <class name="ATD.Listings.QC_445_ListingTecDoc.QC_3199"/>
         </classes>
     </test>
 
     <test name="QC_458_ListingViewModes">
         <classes>
-            <class name="ATD.Listings.QC_458_ListingViewModes.QC_2070_SortingOfProductWithGreyButton"/>
-            <class name="ATD.Listings.QC_458_ListingViewModes.QC_97_SortingOfProductsInTecDocListing"/>
-            <class name="ATD.Listings.QC_458_ListingViewModes.QC_377_SortingOfProductsInTecDocListing"/>
-            <class name="ATD.Listings.QC_458_ListingViewModes.QC_196_SortingByDefaultWithOneGenericOnTecDocIssue"/>
-            <class name="ATD.Listings.QC_458_ListingViewModes.QC_460_CompareProductsBetweenListingViewModesOnTecDoc"/>
-            <class name="ATD.Listings.QC_458_ListingViewModes.QC_461_CompareProductsBetweenListingViewModesOnOEN"/>
-            <!--<class name="ATD.Listings.QC_458_ListingViewModes.QC_462_CompareProductsBetweenListingViewModesOnSearch"/>-->
-            <class name="ATD.Listings.QC_458_ListingViewModes.QC_463_CompareProductsBetweenListingViewModesOnLKW"/>
-            <class name="ATD.Listings.QC_458_ListingViewModes.QC_464_CompareProductsBetweenListingViewModesOnACC"/>
-            <class name="ATD.Listings.QC_458_ListingViewModes.QC_2062_RidexPrioritizationInOENListing"/>
+            <class name="ATD.Listings.QC_458_ListingViewModes.QC_2070"/>
+            <class name="ATD.Listings.QC_458_ListingViewModes.QC_97"/>
+            <class name="ATD.Listings.QC_458_ListingViewModes.QC_377"/>
+            <class name="ATD.Listings.QC_458_ListingViewModes.QC_196"/>
+            <class name="ATD.Listings.QC_458_ListingViewModes.QC_460"/>
+            <class name="ATD.Listings.QC_458_ListingViewModes.QC_461"/>
+            <!--<class name="ATD.Listings.QC_458_ListingViewModes.QC_462"/>-->
+            <class name="ATD.Listings.QC_458_ListingViewModes.QC_463"/>
+            <class name="ATD.Listings.QC_458_ListingViewModes.QC_464"/>
+            <class name="ATD.Listings.QC_458_ListingViewModes.QC_2062"/>
         </classes>
     </test>
 
     <test name="QC_477_ListingSoft404">
         <classes>
-            <class name="ATD.Listings.QC_477_ListingSoft404.QC_480_ValidationRequiredEmailFieldOnSoft404"/>
-            <class name="ATD.Listings.QC_477_ListingSoft404.QC_481_ValidationRequiredCheckboxNewsletterSubscriptionOnSoft404"/>
+            <class name="ATD.Listings.QC_477_ListingSoft404.QC_480"/>
+            <class name="ATD.Listings.QC_477_ListingSoft404.QC_481"/>
         </classes>
     </test>
 
     <test name="QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults">
         <classes>
-            <class name="ATD.Listings.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1305_SearchByNameOfDynamicGeneric"/>
-            <class name="ATD.Listings.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1306_DynamicTitleOfProductMatchesTitleInSearchResults"/>
-            <class name="ATD.Listings.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1308_SearchByArticleBasedOnDynamicGenerics"/>
-            <class name="ATD.Listings.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1309_TestDisplayDynamicProductNameInSearchHints"/>
-            <class name="ATD.Listings.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1314_SearchByOEMconsideringDynamicGenerics"/>
-            <class name="ATD.Listings.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1315_DynamicProductNameMatchNameInSearchByOEM"/>
-            <class name="ATD.Listings.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1316_DynamicProductNameMatchNameInSearchByArticle"/>
-            <class name="ATD.Listings.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1318_TestProductAbsenceInSearchByMainGenericIfDynamicGenericFitsCar"/>
+            <class name="ATD.Listings.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1305"/>
+            <class name="ATD.Listings.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1306"/>
+            <class name="ATD.Listings.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1308"/>
+            <class name="ATD.Listings.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1309"/>
+            <class name="ATD.Listings.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1314"/>
+            <class name="ATD.Listings.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1315"/>
+            <class name="ATD.Listings.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1316"/>
+<!--            <class name="ATD.Listings.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1318"/>-->
         </classes>
     </test>
 
-    <!--     <test name="QC_2412_ListingOfProductListing">
-         <classes>
-             <class name="ATD.Listings.QC_2412_ListingOfProductListing.QC_2403_CheckProductSortingByPriceNettoInSearchListing"/>
-             <class name="ATD.Listings.QC_2412_ListingOfProductListing.QC_2674_CheckProductSortingByPriceNettoInSearchListingWithSelectedCar"/>
-         </classes>
-     </test>-->
+    <!--<test name="QC_2412_ListingOfProductListing">
+        <classes>
+            <class name="ATD.Listings.QC_2412_ListingOfProductListing.QC_2403"/>
+            <class name="ATD.Listings.QC_2412_ListingOfProductListing.QC_2674"/>
+        </classes>
+    </test>-->
 
     <test name="QC_2187_Tyres">
         <classes>
-            <class name="ATD.Listings.QC_2187_Tyres.QC_3014_CheckCounterOfProductsInDifferentTyresListings"/>
+            <class name="ATD.Listings.QC_2187_Tyres.QC_3014"/>
+            <class name="ATD.Listings.QC_2187_Tyres.QC_2188"/>
+            <class name="ATD.Listings.QC_2187_Tyres.QC_2189"/>
+            <class name="ATD.Listings.QC_2187_Tyres.QC_2526"/>
+            <class name="ATD.Listings.QC_2187_Tyres.QC_2530"/>
+            <class name="ATD.Listings.QC_2187_Tyres.QC_2064"/>
+            <class name="ATD.Listings.QC_2187_Tyres.QC_2065"/>
+            <class name="ATD.Listings.QC_2187_Tyres.QC_1271"/>
+            <class name="ATD.Listings.QC_2187_Tyres.QC_1284"/>
+            <class name="ATD.Listings.QC_2187_Tyres.QC_1239"/>
+            <!--<class name="ATD.Listings.QC_2187_Tyres.QC_1245"/>-->
+            <class name="ATD.Listings.QC_2187_Tyres.QC_1263"/>
+            <class name="ATD.Listings.QC_2187_Tyres.QC_1264"/>
+            <class name="ATD.Listings.QC_2187_Tyres.QC_1265"/>
+            <class name="ATD.Listings.QC_2187_Tyres.QC_1266"/>
         </classes>
     </test>
 
