@@ -44,6 +44,12 @@ public class Delivery_prices_aws {
         return deliveryPrice;
     }
 
+    @Step("Get delivery price for country {country}. Delivery_prices_aws")
+    public float getDeliveryPriceForCountry(String country) {
+        float deliveryPrice = Float.parseFloat(deliveryPrice(country).getValue());
+        return deliveryPrice;
+    }
+
 
     @Step("Get delivery price with translation countries {country}. Delivery_prices_aws")
     public float getDeliveryPriceWithTranslationCountries(String country) throws SQLException {
