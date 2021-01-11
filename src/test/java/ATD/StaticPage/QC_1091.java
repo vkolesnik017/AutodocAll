@@ -26,7 +26,7 @@ public class QC_1091 {
         return new SetUp("ATD").setUpShop("prod", "DE");
     }
 
-    @Test(dataProvider = "route", enabled = false)
+    @Test(dataProvider = "route")
     @Owner(value = "Chelombitko")
     @Flaky
     @Description(value = "Test checks elements on austauschartikel page")

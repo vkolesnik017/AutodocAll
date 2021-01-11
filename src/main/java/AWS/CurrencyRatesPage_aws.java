@@ -40,7 +40,7 @@ public class CurrencyRatesPage_aws {
         float price = getPriceOfCurrency(currency);
         float result = sum * price;
         BigDecimal bigDecimal = new BigDecimal(result);
-        BigDecimal roundResult = bigDecimal.setScale(2, BigDecimal.ROUND_DOWN);
+        BigDecimal roundResult = bigDecimal.setScale(2, BigDecimal.ROUND_HALF_DOWN);
         return Float.valueOf(String.valueOf(roundResult));
     }
 }
