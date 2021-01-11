@@ -764,7 +764,7 @@ public class Search_page_Logic extends Search_page {
 
     @Step("checking the matching options. Search_page")
     public Search_page_Logic checkMatchingOptions(List<String> matchingList, int positionOfProduct) {
-        List<String> optionsFromProduct = importantOptionsOfProduct(1).stream().map(n -> n.getText().replaceAll(".+\\w", "")).collect(Collectors.toList());
+        List<String> optionsFromProduct = importantOptionsOfProduct(positionOfProduct).stream().map(n -> n.getText().replaceAll(".+\\w", "")).collect(Collectors.toList());
 
         for (int i = 0; i < matchingList.size(); i++) {
             for (int j = 0; j < optionsFromProduct.size(); j++) {
