@@ -621,6 +621,15 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return this;
     }
 
+    @Step("Click checkbox for open fiscal code field for Billing block. CartAddress_page")
+    public CartAddress_page_Logic clickCheckboxForOpenFiscalCodeFieldForBilling() {
+        if (!fieldFiscalCodeBilling().isDisplayed()) {
+            checkboxFiscalCodeBilling().click();
+        }
+        fieldFiscalCodeBilling().shouldBe(visible);
+        return this;
+    }
+
     @Step("Click checkbox for closed fiscal code field. CartAddress_page")
     public CartAddress_page_Logic clickCheckboxForClosedFiscalCodeField() {
         if (fieldFiscalCode().isDisplayed()) {
@@ -633,6 +642,12 @@ public class CartAddress_page_Logic extends CartAddress_page {
     @Step("Filling field fiscal code {expectedText}. CartAddress_page")
     public CartAddress_page_Logic fillingFieldFiscalCode(String expectedText) {
         fieldFiscalCode().setValue(expectedText);
+        return this;
+    }
+
+    @Step("Filling field fiscal code {expectedText} Billing block. CartAddress_page")
+    public CartAddress_page_Logic fillingFieldFiscalCodeBilling(String expectedText) {
+        fieldFiscalCodeBilling().setValue(expectedText);
         return this;
     }
 
@@ -678,5 +693,49 @@ public class CartAddress_page_Logic extends CartAddress_page {
         checkCorrectTextAndFillInput(postalCodeFieldForBilling(), "");
         return this;
     }
+
+
+    @Step("Check text for checkbox fiscal code.Billing or Shipping. CartAddress_page")
+    public CartAddress_page_Logic checkTextForCheckboxFiscalCode(SelenideElement textFiscalCode, String shop) {
+        switch (shop) {
+            case "IT":
+                textFiscalCode.shouldHave(exactText("Codice fiscale (Opzionale)"));
+                break;
+            case "PT":
+                textFiscalCode.text().contains("NIF (Opcional)");
+                break;
+            case "RO":
+                textFiscalCode.text().contains("Număr personal de identificare (Facultativ)");
+                break;
+        }
+        return this;
+    }
+
+    @Step("Check visible / invisible fiscal code block (Billing or shipping block). CartAddress_page")
+    public CartAddress_page_Logic checkPresenceCheckboxFiscalCode(SelenideElement fiscalCodeBlock, boolean visibleElement) {
+        if (visibleElement == true) {
+            fiscalCodeBlock.shouldHave(attribute("style", "display: flex;"));
+        } else if (visibleElement == false) {
+            fiscalCodeBlock.shouldHave(attribute("style", "display: none;"));
+        }
+        return this;
+    }
+
+    @Step("Click checkbox firm and open field for Shipping or Billing block. CartAddress_page")
+    public CartAddress_page_Logic clickCheckboxFirmAndOpenField(SelenideElement checkBoxFirm, SelenideElement fieldFirm) {
+        checkBoxFirm.shouldBe(visible).click();
+        fieldFirm.shouldBe(visible);
+        return this;
+    }
+
+    @Step("Click checkbox firm and close field for Shipping or Billing block. CartAddress_page")
+    public CartAddress_page_Logic clickCheckboxFirmAndCloseField(SelenideElement checkBoxFirm, SelenideElement fieldFirm) {
+        checkBoxFirm.shouldBe(visible).click();
+        fieldFirm.shouldNotBe(visible);
+        return this;
+    }
+
+
+
 
 }
