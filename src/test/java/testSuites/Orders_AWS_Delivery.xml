@@ -96,7 +96,7 @@
         </classes>
     </test>
 
-    <test name="QC_2506_FreeDeliveryLimits_PositiveCase">
+    <test name="QC_2506_FreeDeliveryLimits_PositiveCase" thread-count="1">
         <classes>
             <class name="ATD.Orders_AWS_Delivery.QC_2505_Delivery.QC_2506"/>
         </classes>
@@ -108,13 +108,13 @@
         </classes>
     </test>
 
-    <test name="QC_2508_CheckDeliveryCost_Front">
+    <test name="QC_2508_CheckDeliveryCost_Front" thread-count="1">
         <classes>
             <class name="ATD.Orders_AWS_Delivery.QC_2505_Delivery.QC_2508"/>
         </classes>
     </test>
 
-    <test name="QC_2509_CheckDeliveryCost_AWS">
+    <test name="QC_2509_CheckDeliveryCost_AWS" thread-count="1">
         <classes>
             <class name="ATD.Orders_AWS_Delivery.QC_2505_Delivery.QC_2509"/>
         </classes>
@@ -136,7 +136,7 @@
         </classes>
     </test>
 
-    <test name="QC_2994_FilterByOrdersWithPaylinksInOrderSearch">
+    <test name="QC_2994_FilterByOrdersWithPaylinksInOrderSearch" thread-count="2">
             <classes>
                     <class name="ATD.Orders_AWS_Delivery.QC_2994_FilterByOrdersWithPaylinksInOrderSearch.QC_3001"/>
                     <class name="ATD.Orders_AWS_Delivery.QC_2994_FilterByOrdersWithPaylinksInOrderSearch.QC_2997"/>
