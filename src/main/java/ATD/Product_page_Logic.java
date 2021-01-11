@@ -1443,9 +1443,21 @@ public class Product_page_Logic extends Product_page {
 
     @Step("close basket pop-up.Product_page")
     public Product_page_Logic closeBasketPopUp() {
-       if (btnCloseBasketPopUp().isDisplayed()){
-           btnCloseBasketPopUp().click();
-       }
+        btnCloseBasketPopUp().click();
+        return this;
+    }
+
+    @Step("check Visibility of Basket Drop Menu. Product_page")
+    public Product_page_Logic checkVisibilityOfBasketDropMenu() {
+        if (basketDropMenu().isDisplayed()) {
+            basketDropMenu().waitWhile(visible, 5000);
+        }
+        return this;
+    }
+
+    @Step("hover on basket in header. Product_page")
+    public Product_page_Logic hoverOnBasketInHeader() {
+        basket().hover();
         return this;
     }
 }

@@ -35,12 +35,12 @@ public class QC_3218 {
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test Check add product to basket from gluing block on motorcycle page")
-    public void testCheckAddProductToBasketFromGluingBlock(String route)  {
+    public void testCheckAddProductToBasketFromGluingBlock(String route) {
         openPage(route);
         String idOfAddedVolume = productPage.presenceOfGluingBlock().getIdOfGluingProduct(0);
         productPage.clickOnBtnAddGluingProductToBasket(0)
-                .displayBasketDropMenu()
                 .closeBasketPopUp()
+                .hoverOnBasketInHeader()
                 .clickOnBasketInHeader();
         new Cart_page_Logic().checkOfIdAddedProductInBasket(idOfAddedVolume);
     }
