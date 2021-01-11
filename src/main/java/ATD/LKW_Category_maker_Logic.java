@@ -9,6 +9,7 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.CollectionCondition.size;
+import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.back;
 import static com.codeborne.selenide.Selenide.page;
@@ -161,7 +162,7 @@ public class LKW_Category_maker_Logic extends LKW_Category_maker {
 
     @Step("visibility of models block in open condition .LKW_Category_maker")
     public LKW_Category_maker_Logic modelBlockInOpenCondition() {
-        modelsOfTruckInBlock().shouldHaveSize(37);
+        modelsOfTruckInBlock().shouldHave(sizeGreaterThan(6));
         return this;
     }
 
