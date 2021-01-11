@@ -934,7 +934,7 @@ public class Main_page_Logic extends Main_page {
         CommonMethods commonMethods = new CommonMethods();
         String facebook = "https://www.facebook.com/autodoc.de/";
         String youTube = "https://www.youtube.com/channel/UCH1orNkIIGZ1jJRjhgY4JeA";
-        String instagram = "https://www.instagram.com/autodoc_autoparts/";
+        String instagram = "https://www.instagram.com/";
         footerForm().scrollTo();
         facebookButton().click();
         commonMethods.checkingUrlAndCloseTab(facebook);
@@ -1166,7 +1166,7 @@ public class Main_page_Logic extends Main_page {
 
     @Step("Confirms the rules of privacy policy in the popup that appears. Main_page")
     public Main_page_Logic confirmPrivacyPolicyInPopUp() {
-        popUpPrivacyPolicy().shouldBe(visible);
+        popUpPrivacyPolicy().waitUntil(visible, 20000);
         executeJavaScript("arguments[0].click();", checkBoxPopUpPrivacyPolicy());
         successBtnInPopUpPrivacyPolicy().click();
         return this;

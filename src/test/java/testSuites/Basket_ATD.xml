@@ -65,7 +65,7 @@
             <!--<class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1928"/>-->
             <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1930"/>
             <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1929"/>
-           <!--<class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1931"/>-->
+            <!--<class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1931"/>-->
         </classes>
     </test>
 
@@ -142,5 +142,12 @@
             <class name="ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD.QC_2818"/>
         </classes>
     </test>
+
+    <test name="QC_3027_CheckingVATWithdrawalForCH">
+        <classes>
+            <class name="ATD.Basket.QC_3027_CheckingVATWithdrawalForCH.QC_3036"/>
+        </classes>
+    </test>
+
 
 </suite>

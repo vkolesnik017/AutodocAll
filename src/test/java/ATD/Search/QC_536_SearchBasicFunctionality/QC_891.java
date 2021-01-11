@@ -1,6 +1,7 @@
 package ATD.Search.QC_536_SearchBasicFunctionality;
 
 import ATD.Moto_main_page_Logic;
+import Common.DataBase;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -12,6 +13,7 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
+import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
@@ -35,8 +37,8 @@ public class QC_891 {
         openPage(route);
 
         new Moto_main_page_Logic()
-                .inputOfBrandInMainSearchField("Bosch")
-                .checkOfCurrentUrl("search24");
+                .inputOfBrandInMainSearchField("Bosch");
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "search24"));
     }
 
     @AfterMethod

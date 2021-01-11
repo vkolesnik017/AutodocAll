@@ -1445,6 +1445,15 @@ public class Product_page_Logic extends Product_page {
         if (btnCloseBasketPopUp().isDisplayed()) {
             btnCloseBasketPopUp().click();
         }
+        btnCloseBasketPopUp().click();
+        return this;
+    }
+
+    @Step("check Visibility of Basket Drop Menu. Product_page")
+    public Product_page_Logic checkVisibilityOfBasketDropMenu() {
+        if (basketDropMenu().isDisplayed()) {
+            basketDropMenu().waitWhile(visible, 5000);
+        }
         return this;
     }
 
@@ -1455,6 +1464,12 @@ public class Product_page_Logic extends Product_page {
         Collections.sort(valuesFromProductPage);
         Collections.sort(values);
         Assert.assertEquals(valuesFromProductPage, values);
+        return this;
+    }
+
+    @Step("hover on basket in header. Product_page")
+    public Product_page_Logic hoverOnBasketInHeader() {
+        basket().hover();
         return this;
     }
 }

@@ -1,11 +1,8 @@
 package AWS;
 
 import com.codeborne.selenide.SelenideElement;
-
-import static com.codeborne.selenide.Condition.not;
-import static com.codeborne.selenide.Condition.selected;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selenide.*;
 
 public class UsersSettings_aws {
 
@@ -24,6 +21,7 @@ public class UsersSettings_aws {
       languageRadioButton(languageDeRuEnPl).click();
       saveButton().click();
       languageRadioButton(languageDeRuEnPl).shouldBe(selected);
+      sleep(2000);
     }
     return this;
   }

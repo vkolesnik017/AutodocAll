@@ -169,13 +169,6 @@ public class Search_page_Logic extends Search_page {
         return this;
     }
 
-    @Step("check of current url .Search_page")
-    public Search_page_Logic checkOfCurrentUrl(String subRoute) throws SQLException {
-        DataBase db = new DataBase("ATD");
-        Assert.assertEquals(url(), db.getFullRouteByRouteAndSubroute("prod", "DE", "main", subRoute));
-        return this;
-    }
-
     @Step("select brand in brands block. Search_page")
     public Search_page_Logic selectBrandInBlock(String idOfBrand) {
 

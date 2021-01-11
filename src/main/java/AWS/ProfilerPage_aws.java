@@ -23,11 +23,7 @@ public class ProfilerPage_aws {
     }
 
     public SelenideElement taxFormula() {
-        return $x("(//table[@class='table table-condensed table-bordered']/tbody)[2]//tr[4]//td[2]");
-    }
-
-    public SelenideElement taxFormulaForIlliquidProduct() {
-        return $x("(//table[@class='table table-condensed table-bordered']/tbody)[2]//tr[3]//td[2]");
+        return $x("(//table[@class='table table-condensed table-bordered']/tbody)[2]//tr//td[text()='Налог']/..//td[2]");
     }
 
     private SelenideElement standardMultiplier() {
@@ -35,7 +31,7 @@ public class ProfilerPage_aws {
     }
 
     private SelenideElement totalPrice() {
-        return $x("(//table[@class='table table-condensed table-bordered']/tbody)[2]//tr[5]//td[2]");
+        return $x("(//table[@class='table table-condensed table-bordered']/tbody)[2]//tr[6]//td[2]");
     }
 
 

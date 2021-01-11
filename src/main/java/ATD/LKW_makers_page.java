@@ -85,4 +85,6 @@ public class LKW_makers_page {
     }
 
     SelenideElement mainLogoInHeader() {return $x("//a[@class='header__logo-main']/img");}
+
+    SelenideElement mainHeadline() {return $x("//div[@class='top_title no_image']/h2");}
 }
