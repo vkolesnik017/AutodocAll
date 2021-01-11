@@ -31,7 +31,7 @@ public class ProfilerPage_aws {
     }
 
     private SelenideElement totalPrice() {
-        return $x("(//table[@class='table table-condensed table-bordered']/tbody)[2]//tr[5]//td[2]");
+        return $x("(//table[@class='table table-condensed table-bordered']/tbody)[2]//tr[6]//td[2]");
     }
 
 

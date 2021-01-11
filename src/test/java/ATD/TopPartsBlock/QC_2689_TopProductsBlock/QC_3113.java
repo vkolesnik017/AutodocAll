@@ -1,7 +1,6 @@
-package ATD.ProductPage.QC_2741_ProductPage_CarRoute;
+package ATD.TopPartsBlock.QC_2689_TopProductsBlock;
 
-import ATD.Cart_page_Logic;
-import ATD.Product_page_Logic;
+import ATD.Maker_car_list_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -17,9 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_3218 {
-
-    Product_page_Logic productPage = new Product_page_Logic();
+public class QC_3113 {
 
     @BeforeClass
     void setUp() {
@@ -28,21 +25,16 @@ public class QC_3218 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product66");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "maker_car_list19");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test Check add product to basket from gluing block on motorcycle page")
-    public void testCheckAddProductToBasketFromGluingBlock(String route) {
+    @Description(value = "test check the uniqueness of generics in the TOP products block")
+    public void testCheckUniquenessOfGenericsOfTopProducts(String route) {
         openPage(route);
-        String idOfAddedVolume = productPage.presenceOfGluingBlock().getIdOfGluingProduct(0);
-        productPage.clickOnBtnAddGluingProductToBasket(0)
-                .closeBasketPopUp()
-                .hoverOnBasketInHeader()
-                .clickOnBasketInHeader();
-        new Cart_page_Logic().checkOfIdAddedProductInBasket(idOfAddedVolume);
+        new Maker_car_list_page_Logic().checkUniquenessOfGenericsInTopProducts();
     }
 
     @AfterMethod

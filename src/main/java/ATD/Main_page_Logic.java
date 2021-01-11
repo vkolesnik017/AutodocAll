@@ -934,7 +934,7 @@ public class Main_page_Logic extends Main_page {
         CommonMethods commonMethods = new CommonMethods();
         String facebook = "https://www.facebook.com/autodoc.de/";
         String youTube = "https://www.youtube.com/channel/UCH1orNkIIGZ1jJRjhgY4JeA";
-        String instagram = "https://www.instagram.com/autodoc_autoparts/";
+        String instagram = "https://www.instagram.com/";
         footerForm().scrollTo();
         facebookButton().click();
         commonMethods.checkingUrlAndCloseTab(facebook);
@@ -1700,6 +1700,43 @@ public class Main_page_Logic extends Main_page {
     @Step("click on main logo. Main_page")
     public Main_page_Logic clickOnMainLogo() {
         logoInHeader().click();
+        return this;
+    }
+
+    @Step("display pop-up About Required Login Field. Main_page")
+    public Main_page_Logic displayPopUpAboutRequiredLoginField(String expectedText) {
+        infoErrorLoginPopUp().shouldBe(visible);
+        infoTextInErrorLoginPopUp().shouldHave(text(expectedText));
+        return this;
+    }
+
+    @Step("close pop-up About Required Login Field. Main_page")
+    public Main_page_Logic closePopUpAboutRequiredLoginField() {
+        subscriptionPopupClose().click();
+        return this;
+    }
+
+    @Step("click on Registration form. Main_page")
+    public Main_page_Logic clickOnRegistrationForm() {
+        loginBtnInHeader().shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("click on 'Submit' button of registration form. Main_page")
+    public Main_page_Logic clickOnSubmitOfRegistrationForm() {
+        submitBtnLogin().shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("forced click on logo in header. Main_page")
+    public Main_page_Logic forcedClickOnLogoInHeader() {
+        actions().click(logoInHeader()).perform();
+        return this;
+    }
+
+    @Step("set eMail in registration form. Main_page")
+    public Main_page_Logic setMailInRegistrationForm(String mail) {
+        mailFieldLogin().setValue(mail);
         return this;
     }
 }

@@ -48,6 +48,7 @@
             <class name="ATD.FiltersSorting.QC_52_FiltersSorting_byBrand.QC_2758"/>
             <class name="ATD.FiltersSorting.QC_52_FiltersSorting_byBrand.QC_2756"/>
             <class name="ATD.FiltersSorting.QC_52_FiltersSorting_byBrand.QC_2757"/>
+            <class name="ATD.FiltersSorting.QC_52_FiltersSorting_byBrand.QC_3145"/>
         </classes>
     </test>
 

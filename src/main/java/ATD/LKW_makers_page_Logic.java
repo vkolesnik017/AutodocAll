@@ -69,7 +69,8 @@ public class LKW_makers_page_Logic extends LKW_makers_page {
             mainCountOfModels.add(Integer.parseInt(countOfModels().get(i).getText().replaceAll("[^0-9]", "")));
         }
         int totalAmountOfModels = getMainAmount(mainCountOfModels);
-        Assert.assertEquals(totalAmountOfModels, 243);
+        int totalCountOfModelsFromHeadLine = Integer.parseInt(mainHeadline().getText().replaceAll("^.+ und","").replaceAll("[^0-9]",""));
+        Assert.assertEquals(totalAmountOfModels, totalCountOfModelsFromHeadLine);
         return this;
     }
 
