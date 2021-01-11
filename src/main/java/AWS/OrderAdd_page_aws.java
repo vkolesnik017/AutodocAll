@@ -213,11 +213,11 @@ public class OrderAdd_page_aws {
     @Step("Click save order button. OrderAdd_page_aws")
     public Order_aws clickSaveOrderBtn() {
         if (preLoader().isDisplayed()) {
-            preLoader().waitUntil(attribute("style", "display: none;"), 50000);
+            preLoader().waitUntil(attribute("style", "display: none;"), 60000);
         }
         saveOrderBtn().click();
         if (preLoader().isDisplayed()) {
-            preLoader().waitUntil(attribute("style", "display: none;"), 50000);
+            preLoader().waitUntil(attribute("style", "display: none;"), 60000);
         }
         return page(Order_aws.class);
     }

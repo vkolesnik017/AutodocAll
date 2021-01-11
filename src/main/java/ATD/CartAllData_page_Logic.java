@@ -169,6 +169,17 @@ public class CartAllData_page_Logic extends CartAllData_page {
         return this;
     }
 
+    @Step("Checks delivery costs for a costForCountry {deliveryCostForCountry} or costForRegion {deliveryCostForRegion}. CartAllData_page")
+    public CartAllData_page_Logic checkDeliveryCostForCountryOrRegion(float deliveryCostForRegion, float deliveryCostForCountry, String shop) {
+        if (shop.equals("DE")) {
+            checkRegularDeliveryPrice(deliveryCostForRegion);
+        }
+        if (shop.equals("LI")) {
+            checkRegularDeliveryPrice(deliveryCostForCountry);
+        }
+        return this;
+    }
+
     @Step("Checks Heavy loads delivery price. CartAllData_page")
     public CartAllData_page_Logic checkHeavyLoadsDeliveryPriceAllData(String heavyLoadsDeliveryPrice) {
         heavyLoadsDeliveryPrice().shouldHave(text(heavyLoadsDeliveryPrice));

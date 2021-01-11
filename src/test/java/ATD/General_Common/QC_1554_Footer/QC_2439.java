@@ -28,7 +28,7 @@ public class QC_2439 {
 
     @Flaky
     @Owner(value = "LavrynenkoOlha")
-    @Test(dataProvider = "route")
+    @Test(dataProvider = "route", enabled = false)
     @Description(value = "Test check the transition to the Instagram in the Social Network Block")
     public void checkingTransitionInTheSocialNetworksBlock(String route) {
 

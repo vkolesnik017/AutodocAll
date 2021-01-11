@@ -10,10 +10,7 @@ import io.qameta.allure.Step;
 import org.testng.Assert;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static ATD.CommonMethods.*;
@@ -377,7 +374,7 @@ public class Maker_car_list_page_Logic extends Maker_car_list_page {
         String model = getSelectedModel();
         for (int i = 0; i < imagesOfTopProducts().size(); i++) {
             imagesOfTopProducts().get(i).shouldBe(visible).click();
-            new Product_page_Logic().compareApplicabilityCar(marke,model);
+            new Product_page_Logic().compareApplicabilityCar(marke, model);
             back();
         }
         return this;
@@ -393,5 +390,13 @@ public class Maker_car_list_page_Logic extends Maker_car_list_page {
     public String getSelectedModel() {
         String model = modelInSelector().shouldBe(visible).getSelectedText();
         return model;
+    }
+
+    @Step("check Uniqueness Of Generics In Top Products. Maker_car_list_page")
+    public Maker_car_list_page_Logic checkUniquenessOfGenericsInTopProducts() {
+        List<String> generics = genericOfTopProducts().stream().map(n -> n.shouldBe(visible).getText()).collect(Collectors.toList());
+        Set<String> uniqueGenerics = new HashSet<>(generics);
+        Assert.assertEquals(uniqueGenerics.size(),generics.size());
+        return this;
     }
 }

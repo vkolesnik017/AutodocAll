@@ -871,4 +871,8 @@ public class Main_page {
     }
 
     ElementsCollection allChildCategories() {return $$x("//span[@class='word_break_all']");}
+
+    SelenideElement infoErrorLoginPopUp() {return $(byId("popup_update"));}
+
+    SelenideElement infoTextInErrorLoginPopUp() {return $x("//div[@class='txt ']/ul");}
 }
