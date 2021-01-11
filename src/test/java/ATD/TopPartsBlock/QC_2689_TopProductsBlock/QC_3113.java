@@ -1,8 +1,7 @@
-package ATD.Tyres.QC_1104_TyresSelector;
+package ATD.TopPartsBlock.QC_2689_TopProductsBlock;
 
-
+import ATD.Maker_car_list_page_Logic;
 import Common.SetUp;
-import ATD.Tyres_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -17,7 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1287 {
+public class QC_3113 {
 
     @BeforeClass
     void setUp() {
@@ -26,25 +25,20 @@ public class QC_1287 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres,tyres_maker");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "maker_car_list19");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "Romaniuta")
-    @Description(value = "Test checks tyres selector search by brand")
-    public void testTyresSearchByBrand(String route) {
+    @Owner(value = "Kolesnik")
+    @Description(value = "test check the uniqueness of generics in the TOP products block")
+    public void testCheckUniquenessOfGenericsOfTopProducts(String route) {
         openPage(route);
-        new Tyres_page_Logic().checkTyresSelectorVisibilityPKW()
-                .clickBrandDropdown()
-                .clickApolloBrand()
-                .clickSubmitTyresSelector()
-                .checkFirstTyreBrandApollo()
-                .checkBrandIsSelectedInBrandBlock("Apollo");
+        new Maker_car_list_page_Logic().checkUniquenessOfGenericsInTopProducts();
     }
 
     @AfterMethod
-    public void close() {
+    private void close() {
         closeWebDriver();
     }
 }

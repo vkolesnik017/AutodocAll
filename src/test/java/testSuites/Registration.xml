@@ -15,4 +15,11 @@
             <class name="ATD.Registration.QC_2108"/>
         </classes>
     </test>
+
+    <test name="QC_2703_RegistrationLogin">
+        <classes>
+            <class name="ATD.Registration.QC_2703_RegistrationLogin.QC_3115"/>
+        </classes>
+    </test>
+
 </suite>

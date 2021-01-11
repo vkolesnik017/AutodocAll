@@ -183,4 +183,6 @@ class Category_car_list_page {
     }
 
     SelenideElement nextPagePagination() {return $x("//span[@class='next'][1]/a");}
+
+    ElementsCollection activeVisibleBrands() {return $$x("//*[self::li[@class='slick-slide slick-active'] or self::li[@class='slick-slide slick-current slick-active']]//input");}
 }
