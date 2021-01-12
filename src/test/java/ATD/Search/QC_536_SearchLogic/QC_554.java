@@ -1,4 +1,4 @@
-package ATD.Search.QC_536_SearchBasicFunctionality;
+package ATD.Search.QC_536_SearchLogic;
 
 import ATD.Search_page_Logic;
 import AWS.CategoriesSynonyms_aws;

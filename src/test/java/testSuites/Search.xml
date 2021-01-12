@@ -8,17 +8,17 @@
 
     <test name="QC_536_SearchBasicFunctionality">
         <classes>
-            <class name="ATD.Search.QC_536_SearchBasicFunctionality.QC_891"/>
-            <class name="ATD.Search.QC_536_SearchBasicFunctionality.QC_537"/>
-            <class name="ATD.Search.QC_536_SearchBasicFunctionality.QC_538"/>
-            <class name="ATD.Search.QC_536_SearchBasicFunctionality.QC_539"/>
-            <class name="ATD.Search.QC_536_SearchBasicFunctionality.QC_540"/>
-            <class name="ATD.Search.QC_536_SearchBasicFunctionality.QC_541"/>
-            <class name="ATD.Search.QC_536_SearchBasicFunctionality.QC_554"/>
-            <class name="ATD.Search.QC_536_SearchBasicFunctionality.QC_2668"/>
-            <class name="ATD.Search.QC_536_SearchBasicFunctionality.QC_2669"/>
-            <class name="ATD.Search.QC_536_SearchBasicFunctionality.QC_3203"/>
-            <class name="ATD.Search.QC_536_SearchBasicFunctionality.QC_3204"/>
+            <class name="ATD.Search.QC_536_SearchLogic.QC_891"/>
+            <class name="ATD.Search.QC_536_SearchLogic.QC_537"/>
+            <class name="ATD.Search.QC_536_SearchLogic.QC_538"/>
+            <class name="ATD.Search.QC_536_SearchLogic.QC_539"/>
+            <class name="ATD.Search.QC_536_SearchLogic.QC_540"/>
+            <class name="ATD.Search.QC_536_SearchLogic.QC_541"/>
+            <class name="ATD.Search.QC_536_SearchLogic.QC_554"/>
+            <class name="ATD.Search.QC_536_SearchLogic.QC_2668"/>
+            <class name="ATD.Search.QC_536_SearchLogic.QC_2669"/>
+            <class name="ATD.Search.QC_536_SearchLogic.QC_3203"/>
+            <class name="ATD.Search.QC_536_SearchLogic.QC_3204"/>
         </classes>
     </test>
 
