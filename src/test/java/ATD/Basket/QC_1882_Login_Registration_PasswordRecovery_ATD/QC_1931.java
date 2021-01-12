@@ -35,7 +35,7 @@ public class QC_1931 {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product32");
     }
 
-    @Test(dataProvider = "route")
+    @Test(dataProvider = "route", enabled = false)
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks password recovery by incorrect password confirmation.")

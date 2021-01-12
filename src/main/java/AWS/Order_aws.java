@@ -2,6 +2,7 @@ package AWS;
 
 import Common.DataBase;
 import com.codeborne.selenide.*;
+import com.codeborne.selenide.conditions.Or;
 import com.codeborne.selenide.ex.ElementShould;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -172,6 +173,10 @@ public class Order_aws {
         return $(By.xpath("//div[@class='dt_gal_actions']/a[@class='btn btn-success']"));
     }
 
+    private SelenideElement popUpAddProduct() {
+        return $x("//div[@id='addProduct']//div[@class='modal-dialog']");
+    }
+
     private SelenideElement articleNumberField() {
         return $(By.id("AddProduct[articleNo]"));
     }
@@ -310,10 +315,6 @@ public class Order_aws {
 
     private SelenideElement btnAddedGoodsInOrder() {
         return $x("//a[@class='btn btn-success']//i");
-    }
-
-    private SelenideElement popUpAddProduct() {
-        return $x("//div[@id='addProduct']//div[@class='modal-dialog']");
     }
 
     private SelenideElement fieldArticleNumInPopUpAddProduct() {
@@ -854,7 +855,7 @@ public class Order_aws {
         return this;
     }
 
-    @Step("Method checks appearing of tooltip when we try add incorrect product quantity")
+    @Step("Method checks appearing of tooltip when we try add incorrect product quantity. Order_aws")
     public Order_aws checkTooltipByAddingIncorrectProductQuantity(String productQuantity) {
         String articleNumber = articleNumber().getText();
         addingBtn().scrollTo().click();
@@ -1463,7 +1464,7 @@ public class Order_aws {
         return this;
     }
 
-    @Step("Check modal window declaration and click print button")
+    @Step("Check modal window declaration and click print button. Order_aws")
     public Order_aws checkModalWindowDeclarationAndClickPrintBtn() {
         modalWindowDeclaration().waitUntil(visible, 10000);
         checkboxSelectAllInModalDeclaration().shouldBe(visible).click();
@@ -1471,6 +1472,22 @@ public class Order_aws {
         sleep(5000);
         closeBtnModalWindowDeclaration().waitUntil(visible, 10000);
         closeBtnModalWindowDeclaration().click();
+        return this;
+    }
+
+    @Step("Click button added product. Order_aws")
+    public Order_aws clickBtnAddProduct() {
+        addingBtn().scrollTo().click();
+        popUpAddProduct().shouldBe(visible);
+        return this;
+    }
+
+    @Step("Adding product {articleNumber, productQuantity} in order. Order_aws")
+    public Order_aws addProductInOrder(String articleNumber, String productQuantity) {
+        clickBtnAddProduct();
+        articleNumberField().setValue(articleNumber);
+        countAddProductField().setValue(productQuantity);
+        addingProductBtn().click();
         return this;
     }
 }
