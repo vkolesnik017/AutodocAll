@@ -1,6 +1,7 @@
 package ATD.Basket.QC_2672_GeneralBasketFunctionality_ATD;
 
 import ATD.Cart_page_Logic;
+import ATD.Main_page_Logic;
 import ATD.Product_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
@@ -57,9 +58,9 @@ public class QC_1553 {
 
     }
 
-   /* @DataProvider(name = "routeForTires", parallel = true)  //TODO commented on the method till fixing the bug on the tires SHOP-1934. So as not to turn off the test
+    @DataProvider(name = "routeForTires", parallel = true)
     Object[] dataProviderForTires() {
-        return new SetUp("ATD").setUpShop("prod", "AT,BG,BE,CZ,DE,DK,EE,ES,FI,FR,EN,HU,IT,LV,NL,PL,PT,RO,SE,SI,SK");
+        return new SetUp("ATD").setUpShop("prod", "AT,BG,BE,CZ,DE,DK,EE,ES,FI,FR,HU,IT,LV,NL,PL,PT,RO,SE,SI,SK");
     }
 
     @Owner("Chelombitko")
@@ -77,8 +78,8 @@ public class QC_1553 {
                 .nextBtnClick()
                 .choosePayPal()
                 .nextBtnClick()
-                .checkCurrencyOnAllDataPage(shop);
-    }*/
+                .checkCurrencyOnAllDataPageForTyres(shop);
+    }
 
     @DataProvider(name = "routeAndProductsIdForCH")
     Object[] dataProviderForCH() {
