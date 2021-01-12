@@ -39,7 +39,7 @@ public class QC_1391 {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "PL", "main", "product2");
     }
 
-    @Test(dataProvider = "routePL", enabled = false)
+    @Test(dataProvider = "routePL")
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks the successful placement of the order indicating the company, split billing " +
@@ -55,6 +55,7 @@ public class QC_1391 {
                 .signIn(emailPL, password)
                 .fillAllFields(shop)
                 .fillAllFieldsAndFirmForBilling(shop,"12345","Kaliszc", "FB-MONT A. Fułek Spółka Komandytowa")
+                .fillFieldIdCompanyBilling("6180029941")
                 .nextBtnClick()
                 .choosePrzelewBankowy()
                 .nextBtnClick()
@@ -95,7 +96,7 @@ public class QC_1391 {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product2");
     }
 
-    @Test(dataProvider = "routeDE", enabled = false)
+    @Test(dataProvider = "routeDE")
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks the successful placement of the order indicating the company, split billing " +
@@ -150,7 +151,7 @@ public class QC_1391 {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "ES", "main", "product2");
     }
 
-    @Test(dataProvider = "routeES", enabled = false)
+    @Test(dataProvider = "routeES")
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks successful order placement with indicating of company, split billing " +
@@ -166,6 +167,7 @@ public class QC_1391 {
                 .signIn(emailES, password)
                 .fillAllFields("PL")
                 .fillAllFieldsAndFirmForBilling("PL","12345","Kaliszc", "FB-MONT A. Fułek Spółka Komandytowa")
+                .fillFieldIdCompanyBilling("6180029941")
                 .nextBtnClick()
                 .chooseVorkasse()
                 .nextBtnClick()
