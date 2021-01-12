@@ -35,6 +35,19 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return this;
     }
 
+    @Step("Filling fields for Billing. CartAddress_page")
+    public CartAddress_page_Logic fillAllFieldsForBilling(String shop) {
+        checkCorrectTextAndFillInput(vornameBilling(), "autotest");
+        checkCorrectTextAndFillInput(nameInBilling(), "autotest");
+        checkCorrectTextAndFillInput(strasseBilling(), "autotest");
+        checkCorrectTextAndFillInput(paymentHouseBilling(), "autotest");
+        chooseDeliveryCountryForBilling(shop);
+        fillInPostalCodeForBilling("default");
+        checkCorrectTextAndFillInput(ortBilling(), "autotest");
+        checkCorrectTextAndFillInput(telephonBilling(), "200+002");
+        return this;
+    }
+
     @Step("Fill in all fields with default values and also fill fields Shop {shop}, Index {index}, Firm {name Form} and City {city} for Shipping. CartAddress_page")
     public CartAddress_page_Logic fillAllFieldsAndFirmForShipping(String shop, String index, String nameFirm, String city) {
         checkCorrectTextAndFillInput(vorname(), "autotest");
@@ -730,10 +743,14 @@ public class CartAddress_page_Logic extends CartAddress_page {
                 textFiscalCode.shouldHave(exactText("Codice fiscale (Opzionale)"));
                 break;
             case "PT":
-                textFiscalCode.text().contains("NIF (Opcional)");
+                textFiscalCode.shouldHave(exactText("NIF (Opcional)"));
                 break;
             case "RO":
-                textFiscalCode.text().contains("Număr personal de identificare (Facultativ)");
+                if (textFiscalCode.isDisplayed()) {
+                    textFiscalCode.shouldHave(exactText("Număr personal de identificare (Facultativ)"));
+                }else if (!textFiscalCode.isDisplayed()) {
+                    textFiscalCodeInBillingForm2().shouldHave(exactText("Număr personal de identificare (Facultativ)"));
+                }
                 break;
         }
         return this;

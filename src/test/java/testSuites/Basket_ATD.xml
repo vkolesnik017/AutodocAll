@@ -152,6 +152,7 @@
     <test name="QC_2915_OptionalFieldFiscalCodeForRomaniaItalyPortugal">
         <classes>
             <class name="ATD.Basket.QC_2915_OptionalFieldFiscalCodeForRomaniaItalyPortugal.QC_2928"/>
+            <class name="ATD.Basket.QC_2915_OptionalFieldFiscalCodeForRomaniaItalyPortugal.QC_2930"/>
         </classes>
     </test>
 

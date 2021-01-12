@@ -182,11 +182,15 @@ public class CartAddress_page {
     }
 
     public SelenideElement textFiscalCodeInShippingForm() {
-        return $x("//input[@id='is-lFiscal-code']/../label[@for='lFiscalCode']");
+        return $x("//input[@id='is-lFiscal-code']/../label[contains(@for,'lFiscalCode') and @style='display: block;']");
     }
 
     public SelenideElement textFiscalCodeInBillingForm() {
         return $x("//input[@id='is-rFiscal-code']/../label[@for='rFiscalCode']");
+    }
+
+    public SelenideElement textFiscalCodeInBillingForm2() {
+        return $x("//input[@id='is-rFiscal-code']/../label[@for='rFiscalCode_190' ]");
     }
 
     SelenideElement checkboxFiscalCode() {
