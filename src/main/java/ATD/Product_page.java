@@ -916,4 +916,6 @@ public class Product_page {
     ElementsCollection btnAddGluingProductToBasket() {return $$x("//div[@class='select-displacement ']/a");}
 
     SelenideElement btnCloseBasketPopUp() {return $x("//div[@class='popup-other-cat__close']");}
+
+    SelenideElement valuesOfProductUnderTitle() {return $x("//span[@class='product-block__description__title-small']");}
     }
