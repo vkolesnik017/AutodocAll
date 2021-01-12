@@ -201,4 +201,12 @@ public class Motoroil_Maker_page_Logic extends Motoroil_Maker_page {
         }
         return this;
     }
+
+    @Step("presence of active 'Added product to basket' button. Motoroil_Maker_page")
+    public Motoroil_Maker_page_Logic presenceOfActiveAddedToBasketBtn() {
+        for (int i = 0; i < btnAddedProductToBasket().size(); i++) {
+            btnAddedProductToBasket().get(i).shouldBe(visible);
+        }
+        return this;
+    }
 }
