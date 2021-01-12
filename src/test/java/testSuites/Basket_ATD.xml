@@ -62,10 +62,10 @@
             <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1924"/>
             <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1926"/>
             <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1927"/>
-            <!--<class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1928"/>-->
+            <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1928"/>
             <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1930"/>
             <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1929"/>
-            <!--<class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1931"/>-->
+            <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1931"/>
         </classes>
     </test>
 

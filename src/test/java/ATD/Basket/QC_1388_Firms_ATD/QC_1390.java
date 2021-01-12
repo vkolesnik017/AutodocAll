@@ -39,7 +39,7 @@ public class QC_1390 {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "PL", "main", "product2");
     }
 
-    @Test(dataProvider = "routePL", enabled = false)
+    @Test(dataProvider = "routePL")
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks the successful placement of the order indicating the company, split billing " +
@@ -54,6 +54,7 @@ public class QC_1390 {
                 .nextButtonClick()
                 .signIn(emailPL, password)
                 .fillAllFieldsAndFirmForShipping(shop,"12345","FB-MONT A. Fułek Spółka Komandytowa", "Kalisz")
+                .fillFieldIdCompanyShipping("6180029941")
                 .fillAllFieldsAndFirmForBilling("GB","12345","York", "Gear4music Limited")
                 .fillFieldIdCompanyBilling("552033282")
                 .nextBtnClick()
@@ -91,12 +92,12 @@ public class QC_1390 {
     private String emailDE = "QC_1390_autotestDE@autodoc.si", orderNumberDE;
     private Float totalPriceDE, totalPriceAWSOrderDE, totalPriceInEmailDE;
 
-    @DataProvider(name = "routeDE", parallel = true)
+    @DataProvider(name = "routeDE")
     Object[] dataProviderProductsDE() throws SQLException {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product2");
     }
 
-    @Test(dataProvider = "routeDE", enabled = false)
+    @Test(dataProvider = "routeDE")
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks the successful placement of the order indicating the company, split billing " +
@@ -153,7 +154,7 @@ public class QC_1390 {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "ES", "main", "product2");
     }
 
-    @Test(dataProvider = "routeES", enabled = false)
+    @Test(dataProvider = "routeES")
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks successful order placement with indicating of company, split billing, " +
