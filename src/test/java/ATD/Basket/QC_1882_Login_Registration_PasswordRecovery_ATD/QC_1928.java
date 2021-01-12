@@ -33,7 +33,7 @@ public class QC_1928 {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product32");
     }
 
-    @Test(dataProvider = "route")
+    @Test(dataProvider = "route", enabled = false)
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "Test checks the login with empty inputs.")
