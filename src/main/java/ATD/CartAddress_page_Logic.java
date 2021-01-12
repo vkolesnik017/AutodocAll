@@ -194,6 +194,34 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return this;
     }
 
+
+    @Step("Filling postal code {postalCodeOrCodeDefault} for Billing. CartAddress_page")
+    public CartAddress_page_Logic fillInPostalCodeForBilling(String postalCodeOrCodeDefault) {
+        if (postalCodeOrCodeDefault.equals("default")) {
+            String currentShop = getCurrentShopFromJSVarInHTML();
+            switch (currentShop) {
+                case "DK":
+                    postalCodeOrCodeDefault = "1234";
+                    break;
+                case "NL":
+                    postalCodeOrCodeDefault = "1234 AA";
+                    break;
+                case "PT":
+                    postalCodeOrCodeDefault = "1234-567";
+                    break;
+                default:
+                    postalCodeOrCodeDefault = "12345";
+                    break;
+            }
+        }
+        postalCodeFieldForBilling().clear();
+        postalCodeFieldForBilling().click();
+        checkCorrectTextAndFillInput(postalCodeFieldForBilling(), postalCodeOrCodeDefault);
+        return this;
+    }
+
+
+
     // Enters characters one by one
     @Step("Filling postal code {sendPostalCode}. CartAddress_page")
     public CartAddress_page_Logic fillingPostalCodeField(String sendPostalCode) {

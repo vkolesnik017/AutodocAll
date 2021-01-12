@@ -30,7 +30,7 @@ public class QC_2928 {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopsWithSubroute("prod", "PT"/*"IT,PT,RO"*/, "main", "product32");
+        return new SetUp("ATD").setUpShopsWithSubroute("prod", "IT,PT,RO", "main", "product32");
     }
 
     @Test(dataProvider = "route")
@@ -49,6 +49,7 @@ public class QC_2928 {
                 .chooseDeliveryCountryForShipping(shop)
                 .chooseDeliveryCountryForBilling(shop)
                 .fillInPostalCode("default")
+                .fillInPostalCodeForBilling("default")
                 .checkTextForCheckboxFiscalCode(cartAddressPageLogic.textFiscalCodeInShippingForm(), shop)
                 .checkTextForCheckboxFiscalCode(cartAddressPageLogic.textFiscalCodeInBillingForm(), shop)
                 .clickCheckboxFirmAndOpenField(cartAddressPageLogic.checkboxFirmShipping(), cartAddressPageLogic.fieldFirm())
