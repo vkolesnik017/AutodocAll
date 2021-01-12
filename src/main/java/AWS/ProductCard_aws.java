@@ -303,10 +303,9 @@ public class ProductCard_aws {
         return Double.parseDouble(priceNetto().shouldBe(visible).getText());
     }
 
-
     @Step("set language. ProductCard_aws")
     public ProductCard_aws setLanguage(String expectedLanguage) {
-        language(expectedLanguage).shouldBe(exist).click();
+        language(expectedLanguage).shouldBe(exist).scrollIntoView("{block: \"center\"}").click();
         activeLanguageTab(expectedLanguage).shouldBe(visible);
         return this;
     }

@@ -14,9 +14,7 @@ import org.testng.Assert;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static ATD.CommonMethods.*;
@@ -27,6 +25,7 @@ import static com.codeborne.selenide.CollectionCondition.sizeLessThan;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
+import static java.util.Collections.*;
 
 public class Product_page_Logic extends Product_page {
 
@@ -1443,6 +1442,9 @@ public class Product_page_Logic extends Product_page {
 
     @Step("close basket pop-up.Product_page")
     public Product_page_Logic closeBasketPopUp() {
+        if (btnCloseBasketPopUp().isDisplayed()) {
+            btnCloseBasketPopUp().click();
+        }
         btnCloseBasketPopUp().click();
         return this;
     }
@@ -1452,6 +1454,16 @@ public class Product_page_Logic extends Product_page {
         if (basketDropMenu().isDisplayed()) {
             basketDropMenu().waitWhile(visible, 5000);
         }
+        return this;
+    }
+
+    @Step("check Matching Options Values. Product_page")
+    public Product_page_Logic checkMatchingOptionsValues(List<String> values) {
+        valuesOfProductUnderTitle().shouldBe(visible);
+        List<String> valuesFromProductPage = Arrays.asList(valuesOfProductUnderTitle().getText().split(", "));
+        Collections.sort(valuesFromProductPage);
+        Collections.sort(values);
+        Assert.assertEquals(valuesFromProductPage, values);
         return this;
     }
 
