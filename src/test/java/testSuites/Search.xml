@@ -6,7 +6,7 @@
         <listener class-name="Common.ProjectListener"/>
     </listeners>
 
-    <test name="QC_536_SearchBasicFunctionality">
+    <test name="QC_536_SearchLogic">
         <classes>
             <class name="ATD.Search.QC_536_SearchLogic.QC_891"/>
             <class name="ATD.Search.QC_536_SearchLogic.QC_537"/>

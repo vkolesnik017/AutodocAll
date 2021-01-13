@@ -42,14 +42,7 @@
         </classes>
     </test>
 
-    <test name="QC_1234_BrandRelinkBlockOnTyresListing">
-        <classes>
-            <class name="ATD.Tyres.QC_1234_BrandRelinkBlockOnTyresListing.QC_1235"/>
-            <class name="ATD.Tyres.QC_1234_BrandRelinkBlockOnTyresListing.QC_1236"/>
-        </classes>
-    </test>
-
-    <test name="QC_1272_TyresMainPage">
+     <test name="QC_1272_TyresMainPage">
         <classes>
             <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_1273"/>
             <class name="ATD.Tyres.QC_1272_TyresMainPage.QC_1275"/>
@@ -100,14 +93,6 @@
             <class name="ATD.Tyres.QC_1347_BreadcrumbsOnTyresListing.QC_1351"/>
             <class name="ATD.Tyres.QC_1347_BreadcrumbsOnTyresListing.QC_1352"/>
             <class name="ATD.Tyres.QC_1347_BreadcrumbsOnTyresListing.QC_1353"/>
-        </classes>
-    </test>
-
-    <test name="QC_1354_TyresBrandBlock">
-        <classes>
-            <class name="ATD.Tyres.QC_1354_TyresBrandBlock.QC_1363"/>
-            <class name="ATD.Tyres.QC_1354_TyresBrandBlock.QC_1364"/>
-            <class name="ATD.Tyres.QC_1354_TyresBrandBlock.QC_1365"/>
         </classes>
     </test>
 
