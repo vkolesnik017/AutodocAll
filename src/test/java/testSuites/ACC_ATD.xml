@@ -32,6 +32,13 @@
         <classes>
             <class name="ATD.ACC.QC_836_MainAccessories.QC_837"/>
             <class name="ATD.ACC.QC_836_MainAccessories.QC_838"/>
+            <class name="ATD.ACC.QC_836_MainAccessories.QC_920"/>
+<!--            <class name="ATD.ACC.QC_836_MainAccessories.QC_932"/> inactive-->
+            <class name="ATD.ACC.QC_836_MainAccessories.QC_953"/>
+            <class name="ATD.ACC.QC_836_MainAccessories.QC_956"/>
+            <class name="ATD.ACC.QC_836_MainAccessories.QC_957"/>
+            <class name="ATD.ACC.QC_836_MainAccessories.QC_961"/>
+            <class name="ATD.ACC.QC_836_MainAccessories.QC_962"/>
             <class name="ATD.ACC.QC_836_MainAccessories.QC_986"/>
             <class name="ATD.ACC.QC_836_MainAccessories.QC_987"/>
             <class name="ATD.ACC.QC_836_MainAccessories.QC_988"/>
@@ -53,21 +60,6 @@
         </classes>
     </test>
 
-    <test name="QC_950_BlockTopProductsOnMainAccessories">
-        <classes>
-            <class name="ATD.ACC.QC_950_BlockTopProductsOnMainAccessories.QC_953"/>
-            <class name="ATD.ACC.QC_950_BlockTopProductsOnMainAccessories.QC_956"/>
-            <class name="ATD.ACC.QC_950_BlockTopProductsOnMainAccessories.QC_957"/>
-            <class name="ATD.ACC.QC_950_BlockTopProductsOnMainAccessories.QC_962"/>
-            <class name="ATD.ACC.QC_950_BlockTopProductsOnMainAccessories.QC_961"/>
-        </classes>
-    </test>
-
-    <test name="QC_929_BlockCategoriesLogicalUnionOnMainAccessories">
-        <classes>
-<!--            <class name="ATD.ACC.QC_929_BlockCategoriesLogicalUnionOnMainAccessories.QC_932"/> inactive-->
-        </classes>
-    </test>
 
     <test name="QC_1322_BlockTop10ProductsOnMainTools">
         <classes>
@@ -86,11 +78,6 @@
         </classes>
     </test>
 
-    <test name="QC_886_TopCategoriesDirectionOnMainAccessories">
-        <classes>
-            <class name="ATD.ACC.QC_886_TopCategoriesDirectionOnMainAccessories.QC_920"/>
-        </classes>
-    </test>
 
     <test name="QC_1356_BlockCategoriesInSidebarOnListingAccessories">
         <classes>

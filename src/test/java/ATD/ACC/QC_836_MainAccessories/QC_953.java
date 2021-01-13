@@ -1,24 +1,24 @@
-package ATD.ACC.QC_950_BlockTopProductsOnMainAccessories;
+package ATD.ACC.QC_836_MainAccessories;
 
-import ATD.Cart_page_Logic;
 import ATD.Index_accessories_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
-import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
 import java.sql.SQLException;
+
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_962 {
 
-    private Index_accessories_page_Logic index_accessories_page_logic = new Index_accessories_page_Logic();
+public class QC_953 {
+
 
     @BeforeClass
     void setUp() {
@@ -33,18 +33,18 @@ public class QC_962 {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test Checks adding a product to the cart when selecting it from top-6 block")
-    public void testChecksAddingProductToCartWithTop6BlockForAccessories(String route) {
+    @Description(value = "Test Checks the Presence of the top products block")
+    public void testCheckPresenceBlockTopProducts(String route) {
         openPage(route);
-        String nameProduct = index_accessories_page_logic.getNameFirstProductInTop6Block();
-        index_accessories_page_logic.clickOnFirstBtnAddToBasketInTop6Block()
-                .clickOnBtnGoToBasket();
-        String titleProduct = new Cart_page_Logic().getNameTitleProduct();
-        Assert.assertEquals(nameProduct, titleProduct);
+        new Index_accessories_page_Logic().checkingPresenceOfTopProductBlock();
     }
 
     @AfterMethod
     private void close() {
         closeWebDriver();
     }
+
+
+
+
 }

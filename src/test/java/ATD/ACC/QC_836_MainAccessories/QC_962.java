@@ -1,22 +1,24 @@
-package ATD.ACC.QC_950_BlockTopProductsOnMainAccessories;
+package ATD.ACC.QC_836_MainAccessories;
 
+import ATD.Cart_page_Logic;
 import ATD.Index_accessories_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import java.sql.SQLException;
-
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_957 {
+public class QC_962 {
+
+    private Index_accessories_page_Logic index_accessories_page_logic = new Index_accessories_page_Logic();
 
     @BeforeClass
     void setUp() {
@@ -31,16 +33,18 @@ public class QC_957 {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test checks presence popup with characteristics product after hover in block top-6")
-    public void testCheckPresencePopupWithCharacteristicsProductInTop6Block(String route) {
+    @Description(value = "Test Checks adding a product to the cart when selecting it from top-6 block")
+    public void testChecksAddingProductToCartWithTop6BlockForAccessories(String route) {
         openPage(route);
-        new Index_accessories_page_Logic().checkingHoverPopupInTop6ProductBlock();
+        String nameProduct = index_accessories_page_logic.getNameFirstProductInTop6Block();
+        index_accessories_page_logic.clickOnFirstBtnAddToBasketInTop6Block()
+                .clickOnBtnGoToBasket();
+        String titleProduct = new Cart_page_Logic().getNameTitleProduct();
+        Assert.assertEquals(nameProduct, titleProduct);
     }
 
     @AfterMethod
     private void close() {
         closeWebDriver();
     }
-
-
 }
