@@ -1,4 +1,4 @@
-package ATD.Search.QC_536_SearchBasicFunctionality;
+package ATD.Search.QC_536_SearchLogic;
 
 import ATD.Moto_main_page_Logic;
 import Common.DataBase;

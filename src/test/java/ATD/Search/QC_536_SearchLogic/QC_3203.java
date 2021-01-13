@@ -1,4 +1,4 @@
-package ATD.Search.QC_536_SearchBasicFunctionality;
+package ATD.Search.QC_536_SearchLogic;
 
 import ATD.Main_page_Logic;
 import Common.DataBase;
@@ -17,7 +17,7 @@ import static ATD.CommonMethods.*;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_3204 {
+public class QC_3203 {
 
     DataBase db = new DataBase("ATD");
     Main_page_Logic mainPage = new Main_page_Logic();
@@ -29,18 +29,20 @@ public class QC_3204 {
 
     @DataProvider(name = "route")
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "maker_car_list7");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "maker_car_list21");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Checking the transition to search listing when searching for a keyword that matches the name of the TecDoc category in the session when there are no products for the TecDoc listing")
-    public void testCheckRedirectToSearchListing(String route) throws SQLException {
+    @Description(value = "Checking redirect to TecDoc listing when searching for a keyword that matches the name of the TecDoc category with car in the session")
+    public void testCheckRedirectToTecDocListing(String route) throws SQLException {
         openPage(route);
         mainPage.useSearch("Bremsbeläge");
-        waitWhileRouteBecomeExpected("search");
-        checkingContainsUrl(db.getRouteByRouteName("DE", "search21"));
+        waitWhileRouteBecomeExpected("category_car_list");
+        checkingContainsUrl(db.getRouteByRouteName("DE", "category_car_list63"));
+        mainPage.useSearch("Luftfilter");
+        checkingContainsUrl(db.getRouteByRouteName("DE", "category_car_list64"));
     }
 
     @AfterMethod

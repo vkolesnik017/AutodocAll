@@ -1,7 +1,7 @@
-package ATD.Search.QC_536_SearchBasicFunctionality;
+package ATD.Search.QC_536_SearchLogic;
 
+import ATD.Listing_page_Logic;
 import ATD.Main_page_Logic;
-import Common.DataBase;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -13,12 +13,13 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.checkingContainsUrl;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
 
-public class QC_540 {
+public class QC_539 {
+
+    private String articleForSearch = "20049";
 
     @BeforeClass
     void setUp() {
@@ -33,11 +34,11 @@ public class QC_540 {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Evlentiev")
-    @Description(value = "The test verifies redirect to tires catalog after search by text reifen")
-    public void testSearchByValueReifen(String route) throws SQLException {
+    @Description(value = "The test verifies that at the listing have product with article 20046 after search")
+    public void testSearchByArticle(String route) {
         open(route);
-        new Main_page_Logic().useSearch("Reifen");
-        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "tyres"));
+        new Main_page_Logic().useSearch(articleForSearch);
+        new Listing_page_Logic().checkProductsByArticle(articleForSearch);
     }
 
     @DataProvider(name = "routeLKW")
@@ -48,11 +49,11 @@ public class QC_540 {
     @Test(dataProvider = "routeLKW")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "The test verifies redirect to tires catalog after search by text reifen")
-    public void testSearchByValueReifenLKW(String route) throws SQLException {
+    @Description(value = "The test verifies that at the listing have product with article 20046 after search")
+    public void testSearchByArticleLKW(String route) {
         open(route);
-        new Main_page_Logic().useSearch("Reifen");
-        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "tyres"));
+        new Main_page_Logic().useSearch(articleForSearch);
+        new Listing_page_Logic().checkProductsByArticle(articleForSearch);
     }
 
     @AfterMethod
