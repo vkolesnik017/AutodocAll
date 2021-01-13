@@ -1,6 +1,6 @@
-package ATD.Listings.QC_458_ListingViewModes;
+package ATD.Listings.QC_458_ListingSortingAndPrioritization;
 
-import ATD.Moto_Category_car_list_page_Logic;
+import ATD.Category_oen_Page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,31 +16,31 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_377 {
+public class QC_2062 {
+    private Category_oen_Page_Logic oenPage = new Category_oen_Page_Logic();
 
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
     }
 
-    @DataProvider(name = "routes", parallel = true)
+    @DataProvider(name = "route")
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list2");
-
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_oen14");
     }
 
-    @Test(dataProvider = "routes")
+    @Test(dataProvider = "route")
     @Flaky
-    @Owner(value = "Kolesnik")
-    @Description(value = "Test checks sorting Of products in TecDoc listing")
-    public void testChecksSortingOfProductsInTecDocListing(String route) {
+    @Owner(value = "kolesnik")
+    @Description(value = "Checks Ridex prioritization in OEN listing")
+    public void testCheckRidexPrioritizationInOENListing(String route) {
         openPage(route);
-
-        new Moto_Category_car_list_page_Logic().checkSortingPrice();
+        int activeRidexProducts = oenPage.getSIzeOfActiveProductsWithBrand("RIDEX");
+        oenPage.checkOenListing(activeRidexProducts, "RIDEX");
     }
 
     @AfterMethod
-    public void close() {
+    private void close() {
         closeWebDriver();
     }
 }

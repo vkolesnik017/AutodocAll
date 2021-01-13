@@ -1,4 +1,4 @@
-package ATD.Listings.QC_458_ListingViewModes;
+package ATD.Listings.QC_458_ListingSortingAndPrioritization;
 
 import ATD.Listing_page_Logic;
 import Common.SetUp;
@@ -16,9 +16,8 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_462 {
+public class QC_460 {
 
-  private Listing_page_Logic listingPage = new Listing_page_Logic();
 
   @BeforeClass
   void setUp() {
@@ -27,19 +26,20 @@ public class QC_462 {
 
   @DataProvider(name = "route")
   Object[] dataProvider() throws SQLException {
-    return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "search2");
+    return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list");
   }
 
   @Test(dataProvider = "route")
   @Flaky
   @Owner(value = "Evlentiev")
-  @Description(value = "Comparing products between listing modes and check presence elements for search listing")
-  public void testCompareProductsBetweenListingViewModesOnSearch(String route) {
+  @Description(value = "Comparing products between listing modes and check presence elements for Tectdoc listing")
+  public void testCompareProductsBetweenListingViewModesOnTecDoc(String route) {
     openPage(route);
-    listingPage.checksImportantElementsOnListing()
+    new Listing_page_Logic().checksImportantElementsOnTecDocListing()
             .compareProductsOrderBetweenListModeAndTileMode()
-            .checksImportantElementsOnListing();
+            .checksImportantElementsOnTecDocListing();
   }
+
   @AfterMethod
   private void close() {
     closeWebDriver();

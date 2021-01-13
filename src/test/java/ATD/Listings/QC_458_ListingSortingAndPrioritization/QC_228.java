@@ -1,4 +1,4 @@
-package ATD.FiltersSorting.QC_195_FiltersSorting_outputSorting;
+package ATD.Listings.QC_458_ListingSortingAndPrioritization;
 
 
 import Common.DataBase;
@@ -27,8 +27,8 @@ public class QC_228 {
     @Test
     @Flaky
     @Owner(value = "Romaniuta")
-    @Description(value = "Test checks addToBasket buttons sorting overcategory route")
-    public void testSortingOvercategoryRoute() throws SQLException {
+    @Description(value = "Test checks addToBasket buttons sorting over category route")
+    public void testSortingOverCategoryRoute() throws SQLException {
         openPage("https://autodoc.de/" + dataBase.getRouteByRouteName("DE", "category_car_list6"));
         new Listing_page_Logic().checkGrayButtonNotVisible();
     }

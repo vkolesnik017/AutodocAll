@@ -1,6 +1,6 @@
-package ATD.Listings.QC_458_ListingViewModes;
+package ATD.Listings.QC_458_ListingSortingAndPrioritization;
 
-import ATD.Listing_page_Logic;
+import ATD.Moto_Category_car_list_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,30 +16,31 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_461 {
+public class QC_377 {
 
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
     }
 
-    @DataProvider(name = "route")
+    @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_oen2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list2");
+
     }
 
-    @Test(dataProvider = "route")
+    @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "Evlentiev")
-    @Description(value = "Comparing products between listing modes and check presence elements for OEN listing")
-    public void testCompareProductsBetweenListingViewModesOnOEN(String route) {
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test checks sorting Of products in TecDoc listing")
+    public void testChecksSortingOfProductsInTecDocListing(String route) {
         openPage(route);
-        new Listing_page_Logic().checksImportantElementsOnOenListing()
-                .compareProductsOrderBetweenListModeAndTileMode()
-                .checksImportantElementsOnOenListing();
+
+        new Moto_Category_car_list_page_Logic().checkSortingPrice();
     }
+
     @AfterMethod
-    private void close() {
+    public void close() {
         closeWebDriver();
     }
 }

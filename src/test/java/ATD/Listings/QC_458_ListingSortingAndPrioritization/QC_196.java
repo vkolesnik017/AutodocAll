@@ -1,6 +1,6 @@
-package ATD.Listings.QC_458_ListingViewModes;
+package ATD.Listings.QC_458_ListingSortingAndPrioritization;
 
-import ATD.LKW_Category_car_list_page_Logic;
+import ATD.Category_car_list_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -11,34 +11,40 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.List;
 
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_97 {
+public class QC_196 {
+    List<String> expectedGenerics = Arrays.asList("Bremsscheibe");
+
 
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
     }
 
-    @DataProvider(name = "routes", parallel = true)
+    @DataProvider(name = "route")
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list10");
+
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list");
     }
 
-    @Test(dataProvider = "routes")
+    @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks sorting of products in TecDoc listing ")
-    public void testChecksSortingOfProductsInTecDocListing(String route) {
+    @Description(value = "test check sorting on the current issue by default with one generic")
+    public void testCheckSortingByDefaultWithOneGenericOnTecDocIssue(String route) {
         openPage(route);
-        new LKW_Category_car_list_page_Logic().checkSortingPrice();
+        new Category_car_list_page_Logic()
+                .checkTecDocListing(expectedGenerics);
     }
 
     @AfterMethod
-    public void close() {
+    private void close() {
         closeWebDriver();
     }
 }
