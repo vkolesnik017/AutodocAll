@@ -65,7 +65,7 @@ public class QC_1164_AddedProductToBasket {
         makerPage.clickOnBtnAddToBasket(0)
                 .displayOfBasketDropMenu()
                 .displayEngineOilViscosity()
-                .presenceOfActiveAddedToBasketBtn()
+                .displayEngineOilViscosity()
                 .clickOnBasketIconInHeader();
         String idOfAddedProductInBasket = cartPage.presenceOfAddedProductList().getIdAddedProduct();
         Assert.assertEquals(idOfAddedProductInBasket, idOfAddedProduct);

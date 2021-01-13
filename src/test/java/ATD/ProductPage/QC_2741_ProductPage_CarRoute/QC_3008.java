@@ -45,15 +45,17 @@ public class QC_3008 {
                 .clickSearch()
                 .getIdMainParameters();
         String titleOfFirstProduct = productSearchAwsPage.openProductSearchPage().getTitleOfFirstProduct(0);
-        List<String> matchingOptions = productSearchAwsPage.selectCategory("Stoßdämpfer ( Shock Absorber ) [854]")
+        int initialAmountOfValues = productSearchAwsPage.selectCategory("Stoßdämpfer ( Shock Absorber ) [854]")
                 .selectFirstSearchFilter("no")
                 .selectSecondSearchFilter("no")
                 .setSortingFilter("marketingRating")
                 .clickOnSearchButton()
                 .waitOfChangeTitleOfProduct(0, titleOfFirstProduct)
                 .goToProductCartByClickOnTitle(0)
-                .setLanguage("de")
+                .getCountOfDescriptionValues();
+        List<String> matchingOptions = productPageAws.setLanguage("de")
                 .presenceOfLanguageBlock("de")
+                .waitOfChangeCountOfDescriptionValues(initialAmountOfValues)
                 .getValuesOfMatchingOptions(options);
         String brand = productPageAws.getTitleOfBrandProduct();
         String id = productPageAws.getIdOfProduct();

@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThanOrEqual;
+import static com.codeborne.selenide.CollectionCondition.sizeNotEqual;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selenide.*;
@@ -144,7 +145,17 @@ public class ProductCard_aws {
         return $$("#form_hazardTypes_1____chzn span");
     }
 
-    private SelenideElement idCategory() {return $x("//td[contains(text(),'ID Категории:')]/following-sibling::td");}
+    private SelenideElement idCategory() {
+        return $x("//td[contains(text(),'ID Категории:')]/following-sibling::td");
+    }
+
+    private SelenideElement descriptionTable() {
+        return $x("//div[@class='tab-content col-md-4 col-sm-12 main-description']");
+    }
+
+    private ElementsCollection totalCountOfDescriptionTable() {
+        return $$x("//div[@class='tab-content col-md-4 col-sm-12 main-description']//li");
+    }
 
     String productId;
 
@@ -157,8 +168,8 @@ public class ProductCard_aws {
 
     public SelenideElement searchTextOnPage(String textForSearch) {
         return $x("//*[contains(text(),'" + textForSearch + "')]");
-
     }
+
 
     @Step("checking quantity Language in passport management block. ProductCard_aws")
     public ProductCard_aws quantityLanguageInPassportManagement() {
@@ -282,7 +293,7 @@ public class ProductCard_aws {
 
     @Step("get id of category. ProductCard_aws")
     public String getCategoryId() {
-        String id = idCategory().getText().replaceAll("\\s.+","");
+        String id = idCategory().getText().replaceAll("\\s.+", "");
         return id;
     }
 
@@ -397,4 +408,15 @@ public class ProductCard_aws {
         return this;
     }
 
+    @Step("get count Of Description Values. ProductCard_aws")
+    public int getCountOfDescriptionValues() {
+        descriptionTable().shouldBe(visible);
+        return totalCountOfDescriptionTable().size();
+    }
+
+    @Step("wait Of Change Count Of Description Values. ProductCard_aws")
+    public ProductCard_aws waitOfChangeCountOfDescriptionValues(int size) {
+        totalCountOfDescriptionTable().shouldHave(sizeNotEqual(size));
+        return this;
+    }
 }
