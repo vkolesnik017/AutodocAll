@@ -1,4 +1,4 @@
-package ATD.Tyres.QC_1234_BrandRelinkBlockOnTyresListing;
+package ATD.Catalog_Brands.QC_33_BrandPageAndBlocks;
 
 
 import Common.SetUp;
@@ -17,7 +17,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1236 {
+public class QC_1235 {
 
     @BeforeClass
     void setUp() {
@@ -33,11 +33,10 @@ public class QC_1236 {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Romaniuta")
-    @Description(value = "Test Checks Transition To Brand Route Interact Brand Relink Block")
-    public void testGoToBrandRouteInteractBrandRelinkBlock(String route) {
+    @Description(value = "Test Checks Presence Brand Relink Block On Tyres Listing")
+    public void testPresenceBrandRelinkBlockOnTyresListing(String route) {
         openPage(route);
-        new TyresListing_page_Logic().checkBrandRelink();
-
+        new TyresListing_page_Logic().checkBrandRelinkBlockVisibility();
     }
 
     @AfterMethod

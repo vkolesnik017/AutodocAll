@@ -1,4 +1,4 @@
-package ATD.Catalog_Brands.QC_33_BrandPage;
+package ATD.Catalog_Brands.QC_33_BrandPageAndBlocks;
 
 import ATD.Category_name_page_Logic;
 import ATD.Main_page_Logic;

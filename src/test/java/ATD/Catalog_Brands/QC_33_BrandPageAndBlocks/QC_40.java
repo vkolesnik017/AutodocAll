@@ -1,7 +1,6 @@
-package ATD.LKW_trucks.QC_33_BrandsBLock;
+package ATD.Catalog_Brands.QC_33_BrandPageAndBlocks;
 
 import ATD.LKW_Category_maker_brand_page_Logic;
-import ATD.LKW_main_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -17,7 +16,8 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_37 {
+public class QC_40 {
+
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -32,24 +32,11 @@ public class QC_37 {
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test checks visibility of top_brands block")
-    public void testChecksVisibilityOfTopBrandsBlock(String route) {
+    public void testChecksOpportunityToOpenAndCloseOfBrandsBlock(String route) {
         openPage(route);
-        new LKW_Category_maker_brand_page_Logic().visibilityOfTopBrandsBlock();
-    }
-
-    @DataProvider(name = "routesMakerCarList", parallel = true)
-    Object[] dataProviderForMainPage() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_main");
-    }
-
-    @Test(dataProvider = "routesMakerCarList")
-    @Flaky
-    @Owner(value = "Kolesnik")
-    @Description(value = "Test checks visibility top_brands block")
-    public void testChecksVisibilityOfTopBrandsBlockAtMainPage(String mainPageRoute) {
-        openPage(mainPageRoute);
-        new LKW_main_page_Logic().visibilityOfTopBrandsBlock();
-
+        new LKW_Category_maker_brand_page_Logic()
+                .openOfTopBrandsBlock()
+                .closeOfTopBrandsBlock();
     }
 
     @AfterMethod

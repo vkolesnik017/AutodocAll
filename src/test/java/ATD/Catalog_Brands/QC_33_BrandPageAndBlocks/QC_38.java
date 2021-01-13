@@ -1,4 +1,4 @@
-package ATD.LKW_trucks.QC_33_BrandsBLock;
+package ATD.Catalog_Brands.QC_33_BrandPageAndBlocks;
 
 import ATD.*;
 import Common.DataBase;

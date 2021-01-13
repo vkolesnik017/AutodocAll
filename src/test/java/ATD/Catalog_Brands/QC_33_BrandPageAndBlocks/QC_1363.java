@@ -1,7 +1,8 @@
-package ATD.MOTO.QC_361_BrandsBlock;
+package ATD.Catalog_Brands.QC_33_BrandPageAndBlocks;
 
-import ATD.Moto_Category_maker_page_Logic;
+
 import Common.SetUp;
+import ATD.Tyres_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -16,7 +17,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_363 {
+public class QC_1363 {
 
     @BeforeClass
     void setUp() {
@@ -25,19 +26,17 @@ public class QC_363 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_maker3");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_type_list_brands,tyres_type_list_brands2,tyres_type_list_brands3," +
+                "tyres_type_list_brands4");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "Kolesnik")
-    @Description(value = "Test checks ability to opened/minimized brand block")
-    public void testChecksAbilityToOpenedAndMinimizedBrandBlock(String route) {
+    @Owner(value = "Romaniuta")
+    @Description(value = "Test Checks Brand List Presence On Tyres Brand Catalog")
+    public void testBrandListPresenceOnTyresBrandCatalog(String route) {
         openPage(route);
-
-        new Moto_Category_maker_page_Logic()
-                .openBrandsBlock()
-                .minimizedBrandsBlock();
+        new Tyres_page_Logic().checkAllBrandsListPresence();
     }
 
     @AfterMethod

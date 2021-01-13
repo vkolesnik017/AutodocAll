@@ -1,7 +1,7 @@
-package ATD.Catalog_Brands.QC_33_BrandPage;
+package ATD.Catalog_Brands.QC_33_BrandPageAndBlocks;
 
+import ATD.Motoroil_page_Logic;
 import Common.SetUp;
-import ATD.Supplier_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -16,30 +16,29 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2630 {
-
+public class QC_3175 {
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0", false);
+        setUpBrowser(false, "chrome", "77.0",false);
     }
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "supplier");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "motoroil");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "Kolesnik")
-    @Description(value = "Test checks matching all headlines and images")
-    public void testChecksMatchAllHeadlinesAndImages(String route) {
+    @Owner(value = "OlhaLavrynenko")
+    @Description(value = "Test checks popular Brand block Presence on the Main oil page ")
+    public void testChecksPopularBrandBlockPresence(String route) {
         openPage(route);
-
-        new Supplier_page_Logic().checkAllHeadlinesAndImages();
+        new Motoroil_page_Logic().checkPopularBrandsBlockPresence();
     }
 
     @AfterMethod
     public void close() {
         closeWebDriver();
     }
+
 }

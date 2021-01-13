@@ -1,4 +1,4 @@
-package ATD.LKW_trucks.QC_33_BrandsBLock;
+package ATD.Catalog_Brands.QC_33_BrandPageAndBlocks;
 
 import ATD.LKW_Category_maker_brand_page_Logic;
 import ATD.LKW_main_page_Logic;
@@ -17,7 +17,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_34 {
+public class QC_37 {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -31,10 +31,10 @@ public class QC_34 {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks visibility of  headline in top_brands block")
-    public void testChecksVisibilityOfHeadlineInTopBrandsBlock(String route) {
+    @Description(value = "Test checks visibility of top_brands block")
+    public void testChecksVisibilityOfTopBrandsBlock(String route) {
         openPage(route);
-        new LKW_Category_maker_brand_page_Logic().visibilityOfHeadlineInTopBrandsBlock();
+        new LKW_Category_maker_brand_page_Logic().visibilityOfTopBrandsBlock();
     }
 
     @DataProvider(name = "routesMakerCarList", parallel = true)
@@ -45,10 +45,10 @@ public class QC_34 {
     @Test(dataProvider = "routesMakerCarList")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks visibility of  headline in top_brands block")
-    public void testChecksVisibilityHeadLineOfTopBrandsBlock(String mainPageRoute) {
+    @Description(value = "Test checks visibility top_brands block")
+    public void testChecksVisibilityOfTopBrandsBlockAtMainPage(String mainPageRoute) {
         openPage(mainPageRoute);
-        new LKW_main_page_Logic().visibilityHeadlineOfTopBrandsBlock();
+        new LKW_main_page_Logic().visibilityOfTopBrandsBlock();
 
     }
 

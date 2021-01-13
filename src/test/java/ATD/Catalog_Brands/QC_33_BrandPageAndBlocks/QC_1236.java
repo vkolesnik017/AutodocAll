@@ -1,7 +1,8 @@
-package ATD.Catalog_Brands.QC_33_BrandPage;
+package ATD.Catalog_Brands.QC_33_BrandPageAndBlocks;
 
-import ATD.Motoroil_page_Logic;
+
 import Common.SetUp;
+import ATD.TyresListing_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -16,29 +17,31 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_3175 {
+public class QC_1236 {
+
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0",false);
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "motoroil");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_season2,tyres_season6,tyres_season7,tyres_brand," +
+                "tyres_season,tyres_season8,tyres_season9,tyres_brand7,tyres_season5,tyres_season10,tyres_season11,tyres_brand3,tyres_season12,tyres_season4,tyres_brand4");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "OlhaLavrynenko")
-    @Description(value = "Test checks popular Brand block Presence on the Main oil page ")
-    public void testChecksPopularBrandBlockPresence(String route) {
+    @Owner(value = "Romaniuta")
+    @Description(value = "Test Checks Transition To Brand Route Interact Brand Relink Block")
+    public void testGoToBrandRouteInteractBrandRelinkBlock(String route) {
         openPage(route);
-        new Motoroil_page_Logic().checkPopularBrandsBlockPresence();
+        new TyresListing_page_Logic().checkBrandRelink();
+
     }
 
     @AfterMethod
     public void close() {
         closeWebDriver();
     }
-
 }

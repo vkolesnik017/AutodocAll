@@ -1,8 +1,8 @@
-package ATD.Tyres.QC_1354_TyresBrandBlock;
+package ATD.Catalog_Brands.QC_33_BrandPageAndBlocks;
 
-
+import ATD.MotoroilBrand_page_Logic;
+import ATD.Motoroil_page_Logic;
 import Common.SetUp;
-import ATD.Tyres_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -17,26 +17,28 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1363 {
+public class QC_3176 {
+
+    MotoroilBrand_page_Logic motoroilBrand_page_logic = new MotoroilBrand_page_Logic();
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0", false);
+        setUpBrowser(false, "chrome", "77.0",false);
     }
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_type_list_brands,tyres_type_list_brands2,tyres_type_list_brands3," +
-                "tyres_type_list_brands4");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "motoroil");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "Romaniuta")
-    @Description(value = "Test Checks Brand List Presence On Tyres Brand Catalog")
-    public void testBrandListPresenceOnTyresBrandCatalog(String route) {
+    @Owner(value = "OlhaLavrynenko")
+    @Description(value = "Test checks transfer to brand listing page from the Main oil page ")
+    public void testChecksTransferToBrandOilPage(String route) {
         openPage(route);
-        new Tyres_page_Logic().checkAllBrandsListPresence();
+        new Motoroil_page_Logic().checkTransferToBrandListingFromTheBrandBlock("castrol");
+        motoroilBrand_page_logic.checkVisibilityOfBrandNameOilValueInSelectorAndListingName("castrol");
     }
 
     @AfterMethod

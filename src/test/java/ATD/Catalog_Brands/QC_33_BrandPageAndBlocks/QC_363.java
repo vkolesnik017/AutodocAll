@@ -1,4 +1,4 @@
-package ATD.MOTO.QC_361_BrandsBlock;
+package ATD.Catalog_Brands.QC_33_BrandPageAndBlocks;
 
 import ATD.Moto_Category_maker_page_Logic;
 import Common.SetUp;
@@ -16,7 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_362 {
+public class QC_363 {
 
     @BeforeClass
     void setUp() {
@@ -31,13 +31,13 @@ public class QC_362 {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks presence of brands block")
-    public void testChecksPresenceOfBrandsBlock(String route) {
+    @Description(value = "Test checks ability to opened/minimized brand block")
+    public void testChecksAbilityToOpenedAndMinimizedBrandBlock(String route) {
         openPage(route);
 
         new Moto_Category_maker_page_Logic()
-               .presenceOfHeadlineAtBrandsBlock()
-                .checkBrandsLinksInCloseCondition();
+                .openBrandsBlock()
+                .minimizedBrandsBlock();
     }
 
     @AfterMethod

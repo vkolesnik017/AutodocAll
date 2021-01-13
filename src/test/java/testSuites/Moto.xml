@@ -167,14 +167,7 @@
         </classes>
     </test>
 
-    <test name="QC_361_BrandsBlock">
-        <classes>
-            <class name="ATD.MOTO.QC_361_BrandsBlock.QC_362"/>
-            <class name="ATD.MOTO.QC_361_BrandsBlock.QC_363"/>
-        </classes>
-    </test>
-
-    <test name="QC_870_PresenceOfTopModels">
+     <test name="QC_870_PresenceOfTopModels">
         <classes>
             <class name="ATD.MOTO.QC_870_TopModelsBlock.QC_872"/>
             <class name="ATD.MOTO.QC_870_TopModelsBlock.QC_873"/>

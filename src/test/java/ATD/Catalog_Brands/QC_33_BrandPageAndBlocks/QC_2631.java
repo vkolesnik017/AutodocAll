@@ -1,6 +1,6 @@
-package ATD.Catalog_Brands.QC_33_BrandPage;
+package ATD.Catalog_Brands.QC_33_BrandPageAndBlocks;
 
-import ATD.Main_page_Logic;
+import ATD.Supplier_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -11,12 +11,15 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2628 {
+public class QC_2631 {
+
+    private Supplier_page_Logic supplierPage = new Supplier_page_Logic();
 
     @BeforeClass
     void setUp() {
@@ -25,17 +28,20 @@ public class QC_2628 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "main");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "supplier2");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks elements of brands block at main page")
-    public void testChecksElementsOfBrandsBlockInMainPage(String route) {
+    @Description(value = "Test checks brands block at brand main page")
+    public void testChecksBrandsBlockAtBrandMainPage(String route) {
         openPage(route);
+        supplierPage.checkElementsOfBrandsBlock();
+        List<String> linksOfBrands = supplierPage.getAttributeOfBrandLinks();
+        supplierPage.checkCountOfBrands(linksOfBrands,15).checkForAbsenceOfBrandInBrandsBlock(linksOfBrands, "hella").clickOnceToRightInBrandsBlock()
+                .presenceOfVisibleBrandLinks().clickOnceToLeftInBrandsBlock().checkTransitionToBrandPageByAllBrands();
 
-        new Main_page_Logic().checkElementsOfTopBrandsBlock();
     }
 
     @AfterMethod

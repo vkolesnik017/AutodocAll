@@ -1,8 +1,7 @@
-package ATD.Tyres.QC_1354_TyresBrandBlock;
+package ATD.Catalog_Brands.QC_33_BrandPageAndBlocks;
 
-
+import ATD.Main_page_Logic;
 import Common.SetUp;
-import ATD.Tyres_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -17,7 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1365 {
+public class QC_2628 {
 
     @BeforeClass
     void setUp() {
@@ -26,18 +25,17 @@ public class QC_1365 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_type_list_brands,tyres_type_list_brands2,tyres_type_list_brands3," +
-                "tyres_type_list_brands4");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "main");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "Romaniuta")
-    @Description(value = "Test Checks Transition Tyres Brand Listing From All Brands Catalog")
-    public void testGoToTyresBrandListingFromAllBrandsCatalog(String route) {
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test checks elements of brands block at main page")
+    public void testChecksElementsOfBrandsBlockInMainPage(String route) {
         openPage(route);
-        new Tyres_page_Logic().clickMichelinLink()
-                              .checkBrandListingTransition("Michelin");
+
+        new Main_page_Logic().checkElementsOfTopBrandsBlock();
     }
 
     @AfterMethod

@@ -1,6 +1,6 @@
-package ATD.Catalog_Brands.QC_33_BrandPage;
+package ATD.Catalog_Brands.QC_33_BrandPageAndBlocks;
 
-import ATD.Supplier_page_Logic;
+import ATD.Moto_Category_maker_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -11,15 +11,12 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.sql.SQLException;
-import java.util.List;
 
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2631 {
-
-    private Supplier_page_Logic supplierPage = new Supplier_page_Logic();
+public class QC_362 {
 
     @BeforeClass
     void setUp() {
@@ -28,20 +25,19 @@ public class QC_2631 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "supplier2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_maker3");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks brands block at brand main page")
-    public void testChecksBrandsBlockAtBrandMainPage(String route) {
+    @Description(value = "Test checks presence of brands block")
+    public void testChecksPresenceOfBrandsBlock(String route) {
         openPage(route);
-        supplierPage.checkElementsOfBrandsBlock();
-        List<String> linksOfBrands = supplierPage.getAttributeOfBrandLinks();
-        supplierPage.checkCountOfBrands(linksOfBrands,15).checkForAbsenceOfBrandInBrandsBlock(linksOfBrands, "hella").clickOnceToRightInBrandsBlock()
-                .presenceOfVisibleBrandLinks().clickOnceToLeftInBrandsBlock().checkTransitionToBrandPageByAllBrands();
 
+        new Moto_Category_maker_page_Logic()
+               .presenceOfHeadlineAtBrandsBlock()
+                .checkBrandsLinksInCloseCondition();
     }
 
     @AfterMethod
