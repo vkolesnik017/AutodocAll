@@ -1,4 +1,4 @@
-package ATD.Search.QC_536_SearchBasicFunctionality;
+package ATD.Search.QC_536_SearchLogic;
 
 import ATD.Main_page_Logic;
 import Common.SetUp;
@@ -16,11 +16,11 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2668 {
+public class QC_2669 {
 
-    private String request = "2049 3M";
-    private String artNum = "2049";
-    private String brand = "3M";
+    private String request = "95 667 811 RIDEX";
+    private String oenNum = "95667811";
+    private String brand = "RIDEX";
 
     @BeforeClass
     void setUp() {
@@ -35,10 +35,10 @@ public class QC_2668 {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "The test verifies that at the listing have only products of brand 3M and expected article number")
-    public void testSearchByBrandAndArticle(String route) {
+    @Description(value = "The test check correctness of issue by searching OEN number and brand")
+    public void testCheckCorrectnessOfIssueBySearchingOenAndBrand(String route) {
         openPage(route);
-        new Main_page_Logic().useSearch(request).checkImageOfBrandAtPresenceOfArtAndBrand(brand, artNum);
+        new Main_page_Logic().useSearch(request).presenceOfTecDocListing().presenceOenNumInProductPage(brand, oenNum);
     }
 
     @DataProvider(name = "routeLKW")
@@ -49,10 +49,10 @@ public class QC_2668 {
     @Test(dataProvider = "routeLKW")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "The test verifies that at the listing have only products of brand 3M and expected article number")
-    public void testSearchByBrandAndArticleLKW(String route) {
+    @Description(value = "The test check correctness of issue by searching OEN number and brand")
+    public void testCheckCorrectnessOfIssueBySearchingOenAndBrandLKW(String route) {
         openPage(route);
-        new Main_page_Logic().useSearch(request).checkImageOfBrandAtPresenceOfArtAndBrand(brand, artNum);
+        new Main_page_Logic().useSearch(request).presenceOfTecDocListing().presenceOenNumInProductPage(brand, oenNum);
     }
 
     @AfterMethod

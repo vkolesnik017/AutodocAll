@@ -1,4 +1,4 @@
-package ATD.Search.QC_536_SearchBasicFunctionality;
+package ATD.Search.QC_536_SearchLogic;
 
 import ATD.Listing_page_Logic;
 import ATD.Main_page_Logic;

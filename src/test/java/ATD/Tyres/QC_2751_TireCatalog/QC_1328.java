@@ -1,8 +1,8 @@
-package ATD.Search.QC_536_SearchBasicFunctionality;
+package ATD.Tyres.QC_2751_TireCatalog;
 
-import ATD.Moto_main_page_Logic;
-import Common.DataBase;
+
 import Common.SetUp;
+import ATD.TyresListing_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -13,12 +13,12 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_891 {
+public class QC_1328 {
+
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -26,19 +26,16 @@ public class QC_891 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_main");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_type_list,tyres_type_list2,tyres_type_list3,tyres_type_list4");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "Kolesnik")
-    @Description(value = "Test checks Search by any criteria")
-    public void testChecksSearchByAnyCriteria(String route) throws SQLException {
+    @Owner(value = "Romaniuta")
+    @Description(value = "Test Checks Transition To Listing Route Interact Diameter Block On Catalog Route")
+    public void testTransitionToListingRouteInteractDiameterBlockOnCatalogRoute(String route) {
         openPage(route);
-
-        new Moto_main_page_Logic()
-                .inputOfBrandInMainSearchField("Bosch");
-        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "search24"));
+        new TyresListing_page_Logic().clickDiameterButtonAndCheckRedirectCatalogRoute();
     }
 
     @AfterMethod

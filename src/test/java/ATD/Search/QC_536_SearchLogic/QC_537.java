@@ -1,5 +1,6 @@
-package ATD.Search.QC_536_SearchBasicFunctionality;
+package ATD.Search.QC_536_SearchLogic;
 
+import ATD.Listing_page_Logic;
 import ATD.Main_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
@@ -16,11 +17,9 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2669 {
+public class QC_537 {
 
-    private String request = "95 667 811 RIDEX";
-    private String oenNum = "95667811";
-    private String brand = "RIDEX";
+    private String brandName = "RIDEX";
 
     @BeforeClass
     void setUp() {
@@ -29,30 +28,32 @@ public class QC_2669 {
 
     @DataProvider(name = "route")
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "main");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "maker_car_list4");
     }
 
     @Test(dataProvider = "route")
     @Flaky
-    @Owner(value = "Kolesnik")
-    @Description(value = "The test check correctness of issue by searching OEN number and brand")
-    public void testCheckCorrectnessOfIssueBySearchingOenAndBrand(String route) {
+    @Owner(value = "Evlentiev")
+    @Description(value = "The test verifies that at the listing have only products of brand ridex after search by text RIDEX")
+    public void testSearchByBrand(String route) {
         openPage(route);
-        new Main_page_Logic().useSearch(request).presenceOfTecDocListing().presenceOenNumInProductPage(brand, oenNum);
+        new Main_page_Logic().useSearch(brandName);
+        new Listing_page_Logic().checksProductTitlesContainExpectedTextGoingAllPagination(brandName);
     }
 
     @DataProvider(name = "routeLKW")
     Object[] dataProviderLKW() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_main");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_maker_car_list14");
     }
 
     @Test(dataProvider = "routeLKW")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "The test check correctness of issue by searching OEN number and brand")
-    public void testCheckCorrectnessOfIssueBySearchingOenAndBrandLKW(String route) {
+    @Description(value = "The test verifies that at the listing have only products of brand ridex after search by text RIDEX")
+    public void testSearchByBrandLKW(String route) {
         openPage(route);
-        new Main_page_Logic().useSearch(request).presenceOfTecDocListing().presenceOenNumInProductPage(brand, oenNum);
+        new Main_page_Logic().useSearch(brandName);
+        new Listing_page_Logic().checksProductTitlesContainExpectedTextGoingAllPagination(brandName);
     }
 
     @AfterMethod
