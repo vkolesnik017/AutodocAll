@@ -107,8 +107,8 @@ public class QC_3042 {
     @DataProvider(name = "deliveryShop", parallel = false)
     Object[] blockingWords() {
         return new Object[][]{
-                {"Germany"},
-                {"Liechtenstein"}
+                {"Liechtenstein"},
+                {"Germany"}
         };
     }
 

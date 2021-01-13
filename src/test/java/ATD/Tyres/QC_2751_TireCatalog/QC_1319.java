@@ -1,7 +1,6 @@
-package ATD.Tyres.QC_1317_SizeBlockOnTyresCatalog;
+package ATD.Tyres.QC_2751_TireCatalog;
 
 
-import Common.DataBase;
 import Common.SetUp;
 import ATD.TyresListing_page_Logic;
 import io.qameta.allure.Description;
@@ -18,7 +17,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1320 {
+public class QC_1319 {
 
     @BeforeClass
     void setUp() {
@@ -27,7 +26,7 @@ public class QC_1320 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_type_list,tyres_type_list2,tyres_type_list3");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_type_list,tyres_type_list2,tyres_type_list3,tyres_type_list4");
     }
 
     @Test(dataProvider = "routes")
@@ -36,16 +35,7 @@ public class QC_1320 {
     @Description(value = "Test Checks Presence Sizes Block On Tyres Catalog Route")
     public void testPresenceSizesBlockOnTyresCatalogRoute(String route) {
         openPage(route);
-        new TyresListing_page_Logic().clickDimensionButtonAndCheckRedirect(new TyresListing_page_Logic().dimensionLinkCatalogRoute());
-    }
-
-    @Test
-    @Flaky
-    @Owner(value = "Romaniuta")
-    @Description(value = "Test Checks Presence Sizes Block On Tyres Catalog Route Moto")
-    public void testPresenceSizesBlockOnTyresCatalogRouteMoto() throws SQLException {
-        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "tyres_type_list4"));
-        new TyresListing_page_Logic().clickDimensionButtonAndCheckRedirect(new TyresListing_page_Logic().dimensionLinkCatalogRouteMoto());
+        new TyresListing_page_Logic().checkSizesBlockVisibilityOnTyresCatalogRoute();
     }
 
     @AfterMethod

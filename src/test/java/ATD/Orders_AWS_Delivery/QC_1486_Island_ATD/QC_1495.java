@@ -1,6 +1,5 @@
-package ATD.Basket.QC_1486_Island_ATD;
+package ATD.Orders_AWS_Delivery.QC_1486_Island_ATD;
 
-import ATD.CartAddress_page_Logic;
 import ATD.CartAllData_page_Logic;
 import ATD.Search_page_Logic;
 import Common.SetUp;
@@ -22,9 +21,9 @@ import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static mailinator.WebMail.passwordForMail;
 
-public class QC_1491 {
+public class QC_1495 {
 
-    private String email = "QC_1491_autotest@autodoc.si", orderNumber;
+    private String email = "QC_1495_autotest@autodoc.si", orderNumber;
     private Float totalPrice, totalPriceAWSOrder, totalPriceInEmail;
 
     @BeforeClass
@@ -40,50 +39,41 @@ public class QC_1491 {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks verification of islands + Firm, billing is undivided, incorrect company data")
-    public void testChecksVerificationIslandsAndFirmIncorrectCompanyData(String route) {
+    @Description(value = "Test checks verification of islands + Firm, billing is divided, same countries in shipping, island without VAT")
+    public void testChecksVerificationIslandsSameCountriesInShipping(String route) {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
         clickOfBuyBtnForAllPages();
-        new Search_page_Logic().closePopupOtherCategoryIfYes()
+        totalPrice = new Search_page_Logic().closePopupOtherCategoryIfYes()
                 .cartClick().nextButtonClick()
                 .signIn(email, password)
-                .fillingPostalCodeField("20000")
-                .nextBtnClick();
-        totalPrice = new CartAddress_page_Logic().checkPresencePopupErrorAboutWrongCompany()
-                .clickBtnEinkaufFortsetzenFromPopupErrorAboutWrongCompany()
+                .clickCheckboxForOpenBilling()
+                .nextBtnClick()
                 .checkAbsenceOfPayPalMethod()
-                .chooseVorkasse().nextBtnClick()
-                .checkRegularDeliveryPrice("10,95")
-                .checkTextContainingVatPercentage("inkl. 20% MwSt.")
-                .checkPresenceSafeOrderBlock()
+                .chooseVorkasse()
+                .nextBtnClick()
+                .checkAbsenceSafeOrderBlock()
+                .checkAbsenceOfVatPercentage()
+                .checkRegularDeliveryPrice("165,00")
                 .getTotalPriceAllDataPage(shop);
         orderNumber = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumber);
         totalPriceAWSOrder = order_aws.openOrderInAwsWithLogin()
-                .checkVatStatusInOrder("Mit MwSt 20%")
-                .checkDeliveryPriceOrderAWS("10.95")
+                .checkVatStatusInOrder("Ohne Mwst")
+                .checkDeliveryPriceOrderAWS("165")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
         order_aws.reSaveOrder()
-                .checkVatStatusInOrder("Mit MwSt 20%")
-                .checkDeliveryPriceOrderAWS("10.95");
+                .checkVatStatusInOrder("Ohne Mwst")
+                .checkDeliveryPriceOrderAWS("165");
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
 
-        totalPriceInEmail = new WebMail().openMail("QC_1491_autotest@autodoc.si", passwordForMail)
+        totalPriceInEmail = new WebMail().openMail("QC_1495_autotest@autodoc.si", passwordForMail)
                 .checkAndOpenLetterWithOrderNumber(orderNumber)
-                .checkRegularDeliveryPriceInEmail("10.95")
-                .checkTextContainingVatPercentageInEmail("inkl. 20% MwSt")
+                .checkRegularDeliveryPriceInEmail("165.00")
+                .checkAbsenceVatPercentageInEmail()
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPrice, totalPriceInEmail);
-
-        openPage(route);
-        clickOfBuyBtnForAllPages();
-        new Search_page_Logic().closePopupOtherCategoryIfYes()
-                .cartClick().nextButtonClick();
-        new CartAddress_page_Logic().fillingPostalCodeField("97100")
-                .nextBtnClick();
-        checkingContainsUrl("/basket/payments");
     }
 
     @AfterMethod
