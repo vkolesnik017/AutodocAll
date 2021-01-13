@@ -37,20 +37,6 @@
         </classes>
     </test>
 
-    <test name="QC_1486_Island_ATD">
-        <classes>
-            <class name="ATD.Basket.QC_1486_Island_ATD.QC_1487"/>
-            <class name="ATD.Basket.QC_1486_Island_ATD.QC_1488"/>
-            <class name="ATD.Basket.QC_1486_Island_ATD.QC_1489"/>
-            <class name="ATD.Basket.QC_1486_Island_ATD.QC_1491"/>
-            <class name="ATD.Basket.QC_1486_Island_ATD.QC_1490"/>
-            <class name="ATD.Basket.QC_1486_Island_ATD.QC_1492"/>
-            <class name="ATD.Basket.QC_1486_Island_ATD.QC_1493"/>
-            <class name="ATD.Basket.QC_1486_Island_ATD.QC_1494"/>
-            <class name="ATD.Basket.QC_1486_Island_ATD.QC_1495"/>
-        </classes>
-    </test>
-
     <test name="QC_1882_Login_Registration_PasswordRecovery_ATD">
         <classes>
             <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1883"/>
@@ -143,7 +129,7 @@
         </classes>
     </test>
 
-    <test name="QC_3027_CheckingVATWithdrawalForCH">
+    <test name="QC_3027_CheckingVATWithdrawalForCH" thread-count="1">
         <classes>
             <class name="ATD.Basket.QC_3027_CheckingVATWithdrawalForCH.QC_3036"/>
         </classes>

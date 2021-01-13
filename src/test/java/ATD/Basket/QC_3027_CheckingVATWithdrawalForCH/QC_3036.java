@@ -92,7 +92,7 @@ public class QC_3036 {
         Order_aws order_aws = new Order_aws(orderNumber);
         String artID = order_aws.openOrderInAwsWithoutLogin()
                 .checkVatStatusInOrder("Mit MwSt " + vatForCH + "%")
-                .compereDeliveryCostInOrderWithCostOnSite(deliveryPrice)
+                .compereActualDeliveryCostWithExpected(deliveryPrice)
                 .compereDeliveryCostOfHeavyLoadsWithCostOnSite(heavyLoadsDeliveryCost)
                 .checkOrderHasExpectedPfandPrice(convertStringToFloat(deposit))
                 .checkTextInLabelDanger(artIdOFNotLiquid, "Неликвид")
@@ -101,7 +101,7 @@ public class QC_3036 {
         order_aws.reSaveOrder()
 
                 .checkVatStatusInOrder("Mit MwSt " + vatForCH + "%")
-                .compereDeliveryCostInOrderWithCostOnSite(deliveryPrice)
+                .compereActualDeliveryCostWithExpected(deliveryPrice)
                 .compereDeliveryCostOfHeavyLoadsWithCostOnSite(heavyLoadsDeliveryCost)
                 .checkOrderHasExpectedPfandPrice(convertStringToFloat(deposit))
                 .checkTextInLabelDanger(artIdOFNotLiquid, "Неликвид")

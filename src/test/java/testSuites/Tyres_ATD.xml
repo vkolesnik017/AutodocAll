@@ -81,19 +81,14 @@
         </classes>
     </test>
 
-    <test name="QC_1311_DeliveryAndPaymentsBlockOnTyresListing">
+    <test name="QC_2751_TireCatalog">
         <classes>
-            <class name="ATD.Tyres.QC_1311_DeliveryAndPaymentsBlockOnTyresListing.QC_1312"/>
-            <class name="ATD.Tyres.QC_1311_DeliveryAndPaymentsBlockOnTyresListing.QC_1313"/>
-        </classes>
-    </test>
-
-    <test name="QC_1317_SizeBlockOnTyresCatalog">
-        <classes>
-            <class name="ATD.Tyres.QC_1317_SizeBlockOnTyresCatalog.QC_1319"/>
-            <class name="ATD.Tyres.QC_1317_SizeBlockOnTyresCatalog.QC_1320"/>
-            <class name="ATD.Tyres.QC_1317_SizeBlockOnTyresCatalog.QC_1328"/>
-            <class name="ATD.Tyres.QC_1317_SizeBlockOnTyresCatalog.QC_1337"/>
+            <class name="ATD.Tyres.QC_2751_TireCatalog.QC_1312"/>
+            <class name="ATD.Tyres.QC_2751_TireCatalog.QC_1313"/>
+            <class name="ATD.Tyres.QC_2751_TireCatalog.QC_1319"/>
+            <class name="ATD.Tyres.QC_2751_TireCatalog.QC_1320"/>
+            <class name="ATD.Tyres.QC_2751_TireCatalog.QC_1328"/>
+            <class name="ATD.Tyres.QC_2751_TireCatalog.QC_1337"/>
         </classes>
     </test>
 

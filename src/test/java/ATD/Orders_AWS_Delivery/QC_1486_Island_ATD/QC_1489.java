@@ -1,4 +1,4 @@
-package ATD.Basket.QC_1486_Island_ATD;
+package ATD.Orders_AWS_Delivery.QC_1486_Island_ATD;
 
 import ATD.CartAllData_page_Logic;
 import ATD.Search_page_Logic;
@@ -21,11 +21,11 @@ import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static mailinator.WebMail.passwordForMail;
 
-public class QC_1494 {
 
-    private String email = "QC_1494_autotest@autodoc.si", orderNumber;
-    private Float totalPrice, totalPriceInEmail;
-    private Float totalPriceAWSOrder;
+public class QC_1489 {
+
+    private String email = "QC_1489_autotest@autodoc.si", orderNumber;
+    private Float totalPrice, totalPriceAWSOrder, totalPriceInEmail;
 
     @BeforeClass
     void setUp() {
@@ -40,8 +40,8 @@ public class QC_1494 {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks verification of islands + Firm, billing is undivided (Correct Company Data)")
-    public void testChecksVerificationIslandsAndFirmCorrectCompanyData(String route) {
+    @Description(value = "Test checks verification of islands, billing is divided (Positive case)")
+    public void testChecksVerificationIslandsBillingIsDividedPositiveCas(String route) {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
         clickOfBuyBtnForAllPages();
@@ -50,28 +50,26 @@ public class QC_1494 {
                 .signIn(email, password)
                 .nextBtnClick()
                 .checkAbsenceOfPayPalMethod()
-                .chooseVorkasse()
-                .nextBtnClick()
-                .checkPresenceSafeOrderBlock()
+                .chooseVorkasse().nextBtnClick()
                 .checkAbsenceOfVatPercentage()
-                .checkRegularDeliveryPrice("13,00")
+                .checkRegularDeliveryPrice("165,00")
+                .checkAbsenceSafeOrderBlock()
                 .getTotalPriceAllDataPage(shop);
         orderNumber = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumber);
         totalPriceAWSOrder = order_aws.openOrderInAwsWithLogin()
                 .checkVatStatusInOrder("Ohne Mwst")
-                .checkDeliveryPriceOrderAWS("13")
+                .checkDeliveryPriceOrderAWS("165")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
         order_aws.reSaveOrder()
                 .checkVatStatusInOrder("Ohne Mwst")
-                .checkDeliveryPriceOrderAWS("13");
+                .checkDeliveryPriceOrderAWS("165");
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
 
-        totalPriceInEmail = new WebMail().openMail("QC_1494_autotest@autodoc.si", passwordForMail)
+        totalPriceInEmail = new WebMail().openMail("QC_1489_autotest@autodoc.si", passwordForMail)
                 .checkAndOpenLetterWithOrderNumber(orderNumber)
-                .checkRegularDeliveryPriceInEmail("13.00")
-                .checkAbsenceVatPercentageInEmail()
+                .checkRegularDeliveryPriceInEmail("165.00")
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPrice, totalPriceInEmail);
     }
@@ -81,3 +79,4 @@ public class QC_1494 {
         closeWebDriver();
     }
 }
+
