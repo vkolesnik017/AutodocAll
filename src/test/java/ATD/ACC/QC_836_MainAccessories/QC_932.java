@@ -1,4 +1,4 @@
-package ATD.ACC.QC_929_BlockCategoriesLogicalUnionOnMainAccessories;
+package ATD.ACC.QC_836_MainAccessories;
 
 import ATD.Index_accessories_page_Logic;
 import ATD.Listing_accessories_page_Logic;

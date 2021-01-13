@@ -1,4 +1,4 @@
-package ATD.ACC.QC_886_TopCategoriesDirectionOnMainAccessories;
+package ATD.ACC.QC_836_MainAccessories;
 
 import ATD.Index_accessories_page_Logic;
 import ATD.Listing_accessories_page_Logic;

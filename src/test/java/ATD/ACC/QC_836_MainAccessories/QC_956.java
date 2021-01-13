@@ -1,24 +1,22 @@
-package ATD.ACC.QC_950_BlockTopProductsOnMainAccessories;
+package ATD.ACC.QC_836_MainAccessories;
 
 import ATD.Index_accessories_page_Logic;
-import ATD.Product_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
-import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
 import java.sql.SQLException;
+
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_961 {
-
-    private Index_accessories_page_Logic index_accessories_page_logic = new Index_accessories_page_Logic();
+public class QC_956 {
 
     @BeforeClass
     void setUp() {
@@ -27,21 +25,17 @@ public class QC_961 {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main","index_accessories,index_accessories_group1");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main","index_accessories,index_accessories_group");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test checking transition on product page when clicking on a goods in a block top products")
-    public void testCheckingTransitionWithGoodsBlockTopProducts(String route) {
+    @Description(value = "Test Checks the number of mini-cards in top products block")
+    public void testCheckNumberOfMiniCardsTopProductsForAccessories(String route) {
         openPage(route);
-        String idCategory = index_accessories_page_logic.getIdProductFromTopProductsBlock();
-        index_accessories_page_logic.clickOnFirstProductInTop6Block();
-        String idProduct = new Product_page_Logic().getIdFromBtnProduct();
-        Assert.assertEquals(idCategory, idProduct);
+        new Index_accessories_page_Logic().checkingNumberOfMiniCardsTop6Products();
     }
-
 
     @AfterMethod
     private void close() {
