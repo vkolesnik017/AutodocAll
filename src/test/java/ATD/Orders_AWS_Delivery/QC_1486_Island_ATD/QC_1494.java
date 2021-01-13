@@ -1,8 +1,7 @@
-package ATD.Basket.QC_1486_Island_ATD;
+package ATD.Orders_AWS_Delivery.QC_1486_Island_ATD;
 
 import ATD.CartAllData_page_Logic;
 import ATD.Search_page_Logic;
-import ATD.Versand_static_page_Logic;
 import Common.SetUp;
 import AWS.Order_aws;
 import io.qameta.allure.Description;
@@ -22,16 +21,15 @@ import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static mailinator.WebMail.passwordForMail;
 
-public class QC_1488 {
+public class QC_1494 {
 
-    private String email = "QC_1488_autotest@autodoc.si", orderNumber;
-    private Float totalPrice, totalPriceAWSOrder, totalPriceInEmail;
-    private String deliveryPrice;
+    private String email = "QC_1494_autotest@autodoc.si", orderNumber;
+    private Float totalPrice, totalPriceInEmail;
+    private Float totalPriceAWSOrder;
 
     @BeforeClass
-    void setUp() throws Exception {
+    void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
-        deliveryPrice = new Versand_static_page_Logic().getDeliveryPrice("Frankreich");
     }
 
     @DataProvider(name = "route", parallel = true)
@@ -42,46 +40,38 @@ public class QC_1488 {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks verification of islands, billing is undivided (Negative case)")
-    public void testChecksVerificationIslandsBillingIsUndividedNegativeCas(String route) {
+    @Description(value = "Test checks verification of islands + Firm, billing is undivided (Correct Company Data)")
+    public void testChecksVerificationIslandsAndFirmCorrectCompanyData(String route) {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
         clickOfBuyBtnForAllPages();
-        new Search_page_Logic().closePopupOtherCategoryIfYes()
+        totalPrice = new Search_page_Logic().closePopupOtherCategoryIfYes()
                 .cartClick().nextButtonClick()
                 .signIn(email, password)
-                .fillingPostalCodeFieldJSForShipping("97100")
                 .nextBtnClick()
                 .checkAbsenceOfPayPalMethod()
-                .chooseVorkasse().nextBtnClick()
-                .checkAbsenceOfVatPercentage()
-                .checkRegularDeliveryPrice("165,00")
-                .checkAbsenceSafeOrderBlock();
-        totalPrice = new CartAllData_page_Logic().clickBtnReturnToCartAddressPage()
-                .fillingPostalCodeFieldJSForShipping("33333")
+                .chooseVorkasse()
                 .nextBtnClick()
-                .checkPresenceOfPayPalMethod()
-                .chooseVorkasse().nextBtnClick()
                 .checkPresenceSafeOrderBlock()
-                .checkTextContainingVatPercentage("inkl. 20% MwSt.")
-                .checkRegularDeliveryPrice(deliveryPrice)
+                .checkAbsenceOfVatPercentage()
+                .checkRegularDeliveryPrice("13,00")
                 .getTotalPriceAllDataPage(shop);
         orderNumber = new CartAllData_page_Logic().nextBtnClick().getOrderNumber();
         Order_aws order_aws = new Order_aws(orderNumber);
         totalPriceAWSOrder = order_aws.openOrderInAwsWithLogin()
-                .checkVatStatusInOrder("Mit MwSt 20%")
-                .checkDeliveryPriceOrderAWS(deliveryPrice)
+                .checkVatStatusInOrder("Ohne Mwst")
+                .checkDeliveryPriceOrderAWS("13")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
         order_aws.reSaveOrder()
-                .checkVatStatusInOrder("Mit MwSt 20%")
-                .checkDeliveryPriceOrderAWS(deliveryPrice);
+                .checkVatStatusInOrder("Ohne Mwst")
+                .checkDeliveryPriceOrderAWS("13");
         Assert.assertEquals(totalPrice, totalPriceAWSOrder);
 
-        totalPriceInEmail = new WebMail().openMail("QC_1488_autotest@autodoc.si", passwordForMail)
+        totalPriceInEmail = new WebMail().openMail("QC_1494_autotest@autodoc.si", passwordForMail)
                 .checkAndOpenLetterWithOrderNumber(orderNumber)
-                .checkTextContainingVatPercentageInEmail("Inkl. 20% MwSt")
-                .checkRegularDeliveryPriceInEmail(deliveryPrice)
+                .checkRegularDeliveryPriceInEmail("13.00")
+                .checkAbsenceVatPercentageInEmail()
                 .getTotalPriceInEmail();
         Assert.assertEquals(totalPrice, totalPriceInEmail);
     }

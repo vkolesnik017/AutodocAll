@@ -47,12 +47,12 @@ public class CustomerCatalog_aws {
         return $$x("//ul[@class='catalog-table-content-items-item-child ui-sortable']/li/div/div[4]");
     }
 
-    private SelenideElement idOfChild() {
-        return $x("//ul[@class='catalog-table-content-items-item-child ui-sortable']/li/div/div[4][(contains(text(),' '))]");
+    private ElementsCollection idOfChild() {
+        return $$x("//ul[@class='catalog-table-content-items-item-child ui-sortable']/li/div/div[4][(contains(text(),' '))]");
     }
 
-    private SelenideElement childName() {
-        return $x("//ul[@class='catalog-table-content-items-item-child ui-sortable']/li/div/div[4][(contains(text(),' '))]/../div[5]/input");
+    private ElementsCollection childName() {
+        return $$x("//ul[@class='catalog-table-content-items-item-child ui-sortable']/li/div/div[4][(contains(text(),' '))]/../div[5]/input");
     }
 
     private SelenideElement loader() {
@@ -76,9 +76,9 @@ public class CustomerCatalog_aws {
         clickOnSearchButton();
         loader().shouldBe(visible);
         loader().shouldNotBe(visible);
-        String childId = idOfChild().getText();
+        String childId = idOfChild().last().getText();
         String firstChar = childId.substring(0, 1);
-        String title = childName().getAttribute("value");
+        String title = childName().last().getAttribute("value");
         if (firstChar.equals("3")) {
             open(new DataBase("ATD").getFullRouteByRouteName("prod", "DE", "main") + "/brand/" + idOfProduct);
             waitWhileRouteBecomeExpected("listing_chemicals");

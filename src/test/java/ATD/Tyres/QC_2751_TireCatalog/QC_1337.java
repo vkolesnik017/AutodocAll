@@ -1,4 +1,4 @@
-package ATD.Tyres.QC_1317_SizeBlockOnTyresCatalog;
+package ATD.Tyres.QC_2751_TireCatalog;
 
 
 import Common.SetUp;
@@ -17,7 +17,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1328 {
+public class QC_1337 {
 
     @BeforeClass
     void setUp() {
@@ -32,10 +32,10 @@ public class QC_1328 {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Romaniuta")
-    @Description(value = "Test Checks Transition To Listing Route Interact Diameter Block On Catalog Route")
-    public void testTransitionToListingRouteInteractDiameterBlockOnCatalogRoute(String route) {
+    @Description(value = "Test Checks Presence Diameter Block On Tyres Catalog Route")
+    public void testPresenceDiameterBlockOnTyresCatalogRoute(String route) {
         openPage(route);
-        new TyresListing_page_Logic().clickDiameterButtonAndCheckRedirectCatalogRoute();
+        new TyresListing_page_Logic().checkRadiusBlockVisibilityOnTyresCatalogRoute();
     }
 
     @AfterMethod

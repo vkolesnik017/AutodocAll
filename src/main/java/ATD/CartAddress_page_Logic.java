@@ -35,6 +35,19 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return this;
     }
 
+    @Step("Filling fields for Billing. CartAddress_page")
+    public CartAddress_page_Logic fillAllFieldsForBilling(String shop) {
+        checkCorrectTextAndFillInput(vornameBilling(), "autotest");
+        checkCorrectTextAndFillInput(nameInBilling(), "autotest");
+        checkCorrectTextAndFillInput(strasseBilling(), "autotest");
+        checkCorrectTextAndFillInput(paymentHouseBilling(), "autotest");
+        chooseDeliveryCountryForBilling(shop);
+        fillInPostalCodeForBilling("default");
+        checkCorrectTextAndFillInput(ortBilling(), "autotest");
+        checkCorrectTextAndFillInput(telephonBilling(), "200+002");
+        return this;
+    }
+
     @Step("Fill in all fields with default values and also fill fields Shop {shop}, Index {index}, Firm {name Form} and City {city} for Shipping. CartAddress_page")
     public CartAddress_page_Logic fillAllFieldsAndFirmForShipping(String shop, String index, String nameFirm, String city) {
         checkCorrectTextAndFillInput(vorname(), "autotest");
@@ -193,6 +206,34 @@ public class CartAddress_page_Logic extends CartAddress_page {
         checkCorrectTextAndFillInput(postalCodeFieldForShipping(), postalCodeOrCodeDefault);
         return this;
     }
+
+
+    @Step("Filling postal code {postalCodeOrCodeDefault} for Billing. CartAddress_page")
+    public CartAddress_page_Logic fillInPostalCodeForBilling(String postalCodeOrCodeDefault) {
+        if (postalCodeOrCodeDefault.equals("default")) {
+            String currentShop = getCurrentShopFromJSVarInHTML();
+            switch (currentShop) {
+                case "DK":
+                    postalCodeOrCodeDefault = "1234";
+                    break;
+                case "NL":
+                    postalCodeOrCodeDefault = "1234 AA";
+                    break;
+                case "PT":
+                    postalCodeOrCodeDefault = "1234-567";
+                    break;
+                default:
+                    postalCodeOrCodeDefault = "12345";
+                    break;
+            }
+        }
+        postalCodeFieldForBilling().clear();
+        postalCodeFieldForBilling().click();
+        checkCorrectTextAndFillInput(postalCodeFieldForBilling(), postalCodeOrCodeDefault);
+        return this;
+    }
+
+
 
     // Enters characters one by one
     @Step("Filling postal code {sendPostalCode}. CartAddress_page")
@@ -621,6 +662,15 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return this;
     }
 
+    @Step("Click checkbox for open fiscal code field for Billing block. CartAddress_page")
+    public CartAddress_page_Logic clickCheckboxForOpenFiscalCodeFieldForBilling() {
+        if (!fieldFiscalCodeBilling().isDisplayed()) {
+            checkboxFiscalCodeBilling().click();
+        }
+        fieldFiscalCodeBilling().shouldBe(visible);
+        return this;
+    }
+
     @Step("Click checkbox for closed fiscal code field. CartAddress_page")
     public CartAddress_page_Logic clickCheckboxForClosedFiscalCodeField() {
         if (fieldFiscalCode().isDisplayed()) {
@@ -633,6 +683,12 @@ public class CartAddress_page_Logic extends CartAddress_page {
     @Step("Filling field fiscal code {expectedText}. CartAddress_page")
     public CartAddress_page_Logic fillingFieldFiscalCode(String expectedText) {
         fieldFiscalCode().setValue(expectedText);
+        return this;
+    }
+
+    @Step("Filling field fiscal code {expectedText} Billing block. CartAddress_page")
+    public CartAddress_page_Logic fillingFieldFiscalCodeBilling(String expectedText) {
+        fieldFiscalCodeBilling().setValue(expectedText);
         return this;
     }
 
@@ -678,5 +734,53 @@ public class CartAddress_page_Logic extends CartAddress_page {
         checkCorrectTextAndFillInput(postalCodeFieldForBilling(), "");
         return this;
     }
+
+
+    @Step("Check text for checkbox fiscal code.Billing or Shipping. CartAddress_page")
+    public CartAddress_page_Logic checkTextForCheckboxFiscalCode(SelenideElement textFiscalCode, String shop) {
+        switch (shop) {
+            case "IT":
+                textFiscalCode.shouldHave(exactText("Codice fiscale (Opzionale)"));
+                break;
+            case "PT":
+                textFiscalCode.shouldHave(exactText("NIF (Opcional)"));
+                break;
+            case "RO":
+                if (textFiscalCode.isDisplayed()) {
+                    textFiscalCode.shouldHave(exactText("Număr personal de identificare (Facultativ)"));
+                }else if (!textFiscalCode.isDisplayed()) {
+                    textFiscalCodeInBillingForm2().shouldHave(exactText("Număr personal de identificare (Facultativ)"));
+                }
+                break;
+        }
+        return this;
+    }
+
+    @Step("Check visible / invisible fiscal code block (Billing or shipping block). CartAddress_page")
+    public CartAddress_page_Logic checkPresenceCheckboxFiscalCode(SelenideElement fiscalCodeBlock, boolean visibleElement) {
+        if (visibleElement == true) {
+            fiscalCodeBlock.shouldHave(attribute("style", "display: flex;"));
+        } else if (visibleElement == false) {
+            fiscalCodeBlock.shouldHave(attribute("style", "display: none;"));
+        }
+        return this;
+    }
+
+    @Step("Click checkbox firm and open field for Shipping or Billing block. CartAddress_page")
+    public CartAddress_page_Logic clickCheckboxFirmAndOpenField(SelenideElement checkBoxFirm, SelenideElement fieldFirm) {
+        checkBoxFirm.shouldBe(visible).click();
+        fieldFirm.shouldBe(visible);
+        return this;
+    }
+
+    @Step("Click checkbox firm and close field for Shipping or Billing block. CartAddress_page")
+    public CartAddress_page_Logic clickCheckboxFirmAndCloseField(SelenideElement checkBoxFirm, SelenideElement fieldFirm) {
+        checkBoxFirm.shouldBe(visible).click();
+        fieldFirm.shouldNotBe(visible);
+        return this;
+    }
+
+
+
 
 }
