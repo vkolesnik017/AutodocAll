@@ -1,4 +1,4 @@
-package ATD.ACC.QC_2143_ToolsListing;
+package ATD.ACC.QC_2659_ToolsListing;
 
 import ATD.Listing_instruments_page_Logic;
 import Common.SetUp;
@@ -9,14 +9,12 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import java.sql.SQLException;
-
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2150 {
+public class QC_2262 {
 
     @BeforeClass
     void setUp() {
@@ -31,10 +29,10 @@ public class QC_2150 {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test checking work buttons in pagination .")
-    public void testCheckingWorkBtnInPagination(String route) {
+    @Description(value = "Test checks presence products block and they quantity.")
+    public void testCheckingBlockAndQuantityMainProducts(String route) {
         openPage(route);
-        new Listing_instruments_page_Logic().checkingWorkBtnInPagination();
+        new Listing_instruments_page_Logic().checkingBlockAndQuantityMainProducts();
     }
 
 

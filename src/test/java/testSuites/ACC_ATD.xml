@@ -153,22 +153,17 @@
         </classes>
     </test>
 
-    <test name="QC_2143_ToolsListing">
+    <test name="QC_2659_ToolsListing">
         <classes>
-            <class name="ATD.ACC.QC_2143_ToolsListing.QC_2144"/>
-            <class name="ATD.ACC.QC_2143_ToolsListing.QC_2146"/>
-            <class name="ATD.ACC.QC_2143_ToolsListing.QC_2147"/>
-            <class name="ATD.ACC.QC_2143_ToolsListing.QC_2148"/>
-            <class name="ATD.ACC.QC_2143_ToolsListing.QC_2150"/>
-            <class name="ATD.ACC.QC_2143_ToolsListing.QC_2151"/>
-        </classes>
-    </test>
-
-    <test name="QC_2260_BlockWithProductsOnToolsListing">
-        <classes>
-            <class name="ATD.ACC.QC_2260_BlockWithProductsOnToolsListing.QC_2262"/>
-            <class name="ATD.ACC.QC_2260_BlockWithProductsOnToolsListing.QC_2263"/>
-            <class name="ATD.ACC.QC_2260_BlockWithProductsOnToolsListing.QC_2265"/>
+            <class name="ATD.ACC.QC_2659_ToolsListing.QC_2144"/>
+            <class name="ATD.ACC.QC_2659_ToolsListing.QC_2146"/>
+            <class name="ATD.ACC.QC_2659_ToolsListing.QC_2147"/>
+            <class name="ATD.ACC.QC_2659_ToolsListing.QC_2148"/>
+            <class name="ATD.ACC.QC_2659_ToolsListing.QC_2150"/>
+            <class name="ATD.ACC.QC_2659_ToolsListing.QC_2151"/>
+            <class name="ATD.ACC.QC_2659_ToolsListing.QC_2262"/>
+            <class name="ATD.ACC.QC_2659_ToolsListing.QC_2263"/>
+            <class name="ATD.ACC.QC_2659_ToolsListing.QC_2265"/>
         </classes>
     </test>
 

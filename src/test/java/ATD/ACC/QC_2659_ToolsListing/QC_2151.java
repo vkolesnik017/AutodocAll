@@ -1,4 +1,4 @@
-package ATD.ACC.QC_2143_ToolsListing;
+package ATD.ACC.QC_2659_ToolsListing;
 
 import ATD.Listing_instruments_page_Logic;
 import Common.SetUp;
@@ -9,12 +9,15 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
 import java.sql.SQLException;
+
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2144 {
+
+public class QC_2151 {
 
     @BeforeClass
     void setUp() {
@@ -23,18 +26,17 @@ public class QC_2144 {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main","listing_instruments,listing_instruments5");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "listing_instruments");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test checks title page.")
-    public void testCheckingPresenceTitlePage(String route) {
+    @Description(value = "Test checks presence Seo text block")
+    public void testCheckingPresenceSeoTextBlock(String route) {
         openPage(route);
-        new Listing_instruments_page_Logic().checkingPresenceTitlePage();
+        new Listing_instruments_page_Logic().checkingPresenceSeoTextBlock();
     }
-
 
     @AfterMethod
     private void close() {
