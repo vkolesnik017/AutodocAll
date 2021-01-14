@@ -37,11 +37,11 @@ public class CartAddress_page {
         return $(byId("form_lTelefon"));
     }
 
-    SelenideElement checkboxFirmShipping() {
+    public SelenideElement checkboxFirmShipping() {
         return $x("//input[@id='is_company_shipping']");
     }
 
-    SelenideElement fieldFirm() {
+    public SelenideElement fieldFirm() {
         return $(byId("form_lFirma"));
     }
 
@@ -81,7 +81,7 @@ public class CartAddress_page {
         return $(byId("form_rTelefon"));
     }
 
-    SelenideElement fieldFirmBilling() {
+    public SelenideElement fieldFirmBilling() {
         return $(byId("form_Firma"));
     }
 
@@ -89,7 +89,7 @@ public class CartAddress_page {
         return $(byId("form_rUmsatzId"));
     }
 
-    SelenideElement checkboxFirmBilling() {
+    public SelenideElement checkboxFirmBilling() {
         return $x("//input[@id='is_company_billing']");
     }
 
@@ -173,16 +173,41 @@ public class CartAddress_page {
         return $x("//form[@id='shipping_form']//div[@class='error-message']");
     }
 
-    SelenideElement fiscalCodeBlockInSippingForm() {
-        return $x("//div[@class='shipping-form input-form']//div[@class='fiscal-code-block']");
+    public SelenideElement fiscalCodeBlockInSippingForm() {
+        return $x("//div[@class='fiscal-code-block']//div[@id='l-fiscal-code-optional']");
+    }
+
+    public SelenideElement fiscalCodeBlockInBillingForm() {
+        return $x("//div[@class='fiscal-code-block']//div[@id='r-fiscal-code-optional']");
+    }
+
+    public SelenideElement textFiscalCodeInShippingForm() {
+        return $x("//input[@id='is-lFiscal-code']/../label[contains(@for,'lFiscalCode') and @style='display: block;']");
+    }
+
+    public SelenideElement textFiscalCodeInBillingForm() {
+        return $x("//input[@id='is-rFiscal-code']/../label[@for='rFiscalCode']");
+    }
+
+    public SelenideElement textFiscalCodeInBillingForm2() {
+        return $x("//input[@id='is-rFiscal-code']/../label[@for='rFiscalCode_190' ]");
     }
 
     SelenideElement checkboxFiscalCode() {
         return $x("//input[@id='is-lFiscal-code']");
     }
 
-    SelenideElement fieldFiscalCode() {
+
+    SelenideElement checkboxFiscalCodeBilling() {
+        return $x("//input[@id='is-rFiscal-code']");
+    }
+
+    public SelenideElement fieldFiscalCode() {
         return $x("//input[@name='lFiscalCode']");
+    }
+
+    public SelenideElement fieldFiscalCodeBilling() {
+        return $x("//input[@name='rFiscalCode']");
     }
 
     SelenideElement notesWithAddressRestrictions() {
