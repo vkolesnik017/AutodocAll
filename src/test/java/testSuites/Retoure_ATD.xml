@@ -8,8 +8,8 @@
 
     <test name="QC_594_CheckingTranslationOfCausesForReturn">
         <classes>
-            <class name="ATD.Retoure.QC_594_CheckingTranslationOfCausesForReturn.QC_595"/>
-            <class name="ATD.Retoure.QC_594_CheckingTranslationOfCausesForReturn.QC_596"/>
+            <class name="ATD.Retoure.QC_2716_ReturnCheck.QC_595"/>
+            <class name="ATD.Retoure.QC_2716_ReturnCheck.QC_596"/>
         </classes>
     </test>
 

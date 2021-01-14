@@ -1,4 +1,4 @@
-package ATD.ACC.QC_2143_ToolsListing;
+package ATD.ACC.QC_2659_ToolsListing;
 
 import ATD.Listing_instruments_page_Logic;
 import Common.SetUp;
@@ -16,8 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-
-public class QC_2151 {
+public class QC_2150 {
 
     @BeforeClass
     void setUp() {
@@ -26,17 +25,18 @@ public class QC_2151 {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "listing_instruments");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main","listing_instruments");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test checks presence Seo text block")
-    public void testCheckingPresenceSeoTextBlock(String route) {
+    @Description(value = "Test checking work buttons in pagination .")
+    public void testCheckingWorkBtnInPagination(String route) {
         openPage(route);
-        new Listing_instruments_page_Logic().checkingPresenceSeoTextBlock();
+        new Listing_instruments_page_Logic().checkingWorkBtnInPagination();
     }
+
 
     @AfterMethod
     private void close() {
