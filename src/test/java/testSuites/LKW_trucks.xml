@@ -96,16 +96,7 @@
         </classes>
     </test>
 
-    <test name="QC_33_BrandsBlock">
-        <classes>
-            <class name="ATD.LKW_trucks.QC_33_BrandsBLock.QC_34"/>
-            <class name="ATD.LKW_trucks.QC_33_BrandsBLock.QC_37"/>
-            <class name="ATD.LKW_trucks.QC_33_BrandsBLock.QC_38"/>
-            <class name="ATD.LKW_trucks.QC_33_BrandsBLock.QC_40"/>
-        </classes>
-    </test>
-
-    <test name="QC_41_AdvantageBlockAndMainImageOfCategory">
+     <test name="QC_41_AdvantageBlockAndMainImageOfCategory">
         <classes>
             <class name="ATD.LKW_trucks.QC_41_AdvantageBlockAndMainImageOfCategory.QC_43"/>
             <class name="ATD.LKW_trucks.QC_41_AdvantageBlockAndMainImageOfCategory.QC_45"/>
@@ -133,15 +124,6 @@
             <class name="ATD.LKW_trucks.QC_207_ProductPage.QC_210"/>
             <class name="ATD.LKW_trucks.QC_207_ProductPage.QC_212"/>
             <class name="ATD.LKW_trucks.QC_207_ProductPage.QC_209"/>
-        </classes>
-    </test>
-
-    <test name="QC_105_FilterInteractionInTecDocListing">
-        <classes>
-            <class name="ATD.LKW_trucks.QC_105_FilterInteractionInTecDocListing.QC_106"/>
-            <class name="ATD.LKW_trucks.QC_105_FilterInteractionInTecDocListing.QC_112"/>
-            <class name="ATD.LKW_trucks.QC_105_FilterInteractionInTecDocListing.QC_113"/>
-            <class name="ATD.LKW_trucks.QC_105_FilterInteractionInTecDocListing.QC_114"/>
         </classes>
     </test>
 

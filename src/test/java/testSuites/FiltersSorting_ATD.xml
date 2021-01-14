@@ -6,7 +6,7 @@
         <listener class-name="Common.ProjectListener"/>
     </listeners>
 
-    <test name="FiltersSorting_sideFilters">
+    <test name="QC_115_FiltersSorting_sideFilters">
         <classes>
             <!--<class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_118"/>--> <!-- Filter by price is inactive-->
             <class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_119"/>
@@ -21,7 +21,7 @@
         </classes>
     </test>
 
-    <test name="FiltersSorting_interaction">
+    <test name="QC_127_FiltersSorting_interaction">
         <classes>
             <!--<class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_128"/>--> <!-- Filter hohe is inactive-->
             <!--<class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_129"/>--> <!-- Filter oberflache is inactive-->
@@ -33,6 +33,10 @@
             <class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_141"/>
             <class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_142"/>
             <!--<class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_143"/>--> <!-- Filter by price is inactive-->
+            <class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_106"/>
+            <class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_112"/>
+            <class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_113"/>
+            <class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_114"/>
             <class name="ATD.FiltersSorting.QC_127_FiltersSorting_interaction.QC_2663"/>
         </classes>
     </test>
@@ -85,7 +89,6 @@
         <classes>
             <class name="ATD.FiltersSorting.QC_195_FiltersSorting_outputSorting.QC_226"/>
             <class name="ATD.FiltersSorting.QC_195_FiltersSorting_outputSorting.QC_227"/>
-            <class name="ATD.FiltersSorting.QC_195_FiltersSorting_outputSorting.QC_228"/>
             <class name="ATD.FiltersSorting.QC_195_FiltersSorting_outputSorting.QC_229"/>
             <class name="ATD.FiltersSorting.QC_195_FiltersSorting_outputSorting.QC_251"/>
             <class name="ATD.FiltersSorting.QC_195_FiltersSorting_outputSorting.QC_252"/>

@@ -6,7 +6,7 @@
         <listener class-name="Common.ProjectListener"/>
     </listeners>
 
-    <test name="19_WorkWithOrdersInAWS" thread-count="1">
+    <test name="QC_19_WorkWithOrdersInAWS" thread-count="1">
         <classes>
             <class name="ATD.Orders_AWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_21"/>
             <class name="ATD.Orders_AWS_Delivery.QC_19_WorkWithOrdersInAWS.QC_137"/>
