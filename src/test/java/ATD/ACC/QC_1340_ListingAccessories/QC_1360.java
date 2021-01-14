@@ -1,4 +1,4 @@
-package ATD.ACC.QC_1356_BlockCategoriesInSidebarOnListingAccessories;
+package ATD.ACC.QC_1340_ListingAccessories;
 
 import ATD.Listing_accessories_page_Logic;
 import Common.SetUp;

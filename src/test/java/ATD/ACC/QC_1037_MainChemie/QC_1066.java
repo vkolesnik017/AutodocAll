@@ -1,7 +1,6 @@
-package ATD.ACC.QC_2261_BlockWithProductsOnAccessoriesListing;
+package ATD.ACC.QC_1037_MainChemie;
 
-
-import ATD.Listing_accessories_page_Logic;
+import ATD.Index_chemicals_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -10,12 +9,14 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
 import java.sql.SQLException;
+
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2266 {
+public class QC_1066 {
 
     @BeforeClass
     void setUp() {
@@ -24,16 +25,16 @@ public class QC_2266 {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "listing_accessories");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main","index_chemicals");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test checks presence products block and they quantity.")
-    public void testCheckingBlockAndQuantityMainProducts(String route) {
+    @Description(value = "Test checks presence popup with characteristics product after hover in block top-6")
+    public void testCheckPresencePopupWithCharacteristicsProductInTop6Block(String route) {
         openPage(route);
-        new Listing_accessories_page_Logic().checkingBlockAndQuantityMainProducts();
+        new Index_chemicals_page_Logic().checkingHoverPopupInTop6ProductBlock();
     }
 
     @AfterMethod

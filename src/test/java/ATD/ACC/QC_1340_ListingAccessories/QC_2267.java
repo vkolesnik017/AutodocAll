@@ -1,4 +1,4 @@
-package ATD.ACC.QC_2261_BlockWithProductsOnAccessoriesListing;
+package ATD.ACC.QC_1340_ListingAccessories;
 
 import ATD.Listing_accessories_page_Logic;
 import ATD.Product_page_Logic;
