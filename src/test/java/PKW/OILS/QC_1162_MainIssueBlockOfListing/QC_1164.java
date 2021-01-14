@@ -27,6 +27,7 @@ public class QC_1164 {
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
     }
+
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
         return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil_viscosity,motoroil_viscosity_brand,motoroil_specification,motoroil_release,motoroil_brand");
@@ -61,7 +62,11 @@ public class QC_1164 {
 
         String idOfAddedProduct = makerPage.presenceOfMainListingOfProducts().getIdOfAddedProductToBasket(0);
         String volumeOfAddedProduct = makerPage.getVolumeOfAddedProduct(0);
-        makerPage.clickOnBtnAddToBasket(0).displayOfBasketDropMenu().displayEngineOilViscosity().clickOnBasketIconInHeader();
+        makerPage.clickOnBtnAddToBasket(0)
+                .displayOfBasketDropMenu()
+                .displayEngineOilViscosity()
+                .displayEngineOilViscosity()
+                .clickOnBasketIconInHeader();
         String idOfAddedProductInBasket = cartPage.presenceOfAddedProductList().getIdAddedProduct();
         Assert.assertEquals(idOfAddedProductInBasket, idOfAddedProduct);
         Assert.assertEquals(cartPage.getVolumeAddedProduct(), volumeOfAddedProduct);
