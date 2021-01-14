@@ -1,12 +1,11 @@
-package ATD.ACC.QC_2261_BlockWithProductsOnAccessoriesListing;
+package ATD.ACC.QC_1340_ListingAccessories;
+
 
 import ATD.Listing_accessories_page_Logic;
-import ATD.Product_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
-import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -16,11 +15,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2267 {
-
-    private String idCategoryListing, idCategoryProduct;
-    Listing_accessories_page_Logic listingAccessoriesPageLogic = new Listing_accessories_page_Logic();
-
+public class QC_2266 {
 
     @BeforeClass
     void setUp() {
@@ -35,13 +30,10 @@ public class QC_2267 {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test Checks transition with main product.")
-    public void testCheckingTransitionWithMainProduct(String route) {
+    @Description(value = "Test checks presence products block and they quantity.")
+    public void testCheckingBlockAndQuantityMainProducts(String route) {
         openPage(route);
-        idCategoryListing =  listingAccessoriesPageLogic.getIdProductListing();
-        listingAccessoriesPageLogic.clickOnTitleNameMainProduct();
-        idCategoryProduct = new Product_page_Logic().getIdFromBtnProduct();
-        Assert.assertEquals(idCategoryListing, idCategoryProduct);
+        new Listing_accessories_page_Logic().checkingBlockAndQuantityMainProducts();
     }
 
     @AfterMethod
