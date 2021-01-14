@@ -106,19 +106,6 @@
         </classes>
     </test>
 
-    <test name="QC_73_TopProductsBlock">
-        <classes>
-            <class name="ATD.LKW_trucks.QC_73_TopProductsBlock.QC_74"/>
-            <class name="ATD.LKW_trucks.QC_73_TopProductsBlock.QC_75"/>
-            <class name="ATD.LKW_trucks.QC_73_TopProductsBlock.QC_76"/>
-            <class name="ATD.LKW_trucks.QC_73_TopProductsBlock.QC_77"/>
-            <class name="ATD.LKW_trucks.QC_73_TopProductsBlock.QC_78"/>
-            <class name="ATD.LKW_trucks.QC_73_TopProductsBlock.QC_79"/>
-            <class name="ATD.LKW_trucks.QC_73_TopProductsBlock.QC_80"/>
-            <class name="ATD.LKW_trucks.QC_73_TopProductsBlock.QC_81"/>
-        </classes>
-    </test>
-
     <test name="QC_207_ProductPage">
         <classes>
             <class name="ATD.LKW_trucks.QC_207_ProductPage.QC_210"/>
@@ -139,7 +126,6 @@
             <class name="ATD.LKW_trucks.QC_2306_OilsAndLiquidsCategories.QC_2304"/>
             <class name="ATD.LKW_trucks.QC_2306_OilsAndLiquidsCategories.QC_2305"/>
             <class name="ATD.LKW_trucks.QC_2306_OilsAndLiquidsCategories.QC_2307"/>
-            <class name="ATD.LKW_trucks.QC_2306_OilsAndLiquidsCategories.QC_2308"/>
         </classes>
     </test>
 </suite>

@@ -1,4 +1,4 @@
-package ATD.Tyres.QC_1475_TopBlockOnTyresListings;
+package ATD.TopPartsBlock.QC_2689_TopProductsBlock;
 
 
 import Common.SetUp;
@@ -17,7 +17,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1522 {
+public class QC_1477 {
 
     @BeforeClass
     void setUp() {
@@ -35,13 +35,14 @@ public class QC_1522 {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Romaniuta")
-    @Description(value = "Test Products In Top Block Not Adjust To Rating Filter")
-    public void testProductsInTopBlockNotAdjustToRatingFilter(String route) {
+    @Description(value = "Test Add To Basket From Tyres Top Block")
+    public void testAddToBasketFromTyresTopBlock(String route) {
         openPage(route);
-        new TyresListing_page_Logic().checkProductsInTopBlockAndRatingFilter();
+        new TyresListing_page_Logic().addToBasketFromTopBlock();
     }
 
     @AfterMethod
     public void close() {
         closeWebDriver();
-    }}
+    }
+}

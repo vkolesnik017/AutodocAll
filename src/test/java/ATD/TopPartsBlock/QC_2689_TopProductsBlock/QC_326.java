@@ -1,8 +1,7 @@
-package ATD.Tyres.QC_1475_TopBlockOnTyresListings;
+package ATD.TopPartsBlock.QC_2689_TopProductsBlock;
 
-
+import ATD.Moto_main_page_Logic;
 import Common.SetUp;
-import ATD.TyresListing_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -17,7 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1523 {
+public class QC_326 {
 
     @BeforeClass
     void setUp() {
@@ -26,20 +25,20 @@ public class QC_1523 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyre_form,tyre_form2,tyre_form3");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_main,moto_categories_maker2,moto_categories");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "Romaniuta")
-    @Description(value = "Test Checks Products In Top Block Fit Selector")
-    public void testProductsInTopBlockFitSelector(String route) {
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test checks presence of navigation arrows in TOP block")
+    public void testChecksPresenceOfNavigationArrowsInTopBlock(String route) {
         openPage(route);
-        new TyresListing_page_Logic().getValueFromSelectorAndCheckTopBlockProducts();
+        new Moto_main_page_Logic()
+                .presenceOfNavigationArrows();
     }
-
-
     @AfterMethod
     public void close() {
         closeWebDriver();
-    }}
+    }
+}

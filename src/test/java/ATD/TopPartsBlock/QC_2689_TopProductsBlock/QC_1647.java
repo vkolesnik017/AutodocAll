@@ -1,4 +1,4 @@
-package ATD.General_Common.QC_1645_BlockTopProducts;
+package ATD.TopPartsBlock.QC_2689_TopProductsBlock;
 
 import ATD.CommonMethods;
 import ATD.Product_page_Logic;

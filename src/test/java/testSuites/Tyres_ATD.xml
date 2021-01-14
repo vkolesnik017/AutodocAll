@@ -132,17 +132,6 @@
         </classes>
     </test>
 
-    <!--<test name="QC_1475_TopBlockOnTyresListings">
-        <classes>
-            <class name="ATD.Tyres.QC_1475_TopBlockOnTyresListings.QC_1477"/>
-            <class name="ATD.Tyres.QC_1475_TopBlockOnTyresListings.QC_1478"/>
-            <class name="ATD.Tyres.QC_1475_TopBlockOnTyresListings.QC_1500"/>
-            <class name="ATD.Tyres.QC_1475_TopBlockOnTyresListings.QC_1522"/>
-            <class name="ATD.Tyres.QC_1475_TopBlockOnTyresListings.QC_1523"/>
-        </classes>
-    </test>-->
-
-
         <!--<test name="QC_2066_CheckProductsOutOfStock">
             <classes>
                 <class name="ATD.Tyres.QC_2066_CheckProductsOutOfStock.QC_2077"/>

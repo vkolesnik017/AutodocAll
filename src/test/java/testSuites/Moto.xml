@@ -175,20 +175,6 @@
         </classes>
     </test>
 
-    <test name="QC_319_TopProductsBlock">
-        <classes>
-            <class name="ATD.MOTO.QC_319_TopProductsBlock.QC_320"/>
-            <class name="ATD.MOTO.QC_319_TopProductsBlock.QC_321"/>
-            <class name="ATD.MOTO.QC_319_TopProductsBlock.QC_322"/>
-            <class name="ATD.MOTO.QC_319_TopProductsBlock.QC_323"/>
-            <class name="ATD.MOTO.QC_319_TopProductsBlock.QC_324"/>
-            <class name="ATD.MOTO.QC_319_TopProductsBlock.QC_325"/>
-            <class name="ATD.MOTO.QC_319_TopProductsBlock.QC_326"/>
-            <class name="ATD.MOTO.QC_319_TopProductsBlock.QC_327"/>
-            <class name="ATD.MOTO.QC_319_TopProductsBlock.QC_328"/>
-        </classes>
-    </test>
-
     <test name="QC_730_ProductPage">
         <classes>
             <class name="ATD.MOTO.QC_730_ProductPage.QC_732"/>

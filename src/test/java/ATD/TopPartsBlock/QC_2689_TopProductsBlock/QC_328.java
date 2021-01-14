@@ -1,6 +1,6 @@
-package ATD.General_Common.QC_1645_BlockTopProducts;
+package ATD.TopPartsBlock.QC_2689_TopProductsBlock;
 
-import ATD.CommonMethods;
+import ATD.Moto_Category_maker_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,10 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-
-public class QC_1648 {
-
-    private CommonMethods commonMethods = new CommonMethods();
+public class QC_328 {
 
     @BeforeClass
     void setUp() {
@@ -27,17 +24,18 @@ public class QC_1648 {
     }
 
     @DataProvider(name = "routes", parallel = true)
-    Object[] routes() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_maker,group_list,category_maker_brand");
+    Object[] dataProvider() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_parent_category_maker2,moto_category_maker");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "Chelombitko")
-    @Description(value = "The test checks presence elements in mini-card in blocks of top products")
-    public void testPresenceElementsInMiniCardInBlocksOfTopProducts(String route) {
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test checks Applicability of products from the TOP block to the brand the page on which is open")
+    public void testChecksApplicabilityProductsToBrandPage(String route) {
         openPage(route);
-        commonMethods.scrollToBlockOfTopProducts().checksPresenceElementsInMiniCardInBlocksOfTopProducts();
+       String motoBrand =  new Moto_Category_maker_page_Logic().getMotoBrandFromUrl();
+        new Moto_Category_maker_page_Logic().checkApplicabilityMotoAndProduct(motoBrand);
     }
 
     @AfterMethod

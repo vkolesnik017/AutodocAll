@@ -1,4 +1,4 @@
-package ATD.LKW_trucks.QC_73_TopProductsBlock;
+package ATD.TopPartsBlock.QC_2689_TopProductsBlock;
 
 import ATD.LKW_Category_brand_page_Logic;
 import Common.SetUp;

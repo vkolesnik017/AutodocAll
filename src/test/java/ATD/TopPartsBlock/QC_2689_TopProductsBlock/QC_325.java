@@ -1,7 +1,7 @@
-package ATD.LKW_trucks.QC_2306_OilsAndLiquidsCategories;
+package ATD.TopPartsBlock.QC_2689_TopProductsBlock;
 
-import ATD.LKW_Category_page_Logic;
-import ATD.LKW_Parent_Category_page_Logic;
+import ATD.Moto_Category_page_Logic;
+import ATD.Moto_main_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -17,7 +17,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2308 {
+public class QC_325 {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -25,31 +25,32 @@ public class QC_2308 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_parent_category4");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_main,moto_categories_maker2,moto_categories,moto_catalog2,moto_catalog_model2");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks presence of products in TOP products block")
-    public void testChecksPresenceOfProductsInTopProductsBlock(String route) {
+    @Description(value = "Test checks visibility of TOP product characteristic by hover")
+    public void testChecksVisibilityOfTopProductCharacteristicByHover(String route) {
         openPage(route);
-        new LKW_Parent_Category_page_Logic().availabilityOfTopProductsBlock().comparisonOfProductAndGeneric("Motoröl");
+            new Moto_main_page_Logic()
+                    .visibilityOfPopUpWithAdditionInfo();
     }
 
     @DataProvider(name = "routesCategory", parallel = true)
     Object[] dataProviderCategory() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category4,lkw_category_maker3,lkw_category_brand3,lkw_category_maker_brand4");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category,moto_category_maker,moto_parent_category_maker2");   //
     }
 
     @Test(dataProvider = "routesCategory")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks presence of products in TOP products block")
-    public void testChecksPresenceOfProductsInTopProductsBlockCategory(String route) {
+    @Description(value = "Test checks visibility of TOP product characteristic by hover")
+    public void testChecksVisibilityOfTopProductCharacteristicByHoverCategory(String route) {
         openPage(route);
-        new LKW_Category_page_Logic().availabilityOfTopProductsBlock()
-                .comparisonOfProductAndGeneric("Motoröl");
+        new Moto_Category_page_Logic()
+                .visibilityOfPopUpWithAdditionInfo();
     }
 
     @AfterMethod

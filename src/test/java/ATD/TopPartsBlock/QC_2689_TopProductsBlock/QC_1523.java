@@ -1,7 +1,8 @@
-package ATD.MOTO.QC_319_TopProductsBlock;
+package ATD.TopPartsBlock.QC_2689_TopProductsBlock;
 
-import ATD.Moto_Category_maker_page_Logic;
+
 import Common.SetUp;
+import ATD.TyresListing_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -16,7 +17,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_328 {
+public class QC_1523 {
 
     @BeforeClass
     void setUp() {
@@ -25,21 +26,20 @@ public class QC_328 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_parent_category_maker2,moto_category_maker");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyre_form,tyre_form2,tyre_form3");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "Kolesnik")
-    @Description(value = "Test checks Applicability of products from the TOP block to the brand the page on which is open")
-    public void testChecksApplicabilityProductsToBrandPage(String route) {
+    @Owner(value = "Romaniuta")
+    @Description(value = "Test Checks Products In Top Block Fit Selector")
+    public void testProductsInTopBlockFitSelector(String route) {
         openPage(route);
-       String motoBrand =  new Moto_Category_maker_page_Logic().getMotoBrandFromUrl();
-        new Moto_Category_maker_page_Logic().checkApplicabilityMotoAndProduct(motoBrand);
+        new TyresListing_page_Logic().getValueFromSelectorAndCheckTopBlockProducts();
     }
+
 
     @AfterMethod
     public void close() {
         closeWebDriver();
-    }
-}
+    }}

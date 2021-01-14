@@ -1,4 +1,4 @@
-package ATD.MOTO.QC_319_TopProductsBlock;
+package ATD.TopPartsBlock.QC_2689_TopProductsBlock;
 
 import ATD.*;
 import Common.SetUp;

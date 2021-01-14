@@ -1,6 +1,6 @@
-package ATD.MOTO.QC_319_TopProductsBlock;
+package ATD.TopPartsBlock.QC_2689_TopProductsBlock;
 
-import ATD.Moto_main_page_Logic;
+import ATD.CommonMethods;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,7 +16,10 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_326 {
+
+public class QC_1648 {
+
+    private CommonMethods commonMethods = new CommonMethods();
 
     @BeforeClass
     void setUp() {
@@ -24,19 +27,19 @@ public class QC_326 {
     }
 
     @DataProvider(name = "routes", parallel = true)
-    Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_main,moto_categories_maker2,moto_categories");
+    Object[] routes() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_maker,group_list,category_maker_brand");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "Kolesnik")
-    @Description(value = "Test checks presence of navigation arrows in TOP block")
-    public void testChecksPresenceOfNavigationArrowsInTopBlock(String route) {
+    @Owner(value = "Chelombitko")
+    @Description(value = "The test checks presence elements in mini-card in blocks of top products")
+    public void testPresenceElementsInMiniCardInBlocksOfTopProducts(String route) {
         openPage(route);
-        new Moto_main_page_Logic()
-                .presenceOfNavigationArrows();
+        commonMethods.scrollToBlockOfTopProducts().checksPresenceElementsInMiniCardInBlocksOfTopProducts();
     }
+
     @AfterMethod
     public void close() {
         closeWebDriver();
