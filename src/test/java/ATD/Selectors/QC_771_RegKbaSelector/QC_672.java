@@ -9,7 +9,6 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import static ATD.CommonMethods.checkingContainsUrl;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.*;
@@ -33,7 +32,7 @@ public class QC_672 {
   @Owner(value = "Evlentiev")
   @Description(value = "Use horizontal selector when chosen existing kna number")
   public void testUseHorizontalSelectorWhenChosenExistingKBA(String route) {
-    product_page_logic.openProductPageById(route, "0019946");
+    product_page_logic.openProductPageById(route, "10019946");
     refresh();
     sleep(3000);
     product_page_logic.fillNumberKba("0603", "419")
