@@ -621,7 +621,7 @@ public class Main_page {
     }
 
     SelenideElement selectorPopup() {
-        return $x("//body/div[7]");
+        return $x("//div[@class='new_popup popup_content popup-kba-error']");
     }
 
     SelenideElement bluePromptEmptyFieldSelector() {

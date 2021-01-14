@@ -1,4 +1,4 @@
-package ATD.Listings.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults;
+package ATD.Search.QC_548_SearchTooltips;
 
 
 import Common.DataBase;

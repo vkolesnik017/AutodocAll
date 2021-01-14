@@ -31,6 +31,8 @@
             <class name="ATD.Search.QC_548_SearchTooltips.QC_2541"/>
             <class name="ATD.Search.QC_548_SearchTooltips.QC_3120"/>
             <class name="ATD.Search.QC_548_SearchTooltips.QC_3142"/>
+            <class name="ATD.Search.QC_548_SearchTooltips.QC_890"/>
+            <class name="ATD.Search.QC_548_SearchTooltips.QC_1309"/>
         </classes>
     </test>
 

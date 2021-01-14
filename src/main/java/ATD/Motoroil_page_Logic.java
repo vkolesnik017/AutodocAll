@@ -156,7 +156,7 @@ public class Motoroil_page_Logic extends Motoroil_page {
     public Motoroil_page_Logic checkTransferFromTopBlockToProductPage() {
         topBlockOnMainOilPage().shouldBe(visible);
         String idProduct = topBlockItem().getAttribute("data-product-id");
-        topBlockItemFirst().scrollIntoView(true).hover();
+        topBlockItemFirst().hover();
         topBlockItemDetails().shouldBe(visible).click();
         checkingContainsUrl(idProduct);
         back();
