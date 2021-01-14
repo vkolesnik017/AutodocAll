@@ -1,4 +1,4 @@
-package ATD.Associated.QC_776_RelatedProductsLogic;
+package ATD.AccAnalogAlts.QC_790_AlternativesAnalogs;
 
 
 import ATD.Product_page_Logic;
@@ -13,10 +13,11 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
+import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_782 {
+public class QC_779 {
 
     @BeforeClass
     void setUp() {
@@ -31,13 +32,10 @@ public class QC_782 {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Romaniuta")
-    @Description(value = "Test Related Products Block Functionality")
-    public void testRelatedProductsBlockFunctionality(String route) {
-        new Product_page_Logic().checkRelatedProductPopupClose(route)
-                    .checkRelatedProductPopupBack(route)
-                    .checkRelatedProductPopupGoToBasket(route)
-                    .checkRealatedPopupCategories(route)
-                    .checkRelatedPopupOverlay(route);
+    @Description(value = "Test Checks Related Products Popup On Product Page Without Car")
+    public void testRelatedProductsPopupOnProductPageWithoutCar(String route) {
+        openPage(route);
+        new Product_page_Logic().checkRelatedProductsPopup(5);
     }
 
     @AfterMethod

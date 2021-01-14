@@ -1,4 +1,4 @@
-package ATD.LKW_trucks.QC_207_ProductPage;
+package ATD.AccAnalogAlts.QC_790_AlternativesAnalogs;
 
 import ATD.Cart_page_Logic;
 import ATD.LKW_Product_page_Logic;
