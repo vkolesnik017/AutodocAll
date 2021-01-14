@@ -2,7 +2,6 @@ package AWS;
 
 import Common.DataBase;
 import com.codeborne.selenide.*;
-import com.codeborne.selenide.conditions.Or;
 import com.codeborne.selenide.ex.ElementShould;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -177,6 +176,22 @@ public class Order_aws {
         return $x("//div[@id='addProduct']//div[@class='modal-dialog']");
     }
 
+    private SelenideElement suppliersTableInPopUpAddProduct() {
+        return $x("//table[contains(@class,'contains-suppliers')]");
+    }
+
+    private SelenideElement storageTableInPopUpAddProduct() {
+        return $x("//table[contains(@class,'contains-storage')]");
+    }
+
+    private SelenideElement prodictListInPopUpAddProduct() {
+        return $x("//table[@id='products_list_add']");
+    }
+
+    private SelenideElement productInPopUpAddProduct(String articlID) {
+        return $x("//input[@value='" + articlID + "']");
+    }
+
     private SelenideElement articleNumberField() {
         return $(By.id("AddProduct[articleNo]"));
     }
@@ -211,6 +226,10 @@ public class Order_aws {
 
     private SelenideElement labelDangerOfCertainProduct(String artID) {
         return $x("//a[text()='" + artID + "']/..//span[@class='label label-danger']");
+    }
+
+    private SelenideElement pfandSumInAddedProductTabel(String articlNum) {
+        return $x("//a[text()='" + articlNum + "']/../..//td[17]/a");
     }
 
     // locators and methods for block of status order (Status ändern)
@@ -250,6 +269,10 @@ public class Order_aws {
 
     private SelenideElement heavyLoadsDeliveryInPaymentAndDeliveryTermsBlock() {
         return $x("//input[@id='surcharge']");
+    }
+
+    private SelenideElement heavyLoadsInAddedProductTabel(String articlNum) {
+        return $x("//a[text()='" + articlNum + "']/../..//td[18]/a");
     }
 
     private SelenideElement heavyLoadsDeliveryPriceOrderAWS() {
@@ -1184,22 +1207,29 @@ public class Order_aws {
 
     @Step("Get delivery cost in order from delivery block. Order_aws")
     public Float getDeliveryCostInOrderFromDeliveryBlock() {
-        return Float.valueOf(deliveryPriceInPaymentAndDeliveryTermsBlock().getValue());
+        String deliveriCost = deliveryPriceInPaymentAndDeliveryTermsBlock().getValue();
+        return Float.valueOf(deliveriCost);
     }
 
-    @Step("Compares the delivery cost in the order with the cost on the website. Order_aws")
-    public Order_aws compereDeliveryCostInOrderWithCostOnSite(Float expectedDeliveryCost) {
+    @Step("Compares the actual shipping price with the expected one. Order_aws")
+    public Order_aws compereActualDeliveryCostWithExpected(Float expectedDeliveryCost) {
         Assert.assertEquals(getDeliveryCostInOrderFromDeliveryBlock(), expectedDeliveryCost);
         return this;
     }
 
-    @Step("Checks delivery costs for a costForCountry {deliveryCostForCountry} or costForRegion {deliveryCostForRegion}. Order_aws")
+    @Step("Checks delivery costs for a Country {deliveryCostForCountry} or Region {deliveryCostForRegion}. Order_aws")
     public Order_aws checkDeliveryCostForCountryOrRegion(float deliveryCostForRegion, float deliveryCostForCountry, String shop) {
         if (shop.equals("DE")) {
-            compereDeliveryCostInOrderWithCostOnSite(deliveryCostForRegion);
+            compereActualDeliveryCostWithExpected(deliveryCostForRegion);
+        }
+        if (shop.equals("Germany")) {
+            compereActualDeliveryCostWithExpected(deliveryCostForRegion);
         }
         if (shop.equals("LI")) {
-            compereDeliveryCostInOrderWithCostOnSite(deliveryCostForCountry);
+            compereActualDeliveryCostWithExpected(deliveryCostForCountry);
+        }
+        if (shop.equals("Liechtenstein")) {
+            compereActualDeliveryCostWithExpected(deliveryCostForCountry);
         }
         return this;
     }
@@ -1221,11 +1251,23 @@ public class Order_aws {
         return this;
     }
 
-    @Step("Checks order has expected deposit Price {ExpectedDepositCost}")
+    @Step("Checks order has expected deposit Price {ExpectedDepositCost}. Order_aws")
     public Order_aws checkOrderHasExpectedPfandPrice(Float ExpectedDepositCost) {
         float depositCost = Float.parseFloat(pfandFieldInPaymentAndDeliveryTermsBlock().getValue());
         Assert.assertEquals(depositCost, ExpectedDepositCost);
         return this;
+    }
+
+    @Step("Get deposit sum in added product tabel {articlNum}. Order_aws")
+    public float getPfandSumInAddedProductTabel(String articlNum) {
+        String depositSum = pfandSumInAddedProductTabel(articlNum).getText();
+        return Float.parseFloat(depositSum);
+    }
+
+    @Step("Get heavy loads sum in added product tabel {articlNum}. Order_aws")
+    public Float getHeavyLoads(String articleNum) {
+        String heavyLoadsSum = heavyLoadsInAddedProductTabel(articleNum).getAttribute("data-sum");
+        return Float.valueOf(heavyLoadsSum);
     }
 
     @Step("Compares the prices of added products with the prices on the site {priceWithSite}. Order_aws")
@@ -1488,6 +1530,27 @@ public class Order_aws {
         articleNumberField().setValue(articleNumber);
         countAddProductField().setValue(productQuantity);
         addingProductBtn().click();
+        sleep(5000);
+        return this;
+    }
+
+    @Step("Confirmation of adding goods to the order. Order_aws")
+    public Order_aws confirmationAddingGoodsToOrder(String articlID) {
+        if (suppliersTableInPopUpAddProduct().isDisplayed() || storageTableInPopUpAddProduct().isDisplayed()) {
+            addingProductBtn().click();
+        }
+            if (prodictListInPopUpAddProduct().isDisplayed()) {
+                productInPopUpAddProduct(articlID).click();
+                addingProductBtn().click();
+                productInPopUpAddProduct(articlID).waitUntil(not(visible), 10000);
+                if (storageTableInPopUpAddProduct().isDisplayed() || suppliersTableInPopUpAddProduct().isDisplayed()) {
+                    addingProductBtn().click();
+                }
+            }
+        else if (addingProductBtn().isDisplayed()) {
+            addingProductBtn().click();
+        }
+        popUpAddProduct().waitUntil(not(visible), 10000);
         return this;
     }
 }

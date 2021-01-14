@@ -35,15 +35,6 @@
         </classes>
     </test>
 
-    <test name="QC_1645_BlockTopProducts">
-        <classes>
-            <class name="ATD.General_Common.QC_1645_BlockTopProducts.QC_1646"/>
-            <class name="ATD.General_Common.QC_1645_BlockTopProducts.QC_1647"/>
-            <class name="ATD.General_Common.QC_1645_BlockTopProducts.QC_1648"/>
-        </classes>
-    </test>
-
-
     <test name="QC_2679_NewsletterSubscriptionBlock">
         <classes>
             <class name="ATD.General_Common.QC_2679_NewsletterSubscriptionBlock.QC_2680"/>
