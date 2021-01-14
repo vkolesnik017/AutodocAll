@@ -1,4 +1,4 @@
-package ATD.ACC.QC_2143_ToolsListing;
+package ATD.ACC.QC_2659_ToolsListing;
 
 import ATD.Listing_instruments_page_Logic;
 import Common.SetUp;
@@ -9,14 +9,12 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import java.sql.SQLException;
-
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2147 {
+public class QC_2144 {
 
     @BeforeClass
     void setUp() {
@@ -25,16 +23,16 @@ public class QC_2147 {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main","listing_instruments");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main","listing_instruments,listing_instruments5");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test checks change display of products on the list view and then grid.")
-    public void testCheckingChangeDisplayProductsAsListAndGrid(String route) {
+    @Description(value = "Test checks title page.")
+    public void testCheckingPresenceTitlePage(String route) {
         openPage(route);
-        new Listing_instruments_page_Logic().checkingChangeDisplayProductsAsListAndGrid();
+        new Listing_instruments_page_Logic().checkingPresenceTitlePage();
     }
 
 
