@@ -1,4 +1,4 @@
-package ATD.ACC.QC_950_BlockTopProductsOnMainAccessories;
+package ATD.ACC.QC_836_MainAccessories;
 
 import ATD.Index_accessories_page_Logic;
 import Common.SetUp;
@@ -16,7 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_956 {
+public class QC_957 {
 
     @BeforeClass
     void setUp() {
@@ -31,14 +31,16 @@ public class QC_956 {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test Checks the number of mini-cards in top products block")
-    public void testCheckNumberOfMiniCardsTopProductsForAccessories(String route) {
+    @Description(value = "Test checks presence popup with characteristics product after hover in block top-6")
+    public void testCheckPresencePopupWithCharacteristicsProductInTop6Block(String route) {
         openPage(route);
-        new Index_accessories_page_Logic().checkingNumberOfMiniCardsTop6Products();
+        new Index_accessories_page_Logic().checkingHoverPopupInTop6ProductBlock();
     }
 
     @AfterMethod
     private void close() {
         closeWebDriver();
     }
+
+
 }

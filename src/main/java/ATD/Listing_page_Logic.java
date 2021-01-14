@@ -1322,7 +1322,7 @@ public class Listing_page_Logic extends Listing_page {
         productName(brandName).shouldHave(text(genericName));
         productArticle(brandName).shouldHave(text(articleName));
         productOEMnumber(brandName).shouldHave(text(oemHighlightNumber));
-        productName(brandName).click();
+        productName(brandName).scrollTo().click();
         return page(Product_page_Logic.class);
     }
 
