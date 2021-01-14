@@ -1,4 +1,4 @@
-package ATD.LKW_trucks.QC_41_AdvantageBlockAndMainImageOfCategory;
+package ATD.Advantages.QC_1408_LeibsAndBlocks;
 
 import ATD.LKW_Category_page_Logic;
 import Common.SetUp;
@@ -16,8 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_46 {
-
+public class QC_43 {
 
     @BeforeClass
     void setUp() {
@@ -26,17 +25,19 @@ public class QC_46 {
 
     @DataProvider(name = "routesCategory", parallel = true)
     Object[] dataProviderCategory() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category2,lkw_category_brand,lkw_category_maker2,lkw_category_maker_brand");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category2,lkw_category_maker2,lkw_category_brand,lkw_category_maker_brand");
     }
 
     @Test(dataProvider = "routesCategory")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test check appearance of tooltips in advantages block")
-    public void testChecksPresenceOfTooltipsInAdvantageBlock(String route) {
+    @Description(value = "Test check availability of advantage block")
+    public void testChecksAvailabilityOfAdvantageBlock(String route) {
         openPage(route);
         new LKW_Category_page_Logic()
-                .visibilityOfTooltips();
+        .visibilityOfAdvantageBlock();
+
+
     }
 
     @AfterMethod

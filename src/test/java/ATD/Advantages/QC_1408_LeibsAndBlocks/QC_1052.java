@@ -1,4 +1,4 @@
-package ATD.Advantages.QC_1051_AdvantagesPfands;
+package ATD.Advantages.QC_1408_LeibsAndBlocks;
 
 import ATD.Listing_page;
 import ATD.Product_page_Logic;

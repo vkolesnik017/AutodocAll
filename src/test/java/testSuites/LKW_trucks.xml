@@ -98,10 +98,6 @@
 
      <test name="QC_41_AdvantageBlockAndMainImageOfCategory">
         <classes>
-            <class name="ATD.LKW_trucks.QC_41_AdvantageBlockAndMainImageOfCategory.QC_43"/>
-            <class name="ATD.LKW_trucks.QC_41_AdvantageBlockAndMainImageOfCategory.QC_45"/>
-            <class name="ATD.LKW_trucks.QC_41_AdvantageBlockAndMainImageOfCategory.QC_46"/>
-            <class name="ATD.LKW_trucks.QC_41_AdvantageBlockAndMainImageOfCategory.QC_47"/>
             <class name="ATD.LKW_trucks.QC_41_AdvantageBlockAndMainImageOfCategory.QC_48"/>
         </classes>
     </test>

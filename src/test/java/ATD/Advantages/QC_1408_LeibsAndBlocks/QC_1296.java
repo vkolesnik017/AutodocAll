@@ -1,7 +1,8 @@
-package ATD.MOTO.QC_355_BenefitsBlock;
+package ATD.Advantages.QC_1408_LeibsAndBlocks;
 
-import ATD.Moto_Category_page_Logic;
+
 import Common.SetUp;
+import ATD.TyresListing_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -16,27 +17,25 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_359 {
+public class QC_1296 {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0", false);
+        setUpBrowser(false, "chrome", "77.0",false);
     }
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category,moto_category_maker");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_type_list,tyres_type_list2,tyres_type_list3,tyres_type_list4");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "Kolesnik")
-    @Description(value = "Test checks elements of benefits block")
-    public void testChecksElementsOfBenefitsBlock(String route) {
+    @Owner(value = "Romaniuta")
+    @Description(value = "Test Checks Presence Advantages Block On Catalog Tyre Route")
+    public void testPresenceAdvantagesBlockOnCatalogTyreRoute(String route) {
         openPage(route);
-
-        new Moto_Category_page_Logic()
-                .presenceOfElementsAtBenefitBlock();
+        new TyresListing_page_Logic().checkAdvantagesBlockVisibility();
     }
 
     @AfterMethod

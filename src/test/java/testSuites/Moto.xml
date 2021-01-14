@@ -53,10 +53,6 @@
 
     <test name="QC_355_BenefitsBlock">
         <classes>
-            <class name="ATD.MOTO.QC_355_BenefitsBlock.QC_356"/>
-            <class name="ATD.MOTO.QC_355_BenefitsBlock.QC_357"/>
-            <class name="ATD.MOTO.QC_355_BenefitsBlock.QC_358"/>
-            <class name="ATD.MOTO.QC_355_BenefitsBlock.QC_359"/>
             <class name="ATD.MOTO.QC_355_BenefitsBlock.QC_360"/>
         </classes>
     </test>

@@ -66,14 +66,6 @@
         </classes>
     </test>
 
-    <test name="QC_1294_AdvantagesBlockOnCatalogSizeTyresRoute">
-        <classes>
-            <class name="ATD.Tyres.QC_1294_AdvantagesBlockOnCatalogSizeTyresRoute.QC_1296"/>
-            <class name="ATD.Tyres.QC_1294_AdvantagesBlockOnCatalogSizeTyresRoute.QC_1300"/>
-            <class name="ATD.Tyres.QC_1294_AdvantagesBlockOnCatalogSizeTyresRoute.QC_1302"/>
-        </classes>
-    </test>
-
     <test name="QC_2751_TireCatalog">
         <classes>
             <class name="ATD.Tyres.QC_2751_TireCatalog.QC_1312"/>

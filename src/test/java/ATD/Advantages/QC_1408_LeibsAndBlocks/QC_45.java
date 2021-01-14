@@ -1,4 +1,4 @@
-package ATD.LKW_trucks.QC_41_AdvantageBlockAndMainImageOfCategory;
+package ATD.Advantages.QC_1408_LeibsAndBlocks;
 
 import ATD.LKW_Category_maker_Logic;
 import ATD.LKW_Category_page_Logic;

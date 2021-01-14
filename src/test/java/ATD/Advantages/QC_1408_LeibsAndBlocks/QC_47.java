@@ -1,6 +1,6 @@
-package ATD.MOTO.QC_355_BenefitsBlock;
+package ATD.Advantages.QC_1408_LeibsAndBlocks;
 
-import ATD.Moto_Category_page_Logic;
+import ATD.LKW_Category_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,27 +16,26 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_358 {
+public class QC_47 {
 
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
     }
 
-    @DataProvider(name = "routes", parallel = true)
-    Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category,moto_category_maker");
+    @DataProvider(name = "routesCategory", parallel = true)
+    Object[] dataProviderCategory() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category2,lkw_category_brand,lkw_category_maker2,lkw_category_maker_brand");
     }
 
-    @Test(dataProvider = "routes")
+    @Test(dataProvider = "routesCategory")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks behavior of benefit block at hover")
-    public void testChecksBehaviorOfBenefitBlock(String route) {
+    @Description(value = "Test check elements in advantages block")
+    public void testChecksElementsInAdvantageBlock(String route) {
         openPage(route);
-
-        new Moto_Category_page_Logic()
-                .visibilityOfTooltipAtBenefitsLinks();
+        new LKW_Category_page_Logic()
+                .visibilityOfElementsInAdvantageBlock();
     }
 
     @AfterMethod

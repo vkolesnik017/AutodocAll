@@ -1,4 +1,4 @@
-package ATD.MOTO.QC_355_BenefitsBlock;
+package ATD.Advantages.QC_1408_LeibsAndBlocks;
 
 import ATD.Moto_Category_page_Logic;
 import Common.SetUp;
@@ -16,7 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_356 {
+public class QC_358 {
 
     @BeforeClass
     void setUp() {
@@ -31,12 +31,12 @@ public class QC_356 {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks presence of benefits block")
-    public void testChecksPresenceOfBenefitsBlock(String route) {
+    @Description(value = "Test checks behavior of benefit block at hover")
+    public void testChecksBehaviorOfBenefitBlock(String route) {
         openPage(route);
 
         new Moto_Category_page_Logic()
-                .presenceOfBenefitsBlock();
+                .visibilityOfTooltipAtBenefitsLinks();
     }
 
     @AfterMethod

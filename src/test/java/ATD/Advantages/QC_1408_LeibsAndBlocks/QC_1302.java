@@ -1,7 +1,9 @@
-package ATD.MOTO.QC_355_BenefitsBlock;
+package ATD.Advantages.QC_1408_LeibsAndBlocks;
 
-import ATD.Moto_Category_page_Logic;
+
+import Common.DataBase;
 import Common.SetUp;
+import ATD.Tyres_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -13,10 +15,11 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
+import static ATD.CommonMethods.waitingWhileLinkBecomeExpected;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_357 {
+public class QC_1302 {
 
     @BeforeClass
     void setUp() {
@@ -25,19 +28,17 @@ public class QC_357 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category,moto_category_maker");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_type_list,tyres_type_list2,tyres_type_list3,tyres_type_list4");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "Kolesnik")
-    @Description(value = "Test checks benefit block structure")
-    public void testChecksBenefitBlockStructure(String route) {
+    @Owner(value = "Romaniuta")
+    @Description(value = "Test Checks Transition To MobileAPP Page From Advantages Block")
+    public void testTransitionToMobileAPPpageFromAdvantagesBlock(String route) throws SQLException {
         openPage(route);
-
-        new Moto_Category_page_Logic()
-                .presenceOfHeadlineAtBenefitsBlock()
-                .presenceOfBenefitsLinks();
+        new Tyres_page_Logic().clickMobileAppLink();
+        waitingWhileLinkBecomeExpected(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "staticMobileApp"));
     }
 
     @AfterMethod
