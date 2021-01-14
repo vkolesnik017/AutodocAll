@@ -1,4 +1,4 @@
-package ATD.ACC.QC_1064_BlockTopProductsOnMainChemie;
+package ATD.ACC.QC_1037_MainChemie;
 
 import ATD.Index_chemicals_page_Logic;
 import Common.SetUp;
@@ -16,8 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-
-public class QC_1065 {
+public class QC_1066 {
 
     @BeforeClass
     void setUp() {
@@ -29,21 +28,17 @@ public class QC_1065 {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main","index_chemicals");
     }
 
-
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test Checks the presence of the top products block and quantity of goods in a block ")
-    public void testCheckPresenceBlockAndQuantityProducts(String route) {
+    @Description(value = "Test checks presence popup with characteristics product after hover in block top-6")
+    public void testCheckPresencePopupWithCharacteristicsProductInTop6Block(String route) {
         openPage(route);
-        new Index_chemicals_page_Logic().checkingPresenceOfTopProductBlock()
-                .checkingTheQuantityOfGoods(6);
+        new Index_chemicals_page_Logic().checkingHoverPopupInTop6ProductBlock();
     }
 
     @AfterMethod
     private void close() {
         closeWebDriver();
     }
-
-
 }

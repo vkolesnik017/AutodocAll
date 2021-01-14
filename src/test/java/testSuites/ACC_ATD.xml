@@ -25,6 +25,10 @@
             <class name="ATD.ACC.QC_1037_MainChemie.QC_1040"/>
             <class name="ATD.ACC.QC_1037_MainChemie.QC_1073"/>
             <class name="ATD.ACC.QC_1037_MainChemie.QC_2660"/>
+            <class name="ATD.ACC.QC_1037_MainChemie.QC_1065"/>
+            <class name="ATD.ACC.QC_1037_MainChemie.QC_1066"/>
+            <class name="ATD.ACC.QC_1037_MainChemie.QC_1067"/>
+            <class name="ATD.ACC.QC_1037_MainChemie.QC_1068"/>
         </classes>
     </test>
 
@@ -50,15 +54,6 @@
         </classes>
     </test>
 
-    <test name="QC_1064_BlockTopProductsOnMainChemie">
-        <classes>
-            <class name="ATD.ACC.QC_1064_BlockTopProductsOnMainChemie.QC_1065"/>
-            <class name="ATD.ACC.QC_1064_BlockTopProductsOnMainChemie.QC_1066"/>
-            <class name="ATD.ACC.QC_1064_BlockTopProductsOnMainChemie.QC_1067"/>
-            <class name="ATD.ACC.QC_1064_BlockTopProductsOnMainChemie.QC_1068"/>
-
-        </classes>
-    </test>
 
 
     <test name="QC_1322_BlockTop10ProductsOnMainTools">

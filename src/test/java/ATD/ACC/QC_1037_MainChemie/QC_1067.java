@@ -1,7 +1,7 @@
-package ATD.ACC.QC_1064_BlockTopProductsOnMainChemie;
+package ATD.ACC.QC_1037_MainChemie;
 
+import ATD.Cart_page_Logic;
 import ATD.Index_chemicals_page_Logic;
-import ATD.Product_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -18,33 +18,34 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1068 {
+public class QC_1067 {
 
-    private String nameProduct, nameTitleProduct;
+    private String nameProduct, titleProduct;
     private Index_chemicals_page_Logic index_chemicals_page_logic = new Index_chemicals_page_Logic();
-
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0", false);
+        setUpBrowser(false, "chrome", "77.0",false);
     }
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "index_chemicals");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main","index_chemicals");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test checking transition on product page when clicking on a product in a block top products")
-    public void testCheckingTransitionWithProductBlockTopProducts(String route) {
+    @Description(value = "Test Checks adding a product to the cart when selecting it from top products block ")
+    public void testChecksAddingProductToCartWithTopProductsBlockForChemistry(String route) {
         openPage(route);
         nameProduct = index_chemicals_page_logic.getNameProductInBlockTopProducts();
-        index_chemicals_page_logic.checkingTransitionOnProductPageAfterClickDetails();
-        nameTitleProduct = new Product_page_Logic().getTitleNameForProductPageChemicals();
-        Assert.assertEquals(nameProduct, nameTitleProduct);
+        index_chemicals_page_logic.clickOnFirstBtnAddToBasketInTopProductsBlock()
+                .clickOnBtnGoToBasket();
+        titleProduct = new Cart_page_Logic().getNameTitleProduct();
+        Assert.assertEquals(nameProduct, titleProduct);
     }
+
 
     @AfterMethod
     private void close() {
