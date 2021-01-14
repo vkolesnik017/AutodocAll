@@ -14,6 +14,32 @@
             <class name="ATD.TopPartsBlock.QC_2689_TopProductsBlock.QC_3125"/>
             <class name="ATD.TopPartsBlock.QC_2689_TopProductsBlock.QC_3179"/>
             <class name="ATD.TopPartsBlock.QC_2689_TopProductsBlock.QC_3180"/>
+            <class name="ATD.TopPartsBlock.QC_2689_TopProductsBlock.QC_74"/>
+            <class name="ATD.TopPartsBlock.QC_2689_TopProductsBlock.QC_75"/>
+            <class name="ATD.TopPartsBlock.QC_2689_TopProductsBlock.QC_76"/>
+            <class name="ATD.TopPartsBlock.QC_2689_TopProductsBlock.QC_77"/>
+            <class name="ATD.TopPartsBlock.QC_2689_TopProductsBlock.QC_78"/>
+            <class name="ATD.TopPartsBlock.QC_2689_TopProductsBlock.QC_79"/>
+            <class name="ATD.TopPartsBlock.QC_2689_TopProductsBlock.QC_80"/>
+            <class name="ATD.TopPartsBlock.QC_2689_TopProductsBlock.QC_81"/>
+            <class name="ATD.TopPartsBlock.QC_2689_TopProductsBlock.QC_2308"/>
+            <class name="ATD.TopPartsBlock.QC_2689_TopProductsBlock.QC_1646"/>
+            <class name="ATD.TopPartsBlock.QC_2689_TopProductsBlock.QC_1647"/>
+            <class name="ATD.TopPartsBlock.QC_2689_TopProductsBlock.QC_1648"/>
+            <class name="ATD.TopPartsBlock.QC_2689_TopProductsBlock.QC_320"/>
+            <class name="ATD.TopPartsBlock.QC_2689_TopProductsBlock.QC_321"/>
+            <class name="ATD.TopPartsBlock.QC_2689_TopProductsBlock.QC_322"/>
+            <class name="ATD.TopPartsBlock.QC_2689_TopProductsBlock.QC_323"/>
+            <class name="ATD.TopPartsBlock.QC_2689_TopProductsBlock.QC_324"/>
+            <class name="ATD.TopPartsBlock.QC_2689_TopProductsBlock.QC_325"/>
+            <class name="ATD.TopPartsBlock.QC_2689_TopProductsBlock.QC_326"/>
+            <class name="ATD.TopPartsBlock.QC_2689_TopProductsBlock.QC_327"/>
+            <class name="ATD.TopPartsBlock.QC_2689_TopProductsBlock.QC_328"/>
+            <!--<class name="ATD.TopPartsBlock.QC_2689_TopProductsBlock.QC_1477"/>inactive-->
+            <!--<class name="ATD.TopPartsBlock.QC_2689_TopProductsBlock.QC_1478"/>inactive-->
+            <!--<class name="ATD.TopPartsBlock.QC_2689_TopProductsBlock.QC_1500"/>inactive-->
+            <!--<class name="ATD.TopPartsBlock.QC_2689_TopProductsBlock.QC_1522"/>inactive-->
+            <!--<class name="ATD.TopPartsBlock.QC_2689_TopProductsBlock.QC_1523"/>inactive-->
         </classes>
     </test>
 
