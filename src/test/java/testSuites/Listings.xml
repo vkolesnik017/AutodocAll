@@ -11,7 +11,6 @@
             <class name="ATD.Listings.QC_423_ListingOEN.QC_424"/>
             <!--<class name="ATD.Listings.QC_423_ListingOEN.QC_425"/>-->
             <class name="ATD.Listings.QC_423_ListingOEN.QC_426"/>
-            <class name="ATD.Listings.QC_423_ListingOEN.QC_439"/>
             <!--<class name="ATD.Listings.QC_423_ListingOEN.QC_2061"/inactive>-->
         </classes>
     </test>
@@ -23,8 +22,8 @@
             <class name="ATD.Listings.QC_433_ListingSearch.QC_437"/>
             <class name="ATD.Listings.QC_433_ListingSearch.QC_2950"/>
             <class name="ATD.Listings.QC_433_ListingSearch.QC_3015"/>
-            <class name="ATD.Listings.QC_433_ListingSearch.QC_3016"/>
             <!--            <class name="ATD.Listings.QC_433_ListingSearch.QC_3004"/>-->
+            <class name="ATD.Listings.QC_433_ListingSearch.QC_439"/>
         </classes>
     </test>
 
@@ -44,6 +43,7 @@
             <class name="ATD.Listings.QC_445_ListingTecDoc.QC_3123"/>
             <class name="ATD.Listings.QC_445_ListingTecDoc.QC_3137"/>
             <class name="ATD.Listings.QC_445_ListingTecDoc.QC_3199"/>
+            <class name="ATD.Listings.QC_445_ListingTecDoc.QC_3016"/>
         </classes>
     </test>
 

@@ -1,4 +1,4 @@
-package ATD.Associated.QC_776_RelatedProductsLogic;
+package ATD.AccAnalogAlts.QC_790_AlternativesAnalogs;
 
 
 import ATD.Product_page_Logic;
@@ -17,25 +17,25 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_779 {
+public class QC_791 {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0", false);
+        setUpBrowser(false, "chrome", "77.0",false);
     }
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product22");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product23");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Romaniuta")
-    @Description(value = "Test Checks Related Products Popup On Product Page Without Car")
-    public void testRelatedProductsPopupOnProductPageWithoutCar(String route) {
+    @Description(value = "Test Checks Match Elements In Alternative Block And In Product Page")
+    public void testMatchElementsInAlternativeBlockAndInProductPage(String route) {
         openPage(route);
-        new Product_page_Logic().checkRelatedProductsPopup(5);
+        new Product_page_Logic().checkLinkInAlternativeBlock();
     }
 
     @AfterMethod

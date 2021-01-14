@@ -1,7 +1,6 @@
-package ATD.Associated.QC_802_AnalogsForProductsNotInStock;
+package ATD.AccAnalogAlts.QC_790_AlternativesAnalogs;
 
 
-import Common.DataBase;
 import ATD.Product_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
@@ -16,9 +15,8 @@ import java.sql.SQLException;
 
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
-import static com.codeborne.selenide.Selenide.open;
 
-public class QC_808 {
+public class QC_782 {
 
     @BeforeClass
     void setUp() {
@@ -27,17 +25,19 @@ public class QC_808 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product24");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product22");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Romaniuta")
-    @Description(value = "Test Checks Empfohlener Products Match Car")
-    public void testEmpfohlenerProductsMatchCar(String route) throws SQLException {
-        open(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "maker_car_list3"));
-        open(route);
-        new Product_page_Logic().checkAnalogProductMatchCar(route);
+    @Description(value = "Test Related Products Block Functionality")
+    public void testRelatedProductsBlockFunctionality(String route) {
+        new Product_page_Logic().checkRelatedProductPopupClose(route)
+                    .checkRelatedProductPopupBack(route)
+                    .checkRelatedProductPopupGoToBasket(route)
+                    .checkRealatedPopupCategories(route)
+                    .checkRelatedPopupOverlay(route);
     }
 
     @AfterMethod
