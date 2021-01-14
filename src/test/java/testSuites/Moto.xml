@@ -36,12 +36,6 @@
         </classes>
     </test>
 
-    <test name="QC_889_SearchOnMotoSubdomain">
-        <classes>
-            <class name="ATD.MOTO.QC_889_SearchOnMotoSubdomain.QC_890"/>
-        </classes>
-    </test>
-
     <test name="QC_861_TopParentAndChildCategoryBlock">
         <classes>
             <class name="ATD.MOTO.QC_861_TopParentAndChildCategoryBlock.QC_865"/>
