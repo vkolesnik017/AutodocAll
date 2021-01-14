@@ -1,4 +1,4 @@
-package ATD.MOTO.QC_889_SearchOnMotoSubdomain;
+package ATD.Search.QC_548_SearchTooltips;
 
 import ATD.Moto_main_page_Logic;
 import Common.SetUp;
