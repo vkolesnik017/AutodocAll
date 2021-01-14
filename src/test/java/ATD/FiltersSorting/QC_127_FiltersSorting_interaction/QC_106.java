@@ -1,4 +1,4 @@
-package ATD.LKW_trucks.QC_105_FilterInteractionInTecDocListing;
+package ATD.FiltersSorting.QC_127_FiltersSorting_interaction;
 
 import ATD.LKW_Category_car_list_page_Logic;
 import Common.SetUp;
@@ -16,8 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_114 {
-
+public class QC_106 {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -31,15 +30,13 @@ public class QC_114 {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks interaction of installation side and generic filters")
-    public void testChecksInteractionInstallationSideAndGenericFilters(String route) throws SQLException {
+    @Description(value = "Test checks  interaction of brands and side filters")
+    public void testChecksInteractionOfBrandsAndSideFilters(String route) throws SQLException {
         openPage(route);
 
         new LKW_Category_car_list_page_Logic()
-                .selectGenericFilterInSideBar("lkw_category_car_list22", "402")
-                .selectInstallationSide("lkw_category_car_list30")
-                .checkOfPresenceSelectingGeneric("Bremsbelagsatz, Scheibenbremse")
-                .checkOfPresenceInstallationSide();
+                .selectBrandFromFilterOfBrands("lkw_category_car_list21","39")
+                .checkTecDocListingWithSelectingBrandAndInstallationSide();
     }
 
     @AfterMethod

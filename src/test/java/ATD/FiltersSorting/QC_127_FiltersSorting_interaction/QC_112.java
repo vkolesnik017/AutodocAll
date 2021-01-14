@@ -1,4 +1,4 @@
-package ATD.LKW_trucks.QC_105_FilterInteractionInTecDocListing;
+package ATD.FiltersSorting.QC_127_FiltersSorting_interaction;
 
 import ATD.LKW_Category_car_list_page_Logic;
 import Common.SetUp;

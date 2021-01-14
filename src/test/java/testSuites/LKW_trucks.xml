@@ -127,15 +127,6 @@
         </classes>
     </test>
 
-    <test name="QC_105_FilterInteractionInTecDocListing">
-        <classes>
-            <class name="ATD.LKW_trucks.QC_105_FilterInteractionInTecDocListing.QC_106"/>
-            <class name="ATD.LKW_trucks.QC_105_FilterInteractionInTecDocListing.QC_112"/>
-            <class name="ATD.LKW_trucks.QC_105_FilterInteractionInTecDocListing.QC_113"/>
-            <class name="ATD.LKW_trucks.QC_105_FilterInteractionInTecDocListing.QC_114"/>
-        </classes>
-    </test>
-
     <test name="QC_624_ParentAndChildCategoriesBlockInTecDocCatalog">
         <classes>
             <class name="ATD.LKW_trucks.QC_624_ParentAndChildCategoriesBlockInTecDocCatalog.QC_117"/>
