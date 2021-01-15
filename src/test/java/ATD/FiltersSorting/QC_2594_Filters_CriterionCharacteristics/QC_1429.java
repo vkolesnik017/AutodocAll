@@ -1,4 +1,4 @@
-package ATD.Section_Tyres.QC_1427_FilterByRatingOnTyresListing;
+package ATD.FiltersSorting.QC_2594_Filters_CriterionCharacteristics;
 
 import ATD.Listing_page_Logic;
 import Common.SetUp;

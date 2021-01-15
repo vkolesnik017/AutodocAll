@@ -6,18 +6,24 @@
         <listener class-name="Common.ProjectListener"/>
     </listeners>
 
-    <test name="QC_115_FiltersSorting_sideFilters">
+    <test name="QC_2594_Filters_CriterionCharacteristics">
         <classes>
-            <!--<class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_118"/>--> <!-- Filter by price is inactive-->
-            <class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_119"/>
-            <!--<class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_120"/>--> <!-- Filter by price is inactive-->
-            <class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_121"/>
-            <class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_122"/>
-            <class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_124"/>
-            <class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_125"/>
-            <class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_126"/>
-            <class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_1550"/>
-            <class name="ATD.FiltersSorting.QC_115_FiltersSorting_sideFilters.QC_1573"/>
+            <!--<class name="ATD.FiltersSorting.QC_2594_Filters_CriterionCharacteristics.QC_118"/>--> <!-- Filter by price is inactive-->
+            <class name="ATD.FiltersSorting.QC_2594_Filters_CriterionCharacteristics.QC_119"/>
+            <!--<class name="ATD.FiltersSorting.QC_2594_Filters_CriterionCharacteristics.QC_120"/>--> <!-- Filter by price is inactive-->
+            <class name="ATD.FiltersSorting.QC_2594_Filters_CriterionCharacteristics.QC_121"/>
+            <class name="ATD.FiltersSorting.QC_2594_Filters_CriterionCharacteristics.QC_122"/>
+            <class name="ATD.FiltersSorting.QC_2594_Filters_CriterionCharacteristics.QC_124"/>
+            <class name="ATD.FiltersSorting.QC_2594_Filters_CriterionCharacteristics.QC_125"/>
+            <class name="ATD.FiltersSorting.QC_2594_Filters_CriterionCharacteristics.QC_126"/>
+            <class name="ATD.FiltersSorting.QC_2594_Filters_CriterionCharacteristics.QC_1550"/>
+            <class name="ATD.FiltersSorting.QC_2594_Filters_CriterionCharacteristics.QC_1573"/>
+            <class name="ATD.FiltersSorting.QC_2594_Filters_CriterionCharacteristics.QC_168"/>
+            <!--<class name="ATD.FiltersSorting.QC_2594_Filters_CriterionCharacteristics.QC_1548"/>--> <!-- Filter by price is inactive-->
+            <!--<class name="ATD.FiltersSorting.QC_2594_Filters_CriterionCharacteristics.QC_1549"/>--> <!--  Filter by price is inactive-->
+            <class name="ATD.FiltersSorting.QC_2594_Filters_CriterionCharacteristics.QC_186"/>
+            <class name="ATD.FiltersSorting.QC_2594_Filters_CriterionCharacteristics.QC_1428"/>
+            <!--<class name="ATD.FiltersSorting.QC_2594_Filters_CriterionCharacteristics.QC_1429"/>-->
         </classes>
     </test>
 
@@ -56,14 +62,6 @@
         </classes>
     </test>
 
-    <test name="QC_167_FiltersSorting_bySide">
-        <classes>
-            <class name="ATD.FiltersSorting.QC_167_FiltersSorting_bySide.QC_168"/>
-            <!--<class name="ATD.FiltersSorting.QC_167_FiltersSorting_bySide.QC_1548"/>--> <!-- Filter by price is inactive-->
-            <!--<class name="ATD.FiltersSorting.QC_167_FiltersSorting_bySide.QC_1549"/>--> <!--  Filter by price is inactive-->
-        </classes>
-    </test>
-
     <test name="FiltersSorting_resetLabel">
         <classes>
             <class name="ATD.FiltersSorting.QC_174_FiltersSorting_resetLabel.QC_175"/>
@@ -76,12 +74,6 @@
             <class name="ATD.FiltersSorting.QC_179_FiltersSorting_byGeneric.QC_2764"/>
             <class name="ATD.FiltersSorting.QC_179_FiltersSorting_byGeneric.QC_2765"/>
             <class name="ATD.FiltersSorting.QC_179_FiltersSorting_byGeneric.QC_2766"/>
-        </classes>
-    </test>
-
-    <test name="FiltersSorting_byRating">
-        <classes>
-            <class name="ATD.FiltersSorting.QC_185_FiltersSorting_byRating.QC_186"/>
         </classes>
     </test>
 
