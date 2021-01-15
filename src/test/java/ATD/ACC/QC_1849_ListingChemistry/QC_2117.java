@@ -1,12 +1,10 @@
-package ATD.ACC.QC_2115_BlockWithProductsOnChemistryListing;
+package ATD.ACC.QC_1849_ListingChemistry;
 
 import ATD.Listing_chemicals_Page_Logic;
-import ATD.Product_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
-import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -18,10 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2118 {
-
-    private String idProductFromListing, idProduct;
-    private Listing_chemicals_Page_Logic listingChemicalsPageLogic = new Listing_chemicals_Page_Logic();
+public class QC_2117 {
 
     @BeforeClass
     void setUp() {
@@ -36,14 +31,11 @@ public class QC_2118 {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test Checks transition with main product.")
-    public void testCheckingTransitionWithMainProduct(String route) {
+    @Description(value = "Test checks presence main products block and quantity products in it")
+    public void testCheckingMainProductsBlockAndQuantityProducts(String route) {
         openPage(route);
-        idProductFromListing = listingChemicalsPageLogic.getIdProductListing();
-        listingChemicalsPageLogic.clickOnProductTitle();
-        idProduct = new Product_page_Logic().getIdFromBtnProduct();
-        Assert.assertEquals(idProductFromListing, idProduct);
-
+        new Listing_chemicals_Page_Logic().checkingPresenceMainProductsBlock()
+                .checkingQuantityMainProducts();
     }
 
     @AfterMethod

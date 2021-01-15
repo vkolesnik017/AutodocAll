@@ -1,4 +1,4 @@
-package ATD.ACC.QC_2044_BlockCategoriesInSidebarOnChemistryListing;
+package ATD.ACC.QC_1849_ListingChemistry;
 
 import ATD.Index_chemicals_page_Logic;
 import ATD.Listing_chemicals_Page_Logic;
