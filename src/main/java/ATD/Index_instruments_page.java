@@ -13,7 +13,7 @@ class Index_instruments_page {
     }
 
     SelenideElement productInBlockTop10() {
-        return $x("//div[@class='rec_products_wrap'][1]//div[@class='rec_products_block'][1]//span[@class='link ga-click']");
+        return $x("//div[@class='rec_products_wrap'][1]//div[@class='rec_products_block '][1]//span[@class='link ga-click']");
     }
 
     SelenideElement titleTop10ProductsBlock() {
@@ -49,11 +49,11 @@ class Index_instruments_page {
     }
 
     ElementsCollection miniCardsInTop10ProductsBlock() {
-        return $$x("//div[@class='top-product-block best-product__income']//div[@class='rec_products_block']");
+        return $$x("//div[@class='top-product-block best-product__income']//div[@class='rec_products_block ']");
     }
 
     SelenideElement firstBtnAddToBasketInTop10ProductsBlock() {
-        return $x("//div[@class='rec_products_wrap'][1]//div[@class='rec_products_block'][1]//div[@class='rec_prod_btn button ']");
+        return $x("//div[@class='rec_products_wrap'][1]//div[@class='rec_products_block '][1]//div[@class='rec_prod_btn button ']");
     }
 
     SelenideElement nameFirstProductInTop6ProductsBlock() {
