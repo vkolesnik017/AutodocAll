@@ -6,19 +6,25 @@
         <listener class-name="Common.ProjectListener"/>
     </listeners>
 
-    <test name="AdvantagesPfands">
-        <classes>
-            <class name="ATD.Advantages.QC_1051_AdvantagesPfands.QC_1052"/>
-            <class name="ATD.Advantages.QC_1051_AdvantagesPfands.QC_1053"/>
-            <class name="ATD.Advantages.QC_1051_AdvantagesPfands.QC_1407"/>
-        </classes>
-    </test>
-
     <test name="QC_1408_LeibsAndBlocks">
         <classes>
             <class name="ATD.Advantages.QC_1408_LeibsAndBlocks.QC_1409"/>
             <class name="ATD.Advantages.QC_1408_LeibsAndBlocks.QC_3154"/>
             <class name="ATD.Advantages.QC_1408_LeibsAndBlocks.QC_3186"/>
+            <class name="ATD.Advantages.QC_1408_LeibsAndBlocks.QC_1296"/>
+            <class name="ATD.Advantages.QC_1408_LeibsAndBlocks.QC_1300"/>
+            <class name="ATD.Advantages.QC_1408_LeibsAndBlocks.QC_1302"/>
+            <class name="ATD.Advantages.QC_1408_LeibsAndBlocks.QC_43"/>
+            <class name="ATD.Advantages.QC_1408_LeibsAndBlocks.QC_45"/>
+            <class name="ATD.Advantages.QC_1408_LeibsAndBlocks.QC_46"/>
+            <class name="ATD.Advantages.QC_1408_LeibsAndBlocks.QC_47"/>
+            <class name="ATD.Advantages.QC_1408_LeibsAndBlocks.QC_356"/>
+            <class name="ATD.Advantages.QC_1408_LeibsAndBlocks.QC_357"/>
+            <class name="ATD.Advantages.QC_1408_LeibsAndBlocks.QC_358"/>
+            <class name="ATD.Advantages.QC_1408_LeibsAndBlocks.QC_359"/>
+            <class name="ATD.Advantages.QC_1408_LeibsAndBlocks.QC_1052"/>
+            <class name="ATD.Advantages.QC_1408_LeibsAndBlocks.QC_1053"/>
+            <class name="ATD.Advantages.QC_1408_LeibsAndBlocks.QC_1407"/>
         </classes>
     </test>
 </suite>

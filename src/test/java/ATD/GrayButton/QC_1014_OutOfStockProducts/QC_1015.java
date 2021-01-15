@@ -45,7 +45,7 @@ public class QC_1015 {
         open(wishlistReminderAvailability.urlWithCurrentDate);
         parameters = wishlistReminderAvailability.getNumberOfRequestAndProductID(route, email, wishlistReminderAvailability.urlWithCurrentDate);
         webMail.openMail(email)
-                        .checkLetterInfoText(1, "moments ago", "Wir bearbeiten");
+                        .checkLetterInfoText(1, "just now ago", "Wir bearbeiten");
         open(wishlistReminderAvailability.urlWithCurrentDate);
         wishlistReminderAvailability.checkAfterCountRequest(parameters);
     }

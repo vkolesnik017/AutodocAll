@@ -6,10 +6,10 @@
         <listener class-name="Common.ProjectListener"/>
     </listeners>
 
-    <test name="QC_594_CheckingTranslationOfCausesForReturn">
+    <test name="QC_2716_ReturnCheck">
         <classes>
-            <class name="ATD.Retoure.QC_594_CheckingTranslationOfCausesForReturn.QC_595"/>
-            <class name="ATD.Retoure.QC_594_CheckingTranslationOfCausesForReturn.QC_596"/>
+            <class name="ATD.Retoure.QC_2716_ReturnCheck.QC_595"/>
+            <class name="ATD.Retoure.QC_2716_ReturnCheck.QC_596"/>
         </classes>
     </test>
 

@@ -98,24 +98,7 @@
 
      <test name="QC_41_AdvantageBlockAndMainImageOfCategory">
         <classes>
-            <class name="ATD.LKW_trucks.QC_41_AdvantageBlockAndMainImageOfCategory.QC_43"/>
-            <class name="ATD.LKW_trucks.QC_41_AdvantageBlockAndMainImageOfCategory.QC_45"/>
-            <class name="ATD.LKW_trucks.QC_41_AdvantageBlockAndMainImageOfCategory.QC_46"/>
-            <class name="ATD.LKW_trucks.QC_41_AdvantageBlockAndMainImageOfCategory.QC_47"/>
             <class name="ATD.LKW_trucks.QC_41_AdvantageBlockAndMainImageOfCategory.QC_48"/>
-        </classes>
-    </test>
-
-    <test name="QC_73_TopProductsBlock">
-        <classes>
-            <class name="ATD.LKW_trucks.QC_73_TopProductsBlock.QC_74"/>
-            <class name="ATD.LKW_trucks.QC_73_TopProductsBlock.QC_75"/>
-            <class name="ATD.LKW_trucks.QC_73_TopProductsBlock.QC_76"/>
-            <class name="ATD.LKW_trucks.QC_73_TopProductsBlock.QC_77"/>
-            <class name="ATD.LKW_trucks.QC_73_TopProductsBlock.QC_78"/>
-            <class name="ATD.LKW_trucks.QC_73_TopProductsBlock.QC_79"/>
-            <class name="ATD.LKW_trucks.QC_73_TopProductsBlock.QC_80"/>
-            <class name="ATD.LKW_trucks.QC_73_TopProductsBlock.QC_81"/>
         </classes>
     </test>
 
@@ -124,15 +107,6 @@
             <class name="ATD.LKW_trucks.QC_207_ProductPage.QC_210"/>
             <class name="ATD.LKW_trucks.QC_207_ProductPage.QC_212"/>
             <class name="ATD.LKW_trucks.QC_207_ProductPage.QC_209"/>
-        </classes>
-    </test>
-
-    <test name="QC_105_FilterInteractionInTecDocListing">
-        <classes>
-            <class name="ATD.LKW_trucks.QC_105_FilterInteractionInTecDocListing.QC_106"/>
-            <class name="ATD.LKW_trucks.QC_105_FilterInteractionInTecDocListing.QC_112"/>
-            <class name="ATD.LKW_trucks.QC_105_FilterInteractionInTecDocListing.QC_113"/>
-            <class name="ATD.LKW_trucks.QC_105_FilterInteractionInTecDocListing.QC_114"/>
         </classes>
     </test>
 
@@ -148,7 +122,6 @@
             <class name="ATD.LKW_trucks.QC_2306_OilsAndLiquidsCategories.QC_2304"/>
             <class name="ATD.LKW_trucks.QC_2306_OilsAndLiquidsCategories.QC_2305"/>
             <class name="ATD.LKW_trucks.QC_2306_OilsAndLiquidsCategories.QC_2307"/>
-            <class name="ATD.LKW_trucks.QC_2306_OilsAndLiquidsCategories.QC_2308"/>
         </classes>
     </test>
 </suite>

@@ -11,7 +11,6 @@
             <class name="ATD.Listings.QC_423_ListingOEN.QC_424"/>
             <!--<class name="ATD.Listings.QC_423_ListingOEN.QC_425"/>-->
             <class name="ATD.Listings.QC_423_ListingOEN.QC_426"/>
-            <class name="ATD.Listings.QC_423_ListingOEN.QC_439"/>
             <!--<class name="ATD.Listings.QC_423_ListingOEN.QC_2061"/inactive>-->
         </classes>
     </test>
@@ -23,8 +22,8 @@
             <class name="ATD.Listings.QC_433_ListingSearch.QC_437"/>
             <class name="ATD.Listings.QC_433_ListingSearch.QC_2950"/>
             <class name="ATD.Listings.QC_433_ListingSearch.QC_3015"/>
-            <class name="ATD.Listings.QC_433_ListingSearch.QC_3016"/>
             <!--            <class name="ATD.Listings.QC_433_ListingSearch.QC_3004"/>-->
+            <class name="ATD.Listings.QC_433_ListingSearch.QC_439"/>
         </classes>
     </test>
 
@@ -44,6 +43,7 @@
             <class name="ATD.Listings.QC_445_ListingTecDoc.QC_3123"/>
             <class name="ATD.Listings.QC_445_ListingTecDoc.QC_3137"/>
             <class name="ATD.Listings.QC_445_ListingTecDoc.QC_3199"/>
+            <class name="ATD.Listings.QC_445_ListingTecDoc.QC_3016"/>
         </classes>
     </test>
 
@@ -59,7 +59,7 @@
             <class name="ATD.Listings.QC_458_ListingSortingAndPrioritization.QC_463"/>
             <class name="ATD.Listings.QC_458_ListingSortingAndPrioritization.QC_464"/>
             <class name="ATD.Listings.QC_458_ListingSortingAndPrioritization.QC_2062"/>
-  <!--          <class name="ATD.Listings.QC_458_ListingSortingAndPrioritization.QC_2623"/>-->
+            <!--          <class name="ATD.Listings.QC_458_ListingSortingAndPrioritization.QC_2623"/>-->
             <class name="ATD.Listings.QC_458_ListingSortingAndPrioritization.QC_228"/>
         </classes>
     </test>
@@ -76,7 +76,6 @@
             <class name="ATD.Listings.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1305"/>
             <class name="ATD.Listings.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1306"/>
             <class name="ATD.Listings.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1308"/>
-            <class name="ATD.Listings.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1309"/>
             <class name="ATD.Listings.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1314"/>
             <class name="ATD.Listings.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1315"/>
             <class name="ATD.Listings.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1316"/>
