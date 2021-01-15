@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Breadcrumbs" parallel="methods" thread-count="2">
+<suite name="Breadcrumbs" parallel="methods" thread-count="2" data-provider-thread-count="2">
 
     <listeners>
         <listener class-name="Common.ProjectListener"/>
@@ -9,6 +9,33 @@
     <test name="QC_2683_BreadcrumbsBlock">
         <classes>
             <class name="ATD.Breadcrumbs.QC_2683_BreadcrumbsBlock.QC_3217"/>
+            <class name="ATD.Breadcrumbs.QC_2683_BreadcrumbsBlock.QC_337"/>
+            <class name="ATD.Breadcrumbs.QC_2683_BreadcrumbsBlock.QC_338"/>
+            <class name="ATD.Breadcrumbs.QC_2683_BreadcrumbsBlock.QC_339"/>
+            <class name="ATD.Breadcrumbs.QC_2683_BreadcrumbsBlock.QC_340"/>
+            <class name="ATD.Breadcrumbs.QC_2683_BreadcrumbsBlock.QC_341"/>
+            <class name="ATD.Breadcrumbs.QC_2683_BreadcrumbsBlock.QC_342"/>
+            <class name="ATD.Breadcrumbs.QC_2683_BreadcrumbsBlock.QC_343"/>
+            <class name="ATD.Breadcrumbs.QC_2683_BreadcrumbsBlock.QC_344"/>
+            <class name="ATD.Breadcrumbs.QC_2683_BreadcrumbsBlock.QC_345"/>
+            <class name="ATD.Breadcrumbs.QC_2683_BreadcrumbsBlock.QC_346"/>
+            <class name="ATD.Breadcrumbs.QC_2683_BreadcrumbsBlock.QC_347"/>
+            <class name="ATD.Breadcrumbs.QC_2683_BreadcrumbsBlock.QC_1348"/>
+            <class name="ATD.Breadcrumbs.QC_2683_BreadcrumbsBlock.QC_1349"/>
+            <class name="ATD.Breadcrumbs.QC_2683_BreadcrumbsBlock.QC_1350"/>
+            <class name="ATD.Breadcrumbs.QC_2683_BreadcrumbsBlock.QC_1351"/>
+            <class name="ATD.Breadcrumbs.QC_2683_BreadcrumbsBlock.QC_1352"/>
+            <class name="ATD.Breadcrumbs.QC_2683_BreadcrumbsBlock.QC_1353"/>
+            <class name="ATD.Breadcrumbs.QC_2683_BreadcrumbsBlock.QC_130"/>
+            <class name="ATD.Breadcrumbs.QC_2683_BreadcrumbsBlock.QC_50"/>
+            <class name="ATD.Breadcrumbs.QC_2683_BreadcrumbsBlock.QC_65"/>
+            <class name="ATD.Breadcrumbs.QC_2683_BreadcrumbsBlock.QC_66"/>
+            <class name="ATD.Breadcrumbs.QC_2683_BreadcrumbsBlock.QC_67"/>
+            <class name="ATD.Breadcrumbs.QC_2683_BreadcrumbsBlock.QC_68"/>
+            <class name="ATD.Breadcrumbs.QC_2683_BreadcrumbsBlock.QC_69"/>
+            <class name="ATD.Breadcrumbs.QC_2683_BreadcrumbsBlock.QC_70"/>
+            <class name="ATD.Breadcrumbs.QC_2683_BreadcrumbsBlock.QC_71"/>
+            <class name="ATD.Breadcrumbs.QC_2683_BreadcrumbsBlock.QC_72"/>
         </classes>
     </test>
 

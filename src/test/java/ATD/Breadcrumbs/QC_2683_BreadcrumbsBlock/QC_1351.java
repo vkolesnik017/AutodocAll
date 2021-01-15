@@ -1,4 +1,4 @@
-package ATD.Section_Tyres.QC_1347_BreadcrumbsOnTyresListing;
+package ATD.Breadcrumbs.QC_2683_BreadcrumbsBlock;
 
 
 import Common.SetUp;
@@ -17,7 +17,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1352 {
+public class QC_1351 {
 
     @BeforeClass
     void setUp() {
@@ -26,18 +26,18 @@ public class QC_1352 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_season11");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_dimension5");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Romaniuta")
-    @Description(value = "Test Checks Tyres Breadcrumbs Transport Type And Season")
-    public void testTyresBreadcrumbsTransportTypeAndSeason(String route) {
+    @Description(value = "Test Checks Tyres Breadcrumbs Transport Type And Dimension")
+    public void testTyresBreadcrumbsTransportTypeAndDimension(String route) {
         openPage(route);
         new TyresListing_page_Logic().checkBreadcrumbsFirstButtonTransiton()
                                     .checkBreadcrumbsSecondButtonTransiton("llkw")
-                                    .checkBreadcrumbsLastButton("Ganzjahresreifen");
+                                    .checkBreadcrumbsLastButton("195 70 R15");
     }
 
     @AfterMethod

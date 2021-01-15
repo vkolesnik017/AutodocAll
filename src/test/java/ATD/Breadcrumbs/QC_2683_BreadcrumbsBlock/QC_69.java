@@ -1,6 +1,6 @@
-package ATD.MOTO.QC_336_BreadCrumbsBlock;
+package ATD.Breadcrumbs.QC_2683_BreadcrumbsBlock;
 
-import ATD.Moto_Categories_maker_page_Logic;
+import ATD.LKW_Category_maker_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,7 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_337 {
+public class QC_69 {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -24,17 +24,17 @@ public class QC_337 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_categories_maker2,moto_catalog_model2,moto_catalog2,moto_category_car_list_model2,moto_category_car_list2,moto_product,moto_category,moto_category_maker,moto_parent_category,moto_category_maker");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_maker");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks presence bread crumbs block")
-    public void testChecksPresenceBreadCrumbsBlock(String route) {
+    @Description(value = "Test checks bread crumbs block in Category maker route")
+    public void testChecksBreadCrumbsInCategoryMaker(String route) throws SQLException {
         openPage(route);
 
-        new Moto_Categories_maker_page_Logic().presenceOfBreadCrumbsBlock();
+        new LKW_Category_maker_Logic().checkLinksInBreadCrumbsBlock().checkLinkClickInBreadCrumbsBlock();
     }
 
     @AfterMethod

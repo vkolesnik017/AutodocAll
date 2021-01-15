@@ -1,4 +1,4 @@
-package ATD.Section_Tyres.QC_1347_BreadcrumbsOnTyresListing;
+package ATD.Breadcrumbs.QC_2683_BreadcrumbsBlock;
 
 
 import Common.DataBase;
@@ -18,7 +18,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1349 {
+public class QC_1350 {
 
     private TyresListing_page_Logic tyresListingPageLogic = new TyresListing_page_Logic();
 
@@ -29,21 +29,20 @@ public class QC_1349 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_season_dimension5");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_brand_dimension3");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Romaniuta")
-    @Description(value = "Test Checks Tyres Breadcrumbs Transport Type And Season And Size")
-    public void testTyresBreadcrumbsTransportTypeAndSeasonAndSize(String route) throws  SQLException {
+    @Description(value = "Test Checks Tyres Breadcrumbs Transport Type And Brand And Diameter")
+    public void testTyresBreadcrumbsTransportTypeAndBrandAndDiameter(String route) throws  SQLException {
         openPage(route);
         tyresListingPageLogic.checkBreadcrumbsFirstButtonTransiton();
-        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "tyres_season_size6"));
-        tyresListingPageLogic.checkBreadcrumbsSecondButtonTransiton("motorrad");
-        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "tyres_season_dimension4"));
-        tyresListingPageLogic.checkBreadcrumbsThirdButtonTransiton("llkw/195-60-r16")
-                            .checkBreadcrumbsLastButton("Ganzjahresreifen");
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "tyres_brand_size2"));
+        tyresListingPageLogic.checkBreadcrumbsSecondButtonTransiton("llkw")
+                            .checkBreadcrumbsThirdButtonTransiton("llkw/goodyear")
+                            .checkBreadcrumbsLastButton("17 Zoll");
     }
 
     @AfterMethod
