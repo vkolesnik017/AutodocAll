@@ -1,4 +1,4 @@
-package ATD.FiltersSorting.QC_185_FiltersSorting_byRating;
+package ATD.FiltersSorting.QC_2594_Filters_CriterionCharacteristics;
 
 
 import Common.DataBase;

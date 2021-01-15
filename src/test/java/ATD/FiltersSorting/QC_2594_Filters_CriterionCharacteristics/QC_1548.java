@@ -1,4 +1,4 @@
-package ATD.FiltersSorting.QC_167_FiltersSorting_bySide;
+package ATD.FiltersSorting.QC_2594_Filters_CriterionCharacteristics;
 
 
 import ATD.Listing_page_Logic;
