@@ -1,4 +1,4 @@
-package ATD.StaticPage;
+package ATD.General_Common.QC_2320_StaticPages;
 
 import ATD.Main_page_Logic;
 import Common.SetUp;
@@ -14,7 +14,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1091 {
+public class QC_234 {
 
     @BeforeClass
     void setUp() {
@@ -29,19 +29,12 @@ public class QC_1091 {
     @Test(dataProvider = "route")
     @Owner(value = "Chelombitko")
     @Flaky
-    @Description(value = "Test checks elements on austauschartikel page")
-    public void checkAustauschartikelPageElements(String route) throws Exception {
+    @Description(value = "Test checks elements on datenschutz page")
+    public void checkDatenschutzPageElements(String route) {
         openPage(route);
-        new Main_page_Logic().clickAustauschartikel()
-                .checkItemsTopPage()
-                .checkInstructionBlock()
-                .checkReturnPolicyBlock()
-                .checkCategoriesPfandBlock()
-                .checkRequirementForPartsBlock()
-                .selectsRandomCategory()
-                .getStatusImageCod()
-                .checkTitleAndDDescriptionOfCategory()
-                .checkDepositRefundForm();
+        new Main_page_Logic().clickDatenschutz()
+                .checkItemsOnPage()
+                .checkClickableLinks();
     }
 
     @AfterMethod

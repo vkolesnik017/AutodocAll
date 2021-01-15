@@ -1,4 +1,4 @@
-package ATD.StaticPage;
+package ATD.General_Common.QC_2320_StaticPages;
 
 import ATD.Main_page_Logic;
 import Common.SetUp;
@@ -14,7 +14,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1552 {
+public class QC_1547 {
 
     @BeforeClass
     void setUp() {
@@ -29,12 +29,16 @@ public class QC_1552 {
     @Test(dataProvider = "route")
     @Owner(value = "Chelombitko")
     @Flaky
-    @Description(value = "Test checks elements on partnership page")
-    public void checkPartnershipPageElements(String route) {
+    @Description(value = "Test checks elements on mobile app page")
+    public void checkMobileAppPageElements(String route) {
         openPage(route);
-        new Main_page_Logic().clickPartnership()
-                .checkPageElements()
-                .checkAddPartnerBlock();
+        new Main_page_Logic().clickMobileApp()
+                .checkForItemsFromTopPage()
+                .checkBlockWithSlider()
+                .checkAutoBannerSwitching()
+                .checkBannerSwitchButtons()
+                .checkReviewsBlock()
+                .checkAppStoreAndGooglePlayButtonsFunctionality();
     }
 
     @AfterMethod

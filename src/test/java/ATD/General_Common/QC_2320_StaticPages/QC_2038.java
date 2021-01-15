@@ -1,4 +1,4 @@
-package ATD.StaticPage;
+package ATD.General_Common.QC_2320_StaticPages;
 
 import ATD.Main_page_Logic;
 import Common.SetUp;
@@ -14,7 +14,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_234 {
+public class QC_2038 {
 
     @BeforeClass
     void setUp() {
@@ -29,12 +29,11 @@ public class QC_234 {
     @Test(dataProvider = "route")
     @Owner(value = "Chelombitko")
     @Flaky
-    @Description(value = "Test checks elements on datenschutz page")
-    public void checkDatenschutzPageElements(String route) {
+    @Description(value = "Test checks elements on sponsoring page")
+    public void checkSponsoringPageElements(String route) {
         openPage(route);
-        new Main_page_Logic().clickDatenschutz()
-                .checkItemsOnPage()
-                .checkClickableLinks();
+        new Main_page_Logic().clickSponsoringLink()
+                .checkForPageElements();
     }
 
     @AfterMethod

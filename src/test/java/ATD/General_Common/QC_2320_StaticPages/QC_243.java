@@ -1,4 +1,4 @@
-package ATD.StaticPage;
+package ATD.General_Common.QC_2320_StaticPages;
 
 import ATD.Main_page_Logic;
 import Common.SetUp;
@@ -14,7 +14,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1175 {
+public class QC_243 {
 
     @BeforeClass
     void setUp() {
@@ -29,14 +29,18 @@ public class QC_1175 {
     @Test(dataProvider = "route")
     @Owner(value = "Chelombitko")
     @Flaky
-    @Description(value = "Test checks elements on contacts page")
-    public void checkContactsPageElements(String route) {
+    @Description(value = "Test checks elements on versand page")
+    public void checkVersandPageElements(String route) {
         openPage(route);
-        new Main_page_Logic().clickContact()
-                .checkContactsBlock()
-                .checkNonPlacedOrderBlock()
-                .checkAlreadyPlacedOrderBlock();
-
+        new Main_page_Logic().clickVersand()
+                .checkBlockTop()
+                .checkPricesBlock()
+                .checkCountryPricesBlock()
+                .checkDeliveryTimeBlock()
+                .checkRecommendationBlock()
+                .checkSafeOrderBlock()
+                .checkTyresDeliveryBlock()
+                .checkOversizeShippingProductBlock();
     }
 
     @AfterMethod
@@ -44,3 +48,5 @@ public class QC_1175 {
         closeWebDriver();
     }
 }
+
+

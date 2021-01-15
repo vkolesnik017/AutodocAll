@@ -1,4 +1,4 @@
-package ATD.StaticPage;
+package ATD.General_Common.QC_2320_StaticPages;
 
 import ATD.Main_page_Logic;
 import Common.SetUp;
@@ -14,7 +14,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_243 {
+public class QC_717 {
 
     @BeforeClass
     void setUp() {
@@ -29,18 +29,11 @@ public class QC_243 {
     @Test(dataProvider = "route")
     @Owner(value = "Chelombitko")
     @Flaky
-    @Description(value = "Test checks elements on versand page")
-    public void checkVersandPageElements(String route) {
+    @Description(value = "Test checks elements on widerruf page")
+    public void checkWiderrufPageElements(String route) {
         openPage(route);
-        new Main_page_Logic().clickVersand()
-                .checkBlockTop()
-                .checkPricesBlock()
-                .checkCountryPricesBlock()
-                .checkDeliveryTimeBlock()
-                .checkRecommendationBlock()
-                .checkSafeOrderBlock()
-                .checkTyresDeliveryBlock()
-                .checkOversizeShippingProductBlock();
+        new Main_page_Logic().clickWiderruf()
+                .checkItemsOnPage();
     }
 
     @AfterMethod
@@ -48,5 +41,3 @@ public class QC_243 {
         closeWebDriver();
     }
 }
-
-
