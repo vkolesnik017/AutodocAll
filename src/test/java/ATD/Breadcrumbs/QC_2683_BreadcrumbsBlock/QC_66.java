@@ -1,7 +1,6 @@
-package ATD.MOTO.QC_336_BreadCrumbsBlock;
+package ATD.Breadcrumbs.QC_2683_BreadcrumbsBlock;
 
-import Common.DataBase;
-import ATD.Moto_Catalog_model_page_Logic;
+import ATD.LKW_Category_maker_brand_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -13,13 +12,11 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_339 {
-
+public class QC_66 {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -27,18 +24,17 @@ public class QC_339 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog_model2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_maker_brand");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks structure of bread crumbs block at catalog models route")
-    public void testChecksStructureOfBreadCrumbsBlockAtCatalogModels(String route) throws SQLException {
+    @Description(value = "Test checks bread crumbs block in Category maker brand route")
+    public void testChecksBreadCrumbsInCategoryMakerBrand(String route) throws SQLException {
         openPage(route);
-
-        new Moto_Catalog_model_page_Logic().checkBreadCrumbsBlock();
-        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_categories_maker3"));
+        new LKW_Category_maker_brand_page_Logic().checkLinksInBreadCrumbsBlock()
+                .checkLinkClickInBreadCrumbsBlock();
     }
 
     @AfterMethod

@@ -1,4 +1,4 @@
-package ATD.MOTO.QC_336_BreadCrumbsBlock;
+package ATD.Breadcrumbs.QC_2683_BreadcrumbsBlock;
 
 import ATD.Moto_Product_page_Logic;
 import Common.SetUp;

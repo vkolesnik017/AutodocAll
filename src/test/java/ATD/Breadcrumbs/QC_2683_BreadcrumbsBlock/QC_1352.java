@@ -1,7 +1,8 @@
-package ATD.MOTO.QC_336_BreadCrumbsBlock;
+package ATD.Breadcrumbs.QC_2683_BreadcrumbsBlock;
 
-import ATD.Moto_Catalog_page_Logic;
+
 import Common.SetUp;
+import ATD.TyresListing_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -16,7 +17,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_340 {
+public class QC_1352 {
 
     @BeforeClass
     void setUp() {
@@ -25,17 +26,18 @@ public class QC_340 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog2");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_season11");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "Kolesnik")
-    @Description(value = "Test checks structure of bread crumbs block at TecDoc сatalog route")
-    public void testChecksStructureOfBreadCrumbsBlockAtTecDocCatalog(String route) throws SQLException {
+    @Owner(value = "Romaniuta")
+    @Description(value = "Test Checks Tyres Breadcrumbs Transport Type And Season")
+    public void testTyresBreadcrumbsTransportTypeAndSeason(String route) {
         openPage(route);
-
-        new Moto_Catalog_page_Logic().checkBreadCrumbsBlock();
+        new TyresListing_page_Logic().checkBreadcrumbsFirstButtonTransiton()
+                                    .checkBreadcrumbsSecondButtonTransiton("llkw")
+                                    .checkBreadcrumbsLastButton("Ganzjahresreifen");
     }
 
     @AfterMethod

@@ -1,6 +1,6 @@
-package ATD.MOTO.QC_336_BreadCrumbsBlock;
+package ATD.Breadcrumbs.QC_2683_BreadcrumbsBlock;
 
-import ATD.Moto_Category_car_list_model_page_Logic;
+import ATD.LKW_Category_car_list_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,8 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_342 {
-
+public class QC_72 {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -25,19 +24,19 @@ public class QC_342 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list_model2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list11");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks structure of bread crumbs block at model listing route")
-    public void testChecksStructureOfBreadCrumbsBlockAtModelListing(String route) throws SQLException {
+    @Description(value = "Test checks bread crumbs block in TecDoc listing route")
+    public void testChecksBreadCrumbsInTecDocListing(String route) {
         openPage(route);
 
-        new Moto_Category_car_list_model_page_Logic().checkBreadCrumbsBlock();
+        new LKW_Category_car_list_page_Logic().checkLinksInBreadCrumbsBlockTecDocCatalog()
+                .checkLinkClickTecDocCatalog();
     }
-
     @AfterMethod
     public void close() {
         closeWebDriver();

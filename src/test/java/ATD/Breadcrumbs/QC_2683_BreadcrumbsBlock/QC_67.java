@@ -1,8 +1,7 @@
-package ATD.Section_Tyres.QC_1347_BreadcrumbsOnTyresListing;
+package ATD.Breadcrumbs.QC_2683_BreadcrumbsBlock;
 
-
+import ATD.LKW_Parent_Category_page_Logic;
 import Common.SetUp;
-import ATD.TyresListing_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -17,8 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1353 {
-
+public class QC_67 {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -26,20 +24,17 @@ public class QC_1353 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_brand4");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_parent_category");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "Romaniuta")
-    @Description(value = "Test Checks Tyres Breadcrumbs Transport Type And Brand")
-    public void testTyresBreadcrumbsTransportTypeAndBrand(String route) {
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test checks bread crumbs block in Parent category route")
+    public void testChecksBreadCrumbsInParentCategory(String route) throws SQLException {
         openPage(route);
-        new TyresListing_page_Logic().checkBreadcrumbsFirstButtonTransiton()
-                .checkBreadcrumbsSecondButtonTransiton("motorrad")
-                .checkBreadcrumbsLastButton("Dunlop");
+        new LKW_Parent_Category_page_Logic().checkLinksInBreadCrumbsBlock();
     }
-
     @AfterMethod
     public void close() {
         closeWebDriver();

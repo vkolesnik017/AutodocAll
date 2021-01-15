@@ -1,8 +1,7 @@
-package ATD.Section_Tyres.QC_1347_BreadcrumbsOnTyresListing;
+package ATD.Breadcrumbs.QC_2683_BreadcrumbsBlock;
 
-
+import ATD.LKW_Category_maker_Logic;
 import Common.SetUp;
-import ATD.TyresListing_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -17,8 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1351 {
-
+public class QC_50 {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -26,20 +24,17 @@ public class QC_1351 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_dimension5");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_product,lkw_parent_category,lkw_category,lkw_category_maker,lkw_category_brand,lkw_category_maker_brand,lkw_category_car_list,lkw_maker_car_list,lkw_maker_car_list2,lkw_categories_maker");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "Romaniuta")
-    @Description(value = "Test Checks Tyres Breadcrumbs Transport Type And Dimension")
-    public void testTyresBreadcrumbsTransportTypeAndDimension(String route) {
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test checks bread crumbs block in Categories maker route")
+    public void testChecksPresenceOfBreadCrumbsBlock(String route) {
         openPage(route);
-        new TyresListing_page_Logic().checkBreadcrumbsFirstButtonTransiton()
-                                    .checkBreadcrumbsSecondButtonTransiton("llkw")
-                                    .checkBreadcrumbsLastButton("195 70 R15");
+        new LKW_Category_maker_Logic().checkOfPresenceBreadCrumbsBlock();
     }
-
     @AfterMethod
     public void close() {
         closeWebDriver();

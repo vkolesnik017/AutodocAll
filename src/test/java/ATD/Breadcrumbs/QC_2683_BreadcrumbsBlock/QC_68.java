@@ -1,4 +1,4 @@
-package ATD.LKW_trucks.QC_49_Bread_crumbs;
+package ATD.Breadcrumbs.QC_2683_BreadcrumbsBlock;
 
 import ATD.LKW_Product_page_Logic;
 import Common.DataBase;
