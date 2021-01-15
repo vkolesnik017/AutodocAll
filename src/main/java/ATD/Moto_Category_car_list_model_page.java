@@ -32,7 +32,7 @@ public class Moto_Category_car_list_model_page {
         return $$x("//div[@class='small-product-button price_box']//a").filter(visible);
     }
     SelenideElement btnShowReplacement(String artOfProduct) {
-        return $x("//span[contains(text(),'" + artOfProduct + "')]/ancestor::li[@class='ovVisLi item_not_available']//div[contains(@class,'show_alternative__btn')]");
+        return $x("//span[contains(text(),'" + artOfProduct + "')]/ancestor::li[@class='ovVisLi item_not_available ']//div[contains(@class,'show_alternative__btn')]");
     }
 
     SelenideElement analogBlockOfProduct() {

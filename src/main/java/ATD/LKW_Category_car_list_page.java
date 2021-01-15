@@ -313,7 +313,7 @@ public class LKW_Category_car_list_page {
 
     SelenideElement thirdLevelBlock() {return $x("//div[@class='car-parts-categories-modal__level3 js-height-compare js-init-height']");}
 
-    ElementsCollection childCategoriesFirstLevelForCheck() {return $$x("//div[@class='car-parts-categories-modal__level1 js-height-compare']/ul[@class='car-parts-categories-modal__link-list']/li");}
+    ElementsCollection childCategoriesFirstLevelForCheck() {return $$x("//div[@class='car-parts-categories-modal__level1 js-height-compare']/ul[@class='car-parts-categories-modal__link-list']/li").filter(visible);}
 
    SelenideElement installationSideBlockInHeader() {return $x("//div[@class='installation-side__content']/div");}
 
