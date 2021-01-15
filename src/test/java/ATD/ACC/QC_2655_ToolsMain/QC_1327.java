@@ -1,4 +1,5 @@
-package ATD.ACC.QC_1276_BlockTop6ProductsOnMainTools;
+package ATD.ACC.QC_2655_ToolsMain;
+
 
 import ATD.Index_instruments_page_Logic;
 import Common.SetUp;
@@ -16,7 +17,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1281 {
+public class QC_1327 {
 
     @BeforeClass
     void setUp() {
@@ -31,10 +32,10 @@ public class QC_1281 {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test checks presence popup with characteristics product after hover in block top-6")
-    public void testCheckPresencePopupWithCharacteristicsProductInTop6Block(String route) {
+    @Description(value = "Test Checks the number of mini-cards in top-10 products block")
+    public void testCheckNumberOfMiniCardsTop10Products(String route) {
         openPage(route);
-        new Index_instruments_page_Logic().checkingHoverPopupInTop6ProductBlock();
+        new Index_instruments_page_Logic().checkingNumberOfMiniCardsTop10Products();
     }
 
     @AfterMethod

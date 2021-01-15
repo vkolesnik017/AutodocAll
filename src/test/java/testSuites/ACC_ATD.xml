@@ -6,14 +6,6 @@
         <listener class-name="Common.ProjectListener"/>
     </listeners>
 
-    <test name="QC_1260_MainProductCatalogOnMainTools">
-        <classes>
-            <class name="ATD.ACC.QC_1260_MainProductCatalogOnMainTools.QC_1261"/>
-            <class name="ATD.ACC.QC_1260_MainProductCatalogOnMainTools.QC_1262"/>
-            <class name="ATD.ACC.QC_1260_MainProductCatalogOnMainTools.QC_1267"/>
-            <class name="ATD.ACC.QC_1260_MainProductCatalogOnMainTools.QC_1274"/>
-        </classes>
-    </test>
 
     <test name="QC_1037_MainChemie">
         <classes>
@@ -56,17 +48,6 @@
 
 
 
-    <test name="QC_1322_BlockTop10ProductsOnMainTools">
-        <classes>
-            <class name="ATD.ACC.QC_1322_BlockTop10ProductsOnMainTools.QC_1323"/>
-            <class name="ATD.ACC.QC_1322_BlockTop10ProductsOnMainTools.QC_1325"/>
-            <class name="ATD.ACC.QC_1322_BlockTop10ProductsOnMainTools.QC_1327"/>
-            <class name="ATD.ACC.QC_1322_BlockTop10ProductsOnMainTools.QC_1329"/>
-            <class name="ATD.ACC.QC_1322_BlockTop10ProductsOnMainTools.QC_1331"/>
-            <class name="ATD.ACC.QC_1322_BlockTop10ProductsOnMainTools.QC_1332"/>
-        </classes>
-    </test>
-
     <test name="QC_1383_BlockFilterByBrandOnListingAccessories">
         <classes>
             <class name="ATD.ACC.QC_1383_BlockFilterByBrandOnListingAccessories.QC_1385"/>
@@ -89,24 +70,7 @@
         </classes>
     </test>
 
-    <test name="QC_1276_BlockTop6ProductsOnMainTools">
-        <classes>
-            <class name="ATD.ACC.QC_1276_BlockTop6ProductsOnMainTools.QC_1278"/>
-            <class name="ATD.ACC.QC_1276_BlockTop6ProductsOnMainTools.QC_1280"/>
-            <class name="ATD.ACC.QC_1276_BlockTop6ProductsOnMainTools.QC_1281"/>
-            <class name="ATD.ACC.QC_1276_BlockTop6ProductsOnMainTools.QC_1282"/>
-            <class name="ATD.ACC.QC_1276_BlockTop6ProductsOnMainTools.QC_1283"/>
-        </classes>
-    </test>
 
-    <test name="QC_1254_MainTools">
-        <classes>
-            <class name="ATD.ACC.QC_1254_MainTools.QC_1321"/>
-            <class name="ATD.ACC.QC_1254_MainTools.QC_1333"/>
-            <class name="ATD.ACC.QC_1254_MainTools.QC_1334"/>
-            <class name="ATD.ACC.QC_1254_MainTools.QC_1335"/>
-        </classes>
-    </test>
 
     <test name="QC_1849_ListingChemistry">
         <classes>
@@ -161,14 +125,29 @@
     </test>
 
 
-    <test name="QC_2235_DisplayedAllCategoriesAndLogicalUnion">
-        <classes>
-            <class name="ATD.ACC.QC_2235_DisplayedAllCategoriesAndLogicalUnion.QC_2249"/>
-        </classes>
-    </test>
 
     <test name="QC_2655_ToolsMain">
         <classes>
+            <class name="ATD.ACC.QC_2655_ToolsMain.QC_1261"/>
+            <class name="ATD.ACC.QC_2655_ToolsMain.QC_1262"/>
+            <class name="ATD.ACC.QC_2655_ToolsMain.QC_1267"/>
+            <class name="ATD.ACC.QC_2655_ToolsMain.QC_1274"/>
+            <class name="ATD.ACC.QC_2655_ToolsMain.QC_1278"/>
+            <class name="ATD.ACC.QC_2655_ToolsMain.QC_1280"/>
+            <class name="ATD.ACC.QC_2655_ToolsMain.QC_1281"/>
+            <class name="ATD.ACC.QC_2655_ToolsMain.QC_1282"/>
+            <class name="ATD.ACC.QC_2655_ToolsMain.QC_1283"/>
+            <class name="ATD.ACC.QC_2655_ToolsMain.QC_1321"/>
+            <class name="ATD.ACC.QC_2655_ToolsMain.QC_1323"/>
+            <class name="ATD.ACC.QC_2655_ToolsMain.QC_1325"/>
+            <class name="ATD.ACC.QC_2655_ToolsMain.QC_1327"/>
+            <class name="ATD.ACC.QC_2655_ToolsMain.QC_1329"/>
+            <class name="ATD.ACC.QC_2655_ToolsMain.QC_1331"/>
+            <class name="ATD.ACC.QC_2655_ToolsMain.QC_1332"/>
+            <class name="ATD.ACC.QC_2655_ToolsMain.QC_1333"/>
+            <class name="ATD.ACC.QC_2655_ToolsMain.QC_1334"/>
+            <class name="ATD.ACC.QC_2655_ToolsMain.QC_1335"/>
+            <class name="ATD.ACC.QC_2655_ToolsMain.QC_2249"/>
             <class name="ATD.ACC.QC_2655_ToolsMain.QC_2662"/>
         </classes>
     </test>
