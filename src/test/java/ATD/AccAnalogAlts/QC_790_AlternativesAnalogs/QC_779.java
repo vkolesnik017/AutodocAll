@@ -1,6 +1,7 @@
-package ATD.ACC.QC_1356_BlockCategoriesInSidebarOnListingAccessories;
+package ATD.AccAnalogAlts.QC_790_AlternativesAnalogs;
 
-import ATD.Listing_accessories_page_Logic;
+
+import ATD.Product_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,32 +17,29 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1360 {
+public class QC_779 {
 
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
     }
 
-    @DataProvider(name = "route", parallel = true)
+    @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main","listing_accessories");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product22");
     }
 
-
-    @Test(dataProvider = "route")
+    @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "Sergey-QA")
-    @Description(value = "Test checking presence title categories block in Sidebar.")
-    public void testChecksPresenceTitleCategoriesBlockInSidebar(String route) {
+    @Owner(value = "Romaniuta")
+    @Description(value = "Test Checks Related Products Popup On Product Page Without Car")
+    public void testRelatedProductsPopupOnProductPageWithoutCar(String route) {
         openPage(route);
-        new Listing_accessories_page_Logic().checkingPresenceTitleCategoriesBlockInSidebar();
+        new Product_page_Logic().checkRelatedProductsPopup(5);
     }
-
 
     @AfterMethod
-    private void close() {
+    public void close() {
         closeWebDriver();
     }
-
 }

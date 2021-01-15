@@ -1,7 +1,7 @@
-package ATD.Associated.QC_776_RelatedProductsLogic;
+package ATD.ACC.QC_1340_ListingAccessories;
 
 
-import ATD.Product_page_Logic;
+import ATD.Listing_accessories_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -10,36 +10,34 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import java.sql.SQLException;
-
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_779 {
+public class QC_2266 {
 
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
     }
 
-    @DataProvider(name = "routes", parallel = true)
+    @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product22");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "listing_accessories");
     }
 
-    @Test(dataProvider = "routes")
+    @Test(dataProvider = "route")
     @Flaky
-    @Owner(value = "Romaniuta")
-    @Description(value = "Test Checks Related Products Popup On Product Page Without Car")
-    public void testRelatedProductsPopupOnProductPageWithoutCar(String route) {
+    @Owner(value = "Sergey-QA")
+    @Description(value = "Test checks presence products block and they quantity.")
+    public void testCheckingBlockAndQuantityMainProducts(String route) {
         openPage(route);
-        new Product_page_Logic().checkRelatedProductsPopup(5);
+        new Listing_accessories_page_Logic().checkingBlockAndQuantityMainProducts();
     }
 
     @AfterMethod
-    public void close() {
+    private void close() {
         closeWebDriver();
     }
 }

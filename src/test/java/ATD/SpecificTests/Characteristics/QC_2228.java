@@ -1,4 +1,4 @@
-package ATD.SpecificTests;
+package ATD.SpecificTests.Characteristics;
 
 import Common.DataBase;
 import Common.Excel;

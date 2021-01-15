@@ -25,6 +25,10 @@
             <class name="ATD.ACC.QC_1037_MainChemie.QC_1040"/>
             <class name="ATD.ACC.QC_1037_MainChemie.QC_1073"/>
             <class name="ATD.ACC.QC_1037_MainChemie.QC_2660"/>
+            <class name="ATD.ACC.QC_1037_MainChemie.QC_1065"/>
+            <class name="ATD.ACC.QC_1037_MainChemie.QC_1066"/>
+            <class name="ATD.ACC.QC_1037_MainChemie.QC_1067"/>
+            <class name="ATD.ACC.QC_1037_MainChemie.QC_1068"/>
         </classes>
     </test>
 
@@ -50,15 +54,6 @@
         </classes>
     </test>
 
-    <test name="QC_1064_BlockTopProductsOnMainChemie">
-        <classes>
-            <class name="ATD.ACC.QC_1064_BlockTopProductsOnMainChemie.QC_1065"/>
-            <class name="ATD.ACC.QC_1064_BlockTopProductsOnMainChemie.QC_1066"/>
-            <class name="ATD.ACC.QC_1064_BlockTopProductsOnMainChemie.QC_1067"/>
-            <class name="ATD.ACC.QC_1064_BlockTopProductsOnMainChemie.QC_1068"/>
-
-        </classes>
-    </test>
 
 
     <test name="QC_1322_BlockTop10ProductsOnMainTools">
@@ -79,20 +74,18 @@
     </test>
 
 
-    <test name="QC_1356_BlockCategoriesInSidebarOnListingAccessories">
-        <classes>
-            <class name="ATD.ACC.QC_1356_BlockCategoriesInSidebarOnListingAccessories.QC_1360"/>
-            <class name="ATD.ACC.QC_1356_BlockCategoriesInSidebarOnListingAccessories.QC_1366"/>
-        </classes>
-    </test>
-
     <test name="QC_1340_ListingAccessories">
         <classes>
+            <class name="ATD.ACC.QC_1340_ListingAccessories.QC_1360"/>
+            <class name="ATD.ACC.QC_1340_ListingAccessories.QC_1366"/>
             <class name="ATD.ACC.QC_1340_ListingAccessories.QC_1378"/>
+            <class name="ATD.ACC.QC_1340_ListingAccessories.QC_1381"/>
             <class name="ATD.ACC.QC_1340_ListingAccessories.QC_1382"/>
             <class name="ATD.ACC.QC_1340_ListingAccessories.QC_1405"/>
             <class name="ATD.ACC.QC_1340_ListingAccessories.QC_1406"/>
-            <class name="ATD.ACC.QC_1340_ListingAccessories.QC_1381"/>
+            <class name="ATD.ACC.QC_1340_ListingAccessories.QC_2266"/>
+            <class name="ATD.ACC.QC_1340_ListingAccessories.QC_2267"/>
+            <class name="ATD.ACC.QC_1340_ListingAccessories.QC_2269"/>
         </classes>
     </test>
 
@@ -167,13 +160,6 @@
         </classes>
     </test>
 
-    <test name="QC_2261_BlockWithProductsOnAccessoriesListing">
-        <classes>
-            <class name="ATD.ACC.QC_2261_BlockWithProductsOnAccessoriesListing.QC_2266"/>
-            <class name="ATD.ACC.QC_2261_BlockWithProductsOnAccessoriesListing.QC_2267"/>
-            <class name="ATD.ACC.QC_2261_BlockWithProductsOnAccessoriesListing.QC_2269"/>
-        </classes>
-    </test>
 
     <test name="QC_2235_DisplayedAllCategoriesAndLogicalUnion">
         <classes>

@@ -1,12 +1,10 @@
-package ATD.ACC.QC_1064_BlockTopProductsOnMainChemie;
+package ATD.ACC.QC_1037_MainChemie;
 
-import ATD.Cart_page_Logic;
 import ATD.Index_chemicals_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
-import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -18,14 +16,12 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1067 {
 
-    private String nameProduct, titleProduct;
-    private Index_chemicals_page_Logic index_chemicals_page_logic = new Index_chemicals_page_Logic();
+public class QC_1065 {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0",false);
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "route", parallel = true)
@@ -33,23 +29,21 @@ public class QC_1067 {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main","index_chemicals");
     }
 
+
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test Checks adding a product to the cart when selecting it from top products block ")
-    public void testChecksAddingProductToCartWithTopProductsBlockForChemistry(String route) {
+    @Description(value = "Test Checks the presence of the top products block and quantity of goods in a block ")
+    public void testCheckPresenceBlockAndQuantityProducts(String route) {
         openPage(route);
-        nameProduct = index_chemicals_page_logic.getNameProductInBlockTopProducts();
-        index_chemicals_page_logic.clickOnFirstBtnAddToBasketInTopProductsBlock()
-                .clickOnBtnGoToBasket();
-        titleProduct = new Cart_page_Logic().getNameTitleProduct();
-        Assert.assertEquals(nameProduct, titleProduct);
+        new Index_chemicals_page_Logic().checkingPresenceOfTopProductBlock()
+                .checkingTheQuantityOfGoods(6);
     }
-
 
     @AfterMethod
     private void close() {
         closeWebDriver();
     }
+
 
 }

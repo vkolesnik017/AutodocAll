@@ -1,4 +1,4 @@
-package ATD.Associated.QC_776_RelatedProductsLogic;
+package ATD.AccAnalogAlts.QC_790_AlternativesAnalogs;
 
 
 import ATD.Listing_page_Logic;
