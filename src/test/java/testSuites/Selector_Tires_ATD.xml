@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Selector_Tyres_ATD" parallel="methods" thread-count="2" data-provider-thread-count="2">
+
+    <listeners>
+        <listener class-name="Common.ProjectListener"/>
+    </listeners>
+
+    <test name="QC_1104_TyresSelector">
+        <classes>
+            <class name="ATD.Selector_Tires.QC_1104_TyresSelector.QC_1369"/>
+            <class name="ATD.Selector_Tires.QC_1104_TyresSelector.QC_1370"/>
+            <class name="ATD.Selector_Tires.QC_1104_TyresSelector.QC_1105"/>
+            <class name="ATD.Selector_Tires.QC_1104_TyresSelector.QC_1106"/>
+            <class name="ATD.Selector_Tires.QC_1104_TyresSelector.QC_1107"/>
+            <!--<class name="ATD.Selector_Tires.QC_1104_TyresSelector.QC_1111"/>-->
+            <class name="ATD.Selector_Tires.QC_1104_TyresSelector.QC_1113"/>
+            <class name="ATD.Selector_Tires.QC_1104_TyresSelector.QC_1117"/>
+            <class name="ATD.Selector_Tires.QC_1104_TyresSelector.QC_1118"/>
+            <!--<class name="ATD.Selector_Tires.QC_1104_TyresSelector.QC_1231"/>-->
+            <class name="ATD.Selector_Tires.QC_1104_TyresSelector.QC_1233"/>
+            <class name="ATD.Selector_Tires.QC_1104_TyresSelector.QC_1237"/>
+            <class name="ATD.Selector_Tires.QC_1104_TyresSelector.QC_1240"/>
+            <!--<class name="ATD.Selector_Tires.QC_1104_TyresSelector.QC_1248"/>-->
+            <!--<class name="ATD.Selector_Tires.QC_1104_TyresSelector.QC_1258"/>-->
+            <!--<class name="ATD.Selector_Tires.QC_1104_TyresSelector.QC_1268"/>-->
+            <class name="ATD.Selector_Tires.QC_1104_TyresSelector.QC_1287"/>
+            <class name="ATD.Selector_Tires.QC_1104_TyresSelector.QC_1288"/>
+            <class name="ATD.Selector_Tires.QC_1104_TyresSelector.QC_2712"/>
+            <class name="ATD.Selector_Tires.QC_1104_TyresSelector.QC_2713"/>
+            <class name="ATD.Selector_Tires.QC_1104_TyresSelector.QC_2715"/>
+            <class name="ATD.Selector_Tires.QC_1104_TyresSelector.QC_2717"/>
+            <class name="ATD.Selector_Tires.QC_1104_TyresSelector.QC_3012"/>
+        </classes>
+    </test>
+
+</suite>
