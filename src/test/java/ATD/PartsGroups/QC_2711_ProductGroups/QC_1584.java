@@ -1,8 +1,8 @@
-package ATD.ProductGroups;
+package ATD.PartsGroups.QC_2711_ProductGroups;
 
+import Common.DataBase;
 import ATD.Product_page_Logic;
 import Common.SetUp;
-import AWS.ProductSearch_aws;
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -12,21 +12,17 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.sql.SQLException;
+
 import static ATD.CommonMethods.*;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-
-public class QC_1596 {
-
-    private ProductSearch_aws product_page_aws = new ProductSearch_aws();
-    private String idAndBrand;
+public class QC_1584 {
 
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
-        idAndBrand = product_page_aws.openProductSearchPageAndLogin().chooseIlliquidProductAndGetId();
-        close();
     }
 
     @DataProvider(name = "route", parallel = true)
@@ -37,13 +33,12 @@ public class QC_1596 {
 
     @Owner(value = "Chelombitko")
     @Test(dataProvider = "route")
-    @Description(value = "Test check making order with illiquid product")
+    @Description(value = "Test check making order with regular product")
     @Flaky
-    public void checkingOrderWithIlliquid(String route) {
-        String[] url = idAndBrand.split("#");
+    public void checkingOrderWithRegular(String route) throws SQLException {
         String shop = getShopFromRoute(route);
-        openPage(route + "/" + url[1] + "/" + url[0]);
-        String testMail = "QC_1596_autotest@mailinator.com";
+        openPage(route + "/" + new DataBase("ATD").getRouteByRouteName(shop, "product2"));
+        String testMail = "atdautotest@mailinator.com";
         new Product_page_Logic().addProductToCart().closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()

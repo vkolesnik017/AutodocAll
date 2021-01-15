@@ -1,11 +1,8 @@
-package ATD.ProductGroups;
+package ATD.PartsGroups.QC_2711_ProductGroups;
 
-import ATD.Product_page_Logic;
 import Common.DataBase;
-import ATD.Payment_handler_page_Logic;
-import ATD.Search_page_Logic;
+import ATD.Product_page_Logic;
 import Common.SetUp;
-import AWS.Order_aws;
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -22,9 +19,11 @@ import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 
-public class QC_1594 {
+public class QC_1598 {
 
     private Product_page_Logic product_page_logic = new Product_page_Logic();
+
+    private String urlProductForBodyFR = "https://www.auto-doc.fr/valeo/1059854";
 
     @BeforeClass
     void setUp() {
@@ -39,27 +38,31 @@ public class QC_1594 {
 
     @Owner(value = "Chelombitko")
     @Test(dataProvider = "route")
-    @Description(value = "Test check making order with paired product")
+    @Description(value = "Test check making order with body product")
     @Flaky
-    public void checkingOrderWithPaired(String route) throws SQLException {
+    public void checkingOrderWithBody(String route) throws SQLException {
+        openPage(urlProductForBodyFR);
+        product_page_logic.clickAddToCartAndCheckPopupFR();
         String shop = getShopFromRoute(route);
-        openPage(route + "/" + new DataBase("ATD").getRouteByRouteName(shop, "search8"));
-        String testMail = "QC_1594_autotestATD@mailinator.com";
-        new Search_page_Logic().counterIncreaseForPaired("2").counterDecreaseForPaired("4").closeFooterMessageCookies().detailsClick()
-                .counterIncreaseForPaired("2").counterDecreaseForPaired("4").counterIncreaseForPaired("2");
-        product_page_logic.buyButton().click();
-        product_page_logic.checksPresentProductInCartPopup()
-                .closePopupOtherCategoryIfYes()
-                .checkingNumberOfProductInCart(4)
+        openPage(route + "/" + new DataBase("ATD").getRouteByRouteName(shop, "product7"));
+        String testMail = "atdautotest_QC_1598_bodywork@mailinator.com";
+        product_page_logic.addProductToCart().closePopupOtherCategoryIfYes()
                 .cartClick()
-                .counterIncreaseForPaired("4").counterDecreaseForPaired("6").nextButtonClick()
+                .nextButtonClick()
+                .signIn(testMail, password)
+                .fillAllFields("FR").nextBtnClick()
+                .chooseVorkasse().nextBtnClick()
+                .closePopupDeliveryImpossibleAndCheckEmptyCart();
+        close();
+        openPage(route + "/" + new DataBase("ATD").getRouteByRouteName(shop, "product7"));
+        product_page_logic.addProductToCart().closePopupOtherCategoryIfYes()
+                .cartClick()
+                .nextButtonClick()
                 .signIn(testMail, password)
                 .fillAllFields(shop).nextBtnClick()
                 .chooseVorkasse().nextBtnClick()
-                .counterIncreaseForPaired("4").counterDecreaseForPaired("6").nextBtnClick()
+                .nextBtnClick()
                 .closePopupAfterOrder().successTextInHeader().shouldHave(Condition.text("Vielen Dank"));
-        String orderNumber = new Payment_handler_page_Logic().getOrderNumber();
-        new Order_aws(orderNumber).openOrderInAwsWithLogin().checkQuantityOfProduct(4).checkTooltipByAddingIncorrectProductQuantity("3");
     }
 
     @AfterMethod

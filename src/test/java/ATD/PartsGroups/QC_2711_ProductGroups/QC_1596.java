@@ -1,7 +1,8 @@
-package ATD.ProductGroups;
+package ATD.PartsGroups.QC_2711_ProductGroups;
 
-import ATD.Search_page_Logic;
+import ATD.Product_page_Logic;
 import Common.SetUp;
+import AWS.ProductSearch_aws;
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -11,34 +12,40 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.sql.SQLException;
-
 import static ATD.CommonMethods.*;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1590 {
+
+public class QC_1596 {
+
+    private ProductSearch_aws product_page_aws = new ProductSearch_aws();
+    private String idAndBrand;
 
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
+        idAndBrand = product_page_aws.openProductSearchPageAndLogin().chooseIlliquidProductAndGetId();
+        close();
     }
 
-
-    @DataProvider(name = "route")
-    Object[] dataProviderProduct() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "searchStarterbatterie");
+    @DataProvider(name = "route", parallel = true)
+    Object[] dataProvider() {
+        return new SetUp("ATD").setUpShop("prod", "DE");
     }
+
 
     @Owner(value = "Chelombitko")
     @Test(dataProvider = "route")
-    @Description(value = "Test check making order with batteries product")
+    @Description(value = "Test check making order with illiquid product")
     @Flaky
-    public void checkingOrderWithBatteries(String route) {
-        String testMail = "QC_1590_autotestATD@mailinator.com";
-        openPage(route);
-        String shop = getCurrentShopFromJSVarInHTML();
-        new Search_page_Logic().addFirstProductAndGoToCart()
+    public void checkingOrderWithIlliquid(String route) {
+        String[] url = idAndBrand.split("#");
+        String shop = getShopFromRoute(route);
+        openPage(route + "/" + url[1] + "/" + url[0]);
+        String testMail = "QC_1596_autotest@mailinator.com";
+        new Product_page_Logic().addProductToCart().closePopupOtherCategoryIfYes()
+                .cartClick()
                 .nextButtonClick()
                 .signIn(testMail, password)
                 .fillAllFields(shop).nextBtnClick()
@@ -51,7 +58,4 @@ public class QC_1590 {
     private void close() {
         closeWebDriver();
     }
-
 }
-
-

@@ -1,4 +1,4 @@
-package ATD.ProductGroups;
+package ATD.PartsGroups.QC_2711_ProductGroups;
 
 import ATD.Product_page_Logic;
 import Common.SetUp;

@@ -1,7 +1,6 @@
-package ATD.ProductGroups;
+package ATD.PartsGroups.QC_2711_ProductGroups;
 
-import Common.DataBase;
-import ATD.Product_page_Logic;
+import ATD.Search_page_Logic;
 import Common.SetUp;
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Description;
@@ -18,29 +17,27 @@ import static ATD.CommonMethods.*;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1584 {
+public class QC_1586 {
 
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
     }
 
-    @DataProvider(name = "route", parallel = true)
-    Object[] dataProvider() {
-        return new SetUp("ATD").setUpShop("prod", "DE");
+    @DataProvider(name = "route")
+    Object[] dataProviderProduct() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "searchRidex,searchStark");
     }
-
 
     @Owner(value = "Chelombitko")
     @Test(dataProvider = "route")
-    @Description(value = "Test check making order with regular product")
+    @Description(value = "Test check making order with Ridex and Stark product")
     @Flaky
-    public void checkingOrderWithRegular(String route) throws SQLException {
-        String shop = getShopFromRoute(route);
-        openPage(route + "/" + new DataBase("ATD").getRouteByRouteName(shop, "product2"));
-        String testMail = "atdautotest@mailinator.com";
-        new Product_page_Logic().addProductToCart().closePopupOtherCategoryIfYes()
-                .cartClick()
+    public void checkingOrderWithRidex(String route){
+        String testMail = "QC_1586_autotestATD@mailinator.com";
+        openPage(route);
+        String shop = getCurrentShopFromJSVarInHTML();
+        new Search_page_Logic().addFirstProductAndGoToCart()
                 .nextButtonClick()
                 .signIn(testMail, password)
                 .fillAllFields(shop).nextBtnClick()
@@ -54,3 +51,4 @@ public class QC_1584 {
         closeWebDriver();
     }
 }
+

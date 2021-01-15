@@ -1,4 +1,4 @@
-package ATD.ProductGroups;
+package ATD.PartsGroups.QC_2711_ProductGroups;
 
 import ATD.Search_page_Logic;
 import Common.SetUp;
@@ -17,24 +17,25 @@ import static ATD.CommonMethods.*;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1586 {
+public class QC_1590 {
 
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
     }
 
+
     @DataProvider(name = "route")
     Object[] dataProviderProduct() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "searchRidex,searchStark");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "searchStarterbatterie");
     }
 
     @Owner(value = "Chelombitko")
     @Test(dataProvider = "route")
-    @Description(value = "Test check making order with Ridex and Stark product")
+    @Description(value = "Test check making order with batteries product")
     @Flaky
-    public void checkingOrderWithRidex(String route){
-        String testMail = "QC_1586_autotestATD@mailinator.com";
+    public void checkingOrderWithBatteries(String route) {
+        String testMail = "QC_1590_autotestATD@mailinator.com";
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
         new Search_page_Logic().addFirstProductAndGoToCart()
@@ -50,5 +51,7 @@ public class QC_1586 {
     private void close() {
         closeWebDriver();
     }
+
 }
+
 
