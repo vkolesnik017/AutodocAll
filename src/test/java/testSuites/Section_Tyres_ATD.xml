@@ -49,17 +49,6 @@
         </classes>
     </test>
 
-    <test name="QC_1347_BreadcrumbsOnTyresListing">
-        <classes>
-            <class name="ATD.Section_Tyres.QC_1347_BreadcrumbsOnTyresListing.QC_1348"/>
-            <class name="ATD.Section_Tyres.QC_1347_BreadcrumbsOnTyresListing.QC_1349"/>
-            <class name="ATD.Section_Tyres.QC_1347_BreadcrumbsOnTyresListing.QC_1350"/>
-            <class name="ATD.Section_Tyres.QC_1347_BreadcrumbsOnTyresListing.QC_1351"/>
-            <class name="ATD.Section_Tyres.QC_1347_BreadcrumbsOnTyresListing.QC_1352"/>
-            <class name="ATD.Section_Tyres.QC_1347_BreadcrumbsOnTyresListing.QC_1353"/>
-        </classes>
-    </test>
-
     <test name="QC_1367_TyresProductPage">
         <classes>
             <class name="ATD.Section_Tyres.QC_1367_TyresProductPage.QC_1355"/>
@@ -79,13 +68,6 @@
             <class name="ATD.Section_Tyres.QC_1367_TyresProductPage.QC_1414"/>
             <class name="ATD.Section_Tyres.QC_1367_TyresProductPage.QC_1415"/>
             <class name="ATD.Section_Tyres.QC_1367_TyresProductPage.QC_1416"/>
-        </classes>
-    </test>
-
-    <test name="QC_1427_FilterByRatingOnTyresListing">
-        <classes>
-            <class name="ATD.Section_Tyres.QC_1427_FilterByRatingOnTyresListing.QC_1428"/>
-            <!--<class name="ATD.Section_Tyres.QC_1427_FilterByRatingOnTyresListing.QC_1429"/>-->
         </classes>
     </test>
 

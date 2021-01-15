@@ -19,22 +19,6 @@
         </classes>
     </test>
 
-    <test name="QC_49_Bread_crumbs">
-        <classes>
-
-            <class name="ATD.LKW_trucks.QC_49_Bread_crumbs.QC_130"/>
-            <class name="ATD.LKW_trucks.QC_49_Bread_crumbs.QC_50"/>
-            <class name="ATD.LKW_trucks.QC_49_Bread_crumbs.QC_65"/>
-            <class name="ATD.LKW_trucks.QC_49_Bread_crumbs.QC_66"/>
-            <class name="ATD.LKW_trucks.QC_49_Bread_crumbs.QC_67"/>
-            <class name="ATD.LKW_trucks.QC_49_Bread_crumbs.QC_68"/>
-            <class name="ATD.LKW_trucks.QC_49_Bread_crumbs.QC_69"/>
-            <class name="ATD.LKW_trucks.QC_49_Bread_crumbs.QC_70"/>
-            <class name="ATD.LKW_trucks.QC_49_Bread_crumbs.QC_71"/>
-            <class name="ATD.LKW_trucks.QC_49_Bread_crumbs.QC_72"/>
-        </classes>
-    </test>
-
     <test name="LKW_trucks_route">
         <classes>
             <class name="ATD.LKW_trucks.QC_135"/>
