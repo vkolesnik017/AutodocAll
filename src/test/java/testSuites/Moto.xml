@@ -89,22 +89,6 @@
         </classes>
     </test>
 
-    <test name="QC_336_BreadCrumbsBlock">
-        <classes>
-            <class name="ATD.MOTO.QC_336_BreadCrumbsBlock.QC_337"/>
-            <class name="ATD.MOTO.QC_336_BreadCrumbsBlock.QC_338"/>
-            <class name="ATD.MOTO.QC_336_BreadCrumbsBlock.QC_339"/>
-            <class name="ATD.MOTO.QC_336_BreadCrumbsBlock.QC_340"/>
-            <class name="ATD.MOTO.QC_336_BreadCrumbsBlock.QC_341"/>
-            <class name="ATD.MOTO.QC_336_BreadCrumbsBlock.QC_342"/>
-            <class name="ATD.MOTO.QC_336_BreadCrumbsBlock.QC_343"/>
-            <class name="ATD.MOTO.QC_336_BreadCrumbsBlock.QC_344"/>
-            <class name="ATD.MOTO.QC_336_BreadCrumbsBlock.QC_345"/>
-            <class name="ATD.MOTO.QC_336_BreadCrumbsBlock.QC_346"/>
-            <class name="ATD.MOTO.QC_336_BreadCrumbsBlock.QC_347"/>
-        </classes>
-    </test>
-
     <test name="QC_364_TopCategoriesByBrandBlock">
         <classes>
             <class name="ATD.MOTO.QC_364_TopCategoriesByBrandBlock.QC_366"/>

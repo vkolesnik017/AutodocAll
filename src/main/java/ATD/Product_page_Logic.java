@@ -38,7 +38,7 @@ public class Product_page_Logic extends Product_page {
 
     @Step("Open product page by route {route} and his ID {idProduct} number. Product_page")
     public Product_page_Logic openProductPageById(String route, String idProduct) {
-        open(route + "/a/" + idProduct);
+        openPage(route + "/a/" + idProduct);
         return this;
     }
 
@@ -121,6 +121,19 @@ public class Product_page_Logic extends Product_page {
     @Step("Click search KBA button. Product_page")
     public Maker_car_list_page_Logic clickKbaBtn() {
         selectorKbaBtn().click();
+        return page(Maker_car_list_page_Logic.class);
+    }
+
+    @Step("Click search KBA button and close popup KBA error if it is visible. Product_page")
+    public Maker_car_list_page_Logic clickKbaBtnAndClosePopUpKbaError() {
+        selectorKbaBtn().click();
+        sleep(3000);
+        while (popUpKbaError().isDisplayed()) {
+            closePopUpKbaError().click();
+            selectorKbaBtn().waitUntil(visible, 5000);
+            clickKbaBtn();
+            sleep(3000);
+        }
         return page(Maker_car_list_page_Logic.class);
     }
     //----------------------------------------------------------------------------------------------------------

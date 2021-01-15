@@ -520,6 +520,14 @@ public class Product_page {
         return $(".kba_submit");
     }
 
+    SelenideElement popUpKbaError() {
+        return $(".popup-kba-error");
+    }
+
+    SelenideElement closePopUpKbaError() {
+        return $(".popup-kba-error>a");
+    }
+
     // OEN block
     ElementsCollection linksInOenNumbersBlock() {
         return $$x("//*[@class='oem-list']//li");
