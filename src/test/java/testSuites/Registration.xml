@@ -8,17 +8,16 @@
 
     <test name="Registration">
         <classes>
-            <class name="ATD.Registration.QC_1635"/>
-            <class name="ATD.Registration.QC_1637"/>
-            <class name="ATD.Registration.QC_1639"/>
-            <class name="ATD.Registration.QC_1642"/>
-            <class name="ATD.Registration.QC_2108"/>
+            <!--<class name="ATD.Registration.QC_1642"/>-inactive-->
         </classes>
     </test>
 
     <test name="QC_2703_RegistrationLogin">
         <classes>
             <class name="ATD.Registration.QC_2703_RegistrationLogin.QC_3115"/>
+            <class name="ATD.Registration.QC_2703_RegistrationLogin.QC_1635"/>
+            <class name="ATD.Registration.QC_2703_RegistrationLogin.QC_1639"/>
+            <class name="ATD.Registration.QC_2703_RegistrationLogin.QC_2108"/>
         </classes>
     </test>
 

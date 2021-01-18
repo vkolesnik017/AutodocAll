@@ -46,4 +46,29 @@
             <class name="ATD.ProductPage.QC_2741_ProductPage_CarRoute.QC_3008"/>
         </classes>
     </test>
+
+    <test name="QC_1367_TyresProductPage">
+        <classes>
+            <class name="ATD.ProductPage.QC_1367_TyresProductPage.QC_1355"/>
+            <class name="ATD.ProductPage.QC_1367_TyresProductPage.QC_1357"/>
+            <class name="ATD.ProductPage.QC_1367_TyresProductPage.QC_1358"/>
+            <class name="ATD.ProductPage.QC_1367_TyresProductPage.QC_1359"/>
+            <class name="ATD.ProductPage.QC_1367_TyresProductPage.QC_1361"/>
+            <class name="ATD.ProductPage.QC_1367_TyresProductPage.QC_1362"/>
+            <class name="ATD.ProductPage.QC_1367_TyresProductPage.QC_1371"/>
+            <class name="ATD.ProductPage.QC_1367_TyresProductPage.QC_1372"/>
+            <class name="ATD.ProductPage.QC_1367_TyresProductPage.QC_1374"/>
+            <class name="ATD.ProductPage.QC_1367_TyresProductPage.QC_1375"/>
+            <class name="ATD.ProductPage.QC_1367_TyresProductPage.QC_1376"/>
+            <class name="ATD.ProductPage.QC_1367_TyresProductPage.QC_1377"/>
+            <class name="ATD.ProductPage.QC_1367_TyresProductPage.QC_1412"/>
+            <class name="ATD.ProductPage.QC_1367_TyresProductPage.QC_1413"/>
+            <class name="ATD.ProductPage.QC_1367_TyresProductPage.QC_1414"/>
+            <class name="ATD.ProductPage.QC_1367_TyresProductPage.QC_1415"/>
+            <class name="ATD.ProductPage.QC_1367_TyresProductPage.QC_1416"/>
+            <class name="ATD.ProductPage.QC_1367_TyresProductPage.QC_2227"/>
+            <class name="ATD.ProductPage.QC_1367_TyresProductPage.QC_2230"/>
+            <class name="ATD.ProductPage.QC_1367_TyresProductPage.QC_2231"/>
+        </classes>
+    </test>
 </suite>
