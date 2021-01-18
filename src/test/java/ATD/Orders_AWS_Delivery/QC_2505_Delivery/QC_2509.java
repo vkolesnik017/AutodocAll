@@ -62,7 +62,6 @@ public class QC_2509 {
                 .checkPresenceTableOfSuppliersAndClickBtnSelect()
                 .checkArticleOfAddedProduct(artNum)
                 .clickSaveOrderBtn()
-                .checkOrderHasTestStatus()
                 .getDeliveryCostInOrder();
         Assert.assertEquals(deliveryPrice, deliveryPriceInOrder);
         float deliveryPriceInOrderAfterReset = new Order_aws().reSaveOrder()
