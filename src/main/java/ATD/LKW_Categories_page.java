@@ -93,7 +93,7 @@ public class LKW_Categories_page {
 
    ElementsCollection childCategoriesFirstLevel() {return $$x("//div[@class='car-parts-categories-modal__level1 js-height-compare js-init-height']/ul[@class='car-parts-categories-modal__link-list']/li/*[self::a or self::span]");}
 
-    ElementsCollection childCategoriesFirstLevelForCheck() {return $$x("//div[@class='car-parts-categories-modal__level1 js-height-compare']/ul[@class='car-parts-categories-modal__link-list']/li");}
+    ElementsCollection childCategoriesFirstLevelForCheck() {return $$x("//div[@class='car-parts-categories-modal__level1 js-height-compare']/ul[@class='car-parts-categories-modal__link-list']/li/*[self::a or self::span]").filter(visible);}
 
     ElementsCollection visibleChildCategorySecondLevel() {return $$x("//div[contains(@class,'car-parts-categories-modal__level2')]/ul[@class='car-parts-categories-modal__link-list']/li");}
 
@@ -118,5 +118,7 @@ public class LKW_Categories_page {
     SelenideElement idOfVehicleInGaragePopUp(String idOfVehicle) {return $x("//div[@class='wrapper-radio']/label[@for='"+idOfVehicle+"']");}
 
     SelenideElement headerGarageIcon(){ return $x("//div[@class='header-garage js-header-garage']"); }
+
+    ElementsCollection visibleChildCategories() {return $$x("//ul[@class='car-parts-categories-modal__link-list']//a").filter(visible);}
 
 }

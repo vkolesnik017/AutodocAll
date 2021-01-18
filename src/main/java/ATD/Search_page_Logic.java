@@ -426,7 +426,7 @@ public class Search_page_Logic extends Search_page {
 
         for (int i = 0; i < visibleArtNumOfProduct().size(); i++) {
 
-            String titleOfBrandImage = titleOfMainProducts().get(i).getText();
+            String titleOfBrandImage = titleOfProducts().get(i).getText();
             String artNumOfProduct = visibleArtNumOfProduct().get(i).getText().replace("Artikelnummer: ", "");
 
 

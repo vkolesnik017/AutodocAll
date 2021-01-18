@@ -25,7 +25,7 @@ public class LKW_FaqHash_page_Logic extends LKW_FaqHash_page{
 
     @Step("click on Oil child category .LKW_FaqHash_page")
     public LKW_Category_car_list_page_Logic clickOnOilChildCategory() {
-        visibleChildCategoriesPopUpOfParentCategory().get(0).shouldBe(visible).click();
+        visibleChildCategories().get(3).shouldBe(visible).click();
         return page(LKW_Category_car_list_page_Logic.class);
     }
 }

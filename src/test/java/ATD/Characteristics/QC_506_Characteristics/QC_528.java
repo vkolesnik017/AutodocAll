@@ -133,6 +133,7 @@ public class QC_528 {
         openPage(route);
         new Search_page_Logic().presenceRefurbishedCharacteristicInListingWithCharacteristic("Zustand  Wiederaufbereitet", "DELCO REMY","Ergänzende Info:Remy Remanufactured");
     }
+
     @AfterMethod
     public void close() {
         closeWebDriver();

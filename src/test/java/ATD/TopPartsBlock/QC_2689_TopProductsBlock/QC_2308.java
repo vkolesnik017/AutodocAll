@@ -23,7 +23,7 @@ public class QC_2308 {
         setUpBrowser(false, "chrome", "77.0", false);
     }
 
-    @DataProvider(name = "routes", parallel = true)
+ /*   @DataProvider(name = "routes", parallel = true)      // ВРЕМЕННО ОТКЛЮЧЁН, ТАК КАК НЕ СООТВЕТСТВУЕТ УСЛОВИЮ
     Object[] dataProvider() throws SQLException {
         return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_parent_category4");
     }
@@ -35,7 +35,7 @@ public class QC_2308 {
     public void testChecksPresenceOfProductsInTopProductsBlock(String route) {
         openPage(route);
         new LKW_Parent_Category_page_Logic().availabilityOfTopProductsBlock().comparisonOfProductAndGeneric("Motoröl");
-    }
+    }*/
 
     @DataProvider(name = "routesCategory", parallel = true)
     Object[] dataProviderCategory() throws SQLException {
