@@ -1,4 +1,4 @@
-package ATD.PrivateRoom.QC_1016_MyGarageInUserAccount;
+package ATD.PrivateProperties.QC_1016_FunctionalityMyGarageInUsersPrivatRoom;
 
 import ATD.Main_page_Logic;
 import ATD.Payment_handler_page_Logic;

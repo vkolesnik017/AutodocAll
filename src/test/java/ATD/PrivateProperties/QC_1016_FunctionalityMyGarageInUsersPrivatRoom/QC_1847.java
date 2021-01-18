@@ -1,6 +1,5 @@
-package ATD.PrivateRoom.QC_1016_MyGarageInUserAccount;
+package ATD.PrivateProperties.QC_1016_FunctionalityMyGarageInUsersPrivatRoom;
 
-import Common.DataBase;
 import ATD.Main_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
@@ -17,13 +16,13 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1840 {
+public class QC_1847 {
 
-    String email = "qc_1840myvehicles@mailinator.com";
+    String email = "qc_1847_SortingVehiclesByDate@mailinator.com";
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0", false);
+        setUpBrowser(false, "chrome", "77.0",false);
     }
 
     @DataProvider(name = "routes", parallel = true)
@@ -34,21 +33,24 @@ public class QC_1840 {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks added motorcycle to my vehicles block")
-    public void testChecksAddedMotoToMyVehiclesBlock(String route) throws SQLException {
+    @Description(value = "Test checks sorting vehicles by date of addition")
+    public void testChecksSortingVehiclesByDate(String route) {
         openPage(route);
 
         new Main_page_Logic()
                 .loginAndTransitionToProfilePlusPage(email)
                 .goToMyVehiclesBlock()
-                .openSelectorBlock()
-                .selectMotoBlockInSelector()
-                 .selectVehicleInSelector("4081","12111","104173")
-                 .presenceAddedAuto()
-                .checkElementsOfAddedAuto("BMW MOTORCYCLES K (05.1982 - ...)", new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_catalog6"))
-                .comparisonOfAddedVehiclesFromMyGarageAndHeader()
-                .checkPopUpWithAddedAuto()
-                .deleteOfAddedAuto();
+                .checkPresenceOfVehiclesInMyGarageBlockAndHeader()
+                .transitionToMainPage()
+                .chooseBrandModelTypeInSelector("AUDI", "433", "1040")
+                .goToCatalog()
+                .checkListOfAddedVehicleInHeaderAfterSelectedNewAuto()
+                .selectTruckBlock()
+                .selectTruckInVerticalSelector("24", "714", "1004434")
+                .checkListOfAddedVehicleInHeaderAfterSelectedNewAuto()
+                .selectMotoBlock()
+                .selectMotoInHorizontalMotoSelector("4068", "12676", "103462")
+                .checkListOfAddedVehicleInHeaderAfterSelectedNewAuto();
     }
 
     @AfterMethod

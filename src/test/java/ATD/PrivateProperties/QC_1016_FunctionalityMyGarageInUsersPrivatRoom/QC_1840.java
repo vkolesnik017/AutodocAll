@@ -1,5 +1,6 @@
-package ATD.PrivateRoom.QC_1016_MyGarageInUserAccount;
+package ATD.PrivateProperties.QC_1016_FunctionalityMyGarageInUsersPrivatRoom;
 
+import Common.DataBase;
 import ATD.Main_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
@@ -16,9 +17,9 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1973 {
+public class QC_1840 {
 
-    String email = "qc_1973TransitionToMyGarage@mailinator.com";
+    String email = "qc_1840myvehicles@mailinator.com";
 
     @BeforeClass
     void setUp() {
@@ -33,16 +34,21 @@ public class QC_1973 {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks transition to my garage from PopUp")
-    public void testChecksTransitionToMyGarageFromPopUp(String route) {
+    @Description(value = "Test checks added motorcycle to my vehicles block")
+    public void testChecksAddedMotoToMyVehiclesBlock(String route) throws SQLException {
         openPage(route);
 
         new Main_page_Logic()
                 .loginAndTransitionToProfilePlusPage(email)
-                .checkCountOfAddedVehiclesInGarageAtHeader(5)
-                .checkVisibleAddedVehicleInPopUpOfGarageHeader(5)
-                .goToGarageBlockThroughPopUpInHeader()
-                .checkListOfAddedVehicle(6);
+                .goToMyVehiclesBlock()
+                .openSelectorBlock()
+                .selectMotoBlockInSelector()
+                 .selectVehicleInSelector("4081","12111","104173")
+                 .presenceAddedAuto()
+                .checkElementsOfAddedAuto("BMW MOTORCYCLES K (05.1982 - ...)", new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_catalog6"))
+                .comparisonOfAddedVehiclesFromMyGarageAndHeader()
+                .checkPopUpWithAddedAuto()
+                .deleteOfAddedAuto();
     }
 
     @AfterMethod

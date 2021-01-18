@@ -1,4 +1,4 @@
-package ATD.PrivateRoom.QC_1016_MyGarageInUserAccount;
+package ATD.PrivateProperties.QC_1016_FunctionalityMyGarageInUsersPrivatRoom;
 
 import ATD.*;
 import Common.DataBase;

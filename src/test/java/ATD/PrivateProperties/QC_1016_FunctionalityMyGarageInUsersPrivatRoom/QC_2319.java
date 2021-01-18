@@ -1,6 +1,5 @@
-package ATD.PrivateRoom.QC_1016_MyGarageInUserAccount;
+package ATD.PrivateProperties.QC_1016_FunctionalityMyGarageInUsersPrivatRoom;
 
-import Common.DataBase;
 import ATD.Main_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
@@ -17,8 +16,8 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1839 {
-    String email = "qc_1839myvehicles@mailinator.com";
+public class QC_2319 {
+    private String email = "QC_2319_UpdateOfData@mailinator.com";
 
     @BeforeClass
     void setUp() {
@@ -28,26 +27,28 @@ public class QC_1839 {
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "main");
+
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks added truck to my vehicles block")
-    public void testChecksAddedTruckToMyVehiclesBlock(String route) throws SQLException {
+    @Description(value = "Test checks updating data in Motorcycle selector with selected vehicle")
+    public void testChecksUpdatingDataInMotoSelectorWithSelectedVehicle(String route) {
         openPage(route);
 
         new Main_page_Logic()
-                .loginAndTransitionToProfilePlusPage(email)
-                .goToMyVehiclesBlock()
-                .openSelectorBlock()
-                .clickTrucksTab()
-                .selectTruckInSelector("2242", "8959", "1012748")
-                .presenceAddedAuto()
-                .checkElementsOfAddedAuto("ASKAM (FARGO/DESOTO) AS 950 (09.2004 - ...)",new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", "lkw_maker_car_list6"))
-                .comparisonOfAddedVehiclesFromMyGarageAndHeader()
-                .checkPopUpWithAddedAuto()
-                .deleteOfAddedAuto();
+                .loginToProfilePlusPageAndBack(email).updateOfPage().checkCountOfVehicleInIconOfGarage("3")
+                .clickMotoCategory()
+                .clickOnGarageIconInHeader()
+                .selectVehicleInGaragePopUp("101396")
+                .checkValuesInSelector("4082", "12020", "101396")
+                .resetOfMotoSelector()
+                .clickOnLinkMoreAtTopBrandsBlock()
+                .presenceOfAutomakersBlock()
+                .clickOnGarageIconInHeader()
+                .selectVehicleInGaragePopUp("101396")
+                .checkValuesInSelector("4082", "12020", "101396");
     }
 
     @AfterMethod

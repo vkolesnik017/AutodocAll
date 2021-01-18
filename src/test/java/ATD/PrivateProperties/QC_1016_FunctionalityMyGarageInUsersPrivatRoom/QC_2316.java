@@ -1,4 +1,4 @@
-package ATD.PrivateRoom.QC_1016_MyGarageInUserAccount;
+package ATD.PrivateProperties.QC_1016_FunctionalityMyGarageInUsersPrivatRoom;
 
 import ATD.Main_page_Logic;
 import Common.SetUp;
@@ -16,8 +16,9 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2317 {
-    private String email = "QC_2317_UpdateOfData@mailinator.com";
+public class QC_2316 {
+
+    private String email = "QC_2316_UpdateOfData@mailinator.com";
 
     @BeforeClass
     void setUp() {
@@ -32,29 +33,29 @@ public class QC_2317 {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks updating of data in Truck selector with selected vehicle")
-    public void testChecksUpdatingOfDataInTruckSelectorWithSelectedVehicle(String route) throws SQLException {
+    @Description(value = "Test checks updating of data with selected vehicle in Garage pop-up")
+    public void testChecksUpdatingOfDataWithSelectedVehicleInGaragePopUp(String route) throws SQLException {
         openPage(route);
 
         new Main_page_Logic()
                 .loginToProfilePlusPageAndBack(email).updateOfPage().checkCountOfVehicleInIconOfGarage("3")
-                .clickLkwCategory()
                 .clickOnGarageIconInHeader()
-                .selectVehicleInGaragePopUp("1010338")
-                .checkValuesInSelector("832", "7969", "1010338")
-                .resetOfCarBrandFieldInVerticalSelector()
-                .goToAllTruckBrandsPage()
-                .visibilityOfBrandsList()
+                .selectVehicleInGaragePopUp("6926")
+                .checkValuesInSelector("74", "1746", "6926")
+                .resetVerticalCarSelector()
+                .clickOnMoreSparePartsLink()
+                .presenceOfTecDocCatalog()
                 .clickOnGarageIconInHeader()
-                .selectVehicleInGaragePopUp("1010338")
-                .checkValuesInSelector("832", "7969", "1010338")
-                .resetOfCarBrandFieldInVerticalSelector()
+                .selectVehicleInGaragePopUp("6926")
+                .checkValuesInSelector("74", "1746", "6926")
+                .resetOfVerticalSelector()
                 .goToMainPage()
-                .clickOnAllSparePartsLinkInTopParentsBlock()
-                .checkSuccessfullyLKWCategoriesPageLoading()
+                .selectTopBrandsBlock()
+                .clickOnMoreSparePartsLinkOfTopBrandsBlock()
+                .presenceOfBrandsBlock()
                 .clickOnGarageIconInHeader()
-                .selectVehicleInGaragePopUp("1010338")
-                .checkValuesInSelector("832", "7969", "1010338");
+                .selectVehicleInGaragePopUp("6926")
+                .checkValuesInSelector("74", "1746", "6926");
     }
 
     @AfterMethod

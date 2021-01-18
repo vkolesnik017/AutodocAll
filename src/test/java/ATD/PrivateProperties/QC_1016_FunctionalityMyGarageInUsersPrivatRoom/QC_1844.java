@@ -1,4 +1,4 @@
-package ATD.PrivateRoom.QC_1016_MyGarageInUserAccount;
+package ATD.PrivateProperties.QC_1016_FunctionalityMyGarageInUsersPrivatRoom;
 
 import ATD.Main_page_Logic;
 import Common.SetUp;
@@ -18,7 +18,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1872 {
+public class QC_1844 {
     private List<String> urlOfAddedVehicle = new ArrayList<>();
 
     @BeforeClass
@@ -34,17 +34,23 @@ public class QC_1872 {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks removing a car from history viewed in pop-up garage")
-    public void testChecksRemovingCarFromHistoryViewedInPopUp(String route) {
+    @Description(value = "Test checks transition from View history of My garage block to TecDoc catalog")
+    public void testChecksTransitionFromViewHistoryToTecDocCatalog(String route) throws SQLException {
         openPage(route);
 
-        new Main_page_Logic().chooseBrandModelTypeInSelector("VW", "4644", "14881")
+        new Main_page_Logic()
+                .chooseBrandModelTypeInSelector("BMW", "10974", "58964")
                 .goToCatalog()
+                .presenceOfTecDocCatalog()
+                .selectTruckBlock()
+                .availabilityOfVerticalTruckSelector()
+                .selectTruckInSelector("174", "14250", "1019356")
                 .addedCurrentUrlToList(urlOfAddedVehicle)
-                .selectCarInSelector("84", "10731", "107074")
+                .selectMotoCategory()
+                .selectMotoInHorizontalMotoSelector("5063", "38692", "131227")
                 .addedCurrentUrlToList(urlOfAddedVehicle)
-                .checkSelectedVehicleInPopUpOfGarageIcon(urlOfAddedVehicle)
-                 .clearListOfVehicleInPopUpOfGarageIcon();
+                .checkSelectedVehicleInPopUpOfGarageIcon(urlOfAddedVehicle, 3)
+                .checkTransitionByClickOnVehicleInMyGaragePopUp();
     }
 
     @AfterMethod
