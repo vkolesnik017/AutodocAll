@@ -8,7 +8,7 @@
 
     <test name="PrivateRoom">
         <classes>
-            <class name="ATD.PrivateRoom.QC_597"/>
+            <!--<class name="ATD.PrivateRoom.QC_597"/> - inactive-->
         </classes>
     </test>
 
