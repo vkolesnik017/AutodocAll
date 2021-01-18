@@ -8,7 +8,6 @@
 
     <test name="PrivateRoom">
         <classes>
-            <class name="ATD.PrivateRoom.QC_598"/>
             <class name="ATD.PrivateRoom.QC_597"/>
         </classes>
     </test>
@@ -62,30 +61,12 @@
         </classes>
     </test>
 
-    <test name="QC_914_BonusTabFunctionalityInPR">
-        <classes>
-            <class name="ATD.PrivateRoom.QC_914_BonusTabFunctionalityInPR.QC_915"/>
-            <class name="ATD.PrivateRoom.QC_914_BonusTabFunctionalityInPR.QC_916"/>
-            <class name="ATD.PrivateRoom.QC_914_BonusTabFunctionalityInPR.QC_917"/>
-            <class name="ATD.PrivateRoom.QC_914_BonusTabFunctionalityInPR.QC_919"/>
-        </classes>
-    </test>
-
     <test name="QC_868_DepositTabFunctionalInPR">
         <classes>
             <class name="ATD.PrivateRoom.QC_868_DepositTabFunctionalInPR.QC_869"/>
             <class name="ATD.PrivateRoom.QC_868_DepositTabFunctionalInPR.QC_871"/>
             <class name="ATD.PrivateRoom.QC_868_DepositTabFunctionalInPR.QC_883"/>
             <class name="ATD.PrivateRoom.QC_868_DepositTabFunctionalInPR.QC_925"/>
-        </classes>
-    </test>
-
-    <test name="QC_1861_BonusesInOrder_PR">
-        <classes>
-            <class name="ATD.PrivateRoom.QC_1861_BonusesInOrder_PR.QC_1852"/>
-            <class name="ATD.PrivateRoom.QC_1861_BonusesInOrder_PR.QC_1853"/>
-            <class name="ATD.PrivateRoom.QC_1861_BonusesInOrder_PR.QC_1858"/>
-            <class name="ATD.PrivateRoom.QC_1861_BonusesInOrder_PR.QC_1859"/>
         </classes>
     </test>
 

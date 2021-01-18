@@ -27,4 +27,19 @@
     </test>
 
 
+    <test name="QC_1862_BonusesInOrderAndBonusTabInPR">
+        <classes>
+            <class name="ATD.PrivateProperties.QC_1862_BonusesInOrderAndBonusTabInPR.QC_915"/>
+            <class name="ATD.PrivateProperties.QC_1862_BonusesInOrderAndBonusTabInPR.QC_916"/>
+            <class name="ATD.PrivateProperties.QC_1862_BonusesInOrderAndBonusTabInPR.QC_917"/>
+            <class name="ATD.PrivateProperties.QC_1862_BonusesInOrderAndBonusTabInPR.QC_919"/>
+            <class name="ATD.PrivateProperties.QC_1862_BonusesInOrderAndBonusTabInPR.QC_1852"/>
+            <class name="ATD.PrivateProperties.QC_1862_BonusesInOrderAndBonusTabInPR.QC_1853"/>
+            <class name="ATD.PrivateProperties.QC_1862_BonusesInOrderAndBonusTabInPR.QC_1858"/>
+            <class name="ATD.PrivateProperties.QC_1862_BonusesInOrderAndBonusTabInPR.QC_1859"/>
+            <class name="ATD.PrivateProperties.QC_1862_BonusesInOrderAndBonusTabInPR.QC_598"/>
+        </classes>
+    </test>
+
+
 </suite>

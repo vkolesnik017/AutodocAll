@@ -1,4 +1,4 @@
-package ATD.PrivateRoom;
+package ATD.PrivateProperties.QC_1862_BonusesInOrderAndBonusTabInPR;
 
 import ATD.Main_page_Logic;
 import Common.SetUp;
