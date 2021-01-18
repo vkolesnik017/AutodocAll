@@ -10,6 +10,26 @@
     <test name="QC_10_MainTitlesOnPages">
         <classes>
             <class name="ATD.Titles.QC_10_MainTitlesOnPages.QC_16"/>
+            <class name="ATD.Titles.QC_10_MainTitlesOnPages.QC_11"/>
+            <class name="ATD.Titles.QC_10_MainTitlesOnPages.QC_12"/>
+            <class name="ATD.Titles.QC_10_MainTitlesOnPages.QC_13"/>
+            <class name="ATD.Titles.QC_10_MainTitlesOnPages.QC_17"/>
+            <class name="ATD.Titles.QC_10_MainTitlesOnPages.QC_1702"/>
+            <class name="ATD.Titles.QC_10_MainTitlesOnPages.QC_1703"/>
+            <class name="ATD.Titles.QC_10_MainTitlesOnPages.QC_1704"/>
+            <class name="ATD.Titles.QC_10_MainTitlesOnPages.QC_1706"/>
+            <class name="ATD.Titles.QC_10_MainTitlesOnPages.QC_1707"/>
+            <class name="ATD.Titles.QC_10_MainTitlesOnPages.QC_1708"/>
+            <class name="ATD.Titles.QC_10_MainTitlesOnPages.QC_1709"/>
+            <class name="ATD.Titles.QC_10_MainTitlesOnPages.QC_1710"/>
+            <class name="ATD.Titles.QC_10_MainTitlesOnPages.QC_1711"/>
+            <class name="ATD.Titles.QC_10_MainTitlesOnPages.QC_1712"/>
+            <class name="ATD.Titles.QC_10_MainTitlesOnPages.QC_1713"/>
+            <class name="ATD.Titles.QC_10_MainTitlesOnPages.QC_331"/>
+            <class name="ATD.Titles.QC_10_MainTitlesOnPages.QC_332"/>
+            <class name="ATD.Titles.QC_10_MainTitlesOnPages.QC_333"/>
+            <class name="ATD.Titles.QC_10_MainTitlesOnPages.QC_334"/>
+            <class name="ATD.Titles.QC_10_MainTitlesOnPages.QC_335"/>
         </classes>
     </test>
 

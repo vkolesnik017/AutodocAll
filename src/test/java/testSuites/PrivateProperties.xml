@@ -23,6 +23,27 @@
         <classes>
             <class name="ATD.PrivateProperties.QC_1016_FunctionalityMyGarageInUsersPrivatRoom.QC_2314"/>
             <class name="ATD.PrivateProperties.QC_1016_FunctionalityMyGarageInUsersPrivatRoom.QC_2699"/>
+            <class name="ATD.PrivateProperties.QC_1016_FunctionalityMyGarageInUsersPrivatRoom.QC_1839"/>
+            <class name="ATD.PrivateProperties.QC_1016_FunctionalityMyGarageInUsersPrivatRoom.QC_1840"/>
+            <class name="ATD.PrivateProperties.QC_1016_FunctionalityMyGarageInUsersPrivatRoom.QC_1842"/>
+            <class name="ATD.PrivateProperties.QC_1016_FunctionalityMyGarageInUsersPrivatRoom.QC_1843"/>
+            <class name="ATD.PrivateProperties.QC_1016_FunctionalityMyGarageInUsersPrivatRoom.QC_1844"/>
+            <class name="ATD.PrivateProperties.QC_1016_FunctionalityMyGarageInUsersPrivatRoom.QC_1845"/>
+            <class name="ATD.PrivateProperties.QC_1016_FunctionalityMyGarageInUsersPrivatRoom.QC_1846"/>
+            <class name="ATD.PrivateProperties.QC_1016_FunctionalityMyGarageInUsersPrivatRoom.QC_1847"/>
+            <class name="ATD.PrivateProperties.QC_1016_FunctionalityMyGarageInUsersPrivatRoom.QC_1872"/>
+            <class name="ATD.PrivateProperties.QC_1016_FunctionalityMyGarageInUsersPrivatRoom.QC_1973"/>
+            <class name="ATD.PrivateProperties.QC_1016_FunctionalityMyGarageInUsersPrivatRoom.QC_1017"/>
+            <class name="ATD.PrivateProperties.QC_1016_FunctionalityMyGarageInUsersPrivatRoom.QC_1031"/>
+            <class name="ATD.PrivateProperties.QC_1016_FunctionalityMyGarageInUsersPrivatRoom.QC_1018"/>
+            <class name="ATD.PrivateProperties.QC_1016_FunctionalityMyGarageInUsersPrivatRoom.QC_1032"/>
+            <class name="ATD.PrivateProperties.QC_1016_FunctionalityMyGarageInUsersPrivatRoom.QC_2316"/>
+            <class name="ATD.PrivateProperties.QC_1016_FunctionalityMyGarageInUsersPrivatRoom.QC_2317"/>
+            <class name="ATD.PrivateProperties.QC_1016_FunctionalityMyGarageInUsersPrivatRoom.QC_2319"/>
+            <class name="ATD.PrivateProperties.QC_1016_FunctionalityMyGarageInUsersPrivatRoom.QC_2326"/>
+            <class name="ATD.PrivateProperties.QC_1016_FunctionalityMyGarageInUsersPrivatRoom.QC_2344"/>
+            <class name="ATD.PrivateProperties.QC_1016_FunctionalityMyGarageInUsersPrivatRoom.QC_2345"/>
+            <class name="ATD.PrivateProperties.QC_1016_FunctionalityMyGarageInUsersPrivatRoom.QC_1027"/>
         </classes>
     </test>
 
