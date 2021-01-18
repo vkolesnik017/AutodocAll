@@ -1,4 +1,4 @@
-package ATD.ACC.QC_1322_BlockTop10ProductsOnMainTools;
+package ATD.ACC.QC_2655_ToolsMain;
 
 import ATD.Index_instruments_page_Logic;
 import Common.SetUp;
@@ -16,7 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1325 {
+public class QC_1281 {
 
     @BeforeClass
     void setUp() {
@@ -31,15 +31,15 @@ public class QC_1325 {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test checking presence Subtitle top-10 products block .")
-    public void testCheckPresenceSubtitleTop10Block(String route) {
+    @Description(value = "Test checks presence popup with characteristics product after hover in block top-6")
+    public void testCheckPresencePopupWithCharacteristicsProductInTop6Block(String route) {
         openPage(route);
-        new Index_instruments_page_Logic().checkingPresenceSubtitleTop10Block();
+        new Index_instruments_page_Logic().checkingHoverPopupInTop6ProductBlock();
     }
-
 
     @AfterMethod
     private void close() {
         closeWebDriver();
     }
+
 }

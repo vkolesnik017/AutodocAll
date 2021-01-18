@@ -1,5 +1,4 @@
-package ATD.ACC.QC_1322_BlockTop10ProductsOnMainTools;
-
+package ATD.ACC.QC_2655_ToolsMain;
 
 import ATD.Index_instruments_page_Logic;
 import Common.SetUp;
@@ -17,7 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1327 {
+public class QC_1280 {
 
     @BeforeClass
     void setUp() {
@@ -32,15 +31,14 @@ public class QC_1327 {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test Checks the number of mini-cards in top-10 products block")
-    public void testCheckNumberOfMiniCardsTop10Products(String route) {
+    @Description(value = "Test Checks the number of mini-cards in top products block")
+    public void testCheckNumberOfMiniCardsTopProductsForInstruments(String route) {
         openPage(route);
-        new Index_instruments_page_Logic().checkingNumberOfMiniCardsTop10Products();
+        new Index_instruments_page_Logic().checkingNumberOfMiniCardsTop6Products();
     }
 
     @AfterMethod
     private void close() {
         closeWebDriver();
     }
-
 }

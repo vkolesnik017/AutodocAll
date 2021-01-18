@@ -1,4 +1,4 @@
-package ATD.ACC.QC_1276_BlockTop6ProductsOnMainTools;
+package ATD.ACC.QC_2655_ToolsMain;
 
 import ATD.Index_instruments_page_Logic;
 import Common.SetUp;
@@ -16,12 +16,11 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-
-public class QC_1278 {
+public class QC_1335 {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0", false);
+        setUpBrowser(false, "chrome", "77.0",false);
     }
 
     @DataProvider(name = "route", parallel = true)
@@ -32,14 +31,12 @@ public class QC_1278 {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test checks presence title top-6 products block")
-    public void testCheckingPresenceTitleTop6Block(String route) {
+    @Description(value = "Test checks presence Delivery block ")
+    public void testCheckPresenceDeliveryBlock(String route) {
         openPage(route);
-        new Index_instruments_page_Logic().checkingPresenceTitleTop6Block();
+        new Index_instruments_page_Logic().checkingPresenceDeliveryBlock();
     }
 
     @AfterMethod
-    private void close() {
-        closeWebDriver();
-    }
+    private void close() { closeWebDriver(); }
 }
