@@ -1,6 +1,6 @@
-package ATD.LKW_trucks.QC_10_MainHeadlines;
+package ATD.Titles.QC_10_MainTitlesOnPages;
 
-import ATD.LKW_Error_page_Logic;
+import ATD.LKW_Categories_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,7 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_11 {
+public class QC_1702 {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -24,16 +24,16 @@ public class QC_11 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "404");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_categories");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks availability of headline in error page")
-    public void testChecksAvailabilityOfHeadLineInErrorPage(String route) {
+    @Description(value = "Test checks availability of headline in Catalog route")
+    public void testChecksAvailabilityOfHeadLineInCatalog(String route) {
         openPage(route);
-        new LKW_Error_page_Logic().visibilityOfHeadLine();
+        new LKW_Categories_page_Logic().visibilityOfHeadLine();
     }
 
     @AfterMethod

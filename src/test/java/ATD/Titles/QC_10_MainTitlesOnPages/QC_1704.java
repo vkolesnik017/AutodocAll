@@ -1,6 +1,6 @@
-package ATD.MOTO.QC_330_BlockOfMainHeadline;
+package ATD.Titles.QC_10_MainTitlesOnPages;
 
-import ATD.Moto_Catalog_page_Logic;
+import ATD.LKW_Parent_Category_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,8 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_335 {
-
+public class QC_1704 {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -25,18 +24,16 @@ public class QC_335 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog2");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_parent_category,lkw_category2,lkw_makers");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks presence information icon in headline")
-    public void testChecksPresenceOfInformationIcon(String route) {
+    @Description(value = "Test checks availability of headline in Parent, Child category and catalog of mark routes")
+    public void testChecksAvailabilityOfHeadLineInParentChildCategoryMarkCatalog(String route) {
         openPage(route);
-
-        new Moto_Catalog_page_Logic().presenceOfInformationIcon()
-                .presenceOfInformationPopUp();
+        new LKW_Parent_Category_page_Logic().visibilityOfHeadLine();
     }
 
     @AfterMethod

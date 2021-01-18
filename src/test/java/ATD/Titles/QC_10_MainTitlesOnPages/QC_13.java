@@ -1,4 +1,4 @@
-package ATD.LKW_trucks.QC_10_MainHeadlines;
+package ATD.Titles.QC_10_MainTitlesOnPages;
 
 import ATD.LKW_Category_maker_brand_page_Logic;
 import ATD.LKW_maker_car_list_Logic;

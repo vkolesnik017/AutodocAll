@@ -49,27 +49,7 @@
         </classes>
     </test>
 
-    <test name="QC_10_MainHeadLines">
-        <classes>
-            <class name="ATD.LKW_trucks.QC_10_MainHeadlines.QC_11"/>
-            <class name="ATD.LKW_trucks.QC_10_MainHeadlines.QC_12"/>
-            <class name="ATD.LKW_trucks.QC_10_MainHeadlines.QC_13"/>
-            <class name="ATD.LKW_trucks.QC_10_MainHeadlines.QC_17"/>
-            <class name="ATD.LKW_trucks.QC_10_MainHeadlines.QC_1702"/>
-            <class name="ATD.LKW_trucks.QC_10_MainHeadlines.QC_1703"/>
-            <class name="ATD.LKW_trucks.QC_10_MainHeadlines.QC_1704"/>
-            <class name="ATD.LKW_trucks.QC_10_MainHeadlines.QC_1706"/>
-            <class name="ATD.LKW_trucks.QC_10_MainHeadlines.QC_1707"/>
-            <class name="ATD.LKW_trucks.QC_10_MainHeadlines.QC_1708"/>
-            <class name="ATD.LKW_trucks.QC_10_MainHeadlines.QC_1709"/>
-            <class name="ATD.LKW_trucks.QC_10_MainHeadlines.QC_1710"/>
-            <class name="ATD.LKW_trucks.QC_10_MainHeadlines.QC_1711"/>
-            <class name="ATD.LKW_trucks.QC_10_MainHeadlines.QC_1712"/>
-            <class name="ATD.LKW_trucks.QC_10_MainHeadlines.QC_1713"/>
-        </classes>
-    </test>
-
-    <test name="QC_27_BlockOfBrandsAndModelsOfCarManufacturers">
+     <test name="QC_27_BlockOfBrandsAndModelsOfCarManufacturers">
         <classes>
             <class name="ATD.LKW_trucks.QC_27_BlockOfBrandsAndModelsOfCarManufacturers.QC_28"/>
             <class name="ATD.LKW_trucks.QC_27_BlockOfBrandsAndModelsOfCarManufacturers.QC_29"/>

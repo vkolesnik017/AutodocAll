@@ -96,16 +96,6 @@
         </classes>
     </test>
 
-    <test name="QC_330_BlockOfMainHeadline">
-        <classes>
-            <class name="ATD.MOTO.QC_330_BlockOfMainHeadline.QC_331"/>
-            <class name="ATD.MOTO.QC_330_BlockOfMainHeadline.QC_332"/>
-            <class name="ATD.MOTO.QC_330_BlockOfMainHeadline.QC_333"/>
-            <class name="ATD.MOTO.QC_330_BlockOfMainHeadline.QC_334"/>
-            <class name="ATD.MOTO.QC_330_BlockOfMainHeadline.QC_335"/>
-        </classes>
-    </test>
-
     <test name="QC_385_BlockBrandsAndModelsOfAutoManufacturers">
         <classes>
             <class name="ATD.MOTO.QC_385_BlockBrandsAndModelsOfAutoManufacturers.QC_386"/>

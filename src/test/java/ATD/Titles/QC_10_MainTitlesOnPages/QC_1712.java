@@ -1,6 +1,6 @@
-package ATD.LKW_trucks.QC_10_MainHeadlines;
+package ATD.Titles.QC_10_MainTitlesOnPages;
 
-import ATD.LKW_Parent_Category_page_Logic;
+import ATD.LKW_maker_car_list_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,7 +16,8 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1704 {
+public class QC_1712 {
+
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -24,16 +25,17 @@ public class QC_1704 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_parent_category,lkw_category2,lkw_makers");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_maker_car_list2");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks availability of headline in Parent, Child category and catalog of mark routes")
-    public void testChecksAvailabilityOfHeadLineInParentChildCategoryMarkCatalog(String route) {
+    @Description(value = "Test checks image of brand  at main headline")
+    public void testChecksImageOfBrandAtMainHeadline(String route) {
         openPage(route);
-        new LKW_Parent_Category_page_Logic().visibilityOfHeadLine();
+        new LKW_maker_car_list_Logic()
+                .availabilityOfImageOfBrand();
     }
 
     @AfterMethod

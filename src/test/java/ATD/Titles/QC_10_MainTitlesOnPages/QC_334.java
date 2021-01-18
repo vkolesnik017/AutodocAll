@@ -1,4 +1,4 @@
-package ATD.MOTO.QC_330_BlockOfMainHeadline;
+package ATD.Titles.QC_10_MainTitlesOnPages;
 
 import ATD.Moto_Catalog_model_page_Logic;
 import ATD.Moto_Category_car_list_page_Logic;
