@@ -1,4 +1,4 @@
-package ATD.Selectors.QC_693_VerticalCarSelectors;
+package ATD.Selectors.QC_2676_Selectors_Car;
 
 import ATD.Main_page_Logic;
 import Common.SetUp;
@@ -13,9 +13,10 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static Common.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class QC_699 {
+public class QC_696 {
 
   private Main_page_Logic mainPageLogic = new Main_page_Logic();
 
@@ -32,11 +33,14 @@ public class QC_699 {
   @Test(dataProvider = "routes")
   @Flaky
   @Owner(value = "Evlentiev")
-  @Description(value = "Appears popup with information about the KBA number after clicking on the link \"Was is eine Schlüsselnummer?\"")
-  public void testAppearsKbaPopupAfterClickLink(String route) {
+  @Description(value = "Appears error what not selected type when used vertical selector with empty value")
+  public void testAppearsErrorThatTypeCarNotSelected(String route) {
     open(route);
-    mainPageLogic.openVerticalCarSelectorIfItHidden()
-            .clickLinkAndCheckAppearsInfoKbaPopup();
+    mainPageLogic.chooseBrandInVerticalCarSelector("CITROЁN")
+            .chooseModelInVerticalCarSelector("393")
+            .clickSearchBtnInVerticalSelectorWhenNotSelectedFields()
+            .errorToolTipOfTypeSelector().shouldHave(
+                    exactText("Wählen Sie eine Modifikation aus"));
   }
 
   @AfterMethod

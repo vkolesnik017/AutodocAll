@@ -1,4 +1,4 @@
-package ATD.Selectors.QC_693_VerticalCarSelectors;
+package ATD.Selectors.QC_2676_Selectors_Car;
 
 import ATD.Main_page_Logic;
 import Common.SetUp;
@@ -14,8 +14,9 @@ import java.sql.SQLException;
 
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.*;
+import static org.testng.Assert.assertEquals;
 
-public class QC_719 {
+public class QC_698 {
 
   private Main_page_Logic mainPageLogic = new Main_page_Logic();
 
@@ -26,18 +27,19 @@ public class QC_719 {
 
   @DataProvider(name = "routes", parallel = true)
   Object[] dataProvider() throws SQLException {
-    return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main","main,category_name,category_name_brand");
+    return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main","main,category_name,categories,category_name_brand");
   }
 
   @Test(dataProvider = "routes")
   @Flaky
   @Owner(value = "Evlentiev")
-  @Description(value = "Appears tooltip the choose brand for first time enter session")
-  public void testAppearsTooltipChooseBrandFirstTimeEnterSession(String route) {
+  @Description(value = "Reset vertical car selector")
+  public void testResetCarSelector(String route) {
     open(route);
-    mainPageLogic.closeTooltipInCarSelector();
+    mainPageLogic.chooseBrandInVerticalCarSelector("VW")
+            .resetVerticalCarSelector();
+    assertEquals(mainPageLogic.brandSelectorInVerticalCarSelector().getSelectedText(), "Marke wählen");
   }
-
   @AfterMethod
   public void close() {
     closeWebDriver();

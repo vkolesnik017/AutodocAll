@@ -1,4 +1,4 @@
-package ATD.Selectors.QC_693_VerticalCarSelectors;
+package ATD.Selectors.QC_2676_Selectors_Car;
 
 import Common.DataBase;
 import ATD.Main_page_Logic;

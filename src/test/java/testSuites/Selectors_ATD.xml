@@ -30,22 +30,6 @@
         </classes>
     </test>
 
-    <test name="QC_693_VerticalCarSelectors">
-        <classes>
-            <class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_694"/>
-            <class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_695"/>
-            <class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_696"/>
-            <class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_697"/>
-            <class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_698"/>
-            <class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_699"/>
-            <class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_700"/>
-            <class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_719"/>
-            <class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_720"/>
-            <class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_721"/>
-            <class name="ATD.Selectors.QC_693_VerticalCarSelectors.QC_722"/>
-        </classes>
-    </test>
-
     <test name="QC_663_HorizontalCarSelector">
         <classes>
             <class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_664"/>
@@ -63,6 +47,17 @@
             <class name="ATD.Selectors.QC_2676_Selectors_Car.QC_3048"/>
             <class name="ATD.Selectors.QC_2676_Selectors_Car.QC_670"/>
             <class name="ATD.Selectors.QC_2676_Selectors_Car.QC_3167"/>
+            <class name="ATD.Selectors.QC_2676_Selectors_Car.QC_694"/>
+            <class name="ATD.Selectors.QC_2676_Selectors_Car.QC_695"/>
+            <class name="ATD.Selectors.QC_2676_Selectors_Car.QC_696"/>
+            <class name="ATD.Selectors.QC_2676_Selectors_Car.QC_697"/>
+            <class name="ATD.Selectors.QC_2676_Selectors_Car.QC_698"/>
+            <class name="ATD.Selectors.QC_2676_Selectors_Car.QC_699"/>
+            <class name="ATD.Selectors.QC_2676_Selectors_Car.QC_700"/>
+            <class name="ATD.Selectors.QC_2676_Selectors_Car.QC_719"/>
+            <class name="ATD.Selectors.QC_2676_Selectors_Car.QC_720"/>
+            <class name="ATD.Selectors.QC_2676_Selectors_Car.QC_721"/>
+            <class name="ATD.Selectors.QC_2676_Selectors_Car.QC_722"/>
         </classes>
     </test>
 

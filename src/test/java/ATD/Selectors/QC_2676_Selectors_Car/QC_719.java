@@ -1,4 +1,4 @@
-package ATD.Selectors.QC_693_VerticalCarSelectors;
+package ATD.Selectors.QC_2676_Selectors_Car;
 
 import ATD.Main_page_Logic;
 import Common.SetUp;
@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.*;
 
-public class QC_721 {
+public class QC_719 {
 
   private Main_page_Logic mainPageLogic = new Main_page_Logic();
 
@@ -26,14 +26,14 @@ public class QC_721 {
 
   @DataProvider(name = "routes", parallel = true)
   Object[] dataProvider() throws SQLException {
-    return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main","category_model,model_maker_list");
+    return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main","main,category_name,category_name_brand");
   }
 
   @Test(dataProvider = "routes")
   @Flaky
   @Owner(value = "Evlentiev")
-  @Description(value = "Appears tooltip the choose type for first time enter session")
-  public void testAppearsTooltipChooseTypeFirstTimeEnterSession(String route) {
+  @Description(value = "Appears tooltip the choose brand for first time enter session")
+  public void testAppearsTooltipChooseBrandFirstTimeEnterSession(String route) {
     open(route);
     mainPageLogic.closeTooltipInCarSelector();
   }

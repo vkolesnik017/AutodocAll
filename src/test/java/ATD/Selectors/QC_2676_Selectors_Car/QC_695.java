@@ -1,4 +1,4 @@
-package ATD.Selectors.QC_693_VerticalCarSelectors;
+package ATD.Selectors.QC_2676_Selectors_Car;
 
 import ATD.Main_page_Logic;
 import Common.SetUp;
@@ -16,7 +16,7 @@ import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class QC_694 {
+public class QC_695 {
 
   private Main_page_Logic mainPageLogic = new Main_page_Logic();
 
@@ -33,15 +33,13 @@ public class QC_694 {
   @Test(dataProvider = "routes")
   @Flaky
   @Owner(value = "Evlentiev")
-  @Description(value = "Appears error what not selected brand when used vertical selector with empty value")
-  public void testAppearsErrorThatBrandCarNotSelected(String route) {
+  @Description(value = "Appears error what not selected model when used vertical selector with empty value")
+  public void testAppearsErrorThatModelCarNotSelected(String route) {
     open(route);
-    mainPageLogic.openVerticalCarSelectorIfItHidden()
-            .clickSearchBtnInVerticalSelectorWhenNotSelectedFields()
-            .errorTooltipOfBrandSelector().shouldHave(
-                    exactText("Um Autoteile für Ihren Wagen zu suchen, geben Sie bitte Ihr genaues Automodell an"));
+    mainPageLogic.chooseBrandInVerticalCarSelector("CITROЁN")
+            .clickSearchBtnInVerticalSelectorWhenNotSelectedFields().errorToolTipOfModelSelector().shouldHave(
+                    exactText("Wählen Sie ein Modell aus"));
   }
-
   @AfterMethod
   public void close() {
     closeWebDriver();
