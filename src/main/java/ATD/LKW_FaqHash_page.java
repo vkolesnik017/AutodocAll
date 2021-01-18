@@ -13,4 +13,6 @@ public class LKW_FaqHash_page {
     ElementsCollection visibleChildCategoriesPopUpOfParentCategory() {return $$x("//div[@class='car-parts-categories-modal__wrapper']").filter(visible);}
 
     ElementsCollection popUpOfParentCategories() {return $$x("//div[@class='car-parts-categories-modal__content']");}
+
+    ElementsCollection visibleChildCategories() {return $$x("//ul[@class='car-parts-categories-modal__link-list']//a").filter(visible);}
 }

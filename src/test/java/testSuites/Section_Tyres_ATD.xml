@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Section_Tyres_ATD" parallel="methods" thread-count="2" data-provider-thread-count="2">
+
+    <listeners>
+        <listener class-name="Common.ProjectListener"/>
+    </listeners>
+
+    <test name="QC_1038_CreatingTyresOrder">
+        <classes>
+            <class name="ATD.Section_Tyres.QC_1038_CreatingTyresOrder.QC_1039"/>
+            <class name="ATD.Section_Tyres.QC_1038_CreatingTyresOrder.QC_1045"/>
+            <class name="ATD.Section_Tyres.QC_1038_CreatingTyresOrder.QC_1046"/>
+        </classes>
+    </test>
+
+     <test name="QC_1272_TyresMainPage">
+        <classes>
+            <class name="ATD.Section_Tyres.QC_1272_TyresMainPage.QC_1273"/>
+            <class name="ATD.Section_Tyres.QC_1272_TyresMainPage.QC_1275"/>
+            <class name="ATD.Section_Tyres.QC_1272_TyresMainPage.QC_1324"/>
+            <class name="ATD.Section_Tyres.QC_1272_TyresMainPage.QC_1330"/>
+            <class name="ATD.Section_Tyres.QC_1272_TyresMainPage.QC_1336"/>
+            <class name="ATD.Section_Tyres.QC_1272_TyresMainPage.QC_1338"/>
+            <class name="ATD.Section_Tyres.QC_1272_TyresMainPage.QC_1339"/>
+            <class name="ATD.Section_Tyres.QC_1272_TyresMainPage.QC_1341"/>
+            <class name="ATD.Section_Tyres.QC_1272_TyresMainPage.QC_1342"/>
+            <class name="ATD.Section_Tyres.QC_1272_TyresMainPage.QC_1343"/>
+            <class name="ATD.Section_Tyres.QC_1272_TyresMainPage.QC_1344"/>
+            <class name="ATD.Section_Tyres.QC_1272_TyresMainPage.QC_1345"/>
+            <class name="ATD.Section_Tyres.QC_1272_TyresMainPage.QC_1346"/>
+            <class name="ATD.Section_Tyres.QC_1272_TyresMainPage.QC_2563"/>
+            <class name="ATD.Section_Tyres.QC_1272_TyresMainPage.QC_2564"/>
+            <class name="ATD.Section_Tyres.QC_1272_TyresMainPage.QC_2116"/>
+            <class name="ATD.Section_Tyres.QC_1272_TyresMainPage.QC_2624"/>
+            <class name="ATD.Section_Tyres.QC_1272_TyresMainPage.QC_2794"/>
+            <class name="ATD.Section_Tyres.QC_1272_TyresMainPage.QC_3155"/>
+        </classes>
+    </test>
+
+    <test name="QC_2751_TireCatalog">
+        <classes>
+            <class name="ATD.Section_Tyres.QC_2751_TireCatalog.QC_1312"/>
+            <class name="ATD.Section_Tyres.QC_2751_TireCatalog.QC_1313"/>
+            <class name="ATD.Section_Tyres.QC_2751_TireCatalog.QC_1319"/>
+            <class name="ATD.Section_Tyres.QC_2751_TireCatalog.QC_1320"/>
+            <class name="ATD.Section_Tyres.QC_2751_TireCatalog.QC_1328"/>
+            <class name="ATD.Section_Tyres.QC_2751_TireCatalog.QC_1337"/>
+        </classes>
+    </test>
+
+    <test name="QC_1367_TyresProductPage">
+        <classes>
+            <class name="ATD.Section_Tyres.QC_1367_TyresProductPage.QC_1355"/>
+            <class name="ATD.Section_Tyres.QC_1367_TyresProductPage.QC_1357"/>
+            <class name="ATD.Section_Tyres.QC_1367_TyresProductPage.QC_1358"/>
+            <class name="ATD.Section_Tyres.QC_1367_TyresProductPage.QC_1359"/>
+            <class name="ATD.Section_Tyres.QC_1367_TyresProductPage.QC_1361"/>
+            <class name="ATD.Section_Tyres.QC_1367_TyresProductPage.QC_1362"/>
+            <class name="ATD.Section_Tyres.QC_1367_TyresProductPage.QC_1371"/>
+            <class name="ATD.Section_Tyres.QC_1367_TyresProductPage.QC_1372"/>
+            <class name="ATD.Section_Tyres.QC_1367_TyresProductPage.QC_1374"/>
+            <class name="ATD.Section_Tyres.QC_1367_TyresProductPage.QC_1375"/>
+            <class name="ATD.Section_Tyres.QC_1367_TyresProductPage.QC_1376"/>
+            <class name="ATD.Section_Tyres.QC_1367_TyresProductPage.QC_1377"/>
+            <class name="ATD.Section_Tyres.QC_1367_TyresProductPage.QC_1412"/>
+            <class name="ATD.Section_Tyres.QC_1367_TyresProductPage.QC_1413"/>
+            <class name="ATD.Section_Tyres.QC_1367_TyresProductPage.QC_1414"/>
+            <class name="ATD.Section_Tyres.QC_1367_TyresProductPage.QC_1415"/>
+            <class name="ATD.Section_Tyres.QC_1367_TyresProductPage.QC_1416"/>
+        </classes>
+    </test>
+
+    <test name="QC_1431_FilterByBrandOnTyresListing">
+        <classes>
+            <class name="ATD.Section_Tyres.QC_1431_FilterByBrandOnTyresListing.QC_1432"/>
+           <!-- <class name="ATD.Section_Tyres.QC_1431_FilterByBrandOnTyresListing.QC_1433"/>-->
+        </classes>
+    </test>
+
+        <!--<test name="QC_2066_CheckProductsOutOfStock">
+            <classes>
+                <class name="ATD.Section_Tyres.QC_2066_CheckProductsOutOfStock.QC_2077"/>
+                <class name="ATD.Section_Tyres.QC_2066_CheckProductsOutOfStock.QC_2079"/>
+                <class name="ATD.Section_Tyres.QC_2066_CheckProductsOutOfStock.QC_2080"/>
+                <class name="ATD.Section_Tyres.QC_2066_CheckProductsOutOfStock.QC_2081"/>
+            </classes>
+        </test>-->
+
+
+    <test name="QC_2226_CheckingPeriodReturnTiresBlock">
+        <classes>
+            <class name="ATD.Section_Tyres.QC_2226_CheckingPeriodReturnTiresBlock.QC_2227"/>
+            <class name="ATD.Section_Tyres.QC_2226_CheckingPeriodReturnTiresBlock.QC_2230"/>
+            <class name="ATD.Section_Tyres.QC_2226_CheckingPeriodReturnTiresBlock.QC_2231"/>
+        </classes>
+    </test>
+
+</suite>

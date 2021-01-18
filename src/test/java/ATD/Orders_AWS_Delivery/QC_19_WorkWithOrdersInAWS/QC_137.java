@@ -71,7 +71,7 @@ public class QC_137 {
         sellingProductCostInOrder = order_aws.checkVatStatusInOrder("Mit MwSt " + vatForDE + "%")
                 .checkPaymentMethodInOrder("PayPal")
                 .checkThatStatusSafeOrderIsOff()
-                .checkDeliveryCost("6.95")
+                .checkDeliveryCost("0")
                 .checkContoNR("30047")
                 .getSellingProductPriceOrderAWS();
         Assert.assertEquals(productCost , sellingProductCostInOrder);
@@ -85,12 +85,12 @@ public class QC_137 {
         sellingProductCostInOrder = order_aws.checkVatStatusInOrder("Mit MwSt " + vatForDE + "%")
                 .checkPaymentMethodInOrder("PayPal")
                 .checkThatStatusSafeOrderIsOff()
-                .checkDeliveryCost("6.95")
+                .checkDeliveryCost("0")
                 .checkContoNR("30047")
                 .getSellingProductPriceOrderAWS();
         Assert.assertEquals(productCost , sellingProductCostInOrder);
         totalProductCostInOrder = order_aws.getTotalPriceOrderAWS();
-        Assert.assertNotEquals(sellingProductCostInOrder, totalProductCostInOrder);
+        Assert.assertEquals(sellingProductCostInOrder, totalProductCostInOrder);
     }
 
     @AfterMethod

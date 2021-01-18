@@ -254,7 +254,7 @@ public class LKW_Categories_page_Logic extends LKW_Categories_page {
 
     @Step("click on Oil child category .LKW_Categories_page")
     public LKW_Category_page_Logic clickOnOilChildCategory() {
-        visibleChildCategoriesPopUpOfParentCategory().get(0).shouldBe(visible).click();
+        visibleChildCategories().get(3).click();
         return page(LKW_Category_page_Logic.class);
     }
 

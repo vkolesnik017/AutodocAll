@@ -34,9 +34,9 @@ public class QC_672 {
   public void testUseHorizontalSelectorWhenChosenExistingKBA(String route) {
     product_page_logic.openProductPageById(route, "10019946");
     refresh();
-    sleep(3000);
+    sleep(5000);
     product_page_logic.fillNumberKba("0603", "419")
-            .clickKbaBtn()
+            .clickKbaBtnAndClosePopUpKbaError()
             .verifyNameRouteEqualsMakerCarList();
     checkingContainsUrl("ersatzteile/vw/golf/golf-iv-1j1/8799-1-4-16v");
   }

@@ -72,7 +72,7 @@ public class Moto_Category_page {
 
     SelenideElement infoTextOfTopProductBlock() {return $x("//span[@class='more_text'] ");}
 
-    ElementsCollection topProducts() {return $$x("//div[@class='rec_products_block']");}
+    ElementsCollection topProducts() {return $$x("//div[@class='rec_products_block ']");}
 
     SelenideElement basketDropMenu() {
         return $x("//div[@class='cart-items-block ']");

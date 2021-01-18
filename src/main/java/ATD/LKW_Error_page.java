@@ -23,7 +23,7 @@ public class LKW_Error_page {
 
     ElementsCollection childCategoriesFirstLevel() {return $$x("//div[@class='car-parts-categories-modal__level1 js-height-compare js-init-height']/ul[@class='car-parts-categories-modal__link-list']/li/*[self::a or self::span]");}
 
-    ElementsCollection childCategoriesFirstLevelForCheck() {return $$x("//div[@class='car-parts-categories-modal__level1 js-height-compare']/ul[@class='car-parts-categories-modal__link-list']/li");}
+    ElementsCollection childCategoriesFirstLevelForCheck() {return $$x("//div[@class='car-parts-categories-modal__level1 js-height-compare']/ul[@class='car-parts-categories-modal__link-list']/li").filter(visible);}
 
     ElementsCollection visibleChildCategorySecondLevel() {return $$x("//div[contains(@class,'car-parts-categories-modal__level2')]/ul[@class='car-parts-categories-modal__link-list']/li");}
 
@@ -54,5 +54,7 @@ public class LKW_Error_page {
     ElementsCollection visibleChildCategoriesPopUpOfParentCategory() {return $$x("//div[@class='car-parts-categories-modal__wrapper']").filter(visible);}
 
     ElementsCollection popUpOfParentCategories() {return $$x("//div[@class='car-parts-categories-modal__content']");}
+
+    ElementsCollection visibleChildCategories() {return $$x("//ul[@class='car-parts-categories-modal__link-list']//a").filter(visible);}
 
 }

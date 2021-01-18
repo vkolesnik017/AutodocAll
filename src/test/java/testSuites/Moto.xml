@@ -53,10 +53,6 @@
 
     <test name="QC_355_BenefitsBlock">
         <classes>
-            <class name="ATD.MOTO.QC_355_BenefitsBlock.QC_356"/>
-            <class name="ATD.MOTO.QC_355_BenefitsBlock.QC_357"/>
-            <class name="ATD.MOTO.QC_355_BenefitsBlock.QC_358"/>
-            <class name="ATD.MOTO.QC_355_BenefitsBlock.QC_359"/>
             <class name="ATD.MOTO.QC_355_BenefitsBlock.QC_360"/>
         </classes>
     </test>
@@ -90,22 +86,6 @@
             <class name="ATD.MOTO.QC_852_TopBrandsBlock.QC_853"/>
             <class name="ATD.MOTO.QC_852_TopBrandsBlock.QC_854"/>
             <class name="ATD.MOTO.QC_852_TopBrandsBlock.QC_855"/>
-        </classes>
-    </test>
-
-    <test name="QC_336_BreadCrumbsBlock">
-        <classes>
-            <class name="ATD.MOTO.QC_336_BreadCrumbsBlock.QC_337"/>
-            <class name="ATD.MOTO.QC_336_BreadCrumbsBlock.QC_338"/>
-            <class name="ATD.MOTO.QC_336_BreadCrumbsBlock.QC_339"/>
-            <class name="ATD.MOTO.QC_336_BreadCrumbsBlock.QC_340"/>
-            <class name="ATD.MOTO.QC_336_BreadCrumbsBlock.QC_341"/>
-            <class name="ATD.MOTO.QC_336_BreadCrumbsBlock.QC_342"/>
-            <class name="ATD.MOTO.QC_336_BreadCrumbsBlock.QC_343"/>
-            <class name="ATD.MOTO.QC_336_BreadCrumbsBlock.QC_344"/>
-            <class name="ATD.MOTO.QC_336_BreadCrumbsBlock.QC_345"/>
-            <class name="ATD.MOTO.QC_336_BreadCrumbsBlock.QC_346"/>
-            <class name="ATD.MOTO.QC_336_BreadCrumbsBlock.QC_347"/>
         </classes>
     </test>
 
@@ -166,20 +146,6 @@
             <class name="ATD.MOTO.QC_870_TopModelsBlock.QC_872"/>
             <class name="ATD.MOTO.QC_870_TopModelsBlock.QC_873"/>
             <class name="ATD.MOTO.QC_870_TopModelsBlock.QC_874"/>
-        </classes>
-    </test>
-
-    <test name="QC_319_TopProductsBlock">
-        <classes>
-            <class name="ATD.MOTO.QC_319_TopProductsBlock.QC_320"/>
-            <class name="ATD.MOTO.QC_319_TopProductsBlock.QC_321"/>
-            <class name="ATD.MOTO.QC_319_TopProductsBlock.QC_322"/>
-            <class name="ATD.MOTO.QC_319_TopProductsBlock.QC_323"/>
-            <class name="ATD.MOTO.QC_319_TopProductsBlock.QC_324"/>
-            <class name="ATD.MOTO.QC_319_TopProductsBlock.QC_325"/>
-            <class name="ATD.MOTO.QC_319_TopProductsBlock.QC_326"/>
-            <class name="ATD.MOTO.QC_319_TopProductsBlock.QC_327"/>
-            <class name="ATD.MOTO.QC_319_TopProductsBlock.QC_328"/>
         </classes>
     </test>
 
