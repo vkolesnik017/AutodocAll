@@ -128,7 +128,7 @@ public class Search_page_Logic extends Search_page {
 
     @Step("Clicking details. Search_page")
     public Product_page_Logic detailsClick() {
-        detalisBtn().click();
+        detalisBtn().scrollTo().click();
         return page(Product_page_Logic.class);
     }
 
