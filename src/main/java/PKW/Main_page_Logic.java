@@ -9,7 +9,8 @@ import java.sql.SQLException;
 
 import static PKW.CommonMethods.*;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.back;
+import static com.codeborne.selenide.Selenide.page;
 
 public class Main_page_Logic extends Main_page {
 
@@ -360,6 +361,12 @@ public class Main_page_Logic extends Main_page {
     public Datenschutz_static_page_Logic clickFooterDatenchutzLink() {
         footerDateschutzLink().click();
         return page(Datenschutz_static_page_Logic.class);
+    }
+
+    @Step("check Count Of added  Product In Basket At Header. Main_page")
+    public Main_page_Logic checkCountOfProductInBasketAtHeader(int expectedCount) {
+        Assert.assertEquals(Integer.parseInt(basketCounterInHeader().getText()), expectedCount);
+        return this;
     }
 }
 
