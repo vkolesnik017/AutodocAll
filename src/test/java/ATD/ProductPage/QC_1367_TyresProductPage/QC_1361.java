@@ -1,4 +1,4 @@
-package ATD.Section_Tyres.QC_1367_TyresProductPage;
+package ATD.ProductPage.QC_1367_TyresProductPage;
 
 
 import ATD.Tyre_item_page_Logic;
@@ -17,7 +17,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1357 {
+public class QC_1361 {
 
     @BeforeClass
     void setUp() {
@@ -32,10 +32,10 @@ public class QC_1357 {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Romaniuta")
-    @Description(value = "Test Checks Delivery Block Presence On Tyres Product Page")
-    public void testDeliveryBlockPresenceOnTyresProductPage(String route) {
+    @Description(value = "Test Checks Reifenlabel Block Presence On Tyres Product Page")
+    public void testReifenlabelBlockPresenceOnTyresProductPage(String route) {
         openPage(route);
-        new Tyre_item_page_Logic().checkDeliveryBlockVisibility();
+        new Tyre_item_page_Logic().checkReifenlabelBlockVisibility();
     }
 
     @AfterMethod

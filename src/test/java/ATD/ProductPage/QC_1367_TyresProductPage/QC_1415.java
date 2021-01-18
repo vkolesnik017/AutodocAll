@@ -1,6 +1,7 @@
-package ATD.Section_Tyres.QC_1367_TyresProductPage;
+package ATD.ProductPage.QC_1367_TyresProductPage;
 
 
+import ATD.Product_page_Logic;
 import ATD.Tyre_item_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
@@ -15,9 +16,12 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1377 {
+public class QC_1415 {
+
+    private Product_page_Logic productPageLogic = new Product_page_Logic();
 
     @BeforeClass
     void setUp() {
@@ -32,10 +36,13 @@ public class QC_1377 {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Romaniuta")
-    @Description(value = "Test Checks Transition To Delivery Page From Tyres Main Page")
-    public void testGoToDeliveryPageFromTyresProductPage(String route) throws SQLException {
+    @Description(value = "Test Checks Add To Basket From Topseller Block")
+    public void testAddToBasketFromTopsellerBlock(String route) {
         openPage(route);
-        new Tyre_item_page_Logic().clickDeliveryLinkAndCheckRedirect();
+        new Tyre_item_page_Logic().checkAddToBasketFromTopsellerBlock();
+        productPageLogic.checksPresentProductInCartPopup()
+                .cartClick()
+                .productPrice().shouldBe(visible);
     }
 
     @AfterMethod

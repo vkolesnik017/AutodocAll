@@ -1,4 +1,5 @@
-package ATD.Section_Tyres.QC_1367_TyresProductPage;
+package ATD.ProductPage.QC_1367_TyresProductPage;
+
 
 import ATD.Tyre_item_page_Logic;
 import Common.SetUp;
@@ -12,12 +13,11 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.clickOfBuyBtnForAllPages;
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1362 {
+public class QC_1371 {
 
     @BeforeClass
     void setUp() {
@@ -26,18 +26,16 @@ public class QC_1362 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyre_item13");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyre_item");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Romaniuta")
-    @Description(value = "Test Checks Add Tyres To Basket From Product Page")
-    public void testAddTyresToBasketFromProductPage(String route) {
+    @Description(value = "Test Checks Tyres Photo Block Presence On Product Page")
+    public void testTyresPhotoBlockPresenceOnProductPage(String route) {
         openPage(route);
-        clickOfBuyBtnForAllPages();
-        new Tyre_item_page_Logic().checkAddingTyresToBasket()
-                                     .checkOfIdAddedProductInBasket("14738438");
+        new Tyre_item_page_Logic().checkTyresPhotoBlockVisibility();
     }
 
     @AfterMethod

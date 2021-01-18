@@ -1,4 +1,4 @@
-package ATD.Section_Tyres.QC_1367_TyresProductPage;
+package ATD.ProductPage.QC_1367_TyresProductPage;
 
 
 import ATD.Tyre_item_page_Logic;

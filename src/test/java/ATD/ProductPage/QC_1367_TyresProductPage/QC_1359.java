@@ -1,8 +1,8 @@
-package ATD.Section_Tyres.QC_1367_TyresProductPage;
+package ATD.ProductPage.QC_1367_TyresProductPage;
 
 
-import ATD.Tyre_item_page_Logic;
 import Common.SetUp;
+import ATD.Tyre_item_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -17,7 +17,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1375 {
+public class QC_1359 {
 
     @BeforeClass
     void setUp() {
@@ -32,10 +32,10 @@ public class QC_1375 {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Romaniuta")
-    @Description(value = "Test Checks Product Price Presence On Tyres Product Page")
-    public void testProductPricePresenceOnTyresProductPage(String route) {
+    @Description(value = "Test Checks Topseller Block Presence On Tyres Product Page")
+    public void testTopsellerBlockPresenceOnTyresProductPage(String route) {
         openPage(route);
-        new Tyre_item_page_Logic().checkProductPriceVisibility();
+        new Tyre_item_page_Logic().checkTopsellerBlockVisibility();
     }
 
     @AfterMethod

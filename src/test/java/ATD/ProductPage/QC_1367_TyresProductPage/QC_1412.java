@@ -1,7 +1,6 @@
-package ATD.Section_Tyres.QC_1367_TyresProductPage;
+package ATD.ProductPage.QC_1367_TyresProductPage;
 
 
-import ATD.Product_page_Logic;
 import ATD.Tyre_item_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
@@ -16,12 +15,9 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1415 {
-
-    private Product_page_Logic productPageLogic = new Product_page_Logic();
+public class QC_1412 {
 
     @BeforeClass
     void setUp() {
@@ -36,13 +32,10 @@ public class QC_1415 {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Romaniuta")
-    @Description(value = "Test Checks Add To Basket From Topseller Block")
-    public void testAddToBasketFromTopsellerBlock(String route) {
+    @Description(value = "Test Checks Payment Methods Block Presence On Tyres Product Page")
+    public void testPaymentMethodsBlockPresenceOnTyresProductPage(String route) {
         openPage(route);
-        new Tyre_item_page_Logic().checkAddToBasketFromTopsellerBlock();
-        productPageLogic.checksPresentProductInCartPopup()
-                .cartClick()
-                .productPrice().shouldBe(visible);
+        new Tyre_item_page_Logic().checkPaymentMethodsBlockVisibility();
     }
 
     @AfterMethod

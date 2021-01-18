@@ -1,5 +1,4 @@
-package ATD.Section_Tyres.QC_1367_TyresProductPage;
-
+package ATD.ProductPage.QC_1367_TyresProductPage;
 
 import ATD.Tyre_item_page_Logic;
 import Common.SetUp;
@@ -10,14 +9,12 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import java.sql.SQLException;
-
-import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.Selenide.open;
 
-public class QC_1414 {
+public class QC_2230 {
 
     @BeforeClass
     void setUp() {
@@ -31,11 +28,11 @@ public class QC_1414 {
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "Romaniuta")
-    @Description(value = "Test Checks FAQ Block Presence On Tyres Product Page")
-    public void testFaqBlockPresenceOnTyresProductPage(String route) {
-        openPage(route);
-        new Tyre_item_page_Logic().checkFAQblockVisibility();
+    @Owner(value = "Sergey-QA")
+    @Description(value = "Test checks presence text about period product return")
+    public void testChecksPresenceTextAboutPeriodProductReturn(String route) {
+        open(route);
+        new Tyre_item_page_Logic().checkingPresenceTextAboutPeriodProductReturn();
     }
 
     @AfterMethod

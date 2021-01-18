@@ -1,5 +1,4 @@
-package ATD.Section_Tyres.QC_1367_TyresProductPage;
-
+package ATD.ProductPage.QC_1367_TyresProductPage;
 
 import ATD.Tyre_item_page_Logic;
 import Common.SetUp;
@@ -10,14 +9,12 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import java.sql.SQLException;
-
-import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.Selenide.open;
 
-public class QC_1374 {
+public class QC_2231 {
 
     @BeforeClass
     void setUp() {
@@ -31,15 +28,16 @@ public class QC_1374 {
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "Romaniuta")
-    @Description(value = "Test Checks Rating Block Presence On Tyres Product Page")
-    public void testRatingBlockPresenceOnTyresProductPage(String route) {
-        openPage(route);
-        new Tyre_item_page_Logic().checkRatingBlockVisibility();
+    @Owner(value = "Sergey-QA")
+    @Description(value = "Test checks color change on hover text from block with return period")
+    public void testChecksColorChangeOnHoverTextFromBlockReturnPeriod(String route) {
+        open(route);
+        new Tyre_item_page_Logic().checkingColorChangeOnHoverTextFromBlockReturnPeriod();
     }
 
     @AfterMethod
     public void close() {
         closeWebDriver();
     }
+
 }
