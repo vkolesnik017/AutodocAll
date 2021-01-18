@@ -1,11 +1,11 @@
-package ATD.Section_Tyres.QC_2066_CheckProductsOutOfStock;
+package ATD.GrayButton.QC_1014_OutOfStockProducts;
 
 import Common.SetUp;
 import ATD.Tyre_form_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
-import mailinator.WebMail;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -13,11 +13,11 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static Common.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
-public class QC_2081 {
+public class QC_2077 {
 
-    private String email = "QC_2081_autotest@mailinator.com";
+    private String email = "QC_2077_autotest@mailinator.com";
 
     @BeforeClass
     void setUp() {
@@ -33,13 +33,15 @@ public class QC_2081 {
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test сhecking for a pop-up of success in sending mail for feedback ")
-    public void testCheckingConfirmationLetterForFeedback(String route) {
+    public void testCheckingForPopUpOfSuccessInSendingMailForFeedback(String route) {
         open(route);
 
         new Tyre_form_page_Logic().displayingCustomerFeedbackPopUp()
-                .displayingOfPopUPAboutSuccessfulSendingLetter(email);
-        new WebMail().openMail(email)
-                .checkLetterInfoText(1, "moments ago", "Wir bearbeiten");
+        .displayingOfPopUPAboutSuccessfulSendingLetter(email);
     }
 
+    @AfterMethod
+    public void close() {
+        closeWebDriver();
+    }
 }

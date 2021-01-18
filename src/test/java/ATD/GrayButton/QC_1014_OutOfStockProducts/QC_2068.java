@@ -1,4 +1,4 @@
-package ATD.Section_Tyres.QC_2066_CheckProductsOutOfStock;
+package ATD.GrayButton.QC_1014_OutOfStockProducts;
 
 import Common.SetUp;
 import ATD.Tyre_form_page_Logic;
@@ -15,9 +15,7 @@ import java.sql.SQLException;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.*;
 
-public class QC_2079 {
-    private String invalidEmail = "QC_2079_autotest@";
-
+public class QC_2068 {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -25,18 +23,17 @@ public class QC_2079 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "main", "tyre_form5,tyres_season13,tyres_brand8,tyres_group_season_brand2,tyres_size9,tyres_dimension9,tyres_season_size13,tyres_season_dimension6,tyres_brand_size3,tyres_brand_dimension6");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "main", "tyre_form5,tyres_season13,tyres_brand8,tyres_group_season_brand2,tyres_size9,tyres_season_size13,tyres_brand_size3,tyres_dimension11,tyres_season_dimension7,tyres_brand_dimension8");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test Checking for a pop-up error about invalid email when trying to send mail for feedback")
-    public void testCheckingForPopUpErrorAboutInvalidEmail(String route) {
+    @Description(value = "Test checks Availability of pop-ups for notification of the appearance of a product in stock when clicking on a link on products not in stock ")
+    public void testChecksAvailabilityOfPopUpOfAppearanceOfOutOfStockProduct(String route) {
         open(route);
 
-        new Tyre_form_page_Logic().displayingCustomerFeedbackPopUp()
-                .displayingOfPopUPAboutInvalidEmail(invalidEmail);
+        new Tyre_form_page_Logic().displayingCustomerFeedbackPopUp();
 
     }
 

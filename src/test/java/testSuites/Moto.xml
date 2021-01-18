@@ -67,14 +67,6 @@
         </classes>
     </test>
 
-    <test name="QC_373_MainIssueBlockAtTecDocListing">
-        <classes>
-            <class name="ATD.MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_380"/>
-            <class name="ATD.MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_381"/>
-            <class name="ATD.MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_383"/>
-        </classes>
-    </test>
-
     <test name="QC_852_TopBrandsBlock">
         <classes>
             <class name="ATD.MOTO.QC_852_TopBrandsBlock.QC_853"/>

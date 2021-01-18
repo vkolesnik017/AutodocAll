@@ -80,10 +80,10 @@
 
         <!--<test name="QC_2066_CheckProductsOutOfStock">
             <classes>
-                <class name="ATD.Section_Tyres.QC_2066_CheckProductsOutOfStock.QC_2077"/>
-                <class name="ATD.Section_Tyres.QC_2066_CheckProductsOutOfStock.QC_2079"/>
-                <class name="ATD.Section_Tyres.QC_2066_CheckProductsOutOfStock.QC_2080"/>
-                <class name="ATD.Section_Tyres.QC_2066_CheckProductsOutOfStock.QC_2081"/>
+                <class name="ATD.GrayButton.QC_1014_OutOfStockProducts.QC_2077"/>
+                <class name="ATD.GrayButton.QC_1014_OutOfStockProducts.QC_2079"/>
+                <class name="ATD.GrayButton.QC_1014_OutOfStockProducts.QC_2080"/>
+                <class name="ATD.GrayButton.QC_1014_OutOfStockProducts.QC_2081"/>
             </classes>
         </test>-->
 

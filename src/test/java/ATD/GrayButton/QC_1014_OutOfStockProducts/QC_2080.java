@@ -1,4 +1,4 @@
-package ATD.Section_Tyres.QC_2066_CheckProductsOutOfStock;
+package ATD.GrayButton.QC_1014_OutOfStockProducts;
 
 import Common.SetUp;
 import ATD.Tyre_form_page_Logic;
