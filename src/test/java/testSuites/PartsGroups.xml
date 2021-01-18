@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="PartsGroups" parallel="tests" data-provider-thread-count="6">
+
+    <listeners>
+        <listener class-name="Common.ProjectListener"/>
+    </listeners>
+
+    <test name="QC_2711_ProductGroups">
+        <classes>
+            <class name="ATD.PartsGroups.QC_2711_ProductGroups.QC_1584"/>
+            <class name="ATD.PartsGroups.QC_2711_ProductGroups.QC_1586"/>
+            <class name="ATD.PartsGroups.QC_2711_ProductGroups.QC_1598"/>
+            <class name="ATD.PartsGroups.QC_2711_ProductGroups.QC_1592"/>
+            <class name="ATD.PartsGroups.QC_2711_ProductGroups.QC_1596"/>
+            <class name="ATD.PartsGroups.QC_2711_ProductGroups.QC_1590"/>
+            <class name="ATD.PartsGroups.QC_2711_ProductGroups.QC_1594"/>
+        </classes>
+    </test>
+
+</suite>
