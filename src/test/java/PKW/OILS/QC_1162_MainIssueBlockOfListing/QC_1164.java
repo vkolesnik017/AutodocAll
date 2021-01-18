@@ -1,6 +1,7 @@
 package PKW.OILS.QC_1162_MainIssueBlockOfListing;
 
 import PKW.Cart_page_Logic;
+import PKW.Main_page_Logic;
 import PKW.Motoroil_Maker_page_Logic;
 import PKW.Motoroil_viscosity_page_Logic;
 import io.qameta.allure.Description;
@@ -64,9 +65,9 @@ public class QC_1164 {
         String volumeOfAddedProduct = makerPage.getVolumeOfAddedProduct(0);
         makerPage.clickOnBtnAddToBasket(0)
                 .displayOfBasketDropMenu()
-                .displayEngineOilViscosity()
-                .displayEngineOilViscosity()
-                .clickOnBasketIconInHeader();
+                .displayEngineOilViscosity();
+        new Main_page_Logic().checkCountOfProductInBasketAtHeader(1);
+        makerPage.clickOnBasketIconInHeader();
         String idOfAddedProductInBasket = cartPage.presenceOfAddedProductList().getIdAddedProduct();
         Assert.assertEquals(idOfAddedProductInBasket, idOfAddedProduct);
         Assert.assertEquals(cartPage.getVolumeAddedProduct(), volumeOfAddedProduct);

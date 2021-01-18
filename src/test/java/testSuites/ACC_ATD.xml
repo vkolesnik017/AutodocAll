@@ -83,30 +83,19 @@
             <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2043"/>
             <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2047"/>
             <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2119"/>
+            <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2117"/>
+            <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2118"/>
+            <!-- <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2120"/ inactive>-->
+            <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2045"/>
+            <class name="ATD.ACC.QC_1849_ListingChemistry.QC_2046"/>
+            <!--<class name="ATD.ACC.QC_1849_ListingChemistry.QC_2048"/ inactive>-->
         </classes>
-    </test>
-
-    <test name="QC_2044_BlockCategoriesInSidebarOnChemistryListing">
-        <classes>
-            <class name="ATD.ACC.QC_2044_BlockCategoriesInSidebarOnChemistryListing.QC_2045"/>
-            <class name="ATD.ACC.QC_2044_BlockCategoriesInSidebarOnChemistryListing.QC_2046"/>
-<!--            <class name="ATD.ACC.QC_2044_BlockCategoriesInSidebarOnChemistryListing.QC_2048"/ inactive>-->
-        </classes>
-
     </test>
 
     <test name="QC_2051_FilterBlockByGenericOnChemistryListing">
         <classes>
             <class name="ATD.ACC.QC_2051_FilterBlockByGenericOnChemistryListing.QC_2058"/>
             <class name="ATD.ACC.QC_2051_FilterBlockByGenericOnChemistryListing.QC_2060"/>
-        </classes>
-    </test>
-
-    <test name="QC_2115_BlockWithProductsOnChemistryListing">
-        <classes>
-            <class name="ATD.ACC.QC_2115_BlockWithProductsOnChemistryListing.QC_2117"/>
-            <class name="ATD.ACC.QC_2115_BlockWithProductsOnChemistryListing.QC_2118"/>
-<!--            <class name="ATD.ACC.QC_2115_BlockWithProductsOnChemistryListing.QC_2120"/ inactive>-->
         </classes>
     </test>
 

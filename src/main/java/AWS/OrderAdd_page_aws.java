@@ -219,6 +219,8 @@ public class OrderAdd_page_aws {
         if (preLoader().isDisplayed()) {
             preLoader().waitUntil(attribute("style", "display: none;"), 60000);
         }
+        sleep(5000);
+        new Order_aws().checkOrderHasTestPhone();
         return page(Order_aws.class);
     }
 

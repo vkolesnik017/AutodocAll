@@ -48,5 +48,24 @@
         </classes>
     </test>
 
+    <test name="QC_2320_StaticPages">
+        <classes>
+            <class name="ATD.General_Common.QC_2320_StaticPages.QC_216"/>
+            <class name="ATD.General_Common.QC_2320_StaticPages.QC_234"/>
+            <class name="ATD.General_Common.QC_2320_StaticPages.QC_243"/>
+            <class name="ATD.General_Common.QC_2320_StaticPages.QC_717"/>
+            <class name="ATD.General_Common.QC_2320_StaticPages.QC_1091"/>
+            <class name="ATD.General_Common.QC_2320_StaticPages.QC_1175"/>
+            <class name="ATD.General_Common.QC_2320_StaticPages.QC_1465"/>
+            <class name="ATD.General_Common.QC_2320_StaticPages.QC_1529"/>
+            <class name="ATD.General_Common.QC_2320_StaticPages.QC_1552"/>
+            <class name="ATD.General_Common.QC_2320_StaticPages.QC_1559"/>
+            <class name="ATD.General_Common.QC_2320_StaticPages.QC_1547"/>
+            <class name="ATD.General_Common.QC_2320_StaticPages.QC_2038"/>
+            <class name="ATD.General_Common.QC_2320_StaticPages.QC_2570"/>
+            <class name="ATD.General_Common.QC_2320_StaticPages.QC_2414"/>
+        </classes>
+    </test>
+
 
 </suite>

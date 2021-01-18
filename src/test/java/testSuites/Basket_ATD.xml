@@ -62,9 +62,14 @@
             <class name="ATD.Basket.QC_1932_RouteAddress_ATD.QC_1935"/>
             <class name="ATD.Basket.QC_1932_RouteAddress_ATD.QC_1936"/>
             <class name="ATD.Basket.QC_1932_RouteAddress_ATD.QC_1937"/>
-            <class name="ATD.Basket.QC_1932_RouteAddress_ATD.QC_1938"/>
-            <class name="ATD.Basket.QC_1932_RouteAddress_ATD.QC_1939"/>
-            <class name="ATD.Basket.QC_1932_RouteAddress_ATD.QC_1940"/>
+        </classes>
+    </test>
+
+    <test name="QC_3090_BanningWordPackstationInStreetFieldAt_DE_Shop">
+        <classes>
+            <class name="ATD.Basket.QC_3090_BanningWordPackstationInStreetFieldAt_DE_Shop.QC_1938"/>
+            <class name="ATD.Basket.QC_3090_BanningWordPackstationInStreetFieldAt_DE_Shop.QC_1939"/>
+            <class name="ATD.Basket.QC_3090_BanningWordPackstationInStreetFieldAt_DE_Shop.QC_1940"/>
         </classes>
     </test>
 
@@ -141,7 +146,6 @@
             <class name="ATD.Basket.QC_2915_OptionalFieldFiscalCodeForRomaniaItalyPortugal.QC_2930"/>
         </classes>
     </test>
-
 
 
 </suite>
