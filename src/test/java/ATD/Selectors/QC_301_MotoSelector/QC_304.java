@@ -1,4 +1,4 @@
-package ATD.MOTO.QC_301_MotoSelector;
+package ATD.Selectors.QC_301_MotoSelector;
 
 import ATD.Moto_Catalog_model_page_Logic;
 import Common.SetUp;

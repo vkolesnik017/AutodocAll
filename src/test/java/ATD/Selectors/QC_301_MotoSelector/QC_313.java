@@ -1,5 +1,6 @@
-package ATD.MOTO.QC_301_MotoSelector;
+package ATD.Selectors.QC_301_MotoSelector;
 
+import Common.DataBase;
 import ATD.Moto_Product_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
@@ -12,13 +13,11 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
+import static ATD.CommonMethods.checkingContainsUrl;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.*;
 
-public class QC_312 {
-
-    private Moto_Product_page_Logic productPage = new Moto_Product_page_Logic();
-
+public class QC_313 {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -33,13 +32,15 @@ public class QC_312 {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks filling the selector by compatible motorcycle on Product page")
-    public void testChecksFillingSelectorByCompatibleMoto(String route) {
+    @Description(value = "Test checks filling selector by incompatible motorcycle on product page")
+    public void testChecksFillingSelectorByIncompatibleMoto(String route) throws SQLException {
         open(route);
 
-        productPage.selectMotoInHorizontalSelector("4081", "12111", "104173");
-        String brandOfMoto = productPage.getBrandAndModelOfMoto();
-        productPage.presenceOfMotoBrandAtInfoMessage(brandOfMoto);
+        new Moto_Product_page_Logic()
+                .selectMotoInHorizontalSelector("4057", "13475", "109218")
+                .visibilityOfErrorMessage();
+        checkingContainsUrl(new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "moto_main", "moto_catalog3"));
+
     }
 
     @AfterMethod

@@ -1,4 +1,4 @@
-package ATD.MOTO.QC_301_MotoSelector;
+package ATD.Selectors.QC_301_MotoSelector;
 
 import ATD.Moto_Category_car_list_page_Logic;
 import Common.SetUp;
