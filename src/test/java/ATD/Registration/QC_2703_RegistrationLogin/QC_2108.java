@@ -1,4 +1,4 @@
-package ATD.Registration;
+package ATD.Registration.QC_2703_RegistrationLogin;
 
 import ATD.Main_page_Logic;
 import Common.DataBase;

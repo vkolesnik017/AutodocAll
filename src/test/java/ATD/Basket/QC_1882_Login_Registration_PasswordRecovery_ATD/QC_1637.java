@@ -1,4 +1,4 @@
-package ATD.Registration;
+package ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD;
 
 import ATD.Main_page_Logic;
 import Common.SetUp;
