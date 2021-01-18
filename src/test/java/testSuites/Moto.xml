@@ -131,15 +131,6 @@
         </classes>
     </test>
 
-    <test name="QC_625_AllParentsAndChildsCategoriesBlocks">
-        <classes>
-            <class name="ATD.MOTO.QC_625_AllParentsAndChildsCategoriesBlocks.QC_626"/>
-            <class name="ATD.MOTO.QC_625_AllParentsAndChildsCategoriesBlocks.QC_627"/>
-            <class name="ATD.MOTO.QC_625_AllParentsAndChildsCategoriesBlocks.QC_628"/>
-            <class name="ATD.MOTO.QC_625_AllParentsAndChildsCategoriesBlocks.QC_629"/>
-            <class name="ATD.MOTO.QC_625_AllParentsAndChildsCategoriesBlocks.QC_630"/>
-        </classes>
-    </test>
 
      <test name="QC_870_PresenceOfTopModels">
         <classes>
@@ -189,10 +180,5 @@
         </classes>
     </test>
 
-    <test name="QC_622_LinkingBlockToModelCatalog">
-        <classes>
-            <class name="ATD.MOTO.QC_622_LinkingBlockToModelCatalog.QC_623"/>
-        </classes>
-    </test>
 
 </suite>

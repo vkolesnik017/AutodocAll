@@ -6,36 +6,27 @@
         <listener class-name="Common.ProjectListener"/>
     </listeners>
 
-    <test name="QC_1447_AbsenceOf4xx3xxResponsesInCatalogCategories">
-        <classes>
-            <class name="ATD.Catalog.QC_1447_AbsenceOf4xx3xxResponsesInCatalogCategories.QC_1448"/>
-            <class name="ATD.Catalog.QC_1447_AbsenceOf4xx3xxResponsesInCatalogCategories.QC_1449"/>
-        </classes>
-    </test>
 
-    <test name="QC_604_DisplayAllOvercategoriesOnTecdocCatalogPage">
-        <classes>
-            <class name="ATD.Catalog.QC_604_DisplayAllOvercategoriesOnTecdocCatalogPage.QC_605"/>
-            <class name="ATD.Catalog.QC_604_DisplayAllOvercategoriesOnTecdocCatalogPage.QC_609"/>
-        </classes>
-    </test>
-
-    <test name="QC_613_DisplayAllUndercategoriesTecdocCatalog">
-        <classes>
-            <class name="ATD.Catalog.QC_613_DisplayAllUndercategoriesTecdocCatalog.QC_615"/>
-        </classes>
-    </test>
-
-    <test name="QC_646_DisplayAllCategoriesInCatalogDropdownMenu">
-        <classes>
-<!--            <class name="ATD.Catalog.QC_646_DisplayAllCategoriesInCatalogDropdownMenu.QC_647"/>-->
-        </classes>
-    </test>
 
     <test name="QC_2626_TecdocCatalog_SidebarCatalog_TopCategories">
         <classes>
             <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_149"/>
             <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_365"/>
+<!--            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_571"/> inactive-->
+<!--            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_572"/> inactive-->
+<!--            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_573"/> inactive-->
+<!--            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_574"/> inactive-->
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_575"/>
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_605"/>
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_609"/>
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_615"/>
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_623"/>
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_626"/>
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_627"/>
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_628"/>
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_629"/>
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_630"/>
+<!--            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_647"/>-->
             <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_1508"/>
             <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_134"/>
             <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_22"/>
@@ -43,8 +34,12 @@
             <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_20"/>
             <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_23"/>
             <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_116"/>
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_117"/>
             <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_178"/>
             <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_654"/>
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_1448"/>
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_1449"/>
+            <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_2304"/>
             <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_2632"/>
             <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_2637"/>
             <class name="ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories.QC_2580"/>

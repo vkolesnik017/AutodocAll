@@ -1,4 +1,4 @@
-package ATD.MOTO.QC_622_LinkingBlockToModelCatalog;
+package ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories;
 
 import Common.DataBase;
 import ATD.Moto_makers_page_Logic;

@@ -1,6 +1,6 @@
-package ATD.Search.QC_570_SearchByCatalog;
+package ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories;
 
-import ATD.Categories_page_Logic;
+import ATD.Maker_car_list_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,9 +16,9 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_573 {
+public class QC_572 {
 
-  private Categories_page_Logic categoriesPageLogic = new Categories_page_Logic();
+  private Maker_car_list_page_Logic makerCarListPage = new Maker_car_list_page_Logic();
 
   @BeforeClass
   void setUp() {
@@ -27,17 +27,19 @@ public class QC_573 {
 
   @DataProvider(name = "route")
   Object[] test1() throws SQLException {
-    return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "categories");
+    return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "maker_car_list6");
   }
 
   @Test(dataProvider = "route")
   @Flaky
   @Owner(value = "Evlentiev")
-  @Description(value = "No deleted categories in tooltips to search by catalog")
-  public void testNoDeletedCategoriesInTooltipsToSearchByCatalog(String route) {
+  @Description(value = "Goes to subcategory from catalog with car")
+  public void testGoesToSubCategoryFromCatalogWithCar(String route) {
     openPage(route);
-    categoriesPageLogic.inputTextInSearchBarByCatalog("kraftstofffilter")
-            .checkThatNoTooltipInSearchByCatalog("kraftstofffilter-gehause");
+    String valueForSearch = "Bremsbeläge";
+    makerCarListPage.inputTextInSearchBarByCatalog(valueForSearch)
+            .clickTooltipInSearchByCatalogByExactText(valueForSearch)
+            .verifyNameRouteEqualsCategoryCarList();
   }
   @AfterMethod
   public void close() {

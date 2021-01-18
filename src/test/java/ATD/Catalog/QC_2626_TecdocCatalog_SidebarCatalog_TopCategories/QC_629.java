@@ -1,4 +1,4 @@
-package ATD.MOTO.QC_625_AllParentsAndChildsCategoriesBlocks;
+package ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories;
 
 import ATD.*;
 import Common.DataBase;

@@ -1,4 +1,4 @@
-package ATD.Catalog.QC_604_DisplayAllOvercategoriesOnTecdocCatalogPage;
+package ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories;
 
 
 import ATD.Categories_page_Logic;

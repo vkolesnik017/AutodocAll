@@ -1,4 +1,4 @@
-package ATD.Search.QC_570_SearchByCatalog;
+package ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories;
 
 import ATD.Maker_car_list_page_Logic;
 import Common.SetUp;

@@ -1,6 +1,5 @@
-package ATD.MOTO.QC_625_AllParentsAndChildsCategoriesBlocks;
+package ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories;
 
-import ATD.Moto_Catalog_model_page_Logic;
 import ATD.Moto_Catalog_page_Logic;
 import ATD.Moto_Categories_page_Logic;
 import Common.SetUp;
@@ -18,59 +17,45 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_627 {
+public class QC_626 {
 
-  @BeforeClass
+    @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
     }
+
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
         return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_categories");
+
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test checks presence of TecDoc catalog and his structure")
-    public void testChecksPresenceOfTecDocCatalog(String route) {
+    public void testChecksPresenceOfTecDocCatalog(String route)  {
         openPage(route);
 
         new Moto_Categories_page_Logic()
-                .checkParentCategoriesOfTecDocCatalog();
+        .presenceOfTecDocCatalog();
     }
 
-    @DataProvider(name = "routesCatalogModel", parallel = true)
-    Object[] dataProviderCatalogModel() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog_model2");
+    @DataProvider(name = "routesCatalog", parallel = true)
+    Object[] dataProviderCatalog() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog2,moto_catalog_model2");
 
     }
 
-    @Test(dataProvider = "routesCatalogModel")
+    @Test(dataProvider = "routesCatalog")
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test checks presence of TecDoc catalog and his structure")
-    public void testChecksPresenceOfTecDocCatalogModel(String route) {
-        openPage(route);
-
-        new Moto_Catalog_model_page_Logic()
-                .checkParentCategoriesOfTecDocCatalog();
-    }
-
-    @DataProvider(name = "routesCatalogMoto", parallel = true)
-    Object[] dataProviderCatalogMoto() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog2");
-    }
-
-    @Test(dataProvider = "routesCatalogMoto")
-    @Flaky
-    @Owner(value = "Kolesnik")
-    @Description(value = "Test checks presence of TecDoc catalog and his structure")
-    public void testChecksPresenceOfTecDocCatalogModMoto(String route) {
+    public void testChecksPresenceOfTecDocCatalogRoute(String route)  {
         openPage(route);
 
         new Moto_Catalog_page_Logic()
-                .checkParentCategoriesOfTecDocCatalog();
+                .presenceOfTecDocCatalog();
     }
 
     @AfterMethod

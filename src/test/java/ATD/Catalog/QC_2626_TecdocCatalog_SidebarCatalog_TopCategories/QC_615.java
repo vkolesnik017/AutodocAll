@@ -1,4 +1,4 @@
-package ATD.Catalog.QC_613_DisplayAllUndercategoriesTecdocCatalog;
+package ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories;
 
 import ATD.FaqHash_page_Logic;
 import Common.SetUp;

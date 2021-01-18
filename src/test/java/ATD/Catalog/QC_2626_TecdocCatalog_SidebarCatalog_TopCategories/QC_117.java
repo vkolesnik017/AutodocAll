@@ -1,4 +1,4 @@
-package ATD.LKW_trucks.QC_624_ParentAndChildCategoriesBlockInTecDocCatalog;
+package ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories;
 
 import ATD.LKW_Categories_page_Logic;
 import ATD.LKW_Category_car_list_page_Logic;

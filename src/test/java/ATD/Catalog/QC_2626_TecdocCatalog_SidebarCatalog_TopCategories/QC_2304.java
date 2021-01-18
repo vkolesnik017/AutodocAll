@@ -1,4 +1,4 @@
-package ATD.LKW_trucks.QC_2306_OilsAndLiquidsCategories;
+package ATD.Catalog.QC_2626_TecdocCatalog_SidebarCatalog_TopCategories;
 
 import ATD.*;
 import Common.DataBase;
