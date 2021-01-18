@@ -1,6 +1,7 @@
-package ATD.MOTO.QC_373_MainIssueBlockAtTecDocListing;
+package ATD.Listings.QC_445_ListingTecDoc;
 
-import ATD.Moto_Category_car_list_page_Logic;
+import ATD.Cart_page_Logic;
+import ATD.LKW_Category_car_list_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,7 +17,9 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_375 {
+public class QC_96 {
+    private LKW_Category_car_list_page_Logic tecDokListPage = new LKW_Category_car_list_page_Logic();
+
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -24,20 +27,18 @@ public class QC_375 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list2");  //,moto_category_car_list_model2
-
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list10");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks applicability of products in TecDoc listing")
-    public void testChecksApplicabilityOfProductsInTecDocListing(String route) {
+    @Description(value = "Test checks add product to basket from TecDoc listing")
+    public void testChecksAddProductToBasketFromTecDocListing(String route) {
         openPage(route);
-
-        String brandOfMoto = new Moto_Category_car_list_page_Logic().getMotoFromSelector();
-        new Moto_Category_car_list_page_Logic()
-                .checkingApplicabilityOfProductForSelectedMoto(brandOfMoto);
+        String idOfAddedProduct = tecDokListPage.getIdOfProductFromTecDocListing();
+        tecDokListPage.addProductToBasket();
+        new Cart_page_Logic().checkOfIdAddedProductInBasket(idOfAddedProduct);
     }
 
     @AfterMethod

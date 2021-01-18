@@ -1,4 +1,4 @@
-package ATD.MOTO.QC_373_MainIssueBlockAtTecDocListing;
+package ATD.Listings.QC_445_ListingTecDoc;
 
 import ATD.Cart_page_Logic;
 import ATD.Moto_Category_car_list_page_Logic;

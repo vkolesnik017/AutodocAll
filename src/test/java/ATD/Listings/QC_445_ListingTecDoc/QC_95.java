@@ -1,4 +1,4 @@
-package ATD.LKW_trucks.QC_2306_OilsAndLiquidsCategories;
+package ATD.Listings.QC_445_ListingTecDoc;
 
 import ATD.LKW_Category_car_list_page_Logic;
 import Common.SetUp;
@@ -16,7 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2305 {
+public class QC_95 {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -24,16 +24,16 @@ public class QC_2305 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list31,lkw_search10");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list10");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks TecDoc and search Oil listing")
-    public void testChecksTecDocAndSearchOilListing(String route) {
+    @Description(value = "Test checks applicability of products in TecDoc Listing")
+    public void testChecksApplicabilityOfProductsInTecDocListing(String route) {
         openPage(route);
-        new LKW_Category_car_list_page_Logic().presenceOfExpectedBrandsInBlock("100570,100290").checkingApplicabilityOfProductForSelectedTruck();
+        new LKW_Category_car_list_page_Logic().visibilityOfTecDocListingBlock().checkingApplicabilityOfProductForSelectedTruck();
     }
 
     @AfterMethod

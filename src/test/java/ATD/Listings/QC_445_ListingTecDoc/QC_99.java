@@ -1,4 +1,4 @@
-package ATD.LKW_trucks.QC_94_TecDoc_Listing;
+package ATD.Listings.QC_445_ListingTecDoc;
 
 import ATD.LKW_Category_car_list_page_Logic;
 import Common.SetUp;

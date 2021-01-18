@@ -1,6 +1,6 @@
-package ATD.LKW_trucks.QC_94_TecDoc_Listing;
+package ATD.Listings.QC_445_ListingTecDoc;
 
-import ATD.LKW_Category_car_list_page_Logic;
+import ATD.Moto_Category_car_list_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,7 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_101 {
+public class QC_384 {
 
     @BeforeClass
     void setUp() {
@@ -25,16 +25,20 @@ public class QC_101 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list10");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list5");
+
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks pagination on TecDoc listing ")
-    public void testChecksPaginationInTecDocListing(String route) {
+    @Description(value = "Test checks headline of child categories block")
+    public void testChecksPaginationOfTecDocListing(String route) {
         openPage(route);
-        new LKW_Category_car_list_page_Logic().checkAmountOfPagesInTecDocListing();
+
+        new Moto_Category_car_list_page_Logic()
+                .checkCountOfPagesAtTecDocListing()
+                .checkTecDocListingOnPages();
     }
 
     @AfterMethod

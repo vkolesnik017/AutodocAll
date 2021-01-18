@@ -38,14 +38,9 @@
 
     <test name="QC_94_TecDoc_Listing">
         <classes>
-            <class name="ATD.LKW_trucks.QC_94_TecDoc_Listing.QC_95"/>
-            <class name="ATD.LKW_trucks.QC_94_TecDoc_Listing.QC_96"/>
-            <class name="ATD.LKW_trucks.QC_94_TecDoc_Listing.QC_99"/>
-            <class name="ATD.LKW_trucks.QC_94_TecDoc_Listing.QC_100"/>
-            <class name="ATD.LKW_trucks.QC_94_TecDoc_Listing.QC_101"/>
-            <class name="ATD.LKW_trucks.QC_94_TecDoc_Listing.QC_102"/>
-            <class name="ATD.LKW_trucks.QC_94_TecDoc_Listing.QC_103"/>
-            <class name="ATD.LKW_trucks.QC_94_TecDoc_Listing.QC_104"/>
+           <!-- <class name="ATD.LKW_trucks.QC_94_TecDoc_Listing.QC_102"/> - inactive-->
+            <!--<class name="ATD.LKW_trucks.QC_94_TecDoc_Listing.QC_103"/> - inactive-->
+            <!--<class name="ATD.LKW_trucks.QC_94_TecDoc_Listing.QC_104"/> - inactive-->
         </classes>
     </test>
 
@@ -104,7 +99,6 @@
         <classes>
             <class name="ATD.LKW_trucks.QC_2306_OilsAndLiquidsCategories.QC_2303"/>
             <class name="ATD.LKW_trucks.QC_2306_OilsAndLiquidsCategories.QC_2304"/>
-            <class name="ATD.LKW_trucks.QC_2306_OilsAndLiquidsCategories.QC_2305"/>
             <class name="ATD.LKW_trucks.QC_2306_OilsAndLiquidsCategories.QC_2307"/>
         </classes>
     </test>

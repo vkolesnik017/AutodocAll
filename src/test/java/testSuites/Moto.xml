@@ -69,15 +69,9 @@
 
     <test name="QC_373_MainIssueBlockAtTecDocListing">
         <classes>
-            <class name="ATD.MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_374"/>
-            <class name="ATD.MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_375"/>
-            <class name="ATD.MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_376"/>
-            <class name="ATD.MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_379"/>
             <class name="ATD.MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_380"/>
             <class name="ATD.MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_381"/>
-            <class name="ATD.MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_382"/>
             <class name="ATD.MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_383"/>
-            <class name="ATD.MOTO.QC_373_MainIssueBlockAtTecDocListing.QC_384"/>
         </classes>
     </test>
 

@@ -1,7 +1,6 @@
-package ATD.LKW_trucks.QC_94_TecDoc_Listing;
+package ATD.Listings.QC_445_ListingTecDoc;
 
-import ATD.Cart_page_Logic;
-import ATD.LKW_Category_car_list_page_Logic;
+import ATD.Moto_Category_car_list_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -17,8 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_96 {
-    private LKW_Category_car_list_page_Logic tecDokListPage = new LKW_Category_car_list_page_Logic();
+public class QC_374 {
 
     @BeforeClass
     void setUp() {
@@ -27,18 +25,19 @@ public class QC_96 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list10");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list_model2,moto_category_car_list2");
+
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks add product to basket from TecDoc listing")
-    public void testChecksAddProductToBasketFromTecDocListing(String route) {
+    @Description(value = "Test checks presence of main issue block at TecDoc listing")
+    public void testChecksPresenceOfMainIssueBlock(String route)  {
         openPage(route);
-        String idOfAddedProduct = tecDokListPage.getIdOfProductFromTecDocListing();
-        tecDokListPage.addProductToBasket();
-        new Cart_page_Logic().checkOfIdAddedProductInBasket(idOfAddedProduct);
+
+        new Moto_Category_car_list_page_Logic().presenceOfTecDocListingBlock();
+
     }
 
     @AfterMethod
