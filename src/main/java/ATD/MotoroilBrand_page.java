@@ -15,6 +15,6 @@ public class MotoroilBrand_page {
     }
 
     SelenideElement brandNameInListing() {
-        return $x("//*[@class='js-product-item ovVisLi item_in_stock '][1]//*[@class='name']//a");
+        return $x("//*[@class='js-product-item ovVisLi item_in_stock  '][1]//*[@class='name']//a");
     }
 }
