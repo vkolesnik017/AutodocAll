@@ -59,7 +59,6 @@ public class QC_2304 {
                 .clickOnOilChildCategory();
         checkingContainsUrl(db.getRouteByRouteName("DE", "lkw_category_car_list32"));
     }
-
     @DataProvider(name = "routesCarList", parallel = true)
     Object[] dataProviderCarList() throws SQLException {
         return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_maker_car_list9");
@@ -75,6 +74,7 @@ public class QC_2304 {
                 .clickOnOilParentCategory()
                 .clickOnOilChildCategoryWithOutMotor();
     }
+
     @DataProvider(name = "routesErrorPage", parallel = true)
     Object[] dataProviderErrorPage() throws SQLException {
         return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "404");

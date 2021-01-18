@@ -402,7 +402,7 @@ public class LKW_maker_car_list_Logic extends LKW_maker_car_list {
 
     @Step("click on Oil child category .LKW_maker_car_list")
     public LKW_Category_car_list_page_Logic clickOnOilChildCategory() {
-        visibleChildCategoriesPopUpOfParentCategory().get(0).shouldBe(visible).click();
+        visibleChildCategories().get(3).click();
         return page(LKW_Category_car_list_page_Logic.class);
     }
 

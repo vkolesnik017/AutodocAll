@@ -1,6 +1,9 @@
 package ATD.LKW_trucks.QC_624_ParentAndChildCategoriesBlockInTecDocCatalog;
 
-import ATD.*;
+import ATD.LKW_Categories_page_Logic;
+import ATD.LKW_Category_car_list_page_Logic;
+import ATD.LKW_Error_page_Logic;
+import ATD.LKW_maker_car_list_Logic;
 import Common.DataBase;
 import Common.SetUp;
 import io.qameta.allure.Description;
@@ -39,7 +42,7 @@ public class QC_117 {
         new LKW_Categories_page_Logic()
                 .presenceOfParentCategoriesBlock(30)
                 .checkParentCategoriesOfTecDocCatalog()
-                .transitionToChildCategory(1, 1);
+                .transitionToChildCategory(1, 0);
         checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "lkw_category3"));
     }
 
@@ -57,7 +60,7 @@ public class QC_117 {
         new LKW_Error_page_Logic()
                 .presenceOfParentCategoriesBlock(30)
                 .checkParentCategoriesOfTecDocCatalog()
-                .transitionToChildCategory(1, 1);
+                .transitionToChildCategory(1, 0);
         checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "lkw_category3"));
     }
 
@@ -71,7 +74,7 @@ public class QC_117 {
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test checks of all parent and child categories block in TecDoc and model catalogs")
-    public void testChecksParentAndChildCategoriesBlockInTecDocCatalogMakerCarList(String route) throws SQLException {
+    public void testChecksParentAndChildCategoriesBlockInTecDocCatalogMakerCarList(String route) {
         openPage(route);
         new LKW_maker_car_list_Logic()
                 .presenceOfParentCategoriesBlock(0)
@@ -94,7 +97,7 @@ public class QC_117 {
         new LKW_Category_car_list_page_Logic()
                 .presenceOfParentCategoriesBlock(0)
                 .checkParentCategoriesOfTecDocCatalog()
-                .transitionToChildCategory(1, 1);
+                .transitionToChildCategory(1, 0);
         checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "lkw_category_car_list27"));
     }
 

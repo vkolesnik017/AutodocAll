@@ -613,13 +613,13 @@ public class LKW_main_page_Logic extends LKW_main_page {
     public LKW_main_page_Logic presenceOfOilChildCategoryPopUp() {
         listOfParentsDropMainTruckCatalog().get(0).shouldBe(visible).hover();
         titleOfSecondLevelMainDropMenuTruckCatalog().get(0).shouldHave(exactText(listOfParentsDropMainTruckCatalog().get(0).getText()));
-        listOfCategoriesSecondLevelDropMainTruckCatalog().shouldHaveSize(1);
+        listOfCategoriesSecondLevelDropMainTruckCatalog().shouldHaveSize(5);
         return this;
     }
 
     @Step("click on Oil child category .LKW_main_page")
     public LKW_Category_page_Logic clickOnOilChildCategory() {
-        listOfCategoriesSecondLevelDropMainTruckCatalog().get(0).shouldBe(visible).click();
+        listOfCategoriesSecondLevelDropMainTruckCatalog().get(3).shouldBe(visible).click();
         return page(LKW_Category_page_Logic.class);
     }
 
