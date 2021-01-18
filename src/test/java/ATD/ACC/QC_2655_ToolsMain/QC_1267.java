@@ -1,10 +1,12 @@
-package ATD.ACC.QC_1254_MainTools;
+package ATD.ACC.QC_2655_ToolsMain;
 
 import ATD.Index_instruments_page_Logic;
+import ATD.Listing_instruments_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -16,8 +18,10 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
+public class QC_1267 {
 
-public class QC_1334 {
+    private String nameCategory, titleCategory;
+    private Index_instruments_page_Logic index_instruments_page_logic = new Index_instruments_page_Logic();
 
     @BeforeClass
     void setUp() {
@@ -32,10 +36,13 @@ public class QC_1334 {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test checks presence Features block ")
-    public void testCheckPresenceFeaturesBlock(String route) {
+    @Description(value = "Test checking in Logical Union presence catalog and transition on listing page when clicking on a category")
+    public void testCheckingInLogicalUnionPresenceCatalogAndTransitionWithCategory(String route) {
         openPage(route);
-        new Index_instruments_page_Logic().checkingPresenceFeaturesBlock();
+        nameCategory = index_instruments_page_logic.getNameFirstCategoryInLogicalUnionAfterHover();
+        index_instruments_page_logic.clickOnFirstCategoryInLogicalUnion();
+        titleCategory = new Listing_instruments_page_Logic().getTitleNameCategory();
+        Assert.assertEquals(nameCategory, titleCategory);
     }
 
     @AfterMethod

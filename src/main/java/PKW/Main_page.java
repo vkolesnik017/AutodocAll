@@ -353,7 +353,10 @@ public class Main_page {
     SelenideElement footerVersandLink() {
         return $(byXpath("//*[@class='footer_menu_list1']/a"));
     }
+
     SelenideElement footerDateschutzLink() {
         return $(byXpath("//*[@class='footer_menu_list2']/a"));
     }
+
+    SelenideElement basketCounterInHeader() {return $x("//span[@class='header__cart-count-qty count']");}
 }

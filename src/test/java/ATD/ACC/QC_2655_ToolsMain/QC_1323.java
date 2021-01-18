@@ -1,12 +1,10 @@
-package ATD.ACC.QC_1260_MainProductCatalogOnMainTools;
+package ATD.ACC.QC_2655_ToolsMain;
 
 import ATD.Index_instruments_page_Logic;
-import ATD.Listing_instruments_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
-import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -18,10 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1274 {
-
-    private String nameCategory, titleNameCategory;
-    private Index_instruments_page_Logic index_instruments_page_logic = new Index_instruments_page_Logic();
+public class QC_1323 {
 
     @BeforeClass
     void setUp() {
@@ -36,14 +31,12 @@ public class QC_1274 {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey-QA")
-    @Description(value = "Test checks presence separate category and transition on listing page after click on it")
-    public void testCheckPresenceSeparateCategoryAndTransitionOnListingPage(String route) {
+    @Description(value = "Test checking presence title top-10 products block .")
+    public void testCheckPresenceTitleTop10Block(String route) {
         openPage(route);
-        nameCategory = index_instruments_page_logic.getNameFirstSeparateCategoryMainCatalog();
-        index_instruments_page_logic.clickFirstSeparateCategoryMainCatalog();
-        titleNameCategory = new Listing_instruments_page_Logic().getTitleNameCategory();
-        Assert.assertEquals(nameCategory, titleNameCategory);
+        new Index_instruments_page_Logic().checkingPresenceTitleTop10Block();
     }
+
 
     @AfterMethod
     private void close() {

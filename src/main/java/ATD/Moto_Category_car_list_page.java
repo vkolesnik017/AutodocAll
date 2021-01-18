@@ -113,7 +113,7 @@ public class Moto_Category_car_list_page {
     }
 
     SelenideElement btnShowReplacement(String artOfProduct) {
-        return $x("//span[contains(text(),'" + artOfProduct + "')]/ancestor::li[@class='ovVisLi item_not_available']//div[contains(@class,'show_alternative__btn')]");
+        return $x("//span[contains(text(),'" + artOfProduct + "')]/ancestor::li[@class='ovVisLi item_not_available ']//div[contains(@class,'show_alternative__btn')]");
     }
 
     SelenideElement analogBlockMessage() {

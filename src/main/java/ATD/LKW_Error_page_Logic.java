@@ -122,7 +122,7 @@ public class LKW_Error_page_Logic extends LKW_Error_page {
     public LKW_Category_page_Logic transitionToChildCategory(int parentCategoryPosition, int childCategoryPosition) {
         parentCategories().get(parentCategoryPosition).click();
         childCategoriesPopUpOfParentCategory().get(parentCategoryPosition).shouldBe(visible);
-        childCategoriesFirstLevelForCheck().get(childCategoryPosition).shouldBe(visible).click();
+        childCategoriesFirstLevelForCheck().get(childCategoryPosition).click();
         return page(LKW_Category_page_Logic.class);
     }
 
@@ -143,7 +143,7 @@ public class LKW_Error_page_Logic extends LKW_Error_page {
 
     @Step("click on Oil child category .LKW_Error_page")
     public LKW_Category_car_list_page_Logic clickOnOilChildCategory() {
-        visibleChildCategoriesPopUpOfParentCategory().get(0).shouldBe(visible).click();
+        visibleChildCategories().get(3).shouldBe(visible).click();
         return page(LKW_Category_car_list_page_Logic.class);
     }
 }
