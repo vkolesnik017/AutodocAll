@@ -1,4 +1,4 @@
-package ATD.PrivateRoom.QC_1861_BonusesInOrder_PR;
+package ATD.PrivateProperties.QC_1862_BonusesInOrderAndBonusTabInPR;
 
 import ATD.*;
 import AWS.Order_aws;
@@ -15,9 +15,9 @@ import static ATD.CommonMethods.*;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1858 {
+public class QC_1859 {
 
-    private String mail = "QC_1858_autotest@mailinator.com", orderNumber;
+    private String mail = "QC_1859_autotest@mailinator.com", orderNumber;
 
     @BeforeClass
     void setUp() throws SQLException {
@@ -37,8 +37,7 @@ public class QC_1858 {
         close();
     }
 
-
-    @DataProvider(name = "route")
+    @DataProvider(name = "route", parallel = false)
     Object[] dataProviderAllShops() {
         return new SetUp("ATD").setUpShop("prod", "AT,BG,BE,CZ,DE,DK,EE,ES,FI,FR,EN,GR,HU,IT,LD,LT,LV,NL,NO,PL,PT,RO,SE,SI,SK");
     }
@@ -52,7 +51,7 @@ public class QC_1858 {
         String shop = getCurrentShopFromJSVarInHTML();
         new Main_page_Logic().loginAndTransitionToProfilePlusPage(mail)
                 .goToMyOrdersPage()
-                .checkTranslationBonusLabels(shop)
+                .checkTranslationBonusTooltip(shop)
                 .logOutClick();
     }
 

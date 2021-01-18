@@ -1,4 +1,4 @@
-package ATD.PrivateRoom.QC_914_BonusTabFunctionalityInPR;
+package ATD.PrivateProperties.QC_1862_BonusesInOrderAndBonusTabInPR;
 
 import ATD.Main_page_Logic;
 import Common.SetUp;
@@ -16,7 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_919 {
+public class QC_916 {
 
     private String mail = "QC_914_bonusTestATD@mailinator.com";
 
@@ -27,24 +27,17 @@ public class QC_919 {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() {
-        return new SetUp("ATD").setUpShop("prod", "DE");
+        return new SetUp("ATD").setUpShop("prod", "BG");
     }
 
-    @Test(dataProvider = "route", enabled = false)
+    @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks for elements of the Bonus tab")
-    public void testBonusTabElementPR(String route) throws SQLException {
+    @Description(value = "Test checks the display of the bonus tab. Currency is not equal to shop")
+    public void testBonusTabDisplayCurrencyIsNotEqualToShop(String route) throws SQLException {
         openPage(route);
         new Main_page_Logic().loginAndTransitionToProfilePlusPage(mail)
-                .goToBonusSystemPage()
-                .checkForTextInBlockTopTitle("Mein AUTODOC")
-                .checkPresenceClientID()
-                .checkPresenceHeaderBlockAndElementInside()
-                .checkPresenceBonusLabel()
-                .checkPresenceBonusesCombustionDate()
-                .checkPresenceBonusTable()
-                .checkPresenceBonusProgramBlock();
+                .checkAbsenceBonusLabel();
     }
 
     @AfterMethod
