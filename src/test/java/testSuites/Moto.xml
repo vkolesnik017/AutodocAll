@@ -6,13 +6,6 @@
         <listener class-name="Common.ProjectListener"/>
     </listeners>
 
-    <test name="QC_875_LinkingBannerBlockToTopOnMainPage">
-        <classes>
-            <class name="ATD.MOTO.QC_875_LinkingBannerBlockToTopOnMainPage.QC_877"/>
-            <class name="ATD.MOTO.QC_875_LinkingBannerBlockToTopOnMainPage.QC_878"/>
-        </classes>
-    </test>
-
     <test name="QC_880_BlockOfDeliveryAndPaymentMethods">
         <classes>
             <class name="ATD.MOTO.QC_880_BlockOfDeliveryAndPaymentMethods.QC_887"/>

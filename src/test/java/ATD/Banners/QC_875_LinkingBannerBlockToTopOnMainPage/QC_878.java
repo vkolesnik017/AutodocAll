@@ -1,4 +1,4 @@
-package ATD.MOTO.QC_875_LinkingBannerBlockToTopOnMainPage;
+package ATD.Banners.QC_875_LinkingBannerBlockToTopOnMainPage;
 
 import ATD.Moto_main_page_Logic;
 import Common.SetUp;
