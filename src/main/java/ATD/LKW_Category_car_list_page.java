@@ -325,11 +325,11 @@ public class LKW_Category_car_list_page {
 
     SelenideElement listOfProductTableView() {return $x("//div[@class='sub_catalog_grid']");}
 
-    ElementsCollection labelTitleDangerousProducts() {return $$x("//div[@class='rec_products_block']//span[@class='dangerous-listing__show-more']");}
+    ElementsCollection labelTitleDangerousProducts() {return $$x("//div[@class='rec_products_block ']//span[@class='dangerous-listing__show-more']");}
 
-    ElementsCollection labelIconDangerousProducts() {return $$x("//div[@class='rec_products_block']//div[@class='dangerous-listing__icon dangerous-listing__icon-attention'][1]").filter(visible);}
+    ElementsCollection labelIconDangerousProducts() {return $$x("//div[@class='rec_products_block ']//div[@class='dangerous-listing__icon dangerous-listing__icon-attention'][1]").filter(visible);}
 
-    ElementsCollection dangerousProducts() {return $$x("//span[@class='dangerous-listing__show-more']/ancestor::div[@class='rec_products_block']");}
+    ElementsCollection dangerousProducts() {return $$x("//span[@class='dangerous-listing__show-more']/ancestor::div[@class='rec_products_block ']");}
 
     ElementsCollection signalWordOfDangerousProduct() {return $$x("//div[contains(@class,'dangerous-listing__title')]");}
 
