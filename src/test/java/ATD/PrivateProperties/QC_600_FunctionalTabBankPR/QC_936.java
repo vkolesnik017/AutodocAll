@@ -1,4 +1,4 @@
-package ATD.PrivateRoom.QC_600_FunctionalTabBankPR;
+package ATD.PrivateProperties.QC_600_FunctionalTabBankPR;
 
 import ATD.Main_page_Logic;
 import Common.SetUp;
@@ -16,9 +16,9 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_606 {
+public class QC_936 {
 
-    private String mail = "QC_606_autotest@mailinator.com";
+    private String mail = "QC_936_autotest@mailinator.com";
 
     @BeforeClass
     void setUp() {
@@ -33,21 +33,18 @@ public class QC_606 {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks the filling of the form in the Bank tab")
-    public void testFillingOutFormInBankTab(String route) throws SQLException {
+    @Description(value = "Test checks for elements of the Bank tab")
+    public void testBankTabElementPR(String route) throws SQLException {
         openPage(route);
         new Main_page_Logic().loginAndTransitionToProfilePlusPage(mail)
                 .goToProfileBankPage()
-                .clickBtnAddNewBankInfo()
-                .fillingFieldReceiver("Autotest")
-                .fillingFieldIBAN("RO18 BACX 0000 0015 3328 2000")
-                .clickSaveFormBtn()
-                .checkPresenceAndClosePopUpUpdate()
-                .checkPresenceCurrentBankBlock()
-                .clickDeleteBankDataBtn()
-                .clickSaveFormBtn()
-                .checkPresenceAndClosePopUpUpdate()
-                .checkForMossingText();
+                .checkForTextInBlockTopTitle("Mein AUTODOC")
+                .checkPresenceClientID()
+                .checkPresenceHeaderBlockAndElementInside()
+                .checkNamePageAndPresenceIcon("Bankverbindung")
+                .checkPresenceBankInfoForm()
+                .checkPresenceFieldsIbBankInfoForm()
+                .checkPresenceBtnSaveAndCancelChange();
     }
 
     @AfterMethod

@@ -1,4 +1,4 @@
-package ATD.PrivateRoom.QC_600_FunctionalTabBankPR;
+package ATD.PrivateProperties.QC_600_FunctionalTabBankPR;
 
 import ATD.*;
 import AWS.Customer_search_aws;

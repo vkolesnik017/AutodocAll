@@ -27,17 +27,7 @@
         </classes>
     </test>
 
-    <test name="QC_600_FunctionalTabBankPR">
-        <classes>
-            <class name="ATD.PrivateRoom.QC_600_FunctionalTabBankPR.QC_601"/>
-            <class name="ATD.PrivateRoom.QC_600_FunctionalTabBankPR.QC_603"/>
-            <class name="ATD.PrivateRoom.QC_600_FunctionalTabBankPR.QC_606"/>
-            <class name="ATD.PrivateRoom.QC_600_FunctionalTabBankPR.QC_608"/>
-            <class name="ATD.PrivateRoom.QC_600_FunctionalTabBankPR.QC_936"/>
-        </classes>
-    </test>
-
-    <test name="QC_635_FunctionalOfTheSettingsTabInPR">
+       <test name="QC_635_FunctionalOfTheSettingsTabInPR">
         <classes>
             <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_636"/>
             <class name="ATD.PrivateRoom.QC_635_FunctionalOfTheSettingsTabInPR.QC_638"/>

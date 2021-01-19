@@ -47,5 +47,14 @@
         </classes>
     </test>
 
+    <test name="QC_600_FunctionalTabBankPR">
+        <classes>
+            <class name="ATD.PrivateProperties.QC_600_FunctionalTabBankPR.QC_601"/>
+            <class name="ATD.PrivateProperties.QC_600_FunctionalTabBankPR.QC_603"/>
+            <class name="ATD.PrivateProperties.QC_600_FunctionalTabBankPR.QC_606"/>
+            <class name="ATD.PrivateProperties.QC_600_FunctionalTabBankPR.QC_608"/>
+            <class name="ATD.PrivateProperties.QC_600_FunctionalTabBankPR.QC_936"/>
+        </classes>
+    </test>
 
 </suite>

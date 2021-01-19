@@ -1,4 +1,4 @@
-package ATD.PrivateRoom.QC_600_FunctionalTabBankPR;
+package ATD.PrivateProperties.QC_600_FunctionalTabBankPR;
 
 import ATD.Main_page_Logic;
 import ATD.Profile_bank_page_Logic;
