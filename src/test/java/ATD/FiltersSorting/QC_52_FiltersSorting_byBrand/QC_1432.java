@@ -1,4 +1,4 @@
-package ATD.Section_Tyres.QC_1431_FilterByBrandOnTyresListing;
+package ATD.FiltersSorting.QC_52_FiltersSorting_byBrand;
 
 
 import Common.SetUp;

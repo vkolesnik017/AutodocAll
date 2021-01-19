@@ -49,11 +49,4 @@
         </classes>
     </test>
 
-    <test name="QC_1431_FilterByBrandOnTyresListing">
-        <classes>
-            <class name="ATD.Section_Tyres.QC_1431_FilterByBrandOnTyresListing.QC_1432"/>
-           <!-- <class name="ATD.Section_Tyres.QC_1431_FilterByBrandOnTyresListing.QC_1433"/>-->
-        </classes>
-    </test>
-
 </suite>

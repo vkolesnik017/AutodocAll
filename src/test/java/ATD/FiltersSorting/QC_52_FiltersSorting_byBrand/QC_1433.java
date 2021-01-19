@@ -1,4 +1,4 @@
-package ATD.Section_Tyres.QC_1431_FilterByBrandOnTyresListing;
+package ATD.FiltersSorting.QC_52_FiltersSorting_byBrand;
 
 
 import ATD.TyresListing_page_Logic;
@@ -33,7 +33,9 @@ public class QC_1433 {
 
     }
 
-    @Test(dataProvider = "routes")
+    //TODO отключен из за дефекта SEO-2379
+
+    @Test(dataProvider = "routes", enabled = false)
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test Checks Brand Filter Applying On Tyres Listing")
@@ -42,7 +44,7 @@ public class QC_1433 {
         new TyresListing_page_Logic().checkBrandFilterApplying();
     }
 
-    @Test
+    @Test(enabled = false)
     @Flaky
     @Owner(value = "Romaniuta")
     @Description(value = "Test Checks Brand Filter Applying On Tyres Listing Moto Route")
