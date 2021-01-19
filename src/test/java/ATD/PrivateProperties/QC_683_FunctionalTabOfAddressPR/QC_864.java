@@ -1,4 +1,4 @@
-package ATD.PrivateRoom.QC_683_FunctionalTabOfAddressPR;
+package ATD.PrivateProperties.QC_683_FunctionalTabOfAddressPR;
 
 import ATD.Main_page_Logic;
 import Common.SetUp;

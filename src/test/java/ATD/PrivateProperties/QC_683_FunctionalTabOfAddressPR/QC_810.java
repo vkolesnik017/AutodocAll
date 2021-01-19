@@ -1,4 +1,4 @@
-package ATD.PrivateRoom.QC_683_FunctionalTabOfAddressPR;
+package ATD.PrivateProperties.QC_683_FunctionalTabOfAddressPR;
 
 import ATD.Main_page_Logic;
 import Common.SetUp;
@@ -14,9 +14,9 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_805 {
+public class QC_810 {
 
-    private String mail = "QC_805_autotest@mailinator.com";
+    private String mail = "QC_810_autotest@mailinator.com";
 
     @BeforeClass
     void setUp() {
@@ -31,15 +31,19 @@ public class QC_805 {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks deleted delivery address")
-    public void testDeleteDeliveryAddress(String route) {
+    @Description(value = "Test: Set as primary delivery address")
+    public void testSetAsPrimaryDeliveryAddress(String route) {
         openPage(route);
         new Main_page_Logic().loginAndTransitionToProfilePlusPage(mail)
                 .goToProfileAddressesPage()
                 .checkPresenceBillingAddressBlock()
                 .checkPresenceDeliveryAddressBlock()
+                .clickDeliveryEditButton()
+                .checkPresenceBtnUnderFormEditAddress()
+                .clickUseBtnAsMainAddress()
+                .checkPresenceAndClosePopUpUpdate()
+                .checkPresenceMainAddressLabel()
                 .deleteDeliveryAddress()
-                .checkAbsenceAddressDelivery()
                 .clickBtnAddDeliveryAddress()
                 .fillingFieldsAddress("Autotest", "Autotest", "Autotest", "Autotest",
                         "Autotest", "1111", "Autotest", "200+002")

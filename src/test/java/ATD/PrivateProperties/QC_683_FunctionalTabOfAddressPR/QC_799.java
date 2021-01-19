@@ -1,4 +1,4 @@
-package ATD.PrivateRoom.QC_683_FunctionalTabOfAddressPR;
+package ATD.PrivateProperties.QC_683_FunctionalTabOfAddressPR;
 
 import ATD.Main_page_Logic;
 import Common.SetUp;
@@ -14,9 +14,9 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_928 {
+public class QC_799 {
 
-    private String mail = "QC_928_autotest@mailinator.com";
+    private String mail = "QC_799_autotest@mailinator.com";
 
     @BeforeClass
     void setUp() {
@@ -31,17 +31,20 @@ public class QC_928 {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks address tab elements in Private Room")
-    public void testCheckAddressTabElementsInPR(String route) {
+    @Description(value = "Test checks delete billing address")
+    public void testDeleteBillingAddress(String route) {
         openPage(route);
         new Main_page_Logic().loginAndTransitionToProfilePlusPage(mail)
                 .goToProfileAddressesPage()
-                .checkForTextInBlockTopTitle("Mein AUTODOC")
-                .checkPresenceClientID()
-                .checkPresenceHeaderBlockAndElementInside()
-                .checkNamePageAndPresenceIcon("Mein Adressbuch")
-                .checkBillingAddressBlockAndItsElement()
-                .checkDeliveryAddressBlockAndItsElement();
+                .checkPresenceBillingAddressBlock()
+                .checkPresenceDeliveryAddressBlock()
+                .deleteBillingAddress()
+                .checkAbsenceBillingAddress()
+                .clickBtnAddBillingAddress()
+                .fillingFieldsAddress("Autotest", "Autotest", "Autotest", "Autotest",
+                        "Autotest", "1111", "Autotest", "200+002")
+                .clickSaveBtn()
+                .checkPresenceAndClosePopUpUpdate();
     }
 
     @AfterMethod

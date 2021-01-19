@@ -113,4 +113,18 @@
         </classes>
     </test>
 
+    <test name="QC_683_FunctionalTabOfAddressPR">
+        <classes>
+            <class name="ATD.PrivateProperties.QC_683_FunctionalTabOfAddressPR.QC_673"/>
+            <class name="ATD.PrivateProperties.QC_683_FunctionalTabOfAddressPR.QC_792"/>
+            <class name="ATD.PrivateProperties.QC_683_FunctionalTabOfAddressPR.QC_799"/>
+            <class name="ATD.PrivateProperties.QC_683_FunctionalTabOfAddressPR.QC_801"/>
+            <class name="ATD.PrivateProperties.QC_683_FunctionalTabOfAddressPR.QC_805"/>
+            <class name="ATD.PrivateProperties.QC_683_FunctionalTabOfAddressPR.QC_807"/>
+            <class name="ATD.PrivateProperties.QC_683_FunctionalTabOfAddressPR.QC_810"/>
+            <class name="ATD.PrivateProperties.QC_683_FunctionalTabOfAddressPR.QC_864"/>
+            <class name="ATD.PrivateProperties.QC_683_FunctionalTabOfAddressPR.QC_928"/>
+        </classes>
+    </test>
+
 </suite>

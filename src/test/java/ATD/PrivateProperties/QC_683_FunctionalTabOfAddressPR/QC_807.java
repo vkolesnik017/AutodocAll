@@ -1,4 +1,4 @@
-package ATD.PrivateRoom.QC_683_FunctionalTabOfAddressPR;
+package ATD.PrivateProperties.QC_683_FunctionalTabOfAddressPR;
 
 import ATD.Main_page_Logic;
 import ATD.Profile_addresses_page_Logic;
@@ -15,9 +15,9 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_673 {
+public class QC_807 {
 
-    private String mail = "QC_673_autotest@mailinator.com";
+    private String mail = "QC_807_autotest@mailinator.com";
     private int numberUserAddress;
 
     @BeforeClass
@@ -33,23 +33,21 @@ public class QC_673 {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks the add of a new billing address")
-    public void testAddOfNewBillingAddress(String route) {
+    @Description(value = "Test checks the addition of a new delivery address")
+    public void testAdditionOfNewDeliveryAddress(String route) {
         openPage(route);
         numberUserAddress = new Main_page_Logic().loginAndTransitionToProfilePlusPage(mail)
                 .goToProfileAddressesPage()
-                .checkPresenceBillingAddressBlock()
-                .checkPresenceDeliveryAddressBlock()
-                .getNumberOfUserBillingAddress();
-        new Profile_addresses_page_Logic().clickBtnAddBillingAddress()
+                .getNumberOfUserDeliveryAddress();
+        new Profile_addresses_page_Logic().clickBtnAddDeliveryAddress()
                 .checkThatRadioBtnHerrIsActive()
                 .fillingFieldsAddress("Autotest", "Autotest", "Autotest", "Autotest",
                         "Autotest", "1111", "Autotest", "200+002")
                 .chooseCountryInAddressForm("Deutschland")
                 .clickSaveBtn()
                 .checkPresenceAndClosePopUpUpdate()
-                .checkThatNumberOfBillingAddressHasIncreased(numberUserAddress)
-                .deleteBillingAddress();
+                .checkThatNumberOfDeliveryAddressHasIncreased(numberUserAddress)
+                .deleteDeliveryAddress();
     }
 
     @AfterMethod

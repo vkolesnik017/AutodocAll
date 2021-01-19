@@ -1,6 +1,7 @@
-package ATD.PrivateRoom.QC_683_FunctionalTabOfAddressPR;
+package ATD.PrivateProperties.QC_683_FunctionalTabOfAddressPR;
 
 import ATD.Main_page_Logic;
+import ATD.Profile_addresses_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -14,9 +15,10 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_810 {
+public class QC_673 {
 
-    private String mail = "QC_810_autotest@mailinator.com";
+    private String mail = "QC_673_autotest@mailinator.com";
+    private int numberUserAddress;
 
     @BeforeClass
     void setUp() {
@@ -31,24 +33,23 @@ public class QC_810 {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test: Set as primary delivery address")
-    public void testSetAsPrimaryDeliveryAddress(String route) {
+    @Description(value = "Test checks the add of a new billing address")
+    public void testAddOfNewBillingAddress(String route) {
         openPage(route);
-        new Main_page_Logic().loginAndTransitionToProfilePlusPage(mail)
+        numberUserAddress = new Main_page_Logic().loginAndTransitionToProfilePlusPage(mail)
                 .goToProfileAddressesPage()
                 .checkPresenceBillingAddressBlock()
                 .checkPresenceDeliveryAddressBlock()
-                .clickDeliveryEditButton()
-                .checkPresenceBtnUnderFormEditAddress()
-                .clickUseBtnAsMainAddress()
-                .checkPresenceAndClosePopUpUpdate()
-                .checkPresenceMainAddressLabel()
-                .deleteDeliveryAddress()
-                .clickBtnAddDeliveryAddress()
+                .getNumberOfUserBillingAddress();
+        new Profile_addresses_page_Logic().clickBtnAddBillingAddress()
+                .checkThatRadioBtnHerrIsActive()
                 .fillingFieldsAddress("Autotest", "Autotest", "Autotest", "Autotest",
                         "Autotest", "1111", "Autotest", "200+002")
+                .chooseCountryInAddressForm("Deutschland")
                 .clickSaveBtn()
-                .checkPresenceAndClosePopUpUpdate();
+                .checkPresenceAndClosePopUpUpdate()
+                .checkThatNumberOfBillingAddressHasIncreased(numberUserAddress)
+                .deleteBillingAddress();
     }
 
     @AfterMethod
