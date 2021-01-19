@@ -1,6 +1,6 @@
-package ATD.MOTO.QC_870_TopModelsBlock;
+package ATD.Catalog_Mark.QC_2568_MarkPages;
 
-import ATD.Moto_main_page_Logic;
+import ATD.LKW_main_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,26 +16,27 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_873 {
+public class QC_161 {
+
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
     }
 
-    @DataProvider(name = "routes", parallel = true)
-    Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_main");
+    @DataProvider(name = "routesCategory", parallel = true)
+    Object[] dataProviderCategory() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_main");
     }
 
-    @Test(dataProvider = "routes")
+    @Test(dataProvider = "routesCategory")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks element block hover TOP models of motorcycle")
-    public void testChecksElementBlockHoverTopModels(String route) {
+    @Description(value = "Test check brands catalog link in Model/Brand block")
+    public void testChecksBrandCatalogLink(String route) {
         openPage(route);
-
-        new Moto_main_page_Logic()
-                .hoverOnTopMotoModels();
+        new LKW_main_page_Logic()
+                .goToAllTruckBrandsPage()
+                .checkSuccessfullyLKWMakersPageLoading();
     }
 
     @AfterMethod

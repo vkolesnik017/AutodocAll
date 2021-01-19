@@ -1,6 +1,6 @@
-package ATD.MOTO.QC_385_BlockBrandsAndModelsOfAutoManufacturers;
+package ATD.Catalog_Mark.QC_2568_MarkPages;
 
-import ATD.Moto_Category_maker_page_Logic;
+import ATD.LKW_maker_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,8 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_390 {
-
+public class QC_123 {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -25,22 +24,19 @@ public class QC_390 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_maker3");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_makers");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks ability to open and minimized  of brands and models block")
-    public void testChecksAbilityToOpenAndMinimizedOfBrandsBlock(String route) {
+    @Description(value = "Test checks Sidebar block linking to the catalog of the model on the root catalog of brands")
+    public void testChecksSidebarBlockLinkingCatalog(String route) {
         openPage(route);
-
-        new Moto_Category_maker_page_Logic()
-                .presenceOfModelsBlock()
-                .openOfModelsBlock()
-                .minimizedOfModelBlock();
+         new LKW_maker_page_Logic().checkElementsOnPage()
+                 .selectTopCar("MERCEDES-BENZ UNIMOG")
+                 .checkSuccessfullyMakerCarListPageLoading("https://lkwteile.autodoc.de/lastkraftwagen/mercedes-benz/unimog");
     }
-
     @AfterMethod
     public void close() {
         closeWebDriver();

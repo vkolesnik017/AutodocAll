@@ -1,4 +1,4 @@
-package ATD.MOTO.QC_852_TopBrandsBlock;
+package ATD.Catalog_Mark.QC_2568_MarkPages;
 
 import Common.DataBase;
 import ATD.Moto_main_page_Logic;
@@ -18,7 +18,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_855 {
+public class QC_854 {
 
     @BeforeClass
     void setUp() {
@@ -33,12 +33,12 @@ public class QC_855 {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks transition by click on catalog of brand link")
-    public void testChecksTransitionByClickOnCatalogOfBrandLink(String route) throws SQLException {
+    @Description(value = "Test checks transition by click on TOP brand")
+    public void testChecksTransitionByClickOnTopBrand(String route) throws SQLException {
         openPage(route);
 
-        new Moto_main_page_Logic().clickOnLinkMoreAtTopBrandsBlock();
-        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_makers"));
+        new Moto_main_page_Logic().selectTopMotoBrandFromBlock(4);
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_categories_maker"));
     }
 
     @AfterMethod

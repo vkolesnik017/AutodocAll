@@ -1,4 +1,4 @@
-package ATD.MOTO.QC_385_BlockBrandsAndModelsOfAutoManufacturers;
+package ATD.Catalog_Mark.QC_2568_MarkPages;
 
 import ATD.Moto_Categories_maker_page_Logic;
 import ATD.Moto_Categories_page_Logic;
