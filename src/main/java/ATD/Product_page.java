@@ -408,6 +408,10 @@ public class Product_page {
         return $(By.xpath("//p[@class='product-inkl-info']/a[2]"));
     }
 
+    SelenideElement heavyCargoBlock() {
+        return $(By.xpath("//*[@class='oversize-block__tabs']//*[@class='oversize-block__tabs-content current tab-content-js']"));
+    }
+
 
     // locators of prices with Currencies
     public SelenideElement priceWithoutDiscount() {

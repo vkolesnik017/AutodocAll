@@ -36,15 +36,7 @@
         </classes>
     </test>
 
-    <test name="QC_570_SearchByCatalog">
-        <classes>
-            <!--<class name="ATD.Search.QC_570_SearchByCatalog.QC_571"/>-->
-            <!--<class name="ATD.Search.QC_570_SearchByCatalog.QC_572"/>-->
-            <!--<class name="ATD.Search.QC_570_SearchByCatalog.QC_573"/>-->
-            <!--<class name="ATD.Search.QC_570_SearchByCatalog.QC_574"/>-->
-            <class name="ATD.Search.QC_570_SearchByCatalog.QC_575"/>
-        </classes>
-    </test>
+
 
     <test name="QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults">
         <classes>

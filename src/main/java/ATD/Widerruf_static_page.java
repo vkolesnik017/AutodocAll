@@ -1,10 +1,11 @@
 package ATD;
 
-
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
 
 class Widerruf_static_page {
 
@@ -20,11 +21,7 @@ class Widerruf_static_page {
         return $(By.cssSelector(".text_page.agb_page"));
     }
 
-    SelenideElement emailLink1() {
-        return $(By.xpath("//*[@class='serv-attention']/p[3]/a"));
-    }
-
-    SelenideElement emailLink2() {
-        return $(By.xpath("//*[@class='serv-attention']/p[17]/a"));
+    ElementsCollection emailLinks() {
+        return $$(By.xpath("//*[@class='serv-attention']//a"));
     }
 }
