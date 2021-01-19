@@ -1,4 +1,4 @@
-package ATD.Listings.QC_2187_Tyres;
+package ATD.Listings.QC_2187_TyresListing;
 
 
 import Common.SetUp;
@@ -17,7 +17,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1266 {
+public class QC_1265 {
 
     @BeforeClass
     void setUp() {
@@ -26,17 +26,16 @@ public class QC_1266 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_size2,tyres_season_size11,tyres_season_size2,tyres_season_size12," +
-                "tyres_size3,tyres_season_size3,tyres_season_size9,tyres_season_size10" +
-                "tyres_size4,tyres_season_size7,tyres_season_size8,tyres_season_size4," +
-                "tyres_size5,tyres_season_size6,tyres_season_size5");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_season2,tyres_season6,tyres_season7,tyres_dimension2," +
+                "tyres_brand5,tyres_season,tyres_season8,tyres_season9,tyres_dimension3,tyres_brand2,tyres_season5,tyres_season10,tyres_season11,tyres_dimension5," +
+                "tyres_brand3,tyres_season12,tyres_season4,tyres_dimension4,tyres_brand4");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Romaniuta")
-    @Description(value = "Test Checks Transition To All Sizes Route Interact Diameter Relink Block")
-    public void testGoToAllSizesRouteInteractDiameterRelinkBlock(String route) {
+    @Description(value = "Test Checks Transition To All Sizes Route Interact All Sizes Relink Block")
+    public void testGoToAllSizesRouteInteractSizesRelinkBlock(String route) {
         openPage(route);
         new TyresListing_page_Logic().clickAllSizesButtonAndCheckRedirect();
     }

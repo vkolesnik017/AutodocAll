@@ -1,4 +1,4 @@
-package ATD.Listings.QC_2187_Tyres;
+package ATD.Listings.QC_2187_TyresListing;
 
 
 import Common.SetUp;

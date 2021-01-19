@@ -1,7 +1,7 @@
-package ATD.Listings.QC_2187_Tyres;
+package ATD.Listings.QC_2187_TyresListing;
 
-import ATD.Tyres_dimension_page_Logic;
 import Common.SetUp;
+import ATD.TyresListing_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -12,11 +12,11 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
+import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
-import static com.codeborne.selenide.Selenide.open;
 
-public class QC_2526 {
+public class QC_2064 {
 
     @BeforeClass
     void setUp() {
@@ -25,21 +25,20 @@ public class QC_2526 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyres_dimension10,tyres_season_dimension9,tyres_season_brand_dimension");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyre_form,tyres_season,offroad_tyres_brand,tyres_group_season_brand," +
+                "tyres_size3,tyres_dimension3,tyres_season_size,tyres_season_dimension,tyres_brand_size2,tyres_brand_dimension");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "Kolesnik")
-    @Description(value = "Test checking maximize count of product with selected addition info filter")
-    public void testCheckMaxCountOfProductWithSelectedAdditionInfoFilter(String route) {
-        open(route);
-
-        new Tyres_dimension_page_Logic().presenceAdditionInfoFilterBlock().selectAdditionFilter(0).checkMaxCountOfProductInListing(700);
+    @Owner(value = "Chelombitko")
+    @Description(value = "Test check presence of a block of the main distribution of tires")
+    public void testPresenceBlockOfTheMainDistributionOfTires(String route) {
+        openPage(route);
+        new TyresListing_page_Logic().checkPresenceProductListing();
     }
 
     @AfterMethod
     public void close() {
         closeWebDriver();
-    }
-}
+    }}
