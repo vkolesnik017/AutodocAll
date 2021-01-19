@@ -1,6 +1,7 @@
-package ATD.MOTO.QC_368_MainImageOfBrand;
+package ATD.Catalog_Mark.QC_2568_MarkPages;
 
-import ATD.Moto_Categories_maker_page_Logic;
+import Common.DataBase;
+import ATD.Moto_main_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -12,11 +13,13 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
+import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_369 {
+public class QC_855 {
+
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -24,19 +27,18 @@ public class QC_369 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_categories_maker2");
-
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_main");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks presence of main image of brand")
-    public void testChecksPresenceOfMainImageOfBrand(String route) {
+    @Description(value = "Test checks transition by click on catalog of brand link")
+    public void testChecksTransitionByClickOnCatalogOfBrandLink(String route) throws SQLException {
         openPage(route);
 
-        new Moto_Categories_maker_page_Logic()
-                .presenceOfMainBrandImage();
+        new Moto_main_page_Logic().clickOnLinkMoreAtTopBrandsBlock();
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_makers"));
     }
 
     @AfterMethod

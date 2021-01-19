@@ -1,4 +1,4 @@
-package ATD.LKW_trucks;
+package ATD.Catalog_Mark.QC_2568_MarkPages;
 
 import ATD.LKW_maker_page_Logic;
 import Common.SetUp;
