@@ -1,4 +1,4 @@
-package ATD.MOTO.QC_385_BlockBrandsAndModelsOfAutoManufacturers;
+package ATD.Catalog_Mark.QC_2568_MarkPages;
 
 import ATD.*;
 import Common.DataBase;

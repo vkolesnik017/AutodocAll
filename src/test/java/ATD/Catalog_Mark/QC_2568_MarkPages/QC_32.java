@@ -1,4 +1,4 @@
-package ATD.LKW_trucks.QC_27_BlockOfBrandsAndModelsOfCarManufacturers;
+package ATD.Catalog_Mark.QC_2568_MarkPages;
 
 import ATD.LKW_Category_brand_page_Logic;
 import ATD.LKW_Category_page_Logic;

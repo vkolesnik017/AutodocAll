@@ -1,7 +1,6 @@
-package ATD.MOTO.QC_852_TopBrandsBlock;
+package ATD.Catalog_Mark.QC_2568_MarkPages;
 
-import Common.DataBase;
-import ATD.Moto_main_page_Logic;
+import ATD.Moto_Category_maker_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -13,12 +12,11 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_854 {
+public class QC_390 {
 
     @BeforeClass
     void setUp() {
@@ -27,18 +25,20 @@ public class QC_854 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_main");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_maker3");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks transition by click on TOP brand")
-    public void testChecksTransitionByClickOnTopBrand(String route) throws SQLException {
+    @Description(value = "Test checks ability to open and minimized  of brands and models block")
+    public void testChecksAbilityToOpenAndMinimizedOfBrandsBlock(String route) {
         openPage(route);
 
-        new Moto_main_page_Logic().selectTopMotoBrandFromBlock(4);
-        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "moto_categories_maker"));
+        new Moto_Category_maker_page_Logic()
+                .presenceOfModelsBlock()
+                .openOfModelsBlock()
+                .minimizedOfModelBlock();
     }
 
     @AfterMethod

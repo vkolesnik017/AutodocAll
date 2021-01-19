@@ -50,28 +50,10 @@
         </classes>
     </test>
 
-    <test name="QC_852_TopBrandsBlock">
-        <classes>
-            <class name="ATD.MOTO.QC_852_TopBrandsBlock.QC_853"/>
-            <class name="ATD.MOTO.QC_852_TopBrandsBlock.QC_854"/>
-            <class name="ATD.MOTO.QC_852_TopBrandsBlock.QC_855"/>
-        </classes>
-    </test>
-
     <test name="QC_364_TopCategoriesByBrandBlock">
         <classes>
             <class name="ATD.MOTO.QC_364_TopCategoriesByBrandBlock.QC_366"/>
             <class name="ATD.MOTO.QC_364_TopCategoriesByBrandBlock.QC_367"/>
-        </classes>
-    </test>
-
-    <test name="QC_385_BlockBrandsAndModelsOfAutoManufacturers">
-        <classes>
-            <class name="ATD.MOTO.QC_385_BlockBrandsAndModelsOfAutoManufacturers.QC_386"/>
-            <class name="ATD.MOTO.QC_385_BlockBrandsAndModelsOfAutoManufacturers.QC_387"/>
-            <class name="ATD.MOTO.QC_385_BlockBrandsAndModelsOfAutoManufacturers.QC_388"/>
-            <class name="ATD.MOTO.QC_385_BlockBrandsAndModelsOfAutoManufacturers.QC_389"/>
-            <class name="ATD.MOTO.QC_385_BlockBrandsAndModelsOfAutoManufacturers.QC_390"/>
         </classes>
     </test>
 
@@ -100,14 +82,6 @@
         </classes>
     </test>
 
-     <test name="QC_870_PresenceOfTopModels">
-        <classes>
-            <class name="ATD.MOTO.QC_870_TopModelsBlock.QC_872"/>
-            <class name="ATD.MOTO.QC_870_TopModelsBlock.QC_873"/>
-            <class name="ATD.MOTO.QC_870_TopModelsBlock.QC_874"/>
-        </classes>
-    </test>
-
     <test name="QC_730_ProductPage">
         <classes>
             <class name="ATD.MOTO.QC_730_ProductPage.QC_732"/>
@@ -123,12 +97,6 @@
             <class name="ATD.MOTO.QC_757_MotoCatalogInHeader.QC_760"/>
             <class name="ATD.MOTO.QC_757_MotoCatalogInHeader.QC_762"/>
             <class name="ATD.MOTO.QC_757_MotoCatalogInHeader.QC_764"/>
-        </classes>
-    </test>
-
-    <test name="QC_368_MainImageOfBrand">
-        <classes>
-            <class name="ATD.MOTO.QC_368_MainImageOfBrand.QC_369"/>
         </classes>
     </test>
 

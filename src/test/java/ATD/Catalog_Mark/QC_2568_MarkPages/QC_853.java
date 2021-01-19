@@ -1,4 +1,4 @@
-package ATD.MOTO.QC_852_TopBrandsBlock;
+package ATD.Catalog_Mark.QC_2568_MarkPages;
 
 import ATD.Moto_main_page_Logic;
 import Common.SetUp;
