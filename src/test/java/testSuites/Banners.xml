@@ -13,6 +13,12 @@
         </classes>
     </test>
 
+    <test name="QC_850_MainBanner">
+        <classes>
+            <class name="ATD.Banners.QC_850_MainBanner.QC_851"/>
+        </classes>
+    </test>
+
 
 
 

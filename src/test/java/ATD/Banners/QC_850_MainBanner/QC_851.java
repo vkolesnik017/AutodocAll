@@ -1,4 +1,4 @@
-package ATD.MOTO.QC_850_MainBanner;
+package ATD.Banners.QC_850_MainBanner;
 
 import ATD.Moto_main_page_Logic;
 import Common.SetUp;

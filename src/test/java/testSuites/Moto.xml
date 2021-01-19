@@ -110,12 +110,6 @@
         </classes>
     </test>
 
-    <test name="QC_850_MainBanner">
-        <classes>
-            <class name="ATD.MOTO.QC_850_MainBanner.QC_851"/>
-        </classes>
-    </test>
-
     <test name="QC_622_LinkingBlockToModelCatalog">
         <classes>
             <class name="ATD.MOTO.QC_622_LinkingBlockToModelCatalog.QC_623"/>
