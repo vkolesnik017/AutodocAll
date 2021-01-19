@@ -1,4 +1,4 @@
-package ATD.SpecificTests.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
+package ATD.SpecificTests.Orders_AWS_Delivery.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
 
 import ATD.Product_page_Logic;
 import Common.SetUp;

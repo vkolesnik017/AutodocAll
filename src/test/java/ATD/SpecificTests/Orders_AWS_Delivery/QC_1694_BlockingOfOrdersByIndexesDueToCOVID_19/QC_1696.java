@@ -1,5 +1,6 @@
-package ATD.SpecificTests.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
+package ATD.SpecificTests.Orders_AWS_Delivery.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
 
+import ATD.Cart_page_Logic;
 import ATD.Product_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
@@ -12,18 +13,15 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.openPage;
+import static ATD.CommonMethods.*;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1698 {
+public class QC_1696 {
+    private SetUp setUp = new SetUp("ATD");
 
-
-    private String email = "qc_1698_autotestCOVID19@mailinator.com";
-    private String password = "atdtest";
-
+    private String email = "qc_1695_autotestCOVID19@mailinator.com";
     private String plzIT = "40059";
-
 
     @BeforeClass
     void setUp() {
@@ -32,21 +30,23 @@ public class QC_1698 {
 
     @DataProvider(name = "route", parallel = false)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp("ATD").setUpShopsWithSubroute("prod", "DE", "main", "product");
+        return setUp.setUpShopsWithSubroute("prod", setUp.getShopsDesktop(), "main", "product2");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test check of blocking for split billing and shipping")
-    public void testCheckBlockingForSplitBillingAndShipping(String route) {
+    @Description(value = "Test checks translation of error popup on address page")
+    public void testCheckErrorTranslateOnAddressPage(String route) throws SQLException {
         openPage(route);
+        String shop = getCurrentShopFromJSVarInHTML();
         new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
-                .nextButtonClick()
+                .makePriceForMinimumOrderForCH(shop);
+                new Cart_page_Logic().nextButtonClick()
                 .signIn(email, password)
-                .checkBlockingPLZForCountry("IT", plzIT, "IT", "12345");
+                .checkingCOVID19TooltipTranslate("IT", plzIT, shop);
     }
 
     @AfterMethod

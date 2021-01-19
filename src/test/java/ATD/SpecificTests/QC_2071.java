@@ -22,7 +22,7 @@ import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
-public class QC_2071_checkingFormationTecCatalogAndJumpToListing {
+public class QC_2071 {
 
     private final String dataFile = "C://Autotests/files/data/QC_2071_data.xls";
     private final String result = "C://Autotests/files/res/QC_2071_result.txt";

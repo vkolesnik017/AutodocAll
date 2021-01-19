@@ -8,7 +8,7 @@
 
     <test name="ATD_QC_1696_CheckErrorTranslateOnAddressPage">
         <classes>
-            <class name="ATD.SpecificTests.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1697"/>
+            <class name="ATD.SpecificTests.Orders_AWS_Delivery.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19.QC_1697"/>
         </classes>
     </test>
 

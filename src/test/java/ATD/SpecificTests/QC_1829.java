@@ -1,4 +1,4 @@
-package ATD.SpecificTests.Basket.QC_1694_BlockingOfOrdersByIndexesDueToCOVID_19;
+package ATD.SpecificTests;
 
 import Common.Excel;
 import ATD.Product_page_Logic;
