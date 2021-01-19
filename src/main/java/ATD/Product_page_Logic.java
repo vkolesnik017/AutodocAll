@@ -25,7 +25,6 @@ import static com.codeborne.selenide.CollectionCondition.sizeLessThan;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
-import static java.util.Collections.*;
 
 public class Product_page_Logic extends Product_page {
 
@@ -141,7 +140,9 @@ public class Product_page_Logic extends Product_page {
     @Step("Checking heavy cargo link transition. Product_page")
     public Product_page_Logic checkingHeavyCargoLinkTransition() {
         heavyCargoLink().click();
-        new CommonMethods().checkingUrlAndCloseTab("services/versand#surcharge");
+        switchTo().window(1);
+        checkingContainsUrl("services/versand#surcharge");
+        heavyCargoBlock().shouldBe(visible);
         return this;
     }
 
