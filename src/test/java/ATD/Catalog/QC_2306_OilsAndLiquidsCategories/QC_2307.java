@@ -1,4 +1,4 @@
-package ATD.LKW_trucks.QC_2306_OilsAndLiquidsCategories;
+package ATD.Catalog.QC_2306_OilsAndLiquidsCategories;
 
 import ATD.LKW_main_page_Logic;
 import Common.SetUp;
