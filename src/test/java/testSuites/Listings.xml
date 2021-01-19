@@ -78,17 +78,6 @@
         </classes>
     </test>
 
-    <test name="QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults">
-        <classes>
-            <class name="ATD.Listings.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1305"/>
-            <class name="ATD.Listings.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1306"/>
-            <class name="ATD.Listings.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1308"/>
-            <class name="ATD.Listings.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1314"/>
-            <class name="ATD.Listings.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1315"/>
-            <class name="ATD.Listings.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1316"/>
-            <!--            <class name="ATD.Listings.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1318"/>-->
-        </classes>
-    </test>
 
     <!--<test name="QC_2412_ListingOfProductListing">
         <classes>

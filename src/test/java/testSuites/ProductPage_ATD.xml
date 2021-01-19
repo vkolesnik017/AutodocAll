@@ -71,4 +71,12 @@
             <class name="ATD.ProductPage.QC_1367_TyresProductPage.QC_2231"/>
         </classes>
     </test>
+
+    <test name="QC_207_LkwProductPage">
+        <classes>
+            <class name="ATD.ProductPage.QC_207_LkwProductPage.QC_210"/>
+            <class name="ATD.ProductPage.QC_207_LkwProductPage.QC_212"/>
+            <class name="ATD.ProductPage.QC_207_LkwProductPage.QC_209"/>
+        </classes>
+    </test>
 </suite>

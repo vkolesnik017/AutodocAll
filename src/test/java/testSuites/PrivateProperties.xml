@@ -71,5 +71,46 @@
         </classes>
     </test>
 
+    <test name="QC_1914_DisplayTrackingNumberInPR">
+        <classes>
+            <class name="ATD.PrivateProperties.QC_1914_DisplayTrackingNumberInPR.QC_1830"/>
+            <class name="ATD.PrivateProperties.QC_1914_DisplayTrackingNumberInPR.QC_1831"/>
+            <class name="ATD.PrivateProperties.QC_1914_DisplayTrackingNumberInPR.QC_1832"/>
+        </classes>
+    </test>
+
+    <test name="QC_868_DepositTabFunctionalInPR">
+        <classes>
+            <class name="ATD.PrivateProperties.QC_868_DepositTabFunctionalInPR.QC_869"/>
+            <class name="ATD.PrivateProperties.QC_868_DepositTabFunctionalInPR.QC_871"/>
+            <class name="ATD.PrivateProperties.QC_868_DepositTabFunctionalInPR.QC_883"/>
+            <class name="ATD.PrivateProperties.QC_868_DepositTabFunctionalInPR.QC_925"/>
+        </classes>
+    </test>
+
+    <test name="QC_635_FunctionalOfTheSettingsTabInPR">
+        <classes>
+            <class name="ATD.PrivateProperties.QC_635_FunctionalOfTheSettingsTabInPR.QC_636"/>
+            <class name="ATD.PrivateProperties.QC_635_FunctionalOfTheSettingsTabInPR.QC_638"/>
+            <class name="ATD.PrivateProperties.QC_635_FunctionalOfTheSettingsTabInPR.QC_644"/>
+            <class name="ATD.PrivateProperties.QC_635_FunctionalOfTheSettingsTabInPR.QC_645"/>
+            <class name="ATD.PrivateProperties.QC_635_FunctionalOfTheSettingsTabInPR.QC_648"/>
+            <class name="ATD.PrivateProperties.QC_635_FunctionalOfTheSettingsTabInPR.QC_651"/>
+            <class name="ATD.PrivateProperties.QC_635_FunctionalOfTheSettingsTabInPR.QC_653"/>
+            <class name="ATD.PrivateProperties.QC_635_FunctionalOfTheSettingsTabInPR.QC_658"/>
+            <class name="ATD.PrivateProperties.QC_635_FunctionalOfTheSettingsTabInPR.QC_659"/>
+            <class name="ATD.PrivateProperties.QC_635_FunctionalOfTheSettingsTabInPR.QC_660"/>
+            <class name="ATD.PrivateProperties.QC_635_FunctionalOfTheSettingsTabInPR.QC_661"/>
+            <class name="ATD.PrivateProperties.QC_635_FunctionalOfTheSettingsTabInPR.QC_665"/>
+            <class name="ATD.PrivateProperties.QC_635_FunctionalOfTheSettingsTabInPR.QC_667"/>
+            <class name="ATD.PrivateProperties.QC_635_FunctionalOfTheSettingsTabInPR.QC_668"/>
+            <class name="ATD.PrivateProperties.QC_635_FunctionalOfTheSettingsTabInPR.QC_671"/>
+            <class name="ATD.PrivateProperties.QC_635_FunctionalOfTheSettingsTabInPR.QC_676"/>
+            <class name="ATD.PrivateProperties.QC_635_FunctionalOfTheSettingsTabInPR.QC_677"/>
+            <class name="ATD.PrivateProperties.QC_635_FunctionalOfTheSettingsTabInPR.QC_678"/>
+            <class name="ATD.PrivateProperties.QC_635_FunctionalOfTheSettingsTabInPR.QC_679"/>
+            <class name="ATD.PrivateProperties.QC_635_FunctionalOfTheSettingsTabInPR.QC_933"/>
+        </classes>
+    </test>
 
 </suite>
