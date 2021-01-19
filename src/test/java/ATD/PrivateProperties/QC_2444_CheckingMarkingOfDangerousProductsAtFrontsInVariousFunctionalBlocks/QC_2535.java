@@ -30,7 +30,7 @@ public class QC_2535 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list36,lkw_category_car_list37,lkw_search12");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list36,lkw_category_car_list37,lkw_search12");  
     }
 
     @Test(dataProvider = "routes")
@@ -42,7 +42,6 @@ public class QC_2535 {
         String signalWord = carListPage.presenceOfDangerousProducts().getSignalWordFromFirstDangerousProduct(1);
         carListPage.clickOnDangerousLabel(1, signalWord);
     }
-
 
     @DataProvider(name = "routesMain", parallel = true)
     Object[] dataProviderMain() throws SQLException {
@@ -87,8 +86,8 @@ public class QC_2535 {
         openPage(route);
         String signalWord = categoryOenPage.presenceOfDangerousProducts().getSignalWordFromFirstDangerousProduct(0);
         carListPage.clickOnDangerousLabel(0, signalWord);
-
     }
+
     @AfterMethod
     public void close() {
         closeWebDriver();
