@@ -36,13 +36,6 @@
         </classes>
     </test>
 
-    <test name="QC_861_TopParentAndChildCategoryBlock">
-        <classes>
-            <class name="ATD.MOTO.QC_861_TopParentAndChildCategoryBlock.QC_865"/>
-            <class name="ATD.MOTO.QC_861_TopParentAndChildCategoryBlock.QC_866"/>
-            <class name="ATD.MOTO.QC_861_TopParentAndChildCategoryBlock.QC_867"/>
-        </classes>
-    </test>
 
     <test name="QC_847_Login_Registration_Blocks">
         <classes>
@@ -51,21 +44,6 @@
         </classes>
     </test>
 
-    <test name="QC_355_BenefitsBlock">
-        <classes>
-            <class name="ATD.MOTO.QC_355_BenefitsBlock.QC_360"/>
-        </classes>
-    </test>
-
-    <test name="QC_745_ChildCategoriesBlock">
-        <classes>
-            <class name="ATD.MOTO.QC_745_ChildCategoriesBlock.QC_746"/>
-            <class name="ATD.MOTO.QC_745_ChildCategoriesBlock.QC_748"/>
-            <class name="ATD.MOTO.QC_745_ChildCategoriesBlock.QC_750"/>
-            <class name="ATD.MOTO.QC_745_ChildCategoriesBlock.QC_751"/>
-            <class name="ATD.MOTO.QC_745_ChildCategoriesBlock.QC_752"/>
-        </classes>
-    </test>
 
     <test name="QC_373_MainIssueBlockAtTecDocListing">
         <classes>
@@ -89,12 +67,6 @@
         </classes>
     </test>
 
-    <test name="QC_364_TopCategoriesByBrandBlock">
-        <classes>
-            <class name="ATD.MOTO.QC_364_TopCategoriesByBrandBlock.QC_366"/>
-            <class name="ATD.MOTO.QC_364_TopCategoriesByBrandBlock.QC_367"/>
-        </classes>
-    </test>
 
     <test name="QC_330_BlockOfMainHeadline">
         <classes>
@@ -123,14 +95,6 @@
         </classes>
     </test>
 
-    <test name="QC_856_TopChildCategoriesBlock">
-        <classes>
-            <class name="ATD.MOTO.QC_856_TopChildCategoriesBlock.QC_857"/>
-            <class name="ATD.MOTO.QC_856_TopChildCategoriesBlock.QC_858"/>
-            <class name="ATD.MOTO.QC_856_TopChildCategoriesBlock.QC_859"/>
-        </classes>
-    </test>
-
 
      <test name="QC_870_PresenceOfTopModels">
         <classes>
@@ -149,14 +113,6 @@
         </classes>
     </test>
 
-    <test name="QC_757_MotoCatalogInHeader">
-        <classes>
-            <class name="ATD.MOTO.QC_757_MotoCatalogInHeader.QC_759"/>
-            <class name="ATD.MOTO.QC_757_MotoCatalogInHeader.QC_760"/>
-            <class name="ATD.MOTO.QC_757_MotoCatalogInHeader.QC_762"/>
-            <class name="ATD.MOTO.QC_757_MotoCatalogInHeader.QC_764"/>
-        </classes>
-    </test>
 
     <test name="QC_368_MainImageOfBrand">
         <classes>
@@ -164,15 +120,6 @@
         </classes>
     </test>
 
-    <test name="QC_349_ParentAndChildSideBarBlock">
-        <classes>
-            <class name="ATD.MOTO.QC_349_ParentAndChildSideBarBlock.QC_350"/>
-            <class name="ATD.MOTO.QC_349_ParentAndChildSideBarBlock.QC_351"/>
-            <class name="ATD.MOTO.QC_349_ParentAndChildSideBarBlock.QC_352"/>
-            <class name="ATD.MOTO.QC_349_ParentAndChildSideBarBlock.QC_353"/>
-            <class name="ATD.MOTO.QC_349_ParentAndChildSideBarBlock.QC_354"/>
-        </classes>
-    </test>
 
     <test name="QC_850_MainBanner">
         <classes>
