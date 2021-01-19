@@ -52,6 +52,7 @@
             <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1930"/>
             <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1929"/>
             <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1931"/>
+            <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1637"/>
         </classes>
     </test>
 

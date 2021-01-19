@@ -50,7 +50,7 @@
 
     <test name="QC_1383_BlockFilterByBrandOnListingAccessories">
         <classes>
-            <class name="ATD.ACC.QC_1383_BlockFilterByBrandOnListingAccessories.QC_1385"/>
+            <!--<class name="ATD.ACC.QC_1383_BlockFilterByBrandOnListingAccessories.QC_1385"/> -inactive-->
         </classes>
     </test>
 

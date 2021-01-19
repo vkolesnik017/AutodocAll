@@ -89,4 +89,21 @@
         </classes>
     </test>
 
+    <test name="QC_301_MotoSelector">
+        <classes>
+            <class name="ATD.Selectors.QC_301_MotoSelector.QC_302"/>
+            <class name="ATD.Selectors.QC_301_MotoSelector.QC_304"/>
+            <class name="ATD.Selectors.QC_301_MotoSelector.QC_305"/>
+            <class name="ATD.Selectors.QC_301_MotoSelector.QC_306"/>
+            <class name="ATD.Selectors.QC_301_MotoSelector.QC_307"/>
+            <class name="ATD.Selectors.QC_301_MotoSelector.QC_308"/>
+            <class name="ATD.Selectors.QC_301_MotoSelector.QC_309"/>
+            <class name="ATD.Selectors.QC_301_MotoSelector.QC_310"/>
+            <class name="ATD.Selectors.QC_301_MotoSelector.QC_312"/>
+            <class name="ATD.Selectors.QC_301_MotoSelector.QC_313"/>
+            <class name="ATD.Selectors.QC_301_MotoSelector.QC_315"/>
+            <class name="ATD.Selectors.QC_301_MotoSelector.QC_317"/>
+        </classes>
+    </test>
+
 </suite>
