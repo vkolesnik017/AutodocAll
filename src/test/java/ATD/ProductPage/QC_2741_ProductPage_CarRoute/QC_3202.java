@@ -36,7 +36,7 @@ public class QC_3202 {
     @Owner(value = "Kolesnik")
     @Description(value = "Test Checking redirects from disabled dangerous product")
     public void testCheckRedirectsFromDisabledDangerousProduct(String route) throws SQLException {
-        String categoryId = dangerousPage.openDisabledDangerousProductInAwsWithLogin().clickOnProductCard(0).getCategoryId();
+        String categoryId = dangerousPage.openDisabledDangerousProductInAwsWithLogin().clickOnProductCard(4).getCategoryId();
         String idOfProduct = new ProductCard_aws().getIdOfProduct();
         customerCatalogPage.openCustomerCatalog().checkRedirectForDangerousProducts(categoryId, idOfProduct);
     }
