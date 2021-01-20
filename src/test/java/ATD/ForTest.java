@@ -26,7 +26,6 @@ public class ForTest extends SetUp {
         int minValue = 0;
         int randomIndex = minValue + (int) (Math.random() * payments.length);
         String paymentName = payments[randomIndex];
-        System.out.println(paymentName);
     }
     }
 
