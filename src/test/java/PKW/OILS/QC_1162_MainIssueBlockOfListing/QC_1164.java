@@ -65,6 +65,7 @@ public class QC_1164 {
         String volumeOfAddedProduct = makerPage.getVolumeOfAddedProduct(0);
         makerPage.clickOnBtnAddToBasket(0)
                 .displayOfBasketDropMenu()
+                .displayEngineOilViscosity()
                 .displayEngineOilViscosity();
         new Main_page_Logic().checkCountOfProductInBasketAtHeader(1);
         makerPage.clickOnBasketIconInHeader();

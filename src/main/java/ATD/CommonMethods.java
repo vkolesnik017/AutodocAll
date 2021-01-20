@@ -82,6 +82,15 @@ public class CommonMethods {
         }
     }
 
+    @Step("Wait while route contains expected {expected route}")
+    public static void waitWhileRouteContainsExpected(String expectedRoute) {
+        try {
+            Wait().until(WebDriver -> getNameRouteFromJSVarInHTML().contains(expectedRoute));
+        } catch (TimeoutException e) {
+            Assert.fail("Current route: [" + getNameRouteFromJSVarInHTML() + "] don't equals expected route: " + expectedRoute);
+        }
+    }
+
     public static String getShopFromRoute(String route) {
         String shop = null;
         String[] words = route.split("\\.");
