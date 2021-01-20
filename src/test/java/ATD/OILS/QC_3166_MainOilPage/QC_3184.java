@@ -16,7 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_3185_CheckSeoBlockPresence {
+public class QC_3184 {
 
     @BeforeClass
     void setUp() {
@@ -31,10 +31,10 @@ public class QC_3185_CheckSeoBlockPresence {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "OlhaLavrynenko")
-    @Description(value = "Test checks Seo block Presence on the Main oil page ")
-    public void testChecksSeoBlockPresence(String route) {
+    @Description(value = "Test checks Reviews block Presence on the Main oil page ")
+    public void testChecksReviewsBlockPresence(String route) {
         openPage(route);
-        new Motoroil_page_Logic().seoBlockPresence();
+        new Motoroil_page_Logic().reviewsBlockPresence();
     }
 
     @AfterMethod
