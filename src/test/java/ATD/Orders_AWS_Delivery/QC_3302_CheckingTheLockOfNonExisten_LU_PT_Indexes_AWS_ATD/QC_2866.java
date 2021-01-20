@@ -1,4 +1,4 @@
-package ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD;
+package ATD.Orders_AWS_Delivery.QC_3302_CheckingTheLockOfNonExisten_LU_PT_Indexes_AWS_ATD;
 
 import ATD.Payment_handler_page_Logic;
 import ATD.Product_page_Logic;
@@ -7,7 +7,7 @@ import Common.DataBase;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
-import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -18,9 +18,9 @@ import static ATD.CommonMethods.password;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2826 {
+public class QC_2866 {
 
-    private String mail = "QC_2826_autotestATD@mailinator.com";
+    private String mail = "QC_2866_autotestATD@mailinator.com";
 
     @BeforeClass
     void setUp() {
@@ -30,9 +30,9 @@ public class QC_2826 {
     @Test()
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks an error displaying when entered index does not correspond to Portugal mask (in AWS)")
+    @Description(value = "Test checks that Invalid Index is not saved after exiting an order in AWS. Portugal")
 
-    public void testChecksAnErrorDisplayingWhenEnteredIndexDoesNotCorrespondTo_PT_mask_AWS() throws SQLException {
+    public void testInvalidIndexIsNotSavedAfterExitingAnOrderInAWS_LU() throws SQLException {
         openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "PT", "main", "product32"));
         new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
@@ -49,20 +49,25 @@ public class QC_2826 {
                 .nextBtnClick();
         String orderNumber = new Payment_handler_page_Logic().getOrderNumber();
         new Order_aws(orderNumber).openOrderInAwsWithLogin()
-                .fillingFieldsPostalCodInBilling("9989-2")
-                .fillingFieldsPostalCodInShipping("9989-2")
+                .fillingFieldsPostalCodInBilling("0000-000")
+                .fillingFieldsPostalCodInShipping("0000-000")
                 .reSaveOrder()
                 .checkCurrentStatusInOrder("Neue Bestellung")
                 .checkPresenceExpectedElement(new Order_aws().errorIconInFieldPostalConForBilling())
-                .checkPresenceExpectedElement(new Order_aws().errorIconInFieldPostalConForShipping());
-    }
-
-    @AfterMethod
-    private void close() {
-        new Order_aws().fillingFieldsPostalCodInBilling("1111-111")
-                .fillingFieldsPostalCodInShipping("1111-111")
+                .checkPresenceExpectedElement(new Order_aws().errorIconInFieldPostalConForShipping())
+                .clickOrderSearchTad()
+                .fillingFieldOrderId(orderNumber)
+                .clickSearchBtn()
+                .clickOnOrderLinc(orderNumber)
+                .checkPostalCodInBillingBlock("1111-111")
+                .checkPostalCodInShippingBlock("1111-111")
                 .reSaveOrder()
                 .checkCurrentStatusInOrder("Testbestellungen");
+    }
+
+    @AfterClass
+    private void close() {
         closeWebDriver();
     }
+
 }

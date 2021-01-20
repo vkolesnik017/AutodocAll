@@ -1,30 +1,38 @@
-package ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD;
+package ATD.Orders_AWS_Delivery.QC_3302_CheckingTheLockOfNonExisten_LU_PT_Indexes_AWS_ATD;
 
-import ATD.*;
+import ATD.Payment_handler_page_Logic;
+import ATD.Product_page_Logic;
 import AWS.Order_aws;
 import Common.DataBase;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
-import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.*;
+import static ATD.CommonMethods.openPage;
+import static ATD.CommonMethods.password;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2851 {
+public class QC_2862 {
 
-    private String mail = "QC_2851_autotestATD@mailinator.com";
-    private String orderNumber;
+    private String mail = "QC_2826_autotestATD@mailinator.com";
 
     @BeforeClass
-    void setUp() throws SQLException {
+    void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
+    }
+
+    @Test()
+    @Flaky
+    @Owner(value = "Chelombitko")
+    @Description(value = "Test checks an error displaying when entered index does not correspond to Portugal mask (in AWS)")
+
+    public void testChecksAnErrorDisplayingWhenEnteredIndexDoesNotCorrespondTo_PT_mask_AWS() throws SQLException {
         openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "PT", "main", "product32"));
         new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
@@ -39,42 +47,17 @@ public class QC_2851 {
                 .clickOnTheDesiredPaymentMethod("PT", "Bank")
                 .nextBtnClick()
                 .nextBtnClick();
-        orderNumber = new Payment_handler_page_Logic().getOrderNumber();
-        new Order_aws(orderNumber).openOrderInAwsWithLogin();
-    }
-
-    @DataProvider(name = "indexes")
-    Object[] dataProviderProducts() {
-        return new Object[][]{
-                {"9999-001"},
-                {"9999-550"},
-                {"9999-999"},
-                {"9999-000"},
-                {"9999-998"},
-                {"0001-000"},
-                {"0111-111"},
-                {"0550-505"},
-                {"0999-999"},
-                {"0999-000"},
-                {"0998-111"},
-                {"0000-000"}
-        };
-    }
-
-    @Test(dataProvider = "indexes")
-    @Flaky
-    @Owner(value = "Chelombitko")
-    @Description(value = "Test checking validation of indexes when editing order in AWS for Portugal ")
-    public void testCheckingValidationOfIndexesWhenEditingOrderInAws_PT(String indexes) {
-        new Order_aws().fillingFieldsPostalCodInBilling(indexes)
-                .fillingFieldsPostalCodInShipping(indexes)
+        String orderNumber = new Payment_handler_page_Logic().getOrderNumber();
+        new Order_aws(orderNumber).openOrderInAwsWithLogin()
+                .fillingFieldsPostalCodInBilling("9989-2")
+                .fillingFieldsPostalCodInShipping("9989-2")
                 .reSaveOrder()
                 .checkCurrentStatusInOrder("Neue Bestellung")
                 .checkPresenceExpectedElement(new Order_aws().errorIconInFieldPostalConForBilling())
                 .checkPresenceExpectedElement(new Order_aws().errorIconInFieldPostalConForShipping());
     }
 
-    @AfterClass
+    @AfterMethod
     private void close() {
         new Order_aws().fillingFieldsPostalCodInBilling("1111-111")
                 .fillingFieldsPostalCodInShipping("1111-111")
