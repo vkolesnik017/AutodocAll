@@ -1,4 +1,4 @@
-package ATD.Basket.QC_1873_SafeOrder_ATD;
+package ATD.Orders_AWS_Delivery.QC_1873_SafeOrder_ATD;
 
 import Common.DataBase;
 import ATD.Product_page_Logic;
