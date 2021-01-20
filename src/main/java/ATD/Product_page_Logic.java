@@ -1217,8 +1217,8 @@ public class Product_page_Logic extends Product_page {
 
     @Step("checking the count of reviews. Product page")
     public Product_page_Logic checkCountOfReviews() {
-        int countFromReviewsLink = Integer.parseInt(linksOfTabBlock().get(3).getText().replaceAll("[^0-9]", " ").trim());
-        int countFromReviewsBlock = Integer.parseInt(countOfReviewsInHeadOfBlock().getText().replaceAll("[^0-9]", " ").trim());
+        int countFromReviewsLink = Integer.parseInt(linksOfTabBlock().get(3).getText().replaceAll("[^0-9]", "").trim());
+        int countFromReviewsBlock = Integer.parseInt(countOfReviewsInHeadOfBlock().getText().replaceAll("[^0-9]", "").trim());
         Assert.assertEquals(countFromReviewsBlock, countFromReviewsLink);
         reviews().shouldHaveSize(countFromReviewsLink);
         return this;
