@@ -6,7 +6,7 @@
         <listener class-name="Common.ProjectListener"/>
     </listeners>
 
-    <test name="QC_2700">
+    <test name="QC_2700_Heavyweights_Delivery">
         <classes>
             <class name="ATD.Parts_Groups_Heavyweights.QC_2700_Heavyweights_Delivery.QC_2635"/>
         </classes>
