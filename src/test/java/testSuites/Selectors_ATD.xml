@@ -30,17 +30,6 @@
         </classes>
     </test>
 
-    <test name="QC_663_HorizontalCarSelector">
-        <classes>
-            <class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_664"/>
-            <class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_666"/>
-            <class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_669"/>
-            <class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_675"/>
-            <class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_681"/>
-            <class name="ATD.Selectors.QC_663_HorizontalCarSelector.QC_682"/>
-        </classes>
-    </test>
-
     <test name="QC_2676_Selectors_Car">
         <classes>
             <class name="ATD.Selectors.QC_2676_Selectors_Car.QC_942"/>
