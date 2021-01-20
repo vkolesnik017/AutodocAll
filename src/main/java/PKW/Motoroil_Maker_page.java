@@ -5,6 +5,7 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.$;
@@ -54,5 +55,11 @@ public class Motoroil_Maker_page {
     }
 
     ElementsCollection visibleEngineOilViscosity() {return $$x("//div[@class='listing-viscosity-filters']/div[2]/span").filter(visible);}
+
+    SelenideElement numberBasket() { return $(byCssSelector(".code"));  }
+
+    SelenideElement firstProductPriceInPopupOfCart() { return $(byCssSelector(".row-price")); }
+
+    SelenideElement cartIcon() { return $(byCssSelector(".header__cart-count")); }
 
 }
