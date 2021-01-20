@@ -22,39 +22,12 @@
         </classes>
     </test>
 
-    <test name="QC_18_SideBarBlocksOfParentCategoriesAndLinkingChildCategory">
-        <classes>
-            <class name="ATD.LKW_trucks.QC_18_SideBarBlocksOfParentCategoriesAndLinkingChildCategory.QC_25"/>
-            <class name="ATD.LKW_trucks.QC_18_SideBarBlocksOfParentCategoriesAndLinkingChildCategory.QC_26"/>
-            <class name="ATD.LKW_trucks.QC_18_SideBarBlocksOfParentCategoriesAndLinkingChildCategory.QC_1662"/>
-        </classes>
-    </test>
 
     <test name="QC_94_TecDoc_Listing">
         <classes>
            <!-- <class name="ATD.LKW_trucks.QC_94_TecDoc_Listing.QC_102"/> - inactive-->
             <!--<class name="ATD.LKW_trucks.QC_94_TecDoc_Listing.QC_103"/> - inactive-->
             <!--<class name="ATD.LKW_trucks.QC_94_TecDoc_Listing.QC_104"/> - inactive-->
-        </classes>
-    </test>
-
-     <test name="QC_41_AdvantageBlockAndMainImageOfCategory">
-        <classes>
-            <class name="ATD.LKW_trucks.QC_41_AdvantageBlockAndMainImageOfCategory.QC_48"/>
-        </classes>
-    </test>
-
-    <test name="QC_207_ProductPage">
-        <classes>
-            <class name="ATD.LKW_trucks.QC_207_ProductPage.QC_210"/>
-            <class name="ATD.LKW_trucks.QC_207_ProductPage.QC_212"/>
-            <class name="ATD.LKW_trucks.QC_207_ProductPage.QC_209"/>
-        </classes>
-    </test>
-
-    <test name="QC_624_ParentAndChildCategoriesBlockInTecDocCatalog">
-        <classes>
-            <class name="ATD.LKW_trucks.QC_624_ParentAndChildCategoriesBlockInTecDocCatalog.QC_117"/>
         </classes>
     </test>
 
