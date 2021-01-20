@@ -31,17 +31,4 @@
         </classes>
     </test>
 
-
-      <test name="QC_624_ParentAndChildCategoriesBlockInTecDocCatalog">
-        <classes>
-            <class name="ATD.LKW_trucks.QC_624_ParentAndChildCategoriesBlockInTecDocCatalog.QC_117"/>
-        </classes>
-    </test>
-
-    <test name="QC_2306_OilsAndLiquidsCategories">
-        <classes>
-            <class name="ATD.LKW_trucks.QC_2306_OilsAndLiquidsCategories.QC_2303"/>
-            <class name="ATD.LKW_trucks.QC_2306_OilsAndLiquidsCategories.QC_2307"/>
-        </classes>
-    </test>
 </suite>
