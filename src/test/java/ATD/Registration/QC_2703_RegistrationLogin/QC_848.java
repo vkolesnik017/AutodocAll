@@ -1,6 +1,5 @@
-package ATD.MOTO.QC_847_Login_Registration_Blocks;
+package ATD.Registration.QC_2703_RegistrationLogin;
 
-import Common.DataBase;
 import ATD.Moto_main_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
@@ -13,13 +12,11 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.*;
+import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_849 {
-    private String email = "QC_849_autotestDE@mailinator.com";
-
+public class QC_848 {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -34,18 +31,17 @@ public class QC_849 {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks login and registration of user")
-    public void testChecksLoginAndRegistration(String route) throws SQLException {
+    @Description(value = "Test checks presence of login and registration Block")
+    public void testChecksPresenceOfLoginRegistrationBlock(String route)  {
         openPage(route);
 
         new Moto_main_page_Logic()
-                .loginOfUser(email, password)
-                .visibilityOfUsersName();
-        checkingContainsUrl(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "DE", "main", "profile_plus"));
+        .visibilityOfLoginRegistrationBlock();
     }
 
     @AfterMethod
     public void close() {
         closeWebDriver();
     }
+
 }
