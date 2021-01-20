@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class DisabledDangerousProducts_aws {
 
-    public String disabledDangerousProducts = "https://taws.autodoc.de/hazard?disabledBy=2";
+    public String disabledDangerousProducts = "https://aws.autodoc.de/hazard?disabledBy=2";
 
     private ElementsCollection btnGoToProductCard() {
         return $$x("//a[@class='btn btn-sm btn-success float-right']");

@@ -1,6 +1,5 @@
-package ATD.OILS.QC_3201_ViscosityOilBlock;
+package ATD.OILS.QC_3166_MainOilPage;
 
-import ATD.MotoroilViscosity_page_Logic;
 import ATD.Motoroil_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
@@ -17,9 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_3178_TransferToListingFromViscosityOilBlock {
-
-    MotoroilViscosity_page_Logic motoroilViscosity_page_logic = new MotoroilViscosity_page_Logic();
+public class QC_3185 {
 
     @BeforeClass
     void setUp() {
@@ -34,11 +31,10 @@ public class QC_3178_TransferToListingFromViscosityOilBlock {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "OlhaLavrynenko")
-    @Description(value = "Test checks transfer to listing from viscosity  oil Block on the Main oil page ")
-    public void testChecksTransferFromViscosityOilBlock(String route) {
+    @Description(value = "Test checks Seo block Presence on the Main oil page ")
+    public void testChecksSeoBlockPresence(String route) {
         openPage(route);
-        new Motoroil_page_Logic().oilViscosityBlockFunctionality();
-        motoroilViscosity_page_logic.checkVisibilityOfViscosityOilValueInSelector();
+        new Motoroil_page_Logic().seoBlockPresence();
     }
 
     @AfterMethod
