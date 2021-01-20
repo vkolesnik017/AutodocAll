@@ -1,4 +1,4 @@
-package ATD.OILS.QC_3166_MainOilPage;
+package ATD.OILS.QC_3201_ViscosityOilBlock;
 
 import ATD.Motoroil_page_Logic;
 import Common.SetUp;
@@ -16,7 +16,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_3184_ReviewsBlockPresence {
+public class QC_3177 {
 
     @BeforeClass
     void setUp() {
@@ -25,16 +25,17 @@ public class QC_3184_ReviewsBlockPresence {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE","main","motoroil");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "motoroil");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "OlhaLavrynenko")
-    @Description(value = "Test checks Reviews block Presence on the Main oil page ")
-    public void testChecksReviewsBlockPresence(String route) {
+    @Description(value = "Test checks oil viscosity block Presence on the Main oil page ")
+    public void testChecksOilViscosityBlockPresence(String route) {
         openPage(route);
-        new Motoroil_page_Logic().reviewsBlockPresence();
+        new Motoroil_page_Logic().oilViscosityBlockPresence()
+                .oilViscosityBlockFunctionality();
     }
 
     @AfterMethod

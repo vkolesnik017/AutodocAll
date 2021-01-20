@@ -1,5 +1,6 @@
 package ATD.OILS.QC_3201_ViscosityOilBlock;
 
+import ATD.MotoroilViscosity_page_Logic;
 import ATD.Motoroil_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
@@ -16,7 +17,9 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_3177_CheckOilViscosityFunctionalityBlock {
+public class QC_3178 {
+
+    MotoroilViscosity_page_Logic motoroilViscosity_page_logic = new MotoroilViscosity_page_Logic();
 
     @BeforeClass
     void setUp() {
@@ -25,17 +28,17 @@ public class QC_3177_CheckOilViscosityFunctionalityBlock {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "motoroil");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE","main","motoroil");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "OlhaLavrynenko")
-    @Description(value = "Test checks oil viscosity block Presence on the Main oil page ")
-    public void testChecksOilViscosityBlockPresence(String route) {
+    @Description(value = "Test checks transfer to listing from viscosity  oil Block on the Main oil page ")
+    public void testChecksTransferFromViscosityOilBlock(String route) {
         openPage(route);
-        new Motoroil_page_Logic().oilViscosityBlockPresence()
-                .oilViscosityBlockFunctionality();
+        new Motoroil_page_Logic().oilViscosityBlockFunctionality();
+        motoroilViscosity_page_logic.checkVisibilityOfViscosityOilValueInSelector();
     }
 
     @AfterMethod
