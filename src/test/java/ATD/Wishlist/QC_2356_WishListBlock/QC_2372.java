@@ -1,4 +1,4 @@
-package ATD.PrivateRoom.QC_2356_WishListBlock;
+package ATD.Wishlist.QC_2356_WishListBlock;
 
 import ATD.Search_page_Logic;
 import Common.SetUp;
@@ -17,7 +17,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2366 {
+public class QC_2372 {
     private Search_page_Logic searchPage = new Search_page_Logic();
 
     @BeforeClass
@@ -27,21 +27,20 @@ public class QC_2366 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "search30");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "main", "search30");
 
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks compare elements of product in listing and WishList")
-    public void testChecksCompareElementsOfProductInListingAndWishList(String route) {
+    @Description(value = "Test checks sorting product issue in WishList")
+    public void testChecksSortingProductIssueInWishList(String route) {
         openPage(route);
-        String priceBox = searchPage.getElementsFromPriceBlock(0);
-        String urlOfImageProduct = searchPage.getUrlOfProductImageBrand(0);
-        String amountQuantityOfProduct = searchPage.getAmountQuantityOfProduct(0);
-        List<String> listOfProductCharacteristics = searchPage.getAllProductCharacteristics(0);
-        searchPage.addedProductToWishList(1).goToWishListPage().presenceOfProductList().compareElementsFromListingInWishList(0, urlOfImageProduct, priceBox, listOfProductCharacteristics, amountQuantityOfProduct);
+        List<String> artNumOfProduct = searchPage.presenceOfTecDocListing().addArtNumOfProductToList(5);
+        searchPage.addedProductToWishList(5).goToWishListPage().presenceOfProductList().
+                checkChronologicalOrderOfProducts(artNumOfProduct).removeProductFromWishList(1)
+                .checkCOrderOfProductsAfterRemove(artNumOfProduct, 1);
     }
 
     @AfterMethod

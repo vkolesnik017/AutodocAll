@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Selector_Oil" parallel="methods" thread-count="2" data-provider-thread-count="2">
+
+    <listeners>
+        <listener class-name="Common.ProjectListener"/>
+    </listeners>
+
+    <test name="QC_3174_AvailabilityOfOilSelectors">
+        <classes>
+            <class name="ATD.Selector_Oil.QC_3174_AvailabilityOfOilSelectors.QC_3173"/>
+        </classes>
+    </test>
+
+</suite>

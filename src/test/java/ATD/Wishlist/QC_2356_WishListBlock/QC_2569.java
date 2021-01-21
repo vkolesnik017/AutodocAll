@@ -1,8 +1,9 @@
-package ATD.PrivateRoom.QC_2356_WishListBlock;
+package ATD.Wishlist.QC_2356_WishListBlock;
 
-import ATD.Category_car_list_page_Logic;
+import ATD.LKW_Category_car_list_page_Logic;
 import ATD.Main_page_Logic;
 import ATD.Search_page_Logic;
+import ATD.Services_wishList_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -20,33 +21,32 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2368 {
-
-    private Category_car_list_page_Logic carListPage = new Category_car_list_page_Logic();
+public class QC_2569 {
+    private Search_page_Logic searchPage = new Search_page_Logic();
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0", false);
+        setUpBrowser(false, "chrome", "77.0",false);
     }
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list48");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list42");
 
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks saving product in wishList after creating new user")
-    public void testChecksSavingProductInWishListAfterCreatingNewUser(String route) {
+    @Description(value = "Test checks removing all products from WishList after logOut")
+    public void testChecksRemoveAllProductsFromWishListAfterLogOut(String route) {
         openPage(route);
 
-        List<String> artNumOfProduct = carListPage.presenceOfTecDocListing().addArtNumOfProductToList(1);
-        carListPage.addProductToWishList(1);
+        new LKW_Category_car_list_page_Logic().visibilityOfTecDocListingBlock();
+        List<String> artNumOfProduct = searchPage.addArtNumOfProductToList(1);
+        searchPage.addedProductToWishList(1).goToWishListPage();
         new Main_page_Logic().registrationFromLoginButton(mailRandom()).visibilityOfUsersName();
-        new Search_page_Logic().goToWishListPage().presenceOfProductList().
-                checkChronologicalOrderOfProducts(artNumOfProduct);
+        new Services_wishList_page_Logic().checkChronologicalOrderOfProducts(artNumOfProduct);
     }
 
     @AfterMethod
