@@ -642,7 +642,7 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
     @Step("selecting of installation side  .LKW_Category_car_list_page")
     public LKW_Category_car_list_page_Logic selectInstallationSide(String subRoute) throws SQLException {
         installationSideBlock().shouldBe(visible);
-        sidesOfInstallation().get(0).click();
+        sidesOfInstallation().get(1).click();
         appearsOfLoader();
         Assert.assertEquals(url(), new DataBase("ATD").getFullRouteByRouteAndSubroute("subprod", "DE", "lkw_main", subRoute));
         return this;

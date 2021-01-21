@@ -63,11 +63,14 @@ public class QC_1164 {
 
         String idOfAddedProduct = makerPage.presenceOfMainListingOfProducts().getIdOfAddedProductToBasket(0);
         String volumeOfAddedProduct = makerPage.getVolumeOfAddedProduct(0);
-        makerPage.clickOnBtnAddToBasket(0)
+      /*  makerPage.clickOnBtnAddToBasket(0)
                 .displayOfBasketDropMenu()
+                .displayEngineOilViscosity()
                 .displayEngineOilViscosity();
         new Main_page_Logic().checkCountOfProductInBasketAtHeader(1);
-        makerPage.clickOnBasketIconInHeader();
+        makerPage.clickOnBasketIconInHeader();*/
+
+        makerPage.addProductToCart(0).clickOnBasketIconInHeader();
         String idOfAddedProductInBasket = cartPage.presenceOfAddedProductList().getIdAddedProduct();
         Assert.assertEquals(idOfAddedProductInBasket, idOfAddedProduct);
         Assert.assertEquals(cartPage.getVolumeAddedProduct(), volumeOfAddedProduct);

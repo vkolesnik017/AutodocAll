@@ -134,7 +134,7 @@ public class LKW_Category_car_list_page {
     }
 
     SelenideElement descriptionOfCharacteristics(int position) {
-        return $x("(//div[@class='description'])[" + position + "]//span[contains(text(),'Einbauseite:')]/following-sibling::*[self::span[contains(text(),'Hinterachse')] or self::span//b[contains(text(),'Hinterachse')]]");
+        return $x("(//div[@class='description'])[" + position + "]//span[contains(text(),'Einbauseite:')]/following-sibling::*[self::span[contains(text(),'Vorderachse')] or self::span//b[contains(text(),'Vorderachse')]]");
     }
 
     SelenideElement descriptionOfCharacteristicsFrontSide(int position) {

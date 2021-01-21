@@ -196,4 +196,6 @@ public class LKW_Product_page {
     SelenideElement basket() {
         return $x("//a[@class='header-cart__link']");
     }
+
+    SelenideElement mainTitle() {return $x("//span[@class='title']");}
 }

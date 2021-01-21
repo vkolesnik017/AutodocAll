@@ -2,14 +2,15 @@ package PKW;
 
 import Common.DataBase;
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.ex.ElementShould;
+import com.codeborne.selenide.ex.UIAssertionError;
 import io.qameta.allure.Step;
 
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.back;
-import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Motoroil_Maker_page_Logic extends Motoroil_Maker_page {
 
@@ -207,6 +208,39 @@ public class Motoroil_Maker_page_Logic extends Motoroil_Maker_page {
         for (int i = 0; i < btnAddedProductToBasket().size(); i++) {
             btnAddedProductToBasket().get(i).shouldBe(visible);
         }
+        return this;
+    }
+
+    @Step("Adding product to basket. Motoroil_Maker_page")
+    public Motoroil_Maker_page_Logic addProductToCart(int positionOfAddedProduct) {
+
+        checkNumberBasketAndRefreshPageIfNot();
+        sleep(3000); // TODO для стабилизации. Без слипа иногда добавленный товар исчезает из корзины после перехода в неё, решается в SITES-2830
+        btnAddedProductToBasket().get(positionOfAddedProduct).click();
+        try {
+            checksPresentProductInCartPopup();
+        } catch (UIAssertionError e) {
+            btnAddedProductToBasket().get(positionOfAddedProduct).click();
+            checksPresentProductInCartPopup();
+        }
+        return this;
+    }
+
+    @Step("Checking number basket and refresh page if not. Motoroil_Maker_page")
+    public Motoroil_Maker_page_Logic checkNumberBasketAndRefreshPageIfNot() {  // TODO Бывает при открытии страницы не подгружается номер корзины и товар не добавляется в корзину, причина не известна, что бы стабилизировать тесты добавлен этот метод
+        try {
+            numberBasket().shouldBe(visible);
+        } catch (ElementShould e) {
+            refresh();
+            numberBasket().shouldBe(visible);
+        }
+        return this;
+    }
+
+    @Step("Checking present product in cart popup. Motoroil_Maker_page")
+    public Motoroil_Maker_page_Logic checksPresentProductInCartPopup() {
+        cartIcon().hover();
+        firstProductPriceInPopupOfCart().shouldBe(visible);
         return this;
     }
 }

@@ -6,4 +6,18 @@
         <listener class-name="Common.ProjectListener"/>
     </listeners>
 
+    <test name="QC_3201_ViscosityOilBlock">
+        <classes>
+            <class name="ATD.OILS.QC_3201_ViscosityOilBlock.QC_3178"/>
+            <class name="ATD.OILS.QC_3201_ViscosityOilBlock.QC_3177"/>
+        </classes>
+    </test>
+
+    <test name="QC_3166_MainOilPage">
+        <classes>
+            <class name="ATD.OILS.QC_3166_MainOilPage.QC_3184"/>
+            <class name="ATD.OILS.QC_3166_MainOilPage.QC_3185"/>
+        </classes>
+    </test>
+
 </suite>

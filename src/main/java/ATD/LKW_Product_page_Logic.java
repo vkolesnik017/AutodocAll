@@ -9,6 +9,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static ATD.CommonMethods.getTextFromUnVisibleElement;
+import static ATD.CommonMethods.waitWhileRouteContainsExpected;
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -60,7 +61,7 @@ public class LKW_Product_page_Logic extends LKW_Product_page {
 
     @Step("checking the compatibility of goods and cars .LKW_Product_page")
     public LKW_Product_page_Logic checkCompatibilityProductAndTruck() {
-        breadCrumbsBlock().shouldBe(visible);
+        mainTitle().shouldBe(visible);
         if (compatibilityTruckBlock().isDisplayed()) {
             linkOfCompatibilityTruckAndProduct().shouldBe(visible);
         } else {

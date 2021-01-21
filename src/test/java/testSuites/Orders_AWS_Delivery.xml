@@ -74,4 +74,36 @@
         </classes>
     </test>
 
+    <test name="QC_1873_SafeOrder_ATD">
+        <classes>
+            <class name="ATD.Orders_AWS_Delivery.QC_1873_SafeOrder_ATD.QC_1874"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_1873_SafeOrder_ATD.QC_1875"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_1873_SafeOrder_ATD.QC_1877"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_1873_SafeOrder_ATD.QC_1878"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_1873_SafeOrder_ATD.QC_1879"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_1873_SafeOrder_ATD.QC_1880"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_1873_SafeOrder_ATD.QC_1881"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_1873_SafeOrder_ATD.QC_1876"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_1873_SafeOrder_ATD.QC_2346"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_1873_SafeOrder_ATD.QC_2343"/>
+            <class name="ATD.Orders_AWS_Delivery.QC_1873_SafeOrder_ATD.QC_2347"/>
+        </classes>
+    </test>
+
+    <test name="QC_3302_CheckingTheLockOfNonExisten_LU_PT_Indexes_AWS_ATD">
+    <classes>
+        <class name="ATD.Orders_AWS_Delivery.QC_3302_CheckingTheLockOfNonExisten_LU_PT_Indexes_AWS_ATD.QC_2848"/>
+        <class name="ATD.Orders_AWS_Delivery.QC_3302_CheckingTheLockOfNonExisten_LU_PT_Indexes_AWS_ATD.QC_2851"/>
+        <class name="ATD.Orders_AWS_Delivery.QC_3302_CheckingTheLockOfNonExisten_LU_PT_Indexes_AWS_ATD.QC_2861"/>
+        <class name="ATD.Orders_AWS_Delivery.QC_3302_CheckingTheLockOfNonExisten_LU_PT_Indexes_AWS_ATD.QC_2862"/>
+        <class name="ATD.Orders_AWS_Delivery.QC_3302_CheckingTheLockOfNonExisten_LU_PT_Indexes_AWS_ATD.QC_2858"/>
+        <class name="ATD.Orders_AWS_Delivery.QC_3302_CheckingTheLockOfNonExisten_LU_PT_Indexes_AWS_ATD.QC_2860"/>
+        <class name="ATD.Orders_AWS_Delivery.QC_3302_CheckingTheLockOfNonExisten_LU_PT_Indexes_AWS_ATD.QC_2864"/>
+        <class name="ATD.Orders_AWS_Delivery.QC_3302_CheckingTheLockOfNonExisten_LU_PT_Indexes_AWS_ATD.QC_2866"/>
+        <class name="ATD.Orders_AWS_Delivery.QC_3302_CheckingTheLockOfNonExisten_LU_PT_Indexes_AWS_ATD.QC_2855"/>
+        <class name="ATD.Orders_AWS_Delivery.QC_3302_CheckingTheLockOfNonExisten_LU_PT_Indexes_AWS_ATD.QC_2853"/>
+    </classes>
+    </test>
+
+
 </suite>
