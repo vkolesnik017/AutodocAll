@@ -52,7 +52,7 @@
             <class name="ATD.FiltersSorting.QC_52_FiltersSorting_byBrand.QC_8"/>
             <class name="ATD.FiltersSorting.QC_52_FiltersSorting_byBrand.QC_53"/>
             <class name="ATD.FiltersSorting.QC_52_FiltersSorting_byBrand.QC_54"/>
-            <class name="ATD.FiltersSorting.QC_52_FiltersSorting_byBrand.QC_55"/>
+<!--            <class name="ATD.FiltersSorting.QC_52_FiltersSorting_byBrand.QC_55"/> inactive-->
             <class name="ATD.FiltersSorting.QC_52_FiltersSorting_byBrand.QC_56"/>
             <class name="ATD.FiltersSorting.QC_52_FiltersSorting_byBrand.QC_1384"/>
             <class name="ATD.FiltersSorting.QC_52_FiltersSorting_byBrand.QC_2758"/>
@@ -81,8 +81,8 @@
 
     <test name="FiltersSorting_outputSorting">
         <classes>
-            <class name="ATD.FiltersSorting.QC_195_FiltersSorting_outputSorting.QC_226"/>
-            <class name="ATD.FiltersSorting.QC_195_FiltersSorting_outputSorting.QC_227"/>
+<!--            <class name="ATD.FiltersSorting.QC_195_FiltersSorting_outputSorting.QC_226"/> inactive-->
+<!--            <class name="ATD.FiltersSorting.QC_195_FiltersSorting_outputSorting.QC_227"/> inactive-->
             <class name="ATD.FiltersSorting.QC_195_FiltersSorting_outputSorting.QC_229"/>
             <class name="ATD.FiltersSorting.QC_195_FiltersSorting_outputSorting.QC_251"/>
             <class name="ATD.FiltersSorting.QC_195_FiltersSorting_outputSorting.QC_252"/>
