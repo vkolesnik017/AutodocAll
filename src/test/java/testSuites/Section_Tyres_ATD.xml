@@ -8,9 +8,9 @@
 
     <test name="QC_1038_CreatingTyresOrder">
         <classes>
-            <class name="ATD.Section_Tyres.QC_1038_CreatingTyresOrder.QC_1039"/>
-            <class name="ATD.Section_Tyres.QC_1038_CreatingTyresOrder.QC_1045"/>
-            <class name="ATD.Section_Tyres.QC_1038_CreatingTyresOrder.QC_1046"/>
+<!--            <class name="ATD.Section_Tyres.QC_1038_CreatingTyresOrder.QC_1039"/> inactive-->
+<!--            <class name="ATD.Section_Tyres.QC_1038_CreatingTyresOrder.QC_1045"/> inactive-->
+<!--            <class name="ATD.Section_Tyres.QC_1038_CreatingTyresOrder.QC_1046"/> inactive-->
         </classes>
     </test>
 

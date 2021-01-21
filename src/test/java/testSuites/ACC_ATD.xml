@@ -48,13 +48,6 @@
 
 
 
-    <test name="QC_1383_BlockFilterByBrandOnListingAccessories">
-        <classes>
-            <!--<class name="ATD.ACC.QC_1383_BlockFilterByBrandOnListingAccessories.QC_1385"/> -inactive-->
-        </classes>
-    </test>
-
-
     <test name="QC_1340_ListingAccessories">
         <classes>
             <class name="ATD.ACC.QC_1340_ListingAccessories.QC_1360"/>
@@ -94,8 +87,7 @@
 
     <test name="QC_2051_FilterBlockByGenericOnChemistryListing">
         <classes>
-            <class name="ATD.ACC.QC_2051_FilterBlockByGenericOnChemistryListing.QC_2058"/>
-            <class name="ATD.ACC.QC_2051_FilterBlockByGenericOnChemistryListing.QC_2060"/>
+<!--            <class name="ATD.ACC.QC_2051_FilterBlockByGenericOnChemistryListing.QC_2058"/> inactive-->
         </classes>
     </test>
 
