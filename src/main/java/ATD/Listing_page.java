@@ -790,12 +790,24 @@ public class Listing_page {
         return $(".branded-filter-sidebar__list li:nth-child(2) img");
     }
 
+    SelenideElement thirdBrandFilterButtonInSidebarName() {
+        return $(".branded-filter-sidebar__list li:nth-child(3) img");
+    }
+
     SelenideElement brandFilterButtonInSidebarButton() {
         return $(".branded-filter-sidebar__list label");
     }
 
     SelenideElement secondBrandFilterButtonInSidebarButton() {
         return $(".branded-filter-sidebar__list li:nth-child(2) label");
+    }
+
+    SelenideElement thirdBrandFilterButtonInSidebarButton() {
+        return $(".branded-filter-sidebar__list li:nth-child(3) label");
+    }
+
+    SelenideElement firstBrandFilterButtonInSidebarButton() {
+        return $(".branded-filter-sidebar__list li:nth-child(1) label");
     }
 
     SelenideElement brandFilterSecondButtonInSidebarName() {
