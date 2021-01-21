@@ -1,4 +1,4 @@
-package ATD.PrivateRoom.QC_2356_WishListBlock;
+package ATD.Wishlist.QC_2356_WishListBlock;
 
 import Common.DataBase;
 import ATD.Main_page_Logic;

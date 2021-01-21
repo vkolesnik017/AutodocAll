@@ -1,6 +1,6 @@
-package ATD.PrivateRoom.QC_2356_WishListBlock;
+package ATD.Wishlist.QC_2356_WishListBlock;
 
-import ATD.Search_page_Logic;
+import ATD.Tyre_form_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -11,35 +11,30 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.sql.SQLException;
-import java.util.List;
 
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2369 {
-
-    private Search_page_Logic searchPage = new Search_page_Logic();
-
+public class QC_2121 {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
     }
 
-    @DataProvider(name = "routes", parallel = true)
+    @DataProvider(name = "routes", parallel = false)
     Object[] dataProvider() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "tyre_form5,tyres_season13,tyres_brand8,tyres_group_season_brand2,tyres_size12,tyres_season_size13,tyres_season_dimension6,tyres_brand_size3,tyres_brand_dimension6");
 
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "main", "search31");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks presence number of added products on Wishlist icon in header")
-    public void testChecksPresenceNumberOfAddedProductsOnWishlistIcon(String route) throws SQLException {
+    @Description(value = "Test checking of adding out of stock tyres to WishList and the impossibility of adding a product to the cart is not in stock")
+    public void testCheckingOfAddingOutOfStockTyresToWishList(String route) {
         openPage(route);
-        List<String> artNumOfProduct = searchPage.presenceOfTecDocListing().addArtNumOfProductToList(3);
-        searchPage.addedProductToWishList(3).checkCountOfAddedProductToWishListInIcon(artNumOfProduct);
+        new Tyre_form_page_Logic().addedOutOfStockProductToWishList(1).goToWishListPage().clickOnGrayBtnOfProduct().clickOnGrayBtnOfProduct().presenceOfAvailablePopUp();
     }
 
     @AfterMethod

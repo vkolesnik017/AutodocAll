@@ -12,27 +12,4 @@
         </classes>
     </test>
 
-      <test name="QC_2356_WishListBlock">
-        <classes>
-            <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2362"/>
-            <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2365"/>
-            <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2366"/>
-            <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2368"/>
-            <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2369"/>
-            <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2370"/>
-            <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2371"/>
-            <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2372"/>
-            <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2373"/>
-            <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2375"/>
-            <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2376"/>
-            <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2396"/>
-            <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2398"/>
-            <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2399"/>
-            <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2402"/>
-            <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2569"/>
-            <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2571"/>
-            <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2121"/>
-        </classes>
-    </test>
-
 </suite>
