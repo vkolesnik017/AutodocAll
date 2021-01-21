@@ -1,4 +1,4 @@
-package ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD;
+package ATD.Orders_AWS_Delivery.QC_3302_CheckingTheLockOfNonExisten_LU_PT_Indexes_AWS_ATD;
 
 import ATD.Payment_handler_page_Logic;
 import ATD.Product_page_Logic;
@@ -18,9 +18,9 @@ import static ATD.CommonMethods.password;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2866 {
+public class QC_2864 {
 
-    private String mail = "QC_2866_autotestATD@mailinator.com";
+    private String mail = "QC_2864_autotestATD@mailinator.com";
 
     @BeforeClass
     void setUp() {
@@ -30,27 +30,26 @@ public class QC_2866 {
     @Test()
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks that Invalid Index is not saved after exiting an order in AWS. Portugal")
+    @Description(value = "Test checks that Invalid Index is not saved after exiting an order in AWS. Luxembourg")
 
     public void testInvalidIndexIsNotSavedAfterExitingAnOrderInAWS_LU() throws SQLException {
-        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "PT", "main", "product32"));
+        openPage(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", "LD", "main", "product32"));
         new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick()
                 .signIn(mail, password)
-                .fillingPostalCodeFieldJSForShipping("1111-111")
-                .chooseDeliveryCountryForShipping("PT")
+                .fillingPostalCodeFieldJSForShipping("1111")
+                .chooseDeliveryCountryForShipping("LD")
                 .fillFieldTelNumForShipping("100+001")
-                .fillFieldFirmNameForShipping("autotest")
-                .fillInCompanyIdFieldForCountryWhereIdNeeded("PT", "PT", "autotest")
-                .clickOnTheDesiredPaymentMethod("PT", "Bank")
+                .nextBtnClick()
+                .clickOnTheDesiredPaymentMethod("LD", "Bank")
                 .nextBtnClick()
                 .nextBtnClick();
         String orderNumber = new Payment_handler_page_Logic().getOrderNumber();
         new Order_aws(orderNumber).openOrderInAwsWithLogin()
-                .fillingFieldsPostalCodInBilling("0000-000")
-                .fillingFieldsPostalCodInShipping("0000-000")
+                .fillingFieldsPostalCodInBilling("0000")
+                .fillingFieldsPostalCodInShipping("0000")
                 .reSaveOrder()
                 .checkCurrentStatusInOrder("Neue Bestellung")
                 .checkPresenceExpectedElement(new Order_aws().errorIconInFieldPostalConForBilling())
@@ -59,8 +58,8 @@ public class QC_2866 {
                 .fillingFieldOrderId(orderNumber)
                 .clickSearchBtn()
                 .clickOnOrderLinc(orderNumber)
-                .checkPostalCodInBillingBlock("1111-111")
-                .checkPostalCodInShippingBlock("1111-111")
+                .checkPostalCodInBillingBlock("1111")
+                .checkPostalCodInShippingBlock("1111")
                 .reSaveOrder()
                 .checkCurrentStatusInOrder("Testbestellungen");
     }
@@ -69,5 +68,4 @@ public class QC_2866 {
     private void close() {
         closeWebDriver();
     }
-
 }

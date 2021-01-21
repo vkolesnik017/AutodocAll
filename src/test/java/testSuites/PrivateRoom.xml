@@ -6,12 +6,6 @@
         <listener class-name="Common.ProjectListener"/>
     </listeners>
 
-    <test name="PrivateRoom">
-        <classes>
-            <!--<class name="ATD.PrivateRoom.QC_597"/> - inactive-->
-        </classes>
-    </test>
-
       <test name="QC_2356_WishListBlock">
         <classes>
             <class name="ATD.PrivateRoom.QC_2356_WishListBlock.QC_2362"/>

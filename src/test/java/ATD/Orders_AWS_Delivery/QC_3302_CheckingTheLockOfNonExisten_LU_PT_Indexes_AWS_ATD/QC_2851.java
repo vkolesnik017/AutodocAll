@@ -1,7 +1,6 @@
-package ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD;
+package ATD.Orders_AWS_Delivery.QC_3302_CheckingTheLockOfNonExisten_LU_PT_Indexes_AWS_ATD;
 
-import ATD.Payment_handler_page_Logic;
-import ATD.Product_page_Logic;
+import ATD.*;
 import AWS.Order_aws;
 import Common.DataBase;
 import io.qameta.allure.Description;
@@ -14,16 +13,13 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
-import static ATD.CommonMethods.openPage;
-import static ATD.CommonMethods.password;
+import static ATD.CommonMethods.*;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2855 {
+public class QC_2851 {
 
-    private String mail = "QC_2855_autotestATD@mailinator.com";
-    private Order_aws order_aws = new Order_aws();
-
+    private String mail = "QC_2851_autotestATD@mailinator.com";
     private String orderNumber;
 
     @BeforeClass
@@ -50,38 +46,32 @@ public class QC_2855 {
     @DataProvider(name = "indexes")
     Object[] dataProviderProducts() {
         return new Object[][]{
+                {"9999-001"},
+                {"9999-550"},
+                {"9999-999"},
+                {"9999-000"},
+                {"9999-998"},
                 {"0001-000"},
                 {"0111-111"},
                 {"0550-505"},
                 {"0999-999"},
                 {"0999-000"},
                 {"0998-111"},
-                {"0000-000"},
-                {"9999-001"},
-                {"9999-550"},
-                {"9999-999"},
-                {"9999-998"},
-                {"9999-000"}
+                {"0000-000"}
         };
     }
 
     @Test(dataProvider = "indexes")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checking ban on entering non-existent index when editing order in aws for Portugal")
-    public void testCheckingBAnOnEnteringNonexistentIndexWhenEditingOrderInAWS_PT(String indexes) {
+    @Description(value = "Test checking validation of indexes when editing order in AWS for Portugal ")
+    public void testCheckingValidationOfIndexesWhenEditingOrderInAws_PT(String indexes) {
         new Order_aws().fillingFieldsPostalCodInBilling(indexes)
-                .fillingFieldsPostalCodInShipping("1111-111")
-                .reSaveOrder()
-                .checkCurrentStatusInOrder("Neue Bestellung")
-                .checkPresenceExpectedElement(order_aws.errorIconInFieldPostalConForBilling())
-                .checkAbsenceExpectedElement(order_aws.errorIconInFieldPostalConForShipping())
-                .fillingFieldsPostalCodInBilling("1111-111")
                 .fillingFieldsPostalCodInShipping(indexes)
                 .reSaveOrder()
                 .checkCurrentStatusInOrder("Neue Bestellung")
-                .checkPresenceExpectedElement(order_aws.errorIconInFieldPostalConForShipping())
-                .checkAbsenceExpectedElement(order_aws.errorIconInFieldPostalConForBilling());
+                .checkPresenceExpectedElement(new Order_aws().errorIconInFieldPostalConForBilling())
+                .checkPresenceExpectedElement(new Order_aws().errorIconInFieldPostalConForShipping());
     }
 
     @AfterClass

@@ -1,4 +1,4 @@
-package ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD;
+package ATD.Orders_AWS_Delivery.QC_3302_CheckingTheLockOfNonExisten_LU_PT_Indexes_AWS_ATD;
 
 import ATD.Payment_handler_page_Logic;
 import ATD.Product_page_Logic;

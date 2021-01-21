@@ -1,4 +1,4 @@
-package ATD.Basket.QC_2831_CheckingTheLockOfNonExisten_LU_PT_Indexes_ATD;
+package ATD.Orders_AWS_Delivery.QC_3302_CheckingTheLockOfNonExisten_LU_PT_Indexes_AWS_ATD;
 
 import ATD.Payment_handler_page_Logic;
 import ATD.Product_page_Logic;
@@ -19,9 +19,9 @@ import static ATD.CommonMethods.password;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2858 {
+public class QC_2848 {
 
-    private String mail = "QC_2858_autotestATD@mailinator.com";
+    private String mail = "QC_2848_autotestATD@mailinator.com";
     private String orderNumber;
 
     @BeforeClass
@@ -35,7 +35,7 @@ public class QC_2858 {
                 .signIn(mail, password)
                 .fillingPostalCodeFieldJSForShipping("1111")
                 .chooseDeliveryCountryForShipping("LD")
-                .fillFieldTelNumForShipping("200+002")
+                .fillFieldTelNumForShipping("100+001")
                 .nextBtnClick()
                 .clickOnTheDesiredPaymentMethod("LD", "Bank")
                 .nextBtnClick()
@@ -47,32 +47,33 @@ public class QC_2858 {
     @DataProvider(name = "indexes")
     Object[] dataProviderProducts() {
         return new Object[][]{
-                {"1001"},
-                {"9999"},
-                {"5238"},
-                {"9998"},
-                {"1111"},
-                {"1000"}
+                {"0001"},
+                {"0550"},
+                {"0999"},
+                {"0998"},
+                {"0000"}
         };
     }
 
     @Test(dataProvider = "indexes")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checking validation of indexes when editing order in AWS for Luxembourg. Positive Case")
-    public void testCheckingValidationOfIndexesWhenEditingOrderInAws_LU_PositiveCase(String indexes) {
+    @Description(value = "Test checking validation of indexes when editing order in AWS for Luxembourg")
+    public void testCheckingValidationOfIndexesWhenEditingOrderInAws_LU(String indexes) {
         new Order_aws().fillingFieldsPostalCodInBilling(indexes)
                 .fillingFieldsPostalCodInShipping(indexes)
                 .reSaveOrder()
-                .checkCurrentStatusInOrder("Testbestellungen")
-                .checkAbsenceExpectedElement(new Order_aws().errorIconInFieldPostalConForBilling())
-                .checkAbsenceExpectedElement(new Order_aws().errorIconInFieldPostalConForShipping())
-                .checkPostalCodInBillingBlock(indexes)
-                .checkPostalCodInShippingBlock(indexes);
+                .checkCurrentStatusInOrder("Neue Bestellung")
+                .checkPresenceExpectedElement(new Order_aws().errorIconInFieldPostalConForBilling())
+                .checkPresenceExpectedElement(new Order_aws().errorIconInFieldPostalConForShipping());
     }
 
     @AfterClass
     private void close() {
+        new Order_aws().fillingFieldsPostalCodInBilling("1111")
+                .fillingFieldsPostalCodInShipping("1111")
+                .reSaveOrder()
+                .checkCurrentStatusInOrder("Testbestellungen");
         closeWebDriver();
     }
 }
