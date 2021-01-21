@@ -50,13 +50,7 @@
         </classes>
     </test>
 
-    <test name="QC_3174_OilSelectors">
-        <classes>
-            <class name="ATD.Selectors.QC_3174_OilSelectors.QC_3173"/>
-        </classes>
-    </test>
-
-    <test name="QC_87_Trucks">
+     <test name="QC_87_Trucks">
         <classes>
             <class name="ATD.Selectors.QC_87_Trucks.QC_88"/>
             <class name="ATD.Selectors.QC_87_Trucks.QC_89"/>
