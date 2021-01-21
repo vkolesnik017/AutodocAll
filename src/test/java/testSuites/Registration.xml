@@ -12,6 +12,8 @@
             <class name="ATD.Registration.QC_2703_RegistrationLogin.QC_1635"/>
             <class name="ATD.Registration.QC_2703_RegistrationLogin.QC_1639"/>
             <class name="ATD.Registration.QC_2703_RegistrationLogin.QC_2108"/>
+            <class name="ATD.Registration.QC_2703_RegistrationLogin.QC_848"/>
+            <class name="ATD.Registration.QC_2703_RegistrationLogin.QC_849"/>
         </classes>
     </test>
 

@@ -21,8 +21,8 @@
             <class name="ATD.Selector_Tires.QC_1104_TyresSelector.QC_1233"/>
             <class name="ATD.Selector_Tires.QC_1104_TyresSelector.QC_1237"/>
             <class name="ATD.Selector_Tires.QC_1104_TyresSelector.QC_1240"/>
-            <!--<class name="ATD.Selector_Tires.QC_1104_TyresSelector.QC_1248"/>-->
-            <!--<class name="ATD.Selector_Tires.QC_1104_TyresSelector.QC_1258"/>-->
+            <class name="ATD.Selector_Tires.QC_1104_TyresSelector.QC_1248"/>
+            <class name="ATD.Selector_Tires.QC_1104_TyresSelector.QC_1258"/>
             <!--<class name="ATD.Selector_Tires.QC_1104_TyresSelector.QC_1268"/>-->
             <class name="ATD.Selector_Tires.QC_1104_TyresSelector.QC_1287"/>
             <class name="ATD.Selector_Tires.QC_1104_TyresSelector.QC_1288"/>
