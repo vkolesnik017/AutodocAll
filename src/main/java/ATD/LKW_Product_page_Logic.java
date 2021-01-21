@@ -61,8 +61,7 @@ public class LKW_Product_page_Logic extends LKW_Product_page {
 
     @Step("checking the compatibility of goods and cars .LKW_Product_page")
     public LKW_Product_page_Logic checkCompatibilityProductAndTruck() {
-        waitWhileRouteContainsExpected("product");
-        breadCrumbsBlock().shouldBe(visible.because("Product " +url()+" don't contains bread crumbs block"));
+        mainTitle().shouldBe(visible);
         if (compatibilityTruckBlock().isDisplayed()) {
             linkOfCompatibilityTruckAndProduct().shouldBe(visible);
         } else {
