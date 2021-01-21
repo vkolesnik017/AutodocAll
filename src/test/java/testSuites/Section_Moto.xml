@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Section_Moto" parallel="methods" thread-count="3" data-provider-thread-count="2">
+
+    <listeners>
+        <listener class-name="Common.ProjectListener"/>
+    </listeners>
+
+    <test name="QC_880_BlockOfDeliveryAndPaymentMethods">
+        <classes>
+            <class name="ATD.Section_Moto.QC_880_BlockOfDeliveryAndPaymentMethods.QC_887"/>
+        </classes>
+    </test>
+
+    <test name="QC_834_NavigationBlockAtHeaders">
+        <classes>
+            <class name="ATD.Section_Moto.QC_834_NavigationBlockAtHeader.QC_835"/>
+            <class name="ATD.Section_Moto.QC_834_NavigationBlockAtHeader.QC_842"/>
+        </classes>
+    </test>
+
+    <test name="QC_730_ProductPage">
+        <classes>
+            <class name="ATD.Section_Moto.QC_730_ProductPage.QC_732"/>
+            <class name="ATD.Section_Moto.QC_730_ProductPage.QC_733"/>
+            <class name="ATD.Section_Moto.QC_730_ProductPage.QC_734"/>
+            <class name="ATD.Section_Moto.QC_730_ProductPage.QC_737"/>
+        </classes>
+    </test>
+
+
+</suite>

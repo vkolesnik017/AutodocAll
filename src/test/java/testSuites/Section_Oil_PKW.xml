@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Section_Oil_PKW" parallel="methods" thread-count="3" data-provider-thread-count="2">
+
+    <listeners>
+        <listener class-name="Common.ProjectListener"/>
+    </listeners>
+
+    <test name="QC_1255_BreadCrumbsBlockInListing">
+        <classes>
+            <class name="PKW.Section_Oil.QC_1255_BreadCrumbsBlockInListing.QC_1256"/>
+            <class name="PKW.Section_Oil.QC_1255_BreadCrumbsBlockInListing.QC_1257"/>
+            <class name="PKW.Section_Oil.QC_1255_BreadCrumbsBlockInListing.QC_1259"/>
+        </classes>
+    </test>
+
+    <test name="QC_1241_PaymentMethodsBlockInListing">
+        <classes>
+            <class name="PKW.Section_Oil.QC_1241_PaymentMethodsBlockInListing.QC_1242"/>
+        </classes>
+    </test>
+
+    <test name="QC_1243_AdvantagesBlockInOilListings">
+        <classes>
+            <class name="PKW.Section_Oil.QC_1243_AdvantagesBlockInOilListings.QC_1244"/>
+            <class name="PKW.Section_Oil.QC_1243_AdvantagesBlockInOilListings.QC_1246"/>
+            <class name="PKW.Section_Oil.QC_1243_AdvantagesBlockInOilListings.QC_1247"/>
+        </classes>
+    </test>
+
+    <test name="QC_1249_MainHeadlineBlockInListings">
+        <classes>
+            <class name="PKW.Section_Oil.QC_1249_MainHeadlineBlockInListings.QC_1250"/>
+            <class name="PKW.Section_Oil.QC_1249_MainHeadlineBlockInListings.QC_1251"/>
+            <class name="PKW.Section_Oil.QC_1249_MainHeadlineBlockInListings.QC_1252"/>
+        </classes>
+    </test>
+
+    <test name="QC_1269_RelinkingBlockInListings">
+        <classes>
+            <class name="PKW.Section_Oil.QC_1269_RelinkingBlockInListings.QC_1270"/>
+            <class name="PKW.Section_Oil.QC_1269_RelinkingBlockInListings.QC_1279"/>
+        </classes>
+    </test>
+
+    <test name="QC_1217_BlockFilterByTolerance">
+        <classes>
+            <class name="PKW.Section_Oil.QC_1217_BlockFilterByTolerance.QC_1220"/>
+            <!--<class name="PKW.Section_Oil.QC_1217_BlockFilterByTolerance.QC_1221"/>-->
+            <class name="PKW.Section_Oil.QC_1217_BlockFilterByTolerance.QC_1222"/>
+            <class name="PKW.Section_Oil.QC_1217_BlockFilterByTolerance.QC_1223"/>
+            <class name="PKW.Section_Oil.QC_1217_BlockFilterByTolerance.QC_1224"/>
+        </classes>
+    </test>
+
+    <test name="QC_1225_SelectorInOilListings">
+        <classes>
+            <class name="PKW.Section_Oil.QC_1225_SelectorInOilListings.QC_1226"/>
+            <class name="PKW.Section_Oil.QC_1225_SelectorInOilListings.QC_1227"/>
+            <class name="PKW.Section_Oil.QC_1225_SelectorInOilListings.QC_1228"/>
+            <class name="PKW.Section_Oil.QC_1225_SelectorInOilListings.QC_1229"/>
+        </classes>
+    </test>
+
+    <test name="QC_939_BlockOfPopularBrandsOnMainPage">
+        <classes>
+            <class name="PKW.Section_Oil.QC_939_BlockOfPopularBrandsOnMainPage.QC_940"/>
+            <class name="PKW.Section_Oil.QC_939_BlockOfPopularBrandsOnMainPage.QC_941"/>
+        </classes>
+    </test>
+
+    <test name="QC_952_ToleranceBlockOfBrandsOnMainPage">
+        <classes>
+            <class name="PKW.Section_Oil.QC_952_ToleranceBlockOfBrandsOnMainPage.QC_954"/>
+            <class name="PKW.Section_Oil.QC_952_ToleranceBlockOfBrandsOnMainPage.QC_955"/>
+        </classes>
+    </test>
+
+    <test name="QC_943_ViscosityBlockOnOilMainPage">
+        <classes>
+            <class name="PKW.Section_Oil.QC_943_ViscosityBlockOnOilMainPage.QC_945"/>
+            <class name="PKW.Section_Oil.QC_943_ViscosityBlockOnOilMainPage.QC_946"/>
+        </classes>
+    </test>
+
+    <test name="QC_944_TopProductsBlockOnMainPage">
+        <classes>
+            <class name="PKW.Section_Oil.QC_944_TopProductsBlockOnMainPage.QC_947"/>
+            <class name="PKW.Section_Oil.QC_944_TopProductsBlockOnMainPage.QC_948"/>
+            <class name="PKW.Section_Oil.QC_944_TopProductsBlockOnMainPage.QC_949"/>
+        </classes>
+    </test>
+
+    <test name="QC_958_SpecificationBlockOnMainPage">
+        <classes>
+            <class name="PKW.Section_Oil.QC_958_SpecificationBlockOnMainPage.QC_959"/>
+            <class name="PKW.Section_Oil.QC_958_SpecificationBlockOnMainPage.QC_960"/>
+        </classes>
+    </test>
+
+    <test name="QC_1162_MainIssueBlockOfListing">
+        <classes>
+            <class name="PKW.Section_Oil.QC_1162_MainIssueBlockOfListing.QC_1163"/>
+            <class name="PKW.Section_Oil.QC_1162_MainIssueBlockOfListing.QC_1164"/>
+        </classes>
+    </test>
+
+    <test name="QC_926_KbaBlockOnMainOilPage">
+        <classes>
+            <class name="PKW.Section_Oil.QC_926_KbaBlockOnMainOilPage.QC_922"/>
+            <class name="PKW.Section_Oil.QC_926_KbaBlockOnMainOilPage.QC_927"/>
+            <class name="PKW.Section_Oil.QC_926_KbaBlockOnMainOilPage.QC_930"/>
+            <class name="PKW.Section_Oil.QC_926_KbaBlockOnMainOilPage.QC_931"/>
+            <class name="PKW.Section_Oil.QC_926_KbaBlockOnMainOilPage.QC_934"/>
+            <class name="PKW.Section_Oil.QC_926_KbaBlockOnMainOilPage.QC_938"/>
+        </classes>
+    </test>
+
+    <test name="QC_964_OilTypesBlockOnMainOilPage">
+        <classes>
+            <class name="PKW.Section_Oil.QC_964_OilTypesBlockOnMainOilPage.QC_965"/>
+            <class name="PKW.Section_Oil.QC_964_OilTypesBlockOnMainOilPage.QC_966"/>
+        </classes>
+    </test>
+</suite>
