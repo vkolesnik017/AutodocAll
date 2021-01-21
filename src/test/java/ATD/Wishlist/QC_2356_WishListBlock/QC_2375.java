@@ -1,4 +1,4 @@
-package ATD.PrivateRoom.QC_2356_WishListBlock;
+package ATD.Wishlist.QC_2356_WishListBlock;
 
 import ATD.Cart_page_Logic;
 import ATD.Product_page_Logic;

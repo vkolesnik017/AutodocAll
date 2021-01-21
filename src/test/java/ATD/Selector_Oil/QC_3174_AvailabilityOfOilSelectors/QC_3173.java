@@ -1,4 +1,4 @@
-package ATD.Selectors.QC_3174_OilSelectors;
+package ATD.Selector_Oil.QC_3174_AvailabilityOfOilSelectors;
 
 import ATD.*;
 import Common.SetUp;

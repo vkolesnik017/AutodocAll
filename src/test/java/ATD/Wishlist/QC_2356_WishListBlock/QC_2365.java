@@ -1,6 +1,7 @@
-package ATD.PrivateRoom.QC_2356_WishListBlock;
+package ATD.Wishlist.QC_2356_WishListBlock;
 
 import ATD.Main_page_Logic;
+import ATD.Maker_car_list_page_Logic;
 import Common.DataBase;
 import Common.SetUp;
 import io.qameta.allure.Description;
@@ -18,7 +19,9 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2362 {
+public class QC_2365 {
+    private String email = "QC_2365_WishListElements@mailinator.com";
+
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -26,18 +29,21 @@ public class QC_2362 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "main", "main");
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "main");
 
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks elements of WishList when user is not logged in")
-    public void testChecksElementsOfWishListWhenUserIsNotLoggedIn(String route) throws SQLException {
+    @Description(value = "Test checks elements of WishList when user is logged in")
+    public void testChecksElementsOfWishlistWhenUserIsLoggedIn(String route) throws SQLException {
         openPage(route);
-        new Main_page_Logic().goToWishListPage().checkElementsWithNotLoggedUser().clickOnWishListItemInSidebar().closeLoginPopUp().goToCatalog();
-        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "categories"));
+        new Main_page_Logic().loginAndTransitionToProfilePlusPage(email).goToWishListBlock().checkElementsWithLoggedUser().
+                goToCatalog().presenceOfTecDocCatalog().selectVehicleInSelector("121", "1994", "8799");
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "maker_car_list3"));
+        new Maker_car_list_page_Logic().goToWishListWithLoggedUser().goToCatalog();
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "maker_car_list3"));
     }
 
     @AfterMethod
