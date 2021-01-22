@@ -1,9 +1,9 @@
-package ATD.Orders_AWS_Delivery.QC_1873_SafeOrder_ATD;
+package ATD.Basket.QC_1873_SafeOrder_ATD;
 
 import ATD.CartAllData_page_Logic;
 import ATD.Product_page_Logic;
-import AWS.Order_aws;
 import Common.SetUp;
+import AWS.Order_aws;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -19,9 +19,10 @@ import static ATD.CommonMethods.*;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2343 {
+public class QC_1876 {
 
-    private String mail = "QC_2343_autotest@mailinator.com";
+    private String mail = "QC_1876_autotest@mailinator.com";
+
 
     @BeforeClass
     void setUp() {
@@ -30,27 +31,24 @@ public class QC_2343 {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp("ATD").setUpShopsWithSubroute("prod", "DE,FR", "main", "product32");
+        return new SetUp("ATD").setUpShopsWithSubroute("prod", "AT,EN,ES,IT,PT,NL,DK,FI,SE,PL,HU,CZ,BG,GR,RO,SK,BE,LD", "main", "product32");
     }
 
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks order with SO included on basket page FR / DE language versions.")
-    public void testOrderWithSO_IncludedOnBasketPage(String route) throws SQLException {
+    @Description(value = "Test checks default checkbox is safe order.")
+    public void testDefaultCheckboxIsSafeOrder(String route) throws SQLException {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
-        float totalPriceInAllData =  new Product_page_Logic().addProductToCart()
+        float totalPriceInAllData = new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
-                .checkThatSafeOrderCheckboxIsNotSelected()
-                .clickSafeOrderCheckbox()
-                .checkPresenceSOInSummeryBlock()
-                .checkTotalPriceIncludedSO()
+                .checkAbsenceSafeOrderBlock()
                 .nextButtonClick()
                 .signIn(mail, password)
-                .fillAllFieldsAndFirmForShipping(shop, "12345", "autotest","autotest")
-                .fillInCompanyIdFieldForCountryWhereIdNeeded(shop, "FR", "autotest")
+                .fillAllFieldsAndDefaultPostalCode("autotest", "autotest", "autotest", "autotest", shop,"autotest","autotest")
+                .fillInCompanyIdFieldForCountryWhereIdNeeded(shop, shop, "123456")
                 .clickOnTheDesiredPaymentMethod(shop, "Bank")
                 .nextBtnClick()
                 .checkThatSafeOrderCheckboxIsSelected()
@@ -63,10 +61,10 @@ public class QC_2343 {
                 .checkThatStatusSafeOrderIsOn()
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceInAllData, totalPriceInAWS);
-        totalPriceInAWS = order_aws.reSaveOrder()
+        float totalPriceInAwsAfterReSave = order_aws.reSaveOrder()
                 .checkThatStatusSafeOrderIsOn()
                 .getTotalPriceOrderAWS();
-        Assert.assertEquals(totalPriceInAllData, totalPriceInAWS);
+        Assert.assertEquals(totalPriceInAwsAfterReSave, totalPriceInAWS);
     }
 
     @AfterMethod
