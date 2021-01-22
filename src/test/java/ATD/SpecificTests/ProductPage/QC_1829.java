@@ -1,4 +1,4 @@
-package ATD.SpecificTests;
+package ATD.SpecificTests.ProductPage;
 
 import Common.Excel;
 import ATD.Product_page_Logic;
