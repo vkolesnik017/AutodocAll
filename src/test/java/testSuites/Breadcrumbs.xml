@@ -36,6 +36,7 @@
             <class name="ATD.Breadcrumbs.QC_2683_BreadcrumbsBlock.QC_70"/>
             <class name="ATD.Breadcrumbs.QC_2683_BreadcrumbsBlock.QC_71"/>
             <class name="ATD.Breadcrumbs.QC_2683_BreadcrumbsBlock.QC_72"/>
+            <class name="ATD.Breadcrumbs.QC_2683_BreadcrumbsBlock.QC_2775"/>
         </classes>
     </test>
 
