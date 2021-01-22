@@ -26,7 +26,7 @@ public class QC_2413 {
         return new SetUp("ATD").setUpShop("prod", "DE");
     }
 
-    @Test(dataProvider = "route")
+    @Test(dataProvider = "route", enabled = false) //TODO defect SHOP-936
     @Owner(value = "LavrynenkoOlha")
     @Flaky
     @Description(value = "Test checks elements and functionality on the Presse page")
