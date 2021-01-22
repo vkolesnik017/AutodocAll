@@ -8,7 +8,7 @@
 
     <test name="QC_1829_CheckingQuanityInProductCounter">
         <classes>
-            <class name="ATD.SpecificTests.QC_1829">
+            <class name="ATD.SpecificTests.ProductPage.QC_1829">
             </class>
         </classes>
     </test>

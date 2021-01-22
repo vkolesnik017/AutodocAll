@@ -1,4 +1,4 @@
-package ATD.Section_Moto.QC_880_BlockOfDeliveryAndPaymentMethods;
+package ATD.General_Common.QC_880_BlockOfDeliveryAndPaymentMethods;
 
 import ATD.Moto_main_page_Logic;
 import Common.SetUp;

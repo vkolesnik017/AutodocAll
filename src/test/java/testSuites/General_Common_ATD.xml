@@ -67,4 +67,12 @@
             <class name="ATD.General_Common.QC_2320_StaticPages.QC_2414"/>
         </classes>
     </test>
+
+    <test name="QC_880_BlockOfDeliveryAndPaymentMethods">
+        <classes>
+            <class name="ATD.General_Common.QC_880_BlockOfDeliveryAndPaymentMethods.QC_887"/>
+        </classes>
+    </test>
+
+
 </suite>

@@ -37,6 +37,22 @@
         </classes>
     </test>
 
+    <test name="QC_1873_SafeOrder_ATD">
+        <classes>
+            <class name="ATD.Basket.QC_1873_SafeOrder_ATD.QC_1874"/>
+            <class name="ATD.Basket.QC_1873_SafeOrder_ATD.QC_1875"/>
+            <class name="ATD.Basket.QC_1873_SafeOrder_ATD.QC_1877"/>
+            <class name="ATD.Basket.QC_1873_SafeOrder_ATD.QC_1878"/>
+            <class name="ATD.Basket.QC_1873_SafeOrder_ATD.QC_1879"/>
+            <class name="ATD.Basket.QC_1873_SafeOrder_ATD.QC_1880"/>
+            <class name="ATD.Basket.QC_1873_SafeOrder_ATD.QC_1881"/>
+            <class name="ATD.Basket.QC_1873_SafeOrder_ATD.QC_1876"/>
+            <class name="ATD.Basket.QC_1873_SafeOrder_ATD.QC_2346"/>
+            <class name="ATD.Basket.QC_1873_SafeOrder_ATD.QC_2343"/>
+            <class name="ATD.Basket.QC_1873_SafeOrder_ATD.QC_2347"/>
+        </classes>
+    </test>
+
     <test name="QC_1882_Login_Registration_PasswordRecovery_ATD">
         <classes>
             <class name="ATD.Basket.QC_1882_Login_Registration_PasswordRecovery_ATD.QC_1883"/>
