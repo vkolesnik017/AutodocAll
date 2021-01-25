@@ -26,7 +26,7 @@ public class QC_1646 {
         setUpBrowser(false, "chrome", "77.0",false);
     }
 
-    @DataProvider(name = "routesWithBlocksOfTopProducts", parallel = false)
+    @DataProvider(name = "routesWithBlocksOfTopProducts", parallel = true)
     Object[] routesWithBlocksOfTopProducts() throws SQLException {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "categories_maker,group_list,group_list_body,group_list_drive," +
                 "group_list_fuel,group_list_year,group_list_hp,model_maker_list,model_maker_list_year,model_maker_list_hp,maker_car_list,category_name,category_maker,category_maker_body,category_maker_drive," +
