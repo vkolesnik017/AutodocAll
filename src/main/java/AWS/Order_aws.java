@@ -32,7 +32,7 @@ public class Order_aws {
     private String url = "https://aws.autodoc.de/order/view/";
 
     private SelenideElement orderID() {
-        return $x("//div[@class='col-md-6 col-sm-6']//div[1]//div[2]//div[10]");
+        return $x("//strong[text()='ID Заказа']/..");
     }
 
     private SelenideElement filterHeader() {
