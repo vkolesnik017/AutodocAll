@@ -50,7 +50,8 @@ public class QC_1929 {
                 .cartClick()
                 .nextButtonClick()
                 .passwordRecoveryRequestFromCart(mail);
-        webMail.openMail(mail, passwordForMail).subjectLetter(1).shouldHave(text("Setzen Sie das Passwort"));
+        webMail.openMail(mail, passwordForMail)
+                .subjectLetter(1).shouldHave(text("Setzen Sie das Passwort"));
         webMail.checkPresenceUnderFirstLetter()
                 .openLetter(1)
                 .clickLinkRecoveryPasswordInLetter()
