@@ -38,7 +38,8 @@ public class QC_112 {
         new LKW_Category_car_list_page_Logic()
                 .selectBrandFromFilterOfBrands("lkw_category_car_list21", "39")
                 .selectGenericFilter("lkw_category_car_list29", "407")
-                .checkOfPresenceInstallationSide()
+                .selectInstallationSide(0)
+                .checkOfPresenceInstallationSide("Hinterachse")
                 .checkOfPresenceSelectedBrand("TEXTAR")
                 .checkOfPresenceSelectingGeneric("Warnkontakt, Bremsbelagverschleiß");
     }

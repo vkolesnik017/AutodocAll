@@ -135,8 +135,8 @@
         <classes>
             <class name="ATD.Basket.QC_2915_OptionalFieldFiscalCodeForRomaniaItalyPortugal.QC_2928"/>
             <class name="ATD.Basket.QC_2915_OptionalFieldFiscalCodeForRomaniaItalyPortugal.QC_2930"/>
+            <class name="ATD.Basket.QC_2915_OptionalFieldFiscalCodeForRomaniaItalyPortugal.QC_2971"/>
         </classes>
     </test>
-
 
 </suite>

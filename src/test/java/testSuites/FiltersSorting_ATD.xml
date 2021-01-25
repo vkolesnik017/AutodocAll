@@ -64,7 +64,7 @@
         </classes>
     </test>
 
-    <test name="FiltersSorting_resetLabel">
+    <test name="QC_174_FiltersSorting_resetLabel">
         <classes>
             <class name="ATD.FiltersSorting.QC_174_FiltersSorting_resetLabel.QC_175"/>
         </classes>
@@ -79,7 +79,7 @@
         </classes>
     </test>
 
-    <test name="FiltersSorting_outputSorting">
+    <test name="QC_195_FiltersSorting_outputSorting">
         <classes>
 <!--            <class name="ATD.FiltersSorting.QC_195_FiltersSorting_outputSorting.QC_226"/> inactive-->
 <!--            <class name="ATD.FiltersSorting.QC_195_FiltersSorting_outputSorting.QC_227"/> inactive-->
@@ -93,7 +93,7 @@
         </classes>
     </test>
 
-    <!--<test name="FiltersSorting_byPrice">--> <!-- Filter by price is inactive-->
+    <!--<test name="QC_404_FiltersSorting_byPrice">--> <!-- Filter by price is inactive-->
     <!--<classes>-->
     <!--<class name="ATD.FiltersSorting.QC_404_FiltersSorting_byPrice.QC_405"/>-->
     <!--<class name="ATD.FiltersSorting.QC_404_FiltersSorting_byPrice.QC_407"/>-->

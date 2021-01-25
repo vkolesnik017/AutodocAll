@@ -898,7 +898,6 @@ public class Product_page {
 
     SelenideElement textAboutCountOnProduct() {return $x("//*[@class='product-set-info']");}
 
-
     SelenideElement dangerousInfoBlock() {return $x("//div[contains(@class,'dangerous-goods js-dangerous-goods')]");}
 
     SelenideElement dangerousSignalWord() {return $x("//div[@class='dangerous-goods__title']");}
@@ -930,4 +929,9 @@ public class Product_page {
     SelenideElement btnCloseBasketPopUp() {return $x("//div[@class='popup-other-cat__close']");}
 
     SelenideElement valuesOfProductUnderTitle() {return $x("//span[@class='product-block__description__title-small']");}
-    }
+
+    SelenideElement headlineOfFeedBackBlock() {return $x("//div[@class='product-feedback']/div[1]");}
+
+    ElementsCollection interestingArticleLinks() {return $$x("//div[@class='product-anchor-links']//a").filter(visible);}
+
+  }
