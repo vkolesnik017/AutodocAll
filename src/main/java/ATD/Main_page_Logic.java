@@ -932,9 +932,9 @@ public class Main_page_Logic extends Main_page {
     @Step("Checks link transitions on social networks in footer. Main_page")
     public Main_page_Logic checkTransitionToSocialNetwork() {
         CommonMethods commonMethods = new CommonMethods();
-        String facebook = "https://www.facebook.com/autodoc.de/";
+        String facebook = "https://www.facebook.com";
         String youTube = "https://www.youtube.com/channel/UCH1orNkIIGZ1jJRjhgY4JeA";
-        String instagram = "https://www.instagram.com/";
+        String instagram = "https://www.instagram.com";
         footerForm().scrollTo();
         facebookButton().click();
         commonMethods.checkingUrlAndCloseTab(facebook);

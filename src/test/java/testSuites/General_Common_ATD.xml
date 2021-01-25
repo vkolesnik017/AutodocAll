@@ -65,6 +65,7 @@
             <class name="ATD.General_Common.QC_2320_StaticPages.QC_2038"/>
             <class name="ATD.General_Common.QC_2320_StaticPages.QC_2570"/>
             <class name="ATD.General_Common.QC_2320_StaticPages.QC_2414"/>
+            <class name="ATD.General_Common.QC_2320_StaticPages.QC_2413"/>
         </classes>
     </test>
 
