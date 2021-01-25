@@ -39,7 +39,7 @@ public class QC_1646 {
     @Description(value = "The test checks products not in stock in blocks of top products")
     public void testProductsNotInStockInBlockOfTopProducts(String route) {
         openPage(route);
-        commonMethods.scrollToBlockOfTopProducts().checksProductsNotInStockInBlockOfTopProducts();
+        commonMethods.scrollToTitleOfBlockOfTopProducts().checksProductsNotInStockInBlockOfTopProducts();
     }
 
     @AfterMethod

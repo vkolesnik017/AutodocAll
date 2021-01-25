@@ -38,7 +38,7 @@ public class QC_1647 {
     @Description(value = "The test checks adding paired products to basket from block of top products")
     public void testAddingPairedProductsToBasketFromBlockOfTopProducts(String route) {
         openPage(route);
-        new CommonMethods().scrollToBlockOfTopProducts();
+        new CommonMethods().scrollToTitleOfBlockOfTopProducts();
         clickOfBuyBtnForAllPages();
         new Product_page_Logic().checksPresentProductInCartPopup()
                 .cartClick()

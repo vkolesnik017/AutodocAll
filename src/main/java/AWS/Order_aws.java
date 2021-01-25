@@ -1213,7 +1213,9 @@ public class Order_aws {
 
     @Step("Compares the actual shipping price with the expected one. Order_aws")
     public Order_aws compereActualDeliveryCostWithExpected(Float expectedDeliveryCost) {
-        Assert.assertEquals(getDeliveryCostInOrderFromDeliveryBlock(), expectedDeliveryCost);
+        Float deliveryPrice = getDeliveryCostInOrderFromDeliveryBlock();
+        float res = roundOfTheCost(expectedDeliveryCost, deliveryPrice);
+        Assert.assertEquals(res, deliveryPrice);
         return this;
     }
 
