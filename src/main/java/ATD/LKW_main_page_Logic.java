@@ -254,8 +254,6 @@ public class LKW_main_page_Logic extends LKW_main_page {
             titleOfTopParentCategoryInParentBlock().get(i).shouldBe(visible);
             linksOfChildCategoriesBlock().get(i).shouldBe(visible);
             if (i == 0) {
-                linksOfChildCategories(i + 1).shouldHaveSize(1);
-            } else {
                 linksOfChildCategories(i + 1).shouldHaveSize(3);
             }
         }

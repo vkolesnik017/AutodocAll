@@ -58,7 +58,7 @@ public class LKW_Search_page_Logic extends LKW_Search_page {
 
         List<String> attributeOfDangerousIcon = new ArrayList<>();
         for (int i = 0; i < dangerousIconInWarningPopUp().size(); i++) {
-            String urlFromAttribute = dangerousIconInWarningPopUp().get(i).getAttribute("style").replace("background-image: url(\"", "").replace("\");", "");
+            String urlFromAttribute = dangerousIconInWarningPopUp().get(i).getAttribute("style").replace("background-image: url(\"", "").replace("\");", "").replaceAll("https://www.autodoc.de","");
             String partOfAttribute = urlFromAttribute.replace(urlFromAttribute.substring(urlFromAttribute.lastIndexOf(".")), "");
             attributeOfDangerousIcon.add(partOfAttribute);
         }
