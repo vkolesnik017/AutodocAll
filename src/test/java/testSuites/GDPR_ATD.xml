@@ -80,7 +80,7 @@
 
     <!--<test name="QC_979_GdprAppPage">
         <classes>
-            <class name="ATD.GDRP.QC_979"/>
+            <class name="ATD.GDRP.QC_979" -inactive />
         </classes>
     </test>-->
 

@@ -26,8 +26,15 @@
         </classes>
     </test>
 
+    <test name="QC_3308_MainBannerOnMainPageLKW">
+        <classes>
+            <class name="ATD.Banners.QC_3308_MainBannerOnMainPageLKW.QC_158"/>
+        </classes>
+    </test>
 
-
-
-
+    <test name="QC_3309_BannerMainPagePhoto">
+        <classes>
+            <class name="ATD.Banners.QC_3309_BannerMainPagePhoto.QC_222"/>
+        </classes>
+    </test>
 </suite>

@@ -31,7 +31,7 @@ public class QC_3042 {
     private String mailDE = "QC_3042_autotestDE@mailinator.com";
     private String illiquidProduct = "50364";
     private String productWithDeposit = "24.3481-8515.5";
-    private String heavyLoad = "DAVO001TT";
+    private String heavyLoad = "6504-03-2509591P";
 
     private Product_page_Logic product_page_logic = new Product_page_Logic();
     private DataBase dB = new DataBase("ATD");
@@ -40,6 +40,8 @@ public class QC_3042 {
     void setUp() {
         setUpBrowser(false, "chrome", "87.0", true);
     }
+
+    //TODO тест не реализован полностью из за дефекта BSK-1791
 
     @Test()
     @Flaky
