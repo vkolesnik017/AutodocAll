@@ -58,6 +58,22 @@ public class QC_552 {
                 .tooltipsToSearch().shouldHave(sizeNotEqual(0)).filter(text(articleNumber + ")")).shouldHave(sizeGreaterThanOrEqual(3));
     }
 
+
+    @DataProvider(name = "routeMoto")
+    Object[] dataProviderMoto() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "main");
+    }
+
+    @Test(dataProvider = "routeMoto")
+    @Flaky
+    @Owner(value = "Sergey_QA")
+    @Description(value = "At the top of the tooltips, at least three values are displayed that contain 40594")
+    public void testArticleNumberTooltipsInSearchMoto(String route) {
+        open(route);
+        new Main_page_Logic().inputTextInSearchBar(articleNumber)
+                .tooltipsToSearch().shouldHave(sizeNotEqual(0)).filter(text(articleNumber + ")")).shouldHave(sizeGreaterThanOrEqual(3));
+    }
+
     @AfterMethod
     public void close() {
         closeWebDriver();

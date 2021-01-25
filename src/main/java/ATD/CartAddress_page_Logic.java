@@ -780,6 +780,15 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return this;
     }
 
+    @Step("Check presence field fiscal code . CartAddress_page")
+    public CartAddress_page_Logic checkPresenceFieldFiscalCode(boolean fieldVisibleOrNot) {
+        if (fieldVisibleOrNot == true) {
+            fieldFiscalCode().shouldBe(visible);
+        }else if (fieldVisibleOrNot == false)
+            fieldFiscalCode().shouldNotBe(visible);
+        return this;
+    }
+
 
 
 

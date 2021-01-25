@@ -50,6 +50,21 @@ public class QC_2541 {
         new LKW_main_page_Logic().checksIfHintsInTheSearchFieldMatchByValue();
     }
 
+
+    @DataProvider(name = "routeMoto")
+    Object[] dataProviderMoto() {
+        return new SetUp("ATD").setUpShopsWithMainRoute("subprod", "DE", "moto_main");
+    }
+
+    @Test(dataProvider = "routeMoto")
+    @Flaky
+    @Owner(value = "Sergey-QA")
+    @Description(value = "Checking the sorting of values in the search string by the entered value")
+    public void testMoto_ChecksIfHintsInTheSearchFieldMatchByValue(String route) {
+        open(route);
+        new Main_page_Logic().checksIfHintsInTheSearchFieldMatchByValue();
+    }
+
     @AfterMethod
     public void close() {
         closeWebDriver();
