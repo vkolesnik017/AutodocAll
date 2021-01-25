@@ -45,8 +45,6 @@
         </classes>
     </test>
 
-
-
     <test name="QC_1340_ListingAccessories">
         <classes>
             <class name="ATD.Section_ACC.QC_1340_ListingAccessories.QC_1360"/>
@@ -61,8 +59,6 @@
             <class name="ATD.Section_ACC.QC_1340_ListingAccessories.QC_2269"/>
         </classes>
     </test>
-
-
 
     <test name="QC_1849_ListingChemistry">
         <classes>

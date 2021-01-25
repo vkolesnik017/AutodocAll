@@ -28,7 +28,7 @@
         </classes>
     </test>
 
-    <test name="PKW.Product_Page.QC_1894_ProductPage_Elements">
+    <test name="QC_1894_ProductPage_Elements">
         <classes>
             <class name="PKW.Product_Page.QC_1894_ProductPage_Elements.QC_1889"/>
             <class name="PKW.Product_Page.QC_1894_ProductPage_Elements.QC_1888"/>

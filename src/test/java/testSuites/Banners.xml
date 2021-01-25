@@ -6,7 +6,6 @@
         <listener class-name="Common.ProjectListener"/>
     </listeners>
 
-
     <test name="QC_2799_CheckTransitionFromBannersAutodocClub">
         <classes>
             <class name="ATD.Banners.QC_2799_CheckTransitionFromBannersAutodocClub.QC_2804"/>
