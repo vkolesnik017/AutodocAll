@@ -6,7 +6,7 @@
         <listener class-name="Common.ProjectListener"/>
     </listeners>
 
-    <test name="QC_1873_SafeOrder_PKW">
+    <test name="QC_2408_SafeOrder_PKW">
         <classes>
             <class name="PKW.Basket.QC_2408_SafeOrder_PKW.QC_2410"/>
             <class name="PKW.Basket.QC_2408_SafeOrder_PKW.QC_2409"/>
