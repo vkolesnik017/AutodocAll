@@ -35,8 +35,9 @@ public class QC_3098 {
     public void testCheckPresenceOfTabBlockAnchoringByClickOnElement(String route) {
         openPage(route);
         new Product_page_Logic().presenceTabBlock(6)
-        .checkTabLinks(route)
-        .checkCountOfReviews();
+                .checkTabLinks(route)
+                .presenceOfInterestingArticleLinks()
+                .checkCountOfReviews();
     }
 
     @AfterMethod
