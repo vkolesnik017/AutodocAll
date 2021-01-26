@@ -13,14 +13,14 @@ import org.testng.annotations.Test;
 
 import java.sql.SQLException;
 
+import static ATD.CommonMethods.waitWhileRouteContainsExpected;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
 
 public class QC_538 {
 
-    private String genericName = "Stoßdämpfer";
-    private String genericNameForCheck = "dämpfer";
+    private String genericName = "Fahrwerksfeder";
 
     @BeforeClass
     void setUp() {
@@ -35,26 +35,28 @@ public class QC_538 {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Evlentiev")
-    @Description(value = "The test verifies that at the listing have only products of generic Stoßdämpfer after search by text Stoßdämpfer")
+    @Description(value = "The test verifies that at the listing have only products of generic Fahrwerksfeder after search by text Fahrwerksfeder")
     public void testSearchByGeneric(String route) {
         open(route);
         new Main_page_Logic().useSearch(genericName);
-        new Listing_page_Logic().checksProductTitlesContainExpectedTextGoingAllPagination(genericNameForCheck);
+        waitWhileRouteContainsExpected("search");
+        new Listing_page_Logic().checksProductTitlesContainExpectedTextGoingAllPagination(genericName);
     }
 
     @DataProvider(name = "routeLKW")
     Object[] dataProviderLKW() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_maker_car_list14");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_maker_car_list16");
     }
 
     @Test(dataProvider = "routeLKW")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "The test verifies that at the listing have only products of generic Stoßdämpfer after search by text Stoßdämpfer")
+    @Description(value = "The test verifies that at the listing have only products of generic Fahrwerksfeder after search by text Fahrwerksfeder")
     public void testSearchByGenericLKW(String route) {
         open(route);
         new Main_page_Logic().useSearch(genericName);
-        new Listing_page_Logic().checksProductTitlesContainExpectedTextGoingAllPagination(genericNameForCheck);
+        waitWhileRouteContainsExpected("search");
+        new Listing_page_Logic().checksProductTitlesContainExpectedTextGoingAllPagination(genericName);
     }
 
     @AfterMethod

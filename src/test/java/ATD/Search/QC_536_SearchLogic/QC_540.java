@@ -19,6 +19,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
 
 public class QC_540 {
+    Main_page_Logic mainPage = new Main_page_Logic();
 
     @BeforeClass
     void setUp() {
@@ -36,7 +37,7 @@ public class QC_540 {
     @Description(value = "The test verifies redirect to tires catalog after search by text reifen")
     public void testSearchByValueReifen(String route) throws SQLException {
         open(route);
-        new Main_page_Logic().useSearch("Reifen");
+        mainPage.useSearch("Reifen");
         checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "tyres"));
     }
 
@@ -51,7 +52,22 @@ public class QC_540 {
     @Description(value = "The test verifies redirect to tires catalog after search by text reifen")
     public void testSearchByValueReifenLKW(String route) throws SQLException {
         open(route);
-        new Main_page_Logic().useSearch("Reifen");
+        mainPage.useSearch("Reifen");
+        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "tyres"));
+    }
+
+    @DataProvider(name = "routeMoto")
+    Object[] dataProviderMoto() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_main");
+    }
+
+    @Test(dataProvider = "routeMoto")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "The test verifies redirect to tires catalog after search by text reifen")
+    public void testSearchByValueReifenMoto(String route) throws SQLException {
+        open(route);
+        mainPage.useSearch("Reifen");
         checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "tyres"));
     }
 
