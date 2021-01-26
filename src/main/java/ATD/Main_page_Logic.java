@@ -284,7 +284,7 @@ public class Main_page_Logic extends Main_page {
 
     @Step("Cart clicking. Main_page")
     public Cart_page cartClick() {
-        cartIcon().click();
+        cartIcon().scrollTo().click();
         return page(Cart_page.class);
     }
 

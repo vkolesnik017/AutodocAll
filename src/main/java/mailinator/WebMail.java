@@ -1,6 +1,7 @@
 package mailinator;
 
 import ATD.PasswordRecovery_page_Logic;
+import AWS.Order_aws;
 import Common.DataBase;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
@@ -300,6 +301,23 @@ public class WebMail {
     @Step("Checks regular delivery price. WebMail")
     public WebMail checkRegularDeliveryPriceInEmail(String regularDeliveryPrice) {
         regularDeliveryPriceInEmail().shouldHave(text(regularDeliveryPrice.replaceAll(",",".")));
+        return this;
+    }
+
+    @Step("Checks delivery costs for a Country {deliveryCostForCountry} or Region {deliveryCostForRegion}. WebMail")
+    public WebMail checkDeliveryCostForCountryOrRegion(float deliveryCostForRegion, float deliveryCostForCountry, String shop) {
+        if (shop.equals("DE")) {
+            checkRegularDeliveryPriceInEmail(String.valueOf(deliveryCostForRegion));
+        }
+        if (shop.equals("Germany")) {
+            checkRegularDeliveryPriceInEmail(String.valueOf(deliveryCostForRegion));
+        }
+        if (shop.equals("LI")) {
+            checkRegularDeliveryPriceInEmail(String.valueOf(deliveryCostForCountry));
+        }
+        if (shop.equals("Liechtenstein")) {
+            checkRegularDeliveryPriceInEmail(String.valueOf(deliveryCostForCountry));
+        }
         return this;
     }
 

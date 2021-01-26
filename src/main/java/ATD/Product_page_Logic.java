@@ -174,10 +174,10 @@ public class Product_page_Logic extends Product_page {
     @Step("Checking number basket and refresh page if not. Product_page")
     public Product_page_Logic checkNumberBasketAndRefreshPageIfNot() {  // TODO Бывает при открытии страницы не подгружается номер корзины и товар не добавляется в корзину, причина не известна, что бы стабилизировать тесты добавлен этот метод
         try {
-            numberBasket().shouldBe(visible);
+            numberBasket().scrollTo().shouldBe(visible);
         } catch (ElementShould e) {
             refresh();
-            numberBasket().shouldBe(visible);
+            numberBasket().scrollTo().shouldBe(visible);
         }
         return this;
     }
