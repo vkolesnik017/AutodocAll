@@ -2,6 +2,7 @@ package AWS;
 
 import Common.DataBase;
 import com.codeborne.selenide.*;
+import com.codeborne.selenide.conditions.Or;
 import com.codeborne.selenide.ex.ElementShould;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -206,6 +207,10 @@ public class Order_aws {
 
     private SelenideElement errorPopup() {
         return $(By.xpath("//input[@id='AddProduct[count]']/../i"));
+    }
+
+    private SelenideElement errorPopupInTopRight() {
+        return $x("//div[@class='sticky-queue top-right']");
     }
 
     SelenideElement vatPercentageInOrder() {
@@ -574,6 +579,10 @@ public class Order_aws {
 
     private SelenideElement closeBtnModalWindowDeclaration() {
         return $x("//div[@id='declaration']//a[@class='btn btn-default btn-close']");
+    }
+
+    private SelenideElement closeBtnModalWindowAddProduct() {
+        return $x("//div[@id='addProduct']//a[@class='btn btn-default btn-close']");
     }
 
 
@@ -1526,13 +1535,19 @@ public class Order_aws {
         return this;
     }
 
+    @Step("Clos modal Window added product. Order_aws")
+    public Order_aws closeModalWindowAddProduct() {
+        closeBtnModalWindowAddProduct().click();
+        return this;
+    }
+
     @Step("Adding product {articleNumber, productQuantity} in order. Order_aws")
     public Order_aws addProductInOrder(String articleNumber, String productQuantity) {
         clickBtnAddProduct();
         articleNumberField().setValue(articleNumber);
         countAddProductField().setValue(productQuantity);
         addingProductBtn().click();
-        sleep(5000);
+        sleep(2000);
         return this;
     }
 
@@ -1553,6 +1568,12 @@ public class Order_aws {
             addingProductBtn().click();
         }
         popUpAddProduct().waitUntil(not(visible), 10000);
+        return this;
+    }
+
+    @Step("Checks presence error popup in top right. Order_aws")
+    public Order_aws checkPresenceErrorPopupInTopRight() {
+        errorPopupInTopRight().shouldBe(visible);
         return this;
     }
 }

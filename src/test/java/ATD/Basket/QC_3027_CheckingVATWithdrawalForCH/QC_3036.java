@@ -139,8 +139,8 @@ public class QC_3036 {
     @Test(dataProvider = "deliveryShop")
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checks VAT percentage for CH for delivery in DE with index 78266")
-    public void testCheckVATPercentageForCH_ForDeliveryInShopDE(String deliveryShop) throws SQLException, IOException {
+    @Description(value = "Test checks VAT percentage for CH for delivery in LI and DE with index 78266")
+    public void testCheckVATPercentageForCH_ForDeliveryInShopDE_LI(String deliveryShop) throws SQLException, IOException {
         String vatForCH = new PageVAT_aws().getVatForCH();
         openPage(delivery_prices_aws);
         float deliveryCostForRegion = new Delivery_prices_aws().getDeliveryPriceForIslandOrRegion("Büsingen am Hochrhein");
