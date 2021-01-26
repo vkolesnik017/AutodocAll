@@ -173,6 +173,16 @@ public class CartAddress_page {
         return $x("//form[@id='shipping_form']//div[@class='error-message']");
     }
 
+
+    public SelenideElement errorTooltipFiscalCodeFieldForShipping() {
+        return $x("//input[@id='form_lFiscalCode']/..//div[@class='error-message']");
+    }
+
+    public SelenideElement errorTooltipFiscalCodeFieldForBilling() {
+        return $x("//input[@id='form_rFiscalCode']/..//div[@class='error-message']");
+    }
+
+
     public SelenideElement fiscalCodeBlockInSippingForm() {
         return $x("//div[@class='fiscal-code-block']//div[@id='l-fiscal-code-optional']");
     }
