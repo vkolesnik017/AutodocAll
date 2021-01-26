@@ -18,8 +18,10 @@ import static AWS.Delivery_prices_aws.delivery_prices_aws;
 import static AWS.ProfilerPage_aws.profilerPage_aws;
 import static Common.CommonMethods.convertStringToFloat;
 import static Common.File.assertThatPdfContainsText;
+import static Common.File.renameDownloadFile;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.Selenide.sleep;
 
 
 public class QC_3036 {
@@ -114,10 +116,11 @@ public class QC_3036 {
                 .clickCheckBoxDeliveryInPopupReturn()
                 .clickPrintButtonInPopupReturn();
         assertThatPdfContainsText("C:/Users/User/Downloads/_" + orderNumber + ".pdf", "MwSt. " + vatForCH + " %");
-                order_aws.clickBtnClosePopUpReturn()
-                        .clickBtnDeclaration()
-                        .checkModalWindowDeclarationAndClickPrintBtn();
-        assertThatPdfContainsText("C:/Users/User/Downloads/doc.pdf", "MWST. " + vatForCH + " %");
+        order_aws.clickBtnClosePopUpReturn()
+                .clickBtnDeclaration()
+                .checkModalWindowDeclarationAndClickPrintBtn();
+        renameDownloadFile("C:/Users/User/Downloads/doc.pdf", "C:/Users/User/Downloads/doc" + orderNumber + ".pdf");
+        assertThatPdfContainsText("C:/Users/User/Downloads/doc" + orderNumber + ".pdf", "MWST. " + vatForCH + " %");
 
         openPage(profilerPage_aws);
         new ProfilerPage_aws().fillingFieldsOrderIdAndArticleId(orderNumber, artID)
@@ -211,7 +214,8 @@ public class QC_3036 {
         order_aws.clickBtnClosePopUpReturn()
                 .clickBtnDeclaration()
                 .checkModalWindowDeclarationAndClickPrintBtn();
-        assertThatPdfContainsText("C:/Users/User/Downloads/doc.pdf", "MWST. " + vatForCH + " %");
+        renameDownloadFile("C:/Users/User/Downloads/doc.pdf", "C:/Users/User/Downloads/doc" + orderNumber + ".pdf");
+        assertThatPdfContainsText("C:/Users/User/Downloads/doc" + orderNumber + ".pdf", "MWST. " + vatForCH + " %");
 
         openPage(profilerPage_aws);
         new ProfilerPage_aws().fillingFieldsOrderIdAndArticleId(orderNumber, artID)

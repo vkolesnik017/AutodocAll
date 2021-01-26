@@ -15,6 +15,7 @@ import static ATD.CommonMethods.openPage;
 import static AWS.Delivery_prices_aws.delivery_prices_aws;
 import static AWS.OrderAdd_page_aws.addOrderPageURL;
 import static Common.File.assertThatPdfContainsText;
+import static Common.File.renameDownloadFile;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.*;
 import static mailinator.WebMail.passwordForMail;
@@ -92,7 +93,8 @@ public class QC_3039 {
         order_aws.clickBtnClosePopUpReturn()
                 .clickBtnDeclaration()
                 .checkModalWindowDeclarationAndClickPrintBtn();
-        assertThatPdfContainsText("C:/Users/User/Downloads/doc.pdf", "MWST. " + vatForCH + " %");
+        renameDownloadFile("C:/Users/User/Downloads/doc.pdf", "C:/Users/User/Downloads/doc" + orderID + ".pdf");
+        assertThatPdfContainsText("C:/Users/User/Downloads/doc" + orderID + ".pdf", "MWST. " + vatForCH + " %");
     }
 
     @AfterMethod

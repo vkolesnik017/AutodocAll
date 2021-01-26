@@ -6,6 +6,14 @@
         <listener class-name="Common.ProjectListener"/>
     </listeners>
 
+    <test name="QC_2915_OptionalFieldFiscalCodeForRomaniaItalyPortugal">
+        <classes>
+            <class name="ATD.Basket.QC_2915_OptionalFieldFiscalCodeForRomaniaItalyPortugal.QC_2928"/>
+            <class name="ATD.Basket.QC_2915_OptionalFieldFiscalCodeForRomaniaItalyPortugal.QC_2930"/>
+            <class name="ATD.Basket.QC_2915_OptionalFieldFiscalCodeForRomaniaItalyPortugal.QC_2971"/>
+        </classes>
+    </test>
+
     <test name="QC_1129_BasketSession_ATD" thread-count="1">
         <classes>
             <class name="ATD.Basket.QC_1129_BasketSession_ATD.QC_1130"/>
@@ -128,14 +136,6 @@
     <test name="QC_3027_CheckingVATWithdrawalForCH" thread-count="1">
         <classes>
             <class name="ATD.Basket.QC_3027_CheckingVATWithdrawalForCH.QC_3036"/>
-        </classes>
-    </test>
-
-    <test name="QC_2915_OptionalFieldFiscalCodeForRomaniaItalyPortugal">
-        <classes>
-            <class name="ATD.Basket.QC_2915_OptionalFieldFiscalCodeForRomaniaItalyPortugal.QC_2928"/>
-            <class name="ATD.Basket.QC_2915_OptionalFieldFiscalCodeForRomaniaItalyPortugal.QC_2930"/>
-            <class name="ATD.Basket.QC_2915_OptionalFieldFiscalCodeForRomaniaItalyPortugal.QC_2971"/>
         </classes>
     </test>
 
