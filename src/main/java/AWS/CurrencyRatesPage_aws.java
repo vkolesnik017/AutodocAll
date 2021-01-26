@@ -24,7 +24,6 @@ public class CurrencyRatesPage_aws {
         for (int j = 0; j < exchangeRatesTable().size(); j++) {
             String allExchangeRates = exchangeRatesTable().get(j).getText();
             List<String> list = Arrays.asList(allExchangeRates.split("\n"));
-
             for (int i = 0; i < list.size(); i++) {
                 if (list.get(i).contains(currency)) {
                     price = Float.parseFloat(list.get(i).replaceAll(currency, ""));
@@ -41,6 +40,6 @@ public class CurrencyRatesPage_aws {
         float result = sum * price;
         BigDecimal bigDecimal = new BigDecimal(result);
         BigDecimal roundResult = bigDecimal.setScale(2, BigDecimal.ROUND_HALF_DOWN);
-        return Float.valueOf(String.valueOf(roundResult));
+        return Float.parseFloat(String.valueOf(roundResult));
     }
 }
