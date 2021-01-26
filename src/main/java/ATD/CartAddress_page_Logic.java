@@ -780,8 +780,8 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return this;
     }
 
-    @Step("Check presence field fiscal code . CartAddress_page")
-    public CartAddress_page_Logic checkPresenceFieldFiscalCode(boolean fieldVisibleOrNot) {
+    @Step("Check presence field fiscal code for Shipping block . CartAddress_page")
+    public CartAddress_page_Logic checkPresenceFieldFiscalCodeForShipping(boolean fieldVisibleOrNot) {
         if (fieldVisibleOrNot == true) {
             fieldFiscalCode().shouldBe(visible);
         }else if (fieldVisibleOrNot == false)
@@ -789,6 +789,38 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return this;
     }
 
+    @Step("Check presence field fiscal code for Billing block. CartAddress_page")
+    public CartAddress_page_Logic checkPresenceFieldFiscalCodeForBilling(boolean fieldVisibleOrNot) {
+        if (fieldVisibleOrNot == true) {
+            fieldFiscalCodeBilling().shouldBe(visible);
+        }else if (fieldVisibleOrNot == false)
+            fieldFiscalCodeBilling().shouldNotBe(visible);
+        return this;
+    }
+
+    @Step("Check presence error tooltip Fiscal Code field for Shipping. CartAddress_page")
+    public CartAddress_page_Logic checkPresenceErrorTooltipFiscalCodeFieldForShipping() {
+        errorTooltipFiscalCodeFieldForShipping().shouldBe(visible);
+        Assert.assertFalse(errorTooltipFiscalCodeFieldForShipping().text().isEmpty());
+        return this;
+    }
+
+    @Step("Check presence error tooltip Fiscal Code field for Billing. CartAddress_page")
+    public CartAddress_page_Logic checkPresenceErrorTooltipFiscalCodeFieldForBilling() {
+        errorTooltipFiscalCodeFieldForBilling().shouldBe(visible);
+        Assert.assertFalse(errorTooltipFiscalCodeFieldForBilling().text().isEmpty());
+        return this;
+    }
+
+    @Step ("Check presence text in fields for Shipping or Billing block. CartAddress_page")
+    public CartAddress_page_Logic checkPresenceTextInFieldsForShippingOrBilling(SelenideElement element, boolean visibleText ) {
+        if (visibleText == true) {
+            Assert.assertFalse(element.getValue().isEmpty());
+        }else if (visibleText == false) {
+            Assert.assertTrue(element.getValue().isEmpty());
+        }
+        return this;
+    }
 
 
 
