@@ -8,10 +8,13 @@ import org.testng.Assert;
 
 import java.util.ArrayList;
 
+import static ATD.CommonMethods.openPage;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
 public class OrderAdd_page_aws {
+
+    public static String addOrderPageURL = "https://aws.autodoc.de/order/add";
 
     private SelenideElement fieldCustomerID() {
         return $x("//input[@id='Order[CustomerID]']");
@@ -187,6 +190,13 @@ public class OrderAdd_page_aws {
 
     private SelenideElement preLoader() {
         return $x("//div[@class='block-msg order-view order-processing']");
+    }
+
+    @Step("Open add order page. OrderAdd_page_aws")
+    public OrderAdd_page_aws openAddOrderPageWithLogin() {
+        openPage(addOrderPageURL);
+        new Login_aws().loginInAws();
+        return this;
     }
 
     @Step("Checking correct text in input field. OrderAdd_page_aws")

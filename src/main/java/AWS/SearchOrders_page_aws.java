@@ -307,25 +307,5 @@ public class SearchOrders_page_aws {
         assemblyWarehouse().selectOptionContainingText(expectedAssemblyWarehouse);
         return this;
     }
-
-    @Step("Choosing expected filter. SearchOrders_page_aws")
-    public SearchOrders_page_aws choosingExpectedFilter(String nameFilter, String PaymentsMethod,
-                                                                     String currency, String assemblyWarehouse, String customerInfo) {
-        switch (nameFilter) {
-            case "choosePaymentsMethods":
-                choosePaymentsMethods(PaymentsMethod);
-                break;
-            case "chooseCurrency":
-                chooseCurrency(currency);
-                break;
-            case "chooseAssemblyWarehouse":
-                chooseAssemblyWarehouse(assemblyWarehouse);
-                break;
-            case "fillingFieldCustomerInfo":
-                fillingFieldCustomerInfo(customerInfo);
-                break;
-        }
-        return this;
-    }
 }
 

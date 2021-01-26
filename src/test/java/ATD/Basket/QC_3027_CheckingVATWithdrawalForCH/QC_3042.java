@@ -46,7 +46,7 @@ public class QC_3042 {
     @Test()
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checking the VAT percentage when changing the country to CH of delivery in ABC")
+    @Description(value = "Test checking the VAT percentage when changing the country to CH of delivery in AWS")
     public void testCheckingVAT_percentageWhenChangingDeliveryInCH() throws SQLException, IOException {
         String vatForCH = new PageVAT_aws().getVatForCH();
         openPage(dB.getFullRouteByRouteAndSubroute("prod", "CH", "main", "staticVersand"));
@@ -90,7 +90,7 @@ public class QC_3042 {
         float heavyLoadsSum = order_aws.getHeavyLoads(heavyLoad);
         order_aws.compereDeliveryCostOfHeavyLoadsWithCostOnSite(heavyLoadsSum);
 
-        String artID = order_aws.getArticleId();
+        order_aws.getArticleId();
         order_aws.openPopUpAccountsAndCheckVat(vatForCH)
                 .closePopupAccounts()
                 .clickReturnButton()
