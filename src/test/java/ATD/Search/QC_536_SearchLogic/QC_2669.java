@@ -55,6 +55,20 @@ public class QC_2669 {
         new Main_page_Logic().useSearch(request).presenceOfTecDocListing().presenceOenNumInProductPage(brand, oenNum);
     }
 
+    @DataProvider(name = "routeMOTO")
+    Object[] dataProviderMOTO() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "main");
+    }
+
+    @Test(dataProvider = "routeMOTO")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "The test check correctness of issue by searching OEN number and brand")
+    public void testCheckCorrectnessOfIssueBySearchingOenAndBrandMOTO(String route) {
+        openPage(route);
+        new Main_page_Logic().useSearch(request).presenceOfTecDocListing().presenceOenNumInProductPage(brand, oenNum);
+    }
+
     @AfterMethod
     public void close() {
         closeWebDriver();

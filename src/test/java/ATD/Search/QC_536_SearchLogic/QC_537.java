@@ -19,6 +19,8 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_537 {
 
+    Main_page_Logic mainPage = new Main_page_Logic();
+    Listing_page_Logic listingPage = new Listing_page_Logic();
     private String brandName = "RIDEX";
 
     @BeforeClass
@@ -37,8 +39,8 @@ public class QC_537 {
     @Description(value = "The test verifies that at the listing have only products of brand ridex after search by text RIDEX")
     public void testSearchByBrand(String route) {
         openPage(route);
-        new Main_page_Logic().useSearch(brandName);
-        new Listing_page_Logic().checksProductTitlesContainExpectedTextGoingAllPagination(brandName);
+        mainPage.useSearch(brandName);
+        listingPage.checksProductTitlesContainExpectedTextGoingAllPagination(brandName);
     }
 
     @DataProvider(name = "routeLKW")
@@ -52,8 +54,23 @@ public class QC_537 {
     @Description(value = "The test verifies that at the listing have only products of brand ridex after search by text RIDEX")
     public void testSearchByBrandLKW(String route) {
         openPage(route);
-        new Main_page_Logic().useSearch(brandName);
-        new Listing_page_Logic().checksProductTitlesContainExpectedTextGoingAllPagination(brandName);
+        mainPage.useSearch(brandName);
+        listingPage.checksProductTitlesContainExpectedTextGoingAllPagination(brandName);
+    }
+
+    @DataProvider(name = "routeMoto")
+    Object[] dataProviderMoto() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_catalog6");
+    }
+
+    @Test(dataProvider = "routeMoto")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "The test verifies that at the listing have only products of brand ridex after search by text RIDEX")
+    public void testSearchByBrandMoto(String route) {
+        openPage(route);
+        mainPage.useSearch(brandName);
+        listingPage.checksProductTitlesContainExpectedTextGoingAllPagination(brandName);
     }
 
     @AfterMethod

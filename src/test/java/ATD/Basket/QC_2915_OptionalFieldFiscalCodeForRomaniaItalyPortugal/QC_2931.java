@@ -2,7 +2,6 @@ package ATD.Basket.QC_2915_OptionalFieldFiscalCodeForRomaniaItalyPortugal;
 
 import ATD.CartAccount_page_Logic;
 import ATD.CartAddress_page_Logic;
-import ATD.CartPayments_page_Logic;
 import ATD.Product_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
@@ -18,10 +17,9 @@ import static ATD.CommonMethods.checkingContainsUrl;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2971 {
+public class QC_2931 {
 
-
-    private String mail = "qc_2971_autotest@mailinator.com";
+    private String mail = "qc_2931_autotest@mailinator.com";
     private CartAddress_page_Logic cartAddressPageLogic = new CartAddress_page_Logic();
 
     @BeforeClass
@@ -37,8 +35,8 @@ public class QC_2971 {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey_QA")
-    @Description(value = "Checking Go to the next step if the \"Fiscal code\" field is filled / empty, Billing and Shipping are not separated")
-    public void testCheckingGoToNextStepIfFiscalCodeFieldIsFilledOrEmpty(String route) {
+    @Description(value = "Error display when filling in the \"Fiscal code\" field with Cyrillic letters")
+    public void testErrorDisplayFillingFiscalCodeFieldCyrillicLetters(String route) {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
         new Product_page_Logic().addProductToCart()
@@ -46,21 +44,21 @@ public class QC_2971 {
                 .cartClick()
                 .nextButtonClick();
         new CartAccount_page_Logic().signIn(mail, password)
-                .chooseDeliveryCountryForShipping(shop)
-                .fillInPostalCode("default")
+                .clickCheckboxForOpenBilling()
+                .fillAllFields(shop)
+                .fillAllFieldsForBilling(shop)
                 .checkPresenceFieldFiscalCodeForShipping(false)
+                .checkPresenceFieldFiscalCodeForBilling(false)
                 .checkTextForCheckboxFiscalCode(cartAddressPageLogic.textFiscalCodeInShippingForm(), shop)
+                .checkTextForCheckboxFiscalCode(cartAddressPageLogic.textFiscalCodeInBillingForm(), shop)
                 .clickCheckboxForOpenFiscalCodeField()
-                .checkPresenceFieldFiscalCodeForShipping(true)
-                .fillingFieldFiscalCode("TS111")
+                .clickCheckboxForOpenFiscalCodeFieldForBilling()
+                .fillingFieldFiscalCode("тест")
+                .fillingFieldFiscalCodeBilling("тест")
                 .nextBtnClick();
-        checkingContainsUrl("payments");
-        new CartPayments_page_Logic().clickBtnReturnTheAddressPage()
-                .checkPresenceShippingForm()
-                .fieldFiscalCode().clear();
-        cartAddressPageLogic.checkPresenceFieldFiscalCodeForShipping(true)
-                .nextBtnClick();
-        checkingContainsUrl("payments");
+        cartAddressPageLogic.checkPresenceErrorTooltipFiscalCodeFieldForShipping()
+                .checkPresenceErrorTooltipFiscalCodeFieldForBilling();
+        checkingContainsUrl("address");
     }
 
 

@@ -16,11 +16,10 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2668 {
+public class QC_3127 {
 
-    private String request = "2049 3M";
-    private String artNum = "2049";
-    private String brand = "3M";
+    Main_page_Logic mainPage = new Main_page_Logic();
+    private String value = "bremsscheibe ATE";
 
     @BeforeClass
     void setUp() {
@@ -35,38 +34,38 @@ public class QC_2668 {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "The test verifies that at the listing have only products of brand 3M and expected article number")
-    public void testSearchByBrandAndArticle(String route) {
+    @Description(value = "test Check Transition to search listing With Brand And Generic")
+    public void testCheckTransitionWithBrandAndGeneric(String route) {
         openPage(route);
-        new Main_page_Logic().useSearch(request).checkImageOfBrandAtPresenceOfArtAndBrand(brand, artNum);
+        mainPage.useSearch(value).presenceBrandAndGenericInProductTitle("ATE", "bremsscheibe");
     }
 
     @DataProvider(name = "routeLKW")
     Object[] dataProviderLKW() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_main");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "main");
     }
 
     @Test(dataProvider = "routeLKW")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "The test verifies that at the listing have only products of brand 3M and expected article number")
-    public void testSearchByBrandAndArticleLKW(String route) {
+    @Description(value = "test Check Transition to search listing With Brand And Generic")
+    public void testCheckTransitionWithBrandAndGenericLKW(String route) {
         openPage(route);
-        new Main_page_Logic().useSearch(request).checkImageOfBrandAtPresenceOfArtAndBrand(brand, artNum);
+        mainPage.useSearch(value).presenceBrandAndGenericInProductTitle("ATE", "bremsscheibe");
     }
 
-    @DataProvider(name = "routeMOTO")
-    Object[] dataProviderMOTO() throws SQLException {
+    @DataProvider(name = "routeMoto")
+    Object[] dataProviderMoto() throws SQLException {
         return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "main");
     }
 
-    @Test(dataProvider = "routeMOTO")
+    @Test(dataProvider = "routeMoto")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "The test verifies that at the listing have only products of brand 3M and expected article number")
-    public void testSearchByBrandAndArticleMOTO(String route) {
+    @Description(value = "test Check Transition to search listing With Brand And Generic")
+    public void testCheckTransitionWithBrandAndGenericMoto(String route) {
         openPage(route);
-        new Main_page_Logic().useSearch(request).checkImageOfBrandAtPresenceOfArtAndBrand(brand, artNum);
+        mainPage.useSearch(value).presenceBrandAndGenericInProductTitle("ATE", "bremsscheibe");
     }
 
     @AfterMethod
