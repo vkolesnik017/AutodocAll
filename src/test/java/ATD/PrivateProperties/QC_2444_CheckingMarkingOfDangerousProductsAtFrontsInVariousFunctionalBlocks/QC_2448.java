@@ -58,7 +58,7 @@ public class QC_2448 {
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test check displaying and click by Dangerous products block")
-    public void testCheckDisplayingAndClickByDangerousProductsBlockSearch(String route) {
+    public void testCheckDisplayingAndClickByDangerousProductsBlockSearch(String route) throws SQLException {
         openPage(route);
         String idOfDangerousProduct = lkwSearchPage.visibilityOfTecDocListingBlock().getIdOfDangerousProduct(1);
         String signalWord = lkwSearchPage.visibilityOfTecDocListingBlock().getSignalWordFromFirstDangerousProductListingView(1);
@@ -76,7 +76,7 @@ public class QC_2448 {
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test check displaying and click by Dangerous products block")
-    public void testCheckDisplayingAndClickByDangerousProductsBlockMoto(String route) {
+    public void testCheckDisplayingAndClickByDangerousProductsBlockMoto(String route) throws SQLException {
         openPage(route);
         String idOfDangerousProduct = lkwSearchPage.visibilityOfTecDocListingBlock().getIdOfDangerousProduct(0);
         String signalWord = lkwSearchPage.visibilityOfTecDocListingBlock().getSignalWordFromFirstDangerousProductListingView(0);
@@ -112,7 +112,7 @@ public class QC_2448 {
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test check displaying and click by Dangerous products block")
-    public void testCheckDisplayingAndClickByDangerousProductsBlockSearchMain(String route) {
+    public void testCheckDisplayingAndClickByDangerousProductsBlockSearchMain(String route) throws SQLException {
         openPage(route);
         String idOfDangerousProduct = lkwSearchPage.visibilityOfTecDocListingBlock().getIdOfDangerousProduct(1);
         String signalWord = lkwSearchPage.visibilityOfTecDocListingBlock().getSignalWordFromFirstDangerousProductListingView(1);
