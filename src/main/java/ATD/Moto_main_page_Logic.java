@@ -5,8 +5,10 @@ import io.qameta.allure.Step;
 import org.testng.Assert;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import static ATD.CommonMethods.checkingContainsUrl;
+import static ATD.CommonMethods.waitWhileRouteContainsExpected;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -60,15 +62,7 @@ public class Moto_main_page_Logic extends Moto_main_page {
         return this;
     }
 
-
-    @Step("input of brand in main search field . Moto_main_page")
-    public Search_page_Logic inputOfBrandInMainSearchField(String titleOfBrand) {
-        mainSearchField().setValue(titleOfBrand).pressEnter();
-        return page(Search_page_Logic.class);
-    }
-
-
-    @Step("availability of delivery block  . Moto_main_page")
+   @Step("availability of delivery block  . Moto_main_page")
     public Moto_main_page_Logic availabilityOfDeliveryBlock() {
         deliveryBlock().shouldBe(visible);
         return this;
@@ -731,5 +725,22 @@ public class Moto_main_page_Logic extends Moto_main_page {
     public Moto_main_page_Logic checkCountOfVehicleInIconOfGarage(String expectedCountOfVehicle) {
         countOfVehicleInIconOfGarageInHeader().shouldBe(visible).shouldHave(exactText(expectedCountOfVehicle));
         return this;
+    }
+
+
+    @Step("set Value In Main Search. Moto_main_page")
+    public Moto_main_page_Logic setValueInMainSearch(List<String> expectedValues) {
+       for (int i=0;i<expectedValues.size();i++) {
+           inputValueInMainSearchField(expectedValues.get(i));
+           waitWhileRouteContainsExpected("moto_search");
+           back();
+       }
+        return this;
+    }
+
+    @Step("input of brand in main search field . Moto_main_page")
+    public Search_page_Logic inputValueInMainSearchField(String titleOfBrand) {
+        mainSearchField().setValue(titleOfBrand).pressEnter();
+        return page(Search_page_Logic.class);
     }
 }
