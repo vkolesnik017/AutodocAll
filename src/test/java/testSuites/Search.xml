@@ -37,8 +37,6 @@
         </classes>
     </test>
 
-
-
     <test name="QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults">
         <classes>
             <class name="ATD.Search.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1305"/>

@@ -21,6 +21,7 @@
             <class name="ATD.General_Common.QC_1554_Footer.QC_2438"/>
             <class name="ATD.General_Common.QC_1554_Footer.QC_2439"/>
             <class name="ATD.General_Common.QC_1554_Footer.QC_2437"/>
+            <class name="ATD.General_Common.QC_1554_Footer.QC_183"/>
         </classes>
     </test>
 
@@ -64,8 +65,14 @@
             <class name="ATD.General_Common.QC_2320_StaticPages.QC_2038"/>
             <class name="ATD.General_Common.QC_2320_StaticPages.QC_2570"/>
             <class name="ATD.General_Common.QC_2320_StaticPages.QC_2414"/>
+            <class name="ATD.General_Common.QC_2320_StaticPages.QC_2413"/>
         </classes>
     </test>
 
+    <test name="QC_880_BlockOfDeliveryAndPaymentMethods">
+        <classes>
+            <class name="ATD.General_Common.QC_880_BlockOfDeliveryAndPaymentMethods.QC_887"/>
+        </classes>
+    </test>
 
 </suite>

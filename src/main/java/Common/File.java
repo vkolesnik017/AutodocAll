@@ -3,10 +3,9 @@ package Common;
 import com.codeborne.pdftest.PDF;
 import io.qameta.allure.Step;
 import org.apache.commons.io.FileUtils;
-
 import java.io.IOException;
-
 import static com.codeborne.pdftest.PDF.containsText;
+import static com.codeborne.selenide.Selenide.sleep;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class File {
@@ -15,6 +14,7 @@ public class File {
     public static void assertThatPdfContainsText(String path, String expectedText) throws IOException {
         java.io.File file = new java.io.File(path);
         PDF pdf = new PDF(new java.io.File(path));
+        sleep(5000);
         assertThat(pdf, containsText(expectedText));
         if (file.delete()) {
             System.out.println(path + " File deleted");
@@ -25,6 +25,7 @@ public class File {
     public static void renameDownloadFile(String oldNameFile, String newNameFile) {
         java.io.File oldFile = new java.io.File(oldNameFile);
         java.io.File newFile = new java.io.File(newNameFile);
+        sleep(5000);
         if(oldFile.renameTo(newFile)){
             System.out.println("Rename succesful");
         }else{

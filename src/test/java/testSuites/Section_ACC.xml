@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Section_ACC">
+
+    <suite-files>
+        <suite-file path="Section_ACC_ATD.xml"/>
+        <suite-file path="Section_ACC_PKW.xml"/>
+    </suite-files>
+
+</suite>

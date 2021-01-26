@@ -32,7 +32,7 @@ public class Order_aws {
     private String url = "https://aws.autodoc.de/order/view/";
 
     private SelenideElement orderID() {
-        return $x("//div[@class='col-md-6 col-sm-6']//div[1]//div[2]//div[9]");
+        return $x("//strong[text()='ID Заказа']/..");
     }
 
     private SelenideElement filterHeader() {
@@ -1213,7 +1213,9 @@ public class Order_aws {
 
     @Step("Compares the actual shipping price with the expected one. Order_aws")
     public Order_aws compereActualDeliveryCostWithExpected(Float expectedDeliveryCost) {
-        Assert.assertEquals(getDeliveryCostInOrderFromDeliveryBlock(), expectedDeliveryCost);
+        Float deliveryPrice = getDeliveryCostInOrderFromDeliveryBlock();
+        float res = roundOfTheCost(expectedDeliveryCost, deliveryPrice);
+        Assert.assertEquals(res, deliveryPrice);
         return this;
     }
 

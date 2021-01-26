@@ -25,4 +25,9 @@
         </classes>
     </test>
 
+    <test name="QC_3307_SEO_Blocks">
+        <classes>
+            <class name="ATD.SEO.QC_3307_SEO_Blocks.QC_135"/>
+        </classes>
+    </test>
 </suite>

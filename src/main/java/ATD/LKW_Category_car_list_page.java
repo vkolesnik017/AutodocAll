@@ -373,4 +373,8 @@ public class LKW_Category_car_list_page {
 
     ElementsCollection priceTitle() {return $$x("//div[@class='price-block__inkl']/*[1]");}
 
+    SelenideElement installSideInCharacteristics(int position, String installSide) {
+        return $x("(//div[@class='description'])[" + position + "]//span[contains(text(),'Einbauseite:')]/following-sibling::*[self::span[contains(text(),'"+installSide+"')] or self::span//b[contains(text(),'"+installSide+"')]]");
+    }
+
     }

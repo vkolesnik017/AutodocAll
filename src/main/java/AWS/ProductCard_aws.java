@@ -263,7 +263,9 @@ public class ProductCard_aws {
     @Step("compare elements of Dangerous product. ProductCard_aws")
     public ProductCard_aws compareElementsOfDangerousProduct(List<String> listOfDangerousIconFromProduct, String signalWord) {
         List<String> dangerousIconFromAws = new ArrayList<>();
-        if (signalWord.toUpperCase().equals("ACHTUNG!")) {
+        if (listOfDangerousIconFromProduct.size() == 1 && listOfDangerousIconFromProduct.get(0).equals("/atd/img/icons/svg/dangerous/dangerous-info")) {
+            dangerousIconFromAws.add("/atd/img/icons/svg/dangerous/dangerous-info");
+        } else if (signalWord.toUpperCase().equals("ACHTUNG!")) {
             signalAttentionCheckBox().shouldHave(attribute("checked", "true"));
         } else if (signalWord.toUpperCase().equals("GEFAHR!")) {
             signalDangerousCheckBox().shouldHave(attribute("checked", "true"));
@@ -276,6 +278,7 @@ public class ProductCard_aws {
 
         Assert.assertEquals(dangerousIconFromAws, listOfDangerousIconFromProduct);
         activeSwitchOfDangerousProduct().shouldBe(exist).shouldHave(text("ON"));
+
         return this;
     }
 

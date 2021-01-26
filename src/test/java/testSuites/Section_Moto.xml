@@ -6,12 +6,6 @@
         <listener class-name="Common.ProjectListener"/>
     </listeners>
 
-    <test name="QC_880_BlockOfDeliveryAndPaymentMethods">
-        <classes>
-            <class name="ATD.Section_Moto.QC_880_BlockOfDeliveryAndPaymentMethods.QC_887"/>
-        </classes>
-    </test>
-
     <test name="QC_834_NavigationBlockAtHeaders">
         <classes>
             <class name="ATD.Section_Moto.QC_834_NavigationBlockAtHeader.QC_835"/>
@@ -27,6 +21,4 @@
             <class name="ATD.Section_Moto.QC_730_ProductPage.QC_737"/>
         </classes>
     </test>
-
-
 </suite>
