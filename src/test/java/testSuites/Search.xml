@@ -20,6 +20,7 @@
             <class name="ATD.Search.QC_536_SearchLogic.QC_3203"/>
             <class name="ATD.Search.QC_536_SearchLogic.QC_3204"/>
             <class name="ATD.Search.QC_536_SearchLogic.QC_3127"/>
+            <class name="ATD.Search.QC_536_SearchLogic.QC_3128"/>
         </classes>
     </test>
 
