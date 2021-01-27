@@ -345,4 +345,18 @@ public class CartAllData_page {
     public SelenideElement characteristicZustandInProduct() {
         return $x("//div[@class='info__more-info']//ul[@style='display: block;']//span[contains(text(),'Zustand')]");
     }
+
+    //locators for checking labels payments method bank
+    SelenideElement firstLabelBank() {
+        return $x("//img[contains(@src,'wire')]");
+    }
+    SelenideElement secondLabelBank() {
+        return $x("//img[contains(@src,'bank')]");
+    }
+    SelenideElement thirdLabelBank() {
+        return $x("//img[contains(@src,'Finance')]");
+    }
+    SelenideElement fourthLabelBank() {
+        return $x("//img[contains(@src,'Bank')]");
+    }
 }

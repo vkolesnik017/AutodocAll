@@ -1,7 +1,11 @@
 package ATD;
 
+import Common.DataBase;
 import io.qameta.allure.Step;
 import org.testng.Assert;
+
+import java.sql.SQLException;
+import java.util.List;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
@@ -63,6 +67,36 @@ public class Payment_handler_page_Logic extends Payment_handler_page {
         lincForPDF().shouldBe(visible);
         lincForPDF().click();
         sleep(3000);
+        return this;
+    }
+
+    @Step("Compares expected requisites with actual. Payment_handler_page")
+    public Payment_handler_page_Logic compareExpectedRequisitesWithActual(String shop) throws SQLException {
+        String requisitesOnTheSite = getTextRequisites().replaceAll("\n", " ");
+        List<String> requisitesForUniqueCountries;
+        List<String> requisitesForOther;
+        if (shop.equals("AT") || shop.equals("CH") || shop.equals("CZ") || shop.equals("DK") || shop.equals("EN") || shop.equals("HU") || shop.equals("NO") || shop.equals("PL") ||
+                shop.equals("RO") || shop.equals("SE") || shop.equals("BG")) {
+            requisitesForUniqueCountries = new DataBase("ATD").getNameRequisitesMethod("bank_requisites_atd", shop, "Owner",
+                    "Account number", "Sort Code", "Bank", "IBAN", "BIC_SWIFT");
+            for (String a : requisitesForUniqueCountries) {
+                Assert.assertTrue(requisitesOnTheSite.contains(a));
+            }
+        } else {
+            requisitesForOther = new DataBase("ATD").getNameRequisitesMethod("bank_requisites_atd", "other", "Owner",
+                    "Account number", "Sort Code", "Bank", "IBAN", "BIC_SWIFT");
+            for (String a : requisitesForOther) {
+                Assert.assertTrue(requisitesOnTheSite.contains(a));
+            }
+        }
+        return this;
+    }
+
+    @Step("Checks the correctness of the order price in the requisites. Payment_handler_page")
+    public Payment_handler_page_Logic checksPriceOrderInRequisites(float orderPrice) {
+        String requisites = getTextRequisites();
+        String orderPriceFormat = String.valueOf(orderPrice).replaceAll("\\.",",");
+        Assert.assertTrue(requisites.contains(orderPriceFormat));
         return this;
     }
 }

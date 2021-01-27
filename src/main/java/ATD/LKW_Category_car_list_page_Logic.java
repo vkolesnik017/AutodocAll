@@ -334,7 +334,6 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
     public LKW_Category_car_list_page_Logic checkOfPresenceInstallationSide() {
         for (int i = 1; i <= characteristicsBlock().size(); i++) {
             descriptionOfCharacteristics(i).shouldBe(exist);
-
         }
         return this;
     }
@@ -638,7 +637,6 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         return this;
     }
 
-
     @Step("selecting of installation side  .LKW_Category_car_list_page")
     public LKW_Category_car_list_page_Logic selectInstallationSide(String subRoute) throws SQLException {
         installationSideBlock().shouldBe(visible);
@@ -910,9 +908,17 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
     }
 
     @Step("get price title of product. LKW_Category_car_list_page")
-    public List<String> getPriceTitle(){
+    public List<String> getPriceTitle() {
         List<String> priceTitle = priceTitle().stream().map(n -> getTextFromUnVisibleElement(n)).collect(Collectors.toList());
         return priceTitle;
+    }
+
+    @Step("Checking the presence of the installation side .LKW_Category_car_list_page")
+    public LKW_Category_car_list_page_Logic checkOfPresenceInstallationSide(String installSide) {
+        for (int i = 1; i <= characteristicsBlock().size(); i++) {
+            installSideInCharacteristics(i, installSide).shouldBe(exist);
+        }
+        return this;
     }
 }
 

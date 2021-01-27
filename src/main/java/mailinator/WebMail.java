@@ -1,6 +1,7 @@
 package mailinator;
 
 import ATD.PasswordRecovery_page_Logic;
+import AWS.Order_aws;
 import Common.DataBase;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
@@ -253,8 +254,7 @@ public class WebMail {
 
     @Step("Get tracking number. WebMail")
     public String getTrackingNumberFromMail() {
-        String trackingNum = trackingNumber().getText();
-        return trackingNum;
+        return trackingNumber().getText();
     }
 
     @Step("Transition to delivery page ang get URL. WebMail")
@@ -303,21 +303,36 @@ public class WebMail {
         return this;
     }
 
+    @Step("Checks delivery costs for a Country {deliveryCostForCountry} or Region {deliveryCostForRegion}. WebMail")
+    public WebMail checkDeliveryCostForCountryOrRegion(float deliveryCostForRegion, float deliveryCostForCountry, String shop) {
+        if (shop.equals("DE")) {
+            checkRegularDeliveryPriceInEmail(String.valueOf(deliveryCostForRegion));
+        }
+        if (shop.equals("Germany")) {
+            checkRegularDeliveryPriceInEmail(String.valueOf(deliveryCostForRegion));
+        }
+        if (shop.equals("LI")) {
+            checkRegularDeliveryPriceInEmail(String.valueOf(deliveryCostForCountry));
+        }
+        if (shop.equals("Liechtenstein")) {
+            checkRegularDeliveryPriceInEmail(String.valueOf(deliveryCostForCountry));
+        }
+        return this;
+    }
+
     @Step("Get total price in email. WebMail")
     public Float getTotalPriceInEmail() {
         String realPrice = infoTotalPriceInEmail().getText();
         realPrice = realPrice.replaceAll("[^0-9.]", "");
         realPrice = realPrice.replaceAll(",", ".");
-        Float totalPrice = Float.parseFloat(realPrice);
-        return totalPrice;
+        return Float.parseFloat(realPrice);
     }
 
     @Step("Get unit price in email. WebMail")
     public Float getUnitPriceInEmail() {
         String realPrice = unitPrice().getText();
         realPrice = realPrice.replaceAll("[^0-9.]", "").replace(",", ".");
-        Float unitPrice = Float.parseFloat(realPrice);
-        return unitPrice;
+        return Float.parseFloat(realPrice);
     }
 
     @Step("Clicks in recovery password link in letter. WebMail")

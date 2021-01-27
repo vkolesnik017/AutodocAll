@@ -18,7 +18,8 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
 
 public class QC_541 {
-
+    Main_page_Logic mainPage = new Main_page_Logic();
+    Listing_page_Logic listingPage = new Listing_page_Logic();
     private String oenNumber = "zzmf18861";
 
     @BeforeClass
@@ -37,8 +38,8 @@ public class QC_541 {
     @Description(value = "The test verifies that at the listing have only products with OEN number ZZMF18861 after search by text ZZMF18861")
     public void testSearchByOenNumber(String route) {
         open(route);
-        new Main_page_Logic().useSearch(oenNumber);
-        new Listing_page_Logic().checksProductTitlesContainExpectedTextGoingAllPagination(oenNumber);
+        mainPage.useSearch(oenNumber);
+        listingPage.checksProductTitlesContainExpectedTextGoingAllPagination(oenNumber);
     }
 
     @DataProvider(name = "routeLKW")
@@ -52,8 +53,23 @@ public class QC_541 {
     @Description(value = "The test verifies that at the listing have only products with OEN number ZZMF18861 after search by text ZZMF18861")
     public void testSearchByOenNumberLKW(String route) {
         open(route);
-        new Main_page_Logic().useSearch(oenNumber);
-        new Listing_page_Logic().checksProductTitlesContainExpectedTextGoingAllPagination(oenNumber);
+        mainPage.useSearch(oenNumber);
+        listingPage.checksProductTitlesContainExpectedTextGoingAllPagination(oenNumber);
+    }
+
+    @DataProvider(name = "routeMOTO")
+    Object[] dataProviderMOTO() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "main");
+    }
+
+    @Test(dataProvider = "routeMOTO")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "The test verifies that at the listing have only products with OEN number ZZMF18861 after search by text ZZMF18861")
+    public void testSearchByOenNumberMOTO(String route) {
+        open(route);
+        mainPage.useSearch(oenNumber);
+        listingPage.checksProductTitlesContainExpectedTextGoingAllPagination(oenNumber);
     }
 
     @AfterMethod

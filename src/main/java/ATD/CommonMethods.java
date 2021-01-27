@@ -262,6 +262,10 @@ public class CommonMethods {
         return $x("//*[@class='title_list'] | //*[@class='top-small-products__title']");
     }
 
+    private SelenideElement blockOfTopProducts() {
+        return $x("//div[contains(@class,'product-list-slider')]");
+    }
+
     private SelenideElement arrowRightBtnInTopProductsBlock() {
         return $(byXpath("(//*[@type='button'])[2]"));
     }
@@ -281,9 +285,15 @@ public class CommonMethods {
 
     private By recoveryCharacteristicInBlockOfTopProducts = By.cssSelector(".default_ul_li_class");
 
-    @Step("Scrolling to block of top products")
-    public CommonMethods scrollToBlockOfTopProducts() {
+    @Step("Scrolling to title of block top products")
+    public CommonMethods scrollToTitleOfBlockOfTopProducts() {
         titleOfBlockOfTopProducts().scrollTo();
+        return this;
+    }
+
+    @Step("Scrolling to block of top products block")
+    public CommonMethods scrollToBlockOfTopProducts() {
+        blockOfTopProducts().scrollTo();
         return this;
     }
 
@@ -303,7 +313,7 @@ public class CommonMethods {
     // method for checks output recovery characteristic in block of top products for QASYS_536 (TEST-1)
     public void checksOutputRecoveryCharacteristicInBlocksOfTopProducts(String expectedChar) {
         ArrayList<String> actualCharacteristics = new ArrayList<>();
-        scrollToBlockOfTopProducts();
+        scrollToTitleOfBlockOfTopProducts();
         ElementsCollection miniCardsInTopBlock = miniCardsOfProducts().filter(visible).shouldHaveSize(4);
         for (SelenideElement el : miniCardsInTopBlock) {
             el.hover();
@@ -323,8 +333,7 @@ public class CommonMethods {
     }
 
     @Step("Method for checks elements in mini card in block of top products")
-    public void checksPresenceElementsInMiniCardInBlocksOfTopProducts() {
-
+    public void checksPresenceElementsInMiniCardInBlocksOfTopProducts(String routeName) {
         By sticker = (byCssSelector(".discount"));
         By image = (byCssSelector(".ovVisLi_image"));
         By productName = (byCssSelector(".product-list__item__title"));
@@ -334,7 +343,10 @@ public class CommonMethods {
         SelenideElement sliderPrev = $x("//button[@class='slick-prev slick-arrow']");
         SelenideElement sliderNext = $x("//button[@class='slick-next slick-arrow']");
 
-        ElementsCollection miniCardsOfProducts = miniCardsOfProducts().filterBy(visible).shouldHaveSize(4);
+        ElementsCollection miniCardsOfProducts = null;
+        if (routeName.equals("supplier_brand_line")) {
+            miniCardsOfProducts = miniCardsOfProducts().filterBy(visible).shouldHaveSize(6);
+        } else {miniCardsOfProducts = miniCardsOfProducts().filterBy(visible).shouldHaveSize(4);}
         for (SelenideElement miniCardFirsSlide : miniCardsOfProducts) {
             miniCardFirsSlide.$(sticker).should(visible);
             miniCardFirsSlide.$(image).should(visible);
@@ -343,17 +355,19 @@ public class CommonMethods {
             miniCardFirsSlide.$(price).should(visible);
             miniCardFirsSlide.$(infoVatAndDelivery).should(visible);
         }
-        sliderNext.click();
-        sleep(2000);
-        for (SelenideElement miniCardSecondSlide : miniCardsOfProducts) {
-            miniCardSecondSlide.$(sticker).should(visible);
-            miniCardSecondSlide.$(image).should(visible);
-            miniCardSecondSlide.$(productName).should(visible);
-            miniCardSecondSlide.$(articleNumber).should(visible);
-            miniCardSecondSlide.$(price).should(visible);
-            miniCardSecondSlide.$(infoVatAndDelivery).should(visible);
+        if (!routeName.equals("supplier_brand_line")) {
+            sliderNext.click();
+            sleep(2000);
+            for (SelenideElement miniCardSecondSlide : miniCardsOfProducts) {
+                miniCardSecondSlide.$(sticker).should(visible);
+                miniCardSecondSlide.$(image).should(visible);
+                miniCardSecondSlide.$(productName).should(visible);
+                miniCardSecondSlide.$(articleNumber).should(visible);
+                miniCardSecondSlide.$(price).should(visible);
+                miniCardSecondSlide.$(infoVatAndDelivery).should(visible);
+            }
+            sliderPrev.click();
         }
-        sliderPrev.click();
     }
 
     @Step("Comparing actual and expected characteristics")

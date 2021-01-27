@@ -1,8 +1,10 @@
 package ATD;
 
+import Common.DataBase;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +40,7 @@ public class LKW_Search_page_Logic extends LKW_Search_page {
     }
 
     @Step("click on dangerous label of product and compare elements. LKW_Search_page")
-    public LKW_Search_page_Logic clickOnDangerousLabelAndCompareElements(int positionOfProduct, String signalWord, List<String> attributeOfWarningIcon) {
+    public LKW_Search_page_Logic clickOnDangerousLabelAndCompareElements(int positionOfProduct, String signalWord, List<String> attributeOfWarningIcon) throws SQLException {
         btnMoreOfDangerousProducts().get(positionOfProduct).scrollIntoView("{block: \"center\"}");
         existOfGeneric();
         if (btnCloseSelectorPopUp().isDisplayed()) {
@@ -58,7 +60,7 @@ public class LKW_Search_page_Logic extends LKW_Search_page {
 
         List<String> attributeOfDangerousIcon = new ArrayList<>();
         for (int i = 0; i < dangerousIconInWarningPopUp().size(); i++) {
-            String urlFromAttribute = dangerousIconInWarningPopUp().get(i).getAttribute("style").replace("background-image: url(\"", "").replace("\");", "");
+            String urlFromAttribute = dangerousIconInWarningPopUp().get(i).getAttribute("style").replace("background-image: url(\"", "").replace("\");", "").replaceAll(new DataBase("ATD").getFullRouteByRouteName("prod","DE","main"),"");
             String partOfAttribute = urlFromAttribute.replace(urlFromAttribute.substring(urlFromAttribute.lastIndexOf(".")), "");
             attributeOfDangerousIcon.add(partOfAttribute);
         }

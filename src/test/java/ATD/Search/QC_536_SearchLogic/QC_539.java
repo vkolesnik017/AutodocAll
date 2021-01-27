@@ -18,7 +18,8 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
 
 public class QC_539 {
-
+    Main_page_Logic mainPage = new Main_page_Logic();
+    Listing_page_Logic listingPage = new Listing_page_Logic();
     private String articleForSearch = "20049";
 
     @BeforeClass
@@ -37,8 +38,8 @@ public class QC_539 {
     @Description(value = "The test verifies that at the listing have product with article 20046 after search")
     public void testSearchByArticle(String route) {
         open(route);
-        new Main_page_Logic().useSearch(articleForSearch);
-        new Listing_page_Logic().checkProductsByArticle(articleForSearch);
+        mainPage.useSearch(articleForSearch);
+        listingPage.checkProductsByArticle(articleForSearch);
     }
 
     @DataProvider(name = "routeLKW")
@@ -52,8 +53,23 @@ public class QC_539 {
     @Description(value = "The test verifies that at the listing have product with article 20046 after search")
     public void testSearchByArticleLKW(String route) {
         open(route);
-        new Main_page_Logic().useSearch(articleForSearch);
-        new Listing_page_Logic().checkProductsByArticle(articleForSearch);
+        mainPage.useSearch(articleForSearch);
+        listingPage.checkProductsByArticle(articleForSearch);
+    }
+
+    @DataProvider(name = "routeMoto")
+    Object[] dataProviderMoto() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_main");
+    }
+
+    @Test(dataProvider = "routeMoto")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "The test verifies that at the listing have product with article 20046 after search")
+    public void testSearchByArticleMoto(String route) {
+        open(route);
+        mainPage.useSearch(articleForSearch);
+        listingPage.checkProductsByArticle(articleForSearch);
     }
 
     @AfterMethod

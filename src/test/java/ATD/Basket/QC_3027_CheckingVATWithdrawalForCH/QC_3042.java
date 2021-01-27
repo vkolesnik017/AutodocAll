@@ -31,7 +31,7 @@ public class QC_3042 {
     private String mailDE = "QC_3042_autotestDE@mailinator.com";
     private String illiquidProduct = "50364";
     private String productWithDeposit = "24.3481-8515.5";
-    private String heavyLoad = "DAVO001TT";
+    private String heavyLoad = "6504-03-2509591P";
 
     private Product_page_Logic product_page_logic = new Product_page_Logic();
     private DataBase dB = new DataBase("ATD");
@@ -41,10 +41,12 @@ public class QC_3042 {
         setUpBrowser(false, "chrome", "87.0", true);
     }
 
+    //TODO тест не реализован полностью из за дефекта BSK-1791
+
     @Test()
     @Flaky
     @Owner(value = "Chelombitko")
-    @Description(value = "Test checking the VAT percentage when changing the country to CH of delivery in ABC")
+    @Description(value = "Test checking the VAT percentage when changing the country to CH of delivery in AWS")
     public void testCheckingVAT_percentageWhenChangingDeliveryInCH() throws SQLException, IOException {
         String vatForCH = new PageVAT_aws().getVatForCH();
         openPage(dB.getFullRouteByRouteAndSubroute("prod", "CH", "main", "staticVersand"));
@@ -88,7 +90,7 @@ public class QC_3042 {
         float heavyLoadsSum = order_aws.getHeavyLoads(heavyLoad);
         order_aws.compereDeliveryCostOfHeavyLoadsWithCostOnSite(heavyLoadsSum);
 
-        String artID = order_aws.getArticleId();
+        order_aws.getArticleId();
         order_aws.openPopUpAccountsAndCheckVat(vatForCH)
                 .closePopupAccounts()
                 .clickReturnButton()

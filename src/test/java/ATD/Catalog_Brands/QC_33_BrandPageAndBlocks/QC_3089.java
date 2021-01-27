@@ -1,6 +1,6 @@
-package ATD.ProductPage.QC_2741_ProductPage_CarRoute;
+package ATD.Catalog_Brands.QC_33_BrandPageAndBlocks;
 
-import ATD.Product_page_Logic;
+import ATD.Supplier_brand_line_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -16,32 +16,28 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_3098 {
+public class QC_3089 {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
     }
 
-    @DataProvider(name = "route")
+    @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product53");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "main", "supplier_brand_line");
     }
 
-    @Test(dataProvider = "route")
+    @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "test checking the presence of a TAB block and anchoring when clicking on block elements")
-    public void testCheckPresenceOfTabBlockAnchoringByClickOnElement(String route) {
+    @Description(value = "Test checks Linking Block To Other Brand Lines")
+    public void testChecksLinkingBlockToOtherBrandLines(String route) {
         openPage(route);
-        new Product_page_Logic().presenceTabBlock(6)
-                .checkTabLinks(route)
-                .presenceOfInterestingArticleLinks()
-                .checkCountOfReviews();
+        new Supplier_brand_line_page_Logic().presenceAnotherBrandsBlock().transitionToAllAnotherBrands("VALEO");
     }
 
     @AfterMethod
-    private void close() {
+    public void close() {
         closeWebDriver();
     }
 }

@@ -39,7 +39,7 @@ public class QC_749 {
   @Description(value = "Appears car selector popup after click details link in top block")
   public void testAppearsCarSelectorPopupAfterClickDetailsLinkInTopBlock(String route) {
     open(route);
-    commonMethods.scrollToBlockOfTopProducts();
+    commonMethods.scrollToTitleOfBlockOfTopProducts();
     universalElementOfBuyBtnForAllPages().hover();
     sleep(1000);
     commonMethods.detailsButtonInTopProductsBlock().click();

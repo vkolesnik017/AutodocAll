@@ -174,10 +174,10 @@ public class Product_page_Logic extends Product_page {
     @Step("Checking number basket and refresh page if not. Product_page")
     public Product_page_Logic checkNumberBasketAndRefreshPageIfNot() {  // TODO Бывает при открытии страницы не подгружается номер корзины и товар не добавляется в корзину, причина не известна, что бы стабилизировать тесты добавлен этот метод
         try {
-            numberBasket().shouldBe(visible);
+            numberBasket().scrollTo().shouldBe(visible);
         } catch (ElementShould e) {
             refresh();
-            numberBasket().shouldBe(visible);
+            numberBasket().scrollTo().shouldBe(visible);
         }
         return this;
     }
@@ -1215,10 +1215,20 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
+    @Step("presence Of Interesting article Links. Product page")
+    public Product_page_Logic presenceOfInterestingArticleLinks() {
+        for (int i = 0; i < interestingArticleLinks().size(); i++) {
+            interestingArticleLinks().get(i).shouldBe(visible);
+        }
+
+        return this;
+    }
+
     @Step("checking the count of reviews. Product page")
     public Product_page_Logic checkCountOfReviews() {
+        headlineOfFeedBackBlock().scrollTo();
         int countFromReviewsLink = Integer.parseInt(linksOfTabBlock().get(3).getText().replaceAll("[^0-9]", "").trim());
-        countOfReviewsInHeadOfBlock().scrollIntoView("{block: \"center\"}");
+        countOfReviewsInHeadOfBlock().shouldBe(visible);
         int countFromReviewsBlock = Integer.parseInt(countOfReviewsInHeadOfBlock().getText().replaceAll("[^0-9]", "").trim());
         Assert.assertEquals(countFromReviewsBlock, countFromReviewsLink);
         reviews().shouldHaveSize(countFromReviewsLink);

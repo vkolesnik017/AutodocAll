@@ -1,7 +1,6 @@
 package ATD.Search.QC_536_SearchLogic;
 
 import ATD.Moto_main_page_Logic;
-import Common.DataBase;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -12,13 +11,17 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.List;
 
-import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class QC_891 {
+
+    List<String> values = Arrays.asList("BOSCH", "4776", "Ölfilterschlüssel", "0501CA127C33450580");
+
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -33,12 +36,12 @@ public class QC_891 {
     @Flaky
     @Owner(value = "Kolesnik")
     @Description(value = "Test checks Search by any criteria")
-    public void testChecksSearchByAnyCriteria(String route) throws SQLException {
+    public void testChecksSearchByAnyCriteria(String route) {
         openPage(route);
 
         new Moto_main_page_Logic()
-                .inputOfBrandInMainSearchField("Bosch");
-        checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "search24"));
+                .setValueInMainSearch(values);
+
     }
 
     @AfterMethod

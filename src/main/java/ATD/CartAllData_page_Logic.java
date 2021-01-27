@@ -201,14 +201,12 @@ public class CartAllData_page_Logic extends CartAllData_page {
     @Step("Get regular delivery price. CartAllData_page")
     public float getRegularDeliveryPrice() {
         String deliveryPrice = deliveryPrice().getText();
-        float deliveryPriceFormat = Float.parseFloat(deliveryPrice.substring(0, deliveryPrice.indexOf(" ")).replaceAll(",", "."));
-        return deliveryPriceFormat;
+        return Float.parseFloat(deliveryPrice.substring(0, deliveryPrice.indexOf(" ")).replaceAll(",", "."));
     }
 
     @Step("Get total delivery price and safe order. CartAllData_page")
     public float getTotalDeliveryPriceAndSafeOrder(float deliveryPrice, float safeOrderPrice) {
-        float totalPrice = deliveryPrice + safeOrderPrice;
-        return totalPrice;
+        return deliveryPrice + safeOrderPrice;
     }
 
     @Step("Checks for the absence of VAT percentage. CartAllData_page")
@@ -330,16 +328,14 @@ public class CartAllData_page_Logic extends CartAllData_page {
     public float getSafeOrderPrice() {
         safeOrderPriceFromOrderSummaryBlock().shouldBe(visible);
         String safeOrderPrice = safeOrderPriceFromOrderSummaryBlock().getText();
-        float safeOrderPriceFormat = Float.parseFloat(safeOrderPrice.substring(0, safeOrderPrice.indexOf(" ")).replaceAll(",", "."));
-        return safeOrderPriceFormat;
+        return Float.parseFloat(safeOrderPrice.substring(0, safeOrderPrice.indexOf(" ")).replaceAll(",", "."));
     }
 
     @Step("Get safe order price from SO block. CartAllData_page")
     public float getSafeOrderPriceFromSOBlock() {
         safeOrderBlock().shouldBe(visible);
         String safeOrderPrice = priceOfSafeOrder().getText();
-        float safeOrderPriceFormat = Float.parseFloat(safeOrderPrice.substring(0, safeOrderPrice.indexOf(" ")).replaceAll(",", "."));
-        return safeOrderPriceFormat;
+        return Float.parseFloat(safeOrderPrice.substring(0, safeOrderPrice.indexOf(" ")).replaceAll(",", "."));
     }
 
 
@@ -395,8 +391,7 @@ public class CartAllData_page_Logic extends CartAllData_page {
             realPrice = totalOrderPrice().getText().replace("£ ", "");
         }
         realPrice = realPrice.replaceAll(",", ".");
-        Float totalPrice = Float.parseFloat(realPrice);
-        return totalPrice;
+        return Float.parseFloat(realPrice);
     }
 
 
@@ -428,8 +423,7 @@ public class CartAllData_page_Logic extends CartAllData_page {
     public Float getRegularProductPriceFormAllDataPage() {
         String regularProductPrice = productPrice().getText().replaceAll("[^0-9,]", "");
         regularProductPrice = regularProductPrice.replaceAll(",", ".");
-        Float productPrice = Float.parseFloat(regularProductPrice);
-        return productPrice;
+        return Float.parseFloat(regularProductPrice);
     }
 
 
@@ -661,5 +655,15 @@ public class CartAllData_page_Logic extends CartAllData_page {
 
     public float getHeavyLoadsDeliveryPrice() {
         return Float.parseFloat(heavyLoadsDeliveryPrice().getText().replaceAll("[^0-9,]", "").replaceAll(",", "."));
+    }
+
+    @Step("Checks for the label of the bank payment method. CartAllData_page")
+    public CartAllData_page_Logic checksForLabelOfBankPaymentMethod() {
+        if ((firstLabelBank().isDisplayed()) || secondLabelBank().isDisplayed() || thirdLabelBank().isDisplayed() || fourthLabelBank().isDisplayed()) {
+            System.out.println("Label bank is visible");
+        } else {
+            Assert.fail("Leib bank not visible");
+        }
+        return this;
     }
 }

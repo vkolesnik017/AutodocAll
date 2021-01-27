@@ -1,6 +1,5 @@
 package ATD;
 
-import Common.DataBase;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import files.Product;
@@ -8,7 +7,6 @@ import io.qameta.allure.Step;
 import org.testng.Assert;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -48,6 +46,18 @@ public class Search_page_Logic extends Search_page {
     @Step("Verify text in search bar. Search_page")
     public Search_page_Logic verifyTextInSearchBar(String expectedText) {
         new Main_page().searchBar().shouldHave(exactValue(expectedText));
+        return this;
+    }
+
+    @Step("Verify text in url. Search_page")
+    public Search_page_Logic verifyTextInUrl(String expectedText) {
+        Assert.assertTrue(url().contains(expectedText));
+        return this;
+    }
+
+    @Step("Verify text in main headline. Search_page")
+    public Search_page_Logic verifyTextInMainHeadline(String expectedText) {
+        Assert.assertTrue(titleOnSearchPage().getText().contains(expectedText));
         return this;
     }
 
@@ -779,6 +789,14 @@ public class Search_page_Logic extends Search_page {
     public Search_page_Logic checkQuantityBlockNotVisibility() {
         for (int i = 0; i < countInputsTwo().size(); i++) {
             countInputsTwo().get(i).shouldNotBe(visible);
+        }
+        return this;
+    }
+
+    @Step("presence Brand And Generic In Product Title. Search_page")
+    public Search_page_Logic presenceBrandAndGenericInProductTitle(String brand, String generic) {
+        for (int i = 0; i < titleOfProductsInListing().size(); i++) {
+            titleOfProductsInListing().get(i).shouldHave(text(brand)).shouldHave(text(generic));
         }
         return this;
     }

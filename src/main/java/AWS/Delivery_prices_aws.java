@@ -9,6 +9,7 @@ import io.qameta.allure.Step;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import static PKW.CommonMethods.getTextFromUnVisibleElement;
 import static PKW.CommonMethods.openPage;
@@ -40,14 +41,12 @@ public class Delivery_prices_aws {
 
     @Step("Get delivery price for Island or region {region}. Delivery_prices_aws")
     public float getDeliveryPriceForIslandOrRegion(String region) {
-        float deliveryPrice = Float.parseFloat(deliveryPriceOnlyForIslandAndRegions(region).getValue());
-        return deliveryPrice;
+        return Float.parseFloat(deliveryPriceOnlyForIslandAndRegions(region).getValue());
     }
 
     @Step("Get delivery price for country {country}. Delivery_prices_aws")
     public float getDeliveryPriceForCountry(String country) {
-        float deliveryPrice = Float.parseFloat(deliveryPrice(country).getValue());
-        return deliveryPrice;
+        return Float.parseFloat(deliveryPrice(country).getValue());
     }
 
 
@@ -59,12 +58,12 @@ public class Delivery_prices_aws {
         String actualCurrency = deliveryCurrency(actualCountry).getText();
         float actualPrice;
         if (!actualCurrency.equals("EUR")) {
-            openPage(currencyRatesPage_aws.currencyRatesPageURL);
+            openPage(CurrencyRatesPage_aws.currencyRatesPageURL);
             float price = currencyRatesPage_aws.getPriceOfCurrency(actualCurrency);
             float result = deliveryPrice / price;
             BigDecimal bigDecimal = new BigDecimal(result);
             BigDecimal roundResult = bigDecimal.setScale(2, BigDecimal.ROUND_HALF_UP);
-            actualPrice = Float.valueOf(String.valueOf(roundResult));
+            actualPrice = Float.parseFloat(String.valueOf(roundResult));
         } else {
             actualPrice = deliveryPrice;
         }
@@ -78,12 +77,12 @@ public class Delivery_prices_aws {
         String actualCurrency = deliveryCurrency(country).getText();
         float actualPrice;
         if (!actualCurrency.equals("EUR")) {
-            openPage(currencyRatesPage_aws.currencyRatesPageURL);
+            openPage(CurrencyRatesPage_aws.currencyRatesPageURL);
             float price = currencyRatesPage_aws.getPriceOfCurrency(actualCurrency);
             float result = deliveryPrice / price;
             BigDecimal bigDecimal = new BigDecimal(result);
             BigDecimal roundResult = bigDecimal.setScale(2, BigDecimal.ROUND_HALF_UP);
-            actualPrice = Float.valueOf(String.valueOf(roundResult));
+            actualPrice = Float.parseFloat(String.valueOf(roundResult));
         } else {
             actualPrice = deliveryPrice;
         }
