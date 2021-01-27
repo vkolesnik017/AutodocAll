@@ -43,16 +43,6 @@
         </classes>
     </test>
 
-    <test name="QC_1217_BlockFilterByTolerance">
-        <classes>
-            <class name="PKW.Section_Oil.QC_1217_BlockFilterByTolerance.QC_1220"/>
-            <!--<class name="PKW.Section_Oil.QC_1217_BlockFilterByTolerance.QC_1221"/>-->
-            <class name="PKW.Section_Oil.QC_1217_BlockFilterByTolerance.QC_1222"/>
-            <class name="PKW.Section_Oil.QC_1217_BlockFilterByTolerance.QC_1223"/>
-            <class name="PKW.Section_Oil.QC_1217_BlockFilterByTolerance.QC_1224"/>
-        </classes>
-    </test>
-
     <test name="QC_1225_SelectorInOilListings">
         <classes>
             <class name="PKW.Section_Oil.QC_1225_SelectorInOilListings.QC_1226"/>
