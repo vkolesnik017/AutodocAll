@@ -2,7 +2,6 @@ package ATD.Basket.QC_2915_OptionalFieldFiscalCodeForRomaniaItalyPortugal;
 
 import ATD.CartAccount_page_Logic;
 import ATD.CartAddress_page_Logic;
-import ATD.CartPayments_page_Logic;
 import ATD.Product_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
@@ -18,10 +17,9 @@ import static ATD.CommonMethods.checkingContainsUrl;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_2971 {
+public class QC_2972 {
 
-
-    private String mail = "qc_2971_autotest@mailinator.com";
+    private String mail = "qc_2972_autotest@mailinator.com";
     private CartAddress_page_Logic cartAddressPageLogic = new CartAddress_page_Logic();
 
     @BeforeClass
@@ -37,8 +35,8 @@ public class QC_2971 {
     @Test(dataProvider = "route")
     @Flaky
     @Owner(value = "Sergey_QA")
-    @Description(value = "Checking Go to the next step if the \"Fiscal code\" field is filled / empty, Billing and Shipping are not separated")
-    public void testCheckingGoToNextStepIfFiscalCodeFieldIsFilledOrEmpty(String route) {
+    @Description(value = "Go to the next step, if the checkbox in the \"Fiscal code\" checkbox is not checked, Billing and Shipping are not separated")
+    public void testCheckingGoToNextStepIfCheckboxInFiscalCodeIsNoChecked(String route) {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
         new Product_page_Logic().addProductToCart()
@@ -50,15 +48,6 @@ public class QC_2971 {
                 .fillInPostalCode("default")
                 .checkPresenceFieldFiscalCodeForShipping(false)
                 .checkTextForCheckboxFiscalCode(cartAddressPageLogic.textFiscalCodeInShippingForm(), shop)
-                .clickCheckboxForOpenFiscalCodeField()
-                .checkPresenceFieldFiscalCodeForShipping(true)
-                .fillingFieldFiscalCode("TS111")
-                .nextBtnClick();
-        checkingContainsUrl("payments");
-        new CartPayments_page_Logic().clickBtnReturnTheAddressPage()
-                .checkPresenceShippingForm()
-                .fieldFiscalCode().clear();
-        cartAddressPageLogic.checkPresenceFieldFiscalCodeForShipping(true)
                 .nextBtnClick();
         checkingContainsUrl("payments");
     }

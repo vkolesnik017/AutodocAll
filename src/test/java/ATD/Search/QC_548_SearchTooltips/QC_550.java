@@ -15,6 +15,7 @@ import org.testng.annotations.Test;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.checkingContainsUrl;
+import static ATD.CommonMethods.waitWhileRouteContainsExpected;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
@@ -27,7 +28,7 @@ public class QC_550 {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0",false);
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
     @DataProvider(name = "route")
@@ -61,7 +62,28 @@ public class QC_550 {
         mainPage.inputTextInSearchBar(searchText)
                 .clickTooltipInSearchByExactText(searchText);
         checkingContainsUrl(new DataBase("ATD").getRouteByRouteName("DE", "lkw_search20"));
-        new Search_page_Logic().verifyTextInSearchBar(searchText);
+        new Search_page_Logic().verifyTextInSearchBar(searchText)
+                .verifyTextInUrl(searchText)
+                .verifyTextInMainHeadline(searchText);
+    }
+
+    @DataProvider(name = "routeMOTO")
+    Object[] dataProviderMOTO() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "main");
+    }
+
+    @Test(dataProvider = "routeMOTO")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "Go to search listing by click tooltip in search")
+    public void testGoToListingFromTooltipInSearchMOTO(String route) throws SQLException {
+        open(route);
+        mainPage.inputTextInSearchBar(searchText)
+                .clickTooltipInSearchByExactText(searchText);
+        waitWhileRouteContainsExpected("search");
+        new Search_page_Logic().verifyTextInSearchBar(searchText)
+                .verifyTextInUrl(searchText)
+                .verifyTextInMainHeadline(searchText);
     }
 
     @AfterMethod

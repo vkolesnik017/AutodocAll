@@ -1,6 +1,6 @@
-package ATD.Search.QC_536_SearchLogic;
+package ATD.Catalog_Brands.QC_33_BrandPageAndBlocks;
 
-import ATD.Moto_main_page_Logic;
+import ATD.Supplier_brand_line_page_Logic;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -11,17 +11,12 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.sql.SQLException;
-import java.util.Arrays;
-import java.util.List;
 
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_891 {
-
-    List<String> values = Arrays.asList("BOSCH", "4776", "Ölfilterschlüssel", "0501CA127C33450580");
-
+public class QC_3089 {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -29,19 +24,16 @@ public class QC_891 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_main");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "main", "supplier_brand_line");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks Search by any criteria")
-    public void testChecksSearchByAnyCriteria(String route) {
+    @Description(value = "Test checks Linking Block To Other Brand Lines")
+    public void testChecksLinkingBlockToOtherBrandLines(String route) {
         openPage(route);
-
-        new Moto_main_page_Logic()
-                .setValueInMainSearch(values);
-
+        new Supplier_brand_line_page_Logic().presenceAnotherBrandsBlock().transitionToAllAnotherBrands("VALEO");
     }
 
     @AfterMethod

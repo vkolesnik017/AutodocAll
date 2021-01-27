@@ -207,7 +207,6 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return this;
     }
 
-
     @Step("Filling postal code {postalCodeOrCodeDefault} for Billing. CartAddress_page")
     public CartAddress_page_Logic fillInPostalCodeForBilling(String postalCodeOrCodeDefault) {
         if (postalCodeOrCodeDefault.equals("default")) {
@@ -233,8 +232,6 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return this;
     }
 
-
-
     // Enters characters one by one
     @Step("Filling postal code {sendPostalCode}. CartAddress_page")
     public CartAddress_page_Logic fillingPostalCodeField(String sendPostalCode) {
@@ -255,8 +252,6 @@ public class CartAddress_page_Logic extends CartAddress_page {
         js.executeScript("arguments[0].value='" + sendPostalCode + "';", postalCodeFieldForShipping());
         return this;
     }
-
-
 
     @Step("Filling postal code {sendPostalCode} for billing. CartAddress_page")
     public CartAddress_page_Logic fillingPostalCodeFieldJSForBilling(String sendPostalCode) {
@@ -300,8 +295,7 @@ public class CartAddress_page_Logic extends CartAddress_page {
     @Step("Filling postal code {postalCodeOrCodeDefault} or default for shipping. CartAddress_page")
     public CartAddress_page_Logic fillingPostalCodeOrDefaultFieldJSForShipping(String postalCodeOrCodeDefault, String shop) {
         if (postalCodeOrCodeDefault.equals("default")) {
-            String currentShop = shop;
-            switch (currentShop) {
+            switch (shop) {
                 case "AT":
                     postalCodeOrCodeDefault = "4321";
                     break;
@@ -410,7 +404,6 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return page(CartPayments_page_Logic.class);
     }
 
-
     @Step("Click button EinkaufFortsetzen from popup with an error about the wrong company. CartAddress_page")
     public CartPayments_page_Logic clickBtnEinkaufFortsetzenFromPopupErrorAboutWrongCompany() {
         btnEinkaufFortsetzenFromPopupErrorAboutWrongCompany().click();
@@ -418,13 +411,11 @@ public class CartAddress_page_Logic extends CartAddress_page {
     }
 
     //CONVID TEST
-
     @Step("Get text from tooltip COVID-19. CartAddress_page")
     public String getTextFromTooltipCOVID19() {
         tooltipCOVID19().shouldBe(visible);
         return tooltipCOVID19().getText();
     }
-
 
     @Step("Checking of blocking plz {sendPostalCode} for country {country} with split billing and shipping. CartAddress_page")
     public CartAddress_page_Logic checkBlockingPLZForCountry(String countryShipping, String sendPostalCodeShipping, String countryBilling, String sendPostalCodeBilling) {
@@ -439,7 +430,6 @@ public class CartAddress_page_Logic extends CartAddress_page {
         tooltipCOVID19().shouldBe(visible);
         return this;
     }
-
 
     @Step("Checking block plz for country {countryCheck} on skin {skin}. CartAddress_page")
     public CartAddress_page_Logic checkingCOVID19Block(String countryCheck, String[] shopPlz, String file, String skin) throws IOException {
@@ -516,7 +506,6 @@ public class CartAddress_page_Logic extends CartAddress_page {
         }
         return this;
     }
-
 
     @Step("Checking COVID-19 tooltip translate for country {countryCheck} with PLZ {plz} on shop {shop}. CartAddress_page")
     public CartAddress_page_Logic checkingCOVID19TooltipTranslate(String countryCheck, String plz, String shop) throws
@@ -780,8 +769,8 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return this;
     }
 
-    @Step("Check presence field fiscal code . CartAddress_page")
-    public CartAddress_page_Logic checkPresenceFieldFiscalCode(boolean fieldVisibleOrNot) {
+    @Step("Check presence field fiscal code for Shipping block . CartAddress_page")
+    public CartAddress_page_Logic checkPresenceFieldFiscalCodeForShipping(boolean fieldVisibleOrNot) {
         if (fieldVisibleOrNot == true) {
             fieldFiscalCode().shouldBe(visible);
         }else if (fieldVisibleOrNot == false)
@@ -789,6 +778,38 @@ public class CartAddress_page_Logic extends CartAddress_page {
         return this;
     }
 
+    @Step("Check presence field fiscal code for Billing block. CartAddress_page")
+    public CartAddress_page_Logic checkPresenceFieldFiscalCodeForBilling(boolean fieldVisibleOrNot) {
+        if (fieldVisibleOrNot == true) {
+            fieldFiscalCodeBilling().shouldBe(visible);
+        }else if (fieldVisibleOrNot == false)
+            fieldFiscalCodeBilling().shouldNotBe(visible);
+        return this;
+    }
+
+    @Step("Check presence error tooltip Fiscal Code field for Shipping. CartAddress_page")
+    public CartAddress_page_Logic checkPresenceErrorTooltipFiscalCodeFieldForShipping() {
+        errorTooltipFiscalCodeFieldForShipping().shouldBe(visible);
+        Assert.assertFalse(errorTooltipFiscalCodeFieldForShipping().text().isEmpty());
+        return this;
+    }
+
+    @Step("Check presence error tooltip Fiscal Code field for Billing. CartAddress_page")
+    public CartAddress_page_Logic checkPresenceErrorTooltipFiscalCodeFieldForBilling() {
+        errorTooltipFiscalCodeFieldForBilling().shouldBe(visible);
+        Assert.assertFalse(errorTooltipFiscalCodeFieldForBilling().text().isEmpty());
+        return this;
+    }
+
+    @Step ("Check presence text in fields for Shipping or Billing block. CartAddress_page")
+    public CartAddress_page_Logic checkPresenceTextInFieldsForShippingOrBilling(SelenideElement element, boolean visibleText ) {
+        if (visibleText == true) {
+            Assert.assertFalse(element.getValue().isEmpty());
+        }else if (visibleText == false) {
+            Assert.assertTrue(element.getValue().isEmpty());
+        }
+        return this;
+    }
 
 
 

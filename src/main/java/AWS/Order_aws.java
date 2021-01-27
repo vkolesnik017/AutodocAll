@@ -2,6 +2,7 @@ package AWS;
 
 import Common.DataBase;
 import com.codeborne.selenide.*;
+import com.codeborne.selenide.conditions.Or;
 import com.codeborne.selenide.ex.ElementShould;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -32,7 +33,7 @@ public class Order_aws {
     private String url = "https://aws.autodoc.de/order/view/";
 
     private SelenideElement orderID() {
-        return $x("//div[@class='col-md-6 col-sm-6']//div[1]//div[2]//div[10]");
+        return $x("//strong[text()='ID Заказа']/..");
     }
 
     private SelenideElement filterHeader() {
@@ -206,6 +207,10 @@ public class Order_aws {
 
     private SelenideElement errorPopup() {
         return $(By.xpath("//input[@id='AddProduct[count]']/../i"));
+    }
+
+    private SelenideElement errorPopupInTopRight() {
+        return $x("//div[@class='sticky-queue top-right']");
     }
 
     SelenideElement vatPercentageInOrder() {
@@ -576,6 +581,10 @@ public class Order_aws {
         return $x("//div[@id='declaration']//a[@class='btn btn-default btn-close']");
     }
 
+    private SelenideElement closeBtnModalWindowAddProduct() {
+        return $x("//div[@id='addProduct']//a[@class='btn btn-default btn-close']");
+    }
+
 
 
 
@@ -675,8 +684,7 @@ public class Order_aws {
 
     @Step("Get order ID of order. Order_aws")
     public String getOrderIdOfOrder() {
-        String orderID = orderID().getText().substring(10);
-        return orderID;
+        return orderID().getText().substring(10);
     }
 
     @Step("Checks the quantity of goods {expectedQuantity} in column count products. Order_aws")
@@ -1168,24 +1176,21 @@ public class Order_aws {
     public Float getTotalCostIncludingDeliveryAndSafeOrder(Float sellingCost, Float deliveryCost, Float safeOrderCost) {
         Float cost = sellingCost + deliveryCost + safeOrderCost;
         float actualTotalCost = getTotalPriceOrderAWS();
-        float res = roundOfTheCost(cost, actualTotalCost);
-        return res;
+        return roundOfTheCost(cost, actualTotalCost);
     }
 
     @Step("Get the total cost including selling cost {sellingCost} delivery cost {deliveryCost} and delivery cost of heavy loads {costOfHeavyLoads}. Order_aws")
     public Float getTotalCostIncludingDeliveryAndDeliveryCostOfHeavyLoads(Float sellingCost, Float deliveryCost, Float costOfHeavyLoads) {
         Float cost = sellingCost + deliveryCost + costOfHeavyLoads;
         String formatCost = new DecimalFormat(".##").format(cost).replaceAll(",", ".");
-        Float totalCost = Float.parseFloat(formatCost);
-        return totalCost;
+        return Float.parseFloat(formatCost);
     }
 
     @Step("Subtracts removed product cost {sellingCostOneProduct} from the total oder cost {totalCost}. Order_aws")
     public Float subtractsRemovedProductCostFromTotalOrderCost(Float totalCost, Float sellingCostOneProduct) {
         float cost = totalCost - sellingCostOneProduct;
         float actualTotalCost = getTotalPriceOrderAWS();
-        float res = roundOfTheCost(cost, actualTotalCost);
-        return res;
+        return roundOfTheCost(cost, actualTotalCost);
     }
 
     @Step("Checks conto NR number {contoNR}. Order_aws")
@@ -1207,8 +1212,8 @@ public class Order_aws {
 
     @Step("Get delivery cost in order from delivery block. Order_aws")
     public Float getDeliveryCostInOrderFromDeliveryBlock() {
-        String deliveriCost = deliveryPriceInPaymentAndDeliveryTermsBlock().getValue();
-        return Float.valueOf(deliveriCost);
+        String deliveryCost = deliveryPriceInPaymentAndDeliveryTermsBlock().getValue();
+        return Float.valueOf(deliveryCost);
     }
 
     @Step("Compares the actual shipping price with the expected one. Order_aws")
@@ -1285,23 +1290,22 @@ public class Order_aws {
     @Step("Get the total cost of all goods including delivery{deliveryCost} and safe order{safeOrderCost}. Order_aws")
     public Float getTotalCostOfAllGoodsAndDeliveryAndSafeOrder(Float deliveryCost, Float safeOrderCost) {
         Float costDeliveryAndSafeOrder = getTotalCostDeliveryAmountAndSafeOrder(deliveryCost, safeOrderCost);
-        Float sumOfAllGoods = 0.0f;
+        float sumOfAllGoods = 0.0f;
         for (int i = 0; i < sellingPriceOfAddedGoods().size(); i++) {
-            Float priceOfOneItem = Float.parseFloat(sellingPriceOfAddedGoods().get(i).getText());
+            float priceOfOneItem = Float.parseFloat(sellingPriceOfAddedGoods().get(i).getText());
             sumOfAllGoods = sumOfAllGoods + priceOfOneItem;
         }
         Float sum = (sumOfAllGoods + costDeliveryAndSafeOrder);
         float actualTotalCost = getTotalPriceOrderAWS();
-        float res = roundOfTheCost(sum, actualTotalCost);
-        return res;
+        return roundOfTheCost(sum, actualTotalCost);
     }
 
     @Step("Plus the selling price of all added items including delivery. Order_aws")
     public Float plusSellingPriceOfAllAddedItemsIncludingDelivery() {
         Float deliveryPrice = getDeliveryCostInOrder();
-        Float sumOfAllGoods = 0.0f;
+        float sumOfAllGoods = 0.0f;
         for (int i = 0; i < sellingPriceOfAddedGoods().size(); i++) {
-            Float priceOfOneItem = Float.parseFloat(sellingPriceOfAddedGoods().get(i).getText());
+            float priceOfOneItem = Float.parseFloat(sellingPriceOfAddedGoods().get(i).getText());
             sumOfAllGoods = sumOfAllGoods + priceOfOneItem;
         }
         Float sum = (sumOfAllGoods + deliveryPrice);
@@ -1333,8 +1337,7 @@ public class Order_aws {
     @Step("Calculates the amount of an item by dividing the total amount of the item {sumProduct Column} by the number of items {productQuantity}. Order_aws")
     public Float dividingPriceByQuantity(Float sumProductColumn, Float productQuantity, Float sellingPrice) {
         float cost = sumProductColumn / productQuantity;
-        float res = roundOfTheCost(cost, sellingPrice);
-        return res;
+        return roundOfTheCost(cost, sellingPrice);
     }
 
     @Step("Calculates goods amount by multiplying product price {sellingCostOneProduct} " +
@@ -1342,8 +1345,7 @@ public class Order_aws {
     public Float multiplyPriceByQuantityAndPlusDeliveryCost(Float sellingCostOneProduct, Float productQuantity, Float costDelivery) {
         Float cost = sellingCostOneProduct * productQuantity + costDelivery;
         float actualTotalCost = getTotalPriceOrderAWS();
-        float res = roundOfTheCost(cost, actualTotalCost);
-        return res;
+        return roundOfTheCost(cost, actualTotalCost);
     }
 
     @Step("Checking correct text in input field. Order_aws")
@@ -1526,13 +1528,19 @@ public class Order_aws {
         return this;
     }
 
+    @Step("Clos modal Window added product. Order_aws")
+    public Order_aws closeModalWindowAddProduct() {
+        closeBtnModalWindowAddProduct().click();
+        return this;
+    }
+
     @Step("Adding product {articleNumber, productQuantity} in order. Order_aws")
     public Order_aws addProductInOrder(String articleNumber, String productQuantity) {
         clickBtnAddProduct();
         articleNumberField().setValue(articleNumber);
         countAddProductField().setValue(productQuantity);
         addingProductBtn().click();
-        sleep(5000);
+        sleep(2000);
         return this;
     }
 
@@ -1553,6 +1561,12 @@ public class Order_aws {
             addingProductBtn().click();
         }
         popUpAddProduct().waitUntil(not(visible), 10000);
+        return this;
+    }
+
+    @Step("Checks presence error popup in top right. Order_aws")
+    public Order_aws checkPresenceErrorPopupInTopRight() {
+        errorPopupInTopRight().shouldBe(visible);
         return this;
     }
 }
