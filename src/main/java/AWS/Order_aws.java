@@ -585,7 +585,23 @@ public class Order_aws {
         return $x("//div[@id='addProduct']//a[@class='btn btn-default btn-close']");
     }
 
+    private SelenideElement fiscalCodeFieldForBilling() {
+        return $x("//input[@id='form_Order[rFiscalCode]']");
+    }
 
+
+
+
+    @Step ("Check presence text in Fiscal code field Billing block . Order_aws")
+    public Order_aws checkPresenceTextInFiscalCodeField(boolean visibleText) {
+        fiscalCodeFieldForBilling().shouldBe(visible);
+        if (visibleText == true) {
+            Assert.assertFalse(fiscalCodeFieldForBilling().getValue().isEmpty());
+        }else if (visibleText == false) {
+            Assert.assertTrue(fiscalCodeFieldForBilling().getValue().isEmpty());
+        }
+        return this;
+    }
 
 
     @Step("Click button accounts. Order_aws")
