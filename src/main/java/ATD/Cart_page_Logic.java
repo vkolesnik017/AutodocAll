@@ -445,4 +445,14 @@ public class Cart_page_Logic extends Cart_page {
         pfandPriceInTotalPriceBlock().shouldHave(exactText(deposit));
         return this;
     }
+
+    @Step("Checks for the label of the bank payment method. Cart_page")
+    public Cart_page_Logic checksForLabelOfBankPaymentMethod() {
+        if ((firstLabelBank().isDisplayed()) || secondLabelBank().isDisplayed() || thirdLabelBank().isDisplayed() || fourthLabelBank().isDisplayed()) {
+            System.out.println("Label bank is visible");
+        } else {
+            Assert.fail("Leib bank not visible");
+        }
+        return this;
+    }
 }

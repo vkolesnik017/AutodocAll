@@ -274,4 +274,18 @@ public class Cart_page {
         return $x("//div[@class='order-summary__row order-summary__row--total']//i");
     }
 
+    //locators for checking labels payments method bank
+    SelenideElement firstLabelBank() {
+        return $x("//img[contains(@src,'wire')]");
+    }
+    SelenideElement secondLabelBank() {
+        return $x("//img[contains(@src,'bank')]");
+    }
+    SelenideElement thirdLabelBank() {
+        return $x("//img[contains(@src,'Finance')]");
+    }
+    SelenideElement fourthLabelBank() {
+        return $x("//img[contains(@src,'Bank')]");
+    }
+
 }
