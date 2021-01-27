@@ -1,4 +1,4 @@
-package PKW.Characteristics.QC_531_RefurbishedCharacteristic;
+package PKW.Characteristics.QC_498_Characteristics;
 
 import PKW.Parts_group_page_Logic;
 import PKW.Supplier_brand_parts_page_Logic;
