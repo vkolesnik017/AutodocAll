@@ -1,11 +1,11 @@
-package PKW.Payments;
+package ATD.Payments;
 
+import ATD.CartAllData_page_Logic;
+import ATD.Product_page_Logic;
 import AWS.Order_aws;
-import PKW.CartAllData_page_Logic;
-import PKW.Payment_handler_page_Logic;
-import PKW.Product_page_Logic;
 import Common.DataBase;
 import Common.SetUp;
+import PKW.Payment_handler_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -17,24 +17,27 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.sql.SQLException;
+
+import static ATD.CommonMethods.getCurrentShopFromJSVarInHTML;
+import static ATD.CommonMethods.openPage;
 import static Common.DataBase.parseUserMailFromBD;
-import static Common.File.*;
+import static Common.File.assertThatPdfContainsText;
+import static Common.File.renameDownloadFile;
 import static Common.SetUp.setUpBrowser;
-import static PKW.CommonMethods.*;
+import static PKW.CommonMethods.passwordForPayments;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static mailinator.WebMail.passwordForMail;
 
-public class QC_2464 {
+public class QC_2153 {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0", true);
-
+        setUpBrowser(false, "chrome", "77.0", false);
     }
 
-    @DataProvider(name = "route", parallel = true)
+    @DataProvider(name = "route", parallel = false)
     Object[] dataProviderProducts() throws SQLException {
-        return new SetUp("PKW").setUpShopsWithSubroute("prod", "DE,AT,BG,CH,CZ,DK,ES,FI,FR,GR,HU,IT,NL,NO,PL,PT,RO,SE,EN", "main", "product");
+        return new SetUp("ATD").setUpShopsWithSubroute("prod", "DE,AT,BG,BE,CH,CZ,DK,EN,EE,ES,FI,FR,GR,HU,IT,LD,LT,LV,NL,NO,PL,PT,RO,SE,SI,SK", "main", "product32");
     }
 
     @Test(dataProvider = "route")
@@ -44,7 +47,7 @@ public class QC_2464 {
     public void testPaymentsMethodBank(String route) throws Exception {
         openPage(route);
         String shop = getCurrentShopFromJSVarInHTML();
-        String userData = new DataBase("PKW").getUserIdForPaymentsMethod("payments_userid_pkw", shop, "Bank");
+        String userData = new DataBase("ATD").getUserIdForPaymentsMethod("payments_userid_atd", shop, "Bank");
         String mail = parseUserMailFromBD(userData);
         float totalPriceAllData = new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
@@ -52,7 +55,9 @@ public class QC_2464 {
                 .checksForLabelOfBankPaymentMethod()
                 .nextButtonClick()
                 .signIn(mail, passwordForPayments)
-                .chooseDeliveryCountryAndFillingFirmInput(shop, "autotest")
+                .chooseDeliveryCountryForShipping(shop)
+                .fillFieldTelNumForShipping("200+002")
+                .fillFieldFirmNameForShipping("autotest")
                 .fillInCompanyIdFieldForCountryWhereIdNeeded(shop, shop, "autotest")
                 .clickOnTheDesiredPaymentMethod(shop, "Bank")
                 .nextBtnClick()
@@ -69,7 +74,7 @@ public class QC_2464 {
         String orderNum = new Payment_handler_page_Logic().getOrderNumber();
         float totalPriceOrderAws = new Order_aws(orderNum).openOrderInAwsWithLogin()
                 .checkPaymentMethodInOrder("Bank Austria","HypoVereinsbank","Vorkasse","SEB", "UniCredit Bank",
-                                           "Przelew Bankowy","PostFinance")
+                        "Przelew Bankowy","PostFinance")
                 .getTotalPriceOrderAWS();
         Assert.assertEquals(totalPriceAllData, totalPriceOrderAws);
         float totalPriceOrderAwsAfterReSave = new Order_aws().reSaveOrder()
