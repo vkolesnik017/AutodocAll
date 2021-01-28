@@ -1497,4 +1497,12 @@ public class Product_page_Logic extends Product_page {
         basket().hover();
         return this;
     }
+
+    @Step("display of Kba Selector Error ToolTip. Product_page")
+    public Product_page_Logic displayKbaSelectorErrorToolTip(String errorMessage) {
+        selectorKbaBtn().shouldBe(visible).click();
+        errorToolTipOfKbaSelector().shouldHave(text(errorMessage));
+        return this;
+    }
+
 }

@@ -276,7 +276,7 @@ public class Search_page {
 
     ElementsCollection amountQuantityOfProduct() {return $$x("//div[@class='count']/input");}
 
-    ElementsCollection priceOfProduct() {return $$x("//p[@class='actual_price']");}
+    ElementsCollection priceOfProduct() {return $$x("//p[contains(@class,'actual_price')]");}
 
     ElementsCollection attributeOfBtnAddedToBasket() { return $$x("//div[@class='count']/following-sibling::div");}
 

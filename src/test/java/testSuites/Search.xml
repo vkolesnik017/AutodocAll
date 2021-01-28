@@ -20,6 +20,7 @@
             <class name="ATD.Search.QC_536_SearchLogic.QC_3203"/>
             <class name="ATD.Search.QC_536_SearchLogic.QC_3204"/>
             <class name="ATD.Search.QC_536_SearchLogic.QC_3127"/>
+            <class name="ATD.Search.QC_536_SearchLogic.QC_3128"/>
         </classes>
     </test>
 
@@ -45,7 +46,7 @@
             <class name="ATD.Search.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1314"/>
             <class name="ATD.Search.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1315"/>
             <class name="ATD.Search.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1316"/>
-            <!--            <class name="ATD.Search.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1318"/>-->
+            <class name="ATD.Search.QC_1298_AccountingForDynamicGenericsOfProductsInSearchResults.QC_1318"/>
         </classes>
     </test>
 

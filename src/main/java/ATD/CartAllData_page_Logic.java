@@ -656,4 +656,14 @@ public class CartAllData_page_Logic extends CartAllData_page {
     public float getHeavyLoadsDeliveryPrice() {
         return Float.parseFloat(heavyLoadsDeliveryPrice().getText().replaceAll("[^0-9,]", "").replaceAll(",", "."));
     }
+
+    @Step("Checks for the label of the bank payment method. CartAllData_page")
+    public CartAllData_page_Logic checksForLabelOfBankPaymentMethod() {
+        if ((firstLabelBank().isDisplayed()) || secondLabelBank().isDisplayed() || thirdLabelBank().isDisplayed() || fourthLabelBank().isDisplayed()) {
+            System.out.println("Label bank is visible");
+        } else {
+            Assert.fail("Leib bank not visible");
+        }
+        return this;
+    }
 }

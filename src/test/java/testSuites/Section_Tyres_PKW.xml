@@ -49,7 +49,6 @@
             <class name="PKW.Section_Tyres_PKW.QC_2223_ProductPageTyres.QC_2274"/>
             <class name="PKW.Section_Tyres_PKW.QC_2223_ProductPageTyres.QC_2275"/>
             <class name="PKW.Section_Tyres_PKW.QC_2223_ProductPageTyres.QC_2276"/>
-            <!--<class name="PKW.Section_Tyres_PKW.QC_2223_ProductPageTyres.QC_2224"/>-->
             <class name="PKW.Section_Tyres_PKW.QC_2223_ProductPageTyres.QC_2277"/>
             <!--temporary disabled, refactor test QC-2278-->
             <!--<class name="PKW.Section_Tyres_PKW.QC_2223_ProductPageTyres.QC_2278"/>-->

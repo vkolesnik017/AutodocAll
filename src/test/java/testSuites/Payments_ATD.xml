@@ -6,6 +6,13 @@
         <listener class-name="Common.ProjectListener"/>
     </listeners>
 
+    <test name="QC_2153_Bank_ATD" thread-count="1">
+        <classes>
+            <class name="ATD.Payments.QC_2153">
+            </class>
+        </classes>
+    </test>
+
     <test name="QC_2168_PayPal_ATD" thread-count="1">
         <classes>
             <class name="ATD.Payments.QC_2168">

@@ -9,39 +9,58 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import static ATD.CommonMethods.checkingContainsUrl;
+
+import java.sql.SQLException;
+
+import static ATD.CommonMethods.waitWhileRouteBecomeExpected;
 import static Common.SetUp.setUpBrowser;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.Selenide.open;
 
 public class QC_672 {
 
-  private Product_page_Logic product_page_logic = new Product_page_Logic();
+    private Product_page_Logic productPage = new Product_page_Logic();
 
-  @BeforeClass
-  void setUp() {
-    setUpBrowser(false, "chrome", "77.0", false);
-  }
+    @BeforeClass
+    void setUp() {
+        setUpBrowser(false, "chrome", "77.0", false);
+    }
 
-  @DataProvider(name = "route", parallel = true)
-  Object[] dataProvider() {
-    return new SetUp("ATD").setUpShop("prod", "DE");
-  }
 
-  @Test(dataProvider = "route")
-  @Flaky
-  @Owner(value = "Evlentiev")
-  @Description(value = "Use horizontal selector when chosen existing kna number")
-  public void testUseHorizontalSelectorWhenChosenExistingKBA(String route) {
-    product_page_logic.openProductPageById(route, "10019946");
-    refresh();
-    sleep(5000);
-    product_page_logic.fillNumberKba("0603", "419")
-            .clickKbaBtnAndClosePopUpKbaError()
-            .verifyNameRouteEqualsMakerCarList();
-    checkingContainsUrl("ersatzteile/vw/golf/golf-iv-1j1/8799-1-4-16v");
-  }
-  @AfterMethod
-  public void close() {
-    closeWebDriver();
-  }
+    @DataProvider(name = "route", parallel = true)
+    Object[] dataProvider() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product49");
+    }
+
+    @Test(dataProvider = "route")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "Use horizontal selector when chosen existing kna number")
+    public void testUseHorizontalSelectorWhenChosenExistingKBA(String route) {
+        open(route);
+        productPage.fillNumberKba("0603", "419")
+                .clickKbaBtnAndClosePopUpKbaError();
+        waitWhileRouteBecomeExpected("maker_car_list");
+    }
+
+    @DataProvider(name = "routeBrandLine", parallel = true)
+    Object[] dataProviderBrandLineBrandLine() throws SQLException {
+        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "supplier_brand_line");
+    }
+
+    @Test(dataProvider = "routeBrandLine")
+    @Flaky
+    @Owner(value = "Kolesnik")
+    @Description(value = "Use horizontal selector when chosen existing kna number")
+    public void testUseHorizontalSelectorWhenChosenExistingKBABrandLine(String route) {
+        open(route);
+        productPage.fillNumberKba("0603", "419")
+                .clickKbaBtnAndClosePopUpKbaError();
+        waitWhileRouteBecomeExpected("maker_car_list");
+    }
+
+    @AfterMethod
+    public void close() {
+        closeWebDriver();
+    }
 }

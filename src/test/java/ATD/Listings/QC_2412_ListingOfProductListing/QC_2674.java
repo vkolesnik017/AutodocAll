@@ -24,7 +24,7 @@ public class QC_2674 {
         setUpBrowser(false, "chrome", "77.0", false);
     }
 
-    private List<String> searchValues = Arrays.asList("BOSCH", "Scheibenwischer", "Bremsscheiben", "Motoröl", "agr ventil");
+    private List<String> searchValues = Arrays.asList("Kupplung", "agr ventil", "Zahnriemensatz mit waserpumpe");
 
 
     @DataProvider(name = "route")
