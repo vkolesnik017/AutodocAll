@@ -1,4 +1,4 @@
-package PKW.Characteristics.QC_531_RefurbishedCharacteristic;
+package PKW.Characteristics.QC_498_Characteristics;
 
 
 import Common.SetUp;

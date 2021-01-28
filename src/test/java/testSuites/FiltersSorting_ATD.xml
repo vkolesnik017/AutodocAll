@@ -23,7 +23,7 @@
             <!--<class name="ATD.FiltersSorting.QC_2594_Filters_CriterionCharacteristics.QC_1549"/>--> <!--  Filter by price is inactive-->
             <class name="ATD.FiltersSorting.QC_2594_Filters_CriterionCharacteristics.QC_186"/>
             <class name="ATD.FiltersSorting.QC_2594_Filters_CriterionCharacteristics.QC_1428"/>
-            <!--<class name="ATD.FiltersSorting.QC_2594_Filters_CriterionCharacteristics.QC_1429"/>-->
+            <class name="ATD.FiltersSorting.QC_2594_Filters_CriterionCharacteristics.QC_1429"/>
         </classes>
     </test>
 

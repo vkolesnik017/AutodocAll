@@ -1,6 +1,6 @@
-package PKW.Section_Oil.QC_1217_BlockFilterByTolerance;
+package PKW.Characteristics.QC_498_Characteristics;
 
-import PKW.Motoroil_Release_page_Logic;
+import PKW.Product_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -15,8 +15,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_1221 {
-
+public class QC_534 {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -24,20 +23,17 @@ public class QC_1221 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil_release");
+        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "product5");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks transition by click on Tolerance filter")
-    public void testChecksTransitionByClickOnToleranceFilter(String route) {
+    @Description(value = "Test checks presence of Refurbished characteristic in basket")
+    public void testChecksPresenceOfRefurbishedCharacteristicInBasket(String route) {
         openPage(route);
 
-        new Motoroil_Release_page_Logic()
-                .selectFilterByTolerance("ALLISON C4")
-                .checkSelectorWithSelectedToleranceFilter("allison-c4")
-                .checkListingWithSelectedToleranceFilter("ALLISON C4");
+        new Product_page_Logic().addProductToBasket().cartClick().presenceOfAddedProductList().presenceOfExpectedCharacteristic("Zustand: Wiederaufbereitet");
     }
 
     @AfterMethod

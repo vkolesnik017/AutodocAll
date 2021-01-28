@@ -396,7 +396,7 @@ public class Maker_car_list_page_Logic extends Maker_car_list_page {
     public Maker_car_list_page_Logic checkUniquenessOfGenericsInTopProducts() {
         List<String> generics = genericOfTopProducts().stream().map(n -> n.shouldBe(visible).getText()).collect(Collectors.toList());
         Set<String> uniqueGenerics = new HashSet<>(generics);
-        Assert.assertEquals(uniqueGenerics.size(),generics.size());
+        Assert.assertEquals(uniqueGenerics.size(), generics.size());
         return this;
     }
 }
