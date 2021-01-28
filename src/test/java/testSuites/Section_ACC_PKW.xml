@@ -13,6 +13,13 @@
             <class name="PKW.Section_ACC.QC_1417_MainChemistry.QC_1545"/>
             <class name="PKW.Section_ACC.QC_1417_MainChemistry.QC_1615"/>
             <class name="PKW.Section_ACC.QC_1417_MainChemistry.QC_1617"/>
+            <class name="PKW.Section_ACC.QC_1417_MainChemistry.QC_1533"/>
+            <class name="PKW.Section_ACC.QC_1417_MainChemistry.QC_1535"/>
+            <class name="PKW.Section_ACC.QC_1417_MainChemistry.QC_1541"/>
+            <class name="PKW.Section_ACC.QC_1417_MainChemistry.QC_1612"/>
+            <class name="PKW.Section_ACC.QC_1417_MainChemistry.QC_1613"/>
+            <class name="PKW.Section_ACC.QC_1417_MainChemistry.QC_1614"/>
+            <class name="PKW.Section_ACC.QC_1417_MainChemistry.QC_2250"/>
         </classes>
     </test>
 
@@ -47,20 +54,11 @@
         </classes>
     </test>
 
-    <test name="QC_1793_ChemistryListing">
-        <classes>
-            <class name="PKW.Section_ACC.QC_1793_ChemistryListing.QC_1794"/>
-            <class name="PKW.Section_ACC.QC_1793_ChemistryListing.QC_1796"/>
-<!--            <class name="PKW.Section_ACC.QC_1793_ChemistryListing.QC_1809"/>-->
-            <class name="PKW.Section_ACC.QC_1793_ChemistryListing.QC_1816"/>
-        </classes>
-    </test>
-
     <test name="QC_1611_BlockTopProductsOnMainChemistry">
         <classes>
-            <class name="PKW.Section_ACC.QC_1611_BlockTopProductsOnMainChemistry.QC_1612"/>
-            <class name="PKW.Section_ACC.QC_1611_BlockTopProductsOnMainChemistry.QC_1613"/>
-            <class name="PKW.Section_ACC.QC_1611_BlockTopProductsOnMainChemistry.QC_1614"/>
+            <class name="PKW.Section_ACC.QC_1417_MainChemistry.QC_1612"/>
+            <class name="PKW.Section_ACC.QC_1417_MainChemistry.QC_1613"/>
+            <class name="PKW.Section_ACC.QC_1417_MainChemistry.QC_1614"/>
         </classes>
     </test>
 
@@ -78,37 +76,11 @@
         </classes>
     </test>
 
-    <test name="QC_1419_MainCatalogProductsOnMainChemistry">
-        <classes>
-            <class name="PKW.Section_ACC.QC_1419_MainCatalogProductsOnMainChemistry.QC_1533"/>
-            <class name="PKW.Section_ACC.QC_1419_MainCatalogProductsOnMainChemistry.QC_1535"/>
-            <class name="PKW.Section_ACC.QC_1419_MainCatalogProductsOnMainChemistry.QC_1541"/>
-        </classes>
-    </test>
-
-    <test name="QC_1810_BlockWithProductsOnChemistryListing">
-        <classes>
-            <class name="PKW.Section_ACC.QC_1810_BlockWithProductsOnChemistryListing.QC_1811"/>
-            <class name="PKW.Section_ACC.QC_1810_BlockWithProductsOnChemistryListing.QC_1812"/>
-            <class name="PKW.Section_ACC.QC_1810_BlockWithProductsOnChemistryListing.QC_1813"/>
-        </classes>
-    </test>
-
     <test name="QC_1752_BlockTopCategoriesOnMainTools">
         <classes>
             <class name="PKW.Section_ACC.QC_1752_BlockTopCategoriesOnMainTools.QC_1753"/>
             <class name="PKW.Section_ACC.QC_1752_BlockTopCategoriesOnMainTools.QC_1754"/>
             <class name="PKW.Section_ACC.QC_1752_BlockTopCategoriesOnMainTools.QC_1755"/>
-        </classes>
-    </test>
-
-    <test name="QC_1798_SideBarOnChemistryListing">
-        <classes>
-            <class name="PKW.Section_ACC.QC_1798_SideBarOnChemistryListing.QC_1799"/>
-            <class name="PKW.Section_ACC.QC_1798_SideBarOnChemistryListing.QC_1800"/>
-            <class name="PKW.Section_ACC.QC_1798_SideBarOnChemistryListing.QC_1802"/>
-            <class name="PKW.Section_ACC.QC_1798_SideBarOnChemistryListing.QC_1803"/>
-            <class name="PKW.Section_ACC.QC_1798_SideBarOnChemistryListing.QC_1804"/>
         </classes>
     </test>
 
@@ -129,14 +101,6 @@
         </classes>
     </test>
 
-    <test name="QC_2294_BlockWithProductsOnAccListing">
-        <classes>
-            <class name="PKW.Section_ACC.QC_2294_BlockWithProductsOnAccListing.QC_2295"/>
-            <class name="PKW.Section_ACC.QC_2294_BlockWithProductsOnAccListing.QC_2296"/>
-            <class name="PKW.Section_ACC.QC_2294_BlockWithProductsOnAccListing.QC_2298"/>
-        </classes>
-    </test>
-
     <test name="QC_2279_ToolsListing">
         <classes>
             <class name="PKW.Section_ACC.QC_2279_ToolsListing.QC_2232"/>
@@ -149,17 +113,7 @@
     <test name="QC_2236_DisplayingAllCategoriesAndLogicalUnionACC">
         <classes>
             <class name="PKW.Section_ACC.QC_2236_DisplayingAllCategoriesAndLogicalUnionACC.QC_2238"/>
-            <class name="PKW.Section_ACC.QC_2236_DisplayingAllCategoriesAndLogicalUnionACC.QC_2250"/>
             <class name="PKW.Section_ACC.QC_2236_DisplayingAllCategoriesAndLogicalUnionACC.QC_2251"/>
-        </classes>
-    </test>
-
-    <test name="QC_2288_ListingAccessories">
-        <classes>
-            <class name="PKW.Section_ACC.QC_2288_ListingAccessories.QC_2289"/>
-            <class name="PKW.Section_ACC.QC_2288_ListingAccessories.QC_2291"/>
-            <class name="PKW.Section_ACC.QC_2288_ListingAccessories.QC_2292"/>
-            <class name="PKW.Section_ACC.QC_2288_ListingAccessories.QC_2293"/>
         </classes>
     </test>
 
@@ -168,6 +122,32 @@
             <class name="PKW.Section_ACC.QC_2283_BlockWithProductsOnToolsListing.QC_2284"/>
             <class name="PKW.Section_ACC.QC_2283_BlockWithProductsOnToolsListing.QC_2285"/>
             <class name="PKW.Section_ACC.QC_2283_BlockWithProductsOnToolsListing.QC_2286"/>
+        </classes>
+    </test>
+
+    <test name="QC_3017_Chemistry_Listing">
+        <classes>
+            <class name="PKW.Section_ACC.QC_3017_Chemistry_Listing.QC_1794"/>
+            <class name="PKW.Section_ACC.QC_3017_Chemistry_Listing.QC_1796"/>
+            <class name="PKW.Section_ACC.QC_3017_Chemistry_Listing.QC_1816"/>
+            <class name="PKW.Section_ACC.QC_3017_Chemistry_Listing.QC_1799"/>
+            <class name="PKW.Section_ACC.QC_3017_Chemistry_Listing.QC_1800"/>
+            <class name="PKW.Section_ACC.QC_3017_Chemistry_Listing.QC_1803"/>
+            <class name="PKW.Section_ACC.QC_3017_Chemistry_Listing.QC_1804"/>
+            <class name="PKW.Section_ACC.QC_3017_Chemistry_Listing.QC_1811"/>
+            <class name="PKW.Section_ACC.QC_3017_Chemistry_Listing.QC_1812"/>
+            <class name="PKW.Section_ACC.QC_3017_Chemistry_Listing.QC_1813"/>
+        </classes>
+    </test>
+
+    <test name="QC_3013_Accessories_Listing">
+        <classes>
+            <class name="PKW.Section_ACC.QC_3013_Accessories_Listing.QC_2289"/>
+            <class name="PKW.Section_ACC.QC_3013_Accessories_Listing.QC_2291"/>
+            <class name="PKW.Section_ACC.QC_3013_Accessories_Listing.QC_2293"/>
+            <class name="PKW.Section_ACC.QC_3013_Accessories_Listing.QC_2295"/>
+            <class name="PKW.Section_ACC.QC_3013_Accessories_Listing.QC_2296"/>
+            <class name="PKW.Section_ACC.QC_3013_Accessories_Listing.QC_2298"/>
         </classes>
     </test>
 </suite>
