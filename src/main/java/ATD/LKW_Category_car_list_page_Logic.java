@@ -154,7 +154,7 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
     @Step("added product to basket .LKW_Category_car_list_page")
     public Cart_page_Logic addProductToBasket() {
         listingOfProducts().shouldBe(visible);
-        btnOfFirstProductInTecDocListing().click();
+        btnOfFirstProductInTecDocListing().scrollIntoView("{block: \"center\"}").click();
         basketDropMenu().should(appear);
         basketDropMenu().should(disappear);
         basket().click();
