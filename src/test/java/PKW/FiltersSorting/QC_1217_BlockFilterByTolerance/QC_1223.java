@@ -1,4 +1,4 @@
-package PKW.Section_Oil.QC_1217_BlockFilterByTolerance;
+package PKW.FiltersSorting.QC_1217_BlockFilterByTolerance;
 
 import PKW.Motoroil_viscosity_brand_page_Logic;
 import PKW.Motoroil_viscosity_page_Logic;

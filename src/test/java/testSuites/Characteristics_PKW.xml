@@ -6,11 +6,11 @@
         <listener class-name="Common.ProjectListener"/>
     </listeners>
 
-    <test name="QC_531_RefurbishedCharacteristic">
+    <test name="QC_498_Characteristics">
         <classes>
-            <class name="PKW.Characteristics.QC_531_RefurbishedCharacteristic.QC_532"/>
-            <class name="PKW.Characteristics.QC_531_RefurbishedCharacteristic.QC_533"/>
-            <class name="PKW.Characteristics.QC_531_RefurbishedCharacteristic.QC_534"/>
+            <class name="PKW.Characteristics.QC_498_Characteristics.QC_532"/>
+            <class name="PKW.Characteristics.QC_498_Characteristics.QC_533"/>
+            <class name="PKW.Characteristics.QC_498_Characteristics.QC_534"/>
         </classes>
     </test>
 

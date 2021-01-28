@@ -468,7 +468,7 @@ public class Listing_chemicals_Page_Logic extends Listing_chemicals_Page {
 
     @Step("Click button add to basket first product. Listing_chemicals_Page")
     public Listing_chemicals_Page_Logic clickBtnAddToBasketFirstProduct() {
-        redBtnAddToBasket().click();
+        redBtnAddToBasket().scrollIntoView("{block: \"center\"}").click();
         popupBasketAddedProducts().waitUntil(attribute("style", "visibility: visible; opacity: 1;"), 10000);
         return this;
     }

@@ -13,11 +13,11 @@
         </classes>
     </test>
 
-    <!--<test name="QC_1863_GdprContacts">
+    <test name="QC_1863_GdprContacts">
         <classes>
             <class name="PKW.GDRP.QC_1863"/>
         </classes>
-    </test>-->
+    </test>
 
     <test name="QC_1895_GdprFooter">
         <classes>

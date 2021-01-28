@@ -31,7 +31,7 @@ public class QC_798 {
 
     @DataProvider(name = "route")
     Object[] dataProvider() throws SQLException {
-        return new SetUp("PKW").setUpShopsWithSubroute("prod", "DE", "main", "product10");
+        return new SetUp("PKW").setUpShopsWithSubroute("prod", "DE", "main", "product11");
     }
 
     @Test(dataProvider = "route")

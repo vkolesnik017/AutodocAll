@@ -138,6 +138,7 @@ public class Listing_instruments_page_Logic extends Listing_instruments_page {
 
     @Step("Checking work quantity counter on decrease and increase products. Listing_instruments_page")
     public Listing_instruments_page_Logic checkingWorkQuantityCounterOnDecreaseAndIncrease() {
+        counterValueInQuantityCounter().scrollIntoView("{block: \"center\"}");
         new CommonMethods().checkingCounterIncrease(3, counterValueInQuantityCounter(), btnPlusInQuantityCounter());
         new CommonMethods().checkingCounterDecrease(3, counterValueInQuantityCounter(), btnMinusInQuantityCounter());
         btnMinusInQuantityCounter().click();

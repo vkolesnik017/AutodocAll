@@ -154,7 +154,7 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
     @Step("added product to basket .LKW_Category_car_list_page")
     public Cart_page_Logic addProductToBasket() {
         listingOfProducts().shouldBe(visible);
-        btnOfFirstProductInTecDocListing().click();
+        btnOfFirstProductInTecDocListing().scrollIntoView("{block: \"center\"}").click();
         basketDropMenu().should(appear);
         basketDropMenu().should(disappear);
         basket().click();
@@ -207,15 +207,12 @@ public class LKW_Category_car_list_page_Logic extends LKW_Category_car_list_page
         List<String> artNumberOfProduct = new ArrayList<>();
         artNumberOfProduct.add("Artikelnummer: V31-1013");
         artNumberOfProduct.add("Artikelnummer: HU 12 140 x");
-        artNumberOfProduct.add("Artikelnummer: 12140X-OF-PCS-MS");
+    //    artNumberOfProduct.add("Artikelnummer: 12140X-OF-PCS-MS");   // ВРЕМЕННО ОТКЛЮЧИЛ, ТАК КАК ТОВАРА НЕТ В ЛИСТИНГЕ
 
         for (int i = 0; i < artNumberOfProduct.size(); i++) {
             articleNumberOfProduct(artNumberOfProduct.get(i)).scrollTo();
-            if (i == 0) {
-                dynamicCharacteristicInTecDocListingBlock(artNumberOfProduct.get(i)).shouldHave(exactText("OM541 LA"));
-            } else {
-                dynamicCharacteristicInTecDocListingBlock(artNumberOfProduct.get(i)).shouldHave(exactText("OM 541 LA"));
-            }
+            boolean label = dynamicCharacteristicInTecDocListingBlock(artNumberOfProduct.get(i)).getText().matches("OM\\s?541\\sLA");
+            Assert.assertTrue(label);
         }
         return this;
     }
