@@ -526,6 +526,10 @@ public class Listing_page {
         return $x("//div[@class='product-eco-block']/../..//div[@class='name']");
     }
 
+    ElementsCollection vatPostscript() {
+        return $$x("//div[@class='price-block__inkl']/span");
+    }
+
     public SelenideElement listProducts() {
         return $(".list_products ");
     }
