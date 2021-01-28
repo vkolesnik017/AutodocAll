@@ -29,7 +29,7 @@ public class QC_2973 {
 
     @DataProvider(name = "route", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopsWithSubroute("prod", "IT,PT,RO", "main", "product32");
+        return new SetUp("ATD").setUpShopsWithSubroute("prod", "IT,RO", "main", "product32");
     }
 
     @Test(dataProvider = "route")
@@ -62,6 +62,45 @@ public class QC_2973 {
                 .reSaveOrder()
                 .checkCurrentStatusInOrder("Testbestellungen");
     }
+
+
+
+    @DataProvider(name = "routePT", parallel = true)
+    Object[] dataProviderPT() throws SQLException {
+        return new SetUp("ATD").setUpShopsWithSubroute("prod", "PT", "main", "product32");
+    }
+
+    @Test(dataProvider = "routePT")
+    @Flaky
+    @Owner(value = "Sergey_QA")
+    @Description(value = "If the \"Fiscal code\" field was hidden, the previously entered value is not displayed in the AWS order")
+    public void testPT_IfFieldWasHiddenPreviouslyEnteredValueIsNotDisplayedInAWS(String route) throws SQLException {
+        openPage(route);
+        String shop = getCurrentShopFromJSVarInHTML();
+        new Product_page_Logic().addProductToCart()
+                .closePopupOtherCategoryIfYes()
+                .cartClick()
+                .nextButtonClick();
+        String orderNumber = new CartAccount_page_Logic().signIn(mail, password)
+                .chooseDeliveryCountryForShipping(shop)
+                .fillInPostalCode("default")
+                .checkPresenceFieldFiscalCodeForShipping(false)
+                .checkTextForCheckboxFiscalCode(cartAddressPageLogic.textFiscalCodeInShippingForm(), shop)
+                .clickCheckboxForOpenFiscalCodeField()
+                .fillingFieldFiscalCode("TS111")
+                .checkPresenceTextInFieldsForShippingOrBilling(cartAddressPageLogic.fieldFiscalCode(), true)
+                .clickCheckboxForClosedFiscalCodeField()
+                .nextBtnClick()
+                .clickOnTheDesiredPaymentMethod(shop, "Multibanco")
+                .nextBtnClick()
+                .nextBtnClick()
+                .getOrderNumber();
+        new Order_aws(orderNumber).openOrderInAwsWithLogin()
+                .checkPresenceTextInFiscalCodeField(false)
+                .reSaveOrder()
+                .checkCurrentStatusInOrder("Testbestellungen");
+    }
+
 
     @AfterMethod
     private void close() {

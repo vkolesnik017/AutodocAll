@@ -560,7 +560,7 @@ public class CommonMethods {
             if (responseCode != 200) {
                 System.out.println("ResponseCode " + allCategories.get(i) + " = " + responseCode );
             }
-            assertEquals(responseCode, 200);
+            assertEquals(responseCode + " " + allCategories.get(i) , 200 + " " + allCategories.get(i));
         }
     }
 
