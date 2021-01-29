@@ -6,19 +6,6 @@
         <listener class-name="Common.ProjectListener"/>
     </listeners>
 
-    <test name="QC_1838_FAQ_Form">
-        <classes>
-            <class name="PKW.Product_Page.QC_1838_FAQ_Form.QC_1834"/>
-        </classes>
-    </test>
-
-    <test name="QC_1870_OEN">
-        <classes>
-            <class name="PKW.Product_Page.QC_1870_OEN.QC_1868"/>
-            <class name="PKW.Product_Page.QC_1870_OEN.QC_1869"/>
-        </classes>
-    </test>
-
     <test name="QC_1828_Reviews_Form">
         <classes>
             <class name="PKW.Product_Page.QC_1828_Reviews_Form.QC_1822"/>
@@ -28,16 +15,14 @@
         </classes>
     </test>
 
-    <test name="QC_1894_ProductPage_Elements">
-        <classes>
-            <class name="PKW.Product_Page.QC_1894_ProductPage_Elements.QC_1889"/>
-            <class name="PKW.Product_Page.QC_1894_ProductPage_Elements.QC_1888"/>
-        </classes>
-    </test>
-
     <test name="QC_3031_ProductPage_Car">
         <classes>
             <class name="PKW.Product_Page.QC_3031_ProductPage_Car.QC_3119"/>
+            <class name="PKW.Product_Page.QC_3031_ProductPage_Car.QC_1834"/>
+            <class name="PKW.Product_Page.QC_3031_ProductPage_Car.QC_1868"/>
+            <class name="PKW.Product_Page.QC_3031_ProductPage_Car.QC_1869"/>
+            <class name="PKW.Product_Page.QC_3031_ProductPage_Car.QC_1889"/>
+            <class name="PKW.Product_Page.QC_3031_ProductPage_Car.QC_1888"/>
         </classes>
     </test>
 </suite>

@@ -1505,4 +1505,10 @@ public class Product_page_Logic extends Product_page {
         return this;
     }
 
+    @Step("Checks presence VAT postscript {expectedVatPostscript}")
+    public Product_page_Logic checkPresenceVatPostscript(String expectedVatPostscript) {
+        vatPostscript().shouldHave(text(expectedVatPostscript));
+        return this;
+    }
+
 }
