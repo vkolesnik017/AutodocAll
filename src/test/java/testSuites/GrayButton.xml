@@ -16,11 +16,8 @@
             <class name="ATD.GrayButton.QC_1014_OutOfStockProducts.QC_380"/>
             <class name="ATD.GrayButton.QC_1014_OutOfStockProducts.QC_381"/>
             <class name="ATD.GrayButton.QC_1014_OutOfStockProducts.QC_383"/>
-            <!--<class name="ATD.GrayButton.QC_1014_OutOfStockProducts.QC_2077"/> - inactive-->
-            <!--<class name="ATD.GrayButton.QC_1014_OutOfStockProducts.QC_2079"/> - inactive-->
             <!--<class name="ATD.GrayButton.QC_1014_OutOfStockProducts.QC_2080"/> - inactive-->
             <!--<class name="ATD.GrayButton.QC_1014_OutOfStockProducts.QC_2081"/> - inactive-->
-            <!--<class name="ATD.GrayButton.QC_1014_OutOfStockProducts.QC_2068"/> - inactive-->
         </classes>
     </test>
 </suite>
