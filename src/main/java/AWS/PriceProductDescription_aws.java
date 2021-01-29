@@ -59,7 +59,7 @@ public class PriceProductDescription_aws {
                 Assert.assertFalse(title.get(i).equals("Preis pro Meter"));
             } else if (aliasOfProduct().get(0).isDisplayed()) {
                 Assert.assertTrue(aliasOfProduct().get(0).getText().equals("price_for_one_metr"));
-                Assert.assertTrue(title.get(i).equals("Preis pro Meter"));
+                Assert.assertTrue(title.get(i).equals("Preis pro Meter"),String.format("Problem with %s - product, text is - %s",id.get(i),title.get(i)));
             }
         }
 
