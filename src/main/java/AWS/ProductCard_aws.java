@@ -157,6 +157,8 @@ public class ProductCard_aws {
         return $$x("//div[@class='tab-content col-md-4 col-sm-12 main-description']//li");
     }
 
+    private SelenideElement  valueOfExactIdCharacteristic(String id) {return $x("//span[@class='param-id'][contains(text(),'"+id+"')]/following-sibling::span/span[2]");}
+
     String productId;
 
     public ProductCard_aws() {
@@ -420,6 +422,28 @@ public class ProductCard_aws {
     @Step("wait Of Change Count Of Description Values. ProductCard_aws")
     public ProductCard_aws waitOfChangeCountOfDescriptionValues(int size) {
         totalCountOfDescriptionTable().shouldHave(sizeNotEqual(size));
+        return this;
+    }
+
+    @Step(" open product card page")
+    public ProductCard_aws openExactProductCardPageAndLogin(String idOfProduct) {
+        open(exactCurrentUrl(idOfProduct));
+        if (loginField().isDisplayed()) {
+            new Login_aws().loginInAws();
+        }
+        return this;
+    }
+
+    @Step("get current Url. ProductCard_aws")
+    public String exactCurrentUrl(String productId) {
+        String url = "https://aws.autodoc.de/products/view/" + productId + "";
+        return url;
+    }
+
+
+    @Step("check Value Of Id Characteristic. ProductCard_aws")
+    public ProductCard_aws checkValueOfIdCharacteristic(String id, String value) {
+        valueOfExactIdCharacteristic(id).shouldBe(exist).shouldHave(exactText(value));
         return this;
     }
 }

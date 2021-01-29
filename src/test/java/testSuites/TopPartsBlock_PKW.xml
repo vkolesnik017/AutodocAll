@@ -10,6 +10,9 @@
         <classes>
             <class name="PKW.TopPartsBlock.QC_3007_TopProductsBlock.QC_2559"/>
             <class name="PKW.TopPartsBlock.QC_3007_TopProductsBlock.QC_2891"/>
+            <class name="PKW.TopPartsBlock.QC_3007_TopProductsBlock.QC_947"/>
+            <class name="PKW.TopPartsBlock.QC_3007_TopProductsBlock.QC_948"/>
+            <class name="PKW.TopPartsBlock.QC_3007_TopProductsBlock.QC_949"/>
         </classes>
     </test>
 
