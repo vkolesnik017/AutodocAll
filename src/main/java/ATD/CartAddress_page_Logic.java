@@ -568,7 +568,10 @@ public class CartAddress_page_Logic extends CartAddress_page {
     @Step("Check correct text {expectedText} in error message for personal number. CartAddress_page")
     public CartAddress_page_Logic checkCorrectTextInErrorMessage(String expectedText) {
         sleep(2000);
-        errorMessage().shouldBe(visible);
+        if (!errorMessage().isDisplayed()) {
+            nextBtnClick();
+            errorMessage().shouldHave(text(expectedText));
+        }
         errorMessage().shouldHave(text(expectedText));
         return this;
     }
