@@ -42,7 +42,7 @@ public class QC_2506 {
         openPage(shop);
         String currentShop = getCurrentShopFromJSVarInHTML();
         Float deliveryLimit = new Main_page_Logic().clickVersand().getDeliveryLimitFromText();
-        open(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", currentShop, "main", "product46"));
+        open(new DataBase("ATD").getFullRouteByRouteAndSubroute("prod", currentShop, "main", "product68"));
         new Product_page_Logic().addProductToCart()
                 .closePopupOtherCategoryIfYes()
                 .cartClick()

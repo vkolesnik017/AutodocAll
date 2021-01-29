@@ -4,16 +4,16 @@ import Common.DataBase;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 import static org.testng.Assert.assertEquals;
@@ -95,6 +95,16 @@ public class Index_instruments_page_Logic extends Index_instruments_page {
     @Step("Checking the number of mini-cards in top-10 products block. Index_instruments_page")
     public Index_instruments_page_Logic checkingNumberOfMiniCardsTop10Products() {
         miniCardsInTop10ProductsBlock().shouldHave(size(10));
+        return this;
+    }
+
+    @Step("Checks presence VAT postscript {expectedVatPostscript} in mini-cards. Index_instruments_page")
+    public Index_instruments_page_Logic checkPresenceVatPostscriptInMiniCards(String expectedVatPostscript) {
+        By vatPostscriptInMiniCards = (byCssSelector(".product-list__item__info"));
+        for (SelenideElement miniCardFirsSlide : miniCardsInTopProductsBlock()) {
+            miniCardFirsSlide.scrollTo();
+            miniCardFirsSlide.$(vatPostscriptInMiniCards).shouldHave(text(expectedVatPostscript));
+        }
         return this;
     }
 

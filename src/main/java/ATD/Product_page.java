@@ -430,6 +430,10 @@ public class Product_page {
         return $(byCssSelector(".product-inkl-info"));
     }
 
+    public SelenideElement vatPostscript() {
+        return $x("//p[@class='product-inkl-info']/span");
+    }
+
     // locators in popup of cart
     public SelenideElement firstProductPriceInPopupOfCart() {
         return $(byCssSelector(".row-price"));
