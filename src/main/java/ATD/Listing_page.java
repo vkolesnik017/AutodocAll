@@ -427,7 +427,7 @@ public class Listing_page {
     }
 
     public SelenideElement filterBySideBack() {
-        return $(By.xpath("//div[contains(@class,'installation-side__filter back-side')]"));
+        return $(By.xpath("//*[@class='installation-side__filter js-filter-wrapper-item back-side installation-side-lights-back']"));
     }
 
     public SelenideElement filterBySideLKW() {
@@ -524,6 +524,10 @@ public class Listing_page {
 
     SelenideElement productsWithPfandBlock() {
         return $x("//div[@class='product-eco-block']/../..//div[@class='name']");
+    }
+
+    ElementsCollection vatPostscript() {
+        return $$x("//div[@class='price-block__inkl']/span");
     }
 
     public SelenideElement listProducts() {

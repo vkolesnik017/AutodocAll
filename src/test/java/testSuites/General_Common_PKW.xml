@@ -22,4 +22,20 @@
             <class name="PKW.General_Common.QC_1921_Header.QC_1943"/>
         </classes>
     </test>
+
+    <test name="QC_2321_StaticPages" enabled="true">
+        <classes>
+            <class name="PKW.General_Common.QC_2321_StaticPages.QC_1608"/>
+            <class name="PKW.General_Common.QC_2321_StaticPages.QC_1609"/>
+            <class name="PKW.General_Common.QC_2321_StaticPages.QC_1092"/>
+            <class name="PKW.General_Common.QC_2321_StaticPages.QC_1531"/>
+            <class name="PKW.General_Common.QC_2321_StaticPages.QC_718"/>
+            <class name="PKW.General_Common.QC_2321_StaticPages.QC_221"/>
+            <class name="PKW.General_Common.QC_2321_StaticPages.QC_1176"/>
+            <class name="PKW.General_Common.QC_2321_StaticPages.QC_1466"/>
+            <class name="PKW.General_Common.QC_2321_StaticPages.QC_249"/>
+            <class name="PKW.General_Common.QC_2321_StaticPages.QC_2752"/>
+            <class name="PKW.General_Common.QC_2321_StaticPages.QC_2353"/>
+        </classes>
+    </test>
 </suite>
