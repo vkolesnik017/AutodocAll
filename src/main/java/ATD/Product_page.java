@@ -121,7 +121,7 @@ public class Product_page {
     }
 
     public SelenideElement productImageBlock() {
-        return $x("//div[@class='product-block__main-image']");
+        return $x("//div[@class='product-block__image']");
     }
 
     public SelenideElement imageInSlider() {
@@ -129,11 +129,11 @@ public class Product_page {
     }
 
     public SelenideElement closeFullImagePreview() {
-        return $(".fancybox-close");
+        return $(".fancybox-button--close");
     }
 
     public SelenideElement fullProductImage() {
-        return $(".fancybox-skin");
+        return $(".fancybox-image");
     }
 
     public SelenideElement productImageSlider() {

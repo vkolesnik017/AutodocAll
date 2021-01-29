@@ -38,7 +38,7 @@ public class QC_2804 {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "product43");
     }
 
-    @Test(dataProvider = "routes")
+    @Test(dataProvider = "routes", enabled = false)
     @Flaky
     @Owner(value = "Sergey_QA")
     @Description(value = "Test checking transition from banners autodoc club")
@@ -56,7 +56,7 @@ public class QC_2804 {
         return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_product5,moto_categories_maker,moto_catalog_model6");
     }
 
-    @Test(dataProvider = "routesMoto")
+    @Test(dataProvider = "routesMoto", enabled = false)
     @Flaky
     @Owner(value = "Sergey_QA")
     @Description(value = "Test checking transition from banners autodoc club")
@@ -74,7 +74,7 @@ public class QC_2804 {
         return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_product,lkw_categories_maker3,lkw_maker_car_list2");
     }
 
-    @Test(dataProvider = "routesLkw")
+    @Test(dataProvider = "routesLkw", enabled = false)
     @Flaky
     @Owner(value = "Sergey_QA")
     @Description(value = "Test checking transition from banners autodoc club")
@@ -92,7 +92,7 @@ public class QC_2804 {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "categories_maker,group_list,model_maker_list,category_group");
     }
 
-    @Test(dataProvider = "routesVW")
+    @Test(dataProvider = "routesVW" , enabled = false)
     @Flaky
     @Owner(value = "Sergey_QA")
     @Description(value = "Test checking transition from banners autodoc club")
