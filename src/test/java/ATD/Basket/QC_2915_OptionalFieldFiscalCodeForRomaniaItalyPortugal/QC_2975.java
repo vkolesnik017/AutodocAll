@@ -3,7 +3,6 @@ package ATD.Basket.QC_2915_OptionalFieldFiscalCodeForRomaniaItalyPortugal;
 import ATD.CartAccount_page_Logic;
 import ATD.CartAddress_page_Logic;
 import ATD.Product_page_Logic;
-import AWS.Order_aws;
 import Common.SetUp;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
@@ -44,7 +43,7 @@ public class QC_2975 {
                 .closePopupOtherCategoryIfYes()
                 .cartClick()
                 .nextButtonClick();
-        String orderNumber = new CartAccount_page_Logic().signIn(mail, password)
+        new CartAccount_page_Logic().signIn(mail, password)
                 .chooseDeliveryCountryForShipping(shop)
                 .fillInPostalCode("default")
                 .checkPresenceFieldFiscalCodeForShipping(false)
@@ -56,21 +55,13 @@ public class QC_2975 {
                 .checkTextForCheckboxFiscalCode(cartAddressPageLogic.textFiscalCodeInShippingForm(), shop)
                 .clickCheckboxForOpenFiscalCodeField()
                 .checkPresenceTextInFieldsForShippingOrBilling(cartAddressPageLogic.fieldFiscalCode(), true)
-
-
-
-
-                .nextBtnClick()
-                .clickOnTheDesiredPaymentMethod(shop, "Bank")
-                .nextBtnClick()
-                .nextBtnClick()
-                .getOrderNumber();
-        new Order_aws(orderNumber).openOrderInAwsWithLogin()
-                .checkPresenceTextInFiscalCodeField(false)
-                .reSaveOrder()
-                .checkCurrentStatusInOrder("Testbestellungen");
+                .clickCheckboxForClosedFiscalCodeField()
+                .clickCheckboxFirmAndOpenField(cartAddressPageLogic.checkboxFirmShipping(), cartAddressPageLogic.fieldFirm())
+                .checkPresenceCheckboxFiscalCode(cartAddressPageLogic.fiscalCodeBlockInSippingForm(), false)
+                .clickCheckboxFirmAndCloseField(cartAddressPageLogic.checkboxFirmShipping(), cartAddressPageLogic.fieldFirm())
+                .clickCheckboxForOpenFiscalCodeField()
+                .checkPresenceTextInFieldsForShippingOrBilling(cartAddressPageLogic.fieldFiscalCode(), true);
     }
-
 
     @AfterMethod
     private void close() {
