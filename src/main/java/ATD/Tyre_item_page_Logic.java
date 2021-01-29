@@ -7,7 +7,6 @@ import org.testng.Assert;
 import java.sql.SQLException;
 
 import static ATD.CommonMethods.*;
-import static ATD.CommonMethods.getPriceFromElement;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.Selenide.switchTo;
@@ -233,16 +232,20 @@ public class Tyre_item_page_Logic extends Tyre_item_page {
     public Tyre_item_page_Logic checkCharacteristicsBlock() {
         Product_page productPage = new Product_page();
         productPage.minimizedCharactericticBlock().shouldBe(visible);
-        productPage.uncoverCharactericticBtn().click();
-        productPage.maximizedCharacteristicBlock().shouldBe(visible);
-        productPage.coverCharacteristicBtn().click();
-        productPage.minimizedCharactericticBlock().shouldBe(visible);
+        if (productPage.uncoverCharactericticBtn().isDisplayed()) {
+            productPage.uncoverCharactericticBtn().click();
+            productPage.maximizedCharacteristicBlock().shouldBe(visible);
+            productPage.coverCharacteristicBtn().click();
+            productPage.minimizedCharactericticBlock().shouldBe(visible);
+        }
         return this;
     }
 
     @Step("Checks navigating the season link in the characteristics block. Tyre_item_page")
     public TyresListing_page_Logic checkNavigatingSeasonLinkInCharacteristicsBlock() {
-        new Product_page().uncoverCharactericticBtn().click();
+        if (new Product_page().uncoverCharactericticBtn().isDisplayed()) {
+            new Product_page().uncoverCharactericticBtn().click();
+        }
         seasonLincInCharacteristicsBlock().shouldBe(visible);
         String season = seasonLincInCharacteristicsBlock().getText();
         seasonLincInCharacteristicsBlock().click();

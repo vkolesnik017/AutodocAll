@@ -4,6 +4,7 @@ package ATD;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import org.openqa.selenium.By;
 import org.testng.Assert;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import static ATD.CommonMethods.checkingContainsUrl;
 import static ATD.CommonMethods.getTextFromUnVisibleElement;
 import static com.codeborne.selenide.CollectionCondition.*;
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selenide.*;
 import static org.testng.Assert.assertEquals;
 
@@ -1443,6 +1445,14 @@ public class Listing_page_Logic extends Listing_page {
         return this;
     }
 
+    @Step("Check presents VAT postscript {expectedVatPostscript} in card products. Listing_page")
+    public Listing_page_Logic checkPresentVatPostscriptInCardProduct(String expectedVatPostscript) {
+        By vatPostscript = (byCssSelector(".price-block__inkl"));
+        for (int i = 0; i < cardProducts().size(); i++) {
+            System.out.println(cardProducts().get(i).find(vatPostscript).shouldHave(text(expectedVatPostscript)));
+        }
+        return this;
+    }
 
 }
 

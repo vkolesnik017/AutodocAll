@@ -73,14 +73,6 @@
         </classes>
     </test>
 
-    <test name="QC_944_TopProductsBlockOnMainPage">
-        <classes>
-            <class name="PKW.Section_Oil.QC_944_TopProductsBlockOnMainPage.QC_947"/>
-            <class name="PKW.Section_Oil.QC_944_TopProductsBlockOnMainPage.QC_948"/>
-            <class name="PKW.Section_Oil.QC_944_TopProductsBlockOnMainPage.QC_949"/>
-        </classes>
-    </test>
-
     <test name="QC_958_SpecificationBlockOnMainPage">
         <classes>
             <class name="PKW.Section_Oil.QC_958_SpecificationBlockOnMainPage.QC_959"/>
