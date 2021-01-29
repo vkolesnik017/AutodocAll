@@ -29,7 +29,7 @@ public class QC_2414 {
         return new SetUp("ATD").setUpShop("prod", "DE");
     }
 
-    @Test(dataProvider = "route")
+    @Test(dataProvider = "route", enabled = false) //TODO отключен из-за дефекта SHOP-2505
     @Owner(value = "LavrynenkoOlha")
     @Flaky
     @Description(value = "Test checks elements on the About Us page")
