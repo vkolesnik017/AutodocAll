@@ -32,7 +32,7 @@ public class QC_1648 {
         return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "supplier_brand_line,category_maker,group_list,category_maker_brand");
     }
 
-    @Test(dataProvider = "routes")
+    @Test(dataProvider = "routes", enabled = false) //TODO отключен из за дефекта SALES-3133
     @Flaky
     @Owner(value = "Chelombitko")
     @Description(value = "The test checks presence elements in mini-card in blocks of top products")
