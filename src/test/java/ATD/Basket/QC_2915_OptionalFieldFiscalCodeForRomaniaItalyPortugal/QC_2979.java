@@ -37,9 +37,33 @@ public class QC_2979 {
     @Owner(value = "Sergey_QA")
     @Description(value = "Successful saving of changes, with a filled / empty field \"Fiscal code\" (editing an order in AWS)")
     public void testSuccessfulSavingOfChangesInFiscalCodeField(String orderID) {
-        new Order_aws(orderID).openOrderInAwsWithLogin();
-
-
+        new Order_aws(orderID).openOrderInAwsWithLogin()
+                .setValueInFiscalCodeForBilling("TS111")
+                .checkPresenceTextInFiscalCodeField(true)
+                .checkPresenceTextInFiscalCodeFieldForShipping(false)
+                .saveOrder()
+                .checkPresenceTextInFiscalCodeField(true)
+                .checkPresenceTextInFiscalCodeFieldForShipping(false)
+                .clearFiscalCodeFieldForBilling()
+                .setValueInFiscalCodeForShipping("TS111")
+                .checkPresenceTextInFiscalCodeField(false)
+                .checkPresenceTextInFiscalCodeFieldForShipping(true)
+                .saveOrder()
+                .checkPresenceTextInFiscalCodeField(false)
+                .checkPresenceTextInFiscalCodeFieldForShipping(true)
+                .setValueInFiscalCodeForBilling("TS111")
+                .checkPresenceTextInFiscalCodeField(true)
+                .checkPresenceTextInFiscalCodeFieldForShipping(true)
+                .saveOrder()
+                .checkPresenceTextInFiscalCodeField(true)
+                .checkPresenceTextInFiscalCodeFieldForShipping(true)
+                .clearFiscalCodeFieldForBilling()
+                .clearFiscalCodeFieldForShipping()
+                .checkPresenceTextInFiscalCodeField(false)
+                .checkPresenceTextInFiscalCodeFieldForShipping(false)
+                .saveOrder()
+                .checkPresenceTextInFiscalCodeField(false)
+                .checkPresenceTextInFiscalCodeFieldForShipping(false);
     }
 
 
