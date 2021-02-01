@@ -16,6 +16,7 @@
             <class name="ATD.Selectors.QC_771_RegKbaSelector.QC_3170"/>
             <class name="ATD.Selectors.QC_771_RegKbaSelector.QC_3171"/>
             <class name="ATD.Selectors.QC_771_RegKbaSelector.QC_3172"/>
+            <class name="ATD.Selectors.QC_771_RegKbaSelector.QC_3168"/>
         </classes>
     </test>
 

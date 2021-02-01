@@ -1,7 +1,6 @@
-package PKW.Section_Oil.QC_939_BlockOfPopularBrandsOnMainPage;
+package ATD.Selectors.QC_771_RegKbaSelector;
 
-import Common.DataBase;
-import PKW.Motoroil_page_Logic;
+import ATD.Motoroil_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -14,10 +13,9 @@ import java.sql.SQLException;
 
 import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
-import static PKW.CommonMethods.checkingContainsUrl;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_941 {
+public class QC_3168 {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -25,19 +23,16 @@ public class QC_941 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new Common.SetUp("PKW").setUpShopWithSubroutes("prod", "DE", "main", "motoroil");
+        return new Common.SetUp("ATD").setUpShopsWithSubroute("prod", "DE,DK,FI,FR,IT,NL,NO,PT,SE,CH", "main", "motoroil");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks transition to Listing with selected brand")
-    public void testChecksTransitionToListingWithSelectedBrand(String route) throws SQLException {
+    @Description(value = "Test checks presence of KBA selector")
+    public void testChecksPresenceOfKbaSelector(String route) {
         openPage(route);
-
-        new Motoroil_page_Logic()
-                .selectBrandInBlock(21);
-        checkingContainsUrl(new DataBase("PKW").getRouteByRouteName("DE", "motoroil_brand3"));
+        new Motoroil_page_Logic().presenceOfKbaSelector();
     }
 
     @AfterMethod
