@@ -1262,6 +1262,12 @@ public class Order_aws {
         return Float.valueOf(safeOrderPrice().getValue());
     }
 
+    @Step("Checks safe order price {expectedPrice}. Order_aws")
+    public Order_aws checkSafeOrderPrice(String expectedPrice) {
+        safeOrderPrice().shouldHave(value(expectedPrice));
+        return this;
+    }
+
     @Step("Get delivery cost of heavy loads in order. Order_aws")
     public Float getDeliveryCostOfHeavyLoads() {
         return Float.valueOf(heavyLoadsDeliveryPriceOrderAWS().getText());
@@ -1457,7 +1463,7 @@ public class Order_aws {
     @Step("Click print button in popup return. Order_aws")
     public Order_aws clickPrintButtonInPopupReturn() {
         printBtnInPopupReturn().click();
-        sleep(5000);
+        sleep(8000);
         return this;
     }
 
