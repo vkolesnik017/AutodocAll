@@ -23,7 +23,7 @@ public class QC_2797 {
 
     @BeforeClass
     void setUp() {
-        setUpBrowser(false, "chrome", "77.0", false);
+        setUpBrowser(false, "chrome", "77.0", true);
     }
 
     @DataProvider(name = "routes", parallel = true)
@@ -38,7 +38,7 @@ public class QC_2797 {
     public void testChecksTransitionsByTabInTopSectionsBlockOnMainPage(String route) throws IOException {
         openPage(route);
         new Static_page_atd_page_Logic().presenceHelpingBlock().downloadPdfInHelpingBlock();
-        assertThatPdfContainsText("C:/Users/User/Downloads/doc.pdf", "smt text");
+        assertThatPdfContainsText("D:/ЗАГРУЗКИ/Projektbericht_Autodoc_Internet.pdf", "ÜBER DIE AKTION");
     }
 
     @AfterMethod
