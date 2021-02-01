@@ -1433,7 +1433,7 @@ public class Main_page_Logic extends Main_page {
             getPriceNettoOfProduct(priceNettoFirstPageAws, activeFirstPage);
             getPriceNettoOfProduct(priceNettoSecondPageAws, activeSecondPage);
             getPriceNettoOfProduct(priceNettoThirdPageAws, activeThirdPage);
-            checkPriceNettoFromAWS(priceNettoFirstPageAws, priceNettoSecondPageAws, priceNettoThirdPageAws);
+            checkPriceNettoFromAWS(priceNettoFirstPageAws, priceNettoSecondPageAws, priceNettoThirdPageAws, list.get(i));
             priceNettoFirstPageAws.clear();
             priceNettoSecondPageAws.clear();
             priceNettoThirdPageAws.clear();
@@ -1467,16 +1467,16 @@ public class Main_page_Logic extends Main_page {
     }
 
     @Step("check price Netto from aws.  Main_page")
-    public Main_page_Logic checkPriceNettoFromAWS(List<Double> firstList, List<Double> secondList, List<Double> thirdList) {
+    public Main_page_Logic checkPriceNettoFromAWS(List<Double> firstList, List<Double> secondList, List<Double> thirdList, String generic) {
         if (firstList.size() > 0 && secondList.size() > 0 && thirdList.size() > 0) {
-            Assert.assertTrue(Collections.max(firstList) <= Collections.min(secondList), "error" + Collections.max(firstList) + " - " + Collections.min(secondList));
-            Assert.assertTrue(Collections.max(secondList) <= Collections.min(thirdList));
+            Assert.assertTrue(Collections.max(firstList) <= Collections.min(secondList), String.format("All pages is full, test fall between firstPage(maxValueOfFistPage - %s) and secondPage(minValueOfSecondPage - %s) ", Collections.max(firstList), Collections.min(secondList)));
+            Assert.assertTrue(Collections.max(secondList) <= Collections.min(thirdList), String.format("All pages is full, test fall between secondPage(maxValueOfSecondPage - %s) and thirdPage(minValueOfThirdPage - %s) ", Collections.max(secondList), Collections.min(thirdList)));
         } else if (firstList.size() > 0 && secondList.size() > 0 && thirdList.size() == 0) {
-            Assert.assertTrue(Collections.max(firstList) <= Collections.min(secondList));
+            Assert.assertTrue(Collections.max(firstList) <= Collections.min(secondList), String.format("First and Second pages are full, ThirdPage is empty, test fall between firstPage(maxValueOfFistPage - %s) and secondPage(minValueOfSecondPage - %s) ", Collections.max(firstList), Collections.min(secondList)));
         } else if (firstList.size() > 0 && thirdList.size() > 0 && secondList.size() == 0) {
-            Assert.assertTrue(Collections.max(firstList) <= Collections.min(thirdList));
+            Assert.assertTrue(Collections.max(firstList) <= Collections.min(thirdList), String.format("First and Third pages are full, SecondPage is empty, test fall between firstPage(maxValueOfFistPage - %s) and thirdPage(minValueOfThirdPage - %s) ", Collections.max(firstList), Collections.min(thirdList)));
         } else if (secondList.size() > 0 && thirdList.size() > 0 && firstList.size() == 0) {
-            Assert.assertTrue(Collections.max(secondList) <= Collections.min(thirdList));
+            Assert.assertTrue(Collections.max(secondList) <= Collections.min(thirdList), String.format("Second and Third pages are full, FirstPage is empty, test fall between secondPage(maxValueOfSecondPage - %s) and thirdPage(minValueOfThirdPage - %s) ", Collections.max(secondList), Collections.min(thirdList)));
         }
         return this;
     }

@@ -1,5 +1,6 @@
 package ATD;
 
+import AWS.ProductCard_aws;
 import Common.DataBase;
 import io.qameta.allure.Step;
 import org.testng.Assert;
@@ -370,6 +371,23 @@ public class Moto_Category_page_Logic extends Moto_Category_page {
             }
             Assert.assertEquals(attributeOfDangerousIcon, attributeOfWarningIcon);
         }
+        return this;
+    }
+
+    @Step("get Id Of All TOP Products .Moto_Category_page")
+    public List<String> getIdOfAllTopProducts() {
+        List<String> idOfTopProduct = btnAddProductToWishList().stream().map(n -> n.attr("data-product-id")).collect(Collectors.toList());
+        return idOfTopProduct;
+    }
+
+    @Step("checking product and generic conformity. Moto_Category_page")
+    public Moto_Category_page_Logic checkProductAndGenericConformity(List<String> idOfTopProduct, String generic) {
+        ProductCard_aws productCardAws = new ProductCard_aws();
+        List<String> idCategory = new ArrayList<>();
+        for (int i = 0; i < idOfTopProduct.size(); i++) {
+            idCategory.add(productCardAws.openExactProductCardPageAndLogin(idOfTopProduct.get(i)).getCategoryId());
+        }
+        Assert.assertTrue(idCategory.contains(generic));
         return this;
     }
 }

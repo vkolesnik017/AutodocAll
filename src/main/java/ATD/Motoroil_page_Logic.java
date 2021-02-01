@@ -192,5 +192,12 @@ public class Motoroil_page_Logic extends Motoroil_page {
         kbaSelectorSendButton().click();
         return page(Category_car_list_page_Logic.class);
     }
+
+    @Step("presence Of Kba Selector. Motoroil page")
+    public Motoroil_page_Logic presenceOfKbaSelector() {
+        kbaSelector().shouldBe(visible);
+        return this;
+    }
+
 }
 

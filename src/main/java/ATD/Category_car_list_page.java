@@ -154,7 +154,7 @@ class Category_car_list_page {
 
     ElementsCollection btnAddProductToWishlistTableView() {return $$x("//div[@class='add-to-wishlist add-article']");}
 
-    ElementsCollection priceTitleTableView() {return $$x("//div[@class='save']/following-sibling::*[1]");}
+    ElementsCollection priceTitleTableView() {return $$x("//div[contains(@class,'rec_prod_price ')]/following-sibling::*[2]");}
 
     SelenideElement soft404() {return $(byId("no_product_find"));}
 

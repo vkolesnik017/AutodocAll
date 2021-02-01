@@ -183,4 +183,6 @@ public class Motoroil_page {
     SelenideElement itemInBrandBlock() {
         return $x("//*[@class='oil-brands__list__item'][1]//*[@class='oil-brands__list__link ga-click']");
     }
+
+    SelenideElement kbaSelector() {return $x("//*[self::div[contains(@class,'block-select-kba--de')] or self::div[@class='block-select-number']]");}
 }
