@@ -181,6 +181,6 @@ public class Motoroil_page {
     }
 
     SelenideElement itemInBrandBlock() {
-        return $x("//*[@class='oil-brands__list__item'][1]//*[@class='oil-brands__list__link']");
+        return $x("//*[@class='oil-brands__list__item'][1]//*[@class='oil-brands__list__link ga-click']");
     }
 }

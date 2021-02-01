@@ -8,9 +8,25 @@
 
     <test name="QC_723_SelectorsVertical">
         <classes>
-            <class name="PKW.Selectors.QC_723_SelectorsVertical.QC_724"/>
             <class name="PKW.Selectors.QC_723_SelectorsVertical.QC_2698"/>
             <class name="PKW.Selectors.QC_723_SelectorsVertical.QC_2701"/>
+        </classes>
+    </test>
+
+    <test name="QC_774_Selectors_RegKba">
+        <classes>
+            <class name="PKW.Selectors.QC_774_Selectors_RegKba.QC_922"/>
+            <class name="PKW.Selectors.QC_774_Selectors_RegKba.QC_927"/>
+            <class name="PKW.Selectors.QC_774_Selectors_RegKba.QC_930"/>
+            <class name="PKW.Selectors.QC_774_Selectors_RegKba.QC_931"/>
+            <class name="PKW.Selectors.QC_774_Selectors_RegKba.QC_934"/>
+            <class name="PKW.Selectors.QC_774_Selectors_RegKba.QC_938"/>
+        </classes>
+    </test>
+
+    <test name="QC_2968_Selectors_Car">
+        <classes>
+            <class name="PKW.Selectors.QC_2968_Selectors_Car.QC_724"/>
         </classes>
     </test>
 

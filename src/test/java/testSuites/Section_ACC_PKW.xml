@@ -28,21 +28,14 @@
             <class name="PKW.Section_ACC.QC_992_MainAccessories.QC_993"/>
             <class name="PKW.Section_ACC.QC_992_MainAccessories.QC_1028"/>
             <class name="PKW.Section_ACC.QC_992_MainAccessories.QC_1029"/>
-        </classes>
-    </test>
-
-    <test name="QC_994_MainBlockCategoriesOnMainPageAcc">
-        <classes>
-            <class name="PKW.Section_ACC.QC_994_MainBlockCategoriesOnMainPageAcc.QC_995"/>
-            <class name="PKW.Section_ACC.QC_994_MainBlockCategoriesOnMainPageAcc.QC_996"/>
-        </classes>
-    </test>
-
-    <test name="QC_1020_BlockTopProductsOnMainACC">
-        <classes>
-            <class name="PKW.Section_ACC.QC_1020_BlockTopProductsOnMainACC.QC_1022"/>
-            <class name="PKW.Section_ACC.QC_1020_BlockTopProductsOnMainACC.QC_1024"/>
-            <class name="PKW.Section_ACC.QC_1020_BlockTopProductsOnMainACC.QC_1026"/>
+            <class name="PKW.Section_ACC.QC_992_MainAccessories.QC_995"/>
+            <class name="PKW.Section_ACC.QC_992_MainAccessories.QC_996"/>
+            <class name="PKW.Section_ACC.QC_992_MainAccessories.QC_1001"/>
+            <class name="PKW.Section_ACC.QC_992_MainAccessories.QC_1003"/>
+            <class name="PKW.Section_ACC.QC_992_MainAccessories.QC_1022"/>
+            <class name="PKW.Section_ACC.QC_992_MainAccessories.QC_1024"/>
+            <class name="PKW.Section_ACC.QC_992_MainAccessories.QC_1026"/>
+            <class name="PKW.Section_ACC.QC_992_MainAccessories.QC_2238"/>
         </classes>
     </test>
 
@@ -51,6 +44,16 @@
             <class name="PKW.Section_ACC.QC_1745_MainTools.QC_1746"/>
             <class name="PKW.Section_ACC.QC_1745_MainTools.QC_1747"/>
             <class name="PKW.Section_ACC.QC_1745_MainTools.QC_1761"/>
+            <class name="PKW.Section_ACC.QC_1745_MainTools.QC_1753"/>
+            <class name="PKW.Section_ACC.QC_1745_MainTools.QC_1754"/>
+            <class name="PKW.Section_ACC.QC_1745_MainTools.QC_1755"/>
+            <class name="PKW.Section_ACC.QC_1745_MainTools.QC_1750"/>
+            <class name="PKW.Section_ACC.QC_1745_MainTools.QC_1751"/>
+            <class name="PKW.Section_ACC.QC_1745_MainTools.QC_1757"/>
+            <class name="PKW.Section_ACC.QC_1745_MainTools.QC_1758"/>
+            <class name="PKW.Section_ACC.QC_1745_MainTools.QC_1759"/>
+            <class name="PKW.Section_ACC.QC_1745_MainTools.QC_1760"/>
+            <class name="PKW.Section_ACC.QC_1745_MainTools.QC_2251"/>
         </classes>
     </test>
 
@@ -62,28 +65,6 @@
         </classes>
     </test>
 
-    <test name="QC_999_TopCategoriesOnMainAccessories">
-        <classes>
-            <class name="PKW.Section_ACC.QC_999_TopCategoriesOnMainAccessories.QC_1001"/>
-            <class name="PKW.Section_ACC.QC_999_TopCategoriesOnMainAccessories.QC_1003"/>
-        </classes>
-    </test>
-
-    <test name="QC_1748_MainCatalogCategoriesOnMainTools">
-        <classes>
-            <class name="PKW.Section_ACC.QC_1748_MainCatalogCategoriesOnMainTools.QC_1750"/>
-            <class name="PKW.Section_ACC.QC_1748_MainCatalogCategoriesOnMainTools.QC_1751"/>
-        </classes>
-    </test>
-
-    <test name="QC_1752_BlockTopCategoriesOnMainTools">
-        <classes>
-            <class name="PKW.Section_ACC.QC_1752_BlockTopCategoriesOnMainTools.QC_1753"/>
-            <class name="PKW.Section_ACC.QC_1752_BlockTopCategoriesOnMainTools.QC_1754"/>
-            <class name="PKW.Section_ACC.QC_1752_BlockTopCategoriesOnMainTools.QC_1755"/>
-        </classes>
-    </test>
-
     <test name="QC_1805_BlockFilterByGenericsOnChemistryListing">
         <classes>
             <class name="PKW.Section_ACC.QC_1805_BlockFilterByGenericsOnChemistryListing.QC_1806"/>
@@ -92,36 +73,14 @@
         </classes>
     </test>
 
-    <test name="QC_1756_TopProductsBlockOnMainTools">
+    <test name="QC_3011_ToolsListing">
         <classes>
-            <class name="PKW.Section_ACC.QC_1756_TopProductsBlockOnMainTools.QC_1757"/>
-            <class name="PKW.Section_ACC.QC_1756_TopProductsBlockOnMainTools.QC_1758"/>
-            <class name="PKW.Section_ACC.QC_1756_TopProductsBlockOnMainTools.QC_1759"/>
-            <class name="PKW.Section_ACC.QC_1756_TopProductsBlockOnMainTools.QC_1760"/>
-        </classes>
-    </test>
-
-    <test name="QC_2279_ToolsListing">
-        <classes>
-            <class name="PKW.Section_ACC.QC_2279_ToolsListing.QC_2232"/>
-            <class name="PKW.Section_ACC.QC_2279_ToolsListing.QC_2234"/>
-            <class name="PKW.Section_ACC.QC_2279_ToolsListing.QC_2281"/>
-            <class name="PKW.Section_ACC.QC_2279_ToolsListing.QC_2282"/>
-        </classes>
-    </test>
-
-    <test name="QC_2236_DisplayingAllCategoriesAndLogicalUnionACC">
-        <classes>
-            <class name="PKW.Section_ACC.QC_2236_DisplayingAllCategoriesAndLogicalUnionACC.QC_2238"/>
-            <class name="PKW.Section_ACC.QC_2236_DisplayingAllCategoriesAndLogicalUnionACC.QC_2251"/>
-        </classes>
-    </test>
-
-    <test name="QC_2283_BlockWithProductsOnToolsListing">
-        <classes>
-            <class name="PKW.Section_ACC.QC_2283_BlockWithProductsOnToolsListing.QC_2284"/>
-            <class name="PKW.Section_ACC.QC_2283_BlockWithProductsOnToolsListing.QC_2285"/>
-            <class name="PKW.Section_ACC.QC_2283_BlockWithProductsOnToolsListing.QC_2286"/>
+            <class name="PKW.Section_ACC.QC_3011_ToolsListing.QC_2284"/>
+            <class name="PKW.Section_ACC.QC_3011_ToolsListing.QC_2285"/>
+            <class name="PKW.Section_ACC.QC_3011_ToolsListing.QC_2286"/>
+            <class name="PKW.Section_ACC.QC_3011_ToolsListing.QC_2232"/>
+            <class name="PKW.Section_ACC.QC_3011_ToolsListing.QC_2281"/>
+            <class name="PKW.Section_ACC.QC_3011_ToolsListing.QC_2282"/>
         </classes>
     </test>
 
