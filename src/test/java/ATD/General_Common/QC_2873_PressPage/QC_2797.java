@@ -34,11 +34,17 @@ public class QC_2797 {
     @Test(dataProvider = "routes")
     @Flaky
     @Owner(value = "Kolesnik")
-    @Description(value = "Test checks transitions by tab in top sections block on main page")
-    public void testChecksTransitionsByTabInTopSectionsBlockOnMainPage(String route) throws IOException {
+    @Description(value = "Test checks helping press block")
+    public void testChecksHelpingPressBlock(String route) throws IOException {
         openPage(route);
-        new Static_page_atd_page_Logic().presenceHelpingBlock().downloadPdfInHelpingBlock();
-        assertThatPdfContainsText("D:/ЗАГРУЗКИ/Projektbericht_Autodoc_Internet.pdf", "ÜBER DIE AKTION");
+        new Static_page_atd_page_Logic().presenceHelpingBlock()
+                .presenceOfMainFormOfHelpingBlock()
+                .presenceOfArticleBlock()
+                .checkPdfBlockOfArticleBlock()
+                .checkContentBlockOfArticlePdfBlock()
+                .downloadPdfInHelpingBlock()
+                .presenceOfVisiblePressLinks();
+        assertThatPdfContainsText("C:/Users/User/Downloads/Projektbericht_Autodoc_Internet.pdf", "ÜBER DIE AKTION");
     }
 
     @AfterMethod
