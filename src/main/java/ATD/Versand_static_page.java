@@ -98,6 +98,10 @@ class Versand_static_page {
         return $(By.cssSelector(".safe-order"));
     }
 
+    SelenideElement safeOrderPrice() {
+        return $x("(//div[@class='safe-order__number-row']/p[@class='price'])[2]");
+    }
+
     SelenideElement soDays() {
         return $(By.xpath("//*[@class='safe-order__eclipse-orange']/p[1]"));
     }

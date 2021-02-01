@@ -318,10 +318,20 @@ public class OrderAdd_page_aws {
         return this;
     }
 
-    @Step("Selected payment expected method {expectedMethod}. OrderAdd_page_aws")
-    public OrderAdd_page_aws selectedPaymentMethod(String shop, String expectedMethod) {
+    @Step("Selected credit card method {expectedMethod}. OrderAdd_page_aws")
+    public OrderAdd_page_aws selectedCreditCardMethod(String shop, String expectedMethod) {
         if (shop.equals("SE")) {
             paymentMethod().selectOptionContainingText("Be2bill[SEK] (Visa/MC)");
+        } else {
+            paymentMethod().selectOptionContainingText(expectedMethod);
+        }
+        return this;
+    }
+
+    @Step("Selected bank method {expectedMethod}. OrderAdd_page_aws")
+    public OrderAdd_page_aws selectedBankMethod(String shop, String expectedMethod) {
+        if (shop.equals("EN")) {
+            paymentMethod().selectOptionContainingText("UniCredit Bank GB");
         } else {
             paymentMethod().selectOptionContainingText(expectedMethod);
         }
@@ -398,8 +408,8 @@ public class OrderAdd_page_aws {
         return this;
     }
 
-    @Step("Selects skin for a specific country{shop}. OrderAdd_page_aws")
-    public OrderAdd_page_aws selectSkinFopSpecificCountry(String shop) {
+    @Step("Selects shop for skin PKW a specific country{shop}. OrderAdd_page_aws")
+    public OrderAdd_page_aws selectShopForSkinPKWFopSpecificCountry(String shop) {
         selectorForSkin().click();
         sleep(2000);
         if (!searchBoxBySkin().isDisplayed()) {
@@ -433,6 +443,33 @@ public class OrderAdd_page_aws {
         return this;
     }
 
+    @Step("Selects shop for skin ATD a specific country{shop}. OrderAdd_page_aws")
+    public OrderAdd_page_aws selectShopForSkinATDFopSpecificCountry(String shop) {
+        selectorForSkin().click();
+        sleep(2000);
+        if (!searchBoxBySkin().isDisplayed()) {
+            selectorForSkin().click();
+        }
+        switch (shop) {
+            case "EE":
+                listSkins("autodoc.ee (EE)").click();
+                break;
+            case "LV":
+                listSkins("autodoc.lv (LV)").click();
+                break;
+            case "LT":
+                listSkins("autodoc.lt (LT)").click();
+                break;
+            case "SI":
+                listSkins("autodoc.si (SI)").click();
+                break;
+            case "EN":
+                listSkins("autodoc.co.uk (GB)").click();
+                break;
+        }
+        return this;
+    }
+
     @Step("Checks presence popup with delivery error. OrderAdd_page_aws")
     public OrderAdd_page_aws checkPresencePopupWithDeliveryError() {
         popUpWithDeliveryError().shouldBe(visible);
@@ -442,13 +479,35 @@ public class OrderAdd_page_aws {
     @Step("Choosing delivery country {country} for sipping and get name country. OrderAdd_page_aws")
     public String chooseDeliveryCountryAndGetNameCountry(String country) {
         choosesCountryInDeliveryAddress(country).shouldBe(visible).click();
-        String nameCountry = choosesCountryInDeliveryAddress(country).getText();
-        return nameCountry;
+        return choosesCountryInDeliveryAddress(country).getText();
     }
 
     @Step("Choosing delivery country {expectedCountry}. OrderAdd_page_aws")
     public OrderAdd_page_aws chooseDeliveryCountry(String expectedCountry) {
         choosesCountryInDeliveryAddress(expectedCountry).shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("Choosing delivery country equal to the shop {expectedShop}. OrderAdd_page_aws")
+    public OrderAdd_page_aws choosingDeliveryCountryEqualToShop(String expectedShop) {
+        fieldCountryInDeliveryAddress().shouldBe(visible);
+        switch (expectedShop) {
+            case "EE":
+                chooseDeliveryCountry("Estonia");
+                break;
+            case "LV":
+                chooseDeliveryCountry("Latvia");
+                break;
+            case "LT":
+                chooseDeliveryCountry("Lithuania");
+                break;
+            case "SI":
+                chooseDeliveryCountry("Slovenia");
+                break;
+            case "EN":
+                chooseDeliveryCountry("United Kingdom");
+                break;
+        }
         return this;
     }
 }
