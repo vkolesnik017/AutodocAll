@@ -36,7 +36,7 @@ public class QC_941 {
         openPage(route);
 
         new Motoroil_page_Logic()
-                .selectBrandInBlock(24);
+                .selectBrandInBlock(21);
         checkingContainsUrl(new DataBase("PKW").getRouteByRouteName("DE", "motoroil_brand3"));
     }
 
