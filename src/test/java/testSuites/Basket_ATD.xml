@@ -128,6 +128,8 @@
     <test name="QC_3027_CheckingVATWithdrawalForCH" thread-count="1">
         <classes>
             <class name="ATD.Basket.QC_3027_CheckingVATWithdrawalForCH.QC_3036"/>
+            <class name="ATD.Basket.QC_3027_CheckingVATWithdrawalForCH.QC_3033"/>
+            <class name="ATD.Basket.QC_3027_CheckingVATWithdrawalForCH.QC_3039"/>
         </classes>
     </test>
 
