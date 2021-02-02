@@ -39,7 +39,7 @@ public class QC_615 {
     public void testCheckPresenceSubcategoriesOnFaqRootAndCatalogWithoutVehicle(String route) throws Exception {
         openPage(route);
         List<String> notUsedCategories = Arrays.asList("Reifen", "Autozubehör", "Steuergeräte, Sensoren, Relais", "Reparatursätze", "Werkzeuge & Werkstattausrüstung", "Autopflege",
-                "Rohre und Schläuche", "Beleuchtung", "Befestigungsmaterial");
+                "Rohre und Schläuche", "Beleuchtung", "Befestigungsmaterial","Tuning");
         faqPage.compareSubCategoriesListWithAws(notUsedCategories);
     }
 
