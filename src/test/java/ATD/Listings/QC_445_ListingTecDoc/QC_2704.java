@@ -29,12 +29,12 @@ public class QC_2704 {
 
     @DataProvider(name = "routesLkw", parallel = true)
     Object[] dataProviderLkw() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list38");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "lkw_main", "lkw_category_car_list38,lkw_search6");
     }
 
     @DataProvider(name = "routesMoto", parallel = true)
     Object[] dataProviderMoto() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list");
+        return new SetUp("ATD").setUpShopWithSubroutes("subprod", "DE", "moto_main", "moto_category_car_list,moto_search");
     }
     @Test(dataProvider = "routes")
     @Flaky

@@ -28,6 +28,7 @@
             <class name="ATD.Selectors.QC_729_PopUpsOfSelectors.QC_742"/>
             <class name="ATD.Selectors.QC_729_PopUpsOfSelectors.QC_743"/>
             <class name="ATD.Selectors.QC_729_PopUpsOfSelectors.QC_749"/>
+            <class name="ATD.Selectors.QC_729_PopUpsOfSelectors.QC_2788"/>
         </classes>
     </test>
 
