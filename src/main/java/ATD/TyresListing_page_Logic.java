@@ -310,7 +310,7 @@ public class TyresListing_page_Logic extends TyresListing_page {
     @Step("Check brand relink on tyres listing. TyresListing_page")
     public TyresListing_page_Logic checkDiameterRelink() {
         String diameter = diameterInRelinkBlock().getAttribute("href").replaceAll("\\D+", "");
-        diameterInRelinkBlock().scrollIntoView(false).click();
+        diameterInRelinkBlock().scrollIntoView("{block: \"center\"}").click();
         checkingContainsUrl("zoll");
         checkCharacteristicOnListing(diameter, radiusCharacteristic());
         return this;

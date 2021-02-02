@@ -1739,4 +1739,19 @@ public class Main_page_Logic extends Main_page {
         mailFieldLogin().setValue(mail);
         return this;
     }
+
+    @Step("presence Of Tyres Category. Main_page")
+    public Main_page_Logic presenceOfTyresCategory() {
+        tyresCategory().shouldBe(visible);
+        return this;
+    }
+
+    @Step("get Top Parent Categories. Main_page")
+    public List<String> getTopParentCategories() {
+        List<String> categories = new ArrayList<>();
+        for (int i = 1; i < topParentCategory().size(); i++) {
+            categories.add(topParentCategory().get(i).getText());
+        }
+        return categories;
+    }
 }
