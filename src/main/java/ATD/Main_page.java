@@ -875,4 +875,8 @@ public class Main_page {
     SelenideElement infoErrorLoginPopUp() {return $(byId("popup_update"));}
 
     SelenideElement infoTextInErrorLoginPopUp() {return $x("//div[@class='txt ']/ul");}
+
+    SelenideElement tyresCategory() {return $x("//ul[@class='ersats_listing']//span[contains(text(),'Reifen')]/ancestor::li");}
+
+    ElementsCollection topParentCategory() {return $$x("//span[@class='head_autopart head_autopart_href link']");}
 }

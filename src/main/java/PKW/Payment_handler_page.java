@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selenide.$x;
 public class Payment_handler_page {
 
     SelenideElement orderNumber() {
-        return $(By.xpath("//div[@class='success-order__info']/span"));
+        return $(By.xpath("//div[@class='success-order__info']/*"));
     }
 
     SelenideElement popupAfterOrder() {

@@ -1,8 +1,6 @@
-package ATD.FiltersSorting.QC_195_FiltersSorting_outputSorting;
+package ATD.Selectors.QC_771_RegKbaSelector;
 
-
-import ATD.Listing_page_Logic;
-import Common.SetUp;
+import ATD.Motoroil_page_Logic;
 import io.qameta.allure.Description;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Owner;
@@ -17,7 +15,7 @@ import static ATD.CommonMethods.openPage;
 import static Common.SetUp.setUpBrowser;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class QC_254 {
+public class QC_3168 {
     @BeforeClass
     void setUp() {
         setUpBrowser(false, "chrome", "77.0", false);
@@ -25,22 +23,20 @@ public class QC_254 {
 
     @DataProvider(name = "routes", parallel = true)
     Object[] dataProvider() throws SQLException {
-        return new SetUp("ATD").setUpShopWithSubroutes("prod", "DE", "main", "category_car_list6");
+        return new Common.SetUp("ATD").setUpShopsWithSubroute("prod", "DE,DK,FI,FR,IT,NL,NO,PT,SE,CH", "main", "motoroil");
     }
 
     @Test(dataProvider = "routes")
     @Flaky
-    @Owner(value = "Romanuta")
-    @Description(value = "Test checks helping press block")
-    public void testChecksHelpingPressBlock(String route) {
+    @Owner(value = "Kolesnik")
+    @Description(value = "Test checks presence of KBA selector")
+    public void testChecksPresenceOfKbaSelector(String route) {
         openPage(route);
-        new Listing_page_Logic().clickFirstBrandNameInFilter()
-                .waitUntilPreloaderDisappear()
-                .checkAddToBasketButtonsSorting();
+        new Motoroil_page_Logic().presenceOfKbaSelector();
     }
 
     @AfterMethod
-    private void close() {
+    public void close() {
         closeWebDriver();
     }
 }

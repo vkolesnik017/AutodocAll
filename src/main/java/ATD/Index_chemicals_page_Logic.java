@@ -23,6 +23,7 @@ public class Index_chemicals_page_Logic extends Index_chemicals_page {
         catalogFirstGroup().hover();
         sleep(2000);
         catalogCategories().shouldBe(visible);
+        nameFirstCategoryInLogicalUnion().shouldBe(visible);
         return this;
     }
 
